@@ -1,0 +1,67 @@
+@import "tailwindcss";
+
+/*
+ * Tailwind v4 @theme — DESIGN.md 토큰의 CSS 사본.
+ * 단일 출처는 ./DESIGN.md. 토큰을 바꿀 땐 DESIGN.md 먼저, 그 다음 본 파일 동기화.
+ * (후속 작업: scripts/lint/build.js 가 DESIGN.md → 이 블록 자동 생성)
+ */
+@theme {
+  /* color primitives */
+  --color-slate-50:  oklch(98% 0.01 250);
+  --color-slate-100: oklch(94% 0.02 250);
+  --color-slate-500: oklch(55% 0.04 250);
+  --color-slate-800: oklch(25% 0.04 250);
+  --color-slate-900: oklch(15% 0.04 250);
+  --color-iris-400:  oklch(70% 0.16 280);
+  --color-iris-500:  oklch(62% 0.18 280);
+
+  /* color semantic */
+  --color-surface-base:  var(--color-slate-50);
+  --color-surface-glass: color-mix(in oklch, var(--color-slate-50) 60%, transparent);
+  --color-surface-muted: var(--color-slate-100);
+  --color-text-default:  var(--color-slate-900);
+  --color-text-muted:    var(--color-slate-500);
+  --color-text-on-primary: var(--color-slate-50);
+  --color-action-primary: var(--color-iris-500);
+  --color-border-default: color-mix(in oklch, var(--color-slate-500) 25%, transparent);
+
+  /* dimension */
+  --radius-md:   8px;
+  --radius-lg:   20px;
+  --radius-xl:   32px;
+  --radius-full: 9999px;
+  --blur-sm: 8px;
+  --blur-md: 16px;
+  --blur-lg: 32px;
+
+  /* motion */
+  --ease-spring: cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+/* Body — mesh gradient 배경 (cookbook/effects/gradient-mesh) */
+body {
+  min-height: 100dvh;
+  color: var(--color-text-default);
+  background:
+    radial-gradient(at 20% 30%, var(--color-iris-400) 0px, transparent 50%),
+    radial-gradient(at 80% 20%, oklch(75% 0.14 200) 0px, transparent 50%),
+    radial-gradient(at 50% 80%, oklch(72% 0.18 320) 0px, transparent 50%),
+    var(--color-surface-base);
+  background-attachment: fixed;
+  font-family: "Inter Variable", system-ui, sans-serif;
+}
+
+/* focus-visible 기본기 — cookbook/interactions/focus-visible */
+:where(button, a, input, select, [tabindex]):focus-visible {
+  outline: 2px solid var(--color-action-primary);
+  outline-offset: 2px;
+  border-radius: inherit;
+}
+
+/* 투명도 거부 사용자 — cookbook/effects/glassmorphism */
+@media (prefers-reduced-transparency: reduce) {
+  .glass {
+    background: var(--color-surface-muted) !important;
+    backdrop-filter: none !important;
+  }
+}
