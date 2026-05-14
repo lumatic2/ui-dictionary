@@ -20,7 +20,7 @@ tokens:
         muted: { value: "{color.primitive.gray.100}", type: color }
       text:
         default: { value: "{color.primitive.gray.900}", type: color }
-        muted:   { value: "{color.primitive.gray.500}", type: color }
+        muted:   { value: "{color.primitive.gray.700}", type: color }
       action:
         primary: { value: "{color.primitive.gray.900}", type: color }
       border:

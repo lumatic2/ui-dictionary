@@ -136,6 +136,32 @@ shadow/elevation 토큰. 모션 duration·easing. reduced-motion 정책.
 ajv schema 통과 + 토큰 alias 모두 resolve + WCAG AA contrast 위반 0 건이면 PASS.
 세부 단계는 [methodology/verify-loop.md](../methodology/verify-loop.md) 참조.
 
+### Contrast 검사 규칙 (v0.1)
+
+검사는 **모든 theme** (default + 모든 override) 에 대해 독립 실행. 토큰 명명 컨벤션으로 쌍을 자동 발견:
+
+| Foreground | Background | Severity |
+|---|---|---|
+| `color.semantic.text.*` (단, `on-*` 제외) | `color.semantic.surface.*` | **error** |
+| `color.semantic.action.*` | `color.semantic.surface.*` | **warn** (액션이 텍스트로 안 쓰일 수도) |
+| `color.semantic.text.on-X` | `color.semantic.action.X` (또는 surface.X) | **error** (explicit pairing) |
+
+기준: WCAG 2.1 AA = 4.5:1 (본문 텍스트). fail 시 OKLCH L 조정 후보가 JSON 리포트의 `suggest` 필드에 박힘 — 에이전트 자가수정 루프 가능.
+
+### `on-X` 컨벤션
+
+`text.on-primary` 처럼 `on-` prefix 가 붙은 토큰은 *명시적 페어링* — `action.primary` (또는 `surface.primary`) 위에 가는 텍스트임을 선언. linter 는 이걸 정확히 그 페어로만 검사. surface 일반 위에서는 검사하지 않음.
+
+같은 패턴: `text.on-dark`, `text.on-accent`, … . 어두운 surface 가 별도면 `text.on-dark-surface`.
+
+### 테마 별 contrast 가 다른 토큰
+
+dark theme 에서 action.primary 가 밝은 iris-400, light 에서 어두운 iris-500 인 경우처럼, 같은 semantic 토큰이 theme 마다 다른 contrast 를 요구하면 `themes.dark` 블록에 override 추가. 보통 다음 4 개가 함께 움직임:
+- `color.semantic.surface.*`
+- `color.semantic.text.default` / `text.muted`
+- `color.semantic.action.primary` (필요시)
+- `color.semantic.text.on-primary` (action.primary 가 dark 에서 밝아진 경우 텍스트도 조정)
+
 ## 호환성
 
 - **Style Dictionary v4+** — `.design/tokens.json` 직접 입력 가능.

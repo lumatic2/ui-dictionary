@@ -15,7 +15,7 @@ import path from "node:path";
 import { fileURLToPath } from "node:url";
 import matter from "gray-matter";
 import Ajv from "ajv/dist/2020.js";
-import { wcagContrast, parse as parseColor, oklch, rgb } from "culori";
+import { wcagContrast, parse as parseColor, oklch, formatCss } from "culori";
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const SCHEMA = JSON.parse(
@@ -33,8 +33,8 @@ if (!fs.existsSync(target)) {
 }
 
 const report = { file: target, ts: new Date().toISOString(), stages: {}, ok: true };
-const fail = (stage, errors) => {
-  report.stages[stage] = { ok: false, errors };
+const fail = (stage, errors, extra = {}) => {
+  report.stages[stage] = { ok: false, errors, ...extra };
   report.ok = false;
 };
 const pass = (stage, extra = {}) => {
@@ -85,47 +85,108 @@ for (const [p, t] of flat) {
 if (aliasErrors.length) fail("alias", aliasErrors);
 else pass("alias", { tokens: flat.size });
 
-// 4. contrast — best-effort pairs
-const resolve = (val, depth = 0) => {
+// 4. contrast — auto-discover pairs, evaluate per theme, suggest fixes
+const tryColor = (s) => {
+  try { return parseColor(s); } catch { return null; }
+};
+
+// Build per-theme effective token maps. Default = base. Themes override by dot-path key.
+const themes = data?.themes ?? {};
+const themeNames = ["default", ...Object.keys(themes).filter((n) => n !== "default")];
+const effective = (themeName) => {
+  const map = new Map(flat);
+  const def = themes[themeName];
+  if (def && !def.base) {
+    for (const [path, ovr] of Object.entries(def)) {
+      if (path === "base") continue;
+      map.set(path, ovr);
+    }
+  }
+  return map;
+};
+const resolveWith = (val, map, depth = 0) => {
   if (depth > 8) return null;
   if (typeof val !== "string") return val;
   return val.replace(aliasRe, (_, ref) => {
-    const t = flat.get(ref);
+    const t = map.get(ref);
     if (!t) return _;
-    return resolve(t.value, depth + 1);
+    return resolveWith(t.value, map, depth + 1);
   });
 };
-const tryColor = (s) => {
-  try {
-    return parseColor(s);
-  } catch {
-    return null;
-  }
-};
-const pairs = [
-  ["color.semantic.text.default", "color.semantic.surface.base"],
-  ["color.semantic.text.muted", "color.semantic.surface.base"],
-  ["color.semantic.text.default", "color.semantic.surface.muted"],
-];
-const contrastErrors = [];
-const contrastInfo = [];
-for (const [fg, bg] of pairs) {
-  const tF = flat.get(fg), tB = flat.get(bg);
-  if (!tF || !tB) continue;
-  const fgRaw = resolve(tF.value);
-  const bgRaw = resolve(tB.value);
-  const c1 = tryColor(fgRaw), c2 = tryColor(bgRaw);
-  if (!c1 || !c2) {
-    contrastInfo.push({ fg, bg, fgRaw, bgRaw, note: "unparseable (color-mix / unknown function)" });
-    continue;
-  }
-  const ratio = wcagContrast(c1, c2);
-  const row = { fg, bg, ratio: Number(ratio.toFixed(2)) };
-  contrastInfo.push(row);
-  if (ratio < 4.5) contrastErrors.push(`${fg} on ${bg}: ${ratio.toFixed(2)} < 4.5 (WCAG AA)`);
+
+// Auto-discover token paths by name convention
+const has = (p, prefix) => p.startsWith(prefix);
+const allTextPaths = [...flat.keys()].filter((p) => has(p, "color.semantic.text."));
+const onTextPaths  = allTextPaths.filter((p) => /\.on-/.test(p));        // explicit pairs only
+const textPaths    = allTextPaths.filter((p) => !/\.on-/.test(p));        // tested vs surface
+const surfacePaths = [...flat.keys()].filter((p) => has(p, "color.semantic.surface."));
+const actionPaths  = [...flat.keys()].filter((p) => has(p, "color.semantic.action."));
+
+// Pair rules:
+//   text  × surface       → AA error  (4.5)
+//   action× surface       → AA warn   (4.5; action may not be used as text)
+//   on-X  × X-parent      → AA error  (explicit pairing, e.g. text.on-primary × action.primary)
+const pairRules = [];
+for (const fg of textPaths)   for (const bg of surfacePaths) pairRules.push({ fg, bg, sev: "error" });
+for (const fg of actionPaths) for (const bg of surfacePaths) pairRules.push({ fg, bg, sev: "warn" });
+for (const fg of onTextPaths) {
+  const role = fg.split(".on-")[1];                // e.g. "primary"
+  const bg = actionPaths.find((p) => p.endsWith(`.${role}`)) ||
+             surfacePaths.find((p) => p.endsWith(`.${role}`));
+  if (bg) pairRules.push({ fg, bg, sev: "error" });
 }
-if (contrastErrors.length) fail("contrast", contrastErrors);
-else pass("contrast", { pairs: contrastInfo });
+
+// OKLCH-based suggestion: nudge L of fg toward 0 or 1 to reach target ratio
+function suggest(fgColor, bgColor, target = 4.5) {
+  const fgOk = oklch(fgColor), bgOk = oklch(bgColor);
+  if (!fgOk || !bgOk) return null;
+  const dir = (fgOk.l ?? 0.5) >= (bgOk.l ?? 0.5) ? 1 : -1; // lighter bg → push fg darker, etc.
+  for (let step = 0.02; step <= 0.6; step += 0.02) {
+    const tryL = Math.max(0, Math.min(1, (fgOk.l ?? 0.5) + dir * step));
+    const trial = { ...fgOk, l: tryL };
+    if (wcagContrast(trial, bgColor) >= target) {
+      return formatCss(trial);
+    }
+  }
+  return null;
+}
+
+const themeResults = {};
+let totalErrors = 0;
+const errorLines = [];
+for (const themeName of themeNames) {
+  const map = effective(themeName);
+  const rows = [];
+  for (const { fg, bg, sev } of pairRules) {
+    const tF = map.get(fg), tB = map.get(bg);
+    if (!tF || !tB) continue;
+    const fgRaw = resolveWith(tF.value, map);
+    const bgRaw = resolveWith(tB.value, map);
+    const c1 = tryColor(fgRaw), c2 = tryColor(bgRaw);
+    const row = { fg, bg, sev };
+    if (!c1 || !c2) {
+      row.note = "unparseable (color-mix / function)";
+      rows.push(row);
+      continue;
+    }
+    const ratio = wcagContrast(c1, c2);
+    row.ratio = Number(ratio.toFixed(2));
+    if (ratio < 4.5) {
+      row.fail = true;
+      if (sev === "error") {
+        totalErrors++;
+        errorLines.push(`[${themeName}] ${fg} on ${bg}: ${ratio.toFixed(2)} < 4.5`);
+      }
+      const fix = suggest(c1, c2, 4.5);
+      if (fix) row.suggest = { token: fg, value: fix, note: "OKLCH L 조정" };
+    }
+    rows.push(row);
+  }
+  themeResults[themeName] = rows;
+}
+
+if (totalErrors > 0) fail("contrast", errorLines, { themes: themeResults });
+else pass("contrast", { themes: themeResults });
 
 emitAndExit();
 

@@ -8,12 +8,15 @@ tokens:
       slate:
         "50":  { value: "oklch(98% 0.01 250)", type: color }
         "100": { value: "oklch(94% 0.02 250)", type: color }
+        "400": { value: "oklch(65% 0.04 250)", type: color }
         "500": { value: "oklch(55% 0.04 250)", type: color }
+        "600": { value: "oklch(45% 0.04 250)", type: color }
         "800": { value: "oklch(25% 0.04 250)", type: color }
         "900": { value: "oklch(15% 0.04 250)", type: color }
       iris:
         "400": { value: "oklch(70% 0.16 280)", type: color }
-        "500": { value: "oklch(62% 0.18 280)", type: color }
+        "500": { value: "oklch(55% 0.18 280)", type: color }
+        "700": { value: "oklch(40% 0.18 280)", type: color }
     semantic:
       surface:
         base:   { value: "{color.primitive.slate.50}", type: color }
@@ -21,7 +24,7 @@ tokens:
         muted:  { value: "{color.primitive.slate.100}", type: color }
       text:
         default:    { value: "{color.primitive.slate.900}", type: color }
-        muted:      { value: "{color.primitive.slate.500}", type: color }
+        muted:      { value: "{color.primitive.slate.600}", type: color }
         on-primary: { value: "{color.primitive.slate.50}",  type: color }
       action:
         primary: { value: "{color.primitive.iris.500}", type: color }
@@ -66,7 +69,9 @@ themes:
     color.semantic.surface.glass:  { value: "color-mix(in oklch, {color.primitive.slate.900} 60%, transparent)", type: color }
     color.semantic.surface.muted:  { value: "{color.primitive.slate.800}", type: color }
     color.semantic.text.default:   { value: "{color.primitive.slate.50}",  type: color }
-    color.semantic.text.muted:     { value: "{color.primitive.slate.500}", type: color }
+    color.semantic.text.muted:      { value: "{color.primitive.slate.400}", type: color }
+    color.semantic.text.on-primary: { value: "{color.primitive.slate.900}", type: color }
+    color.semantic.action.primary:  { value: "{color.primitive.iris.400}", type: color }
     color.semantic.border.default: { value: "color-mix(in oklch, {color.primitive.slate.500} 35%, transparent)", type: color }
 ---
 

@@ -46,27 +46,39 @@ node ~/projects/desing-manual/scripts/lint/index.js DESIGN.md
     "alias":   { "ok": true, "tokens": 27 },
     "contrast":{
       "ok": true,
-      "pairs": [
-        { "fg": "color.semantic.text.default", "bg": "color.semantic.surface.base", "ratio": 14.21 },
-        { "fg": "color.semantic.text.muted",   "bg": "color.semantic.surface.base", "ratio": 5.94 }
-      ]
+      "themes": {
+        "default": [
+          { "fg": "color.semantic.text.default", "bg": "color.semantic.surface.base", "sev": "error", "ratio": 14.21 },
+          { "fg": "color.semantic.text.muted",   "bg": "color.semantic.surface.base", "sev": "error", "ratio": 5.94 }
+        ],
+        "dark": [
+          { "fg": "color.semantic.text.muted",   "bg": "color.semantic.surface.muted","sev": "error", "ratio": 3.31, "fail": true,
+            "suggest": { "token": "color.semantic.text.muted", "value": "oklch(0.63 0.04 250)", "note": "OKLCH L 조정" } }
+        ]
+      }
     }
   }
 }
 ```
 
+각 theme 별 평가, fail 시 `suggest.value` 에 OKLCH 수정 후보 — 에이전트가 직접 토큰에 적용 가능.
+
 ### 에이전트 자가수정 루프 (예)
 
 ```text
-사용자: "text.muted contrast 가 부족하대. 고쳐줘"
+사용자: "lint 가 dark theme 에서 fail 하는데 고쳐줘"
 에이전트:
-  1) Read .design/lint.json → contrast.ok = false, ratio 3.8 < 4.5
-  2) Read DESIGN.md → text.muted 가 gray.400 (oklch 78%)
-  3) Edit → gray.500 (oklch 65%) 로 강화
-  4) Run lint → PASS 확인 후 commit
+  1) Read .design/lint.json
+     → stages.contrast.themes.dark 의 fail=true 항목 추출
+     → [{ fg: text.muted, bg: surface.muted, ratio: 3.31, suggest.value: "oklch(0.63 0.04 250)" }]
+  2) Read DESIGN.md → themes.dark 블록에 text.muted override 추가
+     (혹은 primitive 사다리에 slate-400 추가 후 alias)
+  3) Run lint → PASS 확인 후 commit
 ```
 
-이게 가능한 이유 = JSON 이 구체 토큰 path 와 ratio 까지 박아주기 때문. "어딘가 contrast 부족" 같은 막연한 출력이면 루프 못 돈다.
+이게 가능한 이유 = JSON 이 (a) 구체 토큰 path (b) ratio (c) **OKLCH 수정 후보**까지 박아주기 때문.
+
+`suggest.value` 가 `(none)` 이면 fg 의 L 조정만으로는 도달 불가 = bg 도 같이 움직여야 한다는 신호. 사람 결정 영역.
 
 ## 단계 5 — Static CSS/Tailwind Lint
 

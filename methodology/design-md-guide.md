@@ -149,8 +149,18 @@ bash ~/projects/desing-manual/scripts/propagate.sh
 | 토큰이 50 개 넘어가는데 일관성 없음 | semantic 단계 건너뛰고 primitive 만 만들었음 | semantic 5-10 개 정의 후 컴포넌트는 거기만 참조 |
 | AI 가 매번 다른 hex 쓴다 | DESIGN.md 가 코드에 import 안 됨 | `init-design.sh` 로 `docs/CLAUDE-design.md` 도 같이 깔기 |
 | 라이트/다크 토글 시 색이 깨짐 | path 에 light/dark 인코딩 | `themes:` 블록으로 옮기고 token-set 머지 |
-| contrast lint 실패 | text/surface 가 같은 명도대 | OKLCH 의 L 값을 50% 이상 벌리기 |
+| contrast lint 실패 | text/surface 가 같은 명도대 | lint 의 `suggest.value` (OKLCH) 그대로 적용 |
+| dark theme 만 fail | action.primary 가 light 기준으로 잡힘 | `themes.dark` 에 `color.semantic.action.primary` override 추가 (보통 한 단계 밝게) |
 | changelog 가 commit log 의 복붙 | WHY 누락 | "왜 바꿨나" 한 줄 추가, 합법화는 별도 |
+
+## 11. Contrast 를 미리 막는 4 가지
+
+lint 가 잡기는 하지만, 디자인 시점에 미리 막는 게 더 낫다:
+
+1. **3-tier 사다리를 9 단계 이상**으로 — primitive 의 OKLCH L 을 5-10% 간격으로 충분히 벌려 두면, semantic 매핑 시 contrast 가 자동으로 통과. slate 의 50/100/300/500/700/900 만 두면 중간 단계 부족 → text.muted 가 빠듯. **400/600 도 같이** 넣어 두면 dark/light 양쪽에서 매핑 여유.
+2. **`on-X` 페어는 명시 선언** — 토큰 이름 `text.on-primary` 처럼 prefix 박으면 linter 가 정확히 `action.primary` 와의 쌍만 검사. 모호한 "어디 위에 가는 텍스트" 회피.
+3. **테마는 4 개를 한 묶음으로** — dark override 시 surface.* / text.default / text.muted / action.primary / text.on-primary 다섯 개가 함께 움직이는 경향. 하나만 바꾸면 다른 곳 contrast 깨짐. 묶어서 한 번에.
+4. **lint 의 `suggest` 를 자가수정 루프로** — fail 시 JSON 의 `suggest.value` 에 OKLCH 후보가 박힘. AI 에게 "lint.json 의 suggest 그대로 토큰에 적용" 시키면 한 번에 통과.
 
 ## 10. 더 읽을 거리
 
