@@ -8,6 +8,7 @@
     "build": "tsc -b && vite build",
     "preview": "vite preview",
     "lint:design": "node ../../scripts/lint/index.js ./DESIGN.md",
+    "build:design": "node ../../scripts/lint/build.js ./DESIGN.md --out ./src/theme.generated.css",
     "lint:css": "stylelint \"src/**/*.css\" --formatter json -o .design/css-lint.json || true",
     "lint:js": "eslint . --format json -o .design/eslint.json || true"
   },

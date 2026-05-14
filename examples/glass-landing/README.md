@@ -2,16 +2,23 @@
 
 > `desing-manual` 의 첫 conformance fixture. Glass aesthetic family 기반 landing page.
 
-![Hero](screenshots/glass-landing-hero.png)
+| Light | Dark |
+|---|---|
+| ![](screenshots/glass-landing-light.png) | ![](screenshots/glass-landing-dark.png) |
+
+다크 모드는 `themes.dark` 블록(DESIGN.md frontmatter)이 자동으로 `@media (prefers-color-scheme: dark)` 와 `[data-theme="dark"]` 두 가지 CSS rule 로 emit 되어 동작.
 
 ## 실행
 
 ```bash
 cd examples/glass-landing
 npm install
-npm run dev          # http://localhost:5173
+npm run build:design   # DESIGN.md → src/theme.generated.css (Tailwind @theme)
+npm run dev            # http://localhost:5173
 npm run build && npm run preview
 ```
+
+`src/theme.generated.css` 는 gitignored. DESIGN.md 변경 시 `npm run build:design` 재실행 (CI 에선 자동).
 
 ## 검증
 
@@ -36,20 +43,21 @@ npm run lint:js      # eslint-plugin-tailwindcss
 ## DESIGN.md 흐름
 
 ```
-DESIGN.md (DTCG 토큰)
+DESIGN.md  (DTCG 토큰 + themes 블록)
    │
-   ↓  (수동 동기화 — 후속 작업: build.js 가 자동화)
-src/theme.css  @theme { ... }
+   ↓  scripts/lint/build.js  (자동)
+src/theme.generated.css  @theme { ... } + dark overrides
    │
-   ↓  (Tailwind v4 가 자동 인식)
+   ↓  Tailwind v4 가 자동 인식
 *.tsx  className="bg-(--color-action-primary) ..."
 ```
 
-토큰 변경은 항상 DESIGN.md 먼저, 그다음 `theme.css` 동기화. lint 가 잡지는 못함 (build 스크립트 후속 작업).
+`base.css` 는 토큰 너머의 스타일(body 배경, focus-visible, prefers-reduced-transparency) — 손으로 유지.
 
 ## 알려진 한계 / TODO
 
-- [ ] DESIGN.md → theme.css 자동 빌드 스크립트 (`scripts/lint/build.js`)
+- [x] DESIGN.md → theme.css 자동 빌드 스크립트
+- [x] `prefers-color-scheme: dark` + `[data-theme="dark"]` 토글 둘 다 지원
 - [ ] Playwright `tests/design.spec.ts` baseline 캡처
-- [ ] `prefers-color-scheme: dark` 적용
 - [ ] glass 위 텍스트 contrast 수동 측정 결과 박기 (lint 가 못 잡음)
+- [ ] dark mode 에서 hero 의 `text-(--color-action-primary)` 부분 contrast 검토 (iris-500 on slate-900 ≈ 4.0:1, AA 경계)

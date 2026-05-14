@@ -20,8 +20,9 @@ tokens:
         glass:  { value: "color-mix(in oklch, {color.primitive.slate.50} 60%, transparent)", type: color }
         muted:  { value: "{color.primitive.slate.100}", type: color }
       text:
-        default: { value: "{color.primitive.slate.900}", type: color }
-        muted:   { value: "{color.primitive.slate.500}", type: color }
+        default:    { value: "{color.primitive.slate.900}", type: color }
+        muted:      { value: "{color.primitive.slate.500}", type: color }
+        on-primary: { value: "{color.primitive.slate.50}",  type: color }
       action:
         primary: { value: "{color.primitive.iris.500}", type: color }
       border:
@@ -57,6 +58,16 @@ tokens:
       regular: { value: 400, type: fontWeight }
       medium:  { value: 500, type: fontWeight }
       semibold: { value: 600, type: fontWeight }
+
+themes:
+  default: { base: true }
+  dark:
+    color.semantic.surface.base:   { value: "{color.primitive.slate.900}", type: color }
+    color.semantic.surface.glass:  { value: "color-mix(in oklch, {color.primitive.slate.900} 60%, transparent)", type: color }
+    color.semantic.surface.muted:  { value: "{color.primitive.slate.800}", type: color }
+    color.semantic.text.default:   { value: "{color.primitive.slate.50}",  type: color }
+    color.semantic.text.muted:     { value: "{color.primitive.slate.500}", type: color }
+    color.semantic.border.default: { value: "color-mix(in oklch, {color.primitive.slate.500} 35%, transparent)", type: color }
 ---
 
 # Glass — Apple visionOS / Aurora
