@@ -2,3 +2,7 @@ node_modules/
 dist/
 .design/
 src/theme.generated.css
+playwright-report/
+test-results/
+tests/__screenshots__/*-actual.png
+tests/__screenshots__/*-diff.png

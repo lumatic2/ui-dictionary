@@ -23,11 +23,16 @@ npm run build && npm run preview
 ## 검증
 
 ```bash
-npm run lint:design  # DESIGN.md 4단계 (parse/schema/alias/contrast)
-npm run lint:css     # stylelint
-npm run lint:js      # eslint-plugin-tailwindcss
+npm run lint:design        # DESIGN.md 4단계 (parse/schema/alias/contrast)
+npm run lint:css           # stylelint
+npm run lint:js            # eslint-plugin-tailwindcss
+npm run test:vrt           # Playwright VRT (light/dark × hero/full + a11y + magnet)
+npm run test:vrt:update    # baseline 갱신 (의도된 디자인 변경 시)
 # 산출: .design/*.json
 ```
+
+VRT baseline 은 `tests/design.spec.ts-snapshots/` 에 git 추적. PR 에서 diff 가 생기면
+의도된 변경인지 사람이 확인 후 `--update-snapshots` 로 갱신.
 
 ## 행사하는 기법
 
@@ -58,6 +63,6 @@ src/theme.generated.css  @theme { ... } + dark overrides
 
 - [x] DESIGN.md → theme.css 자동 빌드 스크립트
 - [x] `prefers-color-scheme: dark` + `[data-theme="dark"]` 토글 둘 다 지원
-- [ ] Playwright `tests/design.spec.ts` baseline 캡처
-- [ ] glass 위 텍스트 contrast 수동 측정 결과 박기 (lint 가 못 잡음)
-- [ ] dark mode 에서 hero 의 `text-(--color-action-primary)` 부분 contrast 검토 (iris-500 on slate-900 ≈ 4.0:1, AA 경계)
+- [x] Playwright `tests/design.spec.ts` baseline 캡처 (6 tests, light/dark × hero/full + a11y + magnet hover)
+- [x] dark mode action.primary contrast (iris-500 → iris-400 override; lint 강화로 미연 방지)
+- [ ] glass 위 *동적 배경* (gradient mesh 위) 텍스트 contrast — 픽셀 샘플 측정으로 보강

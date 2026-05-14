@@ -6,11 +6,13 @@
   "scripts": {
     "dev": "vite",
     "build": "tsc -b && vite build",
-    "preview": "vite preview",
+    "preview": "vite preview --port 4173",
     "lint:design": "node ../../scripts/lint/index.js ./DESIGN.md",
     "build:design": "node ../../scripts/lint/build.js ./DESIGN.md --out ./src/theme.generated.css",
     "lint:css": "stylelint \"src/**/*.css\" --formatter json -o .design/css-lint.json || true",
-    "lint:js": "eslint . --format json -o .design/eslint.json || true"
+    "lint:js": "eslint . --format json -o .design/eslint.json || true",
+    "test:vrt": "playwright test",
+    "test:vrt:update": "playwright test --update-snapshots"
   },
   "dependencies": {
     "react": "^19.0.0",
@@ -27,6 +29,7 @@
     "stylelint": "^16.10.0",
     "stylelint-config-standard": "^36.0.0",
     "eslint": "^9.15.0",
-    "eslint-plugin-tailwindcss": "^3.17.5"
+    "eslint-plugin-tailwindcss": "^3.17.5",
+    "@playwright/test": "^1.49.0"
   }
 }
