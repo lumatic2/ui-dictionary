@@ -165,6 +165,15 @@ DESIGN.md 가 *있다는 전제* 에서 동작. 시스템을 만들지는 않음
 
 ---
 
+## 메모 — 스킬 vs 슬래시 커맨드 구분
+
+`/design`, `/design-system`, `/design-qa`, `/design-export`, `/design-flow`, `/design-full`, `/generate-asset` 일곱 개는 **스킬이 아니라 슬래시 커맨드** (`~/.claude/commands/*.md`). 외부 SaaS 도구의 진입점.
+
+- **스킬** = 자연어 의도로 자동 호출 가능. `skill-toggle` 로 활성/비활성.
+- **슬래시 커맨드** = `/이름` 명시 호출만. `skill-toggle` 관할 밖. 정의되어 있으면 system reminder 에 노출되지만 명시 호출 안 하면 작동 안 함.
+
+`skill-toggle` 로 안 꺼진다고 헷갈리지 말 것 — 정상이다.
+
 ## 정확히 안 풀린 것 (TODO)
 
 - `/design-full`, `/generate-asset` 의 정확한 동작은 미확인. 호출 후 결과 보고 본 문서 갱신 필요
