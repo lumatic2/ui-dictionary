@@ -1,0 +1,73 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://desing-manual/schema/design-md.schema.json",
+  "title": "DESIGN.md frontmatter",
+  "description": "Schema for the YAML frontmatter portion of a DESIGN.md file. DTCG v2025.10 compatible (short form: `value`/`type` without `$` prefix, normalized at build time).",
+  "type": "object",
+  "required": ["name", "tokens"],
+  "additionalProperties": false,
+  "properties": {
+    "name": { "type": "string", "minLength": 1 },
+    "version": { "type": "string", "pattern": "^\\d+\\.\\d+\\.\\d+" },
+    "inherits": { "type": ["string", "null"] },
+    "tokens": { "$ref": "#/$defs/tokenGroup" },
+    "themes": {
+      "type": "object",
+      "additionalProperties": { "$ref": "#/$defs/theme" }
+    }
+  },
+  "$defs": {
+    "tokenGroup": {
+      "type": "object",
+      "additionalProperties": {
+        "oneOf": [
+          { "$ref": "#/$defs/tokenGroup" },
+          { "$ref": "#/$defs/token" }
+        ]
+      }
+    },
+    "token": {
+      "type": "object",
+      "required": ["value", "type"],
+      "properties": {
+        "value": {
+          "oneOf": [
+            { "type": "string", "minLength": 1 },
+            { "type": "number" },
+            { "type": "object" }
+          ]
+        },
+        "type": {
+          "type": "string",
+          "enum": [
+            "color",
+            "dimension",
+            "fontFamily",
+            "fontWeight",
+            "duration",
+            "cubicBezier",
+            "number",
+            "shadow",
+            "border",
+            "transition",
+            "gradient",
+            "typography",
+            "strokeStyle"
+          ]
+        },
+        "description": { "type": "string" },
+        "extensions": { "type": "object" }
+      },
+      "additionalProperties": false
+    },
+    "theme": {
+      "type": "object",
+      "properties": {
+        "base": { "type": "boolean" }
+      },
+      "additionalProperties": {
+        "$ref": "#/$defs/token"
+      }
+    }
+  }
+}

@@ -1,0 +1,121 @@
+---
+name: "${PROJECT}"
+version: "0.1.0"
+inherits: null
+
+tokens:
+  color:
+    primitive:
+      gray:
+        "50":  { value: "oklch(98% 0 0)", type: color }
+        "100": { value: "oklch(96% 0 0)", type: color }
+        "300": { value: "oklch(82% 0 0)", type: color }
+        "500": { value: "oklch(55% 0 0)", type: color }
+        "700": { value: "oklch(32% 0 0)", type: color }
+        "900": { value: "oklch(15% 0 0)", type: color }
+      brand:
+        "500": { value: "oklch(62% 0.18 250)", type: color }
+    semantic:
+      surface:
+        base:  { value: "{color.primitive.gray.50}",  type: color }
+        muted: { value: "{color.primitive.gray.100}", type: color }
+      text:
+        default: { value: "{color.primitive.gray.900}", type: color }
+        muted:   { value: "{color.primitive.gray.700}", type: color }
+      action:
+        primary: { value: "{color.primitive.brand.500}", type: color }
+      border:
+        default: { value: "{color.primitive.gray.300}", type: color }
+
+  dimension:
+    space:
+      "1": { value: "4px",  type: dimension }
+      "2": { value: "8px",  type: dimension }
+      "3": { value: "12px", type: dimension }
+      "4": { value: "16px", type: dimension }
+      "6": { value: "24px", type: dimension }
+      "8": { value: "32px", type: dimension }
+    radius:
+      sm:   { value: "4px",   type: dimension }
+      md:   { value: "8px",   type: dimension }
+      lg:   { value: "16px",  type: dimension }
+      full: { value: "9999px", type: dimension }
+
+  typography:
+    font:
+      sans: { value: "Inter Variable, system-ui, sans-serif", type: fontFamily }
+      mono: { value: "JetBrains Mono, ui-monospace, monospace", type: fontFamily }
+    scale:
+      xs:   { value: "12px", type: dimension }
+      sm:   { value: "14px", type: dimension }
+      base: { value: "16px", type: dimension }
+      lg:   { value: "20px", type: dimension }
+      xl:   { value: "24px", type: dimension }
+      "2xl": { value: "32px", type: dimension }
+      "3xl": { value: "48px", type: dimension }
+    weight:
+      regular: { value: 400, type: fontWeight }
+      medium:  { value: 500, type: fontWeight }
+      bold:    { value: 700, type: fontWeight }
+---
+
+# ${PROJECT} — Design System
+
+> Style family: `${STYLE}` · 본 파일은 [desing-manual](https://github.com/) `init-design.sh` 가 생성.
+
+## 1. Personality
+
+(여기에 브랜드 톤 3-5 줄)
+
+## 2. Color
+
+- semantic 토큰만 코드에서 참조. primitive 직접 사용 금지.
+- `action.primary` 는 CTA 에만.
+- WCAG AA (4.5:1) 통과 필수, body 텍스트는 AAA (7:1) 목표.
+
+## 3. Typography
+
+- 본문 16/24 (`scale.base` / line-height 1.5).
+- 헤딩 letter-spacing -1%.
+- variable font weight 범위: 400-700 만 사용.
+
+## 4. Spacing & Layout
+
+- 4px 그리드. 인접 컴포넌트 최소 gap `space.4`.
+- container max-width 1200px. breakpoint: 640 / 768 / 1024 / 1280.
+
+## 5. Radius & Borders
+
+- 기본 radius `md`. 카드는 `lg`. 알약 버튼은 `full`.
+- 보더 1px solid `border.default`.
+
+## 6. Elevation & Motion
+
+- 그림자 사용 정책: (style family 에 따라 채움)
+- 모션 duration: 150ms (micro) / 250ms (UI) / 400ms (page). easing `cubic-bezier(0.2, 0, 0, 1)`.
+- `prefers-reduced-motion` 존중.
+
+## 7. Components
+
+### Button
+- height `space.8`+`space.2` = 40px. padding-x `space.4`.
+- variants: primary / secondary / ghost / destructive.
+- states: hover (배경 4% 어둡게) / active (8%) / disabled (opacity 0.5) / focus-visible (2px outline `action.primary`).
+
+### Input
+- height 40px. radius `md`. border `border.default` → focus `action.primary`.
+
+### Card
+- padding `space.6`. radius `lg`. border 1px solid `border.default`.
+
+## 8. Anti-patterns
+
+- gradient 남발
+- 본문에 3개 이상의 폰트 weight 혼용
+- 그림자 + 진한 보더 동시 사용
+- primary 색을 비-CTA 에 사용
+
+## 9. Changelog
+
+## $(date +%Y-%m-%d)
+- 초기화. style family: ${STYLE}.

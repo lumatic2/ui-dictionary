@@ -1,0 +1,14 @@
+# Claude Code
+.claude/worktrees/
+.claude/.last-opened
+
+# desing-manual
+archive/
+tmp/
+node_modules/
+.design/
+
+# AI internal
+ROADMAP.md
+BUGLOG.md
+CLAUDE.local.md
