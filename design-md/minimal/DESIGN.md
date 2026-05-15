@@ -50,6 +50,16 @@ tokens:
     weight:
       regular: { value: 400, type: fontWeight }
       medium:  { value: 500, type: fontWeight }
+
+themes:
+  default: { base: true }
+  dark:
+    color.semantic.surface.base:   { value: "{color.primitive.gray.900}", type: color }
+    color.semantic.surface.muted:  { value: "{color.primitive.gray.700}", type: color }
+    color.semantic.text.default:   { value: "{color.primitive.gray.50}",  type: color }
+    color.semantic.text.muted:     { value: "{color.primitive.gray.300}", type: color }
+    color.semantic.action.primary: { value: "{color.primitive.gray.50}",  type: color }
+    color.semantic.border.default: { value: "{color.primitive.gray.700}", type: color }
 ---
 
 # Minimal — Swiss / Functional

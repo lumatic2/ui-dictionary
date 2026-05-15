@@ -111,9 +111,11 @@ for (const [name, def] of Object.entries(themes)) {
     .join("\n");
 
   if (name === "dark") {
-    // Both OS-level and app-level toggles
-    out += `\n@media (prefers-color-scheme: dark) {\n  :root:not([data-theme="light"]) {\n${block.replace(/^/gm, "  ")}\n  }\n}\n`;
-    out += `\n[data-theme="dark"] {\n${block}\n}\n`;
+    // Both OS-level and app-level toggles. Class selector (.dark) covers
+    // shadcn/next-themes convention; [data-theme="dark"] covers data-attr
+    // convention. Both emit so the same generated file works across stacks.
+    out += `\n@media (prefers-color-scheme: dark) {\n  :root:not([data-theme="light"]):not(.light) {\n${block.replace(/^/gm, "  ")}\n  }\n}\n`;
+    out += `\n.dark, [data-theme="dark"] {\n${block}\n}\n`;
   } else {
     out += `\n[data-theme="${name}"] {\n${block}\n}\n`;
   }

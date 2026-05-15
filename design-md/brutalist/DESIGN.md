@@ -44,6 +44,16 @@ tokens:
       "2xl": { value: "72px", type: dimension }
     weight:
       bold: { value: 700, type: fontWeight }
+
+themes:
+  default: { base: true }
+  dark:
+    color.semantic.surface.base:   { value: "{color.primitive.black.0}",   type: color }
+    color.semantic.surface.muted:  { value: "{color.primitive.black.0}",   type: color }
+    color.semantic.text.default:   { value: "{color.primitive.white.0}",   type: color }
+    color.semantic.text.muted:     { value: "{color.primitive.white.0}",   type: color }
+    color.semantic.action.primary: { value: "{color.primitive.yellow.500}", type: color }
+    color.semantic.border.default: { value: "{color.primitive.white.0}",   type: color }
 ---
 
 # Brutalist — Raw / Functional Punk

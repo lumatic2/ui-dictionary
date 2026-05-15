@@ -50,6 +50,16 @@ tokens:
     weight:
       regular: { value: 400, type: fontWeight }
       bold:    { value: 700, type: fontWeight }
+
+themes:
+  default: { base: true }
+  dark:
+    color.semantic.surface.base:   { value: "{color.primitive.ink.900}",  type: color }
+    color.semantic.surface.muted:  { value: "{color.primitive.ink.700}",  type: color }
+    color.semantic.text.default:   { value: "{color.primitive.paper.50}", type: color }
+    color.semantic.text.muted:     { value: "{color.primitive.paper.100}", type: color }
+    color.semantic.action.primary: { value: "{color.primitive.accent.500}", type: color }
+    color.semantic.border.default: { value: "{color.primitive.ink.700}",  type: color }
 ---
 
 # Editorial — Magazine / Long-form
