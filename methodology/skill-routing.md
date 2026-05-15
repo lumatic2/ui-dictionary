@@ -193,7 +193,17 @@ DESIGN.md 가 *있다는 전제* 에서 동작. 시스템을 만들지는 않음
 - ⚠ **`$DESIGN_HARNESS_ROOT` env 의존** — 머지된 npm 스크립트는 `$DESIGN_HARNESS_ROOT/scripts/lint/...` 를 호출. 사용자가 env 안 깔면 `npm run build:design` 실패. 대안 — npm script 안에서 절대경로 하드코딩, 또는 `node_modules/.bin/` 로 심볼릭 링크, 또는 `npx desing-manual lint` 형태로 wrapper 패키징. 차후 결정.
 - 📝 **shadcn 컨벤션과의 결합** — claude-code-guide 는 `--background`/`--foreground` 같은 shadcn CSS 변수를 이미 씀. 우리 semantic 토큰(`--color-surface-base`, `--color-text-default`) 과 매핑이 필요. 두 가지 접근: (1) DESIGN.md semantic 토큰 이름을 shadcn 컨벤션으로 바꾼다, (2) `theme.generated.css` 다음 줄에 `--background: var(--color-surface-base)` 같은 alias block 을 사용자가 추가. 현재는 (2) 가 가장 깔끔. 차후 `--shadcn` 플래그로 자동 생성하는 옵션 고려.
 
-다음 dogfooding 단계 (claude-code-guide 후속):
-1. `app/globals.css` 에 `@import "./theme.generated.css"` 추가 + shadcn alias block 수동 작성
-2. § 1 Personality (이미 주입) / § 8 Anti-patterns / § 7 Components 채우기
-3. 실제 hero 섹션 1개를 `frontend-design:frontend-design` 으로 생성 — "매번 반복되네" 단계 캡쳐
+후속:
+- ✅ **build.js `--bare` 플래그** — 기존 globals.css 에 이미 `@import "tailwindcss"` 가 있는 stack 용. nextjs scripts 가 자동 사용.
+- ✅ **DESIGN.md 4 family 모두 `themes.dark` 기본 포함** — shadcn / next-themes 환경은 dark 가 default. baseline 누락 시 첫 화면이 light only.
+- ✅ **build.js dark 셀렉터에 `.dark` 추가** — `.dark, [data-theme="dark"]` 양쪽 emit (shadcn class 컨벤션 + data-attr 컨벤션 모두 지원).
+
+### 2026-05-15 — luma3-portfolio (Next.js 14 + Tailwind v3 + 자체 토큰, brutalist family)
+
+발견 (수정 안 함 — `/design-bridge` 스킬 명세 input 으로 적립):
+
+- 🚨 **Finding #7 — src/ 구조 비대응**: luma3 는 `src/app/` 구조. `init-design.sh` 의 nextjs 분기는 `package.json.scripts.nextjs.json` 에서 `./app/theme.generated.css` 를 하드코드 → 빈 `app/` 폴더가 프로젝트 루트에 생김. 사용자가 직접 `./src/app/...` 로 옮겨야 함. 해결: init-design.sh 가 `src/app/` 존재 여부 감지해서 scripts 머지 시 경로 치환.
+- 🚨 **Finding #8 — Tailwind v3 비호환 (결정적)**: build.js 출력이 `@theme { ... }` v4 전용 syntax. v3 (`@tailwind base/components/utilities` 사용) 프로젝트는 브라우저가 `@theme` at-rule 을 인식 못 해 변수 정의가 무효. v4 + v3 분기 필요. 해결: build.js 에 `--cssvars` (또는 `--v3`) 플래그 → `:root { --... }` 출력으로 폴백. stack 자동 감지 시 tailwindcss dep 버전을 보고 결정.
+- 📝 **Finding #9 — non-shadcn brownfield**: luma3 는 shadcn 안 씀. 자체 시멘틱 (`--bg`, `--fg`, `--accent`, `--bg-subtle`, `--fg-muted`, `--border`) 사용. `/design-bridge` 가 단순 shadcn detect 만으론 부족. heuristic: `globals.css` 의 `:root { }` 블록을 파싱해서 시멘틱 var 이름 추출 → DESIGN.md semantic 매핑 후보 추론 (예: `bg → surface.base`, `fg → text.default`).
+
+요약 — `/design-bootstrap` 의 nextjs 분기는 아직 두 가지 환경 (Tailwind v3 vs v4) × 두 가지 구조 (src/ vs root) = 4 조합 중 1 조합만 검증됨 (`app/` + v4 + shadcn). 나머지 3 조합은 미지원.
