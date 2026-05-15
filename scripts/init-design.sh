@@ -51,10 +51,22 @@ process.exit(('vite' in all && 'react' in all)?0:1);
 " "$1"
 }
 
+json_has_dep() { # json_has_dep <package.json> <dep-name>
+  node -e "
+const f=process.argv[1], name=process.argv[2];
+if(!require('fs').existsSync(f))process.exit(1);
+const p=JSON.parse(require('fs').readFileSync(f,'utf8'));
+const all=Object.assign({},p.dependencies||{},p.devDependencies||{});
+process.exit((name in all)?0:1);
+" "$1" "$2"
+}
+
 # Auto-detect stack if not given
 if [[ -z "$STACK" ]]; then
   if json_has_deps_vite_react "$TARGET/package.json" 2>/dev/null; then
     STACK="vite-react"
+  elif json_has_dep "$TARGET/package.json" "next" 2>/dev/null; then
+    STACK="nextjs"
   else
     STACK="vanilla"
   fi
@@ -127,7 +139,6 @@ if [[ "$STACK" == "vite-react" ]]; then
   render "templates/playwright.config.ts.tmpl" "playwright.config.ts"
   render "templates/tests/design.spec.ts.tmpl" "tests/design.spec.ts"
 
-  # package.json scripts merge
   PKG="$TARGET/package.json"
   if [[ -f "$PKG" ]]; then
     before=$(sha "$PKG")
@@ -138,6 +149,19 @@ if [[ "$STACK" == "vite-react" ]]; then
   else
     echo "[warn] package.json missing — skip scripts merge"
   fi
+elif [[ "$STACK" == "nextjs" ]]; then
+  PKG="$TARGET/package.json"
+  if [[ -f "$PKG" ]]; then
+    before=$(sha "$PKG")
+    json_merge_scripts "$PKG" "$ROOT/templates/package.json.scripts.nextjs.json"
+    after=$(sha "$PKG")
+    if [[ "$before" != "$after" ]]; then echo "[pkg] scripts merged (nextjs)"
+    else echo "[pkg] scripts already present"; fi
+  else
+    echo "[warn] package.json missing — skip scripts merge"
+  fi
+  echo "[note] add to app/globals.css:  @import \"./theme.generated.css\";"
+  echo "[note] then:  npm run build:design"
 fi
 
 # 6) Meta

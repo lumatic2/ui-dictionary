@@ -181,3 +181,19 @@ DESIGN.md 가 *있다는 전제* 에서 동작. 시스템을 만들지는 않음
 - `/design`, `/design-system`, `/design-flow` 가 외부 출처(예: Anthropic Claude Design 또는 3rd-party 마켓플레이스) 인 듯한데 정확한 출처·계정 의존성은 미확인
 
 본 문서는 *현재 알려진 동작 기준*이고, 새 정보 들어오면 즉시 갱신한다.
+
+---
+
+## Dogfooding 로그
+
+### 2026-05-15 — claude-code-guide (Next.js 16 + Tailwind v4 + shadcn, editorial family)
+
+발견·수정:
+- ✅ **Next.js 분기 추가** — `init-design.sh` 가 nextjs 스택을 인식하고 `package.json` 에 `lint:design`/`build:design` 스크립트만 머지 (Playwright VRT 없음). build:design 출력은 `./app/theme.generated.css` 로 보냄. `app/globals.css` 에 `@import "./theme.generated.css"` 를 사용자가 직접 추가하라는 안내 출력.
+- ⚠ **`$DESIGN_HARNESS_ROOT` env 의존** — 머지된 npm 스크립트는 `$DESIGN_HARNESS_ROOT/scripts/lint/...` 를 호출. 사용자가 env 안 깔면 `npm run build:design` 실패. 대안 — npm script 안에서 절대경로 하드코딩, 또는 `node_modules/.bin/` 로 심볼릭 링크, 또는 `npx desing-manual lint` 형태로 wrapper 패키징. 차후 결정.
+- 📝 **shadcn 컨벤션과의 결합** — claude-code-guide 는 `--background`/`--foreground` 같은 shadcn CSS 변수를 이미 씀. 우리 semantic 토큰(`--color-surface-base`, `--color-text-default`) 과 매핑이 필요. 두 가지 접근: (1) DESIGN.md semantic 토큰 이름을 shadcn 컨벤션으로 바꾼다, (2) `theme.generated.css` 다음 줄에 `--background: var(--color-surface-base)` 같은 alias block 을 사용자가 추가. 현재는 (2) 가 가장 깔끔. 차후 `--shadcn` 플래그로 자동 생성하는 옵션 고려.
+
+다음 dogfooding 단계 (claude-code-guide 후속):
+1. `app/globals.css` 에 `@import "./theme.generated.css"` 추가 + shadcn alias block 수동 작성
+2. § 1 Personality (이미 주입) / § 8 Anti-patterns / § 7 Components 채우기
+3. 실제 hero 섹션 1개를 `frontend-design:frontend-design` 으로 생성 — "매번 반복되네" 단계 캡쳐

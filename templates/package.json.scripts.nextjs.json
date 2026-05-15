@@ -1,0 +1,4 @@
+{
+  "lint:design": "node $DESIGN_HARNESS_ROOT/scripts/lint/index.js ./DESIGN.md",
+  "build:design": "node $DESIGN_HARNESS_ROOT/scripts/lint/build.js ./DESIGN.md --out ./app/theme.generated.css"
+}
