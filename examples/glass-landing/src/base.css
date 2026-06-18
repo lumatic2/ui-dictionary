@@ -7,23 +7,14 @@ body {
   min-height: 100dvh;
   color: var(--color-text-default);
   background:
-    radial-gradient(at 20% 30%, var(--color-iris-400) 0px, transparent 50%),
-    radial-gradient(at 80% 20%, oklch(75% 0.14 200) 0px, transparent 50%),
-    radial-gradient(at 50% 80%, oklch(72% 0.18 320) 0px, transparent 50%),
-    var(--color-surface-base);
+    radial-gradient(ellipse at 12% 18%, oklch(88% 0.08 275) 0, transparent 46%),
+    radial-gradient(ellipse at 88% 6%,  oklch(88% 0.07 210) 0, transparent 42%),
+    radial-gradient(ellipse at 60% 88%, oklch(87% 0.07 280) 0, transparent 50%),
+    radial-gradient(ellipse at 5%  80%, oklch(90% 0.05 195) 0, transparent 40%),
+    oklch(97% 0.01 240);
   background-attachment: fixed;
   font-family: var(--font-sans);
-  transition: background-color 300ms ease;
-}
-
-@media (prefers-color-scheme: dark) {
-  body {
-    background:
-      radial-gradient(at 20% 30%, oklch(40% 0.16 280) 0px, transparent 50%),
-      radial-gradient(at 80% 20%, oklch(35% 0.14 200) 0px, transparent 50%),
-      radial-gradient(at 50% 80%, oklch(38% 0.18 320) 0px, transparent 50%),
-      var(--color-surface-base);
-  }
+  -webkit-font-smoothing: antialiased;
 }
 
 :where(button, a, input, select, [tabindex]):focus-visible {
