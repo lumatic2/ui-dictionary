@@ -5,7 +5,7 @@ Purpose: expand `docs/ui-vocabulary/terms.yml` without turning the glossary into
 ## Current Baseline
 
 - Source of truth: `docs/ui-vocabulary/terms.yml`
-- Current count: 106 terms
+- Current count: 126 terms
 - Website renderer: `examples/ui-vocabulary-site/src/components/term-visual.tsx`
 - Visual policy: every published term needs a recognizable mini mock. Interactive terms should expose a small local state change when clicked, typed into, opened, dismissed, or selected.
 
@@ -24,6 +24,29 @@ Prefer `related` comparison notes over duplicate entries when the difference is 
 ## Batch A — Add Next
 
 These should be the next dataset expansion because they are common in product UI and easy to recognize visually.
+
+### Promoted In 2026-06-26 Batch
+
+- `textarea-autosize`
+- `input-group`
+- `date-range-picker`
+- `time-picker`
+- `rating-input`
+- `tag-input`
+- `masked-input`
+- `toggle-group`
+- `navigation-drawer`
+- `mega-menu`
+- `context-menu`
+- `loading-button`
+- `copy-field`
+- `bulk-action-bar`
+- `speed-dial`
+- `app-shell`
+- `split-pane`
+- `snackbar`
+- `undo-toast`
+- `row-selection`
 
 ### Inputs
 
@@ -127,4 +150,3 @@ Do not add these until the site supports richer teaching pages:
 - If it warns or notifies, allow dismiss/restore.
 - If it navigates, show an active destination.
 - If it displays data, allow row/cell/series selection.
-

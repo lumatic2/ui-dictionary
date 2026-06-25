@@ -11,6 +11,7 @@ import {
   ChevronLeft,
   ChevronRight,
   Circle,
+  Clock,
   Copy,
   Download,
   EyeOff,
@@ -30,6 +31,7 @@ import {
   Search,
   Settings,
   Share2,
+  Star,
   Type,
   Trash2,
   User,
@@ -163,6 +165,26 @@ function renderVisual(variant: string, label: string) {
   if (variant === "data-grid") return <DataGridVisual />
   if (variant === "legend") return <LegendVisual />
   if (variant === "chart-axis") return <ChartAxisVisual />
+  if (variant === "textarea-autosize") return <TextareaAutosizeVisual />
+  if (variant === "input-group") return <InputGroupVisual />
+  if (variant === "date-range-picker") return <DateRangePickerVisual />
+  if (variant === "time-picker") return <TimePickerVisual />
+  if (variant === "rating-input") return <RatingInputVisual />
+  if (variant === "tag-input") return <TagInputVisual />
+  if (variant === "masked-input") return <MaskedInputVisual />
+  if (variant === "toggle-group") return <ToggleGroupVisual />
+  if (variant === "navigation-drawer") return <NavigationDrawerVisual />
+  if (variant === "mega-menu") return <MegaMenuVisual />
+  if (variant === "context-menu") return <ContextMenuVisual />
+  if (variant === "loading-button") return <LoadingButtonVisual />
+  if (variant === "copy-field") return <CopyFieldVisual />
+  if (variant === "bulk-action-bar") return <BulkActionBarVisual />
+  if (variant === "speed-dial") return <SpeedDialVisual />
+  if (variant === "app-shell") return <AppShellVisual />
+  if (variant === "split-pane") return <SplitPaneVisual />
+  if (variant === "snackbar") return <SnackbarVisual />
+  if (variant === "undo-toast") return <UndoToastVisual />
+  if (variant === "row-selection") return <RowSelectionVisual />
   if (variant === "error-state") return <StateVisual tone="error" />
   if (variant === "success-state") return <StateVisual tone="success" />
   if (variant === "warning-state") return <StateVisual tone="warning" />
@@ -1263,6 +1285,143 @@ function ChartAxisVisual() {
   const bars = [24, 48, 36, 64]
 
   return <div className="relative h-28 w-44 border-b border-l bg-card p-2"><div className="absolute bottom-2 left-4 right-2 flex items-end gap-2">{bars.map((height, index) => <button key={height} type="button" className={cn("w-5 rounded-t bg-primary", selected === index && "bg-destructive")} style={{ height }} onClick={() => setSelected(index)} />)}</div><span className="absolute bottom-0 right-0 text-[10px] text-muted-foreground">x</span><span className="absolute left-1 top-0 text-[10px] text-muted-foreground">y</span></div>
+}
+
+function TextareaAutosizeVisual() {
+  const [value, setValue] = useState("메모")
+  const rows = Math.min(5, Math.max(2, value.split("\n").length))
+
+  return <Chrome className="w-48 p-2"><textarea aria-label="자동 높이 텍스트영역 예시" className="w-full resize-none bg-transparent text-sm outline-none" rows={rows} value={value} onChange={(event) => setValue(event.target.value)} /></Chrome>
+}
+
+function InputGroupVisual() {
+  const [value, setValue] = useState("12000")
+
+  return <Chrome className="flex h-10 w-52 items-center overflow-hidden text-sm"><span className="border-r bg-muted px-3 py-2">₩</span><input aria-label="입력 그룹 예시" className="min-w-0 flex-1 bg-transparent px-2 outline-none" value={value} onChange={(event) => setValue(event.target.value)} /><span className="border-l px-2 text-xs text-muted-foreground">KRW</span></Chrome>
+}
+
+function DateRangePickerVisual() {
+  const [start, setStart] = useState(5)
+  const [end, setEnd] = useState(10)
+
+  const chooseDay = (day: number) => {
+    if (day < start || day > end) {
+      setStart(Math.min(day, start))
+      setEnd(Math.max(day, end))
+      return
+    }
+    setEnd(day)
+  }
+
+  return <Chrome className="w-52 p-2 text-[10px]"><p className="mb-2 text-sm">5월 {start}일 - {end}일</p><div className="grid grid-cols-7 gap-1">{Array.from({ length: 14 }).map((_, index) => { const day = index + 1; return <button key={day} type="button" className={cn("rounded py-1", day >= start && day <= end && "bg-primary/20", (day === start || day === end) && "bg-primary text-primary-foreground")} onClick={() => chooseDay(day)}>{day}</button> })}</div></Chrome>
+}
+
+function TimePickerVisual() {
+  const [hour, setHour] = useState(9)
+  const [minute, setMinute] = useState(30)
+
+  return <Chrome className="flex w-44 items-center justify-center gap-2 p-3 text-sm"><Clock aria-hidden="true" /><button type="button" className="rounded border px-2 py-1" onClick={() => setHour((value) => (value + 1) % 24)}>{String(hour).padStart(2, "0")}</button><span>:</span><button type="button" className="rounded border px-2 py-1" onClick={() => setMinute((value) => (value + 30) % 60)}>{String(minute).padStart(2, "0")}</button></Chrome>
+}
+
+function RatingInputVisual() {
+  const [rating, setRating] = useState(3)
+
+  return <div className="flex gap-1">{[1, 2, 3, 4, 5].map((item) => <button key={item} type="button" className={cn("text-muted-foreground", item <= rating && "text-primary")} aria-label={`${item}점`} onClick={() => setRating(item)}><Star aria-hidden="true" /></button>)}</div>
+}
+
+function TagInputVisual() {
+  const [tags, setTags] = useState(["React", "UI"])
+
+  return <Chrome className="flex w-56 flex-wrap items-center gap-1 p-2 text-xs">{tags.map((tag) => <button key={tag} type="button" className="rounded-full bg-primary px-2 py-1 text-primary-foreground" onClick={() => setTags((current) => current.filter((item) => item !== tag))}>{tag} ×</button>)}<button type="button" className="rounded-full border px-2 py-1" onClick={() => setTags((current) => [...current, `Tag${current.length + 1}`])}>+ 추가</button></Chrome>
+}
+
+function MaskedInputVisual() {
+  const [digits, setDigits] = useState("01012345678")
+  const formatted = digits.replace(/(\d{3})(\d{4})(\d{0,4})/, (_, a, b, c) => `${a}-${b}${c ? `-${c}` : ""}`)
+
+  return <Chrome className="flex h-10 w-48 items-center px-3 text-sm"><input aria-label="마스크 입력 예시" className="w-full bg-transparent outline-none" value={formatted} onChange={(event) => setDigits(event.target.value.replace(/\D/g, "").slice(0, 11))} /></Chrome>
+}
+
+function ToggleGroupVisual() {
+  const [active, setActive] = useState(["B"])
+  const options = ["B", "I", "U"]
+
+  return <div className="inline-flex rounded-md border bg-card p-1">{options.map((option) => <button key={option} type="button" className={cn("rounded px-3 py-1 text-sm", active.includes(option) && "bg-primary text-primary-foreground")} onClick={() => setActive((current) => current.includes(option) ? current.filter((item) => item !== option) : [...current, option])}>{option}</button>)}</div>
+}
+
+function NavigationDrawerVisual() {
+  const [open, setOpen] = useState(true)
+  const [active, setActive] = useState("홈")
+
+  return <div className="relative h-28 w-56 rounded-md border bg-card p-2"><button type="button" className="rounded border px-2 py-1 text-xs" onClick={() => setOpen((value) => !value)}><Menu aria-hidden="true" /></button>{open && <div className="absolute bottom-0 left-0 top-0 w-28 border-r bg-background p-2 text-xs">{["홈", "문서", "설정"].map((item) => <button key={item} type="button" className={cn("block w-full rounded px-2 py-1 text-left", active === item && "bg-primary text-primary-foreground")} onClick={() => setActive(item)}>{item}</button>)}</div>}</div>
+}
+
+function MegaMenuVisual() {
+  const [open, setOpen] = useState(true)
+
+  return <div className="relative w-60"><button type="button" className="rounded border bg-card px-3 py-1 text-sm" onClick={() => setOpen((value) => !value)}>제품</button>{open && <Chrome className="mt-2 grid grid-cols-3 gap-2 p-2 text-xs">{["Build", "Design", "Docs"].map((column) => <div key={column}><p className="mb-1 font-medium">{column}</p><Line className="w-12" /><Line className="mt-1 w-10" /></div>)}</Chrome>}</div>
+}
+
+function ContextMenuVisual() {
+  const [open, setOpen] = useState(true)
+  const [action, setAction] = useState("카드")
+
+  return <div className="relative h-28 w-48"><button type="button" className="rounded border bg-card px-3 py-2 text-sm" onClick={() => setOpen((value) => !value)}>{action}</button>{open && <Chrome className="absolute bottom-0 right-0 w-28 p-1 text-xs">{["복사", "이름 변경", "삭제"].map((item) => <button key={item} type="button" className="block w-full rounded px-2 py-1 text-left hover:bg-muted" onClick={() => setAction(item)}>{item}</button>)}</Chrome>}</div>
+}
+
+function LoadingButtonVisual() {
+  const [loading, setLoading] = useState(false)
+
+  return <button type="button" className="inline-flex items-center gap-2 rounded-md bg-primary px-4 py-2 text-sm text-primary-foreground" onClick={() => setLoading((value) => !value)}>{loading && <LoaderCircle className="animate-spin" aria-hidden="true" />}{loading ? "저장 중" : "저장"}</button>
+}
+
+function CopyFieldVisual() {
+  const [copied, setCopied] = useState(false)
+
+  return <Chrome className="flex h-10 w-56 items-center overflow-hidden text-sm"><span className="min-w-0 flex-1 truncate px-3">invite.link/abc</span><button type="button" className={cn("border-l px-3", copied && "text-primary")} onClick={() => setCopied(true)}>{copied ? "완료" : "복사"}</button></Chrome>
+}
+
+function BulkActionBarVisual() {
+  const [selected, setSelected] = useState(3)
+
+  return <Chrome className="flex w-56 items-center justify-between px-3 py-2 text-xs"><button type="button" onClick={() => setSelected((value) => value + 1)}>{selected}개 선택</button><span className="flex gap-1"><button type="button" className="rounded bg-primary px-2 py-1 text-primary-foreground">이동</button><button type="button" className="rounded border px-2 py-1" onClick={() => setSelected(0)}>해제</button></span></Chrome>
+}
+
+function SpeedDialVisual() {
+  const [open, setOpen] = useState(true)
+
+  return <div className="flex flex-col items-end gap-2">{open && [Copy, Share2, Trash2].map((Icon) => <button key={Icon.name} type="button" className="flex size-8 items-center justify-center rounded-full border bg-card shadow-sm"><Icon aria-hidden="true" /></button>)}<button type="button" className="flex size-12 items-center justify-center rounded-full bg-primary text-primary-foreground shadow-md" onClick={() => setOpen((value) => !value)}><Plus aria-hidden="true" /></button></div>
+}
+
+function AppShellVisual() {
+  const [collapsed, setCollapsed] = useState(false)
+
+  return <button type="button" className="grid h-28 w-60 grid-rows-[32px_1fr] overflow-hidden rounded-md border bg-card text-left" onClick={() => setCollapsed((value) => !value)}><div className="border-b bg-muted px-3 py-2 text-xs">App</div><div className={cn("grid", collapsed ? "grid-cols-[32px_1fr]" : "grid-cols-[72px_1fr]")}><div className="border-r p-2"><Line className="w-full" /><Line className="mt-2 w-full" /></div><div className="p-2"><Line className="w-28" /><Line className="mt-2 w-36" /></div></div></button>
+}
+
+function SplitPaneVisual() {
+  const [wide, setWide] = useState(false)
+
+  return <button type="button" className={cn("grid h-28 w-60 overflow-hidden rounded-md border bg-card text-left", wide ? "grid-cols-[2fr_1px_1fr]" : "grid-cols-[1fr_1px_1fr]")} onClick={() => setWide((value) => !value)}><div className="p-2"><Line className="w-20" /><Line className="mt-2 w-16" /></div><div className="bg-border" /><div className="p-2"><Line className="w-24" /><Line className="mt-2 w-20" /></div></button>
+}
+
+function SnackbarVisual() {
+  const [visible, setVisible] = useState(true)
+
+  if (!visible) return <button type="button" className="rounded border bg-card px-3 py-2 text-sm" onClick={() => setVisible(true)}>스낵바 보기</button>
+  return <Chrome className="flex w-60 items-center justify-between bg-foreground px-3 py-2 text-sm text-background"><span>저장되었습니다</span><button type="button" className="font-medium" onClick={() => setVisible(false)}>확인</button></Chrome>
+}
+
+function UndoToastVisual() {
+  const [deleted, setDeleted] = useState(true)
+
+  return <Chrome className="flex w-56 items-center justify-between px-3 py-2 text-sm"><span>{deleted ? "삭제됨" : "복구됨"}</span><button type="button" className="text-primary" onClick={() => setDeleted(false)}>실행 취소</button></Chrome>
+}
+
+function RowSelectionVisual() {
+  const [selected, setSelected] = useState([0, 2])
+
+  return <Chrome className="w-52 p-2 text-xs">{[0, 1, 2].map((row) => <button key={row} type="button" className={cn("flex w-full items-center gap-2 border-b py-1 last:border-b-0", selected.includes(row) && "bg-primary/10")} onClick={() => setSelected((current) => current.includes(row) ? current.filter((item) => item !== row) : [...current, row])}><span className={cn("flex size-4 items-center justify-center rounded border", selected.includes(row) && "bg-primary text-primary-foreground")}>{selected.includes(row) && <Check aria-hidden="true" />}</span><Line className="w-32" /></button>)}</Chrome>
 }
 
 function StateVisual({ tone }: { tone: "error" | "success" | "warning" | "info" }) {
