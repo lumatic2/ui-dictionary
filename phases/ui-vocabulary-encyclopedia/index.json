@@ -18,7 +18,8 @@
     {
       "step": 2,
       "name": "react-shadcn-site-scaffold",
-      "status": "pending"
+      "status": "completed",
+      "summary": "Created examples/ui-vocabulary-site with Vite React TypeScript, Tailwind CSS v4, shadcn/ui components, lucide icons, root-to-site data generation via scripts/build-ui-vocabulary-data.mjs, and a minimal first screen rendering 12 vocabulary cards with mini visual placeholders from generated 60-term data. npm run build passed."
     },
     {
       "step": 3,
