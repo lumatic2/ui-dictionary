@@ -5,7 +5,7 @@ Purpose: expand `docs/ui-vocabulary/terms.yml` without turning the glossary into
 ## Current Baseline
 
 - Source of truth: `docs/ui-vocabulary/terms.yml`
-- Current count: 157 terms
+- Current count: 177 terms
 - Website renderer: `examples/ui-vocabulary-site/src/components/term-visual.tsx`
 - Visual policy: every published term needs a recognizable mini mock. Interactive terms should expose a small local state change when clicked, typed into, opened, dismissed, or selected.
 
@@ -81,6 +81,29 @@ These should be the next dataset expansion because they are common in product UI
 - `wizard`
 - `toast-stack`
 - `skeleton-table`
+
+### Promoted In 2026-06-26 Step 7
+
+- `empty-table`
+- `table-density-control`
+- `column-visibility-menu`
+- `saved-view-tabs`
+- `filter-panel`
+- `advanced-filter-builder`
+- `query-builder`
+- `grouped-list`
+- `nested-list`
+- `draggable-list`
+- `reorder-handle`
+- `selection-summary`
+- `comparison-table`
+- `pivot-table`
+- `tree-table`
+- `expandable-row`
+- `detail-row`
+- `audit-log`
+- `workspace-switcher`
+- `account-switcher`
 
 ### Inputs
 

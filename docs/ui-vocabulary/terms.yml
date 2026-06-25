@@ -2352,3 +2352,303 @@
   asset: { kind: mini-mock, variant: skeleton-table, props: { rows: 3 } }
   sources: [{ source_id: shadcn-ui-docs, note: skeleton component }]
   confidence: high
+
+- id: empty-table
+  status: draft
+  category: data-display
+  ko: { name: 빈 테이블, aliases: [empty table, 빈 표, no rows table] }
+  en: { name: Empty table, aliases: [No rows table, Empty data table] }
+  one_liner: 테이블에 표시할 행이 없을 때 빈 상태와 다음 행동을 보여주는 패턴.
+  description: 단순히 빈 표만 보여주지 않고 이유, 검색 초기화, 새 항목 추가 같은 행동을 함께 제공한다.
+  visual_anatomy: [table header, empty body, message, recovery action]
+  when_to_use: [필터 결과가 없거나 아직 데이터가 없는 테이블에서]
+  anti_use: [오류로 데이터를 못 불러온 상황은 error state로 구분한다]
+  prompt_phrases: [테이블에 데이터가 없으면 empty table 상태와 추가 버튼을 보여줘]
+  asset: { kind: mini-mock, variant: empty-table, props: { action: true } }
+  sources: [{ source_id: carbon-design-components, note: empty states guidance }]
+  confidence: high
+
+- id: table-density-control
+  status: draft
+  category: data-display
+  ko: { name: 테이블 밀도 조절, aliases: [table density, density control, 행 높이 조절] }
+  en: { name: Table density control, aliases: [Density control, Row density selector] }
+  one_liner: 테이블 행 간격을 compact, default, spacious처럼 바꾸는 컨트롤.
+  description: 데이터 밀도와 읽기 편안함 사이를 사용자가 선택하게 한다.
+  visual_anatomy: [density buttons, table rows, row height change, selected density]
+  when_to_use: [데이터를 조밀하게 보거나 여유 있게 읽는 요구가 모두 있을 때]
+  anti_use: [일반 카드 목록에는 밀도 조절이 과할 수 있다]
+  prompt_phrases: [테이블 우측에 compact comfortable density control을 넣어줘]
+  asset: { kind: mini-mock, variant: table-density-control, props: { density: compact } }
+  sources: [{ source_id: carbon-design-components, note: data table display controls }]
+  confidence: medium
+
+- id: column-visibility-menu
+  status: draft
+  category: data-display
+  ko: { name: 컬럼 표시 메뉴, aliases: [column visibility, 컬럼 숨김, 표시할 열] }
+  en: { name: Column visibility menu, aliases: [Show columns menu, Column chooser] }
+  one_liner: 테이블에서 어떤 열을 보이거나 숨길지 선택하는 메뉴.
+  description: 사용자가 자신의 작업에 필요한 컬럼만 남겨 표를 단순하게 만든다.
+  visual_anatomy: [menu trigger, column checkboxes, visible columns, table preview]
+  when_to_use: [컬럼이 많고 사용자마다 필요한 정보가 다를 때]
+  anti_use: [컬럼이 적으면 숨김 메뉴가 불필요하다]
+  prompt_phrases: [테이블 설정에 column visibility menu를 넣어줘]
+  asset: { kind: mini-mock, variant: column-visibility-menu, props: { columns: 3 } }
+  sources: [{ source_id: carbon-design-components, note: data table component }]
+  confidence: medium
+
+- id: saved-view-tabs
+  status: draft
+  category: data-display
+  ko: { name: 저장된 뷰 탭, aliases: [saved views, view tabs, 저장 필터 탭] }
+  en: { name: Saved view tabs, aliases: [Saved views, View presets] }
+  one_liner: 자주 쓰는 필터나 정렬 조합을 탭처럼 저장해 전환하는 패턴.
+  description: 전체, 내 작업, 보관됨처럼 목록의 보기 조건을 빠르게 바꾼다.
+  visual_anatomy: [tabs, saved filter names, active view, list count]
+  when_to_use: [사용자가 같은 조건 조합을 반복해서 볼 때]
+  anti_use: [일회성 필터는 filter chip이나 faceted filter가 낫다]
+  prompt_phrases: [전체 내 작업 보관됨 saved view tabs를 테이블 위에 넣어줘]
+  asset: { kind: mini-mock, variant: saved-view-tabs, props: { active: mine } }
+  sources: [{ source_id: atlassian-design-components, note: work management view patterns }]
+  confidence: medium
+
+- id: filter-panel
+  status: draft
+  category: data-display
+  ko: { name: 필터 패널, aliases: [filter panel, filter drawer, 필터 사이드 패널] }
+  en: { name: Filter panel, aliases: [Filter drawer, Filter sidebar] }
+  one_liner: 검색 결과나 목록의 여러 필터 조건을 별도 패널에 모아둔 영역.
+  description: 조건이 많아 한 줄 필터 바에 담기 어려울 때 사이드 패널이나 드로어로 제공한다.
+  visual_anatomy: [panel surface, filter groups, apply button, reset action]
+  when_to_use: [필터 조건이 많고 세부 옵션이 필요할 때]
+  anti_use: [간단한 필터 두세 개는 filter bar가 더 빠르다]
+  prompt_phrases: [목록 오른쪽에 조건을 고르는 filter panel을 열어줘]
+  asset: { kind: mini-mock, variant: filter-panel, props: { open: true } }
+  sources: [{ source_id: carbon-design-components, note: filtering data table and list controls }]
+  confidence: high
+
+- id: advanced-filter-builder
+  status: draft
+  category: data-display
+  ko: { name: 고급 필터 빌더, aliases: [advanced filter, filter builder, 조건 빌더] }
+  en: { name: Advanced filter builder, aliases: [Filter builder, Conditional filter] }
+  one_liner: 필드, 연산자, 값을 조합해 복잡한 필터 조건을 만드는 UI.
+  description: 상태가 활성이고 금액이 10만원 이상 같은 조건식을 사용자가 직접 구성하게 한다.
+  visual_anatomy: [field selector, operator selector, value input, add condition]
+  when_to_use: [데이터 탐색 조건이 다양하고 조합이 복잡할 때]
+  anti_use: [초보자용 단순 목록에는 지나치게 어렵다]
+  prompt_phrases: [필드 연산자 값을 조합하는 advanced filter builder를 넣어줘]
+  asset: { kind: mini-mock, variant: advanced-filter-builder, props: { conditions: 2 } }
+  sources: [{ source_id: carbon-design-components, note: filtering data table and list controls }]
+  confidence: medium
+
+- id: query-builder
+  status: draft
+  category: data-display
+  ko: { name: 쿼리 빌더, aliases: [query builder, 조건식 빌더, rules builder] }
+  en: { name: Query builder, aliases: [Rules builder, Condition builder] }
+  one_liner: 여러 조건 그룹을 AND/OR로 묶어 검색 규칙을 만드는 고급 UI.
+  description: 필터 빌더보다 더 구조화된 규칙 집합을 만들 때 쓴다.
+  visual_anatomy: [condition rows, and-or selector, nested group, run query action]
+  when_to_use: [사용자가 복잡한 검색 규칙을 저장하거나 재사용해야 할 때]
+  anti_use: [일반 사용자의 간단한 검색에는 search field가 낫다]
+  prompt_phrases: [AND OR 조건을 추가하는 query builder를 만들어줘]
+  asset: { kind: mini-mock, variant: query-builder, props: { groups: true } }
+  sources: [{ source_id: carbon-design-components, note: advanced filtering patterns }]
+  confidence: medium
+
+- id: grouped-list
+  status: draft
+  category: data-display
+  ko: { name: 그룹 리스트, aliases: [grouped list, sectioned list, 묶음 목록] }
+  en: { name: Grouped list, aliases: [Sectioned list, Grouped rows] }
+  one_liner: 목록 항목을 날짜, 상태, 카테고리 같은 제목 아래에 묶어 보여주는 리스트.
+  description: 긴 목록을 의미 있는 덩어리로 나눠 스캔하기 쉽게 만든다.
+  visual_anatomy: [group header, grouped rows, row separators, counts optional]
+  when_to_use: [항목이 많고 자연스러운 그룹 기준이 있을 때]
+  anti_use: [그룹당 항목이 하나뿐이면 오히려 복잡하다]
+  prompt_phrases: [알림을 오늘 어제로 나누는 grouped list로 보여줘]
+  asset: { kind: mini-mock, variant: grouped-list, props: { groups: 2 } }
+  sources: [{ source_id: material-m3-components, note: lists component }]
+  confidence: high
+
+- id: nested-list
+  status: draft
+  category: data-display
+  ko: { name: 중첩 리스트, aliases: [nested list, 하위 목록, nested rows] }
+  en: { name: Nested list, aliases: [Sublist, Nested rows] }
+  one_liner: 목록 안의 항목 아래에 하위 항목을 들여쓰기해 보여주는 구조.
+  description: 댓글 답글, 카테고리 하위 항목, 작업 subtasks처럼 부모-자식 관계를 표현한다.
+  visual_anatomy: [parent row, indented child rows, expand state, hierarchy spacing]
+  when_to_use: [목록 항목 사이에 위계가 있을 때]
+  anti_use: [깊이가 깊어지면 tree view가 더 명확하다]
+  prompt_phrases: [작업과 하위 작업을 nested list로 보여줘]
+  asset: { kind: mini-mock, variant: nested-list, props: { children: true } }
+  sources: [{ source_id: material-m3-components, note: lists component }]
+  confidence: medium
+
+- id: draggable-list
+  status: draft
+  category: data-display
+  ko: { name: 드래그 리스트, aliases: [draggable list, reorderable list, 순서 변경 목록] }
+  en: { name: Draggable list, aliases: [Reorderable list, Drag list] }
+  one_liner: 항목을 드래그해 순서를 바꿀 수 있는 목록.
+  description: 우선순위, 메뉴 순서, 재생목록처럼 사용자가 항목 순서를 직접 정한다.
+  visual_anatomy: [drag handles, list rows, selected row, reorder position]
+  when_to_use: [순서 자체가 중요한 목록에서]
+  anti_use: [정렬 기준이 명확하면 sort control이 더 예측 가능하다]
+  prompt_phrases: [항목을 드래그해서 순서를 바꾸는 draggable list를 만들어줘]
+  asset: { kind: mini-mock, variant: draggable-list, props: { dragging: true } }
+  sources: [{ source_id: atlassian-design-components, note: work management list patterns }]
+  confidence: medium
+
+- id: reorder-handle
+  status: draft
+  category: action
+  ko: { name: 순서 변경 핸들, aliases: [reorder handle, drag handle, 잡고 끄는 핸들] }
+  en: { name: Reorder handle, aliases: [Drag handle, Move handle] }
+  one_liner: 항목을 잡고 끌어 순서를 바꿀 수 있음을 나타내는 작은 핸들.
+  description: 점이나 줄 아이콘으로 표현되며 리스트 항목의 왼쪽에 자주 놓인다.
+  visual_anatomy: [handle icon, row, drag affordance, moved state]
+  when_to_use: [행 전체 클릭과 드래그 행동을 구분해야 할 때]
+  anti_use: [드래그가 지원되지 않으면 장식으로 두지 않는다]
+  prompt_phrases: [리스트 항목 왼쪽에 reorder handle을 넣어줘]
+  asset: { kind: icon-composition, variant: reorder-handle, props: { draggable: true } }
+  sources: [{ source_id: material-m3-components, note: lists and drag affordances }]
+  confidence: medium
+
+- id: selection-summary
+  status: draft
+  category: data-display
+  ko: { name: 선택 요약, aliases: [selection summary, selected summary, 선택 개수 표시] }
+  en: { name: Selection summary, aliases: [Selected summary, Selection count] }
+  one_liner: 현재 선택된 항목 수와 적용 가능한 행동을 요약해 보여주는 영역.
+  description: row selection이나 multi-select 후 사용자가 선택 상태를 파악하고 해제할 수 있게 한다.
+  visual_anatomy: [selected count, clear action, bulk action, summary bar]
+  when_to_use: [여러 항목 선택 후 사용자가 현재 선택 범위를 알아야 할 때]
+  anti_use: [선택 상태가 하나뿐이면 별도 요약이 필요 없다]
+  prompt_phrases: [3개 선택됨과 전체 해제가 있는 selection summary를 보여줘]
+  asset: { kind: mini-mock, variant: selection-summary, props: { selected: 3 } }
+  sources: [{ source_id: carbon-design-components, note: data table row selection behavior }]
+  confidence: high
+
+- id: comparison-table
+  status: draft
+  category: data-display
+  ko: { name: 비교 테이블, aliases: [comparison table, 비교표, 기능 비교] }
+  en: { name: Comparison table, aliases: [Feature comparison table, Compare table] }
+  one_liner: 여러 상품이나 옵션의 속성을 열로 나란히 비교하는 표.
+  description: 요금제, 제품, 기능 차이를 한눈에 비교하게 한다.
+  visual_anatomy: [comparison columns, feature rows, checkmarks, highlighted plan]
+  when_to_use: [사용자가 여러 선택지를 비교해 결정해야 할 때]
+  anti_use: [선택지가 하나뿐이면 일반 description list가 낫다]
+  prompt_phrases: [Basic Pro Enterprise를 비교하는 comparison table을 넣어줘]
+  asset: { kind: mini-mock, variant: comparison-table, props: { columns: 3 } }
+  sources: [{ source_id: carbon-design-components, note: structured data display patterns }]
+  confidence: medium
+
+- id: pivot-table
+  status: draft
+  category: data-display
+  ko: { name: 피벗 테이블, aliases: [pivot table, 요약 테이블, cross table] }
+  en: { name: Pivot table, aliases: [Cross table, Summary table] }
+  one_liner: 행과 열 기준을 바꿔 데이터를 집계하고 요약하는 고급 테이블.
+  description: 지역별 월별 매출처럼 차원을 교차해 합계와 소계를 보여준다.
+  visual_anatomy: [row groups, column groups, aggregate cells, totals]
+  when_to_use: [다차원 데이터를 요약 분석해야 할 때]
+  anti_use: [단순 행 목록에는 data table이 더 적합하다]
+  prompt_phrases: [월별 지역별 매출을 pivot table로 보여줘]
+  asset: { kind: mini-mock, variant: pivot-table, props: { totals: true } }
+  sources: [{ source_id: carbon-design-components, note: structured data display patterns }]
+  confidence: medium
+
+- id: tree-table
+  status: draft
+  category: data-display
+  ko: { name: 트리 테이블, aliases: [tree table, treegrid, 계층 테이블] }
+  en: { name: Tree table, aliases: [Treegrid, Hierarchical table] }
+  one_liner: 테이블 행이 계층 구조를 갖고 펼치거나 접을 수 있는 데이터 표.
+  description: 폴더, 조직도, 계정 구조처럼 행에 부모-자식 관계가 있을 때 사용한다.
+  visual_anatomy: [expandable row, indentation, columns, child rows]
+  when_to_use: [계층 데이터와 열 데이터를 동시에 보여줘야 할 때]
+  anti_use: [위계만 중요하면 tree view가 더 단순하다]
+  prompt_phrases: [폴더 구조를 펼칠 수 있는 tree table로 보여줘]
+  asset: { kind: mini-mock, variant: tree-table, props: { expanded: true } }
+  sources: [{ source_id: wai-aria-apg-patterns, note: grid and treeview pattern combination }]
+  confidence: medium
+
+- id: expandable-row
+  status: draft
+  category: data-display
+  ko: { name: 펼침 행, aliases: [expandable row, expandable table row, 상세 펼침 행] }
+  en: { name: Expandable row, aliases: [Expandable table row, Row disclosure] }
+  one_liner: 테이블이나 리스트 행을 펼쳐 추가 정보를 같은 자리에서 보여주는 패턴.
+  description: 별도 상세 화면으로 이동하지 않고 요약 행 아래에 상세를 드러낸다.
+  visual_anatomy: [row trigger, chevron, expanded content, nested area]
+  when_to_use: [행별 상세가 짧고 현재 맥락에서 바로 확인해야 할 때]
+  anti_use: [상세가 길거나 편집이 복잡하면 detail panel이 낫다]
+  prompt_phrases: [테이블 행을 클릭하면 상세가 펼쳐지는 expandable row를 넣어줘]
+  asset: { kind: mini-mock, variant: expandable-row, props: { open: true } }
+  sources: [{ source_id: wai-aria-apg-patterns, note: disclosure show-hide pattern }]
+  confidence: high
+
+- id: detail-row
+  status: draft
+  category: data-display
+  ko: { name: 상세 행, aliases: [detail row, row details, 테이블 상세 행] }
+  en: { name: Detail row, aliases: [Row details, Detail panel row] }
+  one_liner: 선택된 행 아래에 추가 세부 정보를 별도 행처럼 표시하는 영역.
+  description: expandable row의 확장 영역으로, 메타데이터나 보조 액션을 보여준다.
+  visual_anatomy: [selected row, detail area, metadata, secondary actions]
+  when_to_use: [테이블 행의 보조 정보를 빠르게 보여줘야 할 때]
+  anti_use: [상세 정보가 많으면 side sheet나 master-detail이 낫다]
+  prompt_phrases: [주문 행 아래에 배송 정보 detail row를 펼쳐줘]
+  asset: { kind: mini-mock, variant: detail-row, props: { metadata: true } }
+  sources: [{ source_id: carbon-design-components, note: data table expanded content patterns }]
+  confidence: medium
+
+- id: audit-log
+  status: draft
+  category: data-display
+  ko: { name: 감사 로그, aliases: [audit log, 변경 이력, 보안 로그] }
+  en: { name: Audit log, aliases: [Change log, Security log] }
+  one_liner: 누가 언제 어떤 중요한 변경을 했는지 구조적으로 기록해 보여주는 목록.
+  description: 활동 피드보다 더 엄격하게 actor, action, target, timestamp를 보여준다.
+  visual_anatomy: [actor, action, target, timestamp, filter controls]
+  when_to_use: [권한, 결제, 설정 변경처럼 추적 가능성이 중요한 이벤트에서]
+  anti_use: [가벼운 소셜 활동에는 activity feed가 더 자연스럽다]
+  prompt_phrases: [관리자 설정 변경 내역을 audit log로 보여줘]
+  asset: { kind: mini-mock, variant: audit-log, props: { filters: true } }
+  sources: [{ source_id: atlassian-design-components, note: activity and status display patterns }]
+  confidence: medium
+
+- id: workspace-switcher
+  status: draft
+  category: selection
+  ko: { name: 워크스페이스 전환기, aliases: [workspace switcher, 조직 전환, 팀 전환] }
+  en: { name: Workspace switcher, aliases: [Organization switcher, Team switcher] }
+  one_liner: 현재 작업 공간이나 조직을 선택하고 다른 공간으로 전환하는 메뉴.
+  description: SaaS 앱에서 개인/팀/조직 컨텍스트를 바꾸는 상단 또는 사이드바 컨트롤이다.
+  visual_anatomy: [current workspace, avatar or logo, dropdown menu, workspace list]
+  when_to_use: [사용자가 여러 조직이나 프로젝트 공간을 오갈 때]
+  anti_use: [단일 조직 앱에는 필요 없다]
+  prompt_phrases: [사이드바 상단에 현재 팀을 바꾸는 workspace switcher를 넣어줘]
+  asset: { kind: mini-mock, variant: workspace-switcher, props: { open: true } }
+  sources: [{ source_id: atlassian-design-components, note: workspace and product navigation patterns }]
+  confidence: medium
+
+- id: account-switcher
+  status: draft
+  category: selection
+  ko: { name: 계정 전환기, aliases: [account switcher, 프로필 전환, 사용자 전환] }
+  en: { name: Account switcher, aliases: [Profile switcher, User switcher] }
+  one_liner: 현재 로그인 계정을 확인하고 다른 계정으로 전환하는 메뉴.
+  description: 사용자 아바타와 이메일, 계정 목록, 로그아웃 같은 행동을 함께 제공한다.
+  visual_anatomy: [avatar, current account, account list, sign out action]
+  when_to_use: [여러 계정 사용이나 프로필 관리가 필요한 앱에서]
+  anti_use: [인증이 없는 앱에는 불필요하다]
+  prompt_phrases: [우측 상단 아바타를 누르면 account switcher가 열리게 해줘]
+  asset: { kind: mini-mock, variant: account-switcher, props: { accounts: 2 } }
+  sources: [{ source_id: apple-hig-components, note: account and profile presentation guidance }]
+  confidence: medium

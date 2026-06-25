@@ -50,7 +50,10 @@
     {
       "step": 7,
       "name": "batch-1-practical-forms-filters-details",
-      "status": "pending"
+      "status": "completed",
+      "started_at": "2026-06-26T05:20:00+09:00",
+      "completed_at": "2026-06-26T05:42:00+09:00",
+      "summary": "Added 20 practical data, filter, list, row detail, audit, and account/workspace switching terms, growing the dataset from 157 to 177 terms. Implemented matching mini visual variants and fixed nested interactive button markup for switcher visuals. npm run build and npm run lint passed; render smoke confirmed 177 / 177 terms."
     },
     {
       "step": 8,

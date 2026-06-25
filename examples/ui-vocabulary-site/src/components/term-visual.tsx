@@ -217,6 +217,26 @@ function renderVisual(variant: string, label: string) {
   if (variant === "wizard") return <WizardVisual />
   if (variant === "toast-stack") return <ToastStackVisual />
   if (variant === "skeleton-table") return <SkeletonTableVisual />
+  if (variant === "empty-table") return <EmptyTableVisual />
+  if (variant === "table-density-control") return <TableDensityControlVisual />
+  if (variant === "column-visibility-menu") return <ColumnVisibilityMenuVisual />
+  if (variant === "saved-view-tabs") return <SavedViewTabsVisual />
+  if (variant === "filter-panel") return <FilterPanelVisual />
+  if (variant === "advanced-filter-builder") return <AdvancedFilterBuilderVisual />
+  if (variant === "query-builder") return <QueryBuilderVisual />
+  if (variant === "grouped-list") return <GroupedListVisual />
+  if (variant === "nested-list") return <NestedListVisual />
+  if (variant === "draggable-list") return <DraggableListVisual />
+  if (variant === "reorder-handle") return <ReorderHandleVisual />
+  if (variant === "selection-summary") return <SelectionSummaryVisual />
+  if (variant === "comparison-table") return <ComparisonTableVisual />
+  if (variant === "pivot-table") return <PivotTableVisual />
+  if (variant === "tree-table") return <TreeTableVisual />
+  if (variant === "expandable-row") return <ExpandableRowVisual />
+  if (variant === "detail-row") return <DetailRowVisual />
+  if (variant === "audit-log") return <AuditLogVisual />
+  if (variant === "workspace-switcher") return <WorkspaceSwitcherVisual />
+  if (variant === "account-switcher") return <AccountSwitcherVisual />
   if (variant === "error-state") return <StateVisual tone="error" />
   if (variant === "success-state") return <StateVisual tone="success" />
   if (variant === "warning-state") return <StateVisual tone="warning" />
@@ -1646,6 +1666,132 @@ function ToastStackVisual() {
 
 function SkeletonTableVisual() {
   return <div className="grid w-56 grid-cols-3 overflow-hidden rounded-md border bg-card text-xs">{Array.from({ length: 12 }).map((_, cell) => <div key={cell} className="h-7 border-b border-r p-1"><Line className="w-full animate-pulse" /></div>)}</div>
+}
+
+function EmptyTableVisual() {
+  const [hasRow, setHasRow] = useState(false)
+
+  return <Chrome className="w-56 overflow-hidden text-xs"><div className="grid grid-cols-3 border-b bg-muted p-1"><span>이름</span><span>상태</span><span>액션</span></div><div className="flex h-20 flex-col items-center justify-center gap-2 p-2">{hasRow ? <Line className="w-40" /> : <><span>데이터가 없습니다</span><button type="button" className="rounded border px-2 py-1" onClick={() => setHasRow(true)}>추가</button></>}</div></Chrome>
+}
+
+function TableDensityControlVisual() {
+  const [compact, setCompact] = useState(true)
+
+  return <Chrome className="w-56 p-2 text-xs"><div className="mb-2 flex gap-1"><button type="button" className={cn("rounded border px-2 py-1", compact && "bg-primary text-primary-foreground")} onClick={() => setCompact(true)}>Compact</button><button type="button" className={cn("rounded border px-2 py-1", !compact && "bg-primary text-primary-foreground")} onClick={() => setCompact(false)}>Comfort</button></div>{[0, 1, 2].map((item) => <Line key={item} className={cn("mb-1 w-40", compact ? "h-2" : "h-4")} />)}</Chrome>
+}
+
+function ColumnVisibilityMenuVisual() {
+  const [visible, setVisible] = useState(["이름", "상태"])
+  const cols = ["이름", "상태", "역할"]
+
+  return <Chrome className="w-52 p-2 text-xs">{cols.map((col) => <button key={col} type="button" className="flex w-full items-center gap-2 rounded px-2 py-1 hover:bg-muted" onClick={() => setVisible((current) => current.includes(col) ? current.filter((item) => item !== col) : [...current, col])}><span className={cn("size-3 rounded border", visible.includes(col) && "bg-primary")} />{col}</button>)}<p className="mt-2 text-muted-foreground">{visible.length} columns</p></Chrome>
+}
+
+function SavedViewTabsVisual() {
+  const [active, setActive] = useState("내 작업")
+
+  return <Chrome className="w-56 p-2 text-xs"><div className="flex gap-1">{["전체", "내 작업", "보관됨"].map((tab) => <button key={tab} type="button" className={cn("rounded px-2 py-1", active === tab ? "bg-primary text-primary-foreground" : "bg-muted")} onClick={() => setActive(tab)}>{tab}</button>)}</div><Line className="mt-3 w-36" /></Chrome>
+}
+
+function FilterPanelVisual() {
+  const [open, setOpen] = useState(true)
+
+  return <div className="relative h-28 w-56 rounded-md border bg-card p-2"><button type="button" className="rounded border px-2 py-1 text-xs" onClick={() => setOpen((value) => !value)}>필터</button>{open && <div className="absolute bottom-0 right-0 top-0 w-32 border-l bg-background p-2 text-xs"><p className="font-medium">상태</p><Line className="mt-2 w-20" /><button type="button" className="mt-3 rounded bg-primary px-2 py-1 text-primary-foreground">적용</button></div>}</div>
+}
+
+function AdvancedFilterBuilderVisual() {
+  const [conditions, setConditions] = useState(2)
+
+  return <Chrome className="w-60 p-2 text-xs">{Array.from({ length: conditions }).map((_, item) => <div key={item} className="mb-1 grid grid-cols-3 gap-1"><span className="rounded border px-1 py-1">상태</span><span className="rounded border px-1 py-1">=</span><span className="rounded border px-1 py-1">활성</span></div>)}<button type="button" className="mt-1 rounded border px-2 py-1" onClick={() => setConditions((value) => value + 1)}>조건 추가</button></Chrome>
+}
+
+function QueryBuilderVisual() {
+  const [mode, setMode] = useState("AND")
+
+  return <Chrome className="w-60 p-2 text-xs"><button type="button" className="mb-2 rounded bg-primary px-2 py-1 text-primary-foreground" onClick={() => setMode((value) => value === "AND" ? "OR" : "AND")}>{mode}</button><div className="ml-3 border-l pl-2"><Line className="mb-2 w-32" /><Line className="w-24" /></div></Chrome>
+}
+
+function GroupedListVisual() {
+  const [active, setActive] = useState("오늘")
+
+  return <Chrome className="w-52 p-2 text-xs">{["오늘", "어제"].map((group) => <div key={group}><button type="button" className={cn("mb-1 font-medium", active === group && "text-primary")} onClick={() => setActive(group)}>{group}</button><Line className="mb-2 ml-2 w-32" /></div>)}</Chrome>
+}
+
+function NestedListVisual() {
+  const [open, setOpen] = useState(true)
+
+  return <Chrome className="w-52 p-2 text-xs"><button type="button" className="font-medium" onClick={() => setOpen((value) => !value)}>작업</button>{open && <><Line className="ml-4 mt-2 w-32" /><Line className="ml-4 mt-2 w-24" /></>}</Chrome>
+}
+
+function DraggableListVisual() {
+  const [moved, setMoved] = useState(false)
+  const rows = moved ? ["B", "A", "C"] : ["A", "B", "C"]
+
+  return <Chrome className="w-48 p-2 text-xs">{rows.map((row) => <button key={row} type="button" className="mb-1 flex w-full items-center gap-2 rounded border px-2 py-1" onClick={() => setMoved((value) => !value)}><ReorderDots />항목 {row}</button>)}</Chrome>
+}
+
+function ReorderHandleVisual() {
+  const [dragging, setDragging] = useState(false)
+
+  return <button type="button" className={cn("flex items-center gap-3 rounded-md border bg-card px-3 py-2 text-sm", dragging && "ring-2 ring-ring")} onClick={() => setDragging((value) => !value)}><ReorderDots />드래그</button>
+}
+
+function ReorderDots() {
+  return <span className="grid grid-cols-2 gap-0.5">{Array.from({ length: 6 }).map((_, dot) => <span key={dot} className="size-1 rounded-full bg-muted-foreground" />)}</span>
+}
+
+function SelectionSummaryVisual() {
+  const [count, setCount] = useState(3)
+
+  return <Chrome className="flex w-56 items-center justify-between px-3 py-2 text-xs"><button type="button" onClick={() => setCount((value) => value + 1)}>{count}개 선택됨</button><button type="button" className="text-primary" onClick={() => setCount(0)}>해제</button></Chrome>
+}
+
+function ComparisonTableVisual() {
+  const [selected, setSelected] = useState(1)
+
+  return <div className="grid w-60 grid-cols-3 overflow-hidden rounded-md border text-xs">{["Basic", "Pro", "Team"].map((plan, index) => <button key={plan} type="button" className={cn("border-r p-2 text-left last:border-r-0", selected === index && "bg-primary/10")} onClick={() => setSelected(index)}><b>{plan}</b><Line className="mt-2 w-12" /><Check className="mt-2 text-primary" aria-hidden="true" /></button>)}</div>
+}
+
+function PivotTableVisual() {
+  const [highlight, setHighlight] = useState(4)
+
+  return <div className="grid w-56 grid-cols-4 overflow-hidden rounded-md border text-xs">{Array.from({ length: 12 }).map((_, cell) => <button key={cell} type="button" className={cn("h-7 border-b border-r p-1", cell === highlight && "bg-primary text-primary-foreground")} onClick={() => setHighlight(cell)}>{cell % 4 === 0 ? "합계" : ""}</button>)}</div>
+}
+
+function TreeTableVisual() {
+  const [open, setOpen] = useState(true)
+
+  return <Chrome className="w-56 p-2 text-xs"><button type="button" className="flex w-full items-center gap-1" onClick={() => setOpen((value) => !value)}><ChevronDown aria-hidden="true" />components <Line className="ml-auto w-16" /></button>{open && <div className="ml-4"><Line className="mt-2 w-36" /><Line className="mt-2 w-32" /></div>}</Chrome>
+}
+
+function ExpandableRowVisual() {
+  const [open, setOpen] = useState(true)
+
+  return <Chrome className="w-56 p-2 text-xs"><button type="button" className="flex w-full items-center gap-2" onClick={() => setOpen((value) => !value)}><ChevronDown aria-hidden="true" />주문 #42</button>{open && <div className="mt-2 rounded bg-muted p-2"><Line className="w-32" /></div>}</Chrome>
+}
+
+function DetailRowVisual() {
+  const [open, setOpen] = useState(true)
+
+  return <Chrome className="w-56 p-2 text-xs"><button type="button" className="w-full text-left" onClick={() => setOpen((value) => !value)}>사용자 행</button>{open && <div className="mt-2 grid grid-cols-2 gap-1 rounded bg-muted p-2"><span>역할</span><span>관리자</span><span>지역</span><span>서울</span></div>}</Chrome>
+}
+
+function AuditLogVisual() {
+  const [active, setActive] = useState(0)
+
+  return <Chrome className="w-56 p-2 text-xs">{["권한 변경", "로그인", "설정 수정"].map((item, index) => <button key={item} type="button" className={cn("mb-1 block w-full rounded px-2 py-1 text-left", active === index && "bg-primary/10")} onClick={() => setActive(index)}>{item} · {index + 1}:00</button>)}</Chrome>
+}
+
+function WorkspaceSwitcherVisual() {
+  const [workspace, setWorkspace] = useState("Team A")
+
+  return <Chrome className="w-48 p-2 text-xs"><div className="mb-2 flex w-full items-center gap-2 rounded border px-2 py-1"><span className="flex size-6 items-center justify-center rounded bg-primary text-primary-foreground"><BookOpen aria-hidden="true" /></span>{workspace}</div>{["Team A", "Team B"].map((item) => <button key={item} type="button" className="block w-full rounded px-2 py-1 text-left hover:bg-muted" onClick={() => setWorkspace(item)}>{item}</button>)}</Chrome>
+}
+
+function AccountSwitcherVisual() {
+  const [account, setAccount] = useState("yusun")
+
+  return <Chrome className="w-48 p-2 text-xs"><div className="mb-2 flex items-center gap-2"><span className="flex size-7 items-center justify-center rounded-full bg-primary text-primary-foreground"><User aria-hidden="true" /></span><span>{account}</span></div>{["yusun", "work"].map((item) => <button key={item} type="button" className="block w-full rounded px-2 py-1 text-left hover:bg-muted" onClick={() => setAccount(item)}>{item}@mail</button>)}</Chrome>
 }
 
 function StateVisual({ tone }: { tone: "error" | "success" | "warning" | "info" }) {
