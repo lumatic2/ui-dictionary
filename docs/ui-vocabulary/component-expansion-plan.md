@@ -5,7 +5,7 @@ Purpose: expand `docs/ui-vocabulary/terms.yml` without turning the glossary into
 ## Current Baseline
 
 - Source of truth: `docs/ui-vocabulary/terms.yml`
-- Current count: 126 terms
+- Current count: 157 terms
 - Website renderer: `examples/ui-vocabulary-site/src/components/term-visual.tsx`
 - Visual policy: every published term needs a recognizable mini mock. Interactive terms should expose a small local state change when clicked, typed into, opened, dismissed, or selected.
 
@@ -47,6 +47,40 @@ These should be the next dataset expansion because they are common in product UI
 - `snackbar`
 - `undo-toast`
 - `row-selection`
+
+### Promoted In 2026-06-26 Step 6
+
+- `search-view`
+- `tree-navigation`
+- `side-sheet`
+- `breadcrumbs-menu`
+- `icon-toggle-button`
+- `resizable-panel`
+- `master-detail`
+- `sticky-header`
+- `sticky-footer-bar`
+- `sidebar-section`
+- `inline-alert`
+- `error-boundary`
+- `confirmation-dialog`
+- `rate-limit-state`
+- `data-table-toolbar`
+- `column-header-menu`
+- `faceted-filter`
+- `stat-list`
+- `activity-feed`
+- `map-marker`
+- `scrubber`
+- `range-slider`
+- `multi-select`
+- `transfer-list`
+- `virtualized-list`
+- `infinite-scroll`
+- `pull-to-refresh`
+- `swipe-action`
+- `wizard`
+- `toast-stack`
+- `skeleton-table`
 
 ### Inputs
 

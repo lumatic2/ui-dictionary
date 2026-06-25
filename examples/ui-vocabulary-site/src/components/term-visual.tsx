@@ -23,6 +23,7 @@ import {
   Info,
   Link as LinkIcon,
   LoaderCircle,
+  MapPin,
   Menu,
   MoreHorizontal,
   Palette,
@@ -185,6 +186,37 @@ function renderVisual(variant: string, label: string) {
   if (variant === "snackbar") return <SnackbarVisual />
   if (variant === "undo-toast") return <UndoToastVisual />
   if (variant === "row-selection") return <RowSelectionVisual />
+  if (variant === "search-view") return <SearchViewVisual />
+  if (variant === "tree-navigation") return <TreeNavigationVisual />
+  if (variant === "side-sheet") return <SideSheetVisual />
+  if (variant === "breadcrumbs-menu") return <BreadcrumbsMenuVisual />
+  if (variant === "icon-toggle-button") return <IconToggleButtonVisual />
+  if (variant === "resizable-panel") return <ResizablePanelVisual />
+  if (variant === "master-detail") return <MasterDetailVisual />
+  if (variant === "sticky-header") return <StickyHeaderVisual />
+  if (variant === "sticky-footer-bar") return <StickyFooterBarVisual />
+  if (variant === "sidebar-section") return <SidebarSectionVisual />
+  if (variant === "inline-alert") return <InlineAlertVisual />
+  if (variant === "error-boundary") return <ErrorBoundaryVisual />
+  if (variant === "confirmation-dialog") return <ConfirmationDialogVisual />
+  if (variant === "rate-limit-state") return <RateLimitStateVisual />
+  if (variant === "data-table-toolbar") return <DataTableToolbarVisual />
+  if (variant === "column-header-menu") return <ColumnHeaderMenuVisual />
+  if (variant === "faceted-filter") return <FacetedFilterVisual />
+  if (variant === "stat-list") return <StatListVisual />
+  if (variant === "activity-feed") return <ActivityFeedVisual />
+  if (variant === "map-marker") return <MapMarkerVisual />
+  if (variant === "scrubber") return <ScrubberVisual />
+  if (variant === "range-slider") return <RangeSliderVisual />
+  if (variant === "multi-select") return <MultiSelectVisual />
+  if (variant === "transfer-list") return <TransferListVisual />
+  if (variant === "virtualized-list") return <VirtualizedListVisual />
+  if (variant === "infinite-scroll") return <InfiniteScrollVisual />
+  if (variant === "pull-to-refresh") return <PullToRefreshVisual />
+  if (variant === "swipe-action") return <SwipeActionVisual />
+  if (variant === "wizard") return <WizardVisual />
+  if (variant === "toast-stack") return <ToastStackVisual />
+  if (variant === "skeleton-table") return <SkeletonTableVisual />
   if (variant === "error-state") return <StateVisual tone="error" />
   if (variant === "success-state") return <StateVisual tone="success" />
   if (variant === "warning-state") return <StateVisual tone="warning" />
@@ -193,8 +225,8 @@ function renderVisual(variant: string, label: string) {
   return <FallbackVisual label={label} />
 }
 
-function Chrome({ children, className }: { children?: React.ReactNode; className?: string }) {
-  return <div className={cn("rounded-md border bg-card shadow-sm", className)}>{children}</div>
+function Chrome({ children, className, ...props }: React.ComponentProps<"div">) {
+  return <div className={cn("rounded-md border bg-card shadow-sm", className)} {...props}>{children}</div>
 }
 
 function Line({ className }: { className?: string }) {
@@ -1422,6 +1454,198 @@ function RowSelectionVisual() {
   const [selected, setSelected] = useState([0, 2])
 
   return <Chrome className="w-52 p-2 text-xs">{[0, 1, 2].map((row) => <button key={row} type="button" className={cn("flex w-full items-center gap-2 border-b py-1 last:border-b-0", selected.includes(row) && "bg-primary/10")} onClick={() => setSelected((current) => current.includes(row) ? current.filter((item) => item !== row) : [...current, row])}><span className={cn("flex size-4 items-center justify-center rounded border", selected.includes(row) && "bg-primary text-primary-foreground")}>{selected.includes(row) && <Check aria-hidden="true" />}</span><Line className="w-32" /></button>)}</Chrome>
+}
+
+function SearchViewVisual() {
+  const [query, setQuery] = useState("modal")
+  const results = query ? ["Modal", "Dialog", "Drawer"] : ["최근 검색어", "Toast"]
+
+  return <Chrome className="w-56 overflow-hidden p-2 text-xs"><div className="flex h-8 items-center gap-2 rounded border px-2"><Search aria-hidden="true" /><input aria-label="검색 뷰 예시" className="min-w-0 flex-1 bg-transparent outline-none" value={query} onChange={(event) => setQuery(event.target.value)} /></div><div className="mt-2 flex flex-col gap-1">{results.map((item) => <button key={item} type="button" className="rounded px-2 py-1 text-left hover:bg-muted">{item}</button>)}</div></Chrome>
+}
+
+function TreeNavigationVisual() {
+  const [open, setOpen] = useState(true)
+  const [active, setActive] = useState("Button")
+
+  return <Chrome className="w-52 p-2 text-xs"><button type="button" className="flex w-full items-center gap-1" onClick={() => setOpen((value) => !value)}><ChevronDown aria-hidden="true" className={cn(!open && "-rotate-90")} />Components</button>{open && ["Button", "Input", "Dialog"].map((item) => <button key={item} type="button" className={cn("ml-5 block rounded px-2 py-1 text-left", active === item && "bg-primary text-primary-foreground")} onClick={() => setActive(item)}>{item}</button>)}</Chrome>
+}
+
+function SideSheetVisual() {
+  const [open, setOpen] = useState(true)
+
+  return <div className="relative h-28 w-56 rounded-md border bg-card"><button type="button" className="m-3 rounded border px-2 py-1 text-xs" onClick={() => setOpen((value) => !value)}>{open ? "닫기" : "상세"}</button>{open && <div className="absolute bottom-0 right-0 top-0 w-28 border-l bg-background p-3"><Line className="w-16" /><Line className="mt-2 w-20" /><button type="button" className="mt-3 rounded bg-primary px-2 py-1 text-xs text-primary-foreground">저장</button></div>}</div>
+}
+
+function BreadcrumbsMenuVisual() {
+  const [open, setOpen] = useState(true)
+  const [current, setCurrent] = useState("대시보드")
+
+  return <div className="relative flex h-20 w-56 items-start gap-1 text-sm"><span>홈</span><ChevronRight aria-hidden="true" /><button type="button" className="font-medium text-primary" onClick={() => setOpen((value) => !value)}>{current}</button>{open && <Chrome className="absolute left-12 top-7 w-28 p-1 text-xs">{["대시보드", "문서", "설정"].map((item) => <button key={item} type="button" className="block w-full rounded px-2 py-1 text-left hover:bg-muted" onClick={() => { setCurrent(item); setOpen(false) }}>{item}</button>)}</Chrome>}</div>
+}
+
+function IconToggleButtonVisual() {
+  const [pressed, setPressed] = useState(true)
+
+  return <button type="button" aria-label="즐겨찾기" className={cn("flex size-11 items-center justify-center rounded-md border bg-card", pressed && "bg-primary text-primary-foreground")} onClick={() => setPressed((value) => !value)}><Heart aria-hidden="true" /></button>
+}
+
+function ResizablePanelVisual() {
+  const [wide, setWide] = useState(false)
+
+  return <button type="button" className={cn("grid h-28 w-60 overflow-hidden rounded-md border bg-card", wide ? "grid-cols-[2fr_8px_1fr]" : "grid-cols-[1fr_8px_1fr]")} onClick={() => setWide((value) => !value)}><div className="p-2"><Line className="w-20" /></div><div className="bg-muted"><div className="mx-auto mt-10 h-8 w-1 rounded bg-muted-foreground/40" /></div><div className="p-2"><Line className="w-16" /></div></button>
+}
+
+function MasterDetailVisual() {
+  const [active, setActive] = useState(1)
+
+  return <Chrome className="grid h-28 w-60 grid-cols-[88px_1fr] overflow-hidden text-xs"><div className="border-r p-1">{[0, 1, 2].map((item) => <button key={item} type="button" className={cn("mb-1 block w-full rounded px-2 py-1 text-left", active === item && "bg-primary text-primary-foreground")} onClick={() => setActive(item)}>항목 {item + 1}</button>)}</div><div className="p-3"><p className="font-medium">상세 {active + 1}</p><Line className="mt-2 w-28" /><Line className="mt-2 w-20" /></div></Chrome>
+}
+
+function StickyHeaderVisual() {
+  const [scrolled, setScrolled] = useState(false)
+
+  return <button type="button" className="h-28 w-56 overflow-hidden rounded-md border bg-card text-left" onClick={() => setScrolled((value) => !value)}><div className={cn("border-b px-3 py-2 text-xs font-medium", scrolled && "shadow-sm")}>Sticky header</div><div className={cn("p-3 transition-transform", scrolled && "-translate-y-3")}><Line className="w-36" /><Line className="mt-2 w-28" /><Line className="mt-2 w-32" /></div></button>
+}
+
+function StickyFooterBarVisual() {
+  const [saved, setSaved] = useState(false)
+
+  return <div className="relative h-28 w-56 overflow-hidden rounded-md border bg-card p-3"><Line className="w-32" /><Line className="mt-2 w-36" /><div className="absolute bottom-0 left-0 right-0 flex items-center justify-between border-t bg-background px-3 py-2"><span className="text-xs">{saved ? "저장됨" : "변경사항"}</span><button type="button" className="rounded bg-primary px-2 py-1 text-xs text-primary-foreground" onClick={() => setSaved(true)}>저장</button></div></div>
+}
+
+function SidebarSectionVisual() {
+  const [active, setActive] = useState("사용자")
+
+  return <Chrome className="w-48 p-2 text-xs">{["관리", "설정"].map((group) => <div key={group} className="mb-2"><p className="px-2 py-1 text-muted-foreground">{group}</p>{["사용자", "권한"].map((item) => <button key={`${group}-${item}`} type="button" className={cn("block w-full rounded px-2 py-1 text-left", active === item && "bg-primary text-primary-foreground")} onClick={() => setActive(item)}>{item}</button>)}</div>)}</Chrome>
+}
+
+function InlineAlertVisual() {
+  const [visible, setVisible] = useState(true)
+
+  if (!visible) return <button type="button" className="rounded border px-3 py-2 text-sm" onClick={() => setVisible(true)}>다시 보기</button>
+  return <div className="flex w-56 items-start justify-between gap-2 rounded-md border bg-card p-3 text-sm"><span className="flex gap-2"><AlertTriangle aria-hidden="true" />카드 정보를 확인하세요.</span><button type="button" aria-label="닫기" onClick={() => setVisible(false)}><X aria-hidden="true" /></button></div>
+}
+
+function ErrorBoundaryVisual() {
+  const [failed, setFailed] = useState(true)
+
+  return <Chrome className="flex w-52 flex-col items-center gap-2 p-3 text-center text-sm">{failed ? <><AlertTriangle className="text-destructive" aria-hidden="true" /><span>위젯 오류</span><button type="button" className="rounded border px-2 py-1 text-xs" onClick={() => setFailed(false)}>다시 시도</button></> : <><CheckCircle2 className="text-primary" aria-hidden="true" /><span>복구됨</span></>}</Chrome>
+}
+
+function ConfirmationDialogVisual() {
+  const [open, setOpen] = useState(true)
+  const [deleted, setDeleted] = useState(false)
+
+  if (!open) return <button type="button" className="rounded border px-3 py-2 text-sm" onClick={() => setOpen(true)}>{deleted ? "삭제됨" : "확인 열기"}</button>
+  return <div className="relative h-28 w-56 rounded-md bg-foreground/10 p-3"><Chrome className="absolute left-1/2 top-1/2 w-44 -translate-x-1/2 -translate-y-1/2 p-3 text-xs"><p className="font-medium">정말 삭제할까요?</p><div className="mt-3 flex justify-end gap-1"><button type="button" className="rounded border px-2 py-1" onClick={() => setOpen(false)}>취소</button><button type="button" className="rounded bg-destructive px-2 py-1 text-white" onClick={() => { setDeleted(true); setOpen(false) }}>삭제</button></div></Chrome></div>
+}
+
+function RateLimitStateVisual() {
+  const [seconds, setSeconds] = useState(30)
+
+  return <Chrome className="w-52 p-3 text-sm"><p className="font-medium">잠시 후 다시 시도</p><p className="mt-1 text-xs text-muted-foreground">{seconds}초 남음</p><button type="button" className="mt-3 rounded border px-2 py-1 text-xs" onClick={() => setSeconds((value) => Math.max(0, value - 5))}>시간 줄이기</button></Chrome>
+}
+
+function DataTableToolbarVisual() {
+  const [filtered, setFiltered] = useState(false)
+
+  return <Chrome className="flex w-64 items-center gap-2 p-2 text-xs"><div className="flex flex-1 items-center gap-1 rounded border px-2 py-1"><Search aria-hidden="true" />검색</div><button type="button" className={cn("rounded border px-2 py-1", filtered && "bg-primary text-primary-foreground")} onClick={() => setFiltered((value) => !value)}>필터</button><button type="button" className="rounded border px-2 py-1">내보내기</button></Chrome>
+}
+
+function ColumnHeaderMenuVisual() {
+  const [open, setOpen] = useState(true)
+  const [label, setLabel] = useState("이름")
+
+  return <div className="relative w-48"><Chrome className="flex h-9 items-center justify-between px-3 text-sm"><span>{label}</span><button type="button" onClick={() => setOpen((value) => !value)}><MoreHorizontal aria-hidden="true" /></button></Chrome>{open && <Chrome className="absolute right-0 top-10 z-10 w-28 p-1 text-xs">{["오름차순", "필터", "숨기기"].map((item) => <button key={item} type="button" className="block w-full rounded px-2 py-1 text-left hover:bg-muted" onClick={() => setLabel(item)}>{item}</button>)}</Chrome>}</div>
+}
+
+function FacetedFilterVisual() {
+  const [selected, setSelected] = useState(["활성"])
+
+  return <Chrome className="w-52 p-2 text-xs">{["상태", "유형"].map((group) => <div key={group} className="mb-2"><p className="text-muted-foreground">{group}</p>{["활성", "보류"].map((item) => <button key={`${group}-${item}`} type="button" className="mt-1 flex items-center gap-2" onClick={() => setSelected((current) => current.includes(item) ? current.filter((value) => value !== item) : [...current, item])}><span className={cn("size-3 rounded border", selected.includes(item) && "bg-primary")} />{item}</button>)}</div>)}</Chrome>
+}
+
+function StatListVisual() {
+  const [highlight, setHighlight] = useState("매출")
+
+  return <Chrome className="w-48 p-2 text-xs">{[["방문자", "12K"], ["전환", "8.1%"], ["매출", "3.2M"]].map(([label, value]) => <button key={label} type="button" className={cn("flex w-full items-center justify-between rounded px-2 py-1", highlight === label && "bg-primary text-primary-foreground")} onClick={() => setHighlight(label)}><span>{label}</span><b>{value}</b></button>)}</Chrome>
+}
+
+function ActivityFeedVisual() {
+  const [active, setActive] = useState(0)
+
+  return <Chrome className="w-56 p-2 text-xs">{["김님이 수정", "박님이 댓글", "시스템 동기화"].map((item, index) => <button key={item} type="button" className={cn("flex w-full gap-2 rounded p-1 text-left", active === index && "bg-primary/10")} onClick={() => setActive(index)}><span className="mt-1 size-2 rounded-full bg-primary" /><span>{item}<br /><span className="text-muted-foreground">{index + 1}분 전</span></span></button>)}</Chrome>
+}
+
+function MapMarkerVisual() {
+  const [selected, setSelected] = useState(true)
+
+  return <button type="button" className="relative h-28 w-48 rounded-md border bg-card" onClick={() => setSelected((value) => !value)}><div className="absolute inset-3 grid grid-cols-3 gap-2 opacity-30">{Array.from({ length: 9 }).map((_, item) => <span key={item} className="rounded bg-muted" />)}</div><MapPin className={cn("absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2", selected ? "text-primary" : "text-muted-foreground")} aria-hidden="true" /></button>
+}
+
+function ScrubberVisual() {
+  const [value, setValue] = useState([42])
+
+  return <div className="flex w-56 flex-col gap-2 text-xs"><Slider value={value} max={100} step={1} onValueChange={setValue} /><div className="flex justify-between text-muted-foreground"><span>0:00</span><span>{value[0]}%</span><span>3:20</span></div></div>
+}
+
+function RangeSliderVisual() {
+  const [value, setValue] = useState([25, 75])
+
+  return <div className="flex w-56 flex-col gap-2 text-xs"><Slider value={value} max={100} step={1} onValueChange={setValue} /><span className="text-muted-foreground">{value[0]} - {value[1]}</span></div>
+}
+
+function MultiSelectVisual() {
+  const [selected, setSelected] = useState(["디자인", "개발"])
+  const options = ["디자인", "개발", "기획"]
+
+  return <Chrome className="w-56 p-2 text-xs"><div className="mb-2 flex flex-wrap gap-1">{selected.map((item) => <span key={item} className="rounded-full bg-primary px-2 py-1 text-primary-foreground">{item}</span>)}</div>{options.map((item) => <button key={item} type="button" className="flex w-full items-center gap-2 rounded px-2 py-1 text-left hover:bg-muted" onClick={() => setSelected((current) => current.includes(item) ? current.filter((value) => value !== item) : [...current, item])}><span className={cn("size-3 rounded border", selected.includes(item) && "bg-primary")} />{item}</button>)}</Chrome>
+}
+
+function TransferListVisual() {
+  const [right, setRight] = useState(["B"])
+
+  return <div className="grid w-60 grid-cols-[1fr_auto_1fr] items-center gap-2 text-xs"><Chrome className="p-1">{["A", "B", "C"].filter((item) => !right.includes(item)).map((item) => <button key={item} type="button" className="block w-full rounded px-2 py-1 text-left hover:bg-muted" onClick={() => setRight((current) => [...current, item])}>{item}</button>)}</Chrome><ChevronRight aria-hidden="true" /><Chrome className="p-1">{right.map((item) => <button key={item} type="button" className="block w-full rounded px-2 py-1 text-left hover:bg-muted" onClick={() => setRight((current) => current.filter((value) => value !== item))}>{item}</button>)}</Chrome></div>
+}
+
+function VirtualizedListVisual() {
+  const [offset, setOffset] = useState(120)
+
+  return <button type="button" className="relative h-28 w-52 overflow-hidden rounded-md border bg-card p-2 text-left text-xs" onClick={() => setOffset((value) => value + 20)}><p className="mb-2 text-muted-foreground">rows {offset}-{offset + 4}</p>{Array.from({ length: 5 }).map((_, item) => <Line key={item} className="mb-2 w-36" />)}<span className="absolute right-1 top-6 h-12 w-1 rounded bg-primary" /></button>
+}
+
+function InfiniteScrollVisual() {
+  const [count, setCount] = useState(3)
+
+  return <Chrome className="w-52 p-2 text-xs">{Array.from({ length: count }).map((_, item) => <Line key={item} className="mb-2 w-36" />)}<button type="button" className="flex items-center gap-1 text-primary" onClick={() => setCount((value) => value + 1)}><LoaderCircle className="animate-spin" aria-hidden="true" />더 불러오기</button></Chrome>
+}
+
+function PullToRefreshVisual() {
+  const [refreshing, setRefreshing] = useState(false)
+
+  return <button type="button" className="flex h-28 w-48 flex-col items-center gap-2 rounded-md border bg-card p-3 text-xs" onClick={() => setRefreshing((value) => !value)}><LoaderCircle className={cn(refreshing && "animate-spin text-primary")} aria-hidden="true" /><span>{refreshing ? "새로고침 중" : "아래로 당김"}</span><Line className="w-28" /><Line className="w-32" /></button>
+}
+
+function SwipeActionVisual() {
+  const [swiped, setSwiped] = useState(true)
+
+  return <button type="button" className="relative h-14 w-56 overflow-hidden rounded-md border bg-destructive text-left text-sm text-white" onClick={() => setSwiped((value) => !value)}><span className="absolute right-3 top-4">삭제</span><div className={cn("absolute inset-y-0 left-0 flex w-full items-center bg-card px-3 text-foreground transition-transform", swiped && "-translate-x-16")}><Line className="w-32" /></div></button>
+}
+
+function WizardVisual() {
+  const [step, setStep] = useState(2)
+
+  return <Chrome className="w-56 p-3 text-xs"><div className="mb-3 flex items-center">{[1, 2, 3].map((item) => <button key={item} type="button" className={cn("flex size-6 items-center justify-center rounded-full border", item <= step && "bg-primary text-primary-foreground")} onClick={() => setStep(item)}>{item}</button>)}</div><p className="font-medium">Step {step}</p><Line className="mt-2 w-32" /></Chrome>
+}
+
+function ToastStackVisual() {
+  const [count, setCount] = useState(3)
+
+  return <button type="button" className="relative h-24 w-52" onClick={() => setCount((value) => Math.max(1, value - 1))}>{Array.from({ length: count }).map((_, item) => <Chrome key={item} className="absolute right-0 flex w-40 items-center justify-between px-3 py-2 text-xs" style={{ top: item * 12 }}><span>알림 {item + 1}</span><X aria-hidden="true" /></Chrome>)}</button>
+}
+
+function SkeletonTableVisual() {
+  return <div className="grid w-56 grid-cols-3 overflow-hidden rounded-md border bg-card text-xs">{Array.from({ length: 12 }).map((_, cell) => <div key={cell} className="h-7 border-b border-r p-1"><Line className="w-full animate-pulse" /></div>)}</div>
 }
 
 function StateVisual({ tone }: { tone: "error" | "success" | "warning" | "info" }) {

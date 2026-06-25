@@ -42,7 +42,10 @@
     {
       "step": 6,
       "name": "remaining-planned-candidates",
-      "status": "pending"
+      "status": "completed",
+      "started_at": "2026-06-26T05:00:00+09:00",
+      "completed_at": "2026-06-26T05:18:00+09:00",
+      "summary": "Added 31 remaining planned candidates from component-expansion-plan.md, growing the dataset from 126 to 157 terms. Implemented interactive visual variants for search view, tree navigation, side sheet, breadcrumbs menu, icon toggle button, resizable panel, master-detail, sticky bars, sidebar sections, inline/error/confirmation/rate-limit states, data table controls, advanced filters, stats/activity/map, scrubber/range/multi-select/transfer/virtualized/infinite/pull/swipe/wizard/toast-stack/skeleton-table. npm run build and npm run lint passed; render smoke confirmed 157 / 157 terms."
     },
     {
       "step": 7,

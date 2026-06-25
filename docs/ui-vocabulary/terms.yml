@@ -1887,3 +1887,468 @@
   asset: { kind: mini-mock, variant: row-selection, props: { selected: 2 } }
   sources: [{ source_id: carbon-design-components, note: data table row selection behavior }]
   confidence: high
+
+- id: search-view
+  status: draft
+  category: input
+  ko: { name: 검색 뷰, aliases: [search view, 전체 검색 화면, 검색 패널] }
+  en: { name: Search view, aliases: [Search surface, Search panel] }
+  one_liner: 검색창, 제안, 결과를 한 화면이나 패널로 묶은 검색 전용 영역.
+  description: 단순 검색창보다 넓은 표면에서 추천어, 최근 검색어, 결과 목록을 함께 보여준다.
+  visual_anatomy: [search input, suggestions, result list, active query]
+  when_to_use: [검색이 화면의 주요 작업일 때, 제안과 결과를 함께 보여줘야 할 때]
+  anti_use: [간단한 목록 필터에는 search field만으로 충분하다]
+  prompt_phrases: [검색창과 추천 결과가 함께 보이는 search view를 만들어줘]
+  asset: { kind: mini-mock, variant: search-view, props: { suggestions: true } }
+  sources: [{ source_id: material-m3-components, note: search view and suggestions pattern }]
+  confidence: high
+
+- id: tree-navigation
+  status: draft
+  category: selection
+  ko: { name: 트리 내비게이션, aliases: [tree navigation, 계층 메뉴, 폴더형 내비게이션] }
+  en: { name: Tree navigation, aliases: [Navigation tree, Hierarchical navigation] }
+  one_liner: 계층 구조를 펼치고 접으며 목적지로 이동하는 내비게이션.
+  description: 문서, 파일, 설정처럼 부모-자식 관계가 있는 항목을 탐색할 때 쓴다.
+  visual_anatomy: [parent node, disclosure icon, child nodes, active item]
+  when_to_use: [정보 구조가 계층적이고 사용자가 하위 항목을 탐색해야 할 때]
+  anti_use: [항목이 평면적이면 sidebar navigation이나 list가 단순하다]
+  prompt_phrases: [문서 목차를 펼치고 접는 tree navigation으로 보여줘]
+  asset: { kind: mini-mock, variant: tree-navigation, props: { active: true } }
+  sources: [{ source_id: wai-aria-apg-patterns, note: treeview pattern }]
+  confidence: high
+
+- id: side-sheet
+  status: draft
+  category: structure
+  ko: { name: 사이드 시트, aliases: [side sheet, 측면 시트, side panel] }
+  en: { name: Side sheet, aliases: [Side panel, Side surface] }
+  one_liner: 화면 옆에서 열려 보조 작업이나 상세 정보를 담는 패널.
+  description: drawer보다 작업 맥락이 강하고, 현재 화면을 유지한 채 폼이나 상세를 보여준다.
+  visual_anatomy: [side surface, header, close action, supporting content]
+  when_to_use: [목록에서 상세를 빠르게 확인하거나 보조 작업을 해야 할 때]
+  anti_use: [사용자 집중을 완전히 요구하면 dialog가 더 적합하다]
+  prompt_phrases: [오른쪽 side sheet에서 선택 항목 상세를 보여줘]
+  asset: { kind: mini-mock, variant: side-sheet, props: { side: right } }
+  sources: [{ source_id: material-m3-components, note: navigation drawer and sheet-like surfaces }]
+  confidence: medium
+
+- id: breadcrumbs-menu
+  status: draft
+  category: selection
+  ko: { name: 브레드크럼 메뉴, aliases: [breadcrumb menu, 경로 메뉴, sibling path menu] }
+  en: { name: Breadcrumbs menu, aliases: [Breadcrumb menu, Path menu] }
+  one_liner: 브레드크럼의 한 경로 항목에서 형제 위치를 펼쳐 고르는 메뉴.
+  description: 현재 위치를 보여주면서 같은 깊이의 다른 섹션으로 빠르게 이동하게 한다.
+  visual_anatomy: [breadcrumb path, menu trigger, sibling options, current item]
+  when_to_use: [계층 경로 안에서 형제 페이지 이동이 잦을 때]
+  anti_use: [경로가 짧고 단순하면 일반 breadcrumb가 충분하다]
+  prompt_phrases: [breadcrumb의 중간 항목을 누르면 sibling menu가 열리게 해줘]
+  asset: { kind: mini-mock, variant: breadcrumbs-menu, props: { menu: true } }
+  sources: [{ source_id: wai-aria-apg-patterns, note: menu button pattern }]
+  confidence: medium
+
+- id: icon-toggle-button
+  status: draft
+  category: action
+  ko: { name: 아이콘 토글 버튼, aliases: [icon toggle button, pressed icon button, 즐겨찾기 버튼] }
+  en: { name: Icon toggle button, aliases: [Pressed icon button, Toggle icon] }
+  one_liner: 아이콘만 있는 버튼이 눌린 상태를 유지해 켜짐/꺼짐을 나타내는 요소.
+  description: 즐겨찾기, 북마크, 음소거, 표시/숨김처럼 작은 상태 전환 행동에 쓴다.
+  visual_anatomy: [icon button, pressed state, icon color change, accessible label]
+  when_to_use: [아이콘으로 표현 가능한 이진 상태를 토글할 때]
+  anti_use: [의미가 불명확하면 label이나 tooltip을 함께 제공한다]
+  prompt_phrases: [하트 아이콘을 누르면 활성화되는 icon toggle button을 넣어줘]
+  asset: { kind: icon-composition, variant: icon-toggle-button, props: { pressed: true } }
+  sources: [{ source_id: wai-aria-apg-patterns, note: button pattern with pressed state }]
+  confidence: high
+
+- id: resizable-panel
+  status: draft
+  category: structure
+  ko: { name: 크기 조절 패널, aliases: [resizable panel, resize handle, 조절 가능한 패널] }
+  en: { name: Resizable panel, aliases: [Resizable pane, Resize handle] }
+  one_liner: 사용자가 경계선을 끌어 패널의 폭이나 높이를 조절하는 레이아웃.
+  description: 코드 에디터, 대시보드, 데이터 탐색 화면에서 영역 크기를 사용자가 조절하게 한다.
+  visual_anatomy: [two panels, resize handle, adjusted size, drag affordance]
+  when_to_use: [사용자마다 필요한 정보 영역의 크기가 다를 때]
+  anti_use: [간단한 콘텐츠에는 고정 레이아웃이 더 예측 가능하다]
+  prompt_phrases: [좌우 패널 사이에 resize handle이 있는 resizable panel을 만들어줘]
+  asset: { kind: diagram, variant: resizable-panel, props: { handle: true } }
+  sources: [{ source_id: shadcn-ui-docs, note: resizable composition pattern }]
+  confidence: medium
+
+- id: master-detail
+  status: draft
+  category: structure
+  ko: { name: 마스터-디테일, aliases: [master detail, 목록 상세, list detail layout] }
+  en: { name: Master-detail, aliases: [List-detail layout, Master detail view] }
+  one_liner: 왼쪽 목록에서 항목을 고르면 오른쪽에 상세가 표시되는 레이아웃.
+  description: 이메일, 주문, 고객 관리처럼 많은 항목을 탐색하며 상세를 빠르게 확인할 때 쓴다.
+  visual_anatomy: [master list, selected item, detail pane, two-column layout]
+  when_to_use: [목록과 상세를 오가며 비교하거나 편집해야 할 때]
+  anti_use: [모바일에서는 단계 전환이나 bottom sheet가 더 적합할 수 있다]
+  prompt_phrases: [왼쪽 목록 오른쪽 상세의 master-detail 레이아웃을 만들어줘]
+  asset: { kind: diagram, variant: master-detail, props: { selected: true } }
+  sources: [{ source_id: apple-hig-components, note: split view and layout guidance }]
+  confidence: medium
+
+- id: sticky-header
+  status: draft
+  category: structure
+  ko: { name: 고정 헤더, aliases: [sticky header, fixed header, 붙어있는 상단바] }
+  en: { name: Sticky header, aliases: [Fixed header, Sticky top bar] }
+  one_liner: 스크롤해도 화면 상단에 붙어 남아 있는 헤더.
+  description: 검색, 필터, 제목, 주요 행동을 계속 접근 가능하게 유지한다.
+  visual_anatomy: [top header, scroll content, sticky position, shadow or border]
+  when_to_use: [긴 목록이나 문서에서 상단 행동이 계속 필요할 때]
+  anti_use: [작은 화면에서 콘텐츠 공간을 과하게 차지하지 않게 한다]
+  prompt_phrases: [스크롤해도 상단에 남는 sticky header를 넣어줘]
+  asset: { kind: diagram, variant: sticky-header, props: { sticky: top } }
+  sources: [{ source_id: apple-hig-components, note: navigation and content structure guidance }]
+  confidence: medium
+
+- id: sticky-footer-bar
+  status: draft
+  category: structure
+  ko: { name: 고정 하단 바, aliases: [sticky footer bar, bottom action bar, 하단 액션바] }
+  en: { name: Sticky footer bar, aliases: [Bottom action bar, Sticky bottom bar] }
+  one_liner: 스크롤과 관계없이 화면 하단에 붙어 주요 행동을 제공하는 바.
+  description: 저장, 결제, 다음 단계처럼 완료 행동을 항상 보이게 할 때 쓴다.
+  visual_anatomy: [bottom bar, primary action, secondary action, sticky placement]
+  when_to_use: [긴 폼이나 checkout에서 주요 행동을 계속 접근 가능하게 할 때]
+  anti_use: [내용을 가리지 않도록 충분한 하단 여백을 둔다]
+  prompt_phrases: [긴 폼 아래에 저장 버튼이 있는 sticky footer bar를 넣어줘]
+  asset: { kind: mini-mock, variant: sticky-footer-bar, props: { action: true } }
+  sources: [{ source_id: material-m3-components, note: bottom app bar and action placement }]
+  confidence: medium
+
+- id: sidebar-section
+  status: draft
+  category: structure
+  ko: { name: 사이드바 섹션, aliases: [sidebar section, grouped sidebar, 사이드바 그룹] }
+  en: { name: Sidebar section, aliases: [Sidebar group, Navigation section] }
+  one_liner: 사이드바 안에서 관련 메뉴를 제목과 함께 묶은 구역.
+  description: 많은 내비게이션 항목을 계층과 주제로 나눠 스캔하기 쉽게 만든다.
+  visual_anatomy: [section label, grouped nav items, active item, vertical spacing]
+  when_to_use: [사이드바 항목이 많아 그룹화가 필요할 때]
+  anti_use: [항목이 적으면 섹션 제목이 오히려 소음이 된다]
+  prompt_phrases: [사이드바 메뉴를 관리와 설정 sidebar section으로 나눠줘]
+  asset: { kind: mini-mock, variant: sidebar-section, props: { groups: 2 } }
+  sources: [{ source_id: atlassian-design-components, note: side navigation pattern }]
+  confidence: high
+
+- id: inline-alert
+  status: draft
+  category: feedback
+  ko: { name: 인라인 알림, aliases: [inline alert, section alert, 폼 내부 알림] }
+  en: { name: Inline alert, aliases: [Section alert, Inline message] }
+  one_liner: 폼이나 섹션 안에 직접 배치되는 짧은 알림 메시지.
+  description: 전체 화면 배너보다 좁은 범위의 오류, 안내, 경고를 해당 맥락 가까이에 보여준다.
+  visual_anatomy: [small alert container, icon, message, local placement]
+  when_to_use: [특정 필드 묶음이나 섹션에만 관련된 안내가 있을 때]
+  anti_use: [전역 문제는 alert banner나 dialog로 더 명확히 알린다]
+  prompt_phrases: [결제 섹션 안에 inline alert로 카드 오류를 보여줘]
+  asset: { kind: mini-mock, variant: inline-alert, props: { tone: warning } }
+  sources: [{ source_id: shadcn-ui-docs, note: alert component variants }]
+  confidence: high
+
+- id: error-boundary
+  status: draft
+  category: feedback
+  ko: { name: 오류 경계 화면, aliases: [error boundary, fallback UI, 컴포넌트 오류 화면] }
+  en: { name: Error boundary, aliases: [Fallback UI, Component error fallback] }
+  one_liner: 일부 UI가 실패했을 때 전체 앱 대신 해당 영역에 보여주는 복구 화면.
+  description: 컴포넌트 렌더 오류나 데이터 실패를 격리하고 다시 시도 행동을 제공한다.
+  visual_anatomy: [failed region, error message, retry action, contained fallback]
+  when_to_use: [한 영역의 실패가 전체 화면을 망가뜨리지 않게 해야 할 때]
+  anti_use: [사용자가 이해 못 하는 stack trace를 그대로 노출하지 않는다]
+  prompt_phrases: [위젯 로딩 실패 시 retry 버튼이 있는 error boundary UI를 보여줘]
+  asset: { kind: mini-mock, variant: error-boundary, props: { retry: true } }
+  sources: [{ source_id: carbon-design-components, note: error and empty state guidance }]
+  confidence: medium
+
+- id: confirmation-dialog
+  status: draft
+  category: feedback
+  ko: { name: 확인 다이얼로그, aliases: [confirmation dialog, confirm modal, 확인 모달] }
+  en: { name: Confirmation dialog, aliases: [Confirm dialog, Confirmation modal] }
+  one_liner: 중요한 행동을 실행하기 전에 사용자의 명시적 확인을 받는 모달.
+  description: 삭제, 결제, 권한 변경처럼 되돌리기 어렵거나 영향이 큰 행동 앞에 쓴다.
+  visual_anatomy: [dialog title, risk message, cancel action, confirm action]
+  when_to_use: [파괴적이거나 비용이 발생하는 행동 전에]
+  anti_use: [사소한 행동마다 확인을 요구하면 사용자를 피로하게 한다]
+  prompt_phrases: [삭제 전에 취소와 삭제 버튼이 있는 confirmation dialog를 띄워줘]
+  asset: { kind: mini-mock, variant: confirmation-dialog, props: { destructive: true } }
+  sources: [{ source_id: wai-aria-apg-patterns, note: dialog modal pattern }]
+  confidence: high
+
+- id: rate-limit-state
+  status: draft
+  category: feedback
+  ko: { name: 사용량 제한 상태, aliases: [rate limit state, 제한 상태, retry after] }
+  en: { name: Rate limit state, aliases: [Retry-after state, Limit reached state] }
+  one_liner: 요청이 너무 많아 잠시 기다려야 함을 알려주는 상태 UI.
+  description: 남은 대기 시간, 다시 시도 버튼, 제한 이유를 함께 보여 사용자가 다음 행동을 알게 한다.
+  visual_anatomy: [limit message, countdown or retry time, retry action, neutral warning tone]
+  when_to_use: [API 호출, 로그인 시도, 생성 요청 등 사용량 제한이 걸렸을 때]
+  anti_use: [단순 네트워크 오류와 혼동하지 않는다]
+  prompt_phrases: [요청 제한이 걸리면 남은 시간을 보여주는 rate limit state를 넣어줘]
+  asset: { kind: mini-mock, variant: rate-limit-state, props: { retryAfter: true } }
+  sources: [{ source_id: carbon-design-components, note: error and empty state guidance }]
+  confidence: medium
+
+- id: data-table-toolbar
+  status: draft
+  category: data-display
+  ko: { name: 데이터 테이블 툴바, aliases: [data table toolbar, table toolbar, 표 도구막대] }
+  en: { name: Data table toolbar, aliases: [Table toolbar, Data grid toolbar] }
+  one_liner: 테이블 위에서 검색, 필터, 보기 설정, 일괄 행동을 모아 제공하는 영역.
+  description: 데이터 테이블을 탐색하고 조작하는 주요 컨트롤을 한 줄에 배치한다.
+  visual_anatomy: [search field, filter button, view options, action buttons]
+  when_to_use: [테이블의 검색/필터/내보내기/보기 설정이 필요할 때]
+  anti_use: [컨트롤이 하나뿐이면 별도 toolbar가 과하다]
+  prompt_phrases: [테이블 위에 검색 필터 내보내기 버튼이 있는 data table toolbar를 넣어줘]
+  asset: { kind: mini-mock, variant: data-table-toolbar, props: { filters: true } }
+  sources: [{ source_id: carbon-design-components, note: filtering data table and list controls }]
+  confidence: high
+
+- id: column-header-menu
+  status: draft
+  category: data-display
+  ko: { name: 컬럼 헤더 메뉴, aliases: [column header menu, 열 메뉴, 컬럼 옵션] }
+  en: { name: Column header menu, aliases: [Column menu, Header menu] }
+  one_liner: 테이블 열 제목에서 정렬, 필터, 숨김 같은 열별 행동을 여는 메뉴.
+  description: 특정 컬럼에 적용되는 조작을 컬럼 헤더 근처에 모아둔다.
+  visual_anatomy: [column header, menu trigger, sort option, hide or filter action]
+  when_to_use: [각 열마다 정렬/필터/숨김 행동이 필요할 때]
+  anti_use: [단순 표에는 메뉴보다 직접 sort icon이 충분할 수 있다]
+  prompt_phrases: [테이블 컬럼 헤더에 정렬과 숨김 column menu를 넣어줘]
+  asset: { kind: mini-mock, variant: column-header-menu, props: { open: true } }
+  sources: [{ source_id: carbon-design-components, note: data table sorting controls }]
+  confidence: medium
+
+- id: faceted-filter
+  status: draft
+  category: data-display
+  ko: { name: 패싯 필터, aliases: [faceted filter, facet filter, 다중 조건 필터] }
+  en: { name: Faceted filter, aliases: [Facet filter, Multi-facet filter] }
+  one_liner: 상태, 카테고리, 가격대처럼 여러 속성별 조건을 조합하는 필터.
+  description: 쇼핑, 데이터 테이블, 검색 결과에서 사용자가 여러 차원의 조건을 선택해 결과를 좁힌다.
+  visual_anatomy: [filter groups, checkbox options, selected count, active chips]
+  when_to_use: [데이터 속성이 다양하고 조합 검색이 필요할 때]
+  anti_use: [조건이 1-2개면 단순 filter chip이나 select가 낫다]
+  prompt_phrases: [상태와 카테고리를 고르는 faceted filter를 사이드바에 넣어줘]
+  asset: { kind: mini-mock, variant: faceted-filter, props: { groups: 2 } }
+  sources: [{ source_id: carbon-design-components, note: filtering data table and list controls }]
+  confidence: high
+
+- id: stat-list
+  status: draft
+  category: data-display
+  ko: { name: 지표 리스트, aliases: [stat list, metric list, 통계 목록] }
+  en: { name: Stat list, aliases: [Metric list, Stats list] }
+  one_liner: 여러 핵심 숫자를 세로 목록으로 작게 정리해 보여주는 데이터 요소.
+  description: 카드보다 더 조밀하게 여러 지표와 변화량을 한 영역에서 비교한다.
+  visual_anatomy: [metric label, value, delta, stacked rows]
+  when_to_use: [여러 작은 지표를 한눈에 비교해야 할 때]
+  anti_use: [각 지표를 크게 강조해야 하면 metric card가 낫다]
+  prompt_phrases: [방문자 전환율 매출을 stat list로 보여줘]
+  asset: { kind: mini-mock, variant: stat-list, props: { rows: 3 } }
+  sources: [{ source_id: atlassian-design-components, note: dashboard display patterns }]
+  confidence: medium
+
+- id: activity-feed
+  status: draft
+  category: data-display
+  ko: { name: 활동 피드, aliases: [activity feed, 활동 내역, 이벤트 피드] }
+  en: { name: Activity feed, aliases: [Activity log, Event feed] }
+  one_liner: 사용자나 시스템의 최근 활동을 시간순으로 보여주는 목록.
+  description: 누가 무엇을 했는지, 언제 바뀌었는지 추적하는 협업/관리 화면에 쓴다.
+  visual_anatomy: [actor, action text, timestamp, vertical list]
+  when_to_use: [변경 이력이나 협업 활동을 시간순으로 보여줘야 할 때]
+  anti_use: [정확한 감사 로그가 필요하면 audit log처럼 더 구조화한다]
+  prompt_phrases: [최근 팀 활동을 activity feed로 보여줘]
+  asset: { kind: mini-mock, variant: activity-feed, props: { items: 3 } }
+  sources: [{ source_id: atlassian-design-components, note: activity and status display patterns }]
+  confidence: high
+
+- id: map-marker
+  status: draft
+  category: data-display
+  ko: { name: 지도 마커, aliases: [map marker, 지도 핀, location pin] }
+  en: { name: Map marker, aliases: [Map pin, Location marker] }
+  one_liner: 지도나 공간 화면에서 특정 위치를 표시하는 핀 형태 요소.
+  description: 장소, 배송 위치, 이벤트 위치처럼 좌표가 있는 항목을 시각적으로 표시한다.
+  visual_anatomy: [pin icon, map surface, selected marker, label optional]
+  when_to_use: [위치 기반 정보를 지도 위에 표시해야 할 때]
+  anti_use: [지도 없이 단순 주소 목록이면 list나 card가 더 적합하다]
+  prompt_phrases: [지도 위에 선택된 장소를 map marker로 표시해줘]
+  asset: { kind: icon-composition, variant: map-marker, props: { selected: true } }
+  sources: [{ source_id: apple-hig-components, note: map and location presentation guidance }]
+  confidence: medium
+
+- id: scrubber
+  status: draft
+  category: input
+  ko: { name: 스크러버, aliases: [scrubber, 재생 위치 바, timeline scrubber] }
+  en: { name: Scrubber, aliases: [Timeline scrubber, Seek bar] }
+  one_liner: 영상이나 오디오의 재생 위치를 드래그해 이동하는 컨트롤.
+  description: 현재 위치, 전체 길이, thumb를 함께 보여주며 사용자가 원하는 시점으로 이동한다.
+  visual_anatomy: [timeline track, current progress, draggable thumb, time labels]
+  when_to_use: [미디어나 타임라인에서 위치를 빠르게 이동해야 할 때]
+  anti_use: [단순 숫자 범위 조절에는 slider가 더 일반적이다]
+  prompt_phrases: [동영상 하단에 재생 위치를 조절하는 scrubber를 넣어줘]
+  asset: { kind: mini-mock, variant: scrubber, props: { progress: 40 } }
+  sources: [{ source_id: apple-hig-components, note: media playback controls }]
+  confidence: medium
+
+- id: range-slider
+  status: draft
+  category: input
+  ko: { name: 범위 슬라이더, aliases: [range slider, 양방향 슬라이더, 가격 범위] }
+  en: { name: Range slider, aliases: [Dual-thumb slider, Range control] }
+  one_liner: 두 손잡이로 최소값과 최대값을 함께 조절하는 슬라이더.
+  description: 가격대, 기간, 점수 범위처럼 연속적인 범위를 선택할 때 쓴다.
+  visual_anatomy: [track, lower thumb, upper thumb, selected range]
+  when_to_use: [최소/최대 범위를 시각적으로 조절해야 할 때]
+  anti_use: [정확한 숫자 입력이 중요하면 number input을 함께 제공한다]
+  prompt_phrases: [가격 최소 최대를 고르는 range slider를 넣어줘]
+  asset: { kind: mini-mock, variant: range-slider, props: { min: 25, max: 75 } }
+  sources: [{ source_id: material-m3-components, note: slider component }]
+  confidence: high
+
+- id: multi-select
+  status: draft
+  category: input
+  ko: { name: 다중 선택창, aliases: [multi select, multiple select, 멀티셀렉트] }
+  en: { name: Multi-select, aliases: [Multiple select, Multi select dropdown] }
+  one_liner: 여러 옵션을 선택하고 선택값을 칩이나 목록으로 보여주는 선택 입력.
+  description: 역할, 태그, 카테고리처럼 고정된 보기 중 여러 개를 고르게 한다.
+  visual_anatomy: [select trigger, selected chips, option list, checkmarks]
+  when_to_use: [정해진 보기 중 여러 값을 선택해야 할 때]
+  anti_use: [자유 입력이 필요하면 tag input이 더 적합하다]
+  prompt_phrases: [여러 카테고리를 고르는 multi-select를 넣어줘]
+  asset: { kind: mini-mock, variant: multi-select, props: { selected: 2 } }
+  sources: [{ source_id: wai-aria-apg-patterns, note: listbox pattern }]
+  confidence: high
+
+- id: transfer-list
+  status: draft
+  category: data-display
+  ko: { name: 전송 리스트, aliases: [transfer list, dual listbox, 좌우 이동 목록] }
+  en: { name: Transfer list, aliases: [Dual listbox, Shuttle list] }
+  one_liner: 왼쪽 목록의 항목을 오른쪽 목록으로 옮겨 선택 집합을 만드는 패턴.
+  description: 사용자 권한, 멤버 선택, 포함/제외 항목을 명확히 나눠 관리할 때 쓴다.
+  visual_anatomy: [source list, target list, move buttons, selected items]
+  when_to_use: [선택 가능한 항목과 선택된 항목을 동시에 보여줘야 할 때]
+  anti_use: [항목 수가 적으면 checkbox list가 더 단순하다]
+  prompt_phrases: [사용자를 왼쪽에서 오른쪽으로 옮기는 transfer list를 만들어줘]
+  asset: { kind: mini-mock, variant: transfer-list, props: { move: true } }
+  sources: [{ source_id: mui-material-components, note: transfer list component pattern }]
+  confidence: medium
+
+- id: virtualized-list
+  status: draft
+  category: data-display
+  ko: { name: 가상화 리스트, aliases: [virtualized list, windowed list, 대량 리스트] }
+  en: { name: Virtualized list, aliases: [Windowed list, Virtual list] }
+  one_liner: 많은 항목 중 화면에 보이는 일부만 렌더링하는 긴 목록 패턴.
+  description: 수천 개 항목을 빠르게 스크롤해야 할 때 성능을 위해 보이는 범위만 그린다.
+  visual_anatomy: [long scroll area, visible rows, scroll thumb, offscreen placeholders]
+  when_to_use: [항목 수가 매우 많아 일반 list가 느려질 때]
+  anti_use: [짧은 목록에는 구현 복잡도만 늘어난다]
+  prompt_phrases: [수천 개 항목을 virtualized list로 빠르게 스크롤되게 해줘]
+  asset: { kind: diagram, variant: virtualized-list, props: { windowed: true } }
+  sources: [{ source_id: carbon-design-components, note: structured data display patterns }]
+  confidence: medium
+
+- id: infinite-scroll
+  status: draft
+  category: data-display
+  ko: { name: 무한 스크롤, aliases: [infinite scroll, 끝없는 목록, 자동 더보기] }
+  en: { name: Infinite scroll, aliases: [Endless scroll, Load on scroll] }
+  one_liner: 목록 끝에 도달하면 다음 항목을 자동으로 불러오는 패턴.
+  description: 피드나 탐색 목록에서 페이지 버튼 없이 계속 콘텐츠를 이어 보여준다.
+  visual_anatomy: [list items, bottom loader, appended items, scroll position]
+  when_to_use: [탐색형 콘텐츠를 연속적으로 소비하게 할 때]
+  anti_use: [정확한 위치 이동이나 footer 접근이 중요하면 pagination이 낫다]
+  prompt_phrases: [목록 끝에 도달하면 더 불러오는 infinite scroll을 넣어줘]
+  asset: { kind: mini-mock, variant: infinite-scroll, props: { loadingMore: true } }
+  sources: [{ source_id: carbon-design-components, note: structured data display patterns }]
+  confidence: medium
+
+- id: pull-to-refresh
+  status: draft
+  category: input
+  ko: { name: 당겨서 새로고침, aliases: [pull to refresh, swipe refresh, 아래로 당겨 새로고침] }
+  en: { name: Pull to refresh, aliases: [Swipe refresh, Pull refresh] }
+  one_liner: 모바일에서 목록을 아래로 당겨 새 데이터를 불러오는 제스처 패턴.
+  description: 피드나 메시지 목록에서 최신 상태를 사용자가 직접 갱신하게 한다.
+  visual_anatomy: [pulled list, refresh indicator, release state, updated list]
+  when_to_use: [모바일 목록에서 새 데이터를 수동 갱신해야 할 때]
+  anti_use: [데스크톱 웹에서는 명시적 refresh button이 더 발견 가능하다]
+  prompt_phrases: [모바일 피드에 pull-to-refresh 상태 표시를 넣어줘]
+  asset: { kind: diagram, variant: pull-to-refresh, props: { pulled: true } }
+  sources: [{ source_id: apple-hig-components, note: mobile refresh interaction guidance }]
+  confidence: medium
+
+- id: swipe-action
+  status: draft
+  category: action
+  ko: { name: 스와이프 액션, aliases: [swipe action, 밀어서 삭제, swipe row action] }
+  en: { name: Swipe action, aliases: [Swipe row action, Swipe command] }
+  one_liner: 모바일 목록 항목을 옆으로 밀어 숨겨진 행동을 드러내는 패턴.
+  description: 삭제, 보관, 읽음 처리 같은 항목별 빠른 행동을 제스처로 제공한다.
+  visual_anatomy: [list row, dragged offset, revealed action, destructive color optional]
+  when_to_use: [모바일 목록에서 항목별 빠른 행동이 자주 필요할 때]
+  anti_use: [중요 행동을 스와이프에만 숨기지 않는다]
+  prompt_phrases: [알림 리스트 항목을 왼쪽으로 밀면 삭제 swipe action이 보이게 해줘]
+  asset: { kind: mini-mock, variant: swipe-action, props: { action: delete } }
+  sources: [{ source_id: apple-hig-components, note: mobile list actions guidance }]
+  confidence: medium
+
+- id: wizard
+  status: draft
+  category: structure
+  ko: { name: 위저드, aliases: [wizard, 단계형 폼, multi-step flow] }
+  en: { name: Wizard, aliases: [Multi-step flow, Step-by-step form] }
+  one_liner: 복잡한 작업을 여러 단계 화면으로 나눠 순서대로 진행하게 하는 흐름.
+  description: 가입, 설정, 결제처럼 한 번에 입력하기 많은 절차를 단계별로 줄인다.
+  visual_anatomy: [step indicator, current panel, next button, back button]
+  when_to_use: [복잡한 작업을 순서대로 안내해야 할 때]
+  anti_use: [간단한 폼을 불필요하게 여러 단계로 쪼개지 않는다]
+  prompt_phrases: [가입 과정을 3단계 wizard로 만들어줘]
+  asset: { kind: mini-mock, variant: wizard, props: { step: 2 } }
+  sources: [{ source_id: material-m3-components, note: progress and navigation pattern }]
+  confidence: medium
+
+- id: toast-stack
+  status: draft
+  category: feedback
+  ko: { name: 토스트 스택, aliases: [toast stack, stacked toasts, 알림 묶음] }
+  en: { name: Toast stack, aliases: [Stacked toasts, Notification stack] }
+  one_liner: 여러 개의 토스트 알림이 겹치거나 쌓여 나타나는 상태.
+  description: 짧은 알림이 연속 발생할 때 위치와 순서를 유지해 사용자가 놓치지 않게 한다.
+  visual_anatomy: [multiple toast cards, stacking offset, close actions, newest item]
+  when_to_use: [짧은 알림이 동시에 여러 개 발생할 수 있을 때]
+  anti_use: [중요한 알림을 토스트 더미 속에 묻지 않는다]
+  prompt_phrases: [오른쪽 아래에 여러 toast가 쌓이는 toast stack을 보여줘]
+  asset: { kind: mini-mock, variant: toast-stack, props: { count: 3 } }
+  sources: [{ source_id: shadcn-ui-docs, note: toast component }]
+  confidence: medium
+
+- id: skeleton-table
+  status: draft
+  category: feedback
+  ko: { name: 테이블 스켈레톤, aliases: [skeleton table, table skeleton, 표 로딩 자리표시자] }
+  en: { name: Skeleton table, aliases: [Table skeleton, Loading table skeleton] }
+  one_liner: 테이블 데이터가 로딩되는 동안 행과 열 형태를 미리 보여주는 스켈레톤.
+  description: 실제 표가 들어올 구조를 유지해 로딩 중에도 화면 흔들림을 줄인다.
+  visual_anatomy: [header placeholders, row placeholders, column grid, loading shimmer optional]
+  when_to_use: [테이블 데이터를 불러오는 동안 구조를 먼저 보여주고 싶을 때]
+  anti_use: [로딩 시간이 매우 짧으면 spinner나 아무 표시 없이도 충분할 수 있다]
+  prompt_phrases: [테이블 데이터를 불러오는 동안 skeleton table을 보여줘]
+  asset: { kind: mini-mock, variant: skeleton-table, props: { rows: 3 } }
+  sources: [{ source_id: shadcn-ui-docs, note: skeleton component }]
+  confidence: high
