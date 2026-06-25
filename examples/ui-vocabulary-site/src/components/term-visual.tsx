@@ -297,6 +297,26 @@ function renderVisual(variant: string, label: string) {
   if (variant === "payment-method-card") return <PaymentMethodCardVisual />
   if (variant === "address-card") return <AddressCardVisual />
   if (variant === "order-status") return <OrderStatusVisual />
+  if (variant === "calendar-event-card") return <CalendarEventCardVisual />
+  if (variant === "kanban-card") return <KanbanCardVisual />
+  if (variant === "board-column") return <BoardColumnVisual />
+  if (variant === "empty-search-result") return <EmptySearchResultVisual />
+  if (variant === "onboarding-checklist") return <OnboardingChecklistVisual />
+  if (variant === "setup-progress") return <SetupProgressVisual />
+  if (variant === "help-center-card") return <HelpCenterCardVisual />
+  if (variant === "faq-list") return <FaqListVisual />
+  if (variant === "announcement-banner") return <AnnouncementBannerVisual />
+  if (variant === "release-note-card") return <ReleaseNoteCardVisual />
+  if (variant === "profile-card") return <ProfileCardVisual />
+  if (variant === "team-member-row") return <TeamMemberRowVisual />
+  if (variant === "role-badge") return <RoleBadgeVisual />
+  if (variant === "api-key-field") return <ApiKeyFieldVisual />
+  if (variant === "webhook-endpoint-row") return <WebhookEndpointRowVisual />
+  if (variant === "integration-card") return <IntegrationCardVisual />
+  if (variant === "connection-card") return <ConnectionCardVisual />
+  if (variant === "billing-summary") return <BillingSummaryVisual />
+  if (variant === "invoice-row") return <InvoiceRowVisual />
+  if (variant === "version-history-list") return <VersionHistoryListVisual />
   if (variant === "error-state") return <StateVisual tone="error" />
   if (variant === "success-state") return <StateVisual tone="success" />
   if (variant === "warning-state") return <StateVisual tone="warning" />
@@ -2215,6 +2235,119 @@ function OrderStatusVisual() {
   const [step, setStep] = useState(2)
 
   return <Chrome className="w-56 p-3 text-xs"><div className="mb-3 flex items-center">{[1, 2, 3].map((item) => <button key={item} type="button" className={cn("mr-1 h-2 flex-1 rounded", item <= step ? "bg-primary" : "bg-muted")} onClick={() => setStep(item)}><span className="sr-only">step {item}</span></button>)}</div><p className="font-medium">{["주문 접수", "배송 중", "완료"][step - 1]}</p><p className="text-muted-foreground">예상 도착 내일</p></Chrome>
+}
+
+function CalendarEventCardVisual() {
+  const [selected, setSelected] = useState(true)
+
+  return <button type="button" className={cn("w-52 rounded-md border bg-card p-3 text-left text-xs", selected && "ring-2 ring-primary")} onClick={() => setSelected((value) => !value)}><p className="font-medium">디자인 리뷰</p><p className="mt-1 text-muted-foreground">10:00 - 11:00 · 회의실 A</p><span className="mt-2 inline-block rounded-full bg-primary/10 px-2 py-0.5 text-primary">참석</span></button>
+}
+
+function KanbanCardVisual() {
+  const [done, setDone] = useState(false)
+
+  return <Chrome className="w-44 p-3 text-xs"><button type="button" className="text-left font-medium" onClick={() => setDone((value) => !value)}>{done ? "완료된 작업" : "UI 용어 추가"}</button><div className="mt-2 flex gap-1"><span className="rounded bg-primary/10 px-2 py-0.5 text-primary">design</span><span className="rounded bg-muted px-2 py-0.5">docs</span></div><div className="mt-3 flex justify-between"><span>2 comments</span><User aria-hidden="true" /></div></Chrome>
+}
+
+function BoardColumnVisual() {
+  const [count, setCount] = useState(2)
+
+  return <Chrome className="w-48 p-2 text-xs"><div className="mb-2 flex justify-between font-medium"><span>진행 중</span><span>{count}</span></div>{Array.from({ length: count }).map((_, item) => <div key={item} className="mb-2 rounded border bg-background p-2"><Line className="w-24" /></div>)}<button type="button" className="rounded border px-2 py-1" onClick={() => setCount((value) => value + 1)}>카드 추가</button></Chrome>
+}
+
+function EmptySearchResultVisual() {
+  const [cleared, setCleared] = useState(false)
+
+  return <Chrome className="flex w-52 flex-col items-center gap-2 p-3 text-center text-xs"><Search aria-hidden="true" /><p className="font-medium">{cleared ? "전체 결과" : "결과 없음"}</p><button type="button" className="rounded border px-2 py-1" onClick={() => setCleared(true)}>필터 초기화</button></Chrome>
+}
+
+function OnboardingChecklistVisual() {
+  const [done, setDone] = useState(2)
+
+  return <Chrome className="w-56 p-2 text-xs"><p className="mb-2 font-medium">{done}/3 완료</p>{["프로필", "팀 초대", "첫 프로젝트"].map((item, index) => <button key={item} type="button" className="mb-1 flex w-full items-center gap-2 rounded px-2 py-1 text-left hover:bg-muted" onClick={() => setDone(Math.max(done, index + 1))}><span className={cn("size-4 rounded border", index < done && "bg-primary")} />{item}</button>)}</Chrome>
+}
+
+function SetupProgressVisual() {
+  const [value, setValue] = useState(60)
+
+  return <Chrome className="w-52 p-3 text-xs"><div className="mb-2 flex justify-between"><span>설정</span><span>{value}%</span></div><div className="h-2 rounded bg-muted"><div className="h-full rounded bg-primary" style={{ width: `${value}%` }} /></div><button type="button" className="mt-3 rounded border px-2 py-1" onClick={() => setValue(Math.min(100, value + 20))}>계속</button></Chrome>
+}
+
+function HelpCenterCardVisual() {
+  return <Chrome className="w-48 p-3 text-xs"><BookOpen aria-hidden="true" className="text-primary" /><p className="mt-2 font-medium">결제 도움말</p><Line className="mt-2 w-28" /><button type="button" className="mt-3 text-primary">문서 보기</button></Chrome>
+}
+
+function FaqListVisual() {
+  const [open, setOpen] = useState(true)
+
+  return <Chrome className="w-56 p-2 text-xs"><button type="button" className="flex w-full items-center justify-between rounded px-2 py-1 text-left font-medium" onClick={() => setOpen((value) => !value)}>환불이 되나요?<ChevronDown aria-hidden="true" /></button>{open && <div className="rounded bg-muted p-2"><Line className="w-36" /></div>}<button type="button" className="mt-1 flex w-full items-center justify-between rounded px-2 py-1 text-left">플랜 변경<ChevronRight aria-hidden="true" /></button></Chrome>
+}
+
+function AnnouncementBannerVisual() {
+  const [visible, setVisible] = useState(true)
+
+  if (!visible) return <button type="button" className="rounded border px-3 py-2 text-xs" onClick={() => setVisible(true)}>공지 보기</button>
+  return <Chrome className="flex w-60 items-center justify-between gap-2 px-3 py-2 text-xs"><span className="flex items-center gap-2"><Info aria-hidden="true" />새 기능 출시</span><button type="button" onClick={() => setVisible(false)}><X aria-hidden="true" /></button></Chrome>
+}
+
+function ReleaseNoteCardVisual() {
+  return <Chrome className="w-52 p-3 text-xs"><div className="flex justify-between"><b>v1.4.0</b><span>Jun 26</span></div><Line className="mt-3 w-32" /><div className="mt-3 flex gap-1"><span className="rounded bg-primary/10 px-2 py-0.5 text-primary">New</span><span className="rounded bg-muted px-2 py-0.5">Fix</span></div></Chrome>
+}
+
+function ProfileCardVisual() {
+  return <Chrome className="flex w-52 items-center gap-3 p-3 text-xs"><span className="flex size-10 items-center justify-center rounded-full bg-primary text-primary-foreground"><User aria-hidden="true" /></span><div><p className="font-medium">Yusun</p><p className="text-muted-foreground">Designer</p><button type="button" className="mt-1 text-primary">메시지</button></div></Chrome>
+}
+
+function TeamMemberRowVisual() {
+  const [role, setRole] = useState("Editor")
+
+  return <Chrome className="flex w-64 items-center gap-2 p-2 text-xs"><span className="flex size-7 items-center justify-center rounded-full bg-muted"><User aria-hidden="true" /></span><div className="min-w-0 flex-1"><p className="font-medium">member@mail</p><p className="text-muted-foreground">초대됨</p></div><button type="button" className="rounded border px-2 py-1" onClick={() => setRole(role === "Editor" ? "Admin" : "Editor")}>{role}</button></Chrome>
+}
+
+function RoleBadgeVisual() {
+  const [role, setRole] = useState("Admin")
+
+  return <button type="button" className="rounded-full border bg-primary px-3 py-1 text-xs text-primary-foreground" onClick={() => setRole(role === "Admin" ? "Viewer" : "Admin")}>{role}</button>
+}
+
+function ApiKeyFieldVisual() {
+  const [shown, setShown] = useState(false)
+
+  return <Chrome className="flex w-60 items-center gap-2 p-2 text-xs"><code className="min-w-0 flex-1 rounded bg-muted px-2 py-1">{shown ? "sk_live_1234" : "sk_live_••••"}</code><button type="button" onClick={() => setShown((value) => !value)}><EyeOff aria-hidden="true" /></button><button type="button"><Copy aria-hidden="true" /></button></Chrome>
+}
+
+function WebhookEndpointRowVisual() {
+  const [active, setActive] = useState(true)
+
+  return <Chrome className="flex w-64 items-center gap-2 p-2 text-xs"><LinkIcon aria-hidden="true" /><span className="min-w-0 flex-1 truncate">https://api.site/hook</span><button type="button" className={cn("rounded-full px-2 py-0.5", active ? "bg-primary text-primary-foreground" : "bg-muted")} onClick={() => setActive((value) => !value)}>{active ? "active" : "off"}</button></Chrome>
+}
+
+function IntegrationCardVisual() {
+  const [connected, setConnected] = useState(false)
+
+  return <Chrome className="w-48 p-3 text-xs"><div className="flex items-center gap-2"><span className="flex size-8 items-center justify-center rounded bg-muted"><Settings aria-hidden="true" /></span><b>Slack</b></div><Line className="mt-3 w-28" /><button type="button" className={cn("mt-3 rounded px-2 py-1", connected ? "border" : "bg-primary text-primary-foreground")} onClick={() => setConnected(true)}>{connected ? "연결됨" : "연결"}</button></Chrome>
+}
+
+function ConnectionCardVisual() {
+  const [connected, setConnected] = useState(true)
+
+  return <Chrome className="w-52 p-3 text-xs"><div className="flex items-center justify-between"><b>GitHub</b><span className={cn("size-2 rounded-full", connected ? "bg-primary" : "bg-muted-foreground")} /></div><p className="mt-2 text-muted-foreground">yusun/design</p><button type="button" className="mt-3 rounded border px-2 py-1" onClick={() => setConnected((value) => !value)}>{connected ? "해제" : "연결"}</button></Chrome>
+}
+
+function BillingSummaryVisual() {
+  return <Chrome className="w-56 p-3 text-xs"><div className="flex justify-between"><span>현재 플랜</span><b>Pro</b></div><div className="mt-2 flex justify-between"><span>다음 청구</span><span>Jul 26</span></div><div className="mt-2 flex justify-between"><span>금액</span><b>₩12K</b></div></Chrome>
+}
+
+function InvoiceRowVisual() {
+  const [downloaded, setDownloaded] = useState(false)
+
+  return <Chrome className="flex w-64 items-center gap-2 p-2 text-xs"><span>2026-06</span><span className="ml-auto">₩12K</span><span className="rounded-full bg-primary/10 px-2 py-0.5 text-primary">paid</span><button type="button" className="rounded border px-2 py-1" onClick={() => setDownloaded(true)}>{downloaded ? "완료" : "PDF"}</button></Chrome>
+}
+
+function VersionHistoryListVisual() {
+  const [restored, setRestored] = useState(false)
+
+  return <Chrome className="w-56 p-2 text-xs">{["오늘 10:00", "어제 19:20"].map((item, index) => <div key={item} className="mb-1 flex items-center gap-2 rounded px-2 py-1"><Clock aria-hidden="true" /><span className="flex-1">{item}</span><button type="button" className="text-primary" onClick={() => setRestored(true)}>{restored && index === 0 ? "복원됨" : "복원"}</button></div>)}</Chrome>
 }
 
 function StateVisual({ tone }: { tone: "error" | "success" | "warning" | "info" }) {

@@ -5,7 +5,7 @@ Purpose: expand `docs/ui-vocabulary/terms.yml` without turning the glossary into
 ## Current Baseline
 
 - Source of truth: `docs/ui-vocabulary/terms.yml`
-- Current count: 237 terms
+- Current count: 257 terms
 - Website renderer: `examples/ui-vocabulary-site/src/components/term-visual.tsx`
 - Visual policy: every published term needs a recognizable mini mock. Interactive terms should expose a small local state change when clicked, typed into, opened, dismissed, or selected.
 
@@ -173,6 +173,29 @@ These should be the next dataset expansion because they are common in product UI
 - `payment-method-card`
 - `address-card`
 - `order-status`
+
+### Promoted In 2026-06-26 Step 11
+
+- `calendar-event-card`
+- `kanban-card`
+- `board-column`
+- `empty-search-result`
+- `onboarding-checklist`
+- `setup-progress`
+- `help-center-card`
+- `faq-list`
+- `announcement-banner`
+- `release-note-card`
+- `profile-card`
+- `team-member-row`
+- `role-badge`
+- `api-key-field`
+- `webhook-endpoint-row`
+- `integration-card`
+- `connection-card`
+- `billing-summary`
+- `invoice-row`
+- `version-history-list`
 
 ### Inputs
 

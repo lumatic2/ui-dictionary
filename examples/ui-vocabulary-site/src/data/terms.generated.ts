@@ -12384,6 +12384,1038 @@ export const terms = [
       }
     ],
     "confidence": "medium"
+  },
+  {
+    "id": "calendar-event-card",
+    "status": "draft",
+    "category": "data-display",
+    "ko": {
+      "name": "캘린더 이벤트 카드",
+      "aliases": [
+        "calendar event card",
+        "일정 카드",
+        "이벤트 카드"
+      ]
+    },
+    "en": {
+      "name": "Calendar event card",
+      "aliases": [
+        "Event card",
+        "Schedule card"
+      ]
+    },
+    "one_liner": "일정 하나의 제목, 시간, 장소, 참석 상태를 카드처럼 보여주는 UI.",
+    "description": "캘린더나 일정 목록에서 이벤트를 빠르게 확인하고 선택하게 한다.",
+    "visual_anatomy": [
+      "event title",
+      "time range",
+      "location",
+      "attendee status",
+      "color marker"
+    ],
+    "when_to_use": [
+      "일정 목록이나 캘린더 상세에서 이벤트 단위를 보여줄 때"
+    ],
+    "anti_use": [
+      "월/주 전체 배치는 calendar view가 더 정확하다"
+    ],
+    "prompt_phrases": [
+      "시간 장소 참석자가 있는 calendar event card를 만들어줘"
+    ],
+    "asset": {
+      "kind": "mini-mock",
+      "variant": "calendar-event-card",
+      "props": {
+        "selected": true
+      }
+    },
+    "sources": [
+      {
+        "source_id": "apple-hig-components",
+        "note": "event and calendar presentation"
+      }
+    ],
+    "confidence": "medium"
+  },
+  {
+    "id": "kanban-card",
+    "status": "draft",
+    "category": "data-display",
+    "ko": {
+      "name": "칸반 카드",
+      "aliases": [
+        "kanban card",
+        "보드 카드",
+        "작업 카드"
+      ]
+    },
+    "en": {
+      "name": "Kanban card",
+      "aliases": [
+        "Board card",
+        "Task card"
+      ]
+    },
+    "one_liner": "칸반 보드의 한 작업을 제목, 라벨, 담당자, 상태로 보여주는 카드.",
+    "description": "보드 컬럼 안에서 드래그하거나 열어볼 수 있는 작업 단위다.",
+    "visual_anatomy": [
+      "task title",
+      "labels",
+      "assignee avatar",
+      "metadata",
+      "drag affordance"
+    ],
+    "when_to_use": [
+      "작업 보드에서 항목 하나를 표현할 때"
+    ],
+    "anti_use": [
+      "보드 전체 구조는 kanban이나 board column으로 부른다"
+    ],
+    "prompt_phrases": [
+      "라벨과 담당자 아바타가 있는 kanban card를 넣어줘"
+    ],
+    "asset": {
+      "kind": "mini-mock",
+      "variant": "kanban-card",
+      "props": {
+        "labels": 2
+      }
+    },
+    "sources": [
+      {
+        "source_id": "atlassian-design-components",
+        "note": "card and board patterns"
+      }
+    ],
+    "confidence": "medium"
+  },
+  {
+    "id": "board-column",
+    "status": "draft",
+    "category": "structure",
+    "ko": {
+      "name": "보드 컬럼",
+      "aliases": [
+        "board column",
+        "칸반 컬럼",
+        "lane"
+      ]
+    },
+    "en": {
+      "name": "Board column",
+      "aliases": [
+        "Kanban column",
+        "Board lane"
+      ]
+    },
+    "one_liner": "칸반 보드에서 같은 상태의 카드를 세로로 묶는 열.",
+    "description": "할 일, 진행 중, 완료 같은 상태를 기준으로 카드 묶음을 보여준다.",
+    "visual_anatomy": [
+      "column header",
+      "item count",
+      "card stack",
+      "add card action"
+    ],
+    "when_to_use": [
+      "작업 상태별로 카드를 이동시키는 보드 화면에서"
+    ],
+    "anti_use": [
+      "단순 목록 그룹은 grouped list가 더 자연스럽다"
+    ],
+    "prompt_phrases": [
+      "할 일 진행 중 완료 board column을 만들어줘"
+    ],
+    "asset": {
+      "kind": "mini-mock",
+      "variant": "board-column",
+      "props": {
+        "count": 3
+      }
+    },
+    "sources": [
+      {
+        "source_id": "atlassian-design-components",
+        "note": "board and column composition"
+      }
+    ],
+    "confidence": "medium"
+  },
+  {
+    "id": "empty-search-result",
+    "status": "draft",
+    "category": "feedback",
+    "ko": {
+      "name": "검색 결과 없음",
+      "aliases": [
+        "empty search result",
+        "no results",
+        "검색 빈 상태"
+      ]
+    },
+    "en": {
+      "name": "Empty search result",
+      "aliases": [
+        "No results state",
+        "Empty results"
+      ]
+    },
+    "one_liner": "검색어에 맞는 결과가 없을 때 다음 행동을 안내하는 빈 상태.",
+    "description": "검색어 확인, 필터 해제, 새 항목 생성 같은 복구 행동을 제공한다.",
+    "visual_anatomy": [
+      "empty icon",
+      "query echo",
+      "suggestion text",
+      "clear filters action"
+    ],
+    "when_to_use": [
+      "검색이나 필터 결과가 0개일 때"
+    ],
+    "anti_use": [
+      "아직 데이터가 전혀 없는 상태는 empty state와 구분한다"
+    ],
+    "prompt_phrases": [
+      "검색어와 필터 초기화 버튼이 있는 empty search result를 보여줘"
+    ],
+    "asset": {
+      "kind": "mini-mock",
+      "variant": "empty-search-result",
+      "props": {
+        "query": true
+      }
+    },
+    "sources": [
+      {
+        "source_id": "material-m3-components",
+        "note": "empty and search states"
+      }
+    ],
+    "confidence": "high"
+  },
+  {
+    "id": "onboarding-checklist",
+    "status": "draft",
+    "category": "data-display",
+    "ko": {
+      "name": "온보딩 체크리스트",
+      "aliases": [
+        "onboarding checklist",
+        "시작 체크리스트",
+        "setup checklist"
+      ]
+    },
+    "en": {
+      "name": "Onboarding checklist",
+      "aliases": [
+        "Setup checklist",
+        "Getting started checklist"
+      ]
+    },
+    "one_liner": "사용자가 시작에 필요한 여러 작업을 순서대로 완료하게 돕는 체크리스트.",
+    "description": "계정 설정, 초대, 첫 프로젝트 생성 같은 초기 행동을 진행률과 함께 보여준다.",
+    "visual_anatomy": [
+      "checklist rows",
+      "completed check",
+      "progress count",
+      "next action"
+    ],
+    "when_to_use": [
+      "신규 사용자가 초기 설정을 마쳐야 제품 가치를 볼 수 있을 때"
+    ],
+    "anti_use": [
+      "단순 도움말 링크 목록은 help center card가 더 적합하다"
+    ],
+    "prompt_phrases": [
+      "3단계 온보딩 체크리스트와 진행률을 넣어줘"
+    ],
+    "asset": {
+      "kind": "mini-mock",
+      "variant": "onboarding-checklist",
+      "props": {
+        "completed": 2
+      }
+    },
+    "sources": [
+      {
+        "source_id": "atlassian-design-components",
+        "note": "onboarding and empty state guidance"
+      }
+    ],
+    "confidence": "medium"
+  },
+  {
+    "id": "setup-progress",
+    "status": "draft",
+    "category": "feedback",
+    "ko": {
+      "name": "설정 진행률",
+      "aliases": [
+        "setup progress",
+        "설정 완료도",
+        "setup completion"
+      ]
+    },
+    "en": {
+      "name": "Setup progress",
+      "aliases": [
+        "Setup completion",
+        "Configuration progress"
+      ]
+    },
+    "one_liner": "제품 설정이나 계정 준비가 몇 퍼센트 완료됐는지 보여주는 상태.",
+    "description": "남은 설정 항목과 완료율을 보여줘 다음 행동을 유도한다.",
+    "visual_anatomy": [
+      "progress meter",
+      "completed count",
+      "remaining task",
+      "continue action"
+    ],
+    "when_to_use": [
+      "초기 설정이나 연동 설정이 여러 단계로 나뉠 때"
+    ],
+    "anti_use": [
+      "일회성 로딩 진행률에는 progress bar가 더 정확하다"
+    ],
+    "prompt_phrases": [
+      "설정 완료도 60% setup progress를 보여줘"
+    ],
+    "asset": {
+      "kind": "mini-mock",
+      "variant": "setup-progress",
+      "props": {
+        "percent": 60
+      }
+    },
+    "sources": [
+      {
+        "source_id": "material-m3-components",
+        "note": "progress indicators"
+      }
+    ],
+    "confidence": "high"
+  },
+  {
+    "id": "help-center-card",
+    "status": "draft",
+    "category": "data-display",
+    "ko": {
+      "name": "도움말 센터 카드",
+      "aliases": [
+        "help center card",
+        "도움말 카드",
+        "support card"
+      ]
+    },
+    "en": {
+      "name": "Help center card",
+      "aliases": [
+        "Support card",
+        "Help article card"
+      ]
+    },
+    "one_liner": "도움말 문서나 지원 주제를 카드로 안내하는 UI.",
+    "description": "제목, 설명, 카테고리, 이동 행동을 통해 사용자를 관련 도움말로 보낸다.",
+    "visual_anatomy": [
+      "help icon",
+      "title",
+      "description",
+      "category",
+      "link action"
+    ],
+    "when_to_use": [
+      "설정이나 빈 상태에서 사용자가 도움말로 이동해야 할 때"
+    ],
+    "anti_use": [
+      "질문과 답을 바로 펼치려면 FAQ list가 더 적합하다"
+    ],
+    "prompt_phrases": [
+      "결제 도움말로 이동하는 help center card를 넣어줘"
+    ],
+    "asset": {
+      "kind": "mini-mock",
+      "variant": "help-center-card",
+      "props": {
+        "link": true
+      }
+    },
+    "sources": [
+      {
+        "source_id": "material-m3-components",
+        "note": "cards and supporting content"
+      }
+    ],
+    "confidence": "medium"
+  },
+  {
+    "id": "faq-list",
+    "status": "draft",
+    "category": "data-display",
+    "ko": {
+      "name": "FAQ 목록",
+      "aliases": [
+        "faq list",
+        "자주 묻는 질문",
+        "질문 목록"
+      ]
+    },
+    "en": {
+      "name": "FAQ list",
+      "aliases": [
+        "Frequently asked questions list",
+        "Q&A list"
+      ]
+    },
+    "one_liner": "자주 묻는 질문을 접고 펼칠 수 있는 질문/답변 목록.",
+    "description": "사용자가 도움말 페이지 안에서 짧은 답을 빠르게 확인하게 한다.",
+    "visual_anatomy": [
+      "question row",
+      "expand icon",
+      "answer panel",
+      "grouped topics"
+    ],
+    "when_to_use": [
+      "반복 질문에 대한 짧은 답을 페이지 안에서 제공할 때"
+    ],
+    "anti_use": [
+      "긴 문서는 help article이나 documentation page로 분리한다"
+    ],
+    "prompt_phrases": [
+      "질문을 누르면 답이 펼쳐지는 FAQ list를 만들어줘"
+    ],
+    "asset": {
+      "kind": "mini-mock",
+      "variant": "faq-list",
+      "props": {
+        "open": true
+      }
+    },
+    "sources": [
+      {
+        "source_id": "wai-aria-apg-patterns",
+        "note": "accordion disclosure behavior"
+      }
+    ],
+    "confidence": "high"
+  },
+  {
+    "id": "announcement-banner",
+    "status": "draft",
+    "category": "feedback",
+    "ko": {
+      "name": "공지 배너",
+      "aliases": [
+        "announcement banner",
+        "공지사항 배너",
+        "notice banner"
+      ]
+    },
+    "en": {
+      "name": "Announcement banner",
+      "aliases": [
+        "Notice banner",
+        "Announcement bar"
+      ]
+    },
+    "one_liner": "제품 공지, 변경사항, 이벤트를 눈에 띄게 알리는 배너.",
+    "description": "중요한 안내를 페이지 상단이나 섹션 상단에 배치하고 자세히 보기 행동을 제공한다.",
+    "visual_anatomy": [
+      "announcement text",
+      "icon",
+      "link action",
+      "dismiss action"
+    ],
+    "when_to_use": [
+      "사용자가 알아야 하는 제품 공지나 일시적 안내가 있을 때"
+    ],
+    "anti_use": [
+      "사용자 작업 실패나 오류에는 error toast/alert가 더 정확하다"
+    ],
+    "prompt_phrases": [
+      "상단에 닫을 수 있는 announcement banner를 넣어줘"
+    ],
+    "asset": {
+      "kind": "mini-mock",
+      "variant": "announcement-banner",
+      "props": {
+        "dismissible": true
+      }
+    },
+    "sources": [
+      {
+        "source_id": "atlassian-design-components",
+        "note": "banner communication"
+      }
+    ],
+    "confidence": "high"
+  },
+  {
+    "id": "release-note-card",
+    "status": "draft",
+    "category": "data-display",
+    "ko": {
+      "name": "릴리즈 노트 카드",
+      "aliases": [
+        "release note card",
+        "업데이트 카드",
+        "변경사항 카드"
+      ]
+    },
+    "en": {
+      "name": "Release note card",
+      "aliases": [
+        "Update card",
+        "Changelog card"
+      ]
+    },
+    "one_liner": "제품 업데이트 내용을 버전, 날짜, 주요 변경과 함께 보여주는 카드.",
+    "description": "변경 이력이나 새 기능 안내에서 항목 하나를 구조적으로 보여준다.",
+    "visual_anatomy": [
+      "version label",
+      "date",
+      "change summary",
+      "tags",
+      "read more action"
+    ],
+    "when_to_use": [
+      "제품 업데이트나 changelog 항목을 카드로 나열할 때"
+    ],
+    "anti_use": [
+      "감사/보안 로그는 audit log가 더 엄격하다"
+    ],
+    "prompt_phrases": [
+      "버전 날짜 변경 요약이 있는 release note card를 만들어줘"
+    ],
+    "asset": {
+      "kind": "mini-mock",
+      "variant": "release-note-card",
+      "props": {
+        "version": true
+      }
+    },
+    "sources": [
+      {
+        "source_id": "material-m3-components",
+        "note": "card content patterns"
+      }
+    ],
+    "confidence": "medium"
+  },
+  {
+    "id": "profile-card",
+    "status": "draft",
+    "category": "data-display",
+    "ko": {
+      "name": "프로필 카드",
+      "aliases": [
+        "profile card",
+        "사용자 카드",
+        "person card"
+      ]
+    },
+    "en": {
+      "name": "Profile card",
+      "aliases": [
+        "User card",
+        "Person card"
+      ]
+    },
+    "one_liner": "사용자 아바타, 이름, 역할, 연락 행동을 묶은 카드.",
+    "description": "팀, 작성자, 고객, 담당자 정보를 카드 형태로 보여준다.",
+    "visual_anatomy": [
+      "avatar",
+      "name",
+      "role",
+      "metadata",
+      "contact action"
+    ],
+    "when_to_use": [
+      "사람 정보를 눈에 띄는 카드로 보여줘야 할 때"
+    ],
+    "anti_use": [
+      "테이블 행 안의 짧은 사용자 정보는 avatar와 text만으로 충분하다"
+    ],
+    "prompt_phrases": [
+      "아바타 이름 역할 버튼이 있는 profile card를 만들어줘"
+    ],
+    "asset": {
+      "kind": "mini-mock",
+      "variant": "profile-card",
+      "props": {
+        "action": true
+      }
+    },
+    "sources": [
+      {
+        "source_id": "material-m3-components",
+        "note": "card and avatar composition"
+      }
+    ],
+    "confidence": "high"
+  },
+  {
+    "id": "team-member-row",
+    "status": "draft",
+    "category": "data-display",
+    "ko": {
+      "name": "팀원 행",
+      "aliases": [
+        "team member row",
+        "멤버 행",
+        "user row"
+      ]
+    },
+    "en": {
+      "name": "Team member row",
+      "aliases": [
+        "Member row",
+        "User row"
+      ]
+    },
+    "one_liner": "팀원 한 명의 아바타, 이름, 이메일, 역할, 상태를 한 줄로 보여주는 행.",
+    "description": "멤버 관리 화면에서 권한 변경, 초대 상태, 제거 행동을 함께 제공한다.",
+    "visual_anatomy": [
+      "avatar",
+      "name and email",
+      "role selector",
+      "status",
+      "row actions"
+    ],
+    "when_to_use": [
+      "팀 관리 목록에서 사용자별 정보를 조작해야 할 때"
+    ],
+    "anti_use": [
+      "사람을 홍보하거나 소개하는 영역은 profile card가 더 적합하다"
+    ],
+    "prompt_phrases": [
+      "역할 셀렉트와 초대 상태가 있는 team member row를 만들어줘"
+    ],
+    "asset": {
+      "kind": "mini-mock",
+      "variant": "team-member-row",
+      "props": {
+        "role": true
+      }
+    },
+    "sources": [
+      {
+        "source_id": "atlassian-design-components",
+        "note": "user and team management rows"
+      }
+    ],
+    "confidence": "medium"
+  },
+  {
+    "id": "role-badge",
+    "status": "draft",
+    "category": "feedback",
+    "ko": {
+      "name": "역할 배지",
+      "aliases": [
+        "role badge",
+        "권한 배지",
+        "member role badge"
+      ]
+    },
+    "en": {
+      "name": "Role badge",
+      "aliases": [
+        "Permission badge",
+        "Member role badge"
+      ]
+    },
+    "one_liner": "관리자, 편집자, 뷰어 같은 사용자 역할을 작은 배지로 표시하는 UI.",
+    "description": "팀원 목록, 댓글, 프로필에서 사용자 권한 수준을 빠르게 구분한다.",
+    "visual_anatomy": [
+      "role label",
+      "badge shape",
+      "permission tone",
+      "optional icon"
+    ],
+    "when_to_use": [
+      "역할이 화면 이해나 조작 권한에 중요할 때"
+    ],
+    "anti_use": [
+      "상태 진행을 표현하려면 status chip이 더 일반적이다"
+    ],
+    "prompt_phrases": [
+      "관리자 편집자 뷰어 role badge를 표시해줘"
+    ],
+    "asset": {
+      "kind": "mini-mock",
+      "variant": "role-badge",
+      "props": {
+        "role": "admin"
+      }
+    },
+    "sources": [
+      {
+        "source_id": "material-m3-components",
+        "note": "badges and chips for compact labels"
+      }
+    ],
+    "confidence": "medium"
+  },
+  {
+    "id": "api-key-field",
+    "status": "draft",
+    "category": "input",
+    "ko": {
+      "name": "API 키 필드",
+      "aliases": [
+        "api key field",
+        "secret key field",
+        "키 표시 필드"
+      ]
+    },
+    "en": {
+      "name": "API key field",
+      "aliases": [
+        "Secret key field",
+        "Token field"
+      ]
+    },
+    "one_liner": "민감한 API 키를 숨김 표시하고 복사하거나 재생성할 수 있는 필드.",
+    "description": "개발자 설정에서 키 값을 노출하지 않으면서 필요한 행동을 제공한다.",
+    "visual_anatomy": [
+      "masked value",
+      "reveal toggle",
+      "copy action",
+      "rotate action"
+    ],
+    "when_to_use": [
+      "토큰이나 secret을 사용자가 확인/복사해야 할 때"
+    ],
+    "anti_use": [
+      "일반 텍스트 값은 copy field가 더 단순하다"
+    ],
+    "prompt_phrases": [
+      "숨김 표시와 복사 버튼이 있는 API key field를 넣어줘"
+    ],
+    "asset": {
+      "kind": "mini-mock",
+      "variant": "api-key-field",
+      "props": {
+        "masked": true
+      }
+    },
+    "sources": [
+      {
+        "source_id": "shadcn-ui-docs",
+        "note": "input and button composition"
+      }
+    ],
+    "confidence": "high"
+  },
+  {
+    "id": "webhook-endpoint-row",
+    "status": "draft",
+    "category": "data-display",
+    "ko": {
+      "name": "웹훅 엔드포인트 행",
+      "aliases": [
+        "webhook endpoint row",
+        "webhook row",
+        "엔드포인트 행"
+      ]
+    },
+    "en": {
+      "name": "Webhook endpoint row",
+      "aliases": [
+        "Webhook row",
+        "Endpoint row"
+      ]
+    },
+    "one_liner": "웹훅 URL, 이벤트, 상태, 마지막 전송 결과를 한 줄로 보여주는 행.",
+    "description": "개발자 설정에서 웹훅 연결 상태와 테스트/비활성화 행동을 관리한다.",
+    "visual_anatomy": [
+      "endpoint url",
+      "event tags",
+      "status",
+      "last delivery",
+      "actions"
+    ],
+    "when_to_use": [
+      "여러 웹훅 엔드포인트를 관리하는 설정 화면에서"
+    ],
+    "anti_use": [
+      "단일 URL 입력만 필요하면 text field나 copy field로 충분하다"
+    ],
+    "prompt_phrases": [
+      "이벤트 태그와 테스트 버튼이 있는 webhook endpoint row를 만들어줘"
+    ],
+    "asset": {
+      "kind": "mini-mock",
+      "variant": "webhook-endpoint-row",
+      "props": {
+        "status": "active"
+      }
+    },
+    "sources": [
+      {
+        "source_id": "carbon-design-components",
+        "note": "structured rows and status display"
+      }
+    ],
+    "confidence": "medium"
+  },
+  {
+    "id": "integration-card",
+    "status": "draft",
+    "category": "data-display",
+    "ko": {
+      "name": "연동 카드",
+      "aliases": [
+        "integration card",
+        "앱 연동 카드",
+        "integration tile"
+      ]
+    },
+    "en": {
+      "name": "Integration card",
+      "aliases": [
+        "App integration card",
+        "Integration tile"
+      ]
+    },
+    "one_liner": "외부 서비스 연동의 로고, 이름, 설명, 연결 행동을 보여주는 카드.",
+    "description": "Slack, Notion, GitHub 같은 연동을 탐색하고 연결 상태를 확인하게 한다.",
+    "visual_anatomy": [
+      "service logo",
+      "integration name",
+      "description",
+      "connect action",
+      "status"
+    ],
+    "when_to_use": [
+      "여러 외부 연동 옵션을 카드로 보여줄 때"
+    ],
+    "anti_use": [
+      "이미 연결된 인스턴스 하나는 connection card가 더 구체적이다"
+    ],
+    "prompt_phrases": [
+      "Slack 로고와 연결 버튼이 있는 integration card를 만들어줘"
+    ],
+    "asset": {
+      "kind": "mini-mock",
+      "variant": "integration-card",
+      "props": {
+        "connected": false
+      }
+    },
+    "sources": [
+      {
+        "source_id": "material-m3-components",
+        "note": "cards and action composition"
+      }
+    ],
+    "confidence": "medium"
+  },
+  {
+    "id": "connection-card",
+    "status": "draft",
+    "category": "data-display",
+    "ko": {
+      "name": "연결 카드",
+      "aliases": [
+        "connection card",
+        "연결된 계정 카드",
+        "connected account card"
+      ]
+    },
+    "en": {
+      "name": "Connection card",
+      "aliases": [
+        "Connected account card",
+        "Account connection card"
+      ]
+    },
+    "one_liner": "이미 연결된 외부 계정이나 서비스 인스턴스의 상태를 보여주는 카드.",
+    "description": "계정명, 연결 상태, 동기화 시각, 연결 해제 행동을 제공한다.",
+    "visual_anatomy": [
+      "service identity",
+      "connected account",
+      "sync status",
+      "disconnect action"
+    ],
+    "when_to_use": [
+      "연결된 외부 계정의 상태와 관리 행동이 필요할 때"
+    ],
+    "anti_use": [
+      "연동 후보 목록은 integration card가 더 적합하다"
+    ],
+    "prompt_phrases": [
+      "연결됨 상태와 해제 버튼이 있는 connection card를 넣어줘"
+    ],
+    "asset": {
+      "kind": "mini-mock",
+      "variant": "connection-card",
+      "props": {
+        "synced": true
+      }
+    },
+    "sources": [
+      {
+        "source_id": "atlassian-design-components",
+        "note": "integration management patterns"
+      }
+    ],
+    "confidence": "medium"
+  },
+  {
+    "id": "billing-summary",
+    "status": "draft",
+    "category": "data-display",
+    "ko": {
+      "name": "결제 요약",
+      "aliases": [
+        "billing summary",
+        "청구 요약",
+        "billing overview"
+      ]
+    },
+    "en": {
+      "name": "Billing summary",
+      "aliases": [
+        "Billing overview",
+        "Subscription summary"
+      ]
+    },
+    "one_liner": "현재 플랜, 다음 청구일, 결제 금액, 결제수단을 요약하는 영역.",
+    "description": "계정 설정에서 구독과 청구 상태를 한눈에 확인하게 한다.",
+    "visual_anatomy": [
+      "current plan",
+      "next invoice date",
+      "amount",
+      "payment method",
+      "manage action"
+    ],
+    "when_to_use": [
+      "구독 설정이나 계정 결제 화면의 상단 요약에서"
+    ],
+    "anti_use": [
+      "장바구니 결제 전 합계는 cart summary가 더 정확하다"
+    ],
+    "prompt_phrases": [
+      "플랜 다음 청구일 결제수단이 있는 billing summary를 만들어줘"
+    ],
+    "asset": {
+      "kind": "mini-mock",
+      "variant": "billing-summary",
+      "props": {
+        "plan": "Pro"
+      }
+    },
+    "sources": [
+      {
+        "source_id": "carbon-design-components",
+        "note": "structured summary card patterns"
+      }
+    ],
+    "confidence": "medium"
+  },
+  {
+    "id": "invoice-row",
+    "status": "draft",
+    "category": "data-display",
+    "ko": {
+      "name": "인보이스 행",
+      "aliases": [
+        "invoice row",
+        "청구서 행",
+        "billing row"
+      ]
+    },
+    "en": {
+      "name": "Invoice row",
+      "aliases": [
+        "Billing row",
+        "Invoice list row"
+      ]
+    },
+    "one_liner": "청구서의 날짜, 금액, 상태, 다운로드 행동을 한 줄로 보여주는 행.",
+    "description": "결제 내역 목록에서 각 인보이스를 확인하고 PDF를 내려받게 한다.",
+    "visual_anatomy": [
+      "invoice date",
+      "amount",
+      "status",
+      "invoice number",
+      "download action"
+    ],
+    "when_to_use": [
+      "청구 내역이나 영수증 목록을 보여줄 때"
+    ],
+    "anti_use": [
+      "결제 예정 요약은 billing summary가 더 적합하다"
+    ],
+    "prompt_phrases": [
+      "상태 배지와 PDF 다운로드가 있는 invoice row를 넣어줘"
+    ],
+    "asset": {
+      "kind": "mini-mock",
+      "variant": "invoice-row",
+      "props": {
+        "downloadable": true
+      }
+    },
+    "sources": [
+      {
+        "source_id": "carbon-design-components",
+        "note": "data table and list row status patterns"
+      }
+    ],
+    "confidence": "medium"
+  },
+  {
+    "id": "version-history-list",
+    "status": "draft",
+    "category": "data-display",
+    "ko": {
+      "name": "버전 히스토리 목록",
+      "aliases": [
+        "version history list",
+        "버전 기록",
+        "revision list"
+      ]
+    },
+    "en": {
+      "name": "Version history list",
+      "aliases": [
+        "Revision list",
+        "Version history"
+      ]
+    },
+    "one_liner": "문서나 디자인의 저장 버전을 시간순으로 보여주는 목록.",
+    "description": "버전 시간, 작성자, 변경 요약, 복원 행동을 함께 제공한다.",
+    "visual_anatomy": [
+      "version timestamp",
+      "author",
+      "change summary",
+      "restore action"
+    ],
+    "when_to_use": [
+      "문서",
+      "디자인",
+      "설정의 이전 버전을 확인하거나 복원해야 할 때"
+    ],
+    "anti_use": [
+      "보안 추적 목적이면 audit log가 더 엄격하다"
+    ],
+    "prompt_phrases": [
+      "복원 버튼이 있는 version history list를 만들어줘"
+    ],
+    "asset": {
+      "kind": "mini-mock",
+      "variant": "version-history-list",
+      "props": {
+        "restore": true
+      }
+    },
+    "sources": [
+      {
+        "source_id": "atlassian-design-components",
+        "note": "history and activity display patterns"
+      }
+    ],
+    "confidence": "medium"
   }
 ] satisfies VocabularyTerm[]
 
