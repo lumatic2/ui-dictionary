@@ -15,6 +15,7 @@ type TermCardProps = {
 export function TermCard({ term, index, selected, onSelect }: TermCardProps) {
   return (
     <Card
+      data-print-card
       className={cn(
         "overflow-hidden rounded-lg transition hover:border-primary/40 hover:shadow-md",
         selected && "border-primary shadow-md"

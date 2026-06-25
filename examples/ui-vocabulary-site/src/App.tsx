@@ -1,5 +1,5 @@
 import { useMemo, useState } from "react"
-import { BookOpen, Search, X } from "lucide-react"
+import { BookOpen, Download, Search, X } from "lucide-react"
 import { Badge } from "@/components/ui/badge"
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
@@ -31,6 +31,10 @@ function App() {
     setDetailOpen(true)
   }
 
+  function saveAsPdf() {
+    window.print()
+  }
+
   return (
     <main className="min-h-svh bg-background">
       <section className="mx-auto flex w-full max-w-7xl flex-col gap-8 px-5 py-8 md:px-8 lg:px-10">
@@ -47,12 +51,18 @@ function App() {
                 </h1>
               </div>
             </div>
-            <Badge variant="secondary" className="rounded-md px-3 py-1 text-sm">
-              {filteredTerms.length} / {terms.length} terms
-            </Badge>
+            <div className="flex items-center gap-2">
+              <Badge variant="secondary" className="rounded-md px-3 py-1 text-sm">
+                {filteredTerms.length} / {terms.length} terms
+              </Badge>
+              <Button className="h-9 rounded-md" size="sm" variant="outline" onClick={saveAsPdf}>
+                <Download aria-hidden="true" />
+                PDF로 저장
+              </Button>
+            </div>
           </div>
 
-          <div className="grid gap-4 md:grid-cols-[minmax(0,1fr)_auto] md:items-center">
+          <div className="grid gap-4 md:grid-cols-[minmax(0,1fr)_auto] md:items-center" data-print-hidden>
             <div className="relative">
               <Search className="pointer-events-none absolute left-3 top-1/2 size-4 -translate-y-1/2 text-muted-foreground" />
               <Input
@@ -100,7 +110,7 @@ function App() {
         <Separator />
 
         {filteredTerms.length > 0 ? (
-          <section className="grid gap-4 md:grid-cols-2 xl:grid-cols-3">
+          <section className="grid gap-4 md:grid-cols-2 xl:grid-cols-3" data-print-grid>
             {filteredTerms.map((term, index) => (
               <TermCard
                 key={term.id}

@@ -80,3 +80,48 @@ textarea,
 select {
   font: inherit;
 }
+
+@media print {
+  @page {
+    margin: 12mm;
+    size: A4 portrait;
+  }
+
+  :root {
+    --background: oklch(1 0 0);
+  }
+
+  html,
+  body {
+    background: white;
+  }
+
+  [data-print-hidden] {
+    display: none !important;
+  }
+
+  main {
+    min-height: auto !important;
+  }
+
+  main > section {
+    max-width: none !important;
+    gap: 16px !important;
+    padding: 0 !important;
+  }
+
+  header {
+    gap: 12px !important;
+  }
+
+  [data-print-grid] {
+    display: grid !important;
+    grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+    gap: 10px !important;
+  }
+
+  [data-print-card] {
+    break-inside: avoid;
+    box-shadow: none !important;
+  }
+}
