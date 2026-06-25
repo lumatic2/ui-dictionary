@@ -1,3 +1,4 @@
+import { useState } from "react"
 import {
   AlertTriangle,
   Bell,
@@ -34,6 +35,10 @@ import {
   User,
   X,
 } from "lucide-react"
+import { Checkbox } from "@/components/ui/checkbox"
+import { Slider } from "@/components/ui/slider"
+import { Switch } from "@/components/ui/switch"
+import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
 import { cn } from "@/lib/utils"
 
 type TermVisualProps = {
@@ -50,7 +55,7 @@ export function TermVisual({ variant, label, size = "card" }: TermVisualProps) {
   const visualClass = size === "detail" ? "scale-125" : ""
 
   return (
-    <div className={canvasClass}>
+    <div className={canvasClass} onClick={(event) => event.stopPropagation()} onKeyDown={(event) => event.stopPropagation()}>
       <div className={cn("origin-center", visualClass)}>{renderVisual(variant, label)}</div>
     </div>
   )
@@ -198,10 +203,41 @@ function TextareaVisual() {
 }
 
 function SelectVisual() {
+  const [selected, setSelected] = useState("옵션 A")
+  const [open, setOpen] = useState(false)
+  const options = ["옵션 A", "옵션 B", "옵션 C"]
+
   return (
-    <Chrome className="flex h-10 w-48 items-center justify-between px-3 text-sm">
-      <span>옵션 선택</span>
-      <ChevronDown aria-hidden="true" />
+    <Chrome className="relative w-48">
+      <button
+        type="button"
+        className="flex h-10 w-full items-center justify-between px-3 text-sm"
+        onClick={() => setOpen((value) => !value)}
+      >
+        <span>{selected}</span>
+        <ChevronDown aria-hidden="true" />
+      </button>
+      {open && (
+        <div className="absolute left-0 right-0 top-11 z-10 rounded-md border bg-popover p-1 text-sm shadow-md">
+          {options.map((option) => (
+            <button
+              key={option}
+              type="button"
+              className={cn(
+                "flex w-full items-center justify-between rounded px-2 py-1.5 text-left",
+                option === selected && "bg-primary text-primary-foreground"
+              )}
+              onClick={() => {
+                setSelected(option)
+                setOpen(false)
+              }}
+            >
+              {option}
+              {option === selected && <Check aria-hidden="true" />}
+            </button>
+          ))}
+        </div>
+      )}
     </Chrome>
   )
 }
@@ -222,45 +258,53 @@ function ComboBox() {
 }
 
 function CheckboxVisual() {
+  const [checked, setChecked] = useState(true)
+
   return (
     <div className="flex items-center gap-3 text-sm">
-      <span className="flex size-5 items-center justify-center rounded border bg-primary text-primary-foreground">
-        <Check aria-hidden="true" />
-      </span>
-      <span>여러 개 선택</span>
+      <Checkbox checked={checked} onCheckedChange={(value) => setChecked(value === true)} />
+      <button type="button" className="text-left" onClick={() => setChecked((value) => !value)}>
+        {checked ? "선택됨" : "선택 안 됨"}
+      </button>
     </div>
   )
 }
 
 function RadioGroupVisual() {
+  const [selected, setSelected] = useState("옵션 A")
+
   return (
     <div className="flex flex-col gap-2 text-sm">
-      {["옵션 A", "옵션 B"].map((item, index) => (
-        <span key={item} className="flex items-center gap-2">
+      {["옵션 A", "옵션 B"].map((item) => (
+        <button key={item} type="button" className="flex items-center gap-2 text-left" onClick={() => setSelected(item)}>
           <span className="flex size-4 items-center justify-center rounded-full border">
-            {index === 0 && <span className="size-2 rounded-full bg-primary" />}
+            {selected === item && <span className="size-2 rounded-full bg-primary" />}
           </span>
           {item}
-        </span>
+        </button>
       ))}
     </div>
   )
 }
 
 function SwitchVisual() {
+  const [checked, setChecked] = useState(true)
+
   return (
-    <div className="flex h-7 w-12 items-center justify-end rounded-full bg-primary p-1">
-      <div className="size-5 rounded-full bg-primary-foreground" />
+    <div className="flex items-center gap-3 text-sm">
+      <Switch checked={checked} onCheckedChange={setChecked} />
+      <span className="w-7 text-muted-foreground">{checked ? "ON" : "OFF"}</span>
     </div>
   )
 }
 
 function SliderVisual() {
+  const [value, setValue] = useState([64])
+
   return (
-    <div className="relative h-6 w-48">
-      <div className="absolute left-0 top-3 h-1 w-full rounded bg-muted" />
-      <div className="absolute left-0 top-3 h-1 w-2/3 rounded bg-primary" />
-      <div className="absolute left-[62%] top-1.5 size-4 rounded-full border bg-card shadow" />
+    <div className="flex w-48 items-center gap-3">
+      <Slider value={value} onValueChange={setValue} max={100} step={1} />
+      <span className="w-8 text-right text-xs text-muted-foreground">{value[0]}</span>
     </div>
   )
 }
@@ -293,39 +337,71 @@ function FileUpload() {
 }
 
 function TabsVisual() {
+  const [tab, setTab] = useState("one")
+
   return (
     <Chrome className="w-48 p-2">
-      <div className="grid grid-cols-3 gap-1 rounded bg-muted p-1 text-center text-xs">
-        <span className="rounded bg-card py-1 shadow-sm">탭 1</span>
-        <span className="py-1 text-muted-foreground">탭 2</span>
-        <span className="py-1 text-muted-foreground">탭 3</span>
-      </div>
-      <Line className="mt-3 w-28" />
+      <Tabs value={tab} onValueChange={setTab}>
+        <TabsList className="grid w-full grid-cols-3 text-xs">
+          <TabsTrigger value="one">탭 1</TabsTrigger>
+          <TabsTrigger value="two">탭 2</TabsTrigger>
+          <TabsTrigger value="three">탭 3</TabsTrigger>
+        </TabsList>
+        <TabsContent value="one"><Line className="mt-2 w-24" /></TabsContent>
+        <TabsContent value="two"><Line className="mt-2 w-32" /></TabsContent>
+        <TabsContent value="three"><Line className="mt-2 w-16" /></TabsContent>
+      </Tabs>
     </Chrome>
   )
 }
 
 function SegmentedControl() {
+  const [selected, setSelected] = useState("옵션2")
+
   return (
     <div className="grid w-48 grid-cols-3 rounded-md border bg-muted p-1 text-center text-xs">
-      <span className="py-1 text-muted-foreground">옵션1</span>
-      <span className="rounded bg-card py-1 shadow-sm">옵션2</span>
-      <span className="py-1 text-muted-foreground">옵션3</span>
+      {["옵션1", "옵션2", "옵션3"].map((option) => (
+        <button
+          key={option}
+          type="button"
+          className={cn("rounded py-1", selected === option ? "bg-card shadow-sm" : "text-muted-foreground")}
+          onClick={() => setSelected(option)}
+        >
+          {option}
+        </button>
+      ))}
     </div>
   )
 }
 
 function DropdownMenuVisual() {
+  const [open, setOpen] = useState(true)
+  const [selected, setSelected] = useState("최신순")
+
   return (
     <Chrome className="w-44 overflow-hidden">
-      <div className="flex h-9 items-center justify-between border-b px-3 text-sm">
-        <span>정렬</span>
+      <button
+        type="button"
+        className="flex h-9 w-full items-center justify-between border-b px-3 text-sm"
+        onClick={() => setOpen((value) => !value)}
+      >
+        <span>{selected}</span>
         <ChevronDown aria-hidden="true" />
-      </div>
-      <div className="flex flex-col p-1 text-xs">
-        <span className="rounded bg-muted px-2 py-1">최신순</span>
-        <span className="px-2 py-1">인기순</span>
-      </div>
+      </button>
+      {open && (
+        <div className="flex flex-col p-1 text-xs">
+          {["최신순", "인기순"].map((option) => (
+            <button
+              key={option}
+              type="button"
+              className={cn("rounded px-2 py-1 text-left", option === selected && "bg-muted")}
+              onClick={() => setSelected(option)}
+            >
+              {option}
+            </button>
+          ))}
+        </div>
+      )}
     </Chrome>
   )
 }
@@ -471,12 +547,24 @@ function CardVisual() {
 }
 
 function DialogVisual() {
+  const [open, setOpen] = useState(true)
+
   return (
     <div className="relative h-28 w-52 rounded-md bg-foreground/10 p-4">
-      <Chrome className="absolute left-1/2 top-1/2 w-40 -translate-x-1/2 -translate-y-1/2 p-3">
-        <div className="flex items-center justify-between"><Line className="w-20" /><X aria-hidden="true" /></div>
-        <Line className="mt-3 w-32" />
-      </Chrome>
+      <button type="button" className="rounded-md border bg-card px-3 py-1 text-sm" onClick={() => setOpen(true)}>
+        열기
+      </button>
+      {open && (
+        <Chrome className="absolute left-1/2 top-1/2 w-40 -translate-x-1/2 -translate-y-1/2 p-3">
+          <div className="flex items-center justify-between">
+            <Line className="w-20" />
+            <button type="button" aria-label="닫기" onClick={() => setOpen(false)}>
+              <X aria-hidden="true" />
+            </button>
+          </div>
+          <Line className="mt-3 w-32" />
+        </Chrome>
+      )}
     </div>
   )
 }
@@ -518,11 +606,33 @@ function ListVisual() {
 }
 
 function AccordionVisual() {
-  return <Chrome className="w-48 divide-y"><AccRow open text="첫 항목" /><AccRow text="둘째 항목" /><AccRow text="셋째 항목" /></Chrome>
+  const [openItem, setOpenItem] = useState("첫 항목")
+  const items = ["첫 항목", "둘째 항목", "셋째 항목"]
+
+  return (
+    <Chrome className="w-48 divide-y">
+      {items.map((item) => (
+        <AccRow
+          key={item}
+          open={openItem === item}
+          text={item}
+          onToggle={() => setOpenItem((current) => (current === item ? "" : item))}
+        />
+      ))}
+    </Chrome>
+  )
 }
 
-function AccRow({ text, open }: { text: string; open?: boolean }) {
-  return <div className="p-2 text-xs"><div className="flex justify-between"><span>{text}</span><ChevronDown aria-hidden="true" /></div>{open && <Line className="mt-2 w-28" />}</div>
+function AccRow({ text, open, onToggle }: { text: string; open?: boolean; onToggle: () => void }) {
+  return (
+    <div className="p-2 text-xs">
+      <button type="button" className="flex w-full justify-between text-left" onClick={onToggle}>
+        <span>{text}</span>
+        <ChevronDown aria-hidden="true" className={cn("transition-transform", open && "rotate-180")} />
+      </button>
+      {open && <Line className="mt-2 w-28" />}
+    </div>
+  )
 }
 
 function CarouselVisual() {
@@ -534,7 +644,24 @@ function TooltipVisual() {
 }
 
 function ToastVisual() {
-  return <Chrome className="flex w-48 items-center justify-between px-3 py-2 text-sm"><span className="flex items-center gap-2"><Check aria-hidden="true" />저장되었습니다!</span><X aria-hidden="true" /></Chrome>
+  const [visible, setVisible] = useState(true)
+
+  if (!visible) {
+    return (
+      <button type="button" className="rounded-md border bg-card px-3 py-2 text-sm shadow-sm" onClick={() => setVisible(true)}>
+        토스트 보기
+      </button>
+    )
+  }
+
+  return (
+    <Chrome className="flex w-48 items-center justify-between px-3 py-2 text-sm">
+      <span className="flex items-center gap-2"><Check aria-hidden="true" />저장되었습니다!</span>
+      <button type="button" aria-label="토스트 닫기" onClick={() => setVisible(false)}>
+        <X aria-hidden="true" />
+      </button>
+    </Chrome>
+  )
 }
 
 function AlertVisual() {
@@ -646,7 +773,15 @@ function PasswordField() {
 }
 
 function NumberInput() {
-  return <Chrome className="flex h-10 w-36 items-center justify-between overflow-hidden text-sm"><button className="h-full border-r px-3">-</button><span>3</span><button className="h-full border-l px-3">+</button></Chrome>
+  const [value, setValue] = useState(3)
+
+  return (
+    <Chrome className="flex h-10 w-36 items-center justify-between overflow-hidden text-sm">
+      <button type="button" className="h-full border-r px-3" onClick={() => setValue((current) => Math.max(0, current - 1))}>-</button>
+      <span>{value}</span>
+      <button type="button" className="h-full border-l px-3" onClick={() => setValue((current) => current + 1)}>+</button>
+    </Chrome>
+  )
 }
 
 function OtpInput() {
