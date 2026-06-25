@@ -180,24 +180,52 @@ function Line({ className }: { className?: string }) {
 }
 
 function TextField() {
-  return <Chrome className="flex h-10 w-48 items-center px-3 text-sm text-muted-foreground">입력값</Chrome>
+  const [value, setValue] = useState("입력값")
+
+  return (
+    <Chrome className="flex h-10 w-48 items-center px-3 text-sm">
+      <input
+        aria-label="텍스트 입력 예시"
+        className="w-full bg-transparent outline-none"
+        value={value}
+        onChange={(event) => setValue(event.target.value)}
+      />
+    </Chrome>
+  )
 }
 
 function SearchField() {
+  const [query, setQuery] = useState("검색어")
+
   return (
     <Chrome className="flex h-10 w-48 items-center gap-2 px-3 text-sm text-muted-foreground">
       <Search aria-hidden="true" />
-      <span>검색어</span>
+      <input
+        aria-label="검색어 입력 예시"
+        className="min-w-0 flex-1 bg-transparent text-foreground outline-none"
+        value={query}
+        onChange={(event) => setQuery(event.target.value)}
+      />
+      {query && (
+        <button type="button" aria-label="검색어 지우기" onClick={() => setQuery("")}>
+          <X aria-hidden="true" />
+        </button>
+      )}
     </Chrome>
   )
 }
 
 function TextareaVisual() {
+  const [value, setValue] = useState("긴 글을 입력해보세요.")
+
   return (
-    <Chrome className="flex h-20 w-48 flex-col gap-2 p-3">
-      <Line className="w-32" />
-      <Line className="w-40" />
-      <Line className="w-24" />
+    <Chrome className="h-24 w-48 p-2">
+      <textarea
+        aria-label="여러 줄 입력 예시"
+        className="h-full w-full resize-none bg-transparent text-sm outline-none"
+        value={value}
+        onChange={(event) => setValue(event.target.value)}
+      />
     </Chrome>
   )
 }
@@ -243,15 +271,36 @@ function SelectVisual() {
 }
 
 function ComboBox() {
+  const options = ["Combobox", "Command", "Search view"]
+  const [query, setQuery] = useState("co")
+  const [selected, setSelected] = useState("Combobox")
+  const filteredOptions = options.filter((option) => option.toLowerCase().includes(query.toLowerCase()))
+
   return (
     <Chrome className="w-48 overflow-hidden">
       <div className="flex h-9 items-center gap-2 border-b px-3 text-sm">
         <Search aria-hidden="true" />
-        <span>co</span>
+        <input
+          aria-label="콤보박스 검색 예시"
+          className="min-w-0 flex-1 bg-transparent outline-none"
+          value={query}
+          onChange={(event) => setQuery(event.target.value)}
+        />
       </div>
       <div className="flex flex-col p-1 text-xs">
-        <span className="rounded bg-primary px-2 py-1 text-primary-foreground">Combobox</span>
-        <span className="px-2 py-1 text-muted-foreground">Command</span>
+        {(filteredOptions.length ? filteredOptions : options).map((option) => (
+          <button
+            key={option}
+            type="button"
+            className={cn(
+              "rounded px-2 py-1 text-left",
+              selected === option ? "bg-primary text-primary-foreground" : "text-muted-foreground"
+            )}
+            onClick={() => setSelected(option)}
+          >
+            {option}
+          </button>
+        ))}
       </div>
     </Chrome>
   )
@@ -310,17 +359,24 @@ function SliderVisual() {
 }
 
 function DatePicker() {
+  const [selectedDay, setSelectedDay] = useState(11)
+
   return (
     <Chrome className="w-48 overflow-hidden">
       <div className="flex h-9 items-center justify-between border-b px-3 text-sm">
-        <span>2026-05-20</span>
+        <span>2026-05-{String(selectedDay).padStart(2, "0")}</span>
         <CalendarDays aria-hidden="true" />
       </div>
       <div className="grid grid-cols-7 gap-1 p-2 text-center text-[10px]">
         {Array.from({ length: 14 }).map((_, day) => (
-          <span key={day} className={cn("rounded py-1", day === 10 && "bg-primary text-primary-foreground")}>
+          <button
+            key={day}
+            type="button"
+            className={cn("rounded py-1", day + 1 === selectedDay && "bg-primary text-primary-foreground")}
+            onClick={() => setSelectedDay(day + 1)}
+          >
             {day + 1}
-          </span>
+          </button>
         ))}
       </div>
     </Chrome>
@@ -328,11 +384,17 @@ function DatePicker() {
 }
 
 function FileUpload() {
+  const [fileName, setFileName] = useState("파일 선택")
+
   return (
-    <Chrome className="flex w-48 items-center gap-2 border-dashed px-3 py-3 text-sm">
+    <button
+      type="button"
+      className="flex w-48 items-center gap-2 rounded-md border border-dashed bg-card px-3 py-3 text-left text-sm shadow-sm"
+      onClick={() => setFileName((current) => current === "파일 선택" ? "profile.png" : "파일 선택")}
+    >
       <FileUp aria-hidden="true" />
-      <span>파일 선택</span>
-    </Chrome>
+      <span className="truncate">{fileName}</span>
+    </button>
   )
 }
 
@@ -407,15 +469,37 @@ function DropdownMenuVisual() {
 }
 
 function CommandPalette() {
+  const commands = ["새 문서 만들기", "설정 열기", "테마 변경"]
+  const [query, setQuery] = useState("")
+  const [selected, setSelected] = useState(commands[0])
+  const visibleCommands = commands.filter((command) => command.includes(query))
+
   return (
     <Chrome className="w-52 p-2">
       <div className="flex h-8 items-center gap-2 rounded border px-2 text-xs">
         <Search aria-hidden="true" />
-        <span>명령 검색...</span>
+        <input
+          aria-label="명령 검색 예시"
+          className="min-w-0 flex-1 bg-transparent outline-none"
+          placeholder="명령 검색..."
+          value={query}
+          onChange={(event) => setQuery(event.target.value)}
+        />
       </div>
       <div className="mt-2 flex flex-col gap-1 text-xs">
-        <span className="rounded bg-primary px-2 py-1 text-primary-foreground">새 문서 만들기</span>
-        <span className="px-2 py-1 text-muted-foreground">설정 열기</span>
+        {(visibleCommands.length ? visibleCommands : commands).map((command) => (
+          <button
+            key={command}
+            type="button"
+            className={cn(
+              "rounded px-2 py-1 text-left",
+              selected === command ? "bg-primary text-primary-foreground" : "text-muted-foreground"
+            )}
+            onClick={() => setSelected(command)}
+          >
+            {command}
+          </button>
+        ))}
       </div>
     </Chrome>
   )
@@ -435,31 +519,41 @@ function BreadcrumbVisual() {
 }
 
 function PaginationVisual() {
+  const [page, setPage] = useState(2)
+
   return (
     <div className="flex items-center gap-1">
-      <SmallIcon><ChevronLeft aria-hidden="true" /></SmallIcon>
-      <SmallBox>1</SmallBox>
-      <SmallBox active>2</SmallBox>
-      <SmallBox>3</SmallBox>
-      <SmallIcon><ChevronRight aria-hidden="true" /></SmallIcon>
+      <SmallIcon onClick={() => setPage((current) => Math.max(1, current - 1))}><ChevronLeft aria-hidden="true" /></SmallIcon>
+      {[1, 2, 3].map((item) => (
+        <SmallBox key={item} active={page === item} onClick={() => setPage(item)}>{item}</SmallBox>
+      ))}
+      <SmallIcon onClick={() => setPage((current) => Math.min(3, current + 1))}><ChevronRight aria-hidden="true" /></SmallIcon>
     </div>
   )
 }
 
-function SmallBox({ children, active }: { children: React.ReactNode; active?: boolean }) {
-  return <span className={cn("flex size-7 items-center justify-center rounded border text-xs", active && "bg-primary text-primary-foreground")}>{children}</span>
+function SmallBox({ children, active, onClick }: { children: React.ReactNode; active?: boolean; onClick?: () => void }) {
+  return <button type="button" className={cn("flex size-7 items-center justify-center rounded border text-xs", active && "bg-primary text-primary-foreground")} onClick={onClick}>{children}</button>
 }
 
-function SmallIcon({ children }: { children: React.ReactNode }) {
-  return <span className="flex size-7 items-center justify-center rounded border bg-card">{children}</span>
+function SmallIcon({ children, onClick }: { children: React.ReactNode; onClick?: () => void }) {
+  return <button type="button" className="flex size-7 items-center justify-center rounded border bg-card" onClick={onClick}>{children}</button>
 }
 
 function StepperVisual() {
+  const [currentStep, setCurrentStep] = useState(2)
+
   return (
     <div className="flex items-center">
       {[1, 2, 3].map((step) => (
         <div key={step} className="flex items-center">
-          <span className={cn("flex size-7 items-center justify-center rounded-full border text-xs", step <= 2 && "bg-primary text-primary-foreground")}>{step}</span>
+          <button
+            type="button"
+            className={cn("flex size-7 items-center justify-center rounded-full border text-xs", step <= currentStep && "bg-primary text-primary-foreground")}
+            onClick={() => setCurrentStep(step)}
+          >
+            {step}
+          </button>
           {step < 3 && <span className="h-px w-10 bg-border" />}
         </div>
       ))}
@@ -468,72 +562,160 @@ function StepperVisual() {
 }
 
 function NavigationRail() {
+  const [active, setActive] = useState("검색")
+  const items = [
+    { label: "홈", icon: <Home aria-hidden="true" /> },
+    { label: "검색", icon: <Search aria-hidden="true" /> },
+    { label: "설정", icon: <Settings aria-hidden="true" /> },
+  ]
+
   return (
     <Chrome className="flex h-28 w-14 flex-col items-center justify-around py-2">
-      <Home aria-hidden="true" />
-      <span className="rounded bg-primary p-1 text-primary-foreground"><Search aria-hidden="true" /></span>
-      <Settings aria-hidden="true" />
+      {items.map((item) => (
+        <button
+          key={item.label}
+          type="button"
+          aria-label={item.label}
+          className={cn("rounded p-1", active === item.label && "bg-primary text-primary-foreground")}
+          onClick={() => setActive(item.label)}
+        >
+          {item.icon}
+        </button>
+      ))}
     </Chrome>
   )
 }
 
 function SidebarNav() {
+  const [active, setActive] = useState("용어")
+
   return (
     <Chrome className="w-44 p-2 text-sm">
-      <Row icon={<Home aria-hidden="true" />} text="홈" />
-      <Row active icon={<Search aria-hidden="true" />} text="용어" />
-      <Row icon={<Settings aria-hidden="true" />} text="설정" />
+      <Row active={active === "홈"} icon={<Home aria-hidden="true" />} text="홈" onClick={() => setActive("홈")} />
+      <Row active={active === "용어"} icon={<Search aria-hidden="true" />} text="용어" onClick={() => setActive("용어")} />
+      <Row active={active === "설정"} icon={<Settings aria-hidden="true" />} text="설정" onClick={() => setActive("설정")} />
     </Chrome>
   )
 }
 
-function Row({ icon, text, active }: { icon: React.ReactNode; text: string; active?: boolean }) {
-  return <div className={cn("flex items-center gap-2 rounded px-2 py-1.5", active && "bg-primary text-primary-foreground")}>{icon}<span>{text}</span></div>
+function Row({ icon, text, active, onClick }: { icon: React.ReactNode; text: string; active?: boolean; onClick?: () => void }) {
+  return <button type="button" className={cn("flex w-full items-center gap-2 rounded px-2 py-1.5 text-left", active && "bg-primary text-primary-foreground")} onClick={onClick}>{icon}<span>{text}</span></button>
 }
 
 function ChipVisual() {
-  return <span className="rounded-full border bg-primary px-3 py-1 text-sm text-primary-foreground">선택됨</span>
+  const [selected, setSelected] = useState(true)
+
+  return (
+    <button
+      type="button"
+      className={cn("rounded-full border px-3 py-1 text-sm", selected ? "bg-primary text-primary-foreground" : "bg-card text-muted-foreground")}
+      onClick={() => setSelected((value) => !value)}
+    >
+      {selected ? "선택됨" : "해제됨"}
+    </button>
+  )
 }
 
 function ButtonVisual({ label, emphasis = "default" }: { label: string; emphasis?: "default" | "primary" | "secondary" | "destructive" }) {
+  const [pressed, setPressed] = useState(false)
+
   return (
-    <button className={cn("rounded-md px-4 py-2 text-sm font-medium shadow-sm", emphasis === "primary" && "bg-primary text-primary-foreground", emphasis === "secondary" && "border bg-card", emphasis === "destructive" && "bg-destructive text-white", emphasis === "default" && "border bg-card")}>
-      {label}
+    <button
+      type="button"
+      className={cn("rounded-md px-4 py-2 text-sm font-medium shadow-sm", emphasis === "primary" && "bg-primary text-primary-foreground", emphasis === "secondary" && "border bg-card", emphasis === "destructive" && "bg-destructive text-white", emphasis === "default" && "border bg-card", pressed && "ring-2 ring-ring")}
+      onClick={() => setPressed((value) => !value)}
+    >
+      {pressed ? "실행됨" : label}
     </button>
   )
 }
 
 function IconButtonVisual() {
-  return <span className="flex size-10 items-center justify-center rounded-md border bg-card"><Heart aria-hidden="true" /></span>
+  const [liked, setLiked] = useState(false)
+
+  return (
+    <button type="button" aria-label="좋아요" className={cn("flex size-10 items-center justify-center rounded-md border bg-card", liked && "bg-primary text-primary-foreground")} onClick={() => setLiked((value) => !value)}>
+      <Heart aria-hidden="true" />
+    </button>
+  )
 }
 
 function FabVisual() {
-  return <span className="flex size-12 items-center justify-center rounded-full bg-primary text-primary-foreground shadow-md"><Plus aria-hidden="true" /></span>
+  const [count, setCount] = useState(0)
+
+  return (
+    <button type="button" aria-label="추가" className="relative flex size-12 items-center justify-center rounded-full bg-primary text-primary-foreground shadow-md" onClick={() => setCount((value) => value + 1)}>
+      <Plus aria-hidden="true" />
+      {count > 0 && <span className="absolute -right-1 -top-1 rounded-full bg-destructive px-1.5 py-0.5 text-[10px] text-white">{count}</span>}
+    </button>
+  )
 }
 
 function LinkVisual() {
-  return <span className="inline-flex items-center gap-1 text-sm font-medium text-primary underline-offset-4">자세히 보기 <ChevronRight aria-hidden="true" /></span>
+  const [visited, setVisited] = useState(false)
+
+  return (
+    <button type="button" className="inline-flex items-center gap-1 text-sm font-medium text-primary underline-offset-4" onClick={() => setVisited(true)}>
+      {visited ? "방문함" : "자세히 보기"} <ChevronRight aria-hidden="true" />
+    </button>
+  )
 }
 
 function ToolbarVisual() {
+  const [active, setActive] = useState("Search")
+  const items = [Search, Settings, Heart, MoreHorizontal]
+
   return (
     <Chrome className="flex items-center gap-1 p-1">
-      {[Search, Settings, Heart, MoreHorizontal].map((Icon) => <span key={Icon.displayName ?? Icon.name} className="flex size-8 items-center justify-center rounded hover:bg-muted"><Icon aria-hidden="true" /></span>)}
+      {items.map((Icon) => {
+        const key = Icon.displayName ?? Icon.name
+        return (
+          <button
+            key={key}
+            type="button"
+            className={cn("flex size-8 items-center justify-center rounded hover:bg-muted", active === key && "bg-primary text-primary-foreground")}
+            onClick={() => setActive(key)}
+          >
+            <Icon aria-hidden="true" />
+          </button>
+        )
+      })}
     </Chrome>
   )
 }
 
 function SplitButton() {
+  const [open, setOpen] = useState(false)
+  const [label, setLabel] = useState("내보내기")
+
   return (
-    <div className="inline-flex overflow-hidden rounded-md border bg-primary text-primary-foreground shadow-sm">
-      <span className="px-3 py-2 text-sm">내보내기</span>
-      <span className="border-l border-primary-foreground/30 px-2 py-2"><ChevronDown aria-hidden="true" /></span>
+    <div className="relative">
+      <div className="inline-flex overflow-hidden rounded-md border bg-primary text-primary-foreground shadow-sm">
+        <button type="button" className="px-3 py-2 text-sm" onClick={() => setLabel("PDF 저장")}>{label}</button>
+        <button type="button" className="border-l border-primary-foreground/30 px-2 py-2" aria-label="옵션 열기" onClick={() => setOpen((value) => !value)}><ChevronDown aria-hidden="true" /></button>
+      </div>
+      {open && (
+        <div className="absolute right-0 top-10 z-10 w-24 rounded-md border bg-popover p-1 text-xs shadow-md">
+          {["PDF", "PNG"].map((item) => (
+            <button key={item} type="button" className="w-full rounded px-2 py-1 text-left hover:bg-muted" onClick={() => { setLabel(`${item} 저장`); setOpen(false) }}>{item}</button>
+          ))}
+        </div>
+      )}
     </div>
   )
 }
 
 function MenuItemVisual() {
-  return <Chrome className="flex w-44 items-center justify-between px-3 py-2 text-sm"><span className="flex items-center gap-2"><Trash2 aria-hidden="true" />삭제</span><span className="text-xs text-muted-foreground">⌘⌫</span></Chrome>
+  const [deleted, setDeleted] = useState(false)
+
+  return (
+    <Chrome className="flex w-44 items-center justify-between px-3 py-2 text-sm">
+      <button type="button" className="flex items-center gap-2" onClick={() => setDeleted((value) => !value)}>
+        <Trash2 aria-hidden="true" />{deleted ? "복원" : "삭제"}
+      </button>
+      <span className="text-xs text-muted-foreground">{deleted ? "done" : "⌘⌫"}</span>
+    </Chrome>
+  )
 }
 
 function CardVisual() {
@@ -570,39 +752,65 @@ function DialogVisual() {
 }
 
 function DrawerVisual() {
+  const [open, setOpen] = useState(true)
+
   return (
     <div className="relative h-28 w-52 rounded-md border bg-card">
-      <div className="absolute bottom-0 right-0 top-0 w-24 border-l bg-background p-2">
-        <Line className="w-16" />
-        <Line className="mt-2 w-12" />
-      </div>
+      <button type="button" className="m-3 rounded border px-2 py-1 text-xs" onClick={() => setOpen((value) => !value)}>
+        {open ? "닫기" : "열기"}
+      </button>
+      {open && (
+        <div className="absolute bottom-0 right-0 top-0 w-24 border-l bg-background p-2">
+          <Line className="w-16" />
+          <Line className="mt-2 w-12" />
+        </div>
+      )}
     </div>
   )
 }
 
 function PopoverVisual() {
+  const [open, setOpen] = useState(true)
+
   return (
     <div className="relative h-24 w-44">
-      <button className="rounded-md border bg-card px-3 py-1 text-sm">열기</button>
-      <Chrome className="absolute bottom-0 right-0 w-32 p-2"><Line className="w-20" /><Line className="mt-2 w-24" /></Chrome>
+      <button type="button" className="rounded-md border bg-card px-3 py-1 text-sm" onClick={() => setOpen((value) => !value)}>열기</button>
+      {open && <Chrome className="absolute bottom-0 right-0 w-32 p-2"><Line className="w-20" /><Line className="mt-2 w-24" /></Chrome>}
     </div>
   )
 }
 
 function HeaderVisual() {
-  return <Chrome className="flex h-12 w-52 items-center justify-between px-3"><Menu aria-hidden="true" /><Line className="w-24" /><Circle aria-hidden="true" /></Chrome>
+  const [menuOpen, setMenuOpen] = useState(false)
+
+  return (
+    <div className="relative">
+      <Chrome className="flex h-12 w-52 items-center justify-between px-3">
+        <button type="button" aria-label="메뉴" onClick={() => setMenuOpen((value) => !value)}><Menu aria-hidden="true" /></button>
+        <Line className="w-24" />
+        <Circle aria-hidden="true" />
+      </Chrome>
+      {menuOpen && <Chrome className="absolute left-0 top-14 w-28 p-2 text-xs"><Line className="w-20" /><Line className="mt-2 w-16" /></Chrome>}
+    </div>
+  )
 }
 
 function FooterVisual() {
-  return <Chrome className="flex h-12 w-52 items-center justify-around px-3"><Line className="w-12" /><Line className="w-12" /><MoreHorizontal aria-hidden="true" /></Chrome>
+  const [active, setActive] = useState(0)
+
+  return <Chrome className="flex h-12 w-52 items-center justify-around px-3">{[0, 1].map((item) => <button key={item} type="button" onClick={() => setActive(item)}><Line className={cn("w-12", active === item && "bg-primary")} /></button>)}<MoreHorizontal aria-hidden="true" /></Chrome>
 }
 
 function GridVisual() {
-  return <div className="grid w-48 grid-cols-4 gap-2">{Array.from({ length: 8 }).map((_, item) => <span key={item} className="h-8 rounded border bg-card" />)}</div>
+  const [selected, setSelected] = useState(0)
+
+  return <div className="grid w-48 grid-cols-4 gap-2">{Array.from({ length: 8 }).map((_, item) => <button key={item} type="button" className={cn("h-8 rounded border bg-card", selected === item && "bg-primary")} onClick={() => setSelected(item)} />)}</div>
 }
 
 function ListVisual() {
-  return <Chrome className="w-48 p-2">{[0, 1, 2].map((item) => <div key={item} className="flex items-center gap-2 border-b py-2 last:border-b-0"><span className="size-2 rounded-full bg-primary" /><Line className="w-32" /></div>)}</Chrome>
+  const [selected, setSelected] = useState(0)
+
+  return <Chrome className="w-48 p-2">{[0, 1, 2].map((item) => <button key={item} type="button" className={cn("flex w-full items-center gap-2 border-b py-2 last:border-b-0", selected === item && "text-primary")} onClick={() => setSelected(item)}><span className="size-2 rounded-full bg-primary" /><Line className="w-32" /></button>)}</Chrome>
 }
 
 function AccordionVisual() {
@@ -636,11 +844,28 @@ function AccRow({ text, open, onToggle }: { text: string; open?: boolean; onTogg
 }
 
 function CarouselVisual() {
-  return <div className="flex items-center gap-2"><ChevronLeft aria-hidden="true" /><div className="flex gap-2">{[0, 1, 2].map((item) => <span key={item} className="h-16 w-12 rounded border bg-card" />)}</div><ChevronRight aria-hidden="true" /></div>
+  const [active, setActive] = useState(1)
+
+  return (
+    <div className="flex items-center gap-2">
+      <button type="button" aria-label="이전" onClick={() => setActive((current) => Math.max(0, current - 1))}><ChevronLeft aria-hidden="true" /></button>
+      <div className="flex gap-2">
+        {[0, 1, 2].map((item) => <button key={item} type="button" className={cn("h-16 w-12 rounded border bg-card", active === item && "border-primary bg-primary/15")} onClick={() => setActive(item)} />)}
+      </div>
+      <button type="button" aria-label="다음" onClick={() => setActive((current) => Math.min(2, current + 1))}><ChevronRight aria-hidden="true" /></button>
+    </div>
+  )
 }
 
 function TooltipVisual() {
-  return <div className="relative h-20 w-36"><button className="absolute bottom-0 left-6 rounded border bg-card px-3 py-1 text-sm">도움</button><span className="absolute left-0 top-0 rounded-md border bg-popover px-2 py-1 text-xs shadow">도움말 내용</span></div>
+  const [open, setOpen] = useState(true)
+
+  return (
+    <div className="relative h-20 w-36">
+      <button type="button" className="absolute bottom-0 left-6 rounded border bg-card px-3 py-1 text-sm" onClick={() => setOpen((value) => !value)}>도움</button>
+      {open && <span className="absolute left-0 top-0 rounded-md border bg-popover px-2 py-1 text-xs shadow">도움말 내용</span>}
+    </div>
+  )
 }
 
 function ToastVisual() {
@@ -665,15 +890,30 @@ function ToastVisual() {
 }
 
 function AlertVisual() {
-  return <div className="flex w-52 items-start gap-2 rounded-md border bg-card p-3 text-sm"><AlertTriangle aria-hidden="true" /><span>확인이 필요합니다.</span></div>
+  const [visible, setVisible] = useState(true)
+
+  if (!visible) {
+    return <button type="button" className="rounded-md border bg-card px-3 py-2 text-sm" onClick={() => setVisible(true)}>알림 다시 보기</button>
+  }
+
+  return <div className="flex w-52 items-start justify-between gap-2 rounded-md border bg-card p-3 text-sm"><span className="flex gap-2"><AlertTriangle aria-hidden="true" />확인이 필요합니다.</span><button type="button" aria-label="알림 닫기" onClick={() => setVisible(false)}><X aria-hidden="true" /></button></div>
 }
 
 function BadgeVisual() {
-  return <div className="relative"><Bell aria-hidden="true" /><span className="absolute -right-3 -top-3 rounded-full bg-destructive px-1.5 py-0.5 text-xs text-white">3</span></div>
+  const [count, setCount] = useState(3)
+
+  return <button type="button" className="relative" aria-label="알림 수 증가" onClick={() => setCount((value) => value + 1)}><Bell aria-hidden="true" />{count > 0 && <span className="absolute -right-3 -top-3 rounded-full bg-destructive px-1.5 py-0.5 text-xs text-white">{count}</span>}</button>
 }
 
 function ProgressBarVisual() {
-  return <div className="h-3 w-48 rounded-full bg-muted"><div className="h-full w-2/3 rounded-full bg-primary" /></div>
+  const [value, setValue] = useState(65)
+
+  return (
+    <button type="button" className="flex w-52 items-center gap-3" onClick={() => setValue((current) => (current >= 100 ? 0 : current + 10))}>
+      <span className="h-3 flex-1 rounded-full bg-muted"><span className="block h-full rounded-full bg-primary" style={{ width: `${value}%` }} /></span>
+      <span className="w-8 text-xs text-muted-foreground">{value}%</span>
+    </button>
+  )
 }
 
 function SpinnerVisual() {
@@ -685,7 +925,17 @@ function SkeletonVisual() {
 }
 
 function EmptyStateVisual() {
-  return <div className="flex flex-col items-center gap-2 text-center text-sm text-muted-foreground"><Folder aria-hidden="true" /><span>데이터가 없습니다.</span><button className="rounded border bg-card px-2 py-1 text-xs text-foreground">추가</button></div>
+  const [hasData, setHasData] = useState(false)
+
+  return (
+    <div className="flex flex-col items-center gap-2 text-center text-sm text-muted-foreground">
+      <Folder aria-hidden="true" />
+      <span>{hasData ? "새 항목 1개" : "데이터가 없습니다."}</span>
+      <button type="button" className="rounded border bg-card px-2 py-1 text-xs text-foreground" onClick={() => setHasData((value) => !value)}>
+        {hasData ? "비우기" : "추가"}
+      </button>
+    </div>
+  )
 }
 
 function ValidationMessage() {
@@ -697,35 +947,65 @@ function StatusIndicator() {
 }
 
 function TableVisual() {
-  return <div className="grid w-48 grid-cols-3 overflow-hidden rounded-md border bg-card text-xs">{Array.from({ length: 9 }).map((_, cell) => <div key={cell} className="h-7 border-b border-r p-1"><Line className="w-full" /></div>)}</div>
+  const [selected, setSelected] = useState(4)
+
+  return <div className="grid w-48 grid-cols-3 overflow-hidden rounded-md border bg-card text-xs">{Array.from({ length: 9 }).map((_, cell) => <button key={cell} type="button" className={cn("h-7 border-b border-r p-1", selected === cell && "bg-primary/20")} onClick={() => setSelected(cell)}><Line className="w-full" /></button>)}</div>
 }
 
 function AvatarVisual() {
-  return <div className="relative flex size-14 items-center justify-center rounded-full bg-primary text-primary-foreground"><User aria-hidden="true" /><span className="absolute bottom-0 right-0 size-3 rounded-full border-2 border-background bg-primary" /></div>
+  const [online, setOnline] = useState(true)
+
+  return <button type="button" className="relative flex size-14 items-center justify-center rounded-full bg-primary text-primary-foreground" onClick={() => setOnline((value) => !value)}><User aria-hidden="true" /><span className={cn("absolute bottom-0 right-0 size-3 rounded-full border-2 border-background", online ? "bg-primary" : "bg-muted-foreground")} /></button>
 }
 
 function MetricCardVisual() {
-  return <Chrome className="w-44 p-3"><p className="text-xs text-muted-foreground">방문자</p><p className="text-2xl font-semibold">12.4K</p><p className="text-xs text-primary">+8.2%</p></Chrome>
+  const [metric, setMetric] = useState(12.4)
+
+  return <button type="button" onClick={() => setMetric((value) => Number((value + 0.3).toFixed(1)))}><Chrome className="w-44 p-3 text-left"><p className="text-xs text-muted-foreground">방문자</p><p className="text-2xl font-semibold">{metric}K</p><p className="text-xs text-primary">+8.2%</p></Chrome></button>
 }
 
 function ChartVisual() {
-  return <div className="flex h-24 w-44 items-end gap-2 rounded-md border bg-card p-3">{[32, 54, 42, 72, 58].map((height) => <span key={height} className="w-5 rounded-t bg-primary" style={{ height }} />)}</div>
+  const [selected, setSelected] = useState(3)
+  const bars = [32, 54, 42, 72, 58]
+
+  return <div className="flex h-24 w-44 items-end gap-2 rounded-md border bg-card p-3">{bars.map((height, index) => <button key={height} type="button" className={cn("w-5 rounded-t bg-primary", selected === index && "bg-destructive")} style={{ height }} onClick={() => setSelected(index)} />)}</div>
 }
 
 function TimelineVisual() {
-  return <div className="flex flex-col gap-0">{[0, 1, 2].map((item) => <div key={item} className="flex gap-2 text-xs"><span className="flex flex-col items-center"><span className="size-3 rounded-full bg-primary" /><span className="h-6 w-px bg-border" /></span><span>이벤트 {item + 1}</span></div>)}</div>
+  const [active, setActive] = useState(1)
+
+  return <div className="flex flex-col gap-0">{[0, 1, 2].map((item) => <button key={item} type="button" className="flex gap-2 text-left text-xs" onClick={() => setActive(item)}><span className="flex flex-col items-center"><span className={cn("size-3 rounded-full", item <= active ? "bg-primary" : "bg-muted-foreground/30")} /><span className="h-6 w-px bg-border" /></span><span className={cn(active === item && "font-medium text-primary")}>이벤트 {item + 1}</span></button>)}</div>
 }
 
 function KanbanVisual() {
-  return <div className="grid w-52 grid-cols-3 gap-2">{["할 일", "진행", "완료"].map((column) => <Chrome key={column} className="p-2"><p className="mb-2 text-[10px] text-muted-foreground">{column}</p><div className="h-8 rounded bg-muted" /></Chrome>)}</div>
+  const columns = ["할 일", "진행", "완료"]
+  const [activeColumn, setActiveColumn] = useState("진행")
+
+  return <div className="grid w-52 grid-cols-3 gap-2">{columns.map((column) => <button key={column} type="button" onClick={() => setActiveColumn(column)}><Chrome className="p-2 text-left"><p className="mb-2 text-[10px] text-muted-foreground">{column}</p><div className={cn("h-8 rounded bg-muted", activeColumn === column && "bg-primary/30")} /></Chrome></button>)}</div>
 }
 
 function CalendarView() {
-  return <div className="grid w-48 grid-cols-7 gap-1 rounded-md border bg-card p-2 text-center text-[10px]">{Array.from({ length: 21 }).map((_, day) => <span key={day} className={cn("rounded py-1", day === 14 && "bg-primary text-primary-foreground")}>{day + 1}</span>)}</div>
+  const [selectedDay, setSelectedDay] = useState(15)
+
+  return <div className="grid w-48 grid-cols-7 gap-1 rounded-md border bg-card p-2 text-center text-[10px]">{Array.from({ length: 21 }).map((_, day) => <button key={day} type="button" className={cn("rounded py-1", day + 1 === selectedDay && "bg-primary text-primary-foreground")} onClick={() => setSelectedDay(day + 1)}>{day + 1}</button>)}</div>
 }
 
 function TreeView() {
-  return <Chrome className="w-48 p-2 text-xs"><TreeRow icon={<ChevronDown aria-hidden="true" />} text="components" /><TreeRow indent icon={<Folder aria-hidden="true" />} text="button.tsx" /><TreeRow indent icon={<Folder aria-hidden="true" />} text="card.tsx" /></Chrome>
+  const [open, setOpen] = useState(true)
+
+  return (
+    <Chrome className="w-48 p-2 text-xs">
+      <button type="button" className="w-full text-left" onClick={() => setOpen((value) => !value)}>
+        <TreeRow icon={<ChevronDown aria-hidden="true" className={cn("transition-transform", !open && "-rotate-90")} />} text="components" />
+      </button>
+      {open && (
+        <>
+          <TreeRow indent icon={<Folder aria-hidden="true" />} text="button.tsx" />
+          <TreeRow indent icon={<Folder aria-hidden="true" />} text="card.tsx" />
+        </>
+      )}
+    </Chrome>
+  )
 }
 
 function TreeRow({ icon, text, indent }: { icon: React.ReactNode; text: string; indent?: boolean }) {
@@ -733,11 +1013,15 @@ function TreeRow({ icon, text, indent }: { icon: React.ReactNode; text: string; 
 }
 
 function DescriptionList() {
-  return <Chrome className="grid w-48 grid-cols-[64px_1fr] gap-y-2 p-3 text-xs"><span className="text-muted-foreground">상태</span><span>활성</span><span className="text-muted-foreground">역할</span><span>관리자</span><span className="text-muted-foreground">지역</span><span>서울</span></Chrome>
+  const [active, setActive] = useState(true)
+
+  return <button type="button" onClick={() => setActive((value) => !value)}><Chrome className="grid w-48 grid-cols-[64px_1fr] gap-y-2 p-3 text-left text-xs"><span className="text-muted-foreground">상태</span><span>{active ? "활성" : "비활성"}</span><span className="text-muted-foreground">역할</span><span>관리자</span><span className="text-muted-foreground">지역</span><span>서울</span></Chrome></button>
 }
 
 function IconVisual() {
-  return <span className="flex size-14 items-center justify-center rounded-lg border bg-card text-primary shadow-sm"><Home aria-hidden="true" /></span>
+  const [active, setActive] = useState(false)
+
+  return <button type="button" className={cn("flex size-14 items-center justify-center rounded-lg border bg-card text-primary shadow-sm", active && "bg-primary text-primary-foreground")} onClick={() => setActive((value) => !value)}><Home aria-hidden="true" /></button>
 }
 
 function LabelVisual() {
@@ -745,31 +1029,49 @@ function LabelVisual() {
 }
 
 function DividerVisual() {
-  return <div className="w-48 space-y-3"><Line className="w-32" /><div className="h-px w-full bg-border" /><Line className="w-40" /></div>
+  const [vertical, setVertical] = useState(false)
+
+  if (vertical) {
+    return <button type="button" className="flex h-24 w-48 items-center justify-center gap-4" onClick={() => setVertical(false)}><Line className="w-12" /><div className="h-full w-px bg-border" /><Line className="w-12" /></button>
+  }
+
+  return <button type="button" className="flex w-48 flex-col gap-3 text-left" onClick={() => setVertical(true)}><Line className="w-32" /><div className="h-px w-full bg-border" /><Line className="w-40" /></button>
 }
 
 function SpacerVisual() {
-  return <div className="flex w-48 items-center gap-4"><span className="h-16 w-14 rounded border bg-card" /><span className="flex h-16 flex-1 items-center justify-center rounded border border-dashed text-xs text-muted-foreground">gap</span><span className="h-16 w-14 rounded border bg-card" /></div>
+  const [wide, setWide] = useState(false)
+
+  return <button type="button" className={cn("flex w-48 items-center transition-all", wide ? "gap-8" : "gap-4")} onClick={() => setWide((value) => !value)}><span className="h-16 w-14 rounded border bg-card" /><span className="flex h-16 flex-1 items-center justify-center rounded border border-dashed text-xs text-muted-foreground">{wide ? "wide" : "gap"}</span><span className="h-16 w-14 rounded border bg-card" /></button>
 }
 
 function TypographyVisual() {
-  return <div className="w-48 space-y-2"><p className="text-2xl font-semibold">Heading</p><p className="text-sm">Body text line</p><p className="text-xs text-muted-foreground">Caption</p></div>
+  const [large, setLarge] = useState(false)
+
+  return <button type="button" className="w-48 text-left" onClick={() => setLarge((value) => !value)}><p className={cn("font-semibold", large ? "text-3xl" : "text-2xl")}>Heading</p><p className={cn(large ? "text-base" : "text-sm")}>Body text line</p><p className="text-xs text-muted-foreground">Caption</p></button>
 }
 
 function ImageVisual() {
-  return <div className="flex h-24 w-44 items-center justify-center rounded-md border bg-card text-muted-foreground"><ImageIcon aria-hidden="true" /></div>
+  const [loaded, setLoaded] = useState(false)
+
+  return <button type="button" className={cn("flex h-24 w-44 items-center justify-center rounded-md border bg-card text-muted-foreground", loaded && "bg-primary/20 text-primary")} onClick={() => setLoaded((value) => !value)}>{loaded ? "Loaded" : <ImageIcon aria-hidden="true" />}</button>
 }
 
 function LogoVisual() {
-  return <div className="flex items-center gap-2"><span className="flex size-10 items-center justify-center rounded-lg bg-primary text-primary-foreground"><BookOpen aria-hidden="true" /></span><span className="text-lg font-semibold">Brand</span></div>
+  const [compact, setCompact] = useState(false)
+
+  return <button type="button" className="flex items-center gap-2" onClick={() => setCompact((value) => !value)}><span className="flex size-10 items-center justify-center rounded-lg bg-primary text-primary-foreground"><BookOpen aria-hidden="true" /></span>{!compact && <span className="text-lg font-semibold">Brand</span>}</button>
 }
 
 function ThumbnailVisual() {
-  return <div className="relative flex h-20 w-36 items-center justify-center rounded-md border bg-card text-muted-foreground"><ImageIcon aria-hidden="true" /><span className="absolute bottom-2 right-2 flex size-7 items-center justify-center rounded-full bg-primary text-primary-foreground"><Play aria-hidden="true" /></span></div>
+  const [playing, setPlaying] = useState(false)
+
+  return <button type="button" className={cn("relative flex h-20 w-36 items-center justify-center rounded-md border bg-card text-muted-foreground", playing && "bg-primary/20")} onClick={() => setPlaying((value) => !value)}><ImageIcon aria-hidden="true" /><span className="absolute bottom-2 right-2 flex size-7 items-center justify-center rounded-full bg-primary text-primary-foreground">{playing ? <Check aria-hidden="true" /> : <Play aria-hidden="true" />}</span></button>
 }
 
 function PasswordField() {
-  return <Chrome className="flex h-10 w-48 items-center justify-between px-3 text-sm"><span>••••••••</span><EyeOff aria-hidden="true" /></Chrome>
+  const [visible, setVisible] = useState(false)
+
+  return <Chrome className="flex h-10 w-48 items-center justify-between px-3 text-sm"><span>{visible ? "password" : "••••••••"}</span><button type="button" aria-label="비밀번호 표시 전환" onClick={() => setVisible((value) => !value)}><EyeOff aria-hidden="true" /></button></Chrome>
 }
 
 function NumberInput() {
@@ -785,39 +1087,73 @@ function NumberInput() {
 }
 
 function OtpInput() {
-  return <div className="flex gap-1">{["4", "2", "8", "", "", ""].map((item, index) => <span key={index} className={cn("flex size-8 items-center justify-center rounded border bg-card text-sm", index === 3 && "border-primary")}>{item}</span>)}</div>
+  const [digits, setDigits] = useState(["4", "2", "8", "", "", ""])
+
+  return <div className="flex gap-1">{digits.map((item, index) => <button key={index} type="button" className={cn("flex size-8 items-center justify-center rounded border bg-card text-sm", index === 3 && "border-primary")} onClick={() => setDigits((current) => current.map((digit, digitIndex) => digitIndex === index ? String((Number(digit || 0) + 1) % 10) : digit))}>{item}</button>)}</div>
 }
 
 function AutocompleteVisual() {
-  return <Chrome className="w-48 overflow-hidden"><div className="flex h-9 items-center gap-2 border-b px-3 text-sm"><Search aria-hidden="true" /><span>sea</span></div><div className="p-1 text-xs"><p className="rounded bg-primary px-2 py-1 text-primary-foreground">Search field</p><p className="px-2 py-1 text-muted-foreground">Search view</p></div></Chrome>
+  const [query, setQuery] = useState("sea")
+  const [selected, setSelected] = useState("Search field")
+  const options = ["Search field", "Search view", "Search suggestions"].filter((option) => option.toLowerCase().includes(query.toLowerCase()))
+
+  return <Chrome className="w-48 overflow-hidden"><div className="flex h-9 items-center gap-2 border-b px-3 text-sm"><Search aria-hidden="true" /><input aria-label="자동완성 입력 예시" className="min-w-0 flex-1 bg-transparent outline-none" value={query} onChange={(event) => setQuery(event.target.value)} /></div><div className="p-1 text-xs">{(options.length ? options : ["Search field"]).map((option) => <button key={option} type="button" className={cn("w-full rounded px-2 py-1 text-left", selected === option ? "bg-primary text-primary-foreground" : "text-muted-foreground")} onClick={() => setSelected(option)}>{option}</button>)}</div></Chrome>
 }
 
 function SearchSuggestions() {
-  return <Chrome className="w-52 overflow-hidden"><SearchField /><div className="border-t p-1 text-xs"><Row icon={<Search aria-hidden="true" />} text="검색 제안" /><Row icon={<Search aria-hidden="true" />} text="최근 검색어" /></div></Chrome>
+  const [selected, setSelected] = useState("검색 제안")
+
+  return <Chrome className="w-52 overflow-hidden"><SearchField /><div className="border-t p-1 text-xs"><Row active={selected === "검색 제안"} icon={<Search aria-hidden="true" />} text="검색 제안" onClick={() => setSelected("검색 제안")} /><Row active={selected === "최근 검색어"} icon={<Search aria-hidden="true" />} text="최근 검색어" onClick={() => setSelected("최근 검색어")} /></div></Chrome>
 }
 
 function InlineEditVisual() {
-  return <Chrome className="flex h-10 w-48 items-center justify-between px-3 text-sm"><span className="border-b border-primary">문서 제목</span><Type aria-hidden="true" /></Chrome>
+  const [editing, setEditing] = useState(false)
+  const [title, setTitle] = useState("문서 제목")
+
+  return <Chrome className="flex h-10 w-48 items-center justify-between px-3 text-sm">{editing ? <input aria-label="인라인 편집 예시" className="min-w-0 flex-1 border-b border-primary bg-transparent outline-none" value={title} onChange={(event) => setTitle(event.target.value)} onBlur={() => setEditing(false)} autoFocus /> : <button type="button" className="border-b border-primary" onClick={() => setEditing(true)}>{title}</button>}<Type aria-hidden="true" /></Chrome>
 }
 
 function RichTextEditor() {
-  return <Chrome className="w-52 overflow-hidden"><div className="flex gap-1 border-b p-1"><SmallIcon><Bold aria-hidden="true" /></SmallIcon><SmallIcon><LinkIcon aria-hidden="true" /></SmallIcon></div><div className="space-y-2 p-3"><Line className="w-36" /><Line className="w-28" /></div></Chrome>
+  const [bold, setBold] = useState(true)
+  const [linked, setLinked] = useState(false)
+
+  return <Chrome className="w-52 overflow-hidden"><div className="flex gap-1 border-b p-1"><SmallIcon onClick={() => setBold((value) => !value)}><Bold aria-hidden="true" /></SmallIcon><SmallIcon onClick={() => setLinked((value) => !value)}><LinkIcon aria-hidden="true" /></SmallIcon></div><div className="p-3"><Line className={cn("w-36", bold && "h-3 bg-foreground/50")} /><Line className={cn("mt-2 w-28", linked && "bg-primary")} /></div></Chrome>
 }
 
 function ColorPicker() {
-  return <Chrome className="w-44 p-3"><div className="mb-3 flex items-center gap-2 text-sm"><Palette aria-hidden="true" /><span>#6D5DF6</span></div><div className="grid grid-cols-6 gap-1">{["bg-primary", "bg-destructive", "bg-accent", "bg-muted-foreground", "bg-card", "bg-foreground"].map((color) => <span key={color} className={cn("size-5 rounded border", color)} />)}</div></Chrome>
+  const colors = [
+    { className: "bg-primary", value: "#primary" },
+    { className: "bg-destructive", value: "#destructive" },
+    { className: "bg-accent", value: "#accent" },
+    { className: "bg-muted-foreground", value: "#muted" },
+    { className: "bg-card", value: "#card" },
+    { className: "bg-foreground", value: "#foreground" },
+  ]
+  const [selected, setSelected] = useState(colors[0])
+
+  return <Chrome className="w-44 p-3"><div className="mb-3 flex items-center gap-2 text-sm"><Palette aria-hidden="true" /><span>{selected.value}</span></div><div className="grid grid-cols-6 gap-1">{colors.map((color) => <button key={color.value} type="button" className={cn("size-5 rounded border", color.className, selected.value === color.value && "ring-2 ring-ring")} onClick={() => setSelected(color)} />)}</div></Chrome>
 }
 
 function ListboxVisual() {
-  return <Chrome className="w-44 p-1 text-sm"><p className="rounded bg-primary px-2 py-1 text-primary-foreground">옵션 A</p><p className="px-2 py-1">옵션 B</p><p className="px-2 py-1 text-muted-foreground">옵션 C</p></Chrome>
+  const [selected, setSelected] = useState("옵션 A")
+
+  return <Chrome className="w-44 p-1 text-sm">{["옵션 A", "옵션 B", "옵션 C"].map((option) => <button key={option} type="button" className={cn("w-full rounded px-2 py-1 text-left", selected === option ? "bg-primary text-primary-foreground" : "text-muted-foreground")} onClick={() => setSelected(option)}>{option}</button>)}</Chrome>
 }
 
 function MenuBarVisual() {
-  return <Chrome className="w-52 overflow-hidden text-xs"><div className="flex border-b"><span className="bg-muted px-3 py-2">파일</span><span className="px-3 py-2">편집</span><span className="px-3 py-2">보기</span></div><div className="w-24 p-1"><p className="rounded bg-primary px-2 py-1 text-primary-foreground">새로 만들기</p><p className="px-2 py-1">열기</p></div></Chrome>
+  const [menu, setMenu] = useState("파일")
+
+  return <Chrome className="w-52 overflow-hidden text-xs"><div className="flex border-b">{["파일", "편집", "보기"].map((item) => <button key={item} type="button" className={cn("px-3 py-2", menu === item && "bg-muted")} onClick={() => setMenu(item)}>{item}</button>)}</div><div className="w-24 p-1"><p className="rounded bg-primary px-2 py-1 text-primary-foreground">{menu === "파일" ? "새로 만들기" : `${menu} 옵션`}</p><p className="px-2 py-1">열기</p></div></Chrome>
 }
 
 function BottomNavigation() {
-  return <Chrome className="flex h-14 w-52 items-center justify-around px-2 text-[10px]"><NavItem active icon={<Home aria-hidden="true" />} text="홈" /><NavItem icon={<Search aria-hidden="true" />} text="검색" /><NavItem icon={<User aria-hidden="true" />} text="내 정보" /></Chrome>
+  const [active, setActive] = useState("홈")
+
+  return <Chrome className="flex h-14 w-52 items-center justify-around px-2 text-[10px]">{[
+    { text: "홈", icon: <Home aria-hidden="true" /> },
+    { text: "검색", icon: <Search aria-hidden="true" /> },
+    { text: "내 정보", icon: <User aria-hidden="true" /> },
+  ].map((item) => <button key={item.text} type="button" onClick={() => setActive(item.text)}><NavItem active={active === item.text} icon={item.icon} text={item.text} /></button>)}</Chrome>
 }
 
 function NavItem({ icon, text, active }: { icon: React.ReactNode; text: string; active?: boolean }) {
@@ -825,27 +1161,39 @@ function NavItem({ icon, text, active }: { icon: React.ReactNode; text: string; 
 }
 
 function FilterChip() {
-  return <span className="inline-flex items-center gap-1 rounded-full border bg-primary px-3 py-1 text-sm text-primary-foreground"><Check aria-hidden="true" />진행 중</span>
+  const [selected, setSelected] = useState(true)
+
+  return <button type="button" className={cn("inline-flex items-center gap-1 rounded-full border px-3 py-1 text-sm", selected ? "bg-primary text-primary-foreground" : "bg-card text-muted-foreground")} onClick={() => setSelected((value) => !value)}>{selected && <Check aria-hidden="true" />}{selected ? "진행 중" : "전체"}</button>
 }
 
 function ToggleButtonVisual() {
-  return <button className="flex items-center gap-2 rounded-md border bg-primary px-3 py-2 text-sm text-primary-foreground"><Bold aria-hidden="true" />굵게</button>
+  const [pressed, setPressed] = useState(true)
+
+  return <button type="button" className={cn("flex items-center gap-2 rounded-md border px-3 py-2 text-sm", pressed ? "bg-primary text-primary-foreground" : "bg-card")} onClick={() => setPressed((value) => !value)}><Bold aria-hidden="true" />굵게</button>
 }
 
 function DisclosureVisual() {
-  return <Chrome className="w-48 p-2 text-sm"><div className="flex items-center justify-between"><span>상세 옵션</span><ChevronDown aria-hidden="true" /></div><Line className="mt-3 w-32" /></Chrome>
+  const [open, setOpen] = useState(true)
+
+  return <Chrome className="w-48 p-2 text-sm"><button type="button" className="flex w-full items-center justify-between text-left" onClick={() => setOpen((value) => !value)}><span>상세 옵션</span><ChevronDown aria-hidden="true" className={cn("transition-transform", open && "rotate-180")} /></button>{open && <Line className="mt-3 w-32" />}</Chrome>
 }
 
 function AnchorNav() {
-  return <Chrome className="w-44 p-2 text-sm"><p className="border-l-2 border-transparent px-2 py-1 text-muted-foreground">개요</p><p className="border-l-2 border-primary px-2 py-1 font-medium">컴포넌트</p><p className="border-l-2 border-transparent px-2 py-1 text-muted-foreground">예시</p></Chrome>
+  const [active, setActive] = useState("컴포넌트")
+
+  return <Chrome className="w-44 p-2 text-sm">{["개요", "컴포넌트", "예시"].map((item) => <button key={item} type="button" className={cn("block w-full border-l-2 px-2 py-1 text-left", active === item ? "border-primary font-medium" : "border-transparent text-muted-foreground")} onClick={() => setActive(item)}>{item}</button>)}</Chrome>
 }
 
 function BackButtonVisual() {
-  return <button className="inline-flex items-center gap-2 rounded-md border bg-card px-3 py-2 text-sm"><ChevronLeft aria-hidden="true" />이전</button>
+  const [label, setLabel] = useState("이전")
+
+  return <button type="button" className="inline-flex items-center gap-2 rounded-md border bg-card px-3 py-2 text-sm" onClick={() => setLabel("돌아감")}><ChevronLeft aria-hidden="true" />{label}</button>
 }
 
 function NavigationBarVisual() {
-  return <Chrome className="flex h-12 w-64 items-center justify-between px-3 text-xs"><LogoVisual /><span className="flex gap-3"><b>홈</b><span>문서</span><span>설정</span></span></Chrome>
+  const [active, setActive] = useState("홈")
+
+  return <Chrome className="flex h-12 w-64 items-center justify-between px-3 text-xs"><LogoVisual /><span className="flex gap-3">{["홈", "문서", "설정"].map((item) => <button key={item} type="button" className={cn(active === item && "font-bold text-primary")} onClick={() => setActive(item)}>{item}</button>)}</span></Chrome>
 }
 
 function ButtonGroupVisual() {
@@ -853,61 +1201,88 @@ function ButtonGroupVisual() {
 }
 
 function ActionIconButton({ icon, label }: { icon: React.ReactNode; label: string }) {
-  return <button className="inline-flex items-center gap-2 rounded-md border bg-card px-3 py-2 text-sm shadow-sm">{icon}{label}</button>
+  const [done, setDone] = useState(false)
+
+  return <button type="button" className={cn("inline-flex items-center gap-2 rounded-md border bg-card px-3 py-2 text-sm shadow-sm", done && "border-primary text-primary")} onClick={() => setDone((value) => !value)}>{icon}{done ? "완료" : label}</button>
 }
 
 function TopAppBar() {
-  return <Chrome className="flex h-12 w-60 items-center justify-between px-3"><ChevronLeft aria-hidden="true" /><span className="text-sm font-semibold">화면 제목</span><span className="flex gap-2"><Search aria-hidden="true" /><MoreHorizontal aria-hidden="true" /></span></Chrome>
+  const [menuOpen, setMenuOpen] = useState(false)
+
+  return <div className="relative"><Chrome className="flex h-12 w-60 items-center justify-between px-3"><BackButtonVisual /><span className="text-sm font-semibold">화면 제목</span><span className="flex gap-2"><Search aria-hidden="true" /><button type="button" aria-label="더보기" onClick={() => setMenuOpen((value) => !value)}><MoreHorizontal aria-hidden="true" /></button></span></Chrome>{menuOpen && <Chrome className="absolute right-0 top-14 w-24 p-1 text-xs"><button type="button" className="w-full rounded px-2 py-1 text-left hover:bg-muted">공유</button><button type="button" className="w-full rounded px-2 py-1 text-left hover:bg-muted">삭제</button></Chrome>}</div>
 }
 
 function SectionVisual() {
-  return <div className="w-52 space-y-3"><div><p className="text-sm font-semibold">섹션 제목</p><Line className="mt-1 w-32" /></div><Chrome className="h-14" /></div>
+  const [expanded, setExpanded] = useState(true)
+
+  return <div className="flex w-52 flex-col gap-3"><button type="button" className="text-left" onClick={() => setExpanded((value) => !value)}><p className="text-sm font-semibold">섹션 제목</p><Line className="mt-1 w-32" /></button>{expanded && <Chrome className="h-14" />}</div>
 }
 
 function ContainerVisual() {
-  return <div className="w-60 rounded-md border border-dashed p-3"><Chrome className="mx-auto h-20 w-40" /></div>
+  const [wide, setWide] = useState(false)
+
+  return <button type="button" className="w-60 rounded-md border border-dashed p-3" onClick={() => setWide((value) => !value)}><Chrome className={cn("mx-auto h-20 transition-all", wide ? "w-52" : "w-40")} /></button>
 }
 
 function HeroVisual() {
-  return <Chrome className="grid w-60 grid-cols-[1fr_72px] gap-3 p-3"><div><p className="text-lg font-semibold">Hero title</p><Line className="mt-2 w-24" /><button className="mt-3 rounded bg-primary px-2 py-1 text-xs text-primary-foreground">시작</button></div><div className="rounded bg-muted" /></Chrome>
+  const [started, setStarted] = useState(false)
+
+  return <Chrome className="grid w-60 grid-cols-[1fr_72px] gap-3 p-3"><div><p className="text-lg font-semibold">{started ? "Started" : "Hero title"}</p><Line className="mt-2 w-24" /><button type="button" className="mt-3 rounded bg-primary px-2 py-1 text-xs text-primary-foreground" onClick={() => setStarted(true)}>시작</button></div><div className={cn("rounded bg-muted", started && "bg-primary/30")} /></Chrome>
 }
 
 function FilterBarVisual() {
-  return <Chrome className="flex w-64 items-center gap-2 p-2"><div className="min-w-0 flex-1"><SearchField /></div><span className="rounded-full border px-2 py-1 text-xs">상태</span><span className="rounded-full border px-2 py-1 text-xs">정렬</span></Chrome>
+  const [status, setStatus] = useState(false)
+
+  return <Chrome className="flex w-64 items-center gap-2 p-2"><div className="min-w-0 flex-1"><SearchField /></div><button type="button" className={cn("rounded-full border px-2 py-1 text-xs", status && "bg-primary text-primary-foreground")} onClick={() => setStatus((value) => !value)}>상태</button><SortControl /></Chrome>
 }
 
 function SortControl() {
-  return <Chrome className="flex h-10 w-40 items-center justify-between px-3 text-sm"><span>최신순</span><ChevronDown aria-hidden="true" /></Chrome>
+  const [latest, setLatest] = useState(true)
+
+  return <button type="button" className="flex h-8 items-center justify-between rounded border bg-card px-2 text-xs" onClick={() => setLatest((value) => !value)}><span>{latest ? "최신순" : "이름순"}</span><ChevronDown aria-hidden="true" /></button>
 }
 
 function DataGridVisual() {
-  return <div className="grid w-52 grid-cols-4 overflow-hidden rounded-md border bg-card text-xs">{Array.from({ length: 16 }).map((_, cell) => <div key={cell} className={cn("h-7 border-b border-r p-1", cell === 9 && "bg-primary text-primary-foreground")}><Line className="w-full" /></div>)}</div>
+  const [selected, setSelected] = useState(9)
+
+  return <div className="grid w-52 grid-cols-4 overflow-hidden rounded-md border bg-card text-xs">{Array.from({ length: 16 }).map((_, cell) => <button key={cell} type="button" className={cn("h-7 border-b border-r p-1", selected === cell && "bg-primary text-primary-foreground")} onClick={() => setSelected(cell)}><Line className="w-full" /></button>)}</div>
 }
 
 function LegendVisual() {
-  return <Chrome className="w-44 space-y-2 p-3 text-xs"><LegendRow color="bg-primary" text="매출" /><LegendRow color="bg-destructive" text="비용" /><LegendRow color="bg-muted-foreground" text="이익" /></Chrome>
+  const [hidden, setHidden] = useState("비용")
+
+  return <Chrome className="flex w-44 flex-col gap-2 p-3 text-xs"><LegendRow color="bg-primary" text="매출" hidden={hidden === "매출"} onClick={() => setHidden("매출")} /><LegendRow color="bg-destructive" text="비용" hidden={hidden === "비용"} onClick={() => setHidden("비용")} /><LegendRow color="bg-muted-foreground" text="이익" hidden={hidden === "이익"} onClick={() => setHidden("이익")} /></Chrome>
 }
 
-function LegendRow({ color, text }: { color: string; text: string }) {
-  return <p className="flex items-center gap-2"><span className={cn("size-3 rounded-sm", color)} />{text}</p>
+function LegendRow({ color, text, hidden, onClick }: { color: string; text: string; hidden?: boolean; onClick?: () => void }) {
+  return <button type="button" className={cn("flex items-center gap-2 text-left", hidden && "opacity-40 line-through")} onClick={onClick}><span className={cn("size-3 rounded-sm", color)} />{text}</button>
 }
 
 function ChartAxisVisual() {
-  return <div className="relative h-28 w-44 border-b border-l bg-card p-2"><div className="absolute bottom-2 left-4 right-2 flex items-end gap-2">{[24, 48, 36, 64].map((height) => <span key={height} className="w-5 rounded-t bg-primary" style={{ height }} />)}</div><span className="absolute bottom-0 right-0 text-[10px] text-muted-foreground">x</span><span className="absolute left-1 top-0 text-[10px] text-muted-foreground">y</span></div>
+  const [selected, setSelected] = useState(1)
+  const bars = [24, 48, 36, 64]
+
+  return <div className="relative h-28 w-44 border-b border-l bg-card p-2"><div className="absolute bottom-2 left-4 right-2 flex items-end gap-2">{bars.map((height, index) => <button key={height} type="button" className={cn("w-5 rounded-t bg-primary", selected === index && "bg-destructive")} style={{ height }} onClick={() => setSelected(index)} />)}</div><span className="absolute bottom-0 right-0 text-[10px] text-muted-foreground">x</span><span className="absolute left-1 top-0 text-[10px] text-muted-foreground">y</span></div>
 }
 
 function StateVisual({ tone }: { tone: "error" | "success" | "warning" | "info" }) {
+  const [dismissed, setDismissed] = useState(false)
   const config = {
     error: { icon: <AlertTriangle aria-hidden="true" />, title: "문제가 발생했습니다" },
     success: { icon: <CheckCircle2 aria-hidden="true" />, title: "완료되었습니다" },
     warning: { icon: <AlertTriangle aria-hidden="true" />, title: "확인이 필요합니다" },
     info: { icon: <Info aria-hidden="true" />, title: "안내" },
   }[tone]
-  return <Chrome className="flex w-52 items-start gap-2 p-3 text-sm"><span className={cn(tone === "success" && "text-primary", tone === "error" && "text-destructive")}>{config.icon}</span><div><p className="font-medium">{config.title}</p><Line className="mt-2 w-28" /></div></Chrome>
+
+  if (dismissed) return <button type="button" className="rounded border bg-card px-3 py-2 text-sm" onClick={() => setDismissed(false)}>상태 다시 보기</button>
+
+  return <Chrome className="flex w-52 items-start justify-between gap-2 p-3 text-sm"><span className={cn(tone === "success" && "text-primary", tone === "error" && "text-destructive")}>{config.icon}</span><div><p className="font-medium">{config.title}</p><Line className="mt-2 w-28" /></div><button type="button" aria-label="상태 닫기" onClick={() => setDismissed(true)}><X aria-hidden="true" /></button></Chrome>
 }
 
 function LoadingStateVisual() {
-  return <Chrome className="w-48 p-3"><div className="flex items-center gap-2 text-sm"><LoaderCircle className="animate-spin text-primary" aria-hidden="true" />불러오는 중</div><SkeletonVisual /></Chrome>
+  const [done, setDone] = useState(false)
+
+  return <button type="button" onClick={() => setDone((value) => !value)}><Chrome className="w-48 p-3 text-left"><div className="flex items-center gap-2 text-sm">{done ? <CheckCircle2 className="text-primary" aria-hidden="true" /> : <LoaderCircle className="animate-spin text-primary" aria-hidden="true" />}{done ? "완료됨" : "불러오는 중"}</div>{!done && <SkeletonVisual />}</Chrome></button>
 }
 
 function FallbackVisual({ label }: { label: string }) {
