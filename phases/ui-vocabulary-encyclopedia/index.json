@@ -38,6 +38,41 @@
       "name": "vocabulary-expansion-batch-1",
       "status": "completed",
       "summary": "Expanded the editable YAML dataset from 60 to 106 terms, adding foundational visual atoms, input details, navigation patterns, action buttons, dashboard controls, and feedback states. Added matching TermVisual variants so new terms render as recognizable mini UI assets instead of falling back to generic placeholders."
+    },
+    {
+      "step": 6,
+      "name": "remaining-planned-candidates",
+      "status": "pending"
+    },
+    {
+      "step": 7,
+      "name": "batch-1-practical-forms-filters-details",
+      "status": "pending"
+    },
+    {
+      "step": 8,
+      "name": "batch-2-advanced-data-list-patterns",
+      "status": "pending"
+    },
+    {
+      "step": 9,
+      "name": "batch-3-app-dashboard-layout-patterns",
+      "status": "pending"
+    },
+    {
+      "step": 10,
+      "name": "batch-4-feedback-permission-system-states",
+      "status": "pending"
+    },
+    {
+      "step": 11,
+      "name": "batch-5-content-media-commerce-patterns",
+      "status": "pending"
+    },
+    {
+      "step": 12,
+      "name": "duplicate-category-audit",
+      "status": "pending"
     }
   ]
 }
