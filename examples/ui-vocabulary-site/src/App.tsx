@@ -1,16 +1,35 @@
-import { BookOpen, Search, Sparkles } from "lucide-react"
+import { useMemo, useState } from "react"
+import { BookOpen, Search, X } from "lucide-react"
 import { Badge } from "@/components/ui/badge"
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
+import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
 import { Separator } from "@/components/ui/separator"
-import { categories, terms } from "@/data/terms.generated"
+import { TermCard } from "@/components/term-card"
+import { TermDetail } from "@/components/term-detail"
+import { categories, terms, type TermCategory, type VocabularyTerm } from "@/data/terms.generated"
+import { categoryLabels, searchTerms } from "@/lib/search"
+import { cn } from "@/lib/utils"
 
 function App() {
-  const categoryCounts = categories.map((category) => ({
-    category,
-    count: terms.filter((term) => term.category === category).length,
-  }))
-  const sampleTerms = terms.slice(0, 12)
+  const [query, setQuery] = useState("")
+  const [category, setCategory] = useState<TermCategory | "all">("all")
+  const [selectedTerm, setSelectedTerm] = useState<VocabularyTerm | null>(terms[0] ?? null)
+  const [detailOpen, setDetailOpen] = useState(false)
+
+  const filteredTerms = useMemo(() => searchTerms(terms, query, category), [query, category])
+  const categoryCounts = useMemo(
+    () =>
+      categories.map((item) => ({
+        category: item,
+        count: terms.filter((term) => term.category === item).length,
+      })),
+    []
+  )
+
+  function selectTerm(term: VocabularyTerm) {
+    setSelectedTerm(term)
+    setDetailOpen(true)
+  }
 
   return (
     <main className="min-h-svh bg-background">
@@ -29,19 +48,50 @@ function App() {
               </div>
             </div>
             <Badge variant="secondary" className="rounded-md px-3 py-1 text-sm">
-              {terms.length} terms
+              {filteredTerms.length} / {terms.length} terms
             </Badge>
           </div>
+
           <div className="grid gap-4 md:grid-cols-[minmax(0,1fr)_auto] md:items-center">
             <div className="relative">
               <Search className="pointer-events-none absolute left-3 top-1/2 size-4 -translate-y-1/2 text-muted-foreground" />
-              <Input className="h-11 pl-9" placeholder="토글, 모달, dropdown, combobox..." />
+              <Input
+                className="h-11 pl-9 pr-10"
+                placeholder="토글, 모달, dropdown, combobox..."
+                value={query}
+                onChange={(event) => setQuery(event.target.value)}
+              />
+              {query && (
+                <Button
+                  aria-label="검색어 지우기"
+                  className="absolute right-1 top-1/2 -translate-y-1/2"
+                  size="icon-sm"
+                  variant="ghost"
+                  onClick={() => setQuery("")}
+                >
+                  <X aria-hidden="true" />
+                </Button>
+              )}
             </div>
             <div className="flex flex-wrap gap-2">
+              <Button
+                className={cn("h-8 rounded-md", category === "all" && "border-primary")}
+                size="sm"
+                variant={category === "all" ? "default" : "outline"}
+                onClick={() => setCategory("all")}
+              >
+                전체 {terms.length}
+              </Button>
               {categoryCounts.map((item) => (
-                <Badge key={item.category} variant="outline" className="rounded-md">
-                  {item.category} {item.count}
-                </Badge>
+                <Button
+                  key={item.category}
+                  className={cn("h-8 rounded-md", category === item.category && "border-primary")}
+                  size="sm"
+                  variant={category === item.category ? "default" : "outline"}
+                  onClick={() => setCategory(item.category)}
+                >
+                  {categoryLabels[item.category]} {item.count}
+                </Button>
               ))}
             </div>
           </div>
@@ -49,83 +99,33 @@ function App() {
 
         <Separator />
 
-        <section className="grid gap-4 md:grid-cols-2 xl:grid-cols-3">
-          {sampleTerms.map((term, index) => (
-            <Card key={term.id} className="overflow-hidden rounded-lg">
-              <CardHeader className="grid grid-cols-[1fr_auto] gap-4">
-                <div>
-                  <p className="text-xs font-medium uppercase text-muted-foreground">{term.category}</p>
-                  <CardTitle className="mt-1 text-xl tracking-normal">
-                    {term.ko.name}
-                    <span className="ml-2 text-sm font-normal text-muted-foreground">{term.en.name}</span>
-                  </CardTitle>
-                </div>
-                <div className="flex size-8 items-center justify-center rounded-full bg-secondary text-sm font-semibold text-secondary-foreground">
-                  {index + 1}
-                </div>
-              </CardHeader>
-              <CardContent className="flex flex-col gap-4">
-                <div className="flex min-h-24 items-center justify-center rounded-md border bg-muted/50 p-4">
-                  <MiniVisual variant={term.asset.variant} label={term.ko.name} />
-                </div>
-                <div className="flex flex-col gap-2">
-                  <p className="text-sm leading-6 text-muted-foreground">{term.one_liner}</p>
-                  <p className="rounded-md bg-accent px-3 py-2 text-sm text-accent-foreground">
-                    {term.prompt_phrases[0]}
-                  </p>
-                </div>
-              </CardContent>
-            </Card>
-          ))}
-        </section>
+        {filteredTerms.length > 0 ? (
+          <section className="grid gap-4 md:grid-cols-2 xl:grid-cols-3">
+            {filteredTerms.map((term, index) => (
+              <TermCard
+                key={term.id}
+                index={index}
+                selected={selectedTerm?.id === term.id}
+                term={term}
+                onSelect={selectTerm}
+              />
+            ))}
+          </section>
+        ) : (
+          <section className="flex min-h-64 flex-col items-center justify-center gap-3 rounded-lg border bg-card p-8 text-center">
+            <p className="text-lg font-semibold">검색 결과가 없습니다.</p>
+            <p className="max-w-md text-sm leading-6 text-muted-foreground">
+              한국어 이름, 영어 이름, alias, 설명, 프롬프트 문장을 모두 검색합니다. 예: 토글, modal, dropdown.
+            </p>
+            <Button variant="outline" onClick={() => { setQuery(""); setCategory("all") }}>
+              전체 용어 보기
+            </Button>
+          </section>
+        )}
       </section>
+
+      <TermDetail open={detailOpen} term={selectedTerm} onOpenChange={setDetailOpen} />
     </main>
-  )
-}
-
-function MiniVisual({ variant, label }: { variant: string; label: string }) {
-  if (variant.includes("button")) {
-    return <button className="rounded-md bg-primary px-4 py-2 text-sm font-medium text-primary-foreground">{label}</button>
-  }
-
-  if (variant.includes("field") || variant.includes("input")) {
-    return <div className="h-9 w-44 rounded-md border bg-card px-3 py-2 text-left text-sm text-muted-foreground">Aa</div>
-  }
-
-  if (variant.includes("switch")) {
-    return (
-      <div className="flex h-7 w-12 items-center justify-end rounded-full bg-primary p-1">
-        <div className="size-5 rounded-full bg-primary-foreground" />
-      </div>
-    )
-  }
-
-  if (variant.includes("card")) {
-    return (
-      <div className="w-44 rounded-md border bg-card p-3 shadow-sm">
-        <div className="mb-2 h-3 w-20 rounded bg-foreground/20" />
-        <div className="h-2 w-32 rounded bg-muted-foreground/25" />
-      </div>
-    )
-  }
-
-  if (variant.includes("table")) {
-    return (
-      <div className="grid w-44 grid-cols-3 overflow-hidden rounded-md border bg-card text-xs">
-        {Array.from({ length: 9 }).map((_, cell) => (
-          <div key={cell} className="h-7 border-b border-r p-1 last:border-r-0">
-            <div className="h-2 rounded bg-muted-foreground/25" />
-          </div>
-        ))}
-      </div>
-    )
-  }
-
-  return (
-    <div className="flex items-center gap-2 rounded-md border bg-card px-3 py-2 text-sm">
-      <Sparkles className="size-4 text-primary" aria-hidden="true" />
-      <span>{label}</span>
-    </div>
   )
 }
 

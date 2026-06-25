@@ -24,7 +24,8 @@
     {
       "step": 3,
       "name": "glossary-browsing-experience",
-      "status": "pending"
+      "status": "completed",
+      "summary": "Implemented client-side search, Korean category filters, clickable term cards, a detail Sheet, and reusable term visual renderer for all 60 seed terms. Build passed; browser smoke confirmed desktop/mobile render and search logic for 토글/모달/dropdown."
     },
     {
       "step": 4,
