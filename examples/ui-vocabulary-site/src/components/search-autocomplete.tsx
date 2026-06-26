@@ -1,4 +1,4 @@
-import { useMemo, useState } from "react"
+import { useEffect, useMemo, useState } from "react"
 import { ArrowRight, Search, X } from "lucide-react"
 import {
   Command,
@@ -33,14 +33,30 @@ export function SearchAutocomplete({
 }: SearchAutocompleteProps) {
   const [focused, setFocused] = useState(false)
   const [activeIndex, setActiveIndex] = useState(-1)
-  const suggestions = useMemo(() => getSearchSuggestions(terms, query, filter), [filter, query, terms])
+  const [draftQuery, setDraftQuery] = useState(query)
+  const suggestions = useMemo(() => getSearchSuggestions(terms, draftQuery, filter), [draftQuery, filter, terms])
   const open = focused && suggestions.length > 0
+
+  useEffect(() => {
+    setDraftQuery(query)
+  }, [query])
+
+  useEffect(() => {
+    if (draftQuery === query) {
+      return
+    }
+
+    const timer = window.setTimeout(() => onQueryChange(draftQuery), 180)
+    return () => window.clearTimeout(timer)
+  }, [draftQuery, onQueryChange, query])
 
   function selectSuggestion(suggestion: SearchSuggestion) {
     if (suggestion.type === "category" || suggestion.type === "group") {
       onFilterChange(suggestion.filter)
+      setDraftQuery("")
       onQueryChange("")
     } else {
+      setDraftQuery(suggestion.value)
       onQueryChange(suggestion.value)
     }
     setFocused(false)
@@ -77,24 +93,28 @@ export function SearchAutocomplete({
           <Input
             aria-autocomplete="list"
             aria-expanded={open}
+            autoComplete="off"
             className="h-11 pl-9 pr-10"
             placeholder="토글, 모달, icon..."
-            value={query}
+            value={draftQuery}
             onBlur={() => window.setTimeout(() => setFocused(false), 120)}
             onChange={(event) => {
-              onQueryChange(event.target.value)
+              setDraftQuery(event.target.value)
               setActiveIndex(-1)
             }}
             onFocus={() => setFocused(true)}
             onKeyDown={handleKeyDown}
           />
-          {query && (
+          {draftQuery && (
             <Button
               aria-label="검색어 지우기"
               className="absolute right-1 top-1/2 -translate-y-1/2"
               size="icon-sm"
               variant="ghost"
-              onClick={() => onQueryChange("")}
+              onClick={() => {
+                setDraftQuery("")
+                onQueryChange("")
+              }}
             >
               <X aria-hidden="true" />
             </Button>
@@ -108,7 +128,7 @@ export function SearchAutocomplete({
       >
         <Command shouldFilter={false}>
           <CommandList className="max-h-80">
-            <CommandGroup heading={query ? "추천 결과" : "이렇게 찾아보세요"}>
+            <CommandGroup heading={draftQuery ? "추천 결과" : "이렇게 찾아보세요"}>
               {suggestions.map((suggestion, index) => (
                 <CommandItem
                   key={suggestion.id}
@@ -130,7 +150,7 @@ export function SearchAutocomplete({
                 </CommandItem>
               ))}
             </CommandGroup>
-            {!query && (
+            {!draftQuery && (
               <>
                 <CommandSeparator />
                 <CommandGroup heading="팁">

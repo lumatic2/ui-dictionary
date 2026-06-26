@@ -1,3 +1,4 @@
+import { memo } from "react"
 import { Badge } from "@/components/ui/badge"
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 import { TermVisual } from "@/components/term-visual"
@@ -13,7 +14,7 @@ type TermCardProps = {
   onSelect: (term: VocabularyTerm) => void
 }
 
-export function TermCard({ term, index, matchReasons = [], selected, onSelect }: TermCardProps) {
+export const TermCard = memo(function TermCard({ term, index, matchReasons = [], selected, onSelect }: TermCardProps) {
   const openDetail = () => onSelect(term)
 
   const handleKeyDown = (event: React.KeyboardEvent<HTMLElement>) => {
@@ -70,4 +71,4 @@ export function TermCard({ term, index, matchReasons = [], selected, onSelect }:
       </CardContent>
     </Card>
   )
-}
+})

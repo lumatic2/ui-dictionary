@@ -1,4 +1,4 @@
-import { useEffect, useMemo, useRef, useState } from "react"
+import { useCallback, useDeferredValue, useEffect, useMemo, useRef, useState } from "react"
 import {
   BellDot,
   BookOpen,
@@ -48,8 +48,9 @@ function App() {
   const [printScopeLabel, setPrintScopeLabel] = useState("전체 용어")
   const restoreAfterPrintRef = useRef<RestorePrintState>(null)
   const cleanupTimerRef = useRef<number | null>(null)
+  const deferredQuery = useDeferredValue(query)
 
-  const searchResults = useMemo(() => searchTerms(terms, query, filter), [query, filter])
+  const searchResults = useMemo(() => searchTerms(terms, deferredQuery, filter), [deferredQuery, filter])
   const filteredTerms = useMemo(() => searchResults.map((result) => result.term), [searchResults])
   const starterSuggestions = useMemo(() => getStarterQueries(), [])
   const hasActiveSearch = query.trim().length > 0 || filter !== "all"
@@ -92,29 +93,33 @@ function App() {
   }, [])
 
   useEffect(() => {
-    const params = new URLSearchParams(window.location.search)
+    const timer = window.setTimeout(() => {
+      const params = new URLSearchParams(window.location.search)
 
-    if (query.trim()) {
-      params.set("q", query.trim())
-    } else {
-      params.delete("q")
-    }
+      if (query.trim()) {
+        params.set("q", query.trim())
+      } else {
+        params.delete("q")
+      }
 
-    if (filter !== "all") {
-      params.set("filter", filter)
-    } else {
-      params.delete("filter")
-    }
+      if (filter !== "all") {
+        params.set("filter", filter)
+      } else {
+        params.delete("filter")
+      }
 
-    const nextSearch = params.toString()
-    const nextUrl = `${window.location.pathname}${nextSearch ? `?${nextSearch}` : ""}${window.location.hash}`
-    window.history.replaceState(null, "", nextUrl)
+      const nextSearch = params.toString()
+      const nextUrl = `${window.location.pathname}${nextSearch ? `?${nextSearch}` : ""}${window.location.hash}`
+      window.history.replaceState(null, "", nextUrl)
+    }, 500)
+
+    return () => window.clearTimeout(timer)
   }, [filter, query])
 
-  function selectTerm(term: VocabularyTerm) {
+  const selectTerm = useCallback((term: VocabularyTerm) => {
     setSelectedTerm(term)
     setDetailOpen(true)
-  }
+  }, [])
 
   function schedulePrint() {
     window.setTimeout(() => {
@@ -329,7 +334,7 @@ function App() {
                   <TermCard
                     key={result.term.id}
                     index={index}
-                    matchReasons={query ? result.reasons : []}
+                    matchReasons={deferredQuery ? result.reasons : undefined}
                     selected={selectedTerm?.id === result.term.id}
                     term={result.term}
                     onSelect={selectTerm}
