@@ -127,7 +127,7 @@ function App() {
                   <div className="min-w-0">
                     <h1 className="truncate text-xl font-semibold tracking-normal text-foreground">UI 용어 사전</h1>
                     <p className="mt-1 text-sm leading-5 text-muted-foreground">
-                      이름과 생김새로 찾는 UI 컴포넌트 레퍼런스
+                      UI 컴포넌트 레퍼런스
                     </p>
                   </div>
                 </div>
