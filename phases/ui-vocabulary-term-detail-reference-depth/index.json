@@ -1,0 +1,27 @@
+{
+  "project": "design-manual",
+  "phase": "ui-vocabulary-term-detail-reference-depth",
+  "mode": "product",
+  "steps": [
+    {
+      "step": 0,
+      "name": "source-registry-and-types",
+      "status": "pending"
+    },
+    {
+      "step": 1,
+      "name": "detail-reference-and-copy-ui",
+      "status": "pending"
+    },
+    {
+      "step": 2,
+      "name": "confusing-term-data-depth",
+      "status": "pending"
+    },
+    {
+      "step": 3,
+      "name": "detail-smoke-and-deploy-verification",
+      "status": "pending"
+    }
+  ]
+}

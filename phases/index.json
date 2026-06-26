@@ -14,7 +14,11 @@
     },
     {
       "dir": "ui-vocabulary-mobile-expansion",
-      "status": "active"
+      "status": "completed"
+    },
+    {
+      "dir": "ui-vocabulary-term-detail-reference-depth",
+      "status": "pending"
     }
   ]
 }
