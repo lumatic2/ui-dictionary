@@ -38,7 +38,10 @@
     {
       "step": 4,
       "name": "export-qa-and-documentation",
-      "status": "pending"
+      "status": "completed",
+      "started_at": "2026-06-26T14:25:00+09:00",
+      "completed_at": "2026-06-26T14:34:00+09:00",
+      "summary": "Documented export usage, known limits, stable DOM contracts, and 2026-06-26 smoke results in docs/ui-vocabulary/export-capture.md. Checked off the export/capture polish plan DoD. Final verification passed: npm run build, npm run lint with existing shadcn warnings only, and mobile 390x844 header smoke with no horizontal overflow and visible search/PDF controls."
     }
   ]
 }
