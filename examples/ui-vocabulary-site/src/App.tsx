@@ -1,5 +1,6 @@
 import { useMemo, useState } from "react"
 import { BookOpen, ChevronDown, Download, FileText, Search, X } from "lucide-react"
+import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion"
 import { Badge } from "@/components/ui/badge"
 import { Button } from "@/components/ui/button"
 import {
@@ -12,22 +13,26 @@ import { Input } from "@/components/ui/input"
 import { Separator } from "@/components/ui/separator"
 import { TermCard } from "@/components/term-card"
 import { TermDetail } from "@/components/term-detail"
-import { categories, terms, type TermCategory, type VocabularyTerm } from "@/data/terms.generated"
-import { categoryLabels, searchTerms } from "@/lib/search"
+import { categories, terms, type VocabularyTerm } from "@/data/terms.generated"
+import { categoryGroupsByCategory, categoryLabels, matchesFilter, searchTerms, type TermFilter } from "@/lib/search"
 import { cn } from "@/lib/utils"
 
 function App() {
   const [query, setQuery] = useState("")
-  const [category, setCategory] = useState<TermCategory | "all">("all")
+  const [filter, setFilter] = useState<TermFilter>("all")
   const [selectedTerm, setSelectedTerm] = useState<VocabularyTerm | null>(terms[0] ?? null)
   const [detailOpen, setDetailOpen] = useState(false)
 
-  const filteredTerms = useMemo(() => searchTerms(terms, query, category), [query, category])
+  const filteredTerms = useMemo(() => searchTerms(terms, query, filter), [query, filter])
   const categoryCounts = useMemo(
     () =>
       categories.map((item) => ({
         category: item,
         count: terms.filter((term) => term.category === item).length,
+        groups: categoryGroupsByCategory[item].map((group) => ({
+          ...group,
+          count: terms.filter((term) => matchesFilter(term, group.id)).length,
+        })),
       })),
     []
   )
@@ -42,35 +47,55 @@ function App() {
   }
 
   const categoryNav = (
-    <>
+    <div className="flex flex-col gap-3">
       <CategoryButton
-        active={category === "all"}
+        active={filter === "all"}
         count={terms.length}
         label="전체"
-        onClick={() => setCategory("all")}
+        onClick={() => setFilter("all")}
       />
-      {categoryCounts.map((item) => (
-        <CategoryButton
-          key={item.category}
-          active={category === item.category}
-          count={item.count}
-          label={categoryLabels[item.category]}
-          onClick={() => setCategory(item.category)}
-        />
-      ))}
-    </>
+      <Accordion className="flex flex-col gap-1" defaultValue={categories} type="multiple">
+        {categoryCounts.map((item) => (
+          <AccordionItem key={item.category} className="rounded-md border px-2" value={item.category}>
+            <AccordionTrigger className="py-2 text-sm hover:no-underline">
+              <span className="flex min-w-0 flex-1 items-center justify-between gap-2">
+                <span className="truncate">{categoryLabels[item.category]}</span>
+                <span className="shrink-0 text-xs text-muted-foreground">{item.count}</span>
+              </span>
+            </AccordionTrigger>
+            <AccordionContent className="flex flex-col gap-1 pb-2">
+              <CategoryButton
+                active={filter === item.category}
+                count={item.count}
+                label={`${categoryLabels[item.category]} 전체`}
+                onClick={() => setFilter(item.category)}
+              />
+              {item.groups.map((group) => (
+                <CategoryButton
+                  key={group.id}
+                  active={filter === group.id}
+                  count={group.count}
+                  label={group.label}
+                  onClick={() => setFilter(group.id)}
+                />
+              ))}
+            </AccordionContent>
+          </AccordionItem>
+        ))}
+      </Accordion>
+    </div>
   )
 
   return (
     <main className="min-h-svh bg-background">
       <div className="mx-auto grid w-full max-w-7xl lg:grid-cols-[240px_minmax(0,1fr)]">
-        <aside className="sticky top-0 hidden h-svh border-r bg-background px-4 py-6 lg:block" data-print-hidden>
+        <aside className="sticky top-0 hidden h-svh overflow-y-auto border-r bg-background px-4 py-6 lg:block" data-print-hidden>
           <nav aria-label="카테고리" className="flex h-full flex-col gap-4">
             <div>
               <p className="text-xs font-medium uppercase text-muted-foreground">Navigation</p>
               <h2 className="mt-1 text-lg font-semibold">카테고리</h2>
             </div>
-            <div className="flex flex-col gap-1">{categoryNav}</div>
+            {categoryNav}
           </nav>
         </aside>
 
@@ -131,7 +156,7 @@ function App() {
                           <FileText aria-hidden="true" />
                           현재 필터 결과 저장
                         </DropdownMenuItem>
-                        <DropdownMenuItem onClick={() => { setQuery(""); setCategory("all"); window.setTimeout(saveAsPdf, 0) }}>
+                        <DropdownMenuItem onClick={() => { setQuery(""); setFilter("all"); window.setTimeout(saveAsPdf, 0) }}>
                           <Download aria-hidden="true" />
                           전체 용어 저장
                         </DropdownMenuItem>
@@ -141,7 +166,7 @@ function App() {
                 </div>
               </div>
 
-              <div className="flex gap-2 overflow-x-auto pb-1 lg:hidden" data-print-hidden>
+              <div className="max-h-72 overflow-y-auto lg:hidden" data-print-hidden>
                 {categoryNav}
               </div>
             </div>
@@ -175,7 +200,7 @@ function App() {
                 <p className="max-w-md text-sm leading-6 text-muted-foreground">
                   한국어 이름, 영어 이름, alias, 설명, 프롬프트 문장을 모두 검색합니다. 예: 토글, modal, dropdown.
                 </p>
-                <Button variant="outline" onClick={() => { setQuery(""); setCategory("all") }}>
+                <Button variant="outline" onClick={() => { setQuery(""); setFilter("all") }}>
                   전체 용어 보기
                 </Button>
               </section>
