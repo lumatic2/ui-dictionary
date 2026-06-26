@@ -30,7 +30,10 @@
     {
       "step": 3,
       "name": "detail-smoke-and-deploy-verification",
-      "status": "pending"
+      "status": "completed",
+      "started_at": "2026-06-27T01:45:00+09:00",
+      "completed_at": "2026-06-27T02:00:00+09:00",
+      "summary": "Ran validation/build/lint, verified local Chrome detail smoke for select/dialog/toast/switch/tabs, pushed implementation commits to ui-dictionary, confirmed Cloudflare deployment success, and verified https://ui.askewly.com/ shows source links, copy controls, explicit related notes, and 328 terms."
     }
   ]
 }

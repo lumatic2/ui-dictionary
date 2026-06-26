@@ -43,13 +43,13 @@ Out of scope for this milestone:
 
 ## Step Tree
 
-- [ ] Step 0: Source registry and generated types.
+- [x] Step 0: Source registry and generated types.
   - AC: source metadata is generated from `docs/ui-vocabulary/sources.md` or an explicit data file, and unknown source ids still fail validation.
-- [ ] Step 1: Detail reference and prompt copy UI.
+- [x] Step 1: Detail reference and prompt copy UI.
   - AC: detail drawer shows real source labels/URLs, source notes, copyable prompt phrases, and clearer "use / avoid" sections.
-- [ ] Step 2: Confusing term data depth.
+- [x] Step 2: Confusing term data depth.
   - AC: at least five confusing groups have explicit `related` or relation data: select/combobox/dropdown, modal/dialog/drawer, toast/snackbar/banner, tab/segmented control, checkbox/switch.
-- [ ] Step 3: Smoke and deployment verification.
+- [x] Step 3: Smoke and deployment verification.
   - AC: validation/build/lint pass, Chrome smoke passes locally, push to `ui-dictionary` triggers Cloudflare success, and `ui.askewly.com` still renders 328 cards.
 
 ## Implementation Notes
