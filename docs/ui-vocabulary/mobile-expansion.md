@@ -94,6 +94,24 @@ Not duplicated because existing entries already cover the core term:
 - `voice-input-button`
 - `clear-text-button`
 
+## Promoted In 2026-06-26 Step 5
+
+- `feed-card-mobile`
+- `story-rail`
+- `story-viewer`
+- `media-lightbox-mobile`
+- `comment-composer`
+- `bottom-cta-bar`
+- `product-option-sheet`
+- `cart-summary-bar`
+- `checkout-progress-header`
+- `delivery-tracker`
+- `map-bottom-panel`
+- `location-permission-empty`
+- `onboarding-pager`
+- `coach-mark`
+- `mobile-empty-feed`
+
 ### Batch 1 — App Shell And Navigation
 
 - `phone-frame`: generic mobile viewport frame for visual examples.

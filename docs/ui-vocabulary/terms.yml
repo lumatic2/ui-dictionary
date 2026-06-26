@@ -3568,6 +3568,231 @@
   sources: [{ source_id: material-m3-components, note: trailing icon actions in text fields }]
   confidence: high
 
+- id: feed-card-mobile
+  status: draft
+  category: data-display
+  ko: { name: 모바일 피드 카드, aliases: [feed card mobile, 피드 카드, 모바일 콘텐츠 카드, 세로 피드 카드] }
+  en: { name: Mobile feed card, aliases: [Feed card, Mobile content card] }
+  one_liner: 모바일 피드 안에서 이미지, 본문, 반응 버튼을 세로로 묶어 보여주는 카드.
+  description: SNS, 뉴스, 커뮤니티처럼 스크롤 흐름 안에서 콘텐츠 하나를 독립 단위로 보여준다.
+  visual_anatomy: [thumbnail or media area, title/body lines, reaction actions, vertical card]
+  when_to_use: [모바일 피드에서 게시물이나 콘텐츠 항목을 반복해서 보여줄 때]
+  anti_use: [한 화면에서 많은 항목을 비교해야 하면 compact list가 더 낫다]
+  prompt_phrases: [모바일 피드에 이미지와 좋아요 버튼이 있는 feed card를 넣어줘]
+  asset: { kind: mini-mock, variant: feed-card-mobile, props: { liked: false } }
+  sources: [{ source_id: material-m3-components, note: cards in mobile content feeds }]
+  confidence: high
+
+- id: story-rail
+  status: draft
+  category: data-display
+  ko: { name: 스토리 레일, aliases: [story rail, 스토리 목록, 원형 아바타 레일, story carousel] }
+  en: { name: Story rail, aliases: [Stories rail, Avatar story carousel] }
+  one_liner: 모바일 피드 상단에 원형 아바타들을 가로로 나열해 스토리를 여는 패턴.
+  description: 짧은 임시 콘텐츠나 사용자별 스토리를 가로 스크롤 가능한 원형 목록으로 보여준다.
+  visual_anatomy: [horizontal rail, circular avatars, active ring, story labels]
+  when_to_use: [사용자별 짧은 콘텐츠나 상태 업데이트를 모바일 피드 위에 둘 때]
+  anti_use: [영구 콘텐츠나 복잡한 카드 목록에는 일반 carousel이나 list가 더 적합하다]
+  prompt_phrases: [홈 피드 상단에 원형 아바타가 있는 story rail을 넣어줘]
+  asset: { kind: mini-mock, variant: story-rail, props: { active: 0 } }
+  sources: [{ source_id: apple-hig-components, note: horizontal content browsing and avatar-based navigation }]
+  confidence: medium
+
+- id: story-viewer
+  status: draft
+  category: data-display
+  ko: { name: 스토리 뷰어, aliases: [story viewer, 스토리 화면, 탭해서 넘기는 화면, 풀스크린 스토리] }
+  en: { name: Story viewer, aliases: [Full-screen story viewer, Story screen] }
+  one_liner: 화면 전체를 써서 짧은 콘텐츠를 보여주고 탭이나 스와이프로 넘기는 모바일 뷰어.
+  description: 진행 바, 작성자, 미디어 영역을 함께 보여주며 사용자가 다음 스토리로 빠르게 넘길 수 있다.
+  visual_anatomy: [full-screen media, progress bars, profile header, tap zones]
+  when_to_use: [짧은 이미지/영상 콘텐츠를 몰입형으로 빠르게 소비하게 할 때]
+  anti_use: [긴 글이나 상세 비교가 필요한 콘텐츠에는 부적합하다]
+  prompt_phrases: [탭하면 다음 화면으로 넘어가는 full-screen story viewer를 만들어줘]
+  asset: { kind: mini-mock, variant: story-viewer, props: { progress: true } }
+  sources: [{ source_id: apple-hig-components, note: full-screen media browsing and paged progress }]
+  confidence: medium
+
+- id: media-lightbox-mobile
+  status: draft
+  category: structure
+  ko: { name: 모바일 미디어 라이트박스, aliases: [media lightbox mobile, 모바일 이미지 뷰어, 전체 화면 사진 보기] }
+  en: { name: Mobile media lightbox, aliases: [Mobile image viewer, Full-screen media viewer] }
+  one_liner: 모바일에서 이미지나 영상을 전체 화면으로 열어 집중해서 보게 하는 뷰어.
+  description: 닫기, 현재 순서, 제스처 확대 같은 컨트롤을 최소한으로 유지해 미디어를 크게 보여준다.
+  visual_anatomy: [full-screen dark surface, media content, close button, page count]
+  when_to_use: [사진, 상품 이미지, 첨부 미디어를 크게 확인해야 할 때]
+  anti_use: [단순 썸네일 목록에는 과하다, 편집 기능은 별도 editor가 필요하다]
+  prompt_phrases: [상품 이미지를 누르면 모바일 전체 화면 media lightbox로 열어줘]
+  asset: { kind: mini-mock, variant: media-lightbox-mobile, props: { chrome: true } }
+  sources: [{ source_id: apple-hig-components, note: full-screen media viewing patterns }]
+  confidence: high
+
+- id: comment-composer
+  status: draft
+  category: input
+  ko: { name: 댓글 작성 바, aliases: [comment composer, 댓글 입력 바, 하단 댓글창, 답글 입력] }
+  en: { name: Comment composer, aliases: [Comment input bar, Reply composer] }
+  one_liner: 모바일 화면 하단에 고정되어 댓글이나 답글을 바로 작성하는 입력 바.
+  description: 피드나 상세 콘텐츠를 보면서 맥락을 잃지 않고 짧은 반응을 입력하게 한다.
+  visual_anatomy: [sticky bottom input, placeholder, send button, safe-area spacing]
+  when_to_use: [게시물, 영상, 채팅형 상세 화면에서 댓글을 바로 받을 때]
+  anti_use: [긴 리뷰나 서식 있는 글쓰기는 별도 작성 화면이 더 낫다]
+  prompt_phrases: [게시물 상세 하단에 고정된 comment composer를 넣어줘]
+  asset: { kind: mini-mock, variant: comment-composer, props: { sticky: true } }
+  sources: [{ source_id: material-m3-components, note: text input and bottom placement patterns }]
+  confidence: high
+
+- id: bottom-cta-bar
+  status: draft
+  category: action
+  ko: { name: 하단 CTA 바, aliases: [bottom CTA bar, 고정 하단 버튼, 하단 구매 버튼, sticky CTA] }
+  en: { name: Bottom CTA bar, aliases: [Sticky CTA bar, Bottom action bar] }
+  one_liner: 모바일 화면 아래에 주요 행동 버튼을 고정해 언제든 실행할 수 있게 하는 바.
+  description: 신청하기, 구매하기, 계속하기처럼 한 화면의 핵심 행동을 엄지 영역에 지속 노출한다.
+  visual_anatomy: [sticky bottom container, primary button, safe-area padding, optional price or summary]
+  when_to_use: [모바일 상세 화면에서 주요 전환 행동을 계속 보여줘야 할 때]
+  anti_use: [탐색 목적지 전환에는 bottom navigation을 쓴다, 여러 행동을 과하게 넣지 않는다]
+  prompt_phrases: [상품 상세 하단에 구매하기 bottom CTA bar를 고정해줘]
+  asset: { kind: mini-mock, variant: bottom-cta-bar, props: { primary: true } }
+  sources: [{ source_id: material-m3-components, note: bottom app/action placement on mobile }]
+  confidence: high
+
+- id: product-option-sheet
+  status: draft
+  category: input
+  ko: { name: 상품 옵션 시트, aliases: [product option sheet, 상품 옵션 바텀시트, 옵션 선택 시트, 사이즈 선택] }
+  en: { name: Product option sheet, aliases: [Variant option sheet, Commerce option sheet] }
+  one_liner: 모바일 커머스에서 사이즈, 색상, 수량 같은 상품 옵션을 하단 시트로 고르는 패턴.
+  description: 상품 상세를 유지한 채 구매 전 필요한 변형 옵션을 좁은 화면에서 선택하게 한다.
+  visual_anatomy: [bottom sheet, option chips, selected variant, quantity or CTA]
+  when_to_use: [모바일 상품 상세에서 옵션 선택 후 장바구니나 구매로 이어질 때]
+  anti_use: [옵션 조합이 매우 복잡하면 별도 구성 화면이 더 명확하다]
+  prompt_phrases: [사이즈와 색상을 고르는 product option sheet를 아래에서 올려줘]
+  asset: { kind: mini-mock, variant: product-option-sheet, props: { selected: M } }
+  sources: [{ source_id: material-m3-components, note: bottom sheets and chips for option selection }]
+  confidence: high
+
+- id: cart-summary-bar
+  status: draft
+  category: data-display
+  ko: { name: 장바구니 요약 바, aliases: [cart summary bar, 하단 장바구니 바, 주문 요약 바, 결제 바] }
+  en: { name: Cart summary bar, aliases: [Cart bottom bar, Checkout summary bar] }
+  one_liner: 모바일 화면 하단에 장바구니 수량, 금액, 결제 버튼을 압축해 보여주는 바.
+  description: 사용자가 상품을 둘러보는 동안 현재 장바구니 상태와 다음 행동을 계속 확인하게 한다.
+  visual_anatomy: [item count, total price, checkout action, sticky bottom bar]
+  when_to_use: [모바일 쇼핑, 음식 주문, 예약 흐름에서 누적 선택 상태를 보여줄 때]
+  anti_use: [상세한 비용 내역은 cart-summary나 checkout screen에 따로 보여준다]
+  prompt_phrases: [화면 아래에 수량과 총액이 보이는 cart summary bar를 고정해줘]
+  asset: { kind: mini-mock, variant: cart-summary-bar, props: { count: 2 } }
+  sources: [{ source_id: material-m3-components, note: bottom action and summary placement }]
+  confidence: high
+
+- id: checkout-progress-header
+  status: draft
+  category: feedback
+  ko: { name: 결제 진행 헤더, aliases: [checkout progress header, 결제 단계 헤더, 주문 단계 표시, 결제 진행바] }
+  en: { name: Checkout progress header, aliases: [Checkout step header, Checkout progress bar] }
+  one_liner: 모바일 결제 흐름 상단에서 현재 단계와 남은 단계를 보여주는 헤더.
+  description: 주소, 결제, 확인처럼 여러 단계의 checkout에서 사용자가 위치를 잃지 않게 한다.
+  visual_anatomy: [header title, current step number, progress segments, back affordance]
+  when_to_use: [모바일 결제나 예약처럼 여러 단계가 있는 전환 흐름에서]
+  anti_use: [단일 화면 결제에는 과할 수 있다]
+  prompt_phrases: [결제 화면 상단에 3단계 checkout progress header를 넣어줘]
+  asset: { kind: mini-mock, variant: checkout-progress-header, props: { step: 2 } }
+  sources: [{ source_id: material-m3-components, note: progress indicators and app bars for tasks }]
+  confidence: high
+
+- id: delivery-tracker
+  status: draft
+  category: feedback
+  ko: { name: 배송 추적, aliases: [delivery tracker, 배달 추적, 배송 상태 타임라인, 주문 추적] }
+  en: { name: Delivery tracker, aliases: [Order tracker, Delivery status timeline] }
+  one_liner: 주문이 접수, 준비, 이동, 도착 중 어디에 있는지 단계로 보여주는 모바일 상태 UI.
+  description: 사용자가 기다리는 동안 현재 처리 상태와 다음 단계를 시간 순서로 이해하게 한다.
+  visual_anatomy: [status steps, active step, timeline dots, delivery labels]
+  when_to_use: [배달, 배송, 픽업, 예약 진행 상태를 모바일에서 보여줄 때]
+  anti_use: [단순 완료 여부만 있으면 status chip이나 toast로 충분하다]
+  prompt_phrases: [주문 상태를 접수 조리 배달 단계로 보여주는 delivery tracker를 넣어줘]
+  asset: { kind: mini-mock, variant: delivery-tracker, props: { active: 1 } }
+  sources: [{ source_id: material-m3-components, note: progress and status presentation }]
+  confidence: high
+
+- id: map-bottom-panel
+  status: draft
+  category: structure
+  ko: { name: 지도 하단 패널, aliases: [map bottom panel, 지도 아래 패널, 지도 바텀시트, 장소 정보 패널] }
+  en: { name: Map bottom panel, aliases: [Map bottom sheet, Place details panel] }
+  one_liner: 모바일 지도 위에 하단에서 올라와 장소나 경로 정보를 보여주는 패널.
+  description: 지도 조작을 유지하면서 선택한 장소, 경로, 주문 위치 같은 세부 정보를 하단에서 확인하게 한다.
+  visual_anatomy: [map background, marker, draggable bottom panel, place summary]
+  when_to_use: [지도 기반 검색, 배달 추적, 장소 상세를 모바일에서 보여줄 때]
+  anti_use: [지도와 무관한 일반 상세 정보에는 standard-bottom-sheet가 더 적합하다]
+  prompt_phrases: [지도 아래에 드래그 가능한 map bottom panel로 장소 정보를 보여줘]
+  asset: { kind: mini-mock, variant: map-bottom-panel, props: { expanded: false } }
+  sources: [{ source_id: material-m3-components, note: bottom sheets over map surfaces }]
+  confidence: high
+
+- id: location-permission-empty
+  status: draft
+  category: feedback
+  ko: { name: 위치 권한 빈 상태, aliases: [location permission empty, 위치 권한 필요 화면, 주변 장소 없음, 위치 허용 안내] }
+  en: { name: Location permission empty state, aliases: [Location permission empty, Location access empty state] }
+  one_liner: 위치 권한이 없어 지도나 주변 결과를 보여줄 수 없을 때 나타나는 빈 상태.
+  description: 왜 위치 권한이 필요한지 설명하고 권한 요청 행동을 제공한다.
+  visual_anatomy: [location icon, empty message, permission CTA, map/list placeholder]
+  when_to_use: [주변 장소, 배달 주소, 지도 기능이 위치 권한 없이 비어 있을 때]
+  anti_use: [권한이 아니라 데이터가 없는 경우에는 일반 empty-state를 쓴다]
+  prompt_phrases: [위치 권한이 없을 때 location permission empty state를 보여주고 허용 버튼을 넣어줘]
+  asset: { kind: mini-mock, variant: location-permission-empty, props: { requested: false } }
+  sources: [{ source_id: apple-hig-components, note: contextual location permission education }]
+  confidence: high
+
+- id: onboarding-pager
+  status: draft
+  category: selection
+  ko: { name: 온보딩 페이저, aliases: [onboarding pager, 온보딩 넘김 화면, 시작 화면 점, 튜토리얼 페이지] }
+  en: { name: Onboarding pager, aliases: [Onboarding carousel, Intro pager] }
+  one_liner: 앱 첫 사용 흐름에서 여러 소개 화면을 좌우로 넘기고 점으로 위치를 보여주는 패턴.
+  description: 핵심 가치나 초기 설정을 짧은 페이지 묶음으로 설명하고 다음 행동으로 이어준다.
+  visual_anatomy: [illustration area, headline, page dots, next or start button]
+  when_to_use: [새 사용자가 앱의 핵심 기능을 처음 이해해야 할 때]
+  anti_use: [사용자가 바로 써야 하는 도구에서 긴 온보딩을 강제하지 않는다]
+  prompt_phrases: [앱 첫 실행에 3장짜리 onboarding pager를 넣고 하단에 점을 보여줘]
+  asset: { kind: mini-mock, variant: onboarding-pager, props: { pages: 3 } }
+  sources: [{ source_id: apple-hig-components, note: onboarding should be brief and skippable }]
+  confidence: high
+
+- id: coach-mark
+  status: draft
+  category: feedback
+  ko: { name: 코치마크, aliases: [coach mark, 기능 힌트, 튜토리얼 말풍선, spotlight hint] }
+  en: { name: Coach mark, aliases: [Feature hint, Spotlight hint, Guided tip] }
+  one_liner: 특정 UI 요소를 강조하고 사용법을 짧게 알려주는 안내 오버레이.
+  description: 새 기능이나 중요한 버튼을 처음 보여줄 때, 화면 위에 힌트 말풍선과 강조 영역을 덧씌운다.
+  visual_anatomy: [highlighted target, overlay hint, pointer, dismiss action]
+  when_to_use: [사용자가 놓치기 쉬운 새 기능이나 첫 사용 행동을 안내할 때]
+  anti_use: [모든 기능을 코치마크로 설명하면 방해가 된다, 반복 노출은 피한다]
+  prompt_phrases: [새 추가 버튼을 강조하는 coach mark를 한 번만 보여줘]
+  asset: { kind: mini-mock, variant: coach-mark, props: { visible: true } }
+  sources: [{ source_id: apple-hig-components, note: help and onboarding guidance for features }]
+  confidence: medium
+
+- id: mobile-empty-feed
+  status: draft
+  category: feedback
+  ko: { name: 모바일 빈 피드, aliases: [mobile empty feed, 빈 피드 화면, 첫 게시물 없음, 피드 없음] }
+  en: { name: Mobile empty feed, aliases: [Empty feed state, Feed empty state] }
+  one_liner: 모바일 피드에 아직 콘텐츠가 없을 때 첫 행동을 안내하는 빈 상태.
+  description: 글 없음, 팔로잉 없음, 사진 없음 같은 상태에서 사용자가 무엇을 하면 되는지 명확히 알려준다.
+  visual_anatomy: [empty illustration, empty message, starter CTA, feed background]
+  when_to_use: [새 계정, 검색 결과 없음, 팔로잉 없음처럼 피드가 비어 있을 때]
+  anti_use: [로딩 중에는 skeleton이나 spinner를 쓰고 empty feed로 오해시키지 않는다]
+  prompt_phrases: [아직 글이 없을 때 첫 글 작성 버튼이 있는 mobile empty feed를 보여줘]
+  asset: { kind: mini-mock, variant: mobile-empty-feed, props: { cta: true } }
+  sources: [{ source_id: material-m3-components, note: empty state guidance and mobile content layout }]
+  confidence: high
+
 - id: page-layout
   status: draft
   category: structure

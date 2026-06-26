@@ -298,6 +298,21 @@ function renderVisual(variant: string, label: string) {
   if (variant === "address-autocomplete") return <AddressAutocompleteVisual />
   if (variant === "voice-input-button") return <VoiceInputButtonVisual />
   if (variant === "clear-text-button") return <ClearTextButtonVisual />
+  if (variant === "feed-card-mobile") return <FeedCardMobileVisual />
+  if (variant === "story-rail") return <StoryRailVisual />
+  if (variant === "story-viewer") return <StoryViewerVisual />
+  if (variant === "media-lightbox-mobile") return <MediaLightboxMobileVisual />
+  if (variant === "comment-composer") return <CommentComposerVisual />
+  if (variant === "bottom-cta-bar") return <BottomCtaBarVisual />
+  if (variant === "product-option-sheet") return <ProductOptionSheetVisual />
+  if (variant === "cart-summary-bar") return <CartSummaryBarVisual />
+  if (variant === "checkout-progress-header") return <CheckoutProgressHeaderVisual />
+  if (variant === "delivery-tracker") return <DeliveryTrackerVisual />
+  if (variant === "map-bottom-panel") return <MapBottomPanelVisual />
+  if (variant === "location-permission-empty") return <LocationPermissionEmptyVisual />
+  if (variant === "onboarding-pager") return <OnboardingPagerVisual />
+  if (variant === "coach-mark") return <CoachMarkVisual />
+  if (variant === "mobile-empty-feed") return <MobileEmptyFeedVisual />
   if (variant === "mobile-bottom-sheet") return <MobileBottomSheetVisual />
   if (variant === "page-layout") return <PageLayoutVisual />
   if (variant === "dashboard-grid") return <DashboardGridVisual />
@@ -2774,6 +2789,227 @@ function ClearTextButtonVisual() {
           <input aria-label="clearable text" className="min-w-0 flex-1 bg-transparent outline-none" value={text} onChange={(event) => setText(event.target.value)} />
           {text && <button type="button" className="rounded-full bg-muted p-0.5" onClick={() => setText("")}><X aria-hidden="true" /></button>}
         </div>
+      </div>
+    </PhoneFrame>
+  )
+}
+
+function FeedCardMobileVisual() {
+  const [liked, setLiked] = useState(false)
+
+  return (
+    <PhoneFrame>
+      <div className="p-2">
+        <button type="button" className="w-full rounded-lg border bg-background p-1 text-left" onClick={() => setLiked((value) => !value)}>
+          <div className="mb-1 h-10 rounded bg-muted" />
+          <Line className="w-12" />
+          <div className="mt-1 flex items-center gap-2"><Heart className={cn(liked && "fill-primary text-primary")} aria-hidden="true" /><Line className="w-8" /></div>
+        </button>
+      </div>
+    </PhoneFrame>
+  )
+}
+
+function StoryRailVisual() {
+  const [active, setActive] = useState(0)
+
+  return (
+    <PhoneFrame>
+      <div className="flex gap-1 overflow-hidden p-2">
+        {[0, 1, 2, 3].map((item) => (
+          <button key={item} type="button" className={cn("flex size-7 shrink-0 items-center justify-center rounded-full border", active === item && "border-primary bg-primary/10")} onClick={() => setActive(item)}>
+            <User aria-hidden="true" />
+          </button>
+        ))}
+      </div>
+      <MobileScreenLines />
+    </PhoneFrame>
+  )
+}
+
+function StoryViewerVisual() {
+  const [page, setPage] = useState(0)
+
+  return (
+    <PhoneFrame>
+      <button type="button" className="relative h-full w-full bg-muted/70 p-2 text-left" onClick={() => setPage((value) => (value + 1) % 3)}>
+        <div className="absolute inset-x-2 top-3 flex gap-0.5">
+          {[0, 1, 2].map((item) => <span key={item} className={cn("h-0.5 flex-1 rounded", item <= page ? "bg-primary" : "bg-background/70")} />)}
+        </div>
+        <div className="mt-5 flex items-center gap-1"><User aria-hidden="true" /><span>Story</span></div>
+      </button>
+    </PhoneFrame>
+  )
+}
+
+function MediaLightboxMobileVisual() {
+  const [chrome, setChrome] = useState(true)
+
+  return (
+    <PhoneFrame>
+      <button type="button" className="relative flex h-full w-full items-center justify-center bg-foreground text-background" onClick={() => setChrome((value) => !value)}>
+        <ImageIcon aria-hidden="true" />
+        {chrome && <div className="absolute inset-x-2 top-3 flex items-center justify-between"><X aria-hidden="true" /><span>1/4</span></div>}
+      </button>
+    </PhoneFrame>
+  )
+}
+
+function CommentComposerVisual() {
+  const [text, setText] = useState("")
+
+  return (
+    <PhoneFrame>
+      <MobileScreenLines />
+      <div className="absolute inset-x-1 bottom-1 flex items-center gap-1 rounded-b-[1rem] border-t bg-background p-1">
+        <input aria-label="comment" className="min-w-0 flex-1 rounded-full border px-1 py-0.5 outline-none" placeholder="댓글" value={text} onChange={(event) => setText(event.target.value)} />
+        <button type="button" className={cn("rounded-full px-1 py-0.5", text ? "bg-primary text-primary-foreground" : "bg-muted")} onClick={() => setText("")}>전송</button>
+      </div>
+    </PhoneFrame>
+  )
+}
+
+function BottomCtaBarVisual() {
+  const [done, setDone] = useState(false)
+
+  return (
+    <PhoneFrame>
+      <MobileScreenLines />
+      <div className="absolute inset-x-1 bottom-1 rounded-b-[1rem] border-t bg-background p-1.5">
+        <button type="button" className={cn("w-full rounded-full px-2 py-1", done ? "border" : "bg-primary text-primary-foreground")} onClick={() => setDone(true)}>{done ? "완료" : "계속하기"}</button>
+      </div>
+    </PhoneFrame>
+  )
+}
+
+function ProductOptionSheetVisual() {
+  const [size, setSize] = useState("M")
+
+  return (
+    <PhoneFrame>
+      <MobileScreenLines />
+      <div className="absolute inset-x-1 bottom-1 rounded-t-xl border bg-background p-2 shadow-sm">
+        <div className="mx-auto mb-1 h-0.5 w-6 rounded bg-muted-foreground/40" />
+        <div className="flex gap-1">
+          {["S", "M", "L"].map((item) => <button key={item} type="button" className={cn("rounded border px-1 py-0.5", size === item && "bg-primary text-primary-foreground")} onClick={() => setSize(item)}>{item}</button>)}
+        </div>
+      </div>
+    </PhoneFrame>
+  )
+}
+
+function CartSummaryBarVisual() {
+  const [count, setCount] = useState(2)
+
+  return (
+    <PhoneFrame>
+      <MobileScreenLines />
+      <div className="absolute inset-x-1 bottom-1 flex items-center justify-between rounded-b-[1rem] border-t bg-background p-1.5">
+        <button type="button" onClick={() => setCount((value) => value + 1)}>{count}개 · ₩18k</button>
+        <span className="rounded-full bg-primary px-2 py-1 text-primary-foreground">주문</span>
+      </div>
+    </PhoneFrame>
+  )
+}
+
+function CheckoutProgressHeaderVisual() {
+  const [step, setStep] = useState(1)
+
+  return (
+    <PhoneFrame>
+      <div className="border-b p-2">
+        <button type="button" className="mb-1 font-medium" onClick={() => setStep((value) => (value + 1) % 3)}>결제 {step + 1}/3</button>
+        <div className="flex gap-1">{[0, 1, 2].map((item) => <span key={item} className={cn("h-1 flex-1 rounded", item <= step ? "bg-primary" : "bg-muted")} />)}</div>
+      </div>
+      <MobileScreenLines />
+    </PhoneFrame>
+  )
+}
+
+function DeliveryTrackerVisual() {
+  const [step, setStep] = useState(1)
+
+  return (
+    <PhoneFrame>
+      <div className="p-2">
+        {["주문", "조리", "배달"].map((item, index) => (
+          <button key={item} type="button" className="mb-2 flex items-center gap-2" onClick={() => setStep(index)}>
+            <span className={cn("size-3 rounded-full border", index <= step && "bg-primary")} />
+            <span>{item}</span>
+          </button>
+        ))}
+      </div>
+    </PhoneFrame>
+  )
+}
+
+function MapBottomPanelVisual() {
+  const [expanded, setExpanded] = useState(false)
+
+  return (
+    <PhoneFrame>
+      <div className="relative h-full bg-muted/70">
+        <MapPin className="absolute left-8 top-9 text-primary" aria-hidden="true" />
+        <button type="button" className={cn("absolute inset-x-1 bottom-1 rounded-t-xl border bg-background p-2 text-left shadow-sm transition-all", expanded ? "h-24" : "h-12")} onClick={() => setExpanded((value) => !value)}>
+          <span className="mx-auto mb-1 block h-0.5 w-6 rounded bg-muted-foreground/40" />
+          <Line className="w-12" />
+          {expanded && <Line className="mt-2 w-10" />}
+        </button>
+      </div>
+    </PhoneFrame>
+  )
+}
+
+function LocationPermissionEmptyVisual() {
+  const [asked, setAsked] = useState(false)
+
+  return (
+    <PhoneFrame>
+      <div className="flex h-full flex-col items-center justify-center gap-2 p-2 text-center">
+        <MapPin aria-hidden="true" className="text-primary" />
+        <p className="font-medium">{asked ? "요청됨" : "위치 필요"}</p>
+        <button type="button" className="rounded bg-primary px-2 py-1 text-primary-foreground" onClick={() => setAsked(true)}>허용</button>
+      </div>
+    </PhoneFrame>
+  )
+}
+
+function OnboardingPagerVisual() {
+  const [page, setPage] = useState(0)
+
+  return (
+    <PhoneFrame>
+      <div className="flex h-full flex-col items-center justify-end gap-3 p-2 text-center">
+        <div className="flex size-12 items-center justify-center rounded-full bg-primary/10"><Star className="text-primary" aria-hidden="true" /></div>
+        <p className="font-medium">시작하기</p>
+        <div className="flex gap-1">{[0, 1, 2].map((item) => <button key={item} type="button" className={cn("size-1.5 rounded-full", page === item ? "bg-primary" : "bg-muted")} onClick={() => setPage(item)}><span className="sr-only">page</span></button>)}</div>
+      </div>
+    </PhoneFrame>
+  )
+}
+
+function CoachMarkVisual() {
+  const [visible, setVisible] = useState(true)
+
+  return (
+    <PhoneFrame>
+      <div className="relative h-full p-2">
+        <button type="button" className="absolute right-3 top-8 rounded-full border bg-background p-1" onClick={() => setVisible((value) => !value)}><Plus aria-hidden="true" /></button>
+        {visible && <div className="absolute left-2 right-2 top-14 rounded-lg bg-foreground p-2 text-background shadow-sm">여기를 눌러 추가</div>}
+      </div>
+    </PhoneFrame>
+  )
+}
+
+function MobileEmptyFeedVisual() {
+  const [created, setCreated] = useState(false)
+
+  return (
+    <PhoneFrame>
+      <div className="flex h-full flex-col items-center justify-center gap-2 p-2 text-center">
+        {created ? <CheckCircle2 className="text-primary" aria-hidden="true" /> : <ImageIcon className="text-muted-foreground" aria-hidden="true" />}
+        <p className="font-medium">{created ? "첫 글 생성" : "아직 글 없음"}</p>
+        <button type="button" className="rounded border px-2 py-1" onClick={() => setCreated(true)}>작성</button>
       </div>
     </PhoneFrame>
   )

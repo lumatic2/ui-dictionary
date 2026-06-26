@@ -83,7 +83,7 @@ export const categoryGroups: TermGroup[] = [
     id: "input-text",
     category: "input",
     label: "텍스트·숫자 입력",
-    ids: ["text-field", "textarea", "textarea-autosize", "password-field", "number-input", "masked-input", "input-group", "otp-code-input", "passcode-keypad", "copy-field", "api-key-field"],
+    ids: ["text-field", "textarea", "textarea-autosize", "password-field", "number-input", "masked-input", "input-group", "otp-code-input", "passcode-keypad", "comment-composer", "copy-field", "api-key-field"],
   },
   {
     id: "input-search-command",
@@ -95,7 +95,7 @@ export const categoryGroups: TermGroup[] = [
     id: "input-pickers",
     category: "input",
     label: "선택형 입력",
-    ids: ["select", "combobox", "date-picker", "mobile-date-picker", "date-range-picker", "time-picker", "time-wheel-picker", "wheel-picker", "color-picker", "rating-input", "tag-input", "chip-input-mobile", "contact-picker", "coupon-field", "quantity-stepper", "otp-input", "pull-to-refresh-indicator"],
+    ids: ["select", "combobox", "date-picker", "mobile-date-picker", "date-range-picker", "time-picker", "time-wheel-picker", "wheel-picker", "color-picker", "rating-input", "tag-input", "chip-input-mobile", "contact-picker", "product-option-sheet", "coupon-field", "quantity-stepper", "otp-input", "pull-to-refresh-indicator"],
   },
   {
     id: "input-file-media",
@@ -119,7 +119,7 @@ export const categoryGroups: TermGroup[] = [
     id: "selection-navigation",
     category: "selection",
     label: "탐색 전환",
-    ids: ["breadcrumb", "breadcrumbs-menu", "pagination", "stepper", "page-control", "navigation-rail", "sidebar-nav", "bottom-navigation", "tab-bar", "mobile-segmented-tabs", "anchor-nav", "back-button", "edge-swipe-back", "navigation-bar", "tree-navigation", "wizard"],
+    ids: ["breadcrumb", "breadcrumbs-menu", "pagination", "stepper", "page-control", "onboarding-pager", "navigation-rail", "sidebar-nav", "bottom-navigation", "tab-bar", "mobile-segmented-tabs", "anchor-nav", "back-button", "edge-swipe-back", "navigation-bar", "tree-navigation", "wizard"],
   },
   {
     id: "selection-menus",
@@ -137,7 +137,7 @@ export const categoryGroups: TermGroup[] = [
     id: "action-buttons",
     category: "action",
     label: "버튼·아이콘 행동",
-    ids: ["button", "primary-button", "secondary-button", "destructive-button", "icon-button", "floating-action-button", "bottom-app-bar", "voice-input-button", "clear-text-button", "link", "button-group", "split-button", "copy-button", "download-button", "share-button", "close-button", "overflow-button", "loading-button", "icon-toggle-button", "speed-dial"],
+    ids: ["button", "primary-button", "secondary-button", "destructive-button", "icon-button", "floating-action-button", "bottom-app-bar", "bottom-cta-bar", "voice-input-button", "clear-text-button", "link", "button-group", "split-button", "copy-button", "download-button", "share-button", "close-button", "overflow-button", "loading-button", "icon-toggle-button", "speed-dial"],
   },
   {
     id: "action-command-bars",
@@ -185,7 +185,7 @@ export const categoryGroups: TermGroup[] = [
     id: "structure-mobile",
     category: "structure",
     label: "반응형·모바일",
-    ids: ["responsive-stack", "safe-area", "mobile-status-bar", "mobile-app-bar", "large-title-header", "standard-bottom-sheet", "modal-bottom-sheet", "full-screen-dialog", "sheet-drag-handle", "scrim", "carousel-peek", "mobile-bottom-sheet"],
+    ids: ["responsive-stack", "safe-area", "mobile-status-bar", "mobile-app-bar", "large-title-header", "standard-bottom-sheet", "modal-bottom-sheet", "full-screen-dialog", "sheet-drag-handle", "scrim", "carousel-peek", "media-lightbox-mobile", "map-bottom-panel", "mobile-bottom-sheet"],
   },
   {
     id: "feedback-alerts-toasts",
@@ -203,7 +203,7 @@ export const categoryGroups: TermGroup[] = [
     id: "feedback-empty-error",
     category: "feedback",
     label: "빈 상태·오류 복구",
-    ids: ["empty-state", "empty-search-result", "empty-table", "error-state", "warning-state", "info-state", "success-state", "validation-message", "error-boundary", "retry-panel", "maintenance-state"],
+    ids: ["empty-state", "mobile-empty-feed", "location-permission-empty", "empty-search-result", "empty-table", "error-state", "warning-state", "info-state", "success-state", "validation-message", "error-boundary", "retry-panel", "maintenance-state"],
   },
   {
     id: "feedback-access-limits",
@@ -215,7 +215,7 @@ export const categoryGroups: TermGroup[] = [
     id: "feedback-status-notifications",
     category: "feedback",
     label: "상태·알림 센터",
-    ids: ["badge", "status-indicator", "status-chip", "health-indicator", "connection-status", "notification-center", "role-badge", "order-status"],
+    ids: ["badge", "status-indicator", "status-chip", "health-indicator", "connection-status", "notification-center", "role-badge", "order-status", "checkout-progress-header", "delivery-tracker", "coach-mark"],
   },
   {
     id: "data-tables-lists",
@@ -227,7 +227,7 @@ export const categoryGroups: TermGroup[] = [
     id: "data-cards-content",
     category: "data-display",
     label: "카드·콘텐츠",
-    ids: ["media-card", "file-card", "product-card", "price-card", "plan-card", "profile-card", "calendar-event-card", "calendar-view", "kanban", "kanban-card", "onboarding-checklist", "help-center-card", "release-note-card", "thumbnail", "image", "logo", "icon", "typography", "label", "divider", "spacer", "description-list", "accordion", "carousel", "tooltip", "faq-list"],
+    ids: ["media-card", "feed-card-mobile", "story-rail", "story-viewer", "file-card", "product-card", "price-card", "plan-card", "profile-card", "calendar-event-card", "calendar-view", "kanban", "kanban-card", "onboarding-checklist", "help-center-card", "release-note-card", "thumbnail", "image", "logo", "icon", "typography", "label", "divider", "spacer", "description-list", "accordion", "carousel", "tooltip", "faq-list"],
   },
   {
     id: "data-metrics-charts",
@@ -251,7 +251,7 @@ export const categoryGroups: TermGroup[] = [
     id: "data-commerce-billing",
     category: "data-display",
     label: "커머스·청구",
-    ids: ["image-gallery", "attachment-list", "feature-comparison", "cart-summary", "address-card", "billing-summary", "invoice-row"],
+    ids: ["image-gallery", "attachment-list", "feature-comparison", "cart-summary", "cart-summary-bar", "address-card", "billing-summary", "invoice-row"],
   },
 ]
 
@@ -271,6 +271,10 @@ const discoveryQueryBoosts = [
   { query: "여러 개 중 하나", matches: [{ id: "radio-group", weight: 80 }, { id: "select", weight: 70 }, { id: "segmented-control", weight: 60 }] },
   { query: "목록에서 고르기", matches: [{ id: "select", weight: 80 }, { id: "combobox", weight: 70 }, { id: "dropdown-menu", weight: 60 }] },
   { query: "잠깐 뜨는 안내", matches: [{ id: "toast", weight: 80 }, { id: "snackbar", weight: 70 }, { id: "announcement-banner", weight: 60 }] },
+  { query: "지도 아래 패널", matches: [{ id: "map-bottom-panel", weight: 100 }, { id: "mobile-bottom-sheet", weight: 60 }] },
+  { query: "스토리 넘기는 화면", matches: [{ id: "story-viewer", weight: 100 }, { id: "story-rail", weight: 70 }, { id: "carousel", weight: 40 }] },
+  { query: "상품 옵션 아래에서 선택", matches: [{ id: "product-option-sheet", weight: 100 }, { id: "standard-bottom-sheet", weight: 60 }, { id: "quantity-stepper", weight: 30 }] },
+  { query: "고정된 하단 결제 버튼", matches: [{ id: "bottom-cta-bar", weight: 100 }, { id: "cart-summary-bar", weight: 70 }, { id: "sticky-footer-bar", weight: 40 }] },
 ]
 
 export function searchTerms(

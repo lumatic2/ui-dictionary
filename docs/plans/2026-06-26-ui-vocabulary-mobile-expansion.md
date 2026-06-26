@@ -59,8 +59,12 @@ Use existing Tier A/B source ids from `docs/ui-vocabulary/sources.md`.
   - AC: add gesture-visible patterns such as swipe actions, pull refresh, drag handles, long-press menu, page indicators; build/lint/mobile smoke pass.
 - [x] Step 4 — mobile inputs, pickers, and auth flows
   - AC: add OTP, passcode, wheel pickers, mobile search, chip input, contact/address pickers; build/lint/mobile smoke pass.
-- [ ] Step 5 — mobile content, commerce, and final audit
+- [x] Step 5 — mobile content, commerce, and final audit
   - AC: add feed/story/media/map/commerce/onboarding patterns; update search fixture; run duplicate/category audit.
+
+## Completion
+
+2026-06-26 completed. The mobile expansion added 58 focused mobile UI terms and raised the dataset to 315 terms. See `docs/ui-vocabulary/mobile-expansion.md` for the promoted terms and `docs/ui-vocabulary/mobile-audit-2026-06-26.md` for duplicate/category audit and verification evidence.
 
 ## Implementation Notes
 

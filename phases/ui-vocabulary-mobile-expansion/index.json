@@ -46,8 +46,10 @@
     {
       "step": 5,
       "name": "mobile-content-commerce-and-audit",
-      "status": "pending",
-      "summary": "Add feed, story, media, commerce, map, and onboarding terms, then run duplicate/category/search fixture audit."
+      "status": "completed",
+      "started_at": "2026-06-26T20:44:00+09:00",
+      "completed_at": "2026-06-26T21:20:00+09:00",
+      "summary": "Added fifteen mobile content/commerce/map/onboarding terms: feed-card-mobile, story-rail, story-viewer, media-lightbox-mobile, comment-composer, bottom-cta-bar, product-option-sheet, cart-summary-bar, checkout-progress-header, delivery-tracker, map-bottom-panel, location-permission-empty, onboarding-pager, coach-mark, and mobile-empty-feed. Updated mobile query boosts, regenerated 315-term dataset, verified build/lint and 390px Chrome smoke, and documented duplicate/category audit in docs/ui-vocabulary/mobile-audit-2026-06-26.md."
     }
   ]
 }
