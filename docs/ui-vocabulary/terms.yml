@@ -2923,6 +2923,111 @@
   sources: [{ source_id: material-m3-components, note: bottom sheets component } ]
   confidence: high
 
+- id: safe-area
+  status: draft
+  category: structure
+  ko: { name: 안전 영역, aliases: [safe area, 세이프 에어리어, 노치 여백, 홈 인디케이터 여백] }
+  en: { name: Safe area, aliases: [Safe area inset, System inset] }
+  one_liner: 노치, 둥근 모서리, 홈 인디케이터에 가려지지 않도록 비워두는 모바일 화면 영역.
+  description: 모바일 화면의 상단과 하단 시스템 영역을 피해 콘텐츠와 버튼을 배치하게 해준다.
+  visual_anatomy: [phone frame, top inset, bottom home indicator inset, content safe bounds]
+  when_to_use: [모바일 화면 가장자리에 버튼이나 입력창을 배치할 때, 전체 화면 레이아웃에서 시스템 UI와 겹침을 피해야 할 때]
+  anti_use: [데스크톱 웹 레이아웃의 일반 margin과 혼동하지 않는다, safe area 안쪽 콘텐츠를 과하게 좁히지 않는다]
+  prompt_phrases: [모바일 화면에서 safe area를 고려해서 하단 버튼이 홈 인디케이터와 겹치지 않게 해줘]
+  asset: { kind: mini-mock, variant: safe-area, props: { highlighted: true } }
+  sources: [{ source_id: apple-hig-components, note: layout guidance for safe areas and system chrome }]
+  confidence: high
+
+- id: mobile-status-bar
+  status: draft
+  category: structure
+  ko: { name: 모바일 상태 바, aliases: [mobile status bar, 상단 시스템 바, 시간 배터리 영역] }
+  en: { name: Mobile status bar, aliases: [Status bar, System status bar] }
+  one_liner: 모바일 화면 맨 위에서 시간, 신호, 배터리 같은 시스템 상태를 보여주는 영역.
+  description: 앱 콘텐츠 위에 놓이는 시스템 chrome이라서 헤더와 콘텐츠가 이 영역을 침범하지 않도록 고려해야 한다.
+  visual_anatomy: [time, signal indicator, battery indicator, top system strip]
+  when_to_use: [모바일 mockup에서 실제 폰 화면 맥락을 보여줄 때, 상단 app bar와 시스템 영역을 구분해야 할 때]
+  anti_use: [앱 내부 상태 표시줄인 status-bar와 혼동하지 않는다, 중요한 앱 알림을 시스템 상태 바에 넣지 않는다]
+  prompt_phrases: [모바일 목업 상단에 시간과 배터리가 보이는 status bar를 넣어줘]
+  asset: { kind: mini-mock, variant: mobile-status-bar, props: { battery: 72 } }
+  sources: [{ source_id: apple-hig-components, note: status bar as system-provided mobile chrome }]
+  confidence: medium
+
+- id: mobile-app-bar
+  status: draft
+  category: structure
+  ko: { name: 모바일 앱 바, aliases: [mobile app bar, 모바일 상단바, 앱 상단바, top app bar] }
+  en: { name: Mobile app bar, aliases: [Top app bar, Mobile top bar] }
+  one_liner: 모바일 화면 상단에서 제목, 뒤로가기나 메뉴, 주요 액션을 담는 앱 내부 헤더.
+  description: 현재 화면의 위치와 기본 행동을 작은 화면 상단에 고정해 사용자가 맥락을 잃지 않게 한다.
+  visual_anatomy: [top bar surface, title, navigation icon, trailing action icons]
+  when_to_use: [모바일 앱의 각 화면 제목과 기본 액션을 보여줄 때, 뒤로가기나 메뉴 버튼이 필요한 화면에서]
+  anti_use: [웹사이트의 넓은 navigation bar처럼 많은 링크를 넣지 않는다, 하단 탭과 같은 목적지 전환을 대신하지 않는다]
+  prompt_phrases: [모바일 화면 상단에 제목과 뒤로가기 아이콘이 있는 app bar를 넣어줘]
+  asset: { kind: mini-mock, variant: mobile-app-bar, props: { title: true } }
+  sources: [{ source_id: material-m3-components, note: top app bar component for app screens }]
+  confidence: high
+
+- id: large-title-header
+  status: draft
+  category: structure
+  ko: { name: 큰 제목 헤더, aliases: [large title header, 라지 타이틀, 큰 타이틀 상단바, 접히는 큰 제목] }
+  en: { name: Large title header, aliases: [Large title navigation bar, Collapsing large title] }
+  one_liner: 모바일 화면 상단에서 큰 제목을 보여주고 스크롤 시 작게 접히는 헤더 패턴.
+  description: 목록이나 홈 화면에서 현재 섹션을 강하게 드러내다가, 스크롤 후에는 공간을 아껴 compact header처럼 동작한다.
+  visual_anatomy: [large title text, top safe area, collapsing header, content list below]
+  when_to_use: [모바일 앱의 첫 화면이나 주요 목록에서 섹션 이름을 크게 보여줄 때]
+  anti_use: [작업 폼이나 밀도 높은 화면에는 공간을 많이 차지할 수 있다, 데스크톱 hero headline과 혼동하지 않는다]
+  prompt_phrases: [모바일 목록 화면 상단에 스크롤하면 접히는 large title header를 넣어줘]
+  asset: { kind: mini-mock, variant: large-title-header, props: { collapsible: true } }
+  sources: [{ source_id: apple-hig-components, note: navigation bars with large titles in app screens }]
+  confidence: medium
+
+- id: bottom-app-bar
+  status: draft
+  category: action
+  ko: { name: 하단 앱 바, aliases: [bottom app bar, 하단 액션 바, 모바일 하단바] }
+  en: { name: Bottom app bar, aliases: [Bottom action bar, Mobile bottom bar] }
+  one_liner: 모바일 화면 아래에서 주요 행동과 보조 명령을 담는 고정 액션 바.
+  description: 엄지로 누르기 쉬운 하단 영역에 메뉴, FAB, 주요 액션을 배치해 반복 행동을 빠르게 실행하게 한다.
+  visual_anatomy: [bottom bar surface, primary action, secondary icons, safe-area spacing]
+  when_to_use: [모바일에서 주요 액션을 항상 접근 가능하게 둘 때, 상단보다 하단 조작이 더 편한 화면에서]
+  anti_use: [최상위 목적지 전환에는 bottom navigation이나 tab bar가 더 적합하다, 너무 많은 행동을 넣지 않는다]
+  prompt_phrases: [모바일 화면 하단에 주요 추가 버튼이 있는 bottom app bar를 넣어줘]
+  asset: { kind: mini-mock, variant: bottom-app-bar, props: { fab: true } }
+  sources: [{ source_id: material-m3-components, note: bottom app bar and FAB placement guidance }]
+  confidence: high
+
+- id: mobile-search-header
+  status: draft
+  category: input
+  ko: { name: 모바일 검색 헤더, aliases: [mobile search header, 상단 검색창, 검색 상단바, 검색 헤더] }
+  en: { name: Mobile search header, aliases: [Search app bar, Search header] }
+  one_liner: 모바일 화면 상단 헤더 영역에 검색 입력창을 직접 배치한 패턴.
+  description: 목록, 장소, 메시지처럼 검색이 화면의 핵심 행동일 때 제목 대신 검색창을 상단에 고정한다.
+  visual_anatomy: [top search field, search icon, placeholder, optional clear button, result list below]
+  when_to_use: [모바일에서 사용자가 화면 진입 직후 검색해야 할 때, 검색 결과 목록과 입력을 함께 유지해야 할 때]
+  anti_use: [간단한 보조 검색이면 일반 search-field를 콘텐츠 안에 둘 수 있다, 복잡한 검색 흐름은 mobile-search-sheet가 낫다]
+  prompt_phrases: [모바일 목록 화면 상단을 검색창으로 만든 search header를 넣어줘]
+  asset: { kind: mini-mock, variant: mobile-search-header, props: { active: true } }
+  sources: [{ source_id: material-m3-components, note: search component and app bar search pattern }]
+  confidence: high
+
+- id: mobile-segmented-tabs
+  status: draft
+  category: selection
+  ko: { name: 모바일 세그먼트 탭, aliases: [mobile segmented tabs, 상단 세그먼트 탭, 모바일 구분 탭] }
+  en: { name: Mobile segmented tabs, aliases: [Segmented tabs, Mobile segmented control] }
+  one_liner: 모바일 화면 상단에서 같은 화면 안의 하위 보기들을 짧은 세그먼트 버튼으로 전환하는 패턴.
+  description: 전체/인기/내 항목처럼 같은 맥락의 보기만 빠르게 바꿀 때, 탭보다 compact한 형태로 쓴다.
+  visual_anatomy: [segmented container, two to four options, selected segment, content below]
+  when_to_use: [모바일에서 같은 화면의 하위 필터나 보기 모드를 전환할 때]
+  anti_use: [앱의 최상위 목적지 전환에는 tab bar나 bottom navigation을 쓴다, 옵션이 많으면 chip group이나 dropdown을 검토한다]
+  prompt_phrases: [모바일 화면 상단에 전체 인기 내 글을 바꾸는 segmented tabs를 넣어줘]
+  asset: { kind: mini-mock, variant: mobile-segmented-tabs, props: { active: 0 } }
+  sources: [{ source_id: apple-hig-components, note: segmented controls for switching closely related views }]
+  confidence: high
+
 - id: page-layout
   status: draft
   category: structure

@@ -32,6 +32,23 @@ Prefer aliases or related notes when:
 
 ## Candidate Batches
 
+## Promoted In 2026-06-26 Step 1
+
+- `safe-area`
+- `mobile-status-bar`
+- `mobile-app-bar`
+- `large-title-header`
+- `bottom-app-bar`
+- `mobile-search-header`
+- `mobile-segmented-tabs`
+
+Not duplicated because existing entries already cover the core term:
+
+- `bottom-navigation-bar` -> existing `bottom-navigation`
+- `mobile-tab-bar` -> existing `tab-bar`
+- `mobile-back-button` -> existing `back-button`
+- `mobile-floating-action-button` -> existing `floating-action-button`
+
 ### Batch 1 — App Shell And Navigation
 
 - `phone-frame`: generic mobile viewport frame for visual examples.
@@ -132,4 +149,3 @@ Prefer aliases or related notes when:
 - Overlay terms should show the anchor screen, scrim, and sheet/dialog layer.
 - Input/auth terms should be interactive when small state changes are useful: typed OTP digit, selected wheel row, toggled biometric prompt.
 - Commerce/feed terms should keep text short and rely on placement, hierarchy, and affordance shape.
-

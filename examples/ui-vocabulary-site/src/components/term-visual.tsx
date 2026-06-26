@@ -1,4 +1,4 @@
-import { useState } from "react"
+import { useState, type ReactNode } from "react"
 import {
   AlertTriangle,
   Bell,
@@ -254,6 +254,13 @@ function renderVisual(variant: string, label: string) {
   if (variant === "collapsible-sidebar") return <CollapsibleSidebarVisual />
   if (variant === "mini-sidebar") return <MiniSidebarVisual />
   if (variant === "responsive-stack") return <ResponsiveStackVisual />
+  if (variant === "safe-area") return <SafeAreaVisual />
+  if (variant === "mobile-status-bar") return <MobileStatusBarVisual />
+  if (variant === "mobile-app-bar") return <MobileAppBarVisual />
+  if (variant === "large-title-header") return <LargeTitleHeaderVisual />
+  if (variant === "bottom-app-bar") return <BottomAppBarVisual />
+  if (variant === "mobile-search-header") return <MobileSearchHeaderVisual />
+  if (variant === "mobile-segmented-tabs") return <MobileSegmentedTabsVisual />
   if (variant === "mobile-bottom-sheet") return <MobileBottomSheetVisual />
   if (variant === "page-layout") return <PageLayoutVisual />
   if (variant === "dashboard-grid") return <DashboardGridVisual />
@@ -1974,6 +1981,146 @@ function ResponsiveStackVisual() {
   const [stacked, setStacked] = useState(false)
 
   return <button type="button" className={cn("grid w-56 gap-2 rounded-md border bg-card p-2 transition-all", stacked ? "grid-cols-1" : "grid-cols-3")} onClick={() => setStacked((value) => !value)}>{[0, 1, 2].map((item) => <div key={item} className="h-10 rounded bg-muted" />)}<span className="sr-only">responsive stack toggle</span></button>
+}
+
+function PhoneFrame({ children, className }: { children: ReactNode; className?: string }) {
+  return (
+    <div className={cn("relative h-36 w-20 overflow-hidden rounded-[1.25rem] border-2 bg-card p-1 shadow-sm", className)}>
+      <div className="absolute left-1/2 top-1 h-1 w-7 -translate-x-1/2 rounded-full bg-foreground/20" />
+      <div className="h-full overflow-hidden rounded-[1rem] bg-background pt-2 text-[8px]">{children}</div>
+      <div className="absolute bottom-1 left-1/2 h-0.5 w-8 -translate-x-1/2 rounded-full bg-foreground/20" />
+    </div>
+  )
+}
+
+function MobileScreenLines() {
+  return (
+    <div className="flex flex-col gap-1 p-2">
+      <Line className="w-12" />
+      <Line className="w-10" />
+      <div className="h-8 rounded bg-muted/70" />
+      <Line className="w-11" />
+    </div>
+  )
+}
+
+function SafeAreaVisual() {
+  const [highlight, setHighlight] = useState(true)
+
+  return (
+    <button type="button" onClick={() => setHighlight((value) => !value)}>
+      <PhoneFrame>
+        <div className={cn("h-3 border-b", highlight && "bg-primary/20")} />
+        <MobileScreenLines />
+        <div className={cn("absolute inset-x-2 bottom-2 h-3 rounded-full border", highlight && "bg-primary/20")} />
+      </PhoneFrame>
+    </button>
+  )
+}
+
+function MobileStatusBarVisual() {
+  const [battery, setBattery] = useState(72)
+
+  return (
+    <button type="button" onClick={() => setBattery((value) => value === 72 ? 24 : 72)}>
+      <PhoneFrame>
+        <div className="flex h-4 items-center justify-between px-2 text-[7px] font-medium">
+          <span>9:41</span>
+          <span className="flex items-center gap-0.5">
+            <span className="h-1.5 w-2 rounded-sm bg-foreground/70" />
+            {battery}%
+          </span>
+        </div>
+        <MobileScreenLines />
+      </PhoneFrame>
+    </button>
+  )
+}
+
+function MobileAppBarVisual() {
+  const [title, setTitle] = useState("홈")
+
+  return (
+    <PhoneFrame>
+      <div className="flex h-6 items-center gap-1 border-b px-2">
+        <button type="button" onClick={() => setTitle(title === "홈" ? "검색" : "홈")}><Menu aria-hidden="true" /></button>
+        <span className="font-medium">{title}</span>
+        <MoreHorizontal className="ml-auto" aria-hidden="true" />
+      </div>
+      <MobileScreenLines />
+    </PhoneFrame>
+  )
+}
+
+function LargeTitleHeaderVisual() {
+  const [compact, setCompact] = useState(false)
+
+  return (
+    <button type="button" onClick={() => setCompact((value) => !value)}>
+      <PhoneFrame>
+        <div className={cn("border-b px-2 transition-all", compact ? "h-6 py-1" : "h-12 py-4")}>
+          <p className={cn("font-semibold", compact ? "text-[8px]" : "text-[12px]")}>Today</p>
+        </div>
+        <MobileScreenLines />
+      </PhoneFrame>
+    </button>
+  )
+}
+
+function BottomAppBarVisual() {
+  const [active, setActive] = useState(false)
+
+  return (
+    <PhoneFrame>
+      <MobileScreenLines />
+      <div className="absolute inset-x-1 bottom-1 flex h-7 items-center justify-between rounded-b-[1rem] border-t bg-background px-2">
+        <Menu aria-hidden="true" />
+        <button type="button" className={cn("flex size-5 items-center justify-center rounded-full", active ? "bg-primary text-primary-foreground" : "bg-muted")} onClick={() => setActive((value) => !value)}>
+          <Plus aria-hidden="true" />
+        </button>
+      </div>
+    </PhoneFrame>
+  )
+}
+
+function MobileSearchHeaderVisual() {
+  const [query, setQuery] = useState("")
+
+  return (
+    <PhoneFrame>
+      <div className="flex h-7 items-center gap-1 border-b px-1">
+        <Search aria-hidden="true" />
+        <input
+          aria-label="mobile search"
+          className="min-w-0 flex-1 bg-transparent text-[8px] outline-none"
+          value={query}
+          placeholder="검색"
+          onChange={(event) => setQuery(event.target.value)}
+        />
+      </div>
+      <div className="p-2">{query ? <Line className="w-11 bg-primary/40" /> : <MobileScreenLines />}</div>
+    </PhoneFrame>
+  )
+}
+
+function MobileSegmentedTabsVisual() {
+  const [active, setActive] = useState("전체")
+
+  return (
+    <PhoneFrame>
+      <div className="p-2">
+        <div className="grid grid-cols-3 rounded-full bg-muted p-0.5">
+          {["전체", "인기", "내 글"].map((item) => (
+            <button key={item} type="button" className={cn("rounded-full py-0.5", active === item && "bg-background shadow-sm")} onClick={() => setActive(item)}>
+              {item}
+            </button>
+          ))}
+        </div>
+        <p className="mt-2 font-medium">{active}</p>
+        <Line className="mt-1 w-12" />
+      </div>
+    </PhoneFrame>
+  )
 }
 
 function MobileBottomSheetVisual() {

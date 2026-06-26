@@ -89,7 +89,7 @@ export const categoryGroups: TermGroup[] = [
     id: "input-search-command",
     category: "input",
     label: "검색·명령 입력",
-    ids: ["search-field", "search-view", "autocomplete", "search-suggestions", "command-palette"],
+    ids: ["search-field", "search-view", "mobile-search-header", "autocomplete", "search-suggestions", "command-palette"],
   },
   {
     id: "input-pickers",
@@ -119,7 +119,7 @@ export const categoryGroups: TermGroup[] = [
     id: "selection-navigation",
     category: "selection",
     label: "탐색 전환",
-    ids: ["breadcrumb", "breadcrumbs-menu", "pagination", "stepper", "navigation-rail", "sidebar-nav", "bottom-navigation", "tab-bar", "anchor-nav", "back-button", "navigation-bar", "tree-navigation", "wizard"],
+    ids: ["breadcrumb", "breadcrumbs-menu", "pagination", "stepper", "navigation-rail", "sidebar-nav", "bottom-navigation", "tab-bar", "mobile-segmented-tabs", "anchor-nav", "back-button", "navigation-bar", "tree-navigation", "wizard"],
   },
   {
     id: "selection-menus",
@@ -137,7 +137,7 @@ export const categoryGroups: TermGroup[] = [
     id: "action-buttons",
     category: "action",
     label: "버튼·아이콘 행동",
-    ids: ["button", "primary-button", "secondary-button", "destructive-button", "icon-button", "floating-action-button", "link", "button-group", "split-button", "copy-button", "download-button", "share-button", "close-button", "overflow-button", "loading-button", "icon-toggle-button", "speed-dial"],
+    ids: ["button", "primary-button", "secondary-button", "destructive-button", "icon-button", "floating-action-button", "bottom-app-bar", "link", "button-group", "split-button", "copy-button", "download-button", "share-button", "close-button", "overflow-button", "loading-button", "icon-toggle-button", "speed-dial"],
   },
   {
     id: "action-command-bars",
@@ -185,7 +185,7 @@ export const categoryGroups: TermGroup[] = [
     id: "structure-mobile",
     category: "structure",
     label: "반응형·모바일",
-    ids: ["responsive-stack", "mobile-bottom-sheet"],
+    ids: ["responsive-stack", "safe-area", "mobile-status-bar", "mobile-app-bar", "large-title-header", "mobile-bottom-sheet"],
   },
   {
     id: "feedback-alerts-toasts",

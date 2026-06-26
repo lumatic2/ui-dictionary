@@ -49,9 +49,9 @@ Use existing Tier A/B source ids from `docs/ui-vocabulary/sources.md`.
 
 ## Milestone Tree
 
-- [ ] Step 0 — mobile taxonomy and candidate contract
+- [x] Step 0 — mobile taxonomy and candidate contract
   - AC: `docs/ui-vocabulary/mobile-expansion.md` defines groups, acceptance rules, candidate batches, and search fixture queries.
-- [ ] Step 1 — mobile app shell and navigation
+- [x] Step 1 — mobile app shell and navigation
   - AC: add high-frequency navigation/app-shell terms and phone-frame visuals; build/lint/mobile smoke pass.
 - [ ] Step 2 — mobile overlays and system feedback
   - AC: add sheets, action menus, permission/system prompts, snackbars/toasts; build/lint/mobile smoke pass.
@@ -68,4 +68,3 @@ Use existing Tier A/B source ids from `docs/ui-vocabulary/sources.md`.
 - Mobile terms should use Korean aliases that match how users describe the shape: `아래에서 올라오는`, `하단 탭`, `옆으로 밀기`, `끌어내려 새로고침`, `인증번호 입력`.
 - Keep category stable unless the final audit proves that a new top-level category is needed. Prefer detailed `group` values first.
 - Build after each batch because `npm run build` regenerates `src/data/terms.generated.ts`.
-

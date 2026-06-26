@@ -14,8 +14,10 @@
     {
       "step": 1,
       "name": "mobile-app-shell-and-navigation",
-      "status": "pending",
-      "summary": "Add app shell/navigation terms and phone-frame visuals."
+      "status": "completed",
+      "started_at": "2026-06-26T18:46:00+09:00",
+      "completed_at": "2026-06-26T19:12:00+09:00",
+      "summary": "Added seven mobile app-shell/navigation terms: safe-area, mobile-status-bar, mobile-app-bar, large-title-header, bottom-app-bar, mobile-search-header, and mobile-segmented-tabs. Added shared PhoneFrame visual wrapper and matching variants, updated group filters, regenerated 264-term dataset, and verified build/lint plus 390px Chrome smoke for representative mobile queries without horizontal overflow."
     },
     {
       "step": 2,
@@ -43,4 +45,3 @@
     }
   ]
 }
-
