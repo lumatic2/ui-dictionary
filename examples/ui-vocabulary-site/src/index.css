@@ -82,6 +82,10 @@ select {
   font: inherit;
 }
 
+[data-print-summary] {
+  display: none;
+}
+
 @keyframes accordion-down {
   from {
     height: 0;
@@ -117,6 +121,35 @@ select {
 
   [data-print-hidden] {
     display: none !important;
+  }
+
+  [data-print-summary] {
+    display: block !important;
+    border-bottom: 1px solid var(--border);
+    margin-bottom: 12px;
+    padding-bottom: 10px;
+  }
+
+  [data-print-summary] p {
+    margin: 0 0 4px;
+    color: var(--muted-foreground);
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 0;
+  }
+
+  [data-print-summary] h2 {
+    margin: 0;
+    color: var(--foreground);
+    font-size: 20px;
+    line-height: 1.2;
+  }
+
+  [data-print-summary] span {
+    display: block;
+    margin-top: 6px;
+    color: var(--muted-foreground);
+    font-size: 11px;
   }
 
   main {

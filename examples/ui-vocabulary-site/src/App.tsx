@@ -1,4 +1,4 @@
-import { useMemo, useState } from "react"
+import { useEffect, useMemo, useRef, useState } from "react"
 import {
   BellDot,
   BookOpen,
@@ -28,8 +28,14 @@ import { Separator } from "@/components/ui/separator"
 import { TermCard } from "@/components/term-card"
 import { TermDetail } from "@/components/term-detail"
 import { categories, terms, type TermCategory, type VocabularyTerm } from "@/data/terms.generated"
-import { categoryGroupsByCategory, categoryLabels, matchesFilter, searchTerms, type TermFilter } from "@/lib/search"
+import { categoryGroups, categoryGroupsByCategory, categoryLabels, isTermCategory, matchesFilter, searchTerms, type TermFilter } from "@/lib/search"
 import { cn } from "@/lib/utils"
+
+type PrintMode = "screen" | "current" | "all"
+type RestorePrintState = {
+  filter: TermFilter
+  query: string
+} | null
 
 function App() {
   const [query, setQuery] = useState("")
@@ -37,6 +43,10 @@ function App() {
   const [openCategories, setOpenCategories] = useState<string[]>([])
   const [selectedTerm, setSelectedTerm] = useState<VocabularyTerm | null>(terms[0] ?? null)
   const [detailOpen, setDetailOpen] = useState(false)
+  const [printMode, setPrintMode] = useState<PrintMode>("screen")
+  const [printScopeLabel, setPrintScopeLabel] = useState("전체 용어")
+  const restoreAfterPrintRef = useRef<RestorePrintState>(null)
+  const cleanupTimerRef = useRef<number | null>(null)
 
   const filteredTerms = useMemo(() => searchTerms(terms, query, filter), [query, filter])
   const categoryCounts = useMemo(
@@ -52,13 +62,57 @@ function App() {
     []
   )
 
+  function cleanupPrintState() {
+    if (cleanupTimerRef.current !== null) {
+      window.clearTimeout(cleanupTimerRef.current)
+      cleanupTimerRef.current = null
+    }
+
+    const restoreState = restoreAfterPrintRef.current
+    restoreAfterPrintRef.current = null
+
+    if (restoreState) {
+      setQuery(restoreState.query)
+      setFilter(restoreState.filter)
+    }
+
+    setPrintMode("screen")
+  }
+
+  useEffect(() => {
+    window.addEventListener("afterprint", cleanupPrintState)
+
+    return () => {
+      window.removeEventListener("afterprint", cleanupPrintState)
+    }
+  }, [])
+
   function selectTerm(term: VocabularyTerm) {
     setSelectedTerm(term)
     setDetailOpen(true)
   }
 
-  function saveAsPdf() {
-    window.print()
+  function schedulePrint() {
+    window.setTimeout(() => {
+      window.print()
+      cleanupTimerRef.current = window.setTimeout(cleanupPrintState, 500)
+    }, 50)
+  }
+
+  function saveCurrentAsPdf() {
+    restoreAfterPrintRef.current = null
+    setPrintMode("current")
+    setPrintScopeLabel(getExportScopeLabel(filter, query))
+    schedulePrint()
+  }
+
+  function saveAllAsPdf() {
+    restoreAfterPrintRef.current = { filter, query }
+    setQuery("")
+    setFilter("all")
+    setPrintMode("all")
+    setPrintScopeLabel("전체 용어")
+    schedulePrint()
   }
 
   const categoryNav = (
@@ -158,7 +212,7 @@ function App() {
                     {filteredTerms.length} / {terms.length} terms
                   </Badge>
                   <div className="inline-flex overflow-hidden rounded-md border bg-card shadow-sm">
-                    <Button className="h-9 rounded-none border-0" size="sm" variant="ghost" onClick={saveAsPdf}>
+                    <Button className="h-9 rounded-none border-0" size="sm" variant="ghost" onClick={saveCurrentAsPdf}>
                       <Download aria-hidden="true" />
                       PDF로 저장
                     </Button>
@@ -169,11 +223,11 @@ function App() {
                         </Button>
                       </DropdownMenuTrigger>
                       <DropdownMenuContent align="end">
-                        <DropdownMenuItem onClick={saveAsPdf}>
+                        <DropdownMenuItem onClick={saveCurrentAsPdf}>
                           <FileText aria-hidden="true" />
                           현재 필터 결과 저장
                         </DropdownMenuItem>
-                        <DropdownMenuItem onClick={() => { setQuery(""); setFilter("all"); window.setTimeout(saveAsPdf, 0) }}>
+                        <DropdownMenuItem onClick={saveAllAsPdf}>
                           <Download aria-hidden="true" />
                           전체 용어 저장
                         </DropdownMenuItem>
@@ -189,15 +243,21 @@ function App() {
             </div>
           </header>
 
-          <section className="flex flex-col gap-8 px-5 py-8 md:px-8 lg:px-10">
-            <div>
+          <section className="flex flex-col gap-8 px-5 py-8 md:px-8 lg:px-10" data-export-root data-print-mode={printMode}>
+            <div data-print-hidden>
               <p className="text-sm font-medium text-muted-foreground">UI Vocabulary Encyclopedia</p>
               <p className="mt-2 max-w-3xl text-sm leading-6 text-muted-foreground md:text-base">
                 바이브코딩과 UI/UX 설계에서 자주 쓰는 화면 요소의 이름, 쓰임새, 생김새를 한곳에서 확인합니다.
               </p>
             </div>
 
-            <Separator />
+            <div className="hidden" data-print-summary>
+              <p>UI 용어 사전</p>
+              <h2>{printScopeLabel}</h2>
+              <span>{filteredTerms.length} / {terms.length} terms</span>
+            </div>
+
+            <Separator data-print-hidden />
 
             {filteredTerms.length > 0 ? (
               <section className="grid gap-4 md:grid-cols-2 xl:grid-cols-3" data-print-grid>
@@ -229,6 +289,29 @@ function App() {
       <TermDetail open={detailOpen} term={selectedTerm} onOpenChange={setDetailOpen} />
     </main>
   )
+}
+
+function getExportScopeLabel(filter: TermFilter, query: string) {
+  const trimmedQuery = query.trim()
+  const filterLabel = getFilterLabel(filter)
+
+  if (!trimmedQuery) {
+    return filterLabel
+  }
+
+  return `${filterLabel} · 검색: ${trimmedQuery}`
+}
+
+function getFilterLabel(filter: TermFilter) {
+  if (filter === "all") {
+    return "전체 용어"
+  }
+
+  if (isTermCategory(filter)) {
+    return categoryLabels[filter]
+  }
+
+  return categoryGroups.find((group) => group.id === filter)?.label ?? "현재 필터"
 }
 
 type CategoryButtonProps = {

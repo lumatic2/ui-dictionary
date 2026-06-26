@@ -6,7 +6,7 @@
     {
       "step": 0,
       "name": "export-contract-and-dependencies",
-      "status": "in_progress",
+      "status": "completed",
       "started_at": "2026-06-26T13:20:00+09:00",
       "completed_at": "2026-06-26T13:28:00+09:00",
       "summary": "Confirmed export/capture contract in docs/ui-vocabulary/export-capture.md. PDF modes are current/all/poster; PNG scope is single term card/detail. Added html-to-image as the browser-only DOM capture dependency. npm run build and npm run lint passed; lint only reports existing shadcn Fast Refresh warnings."
@@ -14,7 +14,10 @@
     {
       "step": 1,
       "name": "print-and-pdf-layout-hardening",
-      "status": "pending"
+      "status": "completed",
+      "started_at": "2026-06-26T13:35:00+09:00",
+      "completed_at": "2026-06-26T13:47:00+09:00",
+      "summary": "Split PDF export into current and all modes with temporary state restore after print. Added print-only export summary, data-export-root/data-print-mode contract, and A4 summary styling. Verified npm run build, npm run lint, and Playwright smoke: current captured 35 / 257 terms for input category, all captured 257 / 257 terms, and the screen restored to the input filter after print."
     },
     {
       "step": 2,
