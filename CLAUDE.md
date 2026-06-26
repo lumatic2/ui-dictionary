@@ -68,3 +68,4 @@ Google Labs(Stitch) 가 오픈소스화한 포맷. 코딩 에이전트가 디자
 - 본 레포의 진입점 스킬: `/design-bootstrap` (소스: `~/projects/custom-skills/design-bootstrap/`)
 - 글로벌 디자인 스킬 (기존, 별도 출처): `/design`, `/design-consultation`, `/design-system`, `/design-qa`, `/design-export`, `/design-flow`, `/design-full`
 - 프론트엔드 코드 생성: `frontend-design:frontend-design` 스킬
+- UI 용어 사전 배포: [docs/ui-vocabulary/deployment.md](docs/ui-vocabulary/deployment.md)

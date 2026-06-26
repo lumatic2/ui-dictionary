@@ -33,7 +33,7 @@ find the vocabulary source files.
 Use the repository root as the checked-out project and move into the app folder
 inside the build command.
 
-## Deploy
+## Manual Deploy
 
 Local direct deploy:
 
@@ -45,5 +45,36 @@ cd ../..
 npx wrangler pages deploy examples/ui-vocabulary-site/dist --project-name ui-vocabulary --branch main
 ```
 
-For dashboard/Git integration, keep the same build command and output directory
-shown above.
+## Automatic Deploy
+
+GitHub repository:
+
+```text
+https://github.com/lumatic2/ui-dictionary
+```
+
+Cloudflare Pages project:
+
+```text
+ui-dictionary
+```
+
+The Pages project uses Cloudflare Git integration, not GitHub Actions. A push to
+`main` triggers Cloudflare to build the repository with the build command and
+output directory above.
+
+Production domain:
+
+```text
+https://ui.askewly.com/
+```
+
+Previous manual project:
+
+```text
+ui-vocabulary
+```
+
+`ui-vocabulary` was created as a Direct Upload project. Cloudflare does not allow
+adding a `source` object to an existing Direct Upload project, so automatic
+deployment uses the separate Git-connected `ui-dictionary` project.
