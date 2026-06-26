@@ -6,7 +6,10 @@
     {
       "step": 0,
       "name": "export-contract-and-dependencies",
-      "status": "pending"
+      "status": "in_progress",
+      "started_at": "2026-06-26T13:20:00+09:00",
+      "completed_at": "2026-06-26T13:28:00+09:00",
+      "summary": "Confirmed export/capture contract in docs/ui-vocabulary/export-capture.md. PDF modes are current/all/poster; PNG scope is single term card/detail. Added html-to-image as the browser-only DOM capture dependency. npm run build and npm run lint passed; lint only reports existing shadcn Fast Refresh warnings."
     },
     {
       "step": 1,
