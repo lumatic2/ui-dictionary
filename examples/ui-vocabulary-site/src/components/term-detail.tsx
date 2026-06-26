@@ -1,5 +1,5 @@
 import { useState, type ReactNode } from "react"
-import { Download, ExternalLink } from "lucide-react"
+import { Check, Copy, Download, ExternalLink } from "lucide-react"
 import { Badge } from "@/components/ui/badge"
 import { Button } from "@/components/ui/button"
 import { ScrollArea } from "@/components/ui/scroll-area"
@@ -11,10 +11,12 @@ import {
   SheetTitle,
 } from "@/components/ui/sheet"
 import { TermVisual } from "@/components/term-visual"
-import type { VocabularyTerm } from "@/data/terms.generated"
+import { sourceRegistry, type VocabularyTerm } from "@/data/terms.generated"
 import { downloadNodeAsPng, getTermPngFileName } from "@/lib/export-capture"
 import { categoryLabels } from "@/lib/search"
 import { getRelatedTerms, getUseCasesForTerm } from "@/lib/term-ux"
+
+const sourcesById = new Map(sourceRegistry.map((source) => [source.id, source]))
 
 type TermDetailProps = {
   term: VocabularyTerm | null
@@ -26,6 +28,7 @@ type TermDetailProps = {
 
 export function TermDetail({ term, terms, open, onOpenChange, onSelectTerm }: TermDetailProps) {
   const [exporting, setExporting] = useState(false)
+  const [copiedPhrase, setCopiedPhrase] = useState<string | null>(null)
   const relatedTerms = term ? getRelatedTerms(term, terms) : []
   const useCases = term ? getUseCasesForTerm(term) : []
 
@@ -45,6 +48,25 @@ export function TermDetail({ term, terms, open, onOpenChange, onSelectTerm }: Te
     } finally {
       setExporting(false)
     }
+  }
+
+  async function copyPromptPhrase(phrase: string) {
+    try {
+      await navigator.clipboard.writeText(phrase)
+    } catch {
+      const textarea = document.createElement("textarea")
+      textarea.value = phrase
+      textarea.setAttribute("readonly", "")
+      textarea.style.position = "fixed"
+      textarea.style.top = "-9999px"
+      document.body.appendChild(textarea)
+      textarea.select()
+      document.execCommand("copy")
+      document.body.removeChild(textarea)
+    }
+
+    setCopiedPhrase(phrase)
+    window.setTimeout(() => setCopiedPhrase((current) => (current === phrase ? null : current)), 1600)
   }
 
   return (
@@ -90,6 +112,9 @@ export function TermDetail({ term, terms, open, onOpenChange, onSelectTerm }: Te
                     </div>
                   </div>
                 </Section>
+                <Section title="이거 말고 다른 경우">
+                  <BulletList items={term.anti_use} />
+                </Section>
                 <Section title="무엇인가">
                   <div className="flex flex-col gap-2">
                     <p className="text-sm leading-6 text-foreground">{term.one_liner}</p>
@@ -102,15 +127,22 @@ export function TermDetail({ term, terms, open, onOpenChange, onSelectTerm }: Te
                 <Section title="언제 쓰나">
                   <BulletList items={term.when_to_use} />
                 </Section>
-                <Section title="피해야 할 때">
-                  <BulletList items={term.anti_use} />
-                </Section>
                 <Section title="AI에게 이렇게 말하기">
                   <div className="flex flex-col gap-2">
                     {term.prompt_phrases.map((phrase) => (
-                      <p key={phrase} className="rounded-md bg-accent px-3 py-2 text-sm text-accent-foreground">
-                        {phrase}
-                      </p>
+                      <div key={phrase} className="grid grid-cols-[minmax(0,1fr)_auto] gap-2 rounded-md bg-accent p-2 text-accent-foreground">
+                        <p className="min-w-0 px-1 py-1 text-sm leading-6">{phrase}</p>
+                        <Button
+                          data-prompt-copy={phrase}
+                          data-export-ignore="true"
+                          size="sm"
+                          variant="secondary"
+                          onClick={() => copyPromptPhrase(phrase)}
+                        >
+                          {copiedPhrase === phrase ? <Check aria-hidden="true" /> : <Copy aria-hidden="true" />}
+                          {copiedPhrase === phrase ? "복사됨" : "복사"}
+                        </Button>
+                      </div>
                     ))}
                   </div>
                 </Section>
@@ -148,12 +180,36 @@ export function TermDetail({ term, terms, open, onOpenChange, onSelectTerm }: Te
                 )}
                 <Section title="출처">
                   <div className="flex flex-col gap-2">
-                    {term.sources.map((source) => (
-                      <Button key={`${term.id}-${source.source_id}`} variant="outline" size="sm" className="justify-start">
-                        <ExternalLink aria-hidden="true" />
-                        {source.source_id}
-                      </Button>
-                    ))}
+                    {term.sources.map((source) => {
+                      const reference = sourcesById.get(source.source_id)
+
+                      return (
+                        <div key={`${term.id}-${source.source_id}`} className="rounded-lg border bg-card p-3">
+                          <div className="flex flex-wrap items-center gap-2">
+                            <Badge variant="secondary" className="rounded-md">
+                              Tier {reference?.tier ?? "?"}
+                            </Badge>
+                            <p className="min-w-0 flex-1 text-sm font-medium">
+                              {reference?.label ?? source.source_id}
+                            </p>
+                            {reference && (
+                              <Button asChild data-export-ignore="true" size="sm" variant="outline">
+                                <a href={reference.url} rel="noreferrer" target="_blank">
+                                  <ExternalLink aria-hidden="true" />
+                                  열기
+                                </a>
+                              </Button>
+                            )}
+                          </div>
+                          {source.note && (
+                            <p className="mt-2 text-sm leading-6 text-muted-foreground">{source.note}</p>
+                          )}
+                          {!reference && (
+                            <p className="mt-2 text-xs text-destructive">등록되지 않은 source id입니다.</p>
+                          )}
+                        </div>
+                      )
+                    })}
                   </div>
                 </Section>
               </div>

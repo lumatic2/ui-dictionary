@@ -14,7 +14,10 @@
     {
       "step": 1,
       "name": "detail-reference-and-copy-ui",
-      "status": "pending"
+      "status": "completed",
+      "started_at": "2026-06-27T01:10:00+09:00",
+      "completed_at": "2026-06-27T01:25:00+09:00",
+      "summary": "Updated term detail drawer to use generated sourceRegistry labels/URLs, show source notes and tier badges, add copyable prompt phrases with copied state, surface anti-use guidance as '이거 말고 다른 경우', and verified build/lint plus Chrome detail smoke for select source/copy UI."
     },
     {
       "step": 2,
