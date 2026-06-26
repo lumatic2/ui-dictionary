@@ -6,6 +6,10 @@
     },
     {
       "dir": "ui-vocabulary-export-capture",
+      "status": "completed"
+    },
+    {
+      "dir": "ui-vocabulary-search-discovery",
       "status": "pending"
     }
   ]

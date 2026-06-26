@@ -1,0 +1,32 @@
+{
+  "project": "design-manual",
+  "phase": "ui-vocabulary-search-discovery",
+  "mode": "product",
+  "steps": [
+    {
+      "step": 0,
+      "name": "search-quality-contract-and-query-fixture",
+      "status": "pending"
+    },
+    {
+      "step": 1,
+      "name": "autocomplete-and-suggestion-panel",
+      "status": "pending"
+    },
+    {
+      "step": 2,
+      "name": "ranked-search-and-match-reasons",
+      "status": "pending"
+    },
+    {
+      "step": 3,
+      "name": "discovery-helpers-and-no-result-recovery",
+      "status": "pending"
+    },
+    {
+      "step": 4,
+      "name": "url-state-qa-and-documentation",
+      "status": "pending"
+    }
+  ]
+}
