@@ -19,6 +19,14 @@ export type VocabularyTerm = {
   confidence: "low" | "medium" | "high"
 }
 
+export type SourceReference = {
+  id: string
+  label: string
+  tier: string
+  tierLabel: string
+  url: string
+}
+
 export const terms = [
   {
     "id": "text-field",
@@ -17196,3 +17204,153 @@ export const categories = [
   "feedback",
   "data-display"
 ] satisfies TermCategory[]
+
+export const sourceRegistry = [
+  {
+    "id": "wai-aria-apg-patterns",
+    "label": "W3C WAI-ARIA Authoring Practices Guide patterns",
+    "tier": "A",
+    "tierLabel": "Tier A — Primary Definition Sources",
+    "url": "https://www.w3.org/WAI/ARIA/apg/patterns/"
+  },
+  {
+    "id": "material-m3-components",
+    "label": "Material Design 3 components",
+    "tier": "A",
+    "tierLabel": "Tier A — Primary Definition Sources",
+    "url": "https://m3.material.io/components"
+  },
+  {
+    "id": "apple-hig-components",
+    "label": "Apple Human Interface Guidelines components",
+    "tier": "A",
+    "tierLabel": "Tier A — Primary Definition Sources",
+    "url": "https://developer.apple.com/design/human-interface-guidelines/components"
+  },
+  {
+    "id": "fluent2-react-components",
+    "label": "Microsoft Fluent 2 React components",
+    "tier": "A",
+    "tierLabel": "Tier A — Primary Definition Sources",
+    "url": "https://fluent2.microsoft.design/components/web/react/"
+  },
+  {
+    "id": "uswds-components",
+    "label": "U.S. Web Design System components",
+    "tier": "A",
+    "tierLabel": "Tier A — Primary Definition Sources",
+    "url": "https://designsystem.digital.gov/components/"
+  },
+  {
+    "id": "radix-ui-primitives",
+    "label": "Radix UI primitives",
+    "tier": "A",
+    "tierLabel": "Tier A — Primary Definition Sources",
+    "url": "https://www.radix-ui.com/primitives"
+  },
+  {
+    "id": "shadcn-ui-docs",
+    "label": "shadcn/ui component documentation",
+    "tier": "A",
+    "tierLabel": "Tier A — Primary Definition Sources",
+    "url": "https://ui.shadcn.com/docs/components"
+  },
+  {
+    "id": "mui-material-components",
+    "label": "MUI Material UI components",
+    "tier": "B",
+    "tierLabel": "Tier B — Secondary Cross-Checks",
+    "url": "https://mui.com/material-ui/all-components/"
+  },
+  {
+    "id": "chakra-ui-components",
+    "label": "Chakra UI components",
+    "tier": "B",
+    "tierLabel": "Tier B — Secondary Cross-Checks",
+    "url": "https://chakra-ui.com/docs/components"
+  },
+  {
+    "id": "carbon-design-components",
+    "label": "IBM Carbon Design System components",
+    "tier": "B",
+    "tierLabel": "Tier B — Secondary Cross-Checks",
+    "url": "https://carbondesignsystem.com/components/overview/"
+  },
+  {
+    "id": "atlassian-design-components",
+    "label": "Atlassian Design System components",
+    "tier": "B",
+    "tierLabel": "Tier B — Secondary Cross-Checks",
+    "url": "https://atlassian.design/components/"
+  },
+  {
+    "id": "shopify-polaris-components",
+    "label": "Shopify Polaris components",
+    "tier": "B",
+    "tierLabel": "Tier B — Secondary Cross-Checks",
+    "url": "https://polaris.shopify.com/components"
+  },
+  {
+    "id": "github-primer-components",
+    "label": "GitHub Primer components",
+    "tier": "B",
+    "tierLabel": "Tier B — Secondary Cross-Checks",
+    "url": "https://primer.style/components"
+  },
+  {
+    "id": "govuk-design-system-components",
+    "label": "GOV.UK Design System components",
+    "tier": "B",
+    "tierLabel": "Tier B — Secondary Cross-Checks",
+    "url": "https://design-system.service.gov.uk/components/"
+  },
+  {
+    "id": "component-gallery",
+    "label": "Component Gallery",
+    "tier": "C",
+    "tierLabel": "Tier C — Component Gallery And Pattern Libraries",
+    "url": "https://component.gallery/"
+  },
+  {
+    "id": "ui-patterns-library",
+    "label": "UI Patterns",
+    "tier": "C",
+    "tierLabel": "Tier C — Component Gallery And Pattern Libraries",
+    "url": "https://ui-patterns.com/patterns"
+  },
+  {
+    "id": "design-systems-repo",
+    "label": "Design Systems Repo",
+    "tier": "C",
+    "tierLabel": "Tier C — Component Gallery And Pattern Libraries",
+    "url": "https://designsystemsrepo.com/design-systems/"
+  },
+  {
+    "id": "mobbin-mobile-patterns",
+    "label": "Mobbin mobile app screenshots and patterns",
+    "tier": "D",
+    "tierLabel": "Tier D — Mobile And Product Flow References",
+    "url": "https://mobbin.com/browse/ios/apps"
+  },
+  {
+    "id": "page-flows",
+    "label": "Page Flows user flow references",
+    "tier": "D",
+    "tierLabel": "Tier D — Mobile And Product Flow References",
+    "url": "https://pageflows.com/"
+  },
+  {
+    "id": "uxarchive",
+    "label": "UXArchive mobile flows",
+    "tier": "D",
+    "tierLabel": "Tier D — Mobile And Product Flow References",
+    "url": "https://uxarchive.com/"
+  },
+  {
+    "id": "pttrns-mobile-patterns",
+    "label": "Pttrns mobile design patterns",
+    "tier": "D",
+    "tierLabel": "Tier D — Mobile And Product Flow References",
+    "url": "https://pttrns.com/"
+  }
+] satisfies SourceReference[]

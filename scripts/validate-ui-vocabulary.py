@@ -40,12 +40,43 @@ VALID_CATEGORIES = {
 
 VALID_STATUS = {"draft", "reviewed", "published"}
 VALID_CONFIDENCE = {"low", "medium", "high"}
-SOURCE_ID_PATTERN = re.compile(r"^- `([^`]+)`:", re.MULTILINE)
+SOURCE_LINE_PATTERN = re.compile(r"^- `([^`]+)`: (.+?)\s*$")
+TIER_LINE_PATTERN = re.compile(r"^### Tier ([A-Z])\b")
 
 
 def fail(message: str) -> None:
     print(f"ERROR: {message}", file=sys.stderr)
     raise SystemExit(1)
+
+
+def parse_source_ids(sources_text: str) -> set[str]:
+    source_ids: set[str] = set()
+    current_tier: str | None = None
+    lines = sources_text.splitlines()
+
+    for index, line in enumerate(lines):
+        tier_match = TIER_LINE_PATTERN.match(line)
+        if tier_match:
+            current_tier = tier_match.group(1)
+            continue
+
+        source_match = SOURCE_LINE_PATTERN.match(line)
+        if not source_match:
+            continue
+
+        source_id = source_match.group(1)
+        next_line = lines[index + 1].strip() if index + 1 < len(lines) else ""
+
+        if not current_tier:
+            fail(f"{source_id}: source must be listed below a Tier heading")
+        if source_id in source_ids:
+            fail(f"{source_id}: duplicate source id")
+        if not next_line.startswith("https://"):
+            fail(f"{source_id}: source must have an https URL on the next line")
+
+        source_ids.add(source_id)
+
+    return source_ids
 
 
 def main() -> None:
@@ -55,7 +86,7 @@ def main() -> None:
         fail(f"missing {SOURCES_PATH.relative_to(ROOT)}")
 
     terms = yaml.safe_load(TERMS_PATH.read_text(encoding="utf-8"))
-    source_ids = set(SOURCE_ID_PATTERN.findall(SOURCES_PATH.read_text(encoding="utf-8")))
+    source_ids = parse_source_ids(SOURCES_PATH.read_text(encoding="utf-8"))
     if not source_ids:
         fail("sources.md must register at least one `source_id`")
     if not isinstance(terms, list):

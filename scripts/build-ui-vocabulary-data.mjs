@@ -30,6 +30,59 @@ const requiredFields = [
   "confidence",
 ]
 
+function parseSourceRegistry(sourcesText) {
+  const registry = []
+  const seen = new Set()
+  const lines = sourcesText.split(/\r?\n/)
+  let tier = null
+  let tierLabel = null
+
+  for (let index = 0; index < lines.length; index += 1) {
+    const line = lines[index]
+    const tierMatch = line.match(/^### Tier ([A-Z])\b/)
+
+    if (tierMatch) {
+      tier = tierMatch[1]
+      tierLabel = line.replace(/^###\s+/, "").trim()
+      continue
+    }
+
+    const sourceMatch = line.match(/^- `([^`]+)`: (.+?)\s*$/)
+
+    if (!sourceMatch) {
+      continue
+    }
+
+    const [, id, label] = sourceMatch
+    const url = lines[index + 1]?.trim()
+
+    if (!tier || !tierLabel) {
+      throw new Error(`${id} is listed before a source tier heading`)
+    }
+    if (!url?.startsWith("https://")) {
+      throw new Error(`${id} needs an https URL on the next line`)
+    }
+    if (seen.has(id)) {
+      throw new Error(`duplicate source id: ${id}`)
+    }
+
+    seen.add(id)
+    registry.push({
+      id,
+      label: label.trim(),
+      tier,
+      tierLabel,
+      url,
+    })
+  }
+
+  if (registry.length === 0) {
+    throw new Error("sources.md must register at least one source id")
+  }
+
+  return registry
+}
+
 function assertTerm(term, sourceIds) {
   for (const field of requiredFields) {
     if (!(field in term)) {
@@ -61,7 +114,8 @@ function assertTerm(term, sourceIds) {
 const yamlText = await readFile(termsPath, "utf8")
 const sourcesText = await readFile(sourcesPath, "utf8")
 const terms = YAML.parse(yamlText)
-const sourceIds = new Set([...sourcesText.matchAll(/^- `([^`]+)`:/gm)].map((match) => match[1]))
+const sourceRegistry = parseSourceRegistry(sourcesText)
+const sourceIds = new Set(sourceRegistry.map((source) => source.id))
 
 if (!Array.isArray(terms)) {
   throw new Error("terms.yml must be a list")
@@ -101,9 +155,19 @@ export type VocabularyTerm = {
   confidence: "low" | "medium" | "high"
 }
 
+export type SourceReference = {
+  id: string
+  label: string
+  tier: string
+  tierLabel: string
+  url: string
+}
+
 export const terms = ${JSON.stringify(terms, null, 2)} satisfies VocabularyTerm[]
 
 export const categories = ${JSON.stringify(categories, null, 2)} satisfies TermCategory[]
+
+export const sourceRegistry = ${JSON.stringify(sourceRegistry, null, 2)} satisfies SourceReference[]
 `
 
 await mkdir(path.dirname(outputPath), { recursive: true })
