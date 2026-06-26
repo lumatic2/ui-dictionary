@@ -2,17 +2,18 @@ import { Badge } from "@/components/ui/badge"
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 import { TermVisual } from "@/components/term-visual"
 import type { VocabularyTerm } from "@/data/terms.generated"
-import { categoryLabels } from "@/lib/search"
+import { categoryLabels, searchMatchReasonLabels, type SearchMatchReason } from "@/lib/search"
 import { cn } from "@/lib/utils"
 
 type TermCardProps = {
   term: VocabularyTerm
   index: number
+  matchReasons?: SearchMatchReason[]
   selected: boolean
   onSelect: (term: VocabularyTerm) => void
 }
 
-export function TermCard({ term, index, selected, onSelect }: TermCardProps) {
+export function TermCard({ term, index, matchReasons = [], selected, onSelect }: TermCardProps) {
   const openDetail = () => onSelect(term)
 
   const handleKeyDown = (event: React.KeyboardEvent<HTMLElement>) => {
@@ -44,6 +45,15 @@ export function TermCard({ term, index, selected, onSelect }: TermCardProps) {
             {term.ko.name}
             <span className="ml-2 text-sm font-normal text-muted-foreground">{term.en.name}</span>
           </CardTitle>
+          {matchReasons.length > 0 && (
+            <div className="mt-2 flex flex-wrap gap-1">
+              {matchReasons.slice(0, 2).map((reason) => (
+                <Badge key={reason} variant="secondary" className="rounded-md text-[10px]">
+                  {searchMatchReasonLabels[reason]}
+                </Badge>
+              ))}
+            </div>
+          )}
         </div>
         <div className="flex size-8 items-center justify-center rounded-full bg-secondary text-sm font-semibold text-secondary-foreground">
           {index + 1}

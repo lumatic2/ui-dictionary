@@ -47,7 +47,8 @@ function App() {
   const restoreAfterPrintRef = useRef<RestorePrintState>(null)
   const cleanupTimerRef = useRef<number | null>(null)
 
-  const filteredTerms = useMemo(() => searchTerms(terms, query, filter), [query, filter])
+  const searchResults = useMemo(() => searchTerms(terms, query, filter), [query, filter])
+  const filteredTerms = useMemo(() => searchResults.map((result) => result.term), [searchResults])
   const categoryCounts = useMemo(
     () =>
       categories.map((item) => ({
@@ -262,12 +263,13 @@ function App() {
               <PosterView scopeLabel={printScopeLabel} terms={filteredTerms} totalCount={terms.length} />
             ) : filteredTerms.length > 0 ? (
               <section className="grid gap-4 md:grid-cols-2 xl:grid-cols-3" data-print-grid>
-                {filteredTerms.map((term, index) => (
+                {searchResults.map((result, index) => (
                   <TermCard
-                    key={term.id}
+                    key={result.term.id}
                     index={index}
-                    selected={selectedTerm?.id === term.id}
-                    term={term}
+                    matchReasons={query ? result.reasons : []}
+                    selected={selectedTerm?.id === result.term.id}
+                    term={result.term}
                     onSelect={selectTerm}
                   />
                 ))}

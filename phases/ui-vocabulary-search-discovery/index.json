@@ -22,7 +22,10 @@
     {
       "step": 2,
       "name": "ranked-search-and-match-reasons",
-      "status": "pending"
+      "status": "completed",
+      "started_at": "2026-06-26T15:45:00+09:00",
+      "completed_at": "2026-06-26T16:04:00+09:00",
+      "summary": "Replaced plain includes search with deterministic weighted SearchResult metadata. Results now carry score, match reasons, and matched text; cards show plain Korean reason badges without exposing scores. Added fixture boosts for purpose/appearance queries while preserving source order for empty query. Verified npm run build, npm run lint with existing shadcn warnings only, and Playwright fixture smoke: 토글, 켜고 끄는, 옆에서 나오는 창, 표 필터, 빈 화면 all surfaced expected ids near the top and default empty query order remained text-field/search-field/textarea."
     },
     {
       "step": 3,
