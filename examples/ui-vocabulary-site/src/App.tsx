@@ -1,5 +1,19 @@
 import { useMemo, useState } from "react"
-import { BookOpen, ChevronDown, Download, FileText, Search, X } from "lucide-react"
+import {
+  BellDot,
+  BookOpen,
+  ChevronDown,
+  Download,
+  FileText,
+  Keyboard,
+  LayoutPanelTop,
+  MousePointerClick,
+  Search,
+  TableProperties,
+  ToggleLeft,
+  X,
+  type LucideIcon,
+} from "lucide-react"
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion"
 import { Badge } from "@/components/ui/badge"
 import { Button } from "@/components/ui/button"
@@ -13,7 +27,7 @@ import { Input } from "@/components/ui/input"
 import { Separator } from "@/components/ui/separator"
 import { TermCard } from "@/components/term-card"
 import { TermDetail } from "@/components/term-detail"
-import { categories, terms, type VocabularyTerm } from "@/data/terms.generated"
+import { categories, terms, type TermCategory, type VocabularyTerm } from "@/data/terms.generated"
 import { categoryGroupsByCategory, categoryLabels, matchesFilter, searchTerms, type TermFilter } from "@/lib/search"
 import { cn } from "@/lib/utils"
 
@@ -52,32 +66,27 @@ function App() {
       <CategoryButton
         active={filter === "all"}
         count={terms.length}
+        icon={BookOpen}
         label="전체"
         onClick={() => setFilter("all")}
       />
       <Accordion className="flex flex-col gap-1" onValueChange={setOpenCategories} type="multiple" value={openCategories}>
         {categoryCounts.map((item) => (
-          <AccordionItem key={item.category} className="rounded-md border px-2" value={item.category}>
+          <AccordionItem key={item.category} className="border-0" value={item.category}>
             <AccordionTrigger
               className={cn(
-                "py-2 text-sm hover:no-underline",
-                filter === item.category && "text-primary"
+                "rounded-lg px-3 py-2 text-sm hover:bg-muted hover:no-underline",
+                filter === item.category && "bg-secondary text-primary"
               )}
-              onClick={() => {
-                setFilter(item.category)
-                window.setTimeout(() => {
-                  setOpenCategories((current) =>
-                    current.includes(item.category) ? current : [...current, item.category]
-                  )
-                }, 0)
-              }}
+              onClick={() => setFilter(item.category)}
             >
-              <span className="flex min-w-0 flex-1 items-center justify-between gap-2">
-                <span className="truncate">{categoryLabels[item.category]}</span>
+              <span className="flex min-w-0 flex-1 items-center gap-3">
+                <CategoryIcon category={item.category} />
+                <span className="min-w-0 flex-1 truncate">{categoryLabels[item.category]}</span>
                 <span className="shrink-0 text-xs text-muted-foreground">{item.count}</span>
               </span>
             </AccordionTrigger>
-            <AccordionContent className="flex flex-col gap-1 pb-2">
+            <AccordionContent className="flex flex-col gap-1 pb-2 pl-8">
               {item.groups.map((group) => (
                 <CategoryButton
                   key={group.id}
@@ -225,22 +234,41 @@ function App() {
 type CategoryButtonProps = {
   active: boolean
   count: number
+  icon?: LucideIcon
   label: string
   onClick: () => void
 }
 
-function CategoryButton({ active, count, label, onClick }: CategoryButtonProps) {
+const categoryIcons: Record<TermCategory, LucideIcon> = {
+  input: Keyboard,
+  selection: ToggleLeft,
+  action: MousePointerClick,
+  structure: LayoutPanelTop,
+  feedback: BellDot,
+  "data-display": TableProperties,
+}
+
+function CategoryIcon({ category }: { category: TermCategory }) {
+  const Icon = categoryIcons[category]
+
+  return <Icon aria-hidden="true" className="size-4 shrink-0" />
+}
+
+function CategoryButton({ active, count, icon: Icon, label, onClick }: CategoryButtonProps) {
   return (
     <Button
       className={cn(
-        "h-9 shrink-0 justify-between rounded-md px-3 text-sm font-medium lg:w-full",
-        active && "border-primary bg-primary text-primary-foreground hover:bg-primary/90"
+        "h-9 shrink-0 justify-between rounded-lg px-3 text-sm font-medium lg:w-full",
+        active && "bg-secondary text-primary hover:bg-secondary"
       )}
-      variant={active ? "default" : "ghost"}
+      variant="ghost"
       onClick={onClick}
     >
-      <span>{label}</span>
-      <span className={cn("ml-3 text-xs", active ? "text-primary-foreground/80" : "text-muted-foreground")}>{count}</span>
+      <span className="flex min-w-0 items-center gap-3">
+        {Icon && <Icon aria-hidden="true" className="size-4 shrink-0" />}
+        <span className="truncate">{label}</span>
+      </span>
+      <span className="ml-3 text-xs text-muted-foreground">{count}</span>
     </Button>
   )
 }
