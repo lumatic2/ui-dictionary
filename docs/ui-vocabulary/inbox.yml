@@ -1,0 +1,52 @@
+# UI Vocabulary candidate inbox.
+#
+# Keep candidates here until they are reviewed, rendered, and promoted to terms.yml.
+# Run `node scripts/audit-ui-vocabulary-candidates.mjs` before promotion.
+
+- id: mobile-filter-bottom-sheet
+  status: candidate
+  category: structure
+  ko: { name: 모바일 필터 바텀 시트, aliases: [필터 시트, 모바일 필터 패널, filter bottom sheet] }
+  en: { name: Mobile filter bottom sheet, aliases: [Filter sheet, Filter bottom sheet] }
+  one_liner: 모바일 목록 화면에서 필터 옵션을 아래에서 올라오는 시트로 고르는 패턴.
+  description: 검색 결과, 상품 목록, 지도 목록처럼 필터 조건이 많지만 화면 공간이 좁을 때 사용한다.
+  visual_anatomy: [bottom sheet container, drag handle, filter groups, apply button, clear filters action]
+  when_to_use: [모바일에서 필터 조건이 여러 그룹으로 나뉠 때, 목록을 보면서 조건을 조정해야 할 때]
+  anti_use: [필터가 1-2개뿐이면 filter chip이나 segmented tabs가 더 빠르다]
+  prompt_phrases: [상품 목록 아래에서 올라오는 mobile filter bottom sheet를 만들어줘]
+  asset: { kind: mini-mock, variant: mobile-filter-bottom-sheet, props: { groups: 3 } }
+  sources: [{ source_id: material-m3-components, note: bottom sheet and filter behavior reference }]
+  confidence: medium
+  collector_notes: Material bottom sheet, commerce filter patterns, existing filter-panel term과 비교 필요.
+
+- id: inline-date-range-chip
+  status: candidate
+  category: selection
+  ko: { name: 인라인 날짜 범위 칩, aliases: [날짜 필터 칩, 기간 칩, date range chip] }
+  en: { name: Inline date range chip, aliases: [Date range filter chip, Date chip] }
+  one_liner: 선택된 기간을 작은 칩으로 표시하고 눌러 수정할 수 있는 필터 요소.
+  description: 대시보드나 리스트 상단에서 현재 적용 중인 기간 조건을 compact하게 보여준다.
+  visual_anatomy: [pill container, calendar icon, date range label, remove or edit affordance]
+  when_to_use: [현재 적용된 날짜 필터를 계속 보여줘야 할 때, 필터 바 공간을 아껴야 할 때]
+  anti_use: [날짜를 처음 입력하는 주 흐름에는 date range picker가 더 명확하다]
+  prompt_phrases: [지난 7일 기간을 보여주는 inline date range chip을 넣어줘]
+  asset: { kind: mini-mock, variant: inline-date-range-chip, props: { range: "7d" } }
+  sources: [{ source_id: material-m3-components, note: chips and date picker composition }]
+  confidence: medium
+  collector_notes: filter-chip/date-range-picker와 관계를 명확히 한 뒤 승격.
+
+- id: floating-search-button
+  status: candidate
+  category: action
+  ko: { name: 플로팅 검색 버튼, aliases: [떠 있는 검색 버튼, search FAB, floating search] }
+  en: { name: Floating search button, aliases: [Search FAB, Floating search action] }
+  one_liner: 스크롤 중에도 검색 화면을 열 수 있게 떠 있는 검색 행동 버튼.
+  description: 지도, 피드, 긴 목록처럼 상단 검색창이 화면 밖으로 사라지는 모바일 화면에서 사용한다.
+  visual_anatomy: [floating circular button, search icon, elevated surface, bottom or corner placement]
+  when_to_use: [검색이 핵심 행동이지만 상단 공간을 계속 차지하면 방해될 때]
+  anti_use: [검색이 항상 핵심이면 mobile search header가 더 직접적이다]
+  prompt_phrases: [목록 오른쪽 아래에 floating search button을 넣어줘]
+  asset: { kind: mini-mock, variant: floating-search-button, props: { position: bottom-right } }
+  sources: [{ source_id: material-m3-components, note: FAB and search pattern composition }]
+  confidence: low
+  collector_notes: FAB의 변형으로 둘지 별도 term으로 둘지 review 필요.
