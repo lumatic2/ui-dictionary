@@ -27,8 +27,9 @@ import { Separator } from "@/components/ui/separator"
 import { TermCard } from "@/components/term-card"
 import { TermDetail } from "@/components/term-detail"
 import { categories, terms, type TermCategory, type VocabularyTerm } from "@/data/terms.generated"
-import { categoryGroups, categoryGroupsByCategory, categoryLabels, isTermCategory, matchesFilter, searchTerms, type TermFilter } from "@/lib/search"
+import { categoryGroups, categoryGroupsByCategory, categoryLabels, isTermCategory, matchesFilter, searchTerms, type SearchResult, type TermFilter } from "@/lib/search"
 import { getStarterQueries } from "@/lib/search-suggestions"
+import { useCases } from "@/lib/term-ux"
 import { cn } from "@/lib/utils"
 
 type PrintMode = "screen" | "current" | "all" | "poster"
@@ -46,9 +47,15 @@ function App() {
   const [detailOpen, setDetailOpen] = useState(false)
   const [printMode, setPrintMode] = useState<PrintMode>("screen")
   const [printScopeLabel, setPrintScopeLabel] = useState("전체 용어")
+  const [activeUseCaseId, setActiveUseCaseId] = useState<string | null>(null)
   const restoreAfterPrintRef = useRef<RestorePrintState>(null)
   const cleanupTimerRef = useRef<number | null>(null)
-  const searchResults = useMemo(() => searchTerms(terms, query, filter), [query, filter])
+  const activeUseCase = useMemo(() => useCases.find((item) => item.id === activeUseCaseId) ?? null, [activeUseCaseId])
+  const baseSearchResults = useMemo(() => searchTerms(terms, query, filter), [query, filter])
+  const searchResults = useMemo(
+    () => applyUseCaseResults(baseSearchResults, activeUseCase),
+    [activeUseCase, baseSearchResults]
+  )
   const filteredTerms = useMemo(() => searchResults.map((result) => result.term), [searchResults])
   const starterSuggestions = useMemo(() => getStarterQueries(), [])
   const hasActiveSearch = query.trim().length > 0 || filter !== "all"
@@ -119,9 +126,30 @@ function App() {
     setDetailOpen(true)
   }, [])
 
+  function updateQuery(nextQuery: string) {
+    setActiveUseCaseId(null)
+    setQuery(nextQuery)
+  }
+
+  function updateFilter(nextFilter: TermFilter) {
+    setActiveUseCaseId(null)
+    setFilter(nextFilter)
+  }
+
+  function selectUseCase(queryValue: string) {
+    const useCase = useCases.find((item) => item.query === queryValue)
+    setActiveUseCaseId(useCase?.id ?? null)
+    setQuery(queryValue)
+    setFilter("all")
+    setOpenCategories([])
+    setDetailOpen(false)
+    window.scrollTo({ top: 0, behavior: "smooth" })
+  }
+
   function goHome() {
     setQuery("")
     setFilter("all")
+    setActiveUseCaseId(null)
     setOpenCategories([])
     setSelectedTerm(terms[0] ?? null)
     setDetailOpen(false)
@@ -166,7 +194,7 @@ function App() {
         count={terms.length}
         icon={BookOpen}
         label="전체"
-        onClick={() => setFilter("all")}
+        onClick={() => updateFilter("all")}
       />
       <Accordion className="flex flex-col gap-1" onValueChange={setOpenCategories} type="multiple" value={openCategories}>
         {categoryCounts.map((item) => (
@@ -176,7 +204,7 @@ function App() {
                 "rounded-lg px-3 py-2 text-sm hover:bg-muted hover:no-underline",
                 filter === item.category && "bg-secondary text-primary"
               )}
-              onClick={() => setFilter(item.category)}
+              onClick={() => updateFilter(item.category)}
             >
               <span className="flex min-w-0 flex-1 items-center gap-3">
                 <CategoryIcon category={item.category} />
@@ -191,7 +219,7 @@ function App() {
                   active={filter === group.id}
                   count={group.count}
                   label={group.label}
-                  onClick={() => setFilter(group.id)}
+                  onClick={() => updateFilter(group.id)}
                 />
               ))}
             </AccordionContent>
@@ -240,8 +268,8 @@ function App() {
                     filter={filter}
                     query={query}
                     terms={terms}
-                    onFilterChange={setFilter}
-                    onQueryChange={setQuery}
+                    onFilterChange={updateFilter}
+                    onQueryChange={updateQuery}
                   />
                 </div>
 
@@ -293,6 +321,28 @@ function App() {
               </p>
             </div>
 
+            <section className="flex flex-col gap-3 rounded-lg border bg-card p-4" data-print-hidden>
+              <div>
+                <h2 className="text-sm font-semibold">상황별로 찾기</h2>
+                <p className="mt-1 text-sm leading-6 text-muted-foreground">
+                  화면 종류를 먼저 고르면 관련 컴포넌트 묶음으로 검색합니다.
+                </p>
+              </div>
+              <div className="grid gap-2 md:grid-cols-2 xl:grid-cols-3">
+                {useCases.map((item) => (
+                  <button
+                    key={item.id}
+                    type="button"
+                    className="rounded-lg border bg-background p-3 text-left transition hover:border-primary/40 hover:bg-accent/40 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring"
+                    onClick={() => selectUseCase(item.query)}
+                  >
+                    <span className="block text-sm font-medium">{item.label}</span>
+                    <span className="mt-1 block text-xs leading-5 text-muted-foreground">{item.description}</span>
+                  </button>
+                ))}
+              </div>
+            </section>
+
             <div className="hidden" data-print-summary>
               <p>UI 용어 사전</p>
               <h2>{printScopeLabel}</h2>
@@ -314,6 +364,11 @@ function App() {
                       검색어: {query.trim()}
                     </Badge>
                   )}
+                  {activeUseCase && (
+                    <Badge variant="outline" className="rounded-md">
+                      상황: {activeUseCase.label}
+                    </Badge>
+                  )}
                   {filter !== "all" && (
                     <Badge variant="outline" className="rounded-md">
                       필터: {getFilterLabel(filter)}
@@ -323,16 +378,16 @@ function App() {
                 </div>
                 <div className="flex flex-wrap gap-2">
                   {query.trim() && (
-                    <Button size="sm" variant="outline" onClick={() => setQuery("")}>
+                    <Button size="sm" variant="outline" onClick={() => updateQuery("")}>
                       검색어 지우기
                     </Button>
                   )}
                   {filter !== "all" && (
-                    <Button size="sm" variant="outline" onClick={() => setFilter("all")}>
+                    <Button size="sm" variant="outline" onClick={() => updateFilter("all")}>
                       필터 해제
                     </Button>
                   )}
-                  <Button size="sm" variant="ghost" onClick={() => { setQuery(""); setFilter("all") }}>
+                  <Button size="sm" variant="ghost" onClick={() => { updateQuery(""); updateFilter("all") }}>
                     전체 초기화
                   </Button>
                 </div>
@@ -360,15 +415,21 @@ function App() {
                 filter={filter}
                 query={query}
                 starters={starterSuggestions}
-                onFilterChange={setFilter}
-                onQueryChange={setQuery}
+                onFilterChange={updateFilter}
+                onQueryChange={updateQuery}
               />
             )}
           </section>
         </div>
       </div>
 
-      <TermDetail open={detailOpen} term={selectedTerm} onOpenChange={setDetailOpen} />
+      <TermDetail
+        open={detailOpen}
+        term={selectedTerm}
+        terms={terms}
+        onOpenChange={setDetailOpen}
+        onSelectTerm={selectTerm}
+      />
     </main>
   )
 }
@@ -382,6 +443,36 @@ function getExportScopeLabel(filter: TermFilter, query: string) {
   }
 
   return `${filterLabel} · 검색: ${trimmedQuery}`
+}
+
+function applyUseCaseResults(results: SearchResult[], useCase: typeof useCases[number] | null) {
+  if (!useCase) {
+    return results
+  }
+
+  const resultsById = new Map(results.map((result) => [result.term.id, result]))
+  const useCaseIds = new Set(useCase.termIds)
+  const pinnedResults = useCase.termIds.flatMap((id, index) => {
+    const existing = resultsById.get(id)
+    if (existing) {
+      return [{ ...existing, score: existing.score + 1000 - index }]
+    }
+
+    const term = terms.find((item) => item.id === id)
+    if (!term) {
+      return []
+    }
+
+    return [{
+      term,
+      score: 1000 - index,
+      reasons: ["prompt_phrase"] as SearchResult["reasons"],
+      matchedText: [useCase.label],
+    }]
+  })
+  const remainingResults = results.filter((result) => !useCaseIds.has(result.term.id))
+
+  return [...pinnedResults, ...remainingResults]
 }
 
 function getFilterLabel(filter: TermFilter) {

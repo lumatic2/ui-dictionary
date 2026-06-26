@@ -1580,8 +1580,13 @@ function BulkActionBarVisual() {
 
 function SpeedDialVisual() {
   const [open, setOpen] = useState(true)
+  const actions = [
+    { id: "copy", Icon: Copy },
+    { id: "share", Icon: Share2 },
+    { id: "trash", Icon: Trash2 },
+  ]
 
-  return <div className="flex flex-col items-end gap-2">{open && [Copy, Share2, Trash2].map((Icon) => <button key={Icon.name} type="button" className="flex size-8 items-center justify-center rounded-full border bg-card shadow-sm"><Icon aria-hidden="true" /></button>)}<button type="button" className="flex size-12 items-center justify-center rounded-full bg-primary text-primary-foreground shadow-md" onClick={() => setOpen((value) => !value)}><Plus aria-hidden="true" /></button></div>
+  return <div className="flex flex-col items-end gap-2">{open && actions.map(({ id, Icon }) => <button key={id} type="button" className="flex size-8 items-center justify-center rounded-full border bg-card shadow-sm"><Icon aria-hidden="true" /></button>)}<button type="button" className="flex size-12 items-center justify-center rounded-full bg-primary text-primary-foreground shadow-md" onClick={() => setOpen((value) => !value)}><Plus aria-hidden="true" /></button></div>
 }
 
 function AppShellVisual() {
