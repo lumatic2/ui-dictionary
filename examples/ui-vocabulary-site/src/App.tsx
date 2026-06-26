@@ -38,8 +38,9 @@ type RestorePrintState = {
 } | null
 
 function App() {
-  const [query, setQuery] = useState("")
-  const [filter, setFilter] = useState<TermFilter>("all")
+  const initialSearchState = useMemo(getInitialSearchState, [])
+  const [query, setQuery] = useState(initialSearchState.query)
+  const [filter, setFilter] = useState<TermFilter>(initialSearchState.filter)
   const [openCategories, setOpenCategories] = useState<string[]>([])
   const [selectedTerm, setSelectedTerm] = useState<VocabularyTerm | null>(terms[0] ?? null)
   const [detailOpen, setDetailOpen] = useState(false)
@@ -89,6 +90,26 @@ function App() {
       window.removeEventListener("afterprint", cleanupPrintState)
     }
   }, [])
+
+  useEffect(() => {
+    const params = new URLSearchParams(window.location.search)
+
+    if (query.trim()) {
+      params.set("q", query.trim())
+    } else {
+      params.delete("q")
+    }
+
+    if (filter !== "all") {
+      params.set("filter", filter)
+    } else {
+      params.delete("filter")
+    }
+
+    const nextSearch = params.toString()
+    const nextUrl = `${window.location.pathname}${nextSearch ? `?${nextSearch}` : ""}${window.location.hash}`
+    window.history.replaceState(null, "", nextUrl)
+  }, [filter, query])
 
   function selectTerm(term: VocabularyTerm) {
     setSelectedTerm(term)
@@ -355,6 +376,32 @@ function getFilterLabel(filter: TermFilter) {
   }
 
   return categoryGroups.find((group) => group.id === filter)?.label ?? "현재 필터"
+}
+
+function getInitialSearchState() {
+  if (typeof window === "undefined") {
+    return { filter: "all" as TermFilter, query: "" }
+  }
+
+  const params = new URLSearchParams(window.location.search)
+  const query = params.get("q") ?? ""
+  const filter = parseFilterParam(params.get("filter"))
+
+  return { filter, query }
+}
+
+function parseFilterParam(value: string | null): TermFilter {
+  if (!value || value === "all") {
+    return "all"
+  }
+  if (isTermCategory(value as TermFilter)) {
+    return value as TermFilter
+  }
+  if (categoryGroups.some((group) => group.id === value)) {
+    return value as TermFilter
+  }
+
+  return "all"
 }
 
 type CategoryButtonProps = {

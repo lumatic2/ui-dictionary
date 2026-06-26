@@ -52,15 +52,15 @@ Out of scope:
 
 ## Milestone Tree
 
-- [ ] Step 0 — search quality contract and query fixture
+- [x] Step 0 — search quality contract and query fixture
   - AC: 대표 query fixture와 expected top results가 문서화되고, 검색 품질 DoD가 phase index에 기록된다.
-- [ ] Step 1 — autocomplete and suggestion panel
+- [x] Step 1 — autocomplete and suggestion panel
   - AC: 검색창에서 term/alias/category/group 추천이 뜨고 keyboard로 이동/선택 가능하다.
-- [ ] Step 2 — ranked search and match reasons
+- [x] Step 2 — ranked search and match reasons
   - AC: `includes()` 검색을 scoring 기반으로 교체하고, 결과에 match reason을 노출한다.
-- [ ] Step 3 — discovery helpers and no-result recovery
+- [x] Step 3 — discovery helpers and no-result recovery
   - AC: 빈 결과/모호한 쿼리에서 추천 카테고리, starter query, 가까운 후보로 회복할 수 있다.
-- [ ] Step 4 — URL state, QA, and documentation
+- [x] Step 4 — URL state, QA, and documentation
   - AC: query/filter state가 URL에 반영되고, desktop/mobile/keyboard smoke와 query fixture 결과가 문서화된다.
 
 ## Technical Direction
@@ -93,6 +93,6 @@ Out of scope:
 - `결제 카드` -> `payment-method-card`, `price-card`, `plan-card`
 - `진행 상태` -> `progress-bar`, `stepper`, `setup-progress`
 
-## Stop Point
+## Completion
 
-이 plan은 implementation 전 설계 산출물이다. 다음 작업은 Step 0부터 phase 파일에 따라 진행한다.
+2026-06-26 completed. See `docs/ui-vocabulary/search-discovery.md` for search behavior, URL state contract, fixture, smoke results, and next horizon candidates.

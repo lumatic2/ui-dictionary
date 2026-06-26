@@ -38,7 +38,10 @@
     {
       "step": 4,
       "name": "url-state-qa-and-documentation",
-      "status": "pending"
+      "status": "completed",
+      "started_at": "2026-06-26T16:23:00+09:00",
+      "completed_at": "2026-06-26T16:36:00+09:00",
+      "summary": "Added URL query/filter state restore and replaceState sync without analytics or logging. Documented smoke results and next horizon candidates in docs/ui-vocabulary/search-discovery.md, and checked off the search discovery plan DoD. Final verification passed: npm run build, npm run lint with existing shadcn warnings only, URL ?q=토글&filter=selection-options restored state, ArrowDown+Enter selected 스위치, representative fixture queries surfaced expected ids, and 390px mobile recovery state had no horizontal overflow."
     }
   ]
 }

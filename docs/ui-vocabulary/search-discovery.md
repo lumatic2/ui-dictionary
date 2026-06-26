@@ -222,6 +222,26 @@ Required implementation checks:
 - URL: reload with `?q=토글&filter=selection-options` restores state.
 - Mobile: 390px viewport has no horizontal overflow and suggestion panel stays visible.
 
+### Smoke Log: 2026-06-26
+
+- `npm run build`: passed.
+- `npm run lint`: passed with existing shadcn Fast Refresh warnings in `button.tsx`, `badge.tsx`, and `tabs.tsx`.
+- Autocomplete: `토` showed switch/toggle candidates.
+- Autocomplete: `옆에서` showed side-sheet/drawer candidates.
+- Keyboard: ArrowDown + Enter selected `스위치`.
+- Ranking fixture: `토글`, `켜고 끄는`, `옆에서 나오는 창`, `표 필터`, `빈 화면` surfaced expected ids near the top.
+- Match reason: result cards showed Korean reason badges such as `별칭 일치`, `AI 요청 문장`, and `생김새 단서`.
+- No-result recovery: unknown query showed query clearing, filter clearing, starter queries, and category shortcuts.
+- URL state: `?q=토글&filter=selection-options` restored query and filter on load.
+- Mobile: 390px viewport had no horizontal overflow; suggestion panel, result summary, and empty-state controls stayed within viewport.
+
+## Next Horizon Candidates
+
+- Term detail depth: related-term comparisons, "not this, use that" guidance, source links.
+- Data authoring workflow: `inbox.yml`, promotion checklist, duplicate-risk review script.
+- Mobile navigation polish: category drawer, sticky active section, compact browse controls.
+- Cookbook bridge: connect selected vocabulary terms to implementation recipes.
+
 ## Non-Goals
 
 - No server-side search.
