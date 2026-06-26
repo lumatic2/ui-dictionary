@@ -2,6 +2,7 @@ from __future__ import annotations
 
 from collections import Counter
 from pathlib import Path
+import re
 import sys
 
 import yaml
@@ -39,6 +40,7 @@ VALID_CATEGORIES = {
 
 VALID_STATUS = {"draft", "reviewed", "published"}
 VALID_CONFIDENCE = {"low", "medium", "high"}
+SOURCE_ID_PATTERN = re.compile(r"^- `([^`]+)`:", re.MULTILINE)
 
 
 def fail(message: str) -> None:
@@ -53,6 +55,9 @@ def main() -> None:
         fail(f"missing {SOURCES_PATH.relative_to(ROOT)}")
 
     terms = yaml.safe_load(TERMS_PATH.read_text(encoding="utf-8"))
+    source_ids = set(SOURCE_ID_PATTERN.findall(SOURCES_PATH.read_text(encoding="utf-8")))
+    if not source_ids:
+        fail("sources.md must register at least one `source_id`")
     if not isinstance(terms, list):
         fail("terms.yml must be a list")
     if len(terms) < 60:
@@ -91,8 +96,11 @@ def main() -> None:
         if not term["sources"]:
             fail(f"{term_id}: sources must not be empty")
         for source in term["sources"]:
-            if not source.get("source_id"):
+            source_id = source.get("source_id")
+            if not source_id:
                 fail(f"{term_id}: source_id is required")
+            if source_id not in source_ids:
+                fail(f"{term_id}: unknown source_id {source_id}")
 
     sparse = {category: count for category, count in counts.items() if count < 8}
     if sparse:

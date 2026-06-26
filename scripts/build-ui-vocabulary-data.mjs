@@ -10,6 +10,7 @@ const require = createRequire(path.join(siteRoot, "package.json"))
 const YAML = require("yaml")
 
 const termsPath = path.join(root, "docs", "ui-vocabulary", "terms.yml")
+const sourcesPath = path.join(root, "docs", "ui-vocabulary", "sources.md")
 const outputPath = path.join(siteRoot, "src", "data", "terms.generated.ts")
 
 const requiredFields = [
@@ -29,7 +30,7 @@ const requiredFields = [
   "confidence",
 ]
 
-function assertTerm(term) {
+function assertTerm(term, sourceIds) {
   for (const field of requiredFields) {
     if (!(field in term)) {
       throw new Error(`${term.id ?? "unknown"} is missing ${field}`)
@@ -44,18 +45,34 @@ function assertTerm(term) {
   if (!Array.isArray(term.visual_anatomy) || term.visual_anatomy.length === 0) {
     throw new Error(`${term.id} needs visual_anatomy`)
   }
+  if (!Array.isArray(term.sources) || term.sources.length === 0) {
+    throw new Error(`${term.id} needs sources`)
+  }
+  for (const source of term.sources) {
+    if (!source?.source_id) {
+      throw new Error(`${term.id} has a source without source_id`)
+    }
+    if (!sourceIds.has(source.source_id)) {
+      throw new Error(`${term.id} has unknown source_id: ${source.source_id}`)
+    }
+  }
 }
 
 const yamlText = await readFile(termsPath, "utf8")
+const sourcesText = await readFile(sourcesPath, "utf8")
 const terms = YAML.parse(yamlText)
+const sourceIds = new Set([...sourcesText.matchAll(/^- `([^`]+)`:/gm)].map((match) => match[1]))
 
 if (!Array.isArray(terms)) {
   throw new Error("terms.yml must be a list")
 }
+if (sourceIds.size === 0) {
+  throw new Error("sources.md must register at least one source id")
+}
 
 const ids = new Set()
 for (const term of terms) {
-  assertTerm(term)
+  assertTerm(term, sourceIds)
   if (ids.has(term.id)) {
     throw new Error(`duplicate term id: ${term.id}`)
   }

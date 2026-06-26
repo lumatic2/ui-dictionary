@@ -16,6 +16,8 @@ Use these for canonical names, core definitions, interaction behavior, and acces
   https://developer.apple.com/design/human-interface-guidelines/components
 - `fluent2-react-components`: Microsoft Fluent 2 React components  
   https://fluent2.microsoft.design/components/web/react/
+- `uswds-components`: U.S. Web Design System components  
+  https://designsystem.digital.gov/components/
 - `radix-ui-primitives`: Radix UI primitives  
   https://www.radix-ui.com/primitives
 - `shadcn-ui-docs`: shadcn/ui component documentation  
@@ -33,8 +35,42 @@ Use these to compare naming, categories, variants, and implementation examples.
   https://carbondesignsystem.com/components/overview/
 - `atlassian-design-components`: Atlassian Design System components  
   https://atlassian.design/components/
+- `shopify-polaris-components`: Shopify Polaris components  
+  https://polaris.shopify.com/components
+- `github-primer-components`: GitHub Primer components  
+  https://primer.style/components
+- `govuk-design-system-components`: GOV.UK Design System components  
+  https://design-system.service.gov.uk/components/
 
-### Tier C — Alias And Teaching Sources
+### Tier C — Component Gallery And Pattern Libraries
+
+Use these to discover missing terms, alternate names, and how component
+families are grouped across products. Cross-check important definitions against
+Tier A or B before promoting a term.
+
+- `component-gallery`: Component Gallery  
+  https://component.gallery/
+- `ui-patterns-library`: UI Patterns  
+  https://ui-patterns.com/patterns
+- `design-systems-repo`: Design Systems Repo  
+  https://designsystemsrepo.com/design-systems/
+
+### Tier D — Mobile And Product Flow References
+
+Use these for mobile-specific patterns, real product examples, and flow-level UX
+vocabulary. They are especially useful for candidate discovery, not canonical
+definition.
+
+- `mobbin-mobile-patterns`: Mobbin mobile app screenshots and patterns  
+  https://mobbin.com/browse/ios/apps
+- `page-flows`: Page Flows user flow references  
+  https://pageflows.com/
+- `uxarchive`: UXArchive mobile flows  
+  https://uxarchive.com/
+- `pttrns-mobile-patterns`: Pttrns mobile design patterns  
+  https://pttrns.com/
+
+### Tier E — Alias And Teaching Sources
 
 Use these only for beginner wording, common aliases, and explanatory examples. Do not let them override Tier A definitions.
 
@@ -58,3 +94,7 @@ Use these only for beginner wording, common aliases, and explanatory examples. D
 - `Material Design components text field dialog snackbar navigation drawer`
 - `Fluent 2 React components button menu dialog tooltip`
 - `Apple Human Interface Guidelines controls components`
+- `Component Gallery UI component names examples`
+- `Mobbin mobile filter sort bottom sheet UI pattern`
+- `Page Flows onboarding checkout search user flow`
+- `Pttrns mobile navigation empty state filter pattern`
