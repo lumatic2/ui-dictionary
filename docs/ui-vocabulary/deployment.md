@@ -78,3 +78,5 @@ ui-vocabulary
 `ui-vocabulary` was created as a Direct Upload project. Cloudflare does not allow
 adding a `source` object to an existing Direct Upload project, so automatic
 deployment uses the separate Git-connected `ui-dictionary` project.
+
+Status: deleted after `ui.askewly.com` was moved to `ui-dictionary`.
