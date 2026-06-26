@@ -28,6 +28,7 @@ import { TermCard } from "@/components/term-card"
 import { TermDetail } from "@/components/term-detail"
 import { categories, terms, type TermCategory, type VocabularyTerm } from "@/data/terms.generated"
 import { categoryGroups, categoryGroupsByCategory, categoryLabels, isTermCategory, matchesFilter, searchTerms, type TermFilter } from "@/lib/search"
+import { getStarterQueries } from "@/lib/search-suggestions"
 import { cn } from "@/lib/utils"
 
 type PrintMode = "screen" | "current" | "all" | "poster"
@@ -49,6 +50,8 @@ function App() {
 
   const searchResults = useMemo(() => searchTerms(terms, query, filter), [query, filter])
   const filteredTerms = useMemo(() => searchResults.map((result) => result.term), [searchResults])
+  const starterSuggestions = useMemo(() => getStarterQueries(), [])
+  const hasActiveSearch = query.trim().length > 0 || filter !== "all"
   const categoryCounts = useMemo(
     () =>
       categories.map((item) => ({
@@ -259,6 +262,44 @@ function App() {
 
             <Separator data-print-hidden />
 
+            {hasActiveSearch && (
+              <section
+                className="flex flex-col gap-3 rounded-lg border bg-card p-4 md:flex-row md:items-center md:justify-between"
+                data-print-hidden
+                data-search-summary
+              >
+                <div className="flex min-w-0 flex-wrap items-center gap-2">
+                  <span className="text-sm font-medium">현재 탐색</span>
+                  {query.trim() && (
+                    <Badge variant="secondary" className="rounded-md">
+                      검색어: {query.trim()}
+                    </Badge>
+                  )}
+                  {filter !== "all" && (
+                    <Badge variant="outline" className="rounded-md">
+                      필터: {getFilterLabel(filter)}
+                    </Badge>
+                  )}
+                  <span className="text-sm text-muted-foreground">{filteredTerms.length}개 결과</span>
+                </div>
+                <div className="flex flex-wrap gap-2">
+                  {query.trim() && (
+                    <Button size="sm" variant="outline" onClick={() => setQuery("")}>
+                      검색어 지우기
+                    </Button>
+                  )}
+                  {filter !== "all" && (
+                    <Button size="sm" variant="outline" onClick={() => setFilter("all")}>
+                      필터 해제
+                    </Button>
+                  )}
+                  <Button size="sm" variant="ghost" onClick={() => { setQuery(""); setFilter("all") }}>
+                    전체 초기화
+                  </Button>
+                </div>
+              </section>
+            )}
+
             {filteredTerms.length > 0 && printMode === "poster" ? (
               <PosterView scopeLabel={printScopeLabel} terms={filteredTerms} totalCount={terms.length} />
             ) : filteredTerms.length > 0 ? (
@@ -275,15 +316,14 @@ function App() {
                 ))}
               </section>
             ) : (
-              <section className="flex min-h-64 flex-col items-center justify-center gap-3 rounded-lg border bg-card p-8 text-center">
-                <p className="text-lg font-semibold">검색 결과가 없습니다.</p>
-                <p className="max-w-md text-sm leading-6 text-muted-foreground">
-                  한국어 이름, 영어 이름, alias, 설명, 프롬프트 문장을 모두 검색합니다. 예: 토글, modal, dropdown.
-                </p>
-                <Button variant="outline" onClick={() => { setQuery(""); setFilter("all") }}>
-                  전체 용어 보기
-                </Button>
-              </section>
+              <EmptySearchRecovery
+                categoryCounts={categoryCounts}
+                filter={filter}
+                query={query}
+                starters={starterSuggestions}
+                onFilterChange={setFilter}
+                onQueryChange={setQuery}
+              />
             )}
           </section>
         </div>
@@ -323,6 +363,78 @@ type CategoryButtonProps = {
   icon?: LucideIcon
   label: string
   onClick: () => void
+}
+
+type EmptySearchRecoveryProps = {
+  categoryCounts: Array<{
+    category: TermCategory
+    count: number
+  }>
+  filter: TermFilter
+  query: string
+  starters: ReturnType<typeof getStarterQueries>
+  onFilterChange: (filter: TermFilter) => void
+  onQueryChange: (query: string) => void
+}
+
+function EmptySearchRecovery({
+  categoryCounts,
+  filter,
+  query,
+  starters,
+  onFilterChange,
+  onQueryChange,
+}: EmptySearchRecoveryProps) {
+  return (
+    <section className="flex min-h-64 flex-col gap-5 rounded-lg border bg-card p-6" data-empty-recovery>
+      <div className="text-center">
+        <p className="text-lg font-semibold">검색 결과가 없습니다.</p>
+        <p className="mx-auto mt-2 max-w-xl text-sm leading-6 text-muted-foreground">
+          검색어와 필터가 함께 적용되어 결과가 좁아졌을 수 있습니다. 아래에서 검색어만 지우거나, 필터만 해제하거나, 다른 탐색 문장으로 이어갈 수 있습니다.
+        </p>
+      </div>
+
+      <div className="flex flex-wrap justify-center gap-2">
+        {query.trim() && (
+          <Button size="sm" variant="outline" onClick={() => onQueryChange("")}>
+            검색어만 지우기
+          </Button>
+        )}
+        {filter !== "all" && (
+          <Button size="sm" variant="outline" onClick={() => onFilterChange("all")}>
+            필터만 해제
+          </Button>
+        )}
+        <Button size="sm" variant="ghost" onClick={() => { onQueryChange(""); onFilterChange("all") }}>
+          전체 용어 보기
+        </Button>
+      </div>
+
+      <div className="grid gap-4 md:grid-cols-2">
+        <div className="flex flex-col gap-2">
+          <h2 className="text-sm font-semibold">이런 말로 다시 찾아보기</h2>
+          <div className="flex flex-wrap gap-2">
+            {starters.map((starter) => (
+              <Button key={starter.id} size="sm" variant="secondary" onClick={() => onQueryChange(starter.value)}>
+                {starter.label}
+              </Button>
+            ))}
+          </div>
+        </div>
+
+        <div className="flex flex-col gap-2">
+          <h2 className="text-sm font-semibold">대분류로 넓혀보기</h2>
+          <div className="flex flex-wrap gap-2">
+            {categoryCounts.map((item) => (
+              <Button key={item.category} size="sm" variant="outline" onClick={() => { onFilterChange(item.category); onQueryChange("") }}>
+                {categoryLabels[item.category]} {item.count}
+              </Button>
+            ))}
+          </div>
+        </div>
+      </div>
+    </section>
+  )
 }
 
 const categoryIcons: Record<TermCategory, LucideIcon> = {

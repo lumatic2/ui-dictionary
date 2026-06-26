@@ -30,7 +30,10 @@
     {
       "step": 3,
       "name": "discovery-helpers-and-no-result-recovery",
-      "status": "pending"
+      "status": "completed",
+      "started_at": "2026-06-26T16:08:00+09:00",
+      "completed_at": "2026-06-26T16:19:00+09:00",
+      "summary": "Added active search summary with explicit query/filter badges, result count, and separate clear controls. Replaced the simple empty state with recovery actions, starter queries, and category shortcuts. Verified npm run build, npm run lint with existing shadcn warnings only, desktop smoke for no-result recovery and query-only/filter-only clearing, and 390px mobile smoke with no horizontal overflow and all empty-state buttons within viewport."
     },
     {
       "step": 4,
