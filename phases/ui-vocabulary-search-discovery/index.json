@@ -14,7 +14,10 @@
     {
       "step": 1,
       "name": "autocomplete-and-suggestion-panel",
-      "status": "pending"
+      "status": "completed",
+      "started_at": "2026-06-26T15:22:00+09:00",
+      "completed_at": "2026-06-26T15:42:00+09:00",
+      "summary": "Added SearchAutocomplete with shadcn Popover/Command composition and a terms-driven search-suggestions lib. Suggestions include term names, aliases, category/group filters, and curated starter queries that resolve to term ids from terms.yml. Verified npm run build, npm run lint with existing shadcn warnings only, and Playwright smoke: '토' shows switch/toggle candidates, '옆에서' shows side-sheet/drawer candidates, ArrowDown+Enter selects 스위치, and 390px mobile panel stays within viewport without horizontal overflow."
     },
     {
       "step": 2,

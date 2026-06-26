@@ -8,10 +8,8 @@ import {
   Keyboard,
   LayoutPanelTop,
   MousePointerClick,
-  Search,
   TableProperties,
   ToggleLeft,
-  X,
   type LucideIcon,
 } from "lucide-react"
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion"
@@ -23,8 +21,8 @@ import {
   DropdownMenuItem,
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu"
-import { Input } from "@/components/ui/input"
 import { PosterView } from "@/components/poster-view"
+import { SearchAutocomplete } from "@/components/search-autocomplete"
 import { Separator } from "@/components/ui/separator"
 import { TermCard } from "@/components/term-card"
 import { TermDetail } from "@/components/term-detail"
@@ -194,25 +192,14 @@ function App() {
                   </div>
                 </div>
 
-                <div className="relative" data-print-hidden>
-                  <Search className="pointer-events-none absolute left-3 top-1/2 size-4 -translate-y-1/2 text-muted-foreground" />
-                  <Input
-                    className="h-11 pl-9 pr-10"
-                    placeholder="토글, 모달, icon..."
-                    value={query}
-                    onChange={(event) => setQuery(event.target.value)}
+                <div data-print-hidden>
+                  <SearchAutocomplete
+                    filter={filter}
+                    query={query}
+                    terms={terms}
+                    onFilterChange={setFilter}
+                    onQueryChange={setQuery}
                   />
-                  {query && (
-                    <Button
-                      aria-label="검색어 지우기"
-                      className="absolute right-1 top-1/2 -translate-y-1/2"
-                      size="icon-sm"
-                      variant="ghost"
-                      onClick={() => setQuery("")}
-                    >
-                      <X aria-hidden="true" />
-                    </Button>
-                  )}
                 </div>
 
                 <div className="flex items-center justify-between gap-2 xl:justify-end" data-print-hidden>
