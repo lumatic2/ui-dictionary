@@ -9,6 +9,7 @@ node_modules/
 .design/
 .playwright-mcp/
 **/*.tsbuildinfo
+vite-*.log
 
 # AI internal
 ROADMAP.md
