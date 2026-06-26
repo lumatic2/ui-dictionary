@@ -83,7 +83,7 @@ export const categoryGroups: TermGroup[] = [
     id: "input-text",
     category: "input",
     label: "텍스트·숫자 입력",
-    ids: ["text-field", "textarea", "textarea-autosize", "password-field", "number-input", "masked-input", "input-group", "otp-code-input", "passcode-keypad", "comment-composer", "copy-field", "api-key-field"],
+    ids: ["text-field", "textarea", "textarea-autosize", "password-field", "number-input", "spin-button", "masked-input", "input-group", "otp-code-input", "passcode-keypad", "comment-composer", "copy-field", "api-key-field"],
   },
   {
     id: "input-search-command",
@@ -95,7 +95,7 @@ export const categoryGroups: TermGroup[] = [
     id: "input-pickers",
     category: "input",
     label: "선택형 입력",
-    ids: ["select", "combobox", "date-picker", "mobile-date-picker", "date-range-picker", "time-picker", "time-wheel-picker", "wheel-picker", "color-picker", "rating-input", "tag-input", "chip-input-mobile", "contact-picker", "product-option-sheet", "coupon-field", "quantity-stepper", "otp-input", "pull-to-refresh-indicator"],
+    ids: ["select", "combobox", "date-picker", "mobile-date-picker", "date-range-picker", "time-picker", "time-wheel-picker", "wheel-picker", "color-picker", "rating-input", "tag-input", "tag-picker", "chip-input-mobile", "contact-picker", "product-option-sheet", "coupon-field", "quantity-stepper", "otp-input", "pull-to-refresh-indicator"],
   },
   {
     id: "input-file-media",
@@ -113,13 +113,13 @@ export const categoryGroups: TermGroup[] = [
     id: "selection-options",
     category: "selection",
     label: "옵션 선택",
-    ids: ["checkbox", "radio-group", "switch", "slider", "range-slider", "segmented-control", "tabs", "content-tabs", "listbox", "chip", "filter-chip", "toggle-button", "toggle-group", "multi-select", "transfer-list", "disclosure"],
+    ids: ["checkbox", "radio-group", "switch", "slider", "range-slider", "segmented-control", "tabs", "content-tabs", "listbox", "chip", "filter-chip", "inline-date-range-chip", "toggle-button", "toggle-group", "multi-select", "transfer-list", "disclosure"],
   },
   {
     id: "selection-navigation",
     category: "selection",
     label: "탐색 전환",
-    ids: ["breadcrumb", "breadcrumbs-menu", "pagination", "stepper", "page-control", "onboarding-pager", "navigation-rail", "sidebar-nav", "bottom-navigation", "tab-bar", "mobile-segmented-tabs", "anchor-nav", "back-button", "edge-swipe-back", "navigation-bar", "tree-navigation", "wizard"],
+    ids: ["breadcrumb", "breadcrumbs-menu", "pagination", "stepper", "page-control", "onboarding-pager", "navigation-rail", "sidebar-nav", "bottom-navigation", "tab-bar", "mobile-segmented-tabs", "scope-bar", "anchor-nav", "back-button", "edge-swipe-back", "navigation-bar", "tree-navigation", "wizard"],
   },
   {
     id: "selection-menus",
@@ -137,7 +137,7 @@ export const categoryGroups: TermGroup[] = [
     id: "action-buttons",
     category: "action",
     label: "버튼·아이콘 행동",
-    ids: ["button", "primary-button", "secondary-button", "destructive-button", "icon-button", "floating-action-button", "bottom-app-bar", "bottom-cta-bar", "voice-input-button", "clear-text-button", "link", "button-group", "split-button", "copy-button", "download-button", "share-button", "close-button", "overflow-button", "loading-button", "icon-toggle-button", "speed-dial"],
+    ids: ["button", "primary-button", "secondary-button", "destructive-button", "icon-button", "floating-action-button", "floating-search-button", "bottom-app-bar", "bottom-cta-bar", "voice-input-button", "clear-text-button", "link", "button-group", "split-button", "copy-button", "download-button", "share-button", "close-button", "overflow-button", "loading-button", "icon-toggle-button", "speed-dial"],
   },
   {
     id: "action-command-bars",
@@ -179,25 +179,25 @@ export const categoryGroups: TermGroup[] = [
     id: "structure-sections",
     category: "structure",
     label: "섹션·콘텐츠 구조",
-    ids: ["grid", "section", "container", "hero", "sticky-header", "sticky-footer-bar"],
+    ids: ["grid", "section", "container", "hero", "disclosure-group", "sticky-header", "sticky-footer-bar"],
   },
   {
     id: "structure-mobile",
     category: "structure",
     label: "반응형·모바일",
-    ids: ["responsive-stack", "safe-area", "mobile-status-bar", "mobile-app-bar", "large-title-header", "standard-bottom-sheet", "modal-bottom-sheet", "full-screen-dialog", "sheet-drag-handle", "scrim", "carousel-peek", "media-lightbox-mobile", "map-bottom-panel", "mobile-bottom-sheet"],
+    ids: ["responsive-stack", "safe-area", "mobile-status-bar", "mobile-app-bar", "large-title-header", "standard-bottom-sheet", "modal-bottom-sheet", "mobile-filter-bottom-sheet", "full-screen-dialog", "sheet-drag-handle", "scrim", "carousel-peek", "media-lightbox-mobile", "map-bottom-panel", "mobile-bottom-sheet"],
   },
   {
     id: "feedback-alerts-toasts",
     category: "feedback",
     label: "알림·토스트·배너",
-    ids: ["toast", "snackbar", "mobile-snackbar", "mobile-toast", "mobile-alert-dialog", "touch-ripple", "undo-toast", "toast-stack", "alert", "inline-alert", "success-toast", "error-toast", "announcement-banner", "trial-banner"],
+    ids: ["toast", "snackbar", "mobile-snackbar", "mobile-toast", "mobile-alert-dialog", "touch-ripple", "undo-toast", "toast-stack", "alert", "inline-alert", "message-bar", "success-toast", "error-toast", "announcement-banner", "trial-banner"],
   },
   {
     id: "feedback-loading-progress",
     category: "feedback",
     label: "로딩·진행",
-    ids: ["progress-bar", "spinner", "skeleton", "skeleton-table", "loading-state", "syncing-state", "saving-indicator", "setup-progress"],
+    ids: ["progress-bar", "spinner", "skeleton", "skeleton-table", "loading-state", "syncing-state", "saving-indicator", "inline-loading", "setup-progress"],
   },
   {
     id: "feedback-empty-error",
@@ -215,13 +215,13 @@ export const categoryGroups: TermGroup[] = [
     id: "feedback-status-notifications",
     category: "feedback",
     label: "상태·알림 센터",
-    ids: ["badge", "status-indicator", "status-chip", "health-indicator", "connection-status", "notification-center", "role-badge", "order-status", "checkout-progress-header", "delivery-tracker", "coach-mark"],
+    ids: ["badge", "status-indicator", "status-chip", "health-indicator", "connection-status", "notification-center", "info-label", "role-badge", "order-status", "checkout-progress-header", "delivery-tracker", "coach-mark"],
   },
   {
     id: "data-tables-lists",
     category: "data-display",
     label: "테이블·리스트",
-    ids: ["table", "data-grid", "data-table-toolbar", "column-header-menu", "column-visibility-menu", "table-density-control", "empty-table", "comparison-table", "pivot-table", "tree-table", "tree-view", "expandable-row", "detail-row", "list", "grouped-list", "nested-list", "draggable-list", "drag-to-reorder-list", "reorder-handle", "virtualized-list", "infinite-scroll", "pull-to-refresh", "selection-summary", "filter-bar", "filter-panel", "faceted-filter", "advanced-filter-builder", "query-builder", "sort-control"],
+    ids: ["table", "data-grid", "data-table-toolbar", "column-header-menu", "column-visibility-menu", "table-density-control", "empty-table", "comparison-table", "pivot-table", "tree-table", "tree-view", "expandable-row", "detail-row", "list", "structured-list", "contained-list", "grouped-list", "nested-list", "draggable-list", "drag-to-reorder-list", "reorder-handle", "virtualized-list", "infinite-scroll", "pull-to-refresh", "selection-summary", "filter-bar", "filter-panel", "faceted-filter", "advanced-filter-builder", "query-builder", "sort-control"],
   },
   {
     id: "data-cards-content",
@@ -245,7 +245,7 @@ export const categoryGroups: TermGroup[] = [
     id: "data-people-integrations",
     category: "data-display",
     label: "사람·연동",
-    ids: ["avatar", "team-member-row", "webhook-endpoint-row", "integration-card", "connection-card"],
+    ids: ["avatar", "avatar-group", "team-member-row", "webhook-endpoint-row", "integration-card", "connection-card"],
   },
   {
     id: "data-commerce-billing",

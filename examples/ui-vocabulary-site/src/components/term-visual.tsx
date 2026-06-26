@@ -314,6 +314,19 @@ function renderVisual(variant: string, label: string) {
   if (variant === "coach-mark") return <CoachMarkVisual />
   if (variant === "mobile-empty-feed") return <MobileEmptyFeedVisual />
   if (variant === "mobile-bottom-sheet") return <MobileBottomSheetVisual />
+  if (variant === "mobile-filter-bottom-sheet") return <MobileFilterBottomSheetVisual />
+  if (variant === "inline-date-range-chip") return <InlineDateRangeChipVisual />
+  if (variant === "floating-search-button") return <FloatingSearchButtonVisual />
+  if (variant === "avatar-group") return <AvatarGroupVisual />
+  if (variant === "info-label") return <InfoLabelVisual />
+  if (variant === "message-bar") return <MessageBarVisual />
+  if (variant === "spin-button") return <SpinButtonVisual />
+  if (variant === "scope-bar") return <ScopeBarVisual />
+  if (variant === "structured-list") return <StructuredListVisual />
+  if (variant === "inline-loading") return <InlineLoadingVisual />
+  if (variant === "tag-picker") return <TagPickerVisual />
+  if (variant === "disclosure-group") return <DisclosureGroupVisual />
+  if (variant === "contained-list") return <ContainedListVisual />
   if (variant === "page-layout") return <PageLayoutVisual />
   if (variant === "dashboard-grid") return <DashboardGridVisual />
   if (variant === "permission-state") return <PermissionStateVisual />
@@ -3024,6 +3037,98 @@ function MobileBottomSheetVisual() {
   const [open, setOpen] = useState(true)
 
   return <div className="relative h-32 w-28 overflow-hidden rounded-xl border bg-card p-2 text-xs"><button type="button" className="rounded border px-2 py-1" onClick={() => setOpen((value) => !value)}>필터</button>{open && <div className="absolute inset-x-0 bottom-0 rounded-t-xl border-t bg-background p-2 shadow-sm"><div className="mx-auto mb-2 h-1 w-8 rounded bg-muted-foreground/40" /><Line className="w-20" /><Line className="mt-2 w-16" /></div>}</div>
+}
+
+function MobileFilterBottomSheetVisual() {
+  const [applied, setApplied] = useState(false)
+
+  return (
+    <PhoneFrame>
+      <MobileScreenLines />
+      <div className="absolute inset-x-1 bottom-1 rounded-t-xl border bg-background p-2 shadow-sm">
+        <div className="mx-auto mb-2 h-0.5 w-7 rounded bg-muted-foreground/50" />
+        <div className="mb-2 flex items-center justify-between">
+          <span className="font-medium">필터</span>
+          <button type="button" className="text-primary" onClick={() => setApplied(false)}>초기화</button>
+        </div>
+        {["가격", "상태"].map((item) => <button key={item} type="button" className="mb-1 flex w-full items-center gap-2" onClick={() => setApplied(true)}><span className={cn("size-3 rounded border", applied && "bg-primary")} />{item}</button>)}
+        <button type="button" className="mt-1 w-full rounded bg-primary py-1 text-primary-foreground" onClick={() => setApplied(true)}>적용</button>
+      </div>
+    </PhoneFrame>
+  )
+}
+
+function InlineDateRangeChipVisual() {
+  const [range, setRange] = useState("지난 7일")
+
+  return <button type="button" className="inline-flex items-center gap-2 rounded-full border bg-card px-3 py-2 text-xs shadow-sm" onClick={() => setRange((value) => value === "지난 7일" ? "이번 달" : "지난 7일")}><CalendarDays aria-hidden="true" className="size-4 text-primary" /><span>{range}</span><X aria-hidden="true" className="size-3 text-muted-foreground" /></button>
+}
+
+function FloatingSearchButtonVisual() {
+  const [open, setOpen] = useState(false)
+
+  return <div className="relative h-28 w-48 rounded-md border bg-card p-2 text-xs"><MobileScreenLines />{open && <div className="absolute left-2 right-2 top-3 flex items-center gap-1 rounded-full border bg-background px-2 py-1 shadow-sm"><Search aria-hidden="true" /><span>검색</span></div>}<button type="button" className="absolute bottom-3 right-3 flex size-10 items-center justify-center rounded-full bg-primary text-primary-foreground shadow-md" onClick={() => setOpen((value) => !value)}><Search aria-hidden="true" /></button></div>
+}
+
+function AvatarGroupVisual() {
+  const [count, setCount] = useState(4)
+
+  return <button type="button" className="flex items-center rounded-md border bg-card px-3 py-3 text-xs" onClick={() => setCount((value) => value === 4 ? 6 : 4)}>{["A", "B", "C"].map((item, index) => <span key={item} className="flex size-8 items-center justify-center rounded-full border-2 border-background bg-primary text-primary-foreground" style={{ marginLeft: index === 0 ? 0 : -8 }}>{item}</span>)}<span className="ml-1 rounded-full bg-muted px-2 py-1">+{count - 3}</span></button>
+}
+
+function InfoLabelVisual() {
+  const [open, setOpen] = useState(true)
+
+  return <div className="relative w-52 text-xs"><button type="button" className="flex items-center gap-1 font-medium" onClick={() => setOpen((value) => !value)}>API rate limit<Info aria-hidden="true" className="size-4 text-primary" /></button>{open && <div className="mt-2 rounded-md border bg-card p-2 shadow-sm">분당 요청 가능한 횟수</div>}<Line className="mt-3 w-36" /></div>
+}
+
+function MessageBarVisual() {
+  const [visible, setVisible] = useState(true)
+
+  if (!visible) return <button type="button" className="rounded border px-3 py-2 text-xs" onClick={() => setVisible(true)}>메시지 보기</button>
+  return <div className="flex w-60 items-center gap-2 rounded-md border bg-card px-3 py-2 text-xs shadow-sm"><AlertTriangle aria-hidden="true" className="size-4 text-primary" /><span className="min-w-0 flex-1">동기화가 지연되고 있습니다.</span><button type="button" onClick={() => setVisible(false)}><X aria-hidden="true" /></button></div>
+}
+
+function SpinButtonVisual() {
+  const [value, setValue] = useState(3)
+
+  return <div className="inline-flex items-center overflow-hidden rounded-md border bg-card text-sm"><button type="button" className="px-3 py-2" onClick={() => setValue((current) => Math.max(0, current - 1))}>-</button><input aria-label="스핀 버튼 예시" className="w-12 border-x bg-background py-2 text-center outline-none" value={value} readOnly /><button type="button" className="px-3 py-2" onClick={() => setValue((current) => current + 1)}>+</button></div>
+}
+
+function ScopeBarVisual() {
+  const [active, setActive] = useState("전체")
+
+  return <div className="flex rounded-md border bg-card p-1 text-xs">{["전체", "파일", "사람"].map((item) => <button key={item} type="button" className={cn("rounded px-3 py-1", active === item ? "bg-primary text-primary-foreground" : "text-muted-foreground")} onClick={() => setActive(item)}>{item}</button>)}</div>
+}
+
+function StructuredListVisual() {
+  const [active, setActive] = useState("Owner")
+
+  return <Chrome className="w-60 overflow-hidden p-0 text-xs">{["Owner", "Status", "Updated"].map((item) => <button key={item} type="button" className={cn("grid w-full grid-cols-[70px_1fr] gap-2 border-b px-3 py-2 text-left last:border-b-0", active === item && "bg-primary/10")} onClick={() => setActive(item)}><span className="font-medium">{item}</span><Line className="w-24" /></button>)}</Chrome>
+}
+
+function InlineLoadingVisual() {
+  const [done, setDone] = useState(false)
+
+  return <button type="button" className="inline-flex items-center gap-2 rounded-md border bg-card px-3 py-2 text-xs" onClick={() => setDone((value) => !value)}>{done ? <CheckCircle2 aria-hidden="true" className="size-4 text-primary" /> : <LoaderCircle aria-hidden="true" className="size-4 animate-spin text-primary" />}<span>{done ? "저장됨" : "저장 중"}</span></button>
+}
+
+function TagPickerVisual() {
+  const [tags, setTags] = useState(["React", "UI"])
+
+  return <Chrome className="w-56 p-2 text-xs"><div className="mb-2 flex flex-wrap gap-1">{tags.map((tag) => <button key={tag} type="button" className="rounded-full bg-primary px-2 py-1 text-primary-foreground" onClick={() => setTags((current) => current.filter((item) => item !== tag))}>{tag} ×</button>)}</div><div className="flex items-center gap-1 rounded border px-2 py-1"><Search aria-hidden="true" className="size-3" /><button type="button" className="text-muted-foreground" onClick={() => setTags((current) => [...current, `Tag${current.length + 1}`])}>태그 추가</button></div></Chrome>
+}
+
+function DisclosureGroupVisual() {
+  const [open, setOpen] = useState(true)
+
+  return <Chrome className="w-56 p-2 text-xs"><button type="button" className="flex w-full items-center justify-between rounded px-2 py-1 text-left font-medium" onClick={() => setOpen((value) => !value)}>고급 설정<ChevronDown aria-hidden="true" className={cn(!open && "-rotate-90")} /></button>{open && <div className="mt-1 rounded bg-muted p-2"><Line className="w-32" /><Line className="mt-2 w-24" /></div>}</Chrome>
+}
+
+function ContainedListVisual() {
+  const [selected, setSelected] = useState(0)
+
+  return <Chrome className="w-56 overflow-hidden p-0 text-xs">{["알림", "보안", "결제"].map((item, index) => <button key={item} type="button" className={cn("flex w-full items-center justify-between border-b px-3 py-2 text-left last:border-b-0", selected === index && "bg-primary/10")} onClick={() => setSelected(index)}><span>{item}</span><ChevronRight aria-hidden="true" className="size-3" /></button>)}</Chrome>
 }
 
 function PageLayoutVisual() {
