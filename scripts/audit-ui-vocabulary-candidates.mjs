@@ -56,6 +56,9 @@ const existingKoNames = new Map(existing.map((term) => [normalize(term.ko?.name)
 const existingEnNames = new Map(existing.map((term) => [normalize(term.en?.name), term.id]))
 const existingAssetVariants = new Map(existing.map((term) => [term.asset?.variant, term.id]))
 const seenCandidateIds = new Set()
+const seenCandidateKoNames = new Map()
+const seenCandidateEnNames = new Map()
+const seenCandidateAssetVariants = new Map()
 
 for (const [index, candidate] of inbox.entries()) {
   const label = candidate?.id ?? `candidate #${index + 1}`
@@ -77,6 +80,10 @@ for (const [index, candidate] of inbox.entries()) {
     errors.push(`${label}: duplicate id inside inbox.yml`)
   }
   seenCandidateIds.add(candidate.id)
+
+  checkCandidateDuplicate(seenCandidateKoNames, normalize(candidate.ko?.name), candidate.id, "Korean name", errors)
+  checkCandidateDuplicate(seenCandidateEnNames, normalize(candidate.en?.name), candidate.id, "English name", errors)
+  checkCandidateDuplicate(seenCandidateAssetVariants, candidate.asset?.variant, candidate.id, "asset.variant", warnings)
 
   if (existingIds.has(candidate.id)) {
     errors.push(`${label}: id already exists in terms.yml`)
@@ -173,6 +180,20 @@ function checkList(label, field, value, target) {
   if (!Array.isArray(value) || value.length === 0) {
     target.push(`${label}: ${field} must be a non-empty list`)
   }
+}
+
+function checkCandidateDuplicate(seen, value, id, field, target) {
+  if (!value) {
+    return
+  }
+
+  const existingId = seen.get(value)
+  if (existingId) {
+    target.push(`${id}: duplicate ${field} inside inbox.yml; already used by ${existingId}`)
+    return
+  }
+
+  seen.set(value, id)
 }
 
 function findAliasOverlap(candidate, existingTerms) {
