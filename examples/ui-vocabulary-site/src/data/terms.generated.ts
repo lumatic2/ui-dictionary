@@ -11238,6 +11238,640 @@ export const terms = [
     "confidence": "high"
   },
   {
+    "id": "pull-to-refresh-indicator",
+    "status": "draft",
+    "category": "input",
+    "ko": {
+      "name": "당겨서 새로고침 표시",
+      "aliases": [
+        "pull to refresh indicator",
+        "끌어내려 새로고침",
+        "아래로 당기면 새로고침",
+        "새로고침 스피너"
+      ]
+    },
+    "en": {
+      "name": "Pull-to-refresh indicator",
+      "aliases": [
+        "Refresh spinner",
+        "Pull refresh indicator"
+      ]
+    },
+    "one_liner": "사용자가 목록을 아래로 당겼을 때 새로고침 가능 상태와 진행을 보여주는 표시.",
+    "description": "모바일 목록 상단에서 당기는 거리와 새로고침 진행 상태를 스피너나 아이콘으로 알려준다.",
+    "visual_anatomy": [
+      "top refresh area",
+      "spinner",
+      "pulled offset",
+      "list content below"
+    ],
+    "when_to_use": [
+      "모바일 피드나 목록을 최신 상태로 갱신할 때",
+      "사용자가 제스처로 새로고침할 수 있음을 보여줄 때"
+    ],
+    "anti_use": [
+      "데스크톱 데이터 새로고침에는 명시적 refresh button이 더 낫다",
+      "자동 갱신 중인 화면에 중복으로 넣지 않는다"
+    ],
+    "prompt_phrases": [
+      "목록을 끌어내리면 pull-to-refresh indicator가 보이고 새로고침되게 해줘"
+    ],
+    "asset": {
+      "kind": "mini-mock",
+      "variant": "pull-to-refresh-indicator",
+      "props": {
+        "pulled": true
+      }
+    },
+    "sources": [
+      {
+        "source_id": "apple-hig-components",
+        "note": "refresh content gesture in scroll views"
+      }
+    ],
+    "confidence": "high"
+  },
+  {
+    "id": "swipe-to-delete",
+    "status": "draft",
+    "category": "action",
+    "ko": {
+      "name": "밀어서 삭제",
+      "aliases": [
+        "swipe to delete",
+        "옆으로 밀어서 삭제",
+        "스와이프 삭제",
+        "밀면 삭제 버튼"
+      ]
+    },
+    "en": {
+      "name": "Swipe to delete",
+      "aliases": [
+        "Swipe delete",
+        "Delete swipe action"
+      ]
+    },
+    "one_liner": "모바일 리스트 항목을 옆으로 밀어 삭제 명령을 드러내는 패턴.",
+    "description": "항목 전체를 열지 않고 목록 안에서 빠르게 삭제할 수 있도록 빨간 삭제 영역을 노출한다.",
+    "visual_anatomy": [
+      "list row",
+      "horizontal offset",
+      "revealed delete action",
+      "destructive color"
+    ],
+    "when_to_use": [
+      "모바일 목록에서 항목별 삭제를 빠르게 제공할 때"
+    ],
+    "anti_use": [
+      "삭제가 위험하거나 복구 불가능하면 확인 dialog나 undo snackbar를 함께 고려한다"
+    ],
+    "prompt_phrases": [
+      "리스트 항목을 옆으로 밀어서 삭제 버튼이 드러나는 swipe to delete를 넣어줘"
+    ],
+    "asset": {
+      "kind": "mini-mock",
+      "variant": "swipe-to-delete",
+      "props": {
+        "revealed": true
+      }
+    },
+    "sources": [
+      {
+        "source_id": "apple-hig-components",
+        "note": "swipe actions on list rows"
+      }
+    ],
+    "confidence": "high"
+  },
+  {
+    "id": "swipe-action-row",
+    "status": "draft",
+    "category": "action",
+    "ko": {
+      "name": "스와이프 액션 행",
+      "aliases": [
+        "swipe action row",
+        "옆으로 미는 행",
+        "좌우 스와이프 명령",
+        "리스트 스와이프 액션"
+      ]
+    },
+    "en": {
+      "name": "Swipe action row",
+      "aliases": [
+        "Swipe row action",
+        "Leading trailing swipe action"
+      ]
+    },
+    "one_liner": "리스트 행을 좌우로 밀어 보관, 완료, 삭제 같은 명령을 드러내는 모바일 행.",
+    "description": "한 방향 삭제뿐 아니라 양쪽 방향에 서로 다른 명령을 숨겨두는 목록 상호작용이다.",
+    "visual_anatomy": [
+      "row surface",
+      "leading action",
+      "trailing action",
+      "horizontal reveal",
+      "action icons"
+    ],
+    "when_to_use": [
+      "목록 항목마다 빠른 보조 명령이 두세 개 있을 때"
+    ],
+    "anti_use": [
+      "명령을 발견하기 어려운 사용자에게는 더보기 메뉴나 명시 버튼을 함께 제공한다"
+    ],
+    "prompt_phrases": [
+      "메시지 행을 좌우로 밀면 완료와 삭제 액션이 드러나는 swipe action row를 만들어줘"
+    ],
+    "asset": {
+      "kind": "mini-mock",
+      "variant": "swipe-action-row",
+      "props": {
+        "side": "right"
+      }
+    },
+    "sources": [
+      {
+        "source_id": "apple-hig-components",
+        "note": "leading and trailing swipe actions"
+      }
+    ],
+    "confidence": "high"
+  },
+  {
+    "id": "long-press-menu",
+    "status": "draft",
+    "category": "selection",
+    "ko": {
+      "name": "길게 누르기 메뉴",
+      "aliases": [
+        "long press menu",
+        "롱프레스 메뉴",
+        "길게 누르면 메뉴",
+        "터치 컨텍스트 메뉴"
+      ]
+    },
+    "en": {
+      "name": "Long press menu",
+      "aliases": [
+        "Touch context menu",
+        "Press-and-hold menu"
+      ]
+    },
+    "one_liner": "모바일에서 항목을 길게 눌렀을 때 나타나는 문맥 명령 메뉴.",
+    "description": "마우스 우클릭이 없는 터치 환경에서 복사, 공유, 삭제 같은 보조 명령을 숨겨둘 때 쓴다.",
+    "visual_anatomy": [
+      "pressed item",
+      "floating context menu",
+      "command rows",
+      "touch anchor"
+    ],
+    "when_to_use": [
+      "주요 화면을 복잡하게 만들지 않고 항목별 보조 행동을 제공할 때"
+    ],
+    "anti_use": [
+      "핵심 행동을 long press 안에만 숨기면 발견성이 낮다"
+    ],
+    "prompt_phrases": [
+      "카드를 길게 누르면 복사 공유 삭제가 나오는 long press menu를 넣어줘"
+    ],
+    "asset": {
+      "kind": "mini-mock",
+      "variant": "long-press-menu",
+      "props": {
+        "open": true
+      }
+    },
+    "sources": [
+      {
+        "source_id": "apple-hig-components",
+        "note": "touch and hold contextual actions"
+      }
+    ],
+    "confidence": "high"
+  },
+  {
+    "id": "drag-to-reorder-list",
+    "status": "draft",
+    "category": "data-display",
+    "ko": {
+      "name": "드래그 순서 변경 목록",
+      "aliases": [
+        "drag to reorder list",
+        "끌어서 순서 변경",
+        "모바일 순서 바꾸기",
+        "reorder list"
+      ]
+    },
+    "en": {
+      "name": "Drag-to-reorder list",
+      "aliases": [
+        "Reorderable list",
+        "Drag reorder list"
+      ]
+    },
+    "one_liner": "모바일 목록 항목을 길게 잡고 끌어 순서를 바꾸는 리스트 패턴.",
+    "description": "사용자가 우선순위, 메뉴 순서, 체크리스트 순서를 직접 재배치할 수 있게 한다.",
+    "visual_anatomy": [
+      "list rows",
+      "grab handles",
+      "lifted row",
+      "reordered position"
+    ],
+    "when_to_use": [
+      "사용자 정의 순서가 중요한 목록에서",
+      "항목 수가 적거나 중간 정도일 때"
+    ],
+    "anti_use": [
+      "정렬 기준이 명확한 데이터 테이블에는 sort control이 더 낫다"
+    ],
+    "prompt_phrases": [
+      "모바일 체크리스트를 길게 잡고 끌어서 순서 변경할 수 있게 해줘"
+    ],
+    "asset": {
+      "kind": "mini-mock",
+      "variant": "drag-to-reorder-list",
+      "props": {
+        "moved": true
+      }
+    },
+    "sources": [
+      {
+        "source_id": "apple-hig-components",
+        "note": "reordering list items through drag interactions"
+      }
+    ],
+    "confidence": "high"
+  },
+  {
+    "id": "grab-handle",
+    "status": "draft",
+    "category": "action",
+    "ko": {
+      "name": "잡기 핸들",
+      "aliases": [
+        "grab handle",
+        "드래그 핸들",
+        "잡고 끄는 손잡이",
+        "이동 핸들"
+      ]
+    },
+    "en": {
+      "name": "Grab handle",
+      "aliases": [
+        "Drag handle",
+        "Move handle"
+      ]
+    },
+    "one_liner": "항목이나 패널을 잡고 움직일 수 있음을 보여주는 작은 손잡이 affordance.",
+    "description": "점, 막대, 그립 아이콘으로 드래그 가능한 영역을 명확히 표시한다.",
+    "visual_anatomy": [
+      "grip dots or bars",
+      "draggable item",
+      "active drag state"
+    ],
+    "when_to_use": [
+      "항목 이동이나 패널 크기 변경처럼 직접 조작이 가능한 곳에서"
+    ],
+    "anti_use": [
+      "클릭만 가능한 요소에 장식처럼 붙이지 않는다",
+      "sheet-drag-handle과 용도를 구분한다"
+    ],
+    "prompt_phrases": [
+      "각 리스트 항목 왼쪽에 잡고 끌 수 있는 grab handle을 넣어줘"
+    ],
+    "asset": {
+      "kind": "mini-mock",
+      "variant": "grab-handle",
+      "props": {
+        "active": false
+      }
+    },
+    "sources": [
+      {
+        "source_id": "apple-hig-components",
+        "note": "drag affordances for reordering and direct manipulation"
+      }
+    ],
+    "confidence": "medium"
+  },
+  {
+    "id": "page-control",
+    "status": "draft",
+    "category": "selection",
+    "ko": {
+      "name": "페이지 컨트롤",
+      "aliases": [
+        "page control",
+        "페이지 점",
+        "인디케이터 점",
+        "온보딩 점"
+      ]
+    },
+    "en": {
+      "name": "Page control",
+      "aliases": [
+        "Page indicator dots",
+        "Pagination dots"
+      ]
+    },
+    "one_liner": "좌우로 넘기는 모바일 화면에서 현재 페이지 위치를 점으로 보여주는 컨트롤.",
+    "description": "온보딩, 스토리, 캐러셀처럼 짧은 페이지 묶음에서 사용자가 현재 위치를 알게 한다.",
+    "visual_anatomy": [
+      "dot indicators",
+      "active dot",
+      "page count",
+      "swipeable page"
+    ],
+    "when_to_use": [
+      "모바일에서 2-5개 정도의 페이지나 카드 묶음을 넘길 때"
+    ],
+    "anti_use": [
+      "페이지 수가 많거나 임의 접근이 중요하면 pagination이나 tabs가 더 명확하다"
+    ],
+    "prompt_phrases": [
+      "온보딩 화면 아래에 현재 위치를 보여주는 page control 점을 넣어줘"
+    ],
+    "asset": {
+      "kind": "mini-mock",
+      "variant": "page-control",
+      "props": {
+        "pages": 4
+      }
+    },
+    "sources": [
+      {
+        "source_id": "apple-hig-components",
+        "note": "page controls indicate current page in a sequence"
+      }
+    ],
+    "confidence": "high"
+  },
+  {
+    "id": "carousel-peek",
+    "status": "draft",
+    "category": "structure",
+    "ko": {
+      "name": "피크 캐러셀",
+      "aliases": [
+        "carousel peek",
+        "옆 카드 살짝 보이기",
+        "카드 피크",
+        "다음 카드 보임"
+      ]
+    },
+    "en": {
+      "name": "Carousel peek",
+      "aliases": [
+        "Peeking carousel",
+        "Partial next card"
+      ]
+    },
+    "one_liner": "다음 카드가 화면 가장자리에 살짝 보여 좌우 스와이프 가능함을 암시하는 모바일 캐러셀.",
+    "description": "사용자가 가로 스크롤 가능한 콘텐츠임을 직관적으로 알아차리게 하는 시각적 힌트다.",
+    "visual_anatomy": [
+      "active card",
+      "partially visible next card",
+      "horizontal overflow",
+      "swipe direction cue"
+    ],
+    "when_to_use": [
+      "모바일에서 카드 목록이 가로로 더 있음을 보여주고 싶을 때"
+    ],
+    "anti_use": [
+      "정확한 비교가 필요한 표나 긴 텍스트 카드에는 부적합하다"
+    ],
+    "prompt_phrases": [
+      "다음 카드가 오른쪽에 살짝 보이는 carousel peek 레이아웃으로 만들어줘"
+    ],
+    "asset": {
+      "kind": "mini-mock",
+      "variant": "carousel-peek",
+      "props": {
+        "peeking": true
+      }
+    },
+    "sources": [
+      {
+        "source_id": "material-m3-components",
+        "note": "carousel layouts and scroll affordance"
+      }
+    ],
+    "confidence": "medium"
+  },
+  {
+    "id": "edge-swipe-back",
+    "status": "draft",
+    "category": "selection",
+    "ko": {
+      "name": "가장자리 스와이프 뒤로가기",
+      "aliases": [
+        "edge swipe back",
+        "화면 왼쪽에서 밀어 뒤로가기",
+        "스와이프 백",
+        "뒤로가기 제스처"
+      ]
+    },
+    "en": {
+      "name": "Edge swipe back",
+      "aliases": [
+        "Swipe back gesture",
+        "Back edge gesture"
+      ]
+    },
+    "one_liner": "화면 가장자리에서 안쪽으로 밀어 이전 화면으로 돌아가는 모바일 내비게이션 제스처.",
+    "description": "뒤로가기 버튼 없이도 화면 계층을 자연스럽게 빠져나가게 하는 플랫폼 관습이다.",
+    "visual_anatomy": [
+      "screen edge",
+      "back chevron cue",
+      "shifted page surface",
+      "previous screen hint"
+    ],
+    "when_to_use": [
+      "모바일 앱의 상세 화면에서 이전 화면으로 돌아가는 흐름을 설명할 때"
+    ],
+    "anti_use": [
+      "앱 내부 가로 스와이프와 충돌하지 않게 한다",
+      "중요한 닫기 행동은 명시 버튼도 고려한다"
+    ],
+    "prompt_phrases": [
+      "상세 화면에서 왼쪽 가장자리를 밀면 뒤로가는 edge swipe back 제스처를 고려해줘"
+    ],
+    "asset": {
+      "kind": "mini-mock",
+      "variant": "edge-swipe-back",
+      "props": {
+        "offset": true
+      }
+    },
+    "sources": [
+      {
+        "source_id": "apple-hig-components",
+        "note": "edge swipe navigation gesture"
+      }
+    ],
+    "confidence": "medium"
+  },
+  {
+    "id": "pinch-zoom-viewer",
+    "status": "draft",
+    "category": "action",
+    "ko": {
+      "name": "핀치 줌 뷰어",
+      "aliases": [
+        "pinch zoom viewer",
+        "두 손가락 확대",
+        "이미지 확대 뷰어",
+        "지도 확대"
+      ]
+    },
+    "en": {
+      "name": "Pinch zoom viewer",
+      "aliases": [
+        "Pinch-to-zoom viewer",
+        "Zoomable viewer"
+      ]
+    },
+    "one_liner": "이미지나 지도 같은 콘텐츠를 두 손가락 제스처로 확대/축소하는 모바일 뷰어.",
+    "description": "작은 화면에서 세부 내용을 살펴볼 수 있도록 콘텐츠 자체를 확대 가능한 표면으로 만든다.",
+    "visual_anatomy": [
+      "zoomable surface",
+      "image or map content",
+      "zoom scale",
+      "pinch gesture affordance"
+    ],
+    "when_to_use": [
+      "이미지",
+      "지도",
+      "문서처럼 세부 탐색이 필요한 콘텐츠에서"
+    ],
+    "anti_use": [
+      "일반 카드나 버튼 크기 문제를 pinch zoom으로 해결하지 않는다"
+    ],
+    "prompt_phrases": [
+      "상품 이미지를 두 손가락으로 확대할 수 있는 pinch zoom viewer로 보여줘"
+    ],
+    "asset": {
+      "kind": "mini-mock",
+      "variant": "pinch-zoom-viewer",
+      "props": {
+        "zoom": 2
+      }
+    },
+    "sources": [
+      {
+        "source_id": "apple-hig-components",
+        "note": "pinch gesture for zooming content"
+      }
+    ],
+    "confidence": "high"
+  },
+  {
+    "id": "scrim",
+    "status": "draft",
+    "category": "structure",
+    "ko": {
+      "name": "스크림",
+      "aliases": [
+        "scrim",
+        "dim overlay",
+        "어두운 배경",
+        "모달 배경막"
+      ]
+    },
+    "en": {
+      "name": "Scrim",
+      "aliases": [
+        "Dim overlay",
+        "Modal overlay",
+        "Backdrop"
+      ]
+    },
+    "one_liner": "모달이나 시트 뒤의 배경을 어둡게 덮어 현재 레이어에 집중시키는 반투명 막.",
+    "description": "뒤쪽 화면이 비활성화되었고 앞쪽 dialog나 sheet가 현재 작업 대상임을 알려준다.",
+    "visual_anatomy": [
+      "translucent overlay",
+      "underlying content",
+      "foreground modal or sheet"
+    ],
+    "when_to_use": [
+      "모달 dialog",
+      "modal bottom sheet",
+      "drawer처럼 배경 조작을 막아야 할 때"
+    ],
+    "anti_use": [
+      "단순 hover 설명이나 작은 non-modal popover에는 과할 수 있다"
+    ],
+    "prompt_phrases": [
+      "모달이 열릴 때 뒤 화면에 어두운 scrim을 깔아줘"
+    ],
+    "asset": {
+      "kind": "mini-mock",
+      "variant": "scrim",
+      "props": {
+        "visible": true
+      }
+    },
+    "sources": [
+      {
+        "source_id": "material-m3-components",
+        "note": "modal surfaces use scrims to separate layers"
+      }
+    ],
+    "confidence": "high"
+  },
+  {
+    "id": "touch-ripple",
+    "status": "draft",
+    "category": "feedback",
+    "ko": {
+      "name": "터치 리플",
+      "aliases": [
+        "touch ripple",
+        "터치 피드백",
+        "누름 효과",
+        "ripple effect"
+      ]
+    },
+    "en": {
+      "name": "Touch ripple",
+      "aliases": [
+        "Ripple effect",
+        "Touch feedback"
+      ]
+    },
+    "one_liner": "모바일에서 버튼이나 항목을 눌렀음을 물결처럼 보여주는 즉각적인 터치 피드백.",
+    "description": "사용자의 탭이 인식되었음을 빠르게 알려 주어 터치 인터페이스의 반응성을 높인다.",
+    "visual_anatomy": [
+      "pressed control",
+      "expanding ripple",
+      "highlight layer",
+      "touch target"
+    ],
+    "when_to_use": [
+      "모바일의 tappable item이나 icon button에 즉각 반응을 보여줄 때"
+    ],
+    "anti_use": [
+      "애니메이션이 과하면 피로감을 준다",
+      "비활성 요소에는 적용하지 않는다"
+    ],
+    "prompt_phrases": [
+      "아이콘 버튼을 누르면 touch ripple 피드백이 보이게 해줘"
+    ],
+    "asset": {
+      "kind": "mini-mock",
+      "variant": "touch-ripple",
+      "props": {
+        "pressed": true
+      }
+    },
+    "sources": [
+      {
+        "source_id": "material-m3-components",
+        "note": "ripple as touch state feedback"
+      }
+    ],
+    "confidence": "medium"
+  },
+  {
     "id": "page-layout",
     "status": "draft",
     "category": "structure",

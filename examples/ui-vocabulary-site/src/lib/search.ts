@@ -95,7 +95,7 @@ export const categoryGroups: TermGroup[] = [
     id: "input-pickers",
     category: "input",
     label: "선택형 입력",
-    ids: ["select", "combobox", "date-picker", "date-range-picker", "time-picker", "color-picker", "rating-input", "tag-input", "coupon-field", "quantity-stepper", "otp-input"],
+    ids: ["select", "combobox", "date-picker", "date-range-picker", "time-picker", "color-picker", "rating-input", "tag-input", "coupon-field", "quantity-stepper", "otp-input", "pull-to-refresh-indicator"],
   },
   {
     id: "input-file-media",
@@ -119,13 +119,13 @@ export const categoryGroups: TermGroup[] = [
     id: "selection-navigation",
     category: "selection",
     label: "탐색 전환",
-    ids: ["breadcrumb", "breadcrumbs-menu", "pagination", "stepper", "navigation-rail", "sidebar-nav", "bottom-navigation", "tab-bar", "mobile-segmented-tabs", "anchor-nav", "back-button", "navigation-bar", "tree-navigation", "wizard"],
+    ids: ["breadcrumb", "breadcrumbs-menu", "pagination", "stepper", "page-control", "navigation-rail", "sidebar-nav", "bottom-navigation", "tab-bar", "mobile-segmented-tabs", "anchor-nav", "back-button", "edge-swipe-back", "navigation-bar", "tree-navigation", "wizard"],
   },
   {
     id: "selection-menus",
     category: "selection",
     label: "메뉴·드롭다운",
-    ids: ["dropdown-menu", "mega-menu", "context-menu", "menu-bar", "mobile-popover-menu", "saved-view-tabs"],
+    ids: ["dropdown-menu", "mega-menu", "context-menu", "menu-bar", "mobile-popover-menu", "long-press-menu", "saved-view-tabs"],
   },
   {
     id: "selection-context",
@@ -149,13 +149,13 @@ export const categoryGroups: TermGroup[] = [
     id: "action-bulk-danger",
     category: "action",
     label: "대량·위험 작업",
-    ids: ["bulk-action-bar", "row-selection", "swipe-action", "confirmation-dialog", "destructive-confirmation"],
+    ids: ["bulk-action-bar", "row-selection", "swipe-action", "swipe-to-delete", "swipe-action-row", "grab-handle", "confirmation-dialog", "destructive-confirmation"],
   },
   {
     id: "action-editor-media",
     category: "action",
     label: "편집·미디어 제어",
-    ids: ["scrubber", "video-player-controls", "audio-player-controls", "cropper"],
+    ids: ["scrubber", "video-player-controls", "audio-player-controls", "cropper", "pinch-zoom-viewer"],
   },
   {
     id: "structure-app-layout",
@@ -185,13 +185,13 @@ export const categoryGroups: TermGroup[] = [
     id: "structure-mobile",
     category: "structure",
     label: "반응형·모바일",
-    ids: ["responsive-stack", "safe-area", "mobile-status-bar", "mobile-app-bar", "large-title-header", "standard-bottom-sheet", "modal-bottom-sheet", "full-screen-dialog", "sheet-drag-handle", "mobile-bottom-sheet"],
+    ids: ["responsive-stack", "safe-area", "mobile-status-bar", "mobile-app-bar", "large-title-header", "standard-bottom-sheet", "modal-bottom-sheet", "full-screen-dialog", "sheet-drag-handle", "scrim", "carousel-peek", "mobile-bottom-sheet"],
   },
   {
     id: "feedback-alerts-toasts",
     category: "feedback",
     label: "알림·토스트·배너",
-    ids: ["toast", "snackbar", "mobile-snackbar", "mobile-toast", "mobile-alert-dialog", "undo-toast", "toast-stack", "alert", "inline-alert", "success-toast", "error-toast", "announcement-banner", "trial-banner"],
+    ids: ["toast", "snackbar", "mobile-snackbar", "mobile-toast", "mobile-alert-dialog", "touch-ripple", "undo-toast", "toast-stack", "alert", "inline-alert", "success-toast", "error-toast", "announcement-banner", "trial-banner"],
   },
   {
     id: "feedback-loading-progress",
@@ -221,7 +221,7 @@ export const categoryGroups: TermGroup[] = [
     id: "data-tables-lists",
     category: "data-display",
     label: "테이블·리스트",
-    ids: ["table", "data-grid", "data-table-toolbar", "column-header-menu", "column-visibility-menu", "table-density-control", "empty-table", "comparison-table", "pivot-table", "tree-table", "tree-view", "expandable-row", "detail-row", "list", "grouped-list", "nested-list", "draggable-list", "reorder-handle", "virtualized-list", "infinite-scroll", "pull-to-refresh", "selection-summary", "filter-bar", "filter-panel", "faceted-filter", "advanced-filter-builder", "query-builder", "sort-control"],
+    ids: ["table", "data-grid", "data-table-toolbar", "column-header-menu", "column-visibility-menu", "table-density-control", "empty-table", "comparison-table", "pivot-table", "tree-table", "tree-view", "expandable-row", "detail-row", "list", "grouped-list", "nested-list", "draggable-list", "drag-to-reorder-list", "reorder-handle", "virtualized-list", "infinite-scroll", "pull-to-refresh", "selection-summary", "filter-bar", "filter-panel", "faceted-filter", "advanced-filter-builder", "query-builder", "sort-control"],
   },
   {
     id: "data-cards-content",

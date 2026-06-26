@@ -64,6 +64,21 @@ Not duplicated because existing entries already cover the core term:
 - `mobile-popover-menu`
 - `sheet-drag-handle`
 
+## Promoted In 2026-06-26 Step 3
+
+- `pull-to-refresh-indicator`
+- `swipe-to-delete`
+- `swipe-action-row`
+- `long-press-menu`
+- `drag-to-reorder-list`
+- `grab-handle`
+- `page-control`
+- `carousel-peek`
+- `edge-swipe-back`
+- `pinch-zoom-viewer`
+- `scrim`
+- `touch-ripple`
+
 ### Batch 1 — App Shell And Navigation
 
 - `phone-frame`: generic mobile viewport frame for visual examples.

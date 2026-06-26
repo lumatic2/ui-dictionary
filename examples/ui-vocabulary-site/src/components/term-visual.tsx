@@ -273,6 +273,18 @@ function renderVisual(variant: string, label: string) {
   if (variant === "mobile-alert-dialog") return <MobileAlertDialogVisual />
   if (variant === "mobile-popover-menu") return <MobilePopoverMenuVisual />
   if (variant === "sheet-drag-handle") return <SheetDragHandleVisual />
+  if (variant === "pull-to-refresh-indicator") return <PullToRefreshIndicatorVisual />
+  if (variant === "swipe-to-delete") return <SwipeToDeleteVisual />
+  if (variant === "swipe-action-row") return <SwipeActionRowVisual />
+  if (variant === "long-press-menu") return <LongPressMenuVisual />
+  if (variant === "drag-to-reorder-list") return <DragToReorderListVisual />
+  if (variant === "grab-handle") return <GrabHandleVisual />
+  if (variant === "page-control") return <PageControlVisual />
+  if (variant === "carousel-peek") return <CarouselPeekVisual />
+  if (variant === "edge-swipe-back") return <EdgeSwipeBackVisual />
+  if (variant === "pinch-zoom-viewer") return <PinchZoomViewerVisual />
+  if (variant === "scrim") return <ScrimVisual />
+  if (variant === "touch-ripple") return <TouchRippleVisual />
   if (variant === "mobile-bottom-sheet") return <MobileBottomSheetVisual />
   if (variant === "page-layout") return <PageLayoutVisual />
   if (variant === "dashboard-grid") return <DashboardGridVisual />
@@ -2353,6 +2365,195 @@ function SheetDragHandleVisual() {
         <Line className="w-12" />
         {expanded && <Line className="mt-2 w-10" />}
       </button>
+    </PhoneFrame>
+  )
+}
+
+function PullToRefreshIndicatorVisual() {
+  const [pulled, setPulled] = useState(true)
+
+  return (
+    <button type="button" onClick={() => setPulled((value) => !value)}>
+      <PhoneFrame>
+        <div className={cn("flex justify-center transition-all", pulled ? "h-7 pt-3" : "h-3 pt-1")}>
+          <LoaderCircle className={cn(pulled && "animate-spin text-primary")} aria-hidden="true" />
+        </div>
+        <MobileScreenLines />
+      </PhoneFrame>
+    </button>
+  )
+}
+
+function SwipeToDeleteVisual() {
+  const [revealed, setRevealed] = useState(true)
+
+  return (
+    <PhoneFrame>
+      <div className="p-2">
+        {[0, 1, 2].map((row) => (
+          <button key={row} type="button" className="relative mb-1 block h-6 w-full overflow-hidden rounded border bg-muted/40" onClick={() => setRevealed((value) => !value)}>
+            {row === 1 && revealed && <span className="absolute inset-y-0 right-0 flex w-7 items-center justify-center bg-destructive text-white"><Trash2 aria-hidden="true" /></span>}
+            <span className={cn("absolute inset-y-0 left-0 right-0 flex items-center bg-background px-2 transition-transform", row === 1 && revealed && "-translate-x-6")}>
+              항목
+            </span>
+          </button>
+        ))}
+      </div>
+    </PhoneFrame>
+  )
+}
+
+function SwipeActionRowVisual() {
+  const [side, setSide] = useState<"left" | "right">("right")
+
+  return (
+    <PhoneFrame>
+      <div className="p-2">
+        <button type="button" className="relative h-8 w-full overflow-hidden rounded border bg-muted/40" onClick={() => setSide((value) => value === "right" ? "left" : "right")}>
+          {side === "left" && <span className="absolute inset-y-0 left-0 flex w-7 items-center justify-center bg-primary text-primary-foreground"><Check aria-hidden="true" /></span>}
+          {side === "right" && <span className="absolute inset-y-0 right-0 flex w-7 items-center justify-center bg-destructive text-white"><Trash2 aria-hidden="true" /></span>}
+          <span className={cn("absolute inset-y-0 left-0 right-0 flex items-center bg-background px-2 transition-transform", side === "left" ? "translate-x-6" : "-translate-x-6")}>메시지</span>
+        </button>
+        <Line className="mt-2 w-12" />
+      </div>
+    </PhoneFrame>
+  )
+}
+
+function LongPressMenuVisual() {
+  const [open, setOpen] = useState(true)
+
+  return (
+    <PhoneFrame>
+      <div className="p-2">
+        <button type="button" className="rounded border bg-muted/50 px-2 py-2" onClick={() => setOpen((value) => !value)}>
+          길게 누름
+        </button>
+        {open && <div className="mt-1 rounded-md border bg-background p-1 shadow-sm">{["복사", "공유", "삭제"].map((item) => <div key={item} className="px-2 py-1">{item}</div>)}</div>}
+      </div>
+    </PhoneFrame>
+  )
+}
+
+function DragToReorderListVisual() {
+  const [moved, setMoved] = useState(false)
+  const rows = moved ? ["B", "A", "C"] : ["A", "B", "C"]
+
+  return (
+    <PhoneFrame>
+      <div className="p-2">
+        {rows.map((row, index) => (
+          <button key={row} type="button" className={cn("mb-1 flex h-6 w-full items-center gap-1 rounded border bg-background px-1 transition-transform", moved && index === 0 && "bg-primary/10")} onClick={() => setMoved((value) => !value)}>
+            <ReorderDots />
+            <span>항목 {row}</span>
+          </button>
+        ))}
+      </div>
+    </PhoneFrame>
+  )
+}
+
+function GrabHandleVisual() {
+  const [active, setActive] = useState(false)
+
+  return (
+    <button type="button" className={cn("flex h-20 w-36 items-center justify-center gap-2 rounded-md border bg-card text-xs", active && "border-primary bg-primary/10")} onClick={() => setActive((value) => !value)}>
+      <ReorderDots />
+      <span>{active ? "드래그 중" : "잡는 핸들"}</span>
+    </button>
+  )
+}
+
+function PageControlVisual() {
+  const [page, setPage] = useState(1)
+
+  return (
+    <PhoneFrame>
+      <div className="flex h-full flex-col justify-end p-2">
+        <div className="mb-4 h-16 rounded bg-muted/70" />
+        <div className="flex justify-center gap-1">
+          {[0, 1, 2, 3].map((item) => (
+            <button key={item} type="button" className={cn("h-1.5 rounded-full transition-all", page === item ? "w-4 bg-primary" : "w-1.5 bg-muted-foreground/40")} onClick={() => setPage(item)}>
+              <span className="sr-only">page {item + 1}</span>
+            </button>
+          ))}
+        </div>
+      </div>
+    </PhoneFrame>
+  )
+}
+
+function CarouselPeekVisual() {
+  const [active, setActive] = useState(0)
+
+  return (
+    <PhoneFrame>
+      <div className="flex h-full items-center gap-2 overflow-hidden pl-2">
+        {[0, 1, 2].map((item) => (
+          <button key={item} type="button" className={cn("h-20 w-14 shrink-0 rounded-lg border bg-muted/60", active === item && "bg-primary/20")} onClick={() => setActive(item)}>
+            <span className="sr-only">card {item + 1}</span>
+          </button>
+        ))}
+      </div>
+    </PhoneFrame>
+  )
+}
+
+function EdgeSwipeBackVisual() {
+  const [offset, setOffset] = useState(false)
+
+  return (
+    <PhoneFrame>
+      <button type="button" className="relative h-full w-full overflow-hidden" onClick={() => setOffset((value) => !value)}>
+        <div className="absolute inset-y-0 left-0 flex w-4 items-center justify-center bg-primary/10"><ChevronLeft aria-hidden="true" /></div>
+        <div className={cn("h-full bg-background transition-transform", offset && "translate-x-5")}>
+          <MobileScreenLines />
+        </div>
+      </button>
+    </PhoneFrame>
+  )
+}
+
+function PinchZoomViewerVisual() {
+  const [zoomed, setZoomed] = useState(false)
+
+  return (
+    <PhoneFrame>
+      <button type="button" className="relative flex h-full items-center justify-center overflow-hidden bg-muted/40" onClick={() => setZoomed((value) => !value)}>
+        <div className={cn("rounded border bg-background transition-all", zoomed ? "h-28 w-28" : "h-16 w-14")}>
+          <ImageIcon className="m-auto mt-5 text-muted-foreground" aria-hidden="true" />
+        </div>
+        <span className="absolute bottom-3 rounded-full bg-background/90 px-2 py-0.5">{zoomed ? "200%" : "100%"}</span>
+      </button>
+    </PhoneFrame>
+  )
+}
+
+function ScrimVisual() {
+  const [visible, setVisible] = useState(true)
+
+  return (
+    <PhoneFrame>
+      <button type="button" className="relative h-full w-full" onClick={() => setVisible((value) => !value)}>
+        <MobileScreenLines />
+        {visible && <div className="absolute inset-1 rounded-[1rem] bg-foreground/30" />}
+        {visible && <div className="absolute left-4 right-4 top-12 rounded-lg bg-background p-2 shadow-sm"><Line className="w-9" /></div>}
+      </button>
+    </PhoneFrame>
+  )
+}
+
+function TouchRippleVisual() {
+  const [pressed, setPressed] = useState(false)
+
+  return (
+    <PhoneFrame>
+      <div className="flex h-full items-center justify-center">
+        <button type="button" className="relative flex size-12 items-center justify-center overflow-hidden rounded-full border bg-background" onClick={() => setPressed((value) => !value)}>
+          <Bell aria-hidden="true" />
+          {pressed && <span className="absolute size-12 rounded-full bg-primary/20" />}
+        </button>
+      </div>
     </PhoneFrame>
   )
 }

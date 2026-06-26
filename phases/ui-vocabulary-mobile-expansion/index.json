@@ -30,8 +30,10 @@
     {
       "step": 3,
       "name": "mobile-gestures-and-touch-affordances",
-      "status": "pending",
-      "summary": "Add swipe, pull, long press, drag, page control, scrim, and touch feedback terms."
+      "status": "completed",
+      "started_at": "2026-06-26T19:45:00+09:00",
+      "completed_at": "2026-06-26T20:13:00+09:00",
+      "summary": "Added twelve mobile gesture/touch affordance terms: pull-to-refresh-indicator, swipe-to-delete, swipe-action-row, long-press-menu, drag-to-reorder-list, grab-handle, page-control, carousel-peek, edge-swipe-back, pinch-zoom-viewer, scrim, and touch-ripple. Added matching phone-frame visuals, updated group filters, regenerated 288-term dataset, and verified build/lint plus 390px Chrome smoke for representative gesture queries without horizontal overflow."
     },
     {
       "step": 4,
