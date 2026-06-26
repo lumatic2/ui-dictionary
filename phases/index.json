@@ -11,6 +11,10 @@
     {
       "dir": "ui-vocabulary-search-discovery",
       "status": "completed"
+    },
+    {
+      "dir": "ui-vocabulary-mobile-expansion",
+      "status": "active"
     }
   ]
 }

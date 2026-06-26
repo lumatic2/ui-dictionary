@@ -1,0 +1,46 @@
+{
+  "project": "design-manual",
+  "phase": "ui-vocabulary-mobile-expansion",
+  "mode": "product",
+  "steps": [
+    {
+      "step": 0,
+      "name": "mobile-taxonomy-and-candidate-contract",
+      "status": "completed",
+      "started_at": "2026-06-26T18:30:00+09:00",
+      "completed_at": "2026-06-26T18:45:00+09:00",
+      "summary": "Defined mobile-specific UI taxonomy, candidate batches, acceptance rules, search fixture additions, and phone-frame visual direction in docs/ui-vocabulary/mobile-expansion.md. Added horizon plan in docs/plans/2026-06-26-ui-vocabulary-mobile-expansion.md."
+    },
+    {
+      "step": 1,
+      "name": "mobile-app-shell-and-navigation",
+      "status": "pending",
+      "summary": "Add app shell/navigation terms and phone-frame visuals."
+    },
+    {
+      "step": 2,
+      "name": "mobile-overlays-and-system-feedback",
+      "status": "pending",
+      "summary": "Add bottom sheets, action/share sheets, permission prompts, alerts, and mobile feedback terms."
+    },
+    {
+      "step": 3,
+      "name": "mobile-gestures-and-touch-affordances",
+      "status": "pending",
+      "summary": "Add swipe, pull, long press, drag, page control, scrim, and touch feedback terms."
+    },
+    {
+      "step": 4,
+      "name": "mobile-inputs-pickers-and-auth",
+      "status": "pending",
+      "summary": "Add OTP, passcode, biometric, mobile picker, mobile search, address/contact, and voice input terms."
+    },
+    {
+      "step": 5,
+      "name": "mobile-content-commerce-and-audit",
+      "status": "pending",
+      "summary": "Add feed, story, media, commerce, map, and onboarding terms, then run duplicate/category/search fixture audit."
+    }
+  ]
+}
+
