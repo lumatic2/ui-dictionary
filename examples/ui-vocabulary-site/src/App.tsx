@@ -154,14 +154,18 @@ function App() {
     setFilter(nextFilter)
   }
 
+  function updateNavFilter(nextFilter: TermFilter) {
+    setActiveUseCaseId(null)
+    setQuery("")
+    setFilter(nextFilter)
+  }
+
   function selectUseCase(queryValue: string) {
     const useCase = useCases.find((item) => item.query === queryValue)
     setActiveUseCaseId(useCase?.id ?? null)
     setQuery(queryValue)
     setFilter("all")
-    setOpenExploreSections(["kind"])
-    setOpenKinds(["component"])
-    setOpenCategories([])
+    setOpenExploreSections((current) => current.includes("use-case") ? current : [...current, "use-case"])
     setDetailOpen(false)
     window.scrollTo({ top: 0, behavior: "smooth" })
   }
@@ -216,7 +220,7 @@ function App() {
         count={terms.length}
         icon={BookOpen}
         label="전체"
-        onClick={() => updateFilter("all")}
+        onClick={() => updateNavFilter("all")}
       />
       <Accordion className="flex flex-col gap-1" onValueChange={setOpenExploreSections} type="multiple" value={openExploreSections}>
         <AccordionItem className="border-0" value="kind">
@@ -232,7 +236,7 @@ function App() {
                     "rounded-lg px-3 py-2 text-sm hover:bg-muted hover:no-underline",
                     filter === `kind:${item.kind}` && "bg-secondary text-primary"
                   )}
-                  onClick={() => updateFilter(`kind:${item.kind}`)}
+                  onClick={() => updateNavFilter(`kind:${item.kind}`)}
                 >
                   <span className="flex min-w-0 flex-1 items-center gap-3">
                     <span className="min-w-0 flex-1 truncate">{kindLabels[item.kind]}</span>
@@ -249,7 +253,7 @@ function App() {
                               "rounded-lg px-3 py-2 text-sm hover:bg-muted hover:no-underline",
                               filter === kindCategoryFilter(item.kind, categoryItem.category) && "bg-secondary text-primary"
                             )}
-                            onClick={() => updateFilter(kindCategoryFilter(item.kind, categoryItem.category))}
+                            onClick={() => updateNavFilter(kindCategoryFilter(item.kind, categoryItem.category))}
                           >
                             <span className="flex min-w-0 flex-1 items-center gap-3">
                               <CategoryIcon category={categoryItem.category} />
@@ -264,7 +268,7 @@ function App() {
                                 active={filter === kindGroupFilter(item.kind, group.id)}
                                 count={group.count}
                                 label={group.label}
-                                onClick={() => updateFilter(kindGroupFilter(item.kind, group.id))}
+                                onClick={() => updateNavFilter(kindGroupFilter(item.kind, group.id))}
                               />
                             ))}
                           </AccordionContent>
@@ -279,7 +283,7 @@ function App() {
                         count={categoryItem.count}
                         icon={categoryIcons[categoryItem.category]}
                         label={categoryLabels[categoryItem.category]}
-                        onClick={() => updateFilter(kindCategoryFilter(item.kind, categoryItem.category))}
+                        onClick={() => updateNavFilter(kindCategoryFilter(item.kind, categoryItem.category))}
                       />
                     ))
                   )}

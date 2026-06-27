@@ -41,6 +41,12 @@ export function SearchAutocomplete({
     setDraftQuery(query)
   }, [query])
 
+  useEffect(() => {
+    if (!query) {
+      setDraftQuery("")
+    }
+  }, [filter, query])
+
   function commitQuery(value = draftQuery) {
     const nextQuery = value.trim()
     setDraftQuery(nextQuery)
