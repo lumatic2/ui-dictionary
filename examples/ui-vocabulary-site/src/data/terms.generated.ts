@@ -21408,6 +21408,505 @@ export const terms = [
       }
     ],
     "confidence": "high"
+  },
+  {
+    "kind": "component",
+    "id": "chat-message",
+    "status": "draft",
+    "category": "data-display",
+    "ko": {
+      "name": "채팅 메시지",
+      "aliases": [
+        "message",
+        "chat message",
+        "대화 메시지"
+      ]
+    },
+    "en": {
+      "name": "Chat message",
+      "aliases": [
+        "Message",
+        "Conversation message"
+      ]
+    },
+    "one_liner": "대화에서 한 발화의 아바타, 정렬, 말풍선, 헤더, 푸터를 함께 배치하는 메시지 행.",
+    "description": "사람과 AI, 사용자와 상담원처럼 대화 주체가 번갈아 등장하는 화면에서 한 메시지 단위를 구성한다.",
+    "visual_anatomy": [
+      "avatar slot",
+      "message content",
+      "optional header",
+      "bubble surface",
+      "footer or actions"
+    ],
+    "when_to_use": [
+      "채팅이나 AI 대화 화면에서 한 발화를 행 단위로 보여줄 때",
+      "보낸 사람과 받은 사람의 정렬을 구분해야 할 때"
+    ],
+    "anti_use": [
+      "단순 알림 문구는 message-bar나 toast가 더 적합하다"
+    ],
+    "prompt_phrases": [
+      "아바타와 말풍선이 있는 chat message를 만들어줘"
+    ],
+    "asset": {
+      "kind": "mini-mock",
+      "variant": "chat-message"
+    },
+    "sources": [
+      {
+        "source_id": "shadcn-ui-docs",
+        "note": "Message component for conversation row layout"
+      }
+    ],
+    "confidence": "high"
+  },
+  {
+    "kind": "component",
+    "id": "chat-bubble",
+    "status": "draft",
+    "category": "data-display",
+    "ko": {
+      "name": "채팅 말풍선",
+      "aliases": [
+        "bubble",
+        "message bubble",
+        "대화 말풍선"
+      ]
+    },
+    "en": {
+      "name": "Chat bubble",
+      "aliases": [
+        "Bubble",
+        "Message bubble"
+      ]
+    },
+    "one_liner": "채팅 메시지의 실제 텍스트나 콘텐츠를 감싸는 둥근 말풍선 표면.",
+    "description": "메시지 행 안에서 발화 내용만 시각적으로 묶고, 보낸 사람에 따라 좌우 정렬이나 색상을 다르게 둔다.",
+    "visual_anatomy": [
+      "rounded surface",
+      "bubble content",
+      "start or end alignment",
+      "optional grouped bubbles"
+    ],
+    "when_to_use": [
+      "같은 대화 안에서 메시지 본문을 명확히 구분해야 할 때"
+    ],
+    "anti_use": [
+      "카드형 정보 묶음은 card나 chat-attachment가 더 적합하다"
+    ],
+    "prompt_phrases": [
+      "사용자 메시지는 오른쪽에 정렬된 chat bubble로 보여줘"
+    ],
+    "asset": {
+      "kind": "mini-mock",
+      "variant": "chat-bubble"
+    },
+    "sources": [
+      {
+        "source_id": "shadcn-ui-docs",
+        "note": "Bubble component for visible conversation surface and alignment"
+      }
+    ],
+    "confidence": "high"
+  },
+  {
+    "kind": "component",
+    "id": "chat-attachment",
+    "status": "draft",
+    "category": "data-display",
+    "ko": {
+      "name": "채팅 첨부 파일",
+      "aliases": [
+        "attachment",
+        "message attachment",
+        "대화 첨부"
+      ]
+    },
+    "en": {
+      "name": "Chat attachment",
+      "aliases": [
+        "Attachment",
+        "Message attachment"
+      ]
+    },
+    "one_liner": "채팅 메시지나 입력창 안에서 파일, 이미지, 업로드 상태와 액션을 보여주는 첨부 요소.",
+    "description": "파일명, 형식, 용량, 미리보기, 제거/다운로드 행동을 한 덩어리로 보여준다.",
+    "visual_anatomy": [
+      "media icon or preview",
+      "file title",
+      "metadata",
+      "upload state",
+      "actions"
+    ],
+    "when_to_use": [
+      "대화 중 파일이나 이미지를 주고받을 때",
+      "업로드 진행률이나 실패 상태를 첨부 카드 안에 표시해야 할 때"
+    ],
+    "anti_use": [
+      "일반 파일 목록 화면은 attachment-list나 file-card가 더 적합하다"
+    ],
+    "prompt_phrases": [
+      "채팅 메시지 아래에 PDF chat attachment를 보여줘"
+    ],
+    "asset": {
+      "kind": "mini-mock",
+      "variant": "chat-attachment"
+    },
+    "sources": [
+      {
+        "source_id": "shadcn-ui-docs",
+        "note": "Attachment component with media, metadata, upload state, and actions"
+      }
+    ],
+    "confidence": "high"
+  },
+  {
+    "kind": "component",
+    "id": "conversation-marker",
+    "status": "draft",
+    "category": "feedback",
+    "ko": {
+      "name": "대화 마커",
+      "aliases": [
+        "marker",
+        "conversation marker",
+        "대화 상태 마커"
+      ]
+    },
+    "en": {
+      "name": "Conversation marker",
+      "aliases": [
+        "Marker",
+        "Conversation status marker"
+      ]
+    },
+    "one_liner": "대화 흐름 사이에 상태, 시스템 노트, 구분선을 인라인으로 표시하는 작은 행.",
+    "description": "대화 압축, 도구 실행, 파일 탐색, 날짜 구분처럼 메시지는 아니지만 흐름 안에 남겨야 하는 사건을 표시한다.",
+    "visual_anatomy": [
+      "optional icon",
+      "marker content",
+      "inline or bordered row",
+      "optional separator lines"
+    ],
+    "when_to_use": [
+      "채팅 중 상태 업데이트나 시스템 이벤트를 메시지 사이에 보여줄 때",
+      "스트리밍 중 진행 상태를 접근성 있게 알릴 때"
+    ],
+    "anti_use": [
+      "사용자 발화는 chat-message를 쓴다"
+    ],
+    "prompt_phrases": [
+      "대화 중간에 파일 4개를 읽었다는 conversation marker를 넣어줘"
+    ],
+    "asset": {
+      "kind": "mini-mock",
+      "variant": "conversation-marker"
+    },
+    "sources": [
+      {
+        "source_id": "shadcn-ui-docs",
+        "note": "Marker component for inline conversation status and separators"
+      }
+    ],
+    "confidence": "high"
+  },
+  {
+    "kind": "component",
+    "id": "message-scroller",
+    "status": "draft",
+    "category": "structure",
+    "ko": {
+      "name": "메시지 스크롤러",
+      "aliases": [
+        "message scroller",
+        "chat scroller",
+        "대화 스크롤 컨테이너"
+      ]
+    },
+    "en": {
+      "name": "Message scroller",
+      "aliases": [
+        "Chat scroller",
+        "Conversation scroll container"
+      ]
+    },
+    "one_liner": "스트리밍 채팅에서 스크롤 위치, 새 메시지 따라가기, 이전 기록 로딩을 관리하는 대화 컨테이너.",
+    "description": "AI 답변이 스트리밍되는 동안 사용자가 읽던 위치를 보존하고, 필요할 때만 최신 메시지로 이동하도록 돕는다.",
+    "visual_anatomy": [
+      "scroll container",
+      "message stack",
+      "jump to latest control",
+      "history loading boundary"
+    ],
+    "when_to_use": [
+      "AI 채팅이나 긴 대화에서 새 메시지와 이전 기록을 안정적으로 스크롤해야 할 때"
+    ],
+    "anti_use": [
+      "짧은 고정 목록은 scroll-area만으로 충분하다"
+    ],
+    "prompt_phrases": [
+      "스트리밍 답변 중에도 위치가 튀지 않는 message scroller를 만들어줘"
+    ],
+    "asset": {
+      "kind": "mini-mock",
+      "variant": "message-scroller"
+    },
+    "sources": [
+      {
+        "source_id": "shadcn-ui-docs",
+        "note": "Message Scroller for streaming chat scroll behavior"
+      }
+    ],
+    "confidence": "high"
+  },
+  {
+    "kind": "form-pattern",
+    "id": "react-hook-form-pattern",
+    "status": "draft",
+    "category": "input",
+    "ko": {
+      "name": "React Hook Form 패턴",
+      "aliases": [
+        "react hook form",
+        "RHF form",
+        "controller form"
+      ]
+    },
+    "en": {
+      "name": "React Hook Form pattern",
+      "aliases": [
+        "RHF form",
+        "Controller form"
+      ]
+    },
+    "one_liner": "React Hook Form의 `useForm`과 `Controller`를 shadcn Field 구성과 연결하는 폼 구현 패턴.",
+    "description": "Zod 같은 스키마 검증, controlled input, 필드 오류 표시를 조합해 접근성 있는 폼을 만든다.",
+    "visual_anatomy": [
+      "form schema",
+      "useForm instance",
+      "Controller",
+      "Field and FieldError",
+      "submit action"
+    ],
+    "when_to_use": [
+      "React Hook Form 기반으로 성능 좋은 클라이언트 폼을 구현할 때"
+    ],
+    "anti_use": [
+      "라이브러리 없는 단순 폼이면 기본 field-group만으로 충분할 수 있다"
+    ],
+    "prompt_phrases": [
+      "React Hook Form과 Zod로 검증하는 form pattern을 만들어줘"
+    ],
+    "asset": {
+      "kind": "mini-mock",
+      "variant": "react-hook-form-pattern"
+    },
+    "sources": [
+      {
+        "source_id": "shadcn-ui-docs",
+        "note": "React Hook Form guide using Field, Controller, and Zod validation"
+      }
+    ],
+    "confidence": "high"
+  },
+  {
+    "kind": "form-pattern",
+    "id": "tanstack-form-pattern",
+    "status": "draft",
+    "category": "input",
+    "ko": {
+      "name": "TanStack Form 패턴",
+      "aliases": [
+        "tanstack form",
+        "headless form",
+        "render prop form"
+      ]
+    },
+    "en": {
+      "name": "TanStack Form pattern",
+      "aliases": [
+        "Headless form",
+        "Render prop form"
+      ]
+    },
+    "one_liner": "TanStack Form의 headless form state와 shadcn Field UI를 연결하는 폼 구현 패턴.",
+    "description": "`form.Field` 렌더 prop으로 필드 상태와 오류를 읽고, Zod 검증과 실시간 피드백을 조합한다.",
+    "visual_anatomy": [
+      "useForm instance",
+      "form.Field render prop",
+      "field state",
+      "validation errors",
+      "accessible Field UI"
+    ],
+    "when_to_use": [
+      "필드 상태를 세밀하게 제어하는 headless 폼이 필요할 때"
+    ],
+    "anti_use": [
+      "React Hook Form 기반 코드베이스라면 react-hook-form-pattern이 더 자연스럽다"
+    ],
+    "prompt_phrases": [
+      "TanStack Form으로 실시간 검증이 있는 form pattern을 만들어줘"
+    ],
+    "asset": {
+      "kind": "mini-mock",
+      "variant": "tanstack-form-pattern"
+    },
+    "sources": [
+      {
+        "source_id": "shadcn-ui-docs",
+        "note": "TanStack Form guide using Field render props and Zod validation"
+      }
+    ],
+    "confidence": "high"
+  },
+  {
+    "kind": "form-pattern",
+    "id": "formisch-form-pattern",
+    "status": "draft",
+    "category": "input",
+    "ko": {
+      "name": "Formisch 폼 패턴",
+      "aliases": [
+        "formisch form",
+        "valibot form",
+        "schema-first form"
+      ]
+    },
+    "en": {
+      "name": "Formisch form pattern",
+      "aliases": [
+        "Valibot form",
+        "Schema-first form"
+      ]
+    },
+    "one_liner": "Formisch와 Valibot을 사용해 스키마를 중심으로 타입 안전한 폼을 만드는 패턴.",
+    "description": "Formisch의 form store, render-prop field, Valibot schema를 shadcn Field 구성과 함께 사용한다.",
+    "visual_anatomy": [
+      "Valibot schema",
+      "Formisch form store",
+      "render-prop field",
+      "Field validation state",
+      "reset and submit actions"
+    ],
+    "when_to_use": [
+      "Valibot 기반의 가벼운 schema-first 폼을 선호할 때"
+    ],
+    "anti_use": [
+      "팀 표준이 Zod와 React Hook Form이면 react-hook-form-pattern이 더 익숙하다"
+    ],
+    "prompt_phrases": [
+      "Formisch와 Valibot으로 schema-first form pattern을 만들어줘"
+    ],
+    "asset": {
+      "kind": "mini-mock",
+      "variant": "formisch-form-pattern"
+    },
+    "sources": [
+      {
+        "source_id": "shadcn-ui-docs",
+        "note": "Formisch guide using Valibot and shadcn Field"
+      }
+    ],
+    "confidence": "high"
+  },
+  {
+    "kind": "component",
+    "id": "scroll-fade",
+    "status": "draft",
+    "category": "structure",
+    "ko": {
+      "name": "스크롤 페이드",
+      "aliases": [
+        "scroll fade",
+        "edge fade",
+        "스크롤 가장자리 페이드"
+      ]
+    },
+    "en": {
+      "name": "Scroll fade",
+      "aliases": [
+        "Edge fade",
+        "Scroll edge fade"
+      ]
+    },
+    "one_liner": "스크롤 가능한 영역의 가장자리에 페이드 효과를 넣어 더 볼 콘텐츠가 있음을 암시하는 시각 효과.",
+    "description": "가로 첨부 목록, 채팅 기록, 카드 레일처럼 경계 밖 콘텐츠가 이어지는 영역에서 스크롤 가능성을 부드럽게 보여준다.",
+    "visual_anatomy": [
+      "scroll container",
+      "fading edge",
+      "clipped content",
+      "optional snap row"
+    ],
+    "when_to_use": [
+      "스크롤바 없이도 추가 콘텐츠가 있음을 알려야 할 때"
+    ],
+    "anti_use": [
+      "콘텐츠가 잘리면 안 되는 핵심 정보 영역에는 쓰지 않는다"
+    ],
+    "prompt_phrases": [
+      "가로 카드 목록 양끝에 scroll fade를 넣어줘"
+    ],
+    "asset": {
+      "kind": "mini-mock",
+      "variant": "scroll-fade"
+    },
+    "sources": [
+      {
+        "source_id": "shadcn-ui-docs",
+        "note": "scroll-fade utility listed in shadcn utilities"
+      }
+    ],
+    "confidence": "medium"
+  },
+  {
+    "kind": "component",
+    "id": "shimmer-effect",
+    "status": "draft",
+    "category": "feedback",
+    "ko": {
+      "name": "쉬머 효과",
+      "aliases": [
+        "shimmer",
+        "shimmer text",
+        "반짝임 로딩"
+      ]
+    },
+    "en": {
+      "name": "Shimmer effect",
+      "aliases": [
+        "Shimmer",
+        "Shimmer text"
+      ]
+    },
+    "one_liner": "텍스트나 로딩 표면 위에 은은히 흐르는 빛 효과를 주어 진행 중 상태를 표현하는 효과.",
+    "description": "AI가 생각 중이거나 파일을 처리 중일 때 정적인 로딩 문구보다 생동감 있게 진행 상태를 보여준다.",
+    "visual_anatomy": [
+      "shimmering text",
+      "animated highlight",
+      "loading marker",
+      "muted base color"
+    ],
+    "when_to_use": [
+      "스트리밍이나 처리 중 상태를 짧은 문구로 보여줄 때",
+      "conversation-marker나 skeleton과 함께 진행감을 줄 때"
+    ],
+    "anti_use": [
+      "완료된 정보나 긴 본문에는 주의를 분산시킨다"
+    ],
+    "prompt_phrases": [
+      "Thinking 문구에 shimmer effect를 적용해줘"
+    ],
+    "asset": {
+      "kind": "mini-mock",
+      "variant": "shimmer-effect"
+    },
+    "sources": [
+      {
+        "source_id": "shadcn-ui-docs",
+        "note": "shimmer utility listed in shadcn utilities and marker examples"
+      }
+    ],
+    "confidence": "medium"
   }
 ] satisfies VocabularyTerm[]
 

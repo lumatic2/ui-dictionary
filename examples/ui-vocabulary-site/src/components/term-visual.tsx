@@ -459,6 +459,16 @@ function renderVisual(variant: string, label: string) {
   if (variant === "stacked-chart-card") return <ShadcnBlockVisual kind="stacked-chart-card" />
   if (variant === "chart-tooltip-pattern") return <ShadcnBlockVisual kind="chart-tooltip-pattern" />
   if (variant === "chart-kpi-card") return <ShadcnBlockVisual kind="chart-kpi-card" />
+  if (variant === "chat-message") return <ShadcnEcosystemVisual kind="chat-message" />
+  if (variant === "chat-bubble") return <ShadcnEcosystemVisual kind="chat-bubble" />
+  if (variant === "chat-attachment") return <ShadcnEcosystemVisual kind="chat-attachment" />
+  if (variant === "conversation-marker") return <ShadcnEcosystemVisual kind="conversation-marker" />
+  if (variant === "message-scroller") return <ShadcnEcosystemVisual kind="message-scroller" />
+  if (variant === "react-hook-form-pattern") return <ShadcnEcosystemVisual kind="react-hook-form-pattern" />
+  if (variant === "tanstack-form-pattern") return <ShadcnEcosystemVisual kind="tanstack-form-pattern" />
+  if (variant === "formisch-form-pattern") return <ShadcnEcosystemVisual kind="formisch-form-pattern" />
+  if (variant === "scroll-fade") return <ShadcnEcosystemVisual kind="scroll-fade" />
+  if (variant === "shimmer-effect") return <ShadcnEcosystemVisual kind="shimmer-effect" />
   if (variant === "error-state") return <StateVisual tone="error" />
   if (variant === "success-state") return <StateVisual tone="success" />
   if (variant === "warning-state") return <StateVisual tone="warning" />
@@ -3912,6 +3922,135 @@ function ChartBlockFrame({ kind, active }: { kind: ShadcnBlockKind; active: bool
         {isTooltip && <div className="absolute right-3 top-3 rounded border bg-card px-2 py-1 shadow-sm">Jun · 42</div>}
       </div>
     </div>
+  )
+}
+
+type ShadcnEcosystemKind =
+  | "chat-message"
+  | "chat-bubble"
+  | "chat-attachment"
+  | "conversation-marker"
+  | "message-scroller"
+  | "react-hook-form-pattern"
+  | "tanstack-form-pattern"
+  | "formisch-form-pattern"
+  | "scroll-fade"
+  | "shimmer-effect"
+
+function ShadcnEcosystemVisual({ kind }: { kind: ShadcnEcosystemKind }) {
+  const [active, setActive] = useState(false)
+
+  if (kind === "chat-message") {
+    return (
+      <Chrome className="w-60 p-3 text-left text-xs">
+        <div className="flex gap-2">
+          <span className="flex size-7 items-center justify-center rounded-full bg-primary/15 text-primary"><User aria-hidden="true" className="size-4" /></span>
+          <div className="min-w-0 flex-1">
+            <div className="flex items-center justify-between"><b>Yusung</b><span className="text-muted-foreground">09:41</span></div>
+            <div className="mt-1 rounded-lg rounded-tl-sm border bg-background p-2">토큰 사용량 차트를 보여줘</div>
+            <div className="mt-1 flex items-center gap-2 text-muted-foreground"><CheckCircle2 aria-hidden="true" className="size-3" />전송됨</div>
+          </div>
+        </div>
+      </Chrome>
+    )
+  }
+
+  if (kind === "chat-bubble") {
+    return (
+      <div className="w-60 space-y-2 text-xs">
+        <div className="mr-10 rounded-lg rounded-tl-sm border bg-card p-2 shadow-sm">오늘 배포 범위 확인했어?</div>
+        <div className="ml-10 rounded-lg rounded-tr-sm bg-primary p-2 text-primary-foreground">검증 끝나면 올릴게.</div>
+      </div>
+    )
+  }
+
+  if (kind === "chat-attachment") {
+    return (
+      <button type="button" className="text-left" onClick={() => setActive((value) => !value)}>
+        <Chrome className="w-60 p-3 text-xs">
+          <div className="flex items-center gap-2">
+            <span className="rounded-md bg-primary/10 p-2 text-primary"><FileUp aria-hidden="true" className="size-4" /></span>
+            <div className="min-w-0 flex-1"><b>workflow.md</b><p className="text-muted-foreground">124 KB</p></div>
+            {active ? <CheckCircle2 aria-hidden="true" className="size-4 text-primary" /> : <Download aria-hidden="true" className="size-4" />}
+          </div>
+          <div className="mt-3 h-1.5 rounded bg-muted"><span className={cn("block h-full rounded bg-primary", active ? "w-full" : "w-2/3")} /></div>
+        </Chrome>
+      </button>
+    )
+  }
+
+  if (kind === "conversation-marker") {
+    return (
+      <button type="button" className="w-60" onClick={() => setActive((value) => !value)}>
+        <div className="flex items-center gap-2 text-xs text-muted-foreground">
+          <span className="h-px flex-1 bg-border" />
+          <span className="flex items-center gap-1 rounded-full border bg-card px-2 py-1">
+            {active ? <CheckCircle2 aria-hidden="true" className="size-3 text-primary" /> : <LoaderCircle aria-hidden="true" className="size-3 animate-spin text-primary" />}
+            {active ? "완료" : "도구 실행"}
+          </span>
+          <span className="h-px flex-1 bg-border" />
+        </div>
+      </button>
+    )
+  }
+
+  if (kind === "message-scroller") {
+    return (
+      <button type="button" className="text-left" onClick={() => setActive((value) => !value)}>
+        <Chrome className="relative h-32 w-60 overflow-hidden p-2 text-xs">
+          <div className="space-y-2">
+            <div className="w-36 rounded-lg border bg-background p-2">초안 만들기</div>
+            <div className="ml-auto w-40 rounded-lg bg-primary p-2 text-primary-foreground">중복 검사 먼저</div>
+            <div className="w-44 rounded-lg border bg-background p-2">검증 명령 실행 중...</div>
+            {active && <div className="ml-auto w-32 rounded-lg bg-primary p-2 text-primary-foreground">좋아</div>}
+          </div>
+          <span className="absolute bottom-2 left-1/2 -translate-x-1/2 rounded-full border bg-card px-2 py-1 shadow-sm">새 메시지</span>
+        </Chrome>
+      </button>
+    )
+  }
+
+  if (kind === "react-hook-form-pattern" || kind === "tanstack-form-pattern" || kind === "formisch-form-pattern") {
+    const config = {
+      "react-hook-form-pattern": { title: "React Hook Form", meta: "Controller + Zod", badge: "useForm" },
+      "tanstack-form-pattern": { title: "TanStack Form", meta: "Field render prop", badge: "form.Field" },
+      "formisch-form-pattern": { title: "Formisch", meta: "Valibot schema", badge: "store" },
+    }[kind]
+
+    return (
+      <button type="button" className="text-left" onClick={() => setActive((value) => !value)}>
+        <Chrome className="w-60 p-3 text-xs">
+          <div className="flex items-center justify-between"><b>{config.title}</b><span className="rounded bg-primary/10 px-2 py-0.5 text-primary">{config.badge}</span></div>
+          <label className="mt-3 block text-muted-foreground">Email</label>
+          <div className={cn("mt-1 flex h-7 items-center rounded border bg-background px-2", active && "border-destructive")}>name@example.com</div>
+          <div className="mt-2 flex items-center gap-2 text-muted-foreground"><Check aria-hidden="true" className="size-3 text-primary" />{config.meta}</div>
+          {active ? <p className="mt-2 text-destructive">이메일 형식을 확인하세요</p> : <Line className="mt-2 w-32" />}
+        </Chrome>
+      </button>
+    )
+  }
+
+  if (kind === "scroll-fade") {
+    return (
+      <Chrome className="relative w-60 overflow-hidden p-3 text-xs">
+        <div className="flex gap-2">
+          {["Alpha", "Beta", "Gamma", "Delta"].map((item) => <span key={item} className="shrink-0 rounded-full border bg-background px-3 py-1">{item}</span>)}
+        </div>
+        <span className="pointer-events-none absolute inset-y-0 left-0 w-10 bg-gradient-to-r from-card to-transparent" />
+        <span className="pointer-events-none absolute inset-y-0 right-0 w-10 bg-gradient-to-l from-card to-transparent" />
+      </Chrome>
+    )
+  }
+
+  return (
+    <Chrome className="w-60 p-3 text-xs">
+      <div className="space-y-2">
+        <div className="h-4 w-40 animate-pulse rounded bg-primary/20" />
+        <div className="h-4 w-52 animate-pulse rounded bg-muted" />
+        <div className="h-4 w-32 animate-pulse rounded bg-primary/10" />
+      </div>
+      <div className="mt-3 rounded border bg-background p-2 text-muted-foreground">loading response</div>
+    </Chrome>
   )
 }
 
