@@ -22,6 +22,10 @@ Use these for canonical names, core definitions, interaction behavior, and acces
   https://www.radix-ui.com/primitives
 - `shadcn-ui-docs`: shadcn/ui component documentation  
   https://ui.shadcn.com/docs/components
+- `mdn-html-rel-icon`: MDN HTML rel=icon reference
+  https://developer.mozilla.org/en-US/docs/Web/HTML/Attributes/rel/icon
+- `open-graph-protocol`: The Open Graph protocol
+  https://ogp.me/
 
 ### Tier B — Secondary Cross-Checks
 

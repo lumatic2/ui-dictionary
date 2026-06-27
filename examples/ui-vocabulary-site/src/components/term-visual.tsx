@@ -134,7 +134,9 @@ function renderVisual(variant: string, label: string) {
   if (variant === "typography") return <TypographyVisual />
   if (variant === "image") return <ImageVisual />
   if (variant === "logo") return <LogoVisual />
+  if (variant === "favicon") return <FaviconVisual />
   if (variant === "thumbnail") return <ThumbnailVisual />
+  if (variant === "open-graph-image") return <OpenGraphImageVisual />
   if (variant === "password-field") return <PasswordField />
   if (variant === "number-input") return <NumberInput />
   if (variant === "otp-input") return <OtpInput />
@@ -1392,10 +1394,57 @@ function LogoVisual() {
   return <button type="button" className="flex items-center gap-2" onClick={() => setCompact((value) => !value)}><span className="flex size-10 items-center justify-center rounded-lg bg-primary text-primary-foreground"><BookOpen aria-hidden="true" /></span>{!compact && <span className="text-lg font-semibold">Brand</span>}</button>
 }
 
+function FaviconVisual() {
+  return (
+    <Chrome className="w-56 overflow-hidden text-xs">
+      <div className="flex items-center gap-2 border-b bg-muted/60 px-2 py-1.5">
+        <span className="flex size-6 shrink-0 items-center justify-center rounded-md bg-indigo-900 text-white">
+          <BookOpen className="size-4" aria-hidden="true" />
+        </span>
+        <span className="min-w-0 flex-1 truncate font-medium">UI 용어 사전</span>
+        <X className="size-3 text-muted-foreground" aria-hidden="true" />
+      </div>
+      <div className="flex items-center gap-2 p-3">
+        <span className="flex size-9 items-center justify-center rounded-lg bg-indigo-900 text-white shadow-sm">
+          <BookOpen className="size-5" aria-hidden="true" />
+        </span>
+        <div>
+          <p className="font-medium">favicon.svg</p>
+          <p className="text-muted-foreground">browser tab icon</p>
+        </div>
+      </div>
+    </Chrome>
+  )
+}
+
 function ThumbnailVisual() {
   const [playing, setPlaying] = useState(false)
 
   return <button type="button" className={cn("relative flex h-20 w-36 items-center justify-center rounded-md border bg-card text-muted-foreground", playing && "bg-primary/20")} onClick={() => setPlaying((value) => !value)}><ImageIcon aria-hidden="true" /><span className="absolute bottom-2 right-2 flex size-7 items-center justify-center rounded-full bg-primary text-primary-foreground">{playing ? <Check aria-hidden="true" /> : <Play aria-hidden="true" />}</span></button>
+}
+
+function OpenGraphImageVisual() {
+  return (
+    <Chrome className="w-64 overflow-hidden p-2 text-xs">
+      <div className="aspect-[120/63] rounded-md border bg-background p-3">
+        <div className="flex items-center gap-2">
+          <span className="flex size-7 items-center justify-center rounded-md bg-indigo-900 text-white">
+            <BookOpen className="size-4" aria-hidden="true" />
+          </span>
+          <span className="font-semibold">UI 용어 사전</span>
+        </div>
+        <div className="mt-5 space-y-2">
+          <Line className="h-3 w-36 bg-foreground/60" />
+          <Line className="h-3 w-28 bg-foreground/60" />
+          <Line className="w-44" />
+        </div>
+      </div>
+      <div className="mt-2 flex items-center gap-2 text-muted-foreground">
+        <Share2 className="size-4" aria-hidden="true" />
+        <span>og:image · 1200 x 630</span>
+      </div>
+    </Chrome>
+  )
 }
 
 function PasswordField() {
