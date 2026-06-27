@@ -70,7 +70,7 @@ export function TermDetail({ term, terms, open, onOpenChange, onSelectTerm }: Te
   }
 
   return (
-    <Sheet open={open} onOpenChange={onOpenChange}>
+    <Sheet modal={false} open={open} onOpenChange={onOpenChange}>
       <SheetContent className="w-full gap-0 p-0 sm:max-w-xl">
         {term && (
           <div className="bg-background" data-export-detail={term.id}>
