@@ -1,13 +1,36 @@
 import { useEffect, useMemo, useState } from "react"
 import {
+  Activity,
   ArrowRight,
+  BarChart3,
+  Bell,
+  CalendarDays,
+  CircleAlert,
+  CreditCard,
   GalleryHorizontal,
   Inbox,
   LayoutPanelTop,
   ListChecks,
+  ListFilter,
+  LoaderCircle,
+  Lock,
+  MousePointerClick,
+  Navigation,
+  PanelBottom,
+  PanelRight,
+  PanelTop,
+  PanelsTopLeft,
+  PencilLine,
+  Rows3,
   Search,
+  SlidersHorizontal,
+  Sparkles,
   TableProperties,
   ToggleLeft,
+  Type,
+  Upload,
+  UserRound,
+  WandSparkles,
   X,
   type LucideIcon,
 } from "lucide-react"
@@ -22,9 +45,9 @@ import {
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
 import { Popover, PopoverAnchor, PopoverContent } from "@/components/ui/popover"
-import type { VocabularyTerm } from "@/data/terms.generated"
+import type { TermCategory, VocabularyTerm } from "@/data/terms.generated"
 import { getSearchSuggestions, type SearchSuggestion } from "@/lib/search-suggestions"
-import type { TermFilter } from "@/lib/search"
+import type { TermFilter, TermGroupId } from "@/lib/search"
 import { cn } from "@/lib/utils"
 
 type SearchAutocompleteProps = {
@@ -204,10 +227,12 @@ function SuggestionIcon({ suggestion }: { suggestion: SearchSuggestion }) {
 
 function getSuggestionIcon(suggestion: SearchSuggestion): LucideIcon {
   if (suggestion.type === "term") {
-    return Search
+    const groupIcon = suggestion.groupId ? groupIcons[suggestion.groupId] : undefined
+
+    return termIconOverrides[suggestion.termId] ?? groupIcon ?? categoryIcons[suggestion.category]
   }
   if (suggestion.type === "category" || suggestion.type === "group") {
-    return TableProperties
+    return getFilterIcon(suggestion.filter)
   }
 
   switch (suggestion.value) {
@@ -226,4 +251,80 @@ function getSuggestionIcon(suggestion: SearchSuggestion): LucideIcon {
     default:
       return Search
   }
+}
+
+function getFilterIcon(filter: TermFilter): LucideIcon {
+  if (filter in categoryIcons) {
+    return categoryIcons[filter as TermCategory]
+  }
+  if (filter in groupIcons) {
+    return groupIcons[filter as TermGroupId] ?? TableProperties
+  }
+
+  return TableProperties
+}
+
+const categoryIcons: Record<TermCategory, LucideIcon> = {
+  input: Type,
+  selection: ToggleLeft,
+  action: MousePointerClick,
+  structure: LayoutPanelTop,
+  feedback: ListChecks,
+  "data-display": TableProperties,
+}
+
+const groupIcons: Partial<Record<TermGroupId, LucideIcon>> = {
+  "input-text": Type,
+  "input-search-command": Search,
+  "input-pickers": CalendarDays,
+  "input-file-media": Upload,
+  "input-editing": PencilLine,
+  "selection-options": ToggleLeft,
+  "selection-navigation": Navigation,
+  "selection-menus": PanelsTopLeft,
+  "selection-context": CreditCard,
+  "action-buttons": MousePointerClick,
+  "action-command-bars": SlidersHorizontal,
+  "action-bulk-danger": CircleAlert,
+  "action-editor-media": GalleryHorizontal,
+  "structure-app-layout": PanelTop,
+  "structure-panels": PanelRight,
+  "structure-navigation": Navigation,
+  "structure-sections": LayoutPanelTop,
+  "structure-mobile": PanelBottom,
+  "feedback-alerts-toasts": Bell,
+  "feedback-loading-progress": LoaderCircle,
+  "feedback-empty-error": Inbox,
+  "feedback-access-limits": Lock,
+  "feedback-status-notifications": Activity,
+  "data-tables-lists": Rows3,
+  "data-cards-content": GalleryHorizontal,
+  "data-metrics-charts": BarChart3,
+  "data-timeline-history": Activity,
+  "data-people-integrations": UserRound,
+  "data-commerce-billing": CreditCard,
+}
+
+const termIconOverrides: Record<string, LucideIcon> = {
+  "bottom-navigation": PanelBottom,
+  "bottom-cta-bar": PanelBottom,
+  "cart-summary-bar": PanelBottom,
+  "tab-bar": Navigation,
+  "mobile-segmented-tabs": ToggleLeft,
+  "page-control": ListChecks,
+  "edge-swipe-back": Navigation,
+  "responsive-mobile": PanelBottom,
+  "bottom-app-bar": PanelBottom,
+  "floating-search-button": Search,
+  "filter-bar": SlidersHorizontal,
+  "filter-panel": SlidersHorizontal,
+  "faceted-filter": ListFilter,
+  "empty-state": Inbox,
+  "empty-search-result": Inbox,
+  "empty-table": Inbox,
+  "progress-bar": LoaderCircle,
+  stepper: ListChecks,
+  "setup-progress": ListChecks,
+  "visual-effect": Sparkles,
+  "motion-pattern": WandSparkles,
 }

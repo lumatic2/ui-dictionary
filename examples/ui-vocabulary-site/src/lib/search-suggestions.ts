@@ -1,5 +1,5 @@
 import type { TermCategory, VocabularyTerm } from "@/data/terms.generated"
-import { categoryGroups, categoryLabels, matchesFilter, type TermFilter } from "@/lib/search"
+import { categoryGroups, categoryLabels, getTermGroup, matchesFilter, type TermFilter, type TermGroupId } from "@/lib/search"
 
 export type SearchSuggestion =
   | {
@@ -9,6 +9,8 @@ export type SearchSuggestion =
       description: string
       value: string
       termId: string
+      category: TermCategory
+      groupId?: TermGroupId
     }
   | {
       id: string
@@ -114,6 +116,8 @@ export function getStarterQueries() {
 }
 
 function termToSuggestion(term: VocabularyTerm, matchedText: string): SearchSuggestion {
+  const group = getTermGroup(term)
+
   return {
     id: `term-${term.id}`,
     type: "term",
@@ -121,6 +125,8 @@ function termToSuggestion(term: VocabularyTerm, matchedText: string): SearchSugg
     description: `${term.en.name} · ${matchedText}`,
     value: term.ko.name,
     termId: term.id,
+    category: term.category,
+    groupId: group?.id,
   }
 }
 
