@@ -355,6 +355,24 @@ select {
 
 .visual-gradient-shift {
   animation: visual-gradient-shift 5.5s ease-in-out infinite;
+  transition: filter 180ms ease;
+}
+
+.visual-hover-surface {
+  transition:
+    box-shadow 180ms ease,
+    filter 180ms ease,
+    transform 180ms ease;
+}
+
+.visual-hover-surface:hover {
+  box-shadow: 0 14px 34px rgba(15, 23, 42, 0.16);
+  filter: saturate(1.08);
+  transform: translateY(-2px) scale(1.015);
+}
+
+.visual-hover-surface:hover .visual-gradient-shift {
+  filter: brightness(1.08) saturate(1.35);
 }
 
 .visual-border-beam::before {
@@ -365,37 +383,93 @@ select {
   animation: visual-border-spin 2.8s linear infinite;
 }
 
+.visual-border-beam:hover::before {
+  animation-duration: 1.2s;
+  background: conic-gradient(from 0deg, transparent 0 56%, var(--accent), var(--primary), white, transparent 86% 100%);
+}
+
 .visual-marquee-track {
   animation: visual-marquee 4.2s linear infinite;
+  transition: gap 180ms ease, filter 180ms ease;
+}
+
+.visual-hover-surface:hover .visual-marquee-track {
+  animation-duration: 1.8s;
+  filter: saturate(1.25);
+  gap: 0.75rem;
 }
 
 .visual-typing-text {
   animation: visual-typing 3.2s steps(10, end) infinite;
 }
 
+.visual-hover-surface:hover .visual-typing-text {
+  animation-duration: 1.6s;
+}
+
 .visual-number-ticker {
   animation: visual-number-pop 1.6s ease-in-out infinite;
+  transition: color 180ms ease, transform 180ms ease;
+}
+
+.visual-hover-surface:hover .visual-number-ticker {
+  color: var(--primary);
+  transform: translateY(-2px) scale(1.08);
 }
 
 .visual-scroll-dot {
   animation: visual-scroll-dot 2.4s ease-in-out infinite;
+  transition: box-shadow 180ms ease;
 }
 
 .visual-scroll-beam {
   animation: visual-scroll-dot 2.4s ease-in-out infinite;
+  transition: opacity 180ms ease;
+}
+
+.visual-hover-surface:hover .visual-scroll-dot,
+.visual-hover-surface:hover .visual-scroll-beam {
+  animation-duration: 1.25s;
+}
+
+.visual-hover-surface:hover .visual-scroll-dot {
+  box-shadow: 0 0 18px var(--primary);
+}
+
+.visual-hover-surface:hover .visual-scroll-beam {
+  opacity: 0.85;
 }
 
 .visual-floating-navbar {
   animation: visual-float 3s ease-in-out infinite;
 }
 
+.visual-floating-navbar:hover {
+  background: color-mix(in oklch, var(--card) 82%, var(--primary) 18%);
+  border-color: var(--primary);
+}
+
 .visual-spotlight {
   animation: visual-float 3.4s ease-in-out infinite;
+  opacity: 0.9;
   transition: left 220ms ease, top 220ms ease;
+}
+
+.visual-hover-surface:hover .visual-spotlight {
+  opacity: 1;
+  transform: scale(1.25);
 }
 
 .visual-blur-fade {
   animation: visual-blur-fade 3s ease-out infinite;
+  transition: filter 160ms ease, opacity 160ms ease, transform 160ms ease;
+}
+
+.visual-hover-surface:hover .visual-blur-fade {
+  animation-play-state: paused;
+  filter: blur(0);
+  opacity: 1;
+  transform: translateY(-2px);
 }
 
 .visual-shiny-text {
@@ -404,17 +478,38 @@ select {
   animation: visual-shine 2.4s linear infinite;
 }
 
+.visual-hover-surface:hover .visual-shiny-text {
+  animation-duration: 0.9s;
+  filter: drop-shadow(0 0 10px color-mix(in oklch, var(--primary) 40%, transparent));
+}
+
 .visual-3d-card {
   animation: visual-tilt 3.2s ease-in-out infinite;
+  transition: box-shadow 180ms ease;
+}
+
+.visual-hover-surface:hover .visual-3d-card {
+  animation-duration: 1.25s;
+  box-shadow: 0 18px 30px rgba(15, 23, 42, 0.2);
 }
 
 .visual-stack-card {
   animation: visual-stack-lift 2.8s ease-in-out infinite;
 }
 
+.visual-hover-surface:hover .visual-stack-card {
+  animation-duration: 1.1s;
+}
+
 .visual-beam-path {
   stroke-dasharray: 40 80;
   animation: visual-beam-dash 2.2s linear infinite;
+  transition: stroke-width 180ms ease;
+}
+
+.visual-hover-surface:hover .visual-beam-path {
+  animation-duration: 1s;
+  stroke-width: 3;
 }
 
 .visual-beam-path-slow {
@@ -433,8 +528,21 @@ select {
   animation: visual-aurora-drift 7s ease-in-out infinite;
 }
 
+.visual-hover-surface:hover .visual-aurora-one,
+.visual-hover-surface:hover .visual-aurora-two,
+.visual-hover-surface:hover .visual-aurora-three {
+  animation-duration: 2.2s;
+  opacity: 0.95;
+}
+
 .visual-reveal-sweep {
   animation: visual-reveal-sweep 2.8s ease-in-out infinite;
+  transition: opacity 180ms ease;
+}
+
+.visual-hover-surface:hover .visual-reveal-sweep {
+  animation-duration: 1s;
+  opacity: 0.9;
 }
 
 [data-slot="sheet-overlay"][data-state="open"] {
@@ -489,6 +597,7 @@ select {
   [data-slot="sheet-overlay"],
   [data-slot="sheet-content"],
   [data-term-detail-content],
+  .visual-hover-surface,
   .visual-gradient-shift,
   .visual-border-beam::before,
   .visual-marquee-track,

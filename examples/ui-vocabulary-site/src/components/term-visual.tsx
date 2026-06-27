@@ -4237,7 +4237,7 @@ function ExternalEcosystemVisual({ kind }: { kind: ExternalEcosystemKind }) {
   }
   if (kind === "testimonial-section" || kind === "infinite-moving-cards") {
     const cards = [0, 1, 2, 3, 4]
-    return <Chrome className="w-64 overflow-hidden p-3 text-xs"><div className={cn("flex gap-2", kind === "infinite-moving-cards" && "visual-marquee-track")}>{cards.map((item) => <div key={item} className="min-w-20 rounded border bg-background p-2"><Star aria-hidden="true" className="size-3 text-primary" /><Line className="mt-2 w-12" /><Line className="mt-1 w-10" /></div>)}</div></Chrome>
+    return <Chrome className="visual-hover-surface w-64 overflow-hidden p-3 text-xs"><div className={cn("flex gap-2", kind === "infinite-moving-cards" && "visual-marquee-track")}>{cards.map((item) => <div key={item} className="min-w-20 rounded border bg-background p-2"><Star aria-hidden="true" className="size-3 text-primary" /><Line className="mt-2 w-12" /><Line className="mt-1 w-10" /></div>)}</div></Chrome>
   }
   if (kind === "feature-grid-section" || kind === "integration-grid-section") {
     return <Chrome className="grid w-64 grid-cols-3 gap-2 p-3 text-xs">{[Search, Bell, Settings, Folder, LinkIcon, Palette].map((Icon, index) => <div key={index} className="rounded border bg-background p-2"><Icon aria-hidden="true" className="size-4 text-primary" /><Line className="mt-2 w-10" /></div>)}</Chrome>
@@ -4254,7 +4254,7 @@ function ExternalEcosystemVisual({ kind }: { kind: ExternalEcosystemKind }) {
     return <Chrome className="w-64 p-3 text-center text-xs"><b>{kind === "cta-section" ? "지금 시작하세요" : "업데이트 받기"}</b><Line className="mx-auto mt-2 w-32" /><div className="mt-3 flex justify-center gap-1"><span className="rounded border bg-background px-3 py-1">email</span><span className="rounded bg-primary px-3 py-1 text-primary-foreground">시작</span></div></Chrome>
   }
   if (kind === "marquee-row") {
-    return <Chrome className="w-64 overflow-hidden p-3 text-xs"><div className="visual-marquee-track flex gap-2">{["A", "B", "C", "D", "E", "A", "B"].map((item, index) => <span key={`${item}-${index}`} className="shrink-0 rounded-full border bg-background px-3 py-1">{item}</span>)}</div></Chrome>
+    return <Chrome className="visual-hover-surface w-64 overflow-hidden p-3 text-xs"><div className="visual-marquee-track flex gap-2">{["A", "B", "C", "D", "E", "A", "B"].map((item, index) => <span key={`${item}-${index}`} className="shrink-0 rounded-full border bg-background px-3 py-1">{item}</span>)}</div></Chrome>
   }
   if (kind === "animated-gradient-background") return <AnimatedGradientBackgroundVisual />
   if (kind === "border-beam") return <BorderBeamVisual />
@@ -4264,10 +4264,10 @@ function ExternalEcosystemVisual({ kind }: { kind: ExternalEcosystemKind }) {
   if (kind === "spotlight-card") return <SpotlightCardVisual />
   if (kind === "grid-pattern-background") return <PatternBackgroundVisual pattern="grid" />
   if (kind === "typing-text-effect") {
-    return <Chrome className="w-56 p-3 font-mono text-xs"><span className="visual-typing-text inline-block overflow-hidden whitespace-nowrap">AI가 초안을 작성 중</span><span className="animate-pulse">|</span></Chrome>
+    return <Chrome className="visual-hover-surface w-56 p-3 font-mono text-xs"><span className="visual-typing-text inline-block overflow-hidden whitespace-nowrap">AI가 초안을 작성 중</span><span className="animate-pulse">|</span></Chrome>
   }
   if (kind === "number-ticker") {
-    return <Chrome className="w-48 p-3 text-center"><p className="visual-number-ticker text-2xl font-semibold">12,840</p><p className="text-xs text-muted-foreground">active users</p></Chrome>
+    return <Chrome className="visual-hover-surface w-48 p-3 text-center"><p className="visual-number-ticker text-2xl font-semibold">12,840</p><p className="text-xs text-muted-foreground">active users</p></Chrome>
   }
   if (kind === "blur-fade-in") return <BlurFadeInVisual />
   if (kind === "animated-shiny-text") return <ShinyTextVisual />
@@ -4276,7 +4276,7 @@ function ExternalEcosystemVisual({ kind }: { kind: ExternalEcosystemKind }) {
     return <Chrome className="grid h-32 w-64 grid-cols-3 grid-rows-2 gap-2 p-3 text-xs"><div className="col-span-2 rounded border bg-background p-2"><Line className="w-24" /></div><div className="rounded border bg-background p-2"><Line className="w-10" /></div><div className="rounded border bg-background p-2"><Line className="w-12" /></div><div className="col-span-2 rounded border bg-background p-2"><Line className="w-20" /></div></Chrome>
   }
   if (kind === "sticky-scroll-section" || kind === "tracing-beam-section") {
-    return <Chrome className="flex h-32 w-64 gap-3 p-3 text-xs"><div className="relative w-8"><span className="absolute left-3 top-0 h-full w-0.5 bg-primary/25" /><span className="visual-scroll-beam absolute left-3 top-0 h-12 w-0.5 bg-primary" /><span className="visual-scroll-dot absolute left-1.5 top-6 size-4 rounded-full bg-primary shadow-[0_0_12px_var(--primary)]" /></div><div className="flex-1 space-y-2"><Line className="w-28" /><Line className="w-36" /><Line className="w-24" /></div><div className="w-20 rounded border bg-background" /></Chrome>
+    return <Chrome className="visual-hover-surface flex h-32 w-64 gap-3 p-3 text-xs"><div className="relative w-8"><span className="absolute left-3 top-0 h-full w-0.5 bg-primary/25" /><span className="visual-scroll-beam absolute left-3 top-0 h-12 w-0.5 bg-primary" /><span className="visual-scroll-dot absolute left-1.5 top-6 size-4 rounded-full bg-primary shadow-[0_0_12px_var(--primary)]" /></div><div className="flex-1 space-y-2"><Line className="w-28" /><Line className="w-36" /><Line className="w-24" /></div><div className="w-20 rounded border bg-background" /></Chrome>
   }
   if (kind === "floating-navbar") {
     return <div className="visual-floating-navbar rounded-full border bg-card px-4 py-2 text-xs shadow-sm"><span className="mr-3 font-medium">Home</span><span className="mr-3">Work</span><span>Contact</span></div>
@@ -4356,7 +4356,7 @@ function BillingSettingsPageVisual() {
 
 function AnimatedGradientBackgroundVisual() {
   return (
-    <div className="relative h-32 w-64 overflow-hidden rounded-md border bg-card p-3 text-xs">
+    <div className="visual-hover-surface relative h-32 w-64 overflow-hidden rounded-md border bg-card p-3 text-xs">
       <div className="visual-gradient-shift absolute inset-0 bg-[linear-gradient(120deg,rgba(96,80,220,.35),rgba(64,220,190,.24),rgba(255,100,120,.28),rgba(96,80,220,.35))] bg-[length:240%_240%]" />
       <div className="absolute inset-0 bg-white/15" />
       <div className="relative rounded border bg-card/80 p-3 shadow-sm">
@@ -4369,7 +4369,7 @@ function AnimatedGradientBackgroundVisual() {
 
 function BorderBeamVisual() {
   return (
-    <div className="visual-border-beam relative h-28 w-56 overflow-hidden rounded-md bg-card p-px text-xs shadow-sm">
+    <div className="visual-border-beam visual-hover-surface relative h-28 w-56 overflow-hidden rounded-md bg-card p-px text-xs shadow-sm">
       <div className="relative h-full rounded-[calc(var(--radius-md)-1px)] bg-card p-3">
         <b>Live border beam</b>
         <Line className="mt-3 w-32" />
@@ -4383,7 +4383,7 @@ function SpotlightCardVisual() {
   const [active, setActive] = useState(false)
 
   return (
-    <button type="button" className="relative h-28 w-56 overflow-hidden rounded-md border bg-card p-4 text-left text-xs shadow-sm" onClick={() => setActive((value) => !value)}>
+    <button type="button" className="visual-hover-surface relative h-28 w-56 overflow-hidden rounded-md border bg-card p-4 text-left text-xs shadow-sm" onClick={() => setActive((value) => !value)}>
       <span className={cn("visual-spotlight absolute size-32 rounded-full bg-primary/25 blur-xl", active ? "left-1/2 top-1/2" : "-right-8 -top-8")} />
       <span className={cn("absolute inset-0 transition-opacity", active ? "bg-[radial-gradient(circle_at_52%_58%,rgba(255,255,255,.9),transparent_34%)]" : "bg-[radial-gradient(circle_at_75%_20%,rgba(255,255,255,.9),transparent_36%)]")} />
       <div className="relative">
@@ -4416,7 +4416,7 @@ function PatternBackgroundVisual({ pattern }: { pattern: "grid" | "dot" }) {
 
 function BlurFadeInVisual() {
   return (
-    <div className="flex h-28 w-56 items-center justify-center rounded-md border bg-muted/40 p-3 text-xs">
+    <div className="visual-hover-surface flex h-28 w-56 items-center justify-center rounded-md border bg-muted/40 p-3 text-xs">
       <div className="visual-blur-fade rounded-md border bg-card p-3 shadow-sm">
         <p className="font-semibold opacity-80">Blur fade in</p>
         <Line className="mt-2 w-28 opacity-60" />
@@ -4428,7 +4428,7 @@ function BlurFadeInVisual() {
 
 function ShinyTextVisual() {
   return (
-    <Chrome className="w-56 p-4 text-center text-sm">
+    <Chrome className="visual-hover-surface w-56 p-4 text-center text-sm">
       <span className="visual-shiny-text rounded-full border bg-clip-text px-3 py-1 font-semibold text-transparent">
         New feature
       </span>
@@ -4439,7 +4439,7 @@ function ShinyTextVisual() {
 
 function ThreeDCardVisual({ active, onToggle }: { active: boolean; onToggle: () => void }) {
   return (
-    <button type="button" className="relative h-32 w-52 text-left text-xs [perspective:600px]" onClick={onToggle}>
+    <button type="button" className="visual-hover-surface relative h-32 w-52 text-left text-xs [perspective:600px]" onClick={onToggle}>
       <div className={cn("visual-3d-card absolute inset-4 rounded-md border bg-card p-3 shadow-lg transition-transform", active ? "[transform:rotateX(8deg)_rotateY(-14deg)]" : "[transform:rotateX(6deg)_rotateY(-8deg)]")}>
         <b>3D card</b>
         <Line className="mt-3 w-24" />
@@ -4452,7 +4452,7 @@ function ThreeDCardVisual({ active, onToggle }: { active: boolean; onToggle: () 
 
 function HoverCardStackVisual({ active, onToggle }: { active: boolean; onToggle: () => void }) {
   return (
-    <button type="button" className="relative h-32 w-52 text-left text-xs" onClick={onToggle}>
+    <button type="button" className="visual-hover-surface relative h-32 w-52 text-left text-xs" onClick={onToggle}>
       {[0, 1, 2].map((item) => (
         <div
           key={item}
@@ -4473,7 +4473,7 @@ function HoverCardStackVisual({ active, onToggle }: { active: boolean; onToggle:
 
 function BackgroundBeamsVisual() {
   return (
-    <div className="relative h-32 w-64 overflow-hidden rounded-md border bg-foreground p-4 text-xs text-background">
+    <div className="visual-hover-surface relative h-32 w-64 overflow-hidden rounded-md border bg-foreground p-4 text-xs text-background">
       <svg aria-hidden="true" className="absolute inset-0 h-full w-full opacity-70" viewBox="0 0 260 130">
         <path d="M-20 105 C40 20, 92 120, 158 34 S236 80, 284 16" fill="none" stroke="currentColor" strokeWidth="2" className="visual-beam-path text-primary" />
         <path d="M-8 36 C54 82, 96 8, 160 72 S226 42, 276 102" fill="none" stroke="currentColor" strokeWidth="1.5" className="visual-beam-path visual-beam-path-slow text-accent" />
@@ -4488,7 +4488,7 @@ function BackgroundBeamsVisual() {
 
 function AuroraBackgroundVisual() {
   return (
-    <div className="relative h-32 w-64 overflow-hidden rounded-md border bg-foreground p-4 text-xs text-background">
+    <div className="visual-hover-surface relative h-32 w-64 overflow-hidden rounded-md border bg-foreground p-4 text-xs text-background">
       <span className="visual-aurora-one absolute -left-10 top-2 h-24 w-36 rotate-12 rounded-full bg-primary/40 blur-2xl" />
       <span className="visual-aurora-two absolute left-20 -top-6 h-24 w-40 -rotate-12 rounded-full bg-accent/50 blur-2xl" />
       <span className="visual-aurora-three absolute right-0 bottom-0 h-20 w-32 rounded-full bg-destructive/30 blur-2xl" />
@@ -4502,7 +4502,7 @@ function AuroraBackgroundVisual() {
 
 function CanvasRevealCardVisual({ active, onToggle }: { active: boolean; onToggle: () => void }) {
   return (
-    <button type="button" className="relative h-32 w-52 overflow-hidden rounded-md border bg-card p-3 text-left text-xs" onClick={onToggle}>
+    <button type="button" className="visual-hover-surface relative h-32 w-52 overflow-hidden rounded-md border bg-card p-3 text-left text-xs" onClick={onToggle}>
       <div className="absolute inset-0 bg-[radial-gradient(circle_at_35%_35%,rgba(80,80,220,.35),transparent_28%),radial-gradient(circle_at_70%_55%,rgba(64,220,190,.25),transparent_24%)]" />
       <span className="visual-reveal-sweep absolute inset-y-0 w-16 -skew-x-12 bg-white/35" />
       <div className={cn("absolute inset-0 grid grid-cols-5 gap-px bg-card/80 transition-opacity", active && "opacity-35")}>
