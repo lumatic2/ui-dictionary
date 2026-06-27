@@ -7643,7 +7643,7 @@
 - id: scroll-fade
   status: draft
   category: structure
-  kind: component
+  kind: visual-treatment
   ko:
     name: 스크롤 페이드
     aliases: [scroll fade, edge fade, 스크롤 가장자리 페이드]
@@ -7672,7 +7672,7 @@
 - id: shimmer-effect
   status: draft
   category: feedback
-  kind: component
+  kind: visual-effect
   ko:
     name: 쉬머 효과
     aliases: [shimmer, shimmer text, 반짝임 로딩]
@@ -8610,7 +8610,7 @@
 - id: animated-gradient-background
   status: draft
   category: feedback
-  kind: component
+  kind: visual-treatment
   ko: { name: 애니메이션 그라디언트 배경, aliases: [animated gradient, 움직이는 그라디언트, gradient background] }
   en: { name: Animated gradient background, aliases: [Moving gradient background, Gradient animation] }
   one_liner: 배경의 색상 흐름이 천천히 움직이며 화면에 동적인 분위기를 주는 효과.
@@ -8626,7 +8626,7 @@
 - id: marquee-row
   status: draft
   category: structure
-  kind: component
+  kind: motion-pattern
   ko: { name: 마키 행, aliases: [marquee row, 흐르는 카드 행, 자동 스크롤 행] }
   en: { name: Marquee row, aliases: [Scrolling marquee, Auto-scrolling row] }
   one_liner: 로고, 후기, 카드가 가로로 계속 흐르며 반복되는 자동 스크롤 행.
@@ -8642,7 +8642,7 @@
 - id: border-beam
   status: draft
   category: feedback
-  kind: component
+  kind: visual-effect
   ko: { name: 보더 빔, aliases: [border beam, 빛나는 테두리, animated border] }
   en: { name: Border beam, aliases: [Animated border beam, Glowing border] }
   one_liner: 카드나 버튼 테두리를 따라 빛이 이동하는 강조 효과.
@@ -8658,7 +8658,7 @@
 - id: orbiting-icons
   status: draft
   category: data-display
-  kind: component
+  kind: motion-pattern
   ko: { name: 궤도 아이콘, aliases: [orbiting icons, orbit icons, 회전 아이콘] }
   en: { name: Orbiting icons, aliases: [Orbit icons, Icon orbit] }
   one_liner: 중심 대상 주변을 여러 아이콘이 원형 궤도로 배치되거나 회전하는 시각 패턴.
@@ -8674,7 +8674,7 @@
 - id: spotlight-card
   status: draft
   category: feedback
-  kind: component
+  kind: visual-effect
   ko: { name: 스포트라이트 카드, aliases: [spotlight card, 마우스 빛 카드, hover spotlight] }
   en: { name: Spotlight card, aliases: [Hover spotlight card, Cursor spotlight] }
   one_liner: 마우스 위치나 hover 상태에 따라 카드 표면에 빛 번짐이 나타나는 카드 효과.
@@ -8690,7 +8690,7 @@
 - id: grid-pattern-background
   status: draft
   category: structure
-  kind: component
+  kind: visual-treatment
   ko: { name: 그리드 패턴 배경, aliases: [grid pattern background, 격자 배경, grid background] }
   en: { name: Grid pattern background, aliases: [Grid background, Graph paper background] }
   one_liner: 얇은 격자선을 배경에 깔아 기술적이거나 구조적인 분위기를 주는 배경 패턴.
@@ -8706,7 +8706,7 @@
 - id: typing-text-effect
   status: draft
   category: feedback
-  kind: component
+  kind: motion-pattern
   ko: { name: 타이핑 텍스트 효과, aliases: [typing effect, 타자 효과, typewriter text] }
   en: { name: Typing text effect, aliases: [Typewriter effect, Typing animation] }
   one_liner: 글자가 한 글자씩 입력되는 것처럼 나타나는 텍스트 애니메이션.
@@ -8722,7 +8722,7 @@
 - id: number-ticker
   status: draft
   category: data-display
-  kind: component
+  kind: motion-pattern
   ko: { name: 숫자 티커, aliases: [number ticker, count up, 숫자 카운트업] }
   en: { name: Number ticker, aliases: [Count up number, Animated number] }
   one_liner: 숫자가 목표 값까지 올라가거나 바뀌며 지표 변화를 보여주는 애니메이션 숫자.
@@ -8738,7 +8738,7 @@
 - id: blur-fade-in
   status: draft
   category: feedback
-  kind: component
+  kind: motion-pattern
   ko: { name: 블러 페이드 인, aliases: [blur fade, blur fade in, 흐림 페이드 등장] }
   en: { name: Blur fade in, aliases: [Blur fade, Soft reveal] }
   one_liner: 요소가 흐린 상태에서 선명해지며 부드럽게 나타나는 등장 애니메이션.
@@ -8754,7 +8754,7 @@
 - id: animated-shiny-text
   status: draft
   category: feedback
-  kind: component
+  kind: visual-effect
   ko: { name: 샤이니 텍스트, aliases: [shiny text, 빛나는 텍스트, animated shiny text] }
   en: { name: Animated shiny text, aliases: [Shiny text, Text shimmer] }
   one_liner: 텍스트 위로 빛이 지나가는 듯한 하이라이트를 반복하는 텍스트 효과.
@@ -8774,7 +8774,7 @@
 - id: dot-pattern-background
   status: draft
   category: structure
-  kind: component
+  kind: visual-treatment
   ko: { name: 점 패턴 배경, aliases: [dot pattern, dotted background, 점 배경] }
   en: { name: Dot pattern background, aliases: [Dotted background, Dot grid] }
   one_liner: 작은 점들이 반복되는 배경 패턴으로 빈 공간에 질서 있는 질감을 주는 요소.
@@ -8838,7 +8838,7 @@
 - id: three-d-card
   status: draft
   category: feedback
-  kind: component
+  kind: visual-effect
   ko: { name: 3D 카드, aliases: [3d card, tilt card, 기울어지는 카드] }
   en: { name: 3D card, aliases: [Tilt card, 3D hover card] }
   one_liner: hover나 마우스 위치에 따라 입체적으로 기울어지는 카드 효과.
@@ -8854,7 +8854,7 @@
 - id: hover-card-stack
   status: draft
   category: data-display
-  kind: component
+  kind: visual-effect
   ko: { name: 호버 카드 스택, aliases: [card stack hover, hover card stack, 겹친 카드 효과] }
   en: { name: Hover card stack, aliases: [Card stack hover, Stacked cards] }
   one_liner: 여러 카드가 겹쳐 있다가 hover나 스크롤에 따라 펼쳐지는 카드 묶음 효과.
@@ -8870,7 +8870,7 @@
 - id: background-beams
   status: draft
   category: structure
-  kind: component
+  kind: visual-treatment
   ko: { name: 배경 빔, aliases: [background beams, beam background, 빛줄기 배경] }
   en: { name: Background beams, aliases: [Beam background, Light beams] }
   one_liner: 배경에 흐르는 빛줄기나 선형 광선을 깔아 공간감과 움직임을 주는 효과.
@@ -8886,7 +8886,7 @@
 - id: aurora-background
   status: draft
   category: structure
-  kind: component
+  kind: visual-treatment
   ko: { name: 오로라 배경, aliases: [aurora background, 오로라 그라디언트, aurora effect] }
   en: { name: Aurora background, aliases: [Aurora effect, Aurora gradient] }
   one_liner: 오로라처럼 넓은 색 덩어리가 부드럽게 흐르는 랜딩 페이지 배경 효과.
@@ -8922,7 +8922,7 @@
 - id: infinite-moving-cards
   status: draft
   category: data-display
-  kind: component
+  kind: motion-pattern
   ko: { name: 무한 이동 카드, aliases: [infinite moving cards, 무한 스크롤 카드, moving cards] }
   en: { name: Infinite moving cards, aliases: [Infinite cards, Moving card loop] }
   one_liner: 카드 목록이 끊김 없이 반복 이동하며 여러 후기나 항목을 보여주는 패턴.
@@ -8942,7 +8942,7 @@
 - id: canvas-reveal-card
   status: draft
   category: feedback
-  kind: component
+  kind: visual-effect
   ko: { name: 캔버스 리빌 카드, aliases: [canvas reveal card, reveal card, 캔버스 효과 카드] }
   en: { name: Canvas reveal card, aliases: [Reveal card, Canvas hover card] }
   one_liner: hover 시 캔버스 기반 패턴이나 빛 효과가 드러나는 인터랙티브 카드.
@@ -8958,7 +8958,7 @@
 - id: tracing-beam-section
   status: draft
   category: structure
-  kind: block
+  kind: motion-pattern
   ko: { name: 트레이싱 빔 섹션, aliases: [tracing beam, scroll tracing beam, 스크롤 빔] }
   en: { name: Tracing beam section, aliases: [Scroll tracing beam, Timeline beam] }
   one_liner: 스크롤 진행에 따라 세로 빛줄기나 선이 콘텐츠 옆을 따라 내려가는 섹션.

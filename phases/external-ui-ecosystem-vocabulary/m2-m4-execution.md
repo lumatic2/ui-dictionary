@@ -80,6 +80,14 @@ Promoted terms:
 - Generic shadcn official blocks remain covered by previous shadcn milestones; M2 only adds ecosystem page/block patterns.
 - M3 keeps reusable effects; M4 keeps landing/page patterns even when both use motion.
 
+## Kind Split
+
+The site now separates role/category from vocabulary unit kind:
+
+- M2 page compositions stay mostly `block` or `form-pattern`.
+- M3 effect entries are classified as `visual-effect`, `motion-pattern`, or `visual-treatment`.
+- M4 landing entries stay `block` only when they describe a section composition; hover, scroll, card, and background effects use the new effect/treatment kinds.
+
 ## Verification
 
 Local verification:

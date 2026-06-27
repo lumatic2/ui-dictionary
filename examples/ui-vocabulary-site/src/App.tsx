@@ -26,8 +26,8 @@ import { SearchAutocomplete } from "@/components/search-autocomplete"
 import { Separator } from "@/components/ui/separator"
 import { TermCard } from "@/components/term-card"
 import { TermDetail } from "@/components/term-detail"
-import { categories, terms, type TermCategory, type VocabularyTerm } from "@/data/terms.generated"
-import { categoryGroups, categoryGroupsByCategory, categoryLabels, isTermCategory, matchesFilter, searchTerms, type SearchResult, type TermFilter } from "@/lib/search"
+import { categories, kinds, terms, type TermCategory, type VocabularyTerm } from "@/data/terms.generated"
+import { categoryGroups, categoryGroupsByCategory, categoryLabels, getTermKindFromFilter, isTermCategory, isTermKindFilter, kindLabels, matchesFilter, searchTerms, type SearchResult, type TermFilter } from "@/lib/search"
 import { getStarterQueries } from "@/lib/search-suggestions"
 import { useCases } from "@/lib/term-ux"
 import { cn } from "@/lib/utils"
@@ -68,6 +68,14 @@ function App() {
           ...group,
           count: terms.filter((term) => matchesFilter(term, group.id)).length,
         })),
+      })),
+    []
+  )
+  const kindCounts = useMemo(
+    () =>
+      kinds.map((kind) => ({
+        kind,
+        count: terms.filter((term) => term.kind === kind).length,
       })),
     []
   )
@@ -226,6 +234,18 @@ function App() {
           </AccordionItem>
         ))}
       </Accordion>
+      <div className="flex flex-col gap-1 border-t pt-3">
+        <p className="px-3 text-xs font-medium uppercase text-muted-foreground">형태</p>
+        {kindCounts.map((item) => (
+          <CategoryButton
+            key={item.kind}
+            active={filter === `kind:${item.kind}`}
+            count={item.count}
+            label={kindLabels[item.kind]}
+            onClick={() => updateFilter(`kind:${item.kind}`)}
+          />
+        ))}
+      </div>
     </div>
   )
 
@@ -483,6 +503,9 @@ function getFilterLabel(filter: TermFilter) {
   if (isTermCategory(filter)) {
     return categoryLabels[filter]
   }
+  if (isTermKindFilter(filter)) {
+    return kindLabels[getTermKindFromFilter(filter)]
+  }
 
   return categoryGroups.find((group) => group.id === filter)?.label ?? "현재 필터"
 }
@@ -505,6 +528,9 @@ function parseFilterParam(value: string | null): TermFilter {
   }
   if (isTermCategory(value as TermFilter)) {
     return value as TermFilter
+  }
+  if (isTermKindFilter(value)) {
+    return value
   }
   if (categoryGroups.some((group) => group.id === value)) {
     return value as TermFilter

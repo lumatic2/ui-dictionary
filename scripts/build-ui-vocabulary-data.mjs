@@ -30,7 +30,14 @@ const requiredFields = [
   "confidence",
 ]
 
-const validKinds = new Set(["component", "block", "form-pattern"])
+const validKinds = new Set([
+  "component",
+  "block",
+  "form-pattern",
+  "visual-effect",
+  "motion-pattern",
+  "visual-treatment",
+])
 
 function parseSourceRegistry(sourcesText) {
   const registry = []

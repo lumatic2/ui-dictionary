@@ -52,7 +52,13 @@ The website can generate JSON or TypeScript from YAML, but YAML is the editable 
 - `id`: kebab-case stable identifier.
 - `status`: `draft`, `reviewed`, or `published`.
 - `category`: one of `input`, `selection`, `action`, `structure`, `feedback`, `data-display`.
-- `kind`: optional helper classification, one of `component`, `block`, `form-pattern`. If omitted, the build pipeline treats it as `component`.
+- `kind`: optional helper classification. If omitted, the build pipeline treats it as `component`.
+  - `component`: reusable UI element with its own visible boundary or behavior.
+  - `block`: larger page or section composition made from multiple components.
+  - `form-pattern`: repeated form composition or input workflow.
+  - `visual-effect`: decorative or attention-directing effect applied to a component or section.
+  - `motion-pattern`: animation or scroll behavior pattern.
+  - `visual-treatment`: background, texture, surface, or styling treatment that changes the look but is not itself an interaction component.
 - `ko.name`, `en.name`: primary display names.
 - `ko.aliases`, `en.aliases`: search aliases.
 - `one_liner`: one sentence, beginner-friendly.

@@ -40,7 +40,14 @@ VALID_CATEGORIES = {
 
 VALID_STATUS = {"draft", "reviewed", "published"}
 VALID_CONFIDENCE = {"low", "medium", "high"}
-VALID_KINDS = {"component", "block", "form-pattern"}
+VALID_KINDS = {
+    "component",
+    "block",
+    "form-pattern",
+    "visual-effect",
+    "motion-pattern",
+    "visual-treatment",
+}
 VALID_RELATED_RELATIONS = {"compare", "alternative", "use-with"}
 SOURCE_LINE_PATTERN = re.compile(r"^- `([^`]+)`: (.+?)\s*$")
 TIER_LINE_PATTERN = re.compile(r"^### Tier ([A-Z])\b")

@@ -1,6 +1,7 @@
-import type { TermCategory, VocabularyTerm } from "@/data/terms.generated"
+import type { TermCategory, TermKind, VocabularyTerm } from "@/data/terms.generated"
 
-export type TermFilter = "all" | TermCategory | TermGroupId
+export type TermKindFilter = `kind:${TermKind}`
+export type TermFilter = "all" | TermCategory | TermGroupId | TermKindFilter
 export type SearchMatchReason =
   | "name"
   | "alias"
@@ -40,6 +41,15 @@ export const searchMatchReasonLabels: Record<SearchMatchReason, string> = {
   visual_anatomy: "생김새 단서",
   when_to_use: "사용 상황",
   prompt_phrase: "AI 요청 문장",
+}
+
+export const kindLabels: Record<TermKind, string> = {
+  component: "컴포넌트",
+  block: "블록",
+  "form-pattern": "폼 패턴",
+  "visual-effect": "시각 효과",
+  "motion-pattern": "모션 패턴",
+  "visual-treatment": "비주얼 처리",
 }
 
 export type TermGroupId =
@@ -336,6 +346,9 @@ export function matchesFilter(term: VocabularyTerm, filter: TermFilter) {
   if (isTermCategory(filter)) {
     return term.category === filter
   }
+  if (isTermKindFilter(filter)) {
+    return term.kind === getTermKindFromFilter(filter)
+  }
 
   return getTermGroup(term)?.id === filter
 }
@@ -346,6 +359,18 @@ export function getTermGroup(term: VocabularyTerm) {
 
 export function isTermCategory(filter: TermFilter): filter is TermCategory {
   return filter in categoryLabels
+}
+
+export function isTermKindFilter(filter: TermFilter | string): filter is TermKindFilter {
+  if (!filter.startsWith("kind:")) {
+    return false
+  }
+
+  return filter.slice("kind:".length) in kindLabels
+}
+
+export function getTermKindFromFilter(filter: TermKindFilter): TermKind {
+  return filter.slice("kind:".length) as TermKind
 }
 
 function categoriesToGroups() {
@@ -474,12 +499,6 @@ function getSearchFields(term: VocabularyTerm) {
       includesWeight: 5,
     })),
   ]
-}
-
-export const kindLabels: Record<VocabularyTerm["kind"], string> = {
-  component: "컴포넌트",
-  block: "블록",
-  "form-pattern": "폼 패턴",
 }
 
 function scoreField(

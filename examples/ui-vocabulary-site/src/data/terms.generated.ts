@@ -2,7 +2,7 @@
 
 export type TermCategory = "input" | "selection" | "action" | "structure" | "feedback" | "data-display"
 
-export type TermKind = "component" | "block" | "form-pattern"
+export type TermKind = "component" | "block" | "form-pattern" | "visual-effect" | "motion-pattern" | "visual-treatment"
 
 export type VocabularyTerm = {
   id: string
@@ -21810,7 +21810,7 @@ export const terms = [
     "confidence": "high"
   },
   {
-    "kind": "component",
+    "kind": "visual-treatment",
     "id": "scroll-fade",
     "status": "draft",
     "category": "structure",
@@ -21859,7 +21859,7 @@ export const terms = [
     "confidence": "medium"
   },
   {
-    "kind": "component",
+    "kind": "visual-effect",
     "id": "shimmer-effect",
     "status": "draft",
     "category": "feedback",
@@ -23679,7 +23679,7 @@ export const terms = [
     "confidence": "medium"
   },
   {
-    "kind": "component",
+    "kind": "visual-treatment",
     "id": "animated-gradient-background",
     "status": "draft",
     "category": "feedback",
@@ -23728,7 +23728,7 @@ export const terms = [
     "confidence": "medium"
   },
   {
-    "kind": "component",
+    "kind": "motion-pattern",
     "id": "marquee-row",
     "status": "draft",
     "category": "structure",
@@ -23777,7 +23777,7 @@ export const terms = [
     "confidence": "medium"
   },
   {
-    "kind": "component",
+    "kind": "visual-effect",
     "id": "border-beam",
     "status": "draft",
     "category": "feedback",
@@ -23826,7 +23826,7 @@ export const terms = [
     "confidence": "medium"
   },
   {
-    "kind": "component",
+    "kind": "motion-pattern",
     "id": "orbiting-icons",
     "status": "draft",
     "category": "data-display",
@@ -23877,7 +23877,7 @@ export const terms = [
     "confidence": "medium"
   },
   {
-    "kind": "component",
+    "kind": "visual-effect",
     "id": "spotlight-card",
     "status": "draft",
     "category": "feedback",
@@ -23926,7 +23926,7 @@ export const terms = [
     "confidence": "medium"
   },
   {
-    "kind": "component",
+    "kind": "visual-treatment",
     "id": "grid-pattern-background",
     "status": "draft",
     "category": "structure",
@@ -23975,7 +23975,7 @@ export const terms = [
     "confidence": "medium"
   },
   {
-    "kind": "component",
+    "kind": "motion-pattern",
     "id": "typing-text-effect",
     "status": "draft",
     "category": "feedback",
@@ -24024,7 +24024,7 @@ export const terms = [
     "confidence": "medium"
   },
   {
-    "kind": "component",
+    "kind": "motion-pattern",
     "id": "number-ticker",
     "status": "draft",
     "category": "data-display",
@@ -24073,7 +24073,7 @@ export const terms = [
     "confidence": "medium"
   },
   {
-    "kind": "component",
+    "kind": "motion-pattern",
     "id": "blur-fade-in",
     "status": "draft",
     "category": "feedback",
@@ -24122,7 +24122,7 @@ export const terms = [
     "confidence": "medium"
   },
   {
-    "kind": "component",
+    "kind": "visual-effect",
     "id": "animated-shiny-text",
     "status": "draft",
     "category": "feedback",
@@ -24178,7 +24178,7 @@ export const terms = [
     "confidence": "medium"
   },
   {
-    "kind": "component",
+    "kind": "visual-treatment",
     "id": "dot-pattern-background",
     "status": "draft",
     "category": "structure",
@@ -24374,7 +24374,7 @@ export const terms = [
     "confidence": "medium"
   },
   {
-    "kind": "component",
+    "kind": "visual-effect",
     "id": "three-d-card",
     "status": "draft",
     "category": "feedback",
@@ -24423,7 +24423,7 @@ export const terms = [
     "confidence": "medium"
   },
   {
-    "kind": "component",
+    "kind": "visual-effect",
     "id": "hover-card-stack",
     "status": "draft",
     "category": "data-display",
@@ -24472,7 +24472,7 @@ export const terms = [
     "confidence": "medium"
   },
   {
-    "kind": "component",
+    "kind": "visual-treatment",
     "id": "background-beams",
     "status": "draft",
     "category": "structure",
@@ -24521,7 +24521,7 @@ export const terms = [
     "confidence": "medium"
   },
   {
-    "kind": "component",
+    "kind": "visual-treatment",
     "id": "aurora-background",
     "status": "draft",
     "category": "structure",
@@ -24627,7 +24627,7 @@ export const terms = [
     "confidence": "medium"
   },
   {
-    "kind": "component",
+    "kind": "motion-pattern",
     "id": "infinite-moving-cards",
     "status": "draft",
     "category": "data-display",
@@ -24683,7 +24683,7 @@ export const terms = [
     "confidence": "medium"
   },
   {
-    "kind": "component",
+    "kind": "visual-effect",
     "id": "canvas-reveal-card",
     "status": "draft",
     "category": "feedback",
@@ -24732,7 +24732,7 @@ export const terms = [
     "confidence": "medium"
   },
   {
-    "kind": "block",
+    "kind": "motion-pattern",
     "id": "tracing-beam-section",
     "status": "draft",
     "category": "structure",
@@ -24794,7 +24794,10 @@ export const categories = [
 export const kinds = [
   "component",
   "block",
-  "form-pattern"
+  "form-pattern",
+  "visual-effect",
+  "motion-pattern",
+  "visual-treatment"
 ] satisfies TermKind[]
 
 export const sourceRegistry = [
