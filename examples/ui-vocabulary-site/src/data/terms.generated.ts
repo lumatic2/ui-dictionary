@@ -2,10 +2,13 @@
 
 export type TermCategory = "input" | "selection" | "action" | "structure" | "feedback" | "data-display"
 
+export type TermKind = "component" | "block" | "form-pattern"
+
 export type VocabularyTerm = {
   id: string
   status: "draft" | "reviewed" | "published"
   category: TermCategory
+  kind: TermKind
   ko: { name: string; aliases: string[] }
   en: { name: string; aliases: string[] }
   one_liner: string
@@ -30,6 +33,7 @@ export type SourceReference = {
 
 export const terms = [
   {
+    "kind": "component",
     "id": "text-field",
     "status": "draft",
     "category": "input",
@@ -84,6 +88,7 @@ export const terms = [
     "confidence": "high"
   },
   {
+    "kind": "component",
     "id": "search-field",
     "status": "draft",
     "category": "input",
@@ -138,6 +143,7 @@ export const terms = [
     "confidence": "high"
   },
   {
+    "kind": "component",
     "id": "textarea",
     "status": "draft",
     "category": "input",
@@ -192,6 +198,7 @@ export const terms = [
     "confidence": "high"
   },
   {
+    "kind": "component",
     "id": "select",
     "status": "draft",
     "category": "input",
@@ -268,6 +275,7 @@ export const terms = [
     "confidence": "medium"
   },
   {
+    "kind": "component",
     "id": "combobox",
     "status": "draft",
     "category": "input",
@@ -339,6 +347,7 @@ export const terms = [
     "confidence": "high"
   },
   {
+    "kind": "component",
     "id": "checkbox",
     "status": "draft",
     "category": "input",
@@ -403,6 +412,7 @@ export const terms = [
     "confidence": "high"
   },
   {
+    "kind": "component",
     "id": "radio-group",
     "status": "draft",
     "category": "input",
@@ -473,6 +483,7 @@ export const terms = [
     "confidence": "high"
   },
   {
+    "kind": "component",
     "id": "switch",
     "status": "draft",
     "category": "input",
@@ -539,6 +550,7 @@ export const terms = [
     "confidence": "high"
   },
   {
+    "kind": "component",
     "id": "slider",
     "status": "draft",
     "category": "input",
@@ -591,6 +603,7 @@ export const terms = [
     "confidence": "high"
   },
   {
+    "kind": "component",
     "id": "date-picker",
     "status": "draft",
     "category": "input",
@@ -644,6 +657,7 @@ export const terms = [
     "confidence": "high"
   },
   {
+    "kind": "component",
     "id": "file-upload",
     "status": "draft",
     "category": "input",
@@ -698,6 +712,7 @@ export const terms = [
     "confidence": "medium"
   },
   {
+    "kind": "component",
     "id": "tabs",
     "status": "draft",
     "category": "selection",
@@ -762,6 +777,7 @@ export const terms = [
     "confidence": "high"
   },
   {
+    "kind": "component",
     "id": "segmented-control",
     "status": "draft",
     "category": "selection",
@@ -832,6 +848,7 @@ export const terms = [
     "confidence": "high"
   },
   {
+    "kind": "component",
     "id": "dropdown-menu",
     "status": "draft",
     "category": "selection",
@@ -903,6 +920,7 @@ export const terms = [
     "confidence": "high"
   },
   {
+    "kind": "component",
     "id": "command-palette",
     "status": "draft",
     "category": "selection",
@@ -956,6 +974,7 @@ export const terms = [
     "confidence": "medium"
   },
   {
+    "kind": "component",
     "id": "breadcrumb",
     "status": "draft",
     "category": "selection",
@@ -1007,6 +1026,7 @@ export const terms = [
     "confidence": "medium"
   },
   {
+    "kind": "component",
     "id": "pagination",
     "status": "draft",
     "category": "selection",
@@ -1059,6 +1079,7 @@ export const terms = [
     "confidence": "high"
   },
   {
+    "kind": "component",
     "id": "stepper",
     "status": "draft",
     "category": "selection",
@@ -1113,6 +1134,7 @@ export const terms = [
     "confidence": "medium"
   },
   {
+    "kind": "component",
     "id": "navigation-rail",
     "status": "draft",
     "category": "selection",
@@ -1165,6 +1187,7 @@ export const terms = [
     "confidence": "high"
   },
   {
+    "kind": "component",
     "id": "sidebar-nav",
     "status": "draft",
     "category": "selection",
@@ -1218,6 +1241,7 @@ export const terms = [
     "confidence": "medium"
   },
   {
+    "kind": "component",
     "id": "chip",
     "status": "draft",
     "category": "selection",
@@ -1272,6 +1296,7 @@ export const terms = [
     "confidence": "high"
   },
   {
+    "kind": "component",
     "id": "button",
     "status": "draft",
     "category": "action",
@@ -1324,6 +1349,7 @@ export const terms = [
     "confidence": "high"
   },
   {
+    "kind": "component",
     "id": "primary-button",
     "status": "draft",
     "category": "action",
@@ -1376,6 +1402,7 @@ export const terms = [
     "confidence": "high"
   },
   {
+    "kind": "component",
     "id": "secondary-button",
     "status": "draft",
     "category": "action",
@@ -1429,6 +1456,7 @@ export const terms = [
     "confidence": "high"
   },
   {
+    "kind": "component",
     "id": "destructive-button",
     "status": "draft",
     "category": "action",
@@ -1483,6 +1511,7 @@ export const terms = [
     "confidence": "high"
   },
   {
+    "kind": "component",
     "id": "icon-button",
     "status": "draft",
     "category": "action",
@@ -1535,6 +1564,7 @@ export const terms = [
     "confidence": "high"
   },
   {
+    "kind": "component",
     "id": "floating-action-button",
     "status": "draft",
     "category": "action",
@@ -1587,6 +1617,7 @@ export const terms = [
     "confidence": "high"
   },
   {
+    "kind": "component",
     "id": "link",
     "status": "draft",
     "category": "action",
@@ -1639,6 +1670,7 @@ export const terms = [
     "confidence": "medium"
   },
   {
+    "kind": "component",
     "id": "toolbar",
     "status": "draft",
     "category": "action",
@@ -1691,6 +1723,7 @@ export const terms = [
     "confidence": "high"
   },
   {
+    "kind": "component",
     "id": "split-button",
     "status": "draft",
     "category": "action",
@@ -1741,6 +1774,7 @@ export const terms = [
     "confidence": "medium"
   },
   {
+    "kind": "component",
     "id": "menu-item",
     "status": "draft",
     "category": "action",
@@ -1792,6 +1826,7 @@ export const terms = [
     "confidence": "high"
   },
   {
+    "kind": "component",
     "id": "card",
     "status": "draft",
     "category": "structure",
@@ -1845,6 +1880,7 @@ export const terms = [
     "confidence": "high"
   },
   {
+    "kind": "component",
     "id": "dialog",
     "status": "draft",
     "category": "structure",
@@ -1919,6 +1955,7 @@ export const terms = [
     "confidence": "high"
   },
   {
+    "kind": "component",
     "id": "drawer",
     "status": "draft",
     "category": "structure",
@@ -1991,6 +2028,7 @@ export const terms = [
     "confidence": "medium"
   },
   {
+    "kind": "component",
     "id": "popover",
     "status": "draft",
     "category": "structure",
@@ -2059,6 +2097,7 @@ export const terms = [
     "confidence": "high"
   },
   {
+    "kind": "component",
     "id": "header",
     "status": "draft",
     "category": "structure",
@@ -2113,6 +2152,7 @@ export const terms = [
     "confidence": "medium"
   },
   {
+    "kind": "component",
     "id": "footer",
     "status": "draft",
     "category": "structure",
@@ -2164,6 +2204,7 @@ export const terms = [
     "confidence": "low"
   },
   {
+    "kind": "component",
     "id": "grid",
     "status": "draft",
     "category": "structure",
@@ -2216,6 +2257,7 @@ export const terms = [
     "confidence": "medium"
   },
   {
+    "kind": "component",
     "id": "list",
     "status": "draft",
     "category": "structure",
@@ -2268,6 +2310,7 @@ export const terms = [
     "confidence": "high"
   },
   {
+    "kind": "component",
     "id": "accordion",
     "status": "draft",
     "category": "structure",
@@ -2320,6 +2363,7 @@ export const terms = [
     "confidence": "high"
   },
   {
+    "kind": "component",
     "id": "carousel",
     "status": "draft",
     "category": "structure",
@@ -2371,6 +2415,7 @@ export const terms = [
     "confidence": "medium"
   },
   {
+    "kind": "component",
     "id": "tooltip",
     "status": "draft",
     "category": "feedback",
@@ -2435,6 +2480,7 @@ export const terms = [
     "confidence": "high"
   },
   {
+    "kind": "component",
     "id": "toast",
     "status": "draft",
     "category": "feedback",
@@ -2506,6 +2552,7 @@ export const terms = [
     "confidence": "high"
   },
   {
+    "kind": "component",
     "id": "alert",
     "status": "draft",
     "category": "feedback",
@@ -2577,6 +2624,7 @@ export const terms = [
     "confidence": "high"
   },
   {
+    "kind": "component",
     "id": "badge",
     "status": "draft",
     "category": "feedback",
@@ -2630,6 +2678,7 @@ export const terms = [
     "confidence": "high"
   },
   {
+    "kind": "component",
     "id": "progress-bar",
     "status": "draft",
     "category": "feedback",
@@ -2681,6 +2730,7 @@ export const terms = [
     "confidence": "high"
   },
   {
+    "kind": "component",
     "id": "spinner",
     "status": "draft",
     "category": "feedback",
@@ -2733,6 +2783,7 @@ export const terms = [
     "confidence": "high"
   },
   {
+    "kind": "component",
     "id": "skeleton",
     "status": "draft",
     "category": "feedback",
@@ -2786,6 +2837,7 @@ export const terms = [
     "confidence": "high"
   },
   {
+    "kind": "component",
     "id": "empty-state",
     "status": "draft",
     "category": "feedback",
@@ -2838,6 +2890,7 @@ export const terms = [
     "confidence": "medium"
   },
   {
+    "kind": "component",
     "id": "validation-message",
     "status": "draft",
     "category": "feedback",
@@ -2890,6 +2943,7 @@ export const terms = [
     "confidence": "high"
   },
   {
+    "kind": "component",
     "id": "status-indicator",
     "status": "draft",
     "category": "feedback",
@@ -2944,6 +2998,7 @@ export const terms = [
     "confidence": "medium"
   },
   {
+    "kind": "component",
     "id": "table",
     "status": "draft",
     "category": "data-display",
@@ -2997,6 +3052,7 @@ export const terms = [
     "confidence": "high"
   },
   {
+    "kind": "component",
     "id": "avatar",
     "status": "draft",
     "category": "data-display",
@@ -3050,6 +3106,7 @@ export const terms = [
     "confidence": "high"
   },
   {
+    "kind": "component",
     "id": "metric-card",
     "status": "draft",
     "category": "data-display",
@@ -3103,6 +3160,7 @@ export const terms = [
     "confidence": "low"
   },
   {
+    "kind": "component",
     "id": "chart",
     "status": "draft",
     "category": "data-display",
@@ -3157,6 +3215,7 @@ export const terms = [
     "confidence": "medium"
   },
   {
+    "kind": "component",
     "id": "timeline",
     "status": "draft",
     "category": "data-display",
@@ -3210,6 +3269,7 @@ export const terms = [
     "confidence": "low"
   },
   {
+    "kind": "component",
     "id": "kanban",
     "status": "draft",
     "category": "data-display",
@@ -3262,6 +3322,7 @@ export const terms = [
     "confidence": "low"
   },
   {
+    "kind": "component",
     "id": "calendar-view",
     "status": "draft",
     "category": "data-display",
@@ -3315,6 +3376,7 @@ export const terms = [
     "confidence": "medium"
   },
   {
+    "kind": "component",
     "id": "tree-view",
     "status": "draft",
     "category": "data-display",
@@ -3369,6 +3431,7 @@ export const terms = [
     "confidence": "high"
   },
   {
+    "kind": "component",
     "id": "description-list",
     "status": "draft",
     "category": "data-display",
@@ -3421,6 +3484,7 @@ export const terms = [
     "confidence": "low"
   },
   {
+    "kind": "component",
     "id": "icon",
     "status": "draft",
     "category": "structure",
@@ -3475,6 +3539,7 @@ export const terms = [
     "confidence": "high"
   },
   {
+    "kind": "component",
     "id": "label",
     "status": "draft",
     "category": "structure",
@@ -3529,6 +3594,7 @@ export const terms = [
     "confidence": "high"
   },
   {
+    "kind": "component",
     "id": "divider",
     "status": "draft",
     "category": "structure",
@@ -3582,6 +3648,7 @@ export const terms = [
     "confidence": "high"
   },
   {
+    "kind": "component",
     "id": "spacer",
     "status": "draft",
     "category": "structure",
@@ -3635,6 +3702,7 @@ export const terms = [
     "confidence": "medium"
   },
   {
+    "kind": "component",
     "id": "typography",
     "status": "draft",
     "category": "structure",
@@ -3689,6 +3757,7 @@ export const terms = [
     "confidence": "medium"
   },
   {
+    "kind": "component",
     "id": "image",
     "status": "draft",
     "category": "structure",
@@ -3743,6 +3812,7 @@ export const terms = [
     "confidence": "medium"
   },
   {
+    "kind": "component",
     "id": "logo",
     "status": "draft",
     "category": "structure",
@@ -3797,6 +3867,7 @@ export const terms = [
     "confidence": "low"
   },
   {
+    "kind": "component",
     "id": "thumbnail",
     "status": "draft",
     "category": "structure",
@@ -3851,6 +3922,7 @@ export const terms = [
     "confidence": "medium"
   },
   {
+    "kind": "component",
     "id": "password-field",
     "status": "draft",
     "category": "input",
@@ -3904,6 +3976,7 @@ export const terms = [
     "confidence": "high"
   },
   {
+    "kind": "component",
     "id": "number-input",
     "status": "draft",
     "category": "input",
@@ -3958,6 +4031,7 @@ export const terms = [
     "confidence": "high"
   },
   {
+    "kind": "component",
     "id": "otp-input",
     "status": "draft",
     "category": "input",
@@ -4012,6 +4086,7 @@ export const terms = [
     "confidence": "high"
   },
   {
+    "kind": "component",
     "id": "autocomplete",
     "status": "draft",
     "category": "input",
@@ -4066,6 +4141,7 @@ export const terms = [
     "confidence": "medium"
   },
   {
+    "kind": "component",
     "id": "search-suggestions",
     "status": "draft",
     "category": "input",
@@ -4120,6 +4196,7 @@ export const terms = [
     "confidence": "medium"
   },
   {
+    "kind": "component",
     "id": "inline-edit",
     "status": "draft",
     "category": "input",
@@ -4174,6 +4251,7 @@ export const terms = [
     "confidence": "medium"
   },
   {
+    "kind": "component",
     "id": "rich-text-editor",
     "status": "draft",
     "category": "input",
@@ -4227,6 +4305,7 @@ export const terms = [
     "confidence": "medium"
   },
   {
+    "kind": "component",
     "id": "color-picker",
     "status": "draft",
     "category": "input",
@@ -4281,6 +4360,7 @@ export const terms = [
     "confidence": "low"
   },
   {
+    "kind": "component",
     "id": "listbox",
     "status": "draft",
     "category": "selection",
@@ -4335,6 +4415,7 @@ export const terms = [
     "confidence": "high"
   },
   {
+    "kind": "component",
     "id": "menu-bar",
     "status": "draft",
     "category": "selection",
@@ -4389,6 +4470,7 @@ export const terms = [
     "confidence": "high"
   },
   {
+    "kind": "component",
     "id": "bottom-navigation",
     "status": "draft",
     "category": "selection",
@@ -4444,6 +4526,7 @@ export const terms = [
     "confidence": "high"
   },
   {
+    "kind": "component",
     "id": "tab-bar",
     "status": "draft",
     "category": "selection",
@@ -4499,6 +4582,7 @@ export const terms = [
     "confidence": "high"
   },
   {
+    "kind": "component",
     "id": "filter-chip",
     "status": "draft",
     "category": "selection",
@@ -4553,6 +4637,7 @@ export const terms = [
     "confidence": "high"
   },
   {
+    "kind": "component",
     "id": "toggle-button",
     "status": "draft",
     "category": "selection",
@@ -4607,6 +4692,7 @@ export const terms = [
     "confidence": "high"
   },
   {
+    "kind": "component",
     "id": "disclosure",
     "status": "draft",
     "category": "selection",
@@ -4661,6 +4747,7 @@ export const terms = [
     "confidence": "high"
   },
   {
+    "kind": "component",
     "id": "anchor-nav",
     "status": "draft",
     "category": "selection",
@@ -4715,6 +4802,7 @@ export const terms = [
     "confidence": "medium"
   },
   {
+    "kind": "component",
     "id": "back-button",
     "status": "draft",
     "category": "selection",
@@ -4768,6 +4856,7 @@ export const terms = [
     "confidence": "high"
   },
   {
+    "kind": "component",
     "id": "navigation-bar",
     "status": "draft",
     "category": "selection",
@@ -4822,6 +4911,7 @@ export const terms = [
     "confidence": "high"
   },
   {
+    "kind": "component",
     "id": "button-group",
     "status": "draft",
     "category": "action",
@@ -4876,6 +4966,7 @@ export const terms = [
     "confidence": "medium"
   },
   {
+    "kind": "component",
     "id": "copy-button",
     "status": "draft",
     "category": "action",
@@ -4930,6 +5021,7 @@ export const terms = [
     "confidence": "medium"
   },
   {
+    "kind": "component",
     "id": "download-button",
     "status": "draft",
     "category": "action",
@@ -4984,6 +5076,7 @@ export const terms = [
     "confidence": "medium"
   },
   {
+    "kind": "component",
     "id": "share-button",
     "status": "draft",
     "category": "action",
@@ -5038,6 +5131,7 @@ export const terms = [
     "confidence": "medium"
   },
   {
+    "kind": "component",
     "id": "close-button",
     "status": "draft",
     "category": "action",
@@ -5091,6 +5185,7 @@ export const terms = [
     "confidence": "high"
   },
   {
+    "kind": "component",
     "id": "overflow-button",
     "status": "draft",
     "category": "action",
@@ -5145,6 +5240,7 @@ export const terms = [
     "confidence": "high"
   },
   {
+    "kind": "component",
     "id": "top-app-bar",
     "status": "draft",
     "category": "structure",
@@ -5199,6 +5295,7 @@ export const terms = [
     "confidence": "high"
   },
   {
+    "kind": "component",
     "id": "section",
     "status": "draft",
     "category": "structure",
@@ -5253,6 +5350,7 @@ export const terms = [
     "confidence": "medium"
   },
   {
+    "kind": "component",
     "id": "container",
     "status": "draft",
     "category": "structure",
@@ -5307,6 +5405,7 @@ export const terms = [
     "confidence": "low"
   },
   {
+    "kind": "component",
     "id": "hero",
     "status": "draft",
     "category": "structure",
@@ -5360,6 +5459,7 @@ export const terms = [
     "confidence": "low"
   },
   {
+    "kind": "component",
     "id": "filter-bar",
     "status": "draft",
     "category": "data-display",
@@ -5413,6 +5513,7 @@ export const terms = [
     "confidence": "medium"
   },
   {
+    "kind": "component",
     "id": "sort-control",
     "status": "draft",
     "category": "data-display",
@@ -5467,6 +5568,7 @@ export const terms = [
     "confidence": "medium"
   },
   {
+    "kind": "component",
     "id": "data-grid",
     "status": "draft",
     "category": "data-display",
@@ -5521,6 +5623,7 @@ export const terms = [
     "confidence": "high"
   },
   {
+    "kind": "component",
     "id": "legend",
     "status": "draft",
     "category": "data-display",
@@ -5575,6 +5678,7 @@ export const terms = [
     "confidence": "medium"
   },
   {
+    "kind": "component",
     "id": "chart-axis",
     "status": "draft",
     "category": "data-display",
@@ -5629,6 +5733,7 @@ export const terms = [
     "confidence": "medium"
   },
   {
+    "kind": "component",
     "id": "error-state",
     "status": "draft",
     "category": "feedback",
@@ -5684,6 +5789,7 @@ export const terms = [
     "confidence": "medium"
   },
   {
+    "kind": "component",
     "id": "success-state",
     "status": "draft",
     "category": "feedback",
@@ -5739,6 +5845,7 @@ export const terms = [
     "confidence": "medium"
   },
   {
+    "kind": "component",
     "id": "warning-state",
     "status": "draft",
     "category": "feedback",
@@ -5792,6 +5899,7 @@ export const terms = [
     "confidence": "medium"
   },
   {
+    "kind": "component",
     "id": "info-state",
     "status": "draft",
     "category": "feedback",
@@ -5845,6 +5953,7 @@ export const terms = [
     "confidence": "medium"
   },
   {
+    "kind": "component",
     "id": "loading-state",
     "status": "draft",
     "category": "feedback",
@@ -5898,6 +6007,7 @@ export const terms = [
     "confidence": "high"
   },
   {
+    "kind": "component",
     "id": "textarea-autosize",
     "status": "draft",
     "category": "input",
@@ -5951,6 +6061,7 @@ export const terms = [
     "confidence": "medium"
   },
   {
+    "kind": "component",
     "id": "input-group",
     "status": "draft",
     "category": "input",
@@ -6004,6 +6115,7 @@ export const terms = [
     "confidence": "medium"
   },
   {
+    "kind": "component",
     "id": "date-range-picker",
     "status": "draft",
     "category": "input",
@@ -6055,6 +6167,7 @@ export const terms = [
     "confidence": "medium"
   },
   {
+    "kind": "component",
     "id": "time-picker",
     "status": "draft",
     "category": "input",
@@ -6106,6 +6219,7 @@ export const terms = [
     "confidence": "medium"
   },
   {
+    "kind": "component",
     "id": "rating-input",
     "status": "draft",
     "category": "input",
@@ -6157,6 +6271,7 @@ export const terms = [
     "confidence": "medium"
   },
   {
+    "kind": "component",
     "id": "tag-input",
     "status": "draft",
     "category": "input",
@@ -6208,6 +6323,7 @@ export const terms = [
     "confidence": "medium"
   },
   {
+    "kind": "component",
     "id": "masked-input",
     "status": "draft",
     "category": "input",
@@ -6261,6 +6377,7 @@ export const terms = [
     "confidence": "medium"
   },
   {
+    "kind": "component",
     "id": "toggle-group",
     "status": "draft",
     "category": "selection",
@@ -6329,6 +6446,7 @@ export const terms = [
     "confidence": "high"
   },
   {
+    "kind": "component",
     "id": "navigation-drawer",
     "status": "draft",
     "category": "selection",
@@ -6380,6 +6498,7 @@ export const terms = [
     "confidence": "high"
   },
   {
+    "kind": "component",
     "id": "mega-menu",
     "status": "draft",
     "category": "selection",
@@ -6432,6 +6551,7 @@ export const terms = [
     "confidence": "medium"
   },
   {
+    "kind": "component",
     "id": "context-menu",
     "status": "draft",
     "category": "selection",
@@ -6483,6 +6603,7 @@ export const terms = [
     "confidence": "high"
   },
   {
+    "kind": "component",
     "id": "loading-button",
     "status": "draft",
     "category": "action",
@@ -6534,6 +6655,7 @@ export const terms = [
     "confidence": "high"
   },
   {
+    "kind": "component",
     "id": "copy-field",
     "status": "draft",
     "category": "action",
@@ -6585,6 +6707,7 @@ export const terms = [
     "confidence": "medium"
   },
   {
+    "kind": "component",
     "id": "bulk-action-bar",
     "status": "draft",
     "category": "action",
@@ -6636,6 +6759,7 @@ export const terms = [
     "confidence": "medium"
   },
   {
+    "kind": "component",
     "id": "speed-dial",
     "status": "draft",
     "category": "action",
@@ -6687,6 +6811,7 @@ export const terms = [
     "confidence": "medium"
   },
   {
+    "kind": "component",
     "id": "app-shell",
     "status": "draft",
     "category": "structure",
@@ -6738,6 +6863,7 @@ export const terms = [
     "confidence": "medium"
   },
   {
+    "kind": "component",
     "id": "split-pane",
     "status": "draft",
     "category": "structure",
@@ -6789,6 +6915,7 @@ export const terms = [
     "confidence": "medium"
   },
   {
+    "kind": "component",
     "id": "snackbar",
     "status": "draft",
     "category": "feedback",
@@ -6857,6 +6984,7 @@ export const terms = [
     "confidence": "high"
   },
   {
+    "kind": "component",
     "id": "undo-toast",
     "status": "draft",
     "category": "feedback",
@@ -6908,6 +7036,7 @@ export const terms = [
     "confidence": "medium"
   },
   {
+    "kind": "component",
     "id": "row-selection",
     "status": "draft",
     "category": "data-display",
@@ -6959,6 +7088,7 @@ export const terms = [
     "confidence": "high"
   },
   {
+    "kind": "component",
     "id": "search-view",
     "status": "draft",
     "category": "input",
@@ -7011,6 +7141,7 @@ export const terms = [
     "confidence": "high"
   },
   {
+    "kind": "component",
     "id": "tree-navigation",
     "status": "draft",
     "category": "selection",
@@ -7062,6 +7193,7 @@ export const terms = [
     "confidence": "high"
   },
   {
+    "kind": "component",
     "id": "side-sheet",
     "status": "draft",
     "category": "structure",
@@ -7130,6 +7262,7 @@ export const terms = [
     "confidence": "medium"
   },
   {
+    "kind": "component",
     "id": "breadcrumbs-menu",
     "status": "draft",
     "category": "selection",
@@ -7181,6 +7314,7 @@ export const terms = [
     "confidence": "medium"
   },
   {
+    "kind": "component",
     "id": "icon-toggle-button",
     "status": "draft",
     "category": "action",
@@ -7232,6 +7366,7 @@ export const terms = [
     "confidence": "high"
   },
   {
+    "kind": "component",
     "id": "resizable-panel",
     "status": "draft",
     "category": "structure",
@@ -7283,6 +7418,7 @@ export const terms = [
     "confidence": "medium"
   },
   {
+    "kind": "component",
     "id": "master-detail",
     "status": "draft",
     "category": "structure",
@@ -7334,6 +7470,7 @@ export const terms = [
     "confidence": "medium"
   },
   {
+    "kind": "component",
     "id": "sticky-header",
     "status": "draft",
     "category": "structure",
@@ -7385,6 +7522,7 @@ export const terms = [
     "confidence": "medium"
   },
   {
+    "kind": "component",
     "id": "sticky-footer-bar",
     "status": "draft",
     "category": "structure",
@@ -7436,6 +7574,7 @@ export const terms = [
     "confidence": "medium"
   },
   {
+    "kind": "component",
     "id": "sidebar-section",
     "status": "draft",
     "category": "structure",
@@ -7487,6 +7626,7 @@ export const terms = [
     "confidence": "high"
   },
   {
+    "kind": "component",
     "id": "inline-alert",
     "status": "draft",
     "category": "feedback",
@@ -7538,6 +7678,7 @@ export const terms = [
     "confidence": "high"
   },
   {
+    "kind": "component",
     "id": "error-boundary",
     "status": "draft",
     "category": "feedback",
@@ -7589,6 +7730,7 @@ export const terms = [
     "confidence": "medium"
   },
   {
+    "kind": "component",
     "id": "confirmation-dialog",
     "status": "draft",
     "category": "feedback",
@@ -7640,6 +7782,7 @@ export const terms = [
     "confidence": "high"
   },
   {
+    "kind": "component",
     "id": "rate-limit-state",
     "status": "draft",
     "category": "feedback",
@@ -7693,6 +7836,7 @@ export const terms = [
     "confidence": "medium"
   },
   {
+    "kind": "component",
     "id": "data-table-toolbar",
     "status": "draft",
     "category": "data-display",
@@ -7744,6 +7888,7 @@ export const terms = [
     "confidence": "high"
   },
   {
+    "kind": "component",
     "id": "column-header-menu",
     "status": "draft",
     "category": "data-display",
@@ -7795,6 +7940,7 @@ export const terms = [
     "confidence": "medium"
   },
   {
+    "kind": "component",
     "id": "faceted-filter",
     "status": "draft",
     "category": "data-display",
@@ -7846,6 +7992,7 @@ export const terms = [
     "confidence": "high"
   },
   {
+    "kind": "component",
     "id": "stat-list",
     "status": "draft",
     "category": "data-display",
@@ -7897,6 +8044,7 @@ export const terms = [
     "confidence": "medium"
   },
   {
+    "kind": "component",
     "id": "activity-feed",
     "status": "draft",
     "category": "data-display",
@@ -7948,6 +8096,7 @@ export const terms = [
     "confidence": "high"
   },
   {
+    "kind": "component",
     "id": "map-marker",
     "status": "draft",
     "category": "data-display",
@@ -7999,6 +8148,7 @@ export const terms = [
     "confidence": "medium"
   },
   {
+    "kind": "component",
     "id": "scrubber",
     "status": "draft",
     "category": "input",
@@ -8050,6 +8200,7 @@ export const terms = [
     "confidence": "medium"
   },
   {
+    "kind": "component",
     "id": "range-slider",
     "status": "draft",
     "category": "input",
@@ -8102,6 +8253,7 @@ export const terms = [
     "confidence": "high"
   },
   {
+    "kind": "component",
     "id": "multi-select",
     "status": "draft",
     "category": "input",
@@ -8153,6 +8305,7 @@ export const terms = [
     "confidence": "high"
   },
   {
+    "kind": "component",
     "id": "transfer-list",
     "status": "draft",
     "category": "data-display",
@@ -8204,6 +8357,7 @@ export const terms = [
     "confidence": "medium"
   },
   {
+    "kind": "component",
     "id": "virtualized-list",
     "status": "draft",
     "category": "data-display",
@@ -8255,6 +8409,7 @@ export const terms = [
     "confidence": "medium"
   },
   {
+    "kind": "component",
     "id": "infinite-scroll",
     "status": "draft",
     "category": "data-display",
@@ -8306,6 +8461,7 @@ export const terms = [
     "confidence": "medium"
   },
   {
+    "kind": "component",
     "id": "pull-to-refresh",
     "status": "draft",
     "category": "input",
@@ -8357,6 +8513,7 @@ export const terms = [
     "confidence": "medium"
   },
   {
+    "kind": "component",
     "id": "swipe-action",
     "status": "draft",
     "category": "action",
@@ -8408,6 +8565,7 @@ export const terms = [
     "confidence": "medium"
   },
   {
+    "kind": "component",
     "id": "wizard",
     "status": "draft",
     "category": "structure",
@@ -8459,6 +8617,7 @@ export const terms = [
     "confidence": "medium"
   },
   {
+    "kind": "component",
     "id": "toast-stack",
     "status": "draft",
     "category": "feedback",
@@ -8510,6 +8669,7 @@ export const terms = [
     "confidence": "medium"
   },
   {
+    "kind": "component",
     "id": "skeleton-table",
     "status": "draft",
     "category": "feedback",
@@ -8561,6 +8721,7 @@ export const terms = [
     "confidence": "high"
   },
   {
+    "kind": "component",
     "id": "empty-table",
     "status": "draft",
     "category": "data-display",
@@ -8612,6 +8773,7 @@ export const terms = [
     "confidence": "high"
   },
   {
+    "kind": "component",
     "id": "table-density-control",
     "status": "draft",
     "category": "data-display",
@@ -8663,6 +8825,7 @@ export const terms = [
     "confidence": "medium"
   },
   {
+    "kind": "component",
     "id": "column-visibility-menu",
     "status": "draft",
     "category": "data-display",
@@ -8714,6 +8877,7 @@ export const terms = [
     "confidence": "medium"
   },
   {
+    "kind": "component",
     "id": "saved-view-tabs",
     "status": "draft",
     "category": "data-display",
@@ -8765,6 +8929,7 @@ export const terms = [
     "confidence": "medium"
   },
   {
+    "kind": "component",
     "id": "filter-panel",
     "status": "draft",
     "category": "data-display",
@@ -8816,6 +8981,7 @@ export const terms = [
     "confidence": "high"
   },
   {
+    "kind": "component",
     "id": "advanced-filter-builder",
     "status": "draft",
     "category": "data-display",
@@ -8867,6 +9033,7 @@ export const terms = [
     "confidence": "medium"
   },
   {
+    "kind": "component",
     "id": "query-builder",
     "status": "draft",
     "category": "data-display",
@@ -8918,6 +9085,7 @@ export const terms = [
     "confidence": "medium"
   },
   {
+    "kind": "component",
     "id": "grouped-list",
     "status": "draft",
     "category": "data-display",
@@ -8969,6 +9137,7 @@ export const terms = [
     "confidence": "high"
   },
   {
+    "kind": "component",
     "id": "nested-list",
     "status": "draft",
     "category": "data-display",
@@ -9020,6 +9189,7 @@ export const terms = [
     "confidence": "medium"
   },
   {
+    "kind": "component",
     "id": "draggable-list",
     "status": "draft",
     "category": "data-display",
@@ -9071,6 +9241,7 @@ export const terms = [
     "confidence": "medium"
   },
   {
+    "kind": "component",
     "id": "reorder-handle",
     "status": "draft",
     "category": "action",
@@ -9122,6 +9293,7 @@ export const terms = [
     "confidence": "medium"
   },
   {
+    "kind": "component",
     "id": "selection-summary",
     "status": "draft",
     "category": "data-display",
@@ -9173,6 +9345,7 @@ export const terms = [
     "confidence": "high"
   },
   {
+    "kind": "component",
     "id": "comparison-table",
     "status": "draft",
     "category": "data-display",
@@ -9224,6 +9397,7 @@ export const terms = [
     "confidence": "medium"
   },
   {
+    "kind": "component",
     "id": "pivot-table",
     "status": "draft",
     "category": "data-display",
@@ -9275,6 +9449,7 @@ export const terms = [
     "confidence": "medium"
   },
   {
+    "kind": "component",
     "id": "tree-table",
     "status": "draft",
     "category": "data-display",
@@ -9326,6 +9501,7 @@ export const terms = [
     "confidence": "medium"
   },
   {
+    "kind": "component",
     "id": "expandable-row",
     "status": "draft",
     "category": "data-display",
@@ -9377,6 +9553,7 @@ export const terms = [
     "confidence": "high"
   },
   {
+    "kind": "component",
     "id": "detail-row",
     "status": "draft",
     "category": "data-display",
@@ -9428,6 +9605,7 @@ export const terms = [
     "confidence": "medium"
   },
   {
+    "kind": "component",
     "id": "audit-log",
     "status": "draft",
     "category": "data-display",
@@ -9482,6 +9660,7 @@ export const terms = [
     "confidence": "medium"
   },
   {
+    "kind": "component",
     "id": "workspace-switcher",
     "status": "draft",
     "category": "selection",
@@ -9533,6 +9712,7 @@ export const terms = [
     "confidence": "medium"
   },
   {
+    "kind": "component",
     "id": "account-switcher",
     "status": "draft",
     "category": "selection",
@@ -9584,6 +9764,7 @@ export const terms = [
     "confidence": "medium"
   },
   {
+    "kind": "component",
     "id": "global-header",
     "status": "draft",
     "category": "structure",
@@ -9636,6 +9817,7 @@ export const terms = [
     "confidence": "medium"
   },
   {
+    "kind": "component",
     "id": "utility-bar",
     "status": "draft",
     "category": "structure",
@@ -9687,6 +9869,7 @@ export const terms = [
     "confidence": "medium"
   },
   {
+    "kind": "component",
     "id": "command-bar",
     "status": "draft",
     "category": "action",
@@ -9738,6 +9921,7 @@ export const terms = [
     "confidence": "high"
   },
   {
+    "kind": "component",
     "id": "status-bar",
     "status": "draft",
     "category": "feedback",
@@ -9789,6 +9973,7 @@ export const terms = [
     "confidence": "medium"
   },
   {
+    "kind": "component",
     "id": "breadcrumb-header",
     "status": "draft",
     "category": "structure",
@@ -9842,6 +10027,7 @@ export const terms = [
     "confidence": "high"
   },
   {
+    "kind": "component",
     "id": "page-title-bar",
     "status": "draft",
     "category": "structure",
@@ -9895,6 +10081,7 @@ export const terms = [
     "confidence": "medium"
   },
   {
+    "kind": "component",
     "id": "content-tabs",
     "status": "draft",
     "category": "selection",
@@ -9946,6 +10133,7 @@ export const terms = [
     "confidence": "high"
   },
   {
+    "kind": "component",
     "id": "right-rail",
     "status": "draft",
     "category": "structure",
@@ -9997,6 +10185,7 @@ export const terms = [
     "confidence": "medium"
   },
   {
+    "kind": "component",
     "id": "inspector-panel",
     "status": "draft",
     "category": "structure",
@@ -10048,6 +10237,7 @@ export const terms = [
     "confidence": "medium"
   },
   {
+    "kind": "component",
     "id": "properties-panel",
     "status": "draft",
     "category": "structure",
@@ -10099,6 +10289,7 @@ export const terms = [
     "confidence": "medium"
   },
   {
+    "kind": "component",
     "id": "preview-pane",
     "status": "draft",
     "category": "structure",
@@ -10150,6 +10341,7 @@ export const terms = [
     "confidence": "medium"
   },
   {
+    "kind": "component",
     "id": "canvas-toolbar",
     "status": "draft",
     "category": "action",
@@ -10201,6 +10393,7 @@ export const terms = [
     "confidence": "medium"
   },
   {
+    "kind": "component",
     "id": "floating-panel",
     "status": "draft",
     "category": "structure",
@@ -10252,6 +10445,7 @@ export const terms = [
     "confidence": "medium"
   },
   {
+    "kind": "component",
     "id": "dockable-panel",
     "status": "draft",
     "category": "structure",
@@ -10303,6 +10497,7 @@ export const terms = [
     "confidence": "medium"
   },
   {
+    "kind": "component",
     "id": "collapsible-sidebar",
     "status": "draft",
     "category": "structure",
@@ -10354,6 +10549,7 @@ export const terms = [
     "confidence": "high"
   },
   {
+    "kind": "component",
     "id": "mini-sidebar",
     "status": "draft",
     "category": "structure",
@@ -10405,6 +10601,7 @@ export const terms = [
     "confidence": "medium"
   },
   {
+    "kind": "component",
     "id": "responsive-stack",
     "status": "draft",
     "category": "structure",
@@ -10457,6 +10654,7 @@ export const terms = [
     "confidence": "medium"
   },
   {
+    "kind": "component",
     "id": "mobile-bottom-sheet",
     "status": "draft",
     "category": "structure",
@@ -10508,6 +10706,7 @@ export const terms = [
     "confidence": "high"
   },
   {
+    "kind": "component",
     "id": "safe-area",
     "status": "draft",
     "category": "structure",
@@ -10562,6 +10761,7 @@ export const terms = [
     "confidence": "high"
   },
   {
+    "kind": "component",
     "id": "mobile-status-bar",
     "status": "draft",
     "category": "structure",
@@ -10615,6 +10815,7 @@ export const terms = [
     "confidence": "medium"
   },
   {
+    "kind": "component",
     "id": "mobile-app-bar",
     "status": "draft",
     "category": "structure",
@@ -10669,6 +10870,7 @@ export const terms = [
     "confidence": "high"
   },
   {
+    "kind": "component",
     "id": "large-title-header",
     "status": "draft",
     "category": "structure",
@@ -10722,6 +10924,7 @@ export const terms = [
     "confidence": "medium"
   },
   {
+    "kind": "component",
     "id": "bottom-app-bar",
     "status": "draft",
     "category": "action",
@@ -10775,6 +10978,7 @@ export const terms = [
     "confidence": "high"
   },
   {
+    "kind": "component",
     "id": "mobile-search-header",
     "status": "draft",
     "category": "input",
@@ -10830,6 +11034,7 @@ export const terms = [
     "confidence": "high"
   },
   {
+    "kind": "component",
     "id": "mobile-segmented-tabs",
     "status": "draft",
     "category": "selection",
@@ -10882,6 +11087,7 @@ export const terms = [
     "confidence": "high"
   },
   {
+    "kind": "component",
     "id": "standard-bottom-sheet",
     "status": "draft",
     "category": "structure",
@@ -10936,6 +11142,7 @@ export const terms = [
     "confidence": "high"
   },
   {
+    "kind": "component",
     "id": "modal-bottom-sheet",
     "status": "draft",
     "category": "structure",
@@ -11006,6 +11213,7 @@ export const terms = [
     "confidence": "high"
   },
   {
+    "kind": "component",
     "id": "action-sheet",
     "status": "draft",
     "category": "action",
@@ -11059,6 +11267,7 @@ export const terms = [
     "confidence": "high"
   },
   {
+    "kind": "component",
     "id": "share-sheet",
     "status": "draft",
     "category": "action",
@@ -11114,6 +11323,7 @@ export const terms = [
     "confidence": "medium"
   },
   {
+    "kind": "component",
     "id": "full-screen-dialog",
     "status": "draft",
     "category": "structure",
@@ -11166,6 +11376,7 @@ export const terms = [
     "confidence": "high"
   },
   {
+    "kind": "component",
     "id": "permission-prompt",
     "status": "draft",
     "category": "feedback",
@@ -11221,6 +11432,7 @@ export const terms = [
     "confidence": "high"
   },
   {
+    "kind": "component",
     "id": "permission-education-screen",
     "status": "draft",
     "category": "feedback",
@@ -11275,6 +11487,7 @@ export const terms = [
     "confidence": "medium"
   },
   {
+    "kind": "component",
     "id": "mobile-snackbar",
     "status": "draft",
     "category": "feedback",
@@ -11327,6 +11540,7 @@ export const terms = [
     "confidence": "high"
   },
   {
+    "kind": "component",
     "id": "mobile-toast",
     "status": "draft",
     "category": "feedback",
@@ -11379,6 +11593,7 @@ export const terms = [
     "confidence": "medium"
   },
   {
+    "kind": "component",
     "id": "mobile-alert-dialog",
     "status": "draft",
     "category": "feedback",
@@ -11433,6 +11648,7 @@ export const terms = [
     "confidence": "high"
   },
   {
+    "kind": "component",
     "id": "mobile-popover-menu",
     "status": "draft",
     "category": "selection",
@@ -11485,6 +11701,7 @@ export const terms = [
     "confidence": "high"
   },
   {
+    "kind": "component",
     "id": "sheet-drag-handle",
     "status": "draft",
     "category": "structure",
@@ -11538,6 +11755,7 @@ export const terms = [
     "confidence": "high"
   },
   {
+    "kind": "component",
     "id": "pull-to-refresh-indicator",
     "status": "draft",
     "category": "input",
@@ -11592,6 +11810,7 @@ export const terms = [
     "confidence": "high"
   },
   {
+    "kind": "component",
     "id": "swipe-to-delete",
     "status": "draft",
     "category": "action",
@@ -11644,6 +11863,7 @@ export const terms = [
     "confidence": "high"
   },
   {
+    "kind": "component",
     "id": "swipe-action-row",
     "status": "draft",
     "category": "action",
@@ -11697,6 +11917,7 @@ export const terms = [
     "confidence": "high"
   },
   {
+    "kind": "component",
     "id": "long-press-menu",
     "status": "draft",
     "category": "selection",
@@ -11749,6 +11970,7 @@ export const terms = [
     "confidence": "high"
   },
   {
+    "kind": "component",
     "id": "drag-to-reorder-list",
     "status": "draft",
     "category": "data-display",
@@ -11802,6 +12024,7 @@ export const terms = [
     "confidence": "high"
   },
   {
+    "kind": "component",
     "id": "grab-handle",
     "status": "draft",
     "category": "action",
@@ -11854,6 +12077,7 @@ export const terms = [
     "confidence": "medium"
   },
   {
+    "kind": "component",
     "id": "page-control",
     "status": "draft",
     "category": "selection",
@@ -11906,6 +12130,7 @@ export const terms = [
     "confidence": "high"
   },
   {
+    "kind": "component",
     "id": "carousel-peek",
     "status": "draft",
     "category": "structure",
@@ -11958,6 +12183,7 @@ export const terms = [
     "confidence": "medium"
   },
   {
+    "kind": "component",
     "id": "edge-swipe-back",
     "status": "draft",
     "category": "selection",
@@ -12011,6 +12237,7 @@ export const terms = [
     "confidence": "medium"
   },
   {
+    "kind": "component",
     "id": "pinch-zoom-viewer",
     "status": "draft",
     "category": "action",
@@ -12065,6 +12292,7 @@ export const terms = [
     "confidence": "high"
   },
   {
+    "kind": "component",
     "id": "scrim",
     "status": "draft",
     "category": "structure",
@@ -12119,6 +12347,7 @@ export const terms = [
     "confidence": "high"
   },
   {
+    "kind": "component",
     "id": "touch-ripple",
     "status": "draft",
     "category": "feedback",
@@ -12172,6 +12401,7 @@ export const terms = [
     "confidence": "medium"
   },
   {
+    "kind": "component",
     "id": "otp-code-input",
     "status": "draft",
     "category": "input",
@@ -12227,6 +12457,7 @@ export const terms = [
     "confidence": "high"
   },
   {
+    "kind": "component",
     "id": "passcode-keypad",
     "status": "draft",
     "category": "input",
@@ -12281,6 +12512,7 @@ export const terms = [
     "confidence": "medium"
   },
   {
+    "kind": "component",
     "id": "biometric-prompt",
     "status": "draft",
     "category": "feedback",
@@ -12336,6 +12568,7 @@ export const terms = [
     "confidence": "high"
   },
   {
+    "kind": "component",
     "id": "mobile-date-picker",
     "status": "draft",
     "category": "input",
@@ -12390,6 +12623,7 @@ export const terms = [
     "confidence": "high"
   },
   {
+    "kind": "component",
     "id": "wheel-picker",
     "status": "draft",
     "category": "input",
@@ -12441,6 +12675,7 @@ export const terms = [
     "confidence": "high"
   },
   {
+    "kind": "component",
     "id": "time-wheel-picker",
     "status": "draft",
     "category": "input",
@@ -12496,6 +12731,7 @@ export const terms = [
     "confidence": "high"
   },
   {
+    "kind": "component",
     "id": "mobile-search-sheet",
     "status": "draft",
     "category": "input",
@@ -12549,6 +12785,7 @@ export const terms = [
     "confidence": "high"
   },
   {
+    "kind": "component",
     "id": "chip-input-mobile",
     "status": "draft",
     "category": "input",
@@ -12603,6 +12840,7 @@ export const terms = [
     "confidence": "high"
   },
   {
+    "kind": "component",
     "id": "contact-picker",
     "status": "draft",
     "category": "input",
@@ -12658,6 +12896,7 @@ export const terms = [
     "confidence": "medium"
   },
   {
+    "kind": "component",
     "id": "address-autocomplete",
     "status": "draft",
     "category": "input",
@@ -12712,6 +12951,7 @@ export const terms = [
     "confidence": "high"
   },
   {
+    "kind": "component",
     "id": "voice-input-button",
     "status": "draft",
     "category": "action",
@@ -12766,6 +13006,7 @@ export const terms = [
     "confidence": "medium"
   },
   {
+    "kind": "component",
     "id": "clear-text-button",
     "status": "draft",
     "category": "action",
@@ -12820,6 +13061,7 @@ export const terms = [
     "confidence": "high"
   },
   {
+    "kind": "component",
     "id": "feed-card-mobile",
     "status": "draft",
     "category": "data-display",
@@ -12872,6 +13114,7 @@ export const terms = [
     "confidence": "high"
   },
   {
+    "kind": "component",
     "id": "story-rail",
     "status": "draft",
     "category": "data-display",
@@ -12924,6 +13167,7 @@ export const terms = [
     "confidence": "medium"
   },
   {
+    "kind": "component",
     "id": "story-viewer",
     "status": "draft",
     "category": "data-display",
@@ -12976,6 +13220,7 @@ export const terms = [
     "confidence": "medium"
   },
   {
+    "kind": "component",
     "id": "media-lightbox-mobile",
     "status": "draft",
     "category": "structure",
@@ -13030,6 +13275,7 @@ export const terms = [
     "confidence": "high"
   },
   {
+    "kind": "component",
     "id": "comment-composer",
     "status": "draft",
     "category": "input",
@@ -13084,6 +13330,7 @@ export const terms = [
     "confidence": "high"
   },
   {
+    "kind": "component",
     "id": "bottom-cta-bar",
     "status": "draft",
     "category": "action",
@@ -13137,6 +13384,7 @@ export const terms = [
     "confidence": "high"
   },
   {
+    "kind": "component",
     "id": "product-option-sheet",
     "status": "draft",
     "category": "input",
@@ -13189,6 +13437,7 @@ export const terms = [
     "confidence": "high"
   },
   {
+    "kind": "component",
     "id": "cart-summary-bar",
     "status": "draft",
     "category": "data-display",
@@ -13243,6 +13492,7 @@ export const terms = [
     "confidence": "high"
   },
   {
+    "kind": "component",
     "id": "checkout-progress-header",
     "status": "draft",
     "category": "feedback",
@@ -13295,6 +13545,7 @@ export const terms = [
     "confidence": "high"
   },
   {
+    "kind": "component",
     "id": "delivery-tracker",
     "status": "draft",
     "category": "feedback",
@@ -13350,6 +13601,7 @@ export const terms = [
     "confidence": "high"
   },
   {
+    "kind": "component",
     "id": "map-bottom-panel",
     "status": "draft",
     "category": "structure",
@@ -13404,6 +13656,7 @@ export const terms = [
     "confidence": "high"
   },
   {
+    "kind": "component",
     "id": "location-permission-empty",
     "status": "draft",
     "category": "feedback",
@@ -13458,6 +13711,7 @@ export const terms = [
     "confidence": "high"
   },
   {
+    "kind": "component",
     "id": "onboarding-pager",
     "status": "draft",
     "category": "selection",
@@ -13510,6 +13764,7 @@ export const terms = [
     "confidence": "high"
   },
   {
+    "kind": "component",
     "id": "coach-mark",
     "status": "draft",
     "category": "feedback",
@@ -13564,6 +13819,7 @@ export const terms = [
     "confidence": "medium"
   },
   {
+    "kind": "component",
     "id": "mobile-empty-feed",
     "status": "draft",
     "category": "feedback",
@@ -13618,6 +13874,7 @@ export const terms = [
     "confidence": "high"
   },
   {
+    "kind": "component",
     "id": "page-layout",
     "status": "draft",
     "category": "structure",
@@ -13669,6 +13926,7 @@ export const terms = [
     "confidence": "high"
   },
   {
+    "kind": "component",
     "id": "dashboard-grid",
     "status": "draft",
     "category": "structure",
@@ -13720,6 +13978,7 @@ export const terms = [
     "confidence": "medium"
   },
   {
+    "kind": "component",
     "id": "permission-state",
     "status": "draft",
     "category": "feedback",
@@ -13771,6 +14030,7 @@ export const terms = [
     "confidence": "medium"
   },
   {
+    "kind": "component",
     "id": "locked-state",
     "status": "draft",
     "category": "feedback",
@@ -13822,6 +14082,7 @@ export const terms = [
     "confidence": "medium"
   },
   {
+    "kind": "component",
     "id": "offline-state",
     "status": "draft",
     "category": "feedback",
@@ -13873,6 +14134,7 @@ export const terms = [
     "confidence": "high"
   },
   {
+    "kind": "component",
     "id": "maintenance-state",
     "status": "draft",
     "category": "feedback",
@@ -13924,6 +14186,7 @@ export const terms = [
     "confidence": "medium"
   },
   {
+    "kind": "component",
     "id": "syncing-state",
     "status": "draft",
     "category": "feedback",
@@ -13975,6 +14238,7 @@ export const terms = [
     "confidence": "high"
   },
   {
+    "kind": "component",
     "id": "saving-indicator",
     "status": "draft",
     "category": "feedback",
@@ -14026,6 +14290,7 @@ export const terms = [
     "confidence": "medium"
   },
   {
+    "kind": "component",
     "id": "unsaved-changes-banner",
     "status": "draft",
     "category": "feedback",
@@ -14077,6 +14342,7 @@ export const terms = [
     "confidence": "high"
   },
   {
+    "kind": "component",
     "id": "session-expired-dialog",
     "status": "draft",
     "category": "feedback",
@@ -14128,6 +14394,7 @@ export const terms = [
     "confidence": "high"
   },
   {
+    "kind": "component",
     "id": "upgrade-prompt",
     "status": "draft",
     "category": "feedback",
@@ -14179,6 +14446,7 @@ export const terms = [
     "confidence": "medium"
   },
   {
+    "kind": "component",
     "id": "quota-warning",
     "status": "draft",
     "category": "feedback",
@@ -14230,6 +14498,7 @@ export const terms = [
     "confidence": "high"
   },
   {
+    "kind": "component",
     "id": "trial-banner",
     "status": "draft",
     "category": "feedback",
@@ -14281,6 +14550,7 @@ export const terms = [
     "confidence": "medium"
   },
   {
+    "kind": "component",
     "id": "destructive-confirmation",
     "status": "draft",
     "category": "action",
@@ -14334,6 +14604,7 @@ export const terms = [
     "confidence": "high"
   },
   {
+    "kind": "component",
     "id": "success-toast",
     "status": "draft",
     "category": "feedback",
@@ -14385,6 +14656,7 @@ export const terms = [
     "confidence": "high"
   },
   {
+    "kind": "component",
     "id": "error-toast",
     "status": "draft",
     "category": "feedback",
@@ -14436,6 +14708,7 @@ export const terms = [
     "confidence": "high"
   },
   {
+    "kind": "component",
     "id": "notification-center",
     "status": "draft",
     "category": "feedback",
@@ -14487,6 +14760,7 @@ export const terms = [
     "confidence": "medium"
   },
   {
+    "kind": "component",
     "id": "notification-list",
     "status": "draft",
     "category": "data-display",
@@ -14538,6 +14812,7 @@ export const terms = [
     "confidence": "medium"
   },
   {
+    "kind": "component",
     "id": "status-chip",
     "status": "draft",
     "category": "feedback",
@@ -14589,6 +14864,7 @@ export const terms = [
     "confidence": "high"
   },
   {
+    "kind": "component",
     "id": "health-indicator",
     "status": "draft",
     "category": "feedback",
@@ -14642,6 +14918,7 @@ export const terms = [
     "confidence": "medium"
   },
   {
+    "kind": "component",
     "id": "connection-status",
     "status": "draft",
     "category": "feedback",
@@ -14693,6 +14970,7 @@ export const terms = [
     "confidence": "medium"
   },
   {
+    "kind": "component",
     "id": "retry-panel",
     "status": "draft",
     "category": "feedback",
@@ -14744,6 +15022,7 @@ export const terms = [
     "confidence": "high"
   },
   {
+    "kind": "component",
     "id": "media-card",
     "status": "draft",
     "category": "data-display",
@@ -14797,6 +15076,7 @@ export const terms = [
     "confidence": "high"
   },
   {
+    "kind": "component",
     "id": "video-player-controls",
     "status": "draft",
     "category": "action",
@@ -14849,6 +15129,7 @@ export const terms = [
     "confidence": "high"
   },
   {
+    "kind": "component",
     "id": "audio-player-controls",
     "status": "draft",
     "category": "action",
@@ -14900,6 +15181,7 @@ export const terms = [
     "confidence": "high"
   },
   {
+    "kind": "component",
     "id": "image-gallery",
     "status": "draft",
     "category": "data-display",
@@ -14951,6 +15233,7 @@ export const terms = [
     "confidence": "medium"
   },
   {
+    "kind": "component",
     "id": "lightbox",
     "status": "draft",
     "category": "structure",
@@ -15002,6 +15285,7 @@ export const terms = [
     "confidence": "medium"
   },
   {
+    "kind": "component",
     "id": "cropper",
     "status": "draft",
     "category": "action",
@@ -15054,6 +15338,7 @@ export const terms = [
     "confidence": "medium"
   },
   {
+    "kind": "component",
     "id": "upload-dropzone",
     "status": "draft",
     "category": "input",
@@ -15106,6 +15391,7 @@ export const terms = [
     "confidence": "high"
   },
   {
+    "kind": "component",
     "id": "attachment-list",
     "status": "draft",
     "category": "data-display",
@@ -15158,6 +15444,7 @@ export const terms = [
     "confidence": "medium"
   },
   {
+    "kind": "component",
     "id": "file-card",
     "status": "draft",
     "category": "data-display",
@@ -15210,6 +15497,7 @@ export const terms = [
     "confidence": "medium"
   },
   {
+    "kind": "component",
     "id": "product-card",
     "status": "draft",
     "category": "data-display",
@@ -15262,6 +15550,7 @@ export const terms = [
     "confidence": "medium"
   },
   {
+    "kind": "component",
     "id": "price-card",
     "status": "draft",
     "category": "data-display",
@@ -15314,6 +15603,7 @@ export const terms = [
     "confidence": "medium"
   },
   {
+    "kind": "component",
     "id": "plan-card",
     "status": "draft",
     "category": "data-display",
@@ -15365,6 +15655,7 @@ export const terms = [
     "confidence": "medium"
   },
   {
+    "kind": "component",
     "id": "feature-comparison",
     "status": "draft",
     "category": "data-display",
@@ -15416,6 +15707,7 @@ export const terms = [
     "confidence": "medium"
   },
   {
+    "kind": "component",
     "id": "coupon-field",
     "status": "draft",
     "category": "input",
@@ -15467,6 +15759,7 @@ export const terms = [
     "confidence": "medium"
   },
   {
+    "kind": "component",
     "id": "quantity-stepper",
     "status": "draft",
     "category": "input",
@@ -15520,6 +15813,7 @@ export const terms = [
     "confidence": "high"
   },
   {
+    "kind": "component",
     "id": "cart-summary",
     "status": "draft",
     "category": "data-display",
@@ -15573,6 +15867,7 @@ export const terms = [
     "confidence": "medium"
   },
   {
+    "kind": "component",
     "id": "checkout-step",
     "status": "draft",
     "category": "structure",
@@ -15624,6 +15919,7 @@ export const terms = [
     "confidence": "medium"
   },
   {
+    "kind": "component",
     "id": "payment-method-card",
     "status": "draft",
     "category": "selection",
@@ -15676,6 +15972,7 @@ export const terms = [
     "confidence": "medium"
   },
   {
+    "kind": "component",
     "id": "address-card",
     "status": "draft",
     "category": "data-display",
@@ -15728,6 +16025,7 @@ export const terms = [
     "confidence": "medium"
   },
   {
+    "kind": "component",
     "id": "order-status",
     "status": "draft",
     "category": "feedback",
@@ -15779,6 +16077,7 @@ export const terms = [
     "confidence": "medium"
   },
   {
+    "kind": "component",
     "id": "calendar-event-card",
     "status": "draft",
     "category": "data-display",
@@ -15831,6 +16130,7 @@ export const terms = [
     "confidence": "medium"
   },
   {
+    "kind": "component",
     "id": "kanban-card",
     "status": "draft",
     "category": "data-display",
@@ -15883,6 +16183,7 @@ export const terms = [
     "confidence": "medium"
   },
   {
+    "kind": "component",
     "id": "board-column",
     "status": "draft",
     "category": "structure",
@@ -15934,6 +16235,7 @@ export const terms = [
     "confidence": "medium"
   },
   {
+    "kind": "component",
     "id": "empty-search-result",
     "status": "draft",
     "category": "feedback",
@@ -15985,6 +16287,7 @@ export const terms = [
     "confidence": "high"
   },
   {
+    "kind": "component",
     "id": "onboarding-checklist",
     "status": "draft",
     "category": "data-display",
@@ -16036,6 +16339,7 @@ export const terms = [
     "confidence": "medium"
   },
   {
+    "kind": "component",
     "id": "setup-progress",
     "status": "draft",
     "category": "feedback",
@@ -16087,6 +16391,7 @@ export const terms = [
     "confidence": "high"
   },
   {
+    "kind": "component",
     "id": "help-center-card",
     "status": "draft",
     "category": "data-display",
@@ -16139,6 +16444,7 @@ export const terms = [
     "confidence": "medium"
   },
   {
+    "kind": "component",
     "id": "faq-list",
     "status": "draft",
     "category": "data-display",
@@ -16190,6 +16496,7 @@ export const terms = [
     "confidence": "high"
   },
   {
+    "kind": "component",
     "id": "announcement-banner",
     "status": "draft",
     "category": "feedback",
@@ -16241,6 +16548,7 @@ export const terms = [
     "confidence": "high"
   },
   {
+    "kind": "component",
     "id": "release-note-card",
     "status": "draft",
     "category": "data-display",
@@ -16293,6 +16601,7 @@ export const terms = [
     "confidence": "medium"
   },
   {
+    "kind": "component",
     "id": "profile-card",
     "status": "draft",
     "category": "data-display",
@@ -16345,6 +16654,7 @@ export const terms = [
     "confidence": "high"
   },
   {
+    "kind": "component",
     "id": "team-member-row",
     "status": "draft",
     "category": "data-display",
@@ -16397,6 +16707,7 @@ export const terms = [
     "confidence": "medium"
   },
   {
+    "kind": "component",
     "id": "role-badge",
     "status": "draft",
     "category": "feedback",
@@ -16448,6 +16759,7 @@ export const terms = [
     "confidence": "medium"
   },
   {
+    "kind": "component",
     "id": "api-key-field",
     "status": "draft",
     "category": "input",
@@ -16499,6 +16811,7 @@ export const terms = [
     "confidence": "high"
   },
   {
+    "kind": "component",
     "id": "webhook-endpoint-row",
     "status": "draft",
     "category": "data-display",
@@ -16551,6 +16864,7 @@ export const terms = [
     "confidence": "medium"
   },
   {
+    "kind": "component",
     "id": "integration-card",
     "status": "draft",
     "category": "data-display",
@@ -16603,6 +16917,7 @@ export const terms = [
     "confidence": "medium"
   },
   {
+    "kind": "component",
     "id": "connection-card",
     "status": "draft",
     "category": "data-display",
@@ -16654,6 +16969,7 @@ export const terms = [
     "confidence": "medium"
   },
   {
+    "kind": "component",
     "id": "billing-summary",
     "status": "draft",
     "category": "data-display",
@@ -16706,6 +17022,7 @@ export const terms = [
     "confidence": "medium"
   },
   {
+    "kind": "component",
     "id": "invoice-row",
     "status": "draft",
     "category": "data-display",
@@ -16758,6 +17075,7 @@ export const terms = [
     "confidence": "medium"
   },
   {
+    "kind": "component",
     "id": "version-history-list",
     "status": "draft",
     "category": "data-display",
@@ -16811,6 +17129,7 @@ export const terms = [
     "confidence": "medium"
   },
   {
+    "kind": "component",
     "id": "mobile-filter-bottom-sheet",
     "status": "draft",
     "category": "structure",
@@ -16864,6 +17183,7 @@ export const terms = [
     "confidence": "medium"
   },
   {
+    "kind": "component",
     "id": "inline-date-range-chip",
     "status": "draft",
     "category": "selection",
@@ -16916,6 +17236,7 @@ export const terms = [
     "confidence": "medium"
   },
   {
+    "kind": "component",
     "id": "floating-search-button",
     "status": "draft",
     "category": "action",
@@ -16967,6 +17288,7 @@ export const terms = [
     "confidence": "low"
   },
   {
+    "kind": "component",
     "id": "avatar-group",
     "status": "draft",
     "category": "data-display",
@@ -17019,6 +17341,7 @@ export const terms = [
     "confidence": "medium"
   },
   {
+    "kind": "component",
     "id": "info-label",
     "status": "draft",
     "category": "feedback",
@@ -17070,6 +17393,7 @@ export const terms = [
     "confidence": "high"
   },
   {
+    "kind": "component",
     "id": "message-bar",
     "status": "draft",
     "category": "feedback",
@@ -17122,6 +17446,7 @@ export const terms = [
     "confidence": "medium"
   },
   {
+    "kind": "component",
     "id": "spin-button",
     "status": "draft",
     "category": "input",
@@ -17176,6 +17501,7 @@ export const terms = [
     "confidence": "high"
   },
   {
+    "kind": "component",
     "id": "scope-bar",
     "status": "draft",
     "category": "selection",
@@ -17227,6 +17553,7 @@ export const terms = [
     "confidence": "medium"
   },
   {
+    "kind": "component",
     "id": "structured-list",
     "status": "draft",
     "category": "data-display",
@@ -17281,6 +17608,7 @@ export const terms = [
     "confidence": "high"
   },
   {
+    "kind": "component",
     "id": "inline-loading",
     "status": "draft",
     "category": "feedback",
@@ -17334,6 +17662,7 @@ export const terms = [
     "confidence": "high"
   },
   {
+    "kind": "component",
     "id": "tag-picker",
     "status": "draft",
     "category": "input",
@@ -17385,6 +17714,7 @@ export const terms = [
     "confidence": "medium"
   },
   {
+    "kind": "component",
     "id": "disclosure-group",
     "status": "draft",
     "category": "structure",
@@ -17436,6 +17766,7 @@ export const terms = [
     "confidence": "medium"
   },
   {
+    "kind": "component",
     "id": "contained-list",
     "status": "draft",
     "category": "data-display",
@@ -17487,6 +17818,7 @@ export const terms = [
     "confidence": "medium"
   },
   {
+    "kind": "component",
     "id": "email-verification-banner",
     "status": "draft",
     "category": "feedback",
@@ -17534,6 +17866,7 @@ export const terms = [
     "confidence": "medium"
   },
   {
+    "kind": "component",
     "id": "verification-required-screen",
     "status": "draft",
     "category": "feedback",
@@ -17582,6 +17915,7 @@ export const terms = [
     "confidence": "medium"
   },
   {
+    "kind": "component",
     "id": "magic-link-sent-state",
     "status": "draft",
     "category": "feedback",
@@ -17630,6 +17964,7 @@ export const terms = [
     "confidence": "medium"
   },
   {
+    "kind": "component",
     "id": "passkey-enrollment-prompt",
     "status": "draft",
     "category": "feedback",
@@ -17677,6 +18012,7 @@ export const terms = [
     "confidence": "medium"
   },
   {
+    "kind": "component",
     "id": "passkey-sign-in-sheet",
     "status": "draft",
     "category": "feedback",
@@ -17725,6 +18061,7 @@ export const terms = [
     "confidence": "medium"
   },
   {
+    "kind": "component",
     "id": "mfa-enrollment-card",
     "status": "draft",
     "category": "data-display",
@@ -17772,6 +18109,7 @@ export const terms = [
     "confidence": "medium"
   },
   {
+    "kind": "component",
     "id": "recovery-code-panel",
     "status": "draft",
     "category": "data-display",
@@ -17820,6 +18158,7 @@ export const terms = [
     "confidence": "medium"
   },
   {
+    "kind": "component",
     "id": "recovery-code-warning",
     "status": "draft",
     "category": "feedback",
@@ -17867,6 +18206,7 @@ export const terms = [
     "confidence": "medium"
   },
   {
+    "kind": "component",
     "id": "trusted-device-prompt",
     "status": "draft",
     "category": "feedback",
@@ -17915,6 +18255,7 @@ export const terms = [
     "confidence": "medium"
   },
   {
+    "kind": "component",
     "id": "device-approval-state",
     "status": "draft",
     "category": "feedback",
@@ -17962,6 +18303,7 @@ export const terms = [
     "confidence": "medium"
   },
   {
+    "kind": "component",
     "id": "access-request-panel",
     "status": "draft",
     "category": "feedback",
@@ -18011,6 +18353,7 @@ export const terms = [
     "confidence": "medium"
   },
   {
+    "kind": "component",
     "id": "access-pending-state",
     "status": "draft",
     "category": "feedback",
@@ -18059,6 +18402,7 @@ export const terms = [
     "confidence": "medium"
   },
   {
+    "kind": "component",
     "id": "invite-acceptance-screen",
     "status": "draft",
     "category": "structure",
@@ -18109,6 +18453,7 @@ export const terms = [
     "confidence": "medium"
   },
   {
+    "kind": "component",
     "id": "invite-expired-state",
     "status": "draft",
     "category": "feedback",
@@ -18158,6 +18503,7 @@ export const terms = [
     "confidence": "medium"
   },
   {
+    "kind": "component",
     "id": "workspace-join-request",
     "status": "draft",
     "category": "feedback",
@@ -18205,6 +18551,7 @@ export const terms = [
     "confidence": "medium"
   },
   {
+    "kind": "component",
     "id": "welcome-choice-screen",
     "status": "draft",
     "category": "structure",
@@ -18252,6 +18599,7 @@ export const terms = [
     "confidence": "medium"
   },
   {
+    "kind": "component",
     "id": "import-data-choice",
     "status": "draft",
     "category": "selection",
@@ -18300,6 +18648,7 @@ export const terms = [
     "confidence": "medium"
   },
   {
+    "kind": "component",
     "id": "setup-blocker-state",
     "status": "draft",
     "category": "feedback",
@@ -18350,6 +18699,7 @@ export const terms = [
     "confidence": "medium"
   },
   {
+    "kind": "component",
     "id": "reconnect-account-state",
     "status": "draft",
     "category": "feedback",
@@ -18399,6 +18749,7 @@ export const terms = [
     "confidence": "medium"
   },
   {
+    "kind": "component",
     "id": "consent-review-screen",
     "status": "draft",
     "category": "structure",
@@ -18447,6 +18798,1614 @@ export const terms = [
       }
     ],
     "confidence": "medium"
+  },
+  {
+    "kind": "component",
+    "id": "aspect-ratio-box",
+    "status": "draft",
+    "category": "structure",
+    "ko": {
+      "name": "비율 고정 박스",
+      "aliases": [
+        "aspect ratio",
+        "종횡비 박스",
+        "비율 컨테이너"
+      ]
+    },
+    "en": {
+      "name": "Aspect ratio box",
+      "aliases": [
+        "AspectRatio",
+        "Ratio container"
+      ]
+    },
+    "one_liner": "이미지나 영상 영역을 16:9, 4:3처럼 일정한 비율로 유지하는 레이아웃 컨테이너.",
+    "description": "카드 썸네일, 영상 프리뷰, 갤러리 이미지처럼 로딩 전후에도 같은 화면 비율을 유지해야 할 때 쓴다.",
+    "visual_anatomy": [
+      "fixed-ratio frame",
+      "media placeholder",
+      "crop-safe content",
+      "stable width"
+    ],
+    "when_to_use": [
+      "미디어 영역의 높이가 콘텐츠 로딩 전후에 흔들리면 안 될 때",
+      "썸네일 목록의 비율을 통일해야 할 때"
+    ],
+    "anti_use": [
+      "콘텐츠 높이가 자연스럽게 늘어나야 하는 본문 영역에는 쓰지 않는다"
+    ],
+    "prompt_phrases": [
+      "카드 썸네일을 16대9 aspect ratio box로 고정해줘"
+    ],
+    "asset": {
+      "kind": "mini-mock",
+      "variant": "aspect-ratio-box",
+      "props": {
+        "ratio": "16:9"
+      }
+    },
+    "sources": [
+      {
+        "source_id": "shadcn-ui-docs",
+        "note": "Aspect Ratio component naming and media layout use"
+      }
+    ],
+    "confidence": "high"
+  },
+  {
+    "kind": "component",
+    "id": "hover-card",
+    "status": "draft",
+    "category": "feedback",
+    "ko": {
+      "name": "호버 카드",
+      "aliases": [
+        "hover card",
+        "마우스오버 카드",
+        "미리보기 카드"
+      ]
+    },
+    "en": {
+      "name": "Hover card",
+      "aliases": [
+        "HoverCard",
+        "Hover preview card"
+      ]
+    },
+    "one_liner": "항목 위에 마우스를 올렸을 때 짧은 프로필, 설명, 미리보기를 보여주는 떠 있는 카드.",
+    "description": "링크, 사용자, 용어, 파일처럼 클릭 전에 더 많은 맥락을 살짝 보여주고 싶을 때 쓴다.",
+    "visual_anatomy": [
+      "trigger text or avatar",
+      "floating card",
+      "title",
+      "supporting metadata",
+      "optional arrow"
+    ],
+    "when_to_use": [
+      "데스크톱에서 hover로 보조 정보를 미리 보여줄 때",
+      "tooltip보다 긴 콘텐츠가 필요할 때"
+    ],
+    "anti_use": [
+      "모바일 주요 정보에는 hover가 없으므로 popover나 detail view를 쓴다",
+      "한 줄 도움말은 tooltip이 더 가볍다"
+    ],
+    "prompt_phrases": [
+      "사용자 아바타에 마우스를 올리면 프로필 hover card가 뜨게 해줘"
+    ],
+    "asset": {
+      "kind": "mini-mock",
+      "variant": "hover-card",
+      "props": {
+        "open": true
+      }
+    },
+    "sources": [
+      {
+        "source_id": "shadcn-ui-docs",
+        "note": "Hover Card component reference"
+      }
+    ],
+    "related": [
+      {
+        "id": "tooltip",
+        "relation": "compare",
+        "note": "짧은 한 줄 설명이면 tooltip, 여러 줄 정보나 미리보기면 hover card가 맞다."
+      },
+      {
+        "id": "popover",
+        "relation": "compare",
+        "note": "클릭해서 열고 상호작용해야 하면 popover가 더 적합하다."
+      }
+    ],
+    "confidence": "high"
+  },
+  {
+    "kind": "component",
+    "id": "scroll-area",
+    "status": "draft",
+    "category": "structure",
+    "ko": {
+      "name": "스크롤 영역",
+      "aliases": [
+        "scroll area",
+        "내부 스크롤 영역",
+        "커스텀 스크롤"
+      ]
+    },
+    "en": {
+      "name": "Scroll area",
+      "aliases": [
+        "ScrollArea",
+        "Custom scroll area"
+      ]
+    },
+    "one_liner": "페이지 전체가 아니라 특정 패널이나 목록 안에서만 스크롤되도록 만든 영역.",
+    "description": "사이드바, 알림 목록, 긴 메뉴처럼 고정된 크기 안에서 내용만 스크롤해야 할 때 사용한다.",
+    "visual_anatomy": [
+      "fixed-height container",
+      "scrollable content",
+      "scrollbar",
+      "clipped overflow"
+    ],
+    "when_to_use": [
+      "패널 크기는 유지하면서 내부 목록만 스크롤해야 할 때",
+      "사이드바 안에 긴 메뉴가 들어갈 때"
+    ],
+    "anti_use": [
+      "페이지 전체 흐름을 자연스럽게 읽는 콘텐츠에는 별도 scroll area를 남용하지 않는다"
+    ],
+    "prompt_phrases": [
+      "알림 목록을 고정 높이 scroll area 안에서만 스크롤되게 해줘"
+    ],
+    "asset": {
+      "kind": "mini-mock",
+      "variant": "scroll-area",
+      "props": {
+        "rows": 6
+      }
+    },
+    "sources": [
+      {
+        "source_id": "shadcn-ui-docs",
+        "note": "Scroll Area component reference"
+      }
+    ],
+    "confidence": "high"
+  },
+  {
+    "kind": "component",
+    "id": "native-select",
+    "status": "draft",
+    "category": "input",
+    "ko": {
+      "name": "네이티브 선택창",
+      "aliases": [
+        "native select",
+        "기본 select",
+        "브라우저 선택창"
+      ]
+    },
+    "en": {
+      "name": "Native select",
+      "aliases": [
+        "NativeSelect",
+        "HTML select"
+      ]
+    },
+    "one_liner": "브라우저나 OS 기본 선택 UI를 그대로 사용하는 단순 선택 입력.",
+    "description": "커스텀 드롭다운보다 가볍고 접근성/모바일 기본 동작을 우선할 때 쓴다.",
+    "visual_anatomy": [
+      "native select control",
+      "selected option",
+      "platform chevron",
+      "option list"
+    ],
+    "when_to_use": [
+      "스타일보다 기본 접근성과 모바일 네이티브 동작이 중요할 때",
+      "단순한 선택 입력이 필요할 때"
+    ],
+    "anti_use": [
+      "검색, 커스텀 옵션 렌더링, 복잡한 그룹이 필요하면 select나 combobox를 쓴다"
+    ],
+    "prompt_phrases": [
+      "모바일에서도 기본 동작이 자연스러운 native select로 언어를 고르게 해줘"
+    ],
+    "asset": {
+      "kind": "mini-mock",
+      "variant": "native-select",
+      "props": {
+        "open": false
+      }
+    },
+    "sources": [
+      {
+        "source_id": "shadcn-ui-docs",
+        "note": "Native Select component reference"
+      }
+    ],
+    "related": [
+      {
+        "id": "select",
+        "relation": "compare",
+        "note": "커스텀 스타일과 옵션 렌더링이 필요하면 select, 기본 플랫폼 동작을 우선하면 native select가 낫다."
+      }
+    ],
+    "confidence": "high"
+  },
+  {
+    "kind": "component",
+    "id": "keyboard-shortcut-key",
+    "status": "draft",
+    "category": "data-display",
+    "ko": {
+      "name": "키보드 단축키 키",
+      "aliases": [
+        "kbd",
+        "단축키 키캡",
+        "키보드 키 표시"
+      ]
+    },
+    "en": {
+      "name": "Keyboard shortcut key",
+      "aliases": [
+        "Kbd",
+        "Keyboard key",
+        "Shortcut keycap"
+      ]
+    },
+    "one_liner": "Cmd, Ctrl, K 같은 키보드 입력을 작은 키캡 모양으로 보여주는 표시 요소.",
+    "description": "메뉴 항목, command palette, 도움말에서 단축키를 실제 키처럼 읽히게 보여준다.",
+    "visual_anatomy": [
+      "small keycap container",
+      "key label",
+      "subtle border",
+      "inline placement"
+    ],
+    "when_to_use": [
+      "명령이나 메뉴 옆에 키보드 단축키를 안내할 때",
+      "도움말에서 조합키를 보여줄 때"
+    ],
+    "anti_use": [
+      "클릭 가능한 버튼처럼 쓰지 않는다",
+      "긴 설명 문장 전체를 kbd로 감싸지 않는다"
+    ],
+    "prompt_phrases": [
+      "command palette 항목 오른쪽에 Cmd K kbd 키캡을 보여줘"
+    ],
+    "asset": {
+      "kind": "mini-mock",
+      "variant": "keyboard-shortcut-key",
+      "props": {
+        "keys": [
+          "Cmd",
+          "K"
+        ]
+      }
+    },
+    "sources": [
+      {
+        "source_id": "shadcn-ui-docs",
+        "note": "Kbd component reference"
+      }
+    ],
+    "confidence": "high"
+  },
+  {
+    "kind": "component",
+    "id": "navigation-menu",
+    "status": "draft",
+    "category": "selection",
+    "ko": {
+      "name": "내비게이션 메뉴",
+      "aliases": [
+        "navigation menu",
+        "상단 메가 메뉴",
+        "제품 내비게이션 메뉴"
+      ]
+    },
+    "en": {
+      "name": "Navigation menu",
+      "aliases": [
+        "NavigationMenu",
+        "Top navigation menu"
+      ]
+    },
+    "one_liner": "상단 내비게이션 항목을 누르거나 hover했을 때 하위 링크 패널을 보여주는 메뉴.",
+    "description": "제품, 리소스, 솔루션처럼 상위 항목 아래에 여러 링크 그룹이 있는 웹사이트 내비게이션에 적합하다.",
+    "visual_anatomy": [
+      "top nav trigger",
+      "active item",
+      "dropdown panel",
+      "grouped links",
+      "viewport transition"
+    ],
+    "when_to_use": [
+      "마케팅 사이트나 문서 사이트의 상단 메뉴에 여러 하위 링크 그룹을 넣을 때"
+    ],
+    "anti_use": [
+      "앱 내부 주요 이동은 sidebar navigation이나 tabs가 더 적합할 수 있다",
+      "단순 명령 목록은 dropdown menu를 쓴다"
+    ],
+    "prompt_phrases": [
+      "상단에 제품과 리소스가 펼쳐지는 navigation menu를 만들어줘"
+    ],
+    "asset": {
+      "kind": "mini-mock",
+      "variant": "navigation-menu",
+      "props": {
+        "open": true
+      }
+    },
+    "sources": [
+      {
+        "source_id": "shadcn-ui-docs",
+        "note": "Navigation Menu component reference"
+      }
+    ],
+    "related": [
+      {
+        "id": "mega-menu",
+        "relation": "compare",
+        "note": "콘텐츠가 더 크고 마케팅형이면 mega menu, shadcn식 상단 링크 패널은 navigation menu라고 부른다."
+      },
+      {
+        "id": "sidebar-nav",
+        "relation": "alternative",
+        "note": "앱 내부 반복 사용 내비게이션은 sidebar navigation이 더 일반적이다."
+      }
+    ],
+    "confidence": "high"
+  },
+  {
+    "kind": "component",
+    "id": "field-group",
+    "status": "draft",
+    "category": "input",
+    "ko": {
+      "name": "필드 그룹",
+      "aliases": [
+        "field group",
+        "폼 필드 그룹",
+        "입력 그룹 묶음"
+      ]
+    },
+    "en": {
+      "name": "Field group",
+      "aliases": [
+        "FieldGroup",
+        "Form field group"
+      ]
+    },
+    "one_liner": "라벨, 설명, 입력, 오류 메시지를 한 단위로 묶어 폼을 구성하는 패턴.",
+    "description": "shadcn form에서는 raw div보다 Field/FieldGroup으로 입력 요소의 구조와 상태를 일관되게 만든다.",
+    "visual_anatomy": [
+      "field label",
+      "input control",
+      "description text",
+      "validation message",
+      "vertical grouping"
+    ],
+    "when_to_use": [
+      "폼 입력을 일관된 라벨/설명/오류 구조로 만들 때",
+      "여러 입력 필드를 같은 간격으로 묶을 때"
+    ],
+    "anti_use": [
+      "단일 입력의 시각 요소 자체를 말할 때는 text field나 select를 쓴다"
+    ],
+    "prompt_phrases": [
+      "로그인 폼을 field group으로 구성하고 이메일 필드 아래에 설명 문구를 넣어줘"
+    ],
+    "asset": {
+      "kind": "mini-mock",
+      "variant": "field-group",
+      "props": {
+        "invalid": true
+      }
+    },
+    "sources": [
+      {
+        "source_id": "shadcn-ui-docs",
+        "note": "Field component and form layout pattern"
+      }
+    ],
+    "confidence": "high"
+  },
+  {
+    "kind": "component",
+    "id": "item-row",
+    "status": "draft",
+    "category": "data-display",
+    "ko": {
+      "name": "아이템 행",
+      "aliases": [
+        "item",
+        "item row",
+        "리스트 아이템 행"
+      ]
+    },
+    "en": {
+      "name": "Item row",
+      "aliases": [
+        "Item",
+        "List item row"
+      ]
+    },
+    "one_liner": "아이콘, 제목, 설명, 보조 액션을 한 줄 카드처럼 정렬한 반복 행.",
+    "description": "설정 항목, 계정 옵션, 알림 항목처럼 작은 정보 단위를 일관된 행 구조로 보여준다.",
+    "visual_anatomy": [
+      "leading icon",
+      "title",
+      "description",
+      "trailing action or metadata",
+      "row container"
+    ],
+    "when_to_use": [
+      "목록 안의 각 항목이 제목과 설명, 보조 액션을 함께 가져야 할 때"
+    ],
+    "anti_use": [
+      "복잡한 열 정렬과 정렬/필터가 필요하면 table이나 data grid를 쓴다"
+    ],
+    "prompt_phrases": [
+      "설정 목록을 아이콘과 설명이 있는 item row로 만들어줘"
+    ],
+    "asset": {
+      "kind": "mini-mock",
+      "variant": "item-row",
+      "props": {
+        "action": true
+      }
+    },
+    "sources": [
+      {
+        "source_id": "shadcn-ui-docs",
+        "note": "Item component reference"
+      }
+    ],
+    "confidence": "high"
+  },
+  {
+    "kind": "component",
+    "id": "sonner-toast",
+    "status": "draft",
+    "category": "feedback",
+    "ko": {
+      "name": "소너 토스트",
+      "aliases": [
+        "sonner",
+        "sonner toast",
+        "shadcn toast"
+      ]
+    },
+    "en": {
+      "name": "Sonner toast",
+      "aliases": [
+        "Sonner",
+        "Toast notification"
+      ]
+    },
+    "one_liner": "shadcn에서 자주 쓰는 Sonner 기반의 가벼운 토스트 알림.",
+    "description": "저장 완료, 복사됨, 실패 같은 짧은 결과를 화면 가장자리의 임시 알림으로 보여준다.",
+    "visual_anatomy": [
+      "toast surface",
+      "short message",
+      "optional icon",
+      "optional action",
+      "stack position"
+    ],
+    "when_to_use": [
+      "사용자의 작업 결과를 짧게 알려줄 때",
+      "여러 toast가 stack될 수 있을 때"
+    ],
+    "anti_use": [
+      "화면을 막아야 하는 중요한 결정은 dialog나 alert dialog를 쓴다",
+      "긴 설명은 alert가 낫다"
+    ],
+    "prompt_phrases": [
+      "저장 완료 후 오른쪽 아래에 sonner toast를 띄워줘"
+    ],
+    "asset": {
+      "kind": "mini-mock",
+      "variant": "sonner-toast",
+      "props": {
+        "stacked": false
+      }
+    },
+    "sources": [
+      {
+        "source_id": "shadcn-ui-docs",
+        "note": "Sonner component reference"
+      }
+    ],
+    "related": [
+      {
+        "id": "toast",
+        "relation": "compare",
+        "note": "toast는 일반 패턴명이고 sonner toast는 shadcn에서 쓰는 구현/스타일 이름이다."
+      }
+    ],
+    "confidence": "high"
+  },
+  {
+    "kind": "component",
+    "id": "direction-provider",
+    "status": "draft",
+    "category": "structure",
+    "ko": {
+      "name": "방향성 제공자",
+      "aliases": [
+        "direction provider",
+        "RTL provider",
+        "텍스트 방향 제공자"
+      ]
+    },
+    "en": {
+      "name": "Direction provider",
+      "aliases": [
+        "DirectionProvider",
+        "RTL provider"
+      ]
+    },
+    "one_liner": "UI 전체나 일부 영역의 읽기 방향을 LTR 또는 RTL로 지정하는 보이지 않는 구조 요소.",
+    "description": "아랍어, 히브리어처럼 오른쪽에서 왼쪽으로 읽는 언어를 지원할 때 컴포넌트 방향성을 일관되게 전달한다.",
+    "visual_anatomy": [
+      "direction boundary",
+      "ltr or rtl label",
+      "mirrored layout hint",
+      "child component area"
+    ],
+    "when_to_use": [
+      "다국어 제품에서 RTL 레이아웃을 지원해야 할 때",
+      "특정 영역만 방향성을 바꿔야 할 때"
+    ],
+    "anti_use": [
+      "단순 텍스트 정렬을 바꾸는 용도로 남용하지 않는다",
+      "일반 사용자는 보이는 컴포넌트명보다 RTL layout이라고 말하는 편이 낫다"
+    ],
+    "prompt_phrases": [
+      "아랍어 화면을 위해 전체 앱을 RTL direction provider 안에 넣어줘"
+    ],
+    "asset": {
+      "kind": "diagram",
+      "variant": "direction-provider",
+      "props": {
+        "direction": "rtl"
+      }
+    },
+    "sources": [
+      {
+        "source_id": "shadcn-ui-docs",
+        "note": "Direction Provider utility reference"
+      }
+    ],
+    "confidence": "medium"
+  },
+  {
+    "kind": "form-pattern",
+    "id": "login-form",
+    "status": "draft",
+    "category": "input",
+    "ko": {
+      "name": "로그인 폼",
+      "aliases": [
+        "login form",
+        "로그인 창",
+        "sign in form"
+      ]
+    },
+    "en": {
+      "name": "Login form",
+      "aliases": [
+        "Sign in form",
+        "Authentication form"
+      ]
+    },
+    "one_liner": "이메일 또는 아이디와 비밀번호로 사용자를 로그인시키는 기본 인증 폼.",
+    "description": "인증 화면의 가장 표준적인 패턴으로, 계정 입력, 비밀번호 입력, 로그인 버튼, 보조 링크를 함께 배치한다.",
+    "visual_anatomy": [
+      "email or username field",
+      "password field",
+      "submit button",
+      "forgot password link",
+      "signup link"
+    ],
+    "when_to_use": [
+      "기존 계정으로 제품에 들어오게 할 때",
+      "이메일/비밀번호 인증이 기본 로그인 방식일 때"
+    ],
+    "anti_use": [
+      "비밀번호 없는 로그인만 제공하면 magic-link-login-form이나 passkey-login-form이 더 정확하다"
+    ],
+    "prompt_phrases": [
+      "이메일과 비밀번호가 있는 login form을 카드 안에 만들어줘"
+    ],
+    "asset": {
+      "kind": "mini-mock",
+      "variant": "login-form"
+    },
+    "sources": [
+      {
+        "source_id": "shadcn-ui-docs",
+        "note": "form field and card composition reference"
+      }
+    ],
+    "related": [
+      {
+        "id": "password-field",
+        "relation": "use-with",
+        "note": "비밀번호 입력은 login form 안의 핵심 field다."
+      },
+      {
+        "id": "auth-card",
+        "relation": "use-with",
+        "note": "로그인 폼을 독립 카드로 감싸면 auth card가 된다."
+      }
+    ],
+    "confidence": "high"
+  },
+  {
+    "kind": "form-pattern",
+    "id": "signup-form",
+    "status": "draft",
+    "category": "input",
+    "ko": {
+      "name": "회원가입 폼",
+      "aliases": [
+        "signup form",
+        "가입 폼",
+        "sign up form"
+      ]
+    },
+    "en": {
+      "name": "Signup form",
+      "aliases": [
+        "Sign up form",
+        "Registration form"
+      ]
+    },
+    "one_liner": "새 사용자가 이메일, 비밀번호, 이름 같은 정보를 입력해 계정을 만드는 폼.",
+    "description": "신규 계정 생성에 필요한 입력과 약관 동의, 가입 버튼, 로그인 링크를 함께 제공한다.",
+    "visual_anatomy": [
+      "name or email fields",
+      "password field",
+      "terms consent",
+      "create account button",
+      "existing account link"
+    ],
+    "when_to_use": [
+      "사용자가 직접 계정을 만들 수 있어야 할 때"
+    ],
+    "anti_use": [
+      "초대 링크를 통해 가입하면 invite-signup-form이 더 정확하다"
+    ],
+    "prompt_phrases": [
+      "이름 이메일 비밀번호와 약관 동의가 있는 signup form을 만들어줘"
+    ],
+    "asset": {
+      "kind": "mini-mock",
+      "variant": "signup-form"
+    },
+    "sources": [
+      {
+        "source_id": "shadcn-ui-docs",
+        "note": "form field and checkbox composition reference"
+      }
+    ],
+    "confidence": "high"
+  },
+  {
+    "kind": "form-pattern",
+    "id": "forgot-password-form",
+    "status": "draft",
+    "category": "input",
+    "ko": {
+      "name": "비밀번호 찾기 폼",
+      "aliases": [
+        "forgot password form",
+        "비밀번호 재설정 요청",
+        "reset link form"
+      ]
+    },
+    "en": {
+      "name": "Forgot password form",
+      "aliases": [
+        "Password reset request form",
+        "Reset link form"
+      ]
+    },
+    "one_liner": "사용자가 이메일을 입력해 비밀번호 재설정 링크를 요청하는 폼.",
+    "description": "로그인에 실패했거나 비밀번호를 잊은 사용자가 계정 이메일로 복구 절차를 시작하게 한다.",
+    "visual_anatomy": [
+      "email field",
+      "explanation text",
+      "send reset link button",
+      "back to login link"
+    ],
+    "when_to_use": [
+      "비밀번호 재설정 이메일을 보내야 할 때"
+    ],
+    "anti_use": [
+      "새 비밀번호를 직접 입력하는 단계는 reset-password-form이 맞다"
+    ],
+    "prompt_phrases": [
+      "이메일을 입력하면 재설정 링크를 보내는 forgot password form을 만들어줘"
+    ],
+    "asset": {
+      "kind": "mini-mock",
+      "variant": "forgot-password-form"
+    },
+    "sources": [
+      {
+        "source_id": "page-flows",
+        "note": "password recovery flow reference"
+      }
+    ],
+    "confidence": "high"
+  },
+  {
+    "kind": "form-pattern",
+    "id": "reset-password-form",
+    "status": "draft",
+    "category": "input",
+    "ko": {
+      "name": "비밀번호 재설정 폼",
+      "aliases": [
+        "reset password form",
+        "새 비밀번호 설정",
+        "password reset form"
+      ]
+    },
+    "en": {
+      "name": "Reset password form",
+      "aliases": [
+        "New password form",
+        "Password reset form"
+      ]
+    },
+    "one_liner": "복구 링크나 인증 후 새 비밀번호를 입력하고 확인하는 폼.",
+    "description": "새 비밀번호와 확인 입력, 강도 안내, 저장 버튼을 통해 안전하게 비밀번호를 바꾸게 한다.",
+    "visual_anatomy": [
+      "new password field",
+      "confirm password field",
+      "password requirements",
+      "submit button"
+    ],
+    "when_to_use": [
+      "비밀번호 복구 링크를 연 뒤 새 비밀번호를 설정할 때"
+    ],
+    "anti_use": [
+      "로그인된 사용자가 기존 비밀번호를 바꾸는 설정 화면은 change-password-form이 더 정확하다"
+    ],
+    "prompt_phrases": [
+      "새 비밀번호와 확인 입력이 있는 reset password form을 만들어줘"
+    ],
+    "asset": {
+      "kind": "mini-mock",
+      "variant": "reset-password-form"
+    },
+    "sources": [
+      {
+        "source_id": "page-flows",
+        "note": "password reset flow reference"
+      }
+    ],
+    "confidence": "high"
+  },
+  {
+    "kind": "form-pattern",
+    "id": "change-password-form",
+    "status": "draft",
+    "category": "input",
+    "ko": {
+      "name": "비밀번호 변경 폼",
+      "aliases": [
+        "change password form",
+        "계정 비밀번호 변경"
+      ]
+    },
+    "en": {
+      "name": "Change password form",
+      "aliases": [
+        "Account password change form",
+        "Update password form"
+      ]
+    },
+    "one_liner": "로그인된 사용자가 기존 비밀번호와 새 비밀번호를 입력해 비밀번호를 변경하는 폼.",
+    "description": "계정 설정 안에서 현재 비밀번호 확인, 새 비밀번호 입력, 저장 버튼을 제공한다.",
+    "visual_anatomy": [
+      "current password field",
+      "new password field",
+      "confirm password field",
+      "save button"
+    ],
+    "when_to_use": [
+      "계정 설정에서 사용자가 비밀번호를 바꾸게 할 때"
+    ],
+    "anti_use": [
+      "비밀번호를 잊은 사용자의 복구 흐름은 forgot-password-form과 reset-password-form을 쓴다"
+    ],
+    "prompt_phrases": [
+      "현재 비밀번호와 새 비밀번호를 입력하는 change password form을 만들어줘"
+    ],
+    "asset": {
+      "kind": "mini-mock",
+      "variant": "change-password-form"
+    },
+    "sources": [
+      {
+        "source_id": "shadcn-ui-docs",
+        "note": "account settings form composition reference"
+      }
+    ],
+    "confidence": "high"
+  },
+  {
+    "kind": "form-pattern",
+    "id": "magic-link-login-form",
+    "status": "draft",
+    "category": "input",
+    "ko": {
+      "name": "매직 링크 로그인 폼",
+      "aliases": [
+        "magic link login",
+        "이메일 링크 로그인",
+        "passwordless login form"
+      ]
+    },
+    "en": {
+      "name": "Magic link login form",
+      "aliases": [
+        "Passwordless login form",
+        "Email link sign in form"
+      ]
+    },
+    "one_liner": "이메일만 입력하면 로그인 링크를 보내는 비밀번호 없는 로그인 폼.",
+    "description": "비밀번호 입력 없이 이메일 주소를 받아 로그인 링크를 발송하고, 발송 후에는 대기 상태로 전환한다.",
+    "visual_anatomy": [
+      "email field",
+      "send magic link button",
+      "password login alternative",
+      "sent state link"
+    ],
+    "when_to_use": [
+      "비밀번호 없는 로그인 경험을 제공할 때"
+    ],
+    "anti_use": [
+      "사용자가 앱 안에서 코드를 입력해야 하면 otp-challenge-form이 더 적합하다"
+    ],
+    "prompt_phrases": [
+      "이메일만 입력하면 로그인 링크를 보내는 magic link login form을 만들어줘"
+    ],
+    "asset": {
+      "kind": "mini-mock",
+      "variant": "magic-link-login-form"
+    },
+    "sources": [
+      {
+        "source_id": "page-flows",
+        "note": "passwordless email sign-in flow reference"
+      }
+    ],
+    "related": [
+      {
+        "id": "magic-link-sent-state",
+        "relation": "use-with",
+        "note": "링크를 보낸 뒤에는 magic link sent state로 이어진다."
+      }
+    ],
+    "confidence": "high"
+  },
+  {
+    "kind": "form-pattern",
+    "id": "sso-login-form",
+    "status": "draft",
+    "category": "input",
+    "ko": {
+      "name": "SSO 로그인 폼",
+      "aliases": [
+        "sso login",
+        "조직 로그인",
+        "single sign-on form"
+      ]
+    },
+    "en": {
+      "name": "SSO login form",
+      "aliases": [
+        "Single sign-on form",
+        "Organization login form"
+      ]
+    },
+    "one_liner": "회사 도메인이나 조직 식별자를 입력해 SSO 인증으로 이동하는 로그인 폼.",
+    "description": "B2B 제품에서 이메일 도메인, workspace slug, 조직 이름을 받아 SSO provider로 넘긴다.",
+    "visual_anatomy": [
+      "organization or email field",
+      "continue with SSO button",
+      "password login fallback",
+      "help link"
+    ],
+    "when_to_use": [
+      "기업 고객이 SAML, OIDC, Google Workspace 같은 SSO로 로그인해야 할 때"
+    ],
+    "anti_use": [
+      "개인 사용자 로그인만 있으면 일반 login-form이 더 단순하다"
+    ],
+    "prompt_phrases": [
+      "회사 이메일을 입력하고 SSO로 계속하는 sso login form을 만들어줘"
+    ],
+    "asset": {
+      "kind": "mini-mock",
+      "variant": "sso-login-form"
+    },
+    "sources": [
+      {
+        "source_id": "page-flows",
+        "note": "enterprise sign-in flow reference"
+      }
+    ],
+    "confidence": "high"
+  },
+  {
+    "kind": "form-pattern",
+    "id": "social-login-button-group",
+    "status": "draft",
+    "category": "action",
+    "ko": {
+      "name": "소셜 로그인 버튼 그룹",
+      "aliases": [
+        "social login buttons",
+        "OAuth 로그인 버튼",
+        "continue with buttons"
+      ]
+    },
+    "en": {
+      "name": "Social login button group",
+      "aliases": [
+        "OAuth button group",
+        "Continue with buttons"
+      ]
+    },
+    "one_liner": "Google, Apple, GitHub 같은 외부 계정으로 로그인하는 버튼 묶음.",
+    "description": "인증 폼 상단이나 하단에서 OAuth provider 선택지를 일관된 버튼 그룹으로 제공한다.",
+    "visual_anatomy": [
+      "provider buttons",
+      "provider icons",
+      "divider text",
+      "email login alternative"
+    ],
+    "when_to_use": [
+      "여러 외부 로그인 provider를 제공할 때"
+    ],
+    "anti_use": [
+      "provider가 하나뿐이면 단일 primary/secondary button으로 충분하다"
+    ],
+    "prompt_phrases": [
+      "Google Apple GitHub로 계속하기 social login button group을 넣어줘"
+    ],
+    "asset": {
+      "kind": "mini-mock",
+      "variant": "social-login-button-group"
+    },
+    "sources": [
+      {
+        "source_id": "shadcn-ui-docs",
+        "note": "button group and auth form composition reference"
+      }
+    ],
+    "confidence": "high"
+  },
+  {
+    "kind": "form-pattern",
+    "id": "otp-challenge-form",
+    "status": "draft",
+    "category": "input",
+    "ko": {
+      "name": "OTP 인증 폼",
+      "aliases": [
+        "otp challenge form",
+        "인증번호 확인 폼",
+        "verification code form"
+      ]
+    },
+    "en": {
+      "name": "OTP challenge form",
+      "aliases": [
+        "Verification code form",
+        "One-time code challenge"
+      ]
+    },
+    "one_liner": "이메일, 문자, 인증 앱에서 받은 일회용 코드를 입력해 본인 확인을 완료하는 폼.",
+    "description": "코드 입력 필드, 남은 시간, 재전송, 확인 버튼을 함께 배치한다.",
+    "visual_anatomy": [
+      "OTP code input",
+      "destination hint",
+      "verify button",
+      "resend code link",
+      "expiry timer"
+    ],
+    "when_to_use": [
+      "로그인, 가입, 계정 변경에서 일회용 코드를 확인해야 할 때"
+    ],
+    "anti_use": [
+      "보안 키나 생체 인증은 passkey-login-form이나 biometric-prompt가 더 맞다"
+    ],
+    "prompt_phrases": [
+      "6자리 인증번호를 입력하는 otp challenge form을 만들어줘"
+    ],
+    "asset": {
+      "kind": "mini-mock",
+      "variant": "otp-challenge-form"
+    },
+    "sources": [
+      {
+        "source_id": "shadcn-ui-docs",
+        "note": "Input OTP component and form composition reference"
+      }
+    ],
+    "related": [
+      {
+        "id": "otp-code-input",
+        "relation": "use-with",
+        "note": "OTP code input은 이 폼 안의 핵심 입력 컴포넌트다."
+      }
+    ],
+    "confidence": "high"
+  },
+  {
+    "kind": "form-pattern",
+    "id": "mfa-challenge-form",
+    "status": "draft",
+    "category": "input",
+    "ko": {
+      "name": "2단계 인증 폼",
+      "aliases": [
+        "MFA challenge form",
+        "2FA form",
+        "이중 인증 폼"
+      ]
+    },
+    "en": {
+      "name": "MFA challenge form",
+      "aliases": [
+        "Two-factor challenge form",
+        "2FA form"
+      ]
+    },
+    "one_liner": "로그인 후 두 번째 인증 수단을 확인하는 보안 폼.",
+    "description": "인증 앱 코드, SMS 코드, 복구 코드, 다른 방법 선택 같은 MFA 선택지를 포함할 수 있다.",
+    "visual_anatomy": [
+      "challenge title",
+      "code input",
+      "verify action",
+      "use another method link",
+      "recovery code link"
+    ],
+    "when_to_use": [
+      "비밀번호 이후 추가 인증이 필요한 로그인 흐름에서"
+    ],
+    "anti_use": [
+      "단순 이메일 인증만이면 otp-challenge-form이 더 구체적이다"
+    ],
+    "prompt_phrases": [
+      "인증 앱 코드를 입력하고 다른 방법을 선택할 수 있는 mfa challenge form을 만들어줘"
+    ],
+    "asset": {
+      "kind": "mini-mock",
+      "variant": "mfa-challenge-form"
+    },
+    "sources": [
+      {
+        "source_id": "page-flows",
+        "note": "multi-factor authentication flow reference"
+      }
+    ],
+    "confidence": "high"
+  },
+  {
+    "kind": "form-pattern",
+    "id": "passkey-login-form",
+    "status": "draft",
+    "category": "input",
+    "ko": {
+      "name": "패스키 로그인 폼",
+      "aliases": [
+        "passkey login form",
+        "패스키 로그인",
+        "passwordless passkey form"
+      ]
+    },
+    "en": {
+      "name": "Passkey login form",
+      "aliases": [
+        "Passkey sign-in form",
+        "Passwordless passkey form"
+      ]
+    },
+    "one_liner": "패스키를 기본 로그인 방식으로 제안하고 다른 로그인 방법으로 fallback하는 폼.",
+    "description": "패스키 로그인 버튼, 계정 힌트, 비밀번호/이메일 로그인 대체 링크를 제공한다.",
+    "visual_anatomy": [
+      "passkey primary action",
+      "account hint",
+      "fallback login link",
+      "security explanation"
+    ],
+    "when_to_use": [
+      "패스키가 제품의 권장 로그인 방식일 때"
+    ],
+    "anti_use": [
+      "패스키 등록을 유도하는 설정 흐름은 passkey-enrollment-prompt가 더 정확하다"
+    ],
+    "prompt_phrases": [
+      "패스키로 계속하기를 기본으로 둔 passkey login form을 만들어줘"
+    ],
+    "asset": {
+      "kind": "mini-mock",
+      "variant": "passkey-login-form"
+    },
+    "sources": [
+      {
+        "source_id": "apple-hig-components",
+        "note": "passkey and secure authentication guidance"
+      }
+    ],
+    "related": [
+      {
+        "id": "passkey-sign-in-sheet",
+        "relation": "use-with",
+        "note": "실제 인증이 시작되면 passkey sign-in sheet가 열릴 수 있다."
+      }
+    ],
+    "confidence": "high"
+  },
+  {
+    "kind": "form-pattern",
+    "id": "invite-signup-form",
+    "status": "draft",
+    "category": "input",
+    "ko": {
+      "name": "초대 가입 폼",
+      "aliases": [
+        "invite signup form",
+        "초대 수락 가입",
+        "invitation signup"
+      ]
+    },
+    "en": {
+      "name": "Invite signup form",
+      "aliases": [
+        "Invitation signup form",
+        "Join by invite form"
+      ]
+    },
+    "one_liner": "초대받은 사용자가 계정 정보를 입력하고 팀이나 워크스페이스에 합류하는 가입 폼.",
+    "description": "초대 대상 이메일, 팀 이름, 역할을 보여주면서 이름/비밀번호 설정 또는 소셜 로그인을 제공한다.",
+    "visual_anatomy": [
+      "invitation summary",
+      "invited email",
+      "name field",
+      "password or provider action",
+      "accept invite button"
+    ],
+    "when_to_use": [
+      "초대 링크를 통해 새 사용자를 팀에 합류시킬 때"
+    ],
+    "anti_use": [
+      "초대 수락만 확인하고 계정 입력이 없으면 invite-acceptance-screen이 더 맞다"
+    ],
+    "prompt_phrases": [
+      "팀 초대 정보를 보여주고 계정을 만드는 invite signup form을 만들어줘"
+    ],
+    "asset": {
+      "kind": "mini-mock",
+      "variant": "invite-signup-form"
+    },
+    "sources": [
+      {
+        "source_id": "page-flows",
+        "note": "invitation signup flow reference"
+      }
+    ],
+    "related": [
+      {
+        "id": "invite-acceptance-screen",
+        "relation": "compare",
+        "note": "초대 정보를 확인만 하면 invite acceptance screen, 계정 생성 입력까지 있으면 invite signup form이다."
+      }
+    ],
+    "confidence": "high"
+  },
+  {
+    "kind": "form-pattern",
+    "id": "account-creation-form",
+    "status": "draft",
+    "category": "input",
+    "ko": {
+      "name": "계정 생성 폼",
+      "aliases": [
+        "account creation form",
+        "create account form",
+        "계정 만들기 폼"
+      ]
+    },
+    "en": {
+      "name": "Account creation form",
+      "aliases": [
+        "Create account form",
+        "New account form"
+      ]
+    },
+    "one_liner": "제품 가입 초기에 최소 정보로 계정을 생성하는 간단한 폼.",
+    "description": "signup-form보다 일반적인 이름으로, 이메일 또는 소셜 계정 기반의 계정 생성 첫 단계를 말한다.",
+    "visual_anatomy": [
+      "email field",
+      "create account action",
+      "provider alternatives",
+      "terms hint"
+    ],
+    "when_to_use": [
+      "가입 첫 단계를 최소 입력으로 시작할 때"
+    ],
+    "anti_use": [
+      "이름, 비밀번호, 약관 등 전체 가입 흐름을 말하면 signup-form이 더 구체적이다"
+    ],
+    "prompt_phrases": [
+      "이메일만 먼저 받는 account creation form을 만들어줘"
+    ],
+    "asset": {
+      "kind": "mini-mock",
+      "variant": "account-creation-form"
+    },
+    "sources": [
+      {
+        "source_id": "page-flows",
+        "note": "account creation flow reference"
+      }
+    ],
+    "confidence": "medium"
+  },
+  {
+    "kind": "form-pattern",
+    "id": "email-change-form",
+    "status": "draft",
+    "category": "input",
+    "ko": {
+      "name": "이메일 변경 폼",
+      "aliases": [
+        "email change form",
+        "계정 이메일 변경",
+        "change email form"
+      ]
+    },
+    "en": {
+      "name": "Email change form",
+      "aliases": [
+        "Change email form",
+        "Account email update form"
+      ]
+    },
+    "one_liner": "로그인된 사용자가 계정 이메일 주소를 바꾸고 새 주소 인증을 시작하는 폼.",
+    "description": "현재 이메일, 새 이메일 입력, 비밀번호 재확인 또는 인증 안내를 함께 보여준다.",
+    "visual_anatomy": [
+      "current email display",
+      "new email field",
+      "password or reauth field",
+      "send verification action"
+    ],
+    "when_to_use": [
+      "계정 설정에서 로그인 이메일을 변경해야 할 때"
+    ],
+    "anti_use": [
+      "단순 이메일 인증 상태 안내는 email-verification-banner가 더 가볍다"
+    ],
+    "prompt_phrases": [
+      "현재 이메일과 새 이메일 입력이 있는 email change form을 만들어줘"
+    ],
+    "asset": {
+      "kind": "mini-mock",
+      "variant": "email-change-form"
+    },
+    "sources": [
+      {
+        "source_id": "shadcn-ui-docs",
+        "note": "account settings form composition reference"
+      }
+    ],
+    "confidence": "medium"
+  },
+  {
+    "kind": "form-pattern",
+    "id": "reauthentication-form",
+    "status": "draft",
+    "category": "input",
+    "ko": {
+      "name": "재인증 폼",
+      "aliases": [
+        "reauthentication form",
+        "민감 작업 재로그인",
+        "confirm identity form"
+      ]
+    },
+    "en": {
+      "name": "Reauthentication form",
+      "aliases": [
+        "Confirm identity form",
+        "Re-login form"
+      ]
+    },
+    "one_liner": "결제, 삭제, 보안 설정처럼 민감한 작업 전에 사용자의 신원을 다시 확인하는 폼.",
+    "description": "비밀번호, 패스키, OTP 중 하나로 현재 사용자가 맞는지 확인하고 작업을 계속하게 한다.",
+    "visual_anatomy": [
+      "security explanation",
+      "password or passkey action",
+      "confirm button",
+      "cancel action"
+    ],
+    "when_to_use": [
+      "민감한 계정 변경이나 결제/삭제 작업 전에 재확인이 필요할 때"
+    ],
+    "anti_use": [
+      "세션이 완전히 만료된 상황은 session-expired-dialog가 더 명확하다"
+    ],
+    "prompt_phrases": [
+      "계정 삭제 전에 비밀번호를 다시 입력하는 reauthentication form을 보여줘"
+    ],
+    "asset": {
+      "kind": "mini-mock",
+      "variant": "reauthentication-form"
+    },
+    "sources": [
+      {
+        "source_id": "apple-hig-components",
+        "note": "confirming identity before sensitive actions"
+      }
+    ],
+    "confidence": "high"
+  },
+  {
+    "kind": "form-pattern",
+    "id": "auth-method-choice",
+    "status": "draft",
+    "category": "selection",
+    "ko": {
+      "name": "인증 방식 선택",
+      "aliases": [
+        "auth method choice",
+        "로그인 방식 선택",
+        "choose sign-in method"
+      ]
+    },
+    "en": {
+      "name": "Auth method choice",
+      "aliases": [
+        "Sign-in method choice",
+        "Choose login method"
+      ]
+    },
+    "one_liner": "비밀번호, SSO, 매직 링크, 패스키 중 어떤 방식으로 인증할지 고르는 선택 패턴.",
+    "description": "여러 인증 옵션을 모두 보여주되 사용자가 현재 상황에 맞는 방법을 선택하게 한다.",
+    "visual_anatomy": [
+      "method option cards",
+      "recommended method",
+      "provider icons",
+      "continue action"
+    ],
+    "when_to_use": [
+      "하나의 제품이 여러 로그인 방식을 제공할 때"
+    ],
+    "anti_use": [
+      "로그인 방식이 하나뿐이면 해당 form을 바로 보여주는 편이 낫다"
+    ],
+    "prompt_phrases": [
+      "비밀번호 SSO 패스키 중 고르는 auth method choice 화면을 만들어줘"
+    ],
+    "asset": {
+      "kind": "mini-mock",
+      "variant": "auth-method-choice"
+    },
+    "sources": [
+      {
+        "source_id": "page-flows",
+        "note": "sign-in method selection flow reference"
+      }
+    ],
+    "confidence": "medium"
+  },
+  {
+    "kind": "block",
+    "id": "auth-card",
+    "status": "draft",
+    "category": "structure",
+    "ko": {
+      "name": "인증 카드",
+      "aliases": [
+        "auth card",
+        "로그인 카드",
+        "authentication card"
+      ]
+    },
+    "en": {
+      "name": "Auth card",
+      "aliases": [
+        "Authentication card",
+        "Login card"
+      ]
+    },
+    "one_liner": "로그인, 가입, 비밀번호 복구 폼을 하나의 중앙 카드로 감싸는 인증 화면 블록.",
+    "description": "인증 페이지의 핵심 폼을 로고, 제목, 설명, 보조 링크와 함께 카드 형태로 묶는다.",
+    "visual_anatomy": [
+      "centered card",
+      "logo or product name",
+      "auth form",
+      "secondary links",
+      "optional provider buttons"
+    ],
+    "when_to_use": [
+      "인증 폼을 독립적인 카드로 집중시켜 보여줄 때"
+    ],
+    "anti_use": [
+      "전체 페이지 레이아웃과 마케팅 패널까지 포함하면 split-auth-layout이나 login-page가 더 맞다"
+    ],
+    "prompt_phrases": [
+      "중앙에 로고와 login form이 들어간 auth card를 만들어줘"
+    ],
+    "asset": {
+      "kind": "mini-mock",
+      "variant": "auth-card"
+    },
+    "sources": [
+      {
+        "source_id": "shadcn-ui-docs",
+        "note": "card and form composition reference"
+      }
+    ],
+    "confidence": "high"
+  },
+  {
+    "kind": "block",
+    "id": "login-page",
+    "status": "draft",
+    "category": "structure",
+    "ko": {
+      "name": "로그인 페이지",
+      "aliases": [
+        "login page",
+        "sign in page",
+        "로그인 화면"
+      ]
+    },
+    "en": {
+      "name": "Login page",
+      "aliases": [
+        "Sign in page",
+        "Authentication page"
+      ]
+    },
+    "one_liner": "사용자가 제품에 들어오기 전 로그인 폼과 브랜드 요소를 함께 보는 전체 페이지.",
+    "description": "auth card, 배경, 로고, 약관 링크, 보조 CTA를 포함하는 인증 목적의 독립 페이지다.",
+    "visual_anatomy": [
+      "page background",
+      "logo area",
+      "auth card or form",
+      "legal links",
+      "signup or support link"
+    ],
+    "when_to_use": [
+      "제품 진입 전에 별도 로그인 화면이 필요할 때"
+    ],
+    "anti_use": [
+      "현재 작업 위에서 잠깐 재인증만 필요하면 login-dialog나 reauthentication-form이 더 적합하다"
+    ],
+    "prompt_phrases": [
+      "중앙 로그인 카드와 하단 약관 링크가 있는 login page를 만들어줘"
+    ],
+    "asset": {
+      "kind": "mini-mock",
+      "variant": "login-page"
+    },
+    "sources": [
+      {
+        "source_id": "shadcn-ui-docs",
+        "note": "shadcn login block composition reference"
+      }
+    ],
+    "confidence": "high"
+  },
+  {
+    "kind": "block",
+    "id": "split-auth-layout",
+    "status": "draft",
+    "category": "structure",
+    "ko": {
+      "name": "분할 인증 레이아웃",
+      "aliases": [
+        "split auth layout",
+        "좌우 분할 로그인",
+        "auth split screen"
+      ]
+    },
+    "en": {
+      "name": "Split auth layout",
+      "aliases": [
+        "Auth split screen",
+        "Split login layout"
+      ]
+    },
+    "one_liner": "한쪽에는 로그인/가입 폼, 다른 쪽에는 브랜드 이미지나 설명을 배치한 인증 페이지 레이아웃.",
+    "description": "B2B SaaS나 브랜드 강조가 필요한 제품에서 인증 폼과 제품 메시지를 나란히 보여준다.",
+    "visual_anatomy": [
+      "form column",
+      "brand or illustration panel",
+      "logo",
+      "responsive stacking"
+    ],
+    "when_to_use": [
+      "인증 화면에서 제품 가치나 브랜드 이미지를 함께 보여주고 싶을 때"
+    ],
+    "anti_use": [
+      "단순하고 빠른 로그인만 필요하면 auth-card나 login-page가 더 가볍다"
+    ],
+    "prompt_phrases": [
+      "왼쪽은 로그인 폼 오른쪽은 제품 소개가 있는 split auth layout을 만들어줘"
+    ],
+    "asset": {
+      "kind": "mini-mock",
+      "variant": "split-auth-layout"
+    },
+    "sources": [
+      {
+        "source_id": "shadcn-ui-docs",
+        "note": "shadcn login page block composition reference"
+      }
+    ],
+    "confidence": "high"
+  },
+  {
+    "kind": "block",
+    "id": "login-dialog",
+    "status": "draft",
+    "category": "structure",
+    "ko": {
+      "name": "로그인 다이얼로그",
+      "aliases": [
+        "login dialog",
+        "로그인 모달",
+        "sign in modal"
+      ]
+    },
+    "en": {
+      "name": "Login dialog",
+      "aliases": [
+        "Sign in modal",
+        "Authentication dialog"
+      ]
+    },
+    "one_liner": "현재 페이지를 떠나지 않고 로그인 폼을 모달로 띄우는 인증 블록.",
+    "description": "댓글 작성, 저장, 구매처럼 특정 행동 직전에 로그인 필요 상태를 빠르게 처리한다.",
+    "visual_anatomy": [
+      "modal surface",
+      "dialog title",
+      "login form",
+      "close action",
+      "signup link"
+    ],
+    "when_to_use": [
+      "사용자가 하던 맥락을 유지한 채 로그인만 요구해야 할 때"
+    ],
+    "anti_use": [
+      "인증이 제품 진입의 첫 화면이면 login-page가 더 명확하다"
+    ],
+    "prompt_phrases": [
+      "저장 버튼을 누르면 현재 페이지 위에 login dialog가 뜨게 해줘"
+    ],
+    "asset": {
+      "kind": "mini-mock",
+      "variant": "login-dialog"
+    },
+    "sources": [
+      {
+        "source_id": "shadcn-ui-docs",
+        "note": "dialog and form composition reference"
+      }
+    ],
+    "confidence": "high"
   }
 ] satisfies VocabularyTerm[]
 
@@ -18458,6 +20417,12 @@ export const categories = [
   "feedback",
   "data-display"
 ] satisfies TermCategory[]
+
+export const kinds = [
+  "component",
+  "block",
+  "form-pattern"
+] satisfies TermKind[]
 
 export const sourceRegistry = [
   {

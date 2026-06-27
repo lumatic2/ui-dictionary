@@ -3,7 +3,7 @@ import { Badge } from "@/components/ui/badge"
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 import { TermVisual } from "@/components/term-visual"
 import type { VocabularyTerm } from "@/data/terms.generated"
-import { categoryLabels, searchMatchReasonLabels, type SearchMatchReason } from "@/lib/search"
+import { categoryLabels, kindLabels, searchMatchReasonLabels, type SearchMatchReason } from "@/lib/search"
 import { cn } from "@/lib/utils"
 
 type TermCardProps = {
@@ -42,6 +42,11 @@ export const TermCard = memo(function TermCard({ term, index, matchReasons = [],
           <Badge variant="outline" className="mb-2 rounded-md text-xs">
             {categoryLabels[term.category]}
           </Badge>
+          {term.kind !== "component" && (
+            <Badge variant="secondary" className="mb-2 ml-2 rounded-md text-xs">
+              {kindLabels[term.kind]}
+            </Badge>
+          )}
           <CardTitle className="truncate text-xl tracking-normal">
             {term.ko.name}
             <span className="ml-2 text-sm font-normal text-muted-foreground">{term.en.name}</span>

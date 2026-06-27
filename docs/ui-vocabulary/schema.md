@@ -10,6 +10,7 @@ The website can generate JSON or TypeScript from YAML, but YAML is the editable 
 - id: text-field
   status: draft
   category: input
+  kind: component
   ko:
     name: 입력창
     aliases: [텍스트 필드, 인풋, 입력 요소]
@@ -51,6 +52,7 @@ The website can generate JSON or TypeScript from YAML, but YAML is the editable 
 - `id`: kebab-case stable identifier.
 - `status`: `draft`, `reviewed`, or `published`.
 - `category`: one of `input`, `selection`, `action`, `structure`, `feedback`, `data-display`.
+- `kind`: optional helper classification, one of `component`, `block`, `form-pattern`. If omitted, the build pipeline treats it as `component`.
 - `ko.name`, `en.name`: primary display names.
 - `ko.aliases`, `en.aliases`: search aliases.
 - `one_liner`: one sentence, beginner-friendly.

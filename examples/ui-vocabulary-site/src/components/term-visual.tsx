@@ -409,6 +409,36 @@ function renderVisual(variant: string, label: string) {
   if (variant === "setup-blocker-state") return <AccountFlowVisual kind="setup-blocker" />
   if (variant === "reconnect-account-state") return <AccountFlowVisual kind="reconnect" />
   if (variant === "consent-review-screen") return <AccountFlowVisual kind="consent-review" />
+  if (variant === "aspect-ratio-box") return <ShadcnGapVisual kind="aspect-ratio" />
+  if (variant === "hover-card") return <ShadcnGapVisual kind="hover-card" />
+  if (variant === "scroll-area") return <ShadcnGapVisual kind="scroll-area" />
+  if (variant === "native-select") return <ShadcnGapVisual kind="native-select" />
+  if (variant === "keyboard-shortcut-key") return <ShadcnGapVisual kind="kbd" />
+  if (variant === "navigation-menu") return <ShadcnGapVisual kind="navigation-menu" />
+  if (variant === "field-group") return <ShadcnGapVisual kind="field-group" />
+  if (variant === "item-row") return <ShadcnGapVisual kind="item-row" />
+  if (variant === "sonner-toast") return <ShadcnGapVisual kind="sonner" />
+  if (variant === "direction-provider") return <ShadcnGapVisual kind="direction-provider" />
+  if (variant === "login-form") return <AuthPatternVisual kind="login-form" />
+  if (variant === "signup-form") return <AuthPatternVisual kind="signup-form" />
+  if (variant === "forgot-password-form") return <AuthPatternVisual kind="forgot-password-form" />
+  if (variant === "reset-password-form") return <AuthPatternVisual kind="reset-password-form" />
+  if (variant === "change-password-form") return <AuthPatternVisual kind="change-password-form" />
+  if (variant === "magic-link-login-form") return <AuthPatternVisual kind="magic-link-login-form" />
+  if (variant === "sso-login-form") return <AuthPatternVisual kind="sso-login-form" />
+  if (variant === "social-login-button-group") return <AuthPatternVisual kind="social-login-button-group" />
+  if (variant === "otp-challenge-form") return <AuthPatternVisual kind="otp-challenge-form" />
+  if (variant === "mfa-challenge-form") return <AuthPatternVisual kind="mfa-challenge-form" />
+  if (variant === "passkey-login-form") return <AuthPatternVisual kind="passkey-login-form" />
+  if (variant === "invite-signup-form") return <AuthPatternVisual kind="invite-signup-form" />
+  if (variant === "account-creation-form") return <AuthPatternVisual kind="account-creation-form" />
+  if (variant === "email-change-form") return <AuthPatternVisual kind="email-change-form" />
+  if (variant === "reauthentication-form") return <AuthPatternVisual kind="reauthentication-form" />
+  if (variant === "auth-method-choice") return <AuthPatternVisual kind="auth-method-choice" />
+  if (variant === "auth-card") return <AuthPatternVisual kind="auth-card" />
+  if (variant === "login-page") return <AuthPatternVisual kind="login-page" />
+  if (variant === "split-auth-layout") return <AuthPatternVisual kind="split-auth-layout" />
+  if (variant === "login-dialog") return <AuthPatternVisual kind="login-dialog" />
   if (variant === "error-state") return <StateVisual tone="error" />
   if (variant === "success-state") return <StateVisual tone="success" />
   if (variant === "warning-state") return <StateVisual tone="warning" />
@@ -3604,6 +3634,134 @@ function AccountFlowVisual({ kind }: { kind: AccountFlowKind }) {
   }
 
   return <Chrome className="w-56 p-3 text-xs"><b>접근 범위 검토</b>{["프로필", "이메일", "파일 목록"].map((item) => <div key={item} className="mt-2 flex items-center gap-2"><Check aria-hidden="true" className="text-primary" /><span>{item}</span></div>)}<button type="button" className="mt-3 rounded bg-primary px-2 py-1 text-primary-foreground">동의</button></Chrome>
+}
+
+type ShadcnGapKind =
+  | "aspect-ratio"
+  | "hover-card"
+  | "scroll-area"
+  | "native-select"
+  | "kbd"
+  | "navigation-menu"
+  | "field-group"
+  | "item-row"
+  | "sonner"
+  | "direction-provider"
+
+function ShadcnGapVisual({ kind }: { kind: ShadcnGapKind }) {
+  if (kind === "aspect-ratio") {
+    return <Chrome className="w-56 p-2 text-xs"><div className="flex aspect-video items-center justify-center rounded bg-muted"><ImageIcon aria-hidden="true" /><span className="ml-2">16:9</span></div></Chrome>
+  }
+  if (kind === "hover-card") {
+    return <div className="relative w-56 p-2 text-xs"><button type="button" className="rounded border bg-card px-2 py-1">@yusun</button><div className="absolute left-10 top-10 w-44 rounded-md border bg-card p-3 shadow-sm"><b>Yusun</b><p className="mt-1 text-muted-foreground">AI builder</p><Line className="mt-2 w-24" /></div></div>
+  }
+  if (kind === "scroll-area") {
+    return <Chrome className="relative h-28 w-52 overflow-hidden p-2 text-xs">{["알림", "초대", "댓글", "빌드", "결제", "권한"].map((item) => <div key={item} className="mb-1 rounded border px-2 py-1">{item}</div>)}<span className="absolute right-1 top-3 h-16 w-1 rounded bg-primary" /></Chrome>
+  }
+  if (kind === "native-select") {
+    return <Chrome className="w-52 p-3 text-xs"><label className="mb-1 block text-muted-foreground">언어</label><select className="w-full rounded border bg-background px-2 py-1"><option>한국어</option><option>English</option></select></Chrome>
+  }
+  if (kind === "kbd") {
+    return <Chrome className="flex w-44 items-center justify-center gap-1 p-4 text-xs">{["Cmd", "K"].map((key) => <kbd key={key} className="rounded border bg-muted px-2 py-1 font-mono shadow-sm">{key}</kbd>)}</Chrome>
+  }
+  if (kind === "navigation-menu") {
+    return <Chrome className="relative w-60 p-2 text-xs"><div className="flex gap-3"><button type="button" className="font-medium text-primary">제품</button><button type="button">리소스</button><button type="button">가격</button></div><div className="mt-2 grid grid-cols-2 gap-2 rounded border bg-background p-2"><span>대시보드</span><span>자동화</span><span>템플릿</span><span>API</span></div></Chrome>
+  }
+  if (kind === "field-group") {
+    return <Chrome className="w-56 p-3 text-xs"><label className="font-medium">이메일</label><p className="text-muted-foreground">로그인 주소</p><input className="mt-2 w-full rounded border bg-background px-2 py-1" value="bad-email" readOnly /><p className="mt-1 text-destructive">이메일 형식이 아닙니다</p></Chrome>
+  }
+  if (kind === "item-row") {
+    return <Chrome className="flex w-60 items-center gap-3 p-3 text-xs"><span className="flex size-8 items-center justify-center rounded bg-muted"><Settings aria-hidden="true" /></span><div className="min-w-0 flex-1"><b>알림 설정</b><p className="text-muted-foreground">이메일과 푸시</p></div><ChevronRight aria-hidden="true" /></Chrome>
+  }
+  if (kind === "sonner") {
+    return <Chrome className="flex w-56 items-center gap-2 p-3 text-xs shadow-sm"><CheckCircle2 aria-hidden="true" className="text-primary" /><span className="flex-1">저장 완료</span><button type="button" className="text-primary">취소</button></Chrome>
+  }
+
+  return <Chrome className="w-56 p-3 text-xs"><div className="flex items-center justify-between"><span>LTR</span><span className="rounded bg-primary px-2 py-0.5 text-primary-foreground">RTL</span></div><div className="mt-3 flex justify-end gap-2 rounded border p-2"><Line className="w-16" /><ChevronLeft aria-hidden="true" /></div></Chrome>
+}
+
+type AuthPatternKind =
+  | "login-form"
+  | "signup-form"
+  | "forgot-password-form"
+  | "reset-password-form"
+  | "change-password-form"
+  | "magic-link-login-form"
+  | "sso-login-form"
+  | "social-login-button-group"
+  | "otp-challenge-form"
+  | "mfa-challenge-form"
+  | "passkey-login-form"
+  | "invite-signup-form"
+  | "account-creation-form"
+  | "email-change-form"
+  | "reauthentication-form"
+  | "auth-method-choice"
+  | "auth-card"
+  | "login-page"
+  | "split-auth-layout"
+  | "login-dialog"
+
+function AuthPatternVisual({ kind }: { kind: AuthPatternKind }) {
+  const [active, setActive] = useState(false)
+
+  if (kind === "login-page") {
+    return <div className="flex h-32 w-64 overflow-hidden rounded-md border bg-card text-xs"><div className="flex flex-1 flex-col justify-between bg-muted p-3"><b>Askewly</b><Line className="w-20" /><Line className="w-28" /></div><AuthMiniForm title="로그인" cta="계속" active={active} onClick={() => setActive(true)} /></div>
+  }
+  if (kind === "split-auth-layout") {
+    return <div className="grid h-32 w-64 grid-cols-[1fr_88px] overflow-hidden rounded-md border bg-card text-xs"><AuthMiniForm title="계정 만들기" cta="시작" active={active} onClick={() => setActive(true)} /><div className="bg-primary/15 p-3"><Star aria-hidden="true" className="text-primary" /><Line className="mt-4 w-14" /><Line className="mt-2 w-10" /></div></div>
+  }
+  if (kind === "login-dialog") {
+    return <div className="relative h-32 w-64 rounded-md border bg-muted/60 p-4 text-xs"><div className="absolute inset-x-8 top-5 rounded-md border bg-card p-3 shadow-sm"><div className="mb-2 flex items-center justify-between"><b>다시 로그인</b><X aria-hidden="true" /></div><Line className="w-32" /><button type="button" className="mt-3 rounded bg-primary px-2 py-1 text-primary-foreground" onClick={() => setActive(true)}>{active ? "확인됨" : "로그인"}</button></div></div>
+  }
+  if (kind === "auth-card") {
+    return <Chrome className="w-56 p-3 text-xs"><div className="mb-3 flex items-center gap-2"><span className="flex size-7 items-center justify-center rounded bg-primary text-primary-foreground"><User aria-hidden="true" /></span><b>계정 접근</b></div><Line className="w-36" /><Line className="mt-2 w-28" /><button type="button" className="mt-3 w-full rounded bg-primary py-1 text-primary-foreground" onClick={() => setActive(true)}>{active ? "진행 중" : "계속"}</button></Chrome>
+  }
+  if (kind === "social-login-button-group") {
+    return <Chrome className="grid w-56 grid-cols-3 gap-2 p-3 text-xs">{["G", "A", "S"].map((item) => <button key={item} type="button" className={cn("rounded border py-2 font-semibold", active && item === "G" && "border-primary bg-primary/10 text-primary")} onClick={() => setActive(true)}>{item}</button>)}</Chrome>
+  }
+  if (kind === "auth-method-choice") {
+    return <Chrome className="w-56 p-3 text-xs"><b>로그인 방법 선택</b>{["이메일", "SSO", "패스키"].map((item, index) => <button key={item} type="button" className={cn("mt-2 flex w-full items-center justify-between rounded border px-2 py-1", active && index === 2 && "border-primary text-primary")} onClick={() => setActive(true)}><span>{item}</span><ChevronRight aria-hidden="true" /></button>)}</Chrome>
+  }
+  if (kind === "sso-login-form") {
+    return <Chrome className="w-56 p-3 text-xs"><label className="text-muted-foreground">회사 도메인</label><input className="mt-1 w-full rounded border bg-background px-2 py-1" readOnly value="askewly.com" /><button type="button" className="mt-3 w-full rounded bg-primary py-1 text-primary-foreground" onClick={() => setActive(true)}>{active ? "리디렉션" : "SSO로 계속"}</button></Chrome>
+  }
+  if (kind === "passkey-login-form") {
+    return <Chrome className="flex w-56 flex-col items-center gap-2 p-3 text-center text-xs"><Settings aria-hidden="true" className="text-primary" /><b>패스키로 로그인</b><Line className="w-28" /><button type="button" className="rounded bg-primary px-3 py-1 text-primary-foreground" onClick={() => setActive(true)}>{active ? "인증됨" : "패스키 사용"}</button></Chrome>
+  }
+  if (kind === "otp-challenge-form" || kind === "mfa-challenge-form") {
+    const title = kind === "otp-challenge-form" ? "인증 코드" : "2단계 인증"
+    return <Chrome className="w-56 p-3 text-xs"><b>{title}</b><div className="mt-3 flex gap-1">{["4", "2", "8", active ? "1" : ""].map((digit, index) => <button key={index} type="button" className={cn("flex size-7 items-center justify-center rounded border", index === 3 && "border-primary")} onClick={() => setActive(true)}>{digit}</button>)}</div><button type="button" className="mt-3 rounded bg-primary px-2 py-1 text-primary-foreground" onClick={() => setActive(true)}>{active ? "확인됨" : "확인"}</button></Chrome>
+  }
+  if (kind === "magic-link-login-form" || kind === "forgot-password-form") {
+    const title = kind === "magic-link-login-form" ? "매직 링크" : "비밀번호 찾기"
+    const cta = kind === "magic-link-login-form" ? "링크 보내기" : "재설정 메일"
+    return <Chrome className="w-56 p-3 text-xs"><b>{title}</b><input className="mt-3 w-full rounded border bg-background px-2 py-1" readOnly value="mail@example.com" /><button type="button" className="mt-3 w-full rounded bg-primary py-1 text-primary-foreground" onClick={() => setActive(true)}>{active ? "전송됨" : cta}</button></Chrome>
+  }
+  if (kind === "reset-password-form" || kind === "change-password-form") {
+    const title = kind === "reset-password-form" ? "새 비밀번호" : "비밀번호 변경"
+    return <Chrome className="w-56 p-3 text-xs"><b>{title}</b><div className="mt-3 space-y-2"><PasswordLine /><PasswordLine /></div><div className="mt-3 h-1.5 rounded bg-muted"><span className="block h-full w-2/3 rounded bg-primary" /></div><button type="button" className="mt-3 rounded bg-primary px-2 py-1 text-primary-foreground" onClick={() => setActive(true)}>{active ? "저장됨" : "저장"}</button></Chrome>
+  }
+  if (kind === "invite-signup-form" || kind === "account-creation-form" || kind === "signup-form") {
+    const title = kind === "invite-signup-form" ? "초대 수락" : kind === "account-creation-form" ? "계정 생성" : "회원가입"
+    return <Chrome className="w-56 p-3 text-xs"><b>{title}</b><div className="mt-3 space-y-2"><Line className="h-7 w-full rounded border bg-background" /><Line className="h-7 w-full rounded border bg-background" /></div><label className="mt-3 flex items-center gap-2"><span className={cn("size-4 rounded border", active && "bg-primary")} />약관 동의</label><button type="button" className="mt-2 rounded bg-primary px-2 py-1 text-primary-foreground" onClick={() => setActive(true)}>{active ? "준비됨" : "만들기"}</button></Chrome>
+  }
+  if (kind === "email-change-form") {
+    return <Chrome className="w-56 p-3 text-xs"><b>이메일 변경</b><p className="mt-2 text-muted-foreground">current@example.com</p><input className="mt-2 w-full rounded border bg-background px-2 py-1" readOnly value="new@example.com" /><button type="button" className="mt-3 rounded bg-primary px-2 py-1 text-primary-foreground" onClick={() => setActive(true)}>{active ? "확인 메일 전송" : "변경 요청"}</button></Chrome>
+  }
+  if (kind === "reauthentication-form") {
+    return <Chrome className="w-56 p-3 text-xs"><div className="flex items-center gap-2"><AlertTriangle aria-hidden="true" className="text-destructive" /><b>본인 확인</b></div><PasswordLine className="mt-3" /><button type="button" className="mt-3 rounded bg-primary px-2 py-1 text-primary-foreground" onClick={() => setActive(true)}>{active ? "확인됨" : "계속"}</button></Chrome>
+  }
+
+  return <Chrome className="w-56 p-3 text-xs"><AuthMiniForm title="로그인" cta="로그인" active={active} onClick={() => setActive(true)} /></Chrome>
+}
+
+function AuthMiniForm({ title, cta, active, onClick }: { title: string; cta: string; active: boolean; onClick: () => void }) {
+  return <div className="flex min-w-0 flex-1 flex-col justify-center p-3 text-xs"><b>{title}</b><div className="mt-3 space-y-2"><Line className="h-6 w-full rounded border bg-background" /><Line className="h-6 w-full rounded border bg-background" /></div><button type="button" className="mt-3 w-full rounded bg-primary py-1 text-primary-foreground" onClick={onClick}>{active ? "진행 중" : cta}</button></div>
+}
+
+function PasswordLine({ className }: { className?: string }) {
+  return <div className={cn("flex h-7 items-center justify-between rounded border bg-background px-2", className)}><span>••••••••</span><EyeOff aria-hidden="true" className="size-3 text-muted-foreground" /></div>
 }
 
 function StateVisual({ tone }: { tone: "error" | "success" | "warning" | "info" }) {

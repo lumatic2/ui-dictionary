@@ -33,6 +33,7 @@ const requiredFields = [
 
 const validCategories = new Set(["input", "selection", "action", "structure", "feedback", "data-display"])
 const validConfidence = new Set(["low", "medium", "high"])
+const validKinds = new Set(["component", "block", "form-pattern"])
 const kebabCase = /^[a-z0-9]+(?:-[a-z0-9]+)*$/
 
 const terms = YAML.parse(await readFile(termsPath, "utf8"))
@@ -94,6 +95,9 @@ for (const [index, candidate] of inbox.entries()) {
   }
   if (!validConfidence.has(candidate.confidence)) {
     errors.push(`${label}: invalid confidence ${candidate.confidence}`)
+  }
+  if (candidate.kind && !validKinds.has(candidate.kind)) {
+    errors.push(`${label}: invalid kind ${candidate.kind}`)
   }
   if (candidate.status !== "candidate") {
     warnings.push(`${label}: status should stay candidate until promotion`)

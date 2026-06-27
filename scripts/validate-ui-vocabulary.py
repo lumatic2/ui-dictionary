@@ -40,6 +40,7 @@ VALID_CATEGORIES = {
 
 VALID_STATUS = {"draft", "reviewed", "published"}
 VALID_CONFIDENCE = {"low", "medium", "high"}
+VALID_KINDS = {"component", "block", "form-pattern"}
 VALID_RELATED_RELATIONS = {"compare", "alternative", "use-with"}
 SOURCE_LINE_PATTERN = re.compile(r"^- `([^`]+)`: (.+?)\s*$")
 TIER_LINE_PATTERN = re.compile(r"^### Tier ([A-Z])\b")
@@ -118,6 +119,8 @@ def main() -> None:
             fail(f"{term_id}: invalid status {term['status']}")
         if term["confidence"] not in VALID_CONFIDENCE:
             fail(f"{term_id}: invalid confidence {term['confidence']}")
+        if "kind" in term and term["kind"] not in VALID_KINDS:
+            fail(f"{term_id}: invalid kind {term['kind']}")
         if not term["ko"].get("name") or not term["en"].get("name"):
             fail(f"{term_id}: missing ko/en name")
         if not term["prompt_phrases"]:

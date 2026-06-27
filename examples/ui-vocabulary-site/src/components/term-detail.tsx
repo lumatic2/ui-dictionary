@@ -13,7 +13,7 @@ import {
 import { TermVisual } from "@/components/term-visual"
 import { sourceRegistry, type VocabularyTerm } from "@/data/terms.generated"
 import { downloadNodeAsPng, getTermPngFileName } from "@/lib/export-capture"
-import { categoryLabels } from "@/lib/search"
+import { categoryLabels, kindLabels } from "@/lib/search"
 import { getRelatedTerms, getUseCasesForTerm } from "@/lib/term-ux"
 
 const sourcesById = new Map(sourceRegistry.map((source) => [source.id, source]))
@@ -80,6 +80,11 @@ export function TermDetail({ term, terms, open, onOpenChange, onSelectTerm }: Te
                   <Badge variant="outline" className="w-fit rounded-md">
                     {categoryLabels[term.category]}
                   </Badge>
+                  {term.kind !== "component" && (
+                    <Badge variant="secondary" className="ml-2 w-fit rounded-md">
+                      {kindLabels[term.kind]}
+                    </Badge>
+                  )}
                   <SheetTitle className="mt-3 text-2xl">{term.ko.name}</SheetTitle>
                   <SheetDescription>
                     {term.en.name} · {term.ko.aliases.concat(term.en.aliases).slice(0, 4).join(", ")}

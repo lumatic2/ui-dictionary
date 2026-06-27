@@ -5,6 +5,7 @@ export type SearchMatchReason =
   | "name"
   | "alias"
   | "category"
+  | "kind"
   | "group"
   | "one_liner"
   | "description"
@@ -32,6 +33,7 @@ export const searchMatchReasonLabels: Record<SearchMatchReason, string> = {
   name: "이름 일치",
   alias: "별칭 일치",
   category: "대분류 일치",
+  kind: "단위 일치",
   group: "세부 분류 일치",
   one_liner: "한 줄 설명",
   description: "설명 일치",
@@ -312,6 +314,7 @@ export function searchableText(term: VocabularyTerm) {
     [
       term.id,
       term.category,
+      term.kind,
       term.ko.name,
       ...term.ko.aliases,
       term.en.name,
@@ -414,6 +417,13 @@ function getSearchFields(term: VocabularyTerm) {
       prefixWeight: 50,
       includesWeight: 40,
     },
+    {
+      text: kindLabels[term.kind],
+      reason: "kind" as const,
+      exactWeight: 60,
+      prefixWeight: 50,
+      includesWeight: 40,
+    },
     ...(group ? [{
       text: group.label,
       reason: "group" as const,
@@ -464,6 +474,12 @@ function getSearchFields(term: VocabularyTerm) {
       includesWeight: 5,
     })),
   ]
+}
+
+export const kindLabels: Record<VocabularyTerm["kind"], string> = {
+  component: "컴포넌트",
+  block: "블록",
+  "form-pattern": "폼 패턴",
 }
 
 function scoreField(
