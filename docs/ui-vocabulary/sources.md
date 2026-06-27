@@ -52,6 +52,12 @@ Tier A or B before promoting a term.
   https://component.gallery/
 - `coss-ui-docs`: coss ui and legacy Origin UI component/particle examples
   https://coss.com/ui
+- `blocks-so-library`: blocks.so and adjacent shadcn block ecosystem examples
+  https://blocks.so/
+- `magic-ui-docs`: Magic UI animated components and effects
+  https://magicui.design/
+- `aceternity-ui-docs`: Aceternity UI landing, motion, and card components
+  https://ui.aceternity.com/
 - `ui-patterns-library`: UI Patterns  
   https://ui-patterns.com/patterns
 - `design-systems-repo`: Design Systems Repo  

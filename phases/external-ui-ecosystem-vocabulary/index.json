@@ -30,6 +30,27 @@
       "status": "completed",
       "summary": "Promoted 8 Origin/coss data-feedback terms: avatar-stack, status-avatar, badge-group, meter, table-row-actions, empty-filter-state, notification-inbox-row, and progress-stepper. Full local verification passed: validate-ui-vocabulary, build:data, strict duplicate audit, build, and lint. Production deploy remains intentionally pending.",
       "completed_at": "2026-06-27T17:46:00+09:00"
+    },
+    {
+      "step": 4,
+      "name": "shadcn-blocks-ecosystem-coverage",
+      "status": "completed",
+      "summary": "Designed and executed the first M2 pass for adjacent shadcn block ecosystems. Promoted 10 block/form-pattern terms: pricing-section, testimonial-section, feature-grid-section, integration-grid-section, settings-page-layout, profile-settings-form, billing-settings-page, onboarding-flow-page, newsletter-section, and cta-section. Source id blocks-so-library added; official shadcn block duplicates remain excluded.",
+      "completed_at": "2026-06-27T18:16:00+09:00"
+    },
+    {
+      "step": 5,
+      "name": "motion-effect-ui-coverage",
+      "status": "completed",
+      "summary": "Designed and executed the first M3 pass for Magic UI-style motion/effect vocabulary. Promoted 10 terms: animated-gradient-background, marquee-row, border-beam, orbiting-icons, spotlight-card, grid-pattern-background, typing-text-effect, number-ticker, blur-fade-in, animated-shiny-text, and dot-pattern-background. Source id magic-ui-docs added and motion-only decorative terms were constrained with anti-use notes.",
+      "completed_at": "2026-06-27T18:16:00+09:00"
+    },
+    {
+      "step": 6,
+      "name": "aceternity-ui-coverage",
+      "status": "completed",
+      "summary": "Designed and executed the first M4 pass for Aceternity-style landing/hero/card vocabulary. Promoted 10 terms: bento-grid, sticky-scroll-section, floating-navbar, three-d-card, hover-card-stack, background-beams, aurora-background, spotlight-hero, infinite-moving-cards, canvas-reveal-card, and tracing-beam-section. Source id aceternity-ui-docs added; terms overlapping M3 are linked via related or kept to landing-section semantics.",
+      "completed_at": "2026-06-27T18:16:00+09:00"
     }
   ]
 }

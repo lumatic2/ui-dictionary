@@ -8429,3 +8429,544 @@
     - source_id: coss-ui-docs
       note: Origin stepper examples include progress-style step indicators
   confidence: medium
+
+- id: pricing-section
+  status: draft
+  category: structure
+  kind: block
+  ko: { name: 가격 섹션, aliases: [pricing section, 요금제 섹션, 가격표 블록] }
+  en: { name: Pricing section, aliases: [Pricing block, Plans section] }
+  one_liner: 여러 요금제 카드와 추천 플랜, CTA를 한 화면 섹션으로 묶은 가격 안내 블록.
+  description: 랜딩 페이지나 SaaS 구매 흐름에서 무료/프로/팀 요금제를 비교하고 선택하게 한다.
+  visual_anatomy: [section heading, pricing cards, highlighted plan, feature rows, CTA buttons]
+  when_to_use: [서비스 요금제를 비교하고 가입 또는 업그레이드를 유도할 때]
+  anti_use: [단일 상품 가격만 보여주면 price-card가 충분하다]
+  prompt_phrases: [요금제 3개가 나란히 있는 pricing section을 만들어줘]
+  related: [{ id: price-card, relation: compare, note: price-card는 단일 가격 카드이고 pricing-section은 여러 플랜 비교 섹션이다. }]
+  asset: { kind: mini-mock, variant: pricing-section }
+  sources: [{ source_id: blocks-so-library, note: shadcn block ecosystem pricing and marketing block examples }]
+  confidence: medium
+
+- id: testimonial-section
+  status: draft
+  category: data-display
+  kind: block
+  ko: { name: 후기 섹션, aliases: [testimonial section, 고객 후기 섹션, 리뷰 블록] }
+  en: { name: Testimonial section, aliases: [Testimonials block, Review section] }
+  one_liner: 고객 인용문, 이름, 역할, 아바타를 묶어 신뢰를 보여주는 랜딩 페이지 섹션.
+  description: 제품의 사회적 증거를 보여주기 위해 여러 고객 후기를 카드나 그리드로 배치한다.
+  visual_anatomy: [quote cards, avatar, name and role, rating optional, section heading]
+  when_to_use: [랜딩 페이지에서 실제 사용자 만족이나 신뢰를 보여줄 때]
+  anti_use: [상품별 개별 리뷰 목록은 review-list나 data table 형태가 더 적합하다]
+  prompt_phrases: [고객 인용문 3개가 있는 testimonial section을 넣어줘]
+  asset: { kind: mini-mock, variant: testimonial-section }
+  sources: [{ source_id: blocks-so-library, note: shadcn block ecosystem testimonial marketing sections }]
+  confidence: medium
+
+- id: feature-grid-section
+  status: draft
+  category: structure
+  kind: block
+  ko: { name: 기능 그리드 섹션, aliases: [feature grid, 기능 카드 그리드, feature section] }
+  en: { name: Feature grid section, aliases: [Feature cards section, Feature block] }
+  one_liner: 제품 기능 여러 개를 아이콘, 제목, 설명 카드의 그리드로 보여주는 섹션.
+  description: 랜딩 페이지에서 핵심 기능을 빠르게 훑게 하기 위해 반복 카드로 구성한다.
+  visual_anatomy: [section heading, feature cards, icon, title, short description]
+  when_to_use: [제품의 주요 기능을 3개 이상 한 번에 소개할 때]
+  anti_use: [기능 간 수치 비교가 필요하면 feature-comparison이 더 적합하다]
+  prompt_phrases: [아이콘과 설명이 있는 feature grid section을 만들어줘]
+  asset: { kind: mini-mock, variant: feature-grid-section }
+  sources: [{ source_id: blocks-so-library, note: shadcn block ecosystem feature section examples }]
+  confidence: medium
+
+- id: integration-grid-section
+  status: draft
+  category: data-display
+  kind: block
+  ko: { name: 연동 그리드 섹션, aliases: [integration grid, integrations section, 연동 앱 섹션] }
+  en: { name: Integration grid section, aliases: [Integrations grid, Logo integration section] }
+  one_liner: 외부 서비스 로고와 연동 상태를 카드 그리드로 보여주는 섹션.
+  description: 제품이 어떤 도구와 연결되는지 보여주고 설치, 연결, 자세히 보기 행동을 제공한다.
+  visual_anatomy: [integration cards, logo, service name, connection status, action]
+  when_to_use: [SaaS 앱에서 지원 연동 목록이나 마켓플레이스를 보여줄 때]
+  anti_use: [단일 연동 설정은 integration-card가 더 직접적이다]
+  prompt_phrases: [Slack, GitHub, Notion이 있는 integration grid section을 만들어줘]
+  related:
+    - id: integration-card
+      relation: compare
+      note: integration-card는 단일 연동 카드이고 integration-grid-section은 여러 연동을 탐색하는 섹션이다.
+  asset: { kind: mini-mock, variant: integration-grid-section }
+  sources: [{ source_id: blocks-so-library, note: shadcn blocks for integration and SaaS marketing sections }]
+  confidence: medium
+
+- id: settings-page-layout
+  status: draft
+  category: structure
+  kind: block
+  ko: { name: 설정 페이지 레이아웃, aliases: [settings page, settings layout, 설정 화면 레이아웃] }
+  en: { name: Settings page layout, aliases: [Settings layout, Settings screen] }
+  one_liner: 설정 카테고리 내비게이션과 설정 폼 카드들을 함께 배치한 페이지 구조.
+  description: 계정, 보안, 결제, 알림처럼 여러 설정 영역을 탐색하고 수정하게 한다.
+  visual_anatomy: [settings nav, active category, form cards, save actions, helper text]
+  when_to_use: [제품 내부에서 사용자가 계정이나 워크스페이스 설정을 관리할 때]
+  anti_use: [설정 항목 하나만 바꾸면 popover-form이나 dialog가 더 가볍다]
+  prompt_phrases: [왼쪽 설정 메뉴와 오른쪽 form card가 있는 settings page layout을 만들어줘]
+  asset: { kind: mini-mock, variant: settings-page-layout }
+  sources: [{ source_id: blocks-so-library, note: shadcn block ecosystem settings page examples }]
+  confidence: medium
+
+- id: profile-settings-form
+  status: draft
+  category: input
+  kind: form-pattern
+  ko: { name: 프로필 설정 폼, aliases: [profile settings form, 프로필 편집 폼, account profile form] }
+  en: { name: Profile settings form, aliases: [Profile form, Account profile form] }
+  one_liner: 이름, 아바타, 소개, 연락처 같은 개인 프로필 정보를 편집하는 설정 폼.
+  description: 계정 설정 안에서 사용자 정체성 정보를 보여주고 변경 저장 흐름을 제공한다.
+  visual_anatomy: [avatar upload, name fields, bio field, email field, save button]
+  when_to_use: [사용자가 자신의 표시 이름과 프로필 정보를 수정해야 할 때]
+  anti_use: [로그인이나 가입 입력은 auth-form 계열이 더 적합하다]
+  prompt_phrases: [아바타 업로드와 이름 입력이 있는 profile settings form을 만들어줘]
+  asset: { kind: mini-mock, variant: profile-settings-form }
+  sources: [{ source_id: blocks-so-library, note: shadcn settings and account form block examples }]
+  confidence: medium
+
+- id: billing-settings-page
+  status: draft
+  category: structure
+  kind: block
+  ko: { name: 결제 설정 페이지, aliases: [billing settings, billing page, 결제 관리 화면] }
+  en: { name: Billing settings page, aliases: [Billing page, Subscription settings] }
+  one_liner: 현재 플랜, 결제 수단, 청구 내역, 업그레이드 행동을 모은 설정 페이지.
+  description: SaaS 앱에서 구독 상태와 결제 관련 작업을 한 화면에서 관리하게 한다.
+  visual_anatomy: [current plan summary, payment method card, invoices list, upgrade action]
+  when_to_use: [사용자가 요금제와 결제 정보를 관리해야 할 때]
+  anti_use: [한 장의 결제 요약만 필요하면 billing-summary가 더 단순하다]
+  prompt_phrases: [현재 플랜과 invoice row가 있는 billing settings page를 만들어줘]
+  related:
+    - id: billing-summary
+      relation: compare
+      note: billing-summary는 요약 카드이고 billing-settings-page는 결제 관리 화면 전체다.
+  asset: { kind: mini-mock, variant: billing-settings-page }
+  sources: [{ source_id: blocks-so-library, note: shadcn billing and settings block examples }]
+  confidence: medium
+
+- id: onboarding-flow-page
+  status: draft
+  category: structure
+  kind: block
+  ko: { name: 온보딩 플로우 페이지, aliases: [onboarding flow, onboarding page, 초기 설정 흐름] }
+  en: { name: Onboarding flow page, aliases: [Onboarding page, Setup flow] }
+  one_liner: 새 사용자가 제품 사용을 시작하기 위해 단계별 선택과 설정을 완료하는 페이지.
+  description: 팀 생성, 역할 선택, 데이터 가져오기, 첫 작업 생성처럼 초기 설정을 안내한다.
+  visual_anatomy: [progress stepper, setup form, choice cards, continue action, skip option]
+  when_to_use: [가입 직후 사용자가 첫 성공 경험까지 안내가 필요할 때]
+  anti_use: [단순 안내 목록이면 onboarding-checklist가 더 가볍다]
+  prompt_phrases: [팀 생성부터 데이터 가져오기까지 이어지는 onboarding flow page를 만들어줘]
+  related:
+    - id: wizard
+      relation: compare
+      note: wizard는 단계형 컨트롤이고 onboarding-flow-page는 첫 사용 설정 경험 전체다.
+  asset: { kind: mini-mock, variant: onboarding-flow-page }
+  sources: [{ source_id: blocks-so-library, note: shadcn onboarding and setup page block examples }]
+  confidence: medium
+
+- id: newsletter-section
+  status: draft
+  category: input
+  kind: block
+  ko: { name: 뉴스레터 섹션, aliases: [newsletter section, 구독 섹션, 이메일 구독 블록] }
+  en: { name: Newsletter section, aliases: [Email signup section, Subscribe block] }
+  one_liner: 이메일 입력과 구독 CTA를 랜딩 페이지 섹션으로 배치한 블록.
+  description: 방문자가 업데이트, 제품 소식, 리소스를 받기 위해 이메일을 남기게 한다.
+  visual_anatomy: [section copy, email field, inline submit, privacy note, optional illustration]
+  when_to_use: [랜딩 페이지에서 이메일 구독 전환을 유도할 때]
+  anti_use: [앱 내부의 작은 이메일 입력은 inline-submit-field가 충분하다]
+  prompt_phrases: [랜딩 하단에 이메일 구독 newsletter section을 넣어줘]
+  related:
+    - id: inline-submit-field
+      relation: compare
+      note: inline-submit-field는 입력 조합이고 newsletter-section은 카피와 CTA를 포함한 섹션이다.
+  asset: { kind: mini-mock, variant: newsletter-section }
+  sources: [{ source_id: blocks-so-library, note: shadcn marketing block examples for newsletter signup sections }]
+  confidence: medium
+
+- id: cta-section
+  status: draft
+  category: action
+  kind: block
+  ko: { name: CTA 섹션, aliases: [call to action section, CTA block, 행동 유도 섹션] }
+  en: { name: CTA section, aliases: [Call to action section, CTA block] }
+  one_liner: 한 가지 핵심 행동을 유도하기 위해 헤드라인, 설명, 버튼을 크게 배치한 섹션.
+  description: 랜딩 페이지 중간이나 끝에서 시작하기, 문의하기, 데모 보기 같은 전환 행동을 집중시킨다.
+  visual_anatomy: [headline, supporting copy, primary CTA, secondary action optional, background]
+  when_to_use: [사용자가 다음 행동으로 넘어가도록 명확한 전환 지점이 필요할 때]
+  anti_use: [여러 기능을 설명하려면 feature-grid-section이 더 적합하다]
+  prompt_phrases: [페이지 하단에 무료로 시작하기 CTA section을 넣어줘]
+  asset: { kind: mini-mock, variant: cta-section }
+  sources: [{ source_id: blocks-so-library, note: shadcn block ecosystem CTA marketing sections }]
+  confidence: medium
+
+- id: animated-gradient-background
+  status: draft
+  category: feedback
+  kind: component
+  ko: { name: 애니메이션 그라디언트 배경, aliases: [animated gradient, 움직이는 그라디언트, gradient background] }
+  en: { name: Animated gradient background, aliases: [Moving gradient background, Gradient animation] }
+  one_liner: 배경의 색상 흐름이 천천히 움직이며 화면에 동적인 분위기를 주는 효과.
+  description: 히어로, 빈 상태, 로딩 화면에서 정적인 배경보다 부드러운 움직임을 줄 때 사용한다.
+  visual_anatomy: [gradient surface, animated color stops, soft motion, content overlay]
+  when_to_use: [랜딩이나 AI 화면에서 배경에 은은한 동적 분위기를 줄 때]
+  anti_use: [업무용 밀도 높은 폼이나 표 화면에서는 집중을 방해할 수 있다]
+  prompt_phrases: [히어로 배경에 은은한 animated gradient background를 넣어줘]
+  asset: { kind: mini-mock, variant: animated-gradient-background }
+  sources: [{ source_id: magic-ui-docs, note: Magic UI background and animation effect examples }]
+  confidence: medium
+
+- id: marquee-row
+  status: draft
+  category: structure
+  kind: component
+  ko: { name: 마키 행, aliases: [marquee row, 흐르는 카드 행, 자동 스크롤 행] }
+  en: { name: Marquee row, aliases: [Scrolling marquee, Auto-scrolling row] }
+  one_liner: 로고, 후기, 카드가 가로로 계속 흐르며 반복되는 자동 스크롤 행.
+  description: 많은 항목을 압축해서 보여주거나 랜딩 페이지에 움직임을 줄 때 사용한다.
+  visual_anatomy: [horizontal track, repeated items, masked edges, continuous motion]
+  when_to_use: [로고 목록이나 후기 카드를 흐르는 형태로 보여줄 때]
+  anti_use: [사용자가 항목을 읽고 선택해야 하면 carousel이나 grid가 더 낫다]
+  prompt_phrases: [고객 로고가 천천히 흐르는 marquee row를 넣어줘]
+  asset: { kind: mini-mock, variant: marquee-row }
+  sources: [{ source_id: magic-ui-docs, note: Magic UI marquee component examples }]
+  confidence: medium
+
+- id: border-beam
+  status: draft
+  category: feedback
+  kind: component
+  ko: { name: 보더 빔, aliases: [border beam, 빛나는 테두리, animated border] }
+  en: { name: Border beam, aliases: [Animated border beam, Glowing border] }
+  one_liner: 카드나 버튼 테두리를 따라 빛이 이동하는 강조 효과.
+  description: 새 기능, 추천 플랜, AI 응답 카드처럼 특정 표면을 은은하게 강조할 때 쓴다.
+  visual_anatomy: [surface border, moving highlight, rounded corners, focused content]
+  when_to_use: [중요한 카드나 CTA를 과하지 않게 강조할 때]
+  anti_use: [상태나 오류를 전달해야 하면 alert나 status-indicator가 더 명확하다]
+  prompt_phrases: [추천 플랜 카드에 border beam 효과를 넣어줘]
+  asset: { kind: mini-mock, variant: border-beam }
+  sources: [{ source_id: magic-ui-docs, note: Magic UI border beam effect examples }]
+  confidence: medium
+
+- id: orbiting-icons
+  status: draft
+  category: data-display
+  kind: component
+  ko: { name: 궤도 아이콘, aliases: [orbiting icons, orbit icons, 회전 아이콘] }
+  en: { name: Orbiting icons, aliases: [Orbit icons, Icon orbit] }
+  one_liner: 중심 대상 주변을 여러 아이콘이 원형 궤도로 배치되거나 회전하는 시각 패턴.
+  description: 제품이 여러 도구와 연결되거나 중심 기능 주변에 생태계가 있음을 상징적으로 보여준다.
+  visual_anatomy: [center object, circular orbit, icon nodes, motion path]
+  when_to_use: [연동, 생태계, AI agent 주변 도구를 시각적으로 보여줄 때]
+  anti_use: [정확한 관계나 상태를 읽어야 하면 integration-grid-section이 더 명확하다]
+  prompt_phrases: [AI 로고 주변에 도구 아이콘이 도는 orbiting icons를 만들어줘]
+  asset: { kind: mini-mock, variant: orbiting-icons }
+  sources: [{ source_id: magic-ui-docs, note: Magic UI orbiting circles/icon examples }]
+  confidence: medium
+
+- id: spotlight-card
+  status: draft
+  category: feedback
+  kind: component
+  ko: { name: 스포트라이트 카드, aliases: [spotlight card, 마우스 빛 카드, hover spotlight] }
+  en: { name: Spotlight card, aliases: [Hover spotlight card, Cursor spotlight] }
+  one_liner: 마우스 위치나 hover 상태에 따라 카드 표면에 빛 번짐이 나타나는 카드 효과.
+  description: 기능 카드나 갤러리 카드에 상호작용감을 주되 카드 정보 구조는 유지한다.
+  visual_anatomy: [card surface, radial highlight, hover area, content stack]
+  when_to_use: [마케팅 카드에 hover 반응과 깊이를 주고 싶을 때]
+  anti_use: [데이터 테이블이나 반복 업무 UI에서는 시각 noise가 될 수 있다]
+  prompt_phrases: [feature card에 hover spotlight card 효과를 넣어줘]
+  asset: { kind: mini-mock, variant: spotlight-card }
+  sources: [{ source_id: magic-ui-docs, note: Magic UI interactive card and spotlight effects }]
+  confidence: medium
+
+- id: grid-pattern-background
+  status: draft
+  category: structure
+  kind: component
+  ko: { name: 그리드 패턴 배경, aliases: [grid pattern background, 격자 배경, grid background] }
+  en: { name: Grid pattern background, aliases: [Grid background, Graph paper background] }
+  one_liner: 얇은 격자선을 배경에 깔아 기술적이거나 구조적인 분위기를 주는 배경 패턴.
+  description: 히어로, 빈 상태, 개발자 도구 화면에서 공간감을 주되 콘텐츠를 방해하지 않게 한다.
+  visual_anatomy: [repeating grid lines, muted color, content overlay, optional fade mask]
+  when_to_use: [기술 제품 랜딩이나 캔버스형 화면의 배경을 만들 때]
+  anti_use: [글이 많은 본문이나 폼에서는 가독성을 해칠 수 있다]
+  prompt_phrases: [히어로 섹션 뒤에 흐린 grid pattern background를 넣어줘]
+  asset: { kind: mini-mock, variant: grid-pattern-background }
+  sources: [{ source_id: magic-ui-docs, note: Magic UI grid and pattern background examples }]
+  confidence: medium
+
+- id: typing-text-effect
+  status: draft
+  category: feedback
+  kind: component
+  ko: { name: 타이핑 텍스트 효과, aliases: [typing effect, 타자 효과, typewriter text] }
+  en: { name: Typing text effect, aliases: [Typewriter effect, Typing animation] }
+  one_liner: 글자가 한 글자씩 입력되는 것처럼 나타나는 텍스트 애니메이션.
+  description: AI 응답, 히어로 카피, 데모 문구가 생성되거나 말해지는 느낌을 줄 때 사용한다.
+  visual_anatomy: [text string, cursor, staged reveal, optional loop]
+  when_to_use: [AI나 자동 생성 메시지의 등장감을 표현할 때]
+  anti_use: [중요 안내문이나 긴 본문에는 읽기 속도를 방해한다]
+  prompt_phrases: [AI가 답하는 문구에 typing text effect를 적용해줘]
+  asset: { kind: mini-mock, variant: typing-text-effect }
+  sources: [{ source_id: magic-ui-docs, note: Magic UI text animation examples }]
+  confidence: medium
+
+- id: number-ticker
+  status: draft
+  category: data-display
+  kind: component
+  ko: { name: 숫자 티커, aliases: [number ticker, count up, 숫자 카운트업] }
+  en: { name: Number ticker, aliases: [Count up number, Animated number] }
+  one_liner: 숫자가 목표 값까지 올라가거나 바뀌며 지표 변화를 보여주는 애니메이션 숫자.
+  description: 통계, KPI, 사용자 수처럼 숫자 자체를 강조하고 증가감을 보여줄 때 사용한다.
+  visual_anatomy: [numeric value, animated digits, unit label, optional trend]
+  when_to_use: [랜딩 페이지나 대시보드에서 핵심 수치를 강조할 때]
+  anti_use: [정확한 표 형식 비교는 table이나 metric-card가 더 적합하다]
+  prompt_phrases: [총 사용자 수가 올라가는 number ticker를 넣어줘]
+  asset: { kind: mini-mock, variant: number-ticker }
+  sources: [{ source_id: magic-ui-docs, note: Magic UI number ticker component examples }]
+  confidence: medium
+
+- id: blur-fade-in
+  status: draft
+  category: feedback
+  kind: component
+  ko: { name: 블러 페이드 인, aliases: [blur fade, blur fade in, 흐림 페이드 등장] }
+  en: { name: Blur fade in, aliases: [Blur fade, Soft reveal] }
+  one_liner: 요소가 흐린 상태에서 선명해지며 부드럽게 나타나는 등장 애니메이션.
+  description: 카드, 이미지, 문단을 순차적으로 드러낼 때 갑작스러운 등장보다 부드러운 인상을 준다.
+  visual_anatomy: [blurred start, opacity transition, final sharp state, stagger optional]
+  when_to_use: [랜딩 페이지 카드나 이미지가 스크롤에 맞춰 등장할 때]
+  anti_use: [상태 변화가 즉시 인지되어야 하는 컨트롤에는 쓰지 않는다]
+  prompt_phrases: [기능 카드들이 blur fade in으로 순서대로 나타나게 해줘]
+  asset: { kind: mini-mock, variant: blur-fade-in }
+  sources: [{ source_id: magic-ui-docs, note: Magic UI blur/fade animation examples }]
+  confidence: medium
+
+- id: animated-shiny-text
+  status: draft
+  category: feedback
+  kind: component
+  ko: { name: 샤이니 텍스트, aliases: [shiny text, 빛나는 텍스트, animated shiny text] }
+  en: { name: Animated shiny text, aliases: [Shiny text, Text shimmer] }
+  one_liner: 텍스트 위로 빛이 지나가는 듯한 하이라이트를 반복하는 텍스트 효과.
+  description: 배지, 새 기능 라벨, AI 상태 문구처럼 짧은 텍스트를 눈에 띄게 한다.
+  visual_anatomy: [short text, moving highlight, muted base, loop animation]
+  when_to_use: [짧은 마케팅 문구나 새 기능 라벨을 강조할 때]
+  anti_use: [긴 문장이나 본문에는 shimmer-effect보다 더 산만할 수 있다]
+  prompt_phrases: [New feature 배지에 animated shiny text를 적용해줘]
+  related:
+    - id: shimmer-effect
+      relation: compare
+      note: shimmer-effect는 로딩/진행 표면에도 쓰이고, animated shiny text는 짧은 텍스트 강조에 초점이 있다.
+  asset: { kind: mini-mock, variant: animated-shiny-text }
+  sources: [{ source_id: magic-ui-docs, note: Magic UI shiny text component examples }]
+  confidence: medium
+
+- id: dot-pattern-background
+  status: draft
+  category: structure
+  kind: component
+  ko: { name: 점 패턴 배경, aliases: [dot pattern, dotted background, 점 배경] }
+  en: { name: Dot pattern background, aliases: [Dotted background, Dot grid] }
+  one_liner: 작은 점들이 반복되는 배경 패턴으로 빈 공간에 질서 있는 질감을 주는 요소.
+  description: 히어로, empty state, feature section 뒤에 배경 질감을 추가하되 콘텐츠 위계를 유지한다.
+  visual_anatomy: [repeating dots, muted contrast, fade mask, content layer]
+  when_to_use: [미니멀한 화면에 가벼운 배경 질감이 필요할 때]
+  anti_use: [복잡한 카드 그리드 뒤에서는 시각적 혼잡을 만든다]
+  prompt_phrases: [빈 상태 뒤에 연한 dot pattern background를 깔아줘]
+  asset: { kind: mini-mock, variant: dot-pattern-background }
+  sources: [{ source_id: magic-ui-docs, note: Magic UI dot pattern background examples }]
+  confidence: medium
+
+- id: bento-grid
+  status: draft
+  category: structure
+  kind: block
+  ko: { name: 벤토 그리드, aliases: [bento grid, 벤토 카드 그리드, 비대칭 기능 그리드] }
+  en: { name: Bento grid, aliases: [Bento layout, Bento feature grid] }
+  one_liner: 서로 다른 크기의 카드들을 격자에 배치해 기능이나 콘텐츠를 풍부하게 보여주는 레이아웃.
+  description: 랜딩 페이지에서 핵심 기능을 단조로운 동일 카드 대신 크기와 강조도가 다른 묶음으로 보여준다.
+  visual_anatomy: [asymmetric grid, feature cards, large highlight card, small supporting cards]
+  when_to_use: [기능 여러 개 중 일부를 더 크게 강조하고 싶을 때]
+  anti_use: [동등한 항목 비교에는 feature-grid-section이 더 명확하다]
+  prompt_phrases: [AI 기능들을 큰 카드와 작은 카드가 섞인 bento grid로 보여줘]
+  asset: { kind: mini-mock, variant: bento-grid }
+  sources: [{ source_id: aceternity-ui-docs, note: Aceternity UI bento grid component examples }]
+  confidence: medium
+
+- id: sticky-scroll-section
+  status: draft
+  category: structure
+  kind: block
+  ko: { name: 스티키 스크롤 섹션, aliases: [sticky scroll, 고정 스크롤 섹션, sticky reveal] }
+  en: { name: Sticky scroll section, aliases: [Sticky scroll reveal, Pinned scroll section] }
+  one_liner: 한쪽 콘텐츠가 화면에 고정된 채 스크롤에 따라 설명이나 미디어가 바뀌는 섹션.
+  description: 제품 기능을 단계별로 설명하면서 시각 자료를 고정해 맥락을 유지한다.
+  visual_anatomy: [sticky media panel, scrolling text steps, active state, section height]
+  when_to_use: [긴 설명을 단계별 제품 데모처럼 보여줄 때]
+  anti_use: [짧은 기능 목록에는 feature-grid-section이 더 빠르다]
+  prompt_phrases: [스크롤하면 오른쪽 미리보기가 바뀌는 sticky scroll section을 만들어줘]
+  asset: { kind: mini-mock, variant: sticky-scroll-section }
+  sources: [{ source_id: aceternity-ui-docs, note: Aceternity sticky scroll reveal examples }]
+  confidence: medium
+
+- id: floating-navbar
+  status: draft
+  category: structure
+  kind: component
+  ko: { name: 플로팅 내비게이션 바, aliases: [floating navbar, 떠 있는 nav, floating nav] }
+  en: { name: Floating navbar, aliases: [Floating navigation bar, Floating nav] }
+  one_liner: 페이지 상단에 고정되지 않고 떠 있는 pill 형태로 배치되는 내비게이션 바.
+  description: 포트폴리오나 랜딩 페이지에서 화면 위에 가볍게 떠 있는 주요 링크를 제공한다.
+  visual_anatomy: [floating pill surface, nav links, shadow, centered or top placement]
+  when_to_use: [랜딩 페이지에서 nav가 콘텐츠 위에 떠 있는 느낌을 주고 싶을 때]
+  anti_use: [복잡한 제품 앱의 전역 내비게이션은 navigation-bar나 sidebar가 더 안정적이다]
+  prompt_phrases: [히어로 위에 떠 있는 floating navbar를 넣어줘]
+  asset: { kind: mini-mock, variant: floating-navbar }
+  sources: [{ source_id: aceternity-ui-docs, note: Aceternity floating navbar component examples }]
+  confidence: medium
+
+- id: three-d-card
+  status: draft
+  category: feedback
+  kind: component
+  ko: { name: 3D 카드, aliases: [3d card, tilt card, 기울어지는 카드] }
+  en: { name: 3D card, aliases: [Tilt card, 3D hover card] }
+  one_liner: hover나 마우스 위치에 따라 입체적으로 기울어지는 카드 효과.
+  description: 포트폴리오, 제품 카드, 랜딩 feature card에 깊이감과 상호작용감을 준다.
+  visual_anatomy: [card surface, perspective tilt, hover depth, layered content]
+  when_to_use: [마케팅 카드나 포트폴리오 카드에 입체 반응을 주고 싶을 때]
+  anti_use: [정확한 읽기와 반복 작업이 중요한 admin UI에는 피한다]
+  prompt_phrases: [제품 카드에 hover하면 기울어지는 3D card 효과를 넣어줘]
+  asset: { kind: mini-mock, variant: three-d-card }
+  sources: [{ source_id: aceternity-ui-docs, note: Aceternity 3D card hover component examples }]
+  confidence: medium
+
+- id: hover-card-stack
+  status: draft
+  category: data-display
+  kind: component
+  ko: { name: 호버 카드 스택, aliases: [card stack hover, hover card stack, 겹친 카드 효과] }
+  en: { name: Hover card stack, aliases: [Card stack hover, Stacked cards] }
+  one_liner: 여러 카드가 겹쳐 있다가 hover나 스크롤에 따라 펼쳐지는 카드 묶음 효과.
+  description: 사례, 이미지, 기능 미리보기를 압축해서 보여주고 상호작용 시 레이어를 드러낸다.
+  visual_anatomy: [stacked cards, offset layers, hover reveal, depth shadow]
+  when_to_use: [여러 미리보기를 한 공간에 압축해 보여줄 때]
+  anti_use: [각 카드를 비교해야 하면 grid나 carousel이 더 명확하다]
+  prompt_phrases: [프로젝트 미리보기를 겹친 hover card stack으로 보여줘]
+  asset: { kind: mini-mock, variant: hover-card-stack }
+  sources: [{ source_id: aceternity-ui-docs, note: Aceternity card hover and stacked card examples }]
+  confidence: medium
+
+- id: background-beams
+  status: draft
+  category: structure
+  kind: component
+  ko: { name: 배경 빔, aliases: [background beams, beam background, 빛줄기 배경] }
+  en: { name: Background beams, aliases: [Beam background, Light beams] }
+  one_liner: 배경에 흐르는 빛줄기나 선형 광선을 깔아 공간감과 움직임을 주는 효과.
+  description: 히어로나 CTA 섹션에서 미래적이고 기술적인 분위기를 만들 때 사용한다.
+  visual_anatomy: [beam lines, soft glow, dark or light surface, content overlay]
+  when_to_use: [AI/개발자 도구 랜딩의 첫 화면에 강한 시각 신호가 필요할 때]
+  anti_use: [텍스트 가독성이 중요한 본문 섹션에는 쓰지 않는다]
+  prompt_phrases: [AI 제품 hero 뒤에 background beams 효과를 넣어줘]
+  asset: { kind: mini-mock, variant: background-beams }
+  sources: [{ source_id: aceternity-ui-docs, note: Aceternity background beams examples }]
+  confidence: medium
+
+- id: aurora-background
+  status: draft
+  category: structure
+  kind: component
+  ko: { name: 오로라 배경, aliases: [aurora background, 오로라 그라디언트, aurora effect] }
+  en: { name: Aurora background, aliases: [Aurora effect, Aurora gradient] }
+  one_liner: 오로라처럼 넓은 색 덩어리가 부드럽게 흐르는 랜딩 페이지 배경 효과.
+  description: 차분하지만 인상적인 첫 화면이나 제품 소개 섹션에 큰 분위기를 만든다.
+  visual_anatomy: [soft color bands, large blur, animated drift, foreground content]
+  when_to_use: [브랜드 랜딩의 hero 배경을 강하게 만들 때]
+  anti_use: [색 대비가 낮아지면 CTA와 본문 가독성이 떨어질 수 있다]
+  prompt_phrases: [첫 화면 배경을 부드러운 aurora background로 만들어줘]
+  asset: { kind: mini-mock, variant: aurora-background }
+  sources: [{ source_id: aceternity-ui-docs, note: Aceternity aurora background examples }]
+  confidence: medium
+
+- id: spotlight-hero
+  status: draft
+  category: structure
+  kind: block
+  ko: { name: 스포트라이트 히어로, aliases: [spotlight hero, spotlight hero section, 빛 집중 히어로] }
+  en: { name: Spotlight hero, aliases: [Spotlight hero section, Hero spotlight] }
+  one_liner: 중앙 카피나 제품명을 강한 스포트라이트 배경으로 강조하는 히어로 섹션.
+  description: 어두운 배경이나 단순한 hero에서 브랜드/제품 이름에 시선을 집중시키는 효과형 섹션이다.
+  visual_anatomy: [hero headline, spotlight glow, supporting copy, CTA, dark or muted background]
+  when_to_use: [제품 이름과 한 문장을 첫 화면에서 강하게 각인시키고 싶을 때]
+  anti_use: [정보 밀도가 높은 앱 첫 화면에는 일반 hero나 dashboard가 더 적합하다]
+  prompt_phrases: [제품명 뒤에 빛이 모이는 spotlight hero를 만들어줘]
+  related:
+    - id: hero
+      relation: compare
+      note: hero는 일반 첫 화면 영역이고 spotlight-hero는 배경 조명 효과가 핵심인 hero 변형이다.
+  asset: { kind: mini-mock, variant: spotlight-hero }
+  sources: [{ source_id: aceternity-ui-docs, note: Aceternity spotlight hero examples }]
+  confidence: medium
+
+- id: infinite-moving-cards
+  status: draft
+  category: data-display
+  kind: component
+  ko: { name: 무한 이동 카드, aliases: [infinite moving cards, 무한 스크롤 카드, moving cards] }
+  en: { name: Infinite moving cards, aliases: [Infinite cards, Moving card loop] }
+  one_liner: 카드 목록이 끊김 없이 반복 이동하며 여러 후기나 항목을 보여주는 패턴.
+  description: 후기, 로고, 사용 사례를 정적인 그리드보다 생동감 있게 노출한다.
+  visual_anatomy: [card row, repeated cards, seamless loop, masked edges]
+  when_to_use: [랜딩 페이지에서 많은 카드형 증거를 압축해 보여줄 때]
+  anti_use: [사용자가 카드를 선택하거나 상세히 읽어야 하면 static grid가 더 낫다]
+  prompt_phrases: [후기 카드들이 무한히 흐르는 infinite moving cards 섹션을 넣어줘]
+  related:
+    - id: marquee-row
+      relation: compare
+      note: marquee-row는 일반 자동 흐름 행이고 infinite-moving-cards는 카드형 콘텐츠 루프에 초점이 있다.
+  asset: { kind: mini-mock, variant: infinite-moving-cards }
+  sources: [{ source_id: aceternity-ui-docs, note: Aceternity infinite moving cards examples }]
+  confidence: medium
+
+- id: canvas-reveal-card
+  status: draft
+  category: feedback
+  kind: component
+  ko: { name: 캔버스 리빌 카드, aliases: [canvas reveal card, reveal card, 캔버스 효과 카드] }
+  en: { name: Canvas reveal card, aliases: [Reveal card, Canvas hover card] }
+  one_liner: hover 시 캔버스 기반 패턴이나 빛 효과가 드러나는 인터랙티브 카드.
+  description: 기능 카드나 팀 카드에 일반 hover보다 강한 시각적 reveal을 주는 마케팅 효과다.
+  visual_anatomy: [card surface, hidden canvas effect, hover reveal, foreground content]
+  when_to_use: [랜딩 카드에 고유한 hover reveal 효과를 주고 싶을 때]
+  anti_use: [정적인 정보 카드나 접근성이 중요한 업무 화면에는 과하다]
+  prompt_phrases: [서비스 카드에 hover하면 패턴이 드러나는 canvas reveal card를 넣어줘]
+  asset: { kind: mini-mock, variant: canvas-reveal-card }
+  sources: [{ source_id: aceternity-ui-docs, note: Aceternity canvas reveal card examples }]
+  confidence: medium
+
+- id: tracing-beam-section
+  status: draft
+  category: structure
+  kind: block
+  ko: { name: 트레이싱 빔 섹션, aliases: [tracing beam, scroll tracing beam, 스크롤 빔] }
+  en: { name: Tracing beam section, aliases: [Scroll tracing beam, Timeline beam] }
+  one_liner: 스크롤 진행에 따라 세로 빛줄기나 선이 콘텐츠 옆을 따라 내려가는 섹션.
+  description: 긴 설명, 스토리, 로드맵을 읽는 동안 현재 위치를 시각적으로 따라가게 한다.
+  visual_anatomy: [vertical beam, scroll progress, content sections, active highlight]
+  when_to_use: [긴 랜딩 설명이나 타임라인형 스토리에 진행감을 주고 싶을 때]
+  anti_use: [짧은 카드 목록에는 단순 divider나 timeline이 더 명확하다]
+  prompt_phrases: [스크롤하면 왼쪽 빔이 따라오는 tracing beam section을 만들어줘]
+  asset: { kind: mini-mock, variant: tracing-beam-section }
+  sources: [{ source_id: aceternity-ui-docs, note: Aceternity tracing beam examples }]
+  confidence: medium

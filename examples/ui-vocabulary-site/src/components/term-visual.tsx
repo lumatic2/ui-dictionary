@@ -491,6 +491,7 @@ function renderVisual(variant: string, label: string) {
   if (variant === "empty-filter-state") return <OriginCossVisual kind="empty-filter-state" />
   if (variant === "notification-inbox-row") return <OriginCossVisual kind="notification-inbox-row" />
   if (variant === "progress-stepper") return <OriginCossVisual kind="progress-stepper" />
+  if (EXTERNAL_ECOSYSTEM_VARIANTS.has(variant)) return <ExternalEcosystemVisual kind={variant as ExternalEcosystemKind} />
   if (variant === "error-state") return <StateVisual tone="error" />
   if (variant === "success-state") return <StateVisual tone="success" />
   if (variant === "warning-state") return <StateVisual tone="warning" />
@@ -4167,6 +4168,98 @@ function OriginCossVisual({ kind }: { kind: OriginCossKind }) {
     return <Chrome className="w-60 p-3 text-xs"><div className="flex gap-2"><span className="mt-1 size-2 rounded-full bg-primary" /><Bell aria-hidden="true" className="size-4" /><div className="min-w-0 flex-1"><b>새 댓글</b><Line className="mt-2 w-32" /></div><span className="text-muted-foreground">2m</span></div></Chrome>
   }
   return <Chrome className="w-60 p-3 text-xs"><div className="flex items-center justify-between">{["계정", "결제", "완료"].map((item, index) => <span key={item} className="flex flex-col items-center gap-1"><span className={cn("flex size-6 items-center justify-center rounded-full border", index < 2 && "bg-primary text-primary-foreground")}>{index < 1 ? <Check aria-hidden="true" className="size-3" /> : index + 1}</span><span>{item}</span></span>)}</div><div className="mx-8 -mt-7 h-px bg-border" /></Chrome>
+}
+
+const EXTERNAL_ECOSYSTEM_VARIANTS = new Set([
+  "pricing-section",
+  "testimonial-section",
+  "feature-grid-section",
+  "integration-grid-section",
+  "settings-page-layout",
+  "profile-settings-form",
+  "billing-settings-page",
+  "onboarding-flow-page",
+  "newsletter-section",
+  "cta-section",
+  "animated-gradient-background",
+  "marquee-row",
+  "border-beam",
+  "orbiting-icons",
+  "spotlight-card",
+  "grid-pattern-background",
+  "typing-text-effect",
+  "number-ticker",
+  "blur-fade-in",
+  "animated-shiny-text",
+  "dot-pattern-background",
+  "bento-grid",
+  "sticky-scroll-section",
+  "floating-navbar",
+  "three-d-card",
+  "hover-card-stack",
+  "background-beams",
+  "aurora-background",
+  "spotlight-hero",
+  "infinite-moving-cards",
+  "canvas-reveal-card",
+  "tracing-beam-section",
+])
+
+type ExternalEcosystemKind = typeof EXTERNAL_ECOSYSTEM_VARIANTS extends Set<infer T> ? T & string : never
+
+function ExternalEcosystemVisual({ kind }: { kind: ExternalEcosystemKind }) {
+  const [active, setActive] = useState(false)
+
+  if (kind === "pricing-section") {
+    return <Chrome className="grid w-64 grid-cols-3 gap-2 p-3 text-xs">{["Free", "Pro", "Team"].map((plan, index) => <div key={plan} className={cn("rounded border bg-background p-2", index === 1 && "border-primary shadow-sm")}><b>{plan}</b><p className="mt-1 text-lg">${index ? index * 19 : 0}</p><Line className="mt-2 w-10" /></div>)}</Chrome>
+  }
+  if (kind === "testimonial-section" || kind === "infinite-moving-cards") {
+    return <Chrome className="w-64 overflow-hidden p-3 text-xs"><div className="flex gap-2">{[0, 1, 2].map((item) => <div key={item} className="min-w-20 rounded border bg-background p-2"><Star aria-hidden="true" className="size-3 text-primary" /><Line className="mt-2 w-12" /><Line className="mt-1 w-10" /></div>)}</div></Chrome>
+  }
+  if (kind === "feature-grid-section" || kind === "integration-grid-section") {
+    return <Chrome className="grid w-64 grid-cols-3 gap-2 p-3 text-xs">{[Search, Bell, Settings, Folder, LinkIcon, Palette].map((Icon, index) => <div key={index} className="rounded border bg-background p-2"><Icon aria-hidden="true" className="size-4 text-primary" /><Line className="mt-2 w-10" /></div>)}</Chrome>
+  }
+  if (kind === "settings-page-layout" || kind === "billing-settings-page") {
+    return <Chrome className="flex h-32 w-64 overflow-hidden text-xs"><aside className="w-20 border-r bg-muted/50 p-2"><Line className="w-12" /><Line className="mt-2 w-10" /><Line className="mt-2 w-14" /></aside><main className="flex-1 p-3"><div className="rounded border bg-background p-2"><Line className="w-24" /><Line className="mt-2 w-32" /></div><div className="mt-2 rounded border bg-background p-2"><Line className="w-20" /></div></main></Chrome>
+  }
+  if (kind === "profile-settings-form") {
+    return <Chrome className="w-60 p-3 text-xs"><div className="flex items-center gap-3"><span className="flex size-10 items-center justify-center rounded-full bg-primary/15 text-primary"><User aria-hidden="true" /></span><Line className="w-28" /></div><Line className="mt-3 h-7 w-full rounded border bg-background" /><Line className="mt-2 h-7 w-full rounded border bg-background" /></Chrome>
+  }
+  if (kind === "onboarding-flow-page") {
+    return <Chrome className="w-64 p-3 text-xs"><div className="mb-3 flex justify-between">{[1, 2, 3].map((step) => <span key={step} className={cn("flex size-6 items-center justify-center rounded-full border", step < 3 && "bg-primary text-primary-foreground")}>{step}</span>)}</div><div className="grid grid-cols-2 gap-2"><div className="rounded border bg-background p-2"><Line className="w-16" /></div><div className="rounded border bg-background p-2"><Line className="w-14" /></div></div></Chrome>
+  }
+  if (kind === "newsletter-section" || kind === "cta-section") {
+    return <Chrome className="w-64 p-3 text-center text-xs"><b>{kind === "cta-section" ? "지금 시작하세요" : "업데이트 받기"}</b><Line className="mx-auto mt-2 w-32" /><div className="mt-3 flex justify-center gap-1"><span className="rounded border bg-background px-3 py-1">email</span><span className="rounded bg-primary px-3 py-1 text-primary-foreground">시작</span></div></Chrome>
+  }
+  if (kind === "marquee-row") {
+    return <Chrome className="w-64 overflow-hidden p-3 text-xs"><div className="flex gap-2">{["A", "B", "C", "D", "E"].map((item) => <span key={item} className="shrink-0 rounded-full border bg-background px-3 py-1">{item}</span>)}</div></Chrome>
+  }
+  if (kind === "orbiting-icons") {
+    return <div className="relative flex size-28 items-center justify-center rounded-full border border-dashed"><span className="flex size-10 items-center justify-center rounded-full bg-primary text-primary-foreground"><Settings aria-hidden="true" className="size-4" /></span>{[Search, Bell, LinkIcon, Folder].map((Icon, index) => <span key={index} className={cn("absolute flex size-7 items-center justify-center rounded-full border bg-card", index === 0 && "top-0", index === 1 && "right-0", index === 2 && "bottom-0", index === 3 && "left-0")}><Icon aria-hidden="true" className="size-3" /></span>)}</div>
+  }
+  if (kind === "typing-text-effect") {
+    return <Chrome className="w-56 p-3 font-mono text-xs">AI가 초안을 작성 중<span className="animate-pulse">|</span></Chrome>
+  }
+  if (kind === "number-ticker") {
+    return <Chrome className="w-48 p-3 text-center"><p className="text-2xl font-semibold">12,840</p><p className="text-xs text-muted-foreground">active users</p></Chrome>
+  }
+  if (kind === "bento-grid") {
+    return <Chrome className="grid h-32 w-64 grid-cols-3 grid-rows-2 gap-2 p-3 text-xs"><div className="col-span-2 rounded border bg-background p-2"><Line className="w-24" /></div><div className="rounded border bg-background p-2"><Line className="w-10" /></div><div className="rounded border bg-background p-2"><Line className="w-12" /></div><div className="col-span-2 rounded border bg-background p-2"><Line className="w-20" /></div></Chrome>
+  }
+  if (kind === "sticky-scroll-section" || kind === "tracing-beam-section") {
+    return <Chrome className="flex h-32 w-64 gap-3 p-3 text-xs"><div className="relative w-8"><span className="absolute left-3 top-0 h-full w-0.5 bg-primary/40" /><span className="absolute left-1.5 top-6 size-4 rounded-full bg-primary" /></div><div className="flex-1 space-y-2"><Line className="w-28" /><Line className="w-36" /><Line className="w-24" /></div><div className="w-20 rounded border bg-background" /></Chrome>
+  }
+  if (kind === "floating-navbar") {
+    return <div className="rounded-full border bg-card px-4 py-2 text-xs shadow-sm"><span className="mr-3 font-medium">Home</span><span className="mr-3">Work</span><span>Contact</span></div>
+  }
+  if (kind === "three-d-card" || kind === "hover-card-stack" || kind === "canvas-reveal-card" || kind === "spotlight-card") {
+    return <button type="button" className="relative h-28 w-48 text-left" onClick={() => setActive((value) => !value)}><div className={cn("absolute inset-3 rounded border bg-card p-3 shadow-sm transition-transform", active && "rotate-2 scale-105")}><Line className="w-24" /><Line className="mt-2 w-16" /></div><div className="absolute inset-x-8 bottom-0 h-4 rounded bg-primary/20 blur-sm" /></button>
+  }
+  if (kind === "spotlight-hero") {
+    return <div className="relative h-32 w-64 overflow-hidden rounded border bg-foreground p-4 text-center text-background"><span className="absolute left-1/2 top-0 h-24 w-32 -translate-x-1/2 rounded-full bg-primary/40 blur-xl" /><b className="relative">Askewly AI</b><p className="relative mt-2 text-xs">Design faster</p></div>
+  }
+
+  return <Chrome className="relative h-28 w-56 overflow-hidden p-3 text-xs"><div className={cn("absolute inset-0", (kind.includes("grid") || kind.includes("dot")) && "bg-[radial-gradient(circle,rgba(0,0,0,.18)_1px,transparent_1px)] [background-size:12px_12px]", kind.includes("gradient") || kind.includes("aurora") ? "bg-gradient-to-br from-primary/30 via-muted to-destructive/20" : "bg-muted/40")} /><div className="relative rounded border bg-card/80 p-3"><b>{kind.includes("shiny") ? "New feature" : kind.includes("beam") ? "Beam effect" : "Visual effect"}</b><Line className="mt-2 w-24" /></div></Chrome>
 }
 
 function StateVisual({ tone }: { tone: "error" | "success" | "warning" | "info" }) {
