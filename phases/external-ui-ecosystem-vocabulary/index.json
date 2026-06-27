@@ -1,0 +1,35 @@
+{
+  "project": "design-manual",
+  "phase": "external-ui-ecosystem-vocabulary",
+  "mode": "product",
+  "steps": [
+    {
+      "step": 0,
+      "name": "origin-ui-source-inventory",
+      "status": "completed",
+      "summary": "Checked active coss ui docs/roadmap and legacy Origin category index. coss ui exposes 50+ primitives and 492 particles; most primitives duplicate existing terms, so Step 1 should inspect legacy Origin/coss particles for behaviorally distinct form/input compositions. Wrote phases/external-ui-ecosystem-vocabulary/origin-ui-inventory.md with source sections, duplicate prefilter, and a 20-item Step 1 candidate queue.",
+      "completed_at": "2026-06-27T17:29:45+09:00"
+    },
+    {
+      "step": 1,
+      "name": "origin-ui-form-input-batch",
+      "status": "completed",
+      "summary": "Promoted 8 Origin/coss form-input terms: floating-label-field, clearable-input, inline-submit-field, character-count-field, password-strength-meter, fieldset, checkbox-card, and date-preset-picker. Added coss-ui-docs source id, related/anti-use duplicate boundaries, and dedicated OriginCossVisual renderers. Validation passed with 430 terms.",
+      "completed_at": "2026-06-27T17:46:00+09:00"
+    },
+    {
+      "step": 2,
+      "name": "origin-ui-navigation-disclosure-batch",
+      "status": "completed",
+      "summary": "Promoted 6 Origin/coss navigation-disclosure terms: navbar-menu, nav-user-menu, breadcrumb-overflow, popover-form, disclosure-card, and pagination-jump. Each term compares against existing navigation/popover/pagination concepts to avoid duplicate meaning and has a dedicated mini visual.",
+      "completed_at": "2026-06-27T17:46:00+09:00"
+    },
+    {
+      "step": 3,
+      "name": "origin-ui-data-feedback-layout-batch",
+      "status": "completed",
+      "summary": "Promoted 8 Origin/coss data-feedback terms: avatar-stack, status-avatar, badge-group, meter, table-row-actions, empty-filter-state, notification-inbox-row, and progress-stepper. Full local verification passed: validate-ui-vocabulary, build:data, strict duplicate audit, build, and lint. Production deploy remains intentionally pending.",
+      "completed_at": "2026-06-27T17:46:00+09:00"
+    }
+  ]
+}

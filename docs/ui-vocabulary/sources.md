@@ -50,6 +50,8 @@ Tier A or B before promoting a term.
 
 - `component-gallery`: Component Gallery  
   https://component.gallery/
+- `coss-ui-docs`: coss ui and legacy Origin UI component/particle examples
+  https://coss.com/ui
 - `ui-patterns-library`: UI Patterns  
   https://ui-patterns.com/patterns
 - `design-systems-repo`: Design Systems Repo  

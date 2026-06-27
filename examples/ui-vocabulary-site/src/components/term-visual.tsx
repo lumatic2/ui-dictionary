@@ -469,6 +469,28 @@ function renderVisual(variant: string, label: string) {
   if (variant === "formisch-form-pattern") return <ShadcnEcosystemVisual kind="formisch-form-pattern" />
   if (variant === "scroll-fade") return <ShadcnEcosystemVisual kind="scroll-fade" />
   if (variant === "shimmer-effect") return <ShadcnEcosystemVisual kind="shimmer-effect" />
+  if (variant === "floating-label-field") return <OriginCossVisual kind="floating-label-field" />
+  if (variant === "clearable-input") return <OriginCossVisual kind="clearable-input" />
+  if (variant === "inline-submit-field") return <OriginCossVisual kind="inline-submit-field" />
+  if (variant === "character-count-field") return <OriginCossVisual kind="character-count-field" />
+  if (variant === "password-strength-meter") return <OriginCossVisual kind="password-strength-meter" />
+  if (variant === "fieldset") return <OriginCossVisual kind="fieldset" />
+  if (variant === "checkbox-card") return <OriginCossVisual kind="checkbox-card" />
+  if (variant === "date-preset-picker") return <OriginCossVisual kind="date-preset-picker" />
+  if (variant === "navbar-menu") return <OriginCossVisual kind="navbar-menu" />
+  if (variant === "nav-user-menu") return <OriginCossVisual kind="nav-user-menu" />
+  if (variant === "breadcrumb-overflow") return <OriginCossVisual kind="breadcrumb-overflow" />
+  if (variant === "popover-form") return <OriginCossVisual kind="popover-form" />
+  if (variant === "disclosure-card") return <OriginCossVisual kind="disclosure-card" />
+  if (variant === "pagination-jump") return <OriginCossVisual kind="pagination-jump" />
+  if (variant === "avatar-stack") return <OriginCossVisual kind="avatar-stack" />
+  if (variant === "status-avatar") return <OriginCossVisual kind="status-avatar" />
+  if (variant === "badge-group") return <OriginCossVisual kind="badge-group" />
+  if (variant === "meter") return <OriginCossVisual kind="meter" />
+  if (variant === "table-row-actions") return <OriginCossVisual kind="table-row-actions" />
+  if (variant === "empty-filter-state") return <OriginCossVisual kind="empty-filter-state" />
+  if (variant === "notification-inbox-row") return <OriginCossVisual kind="notification-inbox-row" />
+  if (variant === "progress-stepper") return <OriginCossVisual kind="progress-stepper" />
   if (variant === "error-state") return <StateVisual tone="error" />
   if (variant === "success-state") return <StateVisual tone="success" />
   if (variant === "warning-state") return <StateVisual tone="warning" />
@@ -4052,6 +4074,99 @@ function ShadcnEcosystemVisual({ kind }: { kind: ShadcnEcosystemKind }) {
       <div className="mt-3 rounded border bg-background p-2 text-muted-foreground">loading response</div>
     </Chrome>
   )
+}
+
+type OriginCossKind =
+  | "floating-label-field"
+  | "clearable-input"
+  | "inline-submit-field"
+  | "character-count-field"
+  | "password-strength-meter"
+  | "fieldset"
+  | "checkbox-card"
+  | "date-preset-picker"
+  | "navbar-menu"
+  | "nav-user-menu"
+  | "breadcrumb-overflow"
+  | "popover-form"
+  | "disclosure-card"
+  | "pagination-jump"
+  | "avatar-stack"
+  | "status-avatar"
+  | "badge-group"
+  | "meter"
+  | "table-row-actions"
+  | "empty-filter-state"
+  | "notification-inbox-row"
+  | "progress-stepper"
+
+function OriginCossVisual({ kind }: { kind: OriginCossKind }) {
+  const [active, setActive] = useState(false)
+
+  if (kind === "floating-label-field") {
+    return <Chrome className="relative w-56 p-3 text-xs"><span className="absolute left-5 top-1.5 bg-card px-1 text-[10px] text-primary">Email</span><div className="h-9 rounded border bg-background px-3 pt-3">name@example.com</div></Chrome>
+  }
+  if (kind === "clearable-input") {
+    return <Chrome className="flex h-10 w-56 items-center gap-2 px-3 text-xs"><Search aria-hidden="true" className="size-4 text-muted-foreground" /><span className="flex-1">dashboard</span><button type="button" aria-label="입력 지우기" className="rounded-full border p-0.5" onClick={() => setActive(true)}><X aria-hidden="true" className="size-3" /></button></Chrome>
+  }
+  if (kind === "inline-submit-field") {
+    return <Chrome className="flex w-60 overflow-hidden p-1 text-xs"><div className="flex-1 px-3 py-2">mail@example.com</div><button type="button" className="rounded bg-primary px-3 text-primary-foreground" onClick={() => setActive(true)}>{active ? "전송됨" : "구독"}</button></Chrome>
+  }
+  if (kind === "character-count-field") {
+    return <Chrome className="w-56 p-3 text-xs"><div className="h-14 rounded border bg-background p-2">간단한 소개글</div><div className="mt-1 text-right text-muted-foreground">42 / 120</div></Chrome>
+  }
+  if (kind === "password-strength-meter") {
+    return <Chrome className="w-56 p-3 text-xs"><PasswordLine /><div className="mt-3 grid grid-cols-4 gap-1">{[0, 1, 2, 3].map((item) => <span key={item} className={cn("h-1.5 rounded", item < 3 ? "bg-primary" : "bg-muted")} />)}</div><p className="mt-2 text-primary">강함</p></Chrome>
+  }
+  if (kind === "fieldset") {
+    return <Chrome className="w-60 p-3 text-xs"><fieldset className="rounded border p-2"><legend className="px-1 font-medium">배송 주소</legend><Line className="mt-1 w-40" /><Line className="mt-2 w-32" /><Line className="mt-2 w-44" /></fieldset></Chrome>
+  }
+  if (kind === "checkbox-card") {
+    return <button type="button" className="text-left" onClick={() => setActive((value) => !value)}><Chrome className={cn("w-56 p-3 text-xs", active && "border-primary")}><div className="flex items-start gap-2"><span className={cn("mt-0.5 size-4 rounded border", active && "bg-primary")} /><div><b>이메일 알림</b><Line className="mt-2 w-32" /></div></div></Chrome></button>
+  }
+  if (kind === "date-preset-picker") {
+    return <Chrome className="w-60 p-3 text-xs"><div className="flex gap-1">{["7일", "30일", "이번 달"].map((item, index) => <span key={item} className={cn("rounded border px-2 py-1", index === 1 && "bg-primary text-primary-foreground")}>{item}</span>)}</div><div className="mt-3 grid grid-cols-7 gap-1">{Array.from({ length: 14 }).map((_, index) => <span key={index} className={cn("h-4 rounded bg-muted", index > 6 && index < 12 && "bg-primary/40")} />)}</div></Chrome>
+  }
+  if (kind === "navbar-menu") {
+    return <Chrome className="flex w-64 items-center justify-between p-3 text-xs"><b>Askewly</b><div className="flex gap-3"><span>제품</span><span className="text-primary">문서</span><span>가격</span></div><Menu aria-hidden="true" className="size-4" /></Chrome>
+  }
+  if (kind === "nav-user-menu") {
+    return <Chrome className="w-56 p-3 text-xs"><div className="flex items-center justify-between"><div className="flex items-center gap-2"><span className="flex size-7 items-center justify-center rounded-full bg-primary/15 text-primary">Y</span><b>Yusung</b></div><ChevronDown aria-hidden="true" className="size-4" /></div><div className="mt-3 rounded border bg-background p-2"><Line className="w-24" /><Line className="mt-2 w-20" /><Line className="mt-2 w-16" /></div></Chrome>
+  }
+  if (kind === "breadcrumb-overflow") {
+    return <Chrome className="flex w-60 items-center gap-2 p-3 text-xs"><Home aria-hidden="true" className="size-4" /><ChevronRight aria-hidden="true" className="size-3" /><span className="rounded border px-2">...</span><ChevronRight aria-hidden="true" className="size-3" /><b>Settings</b></Chrome>
+  }
+  if (kind === "popover-form") {
+    return <Chrome className="relative w-60 p-3 text-xs"><button type="button" className="rounded bg-primary px-2 py-1 text-primary-foreground" onClick={() => setActive(true)}>저장</button><div className="absolute right-3 top-9 w-40 rounded border bg-card p-2 shadow-sm"><b>뷰 이름</b><Line className="mt-2 h-6 w-full rounded border bg-background" /><div className="mt-2 text-right text-primary">{active ? "저장됨" : "확인"}</div></div></Chrome>
+  }
+  if (kind === "disclosure-card") {
+    return <button type="button" className="text-left" onClick={() => setActive((value) => !value)}><Chrome className="w-56 p-3 text-xs"><div className="flex items-center justify-between"><b>고급 설정</b><ChevronDown aria-hidden="true" className={cn("size-4", active && "rotate-180")} /></div><Line className="mt-2 w-32" />{active && <Line className="mt-2 w-44" />}</Chrome></button>
+  }
+  if (kind === "pagination-jump") {
+    return <Chrome className="flex w-60 items-center gap-2 p-3 text-xs"><ChevronLeft aria-hidden="true" className="size-4" /><span className="rounded border px-2 py-1">12</span><span className="text-muted-foreground">/ 80</span><button type="button" className="rounded bg-primary px-2 py-1 text-primary-foreground" onClick={() => setActive(true)}>이동</button><ChevronRight aria-hidden="true" className="size-4" /></Chrome>
+  }
+  if (kind === "avatar-stack") {
+    return <div className="flex -space-x-2">{["Y", "A", "S", "+4"].map((item) => <span key={item} className="flex size-9 items-center justify-center rounded-full border-2 border-background bg-primary/15 text-xs font-semibold text-primary">{item}</span>)}</div>
+  }
+  if (kind === "status-avatar") {
+    return <div className="relative"><span className="flex size-12 items-center justify-center rounded-full bg-primary/15 text-primary"><User aria-hidden="true" /></span><span className="absolute bottom-0 right-0 size-3 rounded-full border-2 border-background bg-primary" /></div>
+  }
+  if (kind === "badge-group") {
+    return <Chrome className="flex w-56 flex-wrap gap-2 p-3 text-xs">{["New", "Beta", "Admin", "+2"].map((item, index) => <span key={item} className={cn("rounded-full border px-2 py-1", index === 0 && "bg-primary text-primary-foreground")}>{item}</span>)}</Chrome>
+  }
+  if (kind === "meter") {
+    return <Chrome className="w-56 p-3 text-xs"><div className="flex justify-between"><b>Storage</b><span>72%</span></div><div className="mt-2 h-2 rounded bg-muted"><span className="block h-full w-[72%] rounded bg-primary" /></div><p className="mt-2 text-muted-foreground">72GB / 100GB</p></Chrome>
+  }
+  if (kind === "table-row-actions") {
+    return <Chrome className="w-60 p-2 text-xs"><div className="grid grid-cols-[1fr_48px] items-center gap-2 rounded border bg-background p-2"><div><Line className="w-28" /><Line className="mt-2 w-20" /></div><button type="button" className="rounded border p-1" onClick={() => setActive(true)}><MoreHorizontal aria-hidden="true" className="mx-auto size-4" /></button></div>{active && <div className="ml-auto mt-1 w-24 rounded border bg-card p-1 shadow-sm"><Line className="w-16" /><Line className="mt-2 w-12" /></div>}</Chrome>
+  }
+  if (kind === "empty-filter-state") {
+    return <Chrome className="flex w-56 flex-col items-center gap-2 p-3 text-center text-xs"><Search aria-hidden="true" className="text-muted-foreground" /><b>결과 없음</b><Line className="w-32" /><button type="button" className="rounded border px-2 py-1" onClick={() => setActive(true)}>{active ? "초기화됨" : "필터 지우기"}</button></Chrome>
+  }
+  if (kind === "notification-inbox-row") {
+    return <Chrome className="w-60 p-3 text-xs"><div className="flex gap-2"><span className="mt-1 size-2 rounded-full bg-primary" /><Bell aria-hidden="true" className="size-4" /><div className="min-w-0 flex-1"><b>새 댓글</b><Line className="mt-2 w-32" /></div><span className="text-muted-foreground">2m</span></div></Chrome>
+  }
+  return <Chrome className="w-60 p-3 text-xs"><div className="flex items-center justify-between">{["계정", "결제", "완료"].map((item, index) => <span key={item} className="flex flex-col items-center gap-1"><span className={cn("flex size-6 items-center justify-center rounded-full border", index < 2 && "bg-primary text-primary-foreground")}>{index < 1 ? <Check aria-hidden="true" className="size-3" /> : index + 1}</span><span>{item}</span></span>)}</div><div className="mx-8 -mt-7 h-px bg-border" /></Chrome>
 }
 
 function StateVisual({ tone }: { tone: "error" | "success" | "warning" | "info" }) {

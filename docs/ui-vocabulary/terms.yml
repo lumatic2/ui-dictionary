@@ -7698,3 +7698,734 @@
     - source_id: shadcn-ui-docs
       note: shimmer utility listed in shadcn utilities and marker examples
   confidence: medium
+
+- id: floating-label-field
+  status: draft
+  category: input
+  kind: component
+  ko:
+    name: 플로팅 라벨 필드
+    aliases: [floating label, 떠오르는 라벨, 플로팅 라벨 입력]
+  en:
+    name: Floating label field
+    aliases: [Floating label input, Float label field]
+  one_liner: 입력을 시작하면 placeholder처럼 보이던 라벨이 입력창 위로 작게 떠오르는 필드.
+  description: 라벨 공간을 줄이면서도 입력 후에 필드 의미를 계속 남겨야 할 때 쓰는 입력 조합이다.
+  visual_anatomy:
+    - input container
+    - label that moves above value
+    - current value
+    - focus or filled state
+  when_to_use:
+    - 좁은 폼에서 라벨을 항상 보이게 유지하고 싶을 때
+    - 입력값이 있어도 필드 의미를 잃지 않아야 할 때
+  anti_use:
+    - 접근성과 가독성이 더 중요하면 일반 label + text-field가 더 명확하다
+  prompt_phrases:
+    - 이메일 입력창을 floating label field로 만들어줘
+  related:
+    - id: text-field
+      relation: compare
+      note: 일반 text field는 라벨 위치가 고정되고, floating label field는 입력 상태에 따라 라벨 위치가 바뀐다.
+  asset: { kind: mini-mock, variant: floating-label-field }
+  sources:
+    - source_id: coss-ui-docs
+      note: legacy Origin input examples include floating label variants
+  confidence: medium
+
+- id: clearable-input
+  status: draft
+  category: input
+  kind: component
+  ko:
+    name: 지우기 버튼 입력창
+    aliases: [clearable input, 지울 수 있는 입력창, 입력 지우기 버튼]
+  en:
+    name: Clearable input
+    aliases: [Input with clear button, Clear field]
+  one_liner: 입력값이 있을 때 오른쪽에 X 버튼을 보여 한 번에 내용을 비우는 입력창.
+  description: 검색어, 필터 키워드, 임시 입력처럼 사용자가 자주 다시 입력하는 필드에서 입력 삭제 행동을 가까이 둔다.
+  visual_anatomy:
+    - text input
+    - current value
+    - clear icon button
+    - empty or filled state
+  when_to_use:
+    - 검색어나 필터 값을 빠르게 지워야 할 때
+    - 모바일에서 긴 값을 백스페이스로 지우기 번거로울 때
+  anti_use:
+    - 저장된 중요한 값을 실수로 지우면 안 되는 필드에는 쓰지 않는다
+  prompt_phrases:
+    - 검색창 오른쪽에 입력을 지우는 clear button을 넣어줘
+  related:
+    - id: search-field
+      relation: compare
+      note: search field는 검색 목적의 입력이고, clearable input은 값 삭제 행동이 핵심이다.
+  asset: { kind: mini-mock, variant: clearable-input }
+  sources:
+    - source_id: coss-ui-docs
+      note: Origin input examples include trailing clear actions
+  confidence: medium
+
+- id: inline-submit-field
+  status: draft
+  category: input
+  kind: component
+  ko:
+    name: 인라인 제출 필드
+    aliases: [inline submit input, 입력창 안 제출 버튼, 붙어 있는 제출 필드]
+  en:
+    name: Inline submit field
+    aliases: [Input with inline submit, Joined submit input]
+  one_liner: 입력창과 제출 버튼을 한 줄 안에 붙여 짧은 값을 바로 제출하게 하는 필드.
+  description: 이메일 구독, 초대 코드, 쿠폰 코드처럼 값 하나를 입력하고 즉시 적용하는 작은 폼에 쓴다.
+  visual_anatomy:
+    - input value
+    - attached submit button
+    - shared border or grouped surface
+    - optional loading state
+  when_to_use:
+    - 값 하나를 입력하고 바로 적용하는 마이크로 폼이 필요할 때
+    - 입력과 CTA가 분리되면 흐름이 느려지는 경우
+  anti_use:
+    - 여러 필드를 검토한 뒤 제출해야 하는 폼에는 일반 form layout이 더 적합하다
+  prompt_phrases:
+    - 이메일 구독을 inline submit field로 만들어줘
+  related:
+    - id: input-group
+      relation: compare
+      note: input group은 prefix/suffix 정보를 붙이는 조합이고, inline submit field는 제출 행동을 입력 옆에 붙인다.
+  asset: { kind: mini-mock, variant: inline-submit-field }
+  sources:
+    - source_id: coss-ui-docs
+      note: Origin input examples include attached button compositions
+  confidence: medium
+
+- id: character-count-field
+  status: draft
+  category: input
+  kind: component
+  ko:
+    name: 글자 수 카운터 필드
+    aliases: [character count field, 글자수 표시 입력창, 입력 길이 카운터]
+  en:
+    name: Character count field
+    aliases: [Input with character counter, Textarea counter]
+  one_liner: 입력 가능한 길이와 현재 글자 수를 입력창 아래나 오른쪽에 보여주는 필드.
+  description: 제목, 소개글, 메시지처럼 길이 제한이 있는 입력에서 사용자가 제한에 가까워지는지 확인하게 한다.
+  visual_anatomy:
+    - input or textarea
+    - current count
+    - maximum count
+    - warning threshold
+  when_to_use:
+    - 글자 수 제한이 명확한 입력을 받을 때
+    - 제한 초과 전에 사용자가 스스로 조절해야 할 때
+  anti_use:
+    - 길이 제한이 없거나 중요하지 않으면 보조 텍스트가 더 단순하다
+  prompt_phrases:
+    - 소개글 textarea 아래에 120자 character counter를 보여줘
+  asset: { kind: mini-mock, variant: character-count-field }
+  sources:
+    - source_id: coss-ui-docs
+      note: Origin textarea/input examples include counters and helper states
+  confidence: medium
+
+- id: password-strength-meter
+  status: draft
+  category: feedback
+  kind: component
+  ko:
+    name: 비밀번호 강도 미터
+    aliases: [password strength, 비밀번호 강도, password meter]
+  en:
+    name: Password strength meter
+    aliases: [Password meter, Strength meter]
+  one_liner: 비밀번호 입력값의 강도를 막대, 단계, 안내 문구로 보여주는 피드백 요소.
+  description: 사용자가 더 안전한 비밀번호를 만들도록 길이, 다양성, 예측 가능성 같은 기준을 입력 중에 알려준다.
+  visual_anatomy:
+    - password field
+    - strength bars
+    - strength label
+    - requirement hints
+  when_to_use:
+    - 새 비밀번호를 만들거나 변경하는 폼에서 보안 기준을 안내할 때
+  anti_use:
+    - 로그인처럼 이미 만든 비밀번호를 입력하는 화면에는 보통 필요 없다
+  prompt_phrases:
+    - 회원가입 비밀번호 필드 아래에 password strength meter를 넣어줘
+  related:
+    - id: password-field
+      relation: compare
+      note: password field는 값을 숨기는 입력이고, password strength meter는 새 비밀번호 품질을 알려주는 피드백이다.
+  asset: { kind: mini-mock, variant: password-strength-meter }
+  sources:
+    - source_id: coss-ui-docs
+      note: Origin input examples include password helper and validation compositions
+  confidence: medium
+
+- id: fieldset
+  status: draft
+  category: input
+  kind: component
+  ko:
+    name: 필드셋
+    aliases: [fieldset, 필드 묶음, 폼 그룹 제목]
+  en:
+    name: Fieldset
+    aliases: [Field set, Form fieldset]
+  one_liner: 관련된 여러 입력을 제목과 설명으로 묶는 폼 그룹.
+  description: 주소, 결제 정보, 알림 설정처럼 한 주제로 묶인 필드들을 시각적·의미적으로 그룹화한다.
+  visual_anatomy:
+    - legend or group title
+    - description
+    - grouped fields
+    - optional border or section spacing
+  when_to_use:
+    - 폼이 길고 입력들을 의미 있는 섹션으로 나눠야 할 때
+    - 체크박스나 라디오 묶음에 공통 질문이 있을 때
+  anti_use:
+    - 입력이 하나뿐이면 label과 helper text로 충분하다
+  prompt_phrases:
+    - 배송 주소 입력들을 fieldset으로 묶고 제목을 붙여줘
+  related:
+    - id: field-group
+      relation: compare
+      note: field group은 시각적 묶음에 가깝고, fieldset은 여러 필드의 의미 그룹과 legend가 핵심이다.
+  asset: { kind: mini-mock, variant: fieldset }
+  sources:
+    - source_id: coss-ui-docs
+      note: coss ui exposes Fieldset as a form primitive
+  confidence: high
+
+- id: checkbox-card
+  status: draft
+  category: selection
+  kind: component
+  ko:
+    name: 체크박스 카드
+    aliases: [checkbox card, 선택 카드, 카드형 체크박스]
+  en:
+    name: Checkbox card
+    aliases: [Selectable checkbox card, Card checkbox]
+  one_liner: 카드 전체를 체크박스 선택 영역으로 만들어 옵션 설명과 선택 상태를 함께 보여주는 요소.
+  description: 요금제 기능, 알림 채널, 권한 범위처럼 옵션마다 설명이 필요할 때 체크박스를 카드 형태로 확장한다.
+  visual_anatomy:
+    - card surface
+    - checkbox control
+    - option title
+    - option description
+    - selected border
+  when_to_use:
+    - 여러 옵션을 동시에 고르되 각 옵션 설명이 길 때
+    - 작은 체크박스만으로는 선택 영역이 너무 좁을 때
+  anti_use:
+    - 옵션 텍스트가 짧으면 checkbox나 checkbox group이 더 단순하다
+  prompt_phrases:
+    - 알림 채널을 checkbox card 목록으로 보여줘
+  related:
+    - id: checkbox
+      relation: compare
+      note: checkbox card는 체크박스를 카드 표면으로 확장해 설명과 큰 클릭 영역을 제공한다.
+  asset: { kind: mini-mock, variant: checkbox-card }
+  sources:
+    - source_id: coss-ui-docs
+      note: Origin checkbox examples include card-like selectable options
+  confidence: medium
+
+- id: date-preset-picker
+  status: draft
+  category: input
+  kind: component
+  ko:
+    name: 날짜 프리셋 선택기
+    aliases: [date preset picker, 빠른 날짜 선택, 기간 프리셋]
+  en:
+    name: Date preset picker
+    aliases: [Date picker with presets, Range presets]
+  one_liner: 직접 날짜를 고르기 전에 오늘, 이번 주, 지난 30일 같은 빠른 기간을 제공하는 날짜 선택기.
+  description: 대시보드, 로그, 매출 조회처럼 반복적으로 쓰는 기간을 빠르게 고르게 한다.
+  visual_anatomy:
+    - date picker trigger
+    - preset list
+    - calendar panel
+    - selected range
+  when_to_use:
+    - 사용자가 자주 쓰는 기간을 반복해서 선택할 때
+    - 직접 달력을 조작하기 전에 빠른 선택지를 제공하고 싶을 때
+  anti_use:
+    - 임의의 하루만 고르면 date-picker가 충분하다
+  prompt_phrases:
+    - 지난 7일과 이번 달 프리셋이 있는 date preset picker를 넣어줘
+  related:
+    - id: date-range-picker
+      relation: compare
+      note: date range picker는 기간 선택 자체이고, date preset picker는 자주 쓰는 기간 shortcut이 핵심이다.
+  asset: { kind: mini-mock, variant: date-preset-picker }
+  sources:
+    - source_id: coss-ui-docs
+      note: Origin calendar and date picker examples include preset range compositions
+  confidence: medium
+
+- id: navbar-menu
+  status: draft
+  category: structure
+  kind: component
+  ko:
+    name: 내비게이션 메뉴
+    aliases: [navbar menu, 상단 내비 메뉴, 헤더 메뉴]
+  en:
+    name: Navbar menu
+    aliases: [Header navigation menu, Top nav menu]
+  one_liner: 상단 내비게이션 바 안에서 주요 섹션 링크와 드롭다운 항목을 보여주는 메뉴 영역.
+  description: 제품, 가격, 문서, 리소스처럼 사이트의 큰 목적지를 헤더 안에서 빠르게 탐색하게 한다.
+  visual_anatomy:
+    - navbar container
+    - top-level links
+    - active item
+    - optional dropdown panel
+  when_to_use:
+    - 웹사이트의 상위 섹션을 헤더에서 탐색해야 할 때
+  anti_use:
+    - 앱 내부의 깊은 좌측 메뉴는 sidebar-nav나 navigation-rail이 더 적합하다
+  prompt_phrases:
+    - 헤더에 제품과 문서 링크가 있는 navbar menu를 넣어줘
+  related:
+    - id: navigation-bar
+      relation: compare
+      note: navigation bar는 전체 헤더 구조이고, navbar menu는 그 안의 링크/메뉴 묶음이다.
+  asset: { kind: mini-mock, variant: navbar-menu }
+  sources:
+    - source_id: coss-ui-docs
+      note: legacy Origin navbar category provides header menu examples
+  confidence: medium
+
+- id: nav-user-menu
+  status: draft
+  category: structure
+  kind: component
+  ko:
+    name: 사용자 메뉴
+    aliases: [user menu, profile menu, 계정 메뉴]
+  en:
+    name: User menu
+    aliases: [Profile menu, Account menu]
+  one_liner: 아바타나 사용자 이름을 눌러 계정, 설정, 로그아웃 같은 개인 메뉴를 여는 패턴.
+  description: 전역 내비게이션에서 현재 사용자와 계정 관련 행동을 한곳에 모은다.
+  visual_anatomy:
+    - avatar or name trigger
+    - dropdown menu
+    - account metadata
+    - menu actions
+  when_to_use:
+    - 로그인된 앱에서 계정 설정과 로그아웃을 제공할 때
+  anti_use:
+    - 알림 목록은 notification-center가 더 적합하다
+  prompt_phrases:
+    - 오른쪽 상단 아바타를 누르면 user menu가 열리게 해줘
+  related:
+    - id: dropdown-menu
+      relation: compare
+      note: user menu는 dropdown-menu의 계정 전용 사용 패턴이다.
+  asset: { kind: mini-mock, variant: nav-user-menu }
+  sources:
+    - source_id: coss-ui-docs
+      note: navbar and dropdown examples include profile menu compositions
+  confidence: medium
+
+- id: breadcrumb-overflow
+  status: draft
+  category: structure
+  kind: component
+  ko:
+    name: 축약 브레드크럼
+    aliases: [breadcrumb overflow, collapsed breadcrumb, 생략 경로]
+  en:
+    name: Breadcrumb overflow
+    aliases: [Collapsed breadcrumb, Overflow breadcrumb]
+  one_liner: 긴 경로의 중간 항목을 말줄임이나 메뉴로 접어 좁은 공간에서도 현재 위치를 보여주는 브레드크럼.
+  description: 폴더, 문서, 설정처럼 계층이 깊은 화면에서 상위 경로를 모두 나열하지 않고 필요한 만큼만 펼치게 한다.
+  visual_anatomy:
+    - first crumb
+    - overflow trigger
+    - current crumb
+    - hidden crumb menu
+  when_to_use:
+    - 브레드크럼 경로가 길어 헤더 폭을 밀어낼 때
+  anti_use:
+    - 경로가 짧으면 일반 breadcrumb가 더 명확하다
+  prompt_phrases:
+    - 긴 문서 경로는 가운데를 접은 breadcrumb overflow로 보여줘
+  related:
+    - id: breadcrumbs-menu
+      relation: compare
+      note: breadcrumbs-menu는 특정 crumb의 형제 항목을 고르는 메뉴이고, breadcrumb overflow는 긴 경로를 접는 구조다.
+  asset: { kind: mini-mock, variant: breadcrumb-overflow }
+  sources:
+    - source_id: coss-ui-docs
+      note: Origin breadcrumb examples include collapsed and overflow path variants
+  confidence: medium
+
+- id: popover-form
+  status: draft
+  category: input
+  kind: form-pattern
+  ko:
+    name: 팝오버 폼
+    aliases: [popover form, 팝오버 입력폼, 작은 플로팅 폼]
+  en:
+    name: Popover form
+    aliases: [Floating form, Inline popover form]
+  one_liner: 버튼이나 항목을 눌렀을 때 작은 팝오버 안에서 짧은 입력과 저장 행동을 처리하는 폼.
+  description: 이름 변경, 빠른 필터 저장, 라벨 추가처럼 현재 화면을 떠나지 않아도 되는 작은 입력 작업에 쓴다.
+  visual_anatomy:
+    - trigger
+    - floating popover surface
+    - compact fields
+    - save or cancel action
+  when_to_use:
+    - 짧은 값을 빠르게 입력하고 현재 맥락으로 돌아와야 할 때
+  anti_use:
+    - 검토가 필요한 긴 폼은 dialog나 drawer가 더 안전하다
+  prompt_phrases:
+    - 필터 저장 버튼을 누르면 이름을 입력하는 popover form을 열어줘
+  related:
+    - id: popover
+      relation: compare
+      note: popover는 떠 있는 표면 자체이고, popover form은 그 안에서 입력과 제출까지 처리하는 패턴이다.
+  asset: { kind: mini-mock, variant: popover-form }
+  sources:
+    - source_id: coss-ui-docs
+      note: Origin popover examples include compact interactive content
+  confidence: medium
+
+- id: disclosure-card
+  status: draft
+  category: structure
+  kind: component
+  ko:
+    name: 펼침 카드
+    aliases: [disclosure card, expandable card, 접히는 카드]
+  en:
+    name: Disclosure card
+    aliases: [Expandable card, Collapsible card]
+  one_liner: 카드 헤더를 눌러 세부 내용을 펼치거나 접는 카드형 disclosure.
+  description: 설정 요약, FAQ, 요금제 세부 기능처럼 기본 정보는 보이고 자세한 내용은 필요할 때 펼치게 한다.
+  visual_anatomy:
+    - card header
+    - chevron indicator
+    - summary content
+    - expandable body
+  when_to_use:
+    - 카드 목록에서 각 항목의 상세 정보를 필요할 때만 보여줄 때
+  anti_use:
+    - 단순 텍스트 목록이면 accordion이 더 표준적이다
+  prompt_phrases:
+    - 설정 항목을 펼칠 수 있는 disclosure card로 보여줘
+  related:
+    - id: disclosure
+      relation: compare
+      note: disclosure는 펼침/접힘 동작이고, disclosure card는 그 동작을 카드 표면에 적용한 조합이다.
+  asset: { kind: mini-mock, variant: disclosure-card }
+  sources:
+    - source_id: coss-ui-docs
+      note: Origin accordion/collapsible examples include card-like disclosure compositions
+  confidence: medium
+
+- id: pagination-jump
+  status: draft
+  category: structure
+  kind: component
+  ko:
+    name: 페이지 점프 입력
+    aliases: [pagination jump, page jump, 페이지 번호 입력]
+  en:
+    name: Pagination jump
+    aliases: [Page jump input, Go to page]
+  one_liner: 페이지네이션 옆에 페이지 번호를 직접 입력해 특정 페이지로 이동하는 컨트롤.
+  description: 데이터가 많아 숫자 버튼만으로는 멀리 이동하기 어려울 때 사용자가 페이지 번호를 직접 입력하게 한다.
+  visual_anatomy:
+    - pagination controls
+    - page number input
+    - go action
+    - total pages label
+  when_to_use:
+    - 수십 페이지 이상을 빠르게 이동해야 할 때
+  anti_use:
+    - 페이지 수가 적으면 일반 pagination이 충분하다
+  prompt_phrases:
+    - 테이블 하단에 원하는 페이지로 바로 가는 pagination jump를 넣어줘
+  related:
+    - id: pagination
+      relation: compare
+      note: pagination jump는 일반 페이지 이동에 직접 번호 입력 행동을 추가한다.
+  asset: { kind: mini-mock, variant: pagination-jump }
+  sources:
+    - source_id: coss-ui-docs
+      note: Origin pagination examples include compact page controls
+  confidence: medium
+
+- id: avatar-stack
+  status: draft
+  category: data-display
+  kind: component
+  ko:
+    name: 아바타 스택
+    aliases: [avatar stack, 겹친 아바타, 팀 아바타]
+  en:
+    name: Avatar stack
+    aliases: [Avatar group, Stacked avatars]
+  one_liner: 여러 사용자의 아바타를 겹쳐 보여 팀, 참여자, 공유 대상을 요약하는 요소.
+  description: 모든 사람을 목록으로 펼치지 않고 참여자 수와 일부 대표 사용자를 작게 보여준다.
+  visual_anatomy:
+    - overlapping avatars
+    - border ring
+    - overflow count
+    - optional tooltip
+  when_to_use:
+    - 카드나 테이블 행에서 참여자 여러 명을 compact하게 보여줄 때
+  anti_use:
+    - 이름과 역할을 읽어야 하면 team-member-row나 table이 더 적합하다
+  prompt_phrases:
+    - 프로젝트 카드 오른쪽에 참여자 avatar stack을 넣어줘
+  related:
+    - id: avatar
+      relation: compare
+      note: avatar는 한 사람이고, avatar stack은 여러 사람을 겹쳐 요약한다.
+  asset: { kind: mini-mock, variant: avatar-stack }
+  sources:
+    - source_id: coss-ui-docs
+      note: Origin avatar category includes grouped avatar examples
+  confidence: medium
+
+- id: status-avatar
+  status: draft
+  category: data-display
+  kind: component
+  ko:
+    name: 상태 아바타
+    aliases: [status avatar, presence avatar, 접속 상태 아바타]
+  en:
+    name: Status avatar
+    aliases: [Presence avatar, Avatar with status]
+  one_liner: 아바타 위에 온라인, 자리비움, 오류 같은 작은 상태 점을 붙인 사용자 표시.
+  description: 채팅, 협업, 담당자 목록에서 사람 자체와 현재 상태를 한 번에 보여준다.
+  visual_anatomy:
+    - avatar image or initials
+    - status dot
+    - status color
+    - optional accessible label
+  when_to_use:
+    - 사용자 목록에서 현재 접속 상태나 가용성을 보여줄 때
+  anti_use:
+    - 상태만 보여주면 status-indicator가 더 직접적이다
+  prompt_phrases:
+    - 담당자 아바타에 온라인 상태 dot이 있는 status avatar를 넣어줘
+  related:
+    - id: status-indicator
+      relation: compare
+      note: status indicator는 상태만 표시하고, status avatar는 사람 식별과 상태를 결합한다.
+  asset: { kind: mini-mock, variant: status-avatar }
+  sources:
+    - source_id: coss-ui-docs
+      note: Origin avatar examples include presence/status decorations
+  confidence: medium
+
+- id: badge-group
+  status: draft
+  category: data-display
+  kind: component
+  ko:
+    name: 배지 그룹
+    aliases: [badge group, 태그 배지 묶음, 상태 배지 묶음]
+  en:
+    name: Badge group
+    aliases: [Badge cluster, Tag badge group]
+  one_liner: 여러 배지를 한 줄이나 묶음으로 배치해 속성, 상태, 태그를 compact하게 보여주는 요소.
+  description: 카드나 테이블 행에서 카테고리, 상태, 권한 같은 여러 짧은 메타데이터를 함께 표시한다.
+  visual_anatomy:
+    - badge chips
+    - wrapping row
+    - optional overflow count
+    - consistent color semantics
+  when_to_use:
+    - 한 항목에 여러 짧은 속성을 보여줘야 할 때
+  anti_use:
+    - 사용자가 직접 선택하거나 제거해야 하면 chip이나 tag-input이 더 적합하다
+  prompt_phrases:
+    - 카드 상단에 New, Beta, Admin badge group을 보여줘
+  related:
+    - id: badge
+      relation: compare
+      note: badge group은 여러 badge를 의미 있는 묶음으로 정렬한다.
+  asset: { kind: mini-mock, variant: badge-group }
+  sources:
+    - source_id: coss-ui-docs
+      note: Origin badge examples include grouped metadata compositions
+  confidence: medium
+
+- id: meter
+  status: draft
+  category: feedback
+  kind: component
+  ko:
+    name: 미터
+    aliases: [meter, 수치 미터, 사용량 미터]
+  en:
+    name: Meter
+    aliases: [Usage meter, Gauge meter]
+  one_liner: 알려진 범위 안에서 현재 값이 어느 정도인지 보여주는 수치 표시 막대.
+  description: 저장공간, 할당량, 품질 점수처럼 전체 범위와 현재 값의 비율을 보여준다.
+  visual_anatomy:
+    - value label
+    - minimum and maximum range
+    - filled track
+    - threshold color
+  when_to_use:
+    - 진행 중인 작업보다 현재 사용량이나 상태 값을 보여줄 때
+  anti_use:
+    - 작업 완료 진행률은 progress-bar가 더 적합하다
+  prompt_phrases:
+    - 저장공간 사용량을 72% meter로 보여줘
+  related:
+    - id: progress-bar
+      relation: compare
+      note: progress bar는 작업 진행을, meter는 정해진 범위 안의 현재 값을 보여준다.
+  asset: { kind: mini-mock, variant: meter }
+  sources:
+    - source_id: coss-ui-docs
+      note: coss ui exposes Meter as a primitive
+  confidence: high
+
+- id: table-row-actions
+  status: draft
+  category: action
+  kind: component
+  ko:
+    name: 테이블 행 액션
+    aliases: [table row actions, row actions, 행 작업 메뉴]
+  en:
+    name: Table row actions
+    aliases: [Row actions, Row action menu]
+  one_liner: 테이블의 각 행 끝에 보기, 수정, 삭제 같은 해당 행 전용 작업을 배치하는 액션 영역.
+  description: 데이터 행마다 가능한 작업이 다를 때 메뉴 버튼이나 아이콘 버튼 묶음으로 행 단위 행동을 제공한다.
+  visual_anatomy:
+    - table row
+    - trailing action button
+    - action menu
+    - destructive action separation
+  when_to_use:
+    - 목록 행마다 세부 보기, 편집, 삭제 같은 작업을 제공할 때
+  anti_use:
+    - 여러 행을 한 번에 처리하면 bulk-action-bar가 더 적합하다
+  prompt_phrases:
+    - 사용자 테이블 각 행 끝에 table row actions 메뉴를 넣어줘
+  related:
+    - id: data-table-toolbar
+      relation: compare
+      note: data-table-toolbar는 테이블 전체 작업이고, table row actions는 개별 행 작업이다.
+  asset: { kind: mini-mock, variant: table-row-actions }
+  sources:
+    - source_id: coss-ui-docs
+      note: Origin table examples include row action menu compositions
+  confidence: medium
+
+- id: empty-filter-state
+  status: draft
+  category: feedback
+  kind: component
+  ko:
+    name: 필터 결과 없음 상태
+    aliases: [empty filter state, 필터 빈 상태, 검색 결과 없음]
+  en:
+    name: Empty filter state
+    aliases: [Filtered empty state, No matching results]
+  one_liner: 필터나 검색 조건 때문에 결과가 없을 때 조건 해제와 재검색 행동을 함께 보여주는 빈 상태.
+  description: 데이터가 아예 없는 것이 아니라 현재 조건에 맞는 항목이 없다는 점을 알려주고 필터 초기화를 돕는다.
+  visual_anatomy:
+    - empty illustration or icon
+    - filter-specific message
+    - clear filters action
+    - optional suggested query
+  when_to_use:
+    - 검색어 또는 필터 적용 후 결과가 0개일 때
+  anti_use:
+    - 데이터 자체가 없으면 empty-state나 empty-table이 더 적합하다
+  prompt_phrases:
+    - 필터 결과가 없을 때 clear filters 버튼이 있는 empty filter state를 보여줘
+  related:
+    - id: empty-state
+      relation: compare
+      note: empty filter state는 조건 때문에 비어 있음을 설명하고, 조건 해제를 주요 행동으로 둔다.
+  asset: { kind: mini-mock, variant: empty-filter-state }
+  sources:
+    - source_id: coss-ui-docs
+      note: coss ui Empty primitive and Origin table/filter examples inform filtered empty states
+  confidence: medium
+
+- id: notification-inbox-row
+  status: draft
+  category: data-display
+  kind: component
+  ko:
+    name: 알림 인박스 행
+    aliases: [notification inbox row, 알림 행, 읽지 않은 알림 행]
+  en:
+    name: Notification inbox row
+    aliases: [Notification row, Inbox notification item]
+  one_liner: 알림함 안에서 읽음 상태, 아이콘, 본문, 시간, 행 작업을 한 줄에 보여주는 항목.
+  description: 여러 알림을 목록으로 스캔하고 읽음/안읽음 상태와 관련 작업을 바로 파악하게 한다.
+  visual_anatomy:
+    - unread marker
+    - notification icon
+    - title and body
+    - timestamp
+    - row action
+  when_to_use:
+    - 알림 센터나 인박스에서 알림을 목록으로 보여줄 때
+  anti_use:
+    - 일회성 완료 메시지는 toast가 더 적합하다
+  prompt_phrases:
+    - 알림함에 unread dot이 있는 notification inbox row를 보여줘
+  related:
+    - id: notification-list
+      relation: compare
+      note: notification-list는 목록 전체이고, notification inbox row는 그 안의 개별 행 구조다.
+  asset: { kind: mini-mock, variant: notification-inbox-row }
+  sources:
+    - source_id: coss-ui-docs
+      note: Origin notification examples include inbox-like notification rows
+  confidence: medium
+
+- id: progress-stepper
+  status: draft
+  category: feedback
+  kind: component
+  ko:
+    name: 진행 스테퍼
+    aliases: [progress stepper, 단계 진행 표시, step progress]
+  en:
+    name: Progress stepper
+    aliases: [Step progress, Step indicator]
+  one_liner: 여러 단계 중 현재 단계와 완료된 단계를 점, 선, 라벨로 보여주는 진행 표시.
+  description: 주문, 온보딩, 설정 마법사처럼 순서가 있는 흐름에서 전체 진행 위치를 보여준다.
+  visual_anatomy:
+    - ordered steps
+    - completed step marker
+    - active step marker
+    - connector line
+  when_to_use:
+    - 사용자가 다단계 흐름에서 현재 위치를 알아야 할 때
+  anti_use:
+    - 단계 이동 자체가 핵심이면 stepper나 wizard가 더 적합하다
+  prompt_phrases:
+    - 결제 흐름 상단에 현재 단계가 보이는 progress stepper를 넣어줘
+  related:
+    - id: stepper
+      relation: compare
+      note: stepper는 단계 이동 컨트롤이고, progress stepper는 진행 상태 표시가 중심이다.
+  asset: { kind: mini-mock, variant: progress-stepper }
+  sources:
+    - source_id: coss-ui-docs
+      note: Origin stepper examples include progress-style step indicators
+  confidence: medium
