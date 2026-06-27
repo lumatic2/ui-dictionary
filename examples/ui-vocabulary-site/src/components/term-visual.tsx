@@ -439,6 +439,26 @@ function renderVisual(variant: string, label: string) {
   if (variant === "login-page") return <AuthPatternVisual kind="login-page" />
   if (variant === "split-auth-layout") return <AuthPatternVisual kind="split-auth-layout" />
   if (variant === "login-dialog") return <AuthPatternVisual kind="login-dialog" />
+  if (variant === "dashboard-overview-page") return <ShadcnBlockVisual kind="dashboard-overview-page" />
+  if (variant === "sidebar-dashboard-layout") return <ShadcnBlockVisual kind="sidebar-dashboard-layout" />
+  if (variant === "collapsible-sidebar-layout") return <ShadcnBlockVisual kind="collapsible-sidebar-layout" />
+  if (variant === "icon-sidebar-layout") return <ShadcnBlockVisual kind="icon-sidebar-layout" />
+  if (variant === "inset-sidebar-layout") return <ShadcnBlockVisual kind="inset-sidebar-layout" />
+  if (variant === "right-sidebar-layout") return <ShadcnBlockVisual kind="right-sidebar-layout" />
+  if (variant === "dual-sidebar-layout") return <ShadcnBlockVisual kind="dual-sidebar-layout" />
+  if (variant === "file-tree-sidebar-layout") return <ShadcnBlockVisual kind="file-tree-sidebar-layout" />
+  if (variant === "calendar-sidebar-layout") return <ShadcnBlockVisual kind="calendar-sidebar-layout" />
+  if (variant === "sidebar-dialog-layout") return <ShadcnBlockVisual kind="sidebar-dialog-layout" />
+  if (variant === "area-chart-card") return <ShadcnBlockVisual kind="area-chart-card" />
+  if (variant === "bar-chart-card") return <ShadcnBlockVisual kind="bar-chart-card" />
+  if (variant === "line-chart-card") return <ShadcnBlockVisual kind="line-chart-card" />
+  if (variant === "pie-chart-card") return <ShadcnBlockVisual kind="pie-chart-card" />
+  if (variant === "radar-chart-card") return <ShadcnBlockVisual kind="radar-chart-card" />
+  if (variant === "radial-chart-card") return <ShadcnBlockVisual kind="radial-chart-card" />
+  if (variant === "interactive-chart-card") return <ShadcnBlockVisual kind="interactive-chart-card" />
+  if (variant === "stacked-chart-card") return <ShadcnBlockVisual kind="stacked-chart-card" />
+  if (variant === "chart-tooltip-pattern") return <ShadcnBlockVisual kind="chart-tooltip-pattern" />
+  if (variant === "chart-kpi-card") return <ShadcnBlockVisual kind="chart-kpi-card" />
   if (variant === "error-state") return <StateVisual tone="error" />
   if (variant === "success-state") return <StateVisual tone="success" />
   if (variant === "warning-state") return <StateVisual tone="warning" />
@@ -3762,6 +3782,137 @@ function AuthMiniForm({ title, cta, active, onClick }: { title: string; cta: str
 
 function PasswordLine({ className }: { className?: string }) {
   return <div className={cn("flex h-7 items-center justify-between rounded border bg-background px-2", className)}><span>••••••••</span><EyeOff aria-hidden="true" className="size-3 text-muted-foreground" /></div>
+}
+
+type ShadcnBlockKind =
+  | "dashboard-overview-page"
+  | "sidebar-dashboard-layout"
+  | "collapsible-sidebar-layout"
+  | "icon-sidebar-layout"
+  | "inset-sidebar-layout"
+  | "right-sidebar-layout"
+  | "dual-sidebar-layout"
+  | "file-tree-sidebar-layout"
+  | "calendar-sidebar-layout"
+  | "sidebar-dialog-layout"
+  | "area-chart-card"
+  | "bar-chart-card"
+  | "line-chart-card"
+  | "pie-chart-card"
+  | "radar-chart-card"
+  | "radial-chart-card"
+  | "interactive-chart-card"
+  | "stacked-chart-card"
+  | "chart-tooltip-pattern"
+  | "chart-kpi-card"
+
+function ShadcnBlockVisual({ kind }: { kind: ShadcnBlockKind }) {
+  const [active, setActive] = useState(false)
+
+  if (kind.includes("sidebar") || kind === "dashboard-overview-page") {
+    return <SidebarBlockFrame kind={kind} active={active} onToggle={() => setActive((value) => !value)} />
+  }
+
+  return <ChartBlockFrame kind={kind} active={active} />
+}
+
+function SidebarBlockFrame({ kind, active, onToggle }: { kind: ShadcnBlockKind; active: boolean; onToggle: () => void }) {
+  const isIcon = kind === "icon-sidebar-layout"
+  const isRight = kind === "right-sidebar-layout"
+  const isDual = kind === "dual-sidebar-layout"
+  const isDialog = kind === "sidebar-dialog-layout"
+  const isInset = kind === "inset-sidebar-layout"
+  const isDashboard = kind === "dashboard-overview-page"
+  const isFileTree = kind === "file-tree-sidebar-layout"
+  const isCalendar = kind === "calendar-sidebar-layout"
+  const isCollapsible = kind === "collapsible-sidebar-layout"
+
+  const sidebar = (
+    <div className={cn("flex h-full flex-col gap-2 border-r bg-muted/60 p-2", isIcon ? "w-10" : "w-20", isRight && "border-l border-r-0")}>
+      <div className="flex items-center gap-1">
+        <span className="flex size-5 items-center justify-center rounded bg-primary text-primary-foreground"><Home aria-hidden="true" className="size-3" /></span>
+        {!isIcon && <Line className="w-10" />}
+      </div>
+      {isCalendar ? (
+        <div className="grid grid-cols-3 gap-1">{Array.from({ length: 9 }).map((_, index) => <span key={index} className={cn("h-3 rounded bg-background", index === 4 && "bg-primary/60")} />)}</div>
+      ) : isFileTree ? (
+        <div className="flex flex-col gap-1">{["src", "app", "ui"].map((item, index) => <button key={item} type="button" className={cn("flex items-center gap-1 rounded px-1 py-0.5 text-left", active && index === 1 && "bg-primary/15")} onClick={onToggle}><Folder aria-hidden="true" className="size-3" />{!isIcon && <span>{item}</span>}</button>)}</div>
+      ) : (
+        <div className="flex flex-col gap-1">{[0, 1, 2, 3].map((item) => <button key={item} type="button" className={cn("flex items-center gap-1 rounded px-1 py-0.5", (active ? item === 2 : item === 0) && "bg-primary/15 text-primary")} onClick={onToggle}><Circle aria-hidden="true" className="size-2" />{!isIcon && <Line className={cn(item === 0 ? "w-10" : "w-8")} />}</button>)}</div>
+      )}
+      {isCollapsible && <div className="mt-auto rounded border bg-background p-1"><ChevronDown aria-hidden="true" className={cn("size-3", active && "rotate-180")} /></div>}
+    </div>
+  )
+
+  const main = (
+    <div className="flex min-w-0 flex-1 flex-col gap-2 p-2">
+      <div className="flex items-center justify-between"><Line className="w-20" /><MoreHorizontal aria-hidden="true" className="size-4" /></div>
+      {isDashboard ? (
+        <>
+          <div className="grid grid-cols-3 gap-1">{[0, 1, 2].map((item) => <div key={item} className="rounded border bg-background p-1"><Line className="w-8" /><Line className="mt-1 w-5" /></div>)}</div>
+          <div className="flex h-12 items-end gap-1 rounded border bg-background p-2">{[18, 28, 20, 34, 26].map((height) => <span key={height} className="w-4 rounded-t bg-primary/60" style={{ height }} />)}</div>
+        </>
+      ) : (
+        <div className={cn("rounded border bg-background p-2", isInset && "rounded-xl shadow-sm")}>
+          <Line className="w-24" /><Line className="mt-2 w-16" /><Line className="mt-2 w-20" />
+        </div>
+      )}
+    </div>
+  )
+
+  const rightRail = <div className="w-16 border-l bg-muted/50 p-2"><Line className="w-10" /><Line className="mt-2 w-8" /><Line className="mt-2 w-10" /></div>
+
+  if (isDialog) {
+    return <div className="relative h-32 w-64 rounded-md border bg-muted/60 p-4 text-xs"><div className="absolute inset-x-6 top-5 flex h-24 overflow-hidden rounded-md border bg-card shadow-sm">{sidebar}{main}</div></div>
+  }
+
+  return (
+    <div className={cn("flex h-32 w-64 overflow-hidden rounded-md border bg-card text-left text-xs", isInset && "bg-muted p-2")}>
+      <div className={cn("flex min-h-0 flex-1 overflow-hidden", isInset && "rounded-lg border bg-card")}>
+        {!isRight && sidebar}
+        {main}
+        {(isRight || isDual) && rightRail}
+      </div>
+    </div>
+  )
+}
+
+function ChartBlockFrame({ kind, active }: { kind: ShadcnBlockKind; active: boolean }) {
+  const bars = [20, 34, 26, 42, 30]
+  const line = "M8 52 C24 28, 36 42, 52 22 S84 38, 96 18"
+  const isArea = kind === "area-chart-card"
+  const isBar = kind === "bar-chart-card"
+  const isLine = kind === "line-chart-card"
+  const isPie = kind === "pie-chart-card"
+  const isRadar = kind === "radar-chart-card"
+  const isRadial = kind === "radial-chart-card"
+  const isInteractive = kind === "interactive-chart-card"
+  const isStacked = kind === "stacked-chart-card"
+  const isTooltip = kind === "chart-tooltip-pattern"
+  const isKpi = kind === "chart-kpi-card"
+
+  return (
+    <div className="w-56 rounded-md border bg-card p-3 text-left text-xs shadow-sm">
+      <div className="mb-2 flex items-center justify-between"><Line className="w-20" />{isInteractive && <span className="rounded bg-primary px-2 py-0.5 text-primary-foreground">{active ? "30D" : "7D"}</span>}{isKpi && <span className="text-primary">+12%</span>}</div>
+      {isKpi && <p className="mb-1 text-lg font-semibold">12.4K</p>}
+      <div className="relative flex h-20 items-end justify-center rounded border bg-background p-2">
+        {(isArea || isLine || isInteractive || isKpi) && (
+          <svg aria-hidden="true" className="h-full w-full" viewBox="0 0 104 64">
+            {isArea && <path d={`${line} L96 60 L8 60 Z`} fill="currentColor" className="text-primary/20" />}
+            <path d={line} fill="none" stroke="currentColor" strokeWidth="4" className="text-primary" />
+            {(isTooltip || active) && <g><circle cx="52" cy="22" r="4" className="fill-primary" /><rect x="46" y="2" width="42" height="16" rx="3" className="fill-card stroke-border" /></g>}
+          </svg>
+        )}
+        {(isBar || isStacked) && (
+          <div className="flex h-full items-end gap-2">{bars.map((height, index) => <span key={height} className="flex w-5 flex-col justify-end overflow-hidden rounded-t bg-primary/30">{isStacked && <span className="block bg-primary/70" style={{ height: Math.max(8, height - 14) }} />}{!isStacked && <span className={cn("block bg-primary", active && index === 2 && "bg-destructive")} style={{ height }} />}</span>)}</div>
+        )}
+        {isPie && <div className="relative size-16 rounded-full border-[12px] border-primary"><span className="absolute inset-2 rounded-full border-[8px] border-muted" /></div>}
+        {isRadar && <div className="relative flex size-16 items-center justify-center"><div className="absolute size-16 rotate-45 border" /><div className="absolute size-11 rotate-45 border" /><div className="size-10 rotate-45 bg-primary/30" /></div>}
+        {isRadial && <div className="flex size-16 items-center justify-center rounded-full border-[10px] border-primary border-r-muted border-t-primary/50"><span className="text-sm font-semibold">72%</span></div>}
+        {isTooltip && <div className="absolute right-3 top-3 rounded border bg-card px-2 py-1 shadow-sm">Jun · 42</div>}
+      </div>
+    </div>
+  )
 }
 
 function StateVisual({ tone }: { tone: "error" | "success" | "warning" | "info" }) {
