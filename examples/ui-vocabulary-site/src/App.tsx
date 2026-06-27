@@ -42,6 +42,7 @@ function App() {
   const initialSearchState = useMemo(getInitialSearchState, [])
   const [query, setQuery] = useState(initialSearchState.query)
   const [filter, setFilter] = useState<TermFilter>(initialSearchState.filter)
+  const [openExploreSections, setOpenExploreSections] = useState<string[]>(["kind", "category"])
   const [openCategories, setOpenCategories] = useState<string[]>([])
   const [selectedTerm, setSelectedTerm] = useState<VocabularyTerm | null>(terms[0] ?? null)
   const [detailOpen, setDetailOpen] = useState(false)
@@ -149,6 +150,7 @@ function App() {
     setActiveUseCaseId(useCase?.id ?? null)
     setQuery(queryValue)
     setFilter("all")
+    setOpenExploreSections(["kind", "category"])
     setOpenCategories([])
     setDetailOpen(false)
     window.scrollTo({ top: 0, behavior: "smooth" })
@@ -158,6 +160,7 @@ function App() {
     setQuery("")
     setFilter("all")
     setActiveUseCaseId(null)
+    setOpenExploreSections(["kind", "category"])
     setOpenCategories([])
     setSelectedTerm(terms[0] ?? null)
     setDetailOpen(false)
@@ -195,7 +198,7 @@ function App() {
     schedulePrint()
   }
 
-  const categoryNav = (
+  const exploreNav = (
     <div className="flex flex-col gap-3">
       <CategoryButton
         active={filter === "all"}
@@ -204,48 +207,77 @@ function App() {
         label="전체"
         onClick={() => updateFilter("all")}
       />
-      <Accordion className="flex flex-col gap-1" onValueChange={setOpenCategories} type="multiple" value={openCategories}>
-        {categoryCounts.map((item) => (
-          <AccordionItem key={item.category} className="border-0" value={item.category}>
-            <AccordionTrigger
-              className={cn(
-                "rounded-lg px-3 py-2 text-sm hover:bg-muted hover:no-underline",
-                filter === item.category && "bg-secondary text-primary"
-              )}
-              onClick={() => updateFilter(item.category)}
-            >
-              <span className="flex min-w-0 flex-1 items-center gap-3">
-                <CategoryIcon category={item.category} />
-                <span className="min-w-0 flex-1 truncate">{categoryLabels[item.category]}</span>
-                <span className="shrink-0 text-xs text-muted-foreground">{item.count}</span>
-              </span>
-            </AccordionTrigger>
-            <AccordionContent className="flex flex-col gap-1 pb-2 pl-8">
-              {item.groups.map((group) => (
-                <CategoryButton
-                  key={group.id}
-                  active={filter === group.id}
-                  count={group.count}
-                  label={group.label}
-                  onClick={() => updateFilter(group.id)}
-                />
+      <Accordion className="flex flex-col gap-1" onValueChange={setOpenExploreSections} type="multiple" value={openExploreSections}>
+        <AccordionItem className="border-0" value="kind">
+          <AccordionTrigger className="rounded-lg px-3 py-2 text-sm hover:bg-muted hover:no-underline">
+            형태
+          </AccordionTrigger>
+          <AccordionContent className="flex flex-col gap-1 pb-2">
+            {kindCounts.map((item) => (
+              <CategoryButton
+                key={item.kind}
+                active={filter === `kind:${item.kind}`}
+                count={item.count}
+                label={kindLabels[item.kind]}
+                onClick={() => updateFilter(`kind:${item.kind}`)}
+              />
+            ))}
+          </AccordionContent>
+        </AccordionItem>
+        <AccordionItem className="border-0" value="category">
+          <AccordionTrigger className="rounded-lg px-3 py-2 text-sm hover:bg-muted hover:no-underline">
+            카테고리
+          </AccordionTrigger>
+          <AccordionContent className="pb-2">
+            <Accordion className="flex flex-col gap-1" onValueChange={setOpenCategories} type="multiple" value={openCategories}>
+              {categoryCounts.map((item) => (
+                <AccordionItem key={item.category} className="border-0" value={item.category}>
+                  <AccordionTrigger
+                    className={cn(
+                      "rounded-lg px-3 py-2 text-sm hover:bg-muted hover:no-underline",
+                      filter === item.category && "bg-secondary text-primary"
+                    )}
+                    onClick={() => updateFilter(item.category)}
+                  >
+                    <span className="flex min-w-0 flex-1 items-center gap-3">
+                      <CategoryIcon category={item.category} />
+                      <span className="min-w-0 flex-1 truncate">{categoryLabels[item.category]}</span>
+                      <span className="shrink-0 text-xs text-muted-foreground">{item.count}</span>
+                    </span>
+                  </AccordionTrigger>
+                  <AccordionContent className="flex flex-col gap-1 pb-2 pl-8">
+                    {item.groups.map((group) => (
+                      <CategoryButton
+                        key={group.id}
+                        active={filter === group.id}
+                        count={group.count}
+                        label={group.label}
+                        onClick={() => updateFilter(group.id)}
+                      />
+                    ))}
+                  </AccordionContent>
+                </AccordionItem>
               ))}
-            </AccordionContent>
-          </AccordionItem>
-        ))}
+            </Accordion>
+          </AccordionContent>
+        </AccordionItem>
+        <AccordionItem className="border-0" value="use-case">
+          <AccordionTrigger className="rounded-lg px-3 py-2 text-sm hover:bg-muted hover:no-underline">
+            상황
+          </AccordionTrigger>
+          <AccordionContent className="flex flex-col gap-1 pb-2">
+            {useCases.map((item) => (
+              <CategoryButton
+                key={item.id}
+                active={activeUseCaseId === item.id}
+                count={item.termIds.length}
+                label={item.label}
+                onClick={() => selectUseCase(item.query)}
+              />
+            ))}
+          </AccordionContent>
+        </AccordionItem>
       </Accordion>
-      <div className="flex flex-col gap-1 border-t pt-3">
-        <p className="px-3 text-xs font-medium uppercase text-muted-foreground">형태</p>
-        {kindCounts.map((item) => (
-          <CategoryButton
-            key={item.kind}
-            active={filter === `kind:${item.kind}`}
-            count={item.count}
-            label={kindLabels[item.kind]}
-            onClick={() => updateFilter(`kind:${item.kind}`)}
-          />
-        ))}
-      </div>
     </div>
   )
 
@@ -253,12 +285,12 @@ function App() {
     <main className="min-h-svh bg-background">
       <div className="mx-auto grid w-full max-w-7xl lg:grid-cols-[240px_minmax(0,1fr)]">
         <aside className="sticky top-0 hidden h-svh overflow-y-auto border-r bg-background px-4 py-6 lg:block" data-print-hidden>
-          <nav aria-label="카테고리" className="flex h-full flex-col gap-4">
+          <nav aria-label="탐색" className="flex h-full flex-col gap-4">
             <div>
               <p className="text-xs font-medium uppercase text-muted-foreground">Navigation</p>
-              <h2 className="mt-1 text-lg font-semibold">카테고리</h2>
+              <h2 className="mt-1 text-lg font-semibold">탐색</h2>
             </div>
-            {categoryNav}
+            {exploreNav}
           </nav>
         </aside>
 
@@ -328,7 +360,7 @@ function App() {
               </div>
 
               <div className="max-h-72 overflow-y-auto lg:hidden" data-print-hidden>
-                {categoryNav}
+                {exploreNav}
               </div>
             </div>
           </header>
@@ -340,28 +372,6 @@ function App() {
                 바이브코딩과 UI/UX 설계에서 자주 쓰는 화면 요소의 이름, 쓰임새, 생김새를 한곳에서 확인합니다.
               </p>
             </div>
-
-            <section className="flex flex-col gap-3 rounded-lg border bg-card p-4" data-print-hidden>
-              <div>
-                <h2 className="text-sm font-semibold">상황별로 찾기</h2>
-                <p className="mt-1 text-sm leading-6 text-muted-foreground">
-                  화면 종류를 먼저 고르면 관련 컴포넌트 묶음으로 검색합니다.
-                </p>
-              </div>
-              <div className="grid gap-2 md:grid-cols-2 xl:grid-cols-3">
-                {useCases.map((item) => (
-                  <button
-                    key={item.id}
-                    type="button"
-                    className="rounded-lg border bg-background p-3 text-left transition hover:border-primary/40 hover:bg-accent/40 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring"
-                    onClick={() => selectUseCase(item.query)}
-                  >
-                    <span className="block text-sm font-medium">{item.label}</span>
-                    <span className="mt-1 block text-xs leading-5 text-muted-foreground">{item.description}</span>
-                  </button>
-                ))}
-              </div>
-            </section>
 
             <div className="hidden" data-print-summary>
               <p>UI 용어 사전</p>
