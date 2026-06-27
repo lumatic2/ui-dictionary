@@ -4,7 +4,7 @@
 
 UI/UX 용어를 잘 몰라 원하는 화면을 설명하지 못하는 문제를 줄인다. 바이브코딩 사용자와 초급 디자이너가 "이름 + 생김새 + 언제 쓰는지 + AI에게 어떻게 말할지"를 한 번에 익히는 웹 백과사전으로 만든다.
 
-Reference seed: `C:\Users\yusun\Desktop\KakaoTalk_20260624_155532203.jpg`
+Reference seed: a local screenshot used only to set the initial poster-style layout direction. Do not treat the local file as a repository dependency.
 
 ## Product Shape
 

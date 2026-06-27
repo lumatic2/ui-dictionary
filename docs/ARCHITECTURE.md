@@ -12,7 +12,7 @@
 ## Project Layout
 
 ```text
-design-manual/
+ui-dictionary/
 ├── docs/
 │   └── ui-vocabulary/
 │       ├── PLAN.md

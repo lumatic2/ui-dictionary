@@ -8,7 +8,7 @@
 
 UI 컴포넌트와 화면 요소의 이름, 생김새, 쓰임, AI 프롬프트 표현을 한 화면에서 배울 수 있는 웹 백과사전을 만든다.
 
-Seed visual: `C:\Users\yusun\Desktop\KakaoTalk_20260624_155532203.jpg`
+Seed visual: a local reference screenshot used only for layout direction. The runtime site must not depend on a local Desktop file.
 
 ## Target Users
 
