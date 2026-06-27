@@ -9,6 +9,7 @@
     "dev": "vite",
     "build": "tsc -b && vite build",
     "lint": "oxlint",
+    "audit:visuals": "node ../../scripts/audit-ui-vocabulary-visuals.mjs",
     "preview": "vite preview"
   },
   "dependencies": {

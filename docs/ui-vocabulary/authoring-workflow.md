@@ -27,9 +27,11 @@ choose topic
 - `docs/ui-vocabulary/sources.md`: allowed source ids and trust rules.
 - `docs/ui-vocabulary/schema.md`: canonical field definitions.
 - `scripts/audit-ui-vocabulary-candidates.mjs`: schema/source/duplicate-risk audit.
+- `scripts/audit-ui-vocabulary-visuals.mjs`: visual fallback/generic renderer audit.
 - `scripts/generate-ui-vocabulary-inbox-review.mjs`: readable batch report.
 - `scripts/validate-ui-vocabulary.py`: canonical dataset validation after promotion.
 - `examples/ui-vocabulary-site/src/components/term-visual.tsx`: visual renderer mappings.
+- `docs/ui-vocabulary/visual-quality-workflow.md`: visual quality review loop.
 - `docs/ui-vocabulary/deployment.md`: Cloudflare Pages deployment notes.
 
 ## 1. Choose One Topic
@@ -138,6 +140,15 @@ Preferred options:
 
 Do not ship a term that falls back to a generic visual.
 
+Run the visual audit:
+
+```bash
+cd examples/ui-vocabulary-site
+npm run audit:visuals
+```
+
+Use [visual-quality-workflow.md](visual-quality-workflow.md) when the audit reports fallback or generic renderer variants. New promoted terms should not add new fallback variants, and intentional shared variants should be checked manually.
+
 ## 7. Verify Locally
 
 Run the full validation path:
@@ -147,6 +158,7 @@ python scripts/validate-ui-vocabulary.py
 cd examples/ui-vocabulary-site
 npm run build
 npm run lint
+npm run audit:visuals
 ```
 
 Expected lint note:
@@ -196,3 +208,4 @@ Cloudflare builds the site from `examples/ui-vocabulary-site`.
 ## Changelog
 
 - 2026-06-27: Simplified workflow around early duplicate filtering and final deployment approval.
+- 2026-06-28: Added visual quality audit loop for fallback/generic renderer review.

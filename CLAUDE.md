@@ -75,6 +75,7 @@ topic -> collect around 20 candidates -> duplicate prefilter
 - `docs/ui-vocabulary/inbox.yml`은 현재 수집 배치의 임시 버퍼로만 사용한다.
 - 승격 전 `node scripts/audit-ui-vocabulary-candidates.mjs`와 `node scripts/audit-ui-vocabulary-candidates.mjs --strict-duplicates`로 기존 `terms.yml` 대비 id/name/source/alias overlap과 duplicate-risk를 확인한다.
 - `node scripts/generate-ui-vocabulary-inbox-review.mjs`는 후보 설명, visual anatomy, duplicate-risk를 사람이 빠르게 보는 보조 리포트다.
+- 승격 후 `cd examples/ui-vocabulary-site && npm run audit:visuals`로 visual fallback/generic renderer를 확인한다. 자세한 기준은 [docs/ui-vocabulary/visual-quality-workflow.md](docs/ui-vocabulary/visual-quality-workflow.md)를 따른다.
 - 기존 용어와 의미가 같으면 새 항목 대신 alias를 추가한다.
 - 기존 용어와 헷갈리지만 행동이나 맥락이 다르면 `related` 비교를 추가한다.
 - 단순 상태나 변형이면 새 항목으로 만들지 않는다.

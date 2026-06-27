@@ -4233,15 +4233,22 @@ function ExternalEcosystemVisual({ kind }: { kind: ExternalEcosystemKind }) {
   if (kind === "marquee-row") {
     return <Chrome className="w-64 overflow-hidden p-3 text-xs"><div className="flex gap-2">{["A", "B", "C", "D", "E"].map((item) => <span key={item} className="shrink-0 rounded-full border bg-background px-3 py-1">{item}</span>)}</div></Chrome>
   }
+  if (kind === "animated-gradient-background") return <AnimatedGradientBackgroundVisual />
+  if (kind === "border-beam") return <BorderBeamVisual />
   if (kind === "orbiting-icons") {
     return <div className="relative flex size-28 items-center justify-center rounded-full border border-dashed"><span className="flex size-10 items-center justify-center rounded-full bg-primary text-primary-foreground"><Settings aria-hidden="true" className="size-4" /></span>{[Search, Bell, LinkIcon, Folder].map((Icon, index) => <span key={index} className={cn("absolute flex size-7 items-center justify-center rounded-full border bg-card", index === 0 && "top-0", index === 1 && "right-0", index === 2 && "bottom-0", index === 3 && "left-0")}><Icon aria-hidden="true" className="size-3" /></span>)}</div>
   }
+  if (kind === "spotlight-card") return <SpotlightCardVisual />
+  if (kind === "grid-pattern-background") return <PatternBackgroundVisual pattern="grid" />
   if (kind === "typing-text-effect") {
     return <Chrome className="w-56 p-3 font-mono text-xs">AI가 초안을 작성 중<span className="animate-pulse">|</span></Chrome>
   }
   if (kind === "number-ticker") {
     return <Chrome className="w-48 p-3 text-center"><p className="text-2xl font-semibold">12,840</p><p className="text-xs text-muted-foreground">active users</p></Chrome>
   }
+  if (kind === "blur-fade-in") return <BlurFadeInVisual />
+  if (kind === "animated-shiny-text") return <ShinyTextVisual />
+  if (kind === "dot-pattern-background") return <PatternBackgroundVisual pattern="dot" />
   if (kind === "bento-grid") {
     return <Chrome className="grid h-32 w-64 grid-cols-3 grid-rows-2 gap-2 p-3 text-xs"><div className="col-span-2 rounded border bg-background p-2"><Line className="w-24" /></div><div className="rounded border bg-background p-2"><Line className="w-10" /></div><div className="rounded border bg-background p-2"><Line className="w-12" /></div><div className="col-span-2 rounded border bg-background p-2"><Line className="w-20" /></div></Chrome>
   }
@@ -4251,9 +4258,11 @@ function ExternalEcosystemVisual({ kind }: { kind: ExternalEcosystemKind }) {
   if (kind === "floating-navbar") {
     return <div className="rounded-full border bg-card px-4 py-2 text-xs shadow-sm"><span className="mr-3 font-medium">Home</span><span className="mr-3">Work</span><span>Contact</span></div>
   }
-  if (kind === "three-d-card" || kind === "hover-card-stack" || kind === "canvas-reveal-card" || kind === "spotlight-card") {
-    return <button type="button" className="relative h-28 w-48 text-left" onClick={() => setActive((value) => !value)}><div className={cn("absolute inset-3 rounded border bg-card p-3 shadow-sm transition-transform", active && "rotate-2 scale-105")}><Line className="w-24" /><Line className="mt-2 w-16" /></div><div className="absolute inset-x-8 bottom-0 h-4 rounded bg-primary/20 blur-sm" /></button>
-  }
+  if (kind === "three-d-card") return <ThreeDCardVisual active={active} onToggle={() => setActive((value) => !value)} />
+  if (kind === "hover-card-stack") return <HoverCardStackVisual active={active} onToggle={() => setActive((value) => !value)} />
+  if (kind === "canvas-reveal-card") return <CanvasRevealCardVisual active={active} onToggle={() => setActive((value) => !value)} />
+  if (kind === "background-beams") return <BackgroundBeamsVisual />
+  if (kind === "aurora-background") return <AuroraBackgroundVisual />
   if (kind === "spotlight-hero") {
     return <div className="relative h-32 w-64 overflow-hidden rounded border bg-foreground p-4 text-center text-background"><span className="absolute left-1/2 top-0 h-24 w-32 -translate-x-1/2 rounded-full bg-primary/40 blur-xl" /><b className="relative">Askewly AI</b><p className="relative mt-2 text-xs">Design faster</p></div>
   }
@@ -4319,6 +4328,165 @@ function BillingSettingsPageVisual() {
         </div>
       </main>
     </Chrome>
+  )
+}
+
+function AnimatedGradientBackgroundVisual() {
+  return (
+    <div className="relative h-32 w-64 overflow-hidden rounded-md border bg-card p-3 text-xs">
+      <div className="absolute inset-0 bg-[linear-gradient(120deg,rgba(96,80,220,.35),rgba(64,220,190,.24),rgba(255,100,120,.28),rgba(96,80,220,.35))] bg-[length:220%_220%]" />
+      <div className="absolute inset-0 animate-pulse bg-white/20" />
+      <div className="relative rounded border bg-card/80 p-3 shadow-sm">
+        <b>Animated gradient</b>
+        <Line className="mt-2 w-28" />
+      </div>
+    </div>
+  )
+}
+
+function BorderBeamVisual() {
+  return (
+    <div className="relative h-28 w-56 overflow-hidden rounded-md border bg-card p-3 text-xs shadow-sm">
+      <span className="absolute left-0 top-0 h-0.5 w-20 bg-primary shadow-[0_0_12px_var(--primary)]" />
+      <span className="absolute right-0 top-0 h-20 w-0.5 bg-primary/80 shadow-[0_0_12px_var(--primary)]" />
+      <span className="absolute bottom-0 right-6 h-0.5 w-24 bg-primary/50" />
+      <b>Live border beam</b>
+      <Line className="mt-3 w-32" />
+      <Line className="mt-2 w-20" />
+    </div>
+  )
+}
+
+function SpotlightCardVisual() {
+  return (
+    <button type="button" className="relative h-28 w-56 overflow-hidden rounded-md border bg-card p-4 text-left text-xs shadow-sm">
+      <span className="absolute -right-8 -top-8 size-28 rounded-full bg-primary/25 blur-xl" />
+      <span className="absolute inset-0 bg-[radial-gradient(circle_at_75%_20%,rgba(255,255,255,.9),transparent_36%)]" />
+      <div className="relative">
+        <b>Spotlight card</b>
+        <Line className="mt-3 w-28" />
+        <Line className="mt-2 w-16" />
+      </div>
+    </button>
+  )
+}
+
+function PatternBackgroundVisual({ pattern }: { pattern: "grid" | "dot" }) {
+  return (
+    <div className="relative h-28 w-56 overflow-hidden rounded-md border bg-card p-3 text-xs">
+      <div
+        className={cn(
+          "absolute inset-0 opacity-60",
+          pattern === "grid"
+            ? "bg-[linear-gradient(rgba(80,80,120,.18)_1px,transparent_1px),linear-gradient(90deg,rgba(80,80,120,.18)_1px,transparent_1px)] bg-[size:18px_18px]"
+            : "bg-[radial-gradient(circle,rgba(80,80,120,.28)_1.2px,transparent_1.2px)] bg-[size:14px_14px]"
+        )}
+      />
+      <div className="relative rounded border bg-card/85 p-3">
+        <b>{pattern === "grid" ? "Grid pattern" : "Dot pattern"}</b>
+        <Line className="mt-2 w-24" />
+      </div>
+    </div>
+  )
+}
+
+function BlurFadeInVisual() {
+  return (
+    <div className="flex h-28 w-56 items-center justify-center rounded-md border bg-muted/40 p-3 text-xs">
+      <div className="rounded-md border bg-card p-3 shadow-sm blur-[1px] transition-all hover:blur-0">
+        <p className="font-semibold opacity-80">Blur fade in</p>
+        <Line className="mt-2 w-28 opacity-60" />
+        <Line className="mt-2 w-20 opacity-40" />
+      </div>
+    </div>
+  )
+}
+
+function ShinyTextVisual() {
+  return (
+    <Chrome className="w-56 p-4 text-center text-sm">
+      <span className="rounded-full border bg-gradient-to-r from-muted-foreground via-foreground to-muted-foreground bg-clip-text px-3 py-1 font-semibold text-transparent">
+        New feature
+      </span>
+      <Line className="mx-auto mt-3 w-28" />
+    </Chrome>
+  )
+}
+
+function ThreeDCardVisual({ active, onToggle }: { active: boolean; onToggle: () => void }) {
+  return (
+    <button type="button" className="relative h-32 w-52 text-left text-xs [perspective:600px]" onClick={onToggle}>
+      <div className={cn("absolute inset-4 rounded-md border bg-card p-3 shadow-lg transition-transform", active ? "[transform:rotateX(8deg)_rotateY(-14deg)]" : "[transform:rotateX(6deg)_rotateY(-8deg)]")}>
+        <b>3D card</b>
+        <Line className="mt-3 w-24" />
+        <Line className="mt-2 w-16" />
+      </div>
+      <div className="absolute inset-x-10 bottom-2 h-4 rounded-full bg-primary/20 blur-md" />
+    </button>
+  )
+}
+
+function HoverCardStackVisual({ active, onToggle }: { active: boolean; onToggle: () => void }) {
+  return (
+    <button type="button" className="relative h-32 w-52 text-left text-xs" onClick={onToggle}>
+      {[0, 1, 2].map((item) => (
+        <div
+          key={item}
+          className={cn(
+            "absolute inset-x-6 h-20 rounded-md border bg-card p-3 shadow-sm transition-transform",
+            active
+              ? item === 0 ? "top-2 -rotate-3" : item === 1 ? "top-6 rotate-2" : "top-10 rotate-6"
+              : item === 0 ? "top-2" : item === 1 ? "top-4" : "top-6"
+          )}
+        >
+          {item === 0 && <><b>Stack</b><Line className="mt-2 w-20" /></>}
+        </div>
+      ))}
+    </button>
+  )
+}
+
+function BackgroundBeamsVisual() {
+  return (
+    <div className="relative h-32 w-64 overflow-hidden rounded-md border bg-foreground p-4 text-xs text-background">
+      <svg aria-hidden="true" className="absolute inset-0 h-full w-full opacity-70" viewBox="0 0 260 130">
+        <path d="M-20 105 C40 20, 92 120, 158 34 S236 80, 284 16" fill="none" stroke="currentColor" strokeWidth="2" className="text-primary" />
+        <path d="M-8 36 C54 82, 96 8, 160 72 S226 42, 276 102" fill="none" stroke="currentColor" strokeWidth="1.5" className="text-accent" />
+      </svg>
+      <div className="relative rounded border border-background/20 bg-background/10 p-3 backdrop-blur-sm">
+        <b>Background beams</b>
+        <Line className="mt-2 w-28 bg-background/40" />
+      </div>
+    </div>
+  )
+}
+
+function AuroraBackgroundVisual() {
+  return (
+    <div className="relative h-32 w-64 overflow-hidden rounded-md border bg-foreground p-4 text-xs text-background">
+      <span className="absolute -left-10 top-2 h-24 w-36 rotate-12 rounded-full bg-primary/40 blur-2xl" />
+      <span className="absolute left-20 -top-6 h-24 w-40 -rotate-12 rounded-full bg-accent/50 blur-2xl" />
+      <span className="absolute right-0 bottom-0 h-20 w-32 rounded-full bg-destructive/30 blur-2xl" />
+      <div className="relative">
+        <b>Aurora background</b>
+        <Line className="mt-3 w-32 bg-background/40" />
+      </div>
+    </div>
+  )
+}
+
+function CanvasRevealCardVisual({ active, onToggle }: { active: boolean; onToggle: () => void }) {
+  return (
+    <button type="button" className="relative h-32 w-52 overflow-hidden rounded-md border bg-card p-3 text-left text-xs" onClick={onToggle}>
+      <div className="absolute inset-0 bg-[radial-gradient(circle_at_35%_35%,rgba(80,80,220,.35),transparent_28%),radial-gradient(circle_at_70%_55%,rgba(64,220,190,.25),transparent_24%)]" />
+      <div className={cn("absolute inset-0 grid grid-cols-5 gap-px bg-card/80 transition-opacity", active && "opacity-35")}>
+        {Array.from({ length: 25 }).map((_, index) => <span key={index} className="bg-background/80" />)}
+      </div>
+      <div className="relative">
+        <b>Reveal card</b>
+        <Line className="mt-3 w-24" />
+      </div>
+    </button>
   )
 }
 
