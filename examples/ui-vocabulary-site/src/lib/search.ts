@@ -78,12 +78,16 @@ export type TermGroupId =
   | "feedback-empty-error"
   | "feedback-access-limits"
   | "feedback-status-notifications"
+  | "feedback-visual-style"
+  | "feedback-motion-basics"
+  | "feedback-interaction-states"
   | "data-tables-lists"
   | "data-cards-content"
   | "data-metrics-charts"
   | "data-timeline-history"
   | "data-people-integrations"
   | "data-commerce-billing"
+  | "structure-layout-rendering"
 
 type TermGroup = {
   id: TermGroupId
@@ -230,6 +234,30 @@ export const categoryGroups: TermGroup[] = [
     category: "feedback",
     label: "상태·알림 센터",
     ids: ["badge", "status-indicator", "status-chip", "health-indicator", "connection-status", "notification-center", "info-label", "role-badge", "order-status", "checkout-progress-header", "delivery-tracker", "coach-mark"],
+  },
+  {
+    id: "feedback-visual-style",
+    category: "feedback",
+    label: "비주얼 스타일",
+    ids: ["opacity", "backdrop-blur", "shadow-elevation", "border-radius", "gradient-fill", "color-contrast"],
+  },
+  {
+    id: "feedback-motion-basics",
+    category: "feedback",
+    label: "모션 기본",
+    ids: ["transition", "duration", "easing", "fade-transition", "slide-transition", "scale-transition", "reduced-motion"],
+  },
+  {
+    id: "feedback-interaction-states",
+    category: "feedback",
+    label: "인터랙션 상태",
+    ids: ["hover-state", "focus-ring", "active-state", "disabled-state", "selected-state", "drag-state", "drop-target"],
+  },
+  {
+    id: "structure-layout-rendering",
+    category: "structure",
+    label: "레이아웃 렌더링",
+    ids: ["z-index", "stacking-context", "overflow", "clipping-mask", "breakpoint", "responsive-layout", "sticky-position"],
   },
   {
     id: "data-tables-lists",

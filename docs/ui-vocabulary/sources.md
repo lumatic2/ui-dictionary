@@ -26,6 +26,18 @@ Use these for canonical names, core definitions, interaction behavior, and acces
   https://developer.mozilla.org/en-US/docs/Web/HTML/Attributes/rel/icon
 - `open-graph-protocol`: The Open Graph protocol
   https://ogp.me/
+- `mdn-css-reference`: MDN CSS reference
+  https://developer.mozilla.org/en-US/docs/Web/CSS/Reference
+- `mdn-css-layout`: MDN CSS layout documentation
+  https://developer.mozilla.org/en-US/docs/Learn_web_development/Core/CSS_layout
+- `mdn-css-transitions`: MDN CSS transitions documentation
+  https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_transitions
+- `web-dev-animations`: web.dev animations guide
+  https://web.dev/learn/css/animations
+- `material-m3-motion`: Material Design 3 motion overview
+  https://m3.material.io/styles/motion/overview
+- `tailwind-utilities`: Tailwind CSS utility class reference
+  https://tailwindcss.com/docs/styling-with-utility-classes
 
 ### Tier B — Secondary Cross-Checks
 

@@ -494,6 +494,7 @@ function renderVisual(variant: string, label: string) {
   if (variant === "empty-filter-state") return <OriginCossVisual kind="empty-filter-state" />
   if (variant === "notification-inbox-row") return <OriginCossVisual kind="notification-inbox-row" />
   if (variant === "progress-stepper") return <OriginCossVisual kind="progress-stepper" />
+  if (FRONTEND_UTILITY_VARIANTS.has(variant)) return <FrontendUtilityVisual kind={variant as FrontendUtilityKind} />
   if (EXTERNAL_ECOSYSTEM_VARIANTS.has(variant)) return <ExternalEcosystemVisual kind={variant as ExternalEcosystemKind} />
   if (variant === "error-state") return <StateVisual tone="error" />
   if (variant === "success-state") return <StateVisual tone="success" />
@@ -502,6 +503,38 @@ function renderVisual(variant: string, label: string) {
   if (variant === "loading-state") return <LoadingStateVisual />
   return <FallbackVisual label={label} />
 }
+
+const FRONTEND_UTILITY_VARIANTS = new Set([
+  "opacity",
+  "backdrop-blur",
+  "shadow-elevation",
+  "border-radius",
+  "gradient-fill",
+  "color-contrast",
+  "transition",
+  "duration",
+  "easing",
+  "fade-transition",
+  "slide-transition",
+  "scale-transition",
+  "reduced-motion",
+  "hover-state",
+  "focus-ring",
+  "active-state",
+  "disabled-state",
+  "selected-state",
+  "drag-state",
+  "drop-target",
+  "z-index",
+  "stacking-context",
+  "overflow",
+  "clipping-mask",
+  "breakpoint",
+  "responsive-layout",
+  "sticky-position",
+])
+
+type FrontendUtilityKind = typeof FRONTEND_UTILITY_VARIANTS extends Set<infer T> ? T & string : never
 
 function Chrome({ children, className, ...props }: React.ComponentProps<"div">) {
   return <div className={cn("rounded-md border bg-card shadow-sm", className)} {...props}>{children}</div>
@@ -4321,6 +4354,64 @@ function OriginCossVisual({ kind }: { kind: OriginCossKind }) {
     return <Chrome className="w-60 p-3 text-xs"><div className="flex gap-2"><span className="mt-1 size-2 rounded-full bg-primary" /><Bell aria-hidden="true" className="size-4" /><div className="min-w-0 flex-1"><b>새 댓글</b><Line className="mt-2 w-32" /></div><span className="text-muted-foreground">2m</span></div></Chrome>
   }
   return <Chrome className="w-60 p-3 text-xs"><div className="flex items-center justify-between">{["계정", "결제", "완료"].map((item, index) => <span key={item} className="flex flex-col items-center gap-1"><span className={cn("flex size-6 items-center justify-center rounded-full border", index < 2 && "bg-primary text-primary-foreground")}>{index < 1 ? <Check aria-hidden="true" className="size-3" /> : index + 1}</span><span>{item}</span></span>)}</div><div className="mx-8 -mt-7 h-px bg-border" /></Chrome>
+}
+
+function FrontendUtilityVisual({ kind }: { kind: FrontendUtilityKind }) {
+  const [active, setActive] = useState(false)
+
+  if (kind === "opacity") {
+    return <Chrome className="flex w-56 items-center justify-center gap-3 p-4">{[100, 60, 25].map((level) => <span key={level} className="size-12 rounded-md bg-primary" style={{ opacity: level / 100 }} />)}</Chrome>
+  }
+  if (kind === "backdrop-blur") {
+    return <div className="relative h-28 w-56 overflow-hidden rounded-md border bg-[linear-gradient(135deg,rgba(98,80,220,.35),rgba(30,180,160,.28))] p-4"><div className="absolute inset-0 grid grid-cols-4 gap-2 p-3 opacity-70">{Array.from({ length: 8 }).map((_, item) => <span key={item} className="rounded bg-background/50" />)}</div><div className="relative rounded-md border bg-background/55 p-3 text-xs shadow-sm backdrop-blur-md"><b>Backdrop</b><Line className="mt-2 w-24" /></div></div>
+  }
+  if (kind === "shadow-elevation") {
+    return <div className="flex w-60 items-end justify-center gap-3 rounded-md border bg-muted/30 p-4">{["shadow-sm", "shadow-md", "shadow-xl"].map((shadow, index) => <span key={shadow} className={cn("flex size-12 items-center justify-center rounded-md border bg-card text-xs", shadow)}>{index + 1}</span>)}</div>
+  }
+  if (kind === "border-radius") {
+    return <Chrome className="flex w-56 items-center justify-center gap-3 p-4">{["rounded-none", "rounded-md", "rounded-2xl"].map((radius) => <span key={radius} className={cn("size-12 border bg-primary/15", radius)} />)}</Chrome>
+  }
+  if (kind === "gradient-fill") {
+    return <div className="h-24 w-56 rounded-md border bg-[linear-gradient(120deg,rgba(79,70,229,.85),rgba(20,184,166,.68),rgba(244,114,182,.72))] p-4 text-xs text-white shadow-sm"><b>Gradient fill</b><div className="mt-3 h-2 w-28 rounded-full bg-white/45" /></div>
+  }
+  if (kind === "color-contrast") {
+    return <Chrome className="grid w-60 grid-cols-2 gap-2 p-3 text-center text-xs"><div className="rounded bg-foreground px-2 py-4 font-semibold text-background">Pass</div><div className="rounded bg-muted px-2 py-4 text-muted-foreground/45">Fail</div></Chrome>
+  }
+  if (kind === "transition" || kind === "duration" || kind === "easing") {
+    return <button type="button" className="relative h-24 w-56 rounded-md border bg-card p-3 text-xs text-left" onClick={() => setActive((value) => !value)}><span className="text-muted-foreground">{kind}</span><span className={cn("absolute bottom-5 size-8 rounded-md bg-primary transition-all", kind === "duration" ? "duration-700" : "duration-300", kind === "easing" ? "ease-out" : "ease-linear", active ? "left-44 rotate-45" : "left-4")} /></button>
+  }
+  if (kind === "fade-transition") {
+    return <button type="button" className="relative h-24 w-56 rounded-md border bg-muted/30 p-3 text-xs" onClick={() => setActive((value) => !value)}><div className={cn("mx-auto mt-3 w-36 rounded-md border bg-card p-3 shadow-sm transition-opacity", active ? "opacity-25" : "opacity-100")}><Line className="w-24" /></div></button>
+  }
+  if (kind === "slide-transition") {
+    return <button type="button" className="relative h-24 w-56 overflow-hidden rounded-md border bg-muted/30 p-3 text-xs" onClick={() => setActive((value) => !value)}><div className={cn("absolute top-5 h-14 w-32 rounded-md border bg-card p-3 shadow-sm transition-transform", active ? "translate-x-20" : "translate-x-0")}><Line className="w-20" /></div></button>
+  }
+  if (kind === "scale-transition") {
+    return <button type="button" className="flex h-24 w-56 items-center justify-center rounded-md border bg-muted/30" onClick={() => setActive((value) => !value)}><span className={cn("size-14 rounded-md bg-primary transition-transform", active && "scale-125")} /></button>
+  }
+  if (kind === "reduced-motion") {
+    return <Chrome className="flex w-60 items-center justify-between p-3 text-xs"><span className="flex items-center gap-2"><Play aria-hidden="true" className="size-4" />Motion</span><span className="rounded-full border bg-muted px-2 py-1">reduced</span></Chrome>
+  }
+  if (kind.endsWith("-state") || kind === "focus-ring" || kind === "drop-target") {
+    return <button type="button" className="flex w-60 items-center justify-center gap-2 rounded-md border bg-card p-4 text-xs" onClick={() => setActive((value) => !value)}>{["Default", kind === "disabled-state" ? "Disabled" : kind === "selected-state" ? "Selected" : kind === "active-state" ? "Active" : kind === "drag-state" ? "Dragging" : "Target"].map((label, index) => <span key={label} className={cn("rounded-md border px-3 py-2", index === 1 && kind === "focus-ring" && "ring-2 ring-ring", index === 1 && kind === "hover-state" && "bg-accent shadow-sm", index === 1 && kind === "active-state" && "bg-primary text-primary-foreground", index === 1 && kind === "disabled-state" && "opacity-40", index === 1 && kind === "selected-state" && "border-primary bg-primary/10 text-primary", index === 1 && kind === "drag-state" && "rotate-2 shadow-lg", index === 1 && kind === "drop-target" && "border-dashed border-primary bg-primary/10")}>{label}</span>)}</button>
+  }
+  if (kind === "z-index" || kind === "stacking-context") {
+    return <div className="relative h-28 w-56 rounded-md border bg-muted/30 text-xs"><span className="absolute left-8 top-8 size-16 rounded-md border bg-card p-2 shadow-sm">z 10</span><span className="absolute left-20 top-4 size-16 rounded-md border bg-primary p-2 text-primary-foreground shadow-md">z 20</span><span className="absolute right-6 bottom-4 rounded border bg-background px-2 py-1">{kind === "z-index" ? "front" : "context"}</span></div>
+  }
+  if (kind === "overflow") {
+    return <Chrome className="h-28 w-56 overflow-hidden p-3 text-xs"><b>Container</b><div className="mt-2 flex w-80 gap-2">{Array.from({ length: 6 }).map((_, item) => <span key={item} className="h-10 w-14 shrink-0 rounded bg-primary/15" />)}</div></Chrome>
+  }
+  if (kind === "clipping-mask") {
+    return <div className="flex h-28 w-56 items-center justify-center rounded-md border bg-[linear-gradient(135deg,rgba(79,70,229,.45),rgba(20,184,166,.45))]"><span className="size-20 rounded-full border-4 border-background bg-[linear-gradient(135deg,var(--primary),var(--destructive))] shadow-sm" /></div>
+  }
+  if (kind === "breakpoint" || kind === "responsive-layout") {
+    return <Chrome className="flex w-64 items-end justify-center gap-3 p-3 text-xs"><div className="h-24 w-16 rounded border bg-background p-2"><Line className="w-8" /><Line className="mt-2 w-10" /></div><div className="grid h-24 w-32 grid-cols-2 gap-2 rounded border bg-background p-2"><Line /><Line /><Line /><Line /></div></Chrome>
+  }
+  if (kind === "sticky-position") {
+    return <Chrome className="h-28 w-56 overflow-hidden p-2 text-xs"><div className="sticky top-0 rounded bg-primary px-2 py-1 text-primary-foreground">Sticky</div><Line className="mt-3 w-36" /><Line className="mt-2 w-28" /><Line className="mt-2 w-40" /></Chrome>
+  }
+
+  return <FallbackVisual label={kind} />
 }
 
 const EXTERNAL_ECOSYSTEM_VARIANTS = new Set([
