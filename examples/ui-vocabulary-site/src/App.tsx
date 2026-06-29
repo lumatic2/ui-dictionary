@@ -336,8 +336,8 @@ function App() {
                   className="flex min-w-0 items-start gap-3 rounded-lg text-left outline-none transition hover:text-primary focus-visible:ring-2 focus-visible:ring-ring"
                   onClick={goHome}
                 >
-                  <div className="flex size-10 shrink-0 items-center justify-center rounded-lg bg-primary text-primary-foreground">
-                    <BookOpen aria-hidden="true" className="size-5" />
+                  <div className="flex size-10 shrink-0 items-center justify-center rounded-lg bg-primary/10">
+                    <img aria-hidden="true" alt="" className="size-6" src="/favicon.svg" />
                   </div>
                   <div className="min-w-0">
                     <h1 className="truncate text-xl font-semibold tracking-normal text-foreground">UI 용어 사전</h1>
