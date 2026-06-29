@@ -342,7 +342,7 @@ function App() {
                   <div className="min-w-0">
                     <h1 className="truncate text-xl font-semibold tracking-normal text-foreground">UI 용어 사전</h1>
                     <p className="mt-1 text-sm leading-5 text-muted-foreground">
-                      UI 컴포넌트 레퍼런스
+                      UI Vocabulary Encyclopedia
                     </p>
                   </div>
                 </button>
@@ -389,7 +389,6 @@ function App() {
 
           <section className="flex flex-col gap-8 px-5 py-8 md:px-8 lg:px-10" data-export-root data-print-mode={printMode}>
             <div data-print-hidden>
-              <p className="text-sm font-medium text-muted-foreground">UI Vocabulary Encyclopedia</p>
               <p className="mt-2 max-w-3xl text-sm leading-6 text-muted-foreground md:text-base">
                 바이브코딩과 UI/UX 설계에서 자주 쓰는 화면 요소의 이름, 쓰임새, 생김새를 한곳에서 확인합니다.
               </p>
