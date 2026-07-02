@@ -1,0 +1,17 @@
+{
+  "url": "https://tailwindcss.com/plus/ui-blocks/application-ui/layout/media-objects",
+  "name": "Media Objects",
+  "description": "Media object examples for Tailwind CSS, designed and built by the creators of the framework.",
+  "visible_example_count": 8,
+  "visible_example_names": [
+    "Basic",
+    "Aligned to center",
+    "Aligned to bottom",
+    "Stretched to fit",
+    "Media on right",
+    "Basic responsive",
+    "Wide responsive",
+    "Nested"
+  ],
+  "raw_component_count": 16
+}

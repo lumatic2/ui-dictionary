@@ -1,0 +1,37 @@
+{
+  "headings": [
+    "Page Sections",
+    "Elements",
+    "Feedback",
+    "Page Examples",
+    "Build UIs that don’t suck.",
+    "Header Sections",
+    "With stats",
+    "With stats",
+    "Centered",
+    "Centered",
+    "Centered with eyebrow",
+    "Centered with eyebrow",
+    "With cards",
+    "With cards",
+    "Simple",
+    "Simple",
+    "Simple with eyebrow",
+    "Simple with eyebrow",
+    "Simple with background image",
+    "Simple with background image",
+    "Centered with background image",
+    "Centered with background image",
+    "Marketing",
+    "Application UI",
+    "Ecommerce",
+    "Templates & UI Kits"
+  ],
+  "horizontalOverflow": false,
+  "title": "Tailwind CSS Header Sections - Official Tailwind UI Components",
+  "url": "https://tailwindcss.com/plus/ui-blocks/marketing/sections/header",
+  "viewport": {
+    "height": 1319,
+    "width": 2560
+  }
+}

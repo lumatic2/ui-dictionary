@@ -1,0 +1,25 @@
+{
+  "url": "http://127.0.0.1:5178/?filter=nav%3Aplus-marketing-team-sections",
+  "headings": [
+    "Team Sections",
+    "With small images",
+    "With large images",
+    "Grid with round images",
+    "Large grid with cards",
+    "With image and short paragraph",
+    "With vertical images",
+    "Full width with vertical images",
+    "Grid with large round images",
+    "With medium images"
+  ],
+  "uniqueTeamImages": 12,
+  "overflowX": false,
+  "dims": {
+    "scrollWidth": 2545,
+    "clientWidth": 2545
+  },
+  "mobile390": {
+    "method": "Chrome CLI screenshot",
+    "path": "docs/research/assets/team-sections-hero-level-rework-2026-07-02/local-team-sections-after-mobile-390.png"
+  }
+}

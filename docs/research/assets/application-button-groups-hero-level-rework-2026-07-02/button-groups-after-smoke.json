@@ -1,0 +1,42 @@
+{
+  "desktop": {
+    "missing": [],
+    "scrollWidth": 1425,
+    "clientWidth": 1440,
+    "horizontalOverflow": false,
+    "imageSources": [],
+    "elementOverflows": [
+      {
+        "tag": "SPAN",
+        "className": "min-w-0 flex-1 truncate",
+        "scrollWidth": 180,
+        "clientWidth": 168,
+        "text": "Sign-in and Registration"
+      }
+    ],
+    "darkPanels": 2,
+    "saveMenu": true,
+    "unread": true,
+    "stat": true
+  },
+  "mobile390": {
+    "missing": [],
+    "scrollWidth": 375,
+    "clientWidth": 390,
+    "horizontalOverflow": false,
+    "imageSources": [],
+    "elementOverflows": [
+      {
+        "tag": "DIV",
+        "className": "scrollbar-hidden flex min-w-0 items-center gap-2 overflow-x-auto whitespace-nowrap text-sm",
+        "scrollWidth": 294,
+        "clientWidth": 291,
+        "text": "UI Blocks\n›\nApplication UI\n›\nButton Groups"
+      }
+    ],
+    "darkPanels": 2,
+    "saveMenu": true,
+    "unread": true,
+    "stat": true
+  }
+}

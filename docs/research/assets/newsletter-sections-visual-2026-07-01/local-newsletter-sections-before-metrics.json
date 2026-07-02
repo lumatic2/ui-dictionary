@@ -1,0 +1,19 @@
+{
+  "bodyLength": 1150,
+  "clientWidth": 2545,
+  "codeMentions": 0,
+  "getCodeMentions": 3,
+  "h1": "UI 용어 사전",
+  "headings": [
+    "UI 용어 사전",
+    "Newsletter Sections",
+    "Simple newsletter",
+    "Split newsletter",
+    "Newsletter card"
+  ],
+  "horizontalOverflow": false,
+  "previewMentions": 3,
+  "scrollWidth": 2545,
+  "title": "UI 용어 사전",
+  "url": "http://127.0.0.1:5181/?filter=nav%3Aplus-marketing-newsletter-sections"
+}

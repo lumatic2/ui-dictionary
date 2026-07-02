@@ -1,0 +1,17 @@
+{
+  "url": "https://tailwindcss.com/plus/ui-blocks/ecommerce/components/incentives",
+  "name": "Incentives",
+  "description": "Ecommerce incentive examples for Tailwind CSS, designed and built by the creators of the framework.",
+  "visible_example_count": 8,
+  "visible_example_names": [
+    "3-column with illustrations and split header",
+    "4-column with illustrations",
+    "3-column with illustrations and header",
+    "3-column with illustrations and centered text",
+    "3-column with illustrations and heading",
+    "2x2 grid with illustrations",
+    "3-column with icons and supporting text",
+    "3-column with icons"
+  ],
+  "raw_component_count": 16
+}

@@ -1,0 +1,14 @@
+{
+  "url": "https://tailwindcss.com/plus/ui-blocks/ecommerce/page-examples/category-pages",
+  "name": "Category Pages",
+  "description": "Ecommerce category page examples for Tailwind CSS, designed and built by the creators of the framework.",
+  "visible_example_count": 5,
+  "visible_example_names": [
+    "With text header and image product grid",
+    "With image header and detail product grid",
+    "With text header and simple product grid",
+    "With product grid and pagination",
+    "With large images and filters sidebar"
+  ],
+  "raw_component_count": 10
+}

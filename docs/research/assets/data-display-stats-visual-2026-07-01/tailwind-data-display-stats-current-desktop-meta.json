@@ -1,0 +1,19 @@
+{
+  "codeCount": 5,
+  "examples": [
+    "With trending",
+    "Simple",
+    "Simple in cards",
+    "With brand icon",
+    "With shared borders"
+  ],
+  "h2s": [
+    "With trending",
+    "Simple",
+    "Simple in cards",
+    "With brand icon",
+    "With shared borders"
+  ],
+  "previewCount": 6,
+  "title": "Tailwind CSS Stats - Official Tailwind UI Components"
+}

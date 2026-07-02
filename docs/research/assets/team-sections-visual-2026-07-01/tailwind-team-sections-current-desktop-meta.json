@@ -1,0 +1,39 @@
+{
+  "bodyStart": "Introducing Oatmeal\nOur new multi-theme marketing site kit\nUI Blocks\nTemplates\nUI Kit\nSign in\nGet full access\nMarketing\nApplication UI\nEcommerce\nDocumentation\nPAGE SECTIONS\nHero Sections\nFeature Sections\nCTA Sections\nBento Grids\nPricing Sections\nHeader Sections\nNewsletter Sections\nStats\nTestimonials\nBlog Sections\nContact Sections\nTeam Sections\nContent Sections\nLogo Clouds\nFAQs\nFooters\nELEMENTS\nHeaders\nFlyout Menus\nBanners\nFEEDBACK\n404 Pages\nPAGE EXAMPLES\nLanding Pages\nPricing Pages\nAbout Pages\n\n5-DAY MINI-COURSE\n\nBuild UIs that don’t suck.\n\nShort, tactical video lessons from the creator of Tailwind CSS, delivered directly to your inbox every day for a week.\n\nGet the free course\n\nUI BLOCKS\n\n/\n\nMARKETING\n\n/\n\nPAGE SECTIONS\nTeam Sections\n\nUse these Tailwind CSS team section examples to introduce your team to new and existing customers. These examples are designed and built by the Tailwind CSS team, and include a variety of different styles and layouts.\n\nWith small images\nPreview\nCode\nHTML\n",
+  "codeCount": 8,
+  "examples": [
+    "With small images",
+    "With large images",
+    "Grid with round images",
+    "Large grid with cards",
+    "With image and short paragraph",
+    "With vertical images",
+    "Full width with vertical images",
+    "Grid with large round images",
+    "With medium images"
+  ],
+  "h2s": [
+    "With small images",
+    "With large images",
+    "Grid with round images",
+    "Large grid with cards",
+    "With image and short paragraph",
+    "With vertical images",
+    "Full width with vertical images",
+    "Grid with large round images",
+    "With medium images"
+  ],
+  "h3s": [
+    "Page Sections",
+    "Elements",
+    "Feedback",
+    "Page Examples",
+    "Build UIs that don’t suck.",
+    "Marketing",
+    "Application UI",
+    "Ecommerce",
+    "Templates & UI Kits"
+  ],
+  "previewCount": 10,
+  "title": "Tailwind CSS Team Sections - Official Tailwind UI Components"
+}

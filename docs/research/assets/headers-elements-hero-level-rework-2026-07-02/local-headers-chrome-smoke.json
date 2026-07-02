@@ -1,0 +1,52 @@
+[
+  {
+    "label": "desktop",
+    "innerWidth": 1440,
+    "clientWidth": 1440,
+    "scrollWidth": 1425,
+    "overflow": false,
+    "headerCount": 11,
+    "present": [
+      "With stacked flyout menu",
+      "Constrained",
+      "On brand background",
+      "With full width flyout menu",
+      "Full width",
+      "With call-to-action",
+      "With multiple flyout menus",
+      "With icons in mobile menu",
+      "With left-aligned nav",
+      "With right-aligned nav",
+      "With centered logo"
+    ],
+    "missing": [],
+    "imageSources": [],
+    "imageCount": 0,
+    "offenders": []
+  },
+  {
+    "label": "mobile-390",
+    "innerWidth": 390,
+    "clientWidth": 390,
+    "scrollWidth": 390,
+    "overflow": false,
+    "headerCount": 11,
+    "present": [
+      "With stacked flyout menu",
+      "Constrained",
+      "On brand background",
+      "With full width flyout menu",
+      "Full width",
+      "With call-to-action",
+      "With multiple flyout menus",
+      "With icons in mobile menu",
+      "With left-aligned nav",
+      "With right-aligned nav",
+      "With centered logo"
+    ],
+    "missing": [],
+    "imageSources": [],
+    "imageCount": 0,
+    "offenders": []
+  }
+]

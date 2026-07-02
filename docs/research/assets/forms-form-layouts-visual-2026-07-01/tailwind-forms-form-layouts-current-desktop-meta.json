@@ -1,0 +1,13 @@
+{
+  "url": "https://tailwindcss.com/plus/ui-blocks/application-ui/forms/form-layouts",
+  "name": "Form Layouts",
+  "description": "Forms and form layout examples for Tailwind CSS, designed and built by the creators of the framework.",
+  "visible_example_count": 4,
+  "visible_example_names": [
+    "Stacked",
+    "Two-column",
+    "Two-column with cards",
+    "Labels on left"
+  ],
+  "raw_component_count": 8
+}

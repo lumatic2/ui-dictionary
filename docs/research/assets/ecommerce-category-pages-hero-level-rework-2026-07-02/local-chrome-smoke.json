@@ -1,0 +1,28 @@
+{
+  "route": "http://127.0.0.1:5174/?filter=nav%3Aplus-ecommerce-page-examples-category-pages",
+  "badImageCount": 0,
+  "categoryImageCount": 37,
+  "exampleHeadingCount": 5,
+  "expectedPresent": {
+    "With text header and image product grid": true,
+    "With image header and detail product grid": true,
+    "With text header and simple product grid": true,
+    "With product grid and pagination": true,
+    "With large images and filters sidebar": true
+  },
+  "offenders": [],
+  "uniqueCategoryAssets": [
+    "apparel-category.png",
+    "bags-category.png",
+    "desk-writing.png",
+    "stationery-hero.png",
+    "workspace-grid.png"
+  ],
+  "viewport": {
+    "clientWidth": 2545,
+    "innerHeight": 1384,
+    "innerWidth": 2560,
+    "scrollHeight": 11259,
+    "scrollWidth": 2545
+  }
+}

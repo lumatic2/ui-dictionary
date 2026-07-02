@@ -1,0 +1,55 @@
+{
+  "capturedAt": "2026-07-02T09:02:57.178Z",
+  "desktop": {
+    "url": "https://tailwindcss.com/plus/ui-blocks/application-ui/navigation/command-palettes",
+    "viewport": {
+      "width": 1440,
+      "height": 2400
+    },
+    "present": {
+      "Simple": true,
+      "Simple with padding": true,
+      "With preview": true,
+      "With images and descriptions": true,
+      "With icons": true,
+      "Semi-transparent with icons": true,
+      "With groups": true,
+      "With footer": true
+    },
+    "allExpectedNamesFound": true,
+    "previewImages": [],
+    "previewImageCount": 0,
+    "localCssAssets": [],
+    "localCssAssetCount": 0,
+    "horizontalOverflow": false,
+    "scrollWidth": 1440,
+    "clientWidth": 1440,
+    "bodyTextSample": "Introducing Oatmeal\nOur new multi-theme marketing site kit\nUI Blocks\nTemplates\nUI Kit\nSign in\nGet full access\nUI Blocks\nApplication UI\nNavigation\nCommand Palettes\n\nUse these Tailwind CSS command palette components to implement power-user search and command functionality in your application or website. These command palettes are designed and built by the Tailwind CSS team, and include a variety of different styles and layouts.\n\nSimple\n\nPreview\n\nGet the code →\nSimple with padding\n\nPreview\n\nGet the"
+  },
+  "mobile390": {
+    "url": "https://tailwindcss.com/plus/ui-blocks/application-ui/navigation/command-palettes",
+    "viewport": {
+      "width": 390,
+      "height": 1800
+    },
+    "present": {
+      "Simple": true,
+      "Simple with padding": true,
+      "With preview": true,
+      "With images and descriptions": true,
+      "With icons": true,
+      "Semi-transparent with icons": true,
+      "With groups": true,
+      "With footer": true
+    },
+    "allExpectedNamesFound": true,
+    "previewImages": [],
+    "previewImageCount": 0,
+    "localCssAssets": [],
+    "localCssAssetCount": 0,
+    "horizontalOverflow": false,
+    "scrollWidth": 390,
+    "clientWidth": 390,
+    "bodyTextSample": "UI Blocks\nApplication UI\nNavigation\nCommand Palettes\n\nUse these Tailwind CSS command palette components to implement power-user search and command functionality in your application or website. These command palettes are designed and built by the Tailwind CSS team, and include a variety of different styles and layouts.\n\nSimple\nGet the code →\nSimple with padding\nGet the code →\nWith preview\nGet the code →\nWith images and descriptions\nGet the code →\nWith icons\nGet the code →\nSemi-transparent with ic"
+  }
+}

@@ -1,0 +1,50 @@
+{
+  "generatedAt": "2026-06-30T23:15:05.039Z",
+  "groups": [
+    {
+      "group": "Application Shells",
+      "index": 97
+    },
+    {
+      "group": "Headings",
+      "index": 170
+    },
+    {
+      "group": "Data Display",
+      "index": 224
+    },
+    {
+      "group": "Lists",
+      "index": 250
+    },
+    {
+      "group": "Forms",
+      "index": 317
+    },
+    {
+      "group": "Feedback",
+      "index": 455
+    },
+    {
+      "group": "Navigation",
+      "index": 0
+    },
+    {
+      "group": "Overlays",
+      "index": 603
+    },
+    {
+      "group": "Elements",
+      "index": 649
+    },
+    {
+      "group": "Layout",
+      "index": 125
+    },
+    {
+      "group": "Page Examples",
+      "index": 768
+    }
+  ],
+  "text": "NavigationMarketingApplication UIEcommerceDocumentationUI Blocks선택한 화면 맥락의 블록 목차Application UI146Application Shells17Stacked Layouts3Sidebar Layouts3Multi-Column Layouts3Headings3Page Headings3Card Headings3Section Headings3Data Display68Description Lists2Stats1Calendars3Lists41Stacked Lists3Tables1Grid Lists2Feeds3Forms62Form Layouts2Input Groups2Select Menus3Sign-in and Registration2Textareas2Radio Groups1Checkboxes2Toggles3Action Panels2Comboboxes2Feedback65Alerts3Empty States3Navigation37Navbars3Pagination2Tabs2Vertical Navigation3Sidebar Navigation3Breadcrumbs3Progress Bars3Command Palettes2Overlays29Modal Dialogs2Drawers3Notifications3Elements4Avatars3Badges3Dropdowns3Buttons2Button Groups3Layout4Containers2Cards3List containers1Media Objects3Dividers3Page Examples0Home Screens1Detail Screens3Settings Screens1"
+}

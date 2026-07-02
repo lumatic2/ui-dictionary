@@ -1,0 +1,414 @@
+{
+  "desktop": {
+    "url": "https://tailwindcss.com/plus/ui-blocks/marketing/elements/banners",
+    "title": "Tailwind CSS Banners - Official Tailwind UI Components",
+    "innerWidth": 1440,
+    "clientWidth": 1440,
+    "scrollWidth": 1440,
+    "scrollHeight": 7232,
+    "overflow": false,
+    "headings": [
+      "Page Sections",
+      "Elements",
+      "Feedback",
+      "Page Examples",
+      "Build UIs that don’t suck.",
+      "Banners",
+      "With button",
+      "With button",
+      "On dark",
+      "On dark",
+      "On brand",
+      "On brand",
+      "With background glow",
+      "With background glow",
+      "With link",
+      "With link",
+      "Left-aligned",
+      "Left-aligned",
+      "Bottom aligned",
+      "Bottom aligned",
+      "Floating at bottom",
+      "Floating at bottom",
+      "Floating at bottom centered",
+      "Floating at bottom centered",
+      "Privacy notice right-aligned",
+      "Privacy notice right-aligned",
+      "Privacy notice centered",
+      "Privacy notice centered",
+      "Privacy notice left-aligned",
+      "Privacy notice left-aligned",
+      "Privacy notice full width",
+      "Privacy notice full width",
+      "Marketing",
+      "Application UI",
+      "Ecommerce",
+      "Templates & UI Kits"
+    ],
+    "images": [],
+    "sections": [
+      {
+        "top": 412,
+        "h": 308,
+        "w": 1280,
+        "text": "With buttonPreviewCodeHTMLReactVue #frame-8904b9d9a9fbb9a2313df3975112f9d7 { height: 256px; } @media (min-width: 704px) { #frame-8904b9d9a9fbb9a2313df3975112f9d"
+      },
+      {
+        "top": 0,
+        "h": 0,
+        "w": 0,
+        "text": "With buttonPreviewCodeHTMLReactVue #frame-8904b9d9a9fbb9a2313df3975112f9d7-dark { height: 256px; } @media (min-width: 704px) { #frame-8904b9d9a9fbb9a2313df39751"
+      },
+      {
+        "top": 816,
+        "h": 306,
+        "w": 1280,
+        "text": "On darkPreviewGet the code → #frame-1804a38735a4d6d0ade6c2bcf4ee3f6c { height: 256px; } @media (min-width: 704px) { #frame-1804a38735a4d6d0ade6c2bcf4ee3f6c { he"
+      },
+      {
+        "top": 0,
+        "h": 0,
+        "w": 0,
+        "text": "On darkPreviewGet the code → #frame-1804a38735a4d6d0ade6c2bcf4ee3f6c-dark { height: 256px; } @media (min-width: 704px) { #frame-1804a38735a4d6d0ade6c2bcf4ee3f6c"
+      },
+      {
+        "top": 1218,
+        "h": 306,
+        "w": 1280,
+        "text": "On brandPreviewGet the code → #frame-4375397fcc9712be608b21b9d8f355c8 { height: 256px; } @media (min-width: 704px) { #frame-4375397fcc9712be608b21b9d8f355c8 { h"
+      },
+      {
+        "top": 0,
+        "h": 0,
+        "w": 0,
+        "text": "On brandPreviewGet the code → #frame-4375397fcc9712be608b21b9d8f355c8-dark { height: 256px; } @media (min-width: 704px) { #frame-4375397fcc9712be608b21b9d8f355c"
+      },
+      {
+        "top": 1620,
+        "h": 306,
+        "w": 1280,
+        "text": "With background glowPreviewGet the code → #frame-c94291a63bd63d01fd3ebf791093ab8d { height: 256px; } @media (min-width: 704px) { #frame-c94291a63bd63d01fd3ebf79"
+      },
+      {
+        "top": 0,
+        "h": 0,
+        "w": 0,
+        "text": "With background glowPreviewGet the code → #frame-c94291a63bd63d01fd3ebf791093ab8d-dark { height: 256px; } @media (min-width: 704px) { #frame-c94291a63bd63d01fd3"
+      },
+      {
+        "top": 2022,
+        "h": 306,
+        "w": 1280,
+        "text": "With linkPreviewGet the code → #frame-1ad095c7782d609a536ebf3cd9b7212e { height: 256px; } @media (min-width: 704px) { #frame-1ad095c7782d609a536ebf3cd9b7212e { "
+      },
+      {
+        "top": 0,
+        "h": 0,
+        "w": 0,
+        "text": "With linkPreviewGet the code → #frame-1ad095c7782d609a536ebf3cd9b7212e-dark { height: 256px; } @media (min-width: 704px) { #frame-1ad095c7782d609a536ebf3cd9b721"
+      },
+      {
+        "top": 2424,
+        "h": 306,
+        "w": 1280,
+        "text": "Left-alignedPreviewGet the code → #frame-49536ab3f61c13112b042a7cb8293dbb { height: 256px; } @media (min-width: 704px) { #frame-49536ab3f61c13112b042a7cb8293dbb"
+      },
+      {
+        "top": 0,
+        "h": 0,
+        "w": 0,
+        "text": "Left-alignedPreviewGet the code → #frame-49536ab3f61c13112b042a7cb8293dbb-dark { height: 256px; } @media (min-width: 704px) { #frame-49536ab3f61c13112b042a7cb82"
+      },
+      {
+        "top": 2826,
+        "h": 306,
+        "w": 1280,
+        "text": "Bottom alignedPreviewGet the code → #frame-a6fe57a3075bcfcb790893a428c4cfb5 { height: 256px; } @media (min-width: 704px) { #frame-a6fe57a3075bcfcb790893a428c4cf"
+      },
+      {
+        "top": 0,
+        "h": 0,
+        "w": 0,
+        "text": "Bottom alignedPreviewGet the code → #frame-a6fe57a3075bcfcb790893a428c4cfb5-dark { height: 256px; } @media (min-width: 704px) { #frame-a6fe57a3075bcfcb790893a42"
+      },
+      {
+        "top": 3228,
+        "h": 306,
+        "w": 1280,
+        "text": "Floating at bottomPreviewGet the code → #frame-39dd57897ef8e6d37aa07fbbafc188b1 { height: 256px; } @media (min-width: 704px) { #frame-39dd57897ef8e6d37aa07fbbaf"
+      },
+      {
+        "top": 0,
+        "h": 0,
+        "w": 0,
+        "text": "Floating at bottomPreviewGet the code → #frame-39dd57897ef8e6d37aa07fbbafc188b1-dark { height: 256px; } @media (min-width: 704px) { #frame-39dd57897ef8e6d37aa07"
+      },
+      {
+        "top": 3630,
+        "h": 306,
+        "w": 1280,
+        "text": "Floating at bottom centeredPreviewGet the code → #frame-dd9098382f8067c3d90b99dbad8351a3 { height: 256px; } @media (min-width: 704px) { #frame-dd9098382f8067c3d"
+      },
+      {
+        "top": 0,
+        "h": 0,
+        "w": 0,
+        "text": "Floating at bottom centeredPreviewGet the code → #frame-dd9098382f8067c3d90b99dbad8351a3-dark { height: 256px; } @media (min-width: 704px) { #frame-dd9098382f80"
+      },
+      {
+        "top": 4032,
+        "h": 450,
+        "w": 1280,
+        "text": "Privacy notice right-alignedPreviewGet the code → #frame-c5bc8a46a1093693fd286f0b74c631f4 { height: 400px; } @media (min-width: 704px) { #frame-c5bc8a46a1093693"
+      },
+      {
+        "top": 0,
+        "h": 0,
+        "w": 0,
+        "text": "Privacy notice right-alignedPreviewGet the code → #frame-c5bc8a46a1093693fd286f0b74c631f4-dark { height: 400px; } @media (min-width: 704px) { #frame-c5bc8a46a10"
+      },
+      {
+        "top": 4578,
+        "h": 450,
+        "w": 1280,
+        "text": "Privacy notice centeredPreviewGet the code → #frame-a201de7379a84f1e46667dd219545953 { height: 400px; } @media (min-width: 704px) { #frame-a201de7379a84f1e46667"
+      },
+      {
+        "top": 0,
+        "h": 0,
+        "w": 0,
+        "text": "Privacy notice centeredPreviewGet the code → #frame-a201de7379a84f1e46667dd219545953-dark { height: 400px; } @media (min-width: 704px) { #frame-a201de7379a84f1e"
+      },
+      {
+        "top": 5124,
+        "h": 450,
+        "w": 1280,
+        "text": "Privacy notice left-alignedPreviewGet the code → #frame-ec51d95b54eca6de6f1a07467a431e0c { height: 400px; } @media (min-width: 704px) { #frame-ec51d95b54eca6de6"
+      },
+      {
+        "top": 0,
+        "h": 0,
+        "w": 0,
+        "text": "Privacy notice left-alignedPreviewGet the code → #frame-ec51d95b54eca6de6f1a07467a431e0c-dark { height: 400px; } @media (min-width: 704px) { #frame-ec51d95b54ec"
+      },
+      {
+        "top": 5670,
+        "h": 450,
+        "w": 1280,
+        "text": "Privacy notice full widthPreviewGet the code → #frame-43c7208d9b2cc7b884cd3c0918c2c268 { height: 400px; } @media (min-width: 704px) { #frame-43c7208d9b2cc7b884c"
+      },
+      {
+        "top": 0,
+        "h": 0,
+        "w": 0,
+        "text": "Privacy notice full widthPreviewGet the code → #frame-43c7208d9b2cc7b884cd3c0918c2c268-dark { height: 400px; } @media (min-width: 704px) { #frame-43c7208d9b2cc7"
+      }
+    ]
+  },
+  "mobile": {
+    "url": "https://tailwindcss.com/plus/ui-blocks/marketing/elements/banners",
+    "title": "Tailwind CSS Banners - Official Tailwind UI Components",
+    "innerWidth": 390,
+    "clientWidth": 390,
+    "scrollWidth": 390,
+    "scrollHeight": 8044,
+    "overflow": false,
+    "headings": [
+      "Page Sections",
+      "Elements",
+      "Feedback",
+      "Page Examples",
+      "Build UIs that don’t suck.",
+      "Banners",
+      "With button",
+      "With button",
+      "On dark",
+      "On dark",
+      "On brand",
+      "On brand",
+      "With background glow",
+      "With background glow",
+      "With link",
+      "With link",
+      "Left-aligned",
+      "Left-aligned",
+      "Bottom aligned",
+      "Bottom aligned",
+      "Floating at bottom",
+      "Floating at bottom",
+      "Floating at bottom centered",
+      "Floating at bottom centered",
+      "Privacy notice right-aligned",
+      "Privacy notice right-aligned",
+      "Privacy notice centered",
+      "Privacy notice centered",
+      "Privacy notice left-aligned",
+      "Privacy notice left-aligned",
+      "Privacy notice full width",
+      "Privacy notice full width",
+      "Marketing",
+      "Application UI",
+      "Ecommerce",
+      "Templates & UI Kits"
+    ],
+    "images": [],
+    "sections": [
+      {
+        "top": 512,
+        "h": 308,
+        "w": 358,
+        "text": "With buttonPreviewCodeHTMLReactVue #frame-8904b9d9a9fbb9a2313df3975112f9d7 { height: 256px; } @media (min-width: 704px) { #frame-8904b9d9a9fbb9a2313df3975112f9d"
+      },
+      {
+        "top": 0,
+        "h": 0,
+        "w": 0,
+        "text": "With buttonPreviewCodeHTMLReactVue #frame-8904b9d9a9fbb9a2313df3975112f9d7-dark { height: 256px; } @media (min-width: 704px) { #frame-8904b9d9a9fbb9a2313df39751"
+      },
+      {
+        "top": 916,
+        "h": 300,
+        "w": 358,
+        "text": "On darkPreviewGet the code → #frame-1804a38735a4d6d0ade6c2bcf4ee3f6c { height: 256px; } @media (min-width: 704px) { #frame-1804a38735a4d6d0ade6c2bcf4ee3f6c { he"
+      },
+      {
+        "top": 0,
+        "h": 0,
+        "w": 0,
+        "text": "On darkPreviewGet the code → #frame-1804a38735a4d6d0ade6c2bcf4ee3f6c-dark { height: 256px; } @media (min-width: 704px) { #frame-1804a38735a4d6d0ade6c2bcf4ee3f6c"
+      },
+      {
+        "top": 1312,
+        "h": 300,
+        "w": 358,
+        "text": "On brandPreviewGet the code → #frame-4375397fcc9712be608b21b9d8f355c8 { height: 256px; } @media (min-width: 704px) { #frame-4375397fcc9712be608b21b9d8f355c8 { h"
+      },
+      {
+        "top": 0,
+        "h": 0,
+        "w": 0,
+        "text": "On brandPreviewGet the code → #frame-4375397fcc9712be608b21b9d8f355c8-dark { height: 256px; } @media (min-width: 704px) { #frame-4375397fcc9712be608b21b9d8f355c"
+      },
+      {
+        "top": 1708,
+        "h": 300,
+        "w": 358,
+        "text": "With background glowPreviewGet the code → #frame-c94291a63bd63d01fd3ebf791093ab8d { height: 256px; } @media (min-width: 704px) { #frame-c94291a63bd63d01fd3ebf79"
+      },
+      {
+        "top": 0,
+        "h": 0,
+        "w": 0,
+        "text": "With background glowPreviewGet the code → #frame-c94291a63bd63d01fd3ebf791093ab8d-dark { height: 256px; } @media (min-width: 704px) { #frame-c94291a63bd63d01fd3"
+      },
+      {
+        "top": 2104,
+        "h": 300,
+        "w": 358,
+        "text": "With linkPreviewGet the code → #frame-1ad095c7782d609a536ebf3cd9b7212e { height: 256px; } @media (min-width: 704px) { #frame-1ad095c7782d609a536ebf3cd9b7212e { "
+      },
+      {
+        "top": 0,
+        "h": 0,
+        "w": 0,
+        "text": "With linkPreviewGet the code → #frame-1ad095c7782d609a536ebf3cd9b7212e-dark { height: 256px; } @media (min-width: 704px) { #frame-1ad095c7782d609a536ebf3cd9b721"
+      },
+      {
+        "top": 2500,
+        "h": 300,
+        "w": 358,
+        "text": "Left-alignedPreviewGet the code → #frame-49536ab3f61c13112b042a7cb8293dbb { height: 256px; } @media (min-width: 704px) { #frame-49536ab3f61c13112b042a7cb8293dbb"
+      },
+      {
+        "top": 0,
+        "h": 0,
+        "w": 0,
+        "text": "Left-alignedPreviewGet the code → #frame-49536ab3f61c13112b042a7cb8293dbb-dark { height: 256px; } @media (min-width: 704px) { #frame-49536ab3f61c13112b042a7cb82"
+      },
+      {
+        "top": 2896,
+        "h": 300,
+        "w": 358,
+        "text": "Bottom alignedPreviewGet the code → #frame-a6fe57a3075bcfcb790893a428c4cfb5 { height: 256px; } @media (min-width: 704px) { #frame-a6fe57a3075bcfcb790893a428c4cf"
+      },
+      {
+        "top": 0,
+        "h": 0,
+        "w": 0,
+        "text": "Bottom alignedPreviewGet the code → #frame-a6fe57a3075bcfcb790893a428c4cfb5-dark { height: 256px; } @media (min-width: 704px) { #frame-a6fe57a3075bcfcb790893a42"
+      },
+      {
+        "top": 3292,
+        "h": 300,
+        "w": 358,
+        "text": "Floating at bottomPreviewGet the code → #frame-39dd57897ef8e6d37aa07fbbafc188b1 { height: 256px; } @media (min-width: 704px) { #frame-39dd57897ef8e6d37aa07fbbaf"
+      },
+      {
+        "top": 0,
+        "h": 0,
+        "w": 0,
+        "text": "Floating at bottomPreviewGet the code → #frame-39dd57897ef8e6d37aa07fbbafc188b1-dark { height: 256px; } @media (min-width: 704px) { #frame-39dd57897ef8e6d37aa07"
+      },
+      {
+        "top": 3688,
+        "h": 300,
+        "w": 358,
+        "text": "Floating at bottom centeredPreviewGet the code → #frame-dd9098382f8067c3d90b99dbad8351a3 { height: 256px; } @media (min-width: 704px) { #frame-dd9098382f8067c3d"
+      },
+      {
+        "top": 0,
+        "h": 0,
+        "w": 0,
+        "text": "Floating at bottom centeredPreviewGet the code → #frame-dd9098382f8067c3d90b99dbad8351a3-dark { height: 256px; } @media (min-width: 704px) { #frame-dd9098382f80"
+      },
+      {
+        "top": 4084,
+        "h": 444,
+        "w": 358,
+        "text": "Privacy notice right-alignedPreviewGet the code → #frame-c5bc8a46a1093693fd286f0b74c631f4 { height: 400px; } @media (min-width: 704px) { #frame-c5bc8a46a1093693"
+      },
+      {
+        "top": 0,
+        "h": 0,
+        "w": 0,
+        "text": "Privacy notice right-alignedPreviewGet the code → #frame-c5bc8a46a1093693fd286f0b74c631f4-dark { height: 400px; } @media (min-width: 704px) { #frame-c5bc8a46a10"
+      },
+      {
+        "top": 4624,
+        "h": 444,
+        "w": 358,
+        "text": "Privacy notice centeredPreviewGet the code → #frame-a201de7379a84f1e46667dd219545953 { height: 400px; } @media (min-width: 704px) { #frame-a201de7379a84f1e46667"
+      },
+      {
+        "top": 0,
+        "h": 0,
+        "w": 0,
+        "text": "Privacy notice centeredPreviewGet the code → #frame-a201de7379a84f1e46667dd219545953-dark { height: 400px; } @media (min-width: 704px) { #frame-a201de7379a84f1e"
+      },
+      {
+        "top": 5164,
+        "h": 444,
+        "w": 358,
+        "text": "Privacy notice left-alignedPreviewGet the code → #frame-ec51d95b54eca6de6f1a07467a431e0c { height: 400px; } @media (min-width: 704px) { #frame-ec51d95b54eca6de6"
+      },
+      {
+        "top": 0,
+        "h": 0,
+        "w": 0,
+        "text": "Privacy notice left-alignedPreviewGet the code → #frame-ec51d95b54eca6de6f1a07467a431e0c-dark { height: 400px; } @media (min-width: 704px) { #frame-ec51d95b54ec"
+      },
+      {
+        "top": 5704,
+        "h": 444,
+        "w": 358,
+        "text": "Privacy notice full widthPreviewGet the code → #frame-43c7208d9b2cc7b884cd3c0918c2c268 { height: 400px; } @media (min-width: 704px) { #frame-43c7208d9b2cc7b884c"
+      },
+      {
+        "top": 0,
+        "h": 0,
+        "w": 0,
+        "text": "Privacy notice full widthPreviewGet the code → #frame-43c7208d9b2cc7b884cd3c0918c2c268-dark { height: 400px; } @media (min-width: 704px) { #frame-43c7208d9b2cc7"
+      }
+    ]
+  }
+}

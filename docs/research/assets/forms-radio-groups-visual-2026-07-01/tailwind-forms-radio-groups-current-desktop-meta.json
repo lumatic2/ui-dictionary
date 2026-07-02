@@ -1,0 +1,21 @@
+{
+  "url": "https://tailwindcss.com/plus/ui-blocks/application-ui/forms/radio-groups",
+  "name": "Radio Groups",
+  "description": "Radio button group examples for Tailwind CSS, designed and built by the creators of the framework.",
+  "visible_example_count": 12,
+  "visible_example_names": [
+    "Simple list",
+    "Simple inline list",
+    "List with description",
+    "List with inline description",
+    "List with radio on right",
+    "Simple list with radio on right",
+    "Simple table",
+    "List with descriptions in panel",
+    "Color picker",
+    "Cards",
+    "Small cards",
+    "Stacked cards"
+  ],
+  "raw_component_count": 24
+}

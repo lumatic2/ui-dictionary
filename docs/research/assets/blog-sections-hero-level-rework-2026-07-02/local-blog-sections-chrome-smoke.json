@@ -1,0 +1,36 @@
+{
+  "url": "http://127.0.0.1:5178/?filter=nav%3Aplus-marketing-blog-sections",
+  "headings": [
+    "Blog Sections",
+    "Three-column",
+    "Three-column with images",
+    "Three-column with background images",
+    "Single-column",
+    "Single-column with images",
+    "With featured post",
+    "With photo and list"
+  ],
+  "blogImages": [
+    "/assets/blog-sections/three-column-thumb-1-v2.png",
+    "/assets/blog-sections/three-column-thumb-2-v2.png",
+    "/assets/blog-sections/three-column-thumb-3-v2.png",
+    "/assets/blog-sections/background-card-1-v2.png",
+    "/assets/blog-sections/background-card-2-v2.png",
+    "/assets/blog-sections/background-card-3-v2.png",
+    "/assets/blog-sections/single-column-row-1-v2.png",
+    "/assets/blog-sections/single-column-row-2-v2.png",
+    "/assets/blog-sections/single-column-row-3-v2.png",
+    "/assets/blog-sections/photo-and-list-v2.png"
+  ],
+  "uniqueBlogImages": 10,
+  "overflowX": false,
+  "dims": {
+    "scrollWidth": 2545,
+    "clientWidth": 2545
+  },
+  "mobile390": {
+    "method": "Chrome CLI screenshot",
+    "path": "docs/research/assets/blog-sections-hero-level-rework-2026-07-02/local-blog-sections-after-mobile-390.png",
+    "note": "Chrome extension wrapper did not expose viewport resize for DOM smoke."
+  }
+}

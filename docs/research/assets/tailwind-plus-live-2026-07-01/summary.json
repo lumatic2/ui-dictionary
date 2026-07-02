@@ -1,0 +1,4428 @@
+[
+  {
+    "slug": "application-ui",
+    "screenshotPath": "C:\\Users\\yusun\\projects\\ui-dictionary\\docs\\research\\assets\\tailwind-plus-live-2026-07-01\\application-ui-viewport.png",
+    "bodySample": "Introducing Oatmeal Our new multi-theme marketing site kit UI Blocks Templates UI Kit Sign in Get full access Marketing Application UI Ecommerce Documentation APPLICATION SHELLS Stacked Layouts Sidebar Layouts Multi-Column Layouts HEADINGS Page Headings Card Headings Section Headings DATA DISPLAY Description Lists Stats Calendars LISTS Stacked Lists Tables Grid Lists Feeds FORMS Form Layouts Input Groups Select Menus Sign-in and Registration Textareas Radio Groups Checkboxes Toggles Action Panels Comboboxes FEEDBACK Alerts Empty States NAVIGATION Navbars Pagination Tabs Vertical Navigation Sidebar Navigation Breadcrumbs Progress Bars Command Palettes OVERLAYS Modal Dialogs Drawers Notifications ELEMENTS Avatars Badges Dropdowns Buttons Button Groups LAYOUT Containers Cards List containers Media Objects Dividers PAGE EXAMPLES Home Screens Detail Screens Settings Screens 5-DAY MINI-COURSE Build UIs that don’t suck. Short, tactical video lessons from the creator of Tailwind CSS, delivered directly to your inbox every day for a week. Get the free course UI BLOCKS Application UI Form layouts, tables, modal dialogs — everything you need to build beautiful responsive web applications. APPLICATION SHELLS Stacked Layouts 9 components Sidebar Layouts 8 components Multi-Column Layouts 6 components HEADINGS Page Headings 9 components Card Headings 6 components Section Headings 10 component",
+    "buttons": [],
+    "headings": [
+      {
+        "tag": "H3",
+        "text": "Application Shells"
+      },
+      {
+        "tag": "H3",
+        "text": "Headings"
+      },
+      {
+        "tag": "H3",
+        "text": "Data Display"
+      },
+      {
+        "tag": "H3",
+        "text": "Lists"
+      },
+      {
+        "tag": "H3",
+        "text": "Forms"
+      },
+      {
+        "tag": "H3",
+        "text": "Feedback"
+      },
+      {
+        "tag": "H3",
+        "text": "Navigation"
+      },
+      {
+        "tag": "H3",
+        "text": "Overlays"
+      },
+      {
+        "tag": "H3",
+        "text": "Elements"
+      },
+      {
+        "tag": "H3",
+        "text": "Layout"
+      },
+      {
+        "tag": "H3",
+        "text": "Page Examples"
+      },
+      {
+        "tag": "H3",
+        "text": "Build UIs that don’t suck."
+      },
+      {
+        "tag": "H1",
+        "text": "Application UI"
+      },
+      {
+        "tag": "H3",
+        "text": "Application Shells"
+      },
+      {
+        "tag": "H3",
+        "text": "Headings"
+      },
+      {
+        "tag": "H3",
+        "text": "Data Display"
+      },
+      {
+        "tag": "H3",
+        "text": "Lists"
+      },
+      {
+        "tag": "H3",
+        "text": "Forms"
+      },
+      {
+        "tag": "H3",
+        "text": "Feedback"
+      },
+      {
+        "tag": "H3",
+        "text": "Navigation"
+      },
+      {
+        "tag": "H3",
+        "text": "Overlays"
+      },
+      {
+        "tag": "H3",
+        "text": "Elements"
+      },
+      {
+        "tag": "H3",
+        "text": "Layout"
+      },
+      {
+        "tag": "H3",
+        "text": "Page Examples"
+      },
+      {
+        "tag": "H3",
+        "text": "Marketing"
+      },
+      {
+        "tag": "H3",
+        "text": "Application UI"
+      },
+      {
+        "tag": "H3",
+        "text": "Ecommerce"
+      },
+      {
+        "tag": "H3",
+        "text": "Templates & UI Kits"
+      }
+    ],
+    "links": [
+      {
+        "href": "https://tailwindcss.com/plus",
+        "text": ""
+      },
+      {
+        "href": "https://tailwindcss.com/plus/kits/oatmeal",
+        "text": "Introducing OatmealOur new multi-theme marketing site kit"
+      },
+      {
+        "href": "https://tailwindcss.com/plus/ui-blocks",
+        "text": "UI Blocks"
+      },
+      {
+        "href": "https://tailwindcss.com/plus/templates",
+        "text": "Templates"
+      },
+      {
+        "href": "https://tailwindcss.com/plus/ui-kit",
+        "text": "UI Kit"
+      },
+      {
+        "href": "https://tailwindcss.com/plus/login",
+        "text": "Sign in"
+      },
+      {
+        "href": "https://tailwindcss.com/plus#pricing",
+        "text": "Get full access"
+      },
+      {
+        "href": "https://tailwindcss.com/plus/ui-blocks/marketing",
+        "text": "Marketing"
+      },
+      {
+        "href": "https://tailwindcss.com/plus/ui-blocks/application-ui",
+        "text": "Application UI"
+      },
+      {
+        "href": "https://tailwindcss.com/plus/ui-blocks/ecommerce",
+        "text": "Ecommerce"
+      },
+      {
+        "href": "https://tailwindcss.com/plus/ui-blocks/documentation",
+        "text": "Documentation"
+      },
+      {
+        "href": "https://tailwindcss.com/plus/ui-blocks/application-ui/application-shells/stacked",
+        "text": "Stacked Layouts"
+      },
+      {
+        "href": "https://tailwindcss.com/plus/ui-blocks/application-ui/application-shells/sidebar",
+        "text": "Sidebar Layouts"
+      },
+      {
+        "href": "https://tailwindcss.com/plus/ui-blocks/application-ui/application-shells/multi-column",
+        "text": "Multi-Column Layouts"
+      },
+      {
+        "href": "https://tailwindcss.com/plus/ui-blocks/application-ui/headings/page-headings",
+        "text": "Page Headings"
+      },
+      {
+        "href": "https://tailwindcss.com/plus/ui-blocks/application-ui/headings/card-headings",
+        "text": "Card Headings"
+      },
+      {
+        "href": "https://tailwindcss.com/plus/ui-blocks/application-ui/headings/section-headings",
+        "text": "Section Headings"
+      },
+      {
+        "href": "https://tailwindcss.com/plus/ui-blocks/application-ui/data-display/description-lists",
+        "text": "Description Lists"
+      },
+      {
+        "href": "https://tailwindcss.com/plus/ui-blocks/application-ui/data-display/stats",
+        "text": "Stats"
+      },
+      {
+        "href": "https://tailwindcss.com/plus/ui-blocks/application-ui/data-display/calendars",
+        "text": "Calendars"
+      },
+      {
+        "href": "https://tailwindcss.com/plus/ui-blocks/application-ui/lists/stacked-lists",
+        "text": "Stacked Lists"
+      },
+      {
+        "href": "https://tailwindcss.com/plus/ui-blocks/application-ui/lists/tables",
+        "text": "Tables"
+      },
+      {
+        "href": "https://tailwindcss.com/plus/ui-blocks/application-ui/lists/grid-lists",
+        "text": "Grid Lists"
+      },
+      {
+        "href": "https://tailwindcss.com/plus/ui-blocks/application-ui/lists/feeds",
+        "text": "Feeds"
+      },
+      {
+        "href": "https://tailwindcss.com/plus/ui-blocks/application-ui/forms/form-layouts",
+        "text": "Form Layouts"
+      },
+      {
+        "href": "https://tailwindcss.com/plus/ui-blocks/application-ui/forms/input-groups",
+        "text": "Input Groups"
+      },
+      {
+        "href": "https://tailwindcss.com/plus/ui-blocks/application-ui/forms/select-menus",
+        "text": "Select Menus"
+      },
+      {
+        "href": "https://tailwindcss.com/plus/ui-blocks/application-ui/forms/sign-in-forms",
+        "text": "Sign-in and Registration"
+      },
+      {
+        "href": "https://tailwindcss.com/plus/ui-blocks/application-ui/forms/textareas",
+        "text": "Textareas"
+      },
+      {
+        "href": "https://tailwindcss.com/plus/ui-blocks/application-ui/forms/radio-groups",
+        "text": "Radio Groups"
+      },
+      {
+        "href": "https://tailwindcss.com/plus/ui-blocks/application-ui/forms/checkboxes",
+        "text": "Checkboxes"
+      },
+      {
+        "href": "https://tailwindcss.com/plus/ui-blocks/application-ui/forms/toggles",
+        "text": "Toggles"
+      },
+      {
+        "href": "https://tailwindcss.com/plus/ui-blocks/application-ui/forms/action-panels",
+        "text": "Action Panels"
+      },
+      {
+        "href": "https://tailwindcss.com/plus/ui-blocks/application-ui/forms/comboboxes",
+        "text": "Comboboxes"
+      },
+      {
+        "href": "https://tailwindcss.com/plus/ui-blocks/application-ui/feedback/alerts",
+        "text": "Alerts"
+      },
+      {
+        "href": "https://tailwindcss.com/plus/ui-blocks/application-ui/feedback/empty-states",
+        "text": "Empty States"
+      },
+      {
+        "href": "https://tailwindcss.com/plus/ui-blocks/application-ui/navigation/navbars",
+        "text": "Navbars"
+      },
+      {
+        "href": "https://tailwindcss.com/plus/ui-blocks/application-ui/navigation/pagination",
+        "text": "Pagination"
+      },
+      {
+        "href": "https://tailwindcss.com/plus/ui-blocks/application-ui/navigation/tabs",
+        "text": "Tabs"
+      },
+      {
+        "href": "https://tailwindcss.com/plus/ui-blocks/application-ui/navigation/vertical-navigation",
+        "text": "Vertical Navigation"
+      },
+      {
+        "href": "https://tailwindcss.com/plus/ui-blocks/application-ui/navigation/sidebar-navigation",
+        "text": "Sidebar Navigation"
+      },
+      {
+        "href": "https://tailwindcss.com/plus/ui-blocks/application-ui/navigation/breadcrumbs",
+        "text": "Breadcrumbs"
+      },
+      {
+        "href": "https://tailwindcss.com/plus/ui-blocks/application-ui/navigation/progress-bars",
+        "text": "Progress Bars"
+      },
+      {
+        "href": "https://tailwindcss.com/plus/ui-blocks/application-ui/navigation/command-palettes",
+        "text": "Command Palettes"
+      },
+      {
+        "href": "https://tailwindcss.com/plus/ui-blocks/application-ui/overlays/modal-dialogs",
+        "text": "Modal Dialogs"
+      },
+      {
+        "href": "https://tailwindcss.com/plus/ui-blocks/application-ui/overlays/drawers",
+        "text": "Drawers"
+      },
+      {
+        "href": "https://tailwindcss.com/plus/ui-blocks/application-ui/overlays/notifications",
+        "text": "Notifications"
+      },
+      {
+        "href": "https://tailwindcss.com/plus/ui-blocks/application-ui/elements/avatars",
+        "text": "Avatars"
+      },
+      {
+        "href": "https://tailwindcss.com/plus/ui-blocks/application-ui/elements/badges",
+        "text": "Badges"
+      },
+      {
+        "href": "https://tailwindcss.com/plus/ui-blocks/application-ui/elements/dropdowns",
+        "text": "Dropdowns"
+      },
+      {
+        "href": "https://tailwindcss.com/plus/ui-blocks/application-ui/elements/buttons",
+        "text": "Buttons"
+      },
+      {
+        "href": "https://tailwindcss.com/plus/ui-blocks/application-ui/elements/button-groups",
+        "text": "Button Groups"
+      },
+      {
+        "href": "https://tailwindcss.com/plus/ui-blocks/application-ui/layout/containers",
+        "text": "Containers"
+      },
+      {
+        "href": "https://tailwindcss.com/plus/ui-blocks/application-ui/layout/cards",
+        "text": "Cards"
+      },
+      {
+        "href": "https://tailwindcss.com/plus/ui-blocks/application-ui/layout/list-containers",
+        "text": "List containers"
+      },
+      {
+        "href": "https://tailwindcss.com/plus/ui-blocks/application-ui/layout/media-objects",
+        "text": "Media Objects"
+      },
+      {
+        "href": "https://tailwindcss.com/plus/ui-blocks/application-ui/layout/dividers",
+        "text": "Dividers"
+      },
+      {
+        "href": "https://tailwindcss.com/plus/ui-blocks/application-ui/page-examples/home-screens",
+        "text": "Home Screens"
+      },
+      {
+        "href": "https://tailwindcss.com/plus/ui-blocks/application-ui/page-examples/detail-screens",
+        "text": "Detail Screens"
+      },
+      {
+        "href": "https://tailwindcss.com/plus/ui-blocks/application-ui/page-examples/settings-screens",
+        "text": "Settings Screens"
+      },
+      {
+        "href": "https://tailwindcss.com/build-uis-that-dont-suck",
+        "text": "Get the free course"
+      },
+      {
+        "href": "https://tailwindcss.com/plus/ui-blocks",
+        "text": "UI Blocks"
+      },
+      {
+        "href": "https://tailwindcss.com/plus/ui-blocks/application-ui",
+        "text": "Application UI"
+      },
+      {
+        "href": "https://tailwindcss.com/plus/ui-blocks",
+        "text": "UI Blocks"
+      },
+      {
+        "href": "https://tailwindcss.com/plus/ui-blocks/application-ui/application-shells/stacked",
+        "text": "Stacked Layouts9 components"
+      },
+      {
+        "href": "https://tailwindcss.com/plus/ui-blocks/application-ui/application-shells/sidebar",
+        "text": "Sidebar Layouts8 components"
+      },
+      {
+        "href": "https://tailwindcss.com/plus/ui-blocks/application-ui/application-shells/multi-column",
+        "text": "Multi-Column Layouts6 components"
+      },
+      {
+        "href": "https://tailwindcss.com/plus/ui-blocks/application-ui/headings/page-headings",
+        "text": "Page Headings9 components"
+      },
+      {
+        "href": "https://tailwindcss.com/plus/ui-blocks/application-ui/headings/card-headings",
+        "text": "Card Headings6 components"
+      },
+      {
+        "href": "https://tailwindcss.com/plus/ui-blocks/application-ui/headings/section-headings",
+        "text": "Section Headings10 components"
+      },
+      {
+        "href": "https://tailwindcss.com/plus/ui-blocks/application-ui/data-display/description-lists",
+        "text": "Description Lists6 components"
+      },
+      {
+        "href": "https://tailwindcss.com/plus/ui-blocks/application-ui/data-display/stats",
+        "text": "Stats5 components"
+      },
+      {
+        "href": "https://tailwindcss.com/plus/ui-blocks/application-ui/data-display/calendars",
+        "text": "Calendars8 components"
+      },
+      {
+        "href": "https://tailwindcss.com/plus/ui-blocks/application-ui/lists/stacked-lists",
+        "text": "Stacked Lists15 components"
+      },
+      {
+        "href": "https://tailwindcss.com/plus/ui-blocks/application-ui/lists/tables",
+        "text": "Tables19 components"
+      },
+      {
+        "href": "https://tailwindcss.com/plus/ui-blocks/application-ui/lists/grid-lists",
+        "text": "Grid Lists7 components"
+      },
+      {
+        "href": "https://tailwindcss.com/plus/ui-blocks/application-ui/lists/feeds",
+        "text": "Feeds3 components"
+      },
+      {
+        "href": "https://tailwindcss.com/plus/ui-blocks/application-ui/forms/form-layouts",
+        "text": "Form Layouts4 components"
+      },
+      {
+        "href": "https://tailwindcss.com/plus/ui-blocks/application-ui/forms/input-groups",
+        "text": "Input Groups21 components"
+      },
+      {
+        "href": "https://tailwindcss.com/plus/ui-blocks/application-ui/forms/select-menus",
+        "text": "Select Menus7 components"
+      },
+      {
+        "href": "https://tailwindcss.com/plus/ui-blocks/application-ui/forms/sign-in-forms",
+        "text": "Sign-in and Registration4 components"
+      },
+      {
+        "href": "https://tailwindcss.com/plus/ui-blocks/application-ui/forms/textareas",
+        "text": "Textareas5 components"
+      },
+      {
+        "href": "https://tailwindcss.com/plus/ui-blocks/application-ui/forms/radio-groups",
+        "text": "Radio Groups12 components"
+      },
+      {
+        "href": "https://tailwindcss.com/plus/ui-blocks/application-ui/forms/checkboxes",
+        "text": "Checkboxes4 components"
+      },
+      {
+        "href": "https://tailwindcss.com/plus/ui-blocks/application-ui/forms/toggles",
+        "text": "Toggles5 components"
+      },
+      {
+        "href": "https://tailwindcss.com/plus/ui-blocks/application-ui/forms/action-panels",
+        "text": "Action Panels8 components"
+      },
+      {
+        "href": "https://tailwindcss.com/plus/ui-blocks/application-ui/forms/comboboxes",
+        "text": "Comboboxes4 components"
+      },
+      {
+        "href": "https://tailwindcss.com/plus/ui-blocks/application-ui/feedback/alerts",
+        "text": "Alerts6 components"
+      },
+      {
+        "href": "https://tailwindcss.com/plus/ui-blocks/application-ui/feedback/empty-states",
+        "text": "Empty States6 components"
+      },
+      {
+        "href": "https://tailwindcss.com/plus/ui-blocks/application-ui/navigation/navbars",
+        "text": "Navbars11 components"
+      },
+      {
+        "href": "https://tailwindcss.com/plus/ui-blocks/application-ui/navigation/pagination",
+        "text": "Pagination3 components"
+      },
+      {
+        "href": "https://tailwindcss.com/plus/ui-blocks/application-ui/navigation/tabs",
+        "text": "Tabs9 components"
+      },
+      {
+        "href": "https://tailwindcss.com/plus/ui-blocks/application-ui/navigation/vertical-navigation",
+        "text": "Vertical Navigation6 components"
+      },
+      {
+        "href": "https://tailwindcss.com/plus/ui-blocks/application-ui/navigation/sidebar-navigation",
+        "text": "Sidebar Navigation5 components"
+      },
+      {
+        "href": "https://tailwindcss.com/plus/ui-blocks/application-ui/navigation/breadcrumbs",
+        "text": "Breadcrumbs4 components"
+      },
+      {
+        "href": "https://tailwindcss.com/plus/ui-blocks/application-ui/navigation/progress-bars",
+        "text": "Progress Bars8 components"
+      },
+      {
+        "href": "https://tailwindcss.com/plus/ui-blocks/application-ui/navigation/command-palettes",
+        "text": "Command Palettes8 components"
+      },
+      {
+        "href": "https://tailwindcss.com/plus/ui-blocks/application-ui/overlays/modal-dialogs",
+        "text": "Modal Dialogs6 components"
+      },
+      {
+        "href": "https://tailwindcss.com/plus/ui-blocks/application-ui/overlays/drawers",
+        "text": "Drawers12 components"
+      },
+      {
+        "href": "https://tailwindcss.com/plus/ui-blocks/application-ui/overlays/notifications",
+        "text": "Notifications6 components"
+      },
+      {
+        "href": "https://tailwindcss.com/plus/ui-blocks/application-ui/elements/avatars",
+        "text": "Avatars11 components"
+      },
+      {
+        "href": "https://tailwindcss.com/plus/ui-blocks/application-ui/elements/badges",
+        "text": "Badges16 components"
+      },
+      {
+        "href": "https://tailwindcss.com/plus/ui-blocks/application-ui/elements/dropdowns",
+        "text": "Dropdowns5 components"
+      },
+      {
+        "href": "https://tailwindcss.com/plus/ui-blocks/application-ui/elements/buttons",
+        "text": "Buttons8 components"
+      },
+      {
+        "href": "https://tailwindcss.com/plus/ui-blocks/application-ui/elements/button-groups",
+        "text": "Button Groups5 components"
+      },
+      {
+        "href": "https://tailwindcss.com/plus/ui-blocks/application-ui/layout/containers",
+        "text": "Containers5 components"
+      },
+      {
+        "href": "https://tailwindcss.com/plus/ui-blocks/application-ui/layout/cards",
+        "text": "Cards10 components"
+      },
+      {
+        "href": "https://tailwindcss.com/plus/ui-blocks/application-ui/layout/list-containers",
+        "text": "List containers7 components"
+      },
+      {
+        "href": "https://tailwindcss.com/plus/ui-blocks/application-ui/layout/media-objects",
+        "text": "Media Objects8 components"
+      },
+      {
+        "href": "https://tailwindcss.com/plus/ui-blocks/application-ui/layout/dividers",
+        "text": "Dividers8 components"
+      },
+      {
+        "href": "https://tailwindcss.com/plus/ui-blocks/application-ui/page-examples/home-screens",
+        "text": "Home Screens2 examples"
+      },
+      {
+        "href": "https://tailwindcss.com/plus/ui-blocks/application-ui/page-examples/detail-screens",
+        "text": "Detail Screens2 examples"
+      },
+      {
+        "href": "https://tailwindcss.com/plus/ui-blocks/application-ui/page-examples/settings-screens",
+        "text": "Settings Screens2 examples"
+      },
+      {
+        "href": "https://tailwindcss.com/plus/ui-blocks/marketing/sections/heroes",
+        "text": "Hero Sections"
+      },
+      {
+        "href": "https://tailwindcss.com/plus/ui-blocks/marketing/sections/feature-sections",
+        "text": "Feature Sections"
+      },
+      {
+        "href": "https://tailwindcss.com/plus/ui-blocks/marketing/sections/pricing",
+        "text": "Pricing Sections"
+      },
+      {
+        "href": "https://tailwindcss.com/plus/ui-blocks/marketing/sections/header",
+        "text": "Header Sections"
+      },
+      {
+        "href": "https://tailwindcss.com/plus/ui-blocks/marketing/sections/newsletter-sections",
+        "text": "Newsletter Sections"
+      },
+      {
+        "href": "https://tailwindcss.com/plus/ui-blocks/marketing/sections/testimonials",
+        "text": "Testimonials"
+      },
+      {
+        "href": "https://tailwindcss.com/plus/ui-blocks/marketing/sections/team-sections",
+        "text": "Team Sections"
+      },
+      {
+        "href": "https://tailwindcss.com/plus/ui-blocks/marketing/sections/content-sections",
+        "text": "Content Sections"
+      },
+      {
+        "href": "https://tailwindcss.com/plus/ui-blocks/marketing/sections/logo-clouds",
+        "text": "Logo Clouds"
+      },
+      {
+        "href": "https://tailwindcss.com/plus/ui-blocks/marketing/sections/faq-sections",
+        "text": "FAQs"
+      },
+      {
+        "href": "https://tailwindcss.com/plus/ui-blocks/marketing/sections/footers",
+        "text": "Footers"
+      },
+      {
+        "href": "https://tailwindcss.com/plus/ui-blocks/marketing/sections/header",
+        "text": "Headers"
+      },
+      {
+        "href": "https://tailwindcss.com/plus/ui-blocks/marketing/elements/flyout-menus",
+        "text": "Flyout Menus"
+      },
+      {
+        "href": "https://tailwindcss.com/plus/ui-blocks/marketing/elements/banners",
+        "text": "Banners"
+      },
+      {
+        "href": "https://tailwindcss.com/plus/ui-blocks/marketing",
+        "text": "Browse all →"
+      },
+      {
+        "href": "https://tailwindcss.com/plus/ui-blocks/application-ui/lists/tables",
+        "text": "Tables"
+      },
+      {
+        "href": "https://tailwindcss.com/plus/ui-blocks/application-ui/lists/feeds",
+        "text": "Feeds"
+      },
+      {
+        "href": "https://tailwindcss.com/plus/ui-blocks/application-ui/forms/form-layouts",
+        "text": "Form Layouts"
+      },
+      {
+        "href": "https://tailwindcss.com/plus/ui-blocks/application-ui/forms/select-menus",
+        "text": "Select Menus"
+      },
+      {
+        "href": "https://tailwindcss.com/plus/ui-blocks/application-ui/forms/radio-groups",
+        "text": "Radio Groups"
+      },
+      {
+        "href": "https://tailwindcss.com/plus/ui-blocks/application-ui/forms/checkboxes",
+        "text": "Checkboxes"
+      },
+      {
+        "href": "https://tailwindcss.com/plus/ui-blocks/application-ui/forms/comboboxes",
+        "text": "Comboboxes"
+      },
+      {
+        "href": "https://tailwindcss.com/plus/ui-blocks/application-ui/navigation/navbars",
+        "text": "Navbars"
+      },
+      {
+        "href": "https://tailwindcss.com/plus/ui-blocks/application-ui/navigation/pagination",
+        "text": "Pagination"
+      },
+      {
+        "href": "https://tailwindcss.com/plus/ui-blocks/application-ui/navigation/sidebar-navigation",
+        "text": "Sidebar Navigation"
+      },
+      {
+        "href": "https://tailwindcss.com/plus/ui-blocks/application-ui/navigation/command-palettes",
+        "text": "Command Palettes"
+      },
+      {
+        "href": "https://tailwindcss.com/plus/ui-blocks/application-ui/overlays/modal-dialogs",
+        "text": "Modals"
+      },
+      {
+        "href": "https://tailwindcss.com/plus/ui-blocks/application-ui/elements/dropdowns",
+        "text": "Dropdowns"
+      },
+      {
+        "href": "https://tailwindcss.com/plus/ui-blocks/application-ui/elements/buttons",
+        "text": "Buttons"
+      },
+      {
+        "href": "https://tailwindcss.com/plus/ui-blocks/application-ui",
+        "text": "Browse all →"
+      },
+      {
+        "href": "https://tailwindcss.com/plus/ui-blocks/ecommerce/components/product-overviews",
+        "text": "Product Overviews"
+      },
+      {
+        "href": "https://tailwindcss.com/plus/ui-blocks/ecommerce/components/product-lists",
+        "text": "Product Lists"
+      },
+      {
+        "href": "https://tailwindcss.com/plus/ui-blocks/ecommerce/components/category-previews",
+        "text": "Category Previews"
+      },
+      {
+        "href": "https://tailwindcss.com/plus/ui-blocks/ecommerce/components/shopping-carts",
+        "text": "Shopping Carts"
+      },
+      {
+        "href": "https://tailwindcss.com/plus/ui-blocks/ecommerce/components/category-filters",
+        "text": "Category Filters"
+      },
+      {
+        "href": "https://tailwindcss.com/plus/ui-blocks/ecommerce/components/product-quickviews",
+        "text": "Product Quickviews"
+      },
+      {
+        "href": "https://tailwindcss.com/plus/ui-blocks/ecommerce/components/product-features",
+        "text": "Product Features"
+      },
+      {
+        "href": "https://tailwindcss.com/plus/ui-blocks/ecommerce/components/store-navigation",
+        "text": "Store Navigation"
+      },
+      {
+        "href": "https://tailwindcss.com/plus/ui-blocks/ecommerce/components/promo-sections",
+        "text": "Promo Sections"
+      },
+      {
+        "href": "https://tailwindcss.com/plus/ui-blocks/ecommerce/components/checkout-forms",
+        "text": "Checkout Forms"
+      },
+      {
+        "href": "https://tailwindcss.com/plus/ui-blocks/ecommerce/components/reviews",
+        "text": "Reviews"
+      },
+      {
+        "href": "https://tailwindcss.com/plus/ui-blocks/ecommerce/components/order-summaries",
+        "text": "Order Summaries"
+      },
+      {
+        "href": "https://tailwindcss.com/plus/ui-blocks/ecommerce/components/order-history",
+        "text": "Order History"
+      },
+      {
+        "href": "https://tailwindcss.com/plus/ui-blocks/ecommerce/components/incentives",
+        "text": "Incentives"
+      },
+      {
+        "href": "https://tailwindcss.com/plus/ui-blocks/ecommerce",
+        "text": "Browse all →"
+      },
+      {
+        "href": "https://tailwindcss.com/plus/templates/catalyst",
+        "text": "Catalyst UI Kit"
+      },
+      {
+        "href": "https://tailwindcss.com/plus/templates/spotlight",
+        "text": "Personal Website Template"
+      },
+      {
+        "href": "https://tailwindcss.com/plus/templates/salient",
+        "text": "Landing Page Template"
+      },
+      {
+        "href": "https://tailwindcss.com/plus/templates/protocol",
+        "text": "API Reference Template"
+      },
+      {
+        "href": "https://tailwindcss.com/plus/templates/commit",
+        "text": "Changelog Template"
+      },
+      {
+        "href": "https://tailwindcss.com/plus/templates/primer",
+        "text": "Info Product Template"
+      },
+      {
+        "href": "https://tailwindcss.com/plus/templates/studio",
+        "text": "Agency Template"
+      },
+      {
+        "href": "https://tailwindcss.com/plus/templates/transmit",
+        "text": "Podcast Template"
+      },
+      {
+        "href": "https://tailwindcss.com/plus/templates/pocket",
+        "text": "App Marketing Template"
+      },
+      {
+        "href": "https://tailwindcss.com/plus/templates/syntax",
+        "text": "Documentation Template"
+      },
+      {
+        "href": "https://tailwindcss.com/plus/templates/keynote",
+        "text": "Conference Template"
+      },
+      {
+        "href": "https://tailwindcss.com/plus/templates",
+        "text": "Browse all →"
+      },
+      {
+        "href": "https://tailwindcss.com/plus/privacy-policy",
+        "text": "Privacy policy"
+      },
+      {
+        "href": "https://tailwindcss.com/plus/changelog",
+        "text": "Changelog"
+      }
+    ],
+    "paySignals": [
+      "Get full access",
+      "Sign in",
+      "Preview"
+    ],
+    "title": "Application UI components - Official Tailwind UI components",
+    "url": "https://tailwindcss.com/plus/ui-blocks/application-ui"
+  },
+  {
+    "slug": "ecommerce",
+    "screenshotPath": "C:\\Users\\yusun\\projects\\ui-dictionary\\docs\\research\\assets\\tailwind-plus-live-2026-07-01\\ecommerce-viewport.png",
+    "bodySample": "Introducing Oatmeal Our new multi-theme marketing site kit UI Blocks Templates UI Kit Sign in Get full access Marketing Application UI Ecommerce Documentation COMPONENTS Product Overviews Product Lists Category Previews Shopping Carts Category Filters Product Quickviews Product Features Store Navigation Promo Sections Checkout Forms Reviews Order Summaries Order History Incentives PAGE EXAMPLES Storefront Pages Product Pages Category Pages Shopping Cart Pages Checkout Pages Order Detail Pages Order History Pages 5-DAY MINI-COURSE Build UIs that don’t suck. Short, tactical video lessons from the creator of Tailwind CSS, delivered directly to your inbox every day for a week. Get the free course UI BLOCKS Ecommerce Checkout forms, shopping carts, product views — everything you need to build your next ecommerce front-end. COMPONENTS Product Overviews 5 components Product Lists 11 components Category Previews 6 components Shopping Carts 6 components Category Filters 5 components Product Quickviews 4 components Product Features 9 components Store Navigation 5 components Promo Sections 8 components Checkout Forms 5 components Reviews 4 components Order Summaries 4 components Order History 4 components Incentives 8 components PAGE EXAMPLES Storefront Pages 4 examples Product Pages 5 examples Category Pages 5 examples Shopping Cart Pages 3 examples Checkout Pages 5 examples Order Detail",
+    "buttons": [],
+    "headings": [
+      {
+        "tag": "H3",
+        "text": "Components"
+      },
+      {
+        "tag": "H3",
+        "text": "Page Examples"
+      },
+      {
+        "tag": "H3",
+        "text": "Build UIs that don’t suck."
+      },
+      {
+        "tag": "H1",
+        "text": "Ecommerce"
+      },
+      {
+        "tag": "H3",
+        "text": "Components"
+      },
+      {
+        "tag": "H3",
+        "text": "Page Examples"
+      },
+      {
+        "tag": "H3",
+        "text": "Marketing"
+      },
+      {
+        "tag": "H3",
+        "text": "Application UI"
+      },
+      {
+        "tag": "H3",
+        "text": "Ecommerce"
+      },
+      {
+        "tag": "H3",
+        "text": "Templates & UI Kits"
+      }
+    ],
+    "links": [
+      {
+        "href": "https://tailwindcss.com/plus",
+        "text": ""
+      },
+      {
+        "href": "https://tailwindcss.com/plus/kits/oatmeal",
+        "text": "Introducing OatmealOur new multi-theme marketing site kit"
+      },
+      {
+        "href": "https://tailwindcss.com/plus/ui-blocks",
+        "text": "UI Blocks"
+      },
+      {
+        "href": "https://tailwindcss.com/plus/templates",
+        "text": "Templates"
+      },
+      {
+        "href": "https://tailwindcss.com/plus/ui-kit",
+        "text": "UI Kit"
+      },
+      {
+        "href": "https://tailwindcss.com/plus/login",
+        "text": "Sign in"
+      },
+      {
+        "href": "https://tailwindcss.com/plus#pricing",
+        "text": "Get full access"
+      },
+      {
+        "href": "https://tailwindcss.com/plus/ui-blocks/marketing",
+        "text": "Marketing"
+      },
+      {
+        "href": "https://tailwindcss.com/plus/ui-blocks/application-ui",
+        "text": "Application UI"
+      },
+      {
+        "href": "https://tailwindcss.com/plus/ui-blocks/ecommerce",
+        "text": "Ecommerce"
+      },
+      {
+        "href": "https://tailwindcss.com/plus/ui-blocks/documentation",
+        "text": "Documentation"
+      },
+      {
+        "href": "https://tailwindcss.com/plus/ui-blocks/ecommerce/components/product-overviews",
+        "text": "Product Overviews"
+      },
+      {
+        "href": "https://tailwindcss.com/plus/ui-blocks/ecommerce/components/product-lists",
+        "text": "Product Lists"
+      },
+      {
+        "href": "https://tailwindcss.com/plus/ui-blocks/ecommerce/components/category-previews",
+        "text": "Category Previews"
+      },
+      {
+        "href": "https://tailwindcss.com/plus/ui-blocks/ecommerce/components/shopping-carts",
+        "text": "Shopping Carts"
+      },
+      {
+        "href": "https://tailwindcss.com/plus/ui-blocks/ecommerce/components/category-filters",
+        "text": "Category Filters"
+      },
+      {
+        "href": "https://tailwindcss.com/plus/ui-blocks/ecommerce/components/product-quickviews",
+        "text": "Product Quickviews"
+      },
+      {
+        "href": "https://tailwindcss.com/plus/ui-blocks/ecommerce/components/product-features",
+        "text": "Product Features"
+      },
+      {
+        "href": "https://tailwindcss.com/plus/ui-blocks/ecommerce/components/store-navigation",
+        "text": "Store Navigation"
+      },
+      {
+        "href": "https://tailwindcss.com/plus/ui-blocks/ecommerce/components/promo-sections",
+        "text": "Promo Sections"
+      },
+      {
+        "href": "https://tailwindcss.com/plus/ui-blocks/ecommerce/components/checkout-forms",
+        "text": "Checkout Forms"
+      },
+      {
+        "href": "https://tailwindcss.com/plus/ui-blocks/ecommerce/components/reviews",
+        "text": "Reviews"
+      },
+      {
+        "href": "https://tailwindcss.com/plus/ui-blocks/ecommerce/components/order-summaries",
+        "text": "Order Summaries"
+      },
+      {
+        "href": "https://tailwindcss.com/plus/ui-blocks/ecommerce/components/order-history",
+        "text": "Order History"
+      },
+      {
+        "href": "https://tailwindcss.com/plus/ui-blocks/ecommerce/components/incentives",
+        "text": "Incentives"
+      },
+      {
+        "href": "https://tailwindcss.com/plus/ui-blocks/ecommerce/page-examples/storefront-pages",
+        "text": "Storefront Pages"
+      },
+      {
+        "href": "https://tailwindcss.com/plus/ui-blocks/ecommerce/page-examples/product-pages",
+        "text": "Product Pages"
+      },
+      {
+        "href": "https://tailwindcss.com/plus/ui-blocks/ecommerce/page-examples/category-pages",
+        "text": "Category Pages"
+      },
+      {
+        "href": "https://tailwindcss.com/plus/ui-blocks/ecommerce/page-examples/shopping-cart-pages",
+        "text": "Shopping Cart Pages"
+      },
+      {
+        "href": "https://tailwindcss.com/plus/ui-blocks/ecommerce/page-examples/checkout-pages",
+        "text": "Checkout Pages"
+      },
+      {
+        "href": "https://tailwindcss.com/plus/ui-blocks/ecommerce/page-examples/order-detail-pages",
+        "text": "Order Detail Pages"
+      },
+      {
+        "href": "https://tailwindcss.com/plus/ui-blocks/ecommerce/page-examples/order-history-pages",
+        "text": "Order History Pages"
+      },
+      {
+        "href": "https://tailwindcss.com/build-uis-that-dont-suck",
+        "text": "Get the free course"
+      },
+      {
+        "href": "https://tailwindcss.com/plus/ui-blocks",
+        "text": "UI Blocks"
+      },
+      {
+        "href": "https://tailwindcss.com/plus/ui-blocks/ecommerce",
+        "text": "Ecommerce"
+      },
+      {
+        "href": "https://tailwindcss.com/plus/ui-blocks",
+        "text": "UI Blocks"
+      },
+      {
+        "href": "https://tailwindcss.com/plus/ui-blocks/ecommerce/components/product-overviews",
+        "text": "Product Overviews5 components"
+      },
+      {
+        "href": "https://tailwindcss.com/plus/ui-blocks/ecommerce/components/product-lists",
+        "text": "Product Lists11 components"
+      },
+      {
+        "href": "https://tailwindcss.com/plus/ui-blocks/ecommerce/components/category-previews",
+        "text": "Category Previews6 components"
+      },
+      {
+        "href": "https://tailwindcss.com/plus/ui-blocks/ecommerce/components/shopping-carts",
+        "text": "Shopping Carts6 components"
+      },
+      {
+        "href": "https://tailwindcss.com/plus/ui-blocks/ecommerce/components/category-filters",
+        "text": "Category Filters5 components"
+      },
+      {
+        "href": "https://tailwindcss.com/plus/ui-blocks/ecommerce/components/product-quickviews",
+        "text": "Product Quickviews4 components"
+      },
+      {
+        "href": "https://tailwindcss.com/plus/ui-blocks/ecommerce/components/product-features",
+        "text": "Product Features9 components"
+      },
+      {
+        "href": "https://tailwindcss.com/plus/ui-blocks/ecommerce/components/store-navigation",
+        "text": "Store Navigation5 components"
+      },
+      {
+        "href": "https://tailwindcss.com/plus/ui-blocks/ecommerce/components/promo-sections",
+        "text": "Promo Sections8 components"
+      },
+      {
+        "href": "https://tailwindcss.com/plus/ui-blocks/ecommerce/components/checkout-forms",
+        "text": "Checkout Forms5 components"
+      },
+      {
+        "href": "https://tailwindcss.com/plus/ui-blocks/ecommerce/components/reviews",
+        "text": "Reviews4 components"
+      },
+      {
+        "href": "https://tailwindcss.com/plus/ui-blocks/ecommerce/components/order-summaries",
+        "text": "Order Summaries4 components"
+      },
+      {
+        "href": "https://tailwindcss.com/plus/ui-blocks/ecommerce/components/order-history",
+        "text": "Order History4 components"
+      },
+      {
+        "href": "https://tailwindcss.com/plus/ui-blocks/ecommerce/components/incentives",
+        "text": "Incentives8 components"
+      },
+      {
+        "href": "https://tailwindcss.com/plus/ui-blocks/ecommerce/page-examples/storefront-pages",
+        "text": "Storefront Pages4 examples"
+      },
+      {
+        "href": "https://tailwindcss.com/plus/ui-blocks/ecommerce/page-examples/product-pages",
+        "text": "Product Pages5 examples"
+      },
+      {
+        "href": "https://tailwindcss.com/plus/ui-blocks/ecommerce/page-examples/category-pages",
+        "text": "Category Pages5 examples"
+      },
+      {
+        "href": "https://tailwindcss.com/plus/ui-blocks/ecommerce/page-examples/shopping-cart-pages",
+        "text": "Shopping Cart Pages3 examples"
+      },
+      {
+        "href": "https://tailwindcss.com/plus/ui-blocks/ecommerce/page-examples/checkout-pages",
+        "text": "Checkout Pages5 examples"
+      },
+      {
+        "href": "https://tailwindcss.com/plus/ui-blocks/ecommerce/page-examples/order-detail-pages",
+        "text": "Order Detail Pages3 examples"
+      },
+      {
+        "href": "https://tailwindcss.com/plus/ui-blocks/ecommerce/page-examples/order-history-pages",
+        "text": "Order History Pages5 examples"
+      },
+      {
+        "href": "https://tailwindcss.com/plus/ui-blocks/marketing/sections/heroes",
+        "text": "Hero Sections"
+      },
+      {
+        "href": "https://tailwindcss.com/plus/ui-blocks/marketing/sections/feature-sections",
+        "text": "Feature Sections"
+      },
+      {
+        "href": "https://tailwindcss.com/plus/ui-blocks/marketing/sections/pricing",
+        "text": "Pricing Sections"
+      },
+      {
+        "href": "https://tailwindcss.com/plus/ui-blocks/marketing/sections/header",
+        "text": "Header Sections"
+      },
+      {
+        "href": "https://tailwindcss.com/plus/ui-blocks/marketing/sections/newsletter-sections",
+        "text": "Newsletter Sections"
+      },
+      {
+        "href": "https://tailwindcss.com/plus/ui-blocks/marketing/sections/testimonials",
+        "text": "Testimonials"
+      },
+      {
+        "href": "https://tailwindcss.com/plus/ui-blocks/marketing/sections/team-sections",
+        "text": "Team Sections"
+      },
+      {
+        "href": "https://tailwindcss.com/plus/ui-blocks/marketing/sections/content-sections",
+        "text": "Content Sections"
+      },
+      {
+        "href": "https://tailwindcss.com/plus/ui-blocks/marketing/sections/logo-clouds",
+        "text": "Logo Clouds"
+      },
+      {
+        "href": "https://tailwindcss.com/plus/ui-blocks/marketing/sections/faq-sections",
+        "text": "FAQs"
+      },
+      {
+        "href": "https://tailwindcss.com/plus/ui-blocks/marketing/sections/footers",
+        "text": "Footers"
+      },
+      {
+        "href": "https://tailwindcss.com/plus/ui-blocks/marketing/sections/header",
+        "text": "Headers"
+      },
+      {
+        "href": "https://tailwindcss.com/plus/ui-blocks/marketing/elements/flyout-menus",
+        "text": "Flyout Menus"
+      },
+      {
+        "href": "https://tailwindcss.com/plus/ui-blocks/marketing/elements/banners",
+        "text": "Banners"
+      },
+      {
+        "href": "https://tailwindcss.com/plus/ui-blocks/marketing",
+        "text": "Browse all →"
+      },
+      {
+        "href": "https://tailwindcss.com/plus/ui-blocks/application-ui/lists/tables",
+        "text": "Tables"
+      },
+      {
+        "href": "https://tailwindcss.com/plus/ui-blocks/application-ui/lists/feeds",
+        "text": "Feeds"
+      },
+      {
+        "href": "https://tailwindcss.com/plus/ui-blocks/application-ui/forms/form-layouts",
+        "text": "Form Layouts"
+      },
+      {
+        "href": "https://tailwindcss.com/plus/ui-blocks/application-ui/forms/select-menus",
+        "text": "Select Menus"
+      },
+      {
+        "href": "https://tailwindcss.com/plus/ui-blocks/application-ui/forms/radio-groups",
+        "text": "Radio Groups"
+      },
+      {
+        "href": "https://tailwindcss.com/plus/ui-blocks/application-ui/forms/checkboxes",
+        "text": "Checkboxes"
+      },
+      {
+        "href": "https://tailwindcss.com/plus/ui-blocks/application-ui/forms/comboboxes",
+        "text": "Comboboxes"
+      },
+      {
+        "href": "https://tailwindcss.com/plus/ui-blocks/application-ui/navigation/navbars",
+        "text": "Navbars"
+      },
+      {
+        "href": "https://tailwindcss.com/plus/ui-blocks/application-ui/navigation/pagination",
+        "text": "Pagination"
+      },
+      {
+        "href": "https://tailwindcss.com/plus/ui-blocks/application-ui/navigation/sidebar-navigation",
+        "text": "Sidebar Navigation"
+      },
+      {
+        "href": "https://tailwindcss.com/plus/ui-blocks/application-ui/navigation/command-palettes",
+        "text": "Command Palettes"
+      },
+      {
+        "href": "https://tailwindcss.com/plus/ui-blocks/application-ui/overlays/modal-dialogs",
+        "text": "Modals"
+      },
+      {
+        "href": "https://tailwindcss.com/plus/ui-blocks/application-ui/elements/dropdowns",
+        "text": "Dropdowns"
+      },
+      {
+        "href": "https://tailwindcss.com/plus/ui-blocks/application-ui/elements/buttons",
+        "text": "Buttons"
+      },
+      {
+        "href": "https://tailwindcss.com/plus/ui-blocks/application-ui",
+        "text": "Browse all →"
+      },
+      {
+        "href": "https://tailwindcss.com/plus/ui-blocks/ecommerce/components/product-overviews",
+        "text": "Product Overviews"
+      },
+      {
+        "href": "https://tailwindcss.com/plus/ui-blocks/ecommerce/components/product-lists",
+        "text": "Product Lists"
+      },
+      {
+        "href": "https://tailwindcss.com/plus/ui-blocks/ecommerce/components/category-previews",
+        "text": "Category Previews"
+      },
+      {
+        "href": "https://tailwindcss.com/plus/ui-blocks/ecommerce/components/shopping-carts",
+        "text": "Shopping Carts"
+      },
+      {
+        "href": "https://tailwindcss.com/plus/ui-blocks/ecommerce/components/category-filters",
+        "text": "Category Filters"
+      },
+      {
+        "href": "https://tailwindcss.com/plus/ui-blocks/ecommerce/components/product-quickviews",
+        "text": "Product Quickviews"
+      },
+      {
+        "href": "https://tailwindcss.com/plus/ui-blocks/ecommerce/components/product-features",
+        "text": "Product Features"
+      },
+      {
+        "href": "https://tailwindcss.com/plus/ui-blocks/ecommerce/components/store-navigation",
+        "text": "Store Navigation"
+      },
+      {
+        "href": "https://tailwindcss.com/plus/ui-blocks/ecommerce/components/promo-sections",
+        "text": "Promo Sections"
+      },
+      {
+        "href": "https://tailwindcss.com/plus/ui-blocks/ecommerce/components/checkout-forms",
+        "text": "Checkout Forms"
+      },
+      {
+        "href": "https://tailwindcss.com/plus/ui-blocks/ecommerce/components/reviews",
+        "text": "Reviews"
+      },
+      {
+        "href": "https://tailwindcss.com/plus/ui-blocks/ecommerce/components/order-summaries",
+        "text": "Order Summaries"
+      },
+      {
+        "href": "https://tailwindcss.com/plus/ui-blocks/ecommerce/components/order-history",
+        "text": "Order History"
+      },
+      {
+        "href": "https://tailwindcss.com/plus/ui-blocks/ecommerce/components/incentives",
+        "text": "Incentives"
+      },
+      {
+        "href": "https://tailwindcss.com/plus/ui-blocks/ecommerce",
+        "text": "Browse all →"
+      },
+      {
+        "href": "https://tailwindcss.com/plus/templates/catalyst",
+        "text": "Catalyst UI Kit"
+      },
+      {
+        "href": "https://tailwindcss.com/plus/templates/spotlight",
+        "text": "Personal Website Template"
+      },
+      {
+        "href": "https://tailwindcss.com/plus/templates/salient",
+        "text": "Landing Page Template"
+      },
+      {
+        "href": "https://tailwindcss.com/plus/templates/protocol",
+        "text": "API Reference Template"
+      },
+      {
+        "href": "https://tailwindcss.com/plus/templates/commit",
+        "text": "Changelog Template"
+      },
+      {
+        "href": "https://tailwindcss.com/plus/templates/primer",
+        "text": "Info Product Template"
+      },
+      {
+        "href": "https://tailwindcss.com/plus/templates/studio",
+        "text": "Agency Template"
+      },
+      {
+        "href": "https://tailwindcss.com/plus/templates/transmit",
+        "text": "Podcast Template"
+      },
+      {
+        "href": "https://tailwindcss.com/plus/templates/pocket",
+        "text": "App Marketing Template"
+      },
+      {
+        "href": "https://tailwindcss.com/plus/templates/syntax",
+        "text": "Documentation Template"
+      },
+      {
+        "href": "https://tailwindcss.com/plus/templates/keynote",
+        "text": "Conference Template"
+      },
+      {
+        "href": "https://tailwindcss.com/plus/templates",
+        "text": "Browse all →"
+      },
+      {
+        "href": "https://tailwindcss.com/plus/privacy-policy",
+        "text": "Privacy policy"
+      },
+      {
+        "href": "https://tailwindcss.com/plus/changelog",
+        "text": "Changelog"
+      }
+    ],
+    "paySignals": [
+      "Get full access",
+      "Sign in",
+      "Preview"
+    ],
+    "title": "Ecommerce components - Official Tailwind UI components",
+    "url": "https://tailwindcss.com/plus/ui-blocks/ecommerce"
+  },
+  {
+    "slug": "templates",
+    "screenshotPath": "C:\\Users\\yusun\\projects\\ui-dictionary\\docs\\research\\assets\\tailwind-plus-live-2026-07-01\\templates-viewport.png",
+    "bodySample": "Introducing Oatmeal Our new multi-theme marketing site kit UI Blocks Templates UI Kit Sign in Get full access TEMPLATES BY THE MAKERS OF TAILWIND CSS Modern website templates, crafted with Tailwind CSS. React Next.js Visually-stunning, easy to customize site templates built with React and Next.js. The perfect starting point for your next project and the ultimate resource for learning how experts build real websites with Tailwind CSS. Browse templates Get everything with Tailwind Plus TEMPLATES Oatmeal SaaS marketing kit A calm marketing site kit with multiple themes, flexible enough for any project. US$99 or included with Tailwind Plus Spotlight Personal website template A personal website so nice you’ll actually be inspired to publish on it. US$99 or included with Tailwind Plus Radiant SaaS marketing template A beautiful multi-page marketing website for your SaaS business. US$99 or included with Tailwind Plus Compass Course template A clean and sophisticated starter kit for publishing your own online course. US$99 or included with Tailwind Plus Salient SaaS marketing template A beautiful SaaS landing page to announce your next big idea. US$99 or included with Tailwind Plus Studio Agency template Showcase your work and find new clients with this sophisticated agency template. US$99 or included with Tailwind Plus Primer Info product template A stunning landing page for your firs",
+    "buttons": [],
+    "headings": [
+      {
+        "tag": "H1",
+        "text": "Modern website templates, crafted with Tailwind CSS."
+      },
+      {
+        "tag": "H3",
+        "text": "Oatmeal"
+      },
+      {
+        "tag": "H3",
+        "text": "Spotlight"
+      },
+      {
+        "tag": "H3",
+        "text": "Radiant"
+      },
+      {
+        "tag": "H3",
+        "text": "Compass"
+      },
+      {
+        "tag": "H3",
+        "text": "Salient"
+      },
+      {
+        "tag": "H3",
+        "text": "Studio"
+      },
+      {
+        "tag": "H3",
+        "text": "Primer"
+      },
+      {
+        "tag": "H3",
+        "text": "Protocol"
+      },
+      {
+        "tag": "H3",
+        "text": "Commit"
+      },
+      {
+        "tag": "H3",
+        "text": "Transmit"
+      },
+      {
+        "tag": "H3",
+        "text": "Pocket"
+      },
+      {
+        "tag": "H3",
+        "text": "Syntax"
+      },
+      {
+        "tag": "H3",
+        "text": "Keynote"
+      },
+      {
+        "tag": "H3",
+        "text": "Marketing"
+      },
+      {
+        "tag": "H3",
+        "text": "Application UI"
+      },
+      {
+        "tag": "H3",
+        "text": "Ecommerce"
+      },
+      {
+        "tag": "H3",
+        "text": "Templates & UI Kits"
+      }
+    ],
+    "links": [
+      {
+        "href": "https://tailwindcss.com/plus",
+        "text": ""
+      },
+      {
+        "href": "https://tailwindcss.com/plus/kits/oatmeal",
+        "text": "Introducing OatmealOur new multi-theme marketing site kit"
+      },
+      {
+        "href": "https://tailwindcss.com/plus/ui-blocks",
+        "text": "UI Blocks"
+      },
+      {
+        "href": "https://tailwindcss.com/plus/templates",
+        "text": "Templates"
+      },
+      {
+        "href": "https://tailwindcss.com/plus/ui-kit",
+        "text": "UI Kit"
+      },
+      {
+        "href": "https://tailwindcss.com/plus/login",
+        "text": "Sign in"
+      },
+      {
+        "href": "https://tailwindcss.com/plus#pricing",
+        "text": "Get full access"
+      },
+      {
+        "href": "https://tailwindcss.com/plus/templates#browse",
+        "text": "Browse templates"
+      },
+      {
+        "href": "https://tailwindcss.com/plus#pricing",
+        "text": "Get everything with Tailwind Plus"
+      },
+      {
+        "href": "https://tailwindcss.com/plus/templates/oatmeal",
+        "text": "Oatmeal"
+      },
+      {
+        "href": "https://tailwindcss.com/plus/templates/spotlight",
+        "text": "Spotlight"
+      },
+      {
+        "href": "https://tailwindcss.com/plus/templates/radiant",
+        "text": "Radiant"
+      },
+      {
+        "href": "https://tailwindcss.com/plus/templates/compass",
+        "text": "Compass"
+      },
+      {
+        "href": "https://tailwindcss.com/plus/templates/salient",
+        "text": "Salient"
+      },
+      {
+        "href": "https://tailwindcss.com/plus/templates/studio",
+        "text": "Studio"
+      },
+      {
+        "href": "https://tailwindcss.com/plus/templates/primer",
+        "text": "Primer"
+      },
+      {
+        "href": "https://tailwindcss.com/plus/templates/protocol",
+        "text": "Protocol"
+      },
+      {
+        "href": "https://tailwindcss.com/plus/templates/commit",
+        "text": "Commit"
+      },
+      {
+        "href": "https://tailwindcss.com/plus/templates/transmit",
+        "text": "Transmit"
+      },
+      {
+        "href": "https://tailwindcss.com/plus/templates/pocket",
+        "text": "Pocket"
+      },
+      {
+        "href": "https://tailwindcss.com/plus/templates/syntax",
+        "text": "Syntax"
+      },
+      {
+        "href": "https://tailwindcss.com/plus/templates/keynote",
+        "text": "Keynote"
+      },
+      {
+        "href": "https://tailwindcss.com/plus/ui-blocks/marketing/sections/heroes",
+        "text": "Hero Sections"
+      },
+      {
+        "href": "https://tailwindcss.com/plus/ui-blocks/marketing/sections/feature-sections",
+        "text": "Feature Sections"
+      },
+      {
+        "href": "https://tailwindcss.com/plus/ui-blocks/marketing/sections/pricing",
+        "text": "Pricing Sections"
+      },
+      {
+        "href": "https://tailwindcss.com/plus/ui-blocks/marketing/sections/header",
+        "text": "Header Sections"
+      },
+      {
+        "href": "https://tailwindcss.com/plus/ui-blocks/marketing/sections/newsletter-sections",
+        "text": "Newsletter Sections"
+      },
+      {
+        "href": "https://tailwindcss.com/plus/ui-blocks/marketing/sections/testimonials",
+        "text": "Testimonials"
+      },
+      {
+        "href": "https://tailwindcss.com/plus/ui-blocks/marketing/sections/team-sections",
+        "text": "Team Sections"
+      },
+      {
+        "href": "https://tailwindcss.com/plus/ui-blocks/marketing/sections/content-sections",
+        "text": "Content Sections"
+      },
+      {
+        "href": "https://tailwindcss.com/plus/ui-blocks/marketing/sections/logo-clouds",
+        "text": "Logo Clouds"
+      },
+      {
+        "href": "https://tailwindcss.com/plus/ui-blocks/marketing/sections/faq-sections",
+        "text": "FAQs"
+      },
+      {
+        "href": "https://tailwindcss.com/plus/ui-blocks/marketing/sections/footers",
+        "text": "Footers"
+      },
+      {
+        "href": "https://tailwindcss.com/plus/ui-blocks/marketing/sections/header",
+        "text": "Headers"
+      },
+      {
+        "href": "https://tailwindcss.com/plus/ui-blocks/marketing/elements/flyout-menus",
+        "text": "Flyout Menus"
+      },
+      {
+        "href": "https://tailwindcss.com/plus/ui-blocks/marketing/elements/banners",
+        "text": "Banners"
+      },
+      {
+        "href": "https://tailwindcss.com/plus/ui-blocks/marketing",
+        "text": "Browse all →"
+      },
+      {
+        "href": "https://tailwindcss.com/plus/ui-blocks/application-ui/lists/tables",
+        "text": "Tables"
+      },
+      {
+        "href": "https://tailwindcss.com/plus/ui-blocks/application-ui/lists/feeds",
+        "text": "Feeds"
+      },
+      {
+        "href": "https://tailwindcss.com/plus/ui-blocks/application-ui/forms/form-layouts",
+        "text": "Form Layouts"
+      },
+      {
+        "href": "https://tailwindcss.com/plus/ui-blocks/application-ui/forms/select-menus",
+        "text": "Select Menus"
+      },
+      {
+        "href": "https://tailwindcss.com/plus/ui-blocks/application-ui/forms/radio-groups",
+        "text": "Radio Groups"
+      },
+      {
+        "href": "https://tailwindcss.com/plus/ui-blocks/application-ui/forms/checkboxes",
+        "text": "Checkboxes"
+      },
+      {
+        "href": "https://tailwindcss.com/plus/ui-blocks/application-ui/forms/comboboxes",
+        "text": "Comboboxes"
+      },
+      {
+        "href": "https://tailwindcss.com/plus/ui-blocks/application-ui/navigation/navbars",
+        "text": "Navbars"
+      },
+      {
+        "href": "https://tailwindcss.com/plus/ui-blocks/application-ui/navigation/pagination",
+        "text": "Pagination"
+      },
+      {
+        "href": "https://tailwindcss.com/plus/ui-blocks/application-ui/navigation/sidebar-navigation",
+        "text": "Sidebar Navigation"
+      },
+      {
+        "href": "https://tailwindcss.com/plus/ui-blocks/application-ui/navigation/command-palettes",
+        "text": "Command Palettes"
+      },
+      {
+        "href": "https://tailwindcss.com/plus/ui-blocks/application-ui/overlays/modal-dialogs",
+        "text": "Modals"
+      },
+      {
+        "href": "https://tailwindcss.com/plus/ui-blocks/application-ui/elements/dropdowns",
+        "text": "Dropdowns"
+      },
+      {
+        "href": "https://tailwindcss.com/plus/ui-blocks/application-ui/elements/buttons",
+        "text": "Buttons"
+      },
+      {
+        "href": "https://tailwindcss.com/plus/ui-blocks/application-ui",
+        "text": "Browse all →"
+      },
+      {
+        "href": "https://tailwindcss.com/plus/ui-blocks/ecommerce/components/product-overviews",
+        "text": "Product Overviews"
+      },
+      {
+        "href": "https://tailwindcss.com/plus/ui-blocks/ecommerce/components/product-lists",
+        "text": "Product Lists"
+      },
+      {
+        "href": "https://tailwindcss.com/plus/ui-blocks/ecommerce/components/category-previews",
+        "text": "Category Previews"
+      },
+      {
+        "href": "https://tailwindcss.com/plus/ui-blocks/ecommerce/components/shopping-carts",
+        "text": "Shopping Carts"
+      },
+      {
+        "href": "https://tailwindcss.com/plus/ui-blocks/ecommerce/components/category-filters",
+        "text": "Category Filters"
+      },
+      {
+        "href": "https://tailwindcss.com/plus/ui-blocks/ecommerce/components/product-quickviews",
+        "text": "Product Quickviews"
+      },
+      {
+        "href": "https://tailwindcss.com/plus/ui-blocks/ecommerce/components/product-features",
+        "text": "Product Features"
+      },
+      {
+        "href": "https://tailwindcss.com/plus/ui-blocks/ecommerce/components/store-navigation",
+        "text": "Store Navigation"
+      },
+      {
+        "href": "https://tailwindcss.com/plus/ui-blocks/ecommerce/components/promo-sections",
+        "text": "Promo Sections"
+      },
+      {
+        "href": "https://tailwindcss.com/plus/ui-blocks/ecommerce/components/checkout-forms",
+        "text": "Checkout Forms"
+      },
+      {
+        "href": "https://tailwindcss.com/plus/ui-blocks/ecommerce/components/reviews",
+        "text": "Reviews"
+      },
+      {
+        "href": "https://tailwindcss.com/plus/ui-blocks/ecommerce/components/order-summaries",
+        "text": "Order Summaries"
+      },
+      {
+        "href": "https://tailwindcss.com/plus/ui-blocks/ecommerce/components/order-history",
+        "text": "Order History"
+      },
+      {
+        "href": "https://tailwindcss.com/plus/ui-blocks/ecommerce/components/incentives",
+        "text": "Incentives"
+      },
+      {
+        "href": "https://tailwindcss.com/plus/ui-blocks/ecommerce",
+        "text": "Browse all →"
+      },
+      {
+        "href": "https://tailwindcss.com/plus/templates/catalyst",
+        "text": "Catalyst UI Kit"
+      },
+      {
+        "href": "https://tailwindcss.com/plus/templates/spotlight",
+        "text": "Personal Website Template"
+      },
+      {
+        "href": "https://tailwindcss.com/plus/templates/salient",
+        "text": "Landing Page Template"
+      },
+      {
+        "href": "https://tailwindcss.com/plus/templates/protocol",
+        "text": "API Reference Template"
+      },
+      {
+        "href": "https://tailwindcss.com/plus/templates/commit",
+        "text": "Changelog Template"
+      },
+      {
+        "href": "https://tailwindcss.com/plus/templates/primer",
+        "text": "Info Product Template"
+      },
+      {
+        "href": "https://tailwindcss.com/plus/templates/studio",
+        "text": "Agency Template"
+      },
+      {
+        "href": "https://tailwindcss.com/plus/templates/transmit",
+        "text": "Podcast Template"
+      },
+      {
+        "href": "https://tailwindcss.com/plus/templates/pocket",
+        "text": "App Marketing Template"
+      },
+      {
+        "href": "https://tailwindcss.com/plus/templates/syntax",
+        "text": "Documentation Template"
+      },
+      {
+        "href": "https://tailwindcss.com/plus/templates/keynote",
+        "text": "Conference Template"
+      },
+      {
+        "href": "https://tailwindcss.com/plus/templates",
+        "text": "Browse all →"
+      },
+      {
+        "href": "https://tailwindcss.com/plus/privacy-policy",
+        "text": "Privacy policy"
+      },
+      {
+        "href": "https://tailwindcss.com/plus/changelog",
+        "text": "Changelog"
+      }
+    ],
+    "paySignals": [
+      "Get full access",
+      "Sign in",
+      "Preview"
+    ],
+    "title": "Tailwind CSS Templates - Tailwind Plus",
+    "url": "https://tailwindcss.com/plus/templates"
+  },
+  {
+    "slug": "ui-kit",
+    "screenshotPath": "C:\\Users\\yusun\\projects\\ui-dictionary\\docs\\research\\assets\\tailwind-plus-live-2026-07-01\\ui-kit-viewport.png",
+    "bodySample": "Introducing Oatmeal Our new multi-theme marketing site kit UI Blocks Templates UI Kit Sign in Get full access UI KIT BY THE MAKERS OF TAILWIND CSS Meet Catalyst, a beautiful, UI kit built with React and Tailwind CSS React Headless UI Move as fast as you can with a UI library without compromising on your own vision with modern UI components that are part of your own codebase. Documentation Get UI kit Every pixel designed with intent Not too trendy, not too plain — Catalyst finds the perfect middle ground, blending depth, clarity, and motion into an interface that’s as intuitive as it is beautiful. Live preview BUILT FOR DEVELOPERS What’s included Catalyst is a modern application UI kit built with Tailwind CSS, Headless UI and React, designed and built by the Tailwind CSS team. It's a collection of beautiful, production-ready UI components you drop into your projects alongside your own code that are yours to customize, adapt, and make your own. Skip all the time you'd spend building your own buttons, form controls, dialogs, tables, dropdown menus, and more and hit the ground running with carefully crafted component APIs that are a delight to use. Built by experts — you can trust that all of the code is written following Tailwind CSS best practices, because it’s written by the same team who created and maintain the framework. Easy to customize — everything is styled with utility c",
+    "buttons": [],
+    "headings": [
+      {
+        "tag": "H1",
+        "text": "Meet Catalyst, a beautiful, UI kit built with React and Tailwind CSS"
+      },
+      {
+        "tag": "H2",
+        "text": "Every pixel designed with intent"
+      },
+      {
+        "tag": "H2",
+        "text": "What’s included"
+      },
+      {
+        "tag": "H2",
+        "text": "The technology"
+      },
+      {
+        "tag": "H2",
+        "text": "A starter kit for building your own component systems"
+      },
+      {
+        "tag": "H2",
+        "text": "Pricing"
+      },
+      {
+        "tag": "H2",
+        "text": "Testimonials"
+      },
+      {
+        "tag": "H2",
+        "text": "Frequently asked questions"
+      },
+      {
+        "tag": "H3",
+        "text": "General"
+      },
+      {
+        "tag": "H3",
+        "text": "Compatibility"
+      },
+      {
+        "tag": "H3",
+        "text": "Licensing"
+      },
+      {
+        "tag": "H3",
+        "text": "Support"
+      },
+      {
+        "tag": "H3",
+        "text": "Marketing"
+      },
+      {
+        "tag": "H3",
+        "text": "Application UI"
+      },
+      {
+        "tag": "H3",
+        "text": "Ecommerce"
+      },
+      {
+        "tag": "H3",
+        "text": "Templates & UI Kits"
+      }
+    ],
+    "links": [
+      {
+        "href": "https://tailwindcss.com/plus",
+        "text": ""
+      },
+      {
+        "href": "https://tailwindcss.com/plus/kits/oatmeal",
+        "text": "Introducing OatmealOur new multi-theme marketing site kit"
+      },
+      {
+        "href": "https://tailwindcss.com/plus/ui-blocks",
+        "text": "UI Blocks"
+      },
+      {
+        "href": "https://tailwindcss.com/plus/templates",
+        "text": "Templates"
+      },
+      {
+        "href": "https://tailwindcss.com/plus/ui-kit",
+        "text": "UI Kit"
+      },
+      {
+        "href": "https://tailwindcss.com/plus/login",
+        "text": "Sign in"
+      },
+      {
+        "href": "https://tailwindcss.com/plus#pricing",
+        "text": "Get full access"
+      },
+      {
+        "href": "https://catalyst.tailwindui.com/docs",
+        "text": "Documentation"
+      },
+      {
+        "href": "https://tailwindcss.com/plus/ui-kit#pricing",
+        "text": "Get UI kit"
+      },
+      {
+        "href": "https://catalyst-demo.tailwindui.com/",
+        "text": "Live preview"
+      },
+      {
+        "href": "https://catalyst.tailwindui.com/docs/button",
+        "text": "Button"
+      },
+      {
+        "href": "https://catalyst.tailwindui.com/docs/input",
+        "text": "Input"
+      },
+      {
+        "href": "https://catalyst.tailwindui.com/docs/table",
+        "text": "Table"
+      },
+      {
+        "href": "https://catalyst.tailwindui.com/docs/sidebar",
+        "text": "Sidebar"
+      },
+      {
+        "href": "https://catalyst.tailwindui.com/docs/checkbox",
+        "text": "Checkbox"
+      },
+      {
+        "href": "https://catalyst.tailwindui.com/docs/combobox",
+        "text": "Combobox"
+      },
+      {
+        "href": "https://catalyst.tailwindui.com/docs/radio",
+        "text": "Radio groups"
+      },
+      {
+        "href": "https://catalyst.tailwindui.com/docs/switch",
+        "text": "Switch"
+      },
+      {
+        "href": "https://catalyst.tailwindui.com/docs/description-list",
+        "text": "Description list"
+      },
+      {
+        "href": "https://catalyst.tailwindui.com/docs/badge",
+        "text": "Badge"
+      },
+      {
+        "href": "https://catalyst.tailwindui.com/docs/listbox",
+        "text": "Listbox"
+      },
+      {
+        "href": "https://catalyst.tailwindui.com/docs/pagination",
+        "text": "Pagination"
+      },
+      {
+        "href": "https://catalyst.tailwindui.com/docs/dropdown",
+        "text": "Dropdown"
+      },
+      {
+        "href": "https://catalyst.tailwindui.com/docs/alert",
+        "text": "Alert"
+      },
+      {
+        "href": "https://catalyst.tailwindui.com/docs/navbar",
+        "text": "Navbar"
+      },
+      {
+        "href": "https://catalyst.tailwindui.com/docs/avatar",
+        "text": "Avatar"
+      },
+      {
+        "href": "https://catalyst.tailwindui.com/docs/divider",
+        "text": "Divider"
+      },
+      {
+        "href": "https://catalyst.tailwindui.com/docs/textarea",
+        "text": "Textarea"
+      },
+      {
+        "href": "https://catalyst.tailwindui.com/docs/heading",
+        "text": "Heading"
+      },
+      {
+        "href": "https://catalyst.tailwindui.com/docs/text",
+        "text": "Text"
+      },
+      {
+        "href": "https://catalyst.tailwindui.com/docs/fieldset",
+        "text": "Fieldset"
+      },
+      {
+        "href": "https://catalyst.tailwindui.com/docs/dialog",
+        "text": "Dialog"
+      },
+      {
+        "href": "https://catalyst.tailwindui.com/docs/sidebar-layout",
+        "text": "Sidebar layout"
+      },
+      {
+        "href": "https://catalyst.tailwindui.com/docs/stacked-layout",
+        "text": "Stacked layout"
+      },
+      {
+        "href": "https://catalyst.tailwindui.com/docs/auth-layout",
+        "text": "Auth layout"
+      },
+      {
+        "href": "https://tailwindcss.com/plus/checkout/237c84cc-13fd-4ca0-b5ac-d5d0a0ea6ac6",
+        "text": "Get UI kit"
+      },
+      {
+        "href": "https://tailwindcss.com/plus#pricing",
+        "text": "Get Tailwind Plus"
+      },
+      {
+        "href": "https://savvycal.com/",
+        "text": "SavvyCal"
+      },
+      {
+        "href": "https://laravel.com/",
+        "text": "Laravel"
+      },
+      {
+        "href": "https://tailwindcss.com/plus/license",
+        "text": "read through our license"
+      },
+      {
+        "href": "https://tailwindcss.com/plus/license",
+        "text": "read through our license"
+      },
+      {
+        "href": "https://tailwindcss.com/plus/license",
+        "text": "read through our license"
+      },
+      {
+        "href": "https://tailwindcss.com/plus/license",
+        "text": "read through our license"
+      },
+      {
+        "href": "https://tailwindcss.com/plus/license",
+        "text": "read through our license"
+      },
+      {
+        "href": "mailto:support@tailwindcss.com",
+        "text": "support@tailwindcss.com"
+      },
+      {
+        "href": "https://tailwindcss.com/plus/ui-blocks/marketing/sections/heroes",
+        "text": "Hero Sections"
+      },
+      {
+        "href": "https://tailwindcss.com/plus/ui-blocks/marketing/sections/feature-sections",
+        "text": "Feature Sections"
+      },
+      {
+        "href": "https://tailwindcss.com/plus/ui-blocks/marketing/sections/pricing",
+        "text": "Pricing Sections"
+      },
+      {
+        "href": "https://tailwindcss.com/plus/ui-blocks/marketing/sections/header",
+        "text": "Header Sections"
+      },
+      {
+        "href": "https://tailwindcss.com/plus/ui-blocks/marketing/sections/newsletter-sections",
+        "text": "Newsletter Sections"
+      },
+      {
+        "href": "https://tailwindcss.com/plus/ui-blocks/marketing/sections/testimonials",
+        "text": "Testimonials"
+      },
+      {
+        "href": "https://tailwindcss.com/plus/ui-blocks/marketing/sections/team-sections",
+        "text": "Team Sections"
+      },
+      {
+        "href": "https://tailwindcss.com/plus/ui-blocks/marketing/sections/content-sections",
+        "text": "Content Sections"
+      },
+      {
+        "href": "https://tailwindcss.com/plus/ui-blocks/marketing/sections/logo-clouds",
+        "text": "Logo Clouds"
+      },
+      {
+        "href": "https://tailwindcss.com/plus/ui-blocks/marketing/sections/faq-sections",
+        "text": "FAQs"
+      },
+      {
+        "href": "https://tailwindcss.com/plus/ui-blocks/marketing/sections/footers",
+        "text": "Footers"
+      },
+      {
+        "href": "https://tailwindcss.com/plus/ui-blocks/marketing/sections/header",
+        "text": "Headers"
+      },
+      {
+        "href": "https://tailwindcss.com/plus/ui-blocks/marketing/elements/flyout-menus",
+        "text": "Flyout Menus"
+      },
+      {
+        "href": "https://tailwindcss.com/plus/ui-blocks/marketing/elements/banners",
+        "text": "Banners"
+      },
+      {
+        "href": "https://tailwindcss.com/plus/ui-blocks/marketing",
+        "text": "Browse all →"
+      },
+      {
+        "href": "https://tailwindcss.com/plus/ui-blocks/application-ui/lists/tables",
+        "text": "Tables"
+      },
+      {
+        "href": "https://tailwindcss.com/plus/ui-blocks/application-ui/lists/feeds",
+        "text": "Feeds"
+      },
+      {
+        "href": "https://tailwindcss.com/plus/ui-blocks/application-ui/forms/form-layouts",
+        "text": "Form Layouts"
+      },
+      {
+        "href": "https://tailwindcss.com/plus/ui-blocks/application-ui/forms/select-menus",
+        "text": "Select Menus"
+      },
+      {
+        "href": "https://tailwindcss.com/plus/ui-blocks/application-ui/forms/radio-groups",
+        "text": "Radio Groups"
+      },
+      {
+        "href": "https://tailwindcss.com/plus/ui-blocks/application-ui/forms/checkboxes",
+        "text": "Checkboxes"
+      },
+      {
+        "href": "https://tailwindcss.com/plus/ui-blocks/application-ui/forms/comboboxes",
+        "text": "Comboboxes"
+      },
+      {
+        "href": "https://tailwindcss.com/plus/ui-blocks/application-ui/navigation/navbars",
+        "text": "Navbars"
+      },
+      {
+        "href": "https://tailwindcss.com/plus/ui-blocks/application-ui/navigation/pagination",
+        "text": "Pagination"
+      },
+      {
+        "href": "https://tailwindcss.com/plus/ui-blocks/application-ui/navigation/sidebar-navigation",
+        "text": "Sidebar Navigation"
+      },
+      {
+        "href": "https://tailwindcss.com/plus/ui-blocks/application-ui/navigation/command-palettes",
+        "text": "Command Palettes"
+      },
+      {
+        "href": "https://tailwindcss.com/plus/ui-blocks/application-ui/overlays/modal-dialogs",
+        "text": "Modals"
+      },
+      {
+        "href": "https://tailwindcss.com/plus/ui-blocks/application-ui/elements/dropdowns",
+        "text": "Dropdowns"
+      },
+      {
+        "href": "https://tailwindcss.com/plus/ui-blocks/application-ui/elements/buttons",
+        "text": "Buttons"
+      },
+      {
+        "href": "https://tailwindcss.com/plus/ui-blocks/application-ui",
+        "text": "Browse all →"
+      },
+      {
+        "href": "https://tailwindcss.com/plus/ui-blocks/ecommerce/components/product-overviews",
+        "text": "Product Overviews"
+      },
+      {
+        "href": "https://tailwindcss.com/plus/ui-blocks/ecommerce/components/product-lists",
+        "text": "Product Lists"
+      },
+      {
+        "href": "https://tailwindcss.com/plus/ui-blocks/ecommerce/components/category-previews",
+        "text": "Category Previews"
+      },
+      {
+        "href": "https://tailwindcss.com/plus/ui-blocks/ecommerce/components/shopping-carts",
+        "text": "Shopping Carts"
+      },
+      {
+        "href": "https://tailwindcss.com/plus/ui-blocks/ecommerce/components/category-filters",
+        "text": "Category Filters"
+      },
+      {
+        "href": "https://tailwindcss.com/plus/ui-blocks/ecommerce/components/product-quickviews",
+        "text": "Product Quickviews"
+      },
+      {
+        "href": "https://tailwindcss.com/plus/ui-blocks/ecommerce/components/product-features",
+        "text": "Product Features"
+      },
+      {
+        "href": "https://tailwindcss.com/plus/ui-blocks/ecommerce/components/store-navigation",
+        "text": "Store Navigation"
+      },
+      {
+        "href": "https://tailwindcss.com/plus/ui-blocks/ecommerce/components/promo-sections",
+        "text": "Promo Sections"
+      },
+      {
+        "href": "https://tailwindcss.com/plus/ui-blocks/ecommerce/components/checkout-forms",
+        "text": "Checkout Forms"
+      },
+      {
+        "href": "https://tailwindcss.com/plus/ui-blocks/ecommerce/components/reviews",
+        "text": "Reviews"
+      },
+      {
+        "href": "https://tailwindcss.com/plus/ui-blocks/ecommerce/components/order-summaries",
+        "text": "Order Summaries"
+      },
+      {
+        "href": "https://tailwindcss.com/plus/ui-blocks/ecommerce/components/order-history",
+        "text": "Order History"
+      },
+      {
+        "href": "https://tailwindcss.com/plus/ui-blocks/ecommerce/components/incentives",
+        "text": "Incentives"
+      },
+      {
+        "href": "https://tailwindcss.com/plus/ui-blocks/ecommerce",
+        "text": "Browse all →"
+      },
+      {
+        "href": "https://tailwindcss.com/plus/templates/catalyst",
+        "text": "Catalyst UI Kit"
+      },
+      {
+        "href": "https://tailwindcss.com/plus/templates/spotlight",
+        "text": "Personal Website Template"
+      },
+      {
+        "href": "https://tailwindcss.com/plus/templates/salient",
+        "text": "Landing Page Template"
+      },
+      {
+        "href": "https://tailwindcss.com/plus/templates/protocol",
+        "text": "API Reference Template"
+      },
+      {
+        "href": "https://tailwindcss.com/plus/templates/commit",
+        "text": "Changelog Template"
+      },
+      {
+        "href": "https://tailwindcss.com/plus/templates/primer",
+        "text": "Info Product Template"
+      },
+      {
+        "href": "https://tailwindcss.com/plus/templates/studio",
+        "text": "Agency Template"
+      },
+      {
+        "href": "https://tailwindcss.com/plus/templates/transmit",
+        "text": "Podcast Template"
+      },
+      {
+        "href": "https://tailwindcss.com/plus/templates/pocket",
+        "text": "App Marketing Template"
+      },
+      {
+        "href": "https://tailwindcss.com/plus/templates/syntax",
+        "text": "Documentation Template"
+      },
+      {
+        "href": "https://tailwindcss.com/plus/templates/keynote",
+        "text": "Conference Template"
+      },
+      {
+        "href": "https://tailwindcss.com/plus/templates",
+        "text": "Browse all →"
+      },
+      {
+        "href": "https://tailwindcss.com/plus/privacy-policy",
+        "text": "Privacy policy"
+      },
+      {
+        "href": "https://tailwindcss.com/plus/changelog",
+        "text": "Changelog"
+      }
+    ],
+    "paySignals": [
+      "Get full access",
+      "Sign in",
+      "Preview"
+    ],
+    "title": "Catalyst - Tailwind CSS Application UI Kit",
+    "url": "https://tailwindcss.com/plus/ui-kit"
+  },
+  {
+    "slug": "hero-sections-detail",
+    "screenshotPath": "C:\\Users\\yusun\\projects\\ui-dictionary\\docs\\research\\assets\\tailwind-plus-live-2026-07-01\\hero-sections-detail-viewport.png",
+    "bodySample": "Introducing Oatmeal Our new multi-theme marketing site kit UI Blocks Templates UI Kit Sign in Get full access Marketing Application UI Ecommerce Documentation PAGE SECTIONS Hero Sections Feature Sections CTA Sections Bento Grids Pricing Sections Header Sections Newsletter Sections Stats Testimonials Blog Sections Contact Sections Team Sections Content Sections Logo Clouds FAQs Footers ELEMENTS Headers Flyout Menus Banners FEEDBACK 404 Pages PAGE EXAMPLES Landing Pages Pricing Pages About Pages 5-DAY MINI-COURSE Build UIs that don’t suck. Short, tactical video lessons from the creator of Tailwind CSS, delivered directly to your inbox every day for a week. Get the free course UI BLOCKS / MARKETING / PAGE SECTIONS Hero Sections Use these Tailwind CSS hero section examples to add important messaging, product photos, and call-to-actions to the top of your website. These hero examples are designed and built by the Tailwind CSS team, and include a variety of different styles and layouts. Simple centered Preview Code HTML React Vue Split with screenshot Preview Get the code → Split with bordered screenshot Preview Get the code → Split with code example Preview Get the code → Simple centered with background image Preview Get the code → With bordered app screenshot Preview Get the code → With app screenshot Preview Get the code → With phone mockup Preview Get the code → Split with image ",
+    "buttons": [
+      "Preview",
+      "Code",
+      "Preview",
+      "Code"
+    ],
+    "headings": [
+      {
+        "tag": "H3",
+        "text": "Page Sections"
+      },
+      {
+        "tag": "H3",
+        "text": "Elements"
+      },
+      {
+        "tag": "H3",
+        "text": "Feedback"
+      },
+      {
+        "tag": "H3",
+        "text": "Page Examples"
+      },
+      {
+        "tag": "H3",
+        "text": "Build UIs that don’t suck."
+      },
+      {
+        "tag": "H1",
+        "text": "Hero Sections"
+      },
+      {
+        "tag": "H2",
+        "text": "Simple centered"
+      },
+      {
+        "tag": "H2",
+        "text": "Simple centered"
+      },
+      {
+        "tag": "H2",
+        "text": "Split with screenshot"
+      },
+      {
+        "tag": "H2",
+        "text": "Split with screenshot"
+      },
+      {
+        "tag": "H2",
+        "text": "Split with bordered screenshot"
+      },
+      {
+        "tag": "H2",
+        "text": "Split with bordered screenshot"
+      },
+      {
+        "tag": "H2",
+        "text": "Split with code example"
+      },
+      {
+        "tag": "H2",
+        "text": "Split with code example"
+      },
+      {
+        "tag": "H2",
+        "text": "Simple centered with background image"
+      },
+      {
+        "tag": "H2",
+        "text": "Simple centered with background image"
+      },
+      {
+        "tag": "H2",
+        "text": "With bordered app screenshot"
+      },
+      {
+        "tag": "H2",
+        "text": "With bordered app screenshot"
+      },
+      {
+        "tag": "H2",
+        "text": "With app screenshot"
+      },
+      {
+        "tag": "H2",
+        "text": "With app screenshot"
+      },
+      {
+        "tag": "H2",
+        "text": "With phone mockup"
+      },
+      {
+        "tag": "H2",
+        "text": "With phone mockup"
+      },
+      {
+        "tag": "H2",
+        "text": "Split with image"
+      },
+      {
+        "tag": "H2",
+        "text": "Split with image"
+      },
+      {
+        "tag": "H2",
+        "text": "With angled image on right"
+      },
+      {
+        "tag": "H2",
+        "text": "With angled image on right"
+      },
+      {
+        "tag": "H2",
+        "text": "With image tiles"
+      },
+      {
+        "tag": "H2",
+        "text": "With image tiles"
+      },
+      {
+        "tag": "H2",
+        "text": "With offset image"
+      },
+      {
+        "tag": "H2",
+        "text": "With offset image"
+      },
+      {
+        "tag": "H3",
+        "text": "Marketing"
+      },
+      {
+        "tag": "H3",
+        "text": "Application UI"
+      },
+      {
+        "tag": "H3",
+        "text": "Ecommerce"
+      },
+      {
+        "tag": "H3",
+        "text": "Templates & UI Kits"
+      }
+    ],
+    "links": [
+      {
+        "href": "https://tailwindcss.com/plus",
+        "text": ""
+      },
+      {
+        "href": "https://tailwindcss.com/plus/kits/oatmeal",
+        "text": "Introducing OatmealOur new multi-theme marketing site kit"
+      },
+      {
+        "href": "https://tailwindcss.com/plus/ui-blocks",
+        "text": "UI Blocks"
+      },
+      {
+        "href": "https://tailwindcss.com/plus/templates",
+        "text": "Templates"
+      },
+      {
+        "href": "https://tailwindcss.com/plus/ui-kit",
+        "text": "UI Kit"
+      },
+      {
+        "href": "https://tailwindcss.com/plus/login",
+        "text": "Sign in"
+      },
+      {
+        "href": "https://tailwindcss.com/plus#pricing",
+        "text": "Get full access"
+      },
+      {
+        "href": "https://tailwindcss.com/plus/ui-blocks/marketing",
+        "text": "Marketing"
+      },
+      {
+        "href": "https://tailwindcss.com/plus/ui-blocks/application-ui",
+        "text": "Application UI"
+      },
+      {
+        "href": "https://tailwindcss.com/plus/ui-blocks/ecommerce",
+        "text": "Ecommerce"
+      },
+      {
+        "href": "https://tailwindcss.com/plus/ui-blocks/documentation",
+        "text": "Documentation"
+      },
+      {
+        "href": "https://tailwindcss.com/plus/ui-blocks/marketing/sections/heroes",
+        "text": "Hero Sections"
+      },
+      {
+        "href": "https://tailwindcss.com/plus/ui-blocks/marketing/sections/feature-sections",
+        "text": "Feature Sections"
+      },
+      {
+        "href": "https://tailwindcss.com/plus/ui-blocks/marketing/sections/cta-sections",
+        "text": "CTA Sections"
+      },
+      {
+        "href": "https://tailwindcss.com/plus/ui-blocks/marketing/sections/bento-grids",
+        "text": "Bento Grids"
+      },
+      {
+        "href": "https://tailwindcss.com/plus/ui-blocks/marketing/sections/pricing",
+        "text": "Pricing Sections"
+      },
+      {
+        "href": "https://tailwindcss.com/plus/ui-blocks/marketing/sections/header",
+        "text": "Header Sections"
+      },
+      {
+        "href": "https://tailwindcss.com/plus/ui-blocks/marketing/sections/newsletter-sections",
+        "text": "Newsletter Sections"
+      },
+      {
+        "href": "https://tailwindcss.com/plus/ui-blocks/marketing/sections/stats-sections",
+        "text": "Stats"
+      },
+      {
+        "href": "https://tailwindcss.com/plus/ui-blocks/marketing/sections/testimonials",
+        "text": "Testimonials"
+      },
+      {
+        "href": "https://tailwindcss.com/plus/ui-blocks/marketing/sections/blog-sections",
+        "text": "Blog Sections"
+      },
+      {
+        "href": "https://tailwindcss.com/plus/ui-blocks/marketing/sections/contact-sections",
+        "text": "Contact Sections"
+      },
+      {
+        "href": "https://tailwindcss.com/plus/ui-blocks/marketing/sections/team-sections",
+        "text": "Team Sections"
+      },
+      {
+        "href": "https://tailwindcss.com/plus/ui-blocks/marketing/sections/content-sections",
+        "text": "Content Sections"
+      },
+      {
+        "href": "https://tailwindcss.com/plus/ui-blocks/marketing/sections/logo-clouds",
+        "text": "Logo Clouds"
+      },
+      {
+        "href": "https://tailwindcss.com/plus/ui-blocks/marketing/sections/faq-sections",
+        "text": "FAQs"
+      },
+      {
+        "href": "https://tailwindcss.com/plus/ui-blocks/marketing/sections/footers",
+        "text": "Footers"
+      },
+      {
+        "href": "https://tailwindcss.com/plus/ui-blocks/marketing/elements/headers",
+        "text": "Headers"
+      },
+      {
+        "href": "https://tailwindcss.com/plus/ui-blocks/marketing/elements/flyout-menus",
+        "text": "Flyout Menus"
+      },
+      {
+        "href": "https://tailwindcss.com/plus/ui-blocks/marketing/elements/banners",
+        "text": "Banners"
+      },
+      {
+        "href": "https://tailwindcss.com/plus/ui-blocks/marketing/feedback/404-pages",
+        "text": "404 Pages"
+      },
+      {
+        "href": "https://tailwindcss.com/plus/ui-blocks/marketing/page-examples/landing-pages",
+        "text": "Landing Pages"
+      },
+      {
+        "href": "https://tailwindcss.com/plus/ui-blocks/marketing/page-examples/pricing-pages",
+        "text": "Pricing Pages"
+      },
+      {
+        "href": "https://tailwindcss.com/plus/ui-blocks/marketing/page-examples/about-pages",
+        "text": "About Pages"
+      },
+      {
+        "href": "https://tailwindcss.com/build-uis-that-dont-suck",
+        "text": "Get the free course"
+      },
+      {
+        "href": "https://tailwindcss.com/plus/ui-blocks",
+        "text": "UI Blocks"
+      },
+      {
+        "href": "https://tailwindcss.com/plus/ui-blocks/marketing",
+        "text": "Marketing"
+      },
+      {
+        "href": "https://tailwindcss.com/plus/ui-blocks/marketing#product-marketing-sections",
+        "text": "Page Sections"
+      },
+      {
+        "href": "https://tailwindcss.com/plus/ui-blocks",
+        "text": "UI Blocks"
+      },
+      {
+        "href": "https://tailwindcss.com/plus/ui-blocks/marketing",
+        "text": "Marketing"
+      },
+      {
+        "href": "https://tailwindcss.com/plus/ui-blocks/marketing#product-marketing-sections",
+        "text": "Page Sections"
+      },
+      {
+        "href": "https://tailwindcss.com/plus/ui-blocks/marketing/sections/heroes#component-b9bcab4538776a17fff93d18f82a8272",
+        "text": "Simple centered"
+      },
+      {
+        "href": "https://tailwindcss.com/plus/ui-blocks/marketing/sections/heroes#component-b9bcab4538776a17fff93d18f82a8272-dark",
+        "text": "Simple centered"
+      },
+      {
+        "href": "https://tailwindcss.com/plus/ui-blocks/marketing/sections/heroes#component-54294e7b86ddf5371565dbdfd133d79c",
+        "text": "Split with screenshot"
+      },
+      {
+        "href": "https://tailwindcss.com/plus/ui-blocks#pricing",
+        "text": "Get the code →"
+      },
+      {
+        "href": "https://tailwindcss.com/plus/ui-blocks/marketing/sections/heroes#component-54294e7b86ddf5371565dbdfd133d79c-dark",
+        "text": "Split with screenshot"
+      },
+      {
+        "href": "https://tailwindcss.com/plus/ui-blocks#pricing",
+        "text": "Get the code →"
+      },
+      {
+        "href": "https://tailwindcss.com/plus/ui-blocks/marketing/sections/heroes#component-2652f5fb050435ca8d767d15a5800198",
+        "text": "Split with bordered screenshot"
+      },
+      {
+        "href": "https://tailwindcss.com/plus/ui-blocks#pricing",
+        "text": "Get the code →"
+      },
+      {
+        "href": "https://tailwindcss.com/plus/ui-blocks/marketing/sections/heroes#component-2652f5fb050435ca8d767d15a5800198-dark",
+        "text": "Split with bordered screenshot"
+      },
+      {
+        "href": "https://tailwindcss.com/plus/ui-blocks#pricing",
+        "text": "Get the code →"
+      },
+      {
+        "href": "https://tailwindcss.com/plus/ui-blocks/marketing/sections/heroes#component-dc7ca59e587aa00e4aa8d78f6ed8aff3",
+        "text": "Split with code example"
+      },
+      {
+        "href": "https://tailwindcss.com/plus/ui-blocks#pricing",
+        "text": "Get the code →"
+      },
+      {
+        "href": "https://tailwindcss.com/plus/ui-blocks/marketing/sections/heroes#component-dc7ca59e587aa00e4aa8d78f6ed8aff3-dark",
+        "text": "Split with code example"
+      },
+      {
+        "href": "https://tailwindcss.com/plus/ui-blocks#pricing",
+        "text": "Get the code →"
+      },
+      {
+        "href": "https://tailwindcss.com/plus/ui-blocks/marketing/sections/heroes#component-d63f5b5552a3f3d936c6ab970a47899b",
+        "text": "Simple centered with background image"
+      },
+      {
+        "href": "https://tailwindcss.com/plus/ui-blocks#pricing",
+        "text": "Get the code →"
+      },
+      {
+        "href": "https://tailwindcss.com/plus/ui-blocks/marketing/sections/heroes#component-d63f5b5552a3f3d936c6ab970a47899b-dark",
+        "text": "Simple centered with background image"
+      },
+      {
+        "href": "https://tailwindcss.com/plus/ui-blocks#pricing",
+        "text": "Get the code →"
+      },
+      {
+        "href": "https://tailwindcss.com/plus/ui-blocks/marketing/sections/heroes#component-112b08cb1de2593034dfced08f67250d",
+        "text": "With bordered app screenshot"
+      },
+      {
+        "href": "https://tailwindcss.com/plus/ui-blocks#pricing",
+        "text": "Get the code →"
+      },
+      {
+        "href": "https://tailwindcss.com/plus/ui-blocks/marketing/sections/heroes#component-112b08cb1de2593034dfced08f67250d-dark",
+        "text": "With bordered app screenshot"
+      },
+      {
+        "href": "https://tailwindcss.com/plus/ui-blocks#pricing",
+        "text": "Get the code →"
+      },
+      {
+        "href": "https://tailwindcss.com/plus/ui-blocks/marketing/sections/heroes#component-2b205c50497e231565b015fc1457839e",
+        "text": "With app screenshot"
+      },
+      {
+        "href": "https://tailwindcss.com/plus/ui-blocks#pricing",
+        "text": "Get the code →"
+      },
+      {
+        "href": "https://tailwindcss.com/plus/ui-blocks/marketing/sections/heroes#component-2b205c50497e231565b015fc1457839e-dark",
+        "text": "With app screenshot"
+      },
+      {
+        "href": "https://tailwindcss.com/plus/ui-blocks#pricing",
+        "text": "Get the code →"
+      },
+      {
+        "href": "https://tailwindcss.com/plus/ui-blocks/marketing/sections/heroes#component-816bf20fe4e1cd0cc2fefabfa6a6732b",
+        "text": "With phone mockup"
+      },
+      {
+        "href": "https://tailwindcss.com/plus/ui-blocks#pricing",
+        "text": "Get the code →"
+      },
+      {
+        "href": "https://tailwindcss.com/plus/ui-blocks/marketing/sections/heroes#component-816bf20fe4e1cd0cc2fefabfa6a6732b-dark",
+        "text": "With phone mockup"
+      },
+      {
+        "href": "https://tailwindcss.com/plus/ui-blocks#pricing",
+        "text": "Get the code →"
+      },
+      {
+        "href": "https://tailwindcss.com/plus/ui-blocks/marketing/sections/heroes#component-b88d7fac50000088285c185aba85b81a",
+        "text": "Split with image"
+      },
+      {
+        "href": "https://tailwindcss.com/plus/ui-blocks#pricing",
+        "text": "Get the code →"
+      },
+      {
+        "href": "https://tailwindcss.com/plus/ui-blocks/marketing/sections/heroes#component-b88d7fac50000088285c185aba85b81a-dark",
+        "text": "Split with image"
+      },
+      {
+        "href": "https://tailwindcss.com/plus/ui-blocks#pricing",
+        "text": "Get the code →"
+      },
+      {
+        "href": "https://tailwindcss.com/plus/ui-blocks/marketing/sections/heroes#component-a3c09c7a3b8f4bd90d280722eaff9634",
+        "text": "With angled image on right"
+      },
+      {
+        "href": "https://tailwindcss.com/plus/ui-blocks#pricing",
+        "text": "Get the code →"
+      },
+      {
+        "href": "https://tailwindcss.com/plus/ui-blocks/marketing/sections/heroes#component-a3c09c7a3b8f4bd90d280722eaff9634-dark",
+        "text": "With angled image on right"
+      },
+      {
+        "href": "https://tailwindcss.com/plus/ui-blocks#pricing",
+        "text": "Get the code →"
+      },
+      {
+        "href": "https://tailwindcss.com/plus/ui-blocks/marketing/sections/heroes#component-a4b2f622985371f413e0d6c13309d389",
+        "text": "With image tiles"
+      },
+      {
+        "href": "https://tailwindcss.com/plus/ui-blocks#pricing",
+        "text": "Get the code →"
+      },
+      {
+        "href": "https://tailwindcss.com/plus/ui-blocks/marketing/sections/heroes#component-a4b2f622985371f413e0d6c13309d389-dark",
+        "text": "With image tiles"
+      },
+      {
+        "href": "https://tailwindcss.com/plus/ui-blocks#pricing",
+        "text": "Get the code →"
+      },
+      {
+        "href": "https://tailwindcss.com/plus/ui-blocks/marketing/sections/heroes#component-1e0bb85307a6f85f730eb5cf8a813837",
+        "text": "With offset image"
+      },
+      {
+        "href": "https://tailwindcss.com/plus/ui-blocks#pricing",
+        "text": "Get the code →"
+      },
+      {
+        "href": "https://tailwindcss.com/plus/ui-blocks/marketing/sections/heroes#component-1e0bb85307a6f85f730eb5cf8a813837-dark",
+        "text": "With offset image"
+      },
+      {
+        "href": "https://tailwindcss.com/plus/ui-blocks#pricing",
+        "text": "Get the code →"
+      },
+      {
+        "href": "https://tailwindcss.com/plus/ui-blocks/marketing/sections/heroes",
+        "text": "Hero Sections"
+      },
+      {
+        "href": "https://tailwindcss.com/plus/ui-blocks/marketing/sections/feature-sections",
+        "text": "Feature Sections"
+      },
+      {
+        "href": "https://tailwindcss.com/plus/ui-blocks/marketing/sections/pricing",
+        "text": "Pricing Sections"
+      },
+      {
+        "href": "https://tailwindcss.com/plus/ui-blocks/marketing/sections/header",
+        "text": "Header Sections"
+      },
+      {
+        "href": "https://tailwindcss.com/plus/ui-blocks/marketing/sections/newsletter-sections",
+        "text": "Newsletter Sections"
+      },
+      {
+        "href": "https://tailwindcss.com/plus/ui-blocks/marketing/sections/testimonials",
+        "text": "Testimonials"
+      },
+      {
+        "href": "https://tailwindcss.com/plus/ui-blocks/marketing/sections/team-sections",
+        "text": "Team Sections"
+      },
+      {
+        "href": "https://tailwindcss.com/plus/ui-blocks/marketing/sections/content-sections",
+        "text": "Content Sections"
+      },
+      {
+        "href": "https://tailwindcss.com/plus/ui-blocks/marketing/sections/logo-clouds",
+        "text": "Logo Clouds"
+      },
+      {
+        "href": "https://tailwindcss.com/plus/ui-blocks/marketing/sections/faq-sections",
+        "text": "FAQs"
+      },
+      {
+        "href": "https://tailwindcss.com/plus/ui-blocks/marketing/sections/footers",
+        "text": "Footers"
+      },
+      {
+        "href": "https://tailwindcss.com/plus/ui-blocks/marketing/sections/header",
+        "text": "Headers"
+      },
+      {
+        "href": "https://tailwindcss.com/plus/ui-blocks/marketing/elements/flyout-menus",
+        "text": "Flyout Menus"
+      },
+      {
+        "href": "https://tailwindcss.com/plus/ui-blocks/marketing/elements/banners",
+        "text": "Banners"
+      },
+      {
+        "href": "https://tailwindcss.com/plus/ui-blocks/marketing",
+        "text": "Browse all →"
+      },
+      {
+        "href": "https://tailwindcss.com/plus/ui-blocks/application-ui/lists/tables",
+        "text": "Tables"
+      },
+      {
+        "href": "https://tailwindcss.com/plus/ui-blocks/application-ui/lists/feeds",
+        "text": "Feeds"
+      },
+      {
+        "href": "https://tailwindcss.com/plus/ui-blocks/application-ui/forms/form-layouts",
+        "text": "Form Layouts"
+      },
+      {
+        "href": "https://tailwindcss.com/plus/ui-blocks/application-ui/forms/select-menus",
+        "text": "Select Menus"
+      },
+      {
+        "href": "https://tailwindcss.com/plus/ui-blocks/application-ui/forms/radio-groups",
+        "text": "Radio Groups"
+      },
+      {
+        "href": "https://tailwindcss.com/plus/ui-blocks/application-ui/forms/checkboxes",
+        "text": "Checkboxes"
+      },
+      {
+        "href": "https://tailwindcss.com/plus/ui-blocks/application-ui/forms/comboboxes",
+        "text": "Comboboxes"
+      },
+      {
+        "href": "https://tailwindcss.com/plus/ui-blocks/application-ui/navigation/navbars",
+        "text": "Navbars"
+      },
+      {
+        "href": "https://tailwindcss.com/plus/ui-blocks/application-ui/navigation/pagination",
+        "text": "Pagination"
+      },
+      {
+        "href": "https://tailwindcss.com/plus/ui-blocks/application-ui/navigation/sidebar-navigation",
+        "text": "Sidebar Navigation"
+      },
+      {
+        "href": "https://tailwindcss.com/plus/ui-blocks/application-ui/navigation/command-palettes",
+        "text": "Command Palettes"
+      },
+      {
+        "href": "https://tailwindcss.com/plus/ui-blocks/application-ui/overlays/modal-dialogs",
+        "text": "Modals"
+      },
+      {
+        "href": "https://tailwindcss.com/plus/ui-blocks/application-ui/elements/dropdowns",
+        "text": "Dropdowns"
+      },
+      {
+        "href": "https://tailwindcss.com/plus/ui-blocks/application-ui/elements/buttons",
+        "text": "Buttons"
+      },
+      {
+        "href": "https://tailwindcss.com/plus/ui-blocks/application-ui",
+        "text": "Browse all →"
+      },
+      {
+        "href": "https://tailwindcss.com/plus/ui-blocks/ecommerce/components/product-overviews",
+        "text": "Product Overviews"
+      },
+      {
+        "href": "https://tailwindcss.com/plus/ui-blocks/ecommerce/components/product-lists",
+        "text": "Product Lists"
+      },
+      {
+        "href": "https://tailwindcss.com/plus/ui-blocks/ecommerce/components/category-previews",
+        "text": "Category Previews"
+      },
+      {
+        "href": "https://tailwindcss.com/plus/ui-blocks/ecommerce/components/shopping-carts",
+        "text": "Shopping Carts"
+      },
+      {
+        "href": "https://tailwindcss.com/plus/ui-blocks/ecommerce/components/category-filters",
+        "text": "Category Filters"
+      },
+      {
+        "href": "https://tailwindcss.com/plus/ui-blocks/ecommerce/components/product-quickviews",
+        "text": "Product Quickviews"
+      },
+      {
+        "href": "https://tailwindcss.com/plus/ui-blocks/ecommerce/components/product-features",
+        "text": "Product Features"
+      },
+      {
+        "href": "https://tailwindcss.com/plus/ui-blocks/ecommerce/components/store-navigation",
+        "text": "Store Navigation"
+      },
+      {
+        "href": "https://tailwindcss.com/plus/ui-blocks/ecommerce/components/promo-sections",
+        "text": "Promo Sections"
+      },
+      {
+        "href": "https://tailwindcss.com/plus/ui-blocks/ecommerce/components/checkout-forms",
+        "text": "Checkout Forms"
+      },
+      {
+        "href": "https://tailwindcss.com/plus/ui-blocks/ecommerce/components/reviews",
+        "text": "Reviews"
+      },
+      {
+        "href": "https://tailwindcss.com/plus/ui-blocks/ecommerce/components/order-summaries",
+        "text": "Order Summaries"
+      },
+      {
+        "href": "https://tailwindcss.com/plus/ui-blocks/ecommerce/components/order-history",
+        "text": "Order History"
+      },
+      {
+        "href": "https://tailwindcss.com/plus/ui-blocks/ecommerce/components/incentives",
+        "text": "Incentives"
+      },
+      {
+        "href": "https://tailwindcss.com/plus/ui-blocks/ecommerce",
+        "text": "Browse all →"
+      },
+      {
+        "href": "https://tailwindcss.com/plus/templates/catalyst",
+        "text": "Catalyst UI Kit"
+      },
+      {
+        "href": "https://tailwindcss.com/plus/templates/spotlight",
+        "text": "Personal Website Template"
+      },
+      {
+        "href": "https://tailwindcss.com/plus/templates/salient",
+        "text": "Landing Page Template"
+      },
+      {
+        "href": "https://tailwindcss.com/plus/templates/protocol",
+        "text": "API Reference Template"
+      },
+      {
+        "href": "https://tailwindcss.com/plus/templates/commit",
+        "text": "Changelog Template"
+      },
+      {
+        "href": "https://tailwindcss.com/plus/templates/primer",
+        "text": "Info Product Template"
+      },
+      {
+        "href": "https://tailwindcss.com/plus/templates/studio",
+        "text": "Agency Template"
+      },
+      {
+        "href": "https://tailwindcss.com/plus/templates/transmit",
+        "text": "Podcast Template"
+      },
+      {
+        "href": "https://tailwindcss.com/plus/templates/pocket",
+        "text": "App Marketing Template"
+      },
+      {
+        "href": "https://tailwindcss.com/plus/templates/syntax",
+        "text": "Documentation Template"
+      },
+      {
+        "href": "https://tailwindcss.com/plus/templates/keynote",
+        "text": "Conference Template"
+      },
+      {
+        "href": "https://tailwindcss.com/plus/templates",
+        "text": "Browse all →"
+      },
+      {
+        "href": "https://tailwindcss.com/plus/privacy-policy",
+        "text": "Privacy policy"
+      },
+      {
+        "href": "https://tailwindcss.com/plus/changelog",
+        "text": "Changelog"
+      }
+    ],
+    "paySignals": [
+      "Get full access",
+      "Get the code",
+      "Sign in",
+      "Preview",
+      "Code"
+    ],
+    "title": "Tailwind CSS Hero Sections - Official Tailwind UI Components",
+    "url": "https://tailwindcss.com/plus/ui-blocks/marketing/sections/heroes"
+  },
+  {
+    "slug": "ui-blocks",
+    "screenshotPath": "C:\\Users\\yusun\\projects\\ui-dictionary\\docs\\research\\assets\\tailwind-plus-live-2026-07-01\\ui-blocks-viewport.png",
+    "bodySample": "Introducing Oatmeal Our new multi-theme marketing site kit UI Blocks Templates UI Kit Sign in Get full access UI BLOCKS BY THE MAKERS OF TAILWIND CSS Beautiful UI components, crafted with Tailwind CSS. HTML React Vue Over 500+ professionally designed, fully responsive, expertly crafted component examples you can drop into your Tailwind projects and customize to your heart’s content. Live preview Documentation MARKETING APPLICATION UI ECOMMERCE PRICING Marketing Heroes, feature sections, newsletter sign up forms — everything you need to build beautiful marketing websites. PAGE SECTIONS Hero Sections 12 components Feature Sections 15 components CTA Sections 11 components Bento Grids 3 components Pricing Sections 12 components Header Sections 8 components Newsletter Sections 6 components Stats 8 components Testimonials 8 components Blog Sections 7 components Contact Sections 7 components Team Sections 9 components Content Sections 7 components Logo Clouds 6 components FAQs 7 components Footers 7 components ELEMENTS Headers 11 components Flyout Menus 7 components Banners 13 components FEEDBACK 404 Pages 5 components PAGE EXAMPLES Landing Pages 4 examples Pricing Pages 3 examples About Pages 3 examples Application UI Form layouts, tables, modal dialogs — everything you need to build beautiful responsive web applications. APPLICATION SHELLS Stacked Layouts 9 components Sidebar Layout",
+    "buttons": [],
+    "headings": [
+      {
+        "tag": "H1",
+        "text": "Beautiful UI components, crafted with Tailwind CSS."
+      },
+      {
+        "tag": "H2",
+        "text": "Marketing"
+      },
+      {
+        "tag": "H3",
+        "text": "Page Sections"
+      },
+      {
+        "tag": "H3",
+        "text": "Elements"
+      },
+      {
+        "tag": "H3",
+        "text": "Feedback"
+      },
+      {
+        "tag": "H3",
+        "text": "Page Examples"
+      },
+      {
+        "tag": "H2",
+        "text": "Application UI"
+      },
+      {
+        "tag": "H3",
+        "text": "Application Shells"
+      },
+      {
+        "tag": "H3",
+        "text": "Headings"
+      },
+      {
+        "tag": "H3",
+        "text": "Data Display"
+      },
+      {
+        "tag": "H3",
+        "text": "Lists"
+      },
+      {
+        "tag": "H3",
+        "text": "Forms"
+      },
+      {
+        "tag": "H3",
+        "text": "Feedback"
+      },
+      {
+        "tag": "H3",
+        "text": "Navigation"
+      },
+      {
+        "tag": "H3",
+        "text": "Overlays"
+      },
+      {
+        "tag": "H3",
+        "text": "Elements"
+      },
+      {
+        "tag": "H3",
+        "text": "Layout"
+      },
+      {
+        "tag": "H3",
+        "text": "Page Examples"
+      },
+      {
+        "tag": "H2",
+        "text": "Ecommerce"
+      },
+      {
+        "tag": "H3",
+        "text": "Components"
+      },
+      {
+        "tag": "H3",
+        "text": "Page Examples"
+      },
+      {
+        "tag": "H2",
+        "text": "Pricing"
+      },
+      {
+        "tag": "H2",
+        "text": "Testimonials"
+      },
+      {
+        "tag": "H2",
+        "text": "Frequently asked questions"
+      },
+      {
+        "tag": "H3",
+        "text": "General"
+      },
+      {
+        "tag": "H3",
+        "text": "Compatibility"
+      },
+      {
+        "tag": "H3",
+        "text": "Licensing"
+      },
+      {
+        "tag": "H3",
+        "text": "Support"
+      },
+      {
+        "tag": "H3",
+        "text": "Marketing"
+      },
+      {
+        "tag": "H3",
+        "text": "Application UI"
+      },
+      {
+        "tag": "H3",
+        "text": "Ecommerce"
+      },
+      {
+        "tag": "H3",
+        "text": "Templates & UI Kits"
+      }
+    ],
+    "links": [
+      {
+        "href": "https://tailwindcss.com/plus",
+        "text": ""
+      },
+      {
+        "href": "https://tailwindcss.com/plus/kits/oatmeal",
+        "text": "Introducing OatmealOur new multi-theme marketing site kit"
+      },
+      {
+        "href": "https://tailwindcss.com/plus/ui-blocks",
+        "text": "UI Blocks"
+      },
+      {
+        "href": "https://tailwindcss.com/plus/templates",
+        "text": "Templates"
+      },
+      {
+        "href": "https://tailwindcss.com/plus/ui-kit",
+        "text": "UI Kit"
+      },
+      {
+        "href": "https://tailwindcss.com/plus/login",
+        "text": "Sign in"
+      },
+      {
+        "href": "https://tailwindcss.com/plus#pricing",
+        "text": "Get full access"
+      },
+      {
+        "href": "https://tailwindcss.com/plus/ui-blocks/preview",
+        "text": "Live preview"
+      },
+      {
+        "href": "https://tailwindcss.com/plus/ui-blocks/documentation",
+        "text": "Documentation"
+      },
+      {
+        "href": "https://tailwindcss.com/plus/ui-blocks#product-marketing",
+        "text": "Marketing"
+      },
+      {
+        "href": "https://tailwindcss.com/plus/ui-blocks#product-application-ui",
+        "text": "Application UI"
+      },
+      {
+        "href": "https://tailwindcss.com/plus/ui-blocks#product-ecommerce",
+        "text": "Ecommerce"
+      },
+      {
+        "href": "https://tailwindcss.com/plus/ui-blocks#pricing",
+        "text": "Pricing"
+      },
+      {
+        "href": "https://tailwindcss.com/plus/ui-blocks/marketing/sections/heroes",
+        "text": "Hero Sections12 components"
+      },
+      {
+        "href": "https://tailwindcss.com/plus/ui-blocks/marketing/sections/feature-sections",
+        "text": "Feature Sections15 components"
+      },
+      {
+        "href": "https://tailwindcss.com/plus/ui-blocks/marketing/sections/cta-sections",
+        "text": "CTA Sections11 components"
+      },
+      {
+        "href": "https://tailwindcss.com/plus/ui-blocks/marketing/sections/bento-grids",
+        "text": "Bento Grids3 components"
+      },
+      {
+        "href": "https://tailwindcss.com/plus/ui-blocks/marketing/sections/pricing",
+        "text": "Pricing Sections12 components"
+      },
+      {
+        "href": "https://tailwindcss.com/plus/ui-blocks/marketing/sections/header",
+        "text": "Header Sections8 components"
+      },
+      {
+        "href": "https://tailwindcss.com/plus/ui-blocks/marketing/sections/newsletter-sections",
+        "text": "Newsletter Sections6 components"
+      },
+      {
+        "href": "https://tailwindcss.com/plus/ui-blocks/marketing/sections/stats-sections",
+        "text": "Stats8 components"
+      },
+      {
+        "href": "https://tailwindcss.com/plus/ui-blocks/marketing/sections/testimonials",
+        "text": "Testimonials8 components"
+      },
+      {
+        "href": "https://tailwindcss.com/plus/ui-blocks/marketing/sections/blog-sections",
+        "text": "Blog Sections7 components"
+      },
+      {
+        "href": "https://tailwindcss.com/plus/ui-blocks/marketing/sections/contact-sections",
+        "text": "Contact Sections7 components"
+      },
+      {
+        "href": "https://tailwindcss.com/plus/ui-blocks/marketing/sections/team-sections",
+        "text": "Team Sections9 components"
+      },
+      {
+        "href": "https://tailwindcss.com/plus/ui-blocks/marketing/sections/content-sections",
+        "text": "Content Sections7 components"
+      },
+      {
+        "href": "https://tailwindcss.com/plus/ui-blocks/marketing/sections/logo-clouds",
+        "text": "Logo Clouds6 components"
+      },
+      {
+        "href": "https://tailwindcss.com/plus/ui-blocks/marketing/sections/faq-sections",
+        "text": "FAQs7 components"
+      },
+      {
+        "href": "https://tailwindcss.com/plus/ui-blocks/marketing/sections/footers",
+        "text": "Footers7 components"
+      },
+      {
+        "href": "https://tailwindcss.com/plus/ui-blocks/marketing/elements/headers",
+        "text": "Headers11 components"
+      },
+      {
+        "href": "https://tailwindcss.com/plus/ui-blocks/marketing/elements/flyout-menus",
+        "text": "Flyout Menus7 components"
+      },
+      {
+        "href": "https://tailwindcss.com/plus/ui-blocks/marketing/elements/banners",
+        "text": "Banners13 components"
+      },
+      {
+        "href": "https://tailwindcss.com/plus/ui-blocks/marketing/feedback/404-pages",
+        "text": "404 Pages5 components"
+      },
+      {
+        "href": "https://tailwindcss.com/plus/ui-blocks/marketing/page-examples/landing-pages",
+        "text": "Landing Pages4 examples"
+      },
+      {
+        "href": "https://tailwindcss.com/plus/ui-blocks/marketing/page-examples/pricing-pages",
+        "text": "Pricing Pages3 examples"
+      },
+      {
+        "href": "https://tailwindcss.com/plus/ui-blocks/marketing/page-examples/about-pages",
+        "text": "About Pages3 examples"
+      },
+      {
+        "href": "https://tailwindcss.com/plus/ui-blocks/application-ui/application-shells/stacked",
+        "text": "Stacked Layouts9 components"
+      },
+      {
+        "href": "https://tailwindcss.com/plus/ui-blocks/application-ui/application-shells/sidebar",
+        "text": "Sidebar Layouts8 components"
+      },
+      {
+        "href": "https://tailwindcss.com/plus/ui-blocks/application-ui/application-shells/multi-column",
+        "text": "Multi-Column Layouts6 components"
+      },
+      {
+        "href": "https://tailwindcss.com/plus/ui-blocks/application-ui/headings/page-headings",
+        "text": "Page Headings9 components"
+      },
+      {
+        "href": "https://tailwindcss.com/plus/ui-blocks/application-ui/headings/card-headings",
+        "text": "Card Headings6 components"
+      },
+      {
+        "href": "https://tailwindcss.com/plus/ui-blocks/application-ui/headings/section-headings",
+        "text": "Section Headings10 components"
+      },
+      {
+        "href": "https://tailwindcss.com/plus/ui-blocks/application-ui/data-display/description-lists",
+        "text": "Description Lists6 components"
+      },
+      {
+        "href": "https://tailwindcss.com/plus/ui-blocks/application-ui/data-display/stats",
+        "text": "Stats5 components"
+      },
+      {
+        "href": "https://tailwindcss.com/plus/ui-blocks/application-ui/data-display/calendars",
+        "text": "Calendars8 components"
+      },
+      {
+        "href": "https://tailwindcss.com/plus/ui-blocks/application-ui/lists/stacked-lists",
+        "text": "Stacked Lists15 components"
+      },
+      {
+        "href": "https://tailwindcss.com/plus/ui-blocks/application-ui/lists/tables",
+        "text": "Tables19 components"
+      },
+      {
+        "href": "https://tailwindcss.com/plus/ui-blocks/application-ui/lists/grid-lists",
+        "text": "Grid Lists7 components"
+      },
+      {
+        "href": "https://tailwindcss.com/plus/ui-blocks/application-ui/lists/feeds",
+        "text": "Feeds3 components"
+      },
+      {
+        "href": "https://tailwindcss.com/plus/ui-blocks/application-ui/forms/form-layouts",
+        "text": "Form Layouts4 components"
+      },
+      {
+        "href": "https://tailwindcss.com/plus/ui-blocks/application-ui/forms/input-groups",
+        "text": "Input Groups21 components"
+      },
+      {
+        "href": "https://tailwindcss.com/plus/ui-blocks/application-ui/forms/select-menus",
+        "text": "Select Menus7 components"
+      },
+      {
+        "href": "https://tailwindcss.com/plus/ui-blocks/application-ui/forms/sign-in-forms",
+        "text": "Sign-in and Registration4 components"
+      },
+      {
+        "href": "https://tailwindcss.com/plus/ui-blocks/application-ui/forms/textareas",
+        "text": "Textareas5 components"
+      },
+      {
+        "href": "https://tailwindcss.com/plus/ui-blocks/application-ui/forms/radio-groups",
+        "text": "Radio Groups12 components"
+      },
+      {
+        "href": "https://tailwindcss.com/plus/ui-blocks/application-ui/forms/checkboxes",
+        "text": "Checkboxes4 components"
+      },
+      {
+        "href": "https://tailwindcss.com/plus/ui-blocks/application-ui/forms/toggles",
+        "text": "Toggles5 components"
+      },
+      {
+        "href": "https://tailwindcss.com/plus/ui-blocks/application-ui/forms/action-panels",
+        "text": "Action Panels8 components"
+      },
+      {
+        "href": "https://tailwindcss.com/plus/ui-blocks/application-ui/forms/comboboxes",
+        "text": "Comboboxes4 components"
+      },
+      {
+        "href": "https://tailwindcss.com/plus/ui-blocks/application-ui/feedback/alerts",
+        "text": "Alerts6 components"
+      },
+      {
+        "href": "https://tailwindcss.com/plus/ui-blocks/application-ui/feedback/empty-states",
+        "text": "Empty States6 components"
+      },
+      {
+        "href": "https://tailwindcss.com/plus/ui-blocks/application-ui/navigation/navbars",
+        "text": "Navbars11 components"
+      },
+      {
+        "href": "https://tailwindcss.com/plus/ui-blocks/application-ui/navigation/pagination",
+        "text": "Pagination3 components"
+      },
+      {
+        "href": "https://tailwindcss.com/plus/ui-blocks/application-ui/navigation/tabs",
+        "text": "Tabs9 components"
+      },
+      {
+        "href": "https://tailwindcss.com/plus/ui-blocks/application-ui/navigation/vertical-navigation",
+        "text": "Vertical Navigation6 components"
+      },
+      {
+        "href": "https://tailwindcss.com/plus/ui-blocks/application-ui/navigation/sidebar-navigation",
+        "text": "Sidebar Navigation5 components"
+      },
+      {
+        "href": "https://tailwindcss.com/plus/ui-blocks/application-ui/navigation/breadcrumbs",
+        "text": "Breadcrumbs4 components"
+      },
+      {
+        "href": "https://tailwindcss.com/plus/ui-blocks/application-ui/navigation/progress-bars",
+        "text": "Progress Bars8 components"
+      },
+      {
+        "href": "https://tailwindcss.com/plus/ui-blocks/application-ui/navigation/command-palettes",
+        "text": "Command Palettes8 components"
+      },
+      {
+        "href": "https://tailwindcss.com/plus/ui-blocks/application-ui/overlays/modal-dialogs",
+        "text": "Modal Dialogs6 components"
+      },
+      {
+        "href": "https://tailwindcss.com/plus/ui-blocks/application-ui/overlays/drawers",
+        "text": "Drawers12 components"
+      },
+      {
+        "href": "https://tailwindcss.com/plus/ui-blocks/application-ui/overlays/notifications",
+        "text": "Notifications6 components"
+      },
+      {
+        "href": "https://tailwindcss.com/plus/ui-blocks/application-ui/elements/avatars",
+        "text": "Avatars11 components"
+      },
+      {
+        "href": "https://tailwindcss.com/plus/ui-blocks/application-ui/elements/badges",
+        "text": "Badges16 components"
+      },
+      {
+        "href": "https://tailwindcss.com/plus/ui-blocks/application-ui/elements/dropdowns",
+        "text": "Dropdowns5 components"
+      },
+      {
+        "href": "https://tailwindcss.com/plus/ui-blocks/application-ui/elements/buttons",
+        "text": "Buttons8 components"
+      },
+      {
+        "href": "https://tailwindcss.com/plus/ui-blocks/application-ui/elements/button-groups",
+        "text": "Button Groups5 components"
+      },
+      {
+        "href": "https://tailwindcss.com/plus/ui-blocks/application-ui/layout/containers",
+        "text": "Containers5 components"
+      },
+      {
+        "href": "https://tailwindcss.com/plus/ui-blocks/application-ui/layout/cards",
+        "text": "Cards10 components"
+      },
+      {
+        "href": "https://tailwindcss.com/plus/ui-blocks/application-ui/layout/list-containers",
+        "text": "List containers7 components"
+      },
+      {
+        "href": "https://tailwindcss.com/plus/ui-blocks/application-ui/layout/media-objects",
+        "text": "Media Objects8 components"
+      },
+      {
+        "href": "https://tailwindcss.com/plus/ui-blocks/application-ui/layout/dividers",
+        "text": "Dividers8 components"
+      },
+      {
+        "href": "https://tailwindcss.com/plus/ui-blocks/application-ui/page-examples/home-screens",
+        "text": "Home Screens2 examples"
+      },
+      {
+        "href": "https://tailwindcss.com/plus/ui-blocks/application-ui/page-examples/detail-screens",
+        "text": "Detail Screens2 examples"
+      },
+      {
+        "href": "https://tailwindcss.com/plus/ui-blocks/application-ui/page-examples/settings-screens",
+        "text": "Settings Screens2 examples"
+      },
+      {
+        "href": "https://tailwindcss.com/plus/ui-blocks/ecommerce/components/product-overviews",
+        "text": "Product Overviews5 components"
+      },
+      {
+        "href": "https://tailwindcss.com/plus/ui-blocks/ecommerce/components/product-lists",
+        "text": "Product Lists11 components"
+      },
+      {
+        "href": "https://tailwindcss.com/plus/ui-blocks/ecommerce/components/category-previews",
+        "text": "Category Previews6 components"
+      },
+      {
+        "href": "https://tailwindcss.com/plus/ui-blocks/ecommerce/components/shopping-carts",
+        "text": "Shopping Carts6 components"
+      },
+      {
+        "href": "https://tailwindcss.com/plus/ui-blocks/ecommerce/components/category-filters",
+        "text": "Category Filters5 components"
+      },
+      {
+        "href": "https://tailwindcss.com/plus/ui-blocks/ecommerce/components/product-quickviews",
+        "text": "Product Quickviews4 components"
+      },
+      {
+        "href": "https://tailwindcss.com/plus/ui-blocks/ecommerce/components/product-features",
+        "text": "Product Features9 components"
+      },
+      {
+        "href": "https://tailwindcss.com/plus/ui-blocks/ecommerce/components/store-navigation",
+        "text": "Store Navigation5 components"
+      },
+      {
+        "href": "https://tailwindcss.com/plus/ui-blocks/ecommerce/components/promo-sections",
+        "text": "Promo Sections8 components"
+      },
+      {
+        "href": "https://tailwindcss.com/plus/ui-blocks/ecommerce/components/checkout-forms",
+        "text": "Checkout Forms5 components"
+      },
+      {
+        "href": "https://tailwindcss.com/plus/ui-blocks/ecommerce/components/reviews",
+        "text": "Reviews4 components"
+      },
+      {
+        "href": "https://tailwindcss.com/plus/ui-blocks/ecommerce/components/order-summaries",
+        "text": "Order Summaries4 components"
+      },
+      {
+        "href": "https://tailwindcss.com/plus/ui-blocks/ecommerce/components/order-history",
+        "text": "Order History4 components"
+      },
+      {
+        "href": "https://tailwindcss.com/plus/ui-blocks/ecommerce/components/incentives",
+        "text": "Incentives8 components"
+      },
+      {
+        "href": "https://tailwindcss.com/plus/ui-blocks/ecommerce/page-examples/storefront-pages",
+        "text": "Storefront Pages4 examples"
+      },
+      {
+        "href": "https://tailwindcss.com/plus/ui-blocks/ecommerce/page-examples/product-pages",
+        "text": "Product Pages5 examples"
+      },
+      {
+        "href": "https://tailwindcss.com/plus/ui-blocks/ecommerce/page-examples/category-pages",
+        "text": "Category Pages5 examples"
+      },
+      {
+        "href": "https://tailwindcss.com/plus/ui-blocks/ecommerce/page-examples/shopping-cart-pages",
+        "text": "Shopping Cart Pages3 examples"
+      },
+      {
+        "href": "https://tailwindcss.com/plus/ui-blocks/ecommerce/page-examples/checkout-pages",
+        "text": "Checkout Pages5 examples"
+      },
+      {
+        "href": "https://tailwindcss.com/plus/ui-blocks/ecommerce/page-examples/order-detail-pages",
+        "text": "Order Detail Pages3 examples"
+      },
+      {
+        "href": "https://tailwindcss.com/plus/ui-blocks/ecommerce/page-examples/order-history-pages",
+        "text": "Order History Pages5 examples"
+      },
+      {
+        "href": "https://tailwindcss.com/plus/checkout/1ab56599-ff3e-4666-9686-edda6c81c82a",
+        "text": "Get package"
+      },
+      {
+        "href": "https://tailwindcss.com/plus/checkout/0ed326ca-c1fc-440b-b1ba-bdfb01c43185",
+        "text": "Get package"
+      },
+      {
+        "href": "https://tailwindcss.com/plus/checkout/7b7130a6-68aa-49cb-9f13-818720c60fe8",
+        "text": "Get package"
+      },
+      {
+        "href": "https://tailwindcss.com/plus#pricing",
+        "text": "Get Tailwind Plus"
+      },
+      {
+        "href": "https://reflect.app/",
+        "text": "Reflect"
+      },
+      {
+        "href": "https://clearbit.com/",
+        "text": "Clearbit"
+      },
+      {
+        "href": "https://www.levellr.com/",
+        "text": "Levellr"
+      },
+      {
+        "href": "https://tailwindcss.com/plus/changelog",
+        "text": "in our changelog"
+      },
+      {
+        "href": "https://tailwindcss.com/plus/templates",
+        "text": "website templates"
+      },
+      {
+        "href": "https://tailwindcss.com/plus/ui-blocks",
+        "text": "components"
+      },
+      {
+        "href": "https://headlessui.dev/",
+        "text": "Headless UI"
+      },
+      {
+        "href": "https://tailwindcss.com/plus/ui-blocks/documentation/elements",
+        "text": "Elements"
+      },
+      {
+        "href": "https://tailwindcss.com/plus/ui-blocks/documentation#using-html",
+        "text": "check out our documentation"
+      },
+      {
+        "href": "https://tailwindcss.com/plus/license",
+        "text": "read through our license"
+      },
+      {
+        "href": "https://tailwindcss.com/plus/license",
+        "text": "read through our license"
+      },
+      {
+        "href": "https://tailwindcss.com/plus/license",
+        "text": "read through our license"
+      },
+      {
+        "href": "https://tailwindcss.com/plus/license",
+        "text": "read through our license"
+      },
+      {
+        "href": "https://tailwindcss.com/plus/license",
+        "text": "read through our license"
+      },
+      {
+        "href": "mailto:support@tailwindcss.com",
+        "text": "support@tailwindcss.com"
+      },
+      {
+        "href": "https://tailwindcss.com/plus/ui-blocks/marketing/sections/heroes",
+        "text": "Hero Sections"
+      },
+      {
+        "href": "https://tailwindcss.com/plus/ui-blocks/marketing/sections/feature-sections",
+        "text": "Feature Sections"
+      },
+      {
+        "href": "https://tailwindcss.com/plus/ui-blocks/marketing/sections/pricing",
+        "text": "Pricing Sections"
+      },
+      {
+        "href": "https://tailwindcss.com/plus/ui-blocks/marketing/sections/header",
+        "text": "Header Sections"
+      },
+      {
+        "href": "https://tailwindcss.com/plus/ui-blocks/marketing/sections/newsletter-sections",
+        "text": "Newsletter Sections"
+      },
+      {
+        "href": "https://tailwindcss.com/plus/ui-blocks/marketing/sections/testimonials",
+        "text": "Testimonials"
+      },
+      {
+        "href": "https://tailwindcss.com/plus/ui-blocks/marketing/sections/team-sections",
+        "text": "Team Sections"
+      },
+      {
+        "href": "https://tailwindcss.com/plus/ui-blocks/marketing/sections/content-sections",
+        "text": "Content Sections"
+      },
+      {
+        "href": "https://tailwindcss.com/plus/ui-blocks/marketing/sections/logo-clouds",
+        "text": "Logo Clouds"
+      },
+      {
+        "href": "https://tailwindcss.com/plus/ui-blocks/marketing/sections/faq-sections",
+        "text": "FAQs"
+      },
+      {
+        "href": "https://tailwindcss.com/plus/ui-blocks/marketing/sections/footers",
+        "text": "Footers"
+      },
+      {
+        "href": "https://tailwindcss.com/plus/ui-blocks/marketing/sections/header",
+        "text": "Headers"
+      },
+      {
+        "href": "https://tailwindcss.com/plus/ui-blocks/marketing/elements/flyout-menus",
+        "text": "Flyout Menus"
+      },
+      {
+        "href": "https://tailwindcss.com/plus/ui-blocks/marketing/elements/banners",
+        "text": "Banners"
+      },
+      {
+        "href": "https://tailwindcss.com/plus/ui-blocks/marketing",
+        "text": "Browse all →"
+      },
+      {
+        "href": "https://tailwindcss.com/plus/ui-blocks/application-ui/lists/tables",
+        "text": "Tables"
+      },
+      {
+        "href": "https://tailwindcss.com/plus/ui-blocks/application-ui/lists/feeds",
+        "text": "Feeds"
+      },
+      {
+        "href": "https://tailwindcss.com/plus/ui-blocks/application-ui/forms/form-layouts",
+        "text": "Form Layouts"
+      },
+      {
+        "href": "https://tailwindcss.com/plus/ui-blocks/application-ui/forms/select-menus",
+        "text": "Select Menus"
+      },
+      {
+        "href": "https://tailwindcss.com/plus/ui-blocks/application-ui/forms/radio-groups",
+        "text": "Radio Groups"
+      },
+      {
+        "href": "https://tailwindcss.com/plus/ui-blocks/application-ui/forms/checkboxes",
+        "text": "Checkboxes"
+      },
+      {
+        "href": "https://tailwindcss.com/plus/ui-blocks/application-ui/forms/comboboxes",
+        "text": "Comboboxes"
+      },
+      {
+        "href": "https://tailwindcss.com/plus/ui-blocks/application-ui/navigation/navbars",
+        "text": "Navbars"
+      },
+      {
+        "href": "https://tailwindcss.com/plus/ui-blocks/application-ui/navigation/pagination",
+        "text": "Pagination"
+      },
+      {
+        "href": "https://tailwindcss.com/plus/ui-blocks/application-ui/navigation/sidebar-navigation",
+        "text": "Sidebar Navigation"
+      },
+      {
+        "href": "https://tailwindcss.com/plus/ui-blocks/application-ui/navigation/command-palettes",
+        "text": "Command Palettes"
+      },
+      {
+        "href": "https://tailwindcss.com/plus/ui-blocks/application-ui/overlays/modal-dialogs",
+        "text": "Modals"
+      },
+      {
+        "href": "https://tailwindcss.com/plus/ui-blocks/application-ui/elements/dropdowns",
+        "text": "Dropdowns"
+      },
+      {
+        "href": "https://tailwindcss.com/plus/ui-blocks/application-ui/elements/buttons",
+        "text": "Buttons"
+      },
+      {
+        "href": "https://tailwindcss.com/plus/ui-blocks/application-ui",
+        "text": "Browse all →"
+      },
+      {
+        "href": "https://tailwindcss.com/plus/ui-blocks/ecommerce/components/product-overviews",
+        "text": "Product Overviews"
+      },
+      {
+        "href": "https://tailwindcss.com/plus/ui-blocks/ecommerce/components/product-lists",
+        "text": "Product Lists"
+      },
+      {
+        "href": "https://tailwindcss.com/plus/ui-blocks/ecommerce/components/category-previews",
+        "text": "Category Previews"
+      },
+      {
+        "href": "https://tailwindcss.com/plus/ui-blocks/ecommerce/components/shopping-carts",
+        "text": "Shopping Carts"
+      },
+      {
+        "href": "https://tailwindcss.com/plus/ui-blocks/ecommerce/components/category-filters",
+        "text": "Category Filters"
+      },
+      {
+        "href": "https://tailwindcss.com/plus/ui-blocks/ecommerce/components/product-quickviews",
+        "text": "Product Quickviews"
+      },
+      {
+        "href": "https://tailwindcss.com/plus/ui-blocks/ecommerce/components/product-features",
+        "text": "Product Features"
+      },
+      {
+        "href": "https://tailwindcss.com/plus/ui-blocks/ecommerce/components/store-navigation",
+        "text": "Store Navigation"
+      },
+      {
+        "href": "https://tailwindcss.com/plus/ui-blocks/ecommerce/components/promo-sections",
+        "text": "Promo Sections"
+      },
+      {
+        "href": "https://tailwindcss.com/plus/ui-blocks/ecommerce/components/checkout-forms",
+        "text": "Checkout Forms"
+      },
+      {
+        "href": "https://tailwindcss.com/plus/ui-blocks/ecommerce/components/reviews",
+        "text": "Reviews"
+      },
+      {
+        "href": "https://tailwindcss.com/plus/ui-blocks/ecommerce/components/order-summaries",
+        "text": "Order Summaries"
+      },
+      {
+        "href": "https://tailwindcss.com/plus/ui-blocks/ecommerce/components/order-history",
+        "text": "Order History"
+      },
+      {
+        "href": "https://tailwindcss.com/plus/ui-blocks/ecommerce/components/incentives",
+        "text": "Incentives"
+      },
+      {
+        "href": "https://tailwindcss.com/plus/ui-blocks/ecommerce",
+        "text": "Browse all →"
+      },
+      {
+        "href": "https://tailwindcss.com/plus/templates/catalyst",
+        "text": "Catalyst UI Kit"
+      },
+      {
+        "href": "https://tailwindcss.com/plus/templates/spotlight",
+        "text": "Personal Website Template"
+      },
+      {
+        "href": "https://tailwindcss.com/plus/templates/salient",
+        "text": "Landing Page Template"
+      },
+      {
+        "href": "https://tailwindcss.com/plus/templates/protocol",
+        "text": "API Reference Template"
+      },
+      {
+        "href": "https://tailwindcss.com/plus/templates/commit",
+        "text": "Changelog Template"
+      },
+      {
+        "href": "https://tailwindcss.com/plus/templates/primer",
+        "text": "Info Product Template"
+      },
+      {
+        "href": "https://tailwindcss.com/plus/templates/studio",
+        "text": "Agency Template"
+      },
+      {
+        "href": "https://tailwindcss.com/plus/templates/transmit",
+        "text": "Podcast Template"
+      },
+      {
+        "href": "https://tailwindcss.com/plus/templates/pocket",
+        "text": "App Marketing Template"
+      },
+      {
+        "href": "https://tailwindcss.com/plus/templates/syntax",
+        "text": "Documentation Template"
+      },
+      {
+        "href": "https://tailwindcss.com/plus/templates/keynote",
+        "text": "Conference Template"
+      },
+      {
+        "href": "https://tailwindcss.com/plus/templates",
+        "text": "Browse all →"
+      },
+      {
+        "href": "https://tailwindcss.com/plus/privacy-policy",
+        "text": "Privacy policy"
+      },
+      {
+        "href": "https://tailwindcss.com/plus/changelog",
+        "text": "Changelog"
+      }
+    ],
+    "paySignals": [
+      "Get full access",
+      "Sign in",
+      "Preview"
+    ],
+    "title": "Tailwind CSS Components - Tailwind Plus",
+    "url": "https://tailwindcss.com/plus/ui-blocks"
+  },
+  {
+    "slug": "marketing",
+    "screenshotPath": "C:\\Users\\yusun\\projects\\ui-dictionary\\docs\\research\\assets\\tailwind-plus-live-2026-07-01\\marketing-viewport.png",
+    "bodySample": "Introducing Oatmeal Our new multi-theme marketing site kit UI Blocks Templates UI Kit Sign in Get full access Marketing Application UI Ecommerce Documentation PAGE SECTIONS Hero Sections Feature Sections CTA Sections Bento Grids Pricing Sections Header Sections Newsletter Sections Stats Testimonials Blog Sections Contact Sections Team Sections Content Sections Logo Clouds FAQs Footers ELEMENTS Headers Flyout Menus Banners FEEDBACK 404 Pages PAGE EXAMPLES Landing Pages Pricing Pages About Pages 5-DAY MINI-COURSE Build UIs that don’t suck. Short, tactical video lessons from the creator of Tailwind CSS, delivered directly to your inbox every day for a week. Get the free course UI BLOCKS Marketing Heroes, feature sections, newsletter sign up forms — everything you need to build beautiful marketing websites. PAGE SECTIONS Hero Sections 12 components Feature Sections 15 components CTA Sections 11 components Bento Grids 3 components Pricing Sections 12 components Header Sections 8 components Newsletter Sections 6 components Stats 8 components Testimonials 8 components Blog Sections 7 components Contact Sections 7 components Team Sections 9 components Content Sections 7 components Logo Clouds 6 components FAQs 7 components Footers 7 components ELEMENTS Headers 11 components Flyout Menus 7 components Banners 13 components FEEDBACK 404 Pages 5 components PAGE EXAMPLES Landing Pages 4 exa",
+    "buttons": [],
+    "headings": [
+      {
+        "tag": "H3",
+        "text": "Page Sections"
+      },
+      {
+        "tag": "H3",
+        "text": "Elements"
+      },
+      {
+        "tag": "H3",
+        "text": "Feedback"
+      },
+      {
+        "tag": "H3",
+        "text": "Page Examples"
+      },
+      {
+        "tag": "H3",
+        "text": "Build UIs that don’t suck."
+      },
+      {
+        "tag": "H1",
+        "text": "Marketing"
+      },
+      {
+        "tag": "H3",
+        "text": "Page Sections"
+      },
+      {
+        "tag": "H3",
+        "text": "Elements"
+      },
+      {
+        "tag": "H3",
+        "text": "Feedback"
+      },
+      {
+        "tag": "H3",
+        "text": "Page Examples"
+      },
+      {
+        "tag": "H3",
+        "text": "Marketing"
+      },
+      {
+        "tag": "H3",
+        "text": "Application UI"
+      },
+      {
+        "tag": "H3",
+        "text": "Ecommerce"
+      },
+      {
+        "tag": "H3",
+        "text": "Templates & UI Kits"
+      }
+    ],
+    "links": [
+      {
+        "href": "https://tailwindcss.com/plus",
+        "text": ""
+      },
+      {
+        "href": "https://tailwindcss.com/plus/kits/oatmeal",
+        "text": "Introducing OatmealOur new multi-theme marketing site kit"
+      },
+      {
+        "href": "https://tailwindcss.com/plus/ui-blocks",
+        "text": "UI Blocks"
+      },
+      {
+        "href": "https://tailwindcss.com/plus/templates",
+        "text": "Templates"
+      },
+      {
+        "href": "https://tailwindcss.com/plus/ui-kit",
+        "text": "UI Kit"
+      },
+      {
+        "href": "https://tailwindcss.com/plus/login",
+        "text": "Sign in"
+      },
+      {
+        "href": "https://tailwindcss.com/plus#pricing",
+        "text": "Get full access"
+      },
+      {
+        "href": "https://tailwindcss.com/plus/ui-blocks/marketing",
+        "text": "Marketing"
+      },
+      {
+        "href": "https://tailwindcss.com/plus/ui-blocks/application-ui",
+        "text": "Application UI"
+      },
+      {
+        "href": "https://tailwindcss.com/plus/ui-blocks/ecommerce",
+        "text": "Ecommerce"
+      },
+      {
+        "href": "https://tailwindcss.com/plus/ui-blocks/documentation",
+        "text": "Documentation"
+      },
+      {
+        "href": "https://tailwindcss.com/plus/ui-blocks/marketing/sections/heroes",
+        "text": "Hero Sections"
+      },
+      {
+        "href": "https://tailwindcss.com/plus/ui-blocks/marketing/sections/feature-sections",
+        "text": "Feature Sections"
+      },
+      {
+        "href": "https://tailwindcss.com/plus/ui-blocks/marketing/sections/cta-sections",
+        "text": "CTA Sections"
+      },
+      {
+        "href": "https://tailwindcss.com/plus/ui-blocks/marketing/sections/bento-grids",
+        "text": "Bento Grids"
+      },
+      {
+        "href": "https://tailwindcss.com/plus/ui-blocks/marketing/sections/pricing",
+        "text": "Pricing Sections"
+      },
+      {
+        "href": "https://tailwindcss.com/plus/ui-blocks/marketing/sections/header",
+        "text": "Header Sections"
+      },
+      {
+        "href": "https://tailwindcss.com/plus/ui-blocks/marketing/sections/newsletter-sections",
+        "text": "Newsletter Sections"
+      },
+      {
+        "href": "https://tailwindcss.com/plus/ui-blocks/marketing/sections/stats-sections",
+        "text": "Stats"
+      },
+      {
+        "href": "https://tailwindcss.com/plus/ui-blocks/marketing/sections/testimonials",
+        "text": "Testimonials"
+      },
+      {
+        "href": "https://tailwindcss.com/plus/ui-blocks/marketing/sections/blog-sections",
+        "text": "Blog Sections"
+      },
+      {
+        "href": "https://tailwindcss.com/plus/ui-blocks/marketing/sections/contact-sections",
+        "text": "Contact Sections"
+      },
+      {
+        "href": "https://tailwindcss.com/plus/ui-blocks/marketing/sections/team-sections",
+        "text": "Team Sections"
+      },
+      {
+        "href": "https://tailwindcss.com/plus/ui-blocks/marketing/sections/content-sections",
+        "text": "Content Sections"
+      },
+      {
+        "href": "https://tailwindcss.com/plus/ui-blocks/marketing/sections/logo-clouds",
+        "text": "Logo Clouds"
+      },
+      {
+        "href": "https://tailwindcss.com/plus/ui-blocks/marketing/sections/faq-sections",
+        "text": "FAQs"
+      },
+      {
+        "href": "https://tailwindcss.com/plus/ui-blocks/marketing/sections/footers",
+        "text": "Footers"
+      },
+      {
+        "href": "https://tailwindcss.com/plus/ui-blocks/marketing/elements/headers",
+        "text": "Headers"
+      },
+      {
+        "href": "https://tailwindcss.com/plus/ui-blocks/marketing/elements/flyout-menus",
+        "text": "Flyout Menus"
+      },
+      {
+        "href": "https://tailwindcss.com/plus/ui-blocks/marketing/elements/banners",
+        "text": "Banners"
+      },
+      {
+        "href": "https://tailwindcss.com/plus/ui-blocks/marketing/feedback/404-pages",
+        "text": "404 Pages"
+      },
+      {
+        "href": "https://tailwindcss.com/plus/ui-blocks/marketing/page-examples/landing-pages",
+        "text": "Landing Pages"
+      },
+      {
+        "href": "https://tailwindcss.com/plus/ui-blocks/marketing/page-examples/pricing-pages",
+        "text": "Pricing Pages"
+      },
+      {
+        "href": "https://tailwindcss.com/plus/ui-blocks/marketing/page-examples/about-pages",
+        "text": "About Pages"
+      },
+      {
+        "href": "https://tailwindcss.com/build-uis-that-dont-suck",
+        "text": "Get the free course"
+      },
+      {
+        "href": "https://tailwindcss.com/plus/ui-blocks",
+        "text": "UI Blocks"
+      },
+      {
+        "href": "https://tailwindcss.com/plus/ui-blocks/marketing",
+        "text": "Marketing"
+      },
+      {
+        "href": "https://tailwindcss.com/plus/ui-blocks",
+        "text": "UI Blocks"
+      },
+      {
+        "href": "https://tailwindcss.com/plus/ui-blocks/marketing/sections/heroes",
+        "text": "Hero Sections12 components"
+      },
+      {
+        "href": "https://tailwindcss.com/plus/ui-blocks/marketing/sections/feature-sections",
+        "text": "Feature Sections15 components"
+      },
+      {
+        "href": "https://tailwindcss.com/plus/ui-blocks/marketing/sections/cta-sections",
+        "text": "CTA Sections11 components"
+      },
+      {
+        "href": "https://tailwindcss.com/plus/ui-blocks/marketing/sections/bento-grids",
+        "text": "Bento Grids3 components"
+      },
+      {
+        "href": "https://tailwindcss.com/plus/ui-blocks/marketing/sections/pricing",
+        "text": "Pricing Sections12 components"
+      },
+      {
+        "href": "https://tailwindcss.com/plus/ui-blocks/marketing/sections/header",
+        "text": "Header Sections8 components"
+      },
+      {
+        "href": "https://tailwindcss.com/plus/ui-blocks/marketing/sections/newsletter-sections",
+        "text": "Newsletter Sections6 components"
+      },
+      {
+        "href": "https://tailwindcss.com/plus/ui-blocks/marketing/sections/stats-sections",
+        "text": "Stats8 components"
+      },
+      {
+        "href": "https://tailwindcss.com/plus/ui-blocks/marketing/sections/testimonials",
+        "text": "Testimonials8 components"
+      },
+      {
+        "href": "https://tailwindcss.com/plus/ui-blocks/marketing/sections/blog-sections",
+        "text": "Blog Sections7 components"
+      },
+      {
+        "href": "https://tailwindcss.com/plus/ui-blocks/marketing/sections/contact-sections",
+        "text": "Contact Sections7 components"
+      },
+      {
+        "href": "https://tailwindcss.com/plus/ui-blocks/marketing/sections/team-sections",
+        "text": "Team Sections9 components"
+      },
+      {
+        "href": "https://tailwindcss.com/plus/ui-blocks/marketing/sections/content-sections",
+        "text": "Content Sections7 components"
+      },
+      {
+        "href": "https://tailwindcss.com/plus/ui-blocks/marketing/sections/logo-clouds",
+        "text": "Logo Clouds6 components"
+      },
+      {
+        "href": "https://tailwindcss.com/plus/ui-blocks/marketing/sections/faq-sections",
+        "text": "FAQs7 components"
+      },
+      {
+        "href": "https://tailwindcss.com/plus/ui-blocks/marketing/sections/footers",
+        "text": "Footers7 components"
+      },
+      {
+        "href": "https://tailwindcss.com/plus/ui-blocks/marketing/elements/headers",
+        "text": "Headers11 components"
+      },
+      {
+        "href": "https://tailwindcss.com/plus/ui-blocks/marketing/elements/flyout-menus",
+        "text": "Flyout Menus7 components"
+      },
+      {
+        "href": "https://tailwindcss.com/plus/ui-blocks/marketing/elements/banners",
+        "text": "Banners13 components"
+      },
+      {
+        "href": "https://tailwindcss.com/plus/ui-blocks/marketing/feedback/404-pages",
+        "text": "404 Pages5 components"
+      },
+      {
+        "href": "https://tailwindcss.com/plus/ui-blocks/marketing/page-examples/landing-pages",
+        "text": "Landing Pages4 examples"
+      },
+      {
+        "href": "https://tailwindcss.com/plus/ui-blocks/marketing/page-examples/pricing-pages",
+        "text": "Pricing Pages3 examples"
+      },
+      {
+        "href": "https://tailwindcss.com/plus/ui-blocks/marketing/page-examples/about-pages",
+        "text": "About Pages3 examples"
+      },
+      {
+        "href": "https://tailwindcss.com/plus/ui-blocks/marketing/sections/heroes",
+        "text": "Hero Sections"
+      },
+      {
+        "href": "https://tailwindcss.com/plus/ui-blocks/marketing/sections/feature-sections",
+        "text": "Feature Sections"
+      },
+      {
+        "href": "https://tailwindcss.com/plus/ui-blocks/marketing/sections/pricing",
+        "text": "Pricing Sections"
+      },
+      {
+        "href": "https://tailwindcss.com/plus/ui-blocks/marketing/sections/header",
+        "text": "Header Sections"
+      },
+      {
+        "href": "https://tailwindcss.com/plus/ui-blocks/marketing/sections/newsletter-sections",
+        "text": "Newsletter Sections"
+      },
+      {
+        "href": "https://tailwindcss.com/plus/ui-blocks/marketing/sections/testimonials",
+        "text": "Testimonials"
+      },
+      {
+        "href": "https://tailwindcss.com/plus/ui-blocks/marketing/sections/team-sections",
+        "text": "Team Sections"
+      },
+      {
+        "href": "https://tailwindcss.com/plus/ui-blocks/marketing/sections/content-sections",
+        "text": "Content Sections"
+      },
+      {
+        "href": "https://tailwindcss.com/plus/ui-blocks/marketing/sections/logo-clouds",
+        "text": "Logo Clouds"
+      },
+      {
+        "href": "https://tailwindcss.com/plus/ui-blocks/marketing/sections/faq-sections",
+        "text": "FAQs"
+      },
+      {
+        "href": "https://tailwindcss.com/plus/ui-blocks/marketing/sections/footers",
+        "text": "Footers"
+      },
+      {
+        "href": "https://tailwindcss.com/plus/ui-blocks/marketing/sections/header",
+        "text": "Headers"
+      },
+      {
+        "href": "https://tailwindcss.com/plus/ui-blocks/marketing/elements/flyout-menus",
+        "text": "Flyout Menus"
+      },
+      {
+        "href": "https://tailwindcss.com/plus/ui-blocks/marketing/elements/banners",
+        "text": "Banners"
+      },
+      {
+        "href": "https://tailwindcss.com/plus/ui-blocks/marketing",
+        "text": "Browse all →"
+      },
+      {
+        "href": "https://tailwindcss.com/plus/ui-blocks/application-ui/lists/tables",
+        "text": "Tables"
+      },
+      {
+        "href": "https://tailwindcss.com/plus/ui-blocks/application-ui/lists/feeds",
+        "text": "Feeds"
+      },
+      {
+        "href": "https://tailwindcss.com/plus/ui-blocks/application-ui/forms/form-layouts",
+        "text": "Form Layouts"
+      },
+      {
+        "href": "https://tailwindcss.com/plus/ui-blocks/application-ui/forms/select-menus",
+        "text": "Select Menus"
+      },
+      {
+        "href": "https://tailwindcss.com/plus/ui-blocks/application-ui/forms/radio-groups",
+        "text": "Radio Groups"
+      },
+      {
+        "href": "https://tailwindcss.com/plus/ui-blocks/application-ui/forms/checkboxes",
+        "text": "Checkboxes"
+      },
+      {
+        "href": "https://tailwindcss.com/plus/ui-blocks/application-ui/forms/comboboxes",
+        "text": "Comboboxes"
+      },
+      {
+        "href": "https://tailwindcss.com/plus/ui-blocks/application-ui/navigation/navbars",
+        "text": "Navbars"
+      },
+      {
+        "href": "https://tailwindcss.com/plus/ui-blocks/application-ui/navigation/pagination",
+        "text": "Pagination"
+      },
+      {
+        "href": "https://tailwindcss.com/plus/ui-blocks/application-ui/navigation/sidebar-navigation",
+        "text": "Sidebar Navigation"
+      },
+      {
+        "href": "https://tailwindcss.com/plus/ui-blocks/application-ui/navigation/command-palettes",
+        "text": "Command Palettes"
+      },
+      {
+        "href": "https://tailwindcss.com/plus/ui-blocks/application-ui/overlays/modal-dialogs",
+        "text": "Modals"
+      },
+      {
+        "href": "https://tailwindcss.com/plus/ui-blocks/application-ui/elements/dropdowns",
+        "text": "Dropdowns"
+      },
+      {
+        "href": "https://tailwindcss.com/plus/ui-blocks/application-ui/elements/buttons",
+        "text": "Buttons"
+      },
+      {
+        "href": "https://tailwindcss.com/plus/ui-blocks/application-ui",
+        "text": "Browse all →"
+      },
+      {
+        "href": "https://tailwindcss.com/plus/ui-blocks/ecommerce/components/product-overviews",
+        "text": "Product Overviews"
+      },
+      {
+        "href": "https://tailwindcss.com/plus/ui-blocks/ecommerce/components/product-lists",
+        "text": "Product Lists"
+      },
+      {
+        "href": "https://tailwindcss.com/plus/ui-blocks/ecommerce/components/category-previews",
+        "text": "Category Previews"
+      },
+      {
+        "href": "https://tailwindcss.com/plus/ui-blocks/ecommerce/components/shopping-carts",
+        "text": "Shopping Carts"
+      },
+      {
+        "href": "https://tailwindcss.com/plus/ui-blocks/ecommerce/components/category-filters",
+        "text": "Category Filters"
+      },
+      {
+        "href": "https://tailwindcss.com/plus/ui-blocks/ecommerce/components/product-quickviews",
+        "text": "Product Quickviews"
+      },
+      {
+        "href": "https://tailwindcss.com/plus/ui-blocks/ecommerce/components/product-features",
+        "text": "Product Features"
+      },
+      {
+        "href": "https://tailwindcss.com/plus/ui-blocks/ecommerce/components/store-navigation",
+        "text": "Store Navigation"
+      },
+      {
+        "href": "https://tailwindcss.com/plus/ui-blocks/ecommerce/components/promo-sections",
+        "text": "Promo Sections"
+      },
+      {
+        "href": "https://tailwindcss.com/plus/ui-blocks/ecommerce/components/checkout-forms",
+        "text": "Checkout Forms"
+      },
+      {
+        "href": "https://tailwindcss.com/plus/ui-blocks/ecommerce/components/reviews",
+        "text": "Reviews"
+      },
+      {
+        "href": "https://tailwindcss.com/plus/ui-blocks/ecommerce/components/order-summaries",
+        "text": "Order Summaries"
+      },
+      {
+        "href": "https://tailwindcss.com/plus/ui-blocks/ecommerce/components/order-history",
+        "text": "Order History"
+      },
+      {
+        "href": "https://tailwindcss.com/plus/ui-blocks/ecommerce/components/incentives",
+        "text": "Incentives"
+      },
+      {
+        "href": "https://tailwindcss.com/plus/ui-blocks/ecommerce",
+        "text": "Browse all →"
+      },
+      {
+        "href": "https://tailwindcss.com/plus/templates/catalyst",
+        "text": "Catalyst UI Kit"
+      },
+      {
+        "href": "https://tailwindcss.com/plus/templates/spotlight",
+        "text": "Personal Website Template"
+      },
+      {
+        "href": "https://tailwindcss.com/plus/templates/salient",
+        "text": "Landing Page Template"
+      },
+      {
+        "href": "https://tailwindcss.com/plus/templates/protocol",
+        "text": "API Reference Template"
+      },
+      {
+        "href": "https://tailwindcss.com/plus/templates/commit",
+        "text": "Changelog Template"
+      },
+      {
+        "href": "https://tailwindcss.com/plus/templates/primer",
+        "text": "Info Product Template"
+      },
+      {
+        "href": "https://tailwindcss.com/plus/templates/studio",
+        "text": "Agency Template"
+      },
+      {
+        "href": "https://tailwindcss.com/plus/templates/transmit",
+        "text": "Podcast Template"
+      },
+      {
+        "href": "https://tailwindcss.com/plus/templates/pocket",
+        "text": "App Marketing Template"
+      },
+      {
+        "href": "https://tailwindcss.com/plus/templates/syntax",
+        "text": "Documentation Template"
+      },
+      {
+        "href": "https://tailwindcss.com/plus/templates/keynote",
+        "text": "Conference Template"
+      },
+      {
+        "href": "https://tailwindcss.com/plus/templates",
+        "text": "Browse all →"
+      },
+      {
+        "href": "https://tailwindcss.com/plus/privacy-policy",
+        "text": "Privacy policy"
+      },
+      {
+        "href": "https://tailwindcss.com/plus/changelog",
+        "text": "Changelog"
+      }
+    ],
+    "paySignals": [
+      "Get full access",
+      "Sign in",
+      "Preview"
+    ],
+    "title": "Marketing components - Official Tailwind UI components",
+    "url": "https://tailwindcss.com/plus/ui-blocks/marketing"
+  }
+]

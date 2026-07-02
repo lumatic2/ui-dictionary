@@ -1,0 +1,210 @@
+{
+  "url": "http://127.0.0.1:5178/?filter=nav%3Aplus-application-headings-page-headings",
+  "checkedAt": "2026-07-02T07:01:35.870Z",
+  "expected": [
+    "With meta and actions",
+    "With actions",
+    "With actions and breadcrumbs",
+    "With banner image",
+    "With avatar and actions",
+    "Card with avatar and stats",
+    "With meta, actions, and breadcrumbs",
+    "With filters and action",
+    "With logo, meta and actions"
+  ],
+  "desktop": {
+    "viewport": {
+      "width": 1440,
+      "height": 26000
+    },
+    "expectedFound": [
+      {
+        "name": "With meta and actions",
+        "found": true
+      },
+      {
+        "name": "With actions",
+        "found": true
+      },
+      {
+        "name": "With actions and breadcrumbs",
+        "found": true
+      },
+      {
+        "name": "With banner image",
+        "found": true
+      },
+      {
+        "name": "With avatar and actions",
+        "found": true
+      },
+      {
+        "name": "Card with avatar and stats",
+        "found": true
+      },
+      {
+        "name": "With meta, actions, and breadcrumbs",
+        "found": true
+      },
+      {
+        "name": "With filters and action",
+        "found": true
+      },
+      {
+        "name": "With logo, meta and actions",
+        "found": true
+      }
+    ],
+    "images": [
+      "/favicon.svg",
+      "/assets/page-headings/banner-office-v2.png"
+    ],
+    "previewImages": [
+      "/assets/page-headings/banner-office-v2.png"
+    ],
+    "horizontalOverflow": false,
+    "scrollWidth": 1425,
+    "innerWidth": 1440,
+    "scrollHeight": 26000,
+    "headings": [
+      {
+        "text": "Page Headings",
+        "top": 222
+      },
+      {
+        "text": "With meta and actions",
+        "top": 408
+      },
+      {
+        "text": "With actions",
+        "top": 912
+      },
+      {
+        "text": "With actions and breadcrumbs",
+        "top": 1202
+      },
+      {
+        "text": "With banner image",
+        "top": 1526
+      },
+      {
+        "text": "With avatar and actions",
+        "top": 2086
+      },
+      {
+        "text": "Card with avatar and stats",
+        "top": 2398
+      },
+      {
+        "text": "With meta, actions, and breadcrumbs",
+        "top": 2839
+      },
+      {
+        "text": "With filters and action",
+        "top": 3195
+      },
+      {
+        "text": "With logo, meta and actions",
+        "top": 3580
+      }
+    ]
+  },
+  "mobile": {
+    "viewport": {
+      "width": 390,
+      "height": 26000
+    },
+    "expectedFound": [
+      {
+        "name": "With meta and actions",
+        "found": true
+      },
+      {
+        "name": "With actions",
+        "found": true
+      },
+      {
+        "name": "With actions and breadcrumbs",
+        "found": true
+      },
+      {
+        "name": "With banner image",
+        "found": true
+      },
+      {
+        "name": "With avatar and actions",
+        "found": true
+      },
+      {
+        "name": "Card with avatar and stats",
+        "found": true
+      },
+      {
+        "name": "With meta, actions, and breadcrumbs",
+        "found": true
+      },
+      {
+        "name": "With filters and action",
+        "found": true
+      },
+      {
+        "name": "With logo, meta and actions",
+        "found": true
+      }
+    ],
+    "images": [
+      "/favicon.svg",
+      "/assets/page-headings/banner-office-v2.png"
+    ],
+    "previewImages": [
+      "/assets/page-headings/banner-office-v2.png"
+    ],
+    "horizontalOverflow": false,
+    "scrollWidth": 390,
+    "innerWidth": 390,
+    "scrollHeight": 26000,
+    "headings": [
+      {
+        "text": "Page Headings",
+        "top": 267
+      },
+      {
+        "text": "With meta and actions",
+        "top": 447
+      },
+      {
+        "text": "With actions",
+        "top": 893
+      },
+      {
+        "text": "With actions and breadcrumbs",
+        "top": 1167
+      },
+      {
+        "text": "With banner image",
+        "top": 1479
+      },
+      {
+        "text": "With avatar and actions",
+        "top": 2011
+      },
+      {
+        "text": "Card with avatar and stats",
+        "top": 2339
+      },
+      {
+        "text": "With meta, actions, and breadcrumbs",
+        "top": 2990
+      },
+      {
+        "text": "With filters and action",
+        "top": 3422
+      },
+      {
+        "text": "With logo, meta and actions",
+        "top": 3855
+      }
+    ]
+  },
+  "pass": true
+}

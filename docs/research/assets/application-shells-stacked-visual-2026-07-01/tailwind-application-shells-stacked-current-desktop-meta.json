@@ -1,0 +1,27 @@
+{
+  "codeCount": 8,
+  "examples": [
+    "With lighter page header",
+    "With bottom border",
+    "On subtle background",
+    "Branded nav with compact lighter page header",
+    "With overlap",
+    "Brand nav with overlap",
+    "Branded nav with lighter page header",
+    "With compact lighter page header",
+    "Two-row navigation with overlap"
+  ],
+  "h2s": [
+    "With lighter page header",
+    "With bottom border",
+    "On subtle background",
+    "Branded nav with compact lighter page header",
+    "With overlap",
+    "Brand nav with overlap",
+    "Branded nav with lighter page header",
+    "With compact lighter page header",
+    "Two-row navigation with overlap"
+  ],
+  "previewCount": 10,
+  "title": "Tailwind CSS Stacked Layouts - Official Tailwind UI Components"
+}

@@ -1,0 +1,188 @@
+{
+  "url": "https://tailwindcss.com/plus/ui-blocks/application-ui/data-display/description-lists",
+  "checkedAt": "2026-07-02T07:29:15.370Z",
+  "desktop": {
+    "viewport": {
+      "width": 1440,
+      "height": 26000
+    },
+    "expectedFound": [
+      {
+        "name": "Left-aligned",
+        "found": true
+      },
+      {
+        "name": "Left-aligned in card",
+        "found": true
+      },
+      {
+        "name": "Left-aligned striped",
+        "found": true
+      },
+      {
+        "name": "Two-column",
+        "found": true
+      },
+      {
+        "name": "Left-aligned with inline actions",
+        "found": true
+      },
+      {
+        "name": "Narrow with hidden labels",
+        "found": true
+      }
+    ],
+    "images": [],
+    "previewImages": [],
+    "horizontalOverflow": false,
+    "scrollWidth": 1440,
+    "innerWidth": 1440,
+    "scrollHeight": 26000,
+    "headings": [
+      {
+        "text": "Description Lists",
+        "top": 152
+      },
+      {
+        "text": "Left-aligned",
+        "top": 388
+      },
+      {
+        "text": "Left-aligned",
+        "top": 0
+      },
+      {
+        "text": "Left-aligned in card",
+        "top": 1312
+      },
+      {
+        "text": "Left-aligned in card",
+        "top": 0
+      },
+      {
+        "text": "Left-aligned striped",
+        "top": 2259
+      },
+      {
+        "text": "Left-aligned striped",
+        "top": 0
+      },
+      {
+        "text": "Two-column",
+        "top": 3182
+      },
+      {
+        "text": "Two-column",
+        "top": 0
+      },
+      {
+        "text": "Left-aligned with inline actions",
+        "top": 4063
+      },
+      {
+        "text": "Left-aligned with inline actions",
+        "top": 0
+      },
+      {
+        "text": "Narrow with hidden labels",
+        "top": 4986
+      },
+      {
+        "text": "Narrow with hidden labels",
+        "top": 0
+      }
+    ]
+  },
+  "mobile": {
+    "viewport": {
+      "width": 390,
+      "height": 26000
+    },
+    "expectedFound": [
+      {
+        "name": "Left-aligned",
+        "found": true
+      },
+      {
+        "name": "Left-aligned in card",
+        "found": true
+      },
+      {
+        "name": "Left-aligned striped",
+        "found": true
+      },
+      {
+        "name": "Two-column",
+        "found": true
+      },
+      {
+        "name": "Left-aligned with inline actions",
+        "found": true
+      },
+      {
+        "name": "Narrow with hidden labels",
+        "found": true
+      }
+    ],
+    "images": [],
+    "previewImages": [],
+    "horizontalOverflow": false,
+    "scrollWidth": 390,
+    "innerWidth": 390,
+    "scrollHeight": 26000,
+    "headings": [
+      {
+        "text": "Description Lists",
+        "top": 152
+      },
+      {
+        "text": "Left-aligned",
+        "top": 460
+      },
+      {
+        "text": "Left-aligned",
+        "top": 0
+      },
+      {
+        "text": "Left-aligned in card",
+        "top": 1601
+      },
+      {
+        "text": "Left-aligned in card",
+        "top": 0
+      },
+      {
+        "text": "Left-aligned striped",
+        "top": 2742
+      },
+      {
+        "text": "Left-aligned striped",
+        "top": 0
+      },
+      {
+        "text": "Two-column",
+        "top": 3879
+      },
+      {
+        "text": "Two-column",
+        "top": 0
+      },
+      {
+        "text": "Left-aligned with inline actions",
+        "top": 5016
+      },
+      {
+        "text": "Left-aligned with inline actions",
+        "top": 0
+      },
+      {
+        "text": "Narrow with hidden labels",
+        "top": 6197
+      },
+      {
+        "text": "Narrow with hidden labels",
+        "top": 0
+      }
+    ]
+  }
+}

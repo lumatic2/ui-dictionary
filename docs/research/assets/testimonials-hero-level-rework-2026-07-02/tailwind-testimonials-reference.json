@@ -1,0 +1,14 @@
+{
+  "url": "https://tailwindcss.com/plus/ui-blocks/marketing/sections/testimonials",
+  "title": "Tailwind CSS Testimonials - Official Tailwind UI Components",
+  "examples": [
+    "Simple centered",
+    "With large avatar",
+    "With overlapping image",
+    "With background image",
+    "Side-by-side",
+    "With star rating",
+    "Grid",
+    "Subtle grid"
+  ]
+}

@@ -1,0 +1,118 @@
+{
+  "desktop": {
+    "url": "https://tailwindcss.com/plus/ui-blocks/marketing/feedback/404-pages",
+    "title": "Tailwind CSS 404 Pages - Official Tailwind UI Components",
+    "innerWidth": 1440,
+    "clientWidth": 1440,
+    "scrollWidth": 1440,
+    "scrollHeight": 6861,
+    "overflow": false,
+    "headings": [
+      "Page Sections",
+      "Elements",
+      "Feedback",
+      "Page Examples",
+      "Build UIs that don’t suck.",
+      "404 Pages",
+      "Simple",
+      "Simple",
+      "Split with image",
+      "Split with image",
+      "With popular pages",
+      "With popular pages",
+      "With background image",
+      "With background image",
+      "With navbar and footer",
+      "With navbar and footer",
+      "Marketing",
+      "Application UI",
+      "Ecommerce",
+      "Templates & UI Kits"
+    ],
+    "images": [],
+    "sections": [
+      {
+        "top": 384,
+        "h": 820,
+        "w": 1280,
+        "text": "SimplePreviewCodeHTMLReactVue #frame-ebef3404d06e7b5f42e85b7b2ca4a2a5 { height: 768px; } @media (min-width: 704px) { #frame-ebef3404d06e7b5f42e85b7b2ca4a2a5 { height: 768px; } }"
+      },
+      {
+        "top": 0,
+        "h": 0,
+        "w": 0,
+        "text": "SimplePreviewCodeHTMLReactVue #frame-ebef3404d06e7b5f42e85b7b2ca4a2a5-dark { height: 768px; } @media (min-width: 704px) { #frame-ebef3404d06e7b5f42e85b7b2ca4a2a5-dark { height: 768"
+      },
+      {
+        "top": 1300,
+        "h": 728,
+        "w": 1280,
+        "text": "Split with imagePreviewGet the code → #frame-aed9589b7fc7f9b79887962b5e52b68c { height: 654px; } @media (min-width: 704px) { #frame-aed9589b7fc7f9b79887962b5e52b68c { height: 706px"
+      },
+      {
+        "top": 0,
+        "h": 0,
+        "w": 0,
+        "text": "Split with imagePreviewGet the code → #frame-aed9589b7fc7f9b79887962b5e52b68c-dark { height: 654px; } @media (min-width: 704px) { #frame-aed9589b7fc7f9b79887962b5e52b68c-dark { hei"
+      }
+    ]
+  },
+  "mobile": {
+    "url": "https://tailwindcss.com/plus/ui-blocks/marketing/feedback/404-pages",
+    "title": "Tailwind CSS 404 Pages - Official Tailwind UI Components",
+    "innerWidth": 390,
+    "clientWidth": 390,
+    "scrollWidth": 390,
+    "scrollHeight": 7700,
+    "overflow": false,
+    "headings": [
+      "Page Sections",
+      "Elements",
+      "Feedback",
+      "Page Examples",
+      "Build UIs that don’t suck.",
+      "404 Pages",
+      "Simple",
+      "Simple",
+      "Split with image",
+      "Split with image",
+      "With popular pages",
+      "With popular pages",
+      "With background image",
+      "With background image",
+      "With navbar and footer",
+      "With navbar and footer",
+      "Marketing",
+      "Application UI",
+      "Ecommerce",
+      "Templates & UI Kits"
+    ],
+    "images": [],
+    "sections": [
+      {
+        "top": 456,
+        "h": 820,
+        "w": 358,
+        "text": "SimplePreviewCodeHTMLReactVue #frame-ebef3404d06e7b5f42e85b7b2ca4a2a5 { height: 768px; } @media (min-width: 704px) { #frame-ebef3404d06e7b5f42e85b7b2ca4a2a5 { height: 768px; } }"
+      },
+      {
+        "top": 0,
+        "h": 0,
+        "w": 0,
+        "text": "SimplePreviewCodeHTMLReactVue #frame-ebef3404d06e7b5f42e85b7b2ca4a2a5-dark { height: 768px; } @media (min-width: 704px) { #frame-ebef3404d06e7b5f42e85b7b2ca4a2a5-dark { height: 768"
+      },
+      {
+        "top": 1372,
+        "h": 722,
+        "w": 358,
+        "text": "Split with imagePreviewGet the code → #frame-aed9589b7fc7f9b79887962b5e52b68c { height: 654px; } @media (min-width: 704px) { #frame-aed9589b7fc7f9b79887962b5e52b68c { height: 706px"
+      },
+      {
+        "top": 0,
+        "h": 0,
+        "w": 0,
+        "text": "Split with imagePreviewGet the code → #frame-aed9589b7fc7f9b79887962b5e52b68c-dark { height: 654px; } @media (min-width: 704px) { #frame-aed9589b7fc7f9b79887962b5e52b68c-dark { hei"
+      }
+    ]
+  }
+}

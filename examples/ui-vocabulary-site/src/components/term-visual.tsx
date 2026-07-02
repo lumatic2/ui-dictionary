@@ -505,6 +505,42 @@ function renderVisual(variant: string, label: string) {
 }
 
 const FRONTEND_UTILITY_VARIANTS = new Set([
+  "glassmorphism-surface",
+  "translucent-surface",
+  "hairline-border",
+  "inner-shadow",
+  "noise-texture",
+  "highlight-stroke",
+  "font-weight",
+  "line-height",
+  "letter-spacing",
+  "text-overflow",
+  "line-clamp",
+  "layout-gap",
+  "inner-padding",
+  "aspect-ratio",
+  "container-query",
+  "layout-shift",
+  "aria-expanded",
+  "aria-invalid",
+  "aria-live",
+  "sr-only",
+  "focus-trap",
+  "mobile-first",
+  "fluid-layout",
+  "dynamic-viewport-unit",
+  "safe-area-inset",
+  "scroll-snap",
+  "tap-feedback",
+  "optimistic-update",
+  "pending-state",
+  "hover-reveal",
+  "gesture-hint",
+  "outline-ring",
+  "blend-mode",
+  "object-fit",
+  "semantic-color",
+  "theme-token",
   "opacity",
   "backdrop-blur",
   "shadow-elevation",
@@ -535,6 +571,13 @@ const FRONTEND_UTILITY_VARIANTS = new Set([
 ])
 
 type FrontendUtilityKind = typeof FRONTEND_UTILITY_VARIANTS extends Set<infer T> ? T & string : never
+
+const TYPOGRAPHY_IMPL_VARIANTS = new Set(["font-weight", "line-height", "letter-spacing", "text-overflow", "line-clamp"])
+const LAYOUT_TOKEN_VARIANTS = new Set(["layout-gap", "inner-padding", "aspect-ratio", "container-query", "layout-shift"])
+const ACCESSIBILITY_STATE_VARIANTS = new Set(["aria-expanded", "aria-invalid", "aria-live", "sr-only", "focus-trap"])
+const RESPONSIVE_VIEWPORT_VARIANTS = new Set(["mobile-first", "fluid-layout", "dynamic-viewport-unit", "safe-area-inset", "scroll-snap"])
+const MICROINTERACTION_VARIANTS = new Set(["tap-feedback", "optimistic-update", "pending-state", "hover-reveal", "gesture-hint"])
+const VISUAL_PRIMITIVE_VARIANTS = new Set(["outline-ring", "blend-mode", "object-fit", "semantic-color", "theme-token"])
 
 function Chrome({ children, className, ...props }: React.ComponentProps<"div">) {
   return <div className={cn("rounded-md border bg-card shadow-sm", className)} {...props}>{children}</div>
@@ -4359,6 +4402,66 @@ function OriginCossVisual({ kind }: { kind: OriginCossKind }) {
 function FrontendUtilityVisual({ kind }: { kind: FrontendUtilityKind }) {
   const [active, setActive] = useState(false)
 
+  if (kind === "glassmorphism-surface") {
+    return <div className="relative h-28 w-56 overflow-hidden rounded-md border bg-[linear-gradient(135deg,rgba(49,46,129,.55),rgba(20,184,166,.32),rgba(244,114,182,.28))] p-4"><div className="absolute inset-0 grid grid-cols-5 gap-2 p-3 opacity-70">{Array.from({ length: 10 }).map((_, item) => <span key={item} className="rounded bg-white/25" />)}</div><div className="relative rounded-xl border border-white/45 bg-white/35 p-3 text-xs text-slate-950 shadow-xl backdrop-blur-md"><b>Glass card</b><Line className="mt-2 w-24 bg-slate-900/25" /><span className="mt-2 block h-px w-full bg-white/60" /></div></div>
+  }
+  if (kind === "translucent-surface") {
+    return <div className="relative h-28 w-56 overflow-hidden rounded-md border bg-[linear-gradient(135deg,rgba(79,70,229,.25),rgba(16,185,129,.28))] p-4"><div className="absolute inset-0 p-3"><div className="grid h-full grid-cols-4 gap-2">{Array.from({ length: 8 }).map((_, item) => <span key={item} className="rounded bg-primary/20" />)}</div></div><div className="relative rounded-md border bg-background/60 p-3 text-xs shadow-sm"><b>Alpha surface</b><Line className="mt-2 w-28" /></div></div>
+  }
+  if (kind === "hairline-border") {
+    return <div className="flex w-60 items-center justify-center gap-3 rounded-md border bg-muted/25 p-4 text-xs"><span className="flex size-16 items-center justify-center rounded-md border border-border/60 bg-card">1px</span><span className="flex size-16 items-center justify-center rounded-md border-2 bg-card">2px</span><span className="flex size-16 items-center justify-center rounded-md bg-card shadow-md">shadow</span></div>
+  }
+  if (kind === "inner-shadow") {
+    return <div className="flex w-60 items-center justify-center gap-3 rounded-md border bg-muted/25 p-4 text-xs"><span className="flex h-14 w-20 items-center justify-center rounded-md border bg-background shadow-inner">inset</span><span className="flex h-14 w-20 items-center justify-center rounded-md border bg-card shadow-md">raised</span></div>
+  }
+  if (kind === "noise-texture") {
+    return <div className="relative h-28 w-56 overflow-hidden rounded-md border bg-[linear-gradient(135deg,rgba(79,70,229,.45),rgba(244,114,182,.32),rgba(20,184,166,.35))] p-4 text-xs"><div className="absolute inset-0 opacity-35 [background-image:radial-gradient(circle,rgba(255,255,255,.75)_1px,transparent_1px)] [background-size:6px_6px]" /><div className="relative rounded-md border bg-background/75 p-3"><b>Noise texture</b><Line className="mt-2 w-28" /></div></div>
+  }
+  if (kind === "highlight-stroke") {
+    return <div className="flex h-28 w-56 items-center justify-center rounded-md border bg-slate-950 p-4 text-xs text-white"><div className="relative w-40 rounded-xl border border-white/10 bg-slate-900 p-3 shadow-xl"><span className="absolute inset-x-3 top-0 h-px bg-white/70" /><span className="absolute left-0 top-3 h-12 w-px bg-white/25" /><b>Edge light</b><div className="mt-3 h-2 w-24 rounded-full bg-white/25" /></div></div>
+  }
+  if (TYPOGRAPHY_IMPL_VARIANTS.has(kind)) {
+    if (kind === "font-weight") return <Chrome className="grid w-60 grid-cols-3 gap-2 p-3 text-center text-sm"><span className="font-light">Light</span><span className="font-normal">Regular</span><span className="font-bold">Bold</span></Chrome>
+    if (kind === "line-height") return <Chrome className="grid w-60 grid-cols-2 gap-3 p-3 text-xs"><p className="leading-3">Line one<br />Line two<br />Line three</p><p className="leading-6">Line one<br />Line two<br />Line three</p></Chrome>
+    if (kind === "letter-spacing") return <Chrome className="flex w-60 items-center justify-center gap-4 p-3 text-xs"><span className="tracking-normal">LABEL</span><span className="tracking-widest">LABEL</span></Chrome>
+    if (kind === "text-overflow") return <Chrome className="w-56 p-3 text-xs"><p className="truncate rounded border bg-background px-2 py-1">Very long dashboard item title that does not fit</p></Chrome>
+    return <Chrome className="w-56 p-3 text-xs"><p className="line-clamp-2">긴 설명 텍스트가 카드 안에서 두 줄까지만 보이고 나머지는 말줄임 처리되어 높이를 일정하게 유지합니다.</p></Chrome>
+  }
+  if (LAYOUT_TOKEN_VARIANTS.has(kind)) {
+    if (kind === "layout-gap") return <Chrome className="flex w-60 items-center justify-center gap-5 p-4 text-xs"><span className="size-10 rounded bg-primary/20" /><span className="rounded border px-2 py-1">gap</span><span className="size-10 rounded bg-primary/20" /></Chrome>
+    if (kind === "inner-padding") return <Chrome className="w-56 p-3 text-xs"><div className="rounded border border-dashed p-4"><div className="rounded bg-primary/20 px-3 py-2">content</div></div></Chrome>
+    if (kind === "aspect-ratio") return <Chrome className="flex w-60 items-end justify-center gap-3 p-3 text-xs"><span className="flex aspect-video w-28 items-center justify-center rounded border bg-primary/15">16:9</span><span className="flex aspect-square w-16 items-center justify-center rounded border bg-primary/15">1:1</span></Chrome>
+    if (kind === "container-query") return <Chrome className="grid w-64 grid-cols-[80px_1fr] gap-3 p-3 text-xs"><div className="rounded border bg-background p-2"><Line className="w-10" /><Line className="mt-2 w-8" /></div><div className="grid grid-cols-2 gap-2 rounded border bg-background p-2"><Line /><Line /><Line /><Line /></div></Chrome>
+    return <Chrome className="relative h-28 w-60 overflow-hidden p-3 text-xs"><div className="absolute left-3 top-3 h-10 w-20 rounded border bg-background" /><div className={cn("absolute left-3 top-16 h-8 w-32 rounded bg-primary/20 transition-transform", active && "translate-y-2")} /><button type="button" className="absolute right-3 top-3 rounded border px-2 py-1" onClick={() => setActive((value) => !value)}>shift</button></Chrome>
+  }
+  if (ACCESSIBILITY_STATE_VARIANTS.has(kind)) {
+    if (kind === "aria-expanded") return <button type="button" className="w-56 rounded-md border bg-card p-3 text-left text-xs" onClick={() => setActive((value) => !value)}><span className="flex justify-between"><b>상세 옵션</b><ChevronDown className={cn("size-4 transition-transform", active && "rotate-180")} /></span>{active && <Line className="mt-3 w-28" />}<p className="mt-2 text-muted-foreground">aria-expanded={String(active)}</p></button>
+    if (kind === "aria-invalid") return <Chrome className="w-56 p-3 text-xs"><div className="rounded border border-destructive px-3 py-2">email@</div><p className="mt-2 text-destructive">aria-invalid · 오류</p></Chrome>
+    if (kind === "aria-live") return <Chrome className="w-56 p-3 text-xs"><p className="rounded bg-primary/10 px-3 py-2">저장되었습니다</p><p className="mt-2 text-muted-foreground">live region</p></Chrome>
+    if (kind === "sr-only") return <Chrome className="flex w-56 items-center justify-between p-3 text-xs"><button type="button" className="rounded border p-2"><Bell className="size-4" /></button><span className="rounded bg-muted px-2 py-1">sr-only label</span></Chrome>
+    return <Chrome className="relative h-28 w-56 p-3 text-xs"><div className="absolute inset-3 rounded border bg-background p-3 shadow"><button type="button" className="rounded border px-2 py-1 ring-2 ring-ring">Focus</button><Line className="mt-3 w-24" /></div><div className="absolute inset-0 -z-0 bg-muted/30" /></Chrome>
+  }
+  if (RESPONSIVE_VIEWPORT_VARIANTS.has(kind)) {
+    if (kind === "mobile-first") return <Chrome className="flex w-64 items-end justify-center gap-3 p-3 text-xs"><div className="h-24 w-14 rounded border bg-background p-2"><Line className="w-8" /><Line className="mt-2 w-8" /></div><div className="grid h-24 w-28 grid-cols-2 gap-2 rounded border bg-background p-2"><Line /><Line /><Line /><Line /></div></Chrome>
+    if (kind === "fluid-layout") return <Chrome className="flex w-64 items-center justify-center gap-2 p-3 text-xs"><span className="h-16 w-12 rounded border bg-primary/15" /><span className="h-16 w-20 rounded border bg-primary/15" /><span className="h-16 w-28 rounded border bg-primary/15" /></Chrome>
+    if (kind === "dynamic-viewport-unit") return <Chrome className="flex w-60 items-end justify-center gap-3 p-3 text-xs"><div className="h-24 w-16 rounded border bg-background p-1"><div className="h-4 rounded bg-muted" /><div className="mt-1 h-16 rounded bg-primary/20">dvh</div></div><div className="h-20 w-16 rounded border bg-background p-1"><div className="h-12 rounded bg-primary/20">svh</div></div></Chrome>
+    if (kind === "safe-area-inset") return <Chrome className="relative h-28 w-44 rounded-2xl p-3 text-xs"><div className="mx-auto h-2 w-10 rounded-full bg-muted" /><div className="absolute inset-x-4 bottom-5 rounded bg-primary px-2 py-1 text-center text-primary-foreground">CTA</div><div className="absolute inset-x-8 bottom-2 h-1 rounded bg-muted-foreground/40" /></Chrome>
+    return <Chrome className="flex w-60 snap-x gap-2 overflow-hidden p-3 text-xs"><span className="flex h-16 min-w-28 snap-center items-center justify-center rounded border bg-primary/15">1</span><span className="flex h-16 min-w-28 snap-center items-center justify-center rounded border bg-primary/15">2</span><span className="flex h-16 min-w-28 snap-center items-center justify-center rounded border bg-primary/15">3</span></Chrome>
+  }
+  if (MICROINTERACTION_VARIANTS.has(kind)) {
+    if (kind === "tap-feedback") return <button type="button" className={cn("rounded-md border px-5 py-3 text-sm transition", active && "scale-95 bg-primary text-primary-foreground")} onClick={() => setActive((value) => !value)}>Tap</button>
+    if (kind === "optimistic-update") return <button type="button" className={cn("flex items-center gap-2 rounded-md border px-4 py-2 text-sm", active && "border-primary text-primary")} onClick={() => setActive((value) => !value)}><Check className="size-4" />{active ? "Saved" : "Save"}</button>
+    if (kind === "pending-state") return <button type="button" className="flex items-center gap-2 rounded-md border px-4 py-2 text-sm" onClick={() => setActive((value) => !value)}>{active ? <LoaderCircle className="size-4 animate-spin" /> : <Check className="size-4" />}{active ? "처리 중" : "요청"}</button>
+    if (kind === "hover-reveal") return <Chrome className="group flex w-56 items-center justify-between p-3 text-xs"><span>Row item</span><span className="opacity-20 transition group-hover:opacity-100">⋯</span></Chrome>
+    return <Chrome className="flex w-60 items-center gap-2 overflow-hidden p-3 text-xs"><span className="h-14 min-w-20 rounded border bg-primary/15" /><span className="h-14 min-w-20 rounded border bg-primary/15" /><span className="-mr-8 h-14 min-w-20 rounded border border-dashed bg-muted/50">swipe</span></Chrome>
+  }
+  if (VISUAL_PRIMITIVE_VARIANTS.has(kind)) {
+    if (kind === "outline-ring") return <Chrome className="flex w-56 items-center justify-center p-4"><span className="rounded-md border bg-background px-4 py-2 outline outline-2 outline-offset-4 outline-primary">Outline</span></Chrome>
+    if (kind === "blend-mode") return <div className="relative h-28 w-56 rounded-md border bg-primary/40 p-4"><span className="absolute left-12 top-6 size-16 rounded-full bg-destructive/70 mix-blend-multiply" /><span className="absolute left-24 top-6 size-16 rounded-full bg-teal-400/70 mix-blend-multiply" /></div>
+    if (kind === "object-fit") return <Chrome className="grid w-60 grid-cols-2 gap-3 p-3 text-xs"><div className="flex aspect-square items-center justify-center overflow-hidden rounded border bg-primary/20"><span className="h-16 w-28 rounded bg-primary/50" /></div><div className="flex aspect-square items-center justify-center rounded border bg-primary/20"><span className="h-10 w-16 rounded bg-primary/50" /></div></Chrome>
+    if (kind === "semantic-color") return <Chrome className="grid w-60 grid-cols-3 gap-2 p-3 text-xs"><span className="rounded bg-primary px-2 py-2 text-primary-foreground">primary</span><span className="rounded bg-destructive px-2 py-2 text-white">danger</span><span className="rounded bg-muted px-2 py-2">muted</span></Chrome>
+    return <Chrome className="w-60 p-3 text-xs"><div className="grid grid-cols-[80px_1fr] gap-2"><span>--radius</span><span className="rounded bg-primary/20 px-2">8px</span><span>--primary</span><span className="rounded bg-primary px-2 text-primary-foreground">color</span></div></Chrome>
+  }
   if (kind === "opacity") {
     return <Chrome className="flex w-56 items-center justify-center gap-3 p-4">{[100, 60, 25].map((level) => <span key={level} className="size-12 rounded-md bg-primary" style={{ opacity: level / 100 }} />)}</Chrome>
   }
@@ -4616,18 +4719,24 @@ function InfiniteMovingCardsVisual() {
 
 function OrbitingIconsVisual() {
   const icons = [Search, Bell, LinkIcon, Folder]
+  const positions = [
+    "left-1/2 top-0 -translate-x-1/2",
+    "right-0 top-1/2 -translate-y-1/2",
+    "bottom-0 left-1/2 -translate-x-1/2",
+    "left-0 top-1/2 -translate-y-1/2",
+  ]
 
   return (
     <div className="visual-hover-surface relative flex size-32 items-center justify-center rounded-full border border-dashed bg-card/70">
       <span className="flex size-11 items-center justify-center rounded-full bg-primary text-primary-foreground shadow-sm">
         <Settings aria-hidden="true" className="size-4" />
       </span>
-      <div className="visual-orbit-ring absolute inset-2 rounded-full">
+      <div className="visual-orbit-path absolute inset-2 rounded-full border border-primary/25" />
+      <div className="absolute inset-2 rounded-full">
         {icons.map((Icon, index) => (
           <span
             key={index}
-            className="absolute left-1/2 top-1/2 flex size-7 items-center justify-center rounded-full border bg-card shadow-sm"
-            style={{ transform: `rotate(${index * 90}deg) translateX(50px) rotate(-${index * 90}deg)` }}
+            className={cn("absolute flex size-7 items-center justify-center rounded-full border bg-card shadow-sm", positions[index])}
           >
             <Icon aria-hidden="true" className="size-3" />
           </span>

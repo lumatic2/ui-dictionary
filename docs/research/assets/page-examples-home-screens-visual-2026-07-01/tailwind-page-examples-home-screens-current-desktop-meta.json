@@ -1,0 +1,11 @@
+{
+  "url": "https://tailwindcss.com/plus/ui-blocks/application-ui/page-examples/home-screens",
+  "name": "Home Screens",
+  "description": "Home screen and dashboard examples for Tailwind CSS, designed and built by the creators of the framework.",
+  "visible_example_count": 2,
+  "visible_example_names": [
+    "Sidebar",
+    "Stacked"
+  ],
+  "raw_component_count": 4
+}

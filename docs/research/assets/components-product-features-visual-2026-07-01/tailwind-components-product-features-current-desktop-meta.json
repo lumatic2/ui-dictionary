@@ -1,0 +1,18 @@
+{
+  "url": "https://tailwindcss.com/plus/ui-blocks/ecommerce/components/product-features",
+  "name": "Product Features",
+  "description": "Ecommerce product feature section examples for Tailwind CSS, designed and built by the creators of the framework.",
+  "visible_example_count": 9,
+  "visible_example_names": [
+    "With image grid",
+    "With header, images, and descriptions",
+    "With fading image",
+    "With wide images",
+    "With split image",
+    "With tabs",
+    "With alternating sections",
+    "With square images",
+    "With tiered images"
+  ],
+  "raw_component_count": 18
+}

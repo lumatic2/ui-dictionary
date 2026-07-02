@@ -1,0 +1,16 @@
+{
+  "url": "https://tailwindcss.com/plus/ui-blocks/application-ui/forms/select-menus",
+  "name": "Select Menus",
+  "description": "Select menus and dropdown examples for Tailwind CSS, designed and built by the creators of the framework.",
+  "visible_example_count": 7,
+  "visible_example_names": [
+    "Custom with avatar",
+    "Simple native",
+    "Simple custom",
+    "Custom with check on left",
+    "Custom with status indicator",
+    "With secondary text",
+    "Branded with supported text"
+  ],
+  "raw_component_count": 14
+}

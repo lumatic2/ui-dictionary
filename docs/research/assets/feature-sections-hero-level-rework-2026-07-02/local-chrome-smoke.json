@@ -1,0 +1,32 @@
+{
+  "url": "http://127.0.0.1:5178/?filter=nav%3Aplus-marketing-feature-sections",
+  "title": "UI 용어 사전",
+  "checkedAt": "2026-07-01T20:15:56.379Z",
+  "route": "/?filter=nav%3Aplus-marketing-feature-sections",
+  "server": "http://127.0.0.1:5178",
+  "examples": [
+    "With product screenshot",
+    "Centered 2x2 grid",
+    "With large screenshot",
+    "With large bordered screenshot",
+    "Simple three column with small icons",
+    "With product screenshot on left",
+    "Simple three column with large icons",
+    "Contained in panel",
+    "With product screenshot panel",
+    "With testimonial",
+    "Offset 2x2 grid",
+    "With code example panel",
+    "Offset with feature list",
+    "Simple",
+    "Simple 3x2 grid"
+  ],
+  "v2Assets": [
+    "dashboard-product-screenshot-v2.png",
+    "large-dark-screenshot-v2.png",
+    "bordered-project-screenshot-v2.png",
+    "left-support-screenshot-v2.png",
+    "contained-analytics-screenshot-v2.png"
+  ],
+  "consoleIssues": []
+}

@@ -1,0 +1,21 @@
+{
+  "codeCount": 6,
+  "examples": [
+    "Simple",
+    "With action",
+    "With avatar and actions",
+    "With description and action",
+    "With description",
+    "With avatar, meta, and dropdown"
+  ],
+  "h2s": [
+    "Simple",
+    "With action",
+    "With avatar and actions",
+    "With description and action",
+    "With description",
+    "With avatar, meta, and dropdown"
+  ],
+  "previewCount": 7,
+  "title": "Tailwind CSS Card Headings - Official Tailwind UI Components"
+}

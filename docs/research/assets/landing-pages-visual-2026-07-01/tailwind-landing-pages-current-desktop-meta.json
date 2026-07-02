@@ -1,0 +1,17 @@
+{
+  "codeCount": 4,
+  "examples": [
+    "With screenshots and stats",
+    "With large screenshot and testimonial",
+    "With background image hero and pricing section",
+    "With mobile screenshot and testimonials grid"
+  ],
+  "h2s": [
+    "With screenshots and stats",
+    "With large screenshot and testimonial",
+    "With background image hero and pricing section",
+    "With mobile screenshot and testimonials grid"
+  ],
+  "previewCount": 5,
+  "title": "Tailwind CSS Landing Pages - Official Tailwind UI Components"
+}

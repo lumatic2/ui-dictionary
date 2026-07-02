@@ -1,0 +1,26 @@
+{
+  "url": "http://127.0.0.1:5178/?filter=nav%3Aplus-marketing-contact-sections",
+  "headings": [
+    "Contact Sections",
+    "Centered",
+    "Side-by-side grid",
+    "Split with pattern",
+    "Simple four-column",
+    "Simple centered",
+    "With testimonial",
+    "Split with image"
+  ],
+  "contactImages": [
+    "/assets/contact-sections/split-office-v2.png"
+  ],
+  "uniqueContactImages": 1,
+  "overflowX": false,
+  "dims": {
+    "scrollWidth": 2545,
+    "clientWidth": 2545
+  },
+  "mobile390": {
+    "method": "Chrome CLI screenshot",
+    "path": "docs/research/assets/contact-sections-hero-level-rework-2026-07-02/local-contact-sections-after-mobile-390.png"
+  }
+}

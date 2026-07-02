@@ -1,0 +1,14 @@
+{
+  "url": "https://tailwindcss.com/plus/ui-blocks/ecommerce/components/category-filters",
+  "name": "Category Filters",
+  "description": "Ecommerce category filter examples for Tailwind CSS, designed and built by the creators of the framework.",
+  "visible_example_count": 5,
+  "visible_example_names": [
+    "With inline actions and expandable sidebar filters",
+    "With centered text and dropdown product filters",
+    "With dropdown product filters",
+    "With expandable product filter panel",
+    "Sidebar filters"
+  ],
+  "raw_component_count": 10
+}

@@ -1,0 +1,44 @@
+{
+  "ctaImageSources": [
+    "/assets/cta-sections/dark-app-screenshot-v2.png",
+    "/assets/cta-sections/split-workspace-image-v2.png",
+    "/assets/cta-sections/two-column-photo-v2.png",
+    "/assets/cta-sections/image-tiles-collage-v2.png"
+  ],
+  "headings": [
+    "UI 용어 사전",
+    "CTA Sections",
+    "Dark panel with app screenshot",
+    "Simple stacked",
+    "Centered on dark panel",
+    "Simple centered",
+    "Simple centered with gradient",
+    "Simple centered on brand",
+    "Simple justified",
+    "Simple justified on subtle brand",
+    "Split with image",
+    "Two columns with photo",
+    "With image tiles"
+  ],
+  "horizontalOverflow": false,
+  "title": "UI 용어 사전",
+  "url": "http://127.0.0.1:5178/?filter=nav%3Aplus-marketing-cta-sections",
+  "viewport": {
+    "height": 1263,
+    "width": 2560
+  },
+  "visibleExampleHeadings": [
+    "UI 용어 사전",
+    "Dark panel with app screenshot",
+    "Simple stacked",
+    "Centered on dark panel",
+    "Simple centered",
+    "Simple centered with gradient",
+    "Simple centered on brand",
+    "Simple justified",
+    "Simple justified on subtle brand",
+    "Split with image",
+    "Two columns with photo",
+    "With image tiles"
+  ]
+}

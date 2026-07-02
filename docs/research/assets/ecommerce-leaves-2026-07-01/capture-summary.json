@@ -1,0 +1,909 @@
+{
+  "generatedAt": "2026-06-30T23:22:21.552Z",
+  "count": 21,
+  "summary": [
+    {
+      "text": "Product Overviews",
+      "href": "https://tailwindcss.com/plus/ui-blocks/ecommerce/components/product-overviews",
+      "slug": "components-product-overviews",
+      "route": "plus-ecommerce-product-overviews",
+      "localUrl": "http://127.0.0.1:5181/?filter=nav%3Aplus-ecommerce-product-overviews",
+      "captures": {
+        "tailwindDesktop": {
+          "status": 0,
+          "signal": null,
+          "stderr": "[48960:34096:0701/082100.240:ERROR:google_apis\\gcm\\engine\\registration_request.cc:291] Registration response error message: DEPRECATED_ENDPOINT\r\n441504 bytes written to file C:\\Users\\yusun\\projects\\ui-dictionary\\docs\\research\\assets\\ecommerce-leaves-2026-07-01\\components-product-overviews-tailwind-desktop.png\r\n",
+          "exists": true,
+          "bytes": 441504
+        },
+        "tailwindMobile": {
+          "status": 0,
+          "signal": null,
+          "stderr": "113948 bytes written to file C:\\Users\\yusun\\projects\\ui-dictionary\\docs\\research\\assets\\ecommerce-leaves-2026-07-01\\components-product-overviews-tailwind-mobile.png\r\n",
+          "exists": true,
+          "bytes": 113948
+        },
+        "localDesktop": {
+          "status": 0,
+          "signal": null,
+          "stderr": "118596 bytes written to file C:\\Users\\yusun\\projects\\ui-dictionary\\docs\\research\\assets\\ecommerce-leaves-2026-07-01\\components-product-overviews-local-desktop.png\r\n",
+          "exists": true,
+          "bytes": 118596
+        },
+        "localMobile": {
+          "status": 0,
+          "signal": null,
+          "stderr": "28364 bytes written to file C:\\Users\\yusun\\projects\\ui-dictionary\\docs\\research\\assets\\ecommerce-leaves-2026-07-01\\components-product-overviews-local-mobile.png\r\n",
+          "exists": true,
+          "bytes": 28364
+        }
+      },
+      "files": {
+        "tailwindDesktop": "docs/research/assets/ecommerce-leaves-2026-07-01/components-product-overviews-tailwind-desktop.png",
+        "tailwindMobile": "docs/research/assets/ecommerce-leaves-2026-07-01/components-product-overviews-tailwind-mobile.png",
+        "localDesktop": "docs/research/assets/ecommerce-leaves-2026-07-01/components-product-overviews-local-desktop.png",
+        "localMobile": "docs/research/assets/ecommerce-leaves-2026-07-01/components-product-overviews-local-mobile.png"
+      }
+    },
+    {
+      "text": "Product Lists",
+      "href": "https://tailwindcss.com/plus/ui-blocks/ecommerce/components/product-lists",
+      "slug": "components-product-lists",
+      "route": "plus-ecommerce-product-lists",
+      "localUrl": "http://127.0.0.1:5181/?filter=nav%3Aplus-ecommerce-product-lists",
+      "captures": {
+        "tailwindDesktop": {
+          "status": 0,
+          "signal": null,
+          "stderr": "271988 bytes written to file C:\\Users\\yusun\\projects\\ui-dictionary\\docs\\research\\assets\\ecommerce-leaves-2026-07-01\\components-product-lists-tailwind-desktop.png\r\n",
+          "exists": true,
+          "bytes": 271988
+        },
+        "tailwindMobile": {
+          "status": 0,
+          "signal": null,
+          "stderr": "80212 bytes written to file C:\\Users\\yusun\\projects\\ui-dictionary\\docs\\research\\assets\\ecommerce-leaves-2026-07-01\\components-product-lists-tailwind-mobile.png\r\n",
+          "exists": true,
+          "bytes": 80212
+        },
+        "localDesktop": {
+          "status": 0,
+          "signal": null,
+          "stderr": "117852 bytes written to file C:\\Users\\yusun\\projects\\ui-dictionary\\docs\\research\\assets\\ecommerce-leaves-2026-07-01\\components-product-lists-local-desktop.png\r\n",
+          "exists": true,
+          "bytes": 117852
+        },
+        "localMobile": {
+          "status": 0,
+          "signal": null,
+          "stderr": "31287 bytes written to file C:\\Users\\yusun\\projects\\ui-dictionary\\docs\\research\\assets\\ecommerce-leaves-2026-07-01\\components-product-lists-local-mobile.png\r\n",
+          "exists": true,
+          "bytes": 31287
+        }
+      },
+      "files": {
+        "tailwindDesktop": "docs/research/assets/ecommerce-leaves-2026-07-01/components-product-lists-tailwind-desktop.png",
+        "tailwindMobile": "docs/research/assets/ecommerce-leaves-2026-07-01/components-product-lists-tailwind-mobile.png",
+        "localDesktop": "docs/research/assets/ecommerce-leaves-2026-07-01/components-product-lists-local-desktop.png",
+        "localMobile": "docs/research/assets/ecommerce-leaves-2026-07-01/components-product-lists-local-mobile.png"
+      }
+    },
+    {
+      "text": "Category Previews",
+      "href": "https://tailwindcss.com/plus/ui-blocks/ecommerce/components/category-previews",
+      "slug": "components-category-previews",
+      "route": "plus-ecommerce-category-previews",
+      "localUrl": "http://127.0.0.1:5181/?filter=nav%3Aplus-ecommerce-category-previews",
+      "captures": {
+        "tailwindDesktop": {
+          "status": 0,
+          "signal": null,
+          "stderr": "537107 bytes written to file C:\\Users\\yusun\\projects\\ui-dictionary\\docs\\research\\assets\\ecommerce-leaves-2026-07-01\\components-category-previews-tailwind-desktop.png\r\n",
+          "exists": true,
+          "bytes": 537107
+        },
+        "tailwindMobile": {
+          "status": 0,
+          "signal": null,
+          "stderr": "164402 bytes written to file C:\\Users\\yusun\\projects\\ui-dictionary\\docs\\research\\assets\\ecommerce-leaves-2026-07-01\\components-category-previews-tailwind-mobile.png\r\n",
+          "exists": true,
+          "bytes": 164402
+        },
+        "localDesktop": {
+          "status": 0,
+          "signal": null,
+          "stderr": "124552 bytes written to file C:\\Users\\yusun\\projects\\ui-dictionary\\docs\\research\\assets\\ecommerce-leaves-2026-07-01\\components-category-previews-local-desktop.png\r\n",
+          "exists": true,
+          "bytes": 124552
+        },
+        "localMobile": {
+          "status": 0,
+          "signal": null,
+          "stderr": "36857 bytes written to file C:\\Users\\yusun\\projects\\ui-dictionary\\docs\\research\\assets\\ecommerce-leaves-2026-07-01\\components-category-previews-local-mobile.png\r\n",
+          "exists": true,
+          "bytes": 36857
+        }
+      },
+      "files": {
+        "tailwindDesktop": "docs/research/assets/ecommerce-leaves-2026-07-01/components-category-previews-tailwind-desktop.png",
+        "tailwindMobile": "docs/research/assets/ecommerce-leaves-2026-07-01/components-category-previews-tailwind-mobile.png",
+        "localDesktop": "docs/research/assets/ecommerce-leaves-2026-07-01/components-category-previews-local-desktop.png",
+        "localMobile": "docs/research/assets/ecommerce-leaves-2026-07-01/components-category-previews-local-mobile.png"
+      }
+    },
+    {
+      "text": "Shopping Carts",
+      "href": "https://tailwindcss.com/plus/ui-blocks/ecommerce/components/shopping-carts",
+      "slug": "components-shopping-carts",
+      "route": "plus-ecommerce-shopping-carts",
+      "localUrl": "http://127.0.0.1:5181/?filter=nav%3Aplus-ecommerce-shopping-carts",
+      "captures": {
+        "tailwindDesktop": {
+          "status": 0,
+          "signal": null,
+          "stderr": "106895 bytes written to file C:\\Users\\yusun\\projects\\ui-dictionary\\docs\\research\\assets\\ecommerce-leaves-2026-07-01\\components-shopping-carts-tailwind-desktop.png\r\n",
+          "exists": true,
+          "bytes": 106895
+        },
+        "tailwindMobile": {
+          "status": 0,
+          "signal": null,
+          "stderr": "43193 bytes written to file C:\\Users\\yusun\\projects\\ui-dictionary\\docs\\research\\assets\\ecommerce-leaves-2026-07-01\\components-shopping-carts-tailwind-mobile.png\r\n",
+          "exists": true,
+          "bytes": 43193
+        },
+        "localDesktop": {
+          "status": 0,
+          "signal": null,
+          "stderr": "134656 bytes written to file C:\\Users\\yusun\\projects\\ui-dictionary\\docs\\research\\assets\\ecommerce-leaves-2026-07-01\\components-shopping-carts-local-desktop.png\r\n",
+          "exists": true,
+          "bytes": 134656
+        },
+        "localMobile": {
+          "status": 0,
+          "signal": null,
+          "stderr": "39321 bytes written to file C:\\Users\\yusun\\projects\\ui-dictionary\\docs\\research\\assets\\ecommerce-leaves-2026-07-01\\components-shopping-carts-local-mobile.png\r\n",
+          "exists": true,
+          "bytes": 39321
+        }
+      },
+      "files": {
+        "tailwindDesktop": "docs/research/assets/ecommerce-leaves-2026-07-01/components-shopping-carts-tailwind-desktop.png",
+        "tailwindMobile": "docs/research/assets/ecommerce-leaves-2026-07-01/components-shopping-carts-tailwind-mobile.png",
+        "localDesktop": "docs/research/assets/ecommerce-leaves-2026-07-01/components-shopping-carts-local-desktop.png",
+        "localMobile": "docs/research/assets/ecommerce-leaves-2026-07-01/components-shopping-carts-local-mobile.png"
+      }
+    },
+    {
+      "text": "Category Filters",
+      "href": "https://tailwindcss.com/plus/ui-blocks/ecommerce/components/category-filters",
+      "slug": "components-category-filters",
+      "route": "plus-ecommerce-category-filters",
+      "localUrl": "http://127.0.0.1:5181/?filter=nav%3Aplus-ecommerce-category-filters",
+      "captures": {
+        "tailwindDesktop": {
+          "status": 0,
+          "signal": null,
+          "stderr": "88311 bytes written to file C:\\Users\\yusun\\projects\\ui-dictionary\\docs\\research\\assets\\ecommerce-leaves-2026-07-01\\components-category-filters-tailwind-desktop.png\r\n",
+          "exists": true,
+          "bytes": 88311
+        },
+        "tailwindMobile": {
+          "status": 0,
+          "signal": null,
+          "stderr": "47437 bytes written to file C:\\Users\\yusun\\projects\\ui-dictionary\\docs\\research\\assets\\ecommerce-leaves-2026-07-01\\components-category-filters-tailwind-mobile.png\r\n",
+          "exists": true,
+          "bytes": 47437
+        },
+        "localDesktop": {
+          "status": 0,
+          "signal": null,
+          "stderr": "120064 bytes written to file C:\\Users\\yusun\\projects\\ui-dictionary\\docs\\research\\assets\\ecommerce-leaves-2026-07-01\\components-category-filters-local-desktop.png\r\n",
+          "exists": true,
+          "bytes": 120064
+        },
+        "localMobile": {
+          "status": 0,
+          "signal": null,
+          "stderr": "33762 bytes written to file C:\\Users\\yusun\\projects\\ui-dictionary\\docs\\research\\assets\\ecommerce-leaves-2026-07-01\\components-category-filters-local-mobile.png\r\n",
+          "exists": true,
+          "bytes": 33762
+        }
+      },
+      "files": {
+        "tailwindDesktop": "docs/research/assets/ecommerce-leaves-2026-07-01/components-category-filters-tailwind-desktop.png",
+        "tailwindMobile": "docs/research/assets/ecommerce-leaves-2026-07-01/components-category-filters-tailwind-mobile.png",
+        "localDesktop": "docs/research/assets/ecommerce-leaves-2026-07-01/components-category-filters-local-desktop.png",
+        "localMobile": "docs/research/assets/ecommerce-leaves-2026-07-01/components-category-filters-local-mobile.png"
+      }
+    },
+    {
+      "text": "Product Quickviews",
+      "href": "https://tailwindcss.com/plus/ui-blocks/ecommerce/components/product-quickviews",
+      "slug": "components-product-quickviews",
+      "route": "plus-ecommerce-product-quickviews",
+      "localUrl": "http://127.0.0.1:5181/?filter=nav%3Aplus-ecommerce-product-quickviews",
+      "captures": {
+        "tailwindDesktop": {
+          "status": 0,
+          "signal": null,
+          "stderr": "150491 bytes written to file C:\\Users\\yusun\\projects\\ui-dictionary\\docs\\research\\assets\\ecommerce-leaves-2026-07-01\\components-product-quickviews-tailwind-desktop.png\r\n",
+          "exists": true,
+          "bytes": 150491
+        },
+        "tailwindMobile": {
+          "status": 0,
+          "signal": null,
+          "stderr": "96982 bytes written to file C:\\Users\\yusun\\projects\\ui-dictionary\\docs\\research\\assets\\ecommerce-leaves-2026-07-01\\components-product-quickviews-tailwind-mobile.png\r\n",
+          "exists": true,
+          "bytes": 96982
+        },
+        "localDesktop": {
+          "status": 0,
+          "signal": null,
+          "stderr": "119633 bytes written to file C:\\Users\\yusun\\projects\\ui-dictionary\\docs\\research\\assets\\ecommerce-leaves-2026-07-01\\components-product-quickviews-local-desktop.png\r\n",
+          "exists": true,
+          "bytes": 119633
+        },
+        "localMobile": {
+          "status": 0,
+          "signal": null,
+          "stderr": "28482 bytes written to file C:\\Users\\yusun\\projects\\ui-dictionary\\docs\\research\\assets\\ecommerce-leaves-2026-07-01\\components-product-quickviews-local-mobile.png\r\n",
+          "exists": true,
+          "bytes": 28482
+        }
+      },
+      "files": {
+        "tailwindDesktop": "docs/research/assets/ecommerce-leaves-2026-07-01/components-product-quickviews-tailwind-desktop.png",
+        "tailwindMobile": "docs/research/assets/ecommerce-leaves-2026-07-01/components-product-quickviews-tailwind-mobile.png",
+        "localDesktop": "docs/research/assets/ecommerce-leaves-2026-07-01/components-product-quickviews-local-desktop.png",
+        "localMobile": "docs/research/assets/ecommerce-leaves-2026-07-01/components-product-quickviews-local-mobile.png"
+      }
+    },
+    {
+      "text": "Product Features",
+      "href": "https://tailwindcss.com/plus/ui-blocks/ecommerce/components/product-features",
+      "slug": "components-product-features",
+      "route": "plus-ecommerce-product-features",
+      "localUrl": "http://127.0.0.1:5181/?filter=nav%3Aplus-ecommerce-product-features",
+      "captures": {
+        "tailwindDesktop": {
+          "status": 0,
+          "signal": null,
+          "stderr": "193308 bytes written to file C:\\Users\\yusun\\projects\\ui-dictionary\\docs\\research\\assets\\ecommerce-leaves-2026-07-01\\components-product-features-tailwind-desktop.png\r\n",
+          "exists": true,
+          "bytes": 193308
+        },
+        "tailwindMobile": {
+          "status": 0,
+          "signal": null,
+          "stderr": "57032 bytes written to file C:\\Users\\yusun\\projects\\ui-dictionary\\docs\\research\\assets\\ecommerce-leaves-2026-07-01\\components-product-features-tailwind-mobile.png\r\n",
+          "exists": true,
+          "bytes": 57032
+        },
+        "localDesktop": {
+          "status": 0,
+          "signal": null,
+          "stderr": "116533 bytes written to file C:\\Users\\yusun\\projects\\ui-dictionary\\docs\\research\\assets\\ecommerce-leaves-2026-07-01\\components-product-features-local-desktop.png\r\n",
+          "exists": true,
+          "bytes": 116533
+        },
+        "localMobile": {
+          "status": 0,
+          "signal": null,
+          "stderr": "26598 bytes written to file C:\\Users\\yusun\\projects\\ui-dictionary\\docs\\research\\assets\\ecommerce-leaves-2026-07-01\\components-product-features-local-mobile.png\r\n",
+          "exists": true,
+          "bytes": 26598
+        }
+      },
+      "files": {
+        "tailwindDesktop": "docs/research/assets/ecommerce-leaves-2026-07-01/components-product-features-tailwind-desktop.png",
+        "tailwindMobile": "docs/research/assets/ecommerce-leaves-2026-07-01/components-product-features-tailwind-mobile.png",
+        "localDesktop": "docs/research/assets/ecommerce-leaves-2026-07-01/components-product-features-local-desktop.png",
+        "localMobile": "docs/research/assets/ecommerce-leaves-2026-07-01/components-product-features-local-mobile.png"
+      }
+    },
+    {
+      "text": "Store Navigation",
+      "href": "https://tailwindcss.com/plus/ui-blocks/ecommerce/components/store-navigation",
+      "slug": "components-store-navigation",
+      "route": "plus-ecommerce-store-navigation",
+      "localUrl": "http://127.0.0.1:5181/?filter=nav%3Aplus-ecommerce-store-navigation",
+      "captures": {
+        "tailwindDesktop": {
+          "status": 0,
+          "signal": null,
+          "stderr": "74810 bytes written to file C:\\Users\\yusun\\projects\\ui-dictionary\\docs\\research\\assets\\ecommerce-leaves-2026-07-01\\components-store-navigation-tailwind-desktop.png\r\n",
+          "exists": true,
+          "bytes": 74810
+        },
+        "tailwindMobile": {
+          "status": 0,
+          "signal": null,
+          "stderr": "44724 bytes written to file C:\\Users\\yusun\\projects\\ui-dictionary\\docs\\research\\assets\\ecommerce-leaves-2026-07-01\\components-store-navigation-tailwind-mobile.png\r\n",
+          "exists": true,
+          "bytes": 44724
+        },
+        "localDesktop": {
+          "status": 0,
+          "signal": null,
+          "stderr": "127226 bytes written to file C:\\Users\\yusun\\projects\\ui-dictionary\\docs\\research\\assets\\ecommerce-leaves-2026-07-01\\components-store-navigation-local-desktop.png\r\n",
+          "exists": true,
+          "bytes": 127226
+        },
+        "localMobile": {
+          "status": 0,
+          "signal": null,
+          "stderr": "43513 bytes written to file C:\\Users\\yusun\\projects\\ui-dictionary\\docs\\research\\assets\\ecommerce-leaves-2026-07-01\\components-store-navigation-local-mobile.png\r\n",
+          "exists": true,
+          "bytes": 43513
+        }
+      },
+      "files": {
+        "tailwindDesktop": "docs/research/assets/ecommerce-leaves-2026-07-01/components-store-navigation-tailwind-desktop.png",
+        "tailwindMobile": "docs/research/assets/ecommerce-leaves-2026-07-01/components-store-navigation-tailwind-mobile.png",
+        "localDesktop": "docs/research/assets/ecommerce-leaves-2026-07-01/components-store-navigation-local-desktop.png",
+        "localMobile": "docs/research/assets/ecommerce-leaves-2026-07-01/components-store-navigation-local-mobile.png"
+      }
+    },
+    {
+      "text": "Promo Sections",
+      "href": "https://tailwindcss.com/plus/ui-blocks/ecommerce/components/promo-sections",
+      "slug": "components-promo-sections",
+      "route": "plus-ecommerce-promo-sections",
+      "localUrl": "http://127.0.0.1:5181/?filter=nav%3Aplus-ecommerce-promo-sections",
+      "captures": {
+        "tailwindDesktop": {
+          "status": 0,
+          "signal": null,
+          "stderr": "399622 bytes written to file C:\\Users\\yusun\\projects\\ui-dictionary\\docs\\research\\assets\\ecommerce-leaves-2026-07-01\\components-promo-sections-tailwind-desktop.png\r\n",
+          "exists": true,
+          "bytes": 399622
+        },
+        "tailwindMobile": {
+          "status": 0,
+          "signal": null,
+          "stderr": "73939 bytes written to file C:\\Users\\yusun\\projects\\ui-dictionary\\docs\\research\\assets\\ecommerce-leaves-2026-07-01\\components-promo-sections-tailwind-mobile.png\r\n",
+          "exists": true,
+          "bytes": 73939
+        },
+        "localDesktop": {
+          "status": 0,
+          "signal": null,
+          "stderr": "127060 bytes written to file C:\\Users\\yusun\\projects\\ui-dictionary\\docs\\research\\assets\\ecommerce-leaves-2026-07-01\\components-promo-sections-local-desktop.png\r\n",
+          "exists": true,
+          "bytes": 127060
+        },
+        "localMobile": {
+          "status": 0,
+          "signal": null,
+          "stderr": "40636 bytes written to file C:\\Users\\yusun\\projects\\ui-dictionary\\docs\\research\\assets\\ecommerce-leaves-2026-07-01\\components-promo-sections-local-mobile.png\r\n",
+          "exists": true,
+          "bytes": 40636
+        }
+      },
+      "files": {
+        "tailwindDesktop": "docs/research/assets/ecommerce-leaves-2026-07-01/components-promo-sections-tailwind-desktop.png",
+        "tailwindMobile": "docs/research/assets/ecommerce-leaves-2026-07-01/components-promo-sections-tailwind-mobile.png",
+        "localDesktop": "docs/research/assets/ecommerce-leaves-2026-07-01/components-promo-sections-local-desktop.png",
+        "localMobile": "docs/research/assets/ecommerce-leaves-2026-07-01/components-promo-sections-local-mobile.png"
+      }
+    },
+    {
+      "text": "Checkout Forms",
+      "href": "https://tailwindcss.com/plus/ui-blocks/ecommerce/components/checkout-forms",
+      "slug": "components-checkout-forms",
+      "route": "plus-ecommerce-checkout-forms",
+      "localUrl": "http://127.0.0.1:5181/?filter=nav%3Aplus-ecommerce-checkout-forms",
+      "captures": {
+        "tailwindDesktop": {
+          "status": 0,
+          "signal": null,
+          "stderr": "107835 bytes written to file C:\\Users\\yusun\\projects\\ui-dictionary\\docs\\research\\assets\\ecommerce-leaves-2026-07-01\\components-checkout-forms-tailwind-desktop.png\r\n",
+          "exists": true,
+          "bytes": 107835
+        },
+        "tailwindMobile": {
+          "status": 0,
+          "signal": null,
+          "stderr": "49540 bytes written to file C:\\Users\\yusun\\projects\\ui-dictionary\\docs\\research\\assets\\ecommerce-leaves-2026-07-01\\components-checkout-forms-tailwind-mobile.png\r\n",
+          "exists": true,
+          "bytes": 49540
+        },
+        "localDesktop": {
+          "status": 0,
+          "signal": null,
+          "stderr": "127547 bytes written to file C:\\Users\\yusun\\projects\\ui-dictionary\\docs\\research\\assets\\ecommerce-leaves-2026-07-01\\components-checkout-forms-local-desktop.png\r\n",
+          "exists": true,
+          "bytes": 127547
+        },
+        "localMobile": {
+          "status": 0,
+          "signal": null,
+          "stderr": "35574 bytes written to file C:\\Users\\yusun\\projects\\ui-dictionary\\docs\\research\\assets\\ecommerce-leaves-2026-07-01\\components-checkout-forms-local-mobile.png\r\n",
+          "exists": true,
+          "bytes": 35574
+        }
+      },
+      "files": {
+        "tailwindDesktop": "docs/research/assets/ecommerce-leaves-2026-07-01/components-checkout-forms-tailwind-desktop.png",
+        "tailwindMobile": "docs/research/assets/ecommerce-leaves-2026-07-01/components-checkout-forms-tailwind-mobile.png",
+        "localDesktop": "docs/research/assets/ecommerce-leaves-2026-07-01/components-checkout-forms-local-desktop.png",
+        "localMobile": "docs/research/assets/ecommerce-leaves-2026-07-01/components-checkout-forms-local-mobile.png"
+      }
+    },
+    {
+      "text": "Reviews",
+      "href": "https://tailwindcss.com/plus/ui-blocks/ecommerce/components/reviews",
+      "slug": "components-reviews",
+      "route": "plus-ecommerce-reviews",
+      "localUrl": "http://127.0.0.1:5181/?filter=nav%3Aplus-ecommerce-reviews",
+      "captures": {
+        "tailwindDesktop": {
+          "status": 0,
+          "signal": null,
+          "stderr": "113087 bytes written to file C:\\Users\\yusun\\projects\\ui-dictionary\\docs\\research\\assets\\ecommerce-leaves-2026-07-01\\components-reviews-tailwind-desktop.png\r\n",
+          "exists": true,
+          "bytes": 113087
+        },
+        "tailwindMobile": {
+          "status": 0,
+          "signal": null,
+          "stderr": "55842 bytes written to file C:\\Users\\yusun\\projects\\ui-dictionary\\docs\\research\\assets\\ecommerce-leaves-2026-07-01\\components-reviews-tailwind-mobile.png\r\n",
+          "exists": true,
+          "bytes": 55842
+        },
+        "localDesktop": {
+          "status": 0,
+          "signal": null,
+          "stderr": "132275 bytes written to file C:\\Users\\yusun\\projects\\ui-dictionary\\docs\\research\\assets\\ecommerce-leaves-2026-07-01\\components-reviews-local-desktop.png\r\n",
+          "exists": true,
+          "bytes": 132275
+        },
+        "localMobile": {
+          "status": 0,
+          "signal": null,
+          "stderr": "44051 bytes written to file C:\\Users\\yusun\\projects\\ui-dictionary\\docs\\research\\assets\\ecommerce-leaves-2026-07-01\\components-reviews-local-mobile.png\r\n",
+          "exists": true,
+          "bytes": 44051
+        }
+      },
+      "files": {
+        "tailwindDesktop": "docs/research/assets/ecommerce-leaves-2026-07-01/components-reviews-tailwind-desktop.png",
+        "tailwindMobile": "docs/research/assets/ecommerce-leaves-2026-07-01/components-reviews-tailwind-mobile.png",
+        "localDesktop": "docs/research/assets/ecommerce-leaves-2026-07-01/components-reviews-local-desktop.png",
+        "localMobile": "docs/research/assets/ecommerce-leaves-2026-07-01/components-reviews-local-mobile.png"
+      }
+    },
+    {
+      "text": "Order Summaries",
+      "href": "https://tailwindcss.com/plus/ui-blocks/ecommerce/components/order-summaries",
+      "slug": "components-order-summaries",
+      "route": "plus-ecommerce-order-summaries",
+      "localUrl": "http://127.0.0.1:5181/?filter=nav%3Aplus-ecommerce-order-summaries",
+      "captures": {
+        "tailwindDesktop": {
+          "status": 0,
+          "signal": null,
+          "stderr": "370051 bytes written to file C:\\Users\\yusun\\projects\\ui-dictionary\\docs\\research\\assets\\ecommerce-leaves-2026-07-01\\components-order-summaries-tailwind-desktop.png\r\n",
+          "exists": true,
+          "bytes": 370051
+        },
+        "tailwindMobile": {
+          "status": 0,
+          "signal": null,
+          "stderr": "169390 bytes written to file C:\\Users\\yusun\\projects\\ui-dictionary\\docs\\research\\assets\\ecommerce-leaves-2026-07-01\\components-order-summaries-tailwind-mobile.png\r\n",
+          "exists": true,
+          "bytes": 169390
+        },
+        "localDesktop": {
+          "status": 0,
+          "signal": null,
+          "stderr": "135794 bytes written to file C:\\Users\\yusun\\projects\\ui-dictionary\\docs\\research\\assets\\ecommerce-leaves-2026-07-01\\components-order-summaries-local-desktop.png\r\n",
+          "exists": true,
+          "bytes": 135794
+        },
+        "localMobile": {
+          "status": 0,
+          "signal": null,
+          "stderr": "40283 bytes written to file C:\\Users\\yusun\\projects\\ui-dictionary\\docs\\research\\assets\\ecommerce-leaves-2026-07-01\\components-order-summaries-local-mobile.png\r\n",
+          "exists": true,
+          "bytes": 40283
+        }
+      },
+      "files": {
+        "tailwindDesktop": "docs/research/assets/ecommerce-leaves-2026-07-01/components-order-summaries-tailwind-desktop.png",
+        "tailwindMobile": "docs/research/assets/ecommerce-leaves-2026-07-01/components-order-summaries-tailwind-mobile.png",
+        "localDesktop": "docs/research/assets/ecommerce-leaves-2026-07-01/components-order-summaries-local-desktop.png",
+        "localMobile": "docs/research/assets/ecommerce-leaves-2026-07-01/components-order-summaries-local-mobile.png"
+      }
+    },
+    {
+      "text": "Order History",
+      "href": "https://tailwindcss.com/plus/ui-blocks/ecommerce/components/order-history",
+      "slug": "components-order-history",
+      "route": "plus-ecommerce-order-history",
+      "localUrl": "http://127.0.0.1:5181/?filter=nav%3Aplus-ecommerce-order-history",
+      "captures": {
+        "tailwindDesktop": {
+          "status": 0,
+          "signal": null,
+          "stderr": "104851 bytes written to file C:\\Users\\yusun\\projects\\ui-dictionary\\docs\\research\\assets\\ecommerce-leaves-2026-07-01\\components-order-history-tailwind-desktop.png\r\n",
+          "exists": true,
+          "bytes": 104851
+        },
+        "tailwindMobile": {
+          "status": 0,
+          "signal": null,
+          "stderr": "53350 bytes written to file C:\\Users\\yusun\\projects\\ui-dictionary\\docs\\research\\assets\\ecommerce-leaves-2026-07-01\\components-order-history-tailwind-mobile.png\r\n",
+          "exists": true,
+          "bytes": 53350
+        },
+        "localDesktop": {
+          "status": 0,
+          "signal": null,
+          "stderr": "126946 bytes written to file C:\\Users\\yusun\\projects\\ui-dictionary\\docs\\research\\assets\\ecommerce-leaves-2026-07-01\\components-order-history-local-desktop.png\r\n",
+          "exists": true,
+          "bytes": 126946
+        },
+        "localMobile": {
+          "status": 0,
+          "signal": null,
+          "stderr": "36142 bytes written to file C:\\Users\\yusun\\projects\\ui-dictionary\\docs\\research\\assets\\ecommerce-leaves-2026-07-01\\components-order-history-local-mobile.png\r\n",
+          "exists": true,
+          "bytes": 36142
+        }
+      },
+      "files": {
+        "tailwindDesktop": "docs/research/assets/ecommerce-leaves-2026-07-01/components-order-history-tailwind-desktop.png",
+        "tailwindMobile": "docs/research/assets/ecommerce-leaves-2026-07-01/components-order-history-tailwind-mobile.png",
+        "localDesktop": "docs/research/assets/ecommerce-leaves-2026-07-01/components-order-history-local-desktop.png",
+        "localMobile": "docs/research/assets/ecommerce-leaves-2026-07-01/components-order-history-local-mobile.png"
+      }
+    },
+    {
+      "text": "Incentives",
+      "href": "https://tailwindcss.com/plus/ui-blocks/ecommerce/components/incentives",
+      "slug": "components-incentives",
+      "route": "plus-ecommerce-incentives",
+      "localUrl": "http://127.0.0.1:5181/?filter=nav%3Aplus-ecommerce-incentives",
+      "captures": {
+        "tailwindDesktop": {
+          "status": 0,
+          "signal": null,
+          "stderr": "359903 bytes written to file C:\\Users\\yusun\\projects\\ui-dictionary\\docs\\research\\assets\\ecommerce-leaves-2026-07-01\\components-incentives-tailwind-desktop.png\r\n",
+          "exists": true,
+          "bytes": 359903
+        },
+        "tailwindMobile": {
+          "status": 0,
+          "signal": null,
+          "stderr": "63766 bytes written to file C:\\Users\\yusun\\projects\\ui-dictionary\\docs\\research\\assets\\ecommerce-leaves-2026-07-01\\components-incentives-tailwind-mobile.png\r\n",
+          "exists": true,
+          "bytes": 63766
+        },
+        "localDesktop": {
+          "status": 0,
+          "signal": null,
+          "stderr": "124033 bytes written to file C:\\Users\\yusun\\projects\\ui-dictionary\\docs\\research\\assets\\ecommerce-leaves-2026-07-01\\components-incentives-local-desktop.png\r\n",
+          "exists": true,
+          "bytes": 124033
+        },
+        "localMobile": {
+          "status": 0,
+          "signal": null,
+          "stderr": "38283 bytes written to file C:\\Users\\yusun\\projects\\ui-dictionary\\docs\\research\\assets\\ecommerce-leaves-2026-07-01\\components-incentives-local-mobile.png\r\n",
+          "exists": true,
+          "bytes": 38283
+        }
+      },
+      "files": {
+        "tailwindDesktop": "docs/research/assets/ecommerce-leaves-2026-07-01/components-incentives-tailwind-desktop.png",
+        "tailwindMobile": "docs/research/assets/ecommerce-leaves-2026-07-01/components-incentives-tailwind-mobile.png",
+        "localDesktop": "docs/research/assets/ecommerce-leaves-2026-07-01/components-incentives-local-desktop.png",
+        "localMobile": "docs/research/assets/ecommerce-leaves-2026-07-01/components-incentives-local-mobile.png"
+      }
+    },
+    {
+      "text": "Storefront Pages",
+      "href": "https://tailwindcss.com/plus/ui-blocks/ecommerce/page-examples/storefront-pages",
+      "slug": "page-examples-storefront-pages",
+      "route": "plus-ecommerce-page-examples-storefront-pages",
+      "localUrl": "http://127.0.0.1:5181/?filter=nav%3Aplus-ecommerce-page-examples-storefront-pages",
+      "captures": {
+        "tailwindDesktop": {
+          "status": 0,
+          "signal": null,
+          "stderr": "532323 bytes written to file C:\\Users\\yusun\\projects\\ui-dictionary\\docs\\research\\assets\\ecommerce-leaves-2026-07-01\\page-examples-storefront-pages-tailwind-desktop.png\r\n",
+          "exists": true,
+          "bytes": 532323
+        },
+        "tailwindMobile": {
+          "status": 0,
+          "signal": null,
+          "stderr": "121516 bytes written to file C:\\Users\\yusun\\projects\\ui-dictionary\\docs\\research\\assets\\ecommerce-leaves-2026-07-01\\page-examples-storefront-pages-tailwind-mobile.png\r\n",
+          "exists": true,
+          "bytes": 121516
+        },
+        "localDesktop": {
+          "status": 0,
+          "signal": null,
+          "stderr": "127149 bytes written to file C:\\Users\\yusun\\projects\\ui-dictionary\\docs\\research\\assets\\ecommerce-leaves-2026-07-01\\page-examples-storefront-pages-local-desktop.png\r\n",
+          "exists": true,
+          "bytes": 127149
+        },
+        "localMobile": {
+          "status": 0,
+          "signal": null,
+          "stderr": "42656 bytes written to file C:\\Users\\yusun\\projects\\ui-dictionary\\docs\\research\\assets\\ecommerce-leaves-2026-07-01\\page-examples-storefront-pages-local-mobile.png\r\n",
+          "exists": true,
+          "bytes": 42656
+        }
+      },
+      "files": {
+        "tailwindDesktop": "docs/research/assets/ecommerce-leaves-2026-07-01/page-examples-storefront-pages-tailwind-desktop.png",
+        "tailwindMobile": "docs/research/assets/ecommerce-leaves-2026-07-01/page-examples-storefront-pages-tailwind-mobile.png",
+        "localDesktop": "docs/research/assets/ecommerce-leaves-2026-07-01/page-examples-storefront-pages-local-desktop.png",
+        "localMobile": "docs/research/assets/ecommerce-leaves-2026-07-01/page-examples-storefront-pages-local-mobile.png"
+      }
+    },
+    {
+      "text": "Product Pages",
+      "href": "https://tailwindcss.com/plus/ui-blocks/ecommerce/page-examples/product-pages",
+      "slug": "page-examples-product-pages",
+      "route": "plus-ecommerce-page-examples-product-pages",
+      "localUrl": "http://127.0.0.1:5181/?filter=nav%3Aplus-ecommerce-page-examples-product-pages",
+      "captures": {
+        "tailwindDesktop": {
+          "status": 0,
+          "signal": null,
+          "stderr": "425584 bytes written to file C:\\Users\\yusun\\projects\\ui-dictionary\\docs\\research\\assets\\ecommerce-leaves-2026-07-01\\page-examples-product-pages-tailwind-desktop.png\r\n",
+          "exists": true,
+          "bytes": 425584
+        },
+        "tailwindMobile": {
+          "status": 0,
+          "signal": null,
+          "stderr": "132111 bytes written to file C:\\Users\\yusun\\projects\\ui-dictionary\\docs\\research\\assets\\ecommerce-leaves-2026-07-01\\page-examples-product-pages-tailwind-mobile.png\r\n",
+          "exists": true,
+          "bytes": 132111
+        },
+        "localDesktop": {
+          "status": 0,
+          "signal": null,
+          "stderr": "117438 bytes written to file C:\\Users\\yusun\\projects\\ui-dictionary\\docs\\research\\assets\\ecommerce-leaves-2026-07-01\\page-examples-product-pages-local-desktop.png\r\n",
+          "exists": true,
+          "bytes": 117438
+        },
+        "localMobile": {
+          "status": 0,
+          "signal": null,
+          "stderr": "28561 bytes written to file C:\\Users\\yusun\\projects\\ui-dictionary\\docs\\research\\assets\\ecommerce-leaves-2026-07-01\\page-examples-product-pages-local-mobile.png\r\n",
+          "exists": true,
+          "bytes": 28561
+        }
+      },
+      "files": {
+        "tailwindDesktop": "docs/research/assets/ecommerce-leaves-2026-07-01/page-examples-product-pages-tailwind-desktop.png",
+        "tailwindMobile": "docs/research/assets/ecommerce-leaves-2026-07-01/page-examples-product-pages-tailwind-mobile.png",
+        "localDesktop": "docs/research/assets/ecommerce-leaves-2026-07-01/page-examples-product-pages-local-desktop.png",
+        "localMobile": "docs/research/assets/ecommerce-leaves-2026-07-01/page-examples-product-pages-local-mobile.png"
+      }
+    },
+    {
+      "text": "Category Pages",
+      "href": "https://tailwindcss.com/plus/ui-blocks/ecommerce/page-examples/category-pages",
+      "slug": "page-examples-category-pages",
+      "route": "plus-ecommerce-page-examples-category-pages",
+      "localUrl": "http://127.0.0.1:5181/?filter=nav%3Aplus-ecommerce-page-examples-category-pages",
+      "captures": {
+        "tailwindDesktop": {
+          "status": 0,
+          "signal": null,
+          "stderr": "207395 bytes written to file C:\\Users\\yusun\\projects\\ui-dictionary\\docs\\research\\assets\\ecommerce-leaves-2026-07-01\\page-examples-category-pages-tailwind-desktop.png\r\n",
+          "exists": true,
+          "bytes": 207395
+        },
+        "tailwindMobile": {
+          "status": 0,
+          "signal": null,
+          "stderr": "55895 bytes written to file C:\\Users\\yusun\\projects\\ui-dictionary\\docs\\research\\assets\\ecommerce-leaves-2026-07-01\\page-examples-category-pages-tailwind-mobile.png\r\n",
+          "exists": true,
+          "bytes": 55895
+        },
+        "localDesktop": {
+          "status": 0,
+          "signal": null,
+          "stderr": "123257 bytes written to file C:\\Users\\yusun\\projects\\ui-dictionary\\docs\\research\\assets\\ecommerce-leaves-2026-07-01\\page-examples-category-pages-local-desktop.png\r\n",
+          "exists": true,
+          "bytes": 123257
+        },
+        "localMobile": {
+          "status": 0,
+          "signal": null,
+          "stderr": "35175 bytes written to file C:\\Users\\yusun\\projects\\ui-dictionary\\docs\\research\\assets\\ecommerce-leaves-2026-07-01\\page-examples-category-pages-local-mobile.png\r\n",
+          "exists": true,
+          "bytes": 35175
+        }
+      },
+      "files": {
+        "tailwindDesktop": "docs/research/assets/ecommerce-leaves-2026-07-01/page-examples-category-pages-tailwind-desktop.png",
+        "tailwindMobile": "docs/research/assets/ecommerce-leaves-2026-07-01/page-examples-category-pages-tailwind-mobile.png",
+        "localDesktop": "docs/research/assets/ecommerce-leaves-2026-07-01/page-examples-category-pages-local-desktop.png",
+        "localMobile": "docs/research/assets/ecommerce-leaves-2026-07-01/page-examples-category-pages-local-mobile.png"
+      }
+    },
+    {
+      "text": "Shopping Cart Pages",
+      "href": "https://tailwindcss.com/plus/ui-blocks/ecommerce/page-examples/shopping-cart-pages",
+      "slug": "page-examples-shopping-cart-pages",
+      "route": "plus-ecommerce-page-examples-shopping-cart-pages",
+      "localUrl": "http://127.0.0.1:5181/?filter=nav%3Aplus-ecommerce-page-examples-shopping-cart-pages",
+      "captures": {
+        "tailwindDesktop": {
+          "status": 0,
+          "signal": null,
+          "stderr": "135209 bytes written to file C:\\Users\\yusun\\projects\\ui-dictionary\\docs\\research\\assets\\ecommerce-leaves-2026-07-01\\page-examples-shopping-cart-pages-tailwind-desktop.png\r\n",
+          "exists": true,
+          "bytes": 135209
+        },
+        "tailwindMobile": {
+          "status": 0,
+          "signal": null,
+          "stderr": "60388 bytes written to file C:\\Users\\yusun\\projects\\ui-dictionary\\docs\\research\\assets\\ecommerce-leaves-2026-07-01\\page-examples-shopping-cart-pages-tailwind-mobile.png\r\n",
+          "exists": true,
+          "bytes": 60388
+        },
+        "localDesktop": {
+          "status": 0,
+          "signal": null,
+          "stderr": "136548 bytes written to file C:\\Users\\yusun\\projects\\ui-dictionary\\docs\\research\\assets\\ecommerce-leaves-2026-07-01\\page-examples-shopping-cart-pages-local-desktop.png\r\n",
+          "exists": true,
+          "bytes": 136548
+        },
+        "localMobile": {
+          "status": 0,
+          "signal": null,
+          "stderr": "42637 bytes written to file C:\\Users\\yusun\\projects\\ui-dictionary\\docs\\research\\assets\\ecommerce-leaves-2026-07-01\\page-examples-shopping-cart-pages-local-mobile.png\r\n",
+          "exists": true,
+          "bytes": 42637
+        }
+      },
+      "files": {
+        "tailwindDesktop": "docs/research/assets/ecommerce-leaves-2026-07-01/page-examples-shopping-cart-pages-tailwind-desktop.png",
+        "tailwindMobile": "docs/research/assets/ecommerce-leaves-2026-07-01/page-examples-shopping-cart-pages-tailwind-mobile.png",
+        "localDesktop": "docs/research/assets/ecommerce-leaves-2026-07-01/page-examples-shopping-cart-pages-local-desktop.png",
+        "localMobile": "docs/research/assets/ecommerce-leaves-2026-07-01/page-examples-shopping-cart-pages-local-mobile.png"
+      }
+    },
+    {
+      "text": "Checkout Pages",
+      "href": "https://tailwindcss.com/plus/ui-blocks/ecommerce/page-examples/checkout-pages",
+      "slug": "page-examples-checkout-pages",
+      "route": "plus-ecommerce-page-examples-checkout-pages",
+      "localUrl": "http://127.0.0.1:5181/?filter=nav%3Aplus-ecommerce-page-examples-checkout-pages",
+      "captures": {
+        "tailwindDesktop": {
+          "status": 0,
+          "signal": null,
+          "stderr": "112788 bytes written to file C:\\Users\\yusun\\projects\\ui-dictionary\\docs\\research\\assets\\ecommerce-leaves-2026-07-01\\page-examples-checkout-pages-tailwind-desktop.png\r\n",
+          "exists": true,
+          "bytes": 112788
+        },
+        "tailwindMobile": {
+          "status": 0,
+          "signal": null,
+          "stderr": "49733 bytes written to file C:\\Users\\yusun\\projects\\ui-dictionary\\docs\\research\\assets\\ecommerce-leaves-2026-07-01\\page-examples-checkout-pages-tailwind-mobile.png\r\n",
+          "exists": true,
+          "bytes": 49733
+        },
+        "localDesktop": {
+          "status": 0,
+          "signal": null,
+          "stderr": "130713 bytes written to file C:\\Users\\yusun\\projects\\ui-dictionary\\docs\\research\\assets\\ecommerce-leaves-2026-07-01\\page-examples-checkout-pages-local-desktop.png\r\n",
+          "exists": true,
+          "bytes": 130713
+        },
+        "localMobile": {
+          "status": 0,
+          "signal": null,
+          "stderr": "38269 bytes written to file C:\\Users\\yusun\\projects\\ui-dictionary\\docs\\research\\assets\\ecommerce-leaves-2026-07-01\\page-examples-checkout-pages-local-mobile.png\r\n",
+          "exists": true,
+          "bytes": 38269
+        }
+      },
+      "files": {
+        "tailwindDesktop": "docs/research/assets/ecommerce-leaves-2026-07-01/page-examples-checkout-pages-tailwind-desktop.png",
+        "tailwindMobile": "docs/research/assets/ecommerce-leaves-2026-07-01/page-examples-checkout-pages-tailwind-mobile.png",
+        "localDesktop": "docs/research/assets/ecommerce-leaves-2026-07-01/page-examples-checkout-pages-local-desktop.png",
+        "localMobile": "docs/research/assets/ecommerce-leaves-2026-07-01/page-examples-checkout-pages-local-mobile.png"
+      }
+    },
+    {
+      "text": "Order Detail Pages",
+      "href": "https://tailwindcss.com/plus/ui-blocks/ecommerce/page-examples/order-detail-pages",
+      "slug": "page-examples-order-detail-pages",
+      "route": "plus-ecommerce-page-examples-order-detail-pages",
+      "localUrl": "http://127.0.0.1:5181/?filter=nav%3Aplus-ecommerce-page-examples-order-detail-pages",
+      "captures": {
+        "tailwindDesktop": {
+          "status": 0,
+          "signal": null,
+          "stderr": "120815 bytes written to file C:\\Users\\yusun\\projects\\ui-dictionary\\docs\\research\\assets\\ecommerce-leaves-2026-07-01\\page-examples-order-detail-pages-tailwind-desktop.png\r\n",
+          "exists": true,
+          "bytes": 120815
+        },
+        "tailwindMobile": {
+          "status": 0,
+          "signal": null,
+          "stderr": "54584 bytes written to file C:\\Users\\yusun\\projects\\ui-dictionary\\docs\\research\\assets\\ecommerce-leaves-2026-07-01\\page-examples-order-detail-pages-tailwind-mobile.png\r\n",
+          "exists": true,
+          "bytes": 54584
+        },
+        "localDesktop": {
+          "status": 0,
+          "signal": null,
+          "stderr": "126171 bytes written to file C:\\Users\\yusun\\projects\\ui-dictionary\\docs\\research\\assets\\ecommerce-leaves-2026-07-01\\page-examples-order-detail-pages-local-desktop.png\r\n",
+          "exists": true,
+          "bytes": 126171
+        },
+        "localMobile": {
+          "status": 0,
+          "signal": null,
+          "stderr": "40112 bytes written to file C:\\Users\\yusun\\projects\\ui-dictionary\\docs\\research\\assets\\ecommerce-leaves-2026-07-01\\page-examples-order-detail-pages-local-mobile.png\r\n",
+          "exists": true,
+          "bytes": 40112
+        }
+      },
+      "files": {
+        "tailwindDesktop": "docs/research/assets/ecommerce-leaves-2026-07-01/page-examples-order-detail-pages-tailwind-desktop.png",
+        "tailwindMobile": "docs/research/assets/ecommerce-leaves-2026-07-01/page-examples-order-detail-pages-tailwind-mobile.png",
+        "localDesktop": "docs/research/assets/ecommerce-leaves-2026-07-01/page-examples-order-detail-pages-local-desktop.png",
+        "localMobile": "docs/research/assets/ecommerce-leaves-2026-07-01/page-examples-order-detail-pages-local-mobile.png"
+      }
+    },
+    {
+      "text": "Order History Pages",
+      "href": "https://tailwindcss.com/plus/ui-blocks/ecommerce/page-examples/order-history-pages",
+      "slug": "page-examples-order-history-pages",
+      "route": "plus-ecommerce-page-examples-order-history-pages",
+      "localUrl": "http://127.0.0.1:5181/?filter=nav%3Aplus-ecommerce-page-examples-order-history-pages",
+      "captures": {
+        "tailwindDesktop": {
+          "status": 0,
+          "signal": null,
+          "stderr": "192794 bytes written to file C:\\Users\\yusun\\projects\\ui-dictionary\\docs\\research\\assets\\ecommerce-leaves-2026-07-01\\page-examples-order-history-pages-tailwind-desktop.png\r\n",
+          "exists": true,
+          "bytes": 192794
+        },
+        "tailwindMobile": {
+          "status": 0,
+          "signal": null,
+          "stderr": "49426 bytes written to file C:\\Users\\yusun\\projects\\ui-dictionary\\docs\\research\\assets\\ecommerce-leaves-2026-07-01\\page-examples-order-history-pages-tailwind-mobile.png\r\n",
+          "exists": true,
+          "bytes": 49426
+        },
+        "localDesktop": {
+          "status": 0,
+          "signal": null,
+          "stderr": "126847 bytes written to file C:\\Users\\yusun\\projects\\ui-dictionary\\docs\\research\\assets\\ecommerce-leaves-2026-07-01\\page-examples-order-history-pages-local-desktop.png\r\n",
+          "exists": true,
+          "bytes": 126847
+        },
+        "localMobile": {
+          "status": 0,
+          "signal": null,
+          "stderr": "40624 bytes written to file C:\\Users\\yusun\\projects\\ui-dictionary\\docs\\research\\assets\\ecommerce-leaves-2026-07-01\\page-examples-order-history-pages-local-mobile.png\r\n",
+          "exists": true,
+          "bytes": 40624
+        }
+      },
+      "files": {
+        "tailwindDesktop": "docs/research/assets/ecommerce-leaves-2026-07-01/page-examples-order-history-pages-tailwind-desktop.png",
+        "tailwindMobile": "docs/research/assets/ecommerce-leaves-2026-07-01/page-examples-order-history-pages-tailwind-mobile.png",
+        "localDesktop": "docs/research/assets/ecommerce-leaves-2026-07-01/page-examples-order-history-pages-local-desktop.png",
+        "localMobile": "docs/research/assets/ecommerce-leaves-2026-07-01/page-examples-order-history-pages-local-mobile.png"
+      }
+    }
+  ]
+}

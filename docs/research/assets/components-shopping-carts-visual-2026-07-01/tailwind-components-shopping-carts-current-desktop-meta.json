@@ -1,0 +1,15 @@
+{
+  "url": "https://tailwindcss.com/plus/ui-blocks/ecommerce/components/shopping-carts",
+  "name": "Shopping Carts",
+  "description": "Ecommerce shopping cart examples for Tailwind CSS, designed and built by the creators of the framework.",
+  "visible_example_count": 6,
+  "visible_example_names": [
+    "Drawer",
+    "Two column with quantity dropdown",
+    "Single column",
+    "With extended summary",
+    "Dialog",
+    "Popover"
+  ],
+  "raw_component_count": 12
+}

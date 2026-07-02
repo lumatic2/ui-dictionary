@@ -1,0 +1,14 @@
+{
+  "url": "https://tailwindcss.com/plus/ui-blocks/application-ui/forms/toggles",
+  "name": "Toggles",
+  "description": "Toggle and switch examples for Tailwind CSS, designed and built by the creators of the framework.",
+  "visible_example_count": 5,
+  "visible_example_names": [
+    "Simple toggle",
+    "Short toggle",
+    "Toggle with icon",
+    "With left label and description",
+    "With right label"
+  ],
+  "raw_component_count": 10
+}

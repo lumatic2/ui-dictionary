@@ -1,0 +1,17 @@
+{
+  "url": "https://tailwindcss.com/plus/ui-blocks/application-ui/elements/buttons",
+  "name": "Buttons",
+  "description": "Button examples for Tailwind CSS, designed and built by the creators of the framework.",
+  "visible_example_count": 8,
+  "visible_example_names": [
+    "Primary buttons",
+    "Secondary buttons",
+    "Soft buttons",
+    "Buttons with leading icon",
+    "Buttons with trailing icon",
+    "Rounded primary buttons",
+    "Rounded secondary buttons",
+    "Circular buttons"
+  ],
+  "raw_component_count": 16
+}

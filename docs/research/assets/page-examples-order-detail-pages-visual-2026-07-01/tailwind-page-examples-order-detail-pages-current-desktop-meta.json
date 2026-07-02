@@ -1,0 +1,12 @@
+{
+  "url": "https://tailwindcss.com/plus/ui-blocks/ecommerce/page-examples/order-detail-pages",
+  "name": "Order Detail Pages",
+  "description": "Ecommerce order detail page examples for Tailwind CSS, designed and built by the creators of the framework.",
+  "visible_example_count": 3,
+  "visible_example_names": [
+    "With progress bars",
+    "With large images and progress bars",
+    "Simple with full order details"
+  ],
+  "raw_component_count": 6
+}

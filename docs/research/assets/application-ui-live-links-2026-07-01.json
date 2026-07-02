@@ -1,0 +1,198 @@
+[
+  {
+    "href": "https://tailwindcss.com/plus/ui-blocks/application-ui/application-shells/stacked",
+    "text": "Stacked Layouts"
+  },
+  {
+    "href": "https://tailwindcss.com/plus/ui-blocks/application-ui/application-shells/sidebar",
+    "text": "Sidebar Layouts"
+  },
+  {
+    "href": "https://tailwindcss.com/plus/ui-blocks/application-ui/application-shells/multi-column",
+    "text": "Multi-Column Layouts"
+  },
+  {
+    "href": "https://tailwindcss.com/plus/ui-blocks/application-ui/headings/page-headings",
+    "text": "Page Headings"
+  },
+  {
+    "href": "https://tailwindcss.com/plus/ui-blocks/application-ui/headings/card-headings",
+    "text": "Card Headings"
+  },
+  {
+    "href": "https://tailwindcss.com/plus/ui-blocks/application-ui/headings/section-headings",
+    "text": "Section Headings"
+  },
+  {
+    "href": "https://tailwindcss.com/plus/ui-blocks/application-ui/data-display/description-lists",
+    "text": "Description Lists"
+  },
+  {
+    "href": "https://tailwindcss.com/plus/ui-blocks/application-ui/data-display/stats",
+    "text": "Stats"
+  },
+  {
+    "href": "https://tailwindcss.com/plus/ui-blocks/application-ui/data-display/calendars",
+    "text": "Calendars"
+  },
+  {
+    "href": "https://tailwindcss.com/plus/ui-blocks/application-ui/lists/stacked-lists",
+    "text": "Stacked Lists"
+  },
+  {
+    "href": "https://tailwindcss.com/plus/ui-blocks/application-ui/lists/tables",
+    "text": "Tables"
+  },
+  {
+    "href": "https://tailwindcss.com/plus/ui-blocks/application-ui/lists/grid-lists",
+    "text": "Grid Lists"
+  },
+  {
+    "href": "https://tailwindcss.com/plus/ui-blocks/application-ui/lists/feeds",
+    "text": "Feeds"
+  },
+  {
+    "href": "https://tailwindcss.com/plus/ui-blocks/application-ui/forms/form-layouts",
+    "text": "Form Layouts"
+  },
+  {
+    "href": "https://tailwindcss.com/plus/ui-blocks/application-ui/forms/input-groups",
+    "text": "Input Groups"
+  },
+  {
+    "href": "https://tailwindcss.com/plus/ui-blocks/application-ui/forms/select-menus",
+    "text": "Select Menus"
+  },
+  {
+    "href": "https://tailwindcss.com/plus/ui-blocks/application-ui/forms/sign-in-forms",
+    "text": "Sign-in and Registration"
+  },
+  {
+    "href": "https://tailwindcss.com/plus/ui-blocks/application-ui/forms/textareas",
+    "text": "Textareas"
+  },
+  {
+    "href": "https://tailwindcss.com/plus/ui-blocks/application-ui/forms/radio-groups",
+    "text": "Radio Groups"
+  },
+  {
+    "href": "https://tailwindcss.com/plus/ui-blocks/application-ui/forms/checkboxes",
+    "text": "Checkboxes"
+  },
+  {
+    "href": "https://tailwindcss.com/plus/ui-blocks/application-ui/forms/toggles",
+    "text": "Toggles"
+  },
+  {
+    "href": "https://tailwindcss.com/plus/ui-blocks/application-ui/forms/action-panels",
+    "text": "Action Panels"
+  },
+  {
+    "href": "https://tailwindcss.com/plus/ui-blocks/application-ui/forms/comboboxes",
+    "text": "Comboboxes"
+  },
+  {
+    "href": "https://tailwindcss.com/plus/ui-blocks/application-ui/feedback/alerts",
+    "text": "Alerts"
+  },
+  {
+    "href": "https://tailwindcss.com/plus/ui-blocks/application-ui/feedback/empty-states",
+    "text": "Empty States"
+  },
+  {
+    "href": "https://tailwindcss.com/plus/ui-blocks/application-ui/navigation/navbars",
+    "text": "Navbars"
+  },
+  {
+    "href": "https://tailwindcss.com/plus/ui-blocks/application-ui/navigation/pagination",
+    "text": "Pagination"
+  },
+  {
+    "href": "https://tailwindcss.com/plus/ui-blocks/application-ui/navigation/tabs",
+    "text": "Tabs"
+  },
+  {
+    "href": "https://tailwindcss.com/plus/ui-blocks/application-ui/navigation/vertical-navigation",
+    "text": "Vertical Navigation"
+  },
+  {
+    "href": "https://tailwindcss.com/plus/ui-blocks/application-ui/navigation/sidebar-navigation",
+    "text": "Sidebar Navigation"
+  },
+  {
+    "href": "https://tailwindcss.com/plus/ui-blocks/application-ui/navigation/breadcrumbs",
+    "text": "Breadcrumbs"
+  },
+  {
+    "href": "https://tailwindcss.com/plus/ui-blocks/application-ui/navigation/progress-bars",
+    "text": "Progress Bars"
+  },
+  {
+    "href": "https://tailwindcss.com/plus/ui-blocks/application-ui/navigation/command-palettes",
+    "text": "Command Palettes"
+  },
+  {
+    "href": "https://tailwindcss.com/plus/ui-blocks/application-ui/overlays/modal-dialogs",
+    "text": "Modal Dialogs"
+  },
+  {
+    "href": "https://tailwindcss.com/plus/ui-blocks/application-ui/overlays/drawers",
+    "text": "Drawers"
+  },
+  {
+    "href": "https://tailwindcss.com/plus/ui-blocks/application-ui/overlays/notifications",
+    "text": "Notifications"
+  },
+  {
+    "href": "https://tailwindcss.com/plus/ui-blocks/application-ui/elements/avatars",
+    "text": "Avatars"
+  },
+  {
+    "href": "https://tailwindcss.com/plus/ui-blocks/application-ui/elements/badges",
+    "text": "Badges"
+  },
+  {
+    "href": "https://tailwindcss.com/plus/ui-blocks/application-ui/elements/dropdowns",
+    "text": "Dropdowns"
+  },
+  {
+    "href": "https://tailwindcss.com/plus/ui-blocks/application-ui/elements/buttons",
+    "text": "Buttons"
+  },
+  {
+    "href": "https://tailwindcss.com/plus/ui-blocks/application-ui/elements/button-groups",
+    "text": "Button Groups"
+  },
+  {
+    "href": "https://tailwindcss.com/plus/ui-blocks/application-ui/layout/containers",
+    "text": "Containers"
+  },
+  {
+    "href": "https://tailwindcss.com/plus/ui-blocks/application-ui/layout/cards",
+    "text": "Cards"
+  },
+  {
+    "href": "https://tailwindcss.com/plus/ui-blocks/application-ui/layout/list-containers",
+    "text": "List containers"
+  },
+  {
+    "href": "https://tailwindcss.com/plus/ui-blocks/application-ui/layout/media-objects",
+    "text": "Media Objects"
+  },
+  {
+    "href": "https://tailwindcss.com/plus/ui-blocks/application-ui/layout/dividers",
+    "text": "Dividers"
+  },
+  {
+    "href": "https://tailwindcss.com/plus/ui-blocks/application-ui/page-examples/home-screens",
+    "text": "Home Screens"
+  },
+  {
+    "href": "https://tailwindcss.com/plus/ui-blocks/application-ui/page-examples/detail-screens",
+    "text": "Detail Screens"
+  },
+  {
+    "href": "https://tailwindcss.com/plus/ui-blocks/application-ui/page-examples/settings-screens",
+    "text": "Settings Screens"
+  }
+]

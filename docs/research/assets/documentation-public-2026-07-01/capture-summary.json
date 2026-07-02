@@ -1,0 +1,26 @@
+{
+  "captured_at": "2026-07-01T09:55:00+09:00",
+  "tailwind_pages": 4,
+  "local_routes": 4,
+  "png_count": 16,
+  "pngs": [
+    "catalyst-button-docs-tailwind-desktop.png",
+    "catalyst-button-docs-tailwind-mobile.png",
+    "catalyst-docs-tailwind-desktop.png",
+    "catalyst-docs-tailwind-mobile.png",
+    "docs-component-api-local-desktop.png",
+    "docs-component-api-local-mobile.png",
+    "docs-landing-local-desktop.png",
+    "docs-landing-local-mobile.png",
+    "docs-ui-blocks-local-desktop.png",
+    "docs-ui-blocks-local-mobile.png",
+    "ui-blocks-documentation-elements-tailwind-desktop.png",
+    "ui-blocks-documentation-elements-tailwind-mobile.png",
+    "ui-blocks-documentation-tailwind-desktop.png",
+    "ui-blocks-documentation-tailwind-mobile.png",
+    "ui-kit-controls-local-desktop.png",
+    "ui-kit-controls-local-mobile.png"
+  ],
+  "live_summary": "live-docs-summary.json",
+  "local_smoke": "local-docs-smoke.json"
+}

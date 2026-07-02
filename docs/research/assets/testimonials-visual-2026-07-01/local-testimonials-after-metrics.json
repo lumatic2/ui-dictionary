@@ -1,0 +1,24 @@
+{
+  "bodyLength": 2198,
+  "clientWidth": 2545,
+  "codeMentions": 0,
+  "getCodeMentions": 8,
+  "h1": "UI 용어 사전",
+  "headings": [
+    "UI 용어 사전",
+    "Testimonials",
+    "Simple centered",
+    "With large avatar",
+    "With overlapping image",
+    "With background image",
+    "Side-by-side",
+    "With star rating",
+    "Grid",
+    "Subtle grid"
+  ],
+  "horizontalOverflow": false,
+  "previewMentions": 8,
+  "scrollWidth": 2545,
+  "title": "UI 용어 사전",
+  "url": "http://127.0.0.1:5181/?filter=nav%3Aplus-marketing-testimonials"
+}

@@ -1,0 +1,14 @@
+{
+  "url": "https://tailwindcss.com/plus/ui-blocks/ecommerce/components/store-navigation",
+  "name": "Store Navigation",
+  "description": "Ecommerce store navigation examples for Tailwind CSS, designed and built by the creators of the framework.",
+  "visible_example_count": 5,
+  "visible_example_names": [
+    "With featured categories",
+    "With image grid",
+    "With simple menu and promo",
+    "With centered logo and featured categories",
+    "With double column and persistent mobile nav"
+  ],
+  "raw_component_count": 10
+}

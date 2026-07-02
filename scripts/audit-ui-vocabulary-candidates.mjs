@@ -31,9 +31,16 @@ const requiredFields = [
   "confidence",
 ]
 
-const validCategories = new Set(["input", "selection", "action", "structure", "feedback", "data-display"])
+const validCategories = new Set(["input", "selection", "action", "structure", "feedback", "data-display", "style", "layout-rendering", "accessibility"])
 const validConfidence = new Set(["low", "medium", "high"])
-const validKinds = new Set(["component", "block", "form-pattern"])
+const validKinds = new Set([
+  "component",
+  "block",
+  "form-pattern",
+  "visual-effect",
+  "motion-pattern",
+  "visual-treatment",
+])
 const kebabCase = /^[a-z0-9]+(?:-[a-z0-9]+)*$/
 
 const terms = YAML.parse(await readFile(termsPath, "utf8"))
@@ -368,6 +375,7 @@ function tokenizeComparable(value) {
     "view",
     "배너",
     "버튼",
+    "그림자",
     "상태",
     "시트",
     "입력",

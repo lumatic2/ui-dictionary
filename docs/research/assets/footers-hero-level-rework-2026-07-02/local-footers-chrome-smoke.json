@@ -1,0 +1,26 @@
+{
+  "url": "http://127.0.0.1:5178/?filter=nav%3Aplus-marketing-footers",
+  "headings": [
+    "Footers",
+    "4-column with company mission",
+    "4-column with call-to-action",
+    "4-column simple",
+    "4-column with newsletter",
+    "4-column with newsletter below",
+    "Simple centered",
+    "Simple with social links"
+  ],
+  "imageCount": 0,
+  "newsletterButtons": 3,
+  "socialCount": 24,
+  "overflowX": false,
+  "dims": {
+    "scrollWidth": 2545,
+    "clientWidth": 2545
+  },
+  "mobile390": {
+    "method": "Chrome CLI screenshot",
+    "path": "docs/research/assets/footers-hero-level-rework-2026-07-02/local-footers-after-mobile-390.png",
+    "note": "Newsletter forms stack at 390px to avoid input/button overflow."
+  }
+}

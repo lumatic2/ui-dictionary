@@ -1,0 +1,27 @@
+{
+  "horizontalOverflow": false,
+  "scrollWidth": 1425,
+  "clientWidth": 1440,
+  "bodyScrollWidth": 1425,
+  "headings": [
+    "UI \uc6a9\uc5b4 \uc0ac\uc804",
+    "Testimonials",
+    "Simple centered",
+    "With large avatar",
+    "With overlapping image",
+    "With background image",
+    "Side-by-side",
+    "With star rating",
+    "Grid",
+    "Subtle grid"
+  ],
+  "testimonialImages": [
+    "/assets/testimonials/simple-avatar-v2.png",
+    "/assets/testimonials/large-avatar-v2.png",
+    "/assets/testimonials/overlap-portrait-v2.png",
+    "/assets/testimonials/background-portrait-v2.png",
+    "/assets/testimonials/side-avatar-v2.png",
+    "/assets/testimonials/star-avatar-v2.png",
+    "/assets/testimonials/grid-avatar-v2.png"
+  ]
+}

@@ -1,0 +1,31 @@
+{
+  "url": "http://127.0.0.1:5178/?filter=nav%3Aplus-marketing-logo-clouds",
+  "headings": [
+    "Logo Clouds",
+    "Simple with heading",
+    "Simple with call-to-action",
+    "Simple left-aligned",
+    "Split with logos on right",
+    "Simple",
+    "Grid"
+  ],
+  "imageCount": 0,
+  "logoWordmarks": [
+    "Transistor",
+    "Reform",
+    "Tuple",
+    "SavvyCal",
+    "statamic",
+    "Laravel"
+  ],
+  "overflowX": false,
+  "dims": {
+    "scrollWidth": 2545,
+    "clientWidth": 2545
+  },
+  "mobile390": {
+    "method": "Chrome CLI screenshot",
+    "path": "docs/research/assets/logo-clouds-hero-level-rework-2026-07-02/local-logo-clouds-after-mobile-390.png",
+    "note": "Dark grid verified as single-column at 390px after overflow-risk adjustment."
+  }
+}

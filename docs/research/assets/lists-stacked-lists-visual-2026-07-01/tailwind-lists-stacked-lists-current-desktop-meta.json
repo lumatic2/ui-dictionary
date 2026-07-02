@@ -1,0 +1,39 @@
+{
+  "codeCount": 14,
+  "examples": [
+    "Simple",
+    "With links",
+    "With inline links and avatar group",
+    "With inline links and actions menu",
+    "With badges, button, and actions menu",
+    "In card with links",
+    "Two columns with links",
+    "Full width with links",
+    "Full-width with constrained content",
+    "Narrow",
+    "Narrow with sticky headings",
+    "Narrow with actions",
+    "Narrow with truncated content",
+    "Narrow with small avatars",
+    "Narrow with badges"
+  ],
+  "h2s": [
+    "Simple",
+    "With links",
+    "With inline links and avatar group",
+    "With inline links and actions menu",
+    "With badges, button, and actions menu",
+    "In card with links",
+    "Two columns with links",
+    "Full width with links",
+    "Full-width with constrained content",
+    "Narrow",
+    "Narrow with sticky headings",
+    "Narrow with actions",
+    "Narrow with truncated content",
+    "Narrow with small avatars",
+    "Narrow with badges"
+  ],
+  "previewCount": 16,
+  "title": "Tailwind CSS Stacked Lists - Official Tailwind UI Components"
+}

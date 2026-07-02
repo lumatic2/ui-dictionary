@@ -1,0 +1,13 @@
+{
+  "url": "https://tailwindcss.com/plus/ui-blocks/ecommerce/components/order-summaries",
+  "name": "Order Summaries",
+  "description": "Ecommerce order summary examples for Tailwind CSS, designed and built by the creators of the framework.",
+  "visible_example_count": 4,
+  "visible_example_names": [
+    "With split image",
+    "With progress bars",
+    "With large images and progress bars",
+    "Simple with full order details"
+  ],
+  "raw_component_count": 8
+}

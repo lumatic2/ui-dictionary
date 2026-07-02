@@ -1,0 +1,15 @@
+{
+  "url": "https://tailwindcss.com/plus/ui-blocks/application-ui/feedback/alerts",
+  "name": "Alerts",
+  "description": "Alert examples for Tailwind CSS, designed and built by the creators of the framework.",
+  "visible_example_count": 6,
+  "visible_example_names": [
+    "With description",
+    "With list",
+    "With actions",
+    "With link on right",
+    "With accent border",
+    "With dismiss button"
+  ],
+  "raw_component_count": 12
+}

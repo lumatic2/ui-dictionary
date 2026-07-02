@@ -1,0 +1,20 @@
+{
+  "url": "https://tailwindcss.com/plus/ui-blocks/application-ui/navigation/navbars",
+  "name": "Navbars",
+  "description": "Responsive navbar examples for Tailwind CSS, designed and built by the creators of the framework.",
+  "visible_example_count": 11,
+  "visible_example_names": [
+    "Simple dark with menu button on left",
+    "Dark with quick action",
+    "Simple dark",
+    "Simple with menu button on left",
+    "Simple",
+    "With quick action",
+    "Dark with search",
+    "With search",
+    "Dark with centered search and secondary links",
+    "With centered search and secondary links",
+    "With search in column layout"
+  ],
+  "raw_component_count": 22
+}

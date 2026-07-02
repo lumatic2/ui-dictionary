@@ -1,0 +1,13 @@
+{
+  "url": "https://tailwindcss.com/plus/ui-blocks/application-ui/forms/comboboxes",
+  "name": "Comboboxes",
+  "description": "Combobox examples for Tailwind CSS, designed and built by the creators of the framework.",
+  "visible_example_count": 4,
+  "visible_example_names": [
+    "Simple",
+    "With status indicator",
+    "With image",
+    "With secondary text"
+  ],
+  "raw_component_count": 8
+}

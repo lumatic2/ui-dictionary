@@ -1,0 +1,27 @@
+{
+  "badImageCount": 0,
+  "exampleHeadingCount": 5,
+  "expectedPresent": [
+    { "name": "With related products", "present": true },
+    { "name": "With image grid", "present": true },
+    { "name": "With expandable product details", "present": true },
+    { "name": "With featured details", "present": true },
+    { "name": "With tabs and related products", "present": true }
+  ],
+  "offenders": [],
+  "productImageCount": 32,
+  "uniqueProductAssets": [
+    "apparel-grid.png",
+    "black-shirt-back.png",
+    "canvas-tote.png",
+    "card-decks.png",
+    "sage-backpack.png"
+  ],
+  "viewport": {
+    "clientWidth": 2545,
+    "innerHeight": 1215,
+    "innerWidth": 2560,
+    "scrollHeight": 11858,
+    "scrollWidth": 2545
+  }
+}

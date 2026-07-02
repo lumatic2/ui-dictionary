@@ -1,0 +1,13 @@
+{
+  "url": "https://tailwindcss.com/plus/ui-blocks/ecommerce/components/reviews",
+  "name": "Reviews",
+  "description": "Ecommerce reviews examples for Tailwind CSS, designed and built by the creators of the framework.",
+  "visible_example_count": 4,
+  "visible_example_names": [
+    "Multi-column",
+    "With summary chart",
+    "Avatars with separate description",
+    "Simple with avatars"
+  ],
+  "raw_component_count": 8
+}

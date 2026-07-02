@@ -1,0 +1,47 @@
+[
+  {
+    "slug": "overview",
+    "url": "http://127.0.0.1:5181/?filter=nav%3Aplus-ui-kit",
+    "title": "UI 용어 사전",
+    "hasTitle": true,
+    "hasGetCode": true,
+    "horizontalOverflow": false,
+    "textSample": "UI 용어 사전\nUI Kit\n›\nMarketing\n›\nUI Kit\n\nPLUS / UI KIT\n\nUI Kit\n\n반복해서 쓰는 컴포넌트 vocabulary를 역할, 상태, 조합 기준으로 정리한 시스템 표면입니다.\n\nControls and states\nGet the code →\n\nAPPLICATION ELEMENT\n\nSmall reusable primitives for dense app screens\nSave changes\nCancel\n...\nForms, overlays, and data\nGet the code →\n\nAPPLICATION"
+  },
+  {
+    "slug": "component-docs",
+    "url": "http://127.0.0.1:5181/?filter=nav%3Aplus-ui-kit-component-docs",
+    "title": "UI 용어 사전",
+    "hasTitle": true,
+    "hasGetCode": true,
+    "horizontalOverflow": false,
+    "textSample": "UI 용어 사전\nUI Kit\n›\nMarketing\n›\nComponent Docs\n\nPLUS / UI KIT / COMPONENT DOCS\n\nComponent Docs\n\nCatalyst 공개 문서처럼 개별 컴포넌트의 역할, 상태, 조합 기준을 빠르게 찾아보는 UI Kit 문서 축입니다.\n\nButton, checkbox, and switch\nGet the code →\n\nAPPLICATION ELEMENT\n\nSmall reusable primitives for dense app screens\nSave changes\nCancel\n...\nI"
+  },
+  {
+    "slug": "controls",
+    "url": "http://127.0.0.1:5181/?filter=nav%3Aplus-ui-kit-controls",
+    "title": "UI 용어 사전",
+    "hasTitle": true,
+    "hasGetCode": true,
+    "horizontalOverflow": false,
+    "textSample": "UI 용어 사전\nUI Kit\n›\nMarketing\n›\nControls\n\nPLUS / UI KIT / CONTROLS\n\nControls\n\n사용자가 클릭, 선택, 토글, 조절하는 직접 조작 컴포넌트입니다. 기본/hover/focus/disabled/selected 상태를 함께 봅니다.\n\nButtons and icon buttons\nGet the code →\n\nAPPLICATION ELEMENT\n\nSmall reusable primitives for dense app screens\nSave changes\nCancel\n...\nCheckbo"
+  },
+  {
+    "slug": "forms",
+    "url": "http://127.0.0.1:5181/?filter=nav%3Aplus-ui-kit-forms",
+    "title": "UI 용어 사전",
+    "hasTitle": true,
+    "hasGetCode": true,
+    "horizontalOverflow": false,
+    "textSample": "UI 용어 사전\nUI Kit\n›\nMarketing\n›\nForms\n\nPLUS / UI KIT / FORMS\n\nForms\n\n텍스트 입력, 선택 입력, 인증 폼, 검증 메시지를 포함한 입력 컴포넌트 시스템입니다.\n\nText fields and textareas\nGet the code →\n\nAPPLICATION FORM\n\nEdit workspace settings\nSave\nName\nEmail\nRole\nSelect menus and comboboxes\nGet the code →\n\nAPPLICATION FORM\n\nEdit workspace s"
+  },
+  {
+    "slug": "data-display",
+    "url": "http://127.0.0.1:5181/?filter=nav%3Aplus-ui-kit-data-display",
+    "title": "UI 용어 사전",
+    "hasTitle": true,
+    "hasGetCode": true,
+    "horizontalOverflow": false,
+    "textSample": "UI 용어 사전\nUI Kit\n›\nMarketing\n›\nData Display\n\nPLUS / UI KIT / DATA DISPLAY\n\nData Display\n\n표, 리스트, 지표, 설명 목록처럼 정보를 읽고 비교하게 하는 컴포넌트 시스템입니다.\n\nTables and toolbars\nGet the code →\n\nDATA DISPLAY\n\nOperational data at a glance\nExport\nName\nStatus\nOwner\nUpdated\nPrawn\nActive\nYusung\nToday\nBrain\nDraft\nTeam\nYesterda"
+  }
+]

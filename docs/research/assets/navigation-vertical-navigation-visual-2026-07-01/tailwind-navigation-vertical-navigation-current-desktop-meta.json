@@ -1,0 +1,15 @@
+{
+  "url": "https://tailwindcss.com/plus/ui-blocks/application-ui/navigation/vertical-navigation",
+  "name": "Vertical Navigation",
+  "description": "Vertical navigation list examples for Tailwind CSS, designed and built by the creators of the framework.",
+  "visible_example_count": 6,
+  "visible_example_names": [
+    "Simple",
+    "With badges",
+    "With icons and badges",
+    "With icons",
+    "With secondary navigation",
+    "On gray"
+  ],
+  "raw_component_count": 12
+}

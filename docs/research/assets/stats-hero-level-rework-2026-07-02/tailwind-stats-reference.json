@@ -1,0 +1,18 @@
+{
+  "url": "https://tailwindcss.com/plus/ui-blocks/marketing/sections/stats-sections",
+  "title": "Tailwind CSS Stats - Official Tailwind UI Components",
+  "examples": [
+    "Simple",
+    "Simple grid",
+    "With background image",
+    "Split with image",
+    "Timeline",
+    "Stepped",
+    "With two column description",
+    "With description"
+  ],
+  "image_backed_previews": [
+    "With background image",
+    "Split with image"
+  ]
+}

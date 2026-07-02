@@ -1,0 +1,163 @@
+{
+  "url": "http://127.0.0.1:5178/?filter=nav%3Aplus-application-headings-card-headings",
+  "checkedAt": "2026-07-02T07:13:08.547Z",
+  "expected": [
+    "Simple",
+    "With action",
+    "With avatar and actions",
+    "With description and action",
+    "With description",
+    "With avatar, meta, and dropdown"
+  ],
+  "desktop": {
+    "viewport": {
+      "width": 1440,
+      "height": 26000
+    },
+    "expectedFound": [
+      {
+        "name": "Simple",
+        "found": true
+      },
+      {
+        "name": "With action",
+        "found": true
+      },
+      {
+        "name": "With avatar and actions",
+        "found": true
+      },
+      {
+        "name": "With description and action",
+        "found": true
+      },
+      {
+        "name": "With description",
+        "found": true
+      },
+      {
+        "name": "With avatar, meta, and dropdown",
+        "found": true
+      }
+    ],
+    "images": [
+      "/favicon.svg",
+      "/assets/card-headings/tom-cook-v2.png",
+      "/assets/card-headings/chelsea-hagon-v2.png"
+    ],
+    "previewImages": [
+      "/assets/card-headings/tom-cook-v2.png",
+      "/assets/card-headings/chelsea-hagon-v2.png"
+    ],
+    "horizontalOverflow": false,
+    "scrollWidth": 1425,
+    "innerWidth": 1440,
+    "scrollHeight": 26000,
+    "headings": [
+      {
+        "text": "Card Headings",
+        "top": 222
+      },
+      {
+        "text": "Simple",
+        "top": 408
+      },
+      {
+        "text": "With action",
+        "top": 932
+      },
+      {
+        "text": "With avatar and actions",
+        "top": 1468
+      },
+      {
+        "text": "With description and action",
+        "top": 2016
+      },
+      {
+        "text": "With description",
+        "top": 2568
+      },
+      {
+        "text": "With avatar, meta, and dropdown",
+        "top": 3120
+      }
+    ]
+  },
+  "mobile": {
+    "viewport": {
+      "width": 390,
+      "height": 26000
+    },
+    "expectedFound": [
+      {
+        "name": "Simple",
+        "found": true
+      },
+      {
+        "name": "With action",
+        "found": true
+      },
+      {
+        "name": "With avatar and actions",
+        "found": true
+      },
+      {
+        "name": "With description and action",
+        "found": true
+      },
+      {
+        "name": "With description",
+        "found": true
+      },
+      {
+        "name": "With avatar, meta, and dropdown",
+        "found": true
+      }
+    ],
+    "images": [
+      "/favicon.svg",
+      "/assets/card-headings/tom-cook-v2.png",
+      "/assets/card-headings/chelsea-hagon-v2.png"
+    ],
+    "previewImages": [
+      "/assets/card-headings/tom-cook-v2.png",
+      "/assets/card-headings/chelsea-hagon-v2.png"
+    ],
+    "horizontalOverflow": false,
+    "scrollWidth": 390,
+    "innerWidth": 390,
+    "scrollHeight": 26000,
+    "headings": [
+      {
+        "text": "Card Headings",
+        "top": 267
+      },
+      {
+        "text": "Simple",
+        "top": 479
+      },
+      {
+        "text": "With action",
+        "top": 939
+      },
+      {
+        "text": "With avatar and actions",
+        "top": 1411
+      },
+      {
+        "text": "With description and action",
+        "top": 1907
+      },
+      {
+        "text": "With description",
+        "top": 2495
+      },
+      {
+        "text": "With avatar, meta, and dropdown",
+        "top": 3023
+      }
+    ]
+  },
+  "pass": true
+}

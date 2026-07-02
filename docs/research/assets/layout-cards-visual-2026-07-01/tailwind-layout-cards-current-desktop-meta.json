@@ -1,0 +1,19 @@
+{
+  "url": "https://tailwindcss.com/plus/ui-blocks/application-ui/layout/cards",
+  "name": "Cards",
+  "description": "Cards, wells, and panel examples for Tailwind CSS, designed and built by the creators of the framework.",
+  "visible_example_count": 10,
+  "visible_example_names": [
+    "Basic card",
+    "Card, edge-to-edge on mobile",
+    "Card with header",
+    "Card with footer",
+    "Card with header and footer",
+    "Card with gray footer",
+    "Card with gray body",
+    "Well",
+    "Well on gray",
+    "Well, edge-to-edge on mobile"
+  ],
+  "raw_component_count": 20
+}

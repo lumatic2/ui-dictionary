@@ -1,0 +1,288 @@
+{
+  "buttons": [
+    {
+      "href": null,
+      "tag": "BUTTON",
+      "text": "Marketing"
+    },
+    {
+      "href": null,
+      "tag": "BUTTON",
+      "text": "Application UI"
+    },
+    {
+      "href": null,
+      "tag": "BUTTON",
+      "text": "Ecommerce"
+    },
+    {
+      "href": null,
+      "tag": "BUTTON",
+      "text": "Documentation"
+    },
+    {
+      "href": null,
+      "tag": "BUTTON",
+      "text": "Marketing13"
+    },
+    {
+      "href": null,
+      "tag": "BUTTON",
+      "text": "Page Sections19"
+    },
+    {
+      "href": null,
+      "tag": "BUTTON",
+      "text": "Hero Sections2"
+    },
+    {
+      "href": null,
+      "tag": "BUTTON",
+      "text": "Feature Sections1"
+    },
+    {
+      "href": null,
+      "tag": "BUTTON",
+      "text": "CTA Sections1"
+    },
+    {
+      "href": null,
+      "tag": "BUTTON",
+      "text": "Bento Grids1"
+    },
+    {
+      "href": null,
+      "tag": "BUTTON",
+      "text": "Pricing Sections1"
+    },
+    {
+      "href": null,
+      "tag": "BUTTON",
+      "text": "Header Sections1"
+    },
+    {
+      "href": null,
+      "tag": "BUTTON",
+      "text": "Newsletter Sections1"
+    },
+    {
+      "href": null,
+      "tag": "BUTTON",
+      "text": "Stats2"
+    },
+    {
+      "href": null,
+      "tag": "BUTTON",
+      "text": "Testimonials1"
+    },
+    {
+      "href": null,
+      "tag": "BUTTON",
+      "text": "Blog Sections0"
+    },
+    {
+      "href": null,
+      "tag": "BUTTON",
+      "text": "Contact Sections0"
+    },
+    {
+      "href": null,
+      "tag": "BUTTON",
+      "text": "Team Sections1"
+    },
+    {
+      "href": null,
+      "tag": "BUTTON",
+      "text": "Content Sections0"
+    },
+    {
+      "href": null,
+      "tag": "BUTTON",
+      "text": "Logo Clouds0"
+    },
+    {
+      "href": null,
+      "tag": "BUTTON",
+      "text": "FAQs1"
+    },
+    {
+      "href": null,
+      "tag": "BUTTON",
+      "text": "Footers1"
+    },
+    {
+      "href": null,
+      "tag": "BUTTON",
+      "text": "Elements2"
+    },
+    {
+      "href": null,
+      "tag": "BUTTON",
+      "text": "Headers1"
+    },
+    {
+      "href": null,
+      "tag": "BUTTON",
+      "text": "Flyout Menus2"
+    },
+    {
+      "href": null,
+      "tag": "BUTTON",
+      "text": "Banners1"
+    },
+    {
+      "href": null,
+      "tag": "BUTTON",
+      "text": "Feedback0"
+    },
+    {
+      "href": null,
+      "tag": "BUTTON",
+      "text": "404 Pages0"
+    },
+    {
+      "href": null,
+      "tag": "BUTTON",
+      "text": "Page Examples0"
+    },
+    {
+      "href": null,
+      "tag": "BUTTON",
+      "text": "Landing Pages0"
+    },
+    {
+      "href": null,
+      "tag": "BUTTON",
+      "text": "Pricing Pages0"
+    },
+    {
+      "href": null,
+      "tag": "BUTTON",
+      "text": "About Pages0"
+    },
+    {
+      "href": null,
+      "tag": "BUTTON",
+      "text": "UI 용어 사전UI Vocabulary Encyclopedia"
+    },
+    {
+      "href": null,
+      "tag": "BUTTON",
+      "text": "UI Blocks"
+    },
+    {
+      "href": null,
+      "tag": "BUTTON",
+      "text": "Templates"
+    },
+    {
+      "href": null,
+      "tag": "BUTTON",
+      "text": "UI Kit"
+    },
+    {
+      "href": null,
+      "tag": "BUTTON",
+      "text": "검색"
+    },
+    {
+      "href": null,
+      "tag": "BUTTON",
+      "text": "Preview"
+    },
+    {
+      "href": null,
+      "tag": "BUTTON",
+      "text": "Code"
+    },
+    {
+      "href": null,
+      "tag": "BUTTON",
+      "text": "Product"
+    }
+  ],
+  "examples": [
+    "Simple centered",
+    "Split with screenshot",
+    "Split with bordered screenshot",
+    "Split with code example",
+    "Simple centered with background image",
+    "With bordered app screenshot",
+    "With app screenshot",
+    "With phone mockup",
+    "Split with image",
+    "With angled image on right",
+    "With image tiles",
+    "With offset image"
+  ],
+  "hasCode": true,
+  "hasGetCode": true,
+  "hasPreview": true,
+  "headings": [
+    {
+      "tag": "H1",
+      "text": "UI 용어 사전"
+    },
+    {
+      "tag": "H2",
+      "text": "Hero Sections"
+    },
+    {
+      "tag": "H3",
+      "text": "Simple centered"
+    },
+    {
+      "tag": "H3",
+      "text": "Split with screenshot"
+    },
+    {
+      "tag": "H3",
+      "text": "Split with bordered screenshot"
+    },
+    {
+      "tag": "H3",
+      "text": "Split with code example"
+    },
+    {
+      "tag": "H3",
+      "text": "Simple centered with background image"
+    },
+    {
+      "tag": "H3",
+      "text": "With bordered app screenshot"
+    },
+    {
+      "tag": "H3",
+      "text": "With app screenshot"
+    },
+    {
+      "tag": "H3",
+      "text": "With phone mockup"
+    },
+    {
+      "tag": "H3",
+      "text": "Split with image"
+    },
+    {
+      "tag": "H3",
+      "text": "With angled image on right"
+    },
+    {
+      "tag": "H3",
+      "text": "With image tiles"
+    },
+    {
+      "tag": "H3",
+      "text": "With offset image"
+    }
+  ],
+  "overflowX": false,
+  "title": "UI 용어 사전",
+  "url": "http://127.0.0.1:5181/?filter=nav%3Aplus-marketing-hero-sections",
+  "viewport": {
+    "clientW": 2545,
+    "docW": 2545,
+    "h": 1319,
+    "w": 2560
+  }
+}

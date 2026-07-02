@@ -1,0 +1,255 @@
+[
+  {
+    "slug": "hero-sections",
+    "tailwind": "https://tailwindcss.com/plus/ui-blocks/marketing/sections/heroes",
+    "local": "http://127.0.0.1:5181/?filter=nav%3Aplus-marketing-hero-sections",
+    "files": [
+      "docs/research/assets/marketing-leaves-2026-07-01/hero-sections-tailwind-desktop.png",
+      "docs/research/assets/marketing-leaves-2026-07-01/hero-sections-tailwind-mobile.png",
+      "docs/research/assets/marketing-leaves-2026-07-01/hero-sections-local-desktop.png",
+      "docs/research/assets/marketing-leaves-2026-07-01/hero-sections-local-mobile.png"
+    ]
+  },
+  {
+    "slug": "feature-sections",
+    "tailwind": "https://tailwindcss.com/plus/ui-blocks/marketing/sections/feature-sections",
+    "local": "http://127.0.0.1:5181/?filter=nav%3Aplus-marketing-feature-sections",
+    "files": [
+      "docs/research/assets/marketing-leaves-2026-07-01/feature-sections-tailwind-desktop.png",
+      "docs/research/assets/marketing-leaves-2026-07-01/feature-sections-tailwind-mobile.png",
+      "docs/research/assets/marketing-leaves-2026-07-01/feature-sections-local-desktop.png",
+      "docs/research/assets/marketing-leaves-2026-07-01/feature-sections-local-mobile.png"
+    ]
+  },
+  {
+    "slug": "cta-sections",
+    "tailwind": "https://tailwindcss.com/plus/ui-blocks/marketing/sections/cta-sections",
+    "local": "http://127.0.0.1:5181/?filter=nav%3Aplus-marketing-cta-sections",
+    "files": [
+      "docs/research/assets/marketing-leaves-2026-07-01/cta-sections-tailwind-desktop.png",
+      "docs/research/assets/marketing-leaves-2026-07-01/cta-sections-tailwind-mobile.png",
+      "docs/research/assets/marketing-leaves-2026-07-01/cta-sections-local-desktop.png",
+      "docs/research/assets/marketing-leaves-2026-07-01/cta-sections-local-mobile.png"
+    ]
+  },
+  {
+    "slug": "bento-grids",
+    "tailwind": "https://tailwindcss.com/plus/ui-blocks/marketing/sections/bento-grids",
+    "local": "http://127.0.0.1:5181/?filter=nav%3Aplus-marketing-bento-grids",
+    "files": [
+      "docs/research/assets/marketing-leaves-2026-07-01/bento-grids-tailwind-desktop.png",
+      "docs/research/assets/marketing-leaves-2026-07-01/bento-grids-tailwind-mobile.png",
+      "docs/research/assets/marketing-leaves-2026-07-01/bento-grids-local-desktop.png",
+      "docs/research/assets/marketing-leaves-2026-07-01/bento-grids-local-mobile.png"
+    ]
+  },
+  {
+    "slug": "pricing-sections",
+    "tailwind": "https://tailwindcss.com/plus/ui-blocks/marketing/sections/pricing",
+    "local": "http://127.0.0.1:5181/?filter=nav%3Aplus-marketing-pricing-sections",
+    "files": [
+      "docs/research/assets/marketing-leaves-2026-07-01/pricing-sections-tailwind-desktop.png",
+      "docs/research/assets/marketing-leaves-2026-07-01/pricing-sections-tailwind-mobile.png",
+      "docs/research/assets/marketing-leaves-2026-07-01/pricing-sections-local-desktop.png",
+      "docs/research/assets/marketing-leaves-2026-07-01/pricing-sections-local-mobile.png"
+    ]
+  },
+  {
+    "slug": "header-sections",
+    "tailwind": "https://tailwindcss.com/plus/ui-blocks/marketing/sections/header",
+    "local": "http://127.0.0.1:5181/?filter=nav%3Aplus-marketing-header-sections",
+    "files": [
+      "docs/research/assets/marketing-leaves-2026-07-01/header-sections-tailwind-desktop.png",
+      "docs/research/assets/marketing-leaves-2026-07-01/header-sections-tailwind-mobile.png",
+      "docs/research/assets/marketing-leaves-2026-07-01/header-sections-local-desktop.png",
+      "docs/research/assets/marketing-leaves-2026-07-01/header-sections-local-mobile.png"
+    ]
+  },
+  {
+    "slug": "newsletter-sections",
+    "tailwind": "https://tailwindcss.com/plus/ui-blocks/marketing/sections/newsletter-sections",
+    "local": "http://127.0.0.1:5181/?filter=nav%3Aplus-marketing-newsletter-sections",
+    "files": [
+      "docs/research/assets/marketing-leaves-2026-07-01/newsletter-sections-tailwind-desktop.png",
+      "docs/research/assets/marketing-leaves-2026-07-01/newsletter-sections-tailwind-mobile.png",
+      "docs/research/assets/marketing-leaves-2026-07-01/newsletter-sections-local-desktop.png",
+      "docs/research/assets/marketing-leaves-2026-07-01/newsletter-sections-local-mobile.png"
+    ]
+  },
+  {
+    "slug": "stats",
+    "tailwind": "https://tailwindcss.com/plus/ui-blocks/marketing/sections/stats-sections",
+    "local": "http://127.0.0.1:5181/?filter=nav%3Aplus-marketing-stats",
+    "files": [
+      "docs/research/assets/marketing-leaves-2026-07-01/stats-tailwind-desktop.png",
+      "docs/research/assets/marketing-leaves-2026-07-01/stats-tailwind-mobile.png",
+      "docs/research/assets/marketing-leaves-2026-07-01/stats-local-desktop.png",
+      "docs/research/assets/marketing-leaves-2026-07-01/stats-local-mobile.png"
+    ]
+  },
+  {
+    "slug": "testimonials",
+    "tailwind": "https://tailwindcss.com/plus/ui-blocks/marketing/sections/testimonials",
+    "local": "http://127.0.0.1:5181/?filter=nav%3Aplus-marketing-testimonials",
+    "files": [
+      "docs/research/assets/marketing-leaves-2026-07-01/testimonials-tailwind-desktop.png",
+      "docs/research/assets/marketing-leaves-2026-07-01/testimonials-tailwind-mobile.png",
+      "docs/research/assets/marketing-leaves-2026-07-01/testimonials-local-desktop.png",
+      "docs/research/assets/marketing-leaves-2026-07-01/testimonials-local-mobile.png"
+    ]
+  },
+  {
+    "slug": "blog-sections",
+    "tailwind": "https://tailwindcss.com/plus/ui-blocks/marketing/sections/blog-sections",
+    "local": "http://127.0.0.1:5181/?filter=nav%3Aplus-marketing-blog-sections",
+    "files": [
+      "docs/research/assets/marketing-leaves-2026-07-01/blog-sections-tailwind-desktop.png",
+      "docs/research/assets/marketing-leaves-2026-07-01/blog-sections-tailwind-mobile.png",
+      "docs/research/assets/marketing-leaves-2026-07-01/blog-sections-local-desktop.png",
+      "docs/research/assets/marketing-leaves-2026-07-01/blog-sections-local-mobile.png"
+    ]
+  },
+  {
+    "slug": "contact-sections",
+    "tailwind": "https://tailwindcss.com/plus/ui-blocks/marketing/sections/contact-sections",
+    "local": "http://127.0.0.1:5181/?filter=nav%3Aplus-marketing-contact-sections",
+    "files": [
+      "docs/research/assets/marketing-leaves-2026-07-01/contact-sections-tailwind-desktop.png",
+      "docs/research/assets/marketing-leaves-2026-07-01/contact-sections-tailwind-mobile.png",
+      "docs/research/assets/marketing-leaves-2026-07-01/contact-sections-local-desktop.png",
+      "docs/research/assets/marketing-leaves-2026-07-01/contact-sections-local-mobile.png"
+    ]
+  },
+  {
+    "slug": "team-sections",
+    "tailwind": "https://tailwindcss.com/plus/ui-blocks/marketing/sections/team-sections",
+    "local": "http://127.0.0.1:5181/?filter=nav%3Aplus-marketing-team-sections",
+    "files": [
+      "docs/research/assets/marketing-leaves-2026-07-01/team-sections-tailwind-desktop.png",
+      "docs/research/assets/marketing-leaves-2026-07-01/team-sections-tailwind-mobile.png",
+      "docs/research/assets/marketing-leaves-2026-07-01/team-sections-local-desktop.png",
+      "docs/research/assets/marketing-leaves-2026-07-01/team-sections-local-mobile.png"
+    ]
+  },
+  {
+    "slug": "content-sections",
+    "tailwind": "https://tailwindcss.com/plus/ui-blocks/marketing/sections/content-sections",
+    "local": "http://127.0.0.1:5181/?filter=nav%3Aplus-marketing-content-sections",
+    "files": [
+      "docs/research/assets/marketing-leaves-2026-07-01/content-sections-tailwind-desktop.png",
+      "docs/research/assets/marketing-leaves-2026-07-01/content-sections-tailwind-mobile.png",
+      "docs/research/assets/marketing-leaves-2026-07-01/content-sections-local-desktop.png",
+      "docs/research/assets/marketing-leaves-2026-07-01/content-sections-local-mobile.png"
+    ]
+  },
+  {
+    "slug": "logo-clouds",
+    "tailwind": "https://tailwindcss.com/plus/ui-blocks/marketing/sections/logo-clouds",
+    "local": "http://127.0.0.1:5181/?filter=nav%3Aplus-marketing-logo-clouds",
+    "files": [
+      "docs/research/assets/marketing-leaves-2026-07-01/logo-clouds-tailwind-desktop.png",
+      "docs/research/assets/marketing-leaves-2026-07-01/logo-clouds-tailwind-mobile.png",
+      "docs/research/assets/marketing-leaves-2026-07-01/logo-clouds-local-desktop.png",
+      "docs/research/assets/marketing-leaves-2026-07-01/logo-clouds-local-mobile.png"
+    ]
+  },
+  {
+    "slug": "faqs",
+    "tailwind": "https://tailwindcss.com/plus/ui-blocks/marketing/sections/faq-sections",
+    "local": "http://127.0.0.1:5181/?filter=nav%3Aplus-marketing-faqs",
+    "files": [
+      "docs/research/assets/marketing-leaves-2026-07-01/faqs-tailwind-desktop.png",
+      "docs/research/assets/marketing-leaves-2026-07-01/faqs-tailwind-mobile.png",
+      "docs/research/assets/marketing-leaves-2026-07-01/faqs-local-desktop.png",
+      "docs/research/assets/marketing-leaves-2026-07-01/faqs-local-mobile.png"
+    ]
+  },
+  {
+    "slug": "footers",
+    "tailwind": "https://tailwindcss.com/plus/ui-blocks/marketing/sections/footers",
+    "local": "http://127.0.0.1:5181/?filter=nav%3Aplus-marketing-footers",
+    "files": [
+      "docs/research/assets/marketing-leaves-2026-07-01/footers-tailwind-desktop.png",
+      "docs/research/assets/marketing-leaves-2026-07-01/footers-tailwind-mobile.png",
+      "docs/research/assets/marketing-leaves-2026-07-01/footers-local-desktop.png",
+      "docs/research/assets/marketing-leaves-2026-07-01/footers-local-mobile.png"
+    ]
+  },
+  {
+    "slug": "headers",
+    "tailwind": "https://tailwindcss.com/plus/ui-blocks/marketing/elements/headers",
+    "local": "http://127.0.0.1:5181/?filter=nav%3Aplus-marketing-headers",
+    "files": [
+      "docs/research/assets/marketing-leaves-2026-07-01/headers-tailwind-desktop.png",
+      "docs/research/assets/marketing-leaves-2026-07-01/headers-tailwind-mobile.png",
+      "docs/research/assets/marketing-leaves-2026-07-01/headers-local-desktop.png",
+      "docs/research/assets/marketing-leaves-2026-07-01/headers-local-mobile.png"
+    ]
+  },
+  {
+    "slug": "flyout-menus",
+    "tailwind": "https://tailwindcss.com/plus/ui-blocks/marketing/elements/flyout-menus",
+    "local": "http://127.0.0.1:5181/?filter=nav%3Aplus-marketing-flyout-menus",
+    "files": [
+      "docs/research/assets/marketing-leaves-2026-07-01/flyout-menus-tailwind-desktop.png",
+      "docs/research/assets/marketing-leaves-2026-07-01/flyout-menus-tailwind-mobile.png",
+      "docs/research/assets/marketing-leaves-2026-07-01/flyout-menus-local-desktop.png",
+      "docs/research/assets/marketing-leaves-2026-07-01/flyout-menus-local-mobile.png"
+    ]
+  },
+  {
+    "slug": "banners",
+    "tailwind": "https://tailwindcss.com/plus/ui-blocks/marketing/elements/banners",
+    "local": "http://127.0.0.1:5181/?filter=nav%3Aplus-marketing-banners",
+    "files": [
+      "docs/research/assets/marketing-leaves-2026-07-01/banners-tailwind-desktop.png",
+      "docs/research/assets/marketing-leaves-2026-07-01/banners-tailwind-mobile.png",
+      "docs/research/assets/marketing-leaves-2026-07-01/banners-local-desktop.png",
+      "docs/research/assets/marketing-leaves-2026-07-01/banners-local-mobile.png"
+    ]
+  },
+  {
+    "slug": "404-pages",
+    "tailwind": "https://tailwindcss.com/plus/ui-blocks/marketing/feedback/404-pages",
+    "local": "http://127.0.0.1:5181/?filter=nav%3Aplus-marketing-404-pages",
+    "files": [
+      "docs/research/assets/marketing-leaves-2026-07-01/404-pages-tailwind-desktop.png",
+      "docs/research/assets/marketing-leaves-2026-07-01/404-pages-tailwind-mobile.png",
+      "docs/research/assets/marketing-leaves-2026-07-01/404-pages-local-desktop.png",
+      "docs/research/assets/marketing-leaves-2026-07-01/404-pages-local-mobile.png"
+    ]
+  },
+  {
+    "slug": "landing-pages",
+    "tailwind": "https://tailwindcss.com/plus/ui-blocks/marketing/page-examples/landing-pages",
+    "local": "http://127.0.0.1:5181/?filter=nav%3Aplus-marketing-landing-pages",
+    "files": [
+      "docs/research/assets/marketing-leaves-2026-07-01/landing-pages-tailwind-desktop.png",
+      "docs/research/assets/marketing-leaves-2026-07-01/landing-pages-tailwind-mobile.png",
+      "docs/research/assets/marketing-leaves-2026-07-01/landing-pages-local-desktop.png",
+      "docs/research/assets/marketing-leaves-2026-07-01/landing-pages-local-mobile.png"
+    ]
+  },
+  {
+    "slug": "pricing-pages",
+    "tailwind": "https://tailwindcss.com/plus/ui-blocks/marketing/page-examples/pricing-pages",
+    "local": "http://127.0.0.1:5181/?filter=nav%3Aplus-marketing-pricing-pages",
+    "files": [
+      "docs/research/assets/marketing-leaves-2026-07-01/pricing-pages-tailwind-desktop.png",
+      "docs/research/assets/marketing-leaves-2026-07-01/pricing-pages-tailwind-mobile.png",
+      "docs/research/assets/marketing-leaves-2026-07-01/pricing-pages-local-desktop.png",
+      "docs/research/assets/marketing-leaves-2026-07-01/pricing-pages-local-mobile.png"
+    ]
+  },
+  {
+    "slug": "about-pages",
+    "tailwind": "https://tailwindcss.com/plus/ui-blocks/marketing/page-examples/about-pages",
+    "local": "http://127.0.0.1:5181/?filter=nav%3Aplus-marketing-about-pages",
+    "files": [
+      "docs/research/assets/marketing-leaves-2026-07-01/about-pages-tailwind-desktop.png",
+      "docs/research/assets/marketing-leaves-2026-07-01/about-pages-tailwind-mobile.png",
+      "docs/research/assets/marketing-leaves-2026-07-01/about-pages-local-desktop.png",
+      "docs/research/assets/marketing-leaves-2026-07-01/about-pages-local-mobile.png"
+    ]
+  }
+]

@@ -1,0 +1,26 @@
+{
+  "route": "http://127.0.0.1:5174/?filter=nav%3Aplus-ecommerce-page-examples-shopping-cart-pages",
+  "badImageCount": 0,
+  "cartAssetReferenceCount": 13,
+  "exampleHeadingCount": 3,
+  "expectedPresent": {
+    "With related products": true,
+    "Simple with policy grid": true,
+    "With policy grid and extended summary": true
+  },
+  "expectedAssetsPresent": {
+    "cart-p1-charcoal-tee.png": true,
+    "cart-p1-mustard-tee.png": true,
+    "cart-p1-related-products.png": true,
+    "cart-p1-tumbler.png": true,
+    "cart-p2-tee-set.png": true,
+    "cart-p3-product-set.png": true
+  },
+  "viewport": {
+    "clientWidth": 2560,
+    "innerHeight": 1263,
+    "innerWidth": 2560,
+    "scrollHeight": 5275,
+    "scrollWidth": 2545
+  }
+}

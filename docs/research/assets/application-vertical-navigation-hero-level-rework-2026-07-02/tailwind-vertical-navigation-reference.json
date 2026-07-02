@@ -1,0 +1,316 @@
+{
+  "url": "https://tailwindcss.com/plus/ui-blocks/application-ui/navigation/vertical-navigation",
+  "checkedAt": "2026-07-02T08:09:45.103Z",
+  "desktop": {
+    "viewport": {
+      "width": 1440,
+      "height": 26000
+    },
+    "expectedFound": [
+      {
+        "name": "Simple",
+        "found": true
+      },
+      {
+        "name": "With badges",
+        "found": true
+      },
+      {
+        "name": "With icons and badges",
+        "found": true
+      },
+      {
+        "name": "With icons",
+        "found": true
+      },
+      {
+        "name": "With secondary navigation",
+        "found": true
+      },
+      {
+        "name": "On gray",
+        "found": true
+      }
+    ],
+    "images": [],
+    "previewImages": [],
+    "horizontalOverflow": false,
+    "scrollWidth": 1440,
+    "innerWidth": 1440,
+    "scrollHeight": 26000,
+    "headings": [
+      {
+        "text": "Application Shells",
+        "top": 0
+      },
+      {
+        "text": "Headings",
+        "top": 0
+      },
+      {
+        "text": "Data Display",
+        "top": 0
+      },
+      {
+        "text": "Lists",
+        "top": 0
+      },
+      {
+        "text": "Forms",
+        "top": 0
+      },
+      {
+        "text": "Feedback",
+        "top": 0
+      },
+      {
+        "text": "Navigation",
+        "top": 0
+      },
+      {
+        "text": "Overlays",
+        "top": 0
+      },
+      {
+        "text": "Elements",
+        "top": 0
+      },
+      {
+        "text": "Layout",
+        "top": 0
+      },
+      {
+        "text": "Page Examples",
+        "top": 0
+      },
+      {
+        "text": "Build UIs that don’t suck.",
+        "top": 0
+      },
+      {
+        "text": "Vertical Navigation",
+        "top": 152
+      },
+      {
+        "text": "Simple",
+        "top": 415
+      },
+      {
+        "text": "Simple",
+        "top": 0
+      },
+      {
+        "text": "With badges",
+        "top": 885
+      },
+      {
+        "text": "With badges",
+        "top": 0
+      },
+      {
+        "text": "With icons and badges",
+        "top": 1355
+      },
+      {
+        "text": "With icons and badges",
+        "top": 0
+      },
+      {
+        "text": "With icons",
+        "top": 1825
+      },
+      {
+        "text": "With icons",
+        "top": 0
+      },
+      {
+        "text": "With secondary navigation",
+        "top": 2295
+      },
+      {
+        "text": "With secondary navigation",
+        "top": 0
+      },
+      {
+        "text": "On gray",
+        "top": 2997
+      },
+      {
+        "text": "On gray",
+        "top": 0
+      },
+      {
+        "text": "Marketing",
+        "top": 25132
+      },
+      {
+        "text": "Application UI",
+        "top": 25132
+      },
+      {
+        "text": "Ecommerce",
+        "top": 25132
+      },
+      {
+        "text": "Templates & UI Kits",
+        "top": 25132
+      }
+    ]
+  },
+  "mobile": {
+    "viewport": {
+      "width": 390,
+      "height": 26000
+    },
+    "expectedFound": [
+      {
+        "name": "Simple",
+        "found": true
+      },
+      {
+        "name": "With badges",
+        "found": true
+      },
+      {
+        "name": "With icons and badges",
+        "found": true
+      },
+      {
+        "name": "With icons",
+        "found": true
+      },
+      {
+        "name": "With secondary navigation",
+        "found": true
+      },
+      {
+        "name": "On gray",
+        "found": true
+      }
+    ],
+    "images": [],
+    "previewImages": [],
+    "horizontalOverflow": false,
+    "scrollWidth": 390,
+    "innerWidth": 390,
+    "scrollHeight": 26000,
+    "headings": [
+      {
+        "text": "Application Shells",
+        "top": 0
+      },
+      {
+        "text": "Headings",
+        "top": 0
+      },
+      {
+        "text": "Data Display",
+        "top": 0
+      },
+      {
+        "text": "Lists",
+        "top": 0
+      },
+      {
+        "text": "Forms",
+        "top": 0
+      },
+      {
+        "text": "Feedback",
+        "top": 0
+      },
+      {
+        "text": "Navigation",
+        "top": 0
+      },
+      {
+        "text": "Overlays",
+        "top": 0
+      },
+      {
+        "text": "Elements",
+        "top": 0
+      },
+      {
+        "text": "Layout",
+        "top": 0
+      },
+      {
+        "text": "Page Examples",
+        "top": 0
+      },
+      {
+        "text": "Build UIs that don’t suck.",
+        "top": 0
+      },
+      {
+        "text": "Vertical Navigation",
+        "top": 152
+      },
+      {
+        "text": "Simple",
+        "top": 532
+      },
+      {
+        "text": "Simple",
+        "top": 0
+      },
+      {
+        "text": "With badges",
+        "top": 996
+      },
+      {
+        "text": "With badges",
+        "top": 0
+      },
+      {
+        "text": "With icons and badges",
+        "top": 1460
+      },
+      {
+        "text": "With icons and badges",
+        "top": 0
+      },
+      {
+        "text": "With icons",
+        "top": 1924
+      },
+      {
+        "text": "With icons",
+        "top": 0
+      },
+      {
+        "text": "With secondary navigation",
+        "top": 2388
+      },
+      {
+        "text": "With secondary navigation",
+        "top": 0
+      },
+      {
+        "text": "On gray",
+        "top": 3084
+      },
+      {
+        "text": "On gray",
+        "top": 0
+      },
+      {
+        "text": "Marketing",
+        "top": 24348
+      },
+      {
+        "text": "Application UI",
+        "top": 24348
+      },
+      {
+        "text": "Ecommerce",
+        "top": 25076
+      },
+      {
+        "text": "Templates & UI Kits",
+        "top": 25076
+      }
+    ]
+  }
+}

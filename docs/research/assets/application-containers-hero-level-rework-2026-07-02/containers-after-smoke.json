@@ -1,0 +1,54 @@
+{
+  "desktop": {
+    "missing": [],
+    "scrollWidth": 1425,
+    "clientWidth": 1440,
+    "horizontalOverflow": false,
+    "imageSources": [],
+    "elementOverflows": [
+      {
+        "tag": "SPAN",
+        "className": "min-w-0 flex-1 truncate",
+        "scrollWidth": 180,
+        "clientWidth": 168,
+        "text": "Sign-in and Registration"
+      }
+    ],
+    "pinkPanels": 4,
+    "darkPanels": 1,
+    "hatched": 5
+  },
+  "mobile390": {
+    "missing": [],
+    "scrollWidth": 375,
+    "clientWidth": 390,
+    "horizontalOverflow": false,
+    "imageSources": [],
+    "elementOverflows": [
+      {
+        "tag": "H3",
+        "className": "truncate text-base font-semibold tracking-normal text-slate-950",
+        "scrollWidth": 469,
+        "clientWidth": 323,
+        "text": "Full-width on mobile, constrained with padded content above"
+      },
+      {
+        "tag": "H3",
+        "className": "truncate text-base font-semibold tracking-normal text-slate-950",
+        "scrollWidth": 631,
+        "clientWidth": 323,
+        "text": "Full-width on mobile, constrained to breakpoint with padded content above mobile"
+      },
+      {
+        "tag": "H3",
+        "className": "truncate text-base font-semibold tracking-normal text-slate-950",
+        "scrollWidth": 362,
+        "clientWidth": 323,
+        "text": "Constrained to breakpoint with padded content"
+      }
+    ],
+    "pinkPanels": 4,
+    "darkPanels": 1,
+    "hatched": 5
+  }
+}

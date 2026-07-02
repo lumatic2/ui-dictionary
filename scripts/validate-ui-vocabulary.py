@@ -36,6 +36,9 @@ VALID_CATEGORIES = {
     "structure",
     "feedback",
     "data-display",
+    "style",
+    "layout-rendering",
+    "accessibility",
 }
 
 VALID_STATUS = {"draft", "reviewed", "published"}
@@ -49,6 +52,7 @@ VALID_KINDS = {
     "visual-treatment",
 }
 VALID_RELATED_RELATIONS = {"compare", "alternative", "use-with"}
+VALID_NAVIGATION_ROOTS = {"Docs", "Plus", "Index"}
 SOURCE_LINE_PATTERN = re.compile(r"^- `([^`]+)`: (.+?)\s*$")
 TIER_LINE_PATTERN = re.compile(r"^### Tier ([A-Z])\b")
 
@@ -86,6 +90,30 @@ def parse_source_ids(sources_text: str) -> set[str]:
         source_ids.add(source_id)
 
     return source_ids
+
+
+def validate_navigation_path(term_id: str, field: str, path_value: object) -> None:
+    if not isinstance(path_value, list) or not path_value:
+        fail(f"{term_id}: navigation.{field} must be a non-empty list")
+    if not all(isinstance(segment, str) and segment.strip() for segment in path_value):
+        fail(f"{term_id}: navigation.{field} contains an invalid path segment")
+    if path_value[0] not in VALID_NAVIGATION_ROOTS:
+        fail(f"{term_id}: navigation.{field} must start with Docs, Plus, or Index")
+
+
+def validate_navigation(term_id: str, navigation: object) -> None:
+    if not isinstance(navigation, dict):
+        fail(f"{term_id}: navigation must be a mapping")
+    if "canonical_path" not in navigation:
+        fail(f"{term_id}: navigation.canonical_path is required when navigation is present")
+
+    validate_navigation_path(term_id, "canonical_path", navigation["canonical_path"])
+
+    also_appears_in = navigation.get("also_appears_in", [])
+    if not isinstance(also_appears_in, list):
+        fail(f"{term_id}: navigation.also_appears_in must be a list of paths")
+    for path_value in also_appears_in:
+        validate_navigation_path(term_id, "also_appears_in", path_value)
 
 
 def main() -> None:
@@ -159,6 +187,8 @@ def main() -> None:
                     fail(f"{term_id}: invalid related relation {relation}")
                 if related_id == term_id:
                     fail(f"{term_id}: related id cannot point to itself")
+        if "navigation" in term:
+            validate_navigation(term_id, term["navigation"])
 
     sparse = {category: count for category, count in counts.items() if count < 8}
     if sparse:

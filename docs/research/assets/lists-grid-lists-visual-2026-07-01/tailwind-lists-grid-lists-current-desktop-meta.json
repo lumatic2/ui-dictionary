@@ -1,0 +1,23 @@
+{
+  "codeCount": 7,
+  "examples": [
+    "Contact cards with small portraits",
+    "Contact cards",
+    "Simple cards",
+    "Horizontal link cards",
+    "Actions with shared borders",
+    "Images with details",
+    "Logos cards with description list"
+  ],
+  "h2s": [
+    "Contact cards with small portraits",
+    "Contact cards",
+    "Simple cards",
+    "Horizontal link cards",
+    "Actions with shared borders",
+    "Images with details",
+    "Logos cards with description list"
+  ],
+  "previewCount": 8,
+  "title": "Tailwind CSS Grid Lists - Official Tailwind UI Components"
+}

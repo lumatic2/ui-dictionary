@@ -1,0 +1,21 @@
+{
+  "codeCount": 6,
+  "examples": [
+    "Full-width three-column",
+    "Full-width secondary column on right",
+    "Constrained three column",
+    "Constrained with sticky columns",
+    "Full-width with narrow sidebar",
+    "Full-width with narrow sidebar and header"
+  ],
+  "h2s": [
+    "Full-width three-column",
+    "Full-width secondary column on right",
+    "Constrained three column",
+    "Constrained with sticky columns",
+    "Full-width with narrow sidebar",
+    "Full-width with narrow sidebar and header"
+  ],
+  "previewCount": 7,
+  "title": "Tailwind CSS Multi-Column Layouts - Official Tailwind UI Components"
+}

@@ -1,0 +1,31 @@
+{
+  "codeCount": 10,
+  "examples": [
+    "With stacked flyout menu",
+    "Constrained",
+    "On brand background",
+    "With full width flyout menu",
+    "Full width",
+    "With call-to-action",
+    "With multiple flyout menus",
+    "With icons in mobile menu",
+    "With left-aligned nav",
+    "With right-aligned nav",
+    "With centered logo"
+  ],
+  "h2s": [
+    "With stacked flyout menu",
+    "Constrained",
+    "On brand background",
+    "With full width flyout menu",
+    "Full width",
+    "With call-to-action",
+    "With multiple flyout menus",
+    "With icons in mobile menu",
+    "With left-aligned nav",
+    "With right-aligned nav",
+    "With centered logo"
+  ],
+  "previewCount": 12,
+  "title": "Tailwind CSS Headers - Official Tailwind UI Components"
+}

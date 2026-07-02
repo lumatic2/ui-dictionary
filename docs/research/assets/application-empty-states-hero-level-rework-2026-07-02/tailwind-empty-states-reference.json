@@ -1,0 +1,316 @@
+{
+  "url": "https://tailwindcss.com/plus/ui-blocks/application-ui/feedback/empty-states",
+  "checkedAt": "2026-07-02T08:03:56.217Z",
+  "desktop": {
+    "viewport": {
+      "width": 1440,
+      "height": 26000
+    },
+    "expectedFound": [
+      {
+        "name": "Simple",
+        "found": true
+      },
+      {
+        "name": "With dashed border",
+        "found": true
+      },
+      {
+        "name": "With starting points",
+        "found": true
+      },
+      {
+        "name": "With recommendations",
+        "found": true
+      },
+      {
+        "name": "With templates",
+        "found": true
+      },
+      {
+        "name": "With recommendations grid",
+        "found": true
+      }
+    ],
+    "images": [],
+    "previewImages": [],
+    "horizontalOverflow": false,
+    "scrollWidth": 1440,
+    "innerWidth": 1440,
+    "scrollHeight": 26000,
+    "headings": [
+      {
+        "text": "Application Shells",
+        "top": 0
+      },
+      {
+        "text": "Headings",
+        "top": 0
+      },
+      {
+        "text": "Data Display",
+        "top": 0
+      },
+      {
+        "text": "Lists",
+        "top": 0
+      },
+      {
+        "text": "Forms",
+        "top": 0
+      },
+      {
+        "text": "Feedback",
+        "top": 0
+      },
+      {
+        "text": "Navigation",
+        "top": 0
+      },
+      {
+        "text": "Overlays",
+        "top": 0
+      },
+      {
+        "text": "Elements",
+        "top": 0
+      },
+      {
+        "text": "Layout",
+        "top": 0
+      },
+      {
+        "text": "Page Examples",
+        "top": 0
+      },
+      {
+        "text": "Build UIs that don’t suck.",
+        "top": 0
+      },
+      {
+        "text": "Empty States",
+        "top": 152
+      },
+      {
+        "text": "Simple",
+        "top": 387
+      },
+      {
+        "text": "Simple",
+        "top": 0
+      },
+      {
+        "text": "With dashed border",
+        "top": 789
+      },
+      {
+        "text": "With dashed border",
+        "top": 0
+      },
+      {
+        "text": "With starting points",
+        "top": 1207
+      },
+      {
+        "text": "With starting points",
+        "top": 0
+      },
+      {
+        "text": "With recommendations",
+        "top": 1867
+      },
+      {
+        "text": "With recommendations",
+        "top": 0
+      },
+      {
+        "text": "With templates",
+        "top": 2589
+      },
+      {
+        "text": "With templates",
+        "top": 0
+      },
+      {
+        "text": "With recommendations grid",
+        "top": 3167
+      },
+      {
+        "text": "With recommendations grid",
+        "top": 0
+      },
+      {
+        "text": "Marketing",
+        "top": 25132
+      },
+      {
+        "text": "Application UI",
+        "top": 25132
+      },
+      {
+        "text": "Ecommerce",
+        "top": 25132
+      },
+      {
+        "text": "Templates & UI Kits",
+        "top": 25132
+      }
+    ]
+  },
+  "mobile": {
+    "viewport": {
+      "width": 390,
+      "height": 26000
+    },
+    "expectedFound": [
+      {
+        "name": "Simple",
+        "found": true
+      },
+      {
+        "name": "With dashed border",
+        "found": true
+      },
+      {
+        "name": "With starting points",
+        "found": true
+      },
+      {
+        "name": "With recommendations",
+        "found": true
+      },
+      {
+        "name": "With templates",
+        "found": true
+      },
+      {
+        "name": "With recommendations grid",
+        "found": true
+      }
+    ],
+    "images": [],
+    "previewImages": [],
+    "horizontalOverflow": false,
+    "scrollWidth": 390,
+    "innerWidth": 390,
+    "scrollHeight": 26000,
+    "headings": [
+      {
+        "text": "Application Shells",
+        "top": 0
+      },
+      {
+        "text": "Headings",
+        "top": 0
+      },
+      {
+        "text": "Data Display",
+        "top": 0
+      },
+      {
+        "text": "Lists",
+        "top": 0
+      },
+      {
+        "text": "Forms",
+        "top": 0
+      },
+      {
+        "text": "Feedback",
+        "top": 0
+      },
+      {
+        "text": "Navigation",
+        "top": 0
+      },
+      {
+        "text": "Overlays",
+        "top": 0
+      },
+      {
+        "text": "Elements",
+        "top": 0
+      },
+      {
+        "text": "Layout",
+        "top": 0
+      },
+      {
+        "text": "Page Examples",
+        "top": 0
+      },
+      {
+        "text": "Build UIs that don’t suck.",
+        "top": 0
+      },
+      {
+        "text": "Empty States",
+        "top": 152
+      },
+      {
+        "text": "Simple",
+        "top": 484
+      },
+      {
+        "text": "Simple",
+        "top": 0
+      },
+      {
+        "text": "With dashed border",
+        "top": 880
+      },
+      {
+        "text": "With dashed border",
+        "top": 0
+      },
+      {
+        "text": "With starting points",
+        "top": 1292
+      },
+      {
+        "text": "With starting points",
+        "top": 0
+      },
+      {
+        "text": "With recommendations",
+        "top": 2230
+      },
+      {
+        "text": "With recommendations",
+        "top": 0
+      },
+      {
+        "text": "With templates",
+        "top": 2966
+      },
+      {
+        "text": "With templates",
+        "top": 0
+      },
+      {
+        "text": "With recommendations grid",
+        "top": 3618
+      },
+      {
+        "text": "With recommendations grid",
+        "top": 0
+      },
+      {
+        "text": "Marketing",
+        "top": 24348
+      },
+      {
+        "text": "Application UI",
+        "top": 24348
+      },
+      {
+        "text": "Ecommerce",
+        "top": 25076
+      },
+      {
+        "text": "Templates & UI Kits",
+        "top": 25076
+      }
+    ]
+  }
+}

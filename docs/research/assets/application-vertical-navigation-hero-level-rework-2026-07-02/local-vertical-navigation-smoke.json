@@ -1,0 +1,161 @@
+{
+  "url": "http://127.0.0.1:5178/?filter=nav%3Aplus-navigation-vertical-navigation",
+  "checkedAt": "2026-07-02T08:09:54.938Z",
+  "expected": [
+    "Simple",
+    "With badges",
+    "With icons and badges",
+    "With icons",
+    "With secondary navigation",
+    "On gray"
+  ],
+  "desktop": {
+    "viewport": {
+      "width": 1440,
+      "height": 26000
+    },
+    "expectedFound": [
+      {
+        "name": "Simple",
+        "found": true
+      },
+      {
+        "name": "With badges",
+        "found": true
+      },
+      {
+        "name": "With icons and badges",
+        "found": true
+      },
+      {
+        "name": "With icons",
+        "found": true
+      },
+      {
+        "name": "With secondary navigation",
+        "found": true
+      },
+      {
+        "name": "On gray",
+        "found": true
+      }
+    ],
+    "images": [
+      "/favicon.svg"
+    ],
+    "previewImages": [],
+    "horizontalOverflow": false,
+    "scrollWidth": 1425,
+    "innerWidth": 1440,
+    "scrollHeight": 26000,
+    "headings": [
+      {
+        "text": "UI 용어 사전",
+        "top": 16
+      },
+      {
+        "text": "Vertical Navigation",
+        "top": 222
+      },
+      {
+        "text": "Simple",
+        "top": 440
+      },
+      {
+        "text": "With badges",
+        "top": 938
+      },
+      {
+        "text": "With icons and badges",
+        "top": 1436
+      },
+      {
+        "text": "With icons",
+        "top": 1934
+      },
+      {
+        "text": "With secondary navigation",
+        "top": 2432
+      },
+      {
+        "text": "On gray",
+        "top": 3127
+      }
+    ]
+  },
+  "mobile": {
+    "viewport": {
+      "width": 390,
+      "height": 26000
+    },
+    "expectedFound": [
+      {
+        "name": "Simple",
+        "found": true
+      },
+      {
+        "name": "With badges",
+        "found": true
+      },
+      {
+        "name": "With icons and badges",
+        "found": true
+      },
+      {
+        "name": "With icons",
+        "found": true
+      },
+      {
+        "name": "With secondary navigation",
+        "found": true
+      },
+      {
+        "name": "On gray",
+        "found": true
+      }
+    ],
+    "images": [
+      "/favicon.svg"
+    ],
+    "previewImages": [],
+    "horizontalOverflow": false,
+    "scrollWidth": 390,
+    "innerWidth": 390,
+    "scrollHeight": 26000,
+    "headings": [
+      {
+        "text": "UI 용어 사전",
+        "top": 16
+      },
+      {
+        "text": "Vertical Navigation",
+        "top": 267
+      },
+      {
+        "text": "Simple",
+        "top": 527
+      },
+      {
+        "text": "With badges",
+        "top": 973
+      },
+      {
+        "text": "With icons and badges",
+        "top": 1419
+      },
+      {
+        "text": "With icons",
+        "top": 1865
+      },
+      {
+        "text": "With secondary navigation",
+        "top": 2311
+      },
+      {
+        "text": "On gray",
+        "top": 2934
+      }
+    ]
+  },
+  "pass": true
+}

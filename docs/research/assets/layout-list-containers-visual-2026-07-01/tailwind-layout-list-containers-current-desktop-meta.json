@@ -1,0 +1,16 @@
+{
+  "url": "https://tailwindcss.com/plus/ui-blocks/application-ui/layout/list-containers",
+  "name": "List containers",
+  "description": "Responsive list container examples for Tailwind CSS, designed and built by the creators of the framework.",
+  "visible_example_count": 7,
+  "visible_example_names": [
+    "Simple with dividers",
+    "Card with dividers",
+    "Card with dividers, full-width on mobile",
+    "Separate cards",
+    "Separate cards, full-width on mobile",
+    "Flat card with dividers",
+    "Simple with dividers, full-width on mobile"
+  ],
+  "raw_component_count": 14
+}

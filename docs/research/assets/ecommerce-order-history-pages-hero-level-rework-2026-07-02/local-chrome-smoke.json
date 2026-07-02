@@ -1,0 +1,22 @@
+{
+  "url": "http://127.0.0.1:5178/?filter=nav%3Aplus-ecommerce-page-examples-order-history-pages",
+  "title": "UI 용어 사전",
+  "checkedAt": "2026-07-01T19:56:47.393Z",
+  "route": "/?filter=nav%3Aplus-ecommerce-page-examples-order-history-pages",
+  "server": "http://127.0.0.1:5178",
+  "examples": [
+    "Simple",
+    "With invoice list and quick actions",
+    "With invoice panels",
+    "With invoice tables",
+    "With invoice list"
+  ],
+  "dedicatedVariants": [
+    "commerce-order-history-simple-page",
+    "commerce-order-history-quick-actions-page",
+    "commerce-order-history-panels-page",
+    "commerce-order-history-tables-page",
+    "commerce-order-history-list-page"
+  ],
+  "consoleIssues": []
+}

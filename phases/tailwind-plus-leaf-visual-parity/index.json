@@ -1,0 +1,453 @@
+{
+  "project": "ui-dictionary",
+  "phase": "tailwind-plus-leaf-visual-parity",
+  "mode": "product",
+  "steps": [
+    {
+      "step": 0,
+      "name": "visual-inventory-and-ledger-bootstrap",
+      "status": "completed",
+      "summary": "Created docs/research/tailwind-plus-visual-parity-ledger.md with 93 UI Blocks leaf rows, separating visual fidelity from route/capture parity. Hero Sections is captured as the baseline candidate; the other 92 leaves remain planned until fresh Chrome captures and screenshot-backed implementation passes.",
+      "started_at": "2026-07-01T12:00:00+09:00",
+      "completed_at": "2026-07-01T12:10:00+09:00"
+    },
+    {
+      "step": 1,
+      "name": "hero-sections-baseline-contract",
+      "status": "completed",
+      "summary": "Documented Hero Sections as the canonical visual baseline in docs/research/tailwind-plus-hero-sections-baseline-contract.md. Chrome opened the local Hero route, observed 12 Preview mentions, 11 Get the code mentions, and desktop horizontal overflow false; saved current desktop evidence under docs/research/assets/hero-baseline-contract-2026-07-01/.",
+      "started_at": "2026-07-01T12:10:00+09:00",
+      "completed_at": "2026-07-01T12:25:00+09:00"
+    },
+    {
+      "step": 2,
+      "name": "marketing-page-sections-priority-1",
+      "status": "completed",
+      "summary": "Completed all four priority Marketing Page Sections visual leaves. Feature Sections expanded from 3 to 15 examples, CTA Sections from 3 to 11, Pricing Sections from 3 to 12, and Bento Grids kept 3 examples but renamed/restructured to match the Tailwind visible set. Each leaf has fresh Tailwind desktop/mobile capture, local desktop/mobile after capture, no-overflow checks, and build/lint/validator/visual-audit verification.",
+      "started_at": "2026-07-01T12:25:00+09:00",
+      "completed_at": "2026-07-01T13:20:00+09:00"
+    },
+    {
+      "step": 3,
+      "name": "marketing-page-sections-priority-2",
+      "status": "completed",
+      "summary": "Completed all eleven priority-2 Marketing Page Sections visual leaves. Header Sections expanded from 3 to 8 examples, Newsletter Sections from 3 to 6, Stats from 3 to 8, Testimonials from 3 to 8, Blog Sections from 3 to 7, Contact Sections from 3 to 7, Team Sections from 3 to 9, Content Sections from 3 to 7, Logo Clouds from 3 to 6, FAQs from 3 to 7, and Footers from 3 to 7. Each leaf has fresh Tailwind desktop/mobile capture, local desktop/mobile after capture, desktop no-overflow checks, mobile 390px capture evidence, and build/lint/validator/visual-audit verification.",
+      "started_at": "2026-07-01T13:30:00+09:00",
+      "completed_at": "2026-07-01T14:45:00+09:00"
+    },
+    {
+      "step": 4,
+      "name": "marketing-elements-feedback-page-examples",
+      "status": "completed",
+      "summary": "Completed all seven Marketing Elements, Feedback, and Page Examples visual leaves. Headers expanded from 3 to 11 examples, Flyout Menus from 3 to 7, Banners from 3 to 13, 404 Pages from 3 to 5, Landing Pages from 3 to 4, Pricing Pages kept 3 but renamed/restructured to match Tailwind, and About Pages kept 3 but renamed/restructured to match Tailwind. Each leaf has fresh Tailwind desktop/mobile capture, local desktop/mobile after capture, desktop no-overflow checks, mobile 390px capture evidence, and build/lint/validator/visual-audit verification.",
+      "started_at": "2026-07-01T14:45:00+09:00",
+      "completed_at": "2026-07-01T15:35:00+09:00"
+    },
+    {
+      "step": 5,
+      "name": "application-ui-shells-headings-data-lists",
+      "status": "completed",
+      "summary": "Completed all thirteen Application UI Shells, Headings, Data Display, and Lists visual leaves. Application Shells now match Tailwind counts for Stacked Layouts 9, Sidebar Layouts 8, and Multi-Column Layouts 6; Headings match Page Headings 9, Card Headings 6, and Section Headings 10; Data Display matches Description Lists 6, Stats 5, and Calendars 8; Lists match Stacked Lists 15, Tables 19, Grid Lists 7, and Feeds 3. Each leaf has fresh Tailwind desktop/mobile capture, local desktop/mobile after capture, and build/lint/validator/visual-audit verification.",
+      "completed_at": "2026-07-01T16:25:00+09:00"
+    },
+    {
+      "step": 6,
+      "name": "application-ui-forms-navigation",
+      "status": "completed",
+      "summary": "Completed all eighteen Application UI Forms and Navigation visual leaves. Forms now match Tailwind counts for Form Layouts 4, Input Groups 21, Select Menus 7, Sign-in and Registration 4, Textareas 5, Radio Groups 12, Checkboxes 4, Toggles 5, Action Panels 8, and Comboboxes 4. Navigation now matches Tailwind counts for Navbars 11, Pagination 3, Tabs 9, Vertical Navigation 6, Sidebar Navigation 5, Breadcrumbs 4, Progress Bars 8, and Command Palettes 8. Each leaf has fresh Tailwind metadata plus desktop/mobile capture, local desktop/mobile after capture, and build/lint/validator/visual-audit/diff-check verification.",
+      "completed_at": "2026-07-01T17:15:00+09:00"
+    },
+    {
+      "step": 7,
+      "name": "application-ui-overlays-feedback-elements-layout-pages",
+      "status": "completed",
+      "summary": "Completed all eighteen Application UI Overlays, Feedback, Elements, Layout, and Page Examples visual leaves. Feedback now matches Alerts 6 and Empty States 6; Overlays match Modal Dialogs 6, Drawers 12, and Notifications 6; Elements match Avatars 11, Badges 16, Dropdowns 5, Buttons 8, and Button Groups 5; Layout matches Containers 5, Cards 10, List containers 7, Media Objects 8, and Dividers 8; Page Examples match Home Screens 2, Detail Screens 2, and Settings Screens 2. Each leaf has fresh Tailwind metadata plus desktop/mobile capture, local desktop/mobile after capture, and build/lint/validator/visual-audit/diff-check verification.",
+      "completed_at": "2026-07-01T18:05:00+09:00"
+    },
+    {
+      "step": 8,
+      "name": "ecommerce-components",
+      "status": "completed",
+      "summary": "Completed all fourteen Ecommerce Components visual leaves. Product Overviews match 5 examples, Product Lists 11, Category Previews 6, Shopping Carts 6, Category Filters 5, Product Quickviews 4, Product Features 9, Store Navigation 5, Promo Sections 8, Checkout Forms 5, Reviews 4, Order Summaries 4, Order History 4, and Incentives 8. Each leaf has fresh Tailwind metadata plus desktop/mobile capture, local desktop/mobile after capture, and build/lint/validator/visual-audit/diff-check verification.",
+      "completed_at": "2026-07-01T18:45:00+09:00"
+    },
+    {
+      "step": 9,
+      "name": "ecommerce-page-examples",
+      "status": "completed",
+      "summary": "Completed all seven Ecommerce Page Examples visual leaves. Storefront Pages match 4 examples, Product Pages 5, Category Pages 5, Shopping Cart Pages 3, Checkout Pages 5, Order Detail Pages 3, and Order History Pages 5. Each leaf has fresh Tailwind metadata plus desktop/mobile capture, local desktop/mobile after capture, and build/lint/validator/visual-audit/diff-check verification. This completes visual-parity verification for all 93 UI Blocks leaf rows in docs/research/tailwind-plus-visual-parity-ledger.md.",
+      "completed_at": "2026-07-01T19:15:00+09:00"
+    },
+    {
+      "step": 10,
+      "name": "documentation-templates-ui-kit-public-surfaces",
+      "status": "completed",
+      "summary": "Completed the Step 10 public-surface pass for 25 rows: Documentation 4, UI Blocks landing 1, Templates 15, and UI Kit 5. Added the Public Surface Ledger section to docs/research/tailwind-plus-visual-parity-ledger.md, filled the missing UI Blocks landing desktop/mobile Tailwind and local captures under docs/research/assets/ui-blocks-landing-public-2026-07-01/, updated the capture ledger row to verified, and confirmed all 25 public rows have four screenshot paths and verified status. Chrome public-route smoke checked 23 unique local public routes with zero failures.",
+      "completed_at": "2026-07-01T20:10:00+09:00"
+    },
+    {
+      "step": 11,
+      "name": "cross-surface-visual-qa",
+      "status": "completed",
+      "summary": "Completed final cross-surface QA across all claimed visual-parity rows. The visual ledger now has 118 verified rows total: 93 UI Blocks leaves and 25 public Documentation/Templates/UI Kit/UI Blocks landing surfaces. Completeness check found zero missing screenshot paths across verified rows. Chrome route smoke opened 116 unique local routes with zero h1/desktop-overflow failures. npm run build, npm run lint, python scripts/validate-ui-vocabulary.py, npm run audit:visuals, and git diff --check all passed; lint still reports only the pre-existing shadcn fast-refresh warnings and diff-check only CRLF warnings.",
+      "completed_at": "2026-07-01T20:20:00+09:00"
+    },
+    {
+      "step": 12,
+      "name": "marketing-page-sections-hero-level-samples",
+      "status": "completed",
+      "summary": "Reworked CTA Sections and Bento Grids from match-count style parity to hero-level reference-backed parity. CTA Sections now uses variant-specific copy, controlled headline breaks, Tailwind-like dark/brand/gradient/justified/image layouts, and four fresh v2 CTA images. Bento Grids now uses dedicated light three-column, dark two-row, and light two-row/three-column Bento layouts plus three fresh v2 product proof images. Evidence and provenance live under docs/research/assets/cta-sections-hero-level-rework-2026-07-02/ and docs/research/assets/bento-grids-hero-level-rework-2026-07-02/. Build, audit:visuals, lint, validator, Chrome desktop smoke, mobile overflow smoke, and desktop/mobile captures passed; lint still has only pre-existing shadcn fast-refresh warnings.",
+      "completed_at": "2026-07-02T05:55:00+09:00"
+    },
+    {
+      "step": 13,
+      "name": "marketing-header-sections-hero-level-rework",
+      "status": "completed",
+      "summary": "Reworked Header Sections from generic nav-card placeholders to hero-level reference-backed parity. The local route now matches the 8 Tailwind examples with dark hiring stats, white centered/eyebrow support headers, dark card support header, simple white headers, and left/centered background-image headers. Added four fresh non-reused v2 Header image assets and recorded provenance under docs/research/assets/header-sections-hero-level-rework-2026-07-02/. Build, audit:visuals, lint, validator, Chrome extension smoke, desktop/mobile overflow smoke, and desktop/mobile captures passed; lint still has only pre-existing shadcn fast-refresh warnings.",
+      "completed_at": "2026-07-02T06:25:00+09:00"
+    },
+    {
+      "step": 14,
+      "name": "marketing-newsletter-sections-hero-level-rework",
+      "status": "completed",
+      "summary": "Reworked Newsletter Sections from a shallow generic form renderer to hero-level reference-backed parity. The local route now matches the 6 Tailwind examples with dark detail panel, white side-by-side, indigo brand side-by-side, white stacked, centered dark card, and side-by-side dark card treatments. No imagegen asset was generated because the Tailwind reference is form/surface-only rather than image-backed; smoke confirms empty newsletter image sources. Build, audit:visuals, lint, validator, Chrome extension smoke, desktop/mobile overflow smoke, and desktop/mobile captures passed; lint still has only pre-existing shadcn fast-refresh warnings.",
+      "completed_at": "2026-07-02T06:55:00+09:00"
+    },
+    {
+      "step": 15,
+      "name": "marketing-stats-hero-level-rework",
+      "status": "completed",
+      "summary": "Reworked Stats from a repeated generic metric-card renderer to hero-level reference-backed parity. The local route now matches the 8 Tailwind examples with simple stat row, simple grid, dark background-image panel, split image panel, timeline, stepped cards, dark two-column description, and white description treatments. Added two fresh non-reused v2 Stats image assets for the image-backed examples and recorded provenance under docs/research/assets/stats-hero-level-rework-2026-07-02/. Build, audit:visuals, lint, validator, Chrome extension smoke, desktop/mobile overflow smoke, and desktop/mobile captures passed; lint still has only pre-existing shadcn fast-refresh warnings.",
+      "completed_at": "2026-07-02T07:15:00+09:00"
+    },
+    {
+      "step": 16,
+      "name": "marketing-testimonials-hero-level-rework",
+      "status": "completed",
+      "summary": "Reworked Testimonials from a generic quote-card grid to hero-level reference-backed parity. The local route now matches the 8 Tailwind examples with simple centered, large avatar, overlapping image, background-image, side-by-side, star-rating, dark grid, and subtle grid treatments. Added seven fresh Testimonials-specific v2 image assets and recorded provenance under docs/research/assets/testimonials-hero-level-rework-2026-07-02/. Build, audit:visuals, lint, validator, Chrome extension smoke, desktop/mobile overflow smoke, and desktop/mobile captures passed; lint still has only pre-existing shadcn fast-refresh warnings.",
+      "completed_at": "2026-07-02T07:35:00+09:00"
+    },
+    {
+      "step": 17,
+      "name": "marketing-blog-sections-hero-level-rework",
+      "status": "completed",
+      "summary": "Reworked Blog Sections from a shallow shared card/list renderer to hero-level reference-backed parity. The local route now matches the 7 Tailwind examples with dedicated text three-column, dark image grid, background image card grid, single-column, single-column image rows, dark featured post, and photo/list treatments. Added ten fresh Blog-specific v2 image assets and recorded provenance under docs/research/assets/blog-sections-hero-level-rework-2026-07-02/. Build, audit:visuals, lint, validator, Chrome extension smoke, and desktop/mobile captures passed; lint still has only pre-existing shadcn fast-refresh warnings.",
+      "completed_at": "2026-07-02T07:55:00+09:00"
+    },
+    {
+      "step": 18,
+      "name": "marketing-contact-sections-hero-level-rework",
+      "status": "completed",
+      "summary": "Reworked Contact Sections from a shallow shared form/card renderer to hero-level reference-backed parity. The local route now matches the 7 Tailwind examples with centered form, side-by-side contact/location grid, dark split pattern, four-column offices, centered support list, dark testimonial form, and split image treatments. Added one fresh Contact-specific v2 image asset and recorded provenance under docs/research/assets/contact-sections-hero-level-rework-2026-07-02/. Build, audit:visuals, lint, validator, Chrome extension smoke, and desktop/mobile captures passed; lint still has only pre-existing shadcn fast-refresh warnings.",
+      "completed_at": "2026-07-02T08:20:00+09:00"
+    },
+    {
+      "step": 19,
+      "name": "marketing-team-sections-hero-level-rework",
+      "status": "completed",
+      "summary": "Reworked Team Sections from a repeated gradient placeholder renderer to hero-level reference-backed parity. The local route now matches the 9 Tailwind examples with small avatar rows, dark large-image grid, round avatar grid, dark card grid, image/paragraph grid, vertical image list, full-width vertical grid, large round leadership grid, and dark medium-image grid. Added twelve fresh Team-specific v2 portrait assets and recorded provenance under docs/research/assets/team-sections-hero-level-rework-2026-07-02/. Build, audit:visuals, lint, validator, Chrome extension smoke, and desktop/mobile captures passed; lint still has only pre-existing shadcn fast-refresh warnings.",
+      "completed_at": "2026-07-02T08:55:00+09:00"
+    },
+    {
+      "step": 20,
+      "name": "marketing-content-sections-hero-level-rework",
+      "status": "completed",
+      "summary": "Reworked Content Sections from a skeleton/placeholder renderer to hero-level reference-backed parity. The local route now matches the 7 Tailwind examples with sticky product screenshot, dark testimonial content, image-title mission grid, dark two-column screenshot, testimonial/stat composition, split image, and centered prose treatments. Added six fresh Content-specific v2 assets and recorded provenance under docs/research/assets/content-sections-hero-level-rework-2026-07-02/. Build, audit:visuals, lint, validator, Chrome extension smoke, and desktop/mobile captures passed; lint still has only pre-existing shadcn fast-refresh warnings.",
+      "completed_at": "2026-07-02T09:25:00+09:00"
+    },
+    {
+      "step": 21,
+      "name": "marketing-logo-clouds-hero-level-rework",
+      "status": "completed",
+      "summary": "Reworked Logo Clouds from generic bordered chips to hero-level reference-backed parity. The local route now matches the 6 Tailwind examples with centered heading, CTA pill, dark left-aligned, split-right, simple row, and dark grid treatments. No imagegen asset was generated because the reference is wordmark/icon-based; Chrome smoke confirmed zero image assets, logo wordmarks present, and desktop no-overflow. Build, audit:visuals, lint, validator, Chrome extension smoke, and desktop/mobile captures passed; lint still has only pre-existing shadcn fast-refresh warnings.",
+      "completed_at": "2026-07-02T09:45:00+09:00"
+    },
+    {
+      "step": 22,
+      "name": "marketing-faqs-hero-level-rework",
+      "status": "completed",
+      "summary": "Reworked FAQs from a skeleton/card placeholder renderer to hero-level reference-backed parity. The local route now matches the 7 Tailwind examples with offset support, dark centered accordion, side-by-side, three-column, dark centered-intro three-column, two-column, and centered-intro two-column treatments. No imagegen asset was generated because the reference is text/accordion/grid based; Chrome smoke confirmed zero image assets, 2 dark panels, and desktop no-overflow. Build, audit:visuals, lint, validator, Chrome extension smoke, and desktop/mobile captures passed; lint still has only pre-existing shadcn fast-refresh warnings.",
+      "completed_at": "2026-07-02T10:10:00+09:00"
+    },
+    {
+      "step": 23,
+      "name": "marketing-footers-hero-level-rework",
+      "status": "completed",
+      "summary": "Reworked Footers from a skeleton/link placeholder renderer to hero-level reference-backed parity. The local route now matches the 7 Tailwind examples with company mission, CTA, simple, newsletter, newsletter-below, centered, and social-link footer treatments. No imagegen asset was generated because the reference is link/CTA/newsletter/social based; Chrome smoke confirmed zero image assets, newsletter/CTA buttons, social icons, and desktop no-overflow. Build, audit:visuals, lint, validator, Chrome extension smoke, and desktop/mobile captures passed; lint still has only pre-existing shadcn fast-refresh warnings.",
+      "completed_at": "2026-07-02T10:35:00+09:00"
+    },
+    {
+      "step": 24,
+      "name": "marketing-headers-elements-hero-level-rework",
+      "status": "completed",
+      "summary": "Reworked Marketing Elements / Headers from a repeated generic headline preview to hero-level reference-backed parity. The local route now matches the 11 Tailwind Header examples with header-only canvases for stacked flyout, constrained, brand background, full-width flyout, full-width, CTA, multiple flyout, mobile menu, left/right aligned nav, and centered-logo variants. No imagegen asset was generated because the reference is navigation UI only; evidence and smoke live under docs/research/assets/headers-elements-hero-level-rework-2026-07-02/. Build, audit:visuals, lint, validator, desktop/mobile captures, and CDP smoke passed; lint still has only pre-existing shadcn fast-refresh warnings.",
+      "completed_at": "2026-07-02T11:10:00+09:00"
+    },
+    {
+      "step": 25,
+      "name": "marketing-flyout-menus-hero-level-rework",
+      "status": "completed",
+      "summary": "Reworked Marketing Elements / Flyout Menus from a shallow shared menu renderer to hero-level reference-backed parity. The local route now matches the 7 Tailwind examples with stacked footer actions, full-width two-column resource cards, stacked footer list, full-width, simple descriptions, two-column, and simple treatments. Added two fresh non-reused Flyout-specific imagegen assets for the image-backed resource cards and recorded provenance under docs/research/assets/flyout-menus-hero-level-rework-2026-07-02/. Build, audit:visuals, lint, validator, desktop/mobile captures, and CDP smoke passed; lint still has only pre-existing shadcn fast-refresh warnings.",
+      "completed_at": "2026-07-02T11:45:00+09:00"
+    },
+    {
+      "step": 26,
+      "name": "marketing-banners-hero-level-rework",
+      "status": "completed",
+      "summary": "Reworked Marketing Elements / Banners from a shallow shared banner renderer to hero-level reference-backed parity. The local route now matches the 13 Tailwind examples with button, dark, brand, background glow, link, left-aligned, bottom-aligned, floating bottom, centered floating, and four privacy notice treatments. No imagegen asset was generated because the reference contains zero preview images; evidence and smoke live under docs/research/assets/banners-hero-level-rework-2026-07-02/. Build, audit:visuals, lint, validator, desktop/mobile captures, and CDP smoke passed; lint still has only pre-existing shadcn fast-refresh warnings.",
+      "completed_at": "2026-07-02T12:10:00+09:00"
+    },
+    {
+      "step": 27,
+      "name": "marketing-404-pages-hero-level-rework",
+      "status": "completed",
+      "summary": "Reworked Marketing Feedback / 404 Pages from compact generic placeholders to hero-level reference-backed parity. The local route now matches the 5 Tailwind examples with page-scale simple, split-image, popular-link, background-image, and navbar/footer treatments. Added two fresh non-reused 404-specific imagegen assets, one for each image-backed preview, and recorded provenance under docs/research/assets/404-pages-hero-level-rework-2026-07-02/. CDP smoke confirmed all 5 names, two 404 image sources, and no desktop or 390px mobile overflow.",
+      "completed_at": "2026-07-02T14:15:00+09:00"
+    },
+    {
+      "step": 28,
+      "name": "marketing-landing-pages-hero-level-rework",
+      "status": "completed",
+      "summary": "Reworked Marketing Page Examples / Landing Pages from a compact shared renderer to hero-level reference-backed parity. The local route now matches the 4 Tailwind examples with page-scale screenshot/stats, large screenshot/testimonial, background-image hero/pricing, and mobile screenshot/testimonial treatments. Added six fresh non-reused Landing-specific imagegen assets and recorded provenance under docs/research/assets/landing-pages-hero-level-rework-2026-07-02/. CDP smoke confirmed all 4 names, 6 unique landing image sources, and no desktop or 390px mobile overflow.",
+      "completed_at": "2026-07-02T14:45:00+09:00"
+    },
+    {
+      "step": 29,
+      "name": "marketing-pricing-pages-hero-level-rework",
+      "status": "completed",
+      "summary": "Reworked Marketing Page Examples / Pricing Pages from an unreachable compact placeholder renderer to hero-level reference-backed parity. Fixed the generic pricing renderer so page variants reach the page-scale renderer, then rebuilt four-tier, comparison-table, and three-tier/testimonial examples with nav, pricing cards, comparison table, testimonials, FAQ, and footer sections. No imagegen asset was needed because the reference is UI/table/text-only; CDP smoke confirmed all 3 names, no preview images, and no desktop or 390px mobile overflow.",
+      "completed_at": "2026-07-02T15:05:00+09:00"
+    },
+    {
+      "step": 30,
+      "name": "marketing-about-pages-hero-level-rework",
+      "status": "completed",
+      "summary": "Reworked Marketing Page Examples / About Pages from a compact placeholder renderer to hero-level reference-backed parity. The local route now matches the 3 Tailwind examples with page-scale image tiles, timeline/stats, and dark two-column description treatments. Added six fresh About-specific imagegen assets, recorded provenance under docs/research/assets/about-pages-hero-level-rework-2026-07-02/, and confirmed all 3 names, 6 unique About image sources, and no desktop or 390px mobile overflow in CDP smoke.",
+      "completed_at": "2026-07-02T15:35:00+09:00"
+    },
+    {
+      "step": 31,
+      "name": "application-stacked-layouts-hero-level-rework",
+      "status": "completed",
+      "summary": "Started the Application UI hero-level pass with Application Shells / Stacked Layouts. Re-captured Tailwind desktop and 390px mobile reference, tightened the existing 9-example renderer with wider/taller shell frames, neutral work surfaces, compact/branded/bottom-border/overlap/two-row treatments, and documented that no imagegen asset is needed because the reference is shell UI only. CDP smoke confirmed 9/9 names, no preview images after favicon exclusion, and no desktop or 390px mobile overflow.",
+      "completed_at": "2026-07-02T15:45:00+09:00"
+    },
+    {
+      "step": 32,
+      "name": "application-sidebar-layouts-hero-level-rework",
+      "status": "completed",
+      "summary": "Continued the Application UI hero-level pass with Application Shells / Sidebar Layouts. Re-captured Tailwind desktop and 390px mobile reference, tightened the existing 8-example renderer with wider/taller shell frames, dark/light/off-white/brand sidebar proportions, header variants, constrained content, and neutral work surfaces. No imagegen asset was needed because the reference is shell UI only. CDP smoke confirmed 8/8 names, no preview images after favicon exclusion, and no desktop or 390px mobile overflow.",
+      "completed_at": "2026-07-02T15:55:00+09:00"
+    },
+    {
+      "step": 33,
+      "name": "application-multi-column-layouts-hero-level-rework",
+      "status": "completed",
+      "summary": "Completed the Application Shells hero-level trio with Multi-Column Layouts. Re-captured Tailwind desktop and 390px mobile reference, tightened the existing 6-example renderer with wider/taller shell frames, light/dark variants, constrained/sticky/narrow-sidebar/header treatments, and neutral column work surfaces. No imagegen asset was needed because the reference is shell UI only. CDP smoke confirmed 6/6 names, no preview images after favicon exclusion, and no desktop or 390px mobile overflow.",
+      "completed_at": "2026-07-02T16:05:00+09:00"
+    },
+    {
+      "step": 34,
+      "name": "application-page-headings-hero-level-rework",
+      "status": "completed",
+      "summary": "Continued the Application UI hero-level pass with Headings / Page Headings. Re-captured Tailwind desktop and 390px mobile reference, kept the 9 variant-specific heading renderer, generated a fresh Page Headings v2 banner image for the image-backed preview, recorded provenance, and confirmed 9/9 names, the v2 banner asset, and no desktop or 390px mobile overflow in CDP smoke.",
+      "completed_at": "2026-07-02T16:15:00+09:00"
+    },
+    {
+      "step": 35,
+      "name": "application-card-headings-hero-level-rework",
+      "status": "completed",
+      "summary": "Continued the Application UI hero-level pass with Headings / Card Headings. Re-captured Tailwind desktop and 390px mobile reference, kept the 6 variant-specific card heading renderer, generated fresh v2 avatar assets for the two image-backed previews, recorded provenance, and confirmed 6/6 names, both v2 avatars, and no desktop or 390px mobile overflow in CDP smoke.",
+      "completed_at": "2026-07-02T16:25:00+09:00"
+    },
+    {
+      "step": 36,
+      "name": "application-section-headings-hero-level-rework",
+      "status": "completed",
+      "summary": "Completed the Application UI Headings hero-level trio with Section Headings. Re-captured Tailwind desktop and 390px mobile reference, tightened the existing 10-example renderer by reducing card framing into thin section-row treatments, documented that no imagegen asset is needed because the reference is text/control-only, and confirmed 10/10 names, no preview images, and no desktop or 390px mobile overflow in CDP smoke.",
+      "completed_at": "2026-07-02T16:35:00+09:00"
+    },
+    {
+      "step": 37,
+      "name": "application-description-lists-hero-level-rework",
+      "status": "completed",
+      "summary": "Started the Application UI Data Display hero-level pass with Description Lists. Re-captured Tailwind desktop and 390px mobile reference, confirmed the existing 6-example renderer already matches the Tailwind example set, documented that no imagegen asset is needed because the reference is text/control-only, and confirmed 6/6 names, no preview images, and no desktop or 390px mobile overflow in CDP smoke.",
+      "completed_at": "2026-07-02T16:45:00+09:00"
+    },
+    {
+      "step": 38,
+      "name": "application-stats-hero-level-rework",
+      "status": "completed",
+      "summary": "Continued the Application UI Data Display hero-level pass with Stats. Re-captured Tailwind desktop and 390px mobile reference, confirmed the existing 5-example renderer already matches the Tailwind example set, documented that no imagegen asset is needed because the reference is text/control-only, and confirmed 5/5 names, no preview images, and no desktop or 390px mobile overflow in Chrome/CDP smoke.",
+      "completed_at": "2026-07-02T16:55:00+09:00"
+    },
+    {
+      "step": 39,
+      "name": "application-calendars-hero-level-rework",
+      "status": "completed",
+      "summary": "Completed the Application UI Data Display trio with Calendars. Re-captured Tailwind desktop and 390px mobile reference, kept the existing 8-example renderer, replaced cross-preview avatar reuse with 4 fresh preview-specific v2 contact sheets, recorded imagegen provenance, and confirmed 8/8 names, all 4 v2 sheets loaded, and no desktop or 390px mobile overflow in Chrome/CDP smoke.",
+      "completed_at": "2026-07-02T17:05:00+09:00"
+    },
+    {
+      "step": 40,
+      "name": "application-alerts-hero-level-rework",
+      "status": "completed",
+      "summary": "Started the Application UI Feedback hero-level pass with Alerts. Re-captured Tailwind desktop and 390px mobile reference, replaced the shared generic alert preview with 6 dedicated variants for description, list, actions, right link, accent border, and dismiss states, documented that no imagegen asset is needed because the reference is text/control-only, and confirmed 6/6 names, no preview images, and no desktop or 390px mobile overflow in Chrome/CDP smoke.",
+      "completed_at": "2026-07-02T17:15:00+09:00"
+    },
+    {
+      "step": 41,
+      "name": "application-empty-states-hero-level-rework",
+      "status": "completed",
+      "summary": "Completed the Application UI Feedback pair with Empty States. Re-captured Tailwind desktop and 390px mobile reference, replaced the shared generic empty-state preview with 6 dedicated variants for simple, dashed border, starting points, recommendations, templates, and recommendations grid states, documented that no imagegen asset is needed because the reference is UI-only, and confirmed 6/6 names, no preview images, and no desktop or 390px mobile overflow in Chrome/CDP smoke.",
+      "completed_at": "2026-07-02T17:25:00+09:00"
+    },
+    {
+      "step": 42,
+      "name": "application-vertical-navigation-hero-level-rework",
+      "status": "completed",
+      "summary": "Started the Application UI Navigation hero-level pass with Vertical Navigation. Re-captured Tailwind desktop and 390px mobile reference, replaced the shared generic sidebar preview with 6 dedicated variants for simple, badges, icons and badges, icons, secondary navigation, and gray surface states, documented that no imagegen asset is needed because the reference is UI-only, and confirmed 6/6 names, no preview images, and no desktop or 390px mobile overflow in Chrome/CDP smoke.",
+      "completed_at": "2026-07-02T17:35:00+09:00"
+    },
+    {
+      "step": 43,
+      "name": "application-sidebar-navigation-hero-level-rework",
+      "status": "completed",
+      "summary": "Continued the Application UI Navigation hero-level pass with Sidebar Navigation. Re-captured Tailwind desktop and 390px mobile reference, replaced the shared generic sidebar-page preview with 5 dedicated variants for light, dark, expandable sections, secondary navigation, and brand treatments, generated 5 fresh preview-specific avatar assets with provenance, and confirmed 5/5 names, 5 local preview images, and no desktop or 390px mobile overflow in Chrome/CDP smoke.",
+      "completed_at": "2026-07-02T17:45:00+09:00"
+    },
+    {
+      "step": 44,
+      "name": "application-breadcrumbs-hero-level-rework",
+      "status": "completed",
+      "summary": "Continued the Application UI Navigation hero-level pass with Breadcrumbs. Re-captured Tailwind desktop and 390px mobile reference, replaced the shared generic breadcrumb-page preview with 4 dedicated variants for contained, full-width bar, chevrons, and slashes, documented that no imagegen asset is needed because the reference is UI/control-only, and confirmed 4/4 names, no local preview images, and no desktop or 390px mobile overflow in Chrome/CDP smoke.",
+      "completed_at": "2026-07-02T17:55:00+09:00"
+    },
+    {
+      "step": 45,
+      "name": "application-progress-bars-hero-level-rework",
+      "status": "completed",
+      "summary": "Continued the Application UI Navigation hero-level pass with Progress Bars. Re-captured Tailwind desktop and 390px mobile reference, replaced the shared generic progress-page preview with 8 dedicated variants for simple bars, panels, bullets, bordered panels, circles, bullet text, circle text, and progress bar treatments, documented that no imagegen asset is needed because the reference is UI/control-only, and confirmed 8/8 names, no local preview images, and no desktop or 390px mobile overflow in Chrome/CDP smoke.",
+      "completed_at": "2026-07-02T18:05:00+09:00"
+    },
+    {
+      "step": 46,
+      "name": "application-command-palettes-hero-level-rework",
+      "status": "completed",
+      "summary": "Completed the current Application UI Navigation hero-level pass with Command Palettes. Re-captured Tailwind desktop and 390px mobile reference, replaced the shared generic command-menu-page preview with 8 dedicated variants for simple, padded, preview, images, icons, translucent, grouped, and footer treatments, generated fresh command-palette-specific mountain background and avatar sheets with provenance, and confirmed 8/8 names, local command CSS assets, and no desktop or 390px mobile overflow in Chrome/CDP smoke.",
+      "completed_at": "2026-07-02T18:15:00+09:00"
+    },
+    {
+      "step": 47,
+      "name": "application-modal-dialogs-hero-level-rework",
+      "status": "completed",
+      "summary": "Started the Application UI Overlays hero-level pass with Modal Dialogs. Re-captured Tailwind desktop and 390px mobile reference, replaced the shared generic modal-page preview with 6 dedicated modal variants for gray footer, single action, dark wide buttons, simple alert, dismiss, and left-aligned action treatments, documented that no imagegen asset is needed because the reference is UI/control-only, and confirmed 6/6 names, no local preview images, and no desktop or 390px mobile overflow in smoke.",
+      "completed_at": "2026-07-02T18:30:00+09:00"
+    },
+    {
+      "step": 48,
+      "name": "application-drawers-hero-level-rework",
+      "status": "completed",
+      "summary": "Continued the Application UI Overlays hero-level pass with Drawers. Re-captured Tailwind desktop and 390px mobile reference, replaced the shared generic drawer-page preview with 12 dedicated drawer variants for outside close, empty, wide, overlay, branded header, sticky footer, project form, profile, contact list, and file details treatments, generated 4 fresh Drawers-specific portrait/avatar/file thumbnail assets with provenance, and confirmed 12/12 names, drawer assets loaded, and no desktop or 390px mobile overflow in smoke.",
+      "completed_at": "2026-07-02T18:45:00+09:00"
+    },
+    {
+      "step": 49,
+      "name": "application-notifications-hero-level-rework",
+      "status": "completed",
+      "summary": "Continued the Application UI Overlays hero-level pass with Notifications. Re-captured Tailwind desktop and 390px mobile reference, replaced the shared generic toast-page preview with 6 dedicated notification variants for simple, condensed, action links, avatar reply, split buttons, and buttons-below treatments, generated 1 fresh Notifications-specific avatar asset with provenance, and confirmed 6/6 names, avatar assets loaded, and no desktop or 390px mobile overflow in smoke.",
+      "completed_at": "2026-07-02T19:00:00+09:00"
+    },
+    {
+      "step": 50,
+      "name": "application-avatars-hero-level-rework",
+      "status": "completed",
+      "summary": "Started the Application UI Elements hero-level pass with Avatars. Re-captured Tailwind desktop and 390px mobile reference, replaced the shared generic element-avatar-page preview with 11 dedicated avatar variants for circular, rounded, top/bottom notification dots, placeholder icon, placeholder initials, stacked groups, and text row treatments, generated 1 fresh Avatars-specific contact sheet with provenance, and confirmed 11/11 names, avatar sheet crops rendered, and no desktop or 390px mobile overflow in smoke.",
+      "completed_at": "2026-07-02T19:15:00+09:00"
+    },
+    {
+      "step": 51,
+      "name": "application-badges-hero-level-rework",
+      "status": "completed",
+      "summary": "Continued the Application UI Elements hero-level pass with Badges. Re-captured Tailwind desktop and 390px mobile reference, replaced the shared generic element-badge-page preview with 16 dedicated variants for border, dot, pill, remove, flat, and small badge treatments, documented that no imagegen asset is needed because the reference is UI/control-only, and confirmed 16/16 names, no preview images, and no desktop or 390px mobile page overflow in smoke.",
+      "completed_at": "2026-07-02T19:30:00+09:00"
+    },
+    {
+      "step": 52,
+      "name": "application-dropdowns-hero-level-rework",
+      "status": "completed",
+      "summary": "Continued the Application UI Elements hero-level pass with Dropdowns. Re-captured Tailwind desktop and 390px mobile reference, replaced the shared generic element-dropdown-page preview with 5 dedicated variants for simple, dark dividers, icons, minimal trigger, and simple header treatments, documented that no imagegen asset is needed because the reference is UI/control-only, and confirmed 5/5 names, no preview images, one dark panel, visible delete action, and no desktop or 390px mobile page overflow in smoke.",
+      "completed_at": "2026-07-02T19:45:00+09:00"
+    },
+    {
+      "step": 53,
+      "name": "application-buttons-hero-level-rework",
+      "status": "completed",
+      "summary": "Continued the Application UI Elements hero-level pass with Buttons. Re-captured Tailwind desktop and 390px mobile reference, replaced the shared generic element-button-page preview with 8 dedicated variants for primary, secondary dark, soft, leading icon, trailing icon, rounded primary, rounded secondary, and circular button treatments, documented that no imagegen asset is needed because the reference is UI/control-only, and confirmed 8/8 names, no preview images, two dark panels, circular plus buttons, and no desktop or 390px mobile page overflow in smoke.",
+      "completed_at": "2026-07-02T20:00:00+09:00"
+    },
+    {
+      "step": 54,
+      "name": "application-button-groups-hero-level-rework",
+      "status": "completed",
+      "summary": "Completed the Application UI Elements hero-level pass with Button Groups. Re-captured Tailwind desktop and 390px mobile reference, replaced the shared generic element-button-group-page preview with 5 dedicated variants for basic segments, dark icon-only, stat, dark dropdown, and checkbox/dropdown treatments, documented that no imagegen asset is needed because the reference is UI/control-only, and confirmed 5/5 names, no preview images, two dark panels, stat/dropdown/checkbox markers, and no desktop or 390px mobile page overflow in smoke.",
+      "completed_at": "2026-07-02T20:15:00+09:00"
+    },
+    {
+      "step": 55,
+      "name": "application-containers-hero-level-rework",
+      "status": "completed",
+      "summary": "Started the Application UI Layout hero-level pass with Containers. Re-captured Tailwind desktop and 390px mobile reference, replaced the shared generic layout-container-page content-card preview with 5 dedicated container diagram variants using pink gutters, dashed/hatched content areas, one dark breakpoint treatment, and a narrow constrained-width treatment. No imagegen asset was needed because the reference is layout diagram-only; smoke confirmed 5/5 names, no preview images, four pink panels, one dark panel, five hatched diagrams, and no desktop or 390px mobile page overflow.",
+      "completed_at": "2026-07-02T20:30:00+09:00"
+    },
+    {
+      "step": 56,
+      "name": "application-cards-hero-level-rework",
+      "status": "completed",
+      "summary": "Continued the Application UI Layout hero-level pass with Cards. Re-captured Tailwind desktop and 390px mobile reference, replaced the shared generic layout-panel-page two-panel preview with 10 dedicated card/well surface variants for basic, edge-to-edge, header, footer, header/footer, gray footer, gray body, dark well, gray well, and edge-to-edge well treatments. No imagegen asset was needed because the reference is UI/card surface-only; smoke confirmed 10/10 names, no preview images, dark/gray/hatched surface markers, and no desktop or 390px mobile page overflow.",
+      "completed_at": "2026-07-02T20:45:00+09:00"
+    },
+    {
+      "step": 57,
+      "name": "application-list-containers-hero-level-rework",
+      "status": "completed",
+      "summary": "Continued the Application UI Layout hero-level pass with List containers. Re-captured Tailwind desktop and 390px mobile reference, replaced the shared text-heavy list/activity preview with 7 dedicated skeleton list container variants for simple dividers, dark card dividers, mobile-full card dividers, separate cards, mobile-full separate cards, flat card dividers, and dark simple dividers. No imagegen asset was needed because the reference is layout skeleton-only; smoke confirmed 7/7 names, no preview images, skeleton rows, dark/gray/card/separate markers, and no desktop or 390px mobile page overflow. Documented that future image-backed previews require fresh purpose-fit assets rather than reused generic images.",
+      "completed_at": "2026-07-02T21:00:00+09:00"
+    },
+    {
+      "step": 58,
+      "name": "application-media-objects-hero-level-rework",
+      "status": "completed",
+      "summary": "Continued the Application UI Layout hero-level pass with Media Objects. Re-captured Tailwind desktop and 390px mobile reference, replaced the shared element-avatar preview with 8 dedicated media object variants for basic, center-aligned dark, bottom-aligned, stretched, right-media dark, basic responsive, wide responsive, and nested dark layouts. No imagegen asset was needed because the reference uses CSS/layout placeholders only; smoke confirmed 8/8 names, no preview images, three dark panels, media placeholder markers, and no desktop or 390px mobile page overflow.",
+      "completed_at": "2026-07-02T21:20:00+09:00"
+    },
+    {
+      "step": 59,
+      "name": "application-dividers-hero-level-rework",
+      "status": "completed",
+      "summary": "Completed the Application UI Layout hero-level pass with Dividers. Re-captured Tailwind desktop and 390px mobile reference, replaced the shared layout-divider split-panel preview with 8 dedicated divider variants for label, icon, left label, title, left title, button, dark title-and-button, and toolbar treatments. No imagegen asset was needed because the reference is UI/control-only; smoke confirmed 8/8 names, no preview images, two dark panels, button/title/toolbar markers, and no desktop or 390px mobile page overflow.",
+      "completed_at": "2026-07-02T21:40:00+09:00"
+    },
+    {
+      "step": 60,
+      "name": "application-home-screens-hero-level-rework",
+      "status": "completed",
+      "summary": "Started the Application UI Page Examples hero-level pass with Home Screens. Re-captured Tailwind desktop and 390px mobile reference, replaced the shared app-example-dashboard shell with 2 dedicated page-scale home screens: a dark deployment dashboard with sidebar/list/activity-feed structure and a light stacked cashflow dashboard with KPI strip, recent activity table, and client cards. No imagegen asset was needed because the reference is UI/table/card-only; smoke confirmed 2/2 names, no preview images, dashboard markers, and no desktop or 390px mobile page overflow.",
+      "completed_at": "2026-07-02T22:00:00+09:00"
+    },
+    {
+      "step": 61,
+      "name": "application-detail-screens-hero-level-rework",
+      "status": "completed",
+      "summary": "Continued the Application UI Page Examples hero-level pass with Detail Screens. Re-captured Tailwind desktop and 390px mobile reference, replaced the shared app-example-detail shell with 2 dedicated page-scale detail screens: a dark deployment detail screen with tabs, KPI metrics, and latest activity, plus a light invoice detail screen with invoice metadata, project rows, amount card, and activity/comment panel. No imagegen asset was needed because the reference is UI/table/card-only; smoke confirmed 2/2 names, no preview images, detail markers, and no desktop or 390px mobile page overflow.",
+      "completed_at": "2026-07-02T22:20:00+09:00"
+    },
+    {
+      "step": 62,
+      "name": "application-settings-screens-hero-level-rework",
+      "status": "completed",
+      "summary": "Completed the Application UI Page Examples hero-level pass with Settings Screens. Re-captured Tailwind desktop and 390px mobile reference, replaced the shared app-example-settings shell with 2 dedicated page-scale settings screens: a dark account settings form with tabs, avatar control, form fields, and save action, plus a light stacked settings page with profile, bank account, integration, language/date rows, update actions, and toggle treatment. No imagegen asset was needed because the reference is UI/form/list-only; smoke confirmed 2/2 names, no preview images, settings markers, and no desktop or 390px mobile page overflow.",
+      "completed_at": "2026-07-02T22:40:00+09:00"
+    }
+  ]
+}

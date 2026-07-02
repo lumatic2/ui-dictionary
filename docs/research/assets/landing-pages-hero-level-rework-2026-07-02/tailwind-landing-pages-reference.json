@@ -1,0 +1,272 @@
+{
+  "desktop": {
+    "title": "Tailwind CSS Landing Pages - Official Tailwind UI Components",
+    "innerWidth": 1440,
+    "clientWidth": 1440,
+    "scrollWidth": 1440,
+    "scrollHeight": 24732,
+    "overflow": false,
+    "headings": [
+      {
+        "text": "Page Sections",
+        "top": 0,
+        "height": 0
+      },
+      {
+        "text": "Elements",
+        "top": 0,
+        "height": 0
+      },
+      {
+        "text": "Feedback",
+        "top": 0,
+        "height": 0
+      },
+      {
+        "text": "Page Examples",
+        "top": 0,
+        "height": 0
+      },
+      {
+        "text": "Build UIs that don’t suck.",
+        "top": 0,
+        "height": 0
+      },
+      {
+        "text": "Landing Pages",
+        "top": 152,
+        "height": 60
+      },
+      {
+        "text": "With screenshots and stats",
+        "top": 387,
+        "height": 28
+      },
+      {
+        "text": "With screenshots and stats",
+        "top": 0,
+        "height": 0
+      },
+      {
+        "text": "With large screenshot and testimonial",
+        "top": 5450,
+        "height": 28
+      },
+      {
+        "text": "With large screenshot and testimonial",
+        "top": 0,
+        "height": 0
+      },
+      {
+        "text": "With background image hero and pricing section",
+        "top": 11908,
+        "height": 28
+      },
+      {
+        "text": "With background image hero and pricing section",
+        "top": 0,
+        "height": 0
+      },
+      {
+        "text": "With mobile screenshot and testimonials grid",
+        "top": 17644,
+        "height": 28
+      },
+      {
+        "text": "With mobile screenshot and testimonials grid",
+        "top": 0,
+        "height": 0
+      },
+      {
+        "text": "Marketing",
+        "top": 23864,
+        "height": 28
+      },
+      {
+        "text": "Application UI",
+        "top": 23864,
+        "height": 28
+      },
+      {
+        "text": "Ecommerce",
+        "top": 23864,
+        "height": 28
+      },
+      {
+        "text": "Templates & UI Kits",
+        "top": 23864,
+        "height": 28
+      }
+    ],
+    "sections": [
+      {
+        "name": "With screenshots and stats",
+        "found": true,
+        "top": 56,
+        "height": 24676,
+        "width": 1440,
+        "text": "UI Blocks\nMarketing\nPage Examples\nLanding Pages\n\nUse these Tailwind CSS landing page examples as a starting point for your product website. These landing pages are designed and built by the Tailwind CSS team, and include a variety of different styles and layou"
+      },
+      {
+        "name": "With large screenshot and testimonial",
+        "found": true,
+        "top": 56,
+        "height": 24676,
+        "width": 1440,
+        "text": "UI Blocks\nMarketing\nPage Examples\nLanding Pages\n\nUse these Tailwind CSS landing page examples as a starting point for your product website. These landing pages are designed and built by the Tailwind CSS team, and include a variety of different styles and layou"
+      },
+      {
+        "name": "With background image hero and pricing section",
+        "found": true,
+        "top": 56,
+        "height": 24676,
+        "width": 1440,
+        "text": "UI Blocks\nMarketing\nPage Examples\nLanding Pages\n\nUse these Tailwind CSS landing page examples as a starting point for your product website. These landing pages are designed and built by the Tailwind CSS team, and include a variety of different styles and layou"
+      },
+      {
+        "name": "With mobile screenshot and testimonials grid",
+        "found": true,
+        "top": 56,
+        "height": 24676,
+        "width": 1440,
+        "text": "UI Blocks\nMarketing\nPage Examples\nLanding Pages\n\nUse these Tailwind CSS landing page examples as a starting point for your product website. These landing pages are designed and built by the Tailwind CSS team, and include a variety of different styles and layou"
+      }
+    ],
+    "images": []
+  },
+  "mobile": {
+    "title": "Tailwind CSS Landing Pages - Official Tailwind UI Components",
+    "innerWidth": 390,
+    "clientWidth": 390,
+    "scrollWidth": 390,
+    "scrollHeight": 32966,
+    "overflow": false,
+    "headings": [
+      {
+        "text": "Page Sections",
+        "top": 0,
+        "height": 0
+      },
+      {
+        "text": "Elements",
+        "top": 0,
+        "height": 0
+      },
+      {
+        "text": "Feedback",
+        "top": 0,
+        "height": 0
+      },
+      {
+        "text": "Page Examples",
+        "top": 0,
+        "height": 0
+      },
+      {
+        "text": "Build UIs that don’t suck.",
+        "top": 0,
+        "height": 0
+      },
+      {
+        "text": "Landing Pages",
+        "top": 152,
+        "height": 48
+      },
+      {
+        "text": "With screenshots and stats",
+        "top": 428,
+        "height": 28
+      },
+      {
+        "text": "With screenshots and stats",
+        "top": 0,
+        "height": 0
+      },
+      {
+        "text": "With large screenshot and testimonial",
+        "top": 6906,
+        "height": 28
+      },
+      {
+        "text": "With large screenshot and testimonial",
+        "top": 0,
+        "height": 0
+      },
+      {
+        "text": "With background image hero and pricing section",
+        "top": 15326,
+        "height": 28
+      },
+      {
+        "text": "With background image hero and pricing section",
+        "top": 0,
+        "height": 0
+      },
+      {
+        "text": "With mobile screenshot and testimonials grid",
+        "top": 21660,
+        "height": 28
+      },
+      {
+        "text": "With mobile screenshot and testimonials grid",
+        "top": 0,
+        "height": 0
+      },
+      {
+        "text": "Marketing",
+        "top": 31314,
+        "height": 28
+      },
+      {
+        "text": "Application UI",
+        "top": 31314,
+        "height": 28
+      },
+      {
+        "text": "Ecommerce",
+        "top": 32042,
+        "height": 28
+      },
+      {
+        "text": "Templates & UI Kits",
+        "top": 32042,
+        "height": 28
+      }
+    ],
+    "sections": [
+      {
+        "name": "With screenshots and stats",
+        "found": true,
+        "top": 56,
+        "height": 32910,
+        "width": 390,
+        "text": "UI Blocks\nMarketing\nPage Examples\nLanding Pages\n\nUse these Tailwind CSS landing page examples as a starting point for your product website. These landing pages are designed and built by the Tailwind CSS team, and include a variety of different styles and layou"
+      },
+      {
+        "name": "With large screenshot and testimonial",
+        "found": true,
+        "top": 56,
+        "height": 32910,
+        "width": 390,
+        "text": "UI Blocks\nMarketing\nPage Examples\nLanding Pages\n\nUse these Tailwind CSS landing page examples as a starting point for your product website. These landing pages are designed and built by the Tailwind CSS team, and include a variety of different styles and layou"
+      },
+      {
+        "name": "With background image hero and pricing section",
+        "found": true,
+        "top": 56,
+        "height": 32910,
+        "width": 390,
+        "text": "UI Blocks\nMarketing\nPage Examples\nLanding Pages\n\nUse these Tailwind CSS landing page examples as a starting point for your product website. These landing pages are designed and built by the Tailwind CSS team, and include a variety of different styles and layou"
+      },
+      {
+        "name": "With mobile screenshot and testimonials grid",
+        "found": true,
+        "top": 56,
+        "height": 32910,
+        "width": 390,
+        "text": "UI Blocks\nMarketing\nPage Examples\nLanding Pages\n\nUse these Tailwind CSS landing page examples as a starting point for your product website. These landing pages are designed and built by the Tailwind CSS team, and include a variety of different styles and layou"
+      }
+    ],
+    "images": []
+  }
+}

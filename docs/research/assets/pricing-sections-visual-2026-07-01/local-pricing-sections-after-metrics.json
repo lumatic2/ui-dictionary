@@ -1,0 +1,26 @@
+{
+  "bodyLength": 2566,
+  "clientWidth": 2545,
+  "getCodeMentions": 12,
+  "headings": [
+    "UI 용어 사전",
+    "Pricing Sections",
+    "Two tiers with emphasized right tier",
+    "Two tiers with emphasized left tier",
+    "Three tiers with logos and feature comparison",
+    "Two tiers with extra tier",
+    "Single price with details",
+    "Three tiers",
+    "Three tiers with dividers",
+    "Three tiers with emphasized tier",
+    "Three tiers with toggle",
+    "Four tiers with toggle",
+    "With comparison table",
+    "Three tiers with feature comparison"
+  ],
+  "horizontalOverflow": false,
+  "previewMentions": 12,
+  "scrollWidth": 2545,
+  "title": "UI 용어 사전",
+  "url": "http://127.0.0.1:5181/?filter=nav%3Aplus-marketing-pricing-sections"
+}

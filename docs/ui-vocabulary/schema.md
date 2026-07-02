@@ -32,6 +32,11 @@ The website can generate JSON or TypeScript from YAML, but YAML is the editable 
   prompt_phrases:
     - 이름을 입력하는 text field를 넣어줘
     - 검색어를 입력할 search input을 상단에 배치해줘
+  navigation:
+    canonical_path: [Plus, UI Blocks, Application UI, Forms]
+    also_appears_in:
+      - [Docs, Interaction]
+      - [Index, 입력]
   related:
     - id: textarea
       relation: compare
@@ -51,7 +56,7 @@ The website can generate JSON or TypeScript from YAML, but YAML is the editable 
 
 - `id`: kebab-case stable identifier.
 - `status`: `draft`, `reviewed`, or `published`.
-- `category`: one of `input`, `selection`, `action`, `structure`, `feedback`, `data-display`.
+- `category`: one of `input`, `selection`, `action`, `structure`, `feedback`, `data-display`, `style`, `layout-rendering`, `accessibility`.
 - `kind`: optional helper classification. If omitted, the build pipeline treats it as `component`.
   - `component`: reusable UI element with its own visible boundary or behavior.
   - `block`: larger page or section composition made from multiple components.
@@ -67,6 +72,9 @@ The website can generate JSON or TypeScript from YAML, but YAML is the editable 
 - `when_to_use`: concrete use cases.
 - `anti_use`: common misuse or better alternatives.
 - `prompt_phrases`: Korean phrases a vibe-coding user can paste into an AI prompt.
+- `navigation`: optional browse placement metadata for the Tailwind-style site IA.
+  - `canonical_path`: exactly one primary browse home. Use this for first-class sidebar placement and duplicate prevention.
+  - `also_appears_in`: secondary browse contexts. Use these only as chips, related links, or search/filter hints, not as another primary card home.
 - `asset`: rendering hint for the website.
 - `sources`: at least one source reference.
 - `confidence`: `high`, `medium`, or `low`.
@@ -77,6 +85,45 @@ The website can generate JSON or TypeScript from YAML, but YAML is the editable 
 - `icon-composition`: lucide icons plus simple UI chrome.
 - `diagram`: fixed SVG or CSS diagram for layout concepts.
 - `screenshot`: deferred. Use only when an actual product example is needed.
+
+## Navigation Model
+
+The visible site IA follows the Tailwind split:
+
+- `Docs`: concept learning, implementation vocabulary, design-system language.
+- `Plus`: ready-to-use UI patterns.
+  - `UI Blocks`: surface and block families such as Marketing, Application UI, Ecommerce, Forms, Navigation, Overlays.
+  - `Templates`: complete screen or page examples.
+  - `UI Kit`: reusable component-system pieces.
+- `Index`: full fallback index and legacy category browsing.
+
+`category`, `kind`, and use-case groupings remain useful internal facets, but the user-facing sidebar should prefer `navigation.canonical_path`.
+
+Canonical path rules:
+
+- Every published term should eventually have one `navigation.canonical_path`.
+- UI object terms belong under `Plus > UI Blocks` or `Plus > UI Kit`.
+- Full page or screen terms belong under `Plus > Templates`.
+- CSS, styling, layout, motion, and accessibility concepts belong under `Docs`.
+- `also_appears_in` may contain multiple paths, but those paths must not render duplicate primary cards.
+
+Examples:
+
+```yaml
+navigation:
+  canonical_path: [Plus, UI Blocks, Application UI, Overlays]
+  also_appears_in:
+    - [Plus, UI Kit, Components]
+    - [Docs, Accessibility]
+```
+
+```yaml
+navigation:
+  canonical_path: [Docs, Styling, Surfaces]
+  also_appears_in:
+    - [Docs, Effects]
+    - [Index, 스타일·재질]
+```
 
 ## Source Reference Shape
 

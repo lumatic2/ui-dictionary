@@ -1,0 +1,23 @@
+{
+  "route": "http://127.0.0.1:5174/?filter=nav%3Aplus-ecommerce-page-examples-order-detail-pages",
+  "badImageCount": 0,
+  "orderDetailAssetReferenceCount": 5,
+  "exampleHeadingCount": 3,
+  "expectedPresent": {
+    "With progress bars": true,
+    "With large images and progress bars": true,
+    "Simple with full order details": true
+  },
+  "expectedAssetsPresent": {
+    "order-detail-tumbler-watch.png": true,
+    "order-detail-shirts.png": true,
+    "order-detail-bottle.png": true
+  },
+  "viewport": {
+    "clientWidth": 2560,
+    "innerHeight": 1319,
+    "innerWidth": 2560,
+    "scrollHeight": 5094,
+    "scrollWidth": 2545
+  }
+}

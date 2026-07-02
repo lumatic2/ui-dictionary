@@ -1,0 +1,13 @@
+{
+  "url": "https://tailwindcss.com/plus/ui-blocks/ecommerce/page-examples/storefront-pages",
+  "name": "Storefront Pages",
+  "description": "Ecommerce storefront page examples for Tailwind CSS, designed and built by the creators of the framework.",
+  "visible_example_count": 4,
+  "visible_example_names": [
+    "With dark nav and footer",
+    "With offers and testimonials",
+    "With image tiles and feature sections",
+    "With overlapping image tiles and perks"
+  ],
+  "raw_component_count": 8
+}

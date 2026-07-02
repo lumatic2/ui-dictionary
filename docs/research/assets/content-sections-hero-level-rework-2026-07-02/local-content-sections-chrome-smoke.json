@@ -1,0 +1,31 @@
+{
+  "url": "http://127.0.0.1:5178/?filter=nav%3Aplus-marketing-content-sections",
+  "headings": [
+    "Content Sections",
+    "With sticky product screenshot",
+    "With testimonial",
+    "With image titles",
+    "Two columns with screenshot",
+    "With testimonial and stats",
+    "Split with image",
+    "Centered"
+  ],
+  "contentImages": [
+    "/assets/content-sections/sticky-product-screenshot-v2.png",
+    "/assets/content-sections/image-titles-collage-v2.png",
+    "/assets/content-sections/image-titles-video-call-v2.png",
+    "/assets/content-sections/image-titles-workshop-v2.png",
+    "/assets/content-sections/two-column-screenshot-v2.png",
+    "/assets/content-sections/split-office-v2.png"
+  ],
+  "uniqueContentImages": 6,
+  "overflowX": false,
+  "dims": {
+    "scrollWidth": 2545,
+    "clientWidth": 2545
+  },
+  "mobile390": {
+    "method": "Chrome CLI screenshot",
+    "path": "docs/research/assets/content-sections-hero-level-rework-2026-07-02/local-content-sections-after-mobile-390.png"
+  }
+}

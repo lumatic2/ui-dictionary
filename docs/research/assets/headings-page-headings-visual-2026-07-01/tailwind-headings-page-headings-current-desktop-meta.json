@@ -1,0 +1,27 @@
+{
+  "codeCount": 8,
+  "examples": [
+    "With meta and actions",
+    "With actions",
+    "With actions and breadcrumbs",
+    "With banner image",
+    "With avatar and actions",
+    "Card with avatar and stats",
+    "With meta, actions, and breadcrumbs",
+    "With filters and action",
+    "With logo, meta and actions"
+  ],
+  "h2s": [
+    "With meta and actions",
+    "With actions",
+    "With actions and breadcrumbs",
+    "With banner image",
+    "With avatar and actions",
+    "Card with avatar and stats",
+    "With meta, actions, and breadcrumbs",
+    "With filters and action",
+    "With logo, meta and actions"
+  ],
+  "previewCount": 10,
+  "title": "Tailwind CSS Page Headings - Official Tailwind UI Components"
+}

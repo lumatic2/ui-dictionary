@@ -1,0 +1,150 @@
+[
+  {
+    "target": "https://tailwindcss.com/plus/ui-blocks/application-ui/elements/badges",
+    "title": "Tailwind CSS Badges - Official Tailwind UI Components",
+    "viewport": {
+      "width": 1440,
+      "height": 2200
+    },
+    "scrollWidth": 1440,
+    "clientWidth": 1440,
+    "hasHorizontalOverflow": false,
+    "expectedNames": {
+      "With border": true,
+      "With border and dot": true,
+      "Pill with border": true,
+      "Pill with border and dot": true,
+      "With border and remove button": true,
+      "Flat": true,
+      "Flat pill": true,
+      "Flat with dot": true,
+      "Flat pill with dot": true,
+      "Flat with remove button": true,
+      "Small with border": true,
+      "Small flat": true,
+      "Small pill with border": true,
+      "Small flat pill": true,
+      "Small flat with dot": true,
+      "Small flat pill with dot": true
+    },
+    "previewImageCount": 0,
+    "imageSources": [],
+    "bodyTextSample": "Introducing Oatmeal\nOur new multi-theme marketing site kit\nUI Blocks\nTemplates\nUI Kit\nSign in\nGet full access\nUI Blocks\nApplication UI\nElements\nBadges\n\nUse these Tailwind CSS badge components to highlight important information, statuses, or counts in your application. These badges are designed and built by the Tailwind CSS team, and include a variety of different styles.\n\nWith border\nPreview\nCode\nHTML\nReact\nVue\nWith border and dot\n\nPreview\n\nGet the code →\nPill with border\n\nPreview\n\nGet the code →\nPill with border and dot\n\nPreview\n\nGet the code →\nWith border and remove button\n\nPreview\n\nGet the code →\nFlat\n\nPreview\n\nGet the code →\nFlat pill\n\nPreview\n\nGet the code →\nFlat with dot\n\nPreview\n\nGet the code →\nFlat pill with dot\n\nPreview\n\nGet the code →\nFlat with remove button\n\nPreview\n\nGet the code →\nSmall with border\n\nPreview\n\nGet the code →\nSmall flat\n\nPreview\n\nGet the code →\nSmall pill with border\n\nPreview\n\nGet the code →\nSmall flat pill\n\nPreview\n\nGet the code →\nSmall flat with dot\n\nPreview\n\nGet the code →\nSmall flat pill with dot\n\nPreview\n\nGet the code →\nMarketing\nHero Sections\nFeature Sections\nPricing Sections\nHeader Sections\nNewsletter Sections\nTestimonials\nTeam Sections\nContent Sections\nLogo Clouds\nFAQs\nFooters\nHeaders\nFlyout Menus\nBanners\nBrowse all →\nApplication UI\nTables\nFeeds\nForm Layouts\nSelect Menus\nRadio Groups\nCheckboxes\nComboboxes\nNavbars\nPagination\nSidebar Navigation\nCommand Palettes\nModals\nDropdowns\nButtons\nBrowse all →\nEcommerce\nProduct Overviews\nProduct Lists\nCategory Previews\nShopping Carts\nCategory Filters\nProduct Quickviews\nProduct Features\nStore Navigation\nPromo Sections\nCheckout Forms\nReviews\nOrder Summaries\nOrder History\nIncentives\nBrowse all →\nTemplates & UI Kits\nCatalyst UI Kit\nPersonal Website Template\nLanding Page Template\nAPI Reference Template\nChangelog Template\nInfo Product Template\nAgency Template\nPodcast Template\nApp Marketing Template\nDocumentation Template\nConference Template\nBrowse all →\n\n© 2026 Tailwind Labs Inc. All rights reserved.\n\nPrivacy policy\nChangelog",
+    "allExpectedNamesFound": true,
+    "mode": "desktop",
+    "capture": "tailwind-badges-desktop.png",
+    "kind": "tailwind"
+  },
+  {
+    "target": "https://tailwindcss.com/plus/ui-blocks/application-ui/elements/badges",
+    "title": "Tailwind CSS Badges - Official Tailwind UI Components",
+    "viewport": {
+      "width": 390,
+      "height": 1800
+    },
+    "scrollWidth": 390,
+    "clientWidth": 390,
+    "hasHorizontalOverflow": false,
+    "expectedNames": {
+      "With border": true,
+      "With border and dot": true,
+      "Pill with border": true,
+      "Pill with border and dot": true,
+      "With border and remove button": true,
+      "Flat": true,
+      "Flat pill": true,
+      "Flat with dot": true,
+      "Flat pill with dot": true,
+      "Flat with remove button": true,
+      "Small with border": true,
+      "Small flat": true,
+      "Small pill with border": true,
+      "Small flat pill": true,
+      "Small flat with dot": true,
+      "Small flat pill with dot": true
+    },
+    "previewImageCount": 0,
+    "imageSources": [],
+    "bodyTextSample": "UI Blocks\nApplication UI\nElements\nBadges\n\nUse these Tailwind CSS badge components to highlight important information, statuses, or counts in your application. These badges are designed and built by the Tailwind CSS team, and include a variety of different styles.\n\nWith border\nPreview\nCode\nWith border and dot\nGet the code →\nPill with border\nGet the code →\nPill with border and dot\nGet the code →\nWith border and remove button\nGet the code →\nFlat\nGet the code →\nFlat pill\nGet the code →\nFlat with dot\nGet the code →\nFlat pill with dot\nGet the code →\nFlat with remove button\nGet the code →\nSmall with border\nGet the code →\nSmall flat\nGet the code →\nSmall pill with border\nGet the code →\nSmall flat pill\nGet the code →\nSmall flat with dot\nGet the code →\nSmall flat pill with dot\nGet the code →\nMarketing\nHero Sections\nFeature Sections\nPricing Sections\nHeader Sections\nNewsletter Sections\nTestimonials\nTeam Sections\nContent Sections\nLogo Clouds\nFAQs\nFooters\nHeaders\nFlyout Menus\nBanners\nBrowse all →\nApplication UI\nTables\nFeeds\nForm Layouts\nSelect Menus\nRadio Groups\nCheckboxes\nComboboxes\nNavbars\nPagination\nSidebar Navigation\nCommand Palettes\nModals\nDropdowns\nButtons\nBrowse all →\nEcommerce\nProduct Overviews\nProduct Lists\nCategory Previews\nShopping Carts\nCategory Filters\nProduct Quickviews\nProduct Features\nStore Navigation\nPromo Sections\nCheckout Forms\nReviews\nOrder Summaries\nOrder History\nIncentives\nBrowse all →\nTemplates & UI Kits\nCatalyst UI Kit\nPersonal Website Template\nLanding Page Template\nAPI Reference Template\nChangelog Template\nInfo Product Template\nAgency Template\nPodcast Template\nApp Marketing Template\nDocumentation Template\nConference Template\nBrowse all →\n\n© 2026 Tailwind Labs Inc. All rights reserved.\n\nPrivacy policy\nChangelog",
+    "allExpectedNamesFound": true,
+    "mode": "mobile",
+    "capture": "tailwind-badges-mobile-390.png",
+    "kind": "tailwind"
+  },
+  {
+    "target": "http://127.0.0.1:5178/?filter=nav%3Aplus-application-elements-badges",
+    "title": "UI 용어 사전",
+    "viewport": {
+      "width": 1440,
+      "height": 2200
+    },
+    "scrollWidth": 1425,
+    "clientWidth": 1440,
+    "hasHorizontalOverflow": false,
+    "expectedNames": {
+      "With border": true,
+      "With border and dot": true,
+      "Pill with border": true,
+      "Pill with border and dot": true,
+      "With border and remove button": true,
+      "Flat": true,
+      "Flat pill": true,
+      "Flat with dot": true,
+      "Flat pill with dot": true,
+      "Flat with remove button": true,
+      "Small with border": true,
+      "Small flat": true,
+      "Small pill with border": true,
+      "Small flat pill": true,
+      "Small flat with dot": true,
+      "Small flat pill with dot": true
+    },
+    "previewImageCount": 0,
+    "imageSources": [
+      "/favicon.svg"
+    ],
+    "bodyTextSample": "NAVIGATION\n\nMarketing\nApplication UI\nEcommerce\nDocumentation\n\nUI Blocks\n\n선택한 화면 맥락의 블록 목차\n\nApplication UI\n146\nApplication Shells\n17\nStacked Layouts\n3\nSidebar Layouts\n3\nMulti-Column Layouts\n3\nHeadings\n3\nPage Headings\n3\nCard Headings\n3\nSection Headings\n3\nData Display\n68\nDescription Lists\n2\nStats\n1\nCalendars\n3\nLists\n41\nStacked Lists\n3\nTables\n1\nGrid Lists\n2\nFeeds\n3\nForms\n62\nForm Layouts\n2\nInput Groups\n2\nSelect Menus\n3\nSign-in and Registration\n2\nTextareas\n2\nRadio Groups\n1\nCheckboxes\n2\nToggles\n3\nAction Panels\n2\nComboboxes\n2\nFeedback\n65\nAlerts\n3\nEmpty States\n3\nNavigation\n37\nNavbars\n3\nPagination\n2\nTabs\n2\nVertical Navigation\n3\nSidebar Navigation\n3\nBreadcrumbs\n3\nProgress Bars\n3\nCommand Palettes\n2\nOverlays\n29\nModal Dialogs\n2\nDrawers\n3\nNotifications\n3\nElements\n4\nAvatars\n3\nBadges\n3\nDropdowns\n3\nButtons\n2\nButton Groups\n3\nLayout\n4\nContainers\n2\nCards\n3\nList containers\n1\nMedia Objects\n3\nDividers\n3\nPage Examples\n0\nHome Screens\n1\nDetail Screens\n3\nSettings Screens\n1\nUI 용어 사전\n\nUI Vocabulary Encyclopedia\n\nUI Blocks\nTemplates\nUI Kit\n검색\n\nPLUS / UI BLOCKS / APPLICATION UI / ELEMENTS / BADGES\n\nBadges\n\n상태, 역할, 속성, 개수를 작은 라벨로 빠르게 구분하는 요소 패턴입니다.\n\nWith border\nPreview\nGet the code →\n\nAPPLICATION ELEMENT\n\nSmall reusable primitives for dense app screens\nAdmin\nActive\nBeta\nOwner\nWith border and dot\nPreview\nGet the code →\n\nAPPLICATION ELEMENT\n\nSmall reusable primitives for dense app screens\nAdmin\nActive\nBeta\nOwner\nPill with border\nPreview\nGet the code →\n\nAPPLICATION ELEMENT\n\nSmall reusable primitives for dense app screens\nAdmin\nActive\nBeta\nOwner\nPill with border and dot\nPreview\nGet the code →\n\nAPPLICATION ELEMENT\n\nSmall reusable primitives for dense app screens\nAdmin\nActive\nBeta\nOwner\nWith border and remove button\nPreview\nGet the code →\n\nAPPLICATION ELEMENT\n\nSmall reusable primitives for dense app screens\nAdmin\nActive\nBeta\nOwner\nFlat\nPreview\nGet the code →\n\nAPPLICATION ELEMENT\n\nSmall reusable primitives for dense app screens\nAdmin\nActive\nBeta\nOwner\nFlat pill\nPreview\nGet the code →\n\nAPPLICATION ELEMENT\n\nSmall reusable primitives for dense app screens\nAdmin\nActive\nBeta\nOwner\nFlat with dot\nPreview\nGet the code →\n\nAPPLICATION ELEMENT\n\nSmall reusable primitives for dense app screens\nAdmin\nActive\nBeta\nOwner\nFlat pill with dot\nPreview\nGet the code →\n\nAPPLICATION ELEMENT\n\nSmall reusable primitives for dense app screens\nAdmin\nActive\nBeta\nOwner\nFlat with remove button\nPreview\nGet the code →\n\nAPPLICATION ELEMENT\n\nSmall reusable primitives for dense app screens\nAdmin\nActive\nBeta\nOwner\nSmall with border\nPreview\nGet the code →\n\nAPPLICATION ELEMENT\n\nSmall reusable primitives for dense app screens\nAdmin\nActive\nBeta\nOwner\nSmall flat\nPreview\nGet the code →\n\nAPPLICATION ELEMENT\n\nSmall reusable primitives for dense app screens\nAdmin\nActive\nBeta\nOwner\nSmall pill with border\nPreview\nGet the code →\n\nAPPLICATION ELEMENT\n\nSmall reusable primitives for dense app screens\nAdmin\nActive\nBeta\nOwner\nSmall flat pill\nPreview\nGet the code →\n\nAPPLICATION ELEMENT\n\nSmall reusable primitives for dense app screens\nAdmin\nA",
+    "allExpectedNamesFound": true,
+    "mode": "desktop",
+    "capture": "local-before-badges-desktop.png",
+    "kind": "local-before"
+  },
+  {
+    "target": "http://127.0.0.1:5178/?filter=nav%3Aplus-application-elements-badges",
+    "title": "UI 용어 사전",
+    "viewport": {
+      "width": 390,
+      "height": 1800
+    },
+    "scrollWidth": 375,
+    "clientWidth": 390,
+    "hasHorizontalOverflow": false,
+    "expectedNames": {
+      "With border": true,
+      "With border and dot": true,
+      "Pill with border": true,
+      "Pill with border and dot": true,
+      "With border and remove button": true,
+      "Flat": true,
+      "Flat pill": true,
+      "Flat with dot": true,
+      "Flat pill with dot": true,
+      "Flat with remove button": true,
+      "Small with border": true,
+      "Small flat": true,
+      "Small pill with border": true,
+      "Small flat pill": true,
+      "Small flat with dot": true,
+      "Small flat pill with dot": true
+    },
+    "previewImageCount": 0,
+    "imageSources": [
+      "/favicon.svg"
+    ],
+    "bodyTextSample": "UI 용어 사전\nUI Blocks\n›\nApplication UI\n›\nBadges\n\nPLUS / UI BLOCKS / APPLICATION UI / ELEMENTS / BADGES\n\nBadges\n\n상태, 역할, 속성, 개수를 작은 라벨로 빠르게 구분하는 요소 패턴입니다.\n\nWith border\n\nAPPLICATION ELEMENT\n\nSmall reusable primitives for dense app screens\nAdmin\nActive\nBeta\nOwner\nWith border and dot\n\nAPPLICATION ELEMENT\n\nSmall reusable primitives for dense app screens\nAdmin\nActive\nBeta\nOwner\nPill with border\n\nAPPLICATION ELEMENT\n\nSmall reusable primitives for dense app screens\nAdmin\nActive\nBeta\nOwner\nPill with border and dot\n\nAPPLICATION ELEMENT\n\nSmall reusable primitives for dense app screens\nAdmin\nActive\nBeta\nOwner\nWith border and remove button\n\nAPPLICATION ELEMENT\n\nSmall reusable primitives for dense app screens\nAdmin\nActive\nBeta\nOwner\nFlat\n\nAPPLICATION ELEMENT\n\nSmall reusable primitives for dense app screens\nAdmin\nActive\nBeta\nOwner\nFlat pill\n\nAPPLICATION ELEMENT\n\nSmall reusable primitives for dense app screens\nAdmin\nActive\nBeta\nOwner\nFlat with dot\n\nAPPLICATION ELEMENT\n\nSmall reusable primitives for dense app screens\nAdmin\nActive\nBeta\nOwner\nFlat pill with dot\n\nAPPLICATION ELEMENT\n\nSmall reusable primitives for dense app screens\nAdmin\nActive\nBeta\nOwner\nFlat with remove button\n\nAPPLICATION ELEMENT\n\nSmall reusable primitives for dense app screens\nAdmin\nActive\nBeta\nOwner\nSmall with border\n\nAPPLICATION ELEMENT\n\nSmall reusable primitives for dense app screens\nAdmin\nActive\nBeta\nOwner\nSmall flat\n\nAPPLICATION ELEMENT\n\nSmall reusable primitives for dense app screens\nAdmin\nActive\nBeta\nOwner\nSmall pill with border\n\nAPPLICATION ELEMENT\n\nSmall reusable primitives for dense app screens\nAdmin\nActive\nBeta\nOwner\nSmall flat pill\n\nAPPLICATION ELEMENT\n\nSmall reusable primitives for dense app screens\nAdmin\nActive\nBeta\nOwner\nSmall flat with dot\n\nAPPLICATION ELEMENT\n\nSmall reusable primitives for dense app screens\nAdmin\nActive\nBeta\nOwner\nSmall flat pill with dot\n\nAPPLICATION ELEMENT\n\nSmall reusable primitives for dense app screens\nAdmin\nActive\nBeta\nOwner",
+    "allExpectedNamesFound": true,
+    "mode": "mobile",
+    "capture": "local-before-badges-mobile-390.png",
+    "kind": "local-before"
+  }
+]

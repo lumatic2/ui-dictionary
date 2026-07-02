@@ -1,0 +1,31 @@
+{
+  "clientWidth": 2545,
+  "headings": [
+    "UI 용어 사전",
+    "Stats",
+    "Simple",
+    "Simple grid",
+    "With background image",
+    "Split with image",
+    "Timeline",
+    "Stepped",
+    "With two column description",
+    "With description"
+  ],
+  "horizontalOverflow": false,
+  "scrollWidth": 2545,
+  "statsImages": [
+    {
+      "h": 886,
+      "src": "/assets/stats-sections/background-team-v2.png",
+      "w": 1774
+    },
+    {
+      "h": 1536,
+      "src": "/assets/stats-sections/split-team-v2.png",
+      "w": 1024
+    }
+  ],
+  "title": "UI 용어 사전",
+  "url": "http://127.0.0.1:5178/?filter=nav%3Aplus-marketing-stats"
+}

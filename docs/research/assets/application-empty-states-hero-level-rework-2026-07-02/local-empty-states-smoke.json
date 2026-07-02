@@ -1,0 +1,209 @@
+{
+  "url": "http://127.0.0.1:5178/?filter=nav%3Aplus-feedback-empty-states",
+  "checkedAt": "2026-07-02T08:04:06.461Z",
+  "expected": [
+    "Simple",
+    "With dashed border",
+    "With starting points",
+    "With recommendations",
+    "With templates",
+    "With recommendations grid"
+  ],
+  "desktop": {
+    "viewport": {
+      "width": 1440,
+      "height": 26000
+    },
+    "expectedFound": [
+      {
+        "name": "Simple",
+        "found": true
+      },
+      {
+        "name": "With dashed border",
+        "found": true
+      },
+      {
+        "name": "With starting points",
+        "found": true
+      },
+      {
+        "name": "With recommendations",
+        "found": true
+      },
+      {
+        "name": "With templates",
+        "found": true
+      },
+      {
+        "name": "With recommendations grid",
+        "found": true
+      }
+    ],
+    "images": [
+      "/favicon.svg"
+    ],
+    "previewImages": [],
+    "horizontalOverflow": false,
+    "scrollWidth": 1425,
+    "innerWidth": 1440,
+    "scrollHeight": 26000,
+    "headings": [
+      {
+        "text": "UI 용어 사전",
+        "top": 16
+      },
+      {
+        "text": "Empty States",
+        "top": 222
+      },
+      {
+        "text": "Simple",
+        "top": 408
+      },
+      {
+        "text": "No people",
+        "top": 591
+      },
+      {
+        "text": "With dashed border",
+        "top": 886
+      },
+      {
+        "text": "Upload a file",
+        "top": 1119
+      },
+      {
+        "text": "With starting points",
+        "top": 1364
+      },
+      {
+        "text": "No projects",
+        "top": 1535
+      },
+      {
+        "text": "With recommendations",
+        "top": 1980
+      },
+      {
+        "text": "No integrations",
+        "top": 2123
+      },
+      {
+        "text": "With templates",
+        "top": 2570
+      },
+      {
+        "text": "No templates",
+        "top": 2741
+      },
+      {
+        "text": "With recommendations grid",
+        "top": 3172
+      },
+      {
+        "text": "No team members",
+        "top": 3345
+      }
+    ]
+  },
+  "mobile": {
+    "viewport": {
+      "width": 390,
+      "height": 26000
+    },
+    "expectedFound": [
+      {
+        "name": "Simple",
+        "found": true
+      },
+      {
+        "name": "With dashed border",
+        "found": true
+      },
+      {
+        "name": "With starting points",
+        "found": true
+      },
+      {
+        "name": "With recommendations",
+        "found": true
+      },
+      {
+        "name": "With templates",
+        "found": true
+      },
+      {
+        "name": "With recommendations grid",
+        "found": true
+      }
+    ],
+    "images": [
+      "/favicon.svg"
+    ],
+    "previewImages": [],
+    "horizontalOverflow": false,
+    "scrollWidth": 390,
+    "innerWidth": 390,
+    "scrollHeight": 26000,
+    "headings": [
+      {
+        "text": "UI 용어 사전",
+        "top": 16
+      },
+      {
+        "text": "Empty States",
+        "top": 267
+      },
+      {
+        "text": "Simple",
+        "top": 479
+      },
+      {
+        "text": "No people",
+        "top": 632
+      },
+      {
+        "text": "With dashed border",
+        "top": 925
+      },
+      {
+        "text": "Upload a file",
+        "top": 1128
+      },
+      {
+        "text": "With starting points",
+        "top": 1371
+      },
+      {
+        "text": "No projects",
+        "top": 1512
+      },
+      {
+        "text": "With recommendations",
+        "top": 2181
+      },
+      {
+        "text": "No integrations",
+        "top": 2294
+      },
+      {
+        "text": "With templates",
+        "top": 2779
+      },
+      {
+        "text": "No templates",
+        "top": 2920
+      },
+      {
+        "text": "With recommendations grid",
+        "top": 3429
+      },
+      {
+        "text": "No team members",
+        "top": 3572
+      }
+    ]
+  },
+  "pass": true
+}

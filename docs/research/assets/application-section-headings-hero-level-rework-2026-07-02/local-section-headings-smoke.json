@@ -1,0 +1,221 @@
+{
+  "url": "http://127.0.0.1:5178/?filter=nav%3Aplus-application-headings-section-headings",
+  "checkedAt": "2026-07-02T07:22:01.292Z",
+  "expected": [
+    "Simple",
+    "With description",
+    "With actions",
+    "With action",
+    "With input group",
+    "With tabs",
+    "With actions and tabs",
+    "With inline tabs",
+    "With label",
+    "With badge and dropdown"
+  ],
+  "desktop": {
+    "viewport": {
+      "width": 1440,
+      "height": 26000
+    },
+    "expectedFound": [
+      {
+        "name": "Simple",
+        "found": true
+      },
+      {
+        "name": "With description",
+        "found": true
+      },
+      {
+        "name": "With actions",
+        "found": true
+      },
+      {
+        "name": "With action",
+        "found": true
+      },
+      {
+        "name": "With input group",
+        "found": true
+      },
+      {
+        "name": "With tabs",
+        "found": true
+      },
+      {
+        "name": "With actions and tabs",
+        "found": true
+      },
+      {
+        "name": "With inline tabs",
+        "found": true
+      },
+      {
+        "name": "With label",
+        "found": true
+      },
+      {
+        "name": "With badge and dropdown",
+        "found": true
+      }
+    ],
+    "images": [
+      "/favicon.svg"
+    ],
+    "previewImages": [],
+    "horizontalOverflow": false,
+    "scrollWidth": 1425,
+    "innerWidth": 1440,
+    "scrollHeight": 26000,
+    "headings": [
+      {
+        "text": "Section Headings",
+        "top": 222
+      },
+      {
+        "text": "Simple",
+        "top": 408
+      },
+      {
+        "text": "With description",
+        "top": 703
+      },
+      {
+        "text": "With actions",
+        "top": 1054
+      },
+      {
+        "text": "With action",
+        "top": 1361
+      },
+      {
+        "text": "With input group",
+        "top": 1668
+      },
+      {
+        "text": "With tabs",
+        "top": 1977
+      },
+      {
+        "text": "With actions and tabs",
+        "top": 2318
+      },
+      {
+        "text": "With inline tabs",
+        "top": 2659
+      },
+      {
+        "text": "With label",
+        "top": 2987
+      },
+      {
+        "text": "With badge and dropdown",
+        "top": 3282
+      }
+    ]
+  },
+  "mobile": {
+    "viewport": {
+      "width": 390,
+      "height": 26000
+    },
+    "expectedFound": [
+      {
+        "name": "Simple",
+        "found": true
+      },
+      {
+        "name": "With description",
+        "found": true
+      },
+      {
+        "name": "With actions",
+        "found": true
+      },
+      {
+        "name": "With action",
+        "found": true
+      },
+      {
+        "name": "With input group",
+        "found": true
+      },
+      {
+        "name": "With tabs",
+        "found": true
+      },
+      {
+        "name": "With actions and tabs",
+        "found": true
+      },
+      {
+        "name": "With inline tabs",
+        "found": true
+      },
+      {
+        "name": "With label",
+        "found": true
+      },
+      {
+        "name": "With badge and dropdown",
+        "found": true
+      }
+    ],
+    "images": [
+      "/favicon.svg"
+    ],
+    "previewImages": [],
+    "horizontalOverflow": false,
+    "scrollWidth": 390,
+    "innerWidth": 390,
+    "scrollHeight": 26000,
+    "headings": [
+      {
+        "text": "Section Headings",
+        "top": 267
+      },
+      {
+        "text": "Simple",
+        "top": 495
+      },
+      {
+        "text": "With description",
+        "top": 710
+      },
+      {
+        "text": "With actions",
+        "top": 1005
+      },
+      {
+        "text": "With action",
+        "top": 1276
+      },
+      {
+        "text": "With input group",
+        "top": 1547
+      },
+      {
+        "text": "With tabs",
+        "top": 1820
+      },
+      {
+        "text": "With actions and tabs",
+        "top": 2125
+      },
+      {
+        "text": "With inline tabs",
+        "top": 2486
+      },
+      {
+        "text": "With label",
+        "top": 2734
+      },
+      {
+        "text": "With badge and dropdown",
+        "top": 2949
+      }
+    ]
+  },
+  "pass": true
+}

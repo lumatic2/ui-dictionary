@@ -1,0 +1,25 @@
+{
+  "bodyLength": 2816,
+  "clientWidth": 2545,
+  "getCodeMentions": 11,
+  "headings": [
+    "UI 용어 사전",
+    "CTA Sections",
+    "Dark panel with app screenshot",
+    "Simple stacked",
+    "Centered on dark panel",
+    "Simple centered",
+    "Simple centered with gradient",
+    "Simple centered on brand",
+    "Simple justified",
+    "Simple justified on subtle brand",
+    "Split with image",
+    "Two columns with photo",
+    "With image tiles"
+  ],
+  "horizontalOverflow": false,
+  "previewMentions": 11,
+  "scrollWidth": 2545,
+  "title": "UI 용어 사전",
+  "url": "http://127.0.0.1:5181/?filter=nav%3Aplus-marketing-cta-sections"
+}

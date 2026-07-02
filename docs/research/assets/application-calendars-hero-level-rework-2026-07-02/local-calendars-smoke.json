@@ -1,0 +1,641 @@
+{
+  "url": "http://127.0.0.1:5178/?filter=nav%3Aplus-data-display-calendars",
+  "checkedAt": "2026-07-02T07:48:34.511Z",
+  "expected": [
+    "Small with meetings",
+    "Month view",
+    "Week view",
+    "Day view",
+    "Year view",
+    "Double",
+    "Borderless stacked",
+    "Borderless side-by-side"
+  ],
+  "expectedImages": [
+    "calendar-small-meetings-sheet-v2.png",
+    "calendar-double-sheet-v2.png",
+    "calendar-borderless-stacked-sheet-v2.png",
+    "calendar-borderless-side-by-side-sheet-v2.png"
+  ],
+  "desktop": {
+    "viewport": {
+      "width": 1440,
+      "height": 26000
+    },
+    "expectedFound": [
+      {
+        "name": "Small with meetings",
+        "found": true
+      },
+      {
+        "name": "Month view",
+        "found": true
+      },
+      {
+        "name": "Week view",
+        "found": true
+      },
+      {
+        "name": "Day view",
+        "found": true
+      },
+      {
+        "name": "Year view",
+        "found": true
+      },
+      {
+        "name": "Double",
+        "found": true
+      },
+      {
+        "name": "Borderless stacked",
+        "found": true
+      },
+      {
+        "name": "Borderless side-by-side",
+        "found": true
+      }
+    ],
+    "images": [
+      {
+        "src": "/favicon.svg",
+        "complete": true,
+        "naturalWidth": 150,
+        "naturalHeight": 150
+      },
+      {
+        "src": "/assets/calendars/calendar-small-meetings-sheet-v2.png",
+        "complete": true,
+        "naturalWidth": 1254,
+        "naturalHeight": 1254
+      },
+      {
+        "src": "/assets/calendars/calendar-small-meetings-sheet-v2.png",
+        "complete": true,
+        "naturalWidth": 1254,
+        "naturalHeight": 1254
+      },
+      {
+        "src": "/assets/calendars/calendar-small-meetings-sheet-v2.png",
+        "complete": true,
+        "naturalWidth": 1254,
+        "naturalHeight": 1254
+      },
+      {
+        "src": "/assets/calendars/calendar-small-meetings-sheet-v2.png",
+        "complete": true,
+        "naturalWidth": 1254,
+        "naturalHeight": 1254
+      },
+      {
+        "src": "/assets/calendars/calendar-double-sheet-v2.png",
+        "complete": true,
+        "naturalWidth": 1254,
+        "naturalHeight": 1254
+      },
+      {
+        "src": "/assets/calendars/calendar-double-sheet-v2.png",
+        "complete": true,
+        "naturalWidth": 1254,
+        "naturalHeight": 1254
+      },
+      {
+        "src": "/assets/calendars/calendar-double-sheet-v2.png",
+        "complete": true,
+        "naturalWidth": 1254,
+        "naturalHeight": 1254
+      },
+      {
+        "src": "/assets/calendars/calendar-double-sheet-v2.png",
+        "complete": true,
+        "naturalWidth": 1254,
+        "naturalHeight": 1254
+      },
+      {
+        "src": "/assets/calendars/calendar-borderless-stacked-sheet-v2.png",
+        "complete": true,
+        "naturalWidth": 1254,
+        "naturalHeight": 1254
+      },
+      {
+        "src": "/assets/calendars/calendar-borderless-stacked-sheet-v2.png",
+        "complete": true,
+        "naturalWidth": 1254,
+        "naturalHeight": 1254
+      },
+      {
+        "src": "/assets/calendars/calendar-borderless-stacked-sheet-v2.png",
+        "complete": true,
+        "naturalWidth": 1254,
+        "naturalHeight": 1254
+      },
+      {
+        "src": "/assets/calendars/calendar-borderless-stacked-sheet-v2.png",
+        "complete": true,
+        "naturalWidth": 1254,
+        "naturalHeight": 1254
+      },
+      {
+        "src": "/assets/calendars/calendar-borderless-side-by-side-sheet-v2.png",
+        "complete": true,
+        "naturalWidth": 1254,
+        "naturalHeight": 1254
+      },
+      {
+        "src": "/assets/calendars/calendar-borderless-side-by-side-sheet-v2.png",
+        "complete": true,
+        "naturalWidth": 1254,
+        "naturalHeight": 1254
+      },
+      {
+        "src": "/assets/calendars/calendar-borderless-side-by-side-sheet-v2.png",
+        "complete": true,
+        "naturalWidth": 1254,
+        "naturalHeight": 1254
+      },
+      {
+        "src": "/assets/calendars/calendar-borderless-side-by-side-sheet-v2.png",
+        "complete": true,
+        "naturalWidth": 1254,
+        "naturalHeight": 1254
+      }
+    ],
+    "previewImages": [
+      {
+        "src": "/assets/calendars/calendar-small-meetings-sheet-v2.png",
+        "complete": true,
+        "naturalWidth": 1254,
+        "naturalHeight": 1254
+      },
+      {
+        "src": "/assets/calendars/calendar-small-meetings-sheet-v2.png",
+        "complete": true,
+        "naturalWidth": 1254,
+        "naturalHeight": 1254
+      },
+      {
+        "src": "/assets/calendars/calendar-small-meetings-sheet-v2.png",
+        "complete": true,
+        "naturalWidth": 1254,
+        "naturalHeight": 1254
+      },
+      {
+        "src": "/assets/calendars/calendar-small-meetings-sheet-v2.png",
+        "complete": true,
+        "naturalWidth": 1254,
+        "naturalHeight": 1254
+      },
+      {
+        "src": "/assets/calendars/calendar-double-sheet-v2.png",
+        "complete": true,
+        "naturalWidth": 1254,
+        "naturalHeight": 1254
+      },
+      {
+        "src": "/assets/calendars/calendar-double-sheet-v2.png",
+        "complete": true,
+        "naturalWidth": 1254,
+        "naturalHeight": 1254
+      },
+      {
+        "src": "/assets/calendars/calendar-double-sheet-v2.png",
+        "complete": true,
+        "naturalWidth": 1254,
+        "naturalHeight": 1254
+      },
+      {
+        "src": "/assets/calendars/calendar-double-sheet-v2.png",
+        "complete": true,
+        "naturalWidth": 1254,
+        "naturalHeight": 1254
+      },
+      {
+        "src": "/assets/calendars/calendar-borderless-stacked-sheet-v2.png",
+        "complete": true,
+        "naturalWidth": 1254,
+        "naturalHeight": 1254
+      },
+      {
+        "src": "/assets/calendars/calendar-borderless-stacked-sheet-v2.png",
+        "complete": true,
+        "naturalWidth": 1254,
+        "naturalHeight": 1254
+      },
+      {
+        "src": "/assets/calendars/calendar-borderless-stacked-sheet-v2.png",
+        "complete": true,
+        "naturalWidth": 1254,
+        "naturalHeight": 1254
+      },
+      {
+        "src": "/assets/calendars/calendar-borderless-stacked-sheet-v2.png",
+        "complete": true,
+        "naturalWidth": 1254,
+        "naturalHeight": 1254
+      },
+      {
+        "src": "/assets/calendars/calendar-borderless-side-by-side-sheet-v2.png",
+        "complete": true,
+        "naturalWidth": 1254,
+        "naturalHeight": 1254
+      },
+      {
+        "src": "/assets/calendars/calendar-borderless-side-by-side-sheet-v2.png",
+        "complete": true,
+        "naturalWidth": 1254,
+        "naturalHeight": 1254
+      },
+      {
+        "src": "/assets/calendars/calendar-borderless-side-by-side-sheet-v2.png",
+        "complete": true,
+        "naturalWidth": 1254,
+        "naturalHeight": 1254
+      },
+      {
+        "src": "/assets/calendars/calendar-borderless-side-by-side-sheet-v2.png",
+        "complete": true,
+        "naturalWidth": 1254,
+        "naturalHeight": 1254
+      }
+    ],
+    "uniquePreviewImages": [
+      "/assets/calendars/calendar-small-meetings-sheet-v2.png",
+      "/assets/calendars/calendar-double-sheet-v2.png",
+      "/assets/calendars/calendar-borderless-stacked-sheet-v2.png",
+      "/assets/calendars/calendar-borderless-side-by-side-sheet-v2.png"
+    ],
+    "horizontalOverflow": false,
+    "scrollWidth": 1425,
+    "innerWidth": 1440,
+    "scrollHeight": 26000,
+    "headings": [
+      {
+        "text": "UI 용어 사전",
+        "top": 16
+      },
+      {
+        "text": "Calendars",
+        "top": 222
+      },
+      {
+        "text": "Small with meetings",
+        "top": 408
+      },
+      {
+        "text": "Upcoming meetings",
+        "top": 512
+      },
+      {
+        "text": "Month view",
+        "top": 1067
+      },
+      {
+        "text": "Week view",
+        "top": 1735
+      },
+      {
+        "text": "Day view",
+        "top": 2378
+      },
+      {
+        "text": "Year view",
+        "top": 3020
+      },
+      {
+        "text": "Double",
+        "top": 3831
+      },
+      {
+        "text": "Upcoming events",
+        "top": 4329
+      },
+      {
+        "text": "Borderless stacked",
+        "top": 4883
+      },
+      {
+        "text": "Schedule for January 22, 2022",
+        "top": 5379
+      },
+      {
+        "text": "Borderless side-by-side",
+        "top": 5933
+      },
+      {
+        "text": "Schedule for January 22, 2022",
+        "top": 6036
+      }
+    ]
+  },
+  "mobile": {
+    "viewport": {
+      "width": 390,
+      "height": 26000
+    },
+    "expectedFound": [
+      {
+        "name": "Small with meetings",
+        "found": true
+      },
+      {
+        "name": "Month view",
+        "found": true
+      },
+      {
+        "name": "Week view",
+        "found": true
+      },
+      {
+        "name": "Day view",
+        "found": true
+      },
+      {
+        "name": "Year view",
+        "found": true
+      },
+      {
+        "name": "Double",
+        "found": true
+      },
+      {
+        "name": "Borderless stacked",
+        "found": true
+      },
+      {
+        "name": "Borderless side-by-side",
+        "found": true
+      }
+    ],
+    "images": [
+      {
+        "src": "/favicon.svg",
+        "complete": true,
+        "naturalWidth": 150,
+        "naturalHeight": 150
+      },
+      {
+        "src": "/assets/calendars/calendar-small-meetings-sheet-v2.png",
+        "complete": true,
+        "naturalWidth": 1254,
+        "naturalHeight": 1254
+      },
+      {
+        "src": "/assets/calendars/calendar-small-meetings-sheet-v2.png",
+        "complete": true,
+        "naturalWidth": 1254,
+        "naturalHeight": 1254
+      },
+      {
+        "src": "/assets/calendars/calendar-small-meetings-sheet-v2.png",
+        "complete": true,
+        "naturalWidth": 1254,
+        "naturalHeight": 1254
+      },
+      {
+        "src": "/assets/calendars/calendar-small-meetings-sheet-v2.png",
+        "complete": true,
+        "naturalWidth": 1254,
+        "naturalHeight": 1254
+      },
+      {
+        "src": "/assets/calendars/calendar-double-sheet-v2.png",
+        "complete": true,
+        "naturalWidth": 1254,
+        "naturalHeight": 1254
+      },
+      {
+        "src": "/assets/calendars/calendar-double-sheet-v2.png",
+        "complete": true,
+        "naturalWidth": 1254,
+        "naturalHeight": 1254
+      },
+      {
+        "src": "/assets/calendars/calendar-double-sheet-v2.png",
+        "complete": true,
+        "naturalWidth": 1254,
+        "naturalHeight": 1254
+      },
+      {
+        "src": "/assets/calendars/calendar-double-sheet-v2.png",
+        "complete": true,
+        "naturalWidth": 1254,
+        "naturalHeight": 1254
+      },
+      {
+        "src": "/assets/calendars/calendar-borderless-stacked-sheet-v2.png",
+        "complete": true,
+        "naturalWidth": 1254,
+        "naturalHeight": 1254
+      },
+      {
+        "src": "/assets/calendars/calendar-borderless-stacked-sheet-v2.png",
+        "complete": true,
+        "naturalWidth": 1254,
+        "naturalHeight": 1254
+      },
+      {
+        "src": "/assets/calendars/calendar-borderless-stacked-sheet-v2.png",
+        "complete": true,
+        "naturalWidth": 1254,
+        "naturalHeight": 1254
+      },
+      {
+        "src": "/assets/calendars/calendar-borderless-stacked-sheet-v2.png",
+        "complete": true,
+        "naturalWidth": 1254,
+        "naturalHeight": 1254
+      },
+      {
+        "src": "/assets/calendars/calendar-borderless-side-by-side-sheet-v2.png",
+        "complete": true,
+        "naturalWidth": 1254,
+        "naturalHeight": 1254
+      },
+      {
+        "src": "/assets/calendars/calendar-borderless-side-by-side-sheet-v2.png",
+        "complete": true,
+        "naturalWidth": 1254,
+        "naturalHeight": 1254
+      },
+      {
+        "src": "/assets/calendars/calendar-borderless-side-by-side-sheet-v2.png",
+        "complete": true,
+        "naturalWidth": 1254,
+        "naturalHeight": 1254
+      },
+      {
+        "src": "/assets/calendars/calendar-borderless-side-by-side-sheet-v2.png",
+        "complete": true,
+        "naturalWidth": 1254,
+        "naturalHeight": 1254
+      }
+    ],
+    "previewImages": [
+      {
+        "src": "/assets/calendars/calendar-small-meetings-sheet-v2.png",
+        "complete": true,
+        "naturalWidth": 1254,
+        "naturalHeight": 1254
+      },
+      {
+        "src": "/assets/calendars/calendar-small-meetings-sheet-v2.png",
+        "complete": true,
+        "naturalWidth": 1254,
+        "naturalHeight": 1254
+      },
+      {
+        "src": "/assets/calendars/calendar-small-meetings-sheet-v2.png",
+        "complete": true,
+        "naturalWidth": 1254,
+        "naturalHeight": 1254
+      },
+      {
+        "src": "/assets/calendars/calendar-small-meetings-sheet-v2.png",
+        "complete": true,
+        "naturalWidth": 1254,
+        "naturalHeight": 1254
+      },
+      {
+        "src": "/assets/calendars/calendar-double-sheet-v2.png",
+        "complete": true,
+        "naturalWidth": 1254,
+        "naturalHeight": 1254
+      },
+      {
+        "src": "/assets/calendars/calendar-double-sheet-v2.png",
+        "complete": true,
+        "naturalWidth": 1254,
+        "naturalHeight": 1254
+      },
+      {
+        "src": "/assets/calendars/calendar-double-sheet-v2.png",
+        "complete": true,
+        "naturalWidth": 1254,
+        "naturalHeight": 1254
+      },
+      {
+        "src": "/assets/calendars/calendar-double-sheet-v2.png",
+        "complete": true,
+        "naturalWidth": 1254,
+        "naturalHeight": 1254
+      },
+      {
+        "src": "/assets/calendars/calendar-borderless-stacked-sheet-v2.png",
+        "complete": true,
+        "naturalWidth": 1254,
+        "naturalHeight": 1254
+      },
+      {
+        "src": "/assets/calendars/calendar-borderless-stacked-sheet-v2.png",
+        "complete": true,
+        "naturalWidth": 1254,
+        "naturalHeight": 1254
+      },
+      {
+        "src": "/assets/calendars/calendar-borderless-stacked-sheet-v2.png",
+        "complete": true,
+        "naturalWidth": 1254,
+        "naturalHeight": 1254
+      },
+      {
+        "src": "/assets/calendars/calendar-borderless-stacked-sheet-v2.png",
+        "complete": true,
+        "naturalWidth": 1254,
+        "naturalHeight": 1254
+      },
+      {
+        "src": "/assets/calendars/calendar-borderless-side-by-side-sheet-v2.png",
+        "complete": true,
+        "naturalWidth": 1254,
+        "naturalHeight": 1254
+      },
+      {
+        "src": "/assets/calendars/calendar-borderless-side-by-side-sheet-v2.png",
+        "complete": true,
+        "naturalWidth": 1254,
+        "naturalHeight": 1254
+      },
+      {
+        "src": "/assets/calendars/calendar-borderless-side-by-side-sheet-v2.png",
+        "complete": true,
+        "naturalWidth": 1254,
+        "naturalHeight": 1254
+      },
+      {
+        "src": "/assets/calendars/calendar-borderless-side-by-side-sheet-v2.png",
+        "complete": true,
+        "naturalWidth": 1254,
+        "naturalHeight": 1254
+      }
+    ],
+    "uniquePreviewImages": [
+      "/assets/calendars/calendar-small-meetings-sheet-v2.png",
+      "/assets/calendars/calendar-double-sheet-v2.png",
+      "/assets/calendars/calendar-borderless-stacked-sheet-v2.png",
+      "/assets/calendars/calendar-borderless-side-by-side-sheet-v2.png"
+    ],
+    "horizontalOverflow": false,
+    "scrollWidth": 390,
+    "innerWidth": 390,
+    "scrollHeight": 26000,
+    "headings": [
+      {
+        "text": "UI 용어 사전",
+        "top": 16
+      },
+      {
+        "text": "Calendars",
+        "top": 267
+      },
+      {
+        "text": "Small with meetings",
+        "top": 447
+      },
+      {
+        "text": "Upcoming meetings",
+        "top": 878
+      },
+      {
+        "text": "Month view",
+        "top": 1479
+      },
+      {
+        "text": "Week view",
+        "top": 2101
+      },
+      {
+        "text": "Day view",
+        "top": 2704
+      },
+      {
+        "text": "Year view",
+        "top": 3625
+      },
+      {
+        "text": "Double",
+        "top": 5404
+      },
+      {
+        "text": "Upcoming events",
+        "top": 5990
+      },
+      {
+        "text": "Borderless stacked",
+        "top": 6590
+      },
+      {
+        "text": "Schedule for January 22, 2022",
+        "top": 6964
+      },
+      {
+        "text": "Borderless side-by-side",
+        "top": 7564
+      },
+      {
+        "text": "Schedule for January 22, 2022",
+        "top": 7937
+      }
+    ]
+  },
+  "pass": true
+}

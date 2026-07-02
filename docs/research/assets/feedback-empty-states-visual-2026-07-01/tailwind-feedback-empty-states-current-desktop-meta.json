@@ -1,0 +1,15 @@
+{
+  "url": "https://tailwindcss.com/plus/ui-blocks/application-ui/feedback/empty-states",
+  "name": "Empty States",
+  "description": "Empty state examples for Tailwind CSS, designed and built by the creators of the framework.",
+  "visible_example_count": 6,
+  "visible_example_names": [
+    "Simple",
+    "With dashed border",
+    "With starting points",
+    "With recommendations",
+    "With templates",
+    "With recommendations grid"
+  ],
+  "raw_component_count": 12
+}

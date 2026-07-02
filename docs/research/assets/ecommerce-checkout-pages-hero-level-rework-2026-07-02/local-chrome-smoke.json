@@ -1,0 +1,25 @@
+{
+  "route": "http://127.0.0.1:5174/?filter=nav%3Aplus-ecommerce-page-examples-checkout-pages",
+  "badImageCount": 0,
+  "checkoutAssetReferenceCount": 15,
+  "exampleHeadingCount": 5,
+  "expectedPresent": {
+    "With order summary sidebar": true,
+    "Single step with order summary": true,
+    "With mobile order summary overlay": true,
+    "Multi-step": true,
+    "Split with order summary": true
+  },
+  "expectedAssetsPresent": {
+    "checkout-apparel-set.png": true,
+    "checkout-bag-lamp-set.png": true,
+    "checkout-boxed-goods.png": true
+  },
+  "viewport": {
+    "clientWidth": 2560,
+    "innerHeight": 1319,
+    "innerWidth": 2560,
+    "scrollHeight": 6617,
+    "scrollWidth": 2545
+  }
+}

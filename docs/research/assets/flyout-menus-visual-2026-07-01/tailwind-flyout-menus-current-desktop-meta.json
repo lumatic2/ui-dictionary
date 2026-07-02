@@ -1,0 +1,23 @@
+{
+  "codeCount": 6,
+  "examples": [
+    "Stacked with footer actions",
+    "Full-width two-columns",
+    "Stacked with footer list",
+    "Full-width",
+    "Simple with descriptions",
+    "Two-column",
+    "Simple"
+  ],
+  "h2s": [
+    "Stacked with footer actions",
+    "Full-width two-columns",
+    "Stacked with footer list",
+    "Full-width",
+    "Simple with descriptions",
+    "Two-column",
+    "Simple"
+  ],
+  "previewCount": 8,
+  "title": "Tailwind CSS Flyout Menus - Official Tailwind UI Components"
+}

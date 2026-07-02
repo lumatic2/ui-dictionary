@@ -1,0 +1,39 @@
+{
+  "desktop": {
+    "missing": [],
+    "missingMarkers": [],
+    "scrollWidth": 1425,
+    "clientWidth": 1440,
+    "horizontalOverflow": false,
+    "imageSources": [],
+    "darkPanels": 1,
+    "tables": 2,
+    "elementOverflows": []
+  },
+  "mobile390": {
+    "missing": [],
+    "missingMarkers": [],
+    "scrollWidth": 375,
+    "clientWidth": 390,
+    "horizontalOverflow": false,
+    "imageSources": [],
+    "darkPanels": 1,
+    "tables": 2,
+    "elementOverflows": [
+      {
+        "tag": "DIV",
+        "className": "mx-auto max-w-6xl overflow-hidden rounded-md border border-slate-200 bg-white text-slate-900",
+        "scrollWidth": 453,
+        "clientWidth": 299,
+        "text": "HomeInvoicesClientsExpensesTCCashflow+ New invoiceRevenue+4.75%$405,091.00Overdu"
+      },
+      {
+        "tag": "HEADER",
+        "className": "flex h-16 items-center justify-between border-b px-6",
+        "scrollWidth": 453,
+        "clientWidth": 299,
+        "text": "HomeInvoicesClientsExpensesTC"
+      }
+    ]
+  }
+}

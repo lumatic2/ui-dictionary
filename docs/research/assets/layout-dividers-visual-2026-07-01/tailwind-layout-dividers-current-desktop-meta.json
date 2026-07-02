@@ -1,0 +1,17 @@
+{
+  "url": "https://tailwindcss.com/plus/ui-blocks/application-ui/layout/dividers",
+  "name": "Dividers",
+  "description": "Dividers and horizontal rule examples for Tailwind CSS, designed and built by the creators of the framework.",
+  "visible_example_count": 8,
+  "visible_example_names": [
+    "With label",
+    "With icon",
+    "With label on left",
+    "With title",
+    "With title on left",
+    "With button",
+    "With title and button",
+    "With toolbar"
+  ],
+  "raw_component_count": 16
+}

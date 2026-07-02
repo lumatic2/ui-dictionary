@@ -1,0 +1,21 @@
+{
+  "codeCount": 5,
+  "examples": [
+    "Left-aligned",
+    "Left-aligned in card",
+    "Left-aligned striped",
+    "Two-column",
+    "Left-aligned with inline actions",
+    "Narrow with hidden labels"
+  ],
+  "h2s": [
+    "Left-aligned",
+    "Left-aligned in card",
+    "Left-aligned striped",
+    "Two-column",
+    "Left-aligned with inline actions",
+    "Narrow with hidden labels"
+  ],
+  "previewCount": 7,
+  "title": "Tailwind CSS Description Lists - Official Tailwind UI Components"
+}

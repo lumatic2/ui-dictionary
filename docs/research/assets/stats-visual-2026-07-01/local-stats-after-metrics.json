@@ -1,0 +1,24 @@
+{
+  "bodyLength": 1346,
+  "clientWidth": 2545,
+  "codeMentions": 0,
+  "getCodeMentions": 8,
+  "h1": "UI 용어 사전",
+  "headings": [
+    "UI 용어 사전",
+    "Stats",
+    "Simple",
+    "Simple grid",
+    "With background image",
+    "Split with image",
+    "Timeline",
+    "Stepped",
+    "With two column description",
+    "With description"
+  ],
+  "horizontalOverflow": false,
+  "previewMentions": 8,
+  "scrollWidth": 2545,
+  "title": "UI 용어 사전",
+  "url": "http://127.0.0.1:5181/?filter=nav%3Aplus-marketing-stats"
+}

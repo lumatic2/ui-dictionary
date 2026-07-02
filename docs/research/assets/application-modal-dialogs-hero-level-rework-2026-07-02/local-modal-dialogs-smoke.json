@@ -1,0 +1,50 @@
+[
+  {
+    "viewport": {
+      "width": 1440,
+      "height": 2200
+    },
+    "scrollWidth": 1425,
+    "clientWidth": 1440,
+    "hasHorizontalOverflow": false,
+    "expectedNames": {
+      "Simple with gray footer": true,
+      "Centered with single action": true,
+      "Centered with wide buttons": true,
+      "Simple alert": true,
+      "Simple with dismiss button": true,
+      "Simple alert with left-aligned buttons": true
+    },
+    "previewImageCount": 0,
+    "imageSources": [
+      "/favicon.svg"
+    ],
+    "elementOverflows": [],
+    "allExpectedNamesFound": true,
+    "mode": "desktop"
+  },
+  {
+    "viewport": {
+      "width": 390,
+      "height": 1800
+    },
+    "scrollWidth": 375,
+    "clientWidth": 390,
+    "hasHorizontalOverflow": false,
+    "expectedNames": {
+      "Simple with gray footer": true,
+      "Centered with single action": true,
+      "Centered with wide buttons": true,
+      "Simple alert": true,
+      "Simple with dismiss button": true,
+      "Simple alert with left-aligned buttons": true
+    },
+    "previewImageCount": 0,
+    "imageSources": [
+      "/favicon.svg"
+    ],
+    "elementOverflows": [],
+    "allExpectedNamesFound": true,
+    "mode": "mobile"
+  }
+]

@@ -1,0 +1,250 @@
+{
+  "project": "ui-dictionary",
+  "phase": "tailwind-style-page-catalog",
+  "mode": "product",
+  "steps": [
+    {
+      "step": 0,
+      "name": "card-debt-audit-and-ia-contract",
+      "status": "completed",
+      "summary": "Confirmed remaining card debt: TermCard result grid, PlusCatalogLanding bg-card panels, DocsCatalogLanding bg-card tiles, and empty/recovery card surfaces. Kept vocabulary entries whose names include card and deferred poster/export card-like print blocks.",
+      "completed_at": "2026-07-01T00:35:00+09:00"
+    },
+    {
+      "step": 1,
+      "name": "complete-page-template-taxonomy",
+      "status": "completed",
+      "summary": "Kept Templates as complete page/screen examples by removing partial layout/control canonical exposure from dashboard-grid and checkout-step. Dashboard Screens now surfaces dashboard-overview-page, settings-page-layout, and billing-settings-page in smoke.",
+      "completed_at": "2026-07-01T01:05:00+09:00"
+    },
+    {
+      "step": 2,
+      "name": "plus-catalog-page-shell",
+      "status": "completed",
+      "summary": "Reworked PlusCatalogLanding and DocsCatalogLanding from boxed card clusters to Tailwind-like section headings with row-based category links and counts.",
+      "completed_at": "2026-07-01T01:05:00+09:00"
+    },
+    {
+      "step": 3,
+      "name": "catalog-row-results",
+      "status": "completed",
+      "started_at": "2026-07-01T00:35:00+09:00",
+      "completed_at": "2026-07-01T01:05:00+09:00",
+      "summary": "Deleted TermCard and replaced result rendering with TermResultRow. Plus landing, category filters, and Index search now use divide-y row lists while preserving visual thumbnails and term URL navigation."
+    },
+    {
+      "step": 4,
+      "name": "template-page-sections",
+      "status": "completed",
+      "summary": "Verified Template filters render as page/screen row lists. Dashboard Screens no longer shows dashboard-grid; it shows only page-level dashboard-related entries currently available in the dataset.",
+      "completed_at": "2026-07-01T01:05:00+09:00"
+    },
+    {
+      "step": 5,
+      "name": "docs-term-polish-and-smoke",
+      "status": "completed",
+      "summary": "Removed the legacy TermDetail drawer component and term-detail animation hooks, softened empty states and TermPage panels away from card shells, and validated build/lint/validator/visual audit plus Chrome smoke with zero console errors.",
+      "completed_at": "2026-07-01T01:05:00+09:00"
+    },
+    {
+      "step": 6,
+      "name": "hero-sections-category-page",
+      "status": "completed",
+      "started_at": "2026-07-01T01:20:00+09:00",
+      "completed_at": "2026-07-01T01:35:00+09:00",
+      "summary": "Added a Tailwind Plus-style Hero Sections category page at nav:plus-marketing-hero-sections, with breadcrumb, title, description, three hero example previews, sidebar entry, term navigation metadata for hero and spotlight-hero, and Chrome smoke for page render and term navigation."
+    },
+    {
+      "step": 7,
+      "name": "tailwind-style-ui-blocks-sidebar",
+      "status": "completed",
+      "started_at": "2026-07-01T01:45:00+09:00",
+      "completed_at": "2026-07-01T01:55:00+09:00",
+      "summary": "Reworked the Plus UI Blocks sidebar into the Tailwind-style hierarchy: Marketing with Page Sections, Elements, Feedback, Page Examples; Application UI with Application Shells, Data Display, Forms, Navigation, Overlays, Feedback; Ecommerce with Components and Page Examples. Chrome smoke confirmed the Hero Sections page shows the new nested sidebar with zero console errors."
+    },
+    {
+      "step": 8,
+      "name": "static-plus-sidebar-no-accordion",
+      "status": "completed",
+      "started_at": "2026-07-01T02:05:00+09:00",
+      "completed_at": "2026-07-01T02:15:00+09:00",
+      "summary": "Removed Accordion behavior from the Plus sidebar and replaced it with a static Tailwind-like table of contents. UI Blocks, Templates, and UI Kit are always visible section headings; Marketing/Application UI/Ecommerce and their children render as indented static nav links with active highlighting and counts. Chrome smoke confirmed zero accordion triggers in Plus navigation and zero console errors."
+    },
+    {
+      "step": 9,
+      "name": "marketing-section-pages-batch-1",
+      "status": "completed",
+      "started_at": "2026-07-01T02:25:00+09:00",
+      "completed_at": "2026-07-01T02:40:00+09:00",
+      "summary": "Generalized the Hero Sections page into MarketingSectionCatalogPage and added Feature Sections, Pricing Sections, and CTA Sections pages. Each page renders breadcrumb, title, description, three example previews, tags, and term navigation buttons. Updated canonical paths for feature-grid-section, pricing-section, and cta-section. Build, lint, validator, visual audit, diff check, and Chrome smoke passed."
+    },
+    {
+      "step": 10,
+      "name": "marketing-section-pages-batch-2",
+      "status": "completed",
+      "started_at": "2026-07-01T02:50:00+09:00",
+      "completed_at": "2026-07-01T03:10:00+09:00",
+      "summary": "Added Tailwind Plus-style standalone Marketing Page Sections for Bento Grids, Header Sections, Newsletter Sections, Stats, Testimonials, FAQs, and Footers. Each page has three examples, preview variants, tags, and term navigation buttons; canonical paths were updated for bento-grid, header, newsletter-section, stat-list, testimonial-section, faq-list, and footer. Build, lint, validator, visual audit, diff check, and Chrome smoke passed."
+    },
+    {
+      "step": 11,
+      "name": "application-ui-pages-batch-1",
+      "status": "completed",
+      "started_at": "2026-07-01T03:10:00+09:00",
+      "completed_at": "2026-07-01T03:25:00+09:00",
+      "summary": "Added Tailwind Plus-style standalone Application UI pages for Application Shells, Data Display, Forms, Navigation, Overlays, and Feedback. The shared catalog page now supports custom breadcrumbs and term buttons resolve from the full term catalog so page examples can link to representative terms even when a nav filter omits them. Build, lint, validator, visual audit, diff check, and Chrome smoke passed."
+    },
+    {
+      "step": 12,
+      "name": "tailwind-parity-backlog",
+      "status": "completed",
+      "started_at": "2026-07-01T03:25:00+09:00",
+      "completed_at": "2026-07-01T03:35:00+09:00",
+      "summary": "Added docs/plans/2026-07-01-tailwind-parity-implementation-backlog.md to track Tailwind parity work across Marketing, Application UI depth, Ecommerce, Templates, and UI Kit. Stop points are limited to production deploy or failed local verification."
+    },
+    {
+      "step": 13,
+      "name": "marketing-page-sections-completion",
+      "status": "completed",
+      "started_at": "2026-07-01T03:35:00+09:00",
+      "completed_at": "2026-07-01T03:50:00+09:00",
+      "summary": "Completed the remaining Marketing Page Sections: Blog Sections, Contact Sections, Team Sections, Content Sections, and Logo Clouds. Also fixed catalog page rendering so standalone pages render even when the navigation filter has zero matching terms. Build, validator, lint, visual audit, and Chrome smoke passed."
+    },
+    {
+      "step": 14,
+      "name": "marketing-elements-feedback-page-examples",
+      "status": "completed",
+      "started_at": "2026-07-01T03:50:00+09:00",
+      "completed_at": "2026-07-01T04:05:00+09:00",
+      "summary": "Completed the currently modeled Marketing Elements, Feedback, and Page Examples pages: Headers, Flyout Menus, Banners, 404 Pages, Landing Pages, Pricing Pages, and About Pages. Each page has three examples, preview variants, tags, and term links. Build, validator, lint, visual audit, and Chrome smoke passed."
+    },
+    {
+      "step": 15,
+      "name": "application-ui-forms-data-display-depth",
+      "status": "completed",
+      "started_at": "2026-07-01T04:05:00+09:00",
+      "completed_at": "2026-07-01T04:25:00+09:00",
+      "summary": "Added Tailwind-like Application UI subnavigation and standalone pages for Forms depth (Form Layouts, Input Groups, Select Menus, Sign-in and Registration, Textareas, Radio Groups, Checkboxes, Toggles, Action Panels, Comboboxes) and Data Display depth (Description Lists, Stats, Calendars, Lists, Tables). Each page has three examples, preview variants, tags, and term links. Build, validator, lint, and Chrome smoke passed."
+    },
+    {
+      "step": 16,
+      "name": "application-ui-navigation-overlays-feedback-depth",
+      "status": "completed",
+      "started_at": "2026-07-01T04:25:00+09:00",
+      "completed_at": "2026-07-01T04:45:00+09:00",
+      "summary": "Added Tailwind-like Application UI subnavigation and standalone pages for Navigation depth (Navbars, Tabs, Breadcrumbs, Pagination, Command Menus, Sidebars), Overlays depth (Modals, Drawers, Slide-overs, Popovers), and Feedback depth (Alerts, Empty States, Progress, Skeletons, Toasts). Each page has three examples, preview variants, tags, and term links. Build, validator, lint, visual audit, and Chrome smoke passed."
+    },
+    {
+      "step": 17,
+      "name": "application-ui-shells-headings-elements-layout-page-examples-depth",
+      "status": "completed",
+      "started_at": "2026-07-01T04:45:00+09:00",
+      "completed_at": "2026-07-01T05:10:00+09:00",
+      "summary": "Completed the remaining currently modeled Application UI depth: Application Shells (Stacked Layouts, Sidebar Layouts, Multi-column Layouts), Headings (Page Headings, Section Headings, Table Headings), Elements (Avatars, Badges, Dropdowns, Buttons, Button Groups), Layout (Containers, Panels, Dividers), and Page Examples (Dashboards, Settings, Detail Pages, List Pages, Auth Pages, Onboarding Pages). Each page has three examples, preview variants, tags, and term links. Build, validator, lint, visual audit, and Chrome smoke passed."
+    },
+    {
+      "step": 18,
+      "name": "ecommerce-components-and-page-examples-parity",
+      "status": "completed",
+      "started_at": "2026-07-01T05:10:00+09:00",
+      "completed_at": "2026-07-01T05:35:00+09:00",
+      "summary": "Completed the currently modeled Ecommerce tree: Components (Product Overviews, Product Lists, Category Previews, Shopping Carts, Category Filters, Product Quickviews, Product Features, Store Navigation, Promo Sections, Checkout Forms, Reviews, Order Summaries, Order History) and Page Examples (Storefront, Product Page, Category Page, Cart, Checkout, Order Detail). Each standalone page has three examples, preview variants, tags, and term links. Build, validator, lint, visual audit, diff check, and Chrome smoke passed."
+    },
+    {
+      "step": 19,
+      "name": "templates-productized-page-parity",
+      "status": "completed",
+      "started_at": "2026-07-01T05:35:00+09:00",
+      "completed_at": "2026-07-01T05:55:00+09:00",
+      "summary": "Reframed Templates into productized complete page kits: Marketing Pages (Startup Landing, SaaS Pricing, Company About), Dashboard Screens (Analytics Dashboard, Settings Console, Billing Portal), Auth Screens (Sign-in Suite, Invite Flow, Consent Review), Ecommerce Screens (Storefront Kit, Checkout Flow, Order Account), and Onboarding Screens (Setup Wizard, Welcome Flow, Consent Setup). Added nested sidebar navigation and standalone pages with three examples, preview variants, tags, and term links. Build, validator, lint, visual audit, diff check, and Chrome smoke passed."
+    },
+    {
+      "step": 20,
+      "name": "ui-kit-component-system-parity",
+      "status": "completed",
+      "started_at": "2026-07-01T05:55:00+09:00",
+      "completed_at": "2026-07-01T06:15:00+09:00",
+      "summary": "Made UI Kit a component-system surface by adding a UI Kit overview page and standalone pages for Controls, Forms, Navigation, Overlays, Data Display, Layout, Feedback, Visual Treatments, and Motion Patterns. Each page has usage/state-oriented descriptions, three examples, preview variants, tags, and representative term links. Build, validator, lint, visual audit, diff check, and Chrome smoke passed."
+    },
+    {
+      "step": 21,
+      "name": "capture-ledger-protocol",
+      "status": "completed",
+      "started_at": "2026-07-01T07:20:00+09:00",
+      "completed_at": "2026-07-01T07:35:00+09:00",
+      "summary": "Established docs/research/tailwind-plus-capture-ledger.md as the markdown status source for capture-first Tailwind parity. The ledger records Tailwind URL, axis/group/leaf, public access boundary, Tailwind desktop/mobile captures, local desktop/mobile captures, route, status, and verification notes."
+    },
+    {
+      "step": 22,
+      "name": "marketing-leaf-inventory",
+      "status": "completed",
+      "started_at": "2026-07-01T07:35:00+09:00",
+      "completed_at": "2026-07-01T07:45:00+09:00",
+      "summary": "Extracted the live Tailwind Marketing leaf inventory from Chrome: 23 public leaf pages across Page Sections, Elements, Feedback, and Page Examples. Confirmed local navigation has matching routes for all 23 leaves."
+    },
+    {
+      "step": 23,
+      "name": "marketing-leaf-capture-evidence",
+      "status": "completed",
+      "started_at": "2026-07-01T07:45:00+09:00",
+      "completed_at": "2026-07-01T07:55:00+09:00",
+      "summary": "Captured Tailwind desktop/mobile and local desktop/mobile screenshots for all 23 Marketing leaves under docs/research/assets/marketing-leaves-2026-07-01. Generated capture-summary.json for the batch."
+    },
+    {
+      "step": 24,
+      "name": "marketing-leaf-verification",
+      "status": "completed",
+      "started_at": "2026-07-01T07:55:00+09:00",
+      "completed_at": "2026-07-01T08:05:00+09:00",
+      "summary": "Verified all 23 local Marketing leaf routes render with examples, Preview controls, and desktop horizontal overflow false. Build, validator, lint, and visual audit passed; lint still reports only the existing shadcn fast-refresh warnings."
+    },
+    {
+      "step": 25,
+      "name": "application-ui-official-leaf-parity",
+      "status": "completed",
+      "started_at": "2026-07-01T08:10:00+09:00",
+      "completed_at": "2026-07-01T08:55:00+09:00",
+      "summary": "Aligned Application UI to the 49 public Tailwind Plus leaves by adding official route ids for Card Headings, Lists, Vertical/Sidebar Navigation, Progress Bars, Command Palettes, Modal Dialogs, Notifications, Layout leaf pages, and Home/Detail/Settings Screens. Reordered the visible Application UI sidebar to the official group order. Captured Tailwind desktop/mobile and local desktop/mobile screenshots for all 49 leaves under docs/research/assets/application-ui-leaves-2026-07-01. Build, validator, lint, visual audit, and Chrome route smoke passed with 49/49 routes and no desktop overflow failures."
+    },
+    {
+      "step": 26,
+      "name": "ecommerce-official-leaf-parity",
+      "status": "completed",
+      "started_at": "2026-07-01T09:00:00+09:00",
+      "completed_at": "2026-07-01T09:30:00+09:00",
+      "summary": "Aligned Ecommerce to the 21 public Tailwind Plus leaves by adding Incentives and official plural Page Examples routes for Storefront/Product/Category/Shopping Cart/Checkout/Order Detail/Order History Pages. Reordered the visible Ecommerce sidebar to the live Tailwind leaf set. Captured Tailwind desktop/mobile and local desktop/mobile screenshots for all 21 leaves under docs/research/assets/ecommerce-leaves-2026-07-01. Build, validator, lint, visual audit, and Chrome route smoke passed with 21/21 routes and no desktop overflow failures."
+    },
+    {
+      "step": 27,
+      "name": "documentation-public-surface-pass",
+      "status": "completed",
+      "started_at": "2026-07-01T09:35:00+09:00",
+      "completed_at": "2026-07-01T09:55:00+09:00",
+      "summary": "Mapped public Tailwind Plus Documentation surfaces to local Docs/UI Kit routes: UI Blocks setup docs to Docs / UI Blocks, UI Blocks Elements and Catalyst docs to Docs / Component API, and Catalyst Button docs to UI Kit / Controls. Added docs-ui-blocks and docs-component-api navigation filters and Docs landing entries. Captured Tailwind desktop/mobile and local desktop/mobile screenshots under docs/research/assets/documentation-public-2026-07-01. Build, validator, lint, visual audit, and local route smoke passed with no horizontal overflow."
+    },
+    {
+      "step": 28,
+      "name": "templates-public-gallery-parity",
+      "status": "completed",
+      "started_at": "2026-07-01T10:00:00+09:00",
+      "completed_at": "2026-07-01T10:35:00+09:00",
+      "summary": "Aligned Templates to the public Tailwind Plus product-gallery shape by adding Template Products plus 14 public product routes: Catalyst, Oatmeal, Radiant, Spotlight, Salient, Protocol, Commit, Compass, Primer, Studio, Transmit, Pocket, Syntax, and Keynote. Runtime previews remain UI Dictionary-native and keep the visible Get the code lock action. Captured Tailwind desktop/mobile and local desktop/mobile screenshots for gallery plus all 14 products under docs/research/assets/templates-public-2026-07-01. Build, validator, lint, visual audit, and CDP route smoke passed with no route-title or desktop-overflow failures."
+    },
+    {
+      "step": 29,
+      "name": "ui-kit-catalyst-public-parity",
+      "status": "completed",
+      "started_at": "2026-07-01T10:40:00+09:00",
+      "completed_at": "2026-07-01T11:00:00+09:00",
+      "summary": "Aligned UI Kit to the public Catalyst surface by adding a Component Docs route and exposing it in the UI Kit landing/sidebar. Captured Tailwind desktop/mobile evidence for the Catalyst landing, docs, Button, Input, and Table pages plus local UI Kit overview, Component Docs, Controls, Forms, and Data Display routes under docs/research/assets/ui-kit-public-2026-07-01. Build, validator, lint, visual audit, and CDP route smoke passed with 5/5 routes and no overflow failures."
+    },
+    {
+      "step": 30,
+      "name": "cross-surface-qa-and-ia-cleanup",
+      "status": "completed",
+      "started_at": "2026-07-01T11:05:00+09:00",
+      "completed_at": "2026-07-01T11:25:00+09:00",
+      "summary": "Ran final cross-surface verification for the Tailwind Plus public parity phase. Build, vocabulary validator, lint, and visual audit passed; lint still reports only the pre-existing shadcn fast-refresh warnings. CDP smoke checked all 189 plus-* navigation routes for non-empty rendered content and desktop horizontal overflow, with 0 failures. Added overview page data for Marketing Feedback and Marketing Page Examples group routes found during smoke. Evidence is stored under docs/research/assets/cross-surface-qa-2026-07-01."
+    }
+  ]
+}

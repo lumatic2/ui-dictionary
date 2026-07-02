@@ -1,0 +1,13 @@
+{
+  "url": "https://tailwindcss.com/plus/ui-blocks/application-ui/forms/sign-in-forms",
+  "name": "Sign-in and Registration",
+  "description": "Login and registration form examples for Tailwind CSS, designed and built by the creators of the framework.",
+  "visible_example_count": 4,
+  "visible_example_names": [
+    "Simple",
+    "Simple no labels",
+    "Split screen",
+    "Simple card"
+  ],
+  "raw_component_count": 8
+}

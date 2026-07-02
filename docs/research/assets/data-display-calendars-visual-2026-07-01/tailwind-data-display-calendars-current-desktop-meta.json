@@ -1,0 +1,25 @@
+{
+  "codeCount": 8,
+  "examples": [
+    "Small with meetings",
+    "Month view",
+    "Week view",
+    "Day view",
+    "Year view",
+    "Double",
+    "Borderless stacked",
+    "Borderless side-by-side"
+  ],
+  "h2s": [
+    "Small with meetings",
+    "Month view",
+    "Week view",
+    "Day view",
+    "Year view",
+    "Double",
+    "Borderless stacked",
+    "Borderless side-by-side"
+  ],
+  "previewCount": 9,
+  "title": "Tailwind CSS Calendars - Official Tailwind UI Components"
+}

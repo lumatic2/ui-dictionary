@@ -1,0 +1,18 @@
+{
+  "url": "https://tailwindcss.com/plus/ui-blocks/application-ui/navigation/tabs",
+  "name": "Tabs",
+  "description": "Tab navigation examples for Tailwind CSS, designed and built by the creators of the framework.",
+  "visible_example_count": 9,
+  "visible_example_names": [
+    "Tabs with underline",
+    "Tabs with underline and icons",
+    "Tabs in pills",
+    "Tabs in pills on gray",
+    "Tabs in pills with brand color",
+    "Full-width tabs with underline",
+    "Bar with underline",
+    "Tabs with underline and badges",
+    "Simple"
+  ],
+  "raw_component_count": 18
+}

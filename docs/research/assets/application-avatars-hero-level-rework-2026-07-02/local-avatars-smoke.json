@@ -1,0 +1,60 @@
+[
+  {
+    "viewport": {
+      "width": 1440,
+      "height": 2200
+    },
+    "scrollWidth": 1425,
+    "clientWidth": 1440,
+    "hasHorizontalOverflow": false,
+    "expectedNames": {
+      "Avatar group stacked bottom to top": true,
+      "Circular avatars": true,
+      "Rounded avatars": true,
+      "Circular avatars with top notification": true,
+      "Rounded avatars with top notification": true,
+      "Circular avatars with bottom notification": true,
+      "Rounded avatars with bottom notification": true,
+      "Circular avatars with placeholder icon": true,
+      "Circular avatars with placeholder initials": true,
+      "Avatar group stacked top to bottom": true,
+      "With text": true
+    },
+    "imageSources": [
+      "/favicon.svg"
+    ],
+    "avatarSheetBackgroundCount": 61,
+    "elementOverflows": [],
+    "allExpectedNamesFound": true,
+    "mode": "desktop"
+  },
+  {
+    "viewport": {
+      "width": 390,
+      "height": 1800
+    },
+    "scrollWidth": 375,
+    "clientWidth": 390,
+    "hasHorizontalOverflow": false,
+    "expectedNames": {
+      "Avatar group stacked bottom to top": true,
+      "Circular avatars": true,
+      "Rounded avatars": true,
+      "Circular avatars with top notification": true,
+      "Rounded avatars with top notification": true,
+      "Circular avatars with bottom notification": true,
+      "Rounded avatars with bottom notification": true,
+      "Circular avatars with placeholder icon": true,
+      "Circular avatars with placeholder initials": true,
+      "Avatar group stacked top to bottom": true,
+      "With text": true
+    },
+    "imageSources": [
+      "/favicon.svg"
+    ],
+    "avatarSheetBackgroundCount": 61,
+    "elementOverflows": [],
+    "allExpectedNamesFound": true,
+    "mode": "mobile"
+  }
+]

@@ -1,0 +1,25 @@
+{
+  "codeCount": 8,
+  "examples": [
+    "Simple sidebar",
+    "Simple dark sidebar",
+    "Sidebar with header",
+    "Dark sidebar with header",
+    "With constrained content area",
+    "With off-white background",
+    "Simple brand sidebar",
+    "Brand sidebar with header"
+  ],
+  "h2s": [
+    "Simple sidebar",
+    "Simple dark sidebar",
+    "Sidebar with header",
+    "Dark sidebar with header",
+    "With constrained content area",
+    "With off-white background",
+    "Simple brand sidebar",
+    "Brand sidebar with header"
+  ],
+  "previewCount": 9,
+  "title": "Tailwind CSS Sidebar Layouts - Official Tailwind UI Components"
+}

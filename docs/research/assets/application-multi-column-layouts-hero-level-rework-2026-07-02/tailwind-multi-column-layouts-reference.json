@@ -1,0 +1,188 @@
+{
+  "url": "https://tailwindcss.com/plus/ui-blocks/application-ui/application-shells/multi-column",
+  "checkedAt": "2026-07-02T06:52:58.787Z",
+  "desktop": {
+    "viewport": {
+      "width": 1440,
+      "height": 26000
+    },
+    "expectedFound": [
+      {
+        "name": "Full-width three-column",
+        "found": true
+      },
+      {
+        "name": "Full-width secondary column on right",
+        "found": true
+      },
+      {
+        "name": "Constrained three column",
+        "found": true
+      },
+      {
+        "name": "Constrained with sticky columns",
+        "found": true
+      },
+      {
+        "name": "Full-width with narrow sidebar",
+        "found": true
+      },
+      {
+        "name": "Full-width with narrow sidebar and header",
+        "found": true
+      }
+    ],
+    "images": [],
+    "previewImages": [],
+    "horizontalOverflow": false,
+    "scrollWidth": 1440,
+    "innerWidth": 1440,
+    "scrollHeight": 26000,
+    "headings": [
+      {
+        "text": "Multi-Column Layouts",
+        "top": 152
+      },
+      {
+        "text": "Full-width three-column",
+        "top": 443
+      },
+      {
+        "text": "Full-width three-column",
+        "top": 0
+      },
+      {
+        "text": "Full-width secondary column on right",
+        "top": 1309
+      },
+      {
+        "text": "Full-width secondary column on right",
+        "top": 0
+      },
+      {
+        "text": "Constrained three column",
+        "top": 2175
+      },
+      {
+        "text": "Constrained three column",
+        "top": 0
+      },
+      {
+        "text": "Constrained with sticky columns",
+        "top": 3041
+      },
+      {
+        "text": "Constrained with sticky columns",
+        "top": 0
+      },
+      {
+        "text": "Full-width with narrow sidebar",
+        "top": 3907
+      },
+      {
+        "text": "Full-width with narrow sidebar",
+        "top": 0
+      },
+      {
+        "text": "Full-width with narrow sidebar and header",
+        "top": 4773
+      },
+      {
+        "text": "Full-width with narrow sidebar and header",
+        "top": 0
+      }
+    ]
+  },
+  "mobile": {
+    "viewport": {
+      "width": 390,
+      "height": 26000
+    },
+    "expectedFound": [
+      {
+        "name": "Full-width three-column",
+        "found": true
+      },
+      {
+        "name": "Full-width secondary column on right",
+        "found": true
+      },
+      {
+        "name": "Constrained three column",
+        "found": true
+      },
+      {
+        "name": "Constrained with sticky columns",
+        "found": true
+      },
+      {
+        "name": "Full-width with narrow sidebar",
+        "found": true
+      },
+      {
+        "name": "Full-width with narrow sidebar and header",
+        "found": true
+      }
+    ],
+    "images": [],
+    "previewImages": [],
+    "horizontalOverflow": false,
+    "scrollWidth": 390,
+    "innerWidth": 390,
+    "scrollHeight": 26000,
+    "headings": [
+      {
+        "text": "Multi-Column Layouts",
+        "top": 152
+      },
+      {
+        "text": "Full-width three-column",
+        "top": 616
+      },
+      {
+        "text": "Full-width three-column",
+        "top": 0
+      },
+      {
+        "text": "Full-width secondary column on right",
+        "top": 1572
+      },
+      {
+        "text": "Full-width secondary column on right",
+        "top": 0
+      },
+      {
+        "text": "Constrained three column",
+        "top": 2528
+      },
+      {
+        "text": "Constrained three column",
+        "top": 0
+      },
+      {
+        "text": "Constrained with sticky columns",
+        "top": 3693
+      },
+      {
+        "text": "Constrained with sticky columns",
+        "top": 0
+      },
+      {
+        "text": "Full-width with narrow sidebar",
+        "top": 4553
+      },
+      {
+        "text": "Full-width with narrow sidebar",
+        "top": 0
+      },
+      {
+        "text": "Full-width with narrow sidebar and header",
+        "top": 5501
+      },
+      {
+        "text": "Full-width with narrow sidebar and header",
+        "top": 0
+      }
+    ]
+  }
+}

@@ -1,0 +1,43 @@
+{
+  "capturedAt": "2026-07-02T08:42:24.158Z",
+  "desktop": {
+    "url": "http://127.0.0.1:5178/?filter=nav%3Aplus-navigation-breadcrumbs",
+    "viewport": {
+      "width": 1440,
+      "height": 1800
+    },
+    "present": {
+      "Contained": true,
+      "Full-width bar": true,
+      "Simple with chevrons": true,
+      "Simple with slashes": true
+    },
+    "allExpectedNamesFound": true,
+    "previewImages": [],
+    "previewImageCount": 0,
+    "horizontalOverflow": false,
+    "scrollWidth": 1425,
+    "clientWidth": 1440,
+    "bodyTextSample": "NAVIGATION\n\nMarketing\nApplication UI\nEcommerce\nDocumentation\n\nUI Blocks\n\n선택한 화면 맥락의 블록 목차\n\nApplication UI\n146\nApplication Shells\n17\nStacked Layouts\n3\nSidebar Layouts\n3\nMulti-Column Layouts\n3\nHeadings\n3\nPage Headings\n3\nCard Headings\n3\nSection Headings\n3\nData Display\n68\nDescription Lists\n2\nStats\n1\nCalendars\n3\nLists\n41\nStacked Lists\n3\nTables\n1\nGrid Lists\n2\nFeeds\n3\nForms\n62\nForm Layouts\n2\nInput Groups\n2\nSelect Menus\n3\nSign-in and Registration\n2\nTextareas\n2\nRadio Groups\n1\nCheckboxes\n2\nToggles\n3\nActio"
+  },
+  "mobile390": {
+    "url": "http://127.0.0.1:5178/?filter=nav%3Aplus-navigation-breadcrumbs",
+    "viewport": {
+      "width": 390,
+      "height": 1400
+    },
+    "present": {
+      "Contained": true,
+      "Full-width bar": true,
+      "Simple with chevrons": true,
+      "Simple with slashes": true
+    },
+    "allExpectedNamesFound": true,
+    "previewImages": [],
+    "previewImageCount": 0,
+    "horizontalOverflow": false,
+    "scrollWidth": 390,
+    "clientWidth": 390,
+    "bodyTextSample": "UI 용어 사전\nUI Blocks\n›\nApplication UI\n›\nBreadcrumbs\n\nPLUS / UI BLOCKS / APPLICATION UI / NAVIGATION / BREADCRUMBS\n\nBreadcrumbs\n\n깊은 정보 구조에서 현재 위치와 상위 경로를 보여주는 경로 내비게이션 패턴입니다.\n\nContained\nProjects\nProject Nero\nFull-width bar\nProjects\nProject Nero\nSimple with chevrons\nProjects\nProject Nero\nSimple with slashes\n/\nProjects\n/\nProject Nero"
+  }
+}

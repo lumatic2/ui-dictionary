@@ -1,0 +1,642 @@
+[
+  {
+    "slug": "ui-blocks-documentation",
+    "axis": "Documentation",
+    "group": "UI Blocks",
+    "url": "https://tailwindcss.com/plus/ui-blocks/documentation",
+    "bodySample": "Introducing OatmealOur new multi-theme marketing site kitUI BlocksTemplatesUI KitSign inGet full accessMarketingApplication UIEcommerceDocumentationGetting startedGetting set upUsing HTMLUsing ReactUsing VueAssetsElementsIntroductionAutocompleteCommand paletteCopy buttonDialogDisclosureDropdown menuPopoverSelectTabs5-day Mini-CourseBuild UIs that don’t suck.Short, tactical video lessons from the creator of Tailwind CSS, delivered directly to your inbox every day for a week.Get the free courseUI BlocksDocumentationUI Blocks/ DocsGetting set upRequirementsAll of the components in Tailwind Plus are designed for the latest version of Tailwind CSS, which is currently Tailwind CSS v4.2. To make sure that you are on the latest version of Tailwind, update via npm:npm install tailwindcss@latestIf you're new to Tailwind CSS, you'll want to read the Tailwind CSS documentation as well to get the most out of Tailwind Plus.Add the Inter font familyWe've used Inter for all of the Tailwind Plus examples because it's a beautiful font for UI design and is completely open-source and free. Using a custom font is nice because it allows us to make the components look the same on all browsers and operating systems.You can use any font you want in your own project of course, but if you'd like to use Inter, the easiest way is to first add it via the CDN:<link rel=\"stylesheet\" href=\"https://rsms.me/inte",
+    "h1": "Getting set up",
+    "hasCodeExample": true,
+    "hasGetFullAccess": true,
+    "hasSignIn": true,
+    "headings": [
+      {
+        "tag": "H3",
+        "text": "Getting started"
+      },
+      {
+        "tag": "H3",
+        "text": "Elements"
+      },
+      {
+        "tag": "H3",
+        "text": "Build UIs that don’t suck."
+      },
+      {
+        "tag": "H1",
+        "text": "Getting set up"
+      },
+      {
+        "tag": "H2",
+        "text": "Requirements"
+      },
+      {
+        "tag": "H2",
+        "text": "Add the Inter font family"
+      },
+      {
+        "tag": "H2",
+        "text": "Dark mode support"
+      },
+      {
+        "tag": "H2",
+        "text": "On this page"
+      },
+      {
+        "tag": "H3",
+        "text": "Marketing"
+      },
+      {
+        "tag": "H3",
+        "text": "Application UI"
+      },
+      {
+        "tag": "H3",
+        "text": "Ecommerce"
+      },
+      {
+        "tag": "H3",
+        "text": "Templates & UI Kits"
+      }
+    ],
+    "navLinks": [
+      {
+        "href": "https://tailwindcss.com/plus/ui-blocks",
+        "text": "UI Blocks"
+      },
+      {
+        "href": "https://tailwindcss.com/plus/ui-blocks/documentation",
+        "text": "Documentation"
+      },
+      {
+        "href": "https://tailwindcss.com/plus/ui-blocks",
+        "text": "UI Blocks"
+      },
+      {
+        "href": "https://tailwindcss.com/plus/ui-blocks/documentation#requirements",
+        "text": "Requirements"
+      },
+      {
+        "href": "https://tailwindcss.com/plus/ui-blocks/documentation#add-the-inter-font-family",
+        "text": "Add the Inter font family"
+      },
+      {
+        "href": "https://tailwindcss.com/plus/ui-blocks/documentation#dark-mode-support",
+        "text": "Dark mode support"
+      }
+    ],
+    "title": "Tailwind Plus - Official Tailwind UI Components & Templates"
+  },
+  {
+    "slug": "ui-blocks-documentation-elements",
+    "axis": "Documentation",
+    "group": "UI Blocks",
+    "url": "https://tailwindcss.com/plus/ui-blocks/documentation/elements",
+    "bodySample": "Introducing OatmealOur new multi-theme marketing site kitUI BlocksTemplatesUI KitSign inGet full accessMarketingApplication UIEcommerceDocumentationGetting startedGetting set upUsing HTMLUsing ReactUsing VueAssetsElementsIntroductionAutocompleteCommand paletteCopy buttonDialogDisclosureDropdown menuPopoverSelectTabs5-day Mini-CourseBuild UIs that don’t suck.Short, tactical video lessons from the creator of Tailwind CSS, delivered directly to your inbox every day for a week.Get the free courseUI BlocksDocumentationUI Blocks/ DocsElementsA commercial license is required to use Tailwind Plus Elements. Purchase Tailwind Plus to obtain a license.Tailwind Plus Elements is a JavaScript UI component library that powers all the interactive behavior in our HTML snippets. It has no dependencies on JavaScript frameworks like React, and works with any modern stack—Next.js, Rails, Laravel, Svelte, Astro, or even plain HTML.Available componentsTailwind Plus Elements includes the following UI components:AutocompleteCommand paletteDialogDisclosureDropdown menuPopoverSelectTabsBrowser supportElements targets the same modern browsers supported by Tailwind CSS v4.0, and relies on the following minimum versions:Chrome 111 (released March 2023)Safari 16.4 (released March 2023)Firefox 128 (released July 2024)Installing in your projectUsing CDNThe easiest way to install Elements is via the CDN. To do ",
+    "h1": "Elements",
+    "hasCodeExample": true,
+    "hasGetFullAccess": true,
+    "hasSignIn": true,
+    "headings": [
+      {
+        "tag": "H3",
+        "text": "Getting started"
+      },
+      {
+        "tag": "H3",
+        "text": "Elements"
+      },
+      {
+        "tag": "H3",
+        "text": "Build UIs that don’t suck."
+      },
+      {
+        "tag": "H1",
+        "text": "Elements"
+      },
+      {
+        "tag": "H2",
+        "text": "Available components"
+      },
+      {
+        "tag": "H2",
+        "text": "Browser support"
+      },
+      {
+        "tag": "H2",
+        "text": "Installing in your project"
+      },
+      {
+        "tag": "H3",
+        "text": "Using CDN"
+      },
+      {
+        "tag": "H3",
+        "text": "Using npm"
+      },
+      {
+        "tag": "H3",
+        "text": "Using with React"
+      },
+      {
+        "tag": "H2",
+        "text": "Detecting when ready"
+      },
+      {
+        "tag": "H2",
+        "text": "Documentation for LLMs"
+      },
+      {
+        "tag": "H2",
+        "text": "On this page"
+      },
+      {
+        "tag": "H3",
+        "text": "Marketing"
+      },
+      {
+        "tag": "H3",
+        "text": "Application UI"
+      },
+      {
+        "tag": "H3",
+        "text": "Ecommerce"
+      },
+      {
+        "tag": "H3",
+        "text": "Templates & UI Kits"
+      }
+    ],
+    "navLinks": [
+      {
+        "href": "https://tailwindcss.com/plus/ui-blocks",
+        "text": "UI Blocks"
+      },
+      {
+        "href": "https://tailwindcss.com/plus/ui-blocks/documentation",
+        "text": "Documentation"
+      },
+      {
+        "href": "https://tailwindcss.com/plus/ui-blocks",
+        "text": "UI Blocks"
+      },
+      {
+        "href": "https://tailwindcss.com/plus/ui-blocks/documentation/elements#available-components",
+        "text": "Available components"
+      },
+      {
+        "href": "https://tailwindcss.com/plus/ui-blocks/documentation/elements#browser-support",
+        "text": "Browser support"
+      },
+      {
+        "href": "https://tailwindcss.com/plus/ui-blocks/documentation/elements#installing-in-your-project",
+        "text": "Installing in your project"
+      },
+      {
+        "href": "https://tailwindcss.com/plus/ui-blocks/documentation/elements#using-cdn",
+        "text": "Using CDN"
+      },
+      {
+        "href": "https://tailwindcss.com/plus/ui-blocks/documentation/elements#using-npm",
+        "text": "Using npm"
+      },
+      {
+        "href": "https://tailwindcss.com/plus/ui-blocks/documentation/elements#using-with-react",
+        "text": "Using with React"
+      },
+      {
+        "href": "https://tailwindcss.com/plus/ui-blocks/documentation/elements#detecting-when-ready",
+        "text": "Detecting when ready"
+      },
+      {
+        "href": "https://tailwindcss.com/plus/ui-blocks/documentation/elements#documentation-for-llms",
+        "text": "Documentation for LLMs"
+      }
+    ],
+    "title": "Tailwind Plus - Official Tailwind UI Components & Templates"
+  },
+  {
+    "slug": "catalyst-docs",
+    "axis": "Documentation",
+    "group": "UI Kit",
+    "url": "https://catalyst.tailwindui.com/docs",
+    "bodySample": "((a,b,c,d,e,f,g,h)=>{let i=document.documentElement,j=[\"light\",\"dark\"];function k(b){var c;(Array.isArray(a)?a:[a]).forEach(a=>{let c=\"class\"===a,d=c&&f?e.map(a=>f[a]||a):e;c?(i.classList.remove(...d),i.classList.add(f&&f[b]?f[b]:b)):i.setAttribute(a,b)}),c=b,h&&j.includes(c)&&(i.style.colorScheme=c)}if(d)k(d);else try{let a=localStorage.getItem(b)||c,d=g&&\"system\"===a?window.matchMedia(\"(prefers-color-scheme: dark)\").matches?\"dark\":\"light\":a;k(d)}catch(a){}})(\"class\",\"theme\",\"system\",null,[\"light\",\"dark\"],null,true,true)DemoDocsBuy UI Kit →Getting startedSidebar layoutStacked layoutAuth layoutAlertAvatarBadgeButtonCheckboxComboboxDescription listDialogDividerDropdownFieldsetHeadingInputListboxNavbarPaginationRadio buttonSelectSidebarSwitchTableTextTextareaGetting startedLayoutsSidebar layoutStacked layoutAuth layoutNewComponentsAlertAvatarBadgeButtonCheckboxComboboxNewDescription listDialogDividerDropdownFieldsetHeadingInputListboxNavbarPaginationRadio buttonSelectSidebarSwitchTableTextTextarea Getting started Catalyst is a starter kit for building your own component systems with React and Tailwind CSS — designed and developed by the Tailwind CSS team. It's a collection of beautiful, production-ready UI components you drop into your projects alongside your own code that are yours to customize, adapt, and make your own. Open in new tab Before you start Before you do anything el",
+    "h1": "Getting started",
+    "hasCodeExample": true,
+    "hasGetFullAccess": false,
+    "hasSignIn": false,
+    "headings": [
+      {
+        "tag": "H1",
+        "text": "Getting started"
+      },
+      {
+        "tag": "H2",
+        "text": "Before you start"
+      },
+      {
+        "tag": "H2",
+        "text": "Adding Catalyst to your project"
+      },
+      {
+        "tag": "H3",
+        "text": "Installing dependencies"
+      },
+      {
+        "tag": "H3",
+        "text": "Client-side router integration"
+      },
+      {
+        "tag": "H3",
+        "text": "Optional: Setup Inter font family"
+      },
+      {
+        "tag": "H3",
+        "text": "Optional: Install Heroicons"
+      },
+      {
+        "tag": "H2",
+        "text": "Framework integration examples"
+      },
+      {
+        "tag": "H3",
+        "text": "Integrating with Next.js"
+      },
+      {
+        "tag": "H3",
+        "text": "Integrating with Remix"
+      },
+      {
+        "tag": "H3",
+        "text": "Integrating with Inertia.js"
+      },
+      {
+        "tag": "H2",
+        "text": "On this page"
+      }
+    ],
+    "navLinks": [
+      {
+        "href": "https://catalyst.tailwindui.com/docs",
+        "text": "Getting started"
+      },
+      {
+        "href": "https://catalyst.tailwindui.com/docs/sidebar-layout",
+        "text": "Sidebar layout"
+      },
+      {
+        "href": "https://catalyst.tailwindui.com/docs/stacked-layout",
+        "text": "Stacked layout"
+      },
+      {
+        "href": "https://catalyst.tailwindui.com/docs/auth-layout",
+        "text": "Auth layoutNew"
+      },
+      {
+        "href": "https://catalyst.tailwindui.com/docs/alert",
+        "text": "Alert"
+      },
+      {
+        "href": "https://catalyst.tailwindui.com/docs/avatar",
+        "text": "Avatar"
+      },
+      {
+        "href": "https://catalyst.tailwindui.com/docs/badge",
+        "text": "Badge"
+      },
+      {
+        "href": "https://catalyst.tailwindui.com/docs/button",
+        "text": "Button"
+      },
+      {
+        "href": "https://catalyst.tailwindui.com/docs/checkbox",
+        "text": "Checkbox"
+      },
+      {
+        "href": "https://catalyst.tailwindui.com/docs/combobox",
+        "text": "ComboboxNew"
+      },
+      {
+        "href": "https://catalyst.tailwindui.com/docs/description-list",
+        "text": "Description list"
+      },
+      {
+        "href": "https://catalyst.tailwindui.com/docs/dialog",
+        "text": "Dialog"
+      },
+      {
+        "href": "https://catalyst.tailwindui.com/docs/divider",
+        "text": "Divider"
+      },
+      {
+        "href": "https://catalyst.tailwindui.com/docs/dropdown",
+        "text": "Dropdown"
+      },
+      {
+        "href": "https://catalyst.tailwindui.com/docs/fieldset",
+        "text": "Fieldset"
+      },
+      {
+        "href": "https://catalyst.tailwindui.com/docs/heading",
+        "text": "Heading"
+      },
+      {
+        "href": "https://catalyst.tailwindui.com/docs/input",
+        "text": "Input"
+      },
+      {
+        "href": "https://catalyst.tailwindui.com/docs/listbox",
+        "text": "Listbox"
+      },
+      {
+        "href": "https://catalyst.tailwindui.com/docs/navbar",
+        "text": "Navbar"
+      },
+      {
+        "href": "https://catalyst.tailwindui.com/docs/pagination",
+        "text": "Pagination"
+      },
+      {
+        "href": "https://catalyst.tailwindui.com/docs/radio",
+        "text": "Radio button"
+      },
+      {
+        "href": "https://catalyst.tailwindui.com/docs/select",
+        "text": "Select"
+      },
+      {
+        "href": "https://catalyst.tailwindui.com/docs/sidebar",
+        "text": "Sidebar"
+      },
+      {
+        "href": "https://catalyst.tailwindui.com/docs/switch",
+        "text": "Switch"
+      },
+      {
+        "href": "https://catalyst.tailwindui.com/docs/table",
+        "text": "Table"
+      },
+      {
+        "href": "https://catalyst.tailwindui.com/docs/text",
+        "text": "Text"
+      },
+      {
+        "href": "https://catalyst.tailwindui.com/docs/textarea",
+        "text": "Textarea"
+      },
+      {
+        "href": "https://catalyst.tailwindui.com/docs#before-you-start",
+        "text": "Before you start"
+      },
+      {
+        "href": "https://catalyst.tailwindui.com/docs#adding-catalyst-to-your-project",
+        "text": "Adding Catalyst to your project"
+      },
+      {
+        "href": "https://catalyst.tailwindui.com/docs#installing-dependencies",
+        "text": "Installing dependencies"
+      },
+      {
+        "href": "https://catalyst.tailwindui.com/docs#client-side-router-integration",
+        "text": "Client-side router integration"
+      },
+      {
+        "href": "https://catalyst.tailwindui.com/docs#optional-setup-inter-font-family",
+        "text": "Optional: Setup Inter font family"
+      },
+      {
+        "href": "https://catalyst.tailwindui.com/docs#optional-install-heroicons",
+        "text": "Optional: Install Heroicons"
+      },
+      {
+        "href": "https://catalyst.tailwindui.com/docs#framework-integration-examples",
+        "text": "Framework integration examples"
+      },
+      {
+        "href": "https://catalyst.tailwindui.com/docs#integrating-with-next-js",
+        "text": "Integrating with Next.js"
+      },
+      {
+        "href": "https://catalyst.tailwindui.com/docs#integrating-with-remix",
+        "text": "Integrating with Remix"
+      },
+      {
+        "href": "https://catalyst.tailwindui.com/docs#integrating-with-inertia-js",
+        "text": "Integrating with Inertia.js"
+      }
+    ],
+    "title": "Getting started - Catalyst UI Kit for Tailwind CSS"
+  },
+  {
+    "slug": "catalyst-button-docs",
+    "axis": "Documentation",
+    "group": "UI Kit",
+    "url": "https://catalyst.tailwindui.com/docs/button",
+    "bodySample": "((a,b,c,d,e,f,g,h)=>{let i=document.documentElement,j=[\"light\",\"dark\"];function k(b){var c;(Array.isArray(a)?a:[a]).forEach(a=>{let c=\"class\"===a,d=c&&f?e.map(a=>f[a]||a):e;c?(i.classList.remove(...d),i.classList.add(f&&f[b]?f[b]:b)):i.setAttribute(a,b)}),c=b,h&&j.includes(c)&&(i.style.colorScheme=c)}if(d)k(d);else try{let a=localStorage.getItem(b)||c,d=g&&\"system\"===a?window.matchMedia(\"(prefers-color-scheme: dark)\").matches?\"dark\":\"light\":a;k(d)}catch(a){}})(\"class\",\"theme\",\"system\",null,[\"light\",\"dark\"],null,true,true)DemoDocsBuy UI Kit →Getting startedSidebar layoutStacked layoutAuth layoutAlertAvatarBadgeButtonCheckboxComboboxDescription listDialogDividerDropdownFieldsetHeadingInputListboxNavbarPaginationRadio buttonSelectSidebarSwitchTableTextTextareaGetting startedLayoutsSidebar layoutStacked layoutAuth layoutNewComponentsAlertAvatarBadgeButtonCheckboxComboboxNewDescription listDialogDividerDropdownFieldsetHeadingInputListboxNavbarPaginationRadio buttonSelectSidebarSwitchTableTextTextarea Button You know, those things you click to do just about anything in a web application. Save changes import { Button } from '@/components/button' function Example() { return <Button>Save changes</Button> } import { Button } from '@/components/button' function Example() { return <Button>Save changes</Button> } Component API PropDefaultDescriptionButton extends the Headless UI Button comp",
+    "h1": "Button",
+    "hasCodeExample": true,
+    "hasGetFullAccess": false,
+    "hasSignIn": false,
+    "headings": [
+      {
+        "tag": "H1",
+        "text": "Button"
+      },
+      {
+        "tag": "H2",
+        "text": "Component API"
+      },
+      {
+        "tag": "H2",
+        "text": "Examples"
+      },
+      {
+        "tag": "H3",
+        "text": "Button colors"
+      },
+      {
+        "tag": "H3",
+        "text": "Outline buttons"
+      },
+      {
+        "tag": "H3",
+        "text": "Plain buttons"
+      },
+      {
+        "tag": "H3",
+        "text": "Disabled states"
+      },
+      {
+        "tag": "H3",
+        "text": "With icon"
+      },
+      {
+        "tag": "H3",
+        "text": "Using as a link"
+      },
+      {
+        "tag": "H2",
+        "text": "Appendix"
+      },
+      {
+        "tag": "H3",
+        "text": "Solid color reference"
+      },
+      {
+        "tag": "H2",
+        "text": "On this page"
+      }
+    ],
+    "navLinks": [
+      {
+        "href": "https://catalyst.tailwindui.com/docs",
+        "text": "Getting started"
+      },
+      {
+        "href": "https://catalyst.tailwindui.com/docs/sidebar-layout",
+        "text": "Sidebar layout"
+      },
+      {
+        "href": "https://catalyst.tailwindui.com/docs/stacked-layout",
+        "text": "Stacked layout"
+      },
+      {
+        "href": "https://catalyst.tailwindui.com/docs/auth-layout",
+        "text": "Auth layoutNew"
+      },
+      {
+        "href": "https://catalyst.tailwindui.com/docs/alert",
+        "text": "Alert"
+      },
+      {
+        "href": "https://catalyst.tailwindui.com/docs/avatar",
+        "text": "Avatar"
+      },
+      {
+        "href": "https://catalyst.tailwindui.com/docs/badge",
+        "text": "Badge"
+      },
+      {
+        "href": "https://catalyst.tailwindui.com/docs/button",
+        "text": "Button"
+      },
+      {
+        "href": "https://catalyst.tailwindui.com/docs/checkbox",
+        "text": "Checkbox"
+      },
+      {
+        "href": "https://catalyst.tailwindui.com/docs/combobox",
+        "text": "ComboboxNew"
+      },
+      {
+        "href": "https://catalyst.tailwindui.com/docs/description-list",
+        "text": "Description list"
+      },
+      {
+        "href": "https://catalyst.tailwindui.com/docs/dialog",
+        "text": "Dialog"
+      },
+      {
+        "href": "https://catalyst.tailwindui.com/docs/divider",
+        "text": "Divider"
+      },
+      {
+        "href": "https://catalyst.tailwindui.com/docs/dropdown",
+        "text": "Dropdown"
+      },
+      {
+        "href": "https://catalyst.tailwindui.com/docs/fieldset",
+        "text": "Fieldset"
+      },
+      {
+        "href": "https://catalyst.tailwindui.com/docs/heading",
+        "text": "Heading"
+      },
+      {
+        "href": "https://catalyst.tailwindui.com/docs/input",
+        "text": "Input"
+      },
+      {
+        "href": "https://catalyst.tailwindui.com/docs/listbox",
+        "text": "Listbox"
+      },
+      {
+        "href": "https://catalyst.tailwindui.com/docs/navbar",
+        "text": "Navbar"
+      },
+      {
+        "href": "https://catalyst.tailwindui.com/docs/pagination",
+        "text": "Pagination"
+      },
+      {
+        "href": "https://catalyst.tailwindui.com/docs/radio",
+        "text": "Radio button"
+      },
+      {
+        "href": "https://catalyst.tailwindui.com/docs/select",
+        "text": "Select"
+      },
+      {
+        "href": "https://catalyst.tailwindui.com/docs/sidebar",
+        "text": "Sidebar"
+      },
+      {
+        "href": "https://catalyst.tailwindui.com/docs/switch",
+        "text": "Switch"
+      },
+      {
+        "href": "https://catalyst.tailwindui.com/docs/table",
+        "text": "Table"
+      },
+      {
+        "href": "https://catalyst.tailwindui.com/docs/text",
+        "text": "Text"
+      },
+      {
+        "href": "https://catalyst.tailwindui.com/docs/textarea",
+        "text": "Textarea"
+      },
+      {
+        "href": "https://catalyst.tailwindui.com/docs/button#component-api",
+        "text": "Component API"
+      },
+      {
+        "href": "https://catalyst.tailwindui.com/docs/button#examples",
+        "text": "Examples"
+      },
+      {
+        "href": "https://catalyst.tailwindui.com/docs/button#button-colors",
+        "text": "Button colors"
+      },
+      {
+        "href": "https://catalyst.tailwindui.com/docs/button#outline-buttons",
+        "text": "Outline buttons"
+      },
+      {
+        "href": "https://catalyst.tailwindui.com/docs/button#plain-buttons",
+        "text": "Plain buttons"
+      },
+      {
+        "href": "https://catalyst.tailwindui.com/docs/button#disabled-states",
+        "text": "Disabled states"
+      },
+      {
+        "href": "https://catalyst.tailwindui.com/docs/button#with-icon",
+        "text": "With icon"
+      },
+      {
+        "href": "https://catalyst.tailwindui.com/docs/button#using-as-a-link",
+        "text": "Using as a link"
+      },
+      {
+        "href": "https://catalyst.tailwindui.com/docs/button#appendix",
+        "text": "Appendix"
+      },
+      {
+        "href": "https://catalyst.tailwindui.com/docs/button#solid-color-reference",
+        "text": "Solid color reference"
+      }
+    ],
+    "title": "Button - Catalyst UI Kit for Tailwind CSS"
+  }
+]

@@ -1,0 +1,13 @@
+{
+  "url": "https://tailwindcss.com/plus/ui-blocks/ecommerce/components/product-quickviews",
+  "name": "Product Quickviews",
+  "description": "Ecommerce product quick preview examples for Tailwind CSS, designed and built by the creators of the framework.",
+  "visible_example_count": 4,
+  "visible_example_names": [
+    "With color and size selector",
+    "With color selector, size selector, and details link",
+    "With large size selector",
+    "With color selector and description"
+  ],
+  "raw_component_count": 8
+}

@@ -1,0 +1,25 @@
+{
+  "url": "https://tailwindcss.com/plus/ui-blocks/application-ui/elements/badges",
+  "name": "Badges",
+  "description": "Badge, chip, and pill examples for Tailwind CSS, designed and built by the creators of the framework.",
+  "visible_example_count": 16,
+  "visible_example_names": [
+    "With border",
+    "With border and dot",
+    "Pill with border",
+    "Pill with border and dot",
+    "With border and remove button",
+    "Flat",
+    "Flat pill",
+    "Flat with dot",
+    "Flat pill with dot",
+    "Flat with remove button",
+    "Small with border",
+    "Small flat",
+    "Small pill with border",
+    "Small flat pill",
+    "Small flat with dot",
+    "Small flat pill with dot"
+  ],
+  "raw_component_count": 32
+}

@@ -1,0 +1,12 @@
+{
+  "url": "https://tailwindcss.com/plus/ui-blocks/application-ui/navigation/pagination",
+  "name": "Pagination",
+  "description": "Pagination examples for Tailwind CSS, designed and built by the creators of the framework.",
+  "visible_example_count": 3,
+  "visible_example_names": [
+    "Card footer with page buttons",
+    "Centered page numbers",
+    "Simple card footer"
+  ],
+  "raw_component_count": 6
+}

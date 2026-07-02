@@ -1,0 +1,10 @@
+{
+  "completed_at": "2026-07-01T11:25:00+09:00",
+  "plus_nav_routes": 189,
+  "plus_nav_failures": 0,
+  "build": "passed",
+  "validator": "passed, 527 terms",
+  "lint": "passed with existing shadcn fast-refresh warnings",
+  "visual_audit": "passed, 527 variants, 6 known fallback variants",
+  "smoke_summary": "plus-nav-smoke-summary.json"
+}

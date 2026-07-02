@@ -1,0 +1,17 @@
+{
+  "bodyLength": 1216,
+  "clientWidth": 2545,
+  "getCodeMentions": 3,
+  "headings": [
+    "UI 용어 사전",
+    "CTA Sections",
+    "Centered CTA",
+    "Split CTA",
+    "Full-width band CTA"
+  ],
+  "horizontalOverflow": false,
+  "previewMentions": 3,
+  "scrollWidth": 2545,
+  "title": "UI 용어 사전",
+  "url": "http://127.0.0.1:5181/?filter=nav%3Aplus-marketing-cta-sections"
+}

@@ -1,0 +1,21 @@
+{
+  "url": "https://tailwindcss.com/plus/ui-blocks/application-ui/overlays/drawers",
+  "name": "Drawers",
+  "description": "Off-screen drawer examples for Tailwind CSS, designed and built by the creators of the framework.",
+  "visible_example_count": 12,
+  "visible_example_names": [
+    "With close button on outside",
+    "Empty",
+    "Wide empty",
+    "With background overlay",
+    "With branded header",
+    "With sticky footer",
+    "Create project form example",
+    "Wide create project form example",
+    "User profile example",
+    "Wide horizontal user profile example",
+    "Contact list example",
+    "File details example"
+  ],
+  "raw_component_count": 24
+}

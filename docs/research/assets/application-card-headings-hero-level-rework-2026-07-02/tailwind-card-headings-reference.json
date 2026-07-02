@@ -1,0 +1,188 @@
+{
+  "url": "https://tailwindcss.com/plus/ui-blocks/application-ui/headings/card-headings",
+  "checkedAt": "2026-07-02T07:12:45.589Z",
+  "desktop": {
+    "viewport": {
+      "width": 1440,
+      "height": 26000
+    },
+    "expectedFound": [
+      {
+        "name": "Simple",
+        "found": true
+      },
+      {
+        "name": "With action",
+        "found": true
+      },
+      {
+        "name": "With avatar and actions",
+        "found": true
+      },
+      {
+        "name": "With description and action",
+        "found": true
+      },
+      {
+        "name": "With description",
+        "found": true
+      },
+      {
+        "name": "With avatar, meta, and dropdown",
+        "found": true
+      }
+    ],
+    "images": [],
+    "previewImages": [],
+    "horizontalOverflow": false,
+    "scrollWidth": 1440,
+    "innerWidth": 1440,
+    "scrollHeight": 26000,
+    "headings": [
+      {
+        "text": "Card Headings",
+        "top": 152
+      },
+      {
+        "text": "Simple",
+        "top": 387
+      },
+      {
+        "text": "Simple",
+        "top": 0
+      },
+      {
+        "text": "With action",
+        "top": 900
+      },
+      {
+        "text": "With action",
+        "top": 0
+      },
+      {
+        "text": "With avatar and actions",
+        "top": 1425
+      },
+      {
+        "text": "With avatar and actions",
+        "top": 0
+      },
+      {
+        "text": "With description and action",
+        "top": 1962
+      },
+      {
+        "text": "With description and action",
+        "top": 0
+      },
+      {
+        "text": "With description",
+        "top": 2499
+      },
+      {
+        "text": "With description",
+        "top": 0
+      },
+      {
+        "text": "With avatar, meta, and dropdown",
+        "top": 3036
+      },
+      {
+        "text": "With avatar, meta, and dropdown",
+        "top": 0
+      }
+    ]
+  },
+  "mobile": {
+    "viewport": {
+      "width": 390,
+      "height": 26000
+    },
+    "expectedFound": [
+      {
+        "name": "Simple",
+        "found": true
+      },
+      {
+        "name": "With action",
+        "found": true
+      },
+      {
+        "name": "With avatar and actions",
+        "found": true
+      },
+      {
+        "name": "With description and action",
+        "found": true
+      },
+      {
+        "name": "With description",
+        "found": true
+      },
+      {
+        "name": "With avatar, meta, and dropdown",
+        "found": true
+      }
+    ],
+    "images": [],
+    "previewImages": [],
+    "horizontalOverflow": false,
+    "scrollWidth": 390,
+    "innerWidth": 390,
+    "scrollHeight": 26000,
+    "headings": [
+      {
+        "text": "Card Headings",
+        "top": 152
+      },
+      {
+        "text": "Simple",
+        "top": 484
+      },
+      {
+        "text": "Simple",
+        "top": 0
+      },
+      {
+        "text": "With action",
+        "top": 991
+      },
+      {
+        "text": "With action",
+        "top": 0
+      },
+      {
+        "text": "With avatar and actions",
+        "top": 1510
+      },
+      {
+        "text": "With avatar and actions",
+        "top": 0
+      },
+      {
+        "text": "With description and action",
+        "top": 2093
+      },
+      {
+        "text": "With description and action",
+        "top": 0
+      },
+      {
+        "text": "With description",
+        "top": 2696
+      },
+      {
+        "text": "With description",
+        "top": 0
+      },
+      {
+        "text": "With avatar, meta, and dropdown",
+        "top": 3247
+      },
+      {
+        "text": "With avatar, meta, and dropdown",
+        "top": 0
+      }
+    ]
+  }
+}

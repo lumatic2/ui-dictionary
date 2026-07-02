@@ -1,0 +1,41 @@
+{
+  "clientWidth": 2545,
+  "headerImages": [
+    {
+      "h": 916,
+      "src": "/assets/header-sections/with-stats-bg-v2.png",
+      "w": 1717
+    },
+    {
+      "h": 941,
+      "src": "/assets/header-sections/with-cards-bg-v2.png",
+      "w": 1672
+    },
+    {
+      "h": 916,
+      "src": "/assets/header-sections/simple-bg-image-v2.png",
+      "w": 1717
+    },
+    {
+      "h": 818,
+      "src": "/assets/header-sections/centered-bg-image-v2.png",
+      "w": 1923
+    }
+  ],
+  "headings": [
+    "UI 용어 사전",
+    "Header Sections",
+    "With stats",
+    "Centered",
+    "Centered with eyebrow",
+    "With cards",
+    "Simple",
+    "Simple with eyebrow",
+    "Simple with background image",
+    "Centered with background image"
+  ],
+  "horizontalOverflow": false,
+  "scrollWidth": 2545,
+  "title": "UI 용어 사전",
+  "url": "http://127.0.0.1:5178/?filter=nav%3Aplus-marketing-header-sections"
+}

@@ -9,6 +9,7 @@ node_modules/
 .design/
 .wrangler/
 .playwright-mcp/
+**/.chrome-profile*/
 **/*.tsbuildinfo
 vite-*.log
 

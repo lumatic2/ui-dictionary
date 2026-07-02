@@ -1,0 +1,153 @@
+{
+  "url": "http://127.0.0.1:5178/?filter=nav%3Aplus-application-shells-multi-column-layouts",
+  "checkedAt": "2026-07-02T06:53:20.761Z",
+  "expected": [
+    "Full-width three-column",
+    "Full-width secondary column on right",
+    "Constrained three column",
+    "Constrained with sticky columns",
+    "Full-width with narrow sidebar",
+    "Full-width with narrow sidebar and header"
+  ],
+  "desktop": {
+    "viewport": {
+      "width": 1440,
+      "height": 26000
+    },
+    "expectedFound": [
+      {
+        "name": "Full-width three-column",
+        "found": true
+      },
+      {
+        "name": "Full-width secondary column on right",
+        "found": true
+      },
+      {
+        "name": "Constrained three column",
+        "found": true
+      },
+      {
+        "name": "Constrained with sticky columns",
+        "found": true
+      },
+      {
+        "name": "Full-width with narrow sidebar",
+        "found": true
+      },
+      {
+        "name": "Full-width with narrow sidebar and header",
+        "found": true
+      }
+    ],
+    "images": [
+      "/favicon.svg"
+    ],
+    "previewImages": [],
+    "horizontalOverflow": false,
+    "scrollWidth": 1425,
+    "innerWidth": 1440,
+    "scrollHeight": 26000,
+    "headings": [
+      {
+        "text": "Multi-Column Layouts",
+        "top": 222
+      },
+      {
+        "text": "Full-width three-column",
+        "top": 408
+      },
+      {
+        "text": "Full-width secondary column on right",
+        "top": 1232
+      },
+      {
+        "text": "Constrained three column",
+        "top": 2056
+      },
+      {
+        "text": "Constrained with sticky columns",
+        "top": 2880
+      },
+      {
+        "text": "Full-width with narrow sidebar",
+        "top": 3704
+      },
+      {
+        "text": "Full-width with narrow sidebar and header",
+        "top": 4528
+      }
+    ]
+  },
+  "mobile": {
+    "viewport": {
+      "width": 390,
+      "height": 26000
+    },
+    "expectedFound": [
+      {
+        "name": "Full-width three-column",
+        "found": true
+      },
+      {
+        "name": "Full-width secondary column on right",
+        "found": true
+      },
+      {
+        "name": "Constrained three column",
+        "found": true
+      },
+      {
+        "name": "Constrained with sticky columns",
+        "found": true
+      },
+      {
+        "name": "Full-width with narrow sidebar",
+        "found": true
+      },
+      {
+        "name": "Full-width with narrow sidebar and header",
+        "found": true
+      }
+    ],
+    "images": [
+      "/favicon.svg"
+    ],
+    "previewImages": [],
+    "horizontalOverflow": false,
+    "scrollWidth": 390,
+    "innerWidth": 390,
+    "scrollHeight": 26000,
+    "headings": [
+      {
+        "text": "Multi-Column Layouts",
+        "top": 267
+      },
+      {
+        "text": "Full-width three-column",
+        "top": 495
+      },
+      {
+        "text": "Full-width secondary column on right",
+        "top": 2199
+      },
+      {
+        "text": "Constrained three column",
+        "top": 3503
+      },
+      {
+        "text": "Constrained with sticky columns",
+        "top": 5207
+      },
+      {
+        "text": "Full-width with narrow sidebar",
+        "top": 6911
+      },
+      {
+        "text": "Full-width with narrow sidebar and header",
+        "top": 8559
+      }
+    ]
+  },
+  "pass": true
+}

@@ -1,0 +1,14 @@
+{
+  "url": "https://tailwindcss.com/plus/ui-blocks/application-ui/elements/button-groups",
+  "name": "Button Groups",
+  "description": "Button group examples for Tailwind CSS, designed and built by the creators of the framework.",
+  "visible_example_count": 5,
+  "visible_example_names": [
+    "Basic",
+    "Icon only",
+    "With stat",
+    "With dropdown",
+    "With checkbox and dropdown"
+  ],
+  "raw_component_count": 10
+}

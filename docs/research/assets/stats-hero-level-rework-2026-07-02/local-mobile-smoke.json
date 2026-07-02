@@ -1,0 +1,30 @@
+{
+  "horizontalOverflow": false,
+  "scrollWidth": 375,
+  "clientWidth": 390,
+  "bodyScrollWidth": 375,
+  "headings": [
+    "UI \uc6a9\uc5b4 \uc0ac\uc804",
+    "Stats",
+    "Simple",
+    "Simple grid",
+    "With background image",
+    "Split with image",
+    "Timeline",
+    "Stepped",
+    "With two column description",
+    "With description"
+  ],
+  "statsImages": [
+    {
+      "src": "/assets/stats-sections/background-team-v2.png",
+      "w": 1774,
+      "h": 886
+    },
+    {
+      "src": "/assets/stats-sections/split-team-v2.png",
+      "w": 1024,
+      "h": 1536
+    }
+  ]
+}

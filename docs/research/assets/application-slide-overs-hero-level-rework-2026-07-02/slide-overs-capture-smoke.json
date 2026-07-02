@@ -1,0 +1,134 @@
+[
+  {
+    "target": "https://tailwindcss.com/plus/ui-blocks/application-ui/overlays/slide-overs",
+    "title": "Not Found",
+    "viewport": {
+      "width": 1440,
+      "height": 2200
+    },
+    "scrollWidth": 1440,
+    "clientWidth": 1440,
+    "hasHorizontalOverflow": false,
+    "expectedNames": {
+      "Empty": false,
+      "Create project form example": false,
+      "User profile example": false,
+      "Contact list example": false,
+      "File details example": false,
+      "Side sheet": false,
+      "Sidebar dialog layout": false,
+      "Detail row slide-over": false
+    },
+    "headings": [],
+    "previewImageCount": 0,
+    "imageSources": [],
+    "bodyTextSample": "404\nNOT FOUND",
+    "allGuessesFound": false,
+    "mode": "desktop",
+    "capture": "tailwind-slide-overs-desktop.png",
+    "kind": "tailwind"
+  },
+  {
+    "target": "https://tailwindcss.com/plus/ui-blocks/application-ui/overlays/slide-overs",
+    "title": "Not Found",
+    "viewport": {
+      "width": 390,
+      "height": 1800
+    },
+    "scrollWidth": 390,
+    "clientWidth": 390,
+    "hasHorizontalOverflow": false,
+    "expectedNames": {
+      "Empty": false,
+      "Create project form example": false,
+      "User profile example": false,
+      "Contact list example": false,
+      "File details example": false,
+      "Side sheet": false,
+      "Sidebar dialog layout": false,
+      "Detail row slide-over": false
+    },
+    "headings": [],
+    "previewImageCount": 0,
+    "imageSources": [],
+    "bodyTextSample": "404\nNOT FOUND",
+    "allGuessesFound": false,
+    "mode": "mobile",
+    "capture": "tailwind-slide-overs-mobile-390.png",
+    "kind": "tailwind"
+  },
+  {
+    "target": "http://127.0.0.1:5178/?filter=nav%3Aplus-overlays-slide-overs",
+    "title": "UI 용어 사전",
+    "viewport": {
+      "width": 1440,
+      "height": 2200
+    },
+    "scrollWidth": 1425,
+    "clientWidth": 1440,
+    "hasHorizontalOverflow": false,
+    "expectedNames": {
+      "Empty": true,
+      "Create project form example": false,
+      "User profile example": false,
+      "Contact list example": false,
+      "File details example": false,
+      "Side sheet": true,
+      "Sidebar dialog layout": true,
+      "Detail row slide-over": true
+    },
+    "headings": [
+      "UI 용어 사전",
+      "Slide-overs",
+      "Side sheet",
+      "Sidebar dialog layout",
+      "Detail row slide-over"
+    ],
+    "previewImageCount": 0,
+    "imageSources": [
+      "/favicon.svg"
+    ],
+    "bodyTextSample": "NAVIGATION\n\nMarketing\nApplication UI\nEcommerce\nDocumentation\n\nUI Blocks\n\n선택한 화면 맥락의 블록 목차\n\nApplication UI\n146\nApplication Shells\n17\nStacked Layouts\n3\nSidebar Layouts\n3\nMulti-Column Layouts\n3\nHeadings\n3\nPage Headings\n3\nCard Headings\n3\nSection Headings\n3\nData Display\n68\nDescription Lists\n2\nStats\n1\nCalendars\n3\nLists\n41\nStacked Lists\n3\nTables\n1\nGrid Lists\n2\nFeeds\n3\nForms\n62\nForm Layouts\n2\nInput Groups\n2\nSelect Menus\n3\nSign-in and Registration\n2\nTextareas\n2\nRadio Groups\n1\nCheckboxes\n2\nToggles\n3\nAction Panels\n2\nComboboxes\n2\nFeedback\n65\nAlerts\n3\nEmpty States\n3\nNavigation\n37\nNavbars\n3\nPagination\n2\nTabs\n2\nVertical Navigation\n3\nSidebar Navigation\n3\nBreadcrumbs\n3\nProgress Bars\n3\nCommand Palettes\n2\nOverlays\n29\nModal Dialogs\n2\nDrawers\n3\nNotifications\n3\nElements\n4\nAvatars\n3\nBadges\n3\nDropdowns\n3\nButtons\n2\nButton Groups\n3\nLayout\n4\nContainers\n2\nCards\n3\nList containers\n1\nMedia Objects\n3\nDividers\n3\nPage Examples\n0\nHome Screens\n1\nDetail Screens\n3\nSettings Screens\n1\nUI 용어 사전\n\nUI Vocabulary Encyclopedia\n\nUI Blocks\nTemplates\nUI Kit\n검색\n\nPLUS / UI BLOCKS / APPLICATION UI / OVERLAYS / SLIDE-OVERS\n\nSlide-overs\n\n현재 목록이나 화면을 유지한 채 오른쪽에서 세부 정보나 편집 폼을 여는 패턴입니다.\n\nSide sheet\nPreview\nGet the code →\n\nRecord details\n\nCancel\nApply\nSidebar dialog layout\nPreview\nGet the code →\n\nRecord details\n\nCancel\nApply\nDetail row slide-over\nPreview\nGet the code →\n\nRecord details\n\nCancel\nApply",
+    "allGuessesFound": false,
+    "mode": "desktop",
+    "capture": "local-before-slide-overs-desktop.png",
+    "kind": "local-before"
+  },
+  {
+    "target": "http://127.0.0.1:5178/?filter=nav%3Aplus-overlays-slide-overs",
+    "title": "UI 용어 사전",
+    "viewport": {
+      "width": 390,
+      "height": 1800
+    },
+    "scrollWidth": 375,
+    "clientWidth": 390,
+    "hasHorizontalOverflow": false,
+    "expectedNames": {
+      "Empty": false,
+      "Create project form example": false,
+      "User profile example": false,
+      "Contact list example": false,
+      "File details example": false,
+      "Side sheet": true,
+      "Sidebar dialog layout": true,
+      "Detail row slide-over": true
+    },
+    "headings": [
+      "UI 용어 사전",
+      "Slide-overs",
+      "Side sheet",
+      "Sidebar dialog layout",
+      "Detail row slide-over"
+    ],
+    "previewImageCount": 0,
+    "imageSources": [
+      "/favicon.svg"
+    ],
+    "bodyTextSample": "UI 용어 사전\nUI Blocks\n›\nApplication UI\n›\nSlide-overs\n\nPLUS / UI BLOCKS / APPLICATION UI / OVERLAYS / SLIDE-OVERS\n\nSlide-overs\n\n현재 목록이나 화면을 유지한 채 오른쪽에서 세부 정보나 편집 폼을 여는 패턴입니다.\n\nSide sheet\n\nRecord details\n\nCancel\nApply\nSidebar dialog layout\n\nRecord details\n\nCancel\nApply\nDetail row slide-over\n\nRecord details\n\nCancel\nApply",
+    "allGuessesFound": false,
+    "mode": "mobile",
+    "capture": "local-before-slide-overs-mobile-390.png",
+    "kind": "local-before"
+  }
+]

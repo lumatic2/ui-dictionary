@@ -1,0 +1,56 @@
+[
+  {
+    "fileName": "local-banners-after-desktop.png",
+    "innerWidth": 1440,
+    "clientWidth": 1440,
+    "scrollWidth": 1425,
+    "scrollHeight": 7600,
+    "overflow": false,
+    "present": [
+      "With button",
+      "On dark",
+      "On brand",
+      "With background glow",
+      "With link",
+      "Left-aligned",
+      "Bottom aligned",
+      "Floating at bottom",
+      "Floating at bottom centered",
+      "Privacy notice right-aligned",
+      "Privacy notice centered",
+      "Privacy notice left-aligned",
+      "Privacy notice full width"
+    ],
+    "missing": [],
+    "imageSources": [],
+    "imageCount": 0,
+    "offenders": []
+  },
+  {
+    "fileName": "local-banners-after-mobile-390.png",
+    "innerWidth": 390,
+    "clientWidth": 390,
+    "scrollWidth": 390,
+    "scrollHeight": 7200,
+    "overflow": false,
+    "present": [
+      "With button",
+      "On dark",
+      "On brand",
+      "With background glow",
+      "With link",
+      "Left-aligned",
+      "Bottom aligned",
+      "Floating at bottom",
+      "Floating at bottom centered",
+      "Privacy notice right-aligned",
+      "Privacy notice centered",
+      "Privacy notice left-aligned",
+      "Privacy notice full width"
+    ],
+    "missing": [],
+    "imageSources": [],
+    "imageCount": 0,
+    "offenders": []
+  }
+]

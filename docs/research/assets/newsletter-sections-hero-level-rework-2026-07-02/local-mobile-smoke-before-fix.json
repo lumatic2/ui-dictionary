@@ -1,0 +1,15 @@
+{
+  "horizontalOverflow": false,
+  "scrollWidth": 375,
+  "clientWidth": 390,
+  "bodyScrollWidth": 375,
+  "overflowingElements": [
+    {
+      "tag": "DIV",
+      "cls": "scrollbar-hidden flex min-w-0 items-center gap-2 overflow-x-auto whitespace-nowrap text-sm",
+      "text": "UI Blocks\u203aMarketing\u203aNewsletter Sections",
+      "scrollWidth": 306,
+      "clientWidth": 291
+    }
+  ]
+}

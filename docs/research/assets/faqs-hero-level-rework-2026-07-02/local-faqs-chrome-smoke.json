@@ -1,0 +1,24 @@
+{
+  "url": "http://127.0.0.1:5178/?filter=nav%3Aplus-marketing-faqs",
+  "headings": [
+    "FAQs",
+    "Offset with supporting text",
+    "Centered accordion",
+    "Side-by-side",
+    "Three columns",
+    "Three columns with centered introduction",
+    "Two columns",
+    "Two columns with centered introduction"
+  ],
+  "imageCount": 0,
+  "darkPanels": 2,
+  "overflowX": false,
+  "dims": {
+    "scrollWidth": 2545,
+    "clientWidth": 2545
+  },
+  "mobile390": {
+    "method": "Chrome CLI screenshot",
+    "path": "docs/research/assets/faqs-hero-level-rework-2026-07-02/local-faqs-after-mobile-390.png"
+  }
+}

@@ -1,0 +1,187 @@
+{
+  "url": "http://127.0.0.1:5178/?filter=nav%3Aplus-application-shells-sidebar-layouts",
+  "checkedAt": "2026-07-02T06:46:54.523Z",
+  "expected": [
+    "Simple sidebar",
+    "Simple dark sidebar",
+    "Sidebar with header",
+    "Dark sidebar with header",
+    "With constrained content area",
+    "With off-white background",
+    "Simple brand sidebar",
+    "Brand sidebar with header"
+  ],
+  "desktop": {
+    "viewport": {
+      "width": 1440,
+      "height": 26000
+    },
+    "expectedFound": [
+      {
+        "name": "Simple sidebar",
+        "found": true
+      },
+      {
+        "name": "Simple dark sidebar",
+        "found": true
+      },
+      {
+        "name": "Sidebar with header",
+        "found": true
+      },
+      {
+        "name": "Dark sidebar with header",
+        "found": true
+      },
+      {
+        "name": "With constrained content area",
+        "found": true
+      },
+      {
+        "name": "With off-white background",
+        "found": true
+      },
+      {
+        "name": "Simple brand sidebar",
+        "found": true
+      },
+      {
+        "name": "Brand sidebar with header",
+        "found": true
+      }
+    ],
+    "images": [
+      "/favicon.svg"
+    ],
+    "previewImages": [],
+    "horizontalOverflow": false,
+    "scrollWidth": 1425,
+    "innerWidth": 1440,
+    "scrollHeight": 26000,
+    "headings": [
+      {
+        "text": "Sidebar Layouts",
+        "top": 222
+      },
+      {
+        "text": "Simple sidebar",
+        "top": 408
+      },
+      {
+        "text": "Simple dark sidebar",
+        "top": 1212
+      },
+      {
+        "text": "Sidebar with header",
+        "top": 2016
+      },
+      {
+        "text": "Dark sidebar with header",
+        "top": 2884
+      },
+      {
+        "text": "With constrained content area",
+        "top": 3752
+      },
+      {
+        "text": "With off-white background",
+        "top": 4556
+      },
+      {
+        "text": "Simple brand sidebar",
+        "top": 5360
+      },
+      {
+        "text": "Brand sidebar with header",
+        "top": 6164
+      }
+    ]
+  },
+  "mobile": {
+    "viewport": {
+      "width": 390,
+      "height": 26000
+    },
+    "expectedFound": [
+      {
+        "name": "Simple sidebar",
+        "found": true
+      },
+      {
+        "name": "Simple dark sidebar",
+        "found": true
+      },
+      {
+        "name": "Sidebar with header",
+        "found": true
+      },
+      {
+        "name": "Dark sidebar with header",
+        "found": true
+      },
+      {
+        "name": "With constrained content area",
+        "found": true
+      },
+      {
+        "name": "With off-white background",
+        "found": true
+      },
+      {
+        "name": "Simple brand sidebar",
+        "found": true
+      },
+      {
+        "name": "Brand sidebar with header",
+        "found": true
+      }
+    ],
+    "images": [
+      "/favicon.svg"
+    ],
+    "previewImages": [],
+    "horizontalOverflow": false,
+    "scrollWidth": 390,
+    "innerWidth": 390,
+    "scrollHeight": 26000,
+    "headings": [
+      {
+        "text": "Sidebar Layouts",
+        "top": 267
+      },
+      {
+        "text": "Simple sidebar",
+        "top": 447
+      },
+      {
+        "text": "Simple dark sidebar",
+        "top": 1707
+      },
+      {
+        "text": "Sidebar with header",
+        "top": 2967
+      },
+      {
+        "text": "Dark sidebar with header",
+        "top": 4227
+      },
+      {
+        "text": "With constrained content area",
+        "top": 5487
+      },
+      {
+        "text": "With off-white background",
+        "top": 6747
+      },
+      {
+        "text": "Simple brand sidebar",
+        "top": 8007
+      },
+      {
+        "text": "Brand sidebar with header",
+        "top": 9267
+      }
+    ]
+  },
+  "pass": true
+}

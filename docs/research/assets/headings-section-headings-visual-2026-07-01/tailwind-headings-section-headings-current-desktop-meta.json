@@ -1,0 +1,29 @@
+{
+  "codeCount": 10,
+  "examples": [
+    "Simple",
+    "With description",
+    "With actions",
+    "With action",
+    "With input group",
+    "With tabs",
+    "With actions and tabs",
+    "With inline tabs",
+    "With label",
+    "With badge and dropdown"
+  ],
+  "h2s": [
+    "Simple",
+    "With description",
+    "With actions",
+    "With action",
+    "With input group",
+    "With tabs",
+    "With actions and tabs",
+    "With inline tabs",
+    "With label",
+    "With badge and dropdown"
+  ],
+  "previewCount": 11,
+  "title": "Tailwind CSS Section Headings - Official Tailwind UI Components"
+}

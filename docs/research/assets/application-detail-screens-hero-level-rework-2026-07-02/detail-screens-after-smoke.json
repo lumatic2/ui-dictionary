@@ -1,0 +1,39 @@
+{
+  "desktop": {
+    "missing": [],
+    "missingMarkers": [],
+    "scrollWidth": 1425,
+    "clientWidth": 1440,
+    "horizontalOverflow": false,
+    "imageSources": [],
+    "darkPanels": 1,
+    "cards": 4,
+    "elementOverflows": []
+  },
+  "mobile390": {
+    "missing": [],
+    "missingMarkers": [],
+    "scrollWidth": 375,
+    "clientWidth": 390,
+    "horizontalOverflow": false,
+    "imageSources": [],
+    "darkPanels": 1,
+    "cards": 4,
+    "elementOverflows": [
+      {
+        "tag": "DIV",
+        "className": "mx-auto max-w-6xl overflow-hidden rounded-md border border-slate-900 bg-slate-950 text-slate-300",
+        "scrollWidth": 429,
+        "clientWidth": 299,
+        "text": "DeployProjectsDeploymentsActivityDomainsUsageSettingsYour teamsPPlanetariaPProto"
+      },
+      {
+        "tag": "DIV",
+        "className": "grid min-h-[520px] md:grid-cols-[250px_minmax(0,1fr)]",
+        "scrollWidth": 429,
+        "clientWidth": 299,
+        "text": "DeployProjectsDeploymentsActivityDomainsUsageSettingsYour teamsPPlanetariaPProto"
+      }
+    ]
+  }
+}

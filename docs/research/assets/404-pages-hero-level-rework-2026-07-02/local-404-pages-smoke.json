@@ -1,0 +1,130 @@
+{
+  "desktop": {
+    "width": 1440,
+    "clientWidth": 1440,
+    "scrollWidth": 1425,
+    "overflow": false,
+    "expectedPresent": [
+      {
+        "name": "Simple",
+        "present": true
+      },
+      {
+        "name": "Split with image",
+        "present": true
+      },
+      {
+        "name": "With popular pages",
+        "present": true
+      },
+      {
+        "name": "With background image",
+        "present": true
+      },
+      {
+        "name": "With navbar and footer",
+        "present": true
+      }
+    ],
+    "imageCount": 2,
+    "images": [
+      {
+        "src": "/assets/404-pages/split-desert-v2.png",
+        "w": 1672,
+        "h": 941,
+        "renderedW": 532,
+        "renderedH": 706
+      },
+      {
+        "src": "/assets/404-pages/background-mountains-v2.png",
+        "w": 1672,
+        "h": 941,
+        "renderedW": 1063,
+        "renderedH": 768
+      }
+    ],
+    "offenders": [],
+    "tallRegions": [
+      7200,
+      7200,
+      1166,
+      1116,
+      1116,
+      676,
+      7200,
+      4406,
+      770,
+      768,
+      708,
+      706,
+      706,
+      706,
+      872,
+      870
+    ]
+  },
+  "mobile": {
+    "width": 390,
+    "clientWidth": 390,
+    "scrollWidth": 390,
+    "overflow": false,
+    "expectedPresent": [
+      {
+        "name": "Simple",
+        "present": true
+      },
+      {
+        "name": "Split with image",
+        "present": true
+      },
+      {
+        "name": "With popular pages",
+        "present": true
+      },
+      {
+        "name": "With background image",
+        "present": true
+      },
+      {
+        "name": "With navbar and footer",
+        "present": true
+      }
+    ],
+    "imageCount": 2,
+    "images": [
+      {
+        "src": "/assets/404-pages/split-desert-v2.png",
+        "w": 1672,
+        "h": 941,
+        "renderedW": 348,
+        "renderedH": 420
+      },
+      {
+        "src": "/assets/404-pages/background-mountains-v2.png",
+        "w": 1672,
+        "h": 941,
+        "renderedW": 348,
+        "renderedH": 768
+      }
+    ],
+    "offenders": [],
+    "tallRegions": [
+      7200,
+      5107,
+      5107,
+      4624,
+      770,
+      768,
+      942,
+      940,
+      940,
+      1000,
+      998,
+      902,
+      770,
+      768,
+      768,
+      768
+    ]
+  }
+}

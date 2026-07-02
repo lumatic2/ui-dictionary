@@ -1,0 +1,51 @@
+{
+  "capturedAt": "2026-07-02T08:50:41.383Z",
+  "desktop": {
+    "url": "http://127.0.0.1:5178/?filter=nav%3Aplus-navigation-progress-bars",
+    "viewport": {
+      "width": 1440,
+      "height": 2400
+    },
+    "present": {
+      "Simple": true,
+      "Panels": true,
+      "Bullets": true,
+      "Panels with border": true,
+      "Circles": true,
+      "Bullets and text": true,
+      "Circles with text": true,
+      "Progress bar": true
+    },
+    "allExpectedNamesFound": true,
+    "previewImages": [],
+    "previewImageCount": 0,
+    "horizontalOverflow": false,
+    "scrollWidth": 1425,
+    "clientWidth": 1440,
+    "bodyTextSample": "NAVIGATION\n\nMarketing\nApplication UI\nEcommerce\nDocumentation\n\nUI Blocks\n\n선택한 화면 맥락의 블록 목차\n\nApplication UI\n146\nApplication Shells\n17\nStacked Layouts\n3\nSidebar Layouts\n3\nMulti-Column Layouts\n3\nHeadings\n3\nPage Headings\n3\nCard Headings\n3\nSection Headings\n3\nData Display\n68\nDescription Lists\n2\nStats\n1\nCalendars\n3\nLists\n41\nStacked Lists\n3\nTables\n1\nGrid Lists\n2\nFeeds\n3\nForms\n62\nForm Layouts\n2\nInput Groups\n2\nSelect Menus\n3\nSign-in and Registration\n2\nTextareas\n2\nRadio Groups\n1\nCheckboxes\n2\nToggles\n3\nActio"
+  },
+  "mobile390": {
+    "url": "http://127.0.0.1:5178/?filter=nav%3Aplus-navigation-progress-bars",
+    "viewport": {
+      "width": 390,
+      "height": 1800
+    },
+    "present": {
+      "Simple": true,
+      "Panels": true,
+      "Bullets": true,
+      "Panels with border": true,
+      "Circles": true,
+      "Bullets and text": true,
+      "Circles with text": true,
+      "Progress bar": true
+    },
+    "allExpectedNamesFound": true,
+    "previewImages": [],
+    "previewImageCount": 0,
+    "horizontalOverflow": false,
+    "scrollWidth": 390,
+    "clientWidth": 390,
+    "bodyTextSample": "UI 용어 사전\nUI Blocks\n›\nApplication UI\n›\nProgress Bars\n\nPLUS / UI BLOCKS / APPLICATION UI / NAVIGATION / PROGRESS BARS\n\nProgress Bars\n\n다단계 작업이나 설정 흐름에서 현재 진행 정도와 남은 단계를 보여주는 진행 내비게이션 패턴입니다.\n\nSimple\n\nStep 1\n\nJob details\n\nStep 2\n\nApplication form\n\nStep 3\n\nPreview\n\nPanels\nJob details\n02\nApplication form\n03\nPreview\nBullets\nStep 2 of 4\nPanels with border\n\nJob details\n\nVitae sed mi luctus laoreet.\n\n02\n\nApplication form\n\nCursus semper viverra.\n\n03\n\nPreview\n\nPenatibus eu quis ante.\n\nCircles\n03\n04\n05\nBullet"
+  }
+}

@@ -1,0 +1,31 @@
+{
+  "desktop": {
+    "missing": [],
+    "scrollWidth": 1425,
+    "clientWidth": 1440,
+    "horizontalOverflow": false,
+    "imageSources": [],
+    "darkPanels": 3,
+    "mediaBoxes": 10,
+    "elementOverflows": [
+      {
+        "tag": "SPAN",
+        "className": "min-w-0 flex-1 truncate",
+        "scrollWidth": 180,
+        "clientWidth": 168,
+        "text": "Sign-in and Registration",
+        "right": 231.671875
+      }
+    ]
+  },
+  "mobile390": {
+    "missing": [],
+    "scrollWidth": 375,
+    "clientWidth": 390,
+    "horizontalOverflow": false,
+    "imageSources": [],
+    "darkPanels": 3,
+    "mediaBoxes": 9,
+    "elementOverflows": []
+  }
+}

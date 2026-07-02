@@ -1,0 +1,25 @@
+{
+  "url": "http://127.0.0.1:5181/?filter=nav%3Aplus-marketing-cta-sections",
+  "title": "UI \uc6a9\uc5b4 \uc0ac\uc804",
+  "headings": [
+    "UI \uc6a9\uc5b4 \uc0ac\uc804",
+    "CTA Sections",
+    "Dark panel with app screenshot",
+    "Simple stacked",
+    "Centered on dark panel",
+    "Simple centered",
+    "Simple centered with gradient",
+    "Simple centered on brand",
+    "Simple justified",
+    "Simple justified on subtle brand",
+    "Split with image",
+    "Two columns with photo",
+    "With image tiles"
+  ],
+  "previewMentions": 11,
+  "getCodeMentions": 11,
+  "scrollWidth": 390,
+  "clientWidth": 390,
+  "horizontalOverflow": false,
+  "bodyLength": 2816
+}

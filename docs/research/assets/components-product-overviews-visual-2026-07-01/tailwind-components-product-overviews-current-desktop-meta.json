@@ -1,0 +1,14 @@
+{
+  "url": "https://tailwindcss.com/plus/ui-blocks/ecommerce/components/product-overviews",
+  "name": "Product Overviews",
+  "description": "Ecommerce product overview examples for Tailwind CSS, designed and built by the creators of the framework.",
+  "visible_example_count": 5,
+  "visible_example_names": [
+    "With image grid",
+    "With tiered images",
+    "With image gallery and expandable details",
+    "Split with image",
+    "With tabs"
+  ],
+  "raw_component_count": 10
+}

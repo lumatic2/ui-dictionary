@@ -1,0 +1,132 @@
+{
+  "url": "http://127.0.0.1:5178/?filter=nav%3Aplus-marketing-about-pages",
+  "checkedAt": "2026-07-02T06:32:33.358Z",
+  "expected": [
+    "With image tiles",
+    "With timeline and stats",
+    "With two column description"
+  ],
+  "desktop": {
+    "viewport": {
+      "width": 1440,
+      "height": 22000
+    },
+    "expectedFound": [
+      {
+        "name": "With image tiles",
+        "found": true
+      },
+      {
+        "name": "With timeline and stats",
+        "found": true
+      },
+      {
+        "name": "With two column description",
+        "found": true
+      }
+    ],
+    "aboutImages": [
+      "/assets/about-pages/image-tiles-office-v2.png",
+      "/assets/about-pages/image-tiles-office-v2.png",
+      "/assets/about-pages/image-tiles-office-v2.png",
+      "/assets/about-pages/image-tiles-office-v2.png",
+      "/assets/about-pages/image-tiles-banner-v2.png",
+      "/assets/about-pages/timeline-founders-v2.png",
+      "/assets/about-pages/timeline-lounge-v2.png",
+      "/assets/about-pages/timeline-lounge-v2.png",
+      "/assets/about-pages/timeline-lounge-v2.png",
+      "/assets/about-pages/two-column-office-v2.png",
+      "/assets/about-pages/two-column-portrait-v2.png",
+      "/assets/about-pages/two-column-portrait-v2.png",
+      "/assets/about-pages/two-column-portrait-v2.png"
+    ],
+    "uniqueAboutImages": [
+      "/assets/about-pages/image-tiles-office-v2.png",
+      "/assets/about-pages/image-tiles-banner-v2.png",
+      "/assets/about-pages/timeline-founders-v2.png",
+      "/assets/about-pages/timeline-lounge-v2.png",
+      "/assets/about-pages/two-column-office-v2.png",
+      "/assets/about-pages/two-column-portrait-v2.png"
+    ],
+    "horizontalOverflow": false,
+    "scrollWidth": 1425,
+    "innerWidth": 1440,
+    "scrollHeight": 22000,
+    "headings": [
+      {
+        "text": "With image tiles",
+        "top": 440
+      },
+      {
+        "text": "With timeline and stats",
+        "top": 3558
+      },
+      {
+        "text": "With two column description",
+        "top": 6676
+      }
+    ]
+  },
+  "mobile": {
+    "viewport": {
+      "width": 390,
+      "height": 22000
+    },
+    "expectedFound": [
+      {
+        "name": "With image tiles",
+        "found": true
+      },
+      {
+        "name": "With timeline and stats",
+        "found": true
+      },
+      {
+        "name": "With two column description",
+        "found": true
+      }
+    ],
+    "aboutImages": [
+      "/assets/about-pages/image-tiles-office-v2.png",
+      "/assets/about-pages/image-tiles-office-v2.png",
+      "/assets/about-pages/image-tiles-office-v2.png",
+      "/assets/about-pages/image-tiles-office-v2.png",
+      "/assets/about-pages/image-tiles-banner-v2.png",
+      "/assets/about-pages/timeline-founders-v2.png",
+      "/assets/about-pages/timeline-lounge-v2.png",
+      "/assets/about-pages/timeline-lounge-v2.png",
+      "/assets/about-pages/timeline-lounge-v2.png",
+      "/assets/about-pages/two-column-office-v2.png",
+      "/assets/about-pages/two-column-portrait-v2.png",
+      "/assets/about-pages/two-column-portrait-v2.png",
+      "/assets/about-pages/two-column-portrait-v2.png"
+    ],
+    "uniqueAboutImages": [
+      "/assets/about-pages/image-tiles-office-v2.png",
+      "/assets/about-pages/image-tiles-banner-v2.png",
+      "/assets/about-pages/timeline-founders-v2.png",
+      "/assets/about-pages/timeline-lounge-v2.png",
+      "/assets/about-pages/two-column-office-v2.png",
+      "/assets/about-pages/two-column-portrait-v2.png"
+    ],
+    "horizontalOverflow": false,
+    "scrollWidth": 390,
+    "innerWidth": 390,
+    "scrollHeight": 22000,
+    "headings": [
+      {
+        "text": "With image tiles",
+        "top": 479
+      },
+      {
+        "text": "With timeline and stats",
+        "top": 4057
+      },
+      {
+        "text": "With two column description",
+        "top": 8007
+      }
+    ]
+  },
+  "pass": true
+}

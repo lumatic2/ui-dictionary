@@ -1,0 +1,13 @@
+{
+  "url": "https://tailwindcss.com/plus/ui-blocks/application-ui/navigation/breadcrumbs",
+  "name": "Breadcrumbs",
+  "description": "Breadcrumb examples for Tailwind CSS, designed and built by the creators of the framework.",
+  "visible_example_count": 4,
+  "visible_example_names": [
+    "Contained",
+    "Full-width bar",
+    "Simple with chevrons",
+    "Simple with slashes"
+  ],
+  "raw_component_count": 8
+}

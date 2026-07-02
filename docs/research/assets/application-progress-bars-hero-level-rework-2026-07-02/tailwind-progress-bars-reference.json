@@ -1,0 +1,51 @@
+{
+  "capturedAt": "2026-07-02T08:50:25.174Z",
+  "desktop": {
+    "url": "https://tailwindcss.com/plus/ui-blocks/application-ui/navigation/progress-bars",
+    "viewport": {
+      "width": 1440,
+      "height": 2200
+    },
+    "present": {
+      "Simple": true,
+      "Panels": true,
+      "Bullets": true,
+      "Panels with border": true,
+      "Circles": true,
+      "Bullets and text": true,
+      "Circles with text": true,
+      "Progress bar": true
+    },
+    "allExpectedNamesFound": true,
+    "previewImages": [],
+    "previewImageCount": 0,
+    "horizontalOverflow": false,
+    "scrollWidth": 1440,
+    "clientWidth": 1440,
+    "bodyTextSample": "Introducing Oatmeal\nOur new multi-theme marketing site kit\nUI Blocks\nTemplates\nUI Kit\nSign in\nGet full access\nUI Blocks\nApplication UI\nNavigation\nProgress Bars\n\nUse these Tailwind CSS progress bar and multi-step navigation examples to visually represent progress and indicate next steps in your interface. These components are designed and built by the Tailwind CSS team, and include a variety of different styles.\n\nSimple\n\nPreview\n\nGet the code →\nPanels\n\nPreview\n\nGet the code →\nBullets\n\nPreview\n\nGe"
+  },
+  "mobile390": {
+    "url": "https://tailwindcss.com/plus/ui-blocks/application-ui/navigation/progress-bars",
+    "viewport": {
+      "width": 390,
+      "height": 1600
+    },
+    "present": {
+      "Simple": true,
+      "Panels": true,
+      "Bullets": true,
+      "Panels with border": true,
+      "Circles": true,
+      "Bullets and text": true,
+      "Circles with text": true,
+      "Progress bar": true
+    },
+    "allExpectedNamesFound": true,
+    "previewImages": [],
+    "previewImageCount": 0,
+    "horizontalOverflow": false,
+    "scrollWidth": 390,
+    "clientWidth": 390,
+    "bodyTextSample": "UI Blocks\nApplication UI\nNavigation\nProgress Bars\n\nUse these Tailwind CSS progress bar and multi-step navigation examples to visually represent progress and indicate next steps in your interface. These components are designed and built by the Tailwind CSS team, and include a variety of different styles.\n\nSimple\nGet the code →\nPanels\nGet the code →\nBullets\nGet the code →\nPanels with border\nGet the code →\nCircles\nGet the code →\nBullets and text\nGet the code →\nCircles with text\nGet the code →\nProgr"
+  }
+}

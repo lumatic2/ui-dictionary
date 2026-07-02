@@ -1,0 +1,349 @@
+[
+  {
+    "clientW": 2545,
+    "docW": 2545,
+    "exampleNames": [
+      "Simple centered",
+      "Split with screenshot",
+      "Split with bordered screenshot",
+      "Split with code example",
+      "Simple centered with background image"
+    ],
+    "examples": 12,
+    "hasCode": true,
+    "hasPreview": true,
+    "overflowX": false,
+    "slug": "hero-sections",
+    "title": "Hero Sections"
+  },
+  {
+    "clientW": 2545,
+    "docW": 2545,
+    "exampleNames": [
+      "Three-column feature grid",
+      "Alternating feature blocks",
+      "Icon feature list"
+    ],
+    "examples": 3,
+    "hasCode": false,
+    "hasPreview": true,
+    "overflowX": false,
+    "slug": "feature-sections",
+    "title": "Feature Sections"
+  },
+  {
+    "clientW": 2545,
+    "docW": 2545,
+    "exampleNames": [
+      "Centered CTA",
+      "Split CTA",
+      "Full-width band CTA"
+    ],
+    "examples": 3,
+    "hasCode": false,
+    "hasPreview": true,
+    "overflowX": false,
+    "slug": "cta-sections",
+    "title": "CTA Sections"
+  },
+  {
+    "clientW": 2545,
+    "docW": 2545,
+    "exampleNames": [
+      "Asymmetric bento",
+      "Product bento",
+      "Media bento"
+    ],
+    "examples": 3,
+    "hasCode": false,
+    "hasPreview": true,
+    "overflowX": false,
+    "slug": "bento-grids",
+    "title": "Bento Grids"
+  },
+  {
+    "clientW": 2545,
+    "docW": 2545,
+    "exampleNames": [
+      "Three-tier pricing",
+      "Highlighted recommended plan",
+      "Pricing with comparison rows"
+    ],
+    "examples": 3,
+    "hasCode": false,
+    "hasPreview": true,
+    "overflowX": false,
+    "slug": "pricing-sections",
+    "title": "Pricing Sections"
+  },
+  {
+    "clientW": 2545,
+    "docW": 2545,
+    "exampleNames": [
+      "Simple header",
+      "Centered navigation",
+      "Header with CTA"
+    ],
+    "examples": 3,
+    "hasCode": false,
+    "hasPreview": true,
+    "overflowX": false,
+    "slug": "header-sections",
+    "title": "Header Sections"
+  },
+  {
+    "clientW": 2545,
+    "docW": 2545,
+    "exampleNames": [
+      "Simple newsletter",
+      "Split newsletter",
+      "Newsletter card"
+    ],
+    "examples": 3,
+    "hasCode": false,
+    "hasPreview": true,
+    "overflowX": false,
+    "slug": "newsletter-sections",
+    "title": "Newsletter Sections"
+  },
+  {
+    "clientW": 2545,
+    "docW": 2545,
+    "exampleNames": [
+      "Stats grid",
+      "Compact stat list",
+      "Stats with copy"
+    ],
+    "examples": 3,
+    "hasCode": false,
+    "hasPreview": true,
+    "overflowX": false,
+    "slug": "stats",
+    "title": "Stats"
+  },
+  {
+    "clientW": 2545,
+    "docW": 2545,
+    "exampleNames": [
+      "Testimonial grid",
+      "Featured testimonial",
+      "Moving testimonials"
+    ],
+    "examples": 3,
+    "hasCode": false,
+    "hasPreview": true,
+    "overflowX": false,
+    "slug": "testimonials",
+    "title": "Testimonials"
+  },
+  {
+    "clientW": 2545,
+    "docW": 2545,
+    "exampleNames": [
+      "Article grid",
+      "Featured article",
+      "Compact article list"
+    ],
+    "examples": 3,
+    "hasCode": false,
+    "hasPreview": true,
+    "overflowX": false,
+    "slug": "blog-sections",
+    "title": "Blog Sections"
+  },
+  {
+    "clientW": 2545,
+    "docW": 2545,
+    "exampleNames": [
+      "Split contact form",
+      "Contact option cards",
+      "Simple contact form"
+    ],
+    "examples": 3,
+    "hasCode": false,
+    "hasPreview": true,
+    "overflowX": false,
+    "slug": "contact-sections",
+    "title": "Contact Sections"
+  },
+  {
+    "clientW": 2545,
+    "docW": 2545,
+    "exampleNames": [
+      "Team member grid",
+      "Compact team list",
+      "Leadership emphasis"
+    ],
+    "examples": 3,
+    "hasCode": false,
+    "hasPreview": true,
+    "overflowX": false,
+    "slug": "team-sections",
+    "title": "Team Sections"
+  },
+  {
+    "clientW": 2545,
+    "docW": 2545,
+    "exampleNames": [
+      "Prose content section",
+      "Content with side navigation",
+      "Content with media"
+    ],
+    "examples": 3,
+    "hasCode": false,
+    "hasPreview": true,
+    "overflowX": false,
+    "slug": "content-sections",
+    "title": "Content Sections"
+  },
+  {
+    "clientW": 2545,
+    "docW": 2545,
+    "exampleNames": [
+      "Simple logo row",
+      "Logo grid",
+      "Logo band"
+    ],
+    "examples": 3,
+    "hasCode": false,
+    "hasPreview": true,
+    "overflowX": false,
+    "slug": "logo-clouds",
+    "title": "Logo Clouds"
+  },
+  {
+    "clientW": 2545,
+    "docW": 2545,
+    "exampleNames": [
+      "Stacked FAQs",
+      "Two-column FAQs",
+      "FAQs with contact prompt"
+    ],
+    "examples": 3,
+    "hasCode": false,
+    "hasPreview": true,
+    "overflowX": false,
+    "slug": "faqs",
+    "title": "FAQs"
+  },
+  {
+    "clientW": 2545,
+    "docW": 2545,
+    "exampleNames": [
+      "Multi-column footer",
+      "Simple footer",
+      "Footer with newsletter"
+    ],
+    "examples": 3,
+    "hasCode": false,
+    "hasPreview": true,
+    "overflowX": false,
+    "slug": "footers",
+    "title": "Footers"
+  },
+  {
+    "clientW": 2545,
+    "docW": 2545,
+    "exampleNames": [
+      "Simple header element",
+      "Floating header",
+      "Dark surface header"
+    ],
+    "examples": 3,
+    "hasCode": false,
+    "hasPreview": true,
+    "overflowX": false,
+    "slug": "headers",
+    "title": "Headers"
+  },
+  {
+    "clientW": 2545,
+    "docW": 2545,
+    "exampleNames": [
+      "Simple flyout menu",
+      "Mega menu flyout",
+      "Product flyout"
+    ],
+    "examples": 3,
+    "hasCode": false,
+    "hasPreview": true,
+    "overflowX": false,
+    "slug": "flyout-menus",
+    "title": "Flyout Menus"
+  },
+  {
+    "clientW": 2545,
+    "docW": 2545,
+    "exampleNames": [
+      "Announcement banner",
+      "Dismissible banner",
+      "Promotional banner"
+    ],
+    "examples": 3,
+    "hasCode": false,
+    "hasPreview": true,
+    "overflowX": false,
+    "slug": "banners",
+    "title": "Banners"
+  },
+  {
+    "clientW": 2545,
+    "docW": 2545,
+    "exampleNames": [
+      "Centered 404",
+      "Split 404",
+      "404 with search"
+    ],
+    "examples": 3,
+    "hasCode": false,
+    "hasPreview": true,
+    "overflowX": false,
+    "slug": "404-pages",
+    "title": "404 Pages"
+  },
+  {
+    "clientW": 2545,
+    "docW": 2545,
+    "exampleNames": [
+      "SaaS landing page",
+      "Product launch page",
+      "Waitlist landing page"
+    ],
+    "examples": 3,
+    "hasCode": false,
+    "hasPreview": true,
+    "overflowX": false,
+    "slug": "landing-pages",
+    "title": "Landing Pages"
+  },
+  {
+    "clientW": 2545,
+    "docW": 2545,
+    "exampleNames": [
+      "Simple pricing page",
+      "Pricing with comparison",
+      "Enterprise pricing page"
+    ],
+    "examples": 3,
+    "hasCode": false,
+    "hasPreview": true,
+    "overflowX": false,
+    "slug": "pricing-pages",
+    "title": "Pricing Pages"
+  },
+  {
+    "clientW": 2545,
+    "docW": 2545,
+    "exampleNames": [
+      "Company story page",
+      "Team-focused about page",
+      "Mission and values page"
+    ],
+    "examples": 3,
+    "hasCode": false,
+    "hasPreview": true,
+    "overflowX": false,
+    "slug": "about-pages",
+    "title": "About Pages"
+  }
+]

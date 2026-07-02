@@ -1,0 +1,54 @@
+[
+  {
+    "viewport": {
+      "width": 1440,
+      "height": 2200
+    },
+    "scrollWidth": 1425,
+    "clientWidth": 1440,
+    "hasHorizontalOverflow": false,
+    "expectedNames": {
+      "Simple": true,
+      "Condensed": true,
+      "With actions below": true,
+      "With avatar": true,
+      "With split buttons": true,
+      "With buttons below": true
+    },
+    "imageSources": [
+      "/favicon.svg",
+      "/assets/notifications/avatar-emilia-v1.png",
+      "/assets/notifications/avatar-emilia-v1.png"
+    ],
+    "notificationAssetImageCount": 2,
+    "elementOverflows": [],
+    "allExpectedNamesFound": true,
+    "mode": "desktop"
+  },
+  {
+    "viewport": {
+      "width": 390,
+      "height": 1800
+    },
+    "scrollWidth": 375,
+    "clientWidth": 390,
+    "hasHorizontalOverflow": false,
+    "expectedNames": {
+      "Simple": true,
+      "Condensed": true,
+      "With actions below": true,
+      "With avatar": true,
+      "With split buttons": true,
+      "With buttons below": true
+    },
+    "imageSources": [
+      "/favicon.svg",
+      "/assets/notifications/avatar-emilia-v1.png",
+      "/assets/notifications/avatar-emilia-v1.png"
+    ],
+    "notificationAssetImageCount": 2,
+    "elementOverflows": [],
+    "allExpectedNamesFound": true,
+    "mode": "mobile"
+  }
+]

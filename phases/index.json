@@ -23,6 +23,10 @@
     {
       "dir": "external-ui-ecosystem-vocabulary",
       "status": "pending"
+    },
+    {
+      "dir": "tailwind-style-page-catalog",
+      "status": "pending"
     }
   ]
 }

@@ -1,0 +1,146 @@
+{
+  "desktop": {
+    "width": 1440,
+    "clientWidth": 1440,
+    "scrollWidth": 1425,
+    "scrollHeight": 26000,
+    "overflow": false,
+    "expectedPresent": [
+      {
+        "name": "With screenshots and stats",
+        "present": true
+      },
+      {
+        "name": "With large screenshot and testimonial",
+        "present": true
+      },
+      {
+        "name": "With background image hero and pricing section",
+        "present": true
+      },
+      {
+        "name": "With mobile screenshot and testimonials grid",
+        "present": true
+      }
+    ],
+    "imageCount": 6,
+    "uniqueImageCount": 6,
+    "images": [
+      {
+        "src": "/assets/landing-pages/dark-dashboard-v2.png",
+        "w": 1693,
+        "h": 929,
+        "renderedW": 425,
+        "renderedH": 620
+      },
+      {
+        "src": "/assets/landing-pages/light-dashboard-v2.png",
+        "w": 1717,
+        "h": 916,
+        "renderedW": 1007,
+        "renderedH": 520
+      },
+      {
+        "src": "/assets/landing-pages/office-hero-v2.png",
+        "w": 1536,
+        "h": 1024,
+        "renderedW": 1063,
+        "renderedH": 850
+      },
+      {
+        "src": "/assets/landing-pages/pricing-dashboard-v2.png",
+        "w": 1672,
+        "h": 941,
+        "renderedW": 991,
+        "renderedH": 520
+      },
+      {
+        "src": "/assets/landing-pages/mobile-dashboard-v2.png",
+        "w": 864,
+        "h": 1821,
+        "renderedW": 264,
+        "renderedH": 590
+      },
+      {
+        "src": "/assets/landing-pages/testimonial-dashboard-v2.png",
+        "w": 1568,
+        "h": 1003,
+        "renderedW": 564,
+        "renderedH": 456
+      }
+    ],
+    "offenders": []
+  },
+  "mobile": {
+    "width": 390,
+    "clientWidth": 390,
+    "scrollWidth": 390,
+    "scrollHeight": 26000,
+    "overflow": false,
+    "expectedPresent": [
+      {
+        "name": "With screenshots and stats",
+        "present": true
+      },
+      {
+        "name": "With large screenshot and testimonial",
+        "present": true
+      },
+      {
+        "name": "With background image hero and pricing section",
+        "present": true
+      },
+      {
+        "name": "With mobile screenshot and testimonials grid",
+        "present": true
+      }
+    ],
+    "imageCount": 6,
+    "uniqueImageCount": 6,
+    "images": [
+      {
+        "src": "/assets/landing-pages/dark-dashboard-v2.png",
+        "w": 1693,
+        "h": 929,
+        "renderedW": 298,
+        "renderedH": 620
+      },
+      {
+        "src": "/assets/landing-pages/light-dashboard-v2.png",
+        "w": 1717,
+        "h": 916,
+        "renderedW": 292,
+        "renderedH": 520
+      },
+      {
+        "src": "/assets/landing-pages/office-hero-v2.png",
+        "w": 1536,
+        "h": 1024,
+        "renderedW": 348,
+        "renderedH": 912
+      },
+      {
+        "src": "/assets/landing-pages/pricing-dashboard-v2.png",
+        "w": 1672,
+        "h": 941,
+        "renderedW": 276,
+        "renderedH": 520
+      },
+      {
+        "src": "/assets/landing-pages/mobile-dashboard-v2.png",
+        "w": 864,
+        "h": 1821,
+        "renderedW": 264,
+        "renderedH": 590
+      },
+      {
+        "src": "/assets/landing-pages/testimonial-dashboard-v2.png",
+        "w": 1568,
+        "h": 1003,
+        "renderedW": 300,
+        "renderedH": 420
+      }
+    ],
+    "offenders": []
+  }
+}

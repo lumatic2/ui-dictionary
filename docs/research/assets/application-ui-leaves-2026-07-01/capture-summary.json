@@ -1,0 +1,2113 @@
+{
+  "generatedAt": "2026-06-30T23:12:40.162Z",
+  "count": 49,
+  "summary": [
+    {
+      "text": "Stacked Layouts",
+      "href": "https://tailwindcss.com/plus/ui-blocks/application-ui/application-shells/stacked",
+      "slug": "application-shells-stacked",
+      "route": "plus-application-shells-stacked-layouts",
+      "localUrl": "http://127.0.0.1:5181/?filter=nav%3Aplus-application-shells-stacked-layouts",
+      "captures": {
+        "tailwindDesktop": {
+          "status": 0,
+          "signal": null,
+          "stderr": "[40352:47092:0701/080944.512:ERROR:google_apis\\gcm\\engine\\registration_request.cc:291] Registration response error message: DEPRECATED_ENDPOINT\r\n88947 bytes written to file C:\\Users\\yusun\\projects\\ui-dictionary\\docs\\research\\assets\\application-ui-leaves-2026-07-01\\application-shells-stacked-tailwind-desktop.png\r\n",
+          "exists": true,
+          "bytes": 88947
+        },
+        "tailwindMobile": {
+          "status": 0,
+          "signal": null,
+          "stderr": "48359 bytes written to file C:\\Users\\yusun\\projects\\ui-dictionary\\docs\\research\\assets\\application-ui-leaves-2026-07-01\\application-shells-stacked-tailwind-mobile.png\r\n",
+          "exists": true,
+          "bytes": 48359
+        },
+        "localDesktop": {
+          "status": 0,
+          "signal": null,
+          "stderr": "111978 bytes written to file C:\\Users\\yusun\\projects\\ui-dictionary\\docs\\research\\assets\\application-ui-leaves-2026-07-01\\application-shells-stacked-local-desktop.png\r\n",
+          "exists": true,
+          "bytes": 111978
+        },
+        "localMobile": {
+          "status": 0,
+          "signal": null,
+          "stderr": "33311 bytes written to file C:\\Users\\yusun\\projects\\ui-dictionary\\docs\\research\\assets\\application-ui-leaves-2026-07-01\\application-shells-stacked-local-mobile.png\r\n",
+          "exists": true,
+          "bytes": 33311
+        }
+      },
+      "files": {
+        "tailwindDesktop": "docs/research/assets/application-ui-leaves-2026-07-01/application-shells-stacked-tailwind-desktop.png",
+        "tailwindMobile": "docs/research/assets/application-ui-leaves-2026-07-01/application-shells-stacked-tailwind-mobile.png",
+        "localDesktop": "docs/research/assets/application-ui-leaves-2026-07-01/application-shells-stacked-local-desktop.png",
+        "localMobile": "docs/research/assets/application-ui-leaves-2026-07-01/application-shells-stacked-local-mobile.png"
+      }
+    },
+    {
+      "text": "Sidebar Layouts",
+      "href": "https://tailwindcss.com/plus/ui-blocks/application-ui/application-shells/sidebar",
+      "slug": "application-shells-sidebar",
+      "route": "plus-application-shells-sidebar-layouts",
+      "localUrl": "http://127.0.0.1:5181/?filter=nav%3Aplus-application-shells-sidebar-layouts",
+      "captures": {
+        "tailwindDesktop": {
+          "status": 0,
+          "signal": null,
+          "stderr": "92768 bytes written to file C:\\Users\\yusun\\projects\\ui-dictionary\\docs\\research\\assets\\application-ui-leaves-2026-07-01\\application-shells-sidebar-tailwind-desktop.png\r\n",
+          "exists": true,
+          "bytes": 92768
+        },
+        "tailwindMobile": {
+          "status": 0,
+          "signal": null,
+          "stderr": "43572 bytes written to file C:\\Users\\yusun\\projects\\ui-dictionary\\docs\\research\\assets\\application-ui-leaves-2026-07-01\\application-shells-sidebar-tailwind-mobile.png\r\n",
+          "exists": true,
+          "bytes": 43572
+        },
+        "localDesktop": {
+          "status": 0,
+          "signal": null,
+          "stderr": "121734 bytes written to file C:\\Users\\yusun\\projects\\ui-dictionary\\docs\\research\\assets\\application-ui-leaves-2026-07-01\\application-shells-sidebar-local-desktop.png\r\n",
+          "exists": true,
+          "bytes": 121734
+        },
+        "localMobile": {
+          "status": 0,
+          "signal": null,
+          "stderr": "39627 bytes written to file C:\\Users\\yusun\\projects\\ui-dictionary\\docs\\research\\assets\\application-ui-leaves-2026-07-01\\application-shells-sidebar-local-mobile.png\r\n",
+          "exists": true,
+          "bytes": 39627
+        }
+      },
+      "files": {
+        "tailwindDesktop": "docs/research/assets/application-ui-leaves-2026-07-01/application-shells-sidebar-tailwind-desktop.png",
+        "tailwindMobile": "docs/research/assets/application-ui-leaves-2026-07-01/application-shells-sidebar-tailwind-mobile.png",
+        "localDesktop": "docs/research/assets/application-ui-leaves-2026-07-01/application-shells-sidebar-local-desktop.png",
+        "localMobile": "docs/research/assets/application-ui-leaves-2026-07-01/application-shells-sidebar-local-mobile.png"
+      }
+    },
+    {
+      "text": "Multi-Column Layouts",
+      "href": "https://tailwindcss.com/plus/ui-blocks/application-ui/application-shells/multi-column",
+      "slug": "application-shells-multi-column",
+      "route": "plus-application-shells-multi-column-layouts",
+      "localUrl": "http://127.0.0.1:5181/?filter=nav%3Aplus-application-shells-multi-column-layouts",
+      "captures": {
+        "tailwindDesktop": {
+          "status": 0,
+          "signal": null,
+          "stderr": "100888 bytes written to file C:\\Users\\yusun\\projects\\ui-dictionary\\docs\\research\\assets\\application-ui-leaves-2026-07-01\\application-shells-multi-column-tailwind-desktop.png\r\n",
+          "exists": true,
+          "bytes": 100888
+        },
+        "tailwindMobile": {
+          "status": 0,
+          "signal": null,
+          "stderr": "47282 bytes written to file C:\\Users\\yusun\\projects\\ui-dictionary\\docs\\research\\assets\\application-ui-leaves-2026-07-01\\application-shells-multi-column-tailwind-mobile.png\r\n",
+          "exists": true,
+          "bytes": 47282
+        },
+        "localDesktop": {
+          "status": 0,
+          "signal": null,
+          "stderr": "123149 bytes written to file C:\\Users\\yusun\\projects\\ui-dictionary\\docs\\research\\assets\\application-ui-leaves-2026-07-01\\application-shells-multi-column-local-desktop.png\r\n",
+          "exists": true,
+          "bytes": 123149
+        },
+        "localMobile": {
+          "status": 0,
+          "signal": null,
+          "stderr": "36086 bytes written to file C:\\Users\\yusun\\projects\\ui-dictionary\\docs\\research\\assets\\application-ui-leaves-2026-07-01\\application-shells-multi-column-local-mobile.png\r\n",
+          "exists": true,
+          "bytes": 36086
+        }
+      },
+      "files": {
+        "tailwindDesktop": "docs/research/assets/application-ui-leaves-2026-07-01/application-shells-multi-column-tailwind-desktop.png",
+        "tailwindMobile": "docs/research/assets/application-ui-leaves-2026-07-01/application-shells-multi-column-tailwind-mobile.png",
+        "localDesktop": "docs/research/assets/application-ui-leaves-2026-07-01/application-shells-multi-column-local-desktop.png",
+        "localMobile": "docs/research/assets/application-ui-leaves-2026-07-01/application-shells-multi-column-local-mobile.png"
+      }
+    },
+    {
+      "text": "Page Headings",
+      "href": "https://tailwindcss.com/plus/ui-blocks/application-ui/headings/page-headings",
+      "slug": "headings-page-headings",
+      "route": "plus-application-headings-page-headings",
+      "localUrl": "http://127.0.0.1:5181/?filter=nav%3Aplus-application-headings-page-headings",
+      "captures": {
+        "tailwindDesktop": {
+          "status": 0,
+          "signal": null,
+          "stderr": "85956 bytes written to file C:\\Users\\yusun\\projects\\ui-dictionary\\docs\\research\\assets\\application-ui-leaves-2026-07-01\\headings-page-headings-tailwind-desktop.png\r\n",
+          "exists": true,
+          "bytes": 85956
+        },
+        "tailwindMobile": {
+          "status": 0,
+          "signal": null,
+          "stderr": "51318 bytes written to file C:\\Users\\yusun\\projects\\ui-dictionary\\docs\\research\\assets\\application-ui-leaves-2026-07-01\\headings-page-headings-tailwind-mobile.png\r\n",
+          "exists": true,
+          "bytes": 51318
+        },
+        "localDesktop": {
+          "status": 0,
+          "signal": null,
+          "stderr": "139593 bytes written to file C:\\Users\\yusun\\projects\\ui-dictionary\\docs\\research\\assets\\application-ui-leaves-2026-07-01\\headings-page-headings-local-desktop.png\r\n",
+          "exists": true,
+          "bytes": 139593
+        },
+        "localMobile": {
+          "status": 0,
+          "signal": null,
+          "stderr": "46252 bytes written to file C:\\Users\\yusun\\projects\\ui-dictionary\\docs\\research\\assets\\application-ui-leaves-2026-07-01\\headings-page-headings-local-mobile.png\r\n",
+          "exists": true,
+          "bytes": 46252
+        }
+      },
+      "files": {
+        "tailwindDesktop": "docs/research/assets/application-ui-leaves-2026-07-01/headings-page-headings-tailwind-desktop.png",
+        "tailwindMobile": "docs/research/assets/application-ui-leaves-2026-07-01/headings-page-headings-tailwind-mobile.png",
+        "localDesktop": "docs/research/assets/application-ui-leaves-2026-07-01/headings-page-headings-local-desktop.png",
+        "localMobile": "docs/research/assets/application-ui-leaves-2026-07-01/headings-page-headings-local-mobile.png"
+      }
+    },
+    {
+      "text": "Card Headings",
+      "href": "https://tailwindcss.com/plus/ui-blocks/application-ui/headings/card-headings",
+      "slug": "headings-card-headings",
+      "route": "plus-application-headings-card-headings",
+      "localUrl": "http://127.0.0.1:5181/?filter=nav%3Aplus-application-headings-card-headings",
+      "captures": {
+        "tailwindDesktop": {
+          "status": 0,
+          "signal": null,
+          "stderr": "85971 bytes written to file C:\\Users\\yusun\\projects\\ui-dictionary\\docs\\research\\assets\\application-ui-leaves-2026-07-01\\headings-card-headings-tailwind-desktop.png\r\n",
+          "exists": true,
+          "bytes": 85971
+        },
+        "tailwindMobile": {
+          "status": 0,
+          "signal": null,
+          "stderr": "48281 bytes written to file C:\\Users\\yusun\\projects\\ui-dictionary\\docs\\research\\assets\\application-ui-leaves-2026-07-01\\headings-card-headings-tailwind-mobile.png\r\n",
+          "exists": true,
+          "bytes": 48281
+        },
+        "localDesktop": {
+          "status": 0,
+          "signal": null,
+          "stderr": "138896 bytes written to file C:\\Users\\yusun\\projects\\ui-dictionary\\docs\\research\\assets\\application-ui-leaves-2026-07-01\\headings-card-headings-local-desktop.png\r\n",
+          "exists": true,
+          "bytes": 138896
+        },
+        "localMobile": {
+          "status": 0,
+          "signal": null,
+          "stderr": "46167 bytes written to file C:\\Users\\yusun\\projects\\ui-dictionary\\docs\\research\\assets\\application-ui-leaves-2026-07-01\\headings-card-headings-local-mobile.png\r\n",
+          "exists": true,
+          "bytes": 46167
+        }
+      },
+      "files": {
+        "tailwindDesktop": "docs/research/assets/application-ui-leaves-2026-07-01/headings-card-headings-tailwind-desktop.png",
+        "tailwindMobile": "docs/research/assets/application-ui-leaves-2026-07-01/headings-card-headings-tailwind-mobile.png",
+        "localDesktop": "docs/research/assets/application-ui-leaves-2026-07-01/headings-card-headings-local-desktop.png",
+        "localMobile": "docs/research/assets/application-ui-leaves-2026-07-01/headings-card-headings-local-mobile.png"
+      }
+    },
+    {
+      "text": "Section Headings",
+      "href": "https://tailwindcss.com/plus/ui-blocks/application-ui/headings/section-headings",
+      "slug": "headings-section-headings",
+      "route": "plus-application-headings-section-headings",
+      "localUrl": "http://127.0.0.1:5181/?filter=nav%3Aplus-application-headings-section-headings",
+      "captures": {
+        "tailwindDesktop": {
+          "status": 0,
+          "signal": null,
+          "stderr": "78450 bytes written to file C:\\Users\\yusun\\projects\\ui-dictionary\\docs\\research\\assets\\application-ui-leaves-2026-07-01\\headings-section-headings-tailwind-desktop.png\r\n",
+          "exists": true,
+          "bytes": 78450
+        },
+        "tailwindMobile": {
+          "status": 0,
+          "signal": null,
+          "stderr": "42690 bytes written to file C:\\Users\\yusun\\projects\\ui-dictionary\\docs\\research\\assets\\application-ui-leaves-2026-07-01\\headings-section-headings-tailwind-mobile.png\r\n",
+          "exists": true,
+          "bytes": 42690
+        },
+        "localDesktop": {
+          "status": 0,
+          "signal": null,
+          "stderr": "139016 bytes written to file C:\\Users\\yusun\\projects\\ui-dictionary\\docs\\research\\assets\\application-ui-leaves-2026-07-01\\headings-section-headings-local-desktop.png\r\n",
+          "exists": true,
+          "bytes": 139016
+        },
+        "localMobile": {
+          "status": 0,
+          "signal": null,
+          "stderr": "46314 bytes written to file C:\\Users\\yusun\\projects\\ui-dictionary\\docs\\research\\assets\\application-ui-leaves-2026-07-01\\headings-section-headings-local-mobile.png\r\n",
+          "exists": true,
+          "bytes": 46314
+        }
+      },
+      "files": {
+        "tailwindDesktop": "docs/research/assets/application-ui-leaves-2026-07-01/headings-section-headings-tailwind-desktop.png",
+        "tailwindMobile": "docs/research/assets/application-ui-leaves-2026-07-01/headings-section-headings-tailwind-mobile.png",
+        "localDesktop": "docs/research/assets/application-ui-leaves-2026-07-01/headings-section-headings-local-desktop.png",
+        "localMobile": "docs/research/assets/application-ui-leaves-2026-07-01/headings-section-headings-local-mobile.png"
+      }
+    },
+    {
+      "text": "Description Lists",
+      "href": "https://tailwindcss.com/plus/ui-blocks/application-ui/data-display/description-lists",
+      "slug": "data-display-description-lists",
+      "route": "plus-data-display-description-lists",
+      "localUrl": "http://127.0.0.1:5181/?filter=nav%3Aplus-data-display-description-lists",
+      "captures": {
+        "tailwindDesktop": {
+          "status": 0,
+          "signal": null,
+          "stderr": "95133 bytes written to file C:\\Users\\yusun\\projects\\ui-dictionary\\docs\\research\\assets\\application-ui-leaves-2026-07-01\\data-display-description-lists-tailwind-desktop.png\r\n",
+          "exists": true,
+          "bytes": 95133
+        },
+        "tailwindMobile": {
+          "status": 0,
+          "signal": null,
+          "stderr": "46437 bytes written to file C:\\Users\\yusun\\projects\\ui-dictionary\\docs\\research\\assets\\application-ui-leaves-2026-07-01\\data-display-description-lists-tailwind-mobile.png\r\n",
+          "exists": true,
+          "bytes": 46437
+        },
+        "localDesktop": {
+          "status": 0,
+          "signal": null,
+          "stderr": "134316 bytes written to file C:\\Users\\yusun\\projects\\ui-dictionary\\docs\\research\\assets\\application-ui-leaves-2026-07-01\\data-display-description-lists-local-desktop.png\r\n",
+          "exists": true,
+          "bytes": 134316
+        },
+        "localMobile": {
+          "status": 0,
+          "signal": null,
+          "stderr": "45897 bytes written to file C:\\Users\\yusun\\projects\\ui-dictionary\\docs\\research\\assets\\application-ui-leaves-2026-07-01\\data-display-description-lists-local-mobile.png\r\n",
+          "exists": true,
+          "bytes": 45897
+        }
+      },
+      "files": {
+        "tailwindDesktop": "docs/research/assets/application-ui-leaves-2026-07-01/data-display-description-lists-tailwind-desktop.png",
+        "tailwindMobile": "docs/research/assets/application-ui-leaves-2026-07-01/data-display-description-lists-tailwind-mobile.png",
+        "localDesktop": "docs/research/assets/application-ui-leaves-2026-07-01/data-display-description-lists-local-desktop.png",
+        "localMobile": "docs/research/assets/application-ui-leaves-2026-07-01/data-display-description-lists-local-mobile.png"
+      }
+    },
+    {
+      "text": "Stats",
+      "href": "https://tailwindcss.com/plus/ui-blocks/application-ui/data-display/stats",
+      "slug": "data-display-stats",
+      "route": "plus-data-display-stats",
+      "localUrl": "http://127.0.0.1:5181/?filter=nav%3Aplus-data-display-stats",
+      "captures": {
+        "tailwindDesktop": {
+          "status": 0,
+          "signal": null,
+          "stderr": "102740 bytes written to file C:\\Users\\yusun\\projects\\ui-dictionary\\docs\\research\\assets\\application-ui-leaves-2026-07-01\\data-display-stats-tailwind-desktop.png\r\n",
+          "exists": true,
+          "bytes": 102740
+        },
+        "tailwindMobile": {
+          "status": 0,
+          "signal": null,
+          "stderr": "43552 bytes written to file C:\\Users\\yusun\\projects\\ui-dictionary\\docs\\research\\assets\\application-ui-leaves-2026-07-01\\data-display-stats-tailwind-mobile.png\r\n",
+          "exists": true,
+          "bytes": 43552
+        },
+        "localDesktop": {
+          "status": 0,
+          "signal": null,
+          "stderr": "128219 bytes written to file C:\\Users\\yusun\\projects\\ui-dictionary\\docs\\research\\assets\\application-ui-leaves-2026-07-01\\data-display-stats-local-desktop.png\r\n",
+          "exists": true,
+          "bytes": 128219
+        },
+        "localMobile": {
+          "status": 0,
+          "signal": null,
+          "stderr": "34880 bytes written to file C:\\Users\\yusun\\projects\\ui-dictionary\\docs\\research\\assets\\application-ui-leaves-2026-07-01\\data-display-stats-local-mobile.png\r\n",
+          "exists": true,
+          "bytes": 34880
+        }
+      },
+      "files": {
+        "tailwindDesktop": "docs/research/assets/application-ui-leaves-2026-07-01/data-display-stats-tailwind-desktop.png",
+        "tailwindMobile": "docs/research/assets/application-ui-leaves-2026-07-01/data-display-stats-tailwind-mobile.png",
+        "localDesktop": "docs/research/assets/application-ui-leaves-2026-07-01/data-display-stats-local-desktop.png",
+        "localMobile": "docs/research/assets/application-ui-leaves-2026-07-01/data-display-stats-local-mobile.png"
+      }
+    },
+    {
+      "text": "Calendars",
+      "href": "https://tailwindcss.com/plus/ui-blocks/application-ui/data-display/calendars",
+      "slug": "data-display-calendars",
+      "route": "plus-data-display-calendars",
+      "localUrl": "http://127.0.0.1:5181/?filter=nav%3Aplus-data-display-calendars",
+      "captures": {
+        "tailwindDesktop": {
+          "status": 0,
+          "signal": null,
+          "stderr": "143391 bytes written to file C:\\Users\\yusun\\projects\\ui-dictionary\\docs\\research\\assets\\application-ui-leaves-2026-07-01\\data-display-calendars-tailwind-desktop.png\r\n",
+          "exists": true,
+          "bytes": 143391
+        },
+        "tailwindMobile": {
+          "status": 0,
+          "signal": null,
+          "stderr": "46577 bytes written to file C:\\Users\\yusun\\projects\\ui-dictionary\\docs\\research\\assets\\application-ui-leaves-2026-07-01\\data-display-calendars-tailwind-mobile.png\r\n",
+          "exists": true,
+          "bytes": 46577
+        },
+        "localDesktop": {
+          "status": 0,
+          "signal": null,
+          "stderr": "121255 bytes written to file C:\\Users\\yusun\\projects\\ui-dictionary\\docs\\research\\assets\\application-ui-leaves-2026-07-01\\data-display-calendars-local-desktop.png\r\n",
+          "exists": true,
+          "bytes": 121255
+        },
+        "localMobile": {
+          "status": 0,
+          "signal": null,
+          "stderr": "36738 bytes written to file C:\\Users\\yusun\\projects\\ui-dictionary\\docs\\research\\assets\\application-ui-leaves-2026-07-01\\data-display-calendars-local-mobile.png\r\n",
+          "exists": true,
+          "bytes": 36738
+        }
+      },
+      "files": {
+        "tailwindDesktop": "docs/research/assets/application-ui-leaves-2026-07-01/data-display-calendars-tailwind-desktop.png",
+        "tailwindMobile": "docs/research/assets/application-ui-leaves-2026-07-01/data-display-calendars-tailwind-mobile.png",
+        "localDesktop": "docs/research/assets/application-ui-leaves-2026-07-01/data-display-calendars-local-desktop.png",
+        "localMobile": "docs/research/assets/application-ui-leaves-2026-07-01/data-display-calendars-local-mobile.png"
+      }
+    },
+    {
+      "text": "Stacked Lists",
+      "href": "https://tailwindcss.com/plus/ui-blocks/application-ui/lists/stacked-lists",
+      "slug": "lists-stacked-lists",
+      "route": "plus-application-lists-stacked-lists",
+      "localUrl": "http://127.0.0.1:5181/?filter=nav%3Aplus-application-lists-stacked-lists",
+      "captures": {
+        "tailwindDesktop": {
+          "status": 0,
+          "signal": null,
+          "stderr": "129848 bytes written to file C:\\Users\\yusun\\projects\\ui-dictionary\\docs\\research\\assets\\application-ui-leaves-2026-07-01\\lists-stacked-lists-tailwind-desktop.png\r\n",
+          "exists": true,
+          "bytes": 129848
+        },
+        "tailwindMobile": {
+          "status": 0,
+          "signal": null,
+          "stderr": "67530 bytes written to file C:\\Users\\yusun\\projects\\ui-dictionary\\docs\\research\\assets\\application-ui-leaves-2026-07-01\\lists-stacked-lists-tailwind-mobile.png\r\n",
+          "exists": true,
+          "bytes": 67530
+        },
+        "localDesktop": {
+          "status": 0,
+          "signal": null,
+          "stderr": "127971 bytes written to file C:\\Users\\yusun\\projects\\ui-dictionary\\docs\\research\\assets\\application-ui-leaves-2026-07-01\\lists-stacked-lists-local-desktop.png\r\n",
+          "exists": true,
+          "bytes": 127971
+        },
+        "localMobile": {
+          "status": 0,
+          "signal": null,
+          "stderr": "43038 bytes written to file C:\\Users\\yusun\\projects\\ui-dictionary\\docs\\research\\assets\\application-ui-leaves-2026-07-01\\lists-stacked-lists-local-mobile.png\r\n",
+          "exists": true,
+          "bytes": 43038
+        }
+      },
+      "files": {
+        "tailwindDesktop": "docs/research/assets/application-ui-leaves-2026-07-01/lists-stacked-lists-tailwind-desktop.png",
+        "tailwindMobile": "docs/research/assets/application-ui-leaves-2026-07-01/lists-stacked-lists-tailwind-mobile.png",
+        "localDesktop": "docs/research/assets/application-ui-leaves-2026-07-01/lists-stacked-lists-local-desktop.png",
+        "localMobile": "docs/research/assets/application-ui-leaves-2026-07-01/lists-stacked-lists-local-mobile.png"
+      }
+    },
+    {
+      "text": "Tables",
+      "href": "https://tailwindcss.com/plus/ui-blocks/application-ui/lists/tables",
+      "slug": "lists-tables",
+      "route": "plus-application-lists-tables",
+      "localUrl": "http://127.0.0.1:5181/?filter=nav%3Aplus-application-lists-tables",
+      "captures": {
+        "tailwindDesktop": {
+          "status": 0,
+          "signal": null,
+          "stderr": "102283 bytes written to file C:\\Users\\yusun\\projects\\ui-dictionary\\docs\\research\\assets\\application-ui-leaves-2026-07-01\\lists-tables-tailwind-desktop.png\r\n",
+          "exists": true,
+          "bytes": 102283
+        },
+        "tailwindMobile": {
+          "status": 0,
+          "signal": null,
+          "stderr": "45726 bytes written to file C:\\Users\\yusun\\projects\\ui-dictionary\\docs\\research\\assets\\application-ui-leaves-2026-07-01\\lists-tables-tailwind-mobile.png\r\n",
+          "exists": true,
+          "bytes": 45726
+        },
+        "localDesktop": {
+          "status": 0,
+          "signal": null,
+          "stderr": "124373 bytes written to file C:\\Users\\yusun\\projects\\ui-dictionary\\docs\\research\\assets\\application-ui-leaves-2026-07-01\\lists-tables-local-desktop.png\r\n",
+          "exists": true,
+          "bytes": 124373
+        },
+        "localMobile": {
+          "status": 0,
+          "signal": null,
+          "stderr": "40199 bytes written to file C:\\Users\\yusun\\projects\\ui-dictionary\\docs\\research\\assets\\application-ui-leaves-2026-07-01\\lists-tables-local-mobile.png\r\n",
+          "exists": true,
+          "bytes": 40199
+        }
+      },
+      "files": {
+        "tailwindDesktop": "docs/research/assets/application-ui-leaves-2026-07-01/lists-tables-tailwind-desktop.png",
+        "tailwindMobile": "docs/research/assets/application-ui-leaves-2026-07-01/lists-tables-tailwind-mobile.png",
+        "localDesktop": "docs/research/assets/application-ui-leaves-2026-07-01/lists-tables-local-desktop.png",
+        "localMobile": "docs/research/assets/application-ui-leaves-2026-07-01/lists-tables-local-mobile.png"
+      }
+    },
+    {
+      "text": "Grid Lists",
+      "href": "https://tailwindcss.com/plus/ui-blocks/application-ui/lists/grid-lists",
+      "slug": "lists-grid-lists",
+      "route": "plus-application-lists-grid-lists",
+      "localUrl": "http://127.0.0.1:5181/?filter=nav%3Aplus-application-lists-grid-lists",
+      "captures": {
+        "tailwindDesktop": {
+          "status": 0,
+          "signal": null,
+          "stderr": "121255 bytes written to file C:\\Users\\yusun\\projects\\ui-dictionary\\docs\\research\\assets\\application-ui-leaves-2026-07-01\\lists-grid-lists-tailwind-desktop.png\r\n",
+          "exists": true,
+          "bytes": 121255
+        },
+        "tailwindMobile": {
+          "status": 0,
+          "signal": null,
+          "stderr": "48144 bytes written to file C:\\Users\\yusun\\projects\\ui-dictionary\\docs\\research\\assets\\application-ui-leaves-2026-07-01\\lists-grid-lists-tailwind-mobile.png\r\n",
+          "exists": true,
+          "bytes": 48144
+        },
+        "localDesktop": {
+          "status": 0,
+          "signal": null,
+          "stderr": "109702 bytes written to file C:\\Users\\yusun\\projects\\ui-dictionary\\docs\\research\\assets\\application-ui-leaves-2026-07-01\\lists-grid-lists-local-desktop.png\r\n",
+          "exists": true,
+          "bytes": 109702
+        },
+        "localMobile": {
+          "status": 0,
+          "signal": null,
+          "stderr": "30982 bytes written to file C:\\Users\\yusun\\projects\\ui-dictionary\\docs\\research\\assets\\application-ui-leaves-2026-07-01\\lists-grid-lists-local-mobile.png\r\n",
+          "exists": true,
+          "bytes": 30982
+        }
+      },
+      "files": {
+        "tailwindDesktop": "docs/research/assets/application-ui-leaves-2026-07-01/lists-grid-lists-tailwind-desktop.png",
+        "tailwindMobile": "docs/research/assets/application-ui-leaves-2026-07-01/lists-grid-lists-tailwind-mobile.png",
+        "localDesktop": "docs/research/assets/application-ui-leaves-2026-07-01/lists-grid-lists-local-desktop.png",
+        "localMobile": "docs/research/assets/application-ui-leaves-2026-07-01/lists-grid-lists-local-mobile.png"
+      }
+    },
+    {
+      "text": "Feeds",
+      "href": "https://tailwindcss.com/plus/ui-blocks/application-ui/lists/feeds",
+      "slug": "lists-feeds",
+      "route": "plus-application-lists-feeds",
+      "localUrl": "http://127.0.0.1:5181/?filter=nav%3Aplus-application-lists-feeds",
+      "captures": {
+        "tailwindDesktop": {
+          "status": 0,
+          "signal": null,
+          "stderr": "93335 bytes written to file C:\\Users\\yusun\\projects\\ui-dictionary\\docs\\research\\assets\\application-ui-leaves-2026-07-01\\lists-feeds-tailwind-desktop.png\r\n",
+          "exists": true,
+          "bytes": 93335
+        },
+        "tailwindMobile": {
+          "status": 0,
+          "signal": null,
+          "stderr": "57251 bytes written to file C:\\Users\\yusun\\projects\\ui-dictionary\\docs\\research\\assets\\application-ui-leaves-2026-07-01\\lists-feeds-tailwind-mobile.png\r\n",
+          "exists": true,
+          "bytes": 57251
+        },
+        "localDesktop": {
+          "status": 0,
+          "signal": null,
+          "stderr": "115137 bytes written to file C:\\Users\\yusun\\projects\\ui-dictionary\\docs\\research\\assets\\application-ui-leaves-2026-07-01\\lists-feeds-local-desktop.png\r\n",
+          "exists": true,
+          "bytes": 115137
+        },
+        "localMobile": {
+          "status": 0,
+          "signal": null,
+          "stderr": "38172 bytes written to file C:\\Users\\yusun\\projects\\ui-dictionary\\docs\\research\\assets\\application-ui-leaves-2026-07-01\\lists-feeds-local-mobile.png\r\n",
+          "exists": true,
+          "bytes": 38172
+        }
+      },
+      "files": {
+        "tailwindDesktop": "docs/research/assets/application-ui-leaves-2026-07-01/lists-feeds-tailwind-desktop.png",
+        "tailwindMobile": "docs/research/assets/application-ui-leaves-2026-07-01/lists-feeds-tailwind-mobile.png",
+        "localDesktop": "docs/research/assets/application-ui-leaves-2026-07-01/lists-feeds-local-desktop.png",
+        "localMobile": "docs/research/assets/application-ui-leaves-2026-07-01/lists-feeds-local-mobile.png"
+      }
+    },
+    {
+      "text": "Form Layouts",
+      "href": "https://tailwindcss.com/plus/ui-blocks/application-ui/forms/form-layouts",
+      "slug": "forms-form-layouts",
+      "route": "plus-forms-form-layouts",
+      "localUrl": "http://127.0.0.1:5181/?filter=nav%3Aplus-forms-form-layouts",
+      "captures": {
+        "tailwindDesktop": {
+          "status": 0,
+          "signal": null,
+          "stderr": "75539 bytes written to file C:\\Users\\yusun\\projects\\ui-dictionary\\docs\\research\\assets\\application-ui-leaves-2026-07-01\\forms-form-layouts-tailwind-desktop.png\r\n",
+          "exists": true,
+          "bytes": 75539
+        },
+        "tailwindMobile": {
+          "status": 0,
+          "signal": null,
+          "stderr": "43898 bytes written to file C:\\Users\\yusun\\projects\\ui-dictionary\\docs\\research\\assets\\application-ui-leaves-2026-07-01\\forms-form-layouts-tailwind-mobile.png\r\n",
+          "exists": true,
+          "bytes": 43898
+        },
+        "localDesktop": {
+          "status": 0,
+          "signal": null,
+          "stderr": "113215 bytes written to file C:\\Users\\yusun\\projects\\ui-dictionary\\docs\\research\\assets\\application-ui-leaves-2026-07-01\\forms-form-layouts-local-desktop.png\r\n",
+          "exists": true,
+          "bytes": 113215
+        },
+        "localMobile": {
+          "status": 0,
+          "signal": null,
+          "stderr": "33929 bytes written to file C:\\Users\\yusun\\projects\\ui-dictionary\\docs\\research\\assets\\application-ui-leaves-2026-07-01\\forms-form-layouts-local-mobile.png\r\n",
+          "exists": true,
+          "bytes": 33929
+        }
+      },
+      "files": {
+        "tailwindDesktop": "docs/research/assets/application-ui-leaves-2026-07-01/forms-form-layouts-tailwind-desktop.png",
+        "tailwindMobile": "docs/research/assets/application-ui-leaves-2026-07-01/forms-form-layouts-tailwind-mobile.png",
+        "localDesktop": "docs/research/assets/application-ui-leaves-2026-07-01/forms-form-layouts-local-desktop.png",
+        "localMobile": "docs/research/assets/application-ui-leaves-2026-07-01/forms-form-layouts-local-mobile.png"
+      }
+    },
+    {
+      "text": "Input Groups",
+      "href": "https://tailwindcss.com/plus/ui-blocks/application-ui/forms/input-groups",
+      "slug": "forms-input-groups",
+      "route": "plus-forms-input-groups",
+      "localUrl": "http://127.0.0.1:5181/?filter=nav%3Aplus-forms-input-groups",
+      "captures": {
+        "tailwindDesktop": {
+          "status": 0,
+          "signal": null,
+          "stderr": "84104 bytes written to file C:\\Users\\yusun\\projects\\ui-dictionary\\docs\\research\\assets\\application-ui-leaves-2026-07-01\\forms-input-groups-tailwind-desktop.png\r\n",
+          "exists": true,
+          "bytes": 84104
+        },
+        "tailwindMobile": {
+          "status": 0,
+          "signal": null,
+          "stderr": "43729 bytes written to file C:\\Users\\yusun\\projects\\ui-dictionary\\docs\\research\\assets\\application-ui-leaves-2026-07-01\\forms-input-groups-tailwind-mobile.png\r\n",
+          "exists": true,
+          "bytes": 43729
+        },
+        "localDesktop": {
+          "status": 0,
+          "signal": null,
+          "stderr": "114593 bytes written to file C:\\Users\\yusun\\projects\\ui-dictionary\\docs\\research\\assets\\application-ui-leaves-2026-07-01\\forms-input-groups-local-desktop.png\r\n",
+          "exists": true,
+          "bytes": 114593
+        },
+        "localMobile": {
+          "status": 0,
+          "signal": null,
+          "stderr": "33711 bytes written to file C:\\Users\\yusun\\projects\\ui-dictionary\\docs\\research\\assets\\application-ui-leaves-2026-07-01\\forms-input-groups-local-mobile.png\r\n",
+          "exists": true,
+          "bytes": 33711
+        }
+      },
+      "files": {
+        "tailwindDesktop": "docs/research/assets/application-ui-leaves-2026-07-01/forms-input-groups-tailwind-desktop.png",
+        "tailwindMobile": "docs/research/assets/application-ui-leaves-2026-07-01/forms-input-groups-tailwind-mobile.png",
+        "localDesktop": "docs/research/assets/application-ui-leaves-2026-07-01/forms-input-groups-local-desktop.png",
+        "localMobile": "docs/research/assets/application-ui-leaves-2026-07-01/forms-input-groups-local-mobile.png"
+      }
+    },
+    {
+      "text": "Select Menus",
+      "href": "https://tailwindcss.com/plus/ui-blocks/application-ui/forms/select-menus",
+      "slug": "forms-select-menus",
+      "route": "plus-forms-select-menus",
+      "localUrl": "http://127.0.0.1:5181/?filter=nav%3Aplus-forms-select-menus",
+      "captures": {
+        "tailwindDesktop": {
+          "status": 0,
+          "signal": null,
+          "stderr": "88597 bytes written to file C:\\Users\\yusun\\projects\\ui-dictionary\\docs\\research\\assets\\application-ui-leaves-2026-07-01\\forms-select-menus-tailwind-desktop.png\r\n",
+          "exists": true,
+          "bytes": 88597
+        },
+        "tailwindMobile": {
+          "status": 0,
+          "signal": null,
+          "stderr": "59123 bytes written to file C:\\Users\\yusun\\projects\\ui-dictionary\\docs\\research\\assets\\application-ui-leaves-2026-07-01\\forms-select-menus-tailwind-mobile.png\r\n",
+          "exists": true,
+          "bytes": 59123
+        },
+        "localDesktop": {
+          "status": 0,
+          "signal": null,
+          "stderr": "116020 bytes written to file C:\\Users\\yusun\\projects\\ui-dictionary\\docs\\research\\assets\\application-ui-leaves-2026-07-01\\forms-select-menus-local-desktop.png\r\n",
+          "exists": true,
+          "bytes": 116020
+        },
+        "localMobile": {
+          "status": 0,
+          "signal": null,
+          "stderr": "35787 bytes written to file C:\\Users\\yusun\\projects\\ui-dictionary\\docs\\research\\assets\\application-ui-leaves-2026-07-01\\forms-select-menus-local-mobile.png\r\n",
+          "exists": true,
+          "bytes": 35787
+        }
+      },
+      "files": {
+        "tailwindDesktop": "docs/research/assets/application-ui-leaves-2026-07-01/forms-select-menus-tailwind-desktop.png",
+        "tailwindMobile": "docs/research/assets/application-ui-leaves-2026-07-01/forms-select-menus-tailwind-mobile.png",
+        "localDesktop": "docs/research/assets/application-ui-leaves-2026-07-01/forms-select-menus-local-desktop.png",
+        "localMobile": "docs/research/assets/application-ui-leaves-2026-07-01/forms-select-menus-local-mobile.png"
+      }
+    },
+    {
+      "text": "Sign-in and Registration",
+      "href": "https://tailwindcss.com/plus/ui-blocks/application-ui/forms/sign-in-forms",
+      "slug": "forms-sign-in-forms",
+      "route": "plus-forms-sign-in-registration",
+      "localUrl": "http://127.0.0.1:5181/?filter=nav%3Aplus-forms-sign-in-registration",
+      "captures": {
+        "tailwindDesktop": {
+          "status": 0,
+          "signal": null,
+          "stderr": "73874 bytes written to file C:\\Users\\yusun\\projects\\ui-dictionary\\docs\\research\\assets\\application-ui-leaves-2026-07-01\\forms-sign-in-forms-tailwind-desktop.png\r\n",
+          "exists": true,
+          "bytes": 73874
+        },
+        "tailwindMobile": {
+          "status": 0,
+          "signal": null,
+          "stderr": "42724 bytes written to file C:\\Users\\yusun\\projects\\ui-dictionary\\docs\\research\\assets\\application-ui-leaves-2026-07-01\\forms-sign-in-forms-tailwind-mobile.png\r\n",
+          "exists": true,
+          "bytes": 42724
+        },
+        "localDesktop": {
+          "status": 0,
+          "signal": null,
+          "stderr": "116477 bytes written to file C:\\Users\\yusun\\projects\\ui-dictionary\\docs\\research\\assets\\application-ui-leaves-2026-07-01\\forms-sign-in-forms-local-desktop.png\r\n",
+          "exists": true,
+          "bytes": 116477
+        },
+        "localMobile": {
+          "status": 0,
+          "signal": null,
+          "stderr": "37812 bytes written to file C:\\Users\\yusun\\projects\\ui-dictionary\\docs\\research\\assets\\application-ui-leaves-2026-07-01\\forms-sign-in-forms-local-mobile.png\r\n",
+          "exists": true,
+          "bytes": 37812
+        }
+      },
+      "files": {
+        "tailwindDesktop": "docs/research/assets/application-ui-leaves-2026-07-01/forms-sign-in-forms-tailwind-desktop.png",
+        "tailwindMobile": "docs/research/assets/application-ui-leaves-2026-07-01/forms-sign-in-forms-tailwind-mobile.png",
+        "localDesktop": "docs/research/assets/application-ui-leaves-2026-07-01/forms-sign-in-forms-local-desktop.png",
+        "localMobile": "docs/research/assets/application-ui-leaves-2026-07-01/forms-sign-in-forms-local-mobile.png"
+      }
+    },
+    {
+      "text": "Textareas",
+      "href": "https://tailwindcss.com/plus/ui-blocks/application-ui/forms/textareas",
+      "slug": "forms-textareas",
+      "route": "plus-forms-textareas",
+      "localUrl": "http://127.0.0.1:5181/?filter=nav%3Aplus-forms-textareas",
+      "captures": {
+        "tailwindDesktop": {
+          "status": 0,
+          "signal": null,
+          "stderr": "75536 bytes written to file C:\\Users\\yusun\\projects\\ui-dictionary\\docs\\research\\assets\\application-ui-leaves-2026-07-01\\forms-textareas-tailwind-desktop.png\r\n",
+          "exists": true,
+          "bytes": 75536
+        },
+        "tailwindMobile": {
+          "status": 0,
+          "signal": null,
+          "stderr": "39720 bytes written to file C:\\Users\\yusun\\projects\\ui-dictionary\\docs\\research\\assets\\application-ui-leaves-2026-07-01\\forms-textareas-tailwind-mobile.png\r\n",
+          "exists": true,
+          "bytes": 39720
+        },
+        "localDesktop": {
+          "status": 0,
+          "signal": null,
+          "stderr": "101938 bytes written to file C:\\Users\\yusun\\projects\\ui-dictionary\\docs\\research\\assets\\application-ui-leaves-2026-07-01\\forms-textareas-local-desktop.png\r\n",
+          "exists": true,
+          "bytes": 101938
+        },
+        "localMobile": {
+          "status": 0,
+          "signal": null,
+          "stderr": "33220 bytes written to file C:\\Users\\yusun\\projects\\ui-dictionary\\docs\\research\\assets\\application-ui-leaves-2026-07-01\\forms-textareas-local-mobile.png\r\n",
+          "exists": true,
+          "bytes": 33220
+        }
+      },
+      "files": {
+        "tailwindDesktop": "docs/research/assets/application-ui-leaves-2026-07-01/forms-textareas-tailwind-desktop.png",
+        "tailwindMobile": "docs/research/assets/application-ui-leaves-2026-07-01/forms-textareas-tailwind-mobile.png",
+        "localDesktop": "docs/research/assets/application-ui-leaves-2026-07-01/forms-textareas-local-desktop.png",
+        "localMobile": "docs/research/assets/application-ui-leaves-2026-07-01/forms-textareas-local-mobile.png"
+      }
+    },
+    {
+      "text": "Radio Groups",
+      "href": "https://tailwindcss.com/plus/ui-blocks/application-ui/forms/radio-groups",
+      "slug": "forms-radio-groups",
+      "route": "plus-forms-radio-groups",
+      "localUrl": "http://127.0.0.1:5181/?filter=nav%3Aplus-forms-radio-groups",
+      "captures": {
+        "tailwindDesktop": {
+          "status": 0,
+          "signal": null,
+          "stderr": "82021 bytes written to file C:\\Users\\yusun\\projects\\ui-dictionary\\docs\\research\\assets\\application-ui-leaves-2026-07-01\\forms-radio-groups-tailwind-desktop.png\r\n",
+          "exists": true,
+          "bytes": 82021
+        },
+        "tailwindMobile": {
+          "status": 0,
+          "signal": null,
+          "stderr": "44954 bytes written to file C:\\Users\\yusun\\projects\\ui-dictionary\\docs\\research\\assets\\application-ui-leaves-2026-07-01\\forms-radio-groups-tailwind-mobile.png\r\n",
+          "exists": true,
+          "bytes": 44954
+        },
+        "localDesktop": {
+          "status": 0,
+          "signal": null,
+          "stderr": "115295 bytes written to file C:\\Users\\yusun\\projects\\ui-dictionary\\docs\\research\\assets\\application-ui-leaves-2026-07-01\\forms-radio-groups-local-desktop.png\r\n",
+          "exists": true,
+          "bytes": 115295
+        },
+        "localMobile": {
+          "status": 0,
+          "signal": null,
+          "stderr": "34756 bytes written to file C:\\Users\\yusun\\projects\\ui-dictionary\\docs\\research\\assets\\application-ui-leaves-2026-07-01\\forms-radio-groups-local-mobile.png\r\n",
+          "exists": true,
+          "bytes": 34756
+        }
+      },
+      "files": {
+        "tailwindDesktop": "docs/research/assets/application-ui-leaves-2026-07-01/forms-radio-groups-tailwind-desktop.png",
+        "tailwindMobile": "docs/research/assets/application-ui-leaves-2026-07-01/forms-radio-groups-tailwind-mobile.png",
+        "localDesktop": "docs/research/assets/application-ui-leaves-2026-07-01/forms-radio-groups-local-desktop.png",
+        "localMobile": "docs/research/assets/application-ui-leaves-2026-07-01/forms-radio-groups-local-mobile.png"
+      }
+    },
+    {
+      "text": "Checkboxes",
+      "href": "https://tailwindcss.com/plus/ui-blocks/application-ui/forms/checkboxes",
+      "slug": "forms-checkboxes",
+      "route": "plus-forms-checkboxes",
+      "localUrl": "http://127.0.0.1:5181/?filter=nav%3Aplus-forms-checkboxes",
+      "captures": {
+        "tailwindDesktop": {
+          "status": 0,
+          "signal": null,
+          "stderr": "96092 bytes written to file C:\\Users\\yusun\\projects\\ui-dictionary\\docs\\research\\assets\\application-ui-leaves-2026-07-01\\forms-checkboxes-tailwind-desktop.png\r\n",
+          "exists": true,
+          "bytes": 96092
+        },
+        "tailwindMobile": {
+          "status": 0,
+          "signal": null,
+          "stderr": "50200 bytes written to file C:\\Users\\yusun\\projects\\ui-dictionary\\docs\\research\\assets\\application-ui-leaves-2026-07-01\\forms-checkboxes-tailwind-mobile.png\r\n",
+          "exists": true,
+          "bytes": 50200
+        },
+        "localDesktop": {
+          "status": 0,
+          "signal": null,
+          "stderr": "118960 bytes written to file C:\\Users\\yusun\\projects\\ui-dictionary\\docs\\research\\assets\\application-ui-leaves-2026-07-01\\forms-checkboxes-local-desktop.png\r\n",
+          "exists": true,
+          "bytes": 118960
+        },
+        "localMobile": {
+          "status": 0,
+          "signal": null,
+          "stderr": "35014 bytes written to file C:\\Users\\yusun\\projects\\ui-dictionary\\docs\\research\\assets\\application-ui-leaves-2026-07-01\\forms-checkboxes-local-mobile.png\r\n",
+          "exists": true,
+          "bytes": 35014
+        }
+      },
+      "files": {
+        "tailwindDesktop": "docs/research/assets/application-ui-leaves-2026-07-01/forms-checkboxes-tailwind-desktop.png",
+        "tailwindMobile": "docs/research/assets/application-ui-leaves-2026-07-01/forms-checkboxes-tailwind-mobile.png",
+        "localDesktop": "docs/research/assets/application-ui-leaves-2026-07-01/forms-checkboxes-local-desktop.png",
+        "localMobile": "docs/research/assets/application-ui-leaves-2026-07-01/forms-checkboxes-local-mobile.png"
+      }
+    },
+    {
+      "text": "Toggles",
+      "href": "https://tailwindcss.com/plus/ui-blocks/application-ui/forms/toggles",
+      "slug": "forms-toggles",
+      "route": "plus-forms-toggles",
+      "localUrl": "http://127.0.0.1:5181/?filter=nav%3Aplus-forms-toggles",
+      "captures": {
+        "tailwindDesktop": {
+          "status": 0,
+          "signal": null,
+          "stderr": "74194 bytes written to file C:\\Users\\yusun\\projects\\ui-dictionary\\docs\\research\\assets\\application-ui-leaves-2026-07-01\\forms-toggles-tailwind-desktop.png\r\n",
+          "exists": true,
+          "bytes": 74194
+        },
+        "tailwindMobile": {
+          "status": 0,
+          "signal": null,
+          "stderr": "35771 bytes written to file C:\\Users\\yusun\\projects\\ui-dictionary\\docs\\research\\assets\\application-ui-leaves-2026-07-01\\forms-toggles-tailwind-mobile.png\r\n",
+          "exists": true,
+          "bytes": 35771
+        },
+        "localDesktop": {
+          "status": 0,
+          "signal": null,
+          "stderr": "116288 bytes written to file C:\\Users\\yusun\\projects\\ui-dictionary\\docs\\research\\assets\\application-ui-leaves-2026-07-01\\forms-toggles-local-desktop.png\r\n",
+          "exists": true,
+          "bytes": 116288
+        },
+        "localMobile": {
+          "status": 0,
+          "signal": null,
+          "stderr": "34132 bytes written to file C:\\Users\\yusun\\projects\\ui-dictionary\\docs\\research\\assets\\application-ui-leaves-2026-07-01\\forms-toggles-local-mobile.png\r\n",
+          "exists": true,
+          "bytes": 34132
+        }
+      },
+      "files": {
+        "tailwindDesktop": "docs/research/assets/application-ui-leaves-2026-07-01/forms-toggles-tailwind-desktop.png",
+        "tailwindMobile": "docs/research/assets/application-ui-leaves-2026-07-01/forms-toggles-tailwind-mobile.png",
+        "localDesktop": "docs/research/assets/application-ui-leaves-2026-07-01/forms-toggles-local-desktop.png",
+        "localMobile": "docs/research/assets/application-ui-leaves-2026-07-01/forms-toggles-local-mobile.png"
+      }
+    },
+    {
+      "text": "Action Panels",
+      "href": "https://tailwindcss.com/plus/ui-blocks/application-ui/forms/action-panels",
+      "slug": "forms-action-panels",
+      "route": "plus-forms-action-panels",
+      "localUrl": "http://127.0.0.1:5181/?filter=nav%3Aplus-forms-action-panels",
+      "captures": {
+        "tailwindDesktop": {
+          "status": 0,
+          "signal": null,
+          "stderr": "87888 bytes written to file C:\\Users\\yusun\\projects\\ui-dictionary\\docs\\research\\assets\\application-ui-leaves-2026-07-01\\forms-action-panels-tailwind-desktop.png\r\n",
+          "exists": true,
+          "bytes": 87888
+        },
+        "tailwindMobile": {
+          "status": 0,
+          "signal": null,
+          "stderr": "44820 bytes written to file C:\\Users\\yusun\\projects\\ui-dictionary\\docs\\research\\assets\\application-ui-leaves-2026-07-01\\forms-action-panels-tailwind-mobile.png\r\n",
+          "exists": true,
+          "bytes": 44820
+        },
+        "localDesktop": {
+          "status": 0,
+          "signal": null,
+          "stderr": "117063 bytes written to file C:\\Users\\yusun\\projects\\ui-dictionary\\docs\\research\\assets\\application-ui-leaves-2026-07-01\\forms-action-panels-local-desktop.png\r\n",
+          "exists": true,
+          "bytes": 117063
+        },
+        "localMobile": {
+          "status": 0,
+          "signal": null,
+          "stderr": "35412 bytes written to file C:\\Users\\yusun\\projects\\ui-dictionary\\docs\\research\\assets\\application-ui-leaves-2026-07-01\\forms-action-panels-local-mobile.png\r\n",
+          "exists": true,
+          "bytes": 35412
+        }
+      },
+      "files": {
+        "tailwindDesktop": "docs/research/assets/application-ui-leaves-2026-07-01/forms-action-panels-tailwind-desktop.png",
+        "tailwindMobile": "docs/research/assets/application-ui-leaves-2026-07-01/forms-action-panels-tailwind-mobile.png",
+        "localDesktop": "docs/research/assets/application-ui-leaves-2026-07-01/forms-action-panels-local-desktop.png",
+        "localMobile": "docs/research/assets/application-ui-leaves-2026-07-01/forms-action-panels-local-mobile.png"
+      }
+    },
+    {
+      "text": "Comboboxes",
+      "href": "https://tailwindcss.com/plus/ui-blocks/application-ui/forms/comboboxes",
+      "slug": "forms-comboboxes",
+      "route": "plus-forms-comboboxes",
+      "localUrl": "http://127.0.0.1:5181/?filter=nav%3Aplus-forms-comboboxes",
+      "captures": {
+        "tailwindDesktop": {
+          "status": 0,
+          "signal": null,
+          "stderr": "78158 bytes written to file C:\\Users\\yusun\\projects\\ui-dictionary\\docs\\research\\assets\\application-ui-leaves-2026-07-01\\forms-comboboxes-tailwind-desktop.png\r\n",
+          "exists": true,
+          "bytes": 78158
+        },
+        "tailwindMobile": {
+          "status": 0,
+          "signal": null,
+          "stderr": "51072 bytes written to file C:\\Users\\yusun\\projects\\ui-dictionary\\docs\\research\\assets\\application-ui-leaves-2026-07-01\\forms-comboboxes-tailwind-mobile.png\r\n",
+          "exists": true,
+          "bytes": 51072
+        },
+        "localDesktop": {
+          "status": 0,
+          "signal": null,
+          "stderr": "115328 bytes written to file C:\\Users\\yusun\\projects\\ui-dictionary\\docs\\research\\assets\\application-ui-leaves-2026-07-01\\forms-comboboxes-local-desktop.png\r\n",
+          "exists": true,
+          "bytes": 115328
+        },
+        "localMobile": {
+          "status": 0,
+          "signal": null,
+          "stderr": "36244 bytes written to file C:\\Users\\yusun\\projects\\ui-dictionary\\docs\\research\\assets\\application-ui-leaves-2026-07-01\\forms-comboboxes-local-mobile.png\r\n",
+          "exists": true,
+          "bytes": 36244
+        }
+      },
+      "files": {
+        "tailwindDesktop": "docs/research/assets/application-ui-leaves-2026-07-01/forms-comboboxes-tailwind-desktop.png",
+        "tailwindMobile": "docs/research/assets/application-ui-leaves-2026-07-01/forms-comboboxes-tailwind-mobile.png",
+        "localDesktop": "docs/research/assets/application-ui-leaves-2026-07-01/forms-comboboxes-local-desktop.png",
+        "localMobile": "docs/research/assets/application-ui-leaves-2026-07-01/forms-comboboxes-local-mobile.png"
+      }
+    },
+    {
+      "text": "Alerts",
+      "href": "https://tailwindcss.com/plus/ui-blocks/application-ui/feedback/alerts",
+      "slug": "feedback-alerts",
+      "route": "plus-feedback-alerts",
+      "localUrl": "http://127.0.0.1:5181/?filter=nav%3Aplus-feedback-alerts",
+      "captures": {
+        "tailwindDesktop": {
+          "status": 0,
+          "signal": null,
+          "stderr": "92032 bytes written to file C:\\Users\\yusun\\projects\\ui-dictionary\\docs\\research\\assets\\application-ui-leaves-2026-07-01\\feedback-alerts-tailwind-desktop.png\r\n",
+          "exists": true,
+          "bytes": 92032
+        },
+        "tailwindMobile": {
+          "status": 0,
+          "signal": null,
+          "stderr": "46783 bytes written to file C:\\Users\\yusun\\projects\\ui-dictionary\\docs\\research\\assets\\application-ui-leaves-2026-07-01\\feedback-alerts-tailwind-mobile.png\r\n",
+          "exists": true,
+          "bytes": 46783
+        },
+        "localDesktop": {
+          "status": 0,
+          "signal": null,
+          "stderr": "113689 bytes written to file C:\\Users\\yusun\\projects\\ui-dictionary\\docs\\research\\assets\\application-ui-leaves-2026-07-01\\feedback-alerts-local-desktop.png\r\n",
+          "exists": true,
+          "bytes": 113689
+        },
+        "localMobile": {
+          "status": 0,
+          "signal": null,
+          "stderr": "32666 bytes written to file C:\\Users\\yusun\\projects\\ui-dictionary\\docs\\research\\assets\\application-ui-leaves-2026-07-01\\feedback-alerts-local-mobile.png\r\n",
+          "exists": true,
+          "bytes": 32666
+        }
+      },
+      "files": {
+        "tailwindDesktop": "docs/research/assets/application-ui-leaves-2026-07-01/feedback-alerts-tailwind-desktop.png",
+        "tailwindMobile": "docs/research/assets/application-ui-leaves-2026-07-01/feedback-alerts-tailwind-mobile.png",
+        "localDesktop": "docs/research/assets/application-ui-leaves-2026-07-01/feedback-alerts-local-desktop.png",
+        "localMobile": "docs/research/assets/application-ui-leaves-2026-07-01/feedback-alerts-local-mobile.png"
+      }
+    },
+    {
+      "text": "Empty States",
+      "href": "https://tailwindcss.com/plus/ui-blocks/application-ui/feedback/empty-states",
+      "slug": "feedback-empty-states",
+      "route": "plus-feedback-empty-states",
+      "localUrl": "http://127.0.0.1:5181/?filter=nav%3Aplus-feedback-empty-states",
+      "captures": {
+        "tailwindDesktop": {
+          "status": 0,
+          "signal": null,
+          "stderr": "79383 bytes written to file C:\\Users\\yusun\\projects\\ui-dictionary\\docs\\research\\assets\\application-ui-leaves-2026-07-01\\feedback-empty-states-tailwind-desktop.png\r\n",
+          "exists": true,
+          "bytes": 79383
+        },
+        "tailwindMobile": {
+          "status": 0,
+          "signal": null,
+          "stderr": "44523 bytes written to file C:\\Users\\yusun\\projects\\ui-dictionary\\docs\\research\\assets\\application-ui-leaves-2026-07-01\\feedback-empty-states-tailwind-mobile.png\r\n",
+          "exists": true,
+          "bytes": 44523
+        },
+        "localDesktop": {
+          "status": 0,
+          "signal": null,
+          "stderr": "111595 bytes written to file C:\\Users\\yusun\\projects\\ui-dictionary\\docs\\research\\assets\\application-ui-leaves-2026-07-01\\feedback-empty-states-local-desktop.png\r\n",
+          "exists": true,
+          "bytes": 111595
+        },
+        "localMobile": {
+          "status": 0,
+          "signal": null,
+          "stderr": "37461 bytes written to file C:\\Users\\yusun\\projects\\ui-dictionary\\docs\\research\\assets\\application-ui-leaves-2026-07-01\\feedback-empty-states-local-mobile.png\r\n",
+          "exists": true,
+          "bytes": 37461
+        }
+      },
+      "files": {
+        "tailwindDesktop": "docs/research/assets/application-ui-leaves-2026-07-01/feedback-empty-states-tailwind-desktop.png",
+        "tailwindMobile": "docs/research/assets/application-ui-leaves-2026-07-01/feedback-empty-states-tailwind-mobile.png",
+        "localDesktop": "docs/research/assets/application-ui-leaves-2026-07-01/feedback-empty-states-local-desktop.png",
+        "localMobile": "docs/research/assets/application-ui-leaves-2026-07-01/feedback-empty-states-local-mobile.png"
+      }
+    },
+    {
+      "text": "Navbars",
+      "href": "https://tailwindcss.com/plus/ui-blocks/application-ui/navigation/navbars",
+      "slug": "navigation-navbars",
+      "route": "plus-navigation-navbars",
+      "localUrl": "http://127.0.0.1:5181/?filter=nav%3Aplus-navigation-navbars",
+      "captures": {
+        "tailwindDesktop": {
+          "status": 0,
+          "signal": null,
+          "stderr": "88342 bytes written to file C:\\Users\\yusun\\projects\\ui-dictionary\\docs\\research\\assets\\application-ui-leaves-2026-07-01\\navigation-navbars-tailwind-desktop.png\r\n",
+          "exists": true,
+          "bytes": 88342
+        },
+        "tailwindMobile": {
+          "status": 0,
+          "signal": null,
+          "stderr": "42731 bytes written to file C:\\Users\\yusun\\projects\\ui-dictionary\\docs\\research\\assets\\application-ui-leaves-2026-07-01\\navigation-navbars-tailwind-mobile.png\r\n",
+          "exists": true,
+          "bytes": 42731
+        },
+        "localDesktop": {
+          "status": 0,
+          "signal": null,
+          "stderr": "111341 bytes written to file C:\\Users\\yusun\\projects\\ui-dictionary\\docs\\research\\assets\\application-ui-leaves-2026-07-01\\navigation-navbars-local-desktop.png\r\n",
+          "exists": true,
+          "bytes": 111341
+        },
+        "localMobile": {
+          "status": 0,
+          "signal": null,
+          "stderr": "30008 bytes written to file C:\\Users\\yusun\\projects\\ui-dictionary\\docs\\research\\assets\\application-ui-leaves-2026-07-01\\navigation-navbars-local-mobile.png\r\n",
+          "exists": true,
+          "bytes": 30008
+        }
+      },
+      "files": {
+        "tailwindDesktop": "docs/research/assets/application-ui-leaves-2026-07-01/navigation-navbars-tailwind-desktop.png",
+        "tailwindMobile": "docs/research/assets/application-ui-leaves-2026-07-01/navigation-navbars-tailwind-mobile.png",
+        "localDesktop": "docs/research/assets/application-ui-leaves-2026-07-01/navigation-navbars-local-desktop.png",
+        "localMobile": "docs/research/assets/application-ui-leaves-2026-07-01/navigation-navbars-local-mobile.png"
+      }
+    },
+    {
+      "text": "Pagination",
+      "href": "https://tailwindcss.com/plus/ui-blocks/application-ui/navigation/pagination",
+      "slug": "navigation-pagination",
+      "route": "plus-navigation-pagination",
+      "localUrl": "http://127.0.0.1:5181/?filter=nav%3Aplus-navigation-pagination",
+      "captures": {
+        "tailwindDesktop": {
+          "status": 0,
+          "signal": null,
+          "stderr": "96535 bytes written to file C:\\Users\\yusun\\projects\\ui-dictionary\\docs\\research\\assets\\application-ui-leaves-2026-07-01\\navigation-pagination-tailwind-desktop.png\r\n",
+          "exists": true,
+          "bytes": 96535
+        },
+        "tailwindMobile": {
+          "status": 0,
+          "signal": null,
+          "stderr": "54326 bytes written to file C:\\Users\\yusun\\projects\\ui-dictionary\\docs\\research\\assets\\application-ui-leaves-2026-07-01\\navigation-pagination-tailwind-mobile.png\r\n",
+          "exists": true,
+          "bytes": 54326
+        },
+        "localDesktop": {
+          "status": 0,
+          "signal": null,
+          "stderr": "107539 bytes written to file C:\\Users\\yusun\\projects\\ui-dictionary\\docs\\research\\assets\\application-ui-leaves-2026-07-01\\navigation-pagination-local-desktop.png\r\n",
+          "exists": true,
+          "bytes": 107539
+        },
+        "localMobile": {
+          "status": 0,
+          "signal": null,
+          "stderr": "28589 bytes written to file C:\\Users\\yusun\\projects\\ui-dictionary\\docs\\research\\assets\\application-ui-leaves-2026-07-01\\navigation-pagination-local-mobile.png\r\n",
+          "exists": true,
+          "bytes": 28589
+        }
+      },
+      "files": {
+        "tailwindDesktop": "docs/research/assets/application-ui-leaves-2026-07-01/navigation-pagination-tailwind-desktop.png",
+        "tailwindMobile": "docs/research/assets/application-ui-leaves-2026-07-01/navigation-pagination-tailwind-mobile.png",
+        "localDesktop": "docs/research/assets/application-ui-leaves-2026-07-01/navigation-pagination-local-desktop.png",
+        "localMobile": "docs/research/assets/application-ui-leaves-2026-07-01/navigation-pagination-local-mobile.png"
+      }
+    },
+    {
+      "text": "Tabs",
+      "href": "https://tailwindcss.com/plus/ui-blocks/application-ui/navigation/tabs",
+      "slug": "navigation-tabs",
+      "route": "plus-navigation-tabs",
+      "localUrl": "http://127.0.0.1:5181/?filter=nav%3Aplus-navigation-tabs",
+      "captures": {
+        "tailwindDesktop": {
+          "status": 0,
+          "signal": null,
+          "stderr": "86088 bytes written to file C:\\Users\\yusun\\projects\\ui-dictionary\\docs\\research\\assets\\application-ui-leaves-2026-07-01\\navigation-tabs-tailwind-desktop.png\r\n",
+          "exists": true,
+          "bytes": 86088
+        },
+        "tailwindMobile": {
+          "status": 0,
+          "signal": null,
+          "stderr": "39364 bytes written to file C:\\Users\\yusun\\projects\\ui-dictionary\\docs\\research\\assets\\application-ui-leaves-2026-07-01\\navigation-tabs-tailwind-mobile.png\r\n",
+          "exists": true,
+          "bytes": 39364
+        },
+        "localDesktop": {
+          "status": 0,
+          "signal": null,
+          "stderr": "108262 bytes written to file C:\\Users\\yusun\\projects\\ui-dictionary\\docs\\research\\assets\\application-ui-leaves-2026-07-01\\navigation-tabs-local-desktop.png\r\n",
+          "exists": true,
+          "bytes": 108262
+        },
+        "localMobile": {
+          "status": 0,
+          "signal": null,
+          "stderr": "26866 bytes written to file C:\\Users\\yusun\\projects\\ui-dictionary\\docs\\research\\assets\\application-ui-leaves-2026-07-01\\navigation-tabs-local-mobile.png\r\n",
+          "exists": true,
+          "bytes": 26866
+        }
+      },
+      "files": {
+        "tailwindDesktop": "docs/research/assets/application-ui-leaves-2026-07-01/navigation-tabs-tailwind-desktop.png",
+        "tailwindMobile": "docs/research/assets/application-ui-leaves-2026-07-01/navigation-tabs-tailwind-mobile.png",
+        "localDesktop": "docs/research/assets/application-ui-leaves-2026-07-01/navigation-tabs-local-desktop.png",
+        "localMobile": "docs/research/assets/application-ui-leaves-2026-07-01/navigation-tabs-local-mobile.png"
+      }
+    },
+    {
+      "text": "Vertical Navigation",
+      "href": "https://tailwindcss.com/plus/ui-blocks/application-ui/navigation/vertical-navigation",
+      "slug": "navigation-vertical-navigation",
+      "route": "plus-navigation-vertical-navigation",
+      "localUrl": "http://127.0.0.1:5181/?filter=nav%3Aplus-navigation-vertical-navigation",
+      "captures": {
+        "tailwindDesktop": {
+          "status": 0,
+          "signal": null,
+          "stderr": "81858 bytes written to file C:\\Users\\yusun\\projects\\ui-dictionary\\docs\\research\\assets\\application-ui-leaves-2026-07-01\\navigation-vertical-navigation-tailwind-desktop.png\r\n",
+          "exists": true,
+          "bytes": 81858
+        },
+        "tailwindMobile": {
+          "status": 0,
+          "signal": null,
+          "stderr": "45317 bytes written to file C:\\Users\\yusun\\projects\\ui-dictionary\\docs\\research\\assets\\application-ui-leaves-2026-07-01\\navigation-vertical-navigation-tailwind-mobile.png\r\n",
+          "exists": true,
+          "bytes": 45317
+        },
+        "localDesktop": {
+          "status": 0,
+          "signal": null,
+          "stderr": "114589 bytes written to file C:\\Users\\yusun\\projects\\ui-dictionary\\docs\\research\\assets\\application-ui-leaves-2026-07-01\\navigation-vertical-navigation-local-desktop.png\r\n",
+          "exists": true,
+          "bytes": 114589
+        },
+        "localMobile": {
+          "status": 0,
+          "signal": null,
+          "stderr": "33920 bytes written to file C:\\Users\\yusun\\projects\\ui-dictionary\\docs\\research\\assets\\application-ui-leaves-2026-07-01\\navigation-vertical-navigation-local-mobile.png\r\n",
+          "exists": true,
+          "bytes": 33920
+        }
+      },
+      "files": {
+        "tailwindDesktop": "docs/research/assets/application-ui-leaves-2026-07-01/navigation-vertical-navigation-tailwind-desktop.png",
+        "tailwindMobile": "docs/research/assets/application-ui-leaves-2026-07-01/navigation-vertical-navigation-tailwind-mobile.png",
+        "localDesktop": "docs/research/assets/application-ui-leaves-2026-07-01/navigation-vertical-navigation-local-desktop.png",
+        "localMobile": "docs/research/assets/application-ui-leaves-2026-07-01/navigation-vertical-navigation-local-mobile.png"
+      }
+    },
+    {
+      "text": "Sidebar Navigation",
+      "href": "https://tailwindcss.com/plus/ui-blocks/application-ui/navigation/sidebar-navigation",
+      "slug": "navigation-sidebar-navigation",
+      "route": "plus-navigation-sidebar-navigation",
+      "localUrl": "http://127.0.0.1:5181/?filter=nav%3Aplus-navigation-sidebar-navigation",
+      "captures": {
+        "tailwindDesktop": {
+          "status": 0,
+          "signal": null,
+          "stderr": "81884 bytes written to file C:\\Users\\yusun\\projects\\ui-dictionary\\docs\\research\\assets\\application-ui-leaves-2026-07-01\\navigation-sidebar-navigation-tailwind-desktop.png\r\n",
+          "exists": true,
+          "bytes": 81884
+        },
+        "tailwindMobile": {
+          "status": 0,
+          "signal": null,
+          "stderr": "51030 bytes written to file C:\\Users\\yusun\\projects\\ui-dictionary\\docs\\research\\assets\\application-ui-leaves-2026-07-01\\navigation-sidebar-navigation-tailwind-mobile.png\r\n",
+          "exists": true,
+          "bytes": 51030
+        },
+        "localDesktop": {
+          "status": 0,
+          "signal": null,
+          "stderr": "116312 bytes written to file C:\\Users\\yusun\\projects\\ui-dictionary\\docs\\research\\assets\\application-ui-leaves-2026-07-01\\navigation-sidebar-navigation-local-desktop.png\r\n",
+          "exists": true,
+          "bytes": 116312
+        },
+        "localMobile": {
+          "status": 0,
+          "signal": null,
+          "stderr": "36305 bytes written to file C:\\Users\\yusun\\projects\\ui-dictionary\\docs\\research\\assets\\application-ui-leaves-2026-07-01\\navigation-sidebar-navigation-local-mobile.png\r\n",
+          "exists": true,
+          "bytes": 36305
+        }
+      },
+      "files": {
+        "tailwindDesktop": "docs/research/assets/application-ui-leaves-2026-07-01/navigation-sidebar-navigation-tailwind-desktop.png",
+        "tailwindMobile": "docs/research/assets/application-ui-leaves-2026-07-01/navigation-sidebar-navigation-tailwind-mobile.png",
+        "localDesktop": "docs/research/assets/application-ui-leaves-2026-07-01/navigation-sidebar-navigation-local-desktop.png",
+        "localMobile": "docs/research/assets/application-ui-leaves-2026-07-01/navigation-sidebar-navigation-local-mobile.png"
+      }
+    },
+    {
+      "text": "Breadcrumbs",
+      "href": "https://tailwindcss.com/plus/ui-blocks/application-ui/navigation/breadcrumbs",
+      "slug": "navigation-breadcrumbs",
+      "route": "plus-navigation-breadcrumbs",
+      "localUrl": "http://127.0.0.1:5181/?filter=nav%3Aplus-navigation-breadcrumbs",
+      "captures": {
+        "tailwindDesktop": {
+          "status": 0,
+          "signal": null,
+          "stderr": "72826 bytes written to file C:\\Users\\yusun\\projects\\ui-dictionary\\docs\\research\\assets\\application-ui-leaves-2026-07-01\\navigation-breadcrumbs-tailwind-desktop.png\r\n",
+          "exists": true,
+          "bytes": 72826
+        },
+        "tailwindMobile": {
+          "status": 0,
+          "signal": null,
+          "stderr": "41858 bytes written to file C:\\Users\\yusun\\projects\\ui-dictionary\\docs\\research\\assets\\application-ui-leaves-2026-07-01\\navigation-breadcrumbs-tailwind-mobile.png\r\n",
+          "exists": true,
+          "bytes": 41858
+        },
+        "localDesktop": {
+          "status": 0,
+          "signal": null,
+          "stderr": "114037 bytes written to file C:\\Users\\yusun\\projects\\ui-dictionary\\docs\\research\\assets\\application-ui-leaves-2026-07-01\\navigation-breadcrumbs-local-desktop.png\r\n",
+          "exists": true,
+          "bytes": 114037
+        },
+        "localMobile": {
+          "status": 0,
+          "signal": null,
+          "stderr": "31739 bytes written to file C:\\Users\\yusun\\projects\\ui-dictionary\\docs\\research\\assets\\application-ui-leaves-2026-07-01\\navigation-breadcrumbs-local-mobile.png\r\n",
+          "exists": true,
+          "bytes": 31739
+        }
+      },
+      "files": {
+        "tailwindDesktop": "docs/research/assets/application-ui-leaves-2026-07-01/navigation-breadcrumbs-tailwind-desktop.png",
+        "tailwindMobile": "docs/research/assets/application-ui-leaves-2026-07-01/navigation-breadcrumbs-tailwind-mobile.png",
+        "localDesktop": "docs/research/assets/application-ui-leaves-2026-07-01/navigation-breadcrumbs-local-desktop.png",
+        "localMobile": "docs/research/assets/application-ui-leaves-2026-07-01/navigation-breadcrumbs-local-mobile.png"
+      }
+    },
+    {
+      "text": "Progress Bars",
+      "href": "https://tailwindcss.com/plus/ui-blocks/application-ui/navigation/progress-bars",
+      "slug": "navigation-progress-bars",
+      "route": "plus-navigation-progress-bars",
+      "localUrl": "http://127.0.0.1:5181/?filter=nav%3Aplus-navigation-progress-bars",
+      "captures": {
+        "tailwindDesktop": {
+          "status": 0,
+          "signal": null,
+          "stderr": "91523 bytes written to file C:\\Users\\yusun\\projects\\ui-dictionary\\docs\\research\\assets\\application-ui-leaves-2026-07-01\\navigation-progress-bars-tailwind-desktop.png\r\n",
+          "exists": true,
+          "bytes": 91523
+        },
+        "tailwindMobile": {
+          "status": 0,
+          "signal": null,
+          "stderr": "44670 bytes written to file C:\\Users\\yusun\\projects\\ui-dictionary\\docs\\research\\assets\\application-ui-leaves-2026-07-01\\navigation-progress-bars-tailwind-mobile.png\r\n",
+          "exists": true,
+          "bytes": 44670
+        },
+        "localDesktop": {
+          "status": 0,
+          "signal": null,
+          "stderr": "116403 bytes written to file C:\\Users\\yusun\\projects\\ui-dictionary\\docs\\research\\assets\\application-ui-leaves-2026-07-01\\navigation-progress-bars-local-desktop.png\r\n",
+          "exists": true,
+          "bytes": 116403
+        },
+        "localMobile": {
+          "status": 0,
+          "signal": null,
+          "stderr": "37574 bytes written to file C:\\Users\\yusun\\projects\\ui-dictionary\\docs\\research\\assets\\application-ui-leaves-2026-07-01\\navigation-progress-bars-local-mobile.png\r\n",
+          "exists": true,
+          "bytes": 37574
+        }
+      },
+      "files": {
+        "tailwindDesktop": "docs/research/assets/application-ui-leaves-2026-07-01/navigation-progress-bars-tailwind-desktop.png",
+        "tailwindMobile": "docs/research/assets/application-ui-leaves-2026-07-01/navigation-progress-bars-tailwind-mobile.png",
+        "localDesktop": "docs/research/assets/application-ui-leaves-2026-07-01/navigation-progress-bars-local-desktop.png",
+        "localMobile": "docs/research/assets/application-ui-leaves-2026-07-01/navigation-progress-bars-local-mobile.png"
+      }
+    },
+    {
+      "text": "Command Palettes",
+      "href": "https://tailwindcss.com/plus/ui-blocks/application-ui/navigation/command-palettes",
+      "slug": "navigation-command-palettes",
+      "route": "plus-navigation-command-palettes",
+      "localUrl": "http://127.0.0.1:5181/?filter=nav%3Aplus-navigation-command-palettes",
+      "captures": {
+        "tailwindDesktop": {
+          "status": 0,
+          "signal": null,
+          "stderr": "760451 bytes written to file C:\\Users\\yusun\\projects\\ui-dictionary\\docs\\research\\assets\\application-ui-leaves-2026-07-01\\navigation-command-palettes-tailwind-desktop.png\r\n",
+          "exists": true,
+          "bytes": 760451
+        },
+        "tailwindMobile": {
+          "status": 0,
+          "signal": null,
+          "stderr": "153415 bytes written to file C:\\Users\\yusun\\projects\\ui-dictionary\\docs\\research\\assets\\application-ui-leaves-2026-07-01\\navigation-command-palettes-tailwind-mobile.png\r\n",
+          "exists": true,
+          "bytes": 153415
+        },
+        "localDesktop": {
+          "status": 0,
+          "signal": null,
+          "stderr": "105996 bytes written to file C:\\Users\\yusun\\projects\\ui-dictionary\\docs\\research\\assets\\application-ui-leaves-2026-07-01\\navigation-command-palettes-local-desktop.png\r\n",
+          "exists": true,
+          "bytes": 105996
+        },
+        "localMobile": {
+          "status": 0,
+          "signal": null,
+          "stderr": "37921 bytes written to file C:\\Users\\yusun\\projects\\ui-dictionary\\docs\\research\\assets\\application-ui-leaves-2026-07-01\\navigation-command-palettes-local-mobile.png\r\n",
+          "exists": true,
+          "bytes": 37921
+        }
+      },
+      "files": {
+        "tailwindDesktop": "docs/research/assets/application-ui-leaves-2026-07-01/navigation-command-palettes-tailwind-desktop.png",
+        "tailwindMobile": "docs/research/assets/application-ui-leaves-2026-07-01/navigation-command-palettes-tailwind-mobile.png",
+        "localDesktop": "docs/research/assets/application-ui-leaves-2026-07-01/navigation-command-palettes-local-desktop.png",
+        "localMobile": "docs/research/assets/application-ui-leaves-2026-07-01/navigation-command-palettes-local-mobile.png"
+      }
+    },
+    {
+      "text": "Modal Dialogs",
+      "href": "https://tailwindcss.com/plus/ui-blocks/application-ui/overlays/modal-dialogs",
+      "slug": "overlays-modal-dialogs",
+      "route": "plus-overlays-modal-dialogs",
+      "localUrl": "http://127.0.0.1:5181/?filter=nav%3Aplus-overlays-modal-dialogs",
+      "captures": {
+        "tailwindDesktop": {
+          "status": 0,
+          "signal": null,
+          "stderr": "92012 bytes written to file C:\\Users\\yusun\\projects\\ui-dictionary\\docs\\research\\assets\\application-ui-leaves-2026-07-01\\overlays-modal-dialogs-tailwind-desktop.png\r\n",
+          "exists": true,
+          "bytes": 92012
+        },
+        "tailwindMobile": {
+          "status": 0,
+          "signal": null,
+          "stderr": "48585 bytes written to file C:\\Users\\yusun\\projects\\ui-dictionary\\docs\\research\\assets\\application-ui-leaves-2026-07-01\\overlays-modal-dialogs-tailwind-mobile.png\r\n",
+          "exists": true,
+          "bytes": 48585
+        },
+        "localDesktop": {
+          "status": 0,
+          "signal": null,
+          "stderr": "116910 bytes written to file C:\\Users\\yusun\\projects\\ui-dictionary\\docs\\research\\assets\\application-ui-leaves-2026-07-01\\overlays-modal-dialogs-local-desktop.png\r\n",
+          "exists": true,
+          "bytes": 116910
+        },
+        "localMobile": {
+          "status": 0,
+          "signal": null,
+          "stderr": "33604 bytes written to file C:\\Users\\yusun\\projects\\ui-dictionary\\docs\\research\\assets\\application-ui-leaves-2026-07-01\\overlays-modal-dialogs-local-mobile.png\r\n",
+          "exists": true,
+          "bytes": 33604
+        }
+      },
+      "files": {
+        "tailwindDesktop": "docs/research/assets/application-ui-leaves-2026-07-01/overlays-modal-dialogs-tailwind-desktop.png",
+        "tailwindMobile": "docs/research/assets/application-ui-leaves-2026-07-01/overlays-modal-dialogs-tailwind-mobile.png",
+        "localDesktop": "docs/research/assets/application-ui-leaves-2026-07-01/overlays-modal-dialogs-local-desktop.png",
+        "localMobile": "docs/research/assets/application-ui-leaves-2026-07-01/overlays-modal-dialogs-local-mobile.png"
+      }
+    },
+    {
+      "text": "Drawers",
+      "href": "https://tailwindcss.com/plus/ui-blocks/application-ui/overlays/drawers",
+      "slug": "overlays-drawers",
+      "route": "plus-overlays-drawers",
+      "localUrl": "http://127.0.0.1:5181/?filter=nav%3Aplus-overlays-drawers",
+      "captures": {
+        "tailwindDesktop": {
+          "status": 0,
+          "signal": null,
+          "stderr": "66268 bytes written to file C:\\Users\\yusun\\projects\\ui-dictionary\\docs\\research\\assets\\application-ui-leaves-2026-07-01\\overlays-drawers-tailwind-desktop.png\r\n",
+          "exists": true,
+          "bytes": 66268
+        },
+        "tailwindMobile": {
+          "status": 0,
+          "signal": null,
+          "stderr": "39376 bytes written to file C:\\Users\\yusun\\projects\\ui-dictionary\\docs\\research\\assets\\application-ui-leaves-2026-07-01\\overlays-drawers-tailwind-mobile.png\r\n",
+          "exists": true,
+          "bytes": 39376
+        },
+        "localDesktop": {
+          "status": 0,
+          "signal": null,
+          "stderr": "112162 bytes written to file C:\\Users\\yusun\\projects\\ui-dictionary\\docs\\research\\assets\\application-ui-leaves-2026-07-01\\overlays-drawers-local-desktop.png\r\n",
+          "exists": true,
+          "bytes": 112162
+        },
+        "localMobile": {
+          "status": 0,
+          "signal": null,
+          "stderr": "28304 bytes written to file C:\\Users\\yusun\\projects\\ui-dictionary\\docs\\research\\assets\\application-ui-leaves-2026-07-01\\overlays-drawers-local-mobile.png\r\n",
+          "exists": true,
+          "bytes": 28304
+        }
+      },
+      "files": {
+        "tailwindDesktop": "docs/research/assets/application-ui-leaves-2026-07-01/overlays-drawers-tailwind-desktop.png",
+        "tailwindMobile": "docs/research/assets/application-ui-leaves-2026-07-01/overlays-drawers-tailwind-mobile.png",
+        "localDesktop": "docs/research/assets/application-ui-leaves-2026-07-01/overlays-drawers-local-desktop.png",
+        "localMobile": "docs/research/assets/application-ui-leaves-2026-07-01/overlays-drawers-local-mobile.png"
+      }
+    },
+    {
+      "text": "Notifications",
+      "href": "https://tailwindcss.com/plus/ui-blocks/application-ui/overlays/notifications",
+      "slug": "overlays-notifications",
+      "route": "plus-overlays-notifications",
+      "localUrl": "http://127.0.0.1:5181/?filter=nav%3Aplus-overlays-notifications",
+      "captures": {
+        "tailwindDesktop": {
+          "status": 0,
+          "signal": null,
+          "stderr": "79706 bytes written to file C:\\Users\\yusun\\projects\\ui-dictionary\\docs\\research\\assets\\application-ui-leaves-2026-07-01\\overlays-notifications-tailwind-desktop.png\r\n",
+          "exists": true,
+          "bytes": 79706
+        },
+        "tailwindMobile": {
+          "status": 0,
+          "signal": null,
+          "stderr": "43071 bytes written to file C:\\Users\\yusun\\projects\\ui-dictionary\\docs\\research\\assets\\application-ui-leaves-2026-07-01\\overlays-notifications-tailwind-mobile.png\r\n",
+          "exists": true,
+          "bytes": 43071
+        },
+        "localDesktop": {
+          "status": 0,
+          "signal": null,
+          "stderr": "110091 bytes written to file C:\\Users\\yusun\\projects\\ui-dictionary\\docs\\research\\assets\\application-ui-leaves-2026-07-01\\overlays-notifications-local-desktop.png\r\n",
+          "exists": true,
+          "bytes": 110091
+        },
+        "localMobile": {
+          "status": 0,
+          "signal": null,
+          "stderr": "35416 bytes written to file C:\\Users\\yusun\\projects\\ui-dictionary\\docs\\research\\assets\\application-ui-leaves-2026-07-01\\overlays-notifications-local-mobile.png\r\n",
+          "exists": true,
+          "bytes": 35416
+        }
+      },
+      "files": {
+        "tailwindDesktop": "docs/research/assets/application-ui-leaves-2026-07-01/overlays-notifications-tailwind-desktop.png",
+        "tailwindMobile": "docs/research/assets/application-ui-leaves-2026-07-01/overlays-notifications-tailwind-mobile.png",
+        "localDesktop": "docs/research/assets/application-ui-leaves-2026-07-01/overlays-notifications-local-desktop.png",
+        "localMobile": "docs/research/assets/application-ui-leaves-2026-07-01/overlays-notifications-local-mobile.png"
+      }
+    },
+    {
+      "text": "Avatars",
+      "href": "https://tailwindcss.com/plus/ui-blocks/application-ui/elements/avatars",
+      "slug": "elements-avatars",
+      "route": "plus-application-elements-avatars",
+      "localUrl": "http://127.0.0.1:5181/?filter=nav%3Aplus-application-elements-avatars",
+      "captures": {
+        "tailwindDesktop": {
+          "status": 0,
+          "signal": null,
+          "stderr": "117358 bytes written to file C:\\Users\\yusun\\projects\\ui-dictionary\\docs\\research\\assets\\application-ui-leaves-2026-07-01\\elements-avatars-tailwind-desktop.png\r\n",
+          "exists": true,
+          "bytes": 117358
+        },
+        "tailwindMobile": {
+          "status": 0,
+          "signal": null,
+          "stderr": "63372 bytes written to file C:\\Users\\yusun\\projects\\ui-dictionary\\docs\\research\\assets\\application-ui-leaves-2026-07-01\\elements-avatars-tailwind-mobile.png\r\n",
+          "exists": true,
+          "bytes": 63372
+        },
+        "localDesktop": {
+          "status": 0,
+          "signal": null,
+          "stderr": "124062 bytes written to file C:\\Users\\yusun\\projects\\ui-dictionary\\docs\\research\\assets\\application-ui-leaves-2026-07-01\\elements-avatars-local-desktop.png\r\n",
+          "exists": true,
+          "bytes": 124062
+        },
+        "localMobile": {
+          "status": 0,
+          "signal": null,
+          "stderr": "38214 bytes written to file C:\\Users\\yusun\\projects\\ui-dictionary\\docs\\research\\assets\\application-ui-leaves-2026-07-01\\elements-avatars-local-mobile.png\r\n",
+          "exists": true,
+          "bytes": 38214
+        }
+      },
+      "files": {
+        "tailwindDesktop": "docs/research/assets/application-ui-leaves-2026-07-01/elements-avatars-tailwind-desktop.png",
+        "tailwindMobile": "docs/research/assets/application-ui-leaves-2026-07-01/elements-avatars-tailwind-mobile.png",
+        "localDesktop": "docs/research/assets/application-ui-leaves-2026-07-01/elements-avatars-local-desktop.png",
+        "localMobile": "docs/research/assets/application-ui-leaves-2026-07-01/elements-avatars-local-mobile.png"
+      }
+    },
+    {
+      "text": "Badges",
+      "href": "https://tailwindcss.com/plus/ui-blocks/application-ui/elements/badges",
+      "slug": "elements-badges",
+      "route": "plus-application-elements-badges",
+      "localUrl": "http://127.0.0.1:5181/?filter=nav%3Aplus-application-elements-badges",
+      "captures": {
+        "tailwindDesktop": {
+          "status": 0,
+          "signal": null,
+          "stderr": "95440 bytes written to file C:\\Users\\yusun\\projects\\ui-dictionary\\docs\\research\\assets\\application-ui-leaves-2026-07-01\\elements-badges-tailwind-desktop.png\r\n",
+          "exists": true,
+          "bytes": 95440
+        },
+        "tailwindMobile": {
+          "status": 0,
+          "signal": null,
+          "stderr": "49183 bytes written to file C:\\Users\\yusun\\projects\\ui-dictionary\\docs\\research\\assets\\application-ui-leaves-2026-07-01\\elements-badges-tailwind-mobile.png\r\n",
+          "exists": true,
+          "bytes": 49183
+        },
+        "localDesktop": {
+          "status": 0,
+          "signal": null,
+          "stderr": "125768 bytes written to file C:\\Users\\yusun\\projects\\ui-dictionary\\docs\\research\\assets\\application-ui-leaves-2026-07-01\\elements-badges-local-desktop.png\r\n",
+          "exists": true,
+          "bytes": 125768
+        },
+        "localMobile": {
+          "status": 0,
+          "signal": null,
+          "stderr": "42116 bytes written to file C:\\Users\\yusun\\projects\\ui-dictionary\\docs\\research\\assets\\application-ui-leaves-2026-07-01\\elements-badges-local-mobile.png\r\n",
+          "exists": true,
+          "bytes": 42116
+        }
+      },
+      "files": {
+        "tailwindDesktop": "docs/research/assets/application-ui-leaves-2026-07-01/elements-badges-tailwind-desktop.png",
+        "tailwindMobile": "docs/research/assets/application-ui-leaves-2026-07-01/elements-badges-tailwind-mobile.png",
+        "localDesktop": "docs/research/assets/application-ui-leaves-2026-07-01/elements-badges-local-desktop.png",
+        "localMobile": "docs/research/assets/application-ui-leaves-2026-07-01/elements-badges-local-mobile.png"
+      }
+    },
+    {
+      "text": "Dropdowns",
+      "href": "https://tailwindcss.com/plus/ui-blocks/application-ui/elements/dropdowns",
+      "slug": "elements-dropdowns",
+      "route": "plus-application-elements-dropdowns",
+      "localUrl": "http://127.0.0.1:5181/?filter=nav%3Aplus-application-elements-dropdowns",
+      "captures": {
+        "tailwindDesktop": {
+          "status": 0,
+          "signal": null,
+          "stderr": "78858 bytes written to file C:\\Users\\yusun\\projects\\ui-dictionary\\docs\\research\\assets\\application-ui-leaves-2026-07-01\\elements-dropdowns-tailwind-desktop.png\r\n",
+          "exists": true,
+          "bytes": 78858
+        },
+        "tailwindMobile": {
+          "status": 0,
+          "signal": null,
+          "stderr": "45125 bytes written to file C:\\Users\\yusun\\projects\\ui-dictionary\\docs\\research\\assets\\application-ui-leaves-2026-07-01\\elements-dropdowns-tailwind-mobile.png\r\n",
+          "exists": true,
+          "bytes": 45125
+        },
+        "localDesktop": {
+          "status": 0,
+          "signal": null,
+          "stderr": "117637 bytes written to file C:\\Users\\yusun\\projects\\ui-dictionary\\docs\\research\\assets\\application-ui-leaves-2026-07-01\\elements-dropdowns-local-desktop.png\r\n",
+          "exists": true,
+          "bytes": 117637
+        },
+        "localMobile": {
+          "status": 0,
+          "signal": null,
+          "stderr": "41081 bytes written to file C:\\Users\\yusun\\projects\\ui-dictionary\\docs\\research\\assets\\application-ui-leaves-2026-07-01\\elements-dropdowns-local-mobile.png\r\n",
+          "exists": true,
+          "bytes": 41081
+        }
+      },
+      "files": {
+        "tailwindDesktop": "docs/research/assets/application-ui-leaves-2026-07-01/elements-dropdowns-tailwind-desktop.png",
+        "tailwindMobile": "docs/research/assets/application-ui-leaves-2026-07-01/elements-dropdowns-tailwind-mobile.png",
+        "localDesktop": "docs/research/assets/application-ui-leaves-2026-07-01/elements-dropdowns-local-desktop.png",
+        "localMobile": "docs/research/assets/application-ui-leaves-2026-07-01/elements-dropdowns-local-mobile.png"
+      }
+    },
+    {
+      "text": "Buttons",
+      "href": "https://tailwindcss.com/plus/ui-blocks/application-ui/elements/buttons",
+      "slug": "elements-buttons",
+      "route": "plus-application-elements-buttons",
+      "localUrl": "http://127.0.0.1:5181/?filter=nav%3Aplus-application-elements-buttons",
+      "captures": {
+        "tailwindDesktop": {
+          "status": 0,
+          "signal": null,
+          "stderr": "85774 bytes written to file C:\\Users\\yusun\\projects\\ui-dictionary\\docs\\research\\assets\\application-ui-leaves-2026-07-01\\elements-buttons-tailwind-desktop.png\r\n",
+          "exists": true,
+          "bytes": 85774
+        },
+        "tailwindMobile": {
+          "status": 0,
+          "signal": null,
+          "stderr": "41615 bytes written to file C:\\Users\\yusun\\projects\\ui-dictionary\\docs\\research\\assets\\application-ui-leaves-2026-07-01\\elements-buttons-tailwind-mobile.png\r\n",
+          "exists": true,
+          "bytes": 41615
+        },
+        "localDesktop": {
+          "status": 0,
+          "signal": null,
+          "stderr": "124934 bytes written to file C:\\Users\\yusun\\projects\\ui-dictionary\\docs\\research\\assets\\application-ui-leaves-2026-07-01\\elements-buttons-local-desktop.png\r\n",
+          "exists": true,
+          "bytes": 124934
+        },
+        "localMobile": {
+          "status": 0,
+          "signal": null,
+          "stderr": "41130 bytes written to file C:\\Users\\yusun\\projects\\ui-dictionary\\docs\\research\\assets\\application-ui-leaves-2026-07-01\\elements-buttons-local-mobile.png\r\n",
+          "exists": true,
+          "bytes": 41130
+        }
+      },
+      "files": {
+        "tailwindDesktop": "docs/research/assets/application-ui-leaves-2026-07-01/elements-buttons-tailwind-desktop.png",
+        "tailwindMobile": "docs/research/assets/application-ui-leaves-2026-07-01/elements-buttons-tailwind-mobile.png",
+        "localDesktop": "docs/research/assets/application-ui-leaves-2026-07-01/elements-buttons-local-desktop.png",
+        "localMobile": "docs/research/assets/application-ui-leaves-2026-07-01/elements-buttons-local-mobile.png"
+      }
+    },
+    {
+      "text": "Button Groups",
+      "href": "https://tailwindcss.com/plus/ui-blocks/application-ui/elements/button-groups",
+      "slug": "elements-button-groups",
+      "route": "plus-application-elements-button-groups",
+      "localUrl": "http://127.0.0.1:5181/?filter=nav%3Aplus-application-elements-button-groups",
+      "captures": {
+        "tailwindDesktop": {
+          "status": 0,
+          "signal": null,
+          "stderr": "79762 bytes written to file C:\\Users\\yusun\\projects\\ui-dictionary\\docs\\research\\assets\\application-ui-leaves-2026-07-01\\elements-button-groups-tailwind-desktop.png\r\n",
+          "exists": true,
+          "bytes": 79762
+        },
+        "tailwindMobile": {
+          "status": 0,
+          "signal": null,
+          "stderr": "44059 bytes written to file C:\\Users\\yusun\\projects\\ui-dictionary\\docs\\research\\assets\\application-ui-leaves-2026-07-01\\elements-button-groups-tailwind-mobile.png\r\n",
+          "exists": true,
+          "bytes": 44059
+        },
+        "localDesktop": {
+          "status": 0,
+          "signal": null,
+          "stderr": "127381 bytes written to file C:\\Users\\yusun\\projects\\ui-dictionary\\docs\\research\\assets\\application-ui-leaves-2026-07-01\\elements-button-groups-local-desktop.png\r\n",
+          "exists": true,
+          "bytes": 127381
+        },
+        "localMobile": {
+          "status": 0,
+          "signal": null,
+          "stderr": "43735 bytes written to file C:\\Users\\yusun\\projects\\ui-dictionary\\docs\\research\\assets\\application-ui-leaves-2026-07-01\\elements-button-groups-local-mobile.png\r\n",
+          "exists": true,
+          "bytes": 43735
+        }
+      },
+      "files": {
+        "tailwindDesktop": "docs/research/assets/application-ui-leaves-2026-07-01/elements-button-groups-tailwind-desktop.png",
+        "tailwindMobile": "docs/research/assets/application-ui-leaves-2026-07-01/elements-button-groups-tailwind-mobile.png",
+        "localDesktop": "docs/research/assets/application-ui-leaves-2026-07-01/elements-button-groups-local-desktop.png",
+        "localMobile": "docs/research/assets/application-ui-leaves-2026-07-01/elements-button-groups-local-mobile.png"
+      }
+    },
+    {
+      "text": "Containers",
+      "href": "https://tailwindcss.com/plus/ui-blocks/application-ui/layout/containers",
+      "slug": "layout-containers",
+      "route": "plus-application-layout-containers",
+      "localUrl": "http://127.0.0.1:5181/?filter=nav%3Aplus-application-layout-containers",
+      "captures": {
+        "tailwindDesktop": {
+          "status": 0,
+          "signal": null,
+          "stderr": "81417 bytes written to file C:\\Users\\yusun\\projects\\ui-dictionary\\docs\\research\\assets\\application-ui-leaves-2026-07-01\\layout-containers-tailwind-desktop.png\r\n",
+          "exists": true,
+          "bytes": 81417
+        },
+        "tailwindMobile": {
+          "status": 0,
+          "signal": null,
+          "stderr": "43515 bytes written to file C:\\Users\\yusun\\projects\\ui-dictionary\\docs\\research\\assets\\application-ui-leaves-2026-07-01\\layout-containers-tailwind-mobile.png\r\n",
+          "exists": true,
+          "bytes": 43515
+        },
+        "localDesktop": {
+          "status": 0,
+          "signal": null,
+          "stderr": "109822 bytes written to file C:\\Users\\yusun\\projects\\ui-dictionary\\docs\\research\\assets\\application-ui-leaves-2026-07-01\\layout-containers-local-desktop.png\r\n",
+          "exists": true,
+          "bytes": 109822
+        },
+        "localMobile": {
+          "status": 0,
+          "signal": null,
+          "stderr": "30024 bytes written to file C:\\Users\\yusun\\projects\\ui-dictionary\\docs\\research\\assets\\application-ui-leaves-2026-07-01\\layout-containers-local-mobile.png\r\n",
+          "exists": true,
+          "bytes": 30024
+        }
+      },
+      "files": {
+        "tailwindDesktop": "docs/research/assets/application-ui-leaves-2026-07-01/layout-containers-tailwind-desktop.png",
+        "tailwindMobile": "docs/research/assets/application-ui-leaves-2026-07-01/layout-containers-tailwind-mobile.png",
+        "localDesktop": "docs/research/assets/application-ui-leaves-2026-07-01/layout-containers-local-desktop.png",
+        "localMobile": "docs/research/assets/application-ui-leaves-2026-07-01/layout-containers-local-mobile.png"
+      }
+    },
+    {
+      "text": "Cards",
+      "href": "https://tailwindcss.com/plus/ui-blocks/application-ui/layout/cards",
+      "slug": "layout-cards",
+      "route": "plus-application-layout-cards",
+      "localUrl": "http://127.0.0.1:5181/?filter=nav%3Aplus-application-layout-cards",
+      "captures": {
+        "tailwindDesktop": {
+          "status": 0,
+          "signal": null,
+          "stderr": "73567 bytes written to file C:\\Users\\yusun\\projects\\ui-dictionary\\docs\\research\\assets\\application-ui-leaves-2026-07-01\\layout-cards-tailwind-desktop.png\r\n",
+          "exists": true,
+          "bytes": 73567
+        },
+        "tailwindMobile": {
+          "status": 0,
+          "signal": null,
+          "stderr": "35550 bytes written to file C:\\Users\\yusun\\projects\\ui-dictionary\\docs\\research\\assets\\application-ui-leaves-2026-07-01\\layout-cards-tailwind-mobile.png\r\n",
+          "exists": true,
+          "bytes": 35550
+        },
+        "localDesktop": {
+          "status": 0,
+          "signal": null,
+          "stderr": "114057 bytes written to file C:\\Users\\yusun\\projects\\ui-dictionary\\docs\\research\\assets\\application-ui-leaves-2026-07-01\\layout-cards-local-desktop.png\r\n",
+          "exists": true,
+          "bytes": 114057
+        },
+        "localMobile": {
+          "status": 0,
+          "signal": null,
+          "stderr": "28159 bytes written to file C:\\Users\\yusun\\projects\\ui-dictionary\\docs\\research\\assets\\application-ui-leaves-2026-07-01\\layout-cards-local-mobile.png\r\n",
+          "exists": true,
+          "bytes": 28159
+        }
+      },
+      "files": {
+        "tailwindDesktop": "docs/research/assets/application-ui-leaves-2026-07-01/layout-cards-tailwind-desktop.png",
+        "tailwindMobile": "docs/research/assets/application-ui-leaves-2026-07-01/layout-cards-tailwind-mobile.png",
+        "localDesktop": "docs/research/assets/application-ui-leaves-2026-07-01/layout-cards-local-desktop.png",
+        "localMobile": "docs/research/assets/application-ui-leaves-2026-07-01/layout-cards-local-mobile.png"
+      }
+    },
+    {
+      "text": "List containers",
+      "href": "https://tailwindcss.com/plus/ui-blocks/application-ui/layout/list-containers",
+      "slug": "layout-list-containers",
+      "route": "plus-application-layout-list-containers",
+      "localUrl": "http://127.0.0.1:5181/?filter=nav%3Aplus-application-layout-list-containers",
+      "captures": {
+        "tailwindDesktop": {
+          "status": 0,
+          "signal": null,
+          "stderr": "75314 bytes written to file C:\\Users\\yusun\\projects\\ui-dictionary\\docs\\research\\assets\\application-ui-leaves-2026-07-01\\layout-list-containers-tailwind-desktop.png\r\n",
+          "exists": true,
+          "bytes": 75314
+        },
+        "tailwindMobile": {
+          "status": 0,
+          "signal": null,
+          "stderr": "38374 bytes written to file C:\\Users\\yusun\\projects\\ui-dictionary\\docs\\research\\assets\\application-ui-leaves-2026-07-01\\layout-list-containers-tailwind-mobile.png\r\n",
+          "exists": true,
+          "bytes": 38374
+        },
+        "localDesktop": {
+          "status": 0,
+          "signal": null,
+          "stderr": "123212 bytes written to file C:\\Users\\yusun\\projects\\ui-dictionary\\docs\\research\\assets\\application-ui-leaves-2026-07-01\\layout-list-containers-local-desktop.png\r\n",
+          "exists": true,
+          "bytes": 123212
+        },
+        "localMobile": {
+          "status": 0,
+          "signal": null,
+          "stderr": "43687 bytes written to file C:\\Users\\yusun\\projects\\ui-dictionary\\docs\\research\\assets\\application-ui-leaves-2026-07-01\\layout-list-containers-local-mobile.png\r\n",
+          "exists": true,
+          "bytes": 43687
+        }
+      },
+      "files": {
+        "tailwindDesktop": "docs/research/assets/application-ui-leaves-2026-07-01/layout-list-containers-tailwind-desktop.png",
+        "tailwindMobile": "docs/research/assets/application-ui-leaves-2026-07-01/layout-list-containers-tailwind-mobile.png",
+        "localDesktop": "docs/research/assets/application-ui-leaves-2026-07-01/layout-list-containers-local-desktop.png",
+        "localMobile": "docs/research/assets/application-ui-leaves-2026-07-01/layout-list-containers-local-mobile.png"
+      }
+    },
+    {
+      "text": "Media Objects",
+      "href": "https://tailwindcss.com/plus/ui-blocks/application-ui/layout/media-objects",
+      "slug": "layout-media-objects",
+      "route": "plus-application-layout-media-objects",
+      "localUrl": "http://127.0.0.1:5181/?filter=nav%3Aplus-application-layout-media-objects",
+      "captures": {
+        "tailwindDesktop": {
+          "status": 0,
+          "signal": null,
+          "stderr": "97505 bytes written to file C:\\Users\\yusun\\projects\\ui-dictionary\\docs\\research\\assets\\application-ui-leaves-2026-07-01\\layout-media-objects-tailwind-desktop.png\r\n",
+          "exists": true,
+          "bytes": 97505
+        },
+        "tailwindMobile": {
+          "status": 0,
+          "signal": null,
+          "stderr": "50500 bytes written to file C:\\Users\\yusun\\projects\\ui-dictionary\\docs\\research\\assets\\application-ui-leaves-2026-07-01\\layout-media-objects-tailwind-mobile.png\r\n",
+          "exists": true,
+          "bytes": 50500
+        },
+        "localDesktop": {
+          "status": 0,
+          "signal": null,
+          "stderr": "129807 bytes written to file C:\\Users\\yusun\\projects\\ui-dictionary\\docs\\research\\assets\\application-ui-leaves-2026-07-01\\layout-media-objects-local-desktop.png\r\n",
+          "exists": true,
+          "bytes": 129807
+        },
+        "localMobile": {
+          "status": 0,
+          "signal": null,
+          "stderr": "44903 bytes written to file C:\\Users\\yusun\\projects\\ui-dictionary\\docs\\research\\assets\\application-ui-leaves-2026-07-01\\layout-media-objects-local-mobile.png\r\n",
+          "exists": true,
+          "bytes": 44903
+        }
+      },
+      "files": {
+        "tailwindDesktop": "docs/research/assets/application-ui-leaves-2026-07-01/layout-media-objects-tailwind-desktop.png",
+        "tailwindMobile": "docs/research/assets/application-ui-leaves-2026-07-01/layout-media-objects-tailwind-mobile.png",
+        "localDesktop": "docs/research/assets/application-ui-leaves-2026-07-01/layout-media-objects-local-desktop.png",
+        "localMobile": "docs/research/assets/application-ui-leaves-2026-07-01/layout-media-objects-local-mobile.png"
+      }
+    },
+    {
+      "text": "Dividers",
+      "href": "https://tailwindcss.com/plus/ui-blocks/application-ui/layout/dividers",
+      "slug": "layout-dividers",
+      "route": "plus-application-layout-dividers",
+      "localUrl": "http://127.0.0.1:5181/?filter=nav%3Aplus-application-layout-dividers",
+      "captures": {
+        "tailwindDesktop": {
+          "status": 0,
+          "signal": null,
+          "stderr": "73492 bytes written to file C:\\Users\\yusun\\projects\\ui-dictionary\\docs\\research\\assets\\application-ui-leaves-2026-07-01\\layout-dividers-tailwind-desktop.png\r\n",
+          "exists": true,
+          "bytes": 73492
+        },
+        "tailwindMobile": {
+          "status": 0,
+          "signal": null,
+          "stderr": "36590 bytes written to file C:\\Users\\yusun\\projects\\ui-dictionary\\docs\\research\\assets\\application-ui-leaves-2026-07-01\\layout-dividers-tailwind-mobile.png\r\n",
+          "exists": true,
+          "bytes": 36590
+        },
+        "localDesktop": {
+          "status": 0,
+          "signal": null,
+          "stderr": "107092 bytes written to file C:\\Users\\yusun\\projects\\ui-dictionary\\docs\\research\\assets\\application-ui-leaves-2026-07-01\\layout-dividers-local-desktop.png\r\n",
+          "exists": true,
+          "bytes": 107092
+        },
+        "localMobile": {
+          "status": 0,
+          "signal": null,
+          "stderr": "27906 bytes written to file C:\\Users\\yusun\\projects\\ui-dictionary\\docs\\research\\assets\\application-ui-leaves-2026-07-01\\layout-dividers-local-mobile.png\r\n",
+          "exists": true,
+          "bytes": 27906
+        }
+      },
+      "files": {
+        "tailwindDesktop": "docs/research/assets/application-ui-leaves-2026-07-01/layout-dividers-tailwind-desktop.png",
+        "tailwindMobile": "docs/research/assets/application-ui-leaves-2026-07-01/layout-dividers-tailwind-mobile.png",
+        "localDesktop": "docs/research/assets/application-ui-leaves-2026-07-01/layout-dividers-local-desktop.png",
+        "localMobile": "docs/research/assets/application-ui-leaves-2026-07-01/layout-dividers-local-mobile.png"
+      }
+    },
+    {
+      "text": "Home Screens",
+      "href": "https://tailwindcss.com/plus/ui-blocks/application-ui/page-examples/home-screens",
+      "slug": "page-examples-home-screens",
+      "route": "plus-application-page-examples-home-screens",
+      "localUrl": "http://127.0.0.1:5181/?filter=nav%3Aplus-application-page-examples-home-screens",
+      "captures": {
+        "tailwindDesktop": {
+          "status": 0,
+          "signal": null,
+          "stderr": "162899 bytes written to file C:\\Users\\yusun\\projects\\ui-dictionary\\docs\\research\\assets\\application-ui-leaves-2026-07-01\\page-examples-home-screens-tailwind-desktop.png\r\n",
+          "exists": true,
+          "bytes": 162899
+        },
+        "tailwindMobile": {
+          "status": 0,
+          "signal": null,
+          "stderr": "60706 bytes written to file C:\\Users\\yusun\\projects\\ui-dictionary\\docs\\research\\assets\\application-ui-leaves-2026-07-01\\page-examples-home-screens-tailwind-mobile.png\r\n",
+          "exists": true,
+          "bytes": 60706
+        },
+        "localDesktop": {
+          "status": 0,
+          "signal": null,
+          "stderr": "114896 bytes written to file C:\\Users\\yusun\\projects\\ui-dictionary\\docs\\research\\assets\\application-ui-leaves-2026-07-01\\page-examples-home-screens-local-desktop.png\r\n",
+          "exists": true,
+          "bytes": 114896
+        },
+        "localMobile": {
+          "status": 0,
+          "signal": null,
+          "stderr": "35363 bytes written to file C:\\Users\\yusun\\projects\\ui-dictionary\\docs\\research\\assets\\application-ui-leaves-2026-07-01\\page-examples-home-screens-local-mobile.png\r\n",
+          "exists": true,
+          "bytes": 35363
+        }
+      },
+      "files": {
+        "tailwindDesktop": "docs/research/assets/application-ui-leaves-2026-07-01/page-examples-home-screens-tailwind-desktop.png",
+        "tailwindMobile": "docs/research/assets/application-ui-leaves-2026-07-01/page-examples-home-screens-tailwind-mobile.png",
+        "localDesktop": "docs/research/assets/application-ui-leaves-2026-07-01/page-examples-home-screens-local-desktop.png",
+        "localMobile": "docs/research/assets/application-ui-leaves-2026-07-01/page-examples-home-screens-local-mobile.png"
+      }
+    },
+    {
+      "text": "Detail Screens",
+      "href": "https://tailwindcss.com/plus/ui-blocks/application-ui/page-examples/detail-screens",
+      "slug": "page-examples-detail-screens",
+      "route": "plus-application-page-examples-detail-screens",
+      "localUrl": "http://127.0.0.1:5181/?filter=nav%3Aplus-application-page-examples-detail-screens",
+      "captures": {
+        "tailwindDesktop": {
+          "status": 0,
+          "signal": null,
+          "stderr": "125141 bytes written to file C:\\Users\\yusun\\projects\\ui-dictionary\\docs\\research\\assets\\application-ui-leaves-2026-07-01\\page-examples-detail-screens-tailwind-desktop.png\r\n",
+          "exists": true,
+          "bytes": 125141
+        },
+        "tailwindMobile": {
+          "status": 0,
+          "signal": null,
+          "stderr": "53932 bytes written to file C:\\Users\\yusun\\projects\\ui-dictionary\\docs\\research\\assets\\application-ui-leaves-2026-07-01\\page-examples-detail-screens-tailwind-mobile.png\r\n",
+          "exists": true,
+          "bytes": 53932
+        },
+        "localDesktop": {
+          "status": 0,
+          "signal": null,
+          "stderr": "118550 bytes written to file C:\\Users\\yusun\\projects\\ui-dictionary\\docs\\research\\assets\\application-ui-leaves-2026-07-01\\page-examples-detail-screens-local-desktop.png\r\n",
+          "exists": true,
+          "bytes": 118550
+        },
+        "localMobile": {
+          "status": 0,
+          "signal": null,
+          "stderr": "36104 bytes written to file C:\\Users\\yusun\\projects\\ui-dictionary\\docs\\research\\assets\\application-ui-leaves-2026-07-01\\page-examples-detail-screens-local-mobile.png\r\n",
+          "exists": true,
+          "bytes": 36104
+        }
+      },
+      "files": {
+        "tailwindDesktop": "docs/research/assets/application-ui-leaves-2026-07-01/page-examples-detail-screens-tailwind-desktop.png",
+        "tailwindMobile": "docs/research/assets/application-ui-leaves-2026-07-01/page-examples-detail-screens-tailwind-mobile.png",
+        "localDesktop": "docs/research/assets/application-ui-leaves-2026-07-01/page-examples-detail-screens-local-desktop.png",
+        "localMobile": "docs/research/assets/application-ui-leaves-2026-07-01/page-examples-detail-screens-local-mobile.png"
+      }
+    },
+    {
+      "text": "Settings Screens",
+      "href": "https://tailwindcss.com/plus/ui-blocks/application-ui/page-examples/settings-screens",
+      "slug": "page-examples-settings-screens",
+      "route": "plus-application-page-examples-settings-screens",
+      "localUrl": "http://127.0.0.1:5181/?filter=nav%3Aplus-application-page-examples-settings-screens",
+      "captures": {
+        "tailwindDesktop": {
+          "status": 0,
+          "signal": null,
+          "stderr": "126832 bytes written to file C:\\Users\\yusun\\projects\\ui-dictionary\\docs\\research\\assets\\application-ui-leaves-2026-07-01\\page-examples-settings-screens-tailwind-desktop.png\r\n",
+          "exists": true,
+          "bytes": 126832
+        },
+        "tailwindMobile": {
+          "status": 0,
+          "signal": null,
+          "stderr": "66279 bytes written to file C:\\Users\\yusun\\projects\\ui-dictionary\\docs\\research\\assets\\application-ui-leaves-2026-07-01\\page-examples-settings-screens-tailwind-mobile.png\r\n",
+          "exists": true,
+          "bytes": 66279
+        },
+        "localDesktop": {
+          "status": 0,
+          "signal": null,
+          "stderr": "119582 bytes written to file C:\\Users\\yusun\\projects\\ui-dictionary\\docs\\research\\assets\\application-ui-leaves-2026-07-01\\page-examples-settings-screens-local-desktop.png\r\n",
+          "exists": true,
+          "bytes": 119582
+        },
+        "localMobile": {
+          "status": 0,
+          "signal": null,
+          "stderr": "38284 bytes written to file C:\\Users\\yusun\\projects\\ui-dictionary\\docs\\research\\assets\\application-ui-leaves-2026-07-01\\page-examples-settings-screens-local-mobile.png\r\n",
+          "exists": true,
+          "bytes": 38284
+        }
+      },
+      "files": {
+        "tailwindDesktop": "docs/research/assets/application-ui-leaves-2026-07-01/page-examples-settings-screens-tailwind-desktop.png",
+        "tailwindMobile": "docs/research/assets/application-ui-leaves-2026-07-01/page-examples-settings-screens-tailwind-mobile.png",
+        "localDesktop": "docs/research/assets/application-ui-leaves-2026-07-01/page-examples-settings-screens-local-desktop.png",
+        "localMobile": "docs/research/assets/application-ui-leaves-2026-07-01/page-examples-settings-screens-local-mobile.png"
+      }
+    }
+  ]
+}

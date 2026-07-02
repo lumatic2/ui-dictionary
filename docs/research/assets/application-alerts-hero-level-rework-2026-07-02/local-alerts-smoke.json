@@ -1,0 +1,177 @@
+{
+  "url": "http://127.0.0.1:5178/?filter=nav%3Aplus-feedback-alerts",
+  "checkedAt": "2026-07-02T07:56:27.611Z",
+  "expected": [
+    "With description",
+    "With list",
+    "With actions",
+    "With link on right",
+    "With accent border",
+    "With dismiss button"
+  ],
+  "desktop": {
+    "viewport": {
+      "width": 1440,
+      "height": 26000
+    },
+    "expectedFound": [
+      {
+        "name": "With description",
+        "found": true
+      },
+      {
+        "name": "With list",
+        "found": true
+      },
+      {
+        "name": "With actions",
+        "found": true
+      },
+      {
+        "name": "With link on right",
+        "found": true
+      },
+      {
+        "name": "With accent border",
+        "found": true
+      },
+      {
+        "name": "With dismiss button",
+        "found": true
+      }
+    ],
+    "images": [
+      "/favicon.svg"
+    ],
+    "previewImages": [],
+    "horizontalOverflow": false,
+    "scrollWidth": 1425,
+    "innerWidth": 1440,
+    "scrollHeight": 26000,
+    "headings": [
+      {
+        "text": "UI 용어 사전",
+        "top": 16
+      },
+      {
+        "text": "Alerts",
+        "top": 222
+      },
+      {
+        "text": "With description",
+        "top": 408
+      },
+      {
+        "text": "With list",
+        "top": 782
+      },
+      {
+        "text": "There were 2 errors with your submission",
+        "top": 917
+      },
+      {
+        "text": "With actions",
+        "top": 1156
+      },
+      {
+        "text": "Successfully uploaded",
+        "top": 1291
+      },
+      {
+        "text": "With link on right",
+        "top": 1534
+      },
+      {
+        "text": "With accent border",
+        "top": 1908
+      },
+      {
+        "text": "With dismiss button",
+        "top": 2282
+      }
+    ]
+  },
+  "mobile": {
+    "viewport": {
+      "width": 390,
+      "height": 26000
+    },
+    "expectedFound": [
+      {
+        "name": "With description",
+        "found": true
+      },
+      {
+        "name": "With list",
+        "found": true
+      },
+      {
+        "name": "With actions",
+        "found": true
+      },
+      {
+        "name": "With link on right",
+        "found": true
+      },
+      {
+        "name": "With accent border",
+        "found": true
+      },
+      {
+        "name": "With dismiss button",
+        "found": true
+      }
+    ],
+    "images": [
+      "/favicon.svg"
+    ],
+    "previewImages": [],
+    "horizontalOverflow": false,
+    "scrollWidth": 390,
+    "innerWidth": 390,
+    "scrollHeight": 26000,
+    "headings": [
+      {
+        "text": "UI 용어 사전",
+        "top": 16
+      },
+      {
+        "text": "Alerts",
+        "top": 247
+      },
+      {
+        "text": "With description",
+        "top": 459
+      },
+      {
+        "text": "With list",
+        "top": 801
+      },
+      {
+        "text": "There were 2 errors with your submission",
+        "top": 906
+      },
+      {
+        "text": "With actions",
+        "top": 1175
+      },
+      {
+        "text": "Successfully uploaded",
+        "top": 1280
+      },
+      {
+        "text": "With link on right",
+        "top": 1517
+      },
+      {
+        "text": "With accent border",
+        "top": 1859
+      },
+      {
+        "text": "With dismiss button",
+        "top": 2201
+      }
+    ]
+  },
+  "pass": true
+}

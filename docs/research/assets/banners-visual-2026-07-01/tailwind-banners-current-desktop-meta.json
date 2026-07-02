@@ -1,0 +1,35 @@
+{
+  "codeCount": 12,
+  "examples": [
+    "With button",
+    "On dark",
+    "On brand",
+    "With background glow",
+    "With link",
+    "Left-aligned",
+    "Bottom aligned",
+    "Floating at bottom",
+    "Floating at bottom centered",
+    "Privacy notice right-aligned",
+    "Privacy notice centered",
+    "Privacy notice left-aligned",
+    "Privacy notice full width"
+  ],
+  "h2s": [
+    "With button",
+    "On dark",
+    "On brand",
+    "With background glow",
+    "With link",
+    "Left-aligned",
+    "Bottom aligned",
+    "Floating at bottom",
+    "Floating at bottom centered",
+    "Privacy notice right-aligned",
+    "Privacy notice centered",
+    "Privacy notice left-aligned",
+    "Privacy notice full width"
+  ],
+  "previewCount": 14,
+  "title": "Tailwind CSS Banners - Official Tailwind UI Components"
+}

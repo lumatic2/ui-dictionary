@@ -1,0 +1,35 @@
+{
+  "bentoImages": [
+    {
+      "h": 1821,
+      "src": "/assets/bento-grids/mobile-deployments-v2.png",
+      "w": 864
+    },
+    {
+      "h": 929,
+      "src": "/assets/bento-grids/dark-deployment-dashboard-v2.png",
+      "w": 1693
+    },
+    {
+      "h": 1024,
+      "src": "/assets/bento-grids/light-analytics-dashboard-v2.png",
+      "w": 1536
+    }
+  ],
+  "clientWidth": 2545,
+  "headings": [
+    "UI 용어 사전",
+    "Bento Grids",
+    "Three column bento grid",
+    "Two row bento grid",
+    "Two row bento grid with three column second row"
+  ],
+  "horizontalOverflow": false,
+  "scrollWidth": 2545,
+  "title": "UI 용어 사전",
+  "url": "http://127.0.0.1:5178/?filter=nav%3Aplus-marketing-bento-grids",
+  "viewport": {
+    "height": 1263,
+    "width": 2560
+  }
+}

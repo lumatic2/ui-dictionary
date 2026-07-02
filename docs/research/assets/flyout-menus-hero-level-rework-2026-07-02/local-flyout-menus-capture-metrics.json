@@ -1,0 +1,18 @@
+[
+  {
+    "fileName": "local-flyout-menus-after-desktop.png",
+    "innerWidth": 1440,
+    "clientWidth": 1440,
+    "scrollWidth": 1425,
+    "scrollHeight": 7600,
+    "overflow": false
+  },
+  {
+    "fileName": "local-flyout-menus-after-mobile-390.png",
+    "innerWidth": 390,
+    "clientWidth": 390,
+    "scrollWidth": 390,
+    "scrollHeight": 7200,
+    "overflow": false
+  }
+]

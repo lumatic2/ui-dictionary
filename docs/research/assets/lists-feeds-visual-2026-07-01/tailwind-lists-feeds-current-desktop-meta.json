@@ -1,0 +1,15 @@
+{
+  "codeCount": 3,
+  "examples": [
+    "Simple with icons",
+    "With comments",
+    "With multiple item types"
+  ],
+  "h2s": [
+    "Simple with icons",
+    "With comments",
+    "With multiple item types"
+  ],
+  "previewCount": 4,
+  "title": "Tailwind CSS Feeds - Official Tailwind UI Components"
+}

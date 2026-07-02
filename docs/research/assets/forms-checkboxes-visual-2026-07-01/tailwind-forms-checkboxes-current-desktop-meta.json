@@ -1,0 +1,13 @@
+{
+  "url": "https://tailwindcss.com/plus/ui-blocks/application-ui/forms/checkboxes",
+  "name": "Checkboxes",
+  "description": "Checkbox examples for Tailwind CSS, designed and built by the creators of the framework.",
+  "visible_example_count": 4,
+  "visible_example_names": [
+    "List with description",
+    "List with inline description",
+    "List with checkbox on right",
+    "Simple list with heading"
+  ],
+  "raw_component_count": 8
+}

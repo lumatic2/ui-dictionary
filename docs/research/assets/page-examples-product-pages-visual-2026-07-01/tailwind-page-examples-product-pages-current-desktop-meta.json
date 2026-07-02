@@ -1,0 +1,14 @@
+{
+  "url": "https://tailwindcss.com/plus/ui-blocks/ecommerce/page-examples/product-pages",
+  "name": "Product Pages",
+  "description": "Ecommerce product page examples for Tailwind CSS, designed and built by the creators of the framework.",
+  "visible_example_count": 5,
+  "visible_example_names": [
+    "With related products",
+    "With image grid",
+    "With expandable product details",
+    "With featured details",
+    "With tabs and related products"
+  ],
+  "raw_component_count": 10
+}

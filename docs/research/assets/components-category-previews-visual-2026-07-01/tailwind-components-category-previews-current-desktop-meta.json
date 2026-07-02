@@ -1,0 +1,15 @@
+{
+  "url": "https://tailwindcss.com/plus/ui-blocks/ecommerce/components/category-previews",
+  "name": "Category Previews",
+  "description": "Ecommerce category preview examples for Tailwind CSS, designed and built by the creators of the framework.",
+  "visible_example_count": 6,
+  "visible_example_names": [
+    "Three-column",
+    "With image backgrounds",
+    "With background image and detail overlay",
+    "Three-column with description",
+    "With scrolling cards",
+    "With split images"
+  ],
+  "raw_component_count": 12
+}

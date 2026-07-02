@@ -1,0 +1,22 @@
+{
+  "url": "http://127.0.0.1:5181/?filter=nav%3Aplus-marketing-header-sections",
+  "title": "UI \uc6a9\uc5b4 \uc0ac\uc804",
+  "headings": [
+    "UI \uc6a9\uc5b4 \uc0ac\uc804",
+    "Header Sections",
+    "With stats",
+    "Centered",
+    "Centered with eyebrow",
+    "With cards",
+    "Simple",
+    "Simple with eyebrow",
+    "Simple with background image",
+    "Centered with background image"
+  ],
+  "previewMentions": 8,
+  "getCodeMentions": 8,
+  "scrollWidth": 390,
+  "clientWidth": 390,
+  "horizontalOverflow": false,
+  "bodyLength": 2138
+}

@@ -1,0 +1,99 @@
+{
+  "capturedAt": "2026-07-02T09:03:13.152Z",
+  "desktop": {
+    "url": "http://127.0.0.1:5178/?filter=nav%3Aplus-navigation-command-palettes",
+    "viewport": {
+      "width": 1440,
+      "height": 2600
+    },
+    "present": {
+      "Simple": true,
+      "Simple with padding": true,
+      "With preview": true,
+      "With images and descriptions": true,
+      "With icons": true,
+      "Semi-transparent with icons": true,
+      "With groups": true,
+      "With footer": true
+    },
+    "allExpectedNamesFound": true,
+    "previewImages": [],
+    "previewImageCount": 0,
+    "localCssAssets": [
+      "url(\"http://127.0.0.1:5178/assets/command-palettes/mountain-backgrounds-sheet-v1.png\")",
+      "url(\"http://127.0.0.1:5178/assets/command-palettes/mountain-backgrounds-sheet-v1.png\")",
+      "url(\"http://127.0.0.1:5178/assets/command-palettes/mountain-backgrounds-sheet-v1.png\")",
+      "url(\"http://127.0.0.1:5178/assets/command-palettes/avatar-results-sheet-v1.png\")",
+      "url(\"http://127.0.0.1:5178/assets/command-palettes/avatar-results-sheet-v1.png\")",
+      "url(\"http://127.0.0.1:5178/assets/command-palettes/avatar-results-sheet-v1.png\")",
+      "url(\"http://127.0.0.1:5178/assets/command-palettes/avatar-results-sheet-v1.png\")",
+      "url(\"http://127.0.0.1:5178/assets/command-palettes/avatar-results-sheet-v1.png\")",
+      "url(\"http://127.0.0.1:5178/assets/command-palettes/avatar-results-sheet-v1.png\")",
+      "url(\"http://127.0.0.1:5178/assets/command-palettes/mountain-backgrounds-sheet-v1.png\")",
+      "url(\"http://127.0.0.1:5178/assets/command-palettes/avatar-results-sheet-v1.png\")",
+      "url(\"http://127.0.0.1:5178/assets/command-palettes/avatar-results-sheet-v1.png\")",
+      "url(\"http://127.0.0.1:5178/assets/command-palettes/avatar-results-sheet-v1.png\")",
+      "url(\"http://127.0.0.1:5178/assets/command-palettes/avatar-results-sheet-v1.png\")",
+      "url(\"http://127.0.0.1:5178/assets/command-palettes/avatar-results-sheet-v1.png\")",
+      "url(\"http://127.0.0.1:5178/assets/command-palettes/mountain-backgrounds-sheet-v1.png\")",
+      "url(\"http://127.0.0.1:5178/assets/command-palettes/mountain-backgrounds-sheet-v1.png\")",
+      "url(\"http://127.0.0.1:5178/assets/command-palettes/mountain-backgrounds-sheet-v1.png\")",
+      "url(\"http://127.0.0.1:5178/assets/command-palettes/mountain-backgrounds-sheet-v1.png\")"
+    ],
+    "localCssAssetCount": 19,
+    "horizontalOverflow": false,
+    "scrollWidth": 1425,
+    "clientWidth": 1440,
+    "bodyTextSample": "NAVIGATION\n\nMarketing\nApplication UI\nEcommerce\nDocumentation\n\nUI Blocks\n\n선택한 화면 맥락의 블록 목차\n\nApplication UI\n146\nApplication Shells\n17\nStacked Layouts\n3\nSidebar Layouts\n3\nMulti-Column Layouts\n3\nHeadings\n3\nPage Headings\n3\nCard Headings\n3\nSection Headings\n3\nData Display\n68\nDescription Lists\n2\nStats\n1\nCalendars\n3\nLists\n41\nStacked Lists\n3\nTables\n1\nGrid Lists\n2\nFeeds\n3\nForms\n62\nForm Layouts\n2\nInput Groups\n2\nSelect Menus\n3\nSign-in and Registration\n2\nTextareas\n2\nRadio Groups\n1\nCheckboxes\n2\nToggles\n3\nActio"
+  },
+  "mobile390": {
+    "url": "http://127.0.0.1:5178/?filter=nav%3Aplus-navigation-command-palettes",
+    "viewport": {
+      "width": 390,
+      "height": 1900
+    },
+    "present": {
+      "Simple": true,
+      "Simple with padding": true,
+      "With preview": true,
+      "With images and descriptions": true,
+      "With icons": true,
+      "Semi-transparent with icons": true,
+      "With groups": true,
+      "With footer": true
+    },
+    "allExpectedNamesFound": true,
+    "previewImages": [],
+    "previewImageCount": 0,
+    "localCssAssets": [
+      "url(\"http://127.0.0.1:5178/assets/command-palettes/mountain-backgrounds-sheet-v1.png\")",
+      "url(\"http://127.0.0.1:5178/assets/command-palettes/mountain-backgrounds-sheet-v1.png\")",
+      "url(\"http://127.0.0.1:5178/assets/command-palettes/mountain-backgrounds-sheet-v1.png\")",
+      "url(\"http://127.0.0.1:5178/assets/command-palettes/avatar-results-sheet-v1.png\")",
+      "url(\"http://127.0.0.1:5178/assets/command-palettes/avatar-results-sheet-v1.png\")",
+      "url(\"http://127.0.0.1:5178/assets/command-palettes/avatar-results-sheet-v1.png\")",
+      "url(\"http://127.0.0.1:5178/assets/command-palettes/avatar-results-sheet-v1.png\")",
+      "url(\"http://127.0.0.1:5178/assets/command-palettes/avatar-results-sheet-v1.png\")",
+      "url(\"http://127.0.0.1:5178/assets/command-palettes/avatar-results-sheet-v1.png\")",
+      "url(\"http://127.0.0.1:5178/assets/command-palettes/mountain-backgrounds-sheet-v1.png\")",
+      "url(\"http://127.0.0.1:5178/assets/command-palettes/avatar-results-sheet-v1.png\")",
+      "url(\"http://127.0.0.1:5178/assets/command-palettes/avatar-results-sheet-v1.png\")",
+      "url(\"http://127.0.0.1:5178/assets/command-palettes/avatar-results-sheet-v1.png\")",
+      "url(\"http://127.0.0.1:5178/assets/command-palettes/avatar-results-sheet-v1.png\")",
+      "url(\"http://127.0.0.1:5178/assets/command-palettes/avatar-results-sheet-v1.png\")",
+      "url(\"http://127.0.0.1:5178/assets/command-palettes/mountain-backgrounds-sheet-v1.png\")",
+      "url(\"http://127.0.0.1:5178/assets/command-palettes/mountain-backgrounds-sheet-v1.png\")",
+      "url(\"http://127.0.0.1:5178/assets/command-palettes/mountain-backgrounds-sheet-v1.png\")",
+      "url(\"http://127.0.0.1:5178/assets/command-palettes/mountain-backgrounds-sheet-v1.png\")"
+    ],
+    "localCssAssetCount": 19,
+    "horizontalOverflow": false,
+    "scrollWidth": 390,
+    "clientWidth": 390,
+    "bodyTextSample": "UI 용어 사전\nUI Blocks\n›\nApplication UI\n›\nCommand Palettes\n\nPLUS / UI BLOCKS / APPLICATION UI / NAVIGATION / COMMAND PALETTES\n\nCommand Palettes\n\n검색 입력으로 목적지 이동, 명령 실행, 객체 선택을 한 번에 처리하는 키보드 중심 내비게이션입니다.\n\nSimple\nse\nEmily Selman\nEmma Dorsey\nBenjamin Russel\nChelsea Hagon\nTom Cook\nSimple with padding\nse\nEmily Selman\nEmma Dorsey\nBenjamin Russel\nChelsea Hagon\nTom Cook\nWith preview\nSearch...\nEmily Selman\nEmma Dorsey\nBenjamin Russel\nChelsea Hagon\nTom Cook\n\nTom Cook\n\nDirector, Product Design\n\nLast active 12m "
+  },
+  "expectedAssets": [
+    "/assets/command-palettes/mountain-backgrounds-sheet-v1.png",
+    "/assets/command-palettes/avatar-results-sheet-v1.png"
+  ]
+}

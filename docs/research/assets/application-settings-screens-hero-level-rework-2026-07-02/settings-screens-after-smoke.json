@@ -1,0 +1,32 @@
+{
+  "desktop": {
+    "missing": [],
+    "missingMarkers": [],
+    "scrollWidth": 1425,
+    "clientWidth": 1440,
+    "horizontalOverflow": false,
+    "imageSources": [],
+    "darkPanels": 1,
+    "formLabels": 5,
+    "elementOverflows": []
+  },
+  "mobile390": {
+    "missing": [],
+    "missingMarkers": [],
+    "scrollWidth": 375,
+    "clientWidth": 390,
+    "horizontalOverflow": false,
+    "imageSources": [],
+    "darkPanels": 1,
+    "formLabels": 5,
+    "elementOverflows": [
+      {
+        "tag": "DIV",
+        "className": "grid min-h-[520px] md:grid-cols-[250px_minmax(0,1fr)]",
+        "scrollWidth": 394,
+        "clientWidth": 299,
+        "text": "DeployProjectsDeploymentsActivityDomainsUsageSettingsYour teamsPPlanetariaPProto"
+      }
+    ]
+  }
+}

@@ -39,6 +39,8 @@ const validKinds = new Set([
   "visual-treatment",
 ])
 
+const validNavigationRoots = new Set(["Docs", "Plus", "Index"])
+
 function parseSourceRegistry(sourcesText) {
   const registry = []
   const seen = new Set()
@@ -121,6 +123,45 @@ function assertTerm(term, sourceIds) {
       throw new Error(`${term.id} has unknown source_id: ${source.source_id}`)
     }
   }
+  if (term.navigation) {
+    assertNavigation(term)
+  }
+}
+
+function assertPath(termId, field, pathValue) {
+  if (!Array.isArray(pathValue) || pathValue.length === 0) {
+    throw new Error(`${termId} navigation.${field} must be a non-empty list`)
+  }
+  for (const segment of pathValue) {
+    if (typeof segment !== "string" || segment.trim().length === 0) {
+      throw new Error(`${termId} navigation.${field} contains an invalid path segment`)
+    }
+  }
+  if (!validNavigationRoots.has(pathValue[0])) {
+    throw new Error(`${termId} navigation.${field} must start with Docs, Plus, or Index`)
+  }
+}
+
+function assertNavigation(term) {
+  const navigation = term.navigation
+
+  if (typeof navigation !== "object" || Array.isArray(navigation)) {
+    throw new Error(`${term.id} navigation must be a mapping`)
+  }
+  if (!("canonical_path" in navigation)) {
+    throw new Error(`${term.id} navigation.canonical_path is required when navigation is present`)
+  }
+
+  assertPath(term.id, "canonical_path", navigation.canonical_path)
+
+  if ("also_appears_in" in navigation) {
+    if (!Array.isArray(navigation.also_appears_in)) {
+      throw new Error(`${term.id} navigation.also_appears_in must be a list of paths`)
+    }
+    for (const pathValue of navigation.also_appears_in) {
+      assertPath(term.id, "also_appears_in", pathValue)
+    }
+  }
 }
 
 const yamlText = await readFile(termsPath, "utf8")
@@ -157,6 +198,13 @@ export type TermCategory = ${categories.map((category) => JSON.stringify(categor
 
 export type TermKind = ${kinds.map((kind) => JSON.stringify(kind)).join(" | ")}
 
+export type NavigationPath = [string, ...string[]]
+
+export type TermNavigation = {
+  canonical_path: NavigationPath
+  also_appears_in?: NavigationPath[]
+}
+
 export type VocabularyTerm = {
   id: string
   status: "draft" | "reviewed" | "published"
@@ -173,6 +221,7 @@ export type VocabularyTerm = {
   asset: { kind: string; variant: string; props?: Record<string, unknown> }
   sources: { source_id: string; note?: string }[]
   confidence: "low" | "medium" | "high"
+  navigation?: TermNavigation
   related?: { id: string; relation: "compare" | "alternative" | "use-with"; note: string }[]
 }
 

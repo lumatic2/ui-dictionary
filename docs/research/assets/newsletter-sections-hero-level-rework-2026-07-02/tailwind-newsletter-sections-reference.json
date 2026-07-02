@@ -1,0 +1,12 @@
+{
+  "url": "https://tailwindcss.com/plus/ui-blocks/marketing/sections/newsletter-sections",
+  "title": "Tailwind CSS Newsletter Sections - Official Tailwind UI Components",
+  "examples": [
+    "Side-by-side with details",
+    "Simple side-by-side",
+    "Simple side-by-side on brand",
+    "Simple stacked",
+    "Centered card",
+    "Side-by-side on card"
+  ]
+}

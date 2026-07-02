@@ -1,0 +1,14 @@
+{
+  "url": "https://tailwindcss.com/plus/ui-blocks/application-ui/forms/textareas",
+  "name": "Textareas",
+  "description": "Textarea examples for Tailwind CSS, designed and built by the creators of the framework.",
+  "visible_example_count": 5,
+  "visible_example_names": [
+    "Simple",
+    "With avatar and actions",
+    "With underline and actions",
+    "With title and pill actions",
+    "With preview button"
+  ],
+  "raw_component_count": 10
+}

@@ -1,0 +1,14 @@
+{
+  "url": "https://tailwindcss.com/plus/ui-blocks/ecommerce/page-examples/checkout-pages",
+  "name": "Checkout Pages",
+  "description": "Ecommerce checkout page examples for Tailwind CSS, designed and built by the creators of the framework.",
+  "visible_example_count": 5,
+  "visible_example_names": [
+    "With order summary sidebar",
+    "Single step with order summary",
+    "With mobile order summary overlay",
+    "Multi-step",
+    "Split with order summary"
+  ],
+  "raw_component_count": 10
+}

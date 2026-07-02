@@ -1,0 +1,35 @@
+{
+  "bodyStart": "Introducing Oatmeal\nOur new multi-theme marketing site kit\nUI Blocks\nTemplates\nUI Kit\nSign in\nGet full access\nMarketing\nApplication UI\nEcommerce\nDocumentation\nPAGE SECTIONS\nHero Sections\nFeature Sections\nCTA Sections\nBento Grids\nPricing Sections\nHeader Sections\nNewsletter Sections\nStats\nTestimonials\nBlog Sections\nContact Sections\nTeam Sections\nContent Sections\nLogo Clouds\nFAQs\nFooters\nELEMENTS\nHeaders\nFlyout Menus\nBanners\nFEEDBACK\n404 Pages\nPAGE EXAMPLES\nLanding Pages\nPricing Pages\nAbout Pages\n\n5-DAY MINI-COURSE\n\nBuild UIs that don’t suck.\n\nShort, tactical video lessons from the creator of Tailwind CSS, delivered directly to your inbox every day for a week.\n\nGet the free course\n\nUI BLOCKS\n\n/\n\nMARKETING\n\n/\n\nPAGE SECTIONS\nFooters\n\nUse these Tailwind CSS footer examples to include useful information at the bottom of each page, like a sitemap to help users navigate your site, links to your social media profiles, or a newsletter sign up form. These examples are designed and built by the Tai",
+  "codeCount": 7,
+  "examples": [
+    "4-column with company mission",
+    "4-column with call-to-action",
+    "4-column simple",
+    "4-column with newsletter",
+    "4-column with newsletter below",
+    "Simple centered",
+    "Simple with social links"
+  ],
+  "h2s": [
+    "4-column with company mission",
+    "4-column with call-to-action",
+    "4-column simple",
+    "4-column with newsletter",
+    "4-column with newsletter below",
+    "Simple centered",
+    "Simple with social links"
+  ],
+  "h3s": [
+    "Page Sections",
+    "Elements",
+    "Feedback",
+    "Page Examples",
+    "Build UIs that don’t suck.",
+    "Marketing",
+    "Application UI",
+    "Ecommerce",
+    "Templates & UI Kits"
+  ],
+  "previewCount": 8,
+  "title": "Tailwind CSS Footers - Official Tailwind UI Components"
+}

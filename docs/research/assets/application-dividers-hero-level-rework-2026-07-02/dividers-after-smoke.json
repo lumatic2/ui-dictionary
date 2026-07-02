@@ -1,0 +1,34 @@
+{
+  "desktop": {
+    "missing": [],
+    "scrollWidth": 1425,
+    "clientWidth": 1440,
+    "horizontalOverflow": false,
+    "imageSources": [],
+    "darkPanels": 2,
+    "buttonText": 2,
+    "projectText": 3,
+    "toolbarButtons": 4,
+    "elementOverflows": [
+      {
+        "tag": "SPAN",
+        "className": "min-w-0 flex-1 truncate",
+        "scrollWidth": 180,
+        "clientWidth": 168,
+        "text": "Sign-in and Registration"
+      }
+    ]
+  },
+  "mobile390": {
+    "missing": [],
+    "scrollWidth": 375,
+    "clientWidth": 390,
+    "horizontalOverflow": false,
+    "imageSources": [],
+    "darkPanels": 2,
+    "buttonText": 2,
+    "projectText": 3,
+    "toolbarButtons": 4,
+    "elementOverflows": []
+  }
+}

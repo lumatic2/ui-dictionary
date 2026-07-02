@@ -1,0 +1,20 @@
+{
+  "url": "https://tailwindcss.com/plus/ui-blocks/ecommerce/components/product-lists",
+  "name": "Product Lists",
+  "description": "Ecommerce product list examples for Tailwind CSS, designed and built by the creators of the framework.",
+  "visible_example_count": 11,
+  "visible_example_names": [
+    "With inline price",
+    "Simple",
+    "With CTA link",
+    "With color swatches and horizontal scrolling",
+    "With tall images",
+    "With image overlay and add button",
+    "With tall images and CTA link",
+    "With border grid",
+    "With supporting text",
+    "With inline price and CTA link",
+    "Card with full details"
+  ],
+  "raw_component_count": 22
+}

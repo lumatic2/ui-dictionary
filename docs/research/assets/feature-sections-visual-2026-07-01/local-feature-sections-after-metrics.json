@@ -1,0 +1,31 @@
+{
+  "bodyLength": 4116,
+  "clientWidth": 2545,
+  "codeMentions": 0,
+  "getCodeMentions": 15,
+  "h1": "UI 용어 사전",
+  "headings": [
+    "UI 용어 사전",
+    "Feature Sections",
+    "With product screenshot",
+    "Centered 2x2 grid",
+    "With large screenshot",
+    "With large bordered screenshot",
+    "Simple three column with small icons",
+    "With product screenshot on left",
+    "Simple three column with large icons",
+    "Contained in panel",
+    "With product screenshot panel",
+    "With testimonial",
+    "Offset 2x2 grid",
+    "With code example panel",
+    "Offset with feature list",
+    "Simple",
+    "Simple 3x2 grid"
+  ],
+  "horizontalOverflow": false,
+  "previewMentions": 26,
+  "scrollWidth": 2545,
+  "title": "UI 용어 사전",
+  "url": "http://127.0.0.1:5181/?filter=nav%3Aplus-marketing-feature-sections"
+}

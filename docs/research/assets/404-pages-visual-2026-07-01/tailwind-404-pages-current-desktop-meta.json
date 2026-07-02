@@ -1,0 +1,19 @@
+{
+  "codeCount": 4,
+  "examples": [
+    "Simple",
+    "Split with image",
+    "With popular pages",
+    "With background image",
+    "With navbar and footer"
+  ],
+  "h2s": [
+    "Simple",
+    "Split with image",
+    "With popular pages",
+    "With background image",
+    "With navbar and footer"
+  ],
+  "previewCount": 6,
+  "title": "Tailwind CSS 404 Pages - Official Tailwind UI Components"
+}

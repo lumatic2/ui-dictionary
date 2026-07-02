@@ -1,0 +1,43 @@
+{
+  "capturedAt": "2026-07-02T08:42:08.089Z",
+  "desktop": {
+    "url": "https://tailwindcss.com/plus/ui-blocks/application-ui/navigation/breadcrumbs",
+    "viewport": {
+      "width": 1440,
+      "height": 1800
+    },
+    "present": {
+      "Contained": true,
+      "Full-width bar": true,
+      "Simple with chevrons": true,
+      "Simple with slashes": true
+    },
+    "allExpectedNamesFound": true,
+    "previewImages": [],
+    "previewImageCount": 0,
+    "horizontalOverflow": false,
+    "scrollWidth": 1440,
+    "clientWidth": 1440,
+    "bodyTextSample": "Introducing Oatmeal\nOur new multi-theme marketing site kit\nUI Blocks\nTemplates\nUI Kit\nSign in\nGet full access\nUI Blocks\nApplication UI\nNavigation\nBreadcrumbs\n\nUse these Tailwind CSS breadcrumb components to display a trail of links for easy backtracing in your application. These components are designed and built by the Tailwind CSS team, and include a variety of different styles and layouts.\n\nContained\n\nPreview\n\nGet the code →\nFull-width bar\n\nPreview\n\nGet the code →\nSimple with chevrons\n\nPreview"
+  },
+  "mobile390": {
+    "url": "https://tailwindcss.com/plus/ui-blocks/application-ui/navigation/breadcrumbs",
+    "viewport": {
+      "width": 390,
+      "height": 1400
+    },
+    "present": {
+      "Contained": true,
+      "Full-width bar": true,
+      "Simple with chevrons": true,
+      "Simple with slashes": true
+    },
+    "allExpectedNamesFound": true,
+    "previewImages": [],
+    "previewImageCount": 0,
+    "horizontalOverflow": false,
+    "scrollWidth": 390,
+    "clientWidth": 390,
+    "bodyTextSample": "UI Blocks\nApplication UI\nNavigation\nBreadcrumbs\n\nUse these Tailwind CSS breadcrumb components to display a trail of links for easy backtracing in your application. These components are designed and built by the Tailwind CSS team, and include a variety of different styles and layouts.\n\nContained\nGet the code →\nFull-width bar\nGet the code →\nSimple with chevrons\nGet the code →\nSimple with slashes\nGet the code →\nMarketing\nHero Sections\nFeature Sections\nPricing Sections\nHeader Sections\nNewsletter Sec"
+  }
+}

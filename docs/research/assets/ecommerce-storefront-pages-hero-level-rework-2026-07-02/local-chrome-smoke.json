@@ -1,0 +1,30 @@
+{
+  "badImageCount": 0,
+  "exampleHeadingCount": 4,
+  "expectedPresent": [
+    { "name": "With dark nav and footer", "present": true },
+    { "name": "With offers and testimonials", "present": true },
+    { "name": "With image tiles and feature sections", "present": true },
+    { "name": "With overlapping image tiles and perks", "present": true }
+  ],
+  "href": "http://127.0.0.1:5174/?filter=nav%3Aplus-ecommerce-page-examples-storefront-pages",
+  "offenders": [],
+  "storefrontImageCount": 35,
+  "title": "UI 용어 사전",
+  "uniqueStorefrontAssets": [
+    "apparel-hero.png",
+    "dark-desk-hero.png",
+    "desk-accessories.png",
+    "focus-hands.png",
+    "knitwear-texture.png",
+    "neutral-tumblers.png",
+    "stationery-set.png"
+  ],
+  "viewport": {
+    "clientWidth": 2545,
+    "innerHeight": 1215,
+    "innerWidth": 2560,
+    "scrollHeight": 10948,
+    "scrollWidth": 2545
+  }
+}

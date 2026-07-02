@@ -1,0 +1,12 @@
+{
+  "url": "https://tailwindcss.com/plus/ui-blocks/ecommerce/page-examples/shopping-cart-pages",
+  "name": "Shopping Cart Pages",
+  "description": "Ecommerce shopping cart page examples for Tailwind CSS, designed and built by the creators of the framework.",
+  "visible_example_count": 3,
+  "visible_example_names": [
+    "With related products",
+    "Simple with policy grid",
+    "With policy grid and extended summary"
+  ],
+  "raw_component_count": 6
+}

@@ -1,0 +1,260 @@
+{
+  "url": "https://tailwindcss.com/plus/ui-blocks/application-ui/headings/page-headings",
+  "checkedAt": "2026-07-02T07:01:14.012Z",
+  "desktop": {
+    "viewport": {
+      "width": 1440,
+      "height": 26000
+    },
+    "expectedFound": [
+      {
+        "name": "With meta and actions",
+        "found": true
+      },
+      {
+        "name": "With actions",
+        "found": true
+      },
+      {
+        "name": "With actions and breadcrumbs",
+        "found": true
+      },
+      {
+        "name": "With banner image",
+        "found": true
+      },
+      {
+        "name": "With avatar and actions",
+        "found": true
+      },
+      {
+        "name": "Card with avatar and stats",
+        "found": true
+      },
+      {
+        "name": "With meta, actions, and breadcrumbs",
+        "found": true
+      },
+      {
+        "name": "With filters and action",
+        "found": true
+      },
+      {
+        "name": "With logo, meta and actions",
+        "found": true
+      }
+    ],
+    "images": [],
+    "previewImages": [],
+    "horizontalOverflow": false,
+    "scrollWidth": 1440,
+    "innerWidth": 1440,
+    "scrollHeight": 26000,
+    "headings": [
+      {
+        "text": "Page Headings",
+        "top": 152
+      },
+      {
+        "text": "With meta and actions",
+        "top": 388
+      },
+      {
+        "text": "With meta and actions",
+        "top": 0
+      },
+      {
+        "text": "With actions",
+        "top": 919
+      },
+      {
+        "text": "With actions",
+        "top": 0
+      },
+      {
+        "text": "With actions and breadcrumbs",
+        "top": 1165
+      },
+      {
+        "text": "With actions and breadcrumbs",
+        "top": 0
+      },
+      {
+        "text": "With banner image",
+        "top": 1439
+      },
+      {
+        "text": "With banner image",
+        "top": 0
+      },
+      {
+        "text": "With avatar and actions",
+        "top": 1865
+      },
+      {
+        "text": "With avatar and actions",
+        "top": 0
+      },
+      {
+        "text": "Card with avatar and stats",
+        "top": 2123
+      },
+      {
+        "text": "Card with avatar and stats",
+        "top": 0
+      },
+      {
+        "text": "With meta, actions, and breadcrumbs",
+        "top": 2522
+      },
+      {
+        "text": "With meta, actions, and breadcrumbs",
+        "top": 0
+      },
+      {
+        "text": "With filters and action",
+        "top": 3052
+      },
+      {
+        "text": "With filters and action",
+        "top": 0
+      },
+      {
+        "text": "With logo, meta and actions",
+        "top": 3298
+      },
+      {
+        "text": "With logo, meta and actions",
+        "top": 0
+      }
+    ]
+  },
+  "mobile": {
+    "viewport": {
+      "width": 390,
+      "height": 26000
+    },
+    "expectedFound": [
+      {
+        "name": "With meta and actions",
+        "found": true
+      },
+      {
+        "name": "With actions",
+        "found": true
+      },
+      {
+        "name": "With actions and breadcrumbs",
+        "found": true
+      },
+      {
+        "name": "With banner image",
+        "found": true
+      },
+      {
+        "name": "With avatar and actions",
+        "found": true
+      },
+      {
+        "name": "Card with avatar and stats",
+        "found": true
+      },
+      {
+        "name": "With meta, actions, and breadcrumbs",
+        "found": true
+      },
+      {
+        "name": "With filters and action",
+        "found": true
+      },
+      {
+        "name": "With logo, meta and actions",
+        "found": true
+      }
+    ],
+    "images": [],
+    "previewImages": [],
+    "horizontalOverflow": false,
+    "scrollWidth": 390,
+    "innerWidth": 390,
+    "scrollHeight": 26000,
+    "headings": [
+      {
+        "text": "Page Headings",
+        "top": 152
+      },
+      {
+        "text": "With meta and actions",
+        "top": 488
+      },
+      {
+        "text": "With meta and actions",
+        "top": 0
+      },
+      {
+        "text": "With actions",
+        "top": 1016
+      },
+      {
+        "text": "With actions",
+        "top": 0
+      },
+      {
+        "text": "With actions and breadcrumbs",
+        "top": 1300
+      },
+      {
+        "text": "With actions and breadcrumbs",
+        "top": 0
+      },
+      {
+        "text": "With banner image",
+        "top": 1612
+      },
+      {
+        "text": "With banner image",
+        "top": 0
+      },
+      {
+        "text": "With avatar and actions",
+        "top": 2116
+      },
+      {
+        "text": "With avatar and actions",
+        "top": 0
+      },
+      {
+        "text": "Card with avatar and stats",
+        "top": 2494
+      },
+      {
+        "text": "Card with avatar and stats",
+        "top": 0
+      },
+      {
+        "text": "With meta, actions, and breadcrumbs",
+        "top": 3149
+      },
+      {
+        "text": "With meta, actions, and breadcrumbs",
+        "top": 0
+      },
+      {
+        "text": "With filters and action",
+        "top": 3673
+      },
+      {
+        "text": "With filters and action",
+        "top": 0
+      },
+      {
+        "text": "With logo, meta and actions",
+        "top": 3961
+      },
+      {
+        "text": "With logo, meta and actions",
+        "top": 0
+      }
+    ]
+  }
+}

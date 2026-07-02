@@ -1,0 +1,72 @@
+[
+  {
+    "viewport": {
+      "width": 1440,
+      "height": 2600
+    },
+    "scrollWidth": 1425,
+    "clientWidth": 1440,
+    "hasHorizontalOverflow": false,
+    "expectedNames": {
+      "With close button on outside": true,
+      "Empty": true,
+      "Wide empty": true,
+      "With background overlay": true,
+      "With branded header": true,
+      "With sticky footer": true,
+      "Create project form example": true,
+      "Wide create project form example": true,
+      "User profile example": true,
+      "Wide horizontal user profile example": true,
+      "Contact list example": true,
+      "File details example": true
+    },
+    "imageSources": [
+      "/favicon.svg",
+      "/assets/drawers/profile-portrait-v1.png",
+      "/assets/drawers/wide-profile-portrait-v1.png",
+      "/assets/drawers/wide-profile-portrait-v1.png",
+      "/assets/drawers/file-landscape-v1.png"
+    ],
+    "drawerAssetImageCount": 4,
+    "drawerAvatarBackgroundCount": 21,
+    "elementOverflows": [],
+    "allExpectedNamesFound": true,
+    "mode": "desktop"
+  },
+  {
+    "viewport": {
+      "width": 390,
+      "height": 2200
+    },
+    "scrollWidth": 375,
+    "clientWidth": 390,
+    "hasHorizontalOverflow": false,
+    "expectedNames": {
+      "With close button on outside": true,
+      "Empty": true,
+      "Wide empty": true,
+      "With background overlay": true,
+      "With branded header": true,
+      "With sticky footer": true,
+      "Create project form example": true,
+      "Wide create project form example": true,
+      "User profile example": true,
+      "Wide horizontal user profile example": true,
+      "Contact list example": true,
+      "File details example": true
+    },
+    "imageSources": [
+      "/favicon.svg",
+      "/assets/drawers/profile-portrait-v1.png",
+      "/assets/drawers/wide-profile-portrait-v1.png",
+      "/assets/drawers/wide-profile-portrait-v1.png",
+      "/assets/drawers/file-landscape-v1.png"
+    ],
+    "drawerAssetImageCount": 4,
+    "drawerAvatarBackgroundCount": 21,
+    "elementOverflows": [],
+    "allExpectedNamesFound": true,
+    "mode": "mobile"
+  }
+]

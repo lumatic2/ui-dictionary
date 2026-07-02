@@ -1,0 +1,20 @@
+{
+  "url": "https://tailwindcss.com/plus/ui-blocks/application-ui/elements/avatars",
+  "name": "Avatars",
+  "description": "User avatar examples for Tailwind CSS, designed and built by the creators of the framework.",
+  "visible_example_count": 11,
+  "visible_example_names": [
+    "Avatar group stacked bottom to top",
+    "Circular avatars",
+    "Rounded avatars",
+    "Circular avatars with top notification",
+    "Rounded avatars with top notification",
+    "Circular avatars with bottom notification",
+    "Rounded avatars with bottom notification",
+    "Circular avatars with placeholder icon",
+    "Circular avatars with placeholder initials",
+    "Avatar group stacked top to bottom",
+    "With text"
+  ],
+  "raw_component_count": 22
+}

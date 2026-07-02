@@ -1,0 +1,306 @@
+{
+  "url": "https://tailwindcss.com/plus/ui-blocks/application-ui/data-display/calendars",
+  "checkedAt": "2026-07-02T07:48:21.417Z",
+  "desktop": {
+    "viewport": {
+      "width": 1440,
+      "height": 26000
+    },
+    "expectedFound": [
+      {
+        "name": "Small with meetings",
+        "found": true
+      },
+      {
+        "name": "Month view",
+        "found": true
+      },
+      {
+        "name": "Week view",
+        "found": true
+      },
+      {
+        "name": "Day view",
+        "found": true
+      },
+      {
+        "name": "Year view",
+        "found": true
+      },
+      {
+        "name": "Double",
+        "found": true
+      },
+      {
+        "name": "Borderless stacked",
+        "found": true
+      },
+      {
+        "name": "Borderless side-by-side",
+        "found": true
+      }
+    ],
+    "images": [],
+    "previewImages": [],
+    "uniquePreviewImages": [],
+    "horizontalOverflow": false,
+    "scrollWidth": 1440,
+    "innerWidth": 1440,
+    "scrollHeight": 26000,
+    "headings": [
+      {
+        "text": "Application Shells",
+        "top": 0
+      },
+      {
+        "text": "Headings",
+        "top": 0
+      },
+      {
+        "text": "Data Display",
+        "top": 0
+      },
+      {
+        "text": "Lists",
+        "top": 0
+      },
+      {
+        "text": "Forms",
+        "top": 0
+      },
+      {
+        "text": "Feedback",
+        "top": 0
+      },
+      {
+        "text": "Navigation",
+        "top": 0
+      },
+      {
+        "text": "Overlays",
+        "top": 0
+      },
+      {
+        "text": "Elements",
+        "top": 0
+      },
+      {
+        "text": "Layout",
+        "top": 0
+      },
+      {
+        "text": "Page Examples",
+        "top": 0
+      },
+      {
+        "text": "Build UIs that don’t suck.",
+        "top": 0
+      },
+      {
+        "text": "Calendars",
+        "top": 152
+      },
+      {
+        "text": "Small with meetings",
+        "top": 387
+      },
+      {
+        "text": "Small with meetings",
+        "top": 0
+      },
+      {
+        "text": "Month view",
+        "top": 1161
+      },
+      {
+        "text": "Month view",
+        "top": 0
+      },
+      {
+        "text": "Week view",
+        "top": 2075
+      },
+      {
+        "text": "Week view",
+        "top": 0
+      },
+      {
+        "text": "Day view",
+        "top": 2989
+      },
+      {
+        "text": "Day view",
+        "top": 0
+      },
+      {
+        "text": "Year view",
+        "top": 3903
+      },
+      {
+        "text": "Year view",
+        "top": 0
+      },
+      {
+        "text": "Double",
+        "top": 4949
+      },
+      {
+        "text": "Double",
+        "top": 0
+      },
+      {
+        "text": "Borderless stacked",
+        "top": 5851
+      },
+      {
+        "text": "Borderless stacked",
+        "top": 0
+      },
+      {
+        "text": "Borderless side-by-side",
+        "top": 6874
+      },
+      {
+        "text": "Borderless side-by-side",
+        "top": 0
+      },
+      {
+        "text": "Marketing",
+        "top": 25132
+      },
+      {
+        "text": "Application UI",
+        "top": 25132
+      },
+      {
+        "text": "Ecommerce",
+        "top": 25132
+      },
+      {
+        "text": "Templates & UI Kits",
+        "top": 25132
+      }
+    ]
+  },
+  "mobile": {
+    "viewport": {
+      "width": 390,
+      "height": 26000
+    },
+    "expectedFound": [
+      {
+        "name": "Small with meetings",
+        "found": true
+      },
+      {
+        "name": "Month view",
+        "found": true
+      },
+      {
+        "name": "Week view",
+        "found": true
+      },
+      {
+        "name": "Day view",
+        "found": false
+      },
+      {
+        "name": "Year view",
+        "found": false
+      },
+      {
+        "name": "Double",
+        "found": false
+      },
+      {
+        "name": "Borderless stacked",
+        "found": false
+      },
+      {
+        "name": "Borderless side-by-side",
+        "found": false
+      }
+    ],
+    "images": [],
+    "previewImages": [],
+    "uniquePreviewImages": [],
+    "horizontalOverflow": false,
+    "scrollWidth": 390,
+    "innerWidth": 390,
+    "scrollHeight": 26000,
+    "headings": [
+      {
+        "text": "Application Shells",
+        "top": 0
+      },
+      {
+        "text": "Headings",
+        "top": 0
+      },
+      {
+        "text": "Data Display",
+        "top": 0
+      },
+      {
+        "text": "Lists",
+        "top": 0
+      },
+      {
+        "text": "Forms",
+        "top": 0
+      },
+      {
+        "text": "Feedback",
+        "top": 0
+      },
+      {
+        "text": "Navigation",
+        "top": 0
+      },
+      {
+        "text": "Overlays",
+        "top": 0
+      },
+      {
+        "text": "Elements",
+        "top": 0
+      },
+      {
+        "text": "Layout",
+        "top": 0
+      },
+      {
+        "text": "Page Examples",
+        "top": 0
+      },
+      {
+        "text": "Build UIs that don’t suck.",
+        "top": 0
+      },
+      {
+        "text": "Calendars",
+        "top": 152
+      },
+      {
+        "text": "Small with meetings",
+        "top": 456
+      },
+      {
+        "text": "Small with meetings",
+        "top": 0
+      },
+      {
+        "text": "Month view",
+        "top": 1813
+      },
+      {
+        "text": "Month view",
+        "top": 0
+      },
+      {
+        "text": "Week view",
+        "top": 2647
+      }
+    ]
+  }
+}

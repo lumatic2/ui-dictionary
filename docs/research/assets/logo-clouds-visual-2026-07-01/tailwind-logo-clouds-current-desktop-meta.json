@@ -1,0 +1,33 @@
+{
+  "bodyStart": "Introducing Oatmeal\nOur new multi-theme marketing site kit\nUI Blocks\nTemplates\nUI Kit\nSign in\nGet full access\nMarketing\nApplication UI\nEcommerce\nDocumentation\nPAGE SECTIONS\nHero Sections\nFeature Sections\nCTA Sections\nBento Grids\nPricing Sections\nHeader Sections\nNewsletter Sections\nStats\nTestimonials\nBlog Sections\nContact Sections\nTeam Sections\nContent Sections\nLogo Clouds\nFAQs\nFooters\nELEMENTS\nHeaders\nFlyout Menus\nBanners\nFEEDBACK\n404 Pages\nPAGE EXAMPLES\nLanding Pages\nPricing Pages\nAbout Pages\n\n5-DAY MINI-COURSE\n\nBuild UIs that don’t suck.\n\nShort, tactical video lessons from the creator of Tailwind CSS, delivered directly to your inbox every day for a week.\n\nGet the free course\n\nUI BLOCKS\n\n/\n\nMARKETING\n\n/\n\nPAGE SECTIONS\nLogo Clouds\n\nUse these Tailwind CSS logo cloud examples to build trust and highlight prominent customers and partners. These examples are designed and built by the Tailwind CSS team, and include a variety of different styles and layouts.\n\nSimple with heading\nPreview\nCod",
+  "codeCount": 5,
+  "examples": [
+    "Simple with heading",
+    "Simple with call-to-action",
+    "Simple left-aligned",
+    "Split with logos on right",
+    "Simple",
+    "Grid"
+  ],
+  "h2s": [
+    "Simple with heading",
+    "Simple with call-to-action",
+    "Simple left-aligned",
+    "Split with logos on right",
+    "Simple",
+    "Grid"
+  ],
+  "h3s": [
+    "Page Sections",
+    "Elements",
+    "Feedback",
+    "Page Examples",
+    "Build UIs that don’t suck.",
+    "Marketing",
+    "Application UI",
+    "Ecommerce",
+    "Templates & UI Kits"
+  ],
+  "previewCount": 7,
+  "title": "Tailwind CSS Logo Clouds - Official Tailwind UI Components"
+}

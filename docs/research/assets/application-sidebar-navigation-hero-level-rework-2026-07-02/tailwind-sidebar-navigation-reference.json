@@ -1,0 +1,45 @@
+{
+  "capturedAt": "2026-07-02T08:29:38.353Z",
+  "desktop": {
+    "url": "https://tailwindcss.com/plus/ui-blocks/application-ui/navigation/sidebar-navigation",
+    "viewport": {
+      "width": 1440,
+      "height": 2200
+    },
+    "present": {
+      "Light": true,
+      "Dark": true,
+      "With expandable sections": true,
+      "With secondary navigation": true,
+      "Brand": true
+    },
+    "allExpectedNamesFound": true,
+    "previewImages": [],
+    "previewImageCount": 0,
+    "horizontalOverflow": false,
+    "scrollWidth": 1440,
+    "clientWidth": 1440,
+    "bodyTextSample": "Introducing Oatmeal\nOur new multi-theme marketing site kit\nUI Blocks\nTemplates\nUI Kit\nSign in\nGet full access\nUI Blocks\nApplication UI\nNavigation\nSidebar Navigation\n\nUse these Tailwind CSS sidebar navigation components to create responsive side menus with features like icons and badges, expandable submenus, and footer sections. These sidebars are designed and built by the Tailwind CSS team, and include a variety of different styles and layouts.\n\nLight\n\nPreview\n\nGet the code →\nDark\n\nPreview\n\nGet "
+  },
+  "mobile390": {
+    "url": "https://tailwindcss.com/plus/ui-blocks/application-ui/navigation/sidebar-navigation",
+    "viewport": {
+      "width": 390,
+      "height": 1600
+    },
+    "present": {
+      "Light": true,
+      "Dark": true,
+      "With expandable sections": true,
+      "With secondary navigation": true,
+      "Brand": true
+    },
+    "allExpectedNamesFound": true,
+    "previewImages": [],
+    "previewImageCount": 0,
+    "horizontalOverflow": false,
+    "scrollWidth": 390,
+    "clientWidth": 390,
+    "bodyTextSample": "UI Blocks\nApplication UI\nNavigation\nSidebar Navigation\n\nUse these Tailwind CSS sidebar navigation components to create responsive side menus with features like icons and badges, expandable submenus, and footer sections. These sidebars are designed and built by the Tailwind CSS team, and include a variety of different styles and layouts.\n\nLight\nGet the code →\nDark\nGet the code →\nWith expandable sections\nGet the code →\nWith secondary navigation\nGet the code →\nBrand\nGet the code →\nMarketing\nHero Se"
+  }
+}

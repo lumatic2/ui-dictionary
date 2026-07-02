@@ -1,0 +1,14 @@
+{
+  "url": "https://tailwindcss.com/plus/ui-blocks/application-ui/layout/containers",
+  "name": "Containers",
+  "description": "Responsive layout container examples for Tailwind CSS, designed and built by the creators of the framework.",
+  "visible_example_count": 5,
+  "visible_example_names": [
+    "Full-width on mobile, constrained with padded content above",
+    "Constrained with padded content",
+    "Full-width on mobile, constrained to breakpoint with padded content above mobile",
+    "Constrained to breakpoint with padded content",
+    "Narrow constrained with padded content"
+  ],
+  "raw_component_count": 10
+}

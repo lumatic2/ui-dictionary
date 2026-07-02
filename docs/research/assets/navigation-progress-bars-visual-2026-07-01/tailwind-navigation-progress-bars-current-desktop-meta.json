@@ -1,0 +1,17 @@
+{
+  "url": "https://tailwindcss.com/plus/ui-blocks/application-ui/navigation/progress-bars",
+  "name": "Progress Bars",
+  "description": "Multi-step navigation and progress examples for Tailwind CSS, designed and built by the creators of the framework.",
+  "visible_example_count": 8,
+  "visible_example_names": [
+    "Simple",
+    "Panels",
+    "Bullets",
+    "Panels with border",
+    "Circles",
+    "Bullets and text",
+    "Circles with text",
+    "Progress bar"
+  ],
+  "raw_component_count": 16
+}

@@ -1,10 +1,12 @@
+@import url("https://rsms.me/inter/inter.css");
+@import url("https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&display=swap");
 @import "tailwindcss";
 
 @custom-variant dark (&:is(.dark *));
 
 :root {
   font-family:
-    Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI",
+    InterVariable, Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI",
     sans-serif;
   color-scheme: light;
   --radius: 0.5rem;
@@ -29,7 +31,8 @@
 }
 
 @theme inline {
-  --font-sans: Inter, ui-sans-serif, system-ui, sans-serif;
+  --font-sans: InterVariable, Inter, ui-sans-serif, system-ui, sans-serif;
+  --font-mono: "IBM Plex Mono", ui-monospace, monospace;
   --color-background: var(--background);
   --color-foreground: var(--foreground);
   --color-card: var(--card);
@@ -61,6 +64,15 @@
 html {
   background: var(--background);
   scrollbar-gutter: stable;
+}
+
+.scrollbar-hidden {
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+
+.scrollbar-hidden::-webkit-scrollbar {
+  display: none;
 }
 
 body {
@@ -207,17 +219,6 @@ select {
   to {
     opacity: 0.72;
     transform: translateY(100%);
-  }
-}
-
-@keyframes term-detail-content-in {
-  from {
-    opacity: 0;
-    transform: translateX(14px);
-  }
-  to {
-    opacity: 1;
-    transform: translateX(0);
   }
 }
 
@@ -405,13 +406,15 @@ select {
   filter: saturate(1.25);
 }
 
-.visual-orbit-ring {
-  animation: visual-orbit 5.8s linear infinite;
+.visual-orbit-path {
+  animation: visual-orbit 8s linear infinite;
+  background: conic-gradient(from 0deg, transparent 0 72%, var(--primary) 74% 79%, transparent 82% 100%);
+  mask: radial-gradient(farthest-side, transparent calc(100% - 2px), #000 calc(100% - 1px));
   transform-origin: center;
 }
 
-.visual-hover-surface:hover .visual-orbit-ring {
-  animation-duration: 2.4s;
+.visual-hover-surface:hover .visual-orbit-path {
+  animation-duration: 4s;
 }
 
 .visual-typing-text {
@@ -604,19 +607,14 @@ select {
   animation: sheet-slide-out-bottom 240ms cubic-bezier(0.7, 0, 0.84, 0) both;
 }
 
-[data-term-detail-content] {
-  animation: term-detail-content-in 220ms cubic-bezier(0.16, 1, 0.3, 1) both;
-}
-
 @media (prefers-reduced-motion: reduce) {
   [data-slot="sheet-overlay"],
   [data-slot="sheet-content"],
-  [data-term-detail-content],
   .visual-hover-surface,
   .visual-gradient-shift,
   .visual-border-beam::before,
   .visual-marquee-track,
-  .visual-orbit-ring,
+  .visual-orbit-path,
   .visual-typing-text,
   .visual-number-ticker,
   .visual-scroll-dot,

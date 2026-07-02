@@ -1,0 +1,5 @@
+{
+  "count": 15,
+  "failures": [],
+  "note": "Pass criteria: route title present, Get the code lock action present, no desktop horizontal overflow. Some preview variants do not expose the literal Preview label in DOM text."
+}

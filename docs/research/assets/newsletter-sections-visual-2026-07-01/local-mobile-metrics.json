@@ -1,0 +1,20 @@
+{
+  "url": "http://127.0.0.1:5181/?filter=nav%3Aplus-marketing-newsletter-sections",
+  "title": "UI \uc6a9\uc5b4 \uc0ac\uc804",
+  "headings": [
+    "UI \uc6a9\uc5b4 \uc0ac\uc804",
+    "Newsletter Sections",
+    "Side-by-side with details",
+    "Simple side-by-side",
+    "Simple side-by-side on brand",
+    "Simple stacked",
+    "Centered card",
+    "Side-by-side on card"
+  ],
+  "previewMentions": 6,
+  "getCodeMentions": 6,
+  "scrollWidth": 390,
+  "clientWidth": 390,
+  "horizontalOverflow": false,
+  "bodyLength": 1727
+}

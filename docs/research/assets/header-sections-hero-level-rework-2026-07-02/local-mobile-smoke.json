@@ -1,0 +1,41 @@
+{
+  "horizontalOverflow": false,
+  "scrollWidth": 375,
+  "clientWidth": 390,
+  "bodyScrollWidth": 375,
+  "overflowingElements": [],
+  "headings": [
+    "UI \uc6a9\uc5b4 \uc0ac\uc804",
+    "Header Sections",
+    "With stats",
+    "Centered",
+    "Centered with eyebrow",
+    "With cards",
+    "Simple",
+    "Simple with eyebrow",
+    "Simple with background image",
+    "Centered with background image"
+  ],
+  "headerImages": [
+    {
+      "src": "/assets/header-sections/with-stats-bg-v2.png",
+      "w": 1717,
+      "h": 916
+    },
+    {
+      "src": "/assets/header-sections/with-cards-bg-v2.png",
+      "w": 1672,
+      "h": 941
+    },
+    {
+      "src": "/assets/header-sections/simple-bg-image-v2.png",
+      "w": 1717,
+      "h": 916
+    },
+    {
+      "src": "/assets/header-sections/centered-bg-image-v2.png",
+      "w": 1923,
+      "h": 818
+    }
+  ]
+}

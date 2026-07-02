@@ -1,0 +1,28 @@
+{
+  "url": "https://tailwindcss.com/plus/ui-blocks/marketing/sections/bento-grids",
+  "title": "Tailwind CSS Bento Grids - Official Tailwind UI Components",
+  "headings": [
+    "Page Sections",
+    "Elements",
+    "Feedback",
+    "Page Examples",
+    "Build UIs that don\u2019t suck.",
+    "Bento Grids",
+    "Three column bento grid",
+    "Three column bento grid",
+    "Two row bento grid",
+    "Two row bento grid",
+    "Two row bento grid with three column second row",
+    "Two row bento grid with three column second row",
+    "Marketing",
+    "Application UI",
+    "Ecommerce",
+    "Templates & UI Kits"
+  ],
+  "previewMentions": 7,
+  "getCodeMentions": 4,
+  "scrollWidth": 390,
+  "clientWidth": 390,
+  "horizontalOverflow": false,
+  "bodyLength": 3576
+}

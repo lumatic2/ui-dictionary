@@ -1,0 +1,15 @@
+{
+  "url": "https://tailwindcss.com/plus/ui-blocks/application-ui/overlays/modal-dialogs",
+  "name": "Modal Dialogs",
+  "description": "Modal dialog examples for Tailwind CSS, designed and built by the creators of the framework.",
+  "visible_example_count": 6,
+  "visible_example_names": [
+    "Simple with gray footer",
+    "Centered with single action",
+    "Centered with wide buttons",
+    "Simple alert",
+    "Simple with dismiss button",
+    "Simple alert with left-aligned buttons"
+  ],
+  "raw_component_count": 12
+}

@@ -1,0 +1,35 @@
+{
+  "bodyStart": "Introducing Oatmeal\nOur new multi-theme marketing site kit\nUI Blocks\nTemplates\nUI Kit\nSign in\nGet full access\nMarketing\nApplication UI\nEcommerce\nDocumentation\nPAGE SECTIONS\nHero Sections\nFeature Sections\nCTA Sections\nBento Grids\nPricing Sections\nHeader Sections\nNewsletter Sections\nStats\nTestimonials\nBlog Sections\nContact Sections\nTeam Sections\nContent Sections\nLogo Clouds\nFAQs\nFooters\nELEMENTS\nHeaders\nFlyout Menus\nBanners\nFEEDBACK\n404 Pages\nPAGE EXAMPLES\nLanding Pages\nPricing Pages\nAbout Pages\n\n5-DAY MINI-COURSE\n\nBuild UIs that don’t suck.\n\nShort, tactical video lessons from the creator of Tailwind CSS, delivered directly to your inbox every day for a week.\n\nGet the free course\n\nUI BLOCKS\n\n/\n\nMARKETING\n\n/\n\nPAGE SECTIONS\nBlog Sections\n\nUse these Tailwind CSS blog section examples to promote interesting content from your company blog or content universe throughout your website. These examples are designed and built by the Tailwind CSS team, and include a variety of different styles and l",
+  "codeCount": 6,
+  "examples": [
+    "Three-column",
+    "Three-column with images",
+    "Three-column with background images",
+    "Single-column",
+    "Single-column with images",
+    "With featured post",
+    "With photo and list"
+  ],
+  "h2s": [
+    "Three-column",
+    "Three-column with images",
+    "Three-column with background images",
+    "Single-column",
+    "Single-column with images",
+    "With featured post",
+    "With photo and list"
+  ],
+  "h3s": [
+    "Page Sections",
+    "Elements",
+    "Feedback",
+    "Page Examples",
+    "Build UIs that don’t suck.",
+    "Marketing",
+    "Application UI",
+    "Ecommerce",
+    "Templates & UI Kits"
+  ],
+  "previewCount": 8,
+  "title": "Tailwind CSS Blog Sections - Official Tailwind UI Components"
+}

@@ -1,0 +1,204 @@
+{
+  "url": "http://127.0.0.1:5178/?filter=nav%3Aplus-application-shells-stacked-layouts",
+  "checkedAt": "2026-07-02T06:40:46.065Z",
+  "expected": [
+    "With lighter page header",
+    "With bottom border",
+    "On subtle background",
+    "Branded nav with compact lighter page header",
+    "With overlap",
+    "Brand nav with overlap",
+    "Branded nav with lighter page header",
+    "With compact lighter page header",
+    "Two-row navigation with overlap"
+  ],
+  "desktop": {
+    "viewport": {
+      "width": 1440,
+      "height": 26000
+    },
+    "expectedFound": [
+      {
+        "name": "With lighter page header",
+        "found": true
+      },
+      {
+        "name": "With bottom border",
+        "found": true
+      },
+      {
+        "name": "On subtle background",
+        "found": true
+      },
+      {
+        "name": "Branded nav with compact lighter page header",
+        "found": true
+      },
+      {
+        "name": "With overlap",
+        "found": true
+      },
+      {
+        "name": "Brand nav with overlap",
+        "found": true
+      },
+      {
+        "name": "Branded nav with lighter page header",
+        "found": true
+      },
+      {
+        "name": "With compact lighter page header",
+        "found": true
+      },
+      {
+        "name": "Two-row navigation with overlap",
+        "found": true
+      }
+    ],
+    "images": [
+      "/favicon.svg"
+    ],
+    "horizontalOverflow": false,
+    "scrollWidth": 1425,
+    "innerWidth": 1440,
+    "scrollHeight": 26000,
+    "headings": [
+      {
+        "text": "Stacked Layouts",
+        "top": 222
+      },
+      {
+        "text": "With lighter page header",
+        "top": 408
+      },
+      {
+        "text": "With bottom border",
+        "top": 1180
+      },
+      {
+        "text": "On subtle background",
+        "top": 1953
+      },
+      {
+        "text": "Branded nav with compact lighter page header",
+        "top": 2725
+      },
+      {
+        "text": "With overlap",
+        "top": 3465
+      },
+      {
+        "text": "Brand nav with overlap",
+        "top": 4213
+      },
+      {
+        "text": "Branded nav with lighter page header",
+        "top": 4961
+      },
+      {
+        "text": "With compact lighter page header",
+        "top": 5734
+      },
+      {
+        "text": "Two-row navigation with overlap",
+        "top": 6474
+      }
+    ],
+    "previewImages": []
+  },
+  "mobile": {
+    "viewport": {
+      "width": 390,
+      "height": 26000
+    },
+    "expectedFound": [
+      {
+        "name": "With lighter page header",
+        "found": true
+      },
+      {
+        "name": "With bottom border",
+        "found": true
+      },
+      {
+        "name": "On subtle background",
+        "found": true
+      },
+      {
+        "name": "Branded nav with compact lighter page header",
+        "found": true
+      },
+      {
+        "name": "With overlap",
+        "found": true
+      },
+      {
+        "name": "Brand nav with overlap",
+        "found": true
+      },
+      {
+        "name": "Branded nav with lighter page header",
+        "found": true
+      },
+      {
+        "name": "With compact lighter page header",
+        "found": true
+      },
+      {
+        "name": "Two-row navigation with overlap",
+        "found": true
+      }
+    ],
+    "images": [
+      "/favicon.svg"
+    ],
+    "horizontalOverflow": false,
+    "scrollWidth": 390,
+    "innerWidth": 390,
+    "scrollHeight": 26000,
+    "headings": [
+      {
+        "text": "Stacked Layouts",
+        "top": 267
+      },
+      {
+        "text": "With lighter page header",
+        "top": 447
+      },
+      {
+        "text": "With bottom border",
+        "top": 1159
+      },
+      {
+        "text": "On subtle background",
+        "top": 1872
+      },
+      {
+        "text": "Branded nav with compact lighter page header",
+        "top": 2584
+      },
+      {
+        "text": "With overlap",
+        "top": 3264
+      },
+      {
+        "text": "Brand nav with overlap",
+        "top": 3952
+      },
+      {
+        "text": "Branded nav with lighter page header",
+        "top": 4640
+      },
+      {
+        "text": "With compact lighter page header",
+        "top": 5353
+      },
+      {
+        "text": "Two-row navigation with overlap",
+        "top": 6033
+      }
+    ],
+    "previewImages": []
+  },
+  "pass": true
+}

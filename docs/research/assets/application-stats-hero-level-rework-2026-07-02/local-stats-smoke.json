@@ -1,0 +1,168 @@
+{
+  "url": "http://127.0.0.1:5178/?filter=nav%3Aplus-data-display-stats",
+  "checkedAt": "2026-07-02T07:36:34.182Z",
+  "expected": [
+    "With trending",
+    "Simple",
+    "Simple in cards",
+    "With brand icon",
+    "With shared borders"
+  ],
+  "desktop": {
+    "viewport": {
+      "width": 1440,
+      "height": 26000
+    },
+    "expectedFound": [
+      {
+        "name": "With trending",
+        "found": true
+      },
+      {
+        "name": "Simple",
+        "found": true
+      },
+      {
+        "name": "Simple in cards",
+        "found": true
+      },
+      {
+        "name": "With brand icon",
+        "found": true
+      },
+      {
+        "name": "With shared borders",
+        "found": true
+      }
+    ],
+    "images": [
+      "/favicon.svg"
+    ],
+    "previewImages": [],
+    "horizontalOverflow": false,
+    "scrollWidth": 1425,
+    "innerWidth": 1440,
+    "scrollHeight": 26000,
+    "headings": [
+      {
+        "text": "UI 용어 사전",
+        "top": 16
+      },
+      {
+        "text": "Stats",
+        "top": 222
+      },
+      {
+        "text": "With trending",
+        "top": 408
+      },
+      {
+        "text": "Simple",
+        "top": 732
+      },
+      {
+        "text": "Simple in cards",
+        "top": 1034
+      },
+      {
+        "text": "Last 30 days",
+        "top": 1113
+      },
+      {
+        "text": "With brand icon",
+        "top": 1356
+      },
+      {
+        "text": "Last 30 days",
+        "top": 1435
+      },
+      {
+        "text": "With shared borders",
+        "top": 1747
+      },
+      {
+        "text": "Last 30 days",
+        "top": 1850
+      }
+    ]
+  },
+  "mobile": {
+    "viewport": {
+      "width": 390,
+      "height": 26000
+    },
+    "expectedFound": [
+      {
+        "name": "With trending",
+        "found": true
+      },
+      {
+        "name": "Simple",
+        "found": true
+      },
+      {
+        "name": "Simple in cards",
+        "found": true
+      },
+      {
+        "name": "With brand icon",
+        "found": true
+      },
+      {
+        "name": "With shared borders",
+        "found": true
+      }
+    ],
+    "images": [
+      "/favicon.svg"
+    ],
+    "previewImages": [],
+    "horizontalOverflow": false,
+    "scrollWidth": 390,
+    "innerWidth": 390,
+    "scrollHeight": 26000,
+    "headings": [
+      {
+        "text": "UI 용어 사전",
+        "top": 16
+      },
+      {
+        "text": "Stats",
+        "top": 267
+      },
+      {
+        "text": "With trending",
+        "top": 447
+      },
+      {
+        "text": "Simple",
+        "top": 1058
+      },
+      {
+        "text": "Simple in cards",
+        "top": 1667
+      },
+      {
+        "text": "Last 30 days",
+        "top": 1724
+      },
+      {
+        "text": "With brand icon",
+        "top": 2157
+      },
+      {
+        "text": "Last 30 days",
+        "top": 2214
+      },
+      {
+        "text": "With shared borders",
+        "top": 2854
+      },
+      {
+        "text": "Last 30 days",
+        "top": 2935
+      }
+    ]
+  },
+  "pass": true
+}

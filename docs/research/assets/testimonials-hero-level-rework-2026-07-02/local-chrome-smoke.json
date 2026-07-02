@@ -1,0 +1,28 @@
+{
+  "clientWidth": 2545,
+  "headings": [
+    "UI 용어 사전",
+    "Testimonials",
+    "Simple centered",
+    "With large avatar",
+    "With overlapping image",
+    "With background image",
+    "Side-by-side",
+    "With star rating",
+    "Grid",
+    "Subtle grid"
+  ],
+  "horizontalOverflow": false,
+  "scrollWidth": 2545,
+  "testimonialImages": [
+    "/assets/testimonials/simple-avatar-v2.png",
+    "/assets/testimonials/large-avatar-v2.png",
+    "/assets/testimonials/overlap-portrait-v2.png",
+    "/assets/testimonials/background-portrait-v2.png",
+    "/assets/testimonials/side-avatar-v2.png",
+    "/assets/testimonials/star-avatar-v2.png",
+    "/assets/testimonials/grid-avatar-v2.png"
+  ],
+  "title": "UI 용어 사전",
+  "url": "http://127.0.0.1:5178/?filter=nav%3Aplus-marketing-testimonials"
+}

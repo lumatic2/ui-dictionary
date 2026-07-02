@@ -1,0 +1,114 @@
+{
+  "capturedAt": "2026-07-02T08:29:54.325Z",
+  "desktop": {
+    "url": "http://127.0.0.1:5178/?filter=nav%3Aplus-navigation-sidebar-navigation",
+    "viewport": {
+      "width": 1440,
+      "height": 2200
+    },
+    "present": {
+      "Light": true,
+      "Dark": true,
+      "With expandable sections": true,
+      "With secondary navigation": true,
+      "Brand": true
+    },
+    "allExpectedNamesFound": true,
+    "previewImages": [
+      {
+        "src": "http://127.0.0.1:5178/assets/sidebar-navigation/avatar-light-v1.png",
+        "width": 1254,
+        "height": 1254,
+        "complete": true
+      },
+      {
+        "src": "http://127.0.0.1:5178/assets/sidebar-navigation/avatar-dark-v1.png",
+        "width": 1254,
+        "height": 1254,
+        "complete": true
+      },
+      {
+        "src": "http://127.0.0.1:5178/assets/sidebar-navigation/avatar-expandable-v1.png",
+        "width": 1254,
+        "height": 1254,
+        "complete": true
+      },
+      {
+        "src": "http://127.0.0.1:5178/assets/sidebar-navigation/avatar-secondary-v1.png",
+        "width": 1254,
+        "height": 1254,
+        "complete": true
+      },
+      {
+        "src": "http://127.0.0.1:5178/assets/sidebar-navigation/avatar-brand-v1.png",
+        "width": 1254,
+        "height": 1254,
+        "complete": true
+      }
+    ],
+    "previewImageCount": 5,
+    "horizontalOverflow": false,
+    "scrollWidth": 1425,
+    "clientWidth": 1440,
+    "bodyTextSample": "NAVIGATION\n\nMarketing\nApplication UI\nEcommerce\nDocumentation\n\nUI Blocks\n\n선택한 화면 맥락의 블록 목차\n\nApplication UI\n146\nApplication Shells\n17\nStacked Layouts\n3\nSidebar Layouts\n3\nMulti-Column Layouts\n3\nHeadings\n3\nPage Headings\n3\nCard Headings\n3\nSection Headings\n3\nData Display\n68\nDescription Lists\n2\nStats\n1\nCalendars\n3\nLists\n41\nStacked Lists\n3\nTables\n1\nGrid Lists\n2\nFeeds\n3\nForms\n62\nForm Layouts\n2\nInput Groups\n2\nSelect Menus\n3\nSign-in and Registration\n2\nTextareas\n2\nRadio Groups\n1\nCheckboxes\n2\nToggles\n3\nActio"
+  },
+  "mobile390": {
+    "url": "http://127.0.0.1:5178/?filter=nav%3Aplus-navigation-sidebar-navigation",
+    "viewport": {
+      "width": 390,
+      "height": 1800
+    },
+    "present": {
+      "Light": true,
+      "Dark": true,
+      "With expandable sections": true,
+      "With secondary navigation": true,
+      "Brand": true
+    },
+    "allExpectedNamesFound": true,
+    "previewImages": [
+      {
+        "src": "http://127.0.0.1:5178/assets/sidebar-navigation/avatar-light-v1.png",
+        "width": 1254,
+        "height": 1254,
+        "complete": true
+      },
+      {
+        "src": "http://127.0.0.1:5178/assets/sidebar-navigation/avatar-dark-v1.png",
+        "width": 1254,
+        "height": 1254,
+        "complete": true
+      },
+      {
+        "src": "http://127.0.0.1:5178/assets/sidebar-navigation/avatar-expandable-v1.png",
+        "width": 1254,
+        "height": 1254,
+        "complete": true
+      },
+      {
+        "src": "http://127.0.0.1:5178/assets/sidebar-navigation/avatar-secondary-v1.png",
+        "width": 1254,
+        "height": 1254,
+        "complete": true
+      },
+      {
+        "src": "http://127.0.0.1:5178/assets/sidebar-navigation/avatar-brand-v1.png",
+        "width": 1254,
+        "height": 1254,
+        "complete": true
+      }
+    ],
+    "previewImageCount": 5,
+    "horizontalOverflow": false,
+    "scrollWidth": 390,
+    "clientWidth": 390,
+    "bodyTextSample": "UI 용어 사전\nUI Blocks\n›\nApplication UI\n›\nSidebar Navigation\n\nPLUS / UI BLOCKS / APPLICATION UI / NAVIGATION / SIDEBAR NAVIGATION\n\nSidebar Navigation\n\n좌측 사이드바에 앱의 주요 목적지와 현재 위치를 계속 노출하는 내비게이션 패턴입니다.\n\nLight\n~\nDashboard\n5\nTeam\nProjects\n12\nCalendar\n20+\nDocuments\nReports\n\nYour teams\n\nH\nHeroicons\nT\nTailwind Labs\nW\nWorkcation\nTom Cook\nDark\n~\nDashboard\n5\nTeam\nProjects\n12\nCalendar\n20+\nDocuments\nReports\n\nYour teams\n\nH\nHeroicons\nT\nTailwind Labs\nW\nWorkcation\nTom Cook\nWith expandable sections\n~\nDashboard\n5\nTeam"
+  },
+  "expectedPreviewAssets": [
+    "/assets/sidebar-navigation/avatar-light-v1.png",
+    "/assets/sidebar-navigation/avatar-dark-v1.png",
+    "/assets/sidebar-navigation/avatar-expandable-v1.png",
+    "/assets/sidebar-navigation/avatar-secondary-v1.png",
+    "/assets/sidebar-navigation/avatar-brand-v1.png"
+  ]
+}

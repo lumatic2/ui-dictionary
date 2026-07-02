@@ -63,6 +63,17 @@ design-manual/
 
 UI Dictionary 용어 추가는 긴 검토 대기열이 아니라, 수집 단계에서 기존 데이터와 중복을 먼저 걸러낸 뒤 로컬 검증까지 끝내고 배포 직전에만 사용자 확인을 받는 워크플로우로 운영한다. 자세한 절차는 [docs/ui-vocabulary/authoring-workflow.md](docs/ui-vocabulary/authoring-workflow.md)를 따른다.
 
+### UI Vocabulary IA Reference
+
+UI Vocabulary 사이트의 정보구조, 사이드 네비게이션, 용어 설명 방식, 예시 카드 흐름은 Tailwind CSS / Tailwind Plus 공식 사이트를 1차 레퍼런스로 삼는다.
+
+- 레퍼런스 URL: `https://tailwindcss.com/`, `https://tailwindcss.com/plus/ui-blocks`
+- 핵심 원칙: 사용자가 만들고 싶은 화면 맥락을 먼저 보여주고, 그 안에서 UI 단위와 예시를 단계적으로 좁힌다.
+- Tailwind Plus의 큰 축(`Marketing`, `Application UI`, `Ecommerce`)처럼 우리 사이트도 사용자가 이해하기 쉬운 상위 맥락을 우선한다.
+- Tailwind Plus의 하위 축(`Page Sections`, `Forms`, `Navigation`, `Overlays`, `Components`, `Page Examples`)처럼 실제 UI 덩어리 이름을 세부 탐색 단위로 사용한다.
+- Tailwind CSS docs의 설명 방식처럼 용어 설명은 짧은 정의, 사용 이유, 실제 예시, 관련 상태/반응형/토큰 개념으로 이어지게 한다.
+- `주제별/형태별/상황별` 같은 내부 분류명은 Tailwind식 사용자 언어로 재검토한다. 추상 축이 사용자를 헷갈리게 하면 `Marketing`, `Application UI`, `Ecommerce`, `Docs/Concepts`처럼 목적 기반 축으로 재구성한다.
+
 기본 흐름:
 
 ```text

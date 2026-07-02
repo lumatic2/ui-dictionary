@@ -1,0 +1,246 @@
+{
+  "desktop": {
+    "url": "https://tailwindcss.com/plus/ui-blocks/marketing/elements/flyout-menus",
+    "title": "Tailwind CSS Flyout Menus - Official Tailwind UI Components",
+    "innerWidth": 1440,
+    "clientWidth": 1440,
+    "scrollWidth": 1440,
+    "scrollHeight": 7914,
+    "overflow": false,
+    "headings": [
+      "Page Sections",
+      "Elements",
+      "Feedback",
+      "Page Examples",
+      "Build UIs that don’t suck.",
+      "Flyout Menus",
+      "Stacked with footer actions",
+      "Stacked with footer actions",
+      "Full-width two-columns",
+      "Full-width two-columns",
+      "Stacked with footer list",
+      "Stacked with footer list",
+      "Full-width",
+      "Full-width",
+      "Simple with descriptions",
+      "Simple with descriptions",
+      "Two-column",
+      "Two-column",
+      "Simple",
+      "Simple",
+      "Marketing",
+      "Application UI",
+      "Ecommerce",
+      "Templates & UI Kits"
+    ],
+    "images": [],
+    "sections": [
+      {
+        "top": 412,
+        "h": 764,
+        "w": 1280,
+        "text": "Stacked with footer actionsPreviewCodeHTMLReactVue #frame-911576fb54922e5199a9434ca8a273fd { height: 712px; } @media (min-width: 704px) { #f"
+      },
+      {
+        "top": 0,
+        "h": 0,
+        "w": 0,
+        "text": "Stacked with footer actionsPreviewCodeHTMLReactVue #frame-911576fb54922e5199a9434ca8a273fd-dark { height: 712px; } @media (min-width: 704px)"
+      },
+      {
+        "top": 1272,
+        "h": 1082,
+        "w": 1280,
+        "text": "Full-width two-columnsPreviewGet the code → #frame-f2922faa2add4efd389ddfccc77b2f22 { height: 1032px; } @media (min-width: 704px) { #frame-f"
+      },
+      {
+        "top": 0,
+        "h": 0,
+        "w": 0,
+        "text": "Full-width two-columnsPreviewGet the code → #frame-f2922faa2add4efd389ddfccc77b2f22-dark { height: 1032px; } @media (min-width: 704px) { #fr"
+      },
+      {
+        "top": 2450,
+        "h": 826,
+        "w": 1280,
+        "text": "Stacked with footer listPreviewGet the code → #frame-988e9eed61ec84450b9650c7f6ad805e { height: 776px; } @media (min-width: 704px) { #frame-"
+      },
+      {
+        "top": 0,
+        "h": 0,
+        "w": 0,
+        "text": "Stacked with footer listPreviewGet the code → #frame-988e9eed61ec84450b9650c7f6ad805e-dark { height: 776px; } @media (min-width: 704px) { #f"
+      },
+      {
+        "top": 3372,
+        "h": 856,
+        "w": 1280,
+        "text": "Full-widthPreviewGet the code → #frame-51e7bd07cdcacb755fd1f4ad6fde01ab { height: 806px; } @media (min-width: 704px) { #frame-51e7bd07cdcacb"
+      },
+      {
+        "top": 0,
+        "h": 0,
+        "w": 0,
+        "text": "Full-widthPreviewGet the code → #frame-51e7bd07cdcacb755fd1f4ad6fde01ab-dark { height: 806px; } @media (min-width: 704px) { #frame-51e7bd07c"
+      },
+      {
+        "top": 4324,
+        "h": 738,
+        "w": 1280,
+        "text": "Simple with descriptionsPreviewGet the code → #frame-da3c449b5eaaf6a791a2cc48f2e87fb4 { height: 688px; } @media (min-width: 704px) { #frame-"
+      },
+      {
+        "top": 0,
+        "h": 0,
+        "w": 0,
+        "text": "Simple with descriptionsPreviewGet the code → #frame-da3c449b5eaaf6a791a2cc48f2e87fb4-dark { height: 688px; } @media (min-width: 704px) { #f"
+      },
+      {
+        "top": 5158,
+        "h": 1110,
+        "w": 1280,
+        "text": "Two-columnPreviewGet the code → #frame-25601925ae83e51e1b31d3bd1c286515 { height: 1060px; } @media (min-width: 704px) { #frame-25601925ae83e"
+      },
+      {
+        "top": 0,
+        "h": 0,
+        "w": 0,
+        "text": "Two-columnPreviewGet the code → #frame-25601925ae83e51e1b31d3bd1c286515-dark { height: 1060px; } @media (min-width: 704px) { #frame-25601925"
+      },
+      {
+        "top": 6364,
+        "h": 438,
+        "w": 1280,
+        "text": "SimplePreviewGet the code → #frame-3a091a4d7664f1d576e29f48d523edfa { height: 388px; } @media (min-width: 704px) { #frame-3a091a4d7664f1d576"
+      },
+      {
+        "top": 0,
+        "h": 0,
+        "w": 0,
+        "text": "SimplePreviewGet the code → #frame-3a091a4d7664f1d576e29f48d523edfa-dark { height: 388px; } @media (min-width: 704px) { #frame-3a091a4d7664f"
+      }
+    ]
+  },
+  "mobile": {
+    "url": "https://tailwindcss.com/plus/ui-blocks/marketing/elements/flyout-menus",
+    "title": "Tailwind CSS Flyout Menus - Official Tailwind UI Components",
+    "innerWidth": 390,
+    "clientWidth": 390,
+    "scrollWidth": 390,
+    "scrollHeight": 8790,
+    "overflow": false,
+    "headings": [
+      "Page Sections",
+      "Elements",
+      "Feedback",
+      "Page Examples",
+      "Build UIs that don’t suck.",
+      "Flyout Menus",
+      "Stacked with footer actions",
+      "Stacked with footer actions",
+      "Full-width two-columns",
+      "Full-width two-columns",
+      "Stacked with footer list",
+      "Stacked with footer list",
+      "Full-width",
+      "Full-width",
+      "Simple with descriptions",
+      "Simple with descriptions",
+      "Two-column",
+      "Two-column",
+      "Simple",
+      "Simple",
+      "Marketing",
+      "Application UI",
+      "Ecommerce",
+      "Templates & UI Kits"
+    ],
+    "images": [],
+    "sections": [
+      {
+        "top": 540,
+        "h": 764,
+        "w": 358,
+        "text": "Stacked with footer actionsPreviewCodeHTMLReactVue #frame-911576fb54922e5199a9434ca8a273fd { height: 712px; } @media (min-width: 704px) { #f"
+      },
+      {
+        "top": 0,
+        "h": 0,
+        "w": 0,
+        "text": "Stacked with footer actionsPreviewCodeHTMLReactVue #frame-911576fb54922e5199a9434ca8a273fd-dark { height: 712px; } @media (min-width: 704px)"
+      },
+      {
+        "top": 1400,
+        "h": 1076,
+        "w": 358,
+        "text": "Full-width two-columnsPreviewGet the code → #frame-f2922faa2add4efd389ddfccc77b2f22 { height: 1032px; } @media (min-width: 704px) { #frame-f"
+      },
+      {
+        "top": 0,
+        "h": 0,
+        "w": 0,
+        "text": "Full-width two-columnsPreviewGet the code → #frame-f2922faa2add4efd389ddfccc77b2f22-dark { height: 1032px; } @media (min-width: 704px) { #fr"
+      },
+      {
+        "top": 2572,
+        "h": 820,
+        "w": 358,
+        "text": "Stacked with footer listPreviewGet the code → #frame-988e9eed61ec84450b9650c7f6ad805e { height: 776px; } @media (min-width: 704px) { #frame-"
+      },
+      {
+        "top": 0,
+        "h": 0,
+        "w": 0,
+        "text": "Stacked with footer listPreviewGet the code → #frame-988e9eed61ec84450b9650c7f6ad805e-dark { height: 776px; } @media (min-width: 704px) { #f"
+      },
+      {
+        "top": 3488,
+        "h": 850,
+        "w": 358,
+        "text": "Full-widthPreviewGet the code → #frame-51e7bd07cdcacb755fd1f4ad6fde01ab { height: 806px; } @media (min-width: 704px) { #frame-51e7bd07cdcacb"
+      },
+      {
+        "top": 0,
+        "h": 0,
+        "w": 0,
+        "text": "Full-widthPreviewGet the code → #frame-51e7bd07cdcacb755fd1f4ad6fde01ab-dark { height: 806px; } @media (min-width: 704px) { #frame-51e7bd07c"
+      },
+      {
+        "top": 4434,
+        "h": 732,
+        "w": 358,
+        "text": "Simple with descriptionsPreviewGet the code → #frame-da3c449b5eaaf6a791a2cc48f2e87fb4 { height: 688px; } @media (min-width: 704px) { #frame-"
+      },
+      {
+        "top": 0,
+        "h": 0,
+        "w": 0,
+        "text": "Simple with descriptionsPreviewGet the code → #frame-da3c449b5eaaf6a791a2cc48f2e87fb4-dark { height: 688px; } @media (min-width: 704px) { #f"
+      },
+      {
+        "top": 5262,
+        "h": 1104,
+        "w": 358,
+        "text": "Two-columnPreviewGet the code → #frame-25601925ae83e51e1b31d3bd1c286515 { height: 1060px; } @media (min-width: 704px) { #frame-25601925ae83e"
+      },
+      {
+        "top": 0,
+        "h": 0,
+        "w": 0,
+        "text": "Two-columnPreviewGet the code → #frame-25601925ae83e51e1b31d3bd1c286515-dark { height: 1060px; } @media (min-width: 704px) { #frame-25601925"
+      },
+      {
+        "top": 6462,
+        "h": 432,
+        "w": 358,
+        "text": "SimplePreviewGet the code → #frame-3a091a4d7664f1d576e29f48d523edfa { height: 388px; } @media (min-width: 704px) { #frame-3a091a4d7664f1d576"
+      },
+      {
+        "top": 0,
+        "h": 0,
+        "w": 0,
+        "text": "SimplePreviewGet the code → #frame-3a091a4d7664f1d576e29f48d523edfa-dark { height: 388px; } @media (min-width: 704px) { #frame-3a091a4d7664f"
+      }
+    ]
+  }
+}
