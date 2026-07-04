@@ -12,13 +12,15 @@ Goal: Convert selected external and local references into reusable design-system
 
 ## Active Milestones
 
-<!-- harness:milestone id="RME1" status="active" priority="P0" -->
+<!-- harness:milestone id="RME1" status="completed" priority="P0" evidence="docs/research/tailwind-reference-model.md" -->
 ### RME1 - Tailwind Reference Model
 - DoD: Existing Tailwind/Tailwind Plus captures and local parity work are summarized into a reusable reference model that separates IA, page pattern, interaction behavior, evidence, and non-transferable identity.
-- Evidence: `docs/research/tailwind-reference-model.md`
+- Evidence: docs/research/tailwind-reference-model.md
 - Gap: The repo has extensive Tailwind parity evidence, but it is still scattered across ledgers, screenshots, page-specific notes, and implementation files.
-- Status: [ ]
+- Status: [x]
 
+- Completed at: 2026-07-04
+- Summary: Consolidated Tailwind/Tailwind Plus IA, catalog leaf, documentation leaf, interaction, verification, transferable principles, non-transferable identity, and agent asset mapping into a reusable reference model.
 ## Next Candidates
 
 <!-- harness:milestone id="RME2" status="pending" priority="P0" -->

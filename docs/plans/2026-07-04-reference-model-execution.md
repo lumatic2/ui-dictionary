@@ -8,7 +8,7 @@
 
 ## Step Tree
 
-- [ ] RME1 - Consolidate Tailwind/Tailwind Plus evidence into `docs/research/tailwind-reference-model.md`. Verify: `Test-Path docs/research/tailwind-reference-model.md`
+- [x] RME1 - Consolidate Tailwind/Tailwind Plus evidence into `docs/research/tailwind-reference-model.md`. Verify: `Test-Path docs/research/tailwind-reference-model.md`
 - [ ] RME2 - Capture Around/Createx template-system structure into `docs/research/around-template-system-capture.md`. Verify: `Test-Path docs/research/around-template-system-capture.md`
 - [ ] RME3 - Audit local design work into `docs/research/local-design-system-integration-audit.md`. Verify: `Test-Path docs/research/local-design-system-integration-audit.md`
 - [ ] RME4 - Capture mobile platform baseline into `docs/research/mobile-platform-design-baseline.md`. Verify: `Test-Path docs/research/mobile-platform-design-baseline.md`
