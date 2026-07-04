@@ -23,13 +23,15 @@ Goal: Convert selected external and local references into reusable design-system
 - Summary: Consolidated Tailwind/Tailwind Plus IA, catalog leaf, documentation leaf, interaction, verification, transferable principles, non-transferable identity, and agent asset mapping into a reusable reference model.
 ## Next Candidates
 
-<!-- harness:milestone id="RME2" status="pending" priority="P0" -->
+<!-- harness:milestone id="RME2" status="completed" priority="P0" evidence="docs/research/around-template-system-capture.md; docs/research/assets/around-template-system-2026-07-04/" -->
 ### RME2 - Around Template System Capture
 - DoD: Around/Createx is captured as a template-system reference across landings, inner pages, account flows, UI Kit/docs, theme customizer, and packaged asset positioning.
-- Evidence: `docs/research/around-template-system-capture.md`
+- Evidence: docs/research/around-template-system-capture.md; docs/research/assets/around-template-system-2026-07-04/
 - Gap: The reference strategy includes high-quality product systems, but not yet a multipurpose commercial template system with broad page coverage and customization controls.
-- Status: [ ]
+- Status: [x]
 
+- Completed at: 2026-07-04
+- Summary: Captured Around/Createx as a multipurpose commercial template-system reference across landings, shop checkout, account, UI Kit, docs, customizer, package positioning, evidence screenshots, and agent asset mapping.
 <!-- harness:milestone id="RME3" status="pending" priority="P1" -->
 ### RME3 - Local Design Work Audit
 - DoD: `design-manual`, `claude-design-manual`, and design-related custom skills are classified as merge, link, supersede, or archive with concrete integration notes.

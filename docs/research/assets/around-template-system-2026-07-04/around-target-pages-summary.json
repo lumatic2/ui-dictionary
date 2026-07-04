@@ -1,0 +1,4516 @@
+[
+  {
+    "key": "home",
+    "controls": [
+      {
+        "href": "",
+        "tag": "BUTTON",
+        "text": "Close",
+        "type": "button"
+      },
+      {
+        "href": "",
+        "tag": "BUTTON",
+        "text": "Close",
+        "type": "button"
+      },
+      {
+        "href": "",
+        "tag": "BUTTON",
+        "text": "Copy styles",
+        "type": "button"
+      },
+      {
+        "href": "",
+        "tag": "BUTTON",
+        "text": "Close",
+        "type": "button"
+      },
+      {
+        "href": "",
+        "tag": "LABEL",
+        "text": "",
+        "type": ""
+      },
+      {
+        "href": "",
+        "tag": "INPUT",
+        "text": "",
+        "type": "text"
+      },
+      {
+        "href": "",
+        "tag": "INPUT",
+        "text": "",
+        "type": "color"
+      },
+      {
+        "href": "",
+        "tag": "LABEL",
+        "text": "",
+        "type": ""
+      },
+      {
+        "href": "",
+        "tag": "INPUT",
+        "text": "",
+        "type": "text"
+      },
+      {
+        "href": "",
+        "tag": "INPUT",
+        "text": "",
+        "type": "color"
+      },
+      {
+        "href": "",
+        "tag": "LABEL",
+        "text": "",
+        "type": ""
+      },
+      {
+        "href": "",
+        "tag": "INPUT",
+        "text": "",
+        "type": "text"
+      },
+      {
+        "href": "",
+        "tag": "INPUT",
+        "text": "",
+        "type": "color"
+      },
+      {
+        "href": "",
+        "tag": "LABEL",
+        "text": "",
+        "type": ""
+      },
+      {
+        "href": "",
+        "tag": "INPUT",
+        "text": "",
+        "type": "text"
+      },
+      {
+        "href": "",
+        "tag": "INPUT",
+        "text": "",
+        "type": "color"
+      },
+      {
+        "href": "",
+        "tag": "LABEL",
+        "text": "",
+        "type": ""
+      },
+      {
+        "href": "",
+        "tag": "INPUT",
+        "text": "",
+        "type": "text"
+      },
+      {
+        "href": "",
+        "tag": "INPUT",
+        "text": "",
+        "type": "color"
+      },
+      {
+        "href": "",
+        "tag": "INPUT",
+        "text": "",
+        "type": "url"
+      },
+      {
+        "href": "",
+        "tag": "INPUT",
+        "text": "",
+        "type": "text"
+      },
+      {
+        "href": "",
+        "tag": "SELECT",
+        "text": ".75 .875 1 1.05 1.1 1.15 1.25 1.375",
+        "type": ""
+      },
+      {
+        "href": "",
+        "tag": "SELECT",
+        "text": ".75 .875 1 1.15 1.25 1.375",
+        "type": ""
+      },
+      {
+        "href": "",
+        "tag": "INPUT",
+        "text": "",
+        "type": "number"
+      },
+      {
+        "href": "",
+        "tag": "INPUT",
+        "text": "",
+        "type": "number"
+      },
+      {
+        "href": "",
+        "tag": "INPUT",
+        "text": "",
+        "type": "number"
+      },
+      {
+        "href": "",
+        "tag": "INPUT",
+        "text": "",
+        "type": "number"
+      },
+      {
+        "href": "",
+        "tag": "INPUT",
+        "text": "",
+        "type": "number"
+      },
+      {
+        "href": "",
+        "tag": "INPUT",
+        "text": "",
+        "type": "number"
+      },
+      {
+        "href": "",
+        "tag": "BUTTON",
+        "text": "Reset",
+        "type": "button"
+      },
+      {
+        "href": "",
+        "tag": "BUTTON",
+        "text": "Show styles",
+        "type": "button"
+      },
+      {
+        "href": "",
+        "tag": "INPUT",
+        "text": "",
+        "type": "checkbox"
+      },
+      {
+        "href": "https://themes.getbootstrap.com/product/around-multipurpose-template-ui-kit/",
+        "tag": "A",
+        "text": "Buy now",
+        "type": ""
+      },
+      {
+        "href": "",
+        "tag": "BUTTON",
+        "text": "",
+        "type": "button"
+      },
+      {
+        "href": "https://themes.getbootstrap.com/product/around-multipurpose-template-ui-kit/",
+        "tag": "A",
+        "text": "Buy now",
+        "type": ""
+      },
+      {
+        "href": "",
+        "tag": "INPUT",
+        "text": "Enter your email",
+        "type": "email"
+      },
+      {
+        "href": "",
+        "tag": "BUTTON",
+        "text": "Subscribe*",
+        "type": "submit"
+      },
+      {
+        "href": "",
+        "tag": "INPUT",
+        "text": "",
+        "type": "text"
+      }
+    ],
+    "headings": [
+      {
+        "tag": "H1",
+        "text": "Have a look Ar und!"
+      },
+      {
+        "tag": "H2",
+        "text": "Landing pages"
+      },
+      {
+        "tag": "H3",
+        "text": "Mobile App Showcase"
+      },
+      {
+        "tag": "H3",
+        "text": "Product Landing"
+      },
+      {
+        "tag": "H3",
+        "text": "SaaS v.1"
+      },
+      {
+        "tag": "H3",
+        "text": "SaaS v.2"
+      },
+      {
+        "tag": "H3",
+        "text": "SaaS v.3"
+      },
+      {
+        "tag": "H3",
+        "text": "SaaS v.4"
+      },
+      {
+        "tag": "H3",
+        "text": "Shop Homepage v.1"
+      },
+      {
+        "tag": "H3",
+        "text": "Shop Homepage v.2"
+      },
+      {
+        "tag": "H3",
+        "text": "Marketing Agency"
+      },
+      {
+        "tag": "H3",
+        "text": "Creative Agency"
+      },
+      {
+        "tag": "H3",
+        "text": "Conference (Event)"
+      },
+      {
+        "tag": "H3",
+        "text": "Influencer"
+      },
+      {
+        "tag": "H3",
+        "text": "Business Consulting"
+      },
+      {
+        "tag": "H3",
+        "text": "Corporate"
+      },
+      {
+        "tag": "H3",
+        "text": "Insurance Company"
+      },
+      {
+        "tag": "H3",
+        "text": "Coworking Space"
+      },
+      {
+        "tag": "H3",
+        "text": "Yoga Studio"
+      },
+      {
+        "tag": "H3",
+        "text": "Web Studio"
+      },
+      {
+        "tag": "H3",
+        "text": "Blog Homepage"
+      },
+      {
+        "tag": "H3",
+        "text": "Coming Soon"
+      },
+      {
+        "tag": "H2",
+        "text": "Inner pages for everything you may need"
+      },
+      {
+        "tag": "H2",
+        "text": "Inner pages for everything you may need"
+      },
+      {
+        "tag": "H2",
+        "text": "Around customizer"
+      },
+      {
+        "tag": "H2",
+        "text": "Change theme brand colors quickly and easily"
+      },
+      {
+        "tag": "H2",
+        "text": "Set up fonts from the huge Google font collection"
+      },
+      {
+        "tag": "H2",
+        "text": "Rounded or square? Customize borders as you wish"
+      },
+      {
+        "tag": "H2",
+        "text": "More Around features"
+      },
+      {
+        "tag": "H3",
+        "text": "Built with latest Bootstrap"
+      },
+      {
+        "tag": "H3",
+        "text": "Easy to Customize with Sass"
+      },
+      {
+        "tag": "H3",
+        "text": "Kick-start your development"
+      },
+      {
+        "tag": "H3",
+        "text": "Future-proof JavaScript"
+      },
+      {
+        "tag": "H3",
+        "text": "W3C valid HTML code"
+      },
+      {
+        "tag": "H3",
+        "text": "Premium Figma file included"
+      },
+      {
+        "tag": "H3",
+        "text": "Touch-enabled sliders"
+      },
+      {
+        "tag": "H3",
+        "text": "Google fonts"
+      },
+      {
+        "tag": "H3",
+        "text": "Vector based HD ready icons"
+      },
+      {
+        "tag": "H2",
+        "text": "Subscribe to Newsletter"
+      }
+    ],
+    "images": [
+      {
+        "alt": "Image",
+        "src": "https://around.createx.studio/assets/img/landing/intro/avatar.png"
+      },
+      {
+        "alt": "Background shapes",
+        "src": "https://around.createx.studio/assets/img/landing/intro/hero/01.png"
+      },
+      {
+        "alt": "Foreground shape",
+        "src": "https://around.createx.studio/assets/img/landing/intro/hero/02.png"
+      },
+      {
+        "alt": "Foreground shape",
+        "src": "https://around.createx.studio/assets/img/landing/intro/hero/03.png"
+      },
+      {
+        "alt": "Foreground shape",
+        "src": "https://around.createx.studio/assets/img/landing/intro/hero/04.png"
+      },
+      {
+        "alt": "Mobile App Showcase",
+        "src": "https://around.createx.studio/assets/img/landing/intro/landings/mobile-app-showcase-light.jpg"
+      },
+      {
+        "alt": "Mobile App Showcase",
+        "src": "https://around.createx.studio/assets/img/landing/intro/landings/mobile-app-showcase-dark.jpg"
+      },
+      {
+        "alt": "Product Landing",
+        "src": "https://around.createx.studio/assets/img/landing/intro/landings/product-landing-light.jpg"
+      },
+      {
+        "alt": "Product Landing",
+        "src": "https://around.createx.studio/assets/img/landing/intro/landings/product-landing-dark.jpg"
+      },
+      {
+        "alt": "SaaS v.1",
+        "src": "https://around.createx.studio/assets/img/landing/intro/landings/saas-v1-light.jpg"
+      },
+      {
+        "alt": "SaaS v.1",
+        "src": "https://around.createx.studio/assets/img/landing/intro/landings/saas-v1-dark.jpg"
+      },
+      {
+        "alt": "SaaS v.2",
+        "src": "https://around.createx.studio/assets/img/landing/intro/landings/saas-v2-light.jpg"
+      },
+      {
+        "alt": "SaaS v.2",
+        "src": "https://around.createx.studio/assets/img/landing/intro/landings/saas-v2-dark.jpg"
+      },
+      {
+        "alt": "SaaS v.3",
+        "src": "https://around.createx.studio/assets/img/landing/intro/landings/saas-v3-light.jpg"
+      },
+      {
+        "alt": "SaaS v.3",
+        "src": "https://around.createx.studio/assets/img/landing/intro/landings/saas-v3-dark.jpg"
+      },
+      {
+        "alt": "SaaS v.4",
+        "src": "https://around.createx.studio/assets/img/landing/intro/landings/saas-v4-light.jpg"
+      },
+      {
+        "alt": "SaaS v.4",
+        "src": "https://around.createx.studio/assets/img/landing/intro/landings/saas-v4-dark.jpg"
+      },
+      {
+        "alt": "Shop Homepage v.1",
+        "src": "https://around.createx.studio/assets/img/landing/intro/landings/shop-homepage-v1-light.jpg"
+      },
+      {
+        "alt": "Shop Homepage v.1",
+        "src": "https://around.createx.studio/assets/img/landing/intro/landings/shop-homepage-v1-dark.jpg"
+      },
+      {
+        "alt": "Shop Homepage v.2",
+        "src": "https://around.createx.studio/assets/img/landing/intro/landings/shop-homepage-v2-light.jpg"
+      },
+      {
+        "alt": "Shop Homepage v.2",
+        "src": "https://around.createx.studio/assets/img/landing/intro/landings/shop-homepage-v2-dark.jpg"
+      },
+      {
+        "alt": "Marketing Agency",
+        "src": "https://around.createx.studio/assets/img/landing/intro/landings/marketing-agency-light.jpg"
+      },
+      {
+        "alt": "Marketing Agency",
+        "src": "https://around.createx.studio/assets/img/landing/intro/landings/marketing-agency-dark.jpg"
+      },
+      {
+        "alt": "Creative Agency",
+        "src": "https://around.createx.studio/assets/img/landing/intro/landings/creative-agency-light.jpg"
+      },
+      {
+        "alt": "Creative Agency",
+        "src": "https://around.createx.studio/assets/img/landing/intro/landings/creative-agency-dark.jpg"
+      },
+      {
+        "alt": "Conference",
+        "src": "https://around.createx.studio/assets/img/landing/intro/landings/conference-light.jpg"
+      },
+      {
+        "alt": "Conference",
+        "src": "https://around.createx.studio/assets/img/landing/intro/landings/conference-dark.jpg"
+      },
+      {
+        "alt": "Influencer",
+        "src": "https://around.createx.studio/assets/img/landing/intro/landings/influencer-light.jpg"
+      },
+      {
+        "alt": "Influencer",
+        "src": "https://around.createx.studio/assets/img/landing/intro/landings/influencer-dark.jpg"
+      },
+      {
+        "alt": "Business Consulting",
+        "src": "https://around.createx.studio/assets/img/landing/intro/landings/business-consulting-light.jpg"
+      },
+      {
+        "alt": "Business Consulting",
+        "src": "https://around.createx.studio/assets/img/landing/intro/landings/business-consulting-dark.jpg"
+      },
+      {
+        "alt": "Corporate",
+        "src": "https://around.createx.studio/assets/img/landing/intro/landings/corporate-light.jpg"
+      },
+      {
+        "alt": "Corporate",
+        "src": "https://around.createx.studio/assets/img/landing/intro/landings/corporate-dark.jpg"
+      },
+      {
+        "alt": "Insurance Company",
+        "src": "https://around.createx.studio/assets/img/landing/intro/landings/insurance-light.jpg"
+      },
+      {
+        "alt": "Insurance Company",
+        "src": "https://around.createx.studio/assets/img/landing/intro/landings/insurance-dark.jpg"
+      },
+      {
+        "alt": "Coworking Space",
+        "src": "https://around.createx.studio/assets/img/landing/intro/landings/coworking-space-light.jpg"
+      },
+      {
+        "alt": "Coworking Space",
+        "src": "https://around.createx.studio/assets/img/landing/intro/landings/coworking-space-dark.jpg"
+      },
+      {
+        "alt": "Yoga Studio",
+        "src": "https://around.createx.studio/assets/img/landing/intro/landings/yoga-studio-light.jpg"
+      },
+      {
+        "alt": "Yoga Studio",
+        "src": "https://around.createx.studio/assets/img/landing/intro/landings/yoga-studio-dark.jpg"
+      },
+      {
+        "alt": "Web Studio",
+        "src": "https://around.createx.studio/assets/img/landing/intro/landings/web-studio-light.jpg"
+      }
+    ],
+    "innerWidth": 2560,
+    "navTexts": [
+      {
+        "href": "https://around.createx.studio/index.html",
+        "text": "Around"
+      },
+      {
+        "href": "https://themes.getbootstrap.com/product/around-multipurpose-template-ui-kit/",
+        "text": "Buy now"
+      },
+      {
+        "href": "https://around.createx.studio/#",
+        "text": "Landings"
+      },
+      {
+        "href": "https://around.createx.studio/index.html",
+        "text": "Template Intro Page"
+      },
+      {
+        "href": "https://around.createx.studio/landing-mobile-app-showcase.html",
+        "text": "Mobile App Showcase"
+      },
+      {
+        "href": "https://around.createx.studio/landing-product.html",
+        "text": "Product Landing"
+      },
+      {
+        "href": "https://around.createx.studio/landing-saas-v1.html",
+        "text": "SaaS v.1"
+      },
+      {
+        "href": "https://around.createx.studio/landing-saas-v2.html",
+        "text": "SaaS v.2"
+      },
+      {
+        "href": "https://around.createx.studio/landing-saas-v3.html",
+        "text": "SaaS v.3"
+      },
+      {
+        "href": "https://around.createx.studio/landing-saas-v4.html",
+        "text": "SaaS v.4 New"
+      },
+      {
+        "href": "https://around.createx.studio/landing-shop-v1.html",
+        "text": "Shop Homepage v.1"
+      },
+      {
+        "href": "https://around.createx.studio/landing-shop-v2.html",
+        "text": "Shop Homepage v.2 New"
+      },
+      {
+        "href": "https://around.createx.studio/landing-marketing-agency.html",
+        "text": "Marketing Agency"
+      },
+      {
+        "href": "https://around.createx.studio/landing-creative-agency.html",
+        "text": "Creative Agency"
+      },
+      {
+        "href": "https://around.createx.studio/landing-conference.html",
+        "text": "Conference (Event)"
+      },
+      {
+        "href": "https://around.createx.studio/landing-web-studio.html",
+        "text": "Web Studio"
+      },
+      {
+        "href": "https://around.createx.studio/landing-corporate.html",
+        "text": "Corporate"
+      },
+      {
+        "href": "https://around.createx.studio/landing-insurance.html",
+        "text": "Insurance Company New"
+      },
+      {
+        "href": "https://around.createx.studio/landing-business-consulting.html",
+        "text": "Business Consulting"
+      },
+      {
+        "href": "https://around.createx.studio/landing-coworking-space.html",
+        "text": "Coworking Space"
+      },
+      {
+        "href": "https://around.createx.studio/landing-yoga-studio.html",
+        "text": "Yoga Studio"
+      },
+      {
+        "href": "https://around.createx.studio/landing-influencer.html",
+        "text": "Influencer"
+      },
+      {
+        "href": "https://around.createx.studio/landing-blog.html",
+        "text": "Blog Homepage"
+      },
+      {
+        "href": "https://around.createx.studio/#",
+        "text": "Pages"
+      },
+      {
+        "href": "https://around.createx.studio/#",
+        "text": "Portfolio"
+      },
+      {
+        "href": "https://around.createx.studio/portfolio-list-v1.html",
+        "text": "List View v.1"
+      },
+      {
+        "href": "https://around.createx.studio/portfolio-list-v2.html",
+        "text": "List View v.2"
+      },
+      {
+        "href": "https://around.createx.studio/portfolio-grid-v1.html",
+        "text": "Grid View v.1"
+      },
+      {
+        "href": "https://around.createx.studio/portfolio-grid-v2.html",
+        "text": "Grid View v.2"
+      },
+      {
+        "href": "https://around.createx.studio/portfolio-slider.html",
+        "text": "Slider View"
+      },
+      {
+        "href": "https://around.createx.studio/portfolio-single-v1.html",
+        "text": "Single Project v.1"
+      },
+      {
+        "href": "https://around.createx.studio/portfolio-single-v2.html",
+        "text": "Single Project v.2"
+      },
+      {
+        "href": "https://around.createx.studio/#",
+        "text": "Shop"
+      },
+      {
+        "href": "https://around.createx.studio/shop-catalog.html",
+        "text": "Catalog (Listing)"
+      },
+      {
+        "href": "https://around.createx.studio/shop-single.html",
+        "text": "Product Page"
+      },
+      {
+        "href": "https://around.createx.studio/shop-checkout.html",
+        "text": "Checkout"
+      },
+      {
+        "href": "https://around.createx.studio/#",
+        "text": "Blog"
+      },
+      {
+        "href": "https://around.createx.studio/blog-grid-sidebar.html",
+        "text": "Grid View with Sidebar"
+      },
+      {
+        "href": "https://around.createx.studio/blog-grid.html",
+        "text": "Grid View no Sidebar"
+      },
+      {
+        "href": "https://around.createx.studio/blog-list-sidebar.html",
+        "text": "List View with Sidebar"
+      },
+      {
+        "href": "https://around.createx.studio/blog-list.html",
+        "text": "List View no Sidebar"
+      },
+      {
+        "href": "https://around.createx.studio/blog-single-v1.html",
+        "text": "Single post v.1"
+      },
+      {
+        "href": "https://around.createx.studio/blog-single-v2.html",
+        "text": "Single post v.2"
+      },
+      {
+        "href": "https://around.createx.studio/blog-single-v3.html",
+        "text": "Single post v.3"
+      },
+      {
+        "href": "https://around.createx.studio/#",
+        "text": "About"
+      },
+      {
+        "href": "https://around.createx.studio/about-agency.html",
+        "text": "About - Agency"
+      },
+      {
+        "href": "https://around.createx.studio/about-product.html",
+        "text": "About - Product"
+      },
+      {
+        "href": "https://around.createx.studio/#",
+        "text": "Services"
+      },
+      {
+        "href": "https://around.createx.studio/services-v1.html",
+        "text": "Services v.1"
+      },
+      {
+        "href": "https://around.createx.studio/services-v2.html",
+        "text": "Services v.2"
+      },
+      {
+        "href": "https://around.createx.studio/services-v3.html",
+        "text": "Services v.3"
+      },
+      {
+        "href": "https://around.createx.studio/pricing.html",
+        "text": "Pricing"
+      },
+      {
+        "href": "https://around.createx.studio/#",
+        "text": "Contacts"
+      },
+      {
+        "href": "https://around.createx.studio/contacts-v1.html",
+        "text": "Contacts v.1"
+      },
+      {
+        "href": "https://around.createx.studio/contacts-v2.html",
+        "text": "Contacts v.2"
+      },
+      {
+        "href": "https://around.createx.studio/contacts-v3.html",
+        "text": "Contacts v.3"
+      },
+      {
+        "href": "https://around.createx.studio/#",
+        "text": "Specialty Pages"
+      },
+      {
+        "href": "https://around.createx.studio/coming-soon-v1.html",
+        "text": "Coming Soon v.1"
+      },
+      {
+        "href": "https://around.createx.studio/coming-soon-v2.html",
+        "text": "Coming Soon v.2"
+      },
+      {
+        "href": "https://around.createx.studio/404-v1.html",
+        "text": "404 Error v.1"
+      },
+      {
+        "href": "https://around.createx.studio/404-v2.html",
+        "text": "404 Error v.2"
+      },
+      {
+        "href": "https://around.createx.studio/404-v3.html",
+        "text": "404 Error v.3"
+      },
+      {
+        "href": "https://around.createx.studio/#",
+        "text": "Account"
+      },
+      {
+        "href": "https://around.createx.studio/#",
+        "text": "Auth pages"
+      },
+      {
+        "href": "https://around.createx.studio/account-signin.html",
+        "text": "Sign In"
+      },
+      {
+        "href": "https://around.createx.studio/account-signup.html",
+        "text": "Sign Up"
+      },
+      {
+        "href": "https://around.createx.studio/account-signinup.html",
+        "text": "Sign In / Up"
+      },
+      {
+        "href": "https://around.createx.studio/account-password-recovery.html",
+        "text": "Password Recovery"
+      },
+      {
+        "href": "https://around.createx.studio/account-overview.html",
+        "text": "Overview"
+      },
+      {
+        "href": "https://around.createx.studio/account-settings.html",
+        "text": "Settings"
+      },
+      {
+        "href": "https://around.createx.studio/account-billing.html",
+        "text": "Billing"
+      },
+      {
+        "href": "https://around.createx.studio/account-orders.html",
+        "text": "Orders"
+      },
+      {
+        "href": "https://around.createx.studio/account-earnings.html",
+        "text": "Earnings"
+      },
+      {
+        "href": "https://around.createx.studio/account-chat.html",
+        "text": "Chat (Messages)"
+      },
+      {
+        "href": "https://around.createx.studio/account-favorites.html",
+        "text": "Favorites (Wishlist)"
+      },
+      {
+        "href": "https://around.createx.studio/components/typography.html",
+        "text": "UI Kit"
+      },
+      {
+        "href": "https://around.createx.studio/docs/getting-started.html",
+        "text": "Docs"
+      },
+      {
+        "href": "https://themes.getbootstrap.com/product/around-multipurpose-template-ui-kit/",
+        "text": "Buy now"
+      }
+    ],
+    "scrollWidth": 2560,
+    "title": "Around | Multipurpose Bootstrap Template",
+    "url": "https://around.createx.studio/",
+    "screenshot": "home-viewport.png",
+    "bytes": 120277
+  },
+  {
+    "key": "saas-v4",
+    "controls": [
+      {
+        "href": "",
+        "tag": "BUTTON",
+        "text": "Close",
+        "type": "button"
+      },
+      {
+        "href": "",
+        "tag": "BUTTON",
+        "text": "Close",
+        "type": "button"
+      },
+      {
+        "href": "",
+        "tag": "BUTTON",
+        "text": "Copy styles",
+        "type": "button"
+      },
+      {
+        "href": "",
+        "tag": "BUTTON",
+        "text": "Close",
+        "type": "button"
+      },
+      {
+        "href": "",
+        "tag": "LABEL",
+        "text": "",
+        "type": ""
+      },
+      {
+        "href": "",
+        "tag": "INPUT",
+        "text": "",
+        "type": "text"
+      },
+      {
+        "href": "",
+        "tag": "INPUT",
+        "text": "",
+        "type": "color"
+      },
+      {
+        "href": "",
+        "tag": "LABEL",
+        "text": "",
+        "type": ""
+      },
+      {
+        "href": "",
+        "tag": "INPUT",
+        "text": "",
+        "type": "text"
+      },
+      {
+        "href": "",
+        "tag": "INPUT",
+        "text": "",
+        "type": "color"
+      },
+      {
+        "href": "",
+        "tag": "LABEL",
+        "text": "",
+        "type": ""
+      },
+      {
+        "href": "",
+        "tag": "INPUT",
+        "text": "",
+        "type": "text"
+      },
+      {
+        "href": "",
+        "tag": "INPUT",
+        "text": "",
+        "type": "color"
+      },
+      {
+        "href": "",
+        "tag": "LABEL",
+        "text": "",
+        "type": ""
+      },
+      {
+        "href": "",
+        "tag": "INPUT",
+        "text": "",
+        "type": "text"
+      },
+      {
+        "href": "",
+        "tag": "INPUT",
+        "text": "",
+        "type": "color"
+      },
+      {
+        "href": "",
+        "tag": "LABEL",
+        "text": "",
+        "type": ""
+      },
+      {
+        "href": "",
+        "tag": "INPUT",
+        "text": "",
+        "type": "text"
+      },
+      {
+        "href": "",
+        "tag": "INPUT",
+        "text": "",
+        "type": "color"
+      },
+      {
+        "href": "",
+        "tag": "INPUT",
+        "text": "",
+        "type": "url"
+      },
+      {
+        "href": "",
+        "tag": "INPUT",
+        "text": "",
+        "type": "text"
+      },
+      {
+        "href": "",
+        "tag": "SELECT",
+        "text": ".75 .875 1 1.05 1.1 1.15 1.25 1.375",
+        "type": ""
+      },
+      {
+        "href": "",
+        "tag": "SELECT",
+        "text": ".75 .875 1 1.15 1.25 1.375",
+        "type": ""
+      },
+      {
+        "href": "",
+        "tag": "INPUT",
+        "text": "",
+        "type": "number"
+      },
+      {
+        "href": "",
+        "tag": "INPUT",
+        "text": "",
+        "type": "number"
+      },
+      {
+        "href": "",
+        "tag": "INPUT",
+        "text": "",
+        "type": "number"
+      },
+      {
+        "href": "",
+        "tag": "INPUT",
+        "text": "",
+        "type": "number"
+      },
+      {
+        "href": "",
+        "tag": "INPUT",
+        "text": "",
+        "type": "number"
+      },
+      {
+        "href": "",
+        "tag": "INPUT",
+        "text": "",
+        "type": "number"
+      },
+      {
+        "href": "",
+        "tag": "BUTTON",
+        "text": "Reset",
+        "type": "button"
+      },
+      {
+        "href": "",
+        "tag": "BUTTON",
+        "text": "Show styles",
+        "type": "button"
+      },
+      {
+        "href": "",
+        "tag": "INPUT",
+        "text": "",
+        "type": "checkbox"
+      },
+      {
+        "href": "https://themes.getbootstrap.com/product/around-multipurpose-template-ui-kit/",
+        "tag": "A",
+        "text": "Buy now",
+        "type": ""
+      },
+      {
+        "href": "",
+        "tag": "BUTTON",
+        "text": "",
+        "type": "button"
+      },
+      {
+        "href": "https://themes.getbootstrap.com/product/around-multipurpose-template-ui-kit/",
+        "tag": "A",
+        "text": "Buy now",
+        "type": ""
+      },
+      {
+        "href": "",
+        "tag": "SPAN",
+        "text": "Go to slide 1",
+        "type": ""
+      },
+      {
+        "href": "",
+        "tag": "SPAN",
+        "text": "Go to slide 2",
+        "type": ""
+      },
+      {
+        "href": "",
+        "tag": "SPAN",
+        "text": "Go to slide 3",
+        "type": ""
+      },
+      {
+        "href": "https://around.createx.studio/landing-saas-v4.html#",
+        "tag": "A",
+        "text": "Learn more",
+        "type": ""
+      },
+      {
+        "href": "https://around.createx.studio/landing-saas-v4.html#",
+        "tag": "A",
+        "text": "Learn more",
+        "type": ""
+      },
+      {
+        "href": "https://around.createx.studio/landing-saas-v4.html#",
+        "tag": "A",
+        "text": "Learn more",
+        "type": ""
+      },
+      {
+        "href": "https://around.createx.studio/landing-saas-v4.html#",
+        "tag": "A",
+        "text": "Explore all use cases",
+        "type": ""
+      },
+      {
+        "href": "https://www.youtube.com/watch?v=ADpOLD2z1Ns",
+        "tag": "A",
+        "text": "",
+        "type": ""
+      },
+      {
+        "href": "https://around.createx.studio/landing-saas-v4.html#",
+        "tag": "A",
+        "text": "Read more reviews",
+        "type": ""
+      },
+      {
+        "href": "https://around.createx.studio/landing-saas-v4.html#",
+        "tag": "A",
+        "text": "Get started - Free",
+        "type": ""
+      },
+      {
+        "href": "https://around.createx.studio/landing-saas-v4.html#",
+        "tag": "A",
+        "text": "Get started - Free",
+        "type": ""
+      },
+      {
+        "href": "",
+        "tag": "SELECT",
+        "text": "English Français Deutsch Italiano",
+        "type": ""
+      },
+      {
+        "href": "",
+        "tag": "SELECT",
+        "text": "English Français Deutsch Italiano",
+        "type": ""
+      },
+      {
+        "href": "",
+        "tag": "BUTTON",
+        "text": "",
+        "type": "button"
+      },
+      {
+        "href": "",
+        "tag": "BUTTON",
+        "text": "",
+        "type": "button"
+      },
+      {
+        "href": "",
+        "tag": "BUTTON",
+        "text": "Close gallery",
+        "type": "button"
+      }
+    ],
+    "headings": [
+      {
+        "tag": "H1",
+        "text": "Powerful AI models to serve your business needs"
+      },
+      {
+        "tag": "H3",
+        "text": "E-commerce"
+      },
+      {
+        "tag": "H3",
+        "text": "Transportation"
+      },
+      {
+        "tag": "H3",
+        "text": "Marketing"
+      },
+      {
+        "tag": "H3",
+        "text": "Robotics"
+      },
+      {
+        "tag": "H3",
+        "text": "Programming"
+      },
+      {
+        "tag": "H2",
+        "text": "What you can build with Around"
+      },
+      {
+        "tag": "H3",
+        "text": "Data analysis tools"
+      },
+      {
+        "tag": "H3",
+        "text": "Tasks automation"
+      },
+      {
+        "tag": "H3",
+        "text": "Advanced chat bot"
+      },
+      {
+        "tag": "H2",
+        "text": "Our data centers spread all over the world. Get access to the API from anywhere"
+      },
+      {
+        "tag": "H2",
+        "text": "Learn how Around works in a nutshell. Watch a short introductory video"
+      },
+      {
+        "tag": "H2",
+        "text": "Trusted by leading companies"
+      },
+      {
+        "tag": "H3",
+        "text": "Emma Johnson"
+      },
+      {
+        "tag": "H3",
+        "text": "Robert Thompson"
+      },
+      {
+        "tag": "H3",
+        "text": "Christopher Davis"
+      },
+      {
+        "tag": "H3",
+        "text": "Samantha Grace"
+      },
+      {
+        "tag": "H3",
+        "text": "William Matthews"
+      },
+      {
+        "tag": "H3",
+        "text": "Olivia Rodriguez"
+      },
+      {
+        "tag": "H3",
+        "text": "Benjamin Smith"
+      },
+      {
+        "tag": "H3",
+        "text": "Abigail Collins"
+      },
+      {
+        "tag": "H3",
+        "text": "Elijah Brown"
+      },
+      {
+        "tag": "H2",
+        "text": "Around vs Custom development"
+      },
+      {
+        "tag": "H3",
+        "text": "Around"
+      },
+      {
+        "tag": "H3",
+        "text": "Building In-House"
+      }
+    ],
+    "images": [
+      {
+        "alt": "Ecommerce",
+        "src": "https://around.createx.studio/assets/img/landing/saas-4/categories/ecommerce.jpg"
+      },
+      {
+        "alt": "Transportation",
+        "src": "https://around.createx.studio/assets/img/landing/saas-4/categories/transportation.jpg"
+      },
+      {
+        "alt": "Marketing",
+        "src": "https://around.createx.studio/assets/img/landing/saas-4/categories/marketing.jpg"
+      },
+      {
+        "alt": "Robotics",
+        "src": "https://around.createx.studio/assets/img/landing/saas-4/categories/robotics.jpg"
+      },
+      {
+        "alt": "Programming",
+        "src": "https://around.createx.studio/assets/img/landing/saas-4/categories/programming.jpg"
+      },
+      {
+        "alt": "Total users line chart",
+        "src": "https://around.createx.studio/assets/img/landing/saas-4/use-cases/data-analysis/line-chart-light.png"
+      },
+      {
+        "alt": "Total users line chart",
+        "src": "https://around.createx.studio/assets/img/landing/saas-4/use-cases/data-analysis/line-chart-dark.png"
+      },
+      {
+        "alt": "Traffic bar chart",
+        "src": "https://around.createx.studio/assets/img/landing/saas-4/use-cases/data-analysis/bar-chart-light.png"
+      },
+      {
+        "alt": "Traffic bar chart",
+        "src": "https://around.createx.studio/assets/img/landing/saas-4/use-cases/data-analysis/bar-chart-dark.png"
+      },
+      {
+        "alt": "Traffic donut chart",
+        "src": "https://around.createx.studio/assets/img/landing/saas-4/use-cases/data-analysis/donut-chart-light.png"
+      },
+      {
+        "alt": "Traffic donut chart",
+        "src": "https://around.createx.studio/assets/img/landing/saas-4/use-cases/data-analysis/donut-chart-dark.png"
+      },
+      {
+        "alt": "Circle 1",
+        "src": "https://around.createx.studio/assets/img/landing/saas-4/use-cases/task-automation/circle-1.png"
+      },
+      {
+        "alt": "Circle 2",
+        "src": "https://around.createx.studio/assets/img/landing/saas-4/use-cases/task-automation/circle-2.png"
+      },
+      {
+        "alt": "Circle 3",
+        "src": "https://around.createx.studio/assets/img/landing/saas-4/use-cases/task-automation/circle-3.png"
+      },
+      {
+        "alt": "Chat bot UI window",
+        "src": "https://around.createx.studio/assets/img/landing/saas-4/use-cases/chat-bot/window-light.png"
+      },
+      {
+        "alt": "Chat bot UI window",
+        "src": "https://around.createx.studio/assets/img/landing/saas-4/use-cases/chat-bot/window-dark.png"
+      },
+      {
+        "alt": "Message",
+        "src": "https://around.createx.studio/assets/img/landing/saas-4/use-cases/chat-bot/message1-light.png"
+      },
+      {
+        "alt": "Message",
+        "src": "https://around.createx.studio/assets/img/landing/saas-4/use-cases/chat-bot/message1-dark.png"
+      },
+      {
+        "alt": "Message",
+        "src": "https://around.createx.studio/assets/img/landing/saas-4/use-cases/chat-bot/message2-light.png"
+      },
+      {
+        "alt": "Message",
+        "src": "https://around.createx.studio/assets/img/landing/saas-4/use-cases/chat-bot/message2-dark.png"
+      },
+      {
+        "alt": "Message",
+        "src": "https://around.createx.studio/assets/img/landing/saas-4/use-cases/chat-bot/message3-light.png"
+      },
+      {
+        "alt": "Message",
+        "src": "https://around.createx.studio/assets/img/landing/saas-4/use-cases/chat-bot/message3-dark.png"
+      },
+      {
+        "alt": "Map",
+        "src": "https://around.createx.studio/assets/img/landing/saas-4/map.png"
+      },
+      {
+        "alt": "Video cover",
+        "src": "https://around.createx.studio/assets/img/landing/saas-4/video-cover-light.jpg"
+      },
+      {
+        "alt": "Video cover",
+        "src": "https://around.createx.studio/assets/img/landing/saas-4/video-cover-dark.png"
+      },
+      {
+        "alt": "Envato",
+        "src": "https://around.createx.studio/assets/img/landing/saas-4/integrations/envato-light.svg"
+      },
+      {
+        "alt": "Envato",
+        "src": "https://around.createx.studio/assets/img/landing/saas-4/integrations/envato-dark.svg"
+      },
+      {
+        "alt": "Avatar",
+        "src": "https://around.createx.studio/assets/img/avatar/50.jpg"
+      },
+      {
+        "alt": "Firefox",
+        "src": "https://around.createx.studio/assets/img/landing/saas-4/integrations/firefox-light.svg"
+      },
+      {
+        "alt": "Firefox",
+        "src": "https://around.createx.studio/assets/img/landing/saas-4/integrations/firefox-dark.svg"
+      },
+      {
+        "alt": "Magento",
+        "src": "https://around.createx.studio/assets/img/landing/saas-4/integrations/magento-light.svg"
+      },
+      {
+        "alt": "Magento",
+        "src": "https://around.createx.studio/assets/img/landing/saas-4/integrations/magento-dark.svg"
+      },
+      {
+        "alt": "Avatar",
+        "src": "https://around.createx.studio/assets/img/avatar/51.jpg"
+      },
+      {
+        "alt": "Pingdom",
+        "src": "https://around.createx.studio/assets/img/landing/saas-4/integrations/pingdom-light.svg"
+      },
+      {
+        "alt": "Pingdom",
+        "src": "https://around.createx.studio/assets/img/landing/saas-4/integrations/pingdom-dark.svg"
+      },
+      {
+        "alt": "Avatar",
+        "src": "https://around.createx.studio/assets/img/avatar/52.jpg"
+      },
+      {
+        "alt": "WooCommerce",
+        "src": "https://around.createx.studio/assets/img/landing/saas-4/integrations/woocommerce-light.svg"
+      },
+      {
+        "alt": "WooCommerce",
+        "src": "https://around.createx.studio/assets/img/landing/saas-4/integrations/woocommerce-dark.svg"
+      },
+      {
+        "alt": "Shopify",
+        "src": "https://around.createx.studio/assets/img/landing/saas-4/integrations/shopify-light.svg"
+      },
+      {
+        "alt": "Shopify",
+        "src": "https://around.createx.studio/assets/img/landing/saas-4/integrations/shopify-dark.svg"
+      }
+    ],
+    "innerWidth": 2560,
+    "navTexts": [
+      {
+        "href": "https://around.createx.studio/index.html",
+        "text": "Around"
+      },
+      {
+        "href": "https://themes.getbootstrap.com/product/around-multipurpose-template-ui-kit/",
+        "text": "Buy now"
+      },
+      {
+        "href": "https://around.createx.studio/landing-saas-v4.html#",
+        "text": "Landings"
+      },
+      {
+        "href": "https://around.createx.studio/index.html",
+        "text": "Template Intro Page"
+      },
+      {
+        "href": "https://around.createx.studio/landing-mobile-app-showcase.html",
+        "text": "Mobile App Showcase"
+      },
+      {
+        "href": "https://around.createx.studio/landing-product.html",
+        "text": "Product Landing"
+      },
+      {
+        "href": "https://around.createx.studio/landing-saas-v1.html",
+        "text": "SaaS v.1"
+      },
+      {
+        "href": "https://around.createx.studio/landing-saas-v2.html",
+        "text": "SaaS v.2"
+      },
+      {
+        "href": "https://around.createx.studio/landing-saas-v3.html",
+        "text": "SaaS v.3"
+      },
+      {
+        "href": "https://around.createx.studio/landing-saas-v4.html",
+        "text": "SaaS v.4 New"
+      },
+      {
+        "href": "https://around.createx.studio/landing-shop-v1.html",
+        "text": "Shop Homepage v.1"
+      },
+      {
+        "href": "https://around.createx.studio/landing-shop-v2.html",
+        "text": "Shop Homepage v.2 New"
+      },
+      {
+        "href": "https://around.createx.studio/landing-marketing-agency.html",
+        "text": "Marketing Agency"
+      },
+      {
+        "href": "https://around.createx.studio/landing-creative-agency.html",
+        "text": "Creative Agency"
+      },
+      {
+        "href": "https://around.createx.studio/landing-conference.html",
+        "text": "Conference (Event)"
+      },
+      {
+        "href": "https://around.createx.studio/landing-web-studio.html",
+        "text": "Web Studio"
+      },
+      {
+        "href": "https://around.createx.studio/landing-corporate.html",
+        "text": "Corporate"
+      },
+      {
+        "href": "https://around.createx.studio/landing-insurance.html",
+        "text": "Insurance Company New"
+      },
+      {
+        "href": "https://around.createx.studio/landing-business-consulting.html",
+        "text": "Business Consulting"
+      },
+      {
+        "href": "https://around.createx.studio/landing-coworking-space.html",
+        "text": "Coworking Space"
+      },
+      {
+        "href": "https://around.createx.studio/landing-yoga-studio.html",
+        "text": "Yoga Studio"
+      },
+      {
+        "href": "https://around.createx.studio/landing-influencer.html",
+        "text": "Influencer"
+      },
+      {
+        "href": "https://around.createx.studio/landing-blog.html",
+        "text": "Blog Homepage"
+      },
+      {
+        "href": "https://around.createx.studio/landing-saas-v4.html#",
+        "text": "Pages"
+      },
+      {
+        "href": "https://around.createx.studio/landing-saas-v4.html#",
+        "text": "Portfolio"
+      },
+      {
+        "href": "https://around.createx.studio/portfolio-list-v1.html",
+        "text": "List View v.1"
+      },
+      {
+        "href": "https://around.createx.studio/portfolio-list-v2.html",
+        "text": "List View v.2"
+      },
+      {
+        "href": "https://around.createx.studio/portfolio-grid-v1.html",
+        "text": "Grid View v.1"
+      },
+      {
+        "href": "https://around.createx.studio/portfolio-grid-v2.html",
+        "text": "Grid View v.2"
+      },
+      {
+        "href": "https://around.createx.studio/portfolio-slider.html",
+        "text": "Slider View"
+      },
+      {
+        "href": "https://around.createx.studio/portfolio-single-v1.html",
+        "text": "Single Project v.1"
+      },
+      {
+        "href": "https://around.createx.studio/portfolio-single-v2.html",
+        "text": "Single Project v.2"
+      },
+      {
+        "href": "https://around.createx.studio/landing-saas-v4.html#",
+        "text": "Shop"
+      },
+      {
+        "href": "https://around.createx.studio/shop-catalog.html",
+        "text": "Catalog (Listing)"
+      },
+      {
+        "href": "https://around.createx.studio/shop-single.html",
+        "text": "Product Page"
+      },
+      {
+        "href": "https://around.createx.studio/shop-checkout.html",
+        "text": "Checkout"
+      },
+      {
+        "href": "https://around.createx.studio/landing-saas-v4.html#",
+        "text": "Blog"
+      },
+      {
+        "href": "https://around.createx.studio/blog-grid-sidebar.html",
+        "text": "Grid View with Sidebar"
+      },
+      {
+        "href": "https://around.createx.studio/blog-grid.html",
+        "text": "Grid View no Sidebar"
+      },
+      {
+        "href": "https://around.createx.studio/blog-list-sidebar.html",
+        "text": "List View with Sidebar"
+      },
+      {
+        "href": "https://around.createx.studio/blog-list.html",
+        "text": "List View no Sidebar"
+      },
+      {
+        "href": "https://around.createx.studio/blog-single-v1.html",
+        "text": "Single post v.1"
+      },
+      {
+        "href": "https://around.createx.studio/blog-single-v2.html",
+        "text": "Single post v.2"
+      },
+      {
+        "href": "https://around.createx.studio/blog-single-v3.html",
+        "text": "Single post v.3"
+      },
+      {
+        "href": "https://around.createx.studio/landing-saas-v4.html#",
+        "text": "About"
+      },
+      {
+        "href": "https://around.createx.studio/about-agency.html",
+        "text": "About - Agency"
+      },
+      {
+        "href": "https://around.createx.studio/about-product.html",
+        "text": "About - Product"
+      },
+      {
+        "href": "https://around.createx.studio/landing-saas-v4.html#",
+        "text": "Services"
+      },
+      {
+        "href": "https://around.createx.studio/services-v1.html",
+        "text": "Services v.1"
+      },
+      {
+        "href": "https://around.createx.studio/services-v2.html",
+        "text": "Services v.2"
+      },
+      {
+        "href": "https://around.createx.studio/services-v3.html",
+        "text": "Services v.3"
+      },
+      {
+        "href": "https://around.createx.studio/pricing.html",
+        "text": "Pricing"
+      },
+      {
+        "href": "https://around.createx.studio/landing-saas-v4.html#",
+        "text": "Contacts"
+      },
+      {
+        "href": "https://around.createx.studio/contacts-v1.html",
+        "text": "Contacts v.1"
+      },
+      {
+        "href": "https://around.createx.studio/contacts-v2.html",
+        "text": "Contacts v.2"
+      },
+      {
+        "href": "https://around.createx.studio/contacts-v3.html",
+        "text": "Contacts v.3"
+      },
+      {
+        "href": "https://around.createx.studio/landing-saas-v4.html#",
+        "text": "Specialty Pages"
+      },
+      {
+        "href": "https://around.createx.studio/coming-soon-v1.html",
+        "text": "Coming Soon v.1"
+      },
+      {
+        "href": "https://around.createx.studio/coming-soon-v2.html",
+        "text": "Coming Soon v.2"
+      },
+      {
+        "href": "https://around.createx.studio/404-v1.html",
+        "text": "404 Error v.1"
+      },
+      {
+        "href": "https://around.createx.studio/404-v2.html",
+        "text": "404 Error v.2"
+      },
+      {
+        "href": "https://around.createx.studio/404-v3.html",
+        "text": "404 Error v.3"
+      },
+      {
+        "href": "https://around.createx.studio/landing-saas-v4.html#",
+        "text": "Account"
+      },
+      {
+        "href": "https://around.createx.studio/landing-saas-v4.html#",
+        "text": "Auth pages"
+      },
+      {
+        "href": "https://around.createx.studio/account-signin.html",
+        "text": "Sign In"
+      },
+      {
+        "href": "https://around.createx.studio/account-signup.html",
+        "text": "Sign Up"
+      },
+      {
+        "href": "https://around.createx.studio/account-signinup.html",
+        "text": "Sign In / Up"
+      },
+      {
+        "href": "https://around.createx.studio/account-password-recovery.html",
+        "text": "Password Recovery"
+      },
+      {
+        "href": "https://around.createx.studio/account-overview.html",
+        "text": "Overview"
+      },
+      {
+        "href": "https://around.createx.studio/account-settings.html",
+        "text": "Settings"
+      },
+      {
+        "href": "https://around.createx.studio/account-billing.html",
+        "text": "Billing"
+      },
+      {
+        "href": "https://around.createx.studio/account-orders.html",
+        "text": "Orders"
+      },
+      {
+        "href": "https://around.createx.studio/account-earnings.html",
+        "text": "Earnings"
+      },
+      {
+        "href": "https://around.createx.studio/account-chat.html",
+        "text": "Chat (Messages)"
+      },
+      {
+        "href": "https://around.createx.studio/account-favorites.html",
+        "text": "Favorites (Wishlist)"
+      },
+      {
+        "href": "https://around.createx.studio/components/typography.html",
+        "text": "UI Kit"
+      },
+      {
+        "href": "https://around.createx.studio/docs/getting-started.html",
+        "text": "Docs"
+      },
+      {
+        "href": "https://themes.getbootstrap.com/product/around-multipurpose-template-ui-kit/",
+        "text": "Buy now"
+      }
+    ],
+    "scrollWidth": 2560,
+    "title": "Around | SaaS v.4",
+    "url": "https://around.createx.studio/landing-saas-v4.html",
+    "screenshot": "saas-v4-viewport.png",
+    "bytes": 169375
+  },
+  {
+    "key": "shop-checkout",
+    "controls": [
+      {
+        "href": "",
+        "tag": "BUTTON",
+        "text": "Close",
+        "type": "button"
+      },
+      {
+        "href": "",
+        "tag": "BUTTON",
+        "text": "Close",
+        "type": "button"
+      },
+      {
+        "href": "",
+        "tag": "BUTTON",
+        "text": "Copy styles",
+        "type": "button"
+      },
+      {
+        "href": "",
+        "tag": "BUTTON",
+        "text": "Close",
+        "type": "button"
+      },
+      {
+        "href": "",
+        "tag": "LABEL",
+        "text": "",
+        "type": ""
+      },
+      {
+        "href": "",
+        "tag": "INPUT",
+        "text": "",
+        "type": "text"
+      },
+      {
+        "href": "",
+        "tag": "INPUT",
+        "text": "",
+        "type": "color"
+      },
+      {
+        "href": "",
+        "tag": "LABEL",
+        "text": "",
+        "type": ""
+      },
+      {
+        "href": "",
+        "tag": "INPUT",
+        "text": "",
+        "type": "text"
+      },
+      {
+        "href": "",
+        "tag": "INPUT",
+        "text": "",
+        "type": "color"
+      },
+      {
+        "href": "",
+        "tag": "LABEL",
+        "text": "",
+        "type": ""
+      },
+      {
+        "href": "",
+        "tag": "INPUT",
+        "text": "",
+        "type": "text"
+      },
+      {
+        "href": "",
+        "tag": "INPUT",
+        "text": "",
+        "type": "color"
+      },
+      {
+        "href": "",
+        "tag": "LABEL",
+        "text": "",
+        "type": ""
+      },
+      {
+        "href": "",
+        "tag": "INPUT",
+        "text": "",
+        "type": "text"
+      },
+      {
+        "href": "",
+        "tag": "INPUT",
+        "text": "",
+        "type": "color"
+      },
+      {
+        "href": "",
+        "tag": "LABEL",
+        "text": "",
+        "type": ""
+      },
+      {
+        "href": "",
+        "tag": "INPUT",
+        "text": "",
+        "type": "text"
+      },
+      {
+        "href": "",
+        "tag": "INPUT",
+        "text": "",
+        "type": "color"
+      },
+      {
+        "href": "",
+        "tag": "INPUT",
+        "text": "",
+        "type": "url"
+      },
+      {
+        "href": "",
+        "tag": "INPUT",
+        "text": "",
+        "type": "text"
+      },
+      {
+        "href": "",
+        "tag": "SELECT",
+        "text": ".75 .875 1 1.05 1.1 1.15 1.25 1.375",
+        "type": ""
+      },
+      {
+        "href": "",
+        "tag": "SELECT",
+        "text": ".75 .875 1 1.15 1.25 1.375",
+        "type": ""
+      },
+      {
+        "href": "",
+        "tag": "INPUT",
+        "text": "",
+        "type": "number"
+      },
+      {
+        "href": "",
+        "tag": "INPUT",
+        "text": "",
+        "type": "number"
+      },
+      {
+        "href": "",
+        "tag": "INPUT",
+        "text": "",
+        "type": "number"
+      },
+      {
+        "href": "",
+        "tag": "INPUT",
+        "text": "",
+        "type": "number"
+      },
+      {
+        "href": "",
+        "tag": "INPUT",
+        "text": "",
+        "type": "number"
+      },
+      {
+        "href": "",
+        "tag": "INPUT",
+        "text": "",
+        "type": "number"
+      },
+      {
+        "href": "",
+        "tag": "BUTTON",
+        "text": "Reset",
+        "type": "button"
+      },
+      {
+        "href": "",
+        "tag": "BUTTON",
+        "text": "Show styles",
+        "type": "button"
+      },
+      {
+        "href": "",
+        "tag": "BUTTON",
+        "text": "Close",
+        "type": "reset"
+      },
+      {
+        "href": "",
+        "tag": "INPUT",
+        "text": "Type to search",
+        "type": "search"
+      },
+      {
+        "href": "",
+        "tag": "INPUT",
+        "text": "",
+        "type": "checkbox"
+      },
+      {
+        "href": "",
+        "tag": "BUTTON",
+        "text": "",
+        "type": "button"
+      },
+      {
+        "href": "https://themes.getbootstrap.com/product/around-multipurpose-template-ui-kit/",
+        "tag": "A",
+        "text": "Buy now",
+        "type": ""
+      },
+      {
+        "href": "",
+        "tag": "INPUT",
+        "text": "Your first name",
+        "type": "text"
+      },
+      {
+        "href": "",
+        "tag": "INPUT",
+        "text": "Your last name",
+        "type": "text"
+      },
+      {
+        "href": "",
+        "tag": "INPUT",
+        "text": "Email address",
+        "type": "email"
+      },
+      {
+        "href": "",
+        "tag": "INPUT",
+        "text": "+1 ___ ___ __",
+        "type": "tel"
+      },
+      {
+        "href": "",
+        "tag": "SELECT",
+        "text": "Select a country Australia Belgium Canada Denmark USA",
+        "type": ""
+      },
+      {
+        "href": "",
+        "tag": "SELECT",
+        "text": "Select a city Sydney Brussels Toronto Copenhagen New York",
+        "type": ""
+      },
+      {
+        "href": "",
+        "tag": "INPUT",
+        "text": "XXX-XXXX",
+        "type": "text"
+      },
+      {
+        "href": "",
+        "tag": "INPUT",
+        "text": "",
+        "type": "text"
+      },
+      {
+        "href": "",
+        "tag": "TEXTAREA",
+        "text": "",
+        "type": ""
+      },
+      {
+        "href": "",
+        "tag": "INPUT",
+        "text": "",
+        "type": "checkbox"
+      },
+      {
+        "href": "",
+        "tag": "INPUT",
+        "text": "",
+        "type": "radio"
+      },
+      {
+        "href": "",
+        "tag": "INPUT",
+        "text": "",
+        "type": "radio"
+      },
+      {
+        "href": "",
+        "tag": "INPUT",
+        "text": "",
+        "type": "radio"
+      },
+      {
+        "href": "",
+        "tag": "INPUT",
+        "text": "",
+        "type": "radio"
+      },
+      {
+        "href": "",
+        "tag": "INPUT",
+        "text": "",
+        "type": "radio"
+      },
+      {
+        "href": "",
+        "tag": "INPUT",
+        "text": "",
+        "type": "checkbox"
+      },
+      {
+        "href": "",
+        "tag": "BUTTON",
+        "text": "Place an order",
+        "type": "submit"
+      },
+      {
+        "href": "",
+        "tag": "BUTTON",
+        "text": "-",
+        "type": "button"
+      },
+      {
+        "href": "",
+        "tag": "INPUT",
+        "text": "",
+        "type": "number"
+      },
+      {
+        "href": "",
+        "tag": "BUTTON",
+        "text": "+",
+        "type": "button"
+      },
+      {
+        "href": "",
+        "tag": "BUTTON",
+        "text": "-",
+        "type": "button"
+      },
+      {
+        "href": "",
+        "tag": "INPUT",
+        "text": "",
+        "type": "number"
+      },
+      {
+        "href": "",
+        "tag": "BUTTON",
+        "text": "+",
+        "type": "button"
+      },
+      {
+        "href": "",
+        "tag": "BUTTON",
+        "text": "-",
+        "type": "button"
+      },
+      {
+        "href": "",
+        "tag": "INPUT",
+        "text": "",
+        "type": "number"
+      },
+      {
+        "href": "",
+        "tag": "BUTTON",
+        "text": "+",
+        "type": "button"
+      },
+      {
+        "href": "",
+        "tag": "INPUT",
+        "text": "Your coupon code",
+        "type": "text"
+      },
+      {
+        "href": "",
+        "tag": "BUTTON",
+        "text": "Apply coupon",
+        "type": "button"
+      },
+      {
+        "href": "",
+        "tag": "INPUT",
+        "text": "",
+        "type": "checkbox"
+      },
+      {
+        "href": "",
+        "tag": "BUTTON",
+        "text": "Place an order",
+        "type": "submit"
+      }
+    ],
+    "headings": [
+      {
+        "tag": "H1",
+        "text": "Checkout"
+      },
+      {
+        "tag": "H3",
+        "text": "1.Shipping details"
+      },
+      {
+        "tag": "H3",
+        "text": "2.Shipping method"
+      },
+      {
+        "tag": "H3",
+        "text": "3.Payment method"
+      },
+      {
+        "tag": "H2",
+        "text": "Order summary (4 items)"
+      },
+      {
+        "tag": "H3",
+        "text": "Candle in concrete bowl"
+      },
+      {
+        "tag": "H3",
+        "text": "Exquisite glass vase"
+      },
+      {
+        "tag": "H3",
+        "text": "Set for a dinner party of 7 items"
+      }
+    ],
+    "images": [
+      {
+        "alt": "Product",
+        "src": "https://around.createx.studio/assets/img/shop/cart/01.png"
+      },
+      {
+        "alt": "Post",
+        "src": "https://around.createx.studio/assets/img/landing/shop-1/instagram/02.jpg"
+      },
+      {
+        "alt": "Product",
+        "src": "https://around.createx.studio/assets/img/shop/cart/02.png"
+      },
+      {
+        "alt": "Product",
+        "src": "https://around.createx.studio/assets/img/shop/cart/01.png"
+      },
+      {
+        "alt": "Product",
+        "src": "https://around.createx.studio/assets/img/shop/cart/02.png"
+      },
+      {
+        "alt": "Product",
+        "src": "https://around.createx.studio/assets/img/shop/cart/03.png"
+      }
+    ],
+    "innerWidth": 2560,
+    "navTexts": [
+      {
+        "href": "https://around.createx.studio/index.html",
+        "text": "Around"
+      },
+      {
+        "href": "https://around.createx.studio/shop-checkout.html#searchModal",
+        "text": ""
+      },
+      {
+        "href": "https://around.createx.studio/account-signin.html",
+        "text": ""
+      },
+      {
+        "href": "https://around.createx.studio/shop-checkout.html#",
+        "text": "Landings"
+      },
+      {
+        "href": "https://around.createx.studio/index.html",
+        "text": "Template Intro Page"
+      },
+      {
+        "href": "https://around.createx.studio/landing-mobile-app-showcase.html",
+        "text": "Mobile App Showcase"
+      },
+      {
+        "href": "https://around.createx.studio/landing-product.html",
+        "text": "Product Landing"
+      },
+      {
+        "href": "https://around.createx.studio/landing-saas-v1.html",
+        "text": "SaaS v.1"
+      },
+      {
+        "href": "https://around.createx.studio/landing-saas-v2.html",
+        "text": "SaaS v.2"
+      },
+      {
+        "href": "https://around.createx.studio/landing-saas-v3.html",
+        "text": "SaaS v.3"
+      },
+      {
+        "href": "https://around.createx.studio/landing-saas-v4.html",
+        "text": "SaaS v.4 New"
+      },
+      {
+        "href": "https://around.createx.studio/landing-shop-v1.html",
+        "text": "Shop Homepage v.1"
+      },
+      {
+        "href": "https://around.createx.studio/landing-shop-v2.html",
+        "text": "Shop Homepage v.2 New"
+      },
+      {
+        "href": "https://around.createx.studio/landing-marketing-agency.html",
+        "text": "Marketing Agency"
+      },
+      {
+        "href": "https://around.createx.studio/landing-creative-agency.html",
+        "text": "Creative Agency"
+      },
+      {
+        "href": "https://around.createx.studio/landing-conference.html",
+        "text": "Conference (Event)"
+      },
+      {
+        "href": "https://around.createx.studio/landing-web-studio.html",
+        "text": "Web Studio"
+      },
+      {
+        "href": "https://around.createx.studio/landing-corporate.html",
+        "text": "Corporate"
+      },
+      {
+        "href": "https://around.createx.studio/landing-insurance.html",
+        "text": "Insurance Company New"
+      },
+      {
+        "href": "https://around.createx.studio/landing-business-consulting.html",
+        "text": "Business Consulting"
+      },
+      {
+        "href": "https://around.createx.studio/landing-coworking-space.html",
+        "text": "Coworking Space"
+      },
+      {
+        "href": "https://around.createx.studio/landing-yoga-studio.html",
+        "text": "Yoga Studio"
+      },
+      {
+        "href": "https://around.createx.studio/landing-influencer.html",
+        "text": "Influencer"
+      },
+      {
+        "href": "https://around.createx.studio/landing-blog.html",
+        "text": "Blog Homepage"
+      },
+      {
+        "href": "https://around.createx.studio/shop-checkout.html#",
+        "text": "Pages"
+      },
+      {
+        "href": "https://around.createx.studio/shop-checkout.html#",
+        "text": "Portfolio"
+      },
+      {
+        "href": "https://around.createx.studio/portfolio-list-v1.html",
+        "text": "List View v.1"
+      },
+      {
+        "href": "https://around.createx.studio/portfolio-list-v2.html",
+        "text": "List View v.2"
+      },
+      {
+        "href": "https://around.createx.studio/portfolio-grid-v1.html",
+        "text": "Grid View v.1"
+      },
+      {
+        "href": "https://around.createx.studio/portfolio-grid-v2.html",
+        "text": "Grid View v.2"
+      },
+      {
+        "href": "https://around.createx.studio/portfolio-slider.html",
+        "text": "Slider View"
+      },
+      {
+        "href": "https://around.createx.studio/portfolio-single-v1.html",
+        "text": "Single Project v.1"
+      },
+      {
+        "href": "https://around.createx.studio/portfolio-single-v2.html",
+        "text": "Single Project v.2"
+      },
+      {
+        "href": "https://around.createx.studio/shop-checkout.html#",
+        "text": "Shop"
+      },
+      {
+        "href": "https://around.createx.studio/shop-catalog.html",
+        "text": "Catalog (Listing)"
+      },
+      {
+        "href": "https://around.createx.studio/shop-single.html",
+        "text": "Product Page"
+      },
+      {
+        "href": "https://around.createx.studio/shop-checkout.html",
+        "text": "Checkout"
+      },
+      {
+        "href": "https://around.createx.studio/shop-checkout.html#",
+        "text": "Blog"
+      },
+      {
+        "href": "https://around.createx.studio/blog-grid-sidebar.html",
+        "text": "Grid View with Sidebar"
+      },
+      {
+        "href": "https://around.createx.studio/blog-grid.html",
+        "text": "Grid View no Sidebar"
+      },
+      {
+        "href": "https://around.createx.studio/blog-list-sidebar.html",
+        "text": "List View with Sidebar"
+      },
+      {
+        "href": "https://around.createx.studio/blog-list.html",
+        "text": "List View no Sidebar"
+      },
+      {
+        "href": "https://around.createx.studio/blog-single-v1.html",
+        "text": "Single post v.1"
+      },
+      {
+        "href": "https://around.createx.studio/blog-single-v2.html",
+        "text": "Single post v.2"
+      },
+      {
+        "href": "https://around.createx.studio/blog-single-v3.html",
+        "text": "Single post v.3"
+      },
+      {
+        "href": "https://around.createx.studio/shop-checkout.html#",
+        "text": "About"
+      },
+      {
+        "href": "https://around.createx.studio/about-agency.html",
+        "text": "About - Agency"
+      },
+      {
+        "href": "https://around.createx.studio/about-product.html",
+        "text": "About - Product"
+      },
+      {
+        "href": "https://around.createx.studio/shop-checkout.html#",
+        "text": "Services"
+      },
+      {
+        "href": "https://around.createx.studio/services-v1.html",
+        "text": "Services v.1"
+      },
+      {
+        "href": "https://around.createx.studio/services-v2.html",
+        "text": "Services v.2"
+      },
+      {
+        "href": "https://around.createx.studio/services-v3.html",
+        "text": "Services v.3"
+      },
+      {
+        "href": "https://around.createx.studio/pricing.html",
+        "text": "Pricing"
+      },
+      {
+        "href": "https://around.createx.studio/shop-checkout.html#",
+        "text": "Contacts"
+      },
+      {
+        "href": "https://around.createx.studio/contacts-v1.html",
+        "text": "Contacts v.1"
+      },
+      {
+        "href": "https://around.createx.studio/contacts-v2.html",
+        "text": "Contacts v.2"
+      },
+      {
+        "href": "https://around.createx.studio/contacts-v3.html",
+        "text": "Contacts v.3"
+      },
+      {
+        "href": "https://around.createx.studio/shop-checkout.html#",
+        "text": "Specialty Pages"
+      },
+      {
+        "href": "https://around.createx.studio/coming-soon-v1.html",
+        "text": "Coming Soon v.1"
+      },
+      {
+        "href": "https://around.createx.studio/coming-soon-v2.html",
+        "text": "Coming Soon v.2"
+      },
+      {
+        "href": "https://around.createx.studio/404-v1.html",
+        "text": "404 Error v.1"
+      },
+      {
+        "href": "https://around.createx.studio/404-v2.html",
+        "text": "404 Error v.2"
+      },
+      {
+        "href": "https://around.createx.studio/404-v3.html",
+        "text": "404 Error v.3"
+      },
+      {
+        "href": "https://around.createx.studio/shop-checkout.html#",
+        "text": "Account"
+      },
+      {
+        "href": "https://around.createx.studio/shop-checkout.html#",
+        "text": "Auth pages"
+      },
+      {
+        "href": "https://around.createx.studio/account-signin.html",
+        "text": "Sign In"
+      },
+      {
+        "href": "https://around.createx.studio/account-signup.html",
+        "text": "Sign Up"
+      },
+      {
+        "href": "https://around.createx.studio/account-signinup.html",
+        "text": "Sign In / Up"
+      },
+      {
+        "href": "https://around.createx.studio/account-password-recovery.html",
+        "text": "Password Recovery"
+      },
+      {
+        "href": "https://around.createx.studio/account-overview.html",
+        "text": "Overview"
+      },
+      {
+        "href": "https://around.createx.studio/account-settings.html",
+        "text": "Settings"
+      },
+      {
+        "href": "https://around.createx.studio/account-billing.html",
+        "text": "Billing"
+      },
+      {
+        "href": "https://around.createx.studio/account-orders.html",
+        "text": "Orders"
+      },
+      {
+        "href": "https://around.createx.studio/account-earnings.html",
+        "text": "Earnings"
+      },
+      {
+        "href": "https://around.createx.studio/account-chat.html",
+        "text": "Chat (Messages)"
+      },
+      {
+        "href": "https://around.createx.studio/account-favorites.html",
+        "text": "Favorites (Wishlist)"
+      },
+      {
+        "href": "https://around.createx.studio/components/typography.html",
+        "text": "UI Kit"
+      },
+      {
+        "href": "https://around.createx.studio/docs/getting-started.html",
+        "text": "Docs"
+      },
+      {
+        "href": "https://around.createx.studio/account-signin.html",
+        "text": "Sign In"
+      },
+      {
+        "href": "https://themes.getbootstrap.com/product/around-multipurpose-template-ui-kit/",
+        "text": "Buy now"
+      },
+      {
+        "href": "https://around.createx.studio/index.html",
+        "text": "Home"
+      },
+      {
+        "href": "https://around.createx.studio/shop-catalog.html",
+        "text": "Shop"
+      }
+    ],
+    "scrollWidth": 2560,
+    "title": "Around | Shop Checkout",
+    "url": "https://around.createx.studio/shop-checkout.html",
+    "screenshot": "shop-checkout-viewport.png",
+    "bytes": 96201
+  },
+  {
+    "key": "account-overview",
+    "controls": [
+      {
+        "href": "",
+        "tag": "BUTTON",
+        "text": "Close",
+        "type": "button"
+      },
+      {
+        "href": "",
+        "tag": "BUTTON",
+        "text": "Close",
+        "type": "button"
+      },
+      {
+        "href": "",
+        "tag": "BUTTON",
+        "text": "Copy styles",
+        "type": "button"
+      },
+      {
+        "href": "",
+        "tag": "BUTTON",
+        "text": "Close",
+        "type": "button"
+      },
+      {
+        "href": "",
+        "tag": "LABEL",
+        "text": "",
+        "type": ""
+      },
+      {
+        "href": "",
+        "tag": "INPUT",
+        "text": "",
+        "type": "text"
+      },
+      {
+        "href": "",
+        "tag": "INPUT",
+        "text": "",
+        "type": "color"
+      },
+      {
+        "href": "",
+        "tag": "LABEL",
+        "text": "",
+        "type": ""
+      },
+      {
+        "href": "",
+        "tag": "INPUT",
+        "text": "",
+        "type": "text"
+      },
+      {
+        "href": "",
+        "tag": "INPUT",
+        "text": "",
+        "type": "color"
+      },
+      {
+        "href": "",
+        "tag": "LABEL",
+        "text": "",
+        "type": ""
+      },
+      {
+        "href": "",
+        "tag": "INPUT",
+        "text": "",
+        "type": "text"
+      },
+      {
+        "href": "",
+        "tag": "INPUT",
+        "text": "",
+        "type": "color"
+      },
+      {
+        "href": "",
+        "tag": "LABEL",
+        "text": "",
+        "type": ""
+      },
+      {
+        "href": "",
+        "tag": "INPUT",
+        "text": "",
+        "type": "text"
+      },
+      {
+        "href": "",
+        "tag": "INPUT",
+        "text": "",
+        "type": "color"
+      },
+      {
+        "href": "",
+        "tag": "LABEL",
+        "text": "",
+        "type": ""
+      },
+      {
+        "href": "",
+        "tag": "INPUT",
+        "text": "",
+        "type": "text"
+      },
+      {
+        "href": "",
+        "tag": "INPUT",
+        "text": "",
+        "type": "color"
+      },
+      {
+        "href": "",
+        "tag": "INPUT",
+        "text": "",
+        "type": "url"
+      },
+      {
+        "href": "",
+        "tag": "INPUT",
+        "text": "",
+        "type": "text"
+      },
+      {
+        "href": "",
+        "tag": "SELECT",
+        "text": ".75 .875 1 1.05 1.1 1.15 1.25 1.375",
+        "type": ""
+      },
+      {
+        "href": "",
+        "tag": "SELECT",
+        "text": ".75 .875 1 1.15 1.25 1.375",
+        "type": ""
+      },
+      {
+        "href": "",
+        "tag": "INPUT",
+        "text": "",
+        "type": "number"
+      },
+      {
+        "href": "",
+        "tag": "INPUT",
+        "text": "",
+        "type": "number"
+      },
+      {
+        "href": "",
+        "tag": "INPUT",
+        "text": "",
+        "type": "number"
+      },
+      {
+        "href": "",
+        "tag": "INPUT",
+        "text": "",
+        "type": "number"
+      },
+      {
+        "href": "",
+        "tag": "INPUT",
+        "text": "",
+        "type": "number"
+      },
+      {
+        "href": "",
+        "tag": "INPUT",
+        "text": "",
+        "type": "number"
+      },
+      {
+        "href": "",
+        "tag": "BUTTON",
+        "text": "Reset",
+        "type": "button"
+      },
+      {
+        "href": "",
+        "tag": "BUTTON",
+        "text": "Show styles",
+        "type": "button"
+      },
+      {
+        "href": "",
+        "tag": "INPUT",
+        "text": "",
+        "type": "checkbox"
+      },
+      {
+        "href": "",
+        "tag": "BUTTON",
+        "text": "",
+        "type": "button"
+      },
+      {
+        "href": "",
+        "tag": "BUTTON",
+        "text": "Close",
+        "type": "button"
+      },
+      {
+        "href": "https://around.createx.studio/account-settings.html",
+        "tag": "A",
+        "text": "Edit info",
+        "type": ""
+      },
+      {
+        "href": "https://around.createx.studio/account-settings.html",
+        "tag": "A",
+        "text": "Edit info",
+        "type": ""
+      },
+      {
+        "href": "https://around.createx.studio/account-billing.html",
+        "tag": "A",
+        "text": "Edit info",
+        "type": ""
+      },
+      {
+        "href": "https://around.createx.studio/account-orders.html",
+        "tag": "A",
+        "text": "View all",
+        "type": ""
+      },
+      {
+        "href": "https://around.createx.studio/account-overview.html#",
+        "tag": "A",
+        "text": "Order history",
+        "type": ""
+      },
+      {
+        "href": "",
+        "tag": "BUTTON",
+        "text": "Leave a review",
+        "type": "button"
+      },
+      {
+        "href": "https://around.createx.studio/account-overview.html#",
+        "tag": "A",
+        "text": "Order history",
+        "type": ""
+      },
+      {
+        "href": "",
+        "tag": "BUTTON",
+        "text": "Leave a review",
+        "type": "button"
+      },
+      {
+        "href": "https://around.createx.studio/account-overview.html#",
+        "tag": "A",
+        "text": "Order history",
+        "type": ""
+      },
+      {
+        "href": "",
+        "tag": "BUTTON",
+        "text": "Leave a review",
+        "type": "button"
+      },
+      {
+        "href": "https://around.createx.studio/account-overview.html#",
+        "tag": "A",
+        "text": "Order history",
+        "type": ""
+      },
+      {
+        "href": "",
+        "tag": "BUTTON",
+        "text": "Leave a review",
+        "type": "button"
+      },
+      {
+        "href": "",
+        "tag": "BUTTON",
+        "text": "Account menu",
+        "type": "button"
+      },
+      {
+        "href": "https://around.createx.studio/account-overview.html#useful",
+        "tag": "A",
+        "text": "Useful links",
+        "type": ""
+      },
+      {
+        "href": "https://around.createx.studio/account-overview.html#decors",
+        "tag": "A",
+        "text": "Decors",
+        "type": ""
+      },
+      {
+        "href": "https://around.createx.studio/account-overview.html#categories",
+        "tag": "A",
+        "text": "Categories",
+        "type": ""
+      },
+      {
+        "href": "https://around.createx.studio/account-overview.html#showroom",
+        "tag": "A",
+        "text": "Showroom",
+        "type": ""
+      },
+      {
+        "href": "https://around.createx.studio/account-overview.html#",
+        "tag": "A",
+        "text": "",
+        "type": ""
+      },
+      {
+        "href": "https://around.createx.studio/account-overview.html#",
+        "tag": "A",
+        "text": "",
+        "type": ""
+      },
+      {
+        "href": "",
+        "tag": "BUTTON",
+        "text": "Eng / USD",
+        "type": "button"
+      },
+      {
+        "href": "",
+        "tag": "SELECT",
+        "text": "$ USD € EUR £ UKP ¥ JPY",
+        "type": ""
+      },
+      {
+        "href": "https://around.createx.studio/account-overview.html#",
+        "tag": "A",
+        "text": "",
+        "type": ""
+      },
+      {
+        "href": "https://around.createx.studio/account-overview.html#",
+        "tag": "A",
+        "text": "",
+        "type": ""
+      },
+      {
+        "href": "https://around.createx.studio/account-overview.html#",
+        "tag": "A",
+        "text": "",
+        "type": ""
+      },
+      {
+        "href": "https://around.createx.studio/account-overview.html#",
+        "tag": "A",
+        "text": "",
+        "type": ""
+      }
+    ],
+    "headings": [
+      {
+        "tag": "H3",
+        "text": "Isabella Bocouse"
+      },
+      {
+        "tag": "H1",
+        "text": "Overview"
+      },
+      {
+        "tag": "H2",
+        "text": "Basic info"
+      },
+      {
+        "tag": "H3",
+        "text": "Isabella Bocouse"
+      },
+      {
+        "tag": "H2",
+        "text": "Address"
+      },
+      {
+        "tag": "H3",
+        "text": "Shipping address"
+      },
+      {
+        "tag": "H3",
+        "text": "Billing address 1"
+      },
+      {
+        "tag": "H2",
+        "text": "Billing"
+      },
+      {
+        "tag": "H3",
+        "text": "Isabella Bocouse"
+      },
+      {
+        "tag": "H2",
+        "text": "Orders"
+      },
+      {
+        "tag": "H3",
+        "text": "Useful links"
+      },
+      {
+        "tag": "H3",
+        "text": "Decors"
+      },
+      {
+        "tag": "H3",
+        "text": "Categories"
+      },
+      {
+        "tag": "H3",
+        "text": "Showroom"
+      },
+      {
+        "tag": "H3",
+        "text": "Download our app"
+      }
+    ],
+    "images": [
+      {
+        "alt": "Isabella Bocouse",
+        "src": "https://around.createx.studio/assets/img/avatar/01.jpg"
+      },
+      {
+        "alt": "Isabella Bocouse",
+        "src": "https://around.createx.studio/assets/img/avatar/01.jpg"
+      },
+      {
+        "alt": "Isabella Bocouse",
+        "src": "https://around.createx.studio/assets/img/avatar/02.jpg"
+      },
+      {
+        "alt": "Gift icon",
+        "src": "https://around.createx.studio/assets/img/account/gift-icon.svg"
+      },
+      {
+        "alt": "Product",
+        "src": "https://around.createx.studio/assets/img/account/orders/01.png"
+      },
+      {
+        "alt": "Product",
+        "src": "https://around.createx.studio/assets/img/shop/cart/01.png"
+      },
+      {
+        "alt": "Product",
+        "src": "https://around.createx.studio/assets/img/account/orders/02.png"
+      },
+      {
+        "alt": "Product",
+        "src": "https://around.createx.studio/assets/img/account/orders/03.png"
+      },
+      {
+        "alt": "Product",
+        "src": "https://around.createx.studio/assets/img/account/orders/04.png"
+      },
+      {
+        "alt": "Product",
+        "src": "https://around.createx.studio/assets/img/shop/cart/04.png"
+      },
+      {
+        "alt": "Product",
+        "src": "https://around.createx.studio/assets/img/shop/cart/05.png"
+      },
+      {
+        "alt": "Product",
+        "src": "https://around.createx.studio/assets/img/shop/cart/06.png"
+      },
+      {
+        "alt": "Product",
+        "src": "https://around.createx.studio/assets/img/account/orders/01.png"
+      },
+      {
+        "alt": "Product",
+        "src": "https://around.createx.studio/assets/img/account/orders/05.png"
+      },
+      {
+        "alt": "Product",
+        "src": "https://around.createx.studio/assets/img/shop/cart/01.png"
+      },
+      {
+        "alt": "Product",
+        "src": "https://around.createx.studio/assets/img/shop/cart/02.png"
+      },
+      {
+        "alt": "Product",
+        "src": "https://around.createx.studio/assets/img/account/orders/06.png"
+      },
+      {
+        "alt": "Product",
+        "src": "https://around.createx.studio/assets/img/shop/cart/07.png"
+      },
+      {
+        "alt": "App Store",
+        "src": "https://around.createx.studio/assets/img/market/appstore-light.svg"
+      },
+      {
+        "alt": "Google Play",
+        "src": "https://around.createx.studio/assets/img/market/googleplay-light.svg"
+      },
+      {
+        "alt": "English / USD",
+        "src": "https://around.createx.studio/assets/img/flags/en.png"
+      },
+      {
+        "alt": "Français",
+        "src": "https://around.createx.studio/assets/img/flags/fr.png"
+      },
+      {
+        "alt": "Deutsch",
+        "src": "https://around.createx.studio/assets/img/flags/de.png"
+      },
+      {
+        "alt": "Italiano",
+        "src": "https://around.createx.studio/assets/img/flags/it.png"
+      },
+      {
+        "alt": "Accepted cards",
+        "src": "https://around.createx.studio/assets/img/shop/footer-cards.png"
+      }
+    ],
+    "innerWidth": 2560,
+    "navTexts": [
+      {
+        "href": "https://around.createx.studio/index.html",
+        "text": "Around"
+      },
+      {
+        "href": "https://around.createx.studio/account-overview.html#",
+        "text": "Hello, Isabella"
+      },
+      {
+        "href": "https://around.createx.studio/account-overview.html",
+        "text": "Overview"
+      },
+      {
+        "href": "https://around.createx.studio/account-settings.html",
+        "text": "Settings"
+      },
+      {
+        "href": "https://around.createx.studio/account-billing.html",
+        "text": "Billing"
+      },
+      {
+        "href": "https://around.createx.studio/account-orders.html",
+        "text": "Orders"
+      },
+      {
+        "href": "https://around.createx.studio/account-earnings.html",
+        "text": "Earnings"
+      },
+      {
+        "href": "https://around.createx.studio/account-chat.html",
+        "text": "Chat 4"
+      },
+      {
+        "href": "https://around.createx.studio/account-favorites.html",
+        "text": "Favorites"
+      },
+      {
+        "href": "https://around.createx.studio/account-signin.html",
+        "text": "Sign out"
+      },
+      {
+        "href": "https://around.createx.studio/account-overview.html#",
+        "text": "Landings"
+      },
+      {
+        "href": "https://around.createx.studio/index.html",
+        "text": "Template Intro Page"
+      },
+      {
+        "href": "https://around.createx.studio/landing-mobile-app-showcase.html",
+        "text": "Mobile App Showcase"
+      },
+      {
+        "href": "https://around.createx.studio/landing-product.html",
+        "text": "Product Landing"
+      },
+      {
+        "href": "https://around.createx.studio/landing-saas-v1.html",
+        "text": "SaaS v.1"
+      },
+      {
+        "href": "https://around.createx.studio/landing-saas-v2.html",
+        "text": "SaaS v.2"
+      },
+      {
+        "href": "https://around.createx.studio/landing-saas-v3.html",
+        "text": "SaaS v.3"
+      },
+      {
+        "href": "https://around.createx.studio/landing-saas-v4.html",
+        "text": "SaaS v.4 New"
+      },
+      {
+        "href": "https://around.createx.studio/landing-shop-v1.html",
+        "text": "Shop Homepage v.1"
+      },
+      {
+        "href": "https://around.createx.studio/landing-shop-v2.html",
+        "text": "Shop Homepage v.2 New"
+      },
+      {
+        "href": "https://around.createx.studio/landing-marketing-agency.html",
+        "text": "Marketing Agency"
+      },
+      {
+        "href": "https://around.createx.studio/landing-creative-agency.html",
+        "text": "Creative Agency"
+      },
+      {
+        "href": "https://around.createx.studio/landing-conference.html",
+        "text": "Conference (Event)"
+      },
+      {
+        "href": "https://around.createx.studio/landing-web-studio.html",
+        "text": "Web Studio"
+      },
+      {
+        "href": "https://around.createx.studio/landing-corporate.html",
+        "text": "Corporate"
+      },
+      {
+        "href": "https://around.createx.studio/landing-insurance.html",
+        "text": "Insurance Company New"
+      },
+      {
+        "href": "https://around.createx.studio/landing-business-consulting.html",
+        "text": "Business Consulting"
+      },
+      {
+        "href": "https://around.createx.studio/landing-coworking-space.html",
+        "text": "Coworking Space"
+      },
+      {
+        "href": "https://around.createx.studio/landing-yoga-studio.html",
+        "text": "Yoga Studio"
+      },
+      {
+        "href": "https://around.createx.studio/landing-influencer.html",
+        "text": "Influencer"
+      },
+      {
+        "href": "https://around.createx.studio/landing-blog.html",
+        "text": "Blog Homepage"
+      },
+      {
+        "href": "https://around.createx.studio/account-overview.html#",
+        "text": "Pages"
+      },
+      {
+        "href": "https://around.createx.studio/account-overview.html#",
+        "text": "Portfolio"
+      },
+      {
+        "href": "https://around.createx.studio/portfolio-list-v1.html",
+        "text": "List View v.1"
+      },
+      {
+        "href": "https://around.createx.studio/portfolio-list-v2.html",
+        "text": "List View v.2"
+      },
+      {
+        "href": "https://around.createx.studio/portfolio-grid-v1.html",
+        "text": "Grid View v.1"
+      },
+      {
+        "href": "https://around.createx.studio/portfolio-grid-v2.html",
+        "text": "Grid View v.2"
+      },
+      {
+        "href": "https://around.createx.studio/portfolio-slider.html",
+        "text": "Slider View"
+      },
+      {
+        "href": "https://around.createx.studio/portfolio-single-v1.html",
+        "text": "Single Project v.1"
+      },
+      {
+        "href": "https://around.createx.studio/portfolio-single-v2.html",
+        "text": "Single Project v.2"
+      },
+      {
+        "href": "https://around.createx.studio/account-overview.html#",
+        "text": "Shop"
+      },
+      {
+        "href": "https://around.createx.studio/shop-catalog.html",
+        "text": "Catalog (Listing)"
+      },
+      {
+        "href": "https://around.createx.studio/shop-single.html",
+        "text": "Product Page"
+      },
+      {
+        "href": "https://around.createx.studio/shop-checkout.html",
+        "text": "Checkout"
+      },
+      {
+        "href": "https://around.createx.studio/account-overview.html#",
+        "text": "Blog"
+      },
+      {
+        "href": "https://around.createx.studio/blog-grid-sidebar.html",
+        "text": "Grid View with Sidebar"
+      },
+      {
+        "href": "https://around.createx.studio/blog-grid.html",
+        "text": "Grid View no Sidebar"
+      },
+      {
+        "href": "https://around.createx.studio/blog-list-sidebar.html",
+        "text": "List View with Sidebar"
+      },
+      {
+        "href": "https://around.createx.studio/blog-list.html",
+        "text": "List View no Sidebar"
+      },
+      {
+        "href": "https://around.createx.studio/blog-single-v1.html",
+        "text": "Single post v.1"
+      },
+      {
+        "href": "https://around.createx.studio/blog-single-v2.html",
+        "text": "Single post v.2"
+      },
+      {
+        "href": "https://around.createx.studio/blog-single-v3.html",
+        "text": "Single post v.3"
+      },
+      {
+        "href": "https://around.createx.studio/account-overview.html#",
+        "text": "About"
+      },
+      {
+        "href": "https://around.createx.studio/about-agency.html",
+        "text": "About - Agency"
+      },
+      {
+        "href": "https://around.createx.studio/about-product.html",
+        "text": "About - Product"
+      },
+      {
+        "href": "https://around.createx.studio/account-overview.html#",
+        "text": "Services"
+      },
+      {
+        "href": "https://around.createx.studio/services-v1.html",
+        "text": "Services v.1"
+      },
+      {
+        "href": "https://around.createx.studio/services-v2.html",
+        "text": "Services v.2"
+      },
+      {
+        "href": "https://around.createx.studio/services-v3.html",
+        "text": "Services v.3"
+      },
+      {
+        "href": "https://around.createx.studio/pricing.html",
+        "text": "Pricing"
+      },
+      {
+        "href": "https://around.createx.studio/account-overview.html#",
+        "text": "Contacts"
+      },
+      {
+        "href": "https://around.createx.studio/contacts-v1.html",
+        "text": "Contacts v.1"
+      },
+      {
+        "href": "https://around.createx.studio/contacts-v2.html",
+        "text": "Contacts v.2"
+      },
+      {
+        "href": "https://around.createx.studio/contacts-v3.html",
+        "text": "Contacts v.3"
+      },
+      {
+        "href": "https://around.createx.studio/account-overview.html#",
+        "text": "Specialty Pages"
+      },
+      {
+        "href": "https://around.createx.studio/coming-soon-v1.html",
+        "text": "Coming Soon v.1"
+      },
+      {
+        "href": "https://around.createx.studio/coming-soon-v2.html",
+        "text": "Coming Soon v.2"
+      },
+      {
+        "href": "https://around.createx.studio/404-v1.html",
+        "text": "404 Error v.1"
+      },
+      {
+        "href": "https://around.createx.studio/404-v2.html",
+        "text": "404 Error v.2"
+      },
+      {
+        "href": "https://around.createx.studio/404-v3.html",
+        "text": "404 Error v.3"
+      },
+      {
+        "href": "https://around.createx.studio/account-overview.html#",
+        "text": "Account"
+      },
+      {
+        "href": "https://around.createx.studio/account-overview.html#",
+        "text": "Auth pages"
+      },
+      {
+        "href": "https://around.createx.studio/account-signin.html",
+        "text": "Sign In"
+      },
+      {
+        "href": "https://around.createx.studio/account-signup.html",
+        "text": "Sign Up"
+      },
+      {
+        "href": "https://around.createx.studio/account-signinup.html",
+        "text": "Sign In / Up"
+      },
+      {
+        "href": "https://around.createx.studio/account-password-recovery.html",
+        "text": "Password Recovery"
+      },
+      {
+        "href": "https://around.createx.studio/account-overview.html",
+        "text": "Overview"
+      },
+      {
+        "href": "https://around.createx.studio/account-settings.html",
+        "text": "Settings"
+      },
+      {
+        "href": "https://around.createx.studio/account-billing.html",
+        "text": "Billing"
+      },
+      {
+        "href": "https://around.createx.studio/account-orders.html",
+        "text": "Orders"
+      },
+      {
+        "href": "https://around.createx.studio/account-earnings.html",
+        "text": "Earnings"
+      },
+      {
+        "href": "https://around.createx.studio/account-chat.html",
+        "text": "Chat (Messages)"
+      },
+      {
+        "href": "https://around.createx.studio/account-favorites.html",
+        "text": "Favorites (Wishlist)"
+      },
+      {
+        "href": "https://around.createx.studio/components/typography.html",
+        "text": "UI Kit"
+      },
+      {
+        "href": "https://around.createx.studio/docs/getting-started.html",
+        "text": "Docs"
+      },
+      {
+        "href": "https://around.createx.studio/account-overview.html#",
+        "text": "Hello, Isabella"
+      },
+      {
+        "href": "https://around.createx.studio/account-overview.html",
+        "text": "Overview"
+      },
+      {
+        "href": "https://around.createx.studio/account-settings.html",
+        "text": "Settings"
+      },
+      {
+        "href": "https://around.createx.studio/account-billing.html",
+        "text": "Billing"
+      },
+      {
+        "href": "https://around.createx.studio/account-orders.html",
+        "text": "Orders"
+      },
+      {
+        "href": "https://around.createx.studio/account-earnings.html",
+        "text": "Earnings"
+      },
+      {
+        "href": "https://around.createx.studio/account-chat.html",
+        "text": "Chat 4"
+      },
+      {
+        "href": "https://around.createx.studio/account-favorites.html",
+        "text": "Favorites"
+      },
+      {
+        "href": "https://around.createx.studio/account-signin.html",
+        "text": "Sign out"
+      },
+      {
+        "href": "https://around.createx.studio/account-overview.html",
+        "text": "Overview"
+      },
+      {
+        "href": "https://around.createx.studio/account-settings.html",
+        "text": "Settings"
+      },
+      {
+        "href": "https://around.createx.studio/account-billing.html",
+        "text": "Billing"
+      },
+      {
+        "href": "https://around.createx.studio/account-orders.html",
+        "text": "Orders"
+      },
+      {
+        "href": "https://around.createx.studio/account-earnings.html",
+        "text": "Earnings"
+      },
+      {
+        "href": "https://around.createx.studio/account-chat.html",
+        "text": "Chat 4"
+      },
+      {
+        "href": "https://around.createx.studio/account-favorites.html",
+        "text": "Favorites"
+      },
+      {
+        "href": "https://around.createx.studio/account-signin.html",
+        "text": "Sign out"
+      },
+      {
+        "href": "https://around.createx.studio/account-overview.html#",
+        "text": "Support"
+      },
+      {
+        "href": "https://around.createx.studio/account-overview.html#",
+        "text": "Privacy"
+      },
+      {
+        "href": "https://around.createx.studio/account-overview.html#",
+        "text": "Terms of use"
+      }
+    ],
+    "scrollWidth": 2560,
+    "title": "Around | Account - Overview",
+    "url": "https://around.createx.studio/account-overview.html",
+    "screenshot": "account-overview-viewport.png",
+    "bytes": 99786
+  },
+  {
+    "key": "ui-kit-typography",
+    "controls": [
+      {
+        "href": "",
+        "tag": "BUTTON",
+        "text": "Close",
+        "type": "button"
+      },
+      {
+        "href": "",
+        "tag": "BUTTON",
+        "text": "Close",
+        "type": "button"
+      },
+      {
+        "href": "",
+        "tag": "BUTTON",
+        "text": "Copy styles",
+        "type": "button"
+      },
+      {
+        "href": "",
+        "tag": "BUTTON",
+        "text": "Close",
+        "type": "button"
+      },
+      {
+        "href": "",
+        "tag": "LABEL",
+        "text": "",
+        "type": ""
+      },
+      {
+        "href": "",
+        "tag": "INPUT",
+        "text": "",
+        "type": "text"
+      },
+      {
+        "href": "",
+        "tag": "INPUT",
+        "text": "",
+        "type": "color"
+      },
+      {
+        "href": "",
+        "tag": "LABEL",
+        "text": "",
+        "type": ""
+      },
+      {
+        "href": "",
+        "tag": "INPUT",
+        "text": "",
+        "type": "text"
+      },
+      {
+        "href": "",
+        "tag": "INPUT",
+        "text": "",
+        "type": "color"
+      },
+      {
+        "href": "",
+        "tag": "LABEL",
+        "text": "",
+        "type": ""
+      },
+      {
+        "href": "",
+        "tag": "INPUT",
+        "text": "",
+        "type": "text"
+      },
+      {
+        "href": "",
+        "tag": "INPUT",
+        "text": "",
+        "type": "color"
+      },
+      {
+        "href": "",
+        "tag": "LABEL",
+        "text": "",
+        "type": ""
+      },
+      {
+        "href": "",
+        "tag": "INPUT",
+        "text": "",
+        "type": "text"
+      },
+      {
+        "href": "",
+        "tag": "INPUT",
+        "text": "",
+        "type": "color"
+      },
+      {
+        "href": "",
+        "tag": "LABEL",
+        "text": "",
+        "type": ""
+      },
+      {
+        "href": "",
+        "tag": "INPUT",
+        "text": "",
+        "type": "text"
+      },
+      {
+        "href": "",
+        "tag": "INPUT",
+        "text": "",
+        "type": "color"
+      },
+      {
+        "href": "",
+        "tag": "INPUT",
+        "text": "",
+        "type": "url"
+      },
+      {
+        "href": "",
+        "tag": "INPUT",
+        "text": "",
+        "type": "text"
+      },
+      {
+        "href": "",
+        "tag": "SELECT",
+        "text": ".75 .875 1 1.05 1.1 1.15 1.25 1.375",
+        "type": ""
+      },
+      {
+        "href": "",
+        "tag": "SELECT",
+        "text": ".75 .875 1 1.15 1.25 1.375",
+        "type": ""
+      },
+      {
+        "href": "",
+        "tag": "INPUT",
+        "text": "",
+        "type": "number"
+      },
+      {
+        "href": "",
+        "tag": "INPUT",
+        "text": "",
+        "type": "number"
+      },
+      {
+        "href": "",
+        "tag": "INPUT",
+        "text": "",
+        "type": "number"
+      },
+      {
+        "href": "",
+        "tag": "INPUT",
+        "text": "",
+        "type": "number"
+      },
+      {
+        "href": "",
+        "tag": "INPUT",
+        "text": "",
+        "type": "number"
+      },
+      {
+        "href": "",
+        "tag": "INPUT",
+        "text": "",
+        "type": "number"
+      },
+      {
+        "href": "",
+        "tag": "BUTTON",
+        "text": "Reset",
+        "type": "button"
+      },
+      {
+        "href": "",
+        "tag": "BUTTON",
+        "text": "Show styles",
+        "type": "button"
+      },
+      {
+        "href": "",
+        "tag": "INPUT",
+        "text": "",
+        "type": "checkbox"
+      },
+      {
+        "href": "",
+        "tag": "BUTTON",
+        "text": "",
+        "type": "button"
+      },
+      {
+        "href": "https://themes.getbootstrap.com/product/around-multipurpose-template-ui-kit/",
+        "tag": "A",
+        "text": "Buy now",
+        "type": ""
+      },
+      {
+        "href": "",
+        "tag": "BUTTON",
+        "text": "Close",
+        "type": "button"
+      },
+      {
+        "href": "https://themes.getbootstrap.com/product/around-multipurpose-template-ui-kit/",
+        "tag": "A",
+        "text": "Buy now",
+        "type": ""
+      },
+      {
+        "href": "",
+        "tag": "BUTTON",
+        "text": "Copy",
+        "type": "button"
+      },
+      {
+        "href": "",
+        "tag": "BUTTON",
+        "text": "Copy",
+        "type": "button"
+      },
+      {
+        "href": "",
+        "tag": "BUTTON",
+        "text": "Copy",
+        "type": "button"
+      },
+      {
+        "href": "",
+        "tag": "BUTTON",
+        "text": "Copy",
+        "type": "button"
+      },
+      {
+        "href": "",
+        "tag": "BUTTON",
+        "text": "Copy",
+        "type": "button"
+      },
+      {
+        "href": "",
+        "tag": "BUTTON",
+        "text": "Copy",
+        "type": "button"
+      },
+      {
+        "href": "",
+        "tag": "BUTTON",
+        "text": "Copy",
+        "type": "button"
+      },
+      {
+        "href": "",
+        "tag": "BUTTON",
+        "text": "Copy",
+        "type": "button"
+      },
+      {
+        "href": "",
+        "tag": "BUTTON",
+        "text": "Copy",
+        "type": "button"
+      },
+      {
+        "href": "",
+        "tag": "BUTTON",
+        "text": "Copy",
+        "type": "button"
+      },
+      {
+        "href": "",
+        "tag": "BUTTON",
+        "text": "Copy",
+        "type": "button"
+      }
+    ],
+    "headings": [
+      {
+        "tag": "H3",
+        "text": "Content"
+      },
+      {
+        "tag": "H3",
+        "text": "Components"
+      },
+      {
+        "tag": "H3",
+        "text": "Utilities"
+      },
+      {
+        "tag": "H3",
+        "text": "Content"
+      },
+      {
+        "tag": "H3",
+        "text": "Components"
+      },
+      {
+        "tag": "H3",
+        "text": "Utilities"
+      },
+      {
+        "tag": "H1",
+        "text": "Typography"
+      },
+      {
+        "tag": "H2",
+        "text": "Headings"
+      },
+      {
+        "tag": "H1",
+        "text": "h1. Around heading"
+      },
+      {
+        "tag": "H2",
+        "text": "h2. Around heading"
+      },
+      {
+        "tag": "H3",
+        "text": "h3. Around heading"
+      },
+      {
+        "tag": "H2",
+        "text": "Display headings"
+      },
+      {
+        "tag": "H1",
+        "text": "Display 1"
+      },
+      {
+        "tag": "H1",
+        "text": "Display 2"
+      },
+      {
+        "tag": "H1",
+        "text": "Display 3"
+      },
+      {
+        "tag": "H1",
+        "text": "Display 4"
+      },
+      {
+        "tag": "H1",
+        "text": "Display 5"
+      },
+      {
+        "tag": "H1",
+        "text": "Display 6"
+      },
+      {
+        "tag": "H2",
+        "text": "Body text sizes"
+      },
+      {
+        "tag": "H2",
+        "text": "Inline text elements"
+      },
+      {
+        "tag": "H2",
+        "text": "Abbreviations"
+      },
+      {
+        "tag": "H2",
+        "text": "Blockquote"
+      },
+      {
+        "tag": "H2",
+        "text": "Lists: Unordered and ordered"
+      },
+      {
+        "tag": "H2",
+        "text": "Lists: Unstyled"
+      },
+      {
+        "tag": "H2",
+        "text": "Lists: Inline"
+      },
+      {
+        "tag": "H2",
+        "text": "Description list basic example"
+      },
+      {
+        "tag": "H2",
+        "text": "Description list alignment"
+      }
+    ],
+    "images": [],
+    "innerWidth": 2560,
+    "navTexts": [
+      {
+        "href": "https://around.createx.studio/components/typography.html",
+        "text": "Around UI Kit"
+      },
+      {
+        "href": "https://around.createx.studio/index.html",
+        "text": "Live demo"
+      },
+      {
+        "href": "https://around.createx.studio/docs/getting-started.html",
+        "text": "Documentation"
+      },
+      {
+        "href": "https://themes.getbootstrap.com/product/around-multipurpose-template-ui-kit/",
+        "text": "Buy now"
+      },
+      {
+        "href": "https://around.createx.studio/components/typography.html#type-headings",
+        "text": "Headings"
+      },
+      {
+        "href": "https://around.createx.studio/components/typography.html#type-displays",
+        "text": "Display headings"
+      },
+      {
+        "href": "https://around.createx.studio/components/typography.html#type-body-text",
+        "text": "Body text sizes"
+      },
+      {
+        "href": "https://around.createx.studio/components/typography.html#type-inline",
+        "text": "Inline text elements"
+      },
+      {
+        "href": "https://around.createx.studio/components/typography.html#type-abbreviations",
+        "text": "Abbreviations"
+      },
+      {
+        "href": "https://around.createx.studio/components/typography.html#type-blockquote",
+        "text": "Blockquote"
+      },
+      {
+        "href": "https://around.createx.studio/components/typography.html#type-lists",
+        "text": "Lists: Unordered and ordered"
+      },
+      {
+        "href": "https://around.createx.studio/components/typography.html#type-lists-unstyled",
+        "text": "Lists: Unstyled"
+      },
+      {
+        "href": "https://around.createx.studio/components/typography.html#type-lists-inline",
+        "text": "Lists: Inline"
+      },
+      {
+        "href": "https://around.createx.studio/components/typography.html#type-description-list",
+        "text": "Description list basic example"
+      },
+      {
+        "href": "https://around.createx.studio/components/typography.html#type-description-list-align",
+        "text": "Description list alignment"
+      },
+      {
+        "href": "https://around.createx.studio/components/icon-font.html#icons",
+        "text": "Icon font"
+      },
+      {
+        "href": "https://around.createx.studio/components/code.html#code",
+        "text": "Code"
+      },
+      {
+        "href": "https://around.createx.studio/components/images.html#imgs",
+        "text": "Images & figures"
+      },
+      {
+        "href": "https://around.createx.studio/components/tables.html#tables",
+        "text": "Tables"
+      },
+      {
+        "href": "https://around.createx.studio/components/accordion.html#accordion",
+        "text": "Accordion"
+      },
+      {
+        "href": "https://around.createx.studio/components/alerts.html#alerts",
+        "text": "Alerts"
+      },
+      {
+        "href": "https://around.createx.studio/components/badges.html#badges",
+        "text": "Badges"
+      },
+      {
+        "href": "https://around.createx.studio/components/blog-components.html#blog",
+        "text": "Blog components"
+      },
+      {
+        "href": "https://around.createx.studio/components/breadcrumb.html#breadcrumb",
+        "text": "Breadcrumb"
+      },
+      {
+        "href": "https://around.createx.studio/components/buttons.html#btns",
+        "text": "Buttons"
+      },
+      {
+        "href": "https://around.createx.studio/components/button-group.html#btn-group",
+        "text": "Button group"
+      },
+      {
+        "href": "https://around.createx.studio/components/cards-basic.html#cards-basic",
+        "text": "Cards: Basic"
+      },
+      {
+        "href": "https://around.createx.studio/components/cards-hover.html#cards-hover",
+        "text": "Cards: Hover effects"
+      },
+      {
+        "href": "https://around.createx.studio/components/carousel.html#carousel",
+        "text": "Carousel (Slider)"
+      },
+      {
+        "href": "https://around.createx.studio/components/charts.html#charts",
+        "text": "Charts"
+      },
+      {
+        "href": "https://around.createx.studio/components/collapse.html#collapse",
+        "text": "Collapse"
+      },
+      {
+        "href": "https://around.createx.studio/components/countdown.html#countdown",
+        "text": "Countdown"
+      },
+      {
+        "href": "https://around.createx.studio/components/date-picker.html#picker",
+        "text": "Date / time picker"
+      },
+      {
+        "href": "https://around.createx.studio/components/dropdowns.html#dropdowns",
+        "text": "Dropdowns"
+      },
+      {
+        "href": "https://around.createx.studio/components/calendar.html#calendar",
+        "text": "Event calendar"
+      },
+      {
+        "href": "https://around.createx.studio/components/forms.html#forms",
+        "text": "Forms"
+      },
+      {
+        "href": "https://around.createx.studio/components/gallery.html#gallery",
+        "text": "Gallery (Lightbox)"
+      },
+      {
+        "href": "https://around.createx.studio/components/hotspots.html#hotspots",
+        "text": "Hotspots"
+      },
+      {
+        "href": "https://around.createx.studio/components/image-comparison-slider.html#ics",
+        "text": "Image comparison slider"
+      },
+      {
+        "href": "https://around.createx.studio/components/input-group.html#ig",
+        "text": "Input group"
+      },
+      {
+        "href": "https://around.createx.studio/components/list-group.html#lg",
+        "text": "List group"
+      },
+      {
+        "href": "https://around.createx.studio/components/maps.html#maps",
+        "text": "Maps"
+      },
+      {
+        "href": "https://around.createx.studio/components/modal.html#modal",
+        "text": "Modal"
+      },
+      {
+        "href": "https://around.createx.studio/components/navbar.html#navbar",
+        "text": "Navbar"
+      },
+      {
+        "href": "https://around.createx.studio/components/offcanvas.html#offcanvas",
+        "text": "Offcanvas"
+      },
+      {
+        "href": "https://around.createx.studio/components/pagination.html#pagination",
+        "text": "Pagination"
+      },
+      {
+        "href": "https://around.createx.studio/components/parallax.html#parallax",
+        "text": "Parallax"
+      },
+      {
+        "href": "https://around.createx.studio/components/pills.html#pills",
+        "text": "Pills"
+      },
+      {
+        "href": "https://around.createx.studio/components/placeholders.html#placeholders",
+        "text": "Placeholders"
+      },
+      {
+        "href": "https://around.createx.studio/components/popovers.html#popovers",
+        "text": "Popovers"
+      },
+      {
+        "href": "https://around.createx.studio/components/portfolio-components.html#portfolio",
+        "text": "Portfolio components"
+      },
+      {
+        "href": "https://around.createx.studio/components/pricing.html#pricing",
+        "text": "Pricing"
+      },
+      {
+        "href": "https://around.createx.studio/components/progress.html#progress",
+        "text": "Progress"
+      },
+      {
+        "href": "https://around.createx.studio/components/shop-components.html#shop",
+        "text": "Shop components"
+      },
+      {
+        "href": "https://around.createx.studio/components/social-buttons.html#social-btns",
+        "text": "Social buttons"
+      },
+      {
+        "href": "https://around.createx.studio/components/spinners.html#spinners",
+        "text": "Spinners"
+      },
+      {
+        "href": "https://around.createx.studio/components/steps.html#steps",
+        "text": "Steps"
+      },
+      {
+        "href": "https://around.createx.studio/components/tabs.html#tabs",
+        "text": "Tabs"
+      },
+      {
+        "href": "https://around.createx.studio/components/team.html#team",
+        "text": "Team"
+      },
+      {
+        "href": "https://around.createx.studio/components/testimonials.html#testimonials",
+        "text": "Testimonials / reviews"
+      },
+      {
+        "href": "https://around.createx.studio/components/toasts.html#toasts",
+        "text": "Toasts"
+      },
+      {
+        "href": "https://around.createx.studio/components/tooltips.html#tooltips",
+        "text": "Tooltips"
+      },
+      {
+        "href": "https://around.createx.studio/components/video-popup.html#video",
+        "text": "Video popup"
+      },
+      {
+        "href": "https://getbootstrap.com/docs/5.3/utilities/background/",
+        "text": "Bootstrap"
+      },
+      {
+        "href": "https://around.createx.studio/components/utilities.html#utils",
+        "text": "Around utilities"
+      }
+    ],
+    "scrollWidth": 2560,
+    "title": "Around UI Kit | Typography",
+    "url": "https://around.createx.studio/components/typography.html",
+    "screenshot": "ui-kit-typography-viewport.png",
+    "bytes": 109038
+  },
+  {
+    "key": "docs-getting-started",
+    "controls": [
+      {
+        "href": "",
+        "tag": "BUTTON",
+        "text": "Close",
+        "type": "button"
+      },
+      {
+        "href": "",
+        "tag": "BUTTON",
+        "text": "Close",
+        "type": "button"
+      },
+      {
+        "href": "",
+        "tag": "BUTTON",
+        "text": "Copy styles",
+        "type": "button"
+      },
+      {
+        "href": "",
+        "tag": "BUTTON",
+        "text": "Close",
+        "type": "button"
+      },
+      {
+        "href": "",
+        "tag": "LABEL",
+        "text": "",
+        "type": ""
+      },
+      {
+        "href": "",
+        "tag": "INPUT",
+        "text": "",
+        "type": "text"
+      },
+      {
+        "href": "",
+        "tag": "INPUT",
+        "text": "",
+        "type": "color"
+      },
+      {
+        "href": "",
+        "tag": "LABEL",
+        "text": "",
+        "type": ""
+      },
+      {
+        "href": "",
+        "tag": "INPUT",
+        "text": "",
+        "type": "text"
+      },
+      {
+        "href": "",
+        "tag": "INPUT",
+        "text": "",
+        "type": "color"
+      },
+      {
+        "href": "",
+        "tag": "LABEL",
+        "text": "",
+        "type": ""
+      },
+      {
+        "href": "",
+        "tag": "INPUT",
+        "text": "",
+        "type": "text"
+      },
+      {
+        "href": "",
+        "tag": "INPUT",
+        "text": "",
+        "type": "color"
+      },
+      {
+        "href": "",
+        "tag": "LABEL",
+        "text": "",
+        "type": ""
+      },
+      {
+        "href": "",
+        "tag": "INPUT",
+        "text": "",
+        "type": "text"
+      },
+      {
+        "href": "",
+        "tag": "INPUT",
+        "text": "",
+        "type": "color"
+      },
+      {
+        "href": "",
+        "tag": "LABEL",
+        "text": "",
+        "type": ""
+      },
+      {
+        "href": "",
+        "tag": "INPUT",
+        "text": "",
+        "type": "text"
+      },
+      {
+        "href": "",
+        "tag": "INPUT",
+        "text": "",
+        "type": "color"
+      },
+      {
+        "href": "",
+        "tag": "INPUT",
+        "text": "",
+        "type": "url"
+      },
+      {
+        "href": "",
+        "tag": "INPUT",
+        "text": "",
+        "type": "text"
+      },
+      {
+        "href": "",
+        "tag": "SELECT",
+        "text": ".75 .875 1 1.05 1.1 1.15 1.25 1.375",
+        "type": ""
+      },
+      {
+        "href": "",
+        "tag": "SELECT",
+        "text": ".75 .875 1 1.15 1.25 1.375",
+        "type": ""
+      },
+      {
+        "href": "",
+        "tag": "INPUT",
+        "text": "",
+        "type": "number"
+      },
+      {
+        "href": "",
+        "tag": "INPUT",
+        "text": "",
+        "type": "number"
+      },
+      {
+        "href": "",
+        "tag": "INPUT",
+        "text": "",
+        "type": "number"
+      },
+      {
+        "href": "",
+        "tag": "INPUT",
+        "text": "",
+        "type": "number"
+      },
+      {
+        "href": "",
+        "tag": "INPUT",
+        "text": "",
+        "type": "number"
+      },
+      {
+        "href": "",
+        "tag": "INPUT",
+        "text": "",
+        "type": "number"
+      },
+      {
+        "href": "",
+        "tag": "BUTTON",
+        "text": "Reset",
+        "type": "button"
+      },
+      {
+        "href": "",
+        "tag": "BUTTON",
+        "text": "Show styles",
+        "type": "button"
+      },
+      {
+        "href": "",
+        "tag": "INPUT",
+        "text": "",
+        "type": "checkbox"
+      },
+      {
+        "href": "",
+        "tag": "BUTTON",
+        "text": "",
+        "type": "button"
+      },
+      {
+        "href": "https://themes.getbootstrap.com/product/around-multipurpose-template-ui-kit/",
+        "tag": "A",
+        "text": "Buy now",
+        "type": ""
+      },
+      {
+        "href": "",
+        "tag": "BUTTON",
+        "text": "Close",
+        "type": "button"
+      },
+      {
+        "href": "https://themes.getbootstrap.com/product/around-multipurpose-template-ui-kit/",
+        "tag": "A",
+        "text": "Buy now",
+        "type": ""
+      }
+    ],
+    "headings": [
+      {
+        "tag": "H3",
+        "text": "Contents"
+      },
+      {
+        "tag": "H3",
+        "text": "Contents"
+      },
+      {
+        "tag": "H1",
+        "text": "Getting started"
+      },
+      {
+        "tag": "H2",
+        "text": "Around template you are currently viewing is a Static HTML (Bootstrap 5) Temaplate, NOT a WordPress Theme!"
+      },
+      {
+        "tag": "H2",
+        "text": "Prerequisites"
+      },
+      {
+        "tag": "H2",
+        "text": "Next steps"
+      }
+    ],
+    "images": [],
+    "innerWidth": 2560,
+    "navTexts": [
+      {
+        "href": "https://around.createx.studio/docs/typography.html",
+        "text": "Around Docs"
+      },
+      {
+        "href": "https://around.createx.studio/index.html",
+        "text": "Live demo"
+      },
+      {
+        "href": "https://around.createx.studio/components/typography.html",
+        "text": "UI Kit (Components)"
+      },
+      {
+        "href": "https://themes.getbootstrap.com/product/around-multipurpose-template-ui-kit/",
+        "text": "Buy now"
+      },
+      {
+        "href": "https://around.createx.studio/docs/dev-setup.html",
+        "text": "Dev environment setup"
+      },
+      {
+        "href": "https://around.createx.studio/docs/npm-scripts.html",
+        "text": "Npm commands (scripts)"
+      },
+      {
+        "href": "https://around.createx.studio/docs/project-structure.html",
+        "text": "Project structure"
+      },
+      {
+        "href": "https://around.createx.studio/docs/configuration-files.html",
+        "text": "Configuration files"
+      },
+      {
+        "href": "https://around.createx.studio/docs/install-vendor-plugin.html",
+        "text": "Installing Vendor plugins with Npm"
+      },
+      {
+        "href": "https://around.createx.studio/docs/using-scss.html",
+        "text": "Using Sass (Scss) preprocessor"
+      },
+      {
+        "href": "https://around.createx.studio/docs/autoprefixer.html",
+        "text": "Browser support"
+      },
+      {
+        "href": "https://around.createx.studio/docs/color-modes.html",
+        "text": "Color modes (themes)"
+      },
+      {
+        "href": "https://around.createx.studio/docs/global-colors.html",
+        "text": "Global colors"
+      },
+      {
+        "href": "https://around.createx.studio/docs/components.html",
+        "text": "Components"
+      },
+      {
+        "href": "https://around.createx.studio/docs/utilities.html",
+        "text": "Utility classes"
+      },
+      {
+        "href": "https://around.createx.studio/docs/ui-icons.html",
+        "text": "UI icons (Icon font)"
+      },
+      {
+        "href": "https://around.createx.studio/docs/mailchimp.html",
+        "text": "Mailchimp subscription form"
+      },
+      {
+        "href": "https://around.createx.studio/docs/credits.html",
+        "text": "Sources and credits"
+      },
+      {
+        "href": "https://around.createx.studio/docs/changelog.html",
+        "text": "Changelog"
+      }
+    ],
+    "scrollWidth": 2560,
+    "title": "Around Docs | Getting started",
+    "url": "https://around.createx.studio/docs/getting-started.html",
+    "screenshot": "docs-getting-started-viewport.png",
+    "bytes": 155043
+  }
+]

@@ -1,0 +1,670 @@
+{
+  "customizerText": [
+    "Your custom styles",
+    "Close",
+    "Copy styles",
+    "Customize",
+    "Customize theme",
+    "Colors",
+    "Typography (1rem = 16px)",
+    "Google font URL",
+    "Font family",
+    "Root font size, rem",
+    "Body font size, rem",
+    "Borders / Rounding",
+    "Border width, px",
+    "Rounded base, rem",
+    "Rounded SM = Rounded base multiplied by",
+    "Rounded LG = Rounded base multiplied by",
+    "Rounded XL = Rounded base multiplied by",
+    "Rounded 2XL = Rounded base multiplied by",
+    "Reset",
+    "Show styles",
+    "Around",
+    "Buy now",
+    "Landings",
+    "Template Intro Page",
+    "Mobile App Showcase",
+    "Product Landing",
+    "SaaS v.1",
+    "SaaS v.2",
+    "SaaS v.3",
+    "SaaS v.4 New",
+    "Shop Homepage v.1",
+    "Shop Homepage v.2 New",
+    "Marketing Agency",
+    "Creative Agency",
+    "Conference (Event)",
+    "Web Studio",
+    "Corporate",
+    "Insurance Company New",
+    "Business Consulting",
+    "Coworking Space",
+    "Yoga Studio",
+    "Influencer",
+    "Blog Homepage",
+    "Pages",
+    "Portfolio",
+    "List View v.1",
+    "List View v.2",
+    "Grid View v.1",
+    "Grid View v.2",
+    "Slider View",
+    "Single Project v.1",
+    "Single Project v.2",
+    "Shop",
+    "Catalog (Listing)",
+    "Product Page",
+    "Checkout",
+    "Blog",
+    "Grid View with Sidebar",
+    "Grid View no Sidebar",
+    "List View with Sidebar",
+    "List View no Sidebar",
+    "Single post v.1",
+    "Single post v.2",
+    "Single post v.3",
+    "About",
+    "About - Agency",
+    "About - Product",
+    "Services",
+    "Services v.1",
+    "Services v.2",
+    "Services v.3",
+    "Pricing",
+    "Contacts",
+    "Contacts v.1",
+    "Contacts v.2",
+    "Contacts v.3",
+    "Specialty Pages",
+    "Coming Soon v.1",
+    "Coming Soon v.2",
+    "404 Error v.1",
+    "404 Error v.2",
+    "404 Error v.3",
+    "Account",
+    "Auth pages",
+    "Sign In",
+    "Sign Up",
+    "Sign In / Up",
+    "Password Recovery",
+    "Overview",
+    "Settings",
+    "Billing",
+    "Orders",
+    "Earnings",
+    "Chat (Messages)",
+    "Favorites (Wishlist)",
+    "UI Kit",
+    "Docs",
+    "Buy now",
+    "Landings",
+    "Mobile App Showcase"
+  ],
+  "headings": [
+    {
+      "tag": "H1",
+      "text": "Have a look Ar und!"
+    },
+    {
+      "tag": "H2",
+      "text": "Landing pages"
+    },
+    {
+      "tag": "H3",
+      "text": "Mobile App Showcase"
+    },
+    {
+      "tag": "H3",
+      "text": "Product Landing"
+    },
+    {
+      "tag": "H3",
+      "text": "SaaS v.1"
+    },
+    {
+      "tag": "H3",
+      "text": "SaaS v.2"
+    },
+    {
+      "tag": "H3",
+      "text": "SaaS v.3"
+    },
+    {
+      "tag": "H3",
+      "text": "SaaS v.4"
+    },
+    {
+      "tag": "H3",
+      "text": "Shop Homepage v.1"
+    },
+    {
+      "tag": "H3",
+      "text": "Shop Homepage v.2"
+    },
+    {
+      "tag": "H3",
+      "text": "Marketing Agency"
+    },
+    {
+      "tag": "H3",
+      "text": "Creative Agency"
+    },
+    {
+      "tag": "H3",
+      "text": "Conference (Event)"
+    },
+    {
+      "tag": "H3",
+      "text": "Influencer"
+    },
+    {
+      "tag": "H3",
+      "text": "Business Consulting"
+    },
+    {
+      "tag": "H3",
+      "text": "Corporate"
+    },
+    {
+      "tag": "H3",
+      "text": "Insurance Company"
+    },
+    {
+      "tag": "H3",
+      "text": "Coworking Space"
+    },
+    {
+      "tag": "H3",
+      "text": "Yoga Studio"
+    },
+    {
+      "tag": "H3",
+      "text": "Web Studio"
+    },
+    {
+      "tag": "H3",
+      "text": "Blog Homepage"
+    },
+    {
+      "tag": "H3",
+      "text": "Coming Soon"
+    },
+    {
+      "tag": "H2",
+      "text": "Inner pages for everything you may need"
+    },
+    {
+      "tag": "H2",
+      "text": "Inner pages for everything you may need"
+    },
+    {
+      "tag": "H2",
+      "text": "Around customizer"
+    },
+    {
+      "tag": "H2",
+      "text": "Change theme brand colors quickly and easily"
+    },
+    {
+      "tag": "H2",
+      "text": "Set up fonts from the huge Google font collection"
+    },
+    {
+      "tag": "H2",
+      "text": "Rounded or square? Customize borders as you wish"
+    },
+    {
+      "tag": "H2",
+      "text": "More Around features"
+    },
+    {
+      "tag": "H3",
+      "text": "Built with latest Bootstrap"
+    },
+    {
+      "tag": "H3",
+      "text": "Easy to Customize with Sass"
+    },
+    {
+      "tag": "H3",
+      "text": "Kick-start your development"
+    },
+    {
+      "tag": "H3",
+      "text": "Future-proof JavaScript"
+    },
+    {
+      "tag": "H3",
+      "text": "W3C valid HTML code"
+    },
+    {
+      "tag": "H3",
+      "text": "Premium Figma file included"
+    },
+    {
+      "tag": "H3",
+      "text": "Touch-enabled sliders"
+    },
+    {
+      "tag": "H3",
+      "text": "Google fonts"
+    },
+    {
+      "tag": "H3",
+      "text": "Vector based HD ready icons"
+    },
+    {
+      "tag": "H2",
+      "text": "Subscribe to Newsletter"
+    }
+  ],
+  "links": [
+    {
+      "href": "https://around.createx.studio/#customizer",
+      "text": "Customize"
+    },
+    {
+      "href": "https://around.createx.studio/index.html",
+      "text": "Around"
+    },
+    {
+      "href": "https://themes.getbootstrap.com/product/around-multipurpose-template-ui-kit/",
+      "text": "Buy now"
+    },
+    {
+      "href": "https://around.createx.studio/#",
+      "text": "Landings"
+    },
+    {
+      "href": "https://around.createx.studio/index.html",
+      "text": "Template Intro Page"
+    },
+    {
+      "href": "https://around.createx.studio/landing-mobile-app-showcase.html",
+      "text": "Mobile App Showcase"
+    },
+    {
+      "href": "https://around.createx.studio/landing-product.html",
+      "text": "Product Landing"
+    },
+    {
+      "href": "https://around.createx.studio/landing-saas-v1.html",
+      "text": "SaaS v.1"
+    },
+    {
+      "href": "https://around.createx.studio/landing-saas-v2.html",
+      "text": "SaaS v.2"
+    },
+    {
+      "href": "https://around.createx.studio/landing-saas-v3.html",
+      "text": "SaaS v.3"
+    },
+    {
+      "href": "https://around.createx.studio/landing-saas-v4.html",
+      "text": "SaaS v.4 New"
+    },
+    {
+      "href": "https://around.createx.studio/landing-shop-v1.html",
+      "text": "Shop Homepage v.1"
+    },
+    {
+      "href": "https://around.createx.studio/landing-shop-v2.html",
+      "text": "Shop Homepage v.2 New"
+    },
+    {
+      "href": "https://around.createx.studio/landing-marketing-agency.html",
+      "text": "Marketing Agency"
+    },
+    {
+      "href": "https://around.createx.studio/landing-creative-agency.html",
+      "text": "Creative Agency"
+    },
+    {
+      "href": "https://around.createx.studio/landing-conference.html",
+      "text": "Conference (Event)"
+    },
+    {
+      "href": "https://around.createx.studio/landing-web-studio.html",
+      "text": "Web Studio"
+    },
+    {
+      "href": "https://around.createx.studio/landing-corporate.html",
+      "text": "Corporate"
+    },
+    {
+      "href": "https://around.createx.studio/landing-insurance.html",
+      "text": "Insurance Company New"
+    },
+    {
+      "href": "https://around.createx.studio/landing-business-consulting.html",
+      "text": "Business Consulting"
+    },
+    {
+      "href": "https://around.createx.studio/landing-coworking-space.html",
+      "text": "Coworking Space"
+    },
+    {
+      "href": "https://around.createx.studio/landing-yoga-studio.html",
+      "text": "Yoga Studio"
+    },
+    {
+      "href": "https://around.createx.studio/landing-influencer.html",
+      "text": "Influencer"
+    },
+    {
+      "href": "https://around.createx.studio/landing-blog.html",
+      "text": "Blog Homepage"
+    },
+    {
+      "href": "https://around.createx.studio/#",
+      "text": "Pages"
+    },
+    {
+      "href": "https://around.createx.studio/#",
+      "text": "Portfolio"
+    },
+    {
+      "href": "https://around.createx.studio/portfolio-list-v1.html",
+      "text": "List View v.1"
+    },
+    {
+      "href": "https://around.createx.studio/portfolio-list-v2.html",
+      "text": "List View v.2"
+    },
+    {
+      "href": "https://around.createx.studio/portfolio-grid-v1.html",
+      "text": "Grid View v.1"
+    },
+    {
+      "href": "https://around.createx.studio/portfolio-grid-v2.html",
+      "text": "Grid View v.2"
+    },
+    {
+      "href": "https://around.createx.studio/portfolio-slider.html",
+      "text": "Slider View"
+    },
+    {
+      "href": "https://around.createx.studio/portfolio-single-v1.html",
+      "text": "Single Project v.1"
+    },
+    {
+      "href": "https://around.createx.studio/portfolio-single-v2.html",
+      "text": "Single Project v.2"
+    },
+    {
+      "href": "https://around.createx.studio/#",
+      "text": "Shop"
+    },
+    {
+      "href": "https://around.createx.studio/shop-catalog.html",
+      "text": "Catalog (Listing)"
+    },
+    {
+      "href": "https://around.createx.studio/shop-single.html",
+      "text": "Product Page"
+    },
+    {
+      "href": "https://around.createx.studio/shop-checkout.html",
+      "text": "Checkout"
+    },
+    {
+      "href": "https://around.createx.studio/#",
+      "text": "Blog"
+    },
+    {
+      "href": "https://around.createx.studio/blog-grid-sidebar.html",
+      "text": "Grid View with Sidebar"
+    },
+    {
+      "href": "https://around.createx.studio/blog-grid.html",
+      "text": "Grid View no Sidebar"
+    },
+    {
+      "href": "https://around.createx.studio/blog-list-sidebar.html",
+      "text": "List View with Sidebar"
+    },
+    {
+      "href": "https://around.createx.studio/blog-list.html",
+      "text": "List View no Sidebar"
+    },
+    {
+      "href": "https://around.createx.studio/blog-single-v1.html",
+      "text": "Single post v.1"
+    },
+    {
+      "href": "https://around.createx.studio/blog-single-v2.html",
+      "text": "Single post v.2"
+    },
+    {
+      "href": "https://around.createx.studio/blog-single-v3.html",
+      "text": "Single post v.3"
+    },
+    {
+      "href": "https://around.createx.studio/#",
+      "text": "About"
+    },
+    {
+      "href": "https://around.createx.studio/about-agency.html",
+      "text": "About - Agency"
+    },
+    {
+      "href": "https://around.createx.studio/about-product.html",
+      "text": "About - Product"
+    },
+    {
+      "href": "https://around.createx.studio/#",
+      "text": "Services"
+    },
+    {
+      "href": "https://around.createx.studio/services-v1.html",
+      "text": "Services v.1"
+    },
+    {
+      "href": "https://around.createx.studio/services-v2.html",
+      "text": "Services v.2"
+    },
+    {
+      "href": "https://around.createx.studio/services-v3.html",
+      "text": "Services v.3"
+    },
+    {
+      "href": "https://around.createx.studio/pricing.html",
+      "text": "Pricing"
+    },
+    {
+      "href": "https://around.createx.studio/#",
+      "text": "Contacts"
+    },
+    {
+      "href": "https://around.createx.studio/contacts-v1.html",
+      "text": "Contacts v.1"
+    },
+    {
+      "href": "https://around.createx.studio/contacts-v2.html",
+      "text": "Contacts v.2"
+    },
+    {
+      "href": "https://around.createx.studio/contacts-v3.html",
+      "text": "Contacts v.3"
+    },
+    {
+      "href": "https://around.createx.studio/#",
+      "text": "Specialty Pages"
+    },
+    {
+      "href": "https://around.createx.studio/coming-soon-v1.html",
+      "text": "Coming Soon v.1"
+    },
+    {
+      "href": "https://around.createx.studio/coming-soon-v2.html",
+      "text": "Coming Soon v.2"
+    },
+    {
+      "href": "https://around.createx.studio/404-v1.html",
+      "text": "404 Error v.1"
+    },
+    {
+      "href": "https://around.createx.studio/404-v2.html",
+      "text": "404 Error v.2"
+    },
+    {
+      "href": "https://around.createx.studio/404-v3.html",
+      "text": "404 Error v.3"
+    },
+    {
+      "href": "https://around.createx.studio/#",
+      "text": "Account"
+    },
+    {
+      "href": "https://around.createx.studio/#",
+      "text": "Auth pages"
+    },
+    {
+      "href": "https://around.createx.studio/account-signin.html",
+      "text": "Sign In"
+    },
+    {
+      "href": "https://around.createx.studio/account-signup.html",
+      "text": "Sign Up"
+    },
+    {
+      "href": "https://around.createx.studio/account-signinup.html",
+      "text": "Sign In / Up"
+    },
+    {
+      "href": "https://around.createx.studio/account-password-recovery.html",
+      "text": "Password Recovery"
+    },
+    {
+      "href": "https://around.createx.studio/account-overview.html",
+      "text": "Overview"
+    },
+    {
+      "href": "https://around.createx.studio/account-settings.html",
+      "text": "Settings"
+    },
+    {
+      "href": "https://around.createx.studio/account-billing.html",
+      "text": "Billing"
+    },
+    {
+      "href": "https://around.createx.studio/account-orders.html",
+      "text": "Orders"
+    },
+    {
+      "href": "https://around.createx.studio/account-earnings.html",
+      "text": "Earnings"
+    },
+    {
+      "href": "https://around.createx.studio/account-chat.html",
+      "text": "Chat (Messages)"
+    },
+    {
+      "href": "https://around.createx.studio/account-favorites.html",
+      "text": "Favorites (Wishlist)"
+    },
+    {
+      "href": "https://around.createx.studio/components/typography.html",
+      "text": "UI Kit"
+    },
+    {
+      "href": "https://around.createx.studio/docs/getting-started.html",
+      "text": "Docs"
+    },
+    {
+      "href": "https://themes.getbootstrap.com/product/around-multipurpose-template-ui-kit/",
+      "text": "Buy now"
+    },
+    {
+      "href": "https://around.createx.studio/#landings",
+      "text": "Landings"
+    },
+    {
+      "href": "https://around.createx.studio/landing-mobile-app-showcase.html",
+      "text": "Mobile App Showcase"
+    },
+    {
+      "href": "https://around.createx.studio/landing-product.html",
+      "text": "Product Landing"
+    },
+    {
+      "href": "https://around.createx.studio/landing-saas-v1.html",
+      "text": "SaaS v.1"
+    },
+    {
+      "href": "https://around.createx.studio/landing-saas-v2.html",
+      "text": "SaaS v.2"
+    },
+    {
+      "href": "https://around.createx.studio/landing-saas-v3.html",
+      "text": "SaaS v.3"
+    },
+    {
+      "href": "https://around.createx.studio/landing-saas-v4.html",
+      "text": "SaaS v.4"
+    },
+    {
+      "href": "https://around.createx.studio/landing-shop-v1.html",
+      "text": "Shop Homepage v.1"
+    },
+    {
+      "href": "https://around.createx.studio/landing-shop-v2.html",
+      "text": "Shop Homepage v.2"
+    },
+    {
+      "href": "https://around.createx.studio/landing-marketing-agency.html",
+      "text": "Marketing Agency"
+    },
+    {
+      "href": "https://around.createx.studio/landing-creative-agency.html",
+      "text": "Creative Agency"
+    },
+    {
+      "href": "https://around.createx.studio/landing-conference.html",
+      "text": "Conference (Event)"
+    },
+    {
+      "href": "https://around.createx.studio/landing-influencer.html",
+      "text": "Influencer"
+    },
+    {
+      "href": "https://around.createx.studio/landing-business-consulting.html",
+      "text": "Business Consulting"
+    },
+    {
+      "href": "https://around.createx.studio/landing-corporate.html",
+      "text": "Corporate"
+    },
+    {
+      "href": "https://around.createx.studio/landing-insurance.html",
+      "text": "Insurance Company"
+    },
+    {
+      "href": "https://around.createx.studio/landing-coworking-space.html",
+      "text": "Coworking Space"
+    },
+    {
+      "href": "https://around.createx.studio/landing-yoga-studio.html",
+      "text": "Yoga Studio"
+    },
+    {
+      "href": "https://around.createx.studio/landing-web-studio.html",
+      "text": "Web Studio"
+    },
+    {
+      "href": "https://around.createx.studio/landing-blog.html",
+      "text": "Blog Homepage"
+    },
+    {
+      "href": "https://createx.studio/",
+      "text": "Createx Studio"
+    },
+    {
+      "href": "https://around.createx.studio/#top",
+      "text": ""
+    }
+  ],
+  "title": "Around | Multipurpose Bootstrap Template",
+  "url": "https://around.createx.studio/"
+}
