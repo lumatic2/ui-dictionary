@@ -32,13 +32,15 @@ Goal: Convert selected external and local references into reusable design-system
 
 - Completed at: 2026-07-04
 - Summary: Captured Around/Createx as a multipurpose commercial template-system reference across landings, shop checkout, account, UI Kit, docs, customizer, package positioning, evidence screenshots, and agent asset mapping.
-<!-- harness:milestone id="RME3" status="pending" priority="P1" -->
+<!-- harness:milestone id="RME3" status="completed" priority="P1" evidence="docs/research/local-design-system-integration-audit.md" -->
 ### RME3 - Local Design Work Audit
 - DoD: `design-manual`, `claude-design-manual`, and design-related custom skills are classified as merge, link, supersede, or archive with concrete integration notes.
-- Evidence: `docs/research/local-design-system-integration-audit.md`
+- Evidence: docs/research/local-design-system-integration-audit.md
 - Gap: Prior Yusung design-system work exists outside this repo and can easily be duplicated or forgotten without an integration audit.
-- Status: [ ]
+- Status: [x]
 
+- Completed at: 2026-07-04
+- Summary: Audited local design-manual, claude-design-manual, and design-related custom skills; classified sources as merge, link, external archive, or executable agent layer; defined integration boundaries for the public design-system website and agent asset model.
 <!-- harness:milestone id="RME4" status="pending" priority="P1" -->
 ### RME4 - Mobile Platform Baseline
 - DoD: Apple HIG and Material Design are compared into a mobile baseline covering navigation, modality, inputs, density, platform affordances, motion, and accessibility.
