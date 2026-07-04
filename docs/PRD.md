@@ -63,6 +63,8 @@ Near-term MVP work should prioritize:
 - surface taxonomy beyond web-only categories;
 - an agent-usable asset model for tokens, patterns, examples, and code.
 
+The public website structure is defined in `docs/design-system/site-blueprint.md`. That blueprint is the source of truth for the first landing page, top-level navigation, site map, page types, public/internal content boundaries, implementation order, and first vertical slice.
+
 ## Non-Goals
 
 - Do not implement payments before the asset model and licensing boundaries are clear.
