@@ -50,13 +50,15 @@ Goal: Convert selected external and local references into reusable design-system
 
 - Completed at: 2026-07-04
 - Summary: Defined a mobile platform baseline from official Apple HIG and Material 3 references, covering navigation, modality, inputs, density, visual language, motion, accessibility, dark mode, mobile-specific data fields, and agent implementation rules.
-<!-- harness:milestone id="RME5" status="pending" priority="P2" -->
+<!-- harness:milestone id="RME5" status="completed" priority="P2" evidence="docs/research/product-system-exemplars.md" -->
 ### RME5 - Product-System Exemplar Map
 - DoD: Vercel/Geist, Stripe, Linear, Radix/Linear, and Around are mapped into product-system lessons for SaaS, developer tools, payment flows, dense operations UI, and commercial template systems.
-- Evidence: `docs/research/product-system-exemplars.md`
+- Evidence: docs/research/product-system-exemplars.md
 - Gap: The system needs more than Tailwind; it needs concrete quality bars from real product surfaces and commercial template systems.
-- Status: [ ]
+- Status: [x]
 
+- Completed at: 2026-07-04
+- Summary: Mapped Vercel/Geist, Stripe, Linear, Radix, and Around into product-system roles, transferable lessons, non-transferable boundaries, cross-exemplar selection rules, and website/agent/paid-asset quality bars.
 ## Archive Pointer
 
 Completed or archived milestone history lives in `BACKLOG.md`.
