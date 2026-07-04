@@ -41,13 +41,15 @@ Goal: Convert selected external and local references into reusable design-system
 
 - Completed at: 2026-07-04
 - Summary: Audited local design-manual, claude-design-manual, and design-related custom skills; classified sources as merge, link, external archive, or executable agent layer; defined integration boundaries for the public design-system website and agent asset model.
-<!-- harness:milestone id="RME4" status="pending" priority="P1" -->
+<!-- harness:milestone id="RME4" status="completed" priority="P1" evidence="docs/research/mobile-platform-design-baseline.md" -->
 ### RME4 - Mobile Platform Baseline
 - DoD: Apple HIG and Material Design are compared into a mobile baseline covering navigation, modality, inputs, density, platform affordances, motion, and accessibility.
-- Evidence: `docs/research/mobile-platform-design-baseline.md`
+- Evidence: docs/research/mobile-platform-design-baseline.md
 - Gap: The new Objective includes mobile apps, but the current implementation evidence is still mostly web/Tailwind-oriented.
-- Status: [ ]
+- Status: [x]
 
+- Completed at: 2026-07-04
+- Summary: Defined a mobile platform baseline from official Apple HIG and Material 3 references, covering navigation, modality, inputs, density, visual language, motion, accessibility, dark mode, mobile-specific data fields, and agent implementation rules.
 <!-- harness:milestone id="RME5" status="pending" priority="P2" -->
 ### RME5 - Product-System Exemplar Map
 - DoD: Vercel/Geist, Stripe, Linear, Radix/Linear, and Around are mapped into product-system lessons for SaaS, developer tools, payment flows, dense operations UI, and commercial template systems.
