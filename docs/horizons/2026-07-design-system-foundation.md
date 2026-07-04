@@ -26,4 +26,4 @@ Align the repository around a digital product design system that serves both hum
 
 ## Objective Impact
 
-This horizon moves the project from vocabulary catalog toward design-system foundation by making the broader cross-surface, human-facing, and agent-facing goal explicit.
+This horizon moved the project from vocabulary catalog toward design-system foundation by making the broader cross-surface, human-facing, and agent-facing goal explicit. It also produced the first operating contracts for reference intake, surface taxonomy, and the agent asset model, so future work can proceed without redefining the product each time.
