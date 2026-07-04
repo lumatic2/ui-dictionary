@@ -1,13 +1,15 @@
-# design-manual
+# ui-dictionary
 
-> 컴퓨터로 디자인하는 법을 총망라 — 바이브 코딩 시대의 디자인 방법론·하네스·지식 베이스
+> 유성의 디지털 제품 디자인 시스템 — 사람이 탐색하는 UI reference website + Codex/Claude Code가 활용하는 agent-facing design system
 
 ## 목적
 
-바이브 코딩(자연어 → UI)으로 디자이너 없이도 양질의 디자인을 뽑아내는 방법론을 정리한다.
-- **How**: AI 에이전트(Claude Code, Codex, Stitch 등)에게 디자인을 "어떻게 지시"하는지 — 프롬프트 패턴, DESIGN.md 작성법, 토큰 시스템, 검증 루프
-- **What**: 좋은 디자인의 구성요소(타이포·컬러·스페이싱·컴포넌트) 지식 정리
-- **Harness**: 재사용 가능한 스킬/서브에이전트/템플릿 — `~/projects/custom-skills/` 와 `~/projects/custom-agents/` 로 승격
+웹사이트, 모바일 앱, SaaS, 커머스, 대시보드, 문서 사이트, 운영 도구 등 디지털 제품 UI를 직접 보고, 비교하고, 재사용할 수 있는 디자인 시스템으로 구축한다.
+
+- **Website**: 사람이 UI surfaces, components, patterns, colors, typography, layout, motion, page examples를 탐색하는 공개 사이트
+- **Assets**: 향후 결제 사용자에게 더 자유로운 코드 복사, 에셋 다운로드, implementation pack 제공
+- **Agent System**: Codex, Claude Code가 AI 티가 덜 나는 제품 UI를 만들 수 있도록 tokens, pattern recipes, component guidance, prompts, anti-patterns 제공
+- **Reference Loop**: Tailwind/Tailwind Plus, Tailwind Labs repo, Apple HIG, Material Design, 고품질 SaaS/모바일 앱, 기존 `design-manual`/custom skills 작업을 근거 기반으로 흡수
 
 ## Tech Stack
 
@@ -19,10 +21,18 @@
 ## Structure
 
 ```
-design-manual/
+ui-dictionary/
 ├── CLAUDE.md                # (이 파일) 프로젝트 지침
 ├── README.md                # 외부용 진입점
 ├── ROADMAP.md               # 마일스톤
+├── docs/
+│   ├── OBJECTIVE.md         # 디자인 시스템 북극성
+│   ├── PRD.md               # 제품 계약
+│   ├── ARCHITECTURE.md      # 구조 계약
+│   ├── horizons/            # active horizon plans
+│   ├── plans/               # milestone plans
+│   ├── research/            # reference capture ledgers/evidence
+│   └── ui-vocabulary/       # original vocabulary source data
 ├── methodology/             # 방법론 — "어떻게 지시하는가"
 │   ├── 00-INDEX.md
 │   ├── design-md-guide.md   # DESIGN.md 작성·활용법
@@ -38,11 +48,11 @@ design-manual/
 │   ├── editorial.md
 │   ├── brutalist.md
 │   └── neo-claude.md
-└── examples/                # 실제 생성 결과물 (before/after, prompt 포함)
+└── examples/                # 실제 생성 결과물과 current React website
 ```
 
-> 스킬 자체는 본 레포가 아닌 `~/projects/custom-skills/` 에 산다 (예: `design-bootstrap`).
-> 본 레포는 그 스킬이 *호출하는 도구·템플릿·지식* 만 갖는다.
+> 스킬 자체는 본 레포가 아닌 `~/projects/custom-skills/` 에 산다 (예: `design-bootstrap`, `design-harness`, `design-bridge`).
+> 본 레포는 그 스킬이 호출하거나 참조할 수 있는 디자인 시스템 자산, 문서, 예시, 검증 증거를 갖는다.
 
 ## Conventions
 
@@ -60,6 +70,8 @@ design-manual/
 3. **새 방법론 발견** → `methodology/` 에 글로 정리 → 패턴이 굳어지면 `~/projects/custom-skills/<new-skill>/SKILL.md` 작성 → `bash ~/projects/custom-skills/setup.sh` 배포
 
 ## UI Vocabulary Authoring Workflow
+
+UI Vocabulary는 이제 전체 제품의 하위 capability다. 용어 데이터와 미니 컴포넌트는 계속 유지하되, 최종 목표는 웹 UI만이 아니라 모바일 앱, SaaS, 커머스, 대시보드, 문서 사이트 등 디지털 제품 surfaces를 포괄하는 디자인 시스템이다.
 
 UI Dictionary 용어 추가는 긴 검토 대기열이 아니라, 수집 단계에서 기존 데이터와 중복을 먼저 걸러낸 뒤 로컬 검증까지 끝내고 배포 직전에만 사용자 확인을 받는 워크플로우로 운영한다. 자세한 절차는 [docs/ui-vocabulary/authoring-workflow.md](docs/ui-vocabulary/authoring-workflow.md)를 따른다.
 

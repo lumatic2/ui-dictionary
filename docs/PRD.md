@@ -1,45 +1,80 @@
-# PRD — UI Vocabulary Encyclopedia
+# PRD - Yusung Digital Product Design System
 
 ## Problem
 
-바이브코딩 사용자와 초급 UI/UX 학습자는 원하는 화면 요소의 이름을 몰라 AI에게 구체적으로 요청하지 못한다. "예쁘게 만들어줘" 대신 "카드, 토글, 드롭다운, 모달을 넣어줘"처럼 말할 수 있으려면 이름, 생김새, 쓰임을 함께 익히는 자료가 필요하다.
+AI-assisted UI work often produces generic screens: weak hierarchy, default-looking colors, inconsistent spacing, shallow interaction states, and visual patterns that feel assembled rather than designed. Designers can solve this with Figma systems and taste, but Codex and Claude Code need a durable design system they can read and apply directly.
+
+The original UI vocabulary problem still matters: people need names, examples, and prompt language for UI parts. But the broader product goal is to turn those examples into a reusable design system for digital products.
 
 ## Product Goal
 
-UI 컴포넌트와 화면 요소의 이름, 생김새, 쓰임, AI 프롬프트 표현을 한 화면에서 배울 수 있는 웹 백과사전을 만든다.
+Build Yusung's digital product design system as:
 
-Seed visual: a local reference screenshot used only for layout direction. The runtime site must not depend on a local Desktop file.
+- a public website for browsing UI patterns, product surfaces, color, typography, layout, motion, and examples;
+- a paid asset surface where users can copy richer code and download reusable assets;
+- an agent-facing system that Codex and Claude Code can use to implement polished product UI.
+
+## Scope
+
+The system covers digital product UI broadly:
+
+- websites and landing pages;
+- mobile apps;
+- SaaS products and dashboards;
+- commerce flows;
+- documentation sites;
+- marketing pages;
+- internal tools and application UI;
+- reusable components, states, interactions, and visual tokens.
 
 ## Target Users
 
-- UI 용어를 잘 모르는 바이브코딩 사용자
-- UI/UX 디자인을 처음 공부하는 사람
-- AI에게 화면을 더 정확하게 지시하고 싶은 개발자/기획자
+- Yusung, as a designer-builder who wants durable proof of a personal design system.
+- Developers and operators using AI coding agents to build interfaces.
+- Vibe-coding users who need better UI vocabulary, examples, and prompts.
+- Product teams or solo builders who want reusable UI examples and code assets.
 
-## MVP Scope
+## Core Experiences
 
-- 용어 데이터셋: 6개 카테고리, 1차 60개 용어
-- 검색: 한국어 이름, 영어 이름, alias, 설명 기반 검색
-- 카드 그리드: 용어명 옆에 실제 UI가 어떻게 생겼는지 보이는 미니 컴포넌트 포함
-- 상세 보기: 생김새, 쓰임, 피해야 할 상황, 비슷한 용어와 차이, AI에게 말하는 문장
-- 포스터 뷰: seed 이미지처럼 카테고리별 요약을 한 화면에 볼 수 있는 레이아웃
+### Browse And Compare
+
+Users can browse product surfaces, UI patterns, components, examples, typography, colors, layout systems, and interaction states with visual evidence.
+
+### Learn The Language
+
+Each pattern explains what it is, where it works, where it fails, related patterns, and how to ask an AI agent to implement it.
+
+### Copy And Reuse
+
+Free users can inspect examples and learn from them. Paid users eventually get broader code copy, asset download, and implementation packs.
+
+### Agent Guidance
+
+Codex and Claude Code can consume the same system as tokens, recipes, prompts, constraints, and anti-patterns.
+
+## MVP Direction
+
+The current static React site remains the first product surface. Tailwind/Tailwind Plus parity work is retained as reference-backed implementation evidence, but future work must label what is reference, what is adapted, and what is Yusung's own system.
+
+Near-term MVP work should prioritize:
+
+- Objective, ROADMAP, PRD, and Architecture alignment;
+- reference strategy for Tailwind, Tailwind Labs, mobile guidelines, SaaS products, and local design-manual assets;
+- surface taxonomy beyond web-only categories;
+- an agent-usable asset model for tokens, patterns, examples, and code.
 
 ## Non-Goals
 
-- 퀴즈 기능은 만들지 않는다.
-- 로그인, 계정, 서버 저장 기능은 MVP에 넣지 않는다.
-- 이미지 생성 모델에 의존하지 않는다. 웹 컴포넌트를 캡처하거나 다운로드하는 방향으로 해결한다.
-- cookbook을 먼저 통합하지 않는다. vocabulary site가 먼저다.
+- Do not implement payments before the asset model and licensing boundaries are clear.
+- Do not make the system web-only.
+- Do not blindly copy Tailwind, Apple, Material, or SaaS product identities.
+- Do not replace the human-facing website with only machine-readable docs.
+- Do not import other local design repositories until a reference/integration strategy exists.
 
 ## Success Criteria
 
-- 사용자가 "토글", "모달", "드롭다운"을 검색해 같은 카드를 찾을 수 있다.
-- 사용자가 "toggle", "modal", "dropdown"으로도 같은 카드를 찾을 수 있다.
-- 카드만 봐도 컴포넌트의 형태를 대략 이해할 수 있다.
-- 각 용어는 AI 프롬프트에 바로 넣을 수 있는 한국어 문장을 가진다.
-- seed 이미지처럼 용어 옆에 실제 UI 미니 컴포넌트가 배치된다.
-
-## Open Follow-Ups
-
-- 포스터 PNG 다운로드는 MVP 이후 H3에서 구현한다.
-- cookbook과의 연결은 term detail 하단 advanced link로 나중에 붙인다.
+- The website shows a broad, coherent design system rather than only a term catalog.
+- A user can understand differences between product surfaces such as mobile app, SaaS dashboard, commerce flow, documentation, and marketing page.
+- Each major example has visual evidence and usable implementation guidance.
+- Codex and Claude Code can use the system to produce UI with better hierarchy, spacing, typography, color, interaction states, and reduced AI-generic feel.
+- Future paid features have a clear path: copyable code, downloadable assets, and reusable implementation packs.
