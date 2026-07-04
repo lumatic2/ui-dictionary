@@ -56,6 +56,7 @@ These references are useful because they are product-grade, not because they are
 | Stripe UI components and Elements (`https://docs.stripe.com/stripe-apps/components`, `https://stripe.com/payments/elements`) | Fintech/payment form UX, high-trust flows, developer docs | form composition, checkout constraints, security-adjacent UI, docs-to-code path | Stripe brand colors, marks, or payment-specific flows outside relevant surfaces |
 | Linear brand and product UI notes (`https://linear.app/brand`, `https://linear.app/now/how-we-redesigned-the-linear-ui`) | Dense SaaS product UI, hierarchy, navigation, product taste | density, sidebar/tabs/header hierarchy, reduced noise, product-page storytelling | Linear's brand identity or exact interface |
 | Radix Linear case study (`https://www.radix-ui.com/primitives/case-studies/linear`) | Accessibility primitive strategy for SaaS components | primitive/component separation, accessible overlays/forms/controls | assuming Radix is mandatory for every implementation |
+| Around by Createx Studio (`https://around.createx.studio/`) | Multipurpose template-system breadth across landings, pages, account flows, UI kit, docs, and theme customization | template catalog IA, landing/page/account coverage, theme customizer controls, Bootstrap/Figma handoff claims, light/dark and asset-pack positioning | Bootstrap-specific implementation as a forced stack, exact template visuals, paid package source |
 
 ### Tier 3 - Local Design-System Work
 
@@ -129,6 +130,7 @@ Goal: study product-grade SaaS/developer-tool surfaces.
 - Stripe: high-trust form/payment/product docs.
 - Linear: dense SaaS app hierarchy and product tone.
 - Radix/Linear: accessibility primitive strategy.
+- Around/Createx: multipurpose template catalog, page breadth, UI kit/docs/customizer, and packaged asset positioning.
 - Output: `docs/research/product-system-exemplars.md`.
 
 ### R5 - Local Design Work Audit
@@ -144,7 +146,7 @@ Goal: integrate prior Yusung design-system efforts without duplicating or overwr
 1. R1 Tailwind Site And Plus System: highest continuity with current work.
 2. R5 Local Design Work Audit: prevents duplicate effort and recovers prior design-system thinking.
 3. R3 Mobile Platform Baseline: corrects the web-only bias early.
-4. R4 Product-System Exemplars: expands beyond Tailwind into SaaS, fintech, and developer-tool quality bars.
+4. R4 Product-System Exemplars: expands beyond Tailwind into SaaS, fintech, developer-tool, and multipurpose template quality bars.
 5. R2 Tailwind Labs Repo Deep Dive: valuable, but should follow site/reference model clarity.
 
 ## DSF2 Completion Check
