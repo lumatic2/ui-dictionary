@@ -21,13 +21,15 @@ Goal: SSOT(토큰·분류·레시피)를 Codex/Claude Code가 스스로 발견·
 
 - Completed at: 2026-07-07
 - Summary: llms.txt discovery layer live — SSOT-derived, link-only (C-10), failure-mode verified
-<!-- harness:milestone id="AG2" status="active" priority="P0" -->
+<!-- harness:milestone id="AG2" status="completed" priority="P0" evidence="custom-skills 4b176a8 (+3213342 prior guards); setup.sh deploy [OK] design-screen/design-harness x claude+codex; smoke: llms.txt->button.md recipe contract fetch" -->
 ### AG2 - custom-skills 소비 계층
 - DoD: design-harness §4 SSOT 분기 + design-screen §2/§5 정정 + 스킬이 recipes/·토큰 SSOT(AG1 인덱스 포함)를 소비 좌표로 참조 + setup.sh 재배포 + 스킬 경유 소비 smoke 1회.
-- Evidence: custom-skills 커밋 + 재배포 로그 + 소비 smoke 기록
+- Evidence: custom-skills 4b176a8 (+3213342 prior guards); setup.sh deploy [OK] design-screen/design-harness x claude+codex; smoke: llms.txt->button.md recipe contract fetch
 - Gap: 스킬 영향 감사(docs/research/design-skills-impact-audit.md)의 실행 계획이 미이행 — 스킬은 아직 DESIGN.md 손편집 정본 시대를 전제한다.
-- Status: [ ]
+- Status: [x]
 
+- Completed at: 2026-07-07
+- Summary: design-screen/design-harness now consume recipes/ locally and ui.askewly.com/llms.txt remotely
 <!-- harness:milestone id="AG3" status="pending" priority="P0" -->
 ### AG3 - 외부 프로젝트 실전 실증
 - DoD: 외부 레포(development-dictionary — 2026-07-07 확정) 1건에서 에이전트가 진입점(스킬 또는 llms.txt) 경유로 SSOT를 소비해 UI 구현(색 리터럴 0 기준 계승). 부족 레시피는 수요 주도 확장.
