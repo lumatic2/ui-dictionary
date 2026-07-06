@@ -35,8 +35,8 @@ ui-dictionary가 `tokens/askewly.tokens.json`(DTCG)을 정본으로 세우면서
 4. `bash ~/projects/custom-skills/setup.sh` 재배포
 5. (후속 확인) design-manual 레포 자체의 SSOT 지원 여부는 별도 판단 — 이번 범위 밖
 
-## 미확인
+## 미확인 → 해소 내역
 
-- design-bridge 매핑표와 `generate-tokens.mjs` 출력 네이밍 대조
-- `npm run lint:design` 스크립트의 실제 구현 (design-screen §5 경로)
-- design-manual `schema/design-md.schema.json`과 새 frontmatter 생성물의 호환성
+- ~~design-bridge 매핑표와 `generate-tokens.mjs` 출력 네이밍 대조~~ → **해소 (2026-07-07 대조 완료)**: 비호환이지만 수정 불요. design-bridge는 `theme.generated.css`의 `--color-<semantic>` 중간 변수를 전제하는데 ui-dictionary `tokens.css`는 리터럴 직결 방식 — 다만 ui-dictionary는 브리지가 할 일을 자체 파이프라인으로 선행 완료한 상태라 브리지가 필요 없다. 향후 다른 프로젝트로 토큰을 이식할 때는 `generate-tokens.mjs`에 `--color-<semantic-path>` 변수 블록 방출을 추가하면 브리지를 무수정 재사용 가능 (백로그).
+- `npm run lint:design` 스크립트의 실제 구현 (design-screen §5 경로) — 미확인 유지
+- design-manual `schema/design-md.schema.json`과 새 frontmatter 생성물의 호환성 — 간접 확인됨 (pre-commit 4단계 lint가 재생성 DESIGN.md를 PASS, 2026-07-07 커밋 dfac711)
