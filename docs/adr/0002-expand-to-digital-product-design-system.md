@@ -8,11 +8,11 @@ Accepted
 
 The project began as a UI vocabulary encyclopedia for people who needed better names, examples, and prompt phrases for UI elements. Recent work expanded the site toward Tailwind Plus-style page catalogs, documentation pages, interactive component examples, and reference-backed visual parity.
 
-The intended product is now broader. It should become Yusung's digital product design system: a human-facing website and an agent-facing implementation system for producing better product UI with Codex and Claude Code.
+The intended product is now broader. It should become Askewly Design: a human-facing website and an agent-facing implementation system for producing better product UI with Codex and Claude Code.
 
 ## Decision
 
-Reframe the project from "UI Vocabulary Encyclopedia" to "Yusung Digital Product Design System."
+Reframe the project from "UI Vocabulary Encyclopedia" to "Askewly Design."
 
 The system covers websites, mobile apps, SaaS products, commerce flows, dashboards, documentation sites, marketing pages, internal tools, and application UI. The public site remains the primary surface, but the repository must also produce agent-readable tokens, pattern rules, component recipes, prompts, anti-patterns, and reusable code/assets.
 

@@ -30,7 +30,7 @@ This blueprint must exist before page-by-page implementation continues. Otherwis
 
 The homepage should say, implicitly and explicitly:
 
-> Yusung has a broad, working digital product design system. You can browse it like a visual encyclopedia, inspect complete product UI examples, learn the behavior and design reasoning behind them, and eventually copy/download original implementation assets or use them through coding agents.
+> Askewly Design is a broad, working digital product design system. You can browse it like a visual encyclopedia, inspect complete product UI examples, learn the behavior and design reasoning behind them, and eventually copy/download original implementation assets or use them through coding agents.
 
 The site is not only:
 
@@ -64,18 +64,17 @@ It should be designed like a real product website, not like an internal document
 ### Homepage job
 
 1. Declare the system:
-   - "Yusung Digital Product Design System"
+   - "Askewly Design"
    - subtitle: visual UI encyclopedia, product surface library, and agent-ready implementation system.
 2. Show real UI immediately:
    - an immersive mosaic of working interface examples from Marketing, SaaS, Commerce, Mobile, Docs, and Components.
    - examples should be visible in the first viewport; no abstract hero illustration.
 3. Expose the main browsing paths:
-   - Product Surfaces
+   - Docs
    - Patterns
-   - Components
-   - Foundations
-   - Agent Recipes
-   - Assets
+   - Showcase
+   - Resources
+   - Pro
 4. Communicate the value split:
    - browse and learn publicly;
    - copy/download richer implementation packs later;
@@ -93,7 +92,7 @@ Landing
 │   ├── short promise
 │   ├── search / command input
 │   └── live example mosaic
-├── Browse By Surface
+├── Browse By Pattern
 │   ├── Websites
 │   ├── SaaS & Dashboards
 │   ├── Commerce
@@ -108,28 +107,28 @@ Landing
 │   ├── Overlays
 │   ├── Forms
 │   └── Data Display
-├── Component Primitives
+├── Docs Preview
 │   ├── Dialog
 │   ├── Dropdown menu
 │   ├── Popover
 │   ├── Tabs
 │   ├── Select
 │   └── Command palette
-├── Foundations
+├── Resources Preview
 │   ├── Color
 │   ├── Typography
 │   ├── Spacing
 │   ├── Motion
 │   ├── Accessibility
 │   └── Tokens
-├── Agent-Ready Recipes
+├── Agent-Ready Docs
 │   ├── what agents can read
 │   ├── recipe preview
 │   └── verification checklist
-└── Asset Packs / Pricing Teaser
+└── Pro Teaser
     ├── public browse
     ├── free copy snippets
-    ├── paid copy/download future
+    ├── paid copy/download access
     └── licensing/provenance boundary
 ```
 
@@ -157,10 +156,11 @@ The first viewport must not be:
 Candidate hero copy:
 
 ```text
-Yusung Digital Product Design System
+Askewly Design
 
-Browse complete product UI patterns, inspect working interactions,
-and give Codex or Claude Code design recipes that produce less generic screens.
+A product interface system for web, app, SaaS, and commerce.
+Browse working patterns, inspect interaction states, and give Codex or Claude Code
+design recipes that produce less generic screens.
 ```
 
 Candidate homepage CTAs:
@@ -180,44 +180,69 @@ Candidate first mosaic items:
 
 ## Top-Level Navigation
 
-Use a structure that can scale beyond Tailwind's current category set.
+Use a compact structure that works like a public product site. Detailed category trees live inside each section instead of crowding the global header.
 
 ```text
-Home
-Surfaces
-Patterns
-Components
-Foundations
-Recipes
-Assets
 Docs
+Patterns
+Showcase
+Resources
+Pro
 ```
 
 ### Navigation roles
 
 | Nav item | User question answered |
 |---|---|
-| Home | What is this system and why should I trust it? |
-| Surfaces | What complete product UI can I browse by use case? |
-| Patterns | What reusable page sections and workflows can I inspect? |
-| Components | What primitives and interaction behaviors are available? |
-| Foundations | What color, type, spacing, motion, accessibility, and tokens drive the system? |
-| Recipes | How do Codex/Claude Code use this system to build better UI? |
-| Assets | What can I copy or download? What is free vs paid? |
-| Docs | How is the system structured, sourced, verified, and licensed? |
+| Docs | How is Askewly Design structured, sourced, verified, licensed, and used by agents? Includes foundations, components, behavior contracts, and recipes. |
+| Patterns | What reusable product surfaces, page sections, workflows, and primitives can I inspect? Includes Marketing, Application UI, Ecommerce, Mobile, Components, and Foundations. |
+| Showcase | What complete websites, apps, SaaS screens, commerce flows, and documentation experiences prove the system works? |
+| Resources | What essays, reference studies, capture ledgers, and design notes explain the taste and source model? |
+| Pro | What becomes available after payment: full code, downloadable assets, packs, templates, and expanded implementation recipes? |
 
 ## Site Map
 
 ```text
 /
-├── /surfaces
-│   ├── /surfaces/websites
-│   ├── /surfaces/saas-dashboards
-│   ├── /surfaces/commerce
-│   ├── /surfaces/mobile-apps
-│   ├── /surfaces/documentation
-│   └── /surfaces/internal-tools
+├── /docs
+│   ├── /docs/getting-started
+│   ├── /docs/foundations
+│   │   ├── /docs/foundations/color
+│   │   ├── /docs/foundations/typography
+│   │   ├── /docs/foundations/spacing-layout
+│   │   ├── /docs/foundations/motion
+│   │   ├── /docs/foundations/accessibility
+│   │   ├── /docs/foundations/dark-mode
+│   │   └── /docs/foundations/tokens
+│   ├── /docs/components
+│   │   ├── /docs/components/dialog
+│   │   ├── /docs/components/dropdown-menu
+│   │   ├── /docs/components/popover
+│   │   ├── /docs/components/disclosure
+│   │   ├── /docs/components/tabs
+│   │   ├── /docs/components/select
+│   │   ├── /docs/components/autocomplete
+│   │   ├── /docs/components/command-palette
+│   │   └── /docs/components/copy-button
+│   ├── /docs/recipes
+│   │   ├── /docs/recipes/agent-overview
+│   │   ├── /docs/recipes/saas-dashboard
+│   │   ├── /docs/recipes/checkout-flow
+│   │   ├── /docs/recipes/docs-leaf-page
+│   │   ├── /docs/recipes/mobile-settings
+│   │   └── /docs/recipes/verification-checklists
+│   ├── /docs/source-model
+│   ├── /docs/reference-capture
+│   ├── /docs/schema
+│   └── /docs/contributing
 ├── /patterns
+│   ├── /patterns/surfaces
+│   │   ├── /patterns/surfaces/websites
+│   │   ├── /patterns/surfaces/saas-dashboards
+│   │   ├── /patterns/surfaces/commerce
+│   │   ├── /patterns/surfaces/mobile-apps
+│   │   ├── /patterns/surfaces/documentation
+│   │   └── /patterns/surfaces/internal-tools
 │   ├── /patterns/marketing
 │   ├── /patterns/application-ui
 │   ├── /patterns/ecommerce
@@ -227,49 +252,31 @@ Docs
 │   ├── /patterns/data-display
 │   ├── /patterns/feedback
 │   └── /patterns/layout
-├── /components
-│   ├── /components/dialog
-│   ├── /components/dropdown-menu
-│   ├── /components/popover
-│   ├── /components/disclosure
-│   ├── /components/tabs
-│   ├── /components/select
-│   ├── /components/autocomplete
-│   ├── /components/command-palette
-│   └── /components/copy-button
-├── /foundations
-│   ├── /foundations/color
-│   ├── /foundations/typography
-│   ├── /foundations/spacing-layout
-│   ├── /foundations/motion
-│   ├── /foundations/accessibility
-│   ├── /foundations/dark-mode
-│   └── /foundations/tokens
-├── /recipes
-│   ├── /recipes/agent-overview
-│   ├── /recipes/saas-dashboard
-│   ├── /recipes/checkout-flow
-│   ├── /recipes/docs-leaf-page
-│   ├── /recipes/mobile-settings
-│   └── /recipes/verification-checklists
-├── /assets
-│   ├── /assets/free
-│   ├── /assets/packs
-│   ├── /assets/license
-│   └── /assets/provenance
-└── /docs
-    ├── /docs/getting-started
-    ├── /docs/source-model
-    ├── /docs/reference-capture
-    ├── /docs/schema
-    └── /docs/contributing
+├── /showcase
+│   ├── /showcase/websites
+│   ├── /showcase/saas
+│   ├── /showcase/mobile
+│   ├── /showcase/commerce
+│   └── /showcase/documentation
+├── /resources
+│   ├── /resources/blog
+│   ├── /resources/reference-studies
+│   ├── /resources/capture-ledgers
+│   └── /resources/design-notes
+└── /pro
+    ├── /pro/overview
+    ├── /pro/asset-packs
+    ├── /pro/templates
+    ├── /pro/code-access
+    ├── /pro/license
+    └── /pro/provenance
 ```
 
 ## Page Types
 
 ### 1. Surface Index Page
 
-Example: `/surfaces/saas-dashboards`
+Example: `/patterns/surfaces/saas-dashboards`
 
 Purpose:
 
@@ -308,7 +315,7 @@ Required content:
 
 ### 3. Component Leaf Page
 
-Example: `/components/dropdown-menu`
+Example: `/docs/components/dropdown-menu`
 
 Purpose:
 
@@ -336,7 +343,7 @@ Reference basis:
 
 ### 4. Foundation Page
 
-Example: `/foundations/typography`
+Example: `/docs/foundations/typography`
 
 Purpose:
 
@@ -360,7 +367,7 @@ Reference basis:
 
 ### 5. Agent Recipe Page
 
-Example: `/recipes/checkout-flow`
+Example: `/docs/recipes/checkout-flow`
 
 Purpose:
 
@@ -380,9 +387,9 @@ Required content:
 - verification checklist;
 - linked examples and code assets.
 
-### 6. Asset Pack Page
+### 6. Pro Asset Pack Page
 
-Example: `/assets/packs/saas-dashboard-command-center`
+Example: `/pro/asset-packs/saas-dashboard-command-center`
 
 Purpose:
 
@@ -447,7 +454,7 @@ Do not resume random leaf-page polishing yet. Use this order:
    - replace the current `ui.askewly.com/` first page with the homepage defined above.
    - verify desktop/mobile first viewport.
 2. **Blueprint-to-app navigation**
-   - align current app navigation to Home / Surfaces / Patterns / Components / Foundations / Recipes / Assets / Docs.
+   - align current app navigation to Docs / Patterns / Showcase / Resources / Pro.
 3. **One complete vertical slice**
    - pick one surface, one pattern collection, one component leaf, one recipe, and one asset page.
    - recommended first slice: SaaS dashboard -> Application UI -> Command palette or Dropdown menu -> SaaS dashboard recipe -> dashboard asset pack.

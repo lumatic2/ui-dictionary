@@ -1,0 +1,21 @@
+{
+  "project": "ui-dictionary",
+  "phase": "public-site-shell",
+  "mode": "product",
+  "steps": [
+    {
+      "step": 0,
+      "name": "homepage-and-ia-entrypoints",
+      "status": "completed",
+      "completed_at": "2026-07-04T20:49:00+09:00",
+      "summary": "Added the Askewly Design homepage component and wired the current app to a home page mode plus compact top-level IA navigation into Docs, Patterns, Showcase, Resources, and Pro."
+    },
+    {
+      "step": 1,
+      "name": "verification-and-status-sync",
+      "status": "completed",
+      "completed_at": "2026-07-04T20:49:00+09:00",
+      "summary": "Verified build, lint, and Chrome MCP smoke routes for home, Application UI, and Command palette, then completed PSS1 in ROADMAP."
+    }
+  ]
+}

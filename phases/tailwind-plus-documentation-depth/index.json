@@ -1,0 +1,103 @@
+{
+  "project": "ui-dictionary",
+  "phase": "tailwind-plus-documentation-depth",
+  "mode": "product",
+  "steps": [
+    {
+      "step": 0,
+      "name": "reference-capture-matrix-and-content-ledger",
+      "status": "completed",
+      "started_at": "2026-07-03T00:00:00+09:00",
+      "completed_at": "2026-07-03T00:00:00+09:00",
+      "summary": "Captured all 15 Tailwind Plus Documentation leaf pages with fixed 1440px desktop and 390px mobile Playwright screenshots under docs/research/assets/tailwind-plus-documentation-depth-2026-07-03/. Created docs/research/tailwind-plus-documentation-depth-ledger.md with URL, local nav id, reference structure, and screenshot paths for every row. Verification confirmed 30 PNG screenshots, 15 ledger rows, 15 desktop meta rows, 15 mobile meta rows, and zero mobile horizontal-overflow reference pages."
+    },
+    {
+      "step": 1,
+      "name": "docs-data-model-and-article-renderer-extraction",
+      "status": "completed",
+      "started_at": "2026-07-03T00:00:00+09:00",
+      "completed_at": "2026-07-03T00:00:00+09:00",
+      "summary": "Extracted Documentation nav groups and article page data from App.tsx into examples/ui-vocabulary-site/src/lib/documentation-pages.ts while preserving existing docs nav ids and route behavior. npm run build passed. Chrome smoke on http://127.0.0.1:5185 confirmed Getting set up and Command palette render article pages with On this page, no raw search fallback, no horizontal overflow, and zero console errors."
+    },
+    {
+      "step": 2,
+      "name": "getting-started-pages",
+      "status": "completed",
+      "started_at": "2026-07-03T00:00:00+09:00",
+      "completed_at": "2026-07-03T00:00:00+09:00",
+      "summary": "Expanded all five Getting started pages in examples/ui-vocabulary-site/src/lib/documentation-pages.ts with page-specific setup, HTML, React, Vue, and Assets guidance. npm run build passed. Local desktop/mobile captures for all five pages were saved under docs/research/assets/tailwind-plus-documentation-depth-2026-07-03/local-step2/, and smoke-meta.json confirms 10 captures with article rendered, no fallback, no horizontal overflow, and expected page titles."
+    },
+    {
+      "step": 3,
+      "name": "elements-batch-a",
+      "status": "completed",
+      "started_at": "2026-07-03T00:00:00+09:00",
+      "completed_at": "2026-07-03T00:00:00+09:00",
+      "summary": "Expanded Elements batch A pages: Introduction, Autocomplete, Command palette, Copy button, and Dialog. Each page now has page-specific when-to-use guidance, interaction or accessibility contracts, pitfalls/failure modes, and API/state rows where useful. npm run build and python scripts/validate-ui-vocabulary.py passed. Local desktop/mobile captures for all five pages were saved under docs/research/assets/tailwind-plus-documentation-depth-2026-07-03/local-step3/, and smoke-meta.json confirms 10 captures with article rendered, no fallback, no horizontal overflow, and expected page titles."
+    },
+    {
+      "step": 4,
+      "name": "elements-batch-b",
+      "status": "completed",
+      "started_at": "2026-07-03T00:00:00+09:00",
+      "completed_at": "2026-07-03T00:00:00+09:00",
+      "summary": "Expanded Elements batch B pages: Disclosure, Dropdown menu, Popover, Select, and Tabs. Each page now has page-specific usage guidance, state/keyboard behavior, comparison notes for commonly confused patterns, and API/state rows. npm run build and python scripts/validate-ui-vocabulary.py passed. Local desktop/mobile captures for all five pages were saved under docs/research/assets/tailwind-plus-documentation-depth-2026-07-03/local-step4/, and smoke-meta.json confirms 10 captures with article rendered, no fallback, no horizontal overflow, and expected page titles."
+    },
+    {
+      "step": 5,
+      "name": "cross-page-docs-qa",
+      "status": "completed",
+      "started_at": "2026-07-03T00:00:00+09:00",
+      "completed_at": "2026-07-03T00:00:00+09:00",
+      "summary": "Completed final cross-page Documentation QA. npm run build, npm run lint, python scripts/validate-ui-vocabulary.py, and npm run audit:visuals passed; lint still reports only the pre-existing shadcn fast-refresh warnings in button.tsx, badge.tsx, and tabs.tsx. Fixed topbar search so Documentation leaf suggestions open docs routes, verified Command palette opens ?filter=nav%3Adocs-elements-command-palette&page=docs. Final fixed-viewport smoke checked all 15 docs routes on desktop and mobile for 30 route-viewport combinations with zero article, fallback, overflow, title, or console-error failures."
+    },
+    {
+      "step": 6,
+      "name": "element-preview-visual-correction",
+      "status": "completed",
+      "started_at": "2026-07-03T05:07:18+09:00",
+      "completed_at": "2026-07-03T05:07:18+09:00",
+      "summary": "Corrected the Documentation element leaves from prose-heavy pages to Tailwind-style leaf pages with concrete visual preview cards, Component API, Examples, and On this page entries. Fixed misassigned preview variants for Command palette, Copy button, Dialog, Disclosure, and Dropdown menu. Added element-specific previews for all nine element leaves and used the generated Command palette background image. npm run build, npm run lint, python scripts/validate-ui-vocabulary.py, npm run audit:visuals, and a Playwright desktop/mobile correction pass over all nine element leaves passed with expected title, preview DOM, Component API, Examples, and no horizontal overflow."
+    },
+    {
+      "step": 7,
+      "name": "interactive-element-examples",
+      "status": "completed",
+      "started_at": "2026-07-03T05:07:18+09:00",
+      "completed_at": "2026-07-03T05:07:18+09:00",
+      "summary": "Replaced the static Documentation element preview rendering path with a stateful DocsInteractiveElementPreview. Autocomplete now filters and selects people; Command palette filters, selects, closes, and reopens; Dropdown menu opens, selects actions, closes, and reopens; Copy button writes to clipboard when available and shows Copied feedback; Dialog cancels/reopens/deletes; Disclosure toggles rows; Popover toggles and switches density; Select changes value; Tabs switch active panels. npm run build, npm run lint, python scripts/validate-ui-vocabulary.py, npm run audit:visuals, desktop Playwright interaction smoke for all nine element leaves, and mobile interaction smoke for representative controls all passed."
+    },
+    {
+      "step": 8,
+      "name": "dropdown-menu-anchor-and-transition-hotfix",
+      "status": "completed",
+      "started_at": "2026-07-03T05:07:18+09:00",
+      "completed_at": "2026-07-03T05:07:18+09:00",
+      "summary": "Fixed the Dropdown menu preview so the Options trigger no longer moves when the panel opens, closes, or an action is selected. The trigger, panel, and selected-state label now live in an absolute-positioned local stage; the menu remains mounted and uses opacity, scale, and translate classes for open/close animation. npm run build passed. Playwright measured identical Options trigger bounding boxes across open, closed, reopened, and after-selection states, verified transition classes, and captured updated evidence screenshots."
+    },
+    {
+      "step": 9,
+      "name": "element-animation-polish-pass",
+      "status": "completed",
+      "started_at": "2026-07-03T05:07:18+09:00",
+      "completed_at": "2026-07-03T05:07:18+09:00",
+      "summary": "Added animation polish across the remaining Documentation element examples. Command palette, Autocomplete, Popover, Select, and Dialog now keep panels mounted and animate opacity, scale, translate, or max-height instead of hard swapping UI. Copy button has copied feedback animation; Disclosure uses animated grid row expansion with aria-hidden on collapsed content; Tabs use an animated active indicator and panel fade/slide. Fixed Dialog background accessibility so the trigger is hidden from the accessibility tree while the modal is open. npm run build, npm run lint, python scripts/validate-ui-vocabulary.py, npm run audit:visuals, desktop Playwright animation smoke across all nine element leaves, and mobile animation smoke across representative controls all passed."
+    },
+    {
+      "step": 10,
+      "name": "reference-recheck-and-leaf-preview-parity",
+      "status": "completed",
+      "started_at": "2026-07-03T05:07:18+09:00",
+      "completed_at": "2026-07-03T05:07:18+09:00",
+      "summary": "Rechecked Tailwind Plus leaf screenshots for Command palette, Disclosure, Popover, and Tabs and replaced the mismatched previews with reference-aligned interactive examples. Command palette now uses the single-list mountain-background command surface and no longer has the wrapping-prone right preview pane. Disclosure now uses an FAQ accordion with plus/minus controls, Popover uses a Solutions flyout with option rows and footer actions, and Tabs uses a Write/Preview comment editor. Mobile stages for these leaves use a taller aspect ratio to avoid clipped fragments. npm run build, npm run lint, python scripts/validate-ui-vocabulary.py, npm run audit:visuals, desktop Playwright interaction smoke, and mobile Playwright route/overflow smoke all passed; lint still has only existing shadcn fast-refresh warnings."
+    },
+    {
+      "step": 11,
+      "name": "existing-tab-documentation-completion-audit",
+      "status": "completed",
+      "started_at": "2026-07-04T22:02:00+09:00",
+      "completed_at": "2026-07-04T22:14:00+09:00",
+      "summary": "Reused the already-open Chrome local development tab instead of creating a new tab or window. Audited all 15 Documentation leaves from the current docs navigation and all 9 interactive element previews using the current data-docs-element-preview marker. Existing Chrome tab smoke found no missing titles, no positive horizontal overflow, no console errors, and no element preview root gaps. Existing Chrome tab interaction smoke verified Dropdown menu selects Archive, Popover selects Analytics, Tabs switches to Preview, Disclosure expands the second FAQ item, Command palette selects Add new folder, and Copy button responds to Copy. The earlier dropdown failure was a smoke-procedure issue caused by closing a default-open menu before selecting Archive, not a product bug. npm run build, npm run lint, npm run audit:visuals, and python scripts/validate-ui-vocabulary.py passed. Lint still reports only existing shadcn fast-refresh warnings."
+    }
+  ]
+}

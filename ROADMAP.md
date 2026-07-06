@@ -1,17 +1,34 @@
 # ROADMAP
 
 > Last updated: 2026-07-04
-> Status: Reference Model Execution
-> North star: Build Yusung's digital product design system as both a public reference website and an agent-usable implementation system.
+> Status: Public Site Shell
+> North star: Build Askewly Design as both a public reference website and an agent-usable implementation system.
 > line budget: <=150
 
 ## Current Horizon
 
-<!-- harness:goal id="reference-model-execution" -->
-Goal: Convert selected external and local references into reusable design-system models with evidence, adaptation rules, and implementation targets. Details: `docs/horizons/2026-07-reference-model-execution.md`
+<!-- harness:goal id="public-site-shell" -->
+Goal: Turn `ui.askewly.com/` into the public homepage and site shell for Askewly Design. Details: `docs/horizons/2026-07-public-site-shell.md`
 
 ## Active Milestones
 
+<!-- harness:milestone id="PSS1" status="completed" priority="P0" evidence="docs/design-system/site-blueprint.md; phases/public-site-shell/index.json; examples/ui-vocabulary-site/src/App.tsx; examples/ui-vocabulary-site/src/components/home-page.tsx; cd examples/ui-vocabulary-site && npm run build; cd examples/ui-vocabulary-site && npm run lint; Chrome MCP smoke: /, ?page=plus&filter=nav:plus-application-ui, ?page=docs&filter=nav:docs-elements-command-palette" -->
+### PSS1 - Homepage And Site IA Shell
+- DoD: `ui.askewly.com/` renders a real public homepage with product identity, product promise, search/command affordance, multiple UI previews, and top-level navigation into Docs, Patterns, Showcase, Resources, and Pro while preserving existing Plus/Docs work.
+- Evidence: docs/design-system/site-blueprint.md; phases/public-site-shell/index.json; examples/ui-vocabulary-site/src/App.tsx; examples/ui-vocabulary-site/src/components/home-page.tsx; cd examples/ui-vocabulary-site && npm run build; cd examples/ui-vocabulary-site && npm run lint; Chrome MCP smoke: /, ?page=plus&filter=nav:plus-application-ui, ?page=docs&filter=nav:docs-elements-command-palette
+- Gap: The reference/site blueprint exists, but the deployed app still opens into the old catalog-style UI instead of a product homepage.
+- Status: [x]
+
+- Completed at: 2026-07-04
+- Summary: Implemented the public ui.askewly.com homepage and top-level site IA shell while preserving existing Plus and Docs content under the new compact Askewly Design navigation.
+
+<!-- harness:milestone id="PSS2" status="pending" priority="P0" -->
+### PSS2 - Landing Page Design Quality
+- DoD: The `ui.askewly.com/` landing page feels like a finished public product page for Askewly Design, with a distinctive first viewport, polished responsive layout, clear Docs/Patterns/Showcase/Resources/Pro paths, interactive preview states, light/dark behavior, and Chrome screenshot evidence across desktop and mobile.
+- Evidence: `DESIGN.md`; `docs/plans/2026-07-05-askewly-landing-first-screen.md`; `docs/research/pss2-landing-reference-notes.md`; `docs/research/pss2-landing-implementation-reference-notes.md`; `docs/research/assets/pss2-landing-reference-2026-07-04/`; `docs/research/assets/pss2-landing-implementation-repos-2026-07-04/`; `examples/ui-vocabulary-site/src/components/home-page.tsx`; `examples/ui-vocabulary-site/src/App.tsx`; desktop/mobile Chrome screenshots; `cd examples/ui-vocabulary-site && npm run build`; `cd examples/ui-vocabulary-site && npm run lint`
+- Gap: The homepage shell exists, but the landing page still needs design-quality iteration beyond structural IA.
+- Status: [ ]
+- Paused: 2026-07-07 — set to pending while the planning cascade (Objective/horizon candidates) is re-authored; showcase plan resumes from `docs/plans/2026-07-05-showcase-atlas-upgrade.md` Step 4.
 <!-- harness:milestone id="RME1" status="completed" priority="P0" evidence="docs/research/tailwind-reference-model.md" -->
 ### RME1 - Tailwind Reference Model
 - DoD: Existing Tailwind/Tailwind Plus captures and local parity work are summarized into a reusable reference model that separates IA, page pattern, interaction behavior, evidence, and non-transferable identity.
@@ -22,6 +39,13 @@ Goal: Convert selected external and local references into reusable design-system
 - Completed at: 2026-07-04
 - Summary: Consolidated Tailwind/Tailwind Plus IA, catalog leaf, documentation leaf, interaction, verification, transferable principles, non-transferable identity, and agent asset mapping into a reusable reference model.
 ## Next Candidates
+
+<!-- harness:milestone id="FGB1" status="candidate" priority="P1" evidence="docs/horizons/2026-07-figma-bridge-candidate.md" -->
+### FGB1 - Figma Bridge Candidate Horizon
+- DoD: Figma's role is defined as both competitor and complement, with a concrete bridge model from Figma artifacts to Askewly Design tokens, patterns, implementation recipes, and coding-agent verification.
+- Evidence: docs/horizons/2026-07-figma-bridge-candidate.md
+- Gap: Askewly Design needs to position itself against Figma without ignoring Figma's strength as a visual authoring and review surface.
+- Status: [ ]
 
 <!-- harness:milestone id="RME2" status="completed" priority="P0" evidence="docs/research/around-template-system-capture.md; docs/research/assets/around-template-system-2026-07-04/" -->
 ### RME2 - Around Template System Capture
@@ -36,7 +60,7 @@ Goal: Convert selected external and local references into reusable design-system
 ### RME3 - Local Design Work Audit
 - DoD: `design-manual`, `claude-design-manual`, and design-related custom skills are classified as merge, link, supersede, or archive with concrete integration notes.
 - Evidence: docs/research/local-design-system-integration-audit.md
-- Gap: Prior Yusung design-system work exists outside this repo and can easily be duplicated or forgotten without an integration audit.
+- Gap: Prior Askewly design-system work exists outside this repo and can easily be duplicated or forgotten without an integration audit.
 - Status: [x]
 
 - Completed at: 2026-07-04

@@ -27,6 +27,22 @@
     {
       "dir": "tailwind-style-page-catalog",
       "status": "pending"
+    },
+    {
+      "dir": "tailwind-plus-documentation-depth",
+      "status": "completed"
+    },
+    {
+      "dir": "tailwind-plus-catalog-interactivity",
+      "status": "in_progress"
+    },
+    {
+      "dir": "public-site-shell",
+      "status": "completed"
+    },
+    {
+      "dir": "landing-showcase-quality",
+      "status": "in_progress"
     }
   ]
 }

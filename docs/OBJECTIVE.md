@@ -1,8 +1,8 @@
-# Objective - Yusung Digital Product Design System
+# Objective - Askewly Design
 
 ## North Star
 
-`ui-dictionary` builds Yusung's digital product design system: a public website people can browse, compare, and learn from, plus an agent-usable design system that Codex and Claude Code can use to implement polished product UI.
+`ui-dictionary` builds Askewly Design: a public website people can browse, compare, and learn from, plus an agent-usable design system that Codex and Claude Code can use to implement polished product UI.
 
 The system covers digital product interfaces broadly, not only web pages. Its scope includes websites, mobile apps, SaaS products, commerce flows, dashboards, documentation sites, marketing pages, internal tools, and application UI patterns.
 
@@ -11,7 +11,7 @@ The system covers digital product interfaces broadly, not only web pages. Its sc
 - A person can browse a visual library of product UI patterns, color systems, typography, layouts, states, interactions, and complete page examples across multiple product surfaces.
 - A paid user can copy more complete code, download assets, and reuse examples with fewer restrictions than a casual visitor.
 - Codex and Claude Code can read the system's tokens, pattern rules, component recipes, and anti-patterns to produce UI that feels intentionally designed rather than generic AI output.
-- The project can absorb reference work from Tailwind, Tailwind Plus, Tailwind Labs repositories, Apple HIG, Material Design, high-quality SaaS products, mobile apps, and Yusung's existing design-manual/custom-skills ecosystem without becoming a loose scrapbook.
+- The project can absorb reference work from Tailwind, Tailwind Plus, Tailwind Labs repositories, Apple HIG, Material Design, high-quality SaaS products, mobile apps, and existing Askewly design-manual/custom-skills ecosystem without becoming a loose scrapbook.
 
 ## Moving Axes
 

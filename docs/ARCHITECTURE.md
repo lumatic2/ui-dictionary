@@ -1,4 +1,4 @@
-# Architecture - Yusung Digital Product Design System
+# Architecture - Askewly Design
 
 ## Current Stack
 

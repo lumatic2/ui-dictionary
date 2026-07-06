@@ -1,4 +1,4 @@
-# PRD - Yusung Digital Product Design System
+# PRD - Askewly Design
 
 ## Problem
 
@@ -8,7 +8,7 @@ The original UI vocabulary problem still matters: people need names, examples, a
 
 ## Product Goal
 
-Build Yusung's digital product design system as:
+Build Askewly Design as:
 
 - a public website for browsing UI patterns, product surfaces, color, typography, layout, motion, and examples;
 - a paid asset surface where users can copy richer code and download reusable assets;
@@ -29,7 +29,7 @@ The system covers digital product UI broadly:
 
 ## Target Users
 
-- Yusung, as a designer-builder who wants durable proof of a personal design system.
+- Askewly, as a designer-builder brand that wants durable proof of a reusable design system.
 - Developers and operators using AI coding agents to build interfaces.
 - Vibe-coding users who need better UI vocabulary, examples, and prompts.
 - Product teams or solo builders who want reusable UI examples and code assets.
@@ -54,7 +54,7 @@ Codex and Claude Code can consume the same system as tokens, recipes, prompts, c
 
 ## MVP Direction
 
-The current static React site remains the first product surface. Tailwind/Tailwind Plus parity work is retained as reference-backed implementation evidence, but future work must label what is reference, what is adapted, and what is Yusung's own system.
+The current static React site remains the first product surface. Tailwind/Tailwind Plus parity work is retained as reference-backed implementation evidence, but future work must label what is reference, what is adapted, and what belongs to Askewly Design.
 
 Near-term MVP work should prioritize:
 
