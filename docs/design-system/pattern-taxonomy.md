@@ -14,7 +14,7 @@ Milestone: SMC2 (plan: `docs/plans/2026-07-07-pattern-taxonomy.md`)
 | **pattern_group** | 목적 기반 패턴 카테고리 (10종) — 사이트 `/patterns/*` 경로와 agent-asset-model `pattern.pattern_group` 필드의 공용 어휘 | 이 문서 §3 |
 | **pattern** | 재사용 가능한 UI 컴포지션 정의 — agent-asset-model의 `pattern` 엔티티(anatomy/states/use_when/...) 를 가리키는 말로만 쓴다. "전형 패턴 나열"이나 "URL 카테고리"를 pattern이라 부르지 않는다 | agent-asset-model.md |
 | **term** | UI Vocabulary 사전 항목 (527+) — category/kind/group 3축으로 분류 | `docs/ui-vocabulary/terms.yml` |
-| **group** | term의 미세 분류 (~74종, category 하위) — 구 search.ts categoryGroups를 데이터로 승격한 것 | `docs/ui-vocabulary/groups.yml` |
+| **group** | term의 미세 분류 (57종, category 하위) — 구 search.ts categoryGroups를 데이터로 승격한 것 | `docs/ui-vocabulary/groups.yml` |
 | **collection** | 사이트 네비게이션 뷰 (~216종) — 분류 체계가 **아니라** category/kind/group/termIds 조합으로 정의되는 화면 단위 | `navigation-model.ts` (코드) |
 
 ## 2. Surface (7종)
@@ -40,7 +40,7 @@ agent-asset-model의 필드값 10종을 정본으로 채택한다 (문서별 7~1
 |---|---|---|
 | `category` | 9종: input, selection, action, structure, feedback, data-display, style, layout-rendering, accessibility | terms.yml 필수 필드, validator |
 | `kind` | 6종: component, block, form-pattern, visual-effect, motion-pattern, visual-treatment | 선택 (기본 component) |
-| `group` | ~74종, category 하위 미세 분류 | terms.yml 필수 필드 (SMC2부터), `groups.yml` 대조 validator |
+| `group` | 57종, category 하위 미세 분류 | terms.yml 필수 필드 (SMC2부터), `groups.yml` 대조 validator |
 
 - group의 정본은 `docs/ui-vocabulary/groups.yml` — `{ id, category, label }`. term→group 배정은 각 term의 `group` 필드.
 - 사이트 코드는 group을 하드코딩하지 않고 생성 데이터에서 읽는다.

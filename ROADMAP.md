@@ -30,12 +30,14 @@ Goal: Build the design system itself — 3-tier tokens, pattern taxonomy, compon
 - Completed at: 2026-07-07
 - Summary: Established tokens/askewly.tokens.json as the machine-readable SSOT with a 3-tier lint gate and generation pipeline deriving DESIGN.md frontmatter and site tokens.css; migrated 90 hardcoded brand hex usages to token references; added SSOT guards to design-bootstrap/harness/screen skills. Follow-ups queued: dark-mode toggle activation, design-bridge naming cross-check.
 
-<!-- harness:milestone id="SMC2" status="pending" priority="P1" -->
+<!-- harness:milestone id="SMC2" status="completed" priority="P1" evidence="docs/design-system/pattern-taxonomy.md; docs/ui-vocabulary/groups.yml; docs/plans/2026-07-07-pattern-taxonomy.md; docs/research/assets/smc2-pattern-taxonomy-2026-07-07/" -->
 ### SMC2 - 패턴 분류 체계
 - DoD: A cross-surface pattern taxonomy absorbs docs/design-system/surface-taxonomy.md and the ui-vocabulary data, with a schema linking each pattern to tokens, recipes, and examples.
-- Evidence: pattern taxonomy doc/data with vocabulary mapping
+- Evidence: pattern-taxonomy.md (canonical terms; surface 7, pattern_group 10, term axes); groups.yml 57 groups; terms.yml group field on 527/527; validator + site derive from data (assignment diff 0); Chrome smoke
 - Gap: Surface taxonomy and vocabulary data exist separately and are not yet one navigable pattern system.
-- Status: [ ]
+- Status: [x]
+- Completed at: 2026-07-07
+- Summary: pattern-taxonomy.md ended the four-document terminology drift (pattern_group fixed at 10) and the hardcoded group axis was promoted from search.ts into groups.yml + a required term field with validator enforcement, keeping site behavior identical. Follow-ups queued: category imbalance redesign, empty navigation collections cleanup.
 
 <!-- harness:milestone id="SMC3" status="pending" priority="P1" -->
 ### SMC3 - 컴포넌트 레시피 + 안티패턴 첫 배치

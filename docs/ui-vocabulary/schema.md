@@ -11,6 +11,7 @@ The website can generate JSON or TypeScript from YAML, but YAML is the editable 
   status: draft
   category: input
   kind: component
+  group: input-text
   ko:
     name: 입력창
     aliases: [텍스트 필드, 인풋, 입력 요소]
@@ -57,6 +58,7 @@ The website can generate JSON or TypeScript from YAML, but YAML is the editable 
 - `id`: kebab-case stable identifier.
 - `status`: `draft`, `reviewed`, or `published`.
 - `category`: one of `input`, `selection`, `action`, `structure`, `feedback`, `data-display`, `style`, `layout-rendering`, `accessibility`.
+- `group`: required. Term's fine-grained classification within its category. Must match an `id` in `docs/ui-vocabulary/groups.yml`, and that group's `category` must equal the term's `category` (see `docs/design-system/pattern-taxonomy.md` §4, §6).
 - `kind`: optional helper classification. If omitted, the build pipeline treats it as `component`.
   - `component`: reusable UI element with its own visible boundary or behavior.
   - `block`: larger page or section composition made from multiple components.

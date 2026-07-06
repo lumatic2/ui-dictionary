@@ -4,6 +4,8 @@ export type TermCategory = "input" | "selection" | "action" | "structure" | "dat
 
 export type TermKind = "component" | "block" | "form-pattern" | "visual-effect" | "motion-pattern" | "visual-treatment"
 
+export type TermGroupId = "input-text" | "input-search-command" | "input-pickers" | "input-file-media" | "input-editing" | "input-auth-forms" | "selection-options" | "selection-navigation" | "selection-menus" | "selection-context" | "action-buttons" | "action-command-bars" | "action-bulk-danger" | "action-editor-media" | "structure-app-layout" | "structure-panels" | "structure-navigation" | "structure-sections" | "structure-mobile" | "structure-auth-layouts" | "structure-sidebar-layouts" | "feedback-alerts-toasts" | "feedback-loading-progress" | "feedback-empty-error" | "feedback-access-limits" | "feedback-auth-security" | "feedback-status-notifications" | "data-tables-lists" | "data-metrics-charts" | "data-timeline-history" | "data-people-integrations" | "structure-content-elements" | "data-basic-content-elements" | "data-chat-messaging" | "data-account-support" | "data-commerce-billing" | "data-motion-content" | "feedback-confirmation-help" | "feedback-accessibility-states" | "feedback-interaction-states" | "style-surface-material" | "style-border-color" | "style-typography" | "style-tokens" | "style-decorative-effects" | "layout-spacing-sizing" | "layout-responsive-viewport" | "layout-stacking-overflow" | "layout-scroll-behavior" | "accessibility-aria-screen-reader" | "accessibility-focus-motion" | "data-display-misc" | "structure-misc" | "selection-misc" | "action-misc" | "feedback-misc" | "style-misc"
+
 export type NavigationPath = [string, ...string[]]
 
 export type TermNavigation = {
@@ -16,6 +18,7 @@ export type VocabularyTerm = {
   status: "draft" | "reviewed" | "published"
   category: TermCategory
   kind: TermKind
+  group: TermGroupId
   ko: { name: string; aliases: string[] }
   en: { name: string; aliases: string[] }
   one_liner: string
@@ -39,12 +42,20 @@ export type SourceReference = {
   url: string
 }
 
+export type TermGroup = {
+  id: TermGroupId
+  category: TermCategory
+  label: string
+  ids: string[]
+}
+
 export const terms = [
   {
     "kind": "component",
     "id": "text-field",
     "status": "draft",
     "category": "input",
+    "group": "input-text",
     "ko": {
       "name": "입력창",
       "aliases": [
@@ -115,6 +126,7 @@ export const terms = [
     "id": "search-field",
     "status": "draft",
     "category": "input",
+    "group": "input-search-command",
     "ko": {
       "name": "검색창",
       "aliases": [
@@ -170,6 +182,7 @@ export const terms = [
     "id": "textarea",
     "status": "draft",
     "category": "input",
+    "group": "input-text",
     "ko": {
       "name": "텍스트영역",
       "aliases": [
@@ -225,6 +238,7 @@ export const terms = [
     "id": "select",
     "status": "draft",
     "category": "input",
+    "group": "input-pickers",
     "ko": {
       "name": "선택창",
       "aliases": [
@@ -302,6 +316,7 @@ export const terms = [
     "id": "combobox",
     "status": "draft",
     "category": "input",
+    "group": "input-pickers",
     "ko": {
       "name": "콤보박스",
       "aliases": [
@@ -374,6 +389,7 @@ export const terms = [
     "id": "checkbox",
     "status": "draft",
     "category": "selection",
+    "group": "selection-options",
     "ko": {
       "name": "체크박스",
       "aliases": [
@@ -454,6 +470,7 @@ export const terms = [
     "id": "radio-group",
     "status": "draft",
     "category": "selection",
+    "group": "selection-options",
     "ko": {
       "name": "라디오그룹",
       "aliases": [
@@ -540,6 +557,7 @@ export const terms = [
     "id": "switch",
     "status": "draft",
     "category": "selection",
+    "group": "selection-options",
     "ko": {
       "name": "스위치",
       "aliases": [
@@ -607,6 +625,7 @@ export const terms = [
     "id": "slider",
     "status": "draft",
     "category": "selection",
+    "group": "selection-options",
     "ko": {
       "name": "슬라이더",
       "aliases": [
@@ -660,6 +679,7 @@ export const terms = [
     "id": "date-picker",
     "status": "draft",
     "category": "input",
+    "group": "input-pickers",
     "ko": {
       "name": "날짜 선택",
       "aliases": [
@@ -714,6 +734,7 @@ export const terms = [
     "id": "file-upload",
     "status": "draft",
     "category": "input",
+    "group": "input-file-media",
     "ko": {
       "name": "파일 업로드",
       "aliases": [
@@ -769,6 +790,7 @@ export const terms = [
     "id": "tabs",
     "status": "draft",
     "category": "selection",
+    "group": "selection-options",
     "ko": {
       "name": "탭",
       "aliases": [
@@ -834,6 +856,7 @@ export const terms = [
     "id": "segmented-control",
     "status": "draft",
     "category": "selection",
+    "group": "selection-options",
     "ko": {
       "name": "세그먼트 버튼",
       "aliases": [
@@ -905,6 +928,7 @@ export const terms = [
     "id": "dropdown-menu",
     "status": "draft",
     "category": "selection",
+    "group": "selection-menus",
     "ko": {
       "name": "드롭다운 메뉴",
       "aliases": [
@@ -977,6 +1001,7 @@ export const terms = [
     "id": "command-palette",
     "status": "draft",
     "category": "input",
+    "group": "input-search-command",
     "ko": {
       "name": "커맨드 팔레트",
       "aliases": [
@@ -1046,6 +1071,7 @@ export const terms = [
     "id": "breadcrumb",
     "status": "draft",
     "category": "selection",
+    "group": "selection-navigation",
     "ko": {
       "name": "브레드크럼",
       "aliases": [
@@ -1098,6 +1124,7 @@ export const terms = [
     "id": "pagination",
     "status": "draft",
     "category": "selection",
+    "group": "selection-navigation",
     "ko": {
       "name": "페이지네이션",
       "aliases": [
@@ -1151,6 +1178,7 @@ export const terms = [
     "id": "stepper",
     "status": "draft",
     "category": "selection",
+    "group": "selection-navigation",
     "ko": {
       "name": "스테퍼",
       "aliases": [
@@ -1206,6 +1234,7 @@ export const terms = [
     "id": "navigation-rail",
     "status": "draft",
     "category": "selection",
+    "group": "selection-navigation",
     "ko": {
       "name": "내비게이션 레일",
       "aliases": [
@@ -1259,6 +1288,7 @@ export const terms = [
     "id": "sidebar-nav",
     "status": "draft",
     "category": "selection",
+    "group": "selection-navigation",
     "ko": {
       "name": "사이드바 내비게이션",
       "aliases": [
@@ -1313,6 +1343,7 @@ export const terms = [
     "id": "chip",
     "status": "draft",
     "category": "selection",
+    "group": "selection-options",
     "ko": {
       "name": "칩",
       "aliases": [
@@ -1368,6 +1399,7 @@ export const terms = [
     "id": "button",
     "status": "draft",
     "category": "action",
+    "group": "action-buttons",
     "ko": {
       "name": "버튼",
       "aliases": [
@@ -1436,6 +1468,7 @@ export const terms = [
     "id": "primary-button",
     "status": "draft",
     "category": "action",
+    "group": "action-buttons",
     "ko": {
       "name": "주요 버튼",
       "aliases": [
@@ -1489,6 +1522,7 @@ export const terms = [
     "id": "secondary-button",
     "status": "draft",
     "category": "action",
+    "group": "action-buttons",
     "ko": {
       "name": "보조 버튼",
       "aliases": [
@@ -1543,6 +1577,7 @@ export const terms = [
     "id": "destructive-button",
     "status": "draft",
     "category": "action",
+    "group": "action-buttons",
     "ko": {
       "name": "위험 버튼",
       "aliases": [
@@ -1598,6 +1633,7 @@ export const terms = [
     "id": "icon-button",
     "status": "draft",
     "category": "action",
+    "group": "action-buttons",
     "ko": {
       "name": "아이콘 버튼",
       "aliases": [
@@ -1651,6 +1687,7 @@ export const terms = [
     "id": "floating-action-button",
     "status": "draft",
     "category": "action",
+    "group": "action-buttons",
     "ko": {
       "name": "플로팅 버튼",
       "aliases": [
@@ -1704,6 +1741,7 @@ export const terms = [
     "id": "link",
     "status": "draft",
     "category": "action",
+    "group": "action-buttons",
     "ko": {
       "name": "링크",
       "aliases": [
@@ -1757,6 +1795,7 @@ export const terms = [
     "id": "toolbar",
     "status": "draft",
     "category": "action",
+    "group": "action-command-bars",
     "ko": {
       "name": "툴바",
       "aliases": [
@@ -1810,6 +1849,7 @@ export const terms = [
     "id": "split-button",
     "status": "draft",
     "category": "action",
+    "group": "action-buttons",
     "ko": {
       "name": "스플릿 버튼",
       "aliases": [
@@ -1861,6 +1901,7 @@ export const terms = [
     "id": "menu-item",
     "status": "draft",
     "category": "action",
+    "group": "action-command-bars",
     "ko": {
       "name": "메뉴 항목",
       "aliases": [
@@ -1913,6 +1954,7 @@ export const terms = [
     "id": "card",
     "status": "draft",
     "category": "structure",
+    "group": "structure-panels",
     "ko": {
       "name": "카드",
       "aliases": [
@@ -1967,6 +2009,7 @@ export const terms = [
     "id": "dialog",
     "status": "draft",
     "category": "structure",
+    "group": "structure-panels",
     "ko": {
       "name": "모달",
       "aliases": [
@@ -2057,6 +2100,7 @@ export const terms = [
     "id": "drawer",
     "status": "draft",
     "category": "structure",
+    "group": "structure-panels",
     "ko": {
       "name": "드로어",
       "aliases": [
@@ -2130,6 +2174,7 @@ export const terms = [
     "id": "popover",
     "status": "draft",
     "category": "structure",
+    "group": "structure-panels",
     "ko": {
       "name": "팝오버",
       "aliases": [
@@ -2199,6 +2244,7 @@ export const terms = [
     "id": "header",
     "status": "draft",
     "category": "structure",
+    "group": "structure-app-layout",
     "ko": {
       "name": "헤더",
       "aliases": [
@@ -2272,6 +2318,7 @@ export const terms = [
     "id": "footer",
     "status": "draft",
     "category": "structure",
+    "group": "structure-app-layout",
     "ko": {
       "name": "푸터",
       "aliases": [
@@ -2333,6 +2380,7 @@ export const terms = [
     "id": "grid",
     "status": "draft",
     "category": "structure",
+    "group": "structure-sections",
     "ko": {
       "name": "그리드",
       "aliases": [
@@ -2386,6 +2434,7 @@ export const terms = [
     "id": "list",
     "status": "draft",
     "category": "data-display",
+    "group": "data-tables-lists",
     "ko": {
       "name": "리스트",
       "aliases": [
@@ -2439,6 +2488,7 @@ export const terms = [
     "id": "accordion",
     "status": "draft",
     "category": "data-display",
+    "group": "data-basic-content-elements",
     "ko": {
       "name": "아코디언",
       "aliases": [
@@ -2492,6 +2542,7 @@ export const terms = [
     "id": "carousel",
     "status": "draft",
     "category": "data-display",
+    "group": "data-basic-content-elements",
     "ko": {
       "name": "캐러셀",
       "aliases": [
@@ -2544,6 +2595,7 @@ export const terms = [
     "id": "tooltip",
     "status": "draft",
     "category": "feedback",
+    "group": "feedback-confirmation-help",
     "ko": {
       "name": "툴팁",
       "aliases": [
@@ -2609,6 +2661,7 @@ export const terms = [
     "id": "toast",
     "status": "draft",
     "category": "feedback",
+    "group": "feedback-alerts-toasts",
     "ko": {
       "name": "토스트",
       "aliases": [
@@ -2681,6 +2734,7 @@ export const terms = [
     "id": "alert",
     "status": "draft",
     "category": "feedback",
+    "group": "feedback-alerts-toasts",
     "ko": {
       "name": "알림 배너",
       "aliases": [
@@ -2753,6 +2807,7 @@ export const terms = [
     "id": "badge",
     "status": "draft",
     "category": "feedback",
+    "group": "feedback-status-notifications",
     "ko": {
       "name": "배지",
       "aliases": [
@@ -2807,6 +2862,7 @@ export const terms = [
     "id": "progress-bar",
     "status": "draft",
     "category": "feedback",
+    "group": "feedback-loading-progress",
     "ko": {
       "name": "진행바",
       "aliases": [
@@ -2859,6 +2915,7 @@ export const terms = [
     "id": "spinner",
     "status": "draft",
     "category": "feedback",
+    "group": "feedback-loading-progress",
     "ko": {
       "name": "로딩 스피너",
       "aliases": [
@@ -2912,6 +2969,7 @@ export const terms = [
     "id": "skeleton",
     "status": "draft",
     "category": "feedback",
+    "group": "feedback-loading-progress",
     "ko": {
       "name": "스켈레톤",
       "aliases": [
@@ -2966,6 +3024,7 @@ export const terms = [
     "id": "empty-state",
     "status": "draft",
     "category": "feedback",
+    "group": "feedback-empty-error",
     "ko": {
       "name": "빈 상태",
       "aliases": [
@@ -3019,6 +3078,7 @@ export const terms = [
     "id": "validation-message",
     "status": "draft",
     "category": "feedback",
+    "group": "feedback-empty-error",
     "ko": {
       "name": "검증 메시지",
       "aliases": [
@@ -3072,6 +3132,7 @@ export const terms = [
     "id": "status-indicator",
     "status": "draft",
     "category": "feedback",
+    "group": "feedback-status-notifications",
     "ko": {
       "name": "상태 표시",
       "aliases": [
@@ -3127,6 +3188,7 @@ export const terms = [
     "id": "table",
     "status": "draft",
     "category": "data-display",
+    "group": "data-tables-lists",
     "ko": {
       "name": "테이블",
       "aliases": [
@@ -3202,6 +3264,7 @@ export const terms = [
     "id": "avatar",
     "status": "draft",
     "category": "data-display",
+    "group": "data-people-integrations",
     "ko": {
       "name": "아바타",
       "aliases": [
@@ -3256,6 +3319,7 @@ export const terms = [
     "id": "metric-card",
     "status": "draft",
     "category": "data-display",
+    "group": "data-metrics-charts",
     "ko": {
       "name": "지표 카드",
       "aliases": [
@@ -3310,6 +3374,7 @@ export const terms = [
     "id": "chart",
     "status": "draft",
     "category": "data-display",
+    "group": "data-metrics-charts",
     "ko": {
       "name": "차트",
       "aliases": [
@@ -3365,6 +3430,7 @@ export const terms = [
     "id": "timeline",
     "status": "draft",
     "category": "data-display",
+    "group": "data-timeline-history",
     "ko": {
       "name": "타임라인",
       "aliases": [
@@ -3419,6 +3485,7 @@ export const terms = [
     "id": "kanban",
     "status": "draft",
     "category": "data-display",
+    "group": "data-display-misc",
     "ko": {
       "name": "칸반",
       "aliases": [
@@ -3472,6 +3539,7 @@ export const terms = [
     "id": "calendar-view",
     "status": "draft",
     "category": "data-display",
+    "group": "data-display-misc",
     "ko": {
       "name": "캘린더 뷰",
       "aliases": [
@@ -3526,6 +3594,7 @@ export const terms = [
     "id": "tree-view",
     "status": "draft",
     "category": "data-display",
+    "group": "data-tables-lists",
     "ko": {
       "name": "트리 뷰",
       "aliases": [
@@ -3581,6 +3650,7 @@ export const terms = [
     "id": "description-list",
     "status": "draft",
     "category": "data-display",
+    "group": "data-display-misc",
     "ko": {
       "name": "설명 목록",
       "aliases": [
@@ -3634,6 +3704,7 @@ export const terms = [
     "id": "icon",
     "status": "draft",
     "category": "data-display",
+    "group": "data-basic-content-elements",
     "ko": {
       "name": "아이콘",
       "aliases": [
@@ -3689,6 +3760,7 @@ export const terms = [
     "id": "label",
     "status": "draft",
     "category": "data-display",
+    "group": "data-basic-content-elements",
     "ko": {
       "name": "라벨",
       "aliases": [
@@ -3744,6 +3816,7 @@ export const terms = [
     "id": "divider",
     "status": "draft",
     "category": "data-display",
+    "group": "data-basic-content-elements",
     "ko": {
       "name": "구분선",
       "aliases": [
@@ -3798,6 +3871,7 @@ export const terms = [
     "id": "spacer",
     "status": "draft",
     "category": "data-display",
+    "group": "data-basic-content-elements",
     "ko": {
       "name": "여백",
       "aliases": [
@@ -3852,6 +3926,7 @@ export const terms = [
     "id": "typography",
     "status": "draft",
     "category": "data-display",
+    "group": "data-basic-content-elements",
     "ko": {
       "name": "타이포그래피",
       "aliases": [
@@ -3907,6 +3982,7 @@ export const terms = [
     "id": "image",
     "status": "draft",
     "category": "data-display",
+    "group": "data-basic-content-elements",
     "ko": {
       "name": "이미지",
       "aliases": [
@@ -3962,6 +4038,7 @@ export const terms = [
     "id": "logo",
     "status": "draft",
     "category": "data-display",
+    "group": "data-basic-content-elements",
     "ko": {
       "name": "로고",
       "aliases": [
@@ -4017,6 +4094,7 @@ export const terms = [
     "id": "favicon",
     "status": "draft",
     "category": "structure",
+    "group": "structure-misc",
     "ko": {
       "name": "파비콘",
       "aliases": [
@@ -4072,6 +4150,7 @@ export const terms = [
     "id": "thumbnail",
     "status": "draft",
     "category": "data-display",
+    "group": "data-basic-content-elements",
     "ko": {
       "name": "썸네일",
       "aliases": [
@@ -4127,6 +4206,7 @@ export const terms = [
     "id": "open-graph-image",
     "status": "draft",
     "category": "structure",
+    "group": "structure-misc",
     "ko": {
       "name": "공유 미리보기 이미지",
       "aliases": [
@@ -4196,6 +4276,7 @@ export const terms = [
     "id": "password-field",
     "status": "draft",
     "category": "input",
+    "group": "input-text",
     "ko": {
       "name": "비밀번호 입력창",
       "aliases": [
@@ -4250,6 +4331,7 @@ export const terms = [
     "id": "number-input",
     "status": "draft",
     "category": "input",
+    "group": "input-text",
     "ko": {
       "name": "숫자 입력창",
       "aliases": [
@@ -4305,6 +4387,7 @@ export const terms = [
     "id": "otp-input",
     "status": "draft",
     "category": "input",
+    "group": "input-pickers",
     "ko": {
       "name": "인증번호 입력",
       "aliases": [
@@ -4360,6 +4443,7 @@ export const terms = [
     "id": "autocomplete",
     "status": "draft",
     "category": "input",
+    "group": "input-search-command",
     "ko": {
       "name": "자동완성",
       "aliases": [
@@ -4415,6 +4499,7 @@ export const terms = [
     "id": "search-suggestions",
     "status": "draft",
     "category": "input",
+    "group": "input-search-command",
     "ko": {
       "name": "검색 제안",
       "aliases": [
@@ -4470,6 +4555,7 @@ export const terms = [
     "id": "inline-edit",
     "status": "draft",
     "category": "input",
+    "group": "input-editing",
     "ko": {
       "name": "인라인 편집",
       "aliases": [
@@ -4525,6 +4611,7 @@ export const terms = [
     "id": "rich-text-editor",
     "status": "draft",
     "category": "input",
+    "group": "input-editing",
     "ko": {
       "name": "리치 텍스트 에디터",
       "aliases": [
@@ -4579,6 +4666,7 @@ export const terms = [
     "id": "color-picker",
     "status": "draft",
     "category": "input",
+    "group": "input-pickers",
     "ko": {
       "name": "색상 선택기",
       "aliases": [
@@ -4634,6 +4722,7 @@ export const terms = [
     "id": "listbox",
     "status": "draft",
     "category": "selection",
+    "group": "selection-options",
     "ko": {
       "name": "리스트박스",
       "aliases": [
@@ -4689,6 +4778,7 @@ export const terms = [
     "id": "menu-bar",
     "status": "draft",
     "category": "selection",
+    "group": "selection-menus",
     "ko": {
       "name": "메뉴바",
       "aliases": [
@@ -4744,6 +4834,7 @@ export const terms = [
     "id": "bottom-navigation",
     "status": "draft",
     "category": "selection",
+    "group": "selection-navigation",
     "ko": {
       "name": "하단 내비게이션",
       "aliases": [
@@ -4800,6 +4891,7 @@ export const terms = [
     "id": "tab-bar",
     "status": "draft",
     "category": "selection",
+    "group": "selection-navigation",
     "ko": {
       "name": "탭 바",
       "aliases": [
@@ -4856,6 +4948,7 @@ export const terms = [
     "id": "filter-chip",
     "status": "draft",
     "category": "selection",
+    "group": "selection-options",
     "ko": {
       "name": "필터 칩",
       "aliases": [
@@ -4911,6 +5004,7 @@ export const terms = [
     "id": "toggle-button",
     "status": "draft",
     "category": "selection",
+    "group": "selection-options",
     "ko": {
       "name": "토글 버튼",
       "aliases": [
@@ -4966,6 +5060,7 @@ export const terms = [
     "id": "disclosure",
     "status": "draft",
     "category": "selection",
+    "group": "selection-options",
     "ko": {
       "name": "펼침 버튼",
       "aliases": [
@@ -5021,6 +5116,7 @@ export const terms = [
     "id": "anchor-nav",
     "status": "draft",
     "category": "selection",
+    "group": "selection-navigation",
     "ko": {
       "name": "앵커 내비게이션",
       "aliases": [
@@ -5076,6 +5172,7 @@ export const terms = [
     "id": "back-button",
     "status": "draft",
     "category": "selection",
+    "group": "selection-navigation",
     "ko": {
       "name": "뒤로가기 버튼",
       "aliases": [
@@ -5130,6 +5227,7 @@ export const terms = [
     "id": "navigation-bar",
     "status": "draft",
     "category": "selection",
+    "group": "selection-navigation",
     "ko": {
       "name": "내비게이션 바",
       "aliases": [
@@ -5185,6 +5283,7 @@ export const terms = [
     "id": "button-group",
     "status": "draft",
     "category": "action",
+    "group": "action-buttons",
     "ko": {
       "name": "버튼 그룹",
       "aliases": [
@@ -5240,6 +5339,7 @@ export const terms = [
     "id": "copy-button",
     "status": "draft",
     "category": "action",
+    "group": "action-buttons",
     "ko": {
       "name": "복사 버튼",
       "aliases": [
@@ -5295,6 +5395,7 @@ export const terms = [
     "id": "download-button",
     "status": "draft",
     "category": "action",
+    "group": "action-buttons",
     "ko": {
       "name": "다운로드 버튼",
       "aliases": [
@@ -5350,6 +5451,7 @@ export const terms = [
     "id": "share-button",
     "status": "draft",
     "category": "action",
+    "group": "action-buttons",
     "ko": {
       "name": "공유 버튼",
       "aliases": [
@@ -5405,6 +5507,7 @@ export const terms = [
     "id": "close-button",
     "status": "draft",
     "category": "action",
+    "group": "action-buttons",
     "ko": {
       "name": "닫기 버튼",
       "aliases": [
@@ -5459,6 +5562,7 @@ export const terms = [
     "id": "overflow-button",
     "status": "draft",
     "category": "action",
+    "group": "action-buttons",
     "ko": {
       "name": "더보기 버튼",
       "aliases": [
@@ -5514,6 +5618,7 @@ export const terms = [
     "id": "top-app-bar",
     "status": "draft",
     "category": "structure",
+    "group": "structure-app-layout",
     "ko": {
       "name": "상단 앱 바",
       "aliases": [
@@ -5569,6 +5674,7 @@ export const terms = [
     "id": "section",
     "status": "draft",
     "category": "structure",
+    "group": "structure-sections",
     "ko": {
       "name": "섹션",
       "aliases": [
@@ -5624,6 +5730,7 @@ export const terms = [
     "id": "container",
     "status": "draft",
     "category": "structure",
+    "group": "structure-sections",
     "ko": {
       "name": "컨테이너",
       "aliases": [
@@ -5679,6 +5786,7 @@ export const terms = [
     "id": "hero",
     "status": "draft",
     "category": "structure",
+    "group": "structure-sections",
     "ko": {
       "name": "히어로 영역",
       "aliases": [
@@ -5755,6 +5863,7 @@ export const terms = [
     "id": "filter-bar",
     "status": "draft",
     "category": "data-display",
+    "group": "data-tables-lists",
     "ko": {
       "name": "필터 바",
       "aliases": [
@@ -5809,6 +5918,7 @@ export const terms = [
     "id": "sort-control",
     "status": "draft",
     "category": "data-display",
+    "group": "data-tables-lists",
     "ko": {
       "name": "정렬 컨트롤",
       "aliases": [
@@ -5864,6 +5974,7 @@ export const terms = [
     "id": "data-grid",
     "status": "draft",
     "category": "data-display",
+    "group": "data-tables-lists",
     "ko": {
       "name": "데이터 그리드",
       "aliases": [
@@ -5919,6 +6030,7 @@ export const terms = [
     "id": "legend",
     "status": "draft",
     "category": "data-display",
+    "group": "data-metrics-charts",
     "ko": {
       "name": "범례",
       "aliases": [
@@ -5974,6 +6086,7 @@ export const terms = [
     "id": "chart-axis",
     "status": "draft",
     "category": "data-display",
+    "group": "data-metrics-charts",
     "ko": {
       "name": "차트 축",
       "aliases": [
@@ -6029,6 +6142,7 @@ export const terms = [
     "id": "error-state",
     "status": "draft",
     "category": "feedback",
+    "group": "feedback-empty-error",
     "ko": {
       "name": "오류 상태",
       "aliases": [
@@ -6085,6 +6199,7 @@ export const terms = [
     "id": "success-state",
     "status": "draft",
     "category": "feedback",
+    "group": "feedback-empty-error",
     "ko": {
       "name": "성공 상태",
       "aliases": [
@@ -6141,6 +6256,7 @@ export const terms = [
     "id": "warning-state",
     "status": "draft",
     "category": "feedback",
+    "group": "feedback-empty-error",
     "ko": {
       "name": "경고 상태",
       "aliases": [
@@ -6195,6 +6311,7 @@ export const terms = [
     "id": "info-state",
     "status": "draft",
     "category": "feedback",
+    "group": "feedback-empty-error",
     "ko": {
       "name": "정보 상태",
       "aliases": [
@@ -6249,6 +6366,7 @@ export const terms = [
     "id": "loading-state",
     "status": "draft",
     "category": "feedback",
+    "group": "feedback-loading-progress",
     "ko": {
       "name": "로딩 상태",
       "aliases": [
@@ -6303,6 +6421,7 @@ export const terms = [
     "id": "textarea-autosize",
     "status": "draft",
     "category": "input",
+    "group": "input-text",
     "ko": {
       "name": "자동 높이 텍스트영역",
       "aliases": [
@@ -6357,6 +6476,7 @@ export const terms = [
     "id": "input-group",
     "status": "draft",
     "category": "input",
+    "group": "input-text",
     "ko": {
       "name": "입력 그룹",
       "aliases": [
@@ -6411,6 +6531,7 @@ export const terms = [
     "id": "date-range-picker",
     "status": "draft",
     "category": "input",
+    "group": "input-pickers",
     "ko": {
       "name": "날짜 범위 선택",
       "aliases": [
@@ -6463,6 +6584,7 @@ export const terms = [
     "id": "time-picker",
     "status": "draft",
     "category": "input",
+    "group": "input-pickers",
     "ko": {
       "name": "시간 선택",
       "aliases": [
@@ -6515,6 +6637,7 @@ export const terms = [
     "id": "rating-input",
     "status": "draft",
     "category": "input",
+    "group": "input-pickers",
     "ko": {
       "name": "평점 입력",
       "aliases": [
@@ -6567,6 +6690,7 @@ export const terms = [
     "id": "tag-input",
     "status": "draft",
     "category": "input",
+    "group": "input-pickers",
     "ko": {
       "name": "태그 입력",
       "aliases": [
@@ -6619,6 +6743,7 @@ export const terms = [
     "id": "masked-input",
     "status": "draft",
     "category": "input",
+    "group": "input-text",
     "ko": {
       "name": "마스크 입력",
       "aliases": [
@@ -6673,6 +6798,7 @@ export const terms = [
     "id": "toggle-group",
     "status": "draft",
     "category": "selection",
+    "group": "selection-options",
     "ko": {
       "name": "토글 그룹",
       "aliases": [
@@ -6742,6 +6868,7 @@ export const terms = [
     "id": "navigation-drawer",
     "status": "draft",
     "category": "structure",
+    "group": "structure-navigation",
     "ko": {
       "name": "내비게이션 드로어",
       "aliases": [
@@ -6794,6 +6921,7 @@ export const terms = [
     "id": "mega-menu",
     "status": "draft",
     "category": "selection",
+    "group": "selection-menus",
     "ko": {
       "name": "메가 메뉴",
       "aliases": [
@@ -6847,6 +6975,7 @@ export const terms = [
     "id": "context-menu",
     "status": "draft",
     "category": "selection",
+    "group": "selection-menus",
     "ko": {
       "name": "컨텍스트 메뉴",
       "aliases": [
@@ -6899,6 +7028,7 @@ export const terms = [
     "id": "loading-button",
     "status": "draft",
     "category": "action",
+    "group": "action-buttons",
     "ko": {
       "name": "로딩 버튼",
       "aliases": [
@@ -6951,6 +7081,7 @@ export const terms = [
     "id": "copy-field",
     "status": "draft",
     "category": "input",
+    "group": "input-text",
     "ko": {
       "name": "복사 필드",
       "aliases": [
@@ -7003,6 +7134,7 @@ export const terms = [
     "id": "bulk-action-bar",
     "status": "draft",
     "category": "action",
+    "group": "action-bulk-danger",
     "ko": {
       "name": "일괄 작업 바",
       "aliases": [
@@ -7055,6 +7187,7 @@ export const terms = [
     "id": "speed-dial",
     "status": "draft",
     "category": "action",
+    "group": "action-buttons",
     "ko": {
       "name": "스피드 다이얼",
       "aliases": [
@@ -7107,6 +7240,7 @@ export const terms = [
     "id": "app-shell",
     "status": "draft",
     "category": "structure",
+    "group": "structure-app-layout",
     "ko": {
       "name": "앱 셸",
       "aliases": [
@@ -7159,6 +7293,7 @@ export const terms = [
     "id": "split-pane",
     "status": "draft",
     "category": "structure",
+    "group": "structure-panels",
     "ko": {
       "name": "분할 패널",
       "aliases": [
@@ -7211,6 +7346,7 @@ export const terms = [
     "id": "snackbar",
     "status": "draft",
     "category": "feedback",
+    "group": "feedback-alerts-toasts",
     "ko": {
       "name": "스낵바",
       "aliases": [
@@ -7280,6 +7416,7 @@ export const terms = [
     "id": "undo-toast",
     "status": "draft",
     "category": "feedback",
+    "group": "feedback-alerts-toasts",
     "ko": {
       "name": "실행 취소 토스트",
       "aliases": [
@@ -7332,6 +7469,7 @@ export const terms = [
     "id": "row-selection",
     "status": "draft",
     "category": "selection",
+    "group": "selection-misc",
     "ko": {
       "name": "행 선택",
       "aliases": [
@@ -7384,6 +7522,7 @@ export const terms = [
     "id": "search-view",
     "status": "draft",
     "category": "input",
+    "group": "input-search-command",
     "ko": {
       "name": "검색 뷰",
       "aliases": [
@@ -7437,6 +7576,7 @@ export const terms = [
     "id": "tree-navigation",
     "status": "draft",
     "category": "selection",
+    "group": "selection-navigation",
     "ko": {
       "name": "트리 내비게이션",
       "aliases": [
@@ -7489,6 +7629,7 @@ export const terms = [
     "id": "side-sheet",
     "status": "draft",
     "category": "structure",
+    "group": "structure-panels",
     "ko": {
       "name": "사이드 시트",
       "aliases": [
@@ -7558,6 +7699,7 @@ export const terms = [
     "id": "breadcrumbs-menu",
     "status": "draft",
     "category": "selection",
+    "group": "selection-navigation",
     "ko": {
       "name": "브레드크럼 메뉴",
       "aliases": [
@@ -7610,6 +7752,7 @@ export const terms = [
     "id": "icon-toggle-button",
     "status": "draft",
     "category": "action",
+    "group": "action-buttons",
     "ko": {
       "name": "아이콘 토글 버튼",
       "aliases": [
@@ -7662,6 +7805,7 @@ export const terms = [
     "id": "resizable-panel",
     "status": "draft",
     "category": "structure",
+    "group": "structure-panels",
     "ko": {
       "name": "크기 조절 패널",
       "aliases": [
@@ -7714,6 +7858,7 @@ export const terms = [
     "id": "master-detail",
     "status": "draft",
     "category": "structure",
+    "group": "structure-panels",
     "ko": {
       "name": "마스터-디테일",
       "aliases": [
@@ -7766,6 +7911,7 @@ export const terms = [
     "id": "sticky-header",
     "status": "draft",
     "category": "structure",
+    "group": "structure-sections",
     "ko": {
       "name": "고정 헤더",
       "aliases": [
@@ -7818,6 +7964,7 @@ export const terms = [
     "id": "sticky-footer-bar",
     "status": "draft",
     "category": "structure",
+    "group": "structure-sections",
     "ko": {
       "name": "고정 하단 바",
       "aliases": [
@@ -7870,6 +8017,7 @@ export const terms = [
     "id": "sidebar-section",
     "status": "draft",
     "category": "structure",
+    "group": "structure-navigation",
     "ko": {
       "name": "사이드바 섹션",
       "aliases": [
@@ -7922,6 +8070,7 @@ export const terms = [
     "id": "inline-alert",
     "status": "draft",
     "category": "feedback",
+    "group": "feedback-alerts-toasts",
     "ko": {
       "name": "인라인 알림",
       "aliases": [
@@ -7974,6 +8123,7 @@ export const terms = [
     "id": "error-boundary",
     "status": "draft",
     "category": "feedback",
+    "group": "feedback-empty-error",
     "ko": {
       "name": "오류 경계 화면",
       "aliases": [
@@ -8026,6 +8176,7 @@ export const terms = [
     "id": "confirmation-dialog",
     "status": "draft",
     "category": "feedback",
+    "group": "feedback-confirmation-help",
     "ko": {
       "name": "확인 다이얼로그",
       "aliases": [
@@ -8078,6 +8229,7 @@ export const terms = [
     "id": "rate-limit-state",
     "status": "draft",
     "category": "feedback",
+    "group": "feedback-access-limits",
     "ko": {
       "name": "사용량 제한 상태",
       "aliases": [
@@ -8132,6 +8284,7 @@ export const terms = [
     "id": "data-table-toolbar",
     "status": "draft",
     "category": "data-display",
+    "group": "data-tables-lists",
     "ko": {
       "name": "데이터 테이블 툴바",
       "aliases": [
@@ -8205,6 +8358,7 @@ export const terms = [
     "id": "column-header-menu",
     "status": "draft",
     "category": "data-display",
+    "group": "data-tables-lists",
     "ko": {
       "name": "컬럼 헤더 메뉴",
       "aliases": [
@@ -8257,6 +8411,7 @@ export const terms = [
     "id": "faceted-filter",
     "status": "draft",
     "category": "data-display",
+    "group": "data-tables-lists",
     "ko": {
       "name": "패싯 필터",
       "aliases": [
@@ -8330,6 +8485,7 @@ export const terms = [
     "id": "stat-list",
     "status": "draft",
     "category": "data-display",
+    "group": "data-metrics-charts",
     "ko": {
       "name": "지표 리스트",
       "aliases": [
@@ -8399,6 +8555,7 @@ export const terms = [
     "id": "activity-feed",
     "status": "draft",
     "category": "data-display",
+    "group": "data-timeline-history",
     "ko": {
       "name": "활동 피드",
       "aliases": [
@@ -8451,6 +8608,7 @@ export const terms = [
     "id": "map-marker",
     "status": "draft",
     "category": "data-display",
+    "group": "data-metrics-charts",
     "ko": {
       "name": "지도 마커",
       "aliases": [
@@ -8503,6 +8661,7 @@ export const terms = [
     "id": "scrubber",
     "status": "draft",
     "category": "action",
+    "group": "action-editor-media",
     "ko": {
       "name": "스크러버",
       "aliases": [
@@ -8555,6 +8714,7 @@ export const terms = [
     "id": "range-slider",
     "status": "draft",
     "category": "selection",
+    "group": "selection-options",
     "ko": {
       "name": "범위 슬라이더",
       "aliases": [
@@ -8608,6 +8768,7 @@ export const terms = [
     "id": "multi-select",
     "status": "draft",
     "category": "selection",
+    "group": "selection-options",
     "ko": {
       "name": "다중 선택창",
       "aliases": [
@@ -8660,6 +8821,7 @@ export const terms = [
     "id": "transfer-list",
     "status": "draft",
     "category": "selection",
+    "group": "selection-options",
     "ko": {
       "name": "전송 리스트",
       "aliases": [
@@ -8712,6 +8874,7 @@ export const terms = [
     "id": "virtualized-list",
     "status": "draft",
     "category": "data-display",
+    "group": "data-tables-lists",
     "ko": {
       "name": "가상화 리스트",
       "aliases": [
@@ -8764,6 +8927,7 @@ export const terms = [
     "id": "infinite-scroll",
     "status": "draft",
     "category": "data-display",
+    "group": "data-tables-lists",
     "ko": {
       "name": "무한 스크롤",
       "aliases": [
@@ -8816,6 +8980,7 @@ export const terms = [
     "id": "pull-to-refresh",
     "status": "draft",
     "category": "data-display",
+    "group": "data-tables-lists",
     "ko": {
       "name": "당겨서 새로고침",
       "aliases": [
@@ -8868,6 +9033,7 @@ export const terms = [
     "id": "swipe-action",
     "status": "draft",
     "category": "action",
+    "group": "action-bulk-danger",
     "ko": {
       "name": "스와이프 액션",
       "aliases": [
@@ -8920,6 +9086,7 @@ export const terms = [
     "id": "wizard",
     "status": "draft",
     "category": "selection",
+    "group": "selection-navigation",
     "ko": {
       "name": "위저드",
       "aliases": [
@@ -8972,6 +9139,7 @@ export const terms = [
     "id": "toast-stack",
     "status": "draft",
     "category": "feedback",
+    "group": "feedback-alerts-toasts",
     "ko": {
       "name": "토스트 스택",
       "aliases": [
@@ -9024,6 +9192,7 @@ export const terms = [
     "id": "skeleton-table",
     "status": "draft",
     "category": "feedback",
+    "group": "feedback-loading-progress",
     "ko": {
       "name": "테이블 스켈레톤",
       "aliases": [
@@ -9076,6 +9245,7 @@ export const terms = [
     "id": "empty-table",
     "status": "draft",
     "category": "feedback",
+    "group": "feedback-empty-error",
     "ko": {
       "name": "빈 테이블",
       "aliases": [
@@ -9128,6 +9298,7 @@ export const terms = [
     "id": "table-density-control",
     "status": "draft",
     "category": "data-display",
+    "group": "data-tables-lists",
     "ko": {
       "name": "테이블 밀도 조절",
       "aliases": [
@@ -9180,6 +9351,7 @@ export const terms = [
     "id": "column-visibility-menu",
     "status": "draft",
     "category": "data-display",
+    "group": "data-tables-lists",
     "ko": {
       "name": "컬럼 표시 메뉴",
       "aliases": [
@@ -9232,6 +9404,7 @@ export const terms = [
     "id": "saved-view-tabs",
     "status": "draft",
     "category": "selection",
+    "group": "selection-menus",
     "ko": {
       "name": "저장된 뷰 탭",
       "aliases": [
@@ -9299,6 +9472,7 @@ export const terms = [
     "id": "filter-panel",
     "status": "draft",
     "category": "data-display",
+    "group": "data-tables-lists",
     "ko": {
       "name": "필터 패널",
       "aliases": [
@@ -9366,6 +9540,7 @@ export const terms = [
     "id": "advanced-filter-builder",
     "status": "draft",
     "category": "data-display",
+    "group": "data-tables-lists",
     "ko": {
       "name": "고급 필터 빌더",
       "aliases": [
@@ -9418,6 +9593,7 @@ export const terms = [
     "id": "query-builder",
     "status": "draft",
     "category": "data-display",
+    "group": "data-tables-lists",
     "ko": {
       "name": "쿼리 빌더",
       "aliases": [
@@ -9470,6 +9646,7 @@ export const terms = [
     "id": "grouped-list",
     "status": "draft",
     "category": "data-display",
+    "group": "data-tables-lists",
     "ko": {
       "name": "그룹 리스트",
       "aliases": [
@@ -9522,6 +9699,7 @@ export const terms = [
     "id": "nested-list",
     "status": "draft",
     "category": "data-display",
+    "group": "data-tables-lists",
     "ko": {
       "name": "중첩 리스트",
       "aliases": [
@@ -9574,6 +9752,7 @@ export const terms = [
     "id": "draggable-list",
     "status": "draft",
     "category": "data-display",
+    "group": "data-tables-lists",
     "ko": {
       "name": "드래그 리스트",
       "aliases": [
@@ -9626,6 +9805,7 @@ export const terms = [
     "id": "reorder-handle",
     "status": "draft",
     "category": "action",
+    "group": "action-misc",
     "ko": {
       "name": "순서 변경 핸들",
       "aliases": [
@@ -9678,6 +9858,7 @@ export const terms = [
     "id": "selection-summary",
     "status": "draft",
     "category": "data-display",
+    "group": "data-tables-lists",
     "ko": {
       "name": "선택 요약",
       "aliases": [
@@ -9730,6 +9911,7 @@ export const terms = [
     "id": "comparison-table",
     "status": "draft",
     "category": "data-display",
+    "group": "data-tables-lists",
     "ko": {
       "name": "비교 테이블",
       "aliases": [
@@ -9782,6 +9964,7 @@ export const terms = [
     "id": "pivot-table",
     "status": "draft",
     "category": "data-display",
+    "group": "data-tables-lists",
     "ko": {
       "name": "피벗 테이블",
       "aliases": [
@@ -9834,6 +10017,7 @@ export const terms = [
     "id": "tree-table",
     "status": "draft",
     "category": "data-display",
+    "group": "data-tables-lists",
     "ko": {
       "name": "트리 테이블",
       "aliases": [
@@ -9886,6 +10070,7 @@ export const terms = [
     "id": "expandable-row",
     "status": "draft",
     "category": "data-display",
+    "group": "data-tables-lists",
     "ko": {
       "name": "펼침 행",
       "aliases": [
@@ -9938,6 +10123,7 @@ export const terms = [
     "id": "detail-row",
     "status": "draft",
     "category": "data-display",
+    "group": "data-tables-lists",
     "ko": {
       "name": "상세 행",
       "aliases": [
@@ -9990,6 +10176,7 @@ export const terms = [
     "id": "audit-log",
     "status": "draft",
     "category": "data-display",
+    "group": "data-timeline-history",
     "ko": {
       "name": "감사 로그",
       "aliases": [
@@ -10045,6 +10232,7 @@ export const terms = [
     "id": "workspace-switcher",
     "status": "draft",
     "category": "selection",
+    "group": "selection-context",
     "ko": {
       "name": "워크스페이스 전환기",
       "aliases": [
@@ -10097,6 +10285,7 @@ export const terms = [
     "id": "account-switcher",
     "status": "draft",
     "category": "selection",
+    "group": "selection-context",
     "ko": {
       "name": "계정 전환기",
       "aliases": [
@@ -10149,6 +10338,7 @@ export const terms = [
     "id": "global-header",
     "status": "draft",
     "category": "structure",
+    "group": "structure-app-layout",
     "ko": {
       "name": "전역 헤더",
       "aliases": [
@@ -10202,6 +10392,7 @@ export const terms = [
     "id": "utility-bar",
     "status": "draft",
     "category": "structure",
+    "group": "structure-app-layout",
     "ko": {
       "name": "유틸리티 바",
       "aliases": [
@@ -10254,6 +10445,7 @@ export const terms = [
     "id": "command-bar",
     "status": "draft",
     "category": "action",
+    "group": "action-command-bars",
     "ko": {
       "name": "커맨드 바",
       "aliases": [
@@ -10306,6 +10498,7 @@ export const terms = [
     "id": "status-bar",
     "status": "draft",
     "category": "structure",
+    "group": "structure-app-layout",
     "ko": {
       "name": "상태 표시줄",
       "aliases": [
@@ -10358,6 +10551,7 @@ export const terms = [
     "id": "breadcrumb-header",
     "status": "draft",
     "category": "structure",
+    "group": "structure-app-layout",
     "ko": {
       "name": "브레드크럼 헤더",
       "aliases": [
@@ -10412,6 +10606,7 @@ export const terms = [
     "id": "page-title-bar",
     "status": "draft",
     "category": "structure",
+    "group": "structure-app-layout",
     "ko": {
       "name": "페이지 제목 바",
       "aliases": [
@@ -10466,6 +10661,7 @@ export const terms = [
     "id": "content-tabs",
     "status": "draft",
     "category": "selection",
+    "group": "selection-options",
     "ko": {
       "name": "콘텐츠 탭",
       "aliases": [
@@ -10518,6 +10714,7 @@ export const terms = [
     "id": "right-rail",
     "status": "draft",
     "category": "structure",
+    "group": "structure-panels",
     "ko": {
       "name": "우측 레일",
       "aliases": [
@@ -10570,6 +10767,7 @@ export const terms = [
     "id": "inspector-panel",
     "status": "draft",
     "category": "structure",
+    "group": "structure-panels",
     "ko": {
       "name": "인스펙터 패널",
       "aliases": [
@@ -10622,6 +10820,7 @@ export const terms = [
     "id": "properties-panel",
     "status": "draft",
     "category": "structure",
+    "group": "structure-panels",
     "ko": {
       "name": "속성 패널",
       "aliases": [
@@ -10674,6 +10873,7 @@ export const terms = [
     "id": "preview-pane",
     "status": "draft",
     "category": "structure",
+    "group": "structure-panels",
     "ko": {
       "name": "미리보기 패널",
       "aliases": [
@@ -10726,6 +10926,7 @@ export const terms = [
     "id": "canvas-toolbar",
     "status": "draft",
     "category": "action",
+    "group": "action-command-bars",
     "ko": {
       "name": "캔버스 툴바",
       "aliases": [
@@ -10778,6 +10979,7 @@ export const terms = [
     "id": "floating-panel",
     "status": "draft",
     "category": "structure",
+    "group": "structure-panels",
     "ko": {
       "name": "플로팅 패널",
       "aliases": [
@@ -10830,6 +11032,7 @@ export const terms = [
     "id": "dockable-panel",
     "status": "draft",
     "category": "structure",
+    "group": "structure-panels",
     "ko": {
       "name": "도킹 패널",
       "aliases": [
@@ -10882,6 +11085,7 @@ export const terms = [
     "id": "collapsible-sidebar",
     "status": "draft",
     "category": "structure",
+    "group": "structure-navigation",
     "ko": {
       "name": "접이식 사이드바",
       "aliases": [
@@ -10934,6 +11138,7 @@ export const terms = [
     "id": "mini-sidebar",
     "status": "draft",
     "category": "structure",
+    "group": "structure-navigation",
     "ko": {
       "name": "미니 사이드바",
       "aliases": [
@@ -10986,6 +11191,7 @@ export const terms = [
     "id": "responsive-stack",
     "status": "draft",
     "category": "structure",
+    "group": "structure-mobile",
     "ko": {
       "name": "반응형 스택",
       "aliases": [
@@ -11053,6 +11259,7 @@ export const terms = [
     "id": "mobile-bottom-sheet",
     "status": "draft",
     "category": "structure",
+    "group": "structure-mobile",
     "ko": {
       "name": "모바일 바텀 시트",
       "aliases": [
@@ -11105,6 +11312,7 @@ export const terms = [
     "id": "safe-area",
     "status": "draft",
     "category": "structure",
+    "group": "structure-mobile",
     "ko": {
       "name": "안전 영역",
       "aliases": [
@@ -11173,6 +11381,7 @@ export const terms = [
     "id": "mobile-status-bar",
     "status": "draft",
     "category": "structure",
+    "group": "structure-mobile",
     "ko": {
       "name": "모바일 상태 바",
       "aliases": [
@@ -11227,6 +11436,7 @@ export const terms = [
     "id": "mobile-app-bar",
     "status": "draft",
     "category": "structure",
+    "group": "structure-mobile",
     "ko": {
       "name": "모바일 앱 바",
       "aliases": [
@@ -11282,6 +11492,7 @@ export const terms = [
     "id": "large-title-header",
     "status": "draft",
     "category": "structure",
+    "group": "structure-mobile",
     "ko": {
       "name": "큰 제목 헤더",
       "aliases": [
@@ -11336,6 +11547,7 @@ export const terms = [
     "id": "bottom-app-bar",
     "status": "draft",
     "category": "action",
+    "group": "action-buttons",
     "ko": {
       "name": "하단 앱 바",
       "aliases": [
@@ -11390,6 +11602,7 @@ export const terms = [
     "id": "mobile-search-header",
     "status": "draft",
     "category": "input",
+    "group": "input-search-command",
     "ko": {
       "name": "모바일 검색 헤더",
       "aliases": [
@@ -11446,6 +11659,7 @@ export const terms = [
     "id": "mobile-segmented-tabs",
     "status": "draft",
     "category": "selection",
+    "group": "selection-navigation",
     "ko": {
       "name": "모바일 세그먼트 탭",
       "aliases": [
@@ -11499,6 +11713,7 @@ export const terms = [
     "id": "standard-bottom-sheet",
     "status": "draft",
     "category": "structure",
+    "group": "structure-mobile",
     "ko": {
       "name": "표준 바텀 시트",
       "aliases": [
@@ -11554,6 +11769,7 @@ export const terms = [
     "id": "modal-bottom-sheet",
     "status": "draft",
     "category": "structure",
+    "group": "structure-mobile",
     "ko": {
       "name": "모달 바텀 시트",
       "aliases": [
@@ -11625,6 +11841,7 @@ export const terms = [
     "id": "action-sheet",
     "status": "draft",
     "category": "action",
+    "group": "action-command-bars",
     "ko": {
       "name": "액션 시트",
       "aliases": [
@@ -11679,6 +11896,7 @@ export const terms = [
     "id": "share-sheet",
     "status": "draft",
     "category": "action",
+    "group": "action-command-bars",
     "ko": {
       "name": "공유 시트",
       "aliases": [
@@ -11735,6 +11953,7 @@ export const terms = [
     "id": "full-screen-dialog",
     "status": "draft",
     "category": "structure",
+    "group": "structure-mobile",
     "ko": {
       "name": "전체 화면 다이얼로그",
       "aliases": [
@@ -11788,6 +12007,7 @@ export const terms = [
     "id": "permission-prompt",
     "status": "draft",
     "category": "feedback",
+    "group": "feedback-access-limits",
     "ko": {
       "name": "권한 요청 프롬프트",
       "aliases": [
@@ -11844,6 +12064,7 @@ export const terms = [
     "id": "permission-education-screen",
     "status": "draft",
     "category": "feedback",
+    "group": "feedback-access-limits",
     "ko": {
       "name": "권한 안내 화면",
       "aliases": [
@@ -11899,6 +12120,7 @@ export const terms = [
     "id": "mobile-snackbar",
     "status": "draft",
     "category": "feedback",
+    "group": "feedback-alerts-toasts",
     "ko": {
       "name": "모바일 스낵바",
       "aliases": [
@@ -11952,6 +12174,7 @@ export const terms = [
     "id": "mobile-toast",
     "status": "draft",
     "category": "feedback",
+    "group": "feedback-alerts-toasts",
     "ko": {
       "name": "모바일 토스트",
       "aliases": [
@@ -12005,6 +12228,7 @@ export const terms = [
     "id": "mobile-alert-dialog",
     "status": "draft",
     "category": "feedback",
+    "group": "feedback-alerts-toasts",
     "ko": {
       "name": "모바일 경고 다이얼로그",
       "aliases": [
@@ -12060,6 +12284,7 @@ export const terms = [
     "id": "mobile-popover-menu",
     "status": "draft",
     "category": "selection",
+    "group": "selection-menus",
     "ko": {
       "name": "모바일 팝오버 메뉴",
       "aliases": [
@@ -12113,6 +12338,7 @@ export const terms = [
     "id": "sheet-drag-handle",
     "status": "draft",
     "category": "structure",
+    "group": "structure-mobile",
     "ko": {
       "name": "시트 드래그 핸들",
       "aliases": [
@@ -12167,6 +12393,7 @@ export const terms = [
     "id": "pull-to-refresh-indicator",
     "status": "draft",
     "category": "input",
+    "group": "input-pickers",
     "ko": {
       "name": "당겨서 새로고침 표시",
       "aliases": [
@@ -12222,6 +12449,7 @@ export const terms = [
     "id": "swipe-to-delete",
     "status": "draft",
     "category": "action",
+    "group": "action-bulk-danger",
     "ko": {
       "name": "밀어서 삭제",
       "aliases": [
@@ -12275,6 +12503,7 @@ export const terms = [
     "id": "swipe-action-row",
     "status": "draft",
     "category": "action",
+    "group": "action-bulk-danger",
     "ko": {
       "name": "스와이프 액션 행",
       "aliases": [
@@ -12329,6 +12558,7 @@ export const terms = [
     "id": "long-press-menu",
     "status": "draft",
     "category": "selection",
+    "group": "selection-menus",
     "ko": {
       "name": "길게 누르기 메뉴",
       "aliases": [
@@ -12382,6 +12612,7 @@ export const terms = [
     "id": "drag-to-reorder-list",
     "status": "draft",
     "category": "data-display",
+    "group": "data-tables-lists",
     "ko": {
       "name": "드래그 순서 변경 목록",
       "aliases": [
@@ -12436,6 +12667,7 @@ export const terms = [
     "id": "grab-handle",
     "status": "draft",
     "category": "action",
+    "group": "action-bulk-danger",
     "ko": {
       "name": "잡기 핸들",
       "aliases": [
@@ -12489,6 +12721,7 @@ export const terms = [
     "id": "page-control",
     "status": "draft",
     "category": "selection",
+    "group": "selection-navigation",
     "ko": {
       "name": "페이지 컨트롤",
       "aliases": [
@@ -12542,6 +12775,7 @@ export const terms = [
     "id": "carousel-peek",
     "status": "draft",
     "category": "structure",
+    "group": "structure-mobile",
     "ko": {
       "name": "피크 캐러셀",
       "aliases": [
@@ -12595,6 +12829,7 @@ export const terms = [
     "id": "edge-swipe-back",
     "status": "draft",
     "category": "selection",
+    "group": "selection-navigation",
     "ko": {
       "name": "가장자리 스와이프 뒤로가기",
       "aliases": [
@@ -12649,6 +12884,7 @@ export const terms = [
     "id": "pinch-zoom-viewer",
     "status": "draft",
     "category": "action",
+    "group": "action-editor-media",
     "ko": {
       "name": "핀치 줌 뷰어",
       "aliases": [
@@ -12704,6 +12940,7 @@ export const terms = [
     "id": "scrim",
     "status": "draft",
     "category": "structure",
+    "group": "structure-mobile",
     "ko": {
       "name": "스크림",
       "aliases": [
@@ -12759,6 +12996,7 @@ export const terms = [
     "id": "touch-ripple",
     "status": "draft",
     "category": "feedback",
+    "group": "feedback-alerts-toasts",
     "ko": {
       "name": "터치 리플",
       "aliases": [
@@ -12813,6 +13051,7 @@ export const terms = [
     "id": "otp-code-input",
     "status": "draft",
     "category": "input",
+    "group": "input-text",
     "ko": {
       "name": "OTP 코드 입력",
       "aliases": [
@@ -12869,6 +13108,7 @@ export const terms = [
     "id": "passcode-keypad",
     "status": "draft",
     "category": "input",
+    "group": "input-text",
     "ko": {
       "name": "패스코드 키패드",
       "aliases": [
@@ -12924,6 +13164,7 @@ export const terms = [
     "id": "biometric-prompt",
     "status": "draft",
     "category": "feedback",
+    "group": "feedback-access-limits",
     "ko": {
       "name": "생체 인증 프롬프트",
       "aliases": [
@@ -12980,6 +13221,7 @@ export const terms = [
     "id": "mobile-date-picker",
     "status": "draft",
     "category": "input",
+    "group": "input-pickers",
     "ko": {
       "name": "모바일 날짜 선택",
       "aliases": [
@@ -13035,6 +13277,7 @@ export const terms = [
     "id": "wheel-picker",
     "status": "draft",
     "category": "input",
+    "group": "input-pickers",
     "ko": {
       "name": "휠 피커",
       "aliases": [
@@ -13087,6 +13330,7 @@ export const terms = [
     "id": "time-wheel-picker",
     "status": "draft",
     "category": "input",
+    "group": "input-pickers",
     "ko": {
       "name": "시간 휠 피커",
       "aliases": [
@@ -13143,6 +13387,7 @@ export const terms = [
     "id": "mobile-search-sheet",
     "status": "draft",
     "category": "input",
+    "group": "input-search-command",
     "ko": {
       "name": "모바일 검색 시트",
       "aliases": [
@@ -13197,6 +13442,7 @@ export const terms = [
     "id": "chip-input-mobile",
     "status": "draft",
     "category": "input",
+    "group": "input-pickers",
     "ko": {
       "name": "모바일 칩 입력",
       "aliases": [
@@ -13252,6 +13498,7 @@ export const terms = [
     "id": "contact-picker",
     "status": "draft",
     "category": "input",
+    "group": "input-pickers",
     "ko": {
       "name": "연락처 선택",
       "aliases": [
@@ -13308,6 +13555,7 @@ export const terms = [
     "id": "address-autocomplete",
     "status": "draft",
     "category": "input",
+    "group": "input-search-command",
     "ko": {
       "name": "주소 자동완성",
       "aliases": [
@@ -13363,6 +13611,7 @@ export const terms = [
     "id": "voice-input-button",
     "status": "draft",
     "category": "action",
+    "group": "action-buttons",
     "ko": {
       "name": "음성 입력 버튼",
       "aliases": [
@@ -13418,6 +13667,7 @@ export const terms = [
     "id": "clear-text-button",
     "status": "draft",
     "category": "action",
+    "group": "action-buttons",
     "ko": {
       "name": "텍스트 지우기 버튼",
       "aliases": [
@@ -13473,6 +13723,7 @@ export const terms = [
     "id": "feed-card-mobile",
     "status": "draft",
     "category": "data-display",
+    "group": "data-display-misc",
     "ko": {
       "name": "모바일 피드 카드",
       "aliases": [
@@ -13526,6 +13777,7 @@ export const terms = [
     "id": "story-rail",
     "status": "draft",
     "category": "data-display",
+    "group": "data-display-misc",
     "ko": {
       "name": "스토리 레일",
       "aliases": [
@@ -13579,6 +13831,7 @@ export const terms = [
     "id": "story-viewer",
     "status": "draft",
     "category": "data-display",
+    "group": "data-display-misc",
     "ko": {
       "name": "스토리 뷰어",
       "aliases": [
@@ -13632,6 +13885,7 @@ export const terms = [
     "id": "media-lightbox-mobile",
     "status": "draft",
     "category": "structure",
+    "group": "structure-mobile",
     "ko": {
       "name": "모바일 미디어 라이트박스",
       "aliases": [
@@ -13687,6 +13941,7 @@ export const terms = [
     "id": "comment-composer",
     "status": "draft",
     "category": "input",
+    "group": "input-text",
     "ko": {
       "name": "댓글 작성 바",
       "aliases": [
@@ -13742,6 +13997,7 @@ export const terms = [
     "id": "bottom-cta-bar",
     "status": "draft",
     "category": "action",
+    "group": "action-buttons",
     "ko": {
       "name": "하단 CTA 바",
       "aliases": [
@@ -13796,6 +14052,7 @@ export const terms = [
     "id": "product-option-sheet",
     "status": "draft",
     "category": "input",
+    "group": "input-pickers",
     "ko": {
       "name": "상품 옵션 시트",
       "aliases": [
@@ -13849,6 +14106,7 @@ export const terms = [
     "id": "cart-summary-bar",
     "status": "draft",
     "category": "data-display",
+    "group": "data-commerce-billing",
     "ko": {
       "name": "장바구니 요약 바",
       "aliases": [
@@ -13919,6 +14177,7 @@ export const terms = [
     "id": "checkout-progress-header",
     "status": "draft",
     "category": "feedback",
+    "group": "feedback-status-notifications",
     "ko": {
       "name": "결제 진행 헤더",
       "aliases": [
@@ -13987,6 +14246,7 @@ export const terms = [
     "id": "delivery-tracker",
     "status": "draft",
     "category": "feedback",
+    "group": "feedback-status-notifications",
     "ko": {
       "name": "배송 추적",
       "aliases": [
@@ -14043,6 +14303,7 @@ export const terms = [
     "id": "map-bottom-panel",
     "status": "draft",
     "category": "structure",
+    "group": "structure-mobile",
     "ko": {
       "name": "지도 하단 패널",
       "aliases": [
@@ -14098,6 +14359,7 @@ export const terms = [
     "id": "location-permission-empty",
     "status": "draft",
     "category": "feedback",
+    "group": "feedback-empty-error",
     "ko": {
       "name": "위치 권한 빈 상태",
       "aliases": [
@@ -14153,6 +14415,7 @@ export const terms = [
     "id": "onboarding-pager",
     "status": "draft",
     "category": "selection",
+    "group": "selection-navigation",
     "ko": {
       "name": "온보딩 페이저",
       "aliases": [
@@ -14206,6 +14469,7 @@ export const terms = [
     "id": "coach-mark",
     "status": "draft",
     "category": "feedback",
+    "group": "feedback-status-notifications",
     "ko": {
       "name": "코치마크",
       "aliases": [
@@ -14261,6 +14525,7 @@ export const terms = [
     "id": "mobile-empty-feed",
     "status": "draft",
     "category": "feedback",
+    "group": "feedback-empty-error",
     "ko": {
       "name": "모바일 빈 피드",
       "aliases": [
@@ -14316,6 +14581,7 @@ export const terms = [
     "id": "page-layout",
     "status": "draft",
     "category": "structure",
+    "group": "structure-app-layout",
     "ko": {
       "name": "페이지 레이아웃",
       "aliases": [
@@ -14368,6 +14634,7 @@ export const terms = [
     "id": "dashboard-grid",
     "status": "draft",
     "category": "structure",
+    "group": "structure-app-layout",
     "ko": {
       "name": "대시보드 그리드",
       "aliases": [
@@ -14435,6 +14702,7 @@ export const terms = [
     "id": "permission-state",
     "status": "draft",
     "category": "feedback",
+    "group": "feedback-access-limits",
     "ko": {
       "name": "권한 필요 상태",
       "aliases": [
@@ -14487,6 +14755,7 @@ export const terms = [
     "id": "locked-state",
     "status": "draft",
     "category": "feedback",
+    "group": "feedback-access-limits",
     "ko": {
       "name": "잠금 상태",
       "aliases": [
@@ -14539,6 +14808,7 @@ export const terms = [
     "id": "offline-state",
     "status": "draft",
     "category": "feedback",
+    "group": "feedback-access-limits",
     "ko": {
       "name": "오프라인 상태",
       "aliases": [
@@ -14591,6 +14861,7 @@ export const terms = [
     "id": "maintenance-state",
     "status": "draft",
     "category": "feedback",
+    "group": "feedback-empty-error",
     "ko": {
       "name": "점검 상태",
       "aliases": [
@@ -14643,6 +14914,7 @@ export const terms = [
     "id": "syncing-state",
     "status": "draft",
     "category": "feedback",
+    "group": "feedback-loading-progress",
     "ko": {
       "name": "동기화 중 상태",
       "aliases": [
@@ -14695,6 +14967,7 @@ export const terms = [
     "id": "saving-indicator",
     "status": "draft",
     "category": "feedback",
+    "group": "feedback-loading-progress",
     "ko": {
       "name": "저장 표시기",
       "aliases": [
@@ -14747,6 +15020,7 @@ export const terms = [
     "id": "unsaved-changes-banner",
     "status": "draft",
     "category": "feedback",
+    "group": "feedback-access-limits",
     "ko": {
       "name": "저장 안 된 변경 배너",
       "aliases": [
@@ -14799,6 +15073,7 @@ export const terms = [
     "id": "session-expired-dialog",
     "status": "draft",
     "category": "feedback",
+    "group": "feedback-access-limits",
     "ko": {
       "name": "세션 만료 다이얼로그",
       "aliases": [
@@ -14851,6 +15126,7 @@ export const terms = [
     "id": "upgrade-prompt",
     "status": "draft",
     "category": "feedback",
+    "group": "feedback-access-limits",
     "ko": {
       "name": "업그레이드 유도",
       "aliases": [
@@ -14903,6 +15179,7 @@ export const terms = [
     "id": "quota-warning",
     "status": "draft",
     "category": "feedback",
+    "group": "feedback-access-limits",
     "ko": {
       "name": "사용량 경고",
       "aliases": [
@@ -14955,6 +15232,7 @@ export const terms = [
     "id": "trial-banner",
     "status": "draft",
     "category": "feedback",
+    "group": "feedback-alerts-toasts",
     "ko": {
       "name": "체험판 배너",
       "aliases": [
@@ -15007,6 +15285,7 @@ export const terms = [
     "id": "destructive-confirmation",
     "status": "draft",
     "category": "action",
+    "group": "action-bulk-danger",
     "ko": {
       "name": "파괴적 작업 확인",
       "aliases": [
@@ -15061,6 +15340,7 @@ export const terms = [
     "id": "success-toast",
     "status": "draft",
     "category": "feedback",
+    "group": "feedback-alerts-toasts",
     "ko": {
       "name": "성공 토스트",
       "aliases": [
@@ -15113,6 +15393,7 @@ export const terms = [
     "id": "error-toast",
     "status": "draft",
     "category": "feedback",
+    "group": "feedback-alerts-toasts",
     "ko": {
       "name": "오류 토스트",
       "aliases": [
@@ -15165,6 +15446,7 @@ export const terms = [
     "id": "notification-center",
     "status": "draft",
     "category": "feedback",
+    "group": "feedback-status-notifications",
     "ko": {
       "name": "알림 센터",
       "aliases": [
@@ -15217,6 +15499,7 @@ export const terms = [
     "id": "notification-list",
     "status": "draft",
     "category": "data-display",
+    "group": "data-timeline-history",
     "ko": {
       "name": "알림 목록",
       "aliases": [
@@ -15269,6 +15552,7 @@ export const terms = [
     "id": "status-chip",
     "status": "draft",
     "category": "feedback",
+    "group": "feedback-status-notifications",
     "ko": {
       "name": "상태 칩",
       "aliases": [
@@ -15321,6 +15605,7 @@ export const terms = [
     "id": "health-indicator",
     "status": "draft",
     "category": "feedback",
+    "group": "feedback-status-notifications",
     "ko": {
       "name": "헬스 인디케이터",
       "aliases": [
@@ -15375,6 +15660,7 @@ export const terms = [
     "id": "connection-status",
     "status": "draft",
     "category": "feedback",
+    "group": "feedback-status-notifications",
     "ko": {
       "name": "연결 상태",
       "aliases": [
@@ -15427,6 +15713,7 @@ export const terms = [
     "id": "retry-panel",
     "status": "draft",
     "category": "feedback",
+    "group": "feedback-empty-error",
     "ko": {
       "name": "재시도 패널",
       "aliases": [
@@ -15479,6 +15766,7 @@ export const terms = [
     "id": "media-card",
     "status": "draft",
     "category": "data-display",
+    "group": "data-display-misc",
     "ko": {
       "name": "미디어 카드",
       "aliases": [
@@ -15533,6 +15821,7 @@ export const terms = [
     "id": "video-player-controls",
     "status": "draft",
     "category": "action",
+    "group": "action-editor-media",
     "ko": {
       "name": "비디오 플레이어 컨트롤",
       "aliases": [
@@ -15586,6 +15875,7 @@ export const terms = [
     "id": "audio-player-controls",
     "status": "draft",
     "category": "action",
+    "group": "action-editor-media",
     "ko": {
       "name": "오디오 플레이어 컨트롤",
       "aliases": [
@@ -15638,6 +15928,7 @@ export const terms = [
     "id": "image-gallery",
     "status": "draft",
     "category": "data-display",
+    "group": "data-commerce-billing",
     "ko": {
       "name": "이미지 갤러리",
       "aliases": [
@@ -15690,6 +15981,7 @@ export const terms = [
     "id": "lightbox",
     "status": "draft",
     "category": "structure",
+    "group": "structure-panels",
     "ko": {
       "name": "라이트박스",
       "aliases": [
@@ -15742,6 +16034,7 @@ export const terms = [
     "id": "cropper",
     "status": "draft",
     "category": "action",
+    "group": "action-editor-media",
     "ko": {
       "name": "크롭퍼",
       "aliases": [
@@ -15795,6 +16088,7 @@ export const terms = [
     "id": "upload-dropzone",
     "status": "draft",
     "category": "input",
+    "group": "input-file-media",
     "ko": {
       "name": "업로드 드롭존",
       "aliases": [
@@ -15848,6 +16142,7 @@ export const terms = [
     "id": "attachment-list",
     "status": "draft",
     "category": "data-display",
+    "group": "data-commerce-billing",
     "ko": {
       "name": "첨부파일 목록",
       "aliases": [
@@ -15901,6 +16196,7 @@ export const terms = [
     "id": "file-card",
     "status": "draft",
     "category": "data-display",
+    "group": "data-display-misc",
     "ko": {
       "name": "파일 카드",
       "aliases": [
@@ -15954,6 +16250,7 @@ export const terms = [
     "id": "product-card",
     "status": "draft",
     "category": "data-display",
+    "group": "data-display-misc",
     "ko": {
       "name": "상품 카드",
       "aliases": [
@@ -16022,6 +16319,7 @@ export const terms = [
     "id": "price-card",
     "status": "draft",
     "category": "data-display",
+    "group": "data-display-misc",
     "ko": {
       "name": "가격 카드",
       "aliases": [
@@ -16075,6 +16373,7 @@ export const terms = [
     "id": "plan-card",
     "status": "draft",
     "category": "data-display",
+    "group": "data-display-misc",
     "ko": {
       "name": "플랜 카드",
       "aliases": [
@@ -16127,6 +16426,7 @@ export const terms = [
     "id": "feature-comparison",
     "status": "draft",
     "category": "data-display",
+    "group": "data-commerce-billing",
     "ko": {
       "name": "기능 비교",
       "aliases": [
@@ -16179,6 +16479,7 @@ export const terms = [
     "id": "coupon-field",
     "status": "draft",
     "category": "input",
+    "group": "input-pickers",
     "ko": {
       "name": "쿠폰 입력 필드",
       "aliases": [
@@ -16231,6 +16532,7 @@ export const terms = [
     "id": "quantity-stepper",
     "status": "draft",
     "category": "input",
+    "group": "input-pickers",
     "ko": {
       "name": "수량 스테퍼",
       "aliases": [
@@ -16285,6 +16587,7 @@ export const terms = [
     "id": "cart-summary",
     "status": "draft",
     "category": "data-display",
+    "group": "data-commerce-billing",
     "ko": {
       "name": "장바구니 요약",
       "aliases": [
@@ -16339,6 +16642,7 @@ export const terms = [
     "id": "checkout-step",
     "status": "draft",
     "category": "structure",
+    "group": "structure-app-layout",
     "ko": {
       "name": "체크아웃 단계",
       "aliases": [
@@ -16406,6 +16710,7 @@ export const terms = [
     "id": "payment-method-card",
     "status": "draft",
     "category": "selection",
+    "group": "selection-context",
     "ko": {
       "name": "결제수단 카드",
       "aliases": [
@@ -16474,6 +16779,7 @@ export const terms = [
     "id": "address-card",
     "status": "draft",
     "category": "data-display",
+    "group": "data-commerce-billing",
     "ko": {
       "name": "주소 카드",
       "aliases": [
@@ -16527,6 +16833,7 @@ export const terms = [
     "id": "order-status",
     "status": "draft",
     "category": "feedback",
+    "group": "feedback-status-notifications",
     "ko": {
       "name": "주문 상태",
       "aliases": [
@@ -16594,6 +16901,7 @@ export const terms = [
     "id": "calendar-event-card",
     "status": "draft",
     "category": "data-display",
+    "group": "data-display-misc",
     "ko": {
       "name": "캘린더 이벤트 카드",
       "aliases": [
@@ -16647,6 +16955,7 @@ export const terms = [
     "id": "kanban-card",
     "status": "draft",
     "category": "data-display",
+    "group": "data-display-misc",
     "ko": {
       "name": "칸반 카드",
       "aliases": [
@@ -16700,6 +17009,7 @@ export const terms = [
     "id": "board-column",
     "status": "draft",
     "category": "structure",
+    "group": "structure-navigation",
     "ko": {
       "name": "보드 컬럼",
       "aliases": [
@@ -16752,6 +17062,7 @@ export const terms = [
     "id": "empty-search-result",
     "status": "draft",
     "category": "feedback",
+    "group": "feedback-empty-error",
     "ko": {
       "name": "검색 결과 없음",
       "aliases": [
@@ -16804,6 +17115,7 @@ export const terms = [
     "id": "onboarding-checklist",
     "status": "draft",
     "category": "data-display",
+    "group": "data-display-misc",
     "ko": {
       "name": "온보딩 체크리스트",
       "aliases": [
@@ -16856,6 +17168,7 @@ export const terms = [
     "id": "setup-progress",
     "status": "draft",
     "category": "feedback",
+    "group": "feedback-loading-progress",
     "ko": {
       "name": "설정 진행률",
       "aliases": [
@@ -16908,6 +17221,7 @@ export const terms = [
     "id": "help-center-card",
     "status": "draft",
     "category": "data-display",
+    "group": "data-display-misc",
     "ko": {
       "name": "도움말 센터 카드",
       "aliases": [
@@ -16961,6 +17275,7 @@ export const terms = [
     "id": "faq-list",
     "status": "draft",
     "category": "data-display",
+    "group": "data-display-misc",
     "ko": {
       "name": "FAQ 목록",
       "aliases": [
@@ -17022,6 +17337,7 @@ export const terms = [
     "id": "announcement-banner",
     "status": "draft",
     "category": "feedback",
+    "group": "feedback-alerts-toasts",
     "ko": {
       "name": "공지 배너",
       "aliases": [
@@ -17074,6 +17390,7 @@ export const terms = [
     "id": "release-note-card",
     "status": "draft",
     "category": "data-display",
+    "group": "data-display-misc",
     "ko": {
       "name": "릴리즈 노트 카드",
       "aliases": [
@@ -17127,6 +17444,7 @@ export const terms = [
     "id": "profile-card",
     "status": "draft",
     "category": "data-display",
+    "group": "data-display-misc",
     "ko": {
       "name": "프로필 카드",
       "aliases": [
@@ -17180,6 +17498,7 @@ export const terms = [
     "id": "team-member-row",
     "status": "draft",
     "category": "data-display",
+    "group": "data-people-integrations",
     "ko": {
       "name": "팀원 행",
       "aliases": [
@@ -17233,6 +17552,7 @@ export const terms = [
     "id": "role-badge",
     "status": "draft",
     "category": "feedback",
+    "group": "feedback-status-notifications",
     "ko": {
       "name": "역할 배지",
       "aliases": [
@@ -17285,6 +17605,7 @@ export const terms = [
     "id": "api-key-field",
     "status": "draft",
     "category": "input",
+    "group": "input-text",
     "ko": {
       "name": "API 키 필드",
       "aliases": [
@@ -17337,6 +17658,7 @@ export const terms = [
     "id": "webhook-endpoint-row",
     "status": "draft",
     "category": "data-display",
+    "group": "data-people-integrations",
     "ko": {
       "name": "웹훅 엔드포인트 행",
       "aliases": [
@@ -17390,6 +17712,7 @@ export const terms = [
     "id": "integration-card",
     "status": "draft",
     "category": "data-display",
+    "group": "data-people-integrations",
     "ko": {
       "name": "연동 카드",
       "aliases": [
@@ -17443,6 +17766,7 @@ export const terms = [
     "id": "connection-card",
     "status": "draft",
     "category": "data-display",
+    "group": "data-people-integrations",
     "ko": {
       "name": "연결 카드",
       "aliases": [
@@ -17495,6 +17819,7 @@ export const terms = [
     "id": "billing-summary",
     "status": "draft",
     "category": "data-display",
+    "group": "data-commerce-billing",
     "ko": {
       "name": "결제 요약",
       "aliases": [
@@ -17548,6 +17873,7 @@ export const terms = [
     "id": "invoice-row",
     "status": "draft",
     "category": "data-display",
+    "group": "data-commerce-billing",
     "ko": {
       "name": "인보이스 행",
       "aliases": [
@@ -17601,6 +17927,7 @@ export const terms = [
     "id": "version-history-list",
     "status": "draft",
     "category": "data-display",
+    "group": "data-timeline-history",
     "ko": {
       "name": "버전 히스토리 목록",
       "aliases": [
@@ -17655,6 +17982,7 @@ export const terms = [
     "id": "mobile-filter-bottom-sheet",
     "status": "draft",
     "category": "structure",
+    "group": "structure-mobile",
     "ko": {
       "name": "모바일 필터 바텀 시트",
       "aliases": [
@@ -17709,6 +18037,7 @@ export const terms = [
     "id": "inline-date-range-chip",
     "status": "draft",
     "category": "selection",
+    "group": "selection-options",
     "ko": {
       "name": "인라인 날짜 범위 칩",
       "aliases": [
@@ -17762,6 +18091,7 @@ export const terms = [
     "id": "floating-search-button",
     "status": "draft",
     "category": "action",
+    "group": "action-buttons",
     "ko": {
       "name": "플로팅 검색 버튼",
       "aliases": [
@@ -17814,6 +18144,7 @@ export const terms = [
     "id": "avatar-group",
     "status": "draft",
     "category": "data-display",
+    "group": "data-people-integrations",
     "ko": {
       "name": "아바타 그룹",
       "aliases": [
@@ -17867,6 +18198,7 @@ export const terms = [
     "id": "info-label",
     "status": "draft",
     "category": "feedback",
+    "group": "feedback-status-notifications",
     "ko": {
       "name": "정보 라벨",
       "aliases": [
@@ -17919,6 +18251,7 @@ export const terms = [
     "id": "message-bar",
     "status": "draft",
     "category": "feedback",
+    "group": "feedback-alerts-toasts",
     "ko": {
       "name": "메시지 바",
       "aliases": [
@@ -17972,6 +18305,7 @@ export const terms = [
     "id": "spin-button",
     "status": "draft",
     "category": "input",
+    "group": "input-text",
     "ko": {
       "name": "스핀 버튼 입력",
       "aliases": [
@@ -18027,6 +18361,7 @@ export const terms = [
     "id": "scope-bar",
     "status": "draft",
     "category": "selection",
+    "group": "selection-navigation",
     "ko": {
       "name": "스코프 바",
       "aliases": [
@@ -18079,6 +18414,7 @@ export const terms = [
     "id": "structured-list",
     "status": "draft",
     "category": "data-display",
+    "group": "data-tables-lists",
     "ko": {
       "name": "구조화 목록",
       "aliases": [
@@ -18134,6 +18470,7 @@ export const terms = [
     "id": "inline-loading",
     "status": "draft",
     "category": "feedback",
+    "group": "feedback-loading-progress",
     "ko": {
       "name": "인라인 로딩",
       "aliases": [
@@ -18188,6 +18525,7 @@ export const terms = [
     "id": "tag-picker",
     "status": "draft",
     "category": "input",
+    "group": "input-pickers",
     "ko": {
       "name": "태그 선택기",
       "aliases": [
@@ -18240,6 +18578,7 @@ export const terms = [
     "id": "disclosure-group",
     "status": "draft",
     "category": "structure",
+    "group": "structure-sections",
     "ko": {
       "name": "디스클로저 그룹",
       "aliases": [
@@ -18292,6 +18631,7 @@ export const terms = [
     "id": "contained-list",
     "status": "draft",
     "category": "data-display",
+    "group": "data-tables-lists",
     "ko": {
       "name": "컨테인드 리스트",
       "aliases": [
@@ -18344,6 +18684,7 @@ export const terms = [
     "id": "email-verification-banner",
     "status": "draft",
     "category": "feedback",
+    "group": "feedback-auth-security",
     "ko": {
       "name": "이메일 인증 배너",
       "aliases": [
@@ -18392,6 +18733,7 @@ export const terms = [
     "id": "verification-required-screen",
     "status": "draft",
     "category": "feedback",
+    "group": "feedback-auth-security",
     "ko": {
       "name": "인증 필요 화면",
       "aliases": [
@@ -18441,6 +18783,7 @@ export const terms = [
     "id": "magic-link-sent-state",
     "status": "draft",
     "category": "feedback",
+    "group": "feedback-auth-security",
     "ko": {
       "name": "매직 링크 전송 상태",
       "aliases": [
@@ -18490,6 +18833,7 @@ export const terms = [
     "id": "passkey-enrollment-prompt",
     "status": "draft",
     "category": "feedback",
+    "group": "feedback-auth-security",
     "ko": {
       "name": "패스키 등록 유도",
       "aliases": [
@@ -18538,6 +18882,7 @@ export const terms = [
     "id": "passkey-sign-in-sheet",
     "status": "draft",
     "category": "feedback",
+    "group": "feedback-auth-security",
     "ko": {
       "name": "패스키 로그인 시트",
       "aliases": [
@@ -18587,6 +18932,7 @@ export const terms = [
     "id": "mfa-enrollment-card",
     "status": "draft",
     "category": "data-display",
+    "group": "data-account-support",
     "ko": {
       "name": "2단계 인증 등록 카드",
       "aliases": [
@@ -18635,6 +18981,7 @@ export const terms = [
     "id": "recovery-code-panel",
     "status": "draft",
     "category": "data-display",
+    "group": "data-account-support",
     "ko": {
       "name": "복구 코드 패널",
       "aliases": [
@@ -18684,6 +19031,7 @@ export const terms = [
     "id": "recovery-code-warning",
     "status": "draft",
     "category": "feedback",
+    "group": "feedback-auth-security",
     "ko": {
       "name": "복구 코드 경고",
       "aliases": [
@@ -18732,6 +19080,7 @@ export const terms = [
     "id": "trusted-device-prompt",
     "status": "draft",
     "category": "feedback",
+    "group": "feedback-auth-security",
     "ko": {
       "name": "신뢰 기기 등록 프롬프트",
       "aliases": [
@@ -18781,6 +19130,7 @@ export const terms = [
     "id": "device-approval-state",
     "status": "draft",
     "category": "feedback",
+    "group": "feedback-auth-security",
     "ko": {
       "name": "기기 승인 대기 상태",
       "aliases": [
@@ -18829,6 +19179,7 @@ export const terms = [
     "id": "access-request-panel",
     "status": "draft",
     "category": "feedback",
+    "group": "feedback-auth-security",
     "ko": {
       "name": "접근 요청 패널",
       "aliases": [
@@ -18879,6 +19230,7 @@ export const terms = [
     "id": "access-pending-state",
     "status": "draft",
     "category": "feedback",
+    "group": "feedback-auth-security",
     "ko": {
       "name": "접근 승인 대기 상태",
       "aliases": [
@@ -18928,6 +19280,7 @@ export const terms = [
     "id": "invite-acceptance-screen",
     "status": "draft",
     "category": "structure",
+    "group": "structure-auth-layouts",
     "ko": {
       "name": "초대 수락 화면",
       "aliases": [
@@ -18979,6 +19332,7 @@ export const terms = [
     "id": "invite-expired-state",
     "status": "draft",
     "category": "feedback",
+    "group": "feedback-auth-security",
     "ko": {
       "name": "초대 만료 상태",
       "aliases": [
@@ -19029,6 +19383,7 @@ export const terms = [
     "id": "workspace-join-request",
     "status": "draft",
     "category": "feedback",
+    "group": "feedback-auth-security",
     "ko": {
       "name": "워크스페이스 참여 요청",
       "aliases": [
@@ -19077,6 +19432,7 @@ export const terms = [
     "id": "welcome-choice-screen",
     "status": "draft",
     "category": "structure",
+    "group": "structure-auth-layouts",
     "ko": {
       "name": "시작 선택 화면",
       "aliases": [
@@ -19125,6 +19481,7 @@ export const terms = [
     "id": "import-data-choice",
     "status": "draft",
     "category": "selection",
+    "group": "selection-options",
     "ko": {
       "name": "데이터 가져오기 선택",
       "aliases": [
@@ -19174,6 +19531,7 @@ export const terms = [
     "id": "setup-blocker-state",
     "status": "draft",
     "category": "feedback",
+    "group": "feedback-auth-security",
     "ko": {
       "name": "설정 차단 상태",
       "aliases": [
@@ -19225,6 +19583,7 @@ export const terms = [
     "id": "reconnect-account-state",
     "status": "draft",
     "category": "feedback",
+    "group": "feedback-auth-security",
     "ko": {
       "name": "계정 재연결 상태",
       "aliases": [
@@ -19275,6 +19634,7 @@ export const terms = [
     "id": "consent-review-screen",
     "status": "draft",
     "category": "structure",
+    "group": "structure-auth-layouts",
     "ko": {
       "name": "동의 검토 화면",
       "aliases": [
@@ -19326,6 +19686,7 @@ export const terms = [
     "id": "aspect-ratio-box",
     "status": "draft",
     "category": "structure",
+    "group": "structure-content-elements",
     "ko": {
       "name": "비율 고정 박스",
       "aliases": [
@@ -19379,6 +19740,7 @@ export const terms = [
     "id": "hover-card",
     "status": "draft",
     "category": "feedback",
+    "group": "feedback-status-notifications",
     "ko": {
       "name": "호버 카드",
       "aliases": [
@@ -19446,6 +19808,7 @@ export const terms = [
     "id": "scroll-area",
     "status": "draft",
     "category": "structure",
+    "group": "structure-content-elements",
     "ko": {
       "name": "스크롤 영역",
       "aliases": [
@@ -19499,6 +19862,7 @@ export const terms = [
     "id": "native-select",
     "status": "draft",
     "category": "input",
+    "group": "input-pickers",
     "ko": {
       "name": "네이티브 선택창",
       "aliases": [
@@ -19559,6 +19923,7 @@ export const terms = [
     "id": "keyboard-shortcut-key",
     "status": "draft",
     "category": "data-display",
+    "group": "data-account-support",
     "ko": {
       "name": "키보드 단축키 키",
       "aliases": [
@@ -19617,6 +19982,7 @@ export const terms = [
     "id": "navigation-menu",
     "status": "draft",
     "category": "selection",
+    "group": "selection-navigation",
     "ko": {
       "name": "내비게이션 메뉴",
       "aliases": [
@@ -19683,6 +20049,7 @@ export const terms = [
     "id": "field-group",
     "status": "draft",
     "category": "input",
+    "group": "input-text",
     "ko": {
       "name": "필드 그룹",
       "aliases": [
@@ -19737,6 +20104,7 @@ export const terms = [
     "id": "item-row",
     "status": "draft",
     "category": "data-display",
+    "group": "data-basic-content-elements",
     "ko": {
       "name": "아이템 행",
       "aliases": [
@@ -19790,6 +20158,7 @@ export const terms = [
     "id": "sonner-toast",
     "status": "draft",
     "category": "feedback",
+    "group": "feedback-status-notifications",
     "ko": {
       "name": "소너 토스트",
       "aliases": [
@@ -19852,6 +20221,7 @@ export const terms = [
     "id": "direction-provider",
     "status": "draft",
     "category": "accessibility",
+    "group": "accessibility-focus-motion",
     "ko": {
       "name": "방향성 제공자",
       "aliases": [
@@ -19906,6 +20276,7 @@ export const terms = [
     "id": "login-form",
     "status": "draft",
     "category": "input",
+    "group": "input-auth-forms",
     "ko": {
       "name": "로그인 폼",
       "aliases": [
@@ -19969,6 +20340,7 @@ export const terms = [
     "id": "signup-form",
     "status": "draft",
     "category": "input",
+    "group": "input-auth-forms",
     "ko": {
       "name": "회원가입 폼",
       "aliases": [
@@ -20019,6 +20391,7 @@ export const terms = [
     "id": "forgot-password-form",
     "status": "draft",
     "category": "input",
+    "group": "input-auth-forms",
     "ko": {
       "name": "비밀번호 찾기 폼",
       "aliases": [
@@ -20068,6 +20441,7 @@ export const terms = [
     "id": "reset-password-form",
     "status": "draft",
     "category": "input",
+    "group": "input-auth-forms",
     "ko": {
       "name": "비밀번호 재설정 폼",
       "aliases": [
@@ -20117,6 +20491,7 @@ export const terms = [
     "id": "change-password-form",
     "status": "draft",
     "category": "input",
+    "group": "input-auth-forms",
     "ko": {
       "name": "비밀번호 변경 폼",
       "aliases": [
@@ -20165,6 +20540,7 @@ export const terms = [
     "id": "magic-link-login-form",
     "status": "draft",
     "category": "input",
+    "group": "input-auth-forms",
     "ko": {
       "name": "매직 링크 로그인 폼",
       "aliases": [
@@ -20221,6 +20597,7 @@ export const terms = [
     "id": "sso-login-form",
     "status": "draft",
     "category": "input",
+    "group": "input-auth-forms",
     "ko": {
       "name": "SSO 로그인 폼",
       "aliases": [
@@ -20270,6 +20647,7 @@ export const terms = [
     "id": "social-login-button-group",
     "status": "draft",
     "category": "action",
+    "group": "action-buttons",
     "ko": {
       "name": "소셜 로그인 버튼 그룹",
       "aliases": [
@@ -20319,6 +20697,7 @@ export const terms = [
     "id": "otp-challenge-form",
     "status": "draft",
     "category": "input",
+    "group": "input-auth-forms",
     "ko": {
       "name": "OTP 인증 폼",
       "aliases": [
@@ -20376,6 +20755,7 @@ export const terms = [
     "id": "mfa-challenge-form",
     "status": "draft",
     "category": "input",
+    "group": "input-auth-forms",
     "ko": {
       "name": "2단계 인증 폼",
       "aliases": [
@@ -20426,6 +20806,7 @@ export const terms = [
     "id": "passkey-login-form",
     "status": "draft",
     "category": "input",
+    "group": "input-auth-forms",
     "ko": {
       "name": "패스키 로그인 폼",
       "aliases": [
@@ -20482,6 +20863,7 @@ export const terms = [
     "id": "invite-signup-form",
     "status": "draft",
     "category": "input",
+    "group": "input-auth-forms",
     "ko": {
       "name": "초대 가입 폼",
       "aliases": [
@@ -20539,6 +20921,7 @@ export const terms = [
     "id": "account-creation-form",
     "status": "draft",
     "category": "input",
+    "group": "input-auth-forms",
     "ko": {
       "name": "계정 생성 폼",
       "aliases": [
@@ -20588,6 +20971,7 @@ export const terms = [
     "id": "email-change-form",
     "status": "draft",
     "category": "input",
+    "group": "input-auth-forms",
     "ko": {
       "name": "이메일 변경 폼",
       "aliases": [
@@ -20637,6 +21021,7 @@ export const terms = [
     "id": "reauthentication-form",
     "status": "draft",
     "category": "input",
+    "group": "input-auth-forms",
     "ko": {
       "name": "재인증 폼",
       "aliases": [
@@ -20686,6 +21071,7 @@ export const terms = [
     "id": "auth-method-choice",
     "status": "draft",
     "category": "selection",
+    "group": "selection-options",
     "ko": {
       "name": "인증 방식 선택",
       "aliases": [
@@ -20735,6 +21121,7 @@ export const terms = [
     "id": "auth-card",
     "status": "draft",
     "category": "structure",
+    "group": "structure-auth-layouts",
     "ko": {
       "name": "인증 카드",
       "aliases": [
@@ -20785,6 +21172,7 @@ export const terms = [
     "id": "login-page",
     "status": "draft",
     "category": "structure",
+    "group": "structure-auth-layouts",
     "ko": {
       "name": "로그인 페이지",
       "aliases": [
@@ -20850,6 +21238,7 @@ export const terms = [
     "id": "split-auth-layout",
     "status": "draft",
     "category": "structure",
+    "group": "structure-auth-layouts",
     "ko": {
       "name": "분할 인증 레이아웃",
       "aliases": [
@@ -20899,6 +21288,7 @@ export const terms = [
     "id": "login-dialog",
     "status": "draft",
     "category": "structure",
+    "group": "structure-auth-layouts",
     "ko": {
       "name": "로그인 다이얼로그",
       "aliases": [
@@ -20949,6 +21339,7 @@ export const terms = [
     "id": "dashboard-overview-page",
     "status": "draft",
     "category": "structure",
+    "group": "structure-app-layout",
     "ko": {
       "name": "대시보드 개요 페이지",
       "aliases": [
@@ -21016,6 +21407,7 @@ export const terms = [
     "id": "sidebar-dashboard-layout",
     "status": "draft",
     "category": "structure",
+    "group": "structure-sidebar-layouts",
     "ko": {
       "name": "사이드바 대시보드 레이아웃",
       "aliases": [
@@ -21066,6 +21458,7 @@ export const terms = [
     "id": "collapsible-sidebar-layout",
     "status": "draft",
     "category": "structure",
+    "group": "structure-sidebar-layouts",
     "ko": {
       "name": "접이식 사이드바 레이아웃",
       "aliases": [
@@ -21116,6 +21509,7 @@ export const terms = [
     "id": "icon-sidebar-layout",
     "status": "draft",
     "category": "structure",
+    "group": "structure-sidebar-layouts",
     "ko": {
       "name": "아이콘 사이드바 레이아웃",
       "aliases": [
@@ -21166,6 +21560,7 @@ export const terms = [
     "id": "inset-sidebar-layout",
     "status": "draft",
     "category": "structure",
+    "group": "structure-sidebar-layouts",
     "ko": {
       "name": "인셋 사이드바 레이아웃",
       "aliases": [
@@ -21216,6 +21611,7 @@ export const terms = [
     "id": "right-sidebar-layout",
     "status": "draft",
     "category": "structure",
+    "group": "structure-sidebar-layouts",
     "ko": {
       "name": "오른쪽 사이드바 레이아웃",
       "aliases": [
@@ -21266,6 +21662,7 @@ export const terms = [
     "id": "dual-sidebar-layout",
     "status": "draft",
     "category": "structure",
+    "group": "structure-sidebar-layouts",
     "ko": {
       "name": "양쪽 사이드바 레이아웃",
       "aliases": [
@@ -21316,6 +21713,7 @@ export const terms = [
     "id": "file-tree-sidebar-layout",
     "status": "draft",
     "category": "structure",
+    "group": "structure-sidebar-layouts",
     "ko": {
       "name": "파일 트리 사이드바 레이아웃",
       "aliases": [
@@ -21366,6 +21764,7 @@ export const terms = [
     "id": "calendar-sidebar-layout",
     "status": "draft",
     "category": "structure",
+    "group": "structure-sidebar-layouts",
     "ko": {
       "name": "캘린더 사이드바 레이아웃",
       "aliases": [
@@ -21416,6 +21815,7 @@ export const terms = [
     "id": "sidebar-dialog-layout",
     "status": "draft",
     "category": "structure",
+    "group": "structure-sidebar-layouts",
     "ko": {
       "name": "다이얼로그 안 사이드바 레이아웃",
       "aliases": [
@@ -21466,6 +21866,7 @@ export const terms = [
     "id": "area-chart-card",
     "status": "draft",
     "category": "data-display",
+    "group": "data-metrics-charts",
     "ko": {
       "name": "영역 차트 카드",
       "aliases": [
@@ -21516,6 +21917,7 @@ export const terms = [
     "id": "bar-chart-card",
     "status": "draft",
     "category": "data-display",
+    "group": "data-metrics-charts",
     "ko": {
       "name": "막대 차트 카드",
       "aliases": [
@@ -21566,6 +21968,7 @@ export const terms = [
     "id": "line-chart-card",
     "status": "draft",
     "category": "data-display",
+    "group": "data-metrics-charts",
     "ko": {
       "name": "선 차트 카드",
       "aliases": [
@@ -21616,6 +22019,7 @@ export const terms = [
     "id": "pie-chart-card",
     "status": "draft",
     "category": "data-display",
+    "group": "data-metrics-charts",
     "ko": {
       "name": "파이 차트 카드",
       "aliases": [
@@ -21666,6 +22070,7 @@ export const terms = [
     "id": "radar-chart-card",
     "status": "draft",
     "category": "data-display",
+    "group": "data-metrics-charts",
     "ko": {
       "name": "레이더 차트 카드",
       "aliases": [
@@ -21716,6 +22121,7 @@ export const terms = [
     "id": "radial-chart-card",
     "status": "draft",
     "category": "data-display",
+    "group": "data-metrics-charts",
     "ko": {
       "name": "방사형 차트 카드",
       "aliases": [
@@ -21766,6 +22172,7 @@ export const terms = [
     "id": "interactive-chart-card",
     "status": "draft",
     "category": "data-display",
+    "group": "data-metrics-charts",
     "ko": {
       "name": "인터랙티브 차트 카드",
       "aliases": [
@@ -21816,6 +22223,7 @@ export const terms = [
     "id": "stacked-chart-card",
     "status": "draft",
     "category": "data-display",
+    "group": "data-metrics-charts",
     "ko": {
       "name": "누적 차트 카드",
       "aliases": [
@@ -21866,6 +22274,7 @@ export const terms = [
     "id": "chart-tooltip-pattern",
     "status": "draft",
     "category": "data-display",
+    "group": "data-metrics-charts",
     "ko": {
       "name": "차트 툴팁 패턴",
       "aliases": [
@@ -21916,6 +22325,7 @@ export const terms = [
     "id": "chart-kpi-card",
     "status": "draft",
     "category": "data-display",
+    "group": "data-metrics-charts",
     "ko": {
       "name": "KPI 차트 카드",
       "aliases": [
@@ -21966,6 +22376,7 @@ export const terms = [
     "id": "chat-message",
     "status": "draft",
     "category": "data-display",
+    "group": "data-chat-messaging",
     "ko": {
       "name": "채팅 메시지",
       "aliases": [
@@ -22017,6 +22428,7 @@ export const terms = [
     "id": "chat-bubble",
     "status": "draft",
     "category": "data-display",
+    "group": "data-chat-messaging",
     "ko": {
       "name": "채팅 말풍선",
       "aliases": [
@@ -22066,6 +22478,7 @@ export const terms = [
     "id": "chat-attachment",
     "status": "draft",
     "category": "data-display",
+    "group": "data-chat-messaging",
     "ko": {
       "name": "채팅 첨부 파일",
       "aliases": [
@@ -22117,6 +22530,7 @@ export const terms = [
     "id": "conversation-marker",
     "status": "draft",
     "category": "feedback",
+    "group": "feedback-status-notifications",
     "ko": {
       "name": "대화 마커",
       "aliases": [
@@ -22167,6 +22581,7 @@ export const terms = [
     "id": "message-scroller",
     "status": "draft",
     "category": "structure",
+    "group": "structure-content-elements",
     "ko": {
       "name": "메시지 스크롤러",
       "aliases": [
@@ -22216,6 +22631,7 @@ export const terms = [
     "id": "react-hook-form-pattern",
     "status": "draft",
     "category": "input",
+    "group": "input-auth-forms",
     "ko": {
       "name": "React Hook Form 패턴",
       "aliases": [
@@ -22266,6 +22682,7 @@ export const terms = [
     "id": "tanstack-form-pattern",
     "status": "draft",
     "category": "input",
+    "group": "input-auth-forms",
     "ko": {
       "name": "TanStack Form 패턴",
       "aliases": [
@@ -22316,6 +22733,7 @@ export const terms = [
     "id": "formisch-form-pattern",
     "status": "draft",
     "category": "input",
+    "group": "input-auth-forms",
     "ko": {
       "name": "Formisch 폼 패턴",
       "aliases": [
@@ -22366,6 +22784,7 @@ export const terms = [
     "id": "scroll-fade",
     "status": "draft",
     "category": "style",
+    "group": "style-decorative-effects",
     "ko": {
       "name": "스크롤 페이드",
       "aliases": [
@@ -22415,6 +22834,7 @@ export const terms = [
     "id": "shimmer-effect",
     "status": "draft",
     "category": "style",
+    "group": "style-decorative-effects",
     "ko": {
       "name": "쉬머 효과",
       "aliases": [
@@ -22465,6 +22885,7 @@ export const terms = [
     "id": "floating-label-field",
     "status": "draft",
     "category": "input",
+    "group": "input-text",
     "ko": {
       "name": "플로팅 라벨 필드",
       "aliases": [
@@ -22522,6 +22943,7 @@ export const terms = [
     "id": "clearable-input",
     "status": "draft",
     "category": "input",
+    "group": "input-text",
     "ko": {
       "name": "지우기 버튼 입력창",
       "aliases": [
@@ -22579,6 +23001,7 @@ export const terms = [
     "id": "inline-submit-field",
     "status": "draft",
     "category": "input",
+    "group": "input-text",
     "ko": {
       "name": "인라인 제출 필드",
       "aliases": [
@@ -22636,6 +23059,7 @@ export const terms = [
     "id": "character-count-field",
     "status": "draft",
     "category": "input",
+    "group": "input-text",
     "ko": {
       "name": "글자 수 카운터 필드",
       "aliases": [
@@ -22686,6 +23110,7 @@ export const terms = [
     "id": "password-strength-meter",
     "status": "draft",
     "category": "feedback",
+    "group": "feedback-status-notifications",
     "ko": {
       "name": "비밀번호 강도 미터",
       "aliases": [
@@ -22742,6 +23167,7 @@ export const terms = [
     "id": "fieldset",
     "status": "draft",
     "category": "input",
+    "group": "input-text",
     "ko": {
       "name": "필드셋",
       "aliases": [
@@ -22799,6 +23225,7 @@ export const terms = [
     "id": "checkbox-card",
     "status": "draft",
     "category": "selection",
+    "group": "selection-options",
     "ko": {
       "name": "체크박스 카드",
       "aliases": [
@@ -22857,6 +23284,7 @@ export const terms = [
     "id": "date-preset-picker",
     "status": "draft",
     "category": "input",
+    "group": "input-pickers",
     "ko": {
       "name": "날짜 프리셋 선택기",
       "aliases": [
@@ -22914,6 +23342,7 @@ export const terms = [
     "id": "navbar-menu",
     "status": "draft",
     "category": "structure",
+    "group": "structure-navigation",
     "ko": {
       "name": "내비게이션 메뉴",
       "aliases": [
@@ -22970,6 +23399,7 @@ export const terms = [
     "id": "nav-user-menu",
     "status": "draft",
     "category": "structure",
+    "group": "structure-navigation",
     "ko": {
       "name": "사용자 메뉴",
       "aliases": [
@@ -23026,6 +23456,7 @@ export const terms = [
     "id": "breadcrumb-overflow",
     "status": "draft",
     "category": "structure",
+    "group": "structure-navigation",
     "ko": {
       "name": "축약 브레드크럼",
       "aliases": [
@@ -23082,6 +23513,7 @@ export const terms = [
     "id": "popover-form",
     "status": "draft",
     "category": "input",
+    "group": "input-auth-forms",
     "ko": {
       "name": "팝오버 폼",
       "aliases": [
@@ -23138,6 +23570,7 @@ export const terms = [
     "id": "disclosure-card",
     "status": "draft",
     "category": "structure",
+    "group": "structure-panels",
     "ko": {
       "name": "펼침 카드",
       "aliases": [
@@ -23194,6 +23627,7 @@ export const terms = [
     "id": "pagination-jump",
     "status": "draft",
     "category": "structure",
+    "group": "structure-navigation",
     "ko": {
       "name": "페이지 점프 입력",
       "aliases": [
@@ -23250,6 +23684,7 @@ export const terms = [
     "id": "avatar-stack",
     "status": "draft",
     "category": "data-display",
+    "group": "data-people-integrations",
     "ko": {
       "name": "아바타 스택",
       "aliases": [
@@ -23306,6 +23741,7 @@ export const terms = [
     "id": "status-avatar",
     "status": "draft",
     "category": "data-display",
+    "group": "data-people-integrations",
     "ko": {
       "name": "상태 아바타",
       "aliases": [
@@ -23362,6 +23798,7 @@ export const terms = [
     "id": "badge-group",
     "status": "draft",
     "category": "data-display",
+    "group": "data-people-integrations",
     "ko": {
       "name": "배지 그룹",
       "aliases": [
@@ -23418,6 +23855,7 @@ export const terms = [
     "id": "meter",
     "status": "draft",
     "category": "feedback",
+    "group": "feedback-status-notifications",
     "ko": {
       "name": "미터",
       "aliases": [
@@ -23474,6 +23912,7 @@ export const terms = [
     "id": "table-row-actions",
     "status": "draft",
     "category": "action",
+    "group": "action-command-bars",
     "ko": {
       "name": "테이블 행 액션",
       "aliases": [
@@ -23530,6 +23969,7 @@ export const terms = [
     "id": "empty-filter-state",
     "status": "draft",
     "category": "feedback",
+    "group": "feedback-empty-error",
     "ko": {
       "name": "필터 결과 없음 상태",
       "aliases": [
@@ -23586,6 +24026,7 @@ export const terms = [
     "id": "notification-inbox-row",
     "status": "draft",
     "category": "data-display",
+    "group": "data-chat-messaging",
     "ko": {
       "name": "알림 인박스 행",
       "aliases": [
@@ -23643,6 +24084,7 @@ export const terms = [
     "id": "progress-stepper",
     "status": "draft",
     "category": "feedback",
+    "group": "feedback-status-notifications",
     "ko": {
       "name": "진행 스테퍼",
       "aliases": [
@@ -23699,6 +24141,7 @@ export const terms = [
     "id": "pricing-section",
     "status": "draft",
     "category": "structure",
+    "group": "structure-sections",
     "ko": {
       "name": "가격 섹션",
       "aliases": [
@@ -23778,6 +24221,7 @@ export const terms = [
     "id": "testimonial-section",
     "status": "draft",
     "category": "structure",
+    "group": "structure-misc",
     "ko": {
       "name": "후기 섹션",
       "aliases": [
@@ -23850,6 +24294,7 @@ export const terms = [
     "id": "feature-grid-section",
     "status": "draft",
     "category": "structure",
+    "group": "structure-sections",
     "ko": {
       "name": "기능 그리드 섹션",
       "aliases": [
@@ -23922,6 +24367,7 @@ export const terms = [
     "id": "integration-grid-section",
     "status": "draft",
     "category": "data-display",
+    "group": "data-people-integrations",
     "ko": {
       "name": "연동 그리드 섹션",
       "aliases": [
@@ -23981,6 +24427,7 @@ export const terms = [
     "id": "settings-page-layout",
     "status": "draft",
     "category": "structure",
+    "group": "structure-app-layout",
     "ko": {
       "name": "설정 페이지 레이아웃",
       "aliases": [
@@ -24046,6 +24493,7 @@ export const terms = [
     "id": "profile-settings-form",
     "status": "draft",
     "category": "input",
+    "group": "input-auth-forms",
     "ko": {
       "name": "프로필 설정 폼",
       "aliases": [
@@ -24096,6 +24544,7 @@ export const terms = [
     "id": "billing-settings-page",
     "status": "draft",
     "category": "structure",
+    "group": "structure-app-layout",
     "ko": {
       "name": "결제 설정 페이지",
       "aliases": [
@@ -24166,6 +24615,7 @@ export const terms = [
     "id": "onboarding-flow-page",
     "status": "draft",
     "category": "structure",
+    "group": "structure-app-layout",
     "ko": {
       "name": "온보딩 플로우 페이지",
       "aliases": [
@@ -24238,6 +24688,7 @@ export const terms = [
     "id": "newsletter-section",
     "status": "draft",
     "category": "input",
+    "group": "input-auth-forms",
     "ko": {
       "name": "뉴스레터 섹션",
       "aliases": [
@@ -24317,6 +24768,7 @@ export const terms = [
     "id": "cta-section",
     "status": "draft",
     "category": "action",
+    "group": "action-buttons",
     "ko": {
       "name": "CTA 섹션",
       "aliases": [
@@ -24389,6 +24841,7 @@ export const terms = [
     "id": "animated-gradient-background",
     "status": "draft",
     "category": "style",
+    "group": "style-decorative-effects",
     "ko": {
       "name": "애니메이션 그라디언트 배경",
       "aliases": [
@@ -24438,6 +24891,7 @@ export const terms = [
     "id": "marquee-row",
     "status": "draft",
     "category": "style",
+    "group": "style-decorative-effects",
     "ko": {
       "name": "마키 행",
       "aliases": [
@@ -24487,6 +24941,7 @@ export const terms = [
     "id": "border-beam",
     "status": "draft",
     "category": "style",
+    "group": "style-decorative-effects",
     "ko": {
       "name": "보더 빔",
       "aliases": [
@@ -24536,6 +24991,7 @@ export const terms = [
     "id": "orbiting-icons",
     "status": "draft",
     "category": "style",
+    "group": "style-decorative-effects",
     "ko": {
       "name": "궤도 아이콘",
       "aliases": [
@@ -24587,6 +25043,7 @@ export const terms = [
     "id": "spotlight-card",
     "status": "draft",
     "category": "style",
+    "group": "style-decorative-effects",
     "ko": {
       "name": "스포트라이트 카드",
       "aliases": [
@@ -24636,6 +25093,7 @@ export const terms = [
     "id": "grid-pattern-background",
     "status": "draft",
     "category": "style",
+    "group": "style-decorative-effects",
     "ko": {
       "name": "그리드 패턴 배경",
       "aliases": [
@@ -24685,6 +25143,7 @@ export const terms = [
     "id": "typing-text-effect",
     "status": "draft",
     "category": "feedback",
+    "group": "feedback-misc",
     "ko": {
       "name": "타이핑 텍스트 효과",
       "aliases": [
@@ -24734,6 +25193,7 @@ export const terms = [
     "id": "number-ticker",
     "status": "draft",
     "category": "data-display",
+    "group": "data-motion-content",
     "ko": {
       "name": "숫자 티커",
       "aliases": [
@@ -24783,6 +25243,7 @@ export const terms = [
     "id": "blur-fade-in",
     "status": "draft",
     "category": "feedback",
+    "group": "feedback-misc",
     "ko": {
       "name": "블러 페이드 인",
       "aliases": [
@@ -24832,6 +25293,7 @@ export const terms = [
     "id": "animated-shiny-text",
     "status": "draft",
     "category": "style",
+    "group": "style-typography",
     "ko": {
       "name": "샤이니 텍스트",
       "aliases": [
@@ -24888,6 +25350,7 @@ export const terms = [
     "id": "dot-pattern-background",
     "status": "draft",
     "category": "style",
+    "group": "style-decorative-effects",
     "ko": {
       "name": "점 패턴 배경",
       "aliases": [
@@ -24937,6 +25400,7 @@ export const terms = [
     "id": "bento-grid",
     "status": "draft",
     "category": "structure",
+    "group": "structure-sections",
     "ko": {
       "name": "벤토 그리드",
       "aliases": [
@@ -25008,6 +25472,7 @@ export const terms = [
     "id": "sticky-scroll-section",
     "status": "draft",
     "category": "structure",
+    "group": "structure-sections",
     "ko": {
       "name": "스티키 스크롤 섹션",
       "aliases": [
@@ -25057,6 +25522,7 @@ export const terms = [
     "id": "floating-navbar",
     "status": "draft",
     "category": "structure",
+    "group": "structure-navigation",
     "ko": {
       "name": "플로팅 내비게이션 바",
       "aliases": [
@@ -25106,6 +25572,7 @@ export const terms = [
     "id": "three-d-card",
     "status": "draft",
     "category": "style",
+    "group": "style-decorative-effects",
     "ko": {
       "name": "3D 카드",
       "aliases": [
@@ -25155,6 +25622,7 @@ export const terms = [
     "id": "hover-card-stack",
     "status": "draft",
     "category": "style",
+    "group": "style-misc",
     "ko": {
       "name": "호버 카드 스택",
       "aliases": [
@@ -25204,6 +25672,7 @@ export const terms = [
     "id": "background-beams",
     "status": "draft",
     "category": "style",
+    "group": "style-decorative-effects",
     "ko": {
       "name": "배경 빔",
       "aliases": [
@@ -25253,6 +25722,7 @@ export const terms = [
     "id": "aurora-background",
     "status": "draft",
     "category": "style",
+    "group": "style-decorative-effects",
     "ko": {
       "name": "오로라 배경",
       "aliases": [
@@ -25302,6 +25772,7 @@ export const terms = [
     "id": "spotlight-hero",
     "status": "draft",
     "category": "structure",
+    "group": "structure-sections",
     "ko": {
       "name": "스포트라이트 히어로",
       "aliases": [
@@ -25381,6 +25852,7 @@ export const terms = [
     "id": "infinite-moving-cards",
     "status": "draft",
     "category": "data-display",
+    "group": "data-motion-content",
     "ko": {
       "name": "무한 이동 카드",
       "aliases": [
@@ -25437,6 +25909,7 @@ export const terms = [
     "id": "canvas-reveal-card",
     "status": "draft",
     "category": "style",
+    "group": "style-decorative-effects",
     "ko": {
       "name": "캔버스 리빌 카드",
       "aliases": [
@@ -25486,6 +25959,7 @@ export const terms = [
     "id": "tracing-beam-section",
     "status": "draft",
     "category": "style",
+    "group": "style-decorative-effects",
     "ko": {
       "name": "트레이싱 빔 섹션",
       "aliases": [
@@ -25535,6 +26009,7 @@ export const terms = [
     "id": "opacity",
     "status": "draft",
     "category": "style",
+    "group": "style-border-color",
     "ko": {
       "name": "투명도",
       "aliases": [
@@ -25598,6 +26073,7 @@ export const terms = [
     "id": "backdrop-blur",
     "status": "draft",
     "category": "style",
+    "group": "style-surface-material",
     "ko": {
       "name": "백드롭 블러",
       "aliases": [
@@ -25648,6 +26124,7 @@ export const terms = [
     "id": "shadow-elevation",
     "status": "draft",
     "category": "style",
+    "group": "style-surface-material",
     "ko": {
       "name": "그림자 깊이",
       "aliases": [
@@ -25698,6 +26175,7 @@ export const terms = [
     "id": "border-radius",
     "status": "draft",
     "category": "style",
+    "group": "style-border-color",
     "ko": {
       "name": "모서리 반경",
       "aliases": [
@@ -25746,6 +26224,7 @@ export const terms = [
     "id": "gradient-fill",
     "status": "draft",
     "category": "style",
+    "group": "style-border-color",
     "ko": {
       "name": "그라디언트 채움",
       "aliases": [
@@ -25795,6 +26274,7 @@ export const terms = [
     "id": "color-contrast",
     "status": "draft",
     "category": "accessibility",
+    "group": "accessibility-focus-motion",
     "ko": {
       "name": "색 대비",
       "aliases": [
@@ -25844,6 +26324,7 @@ export const terms = [
     "id": "transition",
     "status": "draft",
     "category": "feedback",
+    "group": "feedback-misc",
     "ko": {
       "name": "전환",
       "aliases": [
@@ -25906,6 +26387,7 @@ export const terms = [
     "id": "duration",
     "status": "draft",
     "category": "feedback",
+    "group": "feedback-misc",
     "ko": {
       "name": "지속 시간",
       "aliases": [
@@ -25955,6 +26437,7 @@ export const terms = [
     "id": "easing",
     "status": "draft",
     "category": "feedback",
+    "group": "feedback-misc",
     "ko": {
       "name": "이징",
       "aliases": [
@@ -26007,6 +26490,7 @@ export const terms = [
     "id": "fade-transition",
     "status": "draft",
     "category": "feedback",
+    "group": "feedback-misc",
     "ko": {
       "name": "페이드 전환",
       "aliases": [
@@ -26058,6 +26542,7 @@ export const terms = [
     "id": "slide-transition",
     "status": "draft",
     "category": "feedback",
+    "group": "feedback-misc",
     "ko": {
       "name": "슬라이드 전환",
       "aliases": [
@@ -26108,6 +26593,7 @@ export const terms = [
     "id": "scale-transition",
     "status": "draft",
     "category": "feedback",
+    "group": "feedback-misc",
     "ko": {
       "name": "스케일 전환",
       "aliases": [
@@ -26157,6 +26643,7 @@ export const terms = [
     "id": "reduced-motion",
     "status": "draft",
     "category": "accessibility",
+    "group": "accessibility-focus-motion",
     "ko": {
       "name": "모션 줄이기",
       "aliases": [
@@ -26206,6 +26693,7 @@ export const terms = [
     "id": "hover-state",
     "status": "draft",
     "category": "feedback",
+    "group": "feedback-interaction-states",
     "ko": {
       "name": "호버 상태",
       "aliases": [
@@ -26255,6 +26743,7 @@ export const terms = [
     "id": "focus-ring",
     "status": "draft",
     "category": "feedback",
+    "group": "feedback-interaction-states",
     "ko": {
       "name": "포커스 링",
       "aliases": [
@@ -26319,6 +26808,7 @@ export const terms = [
     "id": "active-state",
     "status": "draft",
     "category": "feedback",
+    "group": "feedback-interaction-states",
     "ko": {
       "name": "활성 상태",
       "aliases": [
@@ -26370,6 +26860,7 @@ export const terms = [
     "id": "disabled-state",
     "status": "draft",
     "category": "feedback",
+    "group": "feedback-interaction-states",
     "ko": {
       "name": "비활성 상태",
       "aliases": [
@@ -26419,6 +26910,7 @@ export const terms = [
     "id": "selected-state",
     "status": "draft",
     "category": "feedback",
+    "group": "feedback-interaction-states",
     "ko": {
       "name": "선택 상태",
       "aliases": [
@@ -26468,6 +26960,7 @@ export const terms = [
     "id": "drag-state",
     "status": "draft",
     "category": "feedback",
+    "group": "feedback-interaction-states",
     "ko": {
       "name": "드래그 상태",
       "aliases": [
@@ -26517,6 +27010,7 @@ export const terms = [
     "id": "drop-target",
     "status": "draft",
     "category": "feedback",
+    "group": "feedback-interaction-states",
     "ko": {
       "name": "드롭 대상",
       "aliases": [
@@ -26566,6 +27060,7 @@ export const terms = [
     "id": "z-index",
     "status": "draft",
     "category": "layout-rendering",
+    "group": "layout-stacking-overflow",
     "ko": {
       "name": "Z-인덱스",
       "aliases": [
@@ -26627,6 +27122,7 @@ export const terms = [
     "id": "stacking-context",
     "status": "draft",
     "category": "layout-rendering",
+    "group": "layout-stacking-overflow",
     "ko": {
       "name": "스태킹 컨텍스트",
       "aliases": [
@@ -26676,6 +27172,7 @@ export const terms = [
     "id": "overflow",
     "status": "draft",
     "category": "layout-rendering",
+    "group": "layout-stacking-overflow",
     "ko": {
       "name": "오버플로",
       "aliases": [
@@ -26725,6 +27222,7 @@ export const terms = [
     "id": "clipping-mask",
     "status": "draft",
     "category": "layout-rendering",
+    "group": "layout-stacking-overflow",
     "ko": {
       "name": "클리핑 마스크",
       "aliases": [
@@ -26776,6 +27274,7 @@ export const terms = [
     "id": "breakpoint",
     "status": "draft",
     "category": "layout-rendering",
+    "group": "layout-responsive-viewport",
     "ko": {
       "name": "브레이크포인트",
       "aliases": [
@@ -26825,6 +27324,7 @@ export const terms = [
     "id": "responsive-layout",
     "status": "draft",
     "category": "layout-rendering",
+    "group": "layout-responsive-viewport",
     "ko": {
       "name": "반응형 레이아웃",
       "aliases": [
@@ -26874,6 +27374,7 @@ export const terms = [
     "id": "sticky-position",
     "status": "draft",
     "category": "layout-rendering",
+    "group": "layout-stacking-overflow",
     "ko": {
       "name": "스티키 위치",
       "aliases": [
@@ -26923,6 +27424,7 @@ export const terms = [
     "id": "glassmorphism",
     "status": "draft",
     "category": "style",
+    "group": "style-surface-material",
     "ko": {
       "name": "글래스모피즘",
       "aliases": [
@@ -27003,6 +27505,7 @@ export const terms = [
     "id": "translucent-surface",
     "status": "draft",
     "category": "style",
+    "group": "style-surface-material",
     "ko": {
       "name": "반투명 표면",
       "aliases": [
@@ -27071,6 +27574,7 @@ export const terms = [
     "id": "hairline-border",
     "status": "draft",
     "category": "style",
+    "group": "style-border-color",
     "ko": {
       "name": "헤어라인 보더",
       "aliases": [
@@ -27135,6 +27639,7 @@ export const terms = [
     "id": "inner-shadow",
     "status": "draft",
     "category": "style",
+    "group": "style-surface-material",
     "ko": {
       "name": "내부 그림자",
       "aliases": [
@@ -27196,6 +27701,7 @@ export const terms = [
     "id": "noise-texture",
     "status": "draft",
     "category": "style",
+    "group": "style-surface-material",
     "ko": {
       "name": "노이즈 텍스처",
       "aliases": [
@@ -27259,6 +27765,7 @@ export const terms = [
     "id": "highlight-stroke",
     "status": "draft",
     "category": "style",
+    "group": "style-border-color",
     "ko": {
       "name": "하이라이트 스트로크",
       "aliases": [
@@ -27322,6 +27829,7 @@ export const terms = [
     "id": "font-weight",
     "status": "draft",
     "category": "style",
+    "group": "style-typography",
     "ko": {
       "name": "글자 굵기",
       "aliases": [
@@ -27374,6 +27882,7 @@ export const terms = [
     "id": "line-height",
     "status": "draft",
     "category": "style",
+    "group": "style-typography",
     "ko": {
       "name": "줄 높이",
       "aliases": [
@@ -27424,6 +27933,7 @@ export const terms = [
     "id": "letter-spacing",
     "status": "draft",
     "category": "style",
+    "group": "style-typography",
     "ko": {
       "name": "자간",
       "aliases": [
@@ -27473,6 +27983,7 @@ export const terms = [
     "id": "text-overflow",
     "status": "draft",
     "category": "style",
+    "group": "style-typography",
     "ko": {
       "name": "텍스트 넘침 처리",
       "aliases": [
@@ -27522,6 +28033,7 @@ export const terms = [
     "id": "line-clamp",
     "status": "draft",
     "category": "style",
+    "group": "style-typography",
     "ko": {
       "name": "줄 수 제한",
       "aliases": [
@@ -27572,6 +28084,7 @@ export const terms = [
     "id": "gap",
     "status": "draft",
     "category": "layout-rendering",
+    "group": "layout-spacing-sizing",
     "ko": {
       "name": "갭",
       "aliases": [
@@ -27623,6 +28136,7 @@ export const terms = [
     "id": "padding",
     "status": "draft",
     "category": "layout-rendering",
+    "group": "layout-spacing-sizing",
     "ko": {
       "name": "패딩",
       "aliases": [
@@ -27672,6 +28186,7 @@ export const terms = [
     "id": "aspect-ratio",
     "status": "draft",
     "category": "layout-rendering",
+    "group": "layout-spacing-sizing",
     "ko": {
       "name": "종횡비",
       "aliases": [
@@ -27721,6 +28236,7 @@ export const terms = [
     "id": "container-query",
     "status": "draft",
     "category": "layout-rendering",
+    "group": "layout-responsive-viewport",
     "ko": {
       "name": "컨테이너 쿼리",
       "aliases": [
@@ -27777,6 +28293,7 @@ export const terms = [
     "id": "layout-shift",
     "status": "draft",
     "category": "layout-rendering",
+    "group": "layout-stacking-overflow",
     "ko": {
       "name": "레이아웃 이동",
       "aliases": [
@@ -27833,6 +28350,7 @@ export const terms = [
     "id": "aria-expanded",
     "status": "draft",
     "category": "accessibility",
+    "group": "accessibility-aria-screen-reader",
     "ko": {
       "name": "확장 상태 ARIA",
       "aliases": [
@@ -27883,6 +28401,7 @@ export const terms = [
     "id": "aria-invalid",
     "status": "draft",
     "category": "accessibility",
+    "group": "accessibility-aria-screen-reader",
     "ko": {
       "name": "오류 입력 ARIA",
       "aliases": [
@@ -27940,6 +28459,7 @@ export const terms = [
     "id": "aria-live",
     "status": "draft",
     "category": "accessibility",
+    "group": "accessibility-aria-screen-reader",
     "ko": {
       "name": "라이브 영역 ARIA",
       "aliases": [
@@ -27997,6 +28517,7 @@ export const terms = [
     "id": "sr-only",
     "status": "draft",
     "category": "accessibility",
+    "group": "accessibility-aria-screen-reader",
     "ko": {
       "name": "스크린리더 전용 텍스트",
       "aliases": [
@@ -28047,6 +28568,7 @@ export const terms = [
     "id": "focus-trap",
     "status": "draft",
     "category": "accessibility",
+    "group": "accessibility-focus-motion",
     "ko": {
       "name": "포커스 트랩",
       "aliases": [
@@ -28103,6 +28625,7 @@ export const terms = [
     "id": "mobile-first",
     "status": "draft",
     "category": "layout-rendering",
+    "group": "layout-responsive-viewport",
     "ko": {
       "name": "모바일 우선",
       "aliases": [
@@ -28159,6 +28682,7 @@ export const terms = [
     "id": "fluid-layout",
     "status": "draft",
     "category": "layout-rendering",
+    "group": "layout-responsive-viewport",
     "ko": {
       "name": "유동 레이아웃",
       "aliases": [
@@ -28208,6 +28732,7 @@ export const terms = [
     "id": "dynamic-viewport-unit",
     "status": "draft",
     "category": "layout-rendering",
+    "group": "layout-responsive-viewport",
     "ko": {
       "name": "동적 뷰포트 단위",
       "aliases": [
@@ -28260,6 +28785,7 @@ export const terms = [
     "id": "safe-area-inset",
     "status": "draft",
     "category": "layout-rendering",
+    "group": "layout-responsive-viewport",
     "ko": {
       "name": "안전 영역 인셋",
       "aliases": [
@@ -28310,6 +28836,7 @@ export const terms = [
     "id": "scroll-snap",
     "status": "draft",
     "category": "layout-rendering",
+    "group": "layout-scroll-behavior",
     "ko": {
       "name": "스크롤 스냅",
       "aliases": [
@@ -28359,6 +28886,7 @@ export const terms = [
     "id": "tap-feedback",
     "status": "draft",
     "category": "feedback",
+    "group": "feedback-interaction-states",
     "ko": {
       "name": "탭 피드백",
       "aliases": [
@@ -28417,6 +28945,7 @@ export const terms = [
     "id": "optimistic-update",
     "status": "draft",
     "category": "feedback",
+    "group": "feedback-accessibility-states",
     "ko": {
       "name": "낙관적 업데이트",
       "aliases": [
@@ -28468,6 +28997,7 @@ export const terms = [
     "id": "pending-state",
     "status": "draft",
     "category": "feedback",
+    "group": "feedback-accessibility-states",
     "ko": {
       "name": "대기 상태",
       "aliases": [
@@ -28521,6 +29051,7 @@ export const terms = [
     "id": "hover-reveal",
     "status": "draft",
     "category": "feedback",
+    "group": "feedback-interaction-states",
     "ko": {
       "name": "호버 리빌",
       "aliases": [
@@ -28577,6 +29108,7 @@ export const terms = [
     "id": "gesture-hint",
     "status": "draft",
     "category": "feedback",
+    "group": "feedback-accessibility-states",
     "ko": {
       "name": "제스처 힌트",
       "aliases": [
@@ -28626,6 +29158,7 @@ export const terms = [
     "id": "outline",
     "status": "draft",
     "category": "style",
+    "group": "style-border-color",
     "ko": {
       "name": "아웃라인",
       "aliases": [
@@ -28682,6 +29215,7 @@ export const terms = [
     "id": "blend-mode",
     "status": "draft",
     "category": "style",
+    "group": "style-border-color",
     "ko": {
       "name": "블렌드 모드",
       "aliases": [
@@ -28731,6 +29265,7 @@ export const terms = [
     "id": "object-fit",
     "status": "draft",
     "category": "layout-rendering",
+    "group": "layout-spacing-sizing",
     "ko": {
       "name": "오브젝트 맞춤",
       "aliases": [
@@ -28790,6 +29325,7 @@ export const terms = [
     "id": "semantic-color",
     "status": "draft",
     "category": "style",
+    "group": "style-border-color",
     "ko": {
       "name": "의미 색상",
       "aliases": [
@@ -28846,6 +29382,7 @@ export const terms = [
     "id": "theme-token",
     "status": "draft",
     "category": "style",
+    "group": "style-tokens",
     "ko": {
       "name": "테마 토큰",
       "aliases": [
@@ -29153,3 +29690,932 @@ export const sourceRegistry = [
     "url": "https://pttrns.com/"
   }
 ] satisfies SourceReference[]
+
+export const groups = [
+  {
+    "id": "input-text",
+    "category": "input",
+    "label": "텍스트·숫자 입력",
+    "ids": [
+      "text-field",
+      "textarea",
+      "password-field",
+      "number-input",
+      "textarea-autosize",
+      "input-group",
+      "masked-input",
+      "copy-field",
+      "otp-code-input",
+      "passcode-keypad",
+      "comment-composer",
+      "api-key-field",
+      "spin-button",
+      "field-group",
+      "floating-label-field",
+      "clearable-input",
+      "inline-submit-field",
+      "character-count-field",
+      "fieldset"
+    ]
+  },
+  {
+    "id": "input-search-command",
+    "category": "input",
+    "label": "검색·명령 입력",
+    "ids": [
+      "search-field",
+      "command-palette",
+      "autocomplete",
+      "search-suggestions",
+      "search-view",
+      "mobile-search-header",
+      "mobile-search-sheet",
+      "address-autocomplete"
+    ]
+  },
+  {
+    "id": "input-pickers",
+    "category": "input",
+    "label": "선택형 입력",
+    "ids": [
+      "select",
+      "combobox",
+      "date-picker",
+      "otp-input",
+      "color-picker",
+      "date-range-picker",
+      "time-picker",
+      "rating-input",
+      "tag-input",
+      "pull-to-refresh-indicator",
+      "mobile-date-picker",
+      "wheel-picker",
+      "time-wheel-picker",
+      "chip-input-mobile",
+      "contact-picker",
+      "product-option-sheet",
+      "coupon-field",
+      "quantity-stepper",
+      "tag-picker",
+      "native-select",
+      "date-preset-picker"
+    ]
+  },
+  {
+    "id": "input-file-media",
+    "category": "input",
+    "label": "파일·미디어 입력",
+    "ids": [
+      "file-upload",
+      "upload-dropzone"
+    ]
+  },
+  {
+    "id": "input-editing",
+    "category": "input",
+    "label": "인라인 편집",
+    "ids": [
+      "inline-edit",
+      "rich-text-editor"
+    ]
+  },
+  {
+    "id": "input-auth-forms",
+    "category": "input",
+    "label": "계정·설정 폼",
+    "ids": [
+      "login-form",
+      "signup-form",
+      "forgot-password-form",
+      "reset-password-form",
+      "change-password-form",
+      "magic-link-login-form",
+      "sso-login-form",
+      "otp-challenge-form",
+      "mfa-challenge-form",
+      "passkey-login-form",
+      "invite-signup-form",
+      "account-creation-form",
+      "email-change-form",
+      "reauthentication-form",
+      "react-hook-form-pattern",
+      "tanstack-form-pattern",
+      "formisch-form-pattern",
+      "popover-form",
+      "profile-settings-form",
+      "newsletter-section"
+    ]
+  },
+  {
+    "id": "selection-options",
+    "category": "selection",
+    "label": "옵션 선택",
+    "ids": [
+      "checkbox",
+      "radio-group",
+      "switch",
+      "slider",
+      "tabs",
+      "segmented-control",
+      "chip",
+      "listbox",
+      "filter-chip",
+      "toggle-button",
+      "disclosure",
+      "toggle-group",
+      "range-slider",
+      "multi-select",
+      "transfer-list",
+      "content-tabs",
+      "inline-date-range-chip",
+      "import-data-choice",
+      "auth-method-choice",
+      "checkbox-card"
+    ]
+  },
+  {
+    "id": "selection-navigation",
+    "category": "selection",
+    "label": "탐색 전환",
+    "ids": [
+      "breadcrumb",
+      "pagination",
+      "stepper",
+      "navigation-rail",
+      "sidebar-nav",
+      "bottom-navigation",
+      "tab-bar",
+      "anchor-nav",
+      "back-button",
+      "navigation-bar",
+      "tree-navigation",
+      "breadcrumbs-menu",
+      "wizard",
+      "mobile-segmented-tabs",
+      "page-control",
+      "edge-swipe-back",
+      "onboarding-pager",
+      "scope-bar",
+      "navigation-menu"
+    ]
+  },
+  {
+    "id": "selection-menus",
+    "category": "selection",
+    "label": "메뉴·드롭다운",
+    "ids": [
+      "dropdown-menu",
+      "menu-bar",
+      "mega-menu",
+      "context-menu",
+      "saved-view-tabs",
+      "mobile-popover-menu",
+      "long-press-menu"
+    ]
+  },
+  {
+    "id": "selection-context",
+    "category": "selection",
+    "label": "계정·결제 컨텍스트",
+    "ids": [
+      "workspace-switcher",
+      "account-switcher",
+      "payment-method-card"
+    ]
+  },
+  {
+    "id": "action-buttons",
+    "category": "action",
+    "label": "버튼·아이콘 행동",
+    "ids": [
+      "button",
+      "primary-button",
+      "secondary-button",
+      "destructive-button",
+      "icon-button",
+      "floating-action-button",
+      "link",
+      "split-button",
+      "button-group",
+      "copy-button",
+      "download-button",
+      "share-button",
+      "close-button",
+      "overflow-button",
+      "loading-button",
+      "speed-dial",
+      "icon-toggle-button",
+      "bottom-app-bar",
+      "voice-input-button",
+      "clear-text-button",
+      "bottom-cta-bar",
+      "floating-search-button",
+      "social-login-button-group",
+      "cta-section"
+    ]
+  },
+  {
+    "id": "action-command-bars",
+    "category": "action",
+    "label": "툴바·커맨드",
+    "ids": [
+      "toolbar",
+      "menu-item",
+      "command-bar",
+      "canvas-toolbar",
+      "action-sheet",
+      "share-sheet",
+      "table-row-actions"
+    ]
+  },
+  {
+    "id": "action-bulk-danger",
+    "category": "action",
+    "label": "대량·위험 작업",
+    "ids": [
+      "bulk-action-bar",
+      "swipe-action",
+      "swipe-to-delete",
+      "swipe-action-row",
+      "grab-handle",
+      "destructive-confirmation"
+    ]
+  },
+  {
+    "id": "action-editor-media",
+    "category": "action",
+    "label": "편집·미디어 제어",
+    "ids": [
+      "scrubber",
+      "pinch-zoom-viewer",
+      "video-player-controls",
+      "audio-player-controls",
+      "cropper"
+    ]
+  },
+  {
+    "id": "structure-app-layout",
+    "category": "structure",
+    "label": "앱·페이지 레이아웃",
+    "ids": [
+      "header",
+      "footer",
+      "top-app-bar",
+      "app-shell",
+      "global-header",
+      "utility-bar",
+      "status-bar",
+      "breadcrumb-header",
+      "page-title-bar",
+      "page-layout",
+      "dashboard-grid",
+      "checkout-step",
+      "dashboard-overview-page",
+      "settings-page-layout",
+      "billing-settings-page",
+      "onboarding-flow-page"
+    ]
+  },
+  {
+    "id": "structure-panels",
+    "category": "structure",
+    "label": "패널·오버레이",
+    "ids": [
+      "card",
+      "dialog",
+      "drawer",
+      "popover",
+      "split-pane",
+      "side-sheet",
+      "resizable-panel",
+      "master-detail",
+      "right-rail",
+      "inspector-panel",
+      "properties-panel",
+      "preview-pane",
+      "floating-panel",
+      "dockable-panel",
+      "lightbox",
+      "disclosure-card"
+    ]
+  },
+  {
+    "id": "structure-navigation",
+    "category": "structure",
+    "label": "사이드바·보드 구조",
+    "ids": [
+      "navigation-drawer",
+      "sidebar-section",
+      "collapsible-sidebar",
+      "mini-sidebar",
+      "board-column",
+      "navbar-menu",
+      "nav-user-menu",
+      "breadcrumb-overflow",
+      "pagination-jump",
+      "floating-navbar"
+    ]
+  },
+  {
+    "id": "structure-sections",
+    "category": "structure",
+    "label": "섹션·콘텐츠 구조",
+    "ids": [
+      "grid",
+      "section",
+      "container",
+      "hero",
+      "sticky-header",
+      "sticky-footer-bar",
+      "disclosure-group",
+      "pricing-section",
+      "feature-grid-section",
+      "bento-grid",
+      "sticky-scroll-section",
+      "spotlight-hero"
+    ]
+  },
+  {
+    "id": "structure-mobile",
+    "category": "structure",
+    "label": "반응형·모바일",
+    "ids": [
+      "responsive-stack",
+      "mobile-bottom-sheet",
+      "safe-area",
+      "mobile-status-bar",
+      "mobile-app-bar",
+      "large-title-header",
+      "standard-bottom-sheet",
+      "modal-bottom-sheet",
+      "full-screen-dialog",
+      "sheet-drag-handle",
+      "carousel-peek",
+      "scrim",
+      "media-lightbox-mobile",
+      "map-bottom-panel",
+      "mobile-filter-bottom-sheet"
+    ]
+  },
+  {
+    "id": "structure-auth-layouts",
+    "category": "structure",
+    "label": "인증·온보딩 화면",
+    "ids": [
+      "invite-acceptance-screen",
+      "welcome-choice-screen",
+      "consent-review-screen",
+      "auth-card",
+      "login-page",
+      "split-auth-layout",
+      "login-dialog"
+    ]
+  },
+  {
+    "id": "structure-sidebar-layouts",
+    "category": "structure",
+    "label": "사이드바 레이아웃",
+    "ids": [
+      "sidebar-dashboard-layout",
+      "collapsible-sidebar-layout",
+      "icon-sidebar-layout",
+      "inset-sidebar-layout",
+      "right-sidebar-layout",
+      "dual-sidebar-layout",
+      "file-tree-sidebar-layout",
+      "calendar-sidebar-layout",
+      "sidebar-dialog-layout"
+    ]
+  },
+  {
+    "id": "feedback-alerts-toasts",
+    "category": "feedback",
+    "label": "알림·토스트·배너",
+    "ids": [
+      "toast",
+      "alert",
+      "snackbar",
+      "undo-toast",
+      "inline-alert",
+      "toast-stack",
+      "mobile-snackbar",
+      "mobile-toast",
+      "mobile-alert-dialog",
+      "touch-ripple",
+      "trial-banner",
+      "success-toast",
+      "error-toast",
+      "announcement-banner",
+      "message-bar"
+    ]
+  },
+  {
+    "id": "feedback-loading-progress",
+    "category": "feedback",
+    "label": "로딩·진행",
+    "ids": [
+      "progress-bar",
+      "spinner",
+      "skeleton",
+      "loading-state",
+      "skeleton-table",
+      "syncing-state",
+      "saving-indicator",
+      "setup-progress",
+      "inline-loading"
+    ]
+  },
+  {
+    "id": "feedback-empty-error",
+    "category": "feedback",
+    "label": "빈 상태·오류 복구",
+    "ids": [
+      "empty-state",
+      "validation-message",
+      "error-state",
+      "success-state",
+      "warning-state",
+      "info-state",
+      "error-boundary",
+      "empty-table",
+      "location-permission-empty",
+      "mobile-empty-feed",
+      "maintenance-state",
+      "retry-panel",
+      "empty-search-result",
+      "empty-filter-state"
+    ]
+  },
+  {
+    "id": "feedback-access-limits",
+    "category": "feedback",
+    "label": "권한·제한·세션",
+    "ids": [
+      "rate-limit-state",
+      "permission-prompt",
+      "permission-education-screen",
+      "biometric-prompt",
+      "permission-state",
+      "locked-state",
+      "offline-state",
+      "unsaved-changes-banner",
+      "session-expired-dialog",
+      "upgrade-prompt",
+      "quota-warning"
+    ]
+  },
+  {
+    "id": "feedback-auth-security",
+    "category": "feedback",
+    "label": "인증·보안 상태",
+    "ids": [
+      "email-verification-banner",
+      "verification-required-screen",
+      "magic-link-sent-state",
+      "passkey-enrollment-prompt",
+      "passkey-sign-in-sheet",
+      "recovery-code-warning",
+      "trusted-device-prompt",
+      "device-approval-state",
+      "access-request-panel",
+      "access-pending-state",
+      "invite-expired-state",
+      "workspace-join-request",
+      "setup-blocker-state",
+      "reconnect-account-state"
+    ]
+  },
+  {
+    "id": "feedback-status-notifications",
+    "category": "feedback",
+    "label": "상태·알림 센터",
+    "ids": [
+      "badge",
+      "status-indicator",
+      "checkout-progress-header",
+      "delivery-tracker",
+      "coach-mark",
+      "notification-center",
+      "status-chip",
+      "health-indicator",
+      "connection-status",
+      "order-status",
+      "role-badge",
+      "info-label",
+      "hover-card",
+      "sonner-toast",
+      "conversation-marker",
+      "password-strength-meter",
+      "meter",
+      "progress-stepper"
+    ]
+  },
+  {
+    "id": "data-tables-lists",
+    "category": "data-display",
+    "label": "테이블·리스트",
+    "ids": [
+      "list",
+      "table",
+      "tree-view",
+      "filter-bar",
+      "sort-control",
+      "data-grid",
+      "data-table-toolbar",
+      "column-header-menu",
+      "faceted-filter",
+      "virtualized-list",
+      "infinite-scroll",
+      "pull-to-refresh",
+      "table-density-control",
+      "column-visibility-menu",
+      "filter-panel",
+      "advanced-filter-builder",
+      "query-builder",
+      "grouped-list",
+      "nested-list",
+      "draggable-list",
+      "selection-summary",
+      "comparison-table",
+      "pivot-table",
+      "tree-table",
+      "expandable-row",
+      "detail-row",
+      "drag-to-reorder-list",
+      "structured-list",
+      "contained-list"
+    ]
+  },
+  {
+    "id": "data-metrics-charts",
+    "category": "data-display",
+    "label": "지표·차트",
+    "ids": [
+      "metric-card",
+      "chart",
+      "legend",
+      "chart-axis",
+      "stat-list",
+      "map-marker",
+      "area-chart-card",
+      "bar-chart-card",
+      "line-chart-card",
+      "pie-chart-card",
+      "radar-chart-card",
+      "radial-chart-card",
+      "interactive-chart-card",
+      "stacked-chart-card",
+      "chart-tooltip-pattern",
+      "chart-kpi-card"
+    ]
+  },
+  {
+    "id": "data-timeline-history",
+    "category": "data-display",
+    "label": "활동·히스토리",
+    "ids": [
+      "timeline",
+      "activity-feed",
+      "audit-log",
+      "notification-list",
+      "version-history-list"
+    ]
+  },
+  {
+    "id": "data-people-integrations",
+    "category": "data-display",
+    "label": "사람·연동",
+    "ids": [
+      "avatar",
+      "team-member-row",
+      "webhook-endpoint-row",
+      "integration-card",
+      "connection-card",
+      "avatar-group",
+      "avatar-stack",
+      "status-avatar",
+      "badge-group",
+      "integration-grid-section"
+    ]
+  },
+  {
+    "id": "structure-content-elements",
+    "category": "structure",
+    "label": "콘텐츠 구조 요소",
+    "ids": [
+      "aspect-ratio-box",
+      "scroll-area",
+      "message-scroller"
+    ]
+  },
+  {
+    "id": "data-basic-content-elements",
+    "category": "data-display",
+    "label": "기본 콘텐츠 요소",
+    "ids": [
+      "accordion",
+      "carousel",
+      "icon",
+      "label",
+      "divider",
+      "spacer",
+      "typography",
+      "image",
+      "logo",
+      "thumbnail",
+      "item-row"
+    ]
+  },
+  {
+    "id": "data-chat-messaging",
+    "category": "data-display",
+    "label": "채팅·메시지",
+    "ids": [
+      "chat-message",
+      "chat-bubble",
+      "chat-attachment",
+      "notification-inbox-row"
+    ]
+  },
+  {
+    "id": "data-account-support",
+    "category": "data-display",
+    "label": "계정·지원 정보",
+    "ids": [
+      "mfa-enrollment-card",
+      "recovery-code-panel",
+      "keyboard-shortcut-key"
+    ]
+  },
+  {
+    "id": "data-commerce-billing",
+    "category": "data-display",
+    "label": "커머스·청구",
+    "ids": [
+      "cart-summary-bar",
+      "image-gallery",
+      "attachment-list",
+      "feature-comparison",
+      "cart-summary",
+      "address-card",
+      "billing-summary",
+      "invoice-row"
+    ]
+  },
+  {
+    "id": "data-motion-content",
+    "category": "data-display",
+    "label": "움직이는 콘텐츠",
+    "ids": [
+      "number-ticker",
+      "infinite-moving-cards"
+    ]
+  },
+  {
+    "id": "feedback-confirmation-help",
+    "category": "feedback",
+    "label": "확인·도움말",
+    "ids": [
+      "tooltip",
+      "confirmation-dialog"
+    ]
+  },
+  {
+    "id": "feedback-accessibility-states",
+    "category": "feedback",
+    "label": "동기화·예측 상태",
+    "ids": [
+      "optimistic-update",
+      "pending-state",
+      "gesture-hint"
+    ]
+  },
+  {
+    "id": "feedback-interaction-states",
+    "category": "feedback",
+    "label": "인터랙션 상태",
+    "ids": [
+      "hover-state",
+      "focus-ring",
+      "active-state",
+      "disabled-state",
+      "selected-state",
+      "drag-state",
+      "drop-target",
+      "tap-feedback",
+      "hover-reveal"
+    ]
+  },
+  {
+    "id": "style-surface-material",
+    "category": "style",
+    "label": "표면·재질",
+    "ids": [
+      "backdrop-blur",
+      "shadow-elevation",
+      "glassmorphism",
+      "translucent-surface",
+      "inner-shadow",
+      "noise-texture"
+    ]
+  },
+  {
+    "id": "style-border-color",
+    "category": "style",
+    "label": "선·색상 처리",
+    "ids": [
+      "opacity",
+      "border-radius",
+      "gradient-fill",
+      "hairline-border",
+      "highlight-stroke",
+      "outline",
+      "blend-mode",
+      "semantic-color"
+    ]
+  },
+  {
+    "id": "style-typography",
+    "category": "style",
+    "label": "타이포그래피 처리",
+    "ids": [
+      "animated-shiny-text",
+      "font-weight",
+      "line-height",
+      "letter-spacing",
+      "text-overflow",
+      "line-clamp"
+    ]
+  },
+  {
+    "id": "style-tokens",
+    "category": "style",
+    "label": "토큰·시맨틱",
+    "ids": [
+      "theme-token"
+    ]
+  },
+  {
+    "id": "style-decorative-effects",
+    "category": "style",
+    "label": "장식·배경 효과",
+    "ids": [
+      "scroll-fade",
+      "shimmer-effect",
+      "animated-gradient-background",
+      "marquee-row",
+      "border-beam",
+      "orbiting-icons",
+      "spotlight-card",
+      "grid-pattern-background",
+      "dot-pattern-background",
+      "three-d-card",
+      "background-beams",
+      "aurora-background",
+      "canvas-reveal-card",
+      "tracing-beam-section"
+    ]
+  },
+  {
+    "id": "layout-spacing-sizing",
+    "category": "layout-rendering",
+    "label": "간격·크기",
+    "ids": [
+      "gap",
+      "padding",
+      "aspect-ratio",
+      "object-fit"
+    ]
+  },
+  {
+    "id": "layout-responsive-viewport",
+    "category": "layout-rendering",
+    "label": "반응형·뷰포트",
+    "ids": [
+      "breakpoint",
+      "responsive-layout",
+      "container-query",
+      "mobile-first",
+      "fluid-layout",
+      "dynamic-viewport-unit",
+      "safe-area-inset"
+    ]
+  },
+  {
+    "id": "layout-stacking-overflow",
+    "category": "layout-rendering",
+    "label": "겹침·넘침",
+    "ids": [
+      "z-index",
+      "stacking-context",
+      "overflow",
+      "clipping-mask",
+      "sticky-position",
+      "layout-shift"
+    ]
+  },
+  {
+    "id": "layout-scroll-behavior",
+    "category": "layout-rendering",
+    "label": "스크롤 동작",
+    "ids": [
+      "scroll-snap"
+    ]
+  },
+  {
+    "id": "accessibility-aria-screen-reader",
+    "category": "accessibility",
+    "label": "ARIA·스크린리더",
+    "ids": [
+      "aria-expanded",
+      "aria-invalid",
+      "aria-live",
+      "sr-only"
+    ]
+  },
+  {
+    "id": "accessibility-focus-motion",
+    "category": "accessibility",
+    "label": "포커스·움직임 접근성",
+    "ids": [
+      "direction-provider",
+      "color-contrast",
+      "reduced-motion",
+      "focus-trap"
+    ]
+  },
+  {
+    "id": "data-display-misc",
+    "category": "data-display",
+    "label": "기타 데이터·콘텐츠",
+    "ids": [
+      "kanban",
+      "calendar-view",
+      "description-list",
+      "feed-card-mobile",
+      "story-rail",
+      "story-viewer",
+      "media-card",
+      "file-card",
+      "product-card",
+      "price-card",
+      "plan-card",
+      "calendar-event-card",
+      "kanban-card",
+      "onboarding-checklist",
+      "help-center-card",
+      "faq-list",
+      "release-note-card",
+      "profile-card"
+    ]
+  },
+  {
+    "id": "structure-misc",
+    "category": "structure",
+    "label": "기타 구조",
+    "ids": [
+      "favicon",
+      "open-graph-image",
+      "testimonial-section"
+    ]
+  },
+  {
+    "id": "selection-misc",
+    "category": "selection",
+    "label": "기타 선택·탐색",
+    "ids": [
+      "row-selection"
+    ]
+  },
+  {
+    "id": "action-misc",
+    "category": "action",
+    "label": "기타 행동",
+    "ids": [
+      "reorder-handle"
+    ]
+  },
+  {
+    "id": "feedback-misc",
+    "category": "feedback",
+    "label": "기타 상태·피드백",
+    "ids": [
+      "typing-text-effect",
+      "blur-fade-in",
+      "transition",
+      "duration",
+      "easing",
+      "fade-transition",
+      "slide-transition",
+      "scale-transition"
+    ]
+  },
+  {
+    "id": "style-misc",
+    "category": "style",
+    "label": "기타 스타일·재질",
+    "ids": [
+      "hover-card-stack"
+    ]
+  }
+] satisfies TermGroup[]

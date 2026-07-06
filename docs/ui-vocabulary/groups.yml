@@ -1,0 +1,181 @@
+# UI Vocabulary Groups
+#
+# 정본 지위: docs/design-system/pattern-taxonomy.md §4, §6
+# term의 미세 분류(~74종 추정, 실측 57종). 각 group은 category 하위 소속이며,
+# term -> group 소속은 이 파일이 아니라 각 term의 `group` 필드(terms.yml)가 갖는다.
+# 이 파일은 group id/category/label 정의만 갖는다 (ids 배열 없음).
+#
+# 생성 이력: scripts/build-ui-vocabulary-data.mjs가 이 파일을 읽어
+# examples/ui-vocabulary-site/src/data/terms.generated.ts 에 groups로 방출한다.
+
+- id: input-text
+  category: input
+  label: "텍스트·숫자 입력"
+- id: input-search-command
+  category: input
+  label: "검색·명령 입력"
+- id: input-pickers
+  category: input
+  label: "선택형 입력"
+- id: input-file-media
+  category: input
+  label: "파일·미디어 입력"
+- id: input-editing
+  category: input
+  label: "인라인 편집"
+- id: input-auth-forms
+  category: input
+  label: "계정·설정 폼"
+- id: selection-options
+  category: selection
+  label: "옵션 선택"
+- id: selection-navigation
+  category: selection
+  label: "탐색 전환"
+- id: selection-menus
+  category: selection
+  label: "메뉴·드롭다운"
+- id: selection-context
+  category: selection
+  label: "계정·결제 컨텍스트"
+- id: action-buttons
+  category: action
+  label: "버튼·아이콘 행동"
+- id: action-command-bars
+  category: action
+  label: "툴바·커맨드"
+- id: action-bulk-danger
+  category: action
+  label: "대량·위험 작업"
+- id: action-editor-media
+  category: action
+  label: "편집·미디어 제어"
+- id: structure-app-layout
+  category: structure
+  label: "앱·페이지 레이아웃"
+- id: structure-panels
+  category: structure
+  label: "패널·오버레이"
+- id: structure-navigation
+  category: structure
+  label: "사이드바·보드 구조"
+- id: structure-sections
+  category: structure
+  label: "섹션·콘텐츠 구조"
+- id: structure-mobile
+  category: structure
+  label: "반응형·모바일"
+- id: structure-auth-layouts
+  category: structure
+  label: "인증·온보딩 화면"
+- id: structure-sidebar-layouts
+  category: structure
+  label: "사이드바 레이아웃"
+- id: feedback-alerts-toasts
+  category: feedback
+  label: "알림·토스트·배너"
+- id: feedback-loading-progress
+  category: feedback
+  label: "로딩·진행"
+- id: feedback-empty-error
+  category: feedback
+  label: "빈 상태·오류 복구"
+- id: feedback-access-limits
+  category: feedback
+  label: "권한·제한·세션"
+- id: feedback-auth-security
+  category: feedback
+  label: "인증·보안 상태"
+- id: feedback-status-notifications
+  category: feedback
+  label: "상태·알림 센터"
+- id: data-tables-lists
+  category: data-display
+  label: "테이블·리스트"
+- id: data-metrics-charts
+  category: data-display
+  label: "지표·차트"
+- id: data-timeline-history
+  category: data-display
+  label: "활동·히스토리"
+- id: data-people-integrations
+  category: data-display
+  label: "사람·연동"
+- id: structure-content-elements
+  category: structure
+  label: "콘텐츠 구조 요소"
+- id: data-basic-content-elements
+  category: data-display
+  label: "기본 콘텐츠 요소"
+- id: data-chat-messaging
+  category: data-display
+  label: "채팅·메시지"
+- id: data-account-support
+  category: data-display
+  label: "계정·지원 정보"
+- id: data-commerce-billing
+  category: data-display
+  label: "커머스·청구"
+- id: data-motion-content
+  category: data-display
+  label: "움직이는 콘텐츠"
+- id: feedback-confirmation-help
+  category: feedback
+  label: "확인·도움말"
+- id: feedback-accessibility-states
+  category: feedback
+  label: "동기화·예측 상태"
+- id: feedback-interaction-states
+  category: feedback
+  label: "인터랙션 상태"
+- id: style-surface-material
+  category: style
+  label: "표면·재질"
+- id: style-border-color
+  category: style
+  label: "선·색상 처리"
+- id: style-typography
+  category: style
+  label: "타이포그래피 처리"
+- id: style-tokens
+  category: style
+  label: "토큰·시맨틱"
+- id: style-decorative-effects
+  category: style
+  label: "장식·배경 효과"
+- id: layout-spacing-sizing
+  category: layout-rendering
+  label: "간격·크기"
+- id: layout-responsive-viewport
+  category: layout-rendering
+  label: "반응형·뷰포트"
+- id: layout-stacking-overflow
+  category: layout-rendering
+  label: "겹침·넘침"
+- id: layout-scroll-behavior
+  category: layout-rendering
+  label: "스크롤 동작"
+- id: accessibility-aria-screen-reader
+  category: accessibility
+  label: "ARIA·스크린리더"
+- id: accessibility-focus-motion
+  category: accessibility
+  label: "포커스·움직임 접근성"
+- id: data-display-misc
+  category: data-display
+  label: "기타 데이터·콘텐츠"
+- id: structure-misc
+  category: structure
+  label: "기타 구조"
+- id: selection-misc
+  category: selection
+  label: "기타 선택·탐색"
+- id: action-misc
+  category: action
+  label: "기타 행동"
+- id: feedback-misc
+  category: feedback
+  label: "기타 상태·피드백"
+- id: style-misc
+  category: style
+  label: "기타 스타일·재질"

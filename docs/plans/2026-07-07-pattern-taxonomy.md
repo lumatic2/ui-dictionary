@@ -1,7 +1,7 @@
 # SMC2 - 패턴 분류 체계 구현 계획
 
 Date: 2026-07-07
-Status: active
+Status: completed 2026-07-07 (SMC2 closed — canonical taxonomy doc + group axis promoted to data; category 편중 재설계는 후속 큐)
 Milestone: SMC2 (horizon `system-model-core`)
 설계 입력: surface-taxonomy/agent-asset-model/site-blueprint/tailwind-reference-model 조사 + ui-vocabulary 데이터 조사 (2026-07-07, sonnet fan-out)
 
@@ -19,9 +19,9 @@ Milestone: SMC2 (horizon `system-model-core`)
 
 ## Step 트리
 
-- [ ] Step 1 - 정본 분류 문서 `docs/design-system/pattern-taxonomy.md`: 용어 통일(pattern/surface/pattern_group/group/collection 정의), surface 7종·pattern_group 10종 확정, term 축(category 9/kind 6/group)과 상위 축의 관계, 패턴→토큰·레시피·예시 연결 스키마(agent-asset-model 정합). + 기존 3개 문서(surface-taxonomy/site-blueprint/tailwind-reference-model)에 정본 포인터 주석 추가. (verify: pattern_group 목록이 4개 문서에서 단일 출처로 수렴)
-- [ ] Step 2 - group 축 데이터화: search.ts의 categoryGroups(~74종)를 `docs/ui-vocabulary/groups.yml`로 추출 + terms.yml 527개 항목에 `group` 필드 주입(역매핑 스크립트) + validator 2곳(group 존재·groups.yml 대조) + build-ui-vocabulary-data.mjs가 group 포함 생성 + search.ts가 하드코딩 대신 생성 데이터에서 그룹 구성. (verify: validate-ui-vocabulary.py PASS, 모든 term에 group 존재, 사이트 build/lint PASS, Chrome smoke에서 Docs 그룹 페이지 동작 동일)
-- [ ] Step 3 - 통합 검증: 신규 group 검증 실패 모드(존재하지 않는 group id 주입 → validator FAIL) + Chrome smoke(Docs 리프 페이지 1개, Plus 컬렉션 1개) + ROADMAP/plan 동기화. (verify: 실패 모드 FAIL 확인 + smoke 스크린샷)
+- [x] Step 1 - 정본 분류 문서 `docs/design-system/pattern-taxonomy.md` + 3개 문서 정본 포인터. (verify: pattern_group 10종 단일 출처 수렴 ✓, 커밋 0ffef13)
+- [x] Step 2 - group 축 데이터화: groups.yml **57종**(조사 추정 ~74는 과대), terms.yml 527개 전부 group 주입(misc 신규 0), validator 강화, search.ts 하드코딩 제거(공개 API 불변 — navigation-model 등 무수정). (verify: validator PASS 527/57 ✓, build/lint PASS ✓, 배정 동일성 전후 비교 불일치 0 ✓)
+- [x] Step 3 - 통합 검증: 실패 모드(미존재 group id → validator FAIL) ✓, Chrome smoke — Docs Layout 리프 + Plus Application UI 컬렉션 정상 렌더 (`docs/research/assets/smc2-pattern-taxonomy-2026-07-07/plus-appui.png`) ✓, ROADMAP/plan 동기화 ✓.
 
 ## 결정 로그
 
