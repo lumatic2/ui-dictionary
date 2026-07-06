@@ -1,36 +1,36 @@
 # Objective - Askewly Design
 
-## North Star
+## 북극성
 
-`ui-dictionary` builds Askewly Design: a public website people can browse, compare, and learn from, plus an agent-usable design system that Codex and Claude Code can use to implement polished product UI.
+`ui-dictionary`는 Askewly Design을 만든다: 사람이 둘러보고, 비교하고, 배울 수 있는 공개 웹사이트, 그리고 Codex와 Claude Code가 완성도 높은 제품 UI를 구현할 때 실제로 사용할 수 있는 에이전트용 디자인 시스템.
 
-The system covers digital product interfaces broadly, not only web pages. Its scope includes websites, mobile apps, SaaS products, commerce flows, dashboards, documentation sites, marketing pages, internal tools, and application UI patterns.
+이 시스템은 웹 페이지만이 아니라 디지털 제품 인터페이스 전반을 다룬다. 웹사이트, 모바일 앱, SaaS 제품, 커머스 플로우, 대시보드, 문서 사이트, 마케팅 페이지, 내부 운영 도구, 애플리케이션 UI 패턴까지가 범위다.
 
-## Success State
+## 성공 상태
 
-- A person can browse a visual library of product UI patterns, color systems, typography, layouts, states, interactions, and complete page examples across multiple product surfaces.
-- A paid user can copy more complete code, download assets, and reuse examples with fewer restrictions than a casual visitor.
-- Codex and Claude Code can read the system's tokens, pattern rules, component recipes, and anti-patterns to produce UI that feels intentionally designed rather than generic AI output.
-- The project can absorb reference work from Tailwind, Tailwind Plus, Tailwind Labs repositories, Apple HIG, Material Design, high-quality SaaS products, mobile apps, and existing Askewly design-manual/custom-skills ecosystem without becoming a loose scrapbook.
+- 사람이 여러 제품 표면에 걸친 UI 패턴, 컬러 시스템, 타이포그래피, 레이아웃, 상태, 인터랙션, 완성된 페이지 예시를 시각 라이브러리로 둘러볼 수 있다.
+- 결제 사용자는 일반 방문자보다 더 완전한 코드 복사, 에셋 다운로드, 예시 재사용을 제약 없이 할 수 있다.
+- Codex와 Claude Code가 시스템의 토큰, 패턴 규칙, 컴포넌트 레시피, 안티패턴을 읽고 "일반적인 AI 결과물"이 아니라 의도적으로 디자인된 느낌의 UI를 만들어낸다.
+- Tailwind, Tailwind Plus, Tailwind Labs 레포, Apple HIG, Material Design, 고품질 SaaS 제품, 모바일 앱, 기존 Askewly design-manual/custom-skills 작업물을 근거 기반으로 흡수하면서도 잡동사니 스크랩북이 되지 않는다.
 
-## Moving Axes
+## 이동 축
 
-- From vocabulary lookup to reusable product design system.
-- From web-only examples to cross-surface digital product patterns.
-- From visual inspiration to implementation-ready code, assets, and agent guidance.
-- From one-off Tailwind parity work to a repeatable reference capture, adaptation, and verification loop.
+- 용어 사전 조회에서 → 재사용 가능한 제품 디자인 시스템으로.
+- 웹 전용 예시에서 → 표면을 가로지르는 디지털 제품 패턴으로.
+- 시각적 영감에서 → 구현 가능한 코드, 에셋, 에이전트 가이드로.
+- 일회성 Tailwind 패리티 작업에서 → 반복 가능한 레퍼런스 수집·적응·검증 루프로.
 
-## Long Arc
+## 장기 아크
 
-1. Foundation: align Objective, PRD, Architecture, ROADMAP, and reference strategy around the broader design system goal.
-2. Reference Intake: study external systems and local design work with screenshots, repo notes, pattern ledgers, and adaptation criteria.
-3. System Model: define tokens, pattern taxonomies, component recipes, examples, code assets, and agent-facing guidance.
-4. Product Surface: evolve the website into the browsable and monetizable front door for the system.
-5. Agent Integration: make the same system usable from Codex, Claude Code, and custom design skills.
+1. 기반: Objective, PRD, Architecture, ROADMAP, 레퍼런스 전략을 확장된 디자인 시스템 목표에 맞춰 정렬한다.
+2. 레퍼런스 흡수: 외부 시스템과 로컬 디자인 작업을 스크린샷, 레포 노트, 패턴 장부, 적응 기준과 함께 연구한다.
+3. 시스템 모델: 토큰, 패턴 분류 체계, 컴포넌트 레시피, 예시, 코드 에셋, 에이전트용 가이드를 정의한다.
+4. 제품 표면: 웹사이트를 시스템의 탐색 가능하고 수익화 가능한 정문으로 발전시킨다.
+5. 에이전트 통합: 같은 시스템을 Codex, Claude Code, 커스텀 디자인 스킬에서 그대로 쓸 수 있게 만든다.
 
-## Non-Goals
+## 하지 않는 것
 
-- Do not copy another product's brand identity as the final identity.
-- Do not treat Tailwind parity as the final system; it is reference-backed training data and implementation practice.
-- Do not make the system web-only.
-- Do not add payment, accounts, or license enforcement before the public browsing and asset model are coherent.
+- 다른 제품의 브랜드 아이덴티티를 최종 아이덴티티로 복사하지 않는다.
+- Tailwind 패리티를 최종 시스템으로 취급하지 않는다. 그것은 근거 기반 훈련 데이터이자 구현 연습이다.
+- 시스템을 웹 전용으로 만들지 않는다.
+- 공개 탐색 경험과 에셋 모델이 정합해지기 전에는 결제, 계정, 라이선스 강제를 붙이지 않는다.
