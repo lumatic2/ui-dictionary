@@ -12,6 +12,7 @@ node_modules/
 **/.chrome-profile*/
 **/*.tsbuildinfo
 vite-*.log
+tmp-*.log
 
 # AI internal
 BUGLOG.md
