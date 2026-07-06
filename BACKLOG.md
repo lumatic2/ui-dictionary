@@ -2,6 +2,14 @@
 
 ## Completed Horizons
 
+### 2026-07-07 - Agent Integration
+
+- AG1 - llms.txt 발견 계층: `scripts/generate-llms-txt.mjs`가 SSOT 10개 자산(토큰·분류·계약·레시피 5종)을 `public/llms/` 사본 + 링크만 담은 `llms.txt`로 파생(C-10, 실패모드 exit≠0 검증). 실배포 10/10 링크 실콘텐츠 확인 (`https://ui.askewly.com/llms.txt`).
+- AG2 - custom-skills 소비 계층: design-screen §2 레시피 소비 규칙(로컬 recipes/ 우선, 외부는 llms.txt) + design-harness §4 발견 인덱스 참조 (custom-skills `4b176a8`, 지난 세션 guard `3213342` 위에). setup.sh 재배포 + 소비 smoke PASS.
+- AG3 - 외부 프로젝트 실전 실증: sonnet 에이전트가 live llms.txt 진입점만으로(로컬 접근 0) development-dictionary에 VS Code 활용 가이드 페이지 구현(`7aa2685`, 색 리터럴 0, 레시피 3종 계약 준수). Fable 독립 게이트 PASS (`docs/research/ag3-external-proof-2026-07-07.md`).
+- Close: 닫는 기준 충족 — 발견(llms.txt)·소비(스킬) 진입점 존재 + 외부 실증 1건 기록.
+- 후속 큐: showcase-card 정적 콘텐츠 variant 명시 여부(레시피 확장 pass), generate-tokens.mjs semantic 변수 블록 방출(design-bridge 재사용), MCP 서버 판단(C-11 유지 중).
+
 ### 2026-07-07 - System Model Core
 
 - SMC0 - 시장 포맷 조사: DTCG/Radix/shadcn/Geist/Material 3/에이전트 포맷 선례 6종을 sonnet fan-out으로 조사, 비교표 + 채택 기준 11개 확정 (`docs/market/design-system-format-survey.md`).

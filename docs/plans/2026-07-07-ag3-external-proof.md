@@ -1,7 +1,7 @@
 # Plan - AG3 외부 프로젝트 실전 실증 (development-dictionary)
 
 Date: 2026-07-07
-Status: in progress
+Status: completed 2026-07-07 (3/3 steps PASS — record frozen)
 
 ## 위계
 
@@ -17,9 +17,9 @@ Status: in progress
 
 ## Step 트리
 
-- [ ] Step 1 — 소비 구현 (sonnet 위임): 에이전트가 llms.txt 진입점 경유로 토큰·레시피를 fetch해 `#/guides/vscode` 해시 뷰 + `vscode-guide.tsx` 구현, 소비 경로 로그 반환 (verify: 에이전트 산출물 + fetch한 URL 목록)
-- [ ] Step 2 — 게이트 검증 (Fable): development-dictionary `npm run build`·`npm run lint` PASS + 색 리터럴 스캔 0(hex/rgb 금지, 토큰 var만) + dev server 브라우저 렌더 확인 (verify: 커맨드 출력 + 스크린샷)
-- [ ] Step 3 — 사례 기록 + 완료: 소비 경로·적용 레시피를 `docs/research/ag3-external-proof-2026-07-07.md`에 기록, AG3 complete, horizon close 판정(Objective 임팩트) (verify: roadmap_sync + horizon doc)
+- [x] Step 1 — 소비 구현 (PASS) (sonnet 위임): 에이전트가 llms.txt 진입점 경유로 토큰·레시피를 fetch해 `#/guides/vscode` 해시 뷰 + `vscode-guide.tsx` 구현, 소비 경로 로그 반환 (verify: 에이전트 산출물 + fetch한 URL 목록)
+- [x] Step 2 — 게이트 검증 (PASS) (Fable): development-dictionary `npm run build`·`npm run lint` PASS + 색 리터럴 스캔 0(hex/rgb 금지, 토큰 var만) + dev server 브라우저 렌더 확인 (verify: 커맨드 출력 + 스크린샷)
+- [x] Step 3 — 사례 기록 (PASS) + 완료: 소비 경로·적용 레시피를 `docs/research/ag3-external-proof-2026-07-07.md`에 기록, AG3 complete, horizon close 판정(Objective 임팩트) (verify: roadmap_sync + horizon doc)
 
 ## 결정 로그
 

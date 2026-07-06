@@ -1,7 +1,7 @@
 # Horizon - Agent Integration (에이전트 통합)
 
 Date: 2026-07-07
-Status: active
+Status: closed 2026-07-07 — 3/3 milestones completed same day; close criteria met (discovery + consumption entry points live, one external-project proof recorded). Milestone history archived in BACKLOG.md.
 Objective link: `docs/OBJECTIVE.md` (장기 아크 5 — 에이전트 통합)
 Preceding horizon: `docs/horizons/2026-07-system-model-core.md` (closed 2026-07-07)
 
@@ -63,4 +63,6 @@ Evidence:
 
 ## Objective Impact
 
-(horizon close 시 기입)
+Objective의 "Codex/Claude Code가 실제로 사용할 수 있는 에이전트용 디자인 시스템" 축을 **가설에서 검증된 사실로** 옮겼다: 에이전트가 공개 진입점(`ui.askewly.com/llms.txt`)만으로 SSOT를 발견·소비해 외부 레포 UI를 구현함을 실증(로컬 접근 0, 색 리터럴 0). 이동 축 "시각적 영감 → 구현 가능한 코드·에이전트 가이드"가 외부 프로젝트에서 처음 작동했다. 장기 아크 5(에이전트 통합)의 최소 골격 완성 — 남은 것은 폭(레시피 커버리지, MCP 질의 계층)이지 경로가 아니다. ROADMAP 자기평가 재측정은 불요(오늘 개설·완료).
+
+크기 회고: 세 milestone 모두 각 1 changeset로 닫혔다 — §A1 인플레 기준상 이 horizon은 milestone 1개 규모였다. 다음 같은 크기의 "진입점 배선" 류 작업은 horizon이 아니라 milestone 하나로 잡는다.
