@@ -12,12 +12,14 @@ Goal: Build the design system itself — 3-tier tokens, pattern taxonomy, compon
 
 ## Active Milestones
 
-<!-- harness:milestone id="SMC0" status="active" priority="P0" -->
+<!-- harness:milestone id="SMC0" status="completed" priority="P0" evidence="docs/market/design-system-format-survey.md; docs/market/format-survey-notes/" -->
 ### SMC0 - 시장 포맷 조사 (market beat)
 - DoD: Radix Themes, shadcn registry, Vercel Geist, Material 3 tokens, W3C DTCG, and agent-facing format precedents are surveyed into a comparison table with adoption criteria for our token/recipe format.
-- Evidence: docs/market/design-system-format-survey.md
+- Evidence: docs/market/design-system-format-survey.md; docs/market/format-survey-notes/ (6 source notes)
 - Gap: Designing the token/recipe schema without surveying existing formats risks a costly schema rework later.
-- Status: [ ]
+- Status: [x]
+- Completed at: 2026-07-07
+- Summary: Surveyed six format precedents via parallel sonnet research agents, gate-checked the findings, and synthesized a comparison table plus 11 adoption criteria (DTCG-compatible SSOT, unidirectional 3-tier lint, semantic-layer light/dark, atomic recipe packaging, DESIGN.md as derived artifact, llms.txt index).
 
 <!-- harness:milestone id="SMC1" status="pending" priority="P0" -->
 ### SMC1 - 토큰 시스템 SSOT
