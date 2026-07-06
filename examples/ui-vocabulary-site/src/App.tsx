@@ -445,7 +445,7 @@ function App() {
                       className={cn(
                         "transition hover:text-primary",
                         item.active && "text-primary",
-                        item.label === "Pro Plan" && "rounded-full bg-[#6F2DBD]/10 px-3 py-1 font-semibold text-[#6F2DBD] hover:bg-[#6F2DBD]/15 hover:text-[#5f22a8]",
+                        item.label === "Pro Plan" && "rounded-full bg-askewly-violet/10 px-3 py-1 font-semibold text-askewly-violet hover:bg-askewly-violet/15 hover:text-[#5f22a8]",
                       )}
                       type="button"
                       onClick={item.onClick}

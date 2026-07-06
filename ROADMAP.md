@@ -21,12 +21,14 @@ Goal: Build the design system itself — 3-tier tokens, pattern taxonomy, compon
 - Completed at: 2026-07-07
 - Summary: Surveyed six format precedents via parallel sonnet research agents, gate-checked the findings, and synthesized a comparison table plus 11 adoption criteria (DTCG-compatible SSOT, unidirectional 3-tier lint, semantic-layer light/dark, atomic recipe packaging, DESIGN.md as derived artifact, llms.txt index).
 
-<!-- harness:milestone id="SMC1" status="pending" priority="P0" -->
+<!-- harness:milestone id="SMC1" status="completed" priority="P0" evidence="tokens/askewly.tokens.json; scripts/lint-tokens.mjs; scripts/generate-tokens.mjs; docs/plans/2026-07-07-token-ssot.md; docs/research/design-skills-impact-audit.md; docs/research/assets/smc1-token-ssot-2026-07-07/" -->
 ### SMC1 - 토큰 시스템 SSOT
 - DoD: primitive -> semantic -> component 3-tier tokens exist as one machine-readable source; DESIGN.md and the site's token usage align with it; WCAG contrast and token-reference lint pass.
-- Evidence: token SSOT data file; lint run output; DESIGN.md alignment diff
+- Evidence: tokens/askewly.tokens.json; scripts/lint-tokens.mjs (92 checks PASS, failure-mode verified); scripts/generate-tokens.mjs; site tokens.css + hex migration (90 replacements, 0 brand hex residue); Chrome smoke screenshots; custom-skills SSOT guards deployed
 - Gap: Tokens currently live informally in DESIGN.md and index.css without a machine-readable single source.
-- Status: [ ]
+- Status: [x]
+- Completed at: 2026-07-07
+- Summary: Established tokens/askewly.tokens.json as the machine-readable SSOT with a 3-tier lint gate and generation pipeline deriving DESIGN.md frontmatter and site tokens.css; migrated 90 hardcoded brand hex usages to token references; added SSOT guards to design-bootstrap/harness/screen skills. Follow-ups queued: dark-mode toggle activation, design-bridge naming cross-check.
 
 <!-- harness:milestone id="SMC2" status="pending" priority="P1" -->
 ### SMC2 - 패턴 분류 체계

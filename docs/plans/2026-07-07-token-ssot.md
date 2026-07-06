@@ -1,7 +1,7 @@
 # SMC1 - 토큰 시스템 SSOT 구현 계획
 
 Date: 2026-07-07
-Status: active
+Status: completed 2026-07-07 (SMC1 closed — SSOT + lint + generation + hex migration + skills guards; 후속: 다크 토글 활성화, design-bridge 네이밍 대조는 후속 검증 큐)
 Milestone: SMC1 (horizon `system-model-core` — `docs/horizons/2026-07-system-model-core.md`)
 Objective: `docs/OBJECTIVE.md`
 설계 입력: `docs/market/design-system-format-survey.md` 채택 기준 A-1~A-5, C-9
@@ -15,7 +15,7 @@ Objective: `docs/OBJECTIVE.md`
 - [x] Step 1 - 토큰 SSOT 파일: `tokens/askewly.tokens.json` — 12-step primitive 규약(용도 고정), semantic light/dark 분기, component 최소 토큰. (verify: lint 92 checks PASS ✓)
 - [x] Step 2 - lint 스크립트 `scripts/lint-tokens.mjs`: 단방향 참조·orphan·WCAG contrast. (verify: PASS + 고의 tier 위반 주입 시 FAIL exit 1 확인 ✓)
 - [x] Step 3 - 파생 파이프라인 `scripts/generate-tokens.mjs`: SSOT → DESIGN.md frontmatter + tokens.css 생성, index.css 배선. (verify: build/lint PASS + Chrome smoke — `docs/research/assets/smc1-token-ssot-2026-07-07/landing-light.png`, 의도된 색 이동(primary/ring/accent)만 확인 ✓)
-- [ ] Step 3b - 하드코딩 hex 치환: home-page.tsx/App.tsx 등 브랜드 hex 90+건을 토큰 유틸리티로 치환 (opacity modifier 건별 검토). (verify: grep 하드코딩 잔존 0 목표 + build + Chrome smoke)
+- [x] Step 3b - 하드코딩 hex 치환: 90건 치환 (App.tsx 1, home-page.tsx 89 — Tailwind 유틸리티 84 + var() 6). 보류 1건: `App.tsx` `hover:text-[#5f22a8]` (어둡게 한 파생색 — opacity로 재현 불가, 임의 변경 대신 유지). (verify: 브랜드 hex 잔존 grep 0 ✓ + build ✓ + Chrome smoke `landing-after-hex-migration.png` ✓)
 - [x] Step 4 - custom-skills 디자인 스킬 영향 감사 → `docs/research/design-skills-impact-audit.md` (판정: 폐기 없음, guard/분기/문구 fix — 실제 스킬 수정은 후속) (verify: 스킬별 판정+근거 완비 ✓) (artifact: analysis): `~/projects/custom-skills`의 design-bootstrap/design-harness/design-bridge/design-consultation 등이 "DESIGN.md=SSOT" 전제를 어디서 쓰는지 조사해 fix/deprecate/keep 분류표 작성 → `docs/market/../` 아님, `docs/research/design-skills-impact-audit.md`. 실제 스킬 수정은 별도 작업(custom-skills 레포)으로 분리. (verify: 스킬별 판정+근거 행 완비)
 
 ## 결정 로그

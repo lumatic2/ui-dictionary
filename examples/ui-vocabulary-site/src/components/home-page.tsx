@@ -217,7 +217,7 @@ export function HomePage({ onNavigate, onSearch, filter, terms }: HomePageProps)
           </p>
 
           <div className="mt-7 flex flex-col gap-3 sm:flex-row">
-            <Button className="h-11 rounded-full bg-[#6F2DBD] px-6 text-white hover:bg-[#5f22a8]" type="button" onClick={() => onNavigate({ page: "plus", filter: "nav:plus-application-ui" })}>
+            <Button className="h-11 rounded-full bg-askewly-violet px-6 text-white hover:bg-[#5f22a8]" type="button" onClick={() => onNavigate({ page: "plus", filter: "nav:plus-application-ui" })}>
               Get Started
               <ArrowRight aria-hidden="true" className="size-4" />
             </Button>
@@ -307,7 +307,7 @@ function DashboardShowcase({
       <div className="grid min-h-[34rem] overflow-hidden border border-white/10 bg-[#f8fafc] text-slate-950 lg:grid-cols-[13rem_minmax(0,1fr)]">
         <aside className="hidden border-r border-slate-200 bg-slate-950 p-4 text-white lg:block">
           <div className="flex items-center gap-2 text-sm font-semibold">
-            <span className="grid size-7 place-items-center rounded bg-[#6F2DBD]">
+            <span className="grid size-7 place-items-center rounded bg-askewly-violet">
               <LayoutDashboard aria-hidden="true" className="size-4" />
             </span>
             Atlas Ops
@@ -333,11 +333,11 @@ function DashboardShowcase({
         <div className="min-w-0 p-4 md:p-6">
           <div className="flex flex-col gap-4 border-b border-slate-200 pb-5 md:flex-row md:items-center md:justify-between">
             <div>
-              <p className="text-xs font-semibold uppercase tracking-[0.18em] text-[#6F2DBD]">Application UI</p>
+              <p className="text-xs font-semibold uppercase tracking-[0.18em] text-askewly-violet">Application UI</p>
               <h3 className="mt-2 text-2xl font-semibold text-slate-950">{view.title}</h3>
             </div>
             <button
-              className="inline-flex h-10 items-center justify-center gap-2 rounded-full bg-slate-950 px-4 text-sm font-semibold text-white transition hover:bg-[#6F2DBD] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#6F2DBD]"
+              className="inline-flex h-10 items-center justify-center gap-2 rounded-full bg-slate-950 px-4 text-sm font-semibold text-white transition hover:bg-askewly-violet focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-askewly-violet"
               type="button"
               onClick={onNavigate}
             >
@@ -357,7 +357,7 @@ function DashboardShowcase({
                 <p className="mt-2 text-sm leading-5 text-slate-500">{label}</p>
                 <div className="mt-4 h-1.5 overflow-hidden rounded-full bg-slate-100">
                   <div
-                    className={cn("h-full rounded-full", index === 0 ? "w-4/5 bg-[#6F2DBD]" : "w-3/5 bg-[#B9FAF8]")}
+                    className={cn("h-full rounded-full", index === 0 ? "w-4/5 bg-askewly-violet" : "w-3/5 bg-askewly-mint")}
                   />
                 </div>
               </div>
@@ -368,7 +368,7 @@ function DashboardShowcase({
             <div className="overflow-hidden border border-slate-200 bg-white shadow-sm">
               <div className="flex items-center justify-between border-b border-slate-200 px-4 py-3">
                 <p className="text-sm font-semibold text-slate-950">Review queue</p>
-                <span className="rounded-full bg-[#B9FAF8]/70 px-2.5 py-1 text-xs font-semibold text-slate-700">
+                <span className="rounded-full bg-askewly-mint/70 px-2.5 py-1 text-xs font-semibold text-slate-700">
                   {view.status}
                 </span>
               </div>
@@ -377,7 +377,7 @@ function DashboardShowcase({
                   <div key={surface} className="grid gap-3 px-4 py-3 text-sm sm:grid-cols-[1fr_7rem_5rem]">
                     <span className="font-medium text-slate-950">{surface}</span>
                     <span className="text-slate-500">{type}</span>
-                    <span className={cn("font-semibold", status === "Ready" ? "text-[#6F2DBD]" : "text-slate-500")}>{status}</span>
+                    <span className={cn("font-semibold", status === "Ready" ? "text-askewly-violet" : "text-slate-500")}>{status}</span>
                   </div>
                 ))}
               </div>
@@ -388,7 +388,7 @@ function DashboardShowcase({
                 {["Generate React", "Copy tokens", "Export assets"].map((item, index) => (
                   <div key={item} className="flex items-center justify-between rounded border border-slate-200 bg-slate-50 px-3 py-2 text-sm">
                     <span>{item}</span>
-                    <span className={cn("size-2 rounded-full", index === 0 ? "bg-[#6F2DBD]" : "bg-slate-300")} />
+                    <span className={cn("size-2 rounded-full", index === 0 ? "bg-askewly-violet" : "bg-slate-300")} />
                   </div>
                 ))}
               </div>
@@ -497,7 +497,7 @@ function ShowcaseAtlas() {
     <div className="mt-16 w-full text-slate-950">
       <div className="flex flex-col gap-4 md:flex-row md:items-end md:justify-between">
         <div>
-          <p className="font-mono text-xs font-semibold uppercase tracking-[0.22em] text-[#6F2DBD]">Why Askewly Design?</p>
+          <p className="font-mono text-xs font-semibold uppercase tracking-[0.22em] text-askewly-violet">Why Askewly Design?</p>
           <h2 className="mt-4 max-w-3xl text-4xl font-semibold tracking-normal text-slate-950 md:text-6xl">
             From visual taste to working UI.
           </h2>
@@ -519,7 +519,7 @@ function AtlasCard({ item }: { item: (typeof atlasItems)[number] }) {
   return (
     <article
       className={cn(
-        "group flex h-full min-w-0 flex-col overflow-hidden rounded-md border border-slate-200 bg-white shadow-sm transition hover:-translate-y-0.5 hover:border-[#B298DC] hover:shadow-[0_18px_50px_rgba(15,23,42,0.08)]",
+        "group flex h-full min-w-0 flex-col overflow-hidden rounded-md border border-slate-200 bg-white shadow-sm transition hover:-translate-y-0.5 hover:border-askewly-lavender hover:shadow-[0_18px_50px_rgba(15,23,42,0.08)]",
         item.layout,
       )}
     >
@@ -800,16 +800,16 @@ function AtlasDemo({ id }: { id: AtlasItemId }) {
             <button
               className={cn(
                 "absolute overflow-visible rounded bg-white text-left shadow-sm transition-[box-shadow,border-color] hover:shadow-md focus:outline-none",
-                agentSelected ? "border-2 border-[#6F2DBD]" : "border border-slate-200",
+                agentSelected ? "border-2 border-askewly-violet" : "border border-slate-200",
                 agentMode === "code" && "rounded-md",
-                (agentResizing || agentMoving) && "border-2 border-[#6F2DBD] shadow-[0_0_0_3px_rgba(111,45,189,0.18),0_12px_30px_rgba(111,45,189,0.16)]",
+                (agentResizing || agentMoving) && "border-2 border-askewly-violet shadow-[0_0_0_3px_rgba(111,45,189,0.18),0_12px_30px_rgba(111,45,189,0.16)]",
               )}
               style={{
                 left: `${agentFrame.left}%`,
                 top: `${agentFrame.top}%`,
                 width: `${agentFrame.width}%`,
                 height: `${agentFrame.height}px`,
-                borderColor: agentSelected || agentResizing || agentMoving ? "#6F2DBD" : undefined,
+                borderColor: agentSelected || agentResizing || agentMoving ? "var(--askewly-violet)" : undefined,
                 boxShadow: agentResizing || agentMoving ? "0 0 0 3px rgba(111,45,189,0.18), 0 12px 30px rgba(111,45,189,0.16)" : undefined,
                 cursor: agentMoving ? "grabbing" : "grab",
               }}
@@ -832,10 +832,10 @@ function AtlasDemo({ id }: { id: AtlasItemId }) {
                   <span className="absolute inset-y-2 -right-1 z-20 w-3 cursor-ew-resize touch-none" data-resize-edge="e" role="presentation" onClick={(event) => event.stopPropagation()} onPointerDown={(event) => startAgentResize(event, "e")} />
                   <span className="absolute inset-x-2 -bottom-1 z-20 h-3 cursor-ns-resize touch-none" data-resize-edge="s" role="presentation" onClick={(event) => event.stopPropagation()} onPointerDown={(event) => startAgentResize(event, "s")} />
                   <span className="absolute inset-y-2 -left-1 z-20 w-3 cursor-ew-resize touch-none" data-resize-edge="w" role="presentation" onClick={(event) => event.stopPropagation()} onPointerDown={(event) => startAgentResize(event, "w")} />
-                  <span className="absolute -left-0.5 -top-0.5 z-30 size-2 -translate-x-1/2 -translate-y-1/2 cursor-nwse-resize touch-none rounded-sm border border-[#6F2DBD] bg-white" data-resize-edge="nw" role="presentation" onClick={(event) => event.stopPropagation()} onPointerDown={(event) => startAgentResize(event, "nw")} />
-                  <span className="absolute -right-0.5 -top-0.5 z-30 size-2 translate-x-1/2 -translate-y-1/2 cursor-nesw-resize touch-none rounded-sm border border-[#6F2DBD] bg-white" data-resize-edge="ne" role="presentation" onClick={(event) => event.stopPropagation()} onPointerDown={(event) => startAgentResize(event, "ne")} />
-                  <span className="absolute -bottom-0.5 -left-0.5 z-30 size-2 -translate-x-1/2 translate-y-1/2 cursor-nesw-resize touch-none rounded-sm border border-[#6F2DBD] bg-white" data-resize-edge="sw" role="presentation" onClick={(event) => event.stopPropagation()} onPointerDown={(event) => startAgentResize(event, "sw")} />
-                  <span className="absolute -bottom-0.5 -right-0.5 z-30 size-2 translate-x-1/2 translate-y-1/2 cursor-nwse-resize touch-none rounded-sm border border-[#6F2DBD] bg-white" data-resize-edge="se" role="presentation" onClick={(event) => event.stopPropagation()} onPointerDown={(event) => startAgentResize(event, "se")} />
+                  <span className="absolute -left-0.5 -top-0.5 z-30 size-2 -translate-x-1/2 -translate-y-1/2 cursor-nwse-resize touch-none rounded-sm border border-askewly-violet bg-white" data-resize-edge="nw" role="presentation" onClick={(event) => event.stopPropagation()} onPointerDown={(event) => startAgentResize(event, "nw")} />
+                  <span className="absolute -right-0.5 -top-0.5 z-30 size-2 translate-x-1/2 -translate-y-1/2 cursor-nesw-resize touch-none rounded-sm border border-askewly-violet bg-white" data-resize-edge="ne" role="presentation" onClick={(event) => event.stopPropagation()} onPointerDown={(event) => startAgentResize(event, "ne")} />
+                  <span className="absolute -bottom-0.5 -left-0.5 z-30 size-2 -translate-x-1/2 translate-y-1/2 cursor-nesw-resize touch-none rounded-sm border border-askewly-violet bg-white" data-resize-edge="sw" role="presentation" onClick={(event) => event.stopPropagation()} onPointerDown={(event) => startAgentResize(event, "sw")} />
+                  <span className="absolute -bottom-0.5 -right-0.5 z-30 size-2 translate-x-1/2 translate-y-1/2 cursor-nwse-resize touch-none rounded-sm border border-askewly-violet bg-white" data-resize-edge="se" role="presentation" onClick={(event) => event.stopPropagation()} onPointerDown={(event) => startAgentResize(event, "se")} />
                 </>
               )}
               <div
@@ -848,7 +848,7 @@ function AtlasDemo({ id }: { id: AtlasItemId }) {
                   <span
                     className={cn(
                       "inline-flex h-full w-full items-center justify-center truncate rounded font-semibold leading-none transition",
-                      agentPressed ? "translate-y-px bg-[#6F2DBD] text-white shadow-inner" : "bg-slate-950 text-white shadow-sm",
+                      agentPressed ? "translate-y-px bg-askewly-violet text-white shadow-inner" : "bg-slate-950 text-white shadow-sm",
                     )}
                     style={{ fontSize: `${Math.max(7, Math.min(14, agentFrame.height / 6.2))}px`, paddingInline: `${Math.max(5, Math.min(18, agentFrame.width / 3))}px` }}
                   >
@@ -861,7 +861,7 @@ function AtlasDemo({ id }: { id: AtlasItemId }) {
                         <p className={cn("truncate font-semibold text-slate-950", isCompactAsset ? "text-[11px]" : "text-sm")}>UI surface review</p>
                         {!isTinyAsset && !isCompactAsset && <p className="truncate text-[9px] text-slate-500">Landing card / interaction</p>}
                       </div>
-                      {!isCompactAsset && isWideAsset && <span className="shrink-0 rounded-full bg-[#B9FAF8] px-2 py-1 text-[9px] font-semibold text-[#6F2DBD]">Ready</span>}
+                      {!isCompactAsset && isWideAsset && <span className="shrink-0 rounded-full bg-askewly-mint px-2 py-1 text-[9px] font-semibold text-askewly-violet">Ready</span>}
                     </div>
                     <div className={cn("grid min-h-0 gap-1.5", isCompactAsset ? "grid-cols-1" : isWideAsset ? "grid-cols-3" : "grid-cols-2")}>
                       <div className="min-w-0 rounded border border-slate-200 bg-slate-50 p-1.5">
@@ -869,7 +869,7 @@ function AtlasDemo({ id }: { id: AtlasItemId }) {
                         <p className="mt-1 text-xs font-semibold text-slate-950">92</p>
                       </div>
                       {!isCompactAsset && <div className="min-w-0 rounded border border-slate-200 bg-slate-50 p-1.5"><p className="text-[8px] uppercase tracking-[0.12em] text-slate-400">State</p><p className="mt-1 text-xs font-semibold text-slate-950">Open</p></div>}
-                      {!isCompactAsset && isWideAsset && <div className="min-w-0 rounded border border-slate-200 bg-[#B9FAF8]/35 p-1.5"><p className="text-[8px] uppercase tracking-[0.12em] text-[#6F2DBD]">Agent</p><p className="mt-1 text-xs font-semibold text-slate-950">Pass</p></div>}
+                      {!isCompactAsset && isWideAsset && <div className="min-w-0 rounded border border-slate-200 bg-askewly-mint/35 p-1.5"><p className="text-[8px] uppercase tracking-[0.12em] text-askewly-violet">Agent</p><p className="mt-1 text-xs font-semibold text-slate-950">Pass</p></div>}
                     </div>
                     {isTallAsset && <div className="grid gap-1.5"><div className="h-1.5 rounded bg-slate-200" /><div className="h-1.5 w-2/3 rounded bg-slate-200" /></div>}
                   </div>
@@ -880,10 +880,10 @@ function AtlasDemo({ id }: { id: AtlasItemId }) {
                         <p className={cn("truncate font-semibold tracking-normal text-slate-950", isCompactAsset ? "text-sm" : "text-lg leading-5")}>Askewly Design</p>
                         {!isTinyAsset && <p className={cn("text-slate-500", isCompactAsset ? "truncate text-[9px]" : "line-clamp-2 text-[10px] leading-4")}>A visual library and agent-ready system for better product interfaces.</p>}
                       </div>
-                      {!isCompactAsset && <div className="size-9 rounded bg-[linear-gradient(135deg,#B9FAF8,#B298DC)] shadow-sm" />}
+                      {!isCompactAsset && <div className="size-9 rounded bg-[linear-gradient(135deg,var(--askewly-mint),var(--askewly-lavender))] shadow-sm" />}
                     </div>
                     <div className={cn("flex gap-2", isCompactAsset && "mt-1")}>
-                      <span className={cn("rounded bg-[#6F2DBD] text-center font-semibold text-white", isCompactAsset ? "h-4 w-12 text-[8px] leading-4" : "h-5 w-16 max-w-[48%] text-[9px] leading-5")}>Start</span>
+                      <span className={cn("rounded bg-askewly-violet text-center font-semibold text-white", isCompactAsset ? "h-4 w-12 text-[8px] leading-4" : "h-5 w-16 max-w-[48%] text-[9px] leading-5")}>Start</span>
                       {!isCompactAsset && <span className="h-5 w-14 max-w-[36%] rounded border border-slate-200 text-center text-[9px] font-semibold leading-5 text-slate-500">Docs</span>}
                     </div>
                     {isTallAsset && <div className="mt-1 rounded border border-slate-200 px-2 py-1 text-[9px] text-slate-400">Search patterns, components, docs...</div>}
@@ -895,9 +895,9 @@ function AtlasDemo({ id }: { id: AtlasItemId }) {
           </div>
           <div className="mt-3 rounded border border-slate-200 bg-white p-3 shadow-sm">
             <div className="flex gap-2">
-                <button className={cn("rounded border px-3 py-2 text-xs font-semibold transition", agentMode === "code" ? "border-[#6F2DBD] bg-[#B298DC]/20 text-[#6F2DBD]" : "border-slate-200 bg-white text-slate-500 hover:border-[#B298DC]")} type="button" onClick={() => chooseAgentLayer("code")}>Button</button>
-                <button className={cn("rounded border px-3 py-2 text-xs font-semibold transition", agentMode === "verify" ? "border-[#6F2DBD] bg-[#B298DC]/20 text-[#6F2DBD]" : "border-slate-200 bg-white text-slate-500 hover:border-[#B298DC]")} type="button" onClick={() => chooseAgentLayer("verify")}>Card</button>
-                <button className={cn("rounded border px-3 py-2 text-xs font-semibold transition", agentMode === "design" ? "border-[#6F2DBD] bg-[#B298DC]/20 text-[#6F2DBD]" : "border-slate-200 bg-white text-slate-500 hover:border-[#B298DC]")} type="button" onClick={() => chooseAgentLayer("design")}>Hero</button>
+                <button className={cn("rounded border px-3 py-2 text-xs font-semibold transition", agentMode === "code" ? "border-askewly-violet bg-askewly-lavender/20 text-askewly-violet" : "border-slate-200 bg-white text-slate-500 hover:border-askewly-lavender")} type="button" onClick={() => chooseAgentLayer("code")}>Button</button>
+                <button className={cn("rounded border px-3 py-2 text-xs font-semibold transition", agentMode === "verify" ? "border-askewly-violet bg-askewly-lavender/20 text-askewly-violet" : "border-slate-200 bg-white text-slate-500 hover:border-askewly-lavender")} type="button" onClick={() => chooseAgentLayer("verify")}>Card</button>
+                <button className={cn("rounded border px-3 py-2 text-xs font-semibold transition", agentMode === "design" ? "border-askewly-violet bg-askewly-lavender/20 text-askewly-violet" : "border-slate-200 bg-white text-slate-500 hover:border-askewly-lavender")} type="button" onClick={() => chooseAgentLayer("design")}>Hero</button>
             </div>
           </div>
         </div>
@@ -906,18 +906,18 @@ function AtlasDemo({ id }: { id: AtlasItemId }) {
           <p className="font-mono text-[10px] font-semibold uppercase tracking-[0.16em] text-slate-400">Agent Context</p>
           <div className="mt-4 space-y-2">
             {["DESIGN.md", "Tokens", "Patterns", "Checks"].map((item, index) => (
-              <button key={item} className={cn("flex w-full items-center justify-between rounded border px-3 py-2 text-left transition", agentContext === item ? "border-[#6F2DBD] bg-[#B298DC]/15" : "border-slate-200 bg-slate-50 hover:border-[#B298DC]")} type="button" onClick={() => setAgentContext(item as typeof agentContext)}>
+              <button key={item} className={cn("flex w-full items-center justify-between rounded border px-3 py-2 text-left transition", agentContext === item ? "border-askewly-violet bg-askewly-lavender/15" : "border-slate-200 bg-slate-50 hover:border-askewly-lavender")} type="button" onClick={() => setAgentContext(item as typeof agentContext)}>
                 <span className="text-xs font-semibold text-slate-700">{item}</span>
-                <span className={cn("size-1.5 rounded-full", index < 3 ? "bg-[#6F2DBD]" : "bg-[#B9FAF8]")} />
+                <span className={cn("size-1.5 rounded-full", index < 3 ? "bg-askewly-violet" : "bg-askewly-mint")} />
               </button>
             ))}
           </div>
           <p className="mt-3 min-h-[4rem] rounded border border-slate-200 bg-slate-50 p-3 text-xs leading-5 text-slate-600">{contextCopy[agentContext]}</p>
           <div className="mt-auto grid gap-2 pt-4">
-            <button className={cn("rounded-full px-2 py-1 text-center font-semibold uppercase leading-none tracking-[0.08em] transition", codexPacked ? "bg-[#6F2DBD] text-white" : "bg-slate-950 text-white hover:bg-slate-800")} style={{ fontSize: "8px" }} type="button" onClick={() => setCodexPacked((value) => !value)}>
+            <button className={cn("rounded-full px-2 py-1 text-center font-semibold uppercase leading-none tracking-[0.08em] transition", codexPacked ? "bg-askewly-violet text-white" : "bg-slate-950 text-white hover:bg-slate-800")} style={{ fontSize: "8px" }} type="button" onClick={() => setCodexPacked((value) => !value)}>
               {codexPacked ? "Context packed" : "Ready for Codex"}
             </button>
-            <button className={cn("rounded-full border px-2 py-1 text-center font-semibold uppercase leading-none tracking-[0.08em] transition", browserChecked ? "border-[#6F2DBD] bg-[#B298DC]/15 text-[#6F2DBD]" : "border-slate-200 bg-white text-slate-500 hover:border-[#B298DC]")} style={{ fontSize: "8px" }} type="button" onClick={() => setBrowserChecked((value) => !value)}>
+            <button className={cn("rounded-full border px-2 py-1 text-center font-semibold uppercase leading-none tracking-[0.08em] transition", browserChecked ? "border-askewly-violet bg-askewly-lavender/15 text-askewly-violet" : "border-slate-200 bg-white text-slate-500 hover:border-askewly-lavender")} style={{ fontSize: "8px" }} type="button" onClick={() => setBrowserChecked((value) => !value)}>
               {browserChecked ? "Browser checked" : "Run browser check"}
             </button>
           </div>
@@ -986,7 +986,7 @@ function AtlasDemo({ id }: { id: AtlasItemId }) {
       <div className="min-h-[17.65rem]">
         <div className="relative h-64 overflow-hidden rounded-md border border-slate-200 bg-slate-950 text-white">
           <div className="absolute inset-0 bg-[linear-gradient(135deg,rgba(111,45,189,0.45),transparent_40%),radial-gradient(circle_at_70%_30%,rgba(185,250,248,0.35),transparent_28%)]" />
-          <div className="absolute bottom-0 left-0 top-0 w-1 bg-white/10"><div className="w-full bg-[#B9FAF8] transition-all" style={{ height: `${scrollStory}%` }} /></div>
+          <div className="absolute bottom-0 left-0 top-0 w-1 bg-white/10"><div className="w-full bg-askewly-mint transition-all" style={{ height: `${scrollStory}%` }} /></div>
           <div className="absolute left-8 top-8 max-w-[15rem] transition" style={{ transform: `translateY(${scrollStory > 50 ? -8 : 0}px)`, opacity: 0.72 + scrollStory / 360 }}>
             <p className="font-mono text-[10px] uppercase tracking-[0.18em] text-white/45">scroll chapter</p>
             <p className="mt-3 text-3xl font-semibold capitalize">{chapter}</p>
@@ -1015,7 +1015,7 @@ function AtlasDemo({ id }: { id: AtlasItemId }) {
           <p className="font-mono text-[10px] uppercase tracking-[0.16em] text-slate-400">treatment</p>
           <p className="mt-4 text-3xl font-semibold capitalize text-slate-950">{treatment}</p>
           <div className="mt-6 h-1.5 overflow-hidden rounded bg-slate-100">
-            <div className="h-full rounded bg-[#6F2DBD] transition-all" style={{ width: `${filter}%` }} />
+            <div className="h-full rounded bg-askewly-violet transition-all" style={{ width: `${filter}%` }} />
           </div>
           <div className="mt-6 space-y-2 text-xs font-semibold text-slate-500">
             <div className="flex justify-between"><span>blur</span><span>{((100 - filter) / 30).toFixed(1)}</span></div>
@@ -1025,7 +1025,7 @@ function AtlasDemo({ id }: { id: AtlasItemId }) {
         </div>
         <div className="relative min-h-[17rem] overflow-hidden rounded-md border border-slate-200 bg-white">
           <div
-            className="absolute inset-4 rounded bg-[radial-gradient(circle_at_22%_30%,#B9FAF8,transparent_20%),radial-gradient(circle_at_68%_55%,#6F2DBD,transparent_24%),radial-gradient(circle_at_82%_24%,#B8D0EB,transparent_16%),linear-gradient(135deg,#f8fafc,#cbd5e1)] transition"
+            className="absolute inset-4 rounded bg-[radial-gradient(circle_at_22%_30%,var(--askewly-mint),transparent_20%),radial-gradient(circle_at_68%_55%,var(--askewly-violet),transparent_24%),radial-gradient(circle_at_82%_24%,var(--askewly-sky),transparent_16%),linear-gradient(135deg,#f8fafc,#cbd5e1)] transition"
             style={{ filter: `blur(${(100 - filter) / 30}px) saturate(${0.7 + filter / 42}) contrast(${0.86 + filter / 140})` }}
           />
           <div className="absolute inset-4 bg-[radial-gradient(circle_at_32%_35%,transparent_0_18%,rgba(255,255,255,0.72)_19%_100%)] opacity-70 transition" style={{ transform: `translateX(${filter / 10 - 7}px)` }} />
@@ -1034,9 +1034,9 @@ function AtlasDemo({ id }: { id: AtlasItemId }) {
         </div>
         <div className="grid gap-3">
           {["duotone", "focus", "grain"].map((item, index) => (
-            <button key={item} className={cn("rounded-md border bg-white p-3 text-left transition hover:border-[#B298DC]", treatment === item ? "border-[#6F2DBD] shadow-sm" : "border-slate-200")} type="button" onClick={() => setFilter([42, 72, 88][index])}>
+            <button key={item} className={cn("rounded-md border bg-white p-3 text-left transition hover:border-askewly-lavender", treatment === item ? "border-askewly-violet shadow-sm" : "border-slate-200")} type="button" onClick={() => setFilter([42, 72, 88][index])}>
               <span className="font-semibold capitalize text-slate-950">{item}</span>
-              <span className="mt-2 block h-1.5 rounded bg-slate-100"><span className="block h-full rounded bg-[#6F2DBD]" style={{ width: `${[42, 72, 88][index]}%` }} /></span>
+              <span className="mt-2 block h-1.5 rounded bg-slate-100"><span className="block h-full rounded bg-askewly-violet" style={{ width: `${[42, 72, 88][index]}%` }} /></span>
             </button>
           ))}
         </div>
@@ -1057,7 +1057,7 @@ function AtlasDemo({ id }: { id: AtlasItemId }) {
         <div className="mb-4 flex flex-wrap items-center justify-between gap-2">
           <div className="flex flex-wrap gap-2">
             {(["paper", "glass", "solid", "dim"] as const).map((item) => (
-              <button key={item} className={cn("rounded-full border px-3 py-1.5 text-xs font-semibold capitalize transition", materialMode === item ? "border-[#6F2DBD] bg-[#B298DC]/20 text-[#6F2DBD]" : "border-slate-200 bg-white text-slate-500 hover:border-[#B298DC]")} type="button" onClick={() => setMaterialMode(item)}>
+              <button key={item} className={cn("rounded-full border px-3 py-1.5 text-xs font-semibold capitalize transition", materialMode === item ? "border-askewly-violet bg-askewly-lavender/20 text-askewly-violet" : "border-slate-200 bg-white text-slate-500 hover:border-askewly-lavender")} type="button" onClick={() => setMaterialMode(item)}>
                 {item}
               </button>
             ))}
@@ -1105,7 +1105,7 @@ function AtlasDemo({ id }: { id: AtlasItemId }) {
           <div
             className="absolute inset-0 transition"
             style={{
-              background: `radial-gradient(circle at ${shaderMix}% 28%, #B9FAF8, transparent 24%), radial-gradient(circle at ${100 - shaderMix}% 70%, #6F2DBD, transparent 30%), linear-gradient(135deg, #020617, #A663CC ${shaderMix}%, #B8D0EB)`,
+              background: `radial-gradient(circle at ${shaderMix}% 28%, var(--askewly-mint), transparent 24%), radial-gradient(circle at ${100 - shaderMix}% 70%, var(--askewly-violet), transparent 30%), linear-gradient(135deg, #020617, var(--askewly-orchid) ${shaderMix}%, var(--askewly-sky))`,
             }}
           />
           <div className="absolute inset-0 visual-aurora-one bg-[radial-gradient(circle_at_36%_42%,rgba(255,255,255,0.38),transparent_24%)] mix-blend-overlay" />
@@ -1120,7 +1120,7 @@ function AtlasDemo({ id }: { id: AtlasItemId }) {
     const lanes = [
       { label: "linear", color: "#111827", x: 222, y: 42, keySplines: "0 0 1 1;0 0 1 1" },
       { label: "ease-out", color: "#06B6D4", x: 212, y: 90, keySplines: "0.16 1 0.3 1;0.7 0 0.84 0" },
-      { label: "ease-in-out", color: "#6F2DBD", x: 204, y: 138, keySplines: "0.65 0 0.35 1;0.65 0 0.35 1" },
+      { label: "ease-in-out", color: "var(--askewly-violet)", x: 204, y: 138, keySplines: "0.65 0 0.35 1;0.65 0 0.35 1" },
       { label: "spring", color: "#F472B6", x: 194, y: 184, keySplines: "0.22 1 0.36 1;0.45 0 0.55 1" },
     ]
 
@@ -1192,7 +1192,7 @@ function AtlasDemo({ id }: { id: AtlasItemId }) {
               <button key={label} className="grid w-full gap-2 border-b border-slate-100 p-3 text-left last:border-b-0 sm:grid-cols-[1fr_6.5rem_4.5rem]" type="button">
                 <span className="font-semibold text-slate-950">{label}</span>
                 <span className="font-mono text-[10px] uppercase tracking-[0.12em] text-slate-400">{meta}</span>
-                <span className={cn("rounded-full px-2 py-0.5 text-center text-[10px] font-semibold uppercase tracking-[0.12em]", status === "Ready" ? "bg-[#B9FAF8]/70 text-slate-700" : "bg-[#B298DC]/20 text-[#6F2DBD]")}>{status}</span>
+                <span className={cn("rounded-full px-2 py-0.5 text-center text-[10px] font-semibold uppercase tracking-[0.12em]", status === "Ready" ? "bg-askewly-mint/70 text-slate-700" : "bg-askewly-lavender/20 text-askewly-violet")}>{status}</span>
               </button>
             ))}
           </div>
@@ -1205,7 +1205,7 @@ function AtlasDemo({ id }: { id: AtlasItemId }) {
     return (
       <div className="rounded-md border border-slate-200 bg-white p-4">
         <div className="flex gap-3">
-          <div className="relative size-24 overflow-hidden rounded bg-[linear-gradient(135deg,#B8D0EB,#B9FAF8)]">
+          <div className="relative size-24 overflow-hidden rounded bg-[linear-gradient(135deg,var(--askewly-sky),var(--askewly-mint))]">
             <div className="absolute left-4 top-4 size-14 rounded-full border border-white/80 bg-white/30" />
             <div className="absolute bottom-3 right-3 size-7 rounded bg-slate-950/80" />
           </div>
@@ -1213,13 +1213,13 @@ function AtlasDemo({ id }: { id: AtlasItemId }) {
             <p className="font-semibold text-slate-950">Soft shell pack</p>
             <p className="text-sm text-slate-500">$128.00 · Ships today</p>
             <div className="mt-3 flex items-center gap-2">
-              <button className="rounded-full bg-slate-950 px-4 py-2 text-xs font-semibold text-white transition hover:bg-[#6F2DBD]" type="button" onClick={() => setCartCount((value) => value + 1)}>Add</button>
+              <button className="rounded-full bg-slate-950 px-4 py-2 text-xs font-semibold text-white transition hover:bg-askewly-violet" type="button" onClick={() => setCartCount((value) => value + 1)}>Add</button>
               <span className="rounded-full border border-slate-200 px-3 py-1 text-xs font-semibold text-slate-600">cart {cartCount}</span>
             </div>
           </div>
         </div>
         <div className="mt-4 grid grid-cols-3 gap-2 text-xs font-semibold text-slate-500">
-          {["Fit", "Ship", "Pay"].map((item, index) => <span key={item} className={cn("rounded border p-2 text-center", index < cartCount % 4 ? "border-[#6F2DBD] text-[#6F2DBD]" : "border-slate-200")}>{item}</span>)}
+          {["Fit", "Ship", "Pay"].map((item, index) => <span key={item} className={cn("rounded border p-2 text-center", index < cartCount % 4 ? "border-askewly-violet text-askewly-violet" : "border-slate-200")}>{item}</span>)}
         </div>
       </div>
     )
@@ -1233,7 +1233,7 @@ function AtlasDemo({ id }: { id: AtlasItemId }) {
           <div className="absolute right-5 top-5 grid gap-4">
             <span className="h-14 w-4 bg-slate-950 transition group-hover:translate-y-3" />
             <span className="ml-8 h-10 w-3 bg-slate-400/45 transition group-hover:-translate-y-2" />
-            <span className="h-16 w-5 bg-[#6F2DBD] transition group-hover:translate-x-2" />
+            <span className="h-16 w-5 bg-askewly-violet transition group-hover:translate-x-2" />
           </div>
           <div className="relative max-w-[18rem]">
             <p className="text-4xl font-semibold leading-[0.92] tracking-normal text-slate-950">Askewly Design</p>
@@ -1263,10 +1263,10 @@ function AtlasDemo({ id }: { id: AtlasItemId }) {
           <p className="mt-3 text-xl font-semibold text-slate-950">{steps[mobileStep]}</p>
           <div className="mt-4 grid gap-2">
             {steps.map((item, index) => (
-              <span key={item} className={cn("rounded border px-3 py-2 text-xs font-semibold transition", index === mobileStep ? "border-[#6F2DBD] bg-[#B298DC]/15 text-[#6F2DBD]" : "border-slate-200 text-slate-500")}>{item}</span>
+              <span key={item} className={cn("rounded border px-3 py-2 text-xs font-semibold transition", index === mobileStep ? "border-askewly-violet bg-askewly-lavender/15 text-askewly-violet" : "border-slate-200 text-slate-500")}>{item}</span>
             ))}
           </div>
-          <div className="mt-4 h-2 rounded bg-slate-100"><div className="h-2 rounded bg-[#6F2DBD] transition-all" style={{ width: `${(mobileStep + 1) * 33}%` }} /></div>
+          <div className="mt-4 h-2 rounded bg-slate-100"><div className="h-2 rounded bg-askewly-violet transition-all" style={{ width: `${(mobileStep + 1) * 33}%` }} /></div>
         </button>
       </div>
     )
@@ -1276,7 +1276,7 @@ function AtlasDemo({ id }: { id: AtlasItemId }) {
     <div className="min-h-[22.2rem] rounded-md border border-slate-200 bg-white p-4">
       <div className="grid grid-cols-3 gap-2 text-center text-xs font-semibold">
         {(["design", "code", "verify"] as const).map((item) => (
-          <button key={item} className={cn("rounded border p-3 capitalize transition", agentMode === item ? "border-[#6F2DBD] bg-[#B298DC]/15 text-[#6F2DBD]" : "border-slate-200 text-slate-500 hover:border-[#B298DC]")} type="button" onClick={() => setAgentMode(item)}>{item}</button>
+          <button key={item} className={cn("rounded border p-3 capitalize transition", agentMode === item ? "border-askewly-violet bg-askewly-lavender/15 text-askewly-violet" : "border-slate-200 text-slate-500 hover:border-askewly-lavender")} type="button" onClick={() => setAgentMode(item)}>{item}</button>
         ))}
       </div>
       <div className="mt-4 rounded bg-slate-950 p-3 font-mono text-xs leading-6 text-slate-300">
@@ -1311,12 +1311,12 @@ type MatterTokenRender = MatterTokenSpec & {
 
 const matterTokenSpecs: MatterTokenSpec[] = [
   { id: "card", label: "Card", shape: "rect", width: 94, height: 46, className: "border-slate-950 bg-white text-slate-950" },
-  { id: "button", label: "CTA", shape: "rect", width: 72, height: 34, className: "border-[#6F2DBD] bg-[#6F2DBD] text-white" },
-  { id: "token", label: "Token", shape: "circle", width: 54, height: 54, className: "border-[#B298DC] bg-[#B298DC]/45 text-slate-950" },
+  { id: "button", label: "CTA", shape: "rect", width: 72, height: 34, className: "border-askewly-violet bg-askewly-violet text-white" },
+  { id: "token", label: "Token", shape: "circle", width: 54, height: 54, className: "border-askewly-lavender bg-askewly-lavender/45 text-slate-950" },
   { id: "menu", label: "Menu", shape: "rect", width: 86, height: 38, className: "border-slate-300 bg-slate-50 text-slate-700" },
-  { id: "input", label: "Input", shape: "rect", width: 102, height: 36, className: "border-[#B8D0EB] bg-[#B8D0EB]/45 text-slate-950" },
+  { id: "input", label: "Input", shape: "rect", width: 102, height: 36, className: "border-askewly-sky bg-askewly-sky/45 text-slate-950" },
   { id: "chip", label: "Chip", shape: "circle", width: 42, height: 42, className: "border-slate-950 bg-slate-950 text-white" },
-  { id: "surface", label: "Panel", shape: "rect", width: 96, height: 52, className: "border-[#B9FAF8] bg-[#B9FAF8]/55 text-slate-950" },
+  { id: "surface", label: "Panel", shape: "rect", width: 96, height: 52, className: "border-askewly-mint bg-askewly-mint/55 text-slate-950" },
   { id: "dot", label: "UI", shape: "circle", width: 38, height: 38, className: "border-slate-300 bg-white text-slate-500" },
 ]
 
@@ -1659,7 +1659,7 @@ function HeroSearch({
 
   return (
     <div ref={rootRef} className="relative mt-7 w-full max-w-2xl">
-      <div className="flex items-center gap-3 rounded-md border border-slate-200 bg-white px-4 py-3 text-left shadow-sm transition focus-within:border-[#A663CC] focus-within:ring-2 focus-within:ring-[#6F2DBD]/20">
+      <div className="flex items-center gap-3 rounded-md border border-slate-200 bg-white px-4 py-3 text-left shadow-sm transition focus-within:border-askewly-orchid focus-within:ring-2 focus-within:ring-askewly-violet/20">
         <Search aria-hidden="true" className="size-4 shrink-0 text-slate-400" />
         <input
           ref={inputRef}
@@ -1679,7 +1679,7 @@ function HeroSearch({
           onKeyDown={handleKeyDown}
         />
         <button
-          className="hidden rounded border border-slate-200 bg-slate-50 px-2 py-1 text-xs font-semibold text-slate-500 transition hover:border-[#B298DC] hover:text-[#6F2DBD] sm:inline"
+          className="hidden rounded border border-slate-200 bg-slate-50 px-2 py-1 text-xs font-semibold text-slate-500 transition hover:border-askewly-lavender hover:text-askewly-violet sm:inline"
           type="button"
           onClick={() => commitQuery()}
         >
@@ -1697,13 +1697,13 @@ function HeroSearch({
                 key={suggestion.id}
                 className={cn(
                   "flex min-w-0 items-start gap-3 rounded-md px-3 py-2 text-left transition",
-                  index === activeIndex ? "bg-[#B298DC]/15 text-slate-950" : "hover:bg-slate-50",
+                  index === activeIndex ? "bg-askewly-lavender/15 text-slate-950" : "hover:bg-slate-50",
                 )}
                 type="button"
                 onMouseEnter={() => setActiveIndex(index)}
                 onClick={() => selectSuggestion(suggestion)}
               >
-                <Search aria-hidden="true" className="mt-1 size-4 shrink-0 text-[#6F2DBD]" />
+                <Search aria-hidden="true" className="mt-1 size-4 shrink-0 text-askewly-violet" />
                 <span className="min-w-0 flex-1">
                   <span className="block truncate text-sm font-semibold text-slate-950">{suggestion.label}</span>
                   <span className="block truncate text-xs leading-5 text-slate-500">{suggestion.description}</span>
