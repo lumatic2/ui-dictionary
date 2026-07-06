@@ -1,4 +1,5 @@
 import type { TermCategory, VocabularyTerm } from "@/data/terms.generated"
+import { navigationCollections, navFilter } from "@/lib/navigation-model"
 import { categoryGroups, categoryLabels, getTermGroup, matchesFilter, type TermFilter, type TermGroupId } from "@/lib/search"
 
 export type SearchSuggestion =
@@ -69,6 +70,10 @@ export function getSearchSuggestions(
   const suggestions: SearchSuggestion[] = []
   const seen = new Set<string>()
 
+  for (const suggestion of getDocumentationSuggestions(normalizedQuery)) {
+    suggestions.push(suggestion)
+  }
+
   for (const term of terms) {
     if (!matchesFilter(term, filter)) {
       continue
@@ -109,6 +114,20 @@ export function getSearchSuggestions(
   }
 
   return suggestions.slice(0, limit)
+}
+
+function getDocumentationSuggestions(query: string): SearchSuggestion[] {
+  return navigationCollections
+    .filter((collection) => collection.id.startsWith("docs-") && collection.id !== "docs-all")
+    .filter((collection) => normalize(`${collection.label} ${collection.path.join(" ")} documentation docs`).includes(query))
+    .map((collection) => ({
+      id: `docs-${collection.id}`,
+      type: "group" as const,
+      label: collection.label,
+      description: collection.path.join(" / "),
+      value: collection.label,
+      filter: navFilter(collection.id),
+    }))
 }
 
 export function getStarterQueries() {

@@ -1,4 +1,4 @@
-import { useEffect, useMemo, useRef, useState } from "react"
+import { useCallback, useEffect, useMemo, useRef, useState } from "react"
 import { ArrowRight, Search, X } from "lucide-react"
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
@@ -32,6 +32,7 @@ export function TopbarSearch({
   onFilterChange,
   onQueryChange,
 }: TopbarSearchProps) {
+  const rootRef = useRef<HTMLDivElement>(null)
   const inputRef = useRef<HTMLInputElement>(null)
   const [draftQuery, setDraftQuery] = useState(query)
   const [activeIndex, setActiveIndex] = useState(0)
@@ -58,10 +59,31 @@ export function TopbarSearch({
     }
   }, [query])
 
-  function collapse() {
+  const collapse = useCallback(() => {
     onExpandedChange(false)
     setActiveIndex(0)
-  }
+  }, [onExpandedChange])
+
+  useEffect(() => {
+    if (!expanded) {
+      return
+    }
+
+    function closeOnOutsidePointer(event: PointerEvent) {
+      const target = event.target as Node | null
+      if (target && rootRef.current?.contains(target)) {
+        return
+      }
+
+      collapse()
+    }
+
+    document.addEventListener("pointerdown", closeOnOutsidePointer)
+
+    return () => {
+      document.removeEventListener("pointerdown", closeOnOutsidePointer)
+    }
+  }, [collapse, expanded])
 
   function commitQuery(value = draftQuery) {
     const nextQuery = value.trim()
@@ -106,8 +128,9 @@ export function TopbarSearch({
 
   return (
     <div
+      ref={rootRef}
       className={cn(
-        "flex origin-right justify-end overflow-visible transition-[width] duration-300 ease-out motion-reduce:transition-none",
+        "flex shrink-0 origin-right justify-end overflow-visible transition-[width] duration-300 ease-out motion-reduce:transition-none",
         expanded ? "w-[calc(100vw-2rem)] md:w-[22rem]" : "w-[4.75rem] md:w-[5.25rem]"
       )}
     >
@@ -131,7 +154,7 @@ export function TopbarSearch({
                   ref={inputRef}
                   aria-autocomplete="list"
                   aria-expanded={open}
-                  aria-label="UI Dictionary 검색"
+                  aria-label="Askewly Design topbar 검색"
                   autoComplete="off"
                   className="h-9 rounded-full pl-9 pr-9"
                   placeholder="Hero, header, footer, feature..."

@@ -9,6 +9,21 @@ export type NavigationCollectionId =
   | "docs-motion-effects"
   | "docs-ui-blocks"
   | "docs-component-api"
+  | "docs-getting-started-setup"
+  | "docs-getting-started-html"
+  | "docs-getting-started-react"
+  | "docs-getting-started-vue"
+  | "docs-getting-started-assets"
+  | "docs-elements-introduction"
+  | "docs-elements-autocomplete"
+  | "docs-elements-command-palette"
+  | "docs-elements-copy-button"
+  | "docs-elements-dialog"
+  | "docs-elements-disclosure"
+  | "docs-elements-dropdown-menu"
+  | "docs-elements-popover"
+  | "docs-elements-select"
+  | "docs-elements-tabs"
   | "plus-all"
   | "plus-marketing"
   | "plus-marketing-page-sections"
@@ -201,6 +216,94 @@ export type NavigationCollectionId =
 
 export type NavigationFilter = `nav:${NavigationCollectionId}`
 
+const navigationCollectionAliases: Record<string, NavigationCollectionId> = {
+  "plus-application-ui-shells": "plus-application-shells",
+  "plus-application-ui-shells-stacked-layouts": "plus-application-shells-stacked-layouts",
+  "plus-application-ui-shells-sidebar-layouts": "plus-application-shells-sidebar-layouts",
+  "plus-application-ui-shells-multi-column-layouts": "plus-application-shells-multi-column-layouts",
+  "plus-application-ui-headings": "plus-application-headings",
+  "plus-application-ui-headings-page-headings": "plus-application-headings-page-headings",
+  "plus-application-ui-headings-card-headings": "plus-application-headings-card-headings",
+  "plus-application-ui-headings-section-headings": "plus-application-headings-section-headings",
+  "plus-application-ui-headings-table-headings": "plus-application-headings-table-headings",
+  "plus-application-ui-data-display": "plus-data-display",
+  "plus-application-ui-data-display-description-lists": "plus-data-display-description-lists",
+  "plus-application-ui-data-display-stats": "plus-data-display-stats",
+  "plus-application-ui-data-display-calendars": "plus-data-display-calendars",
+  "plus-application-ui-data-display-lists": "plus-data-display-lists",
+  "plus-application-ui-data-display-tables": "plus-data-display-tables",
+  "plus-application-ui-lists": "plus-application-lists",
+  "plus-application-ui-lists-stacked-lists": "plus-application-lists-stacked-lists",
+  "plus-application-ui-lists-tables": "plus-application-lists-tables",
+  "plus-application-ui-lists-grid-lists": "plus-application-lists-grid-lists",
+  "plus-application-ui-lists-feeds": "plus-application-lists-feeds",
+  "plus-application-ui-forms": "plus-forms",
+  "plus-application-ui-forms-form-layouts": "plus-forms-form-layouts",
+  "plus-application-ui-forms-input-groups": "plus-forms-input-groups",
+  "plus-application-ui-forms-select-menus": "plus-forms-select-menus",
+  "plus-application-ui-forms-sign-in-registration": "plus-forms-sign-in-registration",
+  "plus-application-ui-forms-textareas": "plus-forms-textareas",
+  "plus-application-ui-forms-radio-groups": "plus-forms-radio-groups",
+  "plus-application-ui-forms-checkboxes": "plus-forms-checkboxes",
+  "plus-application-ui-forms-toggles": "plus-forms-toggles",
+  "plus-application-ui-forms-action-panels": "plus-forms-action-panels",
+  "plus-application-ui-forms-comboboxes": "plus-forms-comboboxes",
+  "plus-application-ui-feedback": "plus-feedback",
+  "plus-application-ui-feedback-alerts": "plus-feedback-alerts",
+  "plus-application-ui-feedback-empty-states": "plus-feedback-empty-states",
+  "plus-application-ui-feedback-progress": "plus-feedback-progress",
+  "plus-application-ui-feedback-skeletons": "plus-feedback-skeletons",
+  "plus-application-ui-feedback-toasts": "plus-feedback-toasts",
+  "plus-application-ui-navigation": "plus-navigation",
+  "plus-application-ui-navigation-navbars": "plus-navigation-navbars",
+  "plus-application-ui-navigation-pagination": "plus-navigation-pagination",
+  "plus-application-ui-navigation-tabs": "plus-navigation-tabs",
+  "plus-application-ui-navigation-vertical-navigation": "plus-navigation-vertical-navigation",
+  "plus-application-ui-navigation-sidebar-navigation": "plus-navigation-sidebar-navigation",
+  "plus-application-ui-navigation-breadcrumbs": "plus-navigation-breadcrumbs",
+  "plus-application-ui-navigation-progress-bars": "plus-navigation-progress-bars",
+  "plus-application-ui-navigation-command-palettes": "plus-navigation-command-palettes",
+  "plus-application-ui-navigation-command-menus": "plus-navigation-command-menus",
+  "plus-application-ui-navigation-sidebars": "plus-navigation-sidebars",
+  "plus-application-ui-overlays": "plus-overlays",
+  "plus-application-ui-overlays-modal-dialogs": "plus-overlays-modal-dialogs",
+  "plus-application-ui-overlays-drawers": "plus-overlays-drawers",
+  "plus-application-ui-overlays-notifications": "plus-overlays-notifications",
+  "plus-application-ui-overlays-slide-overs": "plus-overlays-slide-overs",
+  "plus-application-ui-overlays-popovers": "plus-overlays-popovers",
+  "plus-application-ui-elements": "plus-application-elements",
+  "plus-application-ui-elements-avatars": "plus-application-elements-avatars",
+  "plus-application-ui-elements-badges": "plus-application-elements-badges",
+  "plus-application-ui-elements-dropdowns": "plus-application-elements-dropdowns",
+  "plus-application-ui-elements-buttons": "plus-application-elements-buttons",
+  "plus-application-ui-elements-button-groups": "plus-application-elements-button-groups",
+  "plus-application-ui-layout": "plus-application-layout",
+  "plus-application-ui-layout-containers": "plus-application-layout-containers",
+  "plus-application-ui-layout-cards": "plus-application-layout-cards",
+  "plus-application-ui-layout-list-containers": "plus-application-layout-list-containers",
+  "plus-application-ui-layout-media-objects": "plus-application-layout-media-objects",
+  "plus-application-ui-layout-panels": "plus-application-layout-panels",
+  "plus-application-ui-layout-dividers": "plus-application-layout-dividers",
+  "plus-application-ui-page-examples": "plus-application-page-examples",
+  "plus-application-ui-page-examples-home-screens": "plus-application-page-examples-home-screens",
+  "plus-application-ui-page-examples-detail-screens": "plus-application-page-examples-detail-screens",
+  "plus-application-ui-page-examples-settings-screens": "plus-application-page-examples-settings-screens",
+} as const
+
+export function normalizeNavigationFilter(value: string): NavigationFilter | null {
+  if (!value.startsWith("nav:")) {
+    return null
+  }
+
+  const id = value.slice("nav:".length)
+  if (navigationCollections.some((collection) => collection.id === id)) {
+    return value as NavigationFilter
+  }
+
+  const alias = navigationCollectionAliases[id]
+  return alias ? navFilter(alias) : null
+}
+
 export type NavigationCollection = {
   id: NavigationCollectionId
   label: string
@@ -266,6 +369,111 @@ export const navigationCollections: NavigationCollection[] = [
     path: ["Docs", "Component API"],
     groupIds: ["input-text", "input-pickers", "selection-navigation", "feedback-alerts-toasts", "data-tables-lists"],
     termIds: ["button", "text-field", "checkbox", "combobox", "dialog", "data-table-toolbar", "sidebar-nav"],
+  },
+  {
+    id: "docs-getting-started-setup",
+    label: "Getting set up",
+    path: ["Docs", "Getting started", "Getting set up"],
+    groupIds: ["layout-spacing-sizing", "style-tokens", "accessibility-focus-motion"],
+    termIds: ["container", "typography", "dark-mode", "responsive-breakpoint"],
+  },
+  {
+    id: "docs-getting-started-html",
+    label: "Using HTML",
+    path: ["Docs", "Getting started", "Using HTML"],
+    groupIds: ["structure-sections", "layout-spacing-sizing", "style-tokens"],
+    termIds: ["semantic-html", "button", "input-label", "focus-ring"],
+  },
+  {
+    id: "docs-getting-started-react",
+    label: "Using React",
+    path: ["Docs", "Getting started", "Using React"],
+    groupIds: ["input-text", "selection-navigation", "feedback-interaction-states"],
+    termIds: ["component-props", "controlled-input", "dialog", "tabs"],
+  },
+  {
+    id: "docs-getting-started-vue",
+    label: "Using Vue",
+    path: ["Docs", "Getting started", "Using Vue"],
+    groupIds: ["input-text", "selection-navigation", "feedback-interaction-states"],
+    termIds: ["component-props", "controlled-input", "combobox", "popover"],
+  },
+  {
+    id: "docs-getting-started-assets",
+    label: "Assets",
+    path: ["Docs", "Getting started", "Assets"],
+    groupIds: ["style-decorative-effects", "data-basic-content-elements"],
+    termIds: ["avatar", "icon", "logo", "empty-state-illustration"],
+  },
+  {
+    id: "docs-elements-introduction",
+    label: "Introduction",
+    path: ["Docs", "Elements", "Introduction"],
+    groupIds: ["input-text", "selection-navigation", "feedback-interaction-states", "accessibility-focus-motion"],
+    termIds: ["button", "text-field", "dialog", "tabs", "combobox"],
+  },
+  {
+    id: "docs-elements-autocomplete",
+    label: "Autocomplete",
+    path: ["Docs", "Elements", "Autocomplete"],
+    groupIds: ["input-pickers", "selection-navigation", "feedback-empty-error"],
+    termIds: ["combobox", "search-field", "empty-state", "keyboard-navigation"],
+  },
+  {
+    id: "docs-elements-command-palette",
+    label: "Command palette",
+    path: ["Docs", "Elements", "Command palette"],
+    groupIds: ["selection-navigation", "selection-menus", "feedback-empty-error"],
+    termIds: ["command-palette", "search-field", "keyboard-shortcut", "empty-state"],
+  },
+  {
+    id: "docs-elements-copy-button",
+    label: "Copy button",
+    path: ["Docs", "Elements", "Copy button"],
+    groupIds: ["feedback-status-notifications", "feedback-confirmation-help"],
+    termIds: ["button", "toast", "tooltip", "icon-button"],
+  },
+  {
+    id: "docs-elements-dialog",
+    label: "Dialog",
+    path: ["Docs", "Elements", "Dialog"],
+    groupIds: ["feedback-confirmation-help", "accessibility-focus-motion"],
+    termIds: ["dialog", "modal", "focus-trap", "button"],
+  },
+  {
+    id: "docs-elements-disclosure",
+    label: "Disclosure",
+    path: ["Docs", "Elements", "Disclosure"],
+    groupIds: ["selection-navigation", "feedback-interaction-states"],
+    termIds: ["accordion", "details-summary", "expand-collapse"],
+  },
+  {
+    id: "docs-elements-dropdown-menu",
+    label: "Dropdown menu",
+    path: ["Docs", "Elements", "Dropdown menu"],
+    groupIds: ["selection-menus", "selection-navigation"],
+    termIds: ["dropdown-menu", "menu-item", "keyboard-navigation"],
+  },
+  {
+    id: "docs-elements-popover",
+    label: "Popover",
+    path: ["Docs", "Elements", "Popover"],
+    groupIds: ["selection-menus", "feedback-confirmation-help"],
+    termIds: ["popover", "tooltip", "floating-panel"],
+  },
+  {
+    id: "docs-elements-select",
+    label: "Select",
+    path: ["Docs", "Elements", "Select"],
+    groupIds: ["input-pickers", "selection-menus"],
+    termIds: ["select-menu", "combobox", "option-list"],
+  },
+  {
+    id: "docs-elements-tabs",
+    label: "Tabs",
+    path: ["Docs", "Elements", "Tabs"],
+    groupIds: ["selection-navigation", "structure-navigation"],
+    termIds: ["tabs", "segmented-control", "tab-panel"],
   },
   {
     id: "plus-all",
@@ -1417,15 +1625,12 @@ export function navFilter(id: NavigationCollectionId): NavigationFilter {
 }
 
 export function isNavigationFilter(value: string): value is NavigationFilter {
-  if (!value.startsWith("nav:")) {
-    return false
-  }
-
-  return navigationCollections.some((collection) => collection.id === value.slice("nav:".length))
+  return normalizeNavigationFilter(value) !== null
 }
 
 export function getNavigationCollection(filter: NavigationFilter) {
-  const id = filter.slice("nav:".length) as NavigationCollectionId
+  const normalizedFilter = normalizeNavigationFilter(filter) ?? filter
+  const id = normalizedFilter.slice("nav:".length) as NavigationCollectionId
 
   return navigationCollections.find((collection) => collection.id === id) ?? null
 }
