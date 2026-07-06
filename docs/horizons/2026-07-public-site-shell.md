@@ -1,6 +1,7 @@
 # Horizon - Public Site Shell
 
 Date: 2026-07-04
+Status: closed 2026-07-07 — close criteria met by PSS1 (public homepage/site shell exists in code). PSS2 (landing design quality) was paused at showcase Step 3 and carried over as a pending candidate; resume plan: `docs/plans/2026-07-05-showcase-atlas-upgrade.md`. Successor horizon: `docs/horizons/2026-07-system-model-core.md`.
 
 ## Goal
 
