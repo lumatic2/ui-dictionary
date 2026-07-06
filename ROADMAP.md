@@ -39,7 +39,7 @@ Goal: Build the design system itself — 3-tier tokens, pattern taxonomy, compon
 - Completed at: 2026-07-07
 - Summary: pattern-taxonomy.md ended the four-document terminology drift (pattern_group fixed at 10) and the hardcoded group axis was promoted from search.ts into groups.yml + a required term field with validator enforcement, keeping site behavior identical. Follow-ups queued: category imbalance redesign, empty navigation collections cleanup.
 
-<!-- harness:milestone id="SMC3" status="pending" priority="P1" -->
+<!-- harness:milestone id="SMC3" status="active" priority="P1" -->
 ### SMC3 - 컴포넌트 레시피 + 안티패턴 첫 배치
 - DoD: A recipe format (intent/tokens/states/checks/anti-patterns) is fixed and a first batch of recipes exists; one demo proves a site page and an agent implementation derive from the same recipe source.
 - Evidence: first recipe batch; shared-consumption demo
