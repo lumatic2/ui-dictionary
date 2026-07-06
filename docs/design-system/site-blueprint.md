@@ -2,6 +2,8 @@
 
 Date: 2026-07-04
 
+> 분류 용어·축 목록의 정본은 [pattern-taxonomy.md](pattern-taxonomy.md) (2026-07-07). 본문의 pattern 카테고리 목록(sitemap 9종·홈 섹션 7종)은 pattern-taxonomy §3의 10종의 부분 노출이며, 이름은 그 목록을 따른다 (`ecommerce` → `commerce`).
+
 ## Purpose
 
 This document defines the actual public website shape for `ui.askewly.com`.

@@ -2,6 +2,8 @@
 
 Date: 2026-07-04
 
+> 분류 용어·축 목록의 정본은 [pattern-taxonomy.md](pattern-taxonomy.md) (2026-07-07). 이 문서는 surface 7종의 *내용*(하위 유형·전형 요소·agent cue) 출처로 유지된다. 본문 IA 권고안의 pattern 카테고리 8종은 pattern-taxonomy §3의 10종으로 대체됐다.
+
 ## Purpose
 
 This taxonomy defines how the design system organizes digital product UI. It expands the current Tailwind Plus-inspired web catalog into a cross-surface system for websites, mobile apps, SaaS products, commerce, dashboards, documentation, marketing, internal tools, and reusable primitives.

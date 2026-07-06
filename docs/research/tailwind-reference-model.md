@@ -2,6 +2,8 @@
 
 Date: 2026-07-04
 
+> 분류 용어·축 목록의 정본은 [../design-system/pattern-taxonomy.md](../design-system/pattern-taxonomy.md) (2026-07-07). 본문의 "Adaptation For Yusung System" 매핑 표는 surface-taxonomy.md Migration Notes와 중복이며, 매핑 정본은 surface-taxonomy 쪽이다.
+
 ## Purpose
 
 This model consolidates the existing Tailwind CSS / Tailwind Plus capture and parity work into a reusable design-system reference model for `ui-dictionary`.
