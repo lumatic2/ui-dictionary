@@ -12,14 +12,16 @@ Goal: SSOT(토큰·분류·레시피)를 Codex/Claude Code가 스스로 발견·
 
 ## Active Milestones
 
-<!-- harness:milestone id="AG1" status="active" priority="P0" -->
+<!-- harness:milestone id="AG1" status="completed" priority="P0" evidence="https://ui.askewly.com/llms.txt (10/10 live links verified); scripts/generate-llms-txt.mjs; docs/plans/2026-07-07-ag1-llms-txt.md" -->
 ### AG1 - llms.txt 발견 계층
 - DoD: `ui.askewly.com/llms.txt` 배포(링크만, 값 중복 금지 — C-10) + SSOT 자산 raw URL 접근 + 인덱스가 SSOT에서 스크립트로 파생(손 편집 금지).
-- Evidence: 생성 스크립트 + 배포 URL fetch 결과 + 링크 무결성 검증 PASS
+- Evidence: https://ui.askewly.com/llms.txt (10/10 live links verified); scripts/generate-llms-txt.mjs; docs/plans/2026-07-07-ag1-llms-txt.md
 - Gap: SSOT는 존재하지만 에이전트가 발견하는 인덱스가 없다. SMC3 데모는 경로를 손으로 넘겨줬다.
-- Status: [ ]
+- Status: [x]
 
-<!-- harness:milestone id="AG2" status="pending" priority="P0" -->
+- Completed at: 2026-07-07
+- Summary: llms.txt discovery layer live — SSOT-derived, link-only (C-10), failure-mode verified
+<!-- harness:milestone id="AG2" status="active" priority="P0" -->
 ### AG2 - custom-skills 소비 계층
 - DoD: design-harness §4 SSOT 분기 + design-screen §2/§5 정정 + 스킬이 recipes/·토큰 SSOT(AG1 인덱스 포함)를 소비 좌표로 참조 + setup.sh 재배포 + 스킬 경유 소비 smoke 1회.
 - Evidence: custom-skills 커밋 + 재배포 로그 + 소비 smoke 기록
