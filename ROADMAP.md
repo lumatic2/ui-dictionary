@@ -30,7 +30,7 @@ Goal: SSOT(토큰·분류·레시피)를 Codex/Claude Code가 스스로 발견·
 
 - Completed at: 2026-07-07
 - Summary: design-screen/design-harness now consume recipes/ locally and ui.askewly.com/llms.txt remotely
-<!-- harness:milestone id="AG3" status="pending" priority="P0" -->
+<!-- harness:milestone id="AG3" status="active" priority="P0" -->
 ### AG3 - 외부 프로젝트 실전 실증
 - DoD: 외부 레포(development-dictionary — 2026-07-07 확정) 1건에서 에이전트가 진입점(스킬 또는 llms.txt) 경유로 SSOT를 소비해 UI 구현(색 리터럴 0 기준 계승). 부족 레시피는 수요 주도 확장.
 - Evidence: 외부 레포 구현 diff·스크린샷 + 소비 경로 기록 (docs/research/)
