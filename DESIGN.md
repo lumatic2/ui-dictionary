@@ -6,28 +6,28 @@ version: "0.2.0"
 tokens:
   color:
     primitive:
-      white: { value: "oklch(1 0 0)", type: color }
+      white: { value: {"colorSpace":"oklch","components":[1,0,0]}, type: color }
       gray:
-        "1": { value: "oklch(0.985 0 0)", type: color }
-        "2": { value: "oklch(0.97 0.005 270)", type: color }
-        "3": { value: "oklch(0.95 0.015 270)", type: color }
-        "4": { value: "oklch(0.94 0.02 270)", type: color }
-        "5": { value: "oklch(0.91 0.015 270)", type: color }
-        "6": { value: "oklch(0.88 0.015 270)", type: color }
-        "7": { value: "oklch(0.72 0.02 270)", type: color }
-        "8": { value: "oklch(0.6 0.025 270)", type: color }
-        "9": { value: "oklch(0.46 0.03 270)", type: color }
-        "10": { value: "oklch(0.35 0.03 270)", type: color }
-        "11": { value: "oklch(0.25 0.03 270)", type: color }
-        "12": { value: "oklch(0.16 0.015 270)", type: color }
+        "1": { value: {"colorSpace":"oklch","components":[0.985,0,0]}, type: color }
+        "2": { value: {"colorSpace":"oklch","components":[0.97,0.005,270]}, type: color }
+        "3": { value: {"colorSpace":"oklch","components":[0.95,0.015,270]}, type: color }
+        "4": { value: {"colorSpace":"oklch","components":[0.94,0.02,270]}, type: color }
+        "5": { value: {"colorSpace":"oklch","components":[0.91,0.015,270]}, type: color }
+        "6": { value: {"colorSpace":"oklch","components":[0.88,0.015,270]}, type: color }
+        "7": { value: {"colorSpace":"oklch","components":[0.72,0.02,270]}, type: color }
+        "8": { value: {"colorSpace":"oklch","components":[0.6,0.025,270]}, type: color }
+        "9": { value: {"colorSpace":"oklch","components":[0.46,0.03,270]}, type: color }
+        "10": { value: {"colorSpace":"oklch","components":[0.35,0.03,270]}, type: color }
+        "11": { value: {"colorSpace":"oklch","components":[0.25,0.03,270]}, type: color }
+        "12": { value: {"colorSpace":"oklch","components":[0.16,0.015,270]}, type: color }
       askewly:
-        violet: { value: "#6F2DBD", type: color }
-        orchid: { value: "#A663CC", type: color }
-        lavender: { value: "#B298DC", type: color }
-        sky: { value: "#B8D0EB", type: color }
-        mint: { value: "#B9FAF8", type: color }
+        violet: { value: {"colorSpace":"srgb","components":[0.435294,0.176471,0.741176],"hex":"#6F2DBD"}, type: color }
+        orchid: { value: {"colorSpace":"srgb","components":[0.65098,0.388235,0.8],"hex":"#A663CC"}, type: color }
+        lavender: { value: {"colorSpace":"srgb","components":[0.698039,0.596078,0.862745],"hex":"#B298DC"}, type: color }
+        sky: { value: {"colorSpace":"srgb","components":[0.721569,0.815686,0.921569],"hex":"#B8D0EB"}, type: color }
+        mint: { value: {"colorSpace":"srgb","components":[0.72549,0.980392,0.972549],"hex":"#B9FAF8"}, type: color }
       red:
-        "9": { value: "oklch(0.58 0.22 27)", type: color }
+        "9": { value: {"colorSpace":"oklch","components":[0.58,0.22,27]}, type: color }
     semantic:
       surface:
         base: { value: "{color.primitive.gray.1}", type: color }

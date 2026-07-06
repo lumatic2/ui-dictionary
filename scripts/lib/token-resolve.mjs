@@ -123,14 +123,47 @@ function oklchToLinearRgb(L, C, hueDeg) {
   return [r, g, bl].map((c) => Math.min(1, Math.max(0, c)));
 }
 
-export function parseColorToLinearRgb(str) {
-  if (typeof str !== "string") {
-    throw new TokenError(`cannot parse color from non-string value: ${JSON.stringify(str)}`);
+/**
+ * Parse a DTCG stable 2025.10 color $value object ({ colorSpace, components, alpha?, hex? })
+ * into linear-light sRGB [r, g, b] (each 0-1), for use in WCAG contrast math.
+ */
+export function parseColorToLinearRgb(value) {
+  if (typeof value !== "object" || value === null || Array.isArray(value)) {
+    throw new TokenError(`cannot parse color from non-object value: ${JSON.stringify(value)}`);
   }
-  if (str.startsWith("#")) return hexToLinearRgb(str);
-  const match = str.match(/^oklch\(\s*([\d.]+)\s+([\d.]+)\s+([\d.]+)\s*\)$/);
-  if (match) return oklchToLinearRgb(Number(match[1]), Number(match[2]), Number(match[3]));
-  throw new TokenError(`unsupported color format: "${str}"`);
+  const { colorSpace, components } = value;
+  if (colorSpace === "oklch") {
+    const [L, C, H] = components;
+    return oklchToLinearRgb(L, C, H);
+  }
+  if (colorSpace === "srgb") {
+    const [r, g, b] = components;
+    return [srgbToLinearChannel(r), srgbToLinearChannel(g), srgbToLinearChannel(b)];
+  }
+  throw new TokenError(`unsupported colorSpace: "${colorSpace}"`);
+}
+
+/**
+ * Render a DTCG color $value object back to the CSS string it represents, matching
+ * the exact literal syntax previously hand-authored in tokens/askewly.tokens.json
+ * (oklch(L C H) for colorSpace "oklch"; the preserved brand hex for colorSpace "srgb").
+ */
+export function colorValueToCss(value) {
+  if (typeof value !== "object" || value === null || Array.isArray(value)) {
+    throw new TokenError(`cannot render color to CSS from non-object value: ${JSON.stringify(value)}`);
+  }
+  const { colorSpace, components, hex } = value;
+  if (colorSpace === "oklch") {
+    const [L, C, H] = components;
+    return `oklch(${L} ${C} ${H})`;
+  }
+  if (colorSpace === "srgb") {
+    if (hex) return hex;
+    const [r, g, b] = components;
+    const toHexByte = (c) => Math.round(c * 255).toString(16).padStart(2, "0");
+    return `#${toHexByte(r)}${toHexByte(g)}${toHexByte(b)}`.toUpperCase();
+  }
+  throw new TokenError(`unsupported colorSpace: "${colorSpace}"`);
 }
 
 export function relativeLuminance([r, g, b]) {

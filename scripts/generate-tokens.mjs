@@ -8,7 +8,7 @@
 import path from "node:path";
 import { fileURLToPath } from "node:url";
 import { readFileSync, writeFileSync } from "node:fs";
-import { loadTokens, getNode, resolveModeLiteral } from "./lib/token-resolve.mjs";
+import { loadTokens, getNode, resolveModeLiteral, colorValueToCss } from "./lib/token-resolve.mjs";
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const REPO_ROOT = path.resolve(__dirname, "..");
@@ -97,10 +97,10 @@ function buildTokensCss() {
   lines.push(":root {");
   lines.push("  --radius: 0.5rem;");
   for (const [cssVar, tokenPath] of COLOR_MAPPINGS) {
-    lines.push(`  ${cssVar}: ${resolveModeLiteral(root, tokenPath, "light")};`);
+    lines.push(`  ${cssVar}: ${colorValueToCss(resolveModeLiteral(root, tokenPath, "light"))};`);
   }
   for (const [cssVar, tokenPath] of BRAND_MAPPINGS) {
-    lines.push(`  ${cssVar}: ${resolveModeLiteral(root, tokenPath, "light")};`);
+    lines.push(`  ${cssVar}: ${colorValueToCss(resolveModeLiteral(root, tokenPath, "light"))};`);
   }
   for (const [cssVar, tokenPath] of SPACE_MAPPINGS) {
     lines.push(`  ${cssVar}: ${formatDimension(resolveModeLiteral(root, tokenPath, "light"))};`);
@@ -119,7 +119,7 @@ function buildTokensCss() {
   lines.push(".dark {");
   for (const [cssVar, tokenPath] of COLOR_MAPPINGS) {
     if (!hasDarkOverride(tokenPath)) continue;
-    lines.push(`  ${cssVar}: ${resolveModeLiteral(root, tokenPath, "dark")};`);
+    lines.push(`  ${cssVar}: ${colorValueToCss(resolveModeLiteral(root, tokenPath, "dark"))};`);
   }
   lines.push("}");
   lines.push("");

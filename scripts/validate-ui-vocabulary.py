@@ -11,11 +11,13 @@ import yaml
 ROOT = Path(__file__).resolve().parents[1]
 TERMS_PATH = ROOT / "docs" / "ui-vocabulary" / "terms.yml"
 SOURCES_PATH = ROOT / "docs" / "ui-vocabulary" / "sources.md"
+GROUPS_PATH = ROOT / "docs" / "ui-vocabulary" / "groups.yml"
 
 REQUIRED_FIELDS = {
     "id",
     "status",
     "category",
+    "group",
     "ko",
     "en",
     "one_liner",
@@ -116,6 +118,32 @@ def validate_navigation(term_id: str, navigation: object) -> None:
         validate_navigation_path(term_id, "also_appears_in", path_value)
 
 
+def load_groups() -> dict[str, dict]:
+    if not GROUPS_PATH.exists():
+        fail(f"missing {GROUPS_PATH.relative_to(ROOT)}")
+
+    groups = yaml.safe_load(GROUPS_PATH.read_text(encoding="utf-8"))
+    if not isinstance(groups, list) or not groups:
+        fail("groups.yml must be a non-empty list")
+
+    by_id: dict[str, dict] = {}
+    for index, group in enumerate(groups):
+        if not isinstance(group, dict):
+            fail(f"group #{index} must be a mapping")
+        group_id = group.get("id")
+        if not group_id:
+            fail(f"group #{index} is missing id")
+        if group_id in by_id:
+            fail(f"{group_id}: duplicate group id in groups.yml")
+        if group.get("category") not in VALID_CATEGORIES:
+            fail(f"{group_id}: invalid category {group.get('category')}")
+        if not group.get("label"):
+            fail(f"{group_id}: missing label")
+        by_id[group_id] = group
+
+    return by_id
+
+
 def main() -> None:
     if not TERMS_PATH.exists():
         fail(f"missing {TERMS_PATH.relative_to(ROOT)}")
@@ -124,6 +152,8 @@ def main() -> None:
 
     terms = yaml.safe_load(TERMS_PATH.read_text(encoding="utf-8"))
     source_ids = parse_source_ids(SOURCES_PATH.read_text(encoding="utf-8"))
+    groups_by_id = load_groups()
+    used_group_ids: set[str] = set()
     if not source_ids:
         fail("sources.md must register at least one `source_id`")
     if not isinstance(terms, list):
@@ -149,6 +179,17 @@ def main() -> None:
         if category not in VALID_CATEGORIES:
             fail(f"{term_id}: invalid category {category}")
         counts[category] += 1
+
+        group_id = term["group"]
+        group = groups_by_id.get(group_id)
+        if group is None:
+            fail(f"{term_id}: unknown group {group_id}")
+        if group["category"] != category:
+            fail(
+                f"{term_id}: group {group_id} belongs to category "
+                f"{group['category']}, but term category is {category}"
+            )
+        used_group_ids.add(group_id)
 
         if term["status"] not in VALID_STATUS:
             fail(f"{term_id}: invalid status {term['status']}")
@@ -194,8 +235,13 @@ def main() -> None:
     if sparse:
         fail(f"categories need at least 8 terms each: {sparse}")
 
+    unused_groups = sorted(set(groups_by_id) - used_group_ids)
+    if unused_groups:
+        print(f"WARNING: groups with no terms: {unused_groups}", file=sys.stderr)
+
     print(f"terms ok: {len(terms)}")
     print("categories:", dict(sorted(counts.items())))
+    print(f"groups ok: {len(groups_by_id)} ({len(used_group_ids)} in use)")
 
 
 if __name__ == "__main__":

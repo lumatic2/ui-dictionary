@@ -60,6 +60,25 @@ function main() {
           errors.push(
             `primitive token "${tokenPath}" (${site.ctx}) must be a literal value, found alias reference ${site.raw}`,
           );
+          continue;
+        }
+        // DTCG stable 2025.10: color $value must be a { colorSpace, components, alpha?, hex? }
+        // object, never a bare color string (e.g. "oklch(...)" or "#hex").
+        if (typeof site.raw === "string") {
+          errors.push(
+            `primitive color token "${tokenPath}" (${site.ctx}) must be a { colorSpace, components } object per DTCG stable 2025.10, found string value ${JSON.stringify(site.raw)}`,
+          );
+        } else if (typeof site.raw !== "object" || site.raw === null || Array.isArray(site.raw)) {
+          errors.push(
+            `primitive color token "${tokenPath}" (${site.ctx}) must be a { colorSpace, components } object, found ${JSON.stringify(site.raw)}`,
+          );
+        } else {
+          if (typeof site.raw.colorSpace !== "string" || site.raw.colorSpace.length === 0) {
+            errors.push(`primitive color token "${tokenPath}" (${site.ctx}) is missing a string "colorSpace"`);
+          }
+          if (!Array.isArray(site.raw.components)) {
+            errors.push(`primitive color token "${tokenPath}" (${site.ctx}) is missing a "components" array`);
+          }
         }
         continue;
       }

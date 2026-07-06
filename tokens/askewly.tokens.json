@@ -3,34 +3,34 @@
   "color": {
     "primitive": {
       "$description": "Raw values only. gray is the site's violet-tinted neutral (hue 270) formalized as a 12-step ramp; usage convention: 1-2 app background, 3-5 interactive component states, 6-8 borders, 9-10 solid/low-contrast foreground, 11-12 text.",
-      "white": { "$type": "color", "$value": "oklch(1 0 0)" },
+      "white": { "$type": "color", "$value": { "colorSpace": "oklch", "components": [1, 0, 0] } },
       "gray": {
         "$type": "color",
-        "1": { "$value": "oklch(0.985 0 0)" },
-        "2": { "$value": "oklch(0.97 0.005 270)" },
-        "3": { "$value": "oklch(0.95 0.015 270)" },
-        "4": { "$value": "oklch(0.94 0.02 270)" },
-        "5": { "$value": "oklch(0.91 0.015 270)" },
-        "6": { "$value": "oklch(0.88 0.015 270)" },
-        "7": { "$value": "oklch(0.72 0.02 270)" },
-        "8": { "$value": "oklch(0.6 0.025 270)" },
-        "9": { "$value": "oklch(0.46 0.03 270)" },
-        "10": { "$value": "oklch(0.35 0.03 270)" },
-        "11": { "$value": "oklch(0.25 0.03 270)" },
-        "12": { "$value": "oklch(0.16 0.015 270)" }
+        "1": { "$value": { "colorSpace": "oklch", "components": [0.985, 0, 0] } },
+        "2": { "$value": { "colorSpace": "oklch", "components": [0.97, 0.005, 270] } },
+        "3": { "$value": { "colorSpace": "oklch", "components": [0.95, 0.015, 270] } },
+        "4": { "$value": { "colorSpace": "oklch", "components": [0.94, 0.02, 270] } },
+        "5": { "$value": { "colorSpace": "oklch", "components": [0.91, 0.015, 270] } },
+        "6": { "$value": { "colorSpace": "oklch", "components": [0.88, 0.015, 270] } },
+        "7": { "$value": { "colorSpace": "oklch", "components": [0.72, 0.02, 270] } },
+        "8": { "$value": { "colorSpace": "oklch", "components": [0.6, 0.025, 270] } },
+        "9": { "$value": { "colorSpace": "oklch", "components": [0.46, 0.03, 270] } },
+        "10": { "$value": { "colorSpace": "oklch", "components": [0.35, 0.03, 270] } },
+        "11": { "$value": { "colorSpace": "oklch", "components": [0.25, 0.03, 270] } },
+        "12": { "$value": { "colorSpace": "oklch", "components": [0.16, 0.015, 270] } }
       },
       "askewly": {
         "$type": "color",
         "$description": "Brand palette extracted from the landing planning reference image (2026-07-05). Canonical purple: violet.",
-        "violet": { "$value": "#6F2DBD" },
-        "orchid": { "$value": "#A663CC" },
-        "lavender": { "$value": "#B298DC" },
-        "sky": { "$value": "#B8D0EB" },
-        "mint": { "$value": "#B9FAF8" }
+        "violet": { "$value": { "colorSpace": "srgb", "components": [0.435294, 0.176471, 0.741176], "hex": "#6F2DBD" } },
+        "orchid": { "$value": { "colorSpace": "srgb", "components": [0.65098, 0.388235, 0.8], "hex": "#A663CC" } },
+        "lavender": { "$value": { "colorSpace": "srgb", "components": [0.698039, 0.596078, 0.862745], "hex": "#B298DC" } },
+        "sky": { "$value": { "colorSpace": "srgb", "components": [0.721569, 0.815686, 0.921569], "hex": "#B8D0EB" } },
+        "mint": { "$value": { "colorSpace": "srgb", "components": [0.72549, 0.980392, 0.972549], "hex": "#B9FAF8" } }
       },
       "red": {
         "$type": "color",
-        "9": { "$value": "oklch(0.58 0.22 27)" }
+        "9": { "$value": { "colorSpace": "oklch", "components": [0.58, 0.22, 27] } }
       }
     },
     "semantic": {
