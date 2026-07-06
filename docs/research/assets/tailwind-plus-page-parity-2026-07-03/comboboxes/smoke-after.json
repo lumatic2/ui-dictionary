@@ -1,0 +1,56 @@
+{
+  "url": "http://127.0.0.1:5174/?filter=nav%3Aplus-forms-comboboxes",
+  "before": {
+    "title": "UI 용어 사전",
+    "inputCount": 4,
+    "expandedComboboxCount": 0,
+    "activeDescendantCount": 0,
+    "listboxCount": 0,
+    "optionCount": 0,
+    "selectedOptionCount": 0,
+    "darkToggleCount": 4,
+    "bodyOverflowX": 0
+  },
+  "afterFilter": {
+    "expandedComboboxCount": 1,
+    "activeDescendantCount": 1,
+    "listboxCount": 1,
+    "optionCount": 1,
+    "selectedOptionCount": 0,
+    "simpleOptionCount": 1,
+    "visibleText": true,
+    "bodyOverflowX": 0
+  },
+  "afterEnter": {
+    "expandedComboboxCount": 0,
+    "listboxCount": 0,
+    "optionCount": 0,
+    "feedback": true,
+    "bodyOverflowX": 0
+  },
+  "afterClickEmpty": {
+    "lindsayFeedback": true,
+    "emptyVisible": true,
+    "expandedComboboxCount": 1,
+    "listboxCount": 1,
+    "optionCount": 0,
+    "bodyOverflowX": 0
+  },
+  "afterDark": {
+    "darkToggleCount": 4,
+    "activeDarkToggleCount": 4,
+    "darkSurfaceCount": 4,
+    "bodyOverflowX": 0
+  },
+  "mobile": {
+    "inputCount": 4,
+    "expandedComboboxCount": 1,
+    "listboxCount": 1,
+    "optionCount": 1,
+    "visibleText": true,
+    "bodyOverflowX": 0
+  },
+  "consoleMessages": [],
+  "pageErrors": [],
+  "timestamp": "2026-07-03T17:21:14.779Z"
+}

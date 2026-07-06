@@ -1,0 +1,638 @@
+{
+  "reference": {
+    "buttons": [
+      {
+        "aria": "Search",
+        "text": ""
+      },
+      {
+        "aria": "Search",
+        "text": ""
+      },
+      {
+        "aria": "Navigation",
+        "text": ""
+      },
+      {
+        "aria": "Open navigation menu",
+        "text": ""
+      },
+      {
+        "aria": null,
+        "text": "Preview"
+      },
+      {
+        "aria": null,
+        "text": "Code"
+      },
+      {
+        "aria": null,
+        "text": ""
+      },
+      {
+        "aria": null,
+        "text": "Preview"
+      },
+      {
+        "aria": null,
+        "text": "Code"
+      },
+      {
+        "aria": null,
+        "text": ""
+      }
+    ],
+    "h1": "404 Pages",
+    "h2s": [
+      "Simple",
+      "Simple",
+      "Split with image",
+      "Split with image",
+      "With popular pages",
+      "With popular pages",
+      "With background image",
+      "With background image",
+      "With navbar and footer",
+      "With navbar and footer"
+    ],
+    "h3s": [
+      "Page Sections",
+      "Elements",
+      "Feedback",
+      "Page Examples",
+      "Build UIs that don’t suck.",
+      "Marketing",
+      "Application UI",
+      "Ecommerce",
+      "Templates & UI Kits"
+    ],
+    "links": [
+      "Introducing OatmealOur new multi-theme marketing site kit",
+      "UI Blocks",
+      "Templates",
+      "UI Kit",
+      "Sign in",
+      "Get full access",
+      "Marketing",
+      "Application UI",
+      "Ecommerce",
+      "Documentation",
+      "Hero Sections",
+      "Feature Sections",
+      "CTA Sections",
+      "Bento Grids",
+      "Pricing Sections",
+      "Header Sections",
+      "Newsletter Sections",
+      "Stats",
+      "Testimonials",
+      "Blog Sections",
+      "Contact Sections",
+      "Team Sections",
+      "Content Sections",
+      "Logo Clouds",
+      "FAQs",
+      "Footers",
+      "Headers",
+      "Flyout Menus",
+      "Banners",
+      "404 Pages",
+      "Landing Pages",
+      "Pricing Pages",
+      "About Pages",
+      "Get the free course",
+      "UI Blocks",
+      "Marketing",
+      "Feedback",
+      "UI Blocks",
+      "Marketing",
+      "Feedback",
+      "Simple",
+      "Simple",
+      "Split with image",
+      "Get the code →",
+      "Split with image",
+      "Get the code →",
+      "With popular pages",
+      "Get the code →",
+      "With popular pages",
+      "Get the code →",
+      "With background image",
+      "Get the code →",
+      "With background image",
+      "Get the code →",
+      "With navbar and footer",
+      "Get the code →",
+      "With navbar and footer",
+      "Get the code →",
+      "Hero Sections",
+      "Feature Sections",
+      "Pricing Sections",
+      "Header Sections",
+      "Newsletter Sections",
+      "Testimonials",
+      "Team Sections",
+      "Content Sections",
+      "Logo Clouds",
+      "FAQs",
+      "Footers",
+      "Headers",
+      "Flyout Menus",
+      "Banners",
+      "Browse all →",
+      "Tables",
+      "Feeds",
+      "Form Layouts",
+      "Select Menus",
+      "Radio Groups",
+      "Checkboxes",
+      "Comboboxes",
+      "Navbars",
+      "Pagination",
+      "Sidebar Navigation",
+      "Command Palettes",
+      "Modals",
+      "Dropdowns",
+      "Buttons",
+      "Browse all →",
+      "Product Overviews",
+      "Product Lists",
+      "Category Previews",
+      "Shopping Carts",
+      "Category Filters",
+      "Product Quickviews",
+      "Product Features",
+      "Store Navigation",
+      "Promo Sections",
+      "Checkout Forms",
+      "Reviews",
+      "Order Summaries"
+    ],
+    "overflow": 0,
+    "textSamples": [
+      "MarketingApplication UIEcommerceDocumentation",
+      "Marketing",
+      "Application UI",
+      "Ecommerce",
+      "Documentation",
+      "Page SectionsHero SectionsFeature SectionsCTA SectionsBento GridsPricing SectionsHeader SectionsNewsletter SectionsStatsTestimonialsBlog SectionsContact SectionsTeam SectionsContent SectionsLogo CloudsFAQsFooters",
+      "Page Sections",
+      "Hero Sections",
+      "Feature Sections",
+      "CTA Sections",
+      "Bento Grids",
+      "Pricing Sections",
+      "Header Sections",
+      "Newsletter Sections",
+      "Stats",
+      "Testimonials",
+      "Blog Sections",
+      "Contact Sections",
+      "Team Sections",
+      "Content Sections",
+      "Logo Clouds",
+      "FAQs",
+      "Footers",
+      "ElementsHeadersFlyout MenusBanners",
+      "Elements",
+      "Headers",
+      "Flyout Menus",
+      "Banners",
+      "Feedback404 Pages",
+      "Feedback",
+      "404 Pages",
+      "Page ExamplesLanding PagesPricing PagesAbout Pages",
+      "Page Examples",
+      "Landing Pages",
+      "Pricing Pages",
+      "About Pages",
+      "5-day Mini-Course",
+      "Build UIs that don’t suck.",
+      "Short, tactical video lessons from the creator of Tailwind CSS, delivered directly to your inbox every day for a week.",
+      "Get the free course",
+      "/",
+      "/",
+      "Use these Tailwind CSS 404 page examples to show a \"Page not found\" message to visitors when they get lost. These page examples are designed and built by the Tailwind CSS team, and include a variety of different styles and layouts.",
+      "Simple",
+      "Simple",
+      "Split with image",
+      "Preview",
+      "Split with image",
+      "Preview",
+      "With popular pages",
+      "Preview",
+      "With popular pages",
+      "Preview",
+      "With background image",
+      "Preview",
+      "With background image",
+      "Preview",
+      "With navbar and footer",
+      "Preview",
+      "With navbar and footer",
+      "Preview",
+      "Marketing",
+      "Hero Sections",
+      "Feature Sections",
+      "Pricing Sections",
+      "Header Sections",
+      "Newsletter Sections",
+      "Testimonials",
+      "Team Sections",
+      "Content Sections",
+      "Logo Clouds",
+      "FAQs",
+      "Footers",
+      "Headers",
+      "Flyout Menus",
+      "Banners",
+      "Browse all →",
+      "Application UI",
+      "Tables",
+      "Feeds",
+      "Form Layouts",
+      "Select Menus",
+      "Radio Groups",
+      "Checkboxes",
+      "Comboboxes",
+      "Navbars",
+      "Pagination",
+      "Sidebar Navigation",
+      "Command Palettes",
+      "Modals",
+      "Dropdowns",
+      "Buttons",
+      "Browse all →",
+      "Ecommerce",
+      "Product Overviews",
+      "Product Lists",
+      "Category Previews",
+      "Shopping Carts",
+      "Category Filters",
+      "Product Quickviews",
+      "Product Features",
+      "Store Navigation",
+      "Promo Sections",
+      "Checkout Forms",
+      "Reviews",
+      "Order Summaries",
+      "Order History",
+      "Incentives",
+      "Browse all →",
+      "Templates & UI Kits",
+      "Catalyst UI Kit",
+      "Personal Website Template",
+      "Landing Page Template",
+      "API Reference Template",
+      "Changelog Template",
+      "Info Product Template",
+      "Agency Template",
+      "Podcast Template",
+      "App Marketing Template",
+      "Documentation Template"
+    ],
+    "title": "Tailwind CSS 404 Pages - Official Tailwind UI Components",
+    "url": "https://tailwindcss.com/plus/ui-blocks/marketing/feedback/404-pages"
+  },
+  "local": {
+    "actions": 74,
+    "buttons": [
+      {
+        "aria": "UI 용어 사전 홈으로 이동",
+        "text": "UI Dictionary"
+      },
+      {
+        "aria": "검색 열기",
+        "text": "Ctrl F"
+      },
+      {
+        "aria": null,
+        "text": "UI Blocks"
+      },
+      {
+        "aria": null,
+        "text": "Templates"
+      },
+      {
+        "aria": null,
+        "text": "UI Kit"
+      },
+      {
+        "aria": null,
+        "text": "Sign in"
+      },
+      {
+        "aria": null,
+        "text": "Get full access"
+      },
+      {
+        "aria": "More options",
+        "text": ""
+      },
+      {
+        "aria": null,
+        "text": "Marketing"
+      },
+      {
+        "aria": null,
+        "text": "Application UI"
+      },
+      {
+        "aria": null,
+        "text": "Ecommerce"
+      },
+      {
+        "aria": null,
+        "text": "Documentation"
+      },
+      {
+        "aria": null,
+        "text": "Page Sections"
+      },
+      {
+        "aria": null,
+        "text": "Hero Sections"
+      },
+      {
+        "aria": null,
+        "text": "Feature Sections"
+      },
+      {
+        "aria": null,
+        "text": "CTA Sections"
+      },
+      {
+        "aria": null,
+        "text": "Bento Grids"
+      },
+      {
+        "aria": null,
+        "text": "Pricing Sections"
+      },
+      {
+        "aria": null,
+        "text": "Header Sections"
+      },
+      {
+        "aria": null,
+        "text": "Newsletter Sections"
+      },
+      {
+        "aria": null,
+        "text": "Stats"
+      },
+      {
+        "aria": null,
+        "text": "Testimonials"
+      },
+      {
+        "aria": null,
+        "text": "Blog Sections"
+      },
+      {
+        "aria": null,
+        "text": "Contact Sections"
+      },
+      {
+        "aria": null,
+        "text": "Team Sections"
+      },
+      {
+        "aria": null,
+        "text": "Content Sections"
+      },
+      {
+        "aria": null,
+        "text": "Logo Clouds"
+      },
+      {
+        "aria": null,
+        "text": "FAQs"
+      },
+      {
+        "aria": null,
+        "text": "Footers"
+      },
+      {
+        "aria": null,
+        "text": "Elements"
+      },
+      {
+        "aria": null,
+        "text": "Headers"
+      },
+      {
+        "aria": null,
+        "text": "Flyout Menus"
+      },
+      {
+        "aria": null,
+        "text": "Banners"
+      },
+      {
+        "aria": null,
+        "text": "Feedback"
+      },
+      {
+        "aria": null,
+        "text": "404 Pages"
+      },
+      {
+        "aria": null,
+        "text": "Page Examples"
+      },
+      {
+        "aria": null,
+        "text": "Landing Pages"
+      },
+      {
+        "aria": null,
+        "text": "Pricing Pages"
+      },
+      {
+        "aria": null,
+        "text": "About Pages"
+      },
+      {
+        "aria": null,
+        "text": "Preview"
+      },
+      {
+        "aria": null,
+        "text": "Code"
+      },
+      {
+        "aria": "System",
+        "text": ""
+      },
+      {
+        "aria": "Light",
+        "text": ""
+      },
+      {
+        "aria": "Dark",
+        "text": ""
+      },
+      {
+        "aria": "Copy code",
+        "text": ""
+      },
+      {
+        "aria": null,
+        "text": "Go back home"
+      },
+      {
+        "aria": null,
+        "text": "Contact support →"
+      },
+      {
+        "aria": null,
+        "text": "Preview"
+      },
+      {
+        "aria": "System",
+        "text": ""
+      },
+      {
+        "aria": "Light",
+        "text": ""
+      },
+      {
+        "aria": "Dark",
+        "text": ""
+      },
+      {
+        "aria": null,
+        "text": "Get the code →"
+      },
+      {
+        "aria": null,
+        "text": "← Back to home"
+      },
+      {
+        "aria": null,
+        "text": "Preview"
+      },
+      {
+        "aria": "System",
+        "text": ""
+      },
+      {
+        "aria": "Light",
+        "text": ""
+      },
+      {
+        "aria": "Dark",
+        "text": ""
+      },
+      {
+        "aria": null,
+        "text": "Get the code →"
+      },
+      {
+        "aria": null,
+        "text": "← Back to home"
+      },
+      {
+        "aria": null,
+        "text": "Preview"
+      },
+      {
+        "aria": "System",
+        "text": ""
+      },
+      {
+        "aria": "Light",
+        "text": ""
+      },
+      {
+        "aria": "Dark",
+        "text": ""
+      },
+      {
+        "aria": null,
+        "text": "Get the code →"
+      },
+      {
+        "aria": null,
+        "text": "← Back to home"
+      },
+      {
+        "aria": null,
+        "text": "Preview"
+      },
+      {
+        "aria": "System",
+        "text": ""
+      },
+      {
+        "aria": "Light",
+        "text": ""
+      },
+      {
+        "aria": "Dark",
+        "text": ""
+      },
+      {
+        "aria": null,
+        "text": "Get the code →"
+      },
+      {
+        "aria": null,
+        "text": "← Back to home"
+      },
+      {
+        "aria": null,
+        "text": "X"
+      },
+      {
+        "aria": null,
+        "text": "GitHub"
+      },
+      {
+        "aria": null,
+        "text": "Instagram"
+      }
+    ],
+    "h2": "404 Pages",
+    "h3s": [
+      "Simple",
+      "Split with image",
+      "With popular pages",
+      "With background image",
+      "With navbar and footer"
+    ],
+    "notFoundActions": 0,
+    "overflow": 0,
+    "roots": 0,
+    "textSamples": [
+      "UI Dictionary",
+      "Plus / UI Blocks / Marketing / Feedback / 404 Pages",
+      "404 Pages",
+      "없는 페이지에 도착한 사용자가 다시 탐색하거나 도움을 받을 수 있게 회복 경로를 제공하는 오류 페이지 예시입니다.",
+      "Tailwind Plus처럼 각 leaf의 첫 예제는 Preview와 Code를 함께 제공하고, 이후 예제는 Preview와 잠금 code CTA로 구분합니다. 우리 예시는 실제 화면 맥락에 맞춘 설명, tags, interaction feedback을 함께 보여줍니다.",
+      "On this page",
+      "Simple",
+      "오류 코드, 짧은 설명, 홈 이동 버튼만 남긴 가장 단순한 404 page입니다.",
+      "404",
+      "Sorry, we couldn't find the page you're looking for.",
+      "Split with image",
+      "왼쪽에는 설명과 행동, 오른쪽에는 큰 오류 그래픽을 배치합니다.",
+      "404",
+      "Sorry, we couldn't find the page you're looking for.",
+      "With popular pages",
+      "자주 방문하는 페이지 링크를 함께 보여줘 회복 경로를 넓힙니다.",
+      "404",
+      "Sorry, we couldn't find the page you're looking for.",
+      "With background image",
+      "배경 이미지를 깔아 brand-heavy한 404 recovery 화면을 만듭니다.",
+      "404",
+      "Sorry, we couldn't find the page you're looking for.",
+      "With navbar and footer",
+      "오류 화면에서도 상단 nav와 footer를 유지해 탐색 맥락을 잃지 않게 합니다.",
+      "404",
+      "Sorry, we couldn't find the page you're looking for."
+    ],
+    "url": "http://127.0.0.1:5200/?filter=nav%3Aplus-marketing-404-pages"
+  }
+}

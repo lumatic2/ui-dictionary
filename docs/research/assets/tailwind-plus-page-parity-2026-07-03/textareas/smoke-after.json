@@ -1,0 +1,65 @@
+{
+  "url": "http://127.0.0.1:5174/?filter=nav%3Aplus-forms-textareas",
+  "browserAvailability": "in-app Browser failed: Browser is not available: iab; standalone Playwright fallback used",
+  "before": {
+    "title": "UI 용어 사전",
+    "textareaCount": 5,
+    "labelledTextareaCount": 5,
+    "themeButtonCount": 15,
+    "darkButtonCount": 5,
+    "activeSystemCount": 5,
+    "bodyOverflowX": 0
+  },
+  "afterInteractions": {
+    "textareaValues": [
+      {
+        "i": 0,
+        "value": "",
+        "placeholder": ""
+      },
+      {
+        "i": 1,
+        "value": "Avatar composer note",
+        "placeholder": "Add your comment..."
+      },
+      {
+        "i": 2,
+        "value": "Underline composer note",
+        "placeholder": "Add your comment..."
+      },
+      {
+        "i": 3,
+        "value": "Dark card task description",
+        "placeholder": "Write a description..."
+      },
+      {
+        "i": 4,
+        "value": "Preview composer note",
+        "placeholder": "Add your comment..."
+      }
+    ],
+    "titleValue": "Launch task",
+    "descriptionValue": "Dark card task description",
+    "previewVisibleText": true,
+    "attachFeedback": true,
+    "createFeedback": true,
+    "postButtons": 2,
+    "bodyOverflowX": 0
+  },
+  "afterDark": {
+    "darkButtonCount": 5,
+    "activeDarkCount": 5,
+    "darkSurfaceCount": 23,
+    "bodyOverflowX": 0
+  },
+  "mobile": {
+    "textareaCount": 5,
+    "labelledTextareaCount": 5,
+    "valueKept": true,
+    "feedback": true,
+    "bodyOverflowX": 0
+  },
+  "consoleMessages": [],
+  "pageErrors": [],
+  "timestamp": "2026-07-03T17:35:18.006Z"
+}

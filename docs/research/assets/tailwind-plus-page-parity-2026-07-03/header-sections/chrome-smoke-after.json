@@ -1,0 +1,20 @@
+{
+  "flow": "Header Sections page -> header CTA/stat/card click -> dark/light preview controls -> visible feedback and theme data attributes",
+  "url": "http://127.0.0.1:5200/?filter=nav%3Aplus-marketing-header-sections",
+  "title": "UI 용어 사전",
+  "counts": {
+    "roots": 8,
+    "darkButtons": 8,
+    "lightButtons": 8,
+    "headerActions": 18
+  },
+  "afterDarkThemes": "8/8 dark roots verified in prior smoke",
+  "afterLightThemes": "8/8 light roots verified in prior smoke",
+  "feedback": [
+    "Offices worldwide selected",
+    "Open roles selected",
+    "Sales selected"
+  ],
+  "overflow": 0,
+  "console": []
+}

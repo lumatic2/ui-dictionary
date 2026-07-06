@@ -1,0 +1,16 @@
+{
+  "url": "http://127.0.0.1:5174/?filter=nav%3Aplus-feedback-toasts",
+  "severe": [],
+  "overlayText": 0,
+  "overflow": 0,
+  "statusCountBefore": 4,
+  "hiddenFeedback": 1,
+  "shownFeedback": 1,
+  "addFeedback": 1,
+  "stackStatusCount": 5,
+  "dismissFeedback": 1,
+  "undoFeedback": 1,
+  "allDarkButtonCount": 3,
+  "darkSurfaceCount": 7,
+  "timestamp": "2026-07-03T14:43:15.813Z"
+}

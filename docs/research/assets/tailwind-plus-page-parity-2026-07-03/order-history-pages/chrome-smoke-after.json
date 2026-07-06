@@ -1,0 +1,117 @@
+{
+  "summary": {
+    "actionButtons": 236,
+    "ariaPressedButtons": 190,
+    "h2": [
+      "Order History Pages"
+    ],
+    "h3": [
+      "Simple",
+      "With invoice list and quick actions",
+      "With invoice panels",
+      "With invoice tables",
+      "With invoice list"
+    ],
+    "overflowX": 0,
+    "roots": 5
+  },
+  "interactions": [
+    {
+      "label": "Open order history Search",
+      "count": 3,
+      "clicked": "first-of-duplicates",
+      "pressed": "true",
+      "feedback": true
+    },
+    {
+      "label": "Open order history Account",
+      "count": 3,
+      "clicked": "first-of-duplicates",
+      "pressed": "true",
+      "feedback": true
+    },
+    {
+      "label": "Open order history Cart",
+      "count": 3,
+      "clicked": "first-of-duplicates",
+      "pressed": "true",
+      "feedback": true
+    },
+    {
+      "label": "Open order history card Kicks Carrier",
+      "count": 1,
+      "clicked": "only",
+      "pressed": "true",
+      "feedback": true
+    },
+    {
+      "label": "Manage order history order WU881911",
+      "count": 1,
+      "clicked": "only",
+      "pressed": "true",
+      "feedback": true
+    },
+    {
+      "label": "Open order history invoice WU881911",
+      "count": 3,
+      "clicked": "first-of-duplicates",
+      "pressed": "true",
+      "feedback": true
+    },
+    {
+      "label": "Open order history product Kicks Carrier",
+      "count": 3,
+      "clicked": "first-of-duplicates",
+      "pressed": "true",
+      "feedback": true
+    },
+    {
+      "label": "Buy again quick action Kicks Carrier",
+      "count": 1,
+      "clicked": "only",
+      "pressed": "true",
+      "feedback": true
+    },
+    {
+      "label": "Shop similar order history product Kicks Carrier",
+      "count": 1,
+      "clicked": "only",
+      "pressed": "true",
+      "feedback": true
+    },
+    {
+      "label": "Open order history table product Micro Backpack",
+      "count": 1,
+      "clicked": "only",
+      "pressed": "true",
+      "feedback": true
+    },
+    {
+      "label": "Open order history summary order WU881911",
+      "count": 1,
+      "clicked": "only",
+      "pressed": "true",
+      "feedback": true
+    },
+    {
+      "label": "Open order history footer Shop Contact",
+      "count": 5,
+      "clicked": "first-of-duplicates",
+      "pressed": "true",
+      "feedback": true
+    }
+  ],
+  "darkState": {
+    "buttonCount": 5,
+    "darkSurfaces": 28,
+    "overflowX": 0,
+    "roots": 5
+  },
+  "lightState": {
+    "buttonCount": 5,
+    "darkSurfaces": 3,
+    "overflowX": 0,
+    "roots": 5
+  },
+  "consoleErrors": []
+}

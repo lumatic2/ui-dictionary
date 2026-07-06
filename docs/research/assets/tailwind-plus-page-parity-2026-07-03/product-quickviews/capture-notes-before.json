@@ -1,0 +1,76 @@
+{
+  "browserFallback": "Browser/Chrome path failed earlier: Browser is not available: iab / packaged browser documentation directory missing; standalone Playwright fallback used",
+  "reference": {
+    "status": 200,
+    "title": "Tailwind CSS Product Quickviews - Official Tailwind UI Components",
+    "h1": "Product Quickviews",
+    "exampleHeadings": [
+      "Components",
+      "Page Examples",
+      "Build UIs that don’t suck.",
+      "With color and size selector",
+      "With color and size selector",
+      "With color selector, size selector, and details link",
+      "With color selector, size selector, and details link",
+      "With large size selector",
+      "With large size selector",
+      "With color selector and description",
+      "With color selector and description",
+      "Marketing",
+      "Application UI",
+      "Ecommerce",
+      "Templates & UI Kits"
+    ]
+  },
+  "local": {
+    "before": {
+      "title": "UI 용어 사전",
+      "h1Like": [
+        "Product Quickviews"
+      ],
+      "examples": [
+        "With color and size selector",
+        "With color selector, size selector, and details link",
+        "With large size selector",
+        "With color selector and description"
+      ],
+      "themeButtons": 12,
+      "actionButtons": 97,
+      "infoRowButtons": 0,
+      "infoRowText": 6,
+      "addButtons": 4,
+      "darkFrames": 0,
+      "overflowX": 0
+    },
+    "interactionBefore": {
+      "feedback": [
+        "L size selected",
+        "Color",
+        "Size",
+        "Full details opened",
+        "Color",
+        "Size",
+        "Color",
+        "Size",
+        "Color"
+      ],
+      "addedButtons": 1,
+      "pressedButtons": [
+        "System",
+        "System",
+        "System",
+        "System"
+      ]
+    },
+    "darkBefore": {
+      "pressedDark": 4,
+      "darkFrames": 0,
+      "lightSurfaces": 33
+    },
+    "mobileBefore": {
+      "overflowX": 0,
+      "themeButtons": 12
+    },
+    "errors": []
+  }
+}

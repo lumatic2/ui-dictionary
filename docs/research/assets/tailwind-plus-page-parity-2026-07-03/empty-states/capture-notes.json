@@ -1,0 +1,9 @@
+{
+  "tailwindUrl": "https://tailwindcss.com/plus/ui-blocks/application-ui/feedback/empty-states",
+  "localUrl": "http://127.0.0.1:5174/?filter=nav%3Aplus-feedback-empty-states",
+  "refTitle": "Empty States",
+  "refButtonCount": 4,
+  "localButtonCount": 122,
+  "localDarkButtonCount": 6,
+  "localSimpleActionCount": 1
+}

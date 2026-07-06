@@ -1,0 +1,996 @@
+{
+  "reference": {
+    "buttons": [
+      {
+        "aria": "Search",
+        "expanded": null,
+        "text": ""
+      },
+      {
+        "aria": "Search",
+        "expanded": null,
+        "text": ""
+      },
+      {
+        "aria": "Navigation",
+        "expanded": null,
+        "text": ""
+      },
+      {
+        "aria": "Open navigation menu",
+        "expanded": null,
+        "text": ""
+      },
+      {
+        "aria": null,
+        "expanded": null,
+        "text": "Preview"
+      },
+      {
+        "aria": null,
+        "expanded": null,
+        "text": "Code"
+      },
+      {
+        "aria": null,
+        "expanded": null,
+        "text": ""
+      },
+      {
+        "aria": null,
+        "expanded": null,
+        "text": "Preview"
+      },
+      {
+        "aria": null,
+        "expanded": null,
+        "text": "Code"
+      },
+      {
+        "aria": null,
+        "expanded": null,
+        "text": ""
+      }
+    ],
+    "h1": "Headers",
+    "h2s": [
+      "With stacked flyout menu",
+      "With stacked flyout menu",
+      "Constrained",
+      "Constrained",
+      "On brand background",
+      "On brand background",
+      "With full width flyout menu",
+      "With full width flyout menu",
+      "Full width",
+      "Full width",
+      "With call-to-action",
+      "With call-to-action",
+      "With multiple flyout menus",
+      "With multiple flyout menus",
+      "With icons in mobile menu",
+      "With icons in mobile menu",
+      "With left-aligned nav",
+      "With left-aligned nav",
+      "With right-aligned nav",
+      "With right-aligned nav",
+      "With centered logo",
+      "With centered logo"
+    ],
+    "h3s": [
+      "Page Sections",
+      "Elements",
+      "Feedback",
+      "Page Examples",
+      "Build UIs that don’t suck.",
+      "Marketing",
+      "Application UI",
+      "Ecommerce",
+      "Templates & UI Kits"
+    ],
+    "links": [
+      "Introducing OatmealOur new multi-theme marketing site kit",
+      "UI Blocks",
+      "Templates",
+      "UI Kit",
+      "Sign in",
+      "Get full access",
+      "Marketing",
+      "Application UI",
+      "Ecommerce",
+      "Documentation",
+      "Hero Sections",
+      "Feature Sections",
+      "CTA Sections",
+      "Bento Grids",
+      "Pricing Sections",
+      "Header Sections",
+      "Newsletter Sections",
+      "Stats",
+      "Testimonials",
+      "Blog Sections",
+      "Contact Sections",
+      "Team Sections",
+      "Content Sections",
+      "Logo Clouds",
+      "FAQs",
+      "Footers",
+      "Headers",
+      "Flyout Menus",
+      "Banners",
+      "404 Pages",
+      "Landing Pages",
+      "Pricing Pages",
+      "About Pages",
+      "Get the free course",
+      "UI Blocks",
+      "Marketing",
+      "Elements",
+      "UI Blocks",
+      "Marketing",
+      "Elements",
+      "With stacked flyout menu",
+      "With stacked flyout menu",
+      "Constrained",
+      "Get the code →",
+      "Constrained",
+      "Get the code →",
+      "On brand background",
+      "Get the code →",
+      "On brand background",
+      "Get the code →",
+      "With full width flyout menu",
+      "Get the code →",
+      "With full width flyout menu",
+      "Get the code →",
+      "Full width",
+      "Get the code →",
+      "Full width",
+      "Get the code →",
+      "With call-to-action",
+      "Get the code →",
+      "With call-to-action",
+      "Get the code →",
+      "With multiple flyout menus",
+      "Get the code →",
+      "With multiple flyout menus",
+      "Get the code →",
+      "With icons in mobile menu",
+      "Get the code →",
+      "With icons in mobile menu",
+      "Get the code →",
+      "With left-aligned nav",
+      "Get the code →",
+      "With left-aligned nav",
+      "Get the code →",
+      "With right-aligned nav",
+      "Get the code →",
+      "With right-aligned nav",
+      "Get the code →",
+      "With centered logo",
+      "Get the code →",
+      "With centered logo",
+      "Get the code →",
+      "Hero Sections",
+      "Feature Sections",
+      "Pricing Sections",
+      "Header Sections",
+      "Newsletter Sections",
+      "Testimonials",
+      "Team Sections",
+      "Content Sections",
+      "Logo Clouds",
+      "FAQs",
+      "Footers",
+      "Headers",
+      "Flyout Menus",
+      "Banners",
+      "Browse all →",
+      "Tables",
+      "Feeds",
+      "Form Layouts"
+    ],
+    "overflow": 0,
+    "textSamples": [
+      "MarketingApplication UIEcommerceDocumentation",
+      "Marketing",
+      "Application UI",
+      "Ecommerce",
+      "Documentation",
+      "Page SectionsHero SectionsFeature SectionsCTA SectionsBento GridsPricing SectionsHeader SectionsNewsletter SectionsStatsTestimonialsBlog SectionsContact SectionsTeam SectionsContent SectionsLogo CloudsFAQsFooters",
+      "Page Sections",
+      "Hero Sections",
+      "Feature Sections",
+      "CTA Sections",
+      "Bento Grids",
+      "Pricing Sections",
+      "Header Sections",
+      "Newsletter Sections",
+      "Stats",
+      "Testimonials",
+      "Blog Sections",
+      "Contact Sections",
+      "Team Sections",
+      "Content Sections",
+      "Logo Clouds",
+      "FAQs",
+      "Footers",
+      "ElementsHeadersFlyout MenusBanners",
+      "Elements",
+      "Headers",
+      "Flyout Menus",
+      "Banners",
+      "Feedback404 Pages",
+      "Feedback",
+      "404 Pages",
+      "Page ExamplesLanding PagesPricing PagesAbout Pages",
+      "Page Examples",
+      "Landing Pages",
+      "Pricing Pages",
+      "About Pages",
+      "5-day Mini-Course",
+      "Build UIs that don’t suck.",
+      "Short, tactical video lessons from the creator of Tailwind CSS, delivered directly to your inbox every day for a week.",
+      "Get the free course",
+      "/",
+      "/",
+      "Use these Tailwind CSS header examples to add a mobile-friendly, responsive top navigation bar to your website. These examples are designed and built by the Tailwind CSS team, and include a variety of different styles and layouts.",
+      "With stacked flyout menu",
+      "With stacked flyout menu",
+      "Constrained",
+      "Preview",
+      "Constrained",
+      "Preview",
+      "On brand background",
+      "Preview",
+      "On brand background",
+      "Preview",
+      "With full width flyout menu",
+      "Preview",
+      "With full width flyout menu",
+      "Preview",
+      "Full width",
+      "Preview",
+      "Full width",
+      "Preview",
+      "With call-to-action",
+      "Preview",
+      "With call-to-action",
+      "Preview",
+      "With multiple flyout menus",
+      "Preview",
+      "With multiple flyout menus",
+      "Preview",
+      "With icons in mobile menu",
+      "Preview",
+      "With icons in mobile menu",
+      "Preview",
+      "With left-aligned nav",
+      "Preview",
+      "With left-aligned nav",
+      "Preview",
+      "With right-aligned nav",
+      "Preview",
+      "With right-aligned nav",
+      "Preview",
+      "With centered logo",
+      "Preview",
+      "With centered logo",
+      "Preview",
+      "Marketing",
+      "Hero Sections",
+      "Feature Sections",
+      "Pricing Sections",
+      "Header Sections",
+      "Newsletter Sections",
+      "Testimonials",
+      "Team Sections",
+      "Content Sections",
+      "Logo Clouds",
+      "FAQs",
+      "Footers",
+      "Headers",
+      "Flyout Menus",
+      "Banners",
+      "Browse all →",
+      "Application UI",
+      "Tables",
+      "Feeds",
+      "Form Layouts",
+      "Select Menus",
+      "Radio Groups",
+      "Checkboxes",
+      "Comboboxes",
+      "Navbars",
+      "Pagination",
+      "Sidebar Navigation",
+      "Command Palettes",
+      "Modals",
+      "Dropdowns",
+      "Buttons",
+      "Browse all →",
+      "Ecommerce",
+      "Product Overviews",
+      "Product Lists"
+    ],
+    "title": "Tailwind CSS Headers - Official Tailwind UI Components",
+    "url": "https://tailwindcss.com/plus/ui-blocks/marketing/elements/headers"
+  },
+  "local": {
+    "actions": 160,
+    "buttons": [
+      {
+        "aria": "UI 용어 사전 홈으로 이동",
+        "expanded": null,
+        "text": "UI Dictionary"
+      },
+      {
+        "aria": "검색 열기",
+        "expanded": null,
+        "text": "Ctrl F"
+      },
+      {
+        "aria": null,
+        "expanded": null,
+        "text": "UI Blocks"
+      },
+      {
+        "aria": null,
+        "expanded": null,
+        "text": "Templates"
+      },
+      {
+        "aria": null,
+        "expanded": null,
+        "text": "UI Kit"
+      },
+      {
+        "aria": null,
+        "expanded": null,
+        "text": "Sign in"
+      },
+      {
+        "aria": null,
+        "expanded": null,
+        "text": "Get full access"
+      },
+      {
+        "aria": "More options",
+        "expanded": null,
+        "text": ""
+      },
+      {
+        "aria": null,
+        "expanded": null,
+        "text": "Marketing"
+      },
+      {
+        "aria": null,
+        "expanded": null,
+        "text": "Application UI"
+      },
+      {
+        "aria": null,
+        "expanded": null,
+        "text": "Ecommerce"
+      },
+      {
+        "aria": null,
+        "expanded": null,
+        "text": "Documentation"
+      },
+      {
+        "aria": null,
+        "expanded": null,
+        "text": "Page Sections"
+      },
+      {
+        "aria": null,
+        "expanded": null,
+        "text": "Hero Sections"
+      },
+      {
+        "aria": null,
+        "expanded": null,
+        "text": "Feature Sections"
+      },
+      {
+        "aria": null,
+        "expanded": null,
+        "text": "CTA Sections"
+      },
+      {
+        "aria": null,
+        "expanded": null,
+        "text": "Bento Grids"
+      },
+      {
+        "aria": null,
+        "expanded": null,
+        "text": "Pricing Sections"
+      },
+      {
+        "aria": null,
+        "expanded": null,
+        "text": "Header Sections"
+      },
+      {
+        "aria": null,
+        "expanded": null,
+        "text": "Newsletter Sections"
+      },
+      {
+        "aria": null,
+        "expanded": null,
+        "text": "Stats"
+      },
+      {
+        "aria": null,
+        "expanded": null,
+        "text": "Testimonials"
+      },
+      {
+        "aria": null,
+        "expanded": null,
+        "text": "Blog Sections"
+      },
+      {
+        "aria": null,
+        "expanded": null,
+        "text": "Contact Sections"
+      },
+      {
+        "aria": null,
+        "expanded": null,
+        "text": "Team Sections"
+      },
+      {
+        "aria": null,
+        "expanded": null,
+        "text": "Content Sections"
+      },
+      {
+        "aria": null,
+        "expanded": null,
+        "text": "Logo Clouds"
+      },
+      {
+        "aria": null,
+        "expanded": null,
+        "text": "FAQs"
+      },
+      {
+        "aria": null,
+        "expanded": null,
+        "text": "Footers"
+      },
+      {
+        "aria": null,
+        "expanded": null,
+        "text": "Elements"
+      },
+      {
+        "aria": null,
+        "expanded": null,
+        "text": "Headers"
+      },
+      {
+        "aria": null,
+        "expanded": null,
+        "text": "Flyout Menus"
+      },
+      {
+        "aria": null,
+        "expanded": null,
+        "text": "Banners"
+      },
+      {
+        "aria": null,
+        "expanded": null,
+        "text": "Feedback"
+      },
+      {
+        "aria": null,
+        "expanded": null,
+        "text": "404 Pages"
+      },
+      {
+        "aria": null,
+        "expanded": null,
+        "text": "Page Examples"
+      },
+      {
+        "aria": null,
+        "expanded": null,
+        "text": "Landing Pages"
+      },
+      {
+        "aria": null,
+        "expanded": null,
+        "text": "Pricing Pages"
+      },
+      {
+        "aria": null,
+        "expanded": null,
+        "text": "About Pages"
+      },
+      {
+        "aria": null,
+        "expanded": null,
+        "text": "Preview"
+      },
+      {
+        "aria": null,
+        "expanded": null,
+        "text": "Code"
+      },
+      {
+        "aria": "System",
+        "expanded": null,
+        "text": ""
+      },
+      {
+        "aria": "Light",
+        "expanded": null,
+        "text": ""
+      },
+      {
+        "aria": "Dark",
+        "expanded": null,
+        "text": ""
+      },
+      {
+        "aria": "Copy code",
+        "expanded": null,
+        "text": ""
+      },
+      {
+        "aria": null,
+        "expanded": null,
+        "text": "Product"
+      },
+      {
+        "aria": null,
+        "expanded": null,
+        "text": "Features"
+      },
+      {
+        "aria": null,
+        "expanded": null,
+        "text": "Marketplace"
+      },
+      {
+        "aria": null,
+        "expanded": null,
+        "text": "Company"
+      },
+      {
+        "aria": null,
+        "expanded": null,
+        "text": "Log in →"
+      },
+      {
+        "aria": null,
+        "expanded": "false",
+        "text": ""
+      },
+      {
+        "aria": null,
+        "expanded": null,
+        "text": "Preview"
+      },
+      {
+        "aria": "System",
+        "expanded": null,
+        "text": ""
+      },
+      {
+        "aria": "Light",
+        "expanded": null,
+        "text": ""
+      },
+      {
+        "aria": "Dark",
+        "expanded": null,
+        "text": ""
+      },
+      {
+        "aria": null,
+        "expanded": null,
+        "text": "Get the code →"
+      },
+      {
+        "aria": null,
+        "expanded": null,
+        "text": "Product"
+      },
+      {
+        "aria": null,
+        "expanded": null,
+        "text": "Features"
+      },
+      {
+        "aria": null,
+        "expanded": null,
+        "text": "Marketplace"
+      },
+      {
+        "aria": null,
+        "expanded": null,
+        "text": "Company"
+      },
+      {
+        "aria": null,
+        "expanded": null,
+        "text": "Log in →"
+      },
+      {
+        "aria": null,
+        "expanded": "false",
+        "text": ""
+      },
+      {
+        "aria": null,
+        "expanded": null,
+        "text": "Preview"
+      },
+      {
+        "aria": "System",
+        "expanded": null,
+        "text": ""
+      },
+      {
+        "aria": "Light",
+        "expanded": null,
+        "text": ""
+      },
+      {
+        "aria": "Dark",
+        "expanded": null,
+        "text": ""
+      },
+      {
+        "aria": null,
+        "expanded": null,
+        "text": "Get the code →"
+      },
+      {
+        "aria": null,
+        "expanded": null,
+        "text": "Product"
+      },
+      {
+        "aria": null,
+        "expanded": null,
+        "text": "Features"
+      },
+      {
+        "aria": null,
+        "expanded": null,
+        "text": "Marketplace"
+      },
+      {
+        "aria": null,
+        "expanded": null,
+        "text": "Company"
+      },
+      {
+        "aria": null,
+        "expanded": null,
+        "text": "Log in →"
+      },
+      {
+        "aria": null,
+        "expanded": "false",
+        "text": ""
+      },
+      {
+        "aria": null,
+        "expanded": null,
+        "text": "Preview"
+      },
+      {
+        "aria": "System",
+        "expanded": null,
+        "text": ""
+      },
+      {
+        "aria": "Light",
+        "expanded": null,
+        "text": ""
+      },
+      {
+        "aria": "Dark",
+        "expanded": null,
+        "text": ""
+      },
+      {
+        "aria": null,
+        "expanded": null,
+        "text": "Get the code →"
+      },
+      {
+        "aria": null,
+        "expanded": null,
+        "text": "Product"
+      },
+      {
+        "aria": null,
+        "expanded": null,
+        "text": "Features"
+      },
+      {
+        "aria": null,
+        "expanded": null,
+        "text": "Marketplace"
+      },
+      {
+        "aria": null,
+        "expanded": null,
+        "text": "Company"
+      },
+      {
+        "aria": null,
+        "expanded": null,
+        "text": "Log in →"
+      },
+      {
+        "aria": null,
+        "expanded": "false",
+        "text": ""
+      },
+      {
+        "aria": null,
+        "expanded": null,
+        "text": "Preview"
+      },
+      {
+        "aria": "System",
+        "expanded": null,
+        "text": ""
+      },
+      {
+        "aria": "Light",
+        "expanded": null,
+        "text": ""
+      },
+      {
+        "aria": "Dark",
+        "expanded": null,
+        "text": ""
+      },
+      {
+        "aria": null,
+        "expanded": null,
+        "text": "Get the code →"
+      },
+      {
+        "aria": null,
+        "expanded": null,
+        "text": "Product"
+      },
+      {
+        "aria": null,
+        "expanded": null,
+        "text": "Features"
+      },
+      {
+        "aria": null,
+        "expanded": null,
+        "text": "Marketplace"
+      },
+      {
+        "aria": null,
+        "expanded": null,
+        "text": "Company"
+      },
+      {
+        "aria": null,
+        "expanded": null,
+        "text": "Log in →"
+      },
+      {
+        "aria": null,
+        "expanded": "false",
+        "text": ""
+      },
+      {
+        "aria": null,
+        "expanded": null,
+        "text": "Preview"
+      },
+      {
+        "aria": "System",
+        "expanded": null,
+        "text": ""
+      },
+      {
+        "aria": "Light",
+        "expanded": null,
+        "text": ""
+      },
+      {
+        "aria": "Dark",
+        "expanded": null,
+        "text": ""
+      },
+      {
+        "aria": null,
+        "expanded": null,
+        "text": "Get the code →"
+      },
+      {
+        "aria": null,
+        "expanded": null,
+        "text": "Product"
+      },
+      {
+        "aria": null,
+        "expanded": null,
+        "text": "Features"
+      },
+      {
+        "aria": null,
+        "expanded": null,
+        "text": "Marketplace"
+      },
+      {
+        "aria": null,
+        "expanded": null,
+        "text": "Company"
+      },
+      {
+        "aria": null,
+        "expanded": null,
+        "text": "Sign up"
+      },
+      {
+        "aria": null,
+        "expanded": "false",
+        "text": ""
+      },
+      {
+        "aria": null,
+        "expanded": null,
+        "text": "Preview"
+      },
+      {
+        "aria": "System",
+        "expanded": null,
+        "text": ""
+      },
+      {
+        "aria": "Light",
+        "expanded": null,
+        "text": ""
+      },
+      {
+        "aria": "Dark",
+        "expanded": null,
+        "text": ""
+      },
+      {
+        "aria": null,
+        "expanded": null,
+        "text": "Get the code →"
+      },
+      {
+        "aria": null,
+        "expanded": null,
+        "text": "Product"
+      },
+      {
+        "aria": null,
+        "expanded": null,
+        "text": "Features"
+      },
+      {
+        "aria": null,
+        "expanded": null,
+        "text": "Marketplace"
+      },
+      {
+        "aria": null,
+        "expanded": null,
+        "text": "Company"
+      },
+      {
+        "aria": null,
+        "expanded": null,
+        "text": "Log in →"
+      },
+      {
+        "aria": null,
+        "expanded": "false",
+        "text": ""
+      },
+      {
+        "aria": null,
+        "expanded": null,
+        "text": "Preview"
+      },
+      {
+        "aria": "System",
+        "expanded": null,
+        "text": ""
+      },
+      {
+        "aria": "Light",
+        "expanded": null,
+        "text": ""
+      }
+    ],
+    "h2": "Headers",
+    "h3s": [
+      "With stacked flyout menu",
+      "Constrained",
+      "On brand background",
+      "With full width flyout menu",
+      "Full width",
+      "With call-to-action",
+      "With multiple flyout menus",
+      "With icons in mobile menu",
+      "With left-aligned nav",
+      "With right-aligned nav",
+      "With centered logo"
+    ],
+    "headerActions": 0,
+    "overflow": 0,
+    "roots": 0,
+    "textSamples": [
+      "UI Dictionary",
+      "Plus / UI Blocks / Marketing / Elements / Headers",
+      "Headers",
+      "페이지 상단의 브랜드, 링크, 인증, CTA를 독립적인 재사용 요소로 구성하는 헤더 예시입니다.",
+      "Tailwind Plus처럼 각 leaf의 첫 예제는 Preview와 Code를 함께 제공하고, 이후 예제는 Preview와 잠금 code CTA로 구분합니다. 우리 예시는 실제 화면 맥락에 맞춘 설명, tags, interaction feedback을 함께 보여줍니다.",
+      "On this page",
+      "With stacked flyout menu",
+      "상단 nav 아래에 stacked flyout panel을 붙여 제품 링크를 접힌 메뉴처럼 보여줍니다.",
+      "Constrained",
+      "헤더 폭을 콘텐츠 컨테이너에 맞춰 landing page 본문과 같은 rhythm을 유지합니다.",
+      "On brand background",
+      "브랜드 컬러나 dark hero 위에 놓이는 header surface입니다.",
+      "With full width flyout menu",
+      "전체 폭 flyout으로 많은 product/resource link를 넓게 펼칩니다.",
+      "Analytics",
+      "Short product route with supporting description.",
+      "Automation",
+      "Short product route with supporting description.",
+      "Security",
+      "Short product route with supporting description.",
+      "Integrations",
+      "Short product route with supporting description.",
+      "Full width",
+      "브라우저 폭 전체를 쓰는 기본 header로 앱과 마케팅 페이지 모두에 붙기 쉽습니다.",
+      "With call-to-action",
+      "오른쪽에 가입이나 시작 버튼을 두어 navigation과 conversion을 함께 처리합니다.",
+      "With multiple flyout menus",
+      "여러 nav item이 각자 flyout을 여는 복합 제품 사이트 header입니다.",
+      "Analytics",
+      "Ship faster with structured product surfaces.",
+      "Security",
+      "Ship faster with structured product surfaces.",
+      "Engagement",
+      "Ship faster with structured product surfaces.",
+      "Automations",
+      "Ship faster with structured product surfaces.",
+      "With icons in mobile menu",
+      "모바일 메뉴에서 항목별 아이콘을 함께 보여줘 작은 화면 탐색을 돕습니다.",
+      "Analytics",
+      "Ship faster with structured product surfaces.",
+      "Security",
+      "Ship faster with structured product surfaces.",
+      "Engagement",
+      "Ship faster with structured product surfaces.",
+      "Automations",
+      "Ship faster with structured product surfaces.",
+      "With left-aligned nav",
+      "브랜드 옆에 navigation을 붙여 데스크톱에서 빠른 scan path를 만듭니다.",
+      "With right-aligned nav",
+      "브랜드와 nav를 양끝으로 나눠 여백이 큰 header를 구성합니다.",
+      "With centered logo",
+      "로고를 중앙에 두고 양쪽에 navigation을 나눠 editorial한 균형을 만듭니다."
+    ],
+    "url": "http://127.0.0.1:5200/?filter=nav%3Aplus-marketing-headers"
+  }
+}

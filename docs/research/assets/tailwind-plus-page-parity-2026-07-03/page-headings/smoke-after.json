@@ -1,0 +1,13 @@
+{
+  "exactViews": 2,
+  "viewFeedback": true,
+  "messageFeedback": true,
+  "advanceFeedback": true,
+  "profileFeedback": true,
+  "rangeFeedback": true,
+  "copyFeedback": true,
+  "darkPreviewTextVisible": true,
+  "mobileOverflow": 0,
+  "frameworkOverlay": false,
+  "messages": []
+}

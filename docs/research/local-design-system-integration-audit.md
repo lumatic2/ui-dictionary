@@ -17,7 +17,7 @@ This audit covers:
 
 ## Current Repo Role
 
-`ui-dictionary` started as a searchable UI vocabulary encyclopedia. The new objective raises it into Yusung's digital product design system: a public website for people to browse UI, web, mobile, SaaS, ecommerce, interaction, color, and typography references, plus an agent-usable asset and implementation system.
+`ui-dictionary` started as a searchable UI vocabulary encyclopedia. The new objective raises it into Askewly Design: a public website for people to browse UI, web, mobile, SaaS, ecommerce, interaction, color, and typography references, plus an agent-usable asset and implementation system.
 
 That means this repo should not absorb every historical file. It should become the visible and queryable product surface, while deeper methodology and automation can remain in their source repositories until their contracts are stable.
 

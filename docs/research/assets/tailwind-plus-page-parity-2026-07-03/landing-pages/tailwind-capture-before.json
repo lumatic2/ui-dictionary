@@ -1,0 +1,43 @@
+{
+  "bodySample": "Introducing OatmealOur new multi-theme marketing site kitUI BlocksTemplatesUI KitSign inGet full accessMarketingApplication UIEcommerceDocumentationPage SectionsHero SectionsFeature SectionsCTA SectionsBento GridsPricing SectionsHeader SectionsNewsletter SectionsStatsTestimonialsBlog SectionsContact SectionsTeam SectionsContent SectionsLogo CloudsFAQsFootersElementsHeadersFlyout MenusBannersFeedback404 PagesPage ExamplesLanding PagesPricing PagesAbout Pages5-day Mini-CourseBuild UIs that don’t suck.Short, tactical video lessons from the creator of Tailwind CSS, delivered directly to your inbox every day for a week.Get the free courseUI BlocksMarketingPage ExamplesUI Blocks/Marketing/Page ExamplesLanding PagesUse these Tailwind CSS landing page examples as a starting point for your product website. These landing pages are designed and built by the Tailwind CSS team, and include a variety of different styles and layouts.With screenshots and statsPreviewGet the code → #frame-62d05bbc8f76a3fa971ccf1bd8072b33 { height: 6193px; } @media (min-width: 704px) { #frame-62d05bbc8f76a3fa971ccf1bd8072b33 { height: 4917px; } } With screenshots and statsPreviewGet the code → #frame-62d05bbc8f76a3fa971ccf1bd8072b33-dark { height: 6193px; } @media (min-width: 704px) { #frame-62d05bbc8f76a3fa971ccf1bd8072b33-dark { height: 4917px; } } With large screenshot and testimonialPreviewGet the code → #frame-09a9f8bd8b212b82cada14de363e1c02 { height: 8134px; } @media (min-width: 704px) { #frame-09a9f8bd8b212b82cada14de363e1c02 { height: 6310px; } } With large screenshot and testimonialPreviewGet the code → #frame-09a9f8bd8b212b82cada14de363e1c02-dark { height: 8134px; } @media (min-width: 704px) { #frame-09a9f8bd8b212b82cada14de363e1c02-dark { height: 6310px; } } With background image hero and pricing sectionPreviewGet the code → #frame-c9ffe5deded27ba87841128323150da9 { height: 6282px; } @media (min-width: 704px) { #frame-c9ffe5deded27ba87841128323150da9 { height: 5651px; } } With background image hero and pricing sectionPreviewGet the code → #frame-c9ffe5deded27ba87841128323150da9-dark { height: 6282px; } @media (min-width: 704px) { #frame-c9ffe5deded27ba87841128323150da9-dark { height: 5651px; } } With mobile screenshot and testimonials gridPreviewGet the code → #frame-77f60f231bd54e888b9a10e0f9ecab56 { height: 8769px; } @media (min-width: 704px) { #frame-77f60f231bd54e888b9a10e0f9ecab56 { height: 5926px; } } With mobile screenshot and testimonials gridPreviewGet the code → #frame-77f60f231bd54e888b9a10e0f9ecab56-dark { height: 8769px; } @media (min-width: 704px) { #frame-77f60f231bd54e888b9a10e0f9ecab56-dark { height: 5926px; } } MarketingHero SectionsFeature SectionsPricing SectionsHeader SectionsNewsletter SectionsTestimonialsTeam SectionsContent SectionsLogo CloudsFAQsFootersHeadersFlyout MenusBannersBrowse all →Application UITablesFeedsForm LayoutsSelect MenusRadio GroupsCheckboxesComboboxesNavbarsPaginationSidebar NavigationCommand PalettesModalsDropdownsButtonsBrowse all →EcommerceProduct OverviewsProduct ListsCategory PreviewsShopping CartsCategory FiltersProduct QuickviewsProduct FeaturesStore NavigationPromo SectionsCheckout FormsReviewsOrder SummariesOrder HistoryIncentivesBrowse all →Templates & UI KitsCatalyst UI KitPersonal Website TemplateLanding Page TemplateAPI Reference TemplateChangelog TemplateInfo Product TemplateAgency TemplatePodcast TemplateApp Marketing TemplateDocumentation TemplateConference TemplateBrowse all →© 2026 Tailwind Labs Inc. All rights reserved.Privacy policyChangelog",
+  "buttons": [
+    "Search",
+    "Search",
+    "Navigation",
+    "Open navigation menu"
+  ],
+  "h1": [
+    "Landing Pages"
+  ],
+  "h2": [
+    "With screenshots and stats",
+    "With screenshots and stats",
+    "With large screenshot and testimonial",
+    "With large screenshot and testimonial",
+    "With background image hero and pricing section",
+    "With background image hero and pricing section",
+    "With mobile screenshot and testimonials grid",
+    "With mobile screenshot and testimonials grid"
+  ],
+  "h3": [
+    "Page Sections",
+    "Elements",
+    "Feedback",
+    "Page Examples",
+    "Build UIs that don’t suck.",
+    "Marketing",
+    "Application UI",
+    "Ecommerce",
+    "Templates & UI Kits"
+  ],
+  "onThisPage": [
+    "UI Blocks",
+    "Marketing",
+    "Page Examples",
+    "UI Blocks",
+    "Marketing",
+    "Page Examples"
+  ],
+  "title": "Tailwind CSS Landing Pages - Official Tailwind UI Components",
+  "url": "https://tailwindcss.com/plus/ui-blocks/marketing/page-examples/landing-pages"
+}

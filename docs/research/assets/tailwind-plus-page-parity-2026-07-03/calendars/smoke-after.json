@@ -1,0 +1,13 @@
+{
+  "meetingFeedback": true,
+  "dayFeedback": true,
+  "todayFeedback": true,
+  "weekSlotFeedback": true,
+  "daySlotFeedback": true,
+  "addEventFeedback": true,
+  "darkApplied": true,
+  "darkTextVisible": true,
+  "mobileOverflow": 0,
+  "frameworkOverlay": false,
+  "messages": []
+}

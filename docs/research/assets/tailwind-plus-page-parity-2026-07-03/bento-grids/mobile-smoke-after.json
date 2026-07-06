@@ -1,0 +1,16 @@
+{
+  "h2": "Bento Grids",
+  "h3s": [
+    "Three column bento grid",
+    "Two row bento grid",
+    "Two row bento grid with three column second row"
+  ],
+  "darkButtons": 3,
+  "bentoRoots": 3,
+  "darkRoots": 3,
+  "bentoActions": 36,
+  "mobileFeedback": true,
+  "securityFeedback": true,
+  "overflow": -15,
+  "errors": []
+}

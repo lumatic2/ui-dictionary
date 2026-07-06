@@ -1,0 +1,55 @@
+{
+  "url": "http://127.0.0.1:5174/?filter=nav%3Aplus-forms-toggles",
+  "browserAvailability": "in-app Browser failed: Browser is not available: iab; standalone Playwright fallback used",
+  "before": {
+    "title": "UI 용어 사전",
+    "switchRoleCount": 5,
+    "checkedCount": 0,
+    "switchLabels": [
+      "Simple toggle",
+      "Short toggle",
+      "Icon toggle",
+      "Available to hire",
+      "Annual billing"
+    ],
+    "themeButtonCount": 15,
+    "darkButtonCount": 5,
+    "activeSystemCount": 5,
+    "bodyOverflowX": 0
+  },
+  "afterInteractions": {
+    "switchRoleCount": 5,
+    "checkedCount": 5,
+    "checkedLabels": [
+      "Simple toggle",
+      "Short toggle",
+      "Icon toggle",
+      "Available to hire",
+      "Annual billing"
+    ],
+    "simpleFeedback": true,
+    "shortFeedback": true,
+    "iconFeedback": true,
+    "hireFeedback": true,
+    "billingFeedback": true,
+    "enabledFeedbackCount": 5,
+    "bodyOverflowX": 0
+  },
+  "afterDark": {
+    "darkButtonCount": 5,
+    "activeDarkCount": 5,
+    "checkedCount": 5,
+    "darkSurfaceCount": 13,
+    "bodyOverflowX": 0
+  },
+  "mobile": {
+    "switchRoleCount": 5,
+    "checkedCount": 1,
+    "firstSwitchChecked": true,
+    "feedback": true,
+    "bodyOverflowX": 0
+  },
+  "consoleMessages": [],
+  "pageErrors": [],
+  "timestamp": "2026-07-03T17:51:44.645Z"
+}

@@ -1,0 +1,162 @@
+{
+  "finalState": {
+    "h2": "Content Sections",
+    "h3s": [
+      "With sticky product screenshot",
+      "With testimonial",
+      "With image titles",
+      "Two columns with screenshot",
+      "With testimonial and stats",
+      "Split with image",
+      "Centered"
+    ],
+    "roots": 7,
+    "actions": 32,
+    "overflow": -15
+  },
+  "clickEvidence": [
+    {
+      "selector": "[data-content-section-variant=\"content-sticky-screenshot\"] button[aria-label=\"Open content bullet Push to deploy\"]",
+      "feedback": [
+        "Push to deploy detail opened"
+      ],
+      "pressed": [
+        "System",
+        "Open content bullet Push to deploy",
+        "System",
+        "System",
+        "System",
+        "System",
+        "System",
+        "System"
+      ]
+    },
+    {
+      "selector": "button[aria-label=\"Open content quote Brenna Goyette\"]",
+      "feedback": [
+        "Push to deploy detail opened",
+        "Brenna Goyette quote opened"
+      ],
+      "pressed": [
+        "System",
+        "Open content bullet Push to deploy",
+        "System",
+        "Open content quote Brenna Goyette",
+        "System",
+        "System",
+        "System",
+        "System",
+        "System"
+      ]
+    },
+    {
+      "selector": "button[aria-label=\"Open content value Our mission\"]",
+      "feedback": [
+        "Push to deploy detail opened",
+        "Brenna Goyette quote opened",
+        "Our mission value opened"
+      ],
+      "pressed": [
+        "System",
+        "Open content bullet Push to deploy",
+        "System",
+        "Open content quote Brenna Goyette",
+        "System",
+        "Open content value Our mission",
+        "System",
+        "System",
+        "System",
+        "System"
+      ]
+    },
+    {
+      "selector": "button[aria-label=\"Open content CTA Get started\"]",
+      "feedback": [
+        "Push to deploy detail opened",
+        "Brenna Goyette quote opened",
+        "Our mission value opened",
+        "Workflow CTA opened"
+      ],
+      "pressed": [
+        "System",
+        "Open content bullet Push to deploy",
+        "System",
+        "Open content quote Brenna Goyette",
+        "System",
+        "Open content value Our mission",
+        "System",
+        "Open content CTA Get started",
+        "System",
+        "System",
+        "System"
+      ]
+    },
+    {
+      "selector": "[data-content-section-variant=\"content-testimonial-stats\"] button[aria-label=\"Open content stat 2021\"]",
+      "feedback": [
+        "Push to deploy detail opened",
+        "Brenna Goyette quote opened",
+        "Our mission value opened",
+        "Workflow CTA opened",
+        "2021 stat opened"
+      ],
+      "pressed": [
+        "System",
+        "Open content bullet Push to deploy",
+        "System",
+        "Open content quote Brenna Goyette",
+        "System",
+        "Open content value Our mission",
+        "System",
+        "Open content CTA Get started",
+        "System",
+        "Open content stat 2021",
+        "System",
+        "System"
+      ]
+    },
+    {
+      "selector": "button[aria-label=\"Open content quote Implementation prompt\"]",
+      "feedback": [
+        "Push to deploy detail opened",
+        "Brenna Goyette quote opened",
+        "Our mission value opened",
+        "Workflow CTA opened",
+        "2021 stat opened",
+        "Implementation prompt quote opened"
+      ],
+      "pressed": [
+        "System",
+        "Open content bullet Push to deploy",
+        "System",
+        "Open content quote Brenna Goyette",
+        "System",
+        "Open content value Our mission",
+        "System",
+        "Open content CTA Get started",
+        "System",
+        "Open content stat 2021",
+        "System",
+        "System",
+        "Open content quote Implementation prompt"
+      ]
+    }
+  ],
+  "theme": {
+    "darkCount": 7,
+    "afterDark": {
+      "roots": [
+        "dark",
+        "dark",
+        "dark",
+        "dark",
+        "dark",
+        "dark",
+        "dark"
+      ],
+      "pressed": 7,
+      "overflow": -15
+    }
+  },
+  "errors": []
+}

@@ -1,0 +1,702 @@
+{
+  "reference": {
+    "buttons": [
+      {
+        "aria": "Search",
+        "expanded": null,
+        "text": ""
+      },
+      {
+        "aria": "Search",
+        "expanded": null,
+        "text": ""
+      },
+      {
+        "aria": "Navigation",
+        "expanded": null,
+        "text": ""
+      },
+      {
+        "aria": "Open navigation menu",
+        "expanded": null,
+        "text": ""
+      }
+    ],
+    "faqTextSamples": [
+      "Page Sections",
+      "Elements",
+      "Feedback",
+      "Page Examples",
+      "5-day Mini-Course",
+      "Build UIs that don’t suck.",
+      "Short, tactical video lessons from the creator of Tailwind CSS, delivered directly to your inbox every day for a week.",
+      "Get the free course",
+      "/",
+      "/",
+      "Use these Tailwind CSS FAQ examples to share answers to common questions that visitors might have after browsing your website. These FAQ examples are designed and built by the Tailwind CSS team, and include a variety of different styles and layouts.",
+      "Offset with supporting text",
+      "Preview",
+      "Offset with supporting text",
+      "Preview",
+      "Centered accordion",
+      "Preview",
+      "Centered accordion",
+      "Preview",
+      "Side-by-side",
+      "Preview",
+      "Side-by-side",
+      "Preview",
+      "Three columns",
+      "Preview",
+      "Three columns",
+      "Preview",
+      "Three columns with centered introduction",
+      "Preview",
+      "Three columns with centered introduction",
+      "Preview",
+      "Two columns",
+      "Preview",
+      "Two columns",
+      "Preview",
+      "Two columns with centered introduction",
+      "Preview",
+      "Two columns with centered introduction",
+      "Preview",
+      "Marketing",
+      "Application UI",
+      "Ecommerce",
+      "Templates & UI Kits",
+      "© 2026 Tailwind Labs Inc. All rights reserved."
+    ],
+    "h1": "FAQs",
+    "h2s": [
+      "Offset with supporting text",
+      "Offset with supporting text",
+      "Centered accordion",
+      "Centered accordion",
+      "Side-by-side",
+      "Side-by-side",
+      "Three columns",
+      "Three columns",
+      "Three columns with centered introduction",
+      "Three columns with centered introduction",
+      "Two columns",
+      "Two columns",
+      "Two columns with centered introduction",
+      "Two columns with centered introduction"
+    ],
+    "h3s": [
+      "Page Sections",
+      "Elements",
+      "Feedback",
+      "Page Examples",
+      "Build UIs that don’t suck.",
+      "Marketing",
+      "Application UI",
+      "Ecommerce",
+      "Templates & UI Kits"
+    ],
+    "links": [
+      "Introducing OatmealOur new multi-theme marketing site kit",
+      "UI Blocks",
+      "Templates",
+      "UI Kit",
+      "Sign in",
+      "Get full access",
+      "Marketing",
+      "Application UI",
+      "Ecommerce",
+      "Documentation",
+      "Hero Sections",
+      "Feature Sections",
+      "CTA Sections",
+      "Bento Grids",
+      "Pricing Sections",
+      "Header Sections",
+      "Newsletter Sections",
+      "Stats",
+      "Testimonials",
+      "Blog Sections",
+      "Contact Sections",
+      "Team Sections",
+      "Content Sections",
+      "Logo Clouds",
+      "FAQs",
+      "Footers",
+      "Headers",
+      "Flyout Menus",
+      "Banners",
+      "404 Pages",
+      "Landing Pages",
+      "Pricing Pages",
+      "About Pages",
+      "Get the free course",
+      "UI Blocks",
+      "Marketing",
+      "Page Sections",
+      "UI Blocks",
+      "Marketing",
+      "Page Sections",
+      "Offset with supporting text",
+      "Get the code →",
+      "Offset with supporting text",
+      "Get the code →",
+      "Centered accordion",
+      "Get the code →",
+      "Centered accordion",
+      "Get the code →",
+      "Side-by-side",
+      "Get the code →",
+      "Side-by-side",
+      "Get the code →",
+      "Three columns",
+      "Get the code →",
+      "Three columns",
+      "Get the code →",
+      "Three columns with centered introduction",
+      "Get the code →",
+      "Three columns with centered introduction",
+      "Get the code →",
+      "Two columns",
+      "Get the code →",
+      "Two columns",
+      "Get the code →",
+      "Two columns with centered introduction",
+      "Get the code →",
+      "Two columns with centered introduction",
+      "Get the code →",
+      "Hero Sections",
+      "Feature Sections",
+      "Pricing Sections",
+      "Header Sections",
+      "Newsletter Sections",
+      "Testimonials",
+      "Team Sections",
+      "Content Sections",
+      "Logo Clouds",
+      "FAQs",
+      "Footers",
+      "Headers"
+    ],
+    "overflow": 0,
+    "title": "Tailwind CSS FAQs - Official Tailwind UI Components",
+    "url": "https://tailwindcss.com/plus/ui-blocks/marketing/sections/faq-sections"
+  },
+  "local": {
+    "actions": 86,
+    "buttons": [
+      {
+        "aria": "UI 용어 사전 홈으로 이동",
+        "expanded": null,
+        "text": "UI Dictionary"
+      },
+      {
+        "aria": "검색 열기",
+        "expanded": null,
+        "text": "Ctrl F"
+      },
+      {
+        "aria": null,
+        "expanded": null,
+        "text": "UI Blocks"
+      },
+      {
+        "aria": null,
+        "expanded": null,
+        "text": "Templates"
+      },
+      {
+        "aria": null,
+        "expanded": null,
+        "text": "UI Kit"
+      },
+      {
+        "aria": null,
+        "expanded": null,
+        "text": "Sign in"
+      },
+      {
+        "aria": null,
+        "expanded": null,
+        "text": "Get full access"
+      },
+      {
+        "aria": "More options",
+        "expanded": null,
+        "text": ""
+      },
+      {
+        "aria": null,
+        "expanded": null,
+        "text": "Marketing"
+      },
+      {
+        "aria": null,
+        "expanded": null,
+        "text": "Application UI"
+      },
+      {
+        "aria": null,
+        "expanded": null,
+        "text": "Ecommerce"
+      },
+      {
+        "aria": null,
+        "expanded": null,
+        "text": "Documentation"
+      },
+      {
+        "aria": null,
+        "expanded": null,
+        "text": "Page Sections"
+      },
+      {
+        "aria": null,
+        "expanded": null,
+        "text": "Hero Sections"
+      },
+      {
+        "aria": null,
+        "expanded": null,
+        "text": "Feature Sections"
+      },
+      {
+        "aria": null,
+        "expanded": null,
+        "text": "CTA Sections"
+      },
+      {
+        "aria": null,
+        "expanded": null,
+        "text": "Bento Grids"
+      },
+      {
+        "aria": null,
+        "expanded": null,
+        "text": "Pricing Sections"
+      },
+      {
+        "aria": null,
+        "expanded": null,
+        "text": "Header Sections"
+      },
+      {
+        "aria": null,
+        "expanded": null,
+        "text": "Newsletter Sections"
+      },
+      {
+        "aria": null,
+        "expanded": null,
+        "text": "Stats"
+      },
+      {
+        "aria": null,
+        "expanded": null,
+        "text": "Testimonials"
+      },
+      {
+        "aria": null,
+        "expanded": null,
+        "text": "Blog Sections"
+      },
+      {
+        "aria": null,
+        "expanded": null,
+        "text": "Contact Sections"
+      },
+      {
+        "aria": null,
+        "expanded": null,
+        "text": "Team Sections"
+      },
+      {
+        "aria": null,
+        "expanded": null,
+        "text": "Content Sections"
+      },
+      {
+        "aria": null,
+        "expanded": null,
+        "text": "Logo Clouds"
+      },
+      {
+        "aria": null,
+        "expanded": null,
+        "text": "FAQs"
+      },
+      {
+        "aria": null,
+        "expanded": null,
+        "text": "Footers"
+      },
+      {
+        "aria": null,
+        "expanded": null,
+        "text": "Elements"
+      },
+      {
+        "aria": null,
+        "expanded": null,
+        "text": "Headers"
+      },
+      {
+        "aria": null,
+        "expanded": null,
+        "text": "Flyout Menus"
+      },
+      {
+        "aria": null,
+        "expanded": null,
+        "text": "Banners"
+      },
+      {
+        "aria": null,
+        "expanded": null,
+        "text": "Feedback"
+      },
+      {
+        "aria": null,
+        "expanded": null,
+        "text": "404 Pages"
+      },
+      {
+        "aria": null,
+        "expanded": null,
+        "text": "Page Examples"
+      },
+      {
+        "aria": null,
+        "expanded": null,
+        "text": "Landing Pages"
+      },
+      {
+        "aria": null,
+        "expanded": null,
+        "text": "Pricing Pages"
+      },
+      {
+        "aria": null,
+        "expanded": null,
+        "text": "About Pages"
+      },
+      {
+        "aria": null,
+        "expanded": null,
+        "text": "Preview"
+      },
+      {
+        "aria": null,
+        "expanded": null,
+        "text": "Code"
+      },
+      {
+        "aria": "System",
+        "expanded": null,
+        "text": ""
+      },
+      {
+        "aria": "Light",
+        "expanded": null,
+        "text": ""
+      },
+      {
+        "aria": "Dark",
+        "expanded": null,
+        "text": ""
+      },
+      {
+        "aria": "Copy code",
+        "expanded": null,
+        "text": ""
+      },
+      {
+        "aria": null,
+        "expanded": null,
+        "text": "How do I choose between similar UI patterns?-"
+      },
+      {
+        "aria": null,
+        "expanded": null,
+        "text": "Can I use these pages as AI prompts?+"
+      },
+      {
+        "aria": null,
+        "expanded": null,
+        "text": "Why are examples interactive?+"
+      },
+      {
+        "aria": null,
+        "expanded": null,
+        "text": "How close are these pages to Tailwind Plus?+"
+      },
+      {
+        "aria": null,
+        "expanded": null,
+        "text": "What should I inspect first?+"
+      },
+      {
+        "aria": null,
+        "expanded": null,
+        "text": "Preview"
+      },
+      {
+        "aria": "System",
+        "expanded": null,
+        "text": ""
+      },
+      {
+        "aria": "Light",
+        "expanded": null,
+        "text": ""
+      },
+      {
+        "aria": "Dark",
+        "expanded": null,
+        "text": ""
+      },
+      {
+        "aria": null,
+        "expanded": null,
+        "text": "Get the code →"
+      },
+      {
+        "aria": null,
+        "expanded": null,
+        "text": "How do I choose between similar UI patterns?-"
+      },
+      {
+        "aria": null,
+        "expanded": null,
+        "text": "Can I use these pages as AI prompts?+"
+      },
+      {
+        "aria": null,
+        "expanded": null,
+        "text": "Why are examples interactive?+"
+      },
+      {
+        "aria": null,
+        "expanded": null,
+        "text": "How close are these pages to Tailwind Plus?+"
+      },
+      {
+        "aria": null,
+        "expanded": null,
+        "text": "What should I inspect first?+"
+      },
+      {
+        "aria": null,
+        "expanded": null,
+        "text": "Can teams extend the vocabulary?+"
+      },
+      {
+        "aria": null,
+        "expanded": null,
+        "text": "Preview"
+      },
+      {
+        "aria": "System",
+        "expanded": null,
+        "text": ""
+      },
+      {
+        "aria": "Light",
+        "expanded": null,
+        "text": ""
+      },
+      {
+        "aria": "Dark",
+        "expanded": null,
+        "text": ""
+      },
+      {
+        "aria": null,
+        "expanded": null,
+        "text": "Get the code →"
+      },
+      {
+        "aria": null,
+        "expanded": null,
+        "text": "Preview"
+      },
+      {
+        "aria": "System",
+        "expanded": null,
+        "text": ""
+      },
+      {
+        "aria": "Light",
+        "expanded": null,
+        "text": ""
+      },
+      {
+        "aria": "Dark",
+        "expanded": null,
+        "text": ""
+      },
+      {
+        "aria": null,
+        "expanded": null,
+        "text": "Get the code →"
+      },
+      {
+        "aria": null,
+        "expanded": null,
+        "text": "Preview"
+      },
+      {
+        "aria": "System",
+        "expanded": null,
+        "text": ""
+      },
+      {
+        "aria": "Light",
+        "expanded": null,
+        "text": ""
+      },
+      {
+        "aria": "Dark",
+        "expanded": null,
+        "text": ""
+      },
+      {
+        "aria": null,
+        "expanded": null,
+        "text": "Get the code →"
+      },
+      {
+        "aria": null,
+        "expanded": null,
+        "text": "Preview"
+      },
+      {
+        "aria": "System",
+        "expanded": null,
+        "text": ""
+      },
+      {
+        "aria": "Light",
+        "expanded": null,
+        "text": ""
+      },
+      {
+        "aria": "Dark",
+        "expanded": null,
+        "text": ""
+      },
+      {
+        "aria": null,
+        "expanded": null,
+        "text": "Get the code →"
+      },
+      {
+        "aria": null,
+        "expanded": null,
+        "text": "Preview"
+      },
+      {
+        "aria": "System",
+        "expanded": null,
+        "text": ""
+      },
+      {
+        "aria": "Light",
+        "expanded": null,
+        "text": ""
+      },
+      {
+        "aria": "Dark",
+        "expanded": null,
+        "text": ""
+      },
+      {
+        "aria": null,
+        "expanded": null,
+        "text": "Get the code →"
+      }
+    ],
+    "faqTextSamples": [
+      "UI Dictionary",
+      "UI Blocks",
+      "FAQs",
+      "자주 묻는 질문과 짧은 답변을 섹션 안에서 빠르게 확인하게 하는 FAQ 섹션 예시입니다.",
+      "Tailwind Plus처럼 각 leaf의 첫 예제는 Preview와 Code를 함께 제공하고, 이후 예제는 Preview와 잠금 code CTA로 구분합니다. 우리 예시는 실제 화면 맥락에 맞춘 설명, tags, interaction feedback을 함께 보여줍니다.",
+      "On this page",
+      "Offset with supporting text",
+      "왼쪽에는 설명을, 오른쪽에는 질문 목록을 둬 FAQ의 맥락을 먼저 알려줍니다.",
+      "Can't find the answer you're looking for? Reach out to our customer support team.",
+      "Start from the user's next action. Compare the examples, then choose the pattern whose states and feedback match that workflow.",
+      "Yes. Each page names the pattern, explains the anatomy, and gives enough constraints for an implementation prompt.",
+      "Static screenshots miss state changes. The examples show what happens after clicking, selecting, opening, dismissing, or submitting.",
+      "The navigation, preview/code rhythm, and leaf-page density follow Tailwind's structure, while the copy and examples are adapted to this site.",
+      "Check the sidebar category, the first preview, the active state, and the On this page list before copying a pattern.",
+      "Centered accordion",
+      "질문을 중앙 정렬 accordion처럼 쌓아 FAQ를 단일 흐름으로 읽게 합니다.",
+      "Have a different question and can't find the answer you're looking for? Reach out to our support team by sending us an email and we'll get back to you as soon as we can.",
+      "Start from the user's next action. Compare the examples, then choose the pattern whose states and feedback match that workflow.",
+      "Yes. Each page names the pattern, explains the anatomy, and gives enough constraints for an implementation prompt.",
+      "Static screenshots miss state changes. The examples show what happens after clicking, selecting, opening, dismissing, or submitting.",
+      "The navigation, preview/code rhythm, and leaf-page density follow Tailwind's structure, while the copy and examples are adapted to this site.",
+      "Check the sidebar category, the first preview, the active state, and the On this page list before copying a pattern.",
+      "Yes. New terms should include visual anatomy, when-to-use guidance, anti-use cases, states, and prompt phrases.",
+      "Side-by-side",
+      "소개 문구와 FAQ 목록을 좌우로 나눠 데스크톱에서 균형 있게 보여줍니다.",
+      "Start from the user's next action. Compare the examples, then choose the pattern whose states and feedback match that workflow.",
+      "Yes. Each page names the pattern, explains the anatomy, and gives enough constraints for an implementation prompt.",
+      "Static screenshots miss state changes. The examples show what happens after clicking, selecting, opening, dismissing, or submitting.",
+      "The navigation, preview/code rhythm, and leaf-page density follow Tailwind's structure, while the copy and examples are adapted to this site.",
+      "Check the sidebar category, the first preview, the active state, and the On this page list before copying a pattern.",
+      "Yes. New terms should include visual anatomy, when-to-use guidance, anti-use cases, states, and prompt phrases.",
+      "Three columns",
+      "질문이 많을 때 3열로 나눠 한 화면에서 더 많은 답변을 보여줍니다.",
+      "Have a different question and can't find the answer you're looking for? Reach out to our support team by sending us an email and we'll get back to you as soon as we can.",
+      "Start from the user's next action. Compare the examples, then choose the pattern whose states and feedback match that workflow.",
+      "Yes. Each page names the pattern, explains the anatomy, and gives enough constraints for an implementation prompt.",
+      "Static screenshots miss state changes. The examples show what happens after clicking, selecting, opening, dismissing, or submitting.",
+      "The navigation, preview/code rhythm, and leaf-page density follow Tailwind's structure, while the copy and examples are adapted to this site.",
+      "Check the sidebar category, the first preview, the active state, and the On this page list before copying a pattern.",
+      "Yes. New terms should include visual anatomy, when-to-use guidance, anti-use cases, states, and prompt phrases.",
+      "Three columns with centered introduction",
+      "중앙 소개 문구 아래 질문을 3열로 배치해 정보량과 정돈감을 같이 확보합니다.",
+      "Have a different question and can't find the answer you're looking for? Reach out to our support team by sending us an email and we'll get back to you as soon as we can.",
+      "Start from the user's next action. Compare the examples, then choose the pattern whose states and feedback match that workflow.",
+      "Yes. Each page names the pattern, explains the anatomy, and gives enough constraints for an implementation prompt.",
+      "Static screenshots miss state changes. The examples show what happens after clicking, selecting, opening, dismissing, or submitting.",
+      "The navigation, preview/code rhythm, and leaf-page density follow Tailwind's structure, while the copy and examples are adapted to this site.",
+      "Check the sidebar category, the first preview, the active state, and the On this page list before copying a pattern.",
+      "Yes. New terms should include visual anatomy, when-to-use guidance, anti-use cases, states, and prompt phrases.",
+      "Two columns",
+      "질문을 두 열로 나눠 가장 안정적인 FAQ grid를 만듭니다.",
+      "Have a different question and can't find the answer you're looking for? Reach out to our support team by sending us an email and we'll get back to you as soon as we can.",
+      "Start from the user's next action. Compare the examples, then choose the pattern whose states and feedback match that workflow.",
+      "Yes. Each page names the pattern, explains the anatomy, and gives enough constraints for an implementation prompt.",
+      "Static screenshots miss state changes. The examples show what happens after clicking, selecting, opening, dismissing, or submitting.",
+      "The navigation, preview/code rhythm, and leaf-page density follow Tailwind's structure, while the copy and examples are adapted to this site.",
+      "Check the sidebar category, the first preview, the active state, and the On this page list before copying a pattern.",
+      "Yes. New terms should include visual anatomy, when-to-use guidance, anti-use cases, states, and prompt phrases.",
+      "Two columns with centered introduction",
+      "중앙 소개 문구 아래 2열 질문 목록을 배치하는 차분한 FAQ section입니다.",
+      "Have a different question and can't find the answer you're looking for? Reach out to our support team by sending us an email and we'll get back to you as soon as we can.",
+      "Start from the user's next action. Compare the examples, then choose the pattern whose states and feedback match that workflow.",
+      "Yes. Each page names the pattern, explains the anatomy, and gives enough constraints for an implementation prompt.",
+      "Static screenshots miss state changes. The examples show what happens after clicking, selecting, opening, dismissing, or submitting.",
+      "The navigation, preview/code rhythm, and leaf-page density follow Tailwind's structure, while the copy and examples are adapted to this site.",
+      "Check the sidebar category, the first preview, the active state, and the On this page list before copying a pattern.",
+      "Yes. New terms should include visual anatomy, when-to-use guidance, anti-use cases, states, and prompt phrases."
+    ],
+    "h2": "FAQs",
+    "h3s": [
+      "Offset with supporting text",
+      "Centered accordion",
+      "Side-by-side",
+      "Three columns",
+      "Three columns with centered introduction",
+      "Two columns",
+      "Two columns with centered introduction"
+    ],
+    "overflow": 0,
+    "roots": 0,
+    "url": "http://127.0.0.1:5200/?filter=nav%3Aplus-marketing-faqs"
+  }
+}

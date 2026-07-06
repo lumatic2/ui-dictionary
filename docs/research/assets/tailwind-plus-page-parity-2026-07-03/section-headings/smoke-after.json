@@ -1,0 +1,14 @@
+{
+  "shareFeedback": true,
+  "createJobFeedback": true,
+  "searchFeedback": true,
+  "sortFeedback": true,
+  "offerFeedback": true,
+  "closedFeedback": true,
+  "menuOpen": true,
+  "archiveFeedback": true,
+  "darkTextVisible": true,
+  "mobileOverflow": 0,
+  "frameworkOverlay": false,
+  "messages": []
+}

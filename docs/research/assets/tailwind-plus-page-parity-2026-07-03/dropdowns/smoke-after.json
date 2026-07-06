@@ -1,0 +1,49 @@
+{
+  "url": "http://127.0.0.1:5174/?filter=nav%3Aplus-application-elements-dropdowns",
+  "before": {
+    "title": "UI 용어 사전",
+    "buttonCount": 129,
+    "triggerCount": 5,
+    "namedMinimalCount": 1,
+    "openTriggerCount": 0,
+    "menuCount": 0,
+    "menuitemCount": 26,
+    "darkToggleCount": 5,
+    "bodyOverflowX": 0
+  },
+  "afterOpen": {
+    "openTriggerCount": 1,
+    "menuCount": 1,
+    "menuitemCount": 26,
+    "bodyOverflowX": 0
+  },
+  "afterSelect": {
+    "openTriggerCount": 0,
+    "menuCount": 0,
+    "feedback": true,
+    "bodyOverflowX": 0
+  },
+  "afterMultiSelect": {
+    "archiveFeedback": true,
+    "signoutFeedback": true,
+    "openTriggerCount": 0,
+    "menuCount": 0,
+    "bodyOverflowX": 0
+  },
+  "afterDark": {
+    "darkToggleCount": 5,
+    "activeDarkToggleCount": 5,
+    "darkSurfaceCount": 5,
+    "bodyOverflowX": 0
+  },
+  "mobile": {
+    "triggerCount": 5,
+    "openTriggerCount": 1,
+    "menuCount": 1,
+    "feedback": true,
+    "bodyOverflowX": 0
+  },
+  "consoleMessages": [],
+  "pageErrors": [],
+  "timestamp": "2026-07-03T17:04:24.080Z"
+}

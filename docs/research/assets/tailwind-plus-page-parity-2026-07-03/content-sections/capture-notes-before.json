@@ -1,0 +1,41 @@
+{
+  "reference": {
+    "h1": "Content Sections",
+    "h2s": [
+      "With sticky product screenshot",
+      "With sticky product screenshot",
+      "With testimonial",
+      "With testimonial",
+      "With image titles",
+      "With image titles",
+      "Two columns with screenshot",
+      "Two columns with screenshot",
+      "With testimonial and stats",
+      "With testimonial and stats",
+      "Split with image",
+      "Split with image",
+      "Centered",
+      "Centered"
+    ],
+    "overflow": 0,
+    "title": "Tailwind CSS Content Sections - Official Tailwind UI Components",
+    "url": "https://tailwindcss.com/plus/ui-blocks/marketing/sections/content-sections"
+  },
+  "localBefore": {
+    "actions": 0,
+    "allButtons": 77,
+    "h2": "Content Sections",
+    "h3s": [
+      "With sticky product screenshot",
+      "With testimonial",
+      "With image titles",
+      "Two columns with screenshot",
+      "With testimonial and stats",
+      "Split with image",
+      "Centered"
+    ],
+    "overflow": 0,
+    "roots": 0,
+    "url": "http://127.0.0.1:5200/?filter=nav%3Aplus-marketing-content-sections"
+  }
+}

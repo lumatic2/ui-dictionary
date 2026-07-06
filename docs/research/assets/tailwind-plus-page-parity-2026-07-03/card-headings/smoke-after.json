@@ -1,0 +1,12 @@
+{
+  "rowFeedback": true,
+  "createFeedback": true,
+  "phoneFeedback": true,
+  "emailFeedback": true,
+  "menuOpen": true,
+  "menuFeedback": true,
+  "darkTextVisible": true,
+  "mobileOverflow": 0,
+  "frameworkOverlay": false,
+  "messages": []
+}

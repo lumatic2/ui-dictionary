@@ -1,0 +1,13 @@
+{
+  "searchFeedback": true,
+  "filterFeedback": true,
+  "exportFeedback": true,
+  "addFeedback": true,
+  "sortFeedback": true,
+  "rowFeedback": true,
+  "adminFeedback": true,
+  "darkTextVisible": true,
+  "mobileOverflow": 0,
+  "frameworkOverlay": false,
+  "messages": []
+}

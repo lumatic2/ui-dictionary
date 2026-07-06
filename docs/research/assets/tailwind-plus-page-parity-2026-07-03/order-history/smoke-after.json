@@ -1,0 +1,83 @@
+{
+  "url": "http://127.0.0.1:5192/?filter=nav%3Aplus-ecommerce-order-history",
+  "summary": {
+    "title": "UI 용어 사전",
+    "h2": [
+      "Order History"
+    ],
+    "themeButtons": 12,
+    "actionButtons": 94,
+    "ariaPressedButtons": 50,
+    "orderHistoryRoots": 4,
+    "darkRoots": 0,
+    "lightRoots": 4,
+    "overflowX": 0
+  },
+  "interactions": [
+    {
+      "label": "View invoice WU881911",
+      "count": 3,
+      "pressed": "true",
+      "feedback": true
+    },
+    {
+      "label": "View product Merino Pullover",
+      "count": 3,
+      "pressed": "true",
+      "feedback": true
+    },
+    {
+      "label": "Buy again Merino Pullover",
+      "count": 2,
+      "pressed": "true",
+      "feedback": true
+    },
+    {
+      "label": "Manage order DR45873",
+      "count": 1,
+      "pressed": "true",
+      "feedback": true
+    },
+    {
+      "label": "Shop similar Earthen Mug",
+      "count": 1,
+      "pressed": "true",
+      "feedback": true
+    }
+  ],
+  "darkButtons": {
+    "count": 4,
+    "pressedTrue": 4,
+    "pressed": [
+      "true",
+      "true",
+      "true",
+      "true"
+    ]
+  },
+  "darkState": {
+    "roots": 4,
+    "overflowX": 0
+  },
+  "lightButtons": {
+    "count": 4,
+    "pressedTrue": 4,
+    "pressed": [
+      "true",
+      "true",
+      "true",
+      "true"
+    ]
+  },
+  "lightState": {
+    "roots": 4,
+    "overflowX": 0
+  },
+  "mobile": {
+    "buttons": 94,
+    "roots": 4,
+    "overflowX": 0,
+    "invoiceFeedback": true
+  },
+  "errors": []
+}

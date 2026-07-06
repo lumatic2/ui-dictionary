@@ -1,0 +1,31 @@
+{
+  "tailwind": {
+    "url": "https://tailwindcss.com/plus/ui-blocks/application-ui/overlays/notifications",
+    "status": 200,
+    "title": "Tailwind CSS Notifications - Official Tailwind UI Components",
+    "h1": "Notifications",
+    "onThisPage": 0,
+    "exampleTextCount": 16
+  },
+  "localUrl": "http://127.0.0.1:5174/?filter=nav%3Aplus-overlays-notifications",
+  "localDesktop": {
+    "title": "UI 용어 사전",
+    "h1": null,
+    "statusCount": 0,
+    "alertCount": 0,
+    "regionCount": 0,
+    "dismissButtonCount": 5,
+    "showButtonCount": 6,
+    "actionButtonCount": 14,
+    "bodyOverflowX": 0
+  },
+  "localMobile": {
+    "statusCount": 0,
+    "alertCount": 0,
+    "regionCount": 0,
+    "dismissButtonCount": 5,
+    "showButtonCount": 6,
+    "bodyOverflowX": 0
+  },
+  "timestamp": "2026-07-03T15:46:28.419Z"
+}

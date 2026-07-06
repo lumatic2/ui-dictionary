@@ -1,0 +1,34 @@
+{
+  "reference": {
+    "bodySample": "404\nNOT FOUND",
+    "h1": "",
+    "h2": [],
+    "h3": [],
+    "href": "https://tailwindcss.com/plus/ui-blocks/application-ui/layout/panels",
+    "title": "Not Found"
+  },
+  "alternate": {
+    "bodySample": "404\nNOT FOUND",
+    "h1": "",
+    "href": "https://tailwindcss.com/plus/ui-blocks/application-ui/layout/panel",
+    "title": "Not Found"
+  },
+  "localBefore": {
+    "ariaPressed": 3,
+    "bodySample": "UI Dictionary\n\nCtrl F\nUI Blocks\nTemplates\nUI Kit\nSign in\nGet full access\nMarketing\nApplication UI\nEcommerce\nDocumentation\nAPPLICATION SHELLS\nStacked Layouts\nSidebar Layouts\nMulti-Column Layouts\nHEADINGS\nPage Headings\nCard Headings\nSection Headings\nDATA DISPLAY\nDescription Lists\nStats\nCalendars\nLISTS\nStacked Lists\nTables\nGrid Lists\nFeeds\nFORMS\nForm Layouts\nInput Groups\nSelect Menus\nSign-in and Registration\nTextareas\nRadio Groups\nCheckboxes\nToggles\nAction Panels\nComboboxes\nFEEDBACK\nAlerts\nEmpty States\nNAVIGATION\nNavbars\nPagination\nTabs\nVertical Navigation\nSidebar Navigation\nBreadcrumbs\nProgress Bars\nCommand Palettes\nOVERLAYS\nModal Dialogs\nDrawers\nNotifications\nELEMENTS\nAvatars\nBadges\nDropdowns\nButtons\nButton Groups\nLAYOUT\nContainers\nCards\nList containers\nMedia Objects\nDividers\nPAGE EXAMPLES\nHome Screens\nDetail Screens\nSettings Screens\n\nPLUS / UI BLOCKS / APPLICATION UI / LAYOUT / PANELS\n\nPanels\n\n작업 화면을 여러 영역으로 나눠 주 정보와 보조 조작을 함께 보여주는 레이아웃 패턴입니다.\n\nTailwind Plus처럼 각 leaf의 첫 예제는 Preview와 Code를 함께 제공하고, 이후 예제는 Preview와 잠금 code CTA로 구분합니다. 우리 예시는 실제 화면 맥락에 맞춘 설명, tags, interaction feedback을 함께 보여줍니다.\n\nON THIS PAGE\n\n3 examples\nSplit pane\nResizable panel\nProperties panel\nSplit pane\nEXAMPLE 01\n\n목록과 상세처럼 두 영역을 동시에 보여줍니다.\n\nsplit\ndetail\nworkspace\nPreview\nCode\nHTML\nReact\nVue\n\nPrimary region\n\nSupporting panel\n\nResizable panel\nEXAMPLE 02\n\n사용자가 작업에 맞게 영역 크기를 조절하게 합니다.\n\nresize\npanes\ncontrol\nPreview\nGet the code →\n\nPrimary region\n\nSupporting panel\n\nProperties panel\nEXAMPLE 03\n\n선택한 객체의 속성과 조작을 보조 패널에 모읍니다.\n\nproperties\ninspector\nediting\nPreview\nGet the code →\n\nPrimary region\n\nSupporting panel",
+    "buttons": 88,
+    "exampleCount": 0,
+    "h1": "",
+    "h2": [
+      "Panels"
+    ],
+    "h3": [
+      "Split pane",
+      "Resizable panel",
+      "Properties panel"
+    ],
+    "href": "http://127.0.0.1:5200/?filter=nav%3Aplus-application-layout-panels",
+    "overflow": 0,
+    "title": "UI 용어 사전"
+  }
+}

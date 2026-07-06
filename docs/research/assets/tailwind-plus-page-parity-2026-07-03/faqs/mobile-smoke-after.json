@@ -1,0 +1,121 @@
+{
+  "finalState": {
+    "h2": "FAQs",
+    "h3s": [
+      "Offset with supporting text",
+      "Centered accordion",
+      "Side-by-side",
+      "Three columns",
+      "Three columns with centered introduction",
+      "Two columns",
+      "Two columns with centered introduction"
+    ],
+    "roots": 7,
+    "actions": 41,
+    "overflow": -15
+  },
+  "clickEvidence": [
+    {
+      "selector": "[data-faq-section-variant=\"faqs-offset-supporting\"] button[aria-label^=\"Toggle FAQ Can I use\"]",
+      "feedback": [
+        "Can I use these pages as AI prompts? opened"
+      ],
+      "expanded": [
+        "Toggle FAQ Can I use these pages as AI prompts?",
+        "Toggle FAQ How do I choose between similar UI patterns?"
+      ],
+      "pressed": [
+        "System",
+        "System",
+        "System",
+        "System",
+        "System",
+        "System",
+        "System"
+      ]
+    },
+    {
+      "selector": "[data-faq-section-variant=\"faqs-centered-accordion\"] button[aria-label^=\"Toggle FAQ Why are\"]",
+      "feedback": [
+        "Can I use these pages as AI prompts? opened",
+        "Why are examples interactive? opened"
+      ],
+      "expanded": [
+        "Toggle FAQ Can I use these pages as AI prompts?",
+        "Toggle FAQ Why are examples interactive?"
+      ],
+      "pressed": [
+        "System",
+        "System",
+        "System",
+        "System",
+        "System",
+        "System",
+        "System"
+      ]
+    },
+    {
+      "selector": "[data-faq-section-variant=\"faqs-three-columns\"] button[aria-label^=\"Open FAQ What should\"]",
+      "feedback": [
+        "Can I use these pages as AI prompts? opened",
+        "Why are examples interactive? opened",
+        "What should I inspect first? opened"
+      ],
+      "expanded": [
+        "Toggle FAQ Can I use these pages as AI prompts?",
+        "Toggle FAQ Why are examples interactive?"
+      ],
+      "pressed": [
+        "System",
+        "System",
+        "System",
+        "System",
+        "Open FAQ What should I inspect first?",
+        "System",
+        "System",
+        "System"
+      ]
+    },
+    {
+      "selector": "[data-faq-section-variant=\"faqs-two-columns-centered\"] button[aria-label^=\"Open FAQ Can teams\"]",
+      "feedback": [
+        "Can I use these pages as AI prompts? opened",
+        "Why are examples interactive? opened",
+        "What should I inspect first? opened",
+        "Can teams extend the vocabulary? opened"
+      ],
+      "expanded": [
+        "Toggle FAQ Can I use these pages as AI prompts?",
+        "Toggle FAQ Why are examples interactive?"
+      ],
+      "pressed": [
+        "System",
+        "System",
+        "System",
+        "System",
+        "Open FAQ What should I inspect first?",
+        "System",
+        "System",
+        "System",
+        "Open FAQ Can teams extend the vocabulary?"
+      ]
+    }
+  ],
+  "theme": {
+    "darkCount": 7,
+    "afterDark": {
+      "roots": [
+        "dark",
+        "dark",
+        "dark",
+        "dark",
+        "dark",
+        "dark",
+        "dark"
+      ],
+      "pressed": 7,
+      "overflow": -15
+    }
+  },
+  "errors": []
+}

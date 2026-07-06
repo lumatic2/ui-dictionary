@@ -1,0 +1,168 @@
+{
+  "smoke": {
+    "feedbackVisible": true,
+    "h2": [
+      "Pricing Pages"
+    ],
+    "h3": [
+      "With four tiers",
+      "With comparison table",
+      "With three tiers and testimonials"
+    ],
+    "overflow": 0,
+    "pricingActionCount": 91,
+    "pricingActions": [
+      "Open pricing nav Product",
+      "Open pricing nav Features",
+      "Open pricing nav Marketplace",
+      "Open pricing nav Company",
+      "Open pricing login",
+      "Set pricing billing Monthly",
+      "Set pricing billing Annually",
+      "Select pricing plan Hobby",
+      "Select pricing plan Freelancer",
+      "Select pricing plan Startup",
+      "Select pricing plan Enterprise",
+      "Open pricing proof Transistor",
+      "Open pricing proof Reform",
+      "Open pricing proof Tuple",
+      "Open pricing proof SavvyCal",
+      "Open pricing proof Statamic",
+      "Open pricing case study",
+      "Toggle pricing FAQ What's included in each plan?",
+      "Toggle pricing FAQ Can I switch plans later?",
+      "Toggle pricing FAQ Do you support annual billing?",
+      "Toggle pricing FAQ What happens when usage grows?",
+      "Toggle pricing FAQ Can I invite my team?",
+      "Toggle pricing FAQ Do you offer priority support?",
+      "Open pricing nav Product",
+      "Open pricing nav Features",
+      "Open pricing nav Marketplace",
+      "Open pricing nav Company",
+      "Open pricing login",
+      "Set pricing billing Monthly",
+      "Set pricing billing Annually",
+      "Select pricing plan Freelancer",
+      "Select pricing plan Startup",
+      "Select pricing plan Enterprise",
+      "Select pricing comparison column Starter",
+      "Select pricing comparison column Scale",
+      "Select pricing comparison column Growth",
+      "Open pricing comparison row Edge content delivery",
+      "Open pricing comparison Edge content delivery column 1",
+      "Open pricing comparison Edge content delivery column 2",
+      "Open pricing comparison Edge content delivery column 3",
+      "Open pricing comparison row Custom domains",
+      "Open pricing comparison Custom domains column 1",
+      "Open pricing comparison Custom domains column 2",
+      "Open pricing comparison Custom domains column 3",
+      "Open pricing comparison row Team members",
+      "Open pricing comparison Team members column 1",
+      "Open pricing comparison Team members column 2",
+      "Open pricing comparison Team members column 3",
+      "Open pricing comparison row Single sign-on (SSO)",
+      "Open pricing comparison Single sign-on (SSO) column 1",
+      "Open pricing comparison Single sign-on (SSO) column 2",
+      "Open pricing comparison Single sign-on (SSO) column 3",
+      "Open pricing comparison row Advanced analytics",
+      "Open pricing comparison Advanced analytics column 1",
+      "Open pricing comparison Advanced analytics column 2",
+      "Open pricing comparison Advanced analytics column 3",
+      "Open pricing comparison row Basic reports",
+      "Open pricing comparison Basic reports column 1",
+      "Open pricing comparison Basic reports column 2",
+      "Open pricing comparison Basic reports column 3",
+      "Open pricing comparison row Professional reports",
+      "Open pricing comparison Professional reports column 1",
+      "Open pricing comparison Professional reports column 2",
+      "Open pricing comparison Professional reports column 3",
+      "Open pricing comparison row Priority phone support",
+      "Open pricing comparison Priority phone support column 1",
+      "Open pricing comparison Priority phone support column 2",
+      "Open pricing comparison Priority phone support column 3",
+      "Toggle pricing FAQ What's included in each plan?",
+      "Toggle pricing FAQ Can I switch plans later?",
+      "Toggle pricing FAQ Do you support annual billing?",
+      "Toggle pricing FAQ What happens when usage grows?",
+      "Toggle pricing FAQ Can I invite my team?",
+      "Toggle pricing FAQ Do you offer priority support?",
+      "Open pricing nav Product",
+      "Open pricing nav Features",
+      "Open pricing nav Marketplace",
+      "Open pricing nav Company",
+      "Open pricing login",
+      "Set pricing billing Monthly",
+      "Set pricing billing Annually",
+      "Select pricing plan Freelancer",
+      "Select pricing plan Startup",
+      "Select pricing plan Enterprise",
+      "Toggle pricing FAQ What's included in each plan?",
+      "Toggle pricing FAQ Can I switch plans later?",
+      "Toggle pricing FAQ Do you support annual billing?",
+      "Toggle pricing FAQ What happens when usage grows?",
+      "Toggle pricing FAQ Can I invite my team?",
+      "Toggle pricing FAQ Do you offer priority support?",
+      "Subscribe pricing newsletter"
+    ],
+    "rootAttrs": [
+      {
+        "theme": "light",
+        "variant": "pricing-four-tiers-page"
+      },
+      {
+        "theme": "light",
+        "variant": "pricing-comparison-table-page"
+      },
+      {
+        "theme": "light",
+        "variant": "pricing-three-tiers-testimonials-page"
+      }
+    ],
+    "roots": 3,
+    "selected": [
+      "Light",
+      "Set pricing billing Annually",
+      "Select pricing plan Hobby",
+      "Open pricing case study",
+      "Light",
+      "Set pricing billing Annually",
+      "Select pricing comparison column Starter",
+      "Light",
+      "Set pricing billing Annually",
+      "Select pricing plan Startup",
+      "Subscribe pricing newsletter"
+    ]
+  },
+  "annualCount": 3,
+  "darkCount": 3,
+  "lightCount": 3,
+  "darkState": [
+    {
+      "theme": "dark",
+      "variant": "pricing-four-tiers-page"
+    },
+    {
+      "theme": "dark",
+      "variant": "pricing-comparison-table-page"
+    },
+    {
+      "theme": "dark",
+      "variant": "pricing-three-tiers-testimonials-page"
+    }
+  ],
+  "lightState": [
+    {
+      "theme": "light",
+      "variant": "pricing-four-tiers-page"
+    },
+    {
+      "theme": "light",
+      "variant": "pricing-comparison-table-page"
+    },
+    {
+      "theme": "light",
+      "variant": "pricing-three-tiers-testimonials-page"
+    }
+  ],
+  "errors": []
+}

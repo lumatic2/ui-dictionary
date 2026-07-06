@@ -1,0 +1,23 @@
+{
+  "url": "http://127.0.0.1:5174/?filter=nav%3Aplus-application-layout-list-containers",
+  "before": {
+    "themeButtonCount": 21,
+    "darkButtonCount": 7,
+    "activeSystemCount": 7,
+    "darkSurfaceCount": 7,
+    "bodyOverflowX": 0
+  },
+  "afterDark": {
+    "activeDarkCount": 7,
+    "darkSurfaceCount": 7,
+    "bodyOverflowX": 0
+  },
+  "afterLight": {
+    "activeLightCount": 7,
+    "darkSurfaceCount": 7,
+    "bodyOverflowX": 0
+  },
+  "consoleMessages": [],
+  "pageErrors": [],
+  "timestamp": "2026-07-03T18:13:01.832Z"
+}

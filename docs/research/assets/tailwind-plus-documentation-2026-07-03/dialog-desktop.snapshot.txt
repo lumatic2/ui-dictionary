@@ -1,0 +1,431 @@
+- banner:
+  - link "Home":
+    - /url: /plus
+  - link "Introducing Oatmeal Our new multi-theme marketing site kit":
+    - /url: /plus/kits/oatmeal
+    - generic: Introducing Oatmeal
+    - generic: Our new multi-theme marketing site kit
+  - button "Search":
+    - generic: Ctrl K
+  - link "UI Blocks":
+    - /url: https://tailwindcss.com/plus/ui-blocks
+  - link "Templates":
+    - /url: /plus/templates
+  - link "UI Kit":
+    - /url: /plus/ui-kit
+  - link "Sign in":
+    - /url: /plus/login
+  - link "Get full access":
+    - /url: /plus#pricing
+- main:
+  - list:
+    - list:
+      - link "Marketing":
+        - /url: https://tailwindcss.com/plus/ui-blocks/marketing
+        - text: Marketing
+      - link "Application UI":
+        - /url: https://tailwindcss.com/plus/ui-blocks/application-ui
+        - text: Application UI
+      - link "Ecommerce":
+        - /url: https://tailwindcss.com/plus/ui-blocks/ecommerce
+        - text: Ecommerce
+      - link "Documentation":
+        - /url: /plus/ui-blocks/documentation
+        - text: Documentation
+    - heading "Getting started" [level=3]
+    - list:
+      - link "Getting set up":
+        - /url: /plus/ui-blocks/documentation
+      - link "Using HTML":
+        - /url: /plus/ui-blocks/documentation/using-html
+      - link "Using React":
+        - /url: /plus/ui-blocks/documentation/using-react
+      - link "Using Vue":
+        - /url: /plus/ui-blocks/documentation/using-vue
+      - link "Assets":
+        - /url: /plus/ui-blocks/documentation/assets
+    - heading "Elements" [level=3]
+    - list:
+      - link "Introduction":
+        - /url: /plus/ui-blocks/documentation/elements
+      - link "Autocomplete":
+        - /url: /plus/ui-blocks/documentation/autocomplete
+      - link "Command palette":
+        - /url: /plus/ui-blocks/documentation/command-palette
+      - link "Copy button":
+        - /url: /plus/ui-blocks/documentation/copy-button
+      - link "Dialog":
+        - /url: /plus/ui-blocks/documentation/dialog
+      - link "Disclosure":
+        - /url: /plus/ui-blocks/documentation/disclosure
+      - link "Dropdown menu":
+        - /url: /plus/ui-blocks/documentation/dropdown-menu
+      - link "Popover":
+        - /url: /plus/ui-blocks/documentation/popover
+      - link "Select":
+        - /url: /plus/ui-blocks/documentation/select
+      - link "Tabs":
+        - /url: /plus/ui-blocks/documentation/tabs
+  - paragraph: 5-day Mini-Course
+  - heading "Build UIs that don’t suck." [level=3]
+  - paragraph:
+    - strong: Short, tactical video lessons
+    - text: from the creator of Tailwind CSS, delivered directly to your inbox
+    - strong: every day for a week
+    - text: .
+  - paragraph:
+    - link "Get the free course":
+      - /url: https://tailwindcss.com/build-uis-that-dont-suck
+      - text: Get the free course
+  - main:
+    - navigation "Breadcrumbs":
+      - link "UI Blocks":
+        - /url: /plus/ui-blocks
+      - paragraph: / Docs
+    - heading "Dialog" [level=1]
+    - paragraph:
+      - text: A commercial license is required to use Tailwind Plus Elements. Purchase
+      - link "Tailwind Plus":
+        - /url: /plus#pricing
+      - text: to obtain a license.
+    - paragraph:
+      - text: The
+      - code: "`<el-dialog>`"
+      - text: component is a lightweight wrapper around the native
+      - code: "`<dialog>`"
+      - text: element that adds scroll locking, click-outside-to-close support, and smooth exit transitions that work consistently across all browsers. It builds on standard HTML APIs while making dialogs easier to use and style.
+    - iframe:
+      - button "Open dialog" [expanded]
+      - dialog "Payment successful":
+        - heading "Payment successful" [level=3]
+        - paragraph: Lorem ipsum dolor sit amet consectetur adipisicing elit. Consequatur amet labore.
+        - button "Go back to dashboard" [expanded]
+    - heading "Component API" [level=2]
+    - heading "<el-dialog>" [level=3]
+    - paragraph:
+      - text: Wrapper around the native
+      - code: "`<dialog>`"
+      - text: element used to manage the open state and transitions.
+    - table:
+      - rowgroup:
+        - row "Attributes":
+          - cell "Attributes"
+        - 'row "`open` A boolean attribute that indicates whether the dialog is open or closed. You can change the attribute to dynamically open or close the dialog."':
+          - 'cell "`open`"':
+            - code: "`open`"
+          - cell "A boolean attribute that indicates whether the dialog is open or closed. You can change the attribute to dynamically open or close the dialog."
+      - rowgroup:
+        - row "Data attributes (Read-only)":
+          - cell "Data attributes (Read-only)"
+        - 'row "`data-closed` Present before transitioning in, and when transitioning out."':
+          - 'cell "`data-closed`"':
+            - code: "`data-closed`"
+          - cell "Present before transitioning in, and when transitioning out."
+        - 'row "`data-enter` Present when transitioning in."':
+          - 'cell "`data-enter`"':
+            - code: "`data-enter`"
+          - cell "Present when transitioning in."
+        - 'row "`data-leave` Present when transitioning out."':
+          - 'cell "`data-leave`"':
+            - code: "`data-leave`"
+          - cell "Present when transitioning out."
+        - 'row "`data-transition` Present when transitioning in or out."':
+          - 'cell "`data-transition`"':
+            - code: "`data-transition`"
+          - cell "Present when transitioning in or out."
+      - rowgroup:
+        - row "Events":
+          - cell "Events"
+        - 'row "`open` Dispatched when the dialog is opened in any way other than by updating the `open` attribute."':
+          - 'cell "`open`"':
+            - code: "`open`"
+          - 'cell "Dispatched when the dialog is opened in any way other than by updating the `open` attribute."':
+            - text: Dispatched when the dialog is opened in any way other than by updating the
+            - code: "`open`"
+            - text: attribute.
+        - 'row "`close` Dispatched when the dialog is closed in any way other than by updating the `open` attribute."':
+          - 'cell "`close`"':
+            - code: "`close`"
+          - 'cell "Dispatched when the dialog is closed in any way other than by updating the `open` attribute."':
+            - text: Dispatched when the dialog is closed in any way other than by updating the
+            - code: "`open`"
+            - text: attribute.
+        - 'row "`cancel` Dispatched when the user attempts to dismiss the dialog via Escape key or clicking outside. Calling `preventDefault()` prevents the dialog from closing."':
+          - 'cell "`cancel`"':
+            - code: "`cancel`"
+          - 'cell "Dispatched when the user attempts to dismiss the dialog via Escape key or clicking outside. Calling `preventDefault()` prevents the dialog from closing."':
+            - text: Dispatched when the user attempts to dismiss the dialog via Escape key or clicking outside. Calling
+            - code: "`preventDefault()`"
+            - text: prevents the dialog from closing.
+      - rowgroup:
+        - row "Methods":
+          - cell "Methods"
+        - 'row "`show()` Shows the dialog in modal mode."':
+          - 'cell "`show()`"':
+            - code: "`show()`"
+          - cell "Shows the dialog in modal mode."
+        - 'row "`hide()` Hides the dialog. Takes an optional object with a `restoreFocus` property to disable the default focus restoration."':
+          - 'cell "`hide()`"':
+            - code: "`hide()`"
+          - 'cell "Hides the dialog. Takes an optional object with a `restoreFocus` property to disable the default focus restoration."':
+            - text: Hides the dialog. Takes an optional object with a
+            - code: "`restoreFocus`"
+            - text: property to disable the default focus restoration.
+    - heading "<dialog>" [level=3]
+    - paragraph: The native dialog element.
+    - table:
+      - rowgroup:
+        - row "Commands":
+          - cell "Commands"
+        - 'row "`show-modal` Opens the dialog."':
+          - 'cell "`show-modal`"':
+            - code: "`show-modal`"
+          - cell "Opens the dialog."
+        - 'row "`close` Closes the dialog."':
+          - 'cell "`close`"':
+            - code: "`close`"
+          - cell "Closes the dialog."
+    - heading "<el-dialog-backdrop>" [level=3]
+    - paragraph: The visual backdrop behind your dialog panel.
+    - table:
+      - rowgroup:
+        - row "Data attributes (Read-only)":
+          - cell "Data attributes (Read-only)"
+        - 'row "`data-closed` Present before transitioning in, and when transitioning out."':
+          - 'cell "`data-closed`"':
+            - code: "`data-closed`"
+          - cell "Present before transitioning in, and when transitioning out."
+        - 'row "`data-enter` Present when transitioning in."':
+          - 'cell "`data-enter`"':
+            - code: "`data-enter`"
+          - cell "Present when transitioning in."
+        - 'row "`data-leave` Present when transitioning out."':
+          - 'cell "`data-leave`"':
+            - code: "`data-leave`"
+          - cell "Present when transitioning out."
+        - 'row "`data-transition` Present when transitioning in or out."':
+          - 'cell "`data-transition`"':
+            - code: "`data-transition`"
+          - cell "Present when transitioning in or out."
+    - heading "<el-dialog-panel>" [level=3]
+    - paragraph: The main content area of your dialog. Clicking outside of this will trigger the dialog to close.
+    - table:
+      - rowgroup:
+        - row "Data attributes (Read-only)":
+          - cell "Data attributes (Read-only)"
+        - 'row "`data-closed` Present before transitioning in, and when transitioning out."':
+          - 'cell "`data-closed`"':
+            - code: "`data-closed`"
+          - cell "Present before transitioning in, and when transitioning out."
+        - 'row "`data-enter` Present when transitioning in."':
+          - 'cell "`data-enter`"':
+            - code: "`data-enter`"
+          - cell "Present when transitioning in."
+        - 'row "`data-leave` Present when transitioning out."':
+          - 'cell "`data-leave`"':
+            - code: "`data-leave`"
+          - cell "Present when transitioning out."
+        - 'row "`data-transition` Present when transitioning in or out."':
+          - 'cell "`data-transition`"':
+            - code: "`data-transition`"
+          - cell "Present when transitioning in or out."
+    - heading "<button>" [level=3]
+    - paragraph: A button that opens the dialog when clicked.
+    - table:
+      - rowgroup:
+        - row "ARIA attributes (Read-only)":
+          - cell "ARIA attributes (Read-only)"
+        - 'row "`aria-expanded` Set to \"true\" when the dialog is open, \"false\" when closed."':
+          - 'cell "`aria-expanded`"':
+            - code: "`aria-expanded`"
+          - cell "Set to \"true\" when the dialog is open, \"false\" when closed."
+    - heading "Examples" [level=2]
+    - heading "Basic example" [level=3]
+    - paragraph:
+      - emphasis:
+        - text: To view the complete documentation, you must own a Tailwind Plus license and be
+        - link "signed in":
+          - /url: /plus/login
+        - text: .
+    - heading "Opening the dialog" [level=3]
+    - paragraph:
+      - emphasis:
+        - text: To view the complete documentation, you must own a Tailwind Plus license and be
+        - link "signed in":
+          - /url: /plus/login
+        - text: .
+    - heading "Closing the dialog" [level=3]
+    - paragraph:
+      - emphasis:
+        - text: To view the complete documentation, you must own a Tailwind Plus license and be
+        - link "signed in":
+          - /url: /plus/login
+        - text: .
+    - heading "Adding a backdrop" [level=3]
+    - paragraph:
+      - emphasis:
+        - text: To view the complete documentation, you must own a Tailwind Plus license and be
+        - link "signed in":
+          - /url: /plus/login
+        - text: .
+    - heading "Adding transitions" [level=3]
+    - paragraph:
+      - emphasis:
+        - text: To view the complete documentation, you must own a Tailwind Plus license and be
+        - link "signed in":
+          - /url: /plus/login
+        - text: .
+    - navigation:
+      - heading "On this page" [level=2]
+      - list:
+        - link "Component API":
+          - /url: "#component-api"
+        - link "<el-dialog>":
+          - /url: "#el-dialog"
+        - link "<dialog>":
+          - /url: "#dialog"
+        - link "<el-dialog-backdrop>":
+          - /url: "#el-dialog-backdrop"
+        - link "<el-dialog-panel>":
+          - /url: "#el-dialog-panel"
+        - link "<button>":
+          - /url: "#button"
+        - link "Examples":
+          - /url: "#examples"
+        - link "Basic example":
+          - /url: "#basic-example"
+        - link "Opening the dialog":
+          - /url: "#opening-the-dialog"
+        - link "Closing the dialog":
+          - /url: "#closing-the-dialog"
+        - link "Adding a backdrop":
+          - /url: "#adding-a-backdrop"
+        - link "Adding transitions":
+          - /url: "#adding-transitions"
+  - heading "Marketing" [level=3]
+  - list:
+    - link "Hero Sections":
+      - /url: /plus/ui-blocks/marketing/sections/heroes
+    - link "Feature Sections":
+      - /url: /plus/ui-blocks/marketing/sections/feature-sections
+    - link "Pricing Sections":
+      - /url: /plus/ui-blocks/marketing/sections/pricing
+    - link "Header Sections":
+      - /url: /plus/ui-blocks/marketing/sections/header
+    - link "Newsletter Sections":
+      - /url: /plus/ui-blocks/marketing/sections/newsletter-sections
+    - link "Testimonials":
+      - /url: /plus/ui-blocks/marketing/sections/testimonials
+    - link "Team Sections":
+      - /url: /plus/ui-blocks/marketing/sections/team-sections
+    - link "Content Sections":
+      - /url: /plus/ui-blocks/marketing/sections/content-sections
+    - link "Logo Clouds":
+      - /url: /plus/ui-blocks/marketing/sections/logo-clouds
+    - link "FAQs":
+      - /url: /plus/ui-blocks/marketing/sections/faq-sections
+    - link "Footers":
+      - /url: /plus/ui-blocks/marketing/sections/footers
+    - link "Headers":
+      - /url: /plus/ui-blocks/marketing/sections/header
+    - link "Flyout Menus":
+      - /url: /plus/ui-blocks/marketing/elements/flyout-menus
+    - link "Banners":
+      - /url: /plus/ui-blocks/marketing/elements/banners
+    - link "Browse all →":
+      - /url: /plus/ui-blocks/marketing
+  - heading "Application UI" [level=3]
+  - list:
+    - link "Tables":
+      - /url: /plus/ui-blocks/application-ui/lists/tables
+    - link "Feeds":
+      - /url: /plus/ui-blocks/application-ui/lists/feeds
+    - link "Form Layouts":
+      - /url: /plus/ui-blocks/application-ui/forms/form-layouts
+    - link "Select Menus":
+      - /url: /plus/ui-blocks/application-ui/forms/select-menus
+    - link "Radio Groups":
+      - /url: /plus/ui-blocks/application-ui/forms/radio-groups
+    - link "Checkboxes":
+      - /url: /plus/ui-blocks/application-ui/forms/checkboxes
+    - link "Comboboxes":
+      - /url: /plus/ui-blocks/application-ui/forms/comboboxes
+    - link "Navbars":
+      - /url: /plus/ui-blocks/application-ui/navigation/navbars
+    - link "Pagination":
+      - /url: /plus/ui-blocks/application-ui/navigation/pagination
+    - link "Sidebar Navigation":
+      - /url: /plus/ui-blocks/application-ui/navigation/sidebar-navigation
+    - link "Command Palettes":
+      - /url: /plus/ui-blocks/application-ui/navigation/command-palettes
+    - link "Modals":
+      - /url: /plus/ui-blocks/application-ui/overlays/modal-dialogs
+    - link "Dropdowns":
+      - /url: /plus/ui-blocks/application-ui/elements/dropdowns
+    - link "Buttons":
+      - /url: /plus/ui-blocks/application-ui/elements/buttons
+    - link "Browse all →":
+      - /url: /plus/ui-blocks/application-ui
+  - heading "Ecommerce" [level=3]
+  - list:
+    - link "Product Overviews":
+      - /url: /plus/ui-blocks/ecommerce/components/product-overviews
+    - link "Product Lists":
+      - /url: /plus/ui-blocks/ecommerce/components/product-lists
+    - link "Category Previews":
+      - /url: /plus/ui-blocks/ecommerce/components/category-previews
+    - link "Shopping Carts":
+      - /url: /plus/ui-blocks/ecommerce/components/shopping-carts
+    - link "Category Filters":
+      - /url: /plus/ui-blocks/ecommerce/components/category-filters
+    - link "Product Quickviews":
+      - /url: /plus/ui-blocks/ecommerce/components/product-quickviews
+    - link "Product Features":
+      - /url: /plus/ui-blocks/ecommerce/components/product-features
+    - link "Store Navigation":
+      - /url: /plus/ui-blocks/ecommerce/components/store-navigation
+    - link "Promo Sections":
+      - /url: /plus/ui-blocks/ecommerce/components/promo-sections
+    - link "Checkout Forms":
+      - /url: /plus/ui-blocks/ecommerce/components/checkout-forms
+    - link "Reviews":
+      - /url: /plus/ui-blocks/ecommerce/components/reviews
+    - link "Order Summaries":
+      - /url: /plus/ui-blocks/ecommerce/components/order-summaries
+    - link "Order History":
+      - /url: /plus/ui-blocks/ecommerce/components/order-history
+    - link "Incentives":
+      - /url: /plus/ui-blocks/ecommerce/components/incentives
+    - link "Browse all →":
+      - /url: /plus/ui-blocks/ecommerce
+  - heading "Templates & UI Kits" [level=3]
+  - list:
+    - link "Catalyst UI Kit":
+      - /url: /plus/templates/catalyst
+    - link "Personal Website Template":
+      - /url: /plus/templates/spotlight
+    - link "Landing Page Template":
+      - /url: /plus/templates/salient
+    - link "API Reference Template":
+      - /url: /plus/templates/protocol
+    - link "Changelog Template":
+      - /url: /plus/templates/commit
+    - link "Info Product Template":
+      - /url: /plus/templates/primer
+    - link "Agency Template":
+      - /url: /plus/templates/studio
+    - link "Podcast Template":
+      - /url: /plus/templates/transmit
+    - link "App Marketing Template":
+      - /url: /plus/templates/pocket
+    - link "Documentation Template":
+      - /url: /plus/templates/syntax
+    - link "Conference Template":
+      - /url: /plus/templates/keynote
+    - link "Browse all →":
+      - /url: /plus/templates
+  - paragraph: © 2026 Tailwind Labs Inc. All rights reserved.
+  - link "Privacy policy":
+    - /url: /plus/privacy-policy
+  - link "Changelog":
+    - /url: /plus/changelog

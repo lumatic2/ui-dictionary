@@ -1,0 +1,26 @@
+{
+  "tailwind": {
+    "url": "https://tailwindcss.com/plus/ui-blocks/application-ui/application-shells/multi-column-layouts",
+    "status": 404,
+    "title": "Not Found",
+    "h1": null,
+    "exampleTextCount": 0
+  },
+  "localUrl": "http://127.0.0.1:5174/?filter=nav%3Aplus-application-shells-multi-column-layouts",
+  "localDesktop": {
+    "title": "UI 용어 사전",
+    "h1": null,
+    "navCount": 7,
+    "labelledRegionCount": 25,
+    "ariaCurrentCount": 0,
+    "buttonCount": 136,
+    "bodyOverflowX": 0
+  },
+  "localMobile": {
+    "navCount": 7,
+    "labelledRegionCount": 25,
+    "ariaCurrentCount": 0,
+    "bodyOverflowX": 0
+  },
+  "timestamp": "2026-07-03T16:19:58.645Z"
+}

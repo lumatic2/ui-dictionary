@@ -1,0 +1,528 @@
+{
+  "checked": 15,
+  "missingTitles": [],
+  "previewPages": 0,
+  "pagesWithOverflow": [],
+  "pagesWithNoButtons": [],
+  "errors": [],
+  "results": [
+    {
+      "buttonLabels": [
+        "타이포그래피제목, 본문, 캡션처럼 글자의 크기와 굵기, 위계를 정하는 체계.",
+        "컨테이너콘텐츠의 최대 폭과 좌우 여백을 잡아주는 레이아웃 영역.",
+        "방향성 제공자UI 전체나 일부 영역의 읽기 방향을 LTR 또는 RTL로 지정하는 보이지 않는 구조 요소.",
+        "색 대비텍스트와 배경처럼 두 색이 얼마나 구분되어 읽히는지를 나타내는 기준.",
+        "모션 줄이기움직임에 민감한 사용자를 위해 애니메이션을 줄이거나 제거하는 접근성 대응.",
+        "갭flex나 grid 안에서 인접한 항목 사이의 간격을 정하는 레이아웃 속성."
+      ],
+      "codeBlocks": 4,
+      "expectedTitle": "Getting set up",
+      "h1": [],
+      "h2": [
+        "Getting set up"
+      ],
+      "h3": [
+        "Requirements",
+        "Use the dictionary as implementation context",
+        "Project baseline",
+        "Responsive and dark mode checks",
+        "Next steps",
+        "Related terms"
+      ],
+      "hasArticle": true,
+      "onThisPageCount": 0,
+      "overflow": 0,
+      "previewAttrs": null,
+      "previewRoot": false,
+      "titlePresent": true,
+      "url": "http://127.0.0.1:5200/?filter=nav%3Adocs-getting-started-setup"
+    },
+    {
+      "buttonLabels": [
+        "그리드항목을 행과 열의 격자로 배치하는 레이아웃.",
+        "섹션한 주제나 기능 단위를 묶는 화면의 큰 구역.",
+        "컨테이너콘텐츠의 최대 폭과 좌우 여백을 잡아주는 레이아웃 영역.",
+        "고정 헤더스크롤해도 화면 상단에 붙어 남아 있는 헤더.",
+        "고정 하단 바스크롤과 관계없이 화면 하단에 붙어 주요 행동을 제공하는 바.",
+        "디스클로저 그룹섹션 제목을 눌러 하위 내용을 접거나 펼치는 구조 패턴."
+      ],
+      "codeBlocks": 4,
+      "expectedTitle": "Using HTML",
+      "h1": [],
+      "h2": [
+        "Using HTML"
+      ],
+      "h3": [
+        "Start with semantic structure",
+        "Attach labels and states",
+        "Map vocabulary to utility classes",
+        "Common pitfalls",
+        "Related terms"
+      ],
+      "hasArticle": true,
+      "onThisPageCount": 0,
+      "overflow": 0,
+      "previewAttrs": null,
+      "previewRoot": false,
+      "titlePresent": true,
+      "url": "http://127.0.0.1:5200/?filter=nav%3Adocs-getting-started-html"
+    },
+    {
+      "buttonLabels": [
+        "텍스트영역여러 줄의 긴 텍스트를 입력받는 요소.",
+        "탭같은 영역 안에서 관련 화면이나 패널을 전환하는 요소.",
+        "브레드크럼현재 페이지가 전체 구조에서 어디인지 보여주는 경로 표시.",
+        "페이지네이션긴 목록을 여러 페이지로 나누고 이동하게 하는 요소.",
+        "스테퍼여러 단계로 된 절차에서 현재 진행 단계를 보여주는 요소.",
+        "내비게이션 레일화면 한쪽에 세로로 배치된 주요 목적지 이동 영역."
+      ],
+      "codeBlocks": 4,
+      "expectedTitle": "Using React",
+      "h1": [],
+      "h2": [
+        "Using React"
+      ],
+      "h3": [
+        "Component boundary",
+        "State variants",
+        "Composition pattern",
+        "Prompt handoff",
+        "Related terms"
+      ],
+      "hasArticle": true,
+      "onThisPageCount": 0,
+      "overflow": 0,
+      "previewAttrs": null,
+      "previewRoot": false,
+      "titlePresent": true,
+      "url": "http://127.0.0.1:5200/?filter=nav%3Adocs-getting-started-react"
+    },
+    {
+      "buttonLabels": [
+        "텍스트영역여러 줄의 긴 텍스트를 입력받는 요소.",
+        "콤보박스입력과 선택을 함께 제공하는 검색 가능한 선택 요소.",
+        "브레드크럼현재 페이지가 전체 구조에서 어디인지 보여주는 경로 표시.",
+        "페이지네이션긴 목록을 여러 페이지로 나누고 이동하게 하는 요소.",
+        "스테퍼여러 단계로 된 절차에서 현재 진행 단계를 보여주는 요소.",
+        "내비게이션 레일화면 한쪽에 세로로 배치된 주요 목적지 이동 영역."
+      ],
+      "codeBlocks": 4,
+      "expectedTitle": "Using Vue",
+      "h1": [],
+      "h2": [
+        "Using Vue"
+      ],
+      "h3": [
+        "Separate props from slots",
+        "Use emitted events as state contract",
+        "Keep accessibility visible",
+        "Implementation handoff",
+        "Related terms"
+      ],
+      "hasArticle": true,
+      "onThisPageCount": 0,
+      "overflow": 0,
+      "previewAttrs": null,
+      "previewRoot": false,
+      "titlePresent": true,
+      "url": "http://127.0.0.1:5200/?filter=nav%3Adocs-getting-started-vue"
+    },
+    {
+      "buttonLabels": [
+        "아코디언제목을 누르면 내용을 펼치거나 접는 구조.",
+        "캐러셀여러 콘텐츠를 좌우로 넘겨 보는 구조.",
+        "아바타사용자나 조직을 나타내는 작은 이미지 또는 이니셜.",
+        "아이콘행동, 상태, 대상을 작은 그림 기호로 표현하는 요소.",
+        "라벨입력값이나 UI 요소가 무엇을 의미하는지 이름을 붙이는 짧은 텍스트.",
+        "구분선관련 영역이나 항목 사이를 얇은 선으로 구분하는 요소."
+      ],
+      "codeBlocks": 4,
+      "expectedTitle": "Assets",
+      "h1": [],
+      "h2": [
+        "Assets"
+      ],
+      "h3": [
+        "Icons",
+        "Images and screenshots",
+        "Illustrations and empty states",
+        "Figma and handoff assets",
+        "Related terms"
+      ],
+      "hasArticle": true,
+      "onThisPageCount": 0,
+      "overflow": 0,
+      "previewAttrs": null,
+      "previewRoot": false,
+      "titlePresent": true,
+      "url": "http://127.0.0.1:5200/?filter=nav%3Adocs-getting-started-assets"
+    },
+    {
+      "buttonLabels": [
+        "텍스트영역여러 줄의 긴 텍스트를 입력받는 요소.",
+        "콤보박스입력과 선택을 함께 제공하는 검색 가능한 선택 요소.",
+        "탭같은 영역 안에서 관련 화면이나 패널을 전환하는 요소.",
+        "브레드크럼현재 페이지가 전체 구조에서 어디인지 보여주는 경로 표시.",
+        "페이지네이션긴 목록을 여러 페이지로 나누고 이동하게 하는 요소.",
+        "스테퍼여러 단계로 된 절차에서 현재 진행 단계를 보여주는 요소."
+      ],
+      "codeBlocks": 2,
+      "expectedTitle": "Introduction",
+      "h1": [],
+      "h2": [
+        "Introduction"
+      ],
+      "h3": [
+        "Component API",
+        "Available elements",
+        "Browser and device baseline",
+        "Installation mindset",
+        "How to read element pages",
+        "Related terms"
+      ],
+      "hasArticle": true,
+      "onThisPageCount": 0,
+      "overflow": 0,
+      "previewAttrs": null,
+      "previewRoot": false,
+      "titlePresent": true,
+      "url": "http://127.0.0.1:5200/?filter=nav%3Adocs-elements-introduction"
+    },
+    {
+      "buttonLabels": [
+        "Toggle teammate options",
+        "Leslie Alexander",
+        "Michael Foster",
+        "Dries Vincent",
+        "Lindsay Walton",
+        "Courtney Henry",
+        "검색창검색어를 입력해 목록이나 콘텐츠를 찾는 입력 요소.",
+        "선택창정해진 보기 중 하나를 선택하는 입력 요소.",
+        "콤보박스입력과 선택을 함께 제공하는 검색 가능한 선택 요소.",
+        "날짜 선택달력 UI로 날짜를 선택하는 입력 요소.",
+        "브레드크럼현재 페이지가 전체 구조에서 어디인지 보여주는 경로 표시.",
+        "페이지네이션긴 목록을 여러 페이지로 나누고 이동하게 하는 요소."
+      ],
+      "codeBlocks": 2,
+      "expectedTitle": "Autocomplete",
+      "h1": [],
+      "h2": [
+        "Autocomplete"
+      ],
+      "h3": [
+        "Component API",
+        "Examples",
+        "Usage notes",
+        "Anatomy",
+        "Keyboard and focus",
+        "Common pitfalls",
+        "Related terms"
+      ],
+      "hasArticle": true,
+      "onThisPageCount": 0,
+      "overflow": 0,
+      "previewAttrs": null,
+      "previewRoot": false,
+      "titlePresent": true,
+      "url": "http://127.0.0.1:5200/?filter=nav%3Adocs-elements-autocomplete"
+    },
+    {
+      "buttonLabels": [
+        "Esc",
+        "Workflow Inc. / Website Redesign",
+        "Add new file...⌘1",
+        "Add new folder...⌘2",
+        "Add hashtag...⌘3",
+        "Add label...⌘4",
+        "Open command palette",
+        "검색창검색어를 입력해 목록이나 콘텐츠를 찾는 입력 요소.",
+        "드롭다운 메뉴버튼을 누르면 아래로 펼쳐지는 명령 또는 선택 목록.",
+        "브레드크럼현재 페이지가 전체 구조에서 어디인지 보여주는 경로 표시.",
+        "페이지네이션긴 목록을 여러 페이지로 나누고 이동하게 하는 요소.",
+        "스테퍼여러 단계로 된 절차에서 현재 진행 단계를 보여주는 요소.",
+        "내비게이션 레일화면 한쪽에 세로로 배치된 주요 목적지 이동 영역."
+      ],
+      "codeBlocks": 2,
+      "expectedTitle": "Command palette",
+      "h1": [],
+      "h2": [
+        "Command palette"
+      ],
+      "h3": [
+        "Component API",
+        "Examples",
+        "Usage notes",
+        "Interaction contract",
+        "Result grouping",
+        "Failure modes",
+        "Related terms"
+      ],
+      "hasArticle": true,
+      "onThisPageCount": 0,
+      "overflow": 0,
+      "previewAttrs": null,
+      "previewRoot": false,
+      "titlePresent": true,
+      "url": "http://127.0.0.1:5200/?filter=nav%3Adocs-elements-command-palette"
+    },
+    {
+      "buttonLabels": [
+        "Copy",
+        "아이콘 버튼텍스트 대신 아이콘으로 행동을 표현하는 버튼.",
+        "툴팁hover나 focus 때 짧은 설명을 보여주는 작은 도움말.",
+        "토스트작업 결과를 잠깐 보여주고 사라지는 작은 알림.",
+        "배지숫자나 짧은 상태를 작게 강조하는 표시.",
+        "상태 표시온라인, 성공, 오류 같은 상태를 작은 색상 표시로 보여주는 요소.",
+        "확인 다이얼로그중요한 행동을 실행하기 전에 사용자의 명시적 확인을 받는 모달."
+      ],
+      "codeBlocks": 4,
+      "expectedTitle": "Copy button",
+      "h1": [],
+      "h2": [
+        "Copy button"
+      ],
+      "h3": [
+        "Component API",
+        "Examples",
+        "When to use",
+        "Interaction contract",
+        "Feedback placement",
+        "Clipboard failures",
+        "Related terms"
+      ],
+      "hasArticle": true,
+      "onThisPageCount": 0,
+      "overflow": 0,
+      "previewAttrs": null,
+      "previewRoot": false,
+      "titlePresent": true,
+      "url": "http://127.0.0.1:5200/?filter=nav%3Adocs-elements-copy-button"
+    },
+    {
+      "buttonLabels": [
+        "Open dialog",
+        "Close dialog backdrop",
+        "Cancel",
+        "Delete",
+        "툴팁hover나 focus 때 짧은 설명을 보여주는 작은 도움말.",
+        "확인 다이얼로그중요한 행동을 실행하기 전에 사용자의 명시적 확인을 받는 모달.",
+        "방향성 제공자UI 전체나 일부 영역의 읽기 방향을 LTR 또는 RTL로 지정하는 보이지 않는 구조 요소.",
+        "색 대비텍스트와 배경처럼 두 색이 얼마나 구분되어 읽히는지를 나타내는 기준.",
+        "모션 줄이기움직임에 민감한 사용자를 위해 애니메이션을 줄이거나 제거하는 접근성 대응.",
+        "포커스 트랩모달이나 dialog가 열렸을 때 키보드 포커스가 그 안에서만 순환하도록 하는 접근성 패턴."
+      ],
+      "codeBlocks": 2,
+      "expectedTitle": "Dialog",
+      "h1": [],
+      "h2": [
+        "Dialog"
+      ],
+      "h3": [
+        "Component API",
+        "Examples",
+        "When to use",
+        "Accessibility contract",
+        "Layout and actions",
+        "Responsive behavior",
+        "Related terms"
+      ],
+      "hasArticle": true,
+      "onThisPageCount": 0,
+      "overflow": 0,
+      "previewAttrs": null,
+      "previewRoot": false,
+      "titlePresent": true,
+      "url": "http://127.0.0.1:5200/?filter=nav%3Adocs-elements-dialog"
+    },
+    {
+      "buttonLabels": [
+        "How do I choose a component pattern?-",
+        "How do you make holy water?+",
+        "What do you call someone with no body and no nose?+",
+        "Why do you never see elephants hiding in trees?+",
+        "Why can't you hear a pterodactyl go to the bathroom?+",
+        "브레드크럼현재 페이지가 전체 구조에서 어디인지 보여주는 경로 표시.",
+        "페이지네이션긴 목록을 여러 페이지로 나누고 이동하게 하는 요소.",
+        "스테퍼여러 단계로 된 절차에서 현재 진행 단계를 보여주는 요소.",
+        "내비게이션 레일화면 한쪽에 세로로 배치된 주요 목적지 이동 영역.",
+        "사이드바 내비게이션화면 옆에 메뉴 목록을 세로로 배치한 내비게이션.",
+        "아코디언제목을 누르면 내용을 펼치거나 접는 구조."
+      ],
+      "codeBlocks": 2,
+      "expectedTitle": "Disclosure",
+      "h1": [],
+      "h2": [
+        "Disclosure"
+      ],
+      "h3": [
+        "Component API",
+        "Examples",
+        "When to use",
+        "State contract",
+        "Keyboard and focus",
+        "Common pitfalls",
+        "Related terms"
+      ],
+      "hasArticle": true,
+      "onThisPageCount": 0,
+      "overflow": 0,
+      "previewAttrs": null,
+      "previewRoot": false,
+      "titlePresent": true,
+      "url": "http://127.0.0.1:5200/?filter=nav%3Adocs-elements-disclosure"
+    },
+    {
+      "buttonLabels": [
+        "Options",
+        "Edit",
+        "Duplicate",
+        "Archive",
+        "Move",
+        "Share",
+        "Add to favorites",
+        "Delete",
+        "드롭다운 메뉴버튼을 누르면 아래로 펼쳐지는 명령 또는 선택 목록.",
+        "브레드크럼현재 페이지가 전체 구조에서 어디인지 보여주는 경로 표시.",
+        "페이지네이션긴 목록을 여러 페이지로 나누고 이동하게 하는 요소.",
+        "스테퍼여러 단계로 된 절차에서 현재 진행 단계를 보여주는 요소.",
+        "내비게이션 레일화면 한쪽에 세로로 배치된 주요 목적지 이동 영역.",
+        "사이드바 내비게이션화면 옆에 메뉴 목록을 세로로 배치한 내비게이션."
+      ],
+      "codeBlocks": 2,
+      "expectedTitle": "Dropdown menu",
+      "h1": [],
+      "h2": [
+        "Dropdown menu"
+      ],
+      "h3": [
+        "Component API",
+        "Examples",
+        "When to use",
+        "Menu anatomy",
+        "Keyboard behavior",
+        "Dropdown menu vs select",
+        "Related terms"
+      ],
+      "hasArticle": true,
+      "onThisPageCount": 0,
+      "overflow": 0,
+      "previewAttrs": null,
+      "previewRoot": false,
+      "titlePresent": true,
+      "url": "http://127.0.0.1:5200/?filter=nav%3Adocs-elements-dropdown-menu"
+    },
+    {
+      "buttonLabels": [
+        "Solutions",
+        "AnalyticsGet a better understanding of your traffic",
+        "EngagementSpeak directly to your customers",
+        "SecurityYour customers' data will be safe and secure",
+        "IntegrationsConnect with third-party tools",
+        "AutomationsBuild strategic funnels that will convert",
+        "Watch demo",
+        "Contact sales",
+        "드롭다운 메뉴버튼을 누르면 아래로 펼쳐지는 명령 또는 선택 목록.",
+        "팝오버특정 트리거 근처에 뜨는 작은 보조 패널.",
+        "툴팁hover나 focus 때 짧은 설명을 보여주는 작은 도움말.",
+        "메뉴바여러 메뉴를 가로로 배치하고 각 메뉴에서 하위 명령을 여는 구조.",
+        "메가 메뉴상단 메뉴에서 여러 카테고리와 링크를 큰 패널로 펼쳐 보여주는 메뉴.",
+        "컨텍스트 메뉴특정 항목이나 영역의 상황에 맞는 명령을 띄우는 메뉴."
+      ],
+      "codeBlocks": 2,
+      "expectedTitle": "Popover",
+      "h1": [],
+      "h2": [
+        "Popover"
+      ],
+      "h3": [
+        "Component API",
+        "Examples",
+        "When to use",
+        "Positioning contract",
+        "Dismiss behavior",
+        "Popover vs tooltip",
+        "Related terms"
+      ],
+      "hasArticle": true,
+      "onThisPageCount": 0,
+      "overflow": 0,
+      "previewAttrs": null,
+      "previewRoot": false,
+      "titlePresent": true,
+      "url": "http://127.0.0.1:5200/?filter=nav%3Adocs-elements-popover"
+    },
+    {
+      "buttonLabels": [
+        "Admin",
+        "Admin",
+        "Member",
+        "Viewer",
+        "Billing only",
+        "선택창정해진 보기 중 하나를 선택하는 입력 요소.",
+        "콤보박스입력과 선택을 함께 제공하는 검색 가능한 선택 요소.",
+        "날짜 선택달력 UI로 날짜를 선택하는 입력 요소.",
+        "드롭다운 메뉴버튼을 누르면 아래로 펼쳐지는 명령 또는 선택 목록.",
+        "인증번호 입력일회용 인증번호를 여러 칸에 나누어 입력받는 요소.",
+        "색상 선택기색상 값을 팔레트, 스와치, 입력값으로 고르는 요소."
+      ],
+      "codeBlocks": 2,
+      "expectedTitle": "Select",
+      "h1": [],
+      "h2": [
+        "Select"
+      ],
+      "h3": [
+        "Component API",
+        "Examples",
+        "When to use",
+        "Option model",
+        "Keyboard and validation",
+        "Select vs dropdown menu",
+        "Related terms"
+      ],
+      "hasArticle": true,
+      "onThisPageCount": 0,
+      "overflow": 0,
+      "previewAttrs": null,
+      "previewRoot": false,
+      "titlePresent": true,
+      "url": "http://127.0.0.1:5200/?filter=nav%3Adocs-elements-select"
+    },
+    {
+      "buttonLabels": [
+        "Write",
+        "Preview",
+        "Post",
+        "탭같은 영역 안에서 관련 화면이나 패널을 전환하는 요소.",
+        "세그먼트 버튼몇 개의 선택지를 버튼처럼 나란히 보여주고 하나를 선택하는 요소.",
+        "브레드크럼현재 페이지가 전체 구조에서 어디인지 보여주는 경로 표시.",
+        "페이지네이션긴 목록을 여러 페이지로 나누고 이동하게 하는 요소.",
+        "스테퍼여러 단계로 된 절차에서 현재 진행 단계를 보여주는 요소.",
+        "내비게이션 레일화면 한쪽에 세로로 배치된 주요 목적지 이동 영역."
+      ],
+      "codeBlocks": 2,
+      "expectedTitle": "Tabs",
+      "h1": [],
+      "h2": [
+        "Tabs"
+      ],
+      "h3": [
+        "Component API",
+        "Examples",
+        "When to use",
+        "State contract",
+        "Keyboard behavior",
+        "Responsive behavior",
+        "Tabs vs disclosure",
+        "Related terms"
+      ],
+      "hasArticle": true,
+      "onThisPageCount": 0,
+      "overflow": 0,
+      "previewAttrs": null,
+      "previewRoot": false,
+      "titlePresent": true,
+      "url": "http://127.0.0.1:5200/?filter=nav%3Adocs-elements-tabs"
+    }
+  ]
+}

@@ -1,0 +1,41 @@
+{
+  "url": "http://127.0.0.1:5174/?filter=nav%3Aplus-application-elements-avatars",
+  "before": {
+    "title": "UI 용어 사전",
+    "buttonCount": 200,
+    "avatarButtonCount": 61,
+    "placeholderButtonCount": 10,
+    "pressedCount": 0,
+    "statusCount": 20,
+    "busyCount": 8,
+    "onlineCount": 8,
+    "offlineCount": 4,
+    "viewProfileCount": 1,
+    "darkToggleCount": 11,
+    "darkSurfaceCount": 0,
+    "bodyOverflowX": 0
+  },
+  "afterInteraction": {
+    "pressedCount": 2,
+    "feedback": true,
+    "selectedTw": true,
+    "bodyOverflowX": 0
+  },
+  "afterDark": {
+    "darkToggleCount": 11,
+    "activeDarkToggleCount": 11,
+    "darkSurfaceCount": 11,
+    "lightSurfaceCount": 11,
+    "bodyOverflowX": 0
+  },
+  "mobile": {
+    "avatarButtonCount": 61,
+    "placeholderButtonCount": 10,
+    "statusCount": 20,
+    "feedback": true,
+    "bodyOverflowX": 0
+  },
+  "consoleMessages": [],
+  "pageErrors": [],
+  "timestamp": "2026-07-03T16:42:01.099Z"
+}

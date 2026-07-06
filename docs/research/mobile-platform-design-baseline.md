@@ -4,7 +4,7 @@ Date: 2026-07-04
 
 ## Purpose
 
-RME4 defines the mobile baseline for Yusung's digital product design system. The goal is not to copy iOS or Android styling. The goal is to make future mobile UI pages and agent-generated mobile screens respect platform expectations.
+RME4 defines the mobile baseline for Askewly Design. The goal is not to copy iOS or Android styling. The goal is to make future mobile UI pages and agent-generated mobile screens respect platform expectations.
 
 Checked official sources:
 

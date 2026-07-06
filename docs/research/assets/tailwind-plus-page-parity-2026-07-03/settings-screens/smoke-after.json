@@ -1,0 +1,43 @@
+{
+  "browserAvailability": "Browser/Chrome path failed earlier: Browser is not available: iab / packaged browser documentation directory missing; standalone Playwright fallback used",
+  "localUrl": "http://127.0.0.1:5174/?filter=nav%3Aplus-application-page-examples-settings-screens",
+  "localAfter": {
+    "title": "UI 용어 사전",
+    "pageHeadingCount": 1,
+    "exampleHeadingCount": 2,
+    "themeButtonCount": 6,
+    "darkButtonCount": 2,
+    "actionButtonCount": 118,
+    "activeSystemCount": 2,
+    "darkSurfaceCount": 3,
+    "bodyOverflowX": 0
+  },
+  "interactions": {
+    "navFeedback": 1,
+    "tabFeedback": 1,
+    "avatarFeedback": 1,
+    "saveFeedback": 1,
+    "updateFeedback": 1,
+    "toggleFeedback": 1,
+    "bankFeedback": 1
+  },
+  "afterDark": {
+    "activeDarkCount": 2,
+    "darkSurfaceCount": 37,
+    "darkCardCount": 9,
+    "bodyOverflowX": 0
+  },
+  "afterLight": {
+    "activeLightCount": 2,
+    "darkSurfaceCount": 3,
+    "darkCardCount": 2,
+    "bodyOverflowX": 0
+  },
+  "mobileAfter": {
+    "themeButtonCount": 6,
+    "bodyOverflowX": 0
+  },
+  "consoleMessages": [],
+  "pageErrors": [],
+  "timestamp": "2026-07-03T18:44:24.419Z"
+}

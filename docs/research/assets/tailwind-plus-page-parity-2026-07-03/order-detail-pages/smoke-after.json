@@ -1,0 +1,106 @@
+{
+  "summary": {
+    "h2": [
+      "Order Detail Pages"
+    ],
+    "h3": [
+      "With progress bars",
+      "Order #54879",
+      "With large images and progress bars",
+      "Order Details",
+      "Simple with full order details",
+      "It's on the way!"
+    ],
+    "actionButtons": 116,
+    "ariaPressedButtons": 74,
+    "roots": 3,
+    "lightRoots": 3,
+    "darkRoots": 0,
+    "overflowX": 0
+  },
+  "interactions": [
+    {
+      "label": "Open order detail Search",
+      "count": 1,
+      "pressed": "true",
+      "feedback": true
+    },
+    {
+      "label": "Open order detail Account",
+      "count": 1,
+      "pressed": "true",
+      "feedback": true
+    },
+    {
+      "label": "Open order detail Cart",
+      "count": 1,
+      "pressed": "true",
+      "feedback": true
+    },
+    {
+      "label": "Open order detail invoice 54879",
+      "count": 1,
+      "pressed": "true",
+      "feedback": true
+    },
+    {
+      "label": "Open order detail invoice 58014",
+      "count": 1,
+      "pressed": "true",
+      "feedback": true
+    },
+    {
+      "label": "Open order detail progress Nomad Tumbler Processing",
+      "count": 1,
+      "pressed": "true",
+      "feedback": true
+    },
+    {
+      "label": "Open order detail progress Nomad Tumbler Shipped",
+      "count": 1,
+      "pressed": "true",
+      "feedback": true
+    },
+    {
+      "label": "Open order detail progress Distant Mountains Artwork Tee Delivered",
+      "count": 1,
+      "pressed": "true",
+      "feedback": true
+    },
+    {
+      "label": "Copy order detail tracking number",
+      "count": 1,
+      "pressed": "true",
+      "feedback": true
+    },
+    {
+      "label": "Open order detail footer Account Orders",
+      "count": 1,
+      "pressed": "true",
+      "feedback": true
+    }
+  ],
+  "progressWidthAfterShipped": "75%",
+  "darkState": {
+    "roots": 3,
+    "darkSurfaces": 15,
+    "overflowX": 0,
+    "pressedTrue": 3,
+    "buttonCount": 3
+  },
+  "lightState": {
+    "roots": 3,
+    "darkSurfaces": 3,
+    "overflowX": 0,
+    "pressedTrue": 3,
+    "buttonCount": 3
+  },
+  "mobile": {
+    "buttons": 116,
+    "roots": 3,
+    "overflowX": 0,
+    "feedback": true,
+    "trackingPressed": "true"
+  },
+  "errors": []
+}

@@ -1,0 +1,120 @@
+{
+  "url": "http://127.0.0.1:5197/?filter=nav%3Aplus-ecommerce-page-examples-shopping-cart-pages",
+  "summary": {
+    "title": "UI 용어 사전",
+    "h2": [
+      "Shopping Cart Pages"
+    ],
+    "themeButtons": 9,
+    "actionButtons": 135,
+    "ariaPressedButtons": 92,
+    "cartPageRoots": 3,
+    "darkRoots": 0,
+    "lightRoots": 3,
+    "overflowX": 0
+  },
+  "interactions": [
+    {
+      "label": "Open cart Search",
+      "count": 3,
+      "pressed": "true",
+      "feedback": true
+    },
+    {
+      "label": "Open cart Account",
+      "count": 3,
+      "pressed": "true",
+      "feedback": true
+    },
+    {
+      "label": "Open cart Cart",
+      "count": 3,
+      "pressed": "true",
+      "feedback": true
+    },
+    {
+      "label": "Increase quantity Basic Tee",
+      "count": 1,
+      "pressed": "true",
+      "feedback": true
+    },
+    {
+      "label": "Remove cart item Basic Tee",
+      "count": 1,
+      "pressed": null,
+      "feedback": true
+    },
+    {
+      "label": "Start cart checkout",
+      "count": 3,
+      "pressed": "true",
+      "feedback": true
+    },
+    {
+      "label": "Open continue shopping",
+      "count": 3,
+      "pressed": "true",
+      "feedback": true
+    },
+    {
+      "label": "Open related cart product Wood card holder",
+      "count": 1,
+      "pressed": "true",
+      "feedback": true
+    },
+    {
+      "label": "Open policy Free returns",
+      "count": 2,
+      "pressed": "true",
+      "feedback": true
+    },
+    {
+      "label": "Open cart footer Products Bags",
+      "count": 3,
+      "pressed": "true",
+      "feedback": true
+    },
+    {
+      "label": "Submit newsletter signup",
+      "count": 3,
+      "pressed": "true",
+      "feedback": true
+    }
+  ],
+  "darkButtons": {
+    "count": 3,
+    "pressedTrue": 3,
+    "pressed": [
+      "true",
+      "true",
+      "true"
+    ]
+  },
+  "darkState": {
+    "roots": 3,
+    "darkSurfaces": 26,
+    "overflowX": 0
+  },
+  "lightButtons": {
+    "count": 3,
+    "pressedTrue": 3,
+    "pressed": [
+      "true",
+      "true",
+      "true"
+    ]
+  },
+  "lightState": {
+    "roots": 3,
+    "darkSurfaces": 1,
+    "overflowX": 0
+  },
+  "mobile": {
+    "buttons": 135,
+    "roots": 3,
+    "overflowX": 0,
+    "feedback": true,
+    "pressed": "true"
+  },
+  "errors": []
+}

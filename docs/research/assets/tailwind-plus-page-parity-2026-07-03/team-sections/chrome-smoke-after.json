@@ -1,0 +1,178 @@
+{
+  "url": "http://127.0.0.1:5200/?filter=nav%3Aplus-marketing-team-sections",
+  "finalState": {
+    "actions": 56,
+    "h2": "Team Sections",
+    "h3s": [
+      "With small images",
+      "With large images",
+      "Grid with round images",
+      "Large grid with cards",
+      "With image and short paragraph",
+      "With vertical images",
+      "Full width with vertical images",
+      "Grid with large round images",
+      "With medium images"
+    ],
+    "overflow": 0,
+    "roots": 9,
+    "variants": [
+      "team-small-images",
+      "team-large-images",
+      "team-round-grid",
+      "team-card-grid",
+      "team-image-paragraph",
+      "team-vertical-images",
+      "team-full-width-vertical",
+      "team-large-round-grid",
+      "team-medium-images"
+    ]
+  },
+  "clickEvidence": [
+    {
+      "feedback": [
+        "Lindsay Walton profile opened"
+      ],
+      "label": "small image Lindsay",
+      "pressed": [
+        "System",
+        "Open team member Lindsay Walton",
+        "System",
+        "System",
+        "System",
+        "System",
+        "System",
+        "System",
+        "System",
+        "System"
+      ]
+    },
+    {
+      "feedback": [
+        "Lindsay Walton profile opened",
+        "Tom Cook profile opened"
+      ],
+      "label": "large image Tom",
+      "pressed": [
+        "System",
+        "Open team member Lindsay Walton",
+        "System",
+        "Open team member Tom Cook",
+        "System",
+        "System",
+        "System",
+        "System",
+        "System",
+        "System",
+        "System"
+      ]
+    },
+    {
+      "feedback": [
+        "Lindsay Walton profile opened",
+        "Tom Cook profile opened",
+        "Ronald Richards profile opened"
+      ],
+      "label": "round grid Ronald",
+      "pressed": [
+        "System",
+        "Open team member Lindsay Walton",
+        "System",
+        "Open team member Tom Cook",
+        "System",
+        "Open team member Ronald Richards",
+        "System",
+        "System",
+        "System",
+        "System",
+        "System",
+        "System"
+      ]
+    },
+    {
+      "feedback": [
+        "Lindsay Walton profile opened",
+        "Tom Cook profile opened",
+        "Ronald Richards profile opened",
+        "Kristin Watson profile opened"
+      ],
+      "label": "vertical Kristin",
+      "pressed": [
+        "System",
+        "Open team member Lindsay Walton",
+        "System",
+        "Open team member Tom Cook",
+        "System",
+        "Open team member Ronald Richards",
+        "System",
+        "System",
+        "System",
+        "Open team member Kristin Watson",
+        "System",
+        "System",
+        "System"
+      ]
+    },
+    {
+      "feedback": [
+        "Lindsay Walton profile opened",
+        "Tom Cook profile opened",
+        "Ronald Richards profile opened",
+        "Kristin Watson profile opened",
+        "Courtney Henry profile opened"
+      ],
+      "label": "medium Courtney",
+      "pressed": [
+        "System",
+        "Open team member Lindsay Walton",
+        "System",
+        "Open team member Tom Cook",
+        "System",
+        "Open team member Ronald Richards",
+        "System",
+        "System",
+        "System",
+        "Open team member Kristin Watson",
+        "System",
+        "System",
+        "System",
+        "Open team member Courtney Henry"
+      ]
+    }
+  ],
+  "theme": {
+    "darkCount": 9,
+    "lightCount": 9,
+    "afterDark": {
+      "overflow": 0,
+      "pressed": 9,
+      "roots": [
+        "dark",
+        "dark",
+        "dark",
+        "dark",
+        "dark",
+        "dark",
+        "dark",
+        "dark",
+        "dark"
+      ]
+    },
+    "afterLight": {
+      "overflow": 0,
+      "pressed": 9,
+      "roots": [
+        "light",
+        "light",
+        "light",
+        "light",
+        "light",
+        "light",
+        "light",
+        "light",
+        "light"
+      ]
+    }
+  },
+  "consoleErrors": []
+}

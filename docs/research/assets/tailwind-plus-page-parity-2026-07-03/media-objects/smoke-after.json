@@ -1,0 +1,33 @@
+{
+  "url": "http://127.0.0.1:5174/?filter=nav%3Aplus-application-layout-media-objects",
+  "before": {
+    "title": "UI 용어 사전",
+    "pageHeadingCount": 1,
+    "exampleHeadingCount": 8,
+    "themeButtonCount": 24,
+    "darkButtonCount": 8,
+    "activeSystemCount": 8,
+    "darkSurfaceCount": 1,
+    "darkTextCount": 2,
+    "bodyOverflowX": 0
+  },
+  "afterDark": {
+    "activeDarkCount": 8,
+    "darkSurfaceCount": 19,
+    "darkTextCount": 22,
+    "bodyOverflowX": 0
+  },
+  "afterLight": {
+    "activeLightCount": 8,
+    "darkSurfaceCount": 1,
+    "darkTextCount": 2,
+    "bodyOverflowX": 0
+  },
+  "mobile": {
+    "themeButtonCount": 24,
+    "bodyOverflowX": 0
+  },
+  "consoleMessages": [],
+  "pageErrors": [],
+  "timestamp": "2026-07-03T18:17:52.319Z"
+}

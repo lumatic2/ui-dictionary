@@ -1,0 +1,208 @@
+{
+  "reference": [
+    {
+      "url": "https://tailwindcss.com/plus/ui-blocks/ecommerce/page-examples/order-detail-pages",
+      "status": 200,
+      "title": "Tailwind CSS Order Detail Pages - Official Tailwind UI Components",
+      "headings": [
+        "Components",
+        "Page Examples",
+        "Build UIs that don’t suck.",
+        "Order Detail Pages",
+        "With progress bars",
+        "With progress bars",
+        "With large images and progress bars",
+        "With large images and progress bars",
+        "Simple with full order details",
+        "Simple with full order details",
+        "Marketing",
+        "Application UI",
+        "Ecommerce",
+        "Templates & UI Kits"
+      ]
+    },
+    {
+      "url": "https://tailwindcss.com/plus/ui-blocks/ecommerce/page-examples/order-detail-page",
+      "status": 404,
+      "title": "Not Found",
+      "headings": []
+    }
+  ],
+  "local": {
+    "desktop": {
+      "h2": [
+        "Order Detail Pages"
+      ],
+      "h3": [
+        "With progress bars",
+        "Order #54879",
+        "With large images and progress bars",
+        "Order Details",
+        "Simple with full order details",
+        "It's on the way!"
+      ],
+      "themeButtons": 0,
+      "actionButtons": 116,
+      "ariaPressedButtons": 9,
+      "roots": 0,
+      "overflowX": 0,
+      "labels": [
+        "UI 용어 사전 홈으로 이동",
+        "검색 열기",
+        "UI Blocks",
+        "Templates",
+        "UI Kit",
+        "Sign in",
+        "Get full access",
+        "More options",
+        "Marketing",
+        "Application UI",
+        "Ecommerce",
+        "Documentation",
+        "Components",
+        "Product Overviews",
+        "Product Lists",
+        "Category Previews",
+        "Shopping Carts",
+        "Category Filters",
+        "Product Quickviews",
+        "Product Features",
+        "Store Navigation",
+        "Promo Sections",
+        "Checkout Forms",
+        "Reviews",
+        "Order Summaries",
+        "Order History",
+        "Incentives",
+        "Page Examples",
+        "Storefront Pages",
+        "Product Pages",
+        "Category Pages",
+        "Shopping Cart Pages",
+        "Checkout Pages",
+        "Order Detail Pages",
+        "Order History Pages",
+        "Preview",
+        "Code",
+        "System",
+        "Light",
+        "Dark",
+        "Copy code",
+        "Women",
+        "Men",
+        "Company",
+        "Stores",
+        "Search",
+        "Account",
+        "Cart",
+        "View invoice",
+        "Order placed",
+        "Processing",
+        "Shipped",
+        "Delivered",
+        "Order placed",
+        "Processing",
+        "Shipped",
+        "Delivered",
+        "Orders",
+        "Returns",
+        "Shipping",
+        "Contact",
+        "Orders",
+        "Returns",
+        "Shipping",
+        "Contact",
+        "Orders",
+        "Returns",
+        "Shipping",
+        "Contact",
+        "Orders",
+        "Returns",
+        "Shipping",
+        "Contact",
+        "Preview",
+        "System",
+        "Light",
+        "Dark",
+        "Get the code →",
+        "Women",
+        "Men",
+        "Company",
+        "Stores",
+        "Search",
+        "Account",
+        "Cart",
+        "View invoice",
+        "Order placed",
+        "Processing",
+        "Shipped",
+        "Delivered",
+        "Order placed",
+        "Processing",
+        "Shipped",
+        "Delivered",
+        "Orders",
+        "Returns",
+        "Shipping",
+        "Contact",
+        "Orders",
+        "Returns"
+      ]
+    },
+    "interactions": [
+      {
+        "label": "Search",
+        "count": 1,
+        "pressed": null,
+        "feedback": true
+      },
+      {
+        "label": "View invoice",
+        "count": 1,
+        "pressed": null,
+        "feedback": true
+      },
+      {
+        "label": "Processing",
+        "count": 1,
+        "pressed": null,
+        "feedback": true
+      },
+      {
+        "label": "Shipped",
+        "count": 1,
+        "pressed": null,
+        "feedback": true
+      },
+      {
+        "label": "Delivered",
+        "count": 1,
+        "pressed": null,
+        "feedback": true
+      },
+      {
+        "label": "51547878755545848512",
+        "count": 1,
+        "pressed": null,
+        "feedback": true
+      }
+    ],
+    "dark": {
+      "pressedTrue": 0,
+      "roots": 0,
+      "darkSurfaces": 3,
+      "overflowX": 0
+    },
+    "mobile": {
+      "buttons": 116,
+      "roots": 0,
+      "overflowX": 0
+    }
+  },
+  "errors": [
+    {
+      "type": "error",
+      "text": "Failed to load resource: the server responded with a status of 404 ()"
+    }
+  ]
+}

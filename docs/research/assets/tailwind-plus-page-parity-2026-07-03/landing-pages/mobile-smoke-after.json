@@ -1,0 +1,42 @@
+{
+  "h3": [
+    "With screenshots and stats",
+    "With large screenshot and testimonial",
+    "With background image hero and pricing section",
+    "With mobile screenshot and testimonials grid"
+  ],
+  "roots": 4,
+  "rootAttrs": [
+    {
+      "theme": "dark",
+      "variant": "landing-screenshots-stats"
+    },
+    {
+      "theme": "dark",
+      "variant": "landing-large-screenshot-testimonial"
+    },
+    {
+      "theme": "dark",
+      "variant": "landing-bg-hero-pricing"
+    },
+    {
+      "theme": "dark",
+      "variant": "landing-mobile-testimonials"
+    }
+  ],
+  "actionCount": 53,
+  "selected": [
+    "Dark",
+    "Open landing feature State monitoring",
+    "Dark",
+    "Open landing case study",
+    "Dark",
+    "Select landing plan Growth",
+    "Dark",
+    "Open landing hiring positions"
+  ],
+  "feedbackVisible": true,
+  "overflow": 0,
+  "darkCount": 4,
+  "errors": []
+}

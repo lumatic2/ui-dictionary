@@ -1,0 +1,110 @@
+{
+  "finalState": {
+    "h2": "Blog Sections",
+    "h3s": [
+      "Three-column",
+      "Three-column with images",
+      "Three-column with background images",
+      "Single-column",
+      "Single-column with images",
+      "With featured post",
+      "With photo and list"
+    ],
+    "roots": 7,
+    "actions": 22,
+    "overflow": -15
+  },
+  "clickEvidence": [
+    {
+      "selector": "[data-blog-section-variant=\"blog-three-column\"] button[aria-label=\"Open blog article Turn vague UI feedback into named patterns\"]",
+      "feedback": [
+        "Turn vague UI feedback into named patterns opened"
+      ],
+      "pressed": [
+        "System",
+        "Open blog article Turn vague UI feedback into named patterns",
+        "System",
+        "System",
+        "System",
+        "System",
+        "System",
+        "System"
+      ]
+    },
+    {
+      "selector": "button[aria-label=\"Open blog featured article\"]",
+      "feedback": [
+        "Turn vague UI feedback into named patterns opened",
+        "Featured article opened"
+      ],
+      "pressed": [
+        "System",
+        "Open blog article Turn vague UI feedback into named patterns",
+        "System",
+        "System",
+        "System",
+        "System",
+        "System",
+        "Open blog featured article",
+        "System"
+      ]
+    },
+    {
+      "selector": "button[aria-label=\"Open blog job Full-time designer\"]",
+      "feedback": [
+        "Turn vague UI feedback into named patterns opened",
+        "Featured article opened",
+        "Full-time designer opening opened"
+      ],
+      "pressed": [
+        "System",
+        "Open blog article Turn vague UI feedback into named patterns",
+        "System",
+        "System",
+        "System",
+        "System",
+        "System",
+        "Open blog featured article",
+        "System",
+        "Open blog job Full-time designer"
+      ]
+    },
+    {
+      "selector": "button[aria-label=\"View blog all openings\"]",
+      "feedback": [
+        "Turn vague UI feedback into named patterns opened",
+        "Featured article opened",
+        "All openings opened"
+      ],
+      "pressed": [
+        "System",
+        "Open blog article Turn vague UI feedback into named patterns",
+        "System",
+        "System",
+        "System",
+        "System",
+        "System",
+        "Open blog featured article",
+        "System",
+        "View blog all openings"
+      ]
+    }
+  ],
+  "theme": {
+    "darkCount": 7,
+    "afterDark": {
+      "roots": [
+        "dark",
+        "dark",
+        "dark",
+        "dark",
+        "dark",
+        "dark",
+        "dark"
+      ],
+      "pressed": 7,
+      "overflow": -15
+    }
+  },
+  "errors": []
+}

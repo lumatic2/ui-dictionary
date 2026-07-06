@@ -1,0 +1,1050 @@
+{
+  "reference": {
+    "buttons": [
+      {
+        "aria": "Search",
+        "expanded": null,
+        "text": ""
+      },
+      {
+        "aria": "Search",
+        "expanded": null,
+        "text": ""
+      },
+      {
+        "aria": "Navigation",
+        "expanded": null,
+        "text": ""
+      },
+      {
+        "aria": "Open navigation menu",
+        "expanded": null,
+        "text": ""
+      },
+      {
+        "aria": null,
+        "expanded": null,
+        "text": "Preview"
+      },
+      {
+        "aria": null,
+        "expanded": null,
+        "text": "Code"
+      },
+      {
+        "aria": null,
+        "expanded": null,
+        "text": ""
+      },
+      {
+        "aria": null,
+        "expanded": null,
+        "text": "Preview"
+      },
+      {
+        "aria": null,
+        "expanded": null,
+        "text": "Code"
+      },
+      {
+        "aria": null,
+        "expanded": null,
+        "text": ""
+      }
+    ],
+    "h1": "Banners",
+    "h2s": [
+      "With button",
+      "With button",
+      "On dark",
+      "On dark",
+      "On brand",
+      "On brand",
+      "With background glow",
+      "With background glow",
+      "With link",
+      "With link",
+      "Left-aligned",
+      "Left-aligned",
+      "Bottom aligned",
+      "Bottom aligned",
+      "Floating at bottom",
+      "Floating at bottom",
+      "Floating at bottom centered",
+      "Floating at bottom centered",
+      "Privacy notice right-aligned",
+      "Privacy notice right-aligned",
+      "Privacy notice centered",
+      "Privacy notice centered",
+      "Privacy notice left-aligned",
+      "Privacy notice left-aligned",
+      "Privacy notice full width",
+      "Privacy notice full width"
+    ],
+    "h3s": [
+      "Page Sections",
+      "Elements",
+      "Feedback",
+      "Page Examples",
+      "Build UIs that don’t suck.",
+      "Marketing",
+      "Application UI",
+      "Ecommerce",
+      "Templates & UI Kits"
+    ],
+    "links": [
+      "Introducing OatmealOur new multi-theme marketing site kit",
+      "UI Blocks",
+      "Templates",
+      "UI Kit",
+      "Sign in",
+      "Get full access",
+      "Marketing",
+      "Application UI",
+      "Ecommerce",
+      "Documentation",
+      "Hero Sections",
+      "Feature Sections",
+      "CTA Sections",
+      "Bento Grids",
+      "Pricing Sections",
+      "Header Sections",
+      "Newsletter Sections",
+      "Stats",
+      "Testimonials",
+      "Blog Sections",
+      "Contact Sections",
+      "Team Sections",
+      "Content Sections",
+      "Logo Clouds",
+      "FAQs",
+      "Footers",
+      "Headers",
+      "Flyout Menus",
+      "Banners",
+      "404 Pages",
+      "Landing Pages",
+      "Pricing Pages",
+      "About Pages",
+      "Get the free course",
+      "UI Blocks",
+      "Marketing",
+      "Elements",
+      "UI Blocks",
+      "Marketing",
+      "Elements",
+      "With button",
+      "With button",
+      "On dark",
+      "Get the code →",
+      "On dark",
+      "Get the code →",
+      "On brand",
+      "Get the code →",
+      "On brand",
+      "Get the code →",
+      "With background glow",
+      "Get the code →",
+      "With background glow",
+      "Get the code →",
+      "With link",
+      "Get the code →",
+      "With link",
+      "Get the code →",
+      "Left-aligned",
+      "Get the code →",
+      "Left-aligned",
+      "Get the code →",
+      "Bottom aligned",
+      "Get the code →",
+      "Bottom aligned",
+      "Get the code →",
+      "Floating at bottom",
+      "Get the code →",
+      "Floating at bottom",
+      "Get the code →",
+      "Floating at bottom centered",
+      "Get the code →",
+      "Floating at bottom centered",
+      "Get the code →",
+      "Privacy notice right-aligned",
+      "Get the code →",
+      "Privacy notice right-aligned",
+      "Get the code →",
+      "Privacy notice centered",
+      "Get the code →",
+      "Privacy notice centered",
+      "Get the code →",
+      "Privacy notice left-aligned",
+      "Get the code →",
+      "Privacy notice left-aligned",
+      "Get the code →",
+      "Privacy notice full width",
+      "Get the code →",
+      "Privacy notice full width",
+      "Get the code →",
+      "Hero Sections",
+      "Feature Sections",
+      "Pricing Sections",
+      "Header Sections",
+      "Newsletter Sections",
+      "Testimonials",
+      "Team Sections",
+      "Content Sections",
+      "Logo Clouds",
+      "FAQs"
+    ],
+    "overflow": 0,
+    "textSamples": [
+      "MarketingApplication UIEcommerceDocumentation",
+      "Marketing",
+      "Application UI",
+      "Ecommerce",
+      "Documentation",
+      "Page SectionsHero SectionsFeature SectionsCTA SectionsBento GridsPricing SectionsHeader SectionsNewsletter SectionsStatsTestimonialsBlog SectionsContact SectionsTeam SectionsContent SectionsLogo CloudsFAQsFooters",
+      "Page Sections",
+      "Hero Sections",
+      "Feature Sections",
+      "CTA Sections",
+      "Bento Grids",
+      "Pricing Sections",
+      "Header Sections",
+      "Newsletter Sections",
+      "Stats",
+      "Testimonials",
+      "Blog Sections",
+      "Contact Sections",
+      "Team Sections",
+      "Content Sections",
+      "Logo Clouds",
+      "FAQs",
+      "Footers",
+      "ElementsHeadersFlyout MenusBanners",
+      "Elements",
+      "Headers",
+      "Flyout Menus",
+      "Banners",
+      "Feedback404 Pages",
+      "Feedback",
+      "404 Pages",
+      "Page ExamplesLanding PagesPricing PagesAbout Pages",
+      "Page Examples",
+      "Landing Pages",
+      "Pricing Pages",
+      "About Pages",
+      "5-day Mini-Course",
+      "Build UIs that don’t suck.",
+      "Short, tactical video lessons from the creator of Tailwind CSS, delivered directly to your inbox every day for a week.",
+      "Get the free course",
+      "/",
+      "/",
+      "Use these Tailwind CSS announcement and banner examples to add important information and call-to-actions to your website, such as announcements, cookie banners, and privacy notices. These CSS banner examples are designed and built by the Tailwind CSS team, and include a variety of different styles and layouts.",
+      "With button",
+      "With button",
+      "On dark",
+      "Preview",
+      "On dark",
+      "Preview",
+      "On brand",
+      "Preview",
+      "On brand",
+      "Preview",
+      "With background glow",
+      "Preview",
+      "With background glow",
+      "Preview",
+      "With link",
+      "Preview",
+      "With link",
+      "Preview",
+      "Left-aligned",
+      "Preview",
+      "Left-aligned",
+      "Preview",
+      "Bottom aligned",
+      "Preview",
+      "Bottom aligned",
+      "Preview",
+      "Floating at bottom",
+      "Preview",
+      "Floating at bottom",
+      "Preview",
+      "Floating at bottom centered",
+      "Preview",
+      "Floating at bottom centered",
+      "Preview",
+      "Privacy notice right-aligned",
+      "Preview",
+      "Privacy notice right-aligned",
+      "Preview",
+      "Privacy notice centered",
+      "Preview",
+      "Privacy notice centered",
+      "Preview",
+      "Privacy notice left-aligned",
+      "Preview",
+      "Privacy notice left-aligned",
+      "Preview",
+      "Privacy notice full width",
+      "Preview",
+      "Privacy notice full width",
+      "Preview",
+      "Marketing",
+      "Hero Sections",
+      "Feature Sections",
+      "Pricing Sections",
+      "Header Sections",
+      "Newsletter Sections",
+      "Testimonials",
+      "Team Sections",
+      "Content Sections",
+      "Logo Clouds",
+      "FAQs",
+      "Footers",
+      "Headers",
+      "Flyout Menus",
+      "Banners",
+      "Browse all →",
+      "Application UI",
+      "Tables",
+      "Feeds",
+      "Form Layouts",
+      "Select Menus",
+      "Radio Groups",
+      "Checkboxes",
+      "Comboboxes",
+      "Navbars",
+      "Pagination",
+      "Sidebar Navigation"
+    ],
+    "title": "Tailwind CSS Banners - Official Tailwind UI Components",
+    "url": "https://tailwindcss.com/plus/ui-blocks/marketing/elements/banners"
+  },
+  "local": {
+    "actions": 131,
+    "bannerActions": 0,
+    "buttons": [
+      {
+        "aria": "UI 용어 사전 홈으로 이동",
+        "expanded": null,
+        "text": "UI Dictionary"
+      },
+      {
+        "aria": "검색 열기",
+        "expanded": null,
+        "text": "Ctrl F"
+      },
+      {
+        "aria": null,
+        "expanded": null,
+        "text": "UI Blocks"
+      },
+      {
+        "aria": null,
+        "expanded": null,
+        "text": "Templates"
+      },
+      {
+        "aria": null,
+        "expanded": null,
+        "text": "UI Kit"
+      },
+      {
+        "aria": null,
+        "expanded": null,
+        "text": "Sign in"
+      },
+      {
+        "aria": null,
+        "expanded": null,
+        "text": "Get full access"
+      },
+      {
+        "aria": "More options",
+        "expanded": null,
+        "text": ""
+      },
+      {
+        "aria": null,
+        "expanded": null,
+        "text": "Marketing"
+      },
+      {
+        "aria": null,
+        "expanded": null,
+        "text": "Application UI"
+      },
+      {
+        "aria": null,
+        "expanded": null,
+        "text": "Ecommerce"
+      },
+      {
+        "aria": null,
+        "expanded": null,
+        "text": "Documentation"
+      },
+      {
+        "aria": null,
+        "expanded": null,
+        "text": "Page Sections"
+      },
+      {
+        "aria": null,
+        "expanded": null,
+        "text": "Hero Sections"
+      },
+      {
+        "aria": null,
+        "expanded": null,
+        "text": "Feature Sections"
+      },
+      {
+        "aria": null,
+        "expanded": null,
+        "text": "CTA Sections"
+      },
+      {
+        "aria": null,
+        "expanded": null,
+        "text": "Bento Grids"
+      },
+      {
+        "aria": null,
+        "expanded": null,
+        "text": "Pricing Sections"
+      },
+      {
+        "aria": null,
+        "expanded": null,
+        "text": "Header Sections"
+      },
+      {
+        "aria": null,
+        "expanded": null,
+        "text": "Newsletter Sections"
+      },
+      {
+        "aria": null,
+        "expanded": null,
+        "text": "Stats"
+      },
+      {
+        "aria": null,
+        "expanded": null,
+        "text": "Testimonials"
+      },
+      {
+        "aria": null,
+        "expanded": null,
+        "text": "Blog Sections"
+      },
+      {
+        "aria": null,
+        "expanded": null,
+        "text": "Contact Sections"
+      },
+      {
+        "aria": null,
+        "expanded": null,
+        "text": "Team Sections"
+      },
+      {
+        "aria": null,
+        "expanded": null,
+        "text": "Content Sections"
+      },
+      {
+        "aria": null,
+        "expanded": null,
+        "text": "Logo Clouds"
+      },
+      {
+        "aria": null,
+        "expanded": null,
+        "text": "FAQs"
+      },
+      {
+        "aria": null,
+        "expanded": null,
+        "text": "Footers"
+      },
+      {
+        "aria": null,
+        "expanded": null,
+        "text": "Elements"
+      },
+      {
+        "aria": null,
+        "expanded": null,
+        "text": "Headers"
+      },
+      {
+        "aria": null,
+        "expanded": null,
+        "text": "Flyout Menus"
+      },
+      {
+        "aria": null,
+        "expanded": null,
+        "text": "Banners"
+      },
+      {
+        "aria": null,
+        "expanded": null,
+        "text": "Feedback"
+      },
+      {
+        "aria": null,
+        "expanded": null,
+        "text": "404 Pages"
+      },
+      {
+        "aria": null,
+        "expanded": null,
+        "text": "Page Examples"
+      },
+      {
+        "aria": null,
+        "expanded": null,
+        "text": "Landing Pages"
+      },
+      {
+        "aria": null,
+        "expanded": null,
+        "text": "Pricing Pages"
+      },
+      {
+        "aria": null,
+        "expanded": null,
+        "text": "About Pages"
+      },
+      {
+        "aria": null,
+        "expanded": null,
+        "text": "Preview"
+      },
+      {
+        "aria": null,
+        "expanded": null,
+        "text": "Code"
+      },
+      {
+        "aria": "System",
+        "expanded": null,
+        "text": ""
+      },
+      {
+        "aria": "Light",
+        "expanded": null,
+        "text": ""
+      },
+      {
+        "aria": "Dark",
+        "expanded": null,
+        "text": ""
+      },
+      {
+        "aria": "Copy code",
+        "expanded": null,
+        "text": ""
+      },
+      {
+        "aria": null,
+        "expanded": null,
+        "text": "Read more →"
+      },
+      {
+        "aria": null,
+        "expanded": null,
+        "text": "Register now"
+      },
+      {
+        "aria": null,
+        "expanded": null,
+        "text": "Preview"
+      },
+      {
+        "aria": "System",
+        "expanded": null,
+        "text": ""
+      },
+      {
+        "aria": "Light",
+        "expanded": null,
+        "text": ""
+      },
+      {
+        "aria": "Dark",
+        "expanded": null,
+        "text": ""
+      },
+      {
+        "aria": null,
+        "expanded": null,
+        "text": "Get the code →"
+      },
+      {
+        "aria": null,
+        "expanded": null,
+        "text": "Read more →"
+      },
+      {
+        "aria": null,
+        "expanded": null,
+        "text": "Register now"
+      },
+      {
+        "aria": null,
+        "expanded": null,
+        "text": "Preview"
+      },
+      {
+        "aria": "System",
+        "expanded": null,
+        "text": ""
+      },
+      {
+        "aria": "Light",
+        "expanded": null,
+        "text": ""
+      },
+      {
+        "aria": "Dark",
+        "expanded": null,
+        "text": ""
+      },
+      {
+        "aria": null,
+        "expanded": null,
+        "text": "Get the code →"
+      },
+      {
+        "aria": null,
+        "expanded": null,
+        "text": "Read more →"
+      },
+      {
+        "aria": null,
+        "expanded": null,
+        "text": "Register now"
+      },
+      {
+        "aria": null,
+        "expanded": null,
+        "text": "Preview"
+      },
+      {
+        "aria": "System",
+        "expanded": null,
+        "text": ""
+      },
+      {
+        "aria": "Light",
+        "expanded": null,
+        "text": ""
+      },
+      {
+        "aria": "Dark",
+        "expanded": null,
+        "text": ""
+      },
+      {
+        "aria": null,
+        "expanded": null,
+        "text": "Get the code →"
+      },
+      {
+        "aria": null,
+        "expanded": null,
+        "text": "Read more →"
+      },
+      {
+        "aria": null,
+        "expanded": null,
+        "text": "Register now"
+      },
+      {
+        "aria": null,
+        "expanded": null,
+        "text": "Preview"
+      },
+      {
+        "aria": "System",
+        "expanded": null,
+        "text": ""
+      },
+      {
+        "aria": "Light",
+        "expanded": null,
+        "text": ""
+      },
+      {
+        "aria": "Dark",
+        "expanded": null,
+        "text": ""
+      },
+      {
+        "aria": null,
+        "expanded": null,
+        "text": "Get the code →"
+      },
+      {
+        "aria": null,
+        "expanded": null,
+        "text": "Read more →"
+      },
+      {
+        "aria": null,
+        "expanded": null,
+        "text": "Learn more →"
+      },
+      {
+        "aria": null,
+        "expanded": null,
+        "text": "Preview"
+      },
+      {
+        "aria": "System",
+        "expanded": null,
+        "text": ""
+      },
+      {
+        "aria": "Light",
+        "expanded": null,
+        "text": ""
+      },
+      {
+        "aria": "Dark",
+        "expanded": null,
+        "text": ""
+      },
+      {
+        "aria": null,
+        "expanded": null,
+        "text": "Get the code →"
+      },
+      {
+        "aria": null,
+        "expanded": null,
+        "text": "Read more →"
+      },
+      {
+        "aria": null,
+        "expanded": null,
+        "text": "Learn more →"
+      },
+      {
+        "aria": null,
+        "expanded": null,
+        "text": "Preview"
+      },
+      {
+        "aria": "System",
+        "expanded": null,
+        "text": ""
+      },
+      {
+        "aria": "Light",
+        "expanded": null,
+        "text": ""
+      },
+      {
+        "aria": "Dark",
+        "expanded": null,
+        "text": ""
+      },
+      {
+        "aria": null,
+        "expanded": null,
+        "text": "Get the code →"
+      },
+      {
+        "aria": null,
+        "expanded": null,
+        "text": "Read more →"
+      },
+      {
+        "aria": null,
+        "expanded": null,
+        "text": "Learn more →"
+      },
+      {
+        "aria": null,
+        "expanded": null,
+        "text": "Preview"
+      },
+      {
+        "aria": "System",
+        "expanded": null,
+        "text": ""
+      },
+      {
+        "aria": "Light",
+        "expanded": null,
+        "text": ""
+      },
+      {
+        "aria": "Dark",
+        "expanded": null,
+        "text": ""
+      },
+      {
+        "aria": null,
+        "expanded": null,
+        "text": "Get the code →"
+      },
+      {
+        "aria": null,
+        "expanded": null,
+        "text": "Read more →"
+      },
+      {
+        "aria": null,
+        "expanded": null,
+        "text": "Learn more →"
+      },
+      {
+        "aria": null,
+        "expanded": null,
+        "text": "Preview"
+      },
+      {
+        "aria": "System",
+        "expanded": null,
+        "text": ""
+      },
+      {
+        "aria": "Light",
+        "expanded": null,
+        "text": ""
+      },
+      {
+        "aria": "Dark",
+        "expanded": null,
+        "text": ""
+      },
+      {
+        "aria": null,
+        "expanded": null,
+        "text": "Get the code →"
+      },
+      {
+        "aria": null,
+        "expanded": null,
+        "text": "Read more →"
+      },
+      {
+        "aria": null,
+        "expanded": null,
+        "text": "Learn more →"
+      },
+      {
+        "aria": null,
+        "expanded": null,
+        "text": "Preview"
+      },
+      {
+        "aria": "System",
+        "expanded": null,
+        "text": ""
+      },
+      {
+        "aria": "Light",
+        "expanded": null,
+        "text": ""
+      },
+      {
+        "aria": "Dark",
+        "expanded": null,
+        "text": ""
+      },
+      {
+        "aria": null,
+        "expanded": null,
+        "text": "Get the code →"
+      },
+      {
+        "aria": null,
+        "expanded": null,
+        "text": "Dismiss"
+      },
+      {
+        "aria": null,
+        "expanded": null,
+        "text": "Accept all"
+      },
+      {
+        "aria": null,
+        "expanded": null,
+        "text": "Preview"
+      },
+      {
+        "aria": "System",
+        "expanded": null,
+        "text": ""
+      },
+      {
+        "aria": "Light",
+        "expanded": null,
+        "text": ""
+      },
+      {
+        "aria": "Dark",
+        "expanded": null,
+        "text": ""
+      },
+      {
+        "aria": null,
+        "expanded": null,
+        "text": "Get the code →"
+      },
+      {
+        "aria": null,
+        "expanded": null,
+        "text": "Dismiss"
+      },
+      {
+        "aria": null,
+        "expanded": null,
+        "text": "Accept all"
+      },
+      {
+        "aria": null,
+        "expanded": null,
+        "text": "Preview"
+      },
+      {
+        "aria": "System",
+        "expanded": null,
+        "text": ""
+      },
+      {
+        "aria": "Light",
+        "expanded": null,
+        "text": ""
+      },
+      {
+        "aria": "Dark",
+        "expanded": null,
+        "text": ""
+      },
+      {
+        "aria": null,
+        "expanded": null,
+        "text": "Get the code →"
+      },
+      {
+        "aria": null,
+        "expanded": null,
+        "text": "Dismiss"
+      },
+      {
+        "aria": null,
+        "expanded": null,
+        "text": "Accept all"
+      },
+      {
+        "aria": null,
+        "expanded": null,
+        "text": "Preview"
+      },
+      {
+        "aria": "System",
+        "expanded": null,
+        "text": ""
+      },
+      {
+        "aria": "Light",
+        "expanded": null,
+        "text": ""
+      },
+      {
+        "aria": "Dark",
+        "expanded": null,
+        "text": ""
+      },
+      {
+        "aria": null,
+        "expanded": null,
+        "text": "Get the code →"
+      },
+      {
+        "aria": null,
+        "expanded": null,
+        "text": "Dismiss"
+      },
+      {
+        "aria": null,
+        "expanded": null,
+        "text": "Accept all"
+      }
+    ],
+    "h2": "Banners",
+    "h3s": [
+      "With button",
+      "On dark",
+      "On brand",
+      "With background glow",
+      "With link",
+      "Left-aligned",
+      "Bottom aligned",
+      "Floating at bottom",
+      "Floating at bottom centered",
+      "Privacy notice right-aligned",
+      "Privacy notice centered",
+      "Privacy notice left-aligned",
+      "Privacy notice full width"
+    ],
+    "overflow": 0,
+    "roots": 0,
+    "textSamples": [
+      "UI Dictionary",
+      "Plus / UI Blocks / Marketing / Elements / Banners",
+      "Banners",
+      "공지, 출시, 프로모션, 캠페인처럼 페이지 흐름 위에 짧은 메시지와 행동을 얹는 배너 예시입니다.",
+      "Tailwind Plus처럼 각 leaf의 첫 예제는 Preview와 Code를 함께 제공하고, 이후 예제는 Preview와 잠금 code CTA로 구분합니다. 우리 예시는 실제 화면 맥락에 맞춘 설명, tags, interaction feedback을 함께 보여줍니다.",
+      "On this page",
+      "With button",
+      "짧은 공지 메시지 옆에 명확한 button action을 둔 banner입니다.",
+      "Announcing our next round of funding. Read more →",
+      "On dark",
+      "dark surface 위에서 high-contrast banner로 공지를 띄웁니다.",
+      "Announcing our next round of funding. Read more →",
+      "On brand",
+      "브랜드 컬러 배경으로 프로모션이나 출시 공지를 강하게 강조합니다.",
+      "Announcing our next round of funding. Read more →",
+      "With background glow",
+      "은은한 glow 배경으로 banner를 페이지 흐름 안에서 더 눈에 띄게 만듭니다.",
+      "Announcing our next round of funding. Read more →",
+      "With link",
+      "작은 링크만 붙여 가벼운 update banner로 사용합니다.",
+      "Announcing our next round of funding. Read more →",
+      "Left-aligned",
+      "메시지를 왼쪽에 붙여 콘텐츠 본문과 정렬되는 banner입니다.",
+      "Announcing our next round of funding. Read more →",
+      "Bottom aligned",
+      "화면 하단 흐름에 맞춰 배치되는 campaign banner입니다.",
+      "Announcing our next round of funding. Read more →",
+      "Floating at bottom",
+      "콘텐츠 위에 떠 있는 하단 banner로 일시적 안내를 강조합니다.",
+      "Announcing our next round of funding. Read more →",
+      "Floating at bottom centered",
+      "화면 하단 중앙에 떠 있는 compact banner입니다.",
+      "Announcing our next round of funding. Read more →",
+      "Privacy notice right-aligned",
+      "개인정보 안내와 동의 버튼을 오른쪽 행동 중심으로 배치합니다.",
+      "This website uses cookies to supplement a balanced diet and provide a much deserved reward to the senses after consuming bland but nutritious meals.",
+      "Privacy notice centered",
+      "privacy notice를 중앙 정렬로 보여줘 짧고 명확하게 동의를 받습니다.",
+      "This website uses cookies to supplement a balanced diet and provide a much deserved reward to the senses after consuming bland but nutritious meals.",
+      "Privacy notice left-aligned",
+      "privacy copy를 왼쪽 정렬로 본문처럼 읽히게 합니다.",
+      "This website uses cookies to supplement a balanced diet and provide a much deserved reward to the senses after consuming bland but nutritious meals.",
+      "Privacy notice full width",
+      "페이지 폭 전체를 쓰는 privacy banner로 정책 안내를 빠짐없이 보여줍니다.",
+      "This website uses cookies to supplement a balanced diet and provide a much deserved reward to the senses after consuming bland but nutritious meals."
+    ],
+    "url": "http://127.0.0.1:5200/?filter=nav%3Aplus-marketing-banners"
+  }
+}

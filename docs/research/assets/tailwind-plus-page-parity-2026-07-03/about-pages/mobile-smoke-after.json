@@ -1,0 +1,36 @@
+{
+  "h3": [
+    "With image tiles",
+    "With timeline and stats",
+    "With two column description"
+  ],
+  "roots": 3,
+  "rootAttrs": [
+    {
+      "theme": "dark",
+      "variant": "about-image-tiles"
+    },
+    {
+      "theme": "dark",
+      "variant": "about-timeline-stats"
+    },
+    {
+      "theme": "dark",
+      "variant": "about-two-column-description"
+    }
+  ],
+  "actionCount": 44,
+  "selected": [
+    "Dark",
+    "Open about value Be world-class",
+    "Dark",
+    "Open about timeline 2021",
+    "Dark",
+    "Open about value Be world-class"
+  ],
+  "feedbackVisible": true,
+  "overflow": 0,
+  "valueCount": 2,
+  "darkCount": 3,
+  "errors": []
+}

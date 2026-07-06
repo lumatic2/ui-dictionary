@@ -1,0 +1,73 @@
+{
+  "url": "http://127.0.0.1:5174/?filter=nav%3Aplus-overlays-slide-overs",
+  "initial": {
+    "dialogCount": 3,
+    "ariaModalCount": 3,
+    "labelledByCount": 3,
+    "describedByCount": 3,
+    "closePanelButtonCount": 3,
+    "openPanelButtonCount": 3,
+    "saveButtonCount": 3,
+    "duplicateRecordDetailsCount": 0,
+    "bodyOverflowX": 0
+  },
+  "afterClose": {
+    "dialogCount": 2,
+    "ariaModalCount": 2,
+    "labelledByCount": 2,
+    "describedByCount": 2,
+    "closePanelButtonCount": 2,
+    "openPanelButtonCount": 3,
+    "saveButtonCount": 2,
+    "duplicateRecordDetailsCount": 0,
+    "bodyOverflowX": 0
+  },
+  "closeFeedback": 1,
+  "afterReopen": {
+    "dialogCount": 3,
+    "ariaModalCount": 3,
+    "labelledByCount": 3,
+    "describedByCount": 3,
+    "closePanelButtonCount": 3,
+    "openPanelButtonCount": 3,
+    "saveButtonCount": 3,
+    "duplicateRecordDetailsCount": 0,
+    "bodyOverflowX": 0
+  },
+  "editedFeedback": 1,
+  "activityFeedback": 1,
+  "approveFeedback": 1,
+  "afterSave": {
+    "dialogCount": 2,
+    "ariaModalCount": 2,
+    "labelledByCount": 2,
+    "describedByCount": 2,
+    "closePanelButtonCount": 2,
+    "openPanelButtonCount": 3,
+    "saveButtonCount": 2,
+    "duplicateRecordDetailsCount": 0,
+    "bodyOverflowX": 0
+  },
+  "saveFeedback": 1,
+  "afterEscape": {
+    "dialogCount": 2,
+    "ariaModalCount": 2,
+    "labelledByCount": 2,
+    "describedByCount": 2,
+    "closePanelButtonCount": 2,
+    "openPanelButtonCount": 3,
+    "saveButtonCount": 2,
+    "duplicateRecordDetailsCount": 0,
+    "bodyOverflowX": 0
+  },
+  "escapeFeedback": 1,
+  "darkButtons": 3,
+  "darkSurfaceCount": 1,
+  "mobileInitialDialogCount": 3,
+  "mobileDialogCountAfterClose": 2,
+  "mobileCloseFeedback": 1,
+  "mobileOverflowX": 0,
+  "consoleMessages": [],
+  "pageErrors": [],
+  "timestamp": "2026-07-03T15:57:05.080Z"
+}

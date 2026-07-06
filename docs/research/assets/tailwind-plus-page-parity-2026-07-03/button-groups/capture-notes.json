@@ -1,0 +1,28 @@
+{
+  "tailwind": {
+    "url": "https://tailwindcss.com/plus/ui-blocks/application-ui/elements/button-groups",
+    "status": 200,
+    "title": "Tailwind CSS Button Groups - Official Tailwind UI Components",
+    "h1": "Button Groups",
+    "exampleTextCount": 16
+  },
+  "localUrl": "http://127.0.0.1:5174/?filter=nav%3Aplus-application-elements-button-groups",
+  "localDesktop": {
+    "title": "UI 용어 사전",
+    "h1": null,
+    "buttonCount": 111,
+    "groupButtonCount": 9,
+    "ariaPressedCount": 0,
+    "ariaExpandedCount": 0,
+    "menuCount": 0,
+    "checkboxCount": 0,
+    "darkToggleCount": 5,
+    "bodyOverflowX": 0
+  },
+  "localMobile": {
+    "buttonCount": 111,
+    "darkToggleCount": 5,
+    "bodyOverflowX": 0
+  },
+  "timestamp": "2026-07-03T16:53:00.848Z"
+}

@@ -1,0 +1,226 @@
+{
+  "browserFallback": "Browser/Chrome path failed earlier: Browser is not available: iab / packaged browser documentation directory missing; standalone Playwright fallback used",
+  "before": {
+    "title": "UI 용어 사전",
+    "h1Like": [
+      "Category Filters"
+    ],
+    "examples": [
+      "With inline actions and expandable sidebar filters",
+      "With centered text and dropdown product filters",
+      "With dropdown product filters",
+      "With expandable product filter panel",
+      "Sidebar filters"
+    ],
+    "themeButtons": 15,
+    "actionButtons": 101,
+    "filterButtons": 27,
+    "pressedButtons": [
+      "System",
+      "Color+",
+      "System",
+      "Color⌄",
+      "System",
+      "Color⌄",
+      "Hide filters",
+      "System",
+      "Hide filters",
+      "Color⌄",
+      "Hide filters",
+      "Color",
+      "System",
+      "Color+"
+    ],
+    "darkFrames": 0,
+    "overflowX": 0
+  },
+  "interaction": {
+    "checkpoints": {
+      "color": {
+        "feedback": [
+          "Plus / UI Blocks / Ecommerce / Components / Category Filters",
+          "Tailwind의 category filter 예시 이름과 개수를 맞춘 필터링 변형입니다.",
+          "Tailwind의 category filter 예시 이름과 개수를 맞춘 필터링 변형입니다.",
+          "Refine the edit by material, color, and price without leaving the product grid.",
+          "Tailwind의 category filter 예시 이름과 개수를 맞춘 필터링 변형입니다.",
+          "Compact dropdown controls above a dense product grid.",
+          "Tailwind의 category filter 예시 이름과 개수를 맞춘 필터링 변형입니다.",
+          "Color filter toggled",
+          "Tailwind의 category filter 예시 이름과 개수를 맞춘 필터링 변형입니다."
+        ],
+        "pressedButtons": [
+          "System",
+          "Color+",
+          "System",
+          "Color⌄",
+          "System",
+          "Color⌄",
+          "Hide filters",
+          "System",
+          "Hide filters",
+          "Hide filters",
+          "System",
+          "Color+"
+        ]
+      },
+      "apply": {
+        "feedback": [
+          "Plus / UI Blocks / Ecommerce / Components / Category Filters",
+          "Tailwind의 category filter 예시 이름과 개수를 맞춘 필터링 변형입니다.",
+          "Applied 1 filter",
+          "Tailwind의 category filter 예시 이름과 개수를 맞춘 필터링 변형입니다.",
+          "Refine the edit by material, color, and price without leaving the product grid.",
+          "Tailwind의 category filter 예시 이름과 개수를 맞춘 필터링 변형입니다.",
+          "Compact dropdown controls above a dense product grid.",
+          "Tailwind의 category filter 예시 이름과 개수를 맞춘 필터링 변형입니다.",
+          "Color filter toggled",
+          "Tailwind의 category filter 예시 이름과 개수를 맞춘 필터링 변형입니다."
+        ],
+        "pressedButtons": [
+          "System",
+          "Color+",
+          "System",
+          "Color⌄",
+          "System",
+          "Color⌄",
+          "Hide filters",
+          "System",
+          "Hide filters",
+          "Hide filters",
+          "System",
+          "Color+"
+        ]
+      },
+      "clear": {
+        "feedback": [
+          "Plus / UI Blocks / Ecommerce / Components / Category Filters",
+          "Tailwind의 category filter 예시 이름과 개수를 맞춘 필터링 변형입니다.",
+          "Filters cleared",
+          "Tailwind의 category filter 예시 이름과 개수를 맞춘 필터링 변형입니다.",
+          "Refine the edit by material, color, and price without leaving the product grid.",
+          "Tailwind의 category filter 예시 이름과 개수를 맞춘 필터링 변형입니다.",
+          "Compact dropdown controls above a dense product grid.",
+          "Tailwind의 category filter 예시 이름과 개수를 맞춘 필터링 변형입니다.",
+          "Color filter toggled",
+          "Tailwind의 category filter 예시 이름과 개수를 맞춘 필터링 변형입니다."
+        ],
+        "pressedButtons": [
+          "System",
+          "System",
+          "Color⌄",
+          "System",
+          "Color⌄",
+          "Hide filters",
+          "System",
+          "Hide filters",
+          "Hide filters",
+          "System",
+          "Color+"
+        ]
+      },
+      "panel": {
+        "feedback": [
+          "Plus / UI Blocks / Ecommerce / Components / Category Filters",
+          "Tailwind의 category filter 예시 이름과 개수를 맞춘 필터링 변형입니다.",
+          "Filters cleared",
+          "Tailwind의 category filter 예시 이름과 개수를 맞춘 필터링 변형입니다.",
+          "Refine the edit by material, color, and price without leaving the product grid.",
+          "Tailwind의 category filter 예시 이름과 개수를 맞춘 필터링 변형입니다.",
+          "Compact dropdown controls above a dense product grid.",
+          "Filters hidden",
+          "Tailwind의 category filter 예시 이름과 개수를 맞춘 필터링 변형입니다.",
+          "Color filter toggled",
+          "Tailwind의 category filter 예시 이름과 개수를 맞춘 필터링 변형입니다."
+        ],
+        "pressedButtons": [
+          "System",
+          "System",
+          "Color⌄",
+          "System",
+          "Color⌄",
+          "System",
+          "Hide filters",
+          "Hide filters",
+          "System",
+          "Color+"
+        ]
+      },
+      "sort": {
+        "feedback": [
+          "Plus / UI Blocks / Ecommerce / Components / Category Filters",
+          "Tailwind의 category filter 예시 이름과 개수를 맞춘 필터링 변형입니다.",
+          "Sort menu opened",
+          "Tailwind의 category filter 예시 이름과 개수를 맞춘 필터링 변형입니다.",
+          "Refine the edit by material, color, and price without leaving the product grid.",
+          "Tailwind의 category filter 예시 이름과 개수를 맞춘 필터링 변형입니다.",
+          "Compact dropdown controls above a dense product grid.",
+          "Filters hidden",
+          "Tailwind의 category filter 예시 이름과 개수를 맞춘 필터링 변형입니다.",
+          "Color filter toggled",
+          "Tailwind의 category filter 예시 이름과 개수를 맞춘 필터링 변형입니다."
+        ],
+        "pressedButtons": [
+          "System",
+          "System",
+          "Color⌄",
+          "System",
+          "Color⌄",
+          "System",
+          "Hide filters",
+          "Hide filters",
+          "System",
+          "Color+"
+        ]
+      },
+      "grid": {
+        "feedback": [
+          "Plus / UI Blocks / Ecommerce / Components / Category Filters",
+          "Tailwind의 category filter 예시 이름과 개수를 맞춘 필터링 변형입니다.",
+          "Grid view selected",
+          "Tailwind의 category filter 예시 이름과 개수를 맞춘 필터링 변형입니다.",
+          "Refine the edit by material, color, and price without leaving the product grid.",
+          "Tailwind의 category filter 예시 이름과 개수를 맞춘 필터링 변형입니다.",
+          "Compact dropdown controls above a dense product grid.",
+          "Filters hidden",
+          "Tailwind의 category filter 예시 이름과 개수를 맞춘 필터링 변형입니다.",
+          "Color filter toggled",
+          "Tailwind의 category filter 예시 이름과 개수를 맞춘 필터링 변형입니다."
+        ],
+        "pressedButtons": [
+          "System",
+          "System",
+          "Color⌄",
+          "System",
+          "Color⌄",
+          "System",
+          "Hide filters",
+          "Hide filters",
+          "System",
+          "Color+"
+        ]
+      }
+    },
+    "colorFeedbackVisible": true,
+    "applyFeedbackVisible": true,
+    "clearFeedbackVisible": true,
+    "filtersToggleVisible": true,
+    "sortFeedbackVisible": true,
+    "gridFeedbackVisible": true
+  },
+  "dark": {
+    "pressedDark": 5,
+    "darkFrames": 5,
+    "lightSurfaces": 19
+  },
+  "light": {
+    "pressedLight": 5,
+    "darkFrames": 0,
+    "lightSurfaces": 45
+  },
+  "mobile": {
+    "overflowX": 0,
+    "themeButtons": 15,
+    "filterButtons": 27
+  },
+  "errors": []
+}

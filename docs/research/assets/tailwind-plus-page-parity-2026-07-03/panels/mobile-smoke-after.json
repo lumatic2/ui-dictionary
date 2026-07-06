@@ -1,0 +1,25 @@
+{
+  "initial": {
+    "h2": "Panels",
+    "h3": [
+      "Split pane",
+      "Resizable panel",
+      "Properties panel"
+    ],
+    "buttons": 125,
+    "panelRoots": 3,
+    "visibleDarkControls": 3,
+    "overflow": 0
+  },
+  "interactions": {
+    "designFeedback": true,
+    "compactFeedback": true,
+    "ctaFeedback": true
+  },
+  "darkAfter": {
+    "darkPressed": 3,
+    "darkRoots": 3,
+    "overflow": 0
+  },
+  "errors": []
+}

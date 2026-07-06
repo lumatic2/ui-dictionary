@@ -1,0 +1,54 @@
+{
+  "title": "UI 용어 사전",
+  "h2": "Newsletter Sections",
+  "h3s": [
+    "Side-by-side with details",
+    "Simple side-by-side",
+    "Simple side-by-side on brand",
+    "Simple stacked",
+    "Centered card",
+    "Side-by-side on card"
+  ],
+  "roots": [
+    {
+      "theme": "dark",
+      "variant": "newsletter-side-details"
+    },
+    {
+      "theme": "dark",
+      "variant": "newsletter-simple-side"
+    },
+    {
+      "theme": "dark",
+      "variant": "newsletter-brand-side"
+    },
+    {
+      "theme": "dark",
+      "variant": "newsletter-stacked"
+    },
+    {
+      "theme": "dark",
+      "variant": "newsletter-centered-card"
+    },
+    {
+      "theme": "dark",
+      "variant": "newsletter-side-card"
+    }
+  ],
+  "darkButtons": 6,
+  "inputs": 6,
+  "actions": 14,
+  "emailValue": "mobile@example.com",
+  "feedback": [
+    "Weekly articles detail opened",
+    "Privacy policy opened"
+  ],
+  "overflow": -15,
+  "submit": {
+    "emailValue": "mobile@example.com",
+    "feedback": [
+      "Subscribe newsletter selected for mobile@example.com"
+    ]
+  },
+  "errors": []
+}

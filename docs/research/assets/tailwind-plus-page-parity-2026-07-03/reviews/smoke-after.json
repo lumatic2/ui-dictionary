@@ -1,0 +1,56 @@
+{
+  "url": "http://127.0.0.1:5174/?filter=nav%3Aplus-ecommerce-reviews",
+  "startedAt": "2026-07-03T20:42:27.430Z",
+  "consoleErrors": [],
+  "pageErrors": [],
+  "checkpoints": {
+    "headingCount": 1,
+    "themeButtons": 12,
+    "actionButtons": 107,
+    "ariaPressedButtons": 40,
+    "initialReviewThemes": {
+      "dark": 0,
+      "light": 4
+    },
+    "initialOverflowX": 0,
+    "writeReview": {
+      "pressed": "true",
+      "feedback": true
+    },
+    "fiveStar": {
+      "pressed": "true",
+      "feedback": true
+    },
+    "fourStar": {
+      "pressed": "true",
+      "feedback": true
+    },
+    "helpful": {
+      "pressed": "true",
+      "feedback": true
+    },
+    "markHelpful": {
+      "pressed": "true",
+      "feedback": true
+    },
+    "darkButtons": 4,
+    "pressedDark": 4,
+    "reviewThemesAfterDark": {
+      "dark": 4,
+      "light": 0
+    },
+    "lightButtons": 4,
+    "pressedLight": 4,
+    "reviewThemesAfterLight": {
+      "dark": 0,
+      "light": 4
+    },
+    "mobileButtons": 57,
+    "mobileOverflowX": 0,
+    "mobileWriteReview": {
+      "pressed": "true",
+      "feedback": true
+    }
+  },
+  "completedAt": "2026-07-03T20:42:33.789Z"
+}

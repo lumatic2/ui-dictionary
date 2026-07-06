@@ -1,0 +1,172 @@
+{
+  "checked": 9,
+  "missingRoots": [],
+  "noButtons": [],
+  "overflows": [],
+  "results": [
+    {
+      "filter": "docs-elements-autocomplete",
+      "expected": "Autocomplete",
+      "before": {
+        "buttonLabels": [
+          "Toggle teammate options",
+          "Leslie Alexander",
+          "Michael Foster",
+          "Dries Vincent",
+          "Lindsay Walton",
+          "Courtney Henry"
+        ],
+        "hasRoot": true,
+        "inputCount": 1,
+        "overflow": 0,
+        "previewName": "docs-autocomplete",
+        "rootText": "Assigned toLeslie AlexanderMichael FosterDries VincentLindsay WaltonCourtney HenrySelected: None"
+      }
+    },
+    {
+      "filter": "docs-elements-command-palette",
+      "expected": "Command palette",
+      "before": {
+        "buttonLabels": [
+          "Esc",
+          "Workflow Inc. / Website Redesign",
+          "Add new file...⌘1",
+          "Add new folder...⌘2",
+          "Add hashtag...⌘3",
+          "Add label...⌘4",
+          "Open command palette"
+        ],
+        "hasRoot": true,
+        "inputCount": 1,
+        "overflow": 0,
+        "previewName": "docs-command-palette",
+        "rootText": "EscRecent searchesWorkflow Inc. / Website RedesignAdd new file...⌘1Add new folder...⌘2Add hashtag...⌘3Add label...⌘4Selected: NoneOpen command palette"
+      }
+    },
+    {
+      "filter": "docs-elements-copy-button",
+      "expected": "Copy button",
+      "before": {
+        "buttonLabels": [
+          "Copy"
+        ],
+        "hasRoot": true,
+        "inputCount": 0,
+        "overflow": 0,
+        "previewName": "docs-copy-button",
+        "rootText": "install.sh Copynpm install ui-dictionary npx ui-dictionary add command-palette"
+      }
+    },
+    {
+      "filter": "docs-elements-dialog",
+      "expected": "Dialog",
+      "before": {
+        "buttonLabels": [
+          "Open dialog",
+          "Close dialog backdrop",
+          "Cancel",
+          "Delete"
+        ],
+        "hasRoot": true,
+        "inputCount": 0,
+        "overflow": 0,
+        "previewName": "docs-dialog",
+        "rootText": "Open dialogProject is still activeDelete projectThis action cannot be undone. All project files and activity will be removed.CancelDelete"
+      }
+    },
+    {
+      "filter": "docs-elements-disclosure",
+      "expected": "Disclosure",
+      "before": {
+        "buttonLabels": [
+          "How do I choose a component pattern?-",
+          "How do you make holy water?+",
+          "What do you call someone with no body and no nose?+",
+          "Why do you never see elephants hiding in trees?+",
+          "Why can't you hear a pterodactyl go to the bathroom?+"
+        ],
+        "hasRoot": true,
+        "inputCount": 0,
+        "overflow": 0,
+        "previewName": "docs-disclosure",
+        "rootText": "Frequently asked questionsHow do I choose a component pattern?-Start with the user action, then compare the state, layout, and feedback examples before implementing.How do you make holy water?+You boil the hell out of it, then keep the answer collapsed until the user asks for it.What do you call someone with no body and no nose?+Nobody knows. The important part is that the disclosure button and panel stay connected.Why do you never see elephants hiding in trees?+Because they are really good at it. Long answer copy should expand without shifting unrelated controls.Why can't you hear a pterodactyl go to the bathroom?+Because the P is silent. The open row announces its content while closed rows remain compact."
+      }
+    },
+    {
+      "filter": "docs-elements-dropdown-menu",
+      "expected": "Dropdown menu",
+      "before": {
+        "buttonLabels": [
+          "Options",
+          "Edit",
+          "Duplicate",
+          "Archive",
+          "Move",
+          "Share",
+          "Add to favorites",
+          "Delete"
+        ],
+        "hasRoot": true,
+        "inputCount": 0,
+        "overflow": 0,
+        "previewName": "docs-dropdown-menu",
+        "rootText": "Options EditDuplicateArchiveMoveShareAdd to favoritesDeleteSelected: No action selected"
+      }
+    },
+    {
+      "filter": "docs-elements-popover",
+      "expected": "Popover",
+      "before": {
+        "buttonLabels": [
+          "Solutions",
+          "AnalyticsGet a better understanding of your traffic",
+          "EngagementSpeak directly to your customers",
+          "SecurityYour customers' data will be safe and secure",
+          "IntegrationsConnect with third-party tools",
+          "AutomationsBuild strategic funnels that will convert",
+          "Watch demo",
+          "Contact sales"
+        ],
+        "hasRoot": true,
+        "inputCount": 0,
+        "overflow": 0,
+        "previewName": "docs-popover",
+        "rootText": "Solutions AnalyticsGet a better understanding of your trafficEngagementSpeak directly to your customersSecurityYour customers' data will be safe and secureIntegrationsConnect with third-party toolsAutomationsBuild strategic funnels that will convert Watch demo Contact salesSelected: Analytics"
+      }
+    },
+    {
+      "filter": "docs-elements-select",
+      "expected": "Select",
+      "before": {
+        "buttonLabels": [
+          "Admin",
+          "Admin",
+          "Member",
+          "Viewer",
+          "Billing only"
+        ],
+        "hasRoot": true,
+        "inputCount": 0,
+        "overflow": 0,
+        "previewName": "docs-select",
+        "rootText": "RoleAdmin AdminMemberViewerBilling only"
+      }
+    },
+    {
+      "filter": "docs-elements-tabs",
+      "expected": "Tabs",
+      "before": {
+        "buttonLabels": [
+          "Write",
+          "Preview",
+          "Post"
+        ],
+        "hasRoot": true,
+        "inputCount": 1,
+        "overflow": 0,
+        "previewName": "docs-tabs",
+        "rootText": "WritePreviewNothing to preview yet.Post"
+      }
+    }
+  ]
+}

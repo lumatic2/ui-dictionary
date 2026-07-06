@@ -1,0 +1,16 @@
+{
+  "url": "http://127.0.0.1:5174/?filter=nav%3Aplus-feedback-empty-states",
+  "severe": [],
+  "overlayText": 0,
+  "overflow": 0,
+  "newUserFeedback": 1,
+  "uploadFeedback": 1,
+  "campaignFeedback": 1,
+  "slackFeedback": 1,
+  "templateFeedback": 1,
+  "inviteFeedback": 1,
+  "selectedTextCount": 1,
+  "allDarkButtonCount": 6,
+  "darkSurfaceCount": 7,
+  "timestamp": "2026-07-03T14:19:56.075Z"
+}

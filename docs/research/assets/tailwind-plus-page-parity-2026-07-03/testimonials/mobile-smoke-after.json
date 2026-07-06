@@ -1,0 +1,57 @@
+{
+  "title": "UI 용어 사전",
+  "h2": "Testimonials",
+  "h3s": [
+    "Simple centered",
+    "With large avatar",
+    "With overlapping image",
+    "With background image",
+    "Side-by-side",
+    "With star rating",
+    "Grid",
+    "Subtle grid"
+  ],
+  "roots": [
+    {
+      "theme": "dark",
+      "variant": "testimonials-simple-centered"
+    },
+    {
+      "theme": "dark",
+      "variant": "testimonials-large-avatar"
+    },
+    {
+      "theme": "dark",
+      "variant": "testimonials-overlap-image"
+    },
+    {
+      "theme": "dark",
+      "variant": "testimonials-bg-image"
+    },
+    {
+      "theme": "dark",
+      "variant": "testimonials-side-by-side"
+    },
+    {
+      "theme": "dark",
+      "variant": "testimonials-star-rating"
+    },
+    {
+      "theme": "dark",
+      "variant": "testimonials-grid"
+    },
+    {
+      "theme": "dark",
+      "variant": "testimonials-subtle-grid"
+    }
+  ],
+  "darkButtons": 8,
+  "actions": 19,
+  "feedback": [
+    "Judith Black testimonial opened",
+    "Star rating testimonial opened",
+    "Leslie Alexander testimonial card opened"
+  ],
+  "overflow": -15,
+  "errors": []
+}

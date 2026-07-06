@@ -1,0 +1,28 @@
+{
+  "refUrl": "https://tailwindcss.com/plus/ui-blocks/application-ui/navigation/vertical-navigation",
+  "localUrl": "http://127.0.0.1:5174/?filter=nav%3Aplus-navigation-vertical-navigation",
+  "capturedAt": "2026-07-03T15:09:53.453Z",
+  "browserPath": "standalone Playwright; Browser plugin not available in active tools",
+  "reference": {
+    "status": 200,
+    "title": "Tailwind CSS Vertical Navigation - Official Tailwind UI Components",
+    "url": "https://tailwindcss.com/plus/ui-blocks/application-ui/navigation/vertical-navigation",
+    "h1": "Vertical Navigation",
+    "visibleButtons": 2,
+    "visibleLinks": 81,
+    "textSample": "Introducing Oatmeal\nOur new multi-theme marketing site kit\nUI Blocks\nTemplates\nUI Kit\nSign in\nGet full access\nUI Blocks\nApplication UI\nNavigation\nVertical Navigation\n\nUse these Tailwind CSS vertical navigation components to create menus that fit perfectly into your application's sidebar, featuring section headings, badges, and icon links. These navigation components are designed and built by the Tailwind CSS team, and include a variety of different styles and layouts.\n\nSimple\n\nPreview\n\nGet the code →\nWith badges\n\nPreview\n\nGet the code →\nWith icons and badges\n\nPreview\n\nGet the code →\nWith icons\n\nPreview\n\nGet the code →\nWith secondary navigation\n\nPreview\n\nGet the code →\nOn gray\n\nPreview\n\nGet the code →\nMarketing\nHero Sections\nFeature Sections\nPricing Sections\nHeader Sections\nNewsletter Sections\nTestimonials\nTeam Sections\nContent Sections\nLogo Clouds\nFAQs\nFooters\nHeaders\nFlyout Menus\nBanners\nBrowse all →\nApplication UI\nTables\nFeeds\nForm Layouts\nSelect Menus\nRadio Groups\nCheckboxes\nComboboxes\nNavbars\nPagination\nSidebar Navigation\nCommand Palettes\nModals\nDropdowns\nButtons\nBrowse all →\nEcommerce\nProduct Overviews\nProduct Lists\nCategory Previews\nShopping Carts\nCategory Filters\nProduct Qui"
+  },
+  "localBefore": {
+    "navCount": 8,
+    "verticalNavCount": 1,
+    "ariaCurrentCount": 0,
+    "dashboardButtons": 6,
+    "secondaryHeadingCount": 1,
+    "bodyOverflowX": 0
+  },
+  "localMobileBefore": {
+    "overflowX": 0,
+    "verticalNavCount": 1
+  },
+  "console": []
+}

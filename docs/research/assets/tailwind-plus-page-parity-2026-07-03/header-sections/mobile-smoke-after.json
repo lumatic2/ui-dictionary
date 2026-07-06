@@ -1,0 +1,57 @@
+{
+  "title": "UI 용어 사전",
+  "h2": "Header Sections",
+  "h3s": [
+    "With stats",
+    "Centered",
+    "Centered with eyebrow",
+    "With cards",
+    "Simple",
+    "Simple with eyebrow",
+    "Simple with background image",
+    "Centered with background image"
+  ],
+  "roots": [
+    {
+      "theme": "dark",
+      "variant": "header-with-stats"
+    },
+    {
+      "theme": "dark",
+      "variant": "header-centered"
+    },
+    {
+      "theme": "dark",
+      "variant": "header-centered-eyebrow"
+    },
+    {
+      "theme": "dark",
+      "variant": "header-with-cards"
+    },
+    {
+      "theme": "dark",
+      "variant": "header-simple"
+    },
+    {
+      "theme": "dark",
+      "variant": "header-simple-eyebrow"
+    },
+    {
+      "theme": "dark",
+      "variant": "header-bg-image"
+    },
+    {
+      "theme": "dark",
+      "variant": "header-centered-bg-image"
+    }
+  ],
+  "darkButtons": 8,
+  "headerActions": 18,
+  "feedback": [
+    "Offices worldwide selected",
+    "Open roles selected",
+    "Sales selected"
+  ],
+  "overflow": -15,
+  "errors": []
+}

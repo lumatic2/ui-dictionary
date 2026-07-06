@@ -1,0 +1,31 @@
+{
+  "url": "http://127.0.0.1:5174/?filter=nav%3Aplus-application-layout-containers",
+  "browserAvailability": "in-app Browser failed: Browser is not available: iab; standalone Playwright fallback used",
+  "before": {
+    "title": "UI 용어 사전",
+    "themeButtonCount": 15,
+    "darkButtonCount": 5,
+    "activeSystemCount": 5,
+    "darkSurfaceCount": 1,
+    "bodyOverflowX": 0
+  },
+  "afterDark": {
+    "darkButtonCount": 5,
+    "activeDarkCount": 5,
+    "darkSurfaceCount": 6,
+    "bodyOverflowX": 0
+  },
+  "afterLight": {
+    "activeLightCount": 5,
+    "darkSurfaceCount": 1,
+    "bodyOverflowX": 0
+  },
+  "mobile": {
+    "themeButtonCount": 15,
+    "bodyOverflowX": 0,
+    "textIncludesFirstExample": true
+  },
+  "consoleMessages": [],
+  "pageErrors": [],
+  "timestamp": "2026-07-03T18:02:53.103Z"
+}

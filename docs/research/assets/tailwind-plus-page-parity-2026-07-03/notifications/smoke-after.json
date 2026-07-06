@@ -1,0 +1,50 @@
+{
+  "url": "http://127.0.0.1:5174/?filter=nav%3Aplus-overlays-notifications",
+  "initial": {
+    "statusCount": 6,
+    "ariaLiveCount": 6,
+    "ariaAtomicCount": 6,
+    "dismissButtonCount": 5,
+    "showButtonCount": 6,
+    "bodyOverflowX": 0
+  },
+  "afterDismiss": {
+    "statusCount": 5,
+    "ariaLiveCount": 5,
+    "ariaAtomicCount": 5,
+    "dismissButtonCount": 4,
+    "showButtonCount": 6,
+    "bodyOverflowX": 0
+  },
+  "dismissFeedback": 2,
+  "afterShow": {
+    "statusCount": 6,
+    "ariaLiveCount": 6,
+    "ariaAtomicCount": 6,
+    "dismissButtonCount": 5,
+    "showButtonCount": 6,
+    "bodyOverflowX": 0
+  },
+  "showFeedback": 1,
+  "undoFeedback": 1,
+  "replyFeedback": 1,
+  "acceptFeedback": 1,
+  "afterBlock": {
+    "statusCount": 5,
+    "ariaLiveCount": 5,
+    "ariaAtomicCount": 5,
+    "dismissButtonCount": 5,
+    "showButtonCount": 6,
+    "bodyOverflowX": 0
+  },
+  "blockFeedback": 1,
+  "darkButtons": 6,
+  "darkSurfaceCount": 8,
+  "mobileInitialStatusCount": 6,
+  "mobileStatusCountAfterDismiss": 5,
+  "mobileDismissFeedback": 2,
+  "mobileOverflowX": 0,
+  "consoleMessages": [],
+  "pageErrors": [],
+  "timestamp": "2026-07-03T15:48:42.761Z"
+}

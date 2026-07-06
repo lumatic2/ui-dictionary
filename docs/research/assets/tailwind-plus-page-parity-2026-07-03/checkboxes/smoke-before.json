@@ -1,0 +1,61 @@
+{
+  "before": {
+    "checkedByGroup": [
+      {
+        "i": 0,
+        "checked": [
+          "✓CommentsGet notified when someone posts a comment on a posting."
+        ]
+      },
+      {
+        "i": 1,
+        "checked": []
+      },
+      {
+        "i": 2,
+        "checked": [
+          "CommentsGet notified when someone posts a comment on a posting.✓"
+        ]
+      },
+      {
+        "i": 3,
+        "checked": [
+          "✓Comments"
+        ]
+      }
+    ],
+    "checkedCount": 3,
+    "bodyOverflowX": 0
+  },
+  "after": {
+    "checkedByGroup": [
+      {
+        "i": 0,
+        "checked": [
+          "✓CommentsGet notified when someone posts a comment on a posting.",
+          "✓CandidatesGet notified when a candidate applies for a job."
+        ]
+      },
+      {
+        "i": 1,
+        "checked": []
+      },
+      {
+        "i": 2,
+        "checked": [
+          "CommentsGet notified when someone posts a comment on a posting.✓"
+        ]
+      },
+      {
+        "i": 3,
+        "checked": [
+          "✓Comments"
+        ]
+      }
+    ],
+    "checkedCount": 4,
+    "candidatesSelectedTextCount": 1,
+    "bodyOverflowX": 0
+  },
+  "timestamp": "2026-07-03T17:45:00.967Z"
+}

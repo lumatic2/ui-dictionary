@@ -1,0 +1,31 @@
+{
+  "url": "http://127.0.0.1:5174/?filter=nav%3Aplus-application-layout-cards",
+  "before": {
+    "title": "UI 용어 사전",
+    "pageHeadingCount": 1,
+    "exampleHeadingCount": 10,
+    "themeButtonCount": 30,
+    "darkButtonCount": 10,
+    "activeSystemCount": 10,
+    "activeDarkCount": 0,
+    "darkSurfaceCount": 1,
+    "bodyOverflowX": 0
+  },
+  "afterDark": {
+    "activeDarkCount": 10,
+    "darkSurfaceCount": 27,
+    "bodyOverflowX": 0
+  },
+  "afterLight": {
+    "activeLightCount": 10,
+    "darkSurfaceCount": 1,
+    "bodyOverflowX": 0
+  },
+  "mobile": {
+    "themeButtonCount": 30,
+    "bodyOverflowX": 0
+  },
+  "consoleMessages": [],
+  "pageErrors": [],
+  "timestamp": "2026-07-03T18:09:50.230Z"
+}

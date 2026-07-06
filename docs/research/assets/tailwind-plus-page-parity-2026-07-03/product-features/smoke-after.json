@@ -1,0 +1,32 @@
+{
+  "url": "http://127.0.0.1:5174/?filter=nav%3Aplus-ecommerce-product-features",
+  "startedAt": "2026-07-03T20:14:08.893Z",
+  "consoleErrors": [],
+  "pageErrors": [],
+  "checkpoints": {
+    "headingCount": 1,
+    "exampleHeadings": [
+      "Product Features"
+    ],
+    "themeButtons": 27,
+    "actionButtonsBefore": 108,
+    "featureButtonsWithPressed": 55,
+    "initialDarkFrames": 1,
+    "initialOverflowX": 0,
+    "paddedSleevePressed": "true",
+    "paddedSleeveFeedback": 1,
+    "materialsPressed": "true",
+    "materialsFeedback": 1,
+    "carePressed": "true",
+    "careFeedback": 1,
+    "darkButtons": 9,
+    "pressedDark": 9,
+    "darkFramesAfterDark": 10,
+    "lightButtons": 9,
+    "pressedLight": 9,
+    "darkFramesAfterLight": 1,
+    "mobileThemeButtons": 0,
+    "mobileOverflowX": 0
+  },
+  "completedAt": "2026-07-03T20:14:19.612Z"
+}

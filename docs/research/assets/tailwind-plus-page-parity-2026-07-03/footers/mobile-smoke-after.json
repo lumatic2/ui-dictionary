@@ -1,0 +1,116 @@
+{
+  "finalState": {
+    "h2": "Footers",
+    "h3s": [
+      "4-column with company mission",
+      "4-column with call-to-action",
+      "4-column simple",
+      "4-column with newsletter",
+      "4-column with newsletter below",
+      "Simple centered",
+      "Simple with social links"
+    ],
+    "roots": 7,
+    "actions": 105,
+    "overflow": -15
+  },
+  "clickEvidence": [
+    {
+      "selector": "[data-footer-section-variant=\"footer-mission\"] button[aria-label=\"Open footer link Marketing\"]",
+      "feedback": [
+        "Marketing footer link opened",
+        "Get started"
+      ],
+      "pressed": [
+        "System",
+        "Open footer link Marketing",
+        "System",
+        "System",
+        "System",
+        "System",
+        "System",
+        "System"
+      ]
+    },
+    {
+      "selector": "[data-footer-section-variant=\"footer-cta\"] button[aria-label=\"Open footer CTA get started\"]",
+      "feedback": [
+        "Marketing footer link opened",
+        "Get started",
+        "Footer CTA started"
+      ],
+      "pressed": [
+        "System",
+        "Open footer link Marketing",
+        "System",
+        "Open footer CTA get started",
+        "System",
+        "System",
+        "System",
+        "System",
+        "System"
+      ]
+    },
+    {
+      "selector": "[data-footer-section-variant=\"footer-newsletter\"] button[aria-label=\"Subscribe footer newsletter\"]",
+      "feedback": [
+        "Marketing footer link opened",
+        "Get started",
+        "Footer CTA started",
+        "Newsletter subscribed"
+      ],
+      "pressed": [
+        "System",
+        "Open footer link Marketing",
+        "System",
+        "Open footer CTA get started",
+        "System",
+        "System",
+        "Subscribe footer newsletter",
+        "System",
+        "System",
+        "System"
+      ]
+    },
+    {
+      "selector": "[data-footer-section-variant=\"footer-social\"] button[aria-label=\"Open social gh\"]",
+      "feedback": [
+        "Marketing footer link opened",
+        "Get started",
+        "Footer CTA started",
+        "Newsletter subscribed",
+        "gh social opened"
+      ],
+      "pressed": [
+        "System",
+        "Open footer link Marketing",
+        "System",
+        "Open footer CTA get started",
+        "System",
+        "System",
+        "Subscribe footer newsletter",
+        "System",
+        "System",
+        "System",
+        "Open social gh"
+      ]
+    }
+  ],
+  "theme": {
+    "darkCount": 7,
+    "afterDark": {
+      "roots": [
+        "dark",
+        "dark",
+        "dark",
+        "dark",
+        "dark",
+        "dark",
+        "dark"
+      ],
+      "pressed": 7,
+      "overflow": -15
+    }
+  },
+  "errors": []
+}

@@ -1,0 +1,25 @@
+{
+  "h2": "Pricing Sections",
+  "h3s": [
+    "Two tiers with emphasized right tier",
+    "Two tiers with emphasized left tier",
+    "Three tiers with logos and feature comparison",
+    "Two tiers with extra tier",
+    "Single price with details",
+    "Three tiers",
+    "Three tiers with dividers",
+    "Three tiers with emphasized tier",
+    "Three tiers with toggle",
+    "Four tiers with toggle",
+    "With comparison table",
+    "Three tiers with feature comparison"
+  ],
+  "darkButtons": 12,
+  "pricingRoots": 12,
+  "darkRoots": 12,
+  "pricingActions": 102,
+  "planFeedback": true,
+  "billingFeedback": true,
+  "overflow": -15,
+  "errors": []
+}

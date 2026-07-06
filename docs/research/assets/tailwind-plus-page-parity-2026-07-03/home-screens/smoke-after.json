@@ -1,0 +1,39 @@
+{
+  "url": "http://127.0.0.1:5174/?filter=nav%3Aplus-application-page-examples-home-screens",
+  "before": {
+    "title": "UI 용어 사전",
+    "pageHeadingCount": 1,
+    "exampleHeadingCount": 2,
+    "themeButtonCount": 6,
+    "darkButtonCount": 2,
+    "activeSystemCount": 2,
+    "actionButtonCount": 123,
+    "darkSurfaceCount": 2,
+    "bodyOverflowX": 0
+  },
+  "afterInteractions": {
+    "searchFeedback": 1,
+    "deployFeedback": 1,
+    "activityFeedback": 1,
+    "invoiceFeedback": 1,
+    "metricFeedback": 1,
+    "clientFeedback": 1
+  },
+  "afterDark": {
+    "activeDarkCount": 2,
+    "darkSurfaceCount": 30,
+    "bodyOverflowX": 0
+  },
+  "afterLight": {
+    "activeLightCount": 2,
+    "darkSurfaceCount": 2,
+    "bodyOverflowX": 0
+  },
+  "mobile": {
+    "themeButtonCount": 6,
+    "bodyOverflowX": 0
+  },
+  "consoleMessages": [],
+  "pageErrors": [],
+  "timestamp": "2026-07-03T18:26:55.761Z"
+}

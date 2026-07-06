@@ -1,0 +1,31 @@
+{
+  "tailwind": {
+    "url": "https://tailwindcss.com/plus/ui-blocks/application-ui/forms/select-menus",
+    "status": 200,
+    "title": "Tailwind CSS Select Menus - Official Tailwind UI Components",
+    "h1": "Select Menus",
+    "exampleTextCount": 5
+  },
+  "localUrl": "http://127.0.0.1:5174/?filter=nav%3Aplus-forms-select-menus",
+  "correction": "Select Menus is under Application UI / Forms, not Elements.",
+  "localDesktop": {
+    "title": "UI 용어 사전",
+    "buttonCount": 142,
+    "selectCount": 2,
+    "comboboxCount": 0,
+    "listboxCount": 0,
+    "optionCount": 0,
+    "selectedOptionCount": 0,
+    "expandedCount": 6,
+    "darkToggleCount": 7,
+    "bodyOverflowX": 0
+  },
+  "localMobile": {
+    "buttonCount": 142,
+    "selectCount": 2,
+    "comboboxCount": 0,
+    "darkToggleCount": 7,
+    "bodyOverflowX": 0
+  },
+  "timestamp": "2026-07-03T17:08:17.760Z"
+}

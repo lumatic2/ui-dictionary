@@ -1,0 +1,129 @@
+{
+  "finalState": {
+    "h2": "Logo Clouds",
+    "h3s": [
+      "Simple with heading",
+      "Simple with call-to-action",
+      "Simple left-aligned",
+      "Split with logos on right",
+      "Simple",
+      "Grid"
+    ],
+    "roots": 6,
+    "actions": 35,
+    "overflow": -15
+  },
+  "clickEvidence": [
+    {
+      "selector": "[data-logo-cloud-variant=\"logo-cloud-heading\"] button[aria-label=\"Open logo Transistor\"]",
+      "feedback": [
+        "Transistor logo opened"
+      ],
+      "pressed": [
+        "System",
+        "Open logo Transistor",
+        "System",
+        "System",
+        "System",
+        "System",
+        "System"
+      ]
+    },
+    {
+      "selector": "button[aria-label=\"Open logo customer stories\"]",
+      "feedback": [
+        "Transistor logo opened",
+        "Customer stories opened"
+      ],
+      "pressed": [
+        "System",
+        "Open logo Transistor",
+        "System",
+        "Open logo customer stories",
+        "System",
+        "System",
+        "System",
+        "System"
+      ]
+    },
+    {
+      "selector": "[data-logo-cloud-variant=\"logo-cloud-left\"] button[aria-label=\"Open logo Reform\"]",
+      "feedback": [
+        "Transistor logo opened",
+        "Customer stories opened",
+        "Reform logo opened"
+      ],
+      "pressed": [
+        "System",
+        "Open logo Transistor",
+        "System",
+        "Open logo customer stories",
+        "System",
+        "Open logo Reform",
+        "System",
+        "System",
+        "System"
+      ]
+    },
+    {
+      "selector": "button[aria-label=\"Open logo account creation\"]",
+      "feedback": [
+        "Transistor logo opened",
+        "Customer stories opened",
+        "Reform logo opened",
+        "Account creation opened"
+      ],
+      "pressed": [
+        "System",
+        "Open logo Transistor",
+        "System",
+        "Open logo customer stories",
+        "System",
+        "Open logo Reform",
+        "System",
+        "Open logo account creation",
+        "System",
+        "System"
+      ]
+    },
+    {
+      "selector": "[data-logo-cloud-variant=\"logo-cloud-grid\"] button[aria-label=\"Open logo Laravel\"]",
+      "feedback": [
+        "Transistor logo opened",
+        "Customer stories opened",
+        "Reform logo opened",
+        "Account creation opened",
+        "Laravel logo opened"
+      ],
+      "pressed": [
+        "System",
+        "Open logo Transistor",
+        "System",
+        "Open logo customer stories",
+        "System",
+        "Open logo Reform",
+        "System",
+        "Open logo account creation",
+        "System",
+        "System",
+        "Open logo Laravel"
+      ]
+    }
+  ],
+  "theme": {
+    "darkCount": 6,
+    "afterDark": {
+      "roots": [
+        "dark",
+        "dark",
+        "dark",
+        "dark",
+        "dark",
+        "dark"
+      ],
+      "pressed": 6,
+      "overflow": -15
+    }
+  },
+  "errors": []
+}

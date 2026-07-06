@@ -1,0 +1,45 @@
+{
+  "url": "http://127.0.0.1:5174/?filter=nav%3Aplus-forms-input-groups",
+  "before": {
+    "title": "UI 용어 사전",
+    "inputCount": 25,
+    "labelledInputCount": 25,
+    "disabledInputCount": 1,
+    "buttonCount": 183,
+    "selectCount": 1,
+    "darkToggleCount": 21,
+    "bodyOverflowX": 0
+  },
+  "afterInteraction": {
+    "emailValue": "qa@example.com",
+    "priceValue": "$ 19.00",
+    "disabledInputCount": 1,
+    "currencyFeedback": true,
+    "sortFeedback": true,
+    "billingFeedback": true,
+    "bodyOverflowX": 0
+  },
+  "afterMoreInputs": {
+    "cardValue": "5555 5555 5555 4444",
+    "bottomNameValue": "Alex Morgan",
+    "shortcutFeedback": true,
+    "bodyOverflowX": 0
+  },
+  "afterDark": {
+    "darkToggleCount": 21,
+    "activeDarkToggleCount": 21,
+    "darkSurfaceCount": 21,
+    "inputCount": 25,
+    "bodyOverflowX": 0
+  },
+  "mobile": {
+    "inputCount": 25,
+    "labelledInputCount": 25,
+    "feedback": true,
+    "valueKept": true,
+    "bodyOverflowX": 0
+  },
+  "consoleMessages": [],
+  "pageErrors": [],
+  "timestamp": "2026-07-03T17:26:37.656Z"
+}

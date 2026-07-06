@@ -1,0 +1,129 @@
+{
+  "url": "http://127.0.0.1:5174/?filter=nav%3Aplus-forms-checkboxes",
+  "browserAvailability": "in-app Browser failed: Browser is not available: iab; standalone Playwright fallback used",
+  "before": {
+    "checkboxRoleCount": 12,
+    "groupCount": 4,
+    "checkedCount": 4,
+    "checkedByGroup": [
+      {
+        "i": 0,
+        "checked": [
+          "✓CommentsGet notified when someone posts a comment on a posting."
+        ]
+      },
+      {
+        "i": 1,
+        "checked": [
+          "✓New commentsso you always know what's happening."
+        ]
+      },
+      {
+        "i": 2,
+        "checked": [
+          "CommentsGet notified when someone posts a comment on a posting.✓"
+        ]
+      },
+      {
+        "i": 3,
+        "checked": [
+          "✓Comments"
+        ]
+      }
+    ],
+    "bodyOverflowX": 0,
+    "title": "UI 용어 사전",
+    "themeButtonCount": 12,
+    "darkButtonCount": 4,
+    "activeSystemCount": 4
+  },
+  "afterInteractions": {
+    "checkboxRoleCount": 12,
+    "groupCount": 4,
+    "checkedCount": 8,
+    "checkedByGroup": [
+      {
+        "i": 0,
+        "checked": [
+          "✓CommentsGet notified when someone posts a comment on a posting.",
+          "✓CandidatesGet notified when a candidate applies for a job."
+        ]
+      },
+      {
+        "i": 1,
+        "checked": [
+          "✓New commentsso you always know what's happening.",
+          "✓New candidateswho apply for any open postings."
+        ]
+      },
+      {
+        "i": 2,
+        "checked": [
+          "CommentsGet notified when someone posts a comment on a posting.✓",
+          "OffersGet notified when a candidate accepts or rejects an offer.✓"
+        ]
+      },
+      {
+        "i": 3,
+        "checked": [
+          "✓Comments",
+          "✓Candidates"
+        ]
+      }
+    ],
+    "bodyOverflowX": 0,
+    "candidatesFeedbackCount": 2,
+    "newCandidatesFeedbackCount": 1,
+    "offersFeedbackCount": 1,
+    "group0Candidates": true,
+    "group1NewCandidates": true,
+    "group2Offers": true,
+    "group3Candidates": true,
+    "group2StillComments": true
+  },
+  "afterDark": {
+    "darkButtonCount": 4,
+    "activeDarkCount": 4,
+    "checkedCount": 8,
+    "darkSurfaceCount": 34,
+    "bodyOverflowX": 0
+  },
+  "mobile": {
+    "checkboxRoleCount": 12,
+    "groupCount": 4,
+    "checkedCount": 5,
+    "checkedByGroup": [
+      {
+        "i": 0,
+        "checked": [
+          "✓CommentsGet notified when someone posts a comment on a posting.",
+          "✓OffersGet notified when a candidate accepts or rejects an offer."
+        ]
+      },
+      {
+        "i": 1,
+        "checked": [
+          "✓New commentsso you always know what's happening."
+        ]
+      },
+      {
+        "i": 2,
+        "checked": [
+          "CommentsGet notified when someone posts a comment on a posting.✓"
+        ]
+      },
+      {
+        "i": 3,
+        "checked": [
+          "✓Comments"
+        ]
+      }
+    ],
+    "firstGroupOffers": true,
+    "feedback": true,
+    "bodyOverflowX": 0
+  },
+  "consoleMessages": [],
+  "pageErrors": [],
+  "timestamp": "2026-07-03T17:47:36.383Z"
+}

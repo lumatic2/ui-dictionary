@@ -1,0 +1,151 @@
+{
+  "url": "http://127.0.0.1:5200/?filter=nav%3Aplus-marketing-logo-clouds",
+  "finalState": {
+    "actions": 35,
+    "h2": "Logo Clouds",
+    "h3s": [
+      "Simple with heading",
+      "Simple with call-to-action",
+      "Simple left-aligned",
+      "Split with logos on right",
+      "Simple",
+      "Grid"
+    ],
+    "overflow": 0,
+    "roots": 6,
+    "variants": [
+      "logo-cloud-heading",
+      "logo-cloud-cta",
+      "logo-cloud-left",
+      "logo-cloud-split-right",
+      "logo-cloud-simple",
+      "logo-cloud-grid"
+    ]
+  },
+  "clickEvidence": [
+    {
+      "feedback": [
+        "Transistor logo opened"
+      ],
+      "label": "heading transistor",
+      "pressed": [
+        "System",
+        "Open logo Transistor",
+        "System",
+        "System",
+        "System",
+        "System",
+        "System"
+      ]
+    },
+    {
+      "feedback": [
+        "Transistor logo opened",
+        "Customer stories opened"
+      ],
+      "label": "customer stories",
+      "pressed": [
+        "System",
+        "Open logo Transistor",
+        "System",
+        "Open logo customer stories",
+        "System",
+        "System",
+        "System",
+        "System"
+      ]
+    },
+    {
+      "feedback": [
+        "Transistor logo opened",
+        "Customer stories opened",
+        "Reform logo opened"
+      ],
+      "label": "left reform",
+      "pressed": [
+        "System",
+        "Open logo Transistor",
+        "System",
+        "Open logo customer stories",
+        "System",
+        "Open logo Reform",
+        "System",
+        "System",
+        "System"
+      ]
+    },
+    {
+      "feedback": [
+        "Transistor logo opened",
+        "Customer stories opened",
+        "Reform logo opened",
+        "Account creation opened"
+      ],
+      "label": "split account",
+      "pressed": [
+        "System",
+        "Open logo Transistor",
+        "System",
+        "Open logo customer stories",
+        "System",
+        "Open logo Reform",
+        "System",
+        "Open logo account creation",
+        "System",
+        "System"
+      ]
+    },
+    {
+      "feedback": [
+        "Transistor logo opened",
+        "Customer stories opened",
+        "Reform logo opened",
+        "Account creation opened",
+        "Laravel logo opened"
+      ],
+      "label": "grid laravel",
+      "pressed": [
+        "System",
+        "Open logo Transistor",
+        "System",
+        "Open logo customer stories",
+        "System",
+        "Open logo Reform",
+        "System",
+        "Open logo account creation",
+        "System",
+        "System",
+        "Open logo Laravel"
+      ]
+    }
+  ],
+  "theme": {
+    "darkCount": 6,
+    "lightCount": 6,
+    "afterDark": {
+      "overflow": 0,
+      "pressed": 6,
+      "roots": [
+        "dark",
+        "dark",
+        "dark",
+        "dark",
+        "dark",
+        "dark"
+      ]
+    },
+    "afterLight": {
+      "overflow": 0,
+      "pressed": 6,
+      "roots": [
+        "light",
+        "light",
+        "light",
+        "light",
+        "light",
+        "light"
+      ]
+    }
+  },
+  "consoleErrors": []
+}

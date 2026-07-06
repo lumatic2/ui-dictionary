@@ -1,0 +1,18 @@
+{
+  "url": "http://127.0.0.1:5174/?filter=nav%3Aplus-feedback-progress",
+  "severe": [],
+  "overlayText": 0,
+  "overflow": 0,
+  "progressbarCountBefore": 3,
+  "progressValueBefore": "64",
+  "progress25Feedback": 1,
+  "progress75Feedback": 1,
+  "resumeFeedback": 1,
+  "taskFeedback": 2,
+  "completeFeedback": 1,
+  "checkboxCount": 5,
+  "checkedCount": 5,
+  "allDarkButtonCount": 3,
+  "darkSurfaceCount": 7,
+  "timestamp": "2026-07-03T14:31:02.894Z"
+}

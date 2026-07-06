@@ -1,0 +1,183 @@
+{
+  "url": "http://127.0.0.1:5200/?filter=nav%3Aplus-marketing-blog-sections",
+  "finalState": {
+    "actions": 22,
+    "h2": "Blog Sections",
+    "h3s": [
+      "Three-column",
+      "Three-column with images",
+      "Three-column with background images",
+      "Single-column",
+      "Single-column with images",
+      "With featured post",
+      "With photo and list"
+    ],
+    "overflow": 0,
+    "roots": 7,
+    "variants": [
+      "blog-three-column",
+      "blog-three-column-images",
+      "blog-three-column-bg-images",
+      "blog-single-column",
+      "blog-single-column-images",
+      "blog-featured",
+      "blog-photo-list"
+    ]
+  },
+  "clickEvidence": [
+    {
+      "label": "three-column article",
+      "selector": "[data-blog-section-variant=\"blog-three-column\"] button[aria-label=\"Open blog article Turn vague UI feedback into named patterns\"]",
+      "count": 1,
+      "state": {
+        "label": "three-column article",
+        "pressedLabels": [
+          "System",
+          "Open blog article Turn vague UI feedback into named patterns",
+          "System",
+          "System",
+          "System",
+          "System",
+          "System",
+          "System"
+        ],
+        "visibleFeedback": [
+          "Turn vague UI feedback into named patterns opened"
+        ]
+      }
+    },
+    {
+      "label": "background article",
+      "selector": "[data-blog-section-variant=\"blog-three-column-bg-images\"] button[aria-label=\"Open blog article How better UI names improve product demos\"]",
+      "count": 1,
+      "state": {
+        "label": "background article",
+        "pressedLabels": [
+          "System",
+          "Open blog article Turn vague UI feedback into named patterns",
+          "System",
+          "System",
+          "Open blog article How better UI names improve product demos",
+          "System",
+          "System",
+          "System",
+          "System"
+        ],
+        "visibleFeedback": [
+          "Turn vague UI feedback into named patterns opened",
+          "How better UI names improve product demos opened"
+        ]
+      }
+    },
+    {
+      "label": "featured article",
+      "selector": "button[aria-label=\"Open blog featured article\"]",
+      "count": 1,
+      "state": {
+        "label": "featured article",
+        "pressedLabels": [
+          "System",
+          "Open blog article Turn vague UI feedback into named patterns",
+          "System",
+          "System",
+          "Open blog article How better UI names improve product demos",
+          "System",
+          "System",
+          "System",
+          "Open blog featured article",
+          "System"
+        ],
+        "visibleFeedback": [
+          "Turn vague UI feedback into named patterns opened",
+          "How better UI names improve product demos opened",
+          "Featured article opened"
+        ]
+      }
+    },
+    {
+      "label": "job opening",
+      "selector": "button[aria-label=\"Open blog job Full-time designer\"]",
+      "count": 1,
+      "state": {
+        "label": "job opening",
+        "pressedLabels": [
+          "System",
+          "Open blog article Turn vague UI feedback into named patterns",
+          "System",
+          "System",
+          "Open blog article How better UI names improve product demos",
+          "System",
+          "System",
+          "System",
+          "Open blog featured article",
+          "System",
+          "Open blog job Full-time designer"
+        ],
+        "visibleFeedback": [
+          "Turn vague UI feedback into named patterns opened",
+          "How better UI names improve product demos opened",
+          "Featured article opened",
+          "Full-time designer opening opened"
+        ]
+      }
+    },
+    {
+      "label": "all openings",
+      "selector": "button[aria-label=\"View blog all openings\"]",
+      "count": 1,
+      "state": {
+        "label": "all openings",
+        "pressedLabels": [
+          "System",
+          "Open blog article Turn vague UI feedback into named patterns",
+          "System",
+          "System",
+          "Open blog article How better UI names improve product demos",
+          "System",
+          "System",
+          "System",
+          "Open blog featured article",
+          "System",
+          "View blog all openings"
+        ],
+        "visibleFeedback": [
+          "Turn vague UI feedback into named patterns opened",
+          "How better UI names improve product demos opened",
+          "Featured article opened",
+          "All openings opened"
+        ]
+      }
+    }
+  ],
+  "theme": {
+    "darkCount": 7,
+    "lightCount": 7,
+    "afterDark": {
+      "overflow": 0,
+      "pressed": 7,
+      "roots": [
+        "dark",
+        "dark",
+        "dark",
+        "dark",
+        "dark",
+        "dark",
+        "dark"
+      ]
+    },
+    "afterLight": {
+      "overflow": 0,
+      "pressed": 7,
+      "roots": [
+        "light",
+        "light",
+        "light",
+        "light",
+        "light",
+        "light",
+        "light"
+      ]
+    }
+  },
+  "consoleErrors": []
+}

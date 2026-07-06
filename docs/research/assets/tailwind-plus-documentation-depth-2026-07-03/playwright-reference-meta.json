@@ -1,0 +1,6146 @@
+[
+  {
+    "group": "Getting started",
+    "leaf": "Getting set up",
+    "slug": "getting-set-up",
+    "url": "https://tailwindcss.com/plus/ui-blocks/documentation",
+    "navId": "docs-getting-started-setup",
+    "viewportName": "desktop",
+    "screenshot": "docs/research/assets/tailwind-plus-documentation-depth-2026-07-03/getting-set-up-desktop.png",
+    "info": {
+      "title": "Tailwind Plus - Official Tailwind UI Components & Templates",
+      "h1": "Getting set up",
+      "headings": [
+        {
+          "level": "h3",
+          "text": "Getting started"
+        },
+        {
+          "level": "h3",
+          "text": "Elements"
+        },
+        {
+          "level": "h3",
+          "text": "Build UIs that don’t suck."
+        },
+        {
+          "level": "h1",
+          "text": "Getting set up"
+        },
+        {
+          "level": "h2",
+          "text": "Requirements"
+        },
+        {
+          "level": "h2",
+          "text": "Add the Inter font family"
+        },
+        {
+          "level": "h2",
+          "text": "Dark mode support"
+        },
+        {
+          "level": "h2",
+          "text": "On this page"
+        },
+        {
+          "level": "h3",
+          "text": "Marketing"
+        },
+        {
+          "level": "h3",
+          "text": "Application UI"
+        },
+        {
+          "level": "h3",
+          "text": "Ecommerce"
+        },
+        {
+          "level": "h3",
+          "text": "Templates & UI Kits"
+        }
+      ],
+      "mainLinks": [
+        {
+          "text": "Marketing",
+          "href": "https://tailwindcss.com/plus/ui-blocks/marketing"
+        },
+        {
+          "text": "Application UI",
+          "href": "https://tailwindcss.com/plus/ui-blocks/application-ui"
+        },
+        {
+          "text": "Ecommerce",
+          "href": "https://tailwindcss.com/plus/ui-blocks/ecommerce"
+        },
+        {
+          "text": "Documentation",
+          "href": "/plus/ui-blocks/documentation"
+        },
+        {
+          "text": "Getting set up",
+          "href": "/plus/ui-blocks/documentation"
+        },
+        {
+          "text": "Using HTML",
+          "href": "/plus/ui-blocks/documentation/using-html"
+        },
+        {
+          "text": "Using React",
+          "href": "/plus/ui-blocks/documentation/using-react"
+        },
+        {
+          "text": "Using Vue",
+          "href": "/plus/ui-blocks/documentation/using-vue"
+        },
+        {
+          "text": "Assets",
+          "href": "/plus/ui-blocks/documentation/assets"
+        },
+        {
+          "text": "Introduction",
+          "href": "/plus/ui-blocks/documentation/elements"
+        },
+        {
+          "text": "Autocomplete",
+          "href": "/plus/ui-blocks/documentation/autocomplete"
+        },
+        {
+          "text": "Command palette",
+          "href": "/plus/ui-blocks/documentation/command-palette"
+        },
+        {
+          "text": "Copy button",
+          "href": "/plus/ui-blocks/documentation/copy-button"
+        },
+        {
+          "text": "Dialog",
+          "href": "/plus/ui-blocks/documentation/dialog"
+        },
+        {
+          "text": "Disclosure",
+          "href": "/plus/ui-blocks/documentation/disclosure"
+        },
+        {
+          "text": "Dropdown menu",
+          "href": "/plus/ui-blocks/documentation/dropdown-menu"
+        },
+        {
+          "text": "Popover",
+          "href": "/plus/ui-blocks/documentation/popover"
+        },
+        {
+          "text": "Select",
+          "href": "/plus/ui-blocks/documentation/select"
+        },
+        {
+          "text": "Tabs",
+          "href": "/plus/ui-blocks/documentation/tabs"
+        },
+        {
+          "text": "Get the free course",
+          "href": "https://tailwindcss.com/build-uis-that-dont-suck"
+        },
+        {
+          "text": "UI Blocks",
+          "href": "/plus/ui-blocks"
+        },
+        {
+          "text": "Documentation",
+          "href": "/plus/ui-blocks/documentation"
+        },
+        {
+          "text": "UI Blocks",
+          "href": "/plus/ui-blocks"
+        },
+        {
+          "text": "read the Tailwind CSS documentation",
+          "href": "https://tailwindcss.com/docs"
+        }
+      ],
+      "codeBlockCount": 14,
+      "codeBlocks": [
+        "npm install tailwindcss@latest",
+        "npm install tailwindcss@latest",
+        "<link rel=\"stylesheet\" href=\"https://rsms.me/inter/inter.css\" />",
+        "<link rel=\"stylesheet\" href=\"https://rsms.me/inter/inter.css\" />",
+        "@theme { --font-sans: InterVariable, sans-serif; --font-sans--font-feature-settings: 'cv02', 'cv03', 'cv04', 'cv11'; }",
+        "@theme { --font-sans: InterVariable, sans-serif; --font-sans--font-feature-settings: 'cv02', 'cv03', 'cv04', 'cv11'; }",
+        "tailwind.config.js",
+        "const defaultTheme = require('tailwindcss/defaultTheme') module.exports = { theme: { extend: { fontFamily: { sans: ['InterVariable', ...defaultTheme.fontFamily.sans], }, }, }, // .",
+        "const defaultTheme = require('tailwindcss/defaultTheme') module.exports = { theme: { extend: { fontFamily: { sans: ['InterVariable', ...defaultTheme.fontFamily.sans], }, }, }, // .",
+        "dark:scheme-dark",
+        "<html>",
+        "dark:bg-gray-950",
+        "<html class=\"bg-white dark:bg-gray-950 scheme-light dark:scheme-dark\">",
+        "<html class=\"bg-white dark:bg-gray-950 scheme-light dark:scheme-dark\">"
+      ],
+      "tableCount": 0,
+      "calloutCount": 0,
+      "navText": "UI BlocksDocumentation UI Blocks/ Docs On this pageRequirementsAdd the Inter font familyDark mode support",
+      "viewport": {
+        "width": 1440,
+        "height": 1000,
+        "scrollWidth": 1440,
+        "clientWidth": 1440,
+        "scrollHeight": 3052
+      },
+      "horizontalOverflow": false
+    }
+  },
+  {
+    "group": "Getting started",
+    "leaf": "Using HTML",
+    "slug": "using-html",
+    "url": "https://tailwindcss.com/plus/ui-blocks/documentation/using-html",
+    "navId": "docs-getting-started-html",
+    "viewportName": "desktop",
+    "screenshot": "docs/research/assets/tailwind-plus-documentation-depth-2026-07-03/using-html-desktop.png",
+    "info": {
+      "title": "Tailwind Plus - Official Tailwind UI Components & Templates",
+      "h1": "Using HTML",
+      "headings": [
+        {
+          "level": "h3",
+          "text": "Getting started"
+        },
+        {
+          "level": "h3",
+          "text": "Elements"
+        },
+        {
+          "level": "h3",
+          "text": "Build UIs that don’t suck."
+        },
+        {
+          "level": "h1",
+          "text": "Using HTML"
+        },
+        {
+          "level": "h2",
+          "text": "Installing dependencies"
+        },
+        {
+          "level": "h2",
+          "text": "Creating components"
+        },
+        {
+          "level": "h2",
+          "text": "On this page"
+        },
+        {
+          "level": "h3",
+          "text": "Marketing"
+        },
+        {
+          "level": "h3",
+          "text": "Application UI"
+        },
+        {
+          "level": "h3",
+          "text": "Ecommerce"
+        },
+        {
+          "level": "h3",
+          "text": "Templates & UI Kits"
+        }
+      ],
+      "mainLinks": [
+        {
+          "text": "Marketing",
+          "href": "https://tailwindcss.com/plus/ui-blocks/marketing"
+        },
+        {
+          "text": "Application UI",
+          "href": "https://tailwindcss.com/plus/ui-blocks/application-ui"
+        },
+        {
+          "text": "Ecommerce",
+          "href": "https://tailwindcss.com/plus/ui-blocks/ecommerce"
+        },
+        {
+          "text": "Documentation",
+          "href": "/plus/ui-blocks/documentation"
+        },
+        {
+          "text": "Getting set up",
+          "href": "/plus/ui-blocks/documentation"
+        },
+        {
+          "text": "Using HTML",
+          "href": "/plus/ui-blocks/documentation/using-html"
+        },
+        {
+          "text": "Using React",
+          "href": "/plus/ui-blocks/documentation/using-react"
+        },
+        {
+          "text": "Using Vue",
+          "href": "/plus/ui-blocks/documentation/using-vue"
+        },
+        {
+          "text": "Assets",
+          "href": "/plus/ui-blocks/documentation/assets"
+        },
+        {
+          "text": "Introduction",
+          "href": "/plus/ui-blocks/documentation/elements"
+        },
+        {
+          "text": "Autocomplete",
+          "href": "/plus/ui-blocks/documentation/autocomplete"
+        },
+        {
+          "text": "Command palette",
+          "href": "/plus/ui-blocks/documentation/command-palette"
+        },
+        {
+          "text": "Copy button",
+          "href": "/plus/ui-blocks/documentation/copy-button"
+        },
+        {
+          "text": "Dialog",
+          "href": "/plus/ui-blocks/documentation/dialog"
+        },
+        {
+          "text": "Disclosure",
+          "href": "/plus/ui-blocks/documentation/disclosure"
+        },
+        {
+          "text": "Dropdown menu",
+          "href": "/plus/ui-blocks/documentation/dropdown-menu"
+        },
+        {
+          "text": "Popover",
+          "href": "/plus/ui-blocks/documentation/popover"
+        },
+        {
+          "text": "Select",
+          "href": "/plus/ui-blocks/documentation/select"
+        },
+        {
+          "text": "Tabs",
+          "href": "/plus/ui-blocks/documentation/tabs"
+        },
+        {
+          "text": "Get the free course",
+          "href": "https://tailwindcss.com/build-uis-that-dont-suck"
+        },
+        {
+          "text": "UI Blocks",
+          "href": "/plus/ui-blocks"
+        },
+        {
+          "text": "Documentation",
+          "href": "/plus/ui-blocks/documentation"
+        },
+        {
+          "text": "UI Blocks",
+          "href": "/plus/ui-blocks"
+        },
+        {
+          "text": "Elements",
+          "href": "/plus/ui-blocks/documentation/elements"
+        }
+      ],
+      "codeBlockCount": 7,
+      "codeBlocks": [
+        "<head>",
+        "<script src=\"https://cdn.jsdelivr.net/npm/@tailwindplus/elements@1\" type=\"module\"></script>",
+        "<script src=\"https://cdn.jsdelivr.net/npm/@tailwindplus/elements@1\" type=\"module\"></script>",
+        "npm install @tailwindplus/elements",
+        "npm install @tailwindplus/elements",
+        "import '@tailwindplus/elements';",
+        "import '@tailwindplus/elements';"
+      ],
+      "tableCount": 0,
+      "calloutCount": 0,
+      "navText": "UI BlocksDocumentation UI Blocks/ Docs On this pageInstalling dependenciesCreating components",
+      "viewport": {
+        "width": 1440,
+        "height": 1000,
+        "scrollWidth": 1440,
+        "clientWidth": 1440,
+        "scrollHeight": 2584
+      },
+      "horizontalOverflow": false
+    }
+  },
+  {
+    "group": "Getting started",
+    "leaf": "Using React",
+    "slug": "using-react",
+    "url": "https://tailwindcss.com/plus/ui-blocks/documentation/using-react",
+    "navId": "docs-getting-started-react",
+    "viewportName": "desktop",
+    "screenshot": "docs/research/assets/tailwind-plus-documentation-depth-2026-07-03/using-react-desktop.png",
+    "info": {
+      "title": "Tailwind Plus - Official Tailwind UI Components & Templates",
+      "h1": "Using React",
+      "headings": [
+        {
+          "level": "h3",
+          "text": "Getting started"
+        },
+        {
+          "level": "h3",
+          "text": "Elements"
+        },
+        {
+          "level": "h3",
+          "text": "Build UIs that don’t suck."
+        },
+        {
+          "level": "h1",
+          "text": "Using React"
+        },
+        {
+          "level": "h2",
+          "text": "Installing dependencies"
+        },
+        {
+          "level": "h2",
+          "text": "Creating components"
+        },
+        {
+          "level": "h2",
+          "text": "On this page"
+        },
+        {
+          "level": "h3",
+          "text": "Marketing"
+        },
+        {
+          "level": "h3",
+          "text": "Application UI"
+        },
+        {
+          "level": "h3",
+          "text": "Ecommerce"
+        },
+        {
+          "level": "h3",
+          "text": "Templates & UI Kits"
+        }
+      ],
+      "mainLinks": [
+        {
+          "text": "Marketing",
+          "href": "https://tailwindcss.com/plus/ui-blocks/marketing"
+        },
+        {
+          "text": "Application UI",
+          "href": "https://tailwindcss.com/plus/ui-blocks/application-ui"
+        },
+        {
+          "text": "Ecommerce",
+          "href": "https://tailwindcss.com/plus/ui-blocks/ecommerce"
+        },
+        {
+          "text": "Documentation",
+          "href": "/plus/ui-blocks/documentation"
+        },
+        {
+          "text": "Getting set up",
+          "href": "/plus/ui-blocks/documentation"
+        },
+        {
+          "text": "Using HTML",
+          "href": "/plus/ui-blocks/documentation/using-html"
+        },
+        {
+          "text": "Using React",
+          "href": "/plus/ui-blocks/documentation/using-react"
+        },
+        {
+          "text": "Using Vue",
+          "href": "/plus/ui-blocks/documentation/using-vue"
+        },
+        {
+          "text": "Assets",
+          "href": "/plus/ui-blocks/documentation/assets"
+        },
+        {
+          "text": "Introduction",
+          "href": "/plus/ui-blocks/documentation/elements"
+        },
+        {
+          "text": "Autocomplete",
+          "href": "/plus/ui-blocks/documentation/autocomplete"
+        },
+        {
+          "text": "Command palette",
+          "href": "/plus/ui-blocks/documentation/command-palette"
+        },
+        {
+          "text": "Copy button",
+          "href": "/plus/ui-blocks/documentation/copy-button"
+        },
+        {
+          "text": "Dialog",
+          "href": "/plus/ui-blocks/documentation/dialog"
+        },
+        {
+          "text": "Disclosure",
+          "href": "/plus/ui-blocks/documentation/disclosure"
+        },
+        {
+          "text": "Dropdown menu",
+          "href": "/plus/ui-blocks/documentation/dropdown-menu"
+        },
+        {
+          "text": "Popover",
+          "href": "/plus/ui-blocks/documentation/popover"
+        },
+        {
+          "text": "Select",
+          "href": "/plus/ui-blocks/documentation/select"
+        },
+        {
+          "text": "Tabs",
+          "href": "/plus/ui-blocks/documentation/tabs"
+        },
+        {
+          "text": "Get the free course",
+          "href": "https://tailwindcss.com/build-uis-that-dont-suck"
+        },
+        {
+          "text": "UI Blocks",
+          "href": "/plus/ui-blocks"
+        },
+        {
+          "text": "Documentation",
+          "href": "/plus/ui-blocks/documentation"
+        },
+        {
+          "text": "UI Blocks",
+          "href": "/plus/ui-blocks"
+        },
+        {
+          "text": "Headless UI",
+          "href": "https://headlessui.dev"
+        }
+      ],
+      "codeBlockCount": 6,
+      "codeBlocks": [
+        "npm install @headlessui/react @heroicons/react",
+        "npm install @headlessui/react @heroicons/react",
+        "const people = [ { name: 'Calvin Hawkins', email: 'calvin.hawkins@example.com', image: 'https://images.unsplash.com/photo-1491528323818-fdd1faba62cc?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQ",
+        "const people = [ { name: 'Calvin Hawkins', email: 'calvin.hawkins@example.com', image: 'https://images.unsplash.com/photo-1491528323818-fdd1faba62cc?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQ",
+        "function HockeyTeamItem({ team }) { return ( <li className=\"flex py-4\"> <img className=\"size-10 rounded-full\" src={team.logo} alt=\"\" /> <div className=\"ml-3\"> <p className=\"text-sm",
+        "function HockeyTeamItem({ team }) { return ( <li className=\"flex py-4\"> <img className=\"size-10 rounded-full\" src={team.logo} alt=\"\" /> <div className=\"ml-3\"> <p className=\"text-sm"
+      ],
+      "tableCount": 0,
+      "calloutCount": 0,
+      "navText": "UI BlocksDocumentation UI Blocks/ Docs On this pageInstalling dependenciesCreating components",
+      "viewport": {
+        "width": 1440,
+        "height": 1000,
+        "scrollWidth": 1440,
+        "clientWidth": 1440,
+        "scrollHeight": 3896
+      },
+      "horizontalOverflow": false
+    }
+  },
+  {
+    "group": "Getting started",
+    "leaf": "Using Vue",
+    "slug": "using-vue",
+    "url": "https://tailwindcss.com/plus/ui-blocks/documentation/using-vue",
+    "navId": "docs-getting-started-vue",
+    "viewportName": "desktop",
+    "screenshot": "docs/research/assets/tailwind-plus-documentation-depth-2026-07-03/using-vue-desktop.png",
+    "info": {
+      "title": "Tailwind Plus - Official Tailwind UI Components & Templates",
+      "h1": "Using Vue",
+      "headings": [
+        {
+          "level": "h3",
+          "text": "Getting started"
+        },
+        {
+          "level": "h3",
+          "text": "Elements"
+        },
+        {
+          "level": "h3",
+          "text": "Build UIs that don’t suck."
+        },
+        {
+          "level": "h1",
+          "text": "Using Vue"
+        },
+        {
+          "level": "h2",
+          "text": "Installing dependencies"
+        },
+        {
+          "level": "h2",
+          "text": "Creating components"
+        },
+        {
+          "level": "h2",
+          "text": "On this page"
+        },
+        {
+          "level": "h3",
+          "text": "Marketing"
+        },
+        {
+          "level": "h3",
+          "text": "Application UI"
+        },
+        {
+          "level": "h3",
+          "text": "Ecommerce"
+        },
+        {
+          "level": "h3",
+          "text": "Templates & UI Kits"
+        }
+      ],
+      "mainLinks": [
+        {
+          "text": "Marketing",
+          "href": "https://tailwindcss.com/plus/ui-blocks/marketing"
+        },
+        {
+          "text": "Application UI",
+          "href": "https://tailwindcss.com/plus/ui-blocks/application-ui"
+        },
+        {
+          "text": "Ecommerce",
+          "href": "https://tailwindcss.com/plus/ui-blocks/ecommerce"
+        },
+        {
+          "text": "Documentation",
+          "href": "/plus/ui-blocks/documentation"
+        },
+        {
+          "text": "Getting set up",
+          "href": "/plus/ui-blocks/documentation"
+        },
+        {
+          "text": "Using HTML",
+          "href": "/plus/ui-blocks/documentation/using-html"
+        },
+        {
+          "text": "Using React",
+          "href": "/plus/ui-blocks/documentation/using-react"
+        },
+        {
+          "text": "Using Vue",
+          "href": "/plus/ui-blocks/documentation/using-vue"
+        },
+        {
+          "text": "Assets",
+          "href": "/plus/ui-blocks/documentation/assets"
+        },
+        {
+          "text": "Introduction",
+          "href": "/plus/ui-blocks/documentation/elements"
+        },
+        {
+          "text": "Autocomplete",
+          "href": "/plus/ui-blocks/documentation/autocomplete"
+        },
+        {
+          "text": "Command palette",
+          "href": "/plus/ui-blocks/documentation/command-palette"
+        },
+        {
+          "text": "Copy button",
+          "href": "/plus/ui-blocks/documentation/copy-button"
+        },
+        {
+          "text": "Dialog",
+          "href": "/plus/ui-blocks/documentation/dialog"
+        },
+        {
+          "text": "Disclosure",
+          "href": "/plus/ui-blocks/documentation/disclosure"
+        },
+        {
+          "text": "Dropdown menu",
+          "href": "/plus/ui-blocks/documentation/dropdown-menu"
+        },
+        {
+          "text": "Popover",
+          "href": "/plus/ui-blocks/documentation/popover"
+        },
+        {
+          "text": "Select",
+          "href": "/plus/ui-blocks/documentation/select"
+        },
+        {
+          "text": "Tabs",
+          "href": "/plus/ui-blocks/documentation/tabs"
+        },
+        {
+          "text": "Get the free course",
+          "href": "https://tailwindcss.com/build-uis-that-dont-suck"
+        },
+        {
+          "text": "UI Blocks",
+          "href": "/plus/ui-blocks"
+        },
+        {
+          "text": "Documentation",
+          "href": "/plus/ui-blocks/documentation"
+        },
+        {
+          "text": "UI Blocks",
+          "href": "/plus/ui-blocks"
+        },
+        {
+          "text": "Headless UI",
+          "href": "https://headlessui.dev"
+        }
+      ],
+      "codeBlockCount": 6,
+      "codeBlocks": [
+        "npm install @headlessui/vue @heroicons/vue",
+        "npm install @headlessui/vue @heroicons/vue",
+        "<template> <ul class=\"divide-y divide-gray-200\"> <li v-for=\"person in people\" :key=\"person.email\" class=\"flex py-4\"> <img class=\"size-10 rounded-full\" :src=\"person.image\" alt=\"\" />",
+        "<template> <ul class=\"divide-y divide-gray-200\"> <li v-for=\"person in people\" :key=\"person.email\" class=\"flex py-4\"> <img class=\"size-10 rounded-full\" :src=\"person.image\" alt=\"\" />",
+        "<!-- HockeyTeamList.vue --> <template> <ul class=\"divide-y divide-gray-200\"> <HockeyTeamItem v-for=\"team in teams\" :key=\"team.id\" :team=\"team\" /> </ul> </template> <script setup> c",
+        "<!-- HockeyTeamList.vue --> <template> <ul class=\"divide-y divide-gray-200\"> <HockeyTeamItem v-for=\"team in teams\" :key=\"team.id\" :team=\"team\" /> </ul> </template> <script setup> c"
+      ],
+      "tableCount": 0,
+      "calloutCount": 0,
+      "navText": "UI BlocksDocumentation UI Blocks/ Docs On this pageInstalling dependenciesCreating components",
+      "viewport": {
+        "width": 1440,
+        "height": 1000,
+        "scrollWidth": 1440,
+        "clientWidth": 1440,
+        "scrollHeight": 3984
+      },
+      "horizontalOverflow": false
+    }
+  },
+  {
+    "group": "Getting started",
+    "leaf": "Assets",
+    "slug": "assets",
+    "url": "https://tailwindcss.com/plus/ui-blocks/documentation/assets",
+    "navId": "docs-getting-started-assets",
+    "viewportName": "desktop",
+    "screenshot": "docs/research/assets/tailwind-plus-documentation-depth-2026-07-03/assets-desktop.png",
+    "info": {
+      "title": "Tailwind Plus - Official Tailwind UI Components & Templates",
+      "h1": "Assets",
+      "headings": [
+        {
+          "level": "h3",
+          "text": "Getting started"
+        },
+        {
+          "level": "h3",
+          "text": "Elements"
+        },
+        {
+          "level": "h3",
+          "text": "Build UIs that don’t suck."
+        },
+        {
+          "level": "h1",
+          "text": "Assets"
+        },
+        {
+          "level": "h2",
+          "text": "Icons"
+        },
+        {
+          "level": "h2",
+          "text": "Images"
+        },
+        {
+          "level": "h2",
+          "text": "Illustrations"
+        },
+        {
+          "level": "h2",
+          "text": "Figma assets"
+        },
+        {
+          "level": "h2",
+          "text": "On this page"
+        },
+        {
+          "level": "h3",
+          "text": "Marketing"
+        },
+        {
+          "level": "h3",
+          "text": "Application UI"
+        },
+        {
+          "level": "h3",
+          "text": "Ecommerce"
+        },
+        {
+          "level": "h3",
+          "text": "Templates & UI Kits"
+        }
+      ],
+      "mainLinks": [
+        {
+          "text": "Marketing",
+          "href": "https://tailwindcss.com/plus/ui-blocks/marketing"
+        },
+        {
+          "text": "Application UI",
+          "href": "https://tailwindcss.com/plus/ui-blocks/application-ui"
+        },
+        {
+          "text": "Ecommerce",
+          "href": "https://tailwindcss.com/plus/ui-blocks/ecommerce"
+        },
+        {
+          "text": "Documentation",
+          "href": "/plus/ui-blocks/documentation"
+        },
+        {
+          "text": "Getting set up",
+          "href": "/plus/ui-blocks/documentation"
+        },
+        {
+          "text": "Using HTML",
+          "href": "/plus/ui-blocks/documentation/using-html"
+        },
+        {
+          "text": "Using React",
+          "href": "/plus/ui-blocks/documentation/using-react"
+        },
+        {
+          "text": "Using Vue",
+          "href": "/plus/ui-blocks/documentation/using-vue"
+        },
+        {
+          "text": "Assets",
+          "href": "/plus/ui-blocks/documentation/assets"
+        },
+        {
+          "text": "Introduction",
+          "href": "/plus/ui-blocks/documentation/elements"
+        },
+        {
+          "text": "Autocomplete",
+          "href": "/plus/ui-blocks/documentation/autocomplete"
+        },
+        {
+          "text": "Command palette",
+          "href": "/plus/ui-blocks/documentation/command-palette"
+        },
+        {
+          "text": "Copy button",
+          "href": "/plus/ui-blocks/documentation/copy-button"
+        },
+        {
+          "text": "Dialog",
+          "href": "/plus/ui-blocks/documentation/dialog"
+        },
+        {
+          "text": "Disclosure",
+          "href": "/plus/ui-blocks/documentation/disclosure"
+        },
+        {
+          "text": "Dropdown menu",
+          "href": "/plus/ui-blocks/documentation/dropdown-menu"
+        },
+        {
+          "text": "Popover",
+          "href": "/plus/ui-blocks/documentation/popover"
+        },
+        {
+          "text": "Select",
+          "href": "/plus/ui-blocks/documentation/select"
+        },
+        {
+          "text": "Tabs",
+          "href": "/plus/ui-blocks/documentation/tabs"
+        },
+        {
+          "text": "Get the free course",
+          "href": "https://tailwindcss.com/build-uis-that-dont-suck"
+        },
+        {
+          "text": "UI Blocks",
+          "href": "/plus/ui-blocks"
+        },
+        {
+          "text": "Documentation",
+          "href": "/plus/ui-blocks/documentation"
+        },
+        {
+          "text": "UI Blocks",
+          "href": "/plus/ui-blocks"
+        },
+        {
+          "text": "Heroicons",
+          "href": "https://heroicons.com"
+        }
+      ],
+      "codeBlockCount": 0,
+      "codeBlocks": [],
+      "tableCount": 0,
+      "calloutCount": 0,
+      "navText": "UI BlocksDocumentation UI Blocks/ Docs On this pageIconsImagesIllustrationsFigma assets",
+      "viewport": {
+        "width": 1440,
+        "height": 1000,
+        "scrollWidth": 1440,
+        "clientWidth": 1440,
+        "scrollHeight": 2264
+      },
+      "horizontalOverflow": false
+    }
+  },
+  {
+    "group": "Elements",
+    "leaf": "Introduction",
+    "slug": "introduction",
+    "url": "https://tailwindcss.com/plus/ui-blocks/documentation/elements",
+    "navId": "docs-elements-introduction",
+    "viewportName": "desktop",
+    "screenshot": "docs/research/assets/tailwind-plus-documentation-depth-2026-07-03/introduction-desktop.png",
+    "info": {
+      "title": "Tailwind Plus - Official Tailwind UI Components & Templates",
+      "h1": "Elements",
+      "headings": [
+        {
+          "level": "h3",
+          "text": "Getting started"
+        },
+        {
+          "level": "h3",
+          "text": "Elements"
+        },
+        {
+          "level": "h3",
+          "text": "Build UIs that don’t suck."
+        },
+        {
+          "level": "h1",
+          "text": "Elements"
+        },
+        {
+          "level": "h2",
+          "text": "Available components"
+        },
+        {
+          "level": "h2",
+          "text": "Browser support"
+        },
+        {
+          "level": "h2",
+          "text": "Installing in your project"
+        },
+        {
+          "level": "h3",
+          "text": "Using CDN"
+        },
+        {
+          "level": "h3",
+          "text": "Using npm"
+        },
+        {
+          "level": "h3",
+          "text": "Using with React"
+        },
+        {
+          "level": "h2",
+          "text": "Detecting when ready"
+        },
+        {
+          "level": "h2",
+          "text": "Documentation for LLMs"
+        },
+        {
+          "level": "h2",
+          "text": "On this page"
+        },
+        {
+          "level": "h3",
+          "text": "Marketing"
+        },
+        {
+          "level": "h3",
+          "text": "Application UI"
+        },
+        {
+          "level": "h3",
+          "text": "Ecommerce"
+        },
+        {
+          "level": "h3",
+          "text": "Templates & UI Kits"
+        }
+      ],
+      "mainLinks": [
+        {
+          "text": "Marketing",
+          "href": "https://tailwindcss.com/plus/ui-blocks/marketing"
+        },
+        {
+          "text": "Application UI",
+          "href": "https://tailwindcss.com/plus/ui-blocks/application-ui"
+        },
+        {
+          "text": "Ecommerce",
+          "href": "https://tailwindcss.com/plus/ui-blocks/ecommerce"
+        },
+        {
+          "text": "Documentation",
+          "href": "/plus/ui-blocks/documentation"
+        },
+        {
+          "text": "Getting set up",
+          "href": "/plus/ui-blocks/documentation"
+        },
+        {
+          "text": "Using HTML",
+          "href": "/plus/ui-blocks/documentation/using-html"
+        },
+        {
+          "text": "Using React",
+          "href": "/plus/ui-blocks/documentation/using-react"
+        },
+        {
+          "text": "Using Vue",
+          "href": "/plus/ui-blocks/documentation/using-vue"
+        },
+        {
+          "text": "Assets",
+          "href": "/plus/ui-blocks/documentation/assets"
+        },
+        {
+          "text": "Introduction",
+          "href": "/plus/ui-blocks/documentation/elements"
+        },
+        {
+          "text": "Autocomplete",
+          "href": "/plus/ui-blocks/documentation/autocomplete"
+        },
+        {
+          "text": "Command palette",
+          "href": "/plus/ui-blocks/documentation/command-palette"
+        },
+        {
+          "text": "Copy button",
+          "href": "/plus/ui-blocks/documentation/copy-button"
+        },
+        {
+          "text": "Dialog",
+          "href": "/plus/ui-blocks/documentation/dialog"
+        },
+        {
+          "text": "Disclosure",
+          "href": "/plus/ui-blocks/documentation/disclosure"
+        },
+        {
+          "text": "Dropdown menu",
+          "href": "/plus/ui-blocks/documentation/dropdown-menu"
+        },
+        {
+          "text": "Popover",
+          "href": "/plus/ui-blocks/documentation/popover"
+        },
+        {
+          "text": "Select",
+          "href": "/plus/ui-blocks/documentation/select"
+        },
+        {
+          "text": "Tabs",
+          "href": "/plus/ui-blocks/documentation/tabs"
+        },
+        {
+          "text": "Get the free course",
+          "href": "https://tailwindcss.com/build-uis-that-dont-suck"
+        },
+        {
+          "text": "UI Blocks",
+          "href": "/plus/ui-blocks"
+        },
+        {
+          "text": "Documentation",
+          "href": "/plus/ui-blocks/documentation"
+        },
+        {
+          "text": "UI Blocks",
+          "href": "/plus/ui-blocks"
+        },
+        {
+          "text": "Tailwind Plus",
+          "href": "/plus#pricing"
+        }
+      ],
+      "codeBlockCount": 13,
+      "codeBlocks": [
+        "<head>",
+        "<script src=\"https://cdn.jsdelivr.net/npm/@tailwindplus/elements@1\" type=\"module\"></script>",
+        "<script src=\"https://cdn.jsdelivr.net/npm/@tailwindplus/elements@1\" type=\"module\"></script>",
+        "npm install @tailwindplus/elements",
+        "npm install @tailwindplus/elements",
+        "import '@tailwindplus/elements';",
+        "import '@tailwindplus/elements';",
+        "npm install @tailwindplus/elements",
+        "npm install @tailwindplus/elements",
+        "<el-disclosure>",
+        "<ElDisclosure>",
+        "import { ElDisclosure } from '@tailwindplus/elements/react' import { useId } from 'react' export default function MyAccordion() { let id = useId() return ( <> <button command=\"--to",
+        "import { ElDisclosure } from '@tailwindplus/elements/react' import { useId } from 'react' export default function MyAccordion() { let id = useId() return ( <> <button command=\"--to"
+      ],
+      "tableCount": 0,
+      "calloutCount": 0,
+      "navText": "UI BlocksDocumentation UI Blocks/ Docs On this pageAvailable componentsBrowser supportInstalling in your projectUsing CDNUsing npmUsing with ReactDetecting when readyDocumentation for LLMs",
+      "viewport": {
+        "width": 1440,
+        "height": 1000,
+        "scrollWidth": 1440,
+        "clientWidth": 1440,
+        "scrollHeight": 4240
+      },
+      "horizontalOverflow": false
+    }
+  },
+  {
+    "group": "Elements",
+    "leaf": "Autocomplete",
+    "slug": "autocomplete",
+    "url": "https://tailwindcss.com/plus/ui-blocks/documentation/autocomplete",
+    "navId": "docs-elements-autocomplete",
+    "viewportName": "desktop",
+    "screenshot": "docs/research/assets/tailwind-plus-documentation-depth-2026-07-03/autocomplete-desktop.png",
+    "info": {
+      "title": "Tailwind Plus - Official Tailwind UI Components & Templates",
+      "h1": "Autocomplete",
+      "headings": [
+        {
+          "level": "h3",
+          "text": "Getting started"
+        },
+        {
+          "level": "h3",
+          "text": "Elements"
+        },
+        {
+          "level": "h3",
+          "text": "Build UIs that don’t suck."
+        },
+        {
+          "level": "h1",
+          "text": "Autocomplete"
+        },
+        {
+          "level": "h2",
+          "text": "Component API"
+        },
+        {
+          "level": "h3",
+          "text": "<el-autocomplete>"
+        },
+        {
+          "level": "h3",
+          "text": "<el-options>"
+        },
+        {
+          "level": "h3",
+          "text": "<el-option>"
+        },
+        {
+          "level": "h3",
+          "text": "<button>"
+        },
+        {
+          "level": "h2",
+          "text": "Examples"
+        },
+        {
+          "level": "h3",
+          "text": "Basic example"
+        },
+        {
+          "level": "h3",
+          "text": "Positioning the dropdown"
+        },
+        {
+          "level": "h3",
+          "text": "Setting the dropdown width"
+        },
+        {
+          "level": "h3",
+          "text": "Adding transitions"
+        },
+        {
+          "level": "h3",
+          "text": "Disabling the input"
+        },
+        {
+          "level": "h2",
+          "text": "On this page"
+        },
+        {
+          "level": "h3",
+          "text": "Marketing"
+        },
+        {
+          "level": "h3",
+          "text": "Application UI"
+        },
+        {
+          "level": "h3",
+          "text": "Ecommerce"
+        },
+        {
+          "level": "h3",
+          "text": "Templates & UI Kits"
+        }
+      ],
+      "mainLinks": [
+        {
+          "text": "Marketing",
+          "href": "https://tailwindcss.com/plus/ui-blocks/marketing"
+        },
+        {
+          "text": "Application UI",
+          "href": "https://tailwindcss.com/plus/ui-blocks/application-ui"
+        },
+        {
+          "text": "Ecommerce",
+          "href": "https://tailwindcss.com/plus/ui-blocks/ecommerce"
+        },
+        {
+          "text": "Documentation",
+          "href": "/plus/ui-blocks/documentation"
+        },
+        {
+          "text": "Getting set up",
+          "href": "/plus/ui-blocks/documentation"
+        },
+        {
+          "text": "Using HTML",
+          "href": "/plus/ui-blocks/documentation/using-html"
+        },
+        {
+          "text": "Using React",
+          "href": "/plus/ui-blocks/documentation/using-react"
+        },
+        {
+          "text": "Using Vue",
+          "href": "/plus/ui-blocks/documentation/using-vue"
+        },
+        {
+          "text": "Assets",
+          "href": "/plus/ui-blocks/documentation/assets"
+        },
+        {
+          "text": "Introduction",
+          "href": "/plus/ui-blocks/documentation/elements"
+        },
+        {
+          "text": "Autocomplete",
+          "href": "/plus/ui-blocks/documentation/autocomplete"
+        },
+        {
+          "text": "Command palette",
+          "href": "/plus/ui-blocks/documentation/command-palette"
+        },
+        {
+          "text": "Copy button",
+          "href": "/plus/ui-blocks/documentation/copy-button"
+        },
+        {
+          "text": "Dialog",
+          "href": "/plus/ui-blocks/documentation/dialog"
+        },
+        {
+          "text": "Disclosure",
+          "href": "/plus/ui-blocks/documentation/disclosure"
+        },
+        {
+          "text": "Dropdown menu",
+          "href": "/plus/ui-blocks/documentation/dropdown-menu"
+        },
+        {
+          "text": "Popover",
+          "href": "/plus/ui-blocks/documentation/popover"
+        },
+        {
+          "text": "Select",
+          "href": "/plus/ui-blocks/documentation/select"
+        },
+        {
+          "text": "Tabs",
+          "href": "/plus/ui-blocks/documentation/tabs"
+        },
+        {
+          "text": "Get the free course",
+          "href": "https://tailwindcss.com/build-uis-that-dont-suck"
+        },
+        {
+          "text": "UI Blocks",
+          "href": "/plus/ui-blocks"
+        },
+        {
+          "text": "Documentation",
+          "href": "/plus/ui-blocks/documentation"
+        },
+        {
+          "text": "UI Blocks",
+          "href": "/plus/ui-blocks"
+        },
+        {
+          "text": "Tailwind Plus",
+          "href": "/plus#pricing"
+        }
+      ],
+      "codeBlockCount": 23,
+      "codeBlocks": [
+        "<el-autocomplete>",
+        "<datalist>",
+        "--input-width",
+        "--button-width",
+        "popover",
+        "anchor",
+        "anchor-strategy",
+        "position",
+        "absolute",
+        "fixed",
+        "--anchor-gap",
+        "--anchor-offset",
+        "data-closed",
+        "data-enter",
+        "data-leave",
+        "data-transition"
+      ],
+      "tableCount": 4,
+      "calloutCount": 0,
+      "navText": "UI BlocksDocumentation UI Blocks/ Docs On this pageComponent API<el-autocomplete><el-options><el-option><button>ExamplesBasic examplePositioning the dropdownSetting the dropdown widthAdding transitionsDisabling the input",
+      "viewport": {
+        "width": 1440,
+        "height": 1000,
+        "scrollWidth": 1440,
+        "clientWidth": 1440,
+        "scrollHeight": 4754
+      },
+      "horizontalOverflow": false
+    }
+  },
+  {
+    "group": "Elements",
+    "leaf": "Command palette",
+    "slug": "command-palette",
+    "url": "https://tailwindcss.com/plus/ui-blocks/documentation/command-palette",
+    "navId": "docs-elements-command-palette",
+    "viewportName": "desktop",
+    "screenshot": "docs/research/assets/tailwind-plus-documentation-depth-2026-07-03/command-palette-desktop.png",
+    "info": {
+      "title": "Tailwind Plus - Official Tailwind UI Components & Templates",
+      "h1": "Command palette",
+      "headings": [
+        {
+          "level": "h3",
+          "text": "Getting started"
+        },
+        {
+          "level": "h3",
+          "text": "Elements"
+        },
+        {
+          "level": "h3",
+          "text": "Build UIs that don’t suck."
+        },
+        {
+          "level": "h1",
+          "text": "Command palette"
+        },
+        {
+          "level": "h2",
+          "text": "Component API"
+        },
+        {
+          "level": "h3",
+          "text": "<el-command-palette>"
+        },
+        {
+          "level": "h3",
+          "text": "<el-command-list>"
+        },
+        {
+          "level": "h3",
+          "text": "<el-defaults>"
+        },
+        {
+          "level": "h3",
+          "text": "<el-command-group>"
+        },
+        {
+          "level": "h3",
+          "text": "<el-no-results>"
+        },
+        {
+          "level": "h3",
+          "text": "<el-command-preview>"
+        },
+        {
+          "level": "h2",
+          "text": "Examples"
+        },
+        {
+          "level": "h3",
+          "text": "Basic example"
+        },
+        {
+          "level": "h3",
+          "text": "Opening and closing"
+        },
+        {
+          "level": "h3",
+          "text": "Using with buttons"
+        },
+        {
+          "level": "h3",
+          "text": "Using with links"
+        },
+        {
+          "level": "h3",
+          "text": "Showing option previews"
+        },
+        {
+          "level": "h3",
+          "text": "Showing default commands"
+        },
+        {
+          "level": "h3",
+          "text": "Handling no results"
+        },
+        {
+          "level": "h3",
+          "text": "Grouping related commands"
+        },
+        {
+          "level": "h3",
+          "text": "Customizing the filter logic"
+        },
+        {
+          "level": "h2",
+          "text": "On this page"
+        },
+        {
+          "level": "h3",
+          "text": "Marketing"
+        },
+        {
+          "level": "h3",
+          "text": "Application UI"
+        },
+        {
+          "level": "h3",
+          "text": "Ecommerce"
+        },
+        {
+          "level": "h3",
+          "text": "Templates & UI Kits"
+        }
+      ],
+      "mainLinks": [
+        {
+          "text": "Marketing",
+          "href": "https://tailwindcss.com/plus/ui-blocks/marketing"
+        },
+        {
+          "text": "Application UI",
+          "href": "https://tailwindcss.com/plus/ui-blocks/application-ui"
+        },
+        {
+          "text": "Ecommerce",
+          "href": "https://tailwindcss.com/plus/ui-blocks/ecommerce"
+        },
+        {
+          "text": "Documentation",
+          "href": "/plus/ui-blocks/documentation"
+        },
+        {
+          "text": "Getting set up",
+          "href": "/plus/ui-blocks/documentation"
+        },
+        {
+          "text": "Using HTML",
+          "href": "/plus/ui-blocks/documentation/using-html"
+        },
+        {
+          "text": "Using React",
+          "href": "/plus/ui-blocks/documentation/using-react"
+        },
+        {
+          "text": "Using Vue",
+          "href": "/plus/ui-blocks/documentation/using-vue"
+        },
+        {
+          "text": "Assets",
+          "href": "/plus/ui-blocks/documentation/assets"
+        },
+        {
+          "text": "Introduction",
+          "href": "/plus/ui-blocks/documentation/elements"
+        },
+        {
+          "text": "Autocomplete",
+          "href": "/plus/ui-blocks/documentation/autocomplete"
+        },
+        {
+          "text": "Command palette",
+          "href": "/plus/ui-blocks/documentation/command-palette"
+        },
+        {
+          "text": "Copy button",
+          "href": "/plus/ui-blocks/documentation/copy-button"
+        },
+        {
+          "text": "Dialog",
+          "href": "/plus/ui-blocks/documentation/dialog"
+        },
+        {
+          "text": "Disclosure",
+          "href": "/plus/ui-blocks/documentation/disclosure"
+        },
+        {
+          "text": "Dropdown menu",
+          "href": "/plus/ui-blocks/documentation/dropdown-menu"
+        },
+        {
+          "text": "Popover",
+          "href": "/plus/ui-blocks/documentation/popover"
+        },
+        {
+          "text": "Select",
+          "href": "/plus/ui-blocks/documentation/select"
+        },
+        {
+          "text": "Tabs",
+          "href": "/plus/ui-blocks/documentation/tabs"
+        },
+        {
+          "text": "Get the free course",
+          "href": "https://tailwindcss.com/build-uis-that-dont-suck"
+        },
+        {
+          "text": "UI Blocks",
+          "href": "/plus/ui-blocks"
+        },
+        {
+          "text": "Documentation",
+          "href": "/plus/ui-blocks/documentation"
+        },
+        {
+          "text": "UI Blocks",
+          "href": "/plus/ui-blocks"
+        },
+        {
+          "text": "Tailwind Plus",
+          "href": "/plus#pricing"
+        }
+      ],
+      "codeBlockCount": 15,
+      "codeBlocks": [
+        "<el-command-palette>",
+        "Cmd+K",
+        "name",
+        "value",
+        "change",
+        "relatedTarget",
+        "null",
+        "setFilterCallback(cb)",
+        "query",
+        "node",
+        "content",
+        "boolean",
+        "reset()",
+        "for",
+        "id"
+      ],
+      "tableCount": 2,
+      "calloutCount": 0,
+      "navText": "UI BlocksDocumentation UI Blocks/ Docs On this pageComponent API<el-command-palette><el-command-list><el-defaults><el-command-group><el-no-results><el-command-preview>ExamplesBasic exampleOpening and closingUsing with buttonsUsing with linksShowing option previewsShowing default commandsHandling no resultsGrouping related commandsCustomizing the filter logic",
+      "viewport": {
+        "width": 1440,
+        "height": 1000,
+        "scrollWidth": 1440,
+        "clientWidth": 1440,
+        "scrollHeight": 4968
+      },
+      "horizontalOverflow": false
+    }
+  },
+  {
+    "group": "Elements",
+    "leaf": "Copy button",
+    "slug": "copy-button",
+    "url": "https://tailwindcss.com/plus/ui-blocks/documentation/copy-button",
+    "navId": "docs-elements-copy-button",
+    "viewportName": "desktop",
+    "screenshot": "docs/research/assets/tailwind-plus-documentation-depth-2026-07-03/copy-button-desktop.png",
+    "info": {
+      "title": "Tailwind Plus - Official Tailwind UI Components & Templates",
+      "h1": "Copy button",
+      "headings": [
+        {
+          "level": "h3",
+          "text": "Getting started"
+        },
+        {
+          "level": "h3",
+          "text": "Elements"
+        },
+        {
+          "level": "h3",
+          "text": "Build UIs that don’t suck."
+        },
+        {
+          "level": "h1",
+          "text": "Copy button"
+        },
+        {
+          "level": "h2",
+          "text": "Component API"
+        },
+        {
+          "level": "h3",
+          "text": "<el-copyable>"
+        },
+        {
+          "level": "h3",
+          "text": "<button>"
+        },
+        {
+          "level": "h2",
+          "text": "Examples"
+        },
+        {
+          "level": "h3",
+          "text": "Basic example"
+        },
+        {
+          "level": "h2",
+          "text": "On this page"
+        },
+        {
+          "level": "h3",
+          "text": "Marketing"
+        },
+        {
+          "level": "h3",
+          "text": "Application UI"
+        },
+        {
+          "level": "h3",
+          "text": "Ecommerce"
+        },
+        {
+          "level": "h3",
+          "text": "Templates & UI Kits"
+        }
+      ],
+      "mainLinks": [
+        {
+          "text": "Marketing",
+          "href": "https://tailwindcss.com/plus/ui-blocks/marketing"
+        },
+        {
+          "text": "Application UI",
+          "href": "https://tailwindcss.com/plus/ui-blocks/application-ui"
+        },
+        {
+          "text": "Ecommerce",
+          "href": "https://tailwindcss.com/plus/ui-blocks/ecommerce"
+        },
+        {
+          "text": "Documentation",
+          "href": "/plus/ui-blocks/documentation"
+        },
+        {
+          "text": "Getting set up",
+          "href": "/plus/ui-blocks/documentation"
+        },
+        {
+          "text": "Using HTML",
+          "href": "/plus/ui-blocks/documentation/using-html"
+        },
+        {
+          "text": "Using React",
+          "href": "/plus/ui-blocks/documentation/using-react"
+        },
+        {
+          "text": "Using Vue",
+          "href": "/plus/ui-blocks/documentation/using-vue"
+        },
+        {
+          "text": "Assets",
+          "href": "/plus/ui-blocks/documentation/assets"
+        },
+        {
+          "text": "Introduction",
+          "href": "/plus/ui-blocks/documentation/elements"
+        },
+        {
+          "text": "Autocomplete",
+          "href": "/plus/ui-blocks/documentation/autocomplete"
+        },
+        {
+          "text": "Command palette",
+          "href": "/plus/ui-blocks/documentation/command-palette"
+        },
+        {
+          "text": "Copy button",
+          "href": "/plus/ui-blocks/documentation/copy-button"
+        },
+        {
+          "text": "Dialog",
+          "href": "/plus/ui-blocks/documentation/dialog"
+        },
+        {
+          "text": "Disclosure",
+          "href": "/plus/ui-blocks/documentation/disclosure"
+        },
+        {
+          "text": "Dropdown menu",
+          "href": "/plus/ui-blocks/documentation/dropdown-menu"
+        },
+        {
+          "text": "Popover",
+          "href": "/plus/ui-blocks/documentation/popover"
+        },
+        {
+          "text": "Select",
+          "href": "/plus/ui-blocks/documentation/select"
+        },
+        {
+          "text": "Tabs",
+          "href": "/plus/ui-blocks/documentation/tabs"
+        },
+        {
+          "text": "Get the free course",
+          "href": "https://tailwindcss.com/build-uis-that-dont-suck"
+        },
+        {
+          "text": "UI Blocks",
+          "href": "/plus/ui-blocks"
+        },
+        {
+          "text": "Documentation",
+          "href": "/plus/ui-blocks/documentation"
+        },
+        {
+          "text": "UI Blocks",
+          "href": "/plus/ui-blocks"
+        },
+        {
+          "text": "Tailwind Plus",
+          "href": "/plus#pricing"
+        }
+      ],
+      "codeBlockCount": 3,
+      "codeBlocks": [
+        "--copy",
+        "data-copied",
+        "data-error"
+      ],
+      "tableCount": 2,
+      "calloutCount": 0,
+      "navText": "UI BlocksDocumentation UI Blocks/ Docs On this pageComponent API<el-copyable><button>ExamplesBasic example",
+      "viewport": {
+        "width": 1440,
+        "height": 1000,
+        "scrollWidth": 1440,
+        "clientWidth": 1440,
+        "scrollHeight": 2438
+      },
+      "horizontalOverflow": false
+    }
+  },
+  {
+    "group": "Elements",
+    "leaf": "Dialog",
+    "slug": "dialog",
+    "url": "https://tailwindcss.com/plus/ui-blocks/documentation/dialog",
+    "navId": "docs-elements-dialog",
+    "viewportName": "desktop",
+    "screenshot": "docs/research/assets/tailwind-plus-documentation-depth-2026-07-03/dialog-desktop.png",
+    "info": {
+      "title": "Tailwind Plus - Official Tailwind UI Components & Templates",
+      "h1": "Dialog",
+      "headings": [
+        {
+          "level": "h3",
+          "text": "Getting started"
+        },
+        {
+          "level": "h3",
+          "text": "Elements"
+        },
+        {
+          "level": "h3",
+          "text": "Build UIs that don’t suck."
+        },
+        {
+          "level": "h1",
+          "text": "Dialog"
+        },
+        {
+          "level": "h2",
+          "text": "Component API"
+        },
+        {
+          "level": "h3",
+          "text": "<el-dialog>"
+        },
+        {
+          "level": "h3",
+          "text": "<dialog>"
+        },
+        {
+          "level": "h3",
+          "text": "<el-dialog-backdrop>"
+        },
+        {
+          "level": "h3",
+          "text": "<el-dialog-panel>"
+        },
+        {
+          "level": "h3",
+          "text": "<button>"
+        },
+        {
+          "level": "h2",
+          "text": "Examples"
+        },
+        {
+          "level": "h3",
+          "text": "Basic example"
+        },
+        {
+          "level": "h3",
+          "text": "Opening the dialog"
+        },
+        {
+          "level": "h3",
+          "text": "Closing the dialog"
+        },
+        {
+          "level": "h3",
+          "text": "Adding a backdrop"
+        },
+        {
+          "level": "h3",
+          "text": "Adding transitions"
+        },
+        {
+          "level": "h2",
+          "text": "On this page"
+        },
+        {
+          "level": "h3",
+          "text": "Marketing"
+        },
+        {
+          "level": "h3",
+          "text": "Application UI"
+        },
+        {
+          "level": "h3",
+          "text": "Ecommerce"
+        },
+        {
+          "level": "h3",
+          "text": "Templates & UI Kits"
+        }
+      ],
+      "mainLinks": [
+        {
+          "text": "Marketing",
+          "href": "https://tailwindcss.com/plus/ui-blocks/marketing"
+        },
+        {
+          "text": "Application UI",
+          "href": "https://tailwindcss.com/plus/ui-blocks/application-ui"
+        },
+        {
+          "text": "Ecommerce",
+          "href": "https://tailwindcss.com/plus/ui-blocks/ecommerce"
+        },
+        {
+          "text": "Documentation",
+          "href": "/plus/ui-blocks/documentation"
+        },
+        {
+          "text": "Getting set up",
+          "href": "/plus/ui-blocks/documentation"
+        },
+        {
+          "text": "Using HTML",
+          "href": "/plus/ui-blocks/documentation/using-html"
+        },
+        {
+          "text": "Using React",
+          "href": "/plus/ui-blocks/documentation/using-react"
+        },
+        {
+          "text": "Using Vue",
+          "href": "/plus/ui-blocks/documentation/using-vue"
+        },
+        {
+          "text": "Assets",
+          "href": "/plus/ui-blocks/documentation/assets"
+        },
+        {
+          "text": "Introduction",
+          "href": "/plus/ui-blocks/documentation/elements"
+        },
+        {
+          "text": "Autocomplete",
+          "href": "/plus/ui-blocks/documentation/autocomplete"
+        },
+        {
+          "text": "Command palette",
+          "href": "/plus/ui-blocks/documentation/command-palette"
+        },
+        {
+          "text": "Copy button",
+          "href": "/plus/ui-blocks/documentation/copy-button"
+        },
+        {
+          "text": "Dialog",
+          "href": "/plus/ui-blocks/documentation/dialog"
+        },
+        {
+          "text": "Disclosure",
+          "href": "/plus/ui-blocks/documentation/disclosure"
+        },
+        {
+          "text": "Dropdown menu",
+          "href": "/plus/ui-blocks/documentation/dropdown-menu"
+        },
+        {
+          "text": "Popover",
+          "href": "/plus/ui-blocks/documentation/popover"
+        },
+        {
+          "text": "Select",
+          "href": "/plus/ui-blocks/documentation/select"
+        },
+        {
+          "text": "Tabs",
+          "href": "/plus/ui-blocks/documentation/tabs"
+        },
+        {
+          "text": "Get the free course",
+          "href": "https://tailwindcss.com/build-uis-that-dont-suck"
+        },
+        {
+          "text": "UI Blocks",
+          "href": "/plus/ui-blocks"
+        },
+        {
+          "text": "Documentation",
+          "href": "/plus/ui-blocks/documentation"
+        },
+        {
+          "text": "UI Blocks",
+          "href": "/plus/ui-blocks"
+        },
+        {
+          "text": "Tailwind Plus",
+          "href": "/plus#pricing"
+        }
+      ],
+      "codeBlockCount": 28,
+      "codeBlocks": [
+        "<el-dialog>",
+        "<dialog>",
+        "<dialog>",
+        "open",
+        "data-closed",
+        "data-enter",
+        "data-leave",
+        "data-transition",
+        "open",
+        "open",
+        "close",
+        "open",
+        "cancel",
+        "preventDefault()",
+        "show()",
+        "hide()"
+      ],
+      "tableCount": 5,
+      "calloutCount": 0,
+      "navText": "UI BlocksDocumentation UI Blocks/ Docs On this pageComponent API<el-dialog><dialog><el-dialog-backdrop><el-dialog-panel><button>ExamplesBasic exampleOpening the dialogClosing the dialogAdding a backdropAdding transitions",
+      "viewport": {
+        "width": 1440,
+        "height": 1000,
+        "scrollWidth": 1440,
+        "clientWidth": 1440,
+        "scrollHeight": 5168
+      },
+      "horizontalOverflow": false
+    }
+  },
+  {
+    "group": "Elements",
+    "leaf": "Disclosure",
+    "slug": "disclosure",
+    "url": "https://tailwindcss.com/plus/ui-blocks/documentation/disclosure",
+    "navId": "docs-elements-disclosure",
+    "viewportName": "desktop",
+    "screenshot": "docs/research/assets/tailwind-plus-documentation-depth-2026-07-03/disclosure-desktop.png",
+    "info": {
+      "title": "Tailwind Plus - Official Tailwind UI Components & Templates",
+      "h1": "Disclosure",
+      "headings": [
+        {
+          "level": "h3",
+          "text": "Getting started"
+        },
+        {
+          "level": "h3",
+          "text": "Elements"
+        },
+        {
+          "level": "h3",
+          "text": "Build UIs that don’t suck."
+        },
+        {
+          "level": "h1",
+          "text": "Disclosure"
+        },
+        {
+          "level": "h2",
+          "text": "Component API"
+        },
+        {
+          "level": "h3",
+          "text": "<el-disclosure>"
+        },
+        {
+          "level": "h3",
+          "text": "<button>"
+        },
+        {
+          "level": "h2",
+          "text": "Examples"
+        },
+        {
+          "level": "h3",
+          "text": "Basic example"
+        },
+        {
+          "level": "h3",
+          "text": "Opening a disclosure"
+        },
+        {
+          "level": "h3",
+          "text": "Closing a disclosure"
+        },
+        {
+          "level": "h3",
+          "text": "Toggling a disclosure"
+        },
+        {
+          "level": "h3",
+          "text": "Adding transitions"
+        },
+        {
+          "level": "h2",
+          "text": "On this page"
+        },
+        {
+          "level": "h3",
+          "text": "Marketing"
+        },
+        {
+          "level": "h3",
+          "text": "Application UI"
+        },
+        {
+          "level": "h3",
+          "text": "Ecommerce"
+        },
+        {
+          "level": "h3",
+          "text": "Templates & UI Kits"
+        }
+      ],
+      "mainLinks": [
+        {
+          "text": "Marketing",
+          "href": "https://tailwindcss.com/plus/ui-blocks/marketing"
+        },
+        {
+          "text": "Application UI",
+          "href": "https://tailwindcss.com/plus/ui-blocks/application-ui"
+        },
+        {
+          "text": "Ecommerce",
+          "href": "https://tailwindcss.com/plus/ui-blocks/ecommerce"
+        },
+        {
+          "text": "Documentation",
+          "href": "/plus/ui-blocks/documentation"
+        },
+        {
+          "text": "Getting set up",
+          "href": "/plus/ui-blocks/documentation"
+        },
+        {
+          "text": "Using HTML",
+          "href": "/plus/ui-blocks/documentation/using-html"
+        },
+        {
+          "text": "Using React",
+          "href": "/plus/ui-blocks/documentation/using-react"
+        },
+        {
+          "text": "Using Vue",
+          "href": "/plus/ui-blocks/documentation/using-vue"
+        },
+        {
+          "text": "Assets",
+          "href": "/plus/ui-blocks/documentation/assets"
+        },
+        {
+          "text": "Introduction",
+          "href": "/plus/ui-blocks/documentation/elements"
+        },
+        {
+          "text": "Autocomplete",
+          "href": "/plus/ui-blocks/documentation/autocomplete"
+        },
+        {
+          "text": "Command palette",
+          "href": "/plus/ui-blocks/documentation/command-palette"
+        },
+        {
+          "text": "Copy button",
+          "href": "/plus/ui-blocks/documentation/copy-button"
+        },
+        {
+          "text": "Dialog",
+          "href": "/plus/ui-blocks/documentation/dialog"
+        },
+        {
+          "text": "Disclosure",
+          "href": "/plus/ui-blocks/documentation/disclosure"
+        },
+        {
+          "text": "Dropdown menu",
+          "href": "/plus/ui-blocks/documentation/dropdown-menu"
+        },
+        {
+          "text": "Popover",
+          "href": "/plus/ui-blocks/documentation/popover"
+        },
+        {
+          "text": "Select",
+          "href": "/plus/ui-blocks/documentation/select"
+        },
+        {
+          "text": "Tabs",
+          "href": "/plus/ui-blocks/documentation/tabs"
+        },
+        {
+          "text": "Get the free course",
+          "href": "https://tailwindcss.com/build-uis-that-dont-suck"
+        },
+        {
+          "text": "UI Blocks",
+          "href": "/plus/ui-blocks"
+        },
+        {
+          "text": "Documentation",
+          "href": "/plus/ui-blocks/documentation"
+        },
+        {
+          "text": "UI Blocks",
+          "href": "/plus/ui-blocks"
+        },
+        {
+          "text": "Tailwind Plus",
+          "href": "/plus#pricing"
+        }
+      ],
+      "codeBlockCount": 15,
+      "codeBlocks": [
+        "<el-disclosure>",
+        "hidden",
+        "open",
+        "hidden",
+        "data-closed",
+        "data-enter",
+        "data-leave",
+        "data-transition",
+        "show()",
+        "hide()",
+        "toggle()",
+        "--show",
+        "--hide",
+        "--toggle",
+        "aria-expanded"
+      ],
+      "tableCount": 2,
+      "calloutCount": 0,
+      "navText": "UI BlocksDocumentation UI Blocks/ Docs On this pageComponent API<el-disclosure><button>ExamplesBasic exampleOpening a disclosureClosing a disclosureToggling a disclosureAdding transitions",
+      "viewport": {
+        "width": 1440,
+        "height": 1000,
+        "scrollWidth": 1440,
+        "clientWidth": 1440,
+        "scrollHeight": 4370
+      },
+      "horizontalOverflow": false
+    }
+  },
+  {
+    "group": "Elements",
+    "leaf": "Dropdown menu",
+    "slug": "dropdown-menu",
+    "url": "https://tailwindcss.com/plus/ui-blocks/documentation/dropdown-menu",
+    "navId": "docs-elements-dropdown-menu",
+    "viewportName": "desktop",
+    "screenshot": "docs/research/assets/tailwind-plus-documentation-depth-2026-07-03/dropdown-menu-desktop.png",
+    "info": {
+      "title": "Tailwind Plus - Official Tailwind UI Components & Templates",
+      "h1": "Dropdown menu",
+      "headings": [
+        {
+          "level": "h3",
+          "text": "Getting started"
+        },
+        {
+          "level": "h3",
+          "text": "Elements"
+        },
+        {
+          "level": "h3",
+          "text": "Build UIs that don’t suck."
+        },
+        {
+          "level": "h1",
+          "text": "Dropdown menu"
+        },
+        {
+          "level": "h2",
+          "text": "Component API"
+        },
+        {
+          "level": "h3",
+          "text": "<el-dropdown>"
+        },
+        {
+          "level": "h3",
+          "text": "<el-menu>"
+        },
+        {
+          "level": "h2",
+          "text": "Examples"
+        },
+        {
+          "level": "h3",
+          "text": "Basic example"
+        },
+        {
+          "level": "h3",
+          "text": "Using with buttons"
+        },
+        {
+          "level": "h3",
+          "text": "Using with links"
+        },
+        {
+          "level": "h3",
+          "text": "Disabling an item"
+        },
+        {
+          "level": "h3",
+          "text": "Setting the dropdown width"
+        },
+        {
+          "level": "h3",
+          "text": "Positioning the dropdown"
+        },
+        {
+          "level": "h3",
+          "text": "Adding transitions"
+        },
+        {
+          "level": "h2",
+          "text": "On this page"
+        },
+        {
+          "level": "h3",
+          "text": "Marketing"
+        },
+        {
+          "level": "h3",
+          "text": "Application UI"
+        },
+        {
+          "level": "h3",
+          "text": "Ecommerce"
+        },
+        {
+          "level": "h3",
+          "text": "Templates & UI Kits"
+        }
+      ],
+      "mainLinks": [
+        {
+          "text": "Marketing",
+          "href": "https://tailwindcss.com/plus/ui-blocks/marketing"
+        },
+        {
+          "text": "Application UI",
+          "href": "https://tailwindcss.com/plus/ui-blocks/application-ui"
+        },
+        {
+          "text": "Ecommerce",
+          "href": "https://tailwindcss.com/plus/ui-blocks/ecommerce"
+        },
+        {
+          "text": "Documentation",
+          "href": "/plus/ui-blocks/documentation"
+        },
+        {
+          "text": "Getting set up",
+          "href": "/plus/ui-blocks/documentation"
+        },
+        {
+          "text": "Using HTML",
+          "href": "/plus/ui-blocks/documentation/using-html"
+        },
+        {
+          "text": "Using React",
+          "href": "/plus/ui-blocks/documentation/using-react"
+        },
+        {
+          "text": "Using Vue",
+          "href": "/plus/ui-blocks/documentation/using-vue"
+        },
+        {
+          "text": "Assets",
+          "href": "/plus/ui-blocks/documentation/assets"
+        },
+        {
+          "text": "Introduction",
+          "href": "/plus/ui-blocks/documentation/elements"
+        },
+        {
+          "text": "Autocomplete",
+          "href": "/plus/ui-blocks/documentation/autocomplete"
+        },
+        {
+          "text": "Command palette",
+          "href": "/plus/ui-blocks/documentation/command-palette"
+        },
+        {
+          "text": "Copy button",
+          "href": "/plus/ui-blocks/documentation/copy-button"
+        },
+        {
+          "text": "Dialog",
+          "href": "/plus/ui-blocks/documentation/dialog"
+        },
+        {
+          "text": "Disclosure",
+          "href": "/plus/ui-blocks/documentation/disclosure"
+        },
+        {
+          "text": "Dropdown menu",
+          "href": "/plus/ui-blocks/documentation/dropdown-menu"
+        },
+        {
+          "text": "Popover",
+          "href": "/plus/ui-blocks/documentation/popover"
+        },
+        {
+          "text": "Select",
+          "href": "/plus/ui-blocks/documentation/select"
+        },
+        {
+          "text": "Tabs",
+          "href": "/plus/ui-blocks/documentation/tabs"
+        },
+        {
+          "text": "Get the free course",
+          "href": "https://tailwindcss.com/build-uis-that-dont-suck"
+        },
+        {
+          "text": "UI Blocks",
+          "href": "/plus/ui-blocks"
+        },
+        {
+          "text": "Documentation",
+          "href": "/plus/ui-blocks/documentation"
+        },
+        {
+          "text": "UI Blocks",
+          "href": "/plus/ui-blocks"
+        },
+        {
+          "text": "Tailwind Plus",
+          "href": "/plus#pricing"
+        }
+      ],
+      "codeBlockCount": 18,
+      "codeBlocks": [
+        "<el-dropdown>",
+        "--input-width",
+        "popover",
+        "open",
+        "anchor",
+        "anchor-strategy",
+        "position",
+        "absolute",
+        "fixed",
+        "--anchor-gap",
+        "--anchor-offset",
+        "data-closed",
+        "data-enter",
+        "data-leave",
+        "data-transition",
+        "togglePopover()"
+      ],
+      "tableCount": 2,
+      "calloutCount": 0,
+      "navText": "UI BlocksDocumentation UI Blocks/ Docs On this pageComponent API<el-dropdown><el-menu>ExamplesBasic exampleUsing with buttonsUsing with linksDisabling an itemSetting the dropdown widthPositioning the dropdownAdding transitions",
+      "viewport": {
+        "width": 1440,
+        "height": 1000,
+        "scrollWidth": 1440,
+        "clientWidth": 1440,
+        "scrollHeight": 4353
+      },
+      "horizontalOverflow": false
+    }
+  },
+  {
+    "group": "Elements",
+    "leaf": "Popover",
+    "slug": "popover",
+    "url": "https://tailwindcss.com/plus/ui-blocks/documentation/popover",
+    "navId": "docs-elements-popover",
+    "viewportName": "desktop",
+    "screenshot": "docs/research/assets/tailwind-plus-documentation-depth-2026-07-03/popover-desktop.png",
+    "info": {
+      "title": "Tailwind Plus - Official Tailwind UI Components & Templates",
+      "h1": "Popover",
+      "headings": [
+        {
+          "level": "h3",
+          "text": "Getting started"
+        },
+        {
+          "level": "h3",
+          "text": "Elements"
+        },
+        {
+          "level": "h3",
+          "text": "Build UIs that don’t suck."
+        },
+        {
+          "level": "h1",
+          "text": "Popover"
+        },
+        {
+          "level": "h2",
+          "text": "Component API"
+        },
+        {
+          "level": "h3",
+          "text": "<el-popover>"
+        },
+        {
+          "level": "h3",
+          "text": "<el-popover-group>"
+        },
+        {
+          "level": "h3",
+          "text": "<button>"
+        },
+        {
+          "level": "h2",
+          "text": "Examples"
+        },
+        {
+          "level": "h3",
+          "text": "Basic example"
+        },
+        {
+          "level": "h3",
+          "text": "Toggling popovers"
+        },
+        {
+          "level": "h3",
+          "text": "Opening popovers"
+        },
+        {
+          "level": "h3",
+          "text": "Closing popovers"
+        },
+        {
+          "level": "h3",
+          "text": "Setting the panel width"
+        },
+        {
+          "level": "h3",
+          "text": "Positioning the panel"
+        },
+        {
+          "level": "h3",
+          "text": "Adding transitions"
+        },
+        {
+          "level": "h3",
+          "text": "Grouping related popovers"
+        },
+        {
+          "level": "h2",
+          "text": "On this page"
+        },
+        {
+          "level": "h3",
+          "text": "Marketing"
+        },
+        {
+          "level": "h3",
+          "text": "Application UI"
+        },
+        {
+          "level": "h3",
+          "text": "Ecommerce"
+        },
+        {
+          "level": "h3",
+          "text": "Templates & UI Kits"
+        }
+      ],
+      "mainLinks": [
+        {
+          "text": "Marketing",
+          "href": "https://tailwindcss.com/plus/ui-blocks/marketing"
+        },
+        {
+          "text": "Application UI",
+          "href": "https://tailwindcss.com/plus/ui-blocks/application-ui"
+        },
+        {
+          "text": "Ecommerce",
+          "href": "https://tailwindcss.com/plus/ui-blocks/ecommerce"
+        },
+        {
+          "text": "Documentation",
+          "href": "/plus/ui-blocks/documentation"
+        },
+        {
+          "text": "Getting set up",
+          "href": "/plus/ui-blocks/documentation"
+        },
+        {
+          "text": "Using HTML",
+          "href": "/plus/ui-blocks/documentation/using-html"
+        },
+        {
+          "text": "Using React",
+          "href": "/plus/ui-blocks/documentation/using-react"
+        },
+        {
+          "text": "Using Vue",
+          "href": "/plus/ui-blocks/documentation/using-vue"
+        },
+        {
+          "text": "Assets",
+          "href": "/plus/ui-blocks/documentation/assets"
+        },
+        {
+          "text": "Introduction",
+          "href": "/plus/ui-blocks/documentation/elements"
+        },
+        {
+          "text": "Autocomplete",
+          "href": "/plus/ui-blocks/documentation/autocomplete"
+        },
+        {
+          "text": "Command palette",
+          "href": "/plus/ui-blocks/documentation/command-palette"
+        },
+        {
+          "text": "Copy button",
+          "href": "/plus/ui-blocks/documentation/copy-button"
+        },
+        {
+          "text": "Dialog",
+          "href": "/plus/ui-blocks/documentation/dialog"
+        },
+        {
+          "text": "Disclosure",
+          "href": "/plus/ui-blocks/documentation/disclosure"
+        },
+        {
+          "text": "Dropdown menu",
+          "href": "/plus/ui-blocks/documentation/dropdown-menu"
+        },
+        {
+          "text": "Popover",
+          "href": "/plus/ui-blocks/documentation/popover"
+        },
+        {
+          "text": "Select",
+          "href": "/plus/ui-blocks/documentation/select"
+        },
+        {
+          "text": "Tabs",
+          "href": "/plus/ui-blocks/documentation/tabs"
+        },
+        {
+          "text": "Get the free course",
+          "href": "https://tailwindcss.com/build-uis-that-dont-suck"
+        },
+        {
+          "text": "UI Blocks",
+          "href": "/plus/ui-blocks"
+        },
+        {
+          "text": "Documentation",
+          "href": "/plus/ui-blocks/documentation"
+        },
+        {
+          "text": "UI Blocks",
+          "href": "/plus/ui-blocks"
+        },
+        {
+          "text": "Tailwind Plus",
+          "href": "/plus#pricing"
+        }
+      ],
+      "codeBlockCount": 15,
+      "codeBlocks": [
+        "<el-popover>",
+        "anchor",
+        "anchor-strategy",
+        "position",
+        "absolute",
+        "fixed",
+        "data-closed",
+        "data-enter",
+        "data-leave",
+        "data-transition",
+        "toggle",
+        "togglePopover()",
+        "showPopover()",
+        "hidePopover()",
+        "aria-expanded"
+      ],
+      "tableCount": 2,
+      "calloutCount": 0,
+      "navText": "UI BlocksDocumentation UI Blocks/ Docs On this pageComponent API<el-popover><el-popover-group><button>ExamplesBasic exampleToggling popoversOpening popoversClosing popoversSetting the panel widthPositioning the panelAdding transitionsGrouping related popovers",
+      "viewport": {
+        "width": 1440,
+        "height": 1000,
+        "scrollWidth": 1440,
+        "clientWidth": 1440,
+        "scrollHeight": 4717
+      },
+      "horizontalOverflow": false
+    }
+  },
+  {
+    "group": "Elements",
+    "leaf": "Select",
+    "slug": "select",
+    "url": "https://tailwindcss.com/plus/ui-blocks/documentation/select",
+    "navId": "docs-elements-select",
+    "viewportName": "desktop",
+    "screenshot": "docs/research/assets/tailwind-plus-documentation-depth-2026-07-03/select-desktop.png",
+    "info": {
+      "title": "Tailwind Plus - Official Tailwind UI Components & Templates",
+      "h1": "Select",
+      "headings": [
+        {
+          "level": "h3",
+          "text": "Getting started"
+        },
+        {
+          "level": "h3",
+          "text": "Elements"
+        },
+        {
+          "level": "h3",
+          "text": "Build UIs that don’t suck."
+        },
+        {
+          "level": "h1",
+          "text": "Select"
+        },
+        {
+          "level": "h2",
+          "text": "Component API"
+        },
+        {
+          "level": "h3",
+          "text": "<el-select>"
+        },
+        {
+          "level": "h3",
+          "text": "<el-options>"
+        },
+        {
+          "level": "h3",
+          "text": "<el-option>"
+        },
+        {
+          "level": "h3",
+          "text": "<el-selectedcontent>"
+        },
+        {
+          "level": "h2",
+          "text": "Examples"
+        },
+        {
+          "level": "h3",
+          "text": "Basic example"
+        },
+        {
+          "level": "h3",
+          "text": "Positioning the dropdown"
+        },
+        {
+          "level": "h3",
+          "text": "Setting the dropdown width"
+        },
+        {
+          "level": "h3",
+          "text": "Adding transitions"
+        },
+        {
+          "level": "h3",
+          "text": "Disabling the input"
+        },
+        {
+          "level": "h2",
+          "text": "On this page"
+        },
+        {
+          "level": "h3",
+          "text": "Marketing"
+        },
+        {
+          "level": "h3",
+          "text": "Application UI"
+        },
+        {
+          "level": "h3",
+          "text": "Ecommerce"
+        },
+        {
+          "level": "h3",
+          "text": "Templates & UI Kits"
+        }
+      ],
+      "mainLinks": [
+        {
+          "text": "Marketing",
+          "href": "https://tailwindcss.com/plus/ui-blocks/marketing"
+        },
+        {
+          "text": "Application UI",
+          "href": "https://tailwindcss.com/plus/ui-blocks/application-ui"
+        },
+        {
+          "text": "Ecommerce",
+          "href": "https://tailwindcss.com/plus/ui-blocks/ecommerce"
+        },
+        {
+          "text": "Documentation",
+          "href": "/plus/ui-blocks/documentation"
+        },
+        {
+          "text": "Getting set up",
+          "href": "/plus/ui-blocks/documentation"
+        },
+        {
+          "text": "Using HTML",
+          "href": "/plus/ui-blocks/documentation/using-html"
+        },
+        {
+          "text": "Using React",
+          "href": "/plus/ui-blocks/documentation/using-react"
+        },
+        {
+          "text": "Using Vue",
+          "href": "/plus/ui-blocks/documentation/using-vue"
+        },
+        {
+          "text": "Assets",
+          "href": "/plus/ui-blocks/documentation/assets"
+        },
+        {
+          "text": "Introduction",
+          "href": "/plus/ui-blocks/documentation/elements"
+        },
+        {
+          "text": "Autocomplete",
+          "href": "/plus/ui-blocks/documentation/autocomplete"
+        },
+        {
+          "text": "Command palette",
+          "href": "/plus/ui-blocks/documentation/command-palette"
+        },
+        {
+          "text": "Copy button",
+          "href": "/plus/ui-blocks/documentation/copy-button"
+        },
+        {
+          "text": "Dialog",
+          "href": "/plus/ui-blocks/documentation/dialog"
+        },
+        {
+          "text": "Disclosure",
+          "href": "/plus/ui-blocks/documentation/disclosure"
+        },
+        {
+          "text": "Dropdown menu",
+          "href": "/plus/ui-blocks/documentation/dropdown-menu"
+        },
+        {
+          "text": "Popover",
+          "href": "/plus/ui-blocks/documentation/popover"
+        },
+        {
+          "text": "Select",
+          "href": "/plus/ui-blocks/documentation/select"
+        },
+        {
+          "text": "Tabs",
+          "href": "/plus/ui-blocks/documentation/tabs"
+        },
+        {
+          "text": "Get the free course",
+          "href": "https://tailwindcss.com/build-uis-that-dont-suck"
+        },
+        {
+          "text": "UI Blocks",
+          "href": "/plus/ui-blocks"
+        },
+        {
+          "text": "Documentation",
+          "href": "/plus/ui-blocks/documentation"
+        },
+        {
+          "text": "UI Blocks",
+          "href": "/plus/ui-blocks"
+        },
+        {
+          "text": "Tailwind Plus",
+          "href": "/plus#pricing"
+        }
+      ],
+      "codeBlockCount": 25,
+      "codeBlocks": [
+        "<el-select>",
+        "<select>",
+        "name",
+        "value",
+        "input",
+        "change",
+        "--input-width",
+        "popover",
+        "anchor",
+        "anchor-strategy",
+        "position",
+        "absolute",
+        "fixed",
+        "--anchor-gap",
+        "--anchor-offset",
+        "data-closed"
+      ],
+      "tableCount": 3,
+      "calloutCount": 0,
+      "navText": "UI BlocksDocumentation UI Blocks/ Docs On this pageComponent API<el-select><el-options><el-option><el-selectedcontent>ExamplesBasic examplePositioning the dropdownSetting the dropdown widthAdding transitionsDisabling the input",
+      "viewport": {
+        "width": 1440,
+        "height": 1000,
+        "scrollWidth": 1440,
+        "clientWidth": 1440,
+        "scrollHeight": 4801
+      },
+      "horizontalOverflow": false
+    }
+  },
+  {
+    "group": "Elements",
+    "leaf": "Tabs",
+    "slug": "tabs",
+    "url": "https://tailwindcss.com/plus/ui-blocks/documentation/tabs",
+    "navId": "docs-elements-tabs",
+    "viewportName": "desktop",
+    "screenshot": "docs/research/assets/tailwind-plus-documentation-depth-2026-07-03/tabs-desktop.png",
+    "info": {
+      "title": "Tailwind Plus - Official Tailwind UI Components & Templates",
+      "h1": "Tabs",
+      "headings": [
+        {
+          "level": "h3",
+          "text": "Getting started"
+        },
+        {
+          "level": "h3",
+          "text": "Elements"
+        },
+        {
+          "level": "h3",
+          "text": "Build UIs that don’t suck."
+        },
+        {
+          "level": "h1",
+          "text": "Tabs"
+        },
+        {
+          "level": "h2",
+          "text": "Component API"
+        },
+        {
+          "level": "h3",
+          "text": "<el-tab-group>"
+        },
+        {
+          "level": "h3",
+          "text": "<el-tab-list>"
+        },
+        {
+          "level": "h3",
+          "text": "<el-tab-panels>"
+        },
+        {
+          "level": "h2",
+          "text": "Examples"
+        },
+        {
+          "level": "h3",
+          "text": "Basic example"
+        },
+        {
+          "level": "h3",
+          "text": "Setting the active tab"
+        },
+        {
+          "level": "h2",
+          "text": "On this page"
+        },
+        {
+          "level": "h3",
+          "text": "Marketing"
+        },
+        {
+          "level": "h3",
+          "text": "Application UI"
+        },
+        {
+          "level": "h3",
+          "text": "Ecommerce"
+        },
+        {
+          "level": "h3",
+          "text": "Templates & UI Kits"
+        }
+      ],
+      "mainLinks": [
+        {
+          "text": "Marketing",
+          "href": "https://tailwindcss.com/plus/ui-blocks/marketing"
+        },
+        {
+          "text": "Application UI",
+          "href": "https://tailwindcss.com/plus/ui-blocks/application-ui"
+        },
+        {
+          "text": "Ecommerce",
+          "href": "https://tailwindcss.com/plus/ui-blocks/ecommerce"
+        },
+        {
+          "text": "Documentation",
+          "href": "/plus/ui-blocks/documentation"
+        },
+        {
+          "text": "Getting set up",
+          "href": "/plus/ui-blocks/documentation"
+        },
+        {
+          "text": "Using HTML",
+          "href": "/plus/ui-blocks/documentation/using-html"
+        },
+        {
+          "text": "Using React",
+          "href": "/plus/ui-blocks/documentation/using-react"
+        },
+        {
+          "text": "Using Vue",
+          "href": "/plus/ui-blocks/documentation/using-vue"
+        },
+        {
+          "text": "Assets",
+          "href": "/plus/ui-blocks/documentation/assets"
+        },
+        {
+          "text": "Introduction",
+          "href": "/plus/ui-blocks/documentation/elements"
+        },
+        {
+          "text": "Autocomplete",
+          "href": "/plus/ui-blocks/documentation/autocomplete"
+        },
+        {
+          "text": "Command palette",
+          "href": "/plus/ui-blocks/documentation/command-palette"
+        },
+        {
+          "text": "Copy button",
+          "href": "/plus/ui-blocks/documentation/copy-button"
+        },
+        {
+          "text": "Dialog",
+          "href": "/plus/ui-blocks/documentation/dialog"
+        },
+        {
+          "text": "Disclosure",
+          "href": "/plus/ui-blocks/documentation/disclosure"
+        },
+        {
+          "text": "Dropdown menu",
+          "href": "/plus/ui-blocks/documentation/dropdown-menu"
+        },
+        {
+          "text": "Popover",
+          "href": "/plus/ui-blocks/documentation/popover"
+        },
+        {
+          "text": "Select",
+          "href": "/plus/ui-blocks/documentation/select"
+        },
+        {
+          "text": "Tabs",
+          "href": "/plus/ui-blocks/documentation/tabs"
+        },
+        {
+          "text": "Get the free course",
+          "href": "https://tailwindcss.com/build-uis-that-dont-suck"
+        },
+        {
+          "text": "UI Blocks",
+          "href": "/plus/ui-blocks"
+        },
+        {
+          "text": "Documentation",
+          "href": "/plus/ui-blocks/documentation"
+        },
+        {
+          "text": "UI Blocks",
+          "href": "/plus/ui-blocks"
+        },
+        {
+          "text": "Tailwind Plus",
+          "href": "/plus#pricing"
+        }
+      ],
+      "codeBlockCount": 2,
+      "codeBlocks": [
+        "<el-tab-group>",
+        "setActiveTab(index)"
+      ],
+      "tableCount": 1,
+      "calloutCount": 0,
+      "navText": "UI BlocksDocumentation UI Blocks/ Docs On this pageComponent API<el-tab-group><el-tab-list><el-tab-panels>ExamplesBasic exampleSetting the active tab",
+      "viewport": {
+        "width": 1440,
+        "height": 1000,
+        "scrollWidth": 1440,
+        "clientWidth": 1440,
+        "scrollHeight": 2851
+      },
+      "horizontalOverflow": false
+    }
+  },
+  {
+    "group": "Getting started",
+    "leaf": "Getting set up",
+    "slug": "getting-set-up",
+    "url": "https://tailwindcss.com/plus/ui-blocks/documentation",
+    "navId": "docs-getting-started-setup",
+    "viewportName": "mobile",
+    "screenshot": "docs/research/assets/tailwind-plus-documentation-depth-2026-07-03/getting-set-up-mobile.png",
+    "info": {
+      "title": "Tailwind Plus - Official Tailwind UI Components & Templates",
+      "h1": "Getting set up",
+      "headings": [
+        {
+          "level": "h3",
+          "text": "Getting started"
+        },
+        {
+          "level": "h3",
+          "text": "Elements"
+        },
+        {
+          "level": "h3",
+          "text": "Build UIs that don’t suck."
+        },
+        {
+          "level": "h1",
+          "text": "Getting set up"
+        },
+        {
+          "level": "h2",
+          "text": "Requirements"
+        },
+        {
+          "level": "h2",
+          "text": "Add the Inter font family"
+        },
+        {
+          "level": "h2",
+          "text": "Dark mode support"
+        },
+        {
+          "level": "h2",
+          "text": "On this page"
+        },
+        {
+          "level": "h3",
+          "text": "Marketing"
+        },
+        {
+          "level": "h3",
+          "text": "Application UI"
+        },
+        {
+          "level": "h3",
+          "text": "Ecommerce"
+        },
+        {
+          "level": "h3",
+          "text": "Templates & UI Kits"
+        }
+      ],
+      "mainLinks": [
+        {
+          "text": "Marketing",
+          "href": "https://tailwindcss.com/plus/ui-blocks/marketing"
+        },
+        {
+          "text": "Application UI",
+          "href": "https://tailwindcss.com/plus/ui-blocks/application-ui"
+        },
+        {
+          "text": "Ecommerce",
+          "href": "https://tailwindcss.com/plus/ui-blocks/ecommerce"
+        },
+        {
+          "text": "Documentation",
+          "href": "/plus/ui-blocks/documentation"
+        },
+        {
+          "text": "Getting set up",
+          "href": "/plus/ui-blocks/documentation"
+        },
+        {
+          "text": "Using HTML",
+          "href": "/plus/ui-blocks/documentation/using-html"
+        },
+        {
+          "text": "Using React",
+          "href": "/plus/ui-blocks/documentation/using-react"
+        },
+        {
+          "text": "Using Vue",
+          "href": "/plus/ui-blocks/documentation/using-vue"
+        },
+        {
+          "text": "Assets",
+          "href": "/plus/ui-blocks/documentation/assets"
+        },
+        {
+          "text": "Introduction",
+          "href": "/plus/ui-blocks/documentation/elements"
+        },
+        {
+          "text": "Autocomplete",
+          "href": "/plus/ui-blocks/documentation/autocomplete"
+        },
+        {
+          "text": "Command palette",
+          "href": "/plus/ui-blocks/documentation/command-palette"
+        },
+        {
+          "text": "Copy button",
+          "href": "/plus/ui-blocks/documentation/copy-button"
+        },
+        {
+          "text": "Dialog",
+          "href": "/plus/ui-blocks/documentation/dialog"
+        },
+        {
+          "text": "Disclosure",
+          "href": "/plus/ui-blocks/documentation/disclosure"
+        },
+        {
+          "text": "Dropdown menu",
+          "href": "/plus/ui-blocks/documentation/dropdown-menu"
+        },
+        {
+          "text": "Popover",
+          "href": "/plus/ui-blocks/documentation/popover"
+        },
+        {
+          "text": "Select",
+          "href": "/plus/ui-blocks/documentation/select"
+        },
+        {
+          "text": "Tabs",
+          "href": "/plus/ui-blocks/documentation/tabs"
+        },
+        {
+          "text": "Get the free course",
+          "href": "https://tailwindcss.com/build-uis-that-dont-suck"
+        },
+        {
+          "text": "UI Blocks",
+          "href": "/plus/ui-blocks"
+        },
+        {
+          "text": "Documentation",
+          "href": "/plus/ui-blocks/documentation"
+        },
+        {
+          "text": "UI Blocks",
+          "href": "/plus/ui-blocks"
+        },
+        {
+          "text": "read the Tailwind CSS documentation",
+          "href": "https://tailwindcss.com/docs"
+        }
+      ],
+      "codeBlockCount": 14,
+      "codeBlocks": [
+        "npm install tailwindcss@latest",
+        "npm install tailwindcss@latest",
+        "<link rel=\"stylesheet\" href=\"https://rsms.me/inter/inter.css\" />",
+        "<link rel=\"stylesheet\" href=\"https://rsms.me/inter/inter.css\" />",
+        "@theme { --font-sans: InterVariable, sans-serif; --font-sans--font-feature-settings: 'cv02', 'cv03', 'cv04', 'cv11'; }",
+        "@theme { --font-sans: InterVariable, sans-serif; --font-sans--font-feature-settings: 'cv02', 'cv03', 'cv04', 'cv11'; }",
+        "tailwind.config.js",
+        "const defaultTheme = require('tailwindcss/defaultTheme') module.exports = { theme: { extend: { fontFamily: { sans: ['InterVariable', ...defaultTheme.fontFamily.sans], }, }, }, // .",
+        "const defaultTheme = require('tailwindcss/defaultTheme') module.exports = { theme: { extend: { fontFamily: { sans: ['InterVariable', ...defaultTheme.fontFamily.sans], }, }, }, // .",
+        "dark:scheme-dark",
+        "<html>",
+        "dark:bg-gray-950",
+        "<html class=\"bg-white dark:bg-gray-950 scheme-light dark:scheme-dark\">",
+        "<html class=\"bg-white dark:bg-gray-950 scheme-light dark:scheme-dark\">"
+      ],
+      "tableCount": 0,
+      "calloutCount": 0,
+      "navText": "UI BlocksDocumentation UI Blocks/ Docs On this pageRequirementsAdd the Inter font familyDark mode support",
+      "viewport": {
+        "width": 390,
+        "height": 900,
+        "scrollWidth": 390,
+        "clientWidth": 390,
+        "scrollHeight": 4160
+      },
+      "horizontalOverflow": false
+    }
+  },
+  {
+    "group": "Getting started",
+    "leaf": "Using HTML",
+    "slug": "using-html",
+    "url": "https://tailwindcss.com/plus/ui-blocks/documentation/using-html",
+    "navId": "docs-getting-started-html",
+    "viewportName": "mobile",
+    "screenshot": "docs/research/assets/tailwind-plus-documentation-depth-2026-07-03/using-html-mobile.png",
+    "info": {
+      "title": "Tailwind Plus - Official Tailwind UI Components & Templates",
+      "h1": "Using HTML",
+      "headings": [
+        {
+          "level": "h3",
+          "text": "Getting started"
+        },
+        {
+          "level": "h3",
+          "text": "Elements"
+        },
+        {
+          "level": "h3",
+          "text": "Build UIs that don’t suck."
+        },
+        {
+          "level": "h1",
+          "text": "Using HTML"
+        },
+        {
+          "level": "h2",
+          "text": "Installing dependencies"
+        },
+        {
+          "level": "h2",
+          "text": "Creating components"
+        },
+        {
+          "level": "h2",
+          "text": "On this page"
+        },
+        {
+          "level": "h3",
+          "text": "Marketing"
+        },
+        {
+          "level": "h3",
+          "text": "Application UI"
+        },
+        {
+          "level": "h3",
+          "text": "Ecommerce"
+        },
+        {
+          "level": "h3",
+          "text": "Templates & UI Kits"
+        }
+      ],
+      "mainLinks": [
+        {
+          "text": "Marketing",
+          "href": "https://tailwindcss.com/plus/ui-blocks/marketing"
+        },
+        {
+          "text": "Application UI",
+          "href": "https://tailwindcss.com/plus/ui-blocks/application-ui"
+        },
+        {
+          "text": "Ecommerce",
+          "href": "https://tailwindcss.com/plus/ui-blocks/ecommerce"
+        },
+        {
+          "text": "Documentation",
+          "href": "/plus/ui-blocks/documentation"
+        },
+        {
+          "text": "Getting set up",
+          "href": "/plus/ui-blocks/documentation"
+        },
+        {
+          "text": "Using HTML",
+          "href": "/plus/ui-blocks/documentation/using-html"
+        },
+        {
+          "text": "Using React",
+          "href": "/plus/ui-blocks/documentation/using-react"
+        },
+        {
+          "text": "Using Vue",
+          "href": "/plus/ui-blocks/documentation/using-vue"
+        },
+        {
+          "text": "Assets",
+          "href": "/plus/ui-blocks/documentation/assets"
+        },
+        {
+          "text": "Introduction",
+          "href": "/plus/ui-blocks/documentation/elements"
+        },
+        {
+          "text": "Autocomplete",
+          "href": "/plus/ui-blocks/documentation/autocomplete"
+        },
+        {
+          "text": "Command palette",
+          "href": "/plus/ui-blocks/documentation/command-palette"
+        },
+        {
+          "text": "Copy button",
+          "href": "/plus/ui-blocks/documentation/copy-button"
+        },
+        {
+          "text": "Dialog",
+          "href": "/plus/ui-blocks/documentation/dialog"
+        },
+        {
+          "text": "Disclosure",
+          "href": "/plus/ui-blocks/documentation/disclosure"
+        },
+        {
+          "text": "Dropdown menu",
+          "href": "/plus/ui-blocks/documentation/dropdown-menu"
+        },
+        {
+          "text": "Popover",
+          "href": "/plus/ui-blocks/documentation/popover"
+        },
+        {
+          "text": "Select",
+          "href": "/plus/ui-blocks/documentation/select"
+        },
+        {
+          "text": "Tabs",
+          "href": "/plus/ui-blocks/documentation/tabs"
+        },
+        {
+          "text": "Get the free course",
+          "href": "https://tailwindcss.com/build-uis-that-dont-suck"
+        },
+        {
+          "text": "UI Blocks",
+          "href": "/plus/ui-blocks"
+        },
+        {
+          "text": "Documentation",
+          "href": "/plus/ui-blocks/documentation"
+        },
+        {
+          "text": "UI Blocks",
+          "href": "/plus/ui-blocks"
+        },
+        {
+          "text": "Elements",
+          "href": "/plus/ui-blocks/documentation/elements"
+        }
+      ],
+      "codeBlockCount": 7,
+      "codeBlocks": [
+        "<head>",
+        "<script src=\"https://cdn.jsdelivr.net/npm/@tailwindplus/elements@1\" type=\"module\"></script>",
+        "<script src=\"https://cdn.jsdelivr.net/npm/@tailwindplus/elements@1\" type=\"module\"></script>",
+        "npm install @tailwindplus/elements",
+        "npm install @tailwindplus/elements",
+        "import '@tailwindplus/elements';",
+        "import '@tailwindplus/elements';"
+      ],
+      "tableCount": 0,
+      "calloutCount": 0,
+      "navText": "UI BlocksDocumentation UI Blocks/ Docs On this pageInstalling dependenciesCreating components",
+      "viewport": {
+        "width": 390,
+        "height": 900,
+        "scrollWidth": 390,
+        "clientWidth": 390,
+        "scrollHeight": 3720
+      },
+      "horizontalOverflow": false
+    }
+  },
+  {
+    "group": "Getting started",
+    "leaf": "Using React",
+    "slug": "using-react",
+    "url": "https://tailwindcss.com/plus/ui-blocks/documentation/using-react",
+    "navId": "docs-getting-started-react",
+    "viewportName": "mobile",
+    "screenshot": "docs/research/assets/tailwind-plus-documentation-depth-2026-07-03/using-react-mobile.png",
+    "info": {
+      "title": "Tailwind Plus - Official Tailwind UI Components & Templates",
+      "h1": "Using React",
+      "headings": [
+        {
+          "level": "h3",
+          "text": "Getting started"
+        },
+        {
+          "level": "h3",
+          "text": "Elements"
+        },
+        {
+          "level": "h3",
+          "text": "Build UIs that don’t suck."
+        },
+        {
+          "level": "h1",
+          "text": "Using React"
+        },
+        {
+          "level": "h2",
+          "text": "Installing dependencies"
+        },
+        {
+          "level": "h2",
+          "text": "Creating components"
+        },
+        {
+          "level": "h2",
+          "text": "On this page"
+        },
+        {
+          "level": "h3",
+          "text": "Marketing"
+        },
+        {
+          "level": "h3",
+          "text": "Application UI"
+        },
+        {
+          "level": "h3",
+          "text": "Ecommerce"
+        },
+        {
+          "level": "h3",
+          "text": "Templates & UI Kits"
+        }
+      ],
+      "mainLinks": [
+        {
+          "text": "Marketing",
+          "href": "https://tailwindcss.com/plus/ui-blocks/marketing"
+        },
+        {
+          "text": "Application UI",
+          "href": "https://tailwindcss.com/plus/ui-blocks/application-ui"
+        },
+        {
+          "text": "Ecommerce",
+          "href": "https://tailwindcss.com/plus/ui-blocks/ecommerce"
+        },
+        {
+          "text": "Documentation",
+          "href": "/plus/ui-blocks/documentation"
+        },
+        {
+          "text": "Getting set up",
+          "href": "/plus/ui-blocks/documentation"
+        },
+        {
+          "text": "Using HTML",
+          "href": "/plus/ui-blocks/documentation/using-html"
+        },
+        {
+          "text": "Using React",
+          "href": "/plus/ui-blocks/documentation/using-react"
+        },
+        {
+          "text": "Using Vue",
+          "href": "/plus/ui-blocks/documentation/using-vue"
+        },
+        {
+          "text": "Assets",
+          "href": "/plus/ui-blocks/documentation/assets"
+        },
+        {
+          "text": "Introduction",
+          "href": "/plus/ui-blocks/documentation/elements"
+        },
+        {
+          "text": "Autocomplete",
+          "href": "/plus/ui-blocks/documentation/autocomplete"
+        },
+        {
+          "text": "Command palette",
+          "href": "/plus/ui-blocks/documentation/command-palette"
+        },
+        {
+          "text": "Copy button",
+          "href": "/plus/ui-blocks/documentation/copy-button"
+        },
+        {
+          "text": "Dialog",
+          "href": "/plus/ui-blocks/documentation/dialog"
+        },
+        {
+          "text": "Disclosure",
+          "href": "/plus/ui-blocks/documentation/disclosure"
+        },
+        {
+          "text": "Dropdown menu",
+          "href": "/plus/ui-blocks/documentation/dropdown-menu"
+        },
+        {
+          "text": "Popover",
+          "href": "/plus/ui-blocks/documentation/popover"
+        },
+        {
+          "text": "Select",
+          "href": "/plus/ui-blocks/documentation/select"
+        },
+        {
+          "text": "Tabs",
+          "href": "/plus/ui-blocks/documentation/tabs"
+        },
+        {
+          "text": "Get the free course",
+          "href": "https://tailwindcss.com/build-uis-that-dont-suck"
+        },
+        {
+          "text": "UI Blocks",
+          "href": "/plus/ui-blocks"
+        },
+        {
+          "text": "Documentation",
+          "href": "/plus/ui-blocks/documentation"
+        },
+        {
+          "text": "UI Blocks",
+          "href": "/plus/ui-blocks"
+        },
+        {
+          "text": "Headless UI",
+          "href": "https://headlessui.dev"
+        }
+      ],
+      "codeBlockCount": 6,
+      "codeBlocks": [
+        "npm install @headlessui/react @heroicons/react",
+        "npm install @headlessui/react @heroicons/react",
+        "const people = [ { name: 'Calvin Hawkins', email: 'calvin.hawkins@example.com', image: 'https://images.unsplash.com/photo-1491528323818-fdd1faba62cc?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQ",
+        "const people = [ { name: 'Calvin Hawkins', email: 'calvin.hawkins@example.com', image: 'https://images.unsplash.com/photo-1491528323818-fdd1faba62cc?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQ",
+        "function HockeyTeamItem({ team }) { return ( <li className=\"flex py-4\"> <img className=\"size-10 rounded-full\" src={team.logo} alt=\"\" /> <div className=\"ml-3\"> <p className=\"text-sm",
+        "function HockeyTeamItem({ team }) { return ( <li className=\"flex py-4\"> <img className=\"size-10 rounded-full\" src={team.logo} alt=\"\" /> <div className=\"ml-3\"> <p className=\"text-sm"
+      ],
+      "tableCount": 0,
+      "calloutCount": 0,
+      "navText": "UI BlocksDocumentation UI Blocks/ Docs On this pageInstalling dependenciesCreating components",
+      "viewport": {
+        "width": 390,
+        "height": 900,
+        "scrollWidth": 390,
+        "clientWidth": 390,
+        "scrollHeight": 5060
+      },
+      "horizontalOverflow": false
+    }
+  },
+  {
+    "group": "Getting started",
+    "leaf": "Using Vue",
+    "slug": "using-vue",
+    "url": "https://tailwindcss.com/plus/ui-blocks/documentation/using-vue",
+    "navId": "docs-getting-started-vue",
+    "viewportName": "mobile",
+    "screenshot": "docs/research/assets/tailwind-plus-documentation-depth-2026-07-03/using-vue-mobile.png",
+    "info": {
+      "title": "Tailwind Plus - Official Tailwind UI Components & Templates",
+      "h1": "Using Vue",
+      "headings": [
+        {
+          "level": "h3",
+          "text": "Getting started"
+        },
+        {
+          "level": "h3",
+          "text": "Elements"
+        },
+        {
+          "level": "h3",
+          "text": "Build UIs that don’t suck."
+        },
+        {
+          "level": "h1",
+          "text": "Using Vue"
+        },
+        {
+          "level": "h2",
+          "text": "Installing dependencies"
+        },
+        {
+          "level": "h2",
+          "text": "Creating components"
+        },
+        {
+          "level": "h2",
+          "text": "On this page"
+        },
+        {
+          "level": "h3",
+          "text": "Marketing"
+        },
+        {
+          "level": "h3",
+          "text": "Application UI"
+        },
+        {
+          "level": "h3",
+          "text": "Ecommerce"
+        },
+        {
+          "level": "h3",
+          "text": "Templates & UI Kits"
+        }
+      ],
+      "mainLinks": [
+        {
+          "text": "Marketing",
+          "href": "https://tailwindcss.com/plus/ui-blocks/marketing"
+        },
+        {
+          "text": "Application UI",
+          "href": "https://tailwindcss.com/plus/ui-blocks/application-ui"
+        },
+        {
+          "text": "Ecommerce",
+          "href": "https://tailwindcss.com/plus/ui-blocks/ecommerce"
+        },
+        {
+          "text": "Documentation",
+          "href": "/plus/ui-blocks/documentation"
+        },
+        {
+          "text": "Getting set up",
+          "href": "/plus/ui-blocks/documentation"
+        },
+        {
+          "text": "Using HTML",
+          "href": "/plus/ui-blocks/documentation/using-html"
+        },
+        {
+          "text": "Using React",
+          "href": "/plus/ui-blocks/documentation/using-react"
+        },
+        {
+          "text": "Using Vue",
+          "href": "/plus/ui-blocks/documentation/using-vue"
+        },
+        {
+          "text": "Assets",
+          "href": "/plus/ui-blocks/documentation/assets"
+        },
+        {
+          "text": "Introduction",
+          "href": "/plus/ui-blocks/documentation/elements"
+        },
+        {
+          "text": "Autocomplete",
+          "href": "/plus/ui-blocks/documentation/autocomplete"
+        },
+        {
+          "text": "Command palette",
+          "href": "/plus/ui-blocks/documentation/command-palette"
+        },
+        {
+          "text": "Copy button",
+          "href": "/plus/ui-blocks/documentation/copy-button"
+        },
+        {
+          "text": "Dialog",
+          "href": "/plus/ui-blocks/documentation/dialog"
+        },
+        {
+          "text": "Disclosure",
+          "href": "/plus/ui-blocks/documentation/disclosure"
+        },
+        {
+          "text": "Dropdown menu",
+          "href": "/plus/ui-blocks/documentation/dropdown-menu"
+        },
+        {
+          "text": "Popover",
+          "href": "/plus/ui-blocks/documentation/popover"
+        },
+        {
+          "text": "Select",
+          "href": "/plus/ui-blocks/documentation/select"
+        },
+        {
+          "text": "Tabs",
+          "href": "/plus/ui-blocks/documentation/tabs"
+        },
+        {
+          "text": "Get the free course",
+          "href": "https://tailwindcss.com/build-uis-that-dont-suck"
+        },
+        {
+          "text": "UI Blocks",
+          "href": "/plus/ui-blocks"
+        },
+        {
+          "text": "Documentation",
+          "href": "/plus/ui-blocks/documentation"
+        },
+        {
+          "text": "UI Blocks",
+          "href": "/plus/ui-blocks"
+        },
+        {
+          "text": "Headless UI",
+          "href": "https://headlessui.dev"
+        }
+      ],
+      "codeBlockCount": 6,
+      "codeBlocks": [
+        "npm install @headlessui/vue @heroicons/vue",
+        "npm install @headlessui/vue @heroicons/vue",
+        "<template> <ul class=\"divide-y divide-gray-200\"> <li v-for=\"person in people\" :key=\"person.email\" class=\"flex py-4\"> <img class=\"size-10 rounded-full\" :src=\"person.image\" alt=\"\" />",
+        "<template> <ul class=\"divide-y divide-gray-200\"> <li v-for=\"person in people\" :key=\"person.email\" class=\"flex py-4\"> <img class=\"size-10 rounded-full\" :src=\"person.image\" alt=\"\" />",
+        "<!-- HockeyTeamList.vue --> <template> <ul class=\"divide-y divide-gray-200\"> <HockeyTeamItem v-for=\"team in teams\" :key=\"team.id\" :team=\"team\" /> </ul> </template> <script setup> c",
+        "<!-- HockeyTeamList.vue --> <template> <ul class=\"divide-y divide-gray-200\"> <HockeyTeamItem v-for=\"team in teams\" :key=\"team.id\" :team=\"team\" /> </ul> </template> <script setup> c"
+      ],
+      "tableCount": 0,
+      "calloutCount": 0,
+      "navText": "UI BlocksDocumentation UI Blocks/ Docs On this pageInstalling dependenciesCreating components",
+      "viewport": {
+        "width": 390,
+        "height": 900,
+        "scrollWidth": 390,
+        "clientWidth": 390,
+        "scrollHeight": 5120
+      },
+      "horizontalOverflow": false
+    }
+  },
+  {
+    "group": "Getting started",
+    "leaf": "Assets",
+    "slug": "assets",
+    "url": "https://tailwindcss.com/plus/ui-blocks/documentation/assets",
+    "navId": "docs-getting-started-assets",
+    "viewportName": "mobile",
+    "screenshot": "docs/research/assets/tailwind-plus-documentation-depth-2026-07-03/assets-mobile.png",
+    "info": {
+      "title": "Tailwind Plus - Official Tailwind UI Components & Templates",
+      "h1": "Assets",
+      "headings": [
+        {
+          "level": "h3",
+          "text": "Getting started"
+        },
+        {
+          "level": "h3",
+          "text": "Elements"
+        },
+        {
+          "level": "h3",
+          "text": "Build UIs that don’t suck."
+        },
+        {
+          "level": "h1",
+          "text": "Assets"
+        },
+        {
+          "level": "h2",
+          "text": "Icons"
+        },
+        {
+          "level": "h2",
+          "text": "Images"
+        },
+        {
+          "level": "h2",
+          "text": "Illustrations"
+        },
+        {
+          "level": "h2",
+          "text": "Figma assets"
+        },
+        {
+          "level": "h2",
+          "text": "On this page"
+        },
+        {
+          "level": "h3",
+          "text": "Marketing"
+        },
+        {
+          "level": "h3",
+          "text": "Application UI"
+        },
+        {
+          "level": "h3",
+          "text": "Ecommerce"
+        },
+        {
+          "level": "h3",
+          "text": "Templates & UI Kits"
+        }
+      ],
+      "mainLinks": [
+        {
+          "text": "Marketing",
+          "href": "https://tailwindcss.com/plus/ui-blocks/marketing"
+        },
+        {
+          "text": "Application UI",
+          "href": "https://tailwindcss.com/plus/ui-blocks/application-ui"
+        },
+        {
+          "text": "Ecommerce",
+          "href": "https://tailwindcss.com/plus/ui-blocks/ecommerce"
+        },
+        {
+          "text": "Documentation",
+          "href": "/plus/ui-blocks/documentation"
+        },
+        {
+          "text": "Getting set up",
+          "href": "/plus/ui-blocks/documentation"
+        },
+        {
+          "text": "Using HTML",
+          "href": "/plus/ui-blocks/documentation/using-html"
+        },
+        {
+          "text": "Using React",
+          "href": "/plus/ui-blocks/documentation/using-react"
+        },
+        {
+          "text": "Using Vue",
+          "href": "/plus/ui-blocks/documentation/using-vue"
+        },
+        {
+          "text": "Assets",
+          "href": "/plus/ui-blocks/documentation/assets"
+        },
+        {
+          "text": "Introduction",
+          "href": "/plus/ui-blocks/documentation/elements"
+        },
+        {
+          "text": "Autocomplete",
+          "href": "/plus/ui-blocks/documentation/autocomplete"
+        },
+        {
+          "text": "Command palette",
+          "href": "/plus/ui-blocks/documentation/command-palette"
+        },
+        {
+          "text": "Copy button",
+          "href": "/plus/ui-blocks/documentation/copy-button"
+        },
+        {
+          "text": "Dialog",
+          "href": "/plus/ui-blocks/documentation/dialog"
+        },
+        {
+          "text": "Disclosure",
+          "href": "/plus/ui-blocks/documentation/disclosure"
+        },
+        {
+          "text": "Dropdown menu",
+          "href": "/plus/ui-blocks/documentation/dropdown-menu"
+        },
+        {
+          "text": "Popover",
+          "href": "/plus/ui-blocks/documentation/popover"
+        },
+        {
+          "text": "Select",
+          "href": "/plus/ui-blocks/documentation/select"
+        },
+        {
+          "text": "Tabs",
+          "href": "/plus/ui-blocks/documentation/tabs"
+        },
+        {
+          "text": "Get the free course",
+          "href": "https://tailwindcss.com/build-uis-that-dont-suck"
+        },
+        {
+          "text": "UI Blocks",
+          "href": "/plus/ui-blocks"
+        },
+        {
+          "text": "Documentation",
+          "href": "/plus/ui-blocks/documentation"
+        },
+        {
+          "text": "UI Blocks",
+          "href": "/plus/ui-blocks"
+        },
+        {
+          "text": "Heroicons",
+          "href": "https://heroicons.com"
+        }
+      ],
+      "codeBlockCount": 0,
+      "codeBlocks": [],
+      "tableCount": 0,
+      "calloutCount": 0,
+      "navText": "UI BlocksDocumentation UI Blocks/ Docs On this pageIconsImagesIllustrationsFigma assets",
+      "viewport": {
+        "width": 390,
+        "height": 900,
+        "scrollWidth": 390,
+        "clientWidth": 390,
+        "scrollHeight": 3344
+      },
+      "horizontalOverflow": false
+    }
+  },
+  {
+    "group": "Elements",
+    "leaf": "Introduction",
+    "slug": "introduction",
+    "url": "https://tailwindcss.com/plus/ui-blocks/documentation/elements",
+    "navId": "docs-elements-introduction",
+    "viewportName": "mobile",
+    "screenshot": "docs/research/assets/tailwind-plus-documentation-depth-2026-07-03/introduction-mobile.png",
+    "info": {
+      "title": "Tailwind Plus - Official Tailwind UI Components & Templates",
+      "h1": "Elements",
+      "headings": [
+        {
+          "level": "h3",
+          "text": "Getting started"
+        },
+        {
+          "level": "h3",
+          "text": "Elements"
+        },
+        {
+          "level": "h3",
+          "text": "Build UIs that don’t suck."
+        },
+        {
+          "level": "h1",
+          "text": "Elements"
+        },
+        {
+          "level": "h2",
+          "text": "Available components"
+        },
+        {
+          "level": "h2",
+          "text": "Browser support"
+        },
+        {
+          "level": "h2",
+          "text": "Installing in your project"
+        },
+        {
+          "level": "h3",
+          "text": "Using CDN"
+        },
+        {
+          "level": "h3",
+          "text": "Using npm"
+        },
+        {
+          "level": "h3",
+          "text": "Using with React"
+        },
+        {
+          "level": "h2",
+          "text": "Detecting when ready"
+        },
+        {
+          "level": "h2",
+          "text": "Documentation for LLMs"
+        },
+        {
+          "level": "h2",
+          "text": "On this page"
+        },
+        {
+          "level": "h3",
+          "text": "Marketing"
+        },
+        {
+          "level": "h3",
+          "text": "Application UI"
+        },
+        {
+          "level": "h3",
+          "text": "Ecommerce"
+        },
+        {
+          "level": "h3",
+          "text": "Templates & UI Kits"
+        }
+      ],
+      "mainLinks": [
+        {
+          "text": "Marketing",
+          "href": "https://tailwindcss.com/plus/ui-blocks/marketing"
+        },
+        {
+          "text": "Application UI",
+          "href": "https://tailwindcss.com/plus/ui-blocks/application-ui"
+        },
+        {
+          "text": "Ecommerce",
+          "href": "https://tailwindcss.com/plus/ui-blocks/ecommerce"
+        },
+        {
+          "text": "Documentation",
+          "href": "/plus/ui-blocks/documentation"
+        },
+        {
+          "text": "Getting set up",
+          "href": "/plus/ui-blocks/documentation"
+        },
+        {
+          "text": "Using HTML",
+          "href": "/plus/ui-blocks/documentation/using-html"
+        },
+        {
+          "text": "Using React",
+          "href": "/plus/ui-blocks/documentation/using-react"
+        },
+        {
+          "text": "Using Vue",
+          "href": "/plus/ui-blocks/documentation/using-vue"
+        },
+        {
+          "text": "Assets",
+          "href": "/plus/ui-blocks/documentation/assets"
+        },
+        {
+          "text": "Introduction",
+          "href": "/plus/ui-blocks/documentation/elements"
+        },
+        {
+          "text": "Autocomplete",
+          "href": "/plus/ui-blocks/documentation/autocomplete"
+        },
+        {
+          "text": "Command palette",
+          "href": "/plus/ui-blocks/documentation/command-palette"
+        },
+        {
+          "text": "Copy button",
+          "href": "/plus/ui-blocks/documentation/copy-button"
+        },
+        {
+          "text": "Dialog",
+          "href": "/plus/ui-blocks/documentation/dialog"
+        },
+        {
+          "text": "Disclosure",
+          "href": "/plus/ui-blocks/documentation/disclosure"
+        },
+        {
+          "text": "Dropdown menu",
+          "href": "/plus/ui-blocks/documentation/dropdown-menu"
+        },
+        {
+          "text": "Popover",
+          "href": "/plus/ui-blocks/documentation/popover"
+        },
+        {
+          "text": "Select",
+          "href": "/plus/ui-blocks/documentation/select"
+        },
+        {
+          "text": "Tabs",
+          "href": "/plus/ui-blocks/documentation/tabs"
+        },
+        {
+          "text": "Get the free course",
+          "href": "https://tailwindcss.com/build-uis-that-dont-suck"
+        },
+        {
+          "text": "UI Blocks",
+          "href": "/plus/ui-blocks"
+        },
+        {
+          "text": "Documentation",
+          "href": "/plus/ui-blocks/documentation"
+        },
+        {
+          "text": "UI Blocks",
+          "href": "/plus/ui-blocks"
+        },
+        {
+          "text": "Tailwind Plus",
+          "href": "/plus#pricing"
+        }
+      ],
+      "codeBlockCount": 13,
+      "codeBlocks": [
+        "<head>",
+        "<script src=\"https://cdn.jsdelivr.net/npm/@tailwindplus/elements@1\" type=\"module\"></script>",
+        "<script src=\"https://cdn.jsdelivr.net/npm/@tailwindplus/elements@1\" type=\"module\"></script>",
+        "npm install @tailwindplus/elements",
+        "npm install @tailwindplus/elements",
+        "import '@tailwindplus/elements';",
+        "import '@tailwindplus/elements';",
+        "npm install @tailwindplus/elements",
+        "npm install @tailwindplus/elements",
+        "<el-disclosure>",
+        "<ElDisclosure>",
+        "import { ElDisclosure } from '@tailwindplus/elements/react' import { useId } from 'react' export default function MyAccordion() { let id = useId() return ( <> <button command=\"--to",
+        "import { ElDisclosure } from '@tailwindplus/elements/react' import { useId } from 'react' export default function MyAccordion() { let id = useId() return ( <> <button command=\"--to"
+      ],
+      "tableCount": 0,
+      "calloutCount": 0,
+      "navText": "UI BlocksDocumentation UI Blocks/ Docs On this pageAvailable componentsBrowser supportInstalling in your projectUsing CDNUsing npmUsing with ReactDetecting when readyDocumentation for LLMs",
+      "viewport": {
+        "width": 390,
+        "height": 900,
+        "scrollWidth": 390,
+        "clientWidth": 390,
+        "scrollHeight": 5404
+      },
+      "horizontalOverflow": false
+    }
+  },
+  {
+    "group": "Elements",
+    "leaf": "Autocomplete",
+    "slug": "autocomplete",
+    "url": "https://tailwindcss.com/plus/ui-blocks/documentation/autocomplete",
+    "navId": "docs-elements-autocomplete",
+    "viewportName": "mobile",
+    "screenshot": "docs/research/assets/tailwind-plus-documentation-depth-2026-07-03/autocomplete-mobile.png",
+    "info": {
+      "title": "Tailwind Plus - Official Tailwind UI Components & Templates",
+      "h1": "Autocomplete",
+      "headings": [
+        {
+          "level": "h3",
+          "text": "Getting started"
+        },
+        {
+          "level": "h3",
+          "text": "Elements"
+        },
+        {
+          "level": "h3",
+          "text": "Build UIs that don’t suck."
+        },
+        {
+          "level": "h1",
+          "text": "Autocomplete"
+        },
+        {
+          "level": "h2",
+          "text": "Component API"
+        },
+        {
+          "level": "h3",
+          "text": "<el-autocomplete>"
+        },
+        {
+          "level": "h3",
+          "text": "<el-options>"
+        },
+        {
+          "level": "h3",
+          "text": "<el-option>"
+        },
+        {
+          "level": "h3",
+          "text": "<button>"
+        },
+        {
+          "level": "h2",
+          "text": "Examples"
+        },
+        {
+          "level": "h3",
+          "text": "Basic example"
+        },
+        {
+          "level": "h3",
+          "text": "Positioning the dropdown"
+        },
+        {
+          "level": "h3",
+          "text": "Setting the dropdown width"
+        },
+        {
+          "level": "h3",
+          "text": "Adding transitions"
+        },
+        {
+          "level": "h3",
+          "text": "Disabling the input"
+        },
+        {
+          "level": "h2",
+          "text": "On this page"
+        },
+        {
+          "level": "h3",
+          "text": "Marketing"
+        },
+        {
+          "level": "h3",
+          "text": "Application UI"
+        },
+        {
+          "level": "h3",
+          "text": "Ecommerce"
+        },
+        {
+          "level": "h3",
+          "text": "Templates & UI Kits"
+        }
+      ],
+      "mainLinks": [
+        {
+          "text": "Marketing",
+          "href": "https://tailwindcss.com/plus/ui-blocks/marketing"
+        },
+        {
+          "text": "Application UI",
+          "href": "https://tailwindcss.com/plus/ui-blocks/application-ui"
+        },
+        {
+          "text": "Ecommerce",
+          "href": "https://tailwindcss.com/plus/ui-blocks/ecommerce"
+        },
+        {
+          "text": "Documentation",
+          "href": "/plus/ui-blocks/documentation"
+        },
+        {
+          "text": "Getting set up",
+          "href": "/plus/ui-blocks/documentation"
+        },
+        {
+          "text": "Using HTML",
+          "href": "/plus/ui-blocks/documentation/using-html"
+        },
+        {
+          "text": "Using React",
+          "href": "/plus/ui-blocks/documentation/using-react"
+        },
+        {
+          "text": "Using Vue",
+          "href": "/plus/ui-blocks/documentation/using-vue"
+        },
+        {
+          "text": "Assets",
+          "href": "/plus/ui-blocks/documentation/assets"
+        },
+        {
+          "text": "Introduction",
+          "href": "/plus/ui-blocks/documentation/elements"
+        },
+        {
+          "text": "Autocomplete",
+          "href": "/plus/ui-blocks/documentation/autocomplete"
+        },
+        {
+          "text": "Command palette",
+          "href": "/plus/ui-blocks/documentation/command-palette"
+        },
+        {
+          "text": "Copy button",
+          "href": "/plus/ui-blocks/documentation/copy-button"
+        },
+        {
+          "text": "Dialog",
+          "href": "/plus/ui-blocks/documentation/dialog"
+        },
+        {
+          "text": "Disclosure",
+          "href": "/plus/ui-blocks/documentation/disclosure"
+        },
+        {
+          "text": "Dropdown menu",
+          "href": "/plus/ui-blocks/documentation/dropdown-menu"
+        },
+        {
+          "text": "Popover",
+          "href": "/plus/ui-blocks/documentation/popover"
+        },
+        {
+          "text": "Select",
+          "href": "/plus/ui-blocks/documentation/select"
+        },
+        {
+          "text": "Tabs",
+          "href": "/plus/ui-blocks/documentation/tabs"
+        },
+        {
+          "text": "Get the free course",
+          "href": "https://tailwindcss.com/build-uis-that-dont-suck"
+        },
+        {
+          "text": "UI Blocks",
+          "href": "/plus/ui-blocks"
+        },
+        {
+          "text": "Documentation",
+          "href": "/plus/ui-blocks/documentation"
+        },
+        {
+          "text": "UI Blocks",
+          "href": "/plus/ui-blocks"
+        },
+        {
+          "text": "Tailwind Plus",
+          "href": "/plus#pricing"
+        }
+      ],
+      "codeBlockCount": 23,
+      "codeBlocks": [
+        "<el-autocomplete>",
+        "<datalist>",
+        "--input-width",
+        "--button-width",
+        "popover",
+        "anchor",
+        "anchor-strategy",
+        "position",
+        "absolute",
+        "fixed",
+        "--anchor-gap",
+        "--anchor-offset",
+        "data-closed",
+        "data-enter",
+        "data-leave",
+        "data-transition"
+      ],
+      "tableCount": 4,
+      "calloutCount": 0,
+      "navText": "UI BlocksDocumentation UI Blocks/ Docs On this pageComponent API<el-autocomplete><el-options><el-option><button>ExamplesBasic examplePositioning the dropdownSetting the dropdown widthAdding transitionsDisabling the input",
+      "viewport": {
+        "width": 390,
+        "height": 900,
+        "scrollWidth": 390,
+        "clientWidth": 390,
+        "scrollHeight": 6146
+      },
+      "horizontalOverflow": false
+    }
+  },
+  {
+    "group": "Elements",
+    "leaf": "Command palette",
+    "slug": "command-palette",
+    "url": "https://tailwindcss.com/plus/ui-blocks/documentation/command-palette",
+    "navId": "docs-elements-command-palette",
+    "viewportName": "mobile",
+    "screenshot": "docs/research/assets/tailwind-plus-documentation-depth-2026-07-03/command-palette-mobile.png",
+    "info": {
+      "title": "Tailwind Plus - Official Tailwind UI Components & Templates",
+      "h1": "Command palette",
+      "headings": [
+        {
+          "level": "h3",
+          "text": "Getting started"
+        },
+        {
+          "level": "h3",
+          "text": "Elements"
+        },
+        {
+          "level": "h3",
+          "text": "Build UIs that don’t suck."
+        },
+        {
+          "level": "h1",
+          "text": "Command palette"
+        },
+        {
+          "level": "h2",
+          "text": "Component API"
+        },
+        {
+          "level": "h3",
+          "text": "<el-command-palette>"
+        },
+        {
+          "level": "h3",
+          "text": "<el-command-list>"
+        },
+        {
+          "level": "h3",
+          "text": "<el-defaults>"
+        },
+        {
+          "level": "h3",
+          "text": "<el-command-group>"
+        },
+        {
+          "level": "h3",
+          "text": "<el-no-results>"
+        },
+        {
+          "level": "h3",
+          "text": "<el-command-preview>"
+        },
+        {
+          "level": "h2",
+          "text": "Examples"
+        },
+        {
+          "level": "h3",
+          "text": "Basic example"
+        },
+        {
+          "level": "h3",
+          "text": "Opening and closing"
+        },
+        {
+          "level": "h3",
+          "text": "Using with buttons"
+        },
+        {
+          "level": "h3",
+          "text": "Using with links"
+        },
+        {
+          "level": "h3",
+          "text": "Showing option previews"
+        },
+        {
+          "level": "h3",
+          "text": "Showing default commands"
+        },
+        {
+          "level": "h3",
+          "text": "Handling no results"
+        },
+        {
+          "level": "h3",
+          "text": "Grouping related commands"
+        },
+        {
+          "level": "h3",
+          "text": "Customizing the filter logic"
+        },
+        {
+          "level": "h2",
+          "text": "On this page"
+        },
+        {
+          "level": "h3",
+          "text": "Marketing"
+        },
+        {
+          "level": "h3",
+          "text": "Application UI"
+        },
+        {
+          "level": "h3",
+          "text": "Ecommerce"
+        },
+        {
+          "level": "h3",
+          "text": "Templates & UI Kits"
+        }
+      ],
+      "mainLinks": [
+        {
+          "text": "Marketing",
+          "href": "https://tailwindcss.com/plus/ui-blocks/marketing"
+        },
+        {
+          "text": "Application UI",
+          "href": "https://tailwindcss.com/plus/ui-blocks/application-ui"
+        },
+        {
+          "text": "Ecommerce",
+          "href": "https://tailwindcss.com/plus/ui-blocks/ecommerce"
+        },
+        {
+          "text": "Documentation",
+          "href": "/plus/ui-blocks/documentation"
+        },
+        {
+          "text": "Getting set up",
+          "href": "/plus/ui-blocks/documentation"
+        },
+        {
+          "text": "Using HTML",
+          "href": "/plus/ui-blocks/documentation/using-html"
+        },
+        {
+          "text": "Using React",
+          "href": "/plus/ui-blocks/documentation/using-react"
+        },
+        {
+          "text": "Using Vue",
+          "href": "/plus/ui-blocks/documentation/using-vue"
+        },
+        {
+          "text": "Assets",
+          "href": "/plus/ui-blocks/documentation/assets"
+        },
+        {
+          "text": "Introduction",
+          "href": "/plus/ui-blocks/documentation/elements"
+        },
+        {
+          "text": "Autocomplete",
+          "href": "/plus/ui-blocks/documentation/autocomplete"
+        },
+        {
+          "text": "Command palette",
+          "href": "/plus/ui-blocks/documentation/command-palette"
+        },
+        {
+          "text": "Copy button",
+          "href": "/plus/ui-blocks/documentation/copy-button"
+        },
+        {
+          "text": "Dialog",
+          "href": "/plus/ui-blocks/documentation/dialog"
+        },
+        {
+          "text": "Disclosure",
+          "href": "/plus/ui-blocks/documentation/disclosure"
+        },
+        {
+          "text": "Dropdown menu",
+          "href": "/plus/ui-blocks/documentation/dropdown-menu"
+        },
+        {
+          "text": "Popover",
+          "href": "/plus/ui-blocks/documentation/popover"
+        },
+        {
+          "text": "Select",
+          "href": "/plus/ui-blocks/documentation/select"
+        },
+        {
+          "text": "Tabs",
+          "href": "/plus/ui-blocks/documentation/tabs"
+        },
+        {
+          "text": "Get the free course",
+          "href": "https://tailwindcss.com/build-uis-that-dont-suck"
+        },
+        {
+          "text": "UI Blocks",
+          "href": "/plus/ui-blocks"
+        },
+        {
+          "text": "Documentation",
+          "href": "/plus/ui-blocks/documentation"
+        },
+        {
+          "text": "UI Blocks",
+          "href": "/plus/ui-blocks"
+        },
+        {
+          "text": "Tailwind Plus",
+          "href": "/plus#pricing"
+        }
+      ],
+      "codeBlockCount": 15,
+      "codeBlocks": [
+        "<el-command-palette>",
+        "Cmd+K",
+        "name",
+        "value",
+        "change",
+        "relatedTarget",
+        "null",
+        "setFilterCallback(cb)",
+        "query",
+        "node",
+        "content",
+        "boolean",
+        "reset()",
+        "for",
+        "id"
+      ],
+      "tableCount": 2,
+      "calloutCount": 0,
+      "navText": "UI BlocksDocumentation UI Blocks/ Docs On this pageComponent API<el-command-palette><el-command-list><el-defaults><el-command-group><el-no-results><el-command-preview>ExamplesBasic exampleOpening and closingUsing with buttonsUsing with linksShowing option previewsShowing default commandsHandling no resultsGrouping related commandsCustomizing the filter logic",
+      "viewport": {
+        "width": 390,
+        "height": 900,
+        "scrollWidth": 390,
+        "clientWidth": 390,
+        "scrollHeight": 6652
+      },
+      "horizontalOverflow": false
+    }
+  },
+  {
+    "group": "Elements",
+    "leaf": "Copy button",
+    "slug": "copy-button",
+    "url": "https://tailwindcss.com/plus/ui-blocks/documentation/copy-button",
+    "navId": "docs-elements-copy-button",
+    "viewportName": "mobile",
+    "screenshot": "docs/research/assets/tailwind-plus-documentation-depth-2026-07-03/copy-button-mobile.png",
+    "info": {
+      "title": "Tailwind Plus - Official Tailwind UI Components & Templates",
+      "h1": "Copy button",
+      "headings": [
+        {
+          "level": "h3",
+          "text": "Getting started"
+        },
+        {
+          "level": "h3",
+          "text": "Elements"
+        },
+        {
+          "level": "h3",
+          "text": "Build UIs that don’t suck."
+        },
+        {
+          "level": "h1",
+          "text": "Copy button"
+        },
+        {
+          "level": "h2",
+          "text": "Component API"
+        },
+        {
+          "level": "h3",
+          "text": "<el-copyable>"
+        },
+        {
+          "level": "h3",
+          "text": "<button>"
+        },
+        {
+          "level": "h2",
+          "text": "Examples"
+        },
+        {
+          "level": "h3",
+          "text": "Basic example"
+        },
+        {
+          "level": "h2",
+          "text": "On this page"
+        },
+        {
+          "level": "h3",
+          "text": "Marketing"
+        },
+        {
+          "level": "h3",
+          "text": "Application UI"
+        },
+        {
+          "level": "h3",
+          "text": "Ecommerce"
+        },
+        {
+          "level": "h3",
+          "text": "Templates & UI Kits"
+        }
+      ],
+      "mainLinks": [
+        {
+          "text": "Marketing",
+          "href": "https://tailwindcss.com/plus/ui-blocks/marketing"
+        },
+        {
+          "text": "Application UI",
+          "href": "https://tailwindcss.com/plus/ui-blocks/application-ui"
+        },
+        {
+          "text": "Ecommerce",
+          "href": "https://tailwindcss.com/plus/ui-blocks/ecommerce"
+        },
+        {
+          "text": "Documentation",
+          "href": "/plus/ui-blocks/documentation"
+        },
+        {
+          "text": "Getting set up",
+          "href": "/plus/ui-blocks/documentation"
+        },
+        {
+          "text": "Using HTML",
+          "href": "/plus/ui-blocks/documentation/using-html"
+        },
+        {
+          "text": "Using React",
+          "href": "/plus/ui-blocks/documentation/using-react"
+        },
+        {
+          "text": "Using Vue",
+          "href": "/plus/ui-blocks/documentation/using-vue"
+        },
+        {
+          "text": "Assets",
+          "href": "/plus/ui-blocks/documentation/assets"
+        },
+        {
+          "text": "Introduction",
+          "href": "/plus/ui-blocks/documentation/elements"
+        },
+        {
+          "text": "Autocomplete",
+          "href": "/plus/ui-blocks/documentation/autocomplete"
+        },
+        {
+          "text": "Command palette",
+          "href": "/plus/ui-blocks/documentation/command-palette"
+        },
+        {
+          "text": "Copy button",
+          "href": "/plus/ui-blocks/documentation/copy-button"
+        },
+        {
+          "text": "Dialog",
+          "href": "/plus/ui-blocks/documentation/dialog"
+        },
+        {
+          "text": "Disclosure",
+          "href": "/plus/ui-blocks/documentation/disclosure"
+        },
+        {
+          "text": "Dropdown menu",
+          "href": "/plus/ui-blocks/documentation/dropdown-menu"
+        },
+        {
+          "text": "Popover",
+          "href": "/plus/ui-blocks/documentation/popover"
+        },
+        {
+          "text": "Select",
+          "href": "/plus/ui-blocks/documentation/select"
+        },
+        {
+          "text": "Tabs",
+          "href": "/plus/ui-blocks/documentation/tabs"
+        },
+        {
+          "text": "Get the free course",
+          "href": "https://tailwindcss.com/build-uis-that-dont-suck"
+        },
+        {
+          "text": "UI Blocks",
+          "href": "/plus/ui-blocks"
+        },
+        {
+          "text": "Documentation",
+          "href": "/plus/ui-blocks/documentation"
+        },
+        {
+          "text": "UI Blocks",
+          "href": "/plus/ui-blocks"
+        },
+        {
+          "text": "Tailwind Plus",
+          "href": "/plus#pricing"
+        }
+      ],
+      "codeBlockCount": 3,
+      "codeBlocks": [
+        "--copy",
+        "data-copied",
+        "data-error"
+      ],
+      "tableCount": 2,
+      "calloutCount": 0,
+      "navText": "UI BlocksDocumentation UI Blocks/ Docs On this pageComponent API<el-copyable><button>ExamplesBasic example",
+      "viewport": {
+        "width": 390,
+        "height": 900,
+        "scrollWidth": 390,
+        "clientWidth": 390,
+        "scrollHeight": 3422
+      },
+      "horizontalOverflow": false
+    }
+  },
+  {
+    "group": "Elements",
+    "leaf": "Dialog",
+    "slug": "dialog",
+    "url": "https://tailwindcss.com/plus/ui-blocks/documentation/dialog",
+    "navId": "docs-elements-dialog",
+    "viewportName": "mobile",
+    "screenshot": "docs/research/assets/tailwind-plus-documentation-depth-2026-07-03/dialog-mobile.png",
+    "info": {
+      "title": "Tailwind Plus - Official Tailwind UI Components & Templates",
+      "h1": "Dialog",
+      "headings": [
+        {
+          "level": "h3",
+          "text": "Getting started"
+        },
+        {
+          "level": "h3",
+          "text": "Elements"
+        },
+        {
+          "level": "h3",
+          "text": "Build UIs that don’t suck."
+        },
+        {
+          "level": "h1",
+          "text": "Dialog"
+        },
+        {
+          "level": "h2",
+          "text": "Component API"
+        },
+        {
+          "level": "h3",
+          "text": "<el-dialog>"
+        },
+        {
+          "level": "h3",
+          "text": "<dialog>"
+        },
+        {
+          "level": "h3",
+          "text": "<el-dialog-backdrop>"
+        },
+        {
+          "level": "h3",
+          "text": "<el-dialog-panel>"
+        },
+        {
+          "level": "h3",
+          "text": "<button>"
+        },
+        {
+          "level": "h2",
+          "text": "Examples"
+        },
+        {
+          "level": "h3",
+          "text": "Basic example"
+        },
+        {
+          "level": "h3",
+          "text": "Opening the dialog"
+        },
+        {
+          "level": "h3",
+          "text": "Closing the dialog"
+        },
+        {
+          "level": "h3",
+          "text": "Adding a backdrop"
+        },
+        {
+          "level": "h3",
+          "text": "Adding transitions"
+        },
+        {
+          "level": "h2",
+          "text": "On this page"
+        },
+        {
+          "level": "h3",
+          "text": "Marketing"
+        },
+        {
+          "level": "h3",
+          "text": "Application UI"
+        },
+        {
+          "level": "h3",
+          "text": "Ecommerce"
+        },
+        {
+          "level": "h3",
+          "text": "Templates & UI Kits"
+        }
+      ],
+      "mainLinks": [
+        {
+          "text": "Marketing",
+          "href": "https://tailwindcss.com/plus/ui-blocks/marketing"
+        },
+        {
+          "text": "Application UI",
+          "href": "https://tailwindcss.com/plus/ui-blocks/application-ui"
+        },
+        {
+          "text": "Ecommerce",
+          "href": "https://tailwindcss.com/plus/ui-blocks/ecommerce"
+        },
+        {
+          "text": "Documentation",
+          "href": "/plus/ui-blocks/documentation"
+        },
+        {
+          "text": "Getting set up",
+          "href": "/plus/ui-blocks/documentation"
+        },
+        {
+          "text": "Using HTML",
+          "href": "/plus/ui-blocks/documentation/using-html"
+        },
+        {
+          "text": "Using React",
+          "href": "/plus/ui-blocks/documentation/using-react"
+        },
+        {
+          "text": "Using Vue",
+          "href": "/plus/ui-blocks/documentation/using-vue"
+        },
+        {
+          "text": "Assets",
+          "href": "/plus/ui-blocks/documentation/assets"
+        },
+        {
+          "text": "Introduction",
+          "href": "/plus/ui-blocks/documentation/elements"
+        },
+        {
+          "text": "Autocomplete",
+          "href": "/plus/ui-blocks/documentation/autocomplete"
+        },
+        {
+          "text": "Command palette",
+          "href": "/plus/ui-blocks/documentation/command-palette"
+        },
+        {
+          "text": "Copy button",
+          "href": "/plus/ui-blocks/documentation/copy-button"
+        },
+        {
+          "text": "Dialog",
+          "href": "/plus/ui-blocks/documentation/dialog"
+        },
+        {
+          "text": "Disclosure",
+          "href": "/plus/ui-blocks/documentation/disclosure"
+        },
+        {
+          "text": "Dropdown menu",
+          "href": "/plus/ui-blocks/documentation/dropdown-menu"
+        },
+        {
+          "text": "Popover",
+          "href": "/plus/ui-blocks/documentation/popover"
+        },
+        {
+          "text": "Select",
+          "href": "/plus/ui-blocks/documentation/select"
+        },
+        {
+          "text": "Tabs",
+          "href": "/plus/ui-blocks/documentation/tabs"
+        },
+        {
+          "text": "Get the free course",
+          "href": "https://tailwindcss.com/build-uis-that-dont-suck"
+        },
+        {
+          "text": "UI Blocks",
+          "href": "/plus/ui-blocks"
+        },
+        {
+          "text": "Documentation",
+          "href": "/plus/ui-blocks/documentation"
+        },
+        {
+          "text": "UI Blocks",
+          "href": "/plus/ui-blocks"
+        },
+        {
+          "text": "Tailwind Plus",
+          "href": "/plus#pricing"
+        }
+      ],
+      "codeBlockCount": 28,
+      "codeBlocks": [
+        "<el-dialog>",
+        "<dialog>",
+        "<dialog>",
+        "open",
+        "data-closed",
+        "data-enter",
+        "data-leave",
+        "data-transition",
+        "open",
+        "open",
+        "close",
+        "open",
+        "cancel",
+        "preventDefault()",
+        "show()",
+        "hide()"
+      ],
+      "tableCount": 5,
+      "calloutCount": 0,
+      "navText": "UI BlocksDocumentation UI Blocks/ Docs On this pageComponent API<el-dialog><dialog><el-dialog-backdrop><el-dialog-panel><button>ExamplesBasic exampleOpening the dialogClosing the dialogAdding a backdropAdding transitions",
+      "viewport": {
+        "width": 390,
+        "height": 900,
+        "scrollWidth": 390,
+        "clientWidth": 390,
+        "scrollHeight": 6680
+      },
+      "horizontalOverflow": false
+    }
+  },
+  {
+    "group": "Elements",
+    "leaf": "Disclosure",
+    "slug": "disclosure",
+    "url": "https://tailwindcss.com/plus/ui-blocks/documentation/disclosure",
+    "navId": "docs-elements-disclosure",
+    "viewportName": "mobile",
+    "screenshot": "docs/research/assets/tailwind-plus-documentation-depth-2026-07-03/disclosure-mobile.png",
+    "info": {
+      "title": "Tailwind Plus - Official Tailwind UI Components & Templates",
+      "h1": "Disclosure",
+      "headings": [
+        {
+          "level": "h3",
+          "text": "Getting started"
+        },
+        {
+          "level": "h3",
+          "text": "Elements"
+        },
+        {
+          "level": "h3",
+          "text": "Build UIs that don’t suck."
+        },
+        {
+          "level": "h1",
+          "text": "Disclosure"
+        },
+        {
+          "level": "h2",
+          "text": "Component API"
+        },
+        {
+          "level": "h3",
+          "text": "<el-disclosure>"
+        },
+        {
+          "level": "h3",
+          "text": "<button>"
+        },
+        {
+          "level": "h2",
+          "text": "Examples"
+        },
+        {
+          "level": "h3",
+          "text": "Basic example"
+        },
+        {
+          "level": "h3",
+          "text": "Opening a disclosure"
+        },
+        {
+          "level": "h3",
+          "text": "Closing a disclosure"
+        },
+        {
+          "level": "h3",
+          "text": "Toggling a disclosure"
+        },
+        {
+          "level": "h3",
+          "text": "Adding transitions"
+        },
+        {
+          "level": "h2",
+          "text": "On this page"
+        },
+        {
+          "level": "h3",
+          "text": "Marketing"
+        },
+        {
+          "level": "h3",
+          "text": "Application UI"
+        },
+        {
+          "level": "h3",
+          "text": "Ecommerce"
+        },
+        {
+          "level": "h3",
+          "text": "Templates & UI Kits"
+        }
+      ],
+      "mainLinks": [
+        {
+          "text": "Marketing",
+          "href": "https://tailwindcss.com/plus/ui-blocks/marketing"
+        },
+        {
+          "text": "Application UI",
+          "href": "https://tailwindcss.com/plus/ui-blocks/application-ui"
+        },
+        {
+          "text": "Ecommerce",
+          "href": "https://tailwindcss.com/plus/ui-blocks/ecommerce"
+        },
+        {
+          "text": "Documentation",
+          "href": "/plus/ui-blocks/documentation"
+        },
+        {
+          "text": "Getting set up",
+          "href": "/plus/ui-blocks/documentation"
+        },
+        {
+          "text": "Using HTML",
+          "href": "/plus/ui-blocks/documentation/using-html"
+        },
+        {
+          "text": "Using React",
+          "href": "/plus/ui-blocks/documentation/using-react"
+        },
+        {
+          "text": "Using Vue",
+          "href": "/plus/ui-blocks/documentation/using-vue"
+        },
+        {
+          "text": "Assets",
+          "href": "/plus/ui-blocks/documentation/assets"
+        },
+        {
+          "text": "Introduction",
+          "href": "/plus/ui-blocks/documentation/elements"
+        },
+        {
+          "text": "Autocomplete",
+          "href": "/plus/ui-blocks/documentation/autocomplete"
+        },
+        {
+          "text": "Command palette",
+          "href": "/plus/ui-blocks/documentation/command-palette"
+        },
+        {
+          "text": "Copy button",
+          "href": "/plus/ui-blocks/documentation/copy-button"
+        },
+        {
+          "text": "Dialog",
+          "href": "/plus/ui-blocks/documentation/dialog"
+        },
+        {
+          "text": "Disclosure",
+          "href": "/plus/ui-blocks/documentation/disclosure"
+        },
+        {
+          "text": "Dropdown menu",
+          "href": "/plus/ui-blocks/documentation/dropdown-menu"
+        },
+        {
+          "text": "Popover",
+          "href": "/plus/ui-blocks/documentation/popover"
+        },
+        {
+          "text": "Select",
+          "href": "/plus/ui-blocks/documentation/select"
+        },
+        {
+          "text": "Tabs",
+          "href": "/plus/ui-blocks/documentation/tabs"
+        },
+        {
+          "text": "Get the free course",
+          "href": "https://tailwindcss.com/build-uis-that-dont-suck"
+        },
+        {
+          "text": "UI Blocks",
+          "href": "/plus/ui-blocks"
+        },
+        {
+          "text": "Documentation",
+          "href": "/plus/ui-blocks/documentation"
+        },
+        {
+          "text": "UI Blocks",
+          "href": "/plus/ui-blocks"
+        },
+        {
+          "text": "Tailwind Plus",
+          "href": "/plus#pricing"
+        }
+      ],
+      "codeBlockCount": 15,
+      "codeBlocks": [
+        "<el-disclosure>",
+        "hidden",
+        "open",
+        "hidden",
+        "data-closed",
+        "data-enter",
+        "data-leave",
+        "data-transition",
+        "show()",
+        "hide()",
+        "toggle()",
+        "--show",
+        "--hide",
+        "--toggle",
+        "aria-expanded"
+      ],
+      "tableCount": 2,
+      "calloutCount": 0,
+      "navText": "UI BlocksDocumentation UI Blocks/ Docs On this pageComponent API<el-disclosure><button>ExamplesBasic exampleOpening a disclosureClosing a disclosureToggling a disclosureAdding transitions",
+      "viewport": {
+        "width": 390,
+        "height": 900,
+        "scrollWidth": 390,
+        "clientWidth": 390,
+        "scrollHeight": 5674
+      },
+      "horizontalOverflow": false
+    }
+  },
+  {
+    "group": "Elements",
+    "leaf": "Dropdown menu",
+    "slug": "dropdown-menu",
+    "url": "https://tailwindcss.com/plus/ui-blocks/documentation/dropdown-menu",
+    "navId": "docs-elements-dropdown-menu",
+    "viewportName": "mobile",
+    "screenshot": "docs/research/assets/tailwind-plus-documentation-depth-2026-07-03/dropdown-menu-mobile.png",
+    "info": {
+      "title": "Tailwind Plus - Official Tailwind UI Components & Templates",
+      "h1": "Dropdown menu",
+      "headings": [
+        {
+          "level": "h3",
+          "text": "Getting started"
+        },
+        {
+          "level": "h3",
+          "text": "Elements"
+        },
+        {
+          "level": "h3",
+          "text": "Build UIs that don’t suck."
+        },
+        {
+          "level": "h1",
+          "text": "Dropdown menu"
+        },
+        {
+          "level": "h2",
+          "text": "Component API"
+        },
+        {
+          "level": "h3",
+          "text": "<el-dropdown>"
+        },
+        {
+          "level": "h3",
+          "text": "<el-menu>"
+        },
+        {
+          "level": "h2",
+          "text": "Examples"
+        },
+        {
+          "level": "h3",
+          "text": "Basic example"
+        },
+        {
+          "level": "h3",
+          "text": "Using with buttons"
+        },
+        {
+          "level": "h3",
+          "text": "Using with links"
+        },
+        {
+          "level": "h3",
+          "text": "Disabling an item"
+        },
+        {
+          "level": "h3",
+          "text": "Setting the dropdown width"
+        },
+        {
+          "level": "h3",
+          "text": "Positioning the dropdown"
+        },
+        {
+          "level": "h3",
+          "text": "Adding transitions"
+        },
+        {
+          "level": "h2",
+          "text": "On this page"
+        },
+        {
+          "level": "h3",
+          "text": "Marketing"
+        },
+        {
+          "level": "h3",
+          "text": "Application UI"
+        },
+        {
+          "level": "h3",
+          "text": "Ecommerce"
+        },
+        {
+          "level": "h3",
+          "text": "Templates & UI Kits"
+        }
+      ],
+      "mainLinks": [
+        {
+          "text": "Marketing",
+          "href": "https://tailwindcss.com/plus/ui-blocks/marketing"
+        },
+        {
+          "text": "Application UI",
+          "href": "https://tailwindcss.com/plus/ui-blocks/application-ui"
+        },
+        {
+          "text": "Ecommerce",
+          "href": "https://tailwindcss.com/plus/ui-blocks/ecommerce"
+        },
+        {
+          "text": "Documentation",
+          "href": "/plus/ui-blocks/documentation"
+        },
+        {
+          "text": "Getting set up",
+          "href": "/plus/ui-blocks/documentation"
+        },
+        {
+          "text": "Using HTML",
+          "href": "/plus/ui-blocks/documentation/using-html"
+        },
+        {
+          "text": "Using React",
+          "href": "/plus/ui-blocks/documentation/using-react"
+        },
+        {
+          "text": "Using Vue",
+          "href": "/plus/ui-blocks/documentation/using-vue"
+        },
+        {
+          "text": "Assets",
+          "href": "/plus/ui-blocks/documentation/assets"
+        },
+        {
+          "text": "Introduction",
+          "href": "/plus/ui-blocks/documentation/elements"
+        },
+        {
+          "text": "Autocomplete",
+          "href": "/plus/ui-blocks/documentation/autocomplete"
+        },
+        {
+          "text": "Command palette",
+          "href": "/plus/ui-blocks/documentation/command-palette"
+        },
+        {
+          "text": "Copy button",
+          "href": "/plus/ui-blocks/documentation/copy-button"
+        },
+        {
+          "text": "Dialog",
+          "href": "/plus/ui-blocks/documentation/dialog"
+        },
+        {
+          "text": "Disclosure",
+          "href": "/plus/ui-blocks/documentation/disclosure"
+        },
+        {
+          "text": "Dropdown menu",
+          "href": "/plus/ui-blocks/documentation/dropdown-menu"
+        },
+        {
+          "text": "Popover",
+          "href": "/plus/ui-blocks/documentation/popover"
+        },
+        {
+          "text": "Select",
+          "href": "/plus/ui-blocks/documentation/select"
+        },
+        {
+          "text": "Tabs",
+          "href": "/plus/ui-blocks/documentation/tabs"
+        },
+        {
+          "text": "Get the free course",
+          "href": "https://tailwindcss.com/build-uis-that-dont-suck"
+        },
+        {
+          "text": "UI Blocks",
+          "href": "/plus/ui-blocks"
+        },
+        {
+          "text": "Documentation",
+          "href": "/plus/ui-blocks/documentation"
+        },
+        {
+          "text": "UI Blocks",
+          "href": "/plus/ui-blocks"
+        },
+        {
+          "text": "Tailwind Plus",
+          "href": "/plus#pricing"
+        }
+      ],
+      "codeBlockCount": 18,
+      "codeBlocks": [
+        "<el-dropdown>",
+        "--input-width",
+        "popover",
+        "open",
+        "anchor",
+        "anchor-strategy",
+        "position",
+        "absolute",
+        "fixed",
+        "--anchor-gap",
+        "--anchor-offset",
+        "data-closed",
+        "data-enter",
+        "data-leave",
+        "data-transition",
+        "togglePopover()"
+      ],
+      "tableCount": 2,
+      "calloutCount": 0,
+      "navText": "UI BlocksDocumentation UI Blocks/ Docs On this pageComponent API<el-dropdown><el-menu>ExamplesBasic exampleUsing with buttonsUsing with linksDisabling an itemSetting the dropdown widthPositioning the dropdownAdding transitions",
+      "viewport": {
+        "width": 390,
+        "height": 900,
+        "scrollWidth": 390,
+        "clientWidth": 390,
+        "scrollHeight": 5697
+      },
+      "horizontalOverflow": false
+    }
+  },
+  {
+    "group": "Elements",
+    "leaf": "Popover",
+    "slug": "popover",
+    "url": "https://tailwindcss.com/plus/ui-blocks/documentation/popover",
+    "navId": "docs-elements-popover",
+    "viewportName": "mobile",
+    "screenshot": "docs/research/assets/tailwind-plus-documentation-depth-2026-07-03/popover-mobile.png",
+    "info": {
+      "title": "Tailwind Plus - Official Tailwind UI Components & Templates",
+      "h1": "Popover",
+      "headings": [
+        {
+          "level": "h3",
+          "text": "Getting started"
+        },
+        {
+          "level": "h3",
+          "text": "Elements"
+        },
+        {
+          "level": "h3",
+          "text": "Build UIs that don’t suck."
+        },
+        {
+          "level": "h1",
+          "text": "Popover"
+        },
+        {
+          "level": "h2",
+          "text": "Component API"
+        },
+        {
+          "level": "h3",
+          "text": "<el-popover>"
+        },
+        {
+          "level": "h3",
+          "text": "<el-popover-group>"
+        },
+        {
+          "level": "h3",
+          "text": "<button>"
+        },
+        {
+          "level": "h2",
+          "text": "Examples"
+        },
+        {
+          "level": "h3",
+          "text": "Basic example"
+        },
+        {
+          "level": "h3",
+          "text": "Toggling popovers"
+        },
+        {
+          "level": "h3",
+          "text": "Opening popovers"
+        },
+        {
+          "level": "h3",
+          "text": "Closing popovers"
+        },
+        {
+          "level": "h3",
+          "text": "Setting the panel width"
+        },
+        {
+          "level": "h3",
+          "text": "Positioning the panel"
+        },
+        {
+          "level": "h3",
+          "text": "Adding transitions"
+        },
+        {
+          "level": "h3",
+          "text": "Grouping related popovers"
+        },
+        {
+          "level": "h2",
+          "text": "On this page"
+        },
+        {
+          "level": "h3",
+          "text": "Marketing"
+        },
+        {
+          "level": "h3",
+          "text": "Application UI"
+        },
+        {
+          "level": "h3",
+          "text": "Ecommerce"
+        },
+        {
+          "level": "h3",
+          "text": "Templates & UI Kits"
+        }
+      ],
+      "mainLinks": [
+        {
+          "text": "Marketing",
+          "href": "https://tailwindcss.com/plus/ui-blocks/marketing"
+        },
+        {
+          "text": "Application UI",
+          "href": "https://tailwindcss.com/plus/ui-blocks/application-ui"
+        },
+        {
+          "text": "Ecommerce",
+          "href": "https://tailwindcss.com/plus/ui-blocks/ecommerce"
+        },
+        {
+          "text": "Documentation",
+          "href": "/plus/ui-blocks/documentation"
+        },
+        {
+          "text": "Getting set up",
+          "href": "/plus/ui-blocks/documentation"
+        },
+        {
+          "text": "Using HTML",
+          "href": "/plus/ui-blocks/documentation/using-html"
+        },
+        {
+          "text": "Using React",
+          "href": "/plus/ui-blocks/documentation/using-react"
+        },
+        {
+          "text": "Using Vue",
+          "href": "/plus/ui-blocks/documentation/using-vue"
+        },
+        {
+          "text": "Assets",
+          "href": "/plus/ui-blocks/documentation/assets"
+        },
+        {
+          "text": "Introduction",
+          "href": "/plus/ui-blocks/documentation/elements"
+        },
+        {
+          "text": "Autocomplete",
+          "href": "/plus/ui-blocks/documentation/autocomplete"
+        },
+        {
+          "text": "Command palette",
+          "href": "/plus/ui-blocks/documentation/command-palette"
+        },
+        {
+          "text": "Copy button",
+          "href": "/plus/ui-blocks/documentation/copy-button"
+        },
+        {
+          "text": "Dialog",
+          "href": "/plus/ui-blocks/documentation/dialog"
+        },
+        {
+          "text": "Disclosure",
+          "href": "/plus/ui-blocks/documentation/disclosure"
+        },
+        {
+          "text": "Dropdown menu",
+          "href": "/plus/ui-blocks/documentation/dropdown-menu"
+        },
+        {
+          "text": "Popover",
+          "href": "/plus/ui-blocks/documentation/popover"
+        },
+        {
+          "text": "Select",
+          "href": "/plus/ui-blocks/documentation/select"
+        },
+        {
+          "text": "Tabs",
+          "href": "/plus/ui-blocks/documentation/tabs"
+        },
+        {
+          "text": "Get the free course",
+          "href": "https://tailwindcss.com/build-uis-that-dont-suck"
+        },
+        {
+          "text": "UI Blocks",
+          "href": "/plus/ui-blocks"
+        },
+        {
+          "text": "Documentation",
+          "href": "/plus/ui-blocks/documentation"
+        },
+        {
+          "text": "UI Blocks",
+          "href": "/plus/ui-blocks"
+        },
+        {
+          "text": "Tailwind Plus",
+          "href": "/plus#pricing"
+        }
+      ],
+      "codeBlockCount": 15,
+      "codeBlocks": [
+        "<el-popover>",
+        "anchor",
+        "anchor-strategy",
+        "position",
+        "absolute",
+        "fixed",
+        "data-closed",
+        "data-enter",
+        "data-leave",
+        "data-transition",
+        "toggle",
+        "togglePopover()",
+        "showPopover()",
+        "hidePopover()",
+        "aria-expanded"
+      ],
+      "tableCount": 2,
+      "calloutCount": 0,
+      "navText": "UI BlocksDocumentation UI Blocks/ Docs On this pageComponent API<el-popover><el-popover-group><button>ExamplesBasic exampleToggling popoversOpening popoversClosing popoversSetting the panel widthPositioning the panelAdding transitionsGrouping related popovers",
+      "viewport": {
+        "width": 390,
+        "height": 900,
+        "scrollWidth": 390,
+        "clientWidth": 390,
+        "scrollHeight": 5989
+      },
+      "horizontalOverflow": false
+    }
+  },
+  {
+    "group": "Elements",
+    "leaf": "Select",
+    "slug": "select",
+    "url": "https://tailwindcss.com/plus/ui-blocks/documentation/select",
+    "navId": "docs-elements-select",
+    "viewportName": "mobile",
+    "screenshot": "docs/research/assets/tailwind-plus-documentation-depth-2026-07-03/select-mobile.png",
+    "info": {
+      "title": "Tailwind Plus - Official Tailwind UI Components & Templates",
+      "h1": "Select",
+      "headings": [
+        {
+          "level": "h3",
+          "text": "Getting started"
+        },
+        {
+          "level": "h3",
+          "text": "Elements"
+        },
+        {
+          "level": "h3",
+          "text": "Build UIs that don’t suck."
+        },
+        {
+          "level": "h1",
+          "text": "Select"
+        },
+        {
+          "level": "h2",
+          "text": "Component API"
+        },
+        {
+          "level": "h3",
+          "text": "<el-select>"
+        },
+        {
+          "level": "h3",
+          "text": "<el-options>"
+        },
+        {
+          "level": "h3",
+          "text": "<el-option>"
+        },
+        {
+          "level": "h3",
+          "text": "<el-selectedcontent>"
+        },
+        {
+          "level": "h2",
+          "text": "Examples"
+        },
+        {
+          "level": "h3",
+          "text": "Basic example"
+        },
+        {
+          "level": "h3",
+          "text": "Positioning the dropdown"
+        },
+        {
+          "level": "h3",
+          "text": "Setting the dropdown width"
+        },
+        {
+          "level": "h3",
+          "text": "Adding transitions"
+        },
+        {
+          "level": "h3",
+          "text": "Disabling the input"
+        },
+        {
+          "level": "h2",
+          "text": "On this page"
+        },
+        {
+          "level": "h3",
+          "text": "Marketing"
+        },
+        {
+          "level": "h3",
+          "text": "Application UI"
+        },
+        {
+          "level": "h3",
+          "text": "Ecommerce"
+        },
+        {
+          "level": "h3",
+          "text": "Templates & UI Kits"
+        }
+      ],
+      "mainLinks": [
+        {
+          "text": "Marketing",
+          "href": "https://tailwindcss.com/plus/ui-blocks/marketing"
+        },
+        {
+          "text": "Application UI",
+          "href": "https://tailwindcss.com/plus/ui-blocks/application-ui"
+        },
+        {
+          "text": "Ecommerce",
+          "href": "https://tailwindcss.com/plus/ui-blocks/ecommerce"
+        },
+        {
+          "text": "Documentation",
+          "href": "/plus/ui-blocks/documentation"
+        },
+        {
+          "text": "Getting set up",
+          "href": "/plus/ui-blocks/documentation"
+        },
+        {
+          "text": "Using HTML",
+          "href": "/plus/ui-blocks/documentation/using-html"
+        },
+        {
+          "text": "Using React",
+          "href": "/plus/ui-blocks/documentation/using-react"
+        },
+        {
+          "text": "Using Vue",
+          "href": "/plus/ui-blocks/documentation/using-vue"
+        },
+        {
+          "text": "Assets",
+          "href": "/plus/ui-blocks/documentation/assets"
+        },
+        {
+          "text": "Introduction",
+          "href": "/plus/ui-blocks/documentation/elements"
+        },
+        {
+          "text": "Autocomplete",
+          "href": "/plus/ui-blocks/documentation/autocomplete"
+        },
+        {
+          "text": "Command palette",
+          "href": "/plus/ui-blocks/documentation/command-palette"
+        },
+        {
+          "text": "Copy button",
+          "href": "/plus/ui-blocks/documentation/copy-button"
+        },
+        {
+          "text": "Dialog",
+          "href": "/plus/ui-blocks/documentation/dialog"
+        },
+        {
+          "text": "Disclosure",
+          "href": "/plus/ui-blocks/documentation/disclosure"
+        },
+        {
+          "text": "Dropdown menu",
+          "href": "/plus/ui-blocks/documentation/dropdown-menu"
+        },
+        {
+          "text": "Popover",
+          "href": "/plus/ui-blocks/documentation/popover"
+        },
+        {
+          "text": "Select",
+          "href": "/plus/ui-blocks/documentation/select"
+        },
+        {
+          "text": "Tabs",
+          "href": "/plus/ui-blocks/documentation/tabs"
+        },
+        {
+          "text": "Get the free course",
+          "href": "https://tailwindcss.com/build-uis-that-dont-suck"
+        },
+        {
+          "text": "UI Blocks",
+          "href": "/plus/ui-blocks"
+        },
+        {
+          "text": "Documentation",
+          "href": "/plus/ui-blocks/documentation"
+        },
+        {
+          "text": "UI Blocks",
+          "href": "/plus/ui-blocks"
+        },
+        {
+          "text": "Tailwind Plus",
+          "href": "/plus#pricing"
+        }
+      ],
+      "codeBlockCount": 25,
+      "codeBlocks": [
+        "<el-select>",
+        "<select>",
+        "name",
+        "value",
+        "input",
+        "change",
+        "--input-width",
+        "popover",
+        "anchor",
+        "anchor-strategy",
+        "position",
+        "absolute",
+        "fixed",
+        "--anchor-gap",
+        "--anchor-offset",
+        "data-closed"
+      ],
+      "tableCount": 3,
+      "calloutCount": 0,
+      "navText": "UI BlocksDocumentation UI Blocks/ Docs On this pageComponent API<el-select><el-options><el-option><el-selectedcontent>ExamplesBasic examplePositioning the dropdownSetting the dropdown widthAdding transitionsDisabling the input",
+      "viewport": {
+        "width": 390,
+        "height": 900,
+        "scrollWidth": 390,
+        "clientWidth": 390,
+        "scrollHeight": 6213
+      },
+      "horizontalOverflow": false
+    }
+  },
+  {
+    "group": "Elements",
+    "leaf": "Tabs",
+    "slug": "tabs",
+    "url": "https://tailwindcss.com/plus/ui-blocks/documentation/tabs",
+    "navId": "docs-elements-tabs",
+    "viewportName": "mobile",
+    "screenshot": "docs/research/assets/tailwind-plus-documentation-depth-2026-07-03/tabs-mobile.png",
+    "info": {
+      "title": "Tailwind Plus - Official Tailwind UI Components & Templates",
+      "h1": "Tabs",
+      "headings": [
+        {
+          "level": "h3",
+          "text": "Getting started"
+        },
+        {
+          "level": "h3",
+          "text": "Elements"
+        },
+        {
+          "level": "h3",
+          "text": "Build UIs that don’t suck."
+        },
+        {
+          "level": "h1",
+          "text": "Tabs"
+        },
+        {
+          "level": "h2",
+          "text": "Component API"
+        },
+        {
+          "level": "h3",
+          "text": "<el-tab-group>"
+        },
+        {
+          "level": "h3",
+          "text": "<el-tab-list>"
+        },
+        {
+          "level": "h3",
+          "text": "<el-tab-panels>"
+        },
+        {
+          "level": "h2",
+          "text": "Examples"
+        },
+        {
+          "level": "h3",
+          "text": "Basic example"
+        },
+        {
+          "level": "h3",
+          "text": "Setting the active tab"
+        },
+        {
+          "level": "h2",
+          "text": "On this page"
+        },
+        {
+          "level": "h3",
+          "text": "Marketing"
+        },
+        {
+          "level": "h3",
+          "text": "Application UI"
+        },
+        {
+          "level": "h3",
+          "text": "Ecommerce"
+        },
+        {
+          "level": "h3",
+          "text": "Templates & UI Kits"
+        }
+      ],
+      "mainLinks": [
+        {
+          "text": "Marketing",
+          "href": "https://tailwindcss.com/plus/ui-blocks/marketing"
+        },
+        {
+          "text": "Application UI",
+          "href": "https://tailwindcss.com/plus/ui-blocks/application-ui"
+        },
+        {
+          "text": "Ecommerce",
+          "href": "https://tailwindcss.com/plus/ui-blocks/ecommerce"
+        },
+        {
+          "text": "Documentation",
+          "href": "/plus/ui-blocks/documentation"
+        },
+        {
+          "text": "Getting set up",
+          "href": "/plus/ui-blocks/documentation"
+        },
+        {
+          "text": "Using HTML",
+          "href": "/plus/ui-blocks/documentation/using-html"
+        },
+        {
+          "text": "Using React",
+          "href": "/plus/ui-blocks/documentation/using-react"
+        },
+        {
+          "text": "Using Vue",
+          "href": "/plus/ui-blocks/documentation/using-vue"
+        },
+        {
+          "text": "Assets",
+          "href": "/plus/ui-blocks/documentation/assets"
+        },
+        {
+          "text": "Introduction",
+          "href": "/plus/ui-blocks/documentation/elements"
+        },
+        {
+          "text": "Autocomplete",
+          "href": "/plus/ui-blocks/documentation/autocomplete"
+        },
+        {
+          "text": "Command palette",
+          "href": "/plus/ui-blocks/documentation/command-palette"
+        },
+        {
+          "text": "Copy button",
+          "href": "/plus/ui-blocks/documentation/copy-button"
+        },
+        {
+          "text": "Dialog",
+          "href": "/plus/ui-blocks/documentation/dialog"
+        },
+        {
+          "text": "Disclosure",
+          "href": "/plus/ui-blocks/documentation/disclosure"
+        },
+        {
+          "text": "Dropdown menu",
+          "href": "/plus/ui-blocks/documentation/dropdown-menu"
+        },
+        {
+          "text": "Popover",
+          "href": "/plus/ui-blocks/documentation/popover"
+        },
+        {
+          "text": "Select",
+          "href": "/plus/ui-blocks/documentation/select"
+        },
+        {
+          "text": "Tabs",
+          "href": "/plus/ui-blocks/documentation/tabs"
+        },
+        {
+          "text": "Get the free course",
+          "href": "https://tailwindcss.com/build-uis-that-dont-suck"
+        },
+        {
+          "text": "UI Blocks",
+          "href": "/plus/ui-blocks"
+        },
+        {
+          "text": "Documentation",
+          "href": "/plus/ui-blocks/documentation"
+        },
+        {
+          "text": "UI Blocks",
+          "href": "/plus/ui-blocks"
+        },
+        {
+          "text": "Tailwind Plus",
+          "href": "/plus#pricing"
+        }
+      ],
+      "codeBlockCount": 2,
+      "codeBlocks": [
+        "<el-tab-group>",
+        "setActiveTab(index)"
+      ],
+      "tableCount": 1,
+      "calloutCount": 0,
+      "navText": "UI BlocksDocumentation UI Blocks/ Docs On this pageComponent API<el-tab-group><el-tab-list><el-tab-panels>ExamplesBasic exampleSetting the active tab",
+      "viewport": {
+        "width": 390,
+        "height": 900,
+        "scrollWidth": 390,
+        "clientWidth": 390,
+        "scrollHeight": 3815
+      },
+      "horizontalOverflow": false
+    }
+  }
+]

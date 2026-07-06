@@ -1,0 +1,87 @@
+{
+  "browserFallback": "Browser/Chrome path failed earlier: Browser is not available: iab / packaged browser documentation directory missing; standalone Playwright fallback used",
+  "reference": {
+    "status": 200,
+    "title": "Tailwind CSS Category Filters - Official Tailwind UI Components",
+    "h1": "Category Filters",
+    "exampleHeadings": [
+      "Components",
+      "Page Examples",
+      "Build UIs that don’t suck.",
+      "With inline actions and expandable sidebar filters",
+      "With inline actions and expandable sidebar filters",
+      "With centered text and dropdown product filters",
+      "With centered text and dropdown product filters",
+      "With dropdown product filters",
+      "With dropdown product filters",
+      "With expandable product filter panel",
+      "With expandable product filter panel",
+      "Sidebar filters",
+      "Sidebar filters",
+      "Marketing",
+      "Application UI",
+      "Ecommerce",
+      "Templates & UI Kits"
+    ]
+  },
+  "local": {
+    "before": {
+      "title": "UI 용어 사전",
+      "h1Like": [
+        "Category Filters"
+      ],
+      "examples": [
+        "With inline actions and expandable sidebar filters",
+        "With centered text and dropdown product filters",
+        "With dropdown product filters",
+        "With expandable product filter panel",
+        "Sidebar filters"
+      ],
+      "themeButtons": 15,
+      "actionButtons": 101,
+      "filterButtons": 27,
+      "panelButtonText": [
+        "Category Filters",
+        "Sort",
+        "Apply",
+        "Clear",
+        "Sort by newest",
+        "Hide filters",
+        "Hide filters",
+        "Hide filters",
+        "Sort"
+      ],
+      "darkFrames": 0,
+      "overflowX": 0
+    },
+    "interactionBefore": {
+      "feedback": [
+        "Plus / UI Blocks / Ecommerce / Components / Category Filters",
+        "Tailwind의 category filter 예시 이름과 개수를 맞춘 필터링 변형입니다.",
+        "Sort menu opened",
+        "Tailwind의 category filter 예시 이름과 개수를 맞춘 필터링 변형입니다.",
+        "Tailwind의 category filter 예시 이름과 개수를 맞춘 필터링 변형입니다.",
+        "Tailwind의 category filter 예시 이름과 개수를 맞춘 필터링 변형입니다.",
+        "Color filter toggled",
+        "Tailwind의 category filter 예시 이름과 개수를 맞춘 필터링 변형입니다."
+      ],
+      "pressedButtons": [
+        "System",
+        "System",
+        "System",
+        "System",
+        "System"
+      ]
+    },
+    "darkBefore": {
+      "pressedDark": 5,
+      "darkFrames": 0,
+      "lightSurfaces": 45
+    },
+    "mobileBefore": {
+      "overflowX": 0,
+      "themeButtons": 15
+    },
+    "errors": []
+  }
+}

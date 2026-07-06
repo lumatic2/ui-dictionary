@@ -1,0 +1,34 @@
+{
+  "initial": {
+    "h2": "Hero Sections",
+    "h3": [
+      "Simple centered",
+      "Split with screenshot",
+      "Split with bordered screenshot",
+      "Split with code example",
+      "Simple centered with background image",
+      "With bordered app screenshot",
+      "With app screenshot",
+      "With phone mockup",
+      "Split with image",
+      "With angled image on right",
+      "With image tiles",
+      "With offset image"
+    ],
+    "buttons": 199,
+    "heroRoots": 12,
+    "visibleDarkControls": 12,
+    "overflow": 0
+  },
+  "interactions": {
+    "primaryFeedback": true,
+    "fundingFeedback": true,
+    "tileFeedback": true
+  },
+  "darkAfter": {
+    "darkPressed": 12,
+    "darkRoots": 12,
+    "overflow": 0
+  },
+  "errors": []
+}

@@ -1,0 +1,139 @@
+{
+  "smoke": {
+    "feedbackVisible": true,
+    "h2": [
+      "Landing Pages"
+    ],
+    "h3": [
+      "With screenshots and stats",
+      "With large screenshot and testimonial",
+      "With background image hero and pricing section",
+      "With mobile screenshot and testimonials grid"
+    ],
+    "landingActionCount": 53,
+    "landingActions": [
+      "Open landing release notes",
+      "Start landing signup",
+      "Open landing product tour",
+      "Open landing logo Transistor",
+      "Open landing logo Reform",
+      "Open landing logo Tuple",
+      "Open landing logo SavvyCal",
+      "Open landing logo Statamic",
+      "Open landing feature State monitoring",
+      "Open landing feature Collaborate",
+      "Open landing feature Pattern planning",
+      "Open landing nav Product",
+      "Open landing nav Features",
+      "Open landing nav Marketplace",
+      "Open landing nav Company",
+      "Open landing login",
+      "Start landing signup",
+      "Open landing product tour",
+      "Open landing logo Transistor",
+      "Open landing logo Reform",
+      "Open landing logo Tuple",
+      "Open landing logo SavvyCal",
+      "Open landing logo Statamic",
+      "Open landing case study",
+      "Open landing nav Product",
+      "Open landing nav Features",
+      "Open landing nav Marketplace",
+      "Open landing nav Company",
+      "Open landing login",
+      "Open landing funding announcement",
+      "Start landing signup",
+      "Open landing product tour",
+      "Open landing logo Transistor",
+      "Open landing logo Reform",
+      "Open landing logo Tuple",
+      "Open landing logo SavvyCal",
+      "Open landing logo Statamic",
+      "Select landing plan Basic",
+      "Select landing plan Growth",
+      "Select landing plan Scale",
+      "Open landing nav Product",
+      "Open landing nav Features",
+      "Open landing nav Marketplace",
+      "Open landing nav Company",
+      "Open landing login",
+      "Open landing hiring positions",
+      "Start landing signup",
+      "Open landing product tour",
+      "Open landing logo Transistor",
+      "Open landing logo Reform",
+      "Open landing logo Tuple",
+      "Open landing logo SavvyCal",
+      "Open landing logo Statamic"
+    ],
+    "overflow": 0,
+    "rootAttrs": [
+      {
+        "theme": "light",
+        "variant": "landing-screenshots-stats"
+      },
+      {
+        "theme": "light",
+        "variant": "landing-large-screenshot-testimonial"
+      },
+      {
+        "theme": "light",
+        "variant": "landing-bg-hero-pricing"
+      },
+      {
+        "theme": "light",
+        "variant": "landing-mobile-testimonials"
+      }
+    ],
+    "roots": 4,
+    "selected": [
+      "Light",
+      "Open landing feature State monitoring",
+      "Light",
+      "Open landing case study",
+      "Light",
+      "Select landing plan Growth",
+      "Light",
+      "Open landing hiring positions"
+    ]
+  },
+  "darkCount": 4,
+  "lightCount": 4,
+  "darkState": [
+    {
+      "theme": "dark",
+      "variant": "landing-screenshots-stats"
+    },
+    {
+      "theme": "dark",
+      "variant": "landing-large-screenshot-testimonial"
+    },
+    {
+      "theme": "dark",
+      "variant": "landing-bg-hero-pricing"
+    },
+    {
+      "theme": "dark",
+      "variant": "landing-mobile-testimonials"
+    }
+  ],
+  "lightState": [
+    {
+      "theme": "light",
+      "variant": "landing-screenshots-stats"
+    },
+    {
+      "theme": "light",
+      "variant": "landing-large-screenshot-testimonial"
+    },
+    {
+      "theme": "light",
+      "variant": "landing-bg-hero-pricing"
+    },
+    {
+      "theme": "light",
+      "variant": "landing-mobile-testimonials"
+    }
+  ],
+  "errors": []
+}

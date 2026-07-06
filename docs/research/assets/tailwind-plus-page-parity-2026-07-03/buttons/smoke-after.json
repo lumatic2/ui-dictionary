@@ -1,0 +1,31 @@
+{
+  "url": "http://127.0.0.1:5174/?filter=nav%3Aplus-application-elements-buttons",
+  "before": {
+    "title": "UI 용어 사전",
+    "buttonCount": 151,
+    "actionButtonCount": 38,
+    "pressedCount": 0,
+    "darkToggleCount": 8,
+    "bodyOverflowX": 0
+  },
+  "afterInteraction": {
+    "pressedCount": 2,
+    "selectedCircular": true,
+    "feedback": true,
+    "bodyOverflowX": 0
+  },
+  "afterDark": {
+    "darkToggleCount": 8,
+    "activeDarkToggleCount": 8,
+    "darkSurfaceCount": 8,
+    "bodyOverflowX": 0
+  },
+  "mobile": {
+    "actionButtonCount": 38,
+    "feedback": true,
+    "bodyOverflowX": 0
+  },
+  "consoleMessages": [],
+  "pageErrors": [],
+  "timestamp": "2026-07-03T16:50:37.628Z"
+}

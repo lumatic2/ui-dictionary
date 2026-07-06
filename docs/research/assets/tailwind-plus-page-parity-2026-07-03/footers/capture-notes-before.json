@@ -1,0 +1,879 @@
+{
+  "reference": {
+    "buttons": [
+      {
+        "aria": "Search",
+        "text": ""
+      },
+      {
+        "aria": "Search",
+        "text": ""
+      },
+      {
+        "aria": "Navigation",
+        "text": ""
+      },
+      {
+        "aria": "Open navigation menu",
+        "text": ""
+      }
+    ],
+    "h1": "Footers",
+    "h2s": [
+      "4-column with company mission",
+      "4-column with company mission",
+      "4-column with call-to-action",
+      "4-column with call-to-action",
+      "4-column simple",
+      "4-column simple",
+      "4-column with newsletter",
+      "4-column with newsletter",
+      "4-column with newsletter below",
+      "4-column with newsletter below",
+      "Simple centered",
+      "Simple centered",
+      "Simple with social links",
+      "Simple with social links"
+    ],
+    "h3s": [
+      "Page Sections",
+      "Elements",
+      "Feedback",
+      "Page Examples",
+      "Build UIs that don’t suck.",
+      "Marketing",
+      "Application UI",
+      "Ecommerce",
+      "Templates & UI Kits"
+    ],
+    "links": [
+      "Introducing OatmealOur new multi-theme marketing site kit",
+      "UI Blocks",
+      "Templates",
+      "UI Kit",
+      "Sign in",
+      "Get full access",
+      "Marketing",
+      "Application UI",
+      "Ecommerce",
+      "Documentation",
+      "Hero Sections",
+      "Feature Sections",
+      "CTA Sections",
+      "Bento Grids",
+      "Pricing Sections",
+      "Header Sections",
+      "Newsletter Sections",
+      "Stats",
+      "Testimonials",
+      "Blog Sections",
+      "Contact Sections",
+      "Team Sections",
+      "Content Sections",
+      "Logo Clouds",
+      "FAQs",
+      "Footers",
+      "Headers",
+      "Flyout Menus",
+      "Banners",
+      "404 Pages",
+      "Landing Pages",
+      "Pricing Pages",
+      "About Pages",
+      "Get the free course",
+      "UI Blocks",
+      "Marketing",
+      "Page Sections",
+      "UI Blocks",
+      "Marketing",
+      "Page Sections",
+      "4-column with company mission",
+      "Get the code →",
+      "4-column with company mission",
+      "Get the code →",
+      "4-column with call-to-action",
+      "Get the code →",
+      "4-column with call-to-action",
+      "Get the code →",
+      "4-column simple",
+      "Get the code →",
+      "4-column simple",
+      "Get the code →",
+      "4-column with newsletter",
+      "Get the code →",
+      "4-column with newsletter",
+      "Get the code →",
+      "4-column with newsletter below",
+      "Get the code →",
+      "4-column with newsletter below",
+      "Get the code →",
+      "Simple centered",
+      "Get the code →",
+      "Simple centered",
+      "Get the code →",
+      "Simple with social links",
+      "Get the code →",
+      "Simple with social links",
+      "Get the code →",
+      "Hero Sections",
+      "Feature Sections",
+      "Pricing Sections",
+      "Header Sections",
+      "Newsletter Sections",
+      "Testimonials",
+      "Team Sections",
+      "Content Sections",
+      "Logo Clouds",
+      "FAQs",
+      "Footers",
+      "Headers",
+      "Flyout Menus",
+      "Banners",
+      "Browse all →",
+      "Tables",
+      "Feeds",
+      "Form Layouts",
+      "Select Menus",
+      "Radio Groups",
+      "Checkboxes",
+      "Comboboxes",
+      "Navbars",
+      "Pagination",
+      "Sidebar Navigation",
+      "Command Palettes",
+      "Modals",
+      "Dropdowns",
+      "Buttons",
+      "Browse all →",
+      "Product Overviews",
+      "Product Lists"
+    ],
+    "overflow": 0,
+    "textSamples": [
+      "MarketingApplication UIEcommerceDocumentation",
+      "Marketing",
+      "Application UI",
+      "Ecommerce",
+      "Documentation",
+      "Page SectionsHero SectionsFeature SectionsCTA SectionsBento GridsPricing SectionsHeader SectionsNewsletter SectionsStatsTestimonialsBlog SectionsContact SectionsTeam SectionsContent SectionsLogo CloudsFAQsFooters",
+      "Page Sections",
+      "Hero Sections",
+      "Feature Sections",
+      "CTA Sections",
+      "Bento Grids",
+      "Pricing Sections",
+      "Header Sections",
+      "Newsletter Sections",
+      "Stats",
+      "Testimonials",
+      "Blog Sections",
+      "Contact Sections",
+      "Team Sections",
+      "Content Sections",
+      "Logo Clouds",
+      "FAQs",
+      "Footers",
+      "ElementsHeadersFlyout MenusBanners",
+      "Elements",
+      "Headers",
+      "Flyout Menus",
+      "Banners",
+      "Feedback404 Pages",
+      "Feedback",
+      "404 Pages",
+      "Page ExamplesLanding PagesPricing PagesAbout Pages",
+      "Page Examples",
+      "Landing Pages",
+      "Pricing Pages",
+      "About Pages",
+      "5-day Mini-Course",
+      "Build UIs that don’t suck.",
+      "Short, tactical video lessons from the creator of Tailwind CSS, delivered directly to your inbox every day for a week.",
+      "Get the free course",
+      "/",
+      "/",
+      "Use these Tailwind CSS footer examples to include useful information at the bottom of each page, like a sitemap to help users navigate your site, links to your social media profiles, or a newsletter sign up form. These examples are designed and built by the Tailwind CSS team, and include a variety of different styles and layouts.",
+      "4-column with company mission",
+      "Preview",
+      "4-column with company mission",
+      "Preview",
+      "4-column with call-to-action",
+      "Preview",
+      "4-column with call-to-action",
+      "Preview",
+      "4-column simple",
+      "Preview",
+      "4-column simple",
+      "Preview",
+      "4-column with newsletter",
+      "Preview",
+      "4-column with newsletter",
+      "Preview",
+      "4-column with newsletter below",
+      "Preview",
+      "4-column with newsletter below",
+      "Preview",
+      "Simple centered",
+      "Preview",
+      "Simple centered",
+      "Preview",
+      "Simple with social links",
+      "Preview",
+      "Simple with social links",
+      "Preview",
+      "Marketing",
+      "Hero Sections",
+      "Feature Sections",
+      "Pricing Sections",
+      "Header Sections",
+      "Newsletter Sections",
+      "Testimonials",
+      "Team Sections",
+      "Content Sections",
+      "Logo Clouds",
+      "FAQs",
+      "Footers",
+      "Headers",
+      "Flyout Menus",
+      "Banners",
+      "Browse all →",
+      "Application UI",
+      "Tables",
+      "Feeds",
+      "Form Layouts",
+      "Select Menus",
+      "Radio Groups",
+      "Checkboxes",
+      "Comboboxes",
+      "Navbars",
+      "Pagination",
+      "Sidebar Navigation",
+      "Command Palettes",
+      "Modals",
+      "Dropdowns",
+      "Buttons",
+      "Browse all →",
+      "Ecommerce",
+      "Product Overviews",
+      "Product Lists",
+      "Category Previews",
+      "Shopping Carts",
+      "Category Filters",
+      "Product Quickviews",
+      "Product Features",
+      "Store Navigation",
+      "Promo Sections",
+      "Checkout Forms",
+      "Reviews",
+      "Order Summaries",
+      "Order History",
+      "Incentives",
+      "Browse all →",
+      "Templates & UI Kits"
+    ],
+    "title": "Tailwind CSS Footers - Official Tailwind UI Components",
+    "url": "https://tailwindcss.com/plus/ui-blocks/marketing/sections/footers"
+  },
+  "local": {
+    "actions": 180,
+    "buttons": [
+      {
+        "aria": "UI 용어 사전 홈으로 이동",
+        "text": "UI Dictionary"
+      },
+      {
+        "aria": "검색 열기",
+        "text": "Ctrl F"
+      },
+      {
+        "aria": null,
+        "text": "UI Blocks"
+      },
+      {
+        "aria": null,
+        "text": "Templates"
+      },
+      {
+        "aria": null,
+        "text": "UI Kit"
+      },
+      {
+        "aria": null,
+        "text": "Sign in"
+      },
+      {
+        "aria": null,
+        "text": "Get full access"
+      },
+      {
+        "aria": "More options",
+        "text": ""
+      },
+      {
+        "aria": null,
+        "text": "Marketing"
+      },
+      {
+        "aria": null,
+        "text": "Application UI"
+      },
+      {
+        "aria": null,
+        "text": "Ecommerce"
+      },
+      {
+        "aria": null,
+        "text": "Documentation"
+      },
+      {
+        "aria": null,
+        "text": "Page Sections"
+      },
+      {
+        "aria": null,
+        "text": "Hero Sections"
+      },
+      {
+        "aria": null,
+        "text": "Feature Sections"
+      },
+      {
+        "aria": null,
+        "text": "CTA Sections"
+      },
+      {
+        "aria": null,
+        "text": "Bento Grids"
+      },
+      {
+        "aria": null,
+        "text": "Pricing Sections"
+      },
+      {
+        "aria": null,
+        "text": "Header Sections"
+      },
+      {
+        "aria": null,
+        "text": "Newsletter Sections"
+      },
+      {
+        "aria": null,
+        "text": "Stats"
+      },
+      {
+        "aria": null,
+        "text": "Testimonials"
+      },
+      {
+        "aria": null,
+        "text": "Blog Sections"
+      },
+      {
+        "aria": null,
+        "text": "Contact Sections"
+      },
+      {
+        "aria": null,
+        "text": "Team Sections"
+      },
+      {
+        "aria": null,
+        "text": "Content Sections"
+      },
+      {
+        "aria": null,
+        "text": "Logo Clouds"
+      },
+      {
+        "aria": null,
+        "text": "FAQs"
+      },
+      {
+        "aria": null,
+        "text": "Footers"
+      },
+      {
+        "aria": null,
+        "text": "Elements"
+      },
+      {
+        "aria": null,
+        "text": "Headers"
+      },
+      {
+        "aria": null,
+        "text": "Flyout Menus"
+      },
+      {
+        "aria": null,
+        "text": "Banners"
+      },
+      {
+        "aria": null,
+        "text": "Feedback"
+      },
+      {
+        "aria": null,
+        "text": "404 Pages"
+      },
+      {
+        "aria": null,
+        "text": "Page Examples"
+      },
+      {
+        "aria": null,
+        "text": "Landing Pages"
+      },
+      {
+        "aria": null,
+        "text": "Pricing Pages"
+      },
+      {
+        "aria": null,
+        "text": "About Pages"
+      },
+      {
+        "aria": null,
+        "text": "Preview"
+      },
+      {
+        "aria": null,
+        "text": "Code"
+      },
+      {
+        "aria": "System",
+        "text": ""
+      },
+      {
+        "aria": "Light",
+        "text": ""
+      },
+      {
+        "aria": "Dark",
+        "text": ""
+      },
+      {
+        "aria": "Copy code",
+        "text": ""
+      },
+      {
+        "aria": "x social link",
+        "text": "x"
+      },
+      {
+        "aria": "gh social link",
+        "text": "gh"
+      },
+      {
+        "aria": "in social link",
+        "text": "in"
+      },
+      {
+        "aria": "yt social link",
+        "text": "yt"
+      },
+      {
+        "aria": null,
+        "text": "Marketing"
+      },
+      {
+        "aria": null,
+        "text": "Analytics"
+      },
+      {
+        "aria": null,
+        "text": "Commerce"
+      },
+      {
+        "aria": null,
+        "text": "Insights"
+      },
+      {
+        "aria": null,
+        "text": "Submit ticket"
+      },
+      {
+        "aria": null,
+        "text": "Documentation"
+      },
+      {
+        "aria": null,
+        "text": "Guides"
+      },
+      {
+        "aria": null,
+        "text": "About"
+      },
+      {
+        "aria": null,
+        "text": "Blog"
+      },
+      {
+        "aria": null,
+        "text": "Jobs"
+      },
+      {
+        "aria": null,
+        "text": "Press"
+      },
+      {
+        "aria": null,
+        "text": "Terms of service"
+      },
+      {
+        "aria": null,
+        "text": "Privacy policy"
+      },
+      {
+        "aria": null,
+        "text": "License"
+      },
+      {
+        "aria": null,
+        "text": "Preview"
+      },
+      {
+        "aria": "System",
+        "text": ""
+      },
+      {
+        "aria": "Light",
+        "text": ""
+      },
+      {
+        "aria": "Dark",
+        "text": ""
+      },
+      {
+        "aria": null,
+        "text": "Get the code →"
+      },
+      {
+        "aria": null,
+        "text": "Get started"
+      },
+      {
+        "aria": null,
+        "text": "Marketing"
+      },
+      {
+        "aria": null,
+        "text": "Analytics"
+      },
+      {
+        "aria": null,
+        "text": "Commerce"
+      },
+      {
+        "aria": null,
+        "text": "Insights"
+      },
+      {
+        "aria": null,
+        "text": "Submit ticket"
+      },
+      {
+        "aria": null,
+        "text": "Documentation"
+      },
+      {
+        "aria": null,
+        "text": "Guides"
+      },
+      {
+        "aria": null,
+        "text": "About"
+      },
+      {
+        "aria": null,
+        "text": "Blog"
+      },
+      {
+        "aria": null,
+        "text": "Jobs"
+      },
+      {
+        "aria": null,
+        "text": "Press"
+      },
+      {
+        "aria": null,
+        "text": "Terms of service"
+      },
+      {
+        "aria": null,
+        "text": "Privacy policy"
+      },
+      {
+        "aria": null,
+        "text": "License"
+      },
+      {
+        "aria": "x social link",
+        "text": "x"
+      },
+      {
+        "aria": "gh social link",
+        "text": "gh"
+      },
+      {
+        "aria": "in social link",
+        "text": "in"
+      },
+      {
+        "aria": "yt social link",
+        "text": "yt"
+      },
+      {
+        "aria": null,
+        "text": "Preview"
+      },
+      {
+        "aria": "System",
+        "text": ""
+      },
+      {
+        "aria": "Light",
+        "text": ""
+      },
+      {
+        "aria": "Dark",
+        "text": ""
+      },
+      {
+        "aria": null,
+        "text": "Get the code →"
+      },
+      {
+        "aria": null,
+        "text": "Marketing"
+      },
+      {
+        "aria": null,
+        "text": "Analytics"
+      },
+      {
+        "aria": null,
+        "text": "Commerce"
+      },
+      {
+        "aria": null,
+        "text": "Insights"
+      },
+      {
+        "aria": null,
+        "text": "Submit ticket"
+      },
+      {
+        "aria": null,
+        "text": "Documentation"
+      },
+      {
+        "aria": null,
+        "text": "Guides"
+      },
+      {
+        "aria": null,
+        "text": "About"
+      },
+      {
+        "aria": null,
+        "text": "Blog"
+      },
+      {
+        "aria": null,
+        "text": "Jobs"
+      },
+      {
+        "aria": null,
+        "text": "Press"
+      },
+      {
+        "aria": null,
+        "text": "Terms of service"
+      },
+      {
+        "aria": null,
+        "text": "Privacy policy"
+      },
+      {
+        "aria": null,
+        "text": "License"
+      },
+      {
+        "aria": null,
+        "text": "Preview"
+      },
+      {
+        "aria": "System",
+        "text": ""
+      },
+      {
+        "aria": "Light",
+        "text": ""
+      },
+      {
+        "aria": "Dark",
+        "text": ""
+      },
+      {
+        "aria": null,
+        "text": "Get the code →"
+      },
+      {
+        "aria": null,
+        "text": "Marketing"
+      },
+      {
+        "aria": null,
+        "text": "Analytics"
+      },
+      {
+        "aria": null,
+        "text": "Commerce"
+      },
+      {
+        "aria": null,
+        "text": "Insights"
+      },
+      {
+        "aria": null,
+        "text": "Submit ticket"
+      },
+      {
+        "aria": null,
+        "text": "Documentation"
+      },
+      {
+        "aria": null,
+        "text": "Guides"
+      },
+      {
+        "aria": null,
+        "text": "About"
+      },
+      {
+        "aria": null,
+        "text": "Blog"
+      }
+    ],
+    "footerActions": 0,
+    "h2": "Footers",
+    "h3s": [
+      "4-column with company mission",
+      "4-column with call-to-action",
+      "4-column simple",
+      "4-column with newsletter",
+      "4-column with newsletter below",
+      "Simple centered",
+      "Simple with social links"
+    ],
+    "overflow": 0,
+    "roots": 0,
+    "textSamples": [
+      "UI Dictionary",
+      "UI Blocks",
+      "Footers",
+      "페이지 하단에서 보조 링크, 정책, 회사 정보, 구독 행동을 정리하는 푸터 섹션 예시입니다.",
+      "Tailwind Plus처럼 각 leaf의 첫 예제는 Preview와 Code를 함께 제공하고, 이후 예제는 Preview와 잠금 code CTA로 구분합니다. 우리 예시는 실제 화면 맥락에 맞춘 설명, tags, interaction feedback을 함께 보여줍니다.",
+      "On this page",
+      "4-column with company mission",
+      "회사 설명과 여러 링크 그룹을 함께 배치해 큰 사이트 하단 정보를 정리합니다.",
+      "A shared reference for naming, comparing, and implementing practical interface patterns.",
+      "Marketing",
+      "Analytics",
+      "Commerce",
+      "Insights",
+      "Submit ticket",
+      "Documentation",
+      "Guides",
+      "About",
+      "Blog",
+      "Jobs",
+      "Press",
+      "Terms of service",
+      "Privacy policy",
+      "License",
+      "© 2026 UI Vocabulary, Inc. All rights reserved.",
+      "4-column with call-to-action",
+      "링크 그룹 위에 CTA를 붙여 하단에서도 전환 행동을 남깁니다.",
+      "Get started",
+      "Group recurring questions by workflow so readers can find the right component pattern quickly.",
+      "Marketing",
+      "Analytics",
+      "Commerce",
+      "Insights",
+      "Submit ticket",
+      "Documentation",
+      "Guides",
+      "About",
+      "Blog",
+      "Jobs",
+      "Press",
+      "Terms of service",
+      "Privacy policy",
+      "License",
+      "© 2026 UI Vocabulary, Inc. All rights reserved.",
+      "4-column simple",
+      "제품, 리소스, 회사 링크를 네 열로 나눠 정리하는 기본형입니다.",
+      "Marketing",
+      "Analytics",
+      "Commerce",
+      "Insights",
+      "Submit ticket",
+      "Documentation",
+      "Guides",
+      "About",
+      "Blog",
+      "Jobs",
+      "Press",
+      "Terms of service",
+      "Privacy policy",
+      "License",
+      "4-column with newsletter",
+      "하단에서 보조 링크와 이메일 구독 행동을 함께 제공하는 형식입니다.",
+      "Marketing",
+      "Analytics",
+      "Commerce",
+      "Insights",
+      "Submit ticket",
+      "Documentation",
+      "Guides",
+      "About",
+      "Blog",
+      "Jobs",
+      "Press",
+      "Terms of service",
+      "Privacy policy",
+      "License",
+      "The latest news, articles, and resources, sent to your inbox weekly.",
+      "© 2026 UI Vocabulary, Inc. All rights reserved.",
+      "4-column with newsletter below",
+      "링크 묶음 아래에 newsletter 영역을 배치해 footer를 계층적으로 정리합니다.",
+      "Marketing",
+      "Analytics",
+      "Commerce",
+      "Insights",
+      "Submit ticket",
+      "Documentation",
+      "Guides",
+      "About",
+      "Blog",
+      "Jobs",
+      "Press",
+      "Terms of service",
+      "Privacy policy",
+      "License",
+      "The latest news, articles, and resources, sent to your inbox weekly.",
+      "© 2026 UI Vocabulary, Inc. All rights reserved.",
+      "Simple centered",
+      "작은 사이트에서 브랜드와 필수 링크만 중앙 정렬로 남기는 가벼운 footer입니다.",
+      "© 2026 UI Vocabulary, Inc. All rights reserved.",
+      "Simple with social links",
+      "간단한 footer에 소셜 링크 아이콘을 더해 외부 채널 이동을 제공합니다.",
+      "© 2026 UI Vocabulary, Inc. All rights reserved."
+    ],
+    "url": "http://127.0.0.1:5200/?filter=nav%3Aplus-marketing-footers"
+  }
+}

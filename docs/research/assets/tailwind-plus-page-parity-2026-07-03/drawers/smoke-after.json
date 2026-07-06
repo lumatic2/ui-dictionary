@@ -1,0 +1,65 @@
+{
+  "url": "http://127.0.0.1:5174/?filter=nav%3Aplus-overlays-drawers",
+  "initial": {
+    "dialogCount": 12,
+    "ariaModalCount": 12,
+    "labelledByCount": 12,
+    "describedByCount": 12,
+    "closeButtonCount": 13,
+    "openPanelButtonCount": 12,
+    "saveButtonCount": 3,
+    "bodyOverflowX": 0
+  },
+  "afterClose": {
+    "dialogCount": 11,
+    "ariaModalCount": 11,
+    "labelledByCount": 11,
+    "describedByCount": 11,
+    "closeButtonCount": 12,
+    "openPanelButtonCount": 12,
+    "saveButtonCount": 3,
+    "bodyOverflowX": 0
+  },
+  "closeFeedback": 1,
+  "afterReopen": {
+    "dialogCount": 12,
+    "ariaModalCount": 12,
+    "labelledByCount": 12,
+    "describedByCount": 12,
+    "closeButtonCount": 13,
+    "openPanelButtonCount": 12,
+    "saveButtonCount": 3,
+    "bodyOverflowX": 0
+  },
+  "afterSave": {
+    "dialogCount": 11,
+    "ariaModalCount": 11,
+    "labelledByCount": 11,
+    "describedByCount": 11,
+    "closeButtonCount": 12,
+    "openPanelButtonCount": 12,
+    "saveButtonCount": 2,
+    "bodyOverflowX": 0
+  },
+  "saveFeedback": 1,
+  "afterEscape": {
+    "dialogCount": 11,
+    "ariaModalCount": 11,
+    "labelledByCount": 11,
+    "describedByCount": 11,
+    "closeButtonCount": 12,
+    "openPanelButtonCount": 12,
+    "saveButtonCount": 3,
+    "bodyOverflowX": 0
+  },
+  "escapeFeedback": 1,
+  "darkButtons": 12,
+  "darkSurfaceCount": 4,
+  "mobileInitialDialogCount": 12,
+  "mobileDialogCountAfterClose": 11,
+  "mobileCloseFeedback": 1,
+  "mobileOverflowX": 0,
+  "consoleMessages": [],
+  "pageErrors": [],
+  "timestamp": "2026-07-03T15:43:18.452Z"
+}

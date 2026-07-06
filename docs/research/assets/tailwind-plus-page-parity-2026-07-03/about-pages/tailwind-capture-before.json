@@ -1,0 +1,33 @@
+{
+  "bodySample": "Introducing OatmealOur new multi-theme marketing site kitUI BlocksTemplatesUI KitSign inGet full accessMarketingApplication UIEcommerceDocumentationPage SectionsHero SectionsFeature SectionsCTA SectionsBento GridsPricing SectionsHeader SectionsNewsletter SectionsStatsTestimonialsBlog SectionsContact SectionsTeam SectionsContent SectionsLogo CloudsFAQsFootersElementsHeadersFlyout MenusBannersFeedback404 PagesPage ExamplesLanding PagesPricing PagesAbout Pages5-day Mini-CourseBuild UIs that don’t suck.Short, tactical video lessons from the creator of Tailwind CSS, delivered directly to your inbox every day for a week.Get the free courseUI BlocksMarketingPage ExamplesUI Blocks/Marketing/Page ExamplesAbout PagesUse these Tailwind CSS about page examples to introduce your organization to new and existing customers and clients. These about pages are designed and built by the Tailwind CSS team, and include a variety of different styles and layouts.With image tilesPreviewGet the code → #frame-239fe694f775611a8953ef4b02d6a4da { height: 8772px; } @media (min-width: 704px) { #frame-239fe694f775611a8953ef4b02d6a4da { height: 5062px; } } With image tilesPreviewGet the code → #frame-239fe694f775611a8953ef4b02d6a4da-dark { height: 8772px; } @media (min-width: 704px) { #frame-239fe694f775611a8953ef4b02d6a4da-dark { height: 5062px; } } With timeline and statsPreviewGet the code → #frame-b99f4e0ab650993f48cbf8f990ceb030 { height: 8102px; } @media (min-width: 704px) { #frame-b99f4e0ab650993f48cbf8f990ceb030 { height: 5250px; } } With timeline and statsPreviewGet the code → #frame-b99f4e0ab650993f48cbf8f990ceb030-dark { height: 8102px; } @media (min-width: 704px) { #frame-b99f4e0ab650993f48cbf8f990ceb030-dark { height: 5250px; } } With two column descriptionPreviewGet the code → #frame-c179c6fd6c39a2670931331a8edd9491 { height: 200px; } @media (min-width: 704px) { #frame-c179c6fd6c39a2670931331a8edd9491 { height: 200px; } } With two column descriptionPreviewGet the code → #frame-c179c6fd6c39a2670931331a8edd9491-dark { height: 200px; } @media (min-width: 704px) { #frame-c179c6fd6c39a2670931331a8edd9491-dark { height: 200px; } } MarketingHero SectionsFeature SectionsPricing SectionsHeader SectionsNewsletter SectionsTestimonialsTeam SectionsContent SectionsLogo CloudsFAQsFootersHeadersFlyout MenusBannersBrowse all →Application UITablesFeedsForm LayoutsSelect MenusRadio GroupsCheckboxesComboboxesNavbarsPaginationSidebar NavigationCommand PalettesModalsDropdownsButtonsBrowse all →EcommerceProduct OverviewsProduct ListsCategory PreviewsShopping CartsCategory FiltersProduct QuickviewsProduct FeaturesStore NavigationPromo SectionsCheckout FormsReviewsOrder SummariesOrder HistoryIncentivesBrowse all →Templates & UI KitsCatalyst UI KitPersonal Website TemplateLanding Page TemplateAPI Reference TemplateChangelog TemplateInfo Product TemplateAgency TemplatePodcast TemplateApp Marketing TemplateDocumentation TemplateConference TemplateBrowse all →© 2026 Tailwind Labs Inc. All rights reserved.Privacy policyChangelog",
+  "buttons": [
+    "Search",
+    "Search",
+    "Navigation",
+    "Open navigation menu"
+  ],
+  "h1": [
+    "About Pages"
+  ],
+  "h2": [
+    "With image tiles",
+    "With image tiles",
+    "With timeline and stats",
+    "With timeline and stats",
+    "With two column description",
+    "With two column description"
+  ],
+  "h3": [
+    "Page Sections",
+    "Elements",
+    "Feedback",
+    "Page Examples",
+    "Build UIs that don’t suck.",
+    "Marketing",
+    "Application UI",
+    "Ecommerce",
+    "Templates & UI Kits"
+  ],
+  "title": "Tailwind CSS About Pages - Official Tailwind UI Components",
+  "url": "https://tailwindcss.com/plus/ui-blocks/marketing/page-examples/about-pages"
+}

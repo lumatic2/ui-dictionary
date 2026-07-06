@@ -1,0 +1,127 @@
+{
+  "browserFallback": "standalone Playwright fallback used after Chrome/Browser path failed earlier in this thread",
+  "references": [
+    {
+      "url": "https://tailwindcss.com/plus/ui-blocks/ecommerce/page-examples/product-pages",
+      "status": 200,
+      "summary": {
+        "title": "Tailwind CSS Product Pages - Official Tailwind UI Components",
+        "h1": [
+          "Product Pages"
+        ],
+        "h2": [
+          "With related products",
+          "With related products",
+          "With image grid",
+          "With image grid",
+          "With expandable product details",
+          "With expandable product details",
+          "With featured details",
+          "With featured details",
+          "With tabs and related products",
+          "With tabs and related products"
+        ],
+        "textSample": "Introducing Oatmeal\nOur new multi-theme marketing site kit\nUI Blocks\nTemplates\nUI Kit\nSign in\nGet full access\nUI Blocks\nEcommerce\nPage Examples\nProduct Pages\n\nUse these Tailwind CSS product page examples to to create great looking pages for individual products with detailed descriptions, images, pricing, and customer reviews. These page examples are designed and built by the Tailwind CSS team, and include a variety of different styles and layouts.\n\nWith related products\n\nPreview\n\nGet the code →\nWith image grid\n\nPreview\n\nGet the code →\nWith expandable product details\n\nPreview\n\nGet the code →\nWith featured details\n\nPreview\n\nGet the code →\nWith tabs and related products\n\nPreview\n\nGet the code →\nMarketing\nHero Sections\nFeature Sections\nPricing Sections\nHeader Sections\nNewsletter Sections\nTestimonials\nTeam Sections\nContent Sections\nLogo Clouds\nFAQs\nFooters\nHeaders\nFlyout Menus\nBanners\nBrowse all →\nApplication UI\nTables\nFeeds\nForm Layouts\nSelect Menus\nRadio Groups\nCheckboxes\nComboboxes\nNavbars\nPagination\nSidebar Navigation\nCommand Palettes\nModals\nDropdowns\nButtons\nBrowse all →\nEcommerce\nProduct Overviews\nProduct Lists\nCategory Previews\nShopping Carts\nCategory Filters\nProduct Quickviews\nProduct Features\nStore Navigation\nPromo Sections\nCheckout Forms\nReviews\nOrder Summaries\nOrder History\nIncentives\nBrowse all →\nTemplates & UI Kits\nCatalyst UI Kit\nPersonal Website Template\nLanding Page Template\nAPI Reference Template\nChangelog Template\nInfo Product Template\nAgency Template\nPodcast Template\nApp Marketing Template\nDocumentation Template\nConference Template\nBrowse all →\n\n© 2026 Tailwind Labs Inc. All rights reserved.\n\nPrivacy policy\nChangelog"
+      }
+    },
+    {
+      "url": "https://tailwindcss.com/plus/ui-blocks/ecommerce/page-examples/product-page",
+      "status": 404,
+      "summary": {
+        "title": "Not Found",
+        "h1": [],
+        "h2": [],
+        "textSample": "404\nNOT FOUND"
+      }
+    }
+  ],
+  "local": {
+    "before": {
+      "title": "UI 용어 사전",
+      "h1": [],
+      "h2": [
+        "Product Pages"
+      ],
+      "textSample": "UI Dictionary\n\nCtrl F\nUI Blocks\nTemplates\nUI Kit\nSign in\nGet full access\nMarketing\nApplication UI\nEcommerce\nDocumentation\nCOMPONENTS\nProduct Overviews\nProduct Lists\nCategory Previews\nShopping Carts\nCategory Filters\nProduct Quickviews\nProduct Features\nStore Navigation\nPromo Sections\nCheckout Forms\nReviews\nOrder Summaries\nOrder History\nIncentives\nPAGE EXAMPLES\nStorefront Pages\nProduct Pages\nCategory Pages\nShopping Cart Pages\nCheckout Pages\nOrder Detail Pages\nOrder History Pages\n\nPLUS / UI BLOCKS / ECOMMERCE / PAGE EXAMPLES / PRODUCT PAGES\n\nProduct Pages\n\n상품 갤러리, 상세 정보, 옵션 선택, 가격, 구매 CTA, 리뷰로 구성되는 상품 상세 화면 예시입니다.\n\nTailwind Plus처럼 각 leaf의 첫 예제는 Preview와 Code를 함께 제공하고, 이후 예제는 Preview와 잠금 code CTA로 구분합니다. 우리 예시는 실제 화면 맥락에 맞춘 설명, tags, interaction feedback을 함께 보여줍니다.\n\nON THIS PAGE\n\n5 examples\nWith related products\nWith image grid\nWith expandable product details\nWith featured details\nWith tabs and related products\nWith related products\nEXAMPLE 01\n\nTailwind의 product page 예시 이름과 개수를 맞춘 상품 상세 화면 변형입니다.\n\nproduct page\ngallery\npurchase\nPreview\nCode\nHTML\nReact\nVue\nProtocol\nWomen\nMen\nCompany\nStores\n\nWomen / New Arrivals\n\nBasic Tee\n\n$35\n\n★★★★★\n117 reviews\n\nA product page pairs large photography with purchase controls, material details, expandable sections, reviews, and related products.\n\nColor\n\nSize\n\nXS\nS\nM\nL\nAdd to bag\nCustomer Reviews\n★★★★★\n117 reviews\n\nPerfect everyday weight.\n\nVerified buyer\n\nThe fit is clean without feeling fragile.\n\nVerified buyer\n\nShipping was quick and the details matched the page.\n\nVerified buyer\n\nCustomers also purchased\n\nEssential Tee\n\nBone\n\n$32\n\nBoxy Tee\n\nBlack\n\n$38\n\nCanvas Tote\n\nTan\n\n$98\n\nEveryday Pack\n\nSage\n\n$112\n\nShop\nNew arrivals\nReturns\nGift cards\nSupport\nNew arrivals\nReturns\nGift cards\nCompany\nNew arrivals\nReturns\nGift cards\nNewsletter\nNew arrivals\nReturns\nGift cards\nWith image grid\nEXAMPLE 02\n\nTailwind의 product page 예시 이름과 개수를 맞춘 상품 상세 화면 변형입니다.\n\nproduct page\ngallery\npurchase\nPreview\nGet the code →\nProtocol\nWomen\nMen\nCompany\nStores\n\nWomen / New Arrivals\n\nBasic Tee 6-Pack\n\n$192\n\n★★★★★\n117 reviews\n\nA product page pairs large photography with purchase controls, material details, expandable sections, reviews, and related products.\n\nColor\n\nSize\n\nXS\nS\nM\nL\nAdd to bag\nCustomer Reviews\n★★★★★\n117 reviews\n\nPerfect everyday weight.\n\nVerified buyer\n\nThe fit is clean without feeling fragile.\n\nVerified buyer\n\nShipping was quick and the details matched the page.\n\nVerified buyer\n\nCustomers also purchased\n\nEssential Tee\n\nBone\n\n$32\n\nBoxy Tee\n\nBlack\n\n$38\n\nCanvas Tote\n\nTan\n\n$98\n\nEveryday Pack\n\nSage\n\n$112\n\nShop\nNew arrivals\nReturns\nGift cards\nSupport\nNew arrivals\nReturns\nGift cards\nCompany\nNew arrivals\nReturns\nGift cards\nNewsletter\nNew arrivals\nReturns\nGift cards\nWith expandable product details\nEXAMPLE 03\n\nTailwind의 product page 예시 이름과 개수를 맞춘 상품 상세 화면 변형입니다.\n\nproduct page\ngallery\npurchase\nPreview\nGet the code →\nProtocol\nWomen\nMen\nCompany\nStores\n\nWomen / New Arrivals\n\nZip Tote Basket\n\n$140\n\n★★★★★\n117 reviews\n\nA product page pairs large photography with purchase controls, material details, expandable sections, reviews, and related products.\n\nColor\n\nSize\n\nXS\nS\nM\nL\nAdd to bag\nFeatures\nDetailed features information expands in place for comparison before adding to bag.\nCare\nDetailed care information expands in place for comparison before adding to bag.\nShipping\nDetailed shipping information expands in place for comparison before adding to bag.\nReturns\nDetailed returns information expands in place for comparison before adding to bag.\nCustomers also purchased\n\nEssential Tee\n\nBone\n\n$32\n\nBoxy Tee\n\nBlack\n\n$38\n\nCanvas Tote\n\nTan\n\n$98\n\nEveryday Pack\n\nSage\n\n$112\n\nShop\nNew arrivals\nReturns\nGift cards\nSupport\nNew arrivals\nReturns\nGift cards\nCompany\nNew arrivals\nReturns\nGift cards\nNewsletter\nNew arrivals\nReturns\nGift cards\nWith featured details\nEXAMPLE 04\n\nTailwind의 product page 예시 이름과 개수를 맞춘 상품 상세 화면 변형입니다.\n\nproduct page\ngallery\npurchase\nPreview\nGet the code →\nProtocol\nWomen\nMen\nCompany\nStores\n\nWomen / New Arrivals\n\nEveryday Ruck Snack\n\n$88\n\n★★★★★\n117 reviews\n\nA product page pairs large photography with purchase controls, material details, expandable sections, reviews, and related products.\n\nColor\n\nSize\n\nXS\nS\nM\nL\nAdd to bag\nThe Fine Details\nWater resistant\n\nShort support copy mirrors the feature-detail rhythm in Tailwind product pages.\n\nPadded pocket\n\nShort support copy mirrors the feature-detail rhythm in Tailwind product pages.\n\nStable base\n\nShort support copy mirrors the feature-detail rhythm in Tailwind product pages.\n\nLifetime repair\n\nShort support copy mirrors the feature-detail rhythm in Tailwind product pages.\n\nCustomer Reviews\n★★★★★\n117 reviews\n\nPerfect everyday weight.\n\nVerified buyer\n\nThe fit is clean without feeling fragile.\n\nVerified buyer\n\nShipping was quick and the details matched the page.\n\nVerified buyer\n\nShop\nNew arrivals\nReturns\nGift cards\nSupport\nNew arrivals\nReturns\nGift cards\nCompany\nNew arrivals\nReturns\nGift cards\nNewsletter\nNew arrivals\nReturns\nGift cards\nWith tabs and related products\nEXAMPLE 05\n\nTailw",
+      "themeButtons": 15,
+      "actionButtons": 234,
+      "ariaPressedButtons": 15,
+      "productPageRoots": 0,
+      "overflowX": 0
+    },
+    "interactionBefore": {
+      "Search": {
+        "buttonCount": 5,
+        "feedback": true,
+        "ariaPressed": null
+      },
+      "Account": {
+        "buttonCount": 5,
+        "feedback": true,
+        "ariaPressed": null
+      },
+      "Black color": {
+        "buttonCount": 5,
+        "feedback": true,
+        "ariaPressed": null
+      },
+      "M": {
+        "buttonCount": 5,
+        "feedback": true,
+        "ariaPressed": null
+      },
+      "Add to bag": {
+        "buttonCount": 5,
+        "feedback": true,
+        "ariaPressed": null
+      },
+      "Features": {
+        "buttonCount": 0,
+        "feedback": false,
+        "ariaPressed": null
+      },
+      "Details": {
+        "buttonCount": 1,
+        "feedback": true,
+        "ariaPressed": null
+      },
+      "Reviews": {
+        "buttonCount": 2,
+        "feedback": true,
+        "ariaPressed": null
+      },
+      "Perfect everyday weight.": {
+        "buttonCount": 0,
+        "feedback": false,
+        "ariaPressed": null
+      },
+      "Essential Tee": {
+        "buttonCount": 0,
+        "feedback": false,
+        "ariaPressed": null
+      }
+    },
+    "darkButtons": {
+      "count": 4,
+      "pressedTrue": 4,
+      "pressed": [
+        "true",
+        "true",
+        "true",
+        "true"
+      ]
+    },
+    "darkBefore": {
+      "darkRoots": 0,
+      "darkSurfaces": 5,
+      "overflowX": 0
+    },
+    "mobileBefore": {
+      "overflowX": 0,
+      "visibleButtons": 158,
+      "productPageRoots": 0,
+      "bodySample": "UI Dictionary\n\nPLUS / UI BLOCKS / ECOMMERCE / PAGE EXAMPLES / PRODUCT PAGES\n\nProduct Pages\n\n상품 갤러리, 상세 정보, 옵션 선택, 가격, 구매 CTA, 리뷰로 구성되는 상품 상세 화면 예시입니다.\n\nTailwind Plus처럼 각 leaf의 첫 예제는 Preview와 Code를 함께 제공하고, 이후 예제는 Preview와 잠금 code CTA로 구분합니다. 우리 예시는 실제 화면 맥락에 맞춘 설명, tags, interaction feedback을 함께 보여줍니다.\n\nWith related products\nEXAMPLE 01\n\nTailwind의 product page 예시 이름과 개수를 맞춘 상품 상세 화면 변형입니다.\n\nproduct page\ngallery\npurchase\nPreview\nCode\nProtocol\n\nWomen / New Arrivals\n\nBasic Tee\n\n$35\n\n★★★★★\n117 reviews\n\nA product page pairs large photography with purchase controls, material details, expandable sections, reviews, and related products.\n\nColor\n\nSize\n\nXS\nS\nM\nL\nAdd to bag\nCustomer Reviews\n★★★★★\n117 reviews\n\nPerfect everyday weight.\n\nVerified buyer\n\nThe fit is clean without feeling fragile.\n\nVerified buyer\n\nShipping was quick and the details matched the page.\n\nVerified buyer\n\nCustomers also purchased\n\nEssential Tee\n\nBone\n\n$32\n\nBoxy Tee\n\nBlack\n\n$38\n\nCanvas Tote\n\nTan\n\n$98\n\nEveryday Pack\n\nSage\n\n$112\n\nShop\nNew arrivals\nReturns\nGift cards\nSupport\nNew arrivals\nReturns\nGift cards\nCompany\nNew arrivals\nReturns\nGift cards\nNewsletter\nNew arrivals\nReturns\nGift cards\nWith image grid\nEXAMPLE 02\n\nTailwind의 product page 예시 이름과 개수를 맞춘 상품 상세 화면 변형입니다.\n\nproduct page\ngallery\npurchase\nProtocol\n\nWomen / New Arrivals\n\nBasic Tee 6-Pack\n\n$192\n\n★★★★★\n117 reviews\n\nA product page pairs large photography with purchase controls, material details, expandable sections, reviews, and related products.\n\nColor\n\nSize\n\nXS\nS\nM\nL\nAdd to bag\nCustomer Reviews\n★★★★★\n117 reviews\n\nPerfect everyday weight.\n\nVerified buyer\n\nThe fit is clean without feeling fragile.\n\nVerified buyer\n\nShipping was quick and the details matched the page.\n\nVerified buyer\n\nCustomers also purchased\n\nEssential Tee\n\nBone\n\n$32\n\nBoxy Tee\n\nBlack\n\n$38\n\nCanvas Tote\n\nTan\n\n$98\n\nEveryday Pack\n\nSage\n\n$112\n\nShop\nNew arrivals\nReturns\nGift cards\nSupport\nNew arrivals\nReturns\nGift cards\nCompany\nNew arrivals\nReturns\nGift cards\nNewsletter\nNew arrivals\nReturns\nGift cards\nWith expandable product details\nEXAMPLE 03\n\nTailwind의 product page 예시 이름과 개수를 맞춘 상품 상세 화면 변형입니다.\n\nproduct page\ngallery\npurchase\nProtocol\n\nWomen / New Arrivals\n\nZip Tote Basket\n\n$140\n\n★★★★★\n117 reviews\n\nA product page pairs large photography with purchase controls, material details, expandable sections, reviews, and related products.\n\nColor\n\nSize\n\nXS\nS\nM\nL\nAdd to bag\nFeatures\nDetailed features information expands in place for comparison before adding to bag.\nCare\nDetailed care information expands in place for comparison before adding to bag.\nShipping\nDetailed shipping information expands in place for comparison before adding to bag.\nReturns\nDetailed returns information expands in place for comparison before adding to bag.\nCustomers also purchased\n\nEssential Tee\n\nBone\n\n$32\n\nBoxy Tee\n\nBlack\n\n$38\n\nCanvas Tote\n\nTan\n\n$98\n\nEveryday Pack\n\nSage\n\n$112\n\nShop\nNew arrivals\nReturns\nGift cards\nSupport\nNew arrivals\nReturns\nGift cards\nCompany\nNew arrivals\nReturns\nGift cards\nNewsletter\nNew arrival"
+    },
+    "errors": []
+  }
+}

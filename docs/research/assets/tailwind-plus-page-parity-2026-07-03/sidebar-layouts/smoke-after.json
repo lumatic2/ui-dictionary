@@ -1,0 +1,30 @@
+{
+  "url": "http://127.0.0.1:5174/?filter=nav%3Aplus-application-shells-sidebar-layouts",
+  "initial": {
+    "navCount": 18,
+    "primaryNavCount": 8,
+    "teamNavCount": 8,
+    "ariaCurrentCount": 8,
+    "teamButtonCount": 24,
+    "profileButtonCount": 8,
+    "bodyOverflowX": 0
+  },
+  "documentsFeedback": 1,
+  "documentsCurrentCount": 1,
+  "heroiconsFeedback": 1,
+  "profileFeedback": 1,
+  "darkButtons": 8,
+  "darkSurfaceCount": 6,
+  "mobileInitial": {
+    "primaryNavCount": 8,
+    "teamNavCount": 8,
+    "ariaCurrentCount": 8,
+    "bodyOverflowX": 0
+  },
+  "mobileReportsFeedback": 1,
+  "mobileReportsCurrentCount": 1,
+  "mobileOverflowX": 0,
+  "consoleMessages": [],
+  "pageErrors": [],
+  "timestamp": "2026-07-03T16:16:46.435Z"
+}

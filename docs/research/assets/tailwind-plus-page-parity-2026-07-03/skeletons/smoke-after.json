@@ -1,0 +1,16 @@
+{
+  "url": "http://127.0.0.1:5174/?filter=nav%3Aplus-feedback-skeletons",
+  "severe": [],
+  "overlayText": 0,
+  "overflow": 0,
+  "statusCountBefore": 3,
+  "loadedFeedbackCount": 3,
+  "cardFeedback": 1,
+  "rowFeedback": 1,
+  "articleFeedback": 1,
+  "resetFeedback": 1,
+  "statusCountAfterReset": 1,
+  "allDarkButtonCount": 3,
+  "darkSurfaceCount": 7,
+  "timestamp": "2026-07-03T14:37:29.642Z"
+}

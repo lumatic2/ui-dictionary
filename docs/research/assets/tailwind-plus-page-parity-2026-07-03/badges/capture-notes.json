@@ -1,0 +1,26 @@
+{
+  "tailwind": {
+    "url": "https://tailwindcss.com/plus/ui-blocks/application-ui/elements/badges",
+    "status": 200,
+    "title": "Tailwind CSS Badges - Official Tailwind UI Components",
+    "h1": "Badges",
+    "exampleTextCount": 28
+  },
+  "localUrl": "http://127.0.0.1:5174/?filter=nav%3Aplus-application-elements-badges",
+  "localDesktop": {
+    "title": "UI 용어 사전",
+    "h1": null,
+    "buttonCount": 153,
+    "badgeTextCount": 33,
+    "removableCount": 0,
+    "ariaPressedCount": 0,
+    "darkToggleCount": 16,
+    "bodyOverflowX": 0
+  },
+  "localMobile": {
+    "buttonCount": 153,
+    "darkToggleCount": 16,
+    "bodyOverflowX": 0
+  },
+  "timestamp": "2026-07-03T16:44:46.482Z"
+}

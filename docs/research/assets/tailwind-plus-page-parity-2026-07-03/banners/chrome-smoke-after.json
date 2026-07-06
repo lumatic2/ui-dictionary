@@ -1,0 +1,220 @@
+{
+  "url": "http://127.0.0.1:5200/?filter=nav%3Aplus-marketing-banners",
+  "finalState": {
+    "actions": 25,
+    "h2": "Banners",
+    "h3s": [
+      "With button",
+      "On dark",
+      "On brand",
+      "With background glow",
+      "With link",
+      "Left-aligned",
+      "Bottom aligned",
+      "Floating at bottom",
+      "Floating at bottom centered",
+      "Privacy notice right-aligned",
+      "Privacy notice centered",
+      "Privacy notice left-aligned",
+      "Privacy notice full width"
+    ],
+    "overflow": 0,
+    "roots": 13
+  },
+  "clickEvidence": [
+    {
+      "feedback": [
+        "Funding details opened"
+      ],
+      "pressed": [
+        "System",
+        "Open banner funding details",
+        "System",
+        "System",
+        "System",
+        "System",
+        "System",
+        "System",
+        "System",
+        "System",
+        "System",
+        "System",
+        "System",
+        "System"
+      ],
+      "selector": "[data-banner-section-variant=\"banner-with-button\"] button[aria-label=\"Open banner funding details\"]"
+    },
+    {
+      "feedback": [
+        "Register now clicked"
+      ],
+      "pressed": [
+        "System",
+        "Register banner Register now",
+        "System",
+        "System",
+        "System",
+        "System",
+        "System",
+        "System",
+        "System",
+        "System",
+        "System",
+        "System",
+        "System",
+        "System"
+      ],
+      "selector": "[data-banner-section-variant=\"banner-with-button\"] button[aria-label=\"Register banner Register now\"]"
+    },
+    {
+      "feedback": [
+        "Register now clicked",
+        "Banner details opened"
+      ],
+      "pressed": [
+        "System",
+        "Register banner Register now",
+        "System",
+        "System",
+        "System",
+        "System",
+        "Open banner details",
+        "System",
+        "System",
+        "System",
+        "System",
+        "System",
+        "System",
+        "System",
+        "System"
+      ],
+      "selector": "[data-banner-section-variant=\"banner-with-link\"] button[aria-label=\"Open banner details\"]"
+    },
+    {
+      "feedback": [
+        "Register now clicked",
+        "Banner details opened",
+        "Banner details opened"
+      ],
+      "pressed": [
+        "System",
+        "Register banner Register now",
+        "System",
+        "System",
+        "System",
+        "System",
+        "Open banner details",
+        "System",
+        "System",
+        "System",
+        "System",
+        "Open banner details",
+        "System",
+        "System",
+        "System",
+        "System"
+      ],
+      "selector": "[data-banner-section-variant=\"banner-floating-bottom-centered\"] button[aria-label=\"Open banner details\"]"
+    },
+    {
+      "feedback": [
+        "Register now clicked",
+        "Banner details opened",
+        "Banner details opened",
+        "Privacy notice dismissed"
+      ],
+      "pressed": [
+        "System",
+        "Register banner Register now",
+        "System",
+        "System",
+        "System",
+        "System",
+        "Open banner details",
+        "System",
+        "System",
+        "System",
+        "System",
+        "Open banner details",
+        "System",
+        "Dismiss banner privacy notice",
+        "System",
+        "System",
+        "System"
+      ],
+      "selector": "[data-banner-section-variant=\"banner-privacy-right\"] button[aria-label=\"Dismiss banner privacy notice\"]"
+    },
+    {
+      "feedback": [
+        "Register now clicked",
+        "Banner details opened",
+        "Banner details opened",
+        "Privacy notice dismissed",
+        "Accept all clicked"
+      ],
+      "pressed": [
+        "System",
+        "Register banner Register now",
+        "System",
+        "System",
+        "System",
+        "System",
+        "Open banner details",
+        "System",
+        "System",
+        "System",
+        "System",
+        "Open banner details",
+        "System",
+        "Dismiss banner privacy notice",
+        "System",
+        "System",
+        "System",
+        "Register banner Accept all"
+      ],
+      "selector": "[data-banner-section-variant=\"banner-privacy-full\"] button[aria-label=\"Register banner Accept all\"]"
+    }
+  ],
+  "theme": {
+    "darkCount": 13,
+    "lightCount": 13,
+    "afterDark": {
+      "overflow": 0,
+      "pressed": 13,
+      "roots": [
+        "dark",
+        "dark",
+        "dark",
+        "dark",
+        "dark",
+        "dark",
+        "dark",
+        "dark",
+        "dark",
+        "dark",
+        "dark",
+        "dark",
+        "dark"
+      ]
+    },
+    "afterLight": {
+      "overflow": 0,
+      "pressed": 13,
+      "roots": [
+        "light",
+        "light",
+        "light",
+        "light",
+        "light",
+        "light",
+        "light",
+        "light",
+        "light",
+        "light",
+        "light",
+        "light",
+        "light"
+      ]
+    }
+  }
+}

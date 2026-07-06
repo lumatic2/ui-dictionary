@@ -1,0 +1,33 @@
+{
+  "url": "http://127.0.0.1:5174/?filter=nav%3Aplus-application-layout-list-containers",
+  "before": {
+    "title": "UI 용어 사전",
+    "pageHeadingCount": 1,
+    "exampleHeadingCount": 7,
+    "themeButtonCount": 21,
+    "darkButtonCount": 7,
+    "activeSystemCount": 7,
+    "darkSurfaceCount": 1,
+    "darkRowCount": 0,
+    "bodyOverflowX": 0
+  },
+  "afterDark": {
+    "activeDarkCount": 7,
+    "darkSurfaceCount": 26,
+    "darkRowCount": 30,
+    "bodyOverflowX": 0
+  },
+  "afterLight": {
+    "activeLightCount": 7,
+    "darkSurfaceCount": 1,
+    "darkRowCount": 0,
+    "bodyOverflowX": 0
+  },
+  "mobile": {
+    "themeButtonCount": 21,
+    "bodyOverflowX": 0
+  },
+  "consoleMessages": [],
+  "pageErrors": [],
+  "timestamp": "2026-07-03T18:13:53.511Z"
+}

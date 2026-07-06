@@ -1,0 +1,52 @@
+{
+  "url": "http://127.0.0.1:5174/?filter=nav%3Aplus-forms-select-menus",
+  "before": {
+    "title": "UI 용어 사전",
+    "buttonCount": 142,
+    "nativeSelectCount": 2,
+    "comboboxCount": 6,
+    "expandedComboboxCount": 0,
+    "listboxCount": 0,
+    "optionCount": 28,
+    "selectedOptionCount": 6,
+    "darkToggleCount": 7,
+    "bodyOverflowX": 0
+  },
+  "afterOpen": {
+    "expandedComboboxCount": 1,
+    "listboxCount": 1,
+    "optionCount": 28,
+    "selectedOptionCount": 6,
+    "bodyOverflowX": 0
+  },
+  "afterPersonSelect": {
+    "expandedComboboxCount": 0,
+    "listboxCount": 0,
+    "feedback": true,
+    "selectedWade": true,
+    "bodyOverflowX": 0
+  },
+  "afterStatusNative": {
+    "locationValue": "Mexico",
+    "awayFeedback": true,
+    "expandedComboboxCount": 0,
+    "listboxCount": 0,
+    "bodyOverflowX": 0
+  },
+  "afterDark": {
+    "darkToggleCount": 7,
+    "activeDarkToggleCount": 7,
+    "darkSurfaceCount": 7,
+    "bodyOverflowX": 0
+  },
+  "mobile": {
+    "comboboxCount": 6,
+    "expandedComboboxCount": 1,
+    "listboxCount": 1,
+    "feedback": true,
+    "bodyOverflowX": 0
+  },
+  "consoleMessages": [],
+  "pageErrors": [],
+  "timestamp": "2026-07-03T17:09:52.834Z"
+}

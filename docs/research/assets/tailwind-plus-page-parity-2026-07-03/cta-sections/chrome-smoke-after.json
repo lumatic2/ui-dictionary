@@ -1,0 +1,49 @@
+{
+  "initial": {
+    "buttons": 117,
+    "ctaDetailButtons": 11,
+    "ctaRoots": 11,
+    "ctaStartButtons": 11,
+    "darkRoots": 0,
+    "h2": "CTA Sections",
+    "h3": [
+      "Dark panel with app screenshot",
+      "Simple stacked",
+      "Centered on dark panel",
+      "Simple centered",
+      "Simple centered with gradient",
+      "Simple centered on brand",
+      "Simple justified",
+      "Simple justified on subtle brand",
+      "Split with image",
+      "Two columns with photo",
+      "With image tiles"
+    ],
+    "lightRoots": 11,
+    "overflow": 0
+  },
+  "checks": {
+    "started": true,
+    "details": true
+  },
+  "selectedAfter": {
+    "overflow": 0,
+    "pressedDetails": 1,
+    "pressedStart": 0
+  },
+  "darkAfter": {
+    "ctaRoots": 11,
+    "darkPressed": 11,
+    "darkRoots": 11,
+    "lightRoots": 0,
+    "overflow": 0
+  },
+  "lightAfter": {
+    "ctaRoots": 11,
+    "darkRoots": 0,
+    "lightPressed": 11,
+    "lightRoots": 11,
+    "overflow": 0
+  },
+  "logs": []
+}

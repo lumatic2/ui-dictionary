@@ -1,0 +1,26 @@
+{
+  "tailwind": {
+    "url": "https://tailwindcss.com/plus/ui-blocks/application-ui/elements/buttons",
+    "status": 200,
+    "title": "Tailwind CSS Buttons - Official Tailwind UI Components",
+    "h1": "Buttons",
+    "exampleTextCount": 21
+  },
+  "localUrl": "http://127.0.0.1:5174/?filter=nav%3Aplus-application-elements-buttons",
+  "localDesktop": {
+    "title": "UI 용어 사전",
+    "h1": null,
+    "buttonCount": 151,
+    "previewButtonCount": 38,
+    "ariaPressedCount": 0,
+    "ariaExpandedCount": 0,
+    "darkToggleCount": 8,
+    "bodyOverflowX": 0
+  },
+  "localMobile": {
+    "buttonCount": 151,
+    "darkToggleCount": 8,
+    "bodyOverflowX": 0
+  },
+  "timestamp": "2026-07-03T16:49:27.353Z"
+}

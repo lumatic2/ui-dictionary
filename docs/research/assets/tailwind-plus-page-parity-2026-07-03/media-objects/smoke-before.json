@@ -1,0 +1,26 @@
+{
+  "url": "http://127.0.0.1:5174/?filter=nav%3Aplus-application-layout-media-objects",
+  "before": {
+    "themeButtonCount": 24,
+    "darkButtonCount": 8,
+    "activeSystemCount": 8,
+    "darkSurfaceCount": 9,
+    "darkTextCount": 12,
+    "bodyOverflowX": 0
+  },
+  "afterDark": {
+    "activeDarkCount": 8,
+    "darkSurfaceCount": 9,
+    "darkTextCount": 12,
+    "bodyOverflowX": 0
+  },
+  "afterLight": {
+    "activeLightCount": 8,
+    "darkSurfaceCount": 9,
+    "darkTextCount": 12,
+    "bodyOverflowX": 0
+  },
+  "consoleMessages": [],
+  "pageErrors": [],
+  "timestamp": "2026-07-03T18:17:13.020Z"
+}

@@ -1,0 +1,122 @@
+{
+  "summary": {
+    "h2": [
+      "Checkout Pages"
+    ],
+    "h3": [
+      "With order summary sidebar",
+      "Single step with order summary",
+      "With mobile order summary overlay",
+      "Multi-step",
+      "Split with order summary"
+    ],
+    "actionButtons": 132,
+    "inputs": 62,
+    "ariaPressedButtons": 86,
+    "checkoutPageRoots": 5,
+    "lightRoots": 5,
+    "darkRoots": 0,
+    "overflowX": 0
+  },
+  "interactions": [
+    {
+      "label": "Open checkout Search",
+      "count": 1,
+      "pressed": "true",
+      "feedback": true
+    },
+    {
+      "label": "Open checkout Account",
+      "count": 1,
+      "pressed": "true",
+      "feedback": true
+    },
+    {
+      "label": "Open checkout Cart",
+      "count": 1,
+      "pressed": "true",
+      "feedback": true
+    },
+    {
+      "label": "Select checkout express payment",
+      "count": 1,
+      "pressed": "true",
+      "feedback": true
+    },
+    {
+      "label": "Confirm checkout order",
+      "count": 1,
+      "pressed": "true",
+      "feedback": true
+    },
+    {
+      "label": "Continue checkout shipping step",
+      "count": 1,
+      "pressed": "true",
+      "feedback": true
+    },
+    {
+      "label": "Continue checkout to payment",
+      "count": 1,
+      "pressed": "true",
+      "feedback": true
+    },
+    {
+      "label": "Submit checkout payment",
+      "count": 1,
+      "pressed": "true",
+      "feedback": true
+    },
+    {
+      "label": "Open checkout summary item Mini Backpack",
+      "count": 1,
+      "pressed": "true",
+      "feedback": true
+    },
+    {
+      "label": "Open checkout step Payment",
+      "count": 1,
+      "pressed": "true",
+      "feedback": true
+    },
+    {
+      "label": "Open checkout footer Products Bags",
+      "count": 1,
+      "pressed": "true",
+      "feedback": true
+    },
+    {
+      "label": "Submit checkout newsletter signup",
+      "count": 1,
+      "pressed": "true",
+      "feedback": true
+    }
+  ],
+  "inputProofBeforeBlur": "alex@example.com",
+  "inputProofAfterBlur": "alex@example.com",
+  "darkState": {
+    "roots": 5,
+    "darkSurfaces": 82,
+    "overflowX": 0,
+    "pressedTrue": 5,
+    "buttonCount": 5
+  },
+  "lightState": {
+    "roots": 5,
+    "darkSurfaces": 6,
+    "overflowX": 0,
+    "pressedTrue": 5,
+    "buttonCount": 5
+  },
+  "mobile": {
+    "buttons": 132,
+    "inputs": 62,
+    "roots": 5,
+    "overflowX": 0,
+    "feedback": true,
+    "beforeExpanded": "true",
+    "afterExpanded": "false",
+    "continuePressed": "true"
+  },
+  "errors": []
+}

@@ -1,0 +1,105 @@
+{
+  "browserFallback": "Browser/Chrome path failed earlier: Browser is not available: iab / packaged browser documentation directory missing; standalone Playwright fallback used",
+  "reference": {
+    "status": 200,
+    "title": "Tailwind CSS Product Features - Official Tailwind UI Components",
+    "h1": "Product Features",
+    "exampleHeadings": [
+      "Components",
+      "Page Examples",
+      "Build UIs that don’t suck.",
+      "With image grid",
+      "With image grid",
+      "With header, images, and descriptions",
+      "With header, images, and descriptions",
+      "With fading image",
+      "With fading image",
+      "With wide images",
+      "With wide images",
+      "With split image",
+      "With split image",
+      "With tabs",
+      "With tabs",
+      "With alternating sections",
+      "With alternating sections",
+      "With square images",
+      "With square images",
+      "With tiered images",
+      "With tiered images",
+      "Marketing",
+      "Application UI",
+      "Ecommerce",
+      "Templates & UI Kits"
+    ]
+  },
+  "local": {
+    "before": {
+      "title": "UI 용어 사전",
+      "h1Like": [
+        "Product Features"
+      ],
+      "examples": [
+        "With image grid",
+        "With header, images, and descriptions",
+        "With fading image",
+        "With wide images",
+        "With split image",
+        "With tabs",
+        "With alternating sections",
+        "With square images",
+        "With tiered images"
+      ],
+      "themeButtons": 27,
+      "actionButtons": 84,
+      "tabButtons": 3,
+      "featureButtons": 2,
+      "darkFrames": 0,
+      "overflowX": 0
+    },
+    "interactionBefore": {
+      "feedback": [
+        "Plus / UI Blocks / Ecommerce / Components / Product Features",
+        "Tailwind의 product feature 예시 이름과 개수를 맞춘 상품 설명 변형입니다.",
+        "Product feature sections pair tactile imagery with concise details so shoppers can understand materials, use cases, and care before comparing options.",
+        "Tailwind의 product feature 예시 이름과 개수를 맞춘 상품 설명 변형입니다.",
+        "Product feature sections pair tactile imagery with concise details so shoppers can understand materials, use cases, and care before comparing options.",
+        "Tailwind의 product feature 예시 이름과 개수를 맞춘 상품 설명 변형입니다.",
+        "Product feature sections pair tactile imagery with concise details so shoppers can understand materials, use cases, and care before comparing options.",
+        "Tailwind의 product feature 예시 이름과 개수를 맞춘 상품 설명 변형입니다.",
+        "Product feature sections pair tactile imagery with concise details so shoppers can understand materials, use cases, and care before comparing options.",
+        "Tailwind의 product feature 예시 이름과 개수를 맞춘 상품 설명 변형입니다.",
+        "Product feature sections pair tactile imagery with concise details so shoppers can understand materials, use cases, and care before comparing options.",
+        "Tailwind의 product feature 예시 이름과 개수를 맞춘 상품 설명 변형입니다.",
+        "Product feature sections pair tactile imagery with concise details so shoppers can understand materials, use cases, and care before comparing options.",
+        "Materials tab selected",
+        "Tailwind의 product feature 예시 이름과 개수를 맞춘 상품 설명 변형입니다.",
+        "Tailwind의 product feature 예시 이름과 개수를 맞춘 상품 설명 변형입니다.",
+        "Product feature sections pair tactile imagery with concise details so shoppers can understand materials, use cases, and care before comparing options.",
+        "Tailwind의 product feature 예시 이름과 개수를 맞춘 상품 설명 변형입니다.",
+        "Product feature sections pair tactile imagery with concise details so shoppers can understand materials, use cases, and care before comparing options."
+      ],
+      "pressedButtons": [
+        "System",
+        "System",
+        "System",
+        "System",
+        "System",
+        "System",
+        "System",
+        "System",
+        "System"
+      ],
+      "materialsCopyVisible": true
+    },
+    "darkBefore": {
+      "pressedDark": 9,
+      "darkFrames": 0,
+      "lightSurfaces": 49
+    },
+    "mobileBefore": {
+      "overflowX": 0,
+      "themeButtons": 27
+    },
+    "errors": []
+  }
+}

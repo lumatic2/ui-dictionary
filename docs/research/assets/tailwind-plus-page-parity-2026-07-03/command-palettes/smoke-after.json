@@ -1,0 +1,22 @@
+{
+  "url": "http://127.0.0.1:5174/?filter=nav%3Aplus-navigation-command-palettes",
+  "title": "UI 용어 사전",
+  "severe": [],
+  "overlayText": 0,
+  "comboboxCount": 8,
+  "listboxCount": 8,
+  "optionCount": 38,
+  "selectedOptionCount": 8,
+  "activeDescendantCount": 8,
+  "expandedComboboxCount": 8,
+  "emFilterOptionCount": 14,
+  "keyboardSelectedFeedback": 1,
+  "darkButtonCount": 8,
+  "darkSurfaceCount": 5,
+  "bodyOverflowX": 0,
+  "mobileOverflowX": 0,
+  "mobileComboboxCount": 8,
+  "mobileListboxCount": 8,
+  "mobileFilteredTomOptionCount": 6,
+  "timestamp": "2026-07-03T15:24:52.799Z"
+}

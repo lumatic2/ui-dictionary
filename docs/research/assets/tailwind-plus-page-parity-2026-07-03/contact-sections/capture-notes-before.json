@@ -1,0 +1,62 @@
+{
+  "reference": {
+    "buttons": [
+      "Search",
+      "Search",
+      "Navigation",
+      "Open navigation menu",
+      "Preview",
+      "Code",
+      "Preview",
+      "Code"
+    ],
+    "h1": "Contact Sections",
+    "h2s": [
+      "Centered",
+      "Centered",
+      "Side-by-side grid",
+      "Side-by-side grid",
+      "Split with pattern",
+      "Split with pattern",
+      "Simple four-column",
+      "Simple four-column",
+      "Simple centered",
+      "Simple centered",
+      "With testimonial",
+      "With testimonial",
+      "Split with image",
+      "Split with image"
+    ],
+    "h3s": [
+      "Page Sections",
+      "Elements",
+      "Feedback",
+      "Page Examples",
+      "Build UIs that don’t suck.",
+      "Marketing",
+      "Application UI",
+      "Ecommerce",
+      "Templates & UI Kits"
+    ],
+    "overflow": 0,
+    "title": "Tailwind CSS Contact Sections - Official Tailwind UI Components",
+    "url": "https://tailwindcss.com/plus/ui-blocks/marketing/sections/contact-sections"
+  },
+  "localBefore": {
+    "actions": 0,
+    "allButtons": 83,
+    "h2": "Contact Sections",
+    "h3s": [
+      "Centered",
+      "Side-by-side grid",
+      "Split with pattern",
+      "Simple four-column",
+      "Simple centered",
+      "With testimonial",
+      "Split with image"
+    ],
+    "overflow": 0,
+    "roots": 0,
+    "url": "http://127.0.0.1:5200/?filter=nav%3Aplus-marketing-contact-sections"
+  }
+}

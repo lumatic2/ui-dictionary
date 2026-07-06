@@ -1,0 +1,112 @@
+{
+  "url": "http://127.0.0.1:5196/?filter=nav%3Aplus-ecommerce-page-examples-category-pages",
+  "summary": {
+    "title": "UI 용어 사전",
+    "h2": [
+      "Category Pages"
+    ],
+    "themeButtons": 15,
+    "actionButtons": 241,
+    "ariaPressedButtons": 195,
+    "categoryPageRoots": 5,
+    "darkRoots": 0,
+    "lightRoots": 5,
+    "overflowX": 0
+  },
+  "interactions": [
+    {
+      "label": "Open category Search",
+      "count": 5,
+      "pressed": "true",
+      "feedback": true
+    },
+    {
+      "label": "Open category Filters",
+      "count": 5,
+      "pressed": "true",
+      "feedback": true
+    },
+    {
+      "label": "Open category Cart",
+      "count": 5,
+      "pressed": "true",
+      "feedback": true
+    },
+    {
+      "label": "Toggle category filter Apparel",
+      "count": 2,
+      "pressed": "true",
+      "feedback": true
+    },
+    {
+      "label": "Toggle category chip New",
+      "count": 5,
+      "pressed": "true",
+      "feedback": true
+    },
+    {
+      "label": "Open category sort",
+      "count": 5,
+      "pressed": "true",
+      "feedback": true
+    },
+    {
+      "label": "Open category product Black Basic Tee",
+      "count": 5,
+      "pressed": "true",
+      "feedback": true
+    },
+    {
+      "label": "Open category page 2",
+      "count": 1,
+      "pressed": "true",
+      "feedback": true
+    },
+    {
+      "label": "Open category footer Shop Gift cards",
+      "count": 5,
+      "pressed": "true",
+      "feedback": true
+    }
+  ],
+  "darkButtons": {
+    "count": 5,
+    "pressedTrue": 5,
+    "pressed": [
+      "true",
+      "true",
+      "true",
+      "true",
+      "true"
+    ]
+  },
+  "darkState": {
+    "roots": 5,
+    "darkSurfaces": 74,
+    "overflowX": 0
+  },
+  "lightButtons": {
+    "count": 5,
+    "pressedTrue": 5,
+    "pressed": [
+      "true",
+      "true",
+      "true",
+      "true",
+      "true"
+    ]
+  },
+  "lightState": {
+    "roots": 5,
+    "darkSurfaces": 3,
+    "overflowX": 0
+  },
+  "mobile": {
+    "buttons": 241,
+    "roots": 5,
+    "overflowX": 0,
+    "feedback": true,
+    "pressed": "true"
+  },
+  "errors": []
+}

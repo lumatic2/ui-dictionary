@@ -1,0 +1,94 @@
+{
+  "finalState": {
+    "h2": "404 Pages",
+    "h3s": [
+      "Simple",
+      "Split with image",
+      "With popular pages",
+      "With background image",
+      "With navbar and footer"
+    ],
+    "roots": 5,
+    "actions": 20,
+    "overflow": -15
+  },
+  "clickEvidence": [
+    {
+      "selector": "[data-not-found-variant=\"not-found-simple\"] button[aria-label=\"Go 404 back home\"]",
+      "feedback": [
+        "Home route opened"
+      ],
+      "pressed": [
+        "System",
+        "Go 404 back home",
+        "System",
+        "System",
+        "System",
+        "System"
+      ]
+    },
+    {
+      "selector": "[data-not-found-variant=\"not-found-simple\"] button[aria-label=\"Contact 404 support\"]",
+      "feedback": [
+        "Support contact opened"
+      ],
+      "pressed": [
+        "System",
+        "Contact 404 support",
+        "System",
+        "System",
+        "System",
+        "System"
+      ]
+    },
+    {
+      "selector": "[data-not-found-variant=\"not-found-popular\"] button[aria-label=\"Open 404 popular Documentation\"]",
+      "feedback": [
+        "Support contact opened",
+        "Documentation 404 opened"
+      ],
+      "pressed": [
+        "System",
+        "Contact 404 support",
+        "System",
+        "System",
+        "Open 404 popular Documentation",
+        "System",
+        "System"
+      ]
+    },
+    {
+      "selector": "[data-not-found-variant=\"not-found-navbar-footer\"] button[aria-label=\"Open 404 social GitHub\"]",
+      "feedback": [
+        "Support contact opened",
+        "Documentation 404 opened",
+        "GitHub 404 opened"
+      ],
+      "pressed": [
+        "System",
+        "Contact 404 support",
+        "System",
+        "System",
+        "Open 404 popular Documentation",
+        "System",
+        "System",
+        "Open 404 social GitHub"
+      ]
+    }
+  ],
+  "theme": {
+    "darkCount": 5,
+    "afterDark": {
+      "roots": [
+        "dark",
+        "dark",
+        "dark",
+        "dark",
+        "dark"
+      ],
+      "pressed": 5,
+      "overflow": -15
+    }
+  },
+  "errors": []
+}

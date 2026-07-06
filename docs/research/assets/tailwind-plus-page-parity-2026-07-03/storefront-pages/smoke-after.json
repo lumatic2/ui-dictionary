@@ -1,0 +1,110 @@
+{
+  "url": "http://127.0.0.1:5194/?filter=nav%3Aplus-ecommerce-page-examples-storefront-pages",
+  "summary": {
+    "title": "UI 용어 사전",
+    "h2": [
+      "Storefront Pages"
+    ],
+    "themeButtons": 12,
+    "actionButtons": 180,
+    "ariaPressedButtons": 136,
+    "storefrontRoots": 4,
+    "darkRoots": 0,
+    "lightRoots": 4,
+    "overflowX": 0
+  },
+  "interactions": [
+    {
+      "label": "Open storefront Search",
+      "count": 4,
+      "pressed": "true",
+      "feedback": true
+    },
+    {
+      "label": "Open storefront Account",
+      "count": 4,
+      "pressed": "true",
+      "feedback": true
+    },
+    {
+      "label": "Open storefront collection Dark",
+      "count": 1,
+      "pressed": "true",
+      "feedback": true
+    },
+    {
+      "label": "Open category Stationery",
+      "count": 1,
+      "pressed": "true",
+      "feedback": true
+    },
+    {
+      "label": "Open product Black precision pen",
+      "count": 2,
+      "pressed": "true",
+      "feedback": true
+    },
+    {
+      "label": "Open storefront sale collection",
+      "count": 1,
+      "pressed": "true",
+      "feedback": true
+    },
+    {
+      "label": "Open story Better material choices.",
+      "count": 1,
+      "pressed": "true",
+      "feedback": true
+    },
+    {
+      "label": "Open detail Natural materials",
+      "count": 1,
+      "pressed": "true",
+      "feedback": true
+    },
+    {
+      "label": "Open perk Free shipping",
+      "count": 3,
+      "pressed": "true",
+      "feedback": true
+    }
+  ],
+  "darkButtons": {
+    "count": 4,
+    "pressedTrue": 4,
+    "pressed": [
+      "true",
+      "true",
+      "true",
+      "true"
+    ]
+  },
+  "darkState": {
+    "roots": 4,
+    "darkSurfaces": 22,
+    "overflowX": 0
+  },
+  "lightButtons": {
+    "count": 4,
+    "pressedTrue": 4,
+    "pressed": [
+      "true",
+      "true",
+      "true",
+      "true"
+    ]
+  },
+  "lightState": {
+    "roots": 4,
+    "darkSurfaces": 9,
+    "overflowX": 0
+  },
+  "mobile": {
+    "buttons": 180,
+    "roots": 4,
+    "overflowX": 0,
+    "feedback": true,
+    "pressed": "true"
+  },
+  "errors": []
+}

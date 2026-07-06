@@ -1,0 +1,43 @@
+{
+  "url": "http://127.0.0.1:5174/?filter=nav%3Aplus-forms-action-panels",
+  "browserAvailability": "in-app Browser failed: Browser is not available: iab; standalone Playwright fallback used",
+  "before": {
+    "title": "UI 용어 사전",
+    "buttonCount": 120,
+    "inputCount": 1,
+    "switchRoleCount": 1,
+    "checkedSwitchCount": 0,
+    "themeButtonCount": 24,
+    "darkButtonCount": 8,
+    "activeSystemCount": 8,
+    "bodyOverflowX": 0
+  },
+  "afterInteractions": {
+    "checkedSwitchCount": 1,
+    "inputValue": "teammate@example.com",
+    "planFeedbackCount": 4,
+    "ciFeedback": true,
+    "hiringFeedback": true,
+    "draftFeedback": false,
+    "inviteFeedback": true,
+    "bodyOverflowX": 0
+  },
+  "afterDark": {
+    "darkButtonCount": 8,
+    "activeDarkCount": 8,
+    "checkedSwitchCount": 1,
+    "darkSurfaceCount": 32,
+    "bodyOverflowX": 0
+  },
+  "mobile": {
+    "buttonCount": 120,
+    "inputCount": 1,
+    "switchRoleCount": 1,
+    "checkedSwitchCount": 1,
+    "feedback": true,
+    "bodyOverflowX": 0
+  },
+  "consoleMessages": [],
+  "pageErrors": [],
+  "timestamp": "2026-07-03T17:56:38.502Z"
+}

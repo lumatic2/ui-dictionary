@@ -1,0 +1,245 @@
+{
+  "url": "http://127.0.0.1:5200/?filter=nav%3Aplus-marketing-flyout-menus",
+  "finalState": {
+    "actions": 79,
+    "h2": "Flyout Menus",
+    "h3s": [
+      "Stacked with footer actions",
+      "Full-width two-columns",
+      "Stacked with footer list",
+      "Full-width",
+      "Simple with descriptions",
+      "Two-column",
+      "Simple"
+    ],
+    "overflow": 0,
+    "roots": 7
+  },
+  "clickEvidence": [
+    {
+      "expanded": [
+        "Toggle flyout Product menu",
+        "Toggle flyout Product menu",
+        "Toggle flyout Product menu",
+        "Toggle flyout Product menu",
+        "Toggle flyout Product menu",
+        "Toggle flyout Product menu",
+        "Toggle flyout Product menu"
+      ],
+      "feedback": [
+        "Product flyout opened"
+      ],
+      "pressed": [
+        "System",
+        "Toggle flyout Product menu",
+        "System",
+        "System",
+        "System",
+        "System",
+        "System",
+        "System"
+      ],
+      "selector": "[data-flyout-menu-variant=\"flyout-stacked-footer-actions\"] button[aria-label=\"Toggle flyout Product menu\"]"
+    },
+    {
+      "expanded": [
+        "Toggle flyout Product menu",
+        "Toggle flyout Product menu",
+        "Toggle flyout Product menu",
+        "Toggle flyout Product menu",
+        "Toggle flyout Product menu",
+        "Toggle flyout Product menu",
+        "Toggle flyout Product menu"
+      ],
+      "feedback": [
+        "Analytics flyout opened"
+      ],
+      "pressed": [
+        "System",
+        "Open flyout item Analytics",
+        "System",
+        "System",
+        "System",
+        "System",
+        "System",
+        "System"
+      ],
+      "selector": "[data-flyout-menu-variant=\"flyout-stacked-footer-actions\"] button[aria-label=\"Open flyout item Analytics\"]"
+    },
+    {
+      "expanded": [
+        "Toggle flyout Product menu",
+        "Toggle flyout Product menu",
+        "Toggle flyout Product menu",
+        "Toggle flyout Product menu",
+        "Toggle flyout Product menu",
+        "Toggle flyout Product menu",
+        "Toggle flyout Product menu"
+      ],
+      "feedback": [
+        "Contact sales flyout opened"
+      ],
+      "pressed": [
+        "System",
+        "Open flyout footer Contact sales",
+        "System",
+        "System",
+        "System",
+        "System",
+        "System",
+        "System"
+      ],
+      "selector": "[data-flyout-menu-variant=\"flyout-stacked-footer-actions\"] button[aria-label=\"Open flyout footer Contact sales\"]"
+    },
+    {
+      "expanded": [
+        "Toggle flyout Product menu",
+        "Toggle flyout Product menu",
+        "Toggle flyout Product menu",
+        "Toggle flyout Product menu",
+        "Toggle flyout Product menu",
+        "Toggle flyout Product menu",
+        "Toggle flyout Product menu"
+      ],
+      "feedback": [
+        "Contact sales flyout opened",
+        "Boost your conversion rate flyout opened"
+      ],
+      "pressed": [
+        "System",
+        "Open flyout footer Contact sales",
+        "System",
+        "Open flyout resource Boost your conversion rate",
+        "System",
+        "System",
+        "System",
+        "System",
+        "System"
+      ],
+      "selector": "[data-flyout-menu-variant=\"flyout-full-width-two-columns\"] button[aria-label=\"Open flyout resource Boost your conversion rate\"]"
+    },
+    {
+      "expanded": [
+        "Toggle flyout Product menu",
+        "Toggle flyout Product menu",
+        "Toggle flyout Product menu",
+        "Toggle flyout Product menu",
+        "Toggle flyout Product menu",
+        "Toggle flyout Product menu",
+        "Toggle flyout Product menu"
+      ],
+      "feedback": [
+        "Contact sales flyout opened",
+        "Boost your conversion rate flyout opened",
+        "Help center flyout opened"
+      ],
+      "pressed": [
+        "System",
+        "Open flyout footer Contact sales",
+        "System",
+        "Open flyout resource Boost your conversion rate",
+        "System",
+        "Open flyout resource Help center",
+        "System",
+        "System",
+        "System",
+        "System"
+      ],
+      "selector": "[data-flyout-menu-variant=\"flyout-stacked-footer-list\"] button[aria-label=\"Open flyout resource Help center\"]"
+    },
+    {
+      "expanded": [
+        "Toggle flyout Product menu",
+        "Toggle flyout Product menu",
+        "Toggle flyout Product menu",
+        "Toggle flyout Product menu",
+        "Toggle flyout Product menu",
+        "Toggle flyout Product menu",
+        "Toggle flyout Product menu"
+      ],
+      "feedback": [
+        "Contact sales flyout opened",
+        "Boost your conversion rate flyout opened",
+        "Help center flyout opened",
+        "Reports flyout opened"
+      ],
+      "pressed": [
+        "System",
+        "Open flyout footer Contact sales",
+        "System",
+        "Open flyout resource Boost your conversion rate",
+        "System",
+        "Open flyout resource Help center",
+        "System",
+        "Open flyout item Reports",
+        "System",
+        "System",
+        "System"
+      ],
+      "selector": "[data-flyout-menu-variant=\"flyout-full-width\"] button[aria-label=\"Open flyout item Reports\"]"
+    },
+    {
+      "expanded": [
+        "Toggle flyout Product menu",
+        "Toggle flyout Product menu",
+        "Toggle flyout Product menu",
+        "Toggle flyout Product menu",
+        "Toggle flyout Product menu",
+        "Toggle flyout Product menu",
+        "Toggle flyout Product menu"
+      ],
+      "feedback": [
+        "Contact sales flyout opened",
+        "Boost your conversion rate flyout opened",
+        "Help center flyout opened",
+        "Reports flyout opened",
+        "Settings selected"
+      ],
+      "pressed": [
+        "System",
+        "Open flyout footer Contact sales",
+        "System",
+        "Open flyout resource Boost your conversion rate",
+        "System",
+        "Open flyout resource Help center",
+        "System",
+        "Open flyout item Reports",
+        "System",
+        "System",
+        "System",
+        "Open flyout item Settings"
+      ],
+      "selector": "[data-flyout-menu-variant=\"flyout-simple\"] button[aria-label=\"Open flyout item Settings\"]"
+    }
+  ],
+  "theme": {
+    "darkCount": 7,
+    "lightCount": 7,
+    "afterDark": {
+      "overflow": 0,
+      "pressed": 7,
+      "roots": [
+        "dark",
+        "dark",
+        "dark",
+        "dark",
+        "dark",
+        "dark",
+        "dark"
+      ]
+    },
+    "afterLight": {
+      "overflow": 0,
+      "pressed": 7,
+      "roots": [
+        "light",
+        "light",
+        "light",
+        "light",
+        "light",
+        "light",
+        "light"
+      ]
+    }
+  }
+}

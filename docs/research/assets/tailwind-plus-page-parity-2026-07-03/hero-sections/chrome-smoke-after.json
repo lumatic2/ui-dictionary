@@ -1,0 +1,53 @@
+{
+  "initial": {
+    "ariaPressed": 25,
+    "buttons": 199,
+    "darkRoots": 0,
+    "h2": "Hero Sections",
+    "h3": [
+      "Simple centered",
+      "Split with screenshot",
+      "Split with bordered screenshot",
+      "Split with code example",
+      "Simple centered with background image",
+      "With bordered app screenshot",
+      "With app screenshot",
+      "With phone mockup",
+      "Split with image",
+      "With angled image on right",
+      "With image tiles",
+      "With offset image"
+    ],
+    "heroRoots": 12,
+    "lightRoots": 12,
+    "overflow": 0
+  },
+  "checks": {
+    "nav": true,
+    "login": true,
+    "announcement": true,
+    "primary": true,
+    "secondary": true,
+    "github": true,
+    "funding": true,
+    "positions": true,
+    "story": true,
+    "liveDemo": true,
+    "tile": true
+  },
+  "darkAfter": {
+    "darkPressed": 12,
+    "darkRoots": 12,
+    "heroRoots": 12,
+    "lightRoots": 0,
+    "overflow": 0
+  },
+  "lightAfter": {
+    "darkRoots": 0,
+    "heroRoots": 12,
+    "lightPressed": 12,
+    "lightRoots": 12,
+    "overflow": 0
+  },
+  "logs": []
+}

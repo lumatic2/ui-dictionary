@@ -1,0 +1,28 @@
+{
+  "tailwind": {
+    "url": "https://tailwindcss.com/plus/ui-blocks/application-ui/overlays/popovers",
+    "status": 404,
+    "title": "Not Found",
+    "h1": null,
+    "exampleTextCount": 0
+  },
+  "localUrl": "http://127.0.0.1:5174/?filter=nav%3Aplus-overlays-popovers",
+  "localDesktop": {
+    "title": "UI 용어 사전",
+    "h1": null,
+    "dialogCount": 0,
+    "tooltipCount": 0,
+    "formCount": 0,
+    "ariaExpandedCount": 0,
+    "triggerButtonCount": 2,
+    "saveButtonCount": 1,
+    "bodyOverflowX": 0
+  },
+  "localMobile": {
+    "dialogCount": 0,
+    "tooltipCount": 0,
+    "ariaExpandedCount": 0,
+    "bodyOverflowX": 0
+  },
+  "timestamp": "2026-07-03T16:00:07.220Z"
+}

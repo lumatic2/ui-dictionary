@@ -1,0 +1,94 @@
+{
+  "url": "http://127.0.0.1:5193/?filter=nav%3Aplus-ecommerce-incentives",
+  "summary": {
+    "title": "UI 용어 사전",
+    "h2": [
+      "Incentives"
+    ],
+    "themeButtons": 24,
+    "actionButtons": 102,
+    "ariaPressedButtons": 50,
+    "incentiveRoots": 8,
+    "darkRoots": 0,
+    "lightRoots": 8,
+    "overflowX": 0
+  },
+  "interactions": [
+    {
+      "label": "Open incentive Free shipping",
+      "count": 6,
+      "pressed": "true",
+      "feedback": true
+    },
+    {
+      "label": "Open incentive 10-year warranty",
+      "count": 6,
+      "pressed": "true",
+      "feedback": true
+    },
+    {
+      "label": "Open incentive Gift cards",
+      "count": 2,
+      "pressed": "true",
+      "feedback": true
+    },
+    {
+      "label": "Open incentive 5-year shelf-life",
+      "count": 1,
+      "pressed": "true",
+      "feedback": true
+    },
+    {
+      "label": "Open incentive Fast, contactless delivery",
+      "count": 2,
+      "pressed": "true",
+      "feedback": true
+    }
+  ],
+  "darkButtons": {
+    "count": 8,
+    "pressedTrue": 8,
+    "pressed": [
+      "true",
+      "true",
+      "true",
+      "true",
+      "true",
+      "true",
+      "true",
+      "true"
+    ]
+  },
+  "darkState": {
+    "roots": 8,
+    "darkSurfaces": 10,
+    "overflowX": 0
+  },
+  "lightButtons": {
+    "count": 8,
+    "pressedTrue": 8,
+    "pressed": [
+      "true",
+      "true",
+      "true",
+      "true",
+      "true",
+      "true",
+      "true",
+      "true"
+    ]
+  },
+  "lightState": {
+    "roots": 8,
+    "darkSurfaces": 1,
+    "overflowX": 0
+  },
+  "mobile": {
+    "buttons": 102,
+    "roots": 8,
+    "overflowX": 0,
+    "feedback": true,
+    "pressed": "true"
+  },
+  "errors": []
+}

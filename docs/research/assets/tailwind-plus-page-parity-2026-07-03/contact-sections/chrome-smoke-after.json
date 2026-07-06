@@ -1,0 +1,161 @@
+{
+  "url": "http://127.0.0.1:5200/?filter=nav%3Aplus-marketing-contact-sections",
+  "finalState": {
+    "actions": 19,
+    "h2": "Contact Sections",
+    "h3s": [
+      "Centered",
+      "Side-by-side grid",
+      "Split with pattern",
+      "Simple four-column",
+      "Simple centered",
+      "With testimonial",
+      "Split with image"
+    ],
+    "inputs": 24,
+    "overflow": 0,
+    "roots": 7,
+    "variants": [
+      "contact-centered",
+      "contact-side-grid",
+      "contact-split-pattern",
+      "contact-four-column",
+      "contact-simple-centered",
+      "contact-testimonial",
+      "contact-split-image"
+    ]
+  },
+  "clickEvidence": [
+    {
+      "feedback": [
+        "Contact form submitted"
+      ],
+      "label": "submit centered",
+      "pressed": [
+        "System",
+        "Submit contact form",
+        "System",
+        "System",
+        "System",
+        "System",
+        "System",
+        "System"
+      ]
+    },
+    {
+      "feedback": [
+        "Contact form submitted",
+        "Collaborate contact opened"
+      ],
+      "label": "path collaborate",
+      "pressed": [
+        "System",
+        "Submit contact form",
+        "System",
+        "Open contact path Collaborate",
+        "System",
+        "System",
+        "System",
+        "System",
+        "System"
+      ]
+    },
+    {
+      "feedback": [
+        "Contact form submitted",
+        "Collaborate contact opened",
+        "Los Angeles office opened"
+      ],
+      "label": "office los angeles",
+      "pressed": [
+        "System",
+        "Submit contact form",
+        "System",
+        "Open contact path Collaborate",
+        "System",
+        "System",
+        "Open contact office Los Angeles",
+        "System",
+        "System",
+        "System"
+      ]
+    },
+    {
+      "feedback": [
+        "Contact form submitted",
+        "Collaborate contact opened",
+        "Los Angeles office opened",
+        "Sales support opened"
+      ],
+      "label": "support sales",
+      "pressed": [
+        "System",
+        "Submit contact form",
+        "System",
+        "Open contact path Collaborate",
+        "System",
+        "System",
+        "Open contact office Los Angeles",
+        "System",
+        "Open contact support Sales support",
+        "System",
+        "System"
+      ]
+    },
+    {
+      "feedback": [
+        "Contact form submitted",
+        "Collaborate contact opened",
+        "Los Angeles office opened",
+        "Sales support opened",
+        "Contact form submitted"
+      ],
+      "label": "submit split image",
+      "pressed": [
+        "System",
+        "Submit contact form",
+        "System",
+        "Open contact path Collaborate",
+        "System",
+        "System",
+        "Open contact office Los Angeles",
+        "System",
+        "Open contact support Sales support",
+        "System",
+        "System",
+        "Submit contact form"
+      ]
+    }
+  ],
+  "theme": {
+    "darkCount": 7,
+    "lightCount": 7,
+    "afterDark": {
+      "overflow": 0,
+      "pressed": 7,
+      "roots": [
+        "dark",
+        "dark",
+        "dark",
+        "dark",
+        "dark",
+        "dark",
+        "dark"
+      ]
+    },
+    "afterLight": {
+      "overflow": 0,
+      "pressed": 7,
+      "roots": [
+        "light",
+        "light",
+        "light",
+        "light",
+        "light",
+        "light",
+        "light"
+      ]
+    }
+  },
+  "consoleErrors": []
+}

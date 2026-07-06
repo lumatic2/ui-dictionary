@@ -1,0 +1,202 @@
+[
+  {
+    "slug": "disclosure",
+    "title": "Disclosure",
+    "navId": "docs-elements-disclosure",
+    "viewport": "desktop",
+    "screenshot": "docs/research/assets/tailwind-plus-documentation-depth-2026-07-03/local-step4/disclosure-desktop.png",
+    "info": {
+      "url": "http://127.0.0.1:5185/?filter=nav%3Adocs-elements-disclosure&page=docs",
+      "h2": "Disclosure",
+      "article": true,
+      "onThisPage": true,
+      "fallbackSearch": false,
+      "sectionCount": 6,
+      "codeCount": 2,
+      "apiRows": 4,
+      "horizontalOverflow": false,
+      "scrollWidth": 1425,
+      "clientWidth": 1440
+    }
+  },
+  {
+    "slug": "dropdown-menu",
+    "title": "Dropdown menu",
+    "navId": "docs-elements-dropdown-menu",
+    "viewport": "desktop",
+    "screenshot": "docs/research/assets/tailwind-plus-documentation-depth-2026-07-03/local-step4/dropdown-menu-desktop.png",
+    "info": {
+      "url": "http://127.0.0.1:5185/?filter=nav%3Adocs-elements-dropdown-menu&page=docs",
+      "h2": "Dropdown menu",
+      "article": true,
+      "onThisPage": true,
+      "fallbackSearch": false,
+      "sectionCount": 6,
+      "codeCount": 2,
+      "apiRows": 4,
+      "horizontalOverflow": false,
+      "scrollWidth": 1425,
+      "clientWidth": 1440
+    }
+  },
+  {
+    "slug": "popover",
+    "title": "Popover",
+    "navId": "docs-elements-popover",
+    "viewport": "desktop",
+    "screenshot": "docs/research/assets/tailwind-plus-documentation-depth-2026-07-03/local-step4/popover-desktop.png",
+    "info": {
+      "url": "http://127.0.0.1:5185/?filter=nav%3Adocs-elements-popover&page=docs",
+      "h2": "Popover",
+      "article": true,
+      "onThisPage": true,
+      "fallbackSearch": false,
+      "sectionCount": 7,
+      "codeCount": 2,
+      "apiRows": 4,
+      "horizontalOverflow": false,
+      "scrollWidth": 1425,
+      "clientWidth": 1440
+    }
+  },
+  {
+    "slug": "select",
+    "title": "Select",
+    "navId": "docs-elements-select",
+    "viewport": "desktop",
+    "screenshot": "docs/research/assets/tailwind-plus-documentation-depth-2026-07-03/local-step4/select-desktop.png",
+    "info": {
+      "url": "http://127.0.0.1:5185/?filter=nav%3Adocs-elements-select&page=docs",
+      "h2": "Select",
+      "article": true,
+      "onThisPage": true,
+      "fallbackSearch": false,
+      "sectionCount": 7,
+      "codeCount": 2,
+      "apiRows": 5,
+      "horizontalOverflow": false,
+      "scrollWidth": 1425,
+      "clientWidth": 1440
+    }
+  },
+  {
+    "slug": "tabs",
+    "title": "Tabs",
+    "navId": "docs-elements-tabs",
+    "viewport": "desktop",
+    "screenshot": "docs/research/assets/tailwind-plus-documentation-depth-2026-07-03/local-step4/tabs-desktop.png",
+    "info": {
+      "url": "http://127.0.0.1:5185/?filter=nav%3Adocs-elements-tabs&page=docs",
+      "h2": "Tabs",
+      "article": true,
+      "onThisPage": true,
+      "fallbackSearch": false,
+      "sectionCount": 8,
+      "codeCount": 2,
+      "apiRows": 5,
+      "horizontalOverflow": false,
+      "scrollWidth": 1425,
+      "clientWidth": 1440
+    }
+  },
+  {
+    "slug": "disclosure",
+    "title": "Disclosure",
+    "navId": "docs-elements-disclosure",
+    "viewport": "mobile",
+    "screenshot": "docs/research/assets/tailwind-plus-documentation-depth-2026-07-03/local-step4/disclosure-mobile.png",
+    "info": {
+      "url": "http://127.0.0.1:5185/?filter=nav%3Adocs-elements-disclosure&page=docs",
+      "h2": "Disclosure",
+      "article": true,
+      "onThisPage": true,
+      "fallbackSearch": false,
+      "sectionCount": 6,
+      "codeCount": 2,
+      "apiRows": 4,
+      "horizontalOverflow": false,
+      "scrollWidth": 375,
+      "clientWidth": 390
+    }
+  },
+  {
+    "slug": "dropdown-menu",
+    "title": "Dropdown menu",
+    "navId": "docs-elements-dropdown-menu",
+    "viewport": "mobile",
+    "screenshot": "docs/research/assets/tailwind-plus-documentation-depth-2026-07-03/local-step4/dropdown-menu-mobile.png",
+    "info": {
+      "url": "http://127.0.0.1:5185/?filter=nav%3Adocs-elements-dropdown-menu&page=docs",
+      "h2": "Dropdown menu",
+      "article": true,
+      "onThisPage": true,
+      "fallbackSearch": false,
+      "sectionCount": 6,
+      "codeCount": 2,
+      "apiRows": 4,
+      "horizontalOverflow": false,
+      "scrollWidth": 375,
+      "clientWidth": 390
+    }
+  },
+  {
+    "slug": "popover",
+    "title": "Popover",
+    "navId": "docs-elements-popover",
+    "viewport": "mobile",
+    "screenshot": "docs/research/assets/tailwind-plus-documentation-depth-2026-07-03/local-step4/popover-mobile.png",
+    "info": {
+      "url": "http://127.0.0.1:5185/?filter=nav%3Adocs-elements-popover&page=docs",
+      "h2": "Popover",
+      "article": true,
+      "onThisPage": true,
+      "fallbackSearch": false,
+      "sectionCount": 7,
+      "codeCount": 2,
+      "apiRows": 4,
+      "horizontalOverflow": false,
+      "scrollWidth": 375,
+      "clientWidth": 390
+    }
+  },
+  {
+    "slug": "select",
+    "title": "Select",
+    "navId": "docs-elements-select",
+    "viewport": "mobile",
+    "screenshot": "docs/research/assets/tailwind-plus-documentation-depth-2026-07-03/local-step4/select-mobile.png",
+    "info": {
+      "url": "http://127.0.0.1:5185/?filter=nav%3Adocs-elements-select&page=docs",
+      "h2": "Select",
+      "article": true,
+      "onThisPage": true,
+      "fallbackSearch": false,
+      "sectionCount": 7,
+      "codeCount": 2,
+      "apiRows": 5,
+      "horizontalOverflow": false,
+      "scrollWidth": 375,
+      "clientWidth": 390
+    }
+  },
+  {
+    "slug": "tabs",
+    "title": "Tabs",
+    "navId": "docs-elements-tabs",
+    "viewport": "mobile",
+    "screenshot": "docs/research/assets/tailwind-plus-documentation-depth-2026-07-03/local-step4/tabs-mobile.png",
+    "info": {
+      "url": "http://127.0.0.1:5185/?filter=nav%3Adocs-elements-tabs&page=docs",
+      "h2": "Tabs",
+      "article": true,
+      "onThisPage": true,
+      "fallbackSearch": false,
+      "sectionCount": 8,
+      "codeCount": 2,
+      "apiRows": 5,
+      "horizontalOverflow": false,
+      "scrollWidth": 375,
+      "clientWidth": 390
+    }
+  }
+]

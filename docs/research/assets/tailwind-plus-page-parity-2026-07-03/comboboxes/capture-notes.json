@@ -1,0 +1,31 @@
+{
+  "tailwind": {
+    "url": "https://tailwindcss.com/plus/ui-blocks/application-ui/forms/comboboxes",
+    "status": 200,
+    "title": "Tailwind CSS Comboboxes - Official Tailwind UI Components",
+    "h1": "Comboboxes",
+    "exampleTextCount": 4
+  },
+  "localUrl": "http://127.0.0.1:5174/?filter=nav%3Aplus-forms-comboboxes",
+  "localDesktop": {
+    "title": "UI 용어 사전",
+    "buttonCount": 117,
+    "inputCount": 4,
+    "comboboxCount": 4,
+    "listboxCount": 4,
+    "optionCount": 24,
+    "selectedOptionCount": 4,
+    "expandedCount": 4,
+    "activeDescendantCount": 4,
+    "darkToggleCount": 4,
+    "bodyOverflowX": 0
+  },
+  "localMobile": {
+    "buttonCount": 117,
+    "inputCount": 4,
+    "comboboxCount": 4,
+    "darkToggleCount": 4,
+    "bodyOverflowX": 0
+  },
+  "timestamp": "2026-07-03T17:12:29.195Z"
+}

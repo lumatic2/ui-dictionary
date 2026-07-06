@@ -1,0 +1,668 @@
+{
+  "browserFallback": "Browser/Chrome path failed earlier: Browser is not available: iab / packaged browser documentation directory missing; standalone Playwright fallback used",
+  "reference": {
+    "status": 200,
+    "title": "Tailwind CSS Product Overviews - Official Tailwind UI Components",
+    "url": "https://tailwindcss.com/plus/ui-blocks/ecommerce/components/product-overviews",
+    "h1": "Product Overviews",
+    "exampleHeadings": [
+      "Components",
+      "Page Examples",
+      "Build UIs that don’t suck.",
+      "With image grid",
+      "With image grid",
+      "With tiered images",
+      "With tiered images",
+      "With image gallery and expandable details",
+      "With image gallery and expandable details",
+      "Split with image",
+      "Split with image",
+      "With tabs",
+      "With tabs",
+      "Marketing",
+      "Application UI",
+      "Ecommerce",
+      "Templates & UI Kits"
+    ],
+    "buttons": [
+      "Search",
+      "Search",
+      "Navigation",
+      "Open navigation menu",
+      "Preview",
+      "Code",
+      "Preview",
+      "Code"
+    ]
+  },
+  "local": {
+    "before": {
+      "title": "UI 용어 사전",
+      "url": "http://127.0.0.1:5174/?filter=nav%3Aplus-ecommerce-product-overviews",
+      "exampleHeadings": [
+        "With image grid",
+        "With tiered images",
+        "With image gallery and expandable details",
+        "Split with image",
+        "With tabs"
+      ],
+      "buttonCount": 99,
+      "themeButtons": 0,
+      "staticDetailRows": 3,
+      "detailRowButtons": 0,
+      "buttons": [
+        {
+          "i": 0,
+          "text": "UI Dictionary",
+          "aria": "UI 용어 사전 홈으로 이동",
+          "pressed": null
+        },
+        {
+          "i": 1,
+          "text": "Ctrl F",
+          "aria": "검색 열기",
+          "pressed": null
+        },
+        {
+          "i": 2,
+          "text": "UI Blocks",
+          "aria": null,
+          "pressed": null
+        },
+        {
+          "i": 3,
+          "text": "Templates",
+          "aria": null,
+          "pressed": null
+        },
+        {
+          "i": 4,
+          "text": "UI Kit",
+          "aria": null,
+          "pressed": null
+        },
+        {
+          "i": 5,
+          "text": "Sign in",
+          "aria": null,
+          "pressed": null
+        },
+        {
+          "i": 6,
+          "text": "Get full access",
+          "aria": null,
+          "pressed": null
+        },
+        {
+          "i": 7,
+          "text": "",
+          "aria": "More options",
+          "pressed": null
+        },
+        {
+          "i": 8,
+          "text": "Marketing",
+          "aria": null,
+          "pressed": null
+        },
+        {
+          "i": 9,
+          "text": "Application UI",
+          "aria": null,
+          "pressed": null
+        },
+        {
+          "i": 10,
+          "text": "Ecommerce",
+          "aria": null,
+          "pressed": null
+        },
+        {
+          "i": 11,
+          "text": "Documentation",
+          "aria": null,
+          "pressed": null
+        },
+        {
+          "i": 12,
+          "text": "Components",
+          "aria": null,
+          "pressed": null
+        },
+        {
+          "i": 13,
+          "text": "Product Overviews",
+          "aria": null,
+          "pressed": null
+        },
+        {
+          "i": 14,
+          "text": "Product Lists",
+          "aria": null,
+          "pressed": null
+        },
+        {
+          "i": 15,
+          "text": "Category Previews",
+          "aria": null,
+          "pressed": null
+        },
+        {
+          "i": 16,
+          "text": "Shopping Carts",
+          "aria": null,
+          "pressed": null
+        },
+        {
+          "i": 17,
+          "text": "Category Filters",
+          "aria": null,
+          "pressed": null
+        },
+        {
+          "i": 18,
+          "text": "Product Quickviews",
+          "aria": null,
+          "pressed": null
+        },
+        {
+          "i": 19,
+          "text": "Product Features",
+          "aria": null,
+          "pressed": null
+        },
+        {
+          "i": 20,
+          "text": "Store Navigation",
+          "aria": null,
+          "pressed": null
+        },
+        {
+          "i": 21,
+          "text": "Promo Sections",
+          "aria": null,
+          "pressed": null
+        },
+        {
+          "i": 22,
+          "text": "Checkout Forms",
+          "aria": null,
+          "pressed": null
+        },
+        {
+          "i": 23,
+          "text": "Reviews",
+          "aria": null,
+          "pressed": null
+        },
+        {
+          "i": 24,
+          "text": "Order Summaries",
+          "aria": null,
+          "pressed": null
+        },
+        {
+          "i": 25,
+          "text": "Order History",
+          "aria": null,
+          "pressed": null
+        },
+        {
+          "i": 26,
+          "text": "Incentives",
+          "aria": null,
+          "pressed": null
+        },
+        {
+          "i": 27,
+          "text": "Page Examples",
+          "aria": null,
+          "pressed": null
+        },
+        {
+          "i": 28,
+          "text": "Storefront Pages",
+          "aria": null,
+          "pressed": null
+        },
+        {
+          "i": 29,
+          "text": "Product Pages",
+          "aria": null,
+          "pressed": null
+        },
+        {
+          "i": 30,
+          "text": "Category Pages",
+          "aria": null,
+          "pressed": null
+        },
+        {
+          "i": 31,
+          "text": "Shopping Cart Pages",
+          "aria": null,
+          "pressed": null
+        },
+        {
+          "i": 32,
+          "text": "Checkout Pages",
+          "aria": null,
+          "pressed": null
+        },
+        {
+          "i": 33,
+          "text": "Order Detail Pages",
+          "aria": null,
+          "pressed": null
+        },
+        {
+          "i": 34,
+          "text": "Order History Pages",
+          "aria": null,
+          "pressed": null
+        },
+        {
+          "i": 35,
+          "text": "Preview",
+          "aria": null,
+          "pressed": null
+        },
+        {
+          "i": 36,
+          "text": "Code",
+          "aria": null,
+          "pressed": null
+        },
+        {
+          "i": 37,
+          "text": "",
+          "aria": "System",
+          "pressed": "true"
+        },
+        {
+          "i": 38,
+          "text": "",
+          "aria": "Light",
+          "pressed": "false"
+        },
+        {
+          "i": 39,
+          "text": "",
+          "aria": "Dark",
+          "pressed": "false"
+        },
+        {
+          "i": 40,
+          "text": "",
+          "aria": "Copy code",
+          "pressed": null
+        },
+        {
+          "i": 41,
+          "text": "Charcoal",
+          "aria": null,
+          "pressed": null
+        },
+        {
+          "i": 42,
+          "text": "Black",
+          "aria": null,
+          "pressed": null
+        },
+        {
+          "i": 43,
+          "text": "Natural",
+          "aria": null,
+          "pressed": null
+        },
+        {
+          "i": 44,
+          "text": "S",
+          "aria": null,
+          "pressed": null
+        },
+        {
+          "i": 45,
+          "text": "M",
+          "aria": null,
+          "pressed": null
+        },
+        {
+          "i": 46,
+          "text": "L",
+          "aria": null,
+          "pressed": null
+        },
+        {
+          "i": 47,
+          "text": "Add to cart",
+          "aria": null,
+          "pressed": null
+        },
+        {
+          "i": 48,
+          "text": "Preview",
+          "aria": null,
+          "pressed": null
+        },
+        {
+          "i": 49,
+          "text": "",
+          "aria": "System",
+          "pressed": "true"
+        },
+        {
+          "i": 50,
+          "text": "",
+          "aria": "Light",
+          "pressed": "false"
+        },
+        {
+          "i": 51,
+          "text": "",
+          "aria": "Dark",
+          "pressed": "false"
+        },
+        {
+          "i": 52,
+          "text": "Get the code →",
+          "aria": null,
+          "pressed": null
+        },
+        {
+          "i": 53,
+          "text": "Olive",
+          "aria": null,
+          "pressed": null
+        },
+        {
+          "i": 54,
+          "text": "Black",
+          "aria": null,
+          "pressed": null
+        },
+        {
+          "i": 55,
+          "text": "Natural",
+          "aria": null,
+          "pressed": null
+        },
+        {
+          "i": 56,
+          "text": "S",
+          "aria": null,
+          "pressed": null
+        },
+        {
+          "i": 57,
+          "text": "M",
+          "aria": null,
+          "pressed": null
+        },
+        {
+          "i": 58,
+          "text": "L",
+          "aria": null,
+          "pressed": null
+        },
+        {
+          "i": 59,
+          "text": "Add to cart",
+          "aria": null,
+          "pressed": null
+        },
+        {
+          "i": 60,
+          "text": "Preview",
+          "aria": null,
+          "pressed": null
+        },
+        {
+          "i": 61,
+          "text": "",
+          "aria": "System",
+          "pressed": "true"
+        },
+        {
+          "i": 62,
+          "text": "",
+          "aria": "Light",
+          "pressed": "false"
+        },
+        {
+          "i": 63,
+          "text": "",
+          "aria": "Dark",
+          "pressed": "false"
+        },
+        {
+          "i": 64,
+          "text": "Get the code →",
+          "aria": null,
+          "pressed": null
+        },
+        {
+          "i": 65,
+          "text": "Tan",
+          "aria": null,
+          "pressed": null
+        },
+        {
+          "i": 66,
+          "text": "Black",
+          "aria": null,
+          "pressed": null
+        },
+        {
+          "i": 67,
+          "text": "Natural",
+          "aria": null,
+          "pressed": null
+        },
+        {
+          "i": 68,
+          "text": "S",
+          "aria": null,
+          "pressed": null
+        },
+        {
+          "i": 69,
+          "text": "M",
+          "aria": null,
+          "pressed": null
+        },
+        {
+          "i": 70,
+          "text": "L",
+          "aria": null,
+          "pressed": null
+        },
+        {
+          "i": 71,
+          "text": "Add to cart",
+          "aria": null,
+          "pressed": null
+        },
+        {
+          "i": 72,
+          "text": "Preview",
+          "aria": null,
+          "pressed": null
+        },
+        {
+          "i": 73,
+          "text": "",
+          "aria": "System",
+          "pressed": "true"
+        },
+        {
+          "i": 74,
+          "text": "",
+          "aria": "Light",
+          "pressed": "false"
+        },
+        {
+          "i": 75,
+          "text": "",
+          "aria": "Dark",
+          "pressed": "false"
+        },
+        {
+          "i": 76,
+          "text": "Get the code →",
+          "aria": null,
+          "pressed": null
+        },
+        {
+          "i": 77,
+          "text": "Navy",
+          "aria": null,
+          "pressed": null
+        },
+        {
+          "i": 78,
+          "text": "Black",
+          "aria": null,
+          "pressed": null
+        },
+        {
+          "i": 79,
+          "text": "Natural",
+          "aria": null,
+          "pressed": null
+        },
+        {
+          "i": 80,
+          "text": "S",
+          "aria": null,
+          "pressed": null
+        },
+        {
+          "i": 81,
+          "text": "M",
+          "aria": null,
+          "pressed": null
+        },
+        {
+          "i": 82,
+          "text": "L",
+          "aria": null,
+          "pressed": null
+        },
+        {
+          "i": 83,
+          "text": "Add to cart",
+          "aria": null,
+          "pressed": null
+        },
+        {
+          "i": 84,
+          "text": "Preview",
+          "aria": null,
+          "pressed": null
+        },
+        {
+          "i": 85,
+          "text": "",
+          "aria": "System",
+          "pressed": "true"
+        },
+        {
+          "i": 86,
+          "text": "",
+          "aria": "Light",
+          "pressed": "false"
+        },
+        {
+          "i": 87,
+          "text": "",
+          "aria": "Dark",
+          "pressed": "false"
+        },
+        {
+          "i": 88,
+          "text": "Get the code →",
+          "aria": null,
+          "pressed": null
+        },
+        {
+          "i": 89,
+          "text": "Clay",
+          "aria": null,
+          "pressed": null
+        },
+        {
+          "i": 90,
+          "text": "Black",
+          "aria": null,
+          "pressed": null
+        },
+        {
+          "i": 91,
+          "text": "Natural",
+          "aria": null,
+          "pressed": null
+        },
+        {
+          "i": 92,
+          "text": "S",
+          "aria": null,
+          "pressed": null
+        },
+        {
+          "i": 93,
+          "text": "M",
+          "aria": null,
+          "pressed": null
+        },
+        {
+          "i": 94,
+          "text": "L",
+          "aria": null,
+          "pressed": null
+        },
+        {
+          "i": 95,
+          "text": "Add to cart",
+          "aria": null,
+          "pressed": null
+        },
+        {
+          "i": 96,
+          "text": "Description",
+          "aria": null,
+          "pressed": null
+        },
+        {
+          "i": 97,
+          "text": "Details",
+          "aria": null,
+          "pressed": null
+        },
+        {
+          "i": 98,
+          "text": "Reviews",
+          "aria": null,
+          "pressed": null
+        }
+      ],
+      "darkSurfaces": 5,
+      "overflowX": 0,
+      "bodyText": "UI Dictionary\n\nCtrl F\nUI Blocks\nTemplates\nUI Kit\nSign in\nGet full access\nMarketing\nApplication UI\nEcommerce\nDocumentation\nCOMPONENTS\nProduct Overviews\nProduct Lists\nCategory Previews\nShopping Carts\nCategory Filters\nProduct Quickviews\nProduct Features\nStore Navigation\nPromo Sections\nCheckout Forms\nReviews\nOrder Summaries\nOrder History\nIncentives\nPAGE EXAMPLES\nStorefront Pages\nProduct Pages\nCategory Pages\nShopping Cart Pages\nCheckout Pages\nOrder Detail Pages\nOrder History Pages\n\nPLUS / UI BLOCKS / ECOMMERCE / COMPONENTS / PRODUCT OVERVIEWS\n\nProduct Overviews\n\n상품 상세 영역에서 이미지, 이름, 가격, 옵션, 구매 행동을 조합하는 패턴입니다.\n\nTailwind Plus처럼 각 leaf의 첫 예제는 Preview와 Code를 함께 제공하고, 이후 예제는 Preview와 잠금 code CTA로 구분합니다. 우리 예시는 실제 화면 맥락에 맞춘 설명, tags, interaction feedback을 함께 보여줍니다.\n\nON THIS PAGE\n\n5 examples\nWith image grid\nWith tiered images\nWith image gallery and expandable details\nSplit with image\nWith tabs\nWith image grid\nEXAMPLE 01\n\nTailwind의 product overview 예시 이름과 개수를 맞춘 상품 상세 컴포넌트 변형입니다.\n\nproduct overview\ngallery\npurchase\nPreview\nCode\nHTML\nReact\nVue\n\nTravel bags\n\nNomad Travel Pack\n\n$140\n\nA durable carry piece with clean hardware, quiet fabric texture, and a product overview layout focused on fast purchase decisions.\n\nColor\n\nCharcoal\nBlack\nNatural\nS\nM\nL\nAdd to cart\nWith tiered images\nEXAMPLE 02\n\nTailwind의 product overview 예시 이름과 개수를 맞춘 상품 상세 컴포넌트 변형입니다.\n\nproduct overview\ngallery\npurchase\nPreview\nGet the code →\n\nCamera bags\n\nField Camera Sling\n\n$98\n\nA durable carry piece with clean hardware, quiet f"
+    },
+    "interactionBefore": {
+      "feedback": [],
+      "addedButtons": 0,
+      "detailRowButtons": 0
+    },
+    "darkBefore": {
+      "pressedDark": 0,
+      "darkSurfaces": 18
+    },
+    "mobileBefore": {
+      "overflowX": 0,
+      "themeButtons": 0
+    },
+    "errors": []
+  }
+}

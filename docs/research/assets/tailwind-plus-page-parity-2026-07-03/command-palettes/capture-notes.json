@@ -1,0 +1,29 @@
+{
+  "refUrl": "https://tailwindcss.com/plus/ui-blocks/application-ui/navigation/command-palettes",
+  "localUrl": "http://127.0.0.1:5174/?filter=nav%3Aplus-navigation-command-palettes",
+  "capturedAt": "2026-07-03T15:19:07.845Z",
+  "browserPath": "standalone Playwright; Browser plugin not available in active tools",
+  "reference": {
+    "status": 200,
+    "title": "Tailwind CSS Command Palettes - Official Tailwind UI Components",
+    "url": "https://tailwindcss.com/plus/ui-blocks/application-ui/navigation/command-palettes",
+    "h1": "Command Palettes",
+    "visibleButtons": 2,
+    "visibleLinks": 85,
+    "textSample": "Introducing Oatmeal\nOur new multi-theme marketing site kit\nUI Blocks\nTemplates\nUI Kit\nSign in\nGet full access\nUI Blocks\nApplication UI\nNavigation\nCommand Palettes\n\nUse these Tailwind CSS command palette components to implement power-user search and command functionality in your application or website. These command palettes are designed and built by the Tailwind CSS team, and include a variety of different styles and layouts.\n\nSimple\n\nPreview\n\nGet the code →\nSimple with padding\n\nPreview\n\nGet the code →\nWith preview\n\nPreview\n\nGet the code →\nWith images and descriptions\n\nPreview\n\nGet the code →\nWith icons\n\nPreview\n\nGet the code →\nSemi-transparent with icons\n\nPreview\n\nGet the code →\nWith groups\n\nPreview\n\nGet the code →\nWith footer\n\nPreview\n\nGet the code →\nMarketing\nHero Sections\nFeature Sections\nPricing Sections\nHeader Sections\nNewsletter Sections\nTestimonials\nTeam Sections\nContent Sections\nLogo Clouds\nFAQs\nFooters\nHeaders\nFlyout Menus\nBanners\nBrowse all →\nApplication UI\nTables\nFeeds\nForm Layouts\nSelect Menus\nRadio Groups\nCheckboxes\nComboboxes\nNavbars\nPagination\nSidebar Navigation\nCommand Palettes\nModals\nDropdowns\nButtons\nBrowse all →\nEcommerce\nProduct Overviews\nProduct Lists\nCategory"
+  },
+  "localBefore": {
+    "inputCount": 8,
+    "comboboxCount": 0,
+    "listboxCount": 0,
+    "optionCount": 0,
+    "selectedOptionCount": 0,
+    "activeDescendantCount": 0,
+    "bodyOverflowX": 0
+  },
+  "localMobileBefore": {
+    "overflowX": 0,
+    "inputCount": 8
+  },
+  "console": []
+}

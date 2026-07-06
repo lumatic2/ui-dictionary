@@ -1,0 +1,192 @@
+[
+  {
+    "slug": "getting-set-up",
+    "title": "Getting set up",
+    "navId": "docs-getting-started-setup",
+    "viewport": "desktop",
+    "screenshot": "docs/research/assets/tailwind-plus-documentation-depth-2026-07-03/local-step2/getting-set-up-desktop.png",
+    "info": {
+      "url": "http://127.0.0.1:5185/?filter=nav%3Adocs-getting-started-setup&page=docs",
+      "h2": "Getting set up",
+      "article": true,
+      "onThisPage": true,
+      "fallbackSearch": false,
+      "sectionCount": 6,
+      "codeCount": 4,
+      "horizontalOverflow": false,
+      "scrollWidth": 1425,
+      "clientWidth": 1440
+    }
+  },
+  {
+    "slug": "using-html",
+    "title": "Using HTML",
+    "navId": "docs-getting-started-html",
+    "viewport": "desktop",
+    "screenshot": "docs/research/assets/tailwind-plus-documentation-depth-2026-07-03/local-step2/using-html-desktop.png",
+    "info": {
+      "url": "http://127.0.0.1:5185/?filter=nav%3Adocs-getting-started-html&page=docs",
+      "h2": "Using HTML",
+      "article": true,
+      "onThisPage": true,
+      "fallbackSearch": false,
+      "sectionCount": 5,
+      "codeCount": 4,
+      "horizontalOverflow": false,
+      "scrollWidth": 1425,
+      "clientWidth": 1440
+    }
+  },
+  {
+    "slug": "using-react",
+    "title": "Using React",
+    "navId": "docs-getting-started-react",
+    "viewport": "desktop",
+    "screenshot": "docs/research/assets/tailwind-plus-documentation-depth-2026-07-03/local-step2/using-react-desktop.png",
+    "info": {
+      "url": "http://127.0.0.1:5185/?filter=nav%3Adocs-getting-started-react&page=docs",
+      "h2": "Using React",
+      "article": true,
+      "onThisPage": true,
+      "fallbackSearch": false,
+      "sectionCount": 5,
+      "codeCount": 4,
+      "horizontalOverflow": false,
+      "scrollWidth": 1425,
+      "clientWidth": 1440
+    }
+  },
+  {
+    "slug": "using-vue",
+    "title": "Using Vue",
+    "navId": "docs-getting-started-vue",
+    "viewport": "desktop",
+    "screenshot": "docs/research/assets/tailwind-plus-documentation-depth-2026-07-03/local-step2/using-vue-desktop.png",
+    "info": {
+      "url": "http://127.0.0.1:5185/?filter=nav%3Adocs-getting-started-vue&page=docs",
+      "h2": "Using Vue",
+      "article": true,
+      "onThisPage": true,
+      "fallbackSearch": false,
+      "sectionCount": 5,
+      "codeCount": 4,
+      "horizontalOverflow": false,
+      "scrollWidth": 1425,
+      "clientWidth": 1440
+    }
+  },
+  {
+    "slug": "assets",
+    "title": "Assets",
+    "navId": "docs-getting-started-assets",
+    "viewport": "desktop",
+    "screenshot": "docs/research/assets/tailwind-plus-documentation-depth-2026-07-03/local-step2/assets-desktop.png",
+    "info": {
+      "url": "http://127.0.0.1:5185/?filter=nav%3Adocs-getting-started-assets&page=docs",
+      "h2": "Assets",
+      "article": true,
+      "onThisPage": true,
+      "fallbackSearch": false,
+      "sectionCount": 5,
+      "codeCount": 4,
+      "horizontalOverflow": false,
+      "scrollWidth": 1425,
+      "clientWidth": 1440
+    }
+  },
+  {
+    "slug": "getting-set-up",
+    "title": "Getting set up",
+    "navId": "docs-getting-started-setup",
+    "viewport": "mobile",
+    "screenshot": "docs/research/assets/tailwind-plus-documentation-depth-2026-07-03/local-step2/getting-set-up-mobile.png",
+    "info": {
+      "url": "http://127.0.0.1:5185/?filter=nav%3Adocs-getting-started-setup&page=docs",
+      "h2": "Getting set up",
+      "article": true,
+      "onThisPage": true,
+      "fallbackSearch": false,
+      "sectionCount": 6,
+      "codeCount": 4,
+      "horizontalOverflow": false,
+      "scrollWidth": 375,
+      "clientWidth": 390
+    }
+  },
+  {
+    "slug": "using-html",
+    "title": "Using HTML",
+    "navId": "docs-getting-started-html",
+    "viewport": "mobile",
+    "screenshot": "docs/research/assets/tailwind-plus-documentation-depth-2026-07-03/local-step2/using-html-mobile.png",
+    "info": {
+      "url": "http://127.0.0.1:5185/?filter=nav%3Adocs-getting-started-html&page=docs",
+      "h2": "Using HTML",
+      "article": true,
+      "onThisPage": true,
+      "fallbackSearch": false,
+      "sectionCount": 5,
+      "codeCount": 4,
+      "horizontalOverflow": false,
+      "scrollWidth": 375,
+      "clientWidth": 390
+    }
+  },
+  {
+    "slug": "using-react",
+    "title": "Using React",
+    "navId": "docs-getting-started-react",
+    "viewport": "mobile",
+    "screenshot": "docs/research/assets/tailwind-plus-documentation-depth-2026-07-03/local-step2/using-react-mobile.png",
+    "info": {
+      "url": "http://127.0.0.1:5185/?filter=nav%3Adocs-getting-started-react&page=docs",
+      "h2": "Using React",
+      "article": true,
+      "onThisPage": true,
+      "fallbackSearch": false,
+      "sectionCount": 5,
+      "codeCount": 4,
+      "horizontalOverflow": false,
+      "scrollWidth": 375,
+      "clientWidth": 390
+    }
+  },
+  {
+    "slug": "using-vue",
+    "title": "Using Vue",
+    "navId": "docs-getting-started-vue",
+    "viewport": "mobile",
+    "screenshot": "docs/research/assets/tailwind-plus-documentation-depth-2026-07-03/local-step2/using-vue-mobile.png",
+    "info": {
+      "url": "http://127.0.0.1:5185/?filter=nav%3Adocs-getting-started-vue&page=docs",
+      "h2": "Using Vue",
+      "article": true,
+      "onThisPage": true,
+      "fallbackSearch": false,
+      "sectionCount": 5,
+      "codeCount": 4,
+      "horizontalOverflow": false,
+      "scrollWidth": 375,
+      "clientWidth": 390
+    }
+  },
+  {
+    "slug": "assets",
+    "title": "Assets",
+    "navId": "docs-getting-started-assets",
+    "viewport": "mobile",
+    "screenshot": "docs/research/assets/tailwind-plus-documentation-depth-2026-07-03/local-step2/assets-mobile.png",
+    "info": {
+      "url": "http://127.0.0.1:5185/?filter=nav%3Adocs-getting-started-assets&page=docs",
+      "h2": "Assets",
+      "article": true,
+      "onThisPage": true,
+      "fallbackSearch": false,
+      "sectionCount": 5,
+      "codeCount": 4,
+      "horizontalOverflow": false,
+      "scrollWidth": 375,
+      "clientWidth": 390
+    }
+  }
+]

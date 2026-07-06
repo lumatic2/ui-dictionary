@@ -1,0 +1,104 @@
+{
+  "before": {
+    "textareas": [
+      {
+        "i": 0,
+        "label": "Add your comment",
+        "value": "",
+        "placeholder": ""
+      },
+      {
+        "i": 1,
+        "label": "Add your comment",
+        "value": "",
+        "placeholder": "Add your comment..."
+      },
+      {
+        "i": 2,
+        "label": "Add your comment",
+        "value": "",
+        "placeholder": "Add your comment..."
+      },
+      {
+        "i": 3,
+        "label": "Write a description",
+        "value": "",
+        "placeholder": "Write a description..."
+      },
+      {
+        "i": 4,
+        "label": "Add your comment",
+        "value": "",
+        "placeholder": "Add your comment..."
+      }
+    ],
+    "themeButtons": [
+      "System",
+      "Light",
+      "Dark",
+      "System",
+      "Light",
+      "Dark",
+      "System",
+      "Light",
+      "Dark",
+      "System",
+      "Light",
+      "Dark",
+      "System",
+      "Light",
+      "Dark"
+    ],
+    "previewButtons": [
+      "Preview",
+      "Preview",
+      "Preview",
+      "Preview",
+      "Preview",
+      "Preview"
+    ],
+    "bodyOverflowX": 0
+  },
+  "afterPost": {
+    "textareas": [
+      {
+        "i": 0,
+        "value": "First textarea edited",
+        "placeholder": ""
+      },
+      {
+        "i": 1,
+        "value": "",
+        "placeholder": "Add your comment..."
+      },
+      {
+        "i": 2,
+        "value": "",
+        "placeholder": "Add your comment..."
+      },
+      {
+        "i": 3,
+        "value": "",
+        "placeholder": "Write a description..."
+      },
+      {
+        "i": 4,
+        "value": "",
+        "placeholder": "Add your comment..."
+      }
+    ],
+    "postedTextCount": 0,
+    "postButtons": 1,
+    "bodyOverflowX": 0
+  },
+  "previewContainsEdited": false,
+  "afterDark": {
+    "darkButtonCount": 5,
+    "activeDarkCount": 0,
+    "darkSurfaceCount": 23,
+    "bodyOverflowX": 0
+  },
+  "logs3": [],
+  "errors3": [],
+  "timestamp": "2026-07-03T17:32:30.144Z"
+}

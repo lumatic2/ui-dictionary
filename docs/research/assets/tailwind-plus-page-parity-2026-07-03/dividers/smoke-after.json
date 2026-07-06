@@ -1,0 +1,35 @@
+{
+  "url": "http://127.0.0.1:5174/?filter=nav%3Aplus-application-layout-dividers",
+  "before": {
+    "title": "UI 용어 사전",
+    "pageHeadingCount": 1,
+    "exampleHeadingCount": 8,
+    "themeButtonCount": 24,
+    "darkButtonCount": 8,
+    "dividerActionButtons": 6,
+    "activeSystemCount": 8,
+    "darkSurfaceCount": 1,
+    "bodyOverflowX": 0
+  },
+  "interaction": {
+    "buttonFeedbackCount": 1,
+    "toolbarFeedbackCount": 1
+  },
+  "afterDark": {
+    "activeDarkCount": 8,
+    "darkSurfaceCount": 19,
+    "bodyOverflowX": 0
+  },
+  "afterLight": {
+    "activeLightCount": 8,
+    "darkSurfaceCount": 1,
+    "bodyOverflowX": 0
+  },
+  "mobile": {
+    "themeButtonCount": 24,
+    "bodyOverflowX": 0
+  },
+  "consoleMessages": [],
+  "pageErrors": [],
+  "timestamp": "2026-07-03T18:21:56.372Z"
+}

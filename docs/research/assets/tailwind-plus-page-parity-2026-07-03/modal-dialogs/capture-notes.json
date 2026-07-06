@@ -1,0 +1,29 @@
+{
+  "refUrl": "https://tailwindcss.com/plus/ui-blocks/application-ui/overlays/modal-dialogs",
+  "localUrl": "http://127.0.0.1:5174/?filter=nav%3Aplus-overlays-modal-dialogs",
+  "capturedAt": "2026-07-03T15:27:15.235Z",
+  "browserPath": "standalone Playwright; Browser plugin not available in active tools",
+  "reference": {
+    "status": 200,
+    "title": "Tailwind CSS Modal Dialogs - Official Tailwind UI Components",
+    "url": "https://tailwindcss.com/plus/ui-blocks/application-ui/overlays/modal-dialogs",
+    "h1": "Modal Dialogs",
+    "visibleButtons": 5,
+    "visibleLinks": 80,
+    "textSample": "Introducing Oatmeal\nOur new multi-theme marketing site kit\nUI Blocks\nTemplates\nUI Kit\nSign in\nGet full access\nUI Blocks\nApplication UI\nOverlays\nModal Dialogs\n\nUse these Tailwind CSS modal dialog components to create pop-up boxes for things like alerts, notifications, or confirmation prompts. These modals are designed and built by the Tailwind CSS team, and include a variety of different styles and layouts.\n\nSimple with gray footer\nPreview\nCode\nHTML\nReact\nVue\nCentered with single action\n\nPreview\n\nGet the code →\nCentered with wide buttons\n\nPreview\n\nGet the code →\nSimple alert\n\nPreview\n\nGet the code →\nSimple with dismiss button\n\nPreview\n\nGet the code →\nSimple alert with left-aligned buttons\n\nPreview\n\nGet the code →\nMarketing\nHero Sections\nFeature Sections\nPricing Sections\nHeader Sections\nNewsletter Sections\nTestimonials\nTeam Sections\nContent Sections\nLogo Clouds\nFAQs\nFooters\nHeaders\nFlyout Menus\nBanners\nBrowse all →\nApplication UI\nTables\nFeeds\nForm Layouts\nSelect Menus\nRadio Groups\nCheckboxes\nComboboxes\nNavbars\nPagination\nSidebar Navigation\nCommand Palettes\nModals\nDropdowns\nButtons\nBrowse all →\nEcommerce\nProduct Overviews\nProduct Lists\nCategory Previews\nShopping Carts\nCategory Filters"
+  },
+  "localBefore": {
+    "dialogCount": 0,
+    "ariaModalCount": 0,
+    "labelledByCount": 0,
+    "describedByCount": 0,
+    "dismissButtonCount": 12,
+    "openDialogButtonCount": 6,
+    "bodyOverflowX": 0
+  },
+  "localMobileBefore": {
+    "overflowX": 0,
+    "dialogCount": 0
+  },
+  "console": []
+}

@@ -6,7 +6,7 @@ Date: 2026-07-04
 
 This document defines how `ui-dictionary` studies external UI/design systems and local design-system work without becoming a loose scrapbook or a clone of another product.
 
-The project goal is Yusung's digital product design system: a human-facing reference website and an agent-facing system for Codex/Claude Code. References are therefore evaluated by what they contribute to:
+The project goal is Askewly Design: a human-facing reference website and an agent-facing system for Codex/Claude Code. References are therefore evaluated by what they contribute to:
 
 - product-surface coverage: web, mobile, SaaS, commerce, dashboards, documentation, marketing, internal tools;
 - design-system depth: tokens, components, patterns, page examples, interaction states, accessibility, motion, responsive behavior;

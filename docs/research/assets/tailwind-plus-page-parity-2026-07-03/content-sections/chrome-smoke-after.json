@@ -1,0 +1,186 @@
+{
+  "url": "http://127.0.0.1:5200/?filter=nav%3Aplus-marketing-content-sections",
+  "finalState": {
+    "actions": 32,
+    "h2": "Content Sections",
+    "h3s": [
+      "With sticky product screenshot",
+      "With testimonial",
+      "With image titles",
+      "Two columns with screenshot",
+      "With testimonial and stats",
+      "Split with image",
+      "Centered"
+    ],
+    "overflow": 0,
+    "roots": 7,
+    "variants": [
+      "content-sticky-screenshot",
+      "content-testimonial",
+      "content-image-titles",
+      "content-two-column-screenshot",
+      "content-testimonial-stats",
+      "content-split-image",
+      "content-centered"
+    ]
+  },
+  "clickEvidence": [
+    {
+      "feedback": [
+        "Push to deploy detail opened"
+      ],
+      "label": "sticky bullet",
+      "pressed": [
+        "System",
+        "Open content bullet Push to deploy",
+        "System",
+        "System",
+        "System",
+        "System",
+        "System",
+        "System"
+      ]
+    },
+    {
+      "feedback": [
+        "Push to deploy detail opened",
+        "Brenna Goyette quote opened"
+      ],
+      "label": "testimonial quote",
+      "pressed": [
+        "System",
+        "Open content bullet Push to deploy",
+        "System",
+        "Open content quote Brenna Goyette",
+        "System",
+        "System",
+        "System",
+        "System",
+        "System"
+      ]
+    },
+    {
+      "feedback": [
+        "Push to deploy detail opened",
+        "Brenna Goyette quote opened",
+        "Our mission value opened"
+      ],
+      "label": "image value",
+      "pressed": [
+        "System",
+        "Open content bullet Push to deploy",
+        "System",
+        "Open content quote Brenna Goyette",
+        "System",
+        "Open content value Our mission",
+        "System",
+        "System",
+        "System",
+        "System"
+      ]
+    },
+    {
+      "feedback": [
+        "Push to deploy detail opened",
+        "Brenna Goyette quote opened",
+        "Our mission value opened",
+        "Workflow CTA opened"
+      ],
+      "label": "two-column cta",
+      "pressed": [
+        "System",
+        "Open content bullet Push to deploy",
+        "System",
+        "Open content quote Brenna Goyette",
+        "System",
+        "Open content value Our mission",
+        "System",
+        "Open content CTA Get started",
+        "System",
+        "System",
+        "System"
+      ]
+    },
+    {
+      "feedback": [
+        "Push to deploy detail opened",
+        "Brenna Goyette quote opened",
+        "Our mission value opened",
+        "Workflow CTA opened",
+        "2021 stat opened"
+      ],
+      "label": "testimonial stat",
+      "pressed": [
+        "System",
+        "Open content bullet Push to deploy",
+        "System",
+        "Open content quote Brenna Goyette",
+        "System",
+        "Open content value Our mission",
+        "System",
+        "Open content CTA Get started",
+        "System",
+        "Open content stat 2021",
+        "System",
+        "System"
+      ]
+    },
+    {
+      "feedback": [
+        "Push to deploy detail opened",
+        "Brenna Goyette quote opened",
+        "Our mission value opened",
+        "Workflow CTA opened",
+        "2021 stat opened",
+        "Implementation prompt quote opened"
+      ],
+      "label": "centered quote",
+      "pressed": [
+        "System",
+        "Open content bullet Push to deploy",
+        "System",
+        "Open content quote Brenna Goyette",
+        "System",
+        "Open content value Our mission",
+        "System",
+        "Open content CTA Get started",
+        "System",
+        "Open content stat 2021",
+        "System",
+        "System",
+        "Open content quote Implementation prompt"
+      ]
+    }
+  ],
+  "theme": {
+    "darkCount": 7,
+    "lightCount": 7,
+    "afterDark": {
+      "overflow": 0,
+      "pressed": 7,
+      "roots": [
+        "dark",
+        "dark",
+        "dark",
+        "dark",
+        "dark",
+        "dark",
+        "dark"
+      ]
+    },
+    "afterLight": {
+      "overflow": 0,
+      "pressed": 7,
+      "roots": [
+        "light",
+        "light",
+        "light",
+        "light",
+        "light",
+        "light",
+        "light"
+      ]
+    }
+  },
+  "consoleErrors": []
+}

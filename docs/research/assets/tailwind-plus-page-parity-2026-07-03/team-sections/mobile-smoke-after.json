@@ -1,0 +1,150 @@
+{
+  "finalState": {
+    "h2": "Team Sections",
+    "h3s": [
+      "With small images",
+      "With large images",
+      "Grid with round images",
+      "Large grid with cards",
+      "With image and short paragraph",
+      "With vertical images",
+      "Full width with vertical images",
+      "Grid with large round images",
+      "With medium images"
+    ],
+    "roots": 9,
+    "actions": 56,
+    "overflow": -15
+  },
+  "clickEvidence": [
+    {
+      "selector": "[data-team-section-variant=\"team-small-images\"] button[aria-label=\"Open team member Lindsay Walton\"]",
+      "feedback": [
+        "Lindsay Walton profile opened"
+      ],
+      "pressed": [
+        "System",
+        "Open team member Lindsay Walton",
+        "System",
+        "System",
+        "System",
+        "System",
+        "System",
+        "System",
+        "System",
+        "System"
+      ]
+    },
+    {
+      "selector": "[data-team-section-variant=\"team-large-images\"] button[aria-label=\"Open team member Tom Cook\"]",
+      "feedback": [
+        "Lindsay Walton profile opened",
+        "Tom Cook profile opened"
+      ],
+      "pressed": [
+        "System",
+        "Open team member Lindsay Walton",
+        "System",
+        "Open team member Tom Cook",
+        "System",
+        "System",
+        "System",
+        "System",
+        "System",
+        "System",
+        "System"
+      ]
+    },
+    {
+      "selector": "[data-team-section-variant=\"team-round-grid\"] button[aria-label=\"Open team member Ronald Richards\"]",
+      "feedback": [
+        "Lindsay Walton profile opened",
+        "Tom Cook profile opened",
+        "Ronald Richards profile opened"
+      ],
+      "pressed": [
+        "System",
+        "Open team member Lindsay Walton",
+        "System",
+        "Open team member Tom Cook",
+        "System",
+        "Open team member Ronald Richards",
+        "System",
+        "System",
+        "System",
+        "System",
+        "System",
+        "System"
+      ]
+    },
+    {
+      "selector": "[data-team-section-variant=\"team-vertical-images\"] button[aria-label=\"Open team member Kristin Watson\"]",
+      "feedback": [
+        "Lindsay Walton profile opened",
+        "Tom Cook profile opened",
+        "Ronald Richards profile opened",
+        "Kristin Watson profile opened"
+      ],
+      "pressed": [
+        "System",
+        "Open team member Lindsay Walton",
+        "System",
+        "Open team member Tom Cook",
+        "System",
+        "Open team member Ronald Richards",
+        "System",
+        "System",
+        "System",
+        "Open team member Kristin Watson",
+        "System",
+        "System",
+        "System"
+      ]
+    },
+    {
+      "selector": "[data-team-section-variant=\"team-medium-images\"] button[aria-label=\"Open team member Courtney Henry\"]",
+      "feedback": [
+        "Lindsay Walton profile opened",
+        "Tom Cook profile opened",
+        "Ronald Richards profile opened",
+        "Kristin Watson profile opened",
+        "Courtney Henry profile opened"
+      ],
+      "pressed": [
+        "System",
+        "Open team member Lindsay Walton",
+        "System",
+        "Open team member Tom Cook",
+        "System",
+        "Open team member Ronald Richards",
+        "System",
+        "System",
+        "System",
+        "Open team member Kristin Watson",
+        "System",
+        "System",
+        "System",
+        "Open team member Courtney Henry"
+      ]
+    }
+  ],
+  "theme": {
+    "darkCount": 9,
+    "afterDark": {
+      "roots": [
+        "dark",
+        "dark",
+        "dark",
+        "dark",
+        "dark",
+        "dark",
+        "dark",
+        "dark",
+        "dark"
+      ],
+      "pressed": 9,
+      "overflow": -15
+    }
+  },
+  "errors": []
+}

@@ -1,0 +1,17 @@
+{
+  "url": "http://127.0.0.1:5174/?filter=nav%3Aplus-navigation-navbars",
+  "severe": [],
+  "overlayText": 0,
+  "inputCount": 6,
+  "expandedCount": 2,
+  "expandedTrue": 1,
+  "teamFeedback": 1,
+  "quickFeedback": 1,
+  "searchFeedback": 1,
+  "notificationsFeedback": 1,
+  "allDarkButtonCount": 11,
+  "darkSurfaceCount": 22,
+  "mobileOverflow": 0,
+  "mobileExpandedTrue": 1,
+  "timestamp": "2026-07-03T14:48:28.786Z"
+}

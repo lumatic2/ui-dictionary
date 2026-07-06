@@ -1,0 +1,135 @@
+{
+  "url": "http://127.0.0.1:5195/?filter=nav%3Aplus-ecommerce-page-examples-product-pages",
+  "summary": {
+    "title": "UI 용어 사전",
+    "h2": [
+      "Product Pages"
+    ],
+    "themeButtons": 15,
+    "actionButtons": 238,
+    "ariaPressedButtons": 188,
+    "productPageRoots": 5,
+    "darkRoots": 0,
+    "lightRoots": 5,
+    "overflowX": 0
+  },
+  "interactions": [
+    {
+      "label": "Open product Search",
+      "count": 5,
+      "pressed": "true",
+      "expanded": null,
+      "feedback": true
+    },
+    {
+      "label": "Open product Account",
+      "count": 5,
+      "pressed": "true",
+      "expanded": null,
+      "feedback": true
+    },
+    {
+      "label": "Select color Black",
+      "count": 5,
+      "pressed": "true",
+      "expanded": null,
+      "feedback": true
+    },
+    {
+      "label": "Select size M",
+      "count": 5,
+      "pressed": "true",
+      "expanded": null,
+      "feedback": true
+    },
+    {
+      "label": "Add Basic Tee to bag",
+      "count": 1,
+      "pressed": "true",
+      "expanded": null,
+      "feedback": true
+    },
+    {
+      "label": "Toggle product detail Features",
+      "count": 1,
+      "pressed": null,
+      "expanded": "true",
+      "feedback": true
+    },
+    {
+      "label": "Open review Perfect everyday weight.",
+      "count": 4,
+      "pressed": "true",
+      "expanded": null,
+      "feedback": true
+    },
+    {
+      "label": "Open related product Essential Tee",
+      "count": 4,
+      "pressed": "true",
+      "expanded": null,
+      "feedback": true
+    },
+    {
+      "label": "Open product feature Water resistant",
+      "count": 1,
+      "pressed": "true",
+      "expanded": null,
+      "feedback": true
+    },
+    {
+      "label": "Open product tab Details",
+      "count": 1,
+      "pressed": "true",
+      "expanded": null,
+      "feedback": true
+    },
+    {
+      "label": "Open product tab card Reviews",
+      "count": 1,
+      "pressed": "true",
+      "expanded": null,
+      "feedback": true
+    }
+  ],
+  "darkButtons": {
+    "count": 5,
+    "pressedTrue": 5,
+    "pressed": [
+      "true",
+      "true",
+      "true",
+      "true",
+      "true"
+    ]
+  },
+  "darkState": {
+    "roots": 5,
+    "darkSurfaces": 43,
+    "overflowX": 0
+  },
+  "lightButtons": {
+    "count": 5,
+    "pressedTrue": 5,
+    "pressed": [
+      "true",
+      "true",
+      "true",
+      "true",
+      "true"
+    ]
+  },
+  "lightState": {
+    "roots": 5,
+    "darkSurfaces": 7,
+    "overflowX": 0
+  },
+  "mobile": {
+    "buttons": 238,
+    "roots": 5,
+    "overflowX": 0,
+    "feedback": true,
+    "pressed": "true"
+  },
+  "errors": []
+}

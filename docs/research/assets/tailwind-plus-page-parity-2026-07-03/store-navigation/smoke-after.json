@@ -1,0 +1,47 @@
+{
+  "url": "http://127.0.0.1:5174/?filter=nav%3Aplus-ecommerce-store-navigation",
+  "startedAt": "2026-07-03T20:21:53.759Z",
+  "consoleErrors": [],
+  "pageErrors": [],
+  "checkpoints": {
+    "headingCount": 1,
+    "themeButtons": 15,
+    "actionButtons": 129,
+    "ariaPressedButtons": 88,
+    "initialDarkFrames": 1,
+    "initialOverflowX": 0,
+    "search": {
+      "pressed": "true",
+      "feedback": true
+    },
+    "newArrivals": {
+      "pressed": "true",
+      "feedback": true
+    },
+    "bags": {
+      "pressed": "true",
+      "feedback": true
+    },
+    "cart": {
+      "pressed": "true",
+      "feedback": true
+    },
+    "darkButtons": 5,
+    "pressedDark": 5,
+    "darkFramesAfterDark": 12,
+    "lightButtons": 5,
+    "pressedLight": 5,
+    "darkFramesAfterLight": 1,
+    "mobileButtons": 58,
+    "mobileOverflowX": 0,
+    "mobileSearch": {
+      "pressed": "true",
+      "feedback": true
+    },
+    "mobileBag": {
+      "pressed": "true",
+      "feedback": true
+    }
+  },
+  "completedAt": "2026-07-03T20:22:00.125Z"
+}

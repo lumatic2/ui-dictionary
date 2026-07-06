@@ -1,0 +1,58 @@
+{
+  "url": "http://127.0.0.1:5174/?filter=nav%3Aplus-ecommerce-checkout-forms",
+  "startedAt": "2026-07-03T20:37:12.761Z",
+  "consoleErrors": [],
+  "pageErrors": [],
+  "checkpoints": {
+    "headingCount": 1,
+    "themeButtons": 15,
+    "actionButtons": 72,
+    "inputCount": 52,
+    "ariaPressedButtons": 28,
+    "initialCheckoutThemes": {
+      "dark": 0,
+      "light": 5
+    },
+    "initialOverflowX": 0,
+    "emailValue": "alex@example.com",
+    "emailFeedback": true,
+    "confirmOrder": {
+      "pressed": "true",
+      "feedback": true
+    },
+    "informationStep": {
+      "pressed": "true",
+      "feedback": true
+    },
+    "paymentStep": {
+      "pressed": "true",
+      "feedback": true
+    },
+    "applyDiscount": {
+      "pressed": "true",
+      "feedback": true
+    },
+    "darkButtons": 5,
+    "pressedDark": 5,
+    "checkoutThemesAfterDark": {
+      "dark": 5,
+      "light": 0
+    },
+    "lightButtons": 5,
+    "pressedLight": 5,
+    "checkoutThemesAfterLight": {
+      "dark": 0,
+      "light": 5
+    },
+    "mobileButtons": 18,
+    "mobileInputs": 52,
+    "mobileOverflowX": 0,
+    "mobileSummaryToggleCount": 1,
+    "mobileSummaryToggle": {
+      "beforeExpanded": "true",
+      "afterExpanded": "false",
+      "feedback": true
+    }
+  },
+  "completedAt": "2026-07-03T20:37:19.776Z"
+}

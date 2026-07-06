@@ -1,0 +1,114 @@
+{
+  "browserFallback": "Browser/Chrome path failed earlier: Browser is not available: iab / packaged browser documentation directory missing; standalone Playwright fallback used",
+  "reference": {
+    "status": 200,
+    "title": "Tailwind CSS Product Lists - Official Tailwind UI Components",
+    "url": "https://tailwindcss.com/plus/ui-blocks/ecommerce/components/product-lists",
+    "h1": "Product Lists",
+    "exampleHeadings": [
+      "Components",
+      "Page Examples",
+      "Build UIs that don’t suck.",
+      "With inline price",
+      "With inline price",
+      "Simple",
+      "Simple",
+      "With CTA link",
+      "With CTA link",
+      "With color swatches and horizontal scrolling",
+      "With color swatches and horizontal scrolling",
+      "With tall images",
+      "With tall images",
+      "With image overlay and add button",
+      "With image overlay and add button",
+      "With tall images and CTA link",
+      "With tall images and CTA link",
+      "With border grid",
+      "With border grid",
+      "With supporting text",
+      "With supporting text",
+      "With inline price and CTA link",
+      "With inline price and CTA link",
+      "Card with full details",
+      "Card with full details",
+      "Marketing",
+      "Application UI",
+      "Ecommerce",
+      "Templates & UI Kits"
+    ],
+    "buttons": [
+      "Search",
+      "Search",
+      "Navigation",
+      "Open navigation menu",
+      "Preview",
+      "Code",
+      "Preview",
+      "Code",
+      "Preview",
+      "Code",
+      "Preview",
+      "Code"
+    ]
+  },
+  "local": {
+    "before": {
+      "title": "UI 용어 사전",
+      "url": "http://127.0.0.1:5174/?filter=nav%3Aplus-ecommerce-product-lists",
+      "h1Like": [
+        "Product Lists"
+      ],
+      "examples": [
+        "With inline price",
+        "Simple",
+        "With CTA link",
+        "With color swatches and horizontal scrolling",
+        "With tall images",
+        "With image overlay and add button",
+        "With tall images and CTA link",
+        "With border grid",
+        "With supporting text",
+        "With inline price and CTA link",
+        "Card with full details"
+      ],
+      "themeButtons": 33,
+      "buttonCount": 119,
+      "swatchSpans": 60,
+      "swatchButtons": 0,
+      "cardButtons": 24,
+      "darkFrames": 0,
+      "overflowX": 0
+    },
+    "interactionBefore": {
+      "feedback": [
+        "Walnut Tray opened",
+        "Task Lamp added to bag",
+        "Canvas Card Wallet M selected"
+      ],
+      "pressedButtons": [
+        "System",
+        "System",
+        "System",
+        "System",
+        "System",
+        "System",
+        "System",
+        "System",
+        "System",
+        "System",
+        "System"
+      ],
+      "swatchButtons": 0
+    },
+    "darkBefore": {
+      "pressedDark": 11,
+      "darkFrames": 0,
+      "lightSurfaces": 51
+    },
+    "mobileBefore": {
+      "overflowX": 0,
+      "themeButtons": 33
+    },
+    "errors": []
+  }
+}

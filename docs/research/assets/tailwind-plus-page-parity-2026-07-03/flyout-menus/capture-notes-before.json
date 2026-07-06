@@ -1,0 +1,1010 @@
+{
+  "reference": {
+    "buttons": [
+      {
+        "aria": "Search",
+        "expanded": null,
+        "text": ""
+      },
+      {
+        "aria": "Search",
+        "expanded": null,
+        "text": ""
+      },
+      {
+        "aria": "Navigation",
+        "expanded": null,
+        "text": ""
+      },
+      {
+        "aria": "Open navigation menu",
+        "expanded": null,
+        "text": ""
+      },
+      {
+        "aria": null,
+        "expanded": null,
+        "text": "Preview"
+      },
+      {
+        "aria": null,
+        "expanded": null,
+        "text": "Code"
+      },
+      {
+        "aria": null,
+        "expanded": null,
+        "text": ""
+      },
+      {
+        "aria": null,
+        "expanded": null,
+        "text": "Preview"
+      },
+      {
+        "aria": null,
+        "expanded": null,
+        "text": "Code"
+      },
+      {
+        "aria": null,
+        "expanded": null,
+        "text": ""
+      }
+    ],
+    "h1": "Flyout Menus",
+    "h2s": [
+      "Stacked with footer actions",
+      "Stacked with footer actions",
+      "Full-width two-columns",
+      "Full-width two-columns",
+      "Stacked with footer list",
+      "Stacked with footer list",
+      "Full-width",
+      "Full-width",
+      "Simple with descriptions",
+      "Simple with descriptions",
+      "Two-column",
+      "Two-column",
+      "Simple",
+      "Simple"
+    ],
+    "h3s": [
+      "Page Sections",
+      "Elements",
+      "Feedback",
+      "Page Examples",
+      "Build UIs that don’t suck.",
+      "Marketing",
+      "Application UI",
+      "Ecommerce",
+      "Templates & UI Kits"
+    ],
+    "links": [
+      "Introducing OatmealOur new multi-theme marketing site kit",
+      "UI Blocks",
+      "Templates",
+      "UI Kit",
+      "Sign in",
+      "Get full access",
+      "Marketing",
+      "Application UI",
+      "Ecommerce",
+      "Documentation",
+      "Hero Sections",
+      "Feature Sections",
+      "CTA Sections",
+      "Bento Grids",
+      "Pricing Sections",
+      "Header Sections",
+      "Newsletter Sections",
+      "Stats",
+      "Testimonials",
+      "Blog Sections",
+      "Contact Sections",
+      "Team Sections",
+      "Content Sections",
+      "Logo Clouds",
+      "FAQs",
+      "Footers",
+      "Headers",
+      "Flyout Menus",
+      "Banners",
+      "404 Pages",
+      "Landing Pages",
+      "Pricing Pages",
+      "About Pages",
+      "Get the free course",
+      "UI Blocks",
+      "Marketing",
+      "Elements",
+      "UI Blocks",
+      "Marketing",
+      "Elements",
+      "Stacked with footer actions",
+      "Stacked with footer actions",
+      "Full-width two-columns",
+      "Get the code →",
+      "Full-width two-columns",
+      "Get the code →",
+      "Stacked with footer list",
+      "Get the code →",
+      "Stacked with footer list",
+      "Get the code →",
+      "Full-width",
+      "Get the code →",
+      "Full-width",
+      "Get the code →",
+      "Simple with descriptions",
+      "Get the code →",
+      "Simple with descriptions",
+      "Get the code →",
+      "Two-column",
+      "Get the code →",
+      "Two-column",
+      "Get the code →",
+      "Simple",
+      "Get the code →",
+      "Simple",
+      "Get the code →",
+      "Hero Sections",
+      "Feature Sections",
+      "Pricing Sections",
+      "Header Sections",
+      "Newsletter Sections",
+      "Testimonials",
+      "Team Sections",
+      "Content Sections",
+      "Logo Clouds",
+      "FAQs",
+      "Footers",
+      "Headers",
+      "Flyout Menus",
+      "Banners",
+      "Browse all →",
+      "Tables",
+      "Feeds",
+      "Form Layouts",
+      "Select Menus",
+      "Radio Groups",
+      "Checkboxes",
+      "Comboboxes",
+      "Navbars",
+      "Pagination",
+      "Sidebar Navigation",
+      "Command Palettes",
+      "Modals",
+      "Dropdowns",
+      "Buttons",
+      "Browse all →",
+      "Product Overviews",
+      "Product Lists",
+      "Category Previews",
+      "Shopping Carts"
+    ],
+    "overflow": 0,
+    "textSamples": [
+      "MarketingApplication UIEcommerceDocumentation",
+      "Marketing",
+      "Application UI",
+      "Ecommerce",
+      "Documentation",
+      "Page SectionsHero SectionsFeature SectionsCTA SectionsBento GridsPricing SectionsHeader SectionsNewsletter SectionsStatsTestimonialsBlog SectionsContact SectionsTeam SectionsContent SectionsLogo CloudsFAQsFooters",
+      "Page Sections",
+      "Hero Sections",
+      "Feature Sections",
+      "CTA Sections",
+      "Bento Grids",
+      "Pricing Sections",
+      "Header Sections",
+      "Newsletter Sections",
+      "Stats",
+      "Testimonials",
+      "Blog Sections",
+      "Contact Sections",
+      "Team Sections",
+      "Content Sections",
+      "Logo Clouds",
+      "FAQs",
+      "Footers",
+      "ElementsHeadersFlyout MenusBanners",
+      "Elements",
+      "Headers",
+      "Flyout Menus",
+      "Banners",
+      "Feedback404 Pages",
+      "Feedback",
+      "404 Pages",
+      "Page ExamplesLanding PagesPricing PagesAbout Pages",
+      "Page Examples",
+      "Landing Pages",
+      "Pricing Pages",
+      "About Pages",
+      "5-day Mini-Course",
+      "Build UIs that don’t suck.",
+      "Short, tactical video lessons from the creator of Tailwind CSS, delivered directly to your inbox every day for a week.",
+      "Get the free course",
+      "/",
+      "/",
+      "Use these Tailwind CSS flyout menu examples to add beautiful dropdown menus to your website's navigation, featuring icons, multiple sections, and content previews. These menu examples are designed and built by the Tailwind CSS team, and include a variety of different styles, such as simple text-based, multiple sections with icons, and full-width menus.",
+      "Stacked with footer actions",
+      "Stacked with footer actions",
+      "Full-width two-columns",
+      "Preview",
+      "Full-width two-columns",
+      "Preview",
+      "Stacked with footer list",
+      "Preview",
+      "Stacked with footer list",
+      "Preview",
+      "Full-width",
+      "Preview",
+      "Full-width",
+      "Preview",
+      "Simple with descriptions",
+      "Preview",
+      "Simple with descriptions",
+      "Preview",
+      "Two-column",
+      "Preview",
+      "Two-column",
+      "Preview",
+      "Simple",
+      "Preview",
+      "Simple",
+      "Preview",
+      "Marketing",
+      "Hero Sections",
+      "Feature Sections",
+      "Pricing Sections",
+      "Header Sections",
+      "Newsletter Sections",
+      "Testimonials",
+      "Team Sections",
+      "Content Sections",
+      "Logo Clouds",
+      "FAQs",
+      "Footers",
+      "Headers",
+      "Flyout Menus",
+      "Banners",
+      "Browse all →",
+      "Application UI",
+      "Tables",
+      "Feeds",
+      "Form Layouts",
+      "Select Menus",
+      "Radio Groups",
+      "Checkboxes",
+      "Comboboxes",
+      "Navbars",
+      "Pagination",
+      "Sidebar Navigation",
+      "Command Palettes",
+      "Modals",
+      "Dropdowns",
+      "Buttons",
+      "Browse all →",
+      "Ecommerce",
+      "Product Overviews",
+      "Product Lists",
+      "Category Previews",
+      "Shopping Carts",
+      "Category Filters",
+      "Product Quickviews",
+      "Product Features",
+      "Store Navigation",
+      "Promo Sections",
+      "Checkout Forms",
+      "Reviews",
+      "Order Summaries",
+      "Order History",
+      "Incentives",
+      "Browse all →",
+      "Templates & UI Kits",
+      "Catalyst UI Kit",
+      "Personal Website Template"
+    ],
+    "title": "Tailwind CSS Flyout Menus - Official Tailwind UI Components",
+    "url": "https://tailwindcss.com/plus/ui-blocks/marketing/elements/flyout-menus"
+  },
+  "local": {
+    "actions": 137,
+    "buttons": [
+      {
+        "aria": "UI 용어 사전 홈으로 이동",
+        "expanded": null,
+        "text": "UI Dictionary"
+      },
+      {
+        "aria": "검색 열기",
+        "expanded": null,
+        "text": "Ctrl F"
+      },
+      {
+        "aria": null,
+        "expanded": null,
+        "text": "UI Blocks"
+      },
+      {
+        "aria": null,
+        "expanded": null,
+        "text": "Templates"
+      },
+      {
+        "aria": null,
+        "expanded": null,
+        "text": "UI Kit"
+      },
+      {
+        "aria": null,
+        "expanded": null,
+        "text": "Sign in"
+      },
+      {
+        "aria": null,
+        "expanded": null,
+        "text": "Get full access"
+      },
+      {
+        "aria": "More options",
+        "expanded": null,
+        "text": ""
+      },
+      {
+        "aria": null,
+        "expanded": null,
+        "text": "Marketing"
+      },
+      {
+        "aria": null,
+        "expanded": null,
+        "text": "Application UI"
+      },
+      {
+        "aria": null,
+        "expanded": null,
+        "text": "Ecommerce"
+      },
+      {
+        "aria": null,
+        "expanded": null,
+        "text": "Documentation"
+      },
+      {
+        "aria": null,
+        "expanded": null,
+        "text": "Page Sections"
+      },
+      {
+        "aria": null,
+        "expanded": null,
+        "text": "Hero Sections"
+      },
+      {
+        "aria": null,
+        "expanded": null,
+        "text": "Feature Sections"
+      },
+      {
+        "aria": null,
+        "expanded": null,
+        "text": "CTA Sections"
+      },
+      {
+        "aria": null,
+        "expanded": null,
+        "text": "Bento Grids"
+      },
+      {
+        "aria": null,
+        "expanded": null,
+        "text": "Pricing Sections"
+      },
+      {
+        "aria": null,
+        "expanded": null,
+        "text": "Header Sections"
+      },
+      {
+        "aria": null,
+        "expanded": null,
+        "text": "Newsletter Sections"
+      },
+      {
+        "aria": null,
+        "expanded": null,
+        "text": "Stats"
+      },
+      {
+        "aria": null,
+        "expanded": null,
+        "text": "Testimonials"
+      },
+      {
+        "aria": null,
+        "expanded": null,
+        "text": "Blog Sections"
+      },
+      {
+        "aria": null,
+        "expanded": null,
+        "text": "Contact Sections"
+      },
+      {
+        "aria": null,
+        "expanded": null,
+        "text": "Team Sections"
+      },
+      {
+        "aria": null,
+        "expanded": null,
+        "text": "Content Sections"
+      },
+      {
+        "aria": null,
+        "expanded": null,
+        "text": "Logo Clouds"
+      },
+      {
+        "aria": null,
+        "expanded": null,
+        "text": "FAQs"
+      },
+      {
+        "aria": null,
+        "expanded": null,
+        "text": "Footers"
+      },
+      {
+        "aria": null,
+        "expanded": null,
+        "text": "Elements"
+      },
+      {
+        "aria": null,
+        "expanded": null,
+        "text": "Headers"
+      },
+      {
+        "aria": null,
+        "expanded": null,
+        "text": "Flyout Menus"
+      },
+      {
+        "aria": null,
+        "expanded": null,
+        "text": "Banners"
+      },
+      {
+        "aria": null,
+        "expanded": null,
+        "text": "Feedback"
+      },
+      {
+        "aria": null,
+        "expanded": null,
+        "text": "404 Pages"
+      },
+      {
+        "aria": null,
+        "expanded": null,
+        "text": "Page Examples"
+      },
+      {
+        "aria": null,
+        "expanded": null,
+        "text": "Landing Pages"
+      },
+      {
+        "aria": null,
+        "expanded": null,
+        "text": "Pricing Pages"
+      },
+      {
+        "aria": null,
+        "expanded": null,
+        "text": "About Pages"
+      },
+      {
+        "aria": null,
+        "expanded": null,
+        "text": "Preview"
+      },
+      {
+        "aria": null,
+        "expanded": null,
+        "text": "Code"
+      },
+      {
+        "aria": "System",
+        "expanded": null,
+        "text": ""
+      },
+      {
+        "aria": "Light",
+        "expanded": null,
+        "text": ""
+      },
+      {
+        "aria": "Dark",
+        "expanded": null,
+        "text": ""
+      },
+      {
+        "aria": "Copy code",
+        "expanded": null,
+        "text": ""
+      },
+      {
+        "aria": null,
+        "expanded": null,
+        "text": "Product"
+      },
+      {
+        "aria": null,
+        "expanded": null,
+        "text": "Features"
+      },
+      {
+        "aria": null,
+        "expanded": null,
+        "text": "Marketplace"
+      },
+      {
+        "aria": null,
+        "expanded": null,
+        "text": "Company"
+      },
+      {
+        "aria": null,
+        "expanded": "false",
+        "text": ""
+      },
+      {
+        "aria": null,
+        "expanded": null,
+        "text": "Log in →"
+      },
+      {
+        "aria": null,
+        "expanded": null,
+        "text": "1AnalyticsGet a better understanding of your traffic"
+      },
+      {
+        "aria": null,
+        "expanded": null,
+        "text": "2EngagementSpeak directly to your customers"
+      },
+      {
+        "aria": null,
+        "expanded": null,
+        "text": "3SecurityYour customers' data will be safe"
+      },
+      {
+        "aria": null,
+        "expanded": null,
+        "text": "4IntegrationsConnect with third-party tools"
+      },
+      {
+        "aria": null,
+        "expanded": null,
+        "text": "Watch demo"
+      },
+      {
+        "aria": null,
+        "expanded": null,
+        "text": "Contact sales"
+      },
+      {
+        "aria": null,
+        "expanded": null,
+        "text": "Preview"
+      },
+      {
+        "aria": "System",
+        "expanded": null,
+        "text": ""
+      },
+      {
+        "aria": "Light",
+        "expanded": null,
+        "text": ""
+      },
+      {
+        "aria": "Dark",
+        "expanded": null,
+        "text": ""
+      },
+      {
+        "aria": null,
+        "expanded": null,
+        "text": "Get the code →"
+      },
+      {
+        "aria": null,
+        "expanded": null,
+        "text": "Product"
+      },
+      {
+        "aria": null,
+        "expanded": null,
+        "text": "Features"
+      },
+      {
+        "aria": null,
+        "expanded": null,
+        "text": "Marketplace"
+      },
+      {
+        "aria": null,
+        "expanded": null,
+        "text": "Company"
+      },
+      {
+        "aria": null,
+        "expanded": "false",
+        "text": ""
+      },
+      {
+        "aria": null,
+        "expanded": null,
+        "text": "Log in →"
+      },
+      {
+        "aria": null,
+        "expanded": null,
+        "text": "Preview"
+      },
+      {
+        "aria": "System",
+        "expanded": null,
+        "text": ""
+      },
+      {
+        "aria": "Light",
+        "expanded": null,
+        "text": ""
+      },
+      {
+        "aria": "Dark",
+        "expanded": null,
+        "text": ""
+      },
+      {
+        "aria": null,
+        "expanded": null,
+        "text": "Get the code →"
+      },
+      {
+        "aria": null,
+        "expanded": null,
+        "text": "Product"
+      },
+      {
+        "aria": null,
+        "expanded": null,
+        "text": "Features"
+      },
+      {
+        "aria": null,
+        "expanded": null,
+        "text": "Marketplace"
+      },
+      {
+        "aria": null,
+        "expanded": null,
+        "text": "Company"
+      },
+      {
+        "aria": null,
+        "expanded": "false",
+        "text": ""
+      },
+      {
+        "aria": null,
+        "expanded": null,
+        "text": "Log in →"
+      },
+      {
+        "aria": null,
+        "expanded": null,
+        "text": "1AnalyticsGet a better understanding of your traffic"
+      },
+      {
+        "aria": null,
+        "expanded": null,
+        "text": "2EngagementSpeak directly to your customers"
+      },
+      {
+        "aria": null,
+        "expanded": null,
+        "text": "3SecurityYour customers' data will be safe"
+      },
+      {
+        "aria": null,
+        "expanded": null,
+        "text": "4IntegrationsConnect with third-party tools"
+      },
+      {
+        "aria": null,
+        "expanded": null,
+        "text": "Help center"
+      },
+      {
+        "aria": null,
+        "expanded": null,
+        "text": "API status"
+      },
+      {
+        "aria": null,
+        "expanded": null,
+        "text": "Documentation"
+      },
+      {
+        "aria": null,
+        "expanded": null,
+        "text": "Preview"
+      },
+      {
+        "aria": "System",
+        "expanded": null,
+        "text": ""
+      },
+      {
+        "aria": "Light",
+        "expanded": null,
+        "text": ""
+      },
+      {
+        "aria": "Dark",
+        "expanded": null,
+        "text": ""
+      },
+      {
+        "aria": null,
+        "expanded": null,
+        "text": "Get the code →"
+      },
+      {
+        "aria": null,
+        "expanded": null,
+        "text": "Product"
+      },
+      {
+        "aria": null,
+        "expanded": null,
+        "text": "Features"
+      },
+      {
+        "aria": null,
+        "expanded": null,
+        "text": "Marketplace"
+      },
+      {
+        "aria": null,
+        "expanded": null,
+        "text": "Company"
+      },
+      {
+        "aria": null,
+        "expanded": "false",
+        "text": ""
+      },
+      {
+        "aria": null,
+        "expanded": null,
+        "text": "Log in →"
+      },
+      {
+        "aria": null,
+        "expanded": null,
+        "text": "Preview"
+      },
+      {
+        "aria": "System",
+        "expanded": null,
+        "text": ""
+      },
+      {
+        "aria": "Light",
+        "expanded": null,
+        "text": ""
+      },
+      {
+        "aria": "Dark",
+        "expanded": null,
+        "text": ""
+      },
+      {
+        "aria": null,
+        "expanded": null,
+        "text": "Get the code →"
+      },
+      {
+        "aria": null,
+        "expanded": null,
+        "text": "Product"
+      },
+      {
+        "aria": null,
+        "expanded": null,
+        "text": "Features"
+      },
+      {
+        "aria": null,
+        "expanded": null,
+        "text": "Marketplace"
+      },
+      {
+        "aria": null,
+        "expanded": null,
+        "text": "Company"
+      },
+      {
+        "aria": null,
+        "expanded": "false",
+        "text": ""
+      },
+      {
+        "aria": null,
+        "expanded": null,
+        "text": "Log in →"
+      },
+      {
+        "aria": null,
+        "expanded": null,
+        "text": "1AnalyticsGet a better understanding of your traffic"
+      },
+      {
+        "aria": null,
+        "expanded": null,
+        "text": "2EngagementSpeak directly to your customers"
+      },
+      {
+        "aria": null,
+        "expanded": null,
+        "text": "3SecurityYour customers' data will be safe"
+      },
+      {
+        "aria": null,
+        "expanded": null,
+        "text": "4IntegrationsConnect with third-party tools"
+      },
+      {
+        "aria": null,
+        "expanded": null,
+        "text": "Preview"
+      },
+      {
+        "aria": "System",
+        "expanded": null,
+        "text": ""
+      },
+      {
+        "aria": "Light",
+        "expanded": null,
+        "text": ""
+      },
+      {
+        "aria": "Dark",
+        "expanded": null,
+        "text": ""
+      },
+      {
+        "aria": null,
+        "expanded": null,
+        "text": "Get the code →"
+      },
+      {
+        "aria": null,
+        "expanded": null,
+        "text": "Product"
+      },
+      {
+        "aria": null,
+        "expanded": null,
+        "text": "Features"
+      },
+      {
+        "aria": null,
+        "expanded": null,
+        "text": "Marketplace"
+      }
+    ],
+    "flyoutActions": 0,
+    "h2": "Flyout Menus",
+    "h3s": [
+      "Stacked with footer actions",
+      "Full-width two-columns",
+      "Stacked with footer list",
+      "Full-width",
+      "Simple with descriptions",
+      "Two-column",
+      "Simple"
+    ],
+    "overflow": 0,
+    "roots": 0,
+    "textSamples": [
+      "UI Dictionary",
+      "Plus / UI Blocks / Marketing / Elements / Flyout Menus",
+      "Flyout Menus",
+      "상단 내비게이션의 항목을 눌렀을 때 제품군, 솔루션, 리소스를 펼쳐 보여주는 플라이아웃 메뉴 예시입니다.",
+      "Tailwind Plus처럼 각 leaf의 첫 예제는 Preview와 Code를 함께 제공하고, 이후 예제는 Preview와 잠금 code CTA로 구분합니다. 우리 예시는 실제 화면 맥락에 맞춘 설명, tags, interaction feedback을 함께 보여줍니다.",
+      "On this page",
+      "Stacked with footer actions",
+      "세로 링크 목록 아래에 demo나 trial 같은 footer action을 붙이는 flyout입니다.",
+      "Analytics",
+      "Get a better understanding of your traffic",
+      "Engagement",
+      "Speak directly to your customers",
+      "Security",
+      "Your customers' data will be safe",
+      "Integrations",
+      "Connect with third-party tools",
+      "Full-width two-columns",
+      "전체 폭 panel 안에서 메뉴 항목을 두 열로 나눠 많은 정보를 보여줍니다.",
+      "Engagement",
+      "1Analytics",
+      "2Customers",
+      "3Privacy",
+      "Resources",
+      "Boost your conversion rate",
+      "How to use search signals to guide new customers.",
+      "How to use search engine optimization",
+      "Plan content paths around discovery and intent.",
+      "Stacked with footer list",
+      "주요 링크 아래에 보조 list를 붙여 다음 탐색 후보를 남깁니다.",
+      "Analytics",
+      "Get a better understanding of your traffic",
+      "Engagement",
+      "Speak directly to your customers",
+      "Security",
+      "Your customers' data will be safe",
+      "Integrations",
+      "Connect with third-party tools",
+      "Recent posts",
+      "Full-width",
+      "넓은 megamenu surface로 여러 제품군과 리소스를 한 번에 펼칩니다.",
+      "Analytics",
+      "Get a better understanding of your traffic",
+      "Engagement",
+      "Speak directly to your customers",
+      "Security",
+      "Your customers' data will be safe",
+      "Integrations",
+      "Connect with third-party tools",
+      "Automations",
+      "Build strategic funnels that convert",
+      "Reports",
+      "Keep every team informed",
+      "Simple with descriptions",
+      "각 메뉴 항목에 짧은 설명을 붙여 사용자가 목적지를 더 쉽게 고르게 합니다.",
+      "Analytics",
+      "Get a better understanding of your traffic",
+      "Engagement",
+      "Speak directly to your customers",
+      "Security",
+      "Your customers' data will be safe",
+      "Integrations",
+      "Connect with third-party tools",
+      "Two-column",
+      "중간 크기 flyout을 두 열로 나눠 정보량과 compact함을 균형 있게 유지합니다.",
+      "Analytics",
+      "Get a better understanding of your traffic",
+      "Engagement",
+      "Speak directly to your customers",
+      "Security",
+      "Your customers' data will be safe",
+      "Integrations",
+      "Connect with third-party tools",
+      "Automations",
+      "Build strategic funnels that convert",
+      "Reports",
+      "Keep every team informed",
+      "Simple",
+      "몇 개의 링크만 보여주는 가장 가벼운 flyout menu입니다."
+    ],
+    "url": "http://127.0.0.1:5200/?filter=nav%3Aplus-marketing-flyout-menus"
+  }
+}

@@ -1,0 +1,132 @@
+{
+  "url": "http://127.0.0.1:5174/?filter=nav%3Aplus-forms-radio-groups",
+  "browserAvailability": "in-app Browser failed: Browser is not available: iab; standalone Playwright fallback used",
+  "before": {
+    "title": "UI 용어 사전",
+    "radioRoleCount": 39,
+    "radioGroupCount": 12,
+    "checkedCount": 12,
+    "themeButtonCount": 36,
+    "darkButtonCount": 12,
+    "activeSystemCount": 12,
+    "bodyOverflowX": 0
+  },
+  "groupCount": 12,
+  "afterInteractions": {
+    "checkedByGroup": [
+      {
+        "i": 0,
+        "label": "Plan",
+        "checked": [
+          "Startup"
+        ]
+      },
+      {
+        "i": 1,
+        "label": "Plan",
+        "checked": [
+          "Enterprise"
+        ]
+      },
+      {
+        "i": 2,
+        "label": "Plan",
+        "checked": [
+          "BusinessUnlimited projects, priority support, and reporting."
+        ]
+      },
+      {
+        "i": 3,
+        "label": "Plan",
+        "checked": [
+          "BusinessUnlimited projects, priority support, and reporting."
+        ]
+      },
+      {
+        "i": 4,
+        "label": "Plan",
+        "checked": [
+          "Business"
+        ]
+      },
+      {
+        "i": 5,
+        "label": "Plan",
+        "checked": [
+          "Business"
+        ]
+      },
+      {
+        "i": 6,
+        "label": "Plan pricing",
+        "checked": [
+          "BusinessUnlimited projects, priority support, and reporting.$99"
+        ]
+      },
+      {
+        "i": 7,
+        "label": "Visibility",
+        "checked": [
+          "BusinessUnlimited projects, priority support, and reporting."
+        ]
+      },
+      {
+        "i": 8,
+        "label": "Choose accent color",
+        "checked": [
+          "Rose color"
+        ]
+      },
+      {
+        "i": 9,
+        "label": "Plan cards",
+        "checked": [
+          "EnterpriseDedicated controls, SSO, and procurement support."
+        ]
+      },
+      {
+        "i": 10,
+        "label": "Plan cards",
+        "checked": [
+          "Business"
+        ]
+      },
+      {
+        "i": 11,
+        "label": "Plan cards",
+        "checked": [
+          "StartupUp to 5 active projects and basic support."
+        ]
+      }
+    ],
+    "checkedCount": 12,
+    "startupFeedbackCount": 2,
+    "enterpriseFeedbackCount": 2,
+    "roseFeedbackCount": 1,
+    "group0Startup": true,
+    "group1Enterprise": true,
+    "group8Rose": true,
+    "group9Enterprise": true,
+    "group11Startup": true,
+    "group2StillBusiness": true,
+    "bodyOverflowX": 0
+  },
+  "afterDark": {
+    "darkButtonCount": 12,
+    "activeDarkCount": 12,
+    "checkedCount": 12,
+    "darkSurfaceCount": 59,
+    "bodyOverflowX": 0
+  },
+  "mobile": {
+    "radioRoleCount": 39,
+    "radioGroupCount": 12,
+    "checkedCount": 12,
+    "firstGroupEnterprise": true,
+    "feedback": true,
+    "bodyOverflowX": 0
+  },
+  "consoleMessages": [],
+  "pageErrors": [],
+  "timestamp": "2026-07-03T17:41:14.043Z"
+}

@@ -1,0 +1,10 @@
+{
+  "tailwindUrl": "https://tailwindcss.com/plus/ui-blocks/application-ui/navigation/navbars",
+  "localUrl": "http://127.0.0.1:5174/?filter=nav%3Aplus-navigation-navbars",
+  "refTitle": "Navbars",
+  "refButtonCount": 10,
+  "localButtonCount": 256,
+  "localDarkButtonCount": 11,
+  "localSearchInputCount": 0,
+  "localExpandedButtons": 0
+}

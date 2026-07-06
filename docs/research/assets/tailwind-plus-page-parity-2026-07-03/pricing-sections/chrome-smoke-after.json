@@ -1,0 +1,64 @@
+{
+  "immediatePricingActions": {
+    "planImmediate": {
+      "feedback": true,
+      "pressed": 7
+    },
+    "billingImmediate": {
+      "feedback": true,
+      "pressed": 1
+    },
+    "logoImmediate": {
+      "feedback": true,
+      "pressed": 1
+    },
+    "comparisonImmediate": {
+      "feedback": true,
+      "pressed": 1
+    }
+  },
+  "themeSmoke": {
+    "startupCount": 7,
+    "annualCount": 2,
+    "tupleCount": 1,
+    "compCount": 3,
+    "darkCount": 12,
+    "lightCount": 12,
+    "afterDark": {
+      "annualPressed": 1,
+      "billingFeedback": true,
+      "comparisonFeedback": true,
+      "comparisonPressed": 1,
+      "darkRoots": 12,
+      "h2": "Pricing Sections",
+      "h3s": [
+        "Two tiers with emphasized right tier",
+        "Two tiers with emphasized left tier",
+        "Three tiers with logos and feature comparison",
+        "Two tiers with extra tier",
+        "Single price with details",
+        "Three tiers",
+        "Three tiers with dividers",
+        "Three tiers with emphasized tier",
+        "Three tiers with toggle",
+        "Four tiers with toggle",
+        "With comparison table",
+        "Three tiers with feature comparison"
+      ],
+      "lightRoots": 0,
+      "logoFeedback": false,
+      "overflow": 0,
+      "planFeedback": false,
+      "pricingActions": 102,
+      "pricingRoots": 12,
+      "startupPressed": 7,
+      "tuplePressed": 0
+    },
+    "afterLight": {
+      "darkRoots": 0,
+      "lightRoots": 12,
+      "overflow": 0
+    },
+    "logsAfterPricing": []
+  }
+}

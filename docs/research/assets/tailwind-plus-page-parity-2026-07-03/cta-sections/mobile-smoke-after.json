@@ -1,0 +1,34 @@
+{
+  "initial": {
+    "h2": "CTA Sections",
+    "h3": [
+      "Dark panel with app screenshot",
+      "Simple stacked",
+      "Centered on dark panel",
+      "Simple centered",
+      "Simple centered with gradient",
+      "Simple centered on brand",
+      "Simple justified",
+      "Simple justified on subtle brand",
+      "Split with image",
+      "Two columns with photo",
+      "With image tiles"
+    ],
+    "buttons": 117,
+    "ctaRoots": 11,
+    "visibleDarkControls": 11,
+    "ctaStartButtons": 11,
+    "ctaDetailButtons": 11,
+    "overflow": 0
+  },
+  "interactions": {
+    "startFeedback": true,
+    "detailFeedback": true
+  },
+  "darkAfter": {
+    "darkPressed": 11,
+    "darkRoots": 11,
+    "overflow": 0
+  },
+  "errors": []
+}

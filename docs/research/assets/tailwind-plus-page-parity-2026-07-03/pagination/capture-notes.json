@@ -1,0 +1,28 @@
+{
+  "refUrl": "https://tailwindcss.com/plus/ui-blocks/application-ui/navigation/pagination",
+  "localUrl": "http://127.0.0.1:5174/?filter=nav%3Aplus-navigation-pagination",
+  "capturedAt": "2026-07-03T15:04:57.565Z",
+  "browserPath": "standalone Playwright; Browser plugin not available in active tools",
+  "reference": {
+    "status": 200,
+    "title": "Tailwind CSS Pagination - Official Tailwind UI Components",
+    "url": "https://tailwindcss.com/plus/ui-blocks/application-ui/navigation/pagination",
+    "h1": "Pagination",
+    "visibleButtons": 5,
+    "visibleLinks": 74,
+    "textSample": "Introducing Oatmeal\nOur new multi-theme marketing site kit\nUI Blocks\nTemplates\nUI Kit\nSign in\nGet full access\nUI Blocks\nApplication UI\nNavigation\nPagination\n\nUse these Tailwind CSS pagination components to add page navigation controls to your application's resource pages, featuring page numbers, next/previous buttons, and ellipses for handling large amounts of pages. These components are designed and built by the Tailwind CSS team, and include a variety of different styles and layouts.\n\nCard footer with page buttons\nPreview\nCode\nHTML\nReact\nVue\nCentered page numbers\n\nPreview\n\nGet the code →\nSimple card footer\n\nPreview\n\nGet the code →\nMarketing\nHero Sections\nFeature Sections\nPricing Sections\nHeader Sections\nNewsletter Sections\nTestimonials\nTeam Sections\nContent Sections\nLogo Clouds\nFAQs\nFooters\nHeaders\nFlyout Menus\nBanners\nBrowse all →\nApplication UI\nTables\nFeeds\nForm Layouts\nSelect Menus\nRadio Groups\nCheckboxes\nComboboxes\nNavbars\nPagination\nSidebar Navigation\nCommand Palettes\nModals\nDropdowns\nButtons\nBrowse all →\nEcommerce\nProduct Overviews\nProduct Lists\nCategory Previews\nShopping Carts\nCategory Filters\nProduct Quickviews\nProduct Features\nStore Navigation\nPromo Sections\nCheckout For"
+  },
+  "localBefore": {
+    "navCount": 3,
+    "paginationNavCount": 0,
+    "ariaCurrentCount": 0,
+    "pageButtons": 8,
+    "ellipsisButtonCount": 2,
+    "bodyOverflowX": 0
+  },
+  "localMobileBefore": {
+    "overflowX": 0,
+    "paginationNavCount": 0
+  },
+  "console": []
+}

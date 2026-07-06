@@ -1,0 +1,33 @@
+{
+  "bodySample": "Introducing OatmealOur new multi-theme marketing site kitUI BlocksTemplatesUI KitSign inGet full accessMarketingApplication UIEcommerceDocumentationPage SectionsHero SectionsFeature SectionsCTA SectionsBento GridsPricing SectionsHeader SectionsNewsletter SectionsStatsTestimonialsBlog SectionsContact SectionsTeam SectionsContent SectionsLogo CloudsFAQsFootersElementsHeadersFlyout MenusBannersFeedback404 PagesPage ExamplesLanding PagesPricing PagesAbout Pages5-day Mini-CourseBuild UIs that don’t suck.Short, tactical video lessons from the creator of Tailwind CSS, delivered directly to your inbox every day for a week.Get the free courseUI BlocksMarketingPage ExamplesUI Blocks/Marketing/Page ExamplesPricing PagesUse these Tailwind CSS pricing page and pricing table examples as a starting point to build a high-converting pricing page for your product. These page examples are designed and built by the Tailwind CSS team, and include a variety of different styles and layouts.With four tiersPreviewGet the code → #frame-fdbb8458107ec56935f49e41d1ebec70 { height: 5099px; } @media (min-width: 704px) { #frame-fdbb8458107ec56935f49e41d1ebec70 { height: 3480px; } } With four tiersPreviewGet the code → #frame-fdbb8458107ec56935f49e41d1ebec70-dark { height: 5099px; } @media (min-width: 704px) { #frame-fdbb8458107ec56935f49e41d1ebec70-dark { height: 3480px; } } With comparison tablePreviewGet the code → #frame-5f3268c0a01e789d4578d1f0f505594e { height: 7716px; } @media (min-width: 704px) { #frame-5f3268c0a01e789d4578d1f0f505594e { height: 3960px; } } With comparison tablePreviewGet the code → #frame-5f3268c0a01e789d4578d1f0f505594e-dark { height: 7716px; } @media (min-width: 704px) { #frame-5f3268c0a01e789d4578d1f0f505594e-dark { height: 3960px; } } With three tiers and testimonialsPreviewGet the code → #frame-26a51e8206f93553482c120828f05656 { height: 5803px; } @media (min-width: 704px) { #frame-26a51e8206f93553482c120828f05656 { height: 3225px; } } With three tiers and testimonialsPreviewGet the code → #frame-26a51e8206f93553482c120828f05656-dark { height: 5803px; } @media (min-width: 704px) { #frame-26a51e8206f93553482c120828f05656-dark { height: 3225px; } } MarketingHero SectionsFeature SectionsPricing SectionsHeader SectionsNewsletter SectionsTestimonialsTeam SectionsContent SectionsLogo CloudsFAQsFootersHeadersFlyout MenusBannersBrowse all →Application UITablesFeedsForm LayoutsSelect MenusRadio GroupsCheckboxesComboboxesNavbarsPaginationSidebar NavigationCommand PalettesModalsDropdownsButtonsBrowse all →EcommerceProduct OverviewsProduct ListsCategory PreviewsShopping CartsCategory FiltersProduct QuickviewsProduct FeaturesStore NavigationPromo SectionsCheckout FormsReviewsOrder SummariesOrder HistoryIncentivesBrowse all →Templates & UI KitsCatalyst UI KitPersonal Website TemplateLanding Page TemplateAPI Reference TemplateChangelog TemplateInfo Product TemplateAgency TemplatePodcast TemplateApp Marketing TemplateDocumentation TemplateConference TemplateBrowse all →© 2026 Tailwind Labs Inc. All rights reserved.Privacy policyChangelog",
+  "buttons": [
+    "Search",
+    "Search",
+    "Navigation",
+    "Open navigation menu"
+  ],
+  "h1": [
+    "Pricing Pages"
+  ],
+  "h2": [
+    "With four tiers",
+    "With four tiers",
+    "With comparison table",
+    "With comparison table",
+    "With three tiers and testimonials",
+    "With three tiers and testimonials"
+  ],
+  "h3": [
+    "Page Sections",
+    "Elements",
+    "Feedback",
+    "Page Examples",
+    "Build UIs that don’t suck.",
+    "Marketing",
+    "Application UI",
+    "Ecommerce",
+    "Templates & UI Kits"
+  ],
+  "title": "Tailwind CSS Pricing Pages - Official Tailwind UI Components",
+  "url": "https://tailwindcss.com/plus/ui-blocks/marketing/page-examples/pricing-pages"
+}

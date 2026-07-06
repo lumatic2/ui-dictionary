@@ -1,0 +1,95 @@
+{
+  "browserFallback": "Browser/Chrome path failed earlier: Browser is not available: iab / packaged browser documentation directory missing; standalone Playwright fallback used",
+  "before": {
+    "url": "http://127.0.0.1:5174/?filter=nav%3Aplus-ecommerce-product-overviews",
+    "title": "UI 용어 사전",
+    "h1Like": [
+      "Product Overviews"
+    ],
+    "examples": [
+      "With image grid",
+      "With tiered images",
+      "With image gallery and expandable details",
+      "Split with image",
+      "With tabs"
+    ],
+    "themeButtons": 15,
+    "actionButtons": 102,
+    "detailRowButtons": 3,
+    "pressedOptionButtons": [
+      "System",
+      "Black",
+      "M",
+      "System",
+      "Black",
+      "M",
+      "System",
+      "Black",
+      "M",
+      "System",
+      "Black",
+      "M",
+      "System",
+      "Black",
+      "M",
+      "Description"
+    ],
+    "expandedRows": [
+      "Features details"
+    ],
+    "darkSurfaces": 6,
+    "lightSurfaces": 21,
+    "overflowX": 0
+  },
+  "interaction": {
+    "feedback": [
+      "Nomad Travel Pack added to cart",
+      "Care expanded",
+      "Reinforced handles, padded pockets, and quiet zippers support everyday travel.",
+      "Details tab selected",
+      "Details tab selected"
+    ],
+    "addedButtons": 1,
+    "expandedRows": [
+      "Features details",
+      "Care details"
+    ],
+    "pressedOptions": [
+      "System",
+      "Natural",
+      "L",
+      "System",
+      "Black",
+      "M",
+      "System",
+      "Black",
+      "M",
+      "System",
+      "Black",
+      "M",
+      "System",
+      "Black",
+      "M",
+      "Details"
+    ],
+    "tabTextVisible": true
+  },
+  "dark": {
+    "pressedDark": 5,
+    "darkPreviewFrames": 5,
+    "darkSurfaces": 6,
+    "lightSurfaces": 41
+  },
+  "light": {
+    "pressedLight": 5,
+    "darkPreviewFrames": 0,
+    "darkSurfaces": 6,
+    "lightSurfaces": 21
+  },
+  "mobile": {
+    "overflowX": 0,
+    "themeButtons": 15,
+    "detailRowButtons": 3
+  },
+  "errors": []
+}

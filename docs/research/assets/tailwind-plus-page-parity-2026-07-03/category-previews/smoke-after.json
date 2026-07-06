@@ -1,0 +1,66 @@
+{
+  "browserFallback": "Browser/Chrome path failed earlier: Browser is not available: iab / packaged browser documentation directory missing; standalone Playwright fallback used",
+  "before": {
+    "title": "UI 용어 사전",
+    "h1Like": [
+      "Category Previews"
+    ],
+    "examples": [
+      "Three-column",
+      "With image backgrounds",
+      "With background image and detail overlay",
+      "Three-column with description",
+      "With scrolling cards",
+      "With split images"
+    ],
+    "themeButtons": 18,
+    "actionButtons": 83,
+    "categoryButtons": 14,
+    "pressedCategoryButtons": [
+      "System",
+      "System",
+      "System",
+      "System",
+      "System",
+      "System"
+    ],
+    "darkFrames": 0,
+    "overflowX": 0
+  },
+  "interaction": {
+    "feedback": [
+      "Storage collection opened",
+      "A focused collection for everyday home routines.",
+      "A focused collection for everyday home routines.",
+      "Notebooks collection opened"
+    ],
+    "selectedRings": 2,
+    "pressedCategoryButtons": [
+      "System",
+      "StorageShop now",
+      "System",
+      "System",
+      "System",
+      "System",
+      "System",
+      "Notebooks"
+    ],
+    "notebooksFeedbackVisible": true
+  },
+  "dark": {
+    "pressedDark": 6,
+    "darkFrames": 6,
+    "lightSurfaces": 20
+  },
+  "light": {
+    "pressedLight": 6,
+    "darkFrames": 0,
+    "lightSurfaces": 26
+  },
+  "mobile": {
+    "overflowX": 0,
+    "themeButtons": 18,
+    "categoryButtons": 14
+  },
+  "errors": []
+}

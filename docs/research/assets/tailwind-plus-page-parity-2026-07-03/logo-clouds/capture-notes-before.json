@@ -1,0 +1,38 @@
+{
+  "reference": {
+    "h1": "Logo Clouds",
+    "h2s": [
+      "Simple with heading",
+      "Simple with heading",
+      "Simple with call-to-action",
+      "Simple with call-to-action",
+      "Simple left-aligned",
+      "Simple left-aligned",
+      "Split with logos on right",
+      "Split with logos on right",
+      "Simple",
+      "Simple",
+      "Grid",
+      "Grid"
+    ],
+    "overflow": 0,
+    "title": "Tailwind CSS Logo Clouds - Official Tailwind UI Components",
+    "url": "https://tailwindcss.com/plus/ui-blocks/marketing/sections/logo-clouds"
+  },
+  "localBefore": {
+    "actions": 0,
+    "allButtons": 73,
+    "h2": "Logo Clouds",
+    "h3s": [
+      "Simple with heading",
+      "Simple with call-to-action",
+      "Simple left-aligned",
+      "Split with logos on right",
+      "Simple",
+      "Grid"
+    ],
+    "overflow": 0,
+    "roots": 0,
+    "url": "http://127.0.0.1:5200/?filter=nav%3Aplus-marketing-logo-clouds"
+  }
+}

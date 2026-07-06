@@ -1,0 +1,137 @@
+{
+  "newsInitial": {
+    "actions": 14,
+    "h2": "Newsletter Sections",
+    "h3s": [
+      "Side-by-side with details",
+      "Simple side-by-side",
+      "Simple side-by-side on brand",
+      "Simple stacked",
+      "Centered card",
+      "Side-by-side on card"
+    ],
+    "inputs": [
+      "Newsletter email newsletter-side-details",
+      "Newsletter email newsletter-simple-side",
+      "Newsletter email newsletter-brand-side",
+      "Newsletter email newsletter-stacked",
+      "Newsletter email newsletter-centered-card",
+      "Newsletter email newsletter-side-card"
+    ],
+    "overflow": 0,
+    "roots": [
+      {
+        "theme": "light",
+        "variant": "newsletter-side-details"
+      },
+      {
+        "theme": "light",
+        "variant": "newsletter-simple-side"
+      },
+      {
+        "theme": "light",
+        "variant": "newsletter-brand-side"
+      },
+      {
+        "theme": "light",
+        "variant": "newsletter-stacked"
+      },
+      {
+        "theme": "light",
+        "variant": "newsletter-centered-card"
+      },
+      {
+        "theme": "light",
+        "variant": "newsletter-side-card"
+      }
+    ]
+  },
+  "counts": {
+    "roots": 6,
+    "inputs": 6,
+    "actions": 14,
+    "darkCount": 6,
+    "lightCount": 6
+  },
+  "submit": {
+    "emailValue": "alex@example.com",
+    "feedback": [
+      "Subscribe newsletter selected for alex@example.com"
+    ]
+  },
+  "afterDark": {
+    "emailValue": "alex@example.com",
+    "feedback": [
+      "Weekly articles detail opened",
+      "Privacy policy opened"
+    ],
+    "overflow": 0,
+    "pressed": [
+      "Dark",
+      "Open newsletter detail Weekly articles",
+      "Dark",
+      "Dark",
+      "Dark",
+      "Dark",
+      "Dark",
+      "Open newsletter privacy policy"
+    ],
+    "roots": [
+      {
+        "theme": "dark",
+        "variant": "newsletter-side-details"
+      },
+      {
+        "theme": "dark",
+        "variant": "newsletter-simple-side"
+      },
+      {
+        "theme": "dark",
+        "variant": "newsletter-brand-side"
+      },
+      {
+        "theme": "dark",
+        "variant": "newsletter-stacked"
+      },
+      {
+        "theme": "dark",
+        "variant": "newsletter-centered-card"
+      },
+      {
+        "theme": "dark",
+        "variant": "newsletter-side-card"
+      }
+    ]
+  },
+  "afterLight": {
+    "emailValue": "alex@example.com",
+    "overflow": 0,
+    "roots": [
+      {
+        "theme": "light",
+        "variant": "newsletter-side-details"
+      },
+      {
+        "theme": "light",
+        "variant": "newsletter-simple-side"
+      },
+      {
+        "theme": "light",
+        "variant": "newsletter-brand-side"
+      },
+      {
+        "theme": "light",
+        "variant": "newsletter-stacked"
+      },
+      {
+        "theme": "light",
+        "variant": "newsletter-centered-card"
+      },
+      {
+        "theme": "light",
+        "variant": "newsletter-side-card"
+      }
+    ]
+  },
+  "logs": []
+}

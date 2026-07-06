@@ -1,0 +1,53 @@
+{
+  "initial": {
+    "buttons": 158,
+    "darkRoots": 0,
+    "featureActionButtons": 43,
+    "featureRoots": 15,
+    "h2": "Feature Sections",
+    "h3": [
+      "With product screenshot",
+      "Centered 2x2 grid",
+      "With large screenshot",
+      "With large bordered screenshot",
+      "Simple three column with small icons",
+      "With product screenshot on left",
+      "Simple three column with large icons",
+      "Contained in panel",
+      "With product screenshot panel",
+      "With testimonial",
+      "Offset 2x2 grid",
+      "With code example panel",
+      "Offset with feature list",
+      "Simple",
+      "Simple 3x2 grid"
+    ],
+    "lightRoots": 15,
+    "overflow": 0,
+    "visibleDarkControls": 0
+  },
+  "checks": {
+    "push": true,
+    "ssl": true,
+    "backups": true
+  },
+  "selectedAfter": {
+    "overflow": 0,
+    "pressedFeatureButtons": 1
+  },
+  "darkAfter": {
+    "darkPressed": 15,
+    "darkRoots": 15,
+    "featureRoots": 15,
+    "lightRoots": 0,
+    "overflow": 0
+  },
+  "lightAfter": {
+    "darkRoots": 0,
+    "featureRoots": 15,
+    "lightPressed": 15,
+    "lightRoots": 15,
+    "overflow": 0
+  },
+  "logs": []
+}

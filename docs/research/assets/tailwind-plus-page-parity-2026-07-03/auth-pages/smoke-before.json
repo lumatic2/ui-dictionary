@@ -1,0 +1,69 @@
+{
+  "browserAvailability": "Browser/Chrome path failed earlier: Browser is not available: iab / packaged browser documentation directory missing; standalone Playwright fallback used",
+  "refCandidates": [
+    {
+      "url": "https://tailwindcss.com/plus/ui-blocks/application-ui/page-examples/auth-pages",
+      "status": 404,
+      "meta": {
+        "title": "Not Found",
+        "h1": null,
+        "bodyTextSample": "404\nNOT FOUND",
+        "buttonCount": 0
+      }
+    },
+    {
+      "url": "https://tailwindcss.com/plus/ui-blocks/application-ui/page-examples/authentication-pages",
+      "status": 404,
+      "meta": {
+        "title": "Not Found",
+        "h1": null,
+        "bodyTextSample": "404\nNOT FOUND",
+        "buttonCount": 0
+      }
+    }
+  ],
+  "localUrl": "http://127.0.0.1:5174/?filter=nav%3Aplus-application-page-examples-auth",
+  "localBefore": {
+    "title": "UI 용어 사전",
+    "pageHeadingCount": 1,
+    "exampleHeadingCount": 3,
+    "themeButtonCount": 9,
+    "darkButtonCount": 3,
+    "actionButtonCount": 100,
+    "activeSystemCount": 3,
+    "initialDashboardFeedbackCount": 0,
+    "darkSurfaceCount": 1,
+    "bodyOverflowX": 0
+  },
+  "interactions": {
+    "googleFeedback": 1,
+    "githubFeedback": 1,
+    "continueFeedback": 1
+  },
+  "afterDarkBeforeFix": {
+    "activeDarkCount": 3,
+    "darkSurfaceCount": 1,
+    "bodyOverflowX": 0
+  },
+  "afterLightBeforeFix": {
+    "activeLightCount": 3,
+    "darkSurfaceCount": 1,
+    "bodyOverflowX": 0
+  },
+  "mobileBefore": {
+    "themeButtonCount": 9,
+    "bodyOverflowX": 0
+  },
+  "consoleMessages": [
+    {
+      "type": "error",
+      "text": "Failed to load resource: the server responded with a status of 404 ()"
+    },
+    {
+      "type": "error",
+      "text": "Failed to load resource: the server responded with a status of 404 ()"
+    }
+  ],
+  "pageErrors": [],
+  "timestamp": "2026-07-03T19:08:30.426Z"
+}

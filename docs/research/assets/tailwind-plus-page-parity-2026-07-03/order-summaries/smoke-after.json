@@ -1,0 +1,56 @@
+{
+  "url": "http://127.0.0.1:5174/?filter=nav%3Aplus-ecommerce-order-summaries",
+  "startedAt": "2026-07-03T20:47:39.573Z",
+  "consoleErrors": [],
+  "pageErrors": [],
+  "checkpoints": {
+    "headingCount": 1,
+    "themeButtons": 12,
+    "actionButtons": 76,
+    "ariaPressedButtons": 33,
+    "initialOrderSummaryThemes": {
+      "dark": 0,
+      "light": 4
+    },
+    "initialOverflowX": 0,
+    "continueShopping": {
+      "pressed": "true",
+      "feedback": true
+    },
+    "orderInvoice": {
+      "pressed": "true",
+      "feedback": true
+    },
+    "processing": {
+      "pressed": "true",
+      "feedback": true
+    },
+    "shipped": {
+      "pressed": "true",
+      "feedback": true
+    },
+    "delivered": {
+      "pressed": "true",
+      "feedback": true
+    },
+    "darkButtons": 4,
+    "pressedDark": 4,
+    "orderSummaryThemesAfterDark": {
+      "dark": 4,
+      "light": 0
+    },
+    "lightButtons": 4,
+    "pressedLight": 4,
+    "orderSummaryThemesAfterLight": {
+      "dark": 0,
+      "light": 4
+    },
+    "mobileButtons": 26,
+    "mobileOverflowX": 0,
+    "mobileContinueShopping": {
+      "pressed": "true",
+      "feedback": true
+    }
+  },
+  "completedAt": "2026-07-03T20:47:46.220Z"
+}

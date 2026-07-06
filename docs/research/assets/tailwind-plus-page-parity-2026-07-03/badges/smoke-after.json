@@ -1,0 +1,39 @@
+{
+  "url": "http://127.0.0.1:5174/?filter=nav%3Aplus-application-elements-badges",
+  "before": {
+    "title": "UI 용어 사전",
+    "buttonCount": 297,
+    "badgeButtonCount": 128,
+    "removeButtonCount": 16,
+    "statusTextCount": 385,
+    "darkToggleCount": 16,
+    "bodyOverflowX": 0
+  },
+  "afterRemove": {
+    "greenPressed": true,
+    "restoreButtonCount": 1,
+    "removeButtonCount": 15,
+    "feedback": true,
+    "bodyOverflowX": 0
+  },
+  "afterRestore": {
+    "removeButtonCount": 16,
+    "feedback": true,
+    "bodyOverflowX": 0
+  },
+  "afterDark": {
+    "darkToggleCount": 16,
+    "activeDarkToggleCount": 16,
+    "darkSurfaceCount": 16,
+    "badgeButtonCount": 128,
+    "bodyOverflowX": 0
+  },
+  "mobile": {
+    "badgeButtonCount": 128,
+    "feedback": true,
+    "bodyOverflowX": 0
+  },
+  "consoleMessages": [],
+  "pageErrors": [],
+  "timestamp": "2026-07-03T16:46:46.415Z"
+}

@@ -1,0 +1,35 @@
+{
+  "perfCount": 2,
+  "copyCount": 2,
+  "darkCount": 3,
+  "lightCount": 3,
+  "perfState": {
+    "feedback": true,
+    "pressed": 1
+  },
+  "copyState": {
+    "feedback": true,
+    "pressed": 1
+  },
+  "afterDark": {
+    "bentoActions": 36,
+    "bentoRoots": 3,
+    "darkRoots": 3,
+    "feedback": true,
+    "h2": "Bento Grids",
+    "h3s": [
+      "Three column bento grid",
+      "Two row bento grid",
+      "Two row bento grid with three column second row"
+    ],
+    "lightRoots": 0,
+    "overflow": -15,
+    "pressed": 3
+  },
+  "afterLight": {
+    "darkRoots": 0,
+    "lightRoots": 3,
+    "overflow": -15
+  },
+  "logsAfterBento": []
+}

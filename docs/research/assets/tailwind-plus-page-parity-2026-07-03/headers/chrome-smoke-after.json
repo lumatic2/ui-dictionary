@@ -1,0 +1,262 @@
+{
+  "url": "http://127.0.0.1:5200/?filter=nav%3Aplus-marketing-headers",
+  "finalState": {
+    "actions": 84,
+    "expanded": 1,
+    "h2": "Headers",
+    "h3s": [
+      "With stacked flyout menu",
+      "Constrained",
+      "On brand background",
+      "With full width flyout menu",
+      "Full width",
+      "With call-to-action",
+      "With multiple flyout menus",
+      "With icons in mobile menu",
+      "With left-aligned nav",
+      "With right-aligned nav",
+      "With centered logo"
+    ],
+    "overflow": 0,
+    "roots": 11
+  },
+  "clickEvidence": [
+    {
+      "expanded": [],
+      "feedback": [
+        "Product header opened"
+      ],
+      "pressed": [
+        "System",
+        "Open header nav Product",
+        "System",
+        "Open header nav Product",
+        "System",
+        "System",
+        "Open header nav Product",
+        "System",
+        "System",
+        "System",
+        "System",
+        "System",
+        "System",
+        "System"
+      ],
+      "selector": "[data-header-element-variant=\"element-header-stacked-flyout\"] button[aria-label=\"Open header nav Product\"]"
+    },
+    {
+      "expanded": [],
+      "feedback": [
+        "Analytics flyout opened"
+      ],
+      "pressed": [
+        "System",
+        "Open header nav Product",
+        "Open header flyout Analytics",
+        "System",
+        "Open header nav Product",
+        "System",
+        "System",
+        "Open header nav Product",
+        "System",
+        "System",
+        "System",
+        "System",
+        "System",
+        "System",
+        "System"
+      ],
+      "selector": "[data-header-element-variant=\"element-header-stacked-flyout\"] button[aria-label=\"Open header flyout Analytics\"]"
+    },
+    {
+      "expanded": [],
+      "feedback": [
+        "Analytics flyout opened",
+        "Integrations flyout opened"
+      ],
+      "pressed": [
+        "System",
+        "Open header nav Product",
+        "Open header flyout Analytics",
+        "System",
+        "Open header nav Product",
+        "System",
+        "System",
+        "Open header nav Product",
+        "Open header flyout Integrations",
+        "System",
+        "System",
+        "System",
+        "System",
+        "System",
+        "System",
+        "System"
+      ],
+      "selector": "[data-header-element-variant=\"element-header-full-width-flyout\"] button[aria-label=\"Open header flyout Integrations\"]"
+    },
+    {
+      "expanded": [],
+      "feedback": [
+        "Analytics flyout opened",
+        "Integrations flyout opened",
+        "Security flyout opened"
+      ],
+      "pressed": [
+        "System",
+        "Open header nav Product",
+        "Open header flyout Analytics",
+        "System",
+        "Open header nav Product",
+        "System",
+        "System",
+        "Open header nav Product",
+        "Open header flyout Integrations",
+        "System",
+        "System",
+        "System",
+        "Open header flyout Security",
+        "System",
+        "System",
+        "System",
+        "System"
+      ],
+      "selector": "[data-header-element-variant=\"element-header-multiple-flyouts\"] button[aria-label=\"Open header flyout Security\"]"
+    },
+    {
+      "expanded": [
+        "Toggle header mobile menu"
+      ],
+      "feedback": [
+        "Analytics flyout opened",
+        "Integrations flyout opened",
+        "Security flyout opened",
+        "Mobile menu opened"
+      ],
+      "pressed": [
+        "System",
+        "Open header nav Product",
+        "Open header flyout Analytics",
+        "System",
+        "Open header nav Product",
+        "System",
+        "System",
+        "Open header nav Product",
+        "Open header flyout Integrations",
+        "System",
+        "System",
+        "System",
+        "Open header flyout Security",
+        "System",
+        "System",
+        "System",
+        "System"
+      ],
+      "selector": "[data-header-element-variant=\"element-header-mobile-icons\"] button[aria-label=\"Toggle header mobile menu\"]"
+    },
+    {
+      "expanded": [
+        "Toggle header mobile menu"
+      ],
+      "feedback": [
+        "Analytics flyout opened",
+        "Integrations flyout opened",
+        "Signup started",
+        "Security flyout opened",
+        "Mobile menu opened"
+      ],
+      "pressed": [
+        "System",
+        "Open header nav Product",
+        "Open header flyout Analytics",
+        "System",
+        "Open header nav Product",
+        "System",
+        "System",
+        "Open header nav Product",
+        "Open header flyout Integrations",
+        "System",
+        "System",
+        "Open header CTA sign up",
+        "System",
+        "Open header flyout Security",
+        "System",
+        "System",
+        "System",
+        "System"
+      ],
+      "selector": "[data-header-element-variant=\"element-header-cta\"] button[aria-label=\"Open header CTA sign up\"]"
+    },
+    {
+      "expanded": [
+        "Toggle header mobile menu"
+      ],
+      "feedback": [
+        "Analytics flyout opened",
+        "Integrations flyout opened",
+        "Signup started",
+        "Security flyout opened",
+        "Mobile menu opened",
+        "Marketplace header opened"
+      ],
+      "pressed": [
+        "Open header nav Product",
+        "Open header flyout Analytics",
+        "System",
+        "Open header nav Product",
+        "System",
+        "System",
+        "Open header nav Product",
+        "Open header flyout Integrations",
+        "System",
+        "System",
+        "Open header CTA sign up",
+        "System",
+        "Open header flyout Security",
+        "System",
+        "System",
+        "System",
+        "System",
+        "Open header nav Marketplace"
+      ],
+      "selector": "[data-header-element-variant=\"element-header-centered-logo\"] button[aria-label=\"Open header nav Marketplace\"]"
+    }
+  ],
+  "theme": {
+    "darkCount": 11,
+    "lightCount": 11,
+    "afterDark": {
+      "overflow": 0,
+      "pressed": 11,
+      "roots": [
+        "dark",
+        "dark",
+        "dark",
+        "dark",
+        "dark",
+        "dark",
+        "dark",
+        "dark",
+        "dark",
+        "dark",
+        "dark"
+      ]
+    },
+    "afterLight": {
+      "overflow": 0,
+      "pressed": 11,
+      "roots": [
+        "light",
+        "light",
+        "light",
+        "light",
+        "light",
+        "light",
+        "light",
+        "light",
+        "light",
+        "light",
+        "light"
+      ]
+    }
+  }
+}

@@ -1,0 +1,162 @@
+{
+  "url": "http://127.0.0.1:5200/?filter=nav%3Aplus-marketing-faqs",
+  "finalState": {
+    "actions": 41,
+    "expanded": 2,
+    "h2": "FAQs",
+    "h3s": [
+      "Offset with supporting text",
+      "Centered accordion",
+      "Side-by-side",
+      "Three columns",
+      "Three columns with centered introduction",
+      "Two columns",
+      "Two columns with centered introduction"
+    ],
+    "overflow": 0,
+    "roots": 7
+  },
+  "clickEvidence": [
+    {
+      "expanded": [
+        "Toggle FAQ Can I use these pages as AI prompts?",
+        "Toggle FAQ How do I choose between similar UI patterns?"
+      ],
+      "feedback": [
+        "Can I use these pages as AI prompts? opened"
+      ],
+      "pressed": [
+        "System",
+        "System",
+        "System",
+        "System",
+        "System",
+        "System",
+        "System"
+      ],
+      "selector": "[data-faq-section-variant=\"faqs-offset-supporting\"] button[aria-label^=\"Toggle FAQ Can I use\"]"
+    },
+    {
+      "expanded": [
+        "Toggle FAQ Can I use these pages as AI prompts?",
+        "Toggle FAQ Why are examples interactive?"
+      ],
+      "feedback": [
+        "Can I use these pages as AI prompts? opened",
+        "Why are examples interactive? opened"
+      ],
+      "pressed": [
+        "System",
+        "System",
+        "System",
+        "System",
+        "System",
+        "System",
+        "System"
+      ],
+      "selector": "[data-faq-section-variant=\"faqs-centered-accordion\"] button[aria-label^=\"Toggle FAQ Why are\"]"
+    },
+    {
+      "expanded": [
+        "Toggle FAQ Can I use these pages as AI prompts?",
+        "Toggle FAQ Why are examples interactive?"
+      ],
+      "feedback": [
+        "Can I use these pages as AI prompts? opened",
+        "Why are examples interactive? opened",
+        "How close are these pages to Tailwind Plus? opened"
+      ],
+      "pressed": [
+        "System",
+        "System",
+        "System",
+        "Open FAQ How close are these pages to Tailwind Plus?",
+        "System",
+        "System",
+        "System",
+        "System"
+      ],
+      "selector": "[data-faq-section-variant=\"faqs-side-by-side\"] button[aria-label^=\"Open FAQ How close\"]"
+    },
+    {
+      "expanded": [
+        "Toggle FAQ Can I use these pages as AI prompts?",
+        "Toggle FAQ Why are examples interactive?"
+      ],
+      "feedback": [
+        "Can I use these pages as AI prompts? opened",
+        "Why are examples interactive? opened",
+        "How close are these pages to Tailwind Plus? opened",
+        "What should I inspect first? opened"
+      ],
+      "pressed": [
+        "System",
+        "System",
+        "System",
+        "Open FAQ How close are these pages to Tailwind Plus?",
+        "System",
+        "Open FAQ What should I inspect first?",
+        "System",
+        "System",
+        "System"
+      ],
+      "selector": "[data-faq-section-variant=\"faqs-three-columns\"] button[aria-label^=\"Open FAQ What should\"]"
+    },
+    {
+      "expanded": [
+        "Toggle FAQ Can I use these pages as AI prompts?",
+        "Toggle FAQ Why are examples interactive?"
+      ],
+      "feedback": [
+        "Can I use these pages as AI prompts? opened",
+        "Why are examples interactive? opened",
+        "How close are these pages to Tailwind Plus? opened",
+        "What should I inspect first? opened",
+        "Can teams extend the vocabulary? opened"
+      ],
+      "pressed": [
+        "System",
+        "System",
+        "System",
+        "Open FAQ How close are these pages to Tailwind Plus?",
+        "System",
+        "Open FAQ What should I inspect first?",
+        "System",
+        "System",
+        "System",
+        "Open FAQ Can teams extend the vocabulary?"
+      ],
+      "selector": "[data-faq-section-variant=\"faqs-two-columns-centered\"] button[aria-label^=\"Open FAQ Can teams\"]"
+    }
+  ],
+  "theme": {
+    "darkCount": 7,
+    "lightCount": 7,
+    "afterDark": {
+      "overflow": 0,
+      "pressed": 7,
+      "roots": [
+        "dark",
+        "dark",
+        "dark",
+        "dark",
+        "dark",
+        "dark",
+        "dark"
+      ]
+    },
+    "afterLight": {
+      "overflow": 0,
+      "pressed": 7,
+      "roots": [
+        "light",
+        "light",
+        "light",
+        "light",
+        "light",
+        "light",
+        "light"
+      ]
+    }
+  }
+}

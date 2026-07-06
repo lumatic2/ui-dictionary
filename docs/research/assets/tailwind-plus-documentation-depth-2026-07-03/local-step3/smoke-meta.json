@@ -1,0 +1,202 @@
+[
+  {
+    "slug": "introduction",
+    "title": "Introduction",
+    "navId": "docs-elements-introduction",
+    "viewport": "desktop",
+    "screenshot": "docs/research/assets/tailwind-plus-documentation-depth-2026-07-03/local-step3/introduction-desktop.png",
+    "info": {
+      "url": "http://127.0.0.1:5185/?filter=nav%3Adocs-elements-introduction&page=docs",
+      "h2": "Introduction",
+      "article": true,
+      "onThisPage": true,
+      "fallbackSearch": false,
+      "sectionCount": 6,
+      "codeCount": 2,
+      "apiRows": 4,
+      "horizontalOverflow": false,
+      "scrollWidth": 1425,
+      "clientWidth": 1440
+    }
+  },
+  {
+    "slug": "autocomplete",
+    "title": "Autocomplete",
+    "navId": "docs-elements-autocomplete",
+    "viewport": "desktop",
+    "screenshot": "docs/research/assets/tailwind-plus-documentation-depth-2026-07-03/local-step3/autocomplete-desktop.png",
+    "info": {
+      "url": "http://127.0.0.1:5185/?filter=nav%3Adocs-elements-autocomplete&page=docs",
+      "h2": "Autocomplete",
+      "article": true,
+      "onThisPage": true,
+      "fallbackSearch": false,
+      "sectionCount": 7,
+      "codeCount": 2,
+      "apiRows": 5,
+      "horizontalOverflow": false,
+      "scrollWidth": 1425,
+      "clientWidth": 1440
+    }
+  },
+  {
+    "slug": "command-palette",
+    "title": "Command palette",
+    "navId": "docs-elements-command-palette",
+    "viewport": "desktop",
+    "screenshot": "docs/research/assets/tailwind-plus-documentation-depth-2026-07-03/local-step3/command-palette-desktop.png",
+    "info": {
+      "url": "http://127.0.0.1:5185/?filter=nav%3Adocs-elements-command-palette&page=docs",
+      "h2": "Command palette",
+      "article": true,
+      "onThisPage": true,
+      "fallbackSearch": false,
+      "sectionCount": 7,
+      "codeCount": 2,
+      "apiRows": 5,
+      "horizontalOverflow": false,
+      "scrollWidth": 1425,
+      "clientWidth": 1440
+    }
+  },
+  {
+    "slug": "copy-button",
+    "title": "Copy button",
+    "navId": "docs-elements-copy-button",
+    "viewport": "desktop",
+    "screenshot": "docs/research/assets/tailwind-plus-documentation-depth-2026-07-03/local-step3/copy-button-desktop.png",
+    "info": {
+      "url": "http://127.0.0.1:5185/?filter=nav%3Adocs-elements-copy-button&page=docs",
+      "h2": "Copy button",
+      "article": true,
+      "onThisPage": true,
+      "fallbackSearch": false,
+      "sectionCount": 6,
+      "codeCount": 2,
+      "apiRows": 4,
+      "horizontalOverflow": false,
+      "scrollWidth": 1425,
+      "clientWidth": 1440
+    }
+  },
+  {
+    "slug": "dialog",
+    "title": "Dialog",
+    "navId": "docs-elements-dialog",
+    "viewport": "desktop",
+    "screenshot": "docs/research/assets/tailwind-plus-documentation-depth-2026-07-03/local-step3/dialog-desktop.png",
+    "info": {
+      "url": "http://127.0.0.1:5185/?filter=nav%3Adocs-elements-dialog&page=docs",
+      "h2": "Dialog",
+      "article": true,
+      "onThisPage": true,
+      "fallbackSearch": false,
+      "sectionCount": 7,
+      "codeCount": 2,
+      "apiRows": 5,
+      "horizontalOverflow": false,
+      "scrollWidth": 1425,
+      "clientWidth": 1440
+    }
+  },
+  {
+    "slug": "introduction",
+    "title": "Introduction",
+    "navId": "docs-elements-introduction",
+    "viewport": "mobile",
+    "screenshot": "docs/research/assets/tailwind-plus-documentation-depth-2026-07-03/local-step3/introduction-mobile.png",
+    "info": {
+      "url": "http://127.0.0.1:5185/?filter=nav%3Adocs-elements-introduction&page=docs",
+      "h2": "Introduction",
+      "article": true,
+      "onThisPage": true,
+      "fallbackSearch": false,
+      "sectionCount": 6,
+      "codeCount": 2,
+      "apiRows": 4,
+      "horizontalOverflow": false,
+      "scrollWidth": 375,
+      "clientWidth": 390
+    }
+  },
+  {
+    "slug": "autocomplete",
+    "title": "Autocomplete",
+    "navId": "docs-elements-autocomplete",
+    "viewport": "mobile",
+    "screenshot": "docs/research/assets/tailwind-plus-documentation-depth-2026-07-03/local-step3/autocomplete-mobile.png",
+    "info": {
+      "url": "http://127.0.0.1:5185/?filter=nav%3Adocs-elements-autocomplete&page=docs",
+      "h2": "Autocomplete",
+      "article": true,
+      "onThisPage": true,
+      "fallbackSearch": false,
+      "sectionCount": 7,
+      "codeCount": 2,
+      "apiRows": 5,
+      "horizontalOverflow": false,
+      "scrollWidth": 375,
+      "clientWidth": 390
+    }
+  },
+  {
+    "slug": "command-palette",
+    "title": "Command palette",
+    "navId": "docs-elements-command-palette",
+    "viewport": "mobile",
+    "screenshot": "docs/research/assets/tailwind-plus-documentation-depth-2026-07-03/local-step3/command-palette-mobile.png",
+    "info": {
+      "url": "http://127.0.0.1:5185/?filter=nav%3Adocs-elements-command-palette&page=docs",
+      "h2": "Command palette",
+      "article": true,
+      "onThisPage": true,
+      "fallbackSearch": false,
+      "sectionCount": 7,
+      "codeCount": 2,
+      "apiRows": 5,
+      "horizontalOverflow": false,
+      "scrollWidth": 375,
+      "clientWidth": 390
+    }
+  },
+  {
+    "slug": "copy-button",
+    "title": "Copy button",
+    "navId": "docs-elements-copy-button",
+    "viewport": "mobile",
+    "screenshot": "docs/research/assets/tailwind-plus-documentation-depth-2026-07-03/local-step3/copy-button-mobile.png",
+    "info": {
+      "url": "http://127.0.0.1:5185/?filter=nav%3Adocs-elements-copy-button&page=docs",
+      "h2": "Copy button",
+      "article": true,
+      "onThisPage": true,
+      "fallbackSearch": false,
+      "sectionCount": 6,
+      "codeCount": 2,
+      "apiRows": 4,
+      "horizontalOverflow": false,
+      "scrollWidth": 375,
+      "clientWidth": 390
+    }
+  },
+  {
+    "slug": "dialog",
+    "title": "Dialog",
+    "navId": "docs-elements-dialog",
+    "viewport": "mobile",
+    "screenshot": "docs/research/assets/tailwind-plus-documentation-depth-2026-07-03/local-step3/dialog-mobile.png",
+    "info": {
+      "url": "http://127.0.0.1:5185/?filter=nav%3Adocs-elements-dialog&page=docs",
+      "h2": "Dialog",
+      "article": true,
+      "onThisPage": true,
+      "fallbackSearch": false,
+      "sectionCount": 7,
+      "codeCount": 2,
+      "apiRows": 5,
+      "horizontalOverflow": false,
+      "scrollWidth": 375,
+      "clientWidth": 390
+    }
+  }
+]

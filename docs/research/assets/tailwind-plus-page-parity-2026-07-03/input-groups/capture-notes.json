@@ -1,0 +1,27 @@
+{
+  "tailwind": {
+    "url": "https://tailwindcss.com/plus/ui-blocks/application-ui/forms/input-groups",
+    "status": 200,
+    "title": "Tailwind CSS Input Groups - Official Tailwind UI Components",
+    "h1": "Input Groups",
+    "exampleTextCount": 48
+  },
+  "localUrl": "http://127.0.0.1:5174/?filter=nav%3Aplus-forms-input-groups",
+  "localDesktop": {
+    "title": "UI 용어 사전",
+    "inputCount": 25,
+    "selectCount": 1,
+    "buttonCount": 183,
+    "labelledInputCount": 25,
+    "darkToggleCount": 21,
+    "bodyOverflowX": 0
+  },
+  "localMobile": {
+    "inputCount": 25,
+    "selectCount": 1,
+    "buttonCount": 183,
+    "darkToggleCount": 21,
+    "bodyOverflowX": 0
+  },
+  "timestamp": "2026-07-03T17:23:49.229Z"
+}

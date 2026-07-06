@@ -1,0 +1,89 @@
+{
+  "browserFallback": "standalone Playwright fallback used after Chrome/Browser path failed earlier in this thread",
+  "reference": {
+    "status": 200,
+    "summary": {
+      "title": "Tailwind CSS Store Navigation - Official Tailwind UI Components",
+      "h1": [
+        "Store Navigation"
+      ],
+      "h2": [
+        "With featured categories",
+        "With featured categories",
+        "With image grid",
+        "With image grid",
+        "With simple menu and promo",
+        "With simple menu and promo",
+        "With centered logo and featured categories",
+        "With centered logo and featured categories",
+        "With double column and persistent mobile nav",
+        "With double column and persistent mobile nav"
+      ],
+      "textSample": "Introducing Oatmeal\nOur new multi-theme marketing site kit\nUI Blocks\nTemplates\nUI Kit\nSign in\nGet full access\nUI Blocks\nEcommerce\nComponents\nStore Navigation\n\nUse these Tailwind CSS store navigation components to help customers find their way around your online store with mobile-friendly navbars and menus. These components are designed and built by the Tailwind CSS team, and include a variety of different styles and layouts.\n\nWith featured categories\nPreview\nCode\nHTML\nReact\nVue\n\nImages provided by Ugmonk and QWSTION\n\nWith image grid\n\nPreview\n\nGet the code →\nWith simple menu and promo\n\nPreview\n\nGet the code →\nWith centered logo and featured categories\n\nPreview\n\nGet the code →\nWith double column and persistent mobile nav\n\nPreview\n\nGet the code →\nMarketing\nHero Sections\nFeature Sections\nPricing Sections\nHeader Sections\nNewsletter Sections\nTestimonials\nTeam Sections\nContent Sections\nLogo Clouds\nFAQs\nFooters\nHeaders\nFlyout Menus\nBanners\nBrowse all →\nApplication UI\nTables\nFeeds\nForm Layouts\nSelect Menus\nRadio Groups\nCheckboxes\nComboboxes\nNavbars\nPagination\nSidebar Navigation\nCommand Palettes\nModals\nDropdowns\nButtons\nBrowse all →\nEcommerce\nProduct Overviews\nProduct Lists\nCategory Previews\nShopping Carts\nCategory Filters\nProduct Quickviews\nProduct Features\nStore Navigation\nPromo Sections\nCheckout Forms\nReviews\nOrder Summaries\nOrder History\nIncentives\nBrowse all →\nTemplates & UI Kits\nCatalyst UI Kit\nPersonal Website Template\nLanding Page Template\nAPI Reference Template\nChangelog Template\nInfo Product Template\nAgency Template\nPodcast Template\nApp Marketing Template\nDocumentation Template\nConference Template\nBrowse all →\n\n© 2026 Tailwind Labs Inc. All rights reserved.\n\nPrivacy policy\nChangelog"
+    }
+  },
+  "local": {
+    "before": {
+      "title": "UI 용어 사전",
+      "h1": [],
+      "h2": [
+        "Store Navigation"
+      ],
+      "textSample": "UI Dictionary\n\nCtrl F\nUI Blocks\nTemplates\nUI Kit\nSign in\nGet full access\nMarketing\nApplication UI\nEcommerce\nDocumentation\nCOMPONENTS\nProduct Overviews\nProduct Lists\nCategory Previews\nShopping Carts\nCategory Filters\nProduct Quickviews\nProduct Features\nStore Navigation\nPromo Sections\nCheckout Forms\nReviews\nOrder Summaries\nOrder History\nIncentives\nPAGE EXAMPLES\nStorefront Pages\nProduct Pages\nCategory Pages\nShopping Cart Pages\nCheckout Pages\nOrder Detail Pages\nOrder History Pages\n\nPLUS / UI BLOCKS / ECOMMERCE / COMPONENTS / STORE NAVIGATION\n\nStore Navigation\n\n스토어의 카테고리, 컬렉션, 검색, 장바구니, 계정 진입을 상단이나 보조 내비게이션으로 정리합니다.\n\nTailwind Plus처럼 각 leaf의 첫 예제는 Preview와 Code를 함께 제공하고, 이후 예제는 Preview와 잠금 code CTA로 구분합니다. 우리 예시는 실제 화면 맥락에 맞춘 설명, tags, interaction feedback을 함께 보여줍니다.\n\nON THIS PAGE\n\n5 examples\nWith featured categories\nWith image grid\nWith simple menu and promo\nWith centered logo and featured categories\nWith double column and persistent mobile nav\nWith featured categories\nEXAMPLE 01\n\nTailwind의 store navigation 예시 이름과 개수를 맞춘 스토어 탐색 변형입니다.\n\nstore navigation\ncategories\ncart\nPreview\nCode\nHTML\nReact\nVue\nA\nAtelier\nWomen\nMen\nCompany\nStores\nSearch\nCart\nShop\nNew in\nDresses\nTops\nDenim\nOuterwear\nCollections\nSummer edit\nWorkwear\nLinen shop\nThe travel bag\n\nNew arrivals\n\nShop now\n\nAccessories\n\nShop now\n\nWith image grid\nEXAMPLE 02\n\nTailwind의 store navigation 예시 이름과 개수를 맞춘 스토어 탐색 변형입니다.\n\nstore navigation\ncategories\ncart\nPreview\nGet the code →\nA\nAtelier\nWomen\nMen\nCompany\nStores\nSearch\nCart\n\nNew Arrivals\n\nShop now\n\nBest Sellers\n\nShop now\n\nTravel\n\nShop now\n\nAccessories\n\nShop now\n\nWith simple menu and promo\nEXAMPLE 03\n\nTailwind의 store navigation 예시 이름과 개수를 맞춘 스토어 탐색 변형입니다.\n\nstore navigation\ncategories\ncart\nPreview\nGet the code →\nA\nAtelier\nWomen\nMen\nCompany\nStores\nSearch\nCart\nCategories\nBags\nJewelry\nShoes\nHome\nFeatured\nNew season\nMost loved\nBack in stock\nUnder $100\n\nSeasonal edit\n\nOuterwear with quiet structure\n\nA promo panel keeps merchandising close to the navigation without turning the menu into a landing page.\n\nWith centered logo and featured categories\nEXAMPLE 04\n\nTailwind의 store navigation 예시 이름과 개수를 맞춘 스토어 탐색 변형입니다.\n\nstore navigation\ncategories\ncart\nPreview\nGet the code →\nWomen\nMen\nA\nAtelier\nCompany\nStores\nWomen\nNew arrivals\nClothing\nShoes\nAccessories\nMen\nShirts\nKnitwear\nBags\nEssentials\n\nHome collection\n\nShop now\n\nWith double column and persistent mobile nav\nEXAMPLE 05\n\nTailwind의 store navigation 예시 이름과 개수를 맞춘 스토어 탐색 변형입니다.\n\nstore navigation\ncategories\ncart\nPreview\nGet the code ",
+      "examples": [
+        "Store Navigation"
+      ],
+      "themeButtons": 15,
+      "actionButtons": 121,
+      "darkFrames": 1,
+      "overflowX": 0
+    },
+    "interactionBefore": {
+      "Women": {
+        "buttonCount": 5,
+        "bodyIncludesFeedback": true,
+        "ariaPressed": null
+      },
+      "Men": {
+        "buttonCount": 5,
+        "bodyIncludesFeedback": true,
+        "ariaPressed": null
+      },
+      "Objects": {
+        "buttonCount": 0
+      },
+      "Stores": {
+        "buttonCount": 5,
+        "bodyIncludesFeedback": true,
+        "ariaPressed": null
+      },
+      "Search": {
+        "buttonCount": 4,
+        "bodyIncludesFeedback": false,
+        "ariaPressed": null
+      },
+      "Cart": {
+        "buttonCount": 4,
+        "bodyIncludesFeedback": true,
+        "ariaPressed": null
+      },
+      "Featured": {
+        "buttonCount": 0
+      },
+      "New Arrivals": {
+        "buttonCount": 0
+      }
+    },
+    "darkBefore": {
+      "darkButtons": 5,
+      "pressedDark": 5,
+      "darkFrames": 1
+    },
+    "mobileBefore": {
+      "overflowX": 0,
+      "visibleButtons": 50,
+      "bodySample": "UI Dictionary\n\nPLUS / UI BLOCKS / ECOMMERCE / COMPONENTS / STORE NAVIGATION\n\nStore Navigation\n\n스토어의 카테고리, 컬렉션, 검색, 장바구니, 계정 진입을 상단이나 보조 내비게이션으로 정리합니다.\n\nTailwind Plus처럼 각 leaf의 첫 예제는 Preview와 Code를 함께 제공하고, 이후 예제는 Preview와 잠금 code CTA로 구분합니다. 우리 예시는 실제 화면 맥락에 맞춘 설명, tags, interaction feedback을 함께 보여줍니다.\n\nWith featured categories\nEXAMPLE 01\n\nTailwind의 store navigation 예시 이름과 개수를 맞춘 스토어 탐색 변형입니다.\n\nstore navigation\ncategories\ncart\nPreview\nCode\nA\nAtelier\nSearch\nCart\nShop\nNew in\nDresses\nTops\nDenim\nOuterwear\nCollections\nSummer edit\nWorkwear\nLinen shop\nThe travel bag\n\nNew arrivals\n\nShop now\n\nAccessories\n\nShop now\n\nWith image grid\nEXAMPLE 02\n\nTailwind의 store navigation 예시 이름과 개수를 맞춘 스토어 탐색 변형입니다.\n\nstore navigation\ncategories\ncart\nA\nAtelier\nSearch\nCart\n\nNew Arrivals\n\nShop now\n\nBest Sellers\n\nShop now\n\nTravel\n\nShop now\n\nAccessories\n\nShop now\n\nWith simple menu and promo\nEXAMPLE 03\n\nTailwind의 store navigation 예시 이름과 개수를 맞춘 스토어 탐색 변형입니다.\n\nstore navigation\ncategories\ncart\nA\nAtelier\nSearch\nCart\nCategories\nBags\nJewelry\nShoes\nHome\nFeatured\nNew season\nMost loved\nBack in stock\nUnder $100\n\nSeasonal edit\n\nOuterwear with quiet structure\n\nA promo panel keeps merchandising close to the navigation without turning the menu into a landing page.\n\nWith centered logo and featured categories\nEXAMPLE 04\n\nTailwind의 store navigation 예시 이름과 개수를 맞춘 스토어 탐색 변형입니다.\n\nstore navigation\ncategories\ncart\nA\nAtelier\nWomen\nNew arrivals\nClothing\nShoes\nAccessories\nMen\nShirts\nKnitwear\nBags\nEssentials\n\nHome collection\n\nShop now\n"
+    },
+    "errors": []
+  }
+}

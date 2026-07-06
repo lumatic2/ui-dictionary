@@ -1,0 +1,44 @@
+{
+  "url": "http://127.0.0.1:5174/?filter=nav%3Aplus-application-elements-button-groups",
+  "before": {
+    "title": "UI 용어 사전",
+    "buttonCount": 117,
+    "pressedButtonCount": 10,
+    "expandedButtonCount": 2,
+    "checkedCount": 1,
+    "openMenuCount": 0,
+    "darkToggleCount": 5,
+    "bodyOverflowX": 0
+  },
+  "afterInteraction": {
+    "pressedCount": 4,
+    "monthPressed": true,
+    "nextPressed": true,
+    "unreadPressed": true,
+    "unreadChecked": "true",
+    "expandedOpenCount": 0,
+    "openMenuCount": 0,
+    "feedback": true,
+    "bodyOverflowX": 0
+  },
+  "afterMenuOpen": {
+    "expandedOpenCount": 1,
+    "openMenuCount": 1,
+    "menuitemCount": 6,
+    "bodyOverflowX": 0
+  },
+  "afterDark": {
+    "darkToggleCount": 5,
+    "activeDarkToggleCount": 5,
+    "darkSurfaceCount": 5,
+    "bodyOverflowX": 0
+  },
+  "mobile": {
+    "pressedButtonCount": 10,
+    "feedback": true,
+    "bodyOverflowX": 0
+  },
+  "consoleMessages": [],
+  "pageErrors": [],
+  "timestamp": "2026-07-03T16:56:34.092Z"
+}

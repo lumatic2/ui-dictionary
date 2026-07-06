@@ -1,0 +1,41 @@
+{
+  "h3": [
+    "With four tiers",
+    "With comparison table",
+    "With three tiers and testimonials"
+  ],
+  "roots": 3,
+  "rootAttrs": [
+    {
+      "theme": "dark",
+      "variant": "pricing-four-tiers-page"
+    },
+    {
+      "theme": "dark",
+      "variant": "pricing-comparison-table-page"
+    },
+    {
+      "theme": "dark",
+      "variant": "pricing-three-tiers-testimonials-page"
+    }
+  ],
+  "actionCount": 91,
+  "selected": [
+    "Dark",
+    "Set pricing billing Annually",
+    "Select pricing plan Hobby",
+    "Open pricing case study",
+    "Dark",
+    "Set pricing billing Annually",
+    "Select pricing comparison column Starter",
+    "Dark",
+    "Set pricing billing Annually",
+    "Select pricing plan Startup",
+    "Subscribe pricing newsletter"
+  ],
+  "feedbackVisible": true,
+  "overflow": 0,
+  "annualCount": 3,
+  "darkCount": 3,
+  "errors": []
+}

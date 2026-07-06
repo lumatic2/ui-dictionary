@@ -1,0 +1,30 @@
+{
+  "tailwind": {
+    "url": "https://tailwindcss.com/plus/ui-blocks/application-ui/overlays/slide-overs",
+    "status": 404,
+    "title": "Not Found",
+    "h1": null,
+    "exampleTextCount": 0
+  },
+  "localUrl": "http://127.0.0.1:5174/?filter=nav%3Aplus-overlays-slide-overs",
+  "localDesktop": {
+    "title": "UI 용어 사전",
+    "h1": null,
+    "dialogCount": 0,
+    "ariaModalCount": 0,
+    "labelledByCount": 0,
+    "describedByCount": 0,
+    "closeButtonCount": 0,
+    "openPanelButtonCount": 3,
+    "saveButtonCount": 0,
+    "duplicatePreviewCount": 3,
+    "bodyOverflowX": 0
+  },
+  "localMobile": {
+    "dialogCount": 0,
+    "ariaModalCount": 0,
+    "closeButtonCount": 0,
+    "bodyOverflowX": 0
+  },
+  "timestamp": "2026-07-03T15:52:20.549Z"
+}

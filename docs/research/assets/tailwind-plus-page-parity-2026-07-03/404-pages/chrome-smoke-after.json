@@ -1,0 +1,142 @@
+{
+  "url": "http://127.0.0.1:5200/?filter=nav%3Aplus-marketing-404-pages",
+  "finalState": {
+    "actions": 20,
+    "h2": "404 Pages",
+    "h3s": [
+      "Simple",
+      "Split with image",
+      "With popular pages",
+      "With background image",
+      "With navbar and footer"
+    ],
+    "overflow": 0,
+    "roots": 5
+  },
+  "clickEvidence": [
+    {
+      "feedback": [
+        "Home route opened"
+      ],
+      "pressed": [
+        "System",
+        "Go 404 back home",
+        "System",
+        "System",
+        "System",
+        "System"
+      ],
+      "selector": "[data-not-found-variant=\"not-found-simple\"] button[aria-label=\"Go 404 back home\"]"
+    },
+    {
+      "feedback": [
+        "Support contact opened"
+      ],
+      "pressed": [
+        "System",
+        "Contact 404 support",
+        "System",
+        "System",
+        "System",
+        "System"
+      ],
+      "selector": "[data-not-found-variant=\"not-found-simple\"] button[aria-label=\"Contact 404 support\"]"
+    },
+    {
+      "feedback": [
+        "Support contact opened",
+        "Status opened"
+      ],
+      "pressed": [
+        "System",
+        "Contact 404 support",
+        "System",
+        "System",
+        "System",
+        "System"
+      ],
+      "selector": "[data-not-found-variant=\"not-found-split\"] button[aria-label=\"Open 404 status\"]"
+    },
+    {
+      "feedback": [
+        "Support contact opened",
+        "Status opened",
+        "Documentation 404 opened"
+      ],
+      "pressed": [
+        "System",
+        "Contact 404 support",
+        "System",
+        "System",
+        "Open 404 popular Documentation",
+        "System",
+        "System"
+      ],
+      "selector": "[data-not-found-variant=\"not-found-popular\"] button[aria-label=\"Open 404 popular Documentation\"]"
+    },
+    {
+      "feedback": [
+        "Support contact opened",
+        "Status opened",
+        "Documentation 404 opened",
+        "Product 404 opened"
+      ],
+      "pressed": [
+        "System",
+        "Contact 404 support",
+        "System",
+        "System",
+        "Open 404 popular Documentation",
+        "System",
+        "System",
+        "Open 404 nav Product"
+      ],
+      "selector": "[data-not-found-variant=\"not-found-navbar-footer\"] button[aria-label=\"Open 404 nav Product\"]"
+    },
+    {
+      "feedback": [
+        "Support contact opened",
+        "Status opened",
+        "Documentation 404 opened",
+        "GitHub 404 opened"
+      ],
+      "pressed": [
+        "System",
+        "Contact 404 support",
+        "System",
+        "System",
+        "Open 404 popular Documentation",
+        "System",
+        "System",
+        "Open 404 social GitHub"
+      ],
+      "selector": "[data-not-found-variant=\"not-found-navbar-footer\"] button[aria-label=\"Open 404 social GitHub\"]"
+    }
+  ],
+  "theme": {
+    "darkCount": 5,
+    "lightCount": 5,
+    "afterDark": {
+      "overflow": 0,
+      "pressed": 5,
+      "roots": [
+        "dark",
+        "dark",
+        "dark",
+        "dark",
+        "dark"
+      ]
+    },
+    "afterLight": {
+      "overflow": 0,
+      "pressed": 5,
+      "roots": [
+        "light",
+        "light",
+        "light",
+        "light",
+        "light"
+      ]
+    }
+  }
+}

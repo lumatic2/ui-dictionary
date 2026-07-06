@@ -1,0 +1,63 @@
+{
+  "url": "http://127.0.0.1:5174/?filter=nav%3Aplus-application-shells-stacked-layouts",
+  "initial": {
+    "navCount": 21,
+    "primaryNavCount": 9,
+    "secondaryNavCount": 1,
+    "ariaCurrentCount": 19,
+    "expandedButtonCount": 18,
+    "expandedTrueCount": 0,
+    "expandedFalseCount": 18,
+    "userMenuCount": 0,
+    "bodyOverflowX": 0
+  },
+  "teamFeedback": 1,
+  "teamCurrentCount": 2,
+  "afterUserMenu": {
+    "navCount": 21,
+    "primaryNavCount": 9,
+    "secondaryNavCount": 1,
+    "ariaCurrentCount": 19,
+    "expandedButtonCount": 18,
+    "expandedTrueCount": 1,
+    "expandedFalseCount": 17,
+    "userMenuCount": 1,
+    "bodyOverflowX": 0
+  },
+  "settingsFeedback": 1,
+  "afterSettings": {
+    "navCount": 21,
+    "primaryNavCount": 9,
+    "secondaryNavCount": 1,
+    "ariaCurrentCount": 19,
+    "expandedButtonCount": 18,
+    "expandedTrueCount": 0,
+    "expandedFalseCount": 18,
+    "userMenuCount": 0,
+    "bodyOverflowX": 0
+  },
+  "notificationsFeedback": 1,
+  "activityFeedback": 1,
+  "activityCurrentCount": 1,
+  "darkButtons": 9,
+  "darkSurfaceCount": 1,
+  "mobileInitial": {
+    "navCount": 21,
+    "primaryNavCount": 9,
+    "expandedButtonCount": 18,
+    "expandedTrueCount": 0,
+    "expandedFalseCount": 18,
+    "ariaCurrentCount": 19,
+    "bodyOverflowX": 0
+  },
+  "mobileAfterMenu": {
+    "expandedTrueCount": 1,
+    "visibleMobileNavCount": 1
+  },
+  "mobileTeamFeedback": 1,
+  "mobileTeamCurrentCount": 2,
+  "mobileOverflowX": 0,
+  "consoleMessages": [],
+  "pageErrors": [],
+  "timestamp": "2026-07-03T16:11:50.758Z"
+}

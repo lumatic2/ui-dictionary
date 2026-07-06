@@ -1,0 +1,173 @@
+{
+  "testimonialInitial": {
+    "actions": [
+      "Open testimonial Judith Black",
+      "Open testimonial Large avatar",
+      "Open testimonial Overlapping image",
+      "Open testimonial Background image",
+      "Open testimonial Judith Black",
+      "Open testimonial Joseph Rodriguez",
+      "Open testimonial Star rating",
+      "Open testimonial card Judith Black",
+      "Open testimonial card Joseph Rodriguez",
+      "Open testimonial card Leonard Krasner",
+      "Open testimonial card Leslie Alexander",
+      "Open testimonial card Michael Foster",
+      "Open testimonial card Dries Vincent",
+      "Open testimonial card Judith Black",
+      "Open testimonial card Joseph Rodriguez",
+      "Open testimonial card Leonard Krasner",
+      "Open testimonial card Leslie Alexander",
+      "Open testimonial card Michael Foster",
+      "Open testimonial card Dries Vincent"
+    ],
+    "h2": "Testimonials",
+    "h3s": [
+      "Simple centered",
+      "With large avatar",
+      "With overlapping image",
+      "With background image",
+      "Side-by-side",
+      "With star rating",
+      "Grid",
+      "Subtle grid"
+    ],
+    "overflow": 0,
+    "roots": [
+      {
+        "theme": "light",
+        "variant": "testimonials-simple-centered"
+      },
+      {
+        "theme": "light",
+        "variant": "testimonials-large-avatar"
+      },
+      {
+        "theme": "light",
+        "variant": "testimonials-overlap-image"
+      },
+      {
+        "theme": "light",
+        "variant": "testimonials-bg-image"
+      },
+      {
+        "theme": "light",
+        "variant": "testimonials-side-by-side"
+      },
+      {
+        "theme": "light",
+        "variant": "testimonials-star-rating"
+      },
+      {
+        "theme": "light",
+        "variant": "testimonials-grid"
+      },
+      {
+        "theme": "light",
+        "variant": "testimonials-subtle-grid"
+      }
+    ]
+  },
+  "counts": {
+    "roots": 8,
+    "actions": 19,
+    "darkCount": 8,
+    "lightCount": 8,
+    "simpleCount": 2,
+    "starCount": 1,
+    "cardCount": 2
+  },
+  "afterDark": {
+    "feedback": [
+      "Judith Black testimonial opened",
+      "Star rating testimonial opened",
+      "Leslie Alexander testimonial card opened"
+    ],
+    "overflow": 0,
+    "pressed": [
+      "Dark",
+      "Open testimonial Judith Black",
+      "Dark",
+      "Dark",
+      "Dark",
+      "Dark",
+      "Dark",
+      "Open testimonial Star rating",
+      "Dark",
+      "Open testimonial card Leslie Alexander",
+      "Dark"
+    ],
+    "roots": [
+      {
+        "theme": "dark",
+        "variant": "testimonials-simple-centered"
+      },
+      {
+        "theme": "dark",
+        "variant": "testimonials-large-avatar"
+      },
+      {
+        "theme": "dark",
+        "variant": "testimonials-overlap-image"
+      },
+      {
+        "theme": "dark",
+        "variant": "testimonials-bg-image"
+      },
+      {
+        "theme": "dark",
+        "variant": "testimonials-side-by-side"
+      },
+      {
+        "theme": "dark",
+        "variant": "testimonials-star-rating"
+      },
+      {
+        "theme": "dark",
+        "variant": "testimonials-grid"
+      },
+      {
+        "theme": "dark",
+        "variant": "testimonials-subtle-grid"
+      }
+    ]
+  },
+  "afterLight": {
+    "overflow": 0,
+    "roots": [
+      {
+        "theme": "light",
+        "variant": "testimonials-simple-centered"
+      },
+      {
+        "theme": "light",
+        "variant": "testimonials-large-avatar"
+      },
+      {
+        "theme": "light",
+        "variant": "testimonials-overlap-image"
+      },
+      {
+        "theme": "light",
+        "variant": "testimonials-bg-image"
+      },
+      {
+        "theme": "light",
+        "variant": "testimonials-side-by-side"
+      },
+      {
+        "theme": "light",
+        "variant": "testimonials-star-rating"
+      },
+      {
+        "theme": "light",
+        "variant": "testimonials-grid"
+      },
+      {
+        "theme": "light",
+        "variant": "testimonials-subtle-grid"
+      }
+    ]
+  },
+  "logs": []
+}

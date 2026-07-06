@@ -1,0 +1,80 @@
+{
+  "browserFallback": "standalone Playwright fallback used after Chrome/Browser path failed earlier in this thread",
+  "reference": {
+    "status": 200,
+    "summary": {
+      "title": "Tailwind CSS Promo Sections - Official Tailwind UI Components",
+      "h1": [
+        "Promo Sections"
+      ],
+      "h2": [
+        "With image tiles",
+        "With image tiles",
+        "With fading background image and testimonials",
+        "With fading background image and testimonials",
+        "Full-width with background image",
+        "Full-width with background image",
+        "Full-width with overlapping image tiles",
+        "Full-width with overlapping image tiles",
+        "With background image",
+        "With background image",
+        "With overlapping image tiles",
+        "With overlapping image tiles",
+        "With offers and split image",
+        "With offers and split image",
+        "Full-width with background image and large content",
+        "Full-width with background image and large content"
+      ],
+      "textSample": "Introducing Oatmeal\nOur new multi-theme marketing site kit\nUI Blocks\nTemplates\nUI Kit\nSign in\nGet full access\nUI Blocks\nEcommerce\nComponents\nPromo Sections\n\nUse these Tailwind CSS promo section components to highlight special offers, new arrivals, or featured products with banners and promotional content. These components are designed and built by the Tailwind CSS team, and include a variety of different styles and layouts.\n\nWith image tiles\nPreview\nCode\nHTML\nReact\nVue\n\nImages provided by Ugmonk\n\nWith fading background image and testimonials\n\nPreview\n\nGet the code →\nFull-width with background image\n\nPreview\n\nGet the code →\nFull-width with overlapping image tiles\n\nPreview\n\nGet the code →\nWith background image\n\nPreview\n\nGet the code →\nWith overlapping image tiles\n\nPreview\n\nGet the code →\nWith offers and split image\n\nPreview\n\nGet the code →\nFull-width with background image and large content\n\nPreview\n\nGet the code →\nMarketing\nHero Sections\nFeature Sections\nPricing Sections\nHeader Sections\nNewsletter Sections\nTestimonials\nTeam Sections\nContent Sections\nLogo Clouds\nFAQs\nFooters\nHeaders\nFlyout Menus\nBanners\nBrowse all →\nApplication UI\nTables\nFeeds\nForm Layouts\nSelect Menus\nRadio Groups\nCheckboxes\nComboboxes\nNavbars\nPagination\nSidebar Navigation\nCommand Palettes\nModals\nDropdowns\nButtons\nBrowse all →\nEcommerce\nProduct Overviews\nProduct Lists\nCategory Previews\nShopping Carts\nCategory Filters\nProduct Quickviews\nProduct Features\nStore Navigation\nPromo Sections\nCheckout Forms\nReviews\nOrder Summaries\nOrder History\nIncentives\nBrowse all →\nTemplates & UI Kits\nCatalyst UI Kit\nPersonal Website Template\nLanding Page Template\nAPI Reference Template\nChangelog Template\nInfo Product Template\nAgency Template\nPodcast Template\nApp Marketing Template\nDocumentation Template\nConference Template\nBrowse all →\n\n© 2026 Tailwind Labs Inc. All rights reserved.\n\nPrivacy policy\nChangelog"
+    }
+  },
+  "local": {
+    "before": {
+      "title": "UI 용어 사전",
+      "h1": [],
+      "h2": [
+        "Promo Sections"
+      ],
+      "textSample": "UI Dictionary\n\nCtrl F\nUI Blocks\nTemplates\nUI Kit\nSign in\nGet full access\nMarketing\nApplication UI\nEcommerce\nDocumentation\nCOMPONENTS\nProduct Overviews\nProduct Lists\nCategory Previews\nShopping Carts\nCategory Filters\nProduct Quickviews\nProduct Features\nStore Navigation\nPromo Sections\nCheckout Forms\nReviews\nOrder Summaries\nOrder History\nIncentives\nPAGE EXAMPLES\nStorefront Pages\nProduct Pages\nCategory Pages\nShopping Cart Pages\nCheckout Pages\nOrder Detail Pages\nOrder History Pages\n\nPLUS / UI BLOCKS / ECOMMERCE / COMPONENTS / PROMO SECTIONS\n\nPromo Sections\n\n할인, 신규 컬렉션, 무료 배송, 시즌 캠페인을 상품 탐색 흐름 중간에 강조하는 패턴입니다.\n\nTailwind Plus처럼 각 leaf의 첫 예제는 Preview와 Code를 함께 제공하고, 이후 예제는 Preview와 잠금 code CTA로 구분합니다. 우리 예시는 실제 화면 맥락에 맞춘 설명, tags, interaction feedback을 함께 보여줍니다.\n\nON THIS PAGE\n\n8 examples\nWith image tiles\nWith fading background image and testimonials\nFull-width with background image\nFull-width with overlapping image tiles\nWith background image\nWith overlapping image tiles\nWith offers and split image\nFull-width with background image and large content\nWith image tiles\nEXAMPLE 01\n\nTailwind의 promo section 예시 이름과 개수를 맞춘 프로모션 변형입니다.\n\npromo\ncampaign\ncommerce\nPreview\nCode\nHTML\nReact\nVue\n\nLIMITED COLLECTION\n\nObjects that make the season feel considered\n\nPromo sections connect campaign imagery, pricing, and a focused shopping action without interrupting the buying path.\n\nShop collection\nWith fading background image and testimonials\nEXAMPLE 02\n\nTailwind의 promo section 예시 이름과 개수를 맞춘 프로모션 변형입니다.\n\npromo\ncampaign\ncommerce\nPreview\nGet the code →\n\nLIMITED COLLECTION\n\nObjects that make the season feel considered\n\nPromo sections connect campaign imagery, pricing, and a focused shopping action without interrupting the buying path.\n\nShop collection\n\n\"The edit made our guest room feel finished in a single weekend.\"\n\nAvery Stone\n\nFull-width with background image\nEXAMPLE 03\n\nTailwind의 promo section 예시 이름과 개수를 맞춘 프로모션 변형입니다.\n\npromo\ncampaign\ncommerce\nPreview\nGet the code →\n\nLIMITED COLLECTION\n\nObjects that make the season feel considered\n\nPromo sections connect campaign imagery, pricing, and a focused shopping action without interrupting the buying path.\n\nShop collection\nFull-width with overlapping image tiles\nEXAMPLE 04\n\nTailwind의 promo section 예시 이름과 개수를 맞춘 프로모션 변형입니다.\n\npromo\ncampaign\ncommerce\nPreview\nGet the code →\n\nLIMITED COLLECTION\n\nObjects that make the season feel considered\n\nPromo sections connect campaign imagery, pricing, and a focused shopping action without interrupting the buying path.\n\nShop collection\nWith background image\nEXAMPLE 05\n\nTailwind의 promo section 예시 이름과 개수를 맞춘 프로모",
+      "examples": [
+        "Promo Sections"
+      ],
+      "themeButtons": 24,
+      "actionButtons": 86,
+      "ariaPressedButtons": 24,
+      "darkFrames": 9,
+      "overflowX": 0
+    },
+    "interactionBefore": {
+      "Shop now": {
+        "buttonCount": 0
+      },
+      "Backpacks": {
+        "buttonCount": 0
+      },
+      "Workspace": {
+        "buttonCount": 0
+      },
+      "New arrivals": {
+        "buttonCount": 0
+      },
+      "Outdoor collection": {
+        "buttonCount": 0
+      },
+      "Browse products": {
+        "buttonCount": 0
+      }
+    },
+    "darkBefore": {
+      "darkButtons": 8,
+      "pressedDark": 8,
+      "darkFrames": 9
+    },
+    "mobileBefore": {
+      "overflowX": 0,
+      "visibleButtons": 16,
+      "bodySample": "UI Dictionary\n\nPLUS / UI BLOCKS / ECOMMERCE / COMPONENTS / PROMO SECTIONS\n\nPromo Sections\n\n할인, 신규 컬렉션, 무료 배송, 시즌 캠페인을 상품 탐색 흐름 중간에 강조하는 패턴입니다.\n\nTailwind Plus처럼 각 leaf의 첫 예제는 Preview와 Code를 함께 제공하고, 이후 예제는 Preview와 잠금 code CTA로 구분합니다. 우리 예시는 실제 화면 맥락에 맞춘 설명, tags, interaction feedback을 함께 보여줍니다.\n\nWith image tiles\nEXAMPLE 01\n\nTailwind의 promo section 예시 이름과 개수를 맞춘 프로모션 변형입니다.\n\npromo\ncampaign\ncommerce\nPreview\nCode\n\nLIMITED COLLECTION\n\nObjects that make the season feel considered\n\nPromo sections connect campaign imagery, pricing, and a focused shopping action without interrupting the buying path.\n\nShop collection\nWith fading background image and testimonials\nEXAMPLE 02\n\nTailwind의 promo section 예시 이름과 개수를 맞춘 프로모션 변형입니다.\n\npromo\ncampaign\ncommerce\n\nLIMITED COLLECTION\n\nObjects that make the season feel considered\n\nPromo sections connect campaign imagery, pricing, and a focused shopping action without interrupting the buying path.\n\nShop collection\n\n\"The edit made our guest room feel finished in a single weekend.\"\n\nAvery Stone\n\nFull-width with background image\nEXAMPLE 03\n\nTailwind의 promo section 예시 이름과 개수를 맞춘 프로모션 변형입니다.\n\npromo\ncampaign\ncommerce\n\nLIMITED COLLECTION\n\nObjects that make the season feel considered\n\nPromo sections connect campaign imagery, pricing, and a focused shopping action without interrupting the buying path.\n\nShop collection\nFull-width with overlapping image tiles\nEXAMPLE 04\n\nTailwind의 promo section 예시 이름과 개수를 맞춘 프로모션 변형입니다.\n\npromo\ncampaign\ncommerce\n\nLIMITED COLLECTION\n\nObjects that make the season feel considered\n\nPromo sections connect campaign imagery, pricing, an"
+    },
+    "errors": []
+  }
+}

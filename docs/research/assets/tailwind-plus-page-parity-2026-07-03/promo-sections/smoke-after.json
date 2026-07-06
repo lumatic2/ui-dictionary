@@ -1,0 +1,44 @@
+{
+  "url": "http://127.0.0.1:5174/?filter=nav%3Aplus-ecommerce-promo-sections",
+  "startedAt": "2026-07-03T20:29:18.670Z",
+  "consoleErrors": [],
+  "pageErrors": [],
+  "checkpoints": {
+    "headingCount": 1,
+    "themeButtons": 24,
+    "actionButtons": 86,
+    "ariaPressedButtons": 35,
+    "initialPromoThemes": {
+      "dark": 0,
+      "light": 8
+    },
+    "initialOverflowX": 0,
+    "shopCollection": {
+      "pressed": "true",
+      "feedback": true
+    },
+    "bundleOffer": {
+      "pressed": "true",
+      "feedback": true
+    },
+    "darkButtons": 8,
+    "pressedDark": 8,
+    "promoThemesAfterDark": {
+      "dark": 8,
+      "light": 0
+    },
+    "lightButtons": 8,
+    "pressedLight": 8,
+    "promoThemesAfterLight": {
+      "dark": 0,
+      "light": 8
+    },
+    "mobileButtons": 16,
+    "mobileOverflowX": 0,
+    "mobileShopCollection": {
+      "pressed": "true",
+      "feedback": true
+    }
+  },
+  "completedAt": "2026-07-03T20:29:28.236Z"
+}

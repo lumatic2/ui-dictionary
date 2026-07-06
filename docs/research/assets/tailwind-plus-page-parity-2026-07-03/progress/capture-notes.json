@@ -1,0 +1,13 @@
+{
+  "tailwindUrl": "https://tailwindcss.com/plus/ui-blocks/application-ui/feedback/progress",
+  "localUrl": "http://127.0.0.1:5174/?filter=nav%3Aplus-feedback-progress",
+  "refTitle": null,
+  "refButtonCount": 0,
+  "localButtonCount": 88,
+  "localDarkButtonCount": 3,
+  "localProgressbarCount": 0,
+  "tailwindReferenceFallbackUrl": "https://tailwindcss.com/plus/ui-blocks/application-ui/navigation/progress-bars",
+  "tailwindFeedbackProgressUrlStatus": "404 not found in live Tailwind Plus; using Navigation / Progress Bars as closest corresponding reference",
+  "refFallbackTitle": "Progress Bars",
+  "refFallbackButtonCount": 4
+}

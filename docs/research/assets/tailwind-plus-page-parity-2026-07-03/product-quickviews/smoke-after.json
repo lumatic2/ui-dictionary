@@ -1,0 +1,88 @@
+{
+  "browserFallback": "Browser/Chrome path failed earlier: Browser is not available: iab / packaged browser documentation directory missing; standalone Playwright fallback used",
+  "before": {
+    "title": "UI 용어 사전",
+    "h1Like": [
+      "Product Quickviews"
+    ],
+    "examples": [
+      "With color and size selector",
+      "With color selector, size selector, and details link",
+      "With large size selector",
+      "With color selector and description"
+    ],
+    "themeButtons": 12,
+    "actionButtons": 103,
+    "infoRowButtons": 6,
+    "addButtons": 4,
+    "pressedButtons": [
+      "System",
+      "Black color",
+      "M",
+      "System",
+      "Black color",
+      "M",
+      "System",
+      "Black color",
+      "M",
+      "System",
+      "Black color"
+    ],
+    "expandedRows": [
+      "Materials quickview detail",
+      "Materials quickview detail"
+    ],
+    "darkFrames": 0,
+    "overflowX": 0
+  },
+  "interaction": {
+    "feedback": [
+      "Everyday Backpack added to bag",
+      "Color",
+      "Size",
+      "Shipping expanded",
+      "Color",
+      "Size",
+      "Color",
+      "Size",
+      "Color"
+    ],
+    "addedButtons": 1,
+    "addFeedbackVisible": true,
+    "pressedButtons": [
+      "System",
+      "Natural color",
+      "L",
+      "System",
+      "Black color",
+      "M",
+      "System",
+      "Black color",
+      "M",
+      "System",
+      "Black color"
+    ],
+    "expandedRows": [
+      "Materials quickview detail",
+      "Shipping quickview detail",
+      "Materials quickview detail"
+    ],
+    "detailsVisible": true
+  },
+  "dark": {
+    "pressedDark": 4,
+    "darkFrames": 8,
+    "lightSurfaces": 16
+  },
+  "light": {
+    "pressedLight": 4,
+    "darkFrames": 0,
+    "lightSurfaces": 33
+  },
+  "mobile": {
+    "overflowX": 0,
+    "themeButtons": 12,
+    "infoRowButtons": 6
+  },
+  "errors": []
+}

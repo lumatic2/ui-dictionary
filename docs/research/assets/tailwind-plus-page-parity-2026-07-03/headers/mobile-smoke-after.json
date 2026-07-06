@@ -1,0 +1,185 @@
+{
+  "finalState": {
+    "h2": "Headers",
+    "h3s": [
+      "With stacked flyout menu",
+      "Constrained",
+      "On brand background",
+      "With full width flyout menu",
+      "Full width",
+      "With call-to-action",
+      "With multiple flyout menus",
+      "With icons in mobile menu",
+      "With left-aligned nav",
+      "With right-aligned nav",
+      "With centered logo"
+    ],
+    "roots": 11,
+    "actions": 92,
+    "overflow": -15
+  },
+  "clickEvidence": [
+    {
+      "selector": "[data-header-element-variant=\"element-header-stacked-flyout\"] button[aria-label=\"Toggle header mobile menu\"]",
+      "feedback": [
+        "Mobile menu opened"
+      ],
+      "expanded": [
+        "Toggle header mobile menu"
+      ],
+      "pressed": [
+        "System",
+        "Open header nav Product",
+        "System",
+        "Open header nav Product",
+        "System",
+        "System",
+        "Open header nav Product",
+        "System",
+        "System",
+        "System",
+        "System",
+        "System",
+        "System",
+        "System"
+      ]
+    },
+    {
+      "selector": "[data-header-element-variant=\"element-header-stacked-flyout\"] button[aria-label=\"Open header mobile Product\"]",
+      "feedback": [
+        "Product mobile header opened"
+      ],
+      "expanded": [
+        "Toggle header mobile menu"
+      ],
+      "pressed": [
+        "System",
+        "Open header nav Product",
+        "Open header mobile Product",
+        "System",
+        "Open header nav Product",
+        "System",
+        "System",
+        "Open header nav Product",
+        "System",
+        "System",
+        "System",
+        "System",
+        "System",
+        "System",
+        "System"
+      ]
+    },
+    {
+      "selector": "[data-header-element-variant=\"element-header-multiple-flyouts\"] button[aria-label=\"Open header flyout Security\"]",
+      "feedback": [
+        "Product mobile header opened",
+        "Security flyout opened"
+      ],
+      "expanded": [
+        "Toggle header mobile menu"
+      ],
+      "pressed": [
+        "System",
+        "Open header nav Product",
+        "Open header mobile Product",
+        "System",
+        "Open header nav Product",
+        "System",
+        "System",
+        "Open header nav Product",
+        "System",
+        "System",
+        "System",
+        "Open header flyout Security",
+        "System",
+        "System",
+        "System",
+        "System"
+      ]
+    },
+    {
+      "selector": "[data-header-element-variant=\"element-header-mobile-icons\"] button[aria-label=\"Toggle header mobile menu\"]",
+      "feedback": [
+        "Product mobile header opened",
+        "Security flyout opened",
+        "Mobile menu opened"
+      ],
+      "expanded": [
+        "Toggle header mobile menu",
+        "Toggle header mobile menu"
+      ],
+      "pressed": [
+        "System",
+        "Open header nav Product",
+        "Open header mobile Product",
+        "System",
+        "Open header nav Product",
+        "System",
+        "System",
+        "Open header nav Product",
+        "System",
+        "System",
+        "System",
+        "Open header flyout Security",
+        "System",
+        "System",
+        "System",
+        "System"
+      ]
+    },
+    {
+      "selector": "[data-header-element-variant=\"element-header-cta\"] button[aria-label=\"Toggle header mobile menu\"]",
+      "feedback": [
+        "Product mobile header opened",
+        "Mobile menu opened",
+        "Security flyout opened",
+        "Mobile menu opened"
+      ],
+      "expanded": [
+        "Toggle header mobile menu",
+        "Toggle header mobile menu",
+        "Toggle header mobile menu"
+      ],
+      "pressed": [
+        "System",
+        "Open header nav Product",
+        "Open header mobile Product",
+        "System",
+        "Open header nav Product",
+        "System",
+        "System",
+        "Open header nav Product",
+        "System",
+        "System",
+        "System",
+        "Open header flyout Security",
+        "System",
+        "System",
+        "System",
+        "System"
+      ]
+    }
+  ],
+  "theme": {
+    "darkCount": 11,
+    "afterDark": {
+      "roots": [
+        "dark",
+        "dark",
+        "dark",
+        "dark",
+        "dark",
+        "dark",
+        "dark",
+        "dark",
+        "dark",
+        "dark",
+        "dark"
+      ],
+      "pressed": 11,
+      "overflow": -15
+    }
+  },
+  "errors": []
+}

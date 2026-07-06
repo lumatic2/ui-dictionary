@@ -1,0 +1,31 @@
+{
+  "checks": [
+    {
+      "page": "Dropdown menu",
+      "ok": true
+    },
+    {
+      "page": "Popover",
+      "ok": true
+    },
+    {
+      "page": "Tabs",
+      "ok": true
+    },
+    {
+      "page": "Disclosure",
+      "ok": true
+    },
+    {
+      "page": "Command palette",
+      "ok": true
+    },
+    {
+      "page": "Copy button",
+      "ok": true
+    }
+  ],
+  "failed": [],
+  "errorCount": 0,
+  "errors": []
+}

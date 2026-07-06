@@ -1,0 +1,28 @@
+{
+  "tailwind": {
+    "url": "https://tailwindcss.com/plus/ui-blocks/application-ui/elements/dropdowns",
+    "status": 200,
+    "title": "Tailwind CSS Dropdowns - Official Tailwind UI Components",
+    "h1": "Dropdowns",
+    "exampleTextCount": 9
+  },
+  "localUrl": "http://127.0.0.1:5174/?filter=nav%3Aplus-application-elements-dropdowns",
+  "localDesktop": {
+    "title": "UI 용어 사전",
+    "h1": null,
+    "buttonCount": 129,
+    "triggerCount": 5,
+    "openTriggerCount": 5,
+    "menuCount": 0,
+    "menuitemCount": 0,
+    "darkToggleCount": 5,
+    "bodyOverflowX": 0
+  },
+  "localMobile": {
+    "buttonCount": 129,
+    "triggerCount": 5,
+    "darkToggleCount": 5,
+    "bodyOverflowX": 0
+  },
+  "timestamp": "2026-07-03T16:59:09.565Z"
+}

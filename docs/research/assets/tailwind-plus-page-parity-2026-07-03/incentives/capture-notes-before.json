@@ -1,0 +1,94 @@
+{
+  "browserFallback": "standalone Playwright fallback used after Chrome/Browser path failed earlier in this thread",
+  "reference": {
+    "status": 200,
+    "summary": {
+      "title": "Tailwind CSS Incentives - Official Tailwind UI Components",
+      "h1": [
+        "Incentives"
+      ],
+      "h2": [
+        "3-column with illustrations and split header",
+        "3-column with illustrations and split header",
+        "4-column with illustrations",
+        "4-column with illustrations",
+        "3-column with illustrations and header",
+        "3-column with illustrations and header",
+        "3-column with illustrations and centered text",
+        "3-column with illustrations and centered text",
+        "3-column with illustrations and heading",
+        "3-column with illustrations and heading",
+        "2x2 grid with illustrations",
+        "2x2 grid with illustrations",
+        "3-column with icons and supporting text",
+        "3-column with icons and supporting text",
+        "3-column with icons",
+        "3-column with icons"
+      ],
+      "textSample": "Introducing Oatmeal\nOur new multi-theme marketing site kit\nUI Blocks\nTemplates\nUI Kit\nSign in\nGet full access\nUI Blocks\nEcommerce\nComponents\nIncentives\n\nUse these Tailwind CSS incentive components to highlight special offers, discounts, loyalty rewards, and promotional deals that encourage customers to make purchases in your store. These components are designed and built by the Tailwind CSS team, and include a variety of different styles and layouts.\n\n3-column with illustrations and split header\n\nPreview\n\nGet the code →\n4-column with illustrations\n\nPreview\n\nGet the code →\n3-column with illustrations and header\n\nPreview\n\nGet the code →\n3-column with illustrations and centered text\n\nPreview\n\nGet the code →\n3-column with illustrations and heading\n\nPreview\n\nGet the code →\n2x2 grid with illustrations\n\nPreview\n\nGet the code →\n3-column with icons and supporting text\n\nPreview\n\nGet the code →\n3-column with icons\n\nPreview\n\nGet the code →\nMarketing\nHero Sections\nFeature Sections\nPricing Sections\nHeader Sections\nNewsletter Sections\nTestimonials\nTeam Sections\nContent Sections\nLogo Clouds\nFAQs\nFooters\nHeaders\nFlyout Menus\nBanners\nBrowse all →\nApplication UI\nTables\nFeeds\nForm Layouts\nSelect Menus\nRadio Groups\nCheckboxes\nComboboxes\nNavbars\nPagination\nSidebar Navigation\nCommand Palettes\nModals\nDropdowns\nButtons\nBrowse all →\nEcommerce\nProduct Overviews\nProduct Lists\nCategory Previews\nShopping Carts\nCategory Filters\nProduct Quickviews\nProduct Features\nStore Navigation\nPromo Sections\nCheckout Forms\nReviews\nOrder Summaries\nOrder History\nIncentives\nBrowse all →\nTemplates & UI Kits\nCatalyst UI Kit\nPersonal Website Template\nLanding Page Template\nAPI Reference Template\nChangelog Template\nInfo Product Template\nAgency Template\nPodcast Template\nApp Marketing Template\nDocumentation Template\nConference Template\nBrowse all →\n\n© 2026 Tailwind Labs Inc. All rights reserved.\n\nPrivacy policy\nChangelog"
+    }
+  },
+  "local": {
+    "before": {
+      "title": "UI 용어 사전",
+      "h1": [],
+      "h2": [
+        "Incentives"
+      ],
+      "textSample": "UI Dictionary\n\nCtrl F\nUI Blocks\nTemplates\nUI Kit\nSign in\nGet full access\nMarketing\nApplication UI\nEcommerce\nDocumentation\nCOMPONENTS\nProduct Overviews\nProduct Lists\nCategory Previews\nShopping Carts\nCategory Filters\nProduct Quickviews\nProduct Features\nStore Navigation\nPromo Sections\nCheckout Forms\nReviews\nOrder Summaries\nOrder History\nIncentives\nPAGE EXAMPLES\nStorefront Pages\nProduct Pages\nCategory Pages\nShopping Cart Pages\nCheckout Pages\nOrder Detail Pages\nOrder History Pages\n\nPLUS / UI BLOCKS / ECOMMERCE / COMPONENTS / INCENTIVES\n\nIncentives\n\n무료 배송, 반품 보장, 할인, 멤버십 혜택처럼 구매 결정을 돕는 신뢰와 혜택 신호를 배치하는 패턴입니다.\n\nTailwind Plus처럼 각 leaf의 첫 예제는 Preview와 Code를 함께 제공하고, 이후 예제는 Preview와 잠금 code CTA로 구분합니다. 우리 예시는 실제 화면 맥락에 맞춘 설명, tags, interaction feedback을 함께 보여줍니다.\n\nON THIS PAGE\n\n8 examples\n3-column with illustrations and split header\n4-column with illustrations\n3-column with illustrations and header\n3-column with illustrations and centered text\n3-column with illustrations and heading\n2x2 grid with illustrations\n3-column with icons and supporting text\n3-column with icons\n3-column with illustrations and split header\nEXAMPLE 01\n\nTailwind의 incentive 예시 이름과 개수를 맞춘 구매 혜택 변형입니다.\n\nincentives\nbenefits\ntrust\nPreview\nCode\nHTML\nReact\nVue\nWe built our business on great customer service\n\nIncentive sections make service promises visible at the exact moment shoppers compare delivery, returns, warranty, and gift options.\n\nFree shipping\n\nSurface delivery thresholds and arrival expectations close to product and checkout decisions.\n\n10-year warranty\n\nUse warranty copy to reduce purchase risk and clarify what support covers after checkout.\n\nExchanges\n\nExplain exchange windows and next steps in the same visual system as checkout actions.\n\n4-column with illustrations\nEXAMPLE 02\n\nTailwind의 incentive 예시 이름과 개수를 맞춘 구매 혜택 변형입니다.\n\nincentives\nbenefits\ntrust\nPreview\nGet the code →\nFree shipping\n\nSurface delivery thresholds and arrival expectations close to product and checkout decisions.\n\n10-year warranty\n\nUse warranty copy to reduce purchase risk and clarify what support covers after checkout.\n\nExchanges\n\nExplain exchange windows and next steps in the same visual system as checkout actions.\n\nGift cards\n\nOffer gift cards as a secondary path for shoppers who are not ready to choose a product.\n\n3-column with illustrations and header\nEXAMPLE 03\n\nTailwind의 incentive 예시 이름과 개수를 맞춘 구매 혜택 변형입니다.\n\nincentives\nbenefits\ntrust\nPreview\nGet the code →\nWe built our business on great customer service\n\nIncentive sections make service promises visible at the exact moment shoppers compare delivery, returns, warranty, and gift options.\n\nFree shipping\n\nSurface delivery thresholds and arrival expectations close to product and checkout decisions.\n\n10-year warranty\n\nUse warranty copy to reduce purchase risk and clarify what support covers after checkout.\n\nExchanges\n\nExplain exchange windows and next steps in the same visual system as checkout actions.\n\n3-column with illustrations and centered text\nEXAMPLE 04\n\nTailwind의 incentive 예시 이름과 개수를 맞춘 구매 혜택 변형입니다.\n\nincentives\nbenefits\ntrust\nPreview\nGet the code →\nFree shipping\n\nSurface delivery thresholds and arrival expectations close to product and checkout decisions.\n\n10-year warranty\n\nUse warranty copy to reduce purchase risk and clarify what support covers after checkout.\n\nExchanges\n\nExplain exchange windows and next steps in the same visual system as checkout actions.\n\n3-column with illustrations and heading\nEXAMPLE 05\n\nTailwind의 incentive 예시 이름과 개수를 맞춘 구매 혜택 변형입니다.\n\nincentives\nbenefits\ntrust\nPreview\nGet the code →\nWe built our business on customer service\nFree shipping\n\nSurface delivery thresholds and arrival expectations close to product and checkout decisions.\n\n10-year warranty\n\nUse warranty copy to reduce purchase risk and clarify what support covers after checkout.\n\nExchanges\n\nExplain exchange windows and next steps in the same visual system as checkout actions.\n\n2x2 grid with illustrations\nEXAMPLE 06\n\nTailwind의 incentive 예시 이름과 개수를 맞춘 구매 혜택 변형입니다.\n\nincentives\nbenefits\ntrust\nPreview\nGet the code →\nFree shipping\n\nSurface delivery thresholds and arrival expectations close to product and checkout decisions.\n\n10-year warranty\n\nUse warranty copy to reduce purchase risk and clarify what support covers after checkout.\n\nExchanges\n\nExplain exchange windows and next steps in the same visual system as checkout actions.\n\nGift cards\n\nOffer gift cards as a secondary path for shoppers who are not ready to choose a product.\n\n3-column with icons and supporting text\nEXAMPLE 07\n\nTailwind의 incentive 예시 이름과 개수를 맞춘 구매 혜택 변형입니다.\n\nincentives\nbenefits\ntrust\nPreview\nGet the code →\n5-year shelf-life\n\nSimple, visible promise copy that sits close to shopping and checkout flows.\n\nFree shipping and returns\n\nSimple, visible promise copy that sits close to shopping and checkout flows.\n\nFast, contactless delivery\n\nSimple, visible promise copy that sits close to shopping and checkout flows.\n\n3-column with icons\nEXAMPLE 08\n\nTailwind의 incentive 예시 이름과 개수를 ",
+      "themeButtons": 24,
+      "actionButtons": 102,
+      "ariaPressedButtons": 24,
+      "incentiveRoots": 0,
+      "overflowX": 0
+    },
+    "interactionBefore": {
+      "Free shipping": {
+        "buttonCount": 0,
+        "feedback": false,
+        "ariaPressed": null
+      },
+      "10-year warranty": {
+        "buttonCount": 0,
+        "feedback": false,
+        "ariaPressed": null
+      },
+      "5-year shelf-life": {
+        "buttonCount": 0,
+        "feedback": false,
+        "ariaPressed": null
+      },
+      "Fast, contactless delivery": {
+        "buttonCount": 1,
+        "feedback": true,
+        "ariaPressed": null
+      }
+    },
+    "darkButtons": {
+      "count": 8,
+      "pressedTrue": 8,
+      "pressed": [
+        "true",
+        "true",
+        "true",
+        "true",
+        "true",
+        "true",
+        "true",
+        "true"
+      ]
+    },
+    "darkBefore": {
+      "darkRoots": 0,
+      "darkSurfaces": 1,
+      "overflowX": 0
+    },
+    "mobileBefore": {
+      "overflowX": 0,
+      "visibleButtons": 31,
+      "incentiveRoots": 0,
+      "bodySample": "UI Dictionary\n\nPLUS / UI BLOCKS / ECOMMERCE / COMPONENTS / INCENTIVES\n\nIncentives\n\n무료 배송, 반품 보장, 할인, 멤버십 혜택처럼 구매 결정을 돕는 신뢰와 혜택 신호를 배치하는 패턴입니다.\n\nTailwind Plus처럼 각 leaf의 첫 예제는 Preview와 Code를 함께 제공하고, 이후 예제는 Preview와 잠금 code CTA로 구분합니다. 우리 예시는 실제 화면 맥락에 맞춘 설명, tags, interaction feedback을 함께 보여줍니다.\n\n3-column with illustrations and split header\nEXAMPLE 01\n\nTailwind의 incentive 예시 이름과 개수를 맞춘 구매 혜택 변형입니다.\n\nincentives\nbenefits\ntrust\nPreview\nCode\nWe built our business on great customer service\n\nIncentive sections make service promises visible at the exact moment shoppers compare delivery, returns, warranty, and gift options.\n\nFree shipping\n\nSurface delivery thresholds and arrival expectations close to product and checkout decisions.\n\n10-year warranty\n\nUse warranty copy to reduce purchase risk and clarify what support covers after checkout.\n\nExchanges\n\nExplain exchange windows and next steps in the same visual system as checkout actions.\n\n4-column with illustrations\nEXAMPLE 02\n\nTailwind의 incentive 예시 이름과 개수를 맞춘 구매 혜택 변형입니다.\n\nincentives\nbenefits\ntrust\nFree shipping\n\nSurface delivery thresholds and arrival expectations close to product and checkout decisions.\n\n10-year warranty\n\nUse warranty copy to reduce purchase risk and clarify what support covers after checkout.\n\nExchanges\n\nExplain exchange windows and next steps in the same visual system as checkout actions.\n\nGift cards\n\nOffer gift cards as a secondary path for shoppers who are not ready to choose a product.\n\n3-column with illustrations and header\nEXAMPLE 03\n\nTailwind의 incentive 예시 이름과 개수를 맞춘 구매 혜택 변형입니다.\n\nincentives\nbenefits\ntrust\nWe built our business on great customer service\n\nIncentive sections make service promises visible at the exact moment shoppers compare delivery, returns, warranty, and gift options.\n\nFree shipping\n\nSurface delivery thresholds and arrival expectations close to product and checkout decisions.\n\n10-year warranty\n\nUse warranty copy to reduce purchase risk and clarify what support covers after checkout.\n\nExchanges\n\nExplain exchange windows and next steps in the same visual system as checkout actions.\n\n3-column with illustrations and centered text\nEXAMPLE 04\n\nTailwind의 incentive 예시 이름과 개수를 맞춘 구매 혜택 변형입니다.\n\nincentives\nbenefits\ntrust\nFree shipping\n\nSurface delivery thresholds and arrival expectations close to product and checkout decisions.\n\n10-year warranty\n\nUse warranty copy to reduce purchase risk and clarify what support covers after checkout.\n\nExchanges\n\nExplain exchange windows and next steps in the same visual system as checkout actions.\n\n3-column with illustrations and heading\nEXAMPLE 05\n\nTailwind의 incentive 예시 이름과 개수를 맞춘 구매 혜택 변형입니다.\n\nincentives\nbenefits\ntrust\nWe built our business on customer service\nFree shipping\n\nSurface delivery thresholds and arrival expectations close to product and checkout decisions.\n\n10-year warranty\n\nUse warranty copy to reduce purchase risk and clarify what support covers after checkout.\n\nExchanges\n\nExplain exchange windows and next steps in the sam"
+    },
+    "errors": []
+  }
+}

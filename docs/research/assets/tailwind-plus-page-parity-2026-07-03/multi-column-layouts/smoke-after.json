@@ -1,0 +1,39 @@
+{
+  "url": "http://127.0.0.1:5174/?filter=nav%3Aplus-application-shells-multi-column-layouts",
+  "initial": {
+    "primaryNavCount": 5,
+    "headerNavCount": 1,
+    "selectionColumnCount": 6,
+    "detailColumnCount": 6,
+    "listboxCount": 6,
+    "optionCount": 18,
+    "selectedOptionCount": 6,
+    "ariaCurrentCount": 5,
+    "profileButtonCount": 6,
+    "actionButtonCount": 18,
+    "bodyOverflowX": 0
+  },
+  "reportsFeedback": 2,
+  "reportsCurrentCount": 1,
+  "invoiceFeedback": 2,
+  "selectedInvoiceCount": 1,
+  "assignFeedback": 2,
+  "profileFeedback": 2,
+  "darkButtons": 6,
+  "darkSurfaceCount": 9,
+  "mobileInitial": {
+    "primaryNavCount": 5,
+    "selectionColumnCount": 6,
+    "detailColumnCount": 6,
+    "listboxCount": 6,
+    "optionCount": 18,
+    "selectedOptionCount": 6,
+    "bodyOverflowX": 0
+  },
+  "mobileChecklistFeedback": 2,
+  "mobileChecklistSelectedCount": 1,
+  "mobileOverflowX": 0,
+  "consoleMessages": [],
+  "pageErrors": [],
+  "timestamp": "2026-07-03T16:24:37.808Z"
+}
