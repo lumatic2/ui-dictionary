@@ -93,6 +93,7 @@ Full hero markup, `FloatingField`, and the `HeroSearch` proof-surface component 
 
 ## Checks
 
+- Known deviation (2026-07-07, found by the recipe-consumption demo): the shipped hero code uses pill-radius CTAs, contradicting the `button` recipe spec (radius `sm`) and DESIGN.md §8. New implementations must follow the `button` recipe; the shipped hero is queued for reconciliation in the product-surface pass.
 - Exactly one `h1` in the hero, centered, no split-column layout with a mockup/card on the opposite side.
 - Exactly two CTAs, one primary (solid fill) and one secondary (outline) — not more, not a single lonely button.
 - Subcopy mentions both the public reference site and the agent-facing design system, not just one.

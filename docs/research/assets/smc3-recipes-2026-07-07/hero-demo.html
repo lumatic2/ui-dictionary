@@ -1,0 +1,297 @@
+<meta charset="utf-8">
+<title>Askewly Design — recipe consumption demo</title>
+<style>
+  /* ---- BEGIN copied verbatim from examples/ui-vocabulary-site/src/tokens.css ---- */
+  /* GENERATED from tokens/askewly.tokens.json — do not edit by hand. Regenerate: node scripts/generate-tokens.mjs */
+  :root {
+    --radius: 0.5rem;
+    --background: oklch(0.985 0 0);
+    --foreground: oklch(0.16 0.015 270);
+    --card: oklch(1 0 0);
+    --card-foreground: oklch(0.16 0.015 270);
+    --popover: oklch(1 0 0);
+    --popover-foreground: oklch(0.16 0.015 270);
+    --primary: #6F2DBD;
+    --primary-foreground: oklch(0.985 0 0);
+    --secondary: oklch(0.94 0.02 270);
+    --secondary-foreground: oklch(0.25 0.03 270);
+    --muted: oklch(0.95 0.015 270);
+    --muted-foreground: oklch(0.46 0.03 270);
+    --accent: #B9FAF8;
+    --accent-foreground: oklch(0.16 0.015 270);
+    --destructive: oklch(0.58 0.22 27);
+    --border: oklch(0.88 0.015 270);
+    --input: oklch(0.88 0.015 270);
+    --ring: #6F2DBD;
+    --askewly-violet: #6F2DBD;
+    --askewly-orchid: #A663CC;
+    --askewly-lavender: #B298DC;
+    --askewly-sky: #B8D0EB;
+    --askewly-mint: #B9FAF8;
+    --space-1: 4px;
+    --space-2: 8px;
+    --space-4: 16px;
+    --space-8: 32px;
+    --space-12: 48px;
+    --space-16: 64px;
+    --font-size-sm: 14px;
+    --font-size-base: 16px;
+    --font-size-lg: 20px;
+    --font-size-xl: 28px;
+    --font-size-2xl: 40px;
+    --font-weight-regular: 400;
+    --font-weight-medium: 500;
+    --radius-sm: 4px;
+    --radius-md: 6px;
+    --radius-lg: 8px;
+    --radius-xl: 12px;
+  }
+
+  .dark {
+    --background: oklch(0.16 0.015 270);
+    --foreground: oklch(0.985 0 0);
+    --card: oklch(0.25 0.03 270);
+    --card-foreground: oklch(0.985 0 0);
+    --popover: oklch(0.25 0.03 270);
+    --popover-foreground: oklch(0.985 0 0);
+    --primary: oklch(0.985 0 0);
+    --primary-foreground: oklch(0.16 0.015 270);
+    --secondary: oklch(0.35 0.03 270);
+    --secondary-foreground: oklch(0.95 0.015 270);
+    --muted: oklch(0.35 0.03 270);
+    --muted-foreground: oklch(0.72 0.02 270);
+    --accent: oklch(0.35 0.03 270);
+    --accent-foreground: oklch(0.985 0 0);
+    --destructive: oklch(0.58 0.22 27);
+    --border: oklch(0.35 0.03 270);
+    --input: oklch(0.35 0.03 270);
+    --ring: #B298DC;
+  }
+  /* ---- END copied verbatim from examples/ui-vocabulary-site/src/tokens.css ---- */
+
+  * {
+    box-sizing: border-box;
+  }
+
+  body {
+    margin: 0;
+    background: var(--background);
+    color: var(--foreground);
+    font-family: ui-sans-serif, system-ui, -apple-system, "Segoe UI", sans-serif;
+  }
+
+  /* landing-hero: section root — surface.base background, generous vertical padding, overflow-hidden */
+  .hero {
+    position: relative;
+    isolation: isolate;
+    overflow: hidden;
+    background: var(--background);
+    padding: var(--space-16) var(--space-4);
+  }
+
+  .hero-inner {
+    position: relative;
+    z-index: 1;
+    margin: 0 auto;
+    max-width: 1180px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    min-width: 0;
+  }
+
+  /* landing-hero: h1 — centered, clamp-based scale, floor = typography.scale.2xl (40px) */
+  .hero-title {
+    margin: var(--space-4) 0 0;
+    text-align: center;
+    font-size: clamp(var(--font-size-2xl), 9vw, 6rem);
+    font-weight: var(--font-weight-medium);
+    line-height: 0.95;
+    letter-spacing: 0;
+    color: var(--foreground);
+  }
+
+  /* landing-hero: subcopy — centered, max-width constrained so line length stays readable */
+  .hero-subcopy {
+    margin: var(--space-4) 0 0;
+    max-width: 42rem;
+    text-align: center;
+    font-size: var(--font-size-lg);
+    line-height: 1.6;
+    font-weight: var(--font-weight-regular);
+    color: var(--muted-foreground);
+  }
+
+  /* landing-hero: CTA row — flex-col on mobile, flex-row on sm:, gap between them */
+  .hero-cta-row {
+    margin-top: var(--space-8);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: var(--space-2);
+  }
+
+  @media (min-width: 640px) {
+    .hero-cta-row {
+      flex-direction: row;
+    }
+  }
+
+  /* button recipe: fixed height, horizontal padding, rounded corners — radius.sm, not a pill */
+  .btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: var(--space-2);
+    height: 40px;
+    padding: 0 24px;
+    border-radius: var(--radius-sm);
+    font-size: var(--font-size-sm);
+    font-weight: var(--font-weight-medium);
+    white-space: nowrap;
+    cursor: pointer;
+    transition: opacity 150ms ease, background-color 150ms ease;
+  }
+
+  .btn:focus-visible {
+    outline: 2px solid var(--ring);
+    outline-offset: 2px;
+  }
+
+  /* button recipe: primary (default) variant — solid color.component.button.bg fill */
+  .btn-primary {
+    border: none;
+    background: var(--primary);
+    color: var(--primary-foreground);
+  }
+
+  .btn-primary:hover {
+    opacity: 0.9;
+  }
+
+  /* button recipe: secondary/outline variant — transparent bg, 1px border.default */
+  .btn-secondary {
+    background: transparent;
+    border: 1px solid var(--border);
+    color: var(--foreground);
+  }
+
+  .btn-secondary:hover {
+    background: var(--secondary);
+  }
+
+  /* topbar-command-search: proof surface hint — expanded-state visual, static (no popover JS in this standalone demo) */
+  .search-hint {
+    margin-top: var(--space-8);
+    width: min(28rem, 100%);
+  }
+
+  .search-hint-field {
+    display: flex;
+    align-items: center;
+    gap: var(--space-2);
+    height: 40px;
+    padding: 0 var(--space-4);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-xl);
+    background: var(--card);
+  }
+
+  .search-hint-field:focus-within {
+    border-color: var(--ring);
+  }
+
+  .search-hint-icon {
+    color: var(--muted-foreground);
+    font-size: var(--font-size-base);
+    line-height: 1;
+  }
+
+  .search-hint-input {
+    flex: 1;
+    border: none;
+    outline: none;
+    background: transparent;
+    color: var(--foreground);
+    font-size: var(--font-size-sm);
+    font-family: inherit;
+  }
+
+  .search-hint-input::placeholder {
+    color: var(--muted-foreground);
+  }
+
+  .search-hint-kbd {
+    padding: var(--space-1) var(--space-2);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-sm);
+    font-size: var(--font-size-sm);
+    color: var(--muted-foreground);
+  }
+
+  /* topbar-command-search: starter-suggestion popover, rendered open/static under the hint field */
+  .search-hint-popover {
+    margin-top: var(--space-2);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-lg);
+    background: var(--popover);
+    color: var(--popover-foreground);
+    overflow: hidden;
+  }
+
+  .search-hint-label {
+    padding: var(--space-2) var(--space-4);
+    font-size: var(--font-size-sm);
+    color: var(--muted-foreground);
+  }
+
+  .search-hint-row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: var(--space-2) var(--space-4);
+    font-size: var(--font-size-sm);
+    color: var(--foreground);
+  }
+
+  .search-hint-row:hover {
+    background: var(--secondary);
+  }
+</style>
+
+<section class="hero">
+  <div class="hero-inner">
+    <h1 class="hero-title">Askewly Design</h1>
+    <p class="hero-subcopy">
+      A visual library and agent-ready system for designing better product interfaces.
+    </p>
+
+    <div class="hero-cta-row">
+      <button class="btn btn-primary" type="button">
+        Explore Patterns
+      </button>
+      <button class="btn btn-secondary" type="button">
+        Open Docs
+      </button>
+    </div>
+
+    <div class="search-hint">
+      <div class="search-hint-field">
+        <span class="search-hint-icon" aria-hidden="true">&#128269;</span>
+        <input
+          class="search-hint-input"
+          type="text"
+          placeholder="Search patterns, components, terms..."
+          aria-label="검색"
+        />
+        <span class="search-hint-kbd">Ctrl F</span>
+      </div>
+      <div class="search-hint-popover">
+        <div class="search-hint-label">바로 찾기</div>
+        <div class="search-hint-row"><span>Hero Sections</span><span aria-hidden="true">&rarr;</span></div>
+        <div class="search-hint-row"><span>Footers</span><span aria-hidden="true">&rarr;</span></div>
+        <div class="search-hint-row"><span>Application Shells</span><span aria-hidden="true">&rarr;</span></div>
+      </div>
+    </div>
+  </div>
+</section>

@@ -82,6 +82,11 @@ const FONT_WEIGHT_MAPPINGS = [
   ["--font-weight-medium", "typography.weight.medium"],
 ];
 
+const FONT_FAMILY_MAPPINGS = [
+  ["--font-sans", "typography.font.sans"],
+  ["--font-mono", "typography.font.mono"],
+];
+
 const RADIUS_MAPPINGS = [
   ["--radius-sm", "dimension.radius.sm"],
   ["--radius-md", "dimension.radius.md"],
@@ -110,6 +115,13 @@ function buildTokensCss() {
   }
   for (const [cssVar, tokenPath] of FONT_WEIGHT_MAPPINGS) {
     lines.push(`  ${cssVar}: ${resolveModeLiteral(root, tokenPath, "light")};`);
+  }
+  for (const [cssVar, tokenPath] of FONT_FAMILY_MAPPINGS) {
+    const fam = resolveModeLiteral(root, tokenPath, "light");
+    const css = (Array.isArray(fam) ? fam : [fam])
+      .map((f) => (/[ ]/.test(f) ? `"${f}"` : f))
+      .join(", ");
+    lines.push(`  ${cssVar}: ${css};`);
   }
   for (const [cssVar, tokenPath] of RADIUS_MAPPINGS) {
     lines.push(`  ${cssVar}: ${formatDimension(resolveModeLiteral(root, tokenPath, "light"))};`);

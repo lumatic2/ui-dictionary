@@ -37,6 +37,8 @@
   --font-size-2xl: 40px;
   --font-weight-regular: 400;
   --font-weight-medium: 500;
+  --font-sans: Geist, "Noto Sans KR", ui-sans-serif, system-ui, sans-serif;
+  --font-mono: "Geist Mono", ui-monospace, monospace;
   --radius-sm: 4px;
   --radius-md: 6px;
   --radius-lg: 8px;

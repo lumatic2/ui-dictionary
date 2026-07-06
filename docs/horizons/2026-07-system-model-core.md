@@ -1,7 +1,7 @@
 # Horizon - System Model Core (시스템 모델 코어)
 
 Date: 2026-07-07
-Status: active
+Status: closed 2026-07-07 — 4/4 milestones completed in one day; close criteria met (token SSOT + pattern taxonomy + recipe batch + shared-consumption demo proving site and agent output derive from the same SSOT). Milestone history archived in BACKLOG.md; follow-up queue recorded there. Next horizon: to be authored via planning discussion (§B0.5).
 Objective link: `docs/OBJECTIVE.md` (장기 아크 3 — 시스템 모델)
 
 ## Goal
