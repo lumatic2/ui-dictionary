@@ -44,7 +44,7 @@ Evidence:
 
 DoD:
 
-- 외부 프로젝트(ui-dictionary 밖 레포) 1건에서 Codex 또는 Claude Code가 진입점(스킬 또는 llms.txt) 경유로 SSOT를 소비해 UI를 구현한다 — 색·타이포 리터럴 대신 토큰 파생 증거(SMC3 데모 기준 계승: 색 리터럴 0).
+- 외부 프로젝트(대상: `~/projects/development-dictionary` — 2026-07-07 사용자 확정) 1건에서 Codex 또는 Claude Code가 진입점(스킬 또는 llms.txt) 경유로 SSOT를 소비해 UI를 구현한다 — 색·타이포 리터럴 대신 토큰 파생 증거(SMC3 데모 기준 계승: 색 리터럴 0).
 - 구현 중 드러나는 부족 레시피는 이 milestone 안에서 수요 주도로 확장한다(선제 배치 확장 없음 — 2026-07-07 사용자 확정).
 
 Evidence:
