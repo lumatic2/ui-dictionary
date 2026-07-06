@@ -1,79 +1,112 @@
 ---
+# GENERATED tokens/themes from tokens/askewly.tokens.json — edit the SSOT, then regenerate
 name: "Askewly Design"
-version: "0.1.0"
+version: "0.2.0"
 
 tokens:
   color:
     primitive:
+      white: { value: "oklch(1 0 0)", type: color }
       gray:
-        "50":  { value: "oklch(99% 0 0)", type: color }
-        "100": { value: "oklch(97% 0 0)", type: color }
-        "300": { value: "oklch(85% 0 0)", type: color }
-        "500": { value: "oklch(55% 0 0)", type: color }
-        "700": { value: "oklch(30% 0 0)", type: color }
-        "900": { value: "oklch(12% 0 0)", type: color }
-      accent:
-        "500": { value: "#6F2DBD", type: color }
+        "1": { value: "oklch(0.985 0 0)", type: color }
+        "2": { value: "oklch(0.97 0.005 270)", type: color }
+        "3": { value: "oklch(0.95 0.015 270)", type: color }
+        "4": { value: "oklch(0.94 0.02 270)", type: color }
+        "5": { value: "oklch(0.91 0.015 270)", type: color }
+        "6": { value: "oklch(0.88 0.015 270)", type: color }
+        "7": { value: "oklch(0.72 0.02 270)", type: color }
+        "8": { value: "oklch(0.6 0.025 270)", type: color }
+        "9": { value: "oklch(0.46 0.03 270)", type: color }
+        "10": { value: "oklch(0.35 0.03 270)", type: color }
+        "11": { value: "oklch(0.25 0.03 270)", type: color }
+        "12": { value: "oklch(0.16 0.015 270)", type: color }
       askewly:
         violet: { value: "#6F2DBD", type: color }
         orchid: { value: "#A663CC", type: color }
         lavender: { value: "#B298DC", type: color }
         sky: { value: "#B8D0EB", type: color }
         mint: { value: "#B9FAF8", type: color }
+      red:
+        "9": { value: "oklch(0.58 0.22 27)", type: color }
     semantic:
       surface:
-        base:  { value: "{color.primitive.gray.50}", type: color }
-        muted: { value: "{color.primitive.gray.100}", type: color }
-        tint:  { value: "{color.primitive.askewly.mint}", type: color }
+        base: { value: "{color.primitive.gray.1}", type: color }
+        raised: { value: "{color.primitive.white}", type: color }
+        overlay: { value: "{color.primitive.white}", type: color }
+        muted: { value: "{color.primitive.gray.3}", type: color }
+        secondary: { value: "{color.primitive.gray.4}", type: color }
+        tint: { value: "{color.primitive.askewly.mint}", type: color }
       text:
-        default: { value: "{color.primitive.gray.900}", type: color }
-        muted:   { value: "{color.primitive.gray.700}", type: color }
+        default: { value: "{color.primitive.gray.12}", type: color }
+        muted: { value: "{color.primitive.gray.9}", type: color }
+        secondary: { value: "{color.primitive.gray.11}", type: color }
+        on-accent: { value: "{color.primitive.gray.1}", type: color }
       action:
         primary: { value: "{color.primitive.askewly.violet}", type: color }
         secondary: { value: "{color.primitive.askewly.orchid}", type: color }
+        destructive: { value: "{color.primitive.red.9}", type: color }
+      accent:
+        base: { value: "{color.primitive.askewly.mint}", type: color }
+        foreground: { value: "{color.primitive.gray.12}", type: color }
       border:
-        default: { value: "{color.primitive.gray.300}", type: color }
+        default: { value: "{color.primitive.gray.6}", type: color }
+        input: { value: "{color.primitive.gray.6}", type: color }
+        focus: { value: "{color.primitive.askewly.violet}", type: color }
         accent: { value: "{color.primitive.askewly.lavender}", type: color }
+    component:
+      button:
+        bg: { value: "{color.semantic.action.primary}", type: color }
+        text: { value: "{color.semantic.text.on-accent}", type: color }
 
   dimension:
     space:
-      "1": { value: "4px",  type: dimension }
-      "2": { value: "8px",  type: dimension }
+      "1": { value: "4px", type: dimension }
+      "2": { value: "8px", type: dimension }
       "4": { value: "16px", type: dimension }
       "8": { value: "32px", type: dimension }
       "12": { value: "48px", type: dimension }
       "16": { value: "64px", type: dimension }
     radius:
-      sm: { value: "2px", type: dimension }
-      md: { value: "4px", type: dimension }
+      sm: { value: "4px", type: dimension }
+      md: { value: "6px", type: dimension }
+      lg: { value: "8px", type: dimension }
+      xl: { value: "12px", type: dimension }
 
   typography:
     font:
       sans: { value: "Geist, Noto Sans KR, ui-sans-serif, system-ui, sans-serif", type: fontFamily }
-      latin: { value: "Geist", type: fontFamily }
-      korean: { value: "Noto Sans KR", type: fontFamily }
       mono: { value: "Geist Mono, ui-monospace, monospace", type: fontFamily }
     scale:
-      sm:   { value: "14px", type: dimension }
+      sm: { value: "14px", type: dimension }
       base: { value: "16px", type: dimension }
-      lg:   { value: "20px", type: dimension }
-      xl:   { value: "28px", type: dimension }
-      "2xl": { value: "40px", type: dimension }
+      lg: { value: "20px", type: dimension }
+      xl: { value: "28px", type: dimension }
+      2xl: { value: "40px", type: dimension }
     weight:
       regular: { value: 400, type: fontWeight }
-      medium:  { value: 500, type: fontWeight }
+      medium: { value: 500, type: fontWeight }
 
 themes:
   default: { base: true }
   dark:
-    color.semantic.surface.base:   { value: "{color.primitive.gray.900}", type: color }
-    color.semantic.surface.muted:  { value: "{color.primitive.gray.700}", type: color }
-    color.semantic.surface.tint:   { value: "{color.primitive.gray.700}", type: color }
-    color.semantic.text.default:   { value: "{color.primitive.gray.50}",  type: color }
-    color.semantic.text.muted:     { value: "{color.primitive.gray.300}", type: color }
-    color.semantic.action.primary: { value: "{color.primitive.gray.50}",  type: color }
+    color.semantic.surface.base: { value: "{color.primitive.gray.12}", type: color }
+    color.semantic.surface.raised: { value: "{color.primitive.gray.11}", type: color }
+    color.semantic.surface.overlay: { value: "{color.primitive.gray.11}", type: color }
+    color.semantic.surface.muted: { value: "{color.primitive.gray.10}", type: color }
+    color.semantic.surface.secondary: { value: "{color.primitive.gray.10}", type: color }
+    color.semantic.surface.tint: { value: "{color.primitive.gray.10}", type: color }
+    color.semantic.text.default: { value: "{color.primitive.gray.1}", type: color }
+    color.semantic.text.muted: { value: "{color.primitive.gray.7}", type: color }
+    color.semantic.text.secondary: { value: "{color.primitive.gray.3}", type: color }
+    color.semantic.text.on-accent: { value: "{color.primitive.gray.12}", type: color }
+    color.semantic.action.primary: { value: "{color.primitive.gray.1}", type: color }
     color.semantic.action.secondary: { value: "{color.primitive.askewly.mint}", type: color }
-    color.semantic.border.default: { value: "{color.primitive.gray.700}", type: color }
+    color.semantic.action.destructive: { value: "{color.primitive.red.9}", type: color }
+    color.semantic.accent.base: { value: "{color.primitive.gray.10}", type: color }
+    color.semantic.accent.foreground: { value: "{color.primitive.gray.1}", type: color }
+    color.semantic.border.default: { value: "{color.primitive.gray.10}", type: color }
+    color.semantic.border.input: { value: "{color.primitive.gray.10}", type: color }
+    color.semantic.border.focus: { value: "{color.primitive.askewly.lavender}", type: color }
     color.semantic.border.accent: { value: "{color.primitive.askewly.orchid}", type: color }
 ---
 

@@ -1,0 +1,188 @@
+{
+  "$description": "Askewly Design token SSOT (DTCG-compatible, stable 2025.10 subset). Tier rule: component -> semantic -> primitive, one direction only. Dark mode lives in $extensions['com.askewly.modes'].dark on semantic tokens. Generated artifacts: DESIGN.md frontmatter, examples/ui-vocabulary-site/src/tokens.css. Do not edit generated files by hand.",
+  "color": {
+    "primitive": {
+      "$description": "Raw values only. gray is the site's violet-tinted neutral (hue 270) formalized as a 12-step ramp; usage convention: 1-2 app background, 3-5 interactive component states, 6-8 borders, 9-10 solid/low-contrast foreground, 11-12 text.",
+      "white": { "$type": "color", "$value": "oklch(1 0 0)" },
+      "gray": {
+        "$type": "color",
+        "1": { "$value": "oklch(0.985 0 0)" },
+        "2": { "$value": "oklch(0.97 0.005 270)" },
+        "3": { "$value": "oklch(0.95 0.015 270)" },
+        "4": { "$value": "oklch(0.94 0.02 270)" },
+        "5": { "$value": "oklch(0.91 0.015 270)" },
+        "6": { "$value": "oklch(0.88 0.015 270)" },
+        "7": { "$value": "oklch(0.72 0.02 270)" },
+        "8": { "$value": "oklch(0.6 0.025 270)" },
+        "9": { "$value": "oklch(0.46 0.03 270)" },
+        "10": { "$value": "oklch(0.35 0.03 270)" },
+        "11": { "$value": "oklch(0.25 0.03 270)" },
+        "12": { "$value": "oklch(0.16 0.015 270)" }
+      },
+      "askewly": {
+        "$type": "color",
+        "$description": "Brand palette extracted from the landing planning reference image (2026-07-05). Canonical purple: violet.",
+        "violet": { "$value": "#6F2DBD" },
+        "orchid": { "$value": "#A663CC" },
+        "lavender": { "$value": "#B298DC" },
+        "sky": { "$value": "#B8D0EB" },
+        "mint": { "$value": "#B9FAF8" }
+      },
+      "red": {
+        "$type": "color",
+        "9": { "$value": "oklch(0.58 0.22 27)" }
+      }
+    },
+    "semantic": {
+      "$description": "Role tokens. Components and site CSS consume this layer only. Dark values in $extensions['com.askewly.modes'].dark.",
+      "surface": {
+        "$type": "color",
+        "base": {
+          "$value": "{color.primitive.gray.1}",
+          "$extensions": { "com.askewly.modes": { "dark": "{color.primitive.gray.12}" } }
+        },
+        "raised": {
+          "$description": "Cards, panels sitting on base.",
+          "$value": "{color.primitive.white}",
+          "$extensions": { "com.askewly.modes": { "dark": "{color.primitive.gray.11}" } }
+        },
+        "overlay": {
+          "$description": "Popovers, dropdowns, floating layers.",
+          "$value": "{color.primitive.white}",
+          "$extensions": { "com.askewly.modes": { "dark": "{color.primitive.gray.11}" } }
+        },
+        "muted": {
+          "$value": "{color.primitive.gray.3}",
+          "$extensions": { "com.askewly.modes": { "dark": "{color.primitive.gray.10}" } }
+        },
+        "secondary": {
+          "$description": "Secondary button / subtle filled surface.",
+          "$value": "{color.primitive.gray.4}",
+          "$extensions": { "com.askewly.modes": { "dark": "{color.primitive.gray.10}" } }
+        },
+        "tint": {
+          "$description": "Informational wash, agent-ready signal surface.",
+          "$value": "{color.primitive.askewly.mint}",
+          "$extensions": { "com.askewly.modes": { "dark": "{color.primitive.gray.10}" } }
+        }
+      },
+      "text": {
+        "$type": "color",
+        "default": {
+          "$value": "{color.primitive.gray.12}",
+          "$extensions": { "com.askewly.modes": { "dark": "{color.primitive.gray.1}" } }
+        },
+        "muted": {
+          "$value": "{color.primitive.gray.9}",
+          "$extensions": { "com.askewly.modes": { "dark": "{color.primitive.gray.7}" } }
+        },
+        "secondary": {
+          "$description": "Foreground on surface.secondary.",
+          "$value": "{color.primitive.gray.11}",
+          "$extensions": { "com.askewly.modes": { "dark": "{color.primitive.gray.3}" } }
+        },
+        "on-accent": {
+          "$description": "Text/icon on action.primary solid fills.",
+          "$value": "{color.primitive.gray.1}",
+          "$extensions": { "com.askewly.modes": { "dark": "{color.primitive.gray.12}" } }
+        }
+      },
+      "action": {
+        "$type": "color",
+        "primary": {
+          "$value": "{color.primitive.askewly.violet}",
+          "$extensions": { "com.askewly.modes": { "dark": "{color.primitive.gray.1}" } }
+        },
+        "secondary": {
+          "$value": "{color.primitive.askewly.orchid}",
+          "$extensions": { "com.askewly.modes": { "dark": "{color.primitive.askewly.mint}" } }
+        },
+        "destructive": {
+          "$value": "{color.primitive.red.9}",
+          "$extensions": { "com.askewly.modes": { "dark": "{color.primitive.red.9}" } }
+        }
+      },
+      "accent": {
+        "$type": "color",
+        "base": {
+          "$description": "Informational accent wash (mint family).",
+          "$value": "{color.primitive.askewly.mint}",
+          "$extensions": { "com.askewly.modes": { "dark": "{color.primitive.gray.10}" } }
+        },
+        "foreground": {
+          "$value": "{color.primitive.gray.12}",
+          "$extensions": { "com.askewly.modes": { "dark": "{color.primitive.gray.1}" } }
+        }
+      },
+      "border": {
+        "$type": "color",
+        "default": {
+          "$value": "{color.primitive.gray.6}",
+          "$extensions": { "com.askewly.modes": { "dark": "{color.primitive.gray.10}" } }
+        },
+        "input": {
+          "$value": "{color.primitive.gray.6}",
+          "$extensions": { "com.askewly.modes": { "dark": "{color.primitive.gray.10}" } }
+        },
+        "focus": {
+          "$description": "Focus ring.",
+          "$value": "{color.primitive.askewly.violet}",
+          "$extensions": { "com.askewly.modes": { "dark": "{color.primitive.askewly.lavender}" } }
+        },
+        "accent": {
+          "$description": "Selected/active edges only.",
+          "$value": "{color.primitive.askewly.lavender}",
+          "$extensions": { "com.askewly.modes": { "dark": "{color.primitive.askewly.orchid}" } }
+        }
+      }
+    },
+    "component": {
+      "$description": "Minimal by policy (survey criterion A-5): only overrides that semantic roles cannot express. Exemplar tier for the lint chain.",
+      "button": {
+        "$type": "color",
+        "bg": { "$value": "{color.semantic.action.primary}" },
+        "text": { "$value": "{color.semantic.text.on-accent}" }
+      }
+    }
+  },
+  "dimension": {
+    "space": {
+      "$type": "dimension",
+      "$description": "4/8 grid. Reference variables only - not bound into the Tailwind theme namespace.",
+      "1": { "$value": { "value": 4, "unit": "px" } },
+      "2": { "$value": { "value": 8, "unit": "px" } },
+      "4": { "$value": { "value": 16, "unit": "px" } },
+      "8": { "$value": { "value": 32, "unit": "px" } },
+      "12": { "$value": { "value": 48, "unit": "px" } },
+      "16": { "$value": { "value": 64, "unit": "px" } }
+    },
+    "radius": {
+      "$type": "dimension",
+      "$description": "Canonical = shipped site values (PSS1 visually approved), not the older 2/4px draft.",
+      "sm": { "$value": { "value": 4, "unit": "px" } },
+      "md": { "$value": { "value": 6, "unit": "px" } },
+      "lg": { "$value": { "value": 8, "unit": "px" } },
+      "xl": { "$value": { "value": 12, "unit": "px" } }
+    }
+  },
+  "typography": {
+    "font": {
+      "$type": "fontFamily",
+      "sans": { "$value": ["Geist", "Noto Sans KR", "ui-sans-serif", "system-ui", "sans-serif"] },
+      "mono": { "$value": ["Geist Mono", "ui-monospace", "monospace"] }
+    },
+    "scale": {
+      "$type": "dimension",
+      "sm": { "$value": { "value": 14, "unit": "px" } },
+      "base": { "$value": { "value": 16, "unit": "px" } },
+      "lg": { "$value": { "value": 20, "unit": "px" } },
+      "xl": { "$value": { "value": 28, "unit": "px" } },
+      "2xl": { "$value": { "value": 40, "unit": "px" } }
+    },
+    "weight": {
+      "$type": "fontWeight",
+      "regular": { "$value": 400 },
+      "medium": { "$value": 500 }
+    }
+  }
+}
