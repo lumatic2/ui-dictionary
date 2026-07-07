@@ -209,7 +209,7 @@ export function HomePage({ onNavigate, onSearch, filter, terms }: HomePageProps)
         <div className="pointer-events-none absolute inset-0 -z-10 bg-white" />
         <FloatingField />
         <div className="relative z-30 mx-auto flex max-w-[1180px] min-w-0 flex-col items-center">
-          <h1 className="mt-4 text-center text-[clamp(3.5rem,16vw,9.5rem)] font-semibold leading-[0.9] tracking-normal text-slate-950">
+          <h1 className="mt-4 text-center text-[clamp(3.5rem,16vw,8rem)] font-semibold leading-[0.9] tracking-normal text-slate-950">
             Askewly Design
           </h1>
           <p className="mt-7 w-full max-w-2xl text-center text-base leading-7 text-slate-600 sm:text-lg sm:leading-8 md:text-xl">

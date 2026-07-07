@@ -73,4 +73,5 @@ Milestone: FW1 (horizon: `docs/horizons/2026-07-figma-workflow.md`)
 
 ## Changelog
 
+- 2026-07-07: 파일럿 1회(랜딩 hero) 반영 — ⑤ 회수는 구조 변경 없으면 속성 스냅숏 대조가 `get_design_context`보다 정밀(승격 시 노드 ID+값 보존 필수); ④ 핸드오프에 조작 안내(배리에이션=프레임 복제) 포함할 것; variables 있는 파일에 페이지 추가 승격이 별도 파일보다 간단. 상세: `docs/research/figma-roundtrip-pilot-2026-07.md`.
 - 2026-07-07: 초판 (FW1). 리서치 2건 + 브리지 계약 기반, 하이브리드 왕복 채택.

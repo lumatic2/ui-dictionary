@@ -2,7 +2,7 @@
 
 Milestone: FW2-1 (horizon: `docs/horizons/2026-07-figma-workflow.md`)
 방법론: `methodology/figma-workflow.md` §2 (하이브리드 왕복 — 첫 실행)
-상태: **④ 사용자 디테일링 대기** (2026-07-07 핸드오프)
+상태: **왕복 완료** (2026-07-07 — ①~⑤ 전체 1일 내 닫힘)
 
 ## 왕복 기록
 
@@ -26,20 +26,22 @@ Milestone: FW2-1 (horizon: `docs/horizons/2026-07-figma-workflow.md`)
 - 구축: 3회 incremental 호출(탑바 → hero 본문 → 스크린샷 검증). 색상은 전부 variables 바인딩 — `color/semantic/surface/raised`(배경), `text/default`(헤드라인·로고), `text/muted`(서브카피·검색), `text/secondary`(nav), `action/primary`(로고 마크·Pro Plan), `component/button/bg`·`button/text`(primary CTA), `border/default`·`border/input`(secondary CTA·검색). 폰트 Geist(SemiBold/Medium/Regular).
 - **안 옮겨진 것 (parity 한계, 사람 단계 보정 대상)**: FloatingField 배경 글리프(장식 모션 필드), 검색 돋보기 아이콘(placeholder 원으로 대체), hover/focus 상태, ShowcaseAtlas(스크롤 하부라 범위 제외).
 
-### ④ 사용자 디테일링 — **여기서 대기**
+### ④ 사용자 디테일링 (2026-07-07)
 
-다듬을 소재 제안:
-1. **CTA pill vs radius `sm` 정합** (1순위 — DESIGN.md와 코드의 충돌 지점): pill 유지·DESIGN.md 개정 vs 4px 각형 전환 vs 중간값, Figma에서 배리에이션으로 탐색.
-2. 헤드라인 스케일·자간, 서브카피와의 수직 리듬.
-3. 검색 바 스타일(DESIGN.md §7 Input은 "bottom-border only" 규정 — 현행은 박스형).
-- **금지**: `askewly/*` variables 값 직접 수정 (다음 push가 덮어씀 — 토큰 변경은 SSOT 제안으로).
+- 사용자가 Figma에서 직접 다듬음. **지속된 변경: 헤드라인 fontSize 152 → 128px** (구조·간격·색·서브카피·CTA는 push 원본과 동일 — 속성 스냅숏 전수 대조로 확인).
+- CTA pill 정합(1순위 제안 소재)은 "어떻게 건드려야 할지 모르겠다"로 보류 — **관찰**: 배리에이션 탐색은 프레임 복제 안내 없이는 사용자에게 진입 장벽이 있음. 미해결 과제로 이월(PSS2에서 처리).
 
-### ⑤ 코드 회수 — (사용자 디테일링 후)
+### ⑤ 코드 회수 (2026-07-07)
 
-- 절차: `get_design_context`(6:3 또는 다듬은 프레임) → `get_screenshot` → 변경 diff를 코드 반영 → 브라우저 재검증.
+- diff 판별: `use_figma` 읽기 전용 스크립트로 노드별 속성 스냅숏(fontSize/lineHeight/fills/padding/radius/strokes)을 push 원본과 전수 대조 — 구조 변경이 없을 땐 `get_design_context` 전체 코드 생성보다 이 방식이 정밀하고 저렴함.
+- 코드 반영: `home-page.tsx` h1 `clamp(3.5rem,16vw,9.5rem)` → `clamp(3.5rem,16vw,8rem)` (데스크톱 최대 152→128px, Figma 값과 문자 일치).
+- 재검증: Vite dev + Playwright 1440×900, 콘솔 에러 0, oxlint 통과(선재 경고만). 부수 효과: 다음 섹션 노출 증가 — DESIGN.md §4 "dead poster 방지" 방향과 정합.
+- 증거: `docs/research/evidence/figma-pilot-hero-after-1440.png` (before와 대조)
 
 ## 발견한 함정 (방법론 Changelog 후보)
 
 - `generate_figma_design`이 도구 목록에 항상 있지는 않음 — `use_figma` 단독으로도 코드→Figma 승격 가능(구조 재구축 방식). 픽셀 퍼펙트 캡처가 아니라 "디자인 시스템 어휘로 재구성"이라 오히려 variables 바인딩이 자연스러움.
 - variables가 있는 파일에 새 페이지로 승격하면 로컬 바인딩이 바로 됨 — 별도 파일 + 라이브러리 publish 경로(팀 플랜 제약)보다 간단.
 - Geist 폰트 스타일명은 "SemiBold"(공백 없음) — Inter("Semi Bold")와 다름.
+- 회수 diff는 구조 변경이 없으면 속성 스냅숏 전수 대조(`use_figma` 읽기 스크립트)가 `get_design_context`보다 정밀·저렴 — push 시점 값을 기록해둬야 가능하므로 승격 스크립트의 반환값(노드 ID+값)을 보존할 것.
+- 사용자 디테일링 핸드오프에는 "배리에이션 탐색 = 프레임 복제 후 실험" 같은 조작 안내를 함께 줘야 함 — 소재 제안만으로는 진입 장벽(CTA pill 보류 사례).
