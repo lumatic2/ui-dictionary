@@ -565,7 +565,7 @@ function AtlasDemo({ id }: { id: AtlasItemId }) {
   const [scrollStory, setScrollStory] = useState(36)
   const [mobileStep, setMobileStep] = useState(0)
   const [cartCount, setCartCount] = useState(1)
-  const [agentFrame, setAgentFrame] = useState({ left: 16, top: 12, width: 60, height: 150 })
+  const [agentFrame, setAgentFrame] = useState({ left: 18, top: 24, width: 58, height: 150 })
   const [agentSelected, setAgentSelected] = useState(false)
   const [agentResizing, setAgentResizing] = useState(false)
   const [agentMoving, setAgentMoving] = useState(false)
@@ -667,7 +667,7 @@ function AtlasDemo({ id }: { id: AtlasItemId }) {
   }, [id])
 
   if (id === "agent") {
-    const defaultFrame = { humanize: { left: 16, top: 12, width: 60, height: 150 }, fix: { left: 14, top: 10, width: 64, height: 158 }, interactive: { left: 20, top: 16, width: 54, height: 140 } }
+    const defaultFrame = { humanize: { left: 18, top: 24, width: 58, height: 150 }, fix: { left: 16, top: 22, width: 62, height: 158 }, interactive: { left: 22, top: 26, width: 52, height: 140 } }
     const agentScenarios = [
       {
         key: "humanize" as const,
@@ -716,17 +716,18 @@ function AtlasDemo({ id }: { id: AtlasItemId }) {
         applyAfter()
         return
       }
-      scenarioTimersRef.current.push(window.setTimeout(applyAfter, 760))
       let delay = 0
       rest.forEach((turn) => {
-        delay += 640
+        delay += 720
         const showAt = delay
-        scenarioTimersRef.current.push(window.setTimeout(() => setAgentTyping(true), Math.max(0, showAt - 340)))
+        scenarioTimersRef.current.push(window.setTimeout(() => setAgentTyping(true), Math.max(0, showAt - 360)))
         scenarioTimersRef.current.push(window.setTimeout(() => {
           setAgentTyping(false)
           setAgentChat((log) => [...log, turn])
         }, showAt))
       })
+      // change the canvas only after the agent finishes talking
+      scenarioTimersRef.current.push(window.setTimeout(applyAfter, delay + 560))
     }
     const sendAgentMessage = () => {
       const text = agentInput.trim()
@@ -834,7 +835,7 @@ function AtlasDemo({ id }: { id: AtlasItemId }) {
 
     return (
       <div className="grid min-h-[21.8rem] overflow-hidden rounded-md border border-slate-200 bg-white lg:h-[23rem] lg:grid-cols-[minmax(0,1fr)_16rem]">
-        <div className="relative min-h-[17rem] bg-slate-50 p-4">
+        <div className="relative flex min-h-[17rem] flex-col bg-slate-50 p-4">
           <div className="flex items-center justify-between border-b border-slate-200 pb-3">
             <div className="flex gap-1.5">
               <span className="size-2 rounded-full bg-slate-300" />
@@ -846,7 +847,7 @@ function AtlasDemo({ id }: { id: AtlasItemId }) {
 
           <div
             ref={agentCanvasRef}
-            className="relative mt-4 h-56 overflow-hidden rounded-md border border-slate-200 bg-white bg-[linear-gradient(90deg,rgba(15,23,42,0.03)_1px,transparent_1px),linear-gradient(rgba(15,23,42,0.03)_1px,transparent_1px)] bg-[size:28px_28px] [perspective:700px]"
+            className="relative mt-4 min-h-[16rem] flex-1 overflow-hidden rounded-md border border-slate-200 bg-white bg-[linear-gradient(90deg,rgba(15,23,42,0.03)_1px,transparent_1px),linear-gradient(rgba(15,23,42,0.03)_1px,transparent_1px)] bg-[size:28px_28px] [perspective:700px]"
             onPointerMove={onCanvasPointerMove}
             onPointerDown={(event) => {
               if (!(event.target as HTMLElement).closest("[data-agent-asset='true']")) setAgentSelected(false)
@@ -869,14 +870,21 @@ function AtlasDemo({ id }: { id: AtlasItemId }) {
             >
               {agentSelected && (
                 <>
+                  <span className="pointer-events-none absolute inset-0 z-10 border border-askewly-violet" />
                   <span className="absolute inset-x-2 -top-1 z-20 h-3 cursor-ns-resize touch-none" data-resize-edge="n" role="presentation" onClick={(e) => e.stopPropagation()} onPointerDown={(e) => startAgentResize(e, "n")} />
                   <span className="absolute inset-y-2 -right-1 z-20 w-3 cursor-ew-resize touch-none" data-resize-edge="e" role="presentation" onClick={(e) => e.stopPropagation()} onPointerDown={(e) => startAgentResize(e, "e")} />
                   <span className="absolute inset-x-2 -bottom-1 z-20 h-3 cursor-ns-resize touch-none" data-resize-edge="s" role="presentation" onClick={(e) => e.stopPropagation()} onPointerDown={(e) => startAgentResize(e, "s")} />
                   <span className="absolute inset-y-2 -left-1 z-20 w-3 cursor-ew-resize touch-none" data-resize-edge="w" role="presentation" onClick={(e) => e.stopPropagation()} onPointerDown={(e) => startAgentResize(e, "w")} />
+                  {(["n", "e", "s", "w"] as const).map((edge) => (
+                    <span
+                      key={`mid-${edge}`}
+                      className={cn("pointer-events-none absolute z-30 size-1.5 border border-askewly-violet bg-white", edge === "n" && "left-1/2 top-0 -translate-x-1/2 -translate-y-1/2", edge === "s" && "bottom-0 left-1/2 -translate-x-1/2 translate-y-1/2", edge === "e" && "right-0 top-1/2 -translate-y-1/2 translate-x-1/2", edge === "w" && "left-0 top-1/2 -translate-x-1/2 -translate-y-1/2")}
+                    />
+                  ))}
                   {(["nw", "ne", "sw", "se"] as const).map((corner) => (
                     <span
                       key={corner}
-                      className={cn("absolute z-30 size-2 cursor-nwse-resize touch-none rounded-sm border border-askewly-violet bg-white", corner === "nw" && "-left-0.5 -top-0.5 -translate-x-1/2 -translate-y-1/2", corner === "ne" && "-right-0.5 -top-0.5 translate-x-1/2 -translate-y-1/2 cursor-nesw-resize", corner === "sw" && "-bottom-0.5 -left-0.5 -translate-x-1/2 translate-y-1/2 cursor-nesw-resize", corner === "se" && "-bottom-0.5 -right-0.5 translate-x-1/2 translate-y-1/2")}
+                      className={cn("absolute z-30 size-2 cursor-nwse-resize touch-none border border-askewly-violet bg-white", corner === "nw" && "-left-0.5 -top-0.5 -translate-x-1/2 -translate-y-1/2", corner === "ne" && "-right-0.5 -top-0.5 translate-x-1/2 -translate-y-1/2 cursor-nesw-resize", corner === "sw" && "-bottom-0.5 -left-0.5 -translate-x-1/2 translate-y-1/2 cursor-nesw-resize", corner === "se" && "-bottom-0.5 -right-0.5 translate-x-1/2 translate-y-1/2")}
                       data-resize-edge={corner}
                       role="presentation"
                       onClick={(e) => e.stopPropagation()}
@@ -889,19 +897,27 @@ function AtlasDemo({ id }: { id: AtlasItemId }) {
                 <div
                   className={cn(
                     "flex h-full min-h-0 flex-col overflow-hidden rounded-lg text-left transition-all duration-500",
-                    agentSelected ? "ring-2 ring-askewly-violet" : "",
                     agentScenario === "humanize" && agentPhase === "before"
-                      ? "items-center justify-center gap-1.5 border border-transparent bg-[linear-gradient(160deg,#2e1065,#4a1d96_45%,#831843)] p-3 text-center"
+                      ? "gap-2 border border-fuchsia-400/30 bg-[linear-gradient(160deg,#2e1065,#4a1d96_45%,#831843)] p-3"
                       : cn("gap-2.5 border border-slate-200 bg-white p-3 shadow-sm", alive && "hover:shadow-[0_16px_40px_rgba(111,45,189,0.18)]"),
                   )}
                   style={alive ? { transform: `rotateX(${agentTilt.x}deg) rotateY(${agentTilt.y}deg)`, transformStyle: "preserve-3d" } : undefined}
                 >
                   {agentScenario === "humanize" && agentPhase === "before" ? (
                     <>
-                      <span className="text-2xl [text-shadow:0_0_16px_rgba(250,204,21,0.9)]">⚡</span>
-                      <p className="font-serif text-sm font-black uppercase italic tracking-[0.22em] text-cyan-300 [text-shadow:0_0_12px_rgba(34,211,238,0.9)]">Lightning</p>
-                      <p className="max-w-[92%] text-[9px] leading-3 text-purple-200/80">Supercharge your workflow with next-gen AI-powered synergy 🚀✨</p>
-                      <span className="mt-1 rounded-full bg-[linear-gradient(90deg,#22d3ee,#a855f7)] px-3 py-1 text-[9px] font-bold uppercase tracking-wide text-white shadow-[0_0_16px_rgba(168,85,247,0.75)]">Get Started Now 🔥</span>
+                      <div className="flex items-center gap-2">
+                        <img src="/assets/navbars/avatar-03.png" alt="" className="size-8 shrink-0 rounded-full object-cover ring-2 ring-cyan-300 [box-shadow:0_0_10px_rgba(34,211,238,0.8)]" />
+                        <div className="min-w-0">
+                          <p className="truncate font-serif text-[13px] font-black italic text-cyan-300 [text-shadow:0_0_10px_rgba(34,211,238,0.9)]">Maya Okonkwo ✨</p>
+                          <p className="truncate text-[9px] text-fuchsia-200">🚀 Design Lead &amp; AI Visionary</p>
+                        </div>
+                      </div>
+                      <p className="text-[10px] font-semibold leading-4 text-purple-100">“Our agents finally ship UI that looks intentional 🔥🚀 not generated!! 💯✨”</p>
+                      <div className="flex items-center gap-1">
+                        <span className="text-[11px] leading-none text-amber-300 [text-shadow:0_0_8px_rgba(252,211,77,0.9)]">★★★★★</span>
+                        <span className="text-[8px] font-black uppercase tracking-wide text-fuchsia-300">100% Amazing!!!</span>
+                      </div>
+                      <span className="mt-1 self-start rounded-full bg-[linear-gradient(90deg,#22d3ee,#a855f7)] px-3 py-1 text-[9px] font-bold uppercase tracking-wide text-white shadow-[0_0_16px_rgba(168,85,247,0.75)]">Read More 👉</span>
                     </>
                   ) : (
                     (() => {
@@ -960,11 +976,11 @@ function AtlasDemo({ id }: { id: AtlasItemId }) {
           </div>
 
           <div className="border-t border-slate-200 p-2">
-            <div className="flex flex-wrap gap-1 pb-2">
+            <div className="flex gap-1 pb-2">
               {agentScenarios.map((scenario) => (
                 <button
                   key={scenario.key}
-                  className="rounded-md border border-slate-200 bg-white px-2 py-1 text-[10px] font-medium text-slate-600 transition hover:border-askewly-lavender hover:text-askewly-violet"
+                  className="whitespace-nowrap rounded-md border border-slate-200 bg-white px-1.5 py-1 text-[10px] font-medium text-slate-600 transition hover:border-askewly-lavender hover:text-askewly-violet"
                   type="button"
                   onClick={() => playScenario(scenario)}
                 >
