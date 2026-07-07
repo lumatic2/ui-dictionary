@@ -351,7 +351,7 @@ Verification:
 - [ ] Step 9 - Hero Composition. (verify: Askewly hero asset reflows without clipping)
 - [ ] Step 10 - Command Center Interface. (verify: mode switch, command filtering, keyboard/click state)
 - [ ] Step 11 - Commerce Flow + Mobile App Patterns. (verify: cart path and mobile bottom-nav state)
-- [ ] Step 11a - Hero/topbar pill-button reconciliation. (verify: 사용자 확정 방향으로 hero CTA·topbar Pro Plan·DESIGN.md §7/§8 삼자 정합 + Chrome 확인 — 방향 결정은 결정 로그)
+- [x] Step 11a - Hero/topbar pill-button reconciliation. (verify: B(8px) 픽으로 hero CTA·topbar Pro Plan `rounded-lg` + DESIGN.md §7/§8 개정 + Figma 8px 동기화, computed radius=8px Chrome 확인, 커밋 훅 design lint PASS — 커밋 6344d7b)
 - [x] Step 11b - Dark-mode toggle activation. (verify: 탑바 SiteThemeToggle(system/light/dark) 클릭 → `.dark` 적용·localStorage 지속·새로고침 유지, light/dark 스크린샷 `docs/research/evidence/pss2-11b-*` — 커밋 baf6c1b)
 - [x] Step 11c - Showcase reduced-motion fallback. (verify: Playwright emulateMedia(reduce)에서 physics/자동재생 카드 정적(innerHTML 무변화) + no-preference에서 낙하·포인터 반응 정상 — 커밋 cf25622)
 - [ ] Step 12 - Integrated showcase QA. (verify: desktop/mobile Chrome screenshots, no overlap, no inert controls, build/lint)
