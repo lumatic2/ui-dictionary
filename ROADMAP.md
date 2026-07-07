@@ -12,14 +12,15 @@ Goal: Figma를 경쟁자이자 보완재로 규정하고 Figma 자산 ↔ Askewl
 
 ## Active Milestones
 
-<!-- harness:milestone id="FB1" status="active" priority="P0" -->
+<!-- harness:milestone id="FB1" status="completed" priority="P0" evidence="docs/research/figma-capability-map-2026-07.md" -->
 ### FB1 - 연결 계층 + capability 지도
 - DoD: Figma 공식 Dev Mode MCP를 Claude Code에 등록·실호출 검증(blocker면 사실 기록) + chrome-ext 실 UI 경로 검증 1회 + 경로별 capability 지도 문서화.
-- Evidence: docs/research/figma-capability-map-2026-07.md + 실호출 기록
+- Evidence: docs/research/figma-capability-map-2026-07.md
 - Gap: Figma 접근 경로가 이 환경에서 실측된 적 없다 — candidate doc의 질문들이 전부 미확인.
-- Status: [ ]
+- Status: [x]
 
-<!-- harness:milestone id="FB2" status="pending" priority="P0" -->
+- Completed at: 2026-07-07
+<!-- harness:milestone id="FB2" status="active" priority="P0" -->
 ### FB2 - 브리지 모델 계약
 - DoD: Figma→Askewly / Askewly→Figma 방향별 계약(variables↔tokens.json 매핑, 흡수/외부 경계, 차별 지점) + figma-codex-workflow 스킬 정합 지점 식별.
 - Evidence: docs/design-system/figma-bridge-contract.md + ADR
