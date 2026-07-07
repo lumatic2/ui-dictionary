@@ -162,7 +162,7 @@ const dashboardViews = [
 ] as const
 
 const atlasItems = [
-  { id: "agent", title: "Agent-Ready Design System", copy: "Editable UI assets packaged with agent-ready design context.", layout: "md:col-span-2 xl:col-span-4" },
+  { id: "agent", title: "Agent-Ready Design System", copy: "Talk to an agent docked to your canvas, build static or interactive UI, and hand it off to Codex or Claude.", layout: "md:col-span-2 xl:col-span-4" },
   { id: "pointer", title: "Cursor-Reactive Field", copy: "Surfaces that respond to cursor movement with spatial feedback and temporary visual traces.", layout: "md:col-span-2 xl:col-span-2" },
   { id: "physics", title: "Physics-Based Interaction", copy: "Interface objects collide, drift, and settle under a live physics field.", layout: "md:col-span-1 xl:col-span-2" },
   { id: "scroll", title: "Scroll-Driven Narrative", copy: "Copy, layers, and interface states advance as a self-running story.", layout: "md:col-span-1 xl:col-span-2" },
@@ -573,6 +573,14 @@ function AtlasDemo({ id }: { id: AtlasItemId }) {
   const [agentPressed, setAgentPressed] = useState(false)
   const [codexPacked, setCodexPacked] = useState(false)
   const [browserChecked, setBrowserChecked] = useState(false)
+  const [agentChat, setAgentChat] = useState<Array<{ role: "you" | "agent"; text: string }>>([
+    { role: "you", text: "Add a pricing card and bind it to our tokens." },
+    { role: "agent", text: "Placed a Card on the canvas, bound to DESIGN.md tokens. Want it interactive?" },
+    { role: "you", text: "Yes — make the primary button pressable." },
+    { role: "agent", text: "Added a pressed state. Try it on the canvas, then hand it to Codex or Claude." },
+  ])
+  const [agentInput, setAgentInput] = useState("")
+  const agentChatRef = useRef<HTMLDivElement | null>(null)
   const agentCanvasRef = useRef<HTMLDivElement | null>(null)
   const agentDraggedRef = useRef(false)
   const [cursorField, setCursorField] = useState<CursorFieldCell[]>(() => {
@@ -645,6 +653,12 @@ function AtlasDemo({ id }: { id: AtlasItemId }) {
     return () => window.clearInterval(timer)
   }, [id])
 
+  useEffect(() => {
+    if (id !== "agent") return
+    const el = agentChatRef.current
+    if (el) el.scrollTop = el.scrollHeight
+  }, [id, agentChat])
+
   if (id === "agent") {
     const contextCopy = {
       "DESIGN.md": "North star, tone, typography, and component rules travel with the project.",
@@ -665,6 +679,14 @@ function AtlasDemo({ id }: { id: AtlasItemId }) {
       }))
       setAgentSelected(false)
       setAgentPressed(false)
+    }
+    const sendAgentMessage = () => {
+      const text = agentInput.trim()
+      if (!text) return
+      const reply = `Updated the canvas from "${text.length > 32 ? `${text.slice(0, 32)}…` : text}" — bound to ${agentContext}. Hand off when ready.`
+      setAgentChat((log) => [...log, { role: "you", text }, { role: "agent", text: reply }])
+      setAgentInput("")
+      setAgentSelected(true)
     }
     const startAgentResize = (event: ReactPointerEvent<HTMLSpanElement>, edge: "n" | "e" | "s" | "w" | "nw" | "ne" | "sw" | "se") => {
       event.preventDefault()
@@ -778,13 +800,18 @@ function AtlasDemo({ id }: { id: AtlasItemId }) {
     const isWideAsset = agentFrame.width > 52
 
     return (
-      <div className="grid min-h-[21.8rem] overflow-hidden rounded-md border border-slate-200 bg-white lg:grid-cols-[minmax(0,1fr)_13rem]">
+      <div className="grid min-h-[21.8rem] overflow-hidden rounded-md border border-slate-200 bg-white lg:h-[23rem] lg:grid-cols-[minmax(0,1fr)_16rem]">
         <div className="relative min-h-[17rem] bg-slate-50 p-4">
           <div className="flex items-center justify-between border-b border-slate-200 pb-3">
-            <div className="flex gap-1.5">
-              <span className="size-2 rounded-full bg-slate-300" />
-              <span className="size-2 rounded-full bg-slate-300" />
-              <span className="size-2 rounded-full bg-slate-300" />
+            <div className="flex items-center gap-2">
+              <div className="flex gap-1.5">
+                <span className="size-2 rounded-full bg-slate-300" />
+                <span className="size-2 rounded-full bg-slate-300" />
+                <span className="size-2 rounded-full bg-slate-300" />
+              </div>
+              <span className={cn("rounded-full px-2 py-0.5 text-[9px] font-semibold uppercase tracking-[0.1em]", agentMode === "design" ? "bg-slate-100 text-slate-500" : "bg-askewly-mint/40 text-askewly-violet")}>
+                {agentMode === "design" ? "Static" : "Interactive"}
+              </span>
             </div>
             <p className="font-mono text-[10px] uppercase tracking-[0.16em] text-slate-400">Design canvas</p>
           </div>
@@ -904,23 +931,68 @@ function AtlasDemo({ id }: { id: AtlasItemId }) {
           </div>
         </div>
 
-        <div className="flex flex-col border-t border-slate-200 bg-white p-4 lg:border-l lg:border-t-0">
-          <p className="font-mono text-[10px] font-semibold uppercase tracking-[0.16em] text-slate-400">Agent Context</p>
-          <div className="mt-4 space-y-2">
-            {["DESIGN.md", "Tokens", "Patterns", "Checks"].map((item, index) => (
-              <button key={item} className={cn("flex w-full items-center justify-between rounded border px-3 py-2 text-left transition", agentContext === item ? "border-askewly-violet bg-askewly-lavender/15" : "border-slate-200 bg-slate-50 hover:border-askewly-lavender")} type="button" onClick={() => setAgentContext(item as typeof agentContext)}>
-                <span className="text-xs font-semibold text-slate-700">{item}</span>
-                <span className={cn("size-1.5 rounded-full", index < 3 ? "bg-askewly-violet" : "bg-askewly-mint")} />
+        <div className="flex min-h-0 flex-col border-t border-slate-200 bg-white lg:border-l lg:border-t-0">
+          <div className="flex items-center justify-between border-b border-slate-200 px-4 py-3">
+            <p className="text-xs font-semibold text-slate-950">Canvas agent</p>
+            <span className="inline-flex items-center gap-1.5 rounded-full bg-askewly-mint/40 px-2 py-0.5 text-[9px] font-semibold text-askewly-violet">
+              <span className="size-1.5 rounded-full bg-askewly-violet" />
+              Claude Code
+            </span>
+          </div>
+
+          <div className="flex flex-wrap gap-1 px-4 pt-3">
+            {(["DESIGN.md", "Tokens", "Patterns", "Checks"] as const).map((item) => (
+              <button
+                key={item}
+                className={cn("rounded-full border px-2 py-0.5 text-[9px] font-semibold transition", agentContext === item ? "border-askewly-violet bg-askewly-lavender/20 text-askewly-violet" : "border-slate-200 bg-slate-50 text-slate-500 hover:border-askewly-lavender")}
+                type="button"
+                title={contextCopy[item]}
+                onClick={() => setAgentContext(item)}
+              >
+                {item}
               </button>
             ))}
           </div>
-          <p className="mt-3 min-h-[4rem] rounded border border-slate-200 bg-slate-50 p-3 text-xs leading-5 text-slate-600">{contextCopy[agentContext]}</p>
-          <div className="mt-auto grid gap-2 pt-4">
-            <button className={cn("rounded-full px-2 py-1 text-center font-semibold uppercase leading-none tracking-[0.08em] transition", codexPacked ? "bg-askewly-violet text-white" : "bg-slate-950 text-white hover:bg-slate-800")} style={{ fontSize: "8px" }} type="button" onClick={() => setCodexPacked((value) => !value)}>
-              {codexPacked ? "Context packed" : "Ready for Codex"}
+
+          <div ref={agentChatRef} className="flex min-h-[7rem] flex-1 flex-col gap-2 overflow-y-auto px-4 py-3">
+            {agentChat.map((message, index) => (
+              <div key={index} className={cn("flex", message.role === "you" ? "justify-end" : "justify-start")}>
+                <span
+                  className={cn(
+                    "max-w-[88%] rounded-lg px-2.5 py-1.5 text-[11px] leading-4",
+                    message.role === "you" ? "bg-askewly-violet text-white" : "border border-slate-200 bg-slate-50 text-slate-700",
+                  )}
+                >
+                  {message.text}
+                </span>
+              </div>
+            ))}
+          </div>
+
+          <div className="flex items-center gap-1.5 border-t border-slate-200 px-3 py-2">
+            <input
+              className="min-w-0 flex-1 bg-transparent text-[11px] text-slate-700 outline-none placeholder:text-slate-400"
+              placeholder="Message the canvas agent…"
+              value={agentInput}
+              onChange={(event) => setAgentInput(event.target.value)}
+              onKeyDown={(event) => {
+                if (event.key === "Enter") {
+                  event.preventDefault()
+                  sendAgentMessage()
+                }
+              }}
+            />
+            <button className="shrink-0 rounded-md bg-slate-950 px-2 py-1 text-[10px] font-semibold text-white transition hover:bg-slate-800 disabled:opacity-40" type="button" disabled={!agentInput.trim()} onClick={sendAgentMessage}>
+              Send
             </button>
-            <button className={cn("rounded-full border px-2 py-1 text-center font-semibold uppercase leading-none tracking-[0.08em] transition", browserChecked ? "border-askewly-violet bg-askewly-lavender/15 text-askewly-violet" : "border-slate-200 bg-white text-slate-500 hover:border-askewly-lavender")} style={{ fontSize: "8px" }} type="button" onClick={() => setBrowserChecked((value) => !value)}>
-              {browserChecked ? "Browser checked" : "Run browser check"}
+          </div>
+
+          <div className="grid grid-cols-2 gap-1.5 border-t border-slate-200 px-3 py-2.5">
+            <button className={cn("rounded-md px-2 py-1.5 text-center text-[9px] font-semibold uppercase leading-none tracking-[0.06em] transition", codexPacked ? "bg-askewly-violet text-white" : "bg-slate-950 text-white hover:bg-slate-800")} type="button" onClick={() => setCodexPacked((value) => !value)}>
+              {codexPacked ? "Handed to Codex" : "Hand off → Codex"}
+            </button>
+            <button className={cn("rounded-md border px-2 py-1.5 text-center text-[9px] font-semibold uppercase leading-none tracking-[0.06em] transition", browserChecked ? "border-askewly-violet bg-askewly-lavender/15 text-askewly-violet" : "border-slate-200 bg-white text-slate-500 hover:border-askewly-lavender")} type="button" onClick={() => setBrowserChecked((value) => !value)}>
+              {browserChecked ? "Handed to Claude" : "Hand off → Claude"}
             </button>
           </div>
         </div>
