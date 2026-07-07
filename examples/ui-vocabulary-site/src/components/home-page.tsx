@@ -204,15 +204,15 @@ const atlasIconMap = {
 
 export function HomePage({ onNavigate, onSearch, filter, terms }: HomePageProps) {
   return (
-    <div className="bg-white text-slate-950">
-      <section className="relative isolate overflow-hidden bg-white px-4 pb-10 pt-14 md:px-8 md:pb-14 md:pt-20 lg:px-10">
-        <div className="pointer-events-none absolute inset-0 -z-10 bg-white" />
+    <div className="bg-background text-foreground">
+      <section className="relative isolate overflow-hidden bg-background px-4 pb-10 pt-14 md:px-8 md:pb-14 md:pt-20 lg:px-10">
+        <div className="pointer-events-none absolute inset-0 -z-10 bg-background" />
         <FloatingField />
         <div className="relative z-30 mx-auto flex max-w-[1180px] min-w-0 flex-col items-center">
-          <h1 className="mt-4 text-center text-[clamp(3.5rem,16vw,8rem)] font-semibold leading-[0.9] tracking-normal text-slate-950">
+          <h1 className="mt-4 text-center text-[clamp(3.5rem,16vw,8rem)] font-semibold leading-[0.9] tracking-normal text-foreground">
             Askewly Design
           </h1>
-          <p className="mt-7 w-full max-w-2xl text-center text-base leading-7 text-slate-600 sm:text-lg sm:leading-8 md:text-xl">
+          <p className="mt-7 w-full max-w-2xl text-center text-base leading-7 text-muted-foreground sm:text-lg sm:leading-8 md:text-xl">
             A visual library and agent-ready system for
             <br className="hidden md:inline" /> designing better product interfaces.
           </p>
@@ -222,7 +222,7 @@ export function HomePage({ onNavigate, onSearch, filter, terms }: HomePageProps)
               Get Started
               <ArrowRight aria-hidden="true" className="size-4" />
             </Button>
-            <Button className="h-11 rounded-full border-slate-300 bg-white px-6 text-slate-950 hover:bg-slate-50" variant="outline" type="button" onClick={() => onNavigate({ page: "docs", filter: "nav:docs-getting-started-setup" })}>
+            <Button className="h-11 rounded-full border-border bg-background px-6 text-foreground hover:bg-muted" variant="outline" type="button" onClick={() => onNavigate({ page: "docs", filter: "nav:docs-getting-started-setup" })}>
               Open Docs
             </Button>
           </div>
@@ -495,15 +495,15 @@ function Footer({ onNavigate }: { onNavigate: HomePageProps["onNavigate"] }) {
 
 function ShowcaseAtlas() {
   return (
-    <div className="mt-16 w-full text-slate-950">
+    <div className="mt-16 w-full text-foreground">
       <div className="flex flex-col gap-4 md:flex-row md:items-end md:justify-between">
         <div>
           <p className="font-mono text-xs font-semibold uppercase tracking-[0.22em] text-askewly-violet">Why Askewly Design?</p>
-          <h2 className="mt-4 max-w-3xl text-4xl font-semibold tracking-normal text-slate-950 md:text-6xl">
+          <h2 className="mt-4 max-w-3xl text-4xl font-semibold tracking-normal text-foreground md:text-6xl">
             From visual taste to working UI.
           </h2>
         </div>
-        <p className="max-w-md text-base leading-7 text-slate-600">
+        <p className="max-w-md text-base leading-7 text-muted-foreground">
           Askewly Design turns interaction, layout, motion, and implementation rules into a system that humans can browse and coding agents can use.
         </p>
       </div>
@@ -520,7 +520,7 @@ function AtlasCard({ item }: { item: (typeof atlasItems)[number] }) {
   return (
     <article
       className={cn(
-        "group flex h-full min-w-0 flex-col overflow-hidden rounded-md border border-slate-200 bg-white shadow-sm transition hover:-translate-y-0.5 hover:border-askewly-lavender hover:shadow-[0_18px_50px_rgba(15,23,42,0.08)]",
+        "group flex h-full min-w-0 flex-col overflow-hidden rounded-md border border-border bg-card shadow-sm transition hover:-translate-y-0.5 hover:border-askewly-lavender hover:shadow-[0_18px_50px_rgba(15,23,42,0.08)]",
         item.layout,
       )}
     >
@@ -529,16 +529,16 @@ function AtlasCard({ item }: { item: (typeof atlasItems)[number] }) {
           <LineArtIcon id={item.id} />
         </div>
         <div className="min-w-0">
-          <h3 className="text-2xl font-semibold tracking-normal text-slate-950">{item.title}</h3>
-          <p className="mt-2 text-sm leading-6 text-slate-600">{item.copy}</p>
+          <h3 className="text-2xl font-semibold tracking-normal text-card-foreground">{item.title}</h3>
+          <p className="mt-2 text-sm leading-6 text-muted-foreground">{item.copy}</p>
         </div>
         {item.id === "filters" && (
-          <div className="hidden rounded border border-slate-200 bg-slate-50 p-3 font-mono text-[10px] uppercase tracking-[0.14em] text-slate-500 lg:block">
+          <div className="hidden rounded border border-border bg-muted p-3 font-mono text-[10px] uppercase tracking-[0.14em] text-muted-foreground lg:block">
             Treatment strip / wide editorial surface
           </div>
         )}
       </div>
-      <div className="flex flex-1 flex-col border-t border-slate-200 bg-slate-50 p-5">
+      <div className="flex flex-1 flex-col border-t border-border bg-slate-50 p-5">
         <AtlasDemo id={item.id} />
       </div>
     </article>
@@ -549,7 +549,7 @@ function LineArtIcon({ id }: { id: AtlasItemId }) {
   const Icon = atlasIconMap[id]
 
   return (
-    <span className="flex h-16 w-20 shrink-0 items-start justify-center text-slate-950">
+    <span className="flex h-16 w-20 shrink-0 items-start justify-center text-card-foreground">
       <Icon aria-hidden="true" className="mt-1 size-11" strokeWidth={1.75} absoluteStrokeWidth />
     </span>
   )
@@ -1660,15 +1660,15 @@ function HeroSearch({
 
   return (
     <div ref={rootRef} className="relative mt-7 w-full max-w-2xl">
-      <div className="flex items-center gap-3 rounded-md border border-slate-200 bg-white px-4 py-3 text-left shadow-sm transition focus-within:border-askewly-orchid focus-within:ring-2 focus-within:ring-askewly-violet/20">
-        <Search aria-hidden="true" className="size-4 shrink-0 text-slate-400" />
+      <div className="flex items-center gap-3 rounded-md border border-border bg-card px-4 py-3 text-left shadow-sm transition focus-within:border-askewly-orchid focus-within:ring-2 focus-within:ring-askewly-violet/20">
+        <Search aria-hidden="true" className="size-4 shrink-0 text-muted-foreground" />
         <input
           ref={inputRef}
           aria-autocomplete="list"
           aria-expanded={open}
           aria-label="Askewly Design 검색"
           autoComplete="off"
-          className="min-w-0 flex-1 bg-transparent text-sm text-slate-700 outline-none placeholder:text-slate-500"
+          className="min-w-0 flex-1 bg-transparent text-sm text-foreground outline-none placeholder:text-muted-foreground"
           placeholder="Search patterns, components, docs, and examples..."
           value={draftQuery}
           onChange={(event) => {
@@ -1680,7 +1680,7 @@ function HeroSearch({
           onKeyDown={handleKeyDown}
         />
         <button
-          className="hidden rounded border border-slate-200 bg-slate-50 px-2 py-1 text-xs font-semibold text-slate-500 transition hover:border-askewly-lavender hover:text-askewly-violet sm:inline"
+          className="hidden rounded border border-border bg-muted px-2 py-1 text-xs font-semibold text-muted-foreground transition hover:border-askewly-lavender hover:text-askewly-violet sm:inline"
           type="button"
           onClick={() => commitQuery()}
         >
@@ -1688,8 +1688,8 @@ function HeroSearch({
         </button>
       </div>
       {open && (
-        <div className="absolute left-0 right-0 top-full z-20 mt-2 overflow-hidden rounded-md border border-slate-200 bg-white p-2 text-left shadow-xl shadow-slate-950/10">
-          <p className="px-2 py-2 text-xs font-semibold uppercase tracking-[0.14em] text-slate-400">
+        <div className="absolute left-0 right-0 top-full z-20 mt-2 overflow-hidden rounded-md border border-border bg-popover p-2 text-left shadow-xl shadow-slate-950/10">
+          <p className="px-2 py-2 text-xs font-semibold uppercase tracking-[0.14em] text-muted-foreground">
             {draftQuery.trim() ? "Suggested results" : "Quick search"}
           </p>
           <div className="flex max-h-72 flex-col gap-1 overflow-y-auto">
@@ -1698,7 +1698,7 @@ function HeroSearch({
                 key={suggestion.id}
                 className={cn(
                   "flex min-w-0 items-start gap-3 rounded-md px-3 py-2 text-left transition",
-                  index === activeIndex ? "bg-askewly-lavender/15 text-slate-950" : "hover:bg-slate-50",
+                  index === activeIndex ? "bg-askewly-lavender/15 text-foreground" : "hover:bg-muted",
                 )}
                 type="button"
                 onMouseEnter={() => setActiveIndex(index)}
@@ -1706,10 +1706,10 @@ function HeroSearch({
               >
                 <Search aria-hidden="true" className="mt-1 size-4 shrink-0 text-askewly-violet" />
                 <span className="min-w-0 flex-1">
-                  <span className="block truncate text-sm font-semibold text-slate-950">{suggestion.label}</span>
-                  <span className="block truncate text-xs leading-5 text-slate-500">{suggestion.description}</span>
+                  <span className="block truncate text-sm font-semibold text-foreground">{suggestion.label}</span>
+                  <span className="block truncate text-xs leading-5 text-muted-foreground">{suggestion.description}</span>
                 </span>
-                <ArrowRight aria-hidden="true" className="mt-1 size-4 shrink-0 text-slate-400" />
+                <ArrowRight aria-hidden="true" className="mt-1 size-4 shrink-0 text-muted-foreground" />
               </button>
             ))}
           </div>

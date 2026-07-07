@@ -1254,3 +1254,60 @@ select {
     box-shadow: none !important;
   }
 }
+
+/* Dark theme overrides for the landing floating field (site theme toggle — PSS2 Step 11b) */
+.dark .floating-grid-field {
+  filter: invert(1);
+  opacity: 0.22;
+}
+
+.dark .floating-block {
+  box-shadow: 0 12px 38px rgba(0, 0, 0, 0.45);
+}
+
+.dark .floating-block-deep {
+  --block-fill: rgba(248, 250, 252, 0.92);
+  --block-outline: rgba(248, 250, 252, 0.85);
+}
+
+.dark .floating-block-mid {
+  --block-fill: rgba(248, 250, 252, 0.66);
+  --block-outline: rgba(248, 250, 252, 0.6);
+}
+
+.dark .floating-block-soft {
+  --block-fill: rgba(248, 250, 252, 0.2);
+  --block-outline: rgba(248, 250, 252, 0.22);
+}
+
+.dark .floating-block-pale {
+  --block-fill: rgba(248, 250, 252, 0.1);
+  --block-outline: rgba(248, 250, 252, 0.12);
+}
+
+.dark .floating-block::after {
+  background: radial-gradient(
+    circle 48px at var(--cursor-x, 50%) var(--cursor-y, 50%),
+    color-mix(in oklab, var(--background) 96%, transparent) 0 58%,
+    color-mix(in oklab, var(--background) 0%, transparent) 60%
+  );
+}
+
+.dark .floating-field-fade {
+  background: linear-gradient(
+    to bottom,
+    color-mix(in oklab, var(--background) 0%, transparent),
+    color-mix(in oklab, var(--background) 92%, transparent) 46%,
+    var(--background) 82%
+  );
+}
+
+.dark .inverted-section-fade {
+  background: linear-gradient(
+    to bottom,
+    var(--background) 0%,
+    color-mix(in oklab, var(--background) 92%, transparent) 24%,
+    color-mix(in oklab, var(--background) 50%, transparent) 62%,
+    color-mix(in oklab, var(--background) 0%, transparent) 100%
+  );
+}

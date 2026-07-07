@@ -73,6 +73,23 @@ function App() {
   const [activeUseCaseId, setActiveUseCaseId] = useState<string | null>(null)
   const [searchExpanded, setSearchExpanded] = useState(false)
   const [topbarFeedback, setTopbarFeedback] = useState("")
+  const [siteTheme, setSiteTheme] = useState<PreviewTheme>(() => {
+    if (typeof window === "undefined") {
+      return "system"
+    }
+    const stored = window.localStorage.getItem("askewly-theme")
+    return stored === "light" || stored === "dark" ? stored : "system"
+  })
+  const systemSiteTheme = useSystemPreviewTheme()
+  useEffect(() => {
+    const resolved = siteTheme === "system" ? systemSiteTheme : siteTheme
+    document.documentElement.classList.toggle("dark", resolved === "dark")
+    if (siteTheme === "system") {
+      window.localStorage.removeItem("askewly-theme")
+    } else {
+      window.localStorage.setItem("askewly-theme", siteTheme)
+    }
+  }, [siteTheme, systemSiteTheme])
   const activeUseCase = useMemo(() => useCases.find((item) => item.id === activeUseCaseId) ?? null, [activeUseCaseId])
   const selectedTerm = useMemo(() => terms.find((term) => term.id === selectedTermId) ?? null, [selectedTermId])
   const baseSearchResults = useMemo(() => searchTerms(terms, query, filter), [query, filter])
@@ -438,6 +455,7 @@ function App() {
                   onFilterChange={updateFilter}
                   onQueryChange={updateQuery}
                 />
+                <SiteThemeToggle activeTheme={siteTheme} onThemeChange={setSiteTheme} />
                 <div className="hidden items-center gap-4 text-sm font-medium text-foreground xl:flex">
                   {siteTopNav.map((item) => (
                     <button
@@ -2049,6 +2067,29 @@ function useSystemPreviewTheme(): ResolvedPreviewTheme {
   }, [])
 
   return systemTheme
+}
+
+function SiteThemeToggle({ activeTheme, onThemeChange }: { activeTheme: PreviewTheme; onThemeChange: (theme: PreviewTheme) => void }) {
+  return (
+    <div className="inline-flex rounded-full bg-muted p-0.5 text-muted-foreground ring-1 ring-border" role="group" aria-label="Site theme">
+      {([
+        ["system", Monitor, "System theme"],
+        ["light", Sun, "Light theme"],
+        ["dark", Moon, "Dark theme"],
+      ] as const).map(([theme, Icon, label]) => (
+        <button
+          key={theme}
+          aria-label={label}
+          aria-pressed={activeTheme === theme}
+          className={cn("grid size-7 place-items-center rounded-full transition", activeTheme === theme ? "bg-background text-foreground shadow-sm ring-1 ring-border" : "hover:text-foreground")}
+          type="button"
+          onClick={() => onThemeChange(theme)}
+        >
+          <Icon aria-hidden="true" className={cn("size-3.5", theme === "system" && "scale-90")} />
+        </button>
+      ))}
+    </div>
+  )
 }
 
 function PreviewThemeToggle({ activeTheme, onThemeChange }: { activeTheme: PreviewTheme; onThemeChange: (theme: PreviewTheme) => void }) {
