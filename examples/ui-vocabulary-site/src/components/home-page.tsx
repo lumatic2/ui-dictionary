@@ -556,6 +556,7 @@ function LineArtIcon({ id }: { id: AtlasItemId }) {
 }
 
 function AtlasDemo({ id }: { id: AtlasItemId }) {
+  const prefersReducedMotion = usePrefersReducedMotion()
   const [filter, setFilter] = useState(62)
   const [shaderMix, setShaderMix] = useState(58)
   const [materialDepth, setMaterialDepth] = useState(3)
@@ -597,34 +598,34 @@ function AtlasDemo({ id }: { id: AtlasItemId }) {
   const [commandMode, setCommandMode] = useState<"review" | "ship" | "agent">("review")
 
   useEffect(() => {
-    if (id !== "scroll") return
+    if (id !== "scroll" || prefersReducedMotion) return
 
     const timer = window.setInterval(() => {
       setScrollStory((value) => (value + 2) % 101)
     }, 140)
 
     return () => window.clearInterval(timer)
-  }, [id])
+  }, [id, prefersReducedMotion])
 
   useEffect(() => {
-    if (id !== "shader") return
+    if (id !== "shader" || prefersReducedMotion) return
 
     const timer = window.setInterval(() => {
       setShaderMix((value) => (value >= 92 ? 18 : value + 2))
     }, 120)
 
     return () => window.clearInterval(timer)
-  }, [id])
+  }, [id, prefersReducedMotion])
 
   useEffect(() => {
-    if (id !== "filters") return
+    if (id !== "filters" || prefersReducedMotion) return
 
     const timer = window.setInterval(() => {
       setFilter((value) => (value >= 92 ? 34 : value + 3))
     }, 150)
 
     return () => window.clearInterval(timer)
-  }, [id])
+  }, [id, prefersReducedMotion])
 
   useEffect(() => {
     if (id !== "pointer") return
@@ -1321,7 +1322,30 @@ const matterTokenSpecs: MatterTokenSpec[] = [
   { id: "dot", label: "UI", shape: "circle", width: 38, height: 38, className: "border-slate-300 bg-white text-slate-500" },
 ]
 
+function usePrefersReducedMotion() {
+  const [reduced, setReduced] = useState(() =>
+    typeof window !== "undefined" && window.matchMedia
+      ? window.matchMedia("(prefers-reduced-motion: reduce)").matches
+      : false,
+  )
+
+  useEffect(() => {
+    if (typeof window === "undefined" || !window.matchMedia) {
+      return undefined
+    }
+
+    const mediaQuery = window.matchMedia("(prefers-reduced-motion: reduce)")
+    const handleChange = () => setReduced(mediaQuery.matches)
+
+    mediaQuery.addEventListener("change", handleChange)
+    return () => mediaQuery.removeEventListener("change", handleChange)
+  }, [])
+
+  return reduced
+}
+
 function MatterPhysicsDemo() {
+  const prefersReducedMotion = usePrefersReducedMotion()
   const rootRef = useRef<HTMLDivElement | null>(null)
   const engineRef = useRef<Matter.Engine | null>(null)
   const recordsRef = useRef<MatterTokenRecord[]>([])
@@ -1446,7 +1470,9 @@ function MatterPhysicsDemo() {
       frameRef.current = window.requestAnimationFrame(tick)
     }
 
-    frameRef.current = window.requestAnimationFrame(tick)
+    if (!prefersReducedMotion) {
+      frameRef.current = window.requestAnimationFrame(tick)
+    }
 
     return () => {
       observer.disconnect()
@@ -1460,7 +1486,7 @@ function MatterPhysicsDemo() {
       engineRef.current = null
       recordsRef.current = []
     }
-  }, [])
+  }, [prefersReducedMotion])
 
   function updatePointer(event: ReactPointerEvent<HTMLDivElement>) {
     const rect = event.currentTarget.getBoundingClientRect()
