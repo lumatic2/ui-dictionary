@@ -567,19 +567,17 @@ function AtlasDemo({ id }: { id: AtlasItemId }) {
   const [cartCount, setCartCount] = useState(1)
   const [agentMode, setAgentMode] = useState<"design" | "code" | "verify">("design")
   const [agentFrame, setAgentFrame] = useState({ left: 17, top: 20, width: 66, height: 136 })
-  const [agentContext, setAgentContext] = useState<"DESIGN.md" | "Tokens" | "Patterns" | "Checks">("DESIGN.md")
   const [agentSelected, setAgentSelected] = useState(false)
   const [agentResizing, setAgentResizing] = useState(false)
   const [agentMoving, setAgentMoving] = useState(false)
   const [agentPressed, setAgentPressed] = useState(false)
   const [agentChat, setAgentChat] = useState<Array<{ role: "you" | "agent"; text: string }>>([
-    { role: "you", text: "Add a pricing card and bind it to our tokens." },
-    { role: "agent", text: "Placed a Card on the canvas, bound to DESIGN.md tokens. Want it interactive?" },
-    { role: "you", text: "Yes — make the primary button pressable." },
-    { role: "agent", text: "Added a pressed state. Try it on the canvas, then hand it to Codex or Claude." },
+    { role: "agent", text: "Pick a scenario below, or ask me to build something on the canvas." },
   ])
   const [agentInput, setAgentInput] = useState("")
+  const [agentTyping, setAgentTyping] = useState(false)
   const agentChatRef = useRef<HTMLDivElement | null>(null)
+  const scenarioTimersRef = useRef<number[]>([])
   const agentCanvasRef = useRef<HTMLDivElement | null>(null)
   const agentDraggedRef = useRef(false)
   const [cursorField, setCursorField] = useState<CursorFieldCell[]>(() => {
@@ -656,15 +654,17 @@ function AtlasDemo({ id }: { id: AtlasItemId }) {
     if (id !== "agent") return
     const el = agentChatRef.current
     if (el) el.scrollTop = el.scrollHeight
-  }, [id, agentChat])
+  }, [id, agentChat, agentTyping])
+
+  useEffect(() => {
+    if (id !== "agent") return
+    return () => {
+      scenarioTimersRef.current.forEach((timer) => window.clearTimeout(timer))
+      scenarioTimersRef.current = []
+    }
+  }, [id])
 
   if (id === "agent") {
-    const contextCopy = {
-      "DESIGN.md": "North star, tone, typography, and component rules travel with the project.",
-      Tokens: "Color, spacing, radius, shadow, and motion values are exposed as reusable primitives.",
-      Patterns: "Surface recipes explain when to use each layout, state, and interaction model.",
-      Checks: "Browser smoke, responsive passes, and interaction notes become agent-readable proof.",
-    }
     const chooseAgentLayer = (mode: "design" | "code" | "verify") => {
       setAgentMode(mode)
       const width = mode === "design" ? 66 : mode === "code" ? 30 : 56
@@ -679,13 +679,64 @@ function AtlasDemo({ id }: { id: AtlasItemId }) {
       setAgentSelected(false)
       setAgentPressed(false)
     }
+    const agentScenarios = [
+      {
+        key: "hero",
+        label: "Draft a hero",
+        mode: "design" as const,
+        turns: [
+          { role: "you" as const, text: "Draft a landing hero from our system." },
+          { role: "agent" as const, text: "Placing a hero — headline, subcopy, two CTAs, bound to your tokens." },
+          { role: "agent" as const, text: "Done. It's static — want any part interactive?" },
+        ],
+      },
+      {
+        key: "button",
+        label: "Make it interactive",
+        mode: "code" as const,
+        turns: [
+          { role: "you" as const, text: "Make the primary button pressable." },
+          { role: "agent" as const, text: "Added a pressed state to the button on the canvas." },
+          { role: "agent" as const, text: "Click it — the interaction ships with the component." },
+        ],
+      },
+      {
+        key: "review",
+        label: "Review the surface",
+        mode: "verify" as const,
+        turns: [
+          { role: "you" as const, text: "Review this surface before handoff." },
+          { role: "agent" as const, text: "Checked contrast, spacing, and states — all pass." },
+          { role: "agent" as const, text: "Score 92. Ready to hand to Codex or Claude." },
+        ],
+      },
+    ]
+    const playScenario = (scenario: (typeof agentScenarios)[number]) => {
+      scenarioTimersRef.current.forEach((timer) => window.clearTimeout(timer))
+      scenarioTimersRef.current = []
+      chooseAgentLayer(scenario.mode)
+      const [first, ...rest] = scenario.turns
+      setAgentChat([first])
+      if (prefersReducedMotion) {
+        setAgentChat(scenario.turns)
+        return
+      }
+      let delay = 0
+      rest.forEach((turn) => {
+        delay += 620
+        const showAt = delay
+        scenarioTimersRef.current.push(window.setTimeout(() => setAgentTyping(true), Math.max(0, showAt - 320)))
+        scenarioTimersRef.current.push(window.setTimeout(() => {
+          setAgentTyping(false)
+          setAgentChat((log) => [...log, turn])
+        }, showAt))
+      })
+    }
     const sendAgentMessage = () => {
       const text = agentInput.trim()
       if (!text) return
-      const reply = `Updated the canvas from "${text.length > 32 ? `${text.slice(0, 32)}…` : text}" — bound to ${agentContext}. Hand off when ready.`
-      setAgentChat((log) => [...log, { role: "you", text }, { role: "agent", text: reply }])
+      setAgentChat((log) => [...log, { role: "you", text }, { role: "agent", text: "On it — updating the canvas on the left." }])
       setAgentInput("")
-      setAgentSelected(true)
     }
     const startAgentResize = (event: ReactPointerEvent<HTMLSpanElement>, edge: "n" | "e" | "s" | "w" | "nw" | "ne" | "sw" | "se") => {
       event.preventDefault()
@@ -802,22 +853,18 @@ function AtlasDemo({ id }: { id: AtlasItemId }) {
       <div className="grid min-h-[21.8rem] overflow-hidden rounded-md border border-slate-200 bg-white lg:h-[23rem] lg:grid-cols-[minmax(0,1fr)_16rem]">
         <div className="relative min-h-[17rem] bg-slate-50 p-4">
           <div className="flex items-center justify-between border-b border-slate-200 pb-3">
-            <div className="flex items-center gap-2">
-              <div className="flex gap-1.5">
-                <span className="size-2 rounded-full bg-slate-300" />
-                <span className="size-2 rounded-full bg-slate-300" />
-                <span className="size-2 rounded-full bg-slate-300" />
-              </div>
-              <span className={cn("rounded-full px-2 py-0.5 text-[9px] font-semibold uppercase tracking-[0.1em]", agentMode === "design" ? "bg-slate-100 text-slate-500" : "bg-askewly-mint/40 text-askewly-violet")}>
-                {agentMode === "design" ? "Static" : "Interactive"}
-              </span>
+            <div className="flex gap-1.5">
+              <span className="size-2 rounded-full bg-slate-300" />
+              <span className="size-2 rounded-full bg-slate-300" />
+              <span className="size-2 rounded-full bg-slate-300" />
             </div>
             <p className="font-mono text-[10px] uppercase tracking-[0.16em] text-slate-400">Design canvas</p>
           </div>
 
+          <div className="mt-4 overflow-hidden rounded-md border border-slate-200 bg-white">
           <div
             ref={agentCanvasRef}
-            className="relative mt-4 h-56 overflow-hidden rounded border border-slate-200 bg-white"
+            className="relative h-56 overflow-hidden bg-white"
             onPointerDown={(event) => {
               if (!(event.target as HTMLElement).closest("[data-agent-asset='true']")) {
                 setAgentSelected(false)
@@ -920,22 +967,24 @@ function AtlasDemo({ id }: { id: AtlasItemId }) {
               </div>
             </button>
           </div>
-          <div className="mt-3 rounded border border-slate-200 bg-white p-3 shadow-sm">
-            <div className="flex gap-2">
-                <button className={cn("rounded border px-3 py-2 text-xs font-semibold transition", agentMode === "code" ? "border-askewly-violet bg-askewly-lavender/20 text-askewly-violet" : "border-slate-200 bg-white text-slate-500 hover:border-askewly-lavender")} type="button" onClick={() => chooseAgentLayer("code")}>Button</button>
-                <button className={cn("rounded border px-3 py-2 text-xs font-semibold transition", agentMode === "verify" ? "border-askewly-violet bg-askewly-lavender/20 text-askewly-violet" : "border-slate-200 bg-white text-slate-500 hover:border-askewly-lavender")} type="button" onClick={() => chooseAgentLayer("verify")}>Card</button>
-                <button className={cn("rounded border px-3 py-2 text-xs font-semibold transition", agentMode === "design" ? "border-askewly-violet bg-askewly-lavender/20 text-askewly-violet" : "border-slate-200 bg-white text-slate-500 hover:border-askewly-lavender")} type="button" onClick={() => chooseAgentLayer("design")}>Hero</button>
-            </div>
+          <div className="flex gap-1.5 border-t border-slate-200 bg-slate-50/60 p-2">
+            {([["code", "Button"], ["verify", "Card"], ["design", "Hero"]] as const).map(([mode, label]) => (
+              <button
+                key={mode}
+                className={cn("rounded px-2.5 py-1 text-[11px] font-semibold transition", agentMode === mode ? "bg-askewly-lavender/25 text-askewly-violet" : "text-slate-500 hover:bg-slate-100 hover:text-slate-700")}
+                type="button"
+                onClick={() => chooseAgentLayer(mode)}
+              >
+                {label}
+              </button>
+            ))}
+          </div>
           </div>
         </div>
 
         <div className="flex min-h-0 flex-col border-t border-slate-200 bg-white lg:border-l lg:border-t-0">
-          <div className="flex items-center justify-between border-b border-slate-200 px-3 py-2.5">
+          <div className="border-b border-slate-200 px-3 py-2.5">
             <p className="text-[11px] font-semibold text-slate-900">Canvas agent</p>
-            <span className="inline-flex items-center gap-1 text-[10px] font-medium text-slate-400">
-              <span className="size-1.5 rounded-full bg-emerald-500" />
-              Claude Code
-            </span>
           </div>
 
           <div ref={agentChatRef} className="flex min-h-0 flex-1 flex-col gap-2.5 overflow-y-auto px-3 py-3">
@@ -952,9 +1001,28 @@ function AtlasDemo({ id }: { id: AtlasItemId }) {
                 </p>
               )
             ))}
+            {agentTyping && (
+              <span className="inline-flex w-fit gap-0.5 rounded-full bg-slate-100 px-2 py-1.5" aria-label="Agent is typing">
+                <span className="size-1 animate-bounce rounded-full bg-slate-400 [animation-delay:-0.2s]" />
+                <span className="size-1 animate-bounce rounded-full bg-slate-400 [animation-delay:-0.1s]" />
+                <span className="size-1 animate-bounce rounded-full bg-slate-400" />
+              </span>
+            )}
           </div>
 
           <div className="border-t border-slate-200 p-2">
+            <div className="flex flex-wrap gap-1 pb-2">
+              {agentScenarios.map((scenario) => (
+                <button
+                  key={scenario.key}
+                  className="rounded-md border border-slate-200 bg-white px-2 py-1 text-[10px] font-medium text-slate-600 transition hover:border-askewly-lavender hover:text-askewly-violet"
+                  type="button"
+                  onClick={() => playScenario(scenario)}
+                >
+                  {scenario.label}
+                </button>
+              ))}
+            </div>
             <div className="flex items-center gap-1.5 rounded-lg border border-slate-200 bg-slate-50 pl-2.5 pr-1 focus-within:border-askewly-orchid">
               <input
                 className="min-w-0 flex-1 bg-transparent py-1.5 text-[11px] text-slate-700 outline-none placeholder:text-slate-400"
@@ -971,20 +1039,6 @@ function AtlasDemo({ id }: { id: AtlasItemId }) {
               <button className="grid size-6 shrink-0 place-items-center rounded-md bg-askewly-violet text-white transition hover:bg-[#5f22a8] disabled:opacity-30" type="button" aria-label="Send message" disabled={!agentInput.trim()} onClick={sendAgentMessage}>
                 <ArrowUp aria-hidden="true" className="size-3.5" />
               </button>
-            </div>
-            <div className="mt-1.5 flex flex-wrap items-center gap-x-1 gap-y-0.5 px-0.5">
-              <span className="text-[9px] text-slate-400">reads</span>
-              {(["DESIGN.md", "Tokens", "Patterns", "Checks"] as const).map((item) => (
-                <button
-                  key={item}
-                  className={cn("rounded px-1 py-0.5 text-[9px] font-medium transition", agentContext === item ? "bg-askewly-lavender/25 text-askewly-violet" : "text-slate-400 hover:text-slate-600")}
-                  type="button"
-                  title={contextCopy[item]}
-                  onClick={() => setAgentContext(item)}
-                >
-                  {item}
-                </button>
-              ))}
             </div>
           </div>
         </div>

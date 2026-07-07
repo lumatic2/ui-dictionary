@@ -346,7 +346,7 @@ Verification:
 > Step 4~11 = 이제 "폴리싱 패스"(데모 존재 확인됨). 각 항목: 개발 서버 실측 → 품질 이슈(간격·대비·다크모드·모바일 오버플로우) + 제목·설명 카피 [현행→제안] → 반영 → Chrome 재확인.
 
 - [x] Step 0 - Showcase Atlas High-Impact Taxonomy. (verify: build/lint + taxonomy presence)
-- [x] Step 1 - Agent-Ready Design System card polish. (verify: Chrome select/deselect, drag, resize, Button/Card/Hero states — implemented 2026-07-05/06. 2026-07-07 비전 정렬 폴리싱 패스: 우측 파일목록→에이전트 채팅(버블+프롬프트 입력, 컨텍스트 칩, "Claude Code·connected" 양방향 표시), 캔버스 Static/Interactive 태그, Codex/Claude 핸드오프. 채팅 입력 동작·light/dark Chrome 확인)
+- [x] Step 1 - Agent-Ready Design System card polish. (verify: 2026-07-07 비전 정렬 + 품질 재작업 2회. ①우측을 에이전트 채팅으로(cult-ui ai-elements 패턴: assistant 버블無/user 버블, 아이콘 send). ②사용자 피드백 반영: 불필요정보 제거(Static/Interactive 태그·Claude Code 배지·reads 칩), 시나리오 버튼 3개(Draft hero/Make interactive/Review)로 스크립트 대화 연출+캔버스 모드 전환 동기화(타이핑 인디케이터, reduced-motion 가드), Button/Card/Hero 스위처를 캔버스와 아웃라인 공유·버튼 축소. 시나리오 재생·초기상태 Chrome 확인, tsc/lint/build PASS)
 - [x] Step 2 - Cursor-Reactive Field. (verify: pointer movement changes focus/proximity field without layout jitter — implemented and Chrome-verified in 2026-07-05/06 sessions)
 - [x] Step 3 - Physics-Based Interaction. (verify: pointer changes fluid field and nodes stay bounded — implemented as Matter.js rigid-body demo, Chrome-verified, commit 9fd453d)
 - [ ] Step 4 - Scroll-Driven Narrative. (verify: auto progress changes chapter, copy, and layers)
