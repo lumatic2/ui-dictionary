@@ -6,7 +6,6 @@ import {
   useRef,
   useState,
 } from "react"
-import { flushSync } from "react-dom"
 import * as Matter from "matter-js"
 import {
   ArrowRight,
@@ -565,21 +564,16 @@ function AtlasDemo({ id }: { id: AtlasItemId }) {
   const [scrollStory, setScrollStory] = useState(36)
   const [mobileStep, setMobileStep] = useState(0)
   const [cartCount, setCartCount] = useState(1)
-  const [agentMode, setAgentMode] = useState<"design" | "code" | "verify">("design")
-  const [agentFrame, setAgentFrame] = useState({ left: 17, top: 20, width: 66, height: 136 })
-  const [agentSelected, setAgentSelected] = useState(false)
-  const [agentResizing, setAgentResizing] = useState(false)
-  const [agentMoving, setAgentMoving] = useState(false)
-  const [agentPressed, setAgentPressed] = useState(false)
+  const [agentCanvas, setAgentCanvas] = useState({ deslopped: false, squared: false, live: false })
+  const [agentAssembleKey, setAgentAssembleKey] = useState(0)
+  const [agentHeroPressed, setAgentHeroPressed] = useState(false)
   const [agentChat, setAgentChat] = useState<Array<{ role: "you" | "agent"; text: string }>>([
-    { role: "agent", text: "Pick a scenario below, or ask me to build something on the canvas." },
+    { role: "agent", text: "This card looks like generic AI output. Pick a scenario and I'll rebuild it on the canvas." },
   ])
   const [agentInput, setAgentInput] = useState("")
   const [agentTyping, setAgentTyping] = useState(false)
   const agentChatRef = useRef<HTMLDivElement | null>(null)
   const scenarioTimersRef = useRef<number[]>([])
-  const agentCanvasRef = useRef<HTMLDivElement | null>(null)
-  const agentDraggedRef = useRef(false)
   const [cursorField, setCursorField] = useState<CursorFieldCell[]>(() => {
     const cells: CursorFieldCell[] = []
     const columns = 24
@@ -665,72 +659,71 @@ function AtlasDemo({ id }: { id: AtlasItemId }) {
   }, [id])
 
   if (id === "agent") {
-    const chooseAgentLayer = (mode: "design" | "code" | "verify") => {
-      setAgentMode(mode)
-      const width = mode === "design" ? 66 : mode === "code" ? 30 : 56
-      const height = mode === "design" ? 136 : mode === "code" ? 46 : 132
-      setAgentFrame((frame) => ({
-        ...frame,
-        left: (100 - width) / 2,
-        top: ((224 - height) / 2 / 224) * 100,
-        width,
-        height,
-      }))
-      setAgentSelected(false)
-      setAgentPressed(false)
-    }
     const agentScenarios = [
       {
-        key: "hero",
-        label: "Draft a hero",
-        mode: "design" as const,
+        key: "deslop",
+        label: "De-slop this",
+        patch: { deslopped: true } as Partial<typeof agentCanvas>,
         turns: [
-          { role: "you" as const, text: "Draft a landing hero from our system." },
-          { role: "agent" as const, text: "Placing a hero — headline, subcopy, two CTAs, bound to your tokens." },
-          { role: "agent" as const, text: "Done. It's static — want any part interactive?" },
+          { role: "you" as const, text: "This looks like generic AI output. Fix it." },
+          { role: "agent" as const, text: "Rebuilding with your tokens — real hierarchy, no gradient wash." },
+          { role: "agent" as const, text: "Reassembled into a clean Askewly card." },
         ],
       },
       {
-        key: "button",
-        label: "Make it interactive",
-        mode: "code" as const,
+        key: "radius",
+        label: "Fix the radius",
+        patch: { squared: true } as Partial<typeof agentCanvas>,
         turns: [
-          { role: "you" as const, text: "Make the primary button pressable." },
-          { role: "agent" as const, text: "Added a pressed state to the button on the canvas." },
-          { role: "agent" as const, text: "Click it — the interaction ships with the component." },
+          { role: "you" as const, text: "Those full-pill buttons break our system." },
+          { role: "agent" as const, text: "Snapping corners to your 8px radius token." },
+          { role: "agent" as const, text: "Matches DESIGN.md now — no more pills." },
         ],
       },
       {
-        key: "review",
-        label: "Review the surface",
-        mode: "verify" as const,
+        key: "live",
+        label: "Make it live",
+        patch: { live: true } as Partial<typeof agentCanvas>,
         turns: [
-          { role: "you" as const, text: "Review this surface before handoff." },
-          { role: "agent" as const, text: "Checked contrast, spacing, and states — all pass." },
-          { role: "agent" as const, text: "Score 92. Ready to hand to Codex or Claude." },
+          { role: "you" as const, text: "Make the primary button actually work." },
+          { role: "agent" as const, text: "Wiring a real pressed state — try clicking it." },
+          { role: "agent" as const, text: "It's interactive now and ships as a component." },
         ],
       },
     ]
     const playScenario = (scenario: (typeof agentScenarios)[number]) => {
       scenarioTimersRef.current.forEach((timer) => window.clearTimeout(timer))
       scenarioTimersRef.current = []
-      chooseAgentLayer(scenario.mode)
       const [first, ...rest] = scenario.turns
       setAgentChat([first])
+      const applyPatch = () => {
+        setAgentCanvas((canvas) => ({ ...canvas, ...scenario.patch }))
+        setAgentAssembleKey((key) => key + 1)
+      }
       if (prefersReducedMotion) {
         setAgentChat(scenario.turns)
+        applyPatch()
         return
       }
+      scenarioTimersRef.current.push(window.setTimeout(applyPatch, 700))
       let delay = 0
       rest.forEach((turn) => {
-        delay += 620
+        delay += 640
         const showAt = delay
-        scenarioTimersRef.current.push(window.setTimeout(() => setAgentTyping(true), Math.max(0, showAt - 320)))
+        scenarioTimersRef.current.push(window.setTimeout(() => setAgentTyping(true), Math.max(0, showAt - 340)))
         scenarioTimersRef.current.push(window.setTimeout(() => {
           setAgentTyping(false)
           setAgentChat((log) => [...log, turn])
         }, showAt))
       })
+    }
+    const resetCanvas = () => {
+      scenarioTimersRef.current.forEach((timer) => window.clearTimeout(timer))
+      scenarioTimersRef.current = []
+      setAgentCanvas({ deslopped: false, squared: false, live: false })
+      setAgentHeroPressed(false)
+      setAgentAssembleKey((key) => key + 1)
+      setAgentChat([{ role: "agent", text: "Back to the raw AI-slop card. Pick a scenario to rebuild it." }])
     }
     const sendAgentMessage = () => {
       const text = agentInput.trim()
@@ -738,116 +731,7 @@ function AtlasDemo({ id }: { id: AtlasItemId }) {
       setAgentChat((log) => [...log, { role: "you", text }, { role: "agent", text: "On it — updating the canvas on the left." }])
       setAgentInput("")
     }
-    const startAgentResize = (event: ReactPointerEvent<HTMLSpanElement>, edge: "n" | "e" | "s" | "w" | "nw" | "ne" | "sw" | "se") => {
-      event.preventDefault()
-      event.stopPropagation()
-      flushSync(() => {
-        setAgentSelected(true)
-        setAgentResizing(true)
-      })
-
-      const canvas = agentCanvasRef.current
-      if (!canvas) return
-
-      const rect = canvas.getBoundingClientRect()
-      const start = agentFrame
-      const startX = event.clientX
-      const startY = event.clientY
-      const minWidth = agentMode === "code" ? 16 : 24
-      const maxWidth = 78
-      const minHeight = agentMode === "code" ? 24 : 54
-      const maxHeight = 172
-      const maxLeft = 76
-      const maxTop = 45
-
-      const onPointerMove = (moveEvent: PointerEvent) => {
-        const dxPercent = ((moveEvent.clientX - startX) / rect.width) * 100
-        const dyPx = moveEvent.clientY - startY
-
-        setAgentFrame(() => {
-          let nextLeft = start.left
-          let nextTop = start.top
-          let nextWidth = start.width
-          let nextHeight = start.height
-
-          if (edge.includes("e")) {
-            nextWidth = Math.min(maxWidth, Math.max(minWidth, start.width + dxPercent))
-          }
-          if (edge.includes("s")) {
-            nextHeight = Math.min(maxHeight, Math.max(minHeight, start.height + dyPx))
-          }
-          if (edge.includes("w")) {
-            const right = start.left + start.width
-            nextLeft = Math.min(maxLeft, Math.max(4, start.left + dxPercent))
-            nextWidth = Math.min(maxWidth, Math.max(minWidth, right - nextLeft))
-            nextLeft = right - nextWidth
-          }
-          if (edge.includes("n")) {
-            const bottom = start.top * rect.height / 100 + start.height
-            const nextTopPx = Math.min((maxTop / 100) * rect.height, Math.max(4, (start.top / 100) * rect.height + dyPx))
-            nextHeight = Math.min(maxHeight, Math.max(minHeight, bottom - nextTopPx))
-            nextTop = ((bottom - nextHeight) / rect.height) * 100
-          }
-
-          return { left: nextLeft, top: nextTop, width: nextWidth, height: nextHeight }
-        })
-      }
-
-      const onPointerUp = () => {
-        setAgentResizing(false)
-        window.removeEventListener("pointermove", onPointerMove)
-        window.removeEventListener("pointerup", onPointerUp)
-      }
-
-      window.addEventListener("pointermove", onPointerMove)
-      window.addEventListener("pointerup", onPointerUp, { once: true })
-    }
-    const startAgentMove = (event: ReactPointerEvent<HTMLButtonElement>) => {
-      if ((event.target as HTMLElement).closest("[data-resize-edge]")) return
-      flushSync(() => {
-        setAgentSelected(true)
-        setAgentMoving(false)
-      })
-
-      const canvas = agentCanvasRef.current
-      if (!canvas) return
-
-      const rect = canvas.getBoundingClientRect()
-      const start = agentFrame
-      const startX = event.clientX
-      const startY = event.clientY
-      agentDraggedRef.current = false
-
-      const onPointerMove = (moveEvent: PointerEvent) => {
-        const dx = moveEvent.clientX - startX
-        const dy = moveEvent.clientY - startY
-        if (Math.hypot(dx, dy) > 3) {
-          agentDraggedRef.current = true
-          setAgentMoving(true)
-        }
-        const dxPercent = (dx / rect.width) * 100
-        const dyPercent = (dy / rect.height) * 100
-
-        setAgentFrame(() => ({
-          ...start,
-          left: Math.min(96 - start.width, Math.max(4, start.left + dxPercent)),
-          top: Math.min(88 - (start.height / rect.height) * 100, Math.max(4, start.top + dyPercent)),
-        }))
-      }
-
-      const onPointerUp = () => {
-        setAgentMoving(false)
-        window.removeEventListener("pointermove", onPointerMove)
-        window.removeEventListener("pointerup", onPointerUp)
-      }
-
-      window.addEventListener("pointermove", onPointerMove)
-      window.addEventListener("pointerup", onPointerUp, { once: true })
-    }
-    const isTinyAsset = agentFrame.width < 28 || agentFrame.height < 54
-    const isCompactAsset = agentFrame.width < 46 || agentFrame.height < 112
-    const isTallAsset = agentFrame.height > 138
-    const isWideAsset = agentFrame.width > 52
+    const ctaRadius = agentCanvas.squared ? "rounded-lg" : "rounded-full"
 
     return (
       <div className="grid min-h-[21.8rem] overflow-hidden rounded-md border border-slate-200 bg-white lg:h-[23rem] lg:grid-cols-[minmax(0,1fr)_16rem]">
@@ -858,127 +742,60 @@ function AtlasDemo({ id }: { id: AtlasItemId }) {
               <span className="size-2 rounded-full bg-slate-300" />
               <span className="size-2 rounded-full bg-slate-300" />
             </div>
-            <p className="font-mono text-[10px] uppercase tracking-[0.16em] text-slate-400">Design canvas</p>
+            <div className="flex items-center gap-2">
+              {(agentCanvas.deslopped || agentCanvas.squared || agentCanvas.live) && (
+                <button className="text-[10px] font-medium text-slate-400 transition hover:text-askewly-violet" type="button" onClick={resetCanvas}>Reset</button>
+              )}
+              <p className="font-mono text-[10px] uppercase tracking-[0.16em] text-slate-400">Design canvas</p>
+            </div>
           </div>
 
-          <div className="mt-4 overflow-hidden rounded-md border border-slate-200 bg-white">
-          <div
-            ref={agentCanvasRef}
-            className="relative h-56 overflow-hidden bg-white"
-            onPointerDown={(event) => {
-              if (!(event.target as HTMLElement).closest("[data-agent-asset='true']")) {
-                setAgentSelected(false)
-              }
-            }}
-          >
-            <div className="absolute inset-0 bg-[linear-gradient(90deg,rgba(15,23,42,0.04)_1px,transparent_1px),linear-gradient(rgba(15,23,42,0.04)_1px,transparent_1px)] bg-[size:28px_28px]" />
-            <button
+          <div className="mt-4 grid h-56 place-items-center overflow-hidden rounded-md border border-slate-200 bg-white bg-[linear-gradient(90deg,rgba(15,23,42,0.03)_1px,transparent_1px),linear-gradient(rgba(15,23,42,0.03)_1px,transparent_1px)] bg-[size:28px_28px] p-5">
+            <div
+              key={agentAssembleKey}
               className={cn(
-                "absolute overflow-visible rounded bg-white text-left shadow-sm transition-[box-shadow,border-color] hover:shadow-md focus:outline-none",
-                agentSelected ? "border-2 border-askewly-violet" : "border border-slate-200",
-                agentMode === "code" && "rounded-md",
-                (agentResizing || agentMoving) && "border-2 border-askewly-violet shadow-[0_0_0_3px_rgba(111,45,189,0.18),0_12px_30px_rgba(111,45,189,0.16)]",
+                "w-full max-w-[19rem] overflow-hidden text-left shadow-sm transition-all duration-500 motion-safe:animate-[agentAssemble_460ms_ease-out]",
+                agentCanvas.squared ? "rounded-lg" : "rounded-2xl",
+                agentCanvas.deslopped ? "border border-slate-200 bg-white" : "border border-transparent bg-[linear-gradient(135deg,#6366f1,#a855f7)]",
               )}
-              style={{
-                left: `${agentFrame.left}%`,
-                top: `${agentFrame.top}%`,
-                width: `${agentFrame.width}%`,
-                height: `${agentFrame.height}px`,
-                borderColor: agentSelected || agentResizing || agentMoving ? "var(--askewly-violet)" : undefined,
-                boxShadow: agentResizing || agentMoving ? "0 0 0 3px rgba(111,45,189,0.18), 0 12px 30px rgba(111,45,189,0.16)" : undefined,
-                cursor: agentMoving ? "grabbing" : "grab",
-              }}
-              data-agent-asset="true"
-              type="button"
-              onPointerDown={startAgentMove}
-              onClick={() => {
-                if (agentDraggedRef.current) {
-                  agentDraggedRef.current = false
-                  return
-                }
-                setAgentSelected(true)
-                if (agentMode === "code") setAgentPressed((value) => !value)
-              }}
             >
-              {agentSelected && (
-                <>
-                  <span className="absolute inset-x-2 -top-1 z-20 h-3 cursor-ns-resize touch-none" data-resize-edge="n" role="presentation" onClick={(event) => event.stopPropagation()} onPointerDown={(event) => startAgentResize(event, "n")} />
-                  <span className="absolute inset-y-2 -right-1 z-20 w-3 cursor-ew-resize touch-none" data-resize-edge="e" role="presentation" onClick={(event) => event.stopPropagation()} onPointerDown={(event) => startAgentResize(event, "e")} />
-                  <span className="absolute inset-x-2 -bottom-1 z-20 h-3 cursor-ns-resize touch-none" data-resize-edge="s" role="presentation" onClick={(event) => event.stopPropagation()} onPointerDown={(event) => startAgentResize(event, "s")} />
-                  <span className="absolute inset-y-2 -left-1 z-20 w-3 cursor-ew-resize touch-none" data-resize-edge="w" role="presentation" onClick={(event) => event.stopPropagation()} onPointerDown={(event) => startAgentResize(event, "w")} />
-                  <span className="absolute -left-0.5 -top-0.5 z-30 size-2 -translate-x-1/2 -translate-y-1/2 cursor-nwse-resize touch-none rounded-sm border border-askewly-violet bg-white" data-resize-edge="nw" role="presentation" onClick={(event) => event.stopPropagation()} onPointerDown={(event) => startAgentResize(event, "nw")} />
-                  <span className="absolute -right-0.5 -top-0.5 z-30 size-2 translate-x-1/2 -translate-y-1/2 cursor-nesw-resize touch-none rounded-sm border border-askewly-violet bg-white" data-resize-edge="ne" role="presentation" onClick={(event) => event.stopPropagation()} onPointerDown={(event) => startAgentResize(event, "ne")} />
-                  <span className="absolute -bottom-0.5 -left-0.5 z-30 size-2 -translate-x-1/2 translate-y-1/2 cursor-nesw-resize touch-none rounded-sm border border-askewly-violet bg-white" data-resize-edge="sw" role="presentation" onClick={(event) => event.stopPropagation()} onPointerDown={(event) => startAgentResize(event, "sw")} />
-                  <span className="absolute -bottom-0.5 -right-0.5 z-30 size-2 translate-x-1/2 translate-y-1/2 cursor-nwse-resize touch-none rounded-sm border border-askewly-violet bg-white" data-resize-edge="se" role="presentation" onClick={(event) => event.stopPropagation()} onPointerDown={(event) => startAgentResize(event, "se")} />
-                </>
+              {agentCanvas.deslopped ? (
+                <div className="flex flex-col gap-3 p-4">
+                  <div className="flex items-start justify-between gap-3">
+                    <div className="min-w-0">
+                      <p className="text-sm font-semibold tracking-normal text-slate-950">Askewly Design</p>
+                      <p className="mt-1 text-[11px] leading-4 text-slate-500">A visual library and agent-ready system for product interfaces.</p>
+                    </div>
+                    <span className="size-8 shrink-0 rounded-md bg-[linear-gradient(135deg,var(--askewly-mint),var(--askewly-lavender))]" />
+                  </div>
+                  <div className="flex gap-2">
+                    <button
+                      type="button"
+                      disabled={!agentCanvas.live}
+                      onClick={() => agentCanvas.live && setAgentHeroPressed((value) => !value)}
+                      className={cn(
+                        "px-3 py-1.5 text-[11px] font-semibold text-white transition",
+                        ctaRadius,
+                        agentCanvas.live ? "cursor-pointer active:scale-95" : "cursor-default",
+                        agentHeroPressed ? "translate-y-px bg-[#5f22a8] shadow-inner" : "bg-askewly-violet",
+                      )}
+                    >
+                      {agentHeroPressed ? "Started ✓" : "Get Started"}
+                    </button>
+                    <button type="button" disabled className={cn("border border-slate-200 px-3 py-1.5 text-[11px] font-semibold text-slate-600", ctaRadius)}>Docs</button>
+                  </div>
+                  {agentCanvas.live && <p className="text-[9px] font-medium text-emerald-600">● interactive — real pressed state</p>}
+                </div>
+              ) : (
+                <div className="flex flex-col items-center gap-2.5 p-5 text-center">
+                  <span className="size-9 rounded-full bg-white/25" />
+                  <span className="h-2.5 w-32 rounded-full bg-white/70" />
+                  <span className="h-1.5 w-40 rounded-full bg-white/40" />
+                  <span className="h-1.5 w-36 rounded-full bg-white/40" />
+                  <span className={cn("mt-1 bg-white/90 px-4 py-1.5 text-[11px] font-semibold text-indigo-600", ctaRadius)}>Get Started</span>
+                </div>
               )}
-              <div
-                className={cn(
-                  "flex h-full min-h-0 flex-col overflow-hidden rounded-[3px]",
-                  agentMode === "code" ? "items-center justify-center p-2" : isCompactAsset ? "p-2" : "p-3",
-                )}
-              >
-                {agentMode === "code" ? (
-                  <span
-                    className={cn(
-                      "inline-flex h-full w-full items-center justify-center truncate rounded font-semibold leading-none transition",
-                      agentPressed ? "translate-y-px bg-askewly-violet text-white shadow-inner" : "bg-slate-950 text-white shadow-sm",
-                    )}
-                    style={{ fontSize: `${Math.max(7, Math.min(14, agentFrame.height / 6.2))}px`, paddingInline: `${Math.max(5, Math.min(18, agentFrame.width / 3))}px` }}
-                  >
-                    {isTinyAsset ? "Go" : agentPressed ? "Pressed" : "Get Started"}
-                  </span>
-                ) : agentMode === "verify" ? (
-                  <div className={cn("grid min-h-0 flex-1 overflow-hidden", isCompactAsset ? "gap-1.5" : "gap-2", isWideAsset && "mt-2")}>
-                    <div className={cn("grid min-h-0 gap-2", isWideAsset ? "grid-cols-[minmax(0,1fr)_auto] items-start" : "grid-cols-1")}>
-                      <div className="min-w-0">
-                        <p className={cn("truncate font-semibold text-slate-950", isCompactAsset ? "text-[11px]" : "text-sm")}>UI surface review</p>
-                        {!isTinyAsset && !isCompactAsset && <p className="truncate text-[9px] text-slate-500">Landing card / interaction</p>}
-                      </div>
-                      {!isCompactAsset && isWideAsset && <span className="shrink-0 rounded-full bg-askewly-mint px-2 py-1 text-[9px] font-semibold text-askewly-violet">Ready</span>}
-                    </div>
-                    <div className={cn("grid min-h-0 gap-1.5", isCompactAsset ? "grid-cols-1" : isWideAsset ? "grid-cols-3" : "grid-cols-2")}>
-                      <div className="min-w-0 rounded border border-slate-200 bg-slate-50 p-1.5">
-                        <p className="text-[8px] uppercase tracking-[0.12em] text-slate-400">Score</p>
-                        <p className="mt-1 text-xs font-semibold text-slate-950">92</p>
-                      </div>
-                      {!isCompactAsset && <div className="min-w-0 rounded border border-slate-200 bg-slate-50 p-1.5"><p className="text-[8px] uppercase tracking-[0.12em] text-slate-400">State</p><p className="mt-1 text-xs font-semibold text-slate-950">Open</p></div>}
-                      {!isCompactAsset && isWideAsset && <div className="min-w-0 rounded border border-slate-200 bg-askewly-mint/35 p-1.5"><p className="text-[8px] uppercase tracking-[0.12em] text-askewly-violet">Agent</p><p className="mt-1 text-xs font-semibold text-slate-950">Pass</p></div>}
-                    </div>
-                    {isTallAsset && <div className="grid gap-1.5"><div className="h-1.5 rounded bg-slate-200" /><div className="h-1.5 w-2/3 rounded bg-slate-200" /></div>}
-                  </div>
-                ) : (
-                  <div className={cn("min-h-0 flex-1 overflow-hidden", isCompactAsset ? "grid content-start gap-1.5" : "grid content-start gap-2")}>
-                    <div className={cn("grid gap-2", isCompactAsset ? "grid-cols-1" : "grid-cols-[1fr_2.5rem] items-start")}>
-                      <div className="min-w-0">
-                        <p className={cn("truncate font-semibold tracking-normal text-slate-950", isCompactAsset ? "text-sm" : "text-lg leading-5")}>Askewly Design</p>
-                        {!isTinyAsset && <p className={cn("text-slate-500", isCompactAsset ? "truncate text-[9px]" : "line-clamp-2 text-[10px] leading-4")}>A visual library and agent-ready system for better product interfaces.</p>}
-                      </div>
-                      {!isCompactAsset && <div className="size-9 rounded bg-[linear-gradient(135deg,var(--askewly-mint),var(--askewly-lavender))] shadow-sm" />}
-                    </div>
-                    <div className={cn("flex gap-2", isCompactAsset && "mt-1")}>
-                      <span className={cn("rounded bg-askewly-violet text-center font-semibold text-white", isCompactAsset ? "h-4 w-12 text-[8px] leading-4" : "h-5 w-16 max-w-[48%] text-[9px] leading-5")}>Start</span>
-                      {!isCompactAsset && <span className="h-5 w-14 max-w-[36%] rounded border border-slate-200 text-center text-[9px] font-semibold leading-5 text-slate-500">Docs</span>}
-                    </div>
-                    {isTallAsset && <div className="mt-1 rounded border border-slate-200 px-2 py-1 text-[9px] text-slate-400">Search patterns, components, docs...</div>}
-                    {isTallAsset && !isCompactAsset && <div className="grid grid-cols-3 gap-1.5"><span className="h-6 rounded border border-slate-200 bg-slate-50" /><span className="h-6 rounded border border-slate-200 bg-slate-50" /><span className="h-6 rounded border border-slate-200 bg-slate-50" /></div>}
-                  </div>
-                )}
-              </div>
-            </button>
-          </div>
-          <div className="flex gap-1.5 border-t border-slate-200 bg-slate-50/60 p-2">
-            {([["code", "Button"], ["verify", "Card"], ["design", "Hero"]] as const).map(([mode, label]) => (
-              <button
-                key={mode}
-                className={cn("rounded px-2.5 py-1 text-[11px] font-semibold transition", agentMode === mode ? "bg-askewly-lavender/25 text-askewly-violet" : "text-slate-500 hover:bg-slate-100 hover:text-slate-700")}
-                type="button"
-                onClick={() => chooseAgentLayer(mode)}
-              >
-                {label}
-              </button>
-            ))}
-          </div>
+            </div>
           </div>
         </div>
 
@@ -1393,17 +1210,8 @@ function AtlasDemo({ id }: { id: AtlasItemId }) {
   }
 
   return (
-    <div className="min-h-[22.2rem] rounded-md border border-slate-200 bg-white p-4">
-      <div className="grid grid-cols-3 gap-2 text-center text-xs font-semibold">
-        {(["design", "code", "verify"] as const).map((item) => (
-          <button key={item} className={cn("rounded border p-3 capitalize transition", agentMode === item ? "border-askewly-violet bg-askewly-lavender/15 text-askewly-violet" : "border-slate-200 text-slate-500 hover:border-askewly-lavender")} type="button" onClick={() => setAgentMode(item)}>{item}</button>
-        ))}
-      </div>
-      <div className="mt-4 rounded bg-slate-950 p-3 font-mono text-xs leading-6 text-slate-300">
-        <div>mode = {agentMode}</div>
-        <div>tokens = DESIGN.md</div>
-        <div>{agentMode === "verify" ? "chrome.smoke = required" : agentMode === "code" ? "component.path = src/components" : "taste = Askewly"}</div>
-      </div>
+    <div className="grid min-h-[22.2rem] place-items-center rounded-md border border-slate-200 bg-white p-4 text-xs text-slate-400">
+      Preview coming soon.
     </div>
   )
 }

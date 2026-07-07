@@ -1311,3 +1311,17 @@ select {
     color-mix(in oklab, var(--background) 0%, transparent) 100%
   );
 }
+
+/* Agent card assemble/reassembly entrance (PSS2 card 1 scenario演출) */
+@keyframes agentAssemble {
+  from {
+    opacity: 0;
+    transform: translateY(8px) scale(0.97);
+    filter: blur(3px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+    filter: blur(0);
+  }
+}
