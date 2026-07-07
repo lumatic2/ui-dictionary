@@ -834,7 +834,7 @@ function AtlasDemo({ id }: { id: AtlasItemId }) {
     const alive = agentScenario === "interactive" && agentPhase === "after" && !prefersReducedMotion
 
     return (
-      <div className="grid min-h-[21.8rem] overflow-hidden rounded-md border border-slate-200 bg-white lg:h-[23rem] lg:grid-cols-[minmax(0,1fr)_16rem]">
+      <div className="grid min-h-[21.8rem] overflow-hidden rounded-md border border-slate-200 bg-white lg:h-[23rem] lg:grid-cols-[minmax(0,1fr)_17rem]">
         <div className="relative flex min-h-[17rem] flex-col bg-slate-50 p-4">
           <div className="flex items-center justify-between border-b border-slate-200 pb-3">
             <div className="flex gap-1.5">
@@ -842,7 +842,7 @@ function AtlasDemo({ id }: { id: AtlasItemId }) {
               <span className="size-2 rounded-full bg-slate-300" />
               <span className="size-2 rounded-full bg-slate-300" />
             </div>
-            <p className="font-mono text-[10px] uppercase tracking-[0.16em] text-slate-400">Design canvas · drag & resize</p>
+            <p className="font-mono text-[10px] uppercase tracking-[0.16em] text-slate-400">Design canvas</p>
           </div>
 
           <div
@@ -870,21 +870,16 @@ function AtlasDemo({ id }: { id: AtlasItemId }) {
             >
               {agentSelected && (
                 <>
-                  <span className="pointer-events-none absolute inset-0 z-10 border border-askewly-violet" />
+                  <span className="pointer-events-none absolute inset-0 z-10 border-[1.5px]" style={{ borderColor: "var(--askewly-violet)" }} />
                   <span className="absolute inset-x-2 -top-1 z-20 h-3 cursor-ns-resize touch-none" data-resize-edge="n" role="presentation" onClick={(e) => e.stopPropagation()} onPointerDown={(e) => startAgentResize(e, "n")} />
                   <span className="absolute inset-y-2 -right-1 z-20 w-3 cursor-ew-resize touch-none" data-resize-edge="e" role="presentation" onClick={(e) => e.stopPropagation()} onPointerDown={(e) => startAgentResize(e, "e")} />
                   <span className="absolute inset-x-2 -bottom-1 z-20 h-3 cursor-ns-resize touch-none" data-resize-edge="s" role="presentation" onClick={(e) => e.stopPropagation()} onPointerDown={(e) => startAgentResize(e, "s")} />
                   <span className="absolute inset-y-2 -left-1 z-20 w-3 cursor-ew-resize touch-none" data-resize-edge="w" role="presentation" onClick={(e) => e.stopPropagation()} onPointerDown={(e) => startAgentResize(e, "w")} />
-                  {(["n", "e", "s", "w"] as const).map((edge) => (
-                    <span
-                      key={`mid-${edge}`}
-                      className={cn("pointer-events-none absolute z-30 size-1.5 border border-askewly-violet bg-white", edge === "n" && "left-1/2 top-0 -translate-x-1/2 -translate-y-1/2", edge === "s" && "bottom-0 left-1/2 -translate-x-1/2 translate-y-1/2", edge === "e" && "right-0 top-1/2 -translate-y-1/2 translate-x-1/2", edge === "w" && "left-0 top-1/2 -translate-x-1/2 -translate-y-1/2")}
-                    />
-                  ))}
                   {(["nw", "ne", "sw", "se"] as const).map((corner) => (
                     <span
                       key={corner}
-                      className={cn("absolute z-30 size-2 cursor-nwse-resize touch-none border border-askewly-violet bg-white", corner === "nw" && "-left-0.5 -top-0.5 -translate-x-1/2 -translate-y-1/2", corner === "ne" && "-right-0.5 -top-0.5 translate-x-1/2 -translate-y-1/2 cursor-nesw-resize", corner === "sw" && "-bottom-0.5 -left-0.5 -translate-x-1/2 translate-y-1/2 cursor-nesw-resize", corner === "se" && "-bottom-0.5 -right-0.5 translate-x-1/2 translate-y-1/2")}
+                      className={cn("absolute z-30 size-2 cursor-nwse-resize touch-none border bg-white", corner === "nw" && "-left-0.5 -top-0.5 -translate-x-1/2 -translate-y-1/2", corner === "ne" && "-right-0.5 -top-0.5 translate-x-1/2 -translate-y-1/2 cursor-nesw-resize", corner === "sw" && "-bottom-0.5 -left-0.5 -translate-x-1/2 translate-y-1/2 cursor-nesw-resize", corner === "se" && "-bottom-0.5 -right-0.5 translate-x-1/2 translate-y-1/2")}
+                      style={{ borderColor: "var(--askewly-violet)" }}
                       data-resize-edge={corner}
                       role="presentation"
                       onClick={(e) => e.stopPropagation()}
@@ -980,7 +975,7 @@ function AtlasDemo({ id }: { id: AtlasItemId }) {
               {agentScenarios.map((scenario) => (
                 <button
                   key={scenario.key}
-                  className="whitespace-nowrap rounded-md border border-slate-200 bg-white px-1.5 py-1 text-[10px] font-medium text-slate-600 transition hover:border-askewly-lavender hover:text-askewly-violet"
+                  className="flex-1 whitespace-nowrap rounded bg-slate-100 px-1 py-1 text-center text-[9px] font-medium text-slate-600 transition hover:bg-askewly-lavender/25 hover:text-askewly-violet"
                   type="button"
                   onClick={() => playScenario(scenario)}
                 >
