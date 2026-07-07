@@ -337,7 +337,13 @@ Verification:
 - Chrome click through nav states.
 - Failure mode: no horizontal overflow or illegible tiny text.
 
+## Scope correction (2026-07-07)
+
+**Step 4~11의 데모는 이미 구현돼 있다** (개발 서버 실측 — 12장 전부 인터랙티브 데모 존재, plan 체크박스만 stale이었음). 남은 작업은 "데모 구현"이 아니라 **카드별 품질 폴리싱 + 제목·설명 카피 다듬기**다. 인터랙션은 코드에만 존재하므로 폴리싱 캔버스는 Figma가 아니라 **개발 서버(localhost:5173)** — 카드 하나씩 실측→품질/카피 개선→재확인. 참고 라이브러리: `docs/research/showcase-card-reference-shortlist-2026-07.md` + toolshelf(`magicui`, `cmdk`, `shaders`, `cult-ui`, `react-bits`, `motion`).
+
 ## Implementation Step Tree
+
+> Step 4~11 = 이제 "폴리싱 패스"(데모 존재 확인됨). 각 항목: 개발 서버 실측 → 품질 이슈(간격·대비·다크모드·모바일 오버플로우) + 제목·설명 카피 [현행→제안] → 반영 → Chrome 재확인.
 
 - [x] Step 0 - Showcase Atlas High-Impact Taxonomy. (verify: build/lint + taxonomy presence)
 - [x] Step 1 - Agent-Ready Design System card polish. (verify: Chrome select/deselect, drag, resize, Button/Card/Hero states — implemented and Chrome-verified in 2026-07-05/06 sessions)
