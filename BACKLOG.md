@@ -2,6 +2,14 @@
 
 ## Completed Horizons
 
+### 2026-07-07 - Figma Workflow
+
+- FW1 - 리서치 → 방법론 채택: sonnet 위임 2건(다각 딥리서치 + 최근 30일 커뮤니티 펄스, `docs/market/2026-07-07-figma-claude-*.md`) — code↔canvas 양방향이 2026 상반기 최전선이며 "코드가 SSOT" 브리지 축이 유리함을 확인. 하이브리드 왕복(코드→Figma→사람→코드) 사용자 확정, `methodology/figma-workflow.md` 계약 문서화.
+- FW2 - 파일럿 실증 + 운영화: 랜딩 hero 왕복 완주 — use_figma로 variables 바인딩 승격("Hero Pilot 2026-07-07" 페이지), 사용자 디테일링(152→128px), 속성 스냅숏 diff 회수 후 코드 반영+브라우저 재검증 (`docs/research/figma-roundtrip-pilot-2026-07.md`). figma-codex-workflow 스킬 갱신 3건+발견 3건 배포(custom-skills `10450ae`).
+- Close: 닫는 기준 충족 — 방법론 계약 + 실작업 왕복 실증 1건 + 스킬 소비 좌표 흡수.
+- 크기 회고: FW1=1 changeset(step-grade 인플레), FW2=2 changeset. horizon이 하루에 닫힘 — 다음 "리서치→채택→실증→운영화" 아크는 milestone 1개(step 4개)로.
+- 후속 큐: CTA pill vs radius-sm 정합(사용자 보류 → PSS2 소재), Figma→코드 역방향 실증(FB 이월 유지), Hero Pilot 페이지 재사용/정리.
+
 ### 2026-07-07 - Figma Bridge
 
 - FB1 - 연결 계층 + capability 지도: Figma 접근 6경로 실측 3라운드 — 원격 claude.ai MCP `use_figma`가 완전한 쓰기 채널(variables 생성·바인딩 round-trip 검증), 계정 이원화 발견(커넥터=SKKU student Full seat, REST/chrome=gmail), REST variables는 Enterprise 게이트로 제외 (`docs/research/figma-capability-map-2026-07.md`).

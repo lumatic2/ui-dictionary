@@ -1,7 +1,7 @@
 # Horizon - Figma Workflow (피그마 활용 방법론)
 
 Date: 2026-07-07
-Status: active
+Status: closed (2026-07-07)
 Objective link: `docs/OBJECTIVE.md` (성공 상태 — 에이전트가 "의도적으로 디자인된 느낌의 UI"를 만드는 작업 방식 확립; 이동 축 — 시각적 영감에서 → 구현 가능한 코드·에셋·에이전트 가이드로)
 Preceding horizon: `docs/horizons/2026-07-figma-bridge.md` (closed 2026-07-07)
 
@@ -34,7 +34,7 @@ Evidence:
 
 Plan: `docs/plans/2026-07-07-figma-workflow-method.md`
 
-### FW2 - 파일럿 실증 + 운영화 (active 2026-07-07)
+### FW2 - 파일럿 실증 + 운영화 (completed 2026-07-07)
 
 DoD:
 
@@ -57,4 +57,8 @@ Evidence:
 
 ## Objective Impact
 
-(close 시 기입)
+(2026-07-07 close) Objective의 "시각적 영감 → 구현 가능한 코드·에셋·에이전트 가이드" 축이 움직였다: Figma가 "계약된 보완재"(figma-bridge)에서 **운영 중인 작업 표면**으로 승격 — 하이브리드 왕복(코드 SSOT → Figma 승격 → 사람 디테일링 → 코드 회수)이 방법론 계약(`methodology/figma-workflow.md`)과 실작업 실증 1건(랜딩 hero 152→128px, 왕복 diff 회수)으로 뒷받침되고, figma-codex-workflow 스킬이 이를 소비 좌표로 배포됐다. 리서치 근거: 이 흐름은 2026 상반기 업계의 최전선(Code to Canvas)이며 우리 위치("코드가 SSOT" 브리지 축)가 경쟁 지형에서 유리함을 확인.
+
+크기 회고: FW1은 1 changeset로 닫힘(인플레 — 사용자 결정 개입으로 milestone 성립은 했으나 step-grade). FW2는 2 changeset(파일럿 왕복 + 스킬 갱신)로 정상. horizon 전체가 하루에 닫힘 — 다음 유사 "리서치→채택→실증→운영화" 아크는 **milestone 1개(step 4개)**로 잡는다 (FB 회고 규칙의 확장 적용).
+
+실행 잔여물: Figma "Askewly Design Tokens" 파일 내 "Hero Pilot 2026-07-07" 페이지(6:2) — 파일럿 아티팩트, 다음 왕복 시 재사용 또는 정리 가능. 이월 과제: CTA pill vs radius-sm 정합(사용자 보류 → PSS2 소재).
