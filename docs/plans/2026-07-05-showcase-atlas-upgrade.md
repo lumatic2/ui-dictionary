@@ -346,7 +346,7 @@ Verification:
 > Step 4~11 = 이제 "폴리싱 패스"(데모 존재 확인됨). 각 항목: 개발 서버 실측 → 품질 이슈(간격·대비·다크모드·모바일 오버플로우) + 제목·설명 카피 [현행→제안] → 반영 → Chrome 재확인.
 
 - [x] Step 0 - Showcase Atlas High-Impact Taxonomy. (verify: build/lint + taxonomy presence)
-- [x] Step 1 - Agent-Ready Design System card polish. (verify: 2026-07-07 비전 정렬 + 품질 재작업 3회. 최종: 캔버스를 시나리오 구동 변형 에셋으로 재설계 — AI-slop 카드(보라 그라디언트·둥근·스켈레톤)에서 "De-slop this"→정돈 재조립, "Fix the radius"→8px, "Make it live"→실제 눌리는 버튼(Get Started→Started✓ 클릭 검증). 누적 refinement + agentAssemble 키프레임 페이드/조립 애니메이션(reduced-motion 즉시적용 검증), Reset. 드래그/리사이즈·Review 시나리오 제거. cult-ui ai-elements 채팅 패턴(assistant 무버블). tsc/lint/build PASS, light Chrome 3상태 확인)
+- [x] Step 1 - Agent-Ready Design System card polish. (verify: 2026-07-07 비전 정렬 + 품질 재작업 4회. 최종: 드래그/리사이즈 복원(8핸들, drag 40×20px Chrome 검증) + 시나리오 3개 독립·자동리셋. Humanizing=AI-slop→디자이너급 testimonial 카드 재조립, Fixing=구조 깨진 카드(요소 회전·오프셋·폰트깨짐)→그리드 스냅 정렬, Interactive=floating(agentFloat 키프레임)+커서 반응 tilt(rotateX/Y)+hover lift. cult-ui ai-elements 채팅 패턴. reduced-motion 즉시적용, tsc/lint/build PASS, light Chrome 3시나리오 확인)
 - [x] Step 2 - Cursor-Reactive Field. (verify: pointer movement changes focus/proximity field without layout jitter — implemented and Chrome-verified in 2026-07-05/06 sessions)
 - [x] Step 3 - Physics-Based Interaction. (verify: pointer changes fluid field and nodes stay bounded — implemented as Matter.js rigid-body demo, Chrome-verified, commit 9fd453d)
 - [ ] Step 4 - Scroll-Driven Narrative. (verify: auto progress changes chapter, copy, and layers)

@@ -1325,3 +1325,9 @@ select {
     filter: blur(0);
   }
 }
+
+/* Agent card living float (PSS2 card 1 Interactive scenario) */
+@keyframes agentFloat {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-6px); }
+}
