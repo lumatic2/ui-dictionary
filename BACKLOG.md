@@ -2,6 +2,15 @@
 
 ## Completed Horizons
 
+### 2026-07-07 - Figma Bridge
+
+- FB1 - 연결 계층 + capability 지도: Figma 접근 6경로 실측 3라운드 — 원격 claude.ai MCP `use_figma`가 완전한 쓰기 채널(variables 생성·바인딩 round-trip 검증), 계정 이원화 발견(커넥터=SKKU student Full seat, REST/chrome=gmail), REST variables는 Enterprise 게이트로 제외 (`docs/research/figma-capability-map-2026-07.md`).
+- FB2 - 브리지 모델 계약: Askewly SSOT 우위·파생 variables 모델, 컬렉션 2개(primitive 단일모드 + semantic light/dark) alias 매핑, DTCG 경로 그대로 이름 보존, idempotent upsert 규약, figma-codex-workflow 정합·갱신 지점 3건 (`docs/design-system/figma-bridge-contract.md` + ADR 0003).
+- FB3 - 왕복 실증: 토큰 59개를 "Askewly Design Tokens" 파일(`xY42P22E7CtnvuxX8ZzZec`, 어스큐리 팀)에 동기화 — 1차 38+21 created, 2차 재실행 created 0/removed 0(idempotent PASS), light/dark 데모 프레임 바인딩 스크린샷 (`docs/research/figma-variables-sync-2026-07.md` + `scripts/generate-figma-variables-sync.mjs`).
+- Close: 닫는 기준 충족 — capability 지도 + 브리지 계약 + 토큰→variables 실증 1건.
+- 크기 회고: milestone 3개 전부 1 changeset로 닫힘 — 인플레 기준상 이 horizon도 milestone 1개 규모였다 (AG horizon과 동일 패턴 2연속: "실측→계약→실증" 류는 다음부터 milestone 하나로).
+- 후속 큐: figma-codex-workflow 스킬 갱신 3건(계약 §5), Figma→코드 역방향 실증, PAT 재발급 선택지.
+
 ### 2026-07-07 - Agent Integration
 
 - AG1 - llms.txt 발견 계층: `scripts/generate-llms-txt.mjs`가 SSOT 10개 자산(토큰·분류·계약·레시피 5종)을 `public/llms/` 사본 + 링크만 담은 `llms.txt`로 파생(C-10, 실패모드 exit≠0 검증). 실배포 10/10 링크 실콘텐츠 확인 (`https://ui.askewly.com/llms.txt`).

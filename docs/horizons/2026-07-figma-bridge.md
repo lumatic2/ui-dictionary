@@ -1,7 +1,7 @@
 # Horizon - Figma Bridge (피그마 브리지)
 
 Date: 2026-07-07
-Status: active
+Status: closed (2026-07-07)
 Objective link: `docs/OBJECTIVE.md` (성공 상태 — 레퍼런스 흡수 루프 + 에이전트용 시스템의 디자이너 표면 확장)
 Preceding horizon: `docs/horizons/2026-07-agent-integration.md` (closed 2026-07-07)
 Candidate record: `docs/horizons/2026-07-figma-bridge-candidate.md` (2026-07-05 — 이 horizon으로 승격, 동결)
@@ -71,4 +71,8 @@ capability 지도와 브리지 계약이 존재하고, 토큰→Figma variables 
 
 ## Objective Impact
 
-(horizon close 시 기입)
+(2026-07-07 close) Objective의 "에이전트 통합" 아크에 디자이너 표면이 추가됐다: Askewly SSOT(`tokens/askewly.tokens.json`)가 코드·사이트·에이전트에 이어 **Figma variables로도 파생**됨을 실증 — 같은 토큰이 디자이너의 도구에서 이름 그대로(light/dark alias 포함) 사용 가능하다. Figma와의 관계가 "미정의 경쟁자"에서 "계약된 보완재"(SSOT 우위, 파생 아티팩트, idempotent 동기화)로 정리됐다.
+
+크기 회고: FB1·FB2·FB3 전부 각 1 changeset로 닫힘 — AG horizon에 이어 2연속 인플레 적발. "실측→계약→실증" 아크는 다음부터 milestone 1개(step 3개)로 잡는다.
+
+실행 잔여물: Figma 파일 "Askewly Design Tokens"(`xY42P22E7CtnvuxX8ZzZec`, 어스큐리 팀 드래프트) — 살아있는 파생 아티팩트, 재동기화는 `scripts/generate-figma-variables-sync.mjs` 절차.
