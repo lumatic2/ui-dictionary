@@ -20,13 +20,14 @@ Goal: Figma를 경쟁자이자 보완재로 규정하고 Figma 자산 ↔ Askewl
 - Status: [x]
 
 - Completed at: 2026-07-07
-<!-- harness:milestone id="FB2" status="active" priority="P0" -->
+<!-- harness:milestone id="FB2" status="completed" priority="P0" evidence="docs/design-system/figma-bridge-contract.md + docs/adr/0003" -->
 ### FB2 - 브리지 모델 계약
 - DoD: Figma→Askewly / Askewly→Figma 방향별 계약(variables↔tokens.json 매핑, 흡수/외부 경계, 차별 지점) + figma-codex-workflow 스킬 정합 지점 식별.
-- Evidence: docs/design-system/figma-bridge-contract.md + ADR
+- Evidence: docs/design-system/figma-bridge-contract.md + docs/adr/0003
 - Gap: 브리지가 무엇을 잇고 무엇을 안 잇는지 계약이 없다.
-- Status: [ ]
+- Status: [x]
 
+- Completed at: 2026-07-07
 <!-- harness:milestone id="FB3" status="pending" priority="P0" -->
 ### FB3 - 왕복 실증: 토큰 → Figma variables
 - DoD: askewly.tokens.json semantic 토큰(light+dark)을 Figma variables로 밀어넣기 — 이름 보존, idempotent, 소비 경로 기록.
