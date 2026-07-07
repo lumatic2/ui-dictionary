@@ -213,7 +213,8 @@ export function HomePage({ onNavigate, onSearch, filter, terms }: HomePageProps)
             Askewly Design
           </h1>
           <p className="mt-7 w-full max-w-2xl text-center text-base leading-7 text-slate-600 sm:text-lg sm:leading-8 md:text-xl">
-            A visual library and agent-ready system for designing better product interfaces.
+            A visual library and agent-ready system for
+            <br className="hidden md:inline" /> designing better product interfaces.
           </p>
 
           <div className="mt-7 flex flex-col gap-3 sm:flex-row">

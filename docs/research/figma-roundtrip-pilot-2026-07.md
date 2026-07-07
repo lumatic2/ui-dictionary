@@ -28,13 +28,14 @@ Milestone: FW2-1 (horizon: `docs/horizons/2026-07-figma-workflow.md`)
 
 ### ④ 사용자 디테일링 (2026-07-07)
 
-- 사용자가 Figma에서 직접 다듬음. **지속된 변경: 헤드라인 fontSize 152 → 128px** (구조·간격·색·서브카피·CTA는 push 원본과 동일 — 속성 스냅숏 전수 대조로 확인).
+- 사용자가 Figma에서 직접 다듬음. **지속된 변경 2건: 헤드라인 fontSize 152 → 128px + 서브카피 수동 줄바꿈("system for" 뒤, Shift+Enter=U+2028)** (그 외 구조·간격·색·CTA는 push 원본과 동일).
+- **정정 (2026-07-07)**: 1차 회수에서 줄바꿈을 누락 — U+2028이 JSON 문자열 출력에서 시각적으로 안 보여 characters 대조를 통과해버림. 사용자 지적으로 charCode 스캔 재검사에서 발견, 2차 회수로 반영.
 - CTA pill 정합(1순위 제안 소재)은 "어떻게 건드려야 할지 모르겠다"로 보류 — **관찰**: 배리에이션 탐색은 프레임 복제 안내 없이는 사용자에게 진입 장벽이 있음. 미해결 과제로 이월(PSS2에서 처리).
 
 ### ⑤ 코드 회수 (2026-07-07)
 
 - diff 판별: `use_figma` 읽기 전용 스크립트로 노드별 속성 스냅숏(fontSize/lineHeight/fills/padding/radius/strokes)을 push 원본과 전수 대조 — 구조 변경이 없을 땐 `get_design_context` 전체 코드 생성보다 이 방식이 정밀하고 저렴함.
-- 코드 반영: `home-page.tsx` h1 `clamp(3.5rem,16vw,9.5rem)` → `clamp(3.5rem,16vw,8rem)` (데스크톱 최대 152→128px, Figma 값과 문자 일치).
+- 코드 반영: `home-page.tsx` h1 `clamp(3.5rem,16vw,9.5rem)` → `clamp(3.5rem,16vw,8rem)` (데스크톱 최대 152→128px) + 서브카피 `<br className="hidden md:inline" />`(md+ 에서만 강제 줄바꿈, 모바일은 자연 줄바꿈 — Figma의 U+2028 의도 반영).
 - 재검증: Vite dev + Playwright 1440×900, 콘솔 에러 0, oxlint 통과(선재 경고만). 부수 효과: 다음 섹션 노출 증가 — DESIGN.md §4 "dead poster 방지" 방향과 정합.
 - 증거: `docs/research/evidence/figma-pilot-hero-after-1440.png` (before와 대조)
 
@@ -44,4 +45,5 @@ Milestone: FW2-1 (horizon: `docs/horizons/2026-07-figma-workflow.md`)
 - variables가 있는 파일에 새 페이지로 승격하면 로컬 바인딩이 바로 됨 — 별도 파일 + 라이브러리 publish 경로(팀 플랜 제약)보다 간단.
 - Geist 폰트 스타일명은 "SemiBold"(공백 없음) — Inter("Semi Bold")와 다름.
 - 회수 diff는 구조 변경이 없으면 속성 스냅숏 전수 대조(`use_figma` 읽기 스크립트)가 `get_design_context`보다 정밀·저렴 — push 시점 값을 기록해둬야 가능하므로 승격 스크립트의 반환값(노드 ID+값)을 보존할 것.
+- **텍스트 diff는 눈이 아니라 charCode로**: Figma Shift+Enter는 U+2028(LINE SEPARATOR)로 저장되고 JSON 문자열 출력에서 안 보인다 — characters 대조 시 charCodeAt 스캔(10/13/8232/8233) 필수. 또 `use_figma` 스크립트 안 정규식에 U+2028 리터럴이 들어가면 파서가 줄바꿈으로 해석해 SyntaxError.
 - 사용자 디테일링 핸드오프에는 "배리에이션 탐색 = 프레임 복제 후 실험" 같은 조작 안내를 함께 줘야 함 — 소재 제안만으로는 진입 장벽(CTA pill 보류 사례).
