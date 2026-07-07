@@ -21,7 +21,7 @@ Figma Bridge horizon이 "연결이 되는가"를 닫았지만 "언제·어떻게
 
 ## Milestones
 
-### FW1 - 리서치 → 방법론 채택 (active)
+### FW1 - 리서치 → 방법론 채택 (completed 2026-07-07)
 
 DoD:
 
@@ -34,7 +34,7 @@ Evidence:
 
 Plan: `docs/plans/2026-07-07-figma-workflow-method.md`
 
-### FW2 - 파일럿 실증 + 운영화 (pending)
+### FW2 - 파일럿 실증 + 운영화 (active 2026-07-07)
 
 DoD:
 
