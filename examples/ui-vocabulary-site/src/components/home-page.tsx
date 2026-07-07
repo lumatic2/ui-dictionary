@@ -707,7 +707,10 @@ function AtlasDemo({ id }: { id: AtlasItemId }) {
       setAgentAssembleKey((key) => key + 1)
       const [first, ...rest] = scenario.turns
       setAgentChat([first])
-      const applyAfter = () => setAgentPhase("after")
+      const applyAfter = () => {
+        setAgentPhase("after")
+        if (scenario.key === "humanize") setAgentAssembleKey((key) => key + 1)
+      }
       if (prefersReducedMotion) {
         setAgentChat(scenario.turns)
         applyAfter()
@@ -888,18 +891,17 @@ function AtlasDemo({ id }: { id: AtlasItemId }) {
                     "flex h-full min-h-0 flex-col overflow-hidden rounded-lg text-left transition-all duration-500",
                     agentSelected ? "ring-2 ring-askewly-violet" : "",
                     agentScenario === "humanize" && agentPhase === "before"
-                      ? "items-center justify-center gap-2 border border-transparent bg-[linear-gradient(135deg,#6366f1,#a855f7)] p-3 text-center"
-                      : cn("gap-2 border border-slate-200 bg-white p-3 shadow-sm", alive && "hover:shadow-[0_16px_40px_rgba(111,45,189,0.18)]"),
+                      ? "items-center justify-center gap-1.5 border border-transparent bg-[linear-gradient(160deg,#2e1065,#4a1d96_45%,#831843)] p-3 text-center"
+                      : cn("gap-2.5 border border-slate-200 bg-white p-3 shadow-sm", alive && "hover:shadow-[0_16px_40px_rgba(111,45,189,0.18)]"),
                   )}
                   style={alive ? { transform: `rotateX(${agentTilt.x}deg) rotateY(${agentTilt.y}deg)`, transformStyle: "preserve-3d" } : undefined}
                 >
                   {agentScenario === "humanize" && agentPhase === "before" ? (
                     <>
-                      <span className="size-8 rounded-full bg-white/25" />
-                      <span className="h-2.5 w-24 rounded-full bg-white/70" />
-                      <span className="h-1.5 w-32 rounded-full bg-white/40" />
-                      <span className="h-1.5 w-28 rounded-full bg-white/40" />
-                      <span className="mt-1 rounded-full bg-white/90 px-3 py-1 text-[10px] font-semibold text-indigo-600">Get Started</span>
+                      <span className="text-2xl [text-shadow:0_0_16px_rgba(250,204,21,0.9)]">⚡</span>
+                      <p className="font-serif text-sm font-black uppercase italic tracking-[0.22em] text-cyan-300 [text-shadow:0_0_12px_rgba(34,211,238,0.9)]">Lightning</p>
+                      <p className="max-w-[92%] text-[9px] leading-3 text-purple-200/80">Supercharge your workflow with next-gen AI-powered synergy 🚀✨</p>
+                      <span className="mt-1 rounded-full bg-[linear-gradient(90deg,#22d3ee,#a855f7)] px-3 py-1 text-[9px] font-bold uppercase tracking-wide text-white shadow-[0_0_16px_rgba(168,85,247,0.75)]">Get Started Now 🔥</span>
                     </>
                   ) : (
                     (() => {
@@ -907,20 +909,18 @@ function AtlasDemo({ id }: { id: AtlasItemId }) {
                       return (
                         <>
                           <div className={cn("flex items-center gap-2 transition-all duration-500", broken && "translate-x-3 rotate-[-4deg]")}>
-                            <span className="grid size-7 shrink-0 place-items-center rounded-full bg-[linear-gradient(135deg,var(--askewly-violet),var(--askewly-orchid))] text-[10px] font-semibold text-white">AR</span>
+                            <img src="/assets/navbars/avatar-03.png" alt="" className="size-8 shrink-0 rounded-full object-cover" />
                             <div className={cn("min-w-0 transition-all duration-500", broken && "translate-y-1")}>
-                              <p className={cn("truncate font-semibold text-slate-950 transition-all duration-500", broken ? "text-[13px] italic" : "text-[12px]")}>Aria Chen</p>
+                              <p className={cn("truncate font-semibold text-slate-950 transition-all duration-500", broken ? "text-[13px] italic" : "text-[12px]")}>Maya Okonkwo</p>
                               <p className="truncate text-[9px] text-slate-500">Design Lead, Northwind</p>
                             </div>
                           </div>
                           <p className={cn("text-[11px] leading-4 text-slate-700 transition-all duration-500", broken && "translate-x-6 rotate-1 text-[13px] leading-3 text-slate-400")}>
                             “Our agents finally ship UI that looks intentional — not generated.”
                           </p>
-                          <div className={cn("mt-auto flex items-center gap-1.5 transition-all duration-500", broken && "-translate-x-2 translate-y-1 rotate-2")}>
-                            <span className="size-1.5 rounded-full bg-askewly-violet" />
-                            <span className="text-[9px] font-medium text-slate-400">Askewly verified pattern</span>
+                          <div className={cn("mt-auto flex gap-0.5 text-[11px] leading-none text-amber-400 transition-all duration-500", broken && "-translate-x-2 translate-y-1 rotate-2")} aria-hidden="true">
+                            {"★★★★★"}
                           </div>
-                          {alive && <p className="text-[9px] font-medium text-emerald-600">● floating · follows your cursor</p>}
                         </>
                       )
                     })()
