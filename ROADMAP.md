@@ -1,20 +1,32 @@
 # ROADMAP
 
 > Last updated: 2026-07-07
-> Status: Figma Bridge horizon closed 2026-07-07 — no active horizon (next direction: §B0.5 user discussion)
+> Status: Figma Workflow horizon active (opened 2026-07-07)
 > North star: Build Askewly Design as both a public reference website and an agent-usable implementation system.
 > line budget: <=150
 
 ## Current Horizon
 
-<!-- harness:goal id="figma-bridge" status="closed" -->
-Goal: (closed 2026-07-07) Figma를 경쟁자이자 보완재로 규정하고 Figma 자산 ↔ Askewly SSOT ↔ 에이전트 구현·검증 브리지를 실측 기반으로 정의한다 — FB1 실측 + FB2 계약 + FB3 토큰→variables 실증 전부 완료. Details: `docs/horizons/2026-07-figma-bridge.md` → `BACKLOG.md`.
+<!-- harness:goal id="figma-workflow" status="active" -->
+Goal: Claude Code × Figma 활용 방법론을 리서치 기반으로 확립하고(FW1), askewly 실작업 파일럿 1회 왕복 + 스킬 운영화로 검증한다(FW2). Details: `docs/horizons/2026-07-figma-workflow.md`.
 
 ## Active Milestones
 
-(없음 — 다음 horizon은 사용자 토론으로 개설)
+<!-- harness:milestone id="FW1" status="active" priority="P0" -->
+### FW1 - 리서치 → 방법론 채택
+- DoD: 트렌드 리서치 재료(다각 리포트 + 커뮤니티 펄스)와 후보 워크플로우 비교·평가가 문서화되고, 파일럿 방향이 사용자 결정으로 확정되며, 채택 방법론이 `methodology/figma-workflow.md` 계약 문서로 기록된다(브리지 계약과 정합).
+- Evidence: `docs/market/2026-07-07-figma-claude-workflows.md`, `docs/market/2026-07-07-figma-claude-community-pulse.md`, `methodology/figma-workflow.md`, `docs/plans/2026-07-07-figma-workflow-method.md`
+- Gap: Figma Bridge가 파이프는 검증했지만 "언제·어떻게 쓰는가" 방법론이 미정의 — askewly 디자인 시스템 작업 방식이 여기 달려 있다.
+- Status: [ ]
 
 ## Next Candidates
+
+<!-- harness:milestone id="FW2" status="pending" priority="P0" -->
+### FW2 - 파일럿 실증 + 운영화
+- DoD: FW1 채택 워크플로우로 askewly 실작업 1회 왕복 실증(방향은 FW1 결정) + figma-codex-workflow 스킬 갱신 3건이 방법론을 소비 좌표로 흡수.
+- Evidence: `docs/research/` 파일럿 사례 노트 + Figma/코드 양쪽 증거 + 스킬 갱신·배포 기록
+- Gap: 방법론은 실작업 1회로 검증되기 전까지 문서일 뿐이다.
+- Status: [ ]
 
 <!-- harness:milestone id="PSS2" status="pending" priority="P1" -->
 ### PSS2 - Landing Page Design Quality (carried over)
