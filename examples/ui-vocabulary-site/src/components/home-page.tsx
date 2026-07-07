@@ -10,6 +10,7 @@ import { flushSync } from "react-dom"
 import * as Matter from "matter-js"
 import {
   ArrowRight,
+  ArrowUp,
   Command,
   FileCode2,
   LayoutDashboard,
@@ -571,8 +572,6 @@ function AtlasDemo({ id }: { id: AtlasItemId }) {
   const [agentResizing, setAgentResizing] = useState(false)
   const [agentMoving, setAgentMoving] = useState(false)
   const [agentPressed, setAgentPressed] = useState(false)
-  const [codexPacked, setCodexPacked] = useState(false)
-  const [browserChecked, setBrowserChecked] = useState(false)
   const [agentChat, setAgentChat] = useState<Array<{ role: "you" | "agent"; text: string }>>([
     { role: "you", text: "Add a pricing card and bind it to our tokens." },
     { role: "agent", text: "Placed a Card on the canvas, bound to DESIGN.md tokens. Want it interactive?" },
@@ -852,7 +851,6 @@ function AtlasDemo({ id }: { id: AtlasItemId }) {
                 }
                 setAgentSelected(true)
                 if (agentMode === "code") setAgentPressed((value) => !value)
-                if (agentMode === "verify") setBrowserChecked((value) => !value)
               }}
             >
               {agentSelected && (
@@ -932,68 +930,62 @@ function AtlasDemo({ id }: { id: AtlasItemId }) {
         </div>
 
         <div className="flex min-h-0 flex-col border-t border-slate-200 bg-white lg:border-l lg:border-t-0">
-          <div className="flex items-center justify-between border-b border-slate-200 px-4 py-3">
-            <p className="text-xs font-semibold text-slate-950">Canvas agent</p>
-            <span className="inline-flex items-center gap-1.5 rounded-full bg-askewly-mint/40 px-2 py-0.5 text-[9px] font-semibold text-askewly-violet">
-              <span className="size-1.5 rounded-full bg-askewly-violet" />
+          <div className="flex items-center justify-between border-b border-slate-200 px-3 py-2.5">
+            <p className="text-[11px] font-semibold text-slate-900">Canvas agent</p>
+            <span className="inline-flex items-center gap-1 text-[10px] font-medium text-slate-400">
+              <span className="size-1.5 rounded-full bg-emerald-500" />
               Claude Code
             </span>
           </div>
 
-          <div className="flex flex-wrap gap-1 px-4 pt-3">
-            {(["DESIGN.md", "Tokens", "Patterns", "Checks"] as const).map((item) => (
-              <button
-                key={item}
-                className={cn("rounded-full border px-2 py-0.5 text-[9px] font-semibold transition", agentContext === item ? "border-askewly-violet bg-askewly-lavender/20 text-askewly-violet" : "border-slate-200 bg-slate-50 text-slate-500 hover:border-askewly-lavender")}
-                type="button"
-                title={contextCopy[item]}
-                onClick={() => setAgentContext(item)}
-              >
-                {item}
-              </button>
-            ))}
-          </div>
-
-          <div ref={agentChatRef} className="flex min-h-[7rem] flex-1 flex-col gap-2 overflow-y-auto px-4 py-3">
+          <div ref={agentChatRef} className="flex min-h-0 flex-1 flex-col gap-2.5 overflow-y-auto px-3 py-3">
             {agentChat.map((message, index) => (
-              <div key={index} className={cn("flex", message.role === "you" ? "justify-end" : "justify-start")}>
-                <span
-                  className={cn(
-                    "max-w-[88%] rounded-lg px-2.5 py-1.5 text-[11px] leading-4",
-                    message.role === "you" ? "bg-askewly-violet text-white" : "border border-slate-200 bg-slate-50 text-slate-700",
-                  )}
-                >
+              message.role === "you" ? (
+                <div key={index} className="flex justify-end">
+                  <span className="max-w-[85%] rounded-lg rounded-br-sm bg-slate-100 px-2.5 py-1.5 text-[11px] leading-4 text-slate-700">
+                    {message.text}
+                  </span>
+                </div>
+              ) : (
+                <p key={index} className="max-w-[92%] text-[11px] leading-4 text-slate-500">
                   {message.text}
-                </span>
-              </div>
+                </p>
+              )
             ))}
           </div>
 
-          <div className="flex items-center gap-1.5 border-t border-slate-200 px-3 py-2">
-            <input
-              className="min-w-0 flex-1 bg-transparent text-[11px] text-slate-700 outline-none placeholder:text-slate-400"
-              placeholder="Message the canvas agent…"
-              value={agentInput}
-              onChange={(event) => setAgentInput(event.target.value)}
-              onKeyDown={(event) => {
-                if (event.key === "Enter") {
-                  event.preventDefault()
-                  sendAgentMessage()
-                }
-              }}
-            />
-            <button className="shrink-0 rounded-md bg-slate-950 px-2 py-1 text-[10px] font-semibold text-white transition hover:bg-slate-800 disabled:opacity-40" type="button" disabled={!agentInput.trim()} onClick={sendAgentMessage}>
-              Send
-            </button>
-          </div>
-
-          <div className="grid grid-cols-2 gap-1.5 border-t border-slate-200 px-3 py-2.5">
-            <button className={cn("rounded-md px-2 py-1.5 text-center text-[9px] font-semibold uppercase leading-none tracking-[0.06em] transition", codexPacked ? "bg-askewly-violet text-white" : "bg-slate-950 text-white hover:bg-slate-800")} type="button" onClick={() => setCodexPacked((value) => !value)}>
-              {codexPacked ? "Handed to Codex" : "Hand off → Codex"}
-            </button>
-            <button className={cn("rounded-md border px-2 py-1.5 text-center text-[9px] font-semibold uppercase leading-none tracking-[0.06em] transition", browserChecked ? "border-askewly-violet bg-askewly-lavender/15 text-askewly-violet" : "border-slate-200 bg-white text-slate-500 hover:border-askewly-lavender")} type="button" onClick={() => setBrowserChecked((value) => !value)}>
-              {browserChecked ? "Handed to Claude" : "Hand off → Claude"}
-            </button>
+          <div className="border-t border-slate-200 p-2">
+            <div className="flex items-center gap-1.5 rounded-lg border border-slate-200 bg-slate-50 pl-2.5 pr-1 focus-within:border-askewly-orchid">
+              <input
+                className="min-w-0 flex-1 bg-transparent py-1.5 text-[11px] text-slate-700 outline-none placeholder:text-slate-400"
+                placeholder="Message the agent…"
+                value={agentInput}
+                onChange={(event) => setAgentInput(event.target.value)}
+                onKeyDown={(event) => {
+                  if (event.key === "Enter") {
+                    event.preventDefault()
+                    sendAgentMessage()
+                  }
+                }}
+              />
+              <button className="grid size-6 shrink-0 place-items-center rounded-md bg-askewly-violet text-white transition hover:bg-[#5f22a8] disabled:opacity-30" type="button" aria-label="Send message" disabled={!agentInput.trim()} onClick={sendAgentMessage}>
+                <ArrowUp aria-hidden="true" className="size-3.5" />
+              </button>
+            </div>
+            <div className="mt-1.5 flex flex-wrap items-center gap-x-1 gap-y-0.5 px-0.5">
+              <span className="text-[9px] text-slate-400">reads</span>
+              {(["DESIGN.md", "Tokens", "Patterns", "Checks"] as const).map((item) => (
+                <button
+                  key={item}
+                  className={cn("rounded px-1 py-0.5 text-[9px] font-medium transition", agentContext === item ? "bg-askewly-lavender/25 text-askewly-violet" : "text-slate-400 hover:text-slate-600")}
+                  type="button"
+                  title={contextCopy[item]}
+                  onClick={() => setAgentContext(item)}
+                >
+                  {item}
+                </button>
+              ))}
+            </div>
           </div>
         </div>
       </div>
