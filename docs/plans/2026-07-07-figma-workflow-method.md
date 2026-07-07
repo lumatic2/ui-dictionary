@@ -11,9 +11,9 @@ Claude Code × Figma를 함께 쓰는 트렌디한 워크플로우 지형을 리
 
 ## Step 트리
 
-- [ ] FW1-1 리서치 재료 수집 (artifact: analysis, sonnet 위임 2건 병렬) — (verify: `docs/market/2026-07-07-figma-claude-workflows.md` + `docs/market/2026-07-07-figma-claude-community-pulse.md` 존재, 인용에 출처 URL+접근일 포함)
-- [ ] FW1-2 후보 워크플로우 비교·평가 + 파일럿 방향 결정 — 리서치 종합 → 후보별 강점/약점/askewly 적합성 표 → 사용자에게 [선택지+추천+근거] 제시 (verify: 비교 표 존재 + 파일럿 방향 사용자 확정 기록)
-- [ ] FW1-3 방법론 계약 문서 작성 — `methodology/figma-workflow.md` (역할 분담: 코드가 뭘 하고 Figma가 뭘 하고 사람이 뭘 하나, 단계별 절차, 도구 좌표, 안티패턴) (verify: `docs/design-system/figma-bridge-contract.md`와 정합 + `methodology/00-INDEX.md` 등재 + Changelog)
+- [x] FW1-1 리서치 재료 수집 (artifact: analysis, sonnet 위임 2건 병렬) — (verify: `docs/market/2026-07-07-figma-claude-workflows.md` + `docs/market/2026-07-07-figma-claude-community-pulse.md` 존재, 인용에 출처 URL+접근일 포함 — 게이트 직접 읽기 검증 PASS 2026-07-07)
+- [x] FW1-2 후보 워크플로우 비교·평가 + 파일럿 방향 결정 — 비교 표는 리서치 리포트 §3(6개 후보 × askewly 적합성), 종합·추천 제시 후 사용자 확정 (verify: 비교 표 존재 + 파일럿 방향 사용자 확정 기록 — 아래 결정 로그)
+- [x] FW1-3 방법론 계약 문서 작성 — `methodology/figma-workflow.md` (역할 분담, 5단계 왕복 절차, 도구 좌표, 안티패턴, 리스크) (verify: 브리지 계약 §0/§1/§2.4/§3/§4 명시 정합 + `methodology/00-INDEX.md` 신설 등재 + Changelog — PASS 2026-07-07)
 
 ## 중단점
 
@@ -21,6 +21,6 @@ Claude Code × Figma를 함께 쓰는 트렌디한 워크플로우 지형을 리
 
 ## 결정 로그
 
-- **파일럿 방향** (code→Figma→사람 디테일링 / Figma→code / 하이브리드): 사용자 소유 — FW1-2에서 리서치 결과와 함께 [선택지+추천+근거]로 제시해 확정. (2026-07-07 예약)
+- **파일럿 방향**: **확정 (2026-07-07 사용자 "진행") — 하이브리드 왕복**: 코드로 디자인 → Figma 투입(Code to Canvas) → 사용자 디테일링 → `get_design_context`로 코드 회수. 근거: 사용자 원 구상 + 6월 트렌드(round-trip 서사) + "코드가 SSOT" 브리지 계약 정합.
 - **리서치 방식**: 확정 (2026-07-07) — deep-research식 + 커뮤니티 펄스 병행, sonnet 위임.
 - 그 외 예상 결정: 없음 (FW2의 스킬 갱신 범위는 백로그 3건으로 이미 고정).
