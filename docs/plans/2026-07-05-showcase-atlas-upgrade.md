@@ -36,8 +36,8 @@ planning_gate:
 
 ## Decision Log
 
-- **(pending 2026-07-07) CTA pill 방향** — DESIGN.md §7(radius 4px)·§8(oversized pills 안티패턴)과 현행 hero `rounded-full`의 충돌 해소 방향: pill 유지+DESIGN.md 개정 / 4px 계약 준수 / Figma 배리에이션 탐색 후 결정. 사용자 소유 — Step 11a 착수 전 확정.
-- **(pending 2026-07-07) 재개 작업 순서** — Step 4부터 순차 vs 갭 3건(11a~11c) 먼저 vs 혼합. 사용자 소유.
+- **(확정 2026-07-07) CTA pill 방향** — Figma 배리에이션 탐색 후 결정 (Hero Pilot 페이지에 radius 4/8/pill 3안 게시, 사용자 픽 대기). 픽 확정 시 코드+DESIGN.md 삼자 정합.
+- **(확정 2026-07-07) 재개 작업 순서** — 갭 3건(11a~11c) 먼저, 카드(Step 4~11)는 그 뒤 순차. 11a는 Figma 픽 대기 중이므로 11b→11c 선진행.
 
 - Keep the 12-card atlas. Do not add more cards until these are meaningfully implemented.
 - Work one card at a time. A card is done only when its demo is interactive and Chrome-verified.
@@ -352,8 +352,8 @@ Verification:
 - [ ] Step 10 - Command Center Interface. (verify: mode switch, command filtering, keyboard/click state)
 - [ ] Step 11 - Commerce Flow + Mobile App Patterns. (verify: cart path and mobile bottom-nav state)
 - [ ] Step 11a - Hero/topbar pill-button reconciliation. (verify: 사용자 확정 방향으로 hero CTA·topbar Pro Plan·DESIGN.md §7/§8 삼자 정합 + Chrome 확인 — 방향 결정은 결정 로그)
-- [ ] Step 11b - Dark-mode toggle activation. (verify: 토글이 실제 dark 토큰 테마를 적용, Chrome light/dark 스크린샷)
-- [ ] Step 11c - Showcase reduced-motion fallback. (verify: prefers-reduced-motion 에뮬레이션에서 자동재생 카드가 정적 still frame 제공)
+- [x] Step 11b - Dark-mode toggle activation. (verify: 탑바 SiteThemeToggle(system/light/dark) 클릭 → `.dark` 적용·localStorage 지속·새로고침 유지, light/dark 스크린샷 `docs/research/evidence/pss2-11b-*` — 커밋 baf6c1b)
+- [x] Step 11c - Showcase reduced-motion fallback. (verify: Playwright emulateMedia(reduce)에서 physics/자동재생 카드 정적(innerHTML 무변화) + no-preference에서 낙하·포인터 반응 정상 — 커밋 cf25622)
 - [ ] Step 12 - Integrated showcase QA. (verify: desktop/mobile Chrome screenshots, no overlap, no inert controls, build/lint)
 
 ## Run Boundary
