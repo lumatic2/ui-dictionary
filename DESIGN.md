@@ -191,9 +191,10 @@ Motion rules:
 - Active/hover state may use Violet/Orchid underline or text shift.
 
 ### Button
-- height 40, padding-x 24. radius `sm`.
+- height 40 (hero CTA는 44), padding-x 24. radius `lg` (8px).
 - primary: Violet background / white text. hover opacity 0.9.
 - secondary: 투명 / 1px 보더.
+- 완전한 pill(`rounded-full`)은 쓰지 않는다 — §8 anti-pattern. 8px 라운드가 Askewly의 "살짝 부드럽되 각이 남는" 기본값이다.
 
 ### Input
 - 보더 없음, bottom-border 1px. focus 시 2px.
@@ -211,6 +212,9 @@ Motion rules:
 - Motion that runs forever without communicating state.
 
 ## 9. Changelog
+## 2026-07-07
+- Button radius `sm`(4px) → `lg`(8px)로 확정 (Figma 배리에이션 A/B/C 중 B 픽, PSS2 Step 11a). hero CTA·탑바 Pro Plan `rounded-full` 제거. §8 pill anti-pattern과 코드가 이제 정합.
+
 ## 2026-07-05
 - Bootstrapped design-manual Minimal family and rewrote it as Askewly Design landing guidance.
 - Extracted planning palette from user reference image: `#6F2DBD`, `#A663CC`, `#B298DC`, `#B8D0EB`, `#B9FAF8`.

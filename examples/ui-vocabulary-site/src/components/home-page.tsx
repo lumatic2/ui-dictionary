@@ -218,11 +218,11 @@ export function HomePage({ onNavigate, onSearch, filter, terms }: HomePageProps)
           </p>
 
           <div className="mt-7 flex flex-col gap-3 sm:flex-row">
-            <Button className="h-11 rounded-full bg-askewly-violet px-6 text-white hover:bg-[#5f22a8]" type="button" onClick={() => onNavigate({ page: "plus", filter: "nav:plus-application-ui" })}>
+            <Button className="h-11 rounded-lg bg-askewly-violet px-6 text-white hover:bg-[#5f22a8]" type="button" onClick={() => onNavigate({ page: "plus", filter: "nav:plus-application-ui" })}>
               Get Started
               <ArrowRight aria-hidden="true" className="size-4" />
             </Button>
-            <Button className="h-11 rounded-full border-border bg-background px-6 text-foreground hover:bg-muted" variant="outline" type="button" onClick={() => onNavigate({ page: "docs", filter: "nav:docs-getting-started-setup" })}>
+            <Button className="h-11 rounded-lg border-border bg-background px-6 text-foreground hover:bg-muted" variant="outline" type="button" onClick={() => onNavigate({ page: "docs", filter: "nav:docs-getting-started-setup" })}>
               Open Docs
             </Button>
           </div>

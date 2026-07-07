@@ -36,7 +36,7 @@ planning_gate:
 
 ## Decision Log
 
-- **(확정 2026-07-07) CTA pill 방향** — Figma 배리에이션 탐색 후 결정 (Hero Pilot 페이지에 radius 4/8/pill 3안 게시, 사용자 픽 대기). 픽 확정 시 코드+DESIGN.md 삼자 정합.
+- **(확정 2026-07-07) CTA pill 방향 = B (8px, radius.lg)** — Figma 배리에이션 보드(13:2)에서 사용자 픽. hero CTA·탑바 Pro Plan `rounded-full` → `rounded-lg`(8px), DESIGN.md §7 Button radius `sm`→`lg` 개정. §8 "oversized rounded pills" 안티패턴은 유지(8px는 pill 아님 — 이제 실제로 충족).
 - **(확정 2026-07-07) 재개 작업 순서** — 갭 3건(11a~11c) 먼저, 카드(Step 4~11)는 그 뒤 순차. 11a는 Figma 픽 대기 중이므로 11b→11c 선진행.
 
 - Keep the 12-card atlas. Do not add more cards until these are meaningfully implemented.
