@@ -257,23 +257,14 @@ function DashboardShowcase({
 }: {
   onNavigate: () => void
 }) {
+  void onNavigate
+
   return (
-    <div className="group relative min-w-0 overflow-hidden rounded-[1.75rem] border border-white/12 bg-white/[0.03] p-2 shadow-[0_24px_120px_rgba(0,0,0,0.55)] backdrop-blur-sm transition hover:border-white/22">
-      <div className="relative overflow-hidden rounded-[1.35rem] border border-white/10 bg-slate-950">
-        <img
-          className="block aspect-[1.91/1] w-full object-cover"
-          src="/assets/bento-grids/dark-deployment-dashboard-v2.png"
-          alt="Dark product operations dashboard with deployments, release summary, activity, and performance panels"
-        />
-        <div className="pointer-events-none absolute inset-x-0 bottom-0 h-32 bg-gradient-to-t from-black/64 to-transparent" />
-        <button
-          className="absolute bottom-5 left-5 inline-flex h-10 items-center justify-center gap-2 rounded-full border border-white/14 bg-white/10 px-4 text-sm font-semibold text-white backdrop-blur transition hover:bg-white hover:text-slate-950 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white"
-          type="button"
-          onClick={onNavigate}
-        >
-          Open pattern
-          <ArrowRight aria-hidden="true" className="size-4" />
-        </button>
+    <div className="grid min-h-[26rem] place-items-center rounded-[1.75rem] border border-dashed border-white/18 bg-white/[0.03] p-6 text-center shadow-[0_24px_120px_rgba(0,0,0,0.35)]">
+      <div className="max-w-[22rem]">
+        <p className="font-mono text-[10px] font-semibold uppercase tracking-[0.2em] text-white/36">Placeholder</p>
+        <p className="mt-3 text-2xl font-semibold text-white">Product operations dashboard</p>
+        <p className="mt-3 text-sm leading-6 text-white/54">Waiting for a source-quality dashboard block or implementation reference.</p>
       </div>
     </div>
   )
@@ -420,6 +411,18 @@ function LineArtIcon({ id }: { id: AtlasItemId }) {
     <span className="flex h-16 w-20 shrink-0 items-start justify-center text-card-foreground">
       <Icon aria-hidden="true" className="mt-1 size-11" strokeWidth={1.75} absoluteStrokeWidth />
     </span>
+  )
+}
+
+function AtlasContentPlaceholder({ title }: { title: string }) {
+  return (
+    <div className="grid min-h-[22.2rem] place-items-center rounded-md border border-dashed border-slate-300 bg-white p-5 text-center">
+      <div className="max-w-[18rem]">
+        <p className="font-mono text-[10px] font-semibold uppercase tracking-[0.18em] text-slate-400">Placeholder</p>
+        <p className="mt-3 text-lg font-semibold text-slate-950">{title}</p>
+        <p className="mt-2 text-sm leading-6 text-slate-500">Waiting for a source-quality block or implementation reference.</p>
+      </div>
+    </div>
   )
 }
 
@@ -916,6 +919,11 @@ function AtlasDemo({ id }: { id: AtlasItemId }) {
 
   if (id === "motion") {
     return <MotionShowcaseDemo />
+  }
+
+  if (id === "landing" || id === "command" || id === "commerce" || id === "mobile") {
+    const title = atlasItems.find((item) => item.id === id)?.title ?? "Showcase card"
+    return <AtlasContentPlaceholder title={title} />
   }
 
   if (id === "command") {
