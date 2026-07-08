@@ -2057,7 +2057,7 @@ function ColorPaletteGeneratorDemo() {
 
   return (
     <div ref={paletteRootRef} className="relative min-h-[18.6rem]" onKeyDown={handleKeyDown}>
-      <div className="absolute right-0 top-[-5.35rem] z-30 flex items-center gap-2" data-palette-header-actions="true">
+      <div className="absolute right-0 top-[-3.35rem] z-30 flex items-center gap-2" data-palette-header-actions="true">
         <button
           className="inline-flex h-8 items-center gap-2 rounded-md border border-slate-200 bg-white px-3 text-xs font-semibold text-slate-700 shadow-sm transition hover:border-slate-300 hover:text-slate-950 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-askewly-violet"
           type="button"
@@ -2088,8 +2088,8 @@ function ColorPaletteGeneratorDemo() {
         tabIndex={0}
         aria-label="Interactive color palette generator"
       >
-        <div ref={paletteBoardRef} className="relative flex h-[21.5rem] overflow-visible">
-          <span className="group/add-start absolute inset-y-0 left-2 z-30 flex w-10 items-center justify-start">
+        <div ref={paletteBoardRef} className="relative flex h-[21.5rem] overflow-visible" data-palette-board="true">
+          <span className="group/add-start absolute inset-y-0 left-2 z-30 flex w-10 items-center justify-start" data-palette-add-start="true">
             <button
               className="grid size-9 place-items-center rounded-full border border-slate-200 bg-white text-slate-950 opacity-0 shadow-md transition hover:scale-105 hover:bg-slate-50 focus-visible:opacity-100 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-askewly-violet group-hover/add-start:opacity-100"
               type="button"
@@ -2099,7 +2099,7 @@ function ColorPaletteGeneratorDemo() {
               <Plus aria-hidden="true" className="size-5" />
             </button>
           </span>
-          <span className="group/add-end absolute inset-y-0 right-2 z-30 flex w-10 items-center justify-end">
+          <span className="group/add-end absolute inset-y-0 right-2 z-30 flex w-10 items-center justify-end" data-palette-add-end="true">
             <button
               className="grid size-9 place-items-center rounded-full border border-slate-200 bg-white text-slate-950 opacity-0 shadow-md transition hover:scale-105 hover:bg-slate-50 focus-visible:opacity-100 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-askewly-violet group-hover/add-end:opacity-100"
               type="button"
@@ -2111,6 +2111,7 @@ function ColorPaletteGeneratorDemo() {
           </span>
           {palette.map((color, index) => {
             const textColor = getReadableTextColor(color.hex)
+            const isShadeColumn = shadeState?.index === index
             const dragShift =
               draggedIndex === null || dragTargetIndex === null ? undefined :
               draggedIndex < dragTargetIndex && index > draggedIndex && index <= dragTargetIndex ? "translateX(-100%)" :
@@ -2152,7 +2153,7 @@ function ColorPaletteGeneratorDemo() {
                   <span className="font-mono text-[10px] font-semibold uppercase tracking-[0.12em] opacity-80">0{index + 1}</span>
                   {color.locked && <Lock aria-hidden="true" className="size-3.5" />}
                 </span>
-                <span className="min-w-0">
+                <span className={cn("min-w-0", isShadeColumn && "opacity-0")}>
                   <button
                     className="block max-w-full truncate rounded px-0.5 text-left font-mono text-[11px] font-semibold uppercase tracking-normal transition hover:bg-white/22 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-current"
                     type="button"
@@ -2168,10 +2169,32 @@ function ColorPaletteGeneratorDemo() {
                   </button>
                   <span className="mt-1 block truncate text-xs font-semibold">{color.name}</span>
                 </span>
+                {isShadeColumn && (
+                  <div className={cn("palette-shades-panel absolute inset-0 z-10 grid grid-rows-10 overflow-hidden", shadePanelClosing && "palette-shades-panel-exit")} data-palette-column-shades="true">
+                    {shadeSet.map((shade) => (
+                      <button
+                        key={shade.hex}
+                        className="transition hover:brightness-105 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-inset focus-visible:ring-white"
+                        type="button"
+                        aria-label={`Apply shade ${shade.hex}`}
+                        style={{ backgroundColor: shade.hex }}
+                        onClick={(event) => {
+                          event.stopPropagation()
+                          applyShade(shade)
+                        }}
+                      >
+                        <span className="sr-only">{shade.hex}</span>
+                      </button>
+                    ))}
+                    <span className="pointer-events-none absolute left-1/2 top-[58%] -translate-x-1/2 -translate-y-1/2 rounded-full bg-black/18 px-2 py-1 font-mono text-[11px] font-semibold uppercase tracking-normal text-white">
+                      {color.hex.replace("#", "")}
+                    </span>
+                  </div>
+                )}
                 <span
                   className={cn(
                     "absolute left-1/2 top-1/2 flex -translate-x-1/2 -translate-y-1/2 flex-col gap-1 opacity-0 transition",
-                    isDraggingPalette ? "pointer-events-none" : "group-hover/swatch:opacity-100",
+                    isDraggingPalette || isShadeColumn ? "pointer-events-none" : "group-hover/swatch:opacity-100",
                   )}
                   data-palette-actions="true"
                 >
@@ -2295,23 +2318,7 @@ function ColorPaletteGeneratorDemo() {
                 {infoColor ? `${infoColor.hex} / RGB ${formatRgb(infoColor.hex)} / HSL ${hexToHsl(infoColor.hex)}` : "Select a color"}
               </p>
             </div>
-            {shadeState !== null ? (
-              <div className={cn("palette-shades-panel grid h-9 grid-cols-10 overflow-hidden rounded border border-slate-200", shadePanelClosing && "palette-shades-panel-exit")}>
-                {shadeSet.map((shade) => (
-                  <button
-                    key={shade.hex}
-                    className="h-full transition hover:brightness-95 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-askewly-violet"
-                    type="button"
-                    style={{ backgroundColor: shade.hex, color: getReadableTextColor(shade.hex) }}
-                    onClick={() => applyShade(shade)}
-                  >
-                    <span className="sr-only">{shade.hex}</span>
-                  </button>
-                ))}
-              </div>
-            ) : (
-              <div className="h-9" aria-hidden="true" />
-            )}
+            <div className="h-9" aria-hidden="true" />
           </div>
         </div>
 
