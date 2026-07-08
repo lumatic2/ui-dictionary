@@ -982,45 +982,20 @@ select {
   }
 }
 
-@keyframes color-pairing-enter {
+@keyframes palette-generator-enter {
   0% {
     opacity: 0;
-    transform: scale(1.018);
+    transform: translateY(8px) scale(0.98);
   }
-  14%,
+  42%,
   100% {
     opacity: 1;
-    transform: scale(1);
+    transform: translateY(0) scale(1);
   }
 }
 
-@keyframes color-pairing-wipe {
-  0% {
-    opacity: 0;
-    transform: translateX(-120%) skewX(-10deg);
-  }
-  18% {
-    opacity: 0.34;
-  }
-  42% {
-    opacity: 0.28;
-    transform: translateX(120%) skewX(-10deg);
-  }
-  43%,
-  100% {
-    opacity: 0;
-    transform: translateX(120%) skewX(-10deg);
-  }
-}
-
-.color-pairing-enter {
-  animation: color-pairing-enter 900ms ease-out both;
-}
-
-.color-pairing-wipe {
-  animation: color-pairing-wipe 1200ms cubic-bezier(0.33, 1, 0.68, 1) both;
-  background: linear-gradient(90deg, transparent 38%, rgba(255, 255, 255, 0.72) 50%, transparent 62%);
-  mix-blend-mode: overlay;
+.palette-generator-enter {
+  animation: palette-generator-enter 520ms cubic-bezier(0.33, 1, 0.68, 1) both;
 }
 
 @keyframes filters-wipe-sweep {

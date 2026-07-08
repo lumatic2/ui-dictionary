@@ -199,28 +199,28 @@ Verification:
 - Chrome control changes rendered gradient.
 - Failure mode: no purple-dominated one-note surface.
 
-### 7. Color Pairing System
+### 7. Color Palette Generator
 
 Proposed copy:
 
-> Two-color palettes assigned to surface, type, border, and emphasis roles.
+> Generate, lock, inspect, and export five-color palettes from one compact design surface.
 
 Content to show:
 
-- A bold editorial poster-like surface with two-color palette pairings.
-- Large stacked typography, split fields, swatch pills, and role labels.
-- Palette changes should show surface/type/border/accent assignment, not only decorative color.
+- A Coolors-inspired generator using the provided seed palette: `#FF99C8`, `#FCF6BD`, `#D0F4DE`, `#A9DEF9`, `#E4C1F9`.
+- Five full-height color columns with hex/name labels, selected-state inspection, and hover action affordances.
+- A compact quick-view row showing HEX/RGB plus a palette preview, with an export menu for URL/CSS/SVG/Tailwind.
 
 Interaction contract:
 
-- The card auto-cycles through multiple two-color pairings.
-- Each pairing swaps foreground/background roles across the same layout.
-- The visual should read immediately beside Shader Gradient System: graphic, decisive, and editorial rather than fluid.
+- Generate changes only unlocked columns, mirroring the Coolors spacebar flow.
+- The selected color can be locked/unlocked, and locked colors persist across generation.
+- Export opens a small format menu rather than a static decorative label.
 
 Verification:
 
-- Chrome confirms the color pairing loop changes palette, role chips, and poster text without clipping.
-- Failure mode: text must stay legible at the card width and avoid becoming a one-note gradient/color blob.
+- Chrome confirms generate, lock, inspect, and export states inside the atlas card.
+- Failure mode: columns must remain readable at card width and the generator should not collapse into a static palette poster.
 
 ### 8. Image Treatment
 
@@ -352,7 +352,7 @@ Verification:
 - [ ] Step 4 - Scroll-Driven Narrative. (verify: auto progress changes chapter, copy, and layers)
 - [ ] Step 5 - Motion Choreography. (verify: easing balls loop and remain visually comparable)
 - [ ] Step 6 - Shader Gradient System. (verify: self-running gradient loop preserves contrast)
-- [ ] Step 7 - Color Pairing System. (verify: palette pairings cycle and poster text remains legible)
+- [ ] Step 7 - Color Palette Generator. (verify: generate changes unlocked colors, lock persists one color, inspect/export states render)
 - [ ] Step 8 - Image Treatment wide strip. (verify: automatic treatment loop changes filter/mask/crop state)
 - [ ] Step 9 - Hero Composition. (verify: Askewly hero asset reflows without clipping)
 - [ ] Step 10 - Command Center Interface. (verify: mode switch, command filtering, keyboard/click state)

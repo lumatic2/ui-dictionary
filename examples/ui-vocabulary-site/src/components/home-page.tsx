@@ -15,11 +15,16 @@ import {
   ArrowUp,
   Check,
   Command,
+  Copy,
   FileCode2,
+  Info,
+  Lock,
   Palette,
   Play,
+  Shuffle,
   SkipBack,
   SkipForward,
+  Download,
   LayoutDashboard,
   Magnet,
   MousePointerClick,
@@ -29,6 +34,7 @@ import {
   SlidersHorizontal,
   Smartphone,
   Sparkles,
+  Unlock,
   WandSparkles,
   ScrollText,
   type LucideIcon,
@@ -175,7 +181,7 @@ const atlasItems = [
   { id: "scroll", title: "Product Surface Coverflow", copy: "Distinct product surfaces glide past in a self-playing 3D coverflow.", layout: "md:col-span-1 xl:col-span-2" },
   { id: "motion", title: "Motion Choreography", copy: "Sequencing multiple motion cues into one coherent, readable rhythm.", layout: "md:col-span-1 xl:col-span-2" },
   { id: "shader", title: "Shader Gradient System", copy: "Tokenized color palettes rendered as a continuously animated gradient shader.", layout: "md:col-span-1 xl:col-span-3" },
-  { id: "color", title: "Color Pairing System", copy: "Two-color palettes assigned to surface, type, border, and emphasis roles.", layout: "md:col-span-1 xl:col-span-3" },
+  { id: "color", title: "Color Palette Generator", copy: "Generate, lock, inspect, and export five-color palettes from one compact design surface.", layout: "md:col-span-1 xl:col-span-3" },
   { id: "filters", title: "Image Treatment", copy: "Predefined color and grain recipes applied consistently across a set of photos.", layout: "md:col-span-2 xl:col-span-6" },
   { id: "landing", title: "Hero Composition", copy: "First-viewport structure balancing headline, proof surface, calls to action, media, and visual rhythm.", layout: "md:col-span-1 xl:col-span-3" },
   { id: "command", title: "Command Center Interface", copy: "Keyboard-first product control with search, review queues, agent actions, and system status in one place.", layout: "md:col-span-1 xl:col-span-3" },
@@ -1034,7 +1040,7 @@ function AtlasDemo({ id }: { id: AtlasItemId }) {
   }
 
   if (id === "color") {
-    return <ColorPairingDemo />
+    return <ColorPaletteGeneratorDemo />
   }
 
   if (id === "shader") {
@@ -1491,99 +1497,214 @@ function MotionShowcaseDemo() {
   )
 }
 
-const colorPairings = [
-  {
-    name: "Royal Gold",
-    swatches: ["#D1A054", "#2D2C2A"],
-    words: ["ROYAL", "GOLD", "BLACK", "WALNUT"],
-    roles: ["surface", "ink", "border", "accent"],
-  },
-  {
-    name: "Mint Ink",
-    swatches: ["#B9FAF8", "#102A33"],
-    words: ["MINT", "INK", "SOFT", "SIGNAL"],
-    roles: ["field", "type", "rule", "glow"],
-  },
-  {
-    name: "Lavender Slate",
-    swatches: ["#B298DC", "#17151F"],
-    words: ["LAVENDER", "SLATE", "QUIET", "SYSTEM"],
-    roles: ["panel", "copy", "line", "state"],
-  },
-] as const
+type PaletteColor = {
+  hex: string
+  name: string
+}
 
-const COLOR_PAIRING_CYCLE_MS = 4200
+type GeneratorColor = PaletteColor & {
+  locked: boolean
+}
 
-function ColorPairingDemo() {
+const paletteGeneratorSets: PaletteColor[][] = [
+  [
+    { hex: "#FF99C8", name: "Baby Pink" },
+    { hex: "#FCF6BD", name: "Lemon Chiffon" },
+    { hex: "#D0F4DE", name: "Frosted Mint" },
+    { hex: "#A9DEF9", name: "Icy Blue" },
+    { hex: "#E4C1F9", name: "Mauve" },
+  ],
+  [
+    { hex: "#12130F", name: "Onyx" },
+    { hex: "#5B9279", name: "Viridian" },
+    { hex: "#8FCB9B", name: "Mint Leaf" },
+    { hex: "#EAE6E5", name: "Soft Ash" },
+    { hex: "#8F8073", name: "Taupe" },
+  ],
+  [
+    { hex: "#12130F", name: "Onyx" },
+    { hex: "#FBBA72", name: "Apricot" },
+    { hex: "#CA5310", name: "Burnt Orange" },
+    { hex: "#BB4D00", name: "Copper" },
+    { hex: "#8F250C", name: "Russet" },
+  ],
+  [
+    { hex: "#102A33", name: "Deep Ink" },
+    { hex: "#6F2DBD", name: "Violet" },
+    { hex: "#A663CC", name: "Orchid" },
+    { hex: "#B9FAF8", name: "Mint" },
+    { hex: "#F8FAFC", name: "Cloud" },
+  ],
+  [
+    { hex: "#1C1C1C", name: "Carbon" },
+    { hex: "#E7CBA9", name: "Canvas" },
+    { hex: "#C6D8AF", name: "Sage" },
+    { hex: "#8AA399", name: "Sea Glass" },
+    { hex: "#F4F1DE", name: "Parchment" },
+  ],
+]
+
+function getReadableTextColor(hex: string) {
+  const value = hex.replace("#", "")
+  const red = parseInt(value.slice(0, 2), 16)
+  const green = parseInt(value.slice(2, 4), 16)
+  const blue = parseInt(value.slice(4, 6), 16)
+  const luminance = (0.299 * red + 0.587 * green + 0.114 * blue) / 255
+  return luminance > 0.62 ? "#111827" : "#F8FAFC"
+}
+
+function hexToRgb(hex: string) {
+  const value = hex.replace("#", "")
+  return `${parseInt(value.slice(0, 2), 16)}, ${parseInt(value.slice(2, 4), 16)}, ${parseInt(value.slice(4, 6), 16)}`
+}
+
+function ColorPaletteGeneratorDemo() {
   const prefersReducedMotion = usePrefersReducedMotion()
-  const [pairingIndex, setPairingIndex] = useState(0)
+  const [paletteIndex, setPaletteIndex] = useState(0)
+  const [palette, setPalette] = useState<GeneratorColor[]>(() => paletteGeneratorSets[0].map((color) => ({ ...color, locked: false })))
+  const [selectedIndex, setSelectedIndex] = useState(0)
+  const [exportOpen, setExportOpen] = useState(false)
+  const selectedColor = palette[selectedIndex] ?? palette[0]
+  const previewBackground = `linear-gradient(135deg, ${palette.map((color, index) => `${color.hex} ${index * 20}% ${(index + 1) * 20}%`).join(", ")})`
 
-  useEffect(() => {
-    if (prefersReducedMotion) return
-    const timer = window.setInterval(() => {
-      setPairingIndex((value) => (value + 1) % colorPairings.length)
-    }, COLOR_PAIRING_CYCLE_MS)
-    return () => window.clearInterval(timer)
-  }, [prefersReducedMotion])
+  const generatePalette = () => {
+    const nextIndex = (paletteIndex + 1) % paletteGeneratorSets.length
+    const nextSet = paletteGeneratorSets[nextIndex]
+    setPalette((current) => current.map((color, index) => (color.locked ? color : { ...nextSet[index], locked: false })))
+    setPaletteIndex(nextIndex)
+    setExportOpen(false)
+  }
 
-  const pairing = colorPairings[pairingIndex]
-  const [surface, ink] = pairing.swatches
-  const posterStyle = {
-    "--pair-surface": surface,
-    "--pair-ink": ink,
-  } as CSSProperties
+  const toggleLock = (index: number) => {
+    setPalette((current) => current.map((color, colorIndex) => (colorIndex === index ? { ...color, locked: !color.locked } : color)))
+    setSelectedIndex(index)
+  }
+
+  const handleKeyDown = (event: ReactKeyboardEvent<HTMLDivElement>) => {
+    if (event.code === "Space") {
+      event.preventDefault()
+      generatePalette()
+    }
+  }
 
   return (
-    <div className="min-h-[18.6rem]">
-      <div className="mb-4 flex items-center justify-between">
+    <div className="min-h-[18.6rem]" onKeyDown={handleKeyDown}>
+      <div className="mb-4 flex flex-wrap items-center justify-between gap-3">
         <p className="font-mono text-[10px] uppercase tracking-[0.16em] text-slate-400">
-          palette {pairingIndex + 1} / {colorPairings.length}
+          space to generate
         </p>
         <div className="flex items-center gap-2">
-          {pairing.swatches.map((swatch) => (
-            <span key={swatch} className="h-6 rounded-full border border-slate-950/15 px-3 font-mono text-[10px] leading-6" style={{ backgroundColor: swatch, color: swatch === ink ? surface : ink }}>
-              {swatch}
-            </span>
-          ))}
+          <button
+            className="inline-flex h-8 items-center gap-2 rounded-md border border-slate-200 bg-white px-3 text-xs font-semibold text-slate-700 shadow-sm transition hover:border-slate-300 hover:text-slate-950 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-askewly-violet"
+            type="button"
+            onClick={generatePalette}
+          >
+            <Shuffle aria-hidden="true" className="size-3.5" />
+            Generate
+          </button>
+          <button
+            className={cn(
+              "inline-flex size-8 items-center justify-center rounded-md border text-slate-600 transition focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-askewly-violet",
+              exportOpen ? "border-slate-950 bg-slate-950 text-white" : "border-slate-200 bg-white hover:border-slate-300 hover:text-slate-950",
+            )}
+            type="button"
+            aria-label="Export palette"
+            onClick={() => setExportOpen((value) => !value)}
+          >
+            <Download aria-hidden="true" className="size-3.5" />
+          </button>
         </div>
       </div>
-      <div className="relative h-60 overflow-hidden rounded-md border border-slate-200 bg-white" style={posterStyle}>
-        <div key={pairing.name} className={cn("absolute inset-0", !prefersReducedMotion && "color-pairing-enter")}>
-          <div className="absolute inset-x-0 top-0 h-[52%]" style={{ backgroundColor: surface }} />
-          <div className="absolute inset-x-0 bottom-0 h-[48%]" style={{ backgroundColor: ink }} />
-          <div className="absolute left-1/2 top-[9%] -translate-x-1/2 rounded-full border px-6 py-1.5 font-mono text-[10px] uppercase tracking-[0.18em]" style={{ borderColor: ink, color: ink }}>
-            {surface}
+
+      <div
+        className="relative overflow-hidden rounded-md border border-slate-200 bg-white shadow-sm focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-askewly-violet"
+        tabIndex={0}
+        aria-label="Interactive color palette generator"
+      >
+        <div className="flex h-52">
+          {palette.map((color, index) => {
+            const textColor = getReadableTextColor(color.hex)
+            const isSelected = index === selectedIndex
+            return (
+              <button
+                key={`${color.hex}-${index}`}
+                className={cn(
+                  "group/swatch relative flex min-w-0 flex-1 flex-col justify-between overflow-hidden p-3 text-left transition",
+                  !prefersReducedMotion && "palette-generator-enter",
+                  isSelected && "z-10 shadow-[inset_0_0_0_2px_rgba(15,23,42,0.72)]",
+                )}
+                style={{ backgroundColor: color.hex, color: textColor }}
+                type="button"
+                onClick={() => {
+                  setSelectedIndex(index)
+                  setExportOpen(false)
+                }}
+              >
+                <span className="flex items-center justify-between gap-2">
+                  <span className="font-mono text-[10px] font-semibold uppercase tracking-[0.12em] opacity-80">0{index + 1}</span>
+                  {color.locked ? <Lock aria-hidden="true" className="size-3.5" /> : <Unlock aria-hidden="true" className="size-3.5 opacity-0 transition group-hover/swatch:opacity-70" />}
+                </span>
+                <span className="min-w-0">
+                  <span className="block truncate font-mono text-[11px] font-semibold uppercase tracking-normal">{color.hex.replace("#", "")}</span>
+                  <span className="mt-1 block truncate text-xs font-semibold">{color.name}</span>
+                </span>
+                <span className="absolute right-2 top-1/2 flex -translate-y-1/2 flex-col gap-1 opacity-0 transition group-hover/swatch:opacity-100">
+                  <span className="grid size-6 place-items-center rounded-full border border-current/20 bg-white/18 backdrop-blur-sm">
+                    <Info aria-hidden="true" className="size-3" />
+                  </span>
+                  <span className="grid size-6 place-items-center rounded-full border border-current/20 bg-white/18 backdrop-blur-sm">
+                    <Copy aria-hidden="true" className="size-3" />
+                  </span>
+                </span>
+              </button>
+            )
+          })}
+        </div>
+
+        <div className="grid border-t border-slate-200 bg-white md:grid-cols-[1fr_13rem]">
+          <div className="min-w-0 p-3">
+            <div className="flex items-center justify-between gap-3">
+              <div className="min-w-0">
+                <p className="truncate text-sm font-semibold text-slate-950">{selectedColor.name}</p>
+                <p className="mt-1 font-mono text-[11px] uppercase tracking-normal text-slate-500">
+                  {selectedColor.hex} / RGB {hexToRgb(selectedColor.hex)}
+                </p>
+              </div>
+              <button
+                className="inline-flex size-8 shrink-0 items-center justify-center rounded-md border border-slate-200 bg-slate-50 text-slate-700 transition hover:border-slate-300 hover:bg-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-askewly-violet"
+                type="button"
+                aria-label={selectedColor.locked ? "Unlock selected color" : "Lock selected color"}
+                onClick={() => toggleLock(selectedIndex)}
+              >
+                {selectedColor.locked ? <Lock aria-hidden="true" className="size-3.5" /> : <Unlock aria-hidden="true" className="size-3.5" />}
+              </button>
+            </div>
           </div>
-          <div className="absolute left-1/2 bottom-[9%] -translate-x-1/2 rounded-full border px-6 py-1.5 font-mono text-[10px] uppercase tracking-[0.18em]" style={{ borderColor: surface, color: surface }}>
-            {ink}
-          </div>
-          <div className="absolute inset-x-0 top-[51%] -translate-y-1/2 text-center font-black uppercase leading-[0.8] tracking-normal">
-            <p className="text-[3.45rem] sm:text-[3.95rem]" style={{ color: ink, textShadow: `0 1px 0 ${surface}` }}>{pairing.words[0]}</p>
-            <p className="text-[3.6rem] sm:text-[4.15rem]" style={{ color: ink, textShadow: `0 1px 0 ${surface}` }}>{pairing.words[1]}</p>
-            <p className="-mt-0.5 text-[3.15rem] sm:text-[3.55rem]" style={{ color: surface, textShadow: `0 -1px 0 ${ink}` }}>{pairing.words[2]}</p>
-            <p className="text-[3.25rem] sm:text-[3.65rem]" style={{ color: surface, textShadow: `0 -1px 0 ${ink}` }}>{pairing.words[3]}</p>
-          </div>
-          <div className="absolute inset-y-0 left-0 w-8 opacity-20" style={{ backgroundImage: `repeating-linear-gradient(0deg, ${ink} 0 1px, transparent 1px 8px)` }} />
-          <div className="absolute inset-y-0 right-0 w-8 opacity-20" style={{ backgroundImage: `repeating-linear-gradient(0deg, ${surface} 0 1px, transparent 1px 8px)` }} />
-          {!prefersReducedMotion && (
-            <div className="color-pairing-wipe absolute inset-0" />
-          )}
-          <div className="absolute inset-x-0 top-[52%] h-px" style={{ backgroundColor: surface }} />
-          <div className="absolute inset-x-0 top-[calc(52%-1px)] h-px" style={{ backgroundColor: ink }} />
-          <div className="absolute bottom-3 left-4 font-mono text-[9px] uppercase tracking-[0.2em]" style={{ color: surface }}>
-            {pairing.name}
-          </div>
-          <div className="absolute bottom-3 right-4 hidden gap-1.5 font-mono text-[8px] uppercase tracking-[0.16em] sm:flex" style={{ color: surface }}>
-            {pairing.roles.map((role) => (
-              <span key={role}>{role}</span>
-            ))}
-          </div>
-          <div className="absolute left-4 top-3 font-mono text-[9px] uppercase tracking-[0.2em]" style={{ color: ink }}>
-            role swap
+          <div className="hidden border-l border-slate-200 p-3 md:block">
+            <div className="h-full rounded bg-slate-950 p-2 text-white" style={{ background: previewBackground }}>
+              <div className="flex h-full flex-col justify-between rounded border border-white/30 bg-black/18 p-2 backdrop-blur-[1px]">
+                <p className="font-mono text-[9px] uppercase tracking-[0.16em] text-white/80">preview</p>
+                <p className="text-lg font-semibold leading-none text-white drop-shadow">Aa</p>
+              </div>
+            </div>
           </div>
         </div>
-        <div className="pointer-events-none absolute inset-0 ring-1 ring-inset ring-black/10" />
-        <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_50%_44%,transparent_0_34%,rgba(255,255,255,0.08)_35%,transparent_52%)] mix-blend-overlay" />
+
+        {exportOpen && (
+          <div className="absolute right-3 top-12 z-20 w-44 rounded-md border border-slate-200 bg-white p-2 shadow-xl">
+            <p className="px-2 py-1 font-mono text-[10px] uppercase tracking-[0.14em] text-slate-400">Export Palette</p>
+            {["URL", "CSS", "SVG", "Tailwind"].map((format) => (
+              <button
+                key={format}
+                className="flex w-full items-center justify-between rounded px-2 py-1.5 text-left text-xs font-semibold text-slate-700 transition hover:bg-slate-100 hover:text-slate-950"
+                type="button"
+              >
+                {format}
+                <ArrowRight aria-hidden="true" className="size-3" />
+              </button>
+            ))}
+          </div>
+        )}
       </div>
     </div>
   )
