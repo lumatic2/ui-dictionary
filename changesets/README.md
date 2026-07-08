@@ -19,3 +19,4 @@
 | 17 | 20260709-palette-row-above-image-portrait-strip | 2026-07-09 | Showcase atlas moves Color Palette above Shader/Image and simplifies Image Treatment portraits | 4/4 | complete |
 | 18 | 20260709-palette-header-actions-taller-board | 2026-07-09 | Color Palette Generator moves actions to header and expands palette board height | 4/4 | complete |
 | 19 | 20260709-palette-column-shades-header-bottom-actions | 2026-07-09 | Color Palette Generator lowers header actions and moves shades into the selected color column | 4/4 | complete |
+| 20 | 20260709-palette-shade-column-selection | 2026-07-09 | Color Palette Generator orders shade columns, hover labels, and selected shade dots | 4/4 | complete |

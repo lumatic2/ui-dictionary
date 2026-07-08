@@ -1670,9 +1670,9 @@ function hsvToHex(hue: number, saturation: number, value: number) {
 }
 
 function buildShadeSet(color: PaletteColor) {
-  return [-88, -68, -48, -28, -10, 10, 28, 46, 64, 82].map((amount) => ({
+  return [82, 64, 46, 28, 10, 0, -10, -28, -48, -68].map((amount) => ({
     hex: shiftHex(color.hex, amount),
-    name: `${color.name} ${amount < 0 ? "Shade" : "Tint"} ${Math.abs(amount)}`,
+    name: amount === 0 ? color.name : `${color.name} ${amount < 0 ? "Shade" : "Tint"} ${Math.abs(amount)}`,
   }))
 }
 
@@ -2112,6 +2112,7 @@ function ColorPaletteGeneratorDemo() {
           {palette.map((color, index) => {
             const textColor = getReadableTextColor(color.hex)
             const isShadeColumn = shadeState?.index === index
+            const selectedShadeHex = color.hex.toUpperCase()
             const dragShift =
               draggedIndex === null || dragTargetIndex === null ? undefined :
               draggedIndex < dragTargetIndex && index > draggedIndex && index <= dragTargetIndex ? "translateX(-100%)" :
@@ -2171,10 +2172,13 @@ function ColorPaletteGeneratorDemo() {
                 </span>
                 {isShadeColumn && (
                   <div className={cn("palette-shades-panel absolute inset-0 z-10 grid grid-rows-10 overflow-hidden", shadePanelClosing && "palette-shades-panel-exit")} data-palette-column-shades="true">
-                    {shadeSet.map((shade) => (
+                    {shadeSet.map((shade) => {
+                      const isSelectedShade = shade.hex.toUpperCase() === selectedShadeHex
+                      const shadeTextColor = getReadableTextColor(shade.hex)
+                      return (
                       <button
                         key={shade.hex}
-                        className="transition hover:brightness-105 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-inset focus-visible:ring-white"
+                        className="group/shade relative transition hover:brightness-105 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-inset focus-visible:ring-white"
                         type="button"
                         aria-label={`Apply shade ${shade.hex}`}
                         style={{ backgroundColor: shade.hex }}
@@ -2183,12 +2187,26 @@ function ColorPaletteGeneratorDemo() {
                           applyShade(shade)
                         }}
                       >
+                        {isSelectedShade && (
+                          <span
+                            className="absolute left-1/2 top-1/2 size-2.5 -translate-x-1/2 -translate-y-1/2 rounded-full ring-2 ring-white/80 shadow"
+                            style={{ backgroundColor: shadeTextColor }}
+                            data-palette-shade-dot="true"
+                            aria-hidden="true"
+                          />
+                        )}
+                        <span
+                          className="pointer-events-none absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 rounded-full px-2 py-1 font-mono text-[11px] font-semibold uppercase tracking-normal opacity-0 shadow-sm transition group-hover/shade:opacity-100 group-focus-visible/shade:opacity-100"
+                          style={{ backgroundColor: `${shadeTextColor}D9`, color: getReadableTextColor(shadeTextColor) }}
+                          data-palette-shade-code="true"
+                          aria-hidden="true"
+                        >
+                          {shade.hex.replace("#", "")}
+                        </span>
                         <span className="sr-only">{shade.hex}</span>
                       </button>
-                    ))}
-                    <span className="pointer-events-none absolute left-1/2 top-[58%] -translate-x-1/2 -translate-y-1/2 rounded-full bg-black/18 px-2 py-1 font-mono text-[11px] font-semibold uppercase tracking-normal text-white">
-                      {color.hex.replace("#", "")}
-                    </span>
+                      )
+                    })}
                   </div>
                 )}
                 <span
