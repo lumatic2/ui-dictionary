@@ -1700,6 +1700,7 @@ function ColorPaletteGeneratorDemo() {
   const paletteRootRef = useRef<HTMLDivElement | null>(null)
   const addedColorIdRef = useRef(0)
   const dragStateRef = useRef<{ sourceIndex: number; targetIndex: number; width: number; boardLeft: number } | null>(null)
+  const isDraggingPalette = draggedIndex !== null
   const pickerColor = pickerOpenIndex === null ? null : palette[pickerOpenIndex]
   const pickerHsv = pickerColor ? hexToHsv(pickerColor.hex) : null
   const pickerHueHex = pickerHsv ? hsvToHex(pickerHsv.h, 100, 100) : "#FF0000"
@@ -2072,7 +2073,13 @@ function ColorPaletteGeneratorDemo() {
                   </button>
                   <span className="mt-1 block truncate text-xs font-semibold">{color.name}</span>
                 </span>
-                <span className="absolute left-1/2 top-1/2 flex -translate-x-1/2 -translate-y-1/2 flex-col gap-1 opacity-0 transition group-hover/swatch:opacity-100 group-focus-within/swatch:opacity-100">
+                <span
+                  className={cn(
+                    "absolute left-1/2 top-1/2 flex -translate-x-1/2 -translate-y-1/2 flex-col gap-1 opacity-0 transition",
+                    isDraggingPalette ? "pointer-events-none" : "group-hover/swatch:opacity-100 group-focus-within/swatch:opacity-100",
+                  )}
+                  data-palette-actions="true"
+                >
                   <button className={cn(actionClass, "group/action relative")} type="button" aria-label={`Remove ${color.hex}`} onClick={(event) => { event.stopPropagation(); removeColor(index) }}>
                     <span className="pointer-events-none absolute bottom-full left-1/2 mb-2 hidden -translate-x-1/2 whitespace-nowrap rounded bg-slate-950 px-2 py-1 text-xs font-semibold text-white shadow-lg group-hover/action:block">Remove color</span>
                     <X aria-hidden="true" className="size-3" />
@@ -2185,13 +2192,13 @@ function ColorPaletteGeneratorDemo() {
           </div>
         )}
 
-        {shadeState !== null && (
-          <div className="border-t border-slate-200 bg-white p-3" data-palette-popover="true">
-            <div className="grid grid-cols-10 overflow-hidden rounded border border-slate-200">
+        <div className="border-t border-slate-200 bg-white p-3" data-palette-bottom-rail="true" data-palette-popover="true">
+          {shadeState !== null ? (
+            <div className="grid h-9 grid-cols-10 overflow-hidden rounded border border-slate-200">
               {shadeSet.map((shade) => (
                 <button
                   key={shade.hex}
-                  className="h-9 transition hover:brightness-95 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-askewly-violet"
+                  className="h-full transition hover:brightness-95 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-askewly-violet"
                   type="button"
                   style={{ backgroundColor: shade.hex, color: getReadableTextColor(shade.hex) }}
                   onClick={() => applyShade(shade)}
@@ -2200,8 +2207,27 @@ function ColorPaletteGeneratorDemo() {
                 </button>
               ))}
             </div>
-          </div>
-        )}
+          ) : (
+            <div className="flex h-9 items-center gap-3">
+              <div className="flex h-full min-w-0 flex-1 overflow-hidden rounded border border-slate-200">
+                {palette.map((color) => (
+                  <span key={color.id} className="min-w-0 flex-1" style={{ backgroundColor: color.hex }}>
+                    <span className="sr-only">{color.hex}</span>
+                  </span>
+                ))}
+              </div>
+              <button
+                className="grid size-9 shrink-0 place-items-center rounded border border-slate-200 text-slate-600 transition hover:border-slate-300 hover:text-slate-950 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-askewly-violet"
+                type="button"
+                data-palette-trigger="true"
+                aria-label="Copy palette HEX values"
+                onClick={() => void writeClipboard(palette.map((color) => color.hex).join(" "))}
+              >
+                <Copy aria-hidden="true" className="size-4" />
+              </button>
+            </div>
+          )}
+        </div>
 
         {exportOpen && (
           <div className="absolute inset-0 z-50 grid place-items-center bg-slate-950/72 p-4" data-palette-popover="true">
