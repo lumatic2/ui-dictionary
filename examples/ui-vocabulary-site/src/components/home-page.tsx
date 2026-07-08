@@ -22,6 +22,7 @@ import {
   MoveHorizontal,
   Palette,
   Play,
+  Plus,
   Shuffle,
   SkipBack,
   SkipForward,
@@ -1572,9 +1573,9 @@ function shiftHex(hex: string, amount: number) {
 }
 
 function buildShadeSet(color: PaletteColor) {
-  return [-58, -28, 0, 30, 62].map((amount, index) => ({
+  return [-88, -68, -48, -28, -10, 10, 28, 46, 64, 82].map((amount) => ({
     hex: shiftHex(color.hex, amount),
-    name: index === 2 ? color.name : `${color.name} ${amount < 0 ? "Shade" : "Tint"} ${Math.abs(amount)}`,
+    name: `${color.name} ${amount < 0 ? "Shade" : "Tint"} ${Math.abs(amount)}`,
   }))
 }
 
@@ -1620,15 +1621,35 @@ function ColorPaletteGeneratorDemo() {
   const prefersReducedMotion = usePrefersReducedMotion()
   const [paletteIndex, setPaletteIndex] = useState(0)
   const [palette, setPalette] = useState<GeneratorColor[]>(() => paletteGeneratorSets[0].map((color) => ({ ...color, locked: false })))
-  const [selectedIndex, setSelectedIndex] = useState(0)
   const [exportOpen, setExportOpen] = useState(false)
   const [pickerOpenIndex, setPickerOpenIndex] = useState<number | null>(null)
-  const [shadeOpenIndex, setShadeOpenIndex] = useState<number | null>(null)
+  const [shadeState, setShadeState] = useState<{ index: number; base: PaletteColor } | null>(null)
   const [draggedIndex, setDraggedIndex] = useState<number | null>(null)
+  const [dragOffset, setDragOffset] = useState(0)
+  const [removingIndex, setRemovingIndex] = useState<number | null>(null)
+  const [copyToast, setCopyToast] = useState<string | null>(null)
   const paletteBoardRef = useRef<HTMLDivElement | null>(null)
+  const paletteRootRef = useRef<HTMLDivElement | null>(null)
   const pickerColor = pickerOpenIndex === null ? null : palette[pickerOpenIndex]
-  const shadeColor = shadeOpenIndex === null ? null : palette[shadeOpenIndex]
-  const shadeSet = shadeColor ? buildShadeSet(shadeColor) : []
+  const shadeSet = shadeState ? buildShadeSet(shadeState.base) : []
+
+  useEffect(() => {
+    const onPointerDown = (event: PointerEvent) => {
+      const target = event.target as HTMLElement
+      if (target.closest("[data-palette-popover]") || target.closest("[data-palette-trigger]")) return
+      setPickerOpenIndex(null)
+      setShadeState(null)
+      setExportOpen(false)
+    }
+    window.addEventListener("pointerdown", onPointerDown)
+    return () => window.removeEventListener("pointerdown", onPointerDown)
+  }, [])
+
+  useEffect(() => {
+    if (!copyToast) return
+    const timer = window.setTimeout(() => setCopyToast(null), 2600)
+    return () => window.clearTimeout(timer)
+  }, [copyToast])
 
   const writeClipboard = async (value: string) => {
     try {
@@ -1645,6 +1666,7 @@ function ColorPaletteGeneratorDemo() {
         document.execCommand("copy")
         document.body.removeChild(textarea)
       }
+      setCopyToast("Color copied to clipboard")
     } catch {
       const textarea = document.createElement("textarea")
       textarea.value = value
@@ -1655,6 +1677,7 @@ function ColorPaletteGeneratorDemo() {
       textarea.select()
       document.execCommand("copy")
       document.body.removeChild(textarea)
+      setCopyToast("Color copied to clipboard")
     }
   }
 
@@ -1664,12 +1687,11 @@ function ColorPaletteGeneratorDemo() {
     setPalette((current) => current.map((color, index) => (color.locked ? color : { ...nextSet[index % nextSet.length], locked: false })))
     setPaletteIndex(nextIndex)
     setPickerOpenIndex(null)
-    setShadeOpenIndex(null)
+    setShadeState(null)
   }
 
   const toggleLock = (index: number) => {
     setPalette((current) => current.map((color, colorIndex) => (colorIndex === index ? { ...color, locked: !color.locked } : color)))
-    setSelectedIndex(index)
   }
 
   const handleKeyDown = (event: ReactKeyboardEvent<HTMLDivElement>) => {
@@ -1683,21 +1705,22 @@ function ColorPaletteGeneratorDemo() {
     if (palette.length <= 3) {
       return
     }
-    setPalette((current) => current.filter((_, colorIndex) => colorIndex !== index))
-    setSelectedIndex((current) => Math.max(0, Math.min(current >= index ? current - 1 : current, palette.length - 2)))
+    setRemovingIndex(index)
+    window.setTimeout(() => {
+      setPalette((current) => current.filter((_, colorIndex) => colorIndex !== index))
+      setRemovingIndex(null)
+    }, prefersReducedMotion ? 0 : 180)
     setPickerOpenIndex(null)
-    setShadeOpenIndex(null)
+    setShadeState(null)
   }
 
   const applyShade = (shade: PaletteColor) => {
-    if (shadeOpenIndex === null) return
-    setPalette((current) => current.map((color, colorIndex) => (colorIndex === shadeOpenIndex ? { ...color, ...shade } : color)))
-    setSelectedIndex(shadeOpenIndex)
+    if (!shadeState) return
+    setPalette((current) => current.map((color, colorIndex) => (colorIndex === shadeState.index ? { ...color, ...shade } : color)))
   }
 
   const replaceColor = (index: number, hex: string) => {
     setPalette((current) => current.map((color, colorIndex) => (colorIndex === index ? { ...color, hex } : color)))
-    setSelectedIndex(index)
   }
 
   const reorderColor = (fromIndex: number, toIndex: number) => {
@@ -1708,7 +1731,12 @@ function ColorPaletteGeneratorDemo() {
       next.splice(toIndex, 0, moved)
       return next
     })
-    setSelectedIndex(toIndex)
+  }
+
+  const addColor = (side: "start" | "end") => {
+    const nextSet = paletteGeneratorSets[(paletteIndex + 1) % paletteGeneratorSets.length]
+    const candidate = nextSet.find((color) => !palette.some((item) => item.hex === color.hex)) ?? nextSet[palette.length % nextSet.length] ?? { hex: "#F8FAFC", name: "Cloud" }
+    setPalette((current) => side === "start" ? [{ ...candidate, locked: false }, ...current] : [...current, { ...candidate, locked: false }])
   }
 
   const startPaletteDrag = (event: ReactPointerEvent<HTMLSpanElement>, index: number) => {
@@ -1719,20 +1747,29 @@ function ColorPaletteGeneratorDemo() {
     if (!board) return
     const rect = board.getBoundingClientRect()
     setDraggedIndex(index)
+    setDragOffset(0)
 
+    const moveDrag = (pointerEvent: PointerEvent) => {
+      setDragOffset(pointerEvent.clientX - event.clientX)
+    }
     const finishDrag = (pointerEvent: PointerEvent) => {
       const ratio = (pointerEvent.clientX - rect.left) / rect.width
       const targetIndex = Math.min(palette.length - 1, Math.max(0, Math.floor(ratio * palette.length)))
       reorderColor(index, targetIndex)
       setDraggedIndex(null)
+      setDragOffset(0)
+      window.removeEventListener("pointermove", moveDrag)
       window.removeEventListener("pointerup", finishDrag)
       window.removeEventListener("pointercancel", cancelDrag)
     }
     const cancelDrag = () => {
       setDraggedIndex(null)
+      setDragOffset(0)
+      window.removeEventListener("pointermove", moveDrag)
       window.removeEventListener("pointerup", finishDrag)
       window.removeEventListener("pointercancel", cancelDrag)
     }
+    window.addEventListener("pointermove", moveDrag)
     window.addEventListener("pointerup", finishDrag, { once: true })
     window.addEventListener("pointercancel", cancelDrag, { once: true })
   }
@@ -1759,7 +1796,7 @@ function ColorPaletteGeneratorDemo() {
     : undefined
 
   return (
-    <div className="min-h-[18.6rem]" onKeyDown={handleKeyDown}>
+    <div ref={paletteRootRef} className="min-h-[18.6rem]" onKeyDown={handleKeyDown}>
       <div className="mb-4 flex flex-wrap items-center justify-between gap-3">
         <span aria-hidden="true" />
         <div className="flex items-center gap-2">
@@ -1781,7 +1818,7 @@ function ColorPaletteGeneratorDemo() {
             onClick={() => {
               setExportOpen(true)
               setPickerOpenIndex(null)
-              setShadeOpenIndex(null)
+              setShadeState(null)
             }}
           >
             <Download aria-hidden="true" className="size-3.5" />
@@ -1790,33 +1827,56 @@ function ColorPaletteGeneratorDemo() {
       </div>
 
       <div
-        className="relative overflow-hidden rounded-md border border-slate-200 bg-white shadow-sm focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-askewly-violet"
+        className="relative overflow-visible rounded-md border border-slate-200 bg-white shadow-sm focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-askewly-violet"
         tabIndex={0}
         aria-label="Interactive color palette generator"
       >
-        <div ref={paletteBoardRef} className="flex h-[18.5rem]">
+        <button
+          className="absolute -left-4 top-1/2 z-30 grid size-9 -translate-y-1/2 place-items-center rounded-full border border-slate-200 bg-white text-slate-950 shadow-md transition hover:scale-105 hover:bg-slate-50 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-askewly-violet"
+          type="button"
+          aria-label="Add color to start"
+          onClick={() => addColor("start")}
+        >
+          <Plus aria-hidden="true" className="size-5" />
+        </button>
+        <button
+          className="absolute -right-4 top-1/2 z-30 grid size-9 -translate-y-1/2 place-items-center rounded-full border border-slate-200 bg-white text-slate-950 shadow-md transition hover:scale-105 hover:bg-slate-50 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-askewly-violet"
+          type="button"
+          aria-label="Add color to end"
+          onClick={() => addColor("end")}
+        >
+          <Plus aria-hidden="true" className="size-5" />
+        </button>
+
+        <div ref={paletteBoardRef} className="flex h-[18.5rem] overflow-visible">
           {palette.map((color, index) => {
             const textColor = getReadableTextColor(color.hex)
-            const isSelected = index === selectedIndex
             return (
               <div
                 key={`${color.hex}-${index}`}
                 className={cn(
-                  "group/swatch relative flex min-w-0 flex-1 cursor-pointer flex-col justify-between overflow-visible p-3 text-left transition focus-within:z-20",
+                  "group/swatch relative flex min-w-0 flex-1 cursor-pointer flex-col justify-between overflow-visible p-3 text-left transition-all duration-200 focus-within:z-20",
                   !prefersReducedMotion && "palette-generator-enter",
-                  isSelected && "z-10 shadow-[inset_0_0_0_2px_rgba(15,23,42,0.72)]",
-                  draggedIndex === index && "opacity-70",
+                  removingIndex === index && "scale-x-0 opacity-0",
+                  draggedIndex === index && "z-30 scale-[1.02] opacity-90 shadow-2xl",
                 )}
-                style={{ backgroundColor: color.hex, color: textColor }}
+                style={{ backgroundColor: color.hex, color: textColor, transform: draggedIndex === index ? `translateX(${dragOffset}px)` : undefined }}
                 role="button"
                 tabIndex={0}
+                onPointerDown={(event) => {
+                  if ((event.target as HTMLElement).closest("button,[data-palette-popover],[data-palette-trigger]")) return
+                  setPickerOpenIndex(null)
+                  setShadeState(null)
+                }}
                 onClick={() => {
-                  setSelectedIndex(index)
+                  setPickerOpenIndex(null)
+                  setShadeState(null)
                 }}
                 onKeyDown={(event) => {
                   if (event.key === "Enter") {
                     event.preventDefault()
-                    setSelectedIndex(index)
+                    setPickerOpenIndex(null)
+                    setShadeState(null)
                   }
                 }}
               >
@@ -1828,11 +1888,11 @@ function ColorPaletteGeneratorDemo() {
                   <button
                     className="block max-w-full truncate rounded px-0.5 text-left font-mono text-[11px] font-semibold uppercase tracking-normal transition hover:bg-white/22 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-current"
                     type="button"
+                    data-palette-trigger="true"
                     onClick={(event) => {
                       event.stopPropagation()
-                      setSelectedIndex(index)
                       setPickerOpenIndex((current) => (current === index ? null : index))
-                      setShadeOpenIndex(null)
+                      setShadeState(null)
                     }}
                   >
                     {color.hex.replace("#", "")}
@@ -1840,24 +1900,29 @@ function ColorPaletteGeneratorDemo() {
                   <span className="mt-1 block truncate text-xs font-semibold">{color.name}</span>
                 </span>
                 <span className="absolute left-1/2 top-1/2 flex -translate-x-1/2 -translate-y-1/2 flex-col gap-1 opacity-0 transition group-hover/swatch:opacity-100 group-focus-within/swatch:opacity-100">
-                  <button className={actionClass} type="button" aria-label={`Remove ${color.hex}`} onClick={(event) => { event.stopPropagation(); removeColor(index) }}>
+                  <button className={cn(actionClass, "group/action relative")} type="button" aria-label={`Remove ${color.hex}`} onClick={(event) => { event.stopPropagation(); removeColor(index) }}>
+                    <span className="pointer-events-none absolute bottom-full left-1/2 mb-2 hidden -translate-x-1/2 whitespace-nowrap rounded bg-slate-950 px-2 py-1 text-xs font-semibold text-white shadow-lg group-hover/action:block">Remove color</span>
                     <X aria-hidden="true" className="size-3" />
                   </button>
-                  <button className={actionClass} type="button" aria-label={`Show shades for ${color.hex}`} onClick={(event) => { event.stopPropagation(); setSelectedIndex(index); setShadeOpenIndex((current) => current === index ? null : index); setPickerOpenIndex(null) }}>
+                  <button className={cn(actionClass, "group/action relative")} type="button" data-palette-trigger="true" aria-label={`Show shades for ${color.hex}`} onClick={(event) => { event.stopPropagation(); setShadeState((current) => current?.index === index ? null : { index, base: { hex: color.hex, name: color.name } }); setPickerOpenIndex(null) }}>
+                    <span className="pointer-events-none absolute bottom-full left-1/2 mb-2 hidden -translate-x-1/2 whitespace-nowrap rounded bg-slate-950 px-2 py-1 text-xs font-semibold text-white shadow-lg group-hover/action:block">View shades</span>
                     <List aria-hidden="true" className="size-3" />
                   </button>
-                  <span className={cn(actionClass, color.locked ? "cursor-not-allowed opacity-45" : "cursor-grab touch-none active:cursor-grabbing")} aria-label={`Drag ${color.hex}`} role="img" onPointerDown={(event) => startPaletteDrag(event, index)}>
+                  <span className={cn(actionClass, "group/action relative", color.locked ? "cursor-not-allowed opacity-45" : "cursor-grab touch-none active:cursor-grabbing")} aria-label={`Drag ${color.hex}`} role="img" onPointerDown={(event) => startPaletteDrag(event, index)}>
+                    <span className="pointer-events-none absolute bottom-full left-1/2 mb-2 hidden -translate-x-1/2 whitespace-nowrap rounded bg-slate-950 px-2 py-1 text-xs font-semibold text-white shadow-lg group-hover/action:block">Drag color</span>
                     <MoveHorizontal aria-hidden="true" className="size-3" />
                   </span>
-                  <button className={actionClass} type="button" aria-label={`Copy ${color.hex}`} onClick={(event) => { event.stopPropagation(); setSelectedIndex(index); void writeClipboard(color.hex) }}>
+                  <button className={cn(actionClass, "group/action relative")} type="button" aria-label={`Copy ${color.hex}`} onClick={(event) => { event.stopPropagation(); void writeClipboard(color.hex) }}>
+                    <span className="pointer-events-none absolute bottom-full left-1/2 mb-2 hidden -translate-x-1/2 whitespace-nowrap rounded bg-slate-950 px-2 py-1 text-xs font-semibold text-white shadow-lg group-hover/action:block">Copy HEX</span>
                     <Copy aria-hidden="true" className="size-3" />
                   </button>
-                  <button className={actionClass} type="button" aria-label={color.locked ? `Unlock ${color.hex}` : `Lock ${color.hex}`} onClick={(event) => { event.stopPropagation(); toggleLock(index) }}>
+                  <button className={cn(actionClass, "group/action relative")} type="button" aria-label={color.locked ? `Unlock ${color.hex}` : `Lock ${color.hex}`} onClick={(event) => { event.stopPropagation(); toggleLock(index) }}>
+                    <span className="pointer-events-none absolute bottom-full left-1/2 mb-2 hidden -translate-x-1/2 whitespace-nowrap rounded bg-slate-950 px-2 py-1 text-xs font-semibold text-white shadow-lg group-hover/action:block">{color.locked ? "Unlock color" : "Lock color"}</span>
                     {color.locked ? <Lock aria-hidden="true" className="size-3" /> : <Unlock aria-hidden="true" className="size-3" />}
                   </button>
                 </span>
                 {pickerOpenIndex === index && pickerColor && (
-                  <div className="absolute bottom-14 left-1/2 z-40 w-[18.5rem] -translate-x-1/2 rounded-2xl border border-slate-200 bg-white p-3 text-slate-950 shadow-2xl" onClick={(event) => event.stopPropagation()}>
+                  <div className={cn("absolute bottom-14 z-40 w-[16rem] rounded-2xl border border-slate-200 bg-white p-3 text-slate-950 shadow-2xl sm:w-[18rem]", index === 0 ? "left-0" : index >= palette.length - 2 ? "right-0" : "left-1/2 -translate-x-1/2")} data-palette-popover="true" onClick={(event) => event.stopPropagation()}>
                     <div className="relative h-28 overflow-hidden rounded-lg border border-slate-200" style={{ background: pickerGradient }}>
                       <button className="absolute left-[46%] top-0 size-5 -translate-x-1/2 -translate-y-1/2 rounded-full border-4 border-white bg-white shadow" type="button" aria-label="Picker handle" />
                     </div>
@@ -1896,18 +1961,24 @@ function ColorPaletteGeneratorDemo() {
           })}
         </div>
 
-        {shadeOpenIndex !== null && (
-          <div className="border-t border-slate-200 bg-white p-3">
-            <div className="grid grid-cols-5 overflow-hidden rounded border border-slate-200">
+        {copyToast && (
+          <div className="absolute left-1/2 top-3 z-40 -translate-x-1/2 rounded-full bg-slate-950 px-3 py-1.5 text-xs font-semibold text-white shadow-lg">
+            {copyToast}
+          </div>
+        )}
+
+        {shadeState !== null && (
+          <div className="border-t border-slate-200 bg-white p-3" data-palette-popover="true">
+            <div className="grid grid-cols-10 overflow-hidden rounded border border-slate-200">
               {shadeSet.map((shade) => (
                 <button
                   key={shade.hex}
-                  className="h-9 font-mono text-[10px] font-semibold uppercase transition hover:brightness-95 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-askewly-violet"
+                  className="h-9 transition hover:brightness-95 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-askewly-violet"
                   type="button"
                   style={{ backgroundColor: shade.hex, color: getReadableTextColor(shade.hex) }}
                   onClick={() => applyShade(shade)}
                 >
-                  {shade.hex.replace("#", "")}
+                  <span className="sr-only">{shade.hex}</span>
                 </button>
               ))}
             </div>
@@ -1915,7 +1986,7 @@ function ColorPaletteGeneratorDemo() {
         )}
 
         {exportOpen && (
-          <div className="absolute inset-0 z-50 grid place-items-center bg-slate-950/72 p-4">
+          <div className="absolute inset-0 z-50 grid place-items-center bg-slate-950/72 p-4" data-palette-popover="true">
             <div className="w-full max-w-md rounded-2xl bg-white text-slate-950 shadow-2xl">
               <div className="flex items-center justify-between border-b border-slate-200 px-5 py-4">
                 <p className="text-lg font-semibold">Export Palette</p>
