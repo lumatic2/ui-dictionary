@@ -1692,13 +1692,14 @@ function ColorPaletteGeneratorDemo() {
   const [pickerOpenIndex, setPickerOpenIndex] = useState<number | null>(null)
   const [shadeState, setShadeState] = useState<{ index: number; base: PaletteColor } | null>(null)
   const [draggedIndex, setDraggedIndex] = useState<number | null>(null)
+  const [dragTargetIndex, setDragTargetIndex] = useState<number | null>(null)
   const [dragPreview, setDragPreview] = useState<DragPreview | null>(null)
   const [removingIndex, setRemovingIndex] = useState<number | null>(null)
   const [copyToast, setCopyToast] = useState<string | null>(null)
   const paletteBoardRef = useRef<HTMLDivElement | null>(null)
   const paletteRootRef = useRef<HTMLDivElement | null>(null)
   const addedColorIdRef = useRef(0)
-  const dragStateRef = useRef<{ currentIndex: number; width: number; boardLeft: number } | null>(null)
+  const dragStateRef = useRef<{ sourceIndex: number; targetIndex: number; width: number; boardLeft: number } | null>(null)
   const pickerColor = pickerOpenIndex === null ? null : palette[pickerOpenIndex]
   const pickerHsv = pickerColor ? hexToHsv(pickerColor.hex) : null
   const pickerHueHex = pickerHsv ? hsvToHex(pickerHsv.h, 100, 100) : "#FF0000"
@@ -1882,6 +1883,7 @@ function ColorPaletteGeneratorDemo() {
     const colorRect = colorElement?.getBoundingClientRect()
     if (!color || !colorRect || !cardRect) return
     setDraggedIndex(index)
+    setDragTargetIndex(index)
     setDragPreview({
       ...color,
       height: colorRect.height,
@@ -1893,7 +1895,7 @@ function ColorPaletteGeneratorDemo() {
     })
     setPickerOpenIndex(null)
     setShadeState(null)
-    dragStateRef.current = { currentIndex: index, width: columnWidth, boardLeft: rect.left }
+    dragStateRef.current = { sourceIndex: index, targetIndex: index, width: columnWidth, boardLeft: rect.left }
 
     const moveDrag = (pointerEvent: PointerEvent) => {
       const state = dragStateRef.current
@@ -1902,17 +1904,19 @@ function ColorPaletteGeneratorDemo() {
         ...current,
         left: pointerEvent.clientX - cardRect.left - current.offsetX,
       } : current)
-      let currentIndex = state.currentIndex
       const targetIndex = clampNumber(Math.floor((pointerEvent.clientX - state.boardLeft) / state.width), 0, palette.length - 1)
-      if (targetIndex !== currentIndex) {
-        flushSync(() => reorderColor(currentIndex, targetIndex))
-        currentIndex = targetIndex
-        dragStateRef.current = { ...state, currentIndex }
-        setDraggedIndex(targetIndex)
+      if (targetIndex !== state.targetIndex) {
+        dragStateRef.current = { ...state, targetIndex }
+        setDragTargetIndex(targetIndex)
       }
     }
     const finishDrag = () => {
+      const state = dragStateRef.current
+      if (state) {
+        flushSync(() => reorderColor(state.sourceIndex, state.targetIndex))
+      }
       setDraggedIndex(null)
+      setDragTargetIndex(null)
       setDragPreview(null)
       dragStateRef.current = null
       window.removeEventListener("pointermove", moveDrag)
@@ -1921,6 +1925,7 @@ function ColorPaletteGeneratorDemo() {
     }
     const cancelDrag = () => {
       setDraggedIndex(null)
+      setDragTargetIndex(null)
       setDragPreview(null)
       dragStateRef.current = null
       window.removeEventListener("pointermove", moveDrag)
@@ -2013,6 +2018,11 @@ function ColorPaletteGeneratorDemo() {
         <div ref={paletteBoardRef} className="flex h-[18.5rem] overflow-visible">
           {palette.map((color, index) => {
             const textColor = getReadableTextColor(color.hex)
+            const dragShift =
+              draggedIndex === null || dragTargetIndex === null ? undefined :
+              draggedIndex < dragTargetIndex && index > draggedIndex && index <= dragTargetIndex ? "translateX(-100%)" :
+              draggedIndex > dragTargetIndex && index >= dragTargetIndex && index < draggedIndex ? "translateX(100%)" :
+              undefined
             return (
               <div
                 key={color.id}
@@ -2023,7 +2033,7 @@ function ColorPaletteGeneratorDemo() {
                   removingIndex === index && "scale-x-0 opacity-0",
                   draggedIndex === index && "opacity-0",
                 )}
-                style={{ backgroundColor: color.hex, color: textColor, flex: removingIndex === index ? "0 0 0%" : "1 1 0%" }}
+                style={{ backgroundColor: color.hex, color: textColor, flex: removingIndex === index ? "0 0 0%" : "1 1 0%", transform: dragShift }}
                 role="button"
                 tabIndex={0}
                 onPointerDown={(event) => {

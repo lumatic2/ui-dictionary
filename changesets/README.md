@@ -7,3 +7,4 @@
 | 5 | 20260709-palette-drag-follow | 2026-07-09 | Color Palette Generator pointer-follow drag overlay and inset add buttons | 4/4 | complete |
 | 6 | 20260709-coolors-drag-reference | 2026-07-09 | Coolors-referenced palette drag overlay and Generate data milestone capture | 4/4 | complete |
 | 7 | 20260709-palette-drag-axis-visual | 2026-07-09 | Color Palette Generator horizontal-only drag and opaque overlay polish | 4/4 | complete |
+| 8 | 20260709-palette-drag-placeholder-shift | 2026-07-09 | Color Palette Generator placeholder slot with sliding neighbor columns | 4/4 | complete |
