@@ -16,13 +16,11 @@ import {
   Check,
   Command,
   FileCode2,
-  ImageIcon,
-  MessageCircle,
+  Palette,
   Play,
   SkipBack,
   SkipForward,
   LayoutDashboard,
-  Layers3,
   Magnet,
   MousePointerClick,
   PanelsTopLeft,
@@ -177,7 +175,7 @@ const atlasItems = [
   { id: "scroll", title: "Product Surface Coverflow", copy: "Distinct product surfaces glide past in a self-playing 3D coverflow.", layout: "md:col-span-1 xl:col-span-2" },
   { id: "motion", title: "Motion Choreography", copy: "Sequencing multiple motion cues into one coherent, readable rhythm.", layout: "md:col-span-1 xl:col-span-2" },
   { id: "shader", title: "Shader Gradient System", copy: "Tokenized color palettes rendered as a continuously animated gradient shader.", layout: "md:col-span-1 xl:col-span-3" },
-  { id: "material", title: "Material Surface System", copy: "Rules for shadow, blur, and translucency that make stacked surfaces read as physical depth.", layout: "md:col-span-1 xl:col-span-3" },
+  { id: "color", title: "Color Pairing System", copy: "Two-color palettes assigned to surface, type, border, and emphasis roles.", layout: "md:col-span-1 xl:col-span-3" },
   { id: "filters", title: "Image Treatment", copy: "Predefined color and grain recipes applied consistently across a set of photos.", layout: "md:col-span-2 xl:col-span-6" },
   { id: "landing", title: "Hero Composition", copy: "First-viewport structure balancing headline, proof surface, calls to action, media, and visual rhythm.", layout: "md:col-span-1 xl:col-span-3" },
   { id: "command", title: "Command Center Interface", copy: "Keyboard-first product control with search, review queues, agent actions, and system status in one place.", layout: "md:col-span-1 xl:col-span-3" },
@@ -203,7 +201,7 @@ const atlasIconMap = {
   motion: Sparkles,
   shader: WandSparkles,
   filters: SlidersHorizontal,
-  material: Layers3,
+  color: Palette,
   landing: PanelsTopLeft,
   command: Command,
   commerce: ShoppingBag,
@@ -1035,8 +1033,8 @@ function AtlasDemo({ id }: { id: AtlasItemId }) {
     return <ImageTreatmentDemo />
   }
 
-  if (id === "material") {
-    return <MaterialSurfaceDemo />
+  if (id === "color") {
+    return <ColorPairingDemo />
   }
 
   if (id === "shader") {
@@ -1493,66 +1491,99 @@ function MotionShowcaseDemo() {
   )
 }
 
-const materialModes = ["paper", "glass", "solid", "dim"] as const
-type MaterialMode = (typeof materialModes)[number]
-
-const materialStyle: Record<MaterialMode, string> = {
-  paper: "border-slate-200 bg-white shadow-[0_18px_45px_rgba(15,23,42,0.16)]",
-  glass: "border-white/70 bg-white/40 shadow-[0_22px_54px_rgba(111,45,189,0.24)] backdrop-blur-xl",
-  solid: "border-slate-950 bg-slate-950 shadow-[0_22px_54px_rgba(15,23,42,0.36)]",
-  dim: "border-slate-700/30 bg-slate-900/78 shadow-[0_22px_54px_rgba(15,23,42,0.4)] backdrop-blur",
-}
-
-const materialPanels = [
-  { Icon: ImageIcon, animation: "material-panel-float-a 8s ease-in-out infinite", left: "6%", top: "20%", width: "42%", height: "9.5rem", zIndex: 1 },
-  { Icon: MessageCircle, animation: "material-panel-float-b 9.5s ease-in-out infinite -1.5s", left: "34%", top: "10%", width: "40%", height: "9rem", zIndex: 2 },
-  { Icon: Play, animation: "material-panel-float-c 7s ease-in-out infinite -3s", left: "24%", top: "38%", width: "44%", height: "8.5rem", zIndex: 3 },
+const colorPairings = [
+  {
+    name: "Royal Gold",
+    swatches: ["#D1A054", "#2D2C2A"],
+    words: ["ROYAL", "GOLD", "BLACK", "WALNUT"],
+    roles: ["surface", "ink", "border", "accent"],
+  },
+  {
+    name: "Mint Ink",
+    swatches: ["#B9FAF8", "#102A33"],
+    words: ["MINT", "INK", "SOFT", "SIGNAL"],
+    roles: ["field", "type", "rule", "glow"],
+  },
+  {
+    name: "Lavender Slate",
+    swatches: ["#B298DC", "#17151F"],
+    words: ["LAVENDER", "SLATE", "QUIET", "SYSTEM"],
+    roles: ["panel", "copy", "line", "state"],
+  },
 ] as const
 
-const MATERIAL_CYCLE_MS = 3800
+const COLOR_PAIRING_CYCLE_MS = 4200
 
-function MaterialSurfaceDemo() {
+function ColorPairingDemo() {
   const prefersReducedMotion = usePrefersReducedMotion()
-  const [modeIndex, setModeIndex] = useState(0)
+  const [pairingIndex, setPairingIndex] = useState(0)
 
   useEffect(() => {
     if (prefersReducedMotion) return
     const timer = window.setInterval(() => {
-      setModeIndex((value) => (value + 1) % materialModes.length)
-    }, MATERIAL_CYCLE_MS)
+      setPairingIndex((value) => (value + 1) % colorPairings.length)
+    }, COLOR_PAIRING_CYCLE_MS)
     return () => window.clearInterval(timer)
   }, [prefersReducedMotion])
 
-  const mode = materialModes[modeIndex]
-  const isDark = mode === "solid" || mode === "dim"
+  const pairing = colorPairings[pairingIndex]
+  const [surface, ink] = pairing.swatches
+  const posterStyle = {
+    "--pair-surface": surface,
+    "--pair-ink": ink,
+  } as CSSProperties
 
   return (
     <div className="min-h-[18.6rem]">
       <div className="mb-4 flex items-center justify-between">
         <p className="font-mono text-[10px] uppercase tracking-[0.16em] text-slate-400">
-          material {modeIndex + 1} / {materialModes.length}
+          palette {pairingIndex + 1} / {colorPairings.length}
         </p>
-        <p className="text-lg font-semibold capitalize text-slate-950">{mode}</p>
+        <div className="flex items-center gap-2">
+          {pairing.swatches.map((swatch) => (
+            <span key={swatch} className="h-6 rounded-full border border-slate-950/15 px-3 font-mono text-[10px] leading-6" style={{ backgroundColor: swatch, color: swatch === ink ? surface : ink }}>
+              {swatch}
+            </span>
+          ))}
+        </div>
       </div>
-      <div className="relative h-60 overflow-hidden rounded-md border border-slate-200 bg-slate-950 [perspective:1000px]">
-        <div
-          className="absolute -inset-1/4 opacity-90"
-          style={{
-            background: "radial-gradient(circle at 30% 30%, var(--askewly-violet), transparent 55%), radial-gradient(circle at 70% 65%, var(--askewly-mint), transparent 50%), radial-gradient(circle at 85% 20%, var(--askewly-lavender), transparent 45%)",
-            animation: prefersReducedMotion ? undefined : "material-glow-drift 11s ease-in-out infinite",
-          }}
-        />
-        {materialPanels.map(({ Icon, animation, ...position }, index) => (
-          <div
-            key={index}
-            className={cn("absolute rounded-3xl border transition-all", materialStyle[mode])}
-            style={{ ...position, animation: prefersReducedMotion ? undefined : animation, transformStyle: "preserve-3d" }}
-          >
-            <div className="flex size-full items-center justify-center">
-              <Icon className={cn("size-9", isDark ? "text-white/80" : "text-slate-950/70")} strokeWidth={1.5} />
-            </div>
+      <div className="relative h-60 overflow-hidden rounded-md border border-slate-200 bg-white" style={posterStyle}>
+        <div key={pairing.name} className={cn("absolute inset-0", !prefersReducedMotion && "color-pairing-enter")}>
+          <div className="absolute inset-x-0 top-0 h-[52%]" style={{ backgroundColor: surface }} />
+          <div className="absolute inset-x-0 bottom-0 h-[48%]" style={{ backgroundColor: ink }} />
+          <div className="absolute left-1/2 top-[9%] -translate-x-1/2 rounded-full border px-6 py-1.5 font-mono text-[10px] uppercase tracking-[0.18em]" style={{ borderColor: ink, color: ink }}>
+            {surface}
           </div>
-        ))}
+          <div className="absolute left-1/2 bottom-[9%] -translate-x-1/2 rounded-full border px-6 py-1.5 font-mono text-[10px] uppercase tracking-[0.18em]" style={{ borderColor: surface, color: surface }}>
+            {ink}
+          </div>
+          <div className="absolute inset-x-0 top-[51%] -translate-y-1/2 text-center font-black uppercase leading-[0.8] tracking-normal">
+            <p className="text-[3.45rem] sm:text-[3.95rem]" style={{ color: ink, textShadow: `0 1px 0 ${surface}` }}>{pairing.words[0]}</p>
+            <p className="text-[3.6rem] sm:text-[4.15rem]" style={{ color: ink, textShadow: `0 1px 0 ${surface}` }}>{pairing.words[1]}</p>
+            <p className="-mt-0.5 text-[3.15rem] sm:text-[3.55rem]" style={{ color: surface, textShadow: `0 -1px 0 ${ink}` }}>{pairing.words[2]}</p>
+            <p className="text-[3.25rem] sm:text-[3.65rem]" style={{ color: surface, textShadow: `0 -1px 0 ${ink}` }}>{pairing.words[3]}</p>
+          </div>
+          <div className="absolute inset-y-0 left-0 w-8 opacity-20" style={{ backgroundImage: `repeating-linear-gradient(0deg, ${ink} 0 1px, transparent 1px 8px)` }} />
+          <div className="absolute inset-y-0 right-0 w-8 opacity-20" style={{ backgroundImage: `repeating-linear-gradient(0deg, ${surface} 0 1px, transparent 1px 8px)` }} />
+          {!prefersReducedMotion && (
+            <div className="color-pairing-wipe absolute inset-0" />
+          )}
+          <div className="absolute inset-x-0 top-[52%] h-px" style={{ backgroundColor: surface }} />
+          <div className="absolute inset-x-0 top-[calc(52%-1px)] h-px" style={{ backgroundColor: ink }} />
+          <div className="absolute bottom-3 left-4 font-mono text-[9px] uppercase tracking-[0.2em]" style={{ color: surface }}>
+            {pairing.name}
+          </div>
+          <div className="absolute bottom-3 right-4 hidden gap-1.5 font-mono text-[8px] uppercase tracking-[0.16em] sm:flex" style={{ color: surface }}>
+            {pairing.roles.map((role) => (
+              <span key={role}>{role}</span>
+            ))}
+          </div>
+          <div className="absolute left-4 top-3 font-mono text-[9px] uppercase tracking-[0.2em]" style={{ color: ink }}>
+            role swap
+          </div>
+        </div>
+        <div className="pointer-events-none absolute inset-0 ring-1 ring-inset ring-black/10" />
+        <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_50%_44%,transparent_0_34%,rgba(255,255,255,0.08)_35%,transparent_52%)] mix-blend-overlay" />
       </div>
     </div>
   )

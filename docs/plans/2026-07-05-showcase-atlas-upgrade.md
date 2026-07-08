@@ -199,28 +199,28 @@ Verification:
 - Chrome control changes rendered gradient.
 - Failure mode: no purple-dominated one-note surface.
 
-### 7. Material Surface System
+### 7. Color Pairing System
 
 Proposed copy:
 
-> Glass, paper, blur, shadow, and depth rules that keep layered UI readable.
+> Two-color palettes assigned to surface, type, border, and emphasis roles.
 
 Content to show:
 
-- A polished layered stack with paper, glass, solid, and dim material states.
-- Blur, border, shadow, grain, and contrast should look intentional rather than rough CSS blocks.
-- Light/dark contrast check built into the demo.
+- A bold editorial poster-like surface with two-color palette pairings.
+- Large stacked typography, split fields, swatch pills, and role labels.
+- Palette changes should show surface/type/border/accent assignment, not only decorative color.
 
 Interaction contract:
 
-- Depth slider changes stack count/elevation.
-- Material toggle changes blur, opacity, border, and shadow.
-- Layers should remain readable.
+- The card auto-cycles through multiple two-color pairings.
+- Each pairing swaps foreground/background roles across the same layout.
+- The visual should read immediately beside Shader Gradient System: graphic, decisive, and editorial rather than fluid.
 
 Verification:
 
-- Chrome toggles material states and depth.
-- Failure mode: text contrast must not collapse on translucent surfaces.
+- Chrome confirms the color pairing loop changes palette, role chips, and poster text without clipping.
+- Failure mode: text must stay legible at the card width and avoid becoming a one-note gradient/color blob.
 
 ### 8. Image Treatment
 
@@ -352,7 +352,7 @@ Verification:
 - [ ] Step 4 - Scroll-Driven Narrative. (verify: auto progress changes chapter, copy, and layers)
 - [ ] Step 5 - Motion Choreography. (verify: easing balls loop and remain visually comparable)
 - [ ] Step 6 - Shader Gradient System. (verify: self-running gradient loop preserves contrast)
-- [ ] Step 7 - Material Surface System. (verify: material states remain readable and tactile)
+- [ ] Step 7 - Color Pairing System. (verify: palette pairings cycle and poster text remains legible)
 - [ ] Step 8 - Image Treatment wide strip. (verify: automatic treatment loop changes filter/mask/crop state)
 - [ ] Step 9 - Hero Composition. (verify: Askewly hero asset reflows without clipping)
 - [ ] Step 10 - Command Center Interface. (verify: mode switch, command filtering, keyboard/click state)
