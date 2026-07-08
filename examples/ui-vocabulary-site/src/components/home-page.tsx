@@ -1,4 +1,5 @@
 import {
+  type CSSProperties,
   type KeyboardEvent as ReactKeyboardEvent,
   type PointerEvent as ReactPointerEvent,
   useEffect,
@@ -8,12 +9,15 @@ import {
 } from "react"
 import { flushSync } from "react-dom"
 import * as Matter from "matter-js"
+import { MeshGradient } from "@paper-design/shaders-react"
 import {
   ArrowRight,
   ArrowUp,
   Check,
   Command,
   FileCode2,
+  ImageIcon,
+  MessageCircle,
   Play,
   SkipBack,
   SkipForward,
@@ -171,10 +175,10 @@ const atlasItems = [
   { id: "pointer", title: "Cursor-Reactive Field", copy: "Surfaces that respond to cursor movement with spatial feedback and temporary visual traces.", layout: "md:col-span-2 xl:col-span-2" },
   { id: "physics", title: "Physics-Based Interaction", copy: "UI primitives fall, collide, and settle in a real rigid-body field.", layout: "md:col-span-1 xl:col-span-2" },
   { id: "scroll", title: "Product Surface Coverflow", copy: "Distinct product surfaces glide past in a self-playing 3D coverflow.", layout: "md:col-span-1 xl:col-span-2" },
-  { id: "motion", title: "Motion Choreography", copy: "Easing curves compared as visible motion from center to edge and back.", layout: "md:col-span-1 xl:col-span-2" },
-  { id: "shader", title: "Shader Gradient System", copy: "Tokenized mesh color, grain, and luminous fields in a continuous loop.", layout: "md:col-span-1 xl:col-span-3" },
-  { id: "material", title: "Material Surface System", copy: "Glass, paper, shadow, blur, and depth rules that keep complex surfaces tactile and readable.", layout: "md:col-span-1 xl:col-span-3" },
-  { id: "filters", title: "Image Treatment", copy: "Filters, masks, crops, and focus treatments loop through visual tone.", layout: "md:col-span-2 xl:col-span-6" },
+  { id: "motion", title: "Motion Choreography", copy: "Sequencing multiple motion cues into one coherent, readable rhythm.", layout: "md:col-span-1 xl:col-span-2" },
+  { id: "shader", title: "Shader Gradient System", copy: "Tokenized color palettes rendered as a continuously animated gradient shader.", layout: "md:col-span-1 xl:col-span-3" },
+  { id: "material", title: "Material Surface System", copy: "Rules for shadow, blur, and translucency that make stacked surfaces read as physical depth.", layout: "md:col-span-1 xl:col-span-3" },
+  { id: "filters", title: "Image Treatment", copy: "Predefined color and grain recipes applied consistently across a set of photos.", layout: "md:col-span-2 xl:col-span-6" },
   { id: "landing", title: "Hero Composition", copy: "First-viewport structure balancing headline, proof surface, calls to action, media, and visual rhythm.", layout: "md:col-span-1 xl:col-span-3" },
   { id: "command", title: "Command Center Interface", copy: "Keyboard-first product control with search, review queues, agent actions, and system status in one place.", layout: "md:col-span-1 xl:col-span-3" },
   { id: "commerce", title: "Commerce Flow", copy: "Product discovery, purchase confidence, cart states, pricing, and checkout signals arranged as one buying path.", layout: "md:col-span-1 xl:col-span-3" },
@@ -529,7 +533,7 @@ function AtlasCard({ item }: { item: (typeof atlasItems)[number] }) {
         item.layout,
       )}
     >
-      <div className={cn("grid gap-5 p-6 sm:grid-cols-[5.75rem_minmax(0,1fr)]", item.id === "agent" && "sm:grid-cols-[4.25rem_minmax(0,1fr)]", item.id === "filters" && "lg:grid-cols-[5.75rem_minmax(0,1fr)_14rem]")}>
+      <div className={cn("grid gap-5 p-6 sm:grid-cols-[5.75rem_minmax(0,1fr)]", item.id === "agent" && "sm:grid-cols-[4.25rem_minmax(0,1fr)]")}>
         <div className="flex items-start justify-center sm:justify-start">
           <LineArtIcon id={item.id} />
         </div>
@@ -537,11 +541,6 @@ function AtlasCard({ item }: { item: (typeof atlasItems)[number] }) {
           <h3 className="text-2xl font-semibold tracking-normal text-card-foreground">{item.title}</h3>
           <p className="mt-2 text-sm leading-6 text-muted-foreground">{item.copy}</p>
         </div>
-        {item.id === "filters" && (
-          <div className="hidden rounded border border-border bg-muted p-3 font-mono text-[10px] uppercase tracking-[0.14em] text-muted-foreground lg:block">
-            Treatment strip / wide editorial surface
-          </div>
-        )}
       </div>
       <div className="flex flex-1 flex-col border-t border-border bg-slate-50 p-5">
         <AtlasDemo id={item.id} />
@@ -562,10 +561,6 @@ function LineArtIcon({ id }: { id: AtlasItemId }) {
 
 function AtlasDemo({ id }: { id: AtlasItemId }) {
   const prefersReducedMotion = usePrefersReducedMotion()
-  const [filter, setFilter] = useState(62)
-  const [shaderMix, setShaderMix] = useState(58)
-  const [materialDepth, setMaterialDepth] = useState(3)
-  const [materialMode, setMaterialMode] = useState<"paper" | "glass" | "solid" | "dim">("glass")
   const [mobileStep, setMobileStep] = useState(0)
   const [cartCount, setCartCount] = useState(1)
   const [agentFrame, setAgentFrame] = useState({ left: 18, top: 24, width: 58, height: 150 })
@@ -606,26 +601,6 @@ function AtlasDemo({ id }: { id: AtlasItemId }) {
     return cells
   })
   const [commandMode, setCommandMode] = useState<"review" | "ship" | "agent">("review")
-
-  useEffect(() => {
-    if (id !== "shader" || prefersReducedMotion) return
-
-    const timer = window.setInterval(() => {
-      setShaderMix((value) => (value >= 92 ? 18 : value + 2))
-    }, 120)
-
-    return () => window.clearInterval(timer)
-  }, [id, prefersReducedMotion])
-
-  useEffect(() => {
-    if (id !== "filters" || prefersReducedMotion) return
-
-    const timer = window.setInterval(() => {
-      setFilter((value) => (value >= 92 ? 34 : value + 3))
-    }, 150)
-
-    return () => window.clearInterval(timer)
-  }, [id, prefersReducedMotion])
 
   useEffect(() => {
     if (id !== "pointer") return
@@ -1057,141 +1032,19 @@ function AtlasDemo({ id }: { id: AtlasItemId }) {
   }
 
   if (id === "filters") {
-    const treatment = filter < 50 ? "duotone" : filter < 76 ? "focus" : "grain"
-
-    return (
-      <div className="grid min-h-[18.6rem] gap-4 lg:grid-cols-[12rem_1fr_12rem]">
-        <div className="rounded-md border border-slate-200 bg-white p-4">
-          <p className="font-mono text-[10px] uppercase tracking-[0.16em] text-slate-400">treatment</p>
-          <p className="mt-4 text-3xl font-semibold capitalize text-slate-950">{treatment}</p>
-          <div className="mt-6 h-1.5 overflow-hidden rounded bg-slate-100">
-            <div className="h-full rounded bg-askewly-violet transition-all" style={{ width: `${filter}%` }} />
-          </div>
-          <div className="mt-6 space-y-2 text-xs font-semibold text-slate-500">
-            <div className="flex justify-between"><span>blur</span><span>{((100 - filter) / 30).toFixed(1)}</span></div>
-            <div className="flex justify-between"><span>saturation</span><span>{(0.7 + filter / 42).toFixed(1)}</span></div>
-            <div className="flex justify-between"><span>contrast</span><span>{(0.86 + filter / 140).toFixed(1)}</span></div>
-          </div>
-        </div>
-        <div className="relative min-h-[17rem] overflow-hidden rounded-md border border-slate-200 bg-white">
-          <div
-            className="absolute inset-4 rounded bg-[radial-gradient(circle_at_22%_30%,var(--askewly-mint),transparent_20%),radial-gradient(circle_at_68%_55%,var(--askewly-violet),transparent_24%),radial-gradient(circle_at_82%_24%,var(--askewly-sky),transparent_16%),linear-gradient(135deg,#f8fafc,#cbd5e1)] transition"
-            style={{ filter: `blur(${(100 - filter) / 30}px) saturate(${0.7 + filter / 42}) contrast(${0.86 + filter / 140})` }}
-          />
-          <div className="absolute inset-4 bg-[radial-gradient(circle_at_32%_35%,transparent_0_18%,rgba(255,255,255,0.72)_19%_100%)] opacity-70 transition" style={{ transform: `translateX(${filter / 10 - 7}px)` }} />
-          <div className="absolute inset-0 opacity-25 mix-blend-multiply [background-image:repeating-linear-gradient(0deg,rgba(15,23,42,0.16)_0_1px,transparent_1px_5px)]" />
-          <div className="absolute inset-x-10 bottom-8 h-14 rounded bg-white/78 shadow-sm backdrop-blur" />
-        </div>
-        <div className="grid gap-3">
-          {["duotone", "focus", "grain"].map((item, index) => (
-            <button key={item} className={cn("rounded-md border bg-white p-3 text-left transition hover:border-askewly-lavender", treatment === item ? "border-askewly-violet shadow-sm" : "border-slate-200")} type="button" onClick={() => setFilter([42, 72, 88][index])}>
-              <span className="font-semibold capitalize text-slate-950">{item}</span>
-              <span className="mt-2 block h-1.5 rounded bg-slate-100"><span className="block h-full rounded bg-askewly-violet" style={{ width: `${[42, 72, 88][index]}%` }} /></span>
-            </button>
-          ))}
-        </div>
-      </div>
-    )
+    return <ImageTreatmentDemo />
   }
 
   if (id === "material") {
-    const materialStyle = {
-      paper: "border-slate-200 bg-white shadow-[0_18px_45px_rgba(15,23,42,0.08)]",
-      glass: "border-white/70 bg-white/58 shadow-[0_22px_54px_rgba(111,45,189,0.14)] backdrop-blur-xl",
-      solid: "border-slate-950 bg-slate-950 text-white shadow-[0_22px_54px_rgba(15,23,42,0.26)]",
-      dim: "border-slate-700/30 bg-slate-900/72 text-white shadow-[0_22px_54px_rgba(15,23,42,0.34)] backdrop-blur",
-    } satisfies Record<typeof materialMode, string>
-
-    return (
-      <div className="min-h-[18.6rem]">
-        <div className="mb-4 flex flex-wrap items-center justify-between gap-2">
-          <div className="flex flex-wrap gap-2">
-            {(["paper", "glass", "solid", "dim"] as const).map((item) => (
-              <button key={item} className={cn("rounded-full border px-3 py-1.5 text-xs font-semibold capitalize transition", materialMode === item ? "border-askewly-violet bg-askewly-lavender/20 text-askewly-violet" : "border-slate-200 bg-white text-slate-500 hover:border-askewly-lavender")} type="button" onClick={() => setMaterialMode(item)}>
-                {item}
-              </button>
-            ))}
-          </div>
-          <div className="flex items-center gap-2 rounded-full border border-slate-200 bg-white px-2 py-1 text-xs font-semibold text-slate-500">
-            <button className="size-6 rounded-full hover:bg-slate-100" type="button" onClick={() => setMaterialDepth((value) => Math.max(1, value - 1))}>-</button>
-            <span className="w-5 text-center">{materialDepth}</span>
-            <button className="size-6 rounded-full hover:bg-slate-100" type="button" onClick={() => setMaterialDepth((value) => Math.min(5, value + 1))}>+</button>
-          </div>
-        </div>
-        <div className="relative h-56 overflow-hidden rounded-md border border-slate-200 bg-[linear-gradient(135deg,#f8fafc,#e2e8f0)] p-5">
-          <div className="absolute inset-0 bg-[radial-gradient(circle_at_28%_22%,rgba(185,250,248,0.64),transparent_24%),radial-gradient(circle_at_72%_70%,rgba(178,152,220,0.45),transparent_28%)]" />
-          {Array.from({ length: materialDepth }).map((_, index) => (
-            <div
-              key={index}
-              className={cn("absolute rounded-md border p-4 transition-all", materialStyle[materialMode])}
-              style={{
-                left: `${14 + index * 9}%`,
-                top: `${18 + index * 7}%`,
-                width: `${56 - index * 4}%`,
-                height: `${8.5 - index * 0.3}rem`,
-                zIndex: index + 1,
-              }}
-            >
-              <div className={cn("h-2 w-20 rounded", materialMode === "solid" || materialMode === "dim" ? "bg-white/80" : "bg-slate-950/70")} />
-              <div className={cn("mt-4 h-2 w-32 rounded", materialMode === "solid" || materialMode === "dim" ? "bg-white/24" : "bg-slate-400/35")} />
-              {index === materialDepth - 1 && (
-                <div className={cn("mt-5 grid grid-cols-3 gap-1.5", materialDepth < 3 && "hidden")}>
-                  <span className={cn("h-6 rounded", materialMode === "solid" || materialMode === "dim" ? "bg-white/10" : "bg-slate-100")} />
-                  <span className={cn("h-6 rounded", materialMode === "solid" || materialMode === "dim" ? "bg-white/10" : "bg-slate-100")} />
-                  <span className={cn("h-6 rounded", materialMode === "solid" || materialMode === "dim" ? "bg-white/10" : "bg-slate-100")} />
-                </div>
-              )}
-            </div>
-          ))}
-        </div>
-      </div>
-    )
+    return <MaterialSurfaceDemo />
   }
 
   if (id === "shader") {
-    return (
-      <div className="min-h-[17.65rem]">
-        <div className="relative h-56 overflow-hidden rounded-md border border-slate-200 bg-slate-950">
-          <div
-            className="absolute inset-0 transition"
-            style={{
-              background: `radial-gradient(circle at ${shaderMix}% 28%, var(--askewly-mint), transparent 24%), radial-gradient(circle at ${100 - shaderMix}% 70%, var(--askewly-violet), transparent 30%), linear-gradient(135deg, #020617, var(--askewly-orchid) ${shaderMix}%, var(--askewly-sky))`,
-            }}
-          />
-          <div className="absolute inset-0 visual-aurora-one bg-[radial-gradient(circle_at_36%_42%,rgba(255,255,255,0.38),transparent_24%)] mix-blend-overlay" />
-          <div className="absolute inset-0 visual-aurora-two bg-[radial-gradient(circle_at_72%_62%,rgba(185,250,248,0.35),transparent_28%)] mix-blend-screen" />
-          <div className="absolute inset-0 mix-blend-overlay opacity-45 [background-image:repeating-linear-gradient(90deg,rgba(255,255,255,0.18)_0_1px,transparent_1px_7px)]" />
-        </div>
-      </div>
-    )
+    return <ShaderGradientDemo />
   }
 
   if (id === "motion") {
-    const lanes = [
-      { label: "linear", color: "#111827", x: 222, y: 42, keySplines: "0 0 1 1;0 0 1 1" },
-      { label: "ease-out", color: "#06B6D4", x: 212, y: 90, keySplines: "0.16 1 0.3 1;0.7 0 0.84 0" },
-      { label: "ease-in-out", color: "var(--askewly-violet)", x: 204, y: 138, keySplines: "0.65 0 0.35 1;0.65 0 0.35 1" },
-      { label: "spring", color: "#F472B6", x: 194, y: 184, keySplines: "0.22 1 0.36 1;0.45 0 0.55 1" },
-    ]
-
-    return (
-      <div className="relative h-72 overflow-hidden rounded-md border border-slate-200 bg-white">
-        <svg className="absolute inset-0 h-full w-full" viewBox="0 0 260 230">
-          <circle cx="130" cy="114" r="5" fill="#0F172A" />
-          <circle cx="130" cy="114" r="82" fill="none" stroke="rgba(15,23,42,0.08)" strokeWidth="1.4" />
-          {lanes.map((lane, index) => (
-            <g key={lane.label}>
-              <line x1="130" y1="114" x2={lane.x} y2={lane.y} stroke="rgba(15,23,42,0.13)" strokeWidth="1" />
-              <text x="18" y={36 + index * 45} fill="#64748B" fontFamily="Geist Mono, monospace" fontSize="9" letterSpacing="1.3">{lane.label}</text>
-              <circle cx="130" cy="114" r="7" fill={lane.color}>
-                <animate attributeName="cx" dur="2.8s" repeatCount="indefinite" values={`130;${lane.x};130`} keyTimes="0;0.5;1" calcMode="spline" keySplines={lane.keySplines} />
-                <animate attributeName="cy" dur="2.8s" repeatCount="indefinite" values={`114;${lane.y};114`} keyTimes="0;0.5;1" calcMode="spline" keySplines={lane.keySplines} />
-              </circle>
-            </g>
-          ))}
-        </svg>
-      </div>
-    )
+    return <MotionShowcaseDemo />
   }
 
   if (id === "command") {
@@ -1484,6 +1337,368 @@ function CoverflowDemo() {
             )
           })}
         </div>
+      </div>
+    </div>
+  )
+}
+
+type MotionBurstKind = "square" | "triangle" | "hex" | "dot" | "pentagon"
+
+type MotionBurstShape = {
+  kind: MotionBurstKind
+  angle: number
+  arrangeDistance: number
+  finalDistance: number
+  rotate: number
+  size: number
+  depth: number
+}
+
+// arrangeDistance = the sharp ring the shape snaps to right after it emerges from the ball
+// (the single hold point in the burst); finalDistance = the one decisive push outward as it
+// fades; depth = 0..1, how much bigger/blurrier it gets on that push (a cheap depth-of-field cue).
+const motionBurstShapes: MotionBurstShape[] = [
+  { kind: "square", angle: -160, arrangeDistance: 56, finalDistance: 130, rotate: 24, size: 15, depth: 0.3 },
+  { kind: "triangle", angle: -122, arrangeDistance: 50, finalDistance: 100, rotate: -18, size: 12, depth: 0.7 },
+  { kind: "hex", angle: -62, arrangeDistance: 58, finalDistance: 125, rotate: 12, size: 17, depth: 0.5 },
+  { kind: "triangle", angle: -18, arrangeDistance: 60, finalDistance: 145, rotate: 96, size: 15, depth: 0.9 },
+  { kind: "dot", angle: 22, arrangeDistance: 54, finalDistance: 120, rotate: 0, size: 10, depth: 0.2 },
+  { kind: "square", angle: 68, arrangeDistance: 52, finalDistance: 108, rotate: -30, size: 14, depth: 0.6 },
+  { kind: "hex", angle: 132, arrangeDistance: 58, finalDistance: 138, rotate: 20, size: 16, depth: 0.4 },
+  { kind: "triangle", angle: 172, arrangeDistance: 54, finalDistance: 115, rotate: -60, size: 12, depth: 0.8 },
+  { kind: "pentagon", angle: 100, arrangeDistance: 56, finalDistance: 128, rotate: 40, size: 16, depth: 0.5 },
+  { kind: "triangle", angle: 45, arrangeDistance: 62, finalDistance: 150, rotate: -50, size: 22, depth: 0.85 },
+  { kind: "hex", angle: -100, arrangeDistance: 48, finalDistance: 105, rotate: -15, size: 9, depth: 0.15 },
+  { kind: "dot", angle: 158, arrangeDistance: 60, finalDistance: 118, rotate: 0, size: 7, depth: 0.35 },
+  { kind: "pentagon", angle: -40, arrangeDistance: 52, finalDistance: 112, rotate: -70, size: 13, depth: 0.65 },
+]
+
+function MotionBurstShapeMark({ shape }: { shape: MotionBurstShape }) {
+  const style = { width: shape.size, height: shape.size, background: "radial-gradient(circle at 34% 28%, #ffffff, #c7cdd9)" }
+  if (shape.kind === "dot") {
+    return <span className="block rounded-full" style={style} />
+  }
+  if (shape.kind === "square") {
+    return <span className="block rounded-[3px]" style={style} />
+  }
+  if (shape.kind === "hex") {
+    return <span className="block" style={{ ...style, clipPath: "polygon(25% 3%, 75% 3%, 100% 50%, 75% 97%, 25% 97%, 0% 50%)" }} />
+  }
+  if (shape.kind === "pentagon") {
+    return <span className="block" style={{ ...style, clipPath: "polygon(50% 2%, 98% 38%, 79% 96%, 21% 96%, 2% 38%)" }} />
+  }
+  return <span className="block" style={{ ...style, clipPath: "polygon(0% 0%, 100% 50%, 0% 100%)" }} />
+}
+
+function MotionShowcaseDemo() {
+  const prefersReducedMotion = usePrefersReducedMotion()
+  const orbitDots = 8
+  const ballAnimation = "motion-showcase-ball 9s linear infinite"
+
+  return (
+    <div className="min-h-[17.65rem]">
+      <div className="relative h-64 overflow-hidden rounded-md border border-slate-200 bg-slate-950">
+        <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_50%,rgba(111,45,189,0.22),transparent_62%)]" />
+
+        <div className="absolute left-1/2 top-1/2">
+          {!prefersReducedMotion && (
+            <>
+              {/* phase 2: shapes glow off the ball at the exact canvas center, arrange into a sharp
+                  spinning ring (the one hold in the burst), then push out to their final spot and fade */}
+              <div
+                className="motion-showcase-shockwave absolute -left-8 -top-8 size-16 rounded-full border border-white/70"
+                style={{ animation: "motion-showcase-shockwave 9s ease-out infinite" }}
+              />
+              {motionBurstShapes.map((shape, index) => {
+                const rad = (shape.angle * Math.PI) / 180
+                const fx = Math.cos(rad) * shape.finalDistance
+                const fy = Math.sin(rad) * shape.finalDistance
+                const atx = Math.cos(rad) * shape.arrangeDistance
+                const aty = Math.sin(rad) * shape.arrangeDistance
+                return (
+                  <div
+                    key={index}
+                    className="motion-showcase-shape absolute -left-2 -top-2"
+                    style={{
+                      ["--fx" as string]: `${fx.toFixed(1)}px`,
+                      ["--fy" as string]: `${fy.toFixed(1)}px`,
+                      ["--atx" as string]: `${atx.toFixed(1)}px`,
+                      ["--aty" as string]: `${aty.toFixed(1)}px`,
+                      ["--rot" as string]: `${shape.rotate}deg`,
+                      ["--depth" as string]: `${shape.depth}`,
+                      animation: "motion-showcase-shape 9s cubic-bezier(0.22, 1, 0.36, 1) infinite",
+                    }}
+                  >
+                    <span
+                      className="motion-showcase-shape-float block"
+                      style={{ animation: `motion-showcase-shape-float ${(2.2 + index * 0.15).toFixed(2)}s ease-in-out infinite`, animationDelay: `${index * 120}ms` }}
+                    >
+                      <MotionBurstShapeMark shape={shape} />
+                    </span>
+                  </div>
+                )
+              })}
+            </>
+          )}
+
+          {/* phase 3: the field expands out of the ball, centered on the same canvas-center point,
+              and contracts back into it before the loop restarts */}
+          <div
+            className="motion-showcase-rings absolute -left-[92px] -top-[92px] size-[184px]"
+            style={prefersReducedMotion ? { opacity: 1, transform: "scale(1)" } : { animation: "motion-showcase-rings 9s ease-in-out infinite" }}
+          >
+            <span className="absolute inset-0 rounded-full border border-white/25" />
+            <span className="absolute inset-[26px] rounded-full border border-dashed border-white/20" />
+            <span className="absolute inset-[52px] rounded-full border border-white/30" />
+            <div
+              className="motion-showcase-orbit-spin absolute inset-0"
+              style={prefersReducedMotion ? undefined : { animation: "motion-showcase-orbit-spin 6s linear infinite" }}
+            >
+              {Array.from({ length: orbitDots }).map((_, index) => {
+                const angle = (index / orbitDots) * 360
+                return (
+                  <span
+                    key={index}
+                    className="absolute left-1/2 top-1/2 size-1.5 rounded-full bg-white/80"
+                    style={{ transform: `rotate(${angle}deg) translate(52px) rotate(-${angle}deg)` }}
+                  />
+                )
+              })}
+            </div>
+          </div>
+
+          {/* phase 1: the protagonist ball - swings in a decaying pendulum arc into the exact canvas
+              center (no floor bounce) and stays visible for the whole loop. Three increasingly faint,
+              increasingly blurred echoes trail behind it (secondary motion) so the swing reads as
+              weighted momentum instead of a mechanical back-and-forth. */}
+          {!prefersReducedMotion && (
+            <>
+              <div className="motion-showcase-ball-echo absolute -left-3 -top-3 size-6 rounded-full bg-white/45 blur-[4px]" style={{ animation: ballAnimation, animationDelay: "90ms" }} />
+              <div className="motion-showcase-ball-echo absolute -left-3 -top-3 size-6 rounded-full bg-white/28 blur-[7px]" style={{ animation: ballAnimation, animationDelay: "190ms" }} />
+              <div className="motion-showcase-ball-echo absolute -left-3 -top-3 size-6 rounded-full bg-white/14 blur-[10px]" style={{ animation: ballAnimation, animationDelay: "310ms" }} />
+            </>
+          )}
+          <div
+            className="absolute -left-3 -top-3 size-6"
+            style={{ animation: prefersReducedMotion ? undefined : ballAnimation, transform: prefersReducedMotion ? "translate3d(0, 0, 0)" : undefined }}
+          >
+            <span
+              className="motion-showcase-ball-breathe block size-full rounded-full bg-white shadow-[0_0_28px_10px_rgba(255,255,255,0.5)]"
+              style={{ animation: prefersReducedMotion ? undefined : "motion-showcase-ball-breathe 2.6s ease-in-out infinite" }}
+            />
+          </div>
+        </div>
+      </div>
+    </div>
+  )
+}
+
+const materialModes = ["paper", "glass", "solid", "dim"] as const
+type MaterialMode = (typeof materialModes)[number]
+
+const materialStyle: Record<MaterialMode, string> = {
+  paper: "border-slate-200 bg-white shadow-[0_18px_45px_rgba(15,23,42,0.16)]",
+  glass: "border-white/70 bg-white/40 shadow-[0_22px_54px_rgba(111,45,189,0.24)] backdrop-blur-xl",
+  solid: "border-slate-950 bg-slate-950 shadow-[0_22px_54px_rgba(15,23,42,0.36)]",
+  dim: "border-slate-700/30 bg-slate-900/78 shadow-[0_22px_54px_rgba(15,23,42,0.4)] backdrop-blur",
+}
+
+const materialPanels = [
+  { Icon: ImageIcon, animation: "material-panel-float-a 8s ease-in-out infinite", left: "6%", top: "20%", width: "42%", height: "9.5rem", zIndex: 1 },
+  { Icon: MessageCircle, animation: "material-panel-float-b 9.5s ease-in-out infinite -1.5s", left: "34%", top: "10%", width: "40%", height: "9rem", zIndex: 2 },
+  { Icon: Play, animation: "material-panel-float-c 7s ease-in-out infinite -3s", left: "24%", top: "38%", width: "44%", height: "8.5rem", zIndex: 3 },
+] as const
+
+const MATERIAL_CYCLE_MS = 3800
+
+function MaterialSurfaceDemo() {
+  const prefersReducedMotion = usePrefersReducedMotion()
+  const [modeIndex, setModeIndex] = useState(0)
+
+  useEffect(() => {
+    if (prefersReducedMotion) return
+    const timer = window.setInterval(() => {
+      setModeIndex((value) => (value + 1) % materialModes.length)
+    }, MATERIAL_CYCLE_MS)
+    return () => window.clearInterval(timer)
+  }, [prefersReducedMotion])
+
+  const mode = materialModes[modeIndex]
+  const isDark = mode === "solid" || mode === "dim"
+
+  return (
+    <div className="min-h-[18.6rem]">
+      <div className="mb-4 flex items-center justify-between">
+        <p className="font-mono text-[10px] uppercase tracking-[0.16em] text-slate-400">
+          material {modeIndex + 1} / {materialModes.length}
+        </p>
+        <p className="text-lg font-semibold capitalize text-slate-950">{mode}</p>
+      </div>
+      <div className="relative h-60 overflow-hidden rounded-md border border-slate-200 bg-slate-950 [perspective:1000px]">
+        <div
+          className="absolute -inset-1/4 opacity-90"
+          style={{
+            background: "radial-gradient(circle at 30% 30%, var(--askewly-violet), transparent 55%), radial-gradient(circle at 70% 65%, var(--askewly-mint), transparent 50%), radial-gradient(circle at 85% 20%, var(--askewly-lavender), transparent 45%)",
+            animation: prefersReducedMotion ? undefined : "material-glow-drift 11s ease-in-out infinite",
+          }}
+        />
+        {materialPanels.map(({ Icon, animation, ...position }, index) => (
+          <div
+            key={index}
+            className={cn("absolute rounded-3xl border transition-all", materialStyle[mode])}
+            style={{ ...position, animation: prefersReducedMotion ? undefined : animation, transformStyle: "preserve-3d" }}
+          >
+            <div className="flex size-full items-center justify-center">
+              <Icon className={cn("size-9", isDark ? "text-white/80" : "text-slate-950/70")} strokeWidth={1.5} />
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  )
+}
+
+const shaderGradientColors = ["#020617", "#6F2DBD", "#A663CC", "#B9FAF8", "#B8D0EB"]
+
+function ShaderGradientDemo() {
+  const prefersReducedMotion = usePrefersReducedMotion()
+
+  return (
+    <div className="min-h-[17.65rem]">
+      <div className="relative h-56 overflow-hidden rounded-md border border-slate-200 bg-slate-950">
+        <MeshGradient
+          className="absolute inset-0 size-full"
+          colors={shaderGradientColors}
+          distortion={0.85}
+          swirl={0.55}
+          grainMixer={0.25}
+          grainOverlay={0.12}
+          speed={prefersReducedMotion ? 0 : 0.45}
+        />
+      </div>
+    </div>
+  )
+}
+
+type ImageRecipe = {
+  name: string
+  filter: string
+  overlay?: string
+  overlayBlend?: CSSProperties["mixBlendMode"]
+  contrast: number
+  saturation: number
+  grain: number
+}
+
+const imageRecipes: ImageRecipe[] = [
+  {
+    name: "Duotone + Grain",
+    filter: "grayscale(1) contrast(1.08) saturate(0.9)",
+    overlay: "linear-gradient(135deg, var(--askewly-violet), var(--askewly-mint))",
+    overlayBlend: "color",
+    contrast: 1.08,
+    saturation: 0.9,
+    grain: 0.45,
+  },
+  {
+    name: "Warm Film",
+    filter: "sepia(0.4) contrast(0.92) saturate(1.1) brightness(1.02)",
+    overlay: "linear-gradient(160deg, rgba(255,214,170,0.35), rgba(120,72,30,0.12))",
+    overlayBlend: "soft-light",
+    contrast: 0.92,
+    saturation: 1.1,
+    grain: 0.25,
+  },
+  {
+    name: "High-Contrast Mono",
+    filter: "grayscale(1) contrast(1.45) brightness(0.95)",
+    contrast: 1.45,
+    saturation: 0,
+    grain: 0.6,
+  },
+]
+
+const imageTreatmentPhotos = [
+  "/assets/ecommerce-category-pages/stationery-hero.png",
+  "/assets/ecommerce-storefront-pages/dark-desk-hero.png",
+  "/assets/ecommerce-storefront-pages/apparel-hero.png",
+  "/assets/ecommerce-reviews/avatar-navy-overshirt.png",
+  "/assets/ecommerce-reviews/avatar-curly-hair.png",
+  "/assets/ecommerce-reviews/avatar-silver-hair.png",
+]
+
+const IMAGE_TREATMENT_CYCLE_MS = 4500
+
+function ImageTreatmentDemo() {
+  const prefersReducedMotion = usePrefersReducedMotion()
+  const [recipeIndex, setRecipeIndex] = useState(0)
+
+  useEffect(() => {
+    if (prefersReducedMotion) return
+    const timer = window.setInterval(() => {
+      setRecipeIndex((value) => (value + 1) % imageRecipes.length)
+    }, IMAGE_TREATMENT_CYCLE_MS)
+    return () => window.clearInterval(timer)
+  }, [prefersReducedMotion])
+
+  const recipe = imageRecipes[recipeIndex]
+
+  return (
+    <div className="grid min-h-[18.6rem] gap-4 lg:grid-cols-[12rem_1fr]">
+      <div className="rounded-md border border-slate-200 bg-white p-4">
+        <p className="font-mono text-[10px] uppercase tracking-[0.16em] text-slate-400">
+          recipe {recipeIndex + 1} / {imageRecipes.length}
+        </p>
+        <p className="mt-4 text-lg font-semibold text-slate-950">{recipe.name}</p>
+        <div className="mt-6 space-y-2 text-xs font-semibold text-slate-500">
+          <div className="flex justify-between"><span>contrast</span><span>{recipe.contrast}</span></div>
+          <div className="flex justify-between"><span>saturation</span><span>{recipe.saturation}</span></div>
+          <div className="flex justify-between"><span>grain</span><span>{recipe.grain}</span></div>
+        </div>
+        <div className="mt-6 flex gap-1.5">
+          {imageRecipes.map((item, index) => (
+            <span key={item.name} className={cn("h-1 flex-1 rounded-full transition-colors", index === recipeIndex ? "bg-askewly-violet" : "bg-slate-100")} />
+          ))}
+        </div>
+      </div>
+      <div className="relative">
+        <svg width="0" height="0" className="absolute">
+          <defs>
+            <filter id="filters-grain-noise">
+              <feTurbulence type="fractalNoise" baseFrequency="0.85" numOctaves="2" stitchTiles="stitch" result="noise" />
+              {/* Convert luminance to alpha and punch up the contrast so this reads as
+                  distinct black speckles instead of a smooth gray haze - a flat
+                  overlay/soft-light blend of raw turbulence barely shows on a pale photo. */}
+              <feColorMatrix in="noise" type="matrix" values="0 0 0 0 0  0 0 0 0 0  0 0 0 0 0  1 0 0 0 0" result="alphaNoise" />
+              <feComponentTransfer in="alphaNoise">
+                <feFuncA type="linear" slope="4.2" intercept="-1.7" />
+              </feComponentTransfer>
+            </filter>
+          </defs>
+        </svg>
+        <div className="grid grid-cols-3 gap-3">
+          {imageTreatmentPhotos.map((src) => (
+            <div key={src} className="relative aspect-square overflow-hidden rounded-md border border-slate-200 bg-white">
+              <img src={src} alt="" className="absolute inset-0 size-full object-cover" style={{ filter: recipe.filter }} />
+              {recipe.overlay && <div className="absolute inset-0" style={{ background: recipe.overlay, mixBlendMode: recipe.overlayBlend }} />}
+              <div className="absolute inset-0" style={{ opacity: recipe.grain, mixBlendMode: "multiply", filter: "url(#filters-grain-noise)" }} />
+            </div>
+          ))}
+        </div>
+        {/* Single shared before/after line sweeping the whole grid, not one per tile. */}
+        {!prefersReducedMotion && (
+          <div
+            key={recipeIndex}
+            className="absolute inset-0 grid grid-cols-3 gap-3"
+            style={{ animation: `filters-wipe-sweep ${IMAGE_TREATMENT_CYCLE_MS}ms linear 1` }}
+          >
+            {imageTreatmentPhotos.map((src) => (
+              <div key={src} className="relative aspect-square overflow-hidden rounded-md border border-slate-200 bg-white">
+                <img src={src} alt="" className="absolute inset-0 size-full object-cover" />
+              </div>
+            ))}
+          </div>
+        )}
       </div>
     </div>
   )

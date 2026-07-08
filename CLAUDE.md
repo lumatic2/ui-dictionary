@@ -105,6 +105,12 @@ topic -> collect around 20 candidates -> duplicate prefilter
 - 승격 후에는 `python scripts/validate-ui-vocabulary.py`, `npm run build`, `npm run lint`, 브라우저 smoke를 통과한다.
 - 배포는 최종 승인 지점이다. 로컬 검증 결과를 보고한 뒤 사용자 승인 없이 `git push ui-dictionary main`을 실행하지 않는다.
 
+## Showcase Atlas 카드 카피 (`home-page.tsx` `atlasItems`)
+
+- 카드 `copy`는 데모가 화면에서 뭘 하는지 서술하지 않는다. **`title`(용어) 자체를 정의하는 한 문장**이어야 한다 — 예: "Motion Choreography" → "Sequencing multiple motion cues into one coherent, readable rhythm." (O), "One primitive falls, bursts into shapes, and orbits." (X, 데모 내용 서술)
+- em dash 금지, 콤팩트하게 (한 문장, 명사구 위주)
+- 카드 폴리싱 세션마다 이 원칙을 매번 다시 설명하지 않기 위해 여기 기록함 (2026-07-08)
+
 ## 참고 — DESIGN.md 란?
 
 Google Labs(Stitch) 가 오픈소스화한 포맷. 코딩 에이전트가 디자인 시스템을 "지속적·구조적"으로 이해하도록 하는 단일 markdown 파일. 자세한 가이드는 [methodology/design-md-guide.md](methodology/design-md-guide.md) 참조.
