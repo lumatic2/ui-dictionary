@@ -11,8 +11,12 @@ import * as Matter from "matter-js"
 import {
   ArrowRight,
   ArrowUp,
+  Check,
   Command,
   FileCode2,
+  Play,
+  SkipBack,
+  SkipForward,
   LayoutDashboard,
   Layers3,
   Magnet,
@@ -163,10 +167,10 @@ const dashboardViews = [
 ] as const
 
 const atlasItems = [
-  { id: "agent", title: "Agent-Ready Design System", copy: "Talk to an agent docked to your canvas, build static or interactive UI, and hand it off to Codex or Claude.", layout: "md:col-span-2 xl:col-span-4" },
+  { id: "agent", title: "Agent-Ready Design System", copy: "Talk to an agent docked to your canvas: humanize, fix, and animate the UI in place, then hand the build off to Codex or Claude.", layout: "md:col-span-2 xl:col-span-4" },
   { id: "pointer", title: "Cursor-Reactive Field", copy: "Surfaces that respond to cursor movement with spatial feedback and temporary visual traces.", layout: "md:col-span-2 xl:col-span-2" },
-  { id: "physics", title: "Physics-Based Interaction", copy: "Interface objects collide, drift, and settle under a live physics field.", layout: "md:col-span-1 xl:col-span-2" },
-  { id: "scroll", title: "Scroll-Driven Narrative", copy: "Copy, layers, and interface states advance as a self-running story.", layout: "md:col-span-1 xl:col-span-2" },
+  { id: "physics", title: "Physics-Based Interaction", copy: "UI primitives fall, collide, and settle in a real rigid-body field.", layout: "md:col-span-1 xl:col-span-2" },
+  { id: "scroll", title: "Product Surface Coverflow", copy: "Distinct product surfaces glide past in a self-playing 3D coverflow.", layout: "md:col-span-1 xl:col-span-2" },
   { id: "motion", title: "Motion Choreography", copy: "Easing curves compared as visible motion from center to edge and back.", layout: "md:col-span-1 xl:col-span-2" },
   { id: "shader", title: "Shader Gradient System", copy: "Tokenized mesh color, grain, and luminous fields in a continuous loop.", layout: "md:col-span-1 xl:col-span-3" },
   { id: "material", title: "Material Surface System", copy: "Glass, paper, shadow, blur, and depth rules that keep complex surfaces tactile and readable.", layout: "md:col-span-1 xl:col-span-3" },
@@ -562,7 +566,6 @@ function AtlasDemo({ id }: { id: AtlasItemId }) {
   const [shaderMix, setShaderMix] = useState(58)
   const [materialDepth, setMaterialDepth] = useState(3)
   const [materialMode, setMaterialMode] = useState<"paper" | "glass" | "solid" | "dim">("glass")
-  const [scrollStory, setScrollStory] = useState(36)
   const [mobileStep, setMobileStep] = useState(0)
   const [cartCount, setCartCount] = useState(1)
   const [agentFrame, setAgentFrame] = useState({ left: 18, top: 24, width: 58, height: 150 })
@@ -603,16 +606,6 @@ function AtlasDemo({ id }: { id: AtlasItemId }) {
     return cells
   })
   const [commandMode, setCommandMode] = useState<"review" | "ship" | "agent">("review")
-
-  useEffect(() => {
-    if (id !== "scroll" || prefersReducedMotion) return
-
-    const timer = window.setInterval(() => {
-      setScrollStory((value) => (value + 2) % 101)
-    }, 140)
-
-    return () => window.clearInterval(timer)
-  }, [id, prefersReducedMotion])
 
   useEffect(() => {
     if (id !== "shader" || prefersReducedMotion) return
@@ -667,7 +660,7 @@ function AtlasDemo({ id }: { id: AtlasItemId }) {
   }, [id])
 
   if (id === "agent") {
-    const defaultFrame = { humanize: { left: 18, top: 24, width: 58, height: 150 }, fix: { left: 16, top: 22, width: 62, height: 158 }, interactive: { left: 22, top: 26, width: 52, height: 140 } }
+    const defaultFrame = { humanize: { left: 18, top: 20, width: 58, height: 172 }, fix: { left: 16, top: 22, width: 62, height: 158 }, interactive: { left: 22, top: 26, width: 52, height: 140 } }
     const agentScenarios = [
       {
         key: "humanize" as const,
@@ -732,7 +725,7 @@ function AtlasDemo({ id }: { id: AtlasItemId }) {
     const sendAgentMessage = () => {
       const text = agentInput.trim()
       if (!text) return
-      setAgentChat((log) => [...log, { role: "you", text }, { role: "agent", text: "On it — reworking the card on the left." }])
+      setAgentChat((log) => [...log, { role: "you", text }, { role: "agent", text: "Try it in Askewly Design!" }])
       setAgentInput("")
     }
     const startAgentResize = (event: ReactPointerEvent<HTMLSpanElement>, edge: "n" | "e" | "s" | "w" | "nw" | "ne" | "sw" | "se") => {
@@ -878,7 +871,7 @@ function AtlasDemo({ id }: { id: AtlasItemId }) {
                   {(["nw", "ne", "sw", "se"] as const).map((corner) => (
                     <span
                       key={corner}
-                      className={cn("absolute z-30 size-2 cursor-nwse-resize touch-none border bg-white", corner === "nw" && "-left-0.5 -top-0.5 -translate-x-1/2 -translate-y-1/2", corner === "ne" && "-right-0.5 -top-0.5 translate-x-1/2 -translate-y-1/2 cursor-nesw-resize", corner === "sw" && "-bottom-0.5 -left-0.5 -translate-x-1/2 translate-y-1/2 cursor-nesw-resize", corner === "se" && "-bottom-0.5 -right-0.5 translate-x-1/2 translate-y-1/2")}
+                      className={cn("absolute z-30 size-2 cursor-nwse-resize touch-none border bg-white", corner === "nw" && "left-[0.75px] top-[0.75px] -translate-x-1/2 -translate-y-1/2", corner === "ne" && "right-[0.75px] top-[0.75px] translate-x-1/2 -translate-y-1/2 cursor-nesw-resize", corner === "sw" && "bottom-[0.75px] left-[0.75px] -translate-x-1/2 translate-y-1/2 cursor-nesw-resize", corner === "se" && "bottom-[0.75px] right-[0.75px] translate-x-1/2 translate-y-1/2")}
                       style={{ borderColor: "var(--askewly-violet)" }}
                       data-resize-edge={corner}
                       role="presentation"
@@ -900,19 +893,19 @@ function AtlasDemo({ id }: { id: AtlasItemId }) {
                 >
                   {agentScenario === "humanize" && agentPhase === "before" ? (
                     <>
-                      <div className="flex items-center gap-2">
-                        <img src="/assets/navbars/avatar-03.png" alt="" className="size-8 shrink-0 rounded-full object-cover ring-2 ring-cyan-300 [box-shadow:0_0_10px_rgba(34,211,238,0.8)]" />
+                      <div className="flex items-start gap-1.5">
+                        <img src="/assets/navbars/avatar-03.png" alt="" className="h-11 w-8 shrink-0 rounded-none object-cover ring-1 ring-fuchsia-400/70" />
                         <div className="min-w-0">
-                          <p className="truncate font-serif text-[13px] font-black italic text-cyan-300 [text-shadow:0_0_10px_rgba(34,211,238,0.9)]">Maya Okonkwo ✨</p>
-                          <p className="truncate text-[9px] text-fuchsia-200">🚀 Design Lead &amp; AI Visionary</p>
+                          <p className="truncate font-serif text-[17px] font-black italic leading-none text-cyan-300 [text-shadow:0_0_10px_rgba(34,211,238,0.9)]">Maya Okonkwo ✨</p>
+                          <p className="truncate text-[7px] uppercase tracking-[0.2em] text-fuchsia-200">🚀 Design Lead &amp; AI Visionary 🚀</p>
                         </div>
                       </div>
-                      <p className="text-[10px] font-semibold leading-4 text-purple-100">“Our agents finally ship UI that looks intentional 🔥🚀 not generated!! 💯✨”</p>
+                      <p className="text-[12px] font-black leading-3 text-purple-100">“Our agents <span className="text-[8px] font-normal">finally ship UI</span> that looks INTENTIONAL 🔥🚀 not generated!! 💯✨”</p>
                       <div className="flex items-center gap-1">
-                        <span className="text-[11px] leading-none text-amber-300 [text-shadow:0_0_8px_rgba(252,211,77,0.9)]">★★★★★</span>
-                        <span className="text-[8px] font-black uppercase tracking-wide text-fuchsia-300">100% Amazing!!!</span>
+                        <span className="text-[15px] leading-none text-amber-300 [text-shadow:0_0_8px_rgba(252,211,77,0.9)]">★★★★★</span>
+                        <span className="text-[7px] font-black uppercase text-fuchsia-300">100% Amazing!!!</span>
                       </div>
-                      <span className="mt-1 self-start rounded-full bg-[linear-gradient(90deg,#22d3ee,#a855f7)] px-3 py-1 text-[9px] font-bold uppercase tracking-wide text-white shadow-[0_0_16px_rgba(168,85,247,0.75)]">Read More 👉</span>
+                      <button type="button" className="mt-auto -rotate-2 self-center rounded-none bg-[linear-gradient(90deg,#22d3ee,#a855f7)] px-2 py-1.5 text-[15px] font-black uppercase leading-none tracking-tight text-white shadow-[0_0_16px_rgba(168,85,247,0.75)]">Read More 👉</button>
                     </>
                   ) : (
                     (() => {
@@ -1060,30 +1053,7 @@ function AtlasDemo({ id }: { id: AtlasItemId }) {
   }
 
   if (id === "scroll") {
-    const chapter = scrollStory < 34 ? "brief" : scrollStory < 68 ? "system" : "proof"
-
-    return (
-      <div className="min-h-[17.65rem]">
-        <div className="relative h-64 overflow-hidden rounded-md border border-slate-200 bg-slate-950 text-white">
-          <div className="absolute inset-0 bg-[linear-gradient(135deg,rgba(111,45,189,0.45),transparent_40%),radial-gradient(circle_at_70%_30%,rgba(185,250,248,0.35),transparent_28%)]" />
-          <div className="absolute bottom-0 left-0 top-0 w-1 bg-white/10"><div className="w-full bg-askewly-mint transition-all" style={{ height: `${scrollStory}%` }} /></div>
-          <div className="absolute left-8 top-8 max-w-[15rem] transition" style={{ transform: `translateY(${scrollStory > 50 ? -8 : 0}px)`, opacity: 0.72 + scrollStory / 360 }}>
-            <p className="font-mono text-[10px] uppercase tracking-[0.18em] text-white/45">scroll chapter</p>
-            <p className="mt-3 text-3xl font-semibold capitalize">{chapter}</p>
-            <p className="mt-3 text-sm leading-6 text-white/62">{chapter === "brief" ? "Open with a sharp visual promise." : chapter === "system" ? "Reveal the rules behind the interface." : "End with proof, code, and reusable assets."}</p>
-          </div>
-          <div className="absolute right-8 top-8 grid gap-3">
-            {[0, 1, 2].map((index) => (
-              <div
-                key={index}
-                className="h-16 w-32 rounded border border-white/15 bg-white/10 backdrop-blur transition"
-                style={{ transform: `translateY(${(index * 22) - scrollStory / (index + 2)}px)`, opacity: scrollStory / 120 + 0.2 + index * 0.1 }}
-              />
-            ))}
-          </div>
-        </div>
-      </div>
-    )
+    return <CoverflowDemo />
   }
 
   if (id === "filters") {
@@ -1359,6 +1329,166 @@ function AtlasDemo({ id }: { id: AtlasItemId }) {
   )
 }
 
+type CoverflowKind = "analytics" | "calendar" | "kanban" | "media" | "chat" | "pricing"
+
+// Six visually distinct product surfaces (hardcoded light palette so they stay bright in both themes).
+const coverflowCards: CoverflowKind[] = ["analytics", "calendar", "kanban", "media", "chat", "pricing"]
+
+function CoverflowCard({ kind }: { kind: CoverflowKind }) {
+  const frame = "h-[132px] w-40 overflow-hidden rounded-xl border border-slate-200 bg-white shadow-[0_20px_46px_rgba(0,0,0,0.5)]"
+  if (kind === "analytics") {
+    return (
+      <div className={frame}>
+        <div className="flex items-center justify-between px-3 pt-3">
+          <p className="text-[10px] font-semibold text-slate-900">Revenue</p>
+          <span className="text-[9px] font-medium text-emerald-500">+18%</span>
+        </div>
+        <p className="px-3 text-lg font-semibold leading-tight text-slate-900">$48.2k</p>
+        <div className="mt-1 flex h-[52px] items-end gap-1 px-3 pb-3">
+          {[0.35, 0.6, 0.45, 0.82, 0.55, 0.95, 0.7].map((h, i) => (
+            <span key={i} className="flex-1 rounded-t" style={{ height: `${h * 100}%`, background: i === 5 ? "var(--askewly-violet)" : "var(--askewly-lavender)" }} />
+          ))}
+        </div>
+      </div>
+    )
+  }
+  if (kind === "calendar") {
+    return (
+      <div className={cn(frame, "p-3")}>
+        <div className="flex items-baseline justify-between">
+          <p className="text-[11px] font-semibold text-slate-900">March</p>
+          <span className="text-[8px] text-slate-400">2026</span>
+        </div>
+        <div className="mt-2 grid grid-cols-7 gap-1">
+          {Array.from({ length: 28 }).map((_, i) => (
+            <span key={i} className={cn("aspect-square rounded-[3px]", i === 16 ? "bg-askewly-violet" : "bg-slate-100")} />
+          ))}
+        </div>
+      </div>
+    )
+  }
+  if (kind === "kanban") {
+    const columns = [
+      { color: "var(--askewly-sky)", n: 3 },
+      { color: "#fbbf24", n: 2 },
+      { color: "var(--askewly-mint)", n: 2 },
+    ]
+    return (
+      <div className={cn(frame, "p-3")}>
+        <p className="text-[10px] font-semibold text-slate-900">Sprint 12</p>
+        <div className="mt-2 grid grid-cols-3 gap-1.5">
+          {columns.map((col, ci) => (
+            <div key={ci} className="space-y-1.5">
+              <span className="block h-1 w-6 rounded-full" style={{ background: col.color }} />
+              {Array.from({ length: col.n }).map((_, i) => (
+                <span key={i} className="block h-4 rounded bg-slate-100" />
+              ))}
+            </div>
+          ))}
+        </div>
+      </div>
+    )
+  }
+  if (kind === "media") {
+    return (
+      <div className={cn(frame, "p-3")}>
+        <div className="flex items-center gap-2.5">
+          <div className="size-11 shrink-0 rounded-md" style={{ background: "linear-gradient(135deg, var(--askewly-violet), var(--askewly-mint))" }} />
+          <div className="min-w-0">
+            <p className="truncate text-[11px] font-semibold text-slate-900">Nightfall</p>
+            <p className="truncate text-[9px] text-slate-500">Askewly Radio</p>
+          </div>
+        </div>
+        <div className="mt-3 h-1 rounded-full bg-slate-200">
+          <span className="block h-full w-2/3 rounded-full bg-askewly-violet" />
+        </div>
+        <div className="mt-2.5 flex items-center justify-center gap-3 text-slate-700">
+          <SkipBack className="size-3" aria-hidden="true" />
+          <Play className="size-4 fill-current" aria-hidden="true" />
+          <SkipForward className="size-3" aria-hidden="true" />
+        </div>
+      </div>
+    )
+  }
+  if (kind === "chat") {
+    return (
+      <div className={cn(frame, "flex flex-col gap-1.5 p-3")}>
+        <span className="max-w-[82%] self-start rounded-lg rounded-bl-sm bg-slate-100 px-2 py-1 text-[9px] leading-snug text-slate-700">How’s the redesign going?</span>
+        <span className="max-w-[82%] self-end rounded-lg rounded-br-sm bg-askewly-violet px-2 py-1 text-[9px] leading-snug text-white">Shipping it today ✦</span>
+        <span className="max-w-[60%] self-start rounded-lg rounded-bl-sm bg-slate-100 px-2 py-1 text-[9px] leading-snug text-slate-700">🔥 amazing</span>
+      </div>
+    )
+  }
+  return (
+    <div className={cn(frame, "p-3")}>
+      <p className="text-[9px] font-semibold uppercase tracking-wide text-askewly-violet">Pro</p>
+      <p className="text-slate-900">
+        <span className="text-xl font-semibold">$24</span>
+        <span className="text-[9px] text-slate-400">/mo</span>
+      </p>
+      <div className="mt-2 space-y-1.5">
+        {["Unlimited tokens", "Team library", "Priority sync"].map((feature) => (
+          <div key={feature} className="flex items-center gap-1.5 text-[9px] text-slate-600">
+            <Check className="size-3 shrink-0 text-emerald-500" aria-hidden="true" />
+            {feature}
+          </div>
+        ))}
+      </div>
+    </div>
+  )
+}
+
+function CoverflowDemo() {
+  const prefersReducedMotion = usePrefersReducedMotion()
+  const [active, setActive] = useState(0)
+  const total = coverflowCards.length
+
+  useEffect(() => {
+    if (prefersReducedMotion) return
+    const interval = window.setInterval(() => setActive((value) => (value + 1) % total), 2600)
+    return () => window.clearInterval(interval)
+  }, [prefersReducedMotion, total])
+
+  return (
+    <div className="min-h-[17.65rem]">
+      <div className="relative h-64 overflow-hidden rounded-md border border-slate-200 bg-slate-950" style={{ perspective: "1000px" }}>
+        <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_46%,rgba(111,45,189,0.34),transparent_64%)]" />
+        <div className="absolute inset-0" style={{ transformStyle: "preserve-3d" }}>
+          {coverflowCards.map((kind, index) => {
+            // Shortest signed distance around the loop, so the row wraps seamlessly.
+            let pos = index - active
+            if (pos > total / 2) pos -= total
+            if (pos < -total / 2) pos += total
+            const abs = Math.abs(pos)
+            const side = Math.max(-1, Math.min(1, pos))
+            const x = pos * 66
+            const rotateY = -side * 44
+            const z = -abs * 70
+            const scale = Math.max(0.6, 1 - abs * 0.14)
+            const opacity = abs > 2.6 ? 0 : Math.max(0, 1 - abs * 0.24)
+            return (
+              <div
+                key={index}
+                className="absolute left-1/2 top-1/2"
+                style={{
+                  transform: `translate(-50%, -50%) translateX(${x.toFixed(1)}px) translateZ(${z.toFixed(1)}px) rotateY(${rotateY.toFixed(1)}deg) scale(${scale.toFixed(3)})`,
+                  zIndex: 100 - Math.round(abs * 10),
+                  opacity,
+                  transition: prefersReducedMotion ? undefined : "transform 0.7s cubic-bezier(0.4, 0, 0.2, 1), opacity 0.6s ease",
+                  transformStyle: "preserve-3d",
+                  willChange: "transform",
+                }}
+              >
+                <CoverflowCard kind={kind} />
+              </div>
+            )
+          })}
+        </div>
+      </div>
+    </div>
+  )
+}
+
 type MatterTokenShape = "circle" | "rect"
 
 type MatterTokenSpec = {
@@ -1432,20 +1562,34 @@ function MatterPhysicsDemo() {
     const element = root
     const engine = Matter.Engine.create()
     engine.gravity.y = 0.45
+    // Extra solver iterations reduce how far the settled pile sinks into the floor.
+    engine.positionIterations = 14
+    engine.velocityIterations = 10
     engineRef.current = engine
 
+    // Resting surface, matched to the physics floor top so clamped bodies align with the line.
+    const FLOOR_INSET = 20
+
     function syncTokens() {
-      setTokens(recordsRef.current.map((record) => ({
-        id: record.id,
-        label: record.label,
-        shape: record.shape,
-        width: record.width,
-        height: record.height,
-        className: record.className,
-        x: record.body.position.x,
-        y: record.body.position.y,
-        angle: record.body.angle,
-      })))
+      const floorLine = element.clientHeight - FLOOR_INSET
+      setTokens(recordsRef.current.map((record) => {
+        const angle = record.body.angle
+        // Half the vertical extent (rotation-aware for rects) so nothing renders past the floor line.
+        const halfExtent = record.shape === "circle"
+          ? record.width / 2
+          : (Math.abs(Math.sin(angle)) * record.width + Math.abs(Math.cos(angle)) * record.height) / 2
+        return {
+          id: record.id,
+          label: record.label,
+          shape: record.shape,
+          width: record.width,
+          height: record.height,
+          className: record.className,
+          x: record.body.position.x,
+          y: Math.min(record.body.position.y, floorLine - halfExtent),
+          angle,
+        }
+      }))
     }
 
     function rebuildWorld() {
@@ -1461,7 +1605,7 @@ function MatterPhysicsDemo() {
 
       const wallThickness = 72
       const walls = [
-        Matter.Bodies.rectangle(width / 2, height + wallThickness / 2 - 18, width + wallThickness * 2, wallThickness, { isStatic: true }),
+        Matter.Bodies.rectangle(width / 2, height + wallThickness / 2 - 20, width + wallThickness * 2, wallThickness, { isStatic: true }),
         Matter.Bodies.rectangle(-wallThickness / 2 + 8, height / 2, wallThickness, height + wallThickness * 2, { isStatic: true }),
         Matter.Bodies.rectangle(width + wallThickness / 2 - 8, height / 2, wallThickness, height + wallThickness * 2, { isStatic: true }),
         Matter.Bodies.rectangle(width / 2, -wallThickness / 2 + 4, width + wallThickness * 2, wallThickness, { isStatic: true }),
@@ -1473,11 +1617,11 @@ function MatterPhysicsDemo() {
         const x = width * (0.18 + column * 0.19)
         const y = height * (0.2 + row * 0.16)
         const commonOptions: Matter.IBodyDefinition = {
-          restitution: 0.68,
-          friction: 0.42,
-          frictionAir: 0.018,
+          restitution: 0.5,
+          friction: 0.46,
+          frictionAir: 0.024,
           density: 0.00075,
-          angle: (index % 2 === 0 ? -1 : 1) * (0.08 + index * 0.015),
+          angle: (index % 2 === 0 ? -1 : 1) * (0.04 + index * 0.006),
         }
         const body = spec.shape === "circle"
           ? Matter.Bodies.circle(x, y, spec.width / 2, commonOptions)
@@ -1485,6 +1629,11 @@ function MatterPhysicsDemo() {
               ...commonOptions,
               chamfer: { radius: Math.min(14, spec.height / 2 - 2) },
             })
+
+        // Resist tumbling so labels settle mostly upright, without freezing rotation.
+        if (spec.shape !== "circle") {
+          Matter.Body.setInertia(body, body.inertia * 6)
+        }
 
         Matter.Body.setVelocity(body, {
           x: (index % 2 === 0 ? 1 : -1) * (0.4 + index * 0.06),
@@ -1578,6 +1727,7 @@ function MatterPhysicsDemo() {
       }}
     >
       <div className="absolute inset-0 opacity-55 [background-image:linear-gradient(90deg,rgba(15,23,42,0.045)_1px,transparent_1px),linear-gradient(rgba(15,23,42,0.045)_1px,transparent_1px)] [background-size:34px_34px]" />
+      <p className="pointer-events-none absolute left-4 top-3.5 z-10 font-mono text-[10px] uppercase tracking-[0.16em] text-slate-400">push the chips with your cursor</p>
       <div className="absolute inset-x-5 bottom-5 h-px bg-slate-950/18" />
       {tokens.map((token) => (
         <div
