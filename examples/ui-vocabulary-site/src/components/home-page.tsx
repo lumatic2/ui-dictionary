@@ -1901,7 +1901,6 @@ function ColorPaletteGeneratorDemo() {
       setDragPreview((current) => current ? {
         ...current,
         left: pointerEvent.clientX - cardRect.left - current.offsetX,
-        top: pointerEvent.clientY - cardRect.top - current.offsetY,
       } : current)
       let currentIndex = state.currentIndex
       const targetIndex = clampNumber(Math.floor((pointerEvent.clientX - state.boardLeft) / state.width), 0, palette.length - 1)
@@ -2148,7 +2147,7 @@ function ColorPaletteGeneratorDemo() {
 
         {dragPreview && (
           <div
-            className="pointer-events-none absolute z-[70] flex flex-col justify-between rounded-sm p-3 text-left opacity-95 shadow-2xl ring-2 ring-white/75"
+            className="pointer-events-none absolute z-[70] flex flex-col justify-between rounded-sm p-3 text-left shadow-2xl"
             style={{
               backgroundColor: dragPreview.hex,
               color: getReadableTextColor(dragPreview.hex),
