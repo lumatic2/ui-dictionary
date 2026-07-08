@@ -1907,7 +1907,7 @@ function ColorPaletteGeneratorDemo() {
       const targetIndex = clampNumber(Math.floor((pointerEvent.clientX - state.boardLeft) / state.width), 0, palette.length - 1)
       if (targetIndex !== state.targetIndex) {
         dragStateRef.current = { ...state, targetIndex }
-        setDragTargetIndex(targetIndex)
+        flushSync(() => setDragTargetIndex(targetIndex))
       }
     }
     const finishDrag = () => {
@@ -2029,7 +2029,7 @@ function ColorPaletteGeneratorDemo() {
                 data-palette-color="true"
                 className={cn(
                   "group/swatch relative flex min-w-0 flex-1 cursor-pointer flex-col justify-between overflow-visible p-3 text-left transition-all duration-200 focus-within:z-20",
-                  !prefersReducedMotion && "palette-generator-enter",
+                  !prefersReducedMotion && draggedIndex === null && "palette-generator-enter",
                   removingIndex === index && "scale-x-0 opacity-0",
                   draggedIndex === index && "opacity-0",
                 )}
@@ -2157,6 +2157,7 @@ function ColorPaletteGeneratorDemo() {
 
         {dragPreview && (
           <div
+            data-palette-drag-preview="true"
             className="pointer-events-none absolute z-[70] flex flex-col justify-between rounded-sm p-3 text-left shadow-2xl"
             style={{
               backgroundColor: dragPreview.hex,
