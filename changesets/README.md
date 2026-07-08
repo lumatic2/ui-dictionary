@@ -22,3 +22,4 @@
 | 20 | 20260709-palette-shade-column-selection | 2026-07-09 | Color Palette Generator orders shade columns, hover labels, and selected shade dots | 4/4 | complete |
 | 21 | 20260709-palette-shade-stable-selection | 2026-07-09 | Color Palette Generator keeps shade options stable while selecting shades | 4/4 | complete |
 | 22 | 20260709-palette-shade-select-closes | 2026-07-09 | Color Palette Generator closes the shade column after selecting a shade | 4/4 | complete |
+| 23 | 20260709-showcase-cards-asset-backed-final-row | 2026-07-09 | Showcase Atlas replaces final row card content with asset-backed compositions | 4/4 | complete |

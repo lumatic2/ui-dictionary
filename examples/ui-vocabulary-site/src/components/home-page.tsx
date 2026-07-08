@@ -1067,54 +1067,72 @@ function AtlasDemo({ id }: { id: AtlasItemId }) {
   if (id === "command") {
     const commandRows = {
       review: [
-        ["Inspect docs leaf", "visual delta", "Ready"],
-        ["Tune landing card", "interaction", "Open"],
-        ["Check dark mode", "theme gate", "Ready"],
+        ["Open command palette", "⌘ K", "Ready"],
+        ["Inspect selected record", "profile", "Open"],
+        ["Route to workspace", "nav", "Ready"],
       ],
       ship: [
-        ["Build preview", "npm run build", "Ready"],
-        ["Chrome smoke", "local tab", "Open"],
-        ["Write handoff", "phase log", "Queued"],
+        ["Run release checks", "build", "Ready"],
+        ["Capture browser smoke", "chrome", "Open"],
+        ["Publish handoff", "log", "Queued"],
       ],
       agent: [
-        ["DESIGN.md", "tokens", "Ready"],
-        ["Component intent", "copyable", "Ready"],
-        ["Verification signal", "browser", "Open"],
+        ["Sync DESIGN.md", "tokens", "Ready"],
+        ["Package UI intent", "agent", "Ready"],
+        ["Verify evidence", "browser", "Open"],
       ],
     } satisfies Record<typeof commandMode, Array<[string, string, string]>>
 
     return (
-      <div className="grid gap-3 rounded-md border border-slate-200 bg-white p-3 sm:grid-cols-[8rem_1fr]">
-        <aside className="rounded bg-slate-950 p-3 text-xs font-semibold text-white">
-          <p>Command</p>
-          <div className="mt-4 space-y-1">
+      <div className="relative min-h-[22.2rem] overflow-hidden rounded-md border border-slate-200 bg-slate-950 text-white">
+        <img className="absolute inset-0 size-full object-cover opacity-58" src="/assets/command-palettes/mountain-backgrounds-sheet-v1.png" alt="" />
+        <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_18%,rgba(255,255,255,0.24),transparent_32%),linear-gradient(180deg,rgba(2,6,23,0.18),rgba(2,6,23,0.82))]" />
+        <div className="relative grid min-h-[22.2rem] content-center gap-3 p-5 sm:grid-cols-[8.75rem_minmax(0,1fr)] sm:items-center">
+          <aside className="rounded-xl border border-white/14 bg-slate-950/74 p-3 text-xs font-semibold shadow-2xl backdrop-blur">
+            <p className="font-mono uppercase tracking-[0.12em] text-white/55">Control</p>
+            <div className="mt-4 space-y-1">
             {(["review", "ship", "agent"] as const).map((item) => (
               <button
                 key={item}
-                className={cn("block w-full rounded px-2 py-1.5 text-left capitalize transition", commandMode === item ? "bg-white text-slate-950" : "text-slate-400 hover:bg-white/10 hover:text-white")}
+                className={cn("block w-full rounded-md px-2 py-2 text-left capitalize transition", commandMode === item ? "bg-white text-slate-950" : "text-white/55 hover:bg-white/10 hover:text-white")}
                 type="button"
                 onClick={() => setCommandMode(item)}
               >
                 {item}
               </button>
             ))}
-          </div>
-        </aside>
-        <div>
-          <div className="rounded border border-slate-200 bg-slate-50 p-2">
-            <div className="flex items-center gap-2 rounded bg-white px-3 py-2 text-sm font-semibold text-slate-500 shadow-sm">
-              <Search aria-hidden="true" className="size-4" />
-              <span>{commandMode === "review" ? "Find interaction gaps..." : commandMode === "ship" ? "Run release checks..." : "Package agent assets..."}</span>
             </div>
-          </div>
-          <div className="mt-3 rounded border border-slate-200">
+          </aside>
+          <div className="overflow-hidden rounded-2xl border border-white/22 bg-white/92 text-slate-950 shadow-[0_24px_70px_rgba(0,0,0,0.42)] backdrop-blur">
+            <div className="border-b border-slate-200 bg-white p-3">
+              <div className="flex items-center gap-2 rounded-xl border border-slate-200 bg-slate-50 px-3 py-2 text-sm font-semibold text-slate-500 shadow-inner">
+              <Search aria-hidden="true" className="size-4" />
+                <span>{commandMode === "review" ? "Search people, files, commands..." : commandMode === "ship" ? "Run release checks..." : "Package agent assets..."}</span>
+                <span className="ml-auto rounded border border-slate-200 px-1.5 py-0.5 font-mono text-[10px] text-slate-400">⌘K</span>
+              </div>
+            </div>
+            <div className="grid min-h-[13.4rem] sm:grid-cols-[minmax(0,1fr)_11.5rem]">
+              <div className="divide-y divide-slate-100">
             {commandRows[commandMode].map(([label, meta, status]) => (
-              <button key={label} className="grid w-full gap-2 border-b border-slate-100 p-3 text-left last:border-b-0 sm:grid-cols-[1fr_6.5rem_4.5rem]" type="button">
+                  <button key={label} className="grid w-full gap-2 p-3 text-left transition hover:bg-slate-50 sm:grid-cols-[1fr_4.2rem_4.4rem]" type="button">
                 <span className="font-semibold text-slate-950">{label}</span>
                 <span className="font-mono text-[10px] uppercase tracking-[0.12em] text-slate-400">{meta}</span>
                 <span className={cn("rounded-full px-2 py-0.5 text-center text-[10px] font-semibold uppercase tracking-[0.12em]", status === "Ready" ? "bg-askewly-mint/70 text-slate-700" : "bg-askewly-lavender/20 text-askewly-violet")}>{status}</span>
               </button>
             ))}
+              </div>
+              <div className="hidden border-l border-slate-200 bg-slate-50 p-4 sm:block">
+                <div className="size-12 overflow-hidden rounded-full bg-slate-200">
+                  <img className="size-full object-cover object-[18%_28%]" src="/assets/command-palettes/avatar-results-sheet-v1.png" alt="" />
+                </div>
+                <p className="mt-3 font-semibold text-slate-950">Tom Cook</p>
+                <p className="text-xs text-slate-500">Director, Product Design</p>
+                <div className="mt-5 space-y-2 text-xs font-semibold text-slate-500">
+                  <p className="rounded bg-white px-2 py-1.5">5 shared projects</p>
+                  <p className="rounded bg-white px-2 py-1.5">Last active 12m ago</p>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
       </div>
@@ -1123,23 +1141,57 @@ function AtlasDemo({ id }: { id: AtlasItemId }) {
 
   if (id === "commerce") {
     return (
-      <div className="rounded-md border border-slate-200 bg-white p-4">
-        <div className="flex gap-3">
-          <div className="relative size-24 overflow-hidden rounded bg-[linear-gradient(135deg,var(--askewly-sky),var(--askewly-mint))]">
-            <div className="absolute left-4 top-4 size-14 rounded-full border border-white/80 bg-white/30" />
-            <div className="absolute bottom-3 right-3 size-7 rounded bg-slate-950/80" />
-          </div>
-          <div className="min-w-0 flex-1">
-            <p className="font-semibold text-slate-950">Soft shell pack</p>
-            <p className="text-sm text-slate-500">$128.00 · Ships today</p>
-            <div className="mt-3 flex items-center gap-2">
-              <button className="rounded-full bg-slate-950 px-4 py-2 text-xs font-semibold text-white transition hover:bg-askewly-violet" type="button" onClick={() => setCartCount((value) => value + 1)}>Add</button>
-              <span className="rounded-full border border-slate-200 px-3 py-1 text-xs font-semibold text-slate-600">cart {cartCount}</span>
+      <div className="overflow-hidden rounded-md border border-slate-200 bg-white">
+        <div className="grid min-h-[22.2rem] bg-slate-50 md:grid-cols-[minmax(0,1fr)_17rem]">
+          <div className="relative overflow-hidden bg-white p-5">
+            <div className="absolute -left-12 -top-16 size-44 rounded-full bg-askewly-mint/35 blur-3xl" />
+            <div className="absolute -bottom-16 right-0 size-48 rounded-full bg-askewly-sky/45 blur-3xl" />
+            <div className="relative grid h-full content-between">
+              <div>
+                <p className="font-mono text-[10px] font-semibold uppercase tracking-[0.14em] text-slate-400">Checkout flow</p>
+                <p className="mt-2 max-w-[18rem] text-2xl font-semibold leading-tight text-slate-950">Review cart, shipping, and payment without losing product confidence.</p>
+              </div>
+              <div className="relative mt-5 min-h-[10rem]">
+                <img className="absolute left-0 top-0 w-[78%] rounded-2xl object-cover shadow-xl" src="/assets/ecommerce-checkout-pages/checkout-bag-lamp-set.png" alt="" />
+                <div className="absolute bottom-0 right-0 w-40 rounded-2xl border border-slate-200 bg-white p-3 shadow-2xl">
+                  <p className="text-xs font-semibold text-slate-500">Order summary</p>
+                  {["Mini backpack", "Canvas tote", "Desk lamp"].map((item, index) => (
+                    <div key={item} className="mt-2 flex items-center justify-between gap-2 text-xs">
+                      <span className="truncate font-semibold text-slate-700">{item}</span>
+                      <span className="font-mono text-slate-400">${[75, 35, 110][index]}</span>
+                    </div>
+                  ))}
+                  <div className="mt-3 flex items-center justify-between border-t border-slate-100 pt-2 text-sm font-semibold text-slate-950">
+                    <span>Total</span>
+                    <span>$227.32</span>
+                  </div>
+                </div>
+              </div>
             </div>
           </div>
-        </div>
-        <div className="mt-4 grid grid-cols-3 gap-2 text-xs font-semibold text-slate-500">
-          {["Fit", "Ship", "Pay"].map((item, index) => <span key={item} className={cn("rounded border p-2 text-center", index < cartCount % 4 ? "border-askewly-violet text-askewly-violet" : "border-slate-200")}>{item}</span>)}
+          <div className="border-t border-slate-200 bg-white p-5 md:border-l md:border-t-0">
+            <div className="flex items-center justify-between">
+              <p className="text-sm font-semibold text-slate-950">Progress</p>
+              <span className="rounded-full bg-slate-950 px-2 py-1 text-[10px] font-semibold uppercase tracking-[0.12em] text-white">cart {cartCount}</span>
+            </div>
+            <div className="mt-5 space-y-3">
+              {["Customer", "Shipping", "Payment"].map((item, index) => (
+                <button
+                  key={item}
+                  className={cn("flex w-full items-center gap-3 rounded-xl border p-3 text-left transition", index <= cartCount % 3 ? "border-askewly-violet bg-askewly-lavender/15" : "border-slate-200 bg-white")}
+                  type="button"
+                  onClick={() => setCartCount((value) => value + 1)}
+                >
+                  <span className={cn("grid size-7 place-items-center rounded-full text-xs font-semibold", index <= cartCount % 3 ? "bg-askewly-violet text-white" : "bg-slate-100 text-slate-500")}>{index + 1}</span>
+                  <span className="min-w-0">
+                    <span className="block text-sm font-semibold text-slate-950">{item}</span>
+                    <span className="block text-xs text-slate-500">{index === 0 ? "Email and contact" : index === 1 ? "Delivery method" : "Card and wallet"}</span>
+                  </span>
+                </button>
+              ))}
+            </div>
+            <button className="mt-5 w-full rounded-xl bg-slate-950 px-4 py-3 text-sm font-semibold text-white transition hover:bg-askewly-violet" type="button" onClick={() => setCartCount((value) => value + 1)}>Continue</button>
+          </div>
         </div>
       </div>
     )
@@ -1147,26 +1199,26 @@ function AtlasDemo({ id }: { id: AtlasItemId }) {
 
   if (id === "landing") {
     return (
-      <div className="overflow-hidden rounded-md border border-slate-200 bg-white">
-        <div className="relative min-h-[19.1rem] overflow-hidden bg-white p-5">
-          <div className="absolute inset-0 opacity-70 [background-image:linear-gradient(90deg,rgba(15,23,42,0.06)_1px,transparent_1px),linear-gradient(rgba(15,23,42,0.06)_1px,transparent_1px)] [background-size:34px_34px]" />
-          <div className="absolute right-5 top-5 grid gap-4">
-            <span className="h-14 w-4 bg-slate-950 transition group-hover:translate-y-3" />
-            <span className="ml-8 h-10 w-3 bg-slate-400/45 transition group-hover:-translate-y-2" />
-            <span className="h-16 w-5 bg-askewly-violet transition group-hover:translate-x-2" />
-          </div>
-          <div className="relative max-w-[18rem]">
-            <p className="text-4xl font-semibold leading-[0.92] tracking-normal text-slate-950">Askewly Design</p>
-            <p className="mt-4 text-sm leading-6 text-slate-600">A visual library and agent-ready system for designing better product interfaces.</p>
+      <div className="overflow-hidden rounded-md border border-slate-200 bg-slate-950 text-white">
+        <div className="relative min-h-[22.2rem] overflow-hidden p-5">
+          <img className="absolute inset-y-0 right-0 h-full w-[70%] object-cover opacity-52" src="/assets/landing-pages/dark-dashboard-v2.png" alt="" />
+          <div className="absolute inset-0 bg-[linear-gradient(90deg,rgba(2,6,23,0.98)_0%,rgba(2,6,23,0.86)_42%,rgba(2,6,23,0.18)_100%)]" />
+          <div className="relative flex min-h-[20.2rem] max-w-[24rem] flex-col justify-center">
+            <p className="w-fit rounded-full border border-white/14 bg-white/10 px-3 py-1 text-[10px] font-semibold uppercase tracking-[0.14em] text-white/66">Hero system</p>
+            <p className="mt-4 text-4xl font-semibold leading-[0.93] tracking-normal text-white sm:text-5xl">Deploy the cloud with confidence</p>
+            <p className="mt-4 max-w-[19rem] text-sm leading-6 text-white/68">A first viewport balances headline gravity, proof surface, calls to action, and visible product context.</p>
             <div className="mt-5 flex gap-2">
-              <button className="rounded-full bg-slate-950 px-4 py-2 text-xs font-semibold text-white transition active:translate-y-px" type="button">Get Started</button>
-              <button className="rounded-full border border-slate-200 bg-white px-4 py-2 text-xs font-semibold text-slate-600 transition active:translate-y-px" type="button">Open Docs</button>
+              <button className="rounded-full bg-white px-4 py-2 text-xs font-semibold text-slate-950 transition active:translate-y-px" type="button">Start project</button>
+              <button className="rounded-full border border-white/20 bg-white/10 px-4 py-2 text-xs font-semibold text-white transition active:translate-y-px" type="button">View demo</button>
             </div>
-          </div>
-          <div className="absolute bottom-5 left-5 right-5 grid grid-cols-3 gap-2">
-            {["SaaS", "Commerce", "Mobile"].map((item) => (
-              <div key={item} className="rounded border border-slate-200 bg-white/82 p-2 text-xs font-semibold text-slate-600 shadow-sm backdrop-blur transition group-hover:-translate-y-1">{item}</div>
-            ))}
+            <div className="mt-6 grid max-w-[19rem] grid-cols-3 gap-2">
+              {["128", "32", "96"].map((value, index) => (
+                <div key={value} className="rounded-xl border border-white/12 bg-white/8 p-2">
+                  <p className="text-lg font-semibold">{value}</p>
+                  <p className="text-[10px] font-semibold uppercase tracking-[0.12em] text-white/45">{["All", "Prod", "Preview"][index]}</p>
+                </div>
+              ))}
+            </div>
           </div>
         </div>
       </div>
@@ -1174,19 +1226,26 @@ function AtlasDemo({ id }: { id: AtlasItemId }) {
   }
 
   if (id === "mobile") {
-    const steps = ["Account", "Billing", "Alerts"]
+    const steps = ["Overview", "Data", "Settings"]
     return (
-      <div className="mx-auto max-w-[14rem] rounded-[1.7rem] border border-slate-200 bg-slate-100 p-2 shadow-sm">
-        <button className="w-full rounded-[1.25rem] bg-white p-4 text-left" type="button" onClick={() => setMobileStep((value) => (value + 1) % steps.length)}>
-          <div className="mx-auto h-1 w-10 rounded-full bg-slate-200" />
-          <p className="mt-6 text-xs font-semibold text-slate-400">Tap to advance</p>
-          <p className="mt-3 text-xl font-semibold text-slate-950">{steps[mobileStep]}</p>
-          <div className="mt-4 grid gap-2">
-            {steps.map((item, index) => (
-              <span key={item} className={cn("rounded border px-3 py-2 text-xs font-semibold transition", index === mobileStep ? "border-askewly-violet bg-askewly-lavender/15 text-askewly-violet" : "border-slate-200 text-slate-500")}>{item}</span>
-            ))}
+      <div className="relative min-h-[22.2rem] overflow-hidden rounded-md border border-slate-200 bg-slate-100 p-5">
+        <div className="absolute inset-0 bg-[radial-gradient(circle_at_20%_10%,rgba(169,222,249,0.72),transparent_34%),radial-gradient(circle_at_85%_78%,rgba(228,193,249,0.62),transparent_34%)]" />
+        <button className="relative mx-auto block h-[20rem] w-[14rem] overflow-hidden rounded-[2rem] border-[6px] border-slate-950 bg-slate-950 text-left shadow-2xl" type="button" onClick={() => setMobileStep((value) => (value + 1) % steps.length)}>
+          <img className="absolute inset-0 size-full object-cover object-top opacity-92" src="/assets/page-examples-home-screens/home-screens-mobile-after.png" alt="" />
+          <div className="absolute inset-x-0 top-0 h-20 bg-gradient-to-b from-white via-white/78 to-transparent" />
+          <div className="absolute inset-x-3 top-3 flex items-center justify-between">
+            <span className="rounded-full bg-slate-950 px-2 py-1 text-[10px] font-semibold text-white">App</span>
+            <Search aria-hidden="true" className="size-4 text-slate-950" />
           </div>
-          <div className="mt-4 h-2 rounded bg-slate-100"><div className="h-2 rounded bg-askewly-violet transition-all" style={{ width: `${(mobileStep + 1) * 33}%` }} /></div>
+          <div className="absolute inset-x-3 bottom-3 rounded-2xl border border-white/60 bg-white/88 p-3 shadow-xl backdrop-blur">
+            <p className="font-mono text-[10px] font-semibold uppercase tracking-[0.12em] text-slate-400">Tap pattern</p>
+            <p className="mt-1 text-lg font-semibold leading-tight text-slate-950">{steps[mobileStep]}</p>
+            <div className="mt-3 grid grid-cols-3 gap-1">
+              {steps.map((item, index) => (
+                <span key={item} className={cn("h-1.5 rounded-full transition", index === mobileStep ? "bg-askewly-violet" : "bg-slate-200")} />
+              ))}
+            </div>
+          </div>
         </button>
       </div>
     )
