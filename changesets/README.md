@@ -10,3 +10,4 @@
 | 8 | 20260709-palette-drag-placeholder-shift | 2026-07-09 | Color Palette Generator placeholder slot with sliding neighbor columns | 4/4 | complete |
 | 9 | 20260709-palette-drag-verified-shift | 2026-07-09 | Verified Color Palette Generator mid-drag placeholder and neighbor shift rendering | 4/4 | complete |
 | 10 | 20260709-palette-drag-hover-stable-rail | 2026-07-09 | Color Palette Generator drag-hover suppression and stable shade rail | 4/4 | complete |
+| 11 | 20260709-palette-drop-no-refresh-info-rail | 2026-07-09 | Color Palette Generator no-refresh drag drop and restored info rail | 4/4 | complete |
