@@ -1,6 +1,6 @@
 # ROADMAP
 
-> Last updated: 2026-07-07
+> Last updated: 2026-07-09
 > Status: PSS2 재개 (2026-07-07 사용자 승격) — Public Site Shell horizon의 carried-over milestone 마무리
 > North star: Build Askewly Design as both a public reference website and an agent-usable implementation system.
 > line budget: <=150
@@ -21,7 +21,12 @@ Goal: (재개 2026-07-07) 랜딩을 완성된 공개 제품 페이지로 — Pub
 
 ## Next Candidates
 
-(없음)
+<!-- harness:milestone id="PGD1" status="pending" priority="P2" -->
+### PGD1 - Palette Generator Data Engine
+- DoD: Color Palette Generator uses a real palette data contract or generation rule set instead of only cycling a small hardcoded demo array; locked-color behavior, contrast/readability, duplicate avoidance, and export stability are verified in Chrome.
+- Evidence: `docs/plans/2026-07-09-palette-generator-data-engine.md`; future focused lint/build + Chrome generator smoke.
+- Gap: Current `Generate` cycles through local `paletteGeneratorSets` only. Need seed library/schema, generation behavior, quality gates, and UI copy that explains generation source cleanly.
+- Status: [ ]
 
 ## Archive Pointer
 

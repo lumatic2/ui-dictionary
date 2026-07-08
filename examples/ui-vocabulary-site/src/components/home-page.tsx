@@ -1875,19 +1875,20 @@ function ColorPaletteGeneratorDemo() {
     const board = paletteBoardRef.current
     if (!board) return
     const rect = board.getBoundingClientRect()
+    const cardRect = board.parentElement?.getBoundingClientRect()
     const columnWidth = rect.width / palette.length
     const color = palette[index]
     const colorElement = event.currentTarget.closest("[data-palette-color]") as HTMLElement | null
     const colorRect = colorElement?.getBoundingClientRect()
-    if (!color || !colorRect) return
+    if (!color || !colorRect || !cardRect) return
     setDraggedIndex(index)
     setDragPreview({
       ...color,
       height: colorRect.height,
-      left: colorRect.left,
+      left: colorRect.left - cardRect.left,
       offsetX: event.clientX - colorRect.left,
       offsetY: event.clientY - colorRect.top,
-      top: colorRect.top,
+      top: colorRect.top - cardRect.top,
       width: colorRect.width,
     })
     setPickerOpenIndex(null)
@@ -1899,8 +1900,8 @@ function ColorPaletteGeneratorDemo() {
       if (!state) return
       setDragPreview((current) => current ? {
         ...current,
-        left: pointerEvent.clientX - current.offsetX,
-        top: pointerEvent.clientY - current.offsetY,
+        left: pointerEvent.clientX - cardRect.left - current.offsetX,
+        top: pointerEvent.clientY - cardRect.top - current.offsetY,
       } : current)
       let currentIndex = state.currentIndex
       const targetIndex = clampNumber(Math.floor((pointerEvent.clientX - state.boardLeft) / state.width), 0, palette.length - 1)
@@ -2021,9 +2022,9 @@ function ColorPaletteGeneratorDemo() {
                   "group/swatch relative flex min-w-0 flex-1 cursor-pointer flex-col justify-between overflow-visible p-3 text-left transition-all duration-200 focus-within:z-20",
                   !prefersReducedMotion && "palette-generator-enter",
                   removingIndex === index && "scale-x-0 opacity-0",
-                  draggedIndex === index && "scale-x-0 opacity-0",
+                  draggedIndex === index && "opacity-0",
                 )}
-                style={{ backgroundColor: color.hex, color: textColor, flex: removingIndex === index || draggedIndex === index ? "0 0 0%" : "1 1 0%" }}
+                style={{ backgroundColor: color.hex, color: textColor, flex: removingIndex === index ? "0 0 0%" : "1 1 0%" }}
                 role="button"
                 tabIndex={0}
                 onPointerDown={(event) => {
@@ -2147,7 +2148,7 @@ function ColorPaletteGeneratorDemo() {
 
         {dragPreview && (
           <div
-            className="pointer-events-none fixed z-[70] flex flex-col justify-between rounded-sm p-3 text-left opacity-95 shadow-2xl ring-2 ring-white/75"
+            className="pointer-events-none absolute z-[70] flex flex-col justify-between rounded-sm p-3 text-left opacity-95 shadow-2xl ring-2 ring-white/75"
             style={{
               backgroundColor: dragPreview.hex,
               color: getReadableTextColor(dragPreview.hex),
