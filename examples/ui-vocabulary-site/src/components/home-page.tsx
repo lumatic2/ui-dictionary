@@ -1898,6 +1898,7 @@ function ColorPaletteGeneratorDemo() {
     if (!shadeState) return
     setPalette((current) => current.map((color, colorIndex) => (colorIndex === shadeState.index ? { ...color, ...shade } : color)))
     if (palette[shadeState.index]) setInfoColorId(palette[shadeState.index].id)
+    closeShadePanel()
   }
 
   const replaceColor = (index: number, hex: string) => {

@@ -21,3 +21,4 @@
 | 19 | 20260709-palette-column-shades-header-bottom-actions | 2026-07-09 | Color Palette Generator lowers header actions and moves shades into the selected color column | 4/4 | complete |
 | 20 | 20260709-palette-shade-column-selection | 2026-07-09 | Color Palette Generator orders shade columns, hover labels, and selected shade dots | 4/4 | complete |
 | 21 | 20260709-palette-shade-stable-selection | 2026-07-09 | Color Palette Generator keeps shade options stable while selecting shades | 4/4 | complete |
+| 22 | 20260709-palette-shade-select-closes | 2026-07-09 | Color Palette Generator closes the shade column after selecting a shade | 4/4 | complete |
