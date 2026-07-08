@@ -1565,14 +1565,6 @@ const paletteGeneratorSets: PaletteColor[][] = [
   ],
 ]
 
-const paletteGeneratorSetNames = [
-  "Candy Pastel",
-  "Citrus Field",
-  "Nocturne Pop",
-  "Signal Bloom",
-  "Editorial Earth",
-]
-
 function getReadableTextColor(hex: string) {
   const value = hex.replace("#", "")
   const red = parseInt(value.slice(0, 2), 16)
@@ -1741,7 +1733,6 @@ function ColorPaletteGeneratorDemo() {
   const isDraggingPalette = draggedIndex !== null
   const pickerColor = pickerOpenIndex === null ? null : palette[pickerOpenIndex]
   const infoColor = palette.find((color) => color.id === infoColorId) ?? palette[0]
-  const paletteName = paletteGeneratorSetNames[paletteIndex] ?? "Custom Palette"
   const pickerHsv = pickerColor ? hexToHsv(pickerColor.hex) : null
   const pickerHueHex = pickerHsv ? hsvToHex(pickerHsv.h, 100, 100) : "#FF0000"
   const shadeSet = shadeState ? buildShadeSet(shadeState.base) : []
@@ -2276,12 +2267,7 @@ function ColorPaletteGeneratorDemo() {
                 ))}
               </div>
             ) : (
-              <div className="flex h-9 items-center justify-end rounded border border-slate-200 px-3 text-right">
-                <div className="min-w-0">
-                  <p className="truncate text-xs font-semibold text-slate-950">{paletteName}</p>
-                  <p className="mt-0.5 font-mono text-[10px] uppercase tracking-[0.14em] text-slate-400">palette</p>
-                </div>
-              </div>
+              <div className="h-9" aria-hidden="true" />
             )}
           </div>
         </div>
