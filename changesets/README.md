@@ -17,3 +17,4 @@
 | 15 | 20260709-palette-image-same-row-visibility | 2026-07-09 | Showcase atlas keeps Image Treatment visible beside the larger Color Palette Generator | 4/4 | complete |
 | 16 | 20260709-image-beside-shader-palette-swap | 2026-07-09 | Showcase atlas places Image Treatment beside Shader and Color Palette below as the large card | 4/4 | complete |
 | 17 | 20260709-palette-row-above-image-portrait-strip | 2026-07-09 | Showcase atlas moves Color Palette above Shader/Image and simplifies Image Treatment portraits | 4/4 | complete |
+| 18 | 20260709-palette-header-actions-taller-board | 2026-07-09 | Color Palette Generator moves actions to header and expands palette board height | 4/4 | complete |

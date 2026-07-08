@@ -2056,34 +2056,31 @@ function ColorPaletteGeneratorDemo() {
     : undefined
 
   return (
-    <div ref={paletteRootRef} className="min-h-[18.6rem]" onKeyDown={handleKeyDown}>
-      <div className="mb-4 flex flex-wrap items-center justify-between gap-3">
-        <span aria-hidden="true" />
-        <div className="flex items-center gap-2">
-          <button
-            className="inline-flex h-8 items-center gap-2 rounded-md border border-slate-200 bg-white px-3 text-xs font-semibold text-slate-700 shadow-sm transition hover:border-slate-300 hover:text-slate-950 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-askewly-violet"
-            type="button"
-            onClick={generatePalette}
-          >
-            <Shuffle aria-hidden="true" className="size-3.5" />
-            Generate
-          </button>
-          <button
-            className={cn(
-              "inline-flex size-8 items-center justify-center rounded-md border text-slate-600 transition focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-askewly-violet",
-              exportOpen ? "border-slate-950 bg-slate-950 text-white" : "border-slate-200 bg-white hover:border-slate-300 hover:text-slate-950",
-            )}
-            type="button"
-            aria-label="Export palette"
-            onClick={() => {
-              setExportOpen(true)
-              setPickerOpenIndex(null)
-              closeShadePanel()
-            }}
-          >
-            <Download aria-hidden="true" className="size-3.5" />
-          </button>
-        </div>
+    <div ref={paletteRootRef} className="relative min-h-[18.6rem]" onKeyDown={handleKeyDown}>
+      <div className="absolute right-0 top-[-5.35rem] z-30 flex items-center gap-2" data-palette-header-actions="true">
+        <button
+          className="inline-flex h-8 items-center gap-2 rounded-md border border-slate-200 bg-white px-3 text-xs font-semibold text-slate-700 shadow-sm transition hover:border-slate-300 hover:text-slate-950 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-askewly-violet"
+          type="button"
+          onClick={generatePalette}
+        >
+          <Shuffle aria-hidden="true" className="size-3.5" />
+          Generate
+        </button>
+        <button
+          className={cn(
+            "inline-flex size-8 items-center justify-center rounded-md border text-slate-600 transition focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-askewly-violet",
+            exportOpen ? "border-slate-950 bg-slate-950 text-white" : "border-slate-200 bg-white hover:border-slate-300 hover:text-slate-950",
+          )}
+          type="button"
+          aria-label="Export palette"
+          onClick={() => {
+            setExportOpen(true)
+            setPickerOpenIndex(null)
+            closeShadePanel()
+          }}
+        >
+          <Download aria-hidden="true" className="size-3.5" />
+        </button>
       </div>
 
       <div
@@ -2091,7 +2088,7 @@ function ColorPaletteGeneratorDemo() {
         tabIndex={0}
         aria-label="Interactive color palette generator"
       >
-        <div ref={paletteBoardRef} className="relative flex h-[18.5rem] overflow-visible">
+        <div ref={paletteBoardRef} className="relative flex h-[21.5rem] overflow-visible">
           <span className="group/add-start absolute inset-y-0 left-2 z-30 flex w-10 items-center justify-start">
             <button
               className="grid size-9 place-items-center rounded-full border border-slate-200 bg-white text-slate-950 opacity-0 shadow-md transition hover:scale-105 hover:bg-slate-50 focus-visible:opacity-100 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-askewly-violet group-hover/add-start:opacity-100"
