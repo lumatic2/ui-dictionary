@@ -186,9 +186,9 @@ const atlasItems = [
   { id: "physics", title: "Physics-Based Interaction", copy: "UI primitives fall, collide, and settle in a real rigid-body field.", layout: "md:col-span-1 xl:col-span-2" },
   { id: "scroll", title: "Product Surface Coverflow", copy: "Distinct product surfaces glide past in a self-playing 3D coverflow.", layout: "md:col-span-1 xl:col-span-2" },
   { id: "motion", title: "Motion Choreography", copy: "Sequencing multiple motion cues into one coherent, readable rhythm.", layout: "md:col-span-1 xl:col-span-2" },
+  { id: "color", title: "Color Palette Generator", copy: "Generate, lock, inspect, and export five-color palettes from one compact design surface.", layout: "md:col-span-2 xl:col-span-6" },
   { id: "shader", title: "Shader Gradient System", copy: "Tokenized color palettes rendered as a continuously animated gradient shader.", layout: "md:col-span-1 xl:col-span-3" },
   { id: "filters", title: "Image Treatment", copy: "Predefined color and grain recipes applied consistently across a set of photos.", layout: "md:col-span-1 xl:col-span-3" },
-  { id: "color", title: "Color Palette Generator", copy: "Generate, lock, inspect, and export five-color palettes from one compact design surface.", layout: "md:col-span-2 xl:col-span-6" },
   { id: "landing", title: "Hero Composition", copy: "First-viewport structure balancing headline, proof surface, calls to action, media, and visual rhythm.", layout: "md:col-span-1 xl:col-span-3" },
   { id: "command", title: "Command Center Interface", copy: "Keyboard-first product control with search, review queues, agent actions, and system status in one place.", layout: "md:col-span-1 xl:col-span-3" },
   { id: "commerce", title: "Commerce Flow", copy: "Product discovery, purchase confidence, cart states, pricing, and checkout signals arranged as one buying path.", layout: "md:col-span-1 xl:col-span-3" },
@@ -2359,8 +2359,8 @@ function ShaderGradientDemo() {
   const prefersReducedMotion = usePrefersReducedMotion()
 
   return (
-    <div className="min-h-[24.7rem]">
-      <div className="relative h-[24.7rem] overflow-hidden rounded-md border border-slate-200 bg-slate-950">
+    <div className="min-h-[13.25rem]">
+      <div className="relative h-[13.25rem] overflow-hidden rounded-md border border-slate-200 bg-slate-950">
         <MeshGradient
           className="absolute inset-0 size-full"
           colors={shaderGradientColors}
@@ -2414,9 +2414,6 @@ const imageRecipes: ImageRecipe[] = [
 ]
 
 const imageTreatmentPhotos = [
-  "/assets/ecommerce-category-pages/stationery-hero.png",
-  "/assets/ecommerce-storefront-pages/dark-desk-hero.png",
-  "/assets/ecommerce-storefront-pages/apparel-hero.png",
   "/assets/ecommerce-reviews/avatar-navy-overshirt.png",
   "/assets/ecommerce-reviews/avatar-curly-hair.png",
   "/assets/ecommerce-reviews/avatar-silver-hair.png",
@@ -2437,18 +2434,11 @@ function ImageTreatmentDemo() {
   }, [prefersReducedMotion])
 
   const recipe = imageRecipes[recipeIndex]
-  const previewPhotos = imageTreatmentPhotos.slice(0, 3)
+  const previewPhotos = imageTreatmentPhotos
 
   return (
-    <div className="grid min-h-[18.6rem] gap-3">
-      <div className="rounded-md border border-slate-200 bg-white p-3">
-        <p className="text-base font-semibold text-slate-950">{recipe.name}</p>
-        <div className="mt-3 flex gap-1.5">
-          {imageRecipes.map((item, index) => (
-            <span key={item.name} className={cn("h-1 flex-1 rounded-full transition-colors", index === recipeIndex ? "bg-askewly-violet" : "bg-slate-100")} />
-          ))}
-        </div>
-      </div>
+    <div className="grid min-h-[13.25rem] gap-3">
+      <p className="text-base font-semibold text-slate-950">{recipe.name}</p>
       <div className="relative">
         <svg width="0" height="0" className="absolute">
           <defs>
