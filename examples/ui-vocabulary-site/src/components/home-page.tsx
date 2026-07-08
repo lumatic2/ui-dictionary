@@ -1,7 +1,9 @@
 import {
   type CSSProperties,
   type KeyboardEvent as ReactKeyboardEvent,
+  type MouseEvent as ReactMouseEvent,
   type PointerEvent as ReactPointerEvent,
+  useCallback,
   useEffect,
   useMemo,
   useRef,
@@ -1726,9 +1728,11 @@ function ColorPaletteGeneratorDemo() {
   const [copyToast, setCopyToast] = useState<string | null>(null)
   const [infoColorId, setInfoColorId] = useState("initial-0-#FF99C8")
   const [paletteEntryAnimation, setPaletteEntryAnimation] = useState(false)
+  const [shadePanelClosing, setShadePanelClosing] = useState(false)
   const paletteBoardRef = useRef<HTMLDivElement | null>(null)
   const paletteRootRef = useRef<HTMLDivElement | null>(null)
   const addedColorIdRef = useRef(0)
+  const shadeCloseTimerRef = useRef<number | null>(null)
   const dragStateRef = useRef<{ sourceIndex: number; targetIndex: number; width: number; boardLeft: number } | null>(null)
   const isDraggingPalette = draggedIndex !== null
   const pickerColor = pickerOpenIndex === null ? null : palette[pickerOpenIndex]
@@ -1737,17 +1741,52 @@ function ColorPaletteGeneratorDemo() {
   const pickerHueHex = pickerHsv ? hsvToHex(pickerHsv.h, 100, 100) : "#FF0000"
   const shadeSet = shadeState ? buildShadeSet(shadeState.base) : []
 
+  const closeShadePanel = useCallback((animated = true) => {
+    if (!shadeState) {
+      setShadePanelClosing(false)
+      return
+    }
+    if (shadeCloseTimerRef.current !== null) {
+      window.clearTimeout(shadeCloseTimerRef.current)
+      shadeCloseTimerRef.current = null
+    }
+    if (!animated || prefersReducedMotion) {
+      setShadePanelClosing(false)
+      setShadeState(null)
+      return
+    }
+    setShadePanelClosing(true)
+    shadeCloseTimerRef.current = window.setTimeout(() => {
+      setShadeState(null)
+      setShadePanelClosing(false)
+      shadeCloseTimerRef.current = null
+    }, 180)
+  }, [prefersReducedMotion, shadeState])
+
+  const openShadePanel = (index: number, color: GeneratorColor) => {
+    if (shadeCloseTimerRef.current !== null) {
+      window.clearTimeout(shadeCloseTimerRef.current)
+      shadeCloseTimerRef.current = null
+    }
+    setShadePanelClosing(false)
+    setShadeState({ index, base: { hex: color.hex, name: color.name } })
+  }
+
+  const blurPaletteAction = (event: ReactMouseEvent<HTMLElement>) => {
+    event.currentTarget.blur()
+  }
+
   useEffect(() => {
     const onPointerDown = (event: PointerEvent) => {
       const target = event.target as HTMLElement
       if (target.closest("[data-palette-popover]") || target.closest("[data-palette-trigger]")) return
       setPickerOpenIndex(null)
-      setShadeState(null)
+      closeShadePanel()
       setExportOpen(false)
     }
     window.addEventListener("pointerdown", onPointerDown)
     return () => window.removeEventListener("pointerdown", onPointerDown)
-  }, [])
+  }, [closeShadePanel])
 
   useEffect(() => {
     if (!copyToast) return
@@ -1760,6 +1799,14 @@ function ColorPaletteGeneratorDemo() {
     const timer = window.setTimeout(() => setPaletteEntryAnimation(false), 560)
     return () => window.clearTimeout(timer)
   }, [paletteEntryAnimation])
+
+  useEffect(() => {
+    return () => {
+      if (shadeCloseTimerRef.current !== null) {
+        window.clearTimeout(shadeCloseTimerRef.current)
+      }
+    }
+  }, [])
 
   const writeClipboard = async (value: string) => {
     try {
@@ -1811,7 +1858,7 @@ function ColorPaletteGeneratorDemo() {
     setPalette((current) => current.map((color, index) => (color.locked ? color : { ...nextSet[index % nextSet.length], id: color.id, locked: false })))
     setPaletteIndex(nextIndex)
     setPickerOpenIndex(null)
-    setShadeState(null)
+    closeShadePanel()
     setPaletteEntryAnimation(true)
   }
 
@@ -1844,7 +1891,7 @@ function ColorPaletteGeneratorDemo() {
       setRemovingIndex(null)
     }, prefersReducedMotion ? 0 : 180)
     setPickerOpenIndex(null)
-    setShadeState(null)
+    closeShadePanel()
   }
 
   const applyShade = (shade: PaletteColor) => {
@@ -1944,7 +1991,7 @@ function ColorPaletteGeneratorDemo() {
       width: colorRect.width,
     })
     setPickerOpenIndex(null)
-    setShadeState(null)
+    closeShadePanel(false)
     dragStateRef.current = { sourceIndex: index, targetIndex: index, width: columnWidth, boardLeft: rect.left }
 
     const moveDrag = (pointerEvent: PointerEvent) => {
@@ -2031,7 +2078,7 @@ function ColorPaletteGeneratorDemo() {
             onClick={() => {
               setExportOpen(true)
               setPickerOpenIndex(null)
-              setShadeState(null)
+              closeShadePanel()
             }}
           >
             <Download aria-hidden="true" className="size-3.5" />
@@ -2044,28 +2091,27 @@ function ColorPaletteGeneratorDemo() {
         tabIndex={0}
         aria-label="Interactive color palette generator"
       >
-        <span className="group/add-start absolute left-2 top-0 z-30 flex h-full w-10 items-center justify-start">
-          <button
-            className="grid size-9 place-items-center rounded-full border border-slate-200 bg-white text-slate-950 opacity-0 shadow-md transition hover:scale-105 hover:bg-slate-50 focus-visible:opacity-100 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-askewly-violet group-hover/add-start:opacity-100"
-            type="button"
-            aria-label="Add color to start"
-            onClick={() => addColor("start")}
-          >
-            <Plus aria-hidden="true" className="size-5" />
-          </button>
-        </span>
-        <span className="group/add-end absolute right-2 top-0 z-30 flex h-full w-10 items-center justify-end">
-          <button
-            className="grid size-9 place-items-center rounded-full border border-slate-200 bg-white text-slate-950 opacity-0 shadow-md transition hover:scale-105 hover:bg-slate-50 focus-visible:opacity-100 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-askewly-violet group-hover/add-end:opacity-100"
-            type="button"
-            aria-label="Add color to end"
-            onClick={() => addColor("end")}
-          >
-            <Plus aria-hidden="true" className="size-5" />
-          </button>
-        </span>
-
-        <div ref={paletteBoardRef} className="flex h-[18.5rem] overflow-visible">
+        <div ref={paletteBoardRef} className="relative flex h-[18.5rem] overflow-visible">
+          <span className="group/add-start absolute inset-y-0 left-2 z-30 flex w-10 items-center justify-start">
+            <button
+              className="grid size-9 place-items-center rounded-full border border-slate-200 bg-white text-slate-950 opacity-0 shadow-md transition hover:scale-105 hover:bg-slate-50 focus-visible:opacity-100 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-askewly-violet group-hover/add-start:opacity-100"
+              type="button"
+              aria-label="Add color to start"
+              onClick={() => addColor("start")}
+            >
+              <Plus aria-hidden="true" className="size-5" />
+            </button>
+          </span>
+          <span className="group/add-end absolute inset-y-0 right-2 z-30 flex w-10 items-center justify-end">
+            <button
+              className="grid size-9 place-items-center rounded-full border border-slate-200 bg-white text-slate-950 opacity-0 shadow-md transition hover:scale-105 hover:bg-slate-50 focus-visible:opacity-100 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-askewly-violet group-hover/add-end:opacity-100"
+              type="button"
+              aria-label="Add color to end"
+              onClick={() => addColor("end")}
+            >
+              <Plus aria-hidden="true" className="size-5" />
+            </button>
+          </span>
           {palette.map((color, index) => {
             const textColor = getReadableTextColor(color.hex)
             const dragShift =
@@ -2089,19 +2135,19 @@ function ColorPaletteGeneratorDemo() {
                 onPointerDown={(event) => {
                   if ((event.target as HTMLElement).closest("button,[data-palette-popover],[data-palette-trigger]")) return
                   setPickerOpenIndex(null)
-                  setShadeState(null)
+                  closeShadePanel()
                   setInfoColorId(color.id)
                 }}
                 onPointerEnter={() => setInfoColorId(color.id)}
                 onClick={() => {
                   setPickerOpenIndex(null)
-                  setShadeState(null)
+                  closeShadePanel()
                 }}
                 onKeyDown={(event) => {
                   if (event.key === "Enter") {
                     event.preventDefault()
                     setPickerOpenIndex(null)
-                    setShadeState(null)
+                    closeShadePanel()
                   }
                 }}
               >
@@ -2118,7 +2164,7 @@ function ColorPaletteGeneratorDemo() {
                       event.stopPropagation()
                       setInfoColorId(color.id)
                       setPickerOpenIndex((current) => (current === index ? null : index))
-                      setShadeState(null)
+                      closeShadePanel()
                     }}
                   >
                     {color.hex.replace("#", "")}
@@ -2128,15 +2174,15 @@ function ColorPaletteGeneratorDemo() {
                 <span
                   className={cn(
                     "absolute left-1/2 top-1/2 flex -translate-x-1/2 -translate-y-1/2 flex-col gap-1 opacity-0 transition",
-                    isDraggingPalette ? "pointer-events-none" : "group-hover/swatch:opacity-100 group-focus-within/swatch:opacity-100",
+                    isDraggingPalette ? "pointer-events-none" : "group-hover/swatch:opacity-100",
                   )}
                   data-palette-actions="true"
                 >
-                  <button className={cn(actionClass, "group/action relative")} type="button" aria-label={`Remove ${color.hex}`} onClick={(event) => { event.stopPropagation(); setInfoColorId(color.id); removeColor(index) }}>
+                  <button className={cn(actionClass, "group/action relative")} type="button" aria-label={`Remove ${color.hex}`} onClick={(event) => { event.stopPropagation(); blurPaletteAction(event); setInfoColorId(color.id); removeColor(index) }}>
                     <span className="pointer-events-none absolute bottom-full left-1/2 mb-2 hidden -translate-x-1/2 whitespace-nowrap rounded bg-slate-950 px-2 py-1 text-xs font-semibold text-white shadow-lg group-hover/action:block">Remove color</span>
                     <X aria-hidden="true" className="size-3" />
                   </button>
-                  <button className={cn(actionClass, "group/action relative")} type="button" data-palette-trigger="true" aria-label={`Show shades for ${color.hex}`} onClick={(event) => { event.stopPropagation(); setInfoColorId(color.id); setShadeState((current) => current?.index === index ? null : { index, base: { hex: color.hex, name: color.name } }); setPickerOpenIndex(null) }}>
+                  <button className={cn(actionClass, "group/action relative")} type="button" data-palette-trigger="true" aria-label={`Show shades for ${color.hex}`} onClick={(event) => { event.stopPropagation(); blurPaletteAction(event); setInfoColorId(color.id); if (shadeState?.index === index && !shadePanelClosing) { closeShadePanel() } else { openShadePanel(index, color) } setPickerOpenIndex(null) }}>
                     <span className="pointer-events-none absolute bottom-full left-1/2 mb-2 hidden -translate-x-1/2 whitespace-nowrap rounded bg-slate-950 px-2 py-1 text-xs font-semibold text-white shadow-lg group-hover/action:block">View shades</span>
                     <List aria-hidden="true" className="size-3" />
                   </button>
@@ -2144,11 +2190,11 @@ function ColorPaletteGeneratorDemo() {
                     <span className="pointer-events-none absolute bottom-full left-1/2 mb-2 hidden -translate-x-1/2 whitespace-nowrap rounded bg-slate-950 px-2 py-1 text-xs font-semibold text-white shadow-lg group-hover/action:block">Drag color</span>
                     <MoveHorizontal aria-hidden="true" className="size-3" />
                   </span>
-                  <button className={cn(actionClass, "group/action relative")} type="button" aria-label={`Copy ${color.hex}`} onClick={(event) => { event.stopPropagation(); setInfoColorId(color.id); void writeClipboard(color.hex) }}>
+                  <button className={cn(actionClass, "group/action relative")} type="button" aria-label={`Copy ${color.hex}`} onClick={(event) => { event.stopPropagation(); blurPaletteAction(event); setInfoColorId(color.id); void writeClipboard(color.hex) }}>
                     <span className="pointer-events-none absolute bottom-full left-1/2 mb-2 hidden -translate-x-1/2 whitespace-nowrap rounded bg-slate-950 px-2 py-1 text-xs font-semibold text-white shadow-lg group-hover/action:block">Copy HEX</span>
                     <Copy aria-hidden="true" className="size-3" />
                   </button>
-                  <button className={cn(actionClass, "group/action relative")} type="button" aria-label={color.locked ? `Unlock ${color.hex}` : `Lock ${color.hex}`} onClick={(event) => { event.stopPropagation(); setInfoColorId(color.id); toggleLock(index) }}>
+                  <button className={cn(actionClass, "group/action relative")} type="button" aria-label={color.locked ? `Unlock ${color.hex}` : `Lock ${color.hex}`} onClick={(event) => { event.stopPropagation(); blurPaletteAction(event); setInfoColorId(color.id); toggleLock(index) }}>
                     <span className="pointer-events-none absolute bottom-full left-1/2 mb-2 hidden -translate-x-1/2 whitespace-nowrap rounded bg-slate-950 px-2 py-1 text-xs font-semibold text-white shadow-lg group-hover/action:block">{color.locked ? "Unlock color" : "Lock color"}</span>
                     {color.locked ? <Lock aria-hidden="true" className="size-3" /> : <Unlock aria-hidden="true" className="size-3" />}
                   </button>
@@ -2253,7 +2299,7 @@ function ColorPaletteGeneratorDemo() {
               </p>
             </div>
             {shadeState !== null ? (
-              <div className="grid h-9 grid-cols-10 overflow-hidden rounded border border-slate-200">
+              <div className={cn("palette-shades-panel grid h-9 grid-cols-10 overflow-hidden rounded border border-slate-200", shadePanelClosing && "palette-shades-panel-exit")}>
                 {shadeSet.map((shade) => (
                   <button
                     key={shade.hex}
@@ -2313,8 +2359,8 @@ function ShaderGradientDemo() {
   const prefersReducedMotion = usePrefersReducedMotion()
 
   return (
-    <div className="min-h-[17.65rem]">
-      <div className="relative h-56 overflow-hidden rounded-md border border-slate-200 bg-slate-950">
+    <div className="min-h-[24.7rem]">
+      <div className="relative h-[24.7rem] overflow-hidden rounded-md border border-slate-200 bg-slate-950">
         <MeshGradient
           className="absolute inset-0 size-full"
           colors={shaderGradientColors}
