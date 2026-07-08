@@ -17,8 +17,6 @@ import {
   Command,
   Copy,
   FileCode2,
-  Heart,
-  Info,
   List,
   Lock,
   MoveHorizontal,
@@ -1515,7 +1513,6 @@ type PaletteColor = {
 
 type GeneratorColor = PaletteColor & {
   locked: boolean
-  favorite?: boolean
 }
 
 const paletteGeneratorSets: PaletteColor[][] = [
@@ -1565,34 +1562,6 @@ function getReadableTextColor(hex: string) {
   return luminance > 0.62 ? "#111827" : "#F8FAFC"
 }
 
-function hexToRgb(hex: string) {
-  const value = hex.replace("#", "")
-  return `${parseInt(value.slice(0, 2), 16)}, ${parseInt(value.slice(2, 4), 16)}, ${parseInt(value.slice(4, 6), 16)}`
-}
-
-function hexToHsl(hex: string) {
-  const value = hex.replace("#", "")
-  const red = parseInt(value.slice(0, 2), 16) / 255
-  const green = parseInt(value.slice(2, 4), 16) / 255
-  const blue = parseInt(value.slice(4, 6), 16) / 255
-  const max = Math.max(red, green, blue)
-  const min = Math.min(red, green, blue)
-  const lightness = (max + min) / 2
-  let hue = 0
-  let saturation = 0
-
-  if (max !== min) {
-    const delta = max - min
-    saturation = lightness > 0.5 ? delta / (2 - max - min) : delta / (max + min)
-    if (max === red) hue = (green - blue) / delta + (green < blue ? 6 : 0)
-    if (max === green) hue = (blue - red) / delta + 2
-    if (max === blue) hue = (red - green) / delta + 4
-    hue /= 6
-  }
-
-  return `${Math.round(hue * 360)}, ${Math.round(saturation * 100)}%, ${Math.round(lightness * 100)}%`
-}
-
 function shiftHex(hex: string, amount: number) {
   const value = hex.replace("#", "")
   const channels = [value.slice(0, 2), value.slice(2, 4), value.slice(4, 6)].map((channel) => {
@@ -1609,18 +1578,59 @@ function buildShadeSet(color: PaletteColor) {
   }))
 }
 
+function downloadPalettePng(palette: PaletteColor[]) {
+  const width = palette.length * 240
+  const height = 320
+  const canvas = document.createElement("canvas")
+  canvas.width = width
+  canvas.height = height
+  const context = canvas.getContext("2d")
+  if (!context) return
+
+  palette.forEach((color, index) => {
+    const x = index * 240
+    context.fillStyle = color.hex
+    context.fillRect(x, 0, 240, height)
+    context.fillStyle = getReadableTextColor(color.hex)
+    context.font = "700 28px Arial, sans-serif"
+    context.fillText(color.hex.replace("#", ""), x + 30, height - 70)
+    context.font = "600 18px Arial, sans-serif"
+    context.fillText(color.name, x + 30, height - 36)
+  })
+
+  const link = document.createElement("a")
+  canvas.toBlob((blob) => {
+    if (!blob) return
+    const url = URL.createObjectURL(blob)
+    link.href = url
+    link.download = "askewly-palette.png"
+    document.body.appendChild(link)
+    link.click()
+    document.body.removeChild(link)
+    URL.revokeObjectURL(url)
+  }, "image/png")
+}
+
+function buildPaletteSvg(palette: PaletteColor[]) {
+  const width = palette.length * 160
+  return `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 ${width} 220">${palette.map((color, index) => `<rect x="${index * 160}" y="0" width="160" height="220" fill="${color.hex}"/><text x="${index * 160 + 22}" y="178" font-family="Arial, sans-serif" font-size="18" font-weight="700" fill="${getReadableTextColor(color.hex)}">${color.hex.replace("#", "")}</text><text x="${index * 160 + 22}" y="202" font-family="Arial, sans-serif" font-size="13" font-weight="600" fill="${getReadableTextColor(color.hex)}">${color.name}</text>`).join("")}</svg>`
+}
+
 function ColorPaletteGeneratorDemo() {
   const prefersReducedMotion = usePrefersReducedMotion()
   const [paletteIndex, setPaletteIndex] = useState(0)
   const [palette, setPalette] = useState<GeneratorColor[]>(() => paletteGeneratorSets[0].map((color) => ({ ...color, locked: false })))
   const [selectedIndex, setSelectedIndex] = useState(0)
   const [exportOpen, setExportOpen] = useState(false)
-  const [shadeOpen, setShadeOpen] = useState(false)
-  const [statusMessage, setStatusMessage] = useState("Seed palette loaded")
-  const selectedColor = palette[selectedIndex] ?? palette[0]
-  const shadeSet = selectedColor ? buildShadeSet(selectedColor) : []
+  const [pickerOpenIndex, setPickerOpenIndex] = useState<number | null>(null)
+  const [shadeOpenIndex, setShadeOpenIndex] = useState<number | null>(null)
+  const [draggedIndex, setDraggedIndex] = useState<number | null>(null)
+  const paletteBoardRef = useRef<HTMLDivElement | null>(null)
+  const pickerColor = pickerOpenIndex === null ? null : palette[pickerOpenIndex]
+  const shadeColor = shadeOpenIndex === null ? null : palette[shadeOpenIndex]
+  const shadeSet = shadeColor ? buildShadeSet(shadeColor) : []
 
-  const writeClipboard = async (value: string, message: string) => {
+  const writeClipboard = async (value: string) => {
     try {
       if (navigator.clipboard?.writeText) {
         await navigator.clipboard.writeText(value)
@@ -1635,7 +1645,6 @@ function ColorPaletteGeneratorDemo() {
         document.execCommand("copy")
         document.body.removeChild(textarea)
       }
-      setStatusMessage(message)
     } catch {
       const textarea = document.createElement("textarea")
       textarea.value = value
@@ -1644,26 +1653,23 @@ function ColorPaletteGeneratorDemo() {
       textarea.style.left = "-9999px"
       document.body.appendChild(textarea)
       textarea.select()
-      const copied = document.execCommand("copy")
+      document.execCommand("copy")
       document.body.removeChild(textarea)
-      setStatusMessage(copied ? message : "Clipboard blocked by browser")
     }
   }
 
   const generatePalette = () => {
     const nextIndex = (paletteIndex + 1) % paletteGeneratorSets.length
     const nextSet = paletteGeneratorSets[nextIndex]
-    setPalette((current) => current.map((color, index) => (color.locked ? color : { ...nextSet[index % nextSet.length], locked: false, favorite: color.favorite })))
+    setPalette((current) => current.map((color, index) => (color.locked ? color : { ...nextSet[index % nextSet.length], locked: false })))
     setPaletteIndex(nextIndex)
-    setExportOpen(false)
-    setShadeOpen(false)
-    setStatusMessage("Generated unlocked colors")
+    setPickerOpenIndex(null)
+    setShadeOpenIndex(null)
   }
 
   const toggleLock = (index: number) => {
     setPalette((current) => current.map((color, colorIndex) => (colorIndex === index ? { ...color, locked: !color.locked } : color)))
     setSelectedIndex(index)
-    setStatusMessage(palette[index]?.locked ? "Color unlocked" : "Color locked")
   }
 
   const handleKeyDown = (event: ReactKeyboardEvent<HTMLDivElement>) => {
@@ -1675,69 +1681,87 @@ function ColorPaletteGeneratorDemo() {
 
   const removeColor = (index: number) => {
     if (palette.length <= 3) {
-      setStatusMessage("Keep at least three colors")
       return
     }
     setPalette((current) => current.filter((_, colorIndex) => colorIndex !== index))
     setSelectedIndex((current) => Math.max(0, Math.min(current >= index ? current - 1 : current, palette.length - 2)))
-    setExportOpen(false)
-    setShadeOpen(false)
-    setStatusMessage("Color removed")
-  }
-
-  const cycleTone = (index: number) => {
-    setPalette((current) => current.map((color, colorIndex) => (
-      colorIndex === index
-        ? { ...color, hex: shiftHex(color.hex, getReadableTextColor(color.hex) === "#111827" ? -24 : 24), name: `${color.name} Tone` }
-        : color
-    )))
-    setSelectedIndex(index)
-    setStatusMessage("Tone adjusted")
+    setPickerOpenIndex(null)
+    setShadeOpenIndex(null)
   }
 
   const applyShade = (shade: PaletteColor) => {
-    setPalette((current) => current.map((color, colorIndex) => (colorIndex === selectedIndex ? { ...color, ...shade } : color)))
-    setStatusMessage("Shade applied")
+    if (shadeOpenIndex === null) return
+    setPalette((current) => current.map((color, colorIndex) => (colorIndex === shadeOpenIndex ? { ...color, ...shade } : color)))
+    setSelectedIndex(shadeOpenIndex)
   }
 
-  const toggleFavorite = (index: number) => {
-    setPalette((current) => current.map((color, colorIndex) => (colorIndex === index ? { ...color, favorite: !color.favorite } : color)))
+  const replaceColor = (index: number, hex: string) => {
+    setPalette((current) => current.map((color, colorIndex) => (colorIndex === index ? { ...color, hex } : color)))
     setSelectedIndex(index)
-    setStatusMessage(palette[index]?.favorite ? "Favorite removed" : "Favorite saved")
   }
 
-  const moveColor = (index: number) => {
+  const reorderColor = (fromIndex: number, toIndex: number) => {
+    if (fromIndex === toIndex) return
     setPalette((current) => {
-      if (current.length < 2) return current
       const next = [...current]
-      const target = index === current.length - 1 ? 0 : index + 1
-      const item = next[index]
-      next[index] = next[target]
-      next[target] = item
+      const [moved] = next.splice(fromIndex, 1)
+      next.splice(toIndex, 0, moved)
       return next
     })
-    setSelectedIndex(index === palette.length - 1 ? 0 : index + 1)
-    setStatusMessage("Color moved")
+    setSelectedIndex(toIndex)
   }
 
-  const exportPalette = (format: string) => {
-    const hexes = palette.map((color) => color.hex)
-    const payloads: Record<string, string> = {
-      URL: `https://coolors.co/${hexes.map((hex) => hex.replace("#", "").toLowerCase()).join("-")}`,
-      CSS: hexes.map((hex, index) => `--palette-${index + 1}: ${hex};`).join("\n"),
-      SVG: `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 ${hexes.length * 120} 120">${hexes.map((hex, index) => `<rect x="${index * 120}" width="120" height="120" fill="${hex}"/>`).join("")}</svg>`,
-      Tailwind: `colors: {\n${hexes.map((hex, index) => `  palette${index + 1}: "${hex}",`).join("\n")}\n}`,
+  const startPaletteDrag = (event: ReactPointerEvent<HTMLSpanElement>, index: number) => {
+    event.preventDefault()
+    event.stopPropagation()
+    if (palette[index]?.locked) return
+    const board = paletteBoardRef.current
+    if (!board) return
+    const rect = board.getBoundingClientRect()
+    setDraggedIndex(index)
+
+    const finishDrag = (pointerEvent: PointerEvent) => {
+      const ratio = (pointerEvent.clientX - rect.left) / rect.width
+      const targetIndex = Math.min(palette.length - 1, Math.max(0, Math.floor(ratio * palette.length)))
+      reorderColor(index, targetIndex)
+      setDraggedIndex(null)
+      window.removeEventListener("pointerup", finishDrag)
+      window.removeEventListener("pointercancel", cancelDrag)
     }
-    void writeClipboard(payloads[format] ?? hexes.join(" "), `${format} copied`)
+    const cancelDrag = () => {
+      setDraggedIndex(null)
+      window.removeEventListener("pointerup", finishDrag)
+      window.removeEventListener("pointercancel", cancelDrag)
+    }
+    window.addEventListener("pointerup", finishDrag, { once: true })
+    window.addEventListener("pointercancel", cancelDrag, { once: true })
+  }
+
+  const exportPalette = (format: "image" | "code" | "svg") => {
+    const hexes = palette.map((color) => color.hex)
+    const svg = buildPaletteSvg(palette)
+    if (format === "image") {
+      downloadPalettePng(palette)
+    }
+    if (format === "svg") {
+      void writeClipboard(svg)
+    }
+    if (format === "code") {
+      void writeClipboard(`const palette = ${JSON.stringify(hexes, null, 2)}\n`)
+    }
     setExportOpen(false)
   }
 
   const actionClass = "grid size-5 place-items-center rounded-full border border-current/25 bg-white/18 text-current backdrop-blur-sm transition hover:scale-105 hover:bg-white/34 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-current"
+  const hueBackground = "linear-gradient(90deg,#ff1d00,#fff500,#00ff38,#00d1ff,#1b2cff,#bd00ff,#ff0080,#ff1d00)"
+  const pickerGradient = pickerColor
+    ? `linear-gradient(180deg, rgba(255,255,255,0), #000), linear-gradient(90deg, #fff, ${pickerColor.hex})`
+    : undefined
 
   return (
     <div className="min-h-[18.6rem]" onKeyDown={handleKeyDown}>
       <div className="mb-4 flex flex-wrap items-center justify-between gap-3">
-        <p className="font-mono text-[10px] uppercase tracking-[0.16em] text-slate-400">{palette.length} colors / {statusMessage}</p>
+        <span aria-hidden="true" />
         <div className="flex items-center gap-2">
           <button
             className="inline-flex h-8 items-center gap-2 rounded-md border border-slate-200 bg-white px-3 text-xs font-semibold text-slate-700 shadow-sm transition hover:border-slate-300 hover:text-slate-950 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-askewly-violet"
@@ -1754,7 +1778,11 @@ function ColorPaletteGeneratorDemo() {
             )}
             type="button"
             aria-label="Export palette"
-            onClick={() => setExportOpen((value) => !value)}
+            onClick={() => {
+              setExportOpen(true)
+              setPickerOpenIndex(null)
+              setShadeOpenIndex(null)
+            }}
           >
             <Download aria-hidden="true" className="size-3.5" />
           </button>
@@ -1766,7 +1794,7 @@ function ColorPaletteGeneratorDemo() {
         tabIndex={0}
         aria-label="Interactive color palette generator"
       >
-        <div className="flex h-52">
+        <div ref={paletteBoardRef} className="flex h-[18.5rem]">
           {palette.map((color, index) => {
             const textColor = getReadableTextColor(color.hex)
             const isSelected = index === selectedIndex
@@ -1774,16 +1802,16 @@ function ColorPaletteGeneratorDemo() {
               <div
                 key={`${color.hex}-${index}`}
                 className={cn(
-                  "group/swatch relative flex min-w-0 flex-1 cursor-pointer flex-col justify-between overflow-hidden p-3 text-left transition focus-within:z-20",
+                  "group/swatch relative flex min-w-0 flex-1 cursor-pointer flex-col justify-between overflow-visible p-3 text-left transition focus-within:z-20",
                   !prefersReducedMotion && "palette-generator-enter",
                   isSelected && "z-10 shadow-[inset_0_0_0_2px_rgba(15,23,42,0.72)]",
+                  draggedIndex === index && "opacity-70",
                 )}
                 style={{ backgroundColor: color.hex, color: textColor }}
                 role="button"
                 tabIndex={0}
                 onClick={() => {
                   setSelectedIndex(index)
-                  setExportOpen(false)
                 }}
                 onKeyDown={(event) => {
                   if (event.key === "Enter") {
@@ -1797,63 +1825,80 @@ function ColorPaletteGeneratorDemo() {
                   {color.locked && <Lock aria-hidden="true" className="size-3.5" />}
                 </span>
                 <span className="min-w-0">
-                  <span className="block truncate font-mono text-[11px] font-semibold uppercase tracking-normal">{color.hex.replace("#", "")}</span>
+                  <button
+                    className="block max-w-full truncate rounded px-0.5 text-left font-mono text-[11px] font-semibold uppercase tracking-normal transition hover:bg-white/22 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-current"
+                    type="button"
+                    onClick={(event) => {
+                      event.stopPropagation()
+                      setSelectedIndex(index)
+                      setPickerOpenIndex((current) => (current === index ? null : index))
+                      setShadeOpenIndex(null)
+                    }}
+                  >
+                    {color.hex.replace("#", "")}
+                  </button>
                   <span className="mt-1 block truncate text-xs font-semibold">{color.name}</span>
                 </span>
                 <span className="absolute left-1/2 top-1/2 flex -translate-x-1/2 -translate-y-1/2 flex-col gap-1 opacity-0 transition group-hover/swatch:opacity-100 group-focus-within/swatch:opacity-100">
                   <button className={actionClass} type="button" aria-label={`Remove ${color.hex}`} onClick={(event) => { event.stopPropagation(); removeColor(index) }}>
                     <X aria-hidden="true" className="size-3" />
                   </button>
-                  <button className={actionClass} type="button" aria-label={`Adjust tone for ${color.hex}`} onClick={(event) => { event.stopPropagation(); cycleTone(index) }}>
-                    <SlidersHorizontal aria-hidden="true" className="size-3" />
-                  </button>
-                  <button className={actionClass} type="button" aria-label={`Show shades for ${color.hex}`} onClick={(event) => { event.stopPropagation(); setSelectedIndex(index); setShadeOpen((open) => selectedIndex === index ? !open : true); setExportOpen(false); setStatusMessage("Shades open") }}>
+                  <button className={actionClass} type="button" aria-label={`Show shades for ${color.hex}`} onClick={(event) => { event.stopPropagation(); setSelectedIndex(index); setShadeOpenIndex((current) => current === index ? null : index); setPickerOpenIndex(null) }}>
                     <List aria-hidden="true" className="size-3" />
                   </button>
-                  <button className={actionClass} type="button" aria-label={`Favorite ${color.hex}`} onClick={(event) => { event.stopPropagation(); toggleFavorite(index) }}>
-                    <Heart aria-hidden="true" className="size-3" fill={color.favorite ? "currentColor" : "none"} />
-                  </button>
-                  <button className={actionClass} type="button" aria-label={`Move ${color.hex}`} onClick={(event) => { event.stopPropagation(); moveColor(index) }}>
+                  <span className={cn(actionClass, color.locked ? "cursor-not-allowed opacity-45" : "cursor-grab touch-none active:cursor-grabbing")} aria-label={`Drag ${color.hex}`} role="img" onPointerDown={(event) => startPaletteDrag(event, index)}>
                     <MoveHorizontal aria-hidden="true" className="size-3" />
-                  </button>
-                  <button className={actionClass} type="button" aria-label={`Copy ${color.hex}`} onClick={(event) => { event.stopPropagation(); setSelectedIndex(index); void writeClipboard(color.hex, `${color.hex} copied`) }}>
+                  </span>
+                  <button className={actionClass} type="button" aria-label={`Copy ${color.hex}`} onClick={(event) => { event.stopPropagation(); setSelectedIndex(index); void writeClipboard(color.hex) }}>
                     <Copy aria-hidden="true" className="size-3" />
-                  </button>
-                  <button className={actionClass} type="button" aria-label={`Inspect ${color.hex}`} onClick={(event) => { event.stopPropagation(); setSelectedIndex(index); setExportOpen(false); setStatusMessage("Color inspected") }}>
-                    <Info aria-hidden="true" className="size-3" />
                   </button>
                   <button className={actionClass} type="button" aria-label={color.locked ? `Unlock ${color.hex}` : `Lock ${color.hex}`} onClick={(event) => { event.stopPropagation(); toggleLock(index) }}>
                     {color.locked ? <Lock aria-hidden="true" className="size-3" /> : <Unlock aria-hidden="true" className="size-3" />}
                   </button>
                 </span>
+                {pickerOpenIndex === index && pickerColor && (
+                  <div className="absolute bottom-14 left-1/2 z-40 w-[18.5rem] -translate-x-1/2 rounded-2xl border border-slate-200 bg-white p-3 text-slate-950 shadow-2xl" onClick={(event) => event.stopPropagation()}>
+                    <div className="relative h-28 overflow-hidden rounded-lg border border-slate-200" style={{ background: pickerGradient }}>
+                      <button className="absolute left-[46%] top-0 size-5 -translate-x-1/2 -translate-y-1/2 rounded-full border-4 border-white bg-white shadow" type="button" aria-label="Picker handle" />
+                    </div>
+                    <div className="relative mt-3 h-3 rounded-full" style={{ background: hueBackground }}>
+                      <button className="absolute left-[56%] top-1/2 size-5 -translate-x-1/2 -translate-y-1/2 rounded-full border-4 border-white shadow" style={{ backgroundColor: pickerColor.hex }} type="button" aria-label="Hue handle" />
+                    </div>
+                    <div className="mt-4 flex items-center gap-2 rounded-lg border border-blue-500 px-2 py-1.5">
+                      <button className="min-w-0 flex-1 text-left font-mono text-base font-semibold" type="button" onClick={() => void writeClipboard(pickerColor.hex)}>
+                        {pickerColor.hex}
+                      </button>
+                      <input
+                        className="size-8 shrink-0 rounded border border-slate-200 bg-transparent"
+                        type="color"
+                        aria-label={`Pick replacement for ${pickerColor.hex}`}
+                        value={pickerColor.hex}
+                        onChange={(event) => replaceColor(index, event.target.value.toUpperCase())}
+                      />
+                    </div>
+                    <div className="mt-3 flex items-center justify-between border-t border-slate-100 pt-3">
+                      <button className="inline-flex items-center gap-2 text-sm font-semibold text-slate-950" type="button">
+                        Picker <ArrowRight aria-hidden="true" className="size-4 rotate-90" />
+                      </button>
+                      <div className="flex gap-3">
+                        <button className="text-slate-950" type="button" aria-label="Copy picked color" onClick={() => void writeClipboard(pickerColor.hex)}>
+                          <Copy aria-hidden="true" className="size-5" />
+                        </button>
+                        <button className="text-slate-950" type="button" aria-label="Close picker" onClick={() => setPickerOpenIndex(null)}>
+                          <X aria-hidden="true" className="size-5" />
+                        </button>
+                      </div>
+                    </div>
+                  </div>
+                )}
               </div>
             )
           })}
         </div>
 
-        <div className="border-t border-slate-200 bg-white p-3">
-          <div className="grid gap-3 sm:grid-cols-[minmax(0,1fr)_auto] sm:items-center">
-            <div className="min-w-0">
-              <p className="truncate text-sm font-semibold text-slate-950">{selectedColor.name}</p>
-              <p className="mt-1 font-mono text-[11px] uppercase tracking-normal text-slate-500">
-                {selectedColor.hex} / RGB {hexToRgb(selectedColor.hex)} / HSL {hexToHsl(selectedColor.hex)}
-              </p>
-            </div>
-            <div className="flex h-8 overflow-hidden rounded border border-slate-200">
-              {palette.map((color, index) => (
-                <button
-                  key={`${color.hex}-mini-${index}`}
-                  className="w-9 transition hover:brightness-95 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-askewly-violet"
-                  type="button"
-                  aria-label={`Select ${color.hex}`}
-                  style={{ backgroundColor: color.hex }}
-                  onClick={() => setSelectedIndex(index)}
-                />
-              ))}
-            </div>
-          </div>
-          {shadeOpen && (
-            <div className="mt-3 grid grid-cols-5 overflow-hidden rounded border border-slate-200">
+        {shadeOpenIndex !== null && (
+          <div className="border-t border-slate-200 bg-white p-3">
+            <div className="grid grid-cols-5 overflow-hidden rounded border border-slate-200">
               {shadeSet.map((shade) => (
                 <button
                   key={shade.hex}
@@ -1866,23 +1911,36 @@ function ColorPaletteGeneratorDemo() {
                 </button>
               ))}
             </div>
-          )}
-        </div>
+          </div>
+        )}
 
         {exportOpen && (
-          <div className="absolute right-3 top-12 z-20 w-44 rounded-md border border-slate-200 bg-white p-2 shadow-xl">
-            <p className="px-2 py-1 font-mono text-[10px] uppercase tracking-[0.14em] text-slate-400">Export Palette</p>
-            {["URL", "CSS", "SVG", "Tailwind"].map((format) => (
-              <button
-                key={format}
-                className="flex w-full items-center justify-between rounded px-2 py-1.5 text-left text-xs font-semibold text-slate-700 transition hover:bg-slate-100 hover:text-slate-950"
-                type="button"
-                onClick={() => exportPalette(format)}
-              >
-                {format}
-                <ArrowRight aria-hidden="true" className="size-3" />
-              </button>
-            ))}
+          <div className="absolute inset-0 z-50 grid place-items-center bg-slate-950/72 p-4">
+            <div className="w-full max-w-md rounded-2xl bg-white text-slate-950 shadow-2xl">
+              <div className="flex items-center justify-between border-b border-slate-200 px-5 py-4">
+                <p className="text-lg font-semibold">Export Palette</p>
+                <button className="rounded p-1 text-slate-700 transition hover:bg-slate-100" type="button" aria-label="Close export palette" onClick={() => setExportOpen(false)}>
+                  <X aria-hidden="true" className="size-5" />
+                </button>
+              </div>
+              <div className="grid grid-cols-3 gap-3 p-5">
+                {[
+                  ["image", "Image", Download],
+                  ["code", "Code", FileCode2],
+                  ["svg", "SVG", PanelsTopLeft],
+                ].map(([format, label, Icon]) => (
+                  <button
+                    key={String(format)}
+                    className="grid aspect-square place-items-center rounded-xl bg-slate-100 p-3 text-center transition hover:bg-slate-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-askewly-violet"
+                    type="button"
+                    onClick={() => exportPalette(format as "image" | "code" | "svg")}
+                  >
+                    <Icon aria-hidden="true" className="size-7" />
+                    <span className="text-sm font-semibold">{String(label)}</span>
+                  </button>
+                ))}
+              </div>
+            </div>
           </div>
         )}
       </div>
