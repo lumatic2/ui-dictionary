@@ -13,3 +13,4 @@
 | 11 | 20260709-palette-drop-no-refresh-info-rail | 2026-07-09 | Color Palette Generator no-refresh drag drop and restored info rail | 4/4 | complete |
 | 12 | 20260709-palette-rail-export-verification | 2026-07-09 | Color Palette Generator rail cleanup and export action verification | 4/4 | complete |
 | 13 | 20260709-palette-hover-shades-shader-fill | 2026-07-09 | Color Palette Generator hover reset, shade motion, add alignment, and shader fill | 4/4 | complete |
+| 14 | 20260709-palette-image-card-swap | 2026-07-09 | Showcase atlas swaps Color Palette Generator into the larger Image Treatment slot | 4/4 | complete |
