@@ -30,7 +30,6 @@ import {
   SkipBack,
   SkipForward,
   Download,
-  LayoutDashboard,
   Magnet,
   MousePointerClick,
   PanelsTopLeft,
@@ -138,48 +137,6 @@ const invertedBlocks = [
   { id: "g", className: "right-[12%] top-[72%] h-24 w-3 opacity-75" },
 ]
 
-const dashboardViews = [
-  {
-    id: "ops",
-    label: "Ops",
-    title: "Pattern operations",
-    metric: "128",
-    detail: "UI surfaces reviewed",
-    status: "Live review",
-    rows: [
-      ["Command center", "Keyboard", "Ready"],
-      ["Revenue table", "Density", "Review"],
-      ["Settings flow", "States", "Ready"],
-    ],
-  },
-  {
-    id: "quality",
-    label: "Quality",
-    title: "Interface quality",
-    metric: "AA",
-    detail: "Contrast and motion gates",
-    status: "3 checks open",
-    rows: [
-      ["Dashboard shell", "Responsive", "Ready"],
-      ["Docs leaf", "Examples", "Review"],
-      ["Checkout summary", "Copy", "Ready"],
-    ],
-  },
-  {
-    id: "agent",
-    label: "Agent",
-    title: "Agent-ready assets",
-    metric: "42",
-    detail: "Recipes and code paths",
-    status: "Export queue",
-    rows: [
-      ["DESIGN.md tokens", "System", "Ready"],
-      ["Prompt recipe", "Claude/Codex", "Ready"],
-      ["Capture ledger", "Evidence", "Review"],
-    ],
-  },
-] as const
-
 const atlasItems = [
   { id: "agent", title: "Agent-Ready Design System", copy: "Talk to an agent docked to your canvas: humanize, fix, and animate the UI in place, then hand the build off to Codex or Claude.", layout: "md:col-span-2 xl:col-span-4" },
   { id: "pointer", title: "Cursor-Reactive Field", copy: "Surfaces that respond to cursor movement with spatial feedback and temporary visual traces.", layout: "md:col-span-2 xl:col-span-2" },
@@ -260,15 +217,12 @@ export function HomePage({ onNavigate, onSearch, filter, terms }: HomePageProps)
 }
 
 function DarkInversionSection({ onNavigate }: { onNavigate: HomePageProps["onNavigate"] }) {
-  const [activeView, setActiveView] = useState<(typeof dashboardViews)[number]["id"]>("ops")
-  const view = dashboardViews.find((item) => item.id === activeView) ?? dashboardViews[0]
-
   return (
-    <section className="relative isolate overflow-hidden bg-black px-4 py-44 text-white md:px-8 lg:px-10">
+    <section className="relative isolate overflow-hidden bg-black px-4 pb-44 pt-64 text-white md:px-8 md:pt-72 lg:px-10">
       <div className="inverted-section-fade" />
       <InvertedField />
       <div className="relative z-30 mx-auto max-w-[1180px]">
-        <div className="grid gap-10 lg:grid-cols-[0.78fr_1.22fr] lg:items-center">
+        <div className="grid gap-12 lg:grid-cols-[0.68fr_1.32fr] lg:items-center">
           <div className="max-w-xl">
             <p className="font-mono text-xs font-semibold uppercase tracking-[0.24em] text-white/45">Showcase 01 / SaaS</p>
             <h2 className="mt-5 text-4xl font-semibold tracking-normal text-white md:text-6xl">
@@ -278,23 +232,6 @@ function DarkInversionSection({ onNavigate }: { onNavigate: HomePageProps["onNav
               A dense SaaS surface built from the current Askewly assets: sidebar navigation, page headings,
               stats, review tables, command actions, and implementation evidence.
             </p>
-            <div className="mt-8 flex flex-wrap gap-2">
-              {dashboardViews.map((item) => (
-                <button
-                  key={item.id}
-                  className={cn(
-                    "rounded-full border px-4 py-2 text-sm font-semibold transition focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white",
-                    item.id === activeView
-                      ? "border-white bg-white text-black"
-                      : "border-white/18 bg-white/[0.03] text-white/58 hover:border-white/45 hover:text-white",
-                  )}
-                  type="button"
-                  onClick={() => setActiveView(item.id)}
-                >
-                  {item.label}
-                </button>
-              ))}
-            </div>
             <div className="mt-9 grid gap-px overflow-hidden border border-white/10 bg-white/10 sm:grid-cols-3">
               {[
                 ["Assets", "bento, tables, stats"],
@@ -308,7 +245,7 @@ function DarkInversionSection({ onNavigate }: { onNavigate: HomePageProps["onNav
               ))}
             </div>
           </div>
-          <DashboardShowcase view={view} onNavigate={() => onNavigate({ page: "plus", filter: "nav:plus-application-ui" })} />
+          <DashboardShowcase onNavigate={() => onNavigate({ page: "plus", filter: "nav:plus-application-ui" })} />
         </div>
       </div>
     </section>
@@ -316,110 +253,27 @@ function DarkInversionSection({ onNavigate }: { onNavigate: HomePageProps["onNav
 }
 
 function DashboardShowcase({
-  view,
   onNavigate,
 }: {
-  view: (typeof dashboardViews)[number]
   onNavigate: () => void
 }) {
   return (
-    <div className="group relative min-w-0 border border-white/12 bg-black/82 p-2 shadow-[0_24px_120px_rgba(0,0,0,0.5)] backdrop-blur-sm transition hover:border-white/22">
-      <div className="grid min-h-[34rem] overflow-hidden border border-white/10 bg-[#f8fafc] text-slate-950 lg:grid-cols-[13rem_minmax(0,1fr)]">
-        <aside className="hidden border-r border-slate-200 bg-slate-950 p-4 text-white lg:block">
-          <div className="flex items-center gap-2 text-sm font-semibold">
-            <span className="grid size-7 place-items-center rounded bg-askewly-violet">
-              <LayoutDashboard aria-hidden="true" className="size-4" />
-            </span>
-            Atlas Ops
-          </div>
-          <div className="mt-8 space-y-1 text-sm">
-            {["Overview", "Surfaces", "Reviews", "Tokens", "Exports"].map((item, index) => (
-              <div
-                key={item}
-                className={cn(
-                  "rounded px-3 py-2 transition",
-                  index === 2 ? "bg-white text-slate-950" : "text-slate-400 group-hover:text-slate-300",
-                )}
-              >
-                {item}
-              </div>
-            ))}
-          </div>
-          <div className="mt-10 border border-white/10 bg-white/[0.04] p-3">
-            <p className="font-mono text-[10px] uppercase tracking-[0.16em] text-white/34">Source assets</p>
-            <p className="mt-2 text-xs leading-5 text-white/58">sidebar-navigation, stats-sections, tables</p>
-          </div>
-        </aside>
-        <div className="min-w-0 p-4 md:p-6">
-          <div className="flex flex-col gap-4 border-b border-slate-200 pb-5 md:flex-row md:items-center md:justify-between">
-            <div>
-              <p className="text-xs font-semibold uppercase tracking-[0.18em] text-askewly-violet">Application UI</p>
-              <h3 className="mt-2 text-2xl font-semibold text-slate-950">{view.title}</h3>
-            </div>
-            <button
-              className="inline-flex h-10 items-center justify-center gap-2 rounded-full bg-slate-950 px-4 text-sm font-semibold text-white transition hover:bg-askewly-violet focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-askewly-violet"
-              type="button"
-              onClick={onNavigate}
-            >
-              Open pattern
-              <ArrowRight aria-hidden="true" className="size-4" />
-            </button>
-          </div>
-
-          <div className="mt-5 grid gap-4 md:grid-cols-3">
-            {[
-              [view.metric, view.detail],
-              ["18", "Interactive states"],
-              ["06", "Reference captures"],
-            ].map(([value, label], index) => (
-              <div key={label} className="border border-slate-200 bg-white p-4 shadow-sm">
-                <p className="text-3xl font-semibold tracking-normal text-slate-950">{value}</p>
-                <p className="mt-2 text-sm leading-5 text-slate-500">{label}</p>
-                <div className="mt-4 h-1.5 overflow-hidden rounded-full bg-slate-100">
-                  <div
-                    className={cn("h-full rounded-full", index === 0 ? "w-4/5 bg-askewly-violet" : "w-3/5 bg-askewly-mint")}
-                  />
-                </div>
-              </div>
-            ))}
-          </div>
-
-          <div className="mt-4 grid gap-4 xl:grid-cols-[minmax(0,1fr)_17rem]">
-            <div className="overflow-hidden border border-slate-200 bg-white shadow-sm">
-              <div className="flex items-center justify-between border-b border-slate-200 px-4 py-3">
-                <p className="text-sm font-semibold text-slate-950">Review queue</p>
-                <span className="rounded-full bg-askewly-mint/70 px-2.5 py-1 text-xs font-semibold text-slate-700">
-                  {view.status}
-                </span>
-              </div>
-              <div className="divide-y divide-slate-100">
-                {view.rows.map(([surface, type, status]) => (
-                  <div key={surface} className="grid gap-3 px-4 py-3 text-sm sm:grid-cols-[1fr_7rem_5rem]">
-                    <span className="font-medium text-slate-950">{surface}</span>
-                    <span className="text-slate-500">{type}</span>
-                    <span className={cn("font-semibold", status === "Ready" ? "text-askewly-violet" : "text-slate-500")}>{status}</span>
-                  </div>
-                ))}
-              </div>
-            </div>
-            <div className="border border-slate-200 bg-white p-4 shadow-sm">
-              <p className="text-sm font-semibold text-slate-950">Command actions</p>
-              <div className="mt-4 space-y-2">
-                {["Generate React", "Copy tokens", "Export assets"].map((item, index) => (
-                  <div key={item} className="flex items-center justify-between rounded border border-slate-200 bg-slate-50 px-3 py-2 text-sm">
-                    <span>{item}</span>
-                    <span className={cn("size-2 rounded-full", index === 0 ? "bg-askewly-violet" : "bg-slate-300")} />
-                  </div>
-                ))}
-              </div>
-              <div className="mt-5 border border-slate-200 bg-slate-950 p-3 font-mono text-xs leading-6 text-slate-300">
-                <div>system.surface = saas</div>
-                <div>density = operational</div>
-                <div>agent.ready = true</div>
-              </div>
-            </div>
-          </div>
-        </div>
+    <div className="group relative min-w-0 overflow-hidden rounded-[1.75rem] border border-white/12 bg-white/[0.03] p-2 shadow-[0_24px_120px_rgba(0,0,0,0.55)] backdrop-blur-sm transition hover:border-white/22">
+      <div className="relative overflow-hidden rounded-[1.35rem] border border-white/10 bg-slate-950">
+        <img
+          className="block aspect-[1.91/1] w-full object-cover"
+          src="/assets/bento-grids/dark-deployment-dashboard-v2.png"
+          alt="Dark product operations dashboard with deployments, release summary, activity, and performance panels"
+        />
+        <div className="pointer-events-none absolute inset-x-0 bottom-0 h-32 bg-gradient-to-t from-black/64 to-transparent" />
+        <button
+          className="absolute bottom-5 left-5 inline-flex h-10 items-center justify-center gap-2 rounded-full border border-white/14 bg-white/10 px-4 text-sm font-semibold text-white backdrop-blur transition hover:bg-white hover:text-slate-950 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white"
+          type="button"
+          onClick={onNavigate}
+        >
+          Open pattern
+          <ArrowRight aria-hidden="true" className="size-4" />
+        </button>
       </div>
     </div>
   )
