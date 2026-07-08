@@ -1779,7 +1779,7 @@ function ColorPaletteGeneratorDemo() {
   useEffect(() => {
     const onPointerDown = (event: PointerEvent) => {
       const target = event.target as HTMLElement
-      if (target.closest("[data-palette-popover]") || target.closest("[data-palette-trigger]")) return
+      if (target.closest("[data-palette-popover]") || target.closest("[data-palette-trigger]") || target.closest("[data-palette-column-shades]")) return
       setPickerOpenIndex(null)
       closeShadePanel()
       setExportOpen(false)
