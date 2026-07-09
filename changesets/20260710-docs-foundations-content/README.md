@@ -21,4 +21,4 @@
 - [x] `npm run lint` PASS, `npm run build` PASS (구현 에이전트).
 - [x] 7종 전부 dev 렌더 (한국어 lead + 6섹션 헤딩, 구현 에이전트 4177).
 - [x] 토큰 실존 대조 (gray ramp·semantic surface/text/action/border·component button·dimension·typography 전 참조).
-- [ ] 부모 통합 게이트 재검증 — Step 4에서 일괄 (병렬 편집 중인 home-page.tsx 안정화 후).
+- [x] 부모 통합 게이트 재검증 완료 — Step 4(changeset #38)에서 lint/build/preview 스모크 PASS (2026-07-10).

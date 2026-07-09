@@ -71,19 +71,19 @@ export const docsNavGroups: DocsNavGroup[] = [
   {
     label: "Foundations",
     items: [
-      { filter: navFilter("docs-foundations-color"), label: "Color", shell: true },
-      { filter: navFilter("docs-foundations-typography"), label: "Typography", shell: true },
-      { filter: navFilter("docs-foundations-spacing-layout"), label: "Spacing & layout", shell: true },
-      { filter: navFilter("docs-foundations-motion"), label: "Motion", shell: true },
-      { filter: navFilter("docs-foundations-accessibility"), label: "Accessibility", shell: true },
-      { filter: navFilter("docs-foundations-dark-mode"), label: "Dark mode", shell: true },
-      { filter: navFilter("docs-foundations-tokens"), label: "Tokens", shell: true },
+      { filter: navFilter("docs-foundations-color"), label: "Color" },
+      { filter: navFilter("docs-foundations-typography"), label: "Typography" },
+      { filter: navFilter("docs-foundations-spacing-layout"), label: "Spacing & layout" },
+      { filter: navFilter("docs-foundations-motion"), label: "Motion" },
+      { filter: navFilter("docs-foundations-accessibility"), label: "Accessibility" },
+      { filter: navFilter("docs-foundations-dark-mode"), label: "Dark mode" },
+      { filter: navFilter("docs-foundations-tokens"), label: "Tokens" },
     ],
   },
   {
     label: "Agent Recipes",
     items: [
-      { filter: navFilter("docs-agent-recipes"), label: "Overview", shell: true },
+      { filter: navFilter("docs-agent-recipes"), label: "Overview" },
     ],
   },
 ]
@@ -972,7 +972,6 @@ export const docsArticlePages = new Map<TermFilter, DocsArticlePageData>([
     ],
     apiRows: [],
     onThisPage: [...FOUNDATION_SECTION_TITLES],
-    shell: true,
   }],
   [navFilter("docs-foundations-typography"), {
     filter: navFilter("docs-foundations-typography"),
@@ -1026,7 +1025,6 @@ export const docsArticlePages = new Map<TermFilter, DocsArticlePageData>([
     ],
     apiRows: [],
     onThisPage: [...FOUNDATION_SECTION_TITLES],
-    shell: true,
   }],
   [navFilter("docs-foundations-spacing-layout"), {
     filter: navFilter("docs-foundations-spacing-layout"),
@@ -1081,7 +1079,6 @@ export const docsArticlePages = new Map<TermFilter, DocsArticlePageData>([
     ],
     apiRows: [],
     onThisPage: [...FOUNDATION_SECTION_TITLES],
-    shell: true,
   }],
   [navFilter("docs-foundations-motion"), {
     filter: navFilter("docs-foundations-motion"),
@@ -1137,7 +1134,6 @@ export const docsArticlePages = new Map<TermFilter, DocsArticlePageData>([
     ],
     apiRows: [],
     onThisPage: [...FOUNDATION_SECTION_TITLES],
-    shell: true,
   }],
   [navFilter("docs-foundations-accessibility"), {
     filter: navFilter("docs-foundations-accessibility"),
@@ -1195,7 +1191,6 @@ export const docsArticlePages = new Map<TermFilter, DocsArticlePageData>([
     ],
     apiRows: [],
     onThisPage: [...FOUNDATION_SECTION_TITLES],
-    shell: true,
   }],
   [navFilter("docs-foundations-dark-mode"), {
     filter: navFilter("docs-foundations-dark-mode"),
@@ -1250,7 +1245,6 @@ export const docsArticlePages = new Map<TermFilter, DocsArticlePageData>([
     ],
     apiRows: [],
     onThisPage: [...FOUNDATION_SECTION_TITLES],
-    shell: true,
   }],
   [navFilter("docs-foundations-tokens"), {
     filter: navFilter("docs-foundations-tokens"),
@@ -1307,7 +1301,6 @@ export const docsArticlePages = new Map<TermFilter, DocsArticlePageData>([
     ],
     apiRows: [],
     onThisPage: [...FOUNDATION_SECTION_TITLES],
-    shell: true,
   }],
   [navFilter("docs-agent-recipes"), {
     filter: navFilter("docs-agent-recipes"),
@@ -1359,6 +1352,5 @@ export const docsArticlePages = new Map<TermFilter, DocsArticlePageData>([
     ],
     apiRows: [],
     onThisPage: ["What are Agent Recipes", "Recipe list", "llms.txt asset", "Verification checklist"],
-    shell: true,
   }],
 ])

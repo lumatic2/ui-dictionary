@@ -19,4 +19,4 @@
 - [x] `https://ui.askewly.com/llms.txt` 200 + 링크된 자산 10개 전부 200 (구현 에이전트 curl).
 - [x] `npm run lint` PASS, `npm run build` PASS (구현 에이전트).
 - [x] dev 렌더/번들 포함 확인 후 서버 종료.
-- [ ] 부모 통합 게이트 재검증 — Step 4 일괄.
+- [x] 부모 통합 게이트 재검증 완료 — Step 4(changeset #38)에서 lint/build/preview 스모크 PASS (2026-07-10).

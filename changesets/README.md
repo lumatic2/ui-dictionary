@@ -34,6 +34,7 @@
 | 32 | 20260710-pro-download-shell | 2026-07-10 | Dev-only Pro subsections skeleton and Download app distribution skeleton | 4/4 | complete |
 | 33 | 20260710-colors-palettes-library | 2026-07-10 | Colors Palettes view fills with 13 curated seed palettes, copy toasts, and export dialog reuse | 4/4 | complete |
 | 34 | 20260710-colors-axis-public | 2026-07-10 | Colors axis opens to production with shell-leak fixes and Chrome evidence | 5/5 | complete |
-| 35 | 20260710-docs-foundations-content | 2026-07-10 | Seven Korean foundations articles derived from token SSOT behind shell gate | 3/4 | in_progress |
-| 36 | 20260710-agent-recipes-surface | 2026-07-10 | Agent Recipes docs surface with verified llms.txt links and recipe checklist | 3/4 | in_progress |
+| 35 | 20260710-docs-foundations-content | 2026-07-10 | Seven Korean foundations articles derived from token SSOT behind shell gate | 4/4 | complete |
+| 36 | 20260710-agent-recipes-surface | 2026-07-10 | Agent Recipes docs surface with verified llms.txt links and recipe checklist | 4/4 | complete |
 | 37 | 20260710-hero-composition-demo | 2026-07-10 | Hero Composition atlas card interactive demo from landing-hero recipe, still gated | 4/4 | complete |
+| 38 | 20260710-docs-shell-gate-open | 2026-07-10 | Foundations and Agent Recipes shell gates open with leak regression evidence | 4/5 | in_progress |
