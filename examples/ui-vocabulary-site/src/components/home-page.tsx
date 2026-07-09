@@ -64,7 +64,7 @@ export type HomePageDestination = {
   filter: TermFilter
   page: "docs" | "plus"
 } | {
-  page: "download" | "pro" | "signin"
+  page: "download" | "pro" | "colors" | "signin"
 }
 
 type HomePageProps = {
@@ -1417,7 +1417,7 @@ function buildPaletteSvg(palette: PaletteColor[]) {
   return `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 ${width} 220">${palette.map((color, index) => `<rect x="${index * 160}" y="0" width="160" height="220" fill="${color.hex}"/><text x="${index * 160 + 22}" y="178" font-family="Arial, sans-serif" font-size="18" font-weight="700" fill="${getReadableTextColor(color.hex)}">${color.hex.replace("#", "")}</text><text x="${index * 160 + 22}" y="202" font-family="Arial, sans-serif" font-size="13" font-weight="600" fill="${getReadableTextColor(color.hex)}">${color.name}</text>`).join("")}</svg>`
 }
 
-function ColorPaletteGeneratorDemo() {
+export function ColorPaletteGeneratorDemo() {
   const prefersReducedMotion = usePrefersReducedMotion()
   const [paletteIndex, setPaletteIndex] = useState(0)
   const [palette, setPalette] = useState<GeneratorColor[]>(() => createGeneratorPalette(0))

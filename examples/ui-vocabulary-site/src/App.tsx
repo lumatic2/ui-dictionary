@@ -45,6 +45,7 @@ import { Button } from "@/components/ui/button"
 import { Popover, PopoverContent, PopoverDescription, PopoverHeader, PopoverTitle, PopoverTrigger } from "@/components/ui/popover"
 import { Separator } from "@/components/ui/separator"
 import { HomePage, type HomePageDestination } from "@/components/home-page"
+import { ColorsPage } from "@/components/colors-page"
 import { TermPage } from "@/components/term-page"
 import { TermResultRow } from "@/components/term-result-row"
 import { TopbarSearch } from "@/components/topbar-search"
@@ -57,7 +58,7 @@ import { getStarterQueries } from "@/lib/search-suggestions"
 import { useCases } from "@/lib/term-ux"
 import { cn } from "@/lib/utils"
 
-type PageMode = "home" | "docs" | "plus" | "term" | "download" | "pro"
+type PageMode = "home" | "docs" | "plus" | "term" | "download" | "pro" | "colors"
 type SearchState = {
   filter: TermFilter
   page: PageMode
@@ -519,9 +520,10 @@ function App() {
   const siteTopNav: Array<{ label: string; active: boolean; onClick: () => void }> = [
     { label: "Docs", active: pageMode === "docs" && filter === navFilter("docs-getting-started-setup"), onClick: () => navigateFromHome({ page: "docs", filter: "nav:docs-getting-started-setup" }) },
     { label: "Patterns", active: pageMode === "plus" && filter === navFilter("plus-marketing"), onClick: () => navigateFromHome({ page: "plus", filter: "nav:plus-marketing" }) },
+    ...(isShellVisible(true) ? [{ label: "Colors", active: pageMode === "colors", onClick: () => navigateFromHome({ page: "colors" }) }] : []),
     { label: "Pro Plan", active: pageMode === "pro", onClick: () => navigateFromHome({ page: "pro" }) },
   ]
-  const noExploreLayout = pageMode === "home" || pageMode === "download" || pageMode === "pro"
+  const noExploreLayout = pageMode === "home" || pageMode === "download" || pageMode === "pro" || pageMode === "colors"
 
   return (
     <main className="min-h-svh bg-background">
@@ -619,6 +621,10 @@ function App() {
             />
           ) : pageMode === "download" ? (
             <DownloadPage
+              onNavigate={navigateFromHome}
+            />
+          ) : pageMode === "colors" ? (
+            <ColorsPage
               onNavigate={navigateFromHome}
             />
           ) : pageMode === "pro" ? (
@@ -1043,6 +1049,9 @@ function getDefaultFilterForPage(page: PageMode): TermFilter {
 }
 
 function parsePageParam(value: string | null, filter: TermFilter): PageMode {
+  if (value === "colors") {
+    return isShellVisible(true) ? "colors" : "home"
+  }
   if (value === "home" || value === "docs" || value === "plus" || value === "term" || value === "download" || value === "pro") {
     return value
   }
