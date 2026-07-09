@@ -25,12 +25,13 @@
     {
       "id": "SFB3",
       "title": "Content Fill Batch 1: Colors Palettes",
-      "status": "active",
+      "status": "completed",
       "started": "2026-07-10",
       "plan": "docs/plans/2026-07-10-sfb3-colors-palettes.md",
       "session_ids": [
         "claude:3e4e1a99-8978-4b77-8fea-b57b4353fae4"
-      ]
+      ],
+      "completed": "2026-07-10"
     }
   ]
 }

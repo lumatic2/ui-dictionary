@@ -1,7 +1,11 @@
 # Horizon - Structure-First Buildout
 
 Date: 2026-07-10
-Status: active
+Status: closed 2026-07-10 — 닫는 기준 3개 전부 충족: ① 목표 구조가 blueprint v2 + dev 껍데기로 존재 (SFB2) ② 프로덕션 미완 노출 0건 (SFB1 게이트 + SFB3 누출 2건 추가 차단) ③ 첫 콘텐츠 배치(Colors Palettes) 완성 판정 통과·공개 (SFB3, `https://ui.askewly.com/?page=colors`).
+
+## Objective 임팩트
+
+이 horizon은 Objective의 "제품 표면" 축을 "만들다 만 카탈로그 → 작지만 전부 진짜인 시스템 + 증축 도면"으로 움직였다: 프로덕션은 나열된 것=완성된 것 원칙을 지키고(빈 컬렉션 42·placeholder 카드 5 비노출), dev에는 목표 구조 전체의 골조(Docs Foundations·Agent Recipes·Colors·Pro 하위·Download)가 세워졌으며, Colors 축이 완성 판정→게이트 열기 승격 프로세스의 첫 실증으로 공개됐다. 다음 축 이동은 남은 껍데기 채우기(Showcase 카드·Docs 아티클·Pro 자산)가 담당한다.
 
 ## Goal
 

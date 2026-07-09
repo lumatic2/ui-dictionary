@@ -24,4 +24,4 @@
 - [x] prod preview: Colors nav 노출·`?page=colors` 진입·팔레트 카드 렌더(Fintech Trust/Gaming Neon/Enterprise Slate 등)·seed 출처 문구 확인.
 - [x] 누출 회귀: foundation 링크 비노출, shell 아티클 직접 URL → 카탈로그 폴백("Content pending" 0건), `?page=download` 홈 정규화 유지.
 - [x] Chrome evidence 3장 캡처 (desktop light/dark, mobile).
-- [ ] 프로덕션 배포 반영 확인 (`https://ui.askewly.com/`) — push 승인 후.
+- [x] 프로덕션 배포 반영 확인: push `d1f2917` → `https://ui.askewly.com/` 신규 asset `index-CYvX6dpN.js`, 실사이트 스모크 — Colors nav 공개·`?page=colors` 진입·팔레트 13종 렌더·누출("Content pending"/foundation 링크) 0건 PASS.
