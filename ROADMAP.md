@@ -1,16 +1,28 @@
 # ROADMAP
 
 > Last updated: 2026-07-10
-> Status: Structure-First Buildout 완료 (SFB1~3) — 다음 horizon 결정 필요 (docs/roadmap-gap-2026-07-10.md)
+> Status: Content Fill 시작 — CF1 active
 > North star: Build Askewly Design as both a public reference website and an agent-usable implementation system.
 > line budget: <=150
 
 ## Current Horizon
 
-<!-- harness:goal id="structure-first-buildout" status="completed" -->
-Goal: 목표 IA를 문서로 확정하고, 프로덕션은 미완 껍데기 비노출 클린 버전으로 유지하면서, dev에서 껍데기를 증축한 뒤 완성 판정 통과 콘텐츠부터 승격한다. Details: `docs/horizons/2026-07-structure-first-buildout.md`.
+<!-- harness:goal id="content-fill" status="active" -->
+Goal: dev 껍데기 중 콘텐츠만 있으면 열리는 것(Docs Foundations·Agent Recipes·Showcase 카드·Patterns 컬렉션)을 완성 판정→게이트 열기로 순차 공개한다. Details: `docs/horizons/2026-07-content-fill.md`. 직전 close: `docs/horizons/2026-07-structure-first-buildout.md`.
 
 ## Active Milestones
+
+<!-- harness:milestone id="CF1" status="active" priority="P1" -->
+### CF1 - Docs Foundations And Agent Recipes 공개
+- DoD: Foundations 아티클 7종이 레포 SSOT 기반 실콘텐츠(실예시·라이트/다크·복붙 코드)로 작성 + Agent Recipes 표면이 recipes/ 5종·llms.txt와 연결 + 게이트 열어 프로덕션 공개(Colors foundation 링크 부활) + Chrome evidence + 배포 확인.
+- Evidence: docs/plans/2026-07-10-cf1-docs-foundations.md + changeset README들 + Chrome evidence.
+- Gap: Foundations/Agent Recipes가 dev skeleton — 재료(tokens/·knowledge/·recipes/)는 레포에 있는데 사이트 콘텐츠로 파생되지 않음.
+- Status: [ ]
+
+## Next Candidates
+
+- CF2 - Showcase Atlas Source-Quality 카드: placeholder 카드 4+1을 토큰·레시피 기반 인터랙티브 데모로 채우거나 근거 있는 제거. (DoD: horizon doc)
+- CF3 - Patterns 빈 컬렉션 배치: 우선 4개 컬렉션에 authoring workflow로 terms 채워 공개. (DoD: horizon doc)
 
 <!-- harness:milestone id="SFB1" status="completed" priority="P1" evidence="changesets/20260710-production-exposure-gate/README.md" -->
 ### SFB1 - Structure Contract And Clean Production
