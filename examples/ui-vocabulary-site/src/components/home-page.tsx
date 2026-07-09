@@ -283,13 +283,111 @@ function DarkInversionSection() {
   )
 }
 
+type DashboardServiceStatus = "operational" | "degraded"
+type DashboardDeployStatus = "success" | "error"
+
+const dashboardStats: Array<{ label: string; value: string; trend: string }> = [
+  { label: "Deployments (24h)", value: "18", trend: "+4 vs yesterday" },
+  { label: "Error rate", value: "0.34%", trend: "-0.08pt vs last week" },
+  { label: "p95 latency", value: "212ms", trend: "-14ms vs last week" },
+  { label: "Uptime (30d)", value: "99.97%", trend: "3 incidents" },
+]
+
+const dashboardServices: Array<{ name: string; status: DashboardServiceStatus }> = [
+  { name: "web-app", status: "operational" },
+  { name: "api-gateway", status: "operational" },
+  { name: "auth-service", status: "degraded" },
+  { name: "billing-worker", status: "operational" },
+  { name: "notifications", status: "operational" },
+]
+
+const dashboardDeploys: Array<{ service: string; version: string; status: DashboardDeployStatus; time: string }> = [
+  { service: "web-app", version: "v2.14.3", status: "success", time: "12m ago" },
+  { service: "api-gateway", version: "v1.9.0", status: "success", time: "41m ago" },
+  { service: "auth-service", version: "v3.2.1", status: "error", time: "1h ago" },
+  { service: "billing-worker", version: "v1.4.6", status: "success", time: "3h ago" },
+]
+
+const dashboardDeployVolume = [4, 6, 3, 8, 5, 9, 7]
+
+const dashboardStatusDot: Record<DashboardServiceStatus, string> = {
+  operational: "bg-emerald-400",
+  degraded: "bg-amber-400",
+}
+
+const dashboardStatusLabel: Record<DashboardServiceStatus, string> = {
+  operational: "Operational",
+  degraded: "Degraded",
+}
+
 function DashboardShowcase() {
+  const maxVolume = Math.max(...dashboardDeployVolume)
+
   return (
-    <div className="grid min-h-[26rem] place-items-center rounded-[1.75rem] border border-dashed border-white/18 bg-white/[0.03] p-6 text-center shadow-[0_24px_120px_rgba(0,0,0,0.35)]">
-      <div className="max-w-[22rem]">
-        <p className="font-mono text-[10px] font-semibold uppercase tracking-[0.2em] text-white/36">Placeholder</p>
-        <p className="mt-3 text-2xl font-semibold text-white">Product operations dashboard</p>
-        <p className="mt-3 text-sm leading-6 text-white/54">Waiting for a source-quality dashboard block or implementation reference.</p>
+    <div className="min-h-[26rem] rounded-[1.75rem] border border-white/18 bg-white/[0.03] p-6 shadow-[0_24px_120px_rgba(0,0,0,0.35)]">
+      <div className="flex items-center justify-between">
+        <p className="font-mono text-[10px] font-semibold uppercase tracking-[0.2em] text-white/36">Live status</p>
+        <p className="font-mono text-[10px] text-white/36">Updated 2m ago</p>
+      </div>
+
+      <div className="mt-4 grid grid-cols-2 gap-px overflow-hidden rounded-xl border border-white/10 bg-white/10 sm:grid-cols-4">
+        {dashboardStats.map((stat) => (
+          <div key={stat.label} className="bg-black/70 p-3">
+            <p className="font-mono text-[9px] uppercase tracking-[0.14em] text-white/36">{stat.label}</p>
+            <p className="mt-1.5 text-xl font-semibold text-white">{stat.value}</p>
+            <p className="mt-1 text-[10px] text-white/54">{stat.trend}</p>
+          </div>
+        ))}
+      </div>
+
+      <div className="mt-4 grid gap-4 lg:grid-cols-[1.1fr_0.9fr]">
+        <div className="rounded-xl border border-white/10 bg-black/70 p-4">
+          <p className="font-mono text-[10px] uppercase tracking-[0.14em] text-white/36">Recent deploys</p>
+          <div className="mt-3 flex flex-col divide-y divide-white/10">
+            {dashboardDeploys.map((deploy) => (
+              <div key={`${deploy.service}-${deploy.version}`} className="flex items-center justify-between gap-3 py-2 text-xs">
+                <div className="min-w-0">
+                  <p className="truncate font-medium text-white">{deploy.service}</p>
+                  <p className="truncate text-white/54">{deploy.version}</p>
+                </div>
+                <span className={cn("shrink-0 font-medium", deploy.status === "error" ? "text-rose-400" : "text-emerald-400")}>
+                  {deploy.status === "error" ? "Failed" : "Success"}
+                </span>
+                <span className="shrink-0 text-white/36">{deploy.time}</span>
+              </div>
+            ))}
+          </div>
+        </div>
+
+        <div className="flex flex-col gap-4">
+          <div className="rounded-xl border border-white/10 bg-black/70 p-4">
+            <p className="font-mono text-[10px] uppercase tracking-[0.14em] text-white/36">Deploy volume (7d)</p>
+            <div className="mt-4 flex h-16 items-end gap-1.5">
+              {dashboardDeployVolume.map((count, index) => (
+                <div
+                  key={index}
+                  className="flex-1 rounded-t-sm bg-askewly-violet/60"
+                  style={{ height: `${(count / maxVolume) * 100}%` }}
+                />
+              ))}
+            </div>
+          </div>
+
+          <div className="rounded-xl border border-white/10 bg-black/70 p-4">
+            <p className="font-mono text-[10px] uppercase tracking-[0.14em] text-white/36">Service status</p>
+            <div className="mt-3 flex flex-col gap-2">
+              {dashboardServices.map((service) => (
+                <div key={service.name} className="flex items-center justify-between text-xs">
+                  <span className="flex items-center gap-2 text-white/68">
+                    <span className={cn("size-1.5 rounded-full", dashboardStatusDot[service.status])} />
+                    {service.name}
+                  </span>
+                  <span className="text-white/54">{dashboardStatusLabel[service.status]}</span>
+                </div>
+              ))}
+            </div>
+          </div>
+        </div>
       </div>
     </div>
   )
