@@ -23,7 +23,8 @@ Target: ROADMAP milestone PGD1 - Palette Generator Data Engine.
 - [x] Local Chrome smoke on `http://127.0.0.1:4175/?pgd1-smoke=1`: rail shows seed source copy and `Unique`, `Readable`, `Export OK` quality badges.
 - [x] Local Chrome smoke: locking `#FF99C8` then pressing `Generate` preserves that locked color and regenerates the unlocked colors from the next seed family.
 - [x] Local Chrome smoke: export dialog opens after generation and exposes Image, Code, and SVG export actions.
+- [x] Production deploy: Cloudflare Pages direct upload `54ba0c99` for commit `ac0584f`; `https://ui.askewly.com/` serves `assets/index-0M5ll09X.js` and `/api/auth/session` still returns JSON.
 
 ## Result
 
-Completed. The Color Palette Generator now uses a typed seed library plus deterministic harmony candidates, preserves locked colors during generation, avoids duplicate candidates, and exposes compact quality gates in the rail. Lint/build passed; local Chrome smoke verified seed-source copy, locked-color preservation, quality badges, and export dialog stability.
+Completed. The Color Palette Generator now uses a typed seed library plus deterministic harmony candidates, preserves locked colors during generation, avoids duplicate candidates, and exposes compact quality gates in the rail. Lint/build passed; local Chrome smoke verified seed-source copy, locked-color preservation, quality badges, and export dialog stability. Production was uploaded to Cloudflare Pages deployment `54ba0c99` for commit `ac0584f`; the custom domain served the latest JS asset and the auth Function continued returning JSON.
