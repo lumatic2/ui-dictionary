@@ -590,6 +590,26 @@ select {
   }
 }
 
+@keyframes askewly-login-popover-in {
+  0% {
+    opacity: 0;
+    translate: 0 -8px;
+    scale: 0.98;
+    filter: blur(6px);
+  }
+  100% {
+    opacity: 1;
+    translate: 0 0;
+    scale: 1;
+    filter: blur(0);
+  }
+}
+
+.askewly-login-popover[data-state="open"] {
+  animation: askewly-login-popover-in 220ms cubic-bezier(0.16, 1, 0.3, 1) both;
+  transform-origin: var(--radix-popover-content-transform-origin);
+}
+
 @keyframes ui-fade-slide-in {
   from {
     opacity: 0;
@@ -1412,8 +1432,13 @@ select {
   .motion-showcase-shape,
   .motion-showcase-shape-float,
   .motion-showcase-rings,
-  .motion-showcase-orbit-spin {
+  .motion-showcase-orbit-spin,
+  .askewly-login-popover[data-state="open"] {
     animation-duration: 1ms !important;
+  }
+
+  .askewly-login-popover[data-state="open"] {
+    filter: none;
   }
 }
 

@@ -23,6 +23,20 @@ Build output directory:
 examples/ui-vocabulary-site/dist
 ```
 
+## Pages Functions
+
+The production Pages project also serves a small same-origin auth proxy:
+
+```text
+functions/api/auth/[[path]].js
+```
+
+Requests under `https://ui.askewly.com/api/auth/*` are forwarded to the shared
+Askewly auth authority at `https://askewly.com/api/auth/*`. OAuth provider
+configuration, session signing, user storage, and secrets stay in the shared
+Askewly Worker. This repository must not add OAuth secrets or duplicate identity
+storage.
+
 ## Why Not Use `examples/ui-vocabulary-site` As The Only Root?
 
 The Vite app lives in `examples/ui-vocabulary-site`, but its data pipeline reads

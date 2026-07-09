@@ -42,6 +42,7 @@ import {
 } from "lucide-react"
 import { Badge } from "@/components/ui/badge"
 import { Button } from "@/components/ui/button"
+import { Popover, PopoverContent, PopoverDescription, PopoverHeader, PopoverTitle, PopoverTrigger } from "@/components/ui/popover"
 import { Separator } from "@/components/ui/separator"
 import { HomePage, type HomePageDestination } from "@/components/home-page"
 import { TermPage } from "@/components/term-page"
@@ -55,7 +56,7 @@ import { getStarterQueries } from "@/lib/search-suggestions"
 import { useCases } from "@/lib/term-ux"
 import { cn } from "@/lib/utils"
 
-type PageMode = "home" | "docs" | "plus" | "term"
+type PageMode = "home" | "docs" | "plus" | "term" | "download" | "pro"
 type SearchState = {
   filter: TermFilter
   page: PageMode
@@ -63,6 +64,13 @@ type SearchState = {
   termId: string | null
   returnPage: Exclude<PageMode, "term">
 }
+type AuthSessionState = {
+  authenticated: boolean
+  checked: boolean
+  email?: string
+}
+const AUTH_RETURN_OK_STORAGE_KEY = "askewly-auth-return-ok-at"
+
 function App() {
   const initialSearchState = useMemo(getInitialSearchState, [])
   const [pageMode, setPageMode] = useState<PageMode>(initialSearchState.page)
@@ -73,6 +81,8 @@ function App() {
   const [activeUseCaseId, setActiveUseCaseId] = useState<string | null>(null)
   const [searchExpanded, setSearchExpanded] = useState(false)
   const [topbarFeedback, setTopbarFeedback] = useState("")
+  const [signInOpen, setSignInOpen] = useState(false)
+  const [authSession, setAuthSession] = useState<AuthSessionState>({ authenticated: false, checked: false })
   const [siteTheme, setSiteTheme] = useState<PreviewTheme>(() => {
     if (typeof window === "undefined") {
       return "system"
@@ -160,6 +170,71 @@ function App() {
       window.removeEventListener("popstate", syncFromUrl)
     }
   }, [])
+
+  const refreshAuthSession = useCallback(async (options: { preserveAuthenticatedOnFailure?: boolean } = {}) => {
+    try {
+      const response = await fetch(`${getAuthApiOrigin()}/api/auth/session`, { credentials: "include" })
+
+      if (!response.ok) {
+        if (!options.preserveAuthenticatedOnFailure && !hasRecentAuthReturnOk()) {
+          setAuthSession({ authenticated: false, checked: true })
+        }
+        return
+      }
+
+      const payload = await response.json() as { authenticated?: boolean; email?: string }
+      setAuthSession({
+        authenticated: payload.authenticated === true,
+        checked: true,
+        email: payload.email,
+      })
+    } catch {
+      if (!options.preserveAuthenticatedOnFailure && !hasRecentAuthReturnOk()) {
+        setAuthSession({ authenticated: false, checked: true })
+      }
+    }
+  }, [])
+
+  useEffect(() => {
+    const params = new URLSearchParams(window.location.search)
+    if (params.get("auth") === "ok") {
+      return
+    }
+
+    const preserveAuthenticatedOnFailure = hasRecentAuthReturnOk()
+    if (preserveAuthenticatedOnFailure) {
+      setAuthSession((current) => ({ ...current, authenticated: true, checked: true }))
+    }
+
+    void refreshAuthSession({ preserveAuthenticatedOnFailure })
+  }, [refreshAuthSession])
+
+  useEffect(() => {
+    const params = new URLSearchParams(window.location.search)
+    const authResult = params.get("auth")
+
+    if (!authResult) {
+      return
+    }
+
+    if (authResult === "ok") {
+      markAuthReturnOk()
+      setTopbarFeedback("")
+      setAuthSession((current) => ({ ...current, authenticated: true, checked: true }))
+      void refreshAuthSession({ preserveAuthenticatedOnFailure: true })
+    } else if (authResult === "pending") {
+      setTopbarFeedback("Access pending")
+    } else if (authResult === "rejected") {
+      setTopbarFeedback("Access rejected")
+    } else {
+      setTopbarFeedback("Sign in failed")
+    }
+
+    params.delete("auth")
+    params.delete("reason")
+    const nextSearch = params.toString()
+    window.history.replaceState(null, "", `${window.location.pathname}${nextSearch ? `?${nextSearch}` : ""}${window.location.hash}`)
+  }, [refreshAuthSession])
 
   useEffect(() => {
     function openSearchFromShortcut(event: KeyboardEvent) {
@@ -296,6 +371,8 @@ function App() {
       setFilter(navFilter("docs-getting-started-setup"))
     } else if (nextPage === "plus") {
       setFilter(navFilter("plus-all"))
+    } else {
+      setFilter("all")
     }
     window.scrollTo({ top: 0, behavior: "smooth" })
   }
@@ -313,14 +390,33 @@ function App() {
   }
 
   function navigateFromHome(destination: HomePageDestination) {
+    if (destination.page === "signin") {
+      setSignInOpen(true)
+      setTopbarFeedback("")
+      return
+    }
+
     setActiveUseCaseId(null)
     setQuery("")
     setSelectedTermId(null)
     setSearchExpanded(false)
     setPageMode(destination.page)
     setReturnPageMode(destination.page)
-    setFilter(destination.filter)
+    setFilter("filter" in destination ? destination.filter : getDefaultFilterForPage(destination.page))
     window.scrollTo({ top: 0, behavior: "smooth" })
+  }
+
+  async function signOut() {
+    try {
+      await fetch(`${getAuthApiOrigin()}/api/auth/logout`, {
+        credentials: "include",
+        method: "POST",
+      })
+    } finally {
+      clearAuthReturnOk()
+      setAuthSession({ authenticated: false, checked: true })
+      setTopbarFeedback("")
+    }
   }
 
   function searchFromHome(nextQuery: string) {
@@ -417,11 +513,10 @@ function App() {
   const exploreNav = activePrimaryAxis === "documentation" ? docsNav : plusNav
   const siteTopNav: Array<{ label: string; active: boolean; onClick: () => void }> = [
     { label: "Docs", active: pageMode === "docs" && filter === navFilter("docs-getting-started-setup"), onClick: () => navigateFromHome({ page: "docs", filter: "nav:docs-getting-started-setup" }) },
-    { label: "Patterns", active: pageMode === "plus" && filter === navFilter("plus-application-ui"), onClick: () => navigateFromHome({ page: "plus", filter: "nav:plus-application-ui" }) },
-    { label: "Showcase", active: pageMode === "plus" && filter === navFilter("plus-templates-products"), onClick: () => navigateFromHome({ page: "plus", filter: "nav:plus-templates-products" }) },
-    { label: "Resources", active: pageMode === "docs" && filter === navFilter("docs-getting-started-assets"), onClick: () => navigateFromHome({ page: "docs", filter: "nav:docs-getting-started-assets" }) },
-    { label: "Pro Plan", active: pageMode === "plus" && filter === navFilter("plus-templates-dashboard"), onClick: () => navigateFromHome({ page: "plus", filter: "nav:plus-templates-dashboard" }) },
+    { label: "Patterns", active: pageMode === "plus" && filter === navFilter("plus-marketing"), onClick: () => navigateFromHome({ page: "plus", filter: "nav:plus-marketing" }) },
+    { label: "Pro Plan", active: pageMode === "pro", onClick: () => navigateFromHome({ page: "pro" }) },
   ]
+  const noExploreLayout = pageMode === "home" || pageMode === "download" || pageMode === "pro"
 
   return (
     <main className="min-h-svh bg-background">
@@ -473,7 +568,20 @@ function App() {
                   ))}
                   <span className="h-5 w-px bg-border" aria-hidden="true" />
                   {topbarFeedback && <span className="max-w-40 truncate rounded-full bg-indigo-50 px-3 py-1 text-xs font-semibold text-indigo-700">{topbarFeedback}</span>}
-                  <button className="transition hover:text-primary active:scale-[0.98]" type="button" onClick={() => setTopbarFeedback("Sign in opened")}>Sign in</button>
+                  {authSession.authenticated ? (
+                    <button className="max-w-44 truncate transition hover:text-primary active:scale-[0.98]" type="button" title={authSession.email ?? "Signed in"} onClick={() => void signOut()}>
+                      Sign out
+                    </button>
+                  ) : (
+                    <Popover open={signInOpen} onOpenChange={(nextOpen) => { setSignInOpen(nextOpen); if (nextOpen) setTopbarFeedback("") }}>
+                      <PopoverTrigger asChild>
+                        <button className="transition hover:text-primary active:scale-[0.98]" type="button">
+                          Sign in
+                        </button>
+                      </PopoverTrigger>
+                      <SignInPopoverContent />
+                    </Popover>
+                  )}
                 </div>
                 <button className={cn("size-8 place-items-center rounded-md transition hover:bg-muted active:scale-[0.98] md:hidden", searchExpanded ? "hidden" : "grid")} aria-label="More options" type="button" onClick={() => setTopbarFeedback("More options opened")}>
                   <MoreVertical aria-hidden="true" className="size-4" />
@@ -484,8 +592,8 @@ function App() {
 
       </header>
 
-      <div className={cn("grid w-full", pageMode === "home" ? "lg:grid-cols-1" : "lg:grid-cols-[280px_minmax(0,1fr)]")}>
-        <aside className={cn("scrollbar-hidden sticky top-14 hidden h-[calc(100svh-3.5rem)] overflow-y-auto border-r bg-background px-4 py-6 lg:block", pageMode === "home" && "lg:hidden")} data-print-hidden>
+      <div className={cn("grid w-full", noExploreLayout ? "lg:grid-cols-1" : "lg:grid-cols-[280px_minmax(0,1fr)]")}>
+        <aside className={cn("scrollbar-hidden sticky top-14 hidden h-[calc(100svh-3.5rem)] overflow-y-auto border-r bg-background px-4 py-6 lg:block", noExploreLayout && "lg:hidden")} data-print-hidden>
           <nav aria-label="탐색" className="flex h-full flex-col gap-5">
             <PrimaryAxisNav
               activeAxis={activePrimaryAxis}
@@ -503,6 +611,14 @@ function App() {
               terms={terms}
               onNavigate={navigateFromHome}
               onSearch={searchFromHome}
+            />
+          ) : pageMode === "download" ? (
+            <DownloadPage
+              onNavigate={navigateFromHome}
+            />
+          ) : pageMode === "pro" ? (
+            <ProPlanPage
+              onSignIn={() => setSignInOpen(true)}
             />
           ) : (
           <section className="flex flex-col gap-8 px-5 py-8 md:px-8 md:py-10 lg:px-10 2xl:px-12" data-export-root>
@@ -612,6 +728,165 @@ function App() {
   )
 }
 
+function DownloadPage({ onNavigate }: { onNavigate: (destination: HomePageDestination) => void }) {
+  const packRows = [
+    ["DESIGN.md starter", "Tokens, decisions, anti-patterns, and browser checks in one agent-readable file."],
+    ["React UI kit", "Buttons, dialogs, command surfaces, layout primitives, and example states."],
+    ["Implementation prompts", "Codex and Claude Code prompts that carry the design intent into real code."],
+  ]
+
+  return (
+    <section className="min-h-[calc(100svh-3.5rem)] bg-background px-5 py-16 md:px-8 lg:px-10">
+      <div className="mx-auto grid max-w-[1180px] gap-10 lg:grid-cols-[minmax(0,0.85fr)_minmax(0,1.15fr)] lg:items-start">
+        <div className="pt-4">
+          <p className="font-mono text-xs font-semibold uppercase tracking-[0.22em] text-askewly-violet">Download</p>
+          <h1 className="mt-5 text-5xl font-semibold leading-none tracking-normal text-foreground md:text-7xl">Design system files for real product UI.</h1>
+          <p className="mt-6 max-w-xl text-base leading-7 text-muted-foreground md:text-lg">
+            Start from the same assets this site uses: implementation rules, UI vocabulary, token guidance, and prompt-ready packs for coding agents.
+          </p>
+          <div className="mt-8 flex flex-col gap-3 sm:flex-row">
+            <Button className="h-11 rounded-lg bg-askewly-violet px-5 text-white hover:bg-[#5f22a8]" type="button" onClick={() => onNavigate({ page: "docs", filter: "nav:docs-getting-started-assets" })}>
+              Open asset docs
+            </Button>
+            <Button className="h-11 rounded-lg" variant="outline" type="button" onClick={() => onNavigate({ page: "plus", filter: "nav:plus-marketing" })}>
+              Browse patterns
+            </Button>
+          </div>
+        </div>
+
+        <div className="overflow-hidden rounded-md border bg-card shadow-sm">
+          <div className="aspect-[16/9] overflow-hidden border-b bg-slate-950">
+            <img
+              alt=""
+              className="size-full object-cover object-left-top"
+              src="/assets/cta-sections/dark-app-screenshot-v2.png"
+            />
+          </div>
+          <div className="border-b bg-muted/30 p-5">
+            <p className="text-sm font-semibold text-foreground">Askewly Design starter pack</p>
+            <p className="mt-1 text-sm leading-6 text-muted-foreground">Download surface placeholder until account-backed file delivery is wired.</p>
+          </div>
+          <div className="divide-y">
+            {packRows.map(([title, description]) => (
+              <div key={title} className="grid gap-3 p-5 sm:grid-cols-[2rem_minmax(0,1fr)]">
+                <CheckCircle2 aria-hidden="true" className="mt-0.5 size-5 text-askewly-violet" />
+                <div className="min-w-0">
+                  <p className="font-semibold text-foreground">{title}</p>
+                  <p className="mt-1 text-sm leading-6 text-muted-foreground">{description}</p>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </div>
+    </section>
+  )
+}
+
+function ProPlanPage({ onSignIn }: { onSignIn: () => void }) {
+  const planItems = [
+    "Unlimited implementation packs",
+    "Agent-ready prompts and source notes",
+    "Commercial reuse for downloaded UI assets",
+    "Reference capture evidence for higher quality builds",
+  ]
+
+  return (
+    <section className="min-h-[calc(100svh-3.5rem)] bg-background px-5 py-16 md:px-8 lg:px-10">
+      <div className="mx-auto grid max-w-[1180px] gap-8 lg:grid-cols-[minmax(0,1fr)_24rem] lg:items-start">
+        <div>
+          <p className="font-mono text-xs font-semibold uppercase tracking-[0.22em] text-askewly-violet">Pro Plan</p>
+          <h1 className="mt-5 max-w-3xl text-5xl font-semibold leading-none tracking-normal text-foreground md:text-7xl">Unlock the reusable side of Askewly Design.</h1>
+          <p className="mt-6 max-w-2xl text-base leading-7 text-muted-foreground md:text-lg">
+            Pro is for teams and agents that need the system as working source material, not only a public visual reference.
+          </p>
+          <div className="mt-10 overflow-hidden rounded-md border bg-slate-950 shadow-sm">
+            <img
+              alt=""
+              className="aspect-[16/9] size-full object-cover object-left-top"
+              src="/assets/landing-pages/pricing-dashboard-v2.png"
+            />
+          </div>
+        </div>
+
+        <aside className="rounded-md border bg-card p-6 shadow-sm">
+          <div className="flex items-end justify-between gap-4">
+            <div>
+              <p className="text-sm font-semibold text-muted-foreground">Starter Pro</p>
+              <p className="mt-2 text-4xl font-semibold tracking-normal text-foreground">$19</p>
+            </div>
+            <p className="pb-1 text-sm text-muted-foreground">/ month</p>
+          </div>
+          <div className="mt-6 space-y-3">
+            {planItems.map((item) => (
+              <p key={item} className="flex gap-3 text-sm leading-6 text-muted-foreground">
+                <CheckCircle2 aria-hidden="true" className="mt-0.5 size-4 shrink-0 text-askewly-violet" />
+                <span>{item}</span>
+              </p>
+            ))}
+          </div>
+          <Button className="mt-7 h-11 w-full rounded-lg bg-askewly-violet text-white hover:bg-[#5f22a8]" type="button" onClick={onSignIn}>
+            Continue to sign in
+          </Button>
+        </aside>
+      </div>
+    </section>
+  )
+}
+
+function GoogleMark() {
+  return (
+    <svg width="22" height="22" viewBox="0 0 18 18" aria-hidden="true">
+      <path fill="#4285F4" d="M17.64 9.2c0-.64-.06-1.25-.16-1.84H9v3.48h4.84a4.14 4.14 0 0 1-1.8 2.72v2.26h2.92c1.7-1.57 2.68-3.88 2.68-6.62Z" />
+      <path fill="#34A853" d="M9 18c2.43 0 4.47-.8 5.96-2.18l-2.92-2.26c-.8.54-1.84.86-3.04.86-2.34 0-4.32-1.58-5.03-3.7H.96v2.33A9 9 0 0 0 9 18Z" />
+      <path fill="#FBBC05" d="M3.97 10.72a5.4 5.4 0 0 1 0-3.44V4.95H.96a9 9 0 0 0 0 8.1l3.01-2.33Z" />
+      <path fill="#EA4335" d="M9 3.58c1.32 0 2.5.46 3.44 1.35l2.58-2.58C13.46.9 11.42 0 9 0A9 9 0 0 0 .96 4.95l3.01 2.33C4.68 5.16 6.66 3.58 9 3.58Z" />
+    </svg>
+  )
+}
+
+function KakaoMark() {
+  return (
+    <svg width="22" height="22" viewBox="0 0 18 18" aria-hidden="true">
+      <path
+        fill="#191600"
+        d="M9 1.5C4.86 1.5 1.5 4.1 1.5 7.31c0 2.07 1.4 3.88 3.5 4.92-.15.54-.56 2.02-.64 2.33-.1.39.14.38.3.28.13-.08 2.02-1.37 2.84-1.93.49.07 1 .11 1.5.11 4.14 0 7.5-2.6 7.5-5.81S13.14 1.5 9 1.5Z"
+      />
+    </svg>
+  )
+}
+
+function SignInPopoverContent() {
+  function startOAuth(provider: "google" | "kakao") {
+    const authOrigin = getOAuthStartOrigin()
+    const returnUrl = `${window.location.origin}${window.location.pathname}${window.location.search}${window.location.hash}`
+    const params = new URLSearchParams({ return: returnUrl })
+
+    window.location.href = `${authOrigin}/api/auth/oauth/${provider}/start?${params.toString()}`
+  }
+
+  return (
+    <PopoverContent align="end" sideOffset={12} className="askewly-login-popover w-[min(21rem,calc(100vw-2rem))] gap-0 rounded-lg border-border/80 p-0 shadow-2xl">
+      <div className="p-5">
+        <PopoverHeader className="gap-2 text-left">
+          <PopoverTitle className="text-xl font-semibold tracking-normal text-foreground">로그인</PopoverTitle>
+          <PopoverDescription className="text-sm leading-6">어스큐리 계정으로 로그인하세요.</PopoverDescription>
+        </PopoverHeader>
+        <div className="mt-5 space-y-3">
+          <Button className="h-11 w-full rounded-md border-border bg-background text-sm font-semibold text-foreground shadow-xs hover:bg-muted" variant="outline" type="button" onClick={() => startOAuth("google")}>
+            <GoogleMark />
+            Google로 계속하기
+          </Button>
+          <Button className="h-11 w-full rounded-md border-[#fee500] bg-[#fee500] text-sm font-semibold text-[#191600] shadow-xs hover:border-[#f5dc00] hover:bg-[#f5dc00]" type="button" onClick={() => startOAuth("kakao")}>
+            <KakaoMark />
+            카카오로 계속하기
+          </Button>
+        </div>
+      </div>
+    </PopoverContent>
+  )
+}
+
 function applyUseCaseResults(results: SearchResult[], useCase: typeof useCases[number] | null) {
   if (!useCase) {
     return results
@@ -692,9 +967,60 @@ function getInitialSearchState(): SearchState {
   const filter = parseFilterParam(rawFilter)
   const page = parsePageParam(params.get("page"), filter)
   const termId = page === "term" ? params.get("id") : null
-  const returnPage: Exclude<PageMode, "term"> = page === "home" ? "home" : filter.startsWith("nav:docs-") ? "docs" : "plus"
+  const returnPage: Exclude<PageMode, "term"> = page !== "term" ? page : filter.startsWith("nav:docs-") ? "docs" : "plus"
 
   return { filter: rawFilter ? filter : getDefaultFilterForPage(page), page, query, termId, returnPage }
+}
+
+function getAuthApiOrigin() {
+  return import.meta.env.VITE_ASKEWLY_AUTH_ORIGIN ?? ""
+}
+
+function markAuthReturnOk() {
+  try {
+    window.sessionStorage.setItem(AUTH_RETURN_OK_STORAGE_KEY, String(Date.now()))
+  } catch {
+    // Session storage can be disabled; auth state still updates in-memory.
+  }
+}
+
+function clearAuthReturnOk() {
+  try {
+    window.sessionStorage.removeItem(AUTH_RETURN_OK_STORAGE_KEY)
+  } catch {
+    // noop
+  }
+}
+
+function hasRecentAuthReturnOk() {
+  try {
+    const value = window.sessionStorage.getItem(AUTH_RETURN_OK_STORAGE_KEY)
+    if (!value) {
+      return false
+    }
+
+    const timestamp = Number(value)
+    if (!Number.isFinite(timestamp)) {
+      return false
+    }
+
+    return Date.now() - timestamp < 10 * 60 * 1000
+  } catch {
+    return false
+  }
+}
+
+function getOAuthStartOrigin() {
+  const configuredOrigin = import.meta.env.VITE_ASKEWLY_AUTH_ORIGIN
+  if (configuredOrigin) {
+    return configuredOrigin
+  }
+
+  if (window.location.hostname === "localhost" || window.location.hostname === "127.0.0.1") {
+    return "https://askewly.com"
+  }
+
+  return window.location.origin
 }
 
 function getDefaultFilterForPage(page: PageMode): TermFilter {
@@ -712,7 +1038,7 @@ function getDefaultFilterForPage(page: PageMode): TermFilter {
 }
 
 function parsePageParam(value: string | null, filter: TermFilter): PageMode {
-  if (value === "home" || value === "docs" || value === "plus" || value === "term") {
+  if (value === "home" || value === "docs" || value === "plus" || value === "term" || value === "download" || value === "pro") {
     return value
   }
   if (isNavigationFilter(filter)) {
