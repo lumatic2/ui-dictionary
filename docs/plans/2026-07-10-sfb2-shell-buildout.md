@@ -1,7 +1,7 @@
 # Plan - SFB2 Shell Buildout (dev-only)
 
 Date: 2026-07-10
-Milestone: SFB2 (`ROADMAP.md`)
+Milestone: SFB2 (`ROADMAP.md`) — completed 2026-07-10, evidence: changesets 30-32 + dev/prod 통합 스모크
 
 ## 위계
 
@@ -20,9 +20,9 @@ Milestone: SFB2 (`ROADMAP.md`)
 
 ## Step 트리
 
-- [ ] Step 1 — Docs 껍데기: Foundations 섹션 7종(color/typography/spacing/motion/accessibility/dark-mode/tokens) 아티클 skeleton + Agent Recipes 표면 skeleton(llms.txt 자산 링크 슬롯 + 검증 체크리스트 슬롯). (verify: dev 렌더 + prod 빌드 비노출)
-- [ ] Step 2 — Colors 축 껍데기: PageMode `colors` 신설(게이트 뒤 nav) + Generator 화면 승격(홈 팔레트 생성기 엔진 `palette-generator.ts` 재사용) + Palettes 큐레이션 라이브러리 skeleton. (verify: dev 렌더 + generator 동작 + prod 빌드 비노출)
-- [ ] Step 3 — Pro 하위 + Download 껍데기: Pro에 Asset Packs/Templates/License 하위 섹션 skeleton + Download를 앱 배포 페이지 skeleton으로 재구성(플랫폼별 설치 슬롯). (verify: dev 렌더 + prod 빌드 비노출)
+- [x] Step 1 — Docs 껍데기: Foundations 섹션 7종(color/typography/spacing/motion/accessibility/dark-mode/tokens) 아티클 skeleton + Agent Recipes 표면 skeleton(llms.txt 자산 링크 슬롯 + 검증 체크리스트 슬롯). (verify: dev 렌더 + prod 빌드 비노출)
+- [x] Step 2 — Colors 축 껍데기: PageMode `colors` 신설(게이트 뒤 nav) + Generator 화면 승격(홈 팔레트 생성기 엔진 `palette-generator.ts` 재사용) + Palettes 큐레이션 라이브러리 skeleton. (verify: dev 렌더 + generator 동작 + prod 빌드 비노출)
+- [x] Step 3 — Pro 하위 + Download 껍데기: Pro에 Asset Packs/Templates/License 하위 섹션 skeleton + Download를 앱 배포 페이지 skeleton으로 재구성(플랫폼별 설치 슬롯). (verify: dev 렌더 + prod 빌드 비노출)
 
 통합 검증(milestone DoD): dev 서버에서 전 섹션 라우트 렌더 스모크 + 프로덕션 빌드에서 신설 껍데기 전부 비노출 회귀 확인.
 
