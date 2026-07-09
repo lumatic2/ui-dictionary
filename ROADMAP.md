@@ -1,18 +1,28 @@
 # ROADMAP
 
-> Last updated: 2026-07-09
-> Status: PSS2/PGD1 완료 — 다음 horizon 결정 필요
+> Last updated: 2026-07-10
+> Status: Structure-First Buildout 시작 — SFB1 active
 > North star: Build Askewly Design as both a public reference website and an agent-usable implementation system.
 > line budget: <=150
 
 ## Current Horizon
 
-<!-- harness:goal id="public-site-shell" status="completed" -->
-Goal: 랜딩을 완성된 공개 제품 페이지로 유지하면서, 대표 interactive demo가 실제 품질 기준을 갖추도록 마무리한다. Details: `docs/horizons/2026-07-public-site-shell.md` (close 기록) + 직전 close: `docs/horizons/2026-07-figma-workflow.md` → `BACKLOG.md`.
+<!-- harness:goal id="structure-first-buildout" status="active" -->
+Goal: 목표 IA를 문서로 확정하고, 프로덕션은 미완 껍데기 비노출 클린 버전으로 유지하면서, dev에서 껍데기를 증축한 뒤 완성 판정 통과 콘텐츠부터 승격한다. Details: `docs/horizons/2026-07-structure-first-buildout.md`.
 
 ## Active Milestones
 
-- No active milestone. See `docs/roadmap-gap-2026-07-09.md` before starting the next implementation horizon.
+<!-- harness:milestone id="SFB1" status="active" priority="P1" -->
+### SFB1 - Structure Contract And Clean Production
+- DoD: blueprint v2(목표 IA·완성 판정 기준·노출 규칙) 확정 + 프로덕션에서 빈 컬렉션·명목상 Templates·Download placeholder 비노출(데이터 보존) + 전 라우트 크롤 스모크 0건 + 배포 확인.
+- Evidence: docs/design-system/site-blueprint.md + changesets/<date>-clean-production/README.md
+- Gap: nav가 콘텐츠보다 넓게 약속함 — Plus 컬렉션 다수 termIds 빈 배열, Templates 16종 명목상, Docs 아티클 14/46, Download placeholder 자인.
+- Status: [ ]
+
+## Next Candidates
+
+- SFB2 - Shell Buildout (dev-only): blueprint 전 섹션 skeleton을 노출 게이트 뒤에 구현, dev 렌더 스모크. (DoD/Evidence: horizon doc 참조)
+- SFB3 - Content Fill Batch 1: 우선 배치 1개를 완성 판정 통과시켜 프로덕션 승격. (DoD/Evidence: horizon doc 참조)
 
 ## Recently Completed
 
