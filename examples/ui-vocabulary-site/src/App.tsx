@@ -739,107 +739,238 @@ function App() {
   )
 }
 
-function DownloadPage({ onNavigate }: { onNavigate: (destination: HomePageDestination) => void }) {
-  const packRows = [
-    ["DESIGN.md starter", "Tokens, decisions, anti-patterns, and browser checks in one agent-readable file."],
-    ["React UI kit", "Buttons, dialogs, command surfaces, layout primitives, and example states."],
-    ["Implementation prompts", "Codex and Claude Code prompts that carry the design intent into real code."],
-  ]
+const downloadPlatforms = [
+  { id: "macos", label: "macOS", description: "Apple Silicon and Intel builds." },
+  { id: "windows", label: "Windows", description: "Windows 10 and 11, 64-bit." },
+  { id: "other", label: "Other platforms", description: "Linux and browser-based access." },
+] as const
 
+function DownloadPage({ onNavigate }: { onNavigate: (destination: HomePageDestination) => void }) {
   return (
     <section className="min-h-[calc(100svh-3.5rem)] bg-background px-5 py-16 md:px-8 lg:px-10">
-      <div className="mx-auto grid max-w-[1180px] gap-10 lg:grid-cols-[minmax(0,0.85fr)_minmax(0,1.15fr)] lg:items-start">
-        <div className="pt-4">
+      <div className="mx-auto flex max-w-[1180px] flex-col gap-10">
+        <div>
           <p className="font-mono text-xs font-semibold uppercase tracking-[0.22em] text-askewly-violet">Download</p>
-          <h1 className="mt-5 text-5xl font-semibold leading-none tracking-normal text-foreground md:text-7xl">Design system files for real product UI.</h1>
-          <p className="mt-6 max-w-xl text-base leading-7 text-muted-foreground md:text-lg">
-            Start from the same assets this site uses: implementation rules, UI vocabulary, token guidance, and prompt-ready packs for coding agents.
+          <h1 className="mt-5 text-5xl font-semibold leading-none tracking-normal text-foreground md:text-7xl">Askewly Design App</h1>
+          <p className="mt-6 max-w-2xl text-base leading-7 text-muted-foreground md:text-lg">
+            A desktop app for browsing, generating, and exporting this design system without leaving your canvas.
+            Platform installers land here once the app is ready to ship.
           </p>
-          <div className="mt-8 flex flex-col gap-3 sm:flex-row">
-            <Button className="h-11 rounded-lg bg-askewly-violet px-5 text-white hover:bg-[#5f22a8]" type="button" onClick={() => onNavigate({ page: "docs", filter: "nav:docs-getting-started-assets" })}>
-              Open asset docs
-            </Button>
-            <Button className="h-11 rounded-lg" variant="outline" type="button" onClick={() => onNavigate({ page: "plus", filter: "nav:plus-marketing" })}>
-              Browse patterns
-            </Button>
-          </div>
         </div>
 
-        <div className="overflow-hidden rounded-md border bg-card shadow-sm">
-          <div className="aspect-[16/9] overflow-hidden border-b bg-slate-950">
-            <img
-              alt=""
-              className="size-full object-cover object-left-top"
-              src="/assets/cta-sections/dark-app-screenshot-v2.png"
-            />
-          </div>
-          <div className="border-b bg-muted/30 p-5">
-            <p className="text-sm font-semibold text-foreground">Askewly Design starter pack</p>
-            <p className="mt-1 text-sm leading-6 text-muted-foreground">Download surface placeholder until account-backed file delivery is wired.</p>
-          </div>
-          <div className="divide-y">
-            {packRows.map(([title, description]) => (
-              <div key={title} className="grid gap-3 p-5 sm:grid-cols-[2rem_minmax(0,1fr)]">
-                <CheckCircle2 aria-hidden="true" className="mt-0.5 size-5 text-askewly-violet" />
-                <div className="min-w-0">
-                  <p className="font-semibold text-foreground">{title}</p>
-                  <p className="mt-1 text-sm leading-6 text-muted-foreground">{description}</p>
-                </div>
+        <div className="grid gap-4 sm:grid-cols-3">
+          {downloadPlatforms.map((platform) => (
+            <div key={platform.id} className="flex flex-col gap-4 rounded-md border bg-card p-5 shadow-sm">
+              <div className="flex items-center justify-between">
+                <p className="text-sm font-semibold text-foreground">{platform.label}</p>
+                <span aria-hidden="true" className="grid size-8 place-items-center rounded-md bg-muted text-muted-foreground/50">
+                  <CloudUpload className="size-4" />
+                </span>
               </div>
-            ))}
-          </div>
+              <p className="text-sm leading-6 text-muted-foreground">{platform.description}</p>
+              <Button className="h-9 rounded-lg" disabled type="button" variant="outline">
+                Install — pending
+              </Button>
+            </div>
+          ))}
+        </div>
+
+        <div className="rounded-md border border-dashed bg-muted/30 p-8 text-center">
+          <p className="text-sm font-medium text-foreground">Content pending — fill criteria: source-quality</p>
+          <p className="mt-2 text-sm leading-6 text-muted-foreground">
+            Installers publish here once a distributable Askewly Design app exists. Looking for exportable assets
+            instead? <button className="font-medium text-foreground underline underline-offset-4" type="button" onClick={() => onNavigate({ page: "pro" })}>See Pro Asset Packs</button>.
+          </p>
         </div>
       </div>
     </section>
   )
 }
 
+type ProView = "overview" | "asset-packs" | "templates" | "license"
+
+const proTabs: Array<{ id: ProView; label: string }> = isShellVisible(true)
+  ? [
+      { id: "overview", label: "Overview" },
+      { id: "asset-packs", label: "Asset Packs" },
+      { id: "templates", label: "Templates" },
+      { id: "license", label: "License / Provenance" },
+    ]
+  : [{ id: "overview", label: "Overview" }]
+
+const proAssetPackSlots = [
+  { id: "ui-blocks", label: "UI Blocks Pack" },
+  { id: "templates", label: "Templates Pack" },
+  { id: "ui-kit", label: "React UI Kit Pack" },
+]
+
+const proPlanItems = [
+  "Unlimited implementation packs",
+  "Agent-ready prompts and source notes",
+  "Commercial reuse for downloaded UI assets",
+  "Reference capture evidence for higher quality builds",
+]
+
+function ProOverviewContent({ onSignIn }: { onSignIn: () => void }) {
+  return (
+    <div className="mx-auto grid max-w-[1180px] gap-8 lg:grid-cols-[minmax(0,1fr)_24rem] lg:items-start">
+      <div>
+        <p className="font-mono text-xs font-semibold uppercase tracking-[0.22em] text-askewly-violet">Pro Plan</p>
+        <h1 className="mt-5 max-w-3xl text-5xl font-semibold leading-none tracking-normal text-foreground md:text-7xl">Unlock the reusable side of Askewly Design.</h1>
+        <p className="mt-6 max-w-2xl text-base leading-7 text-muted-foreground md:text-lg">
+          Pro is for teams and agents that need the system as working source material, not only a public visual reference.
+        </p>
+        <div className="mt-10 overflow-hidden rounded-md border bg-slate-950 shadow-sm">
+          <img
+            alt=""
+            className="aspect-[16/9] size-full object-cover object-left-top"
+            src="/assets/landing-pages/pricing-dashboard-v2.png"
+          />
+        </div>
+      </div>
+
+      <aside className="rounded-md border bg-card p-6 shadow-sm">
+        <div className="flex items-end justify-between gap-4">
+          <div>
+            <p className="text-sm font-semibold text-muted-foreground">Starter Pro</p>
+            <p className="mt-2 text-4xl font-semibold tracking-normal text-foreground">$19</p>
+          </div>
+          <p className="pb-1 text-sm text-muted-foreground">/ month</p>
+        </div>
+        <div className="mt-6 space-y-3">
+          {proPlanItems.map((item) => (
+            <p key={item} className="flex gap-3 text-sm leading-6 text-muted-foreground">
+              <CheckCircle2 aria-hidden="true" className="mt-0.5 size-4 shrink-0 text-askewly-violet" />
+              <span>{item}</span>
+            </p>
+          ))}
+        </div>
+        <Button className="mt-7 h-11 w-full rounded-lg bg-askewly-violet text-white hover:bg-[#5f22a8]" type="button" onClick={onSignIn}>
+          Continue to sign in
+        </Button>
+      </aside>
+    </div>
+  )
+}
+
+function ProAssetPacksPanel() {
+  return (
+    <div className="flex flex-col gap-6">
+      <div className="grid gap-4 sm:grid-cols-3">
+        {proAssetPackSlots.map((pack) => (
+          <div key={pack.id} className="flex flex-col gap-3 rounded-md border bg-card p-5 shadow-sm">
+            <div className="aspect-[16/10] animate-pulse rounded-md bg-muted" />
+            <p className="text-sm font-semibold text-foreground">{pack.label}</p>
+            <p className="text-sm leading-6 text-muted-foreground">Live preview — pending</p>
+            <p className="text-sm leading-6 text-muted-foreground">Included files — pending</p>
+            <p className="text-sm leading-6 text-muted-foreground">License — pending</p>
+          </div>
+        ))}
+      </div>
+      <div className="rounded-md border border-dashed bg-muted/30 p-8 text-center">
+        <p className="text-sm font-medium text-foreground">Content pending — fill criteria: source-quality</p>
+        <p className="mt-2 text-sm leading-6 text-muted-foreground">
+          Live previews, included-file lists, and license terms land here once real asset packs are ready.
+        </p>
+      </div>
+    </div>
+  )
+}
+
+function ProTemplatesPanel() {
+  const templateSlots = templateSections.flatMap((section) => section.items)
+
+  return (
+    <div className="flex flex-col gap-6">
+      <p className="text-sm leading-6 text-muted-foreground">
+        {templateSlots.length} template definitions reserved for this surface — no real files yet.
+      </p>
+      <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
+        {templateSlots.map((item) => (
+          <div key={item.filter} className="flex flex-col gap-3 rounded-md border bg-card p-4 shadow-sm">
+            <div className="aspect-[4/3] animate-pulse rounded-md bg-muted" />
+            <p className="text-sm font-medium text-muted-foreground">{item.label}</p>
+          </div>
+        ))}
+      </div>
+      <div className="rounded-md border border-dashed bg-muted/30 p-8 text-center">
+        <p className="text-sm font-medium text-foreground">Content pending — fill criteria: source-quality</p>
+        <p className="mt-2 text-sm leading-6 text-muted-foreground">
+          Real template screens and code exports replace these slots once each definition clears the source-quality bar.
+        </p>
+      </div>
+    </div>
+  )
+}
+
+function ProLicensePanel() {
+  const documentSlots = ["License terms", "Provenance notes", "Attribution requirements"]
+
+  return (
+    <div className="flex flex-col gap-6">
+      <div className="divide-y rounded-md border bg-card shadow-sm">
+        {documentSlots.map((title) => (
+          <div key={title} className="flex items-center justify-between gap-3 p-5">
+            <p className="text-sm font-semibold text-foreground">{title}</p>
+            <span className="text-sm text-muted-foreground">Document pending</span>
+          </div>
+        ))}
+      </div>
+      <div className="rounded-md border border-dashed bg-muted/30 p-8 text-center">
+        <p className="text-sm font-medium text-foreground">Content pending — fill criteria: source-quality</p>
+        <p className="mt-2 text-sm leading-6 text-muted-foreground">
+          License and provenance documents publish here once Asset Packs and Templates have sellable content.
+        </p>
+      </div>
+    </div>
+  )
+}
+
 function ProPlanPage({ onSignIn }: { onSignIn: () => void }) {
-  const planItems = [
-    "Unlimited implementation packs",
-    "Agent-ready prompts and source notes",
-    "Commercial reuse for downloaded UI assets",
-    "Reference capture evidence for higher quality builds",
-  ]
+  const [view, setView] = useState<ProView>("overview")
+
+  // Production has exactly one tab (Overview), so the tab bar never renders and
+  // this returns byte-identical markup to the pre-SFB2 page.
+  if (proTabs.length === 1) {
+    return (
+      <section className="min-h-[calc(100svh-3.5rem)] bg-background px-5 py-16 md:px-8 lg:px-10">
+        <ProOverviewContent onSignIn={onSignIn} />
+      </section>
+    )
+  }
 
   return (
     <section className="min-h-[calc(100svh-3.5rem)] bg-background px-5 py-16 md:px-8 lg:px-10">
-      <div className="mx-auto grid max-w-[1180px] gap-8 lg:grid-cols-[minmax(0,1fr)_24rem] lg:items-start">
-        <div>
-          <p className="font-mono text-xs font-semibold uppercase tracking-[0.22em] text-askewly-violet">Pro Plan</p>
-          <h1 className="mt-5 max-w-3xl text-5xl font-semibold leading-none tracking-normal text-foreground md:text-7xl">Unlock the reusable side of Askewly Design.</h1>
-          <p className="mt-6 max-w-2xl text-base leading-7 text-muted-foreground md:text-lg">
-            Pro is for teams and agents that need the system as working source material, not only a public visual reference.
-          </p>
-          <div className="mt-10 overflow-hidden rounded-md border bg-slate-950 shadow-sm">
-            <img
-              alt=""
-              className="aspect-[16/9] size-full object-cover object-left-top"
-              src="/assets/landing-pages/pricing-dashboard-v2.png"
-            />
-          </div>
+      <div className="mx-auto flex max-w-[1180px] flex-col gap-8">
+        <div className="flex gap-2 border-b" role="tablist" aria-label="Pro views">
+          {proTabs.map((tab) => (
+            <button
+              key={tab.id}
+              aria-selected={view === tab.id}
+              className={cn(
+                "-mb-px border-b-2 px-4 py-3 text-sm font-semibold transition",
+                view === tab.id
+                  ? "border-askewly-violet text-foreground"
+                  : "border-transparent text-muted-foreground hover:text-foreground"
+              )}
+              role="tab"
+              type="button"
+              onClick={() => setView(tab.id)}
+            >
+              {tab.label}
+            </button>
+          ))}
         </div>
 
-        <aside className="rounded-md border bg-card p-6 shadow-sm">
-          <div className="flex items-end justify-between gap-4">
-            <div>
-              <p className="text-sm font-semibold text-muted-foreground">Starter Pro</p>
-              <p className="mt-2 text-4xl font-semibold tracking-normal text-foreground">$19</p>
-            </div>
-            <p className="pb-1 text-sm text-muted-foreground">/ month</p>
-          </div>
-          <div className="mt-6 space-y-3">
-            {planItems.map((item) => (
-              <p key={item} className="flex gap-3 text-sm leading-6 text-muted-foreground">
-                <CheckCircle2 aria-hidden="true" className="mt-0.5 size-4 shrink-0 text-askewly-violet" />
-                <span>{item}</span>
-              </p>
-            ))}
-          </div>
-          <Button className="mt-7 h-11 w-full rounded-lg bg-askewly-violet text-white hover:bg-[#5f22a8]" type="button" onClick={onSignIn}>
-            Continue to sign in
-          </Button>
-        </aside>
+        {view === "overview" ? (
+          <ProOverviewContent onSignIn={onSignIn} />
+        ) : view === "asset-packs" ? (
+          <ProAssetPacksPanel />
+        ) : view === "templates" ? (
+          <ProTemplatesPanel />
+        ) : (
+          <ProLicensePanel />
+        )}
       </div>
     </section>
   )
@@ -1052,7 +1183,10 @@ function parsePageParam(value: string | null, filter: TermFilter): PageMode {
   if (value === "colors") {
     return isShellVisible(true) ? "colors" : "home"
   }
-  if (value === "home" || value === "docs" || value === "plus" || value === "term" || value === "download" || value === "pro") {
+  if (value === "download") {
+    return isShellVisible(true) ? "download" : "home"
+  }
+  if (value === "home" || value === "docs" || value === "plus" || value === "term" || value === "pro") {
     return value
   }
   if (isNavigationFilter(filter)) {
