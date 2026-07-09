@@ -44,6 +44,16 @@ export function isNavigationFilterVisible(filter: string): boolean {
   return isNavigationCollectionVisible(filter.slice("nav:".length) as NavigationCollectionId)
 }
 
+/**
+ * Whether a dev-only "shell" item (skeleton page/nav entry — layout and
+ * headings, no source-quality content yet) should be exposed. Unlike the
+ * navigation-collection gate above, shell status is an explicit flag on the
+ * item itself (`shell: true`), not derived from `termIds`.
+ */
+export function isShellVisible(shell?: boolean): boolean {
+  return SHOW_UNFILLED || !shell
+}
+
 /** Same check, taking a breadcrumb-style path (e.g. term.navigation.also_appears_in entries). */
 export function isNavigationPathVisible(path: string[]): boolean {
   if (SHOW_UNFILLED) {

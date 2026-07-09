@@ -29,3 +29,4 @@
 | 27 | 20260709-palette-generator-data-engine | 2026-07-09 | Color Palette Generator seed library, deterministic generation rules, lock preservation, and quality gates | 5/5 | complete |
 | 28 | 20260710-site-blueprint-v2 | 2026-07-10 | Site blueprint v2: target IA (Docs/Patterns/Colors/Pro), production exposure policy, section completion criteria | 4/4 | complete |
 | 29 | 20260710-production-exposure-gate | 2026-07-10 | Production exposure gate hides empty collections, Templates, Download entries, and placeholder showcase cards | 5/5 | complete |
+| 30 | 20260710-docs-shell-foundations-recipes | 2026-07-10 | Dev-only docs shells: 7 Foundations skeleton articles and Agent Recipes overview behind shell gate | 4/4 | complete |

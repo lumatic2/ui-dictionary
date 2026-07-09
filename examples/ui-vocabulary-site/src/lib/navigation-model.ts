@@ -24,6 +24,14 @@ export type NavigationCollectionId =
   | "docs-elements-popover"
   | "docs-elements-select"
   | "docs-elements-tabs"
+  | "docs-foundations-color"
+  | "docs-foundations-typography"
+  | "docs-foundations-spacing-layout"
+  | "docs-foundations-motion"
+  | "docs-foundations-accessibility"
+  | "docs-foundations-dark-mode"
+  | "docs-foundations-tokens"
+  | "docs-agent-recipes"
   | "plus-all"
   | "plus-marketing"
   | "plus-marketing-page-sections"
@@ -474,6 +482,59 @@ export const navigationCollections: NavigationCollection[] = [
     path: ["Docs", "Elements", "Tabs"],
     groupIds: ["selection-navigation", "structure-navigation"],
     termIds: ["tabs", "segmented-control", "tab-panel"],
+  },
+  {
+    id: "docs-foundations-color",
+    label: "Color",
+    path: ["Docs", "Foundations", "Color"],
+    categories: ["style"],
+    groupIds: ["style-surface-material", "style-border-color"],
+  },
+  {
+    id: "docs-foundations-typography",
+    label: "Typography",
+    path: ["Docs", "Foundations", "Typography"],
+    categories: ["style"],
+    groupIds: ["style-typography"],
+  },
+  {
+    id: "docs-foundations-spacing-layout",
+    label: "Spacing & layout",
+    path: ["Docs", "Foundations", "Spacing & layout"],
+    categories: ["layout-rendering"],
+    groupIds: ["layout-spacing-sizing", "layout-responsive-viewport"],
+  },
+  {
+    id: "docs-foundations-motion",
+    label: "Motion",
+    path: ["Docs", "Foundations", "Motion"],
+    kinds: ["motion-pattern"],
+    groupIds: ["feedback-interaction-states"],
+  },
+  {
+    id: "docs-foundations-accessibility",
+    label: "Accessibility",
+    path: ["Docs", "Foundations", "Accessibility"],
+    categories: ["accessibility"],
+    groupIds: ["accessibility-aria-screen-reader", "accessibility-focus-motion"],
+  },
+  {
+    id: "docs-foundations-dark-mode",
+    label: "Dark mode",
+    path: ["Docs", "Foundations", "Dark mode"],
+    groupIds: ["style-tokens"],
+    termIds: ["dark-mode"],
+  },
+  {
+    id: "docs-foundations-tokens",
+    label: "Tokens",
+    path: ["Docs", "Foundations", "Tokens"],
+    groupIds: ["style-tokens"],
+  },
+  {
+    id: "docs-agent-recipes",
+    label: "Agent Recipes",
+    path: ["Docs", "Agent Recipes"],
   },
   {
     id: "plus-all",

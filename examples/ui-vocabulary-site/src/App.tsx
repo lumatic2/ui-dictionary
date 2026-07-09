@@ -51,7 +51,7 @@ import { TopbarSearch } from "@/components/topbar-search"
 import { categories, kinds, terms, type TermCategory, type VocabularyTerm } from "@/data/terms.generated"
 import { categoryGroups, categoryGroupsByCategory, categoryLabels, isTermCategory, isTermKindCategoryFilter, isTermKindFilter, isTermKindGroupFilter, matchesFilter, searchTerms, type SearchResult, type TermFilter, type TermGroupId } from "@/lib/search"
 import { isNavigationFilter, navigationCollections, navFilter, normalizeNavigationFilter } from "@/lib/navigation-model"
-import { isNavigationFilterVisible } from "@/lib/exposure"
+import { isNavigationFilterVisible, isShellVisible } from "@/lib/exposure"
 import { docsArticlePages, docsNavGroups, type DocsArticlePageData } from "@/lib/documentation-pages"
 import { getStarterQueries } from "@/lib/search-suggestions"
 import { useCases } from "@/lib/term-ux"
@@ -461,9 +461,13 @@ function App() {
     window.scrollTo({ top: 0, behavior: "smooth" })
   }
 
+  const visibleDocsNavGroups = docsNavGroups
+    .map((group) => ({ ...group, items: group.items.filter((item) => isShellVisible(item.shell)) }))
+    .filter((group) => group.items.length > 0)
+
   const docsNav = (
     <div className="flex flex-col gap-7">
-      {docsNavGroups.map((group) => (
+      {visibleDocsNavGroups.map((group) => (
         <div key={group.label} className="flex flex-col gap-2">
           <p className="px-3 text-[0.68rem] font-semibold uppercase tracking-[0.22em] text-slate-500">{group.label}</p>
           <div className="flex flex-col gap-1 border-l">

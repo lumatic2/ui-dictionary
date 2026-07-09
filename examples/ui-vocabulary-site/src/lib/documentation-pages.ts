@@ -3,7 +3,7 @@ import { navFilter } from "@/lib/navigation-model"
 
 export type DocsNavGroup = {
   label: string
-  items: Array<{ filter: TermFilter; label: string }>
+  items: Array<{ filter: TermFilter; label: string; shell?: boolean }>
 }
 
 export type DocsArticlePreviewVariant =
@@ -19,7 +19,7 @@ export type DocsArticlePreviewVariant =
 
 export type DocsArticlePageData = {
   filter: TermFilter
-  kind: "setup" | "element"
+  kind: "setup" | "element" | "foundation" | "agent-recipe"
   breadcrumb: string
   title: string
   lead: string
@@ -33,6 +33,13 @@ export type DocsArticlePageData = {
   }>
   examples?: Array<{ title: string; description: string; locked?: boolean }>
   onThisPage: string[]
+  /**
+   * Marks a dev-only skeleton page (layout + headings + empty-state slots, no
+   * source-quality content yet). Gated by `isShellVisible` in `@/lib/exposure` —
+   * hidden from nav/lists in production, always visible in dev.
+   * Contract: docs/design-system/site-blueprint.md > "Production Exposure Policy".
+   */
+  shell?: boolean
 }
 
 export const docsNavGroups: DocsNavGroup[] = [
@@ -61,7 +68,57 @@ export const docsNavGroups: DocsNavGroup[] = [
       { filter: navFilter("docs-elements-tabs"), label: "Tabs" },
     ],
   },
+  {
+    label: "Foundations",
+    items: [
+      { filter: navFilter("docs-foundations-color"), label: "Color", shell: true },
+      { filter: navFilter("docs-foundations-typography"), label: "Typography", shell: true },
+      { filter: navFilter("docs-foundations-spacing-layout"), label: "Spacing & layout", shell: true },
+      { filter: navFilter("docs-foundations-motion"), label: "Motion", shell: true },
+      { filter: navFilter("docs-foundations-accessibility"), label: "Accessibility", shell: true },
+      { filter: navFilter("docs-foundations-dark-mode"), label: "Dark mode", shell: true },
+      { filter: navFilter("docs-foundations-tokens"), label: "Tokens", shell: true },
+    ],
+  },
+  {
+    label: "Agent Recipes",
+    items: [
+      { filter: navFilter("docs-agent-recipes"), label: "Overview", shell: true },
+    ],
+  },
 ]
+
+const FOUNDATION_SECTION_TITLES = [
+  "Tokens",
+  "Usage examples",
+  "Good vs bad",
+  "Light / dark",
+  "Implementation notes",
+  "Agent constraints",
+] as const
+
+/**
+ * Skeleton builder for a Docs > Foundations article: title + the six
+ * Foundation section headings from the blueprint's page type contract, each
+ * with an explicit empty-state slot. No source-quality content — that is
+ * SFB3's job. Contract: docs/design-system/site-blueprint.md.
+ */
+function foundationSkeleton({ filter, title, lead }: { filter: TermFilter; title: string; lead: string }): DocsArticlePageData {
+  return {
+    filter,
+    kind: "foundation",
+    breadcrumb: "UI Blocks / Docs",
+    title,
+    lead,
+    sections: FOUNDATION_SECTION_TITLES.map((sectionTitle) => ({
+      title: sectionTitle,
+      body: ["Content pending — fill criteria: source-quality"],
+    })),
+    apiRows: [],
+    onThisPage: [...FOUNDATION_SECTION_TITLES],
+    shell: true,
+  }
+}
 
 export const docsArticlePages = new Map<TermFilter, DocsArticlePageData>([
   [navFilter("docs-getting-started-setup"), {
@@ -879,5 +936,67 @@ export const docsArticlePages = new Map<TermFilter, DocsArticlePageData>([
       { title: "Scrollable tabs", description: "좁은 화면에서 label이 긴 tab list를 가로 스크롤로 유지합니다." },
     ],
     onThisPage: ["Component API", "Examples", "When to use", "State contract", "Keyboard behavior", "Responsive behavior", "Tabs vs disclosure", "Related terms"],
+  }],
+  [navFilter("docs-foundations-color"), foundationSkeleton({
+    filter: navFilter("docs-foundations-color"),
+    title: "Color",
+    lead: "색 foundation 문서 — primitive/semantic/component 3-tier color token, 대비, 라이트/다크 대응 기준을 정리합니다.",
+  })],
+  [navFilter("docs-foundations-typography"), foundationSkeleton({
+    filter: navFilter("docs-foundations-typography"),
+    title: "Typography",
+    lead: "타이포그래피 foundation 문서 — type scale, weight, line-height, 반응형 규칙을 정리합니다.",
+  })],
+  [navFilter("docs-foundations-spacing-layout"), foundationSkeleton({
+    filter: navFilter("docs-foundations-spacing-layout"),
+    title: "Spacing & layout",
+    lead: "spacing/layout foundation 문서 — spacing scale, container, grid, breakpoint 기준을 정리합니다.",
+  })],
+  [navFilter("docs-foundations-motion"), foundationSkeleton({
+    filter: navFilter("docs-foundations-motion"),
+    title: "Motion",
+    lead: "motion foundation 문서 — duration, easing, reduced-motion fallback 기준을 정리합니다.",
+  })],
+  [navFilter("docs-foundations-accessibility"), foundationSkeleton({
+    filter: navFilter("docs-foundations-accessibility"),
+    title: "Accessibility",
+    lead: "접근성 foundation 문서 — focus-visible, ARIA, keyboard, screen reader 기준을 정리합니다.",
+  })],
+  [navFilter("docs-foundations-dark-mode"), foundationSkeleton({
+    filter: navFilter("docs-foundations-dark-mode"),
+    title: "Dark mode",
+    lead: "다크 모드 foundation 문서 — surface/border/focus ring 반전 규칙과 검증 기준을 정리합니다.",
+  })],
+  [navFilter("docs-foundations-tokens"), foundationSkeleton({
+    filter: navFilter("docs-foundations-tokens"),
+    title: "Tokens",
+    lead: "토큰 foundation 문서 — primitive → semantic → component 3-tier 토큰 구조와 참조 규칙을 정리합니다.",
+  })],
+  [navFilter("docs-agent-recipes"), {
+    filter: navFilter("docs-agent-recipes"),
+    kind: "agent-recipe",
+    breadcrumb: "UI Blocks / Docs",
+    title: "Agent Recipes",
+    lead: "Codex/Claude Code 같은 코딩 에이전트가 UI Dictionary를 근거로 화면을 만들 때 참고하는 레시피 표면입니다. llms.txt 실자산과 사람이 읽는 레시피/검증 체크리스트를 연결합니다.",
+    sections: [
+      {
+        title: "llms.txt asset",
+        body: [
+          "에이전트가 바로 읽을 수 있는 자산은 https://ui.askewly.com/llms.txt 입니다. 이 페이지는 그 자산을 사람이 읽는 형태로 안내하는 표면입니다.",
+          "Content pending — fill criteria: source-quality",
+        ],
+      },
+      {
+        title: "Recipe list",
+        body: ["Content pending — fill criteria: source-quality"],
+      },
+      {
+        title: "Verification checklist",
+        body: ["Content pending — fill criteria: source-quality"],
+      },
+    ],
+    apiRows: [],
+    onThisPage: ["llms.txt asset", "Recipe list", "Verification checklist"],
+    shell: true,
   }],
 ])
