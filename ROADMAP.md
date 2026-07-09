@@ -1,7 +1,7 @@
 # ROADMAP
 
 > Last updated: 2026-07-10
-> Status: Content Fill 시작 — CF1 active
+> Status: Content Fill — CF1 완료, CF2 active (horizon-run 연쇄)
 > North star: Build Askewly Design as both a public reference website and an agent-usable implementation system.
 > line budget: <=150
 
@@ -12,17 +12,25 @@ Goal: dev 껍데기 중 콘텐츠만 있으면 열리는 것(Docs Foundations·A
 
 ## Active Milestones
 
-<!-- harness:milestone id="CF1" status="active" priority="P1" -->
+<!-- harness:milestone id="CF1" status="completed" priority="P1" evidence="changesets/20260710-docs-shell-gate-open/README.md" -->
 ### CF1 - Docs Foundations And Agent Recipes 공개
 - DoD: Foundations 아티클 7종이 레포 SSOT 기반 실콘텐츠(실예시·라이트/다크·복붙 코드)로 작성 + Agent Recipes 표면이 recipes/ 5종·llms.txt와 연결 + 게이트 열어 프로덕션 공개(Colors foundation 링크 부활) + Chrome evidence + 배포 확인.
-- Evidence: docs/plans/2026-07-10-cf1-docs-foundations.md + changeset README들 + Chrome evidence.
+- Evidence: changesets/20260710-docs-shell-gate-open/README.md
 - Gap: Foundations/Agent Recipes가 dev skeleton — 재료(tokens/·knowledge/·recipes/)는 레포에 있는데 사이트 콘텐츠로 파생되지 않음.
+- Status: [x]
+
+- Completed at: 2026-07-10
+- Summary: Docs Foundations 7종(한국어, 토큰 SSOT 파생)+Agent Recipes 표면 프로덕션 공개 — llms.txt 링크 10/10 검증, ui.askewly.com 확인
+<!-- harness:milestone id="CF2" status="active" priority="P1" -->
+### CF2 - Showcase Atlas Source-Quality 카드
+- DoD: placeholder 카드 4종(landing 완료·command/commerce/mobile) + Dashboard 섹션이 토큰·레시피 기반 인터랙티브 데모로 완성 판정(실사 mock·라이트/다크·reduced-motion)을 통과해 공개되거나 카드별 근거 있는 제거 + Chrome evidence + 배포 확인.
+- Evidence: docs/plans/2026-07-10-cf2-showcase-cards.md + changeset README들 + Chrome evidence.
+- Gap: 홈 대표 데모 그리드가 12칸 중 8칸만 공개 — landing 데모는 완성(게이트 뒤), command/commerce/mobile/Dashboard는 placeholder.
 - Status: [ ]
 
 ## Next Candidates
 
-- CF2 - Showcase Atlas Source-Quality 카드: placeholder 카드 4+1을 토큰·레시피 기반 인터랙티브 데모로 채우거나 근거 있는 제거. (DoD: horizon doc)
-- CF3 - Patterns 빈 컬렉션 배치: 우선 4개 컬렉션에 authoring workflow로 terms 채워 공개. (DoD: horizon doc)
+- CF3 - Patterns 빈 컬렉션 배치: 우선 4개 컬렉션에 authoring workflow로 terms 채워 공개. 후보 9종 inbox 수집 완료(`docs/ui-vocabulary/inbox.yml`). (DoD: horizon doc)
 
 <!-- harness:milestone id="SFB1" status="completed" priority="P1" evidence="changesets/20260710-production-exposure-gate/README.md" -->
 ### SFB1 - Structure Contract And Clean Production

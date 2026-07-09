@@ -1,7 +1,7 @@
 # Plan - CF1 Docs Foundations And Agent Recipes 공개
 
 Date: 2026-07-10
-Milestone: CF1 (`ROADMAP.md`)
+Milestone: CF1 (`ROADMAP.md`) — completed 2026-07-10, evidence: changesets 35/36/38 + Chrome evidence
 
 ## 위계
 
@@ -22,8 +22,8 @@ Milestone: CF1 (`ROADMAP.md`)
 
 - [x] Step 1 — 코어 3종 아티클: color / typography / spacing-layout — 영어 초안을 한국어로 재작성 완료(구조·토큰·코드 스니펫 유지, 서술만 번역). Step 2와 병합 실행. (verify: dev 렌더 확인 + lint/build PASS)
 - [x] Step 2 — 시스템 4종 아티클: tokens / dark-mode / motion / accessibility — tokens SSOT 3-tier 구조·다크 모드 semantic 컬렉션·WCAG 기준에서 파생해 한국어로 신규 작성 완료. motion은 SSOT에 duration/easing tier가 없음을 명시하고 사이트 코드(`dialog.tsx`, `index.css`, `home-page.tsx`)의 관찰된 관례로 대체 서술. (verify: 7종 전부 dev 렌더 확인 + lint/build PASS, 2026-07-10)
-- [ ] Step 3 — Agent Recipes 표면 채우기: `recipes/` 5종 목록·요약 카드 + llms.txt 자산 링크(실링크 검증) + 소비 방법(Claude Code/Codex 안내) + 검증 체크리스트. (verify: dev 렌더 + llms.txt 링크 200 + lint/build)
-- [ ] Step 4 — 게이트 열기 + 배포: Foundations 7종+Agent Recipes의 shell 플래그 해제, Colors 페이지 foundation 링크 게이트 해제, 프로덕션 preview 스모크(다른 껍데기 비노출 회귀 포함), Chrome evidence(데스크톱/모바일·라이트/다크), push 승인 후 실사이트 확인. (verify: 프로덕션 스모크 + 실패 모드 — Pro 하위/Download는 여전히 비노출)
+- [x] Step 3 — Agent Recipes 표면 채우기: `recipes/` 5종 목록·요약 카드 + llms.txt 자산 링크(실링크 검증) + 소비 방법(Claude Code/Codex 안내) + 검증 체크리스트. (verify: dev 렌더 + llms.txt 링크 200 + lint/build)
+- [x] Step 4 — 게이트 열기 + 배포: Foundations 7종+Agent Recipes의 shell 플래그 해제, Colors 페이지 foundation 링크 게이트 해제, 프로덕션 preview 스모크(다른 껍데기 비노출 회귀 포함), Chrome evidence(데스크톱/모바일·라이트/다크), push 승인 후 실사이트 확인. (verify: 프로덕션 스모크 + 실패 모드 — Pro 하위/Download는 여전히 비노출)
 
 ## 결정 로그
 

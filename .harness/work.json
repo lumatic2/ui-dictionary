@@ -36,9 +36,20 @@
     {
       "id": "CF1",
       "title": "Docs Foundations And Agent Recipes 공개",
-      "status": "active",
+      "status": "completed",
       "started": "2026-07-10",
       "plan": "docs/plans/2026-07-10-cf1-docs-foundations.md",
+      "session_ids": [
+        "claude:3e4e1a99-8978-4b77-8fea-b57b4353fae4"
+      ],
+      "completed": "2026-07-10"
+    },
+    {
+      "id": "CF2",
+      "title": "Showcase Atlas Source-Quality 카드",
+      "status": "active",
+      "started": "2026-07-10",
+      "plan": "docs/plans/2026-07-10-cf2-showcase-cards.md",
       "session_ids": [
         "claude:3e4e1a99-8978-4b77-8fea-b57b4353fae4"
       ]

@@ -22,4 +22,4 @@
 - [x] prod preview(4183): Foundations 7종 사이드바 노출 + Color 아티클 한국어 렌더(한글 run 425) + Agent Recipes 아티클(llms.txt·Verification checklist) 렌더.
 - [x] 회귀: Pro 하위 skeleton 비노출, 홈 Hero Composition 카드 비노출, placeholder/Content pending 누출 0.
 - [x] Chrome evidence 3장 (desktop light/dark, mobile light).
-- [ ] 프로덕션 배포 반영 확인 (`https://ui.askewly.com/`) — push 승인 후.
+- [x] 프로덕션 배포 반영 확인: push `a9a930a` → 신규 asset `index-W0X34api.js`, 실사이트 — Foundations 7종 사이드바 노출(데스크톱), Color 아티클 한국어 렌더, Agent Recipes(llms.txt·checklist) 렌더, Content pending 누출 0. ※모바일 뷰포트에서 사이드바 미표시는 기존 반응형 동작.
