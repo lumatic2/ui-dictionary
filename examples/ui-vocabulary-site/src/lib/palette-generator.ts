@@ -115,6 +115,78 @@ export const paletteSeedLibrary: PaletteSeed[] = [
       { hex: "#F9FAFB", name: "Canvas White" },
     ],
   },
+  {
+    id: "fintech-trust",
+    name: "Fintech Trust",
+    note: "Navy and gold trust palette for banking, payments, and investment dashboards.",
+    colors: [
+      { hex: "#0B1D33", name: "Deep Navy" },
+      { hex: "#1B3A63", name: "Ledger Blue" },
+      { hex: "#C9A24B", name: "Vault Gold" },
+      { hex: "#E8ECF1", name: "Statement Gray" },
+      { hex: "#FFFFFF", name: "Paper White" },
+    ],
+  },
+  {
+    id: "wellness-calm",
+    name: "Wellness Calm",
+    note: "Soft sage and lavender palette for health, mindfulness, and wellness apps.",
+    colors: [
+      { hex: "#2F3E33", name: "Forest Ink" },
+      { hex: "#8FB39B", name: "Sage" },
+      { hex: "#C9D6C0", name: "Meadow Mist" },
+      { hex: "#D8CCE8", name: "Lavender" },
+      { hex: "#F6F4EF", name: "Oat Cream" },
+    ],
+  },
+  {
+    id: "gaming-neon",
+    name: "Gaming Neon",
+    note: "Dark-ground neon palette for gaming HUDs, streaming overlays, and esports brands.",
+    colors: [
+      { hex: "#0A0A12", name: "Void Black" },
+      { hex: "#FF2E63", name: "Plasma Pink" },
+      { hex: "#08D9D6", name: "Cyber Cyan" },
+      { hex: "#F8F32B", name: "Bolt Yellow" },
+      { hex: "#252A34", name: "Console Gray" },
+    ],
+  },
+  {
+    id: "enterprise-slate",
+    name: "Enterprise Slate",
+    note: "Grayscale enterprise palette with a single restrained accent for admin tools.",
+    colors: [
+      { hex: "#1E2530", name: "Charcoal" },
+      { hex: "#3E4757", name: "Slate" },
+      { hex: "#8B93A1", name: "Ash Gray" },
+      { hex: "#D8DCE3", name: "Fog" },
+      { hex: "#2E6B8A", name: "Enterprise Teal" },
+    ],
+  },
+  {
+    id: "creator-warm",
+    name: "Creator Warm",
+    note: "Warm coral and cream palette for creator-economy landing pages and profiles.",
+    colors: [
+      { hex: "#2B1B17", name: "Espresso" },
+      { hex: "#FF6F59", name: "Coral" },
+      { hex: "#FFB84C", name: "Marigold" },
+      { hex: "#FFE8D1", name: "Cream" },
+      { hex: "#FDF6EC", name: "Linen" },
+    ],
+  },
+  {
+    id: "dataviz-categorical",
+    name: "Data Viz Categorical",
+    note: "Distinct hues tuned for chart series and categorical data visualization.",
+    colors: [
+      { hex: "#1F2937", name: "Axis Ink" },
+      { hex: "#2563EB", name: "Series Blue" },
+      { hex: "#F97316", name: "Series Orange" },
+      { hex: "#10B981", name: "Series Green" },
+      { hex: "#A855F7", name: "Series Purple" },
+    ],
+  },
 ]
 
 export function getPaletteSeed(seedIndex: number) {

@@ -32,3 +32,4 @@
 | 30 | 20260710-docs-shell-foundations-recipes | 2026-07-10 | Dev-only docs shells: 7 Foundations skeleton articles and Agent Recipes overview behind shell gate | 4/4 | complete |
 | 31 | 20260710-colors-axis-shell | 2026-07-10 | Dev-only Colors axis shell: generator promotion reuse and palettes library skeleton | 4/4 | complete |
 | 32 | 20260710-pro-download-shell | 2026-07-10 | Dev-only Pro subsections skeleton and Download app distribution skeleton | 4/4 | complete |
+| 33 | 20260710-colors-palettes-library | 2026-07-10 | Colors Palettes view fills with 13 curated seed palettes, copy toasts, and export dialog reuse | 4/4 | complete |

@@ -1270,7 +1270,7 @@ type DragPreview = GeneratorColor & {
   width: number
 }
 
-function getReadableTextColor(hex: string) {
+export function getReadableTextColor(hex: string) {
   const value = hex.replace("#", "")
   const red = parseInt(value.slice(0, 2), 16)
   const green = parseInt(value.slice(2, 4), 16)
@@ -1379,7 +1379,7 @@ function buildShadeSet(color: PaletteColor) {
   }))
 }
 
-function downloadPalettePng(palette: PaletteColor[]) {
+export function downloadPalettePng(palette: PaletteColor[]) {
   const width = palette.length * 240
   const height = 320
   const canvas = document.createElement("canvas")
@@ -1412,7 +1412,7 @@ function downloadPalettePng(palette: PaletteColor[]) {
   }, "image/png")
 }
 
-function buildPaletteSvg(palette: PaletteColor[]) {
+export function buildPaletteSvg(palette: PaletteColor[]) {
   const width = palette.length * 160
   return `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 ${width} 220">${palette.map((color, index) => `<rect x="${index * 160}" y="0" width="160" height="220" fill="${color.hex}"/><text x="${index * 160 + 22}" y="178" font-family="Arial, sans-serif" font-size="18" font-weight="700" fill="${getReadableTextColor(color.hex)}">${color.hex.replace("#", "")}</text><text x="${index * 160 + 22}" y="202" font-family="Arial, sans-serif" font-size="13" font-weight="600" fill="${getReadableTextColor(color.hex)}">${color.name}</text>`).join("")}</svg>`
 }
