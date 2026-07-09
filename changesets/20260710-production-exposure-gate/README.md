@@ -26,4 +26,4 @@
 - [x] `npm run build` PASS (독립 재실행).
 - [x] Production preview(4180) 브라우저 스모크: 홈 — placeholder/coming soon/Get Started/Download/dashboard placeholder 0건, Atlas 카드 8개 정상. Patterns — Templates/Blog/Contact/Logo Clouds/Page Examples 0건, Marketing/Application UI 정상. Docs/Pro 렌더 정상, Pro에 죽은 Download/Templates 링크 없음.
 - [x] 실패 모드: dev 모드에서 전체 노출 확인 (12 Atlas 카드·Get Started·Templates 표시 — 구현 에이전트 dev 서버 검증).
-- [ ] 프로덕션 배포 반영 확인 (`https://ui.askewly.com/`) — push 승인 후.
+- [x] 프로덕션 배포 반영 확인: push `aef1caf` → Cloudflare 빌드 → `https://ui.askewly.com/` 신규 asset `index-Cw-yn7Fz.js` 서빙, 실사이트 스모크 — 홈(placeholder/Get Started/Download/dashboard placeholder 0건)·Patterns(Templates/Blog Sections/Page Examples 0건, Marketing/Application UI 정상) PASS.

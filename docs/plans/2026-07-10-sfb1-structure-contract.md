@@ -1,7 +1,7 @@
 # Plan - SFB1 Structure Contract And Clean Production
 
 Date: 2026-07-10
-Milestone: SFB1 (`ROADMAP.md`)
+Milestone: SFB1 (`ROADMAP.md`) — completed 2026-07-10, evidence: changesets/20260710-production-exposure-gate/README.md
 
 ## 위계
 
@@ -17,8 +17,8 @@ Milestone: SFB1 (`ROADMAP.md`)
 
 ## Step 트리
 
-- [ ] Step 1 — blueprint v2 문서: 목표 IA 전체(섹션 트리·페이지 타입·섹션별 완성 판정 기준·프로덕션 노출 규칙)를 `docs/design-system/site-blueprint.md`에 v2로 갱신. IA 초안은 사용자 확정 후 반영. (artifact: changeset[docs]) (verify: 노출 규칙·완성 판정 기준이 blueprint에 명문화 + 사용자 확정 기록)
-- [ ] Step 2 — 노출 게이트 구현 + 클린 프로덕션 배포: navigation-model에 노출 게이트(채워진 컬렉션만 공개) 적용, 명목상 Templates·Download placeholder 비노출(정의·데이터 보존), 카탈로그 실개수 노출, 빌드 후 프로덕션 배포. (verify: 전 라우트 크롤 스모크 — placeholder/빈 컬렉션 도달 0건 + build/lint + `https://ui.askewly.com/` 배포 반영 확인; 실패 모드 — 게이트 뒤 데이터가 dev 모드에서 여전히 접근 가능함을 확인)
+- [x] Step 1 — blueprint v2 문서: 목표 IA 전체(섹션 트리·페이지 타입·섹션별 완성 판정 기준·프로덕션 노출 규칙)를 `docs/design-system/site-blueprint.md`에 v2로 갱신. IA 초안은 사용자 확정 후 반영. (artifact: changeset[docs]) (verify: 노출 규칙·완성 판정 기준이 blueprint에 명문화 + 사용자 확정 기록)
+- [x] Step 2 — 노출 게이트 구현 + 클린 프로덕션 배포: navigation-model에 노출 게이트(채워진 컬렉션만 공개) 적용, 명목상 Templates·Download placeholder 비노출(정의·데이터 보존), 카탈로그 실개수 노출, 빌드 후 프로덕션 배포. (verify: 전 라우트 크롤 스모크 — placeholder/빈 컬렉션 도달 0건 + build/lint + `https://ui.askewly.com/` 배포 반영 확인; 실패 모드 — 게이트 뒤 데이터가 dev 모드에서 여전히 접근 가능함을 확인)
 
 ## 결정 로그
 
