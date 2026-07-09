@@ -5,6 +5,7 @@ import { Button } from "@/components/ui/button"
 import { TermVisual } from "@/components/term-visual"
 import { sourceRegistry, type VocabularyTerm } from "@/data/terms.generated"
 import { downloadNodeAsPng, getTermPngFileName } from "@/lib/export-capture"
+import { isNavigationPathVisible } from "@/lib/exposure"
 import { categoryLabels, kindLabels } from "@/lib/search"
 import { getRelatedTerms, getUseCasesForTerm } from "@/lib/term-ux"
 
@@ -23,6 +24,7 @@ export function TermPage({ term, terms, onBack, onNavigatePath, onSelectTerm }: 
   const [copiedPhrase, setCopiedPhrase] = useState<string | null>(null)
   const relatedTerms = getRelatedTerms(term, terms)
   const useCases = getUseCasesForTerm(term)
+  const visibleAlsoAppearsIn = (term.navigation?.also_appears_in ?? []).filter(isNavigationPathVisible)
 
   async function saveDetailPng() {
     const target = document.querySelector<HTMLElement>(`[data-export-detail="${term.id}"]`)
@@ -162,10 +164,10 @@ export function TermPage({ term, terms, onBack, onNavigatePath, onSelectTerm }: 
         </div>
 
         <aside className="flex flex-col gap-4">
-          {term.navigation?.also_appears_in && term.navigation.also_appears_in.length > 0 && (
+          {visibleAlsoAppearsIn.length > 0 && (
             <Section title="다른 위치">
               <div className="flex flex-col gap-2">
-                {term.navigation.also_appears_in.map((path) => (
+                {visibleAlsoAppearsIn.map((path) => (
                   <button
                     key={path.join("/")}
                     type="button"

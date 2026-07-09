@@ -1,0 +1,12 @@
+{
+  "works": [
+    {
+      "id": "SFB1",
+      "title": "Structure Contract And Clean Production",
+      "status": "active",
+      "started": "2026-07-10",
+      "plan": "docs/plans/2026-07-10-sfb1-structure-contract.md",
+      "session_ids": ["claude:3e4e1a99-8978-4b77-8fea-b57b4353fae4"]
+    }
+  ]
+}

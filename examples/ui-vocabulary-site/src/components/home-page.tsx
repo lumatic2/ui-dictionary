@@ -57,6 +57,7 @@ import {
   getPaletteSeed,
 } from "@/lib/palette-generator"
 import { getSearchSuggestions, type SearchSuggestion } from "@/lib/search-suggestions"
+import { SHOW_UNFILLED } from "@/lib/exposure"
 import { cn } from "@/lib/utils"
 
 export type HomePageDestination = {
@@ -165,6 +166,9 @@ const atlasItems = [
 
 type AtlasItemId = (typeof atlasItems)[number]["id"]
 
+/** Atlas cards that still render AtlasContentPlaceholder — see AtlasDemo. Hidden in production per site-blueprint.md "Production Exposure Policy". */
+const placeholderAtlasItemIds: readonly AtlasItemId[] = ["landing", "command", "commerce", "mobile"]
+
 type CursorFieldCell = {
   id: number
   x: number
@@ -205,10 +209,12 @@ export function HomePage({ onNavigate, onSearch, filter, terms }: HomePageProps)
           </p>
 
           <div className="mt-7 flex flex-col gap-3 sm:flex-row">
-            <Button className="h-11 rounded-lg bg-askewly-violet px-6 has-[>svg]:px-6 text-white hover:bg-[#5f22a8]" type="button" onClick={() => onNavigate({ page: "download" })}>
-              Get Started
-              <ArrowRight aria-hidden="true" className="size-4" />
-            </Button>
+            {SHOW_UNFILLED && (
+              <Button className="h-11 rounded-lg bg-askewly-violet px-6 has-[>svg]:px-6 text-white hover:bg-[#5f22a8]" type="button" onClick={() => onNavigate({ page: "download" })}>
+                Get Started
+                <ArrowRight aria-hidden="true" className="size-4" />
+              </Button>
+            )}
             <Button className="h-11 rounded-lg border-border bg-background px-6 text-foreground hover:bg-muted" variant="outline" type="button" onClick={() => onNavigate({ page: "docs", filter: "nav:docs-getting-started-setup" })}>
               Open Docs
             </Button>
@@ -220,7 +226,7 @@ export function HomePage({ onNavigate, onSearch, filter, terms }: HomePageProps)
         </div>
       </section>
 
-      <DarkInversionSection />
+      {SHOW_UNFILLED && <DarkInversionSection />}
 
       <Footer onNavigate={onNavigate} />
     </div>
@@ -331,11 +337,18 @@ function InvertedField() {
 }
 
 function Footer({ onNavigate }: { onNavigate: HomePageProps["onNavigate"] }) {
+  const visibleColumns = footerColumns
+    .map((column) => ({
+      ...column,
+      links: column.links.filter((link) => SHOW_UNFILLED || link.destination.page !== "download"),
+    }))
+    .filter((column) => column.links.length > 0)
+
   return (
     <footer className="bg-black px-4 pb-12 pt-0 text-white md:px-8 lg:px-10">
       <div className="mx-auto max-w-[1180px] pt-12">
         <div className="grid gap-px overflow-hidden border border-white/10 bg-white/10 md:grid-cols-4">
-          {footerColumns.map((column) => (
+          {visibleColumns.map((column) => (
             <div key={column.title} className="bg-black p-6 md:p-7">
               <h2 className="text-sm font-semibold text-white">{column.title}</h2>
               <div className="mt-7 flex flex-col items-start gap-4">
@@ -377,9 +390,11 @@ function ShowcaseAtlas() {
         </p>
       </div>
       <div className="mt-10 grid grid-cols-1 items-stretch gap-3 md:grid-cols-2 xl:grid-cols-6">
-        {atlasItems.map((item) => (
-          <AtlasCard key={item.id} item={item} />
-        ))}
+        {atlasItems
+          .filter((item) => SHOW_UNFILLED || !placeholderAtlasItemIds.includes(item.id))
+          .map((item) => (
+            <AtlasCard key={item.id} item={item} />
+          ))}
       </div>
     </div>
   )

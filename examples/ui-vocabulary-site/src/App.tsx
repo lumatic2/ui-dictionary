@@ -51,6 +51,7 @@ import { TopbarSearch } from "@/components/topbar-search"
 import { categories, kinds, terms, type TermCategory, type VocabularyTerm } from "@/data/terms.generated"
 import { categoryGroups, categoryGroupsByCategory, categoryLabels, isTermCategory, isTermKindCategoryFilter, isTermKindFilter, isTermKindGroupFilter, matchesFilter, searchTerms, type SearchResult, type TermFilter, type TermGroupId } from "@/lib/search"
 import { isNavigationFilter, navigationCollections, navFilter, normalizeNavigationFilter } from "@/lib/navigation-model"
+import { isNavigationFilterVisible } from "@/lib/exposure"
 import { docsArticlePages, docsNavGroups, type DocsArticlePageData } from "@/lib/documentation-pages"
 import { getStarterQueries } from "@/lib/search-suggestions"
 import { useCases } from "@/lib/term-ux"
@@ -1143,6 +1144,12 @@ function StaticUiBlockGroup({
   group: UiBlockNavSection["groups"][number]
   onFilterChange: (filter: TermFilter) => void
 }) {
+  const visibleItems = group.items.filter((item) => isNavigationFilterVisible(item.filter))
+
+  if (visibleItems.length === 0) {
+    return null
+  }
+
   return (
     <section className="flex flex-col gap-3">
       <button
@@ -1156,7 +1163,7 @@ function StaticUiBlockGroup({
         {group.label}
       </button>
       <div className="flex flex-col border-l border-border">
-        {group.items.map((item) => {
+        {visibleItems.map((item) => {
           const active = activeFilter === item.filter
 
           return (
@@ -1376,9 +1383,16 @@ type CatalogLandingProps = {
 }
 
 function PlusCatalogLanding({ filterCounts, onFilterChange }: CatalogLandingProps) {
+  const visibleSections = plusCatalogSections
+    .map((section) => ({
+      ...section,
+      items: section.items.filter((item) => isNavigationFilterVisible(item.filter)),
+    }))
+    .filter((section) => section.items.length > 0)
+
   return (
     <section className="flex flex-col gap-10 border-y py-8" data-print-hidden>
-      {plusCatalogSections.map((section) => (
+      {visibleSections.map((section) => (
         <div key={section.title} className="grid gap-5 xl:grid-cols-[16rem_minmax(0,1fr)]">
           <div className="max-w-xl">
             <p className="text-xs font-medium uppercase text-muted-foreground">{section.eyebrow}</p>
