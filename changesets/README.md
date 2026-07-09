@@ -27,3 +27,4 @@
 | 25 | 20260709-showcase-placeholder-reset | 2026-07-09 | Reset final Showcase Atlas cards and Product operations dashboard to placeholders | 4/4 | complete |
 | 26 | 20260709-askewly-auth-sso-routing | 2026-07-09 | Route Askewly Design sign-in through shared Askewly Google/Kakao SSO and same-origin auth proxy | 5/5 | complete |
 | 27 | 20260709-palette-generator-data-engine | 2026-07-09 | Color Palette Generator seed library, deterministic generation rules, lock preservation, and quality gates | 5/5 | complete |
+| 28 | 20260710-site-blueprint-v2 | 2026-07-10 | Site blueprint v2: target IA (Docs/Patterns/Colors/Pro), production exposure policy, section completion criteria | 4/4 | complete |

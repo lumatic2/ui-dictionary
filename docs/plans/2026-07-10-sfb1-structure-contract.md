@@ -22,7 +22,7 @@ Milestone: SFB1 (`ROADMAP.md`)
 
 ## 결정 로그
 
-- [사용자 소유] 최종 IA 구성(섹션 통폐합·상위 축 이름·Templates/Download의 목표 위치) — Step 1에서 IA 초안을 제시하고 확정받는다. **미결 — Step 1 중단점.**
+- [확정 2026-07-10] 최종 IA: 상위 축 Docs / Patterns / Colors / Pro — Colors 축 신설(Coolors 레퍼런스, 팔레트 생성기 승격), Templates는 Pro 하위, Download는 앱 배포 표면으로 재정의해 앱 존재 전까지 게이트 뒤(에셋 다운로드는 Pro > Asset Packs로 분리). Showcase=홈 섹션, Resources=Docs Foundations 흡수 유지.
 - [확정 2026-07-10] 작업 순서: 구조 문서화 → 클린 배포 → dev 껍데기 → 콘텐츠 승격 (사용자 지시).
 - [확정 2026-07-10] truth-cut = 삭제가 아니라 노출 게이트. 빈 컬렉션 정의·termIds 데이터는 보존.
 - [확정 2026-07-10] 완성 판정 기준(source-quality) = 실사 mock 데이터 + 라이트/다크 검증 + 복붙 가능한 실코드 (시장 하한선, `docs/market/2026-07-10-site-integrity-benchmarks.md`).

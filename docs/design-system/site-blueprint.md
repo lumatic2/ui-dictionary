@@ -1,498 +1,169 @@
 # Public Website Blueprint
 
-Date: 2026-07-04
+Version: v2
+Date: 2026-07-10 (v1: 2026-07-04)
 
-> 분류 용어·축 목록의 정본은 [pattern-taxonomy.md](pattern-taxonomy.md) (2026-07-07). 본문의 pattern 카테고리 목록(sitemap 9종·홈 섹션 7종)은 pattern-taxonomy §3의 10종의 부분 노출이며, 이름은 그 목록을 따른다 (`ecommerce` → `commerce`).
+> 분류 용어·축 목록의 정본은 [pattern-taxonomy.md](pattern-taxonomy.md). 이 문서는 `ui.askewly.com` 공개 사이트의 목표 IA, 프로덕션 노출 정책, 섹션별 완성 판정 기준의 정본이다. Structure-First Buildout horizon(`docs/horizons/2026-07-structure-first-buildout.md`)의 구조 계약 문서.
 
 ## Purpose
 
-This document defines the actual public website shape for `ui.askewly.com`.
+- 목표 사이트 구조(섹션·페이지 타입) 전체를 정의한다 — 지금 다 채우지 않더라도 증축 도면으로.
+- 무엇이 채워져야 프로덕션에 노출되는지(노출 정책)를 정의한다.
+- 각 섹션의 "완성 판정 기준"을 정의한다 — 껍데기(SFB2)와 콘텐츠 채우기(SFB3+)의 합격선.
 
-When this document says "landing page" or "homepage," it means the page a visitor sees at:
-
-```text
-https://ui.askewly.com/
-```
-
-It is the same level of page as `https://tailwindcss.com/`: the public front door of the product.
-
-It answers:
-
-- What does a first-time visitor see on `ui.askewly.com/`?
-- What is the homepage's section order?
-- What can the visitor click next?
-- What are the top-level pages under the website?
-- What should each child page contain?
-- Which reference homepage patterns inform the structure?
-- Which pages are public learning pages, which become asset pages, and which feed Codex/Claude Code?
-
-This blueprint must exist before page-by-page implementation continues. Otherwise the project will drift into improving individual Tailwind-like pages without a coherent product.
-
-## Product Promise
-
-The homepage should say, implicitly and explicitly:
+## Product Promise (v1 유지)
 
 > Askewly Design is a broad, working digital product design system. You can browse it like a visual encyclopedia, inspect complete product UI examples, learn the behavior and design reasoning behind them, and eventually copy/download original implementation assets or use them through coding agents.
 
-The site is not only:
-
-- a UI term glossary;
-- a Tailwind Plus clone;
-- a component library;
-- a portfolio;
-- a static inspiration board.
-
-It is a productized design system.
-
-## Reference-Derived Lessons
-
-| Reference | Site lesson |
-|---|---|
-| Tailwind homepage | Start with a clear product promise, show the product in use immediately, then prove it through modern web features, examples, ecosystem, and a path into Tailwind Plus. |
-| Tailwind Plus | Surface-first IA, catalog leaf pages, docs leaf pages, preview cards, locked/free states, component docs with examples/API/on-this-page navigation. |
-| Around homepage | Use the homepage as a visual catalog of what the buyer can build: landings, pages, shop, account, UI Kit, docs, customizer, and package claims. |
-| Vercel / Geist | Public design system can double as brand proof; developer-facing surfaces need precise typography, docs, code, and systemized craft. |
-| Stripe | High-trust flows need validation, localization, security/compliance framing, and complete transactional states. |
-| Linear | Dense SaaS/application UI should be quiet, structured, and optimized for repeated use. |
-| Radix | Component pages must document behavior contracts, accessibility, keyboard/focus, and states, not only visuals. |
-| Apple HIG / Material 3 | Mobile pages need platform-specific navigation, modality, input, motion, and accessibility rules. |
-
-## `ui.askewly.com/` Homepage
-
-The homepage is the public product landing page.
-
-It should be designed like a real product website, not like an internal documentation index. It should make the product identity clear and show visible UI examples immediately.
-
-### Homepage job
-
-1. Declare the system:
-   - "Askewly Design"
-   - subtitle: visual UI encyclopedia, product surface library, and agent-ready implementation system.
-2. Show real UI immediately:
-   - an immersive mosaic of working interface examples from Marketing, SaaS, Commerce, Mobile, Docs, and Components.
-   - examples should be visible in the first viewport; no abstract hero illustration.
-3. Expose the main browsing paths:
-   - Docs
-   - Patterns
-   - Showcase
-   - Resources
-   - Pro
-4. Communicate the value split:
-   - browse and learn publicly;
-   - copy/download richer implementation packs later;
-   - use compact recipes from Codex/Claude Code.
-5. Establish provenance and originality:
-   - "Reference-backed, adapted into original examples."
-   - no implication that Tailwind/Around/Stripe/Vercel source is being resold.
-
-### Homepage section order
+## Top-Level Navigation (v2 확정)
 
 ```text
-Landing
-├── Hero / System Overview
-│   ├── title
-│   ├── short promise
-│   ├── search / command input
-│   └── live example mosaic
-├── Browse By Pattern
-│   ├── Websites
-│   ├── SaaS & Dashboards
-│   ├── Commerce
-│   ├── Mobile Apps
-│   ├── Documentation
-│   └── Internal Tools
-├── Pattern Collections
-│   ├── Marketing
-│   ├── Application UI
-│   ├── Ecommerce
-│   ├── Navigation
-│   ├── Overlays
-│   ├── Forms
-│   └── Data Display
-├── Docs Preview
-│   ├── Dialog
-│   ├── Dropdown menu
-│   ├── Popover
-│   ├── Tabs
-│   ├── Select
-│   └── Command palette
-├── Resources Preview
-│   ├── Color
-│   ├── Typography
-│   ├── Spacing
-│   ├── Motion
-│   ├── Accessibility
-│   └── Tokens
-├── Agent-Ready Docs
-│   ├── what agents can read
-│   ├── recipe preview
-│   └── verification checklist
-└── Pro Teaser
-    ├── public browse
-    ├── free copy snippets
-    ├── paid copy/download access
-    └── licensing/provenance boundary
+Docs      시스템 구조·foundations·컴포넌트 행동 계약·에이전트 레시피
+Patterns  재사용 가능한 제품 표면·페이지 섹션·패턴 컬렉션 카탈로그
+Colors    컬러 도구 축 — Coolors 레퍼런스 (팔레트 생성기·팔레트 라이브러리)
+Pro       유료 경계 — 가격·Asset Packs·Templates·코드 소유/다운로드
 ```
 
-### First viewport requirements
+v1 대비 변경 (2026-07-10 사용자 확정):
 
-The first viewport must include:
-
-- product name;
-- product promise;
-- a visible search/command affordance;
-- at least three real UI previews, not abstract cards;
-- visible navigation to browse surfaces/patterns;
-- one clear route into agent recipes or code/assets.
-
-The first viewport must not be:
-
-- a generic hero with only text;
-- a portfolio bio;
-- a clone of Tailwind's exact visual identity;
-- a screenshot-only inspiration wall;
-- an explanation of internal repo architecture.
-
-### Homepage content examples
-
-Candidate hero copy:
-
-```text
-Askewly Design
-
-A product interface system for web, app, SaaS, and commerce.
-Browse working patterns, inspect interaction states, and give Codex or Claude Code
-design recipes that produce less generic screens.
-```
-
-Candidate homepage CTAs:
-
-- Browse surfaces
-- Explore components
-- Open agent recipes
-
-Candidate first mosaic items:
-
-- SaaS dashboard command center
-- Commerce checkout flow
-- Mobile settings screen
-- Documentation component leaf
-- Marketing pricing section
-- Dropdown/command palette primitive
-
-## Top-Level Navigation
-
-Use a compact structure that works like a public product site. Detailed category trees live inside each section instead of crowding the global header.
-
-```text
-Docs
-Patterns
-Showcase
-Resources
-Pro
-```
+- **Colors 축 신설** — Coolors(`https://coolors.co/`)를 1차 레퍼런스로 하는 컬러 부문. PGD1의 팔레트 생성기(`palette-generator.ts`)가 씨앗. 홈의 데모 카드에서 전용 축으로 승격.
+- **Showcase 축 제거 유지** (PSS2 결정) — 완성 페이지 예시는 홈의 Showcase Atlas 섹션이 담당. 갤러리가 충분히 커지면 축 승격 재검토.
+- **Resources 축 제거 유지** — color/typography/spacing/motion/accessibility/tokens 는 Docs > Foundations 로 흡수.
+- **Templates 는 Pro 하위** — Tailwind Plus 모델. 실제 템플릿이 생기기 전까지 비노출.
+- **Download 는 앱 배포 표면으로 재정의** — 아래 Download 절 참조.
 
 ### Navigation roles
 
-| Nav item | User question answered |
+| Nav | 사용자 질문 |
 |---|---|
-| Docs | How is Askewly Design structured, sourced, verified, licensed, and used by agents? Includes foundations, components, behavior contracts, and recipes. |
-| Patterns | What reusable product surfaces, page sections, workflows, and primitives can I inspect? Includes Marketing, Application UI, Ecommerce, Mobile, Components, and Foundations. |
-| Showcase | What complete websites, apps, SaaS screens, commerce flows, and documentation experiences prove the system works? |
-| Resources | What essays, reference studies, capture ledgers, and design notes explain the taste and source model? |
-| Pro | What becomes available after payment: full code, downloadable assets, packs, templates, and expanded implementation recipes? |
+| Docs | 이 시스템은 어떻게 구성·검증·사용(사람/에이전트)되는가? |
+| Patterns | 어떤 제품 표면·페이지 섹션·패턴을 열람할 수 있는가? |
+| Colors | 팔레트를 만들고, 탐색하고, 내 프로젝트에 가져갈 수 있는가? |
+| Pro | 결제하면 무엇을 소유하는가 — 전체 코드·에셋·템플릿·팩? |
 
-## Site Map
+## Site Map (목표 구조 v2)
+
+현 구현은 React Router 가 아니라 `PageMode` 상태 기반 SPA 다. 아래 트리는 URL 이 아니라 **화면 단위**의 목표 구조이며, 라우팅 방식 전환은 이 horizon 범위 밖이다.
 
 ```text
-/
-├── /docs
-│   ├── /docs/getting-started
-│   ├── /docs/foundations
-│   │   ├── /docs/foundations/color
-│   │   ├── /docs/foundations/typography
-│   │   ├── /docs/foundations/spacing-layout
-│   │   ├── /docs/foundations/motion
-│   │   ├── /docs/foundations/accessibility
-│   │   ├── /docs/foundations/dark-mode
-│   │   └── /docs/foundations/tokens
-│   ├── /docs/components
-│   │   ├── /docs/components/dialog
-│   │   ├── /docs/components/dropdown-menu
-│   │   ├── /docs/components/popover
-│   │   ├── /docs/components/disclosure
-│   │   ├── /docs/components/tabs
-│   │   ├── /docs/components/select
-│   │   ├── /docs/components/autocomplete
-│   │   ├── /docs/components/command-palette
-│   │   └── /docs/components/copy-button
-│   ├── /docs/recipes
-│   │   ├── /docs/recipes/agent-overview
-│   │   ├── /docs/recipes/saas-dashboard
-│   │   ├── /docs/recipes/checkout-flow
-│   │   ├── /docs/recipes/docs-leaf-page
-│   │   ├── /docs/recipes/mobile-settings
-│   │   └── /docs/recipes/verification-checklists
-│   ├── /docs/source-model
-│   ├── /docs/reference-capture
-│   ├── /docs/schema
-│   └── /docs/contributing
-├── /patterns
-│   ├── /patterns/surfaces
-│   │   ├── /patterns/surfaces/websites
-│   │   ├── /patterns/surfaces/saas-dashboards
-│   │   ├── /patterns/surfaces/commerce
-│   │   ├── /patterns/surfaces/mobile-apps
-│   │   ├── /patterns/surfaces/documentation
-│   │   └── /patterns/surfaces/internal-tools
-│   ├── /patterns/marketing
-│   ├── /patterns/application-ui
-│   ├── /patterns/ecommerce
-│   ├── /patterns/navigation
-│   ├── /patterns/overlays
-│   ├── /patterns/forms
-│   ├── /patterns/data-display
-│   ├── /patterns/feedback
-│   └── /patterns/layout
-├── /showcase
-│   ├── /showcase/websites
-│   ├── /showcase/saas
-│   ├── /showcase/mobile
-│   ├── /showcase/commerce
-│   └── /showcase/documentation
-├── /resources
-│   ├── /resources/blog
-│   ├── /resources/reference-studies
-│   ├── /resources/capture-ledgers
-│   └── /resources/design-notes
-└── /pro
-    ├── /pro/overview
-    ├── /pro/asset-packs
-    ├── /pro/templates
-    ├── /pro/code-access
-    ├── /pro/license
-    └── /pro/provenance
+Home
+├── Hero (검색/커맨드 + 대표 데모)
+├── Showcase Atlas (대표 인터랙티브 데모 그리드 — source-quality 카드만 노출)
+├── Docs / Patterns / Colors / Pro 진입 섹션
+└── Agent-Ready 섹션 (llms.txt 안내)
+
+Docs
+├── Getting Started (setup / html / react / vue / assets) ......... 채워짐 5
+├── Foundations (color·typography·spacing·motion·a11y·dark·tokens) . 구 Resources 흡수, 아티클 필요
+├── Components (dialog·dropdown·popover·tabs·select·…) ............ 채워짐 9, 확장 대상
+├── Catalog (용어 기반 목록 — layout/styling/interaction/…) ........ 채워짐 (527 terms)
+└── Agent Recipes (llms.txt 자산의 사람용 표면 + 검증 체크리스트) ... 신설 껍데기
+
+Patterns (구 Plus 카탈로그 재편 — pattern-taxonomy 10종 기준)
+├── Marketing / Application UI / Commerce / Navigation /
+│   Overlays / Forms / Data Display / Feedback / Layout / Docs&Content
+│   └── 각 그룹 하위 컬렉션: termIds 채워진 것만 노출 + 실개수 표기
+└── Page Examples (Landing/Pricing/About …) ....................... 전부 미충족, 게이트 뒤
+
+Colors (신설 — Coolors 레퍼런스)
+├── Generator (팔레트 생성기 — PGD1 엔진 승격) .................... 채워짐
+├── Palettes (큐레이션 팔레트 라이브러리 — 탐색/복사) .............. 신설 껍데기
+└── (future) Contrast checker / gradient / image-to-palette
+
+Pro
+├── Overview (가격·포함 범위) ..................................... 채워짐(마케팅)
+├── Asset Packs (구 Download 의 pack 카드 흡수) .................... 껍데기
+├── Templates (16종 정의의 목표 위치) .............................. 껍데기
+└── License / Provenance ........................................... 껍데기
+
+(비노출) Download — 앱 배포 표면 (future)
 ```
+
+### Download 재정의 (2026-07-10)
+
+사용자 의도: Figma / OpenDesign 처럼 **앱 자체를 다운로드**하게 하고 싶다.
+
+채택한 접근:
+
+1. **에셋(zip/pack) 다운로드와 앱 다운로드를 분리한다.** 에셋 다운로드는 Pro > Asset Packs 의 기능이다 (시장 표준: 프리뷰 무료, 소유·다운로드 유료).
+2. **Download 페이지 = 앱 배포 표면.** Figma 의 downloads 페이지처럼 데스크톱/플랫폼별 설치 파일을 제공하는 페이지로 재정의한다. 상단 nav 가 아니라 footer/보조 진입(시장 관행)에 둔다.
+3. **실배포 가능한 앱이 존재하기 전까지 노출 게이트 뒤에 둔다.** 현 placeholder 라우트는 프로덕션 비노출로 전환하고, 앱 개발 자체는 별도 horizon 으로 다룬다 (Objective "웹 전용으로 만들지 않는다"와 정합).
+
+## Production Exposure Policy (신설 — 핵심)
+
+원칙: **나열된 것 = 완성된 것.** 미완성 섹션은 "Coming soon" 으로 노출하지 않고 프로덕션 카탈로그에서 보이지 않게 한다 (Tailwind Plus 관행, `docs/market/2026-07-10-site-integrity-benchmarks.md`).
+
+게이트 규칙:
+
+| 대상 | 노출 조건 |
+|---|---|
+| Patterns 컬렉션 | `termIds` ≥ 1 (또는 published 플래그) — 빈 컬렉션은 nav·목록에서 제외 |
+| Docs 아티클 nav | 장문 아티클 콘텐츠가 존재하는 항목만 아티클로 링크, 없으면 카탈로그 목록만 |
+| Showcase Atlas 카드 | source-quality 판정 통과 카드만 렌더 — placeholder 카드는 프로덕션에서 숨김 |
+| Pro 하위 (Packs/Templates) | 실제 판매 가능 항목이 생기기 전까지 Overview 만 노출 |
+| Download | 배포 가능한 앱 존재 전까지 비노출 |
+
+운영 규칙:
+
+- **데이터·정의는 삭제하지 않는다.** 게이트는 노출 필터이지 삭제가 아니다. dev 모드에서는 껍데기 전체에 접근 가능해야 한다 (SFB2 증축 도면).
+- **실개수 노출**: 남는 카탈로그 그룹에는 "N components/patterns" 실개수를 표기한다 (저비용 신뢰 신호).
+- 게이트 구현 방식(플래그 필드 vs 파생 판정)은 코드 구조에 맞춰 구현 시 결정.
+
+## Section Completion Criteria (완성 판정 기준)
+
+공통 하한선 — **source-quality** (2026 시장 하한선):
+
+1. 실사 mock 데이터 (lorem/명목상 텍스트 금지)
+2. 라이트/다크 모드 검증 (대비·가독성 포함)
+3. 복붙 가능한 실코드 또는 실동작 인터랙션
+
+섹션별 추가 기준:
+
+| 섹션 | 완성 판정 |
+|---|---|
+| Showcase Atlas 카드 | 공통 하한선 + reduced-motion fallback + 카드 copy 규약(CLAUDE.md) |
+| Docs 아티클 | 정의·사용 이유·실예시·상태/반응형/토큰 연결 (Tailwind docs 서술 방식) |
+| Patterns 컬렉션 | 실 term 연결 ≥ 1 + 프리뷰 렌더 + 그룹 실개수 정확 |
+| Colors > Palettes | 큐레이션 팔레트 실데이터 + 복사/내보내기 동작 |
+| Pro > Packs/Templates | 라이브 프리뷰 + 포함 파일 목록 + 라이선스/출처 문구 |
+| Agent Recipes 표면 | llms.txt 실자산과 링크 정합 (링크 깨짐 0) |
 
 ## Page Types
 
-### 1. Surface Index Page
+v1 의 6종 페이지 타입 계약(Surface Index / Pattern Collection / Component Leaf / Foundation / Agent Recipe / Pro Asset Pack)을 유지하고 1종을 추가한다. 각 타입의 필수 콘텐츠 목록은 v1 정의를 승계한다 (git 이력 `43efe18` 이전 버전 참조).
 
-Example: `/patterns/surfaces/saas-dashboards`
+### 7. Colors Tool Page (신설)
 
-Purpose:
+Example: Colors > Generator
 
-- show complete product UI families;
-- organize by user job and density;
-- link into patterns/components used by each example.
+Purpose: 도구형 페이지 — 문서가 아니라 실사용 유틸리티.
 
 Required content:
 
-- surface definition;
-- when to use;
-- common page families;
-- live/interactive preview grid;
-- reference-backed quality bar;
-- light/dark examples;
-- related patterns and components;
-- agent recipe links.
+- 즉시 동작하는 도구 (생성기/라이브러리)
+- 시드/생성 근거 표기 (PGD1 규약: seed source copy)
+- lock·복사·내보내기 등 실작업 어포던스
+- 라이트/다크 대응
+- 관련 Foundations(color)·토큰 문서로의 연결
 
-### 2. Pattern Collection Page
-
-Example: `/patterns/application-ui`
-
-Purpose:
-
-- teach reusable product compositions;
-- group examples like page headings, command palettes, tables, sidebars, settings, modals.
-
-Required content:
-
-- collection overview;
-- filter by density/platform/trust level;
-- repeated preview cards;
-- interaction smoke for each card where relevant;
-- "copy prompt" public snippet;
-- locked/full implementation state where applicable.
-
-### 3. Component Leaf Page
-
-Example: `/docs/components/dropdown-menu`
-
-Purpose:
-
-- teach behavior and implementation contract.
-
-Required content:
-
-- title, definition, lead;
-- interactive preview near top;
-- anatomy;
-- states;
-- keyboard/focus behavior;
-- accessibility contract;
-- API or props/state table;
-- examples;
-- anti-patterns;
-- related components;
-- source/provenance note;
-- copy/download affordance.
-
-Reference basis:
-
-- Tailwind docs leaf structure;
-- Radix behavior guarantees.
-
-### 4. Foundation Page
-
-Example: `/docs/foundations/typography`
-
-Purpose:
-
-- explain system-wide visual rules.
-
-Required content:
-
-- tokens;
-- usage examples;
-- good/bad comparisons;
-- light/dark behavior;
-- platform variants where relevant;
-- implementation notes;
-- agent constraints.
-
-Reference basis:
-
-- Geist typography/system craft;
-- Around customizer;
-- design-manual DESIGN.md families.
-
-### 5. Agent Recipe Page
-
-Example: `/docs/recipes/checkout-flow`
-
-Purpose:
-
-- give Codex/Claude Code a compact implementation brief.
-
-Required content:
-
-- goal;
-- use when / avoid when;
-- structure;
-- components;
-- tokens;
-- copy guidance;
-- accessibility;
-- responsive behavior;
-- anti-patterns;
-- verification checklist;
-- linked examples and code assets.
-
-### 6. Pro Asset Pack Page
-
-Example: `/pro/asset-packs/saas-dashboard-command-center`
-
-Purpose:
-
-- package a reusable implementation, eventually with paid access.
-
-Required content:
-
-- live preview;
-- included files;
-- framework/dependencies;
-- light/dark/responsive variants;
-- interaction states;
-- verification commands;
-- license and usage boundary;
-- provenance statement;
-- copy/download CTA.
-
-## Content Ownership
+## Content Ownership (v1 유지)
 
 | Content type | Canonical location |
 |---|---|
 | Objective, PRD, roadmap | `docs/OBJECTIVE.md`, `docs/PRD.md`, `ROADMAP.md` |
-| Site IA and page contract | `docs/design-system/site-blueprint.md` |
+| Site IA·노출 정책·완성 기준 | `docs/design-system/site-blueprint.md` (이 문서) |
 | Surface taxonomy | `docs/design-system/surface-taxonomy.md` |
 | Agent asset schema | `docs/design-system/agent-asset-model.md` |
 | Reference research | `docs/research/*.md` |
-| Evidence screenshots | `docs/research/assets/**` |
 | Site implementation | `examples/ui-vocabulary-site/` |
-| External token/toolchain source | `C:\Users\yusun\projects\design-manual` |
-| Executable design skills | `C:\Users\yusun\projects\custom-skills\design-*` |
 
-## What To Keep On The Website
+## Implementation Order (Structure-First Buildout)
 
-Keep these as public-facing site content:
+1. **SFB1 — 구조 계약 + 클린 프로덕션**: 이 문서 확정 → 노출 게이트 구현 → placeholder/빈 컬렉션이 보이지 않는 클린 버전 배포.
+2. **SFB2 — 껍데기 증축 (dev-only)**: 위 site map 의 신설 껍데기(Docs Foundations/Agent Recipes, Patterns 재편, Colors > Palettes, Pro 하위)를 노출 게이트 뒤에 구현.
+3. **SFB3+ — 콘텐츠 채우기 배치**: 완성 판정 통과분부터 게이트를 열어 프로덕션 승격. 배치 우선순위는 각 milestone 계획 시 확정.
 
-- original UI examples;
-- visual previews;
-- interactions;
-- page families;
-- component behavior docs;
-- foundations;
-- source/provenance summaries;
-- prompt snippets;
-- agent recipe summaries;
-- asset pack pages.
+## Changelog
 
-Keep these internal or linked, not primary site content:
-
-- raw screenshots unless curated;
-- copied reference page text;
-- paid/commercial template source;
-- local experiment dumps;
-- custom skill implementation internals;
-- unverified generated assets;
-- one-off smoke JSON unless summarized.
-
-## Implementation Order
-
-Do not resume random leaf-page polishing yet. Use this order:
-
-1. **Homepage implementation**
-   - replace the current `ui.askewly.com/` first page with the homepage defined above.
-   - verify desktop/mobile first viewport.
-2. **Blueprint-to-app navigation**
-   - align current app navigation to Docs / Patterns / Showcase / Resources / Pro.
-3. **One complete vertical slice**
-   - pick one surface, one pattern collection, one component leaf, one recipe, and one asset page.
-   - recommended first slice: SaaS dashboard -> Application UI -> Command palette or Dropdown menu -> SaaS dashboard recipe -> dashboard asset pack.
-4. **Reference-backed page iteration**
-   - only after the site shell exists, return to page-by-page implementation.
-5. **Paid/access model**
-   - add gated copy/download affordances after asset provenance is coherent.
-
-## First Vertical Slice Recommendation
-
-Choose:
-
-```text
-Surface: SaaS & Dashboards
-Pattern collection: Application UI
-Component leaf: Command palette
-Recipe: SaaS dashboard command center
-Asset pack: React/Tailwind dashboard command center
-```
-
-Reason:
-
-- Tailwind work already has application UI and command palette evidence.
-- Linear provides a dense SaaS quality bar.
-- Radix provides behavior/accessibility guidance.
-- Vercel/Geist provides developer-facing craft and code surface guidance.
-- This slice exercises human browsing, component docs, interaction, and agent assets together.
-
-## Completion Criteria For The Blueprint
-
-This blueprint is ready when:
-
-- the landing page job is defined;
-- top-level navigation is defined;
-- site map is defined;
-- page types are defined;
-- public/internal content boundaries are defined;
-- implementation order is defined;
-- a first vertical slice is selected.
+- 2026-07-10 v2: 상위 축 Docs/Patterns/Colors/Pro 확정 (Colors 신설, Showcase/Resources 흡수 유지, Templates→Pro), Download 를 앱 배포 표면으로 재정의(게이트 뒤), Production Exposure Policy·Section Completion Criteria 신설, Implementation Order 를 SFB horizon 에 정렬.
+- 2026-07-04 v1: 최초 blueprint — homepage job, 5축 nav, site map, page types 6종, first vertical slice.
