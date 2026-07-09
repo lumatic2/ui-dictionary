@@ -97,28 +97,6 @@ const FOUNDATION_SECTION_TITLES = [
   "Agent constraints",
 ] as const
 
-/**
- * Skeleton builder for a Docs > Foundations article: title + the six
- * Foundation section headings from the blueprint's page type contract, each
- * with an explicit empty-state slot. No source-quality content — that is
- * SFB3's job. Contract: docs/design-system/site-blueprint.md.
- */
-function foundationSkeleton({ filter, title, lead }: { filter: TermFilter; title: string; lead: string }): DocsArticlePageData {
-  return {
-    filter,
-    kind: "foundation",
-    breadcrumb: "UI Blocks / Docs",
-    title,
-    lead,
-    sections: FOUNDATION_SECTION_TITLES.map((sectionTitle) => ({
-      title: sectionTitle,
-      body: ["Content pending — fill criteria: source-quality"],
-    })),
-    apiRows: [],
-    onThisPage: [...FOUNDATION_SECTION_TITLES],
-    shell: true,
-  }
-}
 
 export const docsArticlePages = new Map<TermFilter, DocsArticlePageData>([
   [navFilter("docs-getting-started-setup"), {
@@ -937,41 +915,400 @@ export const docsArticlePages = new Map<TermFilter, DocsArticlePageData>([
     ],
     onThisPage: ["Component API", "Examples", "When to use", "State contract", "Keyboard behavior", "Responsive behavior", "Tabs vs disclosure", "Related terms"],
   }],
-  [navFilter("docs-foundations-color"), foundationSkeleton({
+  [navFilter("docs-foundations-color"), {
     filter: navFilter("docs-foundations-color"),
+    kind: "foundation",
+    breadcrumb: "UI Blocks / Docs",
     title: "Color",
-    lead: "색 foundation 문서 — primitive/semantic/component 3-tier color token, 대비, 라이트/다크 대응 기준을 정리합니다.",
-  })],
-  [navFilter("docs-foundations-typography"), foundationSkeleton({
+    lead: "Askewly Design의 Color는 3-tier 시스템입니다 — primitive 값, semantic 역할, 그리고 최소한의 component override tier로 구성됩니다. 컴포넌트와 앱 코드는 semantic 토큰만 참조해야 합니다. 이 간접 참조 덕분에 다크 모드나 향후 리테마가 find-and-replace가 아니라 토큰 하나만 바꾸는 작업이 됩니다.",
+    sections: [
+      {
+        title: "Tokens",
+        body: [
+          "primitive tier는 원시값만 담습니다: 12단계 violet-tinted gray ramp(`color.primitive.gray.1`–`12`), `color.primitive.white`, 소규모 브랜드 세트(`askewly.violet`, `orchid`, `lavender`, `sky`, `mint`), destructive 상태용 `color.primitive.red.9`입니다. gray ramp에는 토큰 소스에 명시된 사용 관례가 있습니다 — 1-2는 앱 배경, 3-5는 interactive 컴포넌트 상태, 6-8은 border, 9-10은 solid/low-contrast foreground, 11-12는 text입니다.",
+          "semantic tier는 컴포넌트가 실제로 참조하는 계층입니다: `surface.base/raised/overlay/muted/secondary/tint`, `text.default/muted/secondary/on-accent`, `action.primary/secondary/destructive`, `accent.base/foreground`, `border.default/input/focus/accent`. 각 semantic 토큰은 기본적으로 primitive 하나를 참조하고, 별도의 다크 모드 값을 가질 수 있습니다.",
+          "component tier는 의도적으로 얇습니다 — 현재는 `button.bg`, `button.text` 두 개뿐이고, 둘 다 semantic action/text 토큰을 그대로 alias합니다. semantic 역할로 override를 표현할 수 없을 때만 새 component-level 색 토큰을 정당화합니다.",
+        ],
+        code: "// tokens/askewly.tokens.json (semantic tier, abridged)\ncolor.semantic.surface.base      -> color.primitive.gray.1\ncolor.semantic.surface.raised    -> color.primitive.white\ncolor.semantic.text.default      -> color.primitive.gray.12\ncolor.semantic.action.primary    -> color.primitive.askewly.violet\ncolor.semantic.border.focus      -> color.primitive.askewly.violet",
+      },
+      {
+        title: "Usage examples",
+        body: [
+          "사이트 빌드에서는 이 semantic 토큰들이 CSS custom property(`src/tokens.css`)로 생성되고 Tailwind v4 theme에 바인딩됩니다. 그래서 복붙 가능한 형태는 raw hex 값이 아니라 Tailwind utility class입니다.",
+        ],
+        code: "<button class=\"rounded-lg bg-primary px-4 py-2 text-primary-foreground focus-visible:ring-2 focus-visible:ring-ring\">\n  Save changes\n</button>\n\n<div class=\"rounded-xl border border-border bg-card p-4 text-foreground\">\n  <p class=\"text-muted-foreground\">Card surface on top of the app background.</p>\n</div>\n\n<button class=\"bg-destructive text-primary-foreground\">Delete workspace</button>",
+      },
+      {
+        title: "Good vs bad",
+        body: [
+          "Good: 의도에 맞는 semantic 역할을 참조합니다 — raised panel에는 `bg-card`, 조용한 fill에는 `bg-muted`, 보조 텍스트에는 `text-muted-foreground`. Bad: 컴포넌트 마크업에 primitive 값(`#6F2DBD`, `oklch(0.88 0.015 270)`)을 그대로 하드코딩하는 것 — 다크 모드나 리테마가 그 표면을 바꿔야 하는 순간 깨집니다.",
+          "Good: ramp 자체의 사용 관례대로 `color.primitive.gray.9`–`10`을 solid/low-contrast foreground로 씁니다. Bad: text 전용인 `gray.11`/`12`를 배경 fill로, 배경 전용인 `gray.1`/`2`를 본문 텍스트로 쓰는 것 — 둘 다 ramp가 보장하려던 대비를 깨뜨립니다.",
+          "Good: 어떤 semantic 토큰도 맞지 않을 때만 새 component override를 추가합니다. Bad: 일회성 카드를 위해 완전히 새로운 semantic 역할(예: `surface.highlight`)을 만드는 것 — 이미 같은 용도로 존재하는 `surface.tint`나 `accent.base`를 조합하면 됩니다.",
+        ],
+      },
+      {
+        title: "Light / dark",
+        body: [
+          "다크 값은 semantic tier에만 존재하며, 각 토큰의 `$extensions['com.askewly.modes'].dark`에 있습니다. primitive와 component tier는 자체 다크 override를 절대 정의하지 않습니다 — 다크 모드는 전적으로 semantic tier의 관심사입니다.",
+          "대부분의 surface/text/border 토큰은 단순히 gray ramp의 양 끝을 맞바꿉니다: `surface.base`는 라이트에서 `gray.1`, 다크에서 `gray.12`입니다. `text.default`는 라이트에서 `gray.12`, 다크에서 `gray.1`입니다.",
+          "`action.primary`는 의도적인 예외입니다: 라이트 모드에서는 브랜드 violet에 흰색(`text.on-accent`) 텍스트지만, 다크 모드에서는 거의 흰색 fill(`gray.1`)에 거의 검은색 텍스트(`gray.12`)로 반전됩니다. 이는 브랜드 색을 어두운 배경에서 흐리게 죽이는 대신, primary 버튼이 다크 캔버스 위에서 최대 대비를 유지하도록 합니다.",
+        ],
+      },
+      {
+        title: "Implementation notes",
+        body: [
+          "참조 방향은 한 방향뿐입니다: component -> semantic -> primitive. component 토큰은 semantic 토큰을 가리킬 수 있고, semantic 토큰은 primitive를 가리킬 수 있지만 반대 방향은 없습니다. 컴포넌트는 semantic tier를 건너뛰고 primitive를 직접 가리켜서는 안 됩니다.",
+          "`src/tokens.css`와 `.dark` class 블록은 생성된 산출물입니다(`scripts/generate-tokens.mjs`) — 생성된 CSS가 아니라 `tokens/askewly.tokens.json`을 수정해야 합니다.",
+        ],
+      },
+      {
+        title: "Agent constraints",
+        body: [
+          "컴포넌트 코드에 hex나 `oklch()` 값을 하드코딩하지 않습니다 — 항상 대응하는 Tailwind utility(`bg-card`, `text-foreground`, `border-border` 등)로 해결해야 토큰 간접 참조가 유지됩니다.",
+          "일회성 시각 요구를 해결하려고 새 semantic 역할을 발명하지 않습니다. `surface.*`, `text.*`, `action.*`, `accent.*`, `border.*`를 먼저 확인하고 그 안에서 조합합니다.",
+          "화면을 배포하기 전에 `.dark` class를 적용해 렌더링하고, 단순히 반전된 라이트 화면이 아닌지 확인합니다 — `action.primary`를 비롯한 일부 토큰은 다크 모드에서 \"같은 색조에 밝기만 다름\"이 아니라 의도적으로 다르게 동작합니다.",
+        ],
+      },
+    ],
+    apiRows: [],
+    onThisPage: [...FOUNDATION_SECTION_TITLES],
+    shell: true,
+  }],
+  [navFilter("docs-foundations-typography"), {
     filter: navFilter("docs-foundations-typography"),
+    kind: "foundation",
+    breadcrumb: "UI Blocks / Docs",
     title: "Typography",
-    lead: "타이포그래피 foundation 문서 — type scale, weight, line-height, 반응형 규칙을 정리합니다.",
-  })],
-  [navFilter("docs-foundations-spacing-layout"), foundationSkeleton({
+    lead: "Askewly Design의 Typography는 작고 닫힌 세트입니다: 두 개의 font family, 5단계 type scale, 두 개의 font weight. 이렇게 작게 유지하는 이유는, 디자이너가 모든 heading 크기를 눈으로 일일이 확인하지 않아도 이 세트로 만든 화면이 시각적으로 일관되게 유지되기 때문입니다.",
+    sections: [
+      {
+        title: "Tokens",
+        body: [
+          "`typography.font.sans`는 기본 UI 폰트 스택입니다: `Geist, \"Noto Sans KR\", ui-sans-serif, system-ui, sans-serif` — Noto Sans KR이 스택에 들어있는 이유는 같은 UI 안의 한국어 카피가 어긋난 시스템 폰트로 fallback되지 않게 하기 위해서입니다. `typography.font.mono`는 `\"Geist Mono\", ui-monospace, monospace`로, 코드 블록과 token/id 형태의 텍스트에 씁니다.",
+          "`typography.scale`은 다섯 크기를 정의합니다: `sm`(14px), `base`(16px), `lg`(20px), `xl`(28px), `2xl`(40px). `typography.weight`는 정확히 두 weight만 정의합니다: `regular`(400), `medium`(500).",
+          "소스에는 아직 line-height, letter-spacing, 추가 weight 토큰이 없습니다 — 현재 SSOT에 포함되지 않은 항목이므로, 더 굵은 weight(예: bold/700)나 커스텀 line-height는 암묵적 기본값이 아니라 명시되지 않은 gap으로 취급해야 합니다.",
+        ],
+        code: "typography.font.sans   -> [\"Geist\", \"Noto Sans KR\", \"ui-sans-serif\", \"system-ui\", \"sans-serif\"]\ntypography.font.mono   -> [\"Geist Mono\", \"ui-monospace\", \"monospace\"]\ntypography.scale.sm    -> 14px   typography.scale.lg  -> 20px\ntypography.scale.base  -> 16px   typography.scale.xl  -> 28px\n                                  typography.scale.2xl -> 40px\ntypography.weight.regular -> 400   typography.weight.medium -> 500",
+      },
+      {
+        title: "Usage examples",
+        body: [
+          "이 값들은 Tailwind text-size utility와 생성된 두 custom property `--font-sans` / `--font-mono`로 해석됩니다. 그래서 실제 사용법은 raw CSS가 아니라 표준 Tailwind입니다.",
+        ],
+        code: "<h1 class=\"text-2xl font-medium text-foreground\">Workspace settings</h1>\n<p class=\"text-base text-muted-foreground\">Manage plan, members, and billing.</p>\n<code class=\"font-mono text-sm text-foreground\">npm run build</code>",
+      },
+      {
+        title: "Good vs bad",
+        body: [
+          "Good: 화면의 모든 타입에 대해 가장 가까운 scale step(`text-sm`, `text-base`, `text-lg`, `text-xl`, `text-2xl`)을 고릅니다. Bad: `text-[15px]`나 `text-[26px]`처럼 두 토큰 사이 어딘가에 있는 임의값을 \"보기 좋아서\"라는 이유만으로 쓰는 것입니다.",
+          "Good: 본문 강조나 compact heading에는 `font-medium`(500)을 씁니다. Bad: 마치 시스템의 일부인 것처럼 `font-bold`(700)를 쓰는 것 — 아직 `bold`/700 weight 토큰이 존재하지 않으므로, 이는 토큰을 쓰는 게 아니라 토큰을 발명하는 선택입니다.",
+        ],
+      },
+      {
+        title: "Light / dark",
+        body: [
+          "Typography 토큰은 색을 담지 않고 다크 모드 override도 없습니다 — font family, scale, weight는 라이트/다크에서 동일합니다. 모드 간 가독성은 전적으로 color tier의 관심사입니다: 크기만으로 대비를 보장한다고 가정하지 말고, 모든 type 토큰을 `text.*` semantic color(Color foundation 참조)와 짝지어야 합니다.",
+        ],
+      },
+      {
+        title: "Implementation notes",
+        body: [
+          "생성된 CSS는 `--font-sans`, `--font-mono`, `--font-size-sm|base|lg|xl|2xl`, `--font-weight-regular|medium`을 노출합니다 — 이들은 Tailwind v4 theme에 바인딩되어 있으므로, raw custom property가 아니라 `font-sans`, `text-lg`, `font-medium` 등이 의도된 사용 표면입니다.",
+        ],
+      },
+      {
+        title: "Agent constraints",
+        body: [
+          "위 다섯 scale step이나 두 weight에 없는 font-size/weight 값을 새 토큰 제안으로 표시하지 않고 도입하지 않습니다 — \"임팩트를 위해\" `text-[15px]`나 600/700 weight를 조용히 추가하지 않습니다.",
+          "더 굵은 weight를 강조용으로 쓸 수 있다고 가정하지 않습니다. 디자인 브리프가 bold 텍스트를 요구하면 이 SSOT 대비 gap으로 취급하고, weight 값을 추측하는 대신 그 사실을 말합니다.",
+        ],
+      },
+    ],
+    apiRows: [],
+    onThisPage: [...FOUNDATION_SECTION_TITLES],
+    shell: true,
+  }],
+  [navFilter("docs-foundations-spacing-layout"), {
     filter: navFilter("docs-foundations-spacing-layout"),
+    kind: "foundation",
+    breadcrumb: "UI Blocks / Docs",
     title: "Spacing & layout",
-    lead: "spacing/layout foundation 문서 — spacing scale, container, grid, breakpoint 기준을 정리합니다.",
-  })],
-  [navFilter("docs-foundations-motion"), foundationSkeleton({
+    lead: "Spacing는 4/8px grid를 따르고, radius는 하나의 base 값에 묶인 4단계 scale을 따릅니다. 코드에서 둘의 동작 방식은 다릅니다: radius 토큰은 실제 utility class로 Tailwind theme에 바인딩되어 있지만, spacing 토큰은 Tailwind class namespace가 아니라 참조용 관례입니다.",
+    sections: [
+      {
+        title: "Tokens",
+        body: [
+          "`dimension.space`는 4/8px grid 위 6단계를 정의합니다: `1` = 4px, `2` = 8px, `4` = 16px, `8` = 32px, `12` = 48px, `16` = 64px. 토큰 소스 자체 설명에 따르면 이것들은 \"reference variables only — not bound into the Tailwind theme namespace\"입니다. 즉 `p-space-4` 같은 utility class는 존재하지 않고, 이 토큰들은 구현자가 맞춰야 할 grid를 문서화하기 위해 존재합니다.",
+          "`dimension.radius`는 하나의 base radius(0.5rem)에서 파생된 4단계를 정의합니다: `sm` = 4px, `md` = 6px, `lg` = 8px, `xl` = 12px. spacing과 달리 radius는 Tailwind theme에 바인딩되어 있어서, `rounded-sm`/`rounded-md`/`rounded-lg`/`rounded-xl`이 이 값들에 직접 매핑됩니다.",
+        ],
+        code: "dimension.space.1  -> 4px    dimension.space.8  -> 32px\ndimension.space.2  -> 8px    dimension.space.12 -> 48px\ndimension.space.4  -> 16px   dimension.space.16 -> 64px\n\ndimension.radius.sm -> 4px   dimension.radius.lg -> 8px\ndimension.radius.md -> 6px   dimension.radius.xl -> 12px",
+      },
+      {
+        title: "Usage examples",
+        body: [
+          "spacing은 바인딩된 theme가 아니라 관례이므로, 복붙 가능한 패턴은 다음과 같습니다: Tailwind 자체 spacing utility 중 grid(4, 8, 16, 32, 48, 64px)에 맞는 배수를 고르고, 모서리에는 바인딩된 radius class를 그대로 씁니다.",
+        ],
+        code: "<section class=\"flex flex-col gap-4 rounded-xl border border-border bg-card p-8\">\n  <h2 class=\"text-lg font-medium\">Team members</h2>\n  <div class=\"grid gap-2\">\n    <button class=\"rounded-md bg-secondary px-4 py-2\">Invite member</button>\n  </div>\n</section>",
+      },
+      {
+        title: "Good vs bad",
+        body: [
+          "Good: `p-4`(16px), `gap-2`(8px), `p-8`(32px) — space 토큰이 설명하는 4/8 grid에 맞는 Tailwind 기본값입니다. Bad: 아무 layout 이유 없이 grid에서 벗어난 임의값 `p-[13px]`나 `gap-[10px]`.",
+          "Good: 정의된 4단계 radius에 맞춰 카드와 dialog에 `rounded-lg`나 `rounded-xl`을 씁니다. Bad: 4단계 scale 밖의 값인 `rounded-[10px]`나 `rounded-[2px]` — 화면마다 모서리 처리가 일관되지 않게 됩니다.",
+        ],
+      },
+      {
+        title: "Light / dark",
+        body: [
+          "토큰 소스에는 `dimension.space`도 `dimension.radius`도 다크 모드 override가 없습니다 — spacing과 corner radius는 모드와 무관합니다. 다크 모드는 색만 바꿔야 하고 padding, gap, radius는 절대 바꾸면 안 됩니다. 다크 모드 레이아웃이 라이트 모드와 다른 spacing을 필요로 한다면, 이는 보통 색 대비 문제를 잘못된 tier에서 우회하고 있다는 신호입니다.",
+        ],
+      },
+      {
+        title: "Implementation notes",
+        body: [
+          "Radius는 단일 `--radius` base(0.5rem)에서 `calc()` offset으로 파생됩니다(`--radius-sm: calc(var(--radius) - 4px)`부터 `--radius-xl: calc(var(--radius) + 4px)`까지). 그래서 base 값 하나만 바꾸면 네 단계가 함께 이동합니다.",
+          "Spacing은 아직 코드에 동등한 단일 소스가 없습니다 — 생성된 변수가 아니라 문서화된 grid이므로, 여기에 맞추는 것은 빌드가 강제하는 게 아니라 코드 리뷰 관례입니다.",
+        ],
+      },
+      {
+        title: "Agent constraints",
+        body: [
+          "`space-*` Tailwind class(`p-space-4`, `gap-space-2` 등)를 발명하지 않습니다 — theme에 존재하지 않습니다. Tailwind 내장 spacing utility를 쓰고 값을 4/8 grid 위에 유지합니다.",
+          "다섯 번째 radius step이나 임의 radius 값을 도입하지 않습니다. `rounded-sm`/`md`/`lg`/`xl`만 씁니다.",
+          "다크 모드 대비 문제의 우회책으로 spacing이나 radius를 조정하지 않습니다 — color 토큰을 고치는 것이 맞습니다.",
+        ],
+      },
+    ],
+    apiRows: [],
+    onThisPage: [...FOUNDATION_SECTION_TITLES],
+    shell: true,
+  }],
+  [navFilter("docs-foundations-motion"), {
     filter: navFilter("docs-foundations-motion"),
+    kind: "foundation",
+    breadcrumb: "UI Blocks / Docs",
     title: "Motion",
-    lead: "motion foundation 문서 — duration, easing, reduced-motion fallback 기준을 정리합니다.",
-  })],
-  [navFilter("docs-foundations-accessibility"), foundationSkeleton({
+    lead: "Askewly Design의 토큰 SSOT(`tokens/askewly.tokens.json`)에는 아직 duration/easing 토큰 tier가 없습니다. 이 문서는 발명한 규칙이 아니라, 사이트 코드에 실제로 존재하는 모션 관례(dialog/sheet 애니메이션, prefers-reduced-motion 처리)를 있는 그대로 정리합니다.",
+    sections: [
+      {
+        title: "Tokens",
+        body: [
+          "Color/Typography/Spacing와 달리 motion에는 아직 토큰 tier가 없습니다 — `dimension.duration`이나 `motion.easing` 같은 항목은 SSOT에 존재하지 않습니다. 따라서 현재 duration·easing 값은 컴포넌트 코드에 개별적으로 박혀 있는 실제 구현이며, 아직 재사용 가능한 토큰으로 승격되지 않은 상태입니다.",
+          "실제 코드에서 관찰되는 값은 다음과 같습니다: Dialog는 `duration-200`(200ms)에 `data-[state=open]:animate-in`/`data-[state=closed]:animate-out`을 씁니다. Sheet(side panel)는 열릴 때 420ms `cubic-bezier(0.16, 1, 0.3, 1)`, 닫힐 때 240ms `cubic-bezier(0.7, 0, 0.84, 0)`를 씁니다. 이것들은 선언된 토큰이 아니라 관찰된 관례이므로, 새 컴포넌트를 만들 때 참고할 기준선이지 고정된 SSOT 값은 아닙니다.",
+        ],
+        code: "// examples/ui-vocabulary-site/src/components/ui/dialog.tsx (관찰된 관례, 토큰 아님)\n\"duration-200 data-[state=open]:animate-in data-[state=open]:fade-in-0 data-[state=open]:zoom-in-95\"\n\n// examples/ui-vocabulary-site/src/index.css — sheet\nanimation: sheet-slide-in-bottom 420ms cubic-bezier(0.16, 1, 0.3, 1) both;\nanimation: sheet-slide-out-bottom 240ms cubic-bezier(0.7, 0, 0.84, 0) both;",
+      },
+      {
+        title: "Usage examples",
+        body: [
+          "새 overlay(Dialog, Popover, Dropdown menu 등)를 만들 때는 위 관찰된 값과 비슷한 범위(180-240ms 근처, ease 계열 curve)에서 시작하고, `data-[state=open]`/`data-[state=closed]` 같은 상태 attribute로 열림/닫힘 애니메이션을 분리합니다.",
+          "`prefers-reduced-motion: reduce` 사용자를 위해서는 애니메이션을 끄되 상태 변화 자체는 즉시 반영되어야 합니다 — 사이트는 이를 위해 두 가지 실제 패턴을 씁니다: CSS `@media (prefers-reduced-motion: reduce)` 블록으로 특정 클래스의 애니메이션을 무력화하는 방식(`src/index.css`), 그리고 React에서 `window.matchMedia(\"(prefers-reduced-motion: reduce)\")`를 구독해 컴포넌트 로직 자체를 분기하는 방식(`home-page.tsx`의 `usePrefersReducedMotion`).",
+        ],
+        code: "// examples/ui-vocabulary-site/src/index.css\n@media (prefers-reduced-motion: reduce) {\n  [data-slot=\"sheet-overlay\"],\n  [data-slot=\"sheet-content\"],\n  .visual-hover-surface,\n  .visual-gradient-shift {\n    /* animation/transition 무력화 */\n  }\n}\n\n// examples/ui-vocabulary-site/src/components/home-page.tsx\nfunction usePrefersReducedMotion() {\n  const [reduced, setReduced] = useState(() =>\n    window.matchMedia(\"(prefers-reduced-motion: reduce)\").matches,\n  )\n  // ...change 이벤트로 갱신\n  return reduced\n}",
+      },
+      {
+        title: "Good vs bad",
+        body: [
+          "Good: overlay가 열리고 닫힐 때 서로 다른 duration/easing을 쓰는 것(예: 열림 200ms ease-out, 닫힘 그보다 짧게) — 실제 Dialog/Sheet 구현이 이 패턴을 따릅니다. Bad: 열림과 닫힘에 같은 curve를 그대로 재사용해 닫힘이 굼뜨게 느껴지는 것.",
+          "Good: showcase 데모처럼 반복·장식성 애니메이션(`visual-*` 클래스)을 `prefers-reduced-motion: reduce`에서 명시적으로 끄는 것. Bad: 상태 전달에 필요한 애니메이션(예: Dialog가 열렸다는 시각 신호)까지 전부 제거해 사용자가 상태 변화 자체를 놓치게 만드는 것 — reduced-motion 용어 자체가 \"모션을 줄인다고 상태 변화를 숨기면 안 된다\"고 명시합니다.",
+        ],
+      },
+      {
+        title: "Light / dark",
+        body: [
+          "duration과 easing에는 색이 없으므로 라이트/다크 모드에 따라 값이 달라지지 않습니다. 다만 애니메이션 도중 보이는 표면(overlay backdrop, glow, shadow)의 색은 Color foundation의 semantic 토큰을 따라야 하며, 다크 모드에서 backdrop 대비가 라이트 모드와 동일하게 읽히는지 별도로 확인해야 합니다.",
+        ],
+      },
+      {
+        title: "Implementation notes",
+        body: [
+          "모션 관련 코드는 두 곳에 흩어져 있습니다: Radix 기반 컴포넌트(`src/components/ui/dialog.tsx` 등)의 Tailwind `animate-in`/`animate-out` 유틸리티, 그리고 showcase 데모용 커스텀 keyframe(`src/index.css`의 `visual-*`, `sheet-*` 애니메이션). 전자는 컴포넌트 상태(`data-state`)에 결속되어 있고, 후자는 장식성 반복 애니메이션입니다.",
+          "외부 모션 기법 레퍼런스(GSAP ScrollTrigger 등)는 `knowledge/motion-references.md`에 북마크되어 있습니다 — 이 문서는 showcase 데모 제작 시 참고하는 기법 목록이며, 토큰이나 규칙의 SSOT는 아닙니다.",
+        ],
+      },
+      {
+        title: "Agent constraints",
+        body: [
+          "존재하지 않는 `motion.duration.*`나 `motion.easing.*` 토큰을 참조하거나 발명하지 않습니다 — 현재 SSOT에는 motion tier가 없다는 사실을 gap으로 보고하고, 대신 이 문서에 정리된 관찰된 값(Dialog 200ms, Sheet 240-420ms)을 참고선으로 씁니다.",
+          "반복·장식성 애니메이션을 추가할 때는 반드시 `prefers-reduced-motion: reduce`에서 끄거나 정지시키는 처리를 함께 구현합니다 — 애니메이션만 추가하고 reduced-motion 분기를 빠뜨리지 않습니다.",
+          "reduced-motion 처리를 이유로 상태 변화 자체(열림/닫힘, 성공/실패, 선택됨)를 사용자에게 안 보이게 만들지 않습니다 — 애니메이션만 제거하고 최종 상태는 즉시, 명확하게 반영합니다.",
+        ],
+      },
+    ],
+    apiRows: [],
+    onThisPage: [...FOUNDATION_SECTION_TITLES],
+    shell: true,
+  }],
+  [navFilter("docs-foundations-accessibility"), {
     filter: navFilter("docs-foundations-accessibility"),
+    kind: "foundation",
+    breadcrumb: "UI Blocks / Docs",
     title: "Accessibility",
-    lead: "접근성 foundation 문서 — focus-visible, ARIA, keyboard, screen reader 기준을 정리합니다.",
-  })],
-  [navFilter("docs-foundations-dark-mode"), foundationSkeleton({
+    lead: "Askewly Design의 접근성 기준은 두 곳에서 파생됩니다 — 토큰 SSOT의 대비/포커스 관련 색 토큰, 그리고 WCAG의 일반 원칙입니다. 이 문서는 새 규칙을 만들지 않고, 이미 존재하는 토큰과 표준을 화면 구현에 연결합니다.",
+    sections: [
+      {
+        title: "Tokens",
+        body: [
+          "포커스 링은 전용 semantic 토큰을 가집니다: `color.semantic.border.focus`는 라이트에서 `askewly.violet`, 다크에서 `askewly.lavender`로 값이 바뀝니다. 이는 `--ring` custom property로 생성되고, Tailwind에서는 `focus-visible:ring-ring`/`focus-visible:border-ring` 형태로 쓰입니다.",
+          "대비가 걸린 색 쌍(surface/text)은 Color foundation과 동일합니다: `surface.base`+`text.default`, `surface.raised`+`text.default`, `action.primary`+`text.on-accent`, `surface.secondary`+`text.secondary`. 접근성 관점에서 이 문서가 강조하는 것은, 이 쌍을 벗어나 임의 조합(예: `surface.muted` 위에 `text.on-accent`)을 쓰면 SSOT가 검증한 대비 관계 밖으로 나간다는 점입니다.",
+        ],
+        code: "// tokens/askewly.tokens.json\ncolor.semantic.border.focus  -> askewly.violet   (dark: askewly.lavender)\n\n// 생성된 CSS\n--ring: #6F2DBD;              /* light */\n--ring: #B298DC;               /* .dark (askewly.lavender) */\n\n// Tailwind 사용\nfocus-visible:border-ring focus-visible:ring-ring/50",
+      },
+      {
+        title: "Usage examples",
+        body: [
+          "실제 버튼 구현(`src/components/ui/button.tsx`)은 focus-visible 상태와 invalid 상태를 별도 semantic 신호로 분리합니다 — 색만 바뀌는 게 아니라 outline(`border-ring`)과 ring(`ring-ring/50`)이 함께 나타납니다.",
+          "스크린리더 전용 텍스트, ARIA live region, invalid 상태 같은 패턴은 UI Vocabulary에 이미 term으로 등록되어 있습니다: `sr-only`, `aria-live`, `aria-invalid`, `focus-trap`, `color-contrast`, `focus-ring`. 화면을 만들 때는 이 용어들이 요구하는 상태를 색 토큰과 함께 구현합니다.",
+        ],
+        code: "<button class=\"outline-none focus-visible:border-ring focus-visible:ring-[3px] focus-visible:ring-ring/50 aria-invalid:border-destructive aria-invalid:ring-destructive/20\">\n  Save changes\n</button>",
+      },
+      {
+        title: "Good vs bad",
+        body: [
+          "Good: 모든 interactive element에 `focus-visible:ring-ring` 계열 포커스 신호를 남깁니다 — hover 색만 바꾸고 keyboard focus 신호를 생략하지 않습니다. Bad: `outline-none`만 적용하고 대체 focus 신호를 주지 않는 것 — 이는 키보드 사용자에게 현재 위치를 완전히 숨깁니다.",
+          "Good: `text.default`/`text.muted`/`text.secondary`처럼 이미 검증된 semantic text 색을 그 짝이 되는 surface 위에서만 씁니다. Bad: 대비를 눈대중으로 판단해 `text.muted`를 `surface.overlay`가 아닌 임의의 진한 배경 위에 얹는 것 — SSOT가 보장하는 짝을 깨뜨립니다.",
+          "Good: destructive action에 `action.destructive` 색과 함께 \"Delete\", \"Remove access\" 같은 명확한 동사 label을 같이 씁니다. Bad: 색만 빨갛게 바꾸고 label은 \"OK\"로 남겨 두는 것 — 색맹 사용자나 저시력 사용자에게 위험 신호가 전달되지 않습니다.",
+        ],
+      },
+      {
+        title: "Light / dark",
+        body: [
+          "포커스 링 색은 라이트/다크에서 다릅니다(`askewly.violet` vs `askewly.lavender`) — 다크 배경에서 violet 링이 충분히 도드라지지 않기 때문에 별도 값을 씁니다. 새 컴포넌트를 다크 모드에서 검증할 때는 focus-visible 상태가 실제로 눈에 띄는지 별도로 확인해야 합니다.",
+          "text/surface 대비 관계도 라이트/다크에서 값이 다르지만(Color foundation의 gray ramp 반전 참고) 관계 자체(어떤 text 토큰이 어떤 surface 토큰과 짝인지)는 유지됩니다 — 짝이 바뀌는 게 아니라 각 짝의 실제 색 값만 반전됩니다.",
+        ],
+      },
+      {
+        title: "Implementation notes",
+        body: [
+          "포커스 링은 `border.focus` 토큰 하나로 `--ring` custom property가 생성되고, `tailwind.config`/`@theme`을 통해 `ring-ring`, `border-ring` 두 utility 계열로 노출됩니다. 별도의 accessibility 전용 토큰 tier는 없습니다 — 접근성은 Color(대비·포커스 링)와 Motion(reduced-motion) foundation에 걸쳐 있는 관심사입니다.",
+          "WCAG 자체의 수치 기준(예: 본문 텍스트 4.5:1, 큰 텍스트/UI 컴포넌트 3:1 대비)은 이 SSOT에 토큰으로 인코딩되어 있지 않습니다 — 이는 토큰이 아니라 W3C WCAG 2.1의 일반 원칙이며, 화면 구현 시 별도로 확인해야 하는 외부 기준입니다.",
+        ],
+      },
+      {
+        title: "Agent constraints",
+        body: [
+          "`outline-none`을 추가할 때는 반드시 그와 짝을 이루는 `focus-visible:ring-*`/`focus-visible:border-*`를 함께 추가합니다 — 포커스 신호를 지우기만 하고 대체하지 않는 조합은 만들지 않습니다.",
+          "색 하나만으로 상태(성공/실패/위험)를 전달하지 않습니다 — label, 아이콘, 텍스트 중 최소 하나를 색과 함께 씁니다(Copy button, Dialog 문서의 관례와 동일).",
+          "이 문서에 없는 새 접근성 규칙(예: 특정 애니메이션 duration이 접근성상 안전하다는 주장)을 발명하지 않습니다 — 근거가 필요하면 tokens.json, 이 문서, 또는 WCAG 원문을 인용합니다.",
+        ],
+      },
+    ],
+    apiRows: [],
+    onThisPage: [...FOUNDATION_SECTION_TITLES],
+    shell: true,
+  }],
+  [navFilter("docs-foundations-dark-mode"), {
     filter: navFilter("docs-foundations-dark-mode"),
+    kind: "foundation",
+    breadcrumb: "UI Blocks / Docs",
     title: "Dark mode",
-    lead: "다크 모드 foundation 문서 — surface/border/focus ring 반전 규칙과 검증 기준을 정리합니다.",
-  })],
-  [navFilter("docs-foundations-tokens"), foundationSkeleton({
+    lead: "Askewly Design의 다크 모드는 semantic tier 전용 관심사입니다. 다크 모드를 \"라이트 화면을 반전시킨 것\"으로 취급하지 않는 것이 핵심 원칙입니다 — 몇몇 semantic 토큰은 라이트와 다크에서 구조적으로 다르게 동작합니다.",
+    sections: [
+      {
+        title: "Tokens",
+        body: [
+          "다크 값은 각 semantic 토큰의 `$extensions['com.askewly.modes'].dark`에 정의됩니다. primitive tier(`color.primitive.*`)와 component tier(`color.component.*`)는 다크 override를 전혀 갖지 않습니다 — 다크 모드 전환은 오직 semantic 토큰이 primitive 참조를 바꾸는 방식으로만 일어납니다.",
+          "대부분의 semantic 토큰은 gray ramp의 양 끝을 맞바꾸는 방식으로 다크 값을 가집니다: `surface.base`(`gray.1` → `gray.12`), `surface.raised`/`overlay`(`white` → `gray.11`), `text.default`(`gray.12` → `gray.1`), `border.default`/`input`(`gray.6` → `gray.10`).",
+        ],
+        code: "// tokens/askewly.tokens.json — 대칭 반전 패턴\ncolor.semantic.surface.base\n  light: color.primitive.gray.1\n  dark:  color.primitive.gray.12\n\ncolor.semantic.text.default\n  light: color.primitive.gray.12\n  dark:  color.primitive.gray.1",
+      },
+      {
+        title: "Usage examples",
+        body: [
+          "구현에서는 이 반전이 `.dark` class 블록으로 생성됩니다(`src/tokens.css`). 컴포넌트 코드는 모드를 분기하지 않고 항상 같은 Tailwind utility(`bg-card`, `text-foreground`)를 쓰며, 실제 값 전환은 CSS custom property가 담당합니다.",
+        ],
+        code: "/* examples/ui-vocabulary-site/src/tokens.css (생성됨) */\n:root { --background: oklch(0.985 0 0); --foreground: oklch(0.16 0.015 270); }\n.dark { --background: oklch(0.16 0.015 270); --foreground: oklch(0.985 0 0); }\n\n<!-- 컴포넌트 코드는 모드 분기 없이 동일 -->\n<div class=\"bg-background text-foreground\">...</div>",
+      },
+      {
+        title: "Good vs bad",
+        body: [
+          "Good: `action.primary`처럼 의미상 다크 모드에서 다르게 동작해야 하는 토큰은 실제로 다르게 정의합니다 — 라이트에서는 brand violet + 흰 텍스트, 다크에서는 거의 흰 fill + 거의 검은 텍스트로 반전되어 다크 캔버스에서도 최대 대비를 유지합니다. Bad: 이런 예외 없이 모든 토큰이 단순 명암 반전만 한다고 가정하고 새 컴포넌트를 만드는 것 — `action.primary`를 쓰는 primary 버튼은 그 가정이 깨집니다.",
+          "Good: 새 화면을 다크 모드로 렌더링해 \"밝은 화면의 색만 반전된 것\"처럼 보이는지 실제로 확인합니다. Bad: 라이트 모드에서만 디자인하고 다크는 자동으로 맞겠거니 가정하는 것 — border, muted text, hover surface, focus ring이 각각 별도로 검증되어야 합니다.",
+        ],
+      },
+      {
+        title: "Light / dark",
+        body: [
+          "이 문서 자체가 다크 모드 동작을 다루므로, 핵심 요지는: 표면/텍스트/보더 대부분은 대칭 반전(`gray.1` ↔ `gray.12` 등)이고, `action.primary`(그리고 이를 사용하는 컴포넌트)는 의도적 비대칭 반전이라는 점입니다. `action.secondary`도 라이트에서 `askewly.orchid`, 다크에서 `askewly.mint`로 색상 자체가 바뀌는 비대칭 사례입니다.",
+        ],
+      },
+      {
+        title: "Implementation notes",
+        body: [
+          "다크 모드는 `.dark` class 하나로 토글됩니다 — `scripts/generate-tokens.mjs`가 `tokens/askewly.tokens.json`의 `$extensions['com.askewly.modes'].dark` 값들을 모아 `.dark { ... }` 블록으로 생성합니다. 이 생성된 블록을 손으로 고치지 않고, 소스 토큰을 고칩니다.",
+          "다크 모드 전용 컴포넌트 분기(`if (isDark) ...`)는 필요하지 않습니다 — 모든 반전은 CSS custom property 레벨에서 해결되므로, 컴포넌트는 항상 semantic Tailwind utility만 참조하면 됩니다.",
+        ],
+      },
+      {
+        title: "Agent constraints",
+        body: [
+          "다크 모드를 \"모든 색의 명암을 뒤집는 필터\"로 취급하지 않습니다 — `action.primary`/`action.secondary`처럼 색상 자체가 바뀌는 토큰이 있다는 것을 전제로 화면을 검증합니다.",
+          "새 semantic 토큰을 추가할 때 다크 override를 빠뜨리지 않습니다 — 라이트 값만 정의하고 다크 값을 비워두면 다크 모드에서 라이트 값이 그대로 새어 나옵니다.",
+          "화면을 완성으로 보고하기 전에 `.dark` class를 적용한 스크린샷/렌더로 실제 확인합니다 — 라이트 모드에서만 보고 다크는 \"토큰이 알아서 처리하겠지\"라고 가정하지 않습니다.",
+        ],
+      },
+    ],
+    apiRows: [],
+    onThisPage: [...FOUNDATION_SECTION_TITLES],
+    shell: true,
+  }],
+  [navFilter("docs-foundations-tokens"), {
     filter: navFilter("docs-foundations-tokens"),
+    kind: "foundation",
+    breadcrumb: "UI Blocks / Docs",
     title: "Tokens",
-    lead: "토큰 foundation 문서 — primitive → semantic → component 3-tier 토큰 구조와 참조 규칙을 정리합니다.",
-  })],
+    lead: "Askewly Design의 모든 디자인 값은 하나의 SSOT 파일 `tokens/askewly.tokens.json`에서 시작합니다. 이 문서는 그 파일의 3-tier 구조, 참조 방향 규칙, 그리고 CSS로 생성되는 파이프라인을 설명합니다.",
+    sections: [
+      {
+        title: "Tokens",
+        body: [
+          "구조는 3-tier입니다: primitive(원시값) → semantic(역할) → component(최소 override). 현재 SSOT에 실제로 존재하는 tier는 color 뿐입니다 — `color.primitive`, `color.semantic`, `color.component`. dimension(`space`, `radius`)과 typography(`font`, `scale`, `weight`)는 tier 구분 없이 바로 값을 정의하는 flat 구조입니다.",
+          "color tier 예시: primitive는 `color.primitive.gray.1`–`12`, `askewly.violet` 같은 원시값만 가집니다. semantic은 `color.semantic.surface.base`처럼 역할 이름으로 primitive를 참조합니다. component는 `color.component.button.bg`처럼 semantic을 다시 참조하는 얇은 override tier입니다.",
+        ],
+        code: "// tokens/askewly.tokens.json 구조\ncolor.primitive.gray.1        (원시값, 참조 없음)\ncolor.semantic.surface.base   -> color.primitive.gray.1\ncolor.component.button.bg     -> color.semantic.action.primary\n\n// dimension/typography는 tier 없이 flat\ndimension.space.4   = 16px\ndimension.radius.lg = 8px\ntypography.scale.base = 16px",
+      },
+      {
+        title: "Usage examples",
+        body: [
+          "화면 코드는 이 JSON을 직접 import하지 않습니다 — `scripts/generate-tokens.mjs`가 `tokens/askewly.tokens.json`을 읽어 `examples/ui-vocabulary-site/src/tokens.css`(CSS custom property + `.dark` 블록)를 생성하고, 이 파일이 Tailwind v4 `@theme`에 바인딩되어 `bg-card`, `text-foreground`, `rounded-lg` 같은 utility class로 노출됩니다.",
+          "새 토큰이 필요하면 순서는 항상 같습니다: `tokens/askewly.tokens.json`을 수정 → `node scripts/generate-tokens.mjs` 실행 → 생성된 `tokens.css`가 갱신 → Tailwind utility가 자동으로 새 값을 반영.",
+        ],
+        code: "// 새 semantic 토큰 추가 흐름\n1. tokens/askewly.tokens.json 에 color.semantic.surface.new 추가\n2. node scripts/generate-tokens.mjs 실행\n3. src/tokens.css 에 --new 커스텀 프로퍼티 생성 확인\n4. Tailwind theme 매핑 후 bg-new 같은 utility 사용",
+      },
+      {
+        title: "Good vs bad",
+        body: [
+          "Good: 항상 `tokens/askewly.tokens.json`을 수정하고 생성 스크립트를 다시 돌립니다. Bad: 생성된 `src/tokens.css`나 `.dark` 블록을 손으로 직접 고치는 것 — 다음 생성 실행에서 그 수정이 덮어써져 사라집니다.",
+          "Good: component가 semantic 토큰만 참조하고, semantic 토큰이 primitive를 참조하는 한 방향 체인을 지킵니다. Bad: component 코드가 semantic을 건너뛰고 primitive(`color.primitive.gray.9` 등)를 직접 참조하는 것 — 3-tier 구조가 주는 재테마 가능성을 무력화합니다.",
+          "Good: 기존 semantic 역할(`surface.*`, `text.*`, `action.*`, `accent.*`, `border.*`)로 새 요구를 표현할 수 있는지 먼저 확인합니다. Bad: 확인 없이 바로 새 semantic 토큰을 추가하는 것 — component tier가 \"의도적으로 얇게\" 유지되는 정책과 어긋납니다.",
+        ],
+      },
+      {
+        title: "Light / dark",
+        body: [
+          "다크 모드 값은 semantic tier에서만 `$extensions['com.askewly.modes'].dark`로 정의됩니다. primitive와 component tier는 다크 override 필드를 갖지 않습니다 — 다크 모드는 구조적으로 semantic tier의 책임입니다(자세한 반전 규칙은 Dark mode foundation 참조).",
+        ],
+      },
+      {
+        title: "Implementation notes",
+        body: [
+          "`tokens/askewly.tokens.json`의 최상단 `$description`은 이 파일이 \"Askewly Design token SSOT (DTCG-compatible, stable 2025.10 subset)\"이며, tier 규칙이 \"component -> semantic -> primitive, one direction only\"임을 명시합니다. 생성 산출물은 두 곳입니다: DESIGN.md frontmatter, `examples/ui-vocabulary-site/src/tokens.css`.",
+          "현재 SSOT에는 motion(duration/easing) tier가 없습니다 — Motion foundation 문서가 이 gap과 그 대신 코드에 존재하는 관찰된 관례를 별도로 다룹니다.",
+        ],
+      },
+      {
+        title: "Agent constraints",
+        body: [
+          "생성된 파일(`src/tokens.css`, `.dark` 블록, DESIGN.md frontmatter의 토큰 섹션)을 직접 편집하지 않습니다 — 항상 `tokens/askewly.tokens.json`을 고치고 생성 스크립트를 다시 실행합니다.",
+          "참조 방향을 거스르지 않습니다 — component가 primitive를 직접 참조하거나, semantic이 component를 참조하는 코드를 만들지 않습니다.",
+          "SSOT에 없는 tier(motion duration/easing, line-height, letter-spacing 등)를 있는 것처럼 참조하지 않습니다 — 필요하면 gap으로 보고합니다.",
+        ],
+      },
+    ],
+    apiRows: [],
+    onThisPage: [...FOUNDATION_SECTION_TITLES],
+    shell: true,
+  }],
   [navFilter("docs-agent-recipes"), {
     filter: navFilter("docs-agent-recipes"),
     kind: "agent-recipe",
