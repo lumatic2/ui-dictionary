@@ -8,6 +8,7 @@ import {
   getReadableTextColor,
   type HomePageDestination,
 } from "@/components/home-page"
+import { isShellVisible } from "@/lib/exposure"
 import { paletteSeedLibrary, type PaletteSeed } from "@/lib/palette-generator"
 import { cn } from "@/lib/utils"
 
@@ -214,14 +215,16 @@ export function ColorsPage({ onNavigate }: { onNavigate: (destination: HomePageD
             <ColorPaletteGeneratorDemo />
             <div className="flex flex-wrap items-center justify-between gap-3 rounded-md border bg-card p-4 text-sm text-muted-foreground">
               <p>Every color traces back to a named seed source, shown when you inspect a swatch.</p>
-              <Button
-                className="h-9 rounded-lg"
-                type="button"
-                variant="outline"
-                onClick={() => onNavigate({ page: "docs", filter: "nav:docs-foundations-color" })}
-              >
-                Read the Color foundation
-              </Button>
+              {isShellVisible(true) && (
+                <Button
+                  className="h-9 rounded-lg"
+                  type="button"
+                  variant="outline"
+                  onClick={() => onNavigate({ page: "docs", filter: "nav:docs-foundations-color" })}
+                >
+                  Read the Color foundation
+                </Button>
+              )}
             </div>
           </div>
         ) : (
@@ -233,14 +236,16 @@ export function ColorsPage({ onNavigate }: { onNavigate: (destination: HomePageD
             </div>
             <div className="flex flex-wrap items-center justify-between gap-3 rounded-md border bg-card p-4 text-sm text-muted-foreground">
               <p>Every palette traces back to a named curated seed — the same in-repo library that powers the Generator.</p>
-              <Button
-                className="h-9 rounded-lg"
-                type="button"
-                variant="outline"
-                onClick={() => onNavigate({ page: "docs", filter: "nav:docs-foundations-color" })}
-              >
-                Read the Color foundation
-              </Button>
+              {isShellVisible(true) && (
+                <Button
+                  className="h-9 rounded-lg"
+                  type="button"
+                  variant="outline"
+                  onClick={() => onNavigate({ page: "docs", filter: "nav:docs-foundations-color" })}
+                >
+                  Read the Color foundation
+                </Button>
+              )}
             </div>
           </div>
         )}

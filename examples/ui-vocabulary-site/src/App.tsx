@@ -112,9 +112,10 @@ function App() {
   const filteredTerms = useMemo(() => searchResults.map((result) => result.term), [searchResults])
   const isPlusLanding = pageMode === "plus" && filter === navFilter("plus-all") && query.trim().length === 0 && !activeUseCase
   const isDocsLanding = pageMode === "docs" && filter === navFilter("docs-all") && query.trim().length === 0 && !activeUseCase
-  const docsArticlePage = pageMode === "docs" && query.trim().length === 0 && !activeUseCase
+  const docsArticlePageCandidate = pageMode === "docs" && query.trim().length === 0 && !activeUseCase
     ? docsArticlePages.get(filter)
     : undefined
+  const docsArticlePage = docsArticlePageCandidate && !isShellVisible(docsArticlePageCandidate.shell) ? undefined : docsArticlePageCandidate
   const activeDocsSection = useMemo(
     () => pageMode === "docs" && !isDocsLanding && !docsArticlePage ? docsSections.find((section) => section.filter === filter) ?? null : null,
     [docsArticlePage, filter, isDocsLanding, pageMode]
@@ -520,7 +521,7 @@ function App() {
   const siteTopNav: Array<{ label: string; active: boolean; onClick: () => void }> = [
     { label: "Docs", active: pageMode === "docs" && filter === navFilter("docs-getting-started-setup"), onClick: () => navigateFromHome({ page: "docs", filter: "nav:docs-getting-started-setup" }) },
     { label: "Patterns", active: pageMode === "plus" && filter === navFilter("plus-marketing"), onClick: () => navigateFromHome({ page: "plus", filter: "nav:plus-marketing" }) },
-    ...(isShellVisible(true) ? [{ label: "Colors", active: pageMode === "colors", onClick: () => navigateFromHome({ page: "colors" }) }] : []),
+    { label: "Colors", active: pageMode === "colors", onClick: () => navigateFromHome({ page: "colors" }) },
     { label: "Pro Plan", active: pageMode === "pro", onClick: () => navigateFromHome({ page: "pro" }) },
   ]
   const noExploreLayout = pageMode === "home" || pageMode === "download" || pageMode === "pro" || pageMode === "colors"
@@ -1181,7 +1182,7 @@ function getDefaultFilterForPage(page: PageMode): TermFilter {
 
 function parsePageParam(value: string | null, filter: TermFilter): PageMode {
   if (value === "colors") {
-    return isShellVisible(true) ? "colors" : "home"
+    return "colors"
   }
   if (value === "download") {
     return isShellVisible(true) ? "download" : "home"

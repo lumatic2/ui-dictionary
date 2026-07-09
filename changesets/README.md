@@ -33,3 +33,4 @@
 | 31 | 20260710-colors-axis-shell | 2026-07-10 | Dev-only Colors axis shell: generator promotion reuse and palettes library skeleton | 4/4 | complete |
 | 32 | 20260710-pro-download-shell | 2026-07-10 | Dev-only Pro subsections skeleton and Download app distribution skeleton | 4/4 | complete |
 | 33 | 20260710-colors-palettes-library | 2026-07-10 | Colors Palettes view fills with 13 curated seed palettes, copy toasts, and export dialog reuse | 4/4 | complete |
+| 34 | 20260710-colors-axis-public | 2026-07-10 | Colors axis opens to production with shell-leak fixes and Chrome evidence | 4/5 | in_progress |
