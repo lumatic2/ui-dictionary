@@ -1317,23 +1317,48 @@ export const docsArticlePages = new Map<TermFilter, DocsArticlePageData>([
     lead: "Codex/Claude Code 같은 코딩 에이전트가 UI Dictionary를 근거로 화면을 만들 때 참고하는 레시피 표면입니다. llms.txt 실자산과 사람이 읽는 레시피/검증 체크리스트를 연결합니다.",
     sections: [
       {
-        title: "llms.txt asset",
+        title: "What are Agent Recipes",
         body: [
-          "에이전트가 바로 읽을 수 있는 자산은 https://ui.askewly.com/llms.txt 입니다. 이 페이지는 그 자산을 사람이 읽는 형태로 안내하는 표면입니다.",
-          "Content pending — fill criteria: source-quality",
+          "레시피는 Codex/Claude Code 같은 코딩 에이전트가 특정 UI 블록(버튼, 팝오버, 커맨드 검색, 랜딩 히어로, 쇼케이스 카드)을 구현할 때 참고하는 구조화된 마크다운 문서입니다. 각 레시피는 `recipes/<pattern_group>/<id>.md` 경로에 있고, frontmatter(id, pattern_group, tokens_used, code_asset 등)와 8개 고정 섹션(Intent, Anatomy, States, Variants, Code, Checks, Anti-patterns, Agent notes)으로 구성됩니다. 형식 계약 전체는 `docs/design-system/recipe-format.md`가 정본입니다.",
+          "소비 흐름은 3단계입니다: ① 에이전트가 https://ui.askewly.com/llms.txt 에 진입해 토큰·택소노미·레시피 자산의 인덱스를 확인합니다. ② 필요한 레시피 파일과 `tokens/askewly.tokens.json`을 로드해 frontmatter의 `tokens_used`(semantic/component 경로만)와 본문의 Anatomy/States/Checks/Anti-patterns를 읽습니다. ③ 그 결과로 나온 화면 코드는 색상 hex/px 리터럴을 하나도 포함하지 않고, semantic 또는 component 토큰 클래스(`bg-card`, `text-foreground` 등)만 참조합니다.",
+          "llms.txt는 손으로 쓰지 않습니다 — `scripts/generate-llms-txt.mjs`가 tokens/taxonomy/contracts/recipes 네 섹션을 실존 파일에서 생성합니다. 이 표면은 그 생성 자산을 사람이 읽는 형태로 안내만 합니다.",
         ],
       },
       {
         title: "Recipe list",
-        body: ["Content pending — fill criteria: source-quality"],
+        body: [
+          "현재 레시피는 5종이며, 각각 하나의 `pattern_group`(10종 고정 어휘 중 하나)에 속합니다.",
+          "- **Button** (`forms`) — 단일·즉시 액션을 트리거하는 버튼. primary/secondary/destructive/ghost/link 5개 variant와 고정 radius/height 스케일을 규정합니다.",
+          "- **Topbar Command Search** (`navigation`) — 토글되는 아이콘이 전체 너비 검색 입력창으로 확장되고 그 아래 실시간 제안 팝오버가 뜨는 topbar 블록. 커맨드 팔레트보다 가벼운 진입점입니다.",
+          "- **Popover** (`overlays`) — 트리거에 고정된 작은 플로팅 패널. dialog보다 가볍고 tooltip보다 상호작용성이 큰 콘텐츠(폼 필드, 짧은 설정 블록)에 씁니다. 다른 레시피(Topbar Command Search 등)가 조립해 쓰는 합성 원자입니다.",
+          "- **Showcase Card** (`application-ui`) — 헤더(아이콘·제목·한 줄 설명) 아래 실제 인터랙션 데모가 실행되는 shell. 홈 쇼케이스 아틀라스 카드 전부가 이 계약을 따릅니다.",
+          "- **Landing Hero** (`marketing`) — 공개 홈페이지의 첫 뷰포트 블록. 중앙 정렬 제목·부제·CTA 2개·단일 proof surface(검색창 등)로 구성되고 split hero/블롭 배경을 금지합니다.",
+        ],
+      },
+      {
+        title: "llms.txt asset",
+        body: [
+          "에이전트가 바로 읽을 수 있는 자산은 https://ui.askewly.com/llms.txt 입니다. 이 페이지는 그 자산을 사람이 읽는 형태로 안내하는 표면입니다. 아래 링크는 llms.txt에 실제로 나열된 것과 동일하며, 전부 실존 자산으로 검증되어 있습니다(2026-07-10 확인).",
+          "**Tokens** — [tokens/askewly.tokens.json](https://ui.askewly.com/llms/tokens/askewly.tokens.json): 3-tier 디자인 토큰(primitive/semantic/component), 모든 색상·치수·타이포그래피의 단일 출처.",
+          "**Taxonomy** — [pattern-taxonomy.md](https://ui.askewly.com/llms/docs/design-system/pattern-taxonomy.md): 7 surfaces × 10 pattern groups × 57 groups 분류 정본. [groups.yml](https://ui.askewly.com/llms/docs/ui-vocabulary/groups.yml): 각 용어가 참조하는 group 축 데이터.",
+          "**Contracts** — [recipe-format.md](https://ui.askewly.com/llms/docs/design-system/recipe-format.md): 레시피 포맷 계약(intent/anatomy/tokens/states/checks/anti-patterns). [agent-asset-model.md](https://ui.askewly.com/llms/docs/design-system/agent-asset-model.md): 에이전트가 토큰·택소노미·레시피를 소비하는 방법.",
+          "**Recipes** — [button](https://ui.askewly.com/llms/recipes/forms/button.md), [topbar-command-search](https://ui.askewly.com/llms/recipes/navigation/topbar-command-search.md), [popover](https://ui.askewly.com/llms/recipes/overlays/popover.md), [showcase-card](https://ui.askewly.com/llms/recipes/application-ui/showcase-card.md), [landing-hero](https://ui.askewly.com/llms/recipes/marketing/landing-hero.md).",
+        ],
       },
       {
         title: "Verification checklist",
-        body: ["Content pending — fill criteria: source-quality"],
+        body: [
+          "레시피를 소비해 나온 구현물을 판정하는 기준입니다 (`docs/design-system/recipe-format.md`의 검증 계약 + `scripts/validate-recipes.py`에서 파생).",
+          "- **색 리터럴 0**: 코드에 hex/rgb 색상 하드코딩이 없어야 합니다. 색은 항상 `tokens_used`에 적힌 semantic/component 토큰 경로를 통해서만 표현합니다.",
+          "- **토큰 참조 방향 준수**: `color.primitive.*`를 컴포넌트 코드가 직접 참조하지 않습니다 — semantic 또는 component tier만 참조합니다 (Tokens foundation 문서 참조).",
+          "- **라이트/다크 모드 확인**: 구현 결과를 `.dark` class 적용 상태로도 렌더해 확인합니다. 다크 모드는 semantic tier의 override로만 반전되므로, 컴포넌트 코드에 다크 전용 분기를 추가하지 않습니다.",
+          "- **`code_asset` 경로 정합**: 레시피 frontmatter의 `code_asset`이 가리키는 실제 파일을 확인하고, 레시피 본문의 `Code` 섹션은 발췌일 뿐 그 파일이 코드 SSOT임을 전제로 합니다.",
+          "- **Checks/Anti-patterns 반영**: 각 레시피의 `Checks` 섹션 항목을 통과하고, `Anti-patterns` 섹션에 나열된 실수(예: Button의 pill radius, Landing Hero의 split hero)를 재현하지 않았는지 확인합니다.",
+        ],
       },
     ],
     apiRows: [],
-    onThisPage: ["llms.txt asset", "Recipe list", "Verification checklist"],
+    onThisPage: ["What are Agent Recipes", "Recipe list", "llms.txt asset", "Verification checklist"],
     shell: true,
   }],
 ])
