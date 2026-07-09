@@ -47,6 +47,15 @@ import {
 import { Button } from "@/components/ui/button"
 import type { VocabularyTerm } from "@/data/terms.generated"
 import type { TermFilter } from "@/lib/search"
+import {
+  type GeneratorColor,
+  type PaletteColor,
+  buildPaletteQuality,
+  createGeneratorPalette,
+  generatePaletteFromSeed,
+  getNextPaletteCandidate,
+  getPaletteSeed,
+} from "@/lib/palette-generator"
 import { getSearchSuggestions, type SearchSuggestion } from "@/lib/search-suggestions"
 import { cn } from "@/lib/utils"
 
@@ -1237,16 +1246,6 @@ function MotionShowcaseDemo() {
   )
 }
 
-type PaletteColor = {
-  hex: string
-  name: string
-}
-
-type GeneratorColor = PaletteColor & {
-  id: string
-  locked: boolean
-}
-
 type DragPreview = GeneratorColor & {
   height: number
   left: number
@@ -1255,44 +1254,6 @@ type DragPreview = GeneratorColor & {
   top: number
   width: number
 }
-
-const paletteGeneratorSets: PaletteColor[][] = [
-  [
-    { hex: "#FF99C8", name: "Baby Pink" },
-    { hex: "#FCF6BD", name: "Lemon Chiffon" },
-    { hex: "#D0F4DE", name: "Frosted Mint" },
-    { hex: "#A9DEF9", name: "Icy Blue" },
-    { hex: "#E4C1F9", name: "Mauve" },
-  ],
-  [
-    { hex: "#12130F", name: "Onyx" },
-    { hex: "#5B9279", name: "Viridian" },
-    { hex: "#8FCB9B", name: "Mint Leaf" },
-    { hex: "#EAE6E5", name: "Soft Ash" },
-    { hex: "#8F8073", name: "Taupe" },
-  ],
-  [
-    { hex: "#12130F", name: "Onyx" },
-    { hex: "#FBBA72", name: "Apricot" },
-    { hex: "#CA5310", name: "Burnt Orange" },
-    { hex: "#BB4D00", name: "Copper" },
-    { hex: "#8F250C", name: "Russet" },
-  ],
-  [
-    { hex: "#102A33", name: "Deep Ink" },
-    { hex: "#6F2DBD", name: "Violet" },
-    { hex: "#A663CC", name: "Orchid" },
-    { hex: "#B9FAF8", name: "Mint" },
-    { hex: "#F8FAFC", name: "Cloud" },
-  ],
-  [
-    { hex: "#1C1C1C", name: "Carbon" },
-    { hex: "#E7CBA9", name: "Canvas" },
-    { hex: "#C6D8AF", name: "Sage" },
-    { hex: "#8AA399", name: "Sea Glass" },
-    { hex: "#F4F1DE", name: "Parchment" },
-  ],
-]
 
 function getReadableTextColor(hex: string) {
   const value = hex.replace("#", "")
@@ -1444,7 +1405,8 @@ function buildPaletteSvg(palette: PaletteColor[]) {
 function ColorPaletteGeneratorDemo() {
   const prefersReducedMotion = usePrefersReducedMotion()
   const [paletteIndex, setPaletteIndex] = useState(0)
-  const [palette, setPalette] = useState<GeneratorColor[]>(() => paletteGeneratorSets[0].map((color, index) => ({ ...color, id: `initial-${index}-${color.hex}`, locked: false })))
+  const [palette, setPalette] = useState<GeneratorColor[]>(() => createGeneratorPalette(0))
+  const [paletteSeed, setPaletteSeed] = useState(() => getPaletteSeed(0))
   const [exportOpen, setExportOpen] = useState(false)
   const [pickerOpenIndex, setPickerOpenIndex] = useState<number | null>(null)
   const [shadeState, setShadeState] = useState<{ index: number; base: PaletteColor } | null>(null)
@@ -1467,6 +1429,7 @@ function ColorPaletteGeneratorDemo() {
   const pickerHsv = pickerColor ? hexToHsv(pickerColor.hex) : null
   const pickerHueHex = pickerHsv ? hsvToHex(pickerHsv.h, 100, 100) : "#FF0000"
   const shadeSet = shadeState ? buildShadeSet(shadeState.base) : []
+  const paletteQuality = useMemo(() => buildPaletteQuality(palette), [palette])
 
   const closeShadePanel = useCallback((animated = true) => {
     if (!shadeState) {
@@ -1580,9 +1543,12 @@ function ColorPaletteGeneratorDemo() {
   }
 
   const generatePalette = () => {
-    const nextIndex = (paletteIndex + 1) % paletteGeneratorSets.length
-    const nextSet = paletteGeneratorSets[nextIndex]
-    setPalette((current) => current.map((color, index) => (color.locked ? color : { ...nextSet[index % nextSet.length], id: color.id, locked: false })))
+    const nextIndex = paletteIndex + 1
+    setPalette((current) => {
+      const result = generatePaletteFromSeed({ current, seedIndex: nextIndex })
+      setPaletteSeed(result.seed)
+      return result.colors
+    })
     setPaletteIndex(nextIndex)
     setPickerOpenIndex(null)
     closeShadePanel()
@@ -1686,8 +1652,7 @@ function ColorPaletteGeneratorDemo() {
   }
 
   const addColor = (side: "start" | "end") => {
-    const nextSet = paletteGeneratorSets[(paletteIndex + 1) % paletteGeneratorSets.length]
-    const candidate = nextSet.find((color) => !palette.some((item) => item.hex === color.hex)) ?? nextSet[palette.length % nextSet.length] ?? { hex: "#F8FAFC", name: "Cloud" }
+    const candidate = getNextPaletteCandidate(paletteIndex + 1, palette.map((item) => item.hex))
     const color = { ...candidate, id: `added-${addedColorIdRef.current++}-${candidate.hex}`, locked: false }
     setPalette((current) => side === "start" ? [color, ...current] : [...current, color])
     setInfoColorId(color.id)
@@ -2063,8 +2028,15 @@ function ColorPaletteGeneratorDemo() {
               <p className="mt-1 font-mono text-[11px] uppercase tracking-normal text-slate-500">
                 {infoColor ? `${infoColor.hex} / RGB ${formatRgb(infoColor.hex)} / HSL ${hexToHsl(infoColor.hex)}` : "Select a color"}
               </p>
+              <p className="mt-2 text-[11px] leading-4 text-slate-500">
+                Generated from {paletteSeed.name}: {paletteSeed.note}
+              </p>
             </div>
-            <div className="h-9" aria-hidden="true" />
+            <div className="grid grid-cols-3 gap-1.5 text-center text-[10px] font-semibold uppercase tracking-normal text-slate-500">
+              <span className="rounded border border-slate-200 bg-slate-50 px-2 py-1.5">{paletteQuality.duplicateCount === 0 ? "Unique" : `${paletteQuality.duplicateCount} dupes`}</span>
+              <span className="rounded border border-slate-200 bg-slate-50 px-2 py-1.5">{paletteQuality.lowContrastCount === 0 ? "Readable" : "Check text"}</span>
+              <span className="rounded border border-slate-200 bg-slate-50 px-2 py-1.5">{paletteQuality.exportStable ? "Export OK" : "Fix hex"}</span>
+            </div>
           </div>
         </div>
 

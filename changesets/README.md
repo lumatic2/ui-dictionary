@@ -26,3 +26,4 @@
 | 24 | 20260709-product-operations-dashboard-asset-section | 2026-07-09 | Product operations dashboard section uses a high-quality asset block and lower black-section placement | 4/4 | complete |
 | 25 | 20260709-showcase-placeholder-reset | 2026-07-09 | Reset final Showcase Atlas cards and Product operations dashboard to placeholders | 4/4 | complete |
 | 26 | 20260709-askewly-auth-sso-routing | 2026-07-09 | Route Askewly Design sign-in through shared Askewly Google/Kakao SSO and same-origin auth proxy | 5/5 | complete |
+| 27 | 20260709-palette-generator-data-engine | 2026-07-09 | Color Palette Generator seed library, deterministic generation rules, lock preservation, and quality gates | 5/5 | complete |
