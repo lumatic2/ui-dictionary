@@ -38,3 +38,4 @@
 | 36 | 20260710-agent-recipes-surface | 2026-07-10 | Agent Recipes docs surface with verified llms.txt links and recipe checklist | 4/4 | complete |
 | 37 | 20260710-hero-composition-demo | 2026-07-10 | Hero Composition atlas card interactive demo from landing-hero recipe, still gated | 4/4 | complete |
 | 38 | 20260710-docs-shell-gate-open | 2026-07-10 | Foundations and Agent Recipes shell gates open with leak regression evidence | 5/5 | complete |
+| 39 | 20260710-atlas-cards-command-commerce-mobile | 2026-07-10 | Interactive command, commerce, and mobile atlas card demos behind gate | 4/4 | complete |

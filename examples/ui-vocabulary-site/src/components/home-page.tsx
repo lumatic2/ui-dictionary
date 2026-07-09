@@ -13,19 +13,28 @@ import { flushSync } from "react-dom"
 import * as Matter from "matter-js"
 import { MeshGradient } from "@paper-design/shaders-react"
 import {
+  Activity,
   ArrowRight,
   ArrowUp,
+  Bell,
   Check,
+  ChevronRight,
   Command,
   Copy,
+  CreditCard,
   FileCode2,
+  Home,
   Pipette,
   List,
   Lock,
+  Minus,
+  Moon,
   MoveHorizontal,
   Palette,
   Play,
   Plus,
+  RefreshCw,
+  Rocket,
   Shuffle,
   SkipBack,
   SkipForward,
@@ -38,13 +47,18 @@ import {
   SlidersHorizontal,
   Smartphone,
   Sparkles,
+  Truck,
   Unlock,
+  User,
+  UserPlus,
   WandSparkles,
+  Wifi,
   X,
   ScrollText,
   type LucideIcon,
 } from "lucide-react"
 import { Button } from "@/components/ui/button"
+import { Switch } from "@/components/ui/switch"
 import type { VocabularyTerm } from "@/data/terms.generated"
 import type { TermFilter } from "@/lib/search"
 import {
@@ -431,18 +445,6 @@ function LineArtIcon({ id }: { id: AtlasItemId }) {
     <span className="flex h-16 w-20 shrink-0 items-start justify-center text-card-foreground">
       <Icon aria-hidden="true" className="mt-1 size-11" strokeWidth={1.75} absoluteStrokeWidth />
     </span>
-  )
-}
-
-function AtlasContentPlaceholder({ title }: { title: string }) {
-  return (
-    <div className="grid min-h-[22.2rem] place-items-center rounded-md border border-dashed border-slate-300 bg-white p-5 text-center">
-      <div className="max-w-[18rem]">
-        <p className="font-mono text-[10px] font-semibold uppercase tracking-[0.18em] text-slate-400">Placeholder</p>
-        <p className="mt-3 text-lg font-semibold text-slate-950">{title}</p>
-        <p className="mt-2 text-sm leading-6 text-slate-500">Waiting for a source-quality block or implementation reference.</p>
-      </div>
-    </div>
   )
 }
 
@@ -942,9 +944,16 @@ function AtlasDemo({ id }: { id: AtlasItemId }) {
     return <HeroCompositionDemo />
   }
 
-  if (id === "command" || id === "commerce" || id === "mobile") {
-    const title = atlasItems.find((item) => item.id === id)?.title ?? "Showcase card"
-    return <AtlasContentPlaceholder title={title} />
+  if (id === "command") {
+    return <CommandCenterDemo />
+  }
+
+  if (id === "commerce") {
+    return <CommerceFlowDemo />
+  }
+
+  if (id === "mobile") {
+    return <MobileAppPatternsDemo />
   }
 
   return (
@@ -2351,6 +2360,375 @@ function ImageTreatmentDemo() {
             ))}
           </div>
         )}
+      </div>
+    </div>
+  )
+}
+
+type CommandCenterItem = {
+  id: string
+  label: string
+  description: string
+  icon: LucideIcon
+  shortcut: string
+}
+
+const commandCenterItems: CommandCenterItem[] = [
+  { id: "deploy", label: "Deploy to production", description: "Ship main to askewly.com", icon: Rocket, shortcut: "⌘⏎" },
+  { id: "dark-mode", label: "Toggle dark mode", description: "Switch interface appearance", icon: Moon, shortcut: "⌘D" },
+  { id: "restart-workers", label: "Restart background workers", description: "Recycle the deploy queue", icon: RefreshCw, shortcut: "⌘R" },
+  { id: "invite", label: "Invite teammate", description: "Send a workspace invite", icon: UserPlus, shortcut: "⌘I" },
+  { id: "status", label: "View system status", description: "Uptime and open incidents", icon: Activity, shortcut: "⌘." },
+]
+
+function CommandCenterDemo() {
+  const [query, setQuery] = useState("")
+  const [activeIndex, setActiveIndex] = useState(0)
+  const [ranCommand, setRanCommand] = useState<string | null>(null)
+  const inputRef = useRef<HTMLInputElement | null>(null)
+
+  const matches = commandCenterItems.filter((item) => {
+    const haystack = `${item.label} ${item.description}`.toLowerCase()
+    return haystack.includes(query.trim().toLowerCase())
+  })
+
+  useEffect(() => {
+    setActiveIndex(0)
+  }, [query])
+
+  function runCommand(item: CommandCenterItem) {
+    setRanCommand(item.label)
+    setQuery("")
+    inputRef.current?.focus()
+  }
+
+  function handleKeyDown(event: ReactKeyboardEvent<HTMLInputElement>) {
+    if (matches.length === 0) return
+    if (event.key === "ArrowDown") {
+      event.preventDefault()
+      setActiveIndex((current) => (current + 1) % matches.length)
+    }
+    if (event.key === "ArrowUp") {
+      event.preventDefault()
+      setActiveIndex((current) => (current - 1 + matches.length) % matches.length)
+    }
+    if (event.key === "Enter") {
+      event.preventDefault()
+      const active = matches[activeIndex]
+      if (active) runCommand(active)
+    }
+  }
+
+  return (
+    <div className="grid min-h-[22rem] grid-rows-[auto_1fr_auto] gap-3">
+      <div className="flex items-center gap-2 rounded-md border border-slate-200 bg-white px-3 py-2 shadow-sm">
+        <Search aria-hidden="true" className="size-4 shrink-0 text-slate-400" />
+        <input
+          ref={inputRef}
+          value={query}
+          onChange={(event) => setQuery(event.target.value)}
+          onKeyDown={handleKeyDown}
+          type="text"
+          placeholder="Search commands…"
+          aria-label="Search commands"
+          aria-autocomplete="list"
+          aria-expanded={matches.length > 0}
+          className="min-w-0 flex-1 bg-transparent text-sm text-slate-900 outline-none placeholder:text-slate-400"
+        />
+        <span className="hidden shrink-0 items-center gap-1 rounded border border-slate-200 bg-slate-50 px-1.5 py-0.5 font-mono text-[10px] text-slate-400 sm:inline-flex">
+          <Command aria-hidden="true" className="size-3" />K
+        </span>
+      </div>
+
+      <div role="listbox" aria-label="Commands" className="overflow-hidden rounded-md border border-slate-200 bg-white">
+        {matches.length === 0 ? (
+          <p className="p-4 text-sm text-slate-400">No matching commands.</p>
+        ) : (
+          matches.map((item, index) => {
+            const Icon = item.icon
+            const active = index === activeIndex
+            return (
+              <button
+                key={item.id}
+                type="button"
+                role="option"
+                aria-selected={active}
+                onMouseEnter={() => setActiveIndex(index)}
+                onClick={() => runCommand(item)}
+                className={cn(
+                  "flex w-full items-center gap-3 border-b border-slate-100 px-3 py-2.5 text-left transition-colors last:border-b-0",
+                  active ? "bg-askewly-lavender/25" : "hover:bg-slate-50",
+                )}
+              >
+                <Icon aria-hidden="true" className="size-4 shrink-0 text-slate-500" />
+                <span className="min-w-0 flex-1">
+                  <span className="block truncate text-sm font-medium text-slate-900">{item.label}</span>
+                  <span className="block truncate text-xs text-slate-500">{item.description}</span>
+                </span>
+                <span className="shrink-0 font-mono text-[10px] text-slate-400">{item.shortcut}</span>
+              </button>
+            )
+          })
+        )}
+      </div>
+
+      <div className="flex items-center justify-between text-[11px] text-slate-400">
+        <span>{ranCommand ? `✓ Ran "${ranCommand}"` : "Type to filter, ↑↓ to navigate"}</span>
+        <span className="hidden sm:inline">↵ to run</span>
+      </div>
+    </div>
+  )
+}
+
+type CommerceCartLine = { id: string; name: string; price: number; qty: number }
+
+const commerceInitialLines: CommerceCartLine[] = [
+  { id: "chair", name: "Marlow Lounge Chair", price: 249, qty: 1 },
+  { id: "lamp", name: "Ferro Floor Lamp", price: 89, qty: 1 },
+  { id: "rug", name: "Kestrel Wool Rug", price: 179, qty: 1 },
+]
+
+type CommerceStep = "cart" | "shipping" | "payment" | "confirmed"
+
+const commerceSteps: Array<{ id: CommerceStep; label: string }> = [
+  { id: "cart", label: "Cart" },
+  { id: "shipping", label: "Shipping" },
+  { id: "payment", label: "Payment" },
+]
+
+const commerceShippingOptions = [
+  { id: "standard" as const, label: "Standard shipping", detail: "5-7 days" },
+  { id: "express" as const, label: "Express shipping", detail: "$24, 1-2 days" },
+]
+
+function CommerceFlowDemo() {
+  const [lines, setLines] = useState(commerceInitialLines)
+  const [step, setStep] = useState<CommerceStep>("cart")
+  const [shippingMethod, setShippingMethod] = useState<"standard" | "express">("standard")
+
+  const subtotal = lines.reduce((sum, line) => sum + line.price * line.qty, 0)
+  const shippingCost = shippingMethod === "express" ? 24 : subtotal >= 150 ? 0 : 12
+  const total = subtotal + (step === "cart" ? 0 : shippingCost)
+  const stepIndex = commerceSteps.findIndex((entry) => entry.id === step)
+
+  function adjustQty(id: string, delta: number) {
+    setLines((current) =>
+      current.map((line) => (line.id === id ? { ...line, qty: Math.min(9, Math.max(1, line.qty + delta)) } : line)),
+    )
+  }
+
+  function advanceStep() {
+    if (step === "cart") setStep("shipping")
+    else if (step === "shipping") setStep("payment")
+    else if (step === "payment") setStep("confirmed")
+  }
+
+  return (
+    <div className="grid min-h-[22rem] grid-rows-[auto_1fr_auto] gap-3">
+      <div className="flex items-center gap-2">
+        {commerceSteps.map((entry, index) => (
+          <div key={entry.id} className="flex flex-1 items-center gap-2 last:flex-none">
+            <div
+              className={cn(
+                "flex size-5 shrink-0 items-center justify-center rounded-full text-[10px] font-semibold",
+                index < stepIndex || step === "confirmed"
+                  ? "bg-askewly-violet text-white"
+                  : index === stepIndex
+                    ? "border border-askewly-violet text-askewly-violet"
+                    : "border border-slate-200 text-slate-400",
+              )}
+            >
+              {index < stepIndex || step === "confirmed" ? <Check aria-hidden="true" className="size-3" /> : index + 1}
+            </div>
+            <span className={cn("text-xs font-medium", index <= stepIndex || step === "confirmed" ? "text-slate-900" : "text-slate-400")}>
+              {entry.label}
+            </span>
+            {index < commerceSteps.length - 1 && <span className="h-px flex-1 bg-slate-200" />}
+          </div>
+        ))}
+      </div>
+
+      {step === "confirmed" ? (
+        <div className="grid place-items-center rounded-md border border-slate-200 bg-white text-center">
+          <div>
+            <Check aria-hidden="true" className="mx-auto size-6 text-askewly-violet" />
+            <p className="mt-2 text-sm font-semibold text-slate-900">Order confirmed</p>
+            <p className="mt-1 text-xs text-slate-500">${total.toFixed(2)} charged to Visa •••• 4242</p>
+          </div>
+        </div>
+      ) : step === "cart" ? (
+        <div className="flex flex-col overflow-hidden rounded-md border border-slate-200 bg-white">
+          {lines.map((line) => (
+            <div key={line.id} className="flex items-center gap-3 border-b border-slate-100 px-3 py-2.5 last:border-b-0">
+              <span className="min-w-0 flex-1 truncate text-sm text-slate-900">{line.name}</span>
+              <div className="flex items-center gap-1.5 rounded-full border border-slate-200 px-1.5 py-0.5">
+                <button
+                  type="button"
+                  aria-label={`Decrease ${line.name} quantity`}
+                  className="grid size-5 place-items-center rounded-full text-slate-500 transition-colors hover:bg-slate-100"
+                  onClick={() => adjustQty(line.id, -1)}
+                >
+                  <Minus aria-hidden="true" className="size-3" />
+                </button>
+                <span className="w-4 text-center text-xs font-medium text-slate-900">{line.qty}</span>
+                <button
+                  type="button"
+                  aria-label={`Increase ${line.name} quantity`}
+                  className="grid size-5 place-items-center rounded-full text-slate-500 transition-colors hover:bg-slate-100"
+                  onClick={() => adjustQty(line.id, 1)}
+                >
+                  <Plus aria-hidden="true" className="size-3" />
+                </button>
+              </div>
+              <span className="w-14 shrink-0 text-right text-sm font-medium text-slate-900">${(line.price * line.qty).toFixed(0)}</span>
+            </div>
+          ))}
+        </div>
+      ) : step === "shipping" ? (
+        <div className="flex flex-col gap-2 rounded-md border border-slate-200 bg-white p-3">
+          {commerceShippingOptions.map((option) => (
+            <button
+              key={option.id}
+              type="button"
+              onClick={() => setShippingMethod(option.id)}
+              className={cn(
+                "flex items-center gap-3 rounded-md border px-3 py-2.5 text-left transition-colors",
+                shippingMethod === option.id ? "border-askewly-violet bg-askewly-lavender/15" : "border-slate-200 hover:bg-slate-50",
+              )}
+            >
+              <Truck aria-hidden="true" className="size-4 shrink-0 text-slate-500" />
+              <span className="min-w-0 flex-1">
+                <span className="block text-sm font-medium text-slate-900">{option.label}</span>
+                <span className="block text-xs text-slate-500">
+                  {option.id === "standard" ? (subtotal >= 150 ? `Free, ${option.detail}` : `$12, ${option.detail}`) : option.detail}
+                </span>
+              </span>
+              {shippingMethod === option.id && <Check aria-hidden="true" className="size-4 shrink-0 text-askewly-violet" />}
+            </button>
+          ))}
+        </div>
+      ) : (
+        <div className="flex flex-col gap-3 rounded-md border border-slate-200 bg-white p-3">
+          <div className="flex items-center gap-3 rounded-md border border-slate-200 px-3 py-2.5">
+            <CreditCard aria-hidden="true" className="size-4 shrink-0 text-slate-500" />
+            <span className="min-w-0 flex-1">
+              <span className="block text-sm font-medium text-slate-900">Visa •••• 4242</span>
+              <span className="block text-xs text-slate-500">Expires 09/28</span>
+            </span>
+          </div>
+          <p className="text-xs text-slate-500">
+            Reviewing {lines.length} items · {shippingMethod === "express" ? "Express" : "Standard"} shipping
+          </p>
+        </div>
+      )}
+
+      <div className="flex items-center justify-between border-t border-slate-200 pt-2.5">
+        <div className="text-sm">
+          <span className="text-slate-500">Total </span>
+          <span className="font-semibold text-slate-900">${total.toFixed(2)}</span>
+        </div>
+        <div className="flex gap-2">
+          {step !== "cart" && step !== "confirmed" && (
+            <button
+              type="button"
+              className="rounded-md border border-slate-200 px-3 py-1.5 text-xs font-medium text-slate-600 transition-colors hover:bg-slate-50"
+              onClick={() => setStep(step === "payment" ? "shipping" : "cart")}
+            >
+              Back
+            </button>
+          )}
+          {step !== "confirmed" && (
+            <button
+              type="button"
+              className="rounded-md bg-askewly-violet px-3 py-1.5 text-xs font-medium text-white transition-colors hover:bg-[#5f22a8]"
+              onClick={advanceStep}
+            >
+              {step === "payment" ? "Place order" : "Continue"}
+            </button>
+          )}
+        </div>
+      </div>
+    </div>
+  )
+}
+
+type MobileTab = "home" | "explore" | "library" | "profile"
+
+const mobileTabs: Array<{ id: MobileTab; label: string; icon: LucideIcon }> = [
+  { id: "home", label: "Home", icon: Home },
+  { id: "explore", label: "Explore", icon: Search },
+  { id: "library", label: "Library", icon: List },
+  { id: "profile", label: "Profile", icon: User },
+]
+
+function MobileAppPatternsDemo() {
+  const [activeTab, setActiveTab] = useState<MobileTab>("home")
+  const [pushEnabled, setPushEnabled] = useState(true)
+  const [darkModeEnabled, setDarkModeEnabled] = useState(false)
+  const [wifiCallingEnabled, setWifiCallingEnabled] = useState(false)
+
+  return (
+    <div className="grid min-h-[22rem] place-items-center">
+      <div className="flex h-[21rem] w-[11.5rem] flex-col overflow-hidden rounded-[1.75rem] border-[6px] border-slate-900 bg-white shadow-[0_16px_36px_rgba(15,23,42,0.18)]">
+        <div className="flex items-center justify-center border-b border-slate-100 py-2">
+          <span className="h-1.5 w-12 rounded-full bg-slate-200" />
+        </div>
+
+        <div className="flex-1 overflow-hidden px-3 py-2">
+          <p className="text-sm font-semibold text-slate-900">Settings</p>
+
+          <div className="mt-2 flex flex-col divide-y divide-slate-100 rounded-md border border-slate-100">
+            <div className="flex items-center justify-between px-2.5 py-2">
+              <span className="flex items-center gap-2 text-xs text-slate-700">
+                <Bell aria-hidden="true" className="size-3.5 text-slate-400" />
+                Push notifications
+              </span>
+              <Switch size="sm" checked={pushEnabled} onCheckedChange={setPushEnabled} aria-label="Push notifications" />
+            </div>
+            <div className="flex items-center justify-between px-2.5 py-2">
+              <span className="flex items-center gap-2 text-xs text-slate-700">
+                <Moon aria-hidden="true" className="size-3.5 text-slate-400" />
+                Dark mode
+              </span>
+              <Switch size="sm" checked={darkModeEnabled} onCheckedChange={setDarkModeEnabled} aria-label="Dark mode" />
+            </div>
+            <div className="flex items-center justify-between px-2.5 py-2">
+              <span className="flex items-center gap-2 text-xs text-slate-700">
+                <Wifi aria-hidden="true" className="size-3.5 text-slate-400" />
+                Wi-Fi calling
+              </span>
+              <Switch size="sm" checked={wifiCallingEnabled} onCheckedChange={setWifiCallingEnabled} aria-label="Wi-Fi calling" />
+            </div>
+          </div>
+
+          <div className="mt-2 flex flex-col divide-y divide-slate-100 rounded-md border border-slate-100">
+            {["Account", "Privacy"].map((row) => (
+              <button key={row} type="button" className="flex items-center justify-between px-2.5 py-2 text-left text-xs text-slate-700 transition-colors hover:bg-slate-50">
+                {row}
+                <ChevronRight aria-hidden="true" className="size-3.5 text-slate-300" />
+              </button>
+            ))}
+          </div>
+        </div>
+
+        <div className="flex items-center justify-around border-t border-slate-100 py-2">
+          {mobileTabs.map((tab) => {
+            const Icon = tab.icon
+            const active = tab.id === activeTab
+            return (
+              <button
+                key={tab.id}
+                type="button"
+                aria-current={active ? "page" : undefined}
+                onClick={() => setActiveTab(tab.id)}
+                className={cn("flex flex-col items-center gap-0.5 px-1.5 text-[9px]", active ? "text-askewly-violet" : "text-slate-400")}
+              >
+                <Icon aria-hidden="true" className="size-3.5" />
+                {tab.label}
+              </button>
+            )
+          })}
+        </div>
       </div>
     </div>
   )
