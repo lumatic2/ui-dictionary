@@ -22,7 +22,7 @@ Status: awaiting user execution approval
 
 ## Step tree
 
-- [ ] Step 1 — Canonical document contract
+- [x] Step 1 — Canonical document contract
   - versioned `CanvasDocument`, node union(frame/group/code-component/text/instance), stable IDs, hierarchy, layout constraints, typed props, token/variant/source mappings를 정의한다.
   - JSON fixture 1k/5k와 validator를 만들고 invalid hierarchy, dangling instance/source mapping, schema version failure를 테스트한다.
   - Artifact: `packages/canvas-core/` + `changesets/20260710-auc1-document-contract/`.
