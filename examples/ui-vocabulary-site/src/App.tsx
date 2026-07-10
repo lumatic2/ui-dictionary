@@ -21119,7 +21119,7 @@ const marketingSectionPages = new Map<TermFilter, MarketingSectionPage>([
     title: "About Pages",
     description: "브랜드의 이야기, 미션, 팀, 신뢰 근거를 묶어 방문자가 조직을 이해하게 하는 완성형 소개 페이지 예시입니다.",
     examples: [
-      { id: "with-image-tiles", eyebrow: "Marketing / Page Example", title: "With image tiles", description: "여러 이미지 타일로 회사 분위기와 사람, 제품 맥락을 시각적으로 보여줍니다.", tags: ["image tiles", "brand", "about"], termId: "image-grid", preview: "about-image-tiles" },
+      { id: "with-image-tiles", eyebrow: "Marketing / Page Example", title: "With image tiles", description: "여러 이미지 타일로 회사 분위기와 사람, 제품 맥락을 시각적으로 보여줍니다.", tags: ["image tiles", "brand", "about"], termId: "image-gallery", preview: "about-image-tiles" },
       { id: "with-timeline-and-stats", eyebrow: "Marketing / Page Example", title: "With timeline and stats", description: "회사 성장 흐름과 핵심 지표를 함께 보여줘 서사와 성과를 연결합니다.", tags: ["timeline", "stats", "company"], termId: "timeline", preview: "about-timeline-stats" },
       { id: "with-two-column-description", eyebrow: "Marketing / Page Example", title: "With two column description", description: "긴 회사 소개를 두 열로 나눠 읽기 좋은 about page 구조를 만듭니다.", tags: ["two column", "description", "story"], termId: "section", preview: "about-two-column-description" },
     ],
