@@ -23,7 +23,7 @@ Goal: turn Agent Design from a proven canvas engine into a coherent professional
 - Summary: Product workspace entry, toolbar, adaptive panels, and integrated packaged quality gates completed
 ## Next Candidates
 
-<!-- harness:milestone id="UX2" status="pending" priority="P0" -->
+<!-- harness:milestone id="UX2" status="active" priority="P0" -->
 ### UX2 — Visual Creation Workflow
 - DoD: layers, insertion, viewport, selection, alignment/spacing, properties, and shortcuts form one discoverable creation loop with representative UI composition evidence.
 - Evidence: `docs/plans/2026-07-11-ux2-visual-creation-workflow.md` + `phases/agent-design-visual-creation/` + creation-flow E2E.

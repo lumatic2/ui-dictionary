@@ -2,7 +2,7 @@
 
 Date: 2026-07-11
 Milestone: UX2 (`ROADMAP.md`, pending)
-Status: awaiting run approval
+Status: approved 2026-07-11 — Step 1 in progress
 
 ## Hierarchy
 
@@ -85,4 +85,3 @@ planning_gate:
     - "Layers, canvas, and properties remain synchronized through one canonical document and history."
     - "Existing bridge, source round-trip, performance, accessibility, recovery, and security gates remain passing."
 ```
-
