@@ -51,6 +51,7 @@ export function createAgentDesignMcp(options: { bridgeUrl: string; token: string
       transactionId: z.string().min(1),
       baseRevision: z.number().int().nonnegative(),
       beforeHash: z.string().min(1),
+      beforeFileHash: z.string().min(1),
       file: z.string().min(1),
       content: z.string(),
     },

@@ -1,13 +1,17 @@
-import { randomBytes } from 'node:crypto'
+import { createHash, randomBytes } from 'node:crypto'
 import { EventEmitter } from 'node:events'
+import { existsSync, readFileSync, renameSync, rmSync, writeFileSync } from 'node:fs'
 import { isAbsolute, relative, resolve } from 'node:path'
 import {
   applyTransaction,
   BridgeProtocolError,
   createSnapshot,
   documentHash,
+  exactChanges,
+  unifiedDiff,
   type CanvasSnapshot,
   type ReplayResult,
+  type TransactionAuditEntry,
   type TransactionEnvelope,
   type TransactionEvent,
 } from '@askewly/agent-design-engine'
@@ -18,6 +22,8 @@ export interface BridgeSessionOptions {
   document: CanvasDocument
   token?: string
   maxEvents?: number
+  verifySource?: (file: string, stagedFile: string, content: string) => { valid: boolean; checks: string[] }
+  auditSink?: (entry: TransactionAuditEntry) => void
 }
 
 export interface UndoRequest {
@@ -27,6 +33,21 @@ export interface UndoRequest {
   beforeHash: string
   at: string
 }
+
+export interface SourcePatchRequest {
+  transactionId: string
+  actor: TransactionEnvelope['actor']
+  baseRevision: number
+  beforeHash: string
+  file: string
+  beforeFileHash: string
+  content: string
+  at: string
+}
+
+type UndoRecord =
+  | { kind: 'operations'; transaction: TransactionEnvelope; before: CanvasDocument }
+  | { kind: 'source-patch'; request: SourcePatchRequest; beforeDocument: CanvasDocument; beforeContent: string; afterFileHash: string }
 
 export function isLoopbackAddress(address: string | undefined): boolean {
   return address === '127.0.0.1' || address === '::1' || address === '::ffff:127.0.0.1'
@@ -48,15 +69,28 @@ export class BridgeSession {
   readonly maxEvents: number
   private document: CanvasDocument
   private events: TransactionEvent[] = []
-  private committed: Array<{ transaction: TransactionEnvelope; before: CanvasDocument }> = []
+  private committed: UndoRecord[] = []
+  private audits: TransactionAuditEntry[] = []
+  private transactionIds = new Set<string>()
   private cursor = 0
   private readonly emitter = new EventEmitter()
+  private readonly verifySource: NonNullable<BridgeSessionOptions['verifySource']>
+  private readonly auditSink: NonNullable<BridgeSessionOptions['auditSink']>
+  private readonly allowedSourceFiles: Set<string>
 
   constructor(options: BridgeSessionOptions) {
     this.projectRoot = resolve(options.projectRoot)
     this.document = structuredClone(options.document)
     this.token = options.token ?? randomBytes(32).toString('base64url')
     this.maxEvents = options.maxEvents ?? 256
+    this.verifySource = options.verifySource ?? ((_file, _stagedFile, content) => ({ valid: content.length > 0, checks: ['non-empty-source'] }))
+    this.auditSink = options.auditSink ?? (() => undefined)
+    this.allowedSourceFiles = new Set(
+      Object.values(this.document.nodes)
+        .map((node) => node.source?.file)
+        .filter((file): file is string => Boolean(file))
+        .map((file) => resolve(this.projectRoot, file)),
+    )
   }
 
   authorize(token: string | undefined, remoteAddress: string | undefined): void {
@@ -72,16 +106,23 @@ export class BridgeSession {
     return createSnapshot(this.document, this.cursor)
   }
 
+  sourceFiles(): Array<{ file: string; hash: string | null }> {
+    return [...this.allowedSourceFiles]
+      .sort()
+      .map((file) => ({ file: relative(this.projectRoot, file).replaceAll('\\', '/'), hash: existsSync(file) ? sourceHash(readFileSync(file, 'utf8')) : null }))
+  }
+
   commit(transaction: TransactionEnvelope): TransactionEvent {
     return this.commitInternal(transaction, true)
   }
 
   private commitInternal(transaction: TransactionEnvelope, recordForUndo: boolean): TransactionEvent {
+    if (this.transactionIds.has(transaction.id)) throw new BridgeProtocolError('INVALID_TRANSACTION', `duplicate transaction id: ${transaction.id}`, 409)
     const before = structuredClone(this.document)
     const beforeHash = documentHash(this.document)
     const next = applyTransaction(this.document, transaction)
     const event: TransactionEvent = {
-      cursor: ++this.cursor,
+      cursor: this.cursor + 1,
       type: 'transaction-committed',
       transactionId: transaction.id,
       actor: transaction.actor,
@@ -90,8 +131,23 @@ export class BridgeSession {
       afterHash: documentHash(next),
       operations: structuredClone(transaction.operations),
     }
+    const audit: TransactionAuditEntry = {
+      transactionId: transaction.id,
+      actor: transaction.actor,
+      kind: recordForUndo ? 'operations' : 'undo',
+      revision: next.revision,
+      beforeHash,
+      afterHash: event.afterHash,
+      exactChanges: exactChanges(before, next),
+      verification: { valid: true, checks: ['canvas-core-validation'] },
+      committedAt: transaction.operations.at(-1)?.at ?? new Date().toISOString(),
+    }
+    this.auditSink(structuredClone(audit))
     this.document = next
-    if (recordForUndo) this.committed.push({ transaction: structuredClone(transaction), before })
+    this.cursor += 1
+    if (recordForUndo) this.committed.push({ kind: 'operations', transaction: structuredClone(transaction), before })
+    this.transactionIds.add(transaction.id)
+    this.audits.push(audit)
     this.events.push(event)
     if (this.events.length > this.maxEvents) this.events.splice(0, this.events.length - this.maxEvents)
     this.emitter.emit('event', structuredClone(event))
@@ -108,6 +164,7 @@ export class BridgeSession {
     if (request.beforeHash !== currentHash) {
       throw new BridgeProtocolError('HASH_CONFLICT', `expected hash ${currentHash}, received ${request.beforeHash}`, 409)
     }
+    if (target.kind === 'source-patch') return this.undoSourcePatch(target, request)
     const states: CanvasDocument[] = []
     let working = structuredClone(target.before)
     for (const operation of target.transaction.operations) {
@@ -122,8 +179,7 @@ export class BridgeSession {
         id: `${request.id}:inverse:${index}`,
         at: request.at,
       }))
-    this.committed.pop()
-    return this.commitInternal(
+    const event = this.commitInternal(
       {
         id: request.id,
         actor: request.actor,
@@ -133,6 +189,147 @@ export class BridgeSession {
       },
       false,
     )
+    this.committed.pop()
+    return event
+  }
+
+  private assertSourceGuard(request: Pick<SourcePatchRequest, 'baseRevision' | 'beforeHash'>): void {
+    if (request.baseRevision !== this.document.revision) {
+      throw new BridgeProtocolError('REVISION_CONFLICT', `expected revision ${this.document.revision}, received ${request.baseRevision}`, 409)
+    }
+    const currentHash = documentHash(this.document)
+    if (request.beforeHash !== currentHash) {
+      throw new BridgeProtocolError('HASH_CONFLICT', `expected hash ${currentHash}, received ${request.beforeHash}`, 409)
+    }
+  }
+
+  private sourceFile(requested: string): string {
+    const file = resolveProjectPath(this.projectRoot, requested)
+    if (!this.allowedSourceFiles.has(file)) {
+      throw new BridgeProtocolError('PROJECT_SCOPE_VIOLATION', `source file is not registered by the canvas document: ${requested}`, 403)
+    }
+    if (!existsSync(file)) throw new BridgeProtocolError('INVALID_TRANSACTION', `source file does not exist: ${requested}`, 400)
+    return file
+  }
+
+  applySourcePatch(request: SourcePatchRequest): TransactionEvent {
+    if (this.transactionIds.has(request.transactionId)) throw new BridgeProtocolError('INVALID_TRANSACTION', `duplicate transaction id: ${request.transactionId}`, 409)
+    this.assertSourceGuard(request)
+    const file = this.sourceFile(request.file)
+    const beforeContent = readFileSync(file, 'utf8')
+    const currentFileHash = sourceHash(beforeContent)
+    if (request.beforeFileHash !== currentFileHash) {
+      throw new BridgeProtocolError('HASH_CONFLICT', `expected file hash ${currentFileHash}, received ${request.beforeFileHash}`, 409)
+    }
+    if (request.content === beforeContent) throw new BridgeProtocolError('INVALID_TRANSACTION', 'source patch does not change the file', 400)
+    const stagedFile = `${file}.agent-design-${request.transactionId}.tmp`
+    const backupFile = `${file}.agent-design-${request.transactionId}.bak`
+    writeFileSync(stagedFile, request.content, { encoding: 'utf8', flag: 'wx' })
+    try {
+      const verification = this.verifySource(file, stagedFile, request.content)
+      if (!verification.valid) throw new BridgeProtocolError('INVALID_TRANSACTION', `source verification failed: ${verification.checks.join(', ')}`, 400)
+      const beforeDocument = structuredClone(this.document)
+      const next = structuredClone(this.document)
+      next.revision += 1
+      next.metadata.updatedAt = request.at
+      const afterHash = documentHash(next)
+      const afterFileHash = sourceHash(request.content)
+      const event: TransactionEvent = {
+        cursor: this.cursor + 1,
+        type: 'transaction-committed',
+        transactionId: request.transactionId,
+        actor: request.actor,
+        revision: next.revision,
+        beforeHash: request.beforeHash,
+        afterHash,
+        operations: [],
+        sourcePatch: { file: request.file, beforeFileHash: currentFileHash, afterFileHash },
+      }
+      const audit: TransactionAuditEntry = {
+        transactionId: request.transactionId,
+        actor: request.actor,
+        kind: 'source-patch',
+        revision: next.revision,
+        beforeHash: request.beforeHash,
+        afterHash,
+        exactChanges: exactChanges(beforeDocument, next),
+        sourceDiff: unifiedDiff(request.file, beforeContent, request.content),
+        sourceFile: request.file,
+        verification,
+        committedAt: request.at,
+      }
+      renameSync(file, backupFile)
+      try {
+        renameSync(stagedFile, file)
+        this.auditSink(structuredClone(audit))
+      } catch (error) {
+        if (existsSync(file)) rmSync(file, { force: true })
+        renameSync(backupFile, file)
+        throw error
+      }
+      rmSync(backupFile, { force: true })
+      this.document = next
+      this.cursor += 1
+      this.transactionIds.add(request.transactionId)
+      this.committed.push({ kind: 'source-patch', request: structuredClone(request), beforeDocument, beforeContent, afterFileHash })
+      this.audits.push(audit)
+      this.events.push(event)
+      if (this.events.length > this.maxEvents) this.events.splice(0, this.events.length - this.maxEvents)
+      this.emitter.emit('event', structuredClone(event))
+      return structuredClone(event)
+    } finally {
+      if (existsSync(stagedFile)) rmSync(stagedFile, { force: true })
+      if (existsSync(backupFile) && existsSync(file)) rmSync(backupFile, { force: true })
+    }
+  }
+
+  private undoSourcePatch(target: Extract<UndoRecord, { kind: 'source-patch' }>, request: UndoRequest): TransactionEvent {
+    if (this.transactionIds.has(request.id)) throw new BridgeProtocolError('INVALID_TRANSACTION', `duplicate transaction id: ${request.id}`, 409)
+    const file = this.sourceFile(target.request.file)
+    const currentContent = readFileSync(file, 'utf8')
+    if (sourceHash(currentContent) !== target.afterFileHash) throw new BridgeProtocolError('HASH_CONFLICT', 'source changed after the transaction; refusing undo', 409)
+    const next = structuredClone(this.document)
+    next.revision += 1
+    next.metadata.updatedAt = request.at
+    const afterHash = documentHash(next)
+    const audit: TransactionAuditEntry = {
+      transactionId: request.id,
+      actor: request.actor,
+      kind: 'undo',
+      revision: next.revision,
+      beforeHash: request.beforeHash,
+      afterHash,
+      exactChanges: exactChanges(this.document, next),
+      sourceDiff: unifiedDiff(target.request.file, currentContent, target.beforeContent),
+      sourceFile: target.request.file,
+      verification: { valid: true, checks: ['source-hash-guard'] },
+      committedAt: request.at,
+    }
+    this.auditSink(structuredClone(audit))
+    writeFileSync(file, target.beforeContent, 'utf8')
+    const event: TransactionEvent = {
+      cursor: ++this.cursor,
+      type: 'transaction-committed',
+      transactionId: request.id,
+      actor: request.actor,
+      revision: next.revision,
+      beforeHash: request.beforeHash,
+      afterHash,
+      operations: [],
+      sourcePatch: { file: target.request.file, beforeFileHash: target.afterFileHash, afterFileHash: sourceHash(target.beforeContent) },
+    }
+    this.document = next
+    this.committed.pop()
+    this.transactionIds.add(request.id)
+    this.audits.push(audit)
+    this.events.push(event)
+    if (this.events.length > this.maxEvents) this.events.splice(0, this.events.length - this.maxEvents)
+    this.emitter.emit('event', structuredClone(event))
+    return structuredClone(event)
+  }
+
+  auditLog(): TransactionAuditEntry[] {
+    return structuredClone(this.audits)
   }
 
   replay(afterCursor: number): ReplayResult {
@@ -151,4 +348,8 @@ export class BridgeSession {
     this.emitter.on('event', listener)
     return () => this.emitter.off('event', listener)
   }
+}
+
+export function sourceHash(content: string): string {
+  return createHash('sha256').update(content).digest('hex')
 }

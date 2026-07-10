@@ -24,6 +24,10 @@ async function mockBridge() {
       revision += 1
       hash = `hash-${revision}`
       body = { event: { transactionId: input.id, actor: input.actor, revision }, snapshot: { revision, hash } }
+    } else if (request.url === '/source-patches') {
+      revision += 1
+      hash = `hash-${revision}`
+      body = { event: { transactionId: input.transactionId, actor: input.actor, revision, sourcePatch: { file: input.file, beforeFileHash: input.beforeFileHash } }, snapshot: { revision, hash } }
     } else if (request.url === '/verify') body = { valid: input.revision === revision && input.hash === hash, revision, hash }
     else if (request.url === '/undo') {
       revision += 1
@@ -67,8 +71,17 @@ describe('Agent Design MCP stdio contract', () => {
     expect(applied.structuredContent).toMatchObject({ event: { actor, revision: 1 }, snapshot: { hash: 'hash-1' } })
     const verified = await client.callTool({ name: 'verify', arguments: { revision: 1, hash: 'hash-1' } })
     expect(verified.structuredContent).toMatchObject({ valid: true })
-    const undone = await client.callTool({ name: 'undo', arguments: { transactionId: `undo-${actor}`, baseRevision: 1, beforeHash: 'hash-1' } })
-    expect(undone.structuredContent).toMatchObject({ event: { actor, revision: 2 } })
+    const patched = await client.callTool({ name: 'apply_source_patch', arguments: {
+      transactionId: `patch-${actor}`,
+      baseRevision: 1,
+      beforeHash: 'hash-1',
+      beforeFileHash: 'file-hash-0',
+      file: 'src/App.tsx',
+      content: 'export default function App() {}\n',
+    } })
+    expect(patched.structuredContent).toMatchObject({ event: { actor, revision: 2, sourcePatch: { file: 'src/App.tsx', beforeFileHash: 'file-hash-0' } } })
+    const undone = await client.callTool({ name: 'undo', arguments: { transactionId: `undo-${actor}`, baseRevision: 2, beforeHash: 'hash-2' } })
+    expect(undone.structuredContent).toMatchObject({ event: { actor, revision: 3 } })
     await client.close()
   })
 })

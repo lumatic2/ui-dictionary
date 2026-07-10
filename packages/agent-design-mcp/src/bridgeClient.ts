@@ -54,8 +54,8 @@ export class BridgeClient {
     })
   }
 
-  applySourcePatch(input: { transactionId: string; baseRevision: number; beforeHash: string; file: string; content: string }) {
-    return this.request('/source-patches', { method: 'POST', body: JSON.stringify({ ...input, actor: this.options.actor }) })
+  applySourcePatch(input: { transactionId: string; baseRevision: number; beforeHash: string; beforeFileHash: string; file: string; content: string }) {
+    return this.request('/source-patches', { method: 'POST', body: JSON.stringify({ ...input, actor: this.options.actor, at: new Date().toISOString() }) })
   }
 
   verify(input: { revision?: number; hash?: string }) {

@@ -66,7 +66,7 @@ export async function startBridge(options: StartBridgeOptions): Promise<RunningB
         return
       }
       if (request.method === 'GET' && request.url === '/context') {
-        json(response, 200, projectContext(session.snapshot().document))
+        json(response, 200, { ...projectContext(session.snapshot().document), sourceFiles: session.sourceFiles() })
         return
       }
       if (request.method === 'POST' && request.url === '/transactions') {
@@ -87,7 +87,12 @@ export async function startBridge(options: StartBridgeOptions): Promise<RunningB
         return
       }
       if (request.method === 'POST' && request.url === '/source-patches') {
-        json(response, 501, { error: { code: 'NOT_IMPLEMENTED', message: 'source patch transactions are introduced in AUC3 Step 3' } })
+        const event = session.applySourcePatch((await readJson(request)) as Parameters<BridgeSession['applySourcePatch']>[0])
+        json(response, 200, { event, snapshot: session.snapshot(), audit: session.auditLog().at(-1) })
+        return
+      }
+      if (request.method === 'GET' && request.url === '/audit') {
+        json(response, 200, { entries: session.auditLog() })
         return
       }
       json(response, 404, { error: { code: 'NOT_FOUND', message: 'route not found' } })

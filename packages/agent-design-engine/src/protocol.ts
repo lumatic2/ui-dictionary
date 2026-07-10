@@ -26,6 +26,11 @@ export interface TransactionEvent {
   beforeHash: string
   afterHash: string
   operations: CanvasOperation[]
+  sourcePatch?: {
+    file: string
+    beforeFileHash: string
+    afterFileHash: string
+  }
 }
 
 export interface CanvasSnapshot {
