@@ -35,7 +35,7 @@
       "step": 5,
       "name": "integrated-5k-quality-proof",
       "status": "blocked",
-      "blocked_reason": "All automated gates passed, but the approved plan requires a genuine Windows Microsoft IME manual composition pass. System Chrome headless verified Korean entry and synthetic composition verified one-operation history, but neither is equivalent to an OS IME manual pass. Chrome extension live verification was also unavailable because the installed plugin bundle is missing docs/browser-safety.md and docs/chrome-troubleshooting.md.",
+      "blocked_reason": "All automated gates passed, but the approved plan requires a genuine Windows Microsoft IME manual composition pass. System Chrome headless verified Korean entry and synthetic composition verified one-operation history, but neither is equivalent to an OS IME manual pass. Chrome extension live verification was unavailable because its bundle is missing required docs; a subsequent Computer Use attempt was authorized but the native pipe was unavailable after two list_apps timeouts and the required runtime reset.",
       "blocked_at": "2026-07-10T18:58:12+09:00",
       "summary": "Automated evidence is complete: core 35/35, app 13/13, builds and DESIGN lint pass; system Chrome WebGPU active; 5k pointer-to-paint p95 6.9/13.5/10.7ms with revision delta 1; keyboard focus order, forced DOM fallback, reparent, typed property/mode, Korean Chrome text entry, save/reload undo/redo, zero pixel diff, and zero console errors pass. Only genuine Microsoft IME manual composition remains before AUC2 can close."
     }

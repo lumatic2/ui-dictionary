@@ -33,3 +33,15 @@ Manual closure path:
 ## Chrome Extension Note
 
 The preferred Chrome extension backend could not initialize because the installed plugin bundle lacked both `docs/browser-safety.md` and `docs/chrome-troubleshooting.md`. The allowed fallback was Playwright against the installed system Chrome binary; this is recorded separately from the pending OS IME pass.
+
+## Microsoft IME Manual Attempt — 2026-07-10
+
+The user authorized the live Windows IME pass. A local Vite server was started at `http://127.0.0.1:4182`, then the supported Computer Use runtime was selected so the test would use actual Windows input rather than synthetic browser events.
+
+The Windows helper failed before any Chrome interaction:
+
+- initial and retry `list_apps()` calls timed out without returning an app list;
+- after the required runtime reset, bootstrap failed with `Computer Use native pipe is unavailable: failed to connect native pipe ... os error 2`;
+- the temporary Vite process was terminated and no port-4182 Vite process remained.
+
+No PowerShell SendKeys or other foreground-input bypass was used, because that would evade the Computer Use safety/interrupt contract. Therefore `osMicrosoftImeManualPass` remains `false` and AUC2 remains open.
