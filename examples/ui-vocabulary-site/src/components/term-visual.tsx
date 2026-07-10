@@ -23,11 +23,13 @@ import {
   Info,
   Link as LinkIcon,
   LoaderCircle,
+  Mail,
   MapPin,
   Menu,
   Mic,
   MoreHorizontal,
   Palette,
+  Phone,
   Play,
   Plus,
   Search,
@@ -496,6 +498,15 @@ function renderVisual(variant: string, label: string) {
   if (variant === "progress-stepper") return <OriginCossVisual kind="progress-stepper" />
   if (FRONTEND_UTILITY_VARIANTS.has(variant)) return <FrontendUtilityVisual kind={variant as FrontendUtilityKind} />
   if (EXTERNAL_ECOSYSTEM_VARIANTS.has(variant)) return <ExternalEcosystemVisual kind={variant as ExternalEcosystemKind} />
+  if (variant === "blog-post-card") return <BlogPostCardVisual />
+  if (variant === "blog-grid-section") return <BlogGridSectionVisual />
+  if (variant === "featured-post-card") return <FeaturedPostCardVisual />
+  if (variant === "contact-form-section") return <ContactFormSectionVisual />
+  if (variant === "contact-info-panel") return <ContactInfoPanelVisual />
+  if (variant === "office-location-card") return <OfficeLocationCardVisual />
+  if (variant === "content-section") return <ContentSectionVisual />
+  if (variant === "split-content-section") return <SplitContentSectionVisual />
+  if (variant === "logo-cloud-section") return <LogoCloudSectionVisual />
   if (variant === "error-state") return <StateVisual tone="error" />
   if (variant === "success-state") return <StateVisual tone="success" />
   if (variant === "warning-state") return <StateVisual tone="warning" />
@@ -4675,6 +4686,201 @@ function BillingSettingsPageVisual() {
           <span>Paid</span>
         </div>
       </main>
+    </Chrome>
+  )
+}
+
+function BlogPostCardVisual() {
+  const [saved, setSaved] = useState(false)
+
+  return (
+    <Chrome className="w-48 overflow-hidden text-xs">
+      <div className="relative flex h-16 items-center justify-center bg-muted">
+        <ImageIcon aria-hidden="true" className="size-5 text-muted-foreground" />
+        <button type="button" aria-label="글 저장" className="absolute right-1 top-1" onClick={() => setSaved((value) => !value)}>
+          <Heart aria-hidden="true" className={cn("size-3.5", saved && "fill-primary text-primary")} />
+        </button>
+      </div>
+      <div className="p-2">
+        <span className="rounded-full bg-muted px-2 py-0.5 text-[10px]">Design</span>
+        <p className="mt-2 font-medium">디자인 시스템 시작하기</p>
+        <Line className="mt-1 w-full" />
+        <Line className="mt-1 w-3/4" />
+        <div className="mt-2 flex items-center gap-1 text-muted-foreground">
+          <span className="flex size-4 items-center justify-center rounded-full bg-muted"><User aria-hidden="true" className="size-2.5" /></span>
+          <span>Jul 10</span>
+        </div>
+      </div>
+    </Chrome>
+  )
+}
+
+function BlogGridSectionVisual() {
+  const categories = ["All", "Design", "Product"]
+  const [filter, setFilter] = useState(categories[0])
+
+  return (
+    <Chrome className="w-64 p-3 text-xs">
+      <div className="flex items-center justify-between">
+        <p className="font-semibold">최신 글</p>
+        <span className="text-primary">전체보기</span>
+      </div>
+      <div className="mt-2 flex gap-1">
+        {categories.map((category) => (
+          <button
+            key={category}
+            type="button"
+            className={cn("rounded-full border px-2 py-0.5", filter === category && "bg-primary text-primary-foreground")}
+            onClick={() => setFilter(category)}
+          >
+            {category}
+          </button>
+        ))}
+      </div>
+      <div className="mt-2 grid grid-cols-3 gap-2">
+        {[0, 1, 2].map((item) => (
+          <div key={item} className="rounded border bg-card">
+            <div className="flex h-8 items-center justify-center bg-muted"><ImageIcon aria-hidden="true" className="size-3 text-muted-foreground" /></div>
+            <div className="p-1"><Line className="w-full" /><Line className="mt-1 w-2/3" /></div>
+          </div>
+        ))}
+      </div>
+    </Chrome>
+  )
+}
+
+function FeaturedPostCardVisual() {
+  const [hovered, setHovered] = useState(false)
+
+  return (
+    <Chrome
+      className="w-64 overflow-hidden text-xs"
+      onMouseEnter={() => setHovered(true)}
+      onMouseLeave={() => setHovered(false)}
+    >
+      <div className={cn("flex h-24 items-center justify-center bg-muted transition-colors", hovered && "bg-primary/20")}>
+        <ImageIcon aria-hidden="true" className="size-6 text-muted-foreground" />
+      </div>
+      <div className="p-3">
+        <span className="rounded-full bg-primary px-2 py-0.5 text-[10px] text-primary-foreground">Featured</span>
+        <p className="mt-2 text-base font-semibold">가장 중요한 소식</p>
+        <Line className="mt-2 w-full" />
+        <Line className="mt-1 w-full" />
+        <Line className="mt-1 w-1/2" />
+      </div>
+    </Chrome>
+  )
+}
+
+function ContactFormSectionVisual() {
+  const [sent, setSent] = useState(false)
+
+  return (
+    <Chrome className="w-56 p-3 text-xs">
+      <p className="font-semibold">문의하기</p>
+      <div className="mt-2 space-y-1">
+        <div className="rounded border bg-background px-2 py-1 text-muted-foreground">이름</div>
+        <div className="rounded border bg-background px-2 py-1 text-muted-foreground">이메일</div>
+        <div className="rounded border bg-background px-2 py-3 text-muted-foreground">메시지</div>
+      </div>
+      <button
+        type="button"
+        className={cn("mt-2 w-full rounded px-2 py-1", sent ? "border" : "bg-primary text-primary-foreground")}
+        onClick={() => setSent(true)}
+      >
+        {sent ? "전송됨" : "보내기"}
+      </button>
+    </Chrome>
+  )
+}
+
+function ContactInfoPanelVisual() {
+  return (
+    <Chrome className="w-52 space-y-2 p-3 text-xs">
+      <div className="flex items-center gap-2"><Mail aria-hidden="true" className="size-3.5 text-muted-foreground" /><span>hello@site.com</span></div>
+      <div className="flex items-center gap-2"><Phone aria-hidden="true" className="size-3.5 text-muted-foreground" /><span>02-1234-5678</span></div>
+      <div className="flex items-center gap-2"><MapPin aria-hidden="true" className="size-3.5 text-muted-foreground" /><span>서울 성동구</span></div>
+    </Chrome>
+  )
+}
+
+function OfficeLocationCardVisual() {
+  const cities = ["Seoul", "Tokyo"]
+  const [index, setIndex] = useState(0)
+
+  return (
+    <Chrome className="w-48 overflow-hidden text-xs">
+      <div className="flex h-14 items-center justify-center bg-muted"><MapPin aria-hidden="true" className="size-5 text-muted-foreground" /></div>
+      <div className="p-2">
+        <button type="button" className="font-medium" onClick={() => setIndex((value) => (value + 1) % cities.length)}>{cities[index]}</button>
+        <Line className="mt-1 w-full" />
+        <Line className="mt-1 w-2/3" />
+      </div>
+    </Chrome>
+  )
+}
+
+function ContentSectionVisual() {
+  const [imageRight, setImageRight] = useState(true)
+
+  return (
+    <Chrome className={cn("flex w-64 gap-3 p-3 text-xs", !imageRight && "flex-row-reverse")}>
+      <div className="flex-[2]">
+        <p className="font-semibold">기능 스토리</p>
+        <Line className="mt-2 w-full" />
+        <Line className="mt-1 w-full" />
+        <Line className="mt-1 w-2/3" />
+        <button type="button" className="mt-2 text-primary" onClick={() => setImageRight((value) => !value)}>이미지 위치 바꾸기</button>
+      </div>
+      <div className="flex h-16 flex-1 items-center justify-center rounded bg-muted"><ImageIcon aria-hidden="true" className="size-4 text-muted-foreground" /></div>
+    </Chrome>
+  )
+}
+
+function SplitContentSectionVisual() {
+  const [imageLeft, setImageLeft] = useState(true)
+  const imageBlock = <div className="flex h-20 flex-1 items-center justify-center rounded bg-muted"><ImageIcon aria-hidden="true" className="size-4 text-muted-foreground" /></div>
+  const textBlock = (
+    <div className="flex-1">
+      <Line className="w-full" />
+      <Line className="mt-1 w-full" />
+      <Line className="mt-1 w-1/2" />
+    </div>
+  )
+
+  return (
+    <Chrome className="w-64 p-3 text-xs">
+      <div className="grid grid-cols-2 gap-2">
+        {imageLeft ? imageBlock : textBlock}
+        {imageLeft ? textBlock : imageBlock}
+      </div>
+      <button type="button" className="mt-2 text-primary" onClick={() => setImageLeft((value) => !value)}>좌우 바꾸기</button>
+    </Chrome>
+  )
+}
+
+function LogoCloudSectionVisual() {
+  const logos = ["A", "B", "C", "D", "E", "F"]
+  const [active, setActive] = useState<number | null>(null)
+
+  return (
+    <Chrome className="w-56 p-3 text-xs">
+      <p className="text-center text-muted-foreground">Trusted by teams at</p>
+      <div className="mt-2 grid grid-cols-3 gap-2">
+        {logos.map((logo, index) => (
+          <button
+            key={logo}
+            type="button"
+            className={cn(
+              "flex h-8 items-center justify-center rounded border bg-muted font-semibold text-muted-foreground grayscale",
+              active === index && "bg-card text-foreground grayscale-0"
+            )}
+            onClick={() => setActive(index)}
+          >
+            {logo}
+          </button>
+        ))}
+      </div>
     </Chrome>
   )
 }

@@ -41,3 +41,4 @@
 | 39 | 20260710-atlas-cards-command-commerce-mobile | 2026-07-10 | Interactive command, commerce, and mobile atlas card demos behind gate | 4/4 | complete |
 | 40 | 20260710-dashboard-section-demo | 2026-07-10 | Token-based product operations dashboard section demo behind gate | 3/3 | complete |
 | 41 | 20260710-showcase-gate-open | 2026-07-10 | Showcase atlas cards and dashboard section open to production after per-card quality review | 4/5 | in_progress |
+| 42 | 20260710-collections-terms-promotion | 2026-07-10 | Nine terms promoted and assigned to four marketing collections with dedicated visuals | 5/6 | in_progress |

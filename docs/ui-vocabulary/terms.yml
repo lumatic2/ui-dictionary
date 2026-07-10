@@ -9247,8 +9247,8 @@
   category: style
   group: style-decorative-effects
   kind: motion-pattern
-  ko: { name: 마키 행, aliases: [marquee row, 흐르는 카드 행, 자동 스크롤 행] }
-  en: { name: Marquee row, aliases: [Scrolling marquee, Auto-scrolling row] }
+  ko: { name: 마키 행, aliases: [marquee row, 흐르는 카드 행, 자동 스크롤 행, 로고 마키] }
+  en: { name: Marquee row, aliases: [Scrolling marquee, Auto-scrolling row, Logo marquee] }
   one_liner: 로고, 후기, 카드가 가로로 계속 흐르며 반복되는 자동 스크롤 행.
   description: 많은 항목을 압축해서 보여주거나 랜딩 페이지에 움직임을 줄 때 사용한다.
   visual_anatomy: [horizontal track, repeated items, masked edges, continuous motion]
@@ -10790,3 +10790,234 @@
   asset: { kind: diagram, variant: theme-token }
   sources: [{ source_id: tailwind-utilities, note: Tailwind utility and theme systems expose reusable design values }]
   confidence: high
+
+- id: blog-post-card
+  status: draft
+  category: data-display
+  group: data-display-misc
+  kind: component
+  ko: { name: 블로그 포스트 카드, aliases: [blog post card, 블로그 카드, article card] }
+  en: { name: Blog post card, aliases: [Article card, Post preview card] }
+  one_liner: 블로그 글 하나를 썸네일과 요약으로 미리 보여주는 카드.
+  description: 블로그 목록이나 그리드에서 글 제목, 요약, 작성자, 날짜를 함께 보여줘 클릭 전에 내용을 가늠하게 한다.
+  visual_anatomy: [cover image, category tag, title, excerpt, author avatar, date]
+  when_to_use: [블로그 목록에서 여러 글을 미리보기로 나열할 때, 관련 글 추천 영역을 만들 때]
+  anti_use: [본문 전체를 카드에 담지 않는다, 단일 공지나 안내는 banner나 alert가 더 적합하다]
+  prompt_phrases: [썸네일과 요약이 있는 blog post card를 만들어줘, 작성자와 날짜가 보이는 블로그 카드를 그리드에 배치해줘]
+  navigation:
+    canonical_path: [Plus, UI Blocks, Marketing, Page Sections, Blog Sections]
+    also_appears_in:
+      - [Plus, UI Blocks, Marketing, Page Sections]
+  asset: { kind: mini-mock, variant: blog-post-card }
+  sources: [{ source_id: blocks-so-library, note: shadcn block ecosystem blog and article card examples }]
+  confidence: medium
+
+- id: blog-grid-section
+  status: draft
+  category: structure
+  group: structure-sections
+  kind: block
+  ko: { name: 블로그 그리드 섹션, aliases: [blog grid, 블로그 목록 섹션, article grid section] }
+  en: { name: Blog grid section, aliases: [Blog list section, Article grid] }
+  one_liner: 여러 블로그 포스트 카드를 그리드로 모아 보여주는 섹션.
+  description: 랜딩 페이지나 블로그 홈에서 최신 글이나 추천 글을 카드 그리드로 나열해 탐색을 돕는다.
+  visual_anatomy: [section heading, blog post card grid, optional category filter, view all link]
+  when_to_use: [최신 글이나 인기 글을 한 화면에서 훑게 할 때]
+  anti_use: [글이 하나뿐이면 featured-post-card 하나로 충분하다]
+  prompt_phrases: [최신 글 6개가 그리드로 있는 blog grid section을 만들어줘]
+  related:
+    - id: blog-post-card
+      relation: compare
+      note: blog-post-card는 개별 카드이고 blog-grid-section은 여러 카드를 모은 섹션이다.
+  navigation:
+    canonical_path: [Plus, UI Blocks, Marketing, Page Sections, Blog Sections]
+    also_appears_in:
+      - [Plus, UI Blocks, Marketing, Page Sections]
+      - [Plus, Templates, Marketing Pages]
+  asset: { kind: mini-mock, variant: blog-grid-section }
+  sources: [{ source_id: blocks-so-library, note: shadcn block ecosystem blog and article listing sections }]
+  confidence: medium
+
+- id: featured-post-card
+  status: draft
+  category: data-display
+  group: data-display-misc
+  kind: component
+  ko: { name: 대표 포스트 카드, aliases: [featured post card, 추천 글 카드, 강조 포스트 카드] }
+  en: { name: Featured post card, aliases: [Highlighted post card, Spotlight article card] }
+  one_liner: 블로그 글 중 하나를 크게 강조해서 보여주는 대표 카드.
+  description: 블로그 홈 상단에서 가장 중요한 글 하나를 큰 이미지와 긴 요약으로 눈에 띄게 배치한다.
+  visual_anatomy: [large cover image, title, longer excerpt, author, date, prominent placement]
+  when_to_use: [블로그 홈 최상단에서 신작이나 대표 글을 강조할 때]
+  anti_use: [일반 글 목록에는 blog-post-card 그리드가 더 적합하다]
+  prompt_phrases: [상단에 큰 이미지로 강조된 featured post card를 넣어줘]
+  related:
+    - id: blog-post-card
+      relation: compare
+      note: blog-post-card는 표준 카드이고 featured-post-card는 그 중 하나를 크게 강조한 변형이다.
+  navigation:
+    canonical_path: [Plus, UI Blocks, Marketing, Page Sections, Blog Sections]
+    also_appears_in:
+      - [Plus, UI Blocks, Marketing, Page Sections]
+  asset: { kind: mini-mock, variant: featured-post-card }
+  sources: [{ source_id: blocks-so-library, note: shadcn block ecosystem blog and article card examples }]
+  confidence: medium
+
+- id: contact-form-section
+  status: draft
+  category: structure
+  group: structure-sections
+  kind: block
+  ko: { name: 문의 폼 섹션, aliases: [contact form section, 문의하기 섹션, contact us section] }
+  en: { name: Contact form section, aliases: [Contact us section, Get in touch section] }
+  one_liner: 이름, 이메일, 메시지를 입력해 문의를 보내는 폼 중심의 랜딩 섹션.
+  description: 마케팅 페이지에서 방문자가 회사나 팀에 직접 연락할 수 있도록 입력 필드와 전송 버튼을 묶어 보여준다.
+  visual_anatomy: [section heading, name field, email field, message field, submit button, optional side info panel]
+  when_to_use: [방문자가 폼을 채워 문의나 상담을 요청해야 할 때]
+  anti_use: [단순 이메일 주소 안내만 필요하면 contact-info-panel 하나로 충분하다]
+  prompt_phrases: [이름, 이메일, 메시지 입력창이 있는 contact form section을 만들어줘]
+  related:
+    - id: contact-info-panel
+      relation: compare
+      note: contact-info-panel은 연락처 정보 안내이고 contact-form-section은 실제 입력 폼 중심 섹션이다.
+  navigation:
+    canonical_path: [Plus, UI Blocks, Marketing, Page Sections, Contact Sections]
+    also_appears_in:
+      - [Plus, UI Blocks, Marketing, Page Sections]
+      - [Plus, Templates, Marketing Pages]
+  asset: { kind: mini-mock, variant: contact-form-section }
+  sources: [{ source_id: blocks-so-library, note: shadcn block ecosystem contact and lead-gen form sections }]
+  confidence: medium
+
+- id: contact-info-panel
+  status: draft
+  category: data-display
+  group: data-display-misc
+  kind: component
+  ko: { name: 연락처 정보 패널, aliases: [contact info panel, 연락처 안내 패널, 오피스 정보 패널] }
+  en: { name: Contact info panel, aliases: [Contact details panel, Get in touch panel] }
+  one_liner: 이메일, 전화번호, 주소 같은 연락 채널을 보여주는 정보 패널.
+  description: 문의 폼 옆이나 푸터 근처에서 회사가 연락받는 다른 채널들을 정리해 보여준다.
+  visual_anatomy: [icon, label, contact value, optional map or social links]
+  when_to_use: [문의 폼과 함께 다른 연락 채널을 안내할 때, 오피스 위치나 소셜 링크를 보여줄 때]
+  anti_use: [사용자 입력을 받아야 하면 contact-form-section이 필요하다]
+  prompt_phrases: [이메일과 전화번호, 주소가 있는 contact info panel을 폼 옆에 넣어줘]
+  related:
+    - id: contact-form-section
+      relation: compare
+      note: contact-form-section은 입력을 받는 폼이고 contact-info-panel은 읽기 전용 연락처 안내다.
+  navigation:
+    canonical_path: [Plus, UI Blocks, Marketing, Page Sections, Contact Sections]
+    also_appears_in:
+      - [Plus, UI Blocks, Marketing, Page Sections]
+  asset: { kind: mini-mock, variant: contact-info-panel }
+  sources: [{ source_id: blocks-so-library, note: shadcn block ecosystem contact and location info sections }]
+  confidence: medium
+
+- id: office-location-card
+  status: draft
+  category: data-display
+  group: data-display-misc
+  kind: component
+  ko: { name: 오피스 위치 카드, aliases: [office location card, 지점 카드, 오피스 카드] }
+  en: { name: Office location card, aliases: [Location card, Office card] }
+  one_liner: 회사의 특정 오피스나 지점 하나의 주소와 정보를 보여주는 카드.
+  description: 여러 지사가 있는 회사에서 각 오피스의 주소, 사진, 연락처를 개별 카드로 나열한다.
+  visual_anatomy: [office photo, city or branch name, address, contact info, map link]
+  when_to_use: [회사가 여러 지점을 갖고 있어 각각 소개해야 할 때]
+  anti_use: [지점이 하나뿐이면 contact-info-panel 하나로 충분하다]
+  prompt_phrases: [서울, 도쿄 지점이 각각 카드로 있는 office location card 목록을 만들어줘]
+  related:
+    - id: contact-info-panel
+      relation: compare
+      note: contact-info-panel은 일반 연락처 정보이고 office-location-card는 지점별 위치 정보에 초점이 있다.
+  navigation:
+    canonical_path: [Plus, UI Blocks, Marketing, Page Sections, Contact Sections]
+    also_appears_in:
+      - [Plus, UI Blocks, Marketing, Page Sections]
+  asset: { kind: mini-mock, variant: office-location-card }
+  sources: [{ source_id: blocks-so-library, note: shadcn block ecosystem contact and location info sections }]
+  confidence: medium
+
+- id: content-section
+  status: draft
+  category: structure
+  group: structure-sections
+  kind: block
+  ko: { name: 콘텐츠 섹션, aliases: [content section, 본문 콘텐츠 섹션, 텍스트 이미지 섹션] }
+  en: { name: Content section, aliases: [Prose section, Text and image section] }
+  one_liner: 제목, 본문 텍스트, 이미지를 묶어 하나의 주제를 설명하는 랜딩 섹션.
+  description: 랜딩 페이지나 소개 페이지에서 기능이나 스토리 하나를 긴 설명과 이미지로 풀어낸다.
+  visual_anatomy: [section heading, body copy, supporting image, optional link or button]
+  when_to_use: [제품 스토리나 기능 하나를 자세한 글과 이미지로 설명할 때]
+  anti_use: [사용자가 직접 글을 입력하고 편집해야 하면 rich-text-editor가 필요하다, 단순히 화면을 나누기만 하면 범용 section으로 충분하다]
+  prompt_phrases: [왼쪽에 이미지, 오른쪽에 설명 글이 있는 content section을 만들어줘]
+  related:
+    - id: section
+      relation: compare
+      note: section은 화면을 나누는 범용 구조 개념이고 content-section은 본문 글과 이미지를 담는 구체적인 마케팅 블록이다.
+    - id: rich-text-editor
+      relation: compare
+      note: rich-text-editor는 사용자가 글을 직접 작성하는 입력 위젯이고 content-section은 이미 작성된 콘텐츠를 보여주는 정적 섹션이다.
+  navigation:
+    canonical_path: [Plus, UI Blocks, Marketing, Page Sections, Content Sections]
+    also_appears_in:
+      - [Plus, UI Blocks, Marketing, Page Sections]
+      - [Plus, Templates, Marketing Pages]
+  asset: { kind: mini-mock, variant: content-section }
+  sources: [{ source_id: blocks-so-library, note: shadcn block ecosystem content and prose marketing sections }]
+  confidence: medium
+
+- id: split-content-section
+  status: draft
+  category: structure
+  group: structure-sections
+  kind: block
+  ko: { name: 분할 콘텐츠 섹션, aliases: [split content section, 좌우 분할 섹션, 이미지 텍스트 분할 섹션] }
+  en: { name: Split content section, aliases: [Split section, Image-text split layout] }
+  one_liner: 화면을 좌우로 나눠 한쪽엔 이미지, 다른 한쪽엔 텍스트를 배치하는 콘텐츠 섹션.
+  description: content-section의 변형으로, 이미지와 텍스트를 명확한 좌우 2분할 그리드로 정렬해 대비를 준다.
+  visual_anatomy: [two-column grid, image half, text half, alternating alignment]
+  when_to_use: [이미지와 설명을 나란히 대비시켜 보여줄 때, 여러 content-section을 좌우 교차로 배치할 때]
+  anti_use: [이미지 없이 글만 있으면 일반 content-section이 더 단순하다]
+  prompt_phrases: [왼쪽 이미지, 오른쪽 텍스트가 번갈아 나오는 split content section을 만들어줘]
+  related:
+    - id: content-section
+      relation: compare
+      note: content-section은 자유 배치이고 split-content-section은 좌우 2분할 그리드로 고정된 변형이다.
+  navigation:
+    canonical_path: [Plus, UI Blocks, Marketing, Page Sections, Content Sections]
+    also_appears_in:
+      - [Plus, UI Blocks, Marketing, Page Sections]
+  asset: { kind: mini-mock, variant: split-content-section }
+  sources: [{ source_id: blocks-so-library, note: shadcn block ecosystem content and prose marketing sections }]
+  confidence: medium
+
+- id: logo-cloud-section
+  status: draft
+  category: structure
+  group: structure-sections
+  kind: block
+  ko: { name: 로고 클라우드 섹션, aliases: [logo cloud section, 로고 그리드 섹션, 고객사 로고 섹션] }
+  en: { name: Logo cloud section, aliases: [Logo cloud, Client logos section, Trusted by section] }
+  one_liner: 고객사나 파트너 로고 여러 개를 한 화면에 모아 신뢰를 보여주는 섹션.
+  description: 랜딩 페이지에서 "이런 회사들이 쓴다"는 사회적 증거를 브랜드 로고 그리드로 보여준다.
+  visual_anatomy: [optional section heading, logo grid, consistent logo sizing, muted or grayscale treatment]
+  when_to_use: [제품을 사용하는 유명 고객사나 파트너를 신뢰 요소로 보여줄 때]
+  anti_use: [로고 하나만 필요하면 logo를 그대로 쓴다, 연동 상태나 설치 행동이 필요하면 integration-grid-section이 더 적합하다]
+  prompt_phrases: [고객사 로고 6개가 나열된 logo cloud section을 만들어줘]
+  related:
+    - id: logo
+      relation: compare
+      note: logo는 단일 브랜드 마크이고 logo-cloud-section은 여러 로고를 신뢰 요소로 모은 섹션이다.
+    - id: integration-grid-section
+      relation: compare
+      note: integration-grid-section은 연동 상태와 설치 행동이 있는 SaaS 목록이고 logo-cloud-section은 신뢰 증거용 정적 로고 나열이다.
+  navigation:
+    canonical_path: [Plus, UI Blocks, Marketing, Page Sections, Logo Clouds]
+    also_appears_in:
+      - [Plus, UI Blocks, Marketing, Page Sections]
+      - [Plus, Templates, Marketing Pages]
+  asset: { kind: mini-mock, variant: logo-cloud-section }
+  sources: [{ source_id: blocks-so-library, note: shadcn block ecosystem logo cloud and social-proof marketing sections }]
+  confidence: medium

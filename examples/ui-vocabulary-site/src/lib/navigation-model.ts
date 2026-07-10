@@ -614,13 +614,13 @@ export const navigationCollections: NavigationCollection[] = [
     id: "plus-marketing-blog-sections",
     label: "Blog Sections",
     path: ["Plus", "UI Blocks", "Marketing", "Page Sections", "Blog Sections"],
-    termIds: [],
+    termIds: ["blog-post-card", "blog-grid-section", "featured-post-card"],
   },
   {
     id: "plus-marketing-contact-sections",
     label: "Contact Sections",
     path: ["Plus", "UI Blocks", "Marketing", "Page Sections", "Contact Sections"],
-    termIds: [],
+    termIds: ["contact-form-section", "contact-info-panel", "office-location-card"],
   },
   {
     id: "plus-marketing-team-sections",
@@ -632,13 +632,13 @@ export const navigationCollections: NavigationCollection[] = [
     id: "plus-marketing-content-sections",
     label: "Content Sections",
     path: ["Plus", "UI Blocks", "Marketing", "Page Sections", "Content Sections"],
-    termIds: [],
+    termIds: ["content-section", "split-content-section"],
   },
   {
     id: "plus-marketing-logo-clouds",
     label: "Logo Clouds",
     path: ["Plus", "UI Blocks", "Marketing", "Page Sections", "Logo Clouds"],
-    termIds: [],
+    termIds: ["logo-cloud-section", "marquee-row"],
   },
   {
     id: "plus-marketing-faqs",
