@@ -3,7 +3,7 @@
   "phase": "agent-design-desktop-productization",
   "mode": "product",
   "steps": [
-    { "step": 1, "name": "secure-electron-host-authority", "status": "pending" },
+    { "step": 1, "name": "secure-electron-host-authority", "status": "in_progress" },
     { "step": 2, "name": "supervised-bridge-terminal-bootstrap", "status": "pending" },
     { "step": 3, "name": "trusted-project-durable-recovery", "status": "pending" },
     { "step": 4, "name": "sandboxed-preview-os-diagnostics", "status": "pending" },

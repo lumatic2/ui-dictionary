@@ -1,0 +1,25 @@
+{
+  "name": "@askewly/agent-design-desktop",
+  "version": "0.1.0",
+  "private": true,
+  "main": "dist/main.js",
+  "scripts": {
+    "prestart": "npm run build",
+    "start": "electron .",
+    "prebuild": "npm --prefix ../agent-design run build",
+    "build": "tsc -p tsconfig.json && esbuild src/preload.ts --bundle --platform=node --format=cjs --external:electron --outfile=dist/preload.cjs",
+    "test": "vitest run",
+    "verify:security": "node scripts/verify-security.mjs"
+  },
+  "devDependencies": {
+    "@doyensec/electronegativity": "1.10.3",
+    "@types/node": "^24.13.2",
+    "electron": "43.1.0",
+    "esbuild": "0.28.1",
+    "typescript": "~6.0.2",
+    "vitest": "^3.2.7"
+  },
+  "overrides": {
+    "tar": "7.5.19"
+  }
+}

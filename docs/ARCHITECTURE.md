@@ -51,7 +51,7 @@ The desktop app is a third connected surface, not a wrapper around the website o
 - **Renderer boundary:** the canonical document is renderer-independent. ADR 0006 assigns production React/HTML/CSS to semantic DOM, editor overlays/transient geometry to WebGPU with DOM fallback, and isolated vector editing/export to SVG.
 - **Code runtime:** real React/HTML/CSS renders in an isolated preview; selected runtime nodes map back to stable document IDs and source locations.
 - **Editor overlay:** zoom/pan, selection bounds, resize handles, guides, cursors, minimap, hit testing, and manipulation state live outside project code. WebGPU accelerates this plane but device failure must fall back to DOM without affecting the canonical document.
-- **Local engine:** shared TypeScript core owns project scanning, document/code transforms, diffing, verification, and CLI parity. It may begin in Electron main or a supervised Node sidecar; AUC0/architecture ADR decides the lifecycle boundary.
+- **Local engine:** shared TypeScript core owns project scanning, document/code transforms, diffing, verification, and CLI parity. ADR 0008 keeps transactions in the existing Node bridge and assigns Electron main only the typed authority and `utilityProcess` supervision boundary.
 - **Desktop authority:** filesystem, process, editor/Explorer, and watcher capabilities stay behind typed host contracts. Project code receives no Electron/Node authority.
 - **Quality gate:** renderer candidates must pass shared 1k/5k/10k-node, pointer latency, Korean IME, responsive, nested component, screenshot-diff, memory, recovery, accessibility, and source-round-trip fixtures.
 
@@ -71,6 +71,7 @@ AUC1 implementation surfaces:
 
 - `packages/canvas-core/`: pure TypeScript canonical document, validation, deterministic operations/history, and checksum-protected snapshot contract.
 - `apps/agent-design/`: React/Vite canvas proof using semantic DOM content and a WebGPU editor plane with DOM fallback.
+- `apps/agent-design-desktop/`: sandboxed Electron main/preload host, custom `app://` renderer protocol, versioned host IPC, and desktop security gates.
 - `apps/agent-design/results/`: repeatable system-Chrome performance, persistence, and pixel evidence.
 
 ## Project Layout Direction
@@ -135,7 +136,6 @@ Documentation-only changes should be checked with targeted file existence and te
 ## Open Architecture Questions
 
 - Which schema format should become canonical for surfaces, patterns, examples, tokens, and agent recipes?
-- Does the local engine start inside Electron main or as a supervised Node sidecar?
 - How should paid code/assets be separated from public browseable examples?
 - Which local design repositories should be imported, linked, or kept separate?
 - Should agent-facing output be plain Markdown, JSON, generated TypeScript, DESIGN.md, or multiple synchronized artifacts?

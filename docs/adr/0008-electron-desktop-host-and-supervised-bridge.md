@@ -1,7 +1,7 @@
 # ADR 0008 — Electron Hosts Agent Design And Supervises The Bridge
 
 Date: 2026-07-10
-Status: proposed — awaiting AUC4 execution-plan approval
+Status: accepted — AUC4 execution approved 2026-07-11
 
 ## Context
 

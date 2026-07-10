@@ -2,7 +2,7 @@
 
 Date: 2026-07-10
 Milestone: AUC4 (`ROADMAP.md`, active planning gate)
-Status: awaiting execution approval
+Status: approved 2026-07-11 — Step 1 in progress
 
 ## Hierarchy
 
@@ -22,7 +22,7 @@ Status: awaiting execution approval
 
 ## Step tree
 
-- [ ] Step 1 — Secure Electron host and typed authority contract
+- [~] Step 1 — Secure Electron host and typed authority contract
   - Create the main/preload shell, custom app protocol, strict BrowserWindow preferences, versioned IPC schemas, sender validation, and default-deny navigation/window/permission policy.
   - Verify: main/preload unit tests, renderer has no Node globals, CSP/security-warning/electronegativity gate.
 
@@ -77,5 +77,5 @@ planning_gate:
   skeptic_lane: "do not equate package creation with secure install/recovery or unsigned build with release readiness"
   delegation: "skip; current runtime forbids subagents without explicit user request"
   predecessor_gate: "AUC3 complete and ledger-confirmed"
-  run_boundary: "No AUC4 implementation before explicit user approval of this plan."
+  run_boundary: "Approved by the user on 2026-07-11; execute the six step leaves in order."
 ```
