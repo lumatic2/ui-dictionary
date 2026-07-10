@@ -36,12 +36,12 @@ Status: approved; execution in progress
   - fixed/hug/fill 및 horizontal/vertical layout constraint가 resize/reparent 후 deterministic하게 보존되도록 한다.
   - Verify: nested fixtures, invalid drop rejection, structure round-trip, responsive resize cases.
 
-- [~] Step 4 — Typed property, token, mode, variant, Korean text runtime
+- [x] Step 4 — Typed property, token, mode, variant, Korean text runtime
   - node kind별 typed inspector schema를 만들고 invalid prop/token/variant 입력을 commit 전에 거부한다.
   - compositionstart→update→end를 한 text operation으로 commit하고 composition 중 canvas rerender가 입력을 파괴하지 않게 한다.
   - Verify: property validation, token binding, variant/mode switch, Microsoft IME actual manual pass + synthetic regression.
 
-- [ ] Step 5 — Integrated 5k manipulation and accessibility proof
+- [~] Step 5 — Integrated 5k manipulation and accessibility proof
   - select→move→resize→reparent→property→text→undo/redo→save/reload 흐름을 system Chrome과 실제 Chrome에서 검증한다.
   - 5k pointer-to-visible p95 ≤16ms 3회, keyboard focus order, forced WebGPU fallback, screenshot/reload drift gate를 기록한다.
   - Artifact: `phases/agent-design-direct-manipulation/` + changesets + screenshots/result JSON.

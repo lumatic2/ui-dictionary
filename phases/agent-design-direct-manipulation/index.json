@@ -24,7 +24,13 @@
       "summary": "Added core drop planning for inside/before/after ancestry, sibling reorder, post-removal indices, and cycle/locked/instance-boundary rejection. Reparent operations now atomically preserve optional final bounds and invert hierarchy/bounds together, while layout mode and fixed/hug/fill sizing remain unchanged. CanvasSurface renders hierarchy paint order, supports valid native drag reparent with drop feedback, and Alt+Arrow sibling reorder. Verified core 32/32, app 11/11, both builds, structure round-trip, responsive sizing cases, and UI drop/reorder.",
       "completed_at": "2026-07-10T18:47:05+09:00"
     },
-    { "step": 4, "name": "typed-properties-korean-text", "status": "in_progress" },
-    { "step": 5, "name": "integrated-5k-quality-proof", "status": "pending" }
+    {
+      "step": 4,
+      "name": "typed-properties-korean-text",
+      "status": "completed",
+      "summary": "Added kind-aware typed property schemas and validated set-node-property operations for code props, instance overrides, variants, token bindings, and layout, plus document token mode and invertible update-text operations. The inspector validates before commit and edits name/layout/sizing/props/variants/tokens/mode. Text surfaces hold a DOM-local draft during composition and commit exactly one update-text at compositionend or blur. Verified core 35/35, app 13/13, both builds, invalid-input rejection, and synthetic Korean composition revision/undo behavior; OS Microsoft IME remains for Step 5 live verification.",
+      "completed_at": "2026-07-10T18:51:28+09:00"
+    },
+    { "step": 5, "name": "integrated-5k-quality-proof", "status": "in_progress" }
   ]
 }
