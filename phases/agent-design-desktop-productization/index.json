@@ -1,0 +1,13 @@
+{
+  "project": "ui-dictionary",
+  "phase": "agent-design-desktop-productization",
+  "mode": "product",
+  "steps": [
+    { "step": 1, "name": "secure-electron-host-authority", "status": "pending" },
+    { "step": 2, "name": "supervised-bridge-terminal-bootstrap", "status": "pending" },
+    { "step": 3, "name": "trusted-project-durable-recovery", "status": "pending" },
+    { "step": 4, "name": "sandboxed-preview-os-diagnostics", "status": "pending" },
+    { "step": 5, "name": "windows-packaging-installer-boundary", "status": "pending" },
+    { "step": 6, "name": "packaged-e2e-quality-proof", "status": "pending" }
+  ]
+}

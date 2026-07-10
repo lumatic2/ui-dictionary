@@ -189,6 +189,16 @@
         "codex:2026-07-10-auc3-execution"
       ],
       "completed": "2026-07-10"
+    },
+    {
+      "id": "AUC4",
+      "title": "Desktop Productization And Quality Gate",
+      "status": "active",
+      "started": "2026-07-10",
+      "plan": "docs/plans/2026-07-10-auc4-desktop-productization-quality-gate.md",
+      "session_ids": [
+        "codex:2026-07-10-auc4-planning"
+      ]
     }
   ]
 }

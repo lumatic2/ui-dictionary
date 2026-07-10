@@ -1,7 +1,7 @@
 # Horizon - Agent-Native UI Canvas
 
 Date: 2026-07-10
-Status: active — AUC0/AUC1/AUC2 complete; AUC3 Canvas Agent And Code Round-trip planning gate active.
+Status: active — AUC0/AUC1/AUC2/AUC3 complete; AUC4 Desktop Productization planning gate active.
 
 ## Goal
 
@@ -52,15 +52,15 @@ Evidence: `docs/plans/2026-07-10-auc3-terminal-agent-live-canvas.md` + `phases/a
 
 Result: one loopback bridge now serves Codex and Claude through a shared stdio MCP adapter; guarded operations/source patches auto-apply with exact audit and Undo; WebSocket canvas and source watcher converge live. Fresh independent system Chrome measured acknowledgement→visible p95 59.4ms and file edit→visible p95 144.4ms. Installed Codex and Claude both read the fresh project context at revision 4.
 
-### AUC4 - Desktop Productization And Quality Gate — pending
+### AUC4 - Desktop Productization And Quality Gate — active planning gate
 
 DoD: Windows installer, trusted folder import, sandboxed project preview, crash/autosave recovery, update/diagnostics boundary, representative end-to-end flow를 검증한다. renderer에 Node/Electron authority가 노출되지 않고 AUC0 성능 budget을 packaged build에서도 유지한다.
 
-Evidence: `phases/agent-design-desktop-productization/` + packaged-app E2E + installer/recovery/security evidence.
+Evidence: `docs/plans/2026-07-10-auc4-desktop-productization-quality-gate.md` + `phases/agent-design-desktop-productization/` + packaged-app E2E + installer/recovery/security evidence.
 
 ## Close Criteria
 
-Windows packaged Agent Design에서 fresh React project를 열거나 만들고 → canvas에서 실제 UI를 구성·직접 조작하고 → 선택-bound agent로 수정하고 → exact diff를 검토·적용하고 → browser verification까지 닫는 흐름이 동작한다. canonical document/code mapping, quality budgets, accessibility, recovery, CLI/core parity가 모두 evidence로 남아야 한다.
+Windows packaged Agent Design에서 fresh React project를 열거나 만들고 → canvas에서 실제 UI를 구성·직접 조작하고 → 사용자-owned Codex/Claude terminal이 같은 bridge를 통해 즉시 수정하고 → audit/Undo를 확인하고 → browser verification까지 닫는 흐름이 동작한다. canonical document/code mapping, quality budgets, accessibility, recovery, CLI/core parity가 모두 evidence로 남아야 한다.
 
 ## Scope Exclusions
 

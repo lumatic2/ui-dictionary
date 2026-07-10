@@ -17,8 +17,8 @@ Goal: Agent Design를 code-native UI canvas로 만든다 — evidence-based engi
 - AUC4 requires a durable multi-step plan and explicit implementation approval before code changes.
 
 ## Proposed Next Milestone
-- AUC4 — Desktop Productization And Quality Gate (already present in `ROADMAP.md`).
+- AUC4 — Desktop Productization And Quality Gate (promoted to active planning gate).
 - Plan the Windows host/process lifecycle, trusted project import/sandbox, durable snapshot recovery, installer/update boundary, and packaged performance/security gates.
 
 ## Recommendation
-Keep AUC4 pending until its plan is presented and approved; do not create a replacement horizon.
+Review `docs/plans/2026-07-10-auc4-desktop-productization-quality-gate.md` and explicitly approve it before implementation; do not create a replacement horizon.

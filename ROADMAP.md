@@ -1,7 +1,7 @@
 # ROADMAP
 
 > Last updated: 2026-07-10
-> Status: Agent-Native UI Canvas — AUC3 complete; AUC4 pending planning gate
+> Status: Agent-Native UI Canvas — AUC4 desktop productization planning gate
 > North star: Build Askewly Design as both a public reference website and an agent-usable implementation system.
 > line budget: <=150
 
@@ -11,6 +11,13 @@
 Goal: Agent Design를 code-native UI canvas로 만든다 — evidence-based engine bake-off → canonical canvas → direct manipulation → canvas agent/code round-trip → packaged quality gate. Details: `docs/horizons/2026-07-agent-native-ui-canvas.md`.
 
 ## Active Milestones
+
+<!-- harness:milestone id="AUC4" status="active" priority="P2" -->
+### AUC4 — Desktop Productization And Quality Gate
+- DoD: Electron Windows host가 trusted folder, supervised bridge, durable recovery, sandboxed preview, diagnostics, Squirrel installer를 제공하고 packaged AUC0/AUC3 quality/security/IME gates를 통과한다.
+- Evidence: `docs/plans/2026-07-10-auc4-desktop-productization-quality-gate.md` + `phases/agent-design-desktop-productization/` + packaged-app/installer/recovery evidence.
+- Gap: 검증된 canvas/bridge가 아직 개발 프로세스이며 설치·권한·복구 lifecycle을 가진 Windows 제품이 아니다.
+- Status: [ ]
 
 <!-- harness:milestone id="AUC3" status="completed" priority="P1" evidence="changesets/20260710-auc3-step5-dual-cli-proof/README.md" -->
 ### AUC3 — Terminal Agent Live Canvas Round-trip
@@ -50,12 +57,7 @@ Goal: Agent Design를 code-native UI canvas로 만든다 — evidence-based engi
 - Summary: 4개 엔진 후보 실측 후 계층형 DOM + WebGPU topology 사용자 확정
 ## Next Candidates
 
-<!-- harness:milestone id="AUC4" status="pending" priority="P2" -->
-### AUC4 — Desktop Productization And Quality Gate
-- DoD: Windows installer, trusted folder import, sandbox, crash recovery, diagnostics, packaged E2E가 AUC0 quality budget과 security boundary를 통과.
-- Evidence: `phases/agent-design-desktop-productization/` + packaged-app E2E/installer/recovery evidence.
-- Gap: 검증된 engine을 설치 가능한 신뢰 제품으로 닫아야 한다.
-- Status: [ ]
+- None while AUC4 is active.
 
 ## Archive Pointer
 
