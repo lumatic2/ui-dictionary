@@ -23,10 +23,10 @@ Goal: 디자인 시스템 SSOT를 로컬에서 질의·주입·검증하는 CLI 
 - Summary: 조회 CLI 3종+registry 계약 — pack fresh-env E2E·vitest 11 PASS
 ## Next Candidates
 
-<!-- harness:milestone id="CLI2" status="pending" priority="P1" -->
+<!-- harness:milestone id="CLI2" status="active" priority="P1" -->
 ### CLI2 - 프로젝트 주입 (init / add)
 - DoD: init(DESIGN.md·tokens 생성)·add(레시피 소스 주입, semantic 토큰 참조 유지) 동작 + 외부 프로젝트 실증(색 리터럴 0) + 실패 모드(파일 충돌 등) 처리.
-- Evidence: CLI2 plan doc + changeset README + 외부 실증 기록
+- Evidence: docs/plans/2026-07-10-cli2-inject.md
 - Gap: 조회만으로는 에이전트 실용성 반쪽 — shadcn 모델의 핵심은 주입.
 - Status: [ ]
 

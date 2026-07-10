@@ -32,7 +32,7 @@ shadcn의 `registry-item.json` 필드와 우리 레시피 frontmatter의 대응:
 |---|---|---|
 | `name` | `id` | 커맨드 인자 (`add button`) |
 | `type` (registry:component 등) | `kind` + `pattern_group` | 10종 고정 어휘 (pattern-taxonomy §3) |
-| `files[]` (복사할 소스) | `code_asset` | CLI2에서 code_asset 파일을 프로젝트로 복사 주입 |
+| `files[]` (복사할 소스) | `body`의 `## Code` fenced 발췌 | CLI2 실사로 조정: code_asset 5종 중 2종이 거대 페이지 파일이라 전체 복사 비현실적 — `add`는 Code 발췌(구조 계약, 복붙 가능 설계)를 `<id>.tsx`로 주입하고 `code_asset`은 "전체 구현 참조" 노트로 출력 (2026-07-10) |
 | `dependencies` | 없음 (v1) | 우리 레시피는 외부 npm 의존을 강제하지 않음 |
 | `cssVars` / `tailwind` | `tokens_used` | 주입 시 semantic/component 토큰 참조가 유지되는지 검증하는 근거 |
 | (없음) | `body`의 Checks / Anti-patterns | shadcn 대비 확장 — 주입물과 함께 에이전트에게 전달할 판정 기준 |
@@ -47,6 +47,8 @@ askewly-design terms show <id> [--json]
 askewly-design tokens [--tier primitive|semantic|component] [--format json|css]
 askewly-design recipes list [--json]
 askewly-design recipes show <id> [--json]
+askewly-design init [dir] [--force]                      # DESIGN.md + tokens.css + askewly.css 생성 (CLI2)
+askewly-design add <recipe> [--out dir] [--tokens f] [--force]   # Code 발췌 주입 + Checks/Anti-patterns 노트 (CLI2)
 ```
 
 - `--json`은 에이전트 소비용 기계 출력. 사람용 출력과 동일 데이터.

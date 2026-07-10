@@ -45,3 +45,4 @@
 | 43 | 20260710-docs-category-articles | 2026-07-10 | Seven docs category pages upgraded from catalog fallback to narrative articles and gate opened | 5/5 | complete |
 | 44 | 20260710-page-examples-gate-open | 2026-07-10 | Marketing Page Examples collections opened after quality review of already-authored full pages | 5/5 | complete |
 | 45 | 20260710-cli-core-query | 2026-07-10 | @askewly/design CLI core query commands with bundled SSOT data and registry contract | 5/5 | complete |
+| 46 | 20260710-cli-inject | 2026-07-10 | CLI init/add project injection with theme binding and external Vite proof | 4/4 | complete |

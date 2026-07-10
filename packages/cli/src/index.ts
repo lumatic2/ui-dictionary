@@ -1,6 +1,8 @@
 #!/usr/bin/env node
 import { readFileSync } from "node:fs"
+import path from "node:path"
 import { Command } from "commander"
+import { addRecipe, initProject, InjectError } from "./inject.js"
 import {
   loadRecipes,
   loadTerms,
@@ -101,6 +103,54 @@ program
       return
     }
     console.log(JSON.stringify(tokens, null, 2))
+  })
+
+program
+  .command("init")
+  .argument("[dir]", "target directory", ".")
+  .option("--force", "overwrite existing files")
+  .description("write DESIGN.md and tokens.css into a project")
+  .action((dir: string, options: { force?: boolean }) => {
+    try {
+      const written = initProject(path.resolve(dir), Boolean(options.force))
+      for (const file of written) console.log(`wrote ${file}`)
+      console.log('\nNext: add `@import "./askewly.css";` after `@import "tailwindcss";` in your global stylesheet, then `askewly-design add <recipe>`.')
+    } catch (error) {
+      if (error instanceof InjectError) fail(error.message)
+      throw error
+    }
+  })
+
+program
+  .command("add")
+  .argument("<recipe>", "recipe id, e.g. button")
+  .option("--out <dir>", "output directory for the component file", ".")
+  .option("--tokens <file>", "path to the project's tokens.css", "tokens.css")
+  .option("--force", "overwrite an existing file")
+  .description("inject a recipe's Code excerpt into the project")
+  .action((id: string, options: { out: string; tokens: string; force?: boolean }) => {
+    const recipe = loadRecipes().find((r) => r.id === id)
+    if (!recipe) fail(`unknown recipe "${id}" — try: askewly-design recipes list`)
+    try {
+      const result = addRecipe(recipe, path.resolve(options.out), Boolean(options.force), path.resolve(options.tokens))
+      console.log(`wrote ${result.file}`)
+      if (result.missingTokens.length > 0) {
+        console.log(`\n⚠ tokens not found in ${options.tokens} — run \`askewly-design init\` first. Required:`)
+        for (const token of result.missingTokens) console.log(`  - ${token}`)
+      }
+      if (recipe.code_asset) console.log(`\nFull implementation reference: ${recipe.code_asset} (ui-dictionary repo)`)
+      if (result.checks.length > 0) {
+        console.log("\nChecks before you ship:")
+        for (const check of result.checks) console.log(`  - ${check}`)
+      }
+      if (result.antiPatterns.length > 0) {
+        console.log("\nAnti-patterns to avoid:")
+        for (const anti of result.antiPatterns) console.log(`  - ${anti}`)
+      }
+    } catch (error) {
+      if (error instanceof InjectError) fail(error.message)
+      throw error
+    }
   })
 
 const recipes = program.command("recipes").description("component recipes (agent-ready implementation contracts)")
