@@ -1,7 +1,7 @@
 # ROADMAP
 
 > Last updated: 2026-07-10
-> Status: Agent-Native UI Canvas — AUC0 비교 완료, renderer 선택 대기
+> Status: Agent-Native UI Canvas — AUC1 계획 승인 대기
 > North star: Build Askewly Design as both a public reference website and an agent-usable implementation system.
 > line budget: <=150
 
@@ -12,21 +12,23 @@ Goal: Agent Design를 code-native UI canvas로 만든다 — evidence-based engi
 
 ## Active Milestones
 
-<!-- harness:milestone id="AUC0" status="active" priority="P0" -->
-### AUC0 — Canvas Engine Bake-off
-- DoD: DOM/React overlay, DOM+WebGPU overlay, SVG+embedded DOM, CanvasKit/custom WebGPU 4후보를 동일 1k/5k/10k fixture와 성능·fidelity·IME·a11y·recovery·round-trip 기준으로 비교하고, 사용자 선택으로 renderer/engine ADR을 확정.
-- Evidence: `docs/plans/2026-07-10-auc0-canvas-engine-bakeoff.md` + `experiments/canvas-engine-*` + `docs/research/canvas-engine-bakeoff-2026-07.md` + 후속 ADR.
-- Gap: 4/4 experiment와 비교 보고서는 완료. 사용자 renderer/native topology 선택과 후속 ADR이 남았다.
-- Status: [ ]
-
-## Next Candidates
-
-<!-- harness:milestone id="AUC1" status="pending" priority="P0" -->
+<!-- harness:milestone id="AUC1" status="active" priority="P0" -->
 ### AUC1 — Canonical Canvas Foundation
 - DoD: 채택 엔진 위에 versioned document, code-component layer, stable ID/source mapping, zoom/pan, save/reload, deterministic undo/redo 구현 + fresh-project render/reload 통합 smoke.
-- Evidence: `phases/agent-design-canvas-foundation/` + document fixtures + desktop/browser smoke.
-- Gap: 정본 document와 실제 canvas runtime이 아직 없다.
+- Evidence: `docs/plans/2026-07-10-auc1-canonical-canvas-foundation.md` + `phases/agent-design-canvas-foundation/` + document fixtures + desktop/browser smoke.
+- Gap: renderer topology는 확정됐지만 DOM content와 WebGPU editor plane이 공유할 canonical runtime이 아직 없다.
 - Status: [ ]
+
+<!-- harness:milestone id="AUC0" status="completed" priority="P0" evidence="docs/adr/0006-agent-design-layered-dom-webgpu-engine.md" -->
+### AUC0 — Canvas Engine Bake-off
+- DoD: DOM/React overlay, DOM+WebGPU overlay, SVG+embedded DOM, CanvasKit/custom WebGPU 4후보를 동일 1k/5k/10k fixture와 성능·fidelity·IME·a11y·recovery·round-trip 기준으로 비교하고, 사용자 선택으로 renderer/engine ADR을 확정.
+- Evidence: docs/adr/0006-agent-design-layered-dom-webgpu-engine.md
+- Gap: resolved — 사용자 topology 확정과 ADR 0006 기록 완료.
+- Status: [x]
+
+- Completed at: 2026-07-10
+- Summary: 4개 엔진 후보 실측 후 계층형 DOM + WebGPU topology 사용자 확정
+## Next Candidates
 
 <!-- harness:milestone id="AUC2" status="pending" priority="P1" -->
 ### AUC2 — Direct Manipulation And Property Runtime

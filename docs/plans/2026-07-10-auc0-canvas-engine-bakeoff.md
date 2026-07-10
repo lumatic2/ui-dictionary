@@ -1,7 +1,7 @@
 # Plan - AUC0 Canvas Engine Bake-off
 
 Date: 2026-07-10
-Milestone: AUC0 (`ROADMAP.md`, active)
+Milestone: AUC0 (`ROADMAP.md`, completed)
 
 ## 위계
 
@@ -30,9 +30,9 @@ Milestone: AUC0 (`ROADMAP.md`, active)
 - [x] Step 3 — DOM/React content + WebGPU viewport/selection/guides experiment. DOM production fidelity를 유지하며 WebGPU가 viewport/overlay 성능을 실제로 개선하는지 측정한다. (artifact: experiment; verify: same fixture/operation trace, WebGPU unavailable fallback 포함)
 - [x] Step 4 — SVG scenegraph + embedded DOM experiment. vector precision/zoom과 interactive UI/IME/accessibility의 경계를 측정한다. (artifact: experiment; verify: same fixture + foreignObject/embedded DOM failure modes)
 - [x] Step 5 — CanvasKit/custom WebGPU mini-engine experiment. geometry/hit-test/render hot path 이득과 text/layout/a11y/source-roundtrip 비용을 측정한다. (artifact: experiment; verify: same fixture + unsupported browser/GPU fallback)
-- [ ] Step 6 — comparative report + engine ADR: metric table, qualitative correctness, complexity/security/packaging cost, fit/non-fit, hot-path migration trigger를 종합하고 사용자 선택을 기록한다. (verify: 네 experiment 4/4 + report source links + ADR decision, 결론 전 사용자 gate)
+- [x] Step 6 — comparative report + engine ADR: metric table, qualitative correctness, complexity/security/packaging cost, fit/non-fit, hot-path migration trigger를 종합하고 사용자 선택을 기록한다. (verify: 네 experiment 4/4 + report source links + ADR 0006)
 
-Step 6 status: comparative report and 4/4 experiment evidence complete. Waiting at the required user renderer-selection gate before authoring the decision ADR.
+Step 6 status: user accepted the layered DOM + WebGPU topology on 2026-07-10; ADR 0006 records the closure.
 
 ## Quality budgets
 
@@ -48,7 +48,8 @@ Step 6 status: comparative report and 4/4 experiment evidence complete. Waiting 
 - [확정 2026-07-10, 사용자] 제품은 코드 네이티브 UI 캔버스다.
 - [확정 2026-07-10, 사용자] 높은 품질을 위해 C++/WebGPU/vector를 영구 제외하지 않고 AUC0 bake-off로 채택 범위를 결정한다.
 - [확정, ADR 0005] canonical document는 renderer와 독립적이며 React code component는 1급 layer다.
-- [사용자 소유 — AUC0 종료 gate] renderer 조합, Electron host, Electron-main vs Node-sidecar engine topology, native/Wasm hot-path 범위.
+- [확정 2026-07-10, 사용자/ADR 0006] production content=semantic DOM, editor plane=WebGPU+DOM fallback, vector islands=SVG, native/Wasm=측정 임계치 기반 hot path.
+- [후속 evidence gate] Electron main vs supervised Node sidecar lifecycle은 AUC1/AUC4에서 결정.
 - [AI 기본값] benchmark harness는 가장 작은 React/Vite/TypeScript workspace와 자동 JSON/screenshot capture로 시작하되 후보 공정성을 해치면 교체한다.
 - secret·외부 계정·유료 API: 없음.
 

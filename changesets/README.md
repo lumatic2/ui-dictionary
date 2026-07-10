@@ -57,3 +57,4 @@
 | 55 | 20260710-recipes-commerce | 2026-07-10 | Checkout order-summary recipe from shipped commerce implementations | 5/5 | complete |
 | 56 | 20260710-recipes-integration | 2026-07-10 | Regenerate llms/CLI recipe assets and verify fresh-target consumption of 13 recipes | 7/7 | complete |
 | 57 | 20260710-canvas-engine-benchmark-contract | 2026-07-10 | Shared canonical fixture, four renderer candidates, automated performance/correctness/pixel evidence | 7/7 | complete |
+| 58 | 20260710-auc0-engine-topology-decision | 2026-07-10 | User-approved layered DOM/WebGPU renderer ADR and AUC0 harness closure | 7/7 | complete |

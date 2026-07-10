@@ -48,9 +48,9 @@ Agents need stable, structured guidance instead of only screenshots or prose. Th
 The desktop app is a third connected surface, not a wrapper around the website or CLI.
 
 - **Canonical document:** versioned JSON scenegraph/document containing frames, groups, code-backed components, text, instances, layout constraints, typed props, token bindings, modes, and variants.
-- **Renderer boundary:** the canonical document is independent of DOM, WebGPU, SVG, or CanvasKit. AUC0 selects the renderer from reproducible evidence.
+- **Renderer boundary:** the canonical document is renderer-independent. ADR 0006 assigns production React/HTML/CSS to semantic DOM, editor overlays/transient geometry to WebGPU with DOM fallback, and isolated vector editing/export to SVG.
 - **Code runtime:** real React/HTML/CSS renders in an isolated preview; selected runtime nodes map back to stable document IDs and source locations.
-- **Editor overlay:** zoom/pan, selection bounds, resize handles, guides, hit testing, and manipulation state live outside project code.
+- **Editor overlay:** zoom/pan, selection bounds, resize handles, guides, cursors, minimap, hit testing, and manipulation state live outside project code. WebGPU accelerates this plane but device failure must fall back to DOM without affecting the canonical document.
 - **Local engine:** shared TypeScript core owns project scanning, document/code transforms, diffing, verification, and CLI parity. It may begin in Electron main or a supervised Node sidecar; AUC0/architecture ADR decides the lifecycle boundary.
 - **Desktop authority:** filesystem, process, editor/Explorer, and watcher capabilities stay behind typed host contracts. Project code receives no Electron/Node authority.
 - **Quality gate:** renderer candidates must pass shared 1k/5k/10k-node, pointer latency, Korean IME, responsive, nested component, screenshot-diff, memory, recovery, accessibility, and source-round-trip fixtures.
@@ -119,7 +119,6 @@ Documentation-only changes should be checked with targeted file existence and te
 ## Open Architecture Questions
 
 - Which schema format should become canonical for surfaces, patterns, examples, tokens, and agent recipes?
-- Which renderer wins AUC0: DOM/React overlay, DOM+WebGPU overlay, SVG+embedded DOM, or CanvasKit/custom WebGPU?
 - Does the local engine start inside Electron main or as a supervised Node sidecar?
 - How should paid code/assets be separated from public browseable examples?
 - Which local design repositories should be imported, linked, or kept separate?

@@ -67,7 +67,7 @@ Near-term MVP work should prioritize:
 - reference strategy for Tailwind, Tailwind Labs, mobile guidelines, SaaS products, and local design-manual assets;
 - surface taxonomy beyond web-only categories;
 - an agent-usable asset model for tokens, patterns, examples, and code.
-- an evidence-based canvas engine decision before committing to DOM, WebGPU, SVG, CanvasKit, or native/Wasm hot paths;
+- the accepted ADR 0006 canvas topology: semantic DOM content, WebGPU editor plane with DOM fallback, SVG vector islands, and threshold-triggered native/Wasm hot paths;
 - a canonical canvas document model that remains independent from its renderer and maps deterministically to code.
 
 The public website structure is defined in `docs/design-system/site-blueprint.md`. That blueprint is the source of truth for the first landing page, top-level navigation, site map, page types, public/internal content boundaries, implementation order, and first vertical slice.

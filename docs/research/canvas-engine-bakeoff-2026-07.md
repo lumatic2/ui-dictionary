@@ -1,6 +1,6 @@
 # Canvas Engine Bake-off — 2026-07
 
-Status: comparative report complete; engine decision pending user gate.
+Status: complete; layered DOM + WebGPU topology accepted by the user on 2026-07-10 (ADR 0006).
 
 ## Decision question
 
@@ -35,7 +35,7 @@ All 12 cells passed the `≤16ms` 1k/5k interaction budget, full canonical round
 - The Korean result is synthetic composition-event preservation plus visible Korean input in Chrome, not an OS-level Microsoft IME manual pass. That remains a desktop acceptance gate.
 - No untrusted project code ran in this experiment. Renderer choice does not replace AUC1's isolated preview/host-authority boundary.
 
-## Recommendation for user decision
+## Accepted topology
 
 Adopt a layered topology:
 
@@ -47,6 +47,6 @@ Adopt a layered topology:
 
 This is not a permanent exclusion of C++/WebGPU/vector. It is a narrow adoption rule: use each where the bake-off showed leverage, and require a measured threshold before taking on a second browser engine.
 
-## Gate
+## Decision closure
 
-The comparative work is complete. AUC0 remains active until the user chooses the renderer topology. After selection, record it in a follow-up ADR and only then close the harness milestone.
+The user accepted the layered topology on 2026-07-10. ADR 0006 is the decision source of truth; AUC0 can close and AUC1 canonical-canvas planning can begin.

@@ -18,7 +18,7 @@
 - **데모 프론트엔드** (필요 시): Vite + React + TypeScript + Tailwind (가벼움 우선). Shadcn/ui 또는 토큰만 손으로 정의
 - **디자인 토큰 포맷**: `DESIGN.md` (Google Stitch 오픈 포맷) — YAML frontmatter(tokens) + Markdown body(rationale)
 - **검증**: WCAG contrast / token reference linter, Playwright 스크린샷 (스킬 `browse`)
-- **캔버스 엔진**: 정본 document/scenegraph와 renderer를 분리한다. 구체 renderer(DOM/WebGPU/SVG/CanvasKit·Wasm/native hot path)는 AUC0 benchmark evidence로 결정하며 기술 prestige로 선결하지 않는다.
+- **캔버스 엔진**: 정본 document/scenegraph와 renderer를 분리한다. ADR 0006에 따라 production content=semantic DOM, editor plane=WebGPU+DOM fallback, vector islands=SVG, native/Wasm=측정 임계치 기반 hot path로 구현한다.
 
 ## Structure
 
