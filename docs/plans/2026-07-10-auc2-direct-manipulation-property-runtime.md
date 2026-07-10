@@ -26,12 +26,12 @@ Status: approved; execution in progress
   - keyboard traversal과 visible focus/selection을 동일 state에서 파생한다.
   - Verify: overlap/z-order hit tests, multi-select reducer tests, keyboard/accessibility smoke.
 
-- [~] Step 2 — Move/resize manipulation transaction
+- [x] Step 2 — Move/resize manipulation transaction
   - pointer capture 기반 drag/8-handle resize preview와 commit transaction을 구현한다.
   - snap/alignment guide는 WebGPU editor plane에서 파생하고 final bounds만 history operation으로 commit한다.
   - Verify: cancel/revert, min size, zoom-adjusted delta, 1 operation per gesture, undo/redo.
 
-- [ ] Step 3 — Reparent/reorder and responsive constraints
+- [~] Step 3 — Reparent/reorder and responsive constraints
   - drag target ancestry로 valid reparent/reorder를 계산하고 cycle/locked-node/invalid instance 경계를 거부한다.
   - fixed/hug/fill 및 horizontal/vertical layout constraint가 resize/reparent 후 deterministic하게 보존되도록 한다.
   - Verify: nested fixtures, invalid drop rejection, structure round-trip, responsive resize cases.

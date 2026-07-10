@@ -10,8 +10,14 @@
       "summary": "Added renderer-independent paint order, point/marquee hit testing, selection reduction, traversal, and multi-selection bounds in packages/canvas-core/src/interaction.ts. CanvasSurface now delegates stable DOM IDs to canonical select-nodes operations for click, Shift toggle, marquee, Escape, and arrow traversal, with canonical focus/ARIA state. Verified canvas-core 22/22, agent-design 9/9, and both builds.",
       "completed_at": "2026-07-10T18:39:05+09:00"
     },
-    { "step": 2, "name": "move-resize-transaction", "status": "in_progress" },
-    { "step": 3, "name": "reparent-reorder-responsive-constraints", "status": "pending" },
+    {
+      "step": 2,
+      "name": "move-resize-transaction",
+      "status": "completed",
+      "summary": "Added transform-nodes as one invertible operation for multi-node bounds, plus zoom-adjusted move, 8-handle group resize, minimum size, cancellation, locked-node rejection, and alignment-guide derivation in canvas-core. CanvasSurface now keeps transient preview outside canonical history, commits on pointerup only, reverts pointercancel/Escape, and feeds the same guide geometry to WebGPU and DOM editor planes. Verified core 26/26, app 10/10, both builds, preview revision stability, one operation per gesture, and undo/redo.",
+      "completed_at": "2026-07-10T18:43:55+09:00"
+    },
+    { "step": 3, "name": "reparent-reorder-responsive-constraints", "status": "in_progress" },
     { "step": 4, "name": "typed-properties-korean-text", "status": "pending" },
     { "step": 5, "name": "integrated-5k-quality-proof", "status": "pending" }
   ]
