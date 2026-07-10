@@ -47,3 +47,4 @@
 | 45 | 20260710-cli-core-query | 2026-07-10 | @askewly/design CLI core query commands with bundled SSOT data and registry contract | 5/5 | complete |
 | 46 | 20260710-cli-inject | 2026-07-10 | CLI init/add project injection with theme binding and external Vite proof | 4/4 | complete |
 | 47 | 20260710-cli-verify | 2026-07-10 | CLI verify command for token-bypass color literals plus full query-inject-verify loop E2E | 4/4 | complete |
+| 48 | 20260710-principles-canonical | 2026-07-10 | Canonical Askewly Design principles distilled from repository evidence | 4/4 | complete |
