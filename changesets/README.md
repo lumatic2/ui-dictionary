@@ -62,3 +62,4 @@
 | 60 | 20260710-auc1-operation-runtime | 2026-07-10 | Pure reducer, inverse operations, undo/redo, and deterministic replay | 6/6 | complete |
 | 61 | 20260710-auc1-dom-content-plane | 2026-07-10 | Agent Design app semantic DOM renderer and source/focus/IME contracts | 6/6 | complete |
 | 62 | 20260710-auc1-webgpu-editor-plane | 2026-07-10 | WebGPU selection/guides plane with validation and DOM failure fallback | 7/7 | complete |
+| 63 | 20260710-auc1-integrated-foundation | 2026-07-10 | Snapshot persistence, 5k three-run budget, reload pixel equality, browser E2E | 8/8 | complete |

@@ -43,6 +43,10 @@
     {
       "dir": "landing-showcase-quality",
       "status": "in_progress"
+    },
+    {
+      "dir": "agent-design-canvas-foundation",
+      "status": "completed"
     }
   ]
 }

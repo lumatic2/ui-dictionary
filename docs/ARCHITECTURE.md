@@ -57,6 +57,12 @@ The desktop app is a third connected surface, not a wrapper around the website o
 
 Research basis: `references/figma-product-architecture/ANALYSIS.md` + `references/nexu-io-open-design/ANALYSIS.md`. Figma contributes the canonical scenegraph/derived-state/code-layer model; OpenDesign contributes the Electron/local-engine/sandbox/agent-adapter model.
 
+AUC1 implementation surfaces:
+
+- `packages/canvas-core/`: pure TypeScript canonical document, validation, deterministic operations/history, and checksum-protected snapshot contract.
+- `apps/agent-design/`: React/Vite canvas proof using semantic DOM content and a WebGPU editor plane with DOM fallback.
+- `apps/agent-design/results/`: repeatable system-Chrome performance, persistence, and pixel evidence.
+
 ## Project Layout Direction
 
 ```text

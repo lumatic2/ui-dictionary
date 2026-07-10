@@ -36,7 +36,10 @@ describe('canvas operations', () => {
     const undone = undo(changed)
     const redone = redo(undone)
     expect(contentSignature(undone.present)).toBe(contentSignature(initial))
+    expect(undone.log).toHaveLength(0)
+    expect(undone.futureLog).toHaveLength(1)
     expect(canonicalStringify(redone.present)).toBe(canonicalStringify(changed.present))
+    expect(redone.log).toHaveLength(1)
   })
 
   it('generates inverse operations for update, selection, viewport, reparent, and reorder', () => {

@@ -2,7 +2,7 @@
 
 Date: 2026-07-10
 Milestone: AUC1 (`ROADMAP.md`, active planning gate)
-Status: awaiting user execution approval
+Status: execution complete; milestone verification pending
 
 ## Hierarchy
 
@@ -46,7 +46,7 @@ Status: awaiting user execution approval
   - Artifact: renderer adapter contract + GPU/fallback implementations.
   - Verify: actual Chrome WebGPU screenshot, forced fallback screenshot, canonical state equality, console errors 0.
 
-- [ ] Step 5 — Persistence and integrated fresh-project proof
+- [x] Step 5 — Persistence and integrated fresh-project proof
   - `DocumentStore` save/load contract, version check, atomic snapshot + operation-log recovery proof를 만든다.
   - fresh fixture를 열어 render → operation apply → save → reload → undo/redo → screenshot diff 흐름을 자동화한다.
   - Artifact: `phases/agent-design-canvas-foundation/` status machine + final changeset.

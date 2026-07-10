@@ -13,12 +13,13 @@ export interface EditorPlaneOptions {
 }
 
 export interface EditorPlaneHandle {
+  update: (selection: CanvasRect) => void
   destroy: () => void
 }
 
 const fallback = (reason: string, onState: (state: EditorPlaneState) => void): EditorPlaneHandle => {
   onState({ mode: 'dom', reason })
-  return { destroy: () => undefined }
+  return { update: () => undefined, destroy: () => undefined }
 }
 
 export async function createEditorPlane(
@@ -49,11 +50,7 @@ export async function createEditorPlane(
     context.configure({ device, format, alphaMode: 'premultiplied' })
 
     device.pushErrorScope('validation')
-    const rects = new Float32Array([
-      selection.x * dpr, selection.y * dpr, selection.width * dpr, selection.height * dpr, 0.49, 0.18, 0.83, 0.18,
-      0, selection.y * dpr, canvas.width, 1 * dpr, 0.49, 0.18, 0.83, 0.5,
-      selection.x * dpr, 0, 1 * dpr, canvas.height, 0.49, 0.18, 0.83, 0.5,
-    ])
+    const rects = new Float32Array(24)
     const rectBuffer = device.createBuffer({ size: rects.byteLength, usage: 128 | 8, mappedAtCreation: true })
     new Float32Array(rectBuffer.getMappedRange()).set(rects)
     rectBuffer.unmap()
@@ -86,15 +83,24 @@ export async function createEditorPlane(
       layout: pipeline.getBindGroupLayout(0),
       entries: [{ binding: 0, resource: { buffer: rectBuffer } }, { binding: 1, resource: { buffer: uniformBuffer } }],
     })
-    const encoder = device.createCommandEncoder()
-    const pass = encoder.beginRenderPass({
-      colorAttachments: [{ view: context.getCurrentTexture().createView(), clearValue: { r: 0, g: 0, b: 0, a: 0 }, loadOp: 'clear', storeOp: 'store' }],
-    })
-    pass.setPipeline(pipeline)
-    pass.setBindGroup(0, bindGroup)
-    pass.draw(6, 3)
-    pass.end()
-    device.queue.submit([encoder.finish()])
+    const draw = (nextSelection: CanvasRect) => {
+      rects.set([
+        nextSelection.x * dpr, nextSelection.y * dpr, nextSelection.width * dpr, nextSelection.height * dpr, 0.49, 0.18, 0.83, 0.18,
+        0, nextSelection.y * dpr, canvas.width, 1 * dpr, 0.49, 0.18, 0.83, 0.5,
+        nextSelection.x * dpr, 0, 1 * dpr, canvas.height, 0.49, 0.18, 0.83, 0.5,
+      ])
+      device.queue.writeBuffer(rectBuffer, 0, rects)
+      const encoder = device.createCommandEncoder()
+      const pass = encoder.beginRenderPass({
+        colorAttachments: [{ view: context.getCurrentTexture().createView(), clearValue: { r: 0, g: 0, b: 0, a: 0 }, loadOp: 'clear', storeOp: 'store' }],
+      })
+      pass.setPipeline(pipeline)
+      pass.setBindGroup(0, bindGroup)
+      pass.draw(6, 3)
+      pass.end()
+      device.queue.submit([encoder.finish()])
+    }
+    draw(selection)
     await device.queue.onSubmittedWorkDone()
     const validationError = await device.popErrorScope()
     if (validationError) {
@@ -106,6 +112,7 @@ export async function createEditorPlane(
       if (alive) onState({ mode: 'dom', reason: `device lost: ${info.message || 'unknown'}` })
     })
     return {
+      update: draw,
       destroy: () => {
         alive = false
         rectBuffer.destroy()

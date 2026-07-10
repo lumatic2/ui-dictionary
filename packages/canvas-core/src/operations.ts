@@ -136,6 +136,15 @@ function mutateOperation(next: CanvasDocument, operation: CanvasOperation) {
 }
 
 export function applyOperation(document: CanvasDocument, operation: CanvasOperation): CanvasDocument {
+  if (operation.type === 'select-nodes') {
+    const nodeIds = [...new Set(operation.nodeIds)]
+    for (const id of nodeIds) if (!document.nodes[id]) throw new Error(`selection references missing node ${id}`)
+    return { ...document, selection: nodeIds, revision: document.revision + 1, metadata: { ...document.metadata, updatedAt: operation.at } }
+  }
+  if (operation.type === 'set-viewport') {
+    if (!(operation.zoom > 0 && Number.isFinite(operation.zoom))) throw new Error('viewport zoom must be positive')
+    return { ...document, viewport: { pan: { ...operation.pan }, zoom: operation.zoom }, revision: document.revision + 1, metadata: { ...document.metadata, updatedAt: operation.at } }
+  }
   const next = structuredClone(document)
   mutateOperation(next, operation)
   return assertValidDocument(next)
@@ -188,31 +197,39 @@ export interface CanvasHistory {
   past: CanvasDocument[]
   future: CanvasDocument[]
   log: CanvasOperation[]
+  futureLog: CanvasOperation[]
 }
 
 export function createHistory(document: CanvasDocument): CanvasHistory {
-  return { present: structuredClone(document), past: [], future: [], log: [] }
+  return { present: structuredClone(document), past: [], future: [], log: [], futureLog: [] }
 }
 
 export function commitOperation(history: CanvasHistory, operation: CanvasOperation): CanvasHistory {
   return {
     present: applyOperation(history.present, operation),
-    past: [...history.past, structuredClone(history.present)],
+    past: [...history.past, history.present],
     future: [],
     log: [...history.log, structuredClone(operation)],
+    futureLog: [],
   }
 }
 
 export function undo(history: CanvasHistory): CanvasHistory {
   const previous = history.past.at(-1)
   if (!previous) return history
-  return { ...history, present: structuredClone(previous), past: history.past.slice(0, -1), future: [structuredClone(history.present), ...history.future] }
+  const operation = history.log.at(-1)
+  return { ...history, present: previous, past: history.past.slice(0, -1), future: [history.present, ...history.future], log: history.log.slice(0, -1), futureLog: operation ? [operation, ...history.futureLog] : history.futureLog }
 }
 
 export function redo(history: CanvasHistory): CanvasHistory {
   const next = history.future[0]
   if (!next) return history
-  return { ...history, present: structuredClone(next), past: [...history.past, structuredClone(history.present)], future: history.future.slice(1) }
+  const operation = history.futureLog[0]
+  return { ...history, present: next, past: [...history.past, history.present], future: history.future.slice(1), log: operation ? [...history.log, operation] : history.log, futureLog: history.futureLog.slice(1) }
+}
+
+export function historyFromOperations(initial: CanvasDocument, operations: CanvasOperation[]): CanvasHistory {
+  return operations.reduce(commitOperation, createHistory(initial))
 }
 
 function sortValue(value: unknown): unknown {
@@ -223,7 +240,7 @@ function sortValue(value: unknown): unknown {
   return value
 }
 
-export function canonicalStringify(value: CanvasDocument | CanvasOperation[]): string {
+export function canonicalStringify(value: unknown): string {
   return JSON.stringify(sortValue(value))
 }
 

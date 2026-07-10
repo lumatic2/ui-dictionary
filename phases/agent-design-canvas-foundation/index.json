@@ -1,0 +1,12 @@
+{
+  "project": "ui-dictionary",
+  "phase": "agent-design-canvas-foundation",
+  "mode": "product",
+  "steps": [
+    { "step": 0, "name": "canonical-document-contract", "status": "completed", "completed_at": "2026-07-10T18:00:00+09:00", "summary": "Defined versioned renderer-independent document types, validator, and 1k/5k fixtures." },
+    { "step": 1, "name": "deterministic-operation-runtime", "status": "completed", "completed_at": "2026-07-10T18:02:00+09:00", "summary": "Added pure operations, inverse operations, structural-sharing view updates, undo/redo, and deterministic replay." },
+    { "step": 2, "name": "semantic-dom-content-plane", "status": "completed", "completed_at": "2026-07-10T18:06:00+09:00", "summary": "Rendered every canonical node to semantic DOM with stable ID, source, focus, and composition contracts." },
+    { "step": 3, "name": "webgpu-editor-plane-fallback", "status": "completed", "completed_at": "2026-07-10T18:13:00+09:00", "summary": "Added validation-clean WebGPU selection/guides and convergent DOM fallback for adapter, validation, and device-loss failure." },
+    { "step": 4, "name": "persistence-and-integrated-proof", "status": "completed", "completed_at": "2026-07-10T18:22:00+09:00", "summary": "Proved checksum snapshot recovery, post-reload undo/redo, 5k interaction budget, zero pixel drift, and real Chrome flow." }
+  ]
+}

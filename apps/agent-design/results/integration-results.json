@@ -1,0 +1,46 @@
+{
+  "schemaVersion": 1,
+  "generatedAt": "2026-07-10T09:25:20.549Z",
+  "runtime": "Playwright system Chrome headless, 1440x900@1x",
+  "gpuState": "webgpu",
+  "nodeCount": 5000,
+  "sourceCount": 250,
+  "trace": {
+    "frames": 90,
+    "averageFrameMs": 8.798888888888888,
+    "p95FrameMs": 9.299999999999955,
+    "droppedFrameRatio": 0.011111111111111112
+  },
+  "traces": [
+    {
+      "frames": 90,
+      "averageFrameMs": 8.798888888888888,
+      "p95FrameMs": 9.299999999999955,
+      "droppedFrameRatio": 0.011111111111111112
+    },
+    {
+      "frames": 90,
+      "averageFrameMs": 8.518888888888887,
+      "p95FrameMs": 8.400000000000091,
+      "droppedFrameRatio": 0.011111111111111112
+    },
+    {
+      "frames": 90,
+      "averageFrameMs": 8.796666666666665,
+      "p95FrameMs": 8.5,
+      "droppedFrameRatio": 0.011111111111111112
+    }
+  ],
+  "persistence": {
+    "savedStatus": "saved 392473 bytes",
+    "reloadedRevision": 3,
+    "undoRevision": 2,
+    "redoRevision": 3
+  },
+  "reloadPixelDiff": {
+    "differentPixels": 0,
+    "totalPixels": 827160,
+    "mismatchRatio": 0
+  },
+  "consoleErrors": []
+}

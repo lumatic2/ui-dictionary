@@ -50,6 +50,7 @@ function CanvasNodeElement({ node }: { node: CanvasNode }) {
 
 export function CanvasSurface({ document, editorPlaneFailure = null }: Props) {
   const orderedNodes = useMemo(() => Object.values(document.nodes), [document.nodes])
+  const nodeElements = useMemo(() => orderedNodes.map((node) => <CanvasNodeElement key={node.id} node={node} />), [orderedNodes])
   const selected = document.nodes[document.selection[0]]
   const transform = `translate(${document.viewport.pan.x}px, ${document.viewport.pan.y}px) scale(${document.viewport.zoom})`
   const selection = selected ? {
@@ -61,7 +62,7 @@ export function CanvasSurface({ document, editorPlaneFailure = null }: Props) {
 
   return <div className="canvas-viewport" data-testid="canvas-viewport">
     <div className="canvas-content" data-testid="canvas-content" style={{ transform }}>
-      {orderedNodes.map((node) => <CanvasNodeElement key={node.id} node={node} />)}
+      {nodeElements}
     </div>
     {selection ? <div data-selected-id={selected?.id}><EditorPlane selection={selection} failure={editorPlaneFailure} /></div> : null}
   </div>

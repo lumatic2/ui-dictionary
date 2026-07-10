@@ -8,22 +8,29 @@
     "prebuild": "npm --prefix ../../packages/canvas-core run build",
     "build": "tsc -b && vite build",
     "pretest": "npm --prefix ../../packages/canvas-core run build",
-    "test": "vitest run"
+    "test": "vitest run",
+    "preintegration": "npm --prefix ../../packages/canvas-core run build",
+    "integration": "node scripts/run-integration.mjs",
+    "validate:integration": "node scripts/validate-integration.mjs"
   },
   "dependencies": {
     "@askewly/canvas-core": "file:../../packages/canvas-core",
     "@vitejs/plugin-react": "^6.0.2",
-    "vite": "^8.1.0",
-    "typescript": "~6.0.2",
     "react": "^19.2.7",
-    "react-dom": "^19.2.7"
+    "react-dom": "^19.2.7",
+    "typescript": "~6.0.2",
+    "vite": "^8.1.0"
   },
   "devDependencies": {
     "@testing-library/react": "^16.3.0",
     "@types/node": "^24.13.2",
+    "@types/pngjs": "^6.0.5",
     "@types/react": "^19.2.17",
     "@types/react-dom": "^19.2.3",
     "jsdom": "^26.1.0",
+    "pixelmatch": "^7.2.0",
+    "playwright": "^1.61.1",
+    "pngjs": "^7.0.0",
     "vitest": "^3.2.7"
   }
 }
