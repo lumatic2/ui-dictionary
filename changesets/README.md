@@ -51,3 +51,4 @@
 | 49 | 20260710-principles-llms-index | 2026-07-10 | Publish canonical principles through the generated llms.txt discovery layer | 4/4 | complete |
 | 50 | 20260710-principles-docs-article | 2026-07-10 | Human-facing Korean Principles article behind the existing dev-only exposure gate | 5/5 | complete |
 | 51 | 20260710-principles-gate-open | 2026-07-10 | Record user approval and publish Principles in the public Docs navigation | 6/6 | complete |
+| 52 | 20260710-recipes-docs-layout | 2026-07-10 | Docs article and layout shell/grid recipes distilled from shipped implementations | 4/4 | complete |
