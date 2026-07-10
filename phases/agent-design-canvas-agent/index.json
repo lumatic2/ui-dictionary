@@ -17,7 +17,13 @@
       "summary": "Added one official-SDK stdio MCP adapter shared by Codex and Claude actors with get_context, apply_operations, apply_source_patch, verify, and undo tools. Deterministic child-process MCP initialize/list/context/apply/verify/undo passed for both actors; bridge context/verify/guarded undo raised bridge tests to 7/7. Installed Codex recognized one-shot config and installed Claude recognized a temporary project-scoped config as pending approval; no global config was changed and no live model call is claimed.",
       "completed_at": "2026-07-10T23:22:00+09:00"
     },
-    { "step": 3, "name": "atomic-auto-apply-audit", "status": "pending" },
+    {
+      "step": 3,
+      "name": "atomic-auto-apply-audit",
+      "status": "completed",
+      "summary": "Implemented trusted auto-apply with duplicate ID, base revision, canonical hash, project allowlist, and source before-hash guards; staged source replacement with injected verification; exact JSON-pointer and lossless source diffs; audit persistence before publication; and guarded operation/source Undo as new revisions. Failure injection proved verification/audit rollback leaves file, document, audit, and cursor unchanged; competing actors reject stale writes. Verified engine 7/7, bridge 11/11, MCP actor contract 2/2, and all builds.",
+      "completed_at": "2026-07-10T23:30:00+09:00"
+    },
     { "step": 4, "name": "canvas-live-sync-file-watcher", "status": "pending" },
     { "step": 5, "name": "dual-cli-roundtrip-proof", "status": "pending" }
   ]
