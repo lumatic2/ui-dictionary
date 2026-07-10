@@ -29,6 +29,7 @@ app.whenReady().then(async () => {
   await window.loadURL('app://renderer/index.html')
   const result = await window.webContents.executeJavaScript(`(async () => {
     const hostInfo = await globalThis.agentDesignHost.getHostInfo({ apiVersion: 1, projectId: 'project:smoke' })
+    const bridgeStatus = await globalThis.agentDesignHost.getBridgeStatus({ apiVersion: 1 })
     let authorityRejected = false
     try {
       await globalThis.agentDesignHost.getHostInfo({ apiVersion: 1, path: 'C:/secret' })
@@ -41,13 +42,14 @@ app.whenReady().then(async () => {
       moduleType: typeof globalThis.module,
       hostApiKeys: Object.keys(globalThis.agentDesignHost || {}).sort(),
       hostInfo,
+      bridgeStatus,
       authorityRejected,
       permissionState: (await navigator.permissions.query({ name: 'geolocation' })).state,
       networkBlocked: await fetch('https://example.com').then(() => false, () => true),
       popupBlocked: window.open('https://example.com') === null
     }
   })()`)
-  const expectedKeys = ['apiVersion', 'getHostInfo']
+  const expectedKeys = ['apiVersion', 'copyTerminalCommand', 'getBridgeStatus', 'getHostInfo', 'onBridgeStatus']
   const passed =
     result.processType === 'undefined' &&
     result.requireType === 'undefined' &&
@@ -55,6 +57,8 @@ app.whenReady().then(async () => {
     JSON.stringify(result.hostApiKeys) === JSON.stringify(expectedKeys) &&
     result.hostInfo.apiVersion === 1 &&
     result.hostInfo.appVersion === 'security-smoke' &&
+    result.bridgeStatus.state === 'idle' &&
+    !/token|url|path/i.test(JSON.stringify(result.bridgeStatus)) &&
     result.authorityRejected === true &&
     result.permissionState === 'denied' &&
     result.networkBlocked === true &&

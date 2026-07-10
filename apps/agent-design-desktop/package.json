@@ -6,12 +6,15 @@
   "scripts": {
     "prestart": "npm run build",
     "start": "electron .",
-    "prebuild": "npm --prefix ../agent-design run build",
+    "prebuild": "npm --prefix ../agent-design run build && npm --prefix ../agent-design-bridge run build && npm --prefix ../../packages/agent-design-mcp run build",
     "build": "tsc -p tsconfig.json && esbuild src/preload.ts --bundle --platform=node --format=cjs --external:electron --outfile=dist/preload.cjs",
     "test": "vitest run",
+    "test:supervisor": "vitest run test/bridge-supervisor.test.ts && node scripts/run-electron-supervisor-smoke.mjs",
+    "test:terminal-bootstrap": "vitest run test/terminal-command.test.ts",
     "verify:security": "node scripts/verify-security.mjs"
   },
   "devDependencies": {
+    "@askewly/canvas-core": "file:../../packages/canvas-core",
     "@doyensec/electronegativity": "1.10.3",
     "@types/node": "^24.13.2",
     "electron": "43.1.0",

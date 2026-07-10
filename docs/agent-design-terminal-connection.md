@@ -1,6 +1,6 @@
 # Agent Design Terminal Connection
 
-The user starts Codex CLI or Claude CLI in a terminal they control. Both launch the same stdio MCP adapter and forward to one running project-local bridge.
+The user starts Codex CLI or Claude CLI in a terminal they control. Both launch the same stdio MCP adapter and forward to one running project-local bridge. In the desktop app, Electron supervises that bridge and the canvas exposes only redacted lifecycle state plus **Copy Codex** / **Copy Claude** actions. The session token and complete command remain in Electron main/clipboard and are never returned to the renderer main world.
 
 Required session values:
 
@@ -26,18 +26,14 @@ codex `
   -c 'mcp_servers.agent-design.env.AGENT_DESIGN_ACTOR="codex"'
 ```
 
-## Claude project-scoped connection
+## Claude one-shot connection
 
-Claude supports an explicit project scope. Run from the trusted project root:
+Claude accepts an inline MCP config for the current launch. Agent Design generates this JSON and copies the complete command; it does not create `.mcp.json` or change user settings.
 
 ```powershell
 $adapter = (Resolve-Path packages/agent-design-mcp/dist/cli.js).Path
-claude mcp add --scope project agent-design `
-  -e "AGENT_DESIGN_BRIDGE_URL=http://127.0.0.1:<port>" `
-  -e "AGENT_DESIGN_SESSION_TOKEN=<session-token>" `
-  -e "AGENT_DESIGN_ACTOR=claude" `
-  -- node $adapter
-claude mcp get agent-design
+$config = '{"mcpServers":{"agent-design":{"type":"stdio","command":"node","args":["<adapter-path>"],"env":{"AGENT_DESIGN_BRIDGE_URL":"http://127.0.0.1:<port>","AGENT_DESIGN_SESSION_TOKEN":"<session-token>","AGENT_DESIGN_ACTOR":"claude"}}}}'
+claude --strict-mcp-config --mcp-config $config
 ```
 
-Remove the project entry after a manual smoke if the bridge is not running. AUC4 will replace these development commands with supervised desktop lifecycle and session bootstrap.
+Closing Agent Design invalidates the session token and gracefully stops the supervised bridge. Neither connection path spawns an agent or writes persistent MCP configuration.

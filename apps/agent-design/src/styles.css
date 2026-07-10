@@ -17,6 +17,10 @@ button, select { font: inherit; }
 .document-actions .connection-status { margin-left: 8px; padding: 3px 7px; border-radius: 999px; background: #e2e8f0; color: #475569; }
 .document-actions .status-connected { background: #dcfce7; color: #166534; }
 .document-actions .status-reconnecting, .document-actions .status-error { background: #fee2e2; color: #991b1b; }
+.desktop-bridge-controls { display: flex; align-items: center; gap: 6px; }
+.document-actions .desktop-bridge-controls output { margin-left: 0; }
+.document-actions .status-ready { background: #dcfce7; color: #166534; }
+.document-actions .status-backoff, .document-actions .status-failed { background: #fee2e2; color: #991b1b; }
 .app-body { display: grid; grid-template-columns: minmax(0, 1fr) 260px; height: calc(100vh - 166px); border: 1px solid #d7deea; border-radius: 12px; overflow: hidden; box-shadow: 0 18px 50px rgb(30 41 59 / 0.08); }
 .canvas-viewport { position: relative; overflow: hidden; background-color: #fafbfc; background-image: linear-gradient(#e8ebf0 1px, transparent 1px), linear-gradient(90deg, #e8ebf0 1px, transparent 1px); background-size: 24px 24px; }
 .canvas-content { position: absolute; inset: 0; transform-origin: 0 0; }

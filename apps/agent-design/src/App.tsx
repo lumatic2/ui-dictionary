@@ -13,6 +13,7 @@ import {
 } from '@askewly/canvas-core'
 import { BrowserDocumentStore } from './browserStore'
 import { CanvasSurface } from './CanvasSurface'
+import { desktopHost, type DesktopBridgeStatus } from './desktopHost'
 import { PropertyInspector } from './PropertyInspector'
 import type { EditorPlaneFailure } from './editorPlaneRuntime'
 import { LiveBridgeClient, liveBridgeConfig } from './liveBridge'
@@ -41,6 +42,8 @@ export function App() {
   const [status, setStatus] = useState('unsaved')
   const [connection, setConnection] = useState<'offline' | 'connecting' | 'connected' | 'reconnecting' | 'disconnected' | 'error'>('offline')
   const [liveLatency, setLiveLatency] = useState<number | null>(null)
+  const [desktopBridge, setDesktopBridge] = useState<DesktopBridgeStatus | null>(null)
+  const [terminalCopy, setTerminalCopy] = useState<'idle' | 'codex' | 'claude' | 'error'>('idle')
   const liveConfig = useMemo(() => liveBridgeConfig(), [])
   const liveClient = useRef<LiveBridgeClient | null>(null)
   const pendingPaint = useRef<{ revision: number; started: number } | null>(null)
@@ -66,6 +69,29 @@ export function App() {
     void client.connect()
     return () => { client.disconnect(); liveClient.current = null }
   }, [liveConfig])
+
+  useEffect(() => {
+    const host = desktopHost()
+    if (!host) return
+    let active = true
+    void host.getBridgeStatus({ apiVersion: 1 }).then(
+      (next) => { if (active) setDesktopBridge(next) },
+      () => { if (active) setDesktopBridge({ apiVersion: 1, state: 'failed', projectId: null, restartCount: 0, cursor: 0, revision: 0, lastErrorCode: 'HOST_STATUS_ERROR' }) },
+    )
+    const unsubscribe = host.onBridgeStatus((next) => { if (active) setDesktopBridge(next) })
+    return () => { active = false; unsubscribe() }
+  }, [])
+
+  const copyTerminalCommand = useCallback(async (actor: 'codex' | 'claude') => {
+    const host = desktopHost()
+    if (!host) return
+    try {
+      await host.copyTerminalCommand({ apiVersion: 1, actor })
+      setTerminalCopy(actor)
+    } catch {
+      setTerminalCopy('error')
+    }
+  }, [])
 
   useEffect(() => {
     const pending = pendingPaint.current
@@ -208,6 +234,14 @@ export function App() {
       <button type="button" data-testid="reload-document" onClick={() => void reload()}>Reload</button>
       <output data-testid="persistence-status">{status}</output>
       <output className={`connection-status status-${connection}`} data-testid="bridge-status">{connection}{liveLatency === null ? '' : ` · ${liveLatency.toFixed(1)}ms`}</output>
+      {desktopBridge && <div className="desktop-bridge-controls">
+        <output className={`connection-status status-${desktopBridge.state}`} data-testid="desktop-bridge-status">
+          desktop {desktopBridge.state} · restart {desktopBridge.restartCount}
+        </output>
+        <button type="button" disabled={desktopBridge.state !== 'ready'} onClick={() => void copyTerminalCommand('codex')}>Copy Codex</button>
+        <button type="button" disabled={desktopBridge.state !== 'ready'} onClick={() => void copyTerminalCommand('claude')}>Copy Claude</button>
+        <output aria-live="polite" data-testid="terminal-copy-status">{terminalCopy === 'idle' ? '' : terminalCopy === 'error' ? 'copy failed' : `${terminalCopy} copied`}</output>
+      </div>}
     </nav>
     <section className="app-body">
       <CanvasSurface document={history.present} editorPlaneFailure={failure} onOperation={commit} />
