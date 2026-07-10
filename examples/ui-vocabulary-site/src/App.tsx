@@ -674,7 +674,7 @@ function App() {
             ) : docsArticlePage ? (
               <DocsArticlePage
                 page={docsArticlePage}
-                relatedTerms={filteredTerms.slice(0, 6)}
+                relatedTerms={docsArticlePage.kind === "category" ? filteredTerms : filteredTerms.slice(0, 6)}
                 onSelectTerm={selectTerm}
               />
             ) : marketingSectionPage ? (

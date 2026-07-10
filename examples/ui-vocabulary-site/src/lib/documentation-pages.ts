@@ -19,7 +19,7 @@ export type DocsArticlePreviewVariant =
 
 export type DocsArticlePageData = {
   filter: TermFilter
-  kind: "setup" | "element" | "foundation" | "agent-recipe"
+  kind: "setup" | "element" | "foundation" | "agent-recipe" | "category"
   breadcrumb: string
   title: string
   lead: string
@@ -1352,5 +1352,408 @@ export const docsArticlePages = new Map<TermFilter, DocsArticlePageData>([
     ],
     apiRows: [],
     onThisPage: ["What are Agent Recipes", "Recipe list", "llms.txt asset", "Verification checklist"],
+  }],
+  [navFilter("docs-layout"), {
+    filter: navFilter("docs-layout"),
+    kind: "category",
+    breadcrumb: "UI Blocks / Docs",
+    title: "Layout",
+    lead: "Layout 카테고리는 화면의 공간, 크기, 반응형 분기, 겹침, 스크롤을 다루는 vocabulary 축입니다. Foundations의 Spacing & layout 문서가 토큰 값 자체를 정의한다면, 이 문서는 그 값을 화면 구조로 조립할 때 쓰는 판단 기준을 정리합니다. 좋은 화면은 개별 컴포넌트보다 컨테이너 폭과 흐름이 먼저 안정됩니다.",
+    sections: [
+      {
+        title: "What this category covers",
+        body: [
+          "이 카테고리의 용어는 네 group으로 나뉩니다. 간격·크기(padding, gap, aspect ratio처럼 요소 안팎의 공간), 반응형·뷰포트(breakpoint, container query처럼 화면 크기에 따른 분기), 겹침·넘침(z-index, overflow, truncation처럼 요소가 서로 겹치거나 밖으로 나가는 상황), 스크롤 동작(sticky, scroll snap처럼 스크롤과 함께 움직이는 규칙)입니다.",
+          "화면을 설계할 때는 이 순서대로 점검하는 것이 효율적입니다: 먼저 컨테이너와 간격 리듬을 고정하고, 그다음 뷰포트 분기를 정하고, 마지막에 겹침과 스크롤 같은 예외 상황을 처리합니다. 아래 Related terms에서 이 카테고리의 전체 용어를 볼 수 있습니다.",
+        ],
+      },
+      {
+        title: "Container and rhythm",
+        body: [
+          "간격은 토큰 소스의 4/8px grid를 따릅니다 — `dimension.space`는 4px(`space.1`)부터 64px(`space.16`)까지 여섯 단계만 정의합니다. 컴포넌트 내부 간격은 4–16px, 컴포넌트 사이는 16–32px, 섹션 사이는 48–64px이 기본 리듬입니다. 임의의 중간값(예: `p-[18px]`)은 리듬을 깨는 신호입니다.",
+          "컨테이너 폭은 콘텐츠 종류가 결정합니다. 읽는 텍스트는 좁게(`max-w-3xl` 수준), 카드 그리드와 테이블은 넓게, 사이드바가 있는 앱 shell은 고정 rail + 유동 content 구조로 잡습니다. 폭을 명시하지 않은 유동 레이아웃은 큰 모니터에서 가장 먼저 무너집니다.",
+        ],
+        code: "<main class=\"grid lg:grid-cols-[280px_minmax(0,1fr)]\">\n  <aside class=\"border-r\">…</aside>\n  <div class=\"mx-auto w-full max-w-6xl px-6 py-10\">…</div>\n</main>",
+      },
+      {
+        title: "Responsive and viewport",
+        body: [
+          "분기는 장치가 아니라 콘텐츠가 부러지는 지점에서 정합니다. 모바일 우선으로 단일 컬럼을 먼저 완성하고, 공간이 생기는 지점에서 컬럼을 늘립니다 — 데스크톱 레이아웃을 먼저 만들고 좁히는 방식은 첫 뷰포트에서 핵심 조작이 잘려나가는 화면을 만들기 쉽습니다.",
+          "반응형 검증의 최소선은 두 가지입니다: 375px 폭에서 가로 스크롤이 생기지 않을 것, 그리고 좌우 rail(사이드바, on-this-page)이 접히거나 숨을 것. 긴 단어, URL, code block은 `min-w-0`과 `overflow-x-auto` 없이는 그리드 컬럼을 밀어냅니다.",
+        ],
+        code: "<div class=\"grid gap-6 sm:grid-cols-2 lg:grid-cols-3\">\n  <article class=\"min-w-0\">\n    <pre class=\"overflow-x-auto\">…</pre>\n  </article>\n</div>",
+      },
+      {
+        title: "Stacking and overflow",
+        body: [
+          "겹침은 계층이 적을수록 안전합니다. dropdown, popover, dialog, toast처럼 떠 있는 표면의 순서를 화면마다 임의 z-index로 해결하지 말고, 소수의 고정 계층(콘텐츠 < 떠 있는 메뉴 < 모달 < 알림)으로 통일합니다. z-50 위에 z-60을 쌓기 시작하면 이미 계층 설계가 무너진 것입니다.",
+          "넘침은 숨기기 전에 이유를 판단합니다. 한 줄로 유지해야 하는 이름·경로는 truncation과 title 속성을 짝짓고, 표처럼 폭이 본질적으로 넓은 콘텐츠는 자르지 말고 자체 스크롤 컨테이너에 넣습니다. `overflow-hidden`은 디버깅을 어렵게 하는 가장 흔한 임시방편입니다.",
+        ],
+      },
+      {
+        title: "Scroll behavior",
+        body: [
+          "스크롤 영역은 페이지당 하나가 기본입니다. 페이지 스크롤과 내부 패널 스크롤이 공존해야 하면(예: 사이드바 + 콘텐츠), 어느 쪽이 주 스크롤인지 정하고 나머지는 명확한 경계(border, 높이 제한)를 줍니다. 경계 없는 중첩 스크롤은 사용자가 어디를 스크롤하고 있는지 잃게 만듭니다.",
+          "sticky 요소(topbar, 섹션 헤더, 사이드 내비게이션)는 겹침 계층과 함께 설계합니다 — sticky 헤더가 dropdown 아래로 파고들거나 anchor 이동 시 콘텐츠를 가리는 문제는 전부 이 단계에서 잡힙니다.",
+        ],
+      },
+      {
+        title: "Checklist",
+        body: [
+          "- 간격이 4/8px grid 위에 있고 임의 중간값이 없는가.",
+          "- 375px 폭에서 가로 스크롤 없이 핵심 조작이 첫 뷰포트에 보이는가.",
+          "- 긴 단어·URL·code block이 컬럼을 밀어내지 않는가 (`min-w-0`, `overflow-x-auto`).",
+          "- 떠 있는 표면들의 겹침 순서가 고정 계층을 따르는가.",
+          "- 스크롤 영역이 하나이거나, 중첩 스크롤에 명확한 경계가 있는가.",
+        ],
+      },
+    ],
+    apiRows: [],
+    onThisPage: ["What this category covers", "Container and rhythm", "Responsive and viewport", "Stacking and overflow", "Scroll behavior", "Checklist"],
+  }],
+  [navFilter("docs-styling"), {
+    filter: navFilter("docs-styling"),
+    kind: "category",
+    breadcrumb: "UI Blocks / Docs",
+    title: "Styling",
+    lead: "Styling 카테고리는 표면, 선, 색, 타이포그래피 처리, 토큰, 장식 효과를 다루는 vocabulary 축입니다. Foundations의 Color/Typography/Tokens 문서가 토큰 세트 자체를 정의한다면, 이 문서는 그 토큰을 조합해 시각적 위계를 만드는 관점을 정리합니다. 스타일은 개별 속성이 아니라 표면·선·텍스트가 함께 만드는 계층입니다.",
+    sections: [
+      {
+        title: "What this category covers",
+        body: [
+          "이 카테고리의 용어는 다섯 group으로 나뉩니다. 표면·재질(카드, glass, elevation처럼 배경이 되는 면), 선·색상 처리(border, divider, 색 대비), 타이포그래피 처리(heading 위계, 본문 리듬), 토큰·시맨틱(semantic token, theme처럼 값의 간접 참조 체계), 장식·배경 효과(gradient, pattern, noise처럼 정보가 아닌 분위기 요소)입니다.",
+          "조합 순서는 토큰 → 표면 → 선 → 텍스트 → 장식입니다. 장식 효과부터 고르기 시작한 화면은 거의 항상 정보 위계가 무너져 있습니다. 아래 Related terms에서 이 카테고리의 전체 용어를 볼 수 있습니다.",
+        ],
+      },
+      {
+        title: "Surface and depth",
+        body: [
+          "깊이는 그림자보다 표면 색 단차로 먼저 표현합니다. 앱 배경(`bg-background`) 위에 카드(`bg-card`), 조용한 fill(`bg-muted`), 강조 tint 순서로 쌓으면 그림자가 없어도 계층이 읽힙니다. 그림자는 떠 있는 표면(dropdown, dialog)의 보조 신호로 제한합니다.",
+          "한 화면의 표면 종류는 적을수록 좋습니다. base, raised, muted 세 단계로 해결되지 않는 화면은 대개 표면이 아니라 정보 구조에 문제가 있습니다.",
+        ],
+        code: "<div class=\"rounded-xl border bg-card p-6 shadow-sm\">\n  <p class=\"text-sm text-muted-foreground\">Raised surface on the app background.</p>\n  <div class=\"mt-4 rounded-lg bg-muted p-4\">Quiet fill inside the card.</div>\n</div>",
+      },
+      {
+        title: "Border and color treatment",
+        body: [
+          "선은 색보다 먼저 구조를 만듭니다. 목록의 행 구분은 `divide-y`, 영역 경계는 `border`, 입력 요소는 `border-input`처럼 역할별 semantic border를 씁니다. 배경 단차와 border를 동시에 쓰면 경계가 두 번 그려지므로 하나를 고릅니다.",
+          "색은 상태와 의도에만 씁니다 — primary 액션에 accent, 파괴적 액션에 destructive, 나머지는 gray ramp 안에서 해결합니다. 화면에 accent 색이 세 곳 이상 보이면 강조가 아니라 소음입니다. 구체적인 토큰 이름과 다크 모드 반전 규칙은 Foundations의 Color 문서가 정본입니다.",
+        ],
+      },
+      {
+        title: "Typography treatment",
+        body: [
+          "타이포그래피 처리는 크기보다 색과 weight로 위계를 만듭니다. 제목과 본문의 차이는 `text-foreground` 대 `text-muted-foreground`, `font-medium` 대 `font-normal` 조합으로 먼저 표현하고, 크기 차이는 5단계 scale(`text-sm`부터 `text-2xl`) 안에서 최소로 씁니다.",
+          "한 화면에서 쓰는 텍스트 스타일 조합은 대여섯 개를 넘지 않게 유지합니다. 조합이 늘어난다면 새 스타일이 필요한 것이 아니라 화면의 정보 구조가 과적된 것입니다.",
+        ],
+        code: "<header>\n  <p class=\"text-xs font-medium uppercase tracking-wide text-muted-foreground\">Billing</p>\n  <h2 class=\"mt-1 text-xl font-medium text-foreground\">Payment methods</h2>\n  <p class=\"mt-2 text-sm text-muted-foreground\">Cards on file for this workspace.</p>\n</header>",
+      },
+      {
+        title: "Tokens first",
+        body: [
+          "모든 스타일 결정은 semantic 토큰을 통과해야 합니다 — 컴포넌트 코드에 hex, `oklch()`, 임의 px 값을 직접 쓰지 않고 `bg-card`, `text-muted-foreground`, `border-border` 같은 utility로 표현합니다. 이 간접 참조가 있어야 다크 모드와 리테마가 컴포넌트 수정 없이 동작합니다.",
+          "기존 semantic 역할로 표현할 수 없는 시각 요구가 나오면, 즉석에서 값을 하드코딩하지 말고 SSOT(`tokens/askewly.tokens.json`) 대비 gap으로 기록합니다. 토큰 체계의 구조와 참조 방향은 Foundations의 Tokens 문서가 정본입니다.",
+        ],
+      },
+      {
+        title: "Decorative effects",
+        body: [
+          "gradient, pattern, blur 같은 장식 효과는 정보를 담지 않는 배경 계층에만 둡니다. 텍스트와 조작 요소 위에 얹히는 장식은 대비를 깨뜨리고, 다크 모드에서 가장 먼저 파탄납니다.",
+          "장식은 화면당 한 종류, 한 곳이 기본입니다. hero 배경에 gradient를 썼다면 카드에도 gradient를 반복하지 않습니다 — 장식의 희소성이 곧 강조의 힘입니다.",
+        ],
+      },
+      {
+        title: "Checklist",
+        body: [
+          "- 색·크기 리터럴 없이 semantic 토큰 utility만 쓰였는가.",
+          "- 표면 계층이 base/raised/muted 안에서 해결되는가.",
+          "- accent 색이 상태·의도 표현에만 제한적으로 쓰였는가.",
+          "- 텍스트 스타일 조합이 대여섯 개 이내인가.",
+          "- 다크 모드에서 표면 단차와 장식 효과가 유지되는가.",
+        ],
+      },
+    ],
+    apiRows: [],
+    onThisPage: ["What this category covers", "Surface and depth", "Border and color treatment", "Typography treatment", "Tokens first", "Decorative effects", "Checklist"],
+  }],
+  [navFilter("docs-motion-effects"), {
+    filter: navFilter("docs-motion-effects"),
+    kind: "category",
+    breadcrumb: "UI Blocks / Docs",
+    title: "Motion & Effects",
+    lead: "Motion & Effects 카테고리는 전환, 등장, 강조 움직임과 시각 효과를 다루는 vocabulary 축입니다. 모션의 역할은 장식이 아니라 방향성과 피드백입니다 — 변화가 어디에서 왔고 어디로 가는지 알려주되, 텍스트와 조작 영역을 가리지 않아야 합니다.",
+    sections: [
+      {
+        title: "What this category covers",
+        body: [
+          "이 카테고리의 용어는 세 갈래로 나뉩니다. 인터랙션 상태(hover, press처럼 조작에 즉시 반응하는 움직임), 로딩·진행(skeleton, spinner, progress처럼 기다림을 보이는 움직임), 장식·배경 효과(marquee, parallax처럼 분위기를 만드는 움직임)입니다.",
+          "판단 기준은 하나입니다: 이 움직임이 없으면 사용자가 무엇을 놓치는가. 답이 '아무것도'라면 그 모션은 장식이고, 장식은 화면당 최소로 제한합니다. 아래 Related terms에서 이 카테고리의 전체 용어를 볼 수 있습니다.",
+        ],
+      },
+      {
+        title: "Transitions",
+        body: [
+          "토큰 소스에는 아직 duration/easing 토큰이 없습니다 — 이는 명시되지 않은 gap이며, 그동안은 사이트 코드에서 관찰되는 관례를 따릅니다: 상태 전환은 150ms 내외의 짧은 duration과 `ease-out`, 이동 거리는 몇 px 이내의 절제된 transform입니다.",
+          "전환은 같은 자리에서 이어져야 합니다. hover로 떠오르는 카드, 열리는 disclosure, 나타나는 popover 모두 시작점과 끝점이 시각적으로 연결되어야 하고, 화면 반대편에서 날아오는 요소는 방향성 신호가 아니라 소음입니다.",
+        ],
+        code: "<div class=\"transition duration-150 ease-out hover:-translate-y-0.5 hover:shadow-md\">\n  Preview card\n</div>",
+      },
+      {
+        title: "Feedback motion",
+        body: [
+          "조작 피드백은 즉시, 로딩 피드백은 정직하게. 버튼을 누르면 press 상태가 지연 없이 보여야 하고, 결과를 기다리는 동안은 같은 자리에서 loading 상태로 이어져야 합니다. 성공·실패 후에도 그 자리에서 다음 상태가 이어지면 사용자는 화면을 다시 스캔할 필요가 없습니다.",
+          "기다림이 길어질 수 있는 영역은 spinner보다 skeleton이 낫습니다 — skeleton은 어떤 모양의 콘텐츠가 올지 미리 알려주므로 로딩이 끝났을 때 레이아웃이 튀지 않습니다.",
+        ],
+      },
+      {
+        title: "Decorative effects",
+        body: [
+          "marquee, 배경 애니메이션, hover 시 재생되는 데모 같은 장식 모션은 정보 영역 밖에서, 한 화면에 한 곳으로 제한합니다. 스스로 반복 재생되는 요소가 두 개 이상 보이면 사용자의 시선이 분산되어 어떤 것도 강조되지 않습니다.",
+          "장식 모션도 조작 가능해야 합니다 — 자동 재생되는 콘텐츠에는 정지 수단을 주고, hover로만 트리거되는 효과는 터치 장치에서의 대체 경로를 확인합니다.",
+        ],
+      },
+      {
+        title: "Reduced motion",
+        body: [
+          "`prefers-reduced-motion`은 선택 사항이 아니라 기본 계약입니다. 이동·확대·회전 같은 transform 기반 모션은 reduce 설정에서 opacity 전환 정도로 대체하거나 제거하고, 정보 전달(로딩 상태, 진행률)은 모션 없이도 읽히는 형태를 유지합니다.",
+          "검증은 실제 설정으로 합니다 — OS의 reduce motion을 켜고 화면을 다시 열어, 남아 있는 움직임이 전부 의도된 것인지 확인합니다.",
+        ],
+        code: "<div class=\"transition-transform duration-150 motion-reduce:transition-none motion-reduce:transform-none\">\n  …\n</div>",
+      },
+      {
+        title: "Checklist",
+        body: [
+          "- 각 모션이 방향성 또는 피드백 역할을 갖는가 (순수 장식은 화면당 한 곳 이내).",
+          "- 상태 전환이 같은 자리에서 이어지고 duration이 과하지 않은가.",
+          "- 로딩이 skeleton/progress로 정직하게 표현되고 완료 시 레이아웃이 튀지 않는가.",
+          "- reduce motion 설정에서 transform 기반 모션이 제거·대체되는가.",
+          "- 자동 재생 콘텐츠에 정지 수단이 있는가.",
+        ],
+      },
+    ],
+    apiRows: [],
+    onThisPage: ["What this category covers", "Transitions", "Feedback motion", "Decorative effects", "Reduced motion", "Checklist"],
+  }],
+  [navFilter("docs-interaction"), {
+    filter: navFilter("docs-interaction"),
+    kind: "category",
+    breadcrumb: "UI Blocks / Docs",
+    title: "Interaction",
+    lead: "Interaction 카테고리는 상태 변화, 로딩, 알림, 오류 복구를 다루는 vocabulary 축입니다. 핵심 질문은 세 가지입니다: 사용자가 누른 뒤 무엇이 바뀌는가, 진행 중에는 무엇을 보여주는가, 실패하면 어떻게 복구하는가. 시각 디자인과 상태 머신을 분리하지 않고 함께 점검합니다.",
+    sections: [
+      {
+        title: "What this category covers",
+        body: [
+          "이 카테고리의 용어는 네 group으로 나뉩니다. 인터랙션 상태(hover, focus, disabled처럼 조작 가능성을 알리는 상태), 로딩·진행(skeleton, progress처럼 기다림을 다루는 표면), 알림·토스트·배너(시스템이 사용자에게 말을 거는 채널), 빈 상태·오류 복구(콘텐츠가 없거나 실패했을 때의 다음 행동)입니다.",
+          "화면 하나를 완성한다는 것은 기본 상태만이 아니라 이 네 갈래의 상태를 전부 설계했다는 뜻입니다. 아래 Related terms에서 이 카테고리의 전체 용어를 볼 수 있습니다.",
+        ],
+      },
+      {
+        title: "Interaction states",
+        body: [
+          "조작 가능한 모든 요소는 최소 다섯 상태를 갖습니다: 기본, hover, focus-visible, active/press, disabled. 이 중 focus-visible은 스타일 선택이 아니라 접근성 계약이고, disabled는 회색 처리만이 아니라 왜 비활성인지를 알 수 있는 맥락(tooltip, help text)과 짝지어야 합니다.",
+          "상태는 한 속성만 바꾸는 것이 안전합니다 — hover에서 배경만, focus에서 ring만. 여러 속성이 동시에 바뀌면 화면이 불안정하게 느껴지고, 상태끼리 조합될 때(hover + focus) 충돌합니다.",
+        ],
+        code: "<button class=\"rounded-lg bg-primary px-4 py-2 text-primary-foreground transition hover:opacity-90 focus-visible:ring-2 focus-visible:ring-ring disabled:pointer-events-none disabled:opacity-50\">\n  Save changes\n</button>",
+      },
+      {
+        title: "Loading and progress",
+        body: [
+          "로딩 표면은 대체할 콘텐츠의 모양을 따라갑니다. 목록과 카드가 올 자리는 skeleton으로, 제출 버튼은 버튼 안의 spinner로, 오래 걸리는 작업은 진행률로 표현합니다. 화면 전체를 덮는 로딩 오버레이는 사용자가 무엇을 기다리는지 알 수 없게 만드는 마지막 수단입니다.",
+          "로딩, 성공, 실패는 같은 자리에서 이어져야 합니다. 버튼에서 시작한 저장은 그 버튼에서 loading을 보이고, 완료 피드백(toast, inline 메시지)도 조작 지점 근처에서 시작해야 시선 이동이 없습니다.",
+        ],
+      },
+      {
+        title: "Alerts and feedback",
+        body: [
+          "채널은 지속성으로 고릅니다. 몇 초 뒤 사라져도 되는 확인은 toast, 사용자가 처리할 때까지 남아야 하는 경고는 inline alert/banner, 결정을 요구하는 것은 dialog입니다. toast로 파괴적 작업의 확인을 대신하거나, banner를 성공 알림에 쓰는 것은 채널 오용입니다.",
+          "모든 알림은 다음 행동을 담아야 합니다 — 실패 toast에는 재시도, 권한 banner에는 요청 경로, 삭제 확인에는 명시적 취소. 행동 없는 알림은 정보가 아니라 불안입니다.",
+        ],
+      },
+      {
+        title: "Empty and error recovery",
+        body: [
+          "빈 상태는 오류가 아니라 첫 사용 경로입니다. 무엇이 이 자리에 오게 되는지, 그리고 그것을 만드는 첫 행동(버튼, 안내)을 함께 보여줍니다. 검색 결과 없음처럼 조건부 빈 상태는 조건을 바꾸는 경로(필터 초기화)를 줍니다.",
+          "오류 상태의 목표는 원인 설명이 아니라 복구입니다. 무엇이 실패했는지 한 줄, 사용자가 지금 할 수 있는 것 한 가지(재시도, 뒤로, 지원 문의)를 짝지어 보여줍니다. 원본 오류 코드는 접어두되 지원 문의 시 전달할 수 있게 남깁니다.",
+        ],
+      },
+      {
+        title: "Checklist",
+        body: [
+          "- 조작 요소마다 hover/focus-visible/active/disabled 상태가 있는가.",
+          "- 로딩이 대체할 콘텐츠의 모양을 따르고 완료·실패가 같은 자리에서 이어지는가.",
+          "- 알림 채널(toast/alert/dialog)이 지속성 기준에 맞게 선택됐는가.",
+          "- 모든 알림·빈 상태·오류에 다음 행동이 있는가.",
+          "- 실패 경로(네트워크 오류, 권한 없음, 빈 데이터)가 화면 설계에 포함됐는가.",
+        ],
+      },
+    ],
+    apiRows: [],
+    onThisPage: ["What this category covers", "Interaction states", "Loading and progress", "Alerts and feedback", "Empty and error recovery", "Checklist"],
+  }],
+  [navFilter("docs-accessibility"), {
+    filter: navFilter("docs-accessibility"),
+    kind: "category",
+    breadcrumb: "UI Blocks / Docs",
+    title: "Accessibility",
+    lead: "Accessibility 카테고리는 키보드, 포커스, 스크린리더, 모션 제약을 다루는 vocabulary 축입니다. 접근성은 나중에 붙이는 체크리스트가 아니라 컴포넌트 contract의 일부입니다 — focus ring, aria label, reduced motion, semantic heading을 화면 설계 단계에서 함께 결정합니다.",
+    sections: [
+      {
+        title: "What this category covers",
+        body: [
+          "이 카테고리의 용어는 두 group으로 나뉩니다. ARIA·스크린리더(landmark, live region, label처럼 보조기술에 화면을 설명하는 장치), 포커스·움직임 접근성(focus trap, skip link, reduced motion처럼 키보드와 모션 민감 사용자를 위한 장치)입니다.",
+          "Foundations의 Accessibility 문서가 토큰 수준의 대비 기준을 다룬다면, 이 카테고리는 컴포넌트와 화면 수준의 접근성 장치들을 다룹니다. 아래 Related terms에서 전체 용어를 볼 수 있습니다.",
+        ],
+      },
+      {
+        title: "Keyboard and focus",
+        body: [
+          "마우스 없이 화면 전체를 조작할 수 있어야 합니다 — Tab으로 모든 조작 요소에 도달하고, Enter/Space로 실행하고, Escape로 떠 있는 표면을 닫습니다. 포커스 순서는 시각적 읽기 순서와 일치해야 하며, tabindex 양수 값으로 순서를 조작하기 시작하면 이미 DOM 구조가 잘못된 것입니다.",
+          "focus-visible ring은 모든 조작 요소의 기본 장비입니다. dialog가 열리면 포커스가 안으로 이동하고(focus trap), 닫히면 열었던 트리거로 돌아가야 합니다. 이 왕복이 없는 오버레이는 키보드 사용자를 화면 밖에 버려둡니다.",
+        ],
+        code: "<a href=\"#main\" class=\"sr-only focus:not-sr-only focus:absolute focus:left-4 focus:top-4\">\n  Skip to content\n</a>",
+      },
+      {
+        title: "ARIA and screen readers",
+        body: [
+          "ARIA의 첫 규칙은 semantic HTML이 먼저라는 것입니다. button, nav, main, label을 제대로 쓰면 대부분의 role/aria 속성이 필요 없어집니다. div에 onClick을 달고 role=\"button\"을 붙이는 것은 해결이 아니라 부채입니다.",
+          "이름 없는 조작 요소가 없어야 합니다 — 아이콘 버튼에는 aria-label, 입력에는 연결된 label, 이미지에는 alt. 동적으로 바뀌는 영역(검색 결과 수, 저장 상태)은 live region으로 알리되, 너무 수다스러운 live region은 오히려 스크린리더 사용을 방해합니다.",
+        ],
+      },
+      {
+        title: "Motion accessibility",
+        body: [
+          "`prefers-reduced-motion`을 켠 사용자에게는 이동·확대 기반 모션을 제거하거나 opacity 전환으로 대체합니다. 특히 자동 재생되는 배경 모션과 스크롤 연동 효과는 전정계 민감 사용자에게 실제 어지럼을 유발하므로 reduce 설정에서 반드시 멈춰야 합니다.",
+          "모션 없이도 정보가 전달되어야 합니다 — 로딩·진행·성공 같은 상태는 모션이 제거된 뒤에도 텍스트나 정적 표시로 읽혀야 합니다. 구체적인 대체 패턴은 Motion & Effects 문서의 Reduced motion 절과 같은 계약을 공유합니다.",
+        ],
+      },
+      {
+        title: "Checklist",
+        body: [
+          "- Tab만으로 모든 조작에 도달하고 Escape로 오버레이가 닫히는가.",
+          "- 포커스가 dialog 안으로 들어갔다가 트리거로 돌아오는가.",
+          "- 이름 없는 조작 요소(아이콘 버튼, 입력)가 없는가.",
+          "- heading 계층과 landmark가 화면 구조를 반영하는가.",
+          "- reduce motion 설정에서 자동 재생·이동 모션이 멈추는가.",
+        ],
+      },
+    ],
+    apiRows: [],
+    onThisPage: ["What this category covers", "Keyboard and focus", "ARIA and screen readers", "Motion accessibility", "Checklist"],
+  }],
+  [navFilter("docs-ui-blocks"), {
+    filter: navFilter("docs-ui-blocks"),
+    kind: "category",
+    breadcrumb: "UI Blocks / Docs",
+    title: "UI Blocks",
+    lead: "UI Blocks 카테고리는 hero, pricing, table, sidebar처럼 화면에 바로 놓이는 섹션 단위 덩어리를 다루는 vocabulary 축입니다. 블록은 컴포넌트보다 크고 페이지보다 작습니다 — 레이아웃, 카피 구조, 반응형 규칙, 토큰 의존성을 한 번에 포함하는 조립 단위입니다.",
+    sections: [
+      {
+        title: "What this category covers",
+        body: [
+          "블록 단위 용어는 Plus의 UI Blocks 축(Marketing, Application UI, Ecommerce)에 컬렉션으로 배치되어 있고, 이 문서는 어느 컬렉션이든 공통으로 적용되는 블록 사용 기준을 정리합니다. 개별 블록의 실예시는 Plus에서, 블록을 구성하는 낱개 부품은 Component API와 Elements 문서에서 봅니다.",
+          "블록을 고르는 순서는 화면 맥락이 먼저입니다 — 만들려는 페이지(랜딩, 설정, 목록)를 정하고, 그 페이지를 위에서 아래로 채우는 블록을 고른 뒤, 마지막에 블록 내부의 부품을 조정합니다. 아래 Related terms에서 블록 관련 용어를 볼 수 있습니다.",
+        ],
+      },
+      {
+        title: "Block anatomy",
+        body: [
+          "모든 블록은 세 층으로 읽습니다: 컨테이너(폭, 패딩, 배경), 구조(내부 그리드와 정렬), 콘텐츠(heading, 본문, 액션, 미디어). 블록을 커스터마이즈할 때는 콘텐츠 → 구조 → 컨테이너 순서로 바꾸고, 컨테이너 규칙(최대 폭, 섹션 간격)은 페이지 전체와 공유하므로 블록 하나를 위해 깨지 않습니다.",
+          "블록 간 경계는 간격이 만듭니다. 섹션 사이는 48–64px 리듬을 유지하고, 배경색 교대(base ↔ muted)는 경계 신호가 필요한 곳에만 씁니다 — 모든 섹션의 배경을 번갈아 칠하면 경계가 아니라 줄무늬가 됩니다.",
+        ],
+        code: "<section class=\"border-b bg-muted/40\">\n  <div class=\"mx-auto grid max-w-6xl gap-10 px-6 py-16 lg:grid-cols-2\">\n    <div>…heading + copy + actions…</div>\n    <div>…media or proof surface…</div>\n  </div>\n</section>",
+      },
+      {
+        title: "Responsive behavior",
+        body: [
+          "블록은 자신의 반응형 규칙을 스스로 갖습니다 — 2컬럼 hero는 언제 1컬럼으로 접히는지, 카드 그리드는 몇 개씩 줄어드는지, 테이블은 좁은 화면에서 무엇을 숨기는지가 블록 정의의 일부입니다. 페이지가 블록의 접힘을 대신 처리하게 만들면 같은 블록을 다른 페이지에서 재사용할 수 없습니다.",
+          "접힐 때 우선순위는 콘텐츠가 정합니다. hero라면 heading과 primary 액션이 먼저 보이고 미디어가 아래로, 지표 카드라면 핵심 숫자가 유지되고 보조 차트가 숨습니다.",
+        ],
+      },
+      {
+        title: "Token dependencies",
+        body: [
+          "블록의 시각 스펙은 semantic 토큰으로만 서술합니다 — 표면은 `bg-background`/`bg-card`/`bg-muted`, 텍스트는 `text-foreground`/`text-muted-foreground`, 강조는 accent/destructive 계열. 블록 하나를 위해 새 색이나 새 간격 값을 도입하는 것은 블록이 아니라 토큰 체계의 gap이므로 SSOT에 기록합니다.",
+          "이 규칙 덕분에 같은 블록이 라이트/다크 모드와 향후 리테마에서 수정 없이 동작합니다. 토큰 이름과 참조 방향의 정본은 Foundations의 Tokens/Color 문서입니다.",
+        ],
+      },
+      {
+        title: "Prompting blocks",
+        body: [
+          "AI에게 블록 구현을 맡길 때는 블록 이름만 주지 말고 맥락·구조·검증을 함께 넘깁니다: 어떤 페이지의 어느 위치인지, 내부 구조(컬럼, 정렬, 콘텐츠 슬롯)는 무엇인지, 무엇을 금지하는지(임의 색, 새 간격 값), 어떻게 검증하는지(모바일 접힘, 다크 모드).",
+          "코딩 에이전트용 블록 레시피(landing-hero, showcase-card 등)는 Agent Recipes 문서와 llms.txt 자산에 있습니다 — 레시피가 있는 블록은 레시피를 우선 참조합니다.",
+        ],
+        code: "Build a pricing section with:\n- 3 tier cards, middle tier emphasized\n- monthly/yearly toggle\n- semantic tokens only (bg-card, text-muted-foreground)\n\nVerify:\n- collapses to 1 column under lg\n- dark mode keeps tier emphasis\n- focus-visible on toggle and CTAs",
+      },
+      {
+        title: "Checklist",
+        body: [
+          "- 블록이 페이지 맥락(위치, 앞뒤 블록)과 맞는가.",
+          "- 컨테이너 폭·섹션 간격이 페이지 공통 규칙을 따르는가.",
+          "- 블록 자신의 반응형 접힘 규칙이 정의되어 있는가.",
+          "- semantic 토큰만 쓰였고 블록 전용 리터럴 값이 없는가.",
+          "- 라이트/다크 양쪽에서 블록 경계와 강조가 유지되는가.",
+        ],
+      },
+    ],
+    apiRows: [],
+    onThisPage: ["What this category covers", "Block anatomy", "Responsive behavior", "Token dependencies", "Prompting blocks", "Checklist"],
+  }],
+  [navFilter("docs-component-api"), {
+    filter: navFilter("docs-component-api"),
+    kind: "category",
+    breadcrumb: "UI Blocks / Docs",
+    title: "Component API",
+    lead: "Component API 카테고리는 button, input, dialog처럼 반복 사용되는 부품의 상태, 속성, 접근성 계약을 다루는 vocabulary 축입니다. 컴포넌트의 API는 props 목록이 아니라 계약입니다 — 어떤 상태를 가질 수 있고, 무엇을 보장하며, 어떻게 조합되는지를 문서화해야 재사용이 안정적입니다.",
+    sections: [
+      {
+        title: "What this category covers",
+        body: [
+          "이 카테고리는 입력(text, picker), 선택·탐색(tabs, menu), 피드백(alert, toast), 데이터 표시(table, list) 같은 반복 부품의 용어를 묶습니다. 개별 element의 상세 문서(anatomy, keyboard 계약, API 표)는 Docs의 Elements 절에 있습니다 — Autocomplete, Command palette, Dialog, Dropdown menu, Popover, Select, Tabs 등 9종이 작성되어 있습니다.",
+          "이 문서는 element 문서들을 관통하는 공통 계약(상태 모델, props 설계, 접근성)을 정리합니다. 아래 Related terms에서 이 카테고리의 전체 용어를 볼 수 있습니다.",
+        ],
+      },
+      {
+        title: "State model",
+        body: [
+          "컴포넌트 API 설계의 첫 질문은 '이 부품이 가질 수 있는 상태가 몇 개인가'입니다. 시각 상태(hover, focus, disabled), 데이터 상태(empty, loading, error), 열림 상태(open/closed)를 구분해 나열하고, 각 상태의 조합 가능 여부(disabled + loading?)까지 정합니다. 상태 목록이 없는 컴포넌트는 구현마다 다르게 동작합니다.",
+          "상태는 밖에서 주입 가능해야 합니다 — loading을 컴포넌트 내부에서만 관리하면 폼 전체의 제출 상태와 어긋납니다. controlled/uncontrolled 중 무엇을 지원하는지도 API 계약의 일부입니다.",
+        ],
+        code: "<Button intent=\"primary\" state={isSaving ? \"loading\" : \"idle\"}>\n  Save changes\n</Button>",
+      },
+      {
+        title: "Props and composition",
+        body: [
+          "props는 적을수록 강합니다. 시각 변형은 소수의 intent/variant(primary, secondary, destructive)로 제한하고, 스타일 미세 조정용 props를 열지 않습니다 — 조정이 필요하면 className 합성이나 토큰 체계에서 해결합니다.",
+          "콘텐츠는 props보다 slot/children으로 받습니다. title·description·actions를 문자열 props로 고정하면 아이콘 하나 넣는 순간 API가 깨집니다. 복합 컴포넌트(Dialog, Tabs)는 하위 부품(Trigger, Content, Panel)의 조합으로 여는 것이 단일 거대 props보다 오래갑니다.",
+        ],
+      },
+      {
+        title: "Accessibility contract",
+        body: [
+          "접근성은 컴포넌트가 보장하고 사용처가 채우는 구조로 나눕니다. 컴포넌트가 보장할 것: 키보드 동작(Tab/Enter/Escape/화살표), focus 관리, role과 상태 속성(aria-expanded, aria-selected). 사용처가 채울 것: 이름(label, aria-label), 맥락(무엇을 여는 버튼인지).",
+          "이 분담을 문서에 명시해야 합니다 — '아이콘만 쓸 때는 aria-label 필수' 같은 사용처 의무가 적히지 않은 컴포넌트는 접근성이 구현마다 복불복이 됩니다. element별 상세 계약은 각 Elements 문서의 Keyboard/Accessibility 절이 정본입니다.",
+        ],
+      },
+      {
+        title: "Documenting a component",
+        body: [
+          "새 부품을 문서화할 때의 최소 구성은 네 가지입니다: 언제 쓰는가(비슷한 부품과의 구분 — Select vs Dropdown menu처럼), 상태 목록, props/slot 표, 접근성 의무. 여기에 실패 사례(anti-pattern) 한둘을 붙이면 잘못된 사용을 가장 효과적으로 막습니다.",
+          "문서의 예시 코드는 semantic 토큰 utility만 쓰고, 그대로 복사해도 동작하는 최소 단위로 유지합니다. 형식의 실례는 Elements의 Autocomplete/Dialog 문서를 참조합니다.",
+        ],
+      },
+      {
+        title: "Checklist",
+        body: [
+          "- 상태 목록(시각/데이터/열림)과 조합 규칙이 정의되어 있는가.",
+          "- 시각 변형이 소수의 intent/variant로 제한되는가.",
+          "- 콘텐츠가 slot/children으로 열려 있는가.",
+          "- 컴포넌트 보장 vs 사용처 의무가 구분되어 있는가.",
+          "- 예시 코드가 토큰 utility만 쓰고 복붙 가능한가.",
+        ],
+      },
+    ],
+    apiRows: [],
+    onThisPage: ["What this category covers", "State model", "Props and composition", "Accessibility contract", "Documenting a component", "Checklist"],
   }],
 ])

@@ -20,10 +20,10 @@ Milestone: DA1 (`ROADMAP.md`, active)
 
 ## Step 트리
 
-- [ ] Step 1 — 구조·시각 축 3종 아티클: Layout / Styling / Motion Effects — tokens SSOT(spacing·radius·shadow·color)와 사이트 코드의 관찰된 관례에서 파생해 한국어 서술형 아티클 작성, dev 게이트 뒤. (verify: dev 렌더 확인 + lint/build PASS)
-- [ ] Step 2 — 상호작용·접근성 축 2종 아티클: Interaction / Accessibility — 기존 Elements 아티클(keyboard/focus 계약)·Foundations accessibility와 중복 없이 카테고리 관점 서술. (verify: dev 렌더 + lint/build PASS)
-- [ ] Step 3 — 시스템 축 2종 아티클: UI Blocks / Component API — pattern-taxonomy·Plus 컬렉션 체계·Elements Component API 관례에서 파생. (verify: dev 렌더 + lint/build PASS)
-- [ ] Step 4 — 완성 판정 + 게이트 해제 + 로컬 검증: 7종 완성 판정(실예시·복붙 코드·라이트/다크) → 게이트 해제, validate/build/lint + 브라우저 smoke + prod preview 비노출 회귀(Pro/Download 여전히 비노출 — 실패 모드). 배포는 세션 일괄 push 시점에. (verify: 통합 smoke PASS)
+- [x] Step 1 — 구조·시각 축 3종 아티클: Layout / Styling / Motion Effects — tokens SSOT와 사이트 관찰 관례에서 파생, 한국어 저작 완료. (verify: dev 렌더 + lint/build PASS, 2026-07-10)
+- [x] Step 2 — 상호작용·접근성 축 2종 아티클: Interaction / Accessibility — Elements/Foundations와 역할 분담(컴포넌트 계약 vs 카테고리 관점) 명시 서술. (verify: dev 렌더 + lint/build PASS)
+- [x] Step 3 — 시스템 축 2종 아티클: UI Blocks / Component API — pattern-taxonomy·Elements 관례 파생. (verify: dev 렌더 + lint/build PASS)
+- [x] Step 4 — 완성 판정 + 게이트 해제 + 로컬 검증: 7종 판정 통과 → shell 7곳 해제, lint/build + dev/prod preview 스모크(해제 전 비노출 7/7 → 해제 후 노출 7/7 + docs-all 랜딩 클릭 E2E + 모바일 overflow 0 + nav 게이트 홀드 라이브 패리티) + evidence 4장. 배포 반영 확인만 세션 일괄 push 후 잔여. (verify: `changesets/20260710-docs-category-articles/README.md` 4/5)
 
 ## 결정 로그
 
