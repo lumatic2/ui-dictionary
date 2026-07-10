@@ -47,7 +47,7 @@ export const docsNavGroups: DocsNavGroup[] = [
     label: "Getting started",
     items: [
       { filter: navFilter("docs-getting-started-setup"), label: "Getting set up" },
-      { filter: navFilter("docs-getting-started-principles"), label: "Principles", shell: true },
+      { filter: navFilter("docs-getting-started-principles"), label: "Principles" },
       { filter: navFilter("docs-getting-started-html"), label: "Using HTML" },
       { filter: navFilter("docs-getting-started-react"), label: "Using React" },
       { filter: navFilter("docs-getting-started-vue"), label: "Using Vue" },
@@ -177,7 +177,6 @@ export const docsArticlePages = new Map<TermFilter, DocsArticlePageData>([
     ],
     apiRows: [],
     onThisPage: ["Task first", "Hierarchy", "Tokens and SSOT", "Product evidence", "Interaction contract", "Meaningful motion", "Publication gate", "Reference adaptation", "Checklist"],
-    shell: true,
   }],
   [navFilter("docs-getting-started-setup"), {
     filter: navFilter("docs-getting-started-setup"),

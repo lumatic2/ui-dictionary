@@ -1,6 +1,6 @@
 # Askewly Design Principles
 
-Status: canonical draft for SCD1 user review
+Status: canonical, user-approved 2026-07-10
 
 Audience: coding agents and contributors
 
