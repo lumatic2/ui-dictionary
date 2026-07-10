@@ -29,6 +29,19 @@ button, select { font: inherit; }
 .webgpu-editor-canvas[hidden] { display: none; }
 .dom-editor-selection { position: absolute; pointer-events: none; border: 2px solid #7c3aed; box-shadow: 0 0 0 1px white; }
 .selection-marquee { position: absolute; pointer-events: none; border: 1px solid #6f2dbd; background: rgb(111 45 189 / 0.08); }
+.manipulation-selection { position: absolute; z-index: 4; border: 1px solid transparent; cursor: move; touch-action: none; }
+.resize-handle { position: absolute; width: 9px; height: 9px; padding: 0; border: 1px solid #6f2dbd; border-radius: 2px; background: white; }
+.resize-handle-nw { left: -5px; top: -5px; cursor: nwse-resize; }
+.resize-handle-n { left: calc(50% - 4px); top: -5px; cursor: ns-resize; }
+.resize-handle-ne { right: -5px; top: -5px; cursor: nesw-resize; }
+.resize-handle-e { right: -5px; top: calc(50% - 4px); cursor: ew-resize; }
+.resize-handle-se { right: -5px; bottom: -5px; cursor: nwse-resize; }
+.resize-handle-s { left: calc(50% - 4px); bottom: -5px; cursor: ns-resize; }
+.resize-handle-sw { left: -5px; bottom: -5px; cursor: nesw-resize; }
+.resize-handle-w { left: -5px; top: calc(50% - 4px); cursor: ew-resize; }
+.dom-alignment-guide { position: absolute; pointer-events: none; background: #a663cc; }
+.dom-alignment-guide.guide-x { top: 0; bottom: 0; width: 1px; }
+.dom-alignment-guide.guide-y { left: 0; right: 0; height: 1px; }
 .inspector { background: #111827; color: #e5e7eb; padding: 18px; }
 .inspector h2 { margin: 0 0 18px; font-size: 14px; }
 .inspector dl { display: grid; gap: 12px; margin: 0; }

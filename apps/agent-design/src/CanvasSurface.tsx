@@ -1,5 +1,23 @@
 import { useCallback, useEffect, useMemo, useRef, useState } from 'react'
-import { marqueeHitTest, normalizeRect, reduceSelection, selectionBounds, traverseSelection, type CanvasDocument, type CanvasNode, type CanvasOperation } from '@askewly/canvas-core'
+import {
+  alignmentGuides,
+  boundsChanged,
+  captureBounds,
+  marqueeHitTest,
+  moveBounds,
+  normalizeRect,
+  previewSelectionBounds,
+  reduceSelection,
+  resizeBounds,
+  selectionBounds,
+  traverseSelection,
+  type AlignmentGuide,
+  type BoundsById,
+  type CanvasDocument,
+  type CanvasNode,
+  type CanvasOperation,
+  type ResizeHandle,
+} from '@askewly/canvas-core'
 import { EditorPlane } from './EditorPlane'
 import type { EditorPlaneFailure } from './editorPlaneRuntime'
 
@@ -13,18 +31,19 @@ function sourceRef(node: CanvasNode) {
   return node.source ? `${node.source.file}:${node.source.startLine}` : undefined
 }
 
-function nodeStyle(node: CanvasNode): React.CSSProperties {
+function nodeStyle(node: CanvasNode, previewBounds?: CanvasNode['bounds']): React.CSSProperties {
   const hue = Number.parseInt(node.id.slice(-3), 10) * 37 % 360
+  const bounds = previewBounds ?? node.bounds
   return {
-    left: node.bounds.x,
-    top: node.bounds.y,
-    width: node.bounds.width,
-    height: node.bounds.height,
+    left: bounds.x,
+    top: bounds.y,
+    width: bounds.width,
+    height: bounds.height,
     background: `hsl(${hue} 36% 94%)`,
   }
 }
 
-function CanvasNodeElement({ node, selected }: { node: CanvasNode; selected: boolean }) {
+function CanvasNodeElement({ node, selected, previewBounds }: { node: CanvasNode; selected: boolean; previewBounds?: CanvasNode['bounds'] }) {
   const shared = {
     'data-canvas-id': node.id,
     'data-parent-id': node.parentId ?? '',
@@ -34,7 +53,7 @@ function CanvasNodeElement({ node, selected }: { node: CanvasNode; selected: boo
     'aria-selected': selected,
     'data-selection-state': selected ? 'selected' : 'idle',
     className: `canvas-node node-${node.kind}`,
-    style: nodeStyle(node),
+    style: nodeStyle(node, previewBounds),
   }
   if (node.kind === 'text') {
     return <span {...shared} role="textbox" tabIndex={0} contentEditable suppressContentEditableWarning>{node.text}</span>
@@ -55,11 +74,14 @@ export function CanvasSurface({ document, editorPlaneFailure = null, onOperation
   const viewportRef = useRef<HTMLDivElement>(null)
   const dragStart = useRef<{ x: number; y: number } | null>(null)
   const [marquee, setMarquee] = useState<ReturnType<typeof normalizeRect> | null>(null)
+  const gestureRef = useRef<{ start: { x: number; y: number }; before: BoundsById; kind: 'move' | 'resize'; handle?: ResizeHandle } | null>(null)
+  const [previewBounds, setPreviewBounds] = useState<BoundsById>({})
+  const [guides, setGuides] = useState<AlignmentGuide[]>([])
   const selectedIds = useMemo(() => new Set(document.selection), [document.selection])
   const orderedNodes = useMemo(() => Object.values(document.nodes), [document.nodes])
-  const nodeElements = useMemo(() => orderedNodes.map((node) => <CanvasNodeElement key={node.id} node={node} selected={selectedIds.has(node.id)} />), [orderedNodes, selectedIds])
+  const nodeElements = useMemo(() => orderedNodes.map((node) => <CanvasNodeElement key={node.id} node={node} selected={selectedIds.has(node.id)} previewBounds={previewBounds[node.id]} />), [orderedNodes, previewBounds, selectedIds])
   const transform = `translate(${document.viewport.pan.x}px, ${document.viewport.pan.y}px) scale(${document.viewport.zoom})`
-  const canonicalSelection = selectionBounds(document)
+  const canonicalSelection = Object.keys(previewBounds).length ? previewSelectionBounds(document, previewBounds) : selectionBounds(document)
   const selection = canonicalSelection ? {
     x: canonicalSelection.x * document.viewport.zoom + document.viewport.pan.x,
     y: canonicalSelection.y * document.viewport.zoom + document.viewport.pan.y,
@@ -88,6 +110,13 @@ export function CanvasSurface({ document, editorPlaneFailure = null, onOperation
   }, [commitSelection, document.selection])
 
   const handleKeyDown = useCallback((event: React.KeyboardEvent) => {
+    if (event.key === 'Escape' && gestureRef.current) {
+      event.preventDefault()
+      gestureRef.current = null
+      setPreviewBounds({})
+      setGuides([])
+      return
+    }
     if (event.key === 'Escape') {
       event.preventDefault()
       commitSelection([])
@@ -99,6 +128,38 @@ export function CanvasSurface({ document, editorPlaneFailure = null, onOperation
     const next = traverseSelection(document, event.key === 'ArrowRight' ? 1 : -1)
     if (next) commitSelection([next])
   }, [commitSelection, document])
+
+  const beginGesture = useCallback((event: React.PointerEvent, kind: 'move' | 'resize', handle?: ResizeHandle) => {
+    const before = captureBounds(document)
+    if (!Object.keys(before).length) return
+    event.preventDefault()
+    event.stopPropagation()
+    gestureRef.current = { start: { x: event.clientX, y: event.clientY }, before, kind, handle }
+    setPreviewBounds(before)
+    event.currentTarget.setPointerCapture?.(event.pointerId)
+  }, [document])
+
+  const updateGesture = useCallback((event: React.PointerEvent) => {
+    const gesture = gestureRef.current
+    if (!gesture) return
+    const delta = { x: event.clientX - gesture.start.x, y: event.clientY - gesture.start.y }
+    const next = gesture.kind === 'move'
+      ? moveBounds(gesture.before, delta, document.viewport.zoom)
+      : resizeBounds(gesture.before, gesture.handle ?? 'se', delta, document.viewport.zoom)
+    setPreviewBounds(next)
+    setGuides(alignmentGuides(document, next))
+  }, [document])
+
+  const finishGesture = useCallback(() => {
+    const gesture = gestureRef.current
+    if (!gesture) return
+    gestureRef.current = null
+    if (boundsChanged(gesture.before, previewBounds)) {
+      onOperation?.({ type: 'transform-nodes', id: `transform-${performance.now()}`, at: new Date().toISOString(), boundsById: previewBounds })
+    }
+    setPreviewBounds({})
+    setGuides([])
+  }, [onOperation, previewBounds])
 
   useEffect(() => {
     const primary = document.selection.at(-1)
@@ -123,10 +184,12 @@ export function CanvasSurface({ document, editorPlaneFailure = null, onOperation
       event.currentTarget.setPointerCapture?.(event.pointerId)
     }}
     onPointerMove={(event) => {
+      if (gestureRef.current) { updateGesture(event); return }
       if (!dragStart.current) return
       setMarquee(normalizeRect(dragStart.current, canvasPoint(event.clientX, event.clientY)))
     }}
     onPointerUp={(event) => {
+      if (gestureRef.current) { finishGesture(); return }
       if (!dragStart.current) return
       const rect = normalizeRect(dragStart.current, canvasPoint(event.clientX, event.clientY))
       const hits = rect.width < 2 && rect.height < 2 ? [] : marqueeHitTest(document, rect)
@@ -134,11 +197,40 @@ export function CanvasSurface({ document, editorPlaneFailure = null, onOperation
       dragStart.current = null
       setMarquee(null)
     }}
+    onPointerCancel={() => {
+      gestureRef.current = null
+      dragStart.current = null
+      setPreviewBounds({})
+      setGuides([])
+      setMarquee(null)
+    }}
   >
     <div className="canvas-content" data-testid="canvas-content" style={{ transform }}>
       {nodeElements}
     </div>
-    {selection ? <div data-selected-id={document.selection.at(-1)}><EditorPlane selection={selection} failure={editorPlaneFailure} /></div> : null}
+    {selection ? <div data-selected-id={document.selection.at(-1)}>
+      <EditorPlane
+        selection={selection}
+        guides={guides.map((guide) => ({ ...guide, value: guide.value * document.viewport.zoom + (guide.axis === 'x' ? document.viewport.pan.x : document.viewport.pan.y) }))}
+        failure={editorPlaneFailure}
+      />
+      <div
+        className="manipulation-selection"
+        data-testid="manipulation-selection"
+        aria-label="Move selection"
+        style={{ left: selection.x, top: selection.y, width: selection.width, height: selection.height }}
+        onPointerDown={(event) => beginGesture(event, 'move')}
+      >
+        {(['nw', 'n', 'ne', 'e', 'se', 's', 'sw', 'w'] as ResizeHandle[]).map((handle) => <button
+          key={handle}
+          type="button"
+          className={`resize-handle resize-handle-${handle}`}
+          data-testid={`resize-${handle}`}
+          aria-label={`Resize ${handle}`}
+          onPointerDown={(event) => beginGesture(event, 'resize', handle)}
+        />)}
+      </div>
+    </div> : null}
     {marquee ? <div className="selection-marquee" data-testid="selection-marquee" style={{
       left: marquee.x * document.viewport.zoom + document.viewport.pan.x,
       top: marquee.y * document.viewport.zoom + document.viewport.pan.y,

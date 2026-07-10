@@ -24,6 +24,11 @@ export interface UpdateNodeOperation extends OperationBase {
   patch: Partial<Pick<CanvasNode, 'name' | 'bounds' | 'visible' | 'locked' | 'tokenBindings'>>
 }
 
+export interface TransformNodesOperation extends OperationBase {
+  type: 'transform-nodes'
+  boundsById: Record<NodeId, CanvasRect>
+}
+
 export interface ReparentNodeOperation extends OperationBase {
   type: 'reparent-node'
   nodeId: NodeId
@@ -52,6 +57,7 @@ export type CanvasOperation =
   | CreateNodeOperation
   | DeleteNodeOperation
   | UpdateNodeOperation
+  | TransformNodesOperation
   | ReparentNodeOperation
   | ReorderNodeOperation
   | SelectNodesOperation
@@ -103,6 +109,17 @@ function mutateOperation(next: CanvasDocument, operation: CanvasOperation) {
       const node = next.nodes[operation.nodeId]
       if (!node) throw new Error(`missing node ${operation.nodeId}`)
       Object.assign(node, copyPatch(operation.patch))
+      break
+    }
+    case 'transform-nodes': {
+      const entries = Object.entries(operation.boundsById)
+      if (!entries.length) throw new Error('transform-nodes requires at least one node')
+      for (const [id, bounds] of entries) {
+        const node = next.nodes[id]
+        if (!node) throw new Error(`missing node ${id}`)
+        if (node.locked) throw new Error(`cannot transform locked node ${id}`)
+        node.bounds = structuredClone(bounds)
+      }
       break
     }
     case 'reparent-node': {
@@ -174,6 +191,15 @@ export function invertOperation(before: CanvasDocument, operation: CanvasOperati
         ;(patch as Record<string, unknown>)[key] = structuredClone(node[key])
       }
       return { ...inverseBase, type: 'update-node', nodeId: node.id, patch }
+    }
+    case 'transform-nodes': {
+      const boundsById: Record<NodeId, CanvasRect> = {}
+      for (const id of Object.keys(operation.boundsById)) {
+        const node = before.nodes[id]
+        if (!node) throw new Error(`cannot invert missing node ${id}`)
+        boundsById[id] = structuredClone(node.bounds)
+      }
+      return { ...inverseBase, type: 'transform-nodes', boundsById }
     }
     case 'reparent-node': {
       const node = before.nodes[operation.nodeId]

@@ -1,4 +1,4 @@
-import type { CanvasRect } from '@askewly/canvas-core'
+import type { AlignmentGuide, CanvasRect } from '@askewly/canvas-core'
 
 export type EditorPlaneMode = 'initializing' | 'webgpu' | 'dom'
 export type EditorPlaneFailure = 'forced-fallback' | 'validation-error' | 'device-lost'
@@ -13,8 +13,13 @@ export interface EditorPlaneOptions {
 }
 
 export interface EditorPlaneHandle {
-  update: (selection: CanvasRect) => void
+  update: (geometry: EditorPlaneGeometry) => void
   destroy: () => void
+}
+
+export interface EditorPlaneGeometry {
+  selection: CanvasRect
+  guides: AlignmentGuide[]
 }
 
 const fallback = (reason: string, onState: (state: EditorPlaneState) => void): EditorPlaneHandle => {
@@ -24,7 +29,7 @@ const fallback = (reason: string, onState: (state: EditorPlaneState) => void): E
 
 export async function createEditorPlane(
   canvas: HTMLCanvasElement,
-  selection: CanvasRect,
+  geometry: EditorPlaneGeometry,
   onState: (state: EditorPlaneState) => void,
   options: EditorPlaneOptions = {},
 ): Promise<EditorPlaneHandle> {
@@ -50,7 +55,7 @@ export async function createEditorPlane(
     context.configure({ device, format, alphaMode: 'premultiplied' })
 
     device.pushErrorScope('validation')
-    const rects = new Float32Array(24)
+    const rects = new Float32Array(40)
     const rectBuffer = device.createBuffer({ size: rects.byteLength, usage: 128 | 8, mappedAtCreation: true })
     new Float32Array(rectBuffer.getMappedRange()).set(rects)
     rectBuffer.unmap()
@@ -83,12 +88,15 @@ export async function createEditorPlane(
       layout: pipeline.getBindGroupLayout(0),
       entries: [{ binding: 0, resource: { buffer: rectBuffer } }, { binding: 1, resource: { buffer: uniformBuffer } }],
     })
-    const draw = (nextSelection: CanvasRect) => {
-      rects.set([
-        nextSelection.x * dpr, nextSelection.y * dpr, nextSelection.width * dpr, nextSelection.height * dpr, 0.49, 0.18, 0.83, 0.18,
-        0, nextSelection.y * dpr, canvas.width, 1 * dpr, 0.49, 0.18, 0.83, 0.5,
-        nextSelection.x * dpr, 0, 1 * dpr, canvas.height, 0.49, 0.18, 0.83, 0.5,
-      ])
+    const draw = ({ selection: nextSelection, guides }: EditorPlaneGeometry) => {
+      rects.fill(0)
+      rects.set([nextSelection.x * dpr, nextSelection.y * dpr, nextSelection.width * dpr, nextSelection.height * dpr, 0.49, 0.18, 0.83, 0.18])
+      guides.slice(0, 4).forEach((guide, index) => {
+        const offset = (index + 1) * 8
+        rects.set(guide.axis === 'x'
+          ? [guide.value * dpr, 0, 1 * dpr, canvas.height, 0.49, 0.18, 0.83, 0.72]
+          : [0, guide.value * dpr, canvas.width, 1 * dpr, 0.49, 0.18, 0.83, 0.72], offset)
+      })
       device.queue.writeBuffer(rectBuffer, 0, rects)
       const encoder = device.createCommandEncoder()
       const pass = encoder.beginRenderPass({
@@ -96,11 +104,11 @@ export async function createEditorPlane(
       })
       pass.setPipeline(pipeline)
       pass.setBindGroup(0, bindGroup)
-      pass.draw(6, 3)
+      pass.draw(6, 1 + Math.min(4, guides.length))
       pass.end()
       device.queue.submit([encoder.finish()])
     }
-    draw(selection)
+    draw(geometry)
     await device.queue.onSubmittedWorkDone()
     const validationError = await device.popErrorScope()
     if (validationError) {

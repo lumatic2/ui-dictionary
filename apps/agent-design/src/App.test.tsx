@@ -2,7 +2,10 @@ import { cleanup, fireEvent, render, waitFor } from '@testing-library/react'
 import { afterEach, beforeEach, describe, expect, it } from 'vitest'
 import { App } from './App'
 
-beforeEach(() => window.localStorage.clear())
+beforeEach(() => {
+  window.localStorage.clear()
+  Object.defineProperty(window, 'PointerEvent', { value: MouseEvent, configurable: true })
+})
 afterEach(cleanup)
 
 describe('Agent Design persistence flow', () => {
@@ -40,5 +43,33 @@ describe('Agent Design persistence flow', () => {
     fireEvent.keyDown(view.getByTestId('canvas-viewport'), { key: 'Escape' })
     expect(view.getByTestId('selection-count').textContent).toBe('0')
     expect(view.getByTestId('document-revision').textContent).toBe('4')
+  })
+
+  it('previews move and resize but commits exactly one operation per gesture', () => {
+    const view = render(<App />)
+    const viewport = view.getByTestId('canvas-viewport')
+    const node1 = view.container.querySelector('[data-canvas-id="node-00001"]')
+    if (!(node1 instanceof HTMLElement)) throw new Error('fixture node missing')
+    fireEvent.click(node1)
+    expect(view.getByTestId('document-revision').textContent).toBe('1')
+
+    fireEvent.pointerDown(view.getByTestId('manipulation-selection'), { pointerId: 1, clientX: 0, clientY: 0 })
+    fireEvent.pointerMove(viewport, { pointerId: 1, clientX: 20, clientY: 10 })
+    expect(node1.style.left).toBe('148px')
+    expect(view.getByTestId('document-revision').textContent).toBe('1')
+    fireEvent.pointerUp(viewport, { pointerId: 1, clientX: 20, clientY: 10 })
+    expect(view.getByTestId('document-revision').textContent).toBe('2')
+
+    fireEvent.pointerDown(view.getByTestId('resize-se'), { pointerId: 2, clientX: 0, clientY: 0 })
+    fireEvent.pointerMove(viewport, { pointerId: 2, clientX: 20, clientY: 10 })
+    expect(node1.style.width).toBe('112px')
+    fireEvent.pointerCancel(viewport, { pointerId: 2 })
+    expect(node1.style.width).toBe('92px')
+    expect(view.getByTestId('document-revision').textContent).toBe('2')
+
+    fireEvent.click(view.getByTestId('undo'))
+    expect(node1.style.left).toBe('128px')
+    fireEvent.click(view.getByTestId('redo'))
+    expect(node1.style.left).toBe('148px')
   })
 })
