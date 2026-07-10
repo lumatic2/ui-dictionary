@@ -10,6 +10,7 @@ export type NavigationCollectionId =
   | "docs-ui-blocks"
   | "docs-component-api"
   | "docs-getting-started-setup"
+  | "docs-getting-started-principles"
   | "docs-getting-started-html"
   | "docs-getting-started-react"
   | "docs-getting-started-vue"
@@ -384,6 +385,13 @@ export const navigationCollections: NavigationCollection[] = [
     path: ["Docs", "Getting started", "Getting set up"],
     groupIds: ["layout-spacing-sizing", "style-tokens", "accessibility-focus-motion"],
     termIds: ["container", "typography", "dark-mode", "responsive-breakpoint"],
+  },
+  {
+    id: "docs-getting-started-principles",
+    label: "Principles",
+    path: ["Docs", "Getting started", "Principles"],
+    groupIds: ["layout-spacing-sizing", "style-tokens", "feedback-interaction-states", "accessibility-focus-motion"],
+    termIds: ["container", "typography", "design-token", "focus-ring", "responsive-breakpoint"],
   },
   {
     id: "docs-getting-started-html",

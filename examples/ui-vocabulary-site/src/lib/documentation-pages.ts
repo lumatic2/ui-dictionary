@@ -47,6 +47,7 @@ export const docsNavGroups: DocsNavGroup[] = [
     label: "Getting started",
     items: [
       { filter: navFilter("docs-getting-started-setup"), label: "Getting set up" },
+      { filter: navFilter("docs-getting-started-principles"), label: "Principles", shell: true },
       { filter: navFilter("docs-getting-started-html"), label: "Using HTML" },
       { filter: navFilter("docs-getting-started-react"), label: "Using React" },
       { filter: navFilter("docs-getting-started-vue"), label: "Using Vue" },
@@ -99,6 +100,85 @@ const FOUNDATION_SECTION_TITLES = [
 
 
 export const docsArticlePages = new Map<TermFilter, DocsArticlePageData>([
+  [navFilter("docs-getting-started-principles"), {
+    filter: navFilter("docs-getting-started-principles"),
+    kind: "setup",
+    breadcrumb: "UI Blocks / Docs / Getting started",
+    title: "Principles",
+    lead: "Askewly Design의 원칙은 화면을 특정 스타일로 꾸미는 취향 목록이 아닙니다. 사용자의 과업에서 시작해 위계, 토큰, 상태, 움직임, 공개 기준을 결정하는 공통 판단 체계입니다. 이 글은 에이전트 정본인 principles.md의 여덟 원칙을 사람이 읽는 흐름으로 풀어냅니다.",
+    sections: [
+      {
+        title: "1. 장식보다 사용자 과업에서 시작합니다",
+        body: [
+          "화면을 만들기 전에 사용자가 끝내야 할 과업과 제품 표면을 먼저 이름 붙입니다. 그 다음 landmark, heading 순서, 정보 위계, 핵심 행동을 세웁니다. hero나 카드 그리드, dashboard shell은 이 구조를 대신할 수 없습니다.",
+          "구현을 검토할 때는 각 섹션이 과업을 이해하거나 완료하는 데 어떤 역할을 하는지 묻습니다. 답할 수 없는 장식 섹션은 줄이거나 제거합니다.",
+        ],
+      },
+      {
+        title: "2. 모든 것을 강조하지 않고 위계를 만듭니다",
+        body: [
+          "한 viewport에는 하나의 강한 초점이나 지배적인 행동을 둡니다. primary fill은 그 행동에만 쓰고, 나머지는 outline, ghost, muted text, 위치와 간격으로 낮춥니다.",
+          "위계를 만들기 위해 카드 안에 카드를 겹치거나 무거운 그림자, 과도한 pill, 한 톤의 gradient를 기본값으로 쓰지 않습니다. 먼저 타입, 간격, 경계, 표면 변화로 읽는 순서를 만듭니다.",
+        ],
+      },
+      {
+        title: "3. 토큰은 의도로 쓰고 정본은 하나만 둡니다",
+        body: [
+          "색과 치수는 primitive 값이나 hex 리터럴이 아니라 semantic/component 토큰으로 표현합니다. 컴포넌트는 '보라색'이 아니라 primary action, raised surface, muted text처럼 역할을 참조해야 테마가 바뀌어도 의미를 유지합니다.",
+          "토큰 값은 tokens/askewly.tokens.json에서 고치고 파생 파일을 다시 생성합니다. 사람용 설명과 llms.txt는 정본을 전달하는 표면이지 값을 따로 소유하는 문서가 아닙니다.",
+        ],
+      },
+      {
+        title: "4. AI다운 대체물보다 제품 맥락의 증거를 씁니다",
+        body: [
+          "예시는 그 제품 표면에서 실제로 일어나는 능력을 보여줘야 합니다. 의미 없는 KPI, 임의의 gradient, 장식 blob, 맥락 없는 SaaS dashboard는 실데이터와 상태, 행동을 대신할 수 없습니다.",
+          "Showcase의 카피는 애니메이션을 중계하지 않고 용어 자체를 정의합니다. 데모도 어떤 웹사이트, 앱, 대시보드, 커머스 흐름에 다시 쓸 수 있는지 설명할 수 있어야 합니다.",
+        ],
+      },
+      {
+        title: "5. 성공 경로뿐 아니라 상호작용 계약을 완성합니다",
+        body: [
+          "컴포넌트의 설계에는 keyboard navigation, focus 이동과 복귀, empty/error, dismiss, loading/disabled, viewport collision, responsive fallback이 포함됩니다. 마우스로 한 번 클릭되는 happy path만으로는 완료가 아닙니다.",
+          "입력 결과가 없거나 clipboard가 실패했을 때처럼 사용자가 다음 행동을 알아야 하는 순간에는 관찰 가능한 피드백을 제공합니다. 조용히 닫히거나 아무 일도 일어나지 않는 상태를 만들지 않습니다.",
+        ],
+      },
+      {
+        title: "6. 정지 화면을 먼저 설계하고 움직임으로 변화를 설명합니다",
+        body: [
+          "motion은 focus, 상태, 순서, 진행을 설명할 때만 씁니다. 시작, 완료, reduced-motion의 각 화면이 독립적으로 읽혀야 하고, 반복 동작에는 사용자가 도달할 수 있는 안정된 정지 상태가 있어야 합니다.",
+          "멈추면 구성이 무너지거나 끝없이 움직이기만 하는 데모는 제품 상태가 아니라 screensaver에 가깝습니다. 애니메이션을 제거해도 정보와 행동이 남는지 먼저 확인합니다.",
+        ],
+      },
+      {
+        title: "7. 신뢰를 얻을 만큼 완성된 것만 공개합니다",
+        body: [
+          "공개 navigation은 사용자가 바로 쓸 수 있다는 약속입니다. 빈 collection, placeholder card, 배포되지 않은 download, 판매할 자산이 없는 Pro surface를 미리 나열하지 않습니다.",
+          "미완성 정의와 코드는 삭제하지 않고 development gate 뒤에 보존합니다. 실사 콘텐츠, light/dark 가독성, responsive 동작, 실코드 또는 실인터랙션이 섹션별 기준을 통과한 뒤 gate를 엽니다.",
+        ],
+      },
+      {
+        title: "8. 레퍼런스를 Askewly의 시스템으로 번역합니다",
+        body: [
+          "외부 제품은 근거이지 복사할 정체성이 아닙니다. 출처, 배운 패턴, Askewly에 채택할 규칙, 거부할 시각적 특징을 함께 기록한 뒤 semantic token과 component contract로 다시 표현합니다.",
+          "다른 브랜드의 palette, composition, 장식 signature를 그대로 가져오지 않습니다. Askewly의 조용한 white surface와 의도적인 비대칭 안에서 재사용 가능한 원칙만 남깁니다.",
+        ],
+      },
+      {
+        title: "Implementation checklist",
+        body: [
+          "- 사용자 과업, 제품 표면, 정보 위계, 지배적인 행동이 명시되어 있는가.",
+          "- 시각적 의도가 semantic token을 통하고 피할 수 있는 리터럴이 없는가.",
+          "- 콘텐츠와 상호작용이 제품 맥락에 구체적인가.",
+          "- keyboard, focus, empty/error, responsive, reduced-motion 경로가 필요한 만큼 정의되었는가.",
+          "- 공개 범위가 실제 자산의 완성 수준과 일치하는가.",
+          "- 외부 레퍼런스가 출처 있는 번역이며 다른 브랜드의 복사가 아닌가.",
+        ],
+      },
+    ],
+    apiRows: [],
+    onThisPage: ["Task first", "Hierarchy", "Tokens and SSOT", "Product evidence", "Interaction contract", "Meaningful motion", "Publication gate", "Reference adaptation", "Checklist"],
+    shell: true,
+  }],
   [navFilter("docs-getting-started-setup"), {
     filter: navFilter("docs-getting-started-setup"),
     kind: "setup",

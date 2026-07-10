@@ -49,3 +49,4 @@
 | 47 | 20260710-cli-verify | 2026-07-10 | CLI verify command for token-bypass color literals plus full query-inject-verify loop E2E | 4/4 | complete |
 | 48 | 20260710-principles-canonical | 2026-07-10 | Canonical Askewly Design principles distilled from repository evidence | 4/4 | complete |
 | 49 | 20260710-principles-llms-index | 2026-07-10 | Publish canonical principles through the generated llms.txt discovery layer | 4/4 | complete |
+| 50 | 20260710-principles-docs-article | 2026-07-10 | Human-facing Korean Principles article behind the existing dev-only exposure gate | 5/5 | complete |
