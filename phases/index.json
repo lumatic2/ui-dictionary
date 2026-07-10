@@ -51,6 +51,10 @@
     {
       "dir": "agent-design-direct-manipulation",
       "status": "completed"
+    },
+    {
+      "dir": "agent-design-canvas-agent",
+      "status": "pending"
     }
   ]
 }

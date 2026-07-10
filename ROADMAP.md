@@ -1,7 +1,7 @@
 # ROADMAP
 
 > Last updated: 2026-07-10
-> Status: Agent-Native UI Canvas — AUC2 complete; AUC3 next candidate
+> Status: Agent-Native UI Canvas — AUC3 planning gate
 > North star: Build Askewly Design as both a public reference website and an agent-usable implementation system.
 > line budget: <=150
 
@@ -11,6 +11,13 @@
 Goal: Agent Design를 code-native UI canvas로 만든다 — evidence-based engine bake-off → canonical canvas → direct manipulation → canvas agent/code round-trip → packaged quality gate. Details: `docs/horizons/2026-07-agent-native-ui-canvas.md`.
 
 ## Active Milestones
+
+<!-- harness:milestone id="AUC3" status="active" priority="P1" -->
+### AUC3 — Canvas Agent And Code Round-trip
+- DoD: selection-bound agent context → exact diff → guarded apply → shared CLI verify + React code↔canvas 왕복 drift gate.
+- Evidence: `docs/plans/2026-07-10-auc3-canvas-agent-code-roundtrip.md` + `phases/agent-design-canvas-agent/` + fresh-project round-trip evidence.
+- Gap: 캔버스와 에이전트가 아직 같은 정본 code/document를 편집하지 않는다.
+- Status: [ ]
 
 <!-- harness:milestone id="AUC2" status="completed" priority="P1" evidence="phases/agent-design-direct-manipulation/" -->
 ### AUC2 — Direct Manipulation And Property Runtime
@@ -40,13 +47,6 @@ Goal: Agent Design를 code-native UI canvas로 만든다 — evidence-based engi
 - Completed at: 2026-07-10
 - Summary: 4개 엔진 후보 실측 후 계층형 DOM + WebGPU topology 사용자 확정
 ## Next Candidates
-
-<!-- harness:milestone id="AUC3" status="pending" priority="P1" -->
-### AUC3 — Canvas Agent And Code Round-trip
-- DoD: selection-bound agent context → exact diff → guarded apply → shared CLI verify + React code↔canvas 왕복 drift gate.
-- Evidence: `phases/agent-design-canvas-agent/` + fresh-project round-trip evidence.
-- Gap: 캔버스와 에이전트가 아직 같은 정본 code/document를 편집하지 않는다.
-- Status: [ ]
 
 <!-- harness:milestone id="AUC4" status="pending" priority="P2" -->
 ### AUC4 — Desktop Productization And Quality Gate

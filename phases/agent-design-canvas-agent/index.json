@@ -1,0 +1,12 @@
+{
+  "project": "ui-dictionary",
+  "phase": "agent-design-canvas-agent",
+  "mode": "product",
+  "steps": [
+    { "step": 1, "name": "selection-bound-agent-context", "status": "pending" },
+    { "step": 2, "name": "typed-adapter-exact-proposal-diff", "status": "pending" },
+    { "step": 3, "name": "guarded-apply-agent-dock", "status": "pending" },
+    { "step": 4, "name": "shared-verification-cli-parity", "status": "pending" },
+    { "step": 5, "name": "react-canvas-roundtrip-proof", "status": "pending" }
+  ]
+}

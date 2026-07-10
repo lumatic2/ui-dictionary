@@ -177,6 +177,16 @@
         "codex:2026-07-10-auc2-ime-waiver-close"
       ],
       "completed": "2026-07-10"
+    },
+    {
+      "id": "AUC3",
+      "title": "Canvas Agent And Code Round-trip",
+      "status": "active",
+      "started": "2026-07-10",
+      "plan": "docs/plans/2026-07-10-auc3-canvas-agent-code-roundtrip.md",
+      "session_ids": [
+        "codex:2026-07-10-auc3-planning"
+      ]
     }
   ]
 }

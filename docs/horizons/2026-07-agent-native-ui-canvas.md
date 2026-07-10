@@ -1,7 +1,7 @@
 # Horizon - Agent-Native UI Canvas
 
 Date: 2026-07-10
-Status: active — AUC0/AUC1/AUC2 complete; AUC3 Canvas Agent And Code Round-trip is next.
+Status: active — AUC0/AUC1/AUC2 complete; AUC3 Canvas Agent And Code Round-trip planning gate active.
 
 ## Goal
 
