@@ -24,7 +24,13 @@
       "summary": "Implemented trusted auto-apply with duplicate ID, base revision, canonical hash, project allowlist, and source before-hash guards; staged source replacement with injected verification; exact JSON-pointer and lossless source diffs; audit persistence before publication; and guarded operation/source Undo as new revisions. Failure injection proved verification/audit rollback leaves file, document, audit, and cursor unchanged; competing actors reject stale writes. Verified engine 7/7, bridge 11/11, MCP actor contract 2/2, and all builds.",
       "completed_at": "2026-07-10T23:30:00+09:00"
     },
-    { "step": 4, "name": "canvas-live-sync-file-watcher", "status": "pending" },
+    {
+      "step": 4,
+      "name": "canvas-live-sync-file-watcher",
+      "status": "completed",
+      "summary": "Connected the browser canvas to authenticated WebSocket snapshots with cursor replay/recovery, routed connected human operations back through bridge authority, added loopback-only CORS, and implemented allowlisted Node source watching with debounce, supported JSX stable-ID reconciliation, verification, audit, and bridge-write echo suppression. System Chrome live proof passed 20/20 revisions with agent ack→visible p95 52.2ms, file edit→visible p95 107.6ms, zero watcher/console errors, and visual screenshot evidence.",
+      "completed_at": "2026-07-10T23:40:00+09:00"
+    },
     { "step": 5, "name": "dual-cli-roundtrip-proof", "status": "pending" }
   ]
 }
