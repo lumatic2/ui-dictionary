@@ -13,7 +13,10 @@
   "scripts": {
     "build": "tsc",
     "pretest": "npm run build",
-    "test": "vitest run"
+    "test": "vitest run",
+    "preroundtrip": "npm run build && npm --prefix ../agent-design-engine run build && npm --prefix ../../apps/agent-design-bridge run build",
+    "roundtrip": "node scripts/run-roundtrip.mjs",
+    "verify:roundtrip": "node scripts/verify-roundtrip.mjs"
   },
   "dependencies": {
     "@modelcontextprotocol/sdk": "^1.27.1",

@@ -27,6 +27,7 @@ export function createAgentDesignMcp(options: { bridgeUrl: string; token: string
     title: 'Get Agent Design context',
     description: 'Read the current canvas selection, revision, hash, and project source root before proposing a design mutation.',
     inputSchema: {},
+    annotations: { readOnlyHint: true, destructiveHint: false, idempotentHint: true, openWorldHint: false },
   }, async () => {
     try { return result(await client.context()) } catch (error) { return failure(error) }
   })
@@ -63,6 +64,7 @@ export function createAgentDesignMcp(options: { bridgeUrl: string; token: string
     title: 'Verify Agent Design state',
     description: 'Verify that the bridge still has the expected canonical revision and hash.',
     inputSchema: { revision: z.number().int().nonnegative().optional(), hash: z.string().min(1).optional() },
+    annotations: { readOnlyHint: true, destructiveHint: false, idempotentHint: true, openWorldHint: false },
   }, async (input) => {
     try { return result(await client.verify(input)) } catch (error) { return failure(error) }
   })
