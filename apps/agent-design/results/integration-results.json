@@ -1,41 +1,61 @@
 {
-  "schemaVersion": 1,
-  "generatedAt": "2026-07-10T09:25:20.549Z",
+  "schemaVersion": 2,
+  "generatedAt": "2026-07-10T09:57:16.764Z",
   "runtime": "Playwright system Chrome headless, 1440x900@1x",
   "gpuState": "webgpu",
   "nodeCount": 5000,
   "sourceCount": 250,
   "trace": {
-    "frames": 90,
-    "averageFrameMs": 8.798888888888888,
-    "p95FrameMs": 9.299999999999955,
-    "droppedFrameRatio": 0.011111111111111112
+    "frames": 60,
+    "averageLatencyMs": 4.278333331868036,
+    "p95LatencyMs": 13.5,
+    "overBudgetRatio": 0.016666666666666666,
+    "revisionDelta": 1
   },
   "traces": [
     {
-      "frames": 90,
-      "averageFrameMs": 8.798888888888888,
-      "p95FrameMs": 9.299999999999955,
-      "droppedFrameRatio": 0.011111111111111112
+      "frames": 60,
+      "averageLatencyMs": 2.849999998286364,
+      "p95LatencyMs": 6.899999995529697,
+      "overBudgetRatio": 0,
+      "revisionDelta": 1
     },
     {
-      "frames": 90,
-      "averageFrameMs": 8.518888888888887,
-      "p95FrameMs": 8.400000000000091,
-      "droppedFrameRatio": 0.011111111111111112
+      "frames": 60,
+      "averageLatencyMs": 4.278333331868036,
+      "p95LatencyMs": 13.5,
+      "overBudgetRatio": 0.016666666666666666,
+      "revisionDelta": 1
     },
     {
-      "frames": 90,
-      "averageFrameMs": 8.796666666666665,
-      "p95FrameMs": 8.5,
-      "droppedFrameRatio": 0.011111111111111112
+      "frames": 60,
+      "averageLatencyMs": 4.969999998708583,
+      "p95LatencyMs": 10.699999995529652,
+      "overBudgetRatio": 0.016666666666666666,
+      "revisionDelta": 1
     }
   ],
+  "accessibility": {
+    "escapeSelectionCount": 0,
+    "firstFocusedId": "node-00000",
+    "secondFocusedId": "node-00001"
+  },
+  "fallbackState": "dom",
+  "workflow": {
+    "componentParentId": "node-00100",
+    "componentDisabled": true,
+    "componentHorizontalSizing": "fill",
+    "tokenSetId": "askewly.dark",
+    "text": "한글 실제 Chrome 입력",
+    "chromeTextEntry": true,
+    "osMicrosoftImeManualPass": false
+  },
   "persistence": {
-    "savedStatus": "saved 392473 bytes",
-    "reloadedRevision": 3,
-    "undoRevision": 2,
-    "redoRevision": 3
+    "savedStatus": "saved 393074 bytes",
+    "savedRevision": 7,
+    "reloadedRevision": 7,
+    "undoRevision": 6,
+    "redoRevision": 7
   },
   "reloadPixelDiff": {
     "differentPixels": 0,

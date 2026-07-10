@@ -90,7 +90,7 @@ describe('Agent Design persistence flow', () => {
       setData(type: string, value: string) { this.values.set(type, value) },
       getData(type: string) { return this.values.get(type) ?? '' },
     }
-    fireEvent.dragStart(node1, { dataTransfer: transfer })
+    fireEvent.dragStart(view.getByTestId('structure-drag-handle'), { dataTransfer: transfer })
     fireEvent.dragOver(target, { dataTransfer: transfer })
     expect(target.getAttribute('data-drop-target')).toBe('active')
     fireEvent.drop(target, { dataTransfer: transfer })

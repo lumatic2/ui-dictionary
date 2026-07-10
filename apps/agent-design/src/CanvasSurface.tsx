@@ -1,4 +1,4 @@
-import { useCallback, useEffect, useMemo, useRef, useState } from 'react'
+import { memo, useCallback, useEffect, useMemo, useRef, useState } from 'react'
 import {
   alignmentGuides,
   boundsChanged,
@@ -50,6 +50,7 @@ interface CanvasNodeElementProps {
   node: CanvasNode
   selected: boolean
   dropTarget: boolean
+  primary: boolean
   previewBounds?: CanvasNode['bounds']
   onOperation?: (operation: CanvasOperation) => void
 }
@@ -72,7 +73,6 @@ function TextNodeElement({ node, shared, onOperation }: { node: Extract<CanvasNo
     {...shared}
     ref={ref}
     role="textbox"
-    tabIndex={0}
     contentEditable
     suppressContentEditableWarning
     onCompositionStart={() => { composing.current = true }}
@@ -81,7 +81,7 @@ function TextNodeElement({ node, shared, onOperation }: { node: Extract<CanvasNo
   />
 }
 
-function CanvasNodeElement({ node, selected, dropTarget, previewBounds, onOperation }: CanvasNodeElementProps) {
+const CanvasNodeElement = memo(function CanvasNodeElement({ node, selected, dropTarget, primary, previewBounds, onOperation }: CanvasNodeElementProps) {
   const shared = {
     'data-canvas-id': node.id,
     'data-parent-id': node.parentId ?? '',
@@ -92,6 +92,7 @@ function CanvasNodeElement({ node, selected, dropTarget, previewBounds, onOperat
     'data-selection-state': selected ? 'selected' : 'idle',
     'data-drop-target': dropTarget ? 'active' : 'idle',
     draggable: selected && !node.locked,
+    tabIndex: primary ? 0 : -1,
     className: `canvas-node node-${node.kind}`,
     style: nodeStyle(node, previewBounds),
   }
@@ -102,13 +103,13 @@ function CanvasNodeElement({ node, selected, dropTarget, previewBounds, onOperat
     return <button {...shared} type="button">{String(node.overrides.label ?? node.name)}</button>
   }
   if (node.kind === 'code-component') {
-    return <article {...shared} role="group" tabIndex={0}>{String(node.props.label ?? node.name)}</article>
+    return <article {...shared} role="group">{String(node.props.label ?? node.name)}</article>
   }
   if (node.kind === 'frame') {
     return <section {...shared} role="group" data-layout-mode={node.layout.mode}>{node.name}</section>
   }
   return <div {...shared} role="group" data-layout-mode={node.layout.mode}>{node.name}</div>
-}
+})
 
 export function CanvasSurface({ document, editorPlaneFailure = null, onOperation }: Props) {
   const viewportRef = useRef<HTMLDivElement>(null)
@@ -121,7 +122,8 @@ export function CanvasSurface({ document, editorPlaneFailure = null, onOperation
   const [dropTargetId, setDropTargetId] = useState<string | null>(null)
   const selectedIds = useMemo(() => new Set(document.selection), [document.selection])
   const orderedNodes = useMemo(() => paintOrder(document).map((id) => document.nodes[id]), [document])
-  const nodeElements = useMemo(() => orderedNodes.map((node) => <CanvasNodeElement key={node.id} node={node} selected={selectedIds.has(node.id)} dropTarget={dropTargetId === node.id} previewBounds={previewBounds[node.id]} onOperation={onOperation} />), [dropTargetId, onOperation, orderedNodes, previewBounds, selectedIds])
+  const primaryId = document.selection.at(-1)
+  const nodeElements = useMemo(() => orderedNodes.map((node) => <CanvasNodeElement key={node.id} node={node} selected={selectedIds.has(node.id)} primary={primaryId === node.id} dropTarget={dropTargetId === node.id} previewBounds={previewBounds[node.id]} onOperation={onOperation} />), [dropTargetId, onOperation, orderedNodes, previewBounds, primaryId, selectedIds])
   const transform = `translate(${document.viewport.pan.x}px, ${document.viewport.pan.y}px) scale(${document.viewport.zoom})`
   const canonicalSelection = Object.keys(previewBounds).length ? previewSelectionBounds(document, previewBounds) : selectionBounds(document)
   const selection = canonicalSelection ? {
@@ -255,8 +257,9 @@ export function CanvasSurface({ document, editorPlaneFailure = null, onOperation
       setMarquee(null)
     }}
     onDragStart={(event) => {
+      const structureHandle = event.target instanceof Element ? event.target.closest<HTMLElement>('[data-structure-drag-id]') : null
       const target = event.target instanceof Element ? event.target.closest<HTMLElement>('[data-canvas-id]') : null
-      const id = target?.dataset.canvasId ?? null
+      const id = structureHandle?.dataset.structureDragId ?? target?.dataset.canvasId ?? null
       if (!id || !document.selection.includes(id)) { event.preventDefault(); return }
       structureDragId.current = id
       event.dataTransfer.setData('application/x-askewly-canvas-node', id)
@@ -310,6 +313,17 @@ export function CanvasSurface({ document, editorPlaneFailure = null, onOperation
         style={{ left: selection.x, top: selection.y, width: selection.width, height: selection.height }}
         onPointerDown={(event) => beginGesture(event, 'move')}
       >
+        {document.selection.length === 1 ? <button
+          type="button"
+          className="structure-drag-handle"
+          data-testid="structure-drag-handle"
+          data-structure-drag-id={document.selection[0]}
+          draggable
+          aria-label="Reparent selection"
+          onPointerDown={(event) => event.stopPropagation()}
+        >
+          <svg viewBox="0 0 16 16" aria-hidden="true"><path d="M5 4h6M5 8h6M5 12h6" /></svg>
+        </button> : null}
         {(['nw', 'n', 'ne', 'e', 'se', 's', 'sw', 'w'] as ResizeHandle[]).map((handle) => <button
           key={handle}
           type="button"

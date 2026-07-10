@@ -37,25 +37,55 @@ try {
   await page.waitForFunction(() => document.querySelector('[data-testid="editor-plane"]')?.getAttribute('data-editor-plane') !== 'initializing')
   const gpuState = await page.getByTestId('editor-plane').getAttribute('data-editor-plane')
   const traces = []
-  for (let run = 0; run < 3; run += 1) traces.push(await page.evaluate(() => window.__agentDesignBenchmark.runTrace(90)))
-  const trace = traces.reduce((worst, item) => item.p95FrameMs > worst.p95FrameMs ? item : worst)
+  for (let run = 0; run < 3; run += 1) traces.push(await page.evaluate(() => window.__agentDesignBenchmark.runPointerTrace(60)))
+  const trace = traces.reduce((worst, item) => item.p95LatencyMs > worst.p95LatencyMs ? item : worst)
   const nodeCount = await page.locator('[data-canvas-id]').count()
   const sourceCount = await page.locator('[data-source-ref]').count()
   await page.screenshot({ path: path.join(screenshotsDir, '5k-webgpu.png') })
 
+  const viewport = page.getByTestId('canvas-viewport')
+  await viewport.focus()
+  await viewport.press('Escape')
+  const escapeSelectionCount = Number(await page.getByTestId('selection-count').textContent())
+  await viewport.press('ArrowRight')
+  await page.waitForFunction(() => document.activeElement?.getAttribute('data-canvas-id') === 'node-00000')
+  const firstFocusedId = await page.evaluate(() => document.activeElement?.getAttribute('data-canvas-id'))
+  await viewport.press('ArrowRight')
+  await page.waitForFunction(() => document.activeElement?.getAttribute('data-canvas-id') === 'node-00001')
+  const secondFocusedId = await page.evaluate(() => document.activeElement?.getAttribute('data-canvas-id'))
+
   await page.getByTestId('fixture-size').selectOption('1000')
   await page.waitForFunction(() => document.querySelectorAll('[data-canvas-id]').length === 1000)
+  await page.waitForFunction(() => document.querySelector('[data-testid="document-revision"]')?.textContent === '0')
   await page.getByTestId('editor-plane-mode').selectOption('forced-fallback')
   await page.waitForFunction(() => document.querySelector('[data-testid="editor-plane"]')?.getAttribute('data-editor-plane') === 'dom')
-  await page.getByTestId('apply-demo').click()
-  await page.waitForFunction(() => document.querySelector('[data-testid="document-revision"]')?.textContent === '3')
+
+  const component = page.locator('[data-canvas-id="node-00001"]')
+  const targetFrame = page.locator('[data-canvas-id="node-00100"]')
+  await component.evaluate((element) => element.click())
+  await page.getByTestId('property-prop-disabled').selectOption('true')
+  await page.getByTestId('property-layout-horizontal').selectOption('fill')
+  await page.getByTestId('token-mode').selectOption('askewly.dark')
+  await page.getByTestId('structure-drag-handle').dragTo(targetFrame)
+  await page.waitForFunction(() => document.querySelector('[data-canvas-id="node-00001"]')?.getAttribute('data-parent-id') === 'node-00100')
+
+  const textNode = page.locator('[data-canvas-id="node-00007"]')
+  await textNode.evaluate((element) => element.click())
+  await textNode.fill('한글 실제 Chrome 입력')
+  await textNode.press('Tab')
+  await page.waitForFunction(() => window.__agentDesignBenchmark.inspect('node-00007').node?.text === '한글 실제 Chrome 입력')
+
+  const componentState = await page.evaluate(() => window.__agentDesignBenchmark.inspect('node-00001'))
+  const textState = await page.evaluate(() => window.__agentDesignBenchmark.inspect('node-00007'))
+  const fallbackState = await page.getByTestId('editor-plane').getAttribute('data-editor-plane')
   await page.getByTestId('canvas-viewport').screenshot({ path: path.join(screenshotsDir, 'before-reload.png') })
   await page.getByTestId('save-document').click()
   await page.waitForFunction(() => document.querySelector('[data-testid="persistence-status"]')?.textContent?.startsWith('saved'))
   const savedStatus = await page.getByTestId('persistence-status').textContent()
+  const savedRevision = Number(await page.getByTestId('document-revision').textContent())
   await page.getByTestId('undo').click()
   await page.getByTestId('reload-document').click()
-  await page.waitForFunction(() => document.querySelector('[data-testid="persistence-status"]')?.textContent === 'reloaded revision 3')
+  await page.waitForFunction((revision) => document.querySelector('[data-testid="persistence-status"]')?.textContent === `reloaded revision ${revision}`, savedRevision)
   await page.getByTestId('canvas-viewport').screenshot({ path: path.join(screenshotsDir, 'after-reload.png') })
   const reloadedRevision = Number(await page.getByTestId('document-revision').textContent())
   await page.getByTestId('undo').click()
@@ -70,7 +100,7 @@ try {
   await writeFile(path.join(screenshotsDir, 'reload-diff.png'), PNG.sync.write(diff))
 
   const report = {
-    schemaVersion: 1,
+    schemaVersion: 2,
     generatedAt: new Date().toISOString(),
     runtime: 'Playwright system Chrome headless, 1440x900@1x',
     gpuState,
@@ -78,7 +108,18 @@ try {
     sourceCount,
     trace,
     traces,
-    persistence: { savedStatus, reloadedRevision, undoRevision, redoRevision },
+    accessibility: { escapeSelectionCount, firstFocusedId, secondFocusedId },
+    fallbackState,
+    workflow: {
+      componentParentId: componentState.node?.parentId,
+      componentDisabled: componentState.node?.props?.disabled,
+      componentHorizontalSizing: componentState.node?.layout?.horizontal,
+      tokenSetId: componentState.tokenSetId,
+      text: textState.node?.text,
+      chromeTextEntry: true,
+      osMicrosoftImeManualPass: false,
+    },
+    persistence: { savedStatus, savedRevision, reloadedRevision, undoRevision, redoRevision },
     reloadPixelDiff: { differentPixels, totalPixels: before.width * before.height, mismatchRatio: differentPixels / (before.width * before.height) },
     consoleErrors,
   }

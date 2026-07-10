@@ -89,17 +89,55 @@ export function App() {
     }
   }, [])
 
+  const runPointerTrace = useCallback(async (frames = 60) => {
+    const overlay = document.querySelector<HTMLElement>('[data-testid="manipulation-selection"]')
+    const viewport = document.querySelector<HTMLElement>('[data-testid="canvas-viewport"]')
+    if (!overlay || !viewport) throw new Error('selection overlay is not ready')
+    const pointerId = 700 + Math.floor(Math.random() * 100)
+    const beforeRevision = Number(document.querySelector('[data-testid="document-revision"]')?.textContent)
+    overlay.dispatchEvent(new PointerEvent('pointerdown', { bubbles: true, pointerId, isPrimary: true, clientX: 120, clientY: 120, buttons: 1 }))
+    await nextFrame()
+    const latencies: number[] = []
+    for (let index = 0; index < frames; index += 1) {
+      const started = performance.now()
+      viewport.dispatchEvent(new PointerEvent('pointermove', { bubbles: true, pointerId, isPrimary: true, clientX: 120 + index + 1, clientY: 120 + (index % 8), buttons: 1 }))
+      const painted = await nextFrame()
+      latencies.push(painted - started)
+    }
+    viewport.dispatchEvent(new PointerEvent('pointerup', { bubbles: true, pointerId, isPrimary: true, clientX: 120 + frames, clientY: 120 + (frames % 8) }))
+    await nextFrame()
+    await nextFrame()
+    const afterRevision = Number(document.querySelector('[data-testid="document-revision"]')?.textContent)
+    return {
+      frames,
+      averageLatencyMs: latencies.reduce((sum, value) => sum + value, 0) / latencies.length,
+      p95LatencyMs: percentile(latencies, 0.95),
+      overBudgetRatio: latencies.filter((value) => value > 16.67).length / latencies.length,
+      revisionDelta: afterRevision - beforeRevision,
+    }
+  }, [])
+
   useEffect(() => {
-    window.__agentDesignBenchmark = { runTrace }
+    window.__agentDesignBenchmark = {
+      runTrace,
+      runPointerTrace,
+      inspect: (nodeId?: string) => ({
+        revision: history.present.revision,
+        selection: [...history.present.selection],
+        historyLength: history.log.length,
+        tokenSetId: history.present.tokenSetId,
+        node: nodeId ? structuredClone(history.present.nodes[nodeId]) : null,
+      }),
+    }
     return () => { delete window.__agentDesignBenchmark }
-  }, [runTrace])
+  }, [history.log.length, history.present, runPointerTrace, runTrace])
 
   return <main className="app-shell">
     <header className="app-header">
       <div>
-        <p className="eyebrow">Agent Design / AUC1</p>
-        <h1>Canonical Canvas Foundation</h1>
-        <p>Semantic DOM content with a renderer-independent document.</p>
+        <p className="eyebrow">Agent Design / AUC2</p>
+        <h1>Direct Manipulation Runtime</h1>
+        <p>Canonical selection, structure, responsive bounds, properties, and text.</p>
       </div>
       <div className="header-controls">
         <label>Nodes
@@ -137,6 +175,8 @@ declare global {
   interface Window {
     __agentDesignBenchmark?: {
       runTrace: (frames?: number) => Promise<{ frames: number; averageFrameMs: number; p95FrameMs: number; droppedFrameRatio: number }>
+      runPointerTrace: (frames?: number) => Promise<{ frames: number; averageLatencyMs: number; p95LatencyMs: number; overBudgetRatio: number; revisionDelta: number }>
+      inspect: (nodeId?: string) => { revision: number; selection: string[]; historyLength: number; tokenSetId: string; node: unknown }
     }
   }
 }

@@ -40,6 +40,8 @@ button, select { font: inherit; }
 .resize-handle-s { left: calc(50% - 4px); bottom: -5px; cursor: ns-resize; }
 .resize-handle-sw { left: -5px; bottom: -5px; cursor: nesw-resize; }
 .resize-handle-w { left: -5px; top: calc(50% - 4px); cursor: ew-resize; }
+.structure-drag-handle { position: absolute; left: 6px; top: -25px; width: 20px; height: 20px; padding: 2px; border: 1px solid #6f2dbd; border-radius: 3px; background: white; color: #6f2dbd; cursor: grab; }
+.structure-drag-handle svg { width: 14px; height: 14px; fill: none; stroke: currentColor; stroke-width: 1.5; stroke-linecap: round; }
 .dom-alignment-guide { position: absolute; pointer-events: none; background: #a663cc; }
 .dom-alignment-guide.guide-x { top: 0; bottom: 0; width: 1px; }
 .dom-alignment-guide.guide-y { left: 0; right: 0; height: 1px; }

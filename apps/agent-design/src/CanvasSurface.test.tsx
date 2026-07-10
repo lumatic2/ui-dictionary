@@ -27,11 +27,12 @@ describe('semantic DOM content plane', () => {
     expect(text.textContent).toBe('한글 입력 완료')
   })
 
-  it('provides focusable code, instance, and text surfaces', () => {
+  it('provides one roving tab stop that follows canonical primary selection', () => {
     const document = createDocumentFixture(1000)
-    const expected = Object.values(document.nodes).filter((node) => node.kind === 'code-component' || node.kind === 'instance' || node.kind === 'text').length
     const view = render(<CanvasSurface document={document} />)
-    expect(view.container.querySelectorAll('[data-canvas-id]:is(button,[tabindex="0"])')).toHaveLength(expected)
+    expect(view.container.querySelectorAll('[data-canvas-id][tabindex]')).toHaveLength(1000)
+    expect(view.container.querySelectorAll('[data-canvas-id][tabindex="0"]')).toHaveLength(1)
+    expect(view.container.querySelector('[data-canvas-id][tabindex="0"]')?.getAttribute('data-canvas-id')).toBe(document.selection.at(-1))
     expect(view.getByTestId('canvas-viewport').getAttribute('role')).toBe('application')
   })
 
