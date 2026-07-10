@@ -205,12 +205,13 @@
     {
       "id": "UX1",
       "title": "Workspace Foundation",
-      "status": "active",
+      "status": "completed",
       "started": "2026-07-11",
       "plan": "docs/plans/2026-07-11-ux1-workspace-foundation.md",
       "session_ids": [
         "codex:2026-07-11-canvas-product-ux-planning"
-      ]
+      ],
+      "completed": "2026-07-11"
     }
   ]
 }

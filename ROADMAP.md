@@ -12,13 +12,15 @@ Goal: turn Agent Design from a proven canvas engine into a coherent professional
 
 ## Active Milestones
 
-<!-- harness:milestone id="UX1" status="active" priority="P0" -->
+<!-- harness:milestone id="UX1" status="completed" priority="P0" evidence="phases/agent-design-workspace-foundation/step5.md" -->
 ### UX1 — Workspace Foundation
 - DoD: a first-run user can open/resume a trusted project and understand the product shell, persistent editing controls, canvas/inspector panels, connection/recovery state, and constrained-width behavior without weakening existing canvas/desktop contracts.
-- Evidence: `docs/plans/2026-07-11-ux1-workspace-foundation.md` + `phases/agent-design-workspace-foundation/` + renderer/packaged visual and interaction evidence.
+- Evidence: phases/agent-design-workspace-foundation/step5.md
 - Gap: the packaged application exposes working capabilities through an AUC/benchmark-oriented development shell rather than a coherent project-entry and editing workspace.
-- Status: [ ]
+- Status: [x]
 
+- Completed at: 2026-07-11
+- Summary: Product workspace entry, toolbar, adaptive panels, and integrated packaged quality gates completed
 ## Next Candidates
 
 <!-- harness:milestone id="UX2" status="pending" priority="P0" -->

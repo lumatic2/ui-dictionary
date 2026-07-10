@@ -4,9 +4,9 @@
   "mode": "product",
   "steps": [
     { "step": 1, "name": "workspace-shell-visual-hierarchy", "status": "completed" },
-    { "step": 2, "name": "project-entry-recent-flow", "status": "in_progress" },
-    { "step": 3, "name": "persistent-toolbar-document-status", "status": "pending" },
-    { "step": 4, "name": "adaptive-panel-workspace", "status": "pending" },
-    { "step": 5, "name": "integrated-workspace-quality-proof", "status": "pending" }
+    { "step": 2, "name": "project-entry-recent-flow", "status": "completed" },
+    { "step": 3, "name": "persistent-toolbar-document-status", "status": "completed" },
+    { "step": 4, "name": "adaptive-panel-workspace", "status": "completed" },
+    { "step": 5, "name": "integrated-workspace-quality-proof", "status": "completed" }
   ]
 }

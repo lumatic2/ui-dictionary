@@ -18,3 +18,6 @@ cd apps/agent-design; npm test -- --run
 - No decorative mobile redesign; this remains a desktop production tool.
 - Avoid nested-card visual structure and oversized rounded controls.
 
+## Evidence — 2026-07-11
+- Left/right panels collapse independently, canvas remains mounted, constrained layout has zero horizontal document overflow, and panel/zoom regression coverage passes.
+- Implementation: `40f3f0d`.

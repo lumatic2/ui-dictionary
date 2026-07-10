@@ -2,7 +2,7 @@
 
 Date: 2026-07-11
 Milestone: UX1 (`ROADMAP.md`, active)
-Status: approved 2026-07-11 — Step 1 complete; Step 2 in progress
+Status: completed 2026-07-11 — Steps 1-5 complete
 
 ## Hierarchy
 
@@ -25,19 +25,19 @@ Status: approved 2026-07-11 — Step 1 complete; Step 2 in progress
   - Replace AUC/benchmark-first chrome with a product title bar, global toolbar, left workspace rail, central canvas stage, right inspector, and bottom status surface.
   - Verify: component tests assert landmark order and development controls are outside the primary workspace.
 
-- [ ] Step 2 — Project entry and recent-project flow
+- [x] Step 2 — Project entry and recent-project flow
   - Add first-run/empty workspace, Open Project primary action, recent project cards, loading/error feedback, and transition into the active workspace using the existing trusted-folder APIs.
   - Verify: renderer tests cover empty, canceled, opened, recent, and host-failure paths.
 
-- [ ] Step 3 — Persistent toolbar and document status
+- [x] Step 3 — Persistent toolbar and document status
   - Organize selection tools, Undo/Redo, zoom/viewport, preview, save/recovery, bridge state, and current project identity with accessible labels and tooltips.
   - Verify: keyboard/component tests cover toolbar order, disabled states, status semantics, and existing operations.
 
-- [ ] Step 4 — Adaptive panel workspace
+- [x] Step 4 — Adaptive panel workspace
   - Make the left/right panels collapsible and width-aware, preserve the canvas stage, and expose stable extension slots for UX2 layers/insertion and UX3 agent activity.
   - Verify: viewport tests cover panel toggles, narrow-window layout, focus restoration, and no canvas interaction regression.
 
-- [ ] Step 5 — Integrated workspace quality proof
+- [x] Step 5 — Integrated workspace quality proof
   - Run the representative project-open→canvas edit→preview→terminal round-trip→recovery path in the rebuilt shell and capture visual/a11y/performance evidence.
   - Verify: renderer suite + desktop suite + packaged evidence + fresh Chrome screenshots at desktop and constrained widths.
 

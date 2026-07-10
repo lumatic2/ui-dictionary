@@ -18,3 +18,6 @@ cd apps/agent-design; npm test -- --run
 - Do not expose benchmark metrics as primary product status.
 - Do not introduce silent autosave/recovery claims unsupported by the host.
 
+## Evidence — 2026-07-11
+- Persistent toolbar exposes panel toggles, Undo/Redo, save/reload, bounded zoom, preview, Explorer, project identity, and non-color status.
+- Toolbar operation/component tests pass in the 19/19 renderer suite. Implementation: `40f3f0d`.

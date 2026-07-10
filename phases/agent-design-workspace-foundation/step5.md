@@ -20,3 +20,7 @@ cd ../agent-design-desktop; npm test; npm run verify:package; npm run verify:pac
 - Do not substitute dev-server screenshots for packaged evidence.
 - The prior Microsoft IME waiver remains an explicit waiver, not a pass.
 
+## Evidence — 2026-07-11
+- Renderer 19/19, renderer production build, desktop 42/42, package 5 artifacts/5 resources/9 fuses, and packaged evidence PASS.
+- Fresh system Chrome: Agent Design title, expected workspace landmarks, 2560px viewport, zero horizontal overflow; visual screenshot inspected.
+- Packaged performance remains 5k p95 11.5ms, restart drift 0, watcher 130.2ms; IME remains explicitly user-waived.
