@@ -25,12 +25,14 @@ Milestone: AUC0 (`ROADMAP.md`, active)
 
 ## Step tree
 
-- [ ] Step 1 — benchmark contract + representative fixture corpus: frame/component/text/group/instance/variant/responsive state를 포함한 1k/5k/10k scene과 operation trace, metric JSON schema, screenshot baselines를 만든다. (verify: `npm run benchmark:canvas -- --candidate fixture-contract`가 schema/fixture self-check PASS)
-- [ ] Step 2 — DOM/React + editor-overlay baseline experiment. canonical nodes→semantic DOM, overlay selection/hit-test, drag/resize/zoom, source mapping을 측정한다. (artifact: experiment; verify: shared benchmark happy/failure paths + Korean IME + screenshot evidence)
-- [ ] Step 3 — DOM/React content + WebGPU viewport/selection/guides experiment. DOM production fidelity를 유지하며 WebGPU가 viewport/overlay 성능을 실제로 개선하는지 측정한다. (artifact: experiment; verify: same fixture/operation trace, WebGPU unavailable fallback 포함)
-- [ ] Step 4 — SVG scenegraph + embedded DOM experiment. vector precision/zoom과 interactive UI/IME/accessibility의 경계를 측정한다. (artifact: experiment; verify: same fixture + foreignObject/embedded DOM failure modes)
-- [ ] Step 5 — CanvasKit/custom WebGPU mini-engine experiment. geometry/hit-test/render hot path 이득과 text/layout/a11y/source-roundtrip 비용을 측정한다. (artifact: experiment; verify: same fixture + unsupported browser/GPU fallback)
+- [x] Step 1 — benchmark contract + representative fixture corpus: frame/component/text/group/instance/variant/responsive state를 포함한 1k/5k/10k scene과 operation trace, metric JSON schema, screenshot baselines를 만든다. (verify: experiment-local `npm run benchmark` + `npm run validate:results` PASS)
+- [x] Step 2 — DOM/React + editor-overlay baseline experiment. canonical nodes→semantic DOM, overlay selection/hit-test, drag/resize/zoom, source mapping을 측정한다. (artifact: experiment; verify: shared benchmark happy/failure paths + Korean IME + screenshot evidence)
+- [x] Step 3 — DOM/React content + WebGPU viewport/selection/guides experiment. DOM production fidelity를 유지하며 WebGPU가 viewport/overlay 성능을 실제로 개선하는지 측정한다. (artifact: experiment; verify: same fixture/operation trace, WebGPU unavailable fallback 포함)
+- [x] Step 4 — SVG scenegraph + embedded DOM experiment. vector precision/zoom과 interactive UI/IME/accessibility의 경계를 측정한다. (artifact: experiment; verify: same fixture + foreignObject/embedded DOM failure modes)
+- [x] Step 5 — CanvasKit/custom WebGPU mini-engine experiment. geometry/hit-test/render hot path 이득과 text/layout/a11y/source-roundtrip 비용을 측정한다. (artifact: experiment; verify: same fixture + unsupported browser/GPU fallback)
 - [ ] Step 6 — comparative report + engine ADR: metric table, qualitative correctness, complexity/security/packaging cost, fit/non-fit, hot-path migration trigger를 종합하고 사용자 선택을 기록한다. (verify: 네 experiment 4/4 + report source links + ADR decision, 결론 전 사용자 gate)
+
+Step 6 status: comparative report and 4/4 experiment evidence complete. Waiting at the required user renderer-selection gate before authoring the decision ADR.
 
 ## Quality budgets
 
