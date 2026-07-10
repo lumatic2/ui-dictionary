@@ -180,8 +180,8 @@ const atlasItems = [
 
 type AtlasItemId = (typeof atlasItems)[number]["id"]
 
-/** Atlas cards still gated from production — see AtlasDemo. "landing" now renders HeroCompositionDemo (dev-only pending CF2 milestone gate); the rest still render AtlasContentPlaceholder. Hidden in production per site-blueprint.md "Production Exposure Policy". */
-const placeholderAtlasItemIds: readonly AtlasItemId[] = ["landing", "command", "commerce", "mobile"]
+/** Atlas cards gated from production until they pass the site-blueprint.md completion criteria. Empty since CF2: all twelve cards ship real interactive demos. */
+const placeholderAtlasItemIds: readonly AtlasItemId[] = []
 
 type CursorFieldCell = {
   id: number
@@ -240,7 +240,7 @@ export function HomePage({ onNavigate, onSearch, filter, terms }: HomePageProps)
         </div>
       </section>
 
-      {SHOW_UNFILLED && <DarkInversionSection />}
+      <DarkInversionSection />
 
       <Footer onNavigate={onNavigate} />
     </div>

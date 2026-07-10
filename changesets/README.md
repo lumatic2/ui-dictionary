@@ -40,3 +40,4 @@
 | 38 | 20260710-docs-shell-gate-open | 2026-07-10 | Foundations and Agent Recipes shell gates open with leak regression evidence | 5/5 | complete |
 | 39 | 20260710-atlas-cards-command-commerce-mobile | 2026-07-10 | Interactive command, commerce, and mobile atlas card demos behind gate | 4/4 | complete |
 | 40 | 20260710-dashboard-section-demo | 2026-07-10 | Token-based product operations dashboard section demo behind gate | 3/3 | complete |
+| 41 | 20260710-showcase-gate-open | 2026-07-10 | Showcase atlas cards and dashboard section open to production after per-card quality review | 4/5 | in_progress |
