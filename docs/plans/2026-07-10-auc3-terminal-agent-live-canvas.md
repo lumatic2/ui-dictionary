@@ -2,7 +2,7 @@
 
 Date: 2026-07-10
 Milestone: AUC3 (`ROADMAP.md`, active planning gate)
-Status: awaiting execution approval
+Status: completed — all five steps, ledger, dual-CLI roundtrip, and system Chrome live-sync gates passed
 
 ## Hierarchy
 
@@ -32,23 +32,23 @@ Status: awaiting execution approval
 
 ## Step tree
 
-- [ ] Step 1 — Local bridge and session protocol
+- [x] Step 1 — Local bridge and session protocol
   - pure engine과 loopback bridge를 만들고 project root, ephemeral session token, revision, event cursor, actor, transaction ID 계약을 고정한다.
   - Verify: token/scope rejection, optimistic revision conflict, reconnect replay, loopback-only integration tests.
 
-- [ ] Step 2 — Codex and Claude terminal MCP adapters
+- [x] Step 2 — Codex and Claude terminal MCP adapters
   - 동일 stdio adapter를 두 CLI가 repo/session 단위로 연결하고 context/query/mutation/verify/undo tools를 발견하게 한다.
   - Verify: deterministic stdio client contract tests + Codex/Claude 각각 tool discovery/connection smoke.
 
-- [ ] Step 3 — Atomic auto-apply, exact audit, and Undo
+- [x] Step 3 — Atomic auto-apply, exact audit, and Undo
   - trusted MCP mutation을 별도 Approve click 없이 적용하되 exact diff와 audit/history를 한 transaction으로 남긴다.
   - Verify: stale revision/hash rejection, validation failure rollback, one transaction→one history entry, exact Undo restoration.
 
-- [ ] Step 4 — Canvas live sync and source watcher reverse sync
+- [x] Step 4 — Canvas live sync and source watcher reverse sync
   - canvas가 WebSocket event를 받아 bridge acknowledgement 후 p95 100ms 안에 보이고, 직접 source edit은 p95 300ms 안에 반영되게 한다.
   - Verify: reconnect/cursor replay, watcher echo suppression, forced disconnect recovery, browser canvas/source convergence.
 
-- [ ] Step 5 — Dual-CLI fresh React roundtrip proof
+- [x] Step 5 — Dual-CLI fresh React roundtrip proof
   - Codex/Claude actor가 같은 fresh React project를 순차·충돌 상황에서 수정하고 canvas/source/document가 일치함을 증명한다.
   - Verify: actual CLI discovery smoke when available, repeatable protocol E2E, conflict/crash/reconnect, screenshot and drift evidence.
 

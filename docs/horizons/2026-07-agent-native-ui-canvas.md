@@ -44,11 +44,13 @@ Evidence: `phases/agent-design-direct-manipulation/` + interaction benchmark + d
 
 Result: canonical selection/move/resize/reparent/reorder, responsive constraints, typed properties/tokens/modes/variants, Korean text transaction, WebGPU/DOM fallback continuity, and 5k interaction/a11y evidence completed. The Windows Microsoft IME manual pass was explicitly waived by the user and remains recorded as unverified rather than passed.
 
-### AUC3 - Terminal Agent Live Canvas Round-trip — active
+### AUC3 - Terminal Agent Live Canvas Round-trip — completed
 
 DoD: 사용자가 별도 terminal에서 실행한 Codex CLI와 Claude CLI가 project-scoped local bridge/MCP에 연결된다. trusted tool mutation은 canonical document와 React source에 원자적으로 auto-apply되고 WebSocket canvas에 즉시 보이며, direct source edit도 watcher를 통해 reverse sync된다. exact diff/history/Undo, conflict/reconnect recovery, actual dual-CLI discovery smoke, React code↔canvas structure/pixel drift gate를 통과한다.
 
 Evidence: `docs/plans/2026-07-10-auc3-terminal-agent-live-canvas.md` + `phases/agent-design-canvas-agent/` + fresh-project dual-CLI round-trip artifacts + failure-mode evidence.
+
+Result: one loopback bridge now serves Codex and Claude through a shared stdio MCP adapter; guarded operations/source patches auto-apply with exact audit and Undo; WebSocket canvas and source watcher converge live. Fresh independent system Chrome measured acknowledgement→visible p95 59.4ms and file edit→visible p95 144.4ms. Installed Codex and Claude both read the fresh project context at revision 4.
 
 ### AUC4 - Desktop Productization And Quality Gate — pending
 

@@ -28,7 +28,7 @@
       "step": 4,
       "name": "canvas-live-sync-file-watcher",
       "status": "completed",
-      "summary": "Connected the browser canvas to authenticated WebSocket snapshots with cursor replay/recovery, routed connected human operations back through bridge authority, added loopback-only CORS, and implemented allowlisted Node source watching with debounce, supported JSX stable-ID reconciliation, verification, audit, and bridge-write echo suppression. System Chrome live proof passed 20/20 revisions with agent ack→visible p95 52.2ms, file edit→visible p95 107.6ms, zero watcher/console errors, and visual screenshot evidence.",
+      "summary": "Connected the browser canvas to authenticated WebSocket snapshots with cursor replay/recovery, routed connected human operations back through bridge authority, added loopback-only CORS, and implemented allowlisted Node source watching with debounce, supported JSX stable-ID reconciliation, verification, audit, and bridge-write echo suppression. Fresh independent system Chrome proof passed 20/20 revisions with agent ack→visible p95 59.4ms, file edit→visible p95 144.4ms, zero watcher/console errors, and visual screenshot evidence.",
       "completed_at": "2026-07-10T23:40:00+09:00"
     },
     {

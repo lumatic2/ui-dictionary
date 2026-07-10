@@ -13,8 +13,8 @@
 - `cd apps/agent-design-bridge && npm test && npm run build` — 14/14 tests and TypeScript build passed.
 - `cd apps/agent-design && npm test && npm run build` — 16/16 tests and production Vite build passed.
 - `npm run live:integration && npm run validate:live-sync` in installed system Chrome — PASS.
-- Agent bridge acknowledgement→visible p95: 52.2ms, target ≤100ms.
-- Direct file edit→visible p95: 107.6ms, target ≤300ms.
+- Fresh independent agent bridge acknowledgement→visible p95: 59.4ms, target ≤100ms.
+- Fresh independent direct file edit→visible p95: 144.4ms, target ≤300ms.
 - Final state: revision 20, cursor 20, audit entries 20, label `File update 9`, zero watcher errors, zero console errors.
 - Result: `apps/agent-design/results/live-sync-results.json`.
 - Screenshot: `apps/agent-design/results/screenshots/terminal-live-canvas.png`.

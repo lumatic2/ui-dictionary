@@ -1,7 +1,7 @@
 # ROADMAP
 
 > Last updated: 2026-07-10
-> Status: Agent-Native UI Canvas — AUC3 planning gate
+> Status: Agent-Native UI Canvas — AUC3 complete; AUC4 pending planning gate
 > North star: Build Askewly Design as both a public reference website and an agent-usable implementation system.
 > line budget: <=150
 
@@ -12,13 +12,15 @@ Goal: Agent Design를 code-native UI canvas로 만든다 — evidence-based engi
 
 ## Active Milestones
 
-<!-- harness:milestone id="AUC3" status="active" priority="P1" -->
+<!-- harness:milestone id="AUC3" status="completed" priority="P1" evidence="changesets/20260710-auc3-step5-dual-cli-proof/README.md" -->
 ### AUC3 — Terminal Agent Live Canvas Round-trip
 - DoD: user-owned Codex/Claude terminal → shared local bridge/MCP → atomic auto-apply → WebSocket canvas redraw + source watcher reverse sync + React code↔canvas drift gate.
-- Evidence: `docs/plans/2026-07-10-auc3-terminal-agent-live-canvas.md` + `phases/agent-design-canvas-agent/` + fresh-project dual-CLI round-trip evidence.
+- Evidence: changesets/20260710-auc3-step5-dual-cli-proof/README.md
 - Gap: 캔버스와 에이전트가 아직 같은 정본 code/document를 편집하지 않는다.
-- Status: [ ]
+- Status: [x]
 
+- Completed at: 2026-07-10
+- Summary: Terminal-owned Codex and Claude now share a guarded local bridge/MCP authority with atomic operations/source patches, audit/Undo, WebSocket canvas updates, watcher reverse sync, real CLI context smoke, and fresh Chrome/roundtrip evidence.
 <!-- harness:milestone id="AUC2" status="completed" priority="P1" evidence="phases/agent-design-direct-manipulation/" -->
 ### AUC2 — Direct Manipulation And Property Runtime
 - DoD: select/move/resize/reparent/reorder/guides, responsive constraints, typed props/token/mode/variant, Korean text edit + 5k interaction/a11y smoke.
