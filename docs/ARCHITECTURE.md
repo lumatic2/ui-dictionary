@@ -65,7 +65,7 @@ The desktop app is a third connected surface, not a wrapper around the website o
 - **Immediate apply:** a valid call from a trusted terminal session is the user's apply intent. It commits atomically without a second canvas approval click, then records exact diff, verification, client identity, transaction ID, and Undo history.
 - **Reverse path:** file watching catches direct agent source edits, parses the supported React contract, reconciles canonical document state, and broadcasts one deduplicated transaction back to the canvas.
 - **Conflict/recovery:** base revision and before-hash mismatches fail rather than silently last-write-win. Reconnecting canvas/MCP clients replay from the event log cursor.
-- **Packaging boundary:** AUC3 proves the daemon and adapters as local processes; AUC4 supervises and packages them behind the Windows desktop host.
+- **Packaging boundary:** Forge assembles independent main/preload, renderer, bridge, and MCP builds into an ASAR plus hashed resources. The Windows x64/Squirrel development artifacts enforce all nine Electron 43 fuse states, carry a CycloneDX component inventory, and remain explicitly unsigned with publishers and auto-update disabled.
 
 Research basis: `references/figma-product-architecture/ANALYSIS.md` + `references/nexu-io-open-design/ANALYSIS.md`. Figma contributes the canonical scenegraph/derived-state/code-layer model; OpenDesign contributes the Electron/local-engine/sandbox/agent-adapter model.
 
