@@ -13,7 +13,7 @@ import {
 } from '@askewly/canvas-core'
 import { BrowserDocumentStore } from './browserStore'
 import { CanvasSurface } from './CanvasSurface'
-import { desktopHost, type DesktopBridgeStatus, type TrustedProjectSummary } from './desktopHost'
+import { desktopHost, type DesktopBridgeStatus, type PreviewStatus, type TrustedFileSummary, type TrustedProjectSummary } from './desktopHost'
 import { PropertyInspector } from './PropertyInspector'
 import type { EditorPlaneFailure } from './editorPlaneRuntime'
 import { LiveBridgeClient, liveBridgeConfig } from './liveBridge'
@@ -46,6 +46,8 @@ export function App() {
   const [terminalCopy, setTerminalCopy] = useState<'idle' | 'codex' | 'claude' | 'error'>('idle')
   const [recentProjects, setRecentProjects] = useState<TrustedProjectSummary[]>([])
   const [activeProject, setActiveProject] = useState<TrustedProjectSummary | null>(null)
+  const [preview, setPreview] = useState<PreviewStatus | null>(null)
+  const [projectFiles, setProjectFiles] = useState<TrustedFileSummary[]>([])
   const liveConfig = useMemo(() => liveBridgeConfig(), [])
   const liveClient = useRef<LiveBridgeClient | null>(null)
   const pendingPaint = useRef<{ revision: number; started: number } | null>(null)
@@ -81,11 +83,22 @@ export function App() {
       () => { if (active) setDesktopBridge({ apiVersion: 1, state: 'failed', projectId: null, restartCount: 0, cursor: 0, revision: 0, lastErrorCode: 'HOST_STATUS_ERROR', recoveryMode: null }) },
     )
     void host.recentProjects({ apiVersion: 1 }).then((projects) => {
-      if (active) setRecentProjects(projects)
+      if (active) {
+        setRecentProjects(projects)
+        setActiveProject((current) => current ?? projects[0] ?? null)
+      }
     }, () => undefined)
     const unsubscribe = host.onBridgeStatus((next) => { if (active) setDesktopBridge(next) })
     return () => { active = false; unsubscribe() }
   }, [])
+
+  useEffect(() => {
+    const host = desktopHost()
+    if (!host || !activeProject) { setProjectFiles([]); return }
+    let active = true
+    void host.catalogFiles({ apiVersion: 1, projectId: activeProject.id }).then((files) => { if (active) setProjectFiles(files) }, () => { if (active) setProjectFiles([]) })
+    return () => { active = false }
+  }, [activeProject])
 
   const copyTerminalCommand = useCallback(async (actor: 'codex' | 'claude') => {
     const host = desktopHost()
@@ -113,6 +126,14 @@ export function App() {
     if (!host || !projectId) return
     setActiveProject(await host.openRecentProject({ apiVersion: 1, projectId }))
   }, [])
+
+  const togglePreview = useCallback(async () => {
+    const host = desktopHost()
+    if (!host || !activeProject) return
+    setPreview(preview?.visible
+      ? await host.hidePreview({ apiVersion: 1 })
+      : await host.openPreview({ apiVersion: 1, projectId: activeProject.id }))
+  }, [activeProject, preview?.visible])
 
   useEffect(() => {
     const pending = pendingPaint.current
@@ -237,6 +258,17 @@ export function App() {
             <option value="">{activeProject?.displayName ?? 'Recent projects'}</option>
             {recentProjects.map((project) => <option key={project.id} value={project.id}>{project.displayName}</option>)}
           </select>
+          <button type="button" disabled={!activeProject} onClick={() => void togglePreview()}>{preview?.visible ? 'Hide preview' : 'Preview'}</button>
+          <button type="button" disabled={!activeProject} onClick={() => activeProject && void desktopHost()?.revealProject({ apiVersion: 1, projectId: activeProject.id })}>Explorer</button>
+          <select aria-label="Project files" defaultValue="" onChange={(event) => {
+            const fileId = event.target.value
+            if (activeProject && fileId) void desktopHost()?.openFile({ apiVersion: 1, projectId: activeProject.id, fileId })
+            event.target.value = ''
+          }}>
+            <option value="">Open file</option>
+            {projectFiles.map((file) => <option key={file.id} value={file.id}>{file.label}</option>)}
+          </select>
+          <button type="button" onClick={() => void desktopHost()?.exportDiagnostics({ apiVersion: 1 })}>Diagnostics</button>
         </div>}
         <label>Nodes
           <select value={size} onChange={(event) => setSize(Number(event.target.value) as 1000 | 5000)} data-testid="fixture-size">

@@ -2,14 +2,19 @@ import { ipcMain, type IpcMainInvokeEvent } from 'electron'
 import {
   HOST_API_VERSION,
   HOST_IPC_CHANNELS,
+  parseFileActionRequest,
   parseHostRequest,
+  parsePreviewStatus,
   parseProjectSelectionResult,
-  parseTrustedProjectSummary,
   parseTerminalCommandRequest,
+  parseTrustedFileSummary,
+  parseTrustedProjectSummary,
   type BridgeStatus,
   type HostInfo,
+  type PreviewStatus,
   type ProjectSelectionResult,
   type TerminalActor,
+  type TrustedFileSummary,
   type TrustedProjectSummary,
 } from './contract'
 import { isTrustedRendererUrl } from './security'
@@ -20,6 +25,12 @@ export interface HostIpcServices {
   selectProject(): Promise<ProjectSelectionResult>
   recentProjects(): Promise<TrustedProjectSummary[]>
   openRecentProject(projectId: string): Promise<TrustedProjectSummary>
+  openPreview(projectId: string): Promise<PreviewStatus>
+  hidePreview(): PreviewStatus
+  catalogFiles(projectId: string): Promise<TrustedFileSummary[]>
+  revealProject(projectId: string): Promise<void>
+  openFile(projectId: string, fileId: string): Promise<void>
+  exportDiagnostics(): Promise<boolean>
 }
 
 const idleServices: HostIpcServices = {
@@ -39,6 +50,12 @@ const idleServices: HostIpcServices = {
   selectProject: async () => ({ canceled: true, project: null }),
   recentProjects: async () => [],
   openRecentProject: async () => { throw new Error('project service is not ready') },
+  openPreview: async () => { throw new Error('preview service is not ready') },
+  hidePreview: () => ({ visible: false, projectId: null, state: 'idle' }),
+  catalogFiles: async () => [],
+  revealProject: async () => undefined,
+  openFile: async () => undefined,
+  exportDiagnostics: async () => false,
 }
 
 export function isTrustedIpcSender(event: IpcMainInvokeEvent): boolean {
@@ -97,6 +114,47 @@ export function registerHostIpc(appVersion: string, services: HostIpcServices = 
     return parseTrustedProjectSummary(await services.openRecentProject(request.projectId))
   })
 
+  ipcMain.handle(HOST_IPC_CHANNELS.openPreview, async (event, rawRequest): Promise<PreviewStatus> => {
+    if (!isTrustedIpcSender(event)) throw new Error('untrusted IPC sender')
+    const request = parseHostRequest(rawRequest)
+    if (!request.projectId) throw new TypeError('projectId is required')
+    return parsePreviewStatus(await services.openPreview(request.projectId))
+  })
+
+  ipcMain.handle(HOST_IPC_CHANNELS.hidePreview, (event, rawRequest): PreviewStatus => {
+    if (!isTrustedIpcSender(event)) throw new Error('untrusted IPC sender')
+    parseHostRequest(rawRequest)
+    return parsePreviewStatus(services.hidePreview())
+  })
+
+  ipcMain.handle(HOST_IPC_CHANNELS.catalogFiles, async (event, rawRequest): Promise<TrustedFileSummary[]> => {
+    if (!isTrustedIpcSender(event)) throw new Error('untrusted IPC sender')
+    const request = parseHostRequest(rawRequest)
+    if (!request.projectId) throw new TypeError('projectId is required')
+    return (await services.catalogFiles(request.projectId)).map(parseTrustedFileSummary)
+  })
+
+  ipcMain.handle(HOST_IPC_CHANNELS.revealProject, async (event, rawRequest) => {
+    if (!isTrustedIpcSender(event)) throw new Error('untrusted IPC sender')
+    const request = parseHostRequest(rawRequest)
+    if (!request.projectId) throw new TypeError('projectId is required')
+    await services.revealProject(request.projectId)
+    return Object.freeze({ opened: true })
+  })
+
+  ipcMain.handle(HOST_IPC_CHANNELS.openFile, async (event, rawRequest) => {
+    if (!isTrustedIpcSender(event)) throw new Error('untrusted IPC sender')
+    const request = parseFileActionRequest(rawRequest)
+    await services.openFile(request.projectId, request.fileId)
+    return Object.freeze({ opened: true })
+  })
+
+  ipcMain.handle(HOST_IPC_CHANNELS.exportDiagnostics, async (event, rawRequest) => {
+    if (!isTrustedIpcSender(event)) throw new Error('untrusted IPC sender')
+    parseHostRequest(rawRequest)
+    return Object.freeze({ exported: await services.exportDiagnostics() })
+  })
+
   return () => {
     ipcMain.removeHandler(HOST_IPC_CHANNELS.getHostInfo)
     ipcMain.removeHandler(HOST_IPC_CHANNELS.getBridgeStatus)
@@ -104,5 +162,11 @@ export function registerHostIpc(appVersion: string, services: HostIpcServices = 
     ipcMain.removeHandler(HOST_IPC_CHANNELS.selectProject)
     ipcMain.removeHandler(HOST_IPC_CHANNELS.recentProjects)
     ipcMain.removeHandler(HOST_IPC_CHANNELS.openRecentProject)
+    ipcMain.removeHandler(HOST_IPC_CHANNELS.openPreview)
+    ipcMain.removeHandler(HOST_IPC_CHANNELS.hidePreview)
+    ipcMain.removeHandler(HOST_IPC_CHANNELS.catalogFiles)
+    ipcMain.removeHandler(HOST_IPC_CHANNELS.revealProject)
+    ipcMain.removeHandler(HOST_IPC_CHANNELS.openFile)
+    ipcMain.removeHandler(HOST_IPC_CHANNELS.exportDiagnostics)
   }
 }

@@ -51,7 +51,7 @@ app.whenReady().then(async () => {
       popupBlocked: window.open('https://example.com') === null
     }
   })()`)
-  const expectedKeys = ['apiVersion', 'copyTerminalCommand', 'getBridgeStatus', 'getHostInfo', 'onBridgeStatus', 'openRecentProject', 'recentProjects', 'selectProject']
+  const expectedKeys = ['apiVersion', 'catalogFiles', 'copyTerminalCommand', 'exportDiagnostics', 'getBridgeStatus', 'getHostInfo', 'hidePreview', 'onBridgeStatus', 'openFile', 'openPreview', 'openRecentProject', 'recentProjects', 'revealProject', 'selectProject']
   const passed =
     result.processType === 'undefined' &&
     result.requireType === 'undefined' &&

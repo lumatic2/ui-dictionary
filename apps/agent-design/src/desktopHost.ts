@@ -20,6 +20,12 @@ export interface AgentDesignDesktopHost {
   selectProject(request: { apiVersion: 1 }): Promise<ProjectSelectionResult>
   recentProjects(request: { apiVersion: 1 }): Promise<TrustedProjectSummary[]>
   openRecentProject(request: { apiVersion: 1; projectId: string }): Promise<TrustedProjectSummary>
+  openPreview(request: { apiVersion: 1; projectId: string }): Promise<PreviewStatus>
+  hidePreview(request: { apiVersion: 1 }): Promise<PreviewStatus>
+  catalogFiles(request: { apiVersion: 1; projectId: string }): Promise<TrustedFileSummary[]>
+  revealProject(request: { apiVersion: 1; projectId: string }): Promise<{ opened: true }>
+  openFile(request: { apiVersion: 1; projectId: string; fileId: string }): Promise<{ opened: true }>
+  exportDiagnostics(request: { apiVersion: 1 }): Promise<{ exported: boolean }>
 }
 
 export interface TrustedProjectSummary {
@@ -31,6 +37,17 @@ export interface TrustedProjectSummary {
 export interface ProjectSelectionResult {
   canceled: boolean
   project: TrustedProjectSummary | null
+}
+
+export interface PreviewStatus {
+  visible: boolean
+  projectId: string | null
+  state: 'idle' | 'loading' | 'ready' | 'error'
+}
+
+export interface TrustedFileSummary {
+  id: string
+  label: string
 }
 
 export function desktopHost(): AgentDesignDesktopHost | null {

@@ -1,5 +1,5 @@
 import { describe, expect, it } from 'vitest'
-import { HOST_API_VERSION, parseBridgeStatus, parseHostRequest, parseTrustedProjectSummary } from '../src/contract'
+import { HOST_API_VERSION, parseBridgeStatus, parseHostRequest, parseTrustedFileSummary, parseTrustedProjectSummary } from '../src/contract'
 
 describe('host authority contract', () => {
   it('accepts versioned opaque project and session identifiers', () => {
@@ -46,5 +46,9 @@ describe('redacted desktop responses', () => {
       recoveryMode: 'fresh',
       token: 'secret',
     })).toThrow(/secret|unsupported/)
+  })
+
+  it('rejects absolute paths disguised as file labels', () => {
+    expect(() => parseTrustedFileSummary({ id: 'file:bbbbbbbbbbbbbbbbbbbbbbbb', label: 'C:\\Users\\name\\App.tsx' })).toThrow('invalid trusted file label')
   })
 })

@@ -1,6 +1,6 @@
 import { createHash } from 'node:crypto'
-import { open, mkdir, readFile, realpath, rename, stat } from 'node:fs/promises'
-import { basename, isAbsolute, join, relative, resolve } from 'node:path'
+import { open, mkdir, readFile, realpath, readdir, rename, stat } from 'node:fs/promises'
+import { basename, extname, isAbsolute, join, relative, resolve } from 'node:path'
 
 interface TrustedProjectRecord {
   id: string
@@ -22,6 +22,11 @@ export interface TrustedProjectSummary {
   id: string
   displayName: string
   lastOpenedAt: string
+}
+
+export interface TrustedFileSummary {
+  id: string
+  label: string
 }
 
 function normalizedIdentityPath(path: string): string {
@@ -71,6 +76,7 @@ function parseRegistry(serialized: string): RegistryFile {
 export class TrustedProjectRegistry {
   private readonly registryPath: string
   private readonly projectsRoot: string
+  private readonly fileReferences = new Map<string, { projectId: string; relativePath: string }>()
 
   constructor(private readonly userDataRoot: string, private readonly now = () => new Date().toISOString()) {
     this.registryPath = join(userDataRoot, 'trusted-projects.json')
@@ -136,6 +142,38 @@ export class TrustedProjectRegistry {
     const candidate = await realpath(resolve(root, projectRelativePath))
     if (!contained(root, candidate)) throw new Error('PROJECT_PATH_ESCAPE')
     return candidate
+  }
+
+  async catalogSourceFiles(id: string): Promise<TrustedFileSummary[]> {
+    const root = await this.resolveRoot(id)
+    const results: TrustedFileSummary[] = []
+    const allowed = new Set(['.css', '.html', '.jsx', '.json', '.ts', '.tsx'])
+    const excluded = new Set(['.git', '.next', 'build', 'dist', 'node_modules'])
+    const visit = async (directory: string, depth: number): Promise<void> => {
+      if (depth > 8 || results.length >= 500) return
+      for (const entry of await readdir(directory, { withFileTypes: true })) {
+        if (results.length >= 500) break
+        if (entry.isSymbolicLink() || excluded.has(entry.name)) continue
+        const absolute = join(directory, entry.name)
+        if (entry.isDirectory()) {
+          await visit(absolute, depth + 1)
+          continue
+        }
+        if (!entry.isFile() || !allowed.has(extname(entry.name).toLowerCase())) continue
+        const relativePath = relative(root, await this.resolveExisting(id, relative(root, absolute))).replaceAll('\\', '/')
+        const fileId = `file:${createHash('sha256').update(`${id}\0${relativePath}`).digest('hex').slice(0, 24)}`
+        this.fileReferences.set(fileId, { projectId: id, relativePath })
+        results.push(Object.freeze({ id: fileId, label: relativePath }))
+      }
+    }
+    await visit(root, 0)
+    return results
+  }
+
+  async resolveFileReference(projectId: string, fileId: string): Promise<string> {
+    const reference = this.fileReferences.get(fileId)
+    if (!reference || reference.projectId !== projectId) throw new Error('FILE_NOT_REGISTERED')
+    return this.resolveExisting(projectId, reference.relativePath)
   }
 
   dataRoot(id: string): string {

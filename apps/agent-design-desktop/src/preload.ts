@@ -3,15 +3,21 @@ import {
   HOST_API_VERSION,
   HOST_IPC_CHANNELS,
   parseBridgeStatus,
+  parseFileActionRequest,
   parseHostRequest,
+  parsePreviewStatus,
   parseProjectSelectionResult,
   parseTerminalCommandRequest,
+  parseTrustedFileSummary,
   parseTrustedProjectSummary,
   type BridgeStatus,
   type HostInfo,
   type HostRequest,
+  type FileActionRequest,
+  type PreviewStatus,
   type ProjectSelectionResult,
   type TerminalCommandRequest,
+  type TrustedFileSummary,
   type TrustedProjectSummary,
 } from './contract'
 
@@ -47,6 +53,32 @@ const hostApi = Object.freeze({
     const parsed = parseHostRequest(request)
     if (!parsed.projectId) throw new TypeError('projectId is required')
     return parseTrustedProjectSummary(await ipcRenderer.invoke(HOST_IPC_CHANNELS.openRecentProject, parsed))
+  },
+  async openPreview(request: HostRequest): Promise<PreviewStatus> {
+    const parsed = parseHostRequest(request)
+    if (!parsed.projectId) throw new TypeError('projectId is required')
+    return parsePreviewStatus(await ipcRenderer.invoke(HOST_IPC_CHANNELS.openPreview, parsed))
+  },
+  async hidePreview(request: HostRequest): Promise<PreviewStatus> {
+    return parsePreviewStatus(await ipcRenderer.invoke(HOST_IPC_CHANNELS.hidePreview, parseHostRequest(request)))
+  },
+  async catalogFiles(request: HostRequest): Promise<TrustedFileSummary[]> {
+    const parsed = parseHostRequest(request)
+    if (!parsed.projectId) throw new TypeError('projectId is required')
+    const value = await ipcRenderer.invoke(HOST_IPC_CHANNELS.catalogFiles, parsed) as unknown
+    if (!Array.isArray(value)) throw new TypeError('trusted file response must be an array')
+    return value.map(parseTrustedFileSummary)
+  },
+  async revealProject(request: HostRequest): Promise<{ opened: true }> {
+    const parsed = parseHostRequest(request)
+    if (!parsed.projectId) throw new TypeError('projectId is required')
+    return ipcRenderer.invoke(HOST_IPC_CHANNELS.revealProject, parsed) as Promise<{ opened: true }>
+  },
+  async openFile(request: FileActionRequest): Promise<{ opened: true }> {
+    return ipcRenderer.invoke(HOST_IPC_CHANNELS.openFile, parseFileActionRequest(request)) as Promise<{ opened: true }>
+  },
+  async exportDiagnostics(request: HostRequest): Promise<{ exported: boolean }> {
+    return ipcRenderer.invoke(HOST_IPC_CHANNELS.exportDiagnostics, parseHostRequest(request)) as Promise<{ exported: boolean }>
   },
 })
 

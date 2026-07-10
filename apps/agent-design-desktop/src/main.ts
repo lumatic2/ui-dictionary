@@ -1,9 +1,13 @@
-import { app, BrowserWindow, clipboard, dialog, session } from 'electron'
+import { app, BrowserWindow, clipboard, dialog, session, shell } from 'electron'
+import { open, rename, rm } from 'node:fs/promises'
 import { join, resolve } from 'node:path'
 import { BridgeSupervisor } from './bridge-supervisor'
 import { ElectronBridgeProcessFactory } from './electron-bridge-process'
 import { HOST_IPC_CHANNELS } from './contract'
+import { createDiagnosticBundle } from './diagnostics'
 import { registerHostIpc } from './ipc'
+import { GuardedOsActions } from './os-actions'
+import { PreviewManager, registerPreviewScheme } from './preview-manager'
 import { ProjectController } from './project-controller'
 import { TrustedProjectRegistry } from './project-registry'
 import { installAppProtocol, registerAppScheme } from './protocol'
@@ -15,7 +19,25 @@ import {
 } from './security'
 
 registerAppScheme()
+registerPreviewScheme()
 app.enableSandbox()
+
+async function writeDiagnosticExport(path: string, content: string): Promise<void> {
+  const temporary = `${path}.tmp-${process.pid}-${Date.now()}`
+  const handle = await open(temporary, 'wx')
+  try {
+    await handle.writeFile(content, 'utf8')
+    await handle.sync()
+  } finally {
+    await handle.close()
+  }
+  try {
+    await rename(temporary, path)
+  } catch (error) {
+    await rm(temporary, { force: true })
+    throw error
+  }
+}
 
 function bridgeChildEntry(): string {
   return app.isPackaged
@@ -35,10 +57,11 @@ function rendererRoot(): string {
     : resolve(__dirname, '..', '..', 'agent-design', 'dist')
 }
 
-async function createMainWindow(): Promise<BrowserWindow> {
+async function createMainWindow(setup?: (window: BrowserWindow) => void): Promise<BrowserWindow> {
   // Factory output is locked and runtime-verified; the legacy scanner cannot follow it.
   const window = new BrowserWindow(createMainWindowOptions(join(__dirname, 'preload.cjs'))) // eng-disable CONTEXT_ISOLATION_JS_CHECK
   configureWindowSecurity(window)
+  setup?.(window)
   window.once('ready-to-show', () => window.show())
   await window.loadURL(`${APP_ORIGIN}/index.html`)
   return window
@@ -51,6 +74,8 @@ app.whenReady().then(async () => {
   const registry = new TrustedProjectRegistry(app.getPath('userData'))
   await registry.initialize()
   const projects = new ProjectController(registry, supervisor)
+  const osActions = new GuardedOsActions(registry, (path) => shell.openPath(path))
+  let preview: PreviewManager | null = null
   registerHostIpc(app.getVersion(), {
     bridgeStatus: () => supervisor.status(),
     copyTerminalCommand: (actor) => clipboard.writeText(supervisor.terminalCommand(actor)),
@@ -64,6 +89,30 @@ app.whenReady().then(async () => {
     },
     recentProjects: () => projects.recent(),
     openRecentProject: (projectId) => projects.openRecent(projectId),
+    openPreview: (projectId) => {
+      if (!preview) throw new Error('preview is not ready')
+      return preview.open(projectId)
+    },
+    hidePreview: () => preview?.hide() ?? { visible: false, projectId: null, state: 'idle' },
+    catalogFiles: (projectId) => osActions.catalogFiles(projectId),
+    revealProject: (projectId) => osActions.revealProject(projectId),
+    openFile: (projectId, fileId) => osActions.openFile(projectId, fileId),
+    exportDiagnostics: async () => {
+      const parent = BrowserWindow.getFocusedWindow()
+      const options: Electron.SaveDialogOptions = { title: 'Export redacted diagnostics', defaultPath: `agent-design-diagnostics-${new Date().toISOString().slice(0, 10)}.json` }
+      const result = parent ? await dialog.showSaveDialog(parent, options) : await dialog.showSaveDialog(options)
+      if (result.canceled || !result.filePath) return false
+      const trustedProjectCount = (await projects.recent()).length
+      await writeDiagnosticExport(result.filePath, createDiagnosticBundle({
+        appVersion: app.getVersion(),
+        electronVersion: process.versions.electron,
+        platform: process.platform,
+        arch: process.arch,
+        bridge: supervisor.status(),
+        trustedProjectCount,
+      }))
+      return true
+    },
   })
   supervisor.subscribe((status) => {
     for (const window of BrowserWindow.getAllWindows()) {
@@ -79,10 +128,10 @@ app.whenReady().then(async () => {
   })
   const [recent] = await projects.recent()
   if (recent) await projects.openRecent(recent.id).catch((error: unknown) => console.error('Recent project recovery failed', error))
-  await createMainWindow()
+  await createMainWindow((window) => { preview = new PreviewManager(window, registry) })
 
   app.on('activate', () => {
-    if (BrowserWindow.getAllWindows().length === 0) void createMainWindow()
+    if (BrowserWindow.getAllWindows().length === 0) void createMainWindow((window) => { preview = new PreviewManager(window, registry) })
   })
 }).catch((error: unknown) => {
   console.error('Agent Design desktop failed to start', error)

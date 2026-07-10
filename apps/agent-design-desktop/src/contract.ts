@@ -8,6 +8,12 @@ export const HOST_IPC_CHANNELS = Object.freeze({
   selectProject: 'agent-design:project:select',
   recentProjects: 'agent-design:project:recent',
   openRecentProject: 'agent-design:project:open-recent',
+  openPreview: 'agent-design:preview:open',
+  hidePreview: 'agent-design:preview:hide',
+  catalogFiles: 'agent-design:os:catalog-files',
+  revealProject: 'agent-design:os:reveal-project',
+  openFile: 'agent-design:os:open-file',
+  exportDiagnostics: 'agent-design:diagnostics:export',
 })
 
 export type TerminalActor = 'codex' | 'claude'
@@ -52,6 +58,20 @@ export type TrustedProjectSummary = Readonly<{
 export type ProjectSelectionResult = Readonly<{
   canceled: boolean
   project: TrustedProjectSummary | null
+}>
+
+export type PreviewStatus = Readonly<{
+  visible: boolean
+  projectId: string | null
+  state: 'idle' | 'loading' | 'ready' | 'error'
+}>
+
+export type TrustedFileSummary = Readonly<{ id: string; label: string }>
+
+export type FileActionRequest = Readonly<{
+  apiVersion: typeof HOST_API_VERSION
+  projectId: string
+  fileId: string
 }>
 
 const REQUEST_KEYS = new Set(['apiVersion', 'projectId', 'sessionId'])
@@ -138,4 +158,31 @@ export function parseProjectSelectionResult(value: unknown): ProjectSelectionRes
   const project = value.project === null ? null : parseTrustedProjectSummary(value.project)
   if (value.canceled !== (project === null)) throw new TypeError('inconsistent project selection result')
   return Object.freeze({ canceled: value.canceled, project })
+}
+
+export function parsePreviewStatus(value: unknown): PreviewStatus {
+  if (!isRecord(value) || typeof value.visible !== 'boolean') throw new TypeError('invalid preview status')
+  if (Object.keys(value).some((key) => key !== 'visible' && key !== 'projectId' && key !== 'state')) throw new TypeError('preview status contains an unsupported field')
+  if (value.projectId !== null && (typeof value.projectId !== 'string' || !/^project:[a-f0-9]{24}$/.test(value.projectId))) throw new TypeError('invalid preview project')
+  if (value.state !== 'idle' && value.state !== 'loading' && value.state !== 'ready' && value.state !== 'error') throw new TypeError('invalid preview state')
+  return Object.freeze(value as unknown as PreviewStatus)
+}
+
+export function parseTrustedFileSummary(value: unknown): TrustedFileSummary {
+  if (!isRecord(value) || Object.keys(value).some((key) => key !== 'id' && key !== 'label')) throw new TypeError('invalid trusted file summary')
+  if (typeof value.id !== 'string' || !/^file:[a-f0-9]{24}$/.test(value.id)) throw new TypeError('invalid trusted file id')
+  if (typeof value.label !== 'string' || isAbsoluteLike(value.label) || value.label.includes('..')) throw new TypeError('invalid trusted file label')
+  return Object.freeze(value as unknown as TrustedFileSummary)
+}
+
+function isAbsoluteLike(value: string): boolean {
+  return /^[A-Za-z]:[\\/]/.test(value) || value.startsWith('/') || value.startsWith('\\\\')
+}
+
+export function parseFileActionRequest(value: unknown): FileActionRequest {
+  if (!isRecord(value) || Object.keys(value).some((key) => key !== 'apiVersion' && key !== 'projectId' && key !== 'fileId')) throw new TypeError('invalid file action request')
+  if (value.apiVersion !== HOST_API_VERSION) throw new TypeError('unsupported host API version')
+  if (typeof value.projectId !== 'string' || !/^project:[a-f0-9]{24}$/.test(value.projectId)) throw new TypeError('invalid project id')
+  if (typeof value.fileId !== 'string' || !/^file:[a-f0-9]{24}$/.test(value.fileId)) throw new TypeError('invalid file id')
+  return Object.freeze(value as unknown as FileActionRequest)
 }

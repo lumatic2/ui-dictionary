@@ -30,6 +30,12 @@ describe('desktop bridge surface', () => {
       selectProject: vi.fn(async () => ({ canceled: false, project: { id: 'project:aaaaaaaaaaaaaaaaaaaaaaaa', displayName: 'fixture', lastOpenedAt: '2026-07-11T01:00:00.000Z' } })),
       recentProjects: vi.fn(async () => []),
       openRecentProject: vi.fn(async () => ({ id: 'project:aaaaaaaaaaaaaaaaaaaaaaaa', displayName: 'fixture', lastOpenedAt: '2026-07-11T01:00:00.000Z' })),
+      openPreview: vi.fn(async (request) => ({ visible: true, projectId: request.projectId, state: 'ready' as const })),
+      hidePreview: vi.fn(async () => ({ visible: false, projectId: null, state: 'idle' as const })),
+      catalogFiles: vi.fn(async () => [{ id: 'file:bbbbbbbbbbbbbbbbbbbbbbbb', label: 'src/App.tsx' }]),
+      revealProject: vi.fn(async () => ({ opened: true as const })),
+      openFile: vi.fn(async () => ({ opened: true as const })),
+      exportDiagnostics: vi.fn(async () => ({ exported: true })),
     }
     window.agentDesignHost = host
 
@@ -44,5 +50,14 @@ describe('desktop bridge surface', () => {
     fireEvent.click(view.getByRole('button', { name: 'Open project' }))
     await waitFor(() => expect(host.selectProject).toHaveBeenCalledWith({ apiVersion: 1 }))
     expect(view.getByRole('combobox', { name: 'Recent projects' }).textContent).toContain('fixture')
+    fireEvent.click(view.getByRole('button', { name: 'Preview' }))
+    fireEvent.click(view.getByRole('button', { name: 'Explorer' }))
+    fireEvent.click(view.getByRole('button', { name: 'Diagnostics' }))
+    await waitFor(() => expect(host.openPreview).toHaveBeenCalledWith({ apiVersion: 1, projectId: 'project:aaaaaaaaaaaaaaaaaaaaaaaa' }))
+    expect(host.revealProject).toHaveBeenCalledWith({ apiVersion: 1, projectId: 'project:aaaaaaaaaaaaaaaaaaaaaaaa' })
+    expect(host.exportDiagnostics).toHaveBeenCalledWith({ apiVersion: 1 })
+    await waitFor(() => expect(view.getByRole('combobox', { name: 'Project files' }).textContent).toContain('src/App.tsx'))
+    fireEvent.change(view.getByRole('combobox', { name: 'Project files' }), { target: { value: 'file:bbbbbbbbbbbbbbbbbbbbbbbb' } })
+    expect(host.openFile).toHaveBeenCalledWith({ apiVersion: 1, projectId: 'project:aaaaaaaaaaaaaaaaaaaaaaaa', fileId: 'file:bbbbbbbbbbbbbbbbbbbbbbbb' })
   })
 })

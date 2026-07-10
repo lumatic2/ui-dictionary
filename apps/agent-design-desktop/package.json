@@ -13,6 +13,8 @@
     "test:terminal-bootstrap": "vitest run test/terminal-command.test.ts",
     "test:project-trust": "vitest run test/project-registry.test.ts",
     "test:recovery": "npm --prefix ../agent-design-bridge test -- src/desktop-recovery.test.ts",
+    "test:preview-sandbox": "vitest run test/preview-security.test.ts && node scripts/run-preview-security-smoke.mjs",
+    "test:diagnostics": "vitest run test/os-actions.test.ts test/diagnostics.test.ts",
     "verify:security": "node scripts/verify-security.mjs"
   },
   "devDependencies": {
