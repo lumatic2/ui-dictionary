@@ -9,6 +9,8 @@ button, select { font: inherit; }
 .eyebrow { color: #6d28d9 !important; font-size: 10px !important; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; }
 .app-header label { display: grid; gap: 5px; color: #64748b; font-size: 11px; }
 .header-controls { display: flex; gap: 10px; }
+.project-controls { display: flex; align-items: end; gap: 6px; }
+.project-controls button { height: 34px; border: 1px solid #cbd5e1; border-radius: 8px; padding: 0 10px; background: white; color: #334155; font-size: 11px; }
 .app-header select { border: 1px solid #cbd5e1; border-radius: 8px; padding: 8px 30px 8px 10px; background: white; color: #172033; }
 .document-actions { height: 42px; display: flex; align-items: center; gap: 7px; }
 .document-actions button { padding: 6px 10px; border: 1px solid #cbd5e1; border-radius: 7px; background: white; color: #334155; font-size: 11px; }

@@ -1,5 +1,7 @@
 import { isAbsolute } from 'node:path'
 import type { CanvasDocument } from '@askewly/canvas-core'
+import { createSnapshot } from '@askewly/agent-design-engine'
+import { DesktopRecoveryStore } from './desktop-recovery.js'
 import { startBridge, type RunningBridge } from './server.js'
 
 interface PortMessageEvent {
@@ -22,6 +24,7 @@ type DesktopBridgeStart = Readonly<{
   type: 'start'
   projectId: string
   projectRoot: string
+  recoveryRoot: string
   document: CanvasDocument
 }>
 
@@ -46,6 +49,9 @@ function parseStart(value: unknown): DesktopBridgeStart {
   if (typeof input.projectRoot !== 'string' || !isAbsolute(input.projectRoot)) {
     throw new TypeError('bridge child requires an absolute project root')
   }
+  if (typeof input.recoveryRoot !== 'string' || !isAbsolute(input.recoveryRoot)) {
+    throw new TypeError('bridge child requires an absolute recovery root')
+  }
   if (typeof input.document !== 'object' || input.document === null) {
     throw new TypeError('bridge child requires a canvas document')
   }
@@ -54,10 +60,19 @@ function parseStart(value: unknown): DesktopBridgeStart {
 
 async function start(input: DesktopBridgeStart): Promise<void> {
   if (running || stopping) throw new Error('bridge child is already started')
+  const recovery = new DesktopRecoveryStore(input.recoveryRoot)
+  const recovered = recovery.recover()
+  if (!recovered) recovery.commit(createSnapshot(input.document, 0), [])
+  const recoveryMode = recovered?.mode ?? 'fresh'
+  const initialSnapshot = recovered?.snapshot ?? createSnapshot(input.document, 0)
   running = await startBridge({
     projectRoot: input.projectRoot,
-    document: input.document,
-    watchSources: true,
+    document: initialSnapshot.document,
+    initialCursor: initialSnapshot.cursor,
+    initialAudits: recovered?.audits ?? [],
+    readOnly: recoveryMode === 'read-only',
+    persistenceSink: (state) => recovery.commit(state.snapshot, state.audits),
+    watchSources: recoveryMode !== 'read-only',
     onWatcherError: () => post({ type: 'watcher-error', code: 'SOURCE_WATCHER_ERROR' }),
   })
   const snapshot = running.session.snapshot()
@@ -69,6 +84,7 @@ async function start(input: DesktopBridgeStart): Promise<void> {
     token: running.session.token,
     cursor: snapshot.cursor,
     revision: snapshot.revision,
+    recoveryMode,
   })
 }
 

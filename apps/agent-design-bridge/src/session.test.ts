@@ -139,4 +139,23 @@ describe('bridge session', () => {
     expect(session.replay(0)).toMatchObject({ mode: 'events', events: [], cursor: 0 })
     expect(session.auditLog()).toEqual([])
   })
+
+  it('does not publish or mutate an operation when desktop recovery persistence fails', () => {
+    const session = new BridgeSession({
+      projectRoot: root(),
+      document: createDocumentFixture(1000),
+      persistenceSink: () => { throw new Error('snapshot disk full') },
+    })
+    const before = session.snapshot()
+    expect(() => session.commit(input(session, 'tx-operation-recovery-fail'))).toThrowError('snapshot disk full')
+    expect(session.snapshot()).toEqual(before)
+    expect(session.auditLog()).toEqual([])
+    expect(session.replay(0)).toMatchObject({ mode: 'events', events: [], cursor: 0 })
+  })
+
+  it('rejects every mutation in read-only recovery mode', () => {
+    const session = new BridgeSession({ projectRoot: root(), document: createDocumentFixture(1000), readOnly: true })
+    expect(() => session.commit(input(session, 'tx-read-only'))).toThrowError(expect.objectContaining({ status: 423 }))
+    expect(session.snapshot()).toMatchObject({ revision: 0, cursor: 0 })
+  })
 })

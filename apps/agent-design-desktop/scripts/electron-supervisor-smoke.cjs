@@ -55,15 +55,36 @@ app.whenReady().then(async () => {
     readyTimeoutMs: 10000,
     stopTimeoutMs: 2000,
   })
-  supervisor.start({ projectId: 'project:smoke', projectRoot: root, document })
+  supervisor.start({ projectId: 'project:smoke', projectRoot: root, recoveryRoot: path.join(root, 'recovery'), document })
   const ready = await waitForState(supervisor, 'ready')
+  const connection = supervisor.mainConnection()
+  const headers = { authorization: `Bearer ${connection.token}`, 'content-type': 'application/json' }
+  const snapshot = await (await fetch(`${connection.bridgeUrl}/snapshot`, { headers })).json()
+  const transaction = await fetch(`${connection.bridgeUrl}/transactions`, {
+    method: 'POST',
+    headers,
+    body: JSON.stringify({
+      id: 'desktop-recovery-smoke',
+      actor: 'codex',
+      baseRevision: snapshot.revision,
+      beforeHash: snapshot.hash,
+      operations: [{ id: 'desktop-recovery-op', at: '2026-07-11T01:00:00.000Z', type: 'update-node', nodeId: 'root', patch: { name: 'Recovered root' } }],
+    }),
+  })
+  if (!transaction.ok) throw new Error(`bridge transaction failed: ${transaction.status}`)
   supervisor.requestHealth()
   const codex = supervisor.terminalCommand('codex')
   const claude = supervisor.terminalCommand('claude')
   const redacted = !/token|127\.0\.0\.1|cli\.js/i.test(JSON.stringify(ready))
   await supervisor.stop()
-  const passed = redacted && supervisor.status().state === 'idle' && codex.includes('codex -c') && claude.includes('--strict-mcp-config')
-  process.stdout.write(`${JSON.stringify({ passed, ready, stopped: supervisor.status(), commands: { codex: codex.startsWith('codex -c'), claude: claude.startsWith('claude --strict-mcp-config') } })}\n`)
+  const recoveredSupervisor = new BridgeSupervisor(new ElectronBridgeProcessFactory(childEntry), adapterPath, {
+    restartDelaysMs: [10], readyTimeoutMs: 10000, stopTimeoutMs: 2000,
+  })
+  recoveredSupervisor.start({ projectId: 'project:smoke', projectRoot: root, recoveryRoot: path.join(root, 'recovery'), document })
+  const recovered = await waitForState(recoveredSupervisor, 'ready')
+  await recoveredSupervisor.stop()
+  const passed = redacted && supervisor.status().state === 'idle' && recovered.recoveryMode === 'recovered' && recovered.revision === 1 && recovered.cursor === 1 && codex.includes('codex -c') && claude.includes('--strict-mcp-config')
+  process.stdout.write(`${JSON.stringify({ passed, ready, recovered, stopped: recoveredSupervisor.status(), commands: { codex: codex.startsWith('codex -c'), claude: claude.startsWith('claude --strict-mcp-config') } })}\n`)
   app.once('will-quit', () => { try { rmSync(root, { recursive: true, force: true }) } catch {} })
   app.quit()
   process.exitCode = passed ? 0 : 1

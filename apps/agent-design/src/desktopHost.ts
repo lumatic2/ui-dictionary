@@ -8,6 +8,7 @@ export interface DesktopBridgeStatus {
   cursor: number
   revision: number
   lastErrorCode: string | null
+  recoveryMode: 'fresh' | 'recovered' | 'read-only' | null
 }
 
 export interface AgentDesignDesktopHost {
@@ -16,6 +17,20 @@ export interface AgentDesignDesktopHost {
   getBridgeStatus(request: { apiVersion: 1 }): Promise<DesktopBridgeStatus>
   copyTerminalCommand(request: { apiVersion: 1; actor: 'codex' | 'claude' }): Promise<{ copied: true }>
   onBridgeStatus(listener: (status: DesktopBridgeStatus) => void): () => void
+  selectProject(request: { apiVersion: 1 }): Promise<ProjectSelectionResult>
+  recentProjects(request: { apiVersion: 1 }): Promise<TrustedProjectSummary[]>
+  openRecentProject(request: { apiVersion: 1; projectId: string }): Promise<TrustedProjectSummary>
+}
+
+export interface TrustedProjectSummary {
+  id: string
+  displayName: string
+  lastOpenedAt: string
+}
+
+export interface ProjectSelectionResult {
+  canceled: boolean
+  project: TrustedProjectSummary | null
 }
 
 export function desktopHost(): AgentDesignDesktopHost | null {

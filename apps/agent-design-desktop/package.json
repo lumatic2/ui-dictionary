@@ -11,6 +11,8 @@
     "test": "vitest run",
     "test:supervisor": "vitest run test/bridge-supervisor.test.ts && node scripts/run-electron-supervisor-smoke.mjs",
     "test:terminal-bootstrap": "vitest run test/terminal-command.test.ts",
+    "test:project-trust": "vitest run test/project-registry.test.ts",
+    "test:recovery": "npm --prefix ../agent-design-bridge test -- src/desktop-recovery.test.ts",
     "verify:security": "node scripts/verify-security.mjs"
   },
   "devDependencies": {

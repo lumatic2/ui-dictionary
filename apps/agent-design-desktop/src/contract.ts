@@ -5,10 +5,14 @@ export const HOST_IPC_CHANNELS = Object.freeze({
   getBridgeStatus: 'agent-design:bridge:get-status',
   copyTerminalCommand: 'agent-design:bridge:copy-terminal-command',
   bridgeStatusChanged: 'agent-design:bridge:status-changed',
+  selectProject: 'agent-design:project:select',
+  recentProjects: 'agent-design:project:recent',
+  openRecentProject: 'agent-design:project:open-recent',
 })
 
 export type TerminalActor = 'codex' | 'claude'
 export type BridgeLifecycleState = 'idle' | 'starting' | 'ready' | 'backoff' | 'failed' | 'stopping'
+export type RecoveryMode = 'fresh' | 'recovered' | 'read-only'
 
 export type HostRequest = Readonly<{
   apiVersion: typeof HOST_API_VERSION
@@ -31,11 +35,23 @@ export type BridgeStatus = Readonly<{
   cursor: number
   revision: number
   lastErrorCode: string | null
+  recoveryMode: RecoveryMode | null
 }>
 
 export type TerminalCommandRequest = Readonly<{
   apiVersion: typeof HOST_API_VERSION
   actor: TerminalActor
+}>
+
+export type TrustedProjectSummary = Readonly<{
+  id: string
+  displayName: string
+  lastOpenedAt: string
+}>
+
+export type ProjectSelectionResult = Readonly<{
+  canceled: boolean
+  project: TrustedProjectSummary | null
 }>
 
 const REQUEST_KEYS = new Set(['apiVersion', 'projectId', 'sessionId'])
@@ -85,7 +101,7 @@ const BRIDGE_STATES = new Set<BridgeLifecycleState>(['idle', 'starting', 'ready'
 
 export function parseBridgeStatus(value: unknown): BridgeStatus {
   if (!isRecord(value)) throw new TypeError('bridge status must be an object')
-  const allowed = new Set(['apiVersion', 'state', 'projectId', 'restartCount', 'cursor', 'revision', 'lastErrorCode'])
+  const allowed = new Set(['apiVersion', 'state', 'projectId', 'restartCount', 'cursor', 'revision', 'lastErrorCode', 'recoveryMode'])
   if (Object.keys(value).some((key) => !allowed.has(key))) throw new TypeError('bridge status contains a secret or unsupported field')
   if (value.apiVersion !== HOST_API_VERSION || !BRIDGE_STATES.has(value.state as BridgeLifecycleState)) {
     throw new TypeError('invalid bridge status version or state')
@@ -99,5 +115,27 @@ export function parseBridgeStatus(value: unknown): BridgeStatus {
   if (value.lastErrorCode !== null && (typeof value.lastErrorCode !== 'string' || !/^[A-Z0-9_:-]{1,128}$/.test(value.lastErrorCode))) {
     throw new TypeError('invalid bridge error code')
   }
+  if (value.recoveryMode !== null && value.recoveryMode !== 'fresh' && value.recoveryMode !== 'recovered' && value.recoveryMode !== 'read-only') {
+    throw new TypeError('invalid bridge recovery mode')
+  }
   return Object.freeze(value as unknown as BridgeStatus)
+}
+
+export function parseTrustedProjectSummary(value: unknown): TrustedProjectSummary {
+  if (!isRecord(value)) throw new TypeError('trusted project summary must be an object')
+  if (Object.keys(value).some((key) => key !== 'id' && key !== 'displayName' && key !== 'lastOpenedAt')) {
+    throw new TypeError('trusted project summary contains a path or unsupported field')
+  }
+  if (typeof value.id !== 'string' || !/^project:[a-f0-9]{24}$/.test(value.id)) throw new TypeError('invalid trusted project id')
+  if (typeof value.displayName !== 'string' || value.displayName.length < 1 || value.displayName.length > 255) throw new TypeError('invalid project display name')
+  if (typeof value.lastOpenedAt !== 'string' || Number.isNaN(Date.parse(value.lastOpenedAt))) throw new TypeError('invalid project timestamp')
+  return Object.freeze(value as unknown as TrustedProjectSummary)
+}
+
+export function parseProjectSelectionResult(value: unknown): ProjectSelectionResult {
+  if (!isRecord(value) || typeof value.canceled !== 'boolean') throw new TypeError('invalid project selection result')
+  if (Object.keys(value).some((key) => key !== 'canceled' && key !== 'project')) throw new TypeError('project selection leaked an unsupported field')
+  const project = value.project === null ? null : parseTrustedProjectSummary(value.project)
+  if (value.canceled !== (project === null)) throw new TypeError('inconsistent project selection result')
+  return Object.freeze({ canceled: value.canceled, project })
 }

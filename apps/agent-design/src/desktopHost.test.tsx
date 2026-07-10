@@ -18,6 +18,7 @@ describe('desktop bridge surface', () => {
       cursor: 4,
       revision: 4,
       lastErrorCode: null,
+      recoveryMode: 'recovered',
     }
     const copyTerminalCommand = vi.fn(async () => ({ copied: true as const }))
     const host: AgentDesignDesktopHost = {
@@ -26,16 +27,22 @@ describe('desktop bridge surface', () => {
       getBridgeStatus: vi.fn(async () => ready),
       copyTerminalCommand,
       onBridgeStatus: vi.fn(() => () => undefined),
+      selectProject: vi.fn(async () => ({ canceled: false, project: { id: 'project:aaaaaaaaaaaaaaaaaaaaaaaa', displayName: 'fixture', lastOpenedAt: '2026-07-11T01:00:00.000Z' } })),
+      recentProjects: vi.fn(async () => []),
+      openRecentProject: vi.fn(async () => ({ id: 'project:aaaaaaaaaaaaaaaaaaaaaaaa', displayName: 'fixture', lastOpenedAt: '2026-07-11T01:00:00.000Z' })),
     }
     window.agentDesignHost = host
 
     const view = render(<App />)
-    await waitFor(() => expect(view.getByTestId('desktop-bridge-status').textContent).toContain('desktop ready · restart 1'))
+    await waitFor(() => expect(view.getByTestId('desktop-bridge-status').textContent).toContain('desktop ready · recovered · restart 1'))
     expect(view.getByTestId('desktop-bridge-status').textContent).not.toMatch(/token|127\.0\.0\.1|C:\\/i)
     fireEvent.click(view.getByRole('button', { name: 'Copy Codex' }))
     fireEvent.click(view.getByRole('button', { name: 'Copy Claude' }))
     await waitFor(() => expect(copyTerminalCommand).toHaveBeenCalledTimes(2))
     expect(copyTerminalCommand).toHaveBeenNthCalledWith(1, { apiVersion: 1, actor: 'codex' })
     expect(copyTerminalCommand).toHaveBeenNthCalledWith(2, { apiVersion: 1, actor: 'claude' })
+    fireEvent.click(view.getByRole('button', { name: 'Open project' }))
+    await waitFor(() => expect(host.selectProject).toHaveBeenCalledWith({ apiVersion: 1 }))
+    expect(view.getByRole('combobox', { name: 'Recent projects' }).textContent).toContain('fixture')
   })
 })

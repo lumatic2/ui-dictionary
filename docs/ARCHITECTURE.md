@@ -53,6 +53,7 @@ The desktop app is a third connected surface, not a wrapper around the website o
 - **Editor overlay:** zoom/pan, selection bounds, resize handles, guides, cursors, minimap, hit testing, and manipulation state live outside project code. WebGPU accelerates this plane but device failure must fall back to DOM without affecting the canonical document.
 - **Local engine:** shared TypeScript core owns project scanning, document/code transforms, diffing, verification, and CLI parity. ADR 0008 keeps transactions in the existing Node bridge and assigns Electron main only the typed authority and `utilityProcess` supervision boundary.
 - **Desktop authority:** filesystem, process, editor/Explorer, and watcher capabilities stay behind typed host contracts. Project code receives no Electron/Node authority.
+- **Trusted project and recovery:** the renderer sees only opaque project IDs and display names. Electron main owns canonical root/device/inode records, rechecks realpath containment for each access, and assigns a hashed `userData/projects` root. The bridge writes checksum-bound snapshot+audit generations and atomically advances `CURRENT`; corrupt current state falls back to an older generation in read-only mode.
 - **Quality gate:** renderer candidates must pass shared 1k/5k/10k-node, pointer latency, Korean IME, responsive, nested component, screenshot-diff, memory, recovery, accessibility, and source-round-trip fixtures.
 
 ### Terminal Agent Live Bridge

@@ -4,7 +4,7 @@ import { URL } from 'node:url'
 import { BridgeProtocolError, projectContext, type TransactionEnvelope } from '@askewly/agent-design-engine'
 import type { CanvasDocument } from '@askewly/canvas-core'
 import { WebSocketServer, WebSocket } from 'ws'
-import { BridgeSession } from './session.js'
+import { BridgeSession, type BridgeSessionOptions } from './session.js'
 import { SourceWatcher } from './watcher.js'
 
 export interface StartBridgeOptions {
@@ -16,6 +16,11 @@ export interface StartBridgeOptions {
   watchSources?: boolean
   watcherDebounceMs?: number
   onWatcherError?: (error: unknown) => void
+  auditSink?: BridgeSessionOptions['auditSink']
+  persistenceSink?: BridgeSessionOptions['persistenceSink']
+  initialCursor?: number
+  initialAudits?: BridgeSessionOptions['initialAudits']
+  readOnly?: boolean
 }
 
 export interface RunningBridge {

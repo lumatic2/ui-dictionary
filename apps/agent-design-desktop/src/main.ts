@@ -1,9 +1,11 @@
-import { app, BrowserWindow, clipboard, session } from 'electron'
+import { app, BrowserWindow, clipboard, dialog, session } from 'electron'
 import { join, resolve } from 'node:path'
 import { BridgeSupervisor } from './bridge-supervisor'
 import { ElectronBridgeProcessFactory } from './electron-bridge-process'
 import { HOST_IPC_CHANNELS } from './contract'
 import { registerHostIpc } from './ipc'
+import { ProjectController } from './project-controller'
+import { TrustedProjectRegistry } from './project-registry'
 import { installAppProtocol, registerAppScheme } from './protocol'
 import {
   APP_ORIGIN,
@@ -46,9 +48,22 @@ app.whenReady().then(async () => {
   configureSessionSecurity(session.defaultSession)
   await installAppProtocol(rendererRoot())
   const supervisor = new BridgeSupervisor(new ElectronBridgeProcessFactory(bridgeChildEntry()), adapterEntry())
+  const registry = new TrustedProjectRegistry(app.getPath('userData'))
+  await registry.initialize()
+  const projects = new ProjectController(registry, supervisor)
   registerHostIpc(app.getVersion(), {
     bridgeStatus: () => supervisor.status(),
     copyTerminalCommand: (actor) => clipboard.writeText(supervisor.terminalCommand(actor)),
+    selectProject: async () => {
+      const parent = BrowserWindow.getFocusedWindow()
+      const options: Electron.OpenDialogOptions = { title: 'Trust a React project', properties: ['openDirectory', 'dontAddToRecent'] }
+      const result = parent ? await dialog.showOpenDialog(parent, options) : await dialog.showOpenDialog(options)
+      const selected = result.filePaths[0]
+      if (result.canceled || !selected) return { canceled: true, project: null }
+      return { canceled: false, project: await projects.trustAndOpen(selected) }
+    },
+    recentProjects: () => projects.recent(),
+    openRecentProject: (projectId) => projects.openRecent(projectId),
   })
   supervisor.subscribe((status) => {
     for (const window of BrowserWindow.getAllWindows()) {
@@ -62,6 +77,8 @@ app.whenReady().then(async () => {
     shutdownStarted = true
     void supervisor.stop().finally(() => app.quit())
   })
+  const [recent] = await projects.recent()
+  if (recent) await projects.openRecent(recent.id).catch((error: unknown) => console.error('Recent project recovery failed', error))
   await createMainWindow()
 
   app.on('activate', () => {

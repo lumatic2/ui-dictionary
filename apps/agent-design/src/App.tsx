@@ -13,7 +13,7 @@ import {
 } from '@askewly/canvas-core'
 import { BrowserDocumentStore } from './browserStore'
 import { CanvasSurface } from './CanvasSurface'
-import { desktopHost, type DesktopBridgeStatus } from './desktopHost'
+import { desktopHost, type DesktopBridgeStatus, type TrustedProjectSummary } from './desktopHost'
 import { PropertyInspector } from './PropertyInspector'
 import type { EditorPlaneFailure } from './editorPlaneRuntime'
 import { LiveBridgeClient, liveBridgeConfig } from './liveBridge'
@@ -44,6 +44,8 @@ export function App() {
   const [liveLatency, setLiveLatency] = useState<number | null>(null)
   const [desktopBridge, setDesktopBridge] = useState<DesktopBridgeStatus | null>(null)
   const [terminalCopy, setTerminalCopy] = useState<'idle' | 'codex' | 'claude' | 'error'>('idle')
+  const [recentProjects, setRecentProjects] = useState<TrustedProjectSummary[]>([])
+  const [activeProject, setActiveProject] = useState<TrustedProjectSummary | null>(null)
   const liveConfig = useMemo(() => liveBridgeConfig(), [])
   const liveClient = useRef<LiveBridgeClient | null>(null)
   const pendingPaint = useRef<{ revision: number; started: number } | null>(null)
@@ -76,8 +78,11 @@ export function App() {
     let active = true
     void host.getBridgeStatus({ apiVersion: 1 }).then(
       (next) => { if (active) setDesktopBridge(next) },
-      () => { if (active) setDesktopBridge({ apiVersion: 1, state: 'failed', projectId: null, restartCount: 0, cursor: 0, revision: 0, lastErrorCode: 'HOST_STATUS_ERROR' }) },
+      () => { if (active) setDesktopBridge({ apiVersion: 1, state: 'failed', projectId: null, restartCount: 0, cursor: 0, revision: 0, lastErrorCode: 'HOST_STATUS_ERROR', recoveryMode: null }) },
     )
+    void host.recentProjects({ apiVersion: 1 }).then((projects) => {
+      if (active) setRecentProjects(projects)
+    }, () => undefined)
     const unsubscribe = host.onBridgeStatus((next) => { if (active) setDesktopBridge(next) })
     return () => { active = false; unsubscribe() }
   }, [])
@@ -91,6 +96,22 @@ export function App() {
     } catch {
       setTerminalCopy('error')
     }
+  }, [])
+
+  const selectProject = useCallback(async () => {
+    const host = desktopHost()
+    if (!host) return
+    const result = await host.selectProject({ apiVersion: 1 })
+    if (!result.canceled && result.project) {
+      setActiveProject(result.project)
+      setRecentProjects((current) => [result.project!, ...current.filter((project) => project.id !== result.project?.id)])
+    }
+  }, [])
+
+  const openRecentProject = useCallback(async (projectId: string) => {
+    const host = desktopHost()
+    if (!host || !projectId) return
+    setActiveProject(await host.openRecentProject({ apiVersion: 1, projectId }))
   }, [])
 
   useEffect(() => {
@@ -210,6 +231,13 @@ export function App() {
         <p>Codex and Claude share one revisioned canvas and React source.</p>
       </div>
       <div className="header-controls">
+        {desktopBridge && <div className="project-controls">
+          <button type="button" onClick={() => void selectProject()}>Open project</button>
+          <select aria-label="Recent projects" value={activeProject?.id ?? ''} onChange={(event) => void openRecentProject(event.target.value)}>
+            <option value="">{activeProject?.displayName ?? 'Recent projects'}</option>
+            {recentProjects.map((project) => <option key={project.id} value={project.id}>{project.displayName}</option>)}
+          </select>
+        </div>}
         <label>Nodes
           <select value={size} onChange={(event) => setSize(Number(event.target.value) as 1000 | 5000)} data-testid="fixture-size">
             <option value={1000}>1,000</option>
@@ -236,7 +264,7 @@ export function App() {
       <output className={`connection-status status-${connection}`} data-testid="bridge-status">{connection}{liveLatency === null ? '' : ` · ${liveLatency.toFixed(1)}ms`}</output>
       {desktopBridge && <div className="desktop-bridge-controls">
         <output className={`connection-status status-${desktopBridge.state}`} data-testid="desktop-bridge-status">
-          desktop {desktopBridge.state} · restart {desktopBridge.restartCount}
+          desktop {desktopBridge.state}{desktopBridge.recoveryMode ? ` · ${desktopBridge.recoveryMode}` : ''} · restart {desktopBridge.restartCount}
         </output>
         <button type="button" disabled={desktopBridge.state !== 'ready'} onClick={() => void copyTerminalCommand('codex')}>Copy Codex</button>
         <button type="button" disabled={desktopBridge.state !== 'ready'} onClick={() => void copyTerminalCommand('claude')}>Copy Claude</button>

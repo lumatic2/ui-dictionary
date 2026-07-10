@@ -44,7 +44,7 @@ const document = {
   metadata: { createdAt: '2026-07-11T00:00:00.000Z', updatedAt: '2026-07-11T00:00:00.000Z', sourceRoot: '.' },
 } as BridgeStartConfig['document']
 
-const config: BridgeStartConfig = { projectId: 'project:fixture', projectRoot: 'C:\\fixture', document }
+const config: BridgeStartConfig = { projectId: 'project:fixture', projectRoot: 'C:\\fixture', recoveryRoot: 'C:\\recovery', document }
 const ready = {
   type: 'ready',
   projectId: 'project:fixture',
@@ -53,6 +53,7 @@ const ready = {
   token: 'a'.repeat(43),
   cursor: 2,
   revision: 2,
+  recoveryMode: 'fresh',
 }
 
 const tick = () => new Promise((resolve) => setTimeout(resolve, 2))

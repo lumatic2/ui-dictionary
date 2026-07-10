@@ -25,6 +25,10 @@ export interface BridgeSessionOptions {
   maxEvents?: number
   verifySource?: (file: string, stagedFile: string, content: string) => { valid: boolean; checks: string[] }
   auditSink?: (entry: TransactionAuditEntry) => void
+  persistenceSink?: (state: { snapshot: CanvasSnapshot; audits: TransactionAuditEntry[] }) => void
+  initialCursor?: number
+  initialAudits?: TransactionAuditEntry[]
+  readOnly?: boolean
 }
 
 export interface UndoRequest {
@@ -77,6 +81,8 @@ export class BridgeSession {
   private readonly emitter = new EventEmitter()
   private readonly verifySource: NonNullable<BridgeSessionOptions['verifySource']>
   private readonly auditSink: NonNullable<BridgeSessionOptions['auditSink']>
+  private readonly persistenceSink: NonNullable<BridgeSessionOptions['persistenceSink']>
+  private readonly readOnly: boolean
   private readonly allowedSourceFiles: Set<string>
 
   constructor(options: BridgeSessionOptions) {
@@ -86,6 +92,11 @@ export class BridgeSession {
     this.maxEvents = options.maxEvents ?? 256
     this.verifySource = options.verifySource ?? ((_file, _stagedFile, content) => ({ valid: content.length > 0, checks: ['non-empty-source'] }))
     this.auditSink = options.auditSink ?? (() => undefined)
+    this.persistenceSink = options.persistenceSink ?? (() => undefined)
+    this.readOnly = options.readOnly ?? false
+    this.cursor = options.initialCursor ?? 0
+    this.audits = structuredClone(options.initialAudits ?? [])
+    for (const audit of this.audits) this.transactionIds.add(audit.transactionId)
     this.allowedSourceFiles = new Set(
       Object.values(this.document.nodes)
         .map((node) => node.source?.file)
@@ -114,6 +125,7 @@ export class BridgeSession {
   }
 
   commit(transaction: TransactionEnvelope): TransactionEvent {
+    this.assertWritable()
     return this.commitInternal(transaction, true)
   }
 
@@ -144,6 +156,7 @@ export class BridgeSession {
       committedAt: transaction.operations.at(-1)?.at ?? new Date().toISOString(),
     }
     this.auditSink(structuredClone(audit))
+    this.persist(next, audit)
     this.document = next
     this.cursor += 1
     if (recordForUndo) this.committed.push({ kind: 'operations', transaction: structuredClone(transaction), before })
@@ -156,6 +169,7 @@ export class BridgeSession {
   }
 
   undo(request: UndoRequest): TransactionEvent {
+    this.assertWritable()
     const target = this.committed.at(-1)
     if (!target) throw new BridgeProtocolError('INVALID_TRANSACTION', 'nothing to undo', 409)
     if (request.baseRevision !== this.document.revision) {
@@ -214,6 +228,7 @@ export class BridgeSession {
   }
 
   applySourcePatch(request: SourcePatchRequest): TransactionEvent {
+    this.assertWritable()
     if (this.transactionIds.has(request.transactionId)) throw new BridgeProtocolError('INVALID_TRANSACTION', `duplicate transaction id: ${request.transactionId}`, 409)
     this.assertSourceGuard(request)
     const file = this.sourceFile(request.file)
@@ -261,6 +276,7 @@ export class BridgeSession {
       try {
         renameSync(stagedFile, file)
         this.auditSink(structuredClone(audit))
+        this.persist(next, audit)
       } catch (error) {
         if (existsSync(file)) rmSync(file, { force: true })
         renameSync(backupFile, file)
@@ -283,6 +299,7 @@ export class BridgeSession {
   }
 
   reconcileExternalSource(request: { transactionId: string; file: string; beforeContent: string; content: string; at: string }): TransactionEvent {
+    this.assertWritable()
     if (this.transactionIds.has(request.transactionId)) throw new BridgeProtocolError('INVALID_TRANSACTION', `duplicate transaction id: ${request.transactionId}`, 409)
     const file = this.sourceFile(request.file)
     const currentContent = readFileSync(file, 'utf8')
@@ -325,6 +342,7 @@ export class BridgeSession {
     }
     try {
       this.auditSink(structuredClone(audit))
+      this.persist(next, audit)
     } catch (error) {
       writeFileSync(file, request.beforeContent, 'utf8')
       throw error
@@ -377,8 +395,14 @@ export class BridgeSession {
       verification: { valid: true, checks: ['source-hash-guard'] },
       committedAt: request.at,
     }
-    this.auditSink(structuredClone(audit))
     writeFileSync(file, target.beforeContent, 'utf8')
+    try {
+      this.auditSink(structuredClone(audit))
+      this.persist(next, audit)
+    } catch (error) {
+      writeFileSync(file, currentContent, 'utf8')
+      throw error
+    }
     const event: TransactionEvent = {
       cursor: ++this.cursor,
       type: 'transaction-committed',
@@ -419,6 +443,17 @@ export class BridgeSession {
   subscribe(listener: (event: TransactionEvent) => void): () => void {
     this.emitter.on('event', listener)
     return () => this.emitter.off('event', listener)
+  }
+
+  private assertWritable(): void {
+    if (this.readOnly) throw new BridgeProtocolError('INVALID_TRANSACTION', 'recovered session is read-only', 423)
+  }
+
+  private persist(next: CanvasDocument, audit: TransactionAuditEntry): void {
+    this.persistenceSink({
+      snapshot: createSnapshot(next, this.cursor + 1),
+      audits: [...this.audits, structuredClone(audit)],
+    })
   }
 }
 

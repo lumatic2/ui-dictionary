@@ -6,6 +6,7 @@ import { buildTerminalCommand, type TerminalActor } from './terminal-command'
 export interface BridgeStartConfig {
   projectId: string
   projectRoot: string
+  recoveryRoot: string
   document: CanvasDocument
 }
 
@@ -59,6 +60,7 @@ export class BridgeSupervisor {
     cursor: 0,
     revision: 0,
     lastErrorCode: null,
+    recoveryMode: null,
   })
 
   constructor(
@@ -106,6 +108,12 @@ export class BridgeSupervisor {
     })
   }
 
+  /** Main-process only. Never expose this object through preload or renderer IPC. */
+  mainConnection(): Readonly<BridgeCredentials> {
+    if (!this.credentials) throw new Error('bridge connection is not ready')
+    return Object.freeze({ ...this.credentials })
+  }
+
   async stop(): Promise<void> {
     this.desired = false
     this.generation += 1
@@ -114,7 +122,7 @@ export class BridgeSupervisor {
     const child = this.process
     if (!child) {
       this.config = null
-      this.publish({ state: 'idle', projectId: null, restartCount: 0, cursor: 0, revision: 0, lastErrorCode: null })
+      this.publish({ state: 'idle', projectId: null, restartCount: 0, cursor: 0, revision: 0, lastErrorCode: null, recoveryMode: null })
       return
     }
 
@@ -136,7 +144,7 @@ export class BridgeSupervisor {
     })
     if (this.process === child) this.process = null
     this.config = null
-    this.publish({ state: 'idle', projectId: null, restartCount: 0, cursor: 0, revision: 0, lastErrorCode: null })
+    this.publish({ state: 'idle', projectId: null, restartCount: 0, cursor: 0, revision: 0, lastErrorCode: null, recoveryMode: null })
   }
 
   private spawn(): void {
@@ -151,6 +159,7 @@ export class BridgeSupervisor {
       cursor: 0,
       revision: 0,
       lastErrorCode: null,
+      recoveryMode: null,
     })
     this.readyTimer = setTimeout(() => {
       if (this.generation !== generation || this.current.state !== 'starting') return
@@ -192,6 +201,7 @@ export class BridgeSupervisor {
         cursor: typeof data.cursor === 'number' ? data.cursor : 0,
         revision: typeof data.revision === 'number' ? data.revision : 0,
         lastErrorCode: null,
+        recoveryMode: data.recoveryMode === 'fresh' || data.recoveryMode === 'recovered' || data.recoveryMode === 'read-only' ? data.recoveryMode : null,
       })
       return
     }
