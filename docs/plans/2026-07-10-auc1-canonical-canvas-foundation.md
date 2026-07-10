@@ -2,7 +2,7 @@
 
 Date: 2026-07-10
 Milestone: AUC1 (`ROADMAP.md`, active planning gate)
-Status: execution complete; milestone verification pending
+Status: completed — core/app/Chrome gates and harness ledger confirmed
 
 ## Hierarchy
 

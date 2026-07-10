@@ -1,7 +1,7 @@
 # Horizon - Agent-Native UI Canvas
 
 Date: 2026-07-10
-Status: active — AUC0 complete; AUC1 Canonical Canvas Foundation plan awaits user approval.
+Status: active — AUC0/AUC1 complete; AUC2 Direct Manipulation plan awaits user approval.
 
 ## Goal
 
@@ -30,13 +30,13 @@ DoD: 동일한 representative UI fixture와 benchmark runner로 ① DOM/React+ed
 
 Evidence: `docs/plans/2026-07-10-auc0-canvas-engine-bakeoff.md` + `experiments/canvas-engine-*` + `docs/research/canvas-engine-bakeoff-2026-07.md` + `docs/adr/0006-agent-design-layered-dom-webgpu-engine.md`.
 
-### AUC1 - Canonical Canvas Foundation — active (planning gate)
+### AUC1 - Canonical Canvas Foundation — completed
 
 DoD: AUC0 채택 엔진 위에 versioned canvas document, frame/code-component/text/group/instance node, stable ID/source mapping, zoom/pan, save/reload, deterministic undo/redo를 구현한다. fresh project에서 document→render→reload가 구조·픽셀 gate를 통과한다.
 
 Evidence: `phases/agent-design-canvas-foundation/` + canvas document fixtures + real desktop/browser smoke.
 
-### AUC2 - Direct Manipulation And Property Runtime — pending
+### AUC2 - Direct Manipulation And Property Runtime — active (planning gate)
 
 DoD: select/multi-select, move, resize, reparent, reorder, align/guides, responsive constraints, typed props, token binding, mode/variant, Korean text edit가 canonical operations로 동작한다. 5k-layer interaction budget과 keyboard/accessibility smoke를 통과한다.
 
