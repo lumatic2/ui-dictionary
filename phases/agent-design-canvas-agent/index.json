@@ -3,7 +3,13 @@
   "phase": "agent-design-canvas-agent",
   "mode": "product",
   "steps": [
-    { "step": 1, "name": "local-bridge-session-protocol", "status": "pending" },
+    {
+      "step": 1,
+      "name": "local-bridge-session-protocol",
+      "status": "completed",
+      "summary": "Added a pure agent-design-engine transaction protocol over existing canvas-core operations and a loopback-only Node bridge with ephemeral token auth, project path confinement, guarded revision/hash commits, monotonic event cursors, bounded replay, cursor-gap snapshot recovery, HTTP snapshots/transactions, and WebSocket broadcasts. Verified engine 5/5, bridge 5/5, and both TypeScript builds.",
+      "completed_at": "2026-07-10T23:17:00+09:00"
+    },
     { "step": 2, "name": "terminal-mcp-adapters", "status": "pending" },
     { "step": 3, "name": "atomic-auto-apply-audit", "status": "pending" },
     { "step": 4, "name": "canvas-live-sync-file-watcher", "status": "pending" },
