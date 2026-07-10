@@ -1,4 +1,4 @@
-import { useCallback, useEffect, useMemo, useState } from 'react'
+import { useCallback, useEffect, useMemo, useRef, useState } from 'react'
 import {
   applyOperation,
   commitOperation,
@@ -15,6 +15,7 @@ import { BrowserDocumentStore } from './browserStore'
 import { CanvasSurface } from './CanvasSurface'
 import { PropertyInspector } from './PropertyInspector'
 import type { EditorPlaneFailure } from './editorPlaneRuntime'
+import { LiveBridgeClient, liveBridgeConfig } from './liveBridge'
 
 const store = new BrowserDocumentStore()
 const nextFrame = () => new Promise<number>((resolve) => requestAnimationFrame(resolve))
@@ -38,6 +39,11 @@ export function App() {
   const baseDocument = useMemo(() => createDocumentFixture(size), [size])
   const [history, setHistory] = useState<CanvasHistory>(() => createHistory(baseDocument))
   const [status, setStatus] = useState('unsaved')
+  const [connection, setConnection] = useState<'offline' | 'connecting' | 'connected' | 'reconnecting' | 'disconnected' | 'error'>('offline')
+  const [liveLatency, setLiveLatency] = useState<number | null>(null)
+  const liveConfig = useMemo(() => liveBridgeConfig(), [])
+  const liveClient = useRef<LiveBridgeClient | null>(null)
+  const pendingPaint = useRef<{ revision: number; started: number } | null>(null)
   const storageKey = `agent-design:${baseDocument.id}`
 
   useEffect(() => {
@@ -45,14 +51,52 @@ export function App() {
     setStatus('unsaved')
   }, [baseDocument])
 
+  useEffect(() => {
+    if (!liveConfig) return
+    const client = new LiveBridgeClient(liveConfig, {
+      onStatus: setConnection,
+      onError: (error) => setStatus(error instanceof Error ? error.message : 'bridge error'),
+      onSnapshot: (snapshot, meta) => {
+        pendingPaint.current = { revision: snapshot.revision, started: meta.receivedAt }
+        setHistory(createHistory(snapshot.document))
+        setStatus(`${meta.reason} revision ${snapshot.revision}`)
+      },
+    })
+    liveClient.current = client
+    void client.connect()
+    return () => { client.disconnect(); liveClient.current = null }
+  }, [liveConfig])
+
+  useEffect(() => {
+    const pending = pendingPaint.current
+    if (!pending || pending.revision !== history.present.revision) return
+    const frame = requestAnimationFrame(() => {
+      setLiveLatency(performance.now() - pending.started)
+      pendingPaint.current = null
+    })
+    return () => cancelAnimationFrame(frame)
+  }, [history.present.revision])
+
   const applyDemo = useCallback(() => {
     setHistory((current) => demoOperations().reduce(commitOperation, current))
     setStatus('changed')
   }, [])
 
   const commit = useCallback((operation: CanvasOperation) => {
+    if (liveClient.current) {
+      void liveClient.current.applyOperation(operation).catch((error) => setStatus(error instanceof Error ? error.message : 'bridge mutation failed'))
+      return
+    }
     setHistory((current) => commitOperation(current, operation))
     setStatus('changed')
+  }, [])
+
+  const undoCurrent = useCallback(() => {
+    if (liveClient.current) {
+      void liveClient.current.undo().catch((error) => setStatus(error instanceof Error ? error.message : 'bridge undo failed'))
+      return
+    }
+    setHistory(undo)
   }, [])
 
   const save = useCallback(async () => {
@@ -135,9 +179,9 @@ export function App() {
   return <main className="app-shell">
     <header className="app-header">
       <div>
-        <p className="eyebrow">Agent Design / AUC2</p>
-        <h1>Direct Manipulation Runtime</h1>
-        <p>Canonical selection, structure, responsive bounds, properties, and text.</p>
+        <p className="eyebrow">Agent Design / AUC3</p>
+        <h1>Terminal Agent Live Canvas</h1>
+        <p>Codex and Claude share one revisioned canvas and React source.</p>
       </div>
       <div className="header-controls">
         <label>Nodes
@@ -158,11 +202,12 @@ export function App() {
     </header>
     <nav className="document-actions" aria-label="Document actions">
       <button type="button" data-testid="apply-demo" onClick={applyDemo}>Apply operation</button>
-      <button type="button" data-testid="undo" disabled={!history.past.length} onClick={() => setHistory(undo)}>Undo</button>
+      <button type="button" data-testid="undo" disabled={!liveConfig && !history.past.length} onClick={undoCurrent}>Undo</button>
       <button type="button" data-testid="redo" disabled={!history.future.length} onClick={() => setHistory(redo)}>Redo</button>
       <button type="button" data-testid="save-document" onClick={() => void save()}>Save</button>
       <button type="button" data-testid="reload-document" onClick={() => void reload()}>Reload</button>
       <output data-testid="persistence-status">{status}</output>
+      <output className={`connection-status status-${connection}`} data-testid="bridge-status">{connection}{liveLatency === null ? '' : ` · ${liveLatency.toFixed(1)}ms`}</output>
     </nav>
     <section className="app-body">
       <CanvasSurface document={history.present} editorPlaneFailure={failure} onOperation={commit} />

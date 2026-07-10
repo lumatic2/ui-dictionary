@@ -8,6 +8,7 @@ import {
   createSnapshot,
   documentHash,
   exactChanges,
+  reconcileDocumentFromSource,
   unifiedDiff,
   type CanvasSnapshot,
   type ReplayResult,
@@ -229,9 +230,7 @@ export class BridgeSession {
       const verification = this.verifySource(file, stagedFile, request.content)
       if (!verification.valid) throw new BridgeProtocolError('INVALID_TRANSACTION', `source verification failed: ${verification.checks.join(', ')}`, 400)
       const beforeDocument = structuredClone(this.document)
-      const next = structuredClone(this.document)
-      next.revision += 1
-      next.metadata.updatedAt = request.at
+      const next = reconcileDocumentFromSource(this.document, request.file, request.content, request.at)
       const afterHash = documentHash(next)
       const afterFileHash = sourceHash(request.content)
       const event: TransactionEvent = {
@@ -281,6 +280,79 @@ export class BridgeSession {
       if (existsSync(stagedFile)) rmSync(stagedFile, { force: true })
       if (existsSync(backupFile) && existsSync(file)) rmSync(backupFile, { force: true })
     }
+  }
+
+  reconcileExternalSource(request: { transactionId: string; file: string; beforeContent: string; content: string; at: string }): TransactionEvent {
+    if (this.transactionIds.has(request.transactionId)) throw new BridgeProtocolError('INVALID_TRANSACTION', `duplicate transaction id: ${request.transactionId}`, 409)
+    const file = this.sourceFile(request.file)
+    const currentContent = readFileSync(file, 'utf8')
+    if (currentContent !== request.content) throw new BridgeProtocolError('HASH_CONFLICT', 'source changed again before watcher reconciliation', 409)
+    if (request.beforeContent === request.content) throw new BridgeProtocolError('INVALID_TRANSACTION', 'watcher edit does not change source', 400)
+    const verification = this.verifySource(file, file, request.content)
+    if (!verification.valid) {
+      writeFileSync(file, request.beforeContent, 'utf8')
+      throw new BridgeProtocolError('INVALID_TRANSACTION', `source verification failed: ${verification.checks.join(', ')}`, 400)
+    }
+    const beforeDocument = structuredClone(this.document)
+    const beforeHash = documentHash(beforeDocument)
+    const next = reconcileDocumentFromSource(this.document, request.file, request.content, request.at)
+    const afterHash = documentHash(next)
+    const beforeFileHash = sourceHash(request.beforeContent)
+    const afterFileHash = sourceHash(request.content)
+    const event: TransactionEvent = {
+      cursor: this.cursor + 1,
+      type: 'transaction-committed',
+      transactionId: request.transactionId,
+      actor: 'watcher',
+      revision: next.revision,
+      beforeHash,
+      afterHash,
+      operations: [],
+      sourcePatch: { file: request.file, beforeFileHash, afterFileHash },
+    }
+    const audit: TransactionAuditEntry = {
+      transactionId: request.transactionId,
+      actor: 'watcher',
+      kind: 'source-patch',
+      revision: next.revision,
+      beforeHash,
+      afterHash,
+      exactChanges: exactChanges(beforeDocument, next),
+      sourceDiff: unifiedDiff(request.file, request.beforeContent, request.content),
+      sourceFile: request.file,
+      verification,
+      committedAt: request.at,
+    }
+    try {
+      this.auditSink(structuredClone(audit))
+    } catch (error) {
+      writeFileSync(file, request.beforeContent, 'utf8')
+      throw error
+    }
+    this.document = next
+    this.cursor += 1
+    this.transactionIds.add(request.transactionId)
+    this.committed.push({
+      kind: 'source-patch',
+      request: {
+        transactionId: request.transactionId,
+        actor: 'watcher',
+        baseRevision: beforeDocument.revision,
+        beforeHash,
+        file: request.file,
+        beforeFileHash,
+        content: request.content,
+        at: request.at,
+      },
+      beforeDocument,
+      beforeContent: request.beforeContent,
+      afterFileHash,
+    })
+    this.audits.push(audit)
+    this.events.push(event)
+    if (this.events.length > this.maxEvents) this.events.splice(0, this.events.length - this.maxEvents)
+    this.emitter.emit('event', structuredClone(event))
+    return structuredClone(event)
   }
 
   private undoSourcePatch(target: Extract<UndoRecord, { kind: 'source-patch' }>, request: UndoRequest): TransactionEvent {

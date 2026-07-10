@@ -11,7 +11,10 @@
     "test": "vitest run",
     "preintegration": "npm --prefix ../../packages/canvas-core run build",
     "integration": "node scripts/run-integration.mjs",
-    "validate:integration": "node scripts/validate-integration.mjs"
+    "validate:integration": "node scripts/validate-integration.mjs",
+    "prelive:integration": "npm run build && npm --prefix ../agent-design-bridge run build",
+    "live:integration": "node scripts/run-live-integration.mjs",
+    "validate:live-sync": "node scripts/validate-live-sync.mjs"
   },
   "dependencies": {
     "@askewly/canvas-core": "file:../../packages/canvas-core",

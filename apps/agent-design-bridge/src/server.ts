@@ -5,6 +5,7 @@ import { BridgeProtocolError, projectContext, type TransactionEnvelope } from '@
 import type { CanvasDocument } from '@askewly/canvas-core'
 import { WebSocketServer, WebSocket } from 'ws'
 import { BridgeSession } from './session.js'
+import { SourceWatcher } from './watcher.js'
 
 export interface StartBridgeOptions {
   projectRoot: string
@@ -12,6 +13,9 @@ export interface StartBridgeOptions {
   port?: number
   token?: string
   maxEvents?: number
+  watchSources?: boolean
+  watcherDebounceMs?: number
+  onWatcherError?: (error: unknown) => void
 }
 
 export interface RunningBridge {
@@ -57,9 +61,22 @@ async function readJson(request: IncomingMessage): Promise<unknown> {
 
 export async function startBridge(options: StartBridgeOptions): Promise<RunningBridge> {
   const session = new BridgeSession(options)
+  const sourceWatcher = options.watchSources ? new SourceWatcher(session, { debounceMs: options.watcherDebounceMs, onError: options.onWatcherError }) : null
   const sockets = new Set<WebSocket>()
   const server = createServer(async (request, response) => {
     try {
+      const origin = request.headers.origin
+      if (origin && /^https?:\/\/(?:127\.0\.0\.1|localhost)(?::\d+)?$/.test(origin)) {
+        response.setHeader('access-control-allow-origin', origin)
+        response.setHeader('vary', 'Origin')
+      }
+      if (request.method === 'OPTIONS') {
+        response.setHeader('access-control-allow-methods', 'GET, POST, OPTIONS')
+        response.setHeader('access-control-allow-headers', 'authorization, content-type')
+        response.writeHead(origin && response.hasHeader('access-control-allow-origin') ? 204 : 403)
+        response.end()
+        return
+      }
       session.authorize(bearer(request), request.socket.remoteAddress)
       if (request.method === 'GET' && request.url === '/snapshot') {
         json(response, 200, session.snapshot())
@@ -120,7 +137,7 @@ export async function startBridge(options: StartBridgeOptions): Promise<RunningB
     client.on('close', () => sockets.delete(client))
   })
   const unsubscribe = session.subscribe((event) => {
-    const message = JSON.stringify({ type: 'event', event })
+    const message = JSON.stringify({ type: 'event', event, snapshot: session.snapshot() })
     for (const client of sockets) if (client.readyState === WebSocket.OPEN) client.send(message)
   })
   await new Promise<void>((resolve, reject) => {
@@ -129,11 +146,13 @@ export async function startBridge(options: StartBridgeOptions): Promise<RunningB
   })
   const address = server.address() as AddressInfo
   const url = `http://127.0.0.1:${address.port}`
+  sourceWatcher?.start()
   return {
     session,
     url,
     wsUrl: `ws://127.0.0.1:${address.port}`,
     close: async () => {
+      sourceWatcher?.close()
       unsubscribe()
       for (const client of sockets) client.close()
       await new Promise<void>((resolve, reject) => websocket.close(() => server.close((error) => (error ? reject(error) : resolve()))))

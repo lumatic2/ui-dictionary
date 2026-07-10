@@ -98,4 +98,14 @@ describe('loopback bridge server', () => {
     expect(undo.status).toBe(200)
     expect(running.session.snapshot().document.nodes[firstComponent(snapshot.document).id]?.name).toBe(firstComponent(snapshot.document).name)
   })
+
+  it('allows browser preflight only from loopback origins', async () => {
+    const running = await bridge()
+    const local = await fetch(`${running.url}/snapshot`, { method: 'OPTIONS', headers: { origin: 'http://127.0.0.1:4183' } })
+    expect(local.status).toBe(204)
+    expect(local.headers.get('access-control-allow-origin')).toBe('http://127.0.0.1:4183')
+    const foreign = await fetch(`${running.url}/snapshot`, { method: 'OPTIONS', headers: { origin: 'https://example.com' } })
+    expect(foreign.status).toBe(403)
+    expect(foreign.headers.get('access-control-allow-origin')).toBeNull()
+  })
 })
