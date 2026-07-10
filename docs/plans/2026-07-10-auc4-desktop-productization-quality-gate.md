@@ -2,7 +2,7 @@
 
 Date: 2026-07-10
 Milestone: AUC4 (`ROADMAP.md`, active planning gate)
-Status: approved 2026-07-11 — Steps 1-2 complete; Step 3 in progress
+Status: approved 2026-07-11 — Steps 1-3 complete; Step 4 in progress
 
 ## Hierarchy
 
@@ -30,11 +30,11 @@ Status: approved 2026-07-11 — Steps 1-2 complete; Step 3 in progress
   - Fork the bridge as a utility process, exchange an in-memory session token/port through a message channel, publish health state, and enforce bounded restart/backoff.
   - Verify: spawn/ready/exit/crash/three-strike/restart tests and copyable Codex/Claude commands without global config mutation.
 
-- [~] Step 3 — Trusted project import and durable recovery
+- [x] Step 3 — Trusted project import and durable recovery
   - Use the native folder picker, canonical realpath trust record, per-access containment checks, recent projects, atomic snapshot/audit persistence, autosave, corrupt-file quarantine, and startup recovery.
   - Verify: traversal/junction/root-change rejection, temp+fsync+rename failure injection, crash restore and read-only recovery state.
 
-- [ ] Step 4 — Sandboxed preview, OS actions, and redacted diagnostics
+- [~] Step 4 — Sandboxed preview, OS actions, and redacted diagnostics
   - Add isolated project preview, allowlisted resource protocol, default-deny network/permissions/navigation, guarded Explorer/editor actions, and a redacted diagnostic bundle.
   - Verify: hostile preview fixture cannot reach Node, host IPC, external network, arbitrary paths, popups, or shell protocols; diagnostics contain no token/source content.
 
