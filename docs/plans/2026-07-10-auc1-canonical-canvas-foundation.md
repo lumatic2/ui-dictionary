@@ -34,7 +34,7 @@ Status: awaiting user execution approval
   - Artifact: phase step + operation fixtures.
   - Verify: deterministic replay, invalid operation rejection, 1k operation recovery test.
 
-- [ ] Step 3 — Semantic DOM content plane
+- [x] Step 3 — Semantic DOM content plane
   - canonical nodes를 React DOM으로 렌더하고 `data-canvas-id`/source mapping/semantic role/focus surface를 보존한다.
   - viewport transform과 selection state는 project content DOM 밖에서 소비한다.
   - Artifact: `apps/agent-design/` minimal canvas surface.

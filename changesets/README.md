@@ -60,3 +60,4 @@
 | 58 | 20260710-auc0-engine-topology-decision | 2026-07-10 | User-approved layered DOM/WebGPU renderer ADR and AUC0 harness closure | 7/7 | complete |
 | 59 | 20260710-auc1-document-contract | 2026-07-10 | Renderer-independent canonical document, validation, and 1k/5k fixtures | 5/5 | complete |
 | 60 | 20260710-auc1-operation-runtime | 2026-07-10 | Pure reducer, inverse operations, undo/redo, and deterministic replay | 6/6 | complete |
+| 61 | 20260710-auc1-dom-content-plane | 2026-07-10 | Agent Design app semantic DOM renderer and source/focus/IME contracts | 6/6 | complete |

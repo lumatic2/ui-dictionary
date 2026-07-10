@@ -1,0 +1,36 @@
+import { cleanup, fireEvent, render } from '@testing-library/react'
+import { createDocumentFixture } from '@askewly/canvas-core'
+import { afterEach, describe, expect, it } from 'vitest'
+import { CanvasSurface } from './CanvasSurface'
+
+afterEach(cleanup)
+
+describe('semantic DOM content plane', () => {
+  it.each([1000, 5000] as const)('maps all %i canonical nodes to stable DOM ids', (size) => {
+    const document = createDocumentFixture(size)
+    const view = render(<CanvasSurface document={document} />)
+    const nodes = view.container.querySelectorAll('[data-canvas-id]')
+    expect(nodes).toHaveLength(size)
+    expect(view.container.querySelectorAll('[data-source-ref]')).toHaveLength(Object.values(document.nodes).filter((node) => node.source).length)
+    expect(view.getByTestId('editor-selection').getAttribute('data-selected-id')).toBe(document.selection[0])
+  })
+
+  it('preserves Korean composition in the text surface', () => {
+    const document = createDocumentFixture(1000)
+    const view = render(<CanvasSurface document={document} />)
+    const text = view.container.querySelector('[data-node-kind="text"]')
+    if (!(text instanceof HTMLElement)) throw new Error('text node missing')
+    fireEvent.compositionStart(text, { data: '' })
+    text.textContent = '한글 입력 완료'
+    fireEvent.input(text, { data: '한글 입력 완료', inputType: 'insertCompositionText', isComposing: true })
+    fireEvent.compositionEnd(text, { data: '한글 입력 완료' })
+    expect(text.textContent).toBe('한글 입력 완료')
+  })
+
+  it('provides focusable code, instance, and text surfaces', () => {
+    const document = createDocumentFixture(1000)
+    const expected = Object.values(document.nodes).filter((node) => node.kind === 'code-component' || node.kind === 'instance' || node.kind === 'text').length
+    const view = render(<CanvasSurface document={document} />)
+    expect(view.container.querySelectorAll('button,[tabindex="0"]')).toHaveLength(expected)
+  })
+})
