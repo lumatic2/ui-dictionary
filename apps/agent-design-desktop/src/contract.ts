@@ -1,3 +1,5 @@
+import type { CanvasDocument, CanvasOperation } from '@askewly/canvas-core' with { 'resolution-mode': 'import' }
+
 export const HOST_API_VERSION = 1 as const
 
 export const HOST_IPC_CHANNELS = Object.freeze({
@@ -5,6 +7,10 @@ export const HOST_IPC_CHANNELS = Object.freeze({
   getBridgeStatus: 'agent-design:bridge:get-status',
   copyTerminalCommand: 'agent-design:bridge:copy-terminal-command',
   bridgeStatusChanged: 'agent-design:bridge:status-changed',
+  getCanvasSnapshot: 'agent-design:canvas:get-snapshot',
+  applyCanvasOperation: 'agent-design:canvas:apply-operation',
+  undoCanvas: 'agent-design:canvas:undo',
+  canvasSnapshotChanged: 'agent-design:canvas:snapshot-changed',
   selectProject: 'agent-design:project:select',
   recentProjects: 'agent-design:project:recent',
   openRecentProject: 'agent-design:project:open-recent',
@@ -72,6 +78,18 @@ export type FileActionRequest = Readonly<{
   apiVersion: typeof HOST_API_VERSION
   projectId: string
   fileId: string
+}>
+
+export type CanvasSnapshotReason = 'initial' | 'event' | 'transaction' | 'recovery'
+export type CanvasSnapshot = Readonly<{
+  document: CanvasDocument
+  revision: number
+  hash: string
+  cursor: number
+}>
+export type CanvasMutationRequest = Readonly<{
+  apiVersion: typeof HOST_API_VERSION
+  operation: CanvasOperation
 }>
 
 const REQUEST_KEYS = new Set(['apiVersion', 'projectId', 'sessionId'])
@@ -185,4 +203,26 @@ export function parseFileActionRequest(value: unknown): FileActionRequest {
   if (typeof value.projectId !== 'string' || !/^project:[a-f0-9]{24}$/.test(value.projectId)) throw new TypeError('invalid project id')
   if (typeof value.fileId !== 'string' || !/^file:[a-f0-9]{24}$/.test(value.fileId)) throw new TypeError('invalid file id')
   return Object.freeze(value as unknown as FileActionRequest)
+}
+
+export function parseCanvasSnapshot(value: unknown): CanvasSnapshot {
+  if (!isRecord(value) || Object.keys(value).some((key) => !['document', 'revision', 'hash', 'cursor'].includes(key))) throw new TypeError('invalid canvas snapshot')
+  if (!isRecord(value.document) || value.document.schemaVersion !== 1 || !isRecord(value.document.nodes)) throw new TypeError('invalid canvas document')
+  if (!Number.isSafeInteger(value.revision) || (value.revision as number) < 0 || value.document.revision !== value.revision) throw new TypeError('invalid canvas revision')
+  if (!Number.isSafeInteger(value.cursor) || (value.cursor as number) < 0) throw new TypeError('invalid canvas cursor')
+  if (typeof value.hash !== 'string' || !/^[a-f0-9]{64}$/.test(value.hash)) throw new TypeError('invalid canvas hash')
+  if (JSON.stringify(value).length > 20_000_000) throw new TypeError('canvas snapshot is too large')
+  return structuredClone(value) as CanvasSnapshot
+}
+
+export function parseCanvasMutationRequest(value: unknown): CanvasMutationRequest {
+  if (!isRecord(value) || Object.keys(value).some((key) => key !== 'apiVersion' && key !== 'operation')) throw new TypeError('invalid canvas mutation request')
+  if (value.apiVersion !== HOST_API_VERSION || !isRecord(value.operation)) throw new TypeError('invalid canvas mutation version or operation')
+  const operation = value.operation
+  const types = new Set(['create-node', 'delete-node', 'update-node', 'transform-nodes', 'set-node-property', 'update-text', 'set-token-mode', 'reparent-node', 'reorder-node', 'select-nodes', 'set-viewport'])
+  if (typeof operation.type !== 'string' || !types.has(operation.type)) throw new TypeError('unsupported canvas operation')
+  if (typeof operation.id !== 'string' || !/^[A-Za-z0-9][A-Za-z0-9._:-]{0,127}$/.test(operation.id)) throw new TypeError('invalid canvas operation id')
+  if (typeof operation.at !== 'string' || Number.isNaN(Date.parse(operation.at))) throw new TypeError('invalid canvas operation timestamp')
+  if (JSON.stringify(operation).length > 1_000_000) throw new TypeError('canvas operation is too large')
+  return Object.freeze({ apiVersion: HOST_API_VERSION, operation: structuredClone(operation) as unknown as CanvasOperation })
 }

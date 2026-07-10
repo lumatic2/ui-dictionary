@@ -17,6 +17,10 @@ export interface AgentDesignDesktopHost {
   getBridgeStatus(request: { apiVersion: 1 }): Promise<DesktopBridgeStatus>
   copyTerminalCommand(request: { apiVersion: 1; actor: 'codex' | 'claude' }): Promise<{ copied: true }>
   onBridgeStatus(listener: (status: DesktopBridgeStatus) => void): () => void
+  getCanvasSnapshot(request: { apiVersion: 1 }): Promise<DesktopCanvasSnapshot>
+  applyCanvasOperation(request: { apiVersion: 1; operation: CanvasOperation }): Promise<DesktopCanvasSnapshot>
+  undoCanvas(request: { apiVersion: 1 }): Promise<DesktopCanvasSnapshot>
+  onCanvasSnapshot(listener: (snapshot: DesktopCanvasSnapshot, reason: DesktopCanvasSnapshotReason) => void): () => void
   selectProject(request: { apiVersion: 1 }): Promise<ProjectSelectionResult>
   recentProjects(request: { apiVersion: 1 }): Promise<TrustedProjectSummary[]>
   openRecentProject(request: { apiVersion: 1; projectId: string }): Promise<TrustedProjectSummary>
@@ -26,6 +30,14 @@ export interface AgentDesignDesktopHost {
   revealProject(request: { apiVersion: 1; projectId: string }): Promise<{ opened: true }>
   openFile(request: { apiVersion: 1; projectId: string; fileId: string }): Promise<{ opened: true }>
   exportDiagnostics(request: { apiVersion: 1 }): Promise<{ exported: boolean }>
+}
+
+export type DesktopCanvasSnapshotReason = 'initial' | 'event' | 'transaction' | 'recovery'
+export interface DesktopCanvasSnapshot {
+  document: CanvasDocument
+  revision: number
+  hash: string
+  cursor: number
 }
 
 export interface TrustedProjectSummary {
@@ -59,3 +71,4 @@ declare global {
     agentDesignHost?: AgentDesignDesktopHost
   }
 }
+import type { CanvasDocument, CanvasOperation } from '@askewly/canvas-core'

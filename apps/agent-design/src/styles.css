@@ -40,6 +40,7 @@ button, select { font: inherit; }
 .dom-editor-selection { position: absolute; pointer-events: none; border: 2px solid #7c3aed; box-shadow: 0 0 0 1px white; }
 .selection-marquee { position: absolute; pointer-events: none; border: 1px solid #6f2dbd; background: rgb(111 45 189 / 0.08); }
 .manipulation-selection { position: absolute; z-index: 4; border: 1px solid transparent; cursor: move; touch-action: none; }
+.manipulation-selection-text { pointer-events: none; }
 .resize-handle { position: absolute; width: 9px; height: 9px; padding: 0; border: 1px solid #6f2dbd; border-radius: 2px; background: white; }
 .resize-handle-nw { left: -5px; top: -5px; cursor: nwse-resize; }
 .resize-handle-n { left: calc(50% - 4px); top: -5px; cursor: ns-resize; }

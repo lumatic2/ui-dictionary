@@ -1,5 +1,5 @@
 import { describe, expect, it } from 'vitest'
-import { HOST_API_VERSION, parseBridgeStatus, parseHostRequest, parseTrustedFileSummary, parseTrustedProjectSummary } from '../src/contract'
+import { HOST_API_VERSION, parseBridgeStatus, parseCanvasMutationRequest, parseCanvasSnapshot, parseHostRequest, parseTrustedFileSummary, parseTrustedProjectSummary } from '../src/contract'
 
 describe('host authority contract', () => {
   it('accepts versioned opaque project and session identifiers', () => {
@@ -21,6 +21,23 @@ describe('host authority contract', () => {
     { apiVersion: 1, sessionId: '' },
   ])('rejects unversioned or authority-bearing input %#', (input) => {
     expect(() => parseHostRequest(input)).toThrow()
+  })
+})
+
+describe('canvas relay contract', () => {
+  it('accepts a bounded typed operation and rejects authority-shaped input', () => {
+    expect(parseCanvasMutationRequest({ apiVersion: 1, operation: { id: 'select-1', at: '2026-07-11T01:00:00.000Z', type: 'select-nodes', nodeIds: [] } }).operation.type).toBe('select-nodes')
+    expect(() => parseCanvasMutationRequest({ apiVersion: 1, operation: { id: 'run', at: '2026-07-11T01:00:00.000Z', type: 'run-command', command: 'calc' } })).toThrow('unsupported canvas operation')
+  })
+
+  it('rejects snapshots with extra secret fields', () => {
+    expect(() => parseCanvasSnapshot({
+      document: { schemaVersion: 1, revision: 0, nodes: {} },
+      revision: 0,
+      cursor: 0,
+      hash: 'a'.repeat(64),
+      token: 'secret',
+    })).toThrow('invalid canvas snapshot')
   })
 })
 

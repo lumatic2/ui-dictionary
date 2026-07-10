@@ -13,7 +13,7 @@ import {
 } from '@askewly/canvas-core'
 import { BrowserDocumentStore } from './browserStore'
 import { CanvasSurface } from './CanvasSurface'
-import { desktopHost, type DesktopBridgeStatus, type PreviewStatus, type TrustedFileSummary, type TrustedProjectSummary } from './desktopHost'
+import { desktopHost, type DesktopBridgeStatus, type DesktopCanvasSnapshot, type DesktopCanvasSnapshotReason, type PreviewStatus, type TrustedFileSummary, type TrustedProjectSummary } from './desktopHost'
 import { PropertyInspector } from './PropertyInspector'
 import type { EditorPlaneFailure } from './editorPlaneRuntime'
 import { LiveBridgeClient, liveBridgeConfig } from './liveBridge'
@@ -48,10 +48,17 @@ export function App() {
   const [activeProject, setActiveProject] = useState<TrustedProjectSummary | null>(null)
   const [preview, setPreview] = useState<PreviewStatus | null>(null)
   const [projectFiles, setProjectFiles] = useState<TrustedFileSummary[]>([])
-  const liveConfig = useMemo(() => liveBridgeConfig(), [])
+  const liveConfig = useMemo(() => desktopHost() ? null : liveBridgeConfig(), [])
   const liveClient = useRef<LiveBridgeClient | null>(null)
   const pendingPaint = useRef<{ revision: number; started: number } | null>(null)
   const storageKey = `agent-design:${baseDocument.id}`
+
+  const acceptDesktopSnapshot = useCallback((snapshot: DesktopCanvasSnapshot, reason: DesktopCanvasSnapshotReason, receivedAt = performance.now()) => {
+    pendingPaint.current = { revision: snapshot.revision, started: receivedAt }
+    setHistory(createHistory(snapshot.document))
+    setStatus(`${reason} revision ${snapshot.revision}`)
+    setConnection('connected')
+  }, [])
 
   useEffect(() => {
     setHistory(createHistory(baseDocument))
@@ -89,8 +96,23 @@ export function App() {
       }
     }, () => undefined)
     const unsubscribe = host.onBridgeStatus((next) => { if (active) setDesktopBridge(next) })
-    return () => { active = false; unsubscribe() }
-  }, [])
+    const unsubscribeCanvas = host.onCanvasSnapshot((snapshot, reason) => {
+      if (active) acceptDesktopSnapshot(snapshot, reason)
+    })
+    return () => { active = false; unsubscribe(); unsubscribeCanvas() }
+  }, [acceptDesktopSnapshot])
+
+  useEffect(() => {
+    const host = desktopHost()
+    if (!host || desktopBridge?.state !== 'ready') return
+    let active = true
+    setConnection('connecting')
+    void host.getCanvasSnapshot({ apiVersion: 1 }).then(
+      (snapshot) => { if (active) acceptDesktopSnapshot(snapshot, desktopBridge.recoveryMode === 'recovered' ? 'recovery' : 'initial') },
+      () => { if (active) setConnection('reconnecting') },
+    )
+    return () => { active = false }
+  }, [acceptDesktopSnapshot, desktopBridge?.recoveryMode, desktopBridge?.state])
 
   useEffect(() => {
     const host = desktopHost()
@@ -151,21 +173,39 @@ export function App() {
   }, [])
 
   const commit = useCallback((operation: CanvasOperation) => {
+    const host = desktopHost()
+    if (host && desktopBridge?.state === 'ready') {
+      const started = performance.now()
+      void host.applyCanvasOperation({ apiVersion: 1, operation }).then(
+        (snapshot) => acceptDesktopSnapshot(snapshot, 'transaction', started),
+        (error: unknown) => setStatus(error instanceof Error ? error.message : 'desktop bridge mutation failed'),
+      )
+      return
+    }
     if (liveClient.current) {
       void liveClient.current.applyOperation(operation).catch((error) => setStatus(error instanceof Error ? error.message : 'bridge mutation failed'))
       return
     }
     setHistory((current) => commitOperation(current, operation))
     setStatus('changed')
-  }, [])
+  }, [acceptDesktopSnapshot, desktopBridge?.state])
 
   const undoCurrent = useCallback(() => {
+    const host = desktopHost()
+    if (host && desktopBridge?.state === 'ready') {
+      const started = performance.now()
+      void host.undoCanvas({ apiVersion: 1 }).then(
+        (snapshot) => acceptDesktopSnapshot(snapshot, 'transaction', started),
+        (error: unknown) => setStatus(error instanceof Error ? error.message : 'desktop bridge undo failed'),
+      )
+      return
+    }
     if (liveClient.current) {
       void liveClient.current.undo().catch((error) => setStatus(error instanceof Error ? error.message : 'bridge undo failed'))
       return
     }
     setHistory(undo)
-  }, [])
+  }, [acceptDesktopSnapshot, desktopBridge?.state])
 
   const save = useCallback(async () => {
     const bytes = await saveSnapshot(store, storageKey, baseDocument, history.log)

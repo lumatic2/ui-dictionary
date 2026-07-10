@@ -8,7 +8,7 @@ export const CONTENT_SECURITY_POLICY = [
   "style-src 'self' 'unsafe-inline'",
   "img-src 'self' data: blob:",
   "font-src 'self' data:",
-  "connect-src 'self' ws://127.0.0.1:*",
+  "connect-src 'none'",
   "worker-src 'self' blob:",
   "object-src 'none'",
   "frame-src 'none'",

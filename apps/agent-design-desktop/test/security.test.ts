@@ -29,10 +29,10 @@ describe('desktop renderer security', () => {
     expect(isTrustedRendererUrl('app://renderer/index.html')).toBe(true)
   })
 
-  it('uses a default-deny CSP with loopback-only bridge connectivity', () => {
+  it('uses a default-deny CSP with no renderer network connectivity', () => {
     expect(CONTENT_SECURITY_POLICY).toContain("default-src 'none'")
     expect(CONTENT_SECURITY_POLICY).toContain("object-src 'none'")
-    expect(CONTENT_SECURITY_POLICY).toContain('ws://127.0.0.1:*')
+    expect(CONTENT_SECURITY_POLICY).toContain("connect-src 'none'")
     expect(CONTENT_SECURITY_POLICY).not.toContain('https:')
     expect(CONTENT_SECURITY_POLICY).not.toContain('unsafe-eval')
   })

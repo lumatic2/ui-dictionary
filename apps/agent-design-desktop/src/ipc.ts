@@ -3,6 +3,8 @@ import {
   HOST_API_VERSION,
   HOST_IPC_CHANNELS,
   parseFileActionRequest,
+  parseCanvasMutationRequest,
+  parseCanvasSnapshot,
   parseHostRequest,
   parsePreviewStatus,
   parseProjectSelectionResult,
@@ -10,6 +12,7 @@ import {
   parseTrustedFileSummary,
   parseTrustedProjectSummary,
   type BridgeStatus,
+  type CanvasSnapshot,
   type HostInfo,
   type PreviewStatus,
   type ProjectSelectionResult,
@@ -31,6 +34,9 @@ export interface HostIpcServices {
   revealProject(projectId: string): Promise<void>
   openFile(projectId: string, fileId: string): Promise<void>
   exportDiagnostics(): Promise<boolean>
+  canvasSnapshot(): CanvasSnapshot
+  applyCanvasOperation(operation: unknown): Promise<CanvasSnapshot>
+  undoCanvas(): Promise<CanvasSnapshot>
 }
 
 const idleServices: HostIpcServices = {
@@ -56,6 +62,9 @@ const idleServices: HostIpcServices = {
   revealProject: async () => undefined,
   openFile: async () => undefined,
   exportDiagnostics: async () => false,
+  canvasSnapshot: () => { throw new Error('canvas relay is not ready') },
+  applyCanvasOperation: async () => { throw new Error('canvas relay is not ready') },
+  undoCanvas: async () => { throw new Error('canvas relay is not ready') },
 }
 
 export function isTrustedIpcSender(event: IpcMainInvokeEvent): boolean {
@@ -93,6 +102,24 @@ export function registerHostIpc(appVersion: string, services: HostIpcServices = 
     const request = parseTerminalCommandRequest(rawRequest)
     await services.copyTerminalCommand(request.actor)
     return Object.freeze({ copied: true })
+  })
+
+  ipcMain.handle(HOST_IPC_CHANNELS.getCanvasSnapshot, (event, rawRequest): CanvasSnapshot => {
+    if (!isTrustedIpcSender(event)) throw new Error('untrusted IPC sender')
+    parseHostRequest(rawRequest)
+    return parseCanvasSnapshot(services.canvasSnapshot())
+  })
+
+  ipcMain.handle(HOST_IPC_CHANNELS.applyCanvasOperation, async (event, rawRequest): Promise<CanvasSnapshot> => {
+    if (!isTrustedIpcSender(event)) throw new Error('untrusted IPC sender')
+    const request = parseCanvasMutationRequest(rawRequest)
+    return parseCanvasSnapshot(await services.applyCanvasOperation(request.operation))
+  })
+
+  ipcMain.handle(HOST_IPC_CHANNELS.undoCanvas, async (event, rawRequest): Promise<CanvasSnapshot> => {
+    if (!isTrustedIpcSender(event)) throw new Error('untrusted IPC sender')
+    parseHostRequest(rawRequest)
+    return parseCanvasSnapshot(await services.undoCanvas())
   })
 
   ipcMain.handle(HOST_IPC_CHANNELS.selectProject, async (event, rawRequest): Promise<ProjectSelectionResult> => {
@@ -159,6 +186,9 @@ export function registerHostIpc(appVersion: string, services: HostIpcServices = 
     ipcMain.removeHandler(HOST_IPC_CHANNELS.getHostInfo)
     ipcMain.removeHandler(HOST_IPC_CHANNELS.getBridgeStatus)
     ipcMain.removeHandler(HOST_IPC_CHANNELS.copyTerminalCommand)
+    ipcMain.removeHandler(HOST_IPC_CHANNELS.getCanvasSnapshot)
+    ipcMain.removeHandler(HOST_IPC_CHANNELS.applyCanvasOperation)
+    ipcMain.removeHandler(HOST_IPC_CHANNELS.undoCanvas)
     ipcMain.removeHandler(HOST_IPC_CHANNELS.selectProject)
     ipcMain.removeHandler(HOST_IPC_CHANNELS.recentProjects)
     ipcMain.removeHandler(HOST_IPC_CHANNELS.openRecentProject)

@@ -71,6 +71,7 @@ describe('trusted project registry', () => {
     const summary = await controller.trustAndOpen(project)
     expect(starts).toHaveLength(1)
     expect(starts[0]).toMatchObject({ projectId: summary.id, projectRoot: project, document: { name: 'project' } })
+    expect(starts[0]?.document.nodes['project-app']).toMatchObject({ kind: 'code-component', source: { file: 'src/App.tsx', exportName: 'App' } })
     expect(starts[0]?.recoveryRoot).toBe(join(userData, 'projects', summary.id.slice('project:'.length)))
     expect(JSON.stringify(summary)).not.toContain(project)
   })

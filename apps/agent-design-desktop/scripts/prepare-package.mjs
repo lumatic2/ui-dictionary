@@ -26,6 +26,7 @@ const common = {
   sourcemap: false,
   minify: false,
   legalComments: 'none',
+  banner: { js: "import { createRequire as __agentDesignCreateRequire } from 'node:module'; const require = __agentDesignCreateRequire(import.meta.url);" },
   metafile: true,
   logLevel: 'info',
 }

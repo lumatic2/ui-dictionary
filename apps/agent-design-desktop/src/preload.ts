@@ -3,6 +3,8 @@ import {
   HOST_API_VERSION,
   HOST_IPC_CHANNELS,
   parseBridgeStatus,
+  parseCanvasMutationRequest,
+  parseCanvasSnapshot,
   parseFileActionRequest,
   parseHostRequest,
   parsePreviewStatus,
@@ -11,6 +13,8 @@ import {
   parseTrustedFileSummary,
   parseTrustedProjectSummary,
   type BridgeStatus,
+  type CanvasSnapshot,
+  type CanvasSnapshotReason,
   type HostInfo,
   type HostRequest,
   type FileActionRequest,
@@ -40,6 +44,25 @@ const hostApi = Object.freeze({
     const wrapped = (_event: Electron.IpcRendererEvent, rawStatus: unknown) => listener(parseBridgeStatus(rawStatus))
     ipcRenderer.on(HOST_IPC_CHANNELS.bridgeStatusChanged, wrapped)
     return () => ipcRenderer.removeListener(HOST_IPC_CHANNELS.bridgeStatusChanged, wrapped)
+  },
+  async getCanvasSnapshot(request: HostRequest): Promise<CanvasSnapshot> {
+    return parseCanvasSnapshot(await ipcRenderer.invoke(HOST_IPC_CHANNELS.getCanvasSnapshot, parseHostRequest(request)))
+  },
+  async applyCanvasOperation(request: unknown): Promise<CanvasSnapshot> {
+    const parsed = parseCanvasMutationRequest(request)
+    return parseCanvasSnapshot(await ipcRenderer.invoke(HOST_IPC_CHANNELS.applyCanvasOperation, parsed))
+  },
+  async undoCanvas(request: HostRequest): Promise<CanvasSnapshot> {
+    return parseCanvasSnapshot(await ipcRenderer.invoke(HOST_IPC_CHANNELS.undoCanvas, parseHostRequest(request)))
+  },
+  onCanvasSnapshot(listener: (snapshot: CanvasSnapshot, reason: CanvasSnapshotReason) => void): () => void {
+    if (typeof listener !== 'function') throw new TypeError('canvas snapshot listener must be a function')
+    const wrapped = (_event: Electron.IpcRendererEvent, rawSnapshot: unknown, reason: unknown) => {
+      if (reason !== 'initial' && reason !== 'event' && reason !== 'transaction' && reason !== 'recovery') throw new TypeError('invalid canvas snapshot reason')
+      listener(parseCanvasSnapshot(rawSnapshot), reason)
+    }
+    ipcRenderer.on(HOST_IPC_CHANNELS.canvasSnapshotChanged, wrapped)
+    return () => ipcRenderer.removeListener(HOST_IPC_CHANNELS.canvasSnapshotChanged, wrapped)
   },
   async selectProject(request: HostRequest): Promise<ProjectSelectionResult> {
     return parseProjectSelectionResult(await ipcRenderer.invoke(HOST_IPC_CHANNELS.selectProject, parseHostRequest(request)))

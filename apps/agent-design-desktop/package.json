@@ -6,7 +6,9 @@
   "author": "Askewly",
   "productName": "Agent Design",
   "main": "dist/main.js",
-  "config": { "forge": "./forge.config.cjs" },
+  "config": {
+    "forge": "./forge.config.cjs"
+  },
   "scripts": {
     "prestart": "npm run build",
     "start": "electron .",
@@ -23,7 +25,11 @@
     "prepare:package": "npm run build && node scripts/prepare-package.mjs",
     "premake:win": "npm run prepare:package",
     "make:win": "electron-forge make --platform=win32 --arch=x64",
-    "verify:package": "node scripts/verify-package.mjs"
+    "verify:package": "node scripts/verify-package.mjs",
+    "pretest:packaged-e2e": "npm run make:win",
+    "test:packaged-e2e": "node scripts/run-packaged-e2e.mjs && node scripts/run-installer-lifecycle.mjs",
+    "test:packaged-child": "node scripts/run-packaged-child-smoke.mjs",
+    "verify:packaged-evidence": "node scripts/verify-packaged-evidence.mjs"
   },
   "devDependencies": {
     "@askewly/agent-design": "file:../agent-design",
@@ -38,7 +44,9 @@
     "@types/node": "^24.13.2",
     "electron": "43.1.0",
     "esbuild": "0.28.1",
+    "pixelmatch": "^7.1.0",
     "png-to-ico": "3.0.2",
+    "pngjs": "^7.0.0",
     "typescript": "~6.0.2",
     "vitest": "^3.2.7"
   },

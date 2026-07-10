@@ -1,7 +1,9 @@
 import { app, BrowserWindow, clipboard, dialog, session, shell } from 'electron'
 import { open, rename, rm } from 'node:fs/promises'
+import { spawn } from 'node:child_process'
 import { join, resolve } from 'node:path'
 import { BridgeSupervisor } from './bridge-supervisor'
+import { BridgeRelay } from './bridge-relay'
 import { ElectronBridgeProcessFactory } from './electron-bridge-process'
 import { HOST_IPC_CHANNELS } from './contract'
 import { createDiagnosticBundle } from './diagnostics'
@@ -11,6 +13,7 @@ import { PreviewManager, registerPreviewScheme } from './preview-manager'
 import { ProjectController } from './project-controller'
 import { TrustedProjectRegistry } from './project-registry'
 import { installAppProtocol, registerAppScheme } from './protocol'
+import { squirrelStartupPlan } from './squirrel-startup'
 import {
   APP_ORIGIN,
   configureSessionSecurity,
@@ -18,9 +21,19 @@ import {
   createMainWindowOptions,
 } from './security'
 
-registerAppScheme()
-registerPreviewScheme()
-app.enableSandbox()
+const squirrel = squirrelStartupPlan(process.argv, process.execPath)
+if (squirrel) {
+  if (!squirrel.updateExecutable) app.quit()
+  else {
+    const update = spawn(squirrel.updateExecutable, [...squirrel.args], { detached: true, stdio: 'ignore', windowsHide: true })
+    update.once('error', (error) => { console.error('Squirrel startup action failed', error); app.quit() })
+    update.once('close', () => app.quit())
+  }
+} else {
+  registerAppScheme()
+  registerPreviewScheme()
+  app.enableSandbox()
+}
 
 async function writeDiagnosticExport(path: string, content: string): Promise<void> {
   const temporary = `${path}.tmp-${process.pid}-${Date.now()}`
@@ -68,9 +81,11 @@ async function createMainWindow(setup?: (window: BrowserWindow) => void): Promis
 }
 
 app.whenReady().then(async () => {
+  if (squirrel) return
   configureSessionSecurity(session.defaultSession)
   await installAppProtocol(rendererRoot())
   const supervisor = new BridgeSupervisor(new ElectronBridgeProcessFactory(bridgeChildEntry()), adapterEntry())
+  const relay = new BridgeRelay()
   const registry = new TrustedProjectRegistry(app.getPath('userData'))
   await registry.initialize()
   const projects = new ProjectController(registry, supervisor)
@@ -79,6 +94,9 @@ app.whenReady().then(async () => {
   registerHostIpc(app.getVersion(), {
     bridgeStatus: () => supervisor.status(),
     copyTerminalCommand: (actor) => clipboard.writeText(supervisor.terminalCommand(actor)),
+    canvasSnapshot: () => relay.currentSnapshot(),
+    applyCanvasOperation: (operation) => relay.applyOperation(operation),
+    undoCanvas: () => relay.undo(),
     selectProject: async () => {
       const parent = BrowserWindow.getFocusedWindow()
       const options: Electron.OpenDialogOptions = { title: 'Trust a React project', properties: ['openDirectory', 'dontAddToRecent'] }
@@ -114,9 +132,25 @@ app.whenReady().then(async () => {
       return true
     },
   })
+  relay.subscribe((snapshot, reason) => {
+    for (const window of BrowserWindow.getAllWindows()) {
+      window.webContents.send(HOST_IPC_CHANNELS.canvasSnapshotChanged, snapshot, reason)
+    }
+  })
+  let relayedProjectId: string | null = null
   supervisor.subscribe((status) => {
     for (const window of BrowserWindow.getAllWindows()) {
       window.webContents.send(HOST_IPC_CHANNELS.bridgeStatusChanged, status)
+    }
+    if (status.state === 'ready' && status.projectId && relayedProjectId !== status.projectId) {
+      relayedProjectId = status.projectId
+      void relay.connect(supervisor.mainConnection()).catch((error: unknown) => {
+        relayedProjectId = null
+        console.error('Canvas relay failed to connect', error)
+      })
+    } else if (status.state !== 'ready' && relayedProjectId !== null) {
+      relay.disconnect()
+      relayedProjectId = null
     }
   })
   let shutdownStarted = false
@@ -124,6 +158,7 @@ app.whenReady().then(async () => {
     if (shutdownStarted) return
     event.preventDefault()
     shutdownStarted = true
+    relay.disconnect()
     void supervisor.stop().finally(() => app.quit())
   })
   const [recent] = await projects.recent()
@@ -139,5 +174,5 @@ app.whenReady().then(async () => {
 })
 
 app.on('window-all-closed', () => {
-  if (process.platform !== 'darwin') app.quit()
+  if (!squirrel && process.platform !== 'darwin') app.quit()
 })

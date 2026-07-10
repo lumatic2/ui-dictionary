@@ -188,7 +188,7 @@ export function CanvasSurface({ document, editorPlaneFailure = null, onOperation
     event.stopPropagation()
     gestureRef.current = { start: { x: event.clientX, y: event.clientY }, before, kind, handle }
     setPreviewBounds(before)
-    event.currentTarget.setPointerCapture?.(event.pointerId)
+    if (event.isTrusted) event.currentTarget.setPointerCapture?.(event.pointerId)
   }, [document])
 
   const updateGesture = useCallback((event: React.PointerEvent) => {
@@ -233,7 +233,7 @@ export function CanvasSurface({ document, editorPlaneFailure = null, onOperation
       if (event.target !== event.currentTarget) return
       dragStart.current = canvasPoint(event.clientX, event.clientY)
       setMarquee(normalizeRect(dragStart.current, dragStart.current))
-      event.currentTarget.setPointerCapture?.(event.pointerId)
+      if (event.isTrusted) event.currentTarget.setPointerCapture?.(event.pointerId)
     }}
     onPointerMove={(event) => {
       if (gestureRef.current) { updateGesture(event); return }
@@ -307,7 +307,7 @@ export function CanvasSurface({ document, editorPlaneFailure = null, onOperation
         failure={editorPlaneFailure}
       />
       <div
-        className="manipulation-selection"
+        className={`manipulation-selection${document.selection.length === 1 && document.nodes[document.selection[0]]?.kind === 'text' ? ' manipulation-selection-text' : ''}`}
         data-testid="manipulation-selection"
         aria-label="Move selection"
         style={{ left: selection.x, top: selection.y, width: selection.width, height: selection.height }}
