@@ -1,7 +1,7 @@
 # Horizon - Agent-Native UI Canvas
 
 Date: 2026-07-10
-Status: active — AUC0/AUC1/AUC2/AUC3 complete; AUC4 Desktop Productization planning gate active.
+Status: completed — AUC0 through AUC4 complete on 2026-07-11.
 
 ## Goal
 
@@ -52,11 +52,13 @@ Evidence: `docs/plans/2026-07-10-auc3-terminal-agent-live-canvas.md` + `phases/a
 
 Result: one loopback bridge now serves Codex and Claude through a shared stdio MCP adapter; guarded operations/source patches auto-apply with exact audit and Undo; WebSocket canvas and source watcher converge live. Fresh independent system Chrome measured acknowledgement→visible p95 59.4ms and file edit→visible p95 144.4ms. Installed Codex and Claude both read the fresh project context at revision 4.
 
-### AUC4 - Desktop Productization And Quality Gate — active planning gate
+### AUC4 - Desktop Productization And Quality Gate — completed
 
 DoD: Windows installer, trusted folder import, sandboxed project preview, crash/autosave recovery, update/diagnostics boundary, representative end-to-end flow를 검증한다. renderer에 Node/Electron authority가 노출되지 않고 AUC0 성능 budget을 packaged build에서도 유지한다.
 
 Evidence: `docs/plans/2026-07-10-auc4-desktop-productization-quality-gate.md` + `phases/agent-design-desktop-productization/` + packaged-app E2E + installer/recovery/security evidence.
+
+Result: secure Electron authority boundaries, supervised recovery, trusted project persistence, sandboxed preview, unsigned-development Squirrel lifecycle, dual terminal round-trip, packaged 5k p95 11.5ms, watcher 130.2ms, and restart pixel drift 0 were verified. The actual Microsoft IME check remains unverified and was explicitly waived by the user rather than reported as passed.
 
 ## Close Criteria
 

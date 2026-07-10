@@ -2,7 +2,7 @@
 
 Date: 2026-07-10
 Milestone: AUC4 (`ROADMAP.md`, active planning gate)
-Status: approved 2026-07-11 — Steps 1-5 complete; Step 6 in progress
+Status: completed 2026-07-11 — Steps 1-6 complete
 
 ## Hierarchy
 
@@ -42,7 +42,7 @@ Status: approved 2026-07-11 — Steps 1-5 complete; Step 6 in progress
   - Package x64 Windows artifacts, apply production Electron fuses, generate icon/metadata, build Squirrel installer, record sizes/hashes/SBOM, and keep update/public release disabled unless signing inputs exist.
   - Verify: packaged artifact inspection, fuse/security scan, checksum/SBOM, installer creation, no embedded secrets/dev URLs/source maps.
 
-- [~] Step 6 — Packaged E2E and representative quality proof
+- [x] Step 6 — Packaged E2E and representative quality proof
   - Run installed/unpacked app: trust fresh React project → canvas/manual edit → dual terminal adapter → source watcher → crash/autosave recovery → browser verification → uninstall cleanup.
   - Verify: AUC0 5k p95 ≤16ms, bridge ack→visible ≤100ms, file edit→visible ≤300ms, WebGPU fallback, keyboard/a11y, actual Microsoft IME, process leak, installer/install/uninstall, screenshot/drift/security evidence.
 

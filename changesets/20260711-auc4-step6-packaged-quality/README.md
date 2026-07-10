@@ -1,4 +1,4 @@
-# AUC4 Step 6 — Packaged E2E And Representative Quality Proof (Partial)
+# AUC4 Step 6 — Packaged E2E And Representative Quality Proof
 
 ## Outcome
 
@@ -17,8 +17,8 @@
 - `npm run verify:package` — 5 artifacts, 5 resources, and all 9 explicit fuse states passed; `npm audit --omit=optional` — 0 vulnerabilities.
 - Code commits: `fdfe727`, `ca0cbfc`.
 
-## Open gate
+## Explicit IME waiver
 
-- `npm run verify:packaged-evidence` intentionally fails with `COMPUTER_USE_HANGUL_KEY_UNSUPPORTED`.
+- The user explicitly waived the actual Microsoft IME gate on 2026-07-11. The evidence keeps `actualMicrosoftImePass: false` and records the waiver separately.
 - Computer Use drove the real packaged window and confirmed the fixed text surface accepts Roman input, but its `Hangul` keysym is unsupported and alternative layout/mode shortcuts did not activate Microsoft Korean IME composition. No synthetic event or literal Korean injection is being counted as an actual IME pass.
-- Required proof is recorded in `results/packaged/ime-manual.json`. AUC4 and Step 6 remain in progress until that exact manual proof is observed or the user explicitly waives the gate.
+- The attempts and waiver are recorded in `results/packaged/ime-manual.json`; `npm run verify:packaged-evidence` accepts only an actual non-synthetic pass or this explicit user waiver.

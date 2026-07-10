@@ -24,4 +24,4 @@ cd apps/agent-design-desktop; npm run test:packaged-e2e; npm run verify:packaged
 ## Current evidence — 2026-07-11
 
 - Packaged dual adapter, human/source round-trip, utility crash/recovery, restart drift, 5k/fallback/keyboard, process cleanup, and current-user Squirrel install/launch/uninstall gates pass.
-- Actual Microsoft IME remains open. `results/packaged/ime-manual.json` records the real Windows UI attempts and the unsupported Hangul-key blocker; `verify:packaged-evidence` fails closed until pass evidence exists.
+- The actual Microsoft IME check remains unverified and is not reported as passed. The user explicitly waived this gate on 2026-07-11; `results/packaged/ime-manual.json` records both the failed real Windows UI attempts and the separate user waiver.

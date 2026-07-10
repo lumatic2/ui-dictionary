@@ -19,11 +19,13 @@ if (report.processCleanup?.packagedExecutableStillRunning) errors.push('packaged
 if (report.consoleErrors?.length) errors.push(`packaged console errors: ${report.consoleErrors.join('; ')}`)
 if (!Number.isInteger(report.instrumentation?.knownElectronSandboxStartupExceptions) || report.instrumentation.knownElectronSandboxStartupExceptions > 4) errors.push('unexpected Electron sandbox startup telemetry volume')
 if (!installer.installed || !installer.launched || !installer.rendererSecurityVerified || !installer.startMenuShortcutCreated || !installer.desktopShortcutCreated || !installer.uninstalled || !installer.uninstallerRemovedApplicationPayload || !installer.harnessRemovedExpectedTombstone || !installer.installDirectoryRemoved || !installer.shortcutRemoved) errors.push('installer lifecycle evidence failed')
-if (!ime.actualMicrosoftImePass || ime.syntheticOnly) errors.push(`actual Microsoft IME gate remains open: ${ime.blockerCode ?? 'NO_PASS_EVIDENCE'}`)
+const imeGateSatisfied = (ime.actualMicrosoftImePass && !ime.syntheticOnly)
+  || (ime.waived === true && ime.waivedBy === 'user')
+if (!imeGateSatisfied) errors.push(`actual Microsoft IME gate remains open: ${ime.blockerCode ?? 'NO_PASS_EVIDENCE'}`)
 
 if (errors.length) {
   console.error(errors.join('\n'))
   process.exitCode = 1
 } else {
-  console.log(`packaged evidence: PASS (5k p95 ${report.performance.p95WorstMs.toFixed(2)}ms; restart drift 0; watcher ${report.roundTrip.watcherVisibleMs.toFixed(1)}ms)`)
+  console.log(`packaged evidence: PASS (5k p95 ${report.performance.p95WorstMs.toFixed(2)}ms; restart drift 0; watcher ${report.roundTrip.watcherVisibleMs.toFixed(1)}ms; IME ${ime.actualMicrosoftImePass ? 'passed' : 'user-waived'})`)
 }

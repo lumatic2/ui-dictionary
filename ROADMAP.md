@@ -1,23 +1,26 @@
 # ROADMAP
 
-> Last updated: 2026-07-10
-> Status: Agent-Native UI Canvas — AUC4 desktop productization planning gate
+> Last updated: 2026-07-11
+> Status: Agent-Native UI Canvas horizon completed
 > North star: Build Askewly Design as both a public reference website and an agent-usable implementation system.
 > line budget: <=150
 
 ## Current Horizon
 
-<!-- harness:goal id="agent-native-ui-canvas" status="active" -->
+<!-- harness:goal id="agent-native-ui-canvas" status="completed" -->
 Goal: Agent Design를 code-native UI canvas로 만든다 — evidence-based engine bake-off → canonical canvas → direct manipulation → canvas agent/code round-trip → packaged quality gate. Details: `docs/horizons/2026-07-agent-native-ui-canvas.md`.
 
 ## Active Milestones
 
-<!-- harness:milestone id="AUC4" status="active" priority="P2" -->
+<!-- harness:milestone id="AUC4" status="completed" priority="P2" evidence="changesets/20260711-auc4-step6-packaged-quality/README.md" -->
 ### AUC4 — Desktop Productization And Quality Gate
 - DoD: Electron Windows host가 trusted folder, supervised bridge, durable recovery, sandboxed preview, diagnostics, Squirrel installer를 제공하고 packaged AUC0/AUC3 quality/security/IME gates를 통과한다.
 - Evidence: `docs/plans/2026-07-10-auc4-desktop-productization-quality-gate.md` + `phases/agent-design-desktop-productization/` + packaged-app/installer/recovery evidence.
 - Gap: 검증된 canvas/bridge가 아직 개발 프로세스이며 설치·권한·복구 lifecycle을 가진 Windows 제품이 아니다.
-- Status: [ ]
+- Status: [x]
+
+- Completed at: 2026-07-11
+- Summary: packaged Electron/Squirrel lifecycle, secure authority boundaries, supervised recovery, dual-terminal round-trip, and packaged performance/drift gates passed; actual Microsoft IME remained unverified and was explicitly user-waived.
 
 <!-- harness:milestone id="AUC3" status="completed" priority="P1" evidence="changesets/20260710-auc3-step5-dual-cli-proof/README.md" -->
 ### AUC3 — Terminal Agent Live Canvas Round-trip
@@ -57,7 +60,7 @@ Goal: Agent Design를 code-native UI canvas로 만든다 — evidence-based engi
 - Summary: 4개 엔진 후보 실측 후 계층형 DOM + WebGPU topology 사용자 확정
 ## Next Candidates
 
-- None while AUC4 is active.
+- None. The Agent-Native UI Canvas horizon is complete; the next horizon requires a new planning cascade.
 
 ## Archive Pointer
 
