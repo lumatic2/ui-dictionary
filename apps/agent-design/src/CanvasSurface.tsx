@@ -6,6 +6,9 @@ import {
   marqueeHitTest,
   moveBounds,
   normalizeRect,
+  paintOrder,
+  planNodeDrop,
+  planSiblingReorder,
   previewSelectionBounds,
   reduceSelection,
   resizeBounds,
@@ -43,7 +46,7 @@ function nodeStyle(node: CanvasNode, previewBounds?: CanvasNode['bounds']): Reac
   }
 }
 
-function CanvasNodeElement({ node, selected, previewBounds }: { node: CanvasNode; selected: boolean; previewBounds?: CanvasNode['bounds'] }) {
+function CanvasNodeElement({ node, selected, dropTarget, previewBounds }: { node: CanvasNode; selected: boolean; dropTarget: boolean; previewBounds?: CanvasNode['bounds'] }) {
   const shared = {
     'data-canvas-id': node.id,
     'data-parent-id': node.parentId ?? '',
@@ -52,6 +55,8 @@ function CanvasNodeElement({ node, selected, previewBounds }: { node: CanvasNode
     'aria-label': node.name,
     'aria-selected': selected,
     'data-selection-state': selected ? 'selected' : 'idle',
+    'data-drop-target': dropTarget ? 'active' : 'idle',
+    draggable: selected && !node.locked,
     className: `canvas-node node-${node.kind}`,
     style: nodeStyle(node, previewBounds),
   }
@@ -73,13 +78,15 @@ function CanvasNodeElement({ node, selected, previewBounds }: { node: CanvasNode
 export function CanvasSurface({ document, editorPlaneFailure = null, onOperation }: Props) {
   const viewportRef = useRef<HTMLDivElement>(null)
   const dragStart = useRef<{ x: number; y: number } | null>(null)
+  const structureDragId = useRef<string | null>(null)
   const [marquee, setMarquee] = useState<ReturnType<typeof normalizeRect> | null>(null)
   const gestureRef = useRef<{ start: { x: number; y: number }; before: BoundsById; kind: 'move' | 'resize'; handle?: ResizeHandle } | null>(null)
   const [previewBounds, setPreviewBounds] = useState<BoundsById>({})
   const [guides, setGuides] = useState<AlignmentGuide[]>([])
+  const [dropTargetId, setDropTargetId] = useState<string | null>(null)
   const selectedIds = useMemo(() => new Set(document.selection), [document.selection])
-  const orderedNodes = useMemo(() => Object.values(document.nodes), [document.nodes])
-  const nodeElements = useMemo(() => orderedNodes.map((node) => <CanvasNodeElement key={node.id} node={node} selected={selectedIds.has(node.id)} previewBounds={previewBounds[node.id]} />), [orderedNodes, previewBounds, selectedIds])
+  const orderedNodes = useMemo(() => paintOrder(document).map((id) => document.nodes[id]), [document])
+  const nodeElements = useMemo(() => orderedNodes.map((node) => <CanvasNodeElement key={node.id} node={node} selected={selectedIds.has(node.id)} dropTarget={dropTargetId === node.id} previewBounds={previewBounds[node.id]} />), [dropTargetId, orderedNodes, previewBounds, selectedIds])
   const transform = `translate(${document.viewport.pan.x}px, ${document.viewport.pan.y}px) scale(${document.viewport.zoom})`
   const canonicalSelection = Object.keys(previewBounds).length ? previewSelectionBounds(document, previewBounds) : selectionBounds(document)
   const selection = canonicalSelection ? {
@@ -123,11 +130,19 @@ export function CanvasSurface({ document, editorPlaneFailure = null, onOperation
       viewportRef.current?.focus()
       return
     }
+    if (event.altKey && (event.key === 'ArrowUp' || event.key === 'ArrowDown')) {
+      event.preventDefault()
+      const selected = document.selection.at(-1)
+      if (!selected) return
+      const plan = planSiblingReorder(document, selected, event.key === 'ArrowUp' ? -1 : 1)
+      if (plan.valid) onOperation?.({ type: 'reparent-node', id: `reorder-${performance.now()}`, at: new Date().toISOString(), ...plan })
+      return
+    }
     if (event.key !== 'ArrowRight' && event.key !== 'ArrowLeft') return
     event.preventDefault()
     const next = traverseSelection(document, event.key === 'ArrowRight' ? 1 : -1)
     if (next) commitSelection([next])
-  }, [commitSelection, document])
+  }, [commitSelection, document, onOperation])
 
   const beginGesture = useCallback((event: React.PointerEvent, kind: 'move' | 'resize', handle?: ResizeHandle) => {
     const before = captureBounds(document)
@@ -203,6 +218,45 @@ export function CanvasSurface({ document, editorPlaneFailure = null, onOperation
       setPreviewBounds({})
       setGuides([])
       setMarquee(null)
+    }}
+    onDragStart={(event) => {
+      const target = event.target instanceof Element ? event.target.closest<HTMLElement>('[data-canvas-id]') : null
+      const id = target?.dataset.canvasId ?? null
+      if (!id || !document.selection.includes(id)) { event.preventDefault(); return }
+      structureDragId.current = id
+      event.dataTransfer.setData('application/x-askewly-canvas-node', id)
+      event.dataTransfer.effectAllowed = 'move'
+    }}
+    onDragOver={(event) => {
+      const target = event.target instanceof Element ? event.target.closest<HTMLElement>('[data-canvas-id]') : null
+      const nodeId = structureDragId.current
+      const targetId = target?.dataset.canvasId
+      if (!nodeId || !targetId) return
+      const plan = planNodeDrop(document, nodeId, targetId, 'inside')
+      if (!plan.valid) return
+      event.preventDefault()
+      event.dataTransfer.dropEffect = 'move'
+      setDropTargetId(targetId)
+    }}
+    onDragLeave={(event) => {
+      if (event.currentTarget.contains(event.relatedTarget as Node | null)) return
+      setDropTargetId(null)
+    }}
+    onDrop={(event) => {
+      event.preventDefault()
+      const target = event.target instanceof Element ? event.target.closest<HTMLElement>('[data-canvas-id]') : null
+      const nodeId = structureDragId.current ?? event.dataTransfer.getData('application/x-askewly-canvas-node')
+      const targetId = target?.dataset.canvasId
+      if (nodeId && targetId) {
+        const plan = planNodeDrop(document, nodeId, targetId, 'inside', document.nodes[nodeId]?.bounds)
+        if (plan.valid) onOperation?.({ type: 'reparent-node', id: `drop-${performance.now()}`, at: new Date().toISOString(), ...plan })
+      }
+      structureDragId.current = null
+      setDropTargetId(null)
+    }}
+    onDragEnd={() => {
+      structureDragId.current = null
+      setDropTargetId(null)
     }}
   >
     <div className="canvas-content" data-testid="canvas-content" style={{ transform }}>

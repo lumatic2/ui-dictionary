@@ -34,6 +34,7 @@ export interface ReparentNodeOperation extends OperationBase {
   nodeId: NodeId
   parentId: NodeId | null
   index: number
+  bounds?: CanvasRect
 }
 
 export interface ReorderNodeOperation extends OperationBase {
@@ -82,6 +83,15 @@ function removeFromParent(document: CanvasDocument, node: CanvasNode) {
   return index
 }
 
+function hasAncestor(document: CanvasDocument, nodeId: NodeId, ancestorId: NodeId): boolean {
+  let parentId = document.nodes[nodeId]?.parentId ?? null
+  while (parentId) {
+    if (parentId === ancestorId) return true
+    parentId = document.nodes[parentId]?.parentId ?? null
+  }
+  return false
+}
+
 function copyPatch(patch: UpdateNodeOperation['patch']): UpdateNodeOperation['patch'] {
   return structuredClone(patch)
 }
@@ -125,15 +135,25 @@ function mutateOperation(next: CanvasDocument, operation: CanvasOperation) {
     case 'reparent-node': {
       const node = next.nodes[operation.nodeId]
       if (!node) throw new Error(`missing node ${operation.nodeId}`)
+      if (node.locked) throw new Error(`cannot reparent locked node ${node.id}`)
       if (operation.parentId === node.id) throw new Error('node cannot parent itself')
+      if (operation.parentId) {
+        const parent = next.nodes[operation.parentId]
+        if (!parent) throw new Error(`missing parent ${operation.parentId}`)
+        if (parent.locked) throw new Error(`cannot reparent into locked node ${parent.id}`)
+        if (parent.kind === 'instance' || parent.kind === 'text') throw new Error(`cannot reparent into ${parent.kind} node ${parent.id}`)
+        if (hasAncestor(next, parent.id, node.id)) throw new Error(`cannot reparent ${node.id} into its descendant ${parent.id}`)
+      }
       removeFromParent(next, node)
       node.parentId = operation.parentId
+      if (operation.bounds) node.bounds = structuredClone(operation.bounds)
       insertAt(siblings(next, operation.parentId), node.id, operation.index)
       break
     }
     case 'reorder-node': {
       const node = next.nodes[operation.nodeId]
       if (!node) throw new Error(`missing node ${operation.nodeId}`)
+      if (node.locked) throw new Error(`cannot reorder locked node ${node.id}`)
       const list = siblings(next, node.parentId)
       const from = list.indexOf(node.id)
       if (from < 0) throw new Error(`${node.id} is missing from its sibling list`)
@@ -204,7 +224,7 @@ export function invertOperation(before: CanvasDocument, operation: CanvasOperati
     case 'reparent-node': {
       const node = before.nodes[operation.nodeId]
       if (!node) throw new Error(`cannot invert missing node ${operation.nodeId}`)
-      return { ...inverseBase, type: 'reparent-node', nodeId: node.id, parentId: node.parentId, index: siblings(before, node.parentId).indexOf(node.id) }
+      return { ...inverseBase, type: 'reparent-node', nodeId: node.id, parentId: node.parentId, index: siblings(before, node.parentId).indexOf(node.id), bounds: structuredClone(node.bounds) }
     }
     case 'reorder-node': {
       const node = before.nodes[operation.nodeId]

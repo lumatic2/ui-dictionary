@@ -72,4 +72,29 @@ describe('Agent Design persistence flow', () => {
     fireEvent.click(view.getByTestId('redo'))
     expect(node1.style.left).toBe('148px')
   })
+
+  it('reorders by keyboard and reparents by valid native drop', () => {
+    const view = render(<App />)
+    const viewport = view.getByTestId('canvas-viewport')
+    const node1 = view.container.querySelector('[data-canvas-id="node-00001"]')
+    const target = view.container.querySelector('[data-canvas-id="node-00100"]')
+    if (!(node1 instanceof HTMLElement) || !(target instanceof HTMLElement)) throw new Error('fixture nodes missing')
+    fireEvent.click(node1)
+    fireEvent.keyDown(viewport, { key: 'ArrowDown', altKey: true })
+    expect(view.getByTestId('document-revision').textContent).toBe('2')
+
+    const transfer = {
+      effectAllowed: 'none',
+      dropEffect: 'none',
+      values: new Map<string, string>(),
+      setData(type: string, value: string) { this.values.set(type, value) },
+      getData(type: string) { return this.values.get(type) ?? '' },
+    }
+    fireEvent.dragStart(node1, { dataTransfer: transfer })
+    fireEvent.dragOver(target, { dataTransfer: transfer })
+    expect(target.getAttribute('data-drop-target')).toBe('active')
+    fireEvent.drop(target, { dataTransfer: transfer })
+    expect(node1.getAttribute('data-parent-id')).toBe('node-00100')
+    expect(view.getByTestId('document-revision').textContent).toBe('3')
+  })
 })
