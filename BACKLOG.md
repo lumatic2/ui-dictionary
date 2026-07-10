@@ -2,6 +2,14 @@
 
 ## Completed Horizons
 
+### 2026-07-10 - Docs Article Depth & Page Examples
+
+- DA1 - Docs 카테고리 아티클 7종 심화: Layout/Styling/Interaction/Accessibility/Motion & Effects/UI Blocks/Component API를 카탈로그 폴백에서 한국어 서술형 아티클로 심화(tokens SSOT·pattern-taxonomy 파생, 카탈로그는 Related terms로 보존), 게이트 해제·ui.askewly.com 확인 (`changesets/20260710-docs-category-articles/README.md`).
+- PE1 - Marketing Page Examples 공개: CF3 "별도 제작 필요" 판정과 달리 기저작 완성 페이지 예제 13종 발견 — 판정 통과 후 termIds 배정으로 4컬렉션 게이트 해제 (`changesets/20260710-page-examples-gate-open/README.md`).
+- Close: docs nav 전체 실콘텐츠 + Marketing UI Blocks 축 게이트 0. Objective 임팩트·크기 회고는 `docs/horizons/2026-07-docs-depth-page-examples.md`.
+- 크기 회고: 두 milestone 모두 1 changeset — horizon 실질 milestone 1개 크기(인플레 적발). "게이트 해제성" 작업은 다음부터 기존 milestone Gap/maintenance로.
+- 후속 큐: DocsArticlePage 다크 모드 heading 대비(text-slate-950 하드코딩, 기존 22종 공통), 게이트 딥링크 설계 재검토(직접 URL은 렌더됨).
+
 ### 2026-07-10 - Content Fill
 
 - CF1 - Docs Foundations And Agent Recipes 공개: Foundations 아티클 7종(한국어, tokens SSOT 파생) + Agent Recipes 표면(recipes/ 5종·llms.txt 링크 10/10 검증) 프로덕션 공개, Colors foundation 링크 부활 (`changesets/20260710-docs-shell-gate-open/README.md`).

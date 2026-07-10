@@ -12,7 +12,8 @@ Build Askewly Design as:
 
 - a public website for browsing UI patterns, product surfaces, color, typography, layout, motion, and examples;
 - a paid asset surface where users can copy richer code and download reusable assets;
-- an agent-facing system that Codex and Claude Code can use to implement polished product UI.
+- an agent-facing system that Codex and Claude Code can use to implement polished product UI;
+- a local CLI (`@askewly/design`) that lets agents and developers query, inject, and verify the design system inside their own projects (ADR 0004; the CLI core later powers a desktop app).
 
 ## Scope
 

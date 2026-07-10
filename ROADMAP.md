@@ -1,35 +1,40 @@
 # ROADMAP
 
 > Last updated: 2026-07-10
-> Status: Docs Article Depth & Page Examples 완료 (DA1·PE1) — 다음 horizon 결정 필요 (docs/roadmap-gap-2026-07-10-c.md)
+> Status: Agent Design CLI (active)
 > North star: Build Askewly Design as both a public reference website and an agent-usable implementation system.
 > line budget: <=150
 
 ## Current Horizon
 
-<!-- harness:goal id="docs-depth-page-examples" status="completed" -->
-Goal: docs nav의 카탈로그 폴백 카테고리 7종을 서술형 아티클로 심화하고, Marketing Page Examples 3종을 정적 풀 페이지 예제로 제작해 콘텐츠 저작만으로 닫히는 dev 갭을 완결한다. Details: `docs/horizons/2026-07-docs-depth-page-examples.md`. 직전 close: `docs/horizons/2026-07-content-fill.md`.
+<!-- harness:goal id="agent-design-cli" status="active" -->
+Goal: 디자인 시스템 SSOT를 로컬에서 질의·주입·검증하는 CLI `@askewly/design`을 `packages/cli`에 만들어 외부 프로젝트에서 조회→주입→검증 루프를 실증한다. Details: `docs/horizons/2026-07-agent-design-cli.md`. 직전 close: `docs/horizons/2026-07-docs-depth-page-examples.md`. 합의 시퀀스: CLI → 앱 → Docs (ADR 0004).
 
 ## Active Milestones
 
-<!-- harness:milestone id="DA1" status="completed" priority="P1" evidence="changesets/20260710-docs-category-articles/README.md" -->
-### DA1 - Docs 카테고리 아티클 7종 심화
-- DoD: 카탈로그 폴백 카테고리 7종(Layout/Styling/Interaction/Accessibility/Motion Effects/UI Blocks/Component API)이 서술형 아티클(한국어 서술·영어 섹션 헤딩, tokens SSOT + 실존 문서 파생, 실예시·복붙 코드)로 완성 판정 통과 후 게이트 해제 + validate/build/lint/브라우저 smoke PASS + 배포 확인(세션 일괄 push).
-- Evidence: changesets/20260710-docs-category-articles/README.md
-- Gap: docs nav 장문 아티클 22종 대비 카테고리 페이지 7종이 카탈로그 목록 폴백 — 서술형 콘텐츠 부재.
-- Status: [x]
+<!-- harness:milestone id="CLI1" status="active" priority="P1" -->
+### CLI1 - 코어 조회 CLI + registry 계약
+- DoD: packages/cli Node/TS 스캐폴드 + terms/tokens/recipes 질의 커맨드(SSOT 파생 데이터) + registry 계약 문서 + 로컬 npm pack 설치 E2E(실패 모드: 없는 항목 조회 시 명확한 에러·exit≠0) + 테스트.
+- Evidence: docs/plans/2026-07-10-cli1-core-query.md
+- Gap: 에이전트가 디자인 시스템을 소비할 로컬 인터페이스 부재 — llms.txt는 원격 정적 자산뿐, 질의·검증 엔진은 시장에도 공백 (market doc).
+- Status: [ ]
 
-- Completed at: 2026-07-10
-- Summary: Docs 카테고리 아티클 7종(한국어 서술형) 공개 — 카탈로그 폴백 종결, ui.askewly.com 확인
-<!-- harness:milestone id="PE1" status="completed" priority="P1" evidence="changesets/20260710-page-examples-gate-open/README.md" -->
-### PE1 - Marketing Page Examples 3종 제작
-- DoD: Landing/Pricing/About Page Examples 3종이 정적 풀 페이지 예제(StaticUiBlockGroup 방식, 토큰·레시피 기반, 라이트/다크)로 제작되어 게이트 해제, Marketing UI Blocks 축 게이트 뒤 항목 0 + build/lint/smoke PASS + 배포 확인.
-- Evidence: changesets/20260710-page-examples-gate-open/README.md
-- Gap: plus-marketing-page-examples 3종이 termIds 빈 배열로 게이트 뒤 — CF3에서 "완성 페이지 예시 제작" 성격으로 이월됨.
-- Status: [x]
+## Next Candidates
 
-- Completed at: 2026-07-10
-- Summary: Page Examples 4컬렉션 공개(기저작 13종 판정 통과·termIds 배정) — ui.askewly.com 확인
+<!-- harness:milestone id="CLI2" status="pending" priority="P1" -->
+### CLI2 - 프로젝트 주입 (init / add)
+- DoD: init(DESIGN.md·tokens 생성)·add(레시피 소스 주입, semantic 토큰 참조 유지) 동작 + 외부 프로젝트 실증(색 리터럴 0) + 실패 모드(파일 충돌 등) 처리.
+- Evidence: CLI2 plan doc + changeset README + 외부 실증 기록
+- Gap: 조회만으로는 에이전트 실용성 반쪽 — shadcn 모델의 핵심은 주입.
+- Status: [ ]
+
+<!-- harness:milestone id="CLI3" status="pending" priority="P1" -->
+### CLI3 - 검증 커맨드 + 패키지 공개
+- DoD: verify(색·px 리터럴, primitive 직접 참조 lint, exit code 계약) + npm 퍼블리시(크레덴셜 발급 전 blocked) + npx 신규 환경 스모크.
+- Evidence: CLI3 plan doc + changeset README + npm 페이지
+- Gap: 구현물 판정 자동화 부재 + 배포 채널 부재.
+- Status: [ ]
+
 ## Archive Pointer
 
-Completed or archived milestone history lives in `BACKLOG.md` (Content Fill, Structure-First Buildout closed 2026-07-10; Figma Workflow, Figma Bridge closed 2026-07-07; Public Site Shell, System Model Core, Agent Integration closed 2026-07-07).
+Completed or archived milestone history lives in `BACKLOG.md` (Docs Article Depth & Page Examples, Content Fill, Structure-First Buildout closed 2026-07-10; Figma Workflow, Figma Bridge, Public Site Shell, System Model Core, Agent Integration closed 2026-07-07).

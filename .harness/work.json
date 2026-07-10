@@ -87,6 +87,16 @@
         "claude:ad60fe35-f533-4a9d-ae54-1e27661de57e"
       ],
       "completed": "2026-07-10"
+    },
+    {
+      "id": "CLI1",
+      "title": "코어 조회 CLI + registry 계약",
+      "status": "active",
+      "started": "2026-07-10",
+      "plan": "docs/plans/2026-07-10-cli1-core-query.md",
+      "session_ids": [
+        "claude:ad60fe35-f533-4a9d-ae54-1e27661de57e"
+      ]
     }
   ]
 }
