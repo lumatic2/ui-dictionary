@@ -23,14 +23,16 @@ Goal: 디자인 시스템 SSOT를 로컬에서 질의·주입·검증하는 CLI 
 - Summary: 조회 CLI 3종+registry 계약 — pack fresh-env E2E·vitest 11 PASS
 ## Next Candidates
 
-<!-- harness:milestone id="CLI2" status="active" priority="P1" -->
+<!-- harness:milestone id="CLI2" status="completed" priority="P1" evidence="changesets/20260710-cli-inject/README.md" -->
 ### CLI2 - 프로젝트 주입 (init / add)
 - DoD: init(DESIGN.md·tokens 생성)·add(레시피 소스 주입, semantic 토큰 참조 유지) 동작 + 외부 프로젝트 실증(색 리터럴 0) + 실패 모드(파일 충돌 등) 처리.
-- Evidence: docs/plans/2026-07-10-cli2-inject.md
+- Evidence: changesets/20260710-cli-inject/README.md
 - Gap: 조회만으로는 에이전트 실용성 반쪽 — shadcn 모델의 핵심은 주입.
-- Status: [ ]
+- Status: [x]
 
-<!-- harness:milestone id="CLI3" status="pending" priority="P1" -->
+- Completed at: 2026-07-10
+- Summary: init/add 주입 + askewly.css 테마 바인딩 — 외부 Vite 실증(토큰 렌더·hex 0)
+<!-- harness:milestone id="CLI3" status="active" priority="P1" -->
 ### CLI3 - 검증 커맨드 + 패키지 공개
 - DoD: verify(색·px 리터럴, primitive 직접 참조 lint, exit code 계약) + npm 퍼블리시(크레덴셜 발급 전 blocked) + npx 신규 환경 스모크.
 - Evidence: CLI3 plan doc + changeset README + npm 페이지

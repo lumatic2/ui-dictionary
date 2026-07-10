@@ -3,6 +3,7 @@ import { readFileSync } from "node:fs"
 import path from "node:path"
 import { Command } from "commander"
 import { addRecipe, initProject, InjectError } from "./inject.js"
+import { verifyDir } from "./verify.js"
 import {
   loadRecipes,
   loadTerms,
@@ -151,6 +152,26 @@ program
       if (error instanceof InjectError) fail(error.message)
       throw error
     }
+  })
+
+program
+  .command("verify")
+  .argument("[dir]", "directory to scan", ".")
+  .option("--ext <list>", "comma-separated extensions to scan", "tsx,ts,jsx,js,css,html")
+  .description("scan for color values that bypass the token system (hex literals, raw rgb/hsl/oklch)")
+  .action((dir: string, options: { ext: string }) => {
+    const target = path.resolve(dir)
+    const { files, violations } = verifyDir(target, options.ext.split(",").map((e) => e.trim()))
+    if (violations.length === 0) {
+      console.log(`verify PASS — ${files} file(s) scanned, no color literals (tokens.css/askewly.css and build dirs are excluded)`)
+      return
+    }
+    console.error(`verify FAIL — ${violations.length} violation(s) in ${files} file(s):`)
+    for (const violation of violations) {
+      console.error(`  ${path.relative(target, violation.file)}:${violation.line} [${violation.rule}] ${violation.excerpt}`)
+    }
+    console.error("\nFix: replace literals with semantic token utilities (bg-primary, text-foreground, border-border, ...).")
+    process.exit(1)
   })
 
 const recipes = program.command("recipes").description("component recipes (agent-ready implementation contracts)")
