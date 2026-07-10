@@ -2,7 +2,7 @@
 
 Date: 2026-07-10
 Milestone: AUC2 (`ROADMAP.md`, active planning gate)
-Status: awaiting user execution approval
+Status: approved; execution in progress
 
 ## Hierarchy
 
@@ -21,12 +21,12 @@ Status: awaiting user execution approval
 
 ## Step tree
 
-- [ ] Step 1 — Hit testing and accessible selection
+- [x] Step 1 — Hit testing and accessible selection
   - DOM target→stable canvas ID hit-test, click/Shift multi-select, marquee selection, Escape clear를 canonical selection operation으로 연결한다.
   - keyboard traversal과 visible focus/selection을 동일 state에서 파생한다.
   - Verify: overlap/z-order hit tests, multi-select reducer tests, keyboard/accessibility smoke.
 
-- [ ] Step 2 — Move/resize manipulation transaction
+- [~] Step 2 — Move/resize manipulation transaction
   - pointer capture 기반 drag/8-handle resize preview와 commit transaction을 구현한다.
   - snap/alignment guide는 WebGPU editor plane에서 파생하고 final bounds만 history operation으로 commit한다.
   - Verify: cancel/revert, min size, zoom-adjusted delta, 1 operation per gesture, undo/redo.

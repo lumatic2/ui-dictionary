@@ -47,6 +47,10 @@
     {
       "dir": "agent-design-canvas-foundation",
       "status": "completed"
+    },
+    {
+      "dir": "agent-design-direct-manipulation",
+      "status": "in_progress"
     }
   ]
 }

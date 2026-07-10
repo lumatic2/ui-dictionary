@@ -1,0 +1,18 @@
+{
+  "project": "ui-dictionary",
+  "phase": "agent-design-direct-manipulation",
+  "mode": "product",
+  "steps": [
+    {
+      "step": 1,
+      "name": "hit-testing-accessible-selection",
+      "status": "completed",
+      "summary": "Added renderer-independent paint order, point/marquee hit testing, selection reduction, traversal, and multi-selection bounds in packages/canvas-core/src/interaction.ts. CanvasSurface now delegates stable DOM IDs to canonical select-nodes operations for click, Shift toggle, marquee, Escape, and arrow traversal, with canonical focus/ARIA state. Verified canvas-core 22/22, agent-design 9/9, and both builds.",
+      "completed_at": "2026-07-10T18:39:05+09:00"
+    },
+    { "step": 2, "name": "move-resize-transaction", "status": "in_progress" },
+    { "step": 3, "name": "reparent-reorder-responsive-constraints", "status": "pending" },
+    { "step": 4, "name": "typed-properties-korean-text", "status": "pending" },
+    { "step": 5, "name": "integrated-5k-quality-proof", "status": "pending" }
+  ]
+}
