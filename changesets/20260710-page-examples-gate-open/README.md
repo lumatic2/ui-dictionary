@@ -23,7 +23,7 @@
 - [x] dev 육안 판정: 4개 페이지 예제 13종 렌더, placeholder 0, 실사 콘텐츠 확인 (스크린샷).
 - [x] prod preview(5198): 4개 페이지 렌더 + 마케팅 섹션 사이드바에 PAGE EXAMPLES nav 노출 + 모바일 375px 다크 overflow 0.
 - [x] 실패 모드 회귀: Download/Asset Packs 여전히 비노출 (prod preview).
-- [ ] 프로덕션 배포 반영 확인 (세션 일괄 push 후).
+- [x] 프로덕션 배포 반영 확인: push `5b48b31`(일괄) → ui.askewly.com에서 Landing/About Page Examples 렌더 + Download 게이트 홀드 PASS (2026-07-10).
 
 ## Notes
 

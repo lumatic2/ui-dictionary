@@ -42,5 +42,5 @@
 | 40 | 20260710-dashboard-section-demo | 2026-07-10 | Token-based product operations dashboard section demo behind gate | 3/3 | complete |
 | 41 | 20260710-showcase-gate-open | 2026-07-10 | Showcase atlas cards and dashboard section open to production after per-card quality review | 5/5 | complete |
 | 42 | 20260710-collections-terms-promotion | 2026-07-10 | Nine terms promoted and assigned to four marketing collections with dedicated visuals | 6/6 | complete |
-| 43 | 20260710-docs-category-articles | 2026-07-10 | Seven docs category pages upgraded from catalog fallback to narrative articles and gate opened | 4/5 | in_progress |
-| 44 | 20260710-page-examples-gate-open | 2026-07-10 | Marketing Page Examples collections opened after quality review of already-authored full pages | 4/5 | in_progress |
+| 43 | 20260710-docs-category-articles | 2026-07-10 | Seven docs category pages upgraded from catalog fallback to narrative articles and gate opened | 5/5 | complete |
+| 44 | 20260710-page-examples-gate-open | 2026-07-10 | Marketing Page Examples collections opened after quality review of already-authored full pages | 5/5 | complete |

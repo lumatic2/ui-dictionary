@@ -23,7 +23,7 @@
 - [x] dev 렌더 스모크: 7종 전부 아티클+Checklist+Related terms 렌더 + foundations 회귀 PASS (`smoke-da1.mjs` 8/8).
 - [x] shell 게이트 회귀: 해제 전 prod preview에서 아티클 7종 비노출(카탈로그 폴백 유지) 7/7 PASS.
 - [x] 게이트 해제 후 prod preview(5198): 아티클 7종 렌더 + docs-all 랜딩 → Layout 클릭 진입 E2E + 모바일 375px 가로 overflow 0 + nav 게이트 홀드(Page Examples/Download 비노출, 라이브 패리티) + evidence 4장.
-- [ ] 프로덕션 배포 반영 확인 (세션 일괄 push 후).
+- [x] 프로덕션 배포 반영 확인: push `5b48b31`(일괄) → ui.askewly.com에서 Layout("Container and rhythm")·Styling·Component API 아티클 렌더 + foundations 회귀 PASS (2026-07-10).
 
 ## Notes
 

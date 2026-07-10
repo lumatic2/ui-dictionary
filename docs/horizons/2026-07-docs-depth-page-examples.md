@@ -1,7 +1,15 @@
 # Horizon - Docs Article Depth & Page Examples
 
 Date: 2026-07-10
-Status: active
+Status: closed 2026-07-10 — 닫는 기준 충족: docs nav 항목 전부 실콘텐츠(카테고리 아티클 7종 공개로 카탈로그 폴백 종결, DA1) + Marketing UI Blocks 축 게이트 뒤 항목 0(Page Examples 4컬렉션 공개, PE1).
+
+## Objective 임팩트
+
+이 horizon은 Objective의 "제품 표면" 축을 마감 방향으로 움직였다: Docs 축은 46개 nav 항목 전부가 장문 아티클(29종) 또는 서술+카탈로그 이중 계층으로 채워졌고, Marketing UI Blocks 축은 게이트 뒤 항목 0이 됐다. 이제 공개 사이트의 미공개 잔여는 Pro 실물 자산과 Download 앱(둘 다 별도 결정·제품 선행)뿐 — "콘텐츠 저작으로 닫히는 갭"이라는 범주 자체가 소진됐다. 다음 축 이동은 콘텐츠 채우기가 아니라 새 성격의 작업(에셋 모델, Docs 정체성 확장, 앱)이어야 한다.
+
+## 크기 회고
+
+DA1·PE1 모두 changeset 1개로 닫힘 — §A1 인플레 적발 기준상 이 horizon은 실질 milestone 1개 크기였다. 특히 PE1은 "제작"으로 계획했으나 실사 결과 기저작 자산의 판정+게이트 해제로 수렴(계획 시 코드 실사 누락이 원인 — CF3 감사가 termIds만 보고 marketingSectionPages 존재를 안 봄). 다음부터 "게이트 해제성" 작업은 milestone이 아니라 기존 milestone의 Gap/maintenance로 기록할 것.
 
 ## Goal
 
