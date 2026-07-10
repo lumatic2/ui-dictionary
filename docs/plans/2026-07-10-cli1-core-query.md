@@ -20,10 +20,10 @@ Milestone: CLI1 (`ROADMAP.md`, active)
 
 ## Step 트리
 
-- [ ] Step 1 — CLI 스캐폴드 + 데이터 파이프: packages/cli(TS, commander 계열), SSOT → 번들 데이터 생성 스크립트(기존 build-ui-vocabulary-data.mjs 재사용 검토), `--version`/`--help` 동작. (verify: 로컬 빌드 + 바이너리 실행)
-- [ ] Step 2 — 조회 커맨드 3종: `terms search|show`, `tokens [--tier|--format css|json]`, `recipes list|show` — 사람용 출력 + `--json`(에이전트용). 없는 항목 조회 시 명확한 에러 + exit≠0 (실패 모드). (verify: 커맨드별 실행 출력 + exit code 관측)
-- [ ] Step 3 — registry 계약 문서: `docs/design-system/cli-registry-contract.md` — 자산 경로·버전 규약·shadcn registry-item 스키마 대응 관계(CLI2 add의 입력 계약). (verify: 문서가 실존 자산 경로만 참조)
-- [ ] Step 4 — 패키징 E2E + 테스트: `npm pack` → 별도 임시 디렉터리 설치 → 조회 3종 + 실패 모드 재실행, 단위 테스트(파서·exit code). (verify: pack 설치 E2E 출력 기록 + 테스트 PASS)
+- [x] Step 1 — CLI 스캐폴드 + 데이터 파이프: packages/cli(TS+commander), build-data.mjs가 terms 536·recipes 5·tokens json/css 번들. (verify: build PASS + 바이너리 실행, 2026-07-10)
+- [x] Step 2 — 조회 커맨드 3종 + `--json` + 실패 모드 5종 exit 1. (verify: 실행 출력·exit code 관측)
+- [x] Step 3 — registry 계약 문서 `docs/design-system/cli-registry-contract.md` (shadcn registry-item 대응 표 포함). (verify: 실존 자산 경로만 참조)
+- [x] Step 4 — vitest 11/11 + npm pack → 신규 디렉터리 설치 E2E PASS. (verify: `changesets/20260710-cli-core-query/README.md` 5/5)
 
 ## 결정 로그
 
