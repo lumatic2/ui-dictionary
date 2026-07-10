@@ -1,7 +1,7 @@
 # ROADMAP
 
 > Last updated: 2026-07-10
-> Status: Agent-Native UI Canvas — AUC2 계획 승인 대기
+> Status: Agent-Native UI Canvas — AUC2 complete; AUC3 next candidate
 > North star: Build Askewly Design as both a public reference website and an agent-usable implementation system.
 > line budget: <=150
 
@@ -12,13 +12,15 @@ Goal: Agent Design를 code-native UI canvas로 만든다 — evidence-based engi
 
 ## Active Milestones
 
-<!-- harness:milestone id="AUC2" status="active" priority="P1" -->
+<!-- harness:milestone id="AUC2" status="completed" priority="P1" evidence="phases/agent-design-direct-manipulation/" -->
 ### AUC2 — Direct Manipulation And Property Runtime
 - DoD: select/move/resize/reparent/reorder/guides, responsive constraints, typed props/token/mode/variant, Korean text edit + 5k interaction/a11y smoke.
-- Evidence: `docs/plans/2026-07-10-auc2-direct-manipulation-property-runtime.md` + `phases/agent-design-direct-manipulation/` + interaction benchmark + visual smoke.
+- Evidence: phases/agent-design-direct-manipulation/
 - Gap: AUC1 정본은 렌더·저장되지만 사람이 production operation으로 직접 조작하거나 properties를 편집할 수 없다.
-- Status: [ ]
+- Status: [x]
 
+- Completed at: 2026-07-10
+- Summary: direct manipulation, responsive structure, typed properties, Korean text runtime, and 5k system-Chrome quality gates complete; OS Microsoft IME manual pass waived by user
 <!-- harness:milestone id="AUC1" status="completed" priority="P0" evidence="docs/plans/2026-07-10-auc1-canonical-canvas-foundation.md" -->
 ### AUC1 — Canonical Canvas Foundation
 - DoD: 채택 엔진 위에 versioned document, code-component layer, stable ID/source mapping, zoom/pan, save/reload, deterministic undo/redo 구현 + fresh-project render/reload 통합 smoke.

@@ -1,7 +1,7 @@
 # Horizon - Agent-Native UI Canvas
 
 Date: 2026-07-10
-Status: active — AUC0/AUC1 complete; AUC2 Direct Manipulation plan awaits user approval.
+Status: active — AUC0/AUC1/AUC2 complete; AUC3 Canvas Agent And Code Round-trip is next.
 
 ## Goal
 
@@ -36,11 +36,13 @@ DoD: AUC0 채택 엔진 위에 versioned canvas document, frame/code-component/t
 
 Evidence: `phases/agent-design-canvas-foundation/` + canvas document fixtures + real desktop/browser smoke.
 
-### AUC2 - Direct Manipulation And Property Runtime — active (planning gate)
+### AUC2 - Direct Manipulation And Property Runtime — completed
 
 DoD: select/multi-select, move, resize, reparent, reorder, align/guides, responsive constraints, typed props, token binding, mode/variant, Korean text edit가 canonical operations로 동작한다. 5k-layer interaction budget과 keyboard/accessibility smoke를 통과한다.
 
 Evidence: `phases/agent-design-direct-manipulation/` + interaction benchmark + desktop visual smoke.
+
+Result: canonical selection/move/resize/reparent/reorder, responsive constraints, typed properties/tokens/modes/variants, Korean text transaction, WebGPU/DOM fallback continuity, and 5k interaction/a11y evidence completed. The Windows Microsoft IME manual pass was explicitly waived by the user and remains recorded as unverified rather than passed.
 
 ### AUC3 - Canvas Agent And Code Round-trip — pending
 
