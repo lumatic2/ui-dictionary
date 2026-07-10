@@ -26,7 +26,15 @@ Rules for consumers: reference semantic tokens, never hard-code color/dimension 
 ## Recipes
 
 - [recipes/application-ui/showcase-card.md](https://ui.askewly.com/llms/recipes/application-ui/showcase-card.md): Showcase Card — application-ui recipe (status: draft)
+- [recipes/commerce/checkout-order-summary.md](https://ui.askewly.com/llms/recipes/commerce/checkout-order-summary.md): Checkout Order Summary — commerce recipe (status: draft)
+- [recipes/data-display/interactive-data-table.md](https://ui.askewly.com/llms/recipes/data-display/interactive-data-table.md): Interactive Data Table — data-display recipe (status: draft)
+- [recipes/data-display/stat-summary-grid.md](https://ui.askewly.com/llms/recipes/data-display/stat-summary-grid.md): Stat Summary Grid — data-display recipe (status: draft)
+- [recipes/docs/article-documentation-layout.md](https://ui.askewly.com/llms/recipes/docs/article-documentation-layout.md): Article Documentation Layout — docs recipe (status: draft)
+- [recipes/feedback/actionable-toast.md](https://ui.askewly.com/llms/recipes/feedback/actionable-toast.md): Actionable Toast — feedback recipe (status: draft)
+- [recipes/feedback/recoverable-empty-state.md](https://ui.askewly.com/llms/recipes/feedback/recoverable-empty-state.md): Recoverable Empty State — feedback recipe (status: draft)
 - [recipes/forms/button.md](https://ui.askewly.com/llms/recipes/forms/button.md): Button — forms recipe (status: draft)
+- [recipes/layout/responsive-content-grid.md](https://ui.askewly.com/llms/recipes/layout/responsive-content-grid.md): Responsive Content Grid — layout recipe (status: draft)
+- [recipes/layout/sidebar-application-shell.md](https://ui.askewly.com/llms/recipes/layout/sidebar-application-shell.md): Sidebar Application Shell — layout recipe (status: draft)
 - [recipes/marketing/landing-hero.md](https://ui.askewly.com/llms/recipes/marketing/landing-hero.md): Landing Hero — marketing recipe (status: draft)
 - [recipes/navigation/topbar-command-search.md](https://ui.askewly.com/llms/recipes/navigation/topbar-command-search.md): Topbar Command Search — navigation recipe (status: draft)
 - [recipes/overlays/popover.md](https://ui.askewly.com/llms/recipes/overlays/popover.md): Popover — overlays recipe (status: draft)
