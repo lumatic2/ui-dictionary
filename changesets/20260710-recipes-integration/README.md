@@ -25,8 +25,8 @@
 - [x] Fresh target A: `init` + `add interactive-data-table` + `verify` PASS (4 generated files; temp target removed).
 - [x] Fresh target B: `init` + `add checkout-order-summary` + `verify` PASS (4 generated files; temp target removed).
 - [x] Site `npm run lint` and `npm run build` PASS (existing Fast Refresh and bundle-size warnings only).
-- [ ] Cloudflare deployment and `ui.askewly.com` llms recipe links/raw assets PASS.
+- [x] Cloudflare deployment `15a65241-1d81-4ba4-b8a6-373ac73b2862` succeeded for source `71d88f2`; `ui.askewly.com/llms.txt` has 13 recipe links and both new table/checkout raw assets resolve with matching IDs.
 
 ## Result
 
-- Local integration gates pass. Production deployment verification remains pending after push.
+- All local, CLI-consumption, and production discovery gates pass.

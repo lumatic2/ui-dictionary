@@ -55,4 +55,4 @@
 | 53 | 20260710-recipes-data-display | 2026-07-10 | Interactive table and stat summary recipes from shipped data-display implementations | 4/4 | complete |
 | 54 | 20260710-recipes-feedback | 2026-07-10 | Actionable toast and recoverable empty-state recipes from shipped feedback implementations | 4/4 | complete |
 | 55 | 20260710-recipes-commerce | 2026-07-10 | Checkout order-summary recipe from shipped commerce implementations | 5/5 | complete |
-| 56 | 20260710-recipes-integration | 2026-07-10 | Regenerate llms/CLI recipe assets and verify fresh-target consumption of 13 recipes | 6/7 | in_progress |
+| 56 | 20260710-recipes-integration | 2026-07-10 | Regenerate llms/CLI recipe assets and verify fresh-target consumption of 13 recipes | 7/7 | complete |

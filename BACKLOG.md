@@ -2,6 +2,14 @@
 
 ## Completed Horizons
 
+### 2026-07-10 - System Content Depth
+
+- SCD1 - Principles 증류: 근거 경로가 붙은 원칙 8개를 `principles.md` 정본으로 확정하고 llms.txt + 한국어 Docs 아티클에 공개, 사용자 승인·Chrome/Cloudflare 검증 완료 (`changesets/20260710-principles-gate-open/README.md`).
+- SCD2 - 레시피 커버리지: 실구현 code asset 기반 레시피 8종을 추가해 5→13종, pattern_group 10/10 커버. validator·llms 19자산·CLI 21/21·fresh `add` 2종·배포 확인 (`changesets/20260710-recipes-integration/README.md`).
+- Close: Principles 사람/에이전트 이중 공개 + 전 pattern_group 레시피 + CLI 신규 레시피 실주입으로 horizon close criteria 전부 충족. 상세: `docs/horizons/2026-07-system-content-depth.md`.
+- 크기 회고: SCD1 4 changesets, SCD2 5 changesets로 모두 milestone-grade. helper의 Evidence 단일 경로 기반 인플레 경고는 오탐.
+- 다음 시퀀스 후보: 콘텐츠 위 앱(H2) — 새 제품 정체성·OS-level capability 결정은 다음 horizon 기획에서 사용자 승인 필요.
+
 ### 2026-07-10 - Agent Design CLI
 
 - CLI1 - 코어 조회 CLI + registry 계약: `@askewly/design`(packages/cli, TS+commander) — terms/tokens/recipes 질의, SSOT 번들, registry 계약 문서, pack fresh-env E2E (`changesets/20260710-cli-core-query/README.md`).

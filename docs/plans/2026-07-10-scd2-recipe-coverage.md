@@ -60,11 +60,11 @@ planning_gate:
 
 ## Step 트리
 
-- [ ] Step 1 — Docs + Layout 배치: `article-documentation-layout`, `sidebar-application-shell`, `responsive-content-grid` 3종 작성. (verify: `python scripts/validate-recipes.py` → recipes ok: 8)
-- [ ] Step 2 — Data Display 배치: `interactive-data-table`, `stat-summary-grid` 2종 작성. (verify: validator → recipes ok: 10)
-- [ ] Step 3 — Feedback 배치: `actionable-toast`, `recoverable-empty-state` 2종 작성. (verify: validator → recipes ok: 12)
-- [ ] Step 4 — Commerce 배치: `checkout-order-summary` 1종 작성. (verify: validator → recipes ok: 13 + 10/10 pattern_group coverage)
-- [ ] Step 5 — 통합 소비·배포: llms.txt 재생성, CLI 재번들/test, fresh target `add` smoke 2종, site lint/build, push 후 public asset 확인. (verify: changeset 통합 checklist + Cloudflare source commit)
+- [x] Step 1 — Docs + Layout 배치: `article-documentation-layout`, `sidebar-application-shell`, `responsive-content-grid` 3종 작성. (verify: `python scripts/validate-recipes.py` → recipes ok: 8)
+- [x] Step 2 — Data Display 배치: `interactive-data-table`, `stat-summary-grid` 2종 작성. (verify: validator → recipes ok: 10)
+- [x] Step 3 — Feedback 배치: `actionable-toast`, `recoverable-empty-state` 2종 작성. (verify: validator → recipes ok: 12)
+- [x] Step 4 — Commerce 배치: `checkout-order-summary` 1종 작성. (verify: validator → recipes ok: 13 + 10/10 pattern_group coverage)
+- [x] Step 5 — 통합 소비·배포: llms.txt 재생성, CLI 재번들/test, fresh target `add` smoke 2종, site lint/build, push 후 public asset 확인. (verify: changeset 통합 checklist + Cloudflare source commit)
 
 ## 결정 로그
 
