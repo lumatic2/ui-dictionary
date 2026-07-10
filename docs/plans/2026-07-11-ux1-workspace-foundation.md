@@ -2,7 +2,7 @@
 
 Date: 2026-07-11
 Milestone: UX1 (`ROADMAP.md`, active)
-Status: proposed — implementation approval required
+Status: approved 2026-07-11 — Step 1 complete; Step 2 in progress
 
 ## Hierarchy
 
@@ -21,7 +21,7 @@ Status: proposed — implementation approval required
 
 ## Step Tree
 
-- [ ] Step 1 — Workspace shell and visual hierarchy
+- [x] Step 1 — Workspace shell and visual hierarchy
   - Replace AUC/benchmark-first chrome with a product title bar, global toolbar, left workspace rail, central canvas stage, right inspector, and bottom status surface.
   - Verify: component tests assert landmark order and development controls are outside the primary workspace.
 
@@ -78,4 +78,3 @@ planning_gate:
     - "Existing canvas, preview, bridge, Undo/Redo, recovery, and security contracts remain operational."
     - "Desktop and constrained-width screenshots plus automated landmark/keyboard tests are retained."
 ```
-

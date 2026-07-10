@@ -19,3 +19,9 @@ cd apps/agent-design; npm test -- --run
 - Do not redesign canonical operations or Electron authority.
 - Do not claim UX improvement from colors alone.
 
+## Evidence — 2026-07-11
+
+- `npm test -- --run` — 18/18 renderer tests passed, including workspace landmark/order coverage.
+- `npm run build` — TypeScript and Vite production build passed.
+- Fresh system Chrome verified the product title bar, workspace toolbar, left rail, canvas stage, inspector, bottom status surface, and collapsed Development controls in one viewport.
+- Implementation commit: `54fa4ef`.
