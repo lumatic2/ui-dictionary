@@ -6,8 +6,8 @@
     { "step": 1, "name": "secure-electron-host-authority", "status": "completed" },
     { "step": 2, "name": "supervised-bridge-terminal-bootstrap", "status": "completed" },
     { "step": 3, "name": "trusted-project-durable-recovery", "status": "completed" },
-    { "step": 4, "name": "sandboxed-preview-os-diagnostics", "status": "in_progress" },
-    { "step": 5, "name": "windows-packaging-installer-boundary", "status": "pending" },
+    { "step": 4, "name": "sandboxed-preview-os-diagnostics", "status": "completed" },
+    { "step": 5, "name": "windows-packaging-installer-boundary", "status": "in_progress" },
     { "step": 6, "name": "packaged-e2e-quality-proof", "status": "pending" }
   ]
 }
