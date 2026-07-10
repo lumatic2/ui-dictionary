@@ -46,7 +46,42 @@ function nodeStyle(node: CanvasNode, previewBounds?: CanvasNode['bounds']): Reac
   }
 }
 
-function CanvasNodeElement({ node, selected, dropTarget, previewBounds }: { node: CanvasNode; selected: boolean; dropTarget: boolean; previewBounds?: CanvasNode['bounds'] }) {
+interface CanvasNodeElementProps {
+  node: CanvasNode
+  selected: boolean
+  dropTarget: boolean
+  previewBounds?: CanvasNode['bounds']
+  onOperation?: (operation: CanvasOperation) => void
+}
+
+function TextNodeElement({ node, shared, onOperation }: { node: Extract<CanvasNode, { kind: 'text' }>; shared: Record<string, unknown>; onOperation?: (operation: CanvasOperation) => void }) {
+  const ref = useRef<HTMLSpanElement>(null)
+  const composing = useRef(false)
+  const lastCommitted = useRef(node.text)
+  useEffect(() => {
+    lastCommitted.current = node.text
+    if (!composing.current && ref.current && ref.current.textContent !== node.text) ref.current.textContent = node.text
+  }, [node.text])
+  const commitText = () => {
+    const text = ref.current?.textContent ?? ''
+    if (text === lastCommitted.current) return
+    lastCommitted.current = text
+    onOperation?.({ type: 'update-text', id: `text-${performance.now()}`, at: new Date().toISOString(), nodeId: node.id, text })
+  }
+  return <span
+    {...shared}
+    ref={ref}
+    role="textbox"
+    tabIndex={0}
+    contentEditable
+    suppressContentEditableWarning
+    onCompositionStart={() => { composing.current = true }}
+    onCompositionEnd={() => { composing.current = false; commitText() }}
+    onBlur={() => { if (!composing.current) commitText() }}
+  />
+}
+
+function CanvasNodeElement({ node, selected, dropTarget, previewBounds, onOperation }: CanvasNodeElementProps) {
   const shared = {
     'data-canvas-id': node.id,
     'data-parent-id': node.parentId ?? '',
@@ -61,7 +96,7 @@ function CanvasNodeElement({ node, selected, dropTarget, previewBounds }: { node
     style: nodeStyle(node, previewBounds),
   }
   if (node.kind === 'text') {
-    return <span {...shared} role="textbox" tabIndex={0} contentEditable suppressContentEditableWarning>{node.text}</span>
+    return <TextNodeElement node={node} shared={shared} onOperation={onOperation} />
   }
   if (node.kind === 'instance') {
     return <button {...shared} type="button">{String(node.overrides.label ?? node.name)}</button>
@@ -86,7 +121,7 @@ export function CanvasSurface({ document, editorPlaneFailure = null, onOperation
   const [dropTargetId, setDropTargetId] = useState<string | null>(null)
   const selectedIds = useMemo(() => new Set(document.selection), [document.selection])
   const orderedNodes = useMemo(() => paintOrder(document).map((id) => document.nodes[id]), [document])
-  const nodeElements = useMemo(() => orderedNodes.map((node) => <CanvasNodeElement key={node.id} node={node} selected={selectedIds.has(node.id)} dropTarget={dropTargetId === node.id} previewBounds={previewBounds[node.id]} />), [dropTargetId, orderedNodes, previewBounds, selectedIds])
+  const nodeElements = useMemo(() => orderedNodes.map((node) => <CanvasNodeElement key={node.id} node={node} selected={selectedIds.has(node.id)} dropTarget={dropTargetId === node.id} previewBounds={previewBounds[node.id]} onOperation={onOperation} />), [dropTargetId, onOperation, orderedNodes, previewBounds, selectedIds])
   const transform = `translate(${document.viewport.pan.x}px, ${document.viewport.pan.y}px) scale(${document.viewport.zoom})`
   const canonicalSelection = Object.keys(previewBounds).length ? previewSelectionBounds(document, previewBounds) : selectionBounds(document)
   const selection = canonicalSelection ? {

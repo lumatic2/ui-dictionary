@@ -97,4 +97,41 @@ describe('Agent Design persistence flow', () => {
     expect(node1.getAttribute('data-parent-id')).toBe('node-00100')
     expect(view.getByTestId('document-revision').textContent).toBe('3')
   })
+
+  it('validates and commits typed props, variants, layout, tokens, and token mode', () => {
+    const view = render(<App />)
+    const component = view.container.querySelector('[data-canvas-id="node-00001"]')
+    if (!(component instanceof HTMLElement)) throw new Error('component missing')
+    fireEvent.click(component)
+
+    fireEvent.change(view.getByTestId('property-prop-disabled'), { target: { value: 'true' } })
+    fireEvent.change(view.getByTestId('property-layout-horizontal'), { target: { value: 'fill' } })
+    fireEvent.change(view.getByTestId('token-mode'), { target: { value: 'askewly.dark' } })
+    expect(view.getByTestId('document-revision').textContent).toBe('4')
+
+    const variant = view.getByTestId('property-variant-size')
+    fireEvent.change(variant, { target: { value: '' } })
+    fireEvent.blur(variant)
+    expect(view.getByTestId('property-error').textContent).toContain('invalid variant')
+    expect(view.getByTestId('document-revision').textContent).toBe('4')
+    fireEvent.change(variant, { target: { value: 'lg' } })
+    fireEvent.blur(variant)
+    expect(view.getByTestId('document-revision').textContent).toBe('5')
+  })
+
+  it('keeps Korean composition transient and commits one text operation at composition end', () => {
+    const view = render(<App />)
+    const text = view.container.querySelector('[data-canvas-id="node-00007"]')
+    if (!(text instanceof HTMLElement)) throw new Error('text node missing')
+    fireEvent.click(text)
+    fireEvent.compositionStart(text, { data: '' })
+    text.textContent = '한글 조합 완료'
+    fireEvent.input(text, { data: '한글 조합 완료', inputType: 'insertCompositionText', isComposing: true })
+    expect(view.getByTestId('document-revision').textContent).toBe('1')
+    fireEvent.compositionEnd(text, { data: '한글 조합 완료' })
+    expect(view.getByTestId('document-revision').textContent).toBe('2')
+    expect(text.textContent).toBe('한글 조합 완료')
+    fireEvent.click(view.getByTestId('undo'))
+    expect(text.textContent).toBe('한글 캔버스 입력')
+  })
 })

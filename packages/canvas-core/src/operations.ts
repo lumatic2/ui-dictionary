@@ -1,4 +1,5 @@
 import type { CanvasDocument, CanvasNode, CanvasRect, NodeId } from './types.js'
+import { applyNodeProperty, readNodeProperty, validateTokenMode, type NodePropertyEdit } from './properties.js'
 import { assertValidDocument } from './validation.js'
 
 interface OperationBase {
@@ -27,6 +28,21 @@ export interface UpdateNodeOperation extends OperationBase {
 export interface TransformNodesOperation extends OperationBase {
   type: 'transform-nodes'
   boundsById: Record<NodeId, CanvasRect>
+}
+
+export interface SetNodePropertyOperation extends OperationBase, NodePropertyEdit {
+  type: 'set-node-property'
+}
+
+export interface UpdateTextOperation extends OperationBase {
+  type: 'update-text'
+  nodeId: NodeId
+  text: string
+}
+
+export interface SetTokenModeOperation extends OperationBase {
+  type: 'set-token-mode'
+  tokenSetId: string
 }
 
 export interface ReparentNodeOperation extends OperationBase {
@@ -59,6 +75,9 @@ export type CanvasOperation =
   | DeleteNodeOperation
   | UpdateNodeOperation
   | TransformNodesOperation
+  | SetNodePropertyOperation
+  | UpdateTextOperation
+  | SetTokenModeOperation
   | ReparentNodeOperation
   | ReorderNodeOperation
   | SelectNodesOperation
@@ -132,6 +151,20 @@ function mutateOperation(next: CanvasDocument, operation: CanvasOperation) {
       }
       break
     }
+    case 'set-node-property':
+      applyNodeProperty(next, operation)
+      break
+    case 'update-text': {
+      const node = next.nodes[operation.nodeId]
+      if (!node) throw new Error(`missing node ${operation.nodeId}`)
+      if (node.kind !== 'text') throw new Error('update-text requires a text node')
+      node.text = operation.text
+      break
+    }
+    case 'set-token-mode':
+      if (!validateTokenMode(operation.tokenSetId)) throw new Error(`invalid token mode ${operation.tokenSetId}`)
+      next.tokenSetId = operation.tokenSetId
+      break
     case 'reparent-node': {
       const node = next.nodes[operation.nodeId]
       if (!node) throw new Error(`missing node ${operation.nodeId}`)
@@ -221,6 +254,18 @@ export function invertOperation(before: CanvasDocument, operation: CanvasOperati
       }
       return { ...inverseBase, type: 'transform-nodes', boundsById }
     }
+    case 'set-node-property': {
+      const node = before.nodes[operation.nodeId]
+      if (!node) throw new Error(`cannot invert missing node ${operation.nodeId}`)
+      return { ...inverseBase, type: 'set-node-property', nodeId: node.id, scope: operation.scope, key: operation.key, value: readNodeProperty(node, operation.scope, operation.key) }
+    }
+    case 'update-text': {
+      const node = before.nodes[operation.nodeId]
+      if (!node || node.kind !== 'text') throw new Error(`cannot invert text node ${operation.nodeId}`)
+      return { ...inverseBase, type: 'update-text', nodeId: node.id, text: node.text }
+    }
+    case 'set-token-mode':
+      return { ...inverseBase, type: 'set-token-mode', tokenSetId: before.tokenSetId }
     case 'reparent-node': {
       const node = before.nodes[operation.nodeId]
       if (!node) throw new Error(`cannot invert missing node ${operation.nodeId}`)

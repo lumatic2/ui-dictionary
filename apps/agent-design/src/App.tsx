@@ -13,6 +13,7 @@ import {
 } from '@askewly/canvas-core'
 import { BrowserDocumentStore } from './browserStore'
 import { CanvasSurface } from './CanvasSurface'
+import { PropertyInspector } from './PropertyInspector'
 import type { EditorPlaneFailure } from './editorPlaneRuntime'
 
 const store = new BrowserDocumentStore()
@@ -127,15 +128,7 @@ export function App() {
     </nav>
     <section className="app-body">
       <CanvasSurface document={history.present} editorPlaneFailure={failure} onOperation={commit} />
-      <aside className="inspector">
-        <h2>Document</h2>
-        <dl>
-          <div><dt>Schema</dt><dd>v{history.present.schemaVersion}</dd></div>
-          <div><dt>Revision</dt><dd data-testid="document-revision">{history.present.revision}</dd></div>
-          <div><dt>Nodes</dt><dd>{Object.keys(history.present.nodes).length.toLocaleString()}</dd></div>
-          <div><dt>Selection</dt><dd data-testid="selection-count">{history.present.selection.length}</dd></div>
-        </dl>
-      </aside>
+      <PropertyInspector document={history.present} onOperation={commit} />
     </section>
   </main>
 }
