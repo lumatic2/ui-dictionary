@@ -41,7 +41,9 @@ Status: approved 2026-07-11 — Step 1 complete; Step 2 in progress
   - Run the representative project-open→canvas edit→preview→terminal round-trip→recovery path in the rebuilt shell and capture visual/a11y/performance evidence.
   - Verify: renderer suite + desktop suite + packaged evidence + fresh Chrome screenshots at desktop and constrained widths.
 
-## Decision Log
+## 결정 로그
+
+- status: resolved
 
 - Workspace model: professional editor shell with project-first entry; confirmed by user on 2026-07-11.
 - Priority: editor fundamentals before agent collaboration and final visual polish; confirmed by user.
