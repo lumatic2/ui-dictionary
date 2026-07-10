@@ -20,4 +20,4 @@
 - [x] `npm run lint` PASS, `npm run build` PASS (부모 직접).
 - [x] prod preview(4188, 로컬 Playwright 스크립트): 12카드+Dashboard 렌더, placeholder 텍스트 0, Pro 하위 비노출, `?page=download` 홈 정규화. ("Get Started" 검출은 Hero 데모 mock CTA 카피 — 실 진입 버튼은 게이트 유지 확인, home-page.tsx:226)
 - [x] 카드 품질 판정: 스크린샷 리뷰 통과 (Hero 3변형·Command 실사 커맨드·Dashboard 스탯/차트/상태).
-- [ ] 프로덕션 배포 반영 확인 — push 승인 후.
+- [x] 프로덕션 배포 반영 확인: 일괄 push `ed74eda` → `index-DS_5UVrc.js`, 실사이트 — 카드 4종+Dashboard 렌더(h3 12), placeholder 0 (2026-07-10).

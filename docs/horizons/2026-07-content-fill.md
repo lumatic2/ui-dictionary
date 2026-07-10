@@ -1,7 +1,11 @@
 # Horizon - Content Fill
 
 Date: 2026-07-10
-Status: active
+Status: closed 2026-07-10 — 닫는 기준 충족: Docs Foundations 7종+Agent Recipes 공개(CF1), Showcase 카드 4+1 전부 완성 판정 통과·공개(제거 0, CF2), Patterns 빈 컬렉션 4개 실데이터 공개(CF3). Pro/Download 껍데기는 계획대로 dev 보존.
+
+## Objective 임팩트
+
+이 horizon은 Objective의 "제품 표면"과 "에이전트 통합" 축을 함께 움직였다: 공개 사이트가 "작지만 전부 진짜"에서 **목표 구조 대부분이 실콘텐츠로 채워진 상태**(Docs Foundations·Agent Recipes·Atlas 12칸·Dashboard·마케팅 컬렉션 4종·terms 536)가 됐고, Agent Recipes 표면으로 llms.txt 에이전트 자산이 처음 사람용 표면을 얻었다. 남은 축 이동은 Pro 실물 자산(에셋 모델/라이선스 결정 선행)과 Download 앱(별도 제품), Docs 아티클 심화가 담당한다.
 
 ## Goal
 

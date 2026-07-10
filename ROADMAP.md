@@ -1,13 +1,13 @@
 # ROADMAP
 
 > Last updated: 2026-07-10
-> Status: Content Fill — CF1 완료, CF2 구현완료(배포 배칭 대기), CF3 active
+> Status: Content Fill 완료 (CF1~3) — 다음 horizon 결정 필요 (docs/roadmap-gap-2026-07-10-b.md)
 > North star: Build Askewly Design as both a public reference website and an agent-usable implementation system.
 > line budget: <=150
 
 ## Current Horizon
 
-<!-- harness:goal id="content-fill" status="active" -->
+<!-- harness:goal id="content-fill" status="completed" -->
 Goal: dev 껍데기 중 콘텐츠만 있으면 열리는 것(Docs Foundations·Agent Recipes·Showcase 카드·Patterns 컬렉션)을 완성 판정→게이트 열기로 순차 공개한다. Details: `docs/horizons/2026-07-content-fill.md`. 직전 close: `docs/horizons/2026-07-structure-first-buildout.md`.
 
 ## Active Milestones
@@ -21,20 +21,24 @@ Goal: dev 껍데기 중 콘텐츠만 있으면 열리는 것(Docs Foundations·A
 
 - Completed at: 2026-07-10
 - Summary: Docs Foundations 7종(한국어, 토큰 SSOT 파생)+Agent Recipes 표면 프로덕션 공개 — llms.txt 링크 10/10 검증, ui.askewly.com 확인
-<!-- harness:milestone id="CF2" status="active" priority="P1" -->
+<!-- harness:milestone id="CF2" status="completed" priority="P1" evidence="changesets/20260710-showcase-gate-open/README.md" -->
 ### CF2 - Showcase Atlas Source-Quality 카드
 - DoD: placeholder 카드 4종(landing 완료·command/commerce/mobile) + Dashboard 섹션이 토큰·레시피 기반 인터랙티브 데모로 완성 판정(실사 mock·라이트/다크·reduced-motion)을 통과해 공개되거나 카드별 근거 있는 제거 + Chrome evidence + 배포 확인.
-- Evidence: docs/plans/2026-07-10-cf2-showcase-cards.md + changeset README들 + Chrome evidence.
+- Evidence: changesets/20260710-showcase-gate-open/README.md
 - Gap: 홈 대표 데모 그리드가 12칸 중 8칸만 공개 — landing 데모는 완성(게이트 뒤), command/commerce/mobile/Dashboard는 placeholder.
-- Status: [ ]
+- Status: [x]
 
-<!-- harness:milestone id="CF3" status="active" priority="P1" -->
+- Completed at: 2026-07-10
+- Summary: Showcase Atlas 12칸 완성 — 카드 4종 인터랙티브 데모+Dashboard 실마크업, 카드별 품질 판정 통과, ui.askewly.com 확인
+<!-- harness:milestone id="CF3" status="completed" priority="P1" evidence="changesets/20260710-collections-terms-promotion/README.md" -->
 ### CF3 - Patterns 빈 컬렉션 배치
 - DoD: inbox 후보 9종이 terms.yml로 승격(스키마·visual renderer·validate 통과)되고 빈 컬렉션 4개(Blog/Contact/Content/Logo Clouds)에 termIds 배정되어 노출 게이트가 자연 해제(termIds≥1), validate/build/lint/smoke PASS + 배포 확인(세션 일괄 push).
-- Evidence: docs/plans/2026-07-10-cf3-collections.md + changeset README + audit/validate 결과.
+- Evidence: changesets/20260710-collections-terms-promotion/README.md
 - Gap: 후보 9종 inbox 수집 완료, 승격·배정·검증 미수행. marquee-row alias 추가 권고 포함.
-- Status: [ ]
+- Status: [x]
 
+- Completed at: 2026-07-10
+- Summary: term 9종 승격(536)·컬렉션 4개 공개(예제 풀 페이지)·visual renderer 9종, ui.askewly.com 확인
 <!-- harness:milestone id="SFB1" status="completed" priority="P1" evidence="changesets/20260710-production-exposure-gate/README.md" -->
 ### SFB1 - Structure Contract And Clean Production
 - DoD: blueprint v2(목표 IA·완성 판정 기준·노출 규칙) 확정 + 프로덕션에서 빈 컬렉션·명목상 Templates·Download placeholder 비노출(데이터 보존) + 전 라우트 크롤 스모크 0건 + 배포 확인.

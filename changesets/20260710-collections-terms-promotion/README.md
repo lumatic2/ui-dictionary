@@ -18,4 +18,4 @@
 - [x] `npm run build`/`npm run lint` PASS (부모 독립 재실행).
 - [x] `npm run audit:visuals`: fallback 15→6, 신규 9종 fallback 0 (잔여 6종은 기존 스코프 외).
 - [x] prod preview 클릭 스루(부모, 로컬 Playwright): 4컬렉션 사이드바 노출·Blog Sections 예제 7종·Logo Clouds 예제 6종 풀 렌더·term 상세(한국어+visual) 렌더·Templates 비노출 유지. Evidence: `docs/research/assets/cf3-collections-2026-07-10/`.
-- [ ] 프로덕션 배포 반영 확인 — 세션 일괄 push 후.
+- [x] 프로덕션 배포 반영 확인: 일괄 push `ed74eda` → 실사이트 Blog Sections("From the blog" 예제)·Logo Clouds("Simple with heading") 렌더, Pro 비노출 유지 (2026-07-10).
