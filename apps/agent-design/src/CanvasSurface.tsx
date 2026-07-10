@@ -1,8 +1,11 @@
 import { useMemo } from 'react'
 import type { CanvasDocument, CanvasNode } from '@askewly/canvas-core'
+import { EditorPlane } from './EditorPlane'
+import type { EditorPlaneFailure } from './editorPlaneRuntime'
 
 interface Props {
   document: CanvasDocument
+  editorPlaneFailure?: EditorPlaneFailure | null
 }
 
 function sourceRef(node: CanvasNode) {
@@ -45,20 +48,21 @@ function CanvasNodeElement({ node }: { node: CanvasNode }) {
   return <div {...shared} role="group" data-layout-mode={node.layout.mode}>{node.name}</div>
 }
 
-export function CanvasSurface({ document }: Props) {
+export function CanvasSurface({ document, editorPlaneFailure = null }: Props) {
   const orderedNodes = useMemo(() => Object.values(document.nodes), [document.nodes])
   const selected = document.nodes[document.selection[0]]
   const transform = `translate(${document.viewport.pan.x}px, ${document.viewport.pan.y}px) scale(${document.viewport.zoom})`
+  const selection = selected ? {
+    x: selected.bounds.x * document.viewport.zoom + document.viewport.pan.x,
+    y: selected.bounds.y * document.viewport.zoom + document.viewport.pan.y,
+    width: selected.bounds.width * document.viewport.zoom,
+    height: selected.bounds.height * document.viewport.zoom,
+  } : null
 
   return <div className="canvas-viewport" data-testid="canvas-viewport">
     <div className="canvas-content" data-testid="canvas-content" style={{ transform }}>
       {orderedNodes.map((node) => <CanvasNodeElement key={node.id} node={node} />)}
     </div>
-    {selected ? <div
-      className="dom-editor-selection"
-      data-testid="editor-selection"
-      data-selected-id={selected.id}
-      style={{ left: selected.bounds.x, top: selected.bounds.y, width: selected.bounds.width, height: selected.bounds.height }}
-    /> : null}
+    {selection ? <div data-selected-id={selected?.id}><EditorPlane selection={selection} failure={editorPlaneFailure} /></div> : null}
   </div>
 }

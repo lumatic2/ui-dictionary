@@ -40,7 +40,7 @@ Status: awaiting user execution approval
   - Artifact: `apps/agent-design/` minimal canvas surface.
   - Verify: document→DOM mapping counts, Korean composition-event test, keyboard focus smoke, 1k/5k render benchmark.
 
-- [ ] Step 4 — WebGPU editor plane with DOM fallback
+- [x] Step 4 — WebGPU editor plane with DOM fallback
   - selection bounds, guides, viewport diagnostic geometry를 WebGPU plane에 그린다.
   - adapter unavailable, validation error, device loss를 injectable failure로 만들고 같은 state를 DOM overlay로 복구한다.
   - Artifact: renderer adapter contract + GPU/fallback implementations.

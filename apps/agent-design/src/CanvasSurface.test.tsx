@@ -1,4 +1,4 @@
-import { cleanup, fireEvent, render } from '@testing-library/react'
+import { cleanup, fireEvent, render, waitFor } from '@testing-library/react'
 import { createDocumentFixture } from '@askewly/canvas-core'
 import { afterEach, describe, expect, it } from 'vitest'
 import { CanvasSurface } from './CanvasSurface'
@@ -12,7 +12,7 @@ describe('semantic DOM content plane', () => {
     const nodes = view.container.querySelectorAll('[data-canvas-id]')
     expect(nodes).toHaveLength(size)
     expect(view.container.querySelectorAll('[data-source-ref]')).toHaveLength(Object.values(document.nodes).filter((node) => node.source).length)
-    expect(view.getByTestId('editor-selection').getAttribute('data-selected-id')).toBe(document.selection[0])
+    expect(view.container.querySelector('[data-selected-id]')?.getAttribute('data-selected-id')).toBe(document.selection[0])
   })
 
   it('preserves Korean composition in the text surface', () => {
@@ -32,5 +32,16 @@ describe('semantic DOM content plane', () => {
     const expected = Object.values(document.nodes).filter((node) => node.kind === 'code-component' || node.kind === 'instance' || node.kind === 'text').length
     const view = render(<CanvasSurface document={document} />)
     expect(view.container.querySelectorAll('button,[tabindex="0"]')).toHaveLength(expected)
+  })
+
+  it.each([
+    ['forced-fallback', 'forced fallback'],
+    ['validation-error', 'injected validation error'],
+    ['device-lost', 'injected device loss'],
+  ] as const)('falls back to DOM for %s', async (failure, reason) => {
+    const view = render(<CanvasSurface document={createDocumentFixture(1000)} editorPlaneFailure={failure} />)
+    await waitFor(() => expect(view.getByTestId('editor-plane').getAttribute('data-editor-plane')).toBe('dom'))
+    expect(view.getByTestId('editor-plane').getAttribute('data-editor-reason')).toContain(reason)
+    expect(view.getByTestId('editor-selection')).toBeTruthy()
   })
 })
