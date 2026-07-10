@@ -4,7 +4,7 @@
 
 - Added independent production assembly for the Electron main/preload, Vite renderer, supervised bridge child, and stdio MCP adapter without a development server dependency.
 - Added Windows x64 Forge packaging with the Agent Design icon/metadata and a Squirrel installer named `AgentDesign-UnsignedDevelopment-Setup.exe`.
-- Applied and verified every Electron 43 fuse: RunAsNode, NODE_OPTIONS, inspect arguments, and extra file privileges are disabled; cookie encryption, embedded ASAR integrity, ASAR-only loading, browser V8 snapshot, and Wasm trap handlers are enabled.
+- Applied and verified every Electron 43 fuse: RunAsNode, NODE_OPTIONS, inspect arguments, extra file privileges, and the unavailable browser-specific V8 snapshot are disabled; cookie encryption, embedded ASAR integrity, ASAR-only loading, and Wasm trap handlers are enabled.
 - Added fail-closed package inspection for ASAR/resource inventory, hashes, forbidden development URLs/source maps/secret patterns, Authenticode status, updater/publisher state, and CycloneDX component inventory.
 - Kept the distribution classification at `unsigned-development`; no signing identity, updater, or publisher is configured.
 

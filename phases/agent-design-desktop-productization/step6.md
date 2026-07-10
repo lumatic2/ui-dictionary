@@ -20,3 +20,8 @@ cd apps/agent-design-desktop; npm run test:packaged-e2e; npm run verify:packaged
 ## 금지사항
 - dev Electron/Vite 결과를 packaged proof로 대체하지 마라.
 - synthetic IME, installer 생성, screenshot만으로 actual IME/install/drift gate를 통과 처리하지 마라.
+
+## Current evidence — 2026-07-11
+
+- Packaged dual adapter, human/source round-trip, utility crash/recovery, restart drift, 5k/fallback/keyboard, process cleanup, and current-user Squirrel install/launch/uninstall gates pass.
+- Actual Microsoft IME remains open. `results/packaged/ime-manual.json` records the real Windows UI attempts and the unsupported Hangul-key blocker; `verify:packaged-evidence` fails closed until pass evidence exists.

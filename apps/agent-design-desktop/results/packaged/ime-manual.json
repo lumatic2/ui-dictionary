@@ -1,0 +1,17 @@
+{
+  "schemaVersion": 1,
+  "runtime": "Packaged Agent Design Windows x64 through Computer Use SendInput/UI Automation",
+  "windowsUiAttempted": true,
+  "textSurfaceEditable": true,
+  "romanKeySequenceInserted": true,
+  "actualMicrosoftImePass": false,
+  "compositionObserved": false,
+  "syntheticOnly": false,
+  "blockerCode": "COMPUTER_USE_HANGUL_KEY_UNSUPPORTED",
+  "attempts": [
+    "Hangul keysym rejected as unsupported",
+    "Alt_R consumed by the Electron menu instead of switching the IME",
+    "Alt+Shift and Ctrl+Shift retained Roman input for the Dubeolsik key sequence"
+  ],
+  "requiredManualProof": "In the packaged app, focus node-00007, activate Microsoft Korean IME, compose 한글입력검증, blur the field, and verify the committed canvas text remains 한글입력검증."
+}

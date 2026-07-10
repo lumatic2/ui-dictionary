@@ -1,0 +1,21 @@
+{
+  "schemaVersion": 1,
+  "classification": "unsigned-development",
+  "scope": "current Windows user (no Windows Sandbox elevation available)",
+  "installed": true,
+  "launched": true,
+  "rendererSecurityVerified": true,
+  "startMenuShortcutCreated": "Askewly/Agent Design.lnk",
+  "desktopShortcutCreated": "Agent Design.lnk",
+  "uninstalled": true,
+  "uninstallerRemovedApplicationPayload": true,
+  "squirrelTombstoneFiles": [
+    ".dead",
+    "app-0.1.0/squirrel.exe",
+    "app-0.1.0/v8_context_snapshot.bin",
+    "Update.exe"
+  ],
+  "harnessRemovedExpectedTombstone": true,
+  "installDirectoryRemoved": true,
+  "shortcutRemoved": true
+}

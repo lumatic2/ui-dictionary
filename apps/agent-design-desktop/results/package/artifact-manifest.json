@@ -13,7 +13,7 @@
     "EnableNodeCliInspectArguments": "disabled",
     "EnableEmbeddedAsarIntegrityValidation": "enabled",
     "OnlyLoadAppFromAsar": "enabled",
-    "LoadBrowserProcessSpecificV8Snapshot": "enabled",
+    "LoadBrowserProcessSpecificV8Snapshot": "disabled",
     "GrantFileProtocolExtraPrivileges": "disabled",
     "WasmTrapHandlers": "enabled"
   },
@@ -22,31 +22,31 @@
       "name": "portable-executable",
       "file": "out/Agent Design-win32-x64/AgentDesign.exe",
       "bytes": 225697792,
-      "sha256": "21983f1056a2a9001f2225454b623c672b3f595089bf8cba76ef13454d2f258a"
+      "sha256": "597dc1e931417fae722ae7f7bf71d59aa22908cc18de6425fa809a700681b6a3"
     },
     {
       "name": "application-asar",
       "file": "out/Agent Design-win32-x64/resources/app.asar",
-      "bytes": 82501,
-      "sha256": "08690e92b35ecb85c2040ae65fe34122b7317dd61ecb20d25f3dfcd5277d174e"
+      "bytes": 102498,
+      "sha256": "516c0c372db4f491c067787744a868a00bc476dc5d584e6000194aa7e5fd7693"
     },
     {
       "name": "squirrel-installer",
       "file": "out/make/squirrel.windows/x64/AgentDesign-UnsignedDevelopment-Setup.exe",
-      "bytes": 140380160,
-      "sha256": "a220887b54ceca679debc595330794ee0a727ea0b6f2013dbf76c2c9dd5a5736"
+      "bytes": 140384768,
+      "sha256": "fdaa987a057cd812482d669d4d92c2c179beab41ceb2f66fe6b09737aa907b8e"
     },
     {
       "name": "squirrel-package",
       "file": "out/make/squirrel.windows/x64/agent_design-0.1.0-full.nupkg",
-      "bytes": 139294550,
-      "sha256": "b329ec5c134b00ebabac7314ce2d9f1287feea4d7bb5acb39e77f1c202b3bfa5"
+      "bytes": 139298643,
+      "sha256": "ea986631f3c68a53b78d86f10489f3e36cb2354941908b3a4e865ee8b80b3a4b"
     },
     {
       "name": "squirrel-releases",
       "file": "out/make/squirrel.windows/x64/RELEASES",
       "bytes": 83,
-      "sha256": "6489520af108868fdc84c277ffed63533565c1a7e3f0041f485c455fed661f0c"
+      "sha256": "8d5dee84e23acfbcbf64a0d64f3267465258728a7193b1692e258ce412a55d6e"
     }
   ]
 }
