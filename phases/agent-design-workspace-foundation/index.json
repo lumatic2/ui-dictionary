@@ -1,0 +1,13 @@
+{
+  "project": "ui-dictionary",
+  "phase": "agent-design-workspace-foundation",
+  "mode": "product",
+  "steps": [
+    { "step": 1, "name": "workspace-shell-visual-hierarchy", "status": "pending" },
+    { "step": 2, "name": "project-entry-recent-flow", "status": "pending" },
+    { "step": 3, "name": "persistent-toolbar-document-status", "status": "pending" },
+    { "step": 4, "name": "adaptive-panel-workspace", "status": "pending" },
+    { "step": 5, "name": "integrated-workspace-quality-proof", "status": "pending" }
+  ]
+}
+
