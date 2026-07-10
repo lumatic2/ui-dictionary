@@ -10,7 +10,13 @@
       "summary": "Added a pure agent-design-engine transaction protocol over existing canvas-core operations and a loopback-only Node bridge with ephemeral token auth, project path confinement, guarded revision/hash commits, monotonic event cursors, bounded replay, cursor-gap snapshot recovery, HTTP snapshots/transactions, and WebSocket broadcasts. Verified engine 5/5, bridge 5/5, and both TypeScript builds.",
       "completed_at": "2026-07-10T23:17:00+09:00"
     },
-    { "step": 2, "name": "terminal-mcp-adapters", "status": "pending" },
+    {
+      "step": 2,
+      "name": "terminal-mcp-adapters",
+      "status": "completed",
+      "summary": "Added one official-SDK stdio MCP adapter shared by Codex and Claude actors with get_context, apply_operations, apply_source_patch, verify, and undo tools. Deterministic child-process MCP initialize/list/context/apply/verify/undo passed for both actors; bridge context/verify/guarded undo raised bridge tests to 7/7. Installed Codex recognized one-shot config and installed Claude recognized a temporary project-scoped config as pending approval; no global config was changed and no live model call is claimed.",
+      "completed_at": "2026-07-10T23:22:00+09:00"
+    },
     { "step": 3, "name": "atomic-auto-apply-audit", "status": "pending" },
     { "step": 4, "name": "canvas-live-sync-file-watcher", "status": "pending" },
     { "step": 5, "name": "dual-cli-roundtrip-proof", "status": "pending" }
