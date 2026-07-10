@@ -1,7 +1,7 @@
 # ROADMAP
 
 > Last updated: 2026-07-10
-> Status: Content Fill — CF1 완료, CF2 active (horizon-run 연쇄)
+> Status: Content Fill — CF1 완료, CF2 구현완료(배포 배칭 대기), CF3 active
 > North star: Build Askewly Design as both a public reference website and an agent-usable implementation system.
 > line budget: <=150
 
@@ -28,9 +28,12 @@ Goal: dev 껍데기 중 콘텐츠만 있으면 열리는 것(Docs Foundations·A
 - Gap: 홈 대표 데모 그리드가 12칸 중 8칸만 공개 — landing 데모는 완성(게이트 뒤), command/commerce/mobile/Dashboard는 placeholder.
 - Status: [ ]
 
-## Next Candidates
-
-- CF3 - Patterns 빈 컬렉션 배치: 우선 4개 컬렉션에 authoring workflow로 terms 채워 공개. 후보 9종 inbox 수집 완료(`docs/ui-vocabulary/inbox.yml`). (DoD: horizon doc)
+<!-- harness:milestone id="CF3" status="active" priority="P1" -->
+### CF3 - Patterns 빈 컬렉션 배치
+- DoD: inbox 후보 9종이 terms.yml로 승격(스키마·visual renderer·validate 통과)되고 빈 컬렉션 4개(Blog/Contact/Content/Logo Clouds)에 termIds 배정되어 노출 게이트가 자연 해제(termIds≥1), validate/build/lint/smoke PASS + 배포 확인(세션 일괄 push).
+- Evidence: docs/plans/2026-07-10-cf3-collections.md + changeset README + audit/validate 결과.
+- Gap: 후보 9종 inbox 수집 완료, 승격·배정·검증 미수행. marquee-row alias 추가 권고 포함.
+- Status: [ ]
 
 <!-- harness:milestone id="SFB1" status="completed" priority="P1" evidence="changesets/20260710-production-exposure-gate/README.md" -->
 ### SFB1 - Structure Contract And Clean Production
