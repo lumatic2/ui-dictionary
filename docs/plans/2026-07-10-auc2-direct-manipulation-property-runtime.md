@@ -31,12 +31,12 @@ Status: approved; execution in progress
   - snap/alignment guide는 WebGPU editor plane에서 파생하고 final bounds만 history operation으로 commit한다.
   - Verify: cancel/revert, min size, zoom-adjusted delta, 1 operation per gesture, undo/redo.
 
-- [~] Step 3 — Reparent/reorder and responsive constraints
+- [x] Step 3 — Reparent/reorder and responsive constraints
   - drag target ancestry로 valid reparent/reorder를 계산하고 cycle/locked-node/invalid instance 경계를 거부한다.
   - fixed/hug/fill 및 horizontal/vertical layout constraint가 resize/reparent 후 deterministic하게 보존되도록 한다.
   - Verify: nested fixtures, invalid drop rejection, structure round-trip, responsive resize cases.
 
-- [ ] Step 4 — Typed property, token, mode, variant, Korean text runtime
+- [~] Step 4 — Typed property, token, mode, variant, Korean text runtime
   - node kind별 typed inspector schema를 만들고 invalid prop/token/variant 입력을 commit 전에 거부한다.
   - compositionstart→update→end를 한 text operation으로 commit하고 composition 중 canvas rerender가 입력을 파괴하지 않게 한다.
   - Verify: property validation, token binding, variant/mode switch, Microsoft IME actual manual pass + synthetic regression.
