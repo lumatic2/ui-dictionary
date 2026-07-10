@@ -1,7 +1,7 @@
 # ROADMAP
 
 > Last updated: 2026-07-10
-> Status: Agent-Native UI Canvas — AUC0 plan approval 대기
+> Status: Agent-Native UI Canvas — AUC0 비교 완료, renderer 선택 대기
 > North star: Build Askewly Design as both a public reference website and an agent-usable implementation system.
 > line budget: <=150
 
@@ -15,8 +15,8 @@ Goal: Agent Design를 code-native UI canvas로 만든다 — evidence-based engi
 <!-- harness:milestone id="AUC0" status="active" priority="P0" -->
 ### AUC0 — Canvas Engine Bake-off
 - DoD: DOM/React overlay, DOM+WebGPU overlay, SVG+embedded DOM, CanvasKit/custom WebGPU 4후보를 동일 1k/5k/10k fixture와 성능·fidelity·IME·a11y·recovery·round-trip 기준으로 비교하고, 사용자 선택으로 renderer/engine ADR을 확정.
-- Evidence: `docs/plans/2026-07-10-auc0-canvas-engine-bakeoff.md` + `experiments/canvas-engine-*` + comparative report + 후속 ADR.
-- Gap: 품질 기준은 높게 확정됐지만 renderer/native 범위를 evidence 없이 선결할 수 없다.
+- Evidence: `docs/plans/2026-07-10-auc0-canvas-engine-bakeoff.md` + `experiments/canvas-engine-*` + `docs/research/canvas-engine-bakeoff-2026-07.md` + 후속 ADR.
+- Gap: 4/4 experiment와 비교 보고서는 완료. 사용자 renderer/native topology 선택과 후속 ADR이 남았다.
 - Status: [ ]
 
 ## Next Candidates
