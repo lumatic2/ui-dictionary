@@ -41,7 +41,7 @@ Status: approved; execution in progress
   - compositionstart→update→end를 한 text operation으로 commit하고 composition 중 canvas rerender가 입력을 파괴하지 않게 한다.
   - Verify: property validation, token binding, variant/mode switch, Microsoft IME actual manual pass + synthetic regression.
 
-- [~] Step 5 — Integrated 5k manipulation and accessibility proof
+- [ ] Step 5 — Integrated 5k manipulation and accessibility proof (automated PASS; Microsoft IME manual gate pending)
   - select→move→resize→reparent→property→text→undo/redo→save/reload 흐름을 system Chrome과 실제 Chrome에서 검증한다.
   - 5k pointer-to-visible p95 ≤16ms 3회, keyboard focus order, forced WebGPU fallback, screenshot/reload drift gate를 기록한다.
   - Artifact: `phases/agent-design-direct-manipulation/` + changesets + screenshots/result JSON.

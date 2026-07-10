@@ -31,6 +31,13 @@
       "summary": "Added kind-aware typed property schemas and validated set-node-property operations for code props, instance overrides, variants, token bindings, and layout, plus document token mode and invertible update-text operations. The inspector validates before commit and edits name/layout/sizing/props/variants/tokens/mode. Text surfaces hold a DOM-local draft during composition and commit exactly one update-text at compositionend or blur. Verified core 35/35, app 13/13, both builds, invalid-input rejection, and synthetic Korean composition revision/undo behavior; OS Microsoft IME remains for Step 5 live verification.",
       "completed_at": "2026-07-10T18:51:28+09:00"
     },
-    { "step": 5, "name": "integrated-5k-quality-proof", "status": "in_progress" }
+    {
+      "step": 5,
+      "name": "integrated-5k-quality-proof",
+      "status": "blocked",
+      "blocked_reason": "All automated gates passed, but the approved plan requires a genuine Windows Microsoft IME manual composition pass. System Chrome headless verified Korean entry and synthetic composition verified one-operation history, but neither is equivalent to an OS IME manual pass. Chrome extension live verification was also unavailable because the installed plugin bundle is missing docs/browser-safety.md and docs/chrome-troubleshooting.md.",
+      "blocked_at": "2026-07-10T18:58:12+09:00",
+      "summary": "Automated evidence is complete: core 35/35, app 13/13, builds and DESIGN lint pass; system Chrome WebGPU active; 5k pointer-to-paint p95 6.9/13.5/10.7ms with revision delta 1; keyboard focus order, forced DOM fallback, reparent, typed property/mode, Korean Chrome text entry, save/reload undo/redo, zero pixel diff, and zero console errors pass. Only genuine Microsoft IME manual composition remains before AUC2 can close."
+    }
   ]
 }
