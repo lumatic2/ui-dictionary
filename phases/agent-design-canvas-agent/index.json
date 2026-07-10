@@ -31,6 +31,12 @@
       "summary": "Connected the browser canvas to authenticated WebSocket snapshots with cursor replay/recovery, routed connected human operations back through bridge authority, added loopback-only CORS, and implemented allowlisted Node source watching with debounce, supported JSX stable-ID reconciliation, verification, audit, and bridge-write echo suppression. System Chrome live proof passed 20/20 revisions with agent ack→visible p95 52.2ms, file edit→visible p95 107.6ms, zero watcher/console errors, and visual screenshot evidence.",
       "completed_at": "2026-07-10T23:40:00+09:00"
     },
-    { "step": 5, "name": "dual-cli-roundtrip-proof", "status": "pending" }
+    {
+      "step": 5,
+      "name": "dual-cli-roundtrip-proof",
+      "status": "completed",
+      "summary": "Completed a fresh React dual-client flow through the real stdio adapter and bridge: Codex operation, stale Claude conflict, Claude source patch, Codex Undo, bridge-down structured error, same-revision restart, and direct-file watcher recovery converged at revision 4 with matching source/context hashes. Installed Codex directly emitted a successful get_context tool event; installed Claude returned the non-prompt document ID and revision through its restricted MCP-only session. Full regression passed core 35/35, engine 9/9, bridge 14/14, MCP 2/2, app 16/16, all builds, live latency validation, and roundtrip validator.",
+      "completed_at": "2026-07-10T23:51:00+09:00"
+    }
   ]
 }
