@@ -172,12 +172,13 @@ Horizon close evidence should be one real fresh-project flow: create/open → co
 ## 8. User-owned decisions before authoring the horizon
 
 1. Product identity: **code-native UI canvas** — confirmed by user, 2026-07-10.
-2. Canvas model: canonical JSON document/scenegraph + sandboxed DOM/React renderer + editor overlay (research-backed recommendation).
-3. Host: Electron is used by both references; Tauri would require a separate Node/Bun bridge for the current TypeScript core.
-4. Engine topology: run shared TypeScript core in Electron main initially, or supervise a local Node sidecar from day one.
-5. Platform: **Windows-first** installer with macOS later, or cross-platform packaging in the same horizon.
-6. Apply contract: guarded in-app writes after exact diff confirmation (recommended), or read-only code export.
-7. Agent scope: a selection-bound canvas agent is core; unrelated general-purpose chat remains out of v1.
+2. Quality strategy: **Canvas Engine Bake-off first; C++/WebGPU/vector/native paths remain candidates instead of permanent exclusions** — confirmed by user, 2026-07-10.
+3. Canvas model: renderer-independent canonical JSON document/scenegraph; concrete renderer is decided by AUC0 evidence.
+4. Host: Electron is used by both references; Tauri would require a separate Node/Bun bridge for the current TypeScript core.
+5. Engine topology: run shared TypeScript core in Electron main initially, or supervise a local Node sidecar from day one.
+6. Platform: **Windows-first** installer with macOS later, or cross-platform packaging in the same horizon.
+7. Apply contract: guarded in-app writes after exact diff confirmation (recommended), or read-only code export.
+8. Agent scope: a selection-bound canvas agent is core; unrelated general-purpose chat remains out of v1.
 
 ## Sources
 

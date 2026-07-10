@@ -53,6 +53,10 @@ Free users can inspect examples and learn from them. Paid users eventually get b
 
 Codex and Claude Code can consume the same system as tokens, recipes, prompts, constraints, and anti-patterns.
 
+### Create On A Code-Native Canvas
+
+Agent Design is the desktop authoring surface. Users compose real React UI in frames, select and directly manipulate elements, bind tokens and typed properties, explore variants side by side, and ask a canvas-docked agent to revise the current selection. Canvas edits remain inspectable code and close with an exact diff plus browser verification.
+
 ## MVP Direction
 
 The current static React site remains the first product surface. Tailwind/Tailwind Plus parity work is retained as reference-backed implementation evidence, but future work must label what is reference, what is adapted, and what belongs to Askewly Design.
@@ -63,6 +67,8 @@ Near-term MVP work should prioritize:
 - reference strategy for Tailwind, Tailwind Labs, mobile guidelines, SaaS products, and local design-manual assets;
 - surface taxonomy beyond web-only categories;
 - an agent-usable asset model for tokens, patterns, examples, and code.
+- an evidence-based canvas engine decision before committing to DOM, WebGPU, SVG, CanvasKit, or native/Wasm hot paths;
+- a canonical canvas document model that remains independent from its renderer and maps deterministically to code.
 
 The public website structure is defined in `docs/design-system/site-blueprint.md`. That blueprint is the source of truth for the first landing page, top-level navigation, site map, page types, public/internal content boundaries, implementation order, and first vertical slice.
 
@@ -73,6 +79,8 @@ The public website structure is defined in `docs/design-system/site-blueprint.md
 - Do not blindly copy Tailwind, Apple, Material, or SaaS product identities.
 - Do not replace the human-facing website with only machine-readable docs.
 - Do not import other local design repositories until a reference/integration strategy exists.
+- Do not turn the first Agent Design horizon into a general vector illustration suite, multiplayer cloud editor, or general-purpose chat product.
+- Do not lower the quality bar to a screenshot preview with decorative selection handles; direct manipulation must mutate canonical structure and round-trip to working UI code.
 
 ## Success Criteria
 
@@ -81,3 +89,4 @@ The public website structure is defined in `docs/design-system/site-blueprint.md
 - Each major example has visual evidence and usable implementation guidance.
 - Codex and Claude Code can use the system to produce UI with better hierarchy, spacing, typography, color, interaction states, and reduced AI-generic feel.
 - Future paid features have a clear path: copyable code, downloadable assets, and reusable implementation packs.
+- A representative Agent Design project can compose, directly edit, agent-revise, diff, apply, and verify a responsive React UI without canvas/browser drift.
