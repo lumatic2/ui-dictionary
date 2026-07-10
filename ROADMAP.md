@@ -1,7 +1,7 @@
 # ROADMAP
 
 > Last updated: 2026-07-11
-> Status: Canvas Product UX — UX1 Workspace Foundation planning gate
+> Status: Canvas Product UX — UX2 Visual Creation Workflow planning gate
 > North star: Build Askewly Design as both a public reference website and an agent-usable implementation system.
 > line budget: <=150
 
@@ -26,7 +26,7 @@ Goal: turn Agent Design from a proven canvas engine into a coherent professional
 <!-- harness:milestone id="UX2" status="pending" priority="P0" -->
 ### UX2 — Visual Creation Workflow
 - DoD: layers, insertion, viewport, selection, alignment/spacing, properties, and shortcuts form one discoverable creation loop with representative UI composition evidence.
-- Evidence: future `docs/plans/` + `phases/agent-design-visual-creation/` + creation-flow E2E.
+- Evidence: `docs/plans/2026-07-11-ux2-visual-creation-workflow.md` + `phases/agent-design-visual-creation/` + creation-flow E2E.
 - Gap: UX1 organizes the workspace but does not yet provide a production-grade layer/insertion/layout workflow.
 - Status: [ ]
 

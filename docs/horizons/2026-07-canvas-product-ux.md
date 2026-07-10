@@ -1,7 +1,7 @@
 # Horizon — Canvas Product UX
 
 Date: 2026-07-11
-Status: active — UX1 Workspace Foundation approved for planning.
+Status: active — UX1 complete; UX2 Visual Creation Workflow awaiting run approval.
 
 ## Goal
 
@@ -51,4 +51,4 @@ Objective의 “사람이 직접 만드는 캔버스와 에이전트가 같은 �
 - Predecessor: `docs/horizons/2026-07-agent-native-ui-canvas.md`
 - Gap review: `docs/roadmap-gap-2026-07-11.md`
 - UX1 plan: `docs/plans/2026-07-11-ux1-workspace-foundation.md`
-
+- UX2 plan: `docs/plans/2026-07-11-ux2-visual-creation-workflow.md`

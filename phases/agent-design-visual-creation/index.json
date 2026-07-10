@@ -1,0 +1,14 @@
+{
+  "project": "ui-dictionary",
+  "phase": "agent-design-visual-creation",
+  "mode": "product",
+  "steps": [
+    { "step": 1, "name": "canonical-creation-command-layer", "status": "pending" },
+    { "step": 2, "name": "hierarchical-layers-panel", "status": "pending" },
+    { "step": 3, "name": "searchable-insert-palette", "status": "pending" },
+    { "step": 4, "name": "layout-arrangement-controls", "status": "pending" },
+    { "step": 5, "name": "viewport-keyboard-workflow", "status": "pending" },
+    { "step": 6, "name": "representative-composition-proof", "status": "pending" }
+  ]
+}
+
