@@ -49,6 +49,11 @@ export function App() {
     setStatus('changed')
   }, [])
 
+  const commit = useCallback((operation: CanvasOperation) => {
+    setHistory((current) => commitOperation(current, operation))
+    setStatus('changed')
+  }, [])
+
   const save = useCallback(async () => {
     const bytes = await saveSnapshot(store, storageKey, baseDocument, history.log)
     setStatus(`saved ${bytes} bytes`)
@@ -121,14 +126,14 @@ export function App() {
       <output data-testid="persistence-status">{status}</output>
     </nav>
     <section className="app-body">
-      <CanvasSurface document={history.present} editorPlaneFailure={failure} />
+      <CanvasSurface document={history.present} editorPlaneFailure={failure} onOperation={commit} />
       <aside className="inspector">
         <h2>Document</h2>
         <dl>
           <div><dt>Schema</dt><dd>v{history.present.schemaVersion}</dd></div>
           <div><dt>Revision</dt><dd data-testid="document-revision">{history.present.revision}</dd></div>
           <div><dt>Nodes</dt><dd>{Object.keys(history.present.nodes).length.toLocaleString()}</dd></div>
-          <div><dt>Selection</dt><dd>{history.present.selection[0]}</dd></div>
+          <div><dt>Selection</dt><dd data-testid="selection-count">{history.present.selection.length}</dd></div>
         </dl>
       </aside>
     </section>

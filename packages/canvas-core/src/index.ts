@@ -1,4 +1,5 @@
 export * from './fixtures.js'
+export * from './interaction.js'
 export * from './operations.js'
 export * from './persistence.js'
 export * from './types.js'

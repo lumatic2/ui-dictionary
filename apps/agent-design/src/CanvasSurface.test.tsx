@@ -31,7 +31,8 @@ describe('semantic DOM content plane', () => {
     const document = createDocumentFixture(1000)
     const expected = Object.values(document.nodes).filter((node) => node.kind === 'code-component' || node.kind === 'instance' || node.kind === 'text').length
     const view = render(<CanvasSurface document={document} />)
-    expect(view.container.querySelectorAll('button,[tabindex="0"]')).toHaveLength(expected)
+    expect(view.container.querySelectorAll('[data-canvas-id]:is(button,[tabindex="0"])')).toHaveLength(expected)
+    expect(view.getByTestId('canvas-viewport').getAttribute('role')).toBe('application')
   })
 
   it.each([

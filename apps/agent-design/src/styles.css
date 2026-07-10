@@ -18,6 +18,8 @@ button, select { font: inherit; }
 .canvas-viewport { position: relative; overflow: hidden; background-color: #fafbfc; background-image: linear-gradient(#e8ebf0 1px, transparent 1px), linear-gradient(90deg, #e8ebf0 1px, transparent 1px); background-size: 24px 24px; }
 .canvas-content { position: absolute; inset: 0; transform-origin: 0 0; }
 .canvas-node { position: absolute; display: block; overflow: hidden; border: 1px solid hsl(250 18% 80%); border-radius: 6px; padding: 6px; color: #334155; font-size: 10px; text-align: left; }
+.canvas-node[data-selection-state="selected"] { outline: 1px solid #7c3aed; outline-offset: 1px; }
+.canvas-node:focus-visible { outline: 2px solid #6f2dbd; outline-offset: 2px; }
 .node-code-component { border-color: #8b5cf6; box-shadow: inset 0 0 0 1px rgb(139 92 246 / 0.2); }
 .node-instance { border-color: #0f766e; }
 .node-text { background: rgb(255 255 255 / 0.9) !important; outline: none; }
@@ -26,6 +28,7 @@ button, select { font: inherit; }
 .webgpu-editor-canvas { position: absolute; inset: 0; width: 100%; height: 100%; }
 .webgpu-editor-canvas[hidden] { display: none; }
 .dom-editor-selection { position: absolute; pointer-events: none; border: 2px solid #7c3aed; box-shadow: 0 0 0 1px white; }
+.selection-marquee { position: absolute; pointer-events: none; border: 1px solid #6f2dbd; background: rgb(111 45 189 / 0.08); }
 .inspector { background: #111827; color: #e5e7eb; padding: 18px; }
 .inspector h2 { margin: 0 0 18px; font-size: 14px; }
 .inspector dl { display: grid; gap: 12px; margin: 0; }
