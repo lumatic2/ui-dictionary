@@ -26,8 +26,8 @@
 - [x] `npm run lint` and `npm run build` PASS (existing Fast Refresh and bundle-size warnings only).
 - [x] Production preview exposes one Principles nav item, article title, eight numbered sections, and checklist; 375px overflow 0; `Getting set up` regression PASS; console errors 0.
 - [x] Missing-source failure mode remains non-zero (`SSOT source missing`, exit 1), followed by successful clean regeneration.
-- [ ] `ui.askewly.com` exposes the Principles Docs article and public llms asset after push.
+- [x] Cloudflare deployment `e9cba517-7f6b-4ea8-883e-0ae4de9c13d4` succeeded for source `74ade1a`; its deployment URL and `ui.askewly.com` both expose the approved raw principles asset, llms index entry, `index-CJVsnwas.js` article heading, and public gate id.
 
 ## Result
 
-- Local release gates pass. Production deployment verification remains pending after push.
+- User-approved Principles are public on both human and agent surfaces. Local and production release gates pass.
