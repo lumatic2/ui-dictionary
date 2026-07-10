@@ -43,3 +43,6 @@
 {"event": "task_completed", "task_id": "DA1", "evidence": ["changesets/20260710-docs-category-articles/README.md"]}
 {"event": "adversarial_verify", "task_id": "PE1", "verifier": "claude:ad60fe35(독립 라이브 재검증)", "verdict": "confirmed", "evidence": ["changesets/20260710-page-examples-gate-open/README.md"], "repro": "push 5b48b31 후 별도 브라우저 세션에서 ui.askewly.com 실렌더·게이트 홀드 재확인"}
 {"event": "task_completed", "task_id": "PE1", "evidence": ["changesets/20260710-page-examples-gate-open/README.md"]}
+{"event": "done_claim", "task_id": "CLI1", "worker": "claude:ad60fe35", "changed_files": ["packages/cli/*", "docs/design-system/cli-registry-contract.md"], "tests": ["vitest 11/11 + 실패모드 5종 exit1 + npm pack fresh-env E2E"], "evidence": ["changesets/20260710-cli-core-query/README.md"], "cleanup": ["tgz/dist/data gitignore"], "risks": ["npm publish는 CLI3(크레덴셜 필요)"]}
+{"event": "adversarial_verify", "task_id": "CLI1", "verifier": "claude:ad60fe35(fresh-env 재실행)", "verdict": "confirmed", "evidence": ["changesets/20260710-cli-core-query/README.md"], "repro": "npm pack 후 별도 임시 디렉터리에 tgz 설치, npx askewly-design로 조회·json·실패모드 독립 재실행"}
+{"event": "task_completed", "task_id": "CLI1", "evidence": ["changesets/20260710-cli-core-query/README.md"]}

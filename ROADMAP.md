@@ -12,13 +12,15 @@ Goal: 디자인 시스템 SSOT를 로컬에서 질의·주입·검증하는 CLI 
 
 ## Active Milestones
 
-<!-- harness:milestone id="CLI1" status="active" priority="P1" -->
+<!-- harness:milestone id="CLI1" status="completed" priority="P1" evidence="changesets/20260710-cli-core-query/README.md" -->
 ### CLI1 - 코어 조회 CLI + registry 계약
 - DoD: packages/cli Node/TS 스캐폴드 + terms/tokens/recipes 질의 커맨드(SSOT 파생 데이터) + registry 계약 문서 + 로컬 npm pack 설치 E2E(실패 모드: 없는 항목 조회 시 명확한 에러·exit≠0) + 테스트.
-- Evidence: docs/plans/2026-07-10-cli1-core-query.md
+- Evidence: changesets/20260710-cli-core-query/README.md
 - Gap: 에이전트가 디자인 시스템을 소비할 로컬 인터페이스 부재 — llms.txt는 원격 정적 자산뿐, 질의·검증 엔진은 시장에도 공백 (market doc).
-- Status: [ ]
+- Status: [x]
 
+- Completed at: 2026-07-10
+- Summary: 조회 CLI 3종+registry 계약 — pack fresh-env E2E·vitest 11 PASS
 ## Next Candidates
 
 <!-- harness:milestone id="CLI2" status="pending" priority="P1" -->
