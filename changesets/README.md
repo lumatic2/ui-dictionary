@@ -53,3 +53,4 @@
 | 51 | 20260710-principles-gate-open | 2026-07-10 | Record user approval and publish Principles in the public Docs navigation | 6/6 | complete |
 | 52 | 20260710-recipes-docs-layout | 2026-07-10 | Docs article and layout shell/grid recipes distilled from shipped implementations | 4/4 | complete |
 | 53 | 20260710-recipes-data-display | 2026-07-10 | Interactive table and stat summary recipes from shipped data-display implementations | 4/4 | complete |
+| 54 | 20260710-recipes-feedback | 2026-07-10 | Actionable toast and recoverable empty-state recipes from shipped feedback implementations | 4/4 | complete |
