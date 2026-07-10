@@ -1,0 +1,239 @@
+import type { CanvasDocument, CanvasNode, CanvasRect, NodeId } from './types.js'
+import { assertValidDocument } from './validation.js'
+
+interface OperationBase {
+  id: string
+  at: string
+}
+
+export interface CreateNodeOperation extends OperationBase {
+  type: 'create-node'
+  node: CanvasNode
+  parentId: NodeId | null
+  index: number
+}
+
+export interface DeleteNodeOperation extends OperationBase {
+  type: 'delete-node'
+  nodeId: NodeId
+}
+
+export interface UpdateNodeOperation extends OperationBase {
+  type: 'update-node'
+  nodeId: NodeId
+  patch: Partial<Pick<CanvasNode, 'name' | 'bounds' | 'visible' | 'locked' | 'tokenBindings'>>
+}
+
+export interface ReparentNodeOperation extends OperationBase {
+  type: 'reparent-node'
+  nodeId: NodeId
+  parentId: NodeId | null
+  index: number
+}
+
+export interface ReorderNodeOperation extends OperationBase {
+  type: 'reorder-node'
+  nodeId: NodeId
+  index: number
+}
+
+export interface SelectNodesOperation extends OperationBase {
+  type: 'select-nodes'
+  nodeIds: NodeId[]
+}
+
+export interface SetViewportOperation extends OperationBase {
+  type: 'set-viewport'
+  pan: { x: number; y: number }
+  zoom: number
+}
+
+export type CanvasOperation =
+  | CreateNodeOperation
+  | DeleteNodeOperation
+  | UpdateNodeOperation
+  | ReparentNodeOperation
+  | ReorderNodeOperation
+  | SelectNodesOperation
+  | SetViewportOperation
+
+function insertAt<T>(items: T[], value: T, index: number) {
+  items.splice(Math.max(0, Math.min(index, items.length)), 0, value)
+}
+
+function siblings(document: CanvasDocument, parentId: NodeId | null): NodeId[] {
+  if (parentId === null) return document.rootIds
+  const parent = document.nodes[parentId]
+  if (!parent) throw new Error(`missing parent ${parentId}`)
+  return parent.childIds
+}
+
+function removeFromParent(document: CanvasDocument, node: CanvasNode) {
+  const list = siblings(document, node.parentId)
+  const index = list.indexOf(node.id)
+  if (index < 0) throw new Error(`${node.id} is missing from its parent list`)
+  list.splice(index, 1)
+  return index
+}
+
+function copyPatch(patch: UpdateNodeOperation['patch']): UpdateNodeOperation['patch'] {
+  return structuredClone(patch)
+}
+
+function mutateOperation(next: CanvasDocument, operation: CanvasOperation) {
+  switch (operation.type) {
+    case 'create-node': {
+      if (next.nodes[operation.node.id]) throw new Error(`node already exists: ${operation.node.id}`)
+      const node = structuredClone(operation.node)
+      if (node.parentId !== operation.parentId) throw new Error('create-node parent does not match node.parentId')
+      next.nodes[node.id] = node
+      insertAt(siblings(next, operation.parentId), node.id, operation.index)
+      break
+    }
+    case 'delete-node': {
+      const node = next.nodes[operation.nodeId]
+      if (!node) throw new Error(`missing node ${operation.nodeId}`)
+      if (node.childIds.length) throw new Error(`cannot delete non-leaf node ${node.id}`)
+      removeFromParent(next, node)
+      delete next.nodes[node.id]
+      next.selection = next.selection.filter((id) => id !== node.id)
+      break
+    }
+    case 'update-node': {
+      const node = next.nodes[operation.nodeId]
+      if (!node) throw new Error(`missing node ${operation.nodeId}`)
+      Object.assign(node, copyPatch(operation.patch))
+      break
+    }
+    case 'reparent-node': {
+      const node = next.nodes[operation.nodeId]
+      if (!node) throw new Error(`missing node ${operation.nodeId}`)
+      if (operation.parentId === node.id) throw new Error('node cannot parent itself')
+      removeFromParent(next, node)
+      node.parentId = operation.parentId
+      insertAt(siblings(next, operation.parentId), node.id, operation.index)
+      break
+    }
+    case 'reorder-node': {
+      const node = next.nodes[operation.nodeId]
+      if (!node) throw new Error(`missing node ${operation.nodeId}`)
+      const list = siblings(next, node.parentId)
+      const from = list.indexOf(node.id)
+      if (from < 0) throw new Error(`${node.id} is missing from its sibling list`)
+      list.splice(from, 1)
+      insertAt(list, node.id, operation.index)
+      break
+    }
+    case 'select-nodes':
+      next.selection = [...new Set(operation.nodeIds)]
+      break
+    case 'set-viewport':
+      next.viewport = { pan: structuredClone(operation.pan), zoom: operation.zoom }
+      break
+  }
+  next.revision += 1
+  next.metadata.updatedAt = operation.at
+}
+
+export function applyOperation(document: CanvasDocument, operation: CanvasOperation): CanvasDocument {
+  const next = structuredClone(document)
+  mutateOperation(next, operation)
+  return assertValidDocument(next)
+}
+
+export function replayOperations(initial: CanvasDocument, operations: CanvasOperation[]): CanvasDocument {
+  const next = structuredClone(initial)
+  for (const operation of operations) mutateOperation(next, operation)
+  return assertValidDocument(next)
+}
+
+export function invertOperation(before: CanvasDocument, operation: CanvasOperation): CanvasOperation {
+  const inverseBase = { id: `inverse:${operation.id}`, at: operation.at }
+  switch (operation.type) {
+    case 'create-node':
+      return { ...inverseBase, type: 'delete-node', nodeId: operation.node.id }
+    case 'delete-node': {
+      const node = before.nodes[operation.nodeId]
+      if (!node) throw new Error(`cannot invert missing node ${operation.nodeId}`)
+      return { ...inverseBase, type: 'create-node', node: structuredClone(node), parentId: node.parentId, index: siblings(before, node.parentId).indexOf(node.id) }
+    }
+    case 'update-node': {
+      const node = before.nodes[operation.nodeId]
+      if (!node) throw new Error(`cannot invert missing node ${operation.nodeId}`)
+      const patch: UpdateNodeOperation['patch'] = {}
+      for (const key of Object.keys(operation.patch) as Array<keyof UpdateNodeOperation['patch']>) {
+        ;(patch as Record<string, unknown>)[key] = structuredClone(node[key])
+      }
+      return { ...inverseBase, type: 'update-node', nodeId: node.id, patch }
+    }
+    case 'reparent-node': {
+      const node = before.nodes[operation.nodeId]
+      if (!node) throw new Error(`cannot invert missing node ${operation.nodeId}`)
+      return { ...inverseBase, type: 'reparent-node', nodeId: node.id, parentId: node.parentId, index: siblings(before, node.parentId).indexOf(node.id) }
+    }
+    case 'reorder-node': {
+      const node = before.nodes[operation.nodeId]
+      if (!node) throw new Error(`cannot invert missing node ${operation.nodeId}`)
+      return { ...inverseBase, type: 'reorder-node', nodeId: node.id, index: siblings(before, node.parentId).indexOf(node.id) }
+    }
+    case 'select-nodes':
+      return { ...inverseBase, type: 'select-nodes', nodeIds: [...before.selection] }
+    case 'set-viewport':
+      return { ...inverseBase, type: 'set-viewport', pan: structuredClone(before.viewport.pan), zoom: before.viewport.zoom }
+  }
+}
+
+export interface CanvasHistory {
+  present: CanvasDocument
+  past: CanvasDocument[]
+  future: CanvasDocument[]
+  log: CanvasOperation[]
+}
+
+export function createHistory(document: CanvasDocument): CanvasHistory {
+  return { present: structuredClone(document), past: [], future: [], log: [] }
+}
+
+export function commitOperation(history: CanvasHistory, operation: CanvasOperation): CanvasHistory {
+  return {
+    present: applyOperation(history.present, operation),
+    past: [...history.past, structuredClone(history.present)],
+    future: [],
+    log: [...history.log, structuredClone(operation)],
+  }
+}
+
+export function undo(history: CanvasHistory): CanvasHistory {
+  const previous = history.past.at(-1)
+  if (!previous) return history
+  return { ...history, present: structuredClone(previous), past: history.past.slice(0, -1), future: [structuredClone(history.present), ...history.future] }
+}
+
+export function redo(history: CanvasHistory): CanvasHistory {
+  const next = history.future[0]
+  if (!next) return history
+  return { ...history, present: structuredClone(next), past: [...history.past, structuredClone(history.present)], future: history.future.slice(1) }
+}
+
+function sortValue(value: unknown): unknown {
+  if (Array.isArray(value)) return value.map(sortValue)
+  if (value && typeof value === 'object') {
+    return Object.fromEntries(Object.entries(value).sort(([a], [b]) => a.localeCompare(b)).map(([key, item]) => [key, sortValue(item)]))
+  }
+  return value
+}
+
+export function canonicalStringify(value: CanvasDocument | CanvasOperation[]): string {
+  return JSON.stringify(sortValue(value))
+}
+
+export function contentSignature(document: CanvasDocument): string {
+  const copy = structuredClone(document)
+  copy.revision = 0
+  copy.metadata.updatedAt = copy.metadata.createdAt
+  return canonicalStringify(copy)
+}
+
+export function translateBounds(bounds: CanvasRect, x: number, y: number): CanvasRect {
+  return { ...bounds, x, y }
+}

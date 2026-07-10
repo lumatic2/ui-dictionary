@@ -28,7 +28,7 @@ Status: awaiting user execution approval
   - Artifact: `packages/canvas-core/` + `changesets/20260710-auc1-document-contract/`.
   - Verify: core build/test + fixture validate happy/failure paths.
 
-- [ ] Step 2 — Deterministic operation and history runtime
+- [x] Step 2 — Deterministic operation and history runtime
   - create/update/reparent/reorder/select/viewport operation schema와 pure reducer를 구현한다.
   - forward apply, inverse, undo/redo, replay, operation serialization이 byte-stable canonical result를 만드는지 검증한다.
   - Artifact: phase step + operation fixtures.
