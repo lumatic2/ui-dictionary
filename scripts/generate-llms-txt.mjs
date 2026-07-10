@@ -22,6 +22,12 @@ const BASE_URL = "https://ui.askewly.com";
 // Fixed SSOT assets: repo-relative source path + one-line description for the index.
 const FIXED_ASSETS = [
   {
+    section: "Principles",
+    items: [
+      ["docs/design-system/principles.md", "Canonical Askewly Design principles: task-first hierarchy, semantic tokens, complete interaction states, meaningful motion, and evidence-based publication"],
+    ],
+  },
+  {
     section: "Tokens",
     items: [
       ["tokens/askewly.tokens.json", "3-tier design tokens (primitive/semantic/component), DTCG stable 2025.10 format — the single source all colors, dimensions, and typography derive from"],
