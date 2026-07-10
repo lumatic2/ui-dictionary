@@ -1,0 +1,32 @@
+:root { font-family: Inter, ui-sans-serif, system-ui, sans-serif; color: #172033; background: #eef1f6; }
+* { box-sizing: border-box; }
+body { margin: 0; min-width: 1180px; }
+button, select, input { font: inherit; }
+main { min-height: 100vh; padding: 24px; }
+header { display: flex; align-items: end; justify-content: space-between; gap: 24px; margin-bottom: 18px; }
+h1 { margin: 2px 0 4px; font-size: 26px; letter-spacing: -0.03em; }
+header p { margin: 0; color: #64748b; }
+.eyebrow { font: 700 11px/1.2 ui-monospace, monospace; text-transform: uppercase; letter-spacing: 0.14em; color: #6f2dbd; }
+.controls { display: flex; align-items: end; gap: 10px; }
+.controls label { display: grid; gap: 4px; font-size: 11px; font-weight: 700; color: #64748b; }
+select, .controls button { height: 38px; border: 1px solid #cbd5e1; border-radius: 7px; background: white; padding: 0 12px; color: #172033; }
+.controls button { border-color: #6f2dbd; background: #6f2dbd; color: white; font-weight: 700; cursor: pointer; }
+.controls button:disabled { opacity: .5; }
+.workspace { display: grid; grid-template-columns: minmax(0, 1fr) 330px; min-height: 690px; overflow: hidden; border: 1px solid #cbd5e1; border-radius: 10px; background: white; box-shadow: 0 16px 44px rgb(15 23 42 / .08); }
+.viewport { position: relative; min-width: 0; height: 690px; overflow: hidden; background: #f8fafc; }
+aside { min-width: 0; border-left: 1px solid #dbe1ea; padding: 16px; background: #111827; color: #e5e7eb; }
+aside h2 { margin: 0 0 12px; font-size: 14px; }
+aside pre { margin: 0; max-height: 640px; overflow: auto; white-space: pre-wrap; font: 11px/1.55 ui-monospace, monospace; color: #cbd5e1; }
+.candidate-root { position: absolute; inset: 0; overflow: hidden; background-image: linear-gradient(#e5e7eb 1px, transparent 1px), linear-gradient(90deg, #e5e7eb 1px, transparent 1px); background-size: 24px 24px; }
+.scene-content { position: absolute; left: 0; top: 0; transform-origin: 0 0; will-change: transform; }
+.scene-node { position: absolute; overflow: hidden; border: 1px solid #cbd5e1; border-radius: 6px; color: #334155; font-size: 10px; padding: 6px; contain: layout paint style; }
+.kind-button { border-color: #b298dc; }
+.node-input, .embedded-input { width: 100%; min-width: 0; border: 0; border-bottom: 1px solid #6f2dbd; background: transparent; font-size: 10px; outline: none; }
+.dom-selection { position: absolute; left: 24px; top: 24px; width: 92px; height: 58px; border: 2px solid #6f2dbd; pointer-events: none; box-shadow: 0 0 0 1px white inset; }
+.dom-selection::after { content: ''; position: absolute; right: -5px; bottom: -5px; width: 8px; height: 8px; border: 1px solid #6f2dbd; background: white; }
+.svg-scene { position: absolute; left: 0; top: 0; transform-origin: 0 0; will-change: transform; }
+.svg-selection { fill: none; stroke: #6f2dbd; stroke-width: 2; pointer-events: none; }
+.gpu-scene, .gpu-overlay { position: absolute; inset: 0; width: 100%; height: 100%; }
+.gpu-overlay { pointer-events: none; }
+.gpu-semantic-mirror { position: absolute; left: 16px; bottom: 16px; display: flex; gap: 8px; padding: 8px; border: 1px solid #d8b4fe; border-radius: 6px; background: rgb(255 255 255 / .94); }
+.gpu-semantic-mirror input { border: 0; border-bottom: 1px solid #6f2dbd; }

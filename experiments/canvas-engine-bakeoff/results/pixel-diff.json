@@ -1,0 +1,33 @@
+{
+  "schemaVersion": 1,
+  "baseline": "dom",
+  "comparisons": [
+    {
+      "candidate": "dom-webgpu",
+      "baseline": "dom",
+      "comparable": true,
+      "note": "Shared fixture compared at 1000 nodes in a supported runtime.",
+      "differentPixels": 24905,
+      "totalPixels": 1296000,
+      "mismatchRatio": 0.019216820987654322
+    },
+    {
+      "candidate": "svg",
+      "baseline": "dom",
+      "comparable": true,
+      "note": "Shared fixture compared at 1000 nodes in a supported runtime.",
+      "differentPixels": 11210,
+      "totalPixels": 1296000,
+      "mismatchRatio": 0.00864969135802469
+    },
+    {
+      "candidate": "webgpu",
+      "baseline": "dom",
+      "comparable": true,
+      "note": "Shared fixture compared at 1000 nodes in a supported runtime.",
+      "differentPixels": 212594,
+      "totalPixels": 1296000,
+      "mismatchRatio": 0.1640385802469136
+    }
+  ]
+}

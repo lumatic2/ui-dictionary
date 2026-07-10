@@ -1,0 +1,29 @@
+{
+  "name": "agent-design-canvas-engine-bakeoff",
+  "private": true,
+  "version": "0.0.0",
+  "type": "module",
+  "scripts": {
+    "dev": "vite --host 127.0.0.1",
+    "build": "tsc -b && vite build",
+    "benchmark": "node scripts/run-benchmark.mjs",
+    "compare:screenshots": "node scripts/compare-screenshots.mjs",
+    "validate:results": "node scripts/validate-results.mjs"
+  },
+  "dependencies": {
+    "@vitejs/plugin-react": "^6.0.2",
+    "react": "^19.2.7",
+    "react-dom": "^19.2.7",
+    "typescript": "~6.0.2",
+    "vite": "^8.1.0"
+  },
+  "devDependencies": {
+    "@types/node": "^24.13.2",
+    "@types/pngjs": "^6.0.5",
+    "@types/react": "^19.2.17",
+    "@types/react-dom": "^19.2.3",
+    "pixelmatch": "^7.2.0",
+    "playwright": "^1.58.2",
+    "pngjs": "^7.0.0"
+  }
+}

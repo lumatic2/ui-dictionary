@@ -6,6 +6,7 @@
 archive/
 tmp/
 node_modules/
+dist/
 .design/
 .wrangler/
 .playwright-mcp/
