@@ -54,3 +54,4 @@
 | 52 | 20260710-recipes-docs-layout | 2026-07-10 | Docs article and layout shell/grid recipes distilled from shipped implementations | 4/4 | complete |
 | 53 | 20260710-recipes-data-display | 2026-07-10 | Interactive table and stat summary recipes from shipped data-display implementations | 4/4 | complete |
 | 54 | 20260710-recipes-feedback | 2026-07-10 | Actionable toast and recoverable empty-state recipes from shipped feedback implementations | 4/4 | complete |
+| 55 | 20260710-recipes-commerce | 2026-07-10 | Checkout order-summary recipe from shipped commerce implementations | 5/5 | complete |
