@@ -1,7 +1,7 @@
 import { createServer, type IncomingMessage, type ServerResponse } from 'node:http'
 import type { AddressInfo } from 'node:net'
 import { URL } from 'node:url'
-import { BridgeProtocolError, type TransactionEnvelope } from '@askewly/agent-design-engine'
+import { BridgeProtocolError, projectContext, type TransactionEnvelope } from '@askewly/agent-design-engine'
 import type { CanvasDocument } from '@askewly/canvas-core'
 import { WebSocketServer, WebSocket } from 'ws'
 import { BridgeSession } from './session.js'
@@ -65,9 +65,29 @@ export async function startBridge(options: StartBridgeOptions): Promise<RunningB
         json(response, 200, session.snapshot())
         return
       }
+      if (request.method === 'GET' && request.url === '/context') {
+        json(response, 200, projectContext(session.snapshot().document))
+        return
+      }
       if (request.method === 'POST' && request.url === '/transactions') {
         const event = session.commit((await readJson(request)) as TransactionEnvelope)
         json(response, 200, { event, snapshot: session.snapshot() })
+        return
+      }
+      if (request.method === 'POST' && request.url === '/verify') {
+        const input = (await readJson(request)) as { revision?: number; hash?: string }
+        const snapshot = session.snapshot()
+        const valid = (input.revision === undefined || input.revision === snapshot.revision) && (input.hash === undefined || input.hash === snapshot.hash)
+        json(response, valid ? 200 : 409, { valid, revision: snapshot.revision, hash: snapshot.hash })
+        return
+      }
+      if (request.method === 'POST' && request.url === '/undo') {
+        const event = session.undo((await readJson(request)) as Parameters<BridgeSession['undo']>[0])
+        json(response, 200, { event, snapshot: session.snapshot() })
+        return
+      }
+      if (request.method === 'POST' && request.url === '/source-patches') {
+        json(response, 501, { error: { code: 'NOT_IMPLEMENTED', message: 'source patch transactions are introduced in AUC3 Step 3' } })
         return
       }
       json(response, 404, { error: { code: 'NOT_FOUND', message: 'route not found' } })

@@ -73,4 +73,29 @@ describe('loopback bridge server', () => {
     expect(await nextMessage(reconnect)).toMatchObject({ type: 'replay', payload: { mode: 'events', events: [{ transactionId: 'tx-ws' }] } })
     reconnect.close()
   })
+
+  it('serves context, verification, and guarded undo endpoints', async () => {
+    const running = await bridge()
+    const headers = { authorization: 'Bearer test-token', 'content-type': 'application/json' }
+    const context = (await (await fetch(`${running.url}/context`, { headers })).json()) as { documentId: string; revision: number }
+    expect(context).toMatchObject({ documentId: 'agent-design-fixture-1000', revision: 0 })
+    const snapshot = running.session.snapshot()
+    running.session.commit({
+      id: 'tx-before-undo',
+      actor: 'codex',
+      baseRevision: snapshot.revision,
+      beforeHash: snapshot.hash,
+      operations: [{ id: 'op-before-undo', at: '2026-07-10T04:10:00.000Z', type: 'update-node', nodeId: firstComponent(snapshot.document).id, patch: { name: 'Undo me' } }],
+    })
+    const changed = running.session.snapshot()
+    const verify = await fetch(`${running.url}/verify`, { method: 'POST', headers, body: JSON.stringify({ revision: changed.revision, hash: changed.hash }) })
+    expect(verify.status).toBe(200)
+    const undo = await fetch(`${running.url}/undo`, {
+      method: 'POST',
+      headers,
+      body: JSON.stringify({ id: 'tx-http-undo', actor: 'claude', baseRevision: changed.revision, beforeHash: changed.hash, at: '2026-07-10T04:11:00.000Z' }),
+    })
+    expect(undo.status).toBe(200)
+    expect(running.session.snapshot().document.nodes[firstComponent(snapshot.document).id]?.name).toBe(firstComponent(snapshot.document).name)
+  })
 })

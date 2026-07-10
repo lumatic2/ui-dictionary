@@ -51,4 +51,15 @@ describe('bridge session', () => {
     expect(session.replay(1)).toMatchObject({ mode: 'events', cursor: 2, events: [{ transactionId: 'tx-2' }] })
     expect(session.replay(0)).toMatchObject({ mode: 'snapshot', reason: 'cursor-gap', snapshot: { cursor: 2 } })
   })
+
+  it('undoes the latest transaction as a new guarded revision', () => {
+    const session = new BridgeSession({ projectRoot: root(), document: createDocumentFixture(1000) })
+    const original = session.snapshot()
+    session.commit(input(session, 'tx-change'))
+    const changed = session.snapshot()
+    const event = session.undo({ id: 'tx-undo', actor: 'claude', baseRevision: changed.revision, beforeHash: changed.hash, at: '2026-07-10T02:01:00.000Z' })
+    expect(event.transactionId).toBe('tx-undo')
+    expect(session.snapshot().document.nodes[firstComponent(original.document).id]?.name).toBe(firstComponent(original.document).name)
+    expect(session.snapshot().revision).toBe(2)
+  })
 })

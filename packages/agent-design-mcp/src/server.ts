@@ -1,0 +1,82 @@
+import { McpServer } from '@modelcontextprotocol/sdk/server/mcp.js'
+import { z } from 'zod'
+import { BridgeClient, BridgeRequestError, type AdapterActor } from './bridgeClient.js'
+
+const operationSchema = z.object({
+  id: z.string().min(1),
+  at: z.string().min(1),
+  type: z.string().min(1),
+}).passthrough()
+
+function result(value: Record<string, unknown>) {
+  return { content: [{ type: 'text' as const, text: JSON.stringify(value) }], structuredContent: value }
+}
+
+function failure(error: unknown) {
+  const value = error instanceof BridgeRequestError
+    ? { error: { status: error.status, code: error.code, message: error.message } }
+    : { error: { status: 500, code: 'ADAPTER_ERROR', message: error instanceof Error ? error.message : 'adapter failed' } }
+  return { ...result(value), isError: true }
+}
+
+export function createAgentDesignMcp(options: { bridgeUrl: string; token: string; actor: AdapterActor }): McpServer {
+  const client = new BridgeClient({ url: options.bridgeUrl, token: options.token, actor: options.actor })
+  const server = new McpServer({ name: `agent-design-${options.actor}`, version: '0.1.0' })
+
+  server.registerTool('get_context', {
+    title: 'Get Agent Design context',
+    description: 'Read the current canvas selection, revision, hash, and project source root before proposing a design mutation.',
+    inputSchema: {},
+  }, async () => {
+    try { return result(await client.context()) } catch (error) { return failure(error) }
+  })
+
+  server.registerTool('apply_operations', {
+    title: 'Apply canvas operations',
+    description: 'Atomically apply typed operations to the current Agent Design document using the exact base revision and hash from get_context.',
+    inputSchema: {
+      transactionId: z.string().min(1),
+      baseRevision: z.number().int().nonnegative(),
+      beforeHash: z.string().min(1),
+      operations: z.array(operationSchema).min(1),
+    },
+  }, async (input) => {
+    try { return result(await client.applyOperations(input)) } catch (error) { return failure(error) }
+  })
+
+  server.registerTool('apply_source_patch', {
+    title: 'Apply a source patch',
+    description: 'Atomically replace a registered project source file and reconcile the canvas. Project-root and before-hash checks are mandatory.',
+    inputSchema: {
+      transactionId: z.string().min(1),
+      baseRevision: z.number().int().nonnegative(),
+      beforeHash: z.string().min(1),
+      file: z.string().min(1),
+      content: z.string(),
+    },
+  }, async (input) => {
+    try { return result(await client.applySourcePatch(input)) } catch (error) { return failure(error) }
+  })
+
+  server.registerTool('verify', {
+    title: 'Verify Agent Design state',
+    description: 'Verify that the bridge still has the expected canonical revision and hash.',
+    inputSchema: { revision: z.number().int().nonnegative().optional(), hash: z.string().min(1).optional() },
+  }, async (input) => {
+    try { return result(await client.verify(input)) } catch (error) { return failure(error) }
+  })
+
+  server.registerTool('undo', {
+    title: 'Undo latest Agent Design transaction',
+    description: 'Undo the latest committed agent transaction as a new guarded canonical revision.',
+    inputSchema: {
+      transactionId: z.string().min(1),
+      baseRevision: z.number().int().nonnegative(),
+      beforeHash: z.string().min(1),
+    },
+  }, async (input) => {
+    try { return result(await client.undo(input)) } catch (error) { return failure(error) }
+  })
+
+  return server
+}

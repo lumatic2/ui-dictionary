@@ -11,13 +11,21 @@ import {
   type TransactionEnvelope,
   type TransactionEvent,
 } from '@askewly/agent-design-engine'
-import type { CanvasDocument } from '@askewly/canvas-core'
+import { applyOperation, invertOperation, type CanvasDocument, type CanvasOperation } from '@askewly/canvas-core'
 
 export interface BridgeSessionOptions {
   projectRoot: string
   document: CanvasDocument
   token?: string
   maxEvents?: number
+}
+
+export interface UndoRequest {
+  id: string
+  actor: TransactionEnvelope['actor']
+  baseRevision: number
+  beforeHash: string
+  at: string
 }
 
 export function isLoopbackAddress(address: string | undefined): boolean {
@@ -40,6 +48,7 @@ export class BridgeSession {
   readonly maxEvents: number
   private document: CanvasDocument
   private events: TransactionEvent[] = []
+  private committed: Array<{ transaction: TransactionEnvelope; before: CanvasDocument }> = []
   private cursor = 0
   private readonly emitter = new EventEmitter()
 
@@ -64,6 +73,11 @@ export class BridgeSession {
   }
 
   commit(transaction: TransactionEnvelope): TransactionEvent {
+    return this.commitInternal(transaction, true)
+  }
+
+  private commitInternal(transaction: TransactionEnvelope, recordForUndo: boolean): TransactionEvent {
+    const before = structuredClone(this.document)
     const beforeHash = documentHash(this.document)
     const next = applyTransaction(this.document, transaction)
     const event: TransactionEvent = {
@@ -77,10 +91,48 @@ export class BridgeSession {
       operations: structuredClone(transaction.operations),
     }
     this.document = next
+    if (recordForUndo) this.committed.push({ transaction: structuredClone(transaction), before })
     this.events.push(event)
     if (this.events.length > this.maxEvents) this.events.splice(0, this.events.length - this.maxEvents)
     this.emitter.emit('event', structuredClone(event))
     return structuredClone(event)
+  }
+
+  undo(request: UndoRequest): TransactionEvent {
+    const target = this.committed.at(-1)
+    if (!target) throw new BridgeProtocolError('INVALID_TRANSACTION', 'nothing to undo', 409)
+    if (request.baseRevision !== this.document.revision) {
+      throw new BridgeProtocolError('REVISION_CONFLICT', `expected revision ${this.document.revision}, received ${request.baseRevision}`, 409)
+    }
+    const currentHash = documentHash(this.document)
+    if (request.beforeHash !== currentHash) {
+      throw new BridgeProtocolError('HASH_CONFLICT', `expected hash ${currentHash}, received ${request.beforeHash}`, 409)
+    }
+    const states: CanvasDocument[] = []
+    let working = structuredClone(target.before)
+    for (const operation of target.transaction.operations) {
+      states.push(working)
+      working = applyOperation(working, operation)
+    }
+    const operations: CanvasOperation[] = target.transaction.operations
+      .map((operation, index) => ({ operation, before: states[index] }))
+      .reverse()
+      .map(({ operation, before }, index) => ({
+        ...invertOperation(before, operation),
+        id: `${request.id}:inverse:${index}`,
+        at: request.at,
+      }))
+    this.committed.pop()
+    return this.commitInternal(
+      {
+        id: request.id,
+        actor: request.actor,
+        baseRevision: request.baseRevision,
+        beforeHash: request.beforeHash,
+        operations,
+      },
+      false,
+    )
   }
 
   replay(afterCursor: number): ReplayResult {
