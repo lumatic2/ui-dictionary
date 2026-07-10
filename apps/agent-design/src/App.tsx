@@ -285,21 +285,48 @@ export function App() {
   }, [history.log.length, history.present, runPointerTrace, runTrace])
 
   return <main className="app-shell">
-    <header className="app-header">
-      <div>
-        <p className="eyebrow">Agent Design / AUC3</p>
-        <h1>Terminal Agent Live Canvas</h1>
-        <p>Codex and Claude share one revisioned canvas and React source.</p>
+    <header className="app-header" aria-label="Application title bar">
+      <div className="brand-lockup">
+        <span className="brand-mark" aria-hidden="true">A</span>
+        <div>
+          <h1>Agent Design</h1>
+          <p>{activeProject?.displayName ?? 'Untitled workspace'}</p>
+        </div>
       </div>
       <div className="header-controls">
-        {desktopBridge && <div className="project-controls">
-          <button type="button" onClick={() => void selectProject()}>Open project</button>
+        <span className={`workspace-health status-${desktopBridge?.state ?? connection}`}>
+          <span className="health-dot" aria-hidden="true" />
+          {desktopBridge?.state === 'ready' || connection === 'connected' ? 'Ready' : desktopBridge?.state ?? connection}
+        </span>
+        {desktopBridge && <button className="primary-action" type="button" onClick={() => void selectProject()}>Open project</button>}
+      </div>
+    </header>
+    <nav className="document-actions" aria-label="Workspace toolbar">
+      <button type="button" data-testid="apply-demo" onClick={applyDemo}>Apply operation</button>
+      <button type="button" data-testid="undo" disabled={!liveConfig && !history.past.length} onClick={undoCurrent}>Undo</button>
+      <button type="button" data-testid="redo" disabled={!history.future.length} onClick={() => setHistory(redo)}>Redo</button>
+      <button type="button" data-testid="save-document" onClick={() => void save()}>Save</button>
+      <button type="button" data-testid="reload-document" onClick={() => void reload()}>Reload</button>
+      <span className="toolbar-spacer" />
+      {desktopBridge && <>
+        <button type="button" disabled={!activeProject} onClick={() => void togglePreview()}>{preview?.visible ? 'Hide preview' : 'Preview'}</button>
+        <button type="button" disabled={!activeProject} onClick={() => activeProject && void desktopHost()?.revealProject({ apiVersion: 1, projectId: activeProject.id })}>Explorer</button>
+      </>}
+    </nav>
+    <section className="app-body">
+      <aside className="workspace-rail" aria-label="Workspace navigation">
+        <div className="rail-section">
+          <p className="rail-label">Workspace</p>
+          <button type="button" className="rail-item active" aria-current="page">Canvas</button>
+          <button type="button" className="rail-item" disabled>Layers <span>Soon</span></button>
+          <button type="button" className="rail-item" disabled>Assets <span>Soon</span></button>
+        </div>
+        {desktopBridge && <div className="rail-section project-rail">
+          <p className="rail-label">Project</p>
           <select aria-label="Recent projects" value={activeProject?.id ?? ''} onChange={(event) => void openRecentProject(event.target.value)}>
             <option value="">{activeProject?.displayName ?? 'Recent projects'}</option>
             {recentProjects.map((project) => <option key={project.id} value={project.id}>{project.displayName}</option>)}
           </select>
-          <button type="button" disabled={!activeProject} onClick={() => void togglePreview()}>{preview?.visible ? 'Hide preview' : 'Preview'}</button>
-          <button type="button" disabled={!activeProject} onClick={() => activeProject && void desktopHost()?.revealProject({ apiVersion: 1, projectId: activeProject.id })}>Explorer</button>
           <select aria-label="Project files" defaultValue="" onChange={(event) => {
             const fileId = event.target.value
             if (activeProject && fileId) void desktopHost()?.openFile({ apiVersion: 1, projectId: activeProject.id, fileId })
@@ -308,31 +335,35 @@ export function App() {
             <option value="">Open file</option>
             {projectFiles.map((file) => <option key={file.id} value={file.id}>{file.label}</option>)}
           </select>
-          <button type="button" onClick={() => void desktopHost()?.exportDiagnostics({ apiVersion: 1 })}>Diagnostics</button>
         </div>}
-        <label>Nodes
-          <select value={size} onChange={(event) => setSize(Number(event.target.value) as 1000 | 5000)} data-testid="fixture-size">
-            <option value={1000}>1,000</option>
-            <option value={5000}>5,000</option>
-          </select>
-        </label>
-        <label>Editor plane
-          <select value={failure ?? 'auto'} onChange={(event) => setFailure(event.target.value === 'auto' ? null : event.target.value as EditorPlaneFailure)} data-testid="editor-plane-mode">
-            <option value="auto">WebGPU auto</option>
-            <option value="forced-fallback">DOM fallback</option>
-            <option value="validation-error">Validation failure</option>
-            <option value="device-lost">Device loss</option>
-          </select>
-        </label>
-      </div>
-    </header>
-    <nav className="document-actions" aria-label="Document actions">
-      <button type="button" data-testid="apply-demo" onClick={applyDemo}>Apply operation</button>
-      <button type="button" data-testid="undo" disabled={!liveConfig && !history.past.length} onClick={undoCurrent}>Undo</button>
-      <button type="button" data-testid="redo" disabled={!history.future.length} onClick={() => setHistory(redo)}>Redo</button>
-      <button type="button" data-testid="save-document" onClick={() => void save()}>Save</button>
-      <button type="button" data-testid="reload-document" onClick={() => void reload()}>Reload</button>
+        <details className="diagnostics-panel">
+          <summary>Development</summary>
+          <label>Nodes
+            <select value={size} onChange={(event) => setSize(Number(event.target.value) as 1000 | 5000)} data-testid="fixture-size">
+              <option value={1000}>1,000</option>
+              <option value={5000}>5,000</option>
+            </select>
+          </label>
+          <label>Editor plane
+            <select value={failure ?? 'auto'} onChange={(event) => setFailure(event.target.value === 'auto' ? null : event.target.value as EditorPlaneFailure)} data-testid="editor-plane-mode">
+              <option value="auto">WebGPU auto</option>
+              <option value="forced-fallback">DOM fallback</option>
+              <option value="validation-error">Validation failure</option>
+              <option value="device-lost">Device loss</option>
+            </select>
+          </label>
+          {desktopBridge && <button type="button" onClick={() => void desktopHost()?.exportDiagnostics({ apiVersion: 1 })}>Diagnostics</button>}
+        </details>
+      </aside>
+      <section className="canvas-stage" aria-label="Design canvas">
+        <CanvasSurface document={history.present} editorPlaneFailure={failure} onOperation={commit} />
+      </section>
+      <PropertyInspector document={history.present} onOperation={commit} />
+    </section>
+    <footer className="workspace-status" aria-label="Workspace status">
       <output data-testid="persistence-status">{status}</output>
+      <span>Revision {history.present.revision}</span>
+      <span>{Object.keys(history.present.nodes).length.toLocaleString()} nodes</span>
       <output className={`connection-status status-${connection}`} data-testid="bridge-status">{connection}{liveLatency === null ? '' : ` · ${liveLatency.toFixed(1)}ms`}</output>
       {desktopBridge && <div className="desktop-bridge-controls">
         <output className={`connection-status status-${desktopBridge.state}`} data-testid="desktop-bridge-status">
@@ -342,11 +373,7 @@ export function App() {
         <button type="button" disabled={desktopBridge.state !== 'ready'} onClick={() => void copyTerminalCommand('claude')}>Copy Claude</button>
         <output aria-live="polite" data-testid="terminal-copy-status">{terminalCopy === 'idle' ? '' : terminalCopy === 'error' ? 'copy failed' : `${terminalCopy} copied`}</output>
       </div>}
-    </nav>
-    <section className="app-body">
-      <CanvasSurface document={history.present} editorPlaneFailure={failure} onOperation={commit} />
-      <PropertyInspector document={history.present} onOperation={commit} />
-    </section>
+    </footer>
   </main>
 }
 

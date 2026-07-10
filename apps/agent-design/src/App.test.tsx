@@ -9,6 +9,17 @@ beforeEach(() => {
 afterEach(cleanup)
 
 describe('Agent Design persistence flow', () => {
+  it('presents a product workspace before development diagnostics', () => {
+    const view = render(<App />)
+    expect(view.getByRole('banner', { name: 'Application title bar' })).toBeTruthy()
+    expect(view.getByRole('navigation', { name: 'Workspace toolbar' })).toBeTruthy()
+    expect(view.getByRole('complementary', { name: 'Workspace navigation' })).toBeTruthy()
+    expect(view.getByRole('region', { name: 'Design canvas' })).toBeTruthy()
+    expect(view.getByRole('contentinfo', { name: 'Workspace status' })).toBeTruthy()
+    expect(view.getByText('Development').closest('details')?.hasAttribute('open')).toBe(false)
+    expect(view.queryByText('Terminal Agent Live Canvas')).toBeNull()
+  })
+
   it('applies, saves, reloads, undoes, and redoes canonical operations', async () => {
     const view = render(<App />)
     fireEvent.click(view.getByTestId('apply-demo'))

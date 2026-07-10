@@ -1,29 +1,43 @@
-:root { font-family: Inter, ui-sans-serif, system-ui, sans-serif; color: #172033; background: #edf1f7; }
+:root { font-family: Geist, "Noto Sans KR", ui-sans-serif, system-ui, sans-serif; color: #19181d; background: #f5f5f4; }
 * { box-sizing: border-box; }
-body { margin: 0; min-width: 960px; }
+body { margin: 0; min-width: 820px; }
 button, select { font: inherit; }
-.app-shell { min-height: 100vh; padding: 20px 24px; }
-.app-header { height: 84px; display: flex; align-items: center; justify-content: space-between; gap: 24px; }
-.app-header h1 { margin: 2px 0; font-size: 24px; letter-spacing: -0.03em; }
-.app-header p { margin: 0; color: #64748b; font-size: 13px; }
-.eyebrow { color: #6d28d9 !important; font-size: 10px !important; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; }
-.app-header label { display: grid; gap: 5px; color: #64748b; font-size: 11px; }
-.header-controls { display: flex; gap: 10px; }
-.project-controls { display: flex; align-items: end; gap: 6px; }
-.project-controls button { height: 34px; border: 1px solid #cbd5e1; border-radius: 8px; padding: 0 10px; background: white; color: #334155; font-size: 11px; }
-.app-header select { border: 1px solid #cbd5e1; border-radius: 8px; padding: 8px 30px 8px 10px; background: white; color: #172033; }
-.document-actions { height: 42px; display: flex; align-items: center; gap: 7px; }
-.document-actions button { padding: 6px 10px; border: 1px solid #cbd5e1; border-radius: 7px; background: white; color: #334155; font-size: 11px; }
+.app-shell { min-height: 100vh; display: grid; grid-template-rows: 52px 44px minmax(0, 1fr) 28px; background: #f5f5f4; }
+.app-header { display: flex; align-items: center; justify-content: space-between; gap: 20px; padding: 0 14px; border-bottom: 1px solid #deddd9; background: #fff; }
+.brand-lockup { display: flex; align-items: center; gap: 10px; min-width: 0; }
+.brand-mark { display: grid; place-items: center; width: 26px; height: 26px; border-radius: 6px; background: #6f2dbd; color: white; font-size: 12px; font-weight: 700; }
+.app-header h1 { margin: 0; font-size: 13px; letter-spacing: -0.01em; }
+.app-header p { margin: 2px 0 0; overflow: hidden; color: #78767d; font-size: 11px; text-overflow: ellipsis; white-space: nowrap; }
+.header-controls { display: flex; align-items: center; gap: 10px; }
+.workspace-health { display: flex; align-items: center; gap: 6px; color: #66636b; font-size: 11px; text-transform: capitalize; }
+.health-dot { width: 6px; height: 6px; border-radius: 50%; background: #a8a6ac; }
+.status-ready .health-dot, .status-connected .health-dot { background: #18a66a; box-shadow: 0 0 0 3px rgb(24 166 106 / 0.1); }
+.primary-action { height: 30px; border: 0; border-radius: 6px; padding: 0 12px; background: #6f2dbd; color: white; font-size: 11px; font-weight: 600; }
+.document-actions { display: flex; align-items: center; gap: 4px; padding: 0 10px; border-bottom: 1px solid #deddd9; background: #fbfbfa; }
+.document-actions button, .workspace-status button, .diagnostics-panel button { height: 28px; padding: 0 9px; border: 1px solid transparent; border-radius: 5px; background: transparent; color: #444149; font-size: 11px; }
+.document-actions button:hover, .workspace-status button:hover, .diagnostics-panel button:hover { border-color: #d7d5da; background: #fff; }
 .document-actions button:disabled { opacity: 0.45; }
-.document-actions output { margin-left: auto; color: #64748b; font: 11px ui-monospace, monospace; }
-.document-actions .connection-status { margin-left: 8px; padding: 3px 7px; border-radius: 999px; background: #e2e8f0; color: #475569; }
-.document-actions .status-connected { background: #dcfce7; color: #166534; }
-.document-actions .status-reconnecting, .document-actions .status-error { background: #fee2e2; color: #991b1b; }
+.toolbar-spacer { flex: 1; }
 .desktop-bridge-controls { display: flex; align-items: center; gap: 6px; }
-.document-actions .desktop-bridge-controls output { margin-left: 0; }
-.document-actions .status-ready { background: #dcfce7; color: #166534; }
-.document-actions .status-backoff, .document-actions .status-failed { background: #fee2e2; color: #991b1b; }
-.app-body { display: grid; grid-template-columns: minmax(0, 1fr) 260px; height: calc(100vh - 166px); border: 1px solid #d7deea; border-radius: 12px; overflow: hidden; box-shadow: 0 18px 50px rgb(30 41 59 / 0.08); }
+.app-body { min-height: 0; display: grid; grid-template-columns: 196px minmax(0, 1fr) 260px; overflow: hidden; }
+.workspace-rail { display: flex; min-width: 0; flex-direction: column; gap: 20px; padding: 14px 10px 10px; border-right: 1px solid #deddd9; background: #f8f8f7; }
+.rail-section { display: grid; gap: 3px; }
+.rail-label { margin: 0 8px 5px; color: #949198; font-size: 9px; font-weight: 650; letter-spacing: 0.08em; text-transform: uppercase; }
+.rail-item { display: flex; align-items: center; justify-content: space-between; width: 100%; height: 30px; border: 0; border-radius: 5px; padding: 0 8px; background: transparent; color: #5e5b63; font-size: 11px; text-align: left; }
+.rail-item.active { background: #eee9f6; color: #55208f; font-weight: 600; }
+.rail-item span { color: #aaa7ad; font-size: 9px; font-weight: 400; }
+.project-rail select, .diagnostics-panel select { min-width: 0; width: 100%; height: 30px; border: 1px solid #deddd9; border-radius: 5px; padding: 0 7px; background: #fff; color: #444149; font-size: 10px; }
+.diagnostics-panel { margin-top: auto; border-top: 1px solid #deddd9; padding: 10px 4px 0; color: #77747b; font-size: 10px; }
+.diagnostics-panel summary { cursor: pointer; font-weight: 600; }
+.diagnostics-panel[open] { display: grid; gap: 8px; }
+.diagnostics-panel label { display: grid; gap: 4px; }
+.canvas-stage { min-width: 0; min-height: 0; position: relative; background: #ececea; }
+.canvas-stage .canvas-viewport { position: absolute; inset: 0; }
+.workspace-status { display: flex; align-items: center; gap: 14px; padding: 0 10px; border-top: 1px solid #deddd9; background: #fbfbfa; color: #77747b; font-size: 10px; }
+.workspace-status > output:first-child { overflow: hidden; max-width: 260px; text-overflow: ellipsis; white-space: nowrap; }
+.workspace-status .connection-status { text-transform: capitalize; }
+.workspace-status .desktop-bridge-controls { margin-left: auto; }
+.workspace-status button { height: 22px; padding: 0 6px; font-size: 9px; }
 .canvas-viewport { position: relative; overflow: hidden; background-color: #fafbfc; background-image: linear-gradient(#e8ebf0 1px, transparent 1px), linear-gradient(90deg, #e8ebf0 1px, transparent 1px); background-size: 24px 24px; }
 .canvas-content { position: absolute; inset: 0; transform-origin: 0 0; }
 .canvas-node { position: absolute; display: block; overflow: hidden; border: 1px solid hsl(250 18% 80%); border-radius: 6px; padding: 6px; color: #334155; font-size: 10px; text-align: left; }
