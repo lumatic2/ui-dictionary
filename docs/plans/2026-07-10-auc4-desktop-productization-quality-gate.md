@@ -2,7 +2,7 @@
 
 Date: 2026-07-10
 Milestone: AUC4 (`ROADMAP.md`, active planning gate)
-Status: approved 2026-07-11 — Step 1 in progress
+Status: approved 2026-07-11 — Step 1 complete; Step 2 in progress
 
 ## Hierarchy
 
@@ -22,11 +22,11 @@ Status: approved 2026-07-11 — Step 1 in progress
 
 ## Step tree
 
-- [~] Step 1 — Secure Electron host and typed authority contract
+- [x] Step 1 — Secure Electron host and typed authority contract
   - Create the main/preload shell, custom app protocol, strict BrowserWindow preferences, versioned IPC schemas, sender validation, and default-deny navigation/window/permission policy.
   - Verify: main/preload unit tests, renderer has no Node globals, CSP/security-warning/electronegativity gate.
 
-- [ ] Step 2 — Supervised bridge lifecycle and terminal bootstrap
+- [~] Step 2 — Supervised bridge lifecycle and terminal bootstrap
   - Fork the bridge as a utility process, exchange an in-memory session token/port through a message channel, publish health state, and enforce bounded restart/backoff.
   - Verify: spawn/ready/exit/crash/three-strike/restart tests and copyable Codex/Claude commands without global config mutation.
 
