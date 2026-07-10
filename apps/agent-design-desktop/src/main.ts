@@ -41,13 +41,13 @@ async function writeDiagnosticExport(path: string, content: string): Promise<voi
 
 function bridgeChildEntry(): string {
   return app.isPackaged
-    ? join(process.resourcesPath, 'bridge', 'desktop-child.js')
+    ? join(process.resourcesPath, 'bridge', 'desktop-child.mjs')
     : resolve(__dirname, '..', '..', 'agent-design-bridge', 'dist', 'desktop-child.js')
 }
 
 function adapterEntry(): string {
   return app.isPackaged
-    ? join(process.resourcesPath, 'mcp', 'cli.js')
+    ? join(process.resourcesPath, 'mcp', 'cli.mjs')
     : resolve(__dirname, '..', '..', '..', 'packages', 'agent-design-mcp', 'dist', 'cli.js')
 }
 
