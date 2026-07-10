@@ -3,6 +3,7 @@ import { resolve } from 'node:path'
 
 const report = JSON.parse(await readFile(resolve(import.meta.dirname, '..', 'results', 'packaged', 'packaged-e2e.json'), 'utf8'))
 const installer = JSON.parse(await readFile(resolve(import.meta.dirname, '..', 'results', 'packaged', 'installer-lifecycle.json'), 'utf8'))
+const ime = JSON.parse(await readFile(resolve(import.meta.dirname, '..', 'results', 'packaged', 'ime-manual.json'), 'utf8'))
 const errors = []
 if (report.schemaVersion !== 1 || report.classification !== 'unsigned-development') errors.push('invalid packaged evidence classification')
 if (!report.security?.appProtocol || !report.security?.preloadApiVerified || report.security?.rendererNodeAuthority || report.security?.rendererCredentialSurface) errors.push('packaged renderer security boundary failed')
@@ -18,6 +19,7 @@ if (report.processCleanup?.packagedExecutableStillRunning) errors.push('packaged
 if (report.consoleErrors?.length) errors.push(`packaged console errors: ${report.consoleErrors.join('; ')}`)
 if (!Number.isInteger(report.instrumentation?.knownElectronSandboxStartupExceptions) || report.instrumentation.knownElectronSandboxStartupExceptions > 4) errors.push('unexpected Electron sandbox startup telemetry volume')
 if (!installer.installed || !installer.launched || !installer.rendererSecurityVerified || !installer.startMenuShortcutCreated || !installer.desktopShortcutCreated || !installer.uninstalled || !installer.uninstallerRemovedApplicationPayload || !installer.harnessRemovedExpectedTombstone || !installer.installDirectoryRemoved || !installer.shortcutRemoved) errors.push('installer lifecycle evidence failed')
+if (!ime.actualMicrosoftImePass || ime.syntheticOnly) errors.push(`actual Microsoft IME gate remains open: ${ime.blockerCode ?? 'NO_PASS_EVIDENCE'}`)
 
 if (errors.length) {
   console.error(errors.join('\n'))
