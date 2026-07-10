@@ -2,6 +2,14 @@
 
 ## Completed Horizons
 
+### 2026-07-10 - Agent Design CLI
+
+- CLI1 - 코어 조회 CLI + registry 계약: `@askewly/design`(packages/cli, TS+commander) — terms/tokens/recipes 질의, SSOT 번들, registry 계약 문서, pack fresh-env E2E (`changesets/20260710-cli-core-query/README.md`).
+- CLI2 - 프로젝트 주입: init(DESIGN.md·tokens.css·askewly.css @theme 바인딩)·add(레시피 Code 발췌 주입+Checks/Anti-patterns 노트) — 외부 Vite 프로젝트 토큰 렌더 실증(hex 0) (`changesets/20260710-cli-inject/README.md`).
+- CLI3 - 검증 + 공개: verify(색 리터럴 lint, exit 계약) + fresh-env 풀 루프(조회→주입→검증) E2E. npm publish는 사용자 보류 — 후속 큐 (`changesets/20260710-cli-verify/README.md`).
+- Close: 부분 close(fallback) — 상세·Objective 임팩트·크기 회고: `docs/horizons/2026-07-agent-design-cli.md`. 시퀀스 잔여: H2 앱, H3 Docs (ADR 0004).
+- 크기 회고: 3 milestone 모두 1 changeset — "단계적 기능 추가" 아크는 다음부터 milestone 1개로.
+
 ### 2026-07-10 - Docs Article Depth & Page Examples
 
 - DA1 - Docs 카테고리 아티클 7종 심화: Layout/Styling/Interaction/Accessibility/Motion & Effects/UI Blocks/Component API를 카탈로그 폴백에서 한국어 서술형 아티클로 심화(tokens SSOT·pattern-taxonomy 파생, 카탈로그는 Related terms로 보존), 게이트 해제·ui.askewly.com 확인 (`changesets/20260710-docs-category-articles/README.md`).

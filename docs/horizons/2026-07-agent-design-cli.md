@@ -1,7 +1,15 @@
 # Horizon - Agent Design CLI
 
 Date: 2026-07-10
-Status: active
+Status: closed 2026-07-10 (부분 close — fallback 적용) — 닫는 기준: 외부 fresh 환경에서 npx로 조회→주입→검증 루프 완주(pack 기반). npm publish는 사용자 결정으로 보류("CLI 기능 확정 전·디자인 시스템 완성 전") — 후속 큐(H3 Docs 설치법 시점 재검토).
+
+## Objective 임팩트
+
+"에이전트 통합" 축을 한 단계 움직였다: llms.txt(원격 정적 자산)뿐이던 에이전트 소비 경로에 **로컬 CLI 계층**(조회 `terms/tokens/recipes` + 주입 `init/add` + 검증 `verify`)이 생겼고, 외부 프로젝트에서 토큰 경유 렌더까지 실증됐다. 단, 사용자 지적대로 파이프는 생겼지만 흐르는 콘텐츠가 얇다(레시피 5종) — 다음 축 이동은 인터페이스가 아니라 **시스템 콘텐츠의 depth**(레시피 커버리지·Principles)가 병목.
+
+## 크기 회고
+
+CLI1·2·3 모두 changeset 1개로 닫힘 — 직전 horizon과 같은 패턴 2연속. "단계적 기능 추가" 아크(조회→주입→검증)는 다음부터 milestone 1개(step 3개)로 잡는다. 오늘 하루에 horizon 2개가 닫힌 것 자체가 horizon grain도 재검토 신호.
 
 ## Goal
 

@@ -113,12 +113,13 @@
     {
       "id": "CLI3",
       "title": "검증 커맨드 + 패키지 공개",
-      "status": "active",
+      "status": "completed",
       "started": "2026-07-10",
       "plan": "changesets/20260710-cli-verify/README.md",
       "session_ids": [
         "claude:ad60fe35-f533-4a9d-ae54-1e27661de57e"
-      ]
+      ],
+      "completed": "2026-07-10"
     }
   ]
 }
