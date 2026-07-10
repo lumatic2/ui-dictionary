@@ -45,3 +45,7 @@ The Windows helper failed before any Chrome interaction:
 - the temporary Vite process was terminated and no port-4182 Vite process remained.
 
 No PowerShell SendKeys or other foreground-input bypass was used, because that would evade the Computer Use safety/interrupt contract. Therefore `osMicrosoftImeManualPass` remains `false` and AUC2 remains open.
+
+## Closure Decision — 2026-07-10
+
+The user explicitly chose to skip the Windows Microsoft IME manual gate and continue. The gate is therefore recorded as a waiver, not a pass. A fresh independent automated run passed core 35/35, app 13/13, builds, and system-Chrome integration with 5k pointer p95 `7.8/13.3/13.0ms`, one revision per gesture, DOM fallback continuity, Korean Chrome text entry, zero reload pixel diff, and zero console errors. AUC2 closes with `osMicrosoftImeManualPass: false` retained as honest residual evidence.
