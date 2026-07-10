@@ -20,6 +20,18 @@ describe('Agent Design persistence flow', () => {
     expect(view.queryByText('Terminal Agent Live Canvas')).toBeNull()
   })
 
+  it('keeps viewport and panels available from the persistent toolbar', () => {
+    const view = render(<App />)
+    expect(view.getByLabelText('Canvas zoom').textContent).toBe('100%')
+    fireEvent.click(view.getByRole('button', { name: 'Zoom in' }))
+    expect(view.getByLabelText('Canvas zoom').textContent).toBe('110%')
+    fireEvent.click(view.getByRole('button', { name: 'Toggle workspace navigation' }))
+    expect(view.queryByRole('complementary', { name: 'Workspace navigation' })).toBeNull()
+    fireEvent.click(view.getByRole('button', { name: 'Toggle properties' }))
+    expect(view.queryByText('Properties', { selector: 'h2' })).toBeNull()
+    expect(view.getByRole('region', { name: 'Design canvas' })).toBeTruthy()
+  })
+
   it('applies, saves, reloads, undoes, and redoes canonical operations', async () => {
     const view = render(<App />)
     fireEvent.click(view.getByTestId('apply-demo'))

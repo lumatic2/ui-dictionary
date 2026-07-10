@@ -18,8 +18,25 @@ button, select { font: inherit; }
 .document-actions button:hover, .workspace-status button:hover, .diagnostics-panel button:hover { border-color: #d7d5da; background: #fff; }
 .document-actions button:disabled { opacity: 0.45; }
 .toolbar-spacer { flex: 1; }
+.zoom-value { min-width: 38px; color: #77747b; font-size: 10px; text-align: center; }
 .desktop-bridge-controls { display: flex; align-items: center; gap: 6px; }
 .app-body { min-height: 0; display: grid; grid-template-columns: 196px minmax(0, 1fr) 260px; overflow: hidden; }
+.app-body.left-collapsed { grid-template-columns: minmax(0, 1fr) 260px; }
+.app-body.right-collapsed { grid-template-columns: 196px minmax(0, 1fr); }
+.app-body.left-collapsed.right-collapsed { grid-template-columns: minmax(0, 1fr); }
+.project-entry { min-height: 0; display: grid; grid-template-columns: minmax(360px, 560px) minmax(260px, 420px); align-content: center; justify-content: center; gap: 80px; padding: 56px; background: #f8f8f7; }
+.entry-copy { max-width: 560px; }
+.entry-mark { display: grid; place-items: center; width: 42px; height: 42px; margin-bottom: 28px; border-radius: 8px; background: #6f2dbd; color: white; font-size: 18px; font-weight: 700; }
+.entry-copy .eyebrow { margin: 0 0 10px; color: #6f2dbd; font-size: 10px; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; }
+.entry-copy h2 { max-width: 520px; margin: 0; font-size: clamp(32px, 4vw, 54px); line-height: 1; letter-spacing: -.045em; }
+.entry-copy > p:not(.eyebrow, .entry-error) { max-width: 520px; color: #6f6c73; font-size: 14px; line-height: 1.6; }
+.entry-action { height: 38px; margin-top: 14px; padding: 0 18px; }
+.entry-error { color: #a12a3b; font-size: 12px; }
+.entry-error button { border: 0; background: transparent; color: inherit; text-decoration: underline; }
+.recent-projects { align-self: center; display: grid; gap: 8px; }
+.recent-projects h3 { margin: 0 0 8px; color: #77747b; font-size: 11px; }
+.recent-projects > button { display: flex; justify-content: space-between; align-items: center; min-height: 54px; border: 1px solid #deddd9; border-radius: 6px; padding: 0 14px; background: white; color: #333037; text-align: left; }
+.recent-projects span { color: #908d94; font-size: 10px; }
 .workspace-rail { display: flex; min-width: 0; flex-direction: column; gap: 20px; padding: 14px 10px 10px; border-right: 1px solid #deddd9; background: #f8f8f7; }
 .rail-section { display: grid; gap: 3px; }
 .rail-label { margin: 0 8px 5px; color: #949198; font-size: 9px; font-weight: 650; letter-spacing: 0.08em; text-transform: uppercase; }
@@ -38,6 +55,13 @@ button, select { font: inherit; }
 .workspace-status .connection-status { text-transform: capitalize; }
 .workspace-status .desktop-bridge-controls { margin-left: auto; }
 .workspace-status button { height: 22px; padding: 0 6px; font-size: 9px; }
+@media (max-width: 980px) {
+  .app-body { grid-template-columns: 164px minmax(0, 1fr) 220px; }
+  .app-body.left-collapsed { grid-template-columns: minmax(0, 1fr) 220px; }
+  .app-body.right-collapsed { grid-template-columns: 164px minmax(0, 1fr); }
+  .project-entry { grid-template-columns: 1fr; gap: 28px; padding: 36px; }
+  .document-actions button { padding-inline: 6px; }
+}
 .canvas-viewport { position: relative; overflow: hidden; background-color: #fafbfc; background-image: linear-gradient(#e8ebf0 1px, transparent 1px), linear-gradient(90deg, #e8ebf0 1px, transparent 1px); background-size: 24px 24px; }
 .canvas-content { position: absolute; inset: 0; transform-origin: 0 0; }
 .canvas-node { position: absolute; display: block; overflow: hidden; border: 1px solid hsl(250 18% 80%); border-radius: 6px; padding: 6px; color: #334155; font-size: 10px; text-align: left; }

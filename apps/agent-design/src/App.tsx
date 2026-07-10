@@ -48,6 +48,10 @@ export function App() {
   const [activeProject, setActiveProject] = useState<TrustedProjectSummary | null>(null)
   const [preview, setPreview] = useState<PreviewStatus | null>(null)
   const [projectFiles, setProjectFiles] = useState<TrustedFileSummary[]>([])
+  const [projectState, setProjectState] = useState<'loading' | 'ready' | 'opening' | 'error'>('loading')
+  const [projectError, setProjectError] = useState('')
+  const [leftPanelOpen, setLeftPanelOpen] = useState(true)
+  const [rightPanelOpen, setRightPanelOpen] = useState(true)
   const liveConfig = useMemo(() => desktopHost() ? null : liveBridgeConfig(), [])
   const liveClient = useRef<LiveBridgeClient | null>(null)
   const pendingPaint = useRef<{ revision: number; started: number } | null>(null)
@@ -93,8 +97,9 @@ export function App() {
       if (active) {
         setRecentProjects(projects)
         setActiveProject((current) => current ?? projects[0] ?? null)
+        setProjectState('ready')
       }
-    }, () => undefined)
+    }, () => { if (active) { setProjectState('error'); setProjectError('Recent projects could not be loaded.') } })
     const unsubscribe = host.onBridgeStatus((next) => { if (active) setDesktopBridge(next) })
     const unsubscribeCanvas = host.onCanvasSnapshot((snapshot, reason) => {
       if (active) acceptDesktopSnapshot(snapshot, reason)
@@ -136,17 +141,32 @@ export function App() {
   const selectProject = useCallback(async () => {
     const host = desktopHost()
     if (!host) return
-    const result = await host.selectProject({ apiVersion: 1 })
-    if (!result.canceled && result.project) {
-      setActiveProject(result.project)
-      setRecentProjects((current) => [result.project!, ...current.filter((project) => project.id !== result.project?.id)])
+    setProjectState('opening')
+    setProjectError('')
+    try {
+      const result = await host.selectProject({ apiVersion: 1 })
+      if (!result.canceled && result.project) {
+        setActiveProject(result.project)
+        setRecentProjects((current) => [result.project!, ...current.filter((project) => project.id !== result.project?.id)])
+      }
+      setProjectState('ready')
+    } catch {
+      setProjectState('error')
+      setProjectError('This folder could not be opened. Check access and try again.')
     }
   }, [])
 
   const openRecentProject = useCallback(async (projectId: string) => {
     const host = desktopHost()
     if (!host || !projectId) return
-    setActiveProject(await host.openRecentProject({ apiVersion: 1, projectId }))
+    setProjectState('opening')
+    try {
+      setActiveProject(await host.openRecentProject({ apiVersion: 1, projectId }))
+      setProjectState('ready')
+    } catch {
+      setProjectState('error')
+      setProjectError('The recent project is no longer available.')
+    }
   }, [])
 
   const togglePreview = useCallback(async () => {
@@ -298,23 +318,39 @@ export function App() {
           <span className="health-dot" aria-hidden="true" />
           {desktopBridge?.state === 'ready' || connection === 'connected' ? 'Ready' : desktopBridge?.state ?? connection}
         </span>
-        {desktopBridge && <button className="primary-action" type="button" onClick={() => void selectProject()}>Open project</button>}
+        {desktopBridge && activeProject && <button className="primary-action" type="button" onClick={() => void selectProject()}>Open project</button>}
       </div>
     </header>
     <nav className="document-actions" aria-label="Workspace toolbar">
+      <button type="button" aria-label="Toggle workspace navigation" aria-pressed={leftPanelOpen} onClick={() => setLeftPanelOpen((value) => !value)}>Sidebar</button>
       <button type="button" data-testid="apply-demo" onClick={applyDemo}>Apply operation</button>
       <button type="button" data-testid="undo" disabled={!liveConfig && !history.past.length} onClick={undoCurrent}>Undo</button>
       <button type="button" data-testid="redo" disabled={!history.future.length} onClick={() => setHistory(redo)}>Redo</button>
       <button type="button" data-testid="save-document" onClick={() => void save()}>Save</button>
       <button type="button" data-testid="reload-document" onClick={() => void reload()}>Reload</button>
+      <button type="button" aria-label="Zoom out" onClick={() => commit({ id: `zoom-out-${performance.now()}`, at: new Date().toISOString(), type: 'set-viewport', pan: history.present.viewport.pan, zoom: Math.max(0.25, history.present.viewport.zoom - 0.1) })}>−</button>
+      <output className="zoom-value" aria-label="Canvas zoom">{Math.round(history.present.viewport.zoom * 100)}%</output>
+      <button type="button" aria-label="Zoom in" onClick={() => commit({ id: `zoom-in-${performance.now()}`, at: new Date().toISOString(), type: 'set-viewport', pan: history.present.viewport.pan, zoom: Math.min(4, history.present.viewport.zoom + 0.1) })}>+</button>
       <span className="toolbar-spacer" />
       {desktopBridge && <>
         <button type="button" disabled={!activeProject} onClick={() => void togglePreview()}>{preview?.visible ? 'Hide preview' : 'Preview'}</button>
         <button type="button" disabled={!activeProject} onClick={() => activeProject && void desktopHost()?.revealProject({ apiVersion: 1, projectId: activeProject.id })}>Explorer</button>
       </>}
+      <button type="button" aria-label="Toggle properties" aria-pressed={rightPanelOpen} onClick={() => setRightPanelOpen((value) => !value)}>Properties</button>
     </nav>
-    <section className="app-body">
-      <aside className="workspace-rail" aria-label="Workspace navigation">
+    {desktopHost() && !activeProject ? <section className="project-entry" aria-label="Open a project">
+      <div className="entry-copy">
+        <span className="entry-mark" aria-hidden="true">A</span>
+        <p className="eyebrow">Agent Design workspace</p>
+        <h2>Turn your React project into a visual canvas.</h2>
+        <p>Open a trusted local folder. Your source, canvas, and terminal agents will share one revisioned workspace.</p>
+        <button className="primary-action entry-action" type="button" disabled={projectState === 'opening'} onClick={() => void selectProject()}>{projectState === 'opening' ? 'Opening…' : 'Open project'}</button>
+        {projectState === 'loading' && <p role="status">Loading recent projects…</p>}
+        {projectState === 'error' && <p className="entry-error" role="alert">{projectError} <button type="button" onClick={() => void selectProject()}>Try again</button></p>}
+      </div>
+      {recentProjects.length > 0 && <div className="recent-projects"><h3>Recent projects</h3>{recentProjects.map((project) => <button type="button" key={project.id} onClick={() => void openRecentProject(project.id)}><strong>{project.displayName}</strong><span>Open workspace</span></button>)}</div>}
+    </section> : <section className={`app-body${leftPanelOpen ? '' : ' left-collapsed'}${rightPanelOpen ? '' : ' right-collapsed'}`}>
+      {leftPanelOpen && <aside className="workspace-rail" aria-label="Workspace navigation">
         <div className="rail-section">
           <p className="rail-label">Workspace</p>
           <button type="button" className="rail-item active" aria-current="page">Canvas</button>
@@ -354,12 +390,12 @@ export function App() {
           </label>
           {desktopBridge && <button type="button" onClick={() => void desktopHost()?.exportDiagnostics({ apiVersion: 1 })}>Diagnostics</button>}
         </details>
-      </aside>
+      </aside>}
       <section className="canvas-stage" aria-label="Design canvas">
         <CanvasSurface document={history.present} editorPlaneFailure={failure} onOperation={commit} />
       </section>
-      <PropertyInspector document={history.present} onOperation={commit} />
-    </section>
+      {rightPanelOpen && <PropertyInspector document={history.present} onOperation={commit} />}
+    </section>}
     <footer className="workspace-status" aria-label="Workspace status">
       <output data-testid="persistence-status">{status}</output>
       <span>Revision {history.present.revision}</span>
