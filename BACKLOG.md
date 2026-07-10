@@ -2,6 +2,27 @@
 
 ## Completed Horizons
 
+### 2026-07-10 - Content Fill
+
+- CF1 - Docs Foundations And Agent Recipes 공개: Foundations 아티클 7종(한국어, tokens SSOT 파생) + Agent Recipes 표면(recipes/ 5종·llms.txt 링크 10/10 검증) 프로덕션 공개, Colors foundation 링크 부활 (`changesets/20260710-docs-shell-gate-open/README.md`).
+- CF2 - Showcase Atlas Source-Quality 카드: 홈 Atlas 12칸 완성 — placeholder 카드 4종 인터랙티브 데모 + Dashboard 실마크업, 카드별 품질 판정(라이트/다크·reduced-motion) 통과 (`changesets/20260710-showcase-gate-open/README.md`).
+- CF3 - Patterns 빈 컬렉션 배치: inbox 후보 9종 terms.yml 승격(terms 536) + 빈 컬렉션 4개(Blog/Contact/Content/Logo Clouds) 예제 풀 페이지로 공개, visual renderer 9종 (`changesets/20260710-collections-terms-promotion/README.md`).
+- Close: 닫는 기준 충족 — 콘텐츠만 있으면 열리는 dev 껍데기 전부 공개(제거 0), Pro/Download는 계획대로 dev 보존. Objective 임팩트는 `docs/horizons/2026-07-content-fill.md` 참조.
+- 크기 회고: 각 milestone 2~4 changesets — milestone-grade 유지. `roadmap_sync.py complete`의 인플레 적발이 Evidence 경로 1개만 세는 오탐 있었음(harness 스킬 개선 후보).
+
+### 2026-07-10 - Structure-First Buildout
+
+- SFB1 - Structure Contract And Clean Production: blueprint v2(목표 IA·완성 판정·노출 규칙) 확정 + 프로덕션 노출 게이트 배포 — 빈 컬렉션 42·placeholder 카드 5·Download 진입 4 비노출, 전 라우트 크롤 스모크 0건 (`changesets/20260710-production-exposure-gate/README.md`).
+- SFB2 - Shell Buildout (dev-only): blueprint v2 신설 껍데기 전부 dev-only 구현 — Docs Foundations 7+Agent Recipes, Colors 축+Palettes skeleton, Pro 하위 3탭+Download 앱 skeleton, prod 비노출 회귀 PASS (`docs/plans/2026-07-10-sfb2-shell-buildout.md`).
+- SFB3 - Content Fill Batch 1: Colors Palettes: Colors 축 프로덕션 공개 — 큐레이션 팔레트 13종 실데이터·복사/내보내기·라이트/다크, 껍데기 누출 2건 차단 (`changesets/20260710-colors-axis-public/README.md`).
+- Close: 닫는 기준 충족 — 구조 계약 + 껍데기 골조 + 첫 콘텐츠 채움 실증(SFB3가 Content Fill 프로세스 검증). 상세: `docs/horizons/2026-07-structure-first-buildout.md`.
+- 노출 게이트 시스템(`src/lib/exposure.ts`) 확립: shell 플래그/빈 termIds로 dev 작성 → 완성 판정 → 게이트 해제 — 이후 6 milestone에서 검증된 패턴.
+
+### 2026-07-09 - Standalone completions
+
+- PGD1 - Palette Generator Data Engine: 큐레이션 seed 데이터 + 결정적 생성 규칙 + lock 보존 + 품질 게이트, Chrome smoke (`changesets/20260709-palette-generator-data-engine/README.md`).
+- PSS2 - Landing Page Design Quality (Public Site Shell 이월): Landing CTA/Auth 라우팅 + production Pages Function smoke + 데스크톱/모바일 라이트/다크 QA (`changesets/20260709-askewly-auth-sso-routing/README.md`).
+
 ### 2026-07-07 - Figma Workflow
 
 - FW1 - 리서치 → 방법론 채택: sonnet 위임 2건(다각 딥리서치 + 최근 30일 커뮤니티 펄스, `docs/market/2026-07-07-figma-claude-*.md`) — code↔canvas 양방향이 2026 상반기 최전선이며 "코드가 SSOT" 브리지 축이 유리함을 확인. 하이브리드 왕복(코드→Figma→사람→코드) 사용자 확정, `methodology/figma-workflow.md` 계약 문서화.
