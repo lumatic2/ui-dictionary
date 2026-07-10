@@ -55,6 +55,16 @@ The desktop app is a third connected surface, not a wrapper around the website o
 - **Desktop authority:** filesystem, process, editor/Explorer, and watcher capabilities stay behind typed host contracts. Project code receives no Electron/Node authority.
 - **Quality gate:** renderer candidates must pass shared 1k/5k/10k-node, pointer latency, Korean IME, responsive, nested component, screenshot-diff, memory, recovery, accessibility, and source-round-trip fixtures.
 
+### Terminal Agent Live Bridge
+
+- **User-owned agents:** Agent Design does not embed or spawn Codex/Claude as its primary interaction. The user runs Codex CLI and Claude CLI in terminal windows they control.
+- **Bridge daemon:** a project-scoped Node bridge binds loopback only, owns the canonical revision/event log, validates scoped session tokens, serializes mutations, and broadcasts accepted changes to canvas clients over WebSocket.
+- **MCP adapters:** small stdio adapters let Codex CLI and Claude CLI call the same `get_context`, `apply_operations`, `apply_source_patch`, `verify`, and `undo` protocol while forwarding to one bridge authority.
+- **Immediate apply:** a valid call from a trusted terminal session is the user's apply intent. It commits atomically without a second canvas approval click, then records exact diff, verification, client identity, transaction ID, and Undo history.
+- **Reverse path:** file watching catches direct agent source edits, parses the supported React contract, reconciles canonical document state, and broadcasts one deduplicated transaction back to the canvas.
+- **Conflict/recovery:** base revision and before-hash mismatches fail rather than silently last-write-win. Reconnecting canvas/MCP clients replay from the event log cursor.
+- **Packaging boundary:** AUC3 proves the daemon and adapters as local processes; AUC4 supervises and packages them behind the Windows desktop host.
+
 Research basis: `references/figma-product-architecture/ANALYSIS.md` + `references/nexu-io-open-design/ANALYSIS.md`. Figma contributes the canonical scenegraph/derived-state/code-layer model; OpenDesign contributes the Electron/local-engine/sandbox/agent-adapter model.
 
 AUC1 implementation surfaces:

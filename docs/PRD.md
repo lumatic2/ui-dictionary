@@ -55,7 +55,7 @@ Codex and Claude Code can consume the same system as tokens, recipes, prompts, c
 
 ### Create On A Code-Native Canvas
 
-Agent Design is the desktop authoring surface. Users compose real React UI in frames, select and directly manipulate elements, bind tokens and typed properties, explore variants side by side, and ask a canvas-docked agent to revise the current selection. Canvas edits remain inspectable code and close with an exact diff plus browser verification.
+Agent Design is the desktop authoring surface. Users compose real React UI in frames, select and directly manipulate elements, bind tokens and typed properties, and explore variants side by side. Codex CLI and Claude CLI remain in user-owned terminal windows and connect to the running canvas through a project-scoped local bridge/MCP adapter. When the user asks either terminal agent to design or revise UI, trusted tool calls atomically update canonical document and React code, and the separate canvas window redraws immediately. Exact diffs, verification results, history, and Undo remain visible without inserting a per-change approval click into the live design loop. Direct source edits made by the terminal agent are reconciled back through a file watcher.
 
 ## MVP Direction
 

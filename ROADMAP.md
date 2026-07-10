@@ -13,9 +13,9 @@ Goal: Agent Design를 code-native UI canvas로 만든다 — evidence-based engi
 ## Active Milestones
 
 <!-- harness:milestone id="AUC3" status="active" priority="P1" -->
-### AUC3 — Canvas Agent And Code Round-trip
-- DoD: selection-bound agent context → exact diff → guarded apply → shared CLI verify + React code↔canvas 왕복 drift gate.
-- Evidence: `docs/plans/2026-07-10-auc3-canvas-agent-code-roundtrip.md` + `phases/agent-design-canvas-agent/` + fresh-project round-trip evidence.
+### AUC3 — Terminal Agent Live Canvas Round-trip
+- DoD: user-owned Codex/Claude terminal → shared local bridge/MCP → atomic auto-apply → WebSocket canvas redraw + source watcher reverse sync + React code↔canvas drift gate.
+- Evidence: `docs/plans/2026-07-10-auc3-terminal-agent-live-canvas.md` + `phases/agent-design-canvas-agent/` + fresh-project dual-CLI round-trip evidence.
 - Gap: 캔버스와 에이전트가 아직 같은 정본 code/document를 편집하지 않는다.
 - Status: [ ]
 
