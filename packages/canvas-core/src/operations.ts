@@ -70,6 +70,11 @@ export interface SetViewportOperation extends OperationBase {
   zoom: number
 }
 
+export interface BatchOperation extends OperationBase {
+  type: 'batch'
+  operations: Exclude<CanvasOperation, BatchOperation>[]
+}
+
 export type CanvasOperation =
   | CreateNodeOperation
   | DeleteNodeOperation
@@ -82,6 +87,7 @@ export type CanvasOperation =
   | ReorderNodeOperation
   | SelectNodesOperation
   | SetViewportOperation
+  | BatchOperation
 
 function insertAt<T>(items: T[], value: T, index: number) {
   items.splice(Math.max(0, Math.min(index, items.length)), 0, value)
@@ -116,7 +122,13 @@ function copyPatch(patch: UpdateNodeOperation['patch']): UpdateNodeOperation['pa
 }
 
 function mutateOperation(next: CanvasDocument, operation: CanvasOperation) {
+  const revisionBefore = next.revision
   switch (operation.type) {
+    case 'batch':
+      if (!operation.operations.length) throw new Error('batch requires at least one operation')
+      for (const child of operation.operations) mutateOperation(next, child)
+      next.revision = revisionBefore
+      break
     case 'create-node': {
       if (next.nodes[operation.node.id]) throw new Error(`node already exists: ${operation.node.id}`)
       const node = structuredClone(operation.node)
@@ -229,6 +241,15 @@ export function replayOperations(initial: CanvasDocument, operations: CanvasOper
 export function invertOperation(before: CanvasDocument, operation: CanvasOperation): CanvasOperation {
   const inverseBase = { id: `inverse:${operation.id}`, at: operation.at }
   switch (operation.type) {
+    case 'batch': {
+      let cursor = structuredClone(before)
+      const inverses: Exclude<CanvasOperation, BatchOperation>[] = []
+      for (const child of operation.operations) {
+        inverses.unshift(invertOperation(cursor, child) as Exclude<CanvasOperation, BatchOperation>)
+        cursor = applyOperation(cursor, child)
+      }
+      return { ...inverseBase, type: 'batch', operations: inverses }
+    }
     case 'create-node':
       return { ...inverseBase, type: 'delete-node', nodeId: operation.node.id }
     case 'delete-node': {

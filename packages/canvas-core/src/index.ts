@@ -1,4 +1,5 @@
 export * from './fixtures.js'
+export * from './commands.js'
 export * from './interaction.js'
 export * from './manipulation.js'
 export * from './operations.js'
