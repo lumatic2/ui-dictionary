@@ -4,7 +4,7 @@
   "mode": "product",
   "steps": [
     { "step": 1, "name": "canonical-creation-command-layer", "status": "completed" },
-    { "step": 2, "name": "hierarchical-layers-panel", "status": "in_progress" },
+    { "step": 2, "name": "hierarchical-layers-panel", "status": "completed", "summary": "apps/agent-design/src/LayersPanel.tsx renders the canonical hierarchy as an ARIA tree projection (no second store): expand/collapse UI state only, selection via select-nodes, rename/visibility/lock via update-node, reorder via planSiblingReorder->reorder-node, reparent via planNodeDrop('inside')->reparent-node with active/invalid drop feedback; drag id tracked in a ref (dataTransfer.getData is drop-only in real browsers, same pattern as CanvasSurface). App.tsx replaced the Layers Soon rail placeholder with the panel wired to commit(). Verified: LayersPanel.test.tsx 8 tests (tree semantics, expand/collapse, tree<->document selection sync with ancestor auto-reveal, keyboard traversal, inline rename with focus restore, visibility/lock, boundary/locked reorder rejection, valid/invalid/locked drops), App.test.tsx +1 canvas<->tree sync test; suite 28/28 PASS, tsc+vite build PASS, browser smoke tmp/ux2-step2-layers-smoke.png.", "completed_at": "2026-07-12T01:15:00+09:00" },
     { "step": 3, "name": "searchable-insert-palette", "status": "pending" },
     { "step": 4, "name": "layout-arrangement-controls", "status": "pending" },
     { "step": 5, "name": "viewport-keyboard-workflow", "status": "pending" },
