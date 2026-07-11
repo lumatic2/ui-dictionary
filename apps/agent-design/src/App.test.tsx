@@ -96,6 +96,20 @@ describe('Agent Design persistence flow', () => {
     expect(node1.style.left).toBe('148px')
   })
 
+  it('synchronizes selection between canvas and layers tree', () => {
+    const view = render(<App />)
+    const node7 = view.container.querySelector('[data-canvas-id="node-00007"]')
+    if (!(node7 instanceof HTMLElement)) throw new Error('fixture node missing')
+    fireEvent.click(node7)
+    expect(view.getByTestId('layer-node-00007').getAttribute('aria-selected')).toBe('true')
+    expect(view.getByTestId('layer-node-00000').getAttribute('aria-expanded')).toBe('true')
+
+    fireEvent.click(view.getByTestId('layer-node-00014'))
+    const node14 = view.container.querySelector('[data-canvas-id="node-00014"]')
+    expect(node14?.getAttribute('aria-selected')).toBe('true')
+    expect(view.getByTestId('selection-count').textContent).toBe('1')
+  })
+
   it('reorders by keyboard and reparents by valid native drop', () => {
     const view = render(<App />)
     const viewport = view.getByTestId('canvas-viewport')

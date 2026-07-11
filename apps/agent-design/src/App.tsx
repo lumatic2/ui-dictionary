@@ -14,6 +14,7 @@ import {
 import { BrowserDocumentStore } from './browserStore'
 import { CanvasSurface } from './CanvasSurface'
 import { desktopHost, type DesktopBridgeStatus, type DesktopCanvasSnapshot, type DesktopCanvasSnapshotReason, type PreviewStatus, type TrustedFileSummary, type TrustedProjectSummary } from './desktopHost'
+import { LayersPanel } from './LayersPanel'
 import { PropertyInspector } from './PropertyInspector'
 import type { EditorPlaneFailure } from './editorPlaneRuntime'
 import { LiveBridgeClient, liveBridgeConfig } from './liveBridge'
@@ -354,8 +355,11 @@ export function App() {
         <div className="rail-section">
           <p className="rail-label">Workspace</p>
           <button type="button" className="rail-item active" aria-current="page">Canvas</button>
-          <button type="button" className="rail-item" disabled>Layers <span>Soon</span></button>
           <button type="button" className="rail-item" disabled>Assets <span>Soon</span></button>
+        </div>
+        <div className="rail-section layers-rail">
+          <p className="rail-label">Layers</p>
+          <LayersPanel document={history.present} onOperation={commit} />
         </div>
         {desktopBridge && <div className="rail-section project-rail">
           <p className="rail-label">Project</p>
