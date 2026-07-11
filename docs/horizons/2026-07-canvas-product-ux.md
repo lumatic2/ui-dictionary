@@ -1,7 +1,7 @@
 # Horizon — Canvas Product UX
 
 Date: 2026-07-11
-Status: active — UX1 complete; UX2 Visual Creation Workflow awaiting run approval.
+Status: active — UX1·UX2 complete; UX3 Agent Collaboration UX pending (MCP vs CLI 채널 결정은 사용자 소유 — 재료: `docs/research/2026-07-12-agent-canvas-control-mcp-vs-cli.md`).
 
 ## Goal
 

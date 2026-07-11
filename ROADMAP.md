@@ -23,13 +23,15 @@ Goal: turn Agent Design from a proven canvas engine into a coherent professional
 - Summary: Product workspace entry, toolbar, adaptive panels, and integrated packaged quality gates completed
 ## Next Candidates
 
-<!-- harness:milestone id="UX2" status="active" priority="P0" -->
+<!-- harness:milestone id="UX2" status="completed" priority="P0" evidence="docs/plans/2026-07-11-ux2-visual-creation-workflow.md" -->
 ### UX2 — Visual Creation Workflow
 - DoD: layers, insertion, viewport, selection, alignment/spacing, properties, and shortcuts form one discoverable creation loop with representative UI composition evidence.
-- Evidence: `docs/plans/2026-07-11-ux2-visual-creation-workflow.md` + `phases/agent-design-visual-creation/` + creation-flow E2E.
+- Evidence: docs/plans/2026-07-11-ux2-visual-creation-workflow.md
 - Gap: UX1 organizes the workspace but does not yet provide a production-grade layer/insertion/layout workflow.
-- Status: [ ]
+- Status: [x]
 
+- Completed at: 2026-07-12
+- Summary: Layers tree, insert palette, arrangement/layout controls, viewport+keyboard workflow, and representative creation E2E completed with full gate matrix
 <!-- harness:milestone id="UX3" status="pending" priority="P1" -->
 ### UX3 — Agent Collaboration UX
 - DoD: users can bind selection context, understand Codex/Claude connection and work states, inspect changes/conflicts, and Undo from a human-readable collaboration surface.
