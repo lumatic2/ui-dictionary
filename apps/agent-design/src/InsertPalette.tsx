@@ -7,17 +7,26 @@ import {
   resolveInsertParent,
   type CanvasDocument,
   type CanvasOperation,
-  type NodeId,
 } from '@askewly/canvas-core'
+import {
+  catalog,
+  createRegistryNode,
+  projectComponents,
+  searchRegistry,
+  type RegistryCollection,
+  type RegistryEntry,
+} from '@askewly/component-registry'
 
 interface Props {
   document: CanvasDocument
   onOperation: (operation: CanvasOperation) => void
 }
 
+type Category = 'Primitives' | 'Components' | 'Layout' | 'Project'
+
 type PaletteEntry =
   | { key: string; label: string; category: 'Primitives'; kind: 'frame' | 'text' | 'group' }
-  | { key: string; label: string; category: 'Components'; componentId: NodeId }
+  | { key: string; label: string; category: Exclude<Category, 'Primitives'>; entry: RegistryEntry }
 
 const primitiveSizes = {
   frame: { width: 240, height: 160 },
@@ -25,44 +34,80 @@ const primitiveSizes = {
   text: { width: 120, height: 32 },
 } as const
 
+const primitiveEntries: PaletteEntry[] = [
+  { key: 'primitive-frame', label: 'Frame', category: 'Primitives', kind: 'frame' },
+  { key: 'primitive-text', label: 'Text', category: 'Primitives', kind: 'text' },
+  { key: 'primitive-group', label: 'Group', category: 'Primitives', kind: 'group' },
+]
+
+const categories: Category[] = ['Primitives', 'Components', 'Layout', 'Project']
+
+function categoryForCollection(collection: RegistryCollection): Exclude<Category, 'Primitives'> {
+  if (collection === 'shadcn') return 'Components'
+  if (collection === 'layout') return 'Layout'
+  return 'Project'
+}
+
+function paletteKey(entry: RegistryEntry): string {
+  return entry.collection === 'project' ? `component-${entry.slug}` : `registry-${entry.slug}`
+}
+
 export function InsertPalette({ document, onOperation }: Props) {
   const [query, setQuery] = useState('')
   const [feedback, setFeedback] = useState('')
 
-  const entries = useMemo<PaletteEntry[]>(() => {
-    const components = Object.values(document.nodes)
-      .filter((node) => node.kind === 'code-component')
-      .sort((a, b) => a.name.localeCompare(b.name))
-      .map((node): PaletteEntry => ({ key: `component-${node.id}`, label: node.name, category: 'Components', componentId: node.id }))
-    return [
-      { key: 'primitive-frame', label: 'Frame', category: 'Primitives', kind: 'frame' },
-      { key: 'primitive-text', label: 'Text', category: 'Primitives', kind: 'text' },
-      { key: 'primitive-group', label: 'Group', category: 'Primitives', kind: 'group' },
-      ...components,
-    ]
-  }, [document.nodes])
+  const projectEntries = useMemo(() => projectComponents(document), [document.nodes])
+  const hasProjectComponents = projectEntries.length > 0
 
-  const hasComponents = useMemo(() => entries.some((entry) => entry.category === 'Components'), [entries])
+  const registryAll = useMemo(() => [...catalog, ...projectEntries], [projectEntries])
 
-  const visible = useMemo(() => {
+  const visibleRegistry = useMemo(() => searchRegistry(registryAll, query), [registryAll, query])
+
+  const visiblePrimitives = useMemo(() => {
     const needle = query.trim().toLowerCase()
-    if (!needle) return entries
-    return entries.filter((entry) => entry.label.toLowerCase().includes(needle) || entry.category.toLowerCase().includes(needle))
-  }, [entries, query])
+    if (!needle) return primitiveEntries
+    return primitiveEntries.filter((entry) => entry.label.toLowerCase().includes(needle) || entry.category.toLowerCase().includes(needle))
+  }, [query])
+
+  const visible = useMemo<PaletteEntry[]>(() => [
+    ...visiblePrimitives,
+    ...visibleRegistry.map((entry): PaletteEntry => ({
+      key: paletteKey(entry),
+      label: entry.name,
+      category: categoryForCollection(entry.collection),
+      entry,
+    })),
+  ], [visiblePrimitives, visibleRegistry])
 
   const insert = (entry: PaletteEntry) => {
     const parentId = resolveInsertParent(document)
     const at = new Date().toISOString()
-    const size = entry.category === 'Primitives' ? primitiveSizes[entry.kind] : document.nodes[entry.componentId].bounds
-    const bounds = planInsertBounds(document, parentId, { width: size.width, height: size.height })
-    const node = entry.category === 'Primitives'
-      ? createPrimitiveNode(document, entry.kind, parentId, bounds)
-      : createInstanceNode(document, entry.componentId, parentId, bounds)
+
+    if (entry.category === 'Primitives') {
+      const size = primitiveSizes[entry.kind]
+      const bounds = planInsertBounds(document, parentId, size)
+      const node = createPrimitiveNode(document, entry.kind, parentId, bounds)
+      onOperation(planInsert(document, node, at))
+      setFeedback(`${node.name} inserted into ${parentId ? document.nodes[parentId].name : 'canvas root'}`)
+      return
+    }
+
+    if (entry.category === 'Project') {
+      const sourceNodeId = entry.entry.slug
+      const sourceBounds = document.nodes[sourceNodeId]?.bounds ?? entry.entry.defaultSize
+      const bounds = planInsertBounds(document, parentId, { width: sourceBounds.width, height: sourceBounds.height })
+      const node = createInstanceNode(document, sourceNodeId, parentId, bounds)
+      onOperation(planInsert(document, node, at))
+      setFeedback(`${node.name} inserted into ${parentId ? document.nodes[parentId].name : 'canvas root'}`)
+      return
+    }
+
+    const bounds = planInsertBounds(document, parentId, entry.entry.defaultSize)
+    const node = createRegistryNode(document, entry.entry, parentId, bounds)
     onOperation(planInsert(document, node, at))
     setFeedback(`${node.name} inserted into ${parentId ? document.nodes[parentId].name : 'canvas root'}`)
   }
 
-  const categories = ['Primitives', 'Components'] as const
   return <div className="insert-palette" data-testid="insert-palette" aria-label="Insert">
     <input
       data-testid="insert-search"
@@ -75,10 +120,10 @@ export function InsertPalette({ document, onOperation }: Props) {
       ? <p className="insert-empty" data-testid="insert-empty">No matches for “{query.trim()}”.</p>
       : categories.map((category) => {
         const items = visible.filter((entry) => entry.category === category)
-        if (category === 'Components' && items.length === 0 && !hasComponents) {
+        if (category === 'Project' && items.length === 0 && !hasProjectComponents) {
           return <div key={category} className="insert-category">
-            <p className="rail-label">Components</p>
-            <p className="insert-category-empty" data-testid="insert-components-empty">No code components in this project yet. Insert primitives instead.</p>
+            <p className="rail-label">Project</p>
+            <p className="insert-category-empty" data-testid="insert-project-empty">No project components in this project yet. Insert primitives instead.</p>
           </div>
         }
         if (!items.length) return null

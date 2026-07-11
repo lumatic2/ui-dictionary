@@ -66,7 +66,7 @@ function Harness({ selection = [] }: { selection?: string[] }) {
     <output data-testid="probe-revision">{history.present.revision}</output>
     <output data-testid="probe-structure">{JSON.stringify({
       rootIds: history.present.rootIds,
-      nodes: Object.fromEntries(Object.entries(history.present.nodes).map(([id, node]) => [id, { kind: node.kind, parentId: node.parentId, bounds: node.bounds, componentId: node.kind === 'instance' ? node.componentId : undefined }])),
+      nodes: Object.fromEntries(Object.entries(history.present.nodes).map(([id, node]) => [id, { kind: node.kind, parentId: node.parentId, bounds: node.bounds, componentId: node.kind === 'instance' ? node.componentId : undefined, source: node.kind === 'code-component' ? node.source : undefined }])),
     })}</output>
     <button type="button" data-testid="probe-undo" onClick={() => setHistory(undo)}>undo</button>
   </>
@@ -95,32 +95,50 @@ function fixtureWithoutComponents(): CanvasDocument {
 }
 
 describe('InsertPalette', () => {
-  it('shows a helpful message in the Components category when the document has no code components', () => {
+  it('shows a helpful message in the Project category when the document has no project components', () => {
     const view = render(<InsertPalette document={fixtureWithoutComponents()} onOperation={() => {}} />)
     expect(view.getByText('Primitives')).toBeTruthy()
     expect(view.getByText('Components')).toBeTruthy()
-    expect(view.getByTestId('insert-components-empty').textContent).toBe('No code components in this project yet. Insert primitives instead.')
+    expect(view.getByText('Layout')).toBeTruthy()
+    expect(view.getByText('Project')).toBeTruthy()
+    expect(view.getByTestId('insert-project-empty').textContent).toBe('No project components in this project yet. Insert primitives instead.')
+    expect(view.getByTestId('insert-registry-button').textContent).toBe('Button')
+    expect(view.getByTestId('insert-registry-stack').textContent).toBe('Stack')
   })
 
-  it('lists primitives and document components by category', () => {
+  it('lists primitives, registry sections, and project components by category', () => {
     const view = render(<Harness />)
     expect(view.getByTestId('insert-primitive-frame').textContent).toBe('Frame')
     expect(view.getByTestId('insert-primitive-text').textContent).toBe('Text')
     expect(view.getByTestId('insert-primitive-group').textContent).toBe('Group')
+    expect(view.getByTestId('insert-registry-button').textContent).toBe('Button')
+    expect(view.getByTestId('insert-registry-stack').textContent).toBe('Stack')
     expect(view.getByTestId('insert-component-comp-x').textContent).toBe('Hero Button')
     expect(view.getByText('Primitives')).toBeTruthy()
     expect(view.getByText('Components')).toBeTruthy()
+    expect(view.getByText('Layout')).toBeTruthy()
+    expect(view.getByText('Project')).toBeTruthy()
   })
 
   it('filters by search and shows an empty state without insert actions', () => {
     const view = render(<Harness />)
     fireEvent.change(view.getByTestId('insert-search'), { target: { value: 'hero' } })
     expect(view.queryByTestId('insert-primitive-frame')).toBeNull()
+    expect(view.queryByTestId('insert-registry-button')).toBeNull()
     expect(view.getByTestId('insert-component-comp-x')).toBeTruthy()
 
     fireEvent.change(view.getByTestId('insert-search'), { target: { value: 'zzz' } })
     expect(view.getByTestId('insert-empty').textContent).toContain('zzz')
     expect(view.queryAllByRole('button').filter((button) => button.className.includes('insert-entry'))).toHaveLength(0)
+  })
+
+  it('filters registry entries by search case-insensitively', () => {
+    const view = render(<Harness />)
+    fireEvent.change(view.getByTestId('insert-search'), { target: { value: 'BUTTON' } })
+    expect(view.getByTestId('insert-registry-button').textContent).toBe('Button')
+    expect(view.queryByTestId('insert-registry-stack')).toBeNull()
+    expect(view.queryByTestId('insert-primitive-frame')).toBeNull()
+    expect(view.getByTestId('insert-component-comp-x')).toBeTruthy()
   })
 
   it('inserts a frame at the canvas root with deterministic placement and single-undo', () => {
@@ -149,6 +167,36 @@ describe('InsertPalette', () => {
   })
 
   it('inserts component instances bound to the source component', () => {
+    const view = render(<Harness />)
+    fireEvent.click(view.getByTestId('insert-component-comp-x'))
+    const state = structure(view)
+    expect(state.nodes['created-0001']).toMatchObject({ kind: 'instance', parentId: null, componentId: 'comp-x' })
+    expect(view.getByTestId('probe-selection').textContent).toBe('created-0001')
+  })
+
+  it('inserts a registry component with deterministic bounds, selection, and single-undo', () => {
+    const view = render(<Harness />)
+    fireEvent.click(view.getByTestId('insert-registry-button'))
+    let state = structure(view)
+    const inserted = state.nodes['created-0001']
+    expect(inserted).toMatchObject({
+      kind: 'code-component',
+      parentId: null,
+      bounds: { x: 40, y: 40, width: 120, height: 40 },
+      source: { file: 'registry://shadcn/button', exportName: 'Button', startLine: 1, endLine: 1 },
+    })
+    expect(view.getByTestId('probe-selection').textContent).toBe('created-0001')
+    expect(view.getByTestId('probe-revision').textContent).toBe('1')
+    expect(view.getByTestId('insert-feedback').textContent).toBe('Button inserted into canvas root')
+
+    fireEvent.click(view.getByTestId('probe-undo'))
+    state = structure(view)
+    expect(state.nodes['created-0001']).toBeUndefined()
+    expect(view.getByTestId('probe-selection').textContent).toBe('')
+    expect(view.getByTestId('probe-revision').textContent).toBe('0')
+  })
+
+  it('still inserts project components as instances alongside registry sections', () => {
     const view = render(<Harness />)
     fireEvent.click(view.getByTestId('insert-component-comp-x'))
     const state = structure(view)
