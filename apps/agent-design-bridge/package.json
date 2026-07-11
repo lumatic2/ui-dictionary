@@ -19,6 +19,7 @@
     "ws": "^8.18.3"
   },
   "devDependencies": {
+    "@askewly/component-registry": "file:../../packages/component-registry",
     "@types/node": "^24.13.2",
     "@types/ws": "^8.18.1",
     "typescript": "~6.0.2",
