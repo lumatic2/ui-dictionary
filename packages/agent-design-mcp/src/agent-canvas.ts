@@ -1,6 +1,9 @@
 #!/usr/bin/env node
 import { readFile } from 'node:fs/promises'
+import { catalog, projectComponents, searchRegistry } from '@askewly/component-registry'
 import { BridgeClient, BridgeRequestError, type AdapterActor } from './bridgeClient.js'
+
+type ProjectDocument = Parameters<typeof projectComponents>[0]
 
 const EXIT_OK = 0
 const EXIT_USAGE = 1
@@ -80,6 +83,20 @@ async function runVerify(client: BridgeClient, args: string[]): Promise<Record<s
   return client.verify({ revision: input?.revision as number | undefined, hash: input?.hash as string | undefined })
 }
 
+async function runComponents(client: BridgeClient, args: string[]): Promise<Record<string, unknown>> {
+  const queryFlagIndex = args.indexOf('--query')
+  let query: string | undefined
+  if (queryFlagIndex !== -1) {
+    query = args[queryFlagIndex + 1]
+    if (!query) throw new CliError('USAGE', '--query requires a value', EXIT_USAGE)
+  }
+  const snapshot = await client.snapshot()
+  const document = snapshot.document as ProjectDocument
+  const entries = [...catalog, ...projectComponents(document)]
+  const components = searchRegistry(entries, query ?? '')
+  return { components }
+}
+
 function classify(error: unknown): { exitCode: number; code: string; message: string } {
   if (error instanceof CliError) return { exitCode: error.exitCode, code: error.code, message: error.message }
   if (error instanceof BridgeRequestError) {
@@ -116,8 +133,11 @@ async function main(): Promise<void> {
     case 'verify':
       value = await runVerify(client, rest)
       break
+    case 'components':
+      value = await runComponents(client, rest)
+      break
     default:
-      throw new CliError('USAGE', `unknown subcommand: ${subcommand ?? '(none)'}. expected one of: context, apply, undo, verify`, EXIT_USAGE)
+      throw new CliError('USAGE', `unknown subcommand: ${subcommand ?? '(none)'}. expected one of: context, apply, undo, verify, components`, EXIT_USAGE)
   }
   process.stdout.write(`${JSON.stringify(value)}\n`)
   process.exitCode = EXIT_OK

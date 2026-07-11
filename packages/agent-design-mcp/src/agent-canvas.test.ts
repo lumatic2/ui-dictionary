@@ -29,6 +29,35 @@ async function mockBridge(): Promise<string> {
     let status = 200
     if (request.url === '/context') {
       body = { documentId: 'fixture', revision, hash, selection: [], selectedNodes: [], sourceRoot: '.', sourceFiles: [] }
+    } else if (request.url === '/snapshot') {
+      body = {
+        document: {
+          id: 'fixture',
+          name: 'Fixture',
+          revision,
+          selection: [],
+          nodes: {
+            'proj-1': {
+              id: 'proj-1',
+              kind: 'code-component',
+              name: 'CustomWidget',
+              parentId: null,
+              childIds: [],
+              bounds: { x: 0, y: 0, width: 200, height: 80 },
+              layout: { mode: 'absolute', horizontal: 'fixed', vertical: 'fixed', gap: 0, padding: [0, 0, 0, 0] },
+              visible: true,
+              locked: false,
+              tokenBindings: {},
+              source: { file: 'src/CustomWidget.tsx', exportName: 'CustomWidget', startLine: 1, endLine: 10 },
+              props: {},
+              variants: {},
+            },
+          },
+          metadata: { sourceRoot: '.' },
+        },
+        revision,
+        hash,
+      }
     } else if (request.url === '/transactions') {
       if (input.baseRevision !== revision) {
         status = 409
@@ -137,6 +166,39 @@ describe('agent-canvas CLI', () => {
     const result = await runCli(['verify'], baseEnv(url), payload)
     expect(result.code).toBe(0)
     expect(JSON.parse(result.stdout)).toMatchObject({ valid: true })
+  })
+
+  it('components: prints the curated catalog plus project-derived entries on stdout with exit 0', async () => {
+    const url = await mockBridge()
+    const result = await runCli(['components'], baseEnv(url))
+    expect(result.code).toBe(0)
+    const { components } = JSON.parse(result.stdout) as { components: Array<Record<string, unknown>> }
+    const staticEntries = components.filter((entry) => entry.collection !== 'project')
+    expect(staticEntries.length).toBeGreaterThanOrEqual(16)
+    expect(components.some((entry) => entry.collection === 'project' && entry.name === 'CustomWidget')).toBe(true)
+    expect(result.stderr).toBe('')
+  })
+
+  it('components: --query narrows the results', async () => {
+    const url = await mockBridge()
+    const result = await runCli(['components', '--query', 'button'], baseEnv(url))
+    expect(result.code).toBe(0)
+    const { components } = JSON.parse(result.stdout) as { components: Array<Record<string, unknown>> }
+    expect(components.length).toBeGreaterThan(0)
+    expect(components.every((entry) => (entry.keywords as string[] ?? []).join(' ').toLowerCase().includes('button')
+      || String(entry.name).toLowerCase().includes('button')
+      || String(entry.category).toLowerCase().includes('button')
+      || String(entry.collection).toLowerCase().includes('button'))).toBe(true)
+  })
+
+  it('components: connection refused exits with the connection failure code', async () => {
+    const probe = createServer()
+    await new Promise<void>((resolve) => probe.listen(0, '127.0.0.1', resolve))
+    const port = (probe.address() as AddressInfo).port
+    await new Promise<void>((resolve, reject) => probe.close((error) => (error ? reject(error) : resolve())))
+    const result = await runCli(['components'], baseEnv(`http://127.0.0.1:${port}`))
+    expect(result.code).toBe(4)
+    expect(JSON.parse(result.stderr)).toMatchObject({ error: { code: 'CONNECTION_FAILED' } })
   })
 
   it('bad token: exits with the auth failure code', async () => {

@@ -47,6 +47,36 @@ async function mockBridge(): Promise<MockBridge> {
       contextHits += 1
       body = { documentId: 'fixture', revision, hash, selection: ['node-1'], selectedNodes: [], sourceRoot: '.', sourceFiles: [] }
     }
+    else if (request.url?.startsWith('/snapshot')) {
+      body = {
+        document: {
+          id: 'fixture',
+          name: 'Fixture',
+          revision,
+          selection: [],
+          nodes: {
+            'proj-1': {
+              id: 'proj-1',
+              kind: 'code-component',
+              name: 'CustomWidget',
+              parentId: null,
+              childIds: [],
+              bounds: { x: 0, y: 0, width: 200, height: 80 },
+              layout: { mode: 'absolute', horizontal: 'fixed', vertical: 'fixed', gap: 0, padding: [0, 0, 0, 0] },
+              visible: true,
+              locked: false,
+              tokenBindings: {},
+              source: { file: 'src/CustomWidget.tsx', exportName: 'CustomWidget', startLine: 1, endLine: 10 },
+              props: {},
+              variants: {},
+            },
+          },
+          metadata: { sourceRoot: '.' },
+        },
+        revision,
+        hash,
+      }
+    }
     else if (request.url === '/transactions') {
       revision += 1
       hash = `hash-${revision}`
@@ -98,7 +128,7 @@ async function mockBridge(): Promise<MockBridge> {
 }
 
 describe('Agent Design MCP stdio contract', () => {
-  it.each(['codex', 'claude'] as const)('serves the same five tools and roundtrip semantics for %s', async (actor) => {
+  it.each(['codex', 'claude'] as const)('serves the same six tools and roundtrip semantics for %s', async (actor) => {
     const { url } = await mockBridge()
     const cli = fileURLToPath(new URL('../dist/cli.js', import.meta.url))
     const transport = new StdioClientTransport({
@@ -110,7 +140,7 @@ describe('Agent Design MCP stdio contract', () => {
     const client = new Client({ name: `test-${actor}`, version: '0.1.0' })
     await client.connect(transport)
     const tools = await client.listTools()
-    expect(tools.tools.map((tool) => tool.name).sort()).toEqual(['apply_operations', 'apply_source_patch', 'get_context', 'undo', 'verify'])
+    expect(tools.tools.map((tool) => tool.name).sort()).toEqual(['apply_operations', 'apply_source_patch', 'get_context', 'list_components', 'undo', 'verify'])
     const context = await client.callTool({ name: 'get_context', arguments: {} })
     expect(context.structuredContent).toMatchObject({ revision: 0, hash: 'hash-0' })
     const applied = await client.callTool({ name: 'apply_operations', arguments: {
@@ -163,6 +193,34 @@ describe('Agent Design MCP stdio contract', () => {
     expect(context.structuredContent).toMatchObject({ revision: 7, hash: 'hash-live-7', selection: ['node-live'] })
     // The live push, not another REST call, should have produced this value.
     expect(contextHits()).toBe(hitsAfterSeed)
+
+    await client.close()
+  })
+
+  it('list_components returns the curated catalog plus project-derived entries, and honors search', async () => {
+    const { url } = await mockBridge()
+    const cli = fileURLToPath(new URL('../dist/cli.js', import.meta.url))
+    const transport = new StdioClientTransport({
+      command: process.execPath,
+      args: [cli],
+      env: { ...process.env, AGENT_DESIGN_BRIDGE_URL: url, AGENT_DESIGN_SESSION_TOKEN: 'test', AGENT_DESIGN_ACTOR: 'claude' },
+      stderr: 'pipe',
+    })
+    const client = new Client({ name: 'test-list-components', version: '0.1.0' })
+    await client.connect(transport)
+
+    const all = await client.callTool({ name: 'list_components', arguments: {} })
+    const components = (all.structuredContent as { components: Array<Record<string, unknown>> }).components
+    const staticEntries = components.filter((entry) => entry.collection !== 'project')
+    expect(staticEntries.length).toBeGreaterThanOrEqual(16)
+    const projectEntry = components.find((entry) => entry.collection === 'project' && entry.name === 'CustomWidget')
+    expect(projectEntry).toBeDefined()
+
+    const filtered = await client.callTool({ name: 'list_components', arguments: { query: 'button' } })
+    const filteredComponents = (filtered.structuredContent as { components: Array<Record<string, unknown>> }).components
+    expect(filteredComponents.length).toBeGreaterThan(0)
+    expect(filteredComponents.length).toBeLessThan(components.length)
+    expect(filteredComponents.some((entry) => entry.name === 'Button')).toBe(true)
 
     await client.close()
   })

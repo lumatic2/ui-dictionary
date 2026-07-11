@@ -41,6 +41,10 @@ export class BridgeClient {
     return this.request('/context')
   }
 
+  snapshot() {
+    return this.request('/snapshot')
+  }
+
   applyOperations(input: { transactionId: string; baseRevision: number; beforeHash: string; operations: unknown[] }) {
     return this.request('/transactions', {
       method: 'POST',

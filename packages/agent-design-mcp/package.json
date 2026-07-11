@@ -12,6 +12,7 @@
   },
   "types": "./dist/index.d.ts",
   "scripts": {
+    "prebuild": "npm --prefix ../component-registry run build",
     "build": "tsc",
     "pretest": "npm run build",
     "test": "vitest run",
@@ -20,6 +21,7 @@
     "verify:roundtrip": "node scripts/verify-roundtrip.mjs"
   },
   "dependencies": {
+    "@askewly/component-registry": "file:../component-registry",
     "@modelcontextprotocol/sdk": "^1.27.1",
     "zod": "^3.25.76"
   },

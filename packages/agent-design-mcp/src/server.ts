@@ -1,7 +1,10 @@
 import { McpServer } from '@modelcontextprotocol/sdk/server/mcp.js'
+import { catalog, projectComponents, searchRegistry } from '@askewly/component-registry'
 import { z } from 'zod'
 import { BridgeClient, BridgeRequestError, type AdapterActor } from './bridgeClient.js'
 import { LiveContextSubscription } from './liveContext.js'
+
+type ProjectDocument = Parameters<typeof projectComponents>[0]
 
 const operationSchema = z.object({
   id: z.string().min(1),
@@ -50,6 +53,21 @@ export function createAgentDesignMcp(options: {
       if (cached) return result(cached as unknown as Record<string, unknown>)
     }
     try { return result(await client.context()) } catch (error) { return failure(error) }
+  })
+
+  server.registerTool('list_components', {
+    title: 'List available components',
+    description: 'List the curated component registry catalog plus components already used in the current project document, optionally filtered by a search query.',
+    inputSchema: { query: z.string().optional() },
+    annotations: { readOnlyHint: true, destructiveHint: false, idempotentHint: true, openWorldHint: false },
+  }, async (input) => {
+    try {
+      const snapshot = await client.snapshot()
+      const document = snapshot.document as ProjectDocument
+      const entries = [...catalog, ...projectComponents(document)]
+      const components = searchRegistry(entries, input.query ?? '')
+      return result({ components })
+    } catch (error) { return failure(error) }
   })
 
   server.registerTool('apply_operations', {
