@@ -65,3 +65,4 @@
 | 63 | 20260710-auc1-integrated-foundation | 2026-07-10 | Snapshot persistence, 5k three-run budget, reload pixel equality, browser E2E | 8/8 | complete |
 | 64 | 20260712-reference-loop-procedure | 2026-07-12 | Standard 5-stage reference absorption loop procedure, candidate inbox, batch ledger | 4/4 | complete |
 | 65 | 20260712-recipe-candidate-audit | 2026-07-12 | Dedup/schema audit script for reference-loop candidate inbox with clean/duplicate fixtures | 3/3 | complete |
+| 66 | 20260712-batch-commerce | 2026-07-12 | First reference-loop proof batch: 2 commerce recipes with real implementations, 4 terms, 4 dedup judgments | 7/7 | complete |

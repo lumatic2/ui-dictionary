@@ -2417,8 +2417,8 @@
   status: draft
   category: data-display
   group: data-tables-lists
-  ko: { name: 패싯 필터, aliases: [faceted filter, facet filter, 다중 조건 필터] }
-  en: { name: Faceted filter, aliases: [Facet filter, Multi-facet filter] }
+  ko: { name: 패싯 필터, aliases: [faceted filter, facet filter, 다중 조건 필터, 카테고리 필터] }
+  en: { name: Faceted filter, aliases: [Facet filter, Multi-facet filter, Category filter facets] }
   one_liner: 상태, 카테고리, 가격대처럼 여러 속성별 조건을 조합하는 필터.
   description: 쇼핑, 데이터 테이블, 검색 결과에서 사용자가 여러 차원의 조건을 선택해 결과를 좁힌다.
   visual_anatomy: [filter groups, checkbox options, selected count, active chips]
@@ -4108,6 +4108,10 @@
     canonical_path: [Plus, UI Blocks, Ecommerce, Components]
     also_appears_in:
       - [Plus, Templates, Ecommerce Screens]
+  related:
+    - id: cart-summary
+      relation: compare
+      note: "browsing 중 누적 상태를 보여주는 하단 바는 cart summary bar고, checkout 단계에서 세금·배송비까지 포함해 스크롤과 무관하게 고정 노출하는 최종 총액(sticky order total 개념, `recipes/commerce/checkout-order-summary.md` 참고)은 cart summary와 항상 일치해야 한다."
   confidence: high
 
 - id: checkout-progress-header
@@ -4634,8 +4638,8 @@
   status: draft
   category: data-display
   group: data-commerce-billing
-  ko: { name: 이미지 갤러리, aliases: [image gallery, 사진 갤러리, gallery grid] }
-  en: { name: Image gallery, aliases: [Photo gallery, Gallery grid] }
+  ko: { name: 이미지 갤러리, aliases: [image gallery, 사진 갤러리, gallery grid, 상품 이미지 갤러리] }
+  en: { name: Image gallery, aliases: [Photo gallery, Gallery grid, Product gallery] }
   one_liner: 여러 이미지를 격자나 썸네일 목록으로 탐색하는 UI.
   description: 사진, 제품 이미지, 포트폴리오처럼 이미지 묶음을 빠르게 훑고 선택하게 한다.
   visual_anatomy: [image grid, selected thumbnail, preview, navigation controls]
@@ -11020,4 +11024,103 @@
       - [Plus, Templates, Marketing Pages]
   asset: { kind: mini-mock, variant: logo-cloud-section }
   sources: [{ source_id: blocks-so-library, note: shadcn block ecosystem logo cloud and social-proof marketing sections }]
+  confidence: medium
+
+- id: reviews-summary-block
+  status: draft
+  category: data-display
+  group: data-commerce-billing
+  kind: block
+  ko: { name: 리뷰 요약 블록, aliases: [reviews summary block, 리뷰 평점 요약, 상품 리뷰 요약] }
+  en: { name: Reviews summary block, aliases: [Review summary block, Rating summary block] }
+  one_liner: 평균 평점과 별점 분포, 개별 리뷰 목록을 한 블록에 묶어 구매 결정을 돕는 UI.
+  description: 상품 상세 페이지에서 평균 평점과 분포 막대 같은 요약 지표를 개별 리뷰 목록과 함께 배치해 신뢰를 만든다.
+  visual_anatomy: [average rating number, star distribution bars, review count, individual review cards, verified purchase badge]
+  when_to_use: [상품 상세에서 평점 요약과 실제 리뷰를 함께 보여줘야 할 때]
+  anti_use: [평점 분포 없이 인용문만 나열하는 마케팅 신뢰 섹션은 testimonial section이 더 적합하다]
+  prompt_phrases: [평균 평점과 별점 분포, 개별 리뷰가 있는 reviews summary block을 상품 상세에 넣어줘]
+  related:
+    - id: testimonial-section
+      relation: compare
+      note: "마케팅 신뢰용 고객 인용문 나열은 testimonial section, 평점 분포와 실제 상품 리뷰 목록을 함께 보여줘야 하면 reviews summary block이다."
+  asset: { kind: mini-mock, variant: reviews-summary-block, props: { rating: 4.5 } }
+  sources: [{ source_id: blocks-so-library, note: shadcn block ecosystem ecommerce review summary blocks }]
+  navigation:
+    canonical_path: [Plus, UI Blocks, Ecommerce, Components]
+    also_appears_in:
+      - [Plus, Templates, Ecommerce Screens]
+  confidence: medium
+
+- id: order-history-list
+  status: draft
+  category: data-display
+  group: data-tables-lists
+  kind: block
+  ko: { name: 주문 내역 목록, aliases: [order history list, 주문 이력, 지난 주문 목록] }
+  en: { name: Order history list, aliases: [Order list, Purchase history list] }
+  one_liner: 과거 주문들을 날짜·금액·상태로 훑어보고 상세나 재주문으로 이어지는 목록.
+  description: 계정의 여러 주문을 행 단위로 나열해 사용자가 과거 구매를 스캔하고 상세 확인이나 재주문을 시작하게 한다.
+  visual_anatomy: [order row, date and order number, item thumbnails, total price, status chip, view detail or reorder action]
+  when_to_use: [계정이나 마이페이지에서 여러 주문을 한 번에 훑어봐야 할 때]
+  anti_use: [단일 주문 하나의 진행 상태만 보여줄 때는 order status가 더 적합하다]
+  prompt_phrases: [날짜 금액 상태 칩이 있는 order history list를 마이페이지에 넣어줘]
+  related:
+    - id: order-status
+      relation: compare
+      note: "단일 주문의 진행 상태 표시는 order status, 여러 주문을 스캔 가능한 행으로 나열하는 목록 뷰는 order history list다."
+  asset: { kind: mini-mock, variant: order-history-list, props: { rows: 3 } }
+  sources: [{ source_id: blocks-so-library, note: shadcn block ecosystem ecommerce order history blocks }]
+  navigation:
+    canonical_path: [Plus, Templates, Ecommerce Screens]
+    also_appears_in:
+      - [Plus, UI Blocks, Ecommerce, Components]
+  confidence: medium
+
+- id: product-quickview-modal
+  status: draft
+  category: structure
+  group: structure-panels
+  kind: block
+  ko: { name: 상품 퀵뷰 모달, aliases: [product quickview modal, 퀵뷰, 상품 미리보기 모달] }
+  en: { name: Product quickview modal, aliases: [Quick view modal, Product preview modal] }
+  one_liner: 카테고리 그리드를 벗어나지 않고 모달로 상품 핵심 정보를 미리 보여주는 패턴.
+  description: 상품 그리드나 검색 결과에서 상세 페이지로 이동하지 않고 이미지, 가격, 옵션, 담기 같은 핵심 구매 정보만 압축해 보여준다.
+  visual_anatomy: [modal overlay, compact product image, title and price, variant selector, quantity stepper, add to cart action, view full details link]
+  when_to_use: [카테고리나 그리드 컨텍스트를 유지한 채 빠르게 상품을 확인하고 담게 할 때]
+  anti_use: [옵션이 많거나 설명이 길면 전체 상품 상세 페이지로 이동시키는 편이 낫다]
+  prompt_phrases: [그리드에서 벗어나지 않고 이미지 가격 담기 버튼을 보여주는 product quickview modal을 만들어줘]
+  related:
+    - id: product-card
+      relation: use-with
+      note: "그리드의 product card에서 퀵뷰 진입점을 눌러 product quickview modal을 여는 조합이 흔하다."
+    - id: modal-bottom-sheet
+      relation: compare
+      note: "데스크톱 그리드 컨텍스트 유지가 목적이면 product quickview modal, 모바일에서 배경을 막고 아래에서 올라오는 짧은 선택이면 modal bottom sheet다."
+  asset: { kind: mini-mock, variant: product-quickview-modal, props: { open: true } }
+  sources: [{ source_id: blocks-so-library, note: shadcn block ecosystem ecommerce quickview modal blocks }]
+  navigation:
+    canonical_path: [Plus, UI Blocks, Ecommerce, Components]
+    also_appears_in:
+      - [Plus, Templates, Ecommerce Screens]
+  confidence: medium
+
+- id: incentive-trust-strip
+  status: draft
+  category: structure
+  group: structure-sections
+  kind: block
+  ko: { name: 혜택·신뢰 스트립, aliases: [incentive trust strip, 신뢰 배지 스트립, 무료배송 안내 스트립] }
+  en: { name: Incentive / trust strip, aliases: [Trust badge strip, Shipping and returns strip] }
+  one_liner: 무료배송, 반품 정책, 보안 결제 같은 구매 장벽을 낮추는 짧은 아이콘+텍스트 항목을 나열하는 스트립.
+  description: 장바구니나 체크아웃 근처에 서너 개의 짧은 아이콘과 한 줄 텍스트로 신뢰 신호를 압축해 보여준다.
+  visual_anatomy: [icon, short label, optional policy link, 3-4 item row or grid]
+  when_to_use: [카트, 체크아웃, 상품 상세 근처에서 구매를 망설이게 하는 장벽을 짧게 해소해야 할 때]
+  anti_use: [설명이 길거나 법적 고지가 필요하면 별도 정책 페이지나 FAQ로 연결한다]
+  prompt_phrases: [무료배송 반품 보안결제 아이콘이 있는 incentive trust strip을 카트 근처에 넣어줘]
+  asset: { kind: mini-mock, variant: incentive-trust-strip, props: { items: 3 } }
+  sources: [{ source_id: blocks-so-library, note: shadcn block ecosystem ecommerce trust and incentive strip blocks }]
+  navigation:
+    canonical_path: [Plus, UI Blocks, Ecommerce, Page Sections]
+    also_appears_in:
+      - [Plus, UI Blocks, Ecommerce, Components]
   confidence: medium

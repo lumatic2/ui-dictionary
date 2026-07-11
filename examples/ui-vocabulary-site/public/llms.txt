@@ -26,7 +26,9 @@ Rules for consumers: reference semantic tokens, never hard-code color/dimension 
 ## Recipes
 
 - [recipes/application-ui/showcase-card.md](https://ui.askewly.com/llms/recipes/application-ui/showcase-card.md): Showcase Card — application-ui recipe (status: draft)
+- [recipes/commerce/cart-drawer.md](https://ui.askewly.com/llms/recipes/commerce/cart-drawer.md): Cart Drawer — commerce recipe (status: draft)
 - [recipes/commerce/checkout-order-summary.md](https://ui.askewly.com/llms/recipes/commerce/checkout-order-summary.md): Checkout Order Summary — commerce recipe (status: draft)
+- [recipes/commerce/shipping-method-selector.md](https://ui.askewly.com/llms/recipes/commerce/shipping-method-selector.md): Shipping Method Selector — commerce recipe (status: draft)
 - [recipes/data-display/interactive-data-table.md](https://ui.askewly.com/llms/recipes/data-display/interactive-data-table.md): Interactive Data Table — data-display recipe (status: draft)
 - [recipes/data-display/stat-summary-grid.md](https://ui.askewly.com/llms/recipes/data-display/stat-summary-grid.md): Stat Summary Grid — data-display recipe (status: draft)
 - [recipes/docs/article-documentation-layout.md](https://ui.askewly.com/llms/recipes/docs/article-documentation-layout.md): Article Documentation Layout — docs recipe (status: draft)
