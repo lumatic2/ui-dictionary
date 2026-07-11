@@ -1,0 +1,55 @@
+batch: rl-fixture-duplicate
+surface: commerce
+candidates:
+  - id: checkout-order-summary
+    name: "Checkout Order Summary"
+    pattern_group: commerce
+    proposed_artifact: recipe
+    source:
+      tier: 1
+      url: https://tailwindcss.com/plus/ui-blocks/ecommerce/components/order-summaries
+      accessed: 2026-07-12
+    summary: A checkout panel listing line items, discounts, shipping, tax, and total.
+    anatomy:
+      - line item rows
+      - cost breakdown
+      - total row
+    transferable:
+      - cost breakdown structure
+    non_transferable:
+      - currency formatting
+    dedup_hints:
+      - order summary
+
+  - id: cart-summary-duplicate
+    name: "Order summary"
+    pattern_group: commerce
+    proposed_artifact: term
+    source:
+      tier: 1
+      url: https://tailwindcss.com/plus/ui-blocks/ecommerce/components/order-summaries
+      accessed: 2026-07-12
+    summary: A summary panel showing purchased items and their cumulative cost before payment.
+    anatomy:
+      - item summary rows
+      - subtotal and total
+    transferable:
+      - order summary alias
+    non_transferable:
+      - carrier-specific copy
+    dedup_hints:
+      - order summary
+
+  - id: this-candidate-is-broken
+    name: ""
+    pattern_group: not-a-real-group
+    proposed_artifact: recipe
+    source:
+      tier: 9
+      url: not-a-url
+      accessed: 07/12/2026
+    summary: ""
+    anatomy: []
+    transferable: []
+    non_transferable: []
+    dedup_hints: []

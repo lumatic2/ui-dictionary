@@ -1,0 +1,68 @@
+batch: rl-fixture-clean
+surface: commerce
+candidates:
+  - id: wishlist-save-button
+    name: "Wishlist Save Button"
+    pattern_group: commerce
+    proposed_artifact: recipe
+    source:
+      tier: 1
+      url: https://tailwindcss.com/plus/ui-blocks/ecommerce/components/product-lists
+      accessed: 2026-07-12
+    summary: A toggleable save-for-later control on a product card that switches between neutral and saved states.
+    anatomy:
+      - heart or bookmark glyph
+      - toggled fill state
+      - optional saved-count label
+    transferable:
+      - icon toggle state pattern
+      - accessible pressed/aria-pressed semantics
+    non_transferable:
+      - exact heart iconography
+    dedup_hints:
+      - save for later
+      - favorite toggle
+
+  - id: subscription-plan-comparison
+    name: "Subscription Plan Comparison"
+    pattern_group: commerce
+    proposed_artifact: recipe
+    source:
+      tier: 1
+      url: https://tailwindcss.com/plus/ui-blocks/marketing/sections/pricing
+      accessed: 2026-07-12
+    summary: A side-by-side plan grid highlighting a recommended tier with feature checklists.
+    anatomy:
+      - plan column headers with price
+      - highlighted recommended column
+      - feature checklist rows
+      - per-plan call to action
+    transferable:
+      - recommended-column emphasis pattern
+      - feature checklist row structure
+    non_transferable:
+      - specific plan names and prices
+    dedup_hints:
+      - pricing table
+      - plan comparison grid
+
+  - id: delivery-window-picker
+    name: "Delivery Window Picker"
+    pattern_group: commerce
+    proposed_artifact: term
+    source:
+      tier: 2
+      url: https://tailwindcss.com/plus/ui-blocks/ecommerce/components/checkout-forms
+      accessed: 2026-07-12
+    summary: A selectable list of delivery date/time slots shown during checkout.
+    anatomy:
+      - date grouping header
+      - selectable time slot chips
+      - selected-state emphasis
+    transferable:
+      - slot selection interaction
+    non_transferable:
+      - carrier-specific slot labels
+    dedup_hints:
+      - delivery slot selector
+      - time window picker
