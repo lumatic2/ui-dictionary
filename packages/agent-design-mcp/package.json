@@ -4,7 +4,8 @@
   "private": true,
   "type": "module",
   "bin": {
-    "agent-design-mcp": "./dist/cli.js"
+    "agent-design-mcp": "./dist/cli.js",
+    "agent-canvas": "./dist/agent-canvas.js"
   },
   "exports": {
     ".": "./dist/index.js"
