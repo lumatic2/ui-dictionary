@@ -32,7 +32,7 @@ Goal: turn Agent Design into a tool where humans and terminal agents build produ
 
 - Completed at: 2026-07-12
 - Summary: States/a11y/density polish and fresh packaged gate covering UX2+UX3 renderer completed; UX2 packaged re-proof debt resolved
-<!-- harness:milestone id="CR" status="pending" priority="P1" -->
+<!-- harness:milestone id="CR" status="active" priority="P0" -->
 ### CR — Component Registry
 - DoD: a registry of shadcn/ui, Tailwind primitives, and project components that the Insert palette v2 and agents (MCP/CLI) consume from one catalog; arbitrary npm browsing stays excluded.
 - Evidence: future `docs/plans/` + registry contract doc + palette/agent consumption tests.

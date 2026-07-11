@@ -1,0 +1,11 @@
+{
+  "project": "ui-dictionary",
+  "phase": "agent-design-component-registry",
+  "mode": "product",
+  "steps": [
+    { "step": 1, "name": "registry-package-catalog", "status": "pending" },
+    { "step": 2, "name": "palette-v2-consumption", "status": "pending" },
+    { "step": 3, "name": "agent-registry-surface", "status": "pending" },
+    { "step": 4, "name": "registry-roundtrip-proof", "status": "pending" }
+  ]
+}
