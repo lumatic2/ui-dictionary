@@ -3,11 +3,10 @@
 Date: 2026-07-12
 
 ## North Star
-Goal: turn Agent Design from a proven canvas engine into a coherent professional editing product. Details: `docs/horizons/2026-07-canvas-product-ux.md`.
+Goal: 일회성 레퍼런스 수집을 반복 가능한 흡수 루프(수집→중복 필터→적응→검증→흡수)로 운영화하고, 전 제품 표면으로 확장하며, 산출이 캔버스 레지스트리·CLI·llms.txt에 재작업 없이 공급되게 한다. (상세 plan → `docs/horizons/2026-07-living-design-system.md`)
 
 ## Current State
-- UX1: UX1 — Workspace Foundation (evidence: phases/agent-design-workspace-foundation/step5.md)
-- UX2: UX2 — Visual Creation Workflow (evidence: docs/plans/2026-07-11-ux2-visual-creation-workflow.md)
+- RL: RL — Reference Loop Pipeline (evidence: docs/research/loop/ledger.md (3 batch rows) + changesets/README.md rows 64-68)
 
 ## Gap
 - Active harness milestones are exhausted.
