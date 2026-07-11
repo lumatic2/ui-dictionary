@@ -85,6 +85,7 @@ export function App() {
   const [insertOpen, setInsertOpen] = useState(false)
   const [shortcutsOpen, setShortcutsOpen] = useState(false)
   const [agentsOpen, setAgentsOpen] = useState(false)
+  const [devFixtureWorkspace, setDevFixtureWorkspace] = useState(false)
   const [collabFeed, setCollabFeed] = useState<CollaborationFeed | null>(null)
   const [agentError, setAgentError] = useState('')
   const stageRef = useRef<HTMLElement>(null)
@@ -402,6 +403,7 @@ export function App() {
     window.__agentDesignBenchmark = {
       runTrace,
       runPointerTrace,
+      openDevFixture: () => setDevFixtureWorkspace(true),
       inspect: (nodeId?: string) => ({
         revision: history.present.revision,
         selection: [...history.present.selection],
@@ -479,7 +481,7 @@ export function App() {
       </dl>
       <button type="button" onClick={() => setShortcutsOpen(false)}>Close</button>
     </div>}
-    {desktopHost() && !activeProject ? <section className="project-entry" aria-label="Open a project">
+    {desktopHost() && !activeProject && !devFixtureWorkspace ? <section className="project-entry" aria-label="Open a project">
       <div className="entry-copy">
         <span className="entry-mark" aria-hidden="true">A</span>
         <p className="eyebrow">Agent Design workspace</p>
@@ -570,6 +572,7 @@ declare global {
     __agentDesignBenchmark?: {
       runTrace: (frames?: number) => Promise<{ frames: number; averageFrameMs: number; p95FrameMs: number; droppedFrameRatio: number }>
       runPointerTrace: (frames?: number) => Promise<{ frames: number; averageLatencyMs: number; p95LatencyMs: number; overBudgetRatio: number; revisionDelta: number }>
+      openDevFixture: () => void
       inspect: (nodeId?: string) => { revision: number; selection: string[]; historyLength: number; tokenSetId: string; node: unknown }
     }
   }

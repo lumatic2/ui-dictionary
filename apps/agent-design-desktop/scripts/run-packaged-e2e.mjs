@@ -451,8 +451,11 @@ try {
   const benchmarkUserData = join(temporaryRoot, 'benchmark-user-data')
   benchmarkApp = await launch(benchmarkUserData)
   const benchmarkPage = await benchmarkApp.firstWindow()
-  await benchmarkPage.waitForFunction(() => typeof window.__agentDesignBenchmark?.runPointerTrace === 'function')
-  await benchmarkPage.getByTestId('fixture-size').selectOption('5000')
+  await benchmarkPage.waitForFunction(() => typeof window.__agentDesignBenchmark?.openDevFixture === 'function')
+  await benchmarkPage.evaluate(() => window.__agentDesignBenchmark.openDevFixture())
+  const fixtureSize = benchmarkPage.getByTestId('fixture-size')
+  await fixtureSize.waitFor()
+  await fixtureSize.selectOption('5000')
   await benchmarkPage.waitForFunction(() => document.querySelectorAll('[data-canvas-id]').length === 5000)
   const gpuState = await benchmarkPage.getByTestId('editor-plane').getAttribute('data-editor-plane')
   const traces = []

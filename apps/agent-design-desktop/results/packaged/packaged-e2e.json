@@ -3,7 +3,7 @@
   "classification": "unsigned-development",
   "runtime": "Electron packaged Windows x64 application",
   "project": {
-    "trustedProjectIdRedacted": "34fcd57cefa1",
+    "trustedProjectIdRedacted": "a9cc8d1fa9ba",
     "importedSource": "src/App.tsx"
   },
   "security": {
@@ -27,7 +27,7 @@
   "roundTrip": {
     "humanEdit": true,
     "watcherEdit": true,
-    "watcherVisibleMs": 130.15480000000002,
+    "watcherVisibleMs": 124.27509999999984,
     "finalLabel": "Watcher packaged update"
   },
   "recovery": {
@@ -35,40 +35,40 @@
     "revisionAfterCrashRecovery": 5,
     "restartRevision": 5,
     "differentPixels": 0,
-    "totalPixels": 809878
+    "totalPixels": 758588
   },
   "performance": {
     "gpuState": "dom",
     "traces": [
       {
         "frames": 60,
-        "averageLatencyMs": 5.794999999354292,
-        "p95LatencyMs": 11.5,
+        "averageLatencyMs": 6.676666679183644,
+        "p95LatencyMs": 11.500000023841835,
+        "overBudgetRatio": 0.016666666666666666,
+        "revisionDelta": 1
+      },
+      {
+        "frames": 60,
+        "averageLatencyMs": 6.356666679978385,
+        "p95LatencyMs": 12.099999999999909,
         "overBudgetRatio": 0.03333333333333333,
         "revisionDelta": 1
       },
       {
         "frames": 60,
-        "averageLatencyMs": 4.0433333340784054,
-        "p95LatencyMs": 8.299999994039354,
-        "overBudgetRatio": 0.016666666666666666,
-        "revisionDelta": 1
-      },
-      {
-        "frames": 60,
-        "averageLatencyMs": 4.238333333879723,
-        "p95LatencyMs": 8.200000005960646,
-        "overBudgetRatio": 0.016666666666666666,
+        "averageLatencyMs": 5.251666677892209,
+        "p95LatencyMs": 9.5,
+        "overBudgetRatio": 0,
         "revisionDelta": 1
       }
     ],
-    "p95WorstMs": 11.5,
+    "p95WorstMs": 12.099999999999909,
     "targetMs": 16,
     "fallbackState": "dom",
     "fallbackTrace": {
       "frames": 20,
-      "averageLatencyMs": 4.645000000149025,
-      "p95LatencyMs": 8.300000005960555,
+      "averageLatencyMs": 3.2450000083446637,
+      "p95LatencyMs": 8.199999999999818,
       "overBudgetRatio": 0,
       "revisionDelta": 1
     }

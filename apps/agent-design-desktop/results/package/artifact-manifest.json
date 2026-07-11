@@ -22,31 +22,31 @@
       "name": "portable-executable",
       "file": "out/Agent Design-win32-x64/AgentDesign.exe",
       "bytes": 225697792,
-      "sha256": "597dc1e931417fae722ae7f7bf71d59aa22908cc18de6425fa809a700681b6a3"
+      "sha256": "3bed6cc1282a16ffc8c49db26f4bcee0d36dc4b8fad694511f2b9abe38acd309"
     },
     {
       "name": "application-asar",
       "file": "out/Agent Design-win32-x64/resources/app.asar",
-      "bytes": 102498,
-      "sha256": "516c0c372db4f491c067787744a868a00bc476dc5d584e6000194aa7e5fd7693"
+      "bytes": 115269,
+      "sha256": "3f6c6776322c7349e3a3f517457048e13b791fe5e110801a64a54e2d8c30c25d"
     },
     {
       "name": "squirrel-installer",
       "file": "out/make/squirrel.windows/x64/AgentDesign-UnsignedDevelopment-Setup.exe",
-      "bytes": 140384768,
-      "sha256": "fdaa987a057cd812482d669d4d92c2c179beab41ceb2f66fe6b09737aa907b8e"
+      "bytes": 140398080,
+      "sha256": "17d49e90a81583dee4e696100b85bd750dbe3512d18b2a05a5b20a3600658560"
     },
     {
       "name": "squirrel-package",
       "file": "out/make/squirrel.windows/x64/agent_design-0.1.0-full.nupkg",
-      "bytes": 139298643,
-      "sha256": "ea986631f3c68a53b78d86f10489f3e36cb2354941908b3a4e865ee8b80b3a4b"
+      "bytes": 139312063,
+      "sha256": "e411dd7513162bffa444829badffcd7aa9619385145ff80ccda0d93bf2d2d78a"
     },
     {
       "name": "squirrel-releases",
       "file": "out/make/squirrel.windows/x64/RELEASES",
       "bytes": 83,
-      "sha256": "8d5dee84e23acfbcbf64a0d64f3267465258728a7193b1692e258ce412a55d6e"
+      "sha256": "219b9b96091aff7118d784c2ade801b926fd5eb3f5e5ee3dec57215a1ff41b51"
     }
   ]
 }
