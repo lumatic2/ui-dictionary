@@ -1,7 +1,7 @@
 # Horizon — Living Design System
 
-Date: 2026-07-12 (queued — H1 Canvas Production Environment 이후 활성화, 일부 수집 배치는 H1 후반과 병렬 가능)
-Status: queued
+Date: 2026-07-12 (2026-07-12 사용자 승인으로 활성화 — H1 Canvas Production Environment close 직후)
+Status: active
 
 ## Goal
 

@@ -279,6 +279,16 @@
         "claude:062b1016-2fb9-4e1b-9033-47cdf618addf"
       ],
       "completed": "2026-07-12"
+    },
+    {
+      "id": "RL",
+      "title": "Reference Loop Pipeline",
+      "status": "active",
+      "started": "2026-07-12",
+      "plan": "docs/plans/2026-07-12-rl-reference-loop-pipeline.md",
+      "session_ids": [
+        "claude:086e4b88-d743-44cd-b102-57183afa1b61"
+      ]
     }
   ]
 }
