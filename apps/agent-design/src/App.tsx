@@ -14,6 +14,7 @@ import {
 import { BrowserDocumentStore } from './browserStore'
 import { CanvasSurface } from './CanvasSurface'
 import { desktopHost, type DesktopBridgeStatus, type DesktopCanvasSnapshot, type DesktopCanvasSnapshotReason, type PreviewStatus, type TrustedFileSummary, type TrustedProjectSummary } from './desktopHost'
+import { ArrangementToolbar } from './ArrangementToolbar'
 import { InsertPalette } from './InsertPalette'
 import { LayersPanel } from './LayersPanel'
 import { PropertyInspector } from './PropertyInspector'
@@ -335,6 +336,7 @@ export function App() {
       <button type="button" aria-label="Zoom out" onClick={() => commit({ id: `zoom-out-${performance.now()}`, at: new Date().toISOString(), type: 'set-viewport', pan: history.present.viewport.pan, zoom: Math.max(0.25, history.present.viewport.zoom - 0.1) })}>−</button>
       <output className="zoom-value" aria-label="Canvas zoom">{Math.round(history.present.viewport.zoom * 100)}%</output>
       <button type="button" aria-label="Zoom in" onClick={() => commit({ id: `zoom-in-${performance.now()}`, at: new Date().toISOString(), type: 'set-viewport', pan: history.present.viewport.pan, zoom: Math.min(4, history.present.viewport.zoom + 0.1) })}>+</button>
+      <ArrangementToolbar document={history.present} onOperation={commit} />
       <span className="toolbar-spacer" />
       {desktopBridge && <>
         <button type="button" disabled={!activeProject} onClick={() => void togglePreview()}>{preview?.visible ? 'Hide preview' : 'Preview'}</button>

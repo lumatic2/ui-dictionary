@@ -1,7 +1,7 @@
 import { describe, expect, it } from 'vitest'
 import { createDocumentFixture, firstComponent } from './fixtures.js'
 import { applyOperation, commitOperation, createHistory, undo } from './operations.js'
-import { createInstanceNode, createPrimitiveNode, nextNodeId, planAlign, planDeleteSelection, planDistribute, planInsert, planInsertBounds, resolveInsertParent } from './commands.js'
+import { createInstanceNode, createPrimitiveNode, nextNodeId, planAlign, planDeleteSelection, planDistribute, planGroupSelection, planInsert, planInsertBounds, planTidyGap, planUngroup, resolveInsertParent } from './commands.js'
 
 const at = '2026-07-11T09:00:00.000Z'
 describe('creation commands', () => {
@@ -59,6 +59,36 @@ describe('creation commands', () => {
     expect(instance.kind).toBe('instance')
     expect(instance.kind === 'instance' && instance.componentId).toBe(component.id)
     expect(() => createInstanceNode(doc, 'node-00000', null, { x: 0, y: 0, width: 10, height: 10 })).toThrow('code component')
+  })
+  it('tidies gaps into an exact spacing chain', () => {
+    const doc = createDocumentFixture(1000); doc.selection = ['node-00001', 'node-00002', 'node-00003']
+    const tidied = applyOperation(doc, planTidyGap(doc, 'horizontal', 16, at))
+    const [a, b, c] = ['node-00001', 'node-00002', 'node-00003'].map((id) => tidied.nodes[id].bounds)
+    expect(b.x).toBe(a.x + a.width + 16)
+    expect(c.x).toBe(b.x + b.width + 16)
+    expect(b.y).toBe(doc.nodes['node-00002'].bounds.y)
+  })
+  it('groups siblings atomically, undoes once, and ungroups back in place', () => {
+    const doc = createDocumentFixture(1000); doc.selection = ['node-00001', 'node-00002']
+    const grouped = commitOperation(createHistory(doc), planGroupSelection(doc, at))
+    const groupId = grouped.present.selection[0]
+    expect(grouped.present.nodes[groupId]).toMatchObject({ kind: 'group', parentId: 'node-00000' })
+    expect(grouped.present.nodes[groupId].childIds).toEqual(['node-00001', 'node-00002'])
+    expect(grouped.present.nodes['node-00000'].childIds[0]).toBe(groupId)
+    expect(grouped.past).toHaveLength(1)
+    expect(undo(grouped).present.nodes[groupId]).toBeUndefined()
+
+    const ungrouped = commitOperation(grouped, planUngroup(grouped.present, at))
+    expect(ungrouped.present.nodes[groupId]).toBeUndefined()
+    expect(ungrouped.present.nodes['node-00001'].parentId).toBe('node-00000')
+    expect(ungrouped.present.selection).toEqual(['node-00001', 'node-00002'])
+  })
+  it('rejects cross-parent grouping and locked arrangement without mutation', () => {
+    const doc = createDocumentFixture(1000); doc.selection = ['node-00001', 'node-00101']
+    expect(() => planGroupSelection(doc, at)).toThrow('siblings')
+    doc.selection = ['node-00001', 'node-00002']; doc.nodes['node-00002'].locked = true
+    expect(() => planTidyGap(doc, 'horizontal', 16, at)).toThrow('locked')
+    expect(() => planGroupSelection(doc, at)).toThrow('locked')
   })
   it('rejects locked destructive commands without mutation', () => {
     const doc = createDocumentFixture(1000); doc.selection = ['node-00001']; doc.nodes['node-00001'].locked = true

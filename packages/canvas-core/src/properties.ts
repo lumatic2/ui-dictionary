@@ -48,8 +48,8 @@ export function validateNodePropertyEdit(document: CanvasDocument, edit: NodePro
   } else if (edit.scope === 'layout') {
     if (edit.key === 'mode' && (typeof edit.value !== 'string' || !layoutModes.has(edit.value as LayoutMode))) return 'invalid layout mode'
     if ((edit.key === 'horizontal' || edit.key === 'vertical') && (typeof edit.value !== 'string' || !sizingModes.has(edit.value as SizingMode))) return 'invalid sizing mode'
-    if (edit.key === 'gap' && (typeof edit.value !== 'number' || !Number.isFinite(edit.value) || edit.value < 0)) return 'invalid layout gap'
-    if (!['mode', 'horizontal', 'vertical', 'gap'].includes(edit.key)) return `unknown layout property ${edit.key}`
+    if ((edit.key === 'gap' || edit.key === 'padding') && (typeof edit.value !== 'number' || !Number.isFinite(edit.value) || edit.value < 0)) return `invalid layout ${edit.key}`
+    if (!['mode', 'horizontal', 'vertical', 'gap', 'padding'].includes(edit.key)) return `unknown layout property ${edit.key}`
   }
   return null
 }
@@ -59,6 +59,7 @@ export function readNodeProperty(node: CanvasNode, scope: NodePropertyScope, key
   if (scope === 'override' && node.kind === 'instance') return node.overrides[key]
   if (scope === 'variant' && node.kind === 'code-component') return node.variants[key]
   if (scope === 'token') return node.tokenBindings[key] ?? null
+  if (scope === 'layout' && key === 'padding') return node.layout.padding[0]
   if (scope === 'layout' && ['mode', 'horizontal', 'vertical', 'gap'].includes(key)) return node.layout[key as 'mode' | 'horizontal' | 'vertical' | 'gap']
   throw new Error(`property ${scope}.${key} is not available on ${node.kind}`)
 }
@@ -71,6 +72,7 @@ export function applyNodeProperty(document: CanvasDocument, edit: NodePropertyEd
   else if (edit.scope === 'override' && node.kind === 'instance') node.overrides[edit.key] = edit.value
   else if (edit.scope === 'variant' && node.kind === 'code-component') node.variants[edit.key] = String(edit.value)
   else if (edit.scope === 'token') node.tokenBindings[edit.key] = String(edit.value)
+  else if (edit.scope === 'layout' && edit.key === 'padding') node.layout.padding = [edit.value, edit.value, edit.value, edit.value] as [number, number, number, number]
   else if (edit.scope === 'layout') (node.layout as unknown as Record<string, PropValue>)[edit.key] = edit.value
 }
 
@@ -83,6 +85,8 @@ export function propertyFieldsForNode(node: CanvasNode): PropertyField[] {
     { scope: 'layout', key: 'mode', label: 'Layout', value: node.layout.mode, valueType: 'select', options: [...layoutModes] },
     { scope: 'layout', key: 'horizontal', label: 'Width', value: node.layout.horizontal, valueType: 'select', options: [...sizingModes] },
     { scope: 'layout', key: 'vertical', label: 'Height', value: node.layout.vertical, valueType: 'select', options: [...sizingModes] },
+    { scope: 'layout', key: 'gap', label: 'Gap', value: node.layout.gap, valueType: 'number' },
+    { scope: 'layout', key: 'padding', label: 'Padding', value: node.layout.padding[0], valueType: 'number' },
     ...Object.entries(node.tokenBindings).map(([key, value]): PropertyField => ({ scope: 'token', key, label: `Token · ${key}`, value, valueType: 'string' })),
   ]
   if (node.kind === 'code-component') {

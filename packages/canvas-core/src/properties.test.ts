@@ -34,6 +34,17 @@ describe('typed property runtime', () => {
     expect(() => applyOperation(document, { id: 'bad-mode', at, type: 'set-token-mode', tokenSetId: 'dark' })).toThrow('invalid token mode')
   })
 
+  it('applies uniform padding and gap through the layout scope', () => {
+    let document = createDocumentFixture(1000)
+    const component = firstComponent(document)
+    document = applyOperation(document, { id: 'gap', at, type: 'set-node-property', nodeId: component.id, scope: 'layout', key: 'gap', value: 12 })
+    document = applyOperation(document, { id: 'padding', at, type: 'set-node-property', nodeId: component.id, scope: 'layout', key: 'padding', value: 20 })
+    expect(firstComponent(document).layout.gap).toBe(12)
+    expect(firstComponent(document).layout.padding).toEqual([20, 20, 20, 20])
+    expect(propertyFieldsForNode(firstComponent(document)).map((field) => `${field.scope}.${field.key}`)).toEqual(expect.arrayContaining(['layout.gap', 'layout.padding']))
+    expect(() => applyOperation(document, { id: 'bad-padding', at, type: 'set-node-property', nodeId: component.id, scope: 'layout', key: 'padding', value: -1 })).toThrow('invalid layout padding')
+  })
+
   it('commits Korean text as one operation and restores it through undo/redo', () => {
     const document = createDocumentFixture(1000)
     const history = commitOperation(createHistory(document), { id: 'ime-1', at, type: 'update-text', nodeId: 'node-00007', text: '한글 조합 완료' })

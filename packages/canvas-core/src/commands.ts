@@ -84,6 +84,60 @@ export function planAlign(document: CanvasDocument, axis: 'left' | 'center-x' | 
   return { id: `align-${axis}-${at}`, at, type: 'transform-nodes', boundsById }
 }
 
+export function planTidyGap(document: CanvasDocument, axis: 'horizontal' | 'vertical', gap: number, at: string): CanvasOperation {
+  if (!(Number.isFinite(gap) && gap >= 0)) throw new Error('tidy gap must be a non-negative number')
+  const nodes = document.selection.map((id) => document.nodes[id]).sort((a, b) => axis === 'horizontal' ? a.bounds.x - b.bounds.x : a.bounds.y - b.bounds.y)
+  if (nodes.length < 2) throw new Error('tidy requires at least two nodes')
+  if (nodes.some((node) => node.locked)) throw new Error('cannot tidy locked selection')
+  let cursor = axis === 'horizontal' ? nodes[0].bounds.x : nodes[0].bounds.y
+  const boundsById: Record<NodeId, CanvasRect> = {}
+  for (const node of nodes) { boundsById[node.id] = { ...node.bounds, [axis === 'horizontal' ? 'x' : 'y']: cursor }; cursor += (axis === 'horizontal' ? node.bounds.width : node.bounds.height) + gap }
+  return { id: `tidy-${axis}-${at}`, at, type: 'transform-nodes', boundsById }
+}
+
+export function planGroupSelection(document: CanvasDocument, at: string): BatchOperation {
+  const nodes = document.selection.map((id) => {
+    const node = document.nodes[id]
+    if (!node) throw new Error(`missing node ${id}`)
+    return node
+  })
+  if (nodes.length < 2) throw new Error('group requires at least two nodes')
+  if (nodes.some((node) => node.locked)) throw new Error('cannot group locked selection')
+  const parentId = nodes[0].parentId
+  if (nodes.some((node) => node.parentId !== parentId)) throw new Error('group requires siblings under one parent')
+  const siblings = parentId === null ? document.rootIds : document.nodes[parentId]!.childIds
+  const ordered = [...nodes].sort((a, b) => siblings.indexOf(a.id) - siblings.indexOf(b.id))
+  const bounds = {
+    x: Math.min(...nodes.map((node) => node.bounds.x)),
+    y: Math.min(...nodes.map((node) => node.bounds.y)),
+    width: Math.max(...nodes.map((node) => node.bounds.x + node.bounds.width)) - Math.min(...nodes.map((node) => node.bounds.x)),
+    height: Math.max(...nodes.map((node) => node.bounds.y + node.bounds.height)) - Math.min(...nodes.map((node) => node.bounds.y)),
+  }
+  const group: CanvasNode = { id: nextNodeId(document, 'grouped'), kind: 'group', name: 'Group', parentId, childIds: [], bounds, layout: structuredClone(layout), visible: true, locked: false, tokenBindings: {}, source: null }
+  return batch(`group-${at}`, at, [
+    { id: `group:create:${at}`, at, type: 'create-node', node: group, parentId, index: Math.min(...ordered.map((node) => siblings.indexOf(node.id))) },
+    ...ordered.map((node, index) => ({ id: `group:reparent:${node.id}:${at}`, at, type: 'reparent-node' as const, nodeId: node.id, parentId: group.id, index })),
+    { id: `group:select:${at}`, at, type: 'select-nodes' as const, nodeIds: [group.id] },
+  ])
+}
+
+export function planUngroup(document: CanvasDocument, at: string): BatchOperation {
+  if (document.selection.length !== 1) throw new Error('ungroup requires exactly one selected group')
+  const group = document.nodes[document.selection[0]]
+  if (!group || group.kind !== 'group') throw new Error('ungroup requires a group node')
+  if (group.locked) throw new Error('cannot ungroup locked node')
+  if (!group.childIds.length) throw new Error('cannot ungroup an empty group')
+  if (group.childIds.some((id) => document.nodes[id]?.locked)) throw new Error('cannot ungroup locked children')
+  const siblings = group.parentId === null ? document.rootIds : document.nodes[group.parentId]!.childIds
+  const groupIndex = siblings.indexOf(group.id)
+  const children = [...group.childIds]
+  return batch(`ungroup-${group.id}-${at}`, at, [
+    ...children.map((childId, index) => ({ id: `ungroup:reparent:${childId}:${at}`, at, type: 'reparent-node' as const, nodeId: childId, parentId: group.parentId, index: groupIndex + 1 + index })),
+    { id: `ungroup:delete:${group.id}:${at}`, at, type: 'delete-node' as const, nodeId: group.id },
+    { id: `ungroup:select:${at}`, at, type: 'select-nodes' as const, nodeIds: children },
+  ])
+}
+
 export function planDistribute(document: CanvasDocument, axis: 'horizontal' | 'vertical', at: string): CanvasOperation {
   const nodes = document.selection.map((id) => document.nodes[id]).sort((a, b) => axis === 'horizontal' ? a.bounds.x - b.bounds.x : a.bounds.y - b.bounds.y)
   if (nodes.length < 3) throw new Error('distribute requires at least three nodes')
