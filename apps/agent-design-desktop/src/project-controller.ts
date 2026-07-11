@@ -1,6 +1,21 @@
 import type { CanvasDocument } from '@askewly/canvas-core' with { 'resolution-mode': 'import' }
 import { stat } from 'node:fs/promises'
 import { join } from 'node:path'
+
+async function deriveMarkedDocument(projectRoot: string, project: TrustedProjectSummary, at: string): Promise<CanvasDocument | null> {
+  try {
+    const { deriveDocumentFromProject } = await import('@askewly/agent-design-bridge')
+    const document = deriveDocumentFromProject(projectRoot, {
+      documentId: `agent-design-${project.id.slice('project:'.length)}`,
+      documentName: project.displayName,
+      at,
+    })
+    const hasMarkedComponents = Object.values(document.nodes).some((node) => node.kind === 'code-component')
+    return hasMarkedComponents ? document : null
+  } catch {
+    return null
+  }
+}
 import type { BridgeStartConfig } from './bridge-supervisor'
 import { TrustedProjectRegistry, type TrustedProjectSummary } from './project-registry'
 
@@ -84,14 +99,16 @@ export class ProjectController {
 
   private async open(project: TrustedProjectSummary): Promise<void> {
     const projectRoot = await this.registry.resolveRoot(project.id)
+    const now = this.now()
+    const derived = await deriveMarkedDocument(projectRoot, project, now)
     const candidate = join(projectRoot, 'src', 'App.tsx')
-    const appSource = await stat(candidate).then((entry) => entry.isFile() ? 'src/App.tsx' : null).catch(() => null)
+    const appSource = derived ? null : await stat(candidate).then((entry) => entry.isFile() ? 'src/App.tsx' : null).catch(() => null)
     await this.supervisor.stop()
     this.supervisor.start({
       projectId: project.id,
       projectRoot,
       recoveryRoot: this.registry.dataRoot(project.id),
-      document: initialDocument(project, this.now(), appSource),
+      document: derived ?? initialDocument(project, now, appSource),
     })
   }
 }

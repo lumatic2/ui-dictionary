@@ -75,4 +75,24 @@ describe('trusted project registry', () => {
     expect(starts[0]?.recoveryRoot).toBe(join(userData, 'projects', summary.id.slice('project:'.length)))
     expect(JSON.stringify(summary)).not.toContain(project)
   })
+
+  it('derives a multi-component document from marked sources when opening a project', async () => {
+    const { project, registry } = await fixture()
+    await mkdir(join(project, 'src', 'components'), { recursive: true })
+    await writeFile(join(project, 'src', 'components', 'Hero.tsx'), 'export function Hero() { return <section data-agent-design-id="hero" data-agent-design-name="Hero" data-agent-design-label="Hero headline">Hero</section> }\n')
+    await writeFile(join(project, 'src', 'components', 'Footer.tsx'), 'export function Footer() { return <footer data-agent-design-id="footer" data-agent-design-name="Footer" data-agent-design-label="Footer">Footer</footer> }\n')
+    const starts: BridgeStartConfig[] = []
+    const supervisor: ProjectSupervisor = {
+      stop: async () => undefined,
+      start: (config) => { starts.push(config) },
+    }
+    const controller = new ProjectController(registry, supervisor, () => '2026-07-12T04:00:00.000Z')
+    await controller.trustAndOpen(project)
+    expect(starts).toHaveLength(1)
+    const nodes = starts[0]!.document.nodes
+    const components = Object.values(nodes).filter((node) => node.kind === 'code-component')
+    expect(components.map((node) => node.name).sort()).toEqual(['Footer', 'Hero'])
+    expect(components.every((node) => node.source !== null && node.source.file.startsWith('src/components/'))).toBe(true)
+    expect(nodes['project-app']).toBeUndefined()
+  })
 })
