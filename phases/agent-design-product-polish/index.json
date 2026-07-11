@@ -3,8 +3,8 @@
   "phase": "agent-design-product-polish",
   "mode": "product",
   "steps": [
-    { "step": 1, "name": "states-resilience-sweep", "status": "pending" },
-    { "step": 2, "name": "a11y-density-consistency-sweep", "status": "pending" },
-    { "step": 3, "name": "packaged-representative-gate", "status": "pending" }
+    { "step": 1, "name": "states-resilience-sweep", "status": "completed", "summary": "LayersPanel 빈 문서 empty 메시지, InsertPalette Components 빈 카테고리 안내, connectionStatusLabel/desktopBridgeStateLabel로 raw 상태 문자열(error/disconnected/reconnecting/failed/backoff)을 사람 문구로 매핑(헤더 pill·footer·AgentPanel 공용). 신규 상태 테스트 포함 63/63. (sonnet 위임, Fable 독립 게이트)", "completed_at": "2026-07-12T02:40:00+09:00" },
+    { "step": 2, "name": "a11y-density-consistency-sweep", "status": "completed", "summary": "툴바를 role=group 섹션(Panels/Document/Zoom/Project/Help and panels)으로 묶고 flex-wrap — 게이트 중 발견한 결함: .app-shell 44px 고정 행이 wrap 시 캔버스 위로 넘침 → minmax(44px,auto)로 Fable이 직접 수정, 900px 브라우저 재검증(tmp/ux4-step2-toolbar-900px-fixed.png). shortcuts dialog aria-modal+열림 포커스+닫힘 시 opener 복원. 패널 패딩 12px 통일. 잔여 debt: dialog 풀 focus trap 미구현, toolbar-group divider가 spacer 경계에서 미적용(외관만). 63/63 + build PASS.", "completed_at": "2026-07-12T02:42:00+09:00" },
+    { "step": 3, "name": "packaged-representative-gate", "status": "completed", "summary": "make:win 재패키징(UX2 제작 루프+UX3 협업 패널+UX4 폴리시 첫 포함) 후 packaged E2E·installer lifecycle·verify:package·verify:packaged-evidence 전부 신선 아티팩트로 PASS. 자가교정 3회: ①기존 packaged-e2e.json이 AUC4 셸 산출(project-entry 도입 후 미재검증)임을 적발 — 5k 벤치마크가 project-entry에 막힘 ②trusted project 시드 시도는 bridge ready로 fixture 편집이 bridge 문서로 라우팅되어 실패 ③window.__agentDesignBenchmark.openDevFixture() API 추가(프로젝트 없이 dev fixture workspace 진입, diagnostics 분리-비제거 결정 정합)로 해소. 5k 예산 판정 2회 실패는 세션 부하 경합(52→17→12ms 추이)으로 판명, 최종 11.5/12.1/9.5ms 전 trace ≤16ms. 최종: E2E PASS(agent revisions 1/2, watcher 124.3ms), installer PASS, package 5 artifacts/9 fuses, evidence PASS(5k p95 12.10ms, restart drift 0, IME user-waived 유지). results/ 아티팩트 갱신 커밋.", "completed_at": "2026-07-12T03:05:00+09:00" }
   ]
 }
