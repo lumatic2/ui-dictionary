@@ -4604,6 +4604,13 @@ export const terms = [
         "note": "inline edit component pattern"
       }
     ],
+    "related": [
+      {
+        "id": "data-grid",
+        "relation": "compare",
+        "note": "inline edit는 제목·이름 같은 단일 필드를 그 자리에서 바로 고치는 패턴이고, data grid는 셀 단위 편집에 키보드 탐색(Tab/Enter/Escape)과 행/셀 단위 저장 상태 표시까지 포함하는 더 넓은 그리드 전체의 편집 계약이다"
+      }
+    ],
     "confidence": "medium"
   },
   {
@@ -6021,6 +6028,13 @@ export const terms = [
       {
         "source_id": "wai-aria-apg-patterns",
         "note": "grid pattern for interactive tabular widgets"
+      }
+    ],
+    "related": [
+      {
+        "id": "inline-edit",
+        "relation": "compare",
+        "note": "data grid는 키보드 탐색과 셀/행 단위 저장 상태를 포함하는 그리드 전체의 편집 계약이고, inline edit는 제목·이름 같은 단일 필드를 그 자리에서 바로 고치는 더 가벼운 패턴이다"
       }
     ],
     "confidence": "high"
@@ -8603,6 +8617,13 @@ export const terms = [
         "note": "activity and status display patterns"
       }
     ],
+    "related": [
+      {
+        "id": "audit-log",
+        "relation": "compare",
+        "note": "activity feed는 협업 맥락의 소셜/최근 활동 스트림이고, audit log는 권한·결제·설정 변경처럼 추적 가능성이 중요한 이벤트를 actor-action-target-timestamp로 엄격히 구조화한 컴플라이언스급 불변 기록이다"
+      }
+    ],
     "confidence": "high"
   },
   {
@@ -9423,21 +9444,25 @@ export const terms = [
       ]
     },
     "one_liner": "자주 쓰는 필터나 정렬 조합을 탭처럼 저장해 전환하는 패턴.",
-    "description": "전체, 내 작업, 보관됨처럼 목록의 보기 조건을 빠르게 바꾼다.",
+    "description": "전체, 내 작업, 보관됨처럼 목록의 보기 조건을 빠르게 바꾼다. 개인만 보는 뷰와 팀에 공유된 뷰를 함께 저장하는 내부 도구에서는 각 뷰에 personal/shared 배지를 붙여 소유 범위를 구분한다.",
     "visual_anatomy": [
       "tabs",
       "saved filter names",
       "active view",
-      "list count"
+      "list count",
+      "personal or shared scope badge",
+      "default view indicator"
     ],
     "when_to_use": [
-      "사용자가 같은 조건 조합을 반복해서 볼 때"
+      "사용자가 같은 조건 조합을 반복해서 볼 때",
+      "팀원과 같은 필터 조합을 공유해야 할 때"
     ],
     "anti_use": [
       "일회성 필터는 filter chip이나 faceted filter가 낫다"
     ],
     "prompt_phrases": [
-      "전체 내 작업 보관됨 saved view tabs를 테이블 위에 넣어줘"
+      "전체 내 작업 보관됨 saved view tabs를 테이블 위에 넣어줘",
+      "개인 뷰와 팀 공유 뷰를 구분하는 saved view tabs를 만들어줘"
     ],
     "asset": {
       "kind": "mini-mock",
@@ -9467,6 +9492,13 @@ export const terms = [
         ]
       ]
     },
+    "related": [
+      {
+        "id": "workspace-switcher",
+        "relation": "use-with",
+        "note": "saved view tabs의 personal/shared 스코프는 workspace switcher가 정하는 현재 팀·조직 컨텍스트 안에서 해석된다 — 뷰 자체를 전환하는 것과 작업 공간을 전환하는 것은 별개의 조작이다"
+      }
+    ],
     "confidence": "medium"
   },
   {
@@ -10225,6 +10257,13 @@ export const terms = [
       {
         "source_id": "atlassian-design-components",
         "note": "activity and status display patterns"
+      }
+    ],
+    "related": [
+      {
+        "id": "activity-feed",
+        "relation": "compare",
+        "note": "audit log는 컴플라이언스급 불변 기록으로 actor-action-target-timestamp를 엄격히 구조화하고, activity feed는 협업 맥락의 소셜/최근 활동 스트림으로 더 가볍게 보여준다"
       }
     ],
     "confidence": "medium"
@@ -30464,6 +30503,313 @@ export const terms = [
       ]
     },
     "confidence": "medium"
+  },
+  {
+    "kind": "block",
+    "id": "permission-matrix-editor",
+    "status": "draft",
+    "category": "data-display",
+    "group": "data-tables-lists",
+    "ko": {
+      "name": "권한 매트릭스 편집기",
+      "aliases": [
+        "permission matrix editor",
+        "역할 권한 매트릭스",
+        "권한표"
+      ]
+    },
+    "en": {
+      "name": "Permission matrix editor",
+      "aliases": [
+        "Role permission matrix",
+        "Access matrix editor"
+      ]
+    },
+    "one_liner": "역할을 열, 권한·모듈을 행으로 배치해 체크박스로 접근 범위를 부여하는 매트릭스 편집기.",
+    "description": "ERP, CRM, 내부 어드민 도구에서 역할별로 어떤 모듈에 어떤 권한을 허용할지 표 형태로 한눈에 편집하게 한다.",
+    "visual_anatomy": [
+      "role columns",
+      "permission rows grouped by module",
+      "checkbox or toggle cell",
+      "select-all in row/column",
+      "role inheritance indicator",
+      "duplicate role as base action",
+      "default-deny visualization"
+    ],
+    "when_to_use": [
+      "역할별 접근 범위를 여러 모듈에 걸쳐 한 화면에서 관리해야 할 때"
+    ],
+    "anti_use": [
+      "역할이 하나뿐이거나 권한이 단순하면 개별 permission-prompt나 role-badge 정도로 충분하다"
+    ],
+    "prompt_phrases": [
+      "역할을 열로 권한을 행으로 배치한 permission matrix editor를 만들어줘",
+      "체크박스로 모듈별 접근 권한을 켜고 끄는 권한 매트릭스를 넣어줘"
+    ],
+    "asset": {
+      "kind": "mini-mock",
+      "variant": "permission-matrix-editor",
+      "props": {
+        "roles": 3
+      }
+    },
+    "sources": [
+      {
+        "source_id": "ui-patterns-library",
+        "note": "matrix-style permission and access control editors in admin tools"
+      }
+    ],
+    "related": [
+      {
+        "id": "role-badge",
+        "relation": "compare",
+        "note": "role badge는 한 사용자의 역할을 작은 배지로 보여주는 표시 전용 요소이고, permission matrix editor는 여러 역할과 모듈 조합의 접근 권한 자체를 표 형태로 편집하는 도구다"
+      }
+    ],
+    "confidence": "medium"
+  },
+  {
+    "kind": "block",
+    "id": "danger-zone",
+    "status": "draft",
+    "category": "structure",
+    "group": "structure-sections",
+    "ko": {
+      "name": "위험 구역",
+      "aliases": [
+        "danger zone",
+        "삭제 구역",
+        "위험한 설정 섹션"
+      ]
+    },
+    "en": {
+      "name": "Danger zone",
+      "aliases": [
+        "Destructive settings section",
+        "Advanced destructive actions"
+      ]
+    },
+    "one_liner": "삭제, 소유권 이전, 아카이브처럼 되돌릴 수 없는 작업을 설정 페이지 하단에 격리해 담는 섹션.",
+    "description": "위치와 경고 색으로 실수 클릭을 구조적으로 어렵게 만들고, 각 행동은 다단계 확인을 거치게 한다.",
+    "visual_anatomy": [
+      "warning-bordered section",
+      "danger zone heading label",
+      "action row with short description",
+      "outlined destructive button",
+      "typed-confirmation modal",
+      "consequence explainer text"
+    ],
+    "when_to_use": [
+      "설정 페이지에 삭제·소유권 이전·아카이브처럼 되돌릴 수 없는 행동이 있을 때"
+    ],
+    "anti_use": [
+      "되돌릴 수 있는 일반 설정 변경까지 여기 넣으면 진짜 위험한 행동의 무게가 희석된다"
+    ],
+    "prompt_phrases": [
+      "설정 페이지 맨 아래에 삭제와 소유권 이전이 있는 danger zone 섹션을 만들어줘",
+      "위험한 설정을 빨간 테두리로 분리한 danger zone을 넣어줘"
+    ],
+    "asset": {
+      "kind": "mini-mock",
+      "variant": "danger-zone",
+      "props": {
+        "actions": 2
+      }
+    },
+    "sources": [
+      {
+        "source_id": "github-primer-components",
+        "note": "destructive settings section pattern"
+      }
+    ],
+    "related": [
+      {
+        "id": "destructive-confirmation",
+        "relation": "use-with",
+        "note": "danger zone의 각 행동 버튼은 즉시 실행되지 않고 destructive confirmation(이름 재입력 등 typed confirmation)을 거쳐야 한다"
+      }
+    ],
+    "confidence": "medium"
+  },
+  {
+    "kind": "block",
+    "id": "impersonation-session-banner",
+    "status": "draft",
+    "category": "feedback",
+    "group": "feedback-access-limits",
+    "ko": {
+      "name": "임퍼스네이션 세션 배너",
+      "aliases": [
+        "impersonation banner",
+        "로그인 대행 배너",
+        "대리 로그인 표시"
+      ]
+    },
+    "en": {
+      "name": "Impersonation session banner",
+      "aliases": [
+        "Login-as banner",
+        "Support impersonation banner"
+      ]
+    },
+    "one_liner": "지원팀이 다른 사용자로 임시 로그인했을 때 화면 전역에 고정 노출되는 경고 배너.",
+    "description": "임퍼스네이션 상태, 대상 사용자, 세션 종료 버튼을 항상 볼 수 있게 해 위험 모드를 구조적으로 인지시킨다.",
+    "visual_anatomy": [
+      "persistent top banner",
+      "impersonation icon or distinct color",
+      "impersonated user identity",
+      "remaining session time",
+      "exit or end session button"
+    ],
+    "when_to_use": [
+      "지원팀이 고객 계정으로 임시 로그인해 문제를 재현하거나 대신 조작할 때"
+    ],
+    "anti_use": [
+      "일반 계정 전환에는 account-switcher가 낫다 — impersonation banner는 위험·대리 모드 전용이다"
+    ],
+    "prompt_phrases": [
+      "지원팀이 다른 사용자로 로그인하면 상단에 impersonation banner를 고정해줘",
+      "세션 종료 버튼이 있는 대리 로그인 배너를 넣어줘"
+    ],
+    "asset": {
+      "kind": "mini-mock",
+      "variant": "impersonation-session-banner",
+      "props": {
+        "active": true
+      }
+    },
+    "sources": [
+      {
+        "source_id": "atlassian-design-components",
+        "note": "banner and flag communication for risk and mode states"
+      }
+    ],
+    "confidence": "medium"
+  },
+  {
+    "kind": "block",
+    "id": "config-environment-diff-view",
+    "status": "draft",
+    "category": "data-display",
+    "group": "data-tables-lists",
+    "ko": {
+      "name": "환경 설정 비교 뷰",
+      "aliases": [
+        "config diff view",
+        "environment diff",
+        "환경 설정 diff"
+      ]
+    },
+    "en": {
+      "name": "Environment / config diff view",
+      "aliases": [
+        "Config diff view",
+        "Environment comparison view"
+      ]
+    },
+    "one_liner": "staging/production 같은 두 환경의 설정값을 나란히 비교해 추가·삭제·변경을 색으로 구분하는 뷰.",
+    "description": "두 환경 사이의 설정 드리프트를 좌우 비교 레이아웃으로 보여주고, 시크릿 값은 마스킹한 채 다른 환경으로 동기화하는 행동을 함께 제공한다.",
+    "visual_anatomy": [
+      "two-column environment comparison",
+      "key name column",
+      "added or removed or changed color coding",
+      "masked secret value",
+      "sync or copy-to-other-environment action",
+      "missing-in-target warning"
+    ],
+    "when_to_use": [
+      "두 환경의 설정이나 변수 차이를 점검하고 동기화해야 할 때"
+    ],
+    "anti_use": [
+      "환경이 하나뿐이거나 값이 몇 개 안 되면 단순 목록으로 충분하다"
+    ],
+    "prompt_phrases": [
+      "staging과 production 설정을 좌우로 비교하는 config diff view를 만들어줘",
+      "값이 다르면 색으로 표시되는 환경 설정 비교 화면을 넣어줘"
+    ],
+    "asset": {
+      "kind": "mini-mock",
+      "variant": "config-environment-diff-view",
+      "props": {
+        "changed": 2
+      }
+    },
+    "sources": [
+      {
+        "source_id": "github-primer-components",
+        "note": "diff-style comparison view conventions"
+      }
+    ],
+    "confidence": "medium"
+  },
+  {
+    "kind": "block",
+    "id": "data-import-wizard-validation-preview",
+    "status": "draft",
+    "category": "selection",
+    "group": "selection-navigation",
+    "ko": {
+      "name": "데이터 임포트 검증 위저드",
+      "aliases": [
+        "import wizard",
+        "CSV 임포트 마법사",
+        "데이터 가져오기 검증 미리보기"
+      ]
+    },
+    "en": {
+      "name": "Data import wizard with validation preview",
+      "aliases": [
+        "CSV import wizard",
+        "Import validation wizard"
+      ]
+    },
+    "one_liner": "파일 업로드부터 컬럼 매핑, 행 단위 검증 미리보기, 결과 요약까지 이어지는 다단계 데이터 임포트 흐름.",
+    "description": "CSV·파일 업로드 이후 컬럼을 자동·수동으로 매핑하고, 제출 전 행·열 단위 오류를 미리보기에서 강조해 실패를 줄인다.",
+    "visual_anatomy": [
+      "file upload step",
+      "auto-detected column mapping table",
+      "manual remap control per column",
+      "when-blank default choice",
+      "preview table with row-level error highlighting",
+      "inline fix affordance",
+      "import summary count"
+    ],
+    "when_to_use": [
+      "사용자가 대량의 외부 데이터를 업로드해 시스템에 반영해야 할 때"
+    ],
+    "anti_use": [
+      "시작 방법 자체를 고르는 단계라면 import-data-choice가 더 적합하다 — 이 위저드는 방법을 고른 이후의 실제 임포트 실행 흐름이다"
+    ],
+    "prompt_phrases": [
+      "CSV 업로드 후 컬럼 매핑과 오류 미리보기가 있는 data import wizard를 만들어줘",
+      "행 단위 오류를 강조하는 임포트 검증 미리보기를 넣어줘"
+    ],
+    "asset": {
+      "kind": "mini-mock",
+      "variant": "data-import-wizard-validation-preview",
+      "props": {
+        "step": 3
+      }
+    },
+    "sources": [
+      {
+        "source_id": "material-m3-components",
+        "note": "progress and navigation pattern for multi-step flows"
+      }
+    ],
+    "related": [
+      {
+        "id": "wizard",
+        "relation": "compare",
+        "note": "wizard는 다단계 흐름의 일반 패턴이고, 이 항목은 파일 업로드→컬럼 매핑→행 단위 검증 미리보기→제출 요약으로 이어지는 데이터 임포트에 특화된 구체적 인스턴스다"
+      },
+      {
+        "id": "import-data-choice",
+        "relation": "compare",
+        "note": "import-data-choice는 CSV·직접 입력·외부 연결 중 시작 방법을 고르는 선택 UI이고, 이 위저드는 그 방법을 고른 이후 실제 파일을 매핑·검증·제출하는 다단계 실행 흐름이다"
+      }
+    ],
+    "confidence": "medium"
   }
 ] satisfies VocabularyTerm[]
 
@@ -30887,7 +31233,8 @@ export const groups = [
       "edge-swipe-back",
       "onboarding-pager",
       "scope-bar",
-      "navigation-menu"
+      "navigation-menu",
+      "data-import-wizard-validation-preview"
     ]
   },
   {
@@ -31070,7 +31417,8 @@ export const groups = [
       "content-section",
       "split-content-section",
       "logo-cloud-section",
-      "incentive-trust-strip"
+      "incentive-trust-strip",
+      "danger-zone"
     ]
   },
   {
@@ -31199,7 +31547,8 @@ export const groups = [
       "unsaved-changes-banner",
       "session-expired-dialog",
       "upgrade-prompt",
-      "quota-warning"
+      "quota-warning",
+      "impersonation-session-banner"
     ]
   },
   {
@@ -31282,7 +31631,9 @@ export const groups = [
       "drag-to-reorder-list",
       "structured-list",
       "contained-list",
-      "order-history-list"
+      "order-history-list",
+      "permission-matrix-editor",
+      "config-environment-diff-view"
     ]
   },
   {
