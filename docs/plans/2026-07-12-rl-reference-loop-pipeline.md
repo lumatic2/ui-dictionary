@@ -2,6 +2,7 @@
 
 Date: 2026-07-12
 Milestone: RL (`ROADMAP.md`, active)
+Status: approved (2026-07-12 사용자 "진행하자" — 배치 표면 3종 추천안 포함 승인, 백그라운드 에이전트 병렬 활용 지시)
 
 ## 위계
 
@@ -63,7 +64,8 @@ planning_gate:
 ## 결정 로그
 
 - [확정 2026-07-12] H2 Living Design System 활성화 + 첫 milestone RL — 사용자 지시("H2 활성화하고 ㄱㄱ").
-- [AI 추천 — 승인 질문에 포함] 3개 실증 배치 표면 = commerce / internal-tools / documentation (현재 가장 thin한 표면; mobile은 MS milestone에 유보).
+- [확정 2026-07-12] 3개 실증 배치 표면 = commerce / internal-tools / documentation — 사용자 "진행" 승인에 포함 (현재 가장 thin한 표면; mobile은 MS milestone에 유보).
+- [확정 2026-07-12] 실행 방식 = 백그라운드 에이전트 병렬 위임(sonnet 워커), 오케스트레이터는 게이트·통합 전담 — 사용자 지시.
 - [AI 기본값] 배치 규모 = 배치당 recipe 1~2종 + 용어 후보 10~20 (authoring-workflow의 "좁은 주제 1개, 후보 20개 내외" 관례 준수).
 - [AI 기본값] llms.txt FIXED_ASSETS는 RL에서 수동 등록(절차에 명시), 자동 발견화는 FW로 유보.
 - [기존 관례] git push는 세션 단위 일괄, 사전 요약 보고 + 사용자 승인 후.
