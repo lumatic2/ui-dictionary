@@ -1,0 +1,10 @@
+{
+  "project": "ui-dictionary",
+  "phase": "agent-design-product-polish",
+  "mode": "product",
+  "steps": [
+    { "step": 1, "name": "states-resilience-sweep", "status": "pending" },
+    { "step": 2, "name": "a11y-density-consistency-sweep", "status": "pending" },
+    { "step": 3, "name": "packaged-representative-gate", "status": "pending" }
+  ]
+}

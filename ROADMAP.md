@@ -12,16 +12,18 @@ Goal: turn Agent Design into a tool where humans and terminal agents build produ
 
 ## Active Milestones
 
-<!-- harness:milestone id="UX3" status="active" priority="P0" -->
+<!-- harness:milestone id="UX3" status="completed" priority="P0" evidence="docs/plans/2026-07-12-ux3-agent-collaboration-ux.md" -->
 ### UX3 — Agent Collaboration UX
 - DoD: users can bind selection context, understand Codex/Claude connection and work states, inspect changes/conflicts, and Undo from a human-readable collaboration surface; hybrid channel (MCP + thin CLI over one BridgeClient) is wired.
-- Evidence: `docs/plans/2026-07-12-ux3-agent-collaboration-ux.md` + `phases/agent-design-agent-collaboration-ux/` + dual-actor collaboration E2E.
+- Evidence: docs/plans/2026-07-12-ux3-agent-collaboration-ux.md
 - Gap: bridge/MCP round-trip works technically but is not expressed as an understandable in-product collaboration workflow; MCP does not reflect live selection; no CLI path for high-frequency operations.
-- Status: [ ]
+- Status: [x]
 
+- Completed at: 2026-07-12
+- Summary: Hybrid channel (MCP live context + agent-canvas CLI), collaboration feed contract on both host paths, AgentPanel surface, and dual-actor conflict-recovery E2E completed
 ## Next Candidates
 
-<!-- harness:milestone id="UX4" status="pending" priority="P1" -->
+<!-- harness:milestone id="UX4" status="active" priority="P0" -->
 ### UX4 — Product Polish And Validation
 - DoD: empty/loading/error/recovery states, accessibility, density, visual consistency, and a packaged representative workflow covering UX2+UX3 features pass the quality gate (resolves the UX2 packaged re-proof carry-over).
 - Evidence: future `docs/plans/` + `phases/agent-design-product-polish/` + packaged UX evidence.
