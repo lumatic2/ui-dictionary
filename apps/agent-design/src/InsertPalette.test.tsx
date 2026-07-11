@@ -76,7 +76,32 @@ function structure(view: ReturnType<typeof render>) {
   return JSON.parse(view.getByTestId('probe-structure').textContent ?? '{}')
 }
 
+function fixtureWithoutComponents(): CanvasDocument {
+  const createdAt = '2026-07-12T00:00:00.000Z'
+  return {
+    schemaVersion: 1,
+    id: 'insert-fixture-no-components',
+    name: 'Insert fixture without components',
+    revision: 0,
+    rootIds: ['frame-a'],
+    nodes: {
+      'frame-a': { ...baseNode('frame-a', null, []), kind: 'frame', clipContent: false } as CanvasNode,
+    },
+    selection: [],
+    viewport: { pan: { x: 0, y: 0 }, zoom: 1 },
+    tokenSetId: 'askewly.default',
+    metadata: { createdAt, updatedAt: createdAt, sourceRoot: '.' },
+  }
+}
+
 describe('InsertPalette', () => {
+  it('shows a helpful message in the Components category when the document has no code components', () => {
+    const view = render(<InsertPalette document={fixtureWithoutComponents()} onOperation={() => {}} />)
+    expect(view.getByText('Primitives')).toBeTruthy()
+    expect(view.getByText('Components')).toBeTruthy()
+    expect(view.getByTestId('insert-components-empty').textContent).toBe('No code components in this project yet. Insert primitives instead.')
+  })
+
   it('lists primitives and document components by category', () => {
     const view = render(<Harness />)
     expect(view.getByTestId('insert-primitive-frame').textContent).toBe('Frame')

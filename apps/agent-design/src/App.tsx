@@ -20,7 +20,7 @@ import {
 } from '@askewly/canvas-core'
 import { BrowserDocumentStore } from './browserStore'
 import { CanvasSurface } from './CanvasSurface'
-import { desktopHost, type DesktopBridgeStatus, type DesktopCanvasSnapshot, type DesktopCanvasSnapshotReason, type PreviewStatus, type TrustedFileSummary, type TrustedProjectSummary } from './desktopHost'
+import { desktopHost, type DesktopBridgeState, type DesktopBridgeStatus, type DesktopCanvasSnapshot, type DesktopCanvasSnapshotReason, type PreviewStatus, type TrustedFileSummary, type TrustedProjectSummary } from './desktopHost'
 import { AgentPanel } from './AgentPanel'
 import { ArrangementToolbar } from './ArrangementToolbar'
 import { InsertPalette } from './InsertPalette'
@@ -43,6 +43,25 @@ function demoOperations(): CanvasOperation[] {
 function percentile(values: number[], ratio: number) {
   const sorted = [...values].sort((a, b) => a - b)
   return sorted[Math.min(sorted.length - 1, Math.floor(sorted.length * ratio))] ?? 0
+}
+
+const CONNECTION_STATE_LABELS: Partial<Record<string, string>> = {
+  error: 'Connection error',
+  disconnected: 'Disconnected',
+  reconnecting: 'Reconnecting…',
+}
+
+export function connectionStatusLabel(state: string): string {
+  return CONNECTION_STATE_LABELS[state] ?? state
+}
+
+const DESKTOP_BRIDGE_STATE_LABELS: Partial<Record<DesktopBridgeState, string>> = {
+  backoff: 'Reconnecting…',
+  failed: 'Connection failed',
+}
+
+export function desktopBridgeStateLabel(state: DesktopBridgeState): string {
+  return DESKTOP_BRIDGE_STATE_LABELS[state] ?? state
 }
 
 export function App() {
@@ -69,6 +88,8 @@ export function App() {
   const [collabFeed, setCollabFeed] = useState<CollaborationFeed | null>(null)
   const [agentError, setAgentError] = useState('')
   const stageRef = useRef<HTMLElement>(null)
+  const shortcutsDialogRef = useRef<HTMLDivElement>(null)
+  const shortcutsOpenerRef = useRef<HTMLElement | null>(null)
   const liveConfig = useMemo(() => desktopHost() ? null : liveBridgeConfig(), [])
   const liveClient = useRef<LiveBridgeClient | null>(null)
   const pendingPaint = useRef<{ revision: number; started: number } | null>(null)
@@ -282,6 +303,18 @@ export function App() {
     return () => window.removeEventListener('keydown', onKey)
   }, [commit, fitTo, history.present, resetZoom, shortcutsOpen])
 
+  useEffect(() => {
+    if (shortcutsOpen) {
+      if (!shortcutsOpenerRef.current) {
+        shortcutsOpenerRef.current = document.activeElement instanceof HTMLElement ? document.activeElement : null
+      }
+      shortcutsDialogRef.current?.focus()
+    } else if (shortcutsOpenerRef.current) {
+      shortcutsOpenerRef.current.focus()
+      shortcutsOpenerRef.current = null
+    }
+  }, [shortcutsOpen])
+
   const undoCurrent = useCallback(() => {
     const host = desktopHost()
     if (host && desktopBridge?.state === 'ready') {
@@ -392,36 +425,44 @@ export function App() {
       <div className="header-controls">
         <span className={`workspace-health status-${desktopBridge?.state ?? connection}`}>
           <span className="health-dot" aria-hidden="true" />
-          {desktopBridge?.state === 'ready' || connection === 'connected' ? 'Ready' : desktopBridge?.state ?? connection}
+          {desktopBridge?.state === 'ready' || connection === 'connected' ? 'Ready' : desktopBridge ? desktopBridgeStateLabel(desktopBridge.state) : connectionStatusLabel(connection)}
         </span>
         {desktopBridge && activeProject && <button className="primary-action" type="button" onClick={() => void selectProject()}>Open project</button>}
       </div>
     </header>
     <nav className="document-actions" aria-label="Workspace toolbar">
-      <button type="button" aria-label="Toggle workspace navigation" aria-pressed={leftPanelOpen} onClick={() => setLeftPanelOpen((value) => !value)}>Sidebar</button>
-      <button type="button" data-testid="toggle-insert" aria-pressed={insertOpen} onClick={() => setInsertOpen((value) => !value)}>Insert</button>
-      <button type="button" data-testid="apply-demo" onClick={applyDemo}>Apply operation</button>
-      <button type="button" data-testid="undo" disabled={!liveConfig && !history.past.length} onClick={undoCurrent}>Undo</button>
-      <button type="button" data-testid="redo" disabled={!history.future.length} onClick={() => setHistory(redo)}>Redo</button>
-      <button type="button" data-testid="save-document" onClick={() => void save()}>Save</button>
-      <button type="button" data-testid="reload-document" onClick={() => void reload()}>Reload</button>
-      <button type="button" aria-label="Zoom out" onClick={() => commit({ id: `zoom-out-${performance.now()}`, at: new Date().toISOString(), type: 'set-viewport', pan: history.present.viewport.pan, zoom: Math.max(0.25, history.present.viewport.zoom - 0.1) })}>−</button>
-      <output className="zoom-value" aria-label="Canvas zoom">{Math.round(history.present.viewport.zoom * 100)}%</output>
-      <button type="button" aria-label="Zoom in" onClick={() => commit({ id: `zoom-in-${performance.now()}`, at: new Date().toISOString(), type: 'set-viewport', pan: history.present.viewport.pan, zoom: Math.min(4, history.present.viewport.zoom + 0.1) })}>+</button>
-      <button type="button" aria-label="Zoom to 100 percent" onClick={resetZoom}>1:1</button>
-      <button type="button" aria-label="Fit canvas" onClick={() => fitTo(documentContentBounds(history.present))}>Fit</button>
-      <button type="button" aria-label="Fit selection" disabled={!history.present.selection.length} onClick={() => fitTo(selectionBounds(history.present))}>Fit sel</button>
+      <div className="toolbar-group" role="group" aria-label="Panels">
+        <button type="button" aria-label="Toggle workspace navigation" aria-pressed={leftPanelOpen} onClick={() => setLeftPanelOpen((value) => !value)}>Sidebar</button>
+        <button type="button" data-testid="toggle-insert" aria-pressed={insertOpen} onClick={() => setInsertOpen((value) => !value)}>Insert</button>
+      </div>
+      <div className="toolbar-group" role="group" aria-label="Document">
+        <button type="button" data-testid="apply-demo" onClick={applyDemo}>Apply operation</button>
+        <button type="button" data-testid="undo" disabled={!liveConfig && !history.past.length} onClick={undoCurrent}>Undo</button>
+        <button type="button" data-testid="redo" disabled={!history.future.length} onClick={() => setHistory(redo)}>Redo</button>
+        <button type="button" data-testid="save-document" onClick={() => void save()}>Save</button>
+        <button type="button" data-testid="reload-document" onClick={() => void reload()}>Reload</button>
+      </div>
+      <div className="toolbar-group" role="group" aria-label="Zoom">
+        <button type="button" aria-label="Zoom out" onClick={() => commit({ id: `zoom-out-${performance.now()}`, at: new Date().toISOString(), type: 'set-viewport', pan: history.present.viewport.pan, zoom: Math.max(0.25, history.present.viewport.zoom - 0.1) })}>−</button>
+        <output className="zoom-value" aria-label="Canvas zoom">{Math.round(history.present.viewport.zoom * 100)}%</output>
+        <button type="button" aria-label="Zoom in" onClick={() => commit({ id: `zoom-in-${performance.now()}`, at: new Date().toISOString(), type: 'set-viewport', pan: history.present.viewport.pan, zoom: Math.min(4, history.present.viewport.zoom + 0.1) })}>+</button>
+        <button type="button" aria-label="Zoom to 100 percent" onClick={resetZoom}>1:1</button>
+        <button type="button" aria-label="Fit canvas" onClick={() => fitTo(documentContentBounds(history.present))}>Fit</button>
+        <button type="button" aria-label="Fit selection" disabled={!history.present.selection.length} onClick={() => fitTo(selectionBounds(history.present))}>Fit sel</button>
+      </div>
       <ArrangementToolbar document={history.present} onOperation={commit} />
       <span className="toolbar-spacer" />
-      {desktopBridge && <>
+      {desktopBridge && <div className="toolbar-group" role="group" aria-label="Project">
         <button type="button" disabled={!activeProject} onClick={() => void togglePreview()}>{preview?.visible ? 'Hide preview' : 'Preview'}</button>
         <button type="button" disabled={!activeProject} onClick={() => activeProject && void desktopHost()?.revealProject({ apiVersion: 1, projectId: activeProject.id })}>Explorer</button>
-      </>}
-      <button type="button" data-testid="toggle-agents" aria-pressed={agentsOpen} onClick={() => setAgentsOpen((value) => !value)}>Agents</button>
-      <button type="button" aria-haspopup="dialog" data-testid="open-shortcuts" onClick={() => setShortcutsOpen(true)}>Shortcuts</button>
-      <button type="button" aria-label="Toggle properties" aria-pressed={rightPanelOpen} onClick={() => setRightPanelOpen((value) => !value)}>Properties</button>
+      </div>}
+      <div className="toolbar-group" role="group" aria-label="Help and panels">
+        <button type="button" data-testid="toggle-agents" aria-pressed={agentsOpen} onClick={() => setAgentsOpen((value) => !value)}>Agents</button>
+        <button type="button" aria-haspopup="dialog" data-testid="open-shortcuts" onClick={(event) => { shortcutsOpenerRef.current = event.currentTarget; setShortcutsOpen(true) }}>Shortcuts</button>
+        <button type="button" aria-label="Toggle properties" aria-pressed={rightPanelOpen} onClick={() => setRightPanelOpen((value) => !value)}>Properties</button>
+      </div>
     </nav>
-    {shortcutsOpen && <div role="dialog" aria-label="Keyboard shortcuts" className="shortcuts-dialog" data-testid="shortcuts-dialog">
+    {shortcutsOpen && <div role="dialog" aria-label="Keyboard shortcuts" aria-modal="true" tabIndex={-1} ref={shortcutsDialogRef} className="shortcuts-dialog" data-testid="shortcuts-dialog">
       <h2>Keyboard shortcuts</h2>
       <dl>
         <div><dt>Delete / Backspace</dt><dd>Delete selection (toolbar: Delete)</dd></div>
@@ -499,7 +540,7 @@ export function App() {
         {agentsOpen && <AgentPanel
           document={history.present}
           feed={collabFeed}
-          connectionLabel={desktopBridge ? `desktop ${desktopBridge.state}` : connection}
+          connectionLabel={desktopBridge ? `desktop ${desktopBridgeStateLabel(desktopBridge.state)}` : connectionStatusLabel(connection)}
           error={agentError}
           onUndoLatest={undoCurrent}
         />}
@@ -511,10 +552,10 @@ export function App() {
       <output data-testid="persistence-status">{status}</output>
       <span>Revision {history.present.revision}</span>
       <span>{Object.keys(history.present.nodes).length.toLocaleString()} nodes</span>
-      <output className={`connection-status status-${connection}`} data-testid="bridge-status">{connection}{liveLatency === null ? '' : ` · ${liveLatency.toFixed(1)}ms`}</output>
+      <output className={`connection-status status-${connection}`} data-testid="bridge-status">{connectionStatusLabel(connection)}{liveLatency === null ? '' : ` · ${liveLatency.toFixed(1)}ms`}</output>
       {desktopBridge && <div className="desktop-bridge-controls">
         <output className={`connection-status status-${desktopBridge.state}`} data-testid="desktop-bridge-status">
-          desktop {desktopBridge.state}{desktopBridge.recoveryMode ? ` · ${desktopBridge.recoveryMode}` : ''} · restart {desktopBridge.restartCount}
+          desktop {desktopBridgeStateLabel(desktopBridge.state)}{desktopBridge.recoveryMode ? ` · ${desktopBridge.recoveryMode}` : ''} · restart {desktopBridge.restartCount}
         </output>
         <button type="button" disabled={desktopBridge.state !== 'ready'} onClick={() => void copyTerminalCommand('codex')}>Copy Codex</button>
         <button type="button" disabled={desktopBridge.state !== 'ready'} onClick={() => void copyTerminalCommand('claude')}>Copy Claude</button>

@@ -177,7 +177,9 @@ export function LayersPanel({ document, onOperation }: Props) {
   const focusTargetId = focusedId && document.nodes[focusedId] ? focusedId : document.selection[0] ?? rows[0]?.id
 
   return <div className="layers-panel" data-testid="layers-panel">
-    <div role="tree" aria-label="Layers" className="layers-tree">
+    {rows.length === 0
+      ? <p className="layers-empty" data-testid="layers-empty">No layers yet. Insert a frame to get started.</p>
+      : <div role="tree" aria-label="Layers" className="layers-tree">
       {rows.map((row, rowIndex) => {
         const node = document.nodes[row.id]
         const selected = document.selection.includes(row.id)
@@ -270,6 +272,6 @@ export function LayersPanel({ document, onOperation }: Props) {
           </span>
         </div>
       })}
-    </div>
+    </div>}
   </div>
 }

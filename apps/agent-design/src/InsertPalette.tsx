@@ -42,6 +42,8 @@ export function InsertPalette({ document, onOperation }: Props) {
     ]
   }, [document.nodes])
 
+  const hasComponents = useMemo(() => entries.some((entry) => entry.category === 'Components'), [entries])
+
   const visible = useMemo(() => {
     const needle = query.trim().toLowerCase()
     if (!needle) return entries
@@ -73,6 +75,12 @@ export function InsertPalette({ document, onOperation }: Props) {
       ? <p className="insert-empty" data-testid="insert-empty">No matches for “{query.trim()}”.</p>
       : categories.map((category) => {
         const items = visible.filter((entry) => entry.category === category)
+        if (category === 'Components' && items.length === 0 && !hasComponents) {
+          return <div key={category} className="insert-category">
+            <p className="rail-label">Components</p>
+            <p className="insert-category-empty" data-testid="insert-components-empty">No code components in this project yet. Insert primitives instead.</p>
+          </div>
+        }
         if (!items.length) return null
         return <div key={category} className="insert-category">
           <p className="rail-label">{category}</p>

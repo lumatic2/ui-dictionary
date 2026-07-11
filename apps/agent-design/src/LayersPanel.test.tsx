@@ -82,6 +82,13 @@ function dataTransfer() {
 }
 
 describe('LayersPanel', () => {
+  it('shows a short empty message instead of a bare tree when the document has no layers', () => {
+    const empty: CanvasDocument = { ...fixture(), rootIds: [], nodes: {} }
+    const view = render(<LayersPanel document={empty} onOperation={() => {}} />)
+    expect(view.queryByRole('tree')).toBeNull()
+    expect(view.getByTestId('layers-empty').textContent).toBe('No layers yet. Insert a frame to get started.')
+  })
+
   it('projects the document hierarchy as a collapsed accessible tree', () => {
     const view = render(<Harness />)
     expect(view.getByRole('tree', { name: 'Layers' })).toBeTruthy()

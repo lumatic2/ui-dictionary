@@ -1,6 +1,6 @@
 import { cleanup, fireEvent, render, waitFor } from '@testing-library/react'
 import { afterEach, beforeEach, describe, expect, it } from 'vitest'
-import { App } from './App'
+import { App, connectionStatusLabel, desktopBridgeStateLabel } from './App'
 
 beforeEach(() => {
   window.localStorage.clear()
@@ -260,6 +260,27 @@ describe('Agent Design persistence flow', () => {
     expect(view.getByRole('dialog', { name: 'Keyboard shortcuts' })).toBeTruthy()
   })
 
+  it('marks the shortcuts dialog as modal, moves focus into it, and restores focus to the opener on close', () => {
+    const view = render(<App />)
+    const opener = view.getByTestId('open-shortcuts')
+    fireEvent.click(opener)
+    const dialog = view.getByTestId('shortcuts-dialog')
+    expect(dialog.getAttribute('aria-modal')).toBe('true')
+    expect(document.activeElement).toBe(dialog)
+    fireEvent.click(view.getByRole('button', { name: 'Close' }))
+    expect(view.queryByTestId('shortcuts-dialog')).toBeNull()
+    expect(document.activeElement).toBe(opener)
+  })
+
+  it('groups the workspace toolbar into labeled sections so it can wrap at narrow widths', () => {
+    const view = render(<App />)
+    expect(view.getByRole('group', { name: 'Panels' })).toBeTruthy()
+    expect(view.getByRole('group', { name: 'Document' })).toBeTruthy()
+    expect(view.getByRole('group', { name: 'Zoom' })).toBeTruthy()
+    expect(view.getByRole('group', { name: 'Arrange selection' })).toBeTruthy()
+    expect(view.getByRole('group', { name: 'Help and panels' })).toBeTruthy()
+  })
+
   it('completes a representative creation workflow from insert to reload continuity', async () => {
     const view = render(<App />)
     const viewport = view.getByTestId('canvas-viewport')
@@ -330,5 +351,22 @@ describe('Agent Design persistence flow', () => {
     expect(text.textContent).toBe('한글 조합 완료')
     fireEvent.click(view.getByTestId('undo'))
     expect(text.textContent).toBe('한글 캔버스 입력')
+  })
+})
+
+describe('connection status labels', () => {
+  it('humanizes raw connection state strings for error, disconnected, and reconnecting', () => {
+    expect(connectionStatusLabel('offline')).toBe('offline')
+    expect(connectionStatusLabel('connected')).toBe('connected')
+    expect(connectionStatusLabel('error')).toBe('Connection error')
+    expect(connectionStatusLabel('disconnected')).toBe('Disconnected')
+    expect(connectionStatusLabel('reconnecting')).toBe('Reconnecting…')
+  })
+
+  it('humanizes raw desktop bridge state strings while keeping ready readable as-is', () => {
+    expect(desktopBridgeStateLabel('ready')).toBe('ready')
+    expect(desktopBridgeStateLabel('idle')).toBe('idle')
+    expect(desktopBridgeStateLabel('failed')).toBe('Connection failed')
+    expect(desktopBridgeStateLabel('backoff')).toBe('Reconnecting…')
   })
 })
