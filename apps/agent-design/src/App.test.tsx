@@ -96,6 +96,17 @@ describe('Agent Design persistence flow', () => {
     expect(node1.style.left).toBe('148px')
   })
 
+  it('opens the insert palette from the toolbar and inserts as one undoable entry', () => {
+    const view = render(<App />)
+    fireEvent.click(view.getByTestId('toggle-insert'))
+    fireEvent.click(view.getByTestId('insert-primitive-frame'))
+    expect(view.getByTestId('document-revision').textContent).toBe('1')
+    expect(view.getByTestId('selection-count').textContent).toBe('1')
+    expect(view.getByTestId('insert-feedback').textContent).toBe('Frame inserted into Node 0')
+    fireEvent.click(view.getByTestId('undo'))
+    expect(view.getByTestId('document-revision').textContent).toBe('0')
+  })
+
   it('synchronizes selection between canvas and layers tree', () => {
     const view = render(<App />)
     const node7 = view.container.querySelector('[data-canvas-id="node-00007"]')

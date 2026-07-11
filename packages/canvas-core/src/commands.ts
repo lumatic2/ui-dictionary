@@ -1,4 +1,4 @@
-import type { CanvasDocument, CanvasNode, CanvasRect, NodeId } from './types.js'
+import type { CanvasDocument, CanvasNode, CanvasRect, CanvasSize, NodeId } from './types.js'
 import type { BatchOperation, CanvasOperation } from './operations.js'
 
 const layout = { mode: 'absolute' as const, horizontal: 'fixed' as const, vertical: 'fixed' as const, gap: 0, padding: [0, 0, 0, 0] as [number, number, number, number] }
@@ -15,6 +15,36 @@ export function createPrimitiveNode(document: CanvasDocument, kind: 'frame' | 'g
   if (kind === 'frame') return { ...base, kind, clipContent: false }
   if (kind === 'text') return { ...base, kind, text: 'Text', textStyle: { fontFamily: 'Geist, sans-serif', fontSize: 16, fontWeight: 400, lineHeight: 24 } }
   return { ...base, kind }
+}
+
+export function createInstanceNode(document: CanvasDocument, componentId: NodeId, parentId: NodeId | null, bounds: CanvasRect): CanvasNode {
+  const component = document.nodes[componentId]
+  if (!component || component.kind !== 'code-component') throw new Error(`missing code component ${componentId}`)
+  const id = nextNodeId(document)
+  return { id, kind: 'instance', name: component.name, parentId, childIds: [], bounds: { ...bounds }, layout: structuredClone(layout), visible: true, locked: false, tokenBindings: {}, source: null, componentId, overrides: {} }
+}
+
+export function resolveInsertParent(document: CanvasDocument): NodeId | null {
+  if (document.selection.length !== 1) return null
+  const node = document.nodes[document.selection[0]]
+  if (!node || node.locked) return null
+  return node.kind === 'frame' || node.kind === 'group' || node.kind === 'code-component' ? node.id : null
+}
+
+export function planInsertBounds(document: CanvasDocument, parentId: NodeId | null, size: CanvasSize): CanvasRect {
+  if (parentId === null) return { x: 40, y: 40, width: size.width, height: size.height }
+  const parent = document.nodes[parentId]
+  if (!parent) throw new Error(`missing parent ${parentId}`)
+  return { x: parent.bounds.x + 24, y: parent.bounds.y + 24, width: size.width, height: size.height }
+}
+
+export function planInsert(document: CanvasDocument, node: CanvasNode, at: string): BatchOperation {
+  if (node.parentId && !document.nodes[node.parentId]) throw new Error(`missing parent ${node.parentId}`)
+  const index = node.parentId === null ? document.rootIds.length : document.nodes[node.parentId]!.childIds.length
+  return batch(`insert-${node.id}-${at}`, at, [
+    { id: `insert:create:${node.id}:${at}`, at, type: 'create-node', node: structuredClone(node), parentId: node.parentId, index },
+    { id: `insert:select:${node.id}:${at}`, at, type: 'select-nodes', nodeIds: [node.id] },
+  ])
 }
 
 function childrenDepthFirst(document: CanvasDocument, id: NodeId): NodeId[] {

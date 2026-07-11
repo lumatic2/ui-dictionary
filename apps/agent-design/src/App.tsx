@@ -14,6 +14,7 @@ import {
 import { BrowserDocumentStore } from './browserStore'
 import { CanvasSurface } from './CanvasSurface'
 import { desktopHost, type DesktopBridgeStatus, type DesktopCanvasSnapshot, type DesktopCanvasSnapshotReason, type PreviewStatus, type TrustedFileSummary, type TrustedProjectSummary } from './desktopHost'
+import { InsertPalette } from './InsertPalette'
 import { LayersPanel } from './LayersPanel'
 import { PropertyInspector } from './PropertyInspector'
 import type { EditorPlaneFailure } from './editorPlaneRuntime'
@@ -53,6 +54,7 @@ export function App() {
   const [projectError, setProjectError] = useState('')
   const [leftPanelOpen, setLeftPanelOpen] = useState(true)
   const [rightPanelOpen, setRightPanelOpen] = useState(true)
+  const [insertOpen, setInsertOpen] = useState(false)
   const liveConfig = useMemo(() => desktopHost() ? null : liveBridgeConfig(), [])
   const liveClient = useRef<LiveBridgeClient | null>(null)
   const pendingPaint = useRef<{ revision: number; started: number } | null>(null)
@@ -324,6 +326,7 @@ export function App() {
     </header>
     <nav className="document-actions" aria-label="Workspace toolbar">
       <button type="button" aria-label="Toggle workspace navigation" aria-pressed={leftPanelOpen} onClick={() => setLeftPanelOpen((value) => !value)}>Sidebar</button>
+      <button type="button" data-testid="toggle-insert" aria-pressed={insertOpen} onClick={() => setInsertOpen((value) => !value)}>Insert</button>
       <button type="button" data-testid="apply-demo" onClick={applyDemo}>Apply operation</button>
       <button type="button" data-testid="undo" disabled={!liveConfig && !history.past.length} onClick={undoCurrent}>Undo</button>
       <button type="button" data-testid="redo" disabled={!history.future.length} onClick={() => setHistory(redo)}>Redo</button>
@@ -396,6 +399,7 @@ export function App() {
         </details>
       </aside>}
       <section className="canvas-stage" aria-label="Design canvas">
+        {insertOpen && <InsertPalette document={history.present} onOperation={commit} />}
         <CanvasSurface document={history.present} editorPlaneFailure={failure} onOperation={commit} />
       </section>
       {rightPanelOpen && <PropertyInspector document={history.present} onOperation={commit} />}
