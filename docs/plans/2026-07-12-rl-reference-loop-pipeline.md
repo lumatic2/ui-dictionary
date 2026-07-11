@@ -69,3 +69,4 @@ planning_gate:
 - [AI 기본값] 배치 규모 = 배치당 recipe 1~2종 + 용어 후보 10~20 (authoring-workflow의 "좁은 주제 1개, 후보 20개 내외" 관례 준수).
 - [AI 기본값] llms.txt FIXED_ASSETS는 RL에서 수동 등록(절차에 명시), 자동 발견화는 FW로 유보.
 - [기존 관례] git push는 세션 단위 일괄, 사전 요약 보고 + 사용자 승인 후.
+- 남은 사용자 소유 결정: 없음.

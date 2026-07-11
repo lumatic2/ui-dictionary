@@ -1,0 +1,14 @@
+batch: ""            # <YYYYMMDD>-<surface>
+surface: ""          # pattern-taxonomy.md §2의 표면 id 중 하나
+candidates: []
+# candidate 스키마:
+# - id: kebab-slug
+#   name: Title Case Name
+#   pattern_group: pattern-taxonomy.md의 10 group 중 하나
+#   proposed_artifact: recipe | term | alias | related
+#   source: { tier: 0|1|2|3, url: "https://...", accessed: "YYYY-MM-DD" }
+#   summary: "1-2문장 — 무엇이고 언제 쓰나"
+#   anatomy: ["관찰된 구조 요소"]
+#   transferable: "흡수할 것"
+#   non_transferable: "복사하지 않을 것 (브랜드 아이덴티티 등)"
+#   dedup_hints: ["근접한 기존 recipe/term id"]
