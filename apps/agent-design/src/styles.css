@@ -125,7 +125,7 @@ button, select { font: inherit; }
 .canvas-node:focus-visible { outline: 2px solid var(--ad-action-primary); outline-offset: 2px; }
 .node-code-component { border-color: var(--ad-brand-violet); box-shadow: inset 0 0 0 1px rgb(139 92 246 / 0.2); }
 .node-instance { border-color: #0f766e; } /* token-exception: teal node-kind marker has no SSOT token */
-.node-text { background: rgb(255 255 255 / 0.9) !important; outline: none; }
+.node-text { outline: none; }
 .node-text:focus { box-shadow: 0 0 0 2px var(--ad-brand-violet); }
 .editor-plane { position: absolute; inset: 0; pointer-events: none; }
 .webgpu-editor-canvas { position: absolute; inset: 0; width: 100%; height: 100%; }

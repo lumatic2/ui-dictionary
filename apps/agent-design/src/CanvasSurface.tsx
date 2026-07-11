@@ -40,8 +40,12 @@ function sourceRef(node: CanvasNode) {
   return node.source ? `${node.source.file}:${node.source.startLine}` : undefined
 }
 
+function tokenMapFor(tokenSetId: string) {
+  return editorTokenMaps[tokenSetId as TokenSetId] ?? editorTokenMaps['askewly.default']
+}
+
 function resolveNodeBackground(tokenSetId: string, tokenBindings: CanvasNode['tokenBindings']): string {
-  const map = editorTokenMaps[tokenSetId as TokenSetId] ?? editorTokenMaps['askewly.default']
+  const map = tokenMapFor(tokenSetId)
   const tokenName = tokenBindings.background ?? FALLBACK_BACKGROUND_TOKEN
   return map[tokenName] ?? map[FALLBACK_BACKGROUND_TOKEN]
 }
@@ -54,6 +58,7 @@ function nodeStyle(node: CanvasNode, tokenSetId: string, previewBounds?: CanvasN
     width: bounds.width,
     height: bounds.height,
     background: resolveNodeBackground(tokenSetId, node.tokenBindings),
+    color: tokenMapFor(tokenSetId)['text.default'],
   }
 }
 
