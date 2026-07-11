@@ -2,7 +2,7 @@
 
 Date: 2026-07-11
 Milestone: UX2 (`ROADMAP.md`, pending)
-Status: approved 2026-07-11 — Steps 1-4 complete; Step 5 in progress
+Status: approved 2026-07-11 — Steps 1-5 complete; Step 6 in progress
 
 ## Hierarchy
 
@@ -38,7 +38,7 @@ Status: approved 2026-07-11 — Steps 1-4 complete; Step 5 in progress
   - Add align edges/centers, distribute horizontal/vertical, tidy gap, group/ungroup, layout mode, padding/gap, and sizing controls with multi-selection-aware disabled states.
   - Verify: planner/core tests plus inspector/toolbar tests cover exact bounds, responsive constraints, mixed selection, locked nodes, and one-history-entry commits.
 
-- [ ] Step 5 — Viewport and keyboard creation workflow
+- [x] Step 5 — Viewport and keyboard creation workflow
   - Add space-drag pan, wheel/pinch zoom around cursor, fit canvas/selection, zoom reset, Delete, duplicate, group, rename, layer traversal, and shortcut help.
   - Verify: pointer/keyboard tests cover focus-safe shortcuts, editable-field exclusions, zoom anchoring, bounded viewport, and accessible shortcut discovery.
 
