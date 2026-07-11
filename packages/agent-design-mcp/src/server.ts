@@ -1,6 +1,7 @@
 import { McpServer } from '@modelcontextprotocol/sdk/server/mcp.js'
 import { z } from 'zod'
 import { BridgeClient, BridgeRequestError, type AdapterActor } from './bridgeClient.js'
+import { LiveContextSubscription } from './liveContext.js'
 
 const operationSchema = z.object({
   id: z.string().min(1),
@@ -19,9 +20,24 @@ function failure(error: unknown) {
   return { ...result(value), isError: true }
 }
 
-export function createAgentDesignMcp(options: { bridgeUrl: string; token: string; actor: AdapterActor }): McpServer {
+export function createAgentDesignMcp(options: {
+  bridgeUrl: string
+  token: string
+  actor: AdapterActor
+  /** Inject a subscription (for tests) or pass `false` to disable the live cache and always use REST. */
+  liveContext?: LiveContextSubscription | false
+}): McpServer {
   const client = new BridgeClient({ url: options.bridgeUrl, token: options.token, actor: options.actor })
   const server = new McpServer({ name: `agent-design-${options.actor}`, version: '0.1.0' })
+  const liveContext = options.liveContext === false
+    ? null
+    : options.liveContext ?? new LiveContextSubscription({
+      bridgeUrl: options.bridgeUrl,
+      token: options.token,
+      fetchContext: () => client.context(),
+    })
+  liveContext?.start()
+  server.server.onclose = () => liveContext?.stop()
 
   server.registerTool('get_context', {
     title: 'Get Agent Design context',
@@ -29,6 +45,10 @@ export function createAgentDesignMcp(options: { bridgeUrl: string; token: string
     inputSchema: {},
     annotations: { readOnlyHint: true, destructiveHint: false, idempotentHint: true, openWorldHint: false },
   }, async () => {
+    if (liveContext?.isHealthy()) {
+      const cached = liveContext.snapshot()
+      if (cached) return result(cached as unknown as Record<string, unknown>)
+    }
     try { return result(await client.context()) } catch (error) { return failure(error) }
   })
 
