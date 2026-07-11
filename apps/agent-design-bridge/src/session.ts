@@ -1,7 +1,7 @@
 import { createHash, randomBytes } from 'node:crypto'
 import { EventEmitter } from 'node:events'
-import { existsSync, readFileSync, renameSync, rmSync, writeFileSync } from 'node:fs'
-import { isAbsolute, relative, resolve } from 'node:path'
+import { existsSync, mkdirSync, readFileSync, renameSync, rmSync, writeFileSync } from 'node:fs'
+import { dirname, isAbsolute, relative, resolve } from 'node:path'
 import {
   applyTransaction,
   BridgeProtocolError,
@@ -53,6 +53,21 @@ export interface SourcePatchRequest {
 type UndoRecord =
   | { kind: 'operations'; transaction: TransactionEnvelope; before: CanvasDocument }
   | { kind: 'source-patch'; request: SourcePatchRequest; beforeDocument: CanvasDocument; beforeContent: string; afterFileHash: string }
+
+/**
+ * Sentinel `beforeFileHash` a caller passes to `applySourcePatch` to request
+ * creating a file that does not exist yet, rather than patching one that
+ * does. RT Step 3: registry materialization needs to write a brand-new
+ * `src/components/<Export>.tsx` file, and the pre-existing source-patch
+ * channel only ever accepted patches to files already tracked in
+ * `allowedSourceFiles` (nodes the document already references) - there was
+ * no way to create a file through it at all. This sentinel is the minimal
+ * extension: it does not widen the trust boundary (the target path is still
+ * resolved through `resolveProjectPath`, still confined to the project
+ * root), it just allows the "before" state to legitimately be "absent"
+ * instead of requiring a real on-disk hash.
+ */
+export const NEW_FILE_HASH = 'new-file:absent'
 
 export function isLoopbackAddress(address: string | undefined): boolean {
   return address === '127.0.0.1' || address === '::1' || address === '::ffff:127.0.0.1'
@@ -227,19 +242,28 @@ export class BridgeSession {
     return file
   }
 
+  /** Resolves (and confines to the project root) a path for a patch that creates a new file. */
+  private newSourceFile(requested: string): string {
+    const file = resolveProjectPath(this.projectRoot, requested)
+    if (existsSync(file)) throw new BridgeProtocolError('INVALID_TRANSACTION', `source file already exists: ${requested}`, 400)
+    return file
+  }
+
   applySourcePatch(request: SourcePatchRequest): TransactionEvent {
     this.assertWritable()
     if (this.transactionIds.has(request.transactionId)) throw new BridgeProtocolError('INVALID_TRANSACTION', `duplicate transaction id: ${request.transactionId}`, 409)
     this.assertSourceGuard(request)
-    const file = this.sourceFile(request.file)
-    const beforeContent = readFileSync(file, 'utf8')
-    const currentFileHash = sourceHash(beforeContent)
+    const isNewFile = request.beforeFileHash === NEW_FILE_HASH
+    const file = isNewFile ? this.newSourceFile(request.file) : this.sourceFile(request.file)
+    const beforeContent = isNewFile ? '' : readFileSync(file, 'utf8')
+    const currentFileHash = isNewFile ? NEW_FILE_HASH : sourceHash(beforeContent)
     if (request.beforeFileHash !== currentFileHash) {
       throw new BridgeProtocolError('HASH_CONFLICT', `expected file hash ${currentFileHash}, received ${request.beforeFileHash}`, 409)
     }
     if (request.content === beforeContent) throw new BridgeProtocolError('INVALID_TRANSACTION', 'source patch does not change the file', 400)
     const stagedFile = `${file}.agent-design-${request.transactionId}.tmp`
     const backupFile = `${file}.agent-design-${request.transactionId}.bak`
+    if (isNewFile) mkdirSync(dirname(file), { recursive: true })
     writeFileSync(stagedFile, request.content, { encoding: 'utf8', flag: 'wx' })
     try {
       const verification = this.verifySource(file, stagedFile, request.content)
@@ -272,20 +296,27 @@ export class BridgeSession {
         verification,
         committedAt: request.at,
       }
-      renameSync(file, backupFile)
-      try {
+      if (isNewFile) {
         renameSync(stagedFile, file)
         this.auditSink(structuredClone(audit))
         this.persist(next, audit)
-      } catch (error) {
-        if (existsSync(file)) rmSync(file, { force: true })
-        renameSync(backupFile, file)
-        throw error
+      } else {
+        renameSync(file, backupFile)
+        try {
+          renameSync(stagedFile, file)
+          this.auditSink(structuredClone(audit))
+          this.persist(next, audit)
+        } catch (error) {
+          if (existsSync(file)) rmSync(file, { force: true })
+          renameSync(backupFile, file)
+          throw error
+        }
+        rmSync(backupFile, { force: true })
       }
-      rmSync(backupFile, { force: true })
       this.document = next
       this.cursor += 1
       this.transactionIds.add(request.transactionId)
+      if (isNewFile) this.allowedSourceFiles.add(file)
       this.committed.push({ kind: 'source-patch', request: structuredClone(request), beforeDocument, beforeContent, afterFileHash })
       this.audits.push(audit)
       this.events.push(event)
