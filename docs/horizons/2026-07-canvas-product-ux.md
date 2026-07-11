@@ -1,7 +1,7 @@
 # Horizon — Canvas Product UX
 
 Date: 2026-07-11
-Status: active — UX1·UX2 complete; UX3 Agent Collaboration UX pending (MCP vs CLI 채널 결정은 사용자 소유 — 재료: `docs/research/2026-07-12-agent-canvas-control-mcp-vs-cli.md`).
+Status: superseded 2026-07-12 — 사용자 승인으로 `2026-07-canvas-production-environment.md`에 확장 흡수. UX1·UX2는 여기서 완료(기록 보존), UX3·UX4는 새 horizon으로 승계.
 
 ## Goal
 

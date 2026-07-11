@@ -1,0 +1,12 @@
+{
+  "project": "ui-dictionary",
+  "phase": "agent-design-agent-collaboration-ux",
+  "mode": "product",
+  "steps": [
+    { "step": 1, "name": "mcp-live-context", "status": "pending" },
+    { "step": 2, "name": "thin-cli-bridgeclient", "status": "pending" },
+    { "step": 3, "name": "collaboration-feed-contract", "status": "pending" },
+    { "step": 4, "name": "collaboration-surface-ui", "status": "pending" },
+    { "step": 5, "name": "dual-actor-collaboration-e2e", "status": "pending" }
+  ]
+}

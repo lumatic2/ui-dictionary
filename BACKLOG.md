@@ -2,6 +2,13 @@
 
 ## Completed Horizons
 
+### 2026-07-12 - Canvas Product UX (superseded into Canvas Production Environment)
+
+- UX1 - Workspace Foundation: 제품형 workspace shell, project entry/recent, toolbar, adaptive panels + packaged 품질 게이트 (`phases/agent-design-workspace-foundation/step5.md`). Completed 2026-07-11.
+- UX2 - Visual Creation Workflow: 6 steps — canonical creation command layer(atomic batch), Layers tree projection, searchable Insert palette, align/distribute/tidy/group/ungroup + gap/padding, viewport(zoom anchor·space pan·fit)+단축키+help dialog, 대표 컴포지션 E2E. 게이트: core 52/52·renderer 45/45·desktop 42/42·package/packaged-evidence PASS(IME waiver 유지) (`docs/plans/2026-07-11-ux2-visual-creation-workflow.md`). Completed 2026-07-12.
+- Close: 정상 종결이 아니라 **확장 흡수** — 2026-07-12 horizon 스케일 재조정(사용자 판정: 기존 horizon들이 milestone 크기)으로 UX3·UX4를 `docs/horizons/2026-07-canvas-production-environment.md`(+CR/RT/AI)로 승계.
+- 크기 회고: UX2는 6 step/12 commits로 milestone-grade 적정. horizon 단위 인플레는 시퀀스 레벨에서 교정(3개 대형 horizon 큐 확립).
+
 ### 2026-07-10 - System Content Depth
 
 - SCD1 - Principles 증류: 근거 경로가 붙은 원칙 8개를 `principles.md` 정본으로 확정하고 llms.txt + 한국어 Docs 아티클에 공개, 사용자 승인·Chrome/Cloudflare 검증 완료 (`changesets/20260710-principles-gate-open/README.md`).

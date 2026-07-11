@@ -1,51 +1,60 @@
 # ROADMAP
 
-> Last updated: 2026-07-11
-> Status: Canvas Product UX — UX2 Visual Creation Workflow planning gate
+> Last updated: 2026-07-12
+> Status: Canvas Production Environment — UX3 Agent Collaboration UX planning
 > North star: Build Askewly Design as both a public reference website and an agent-usable implementation system.
 > line budget: <=150
 
 ## Current Horizon
 
-<!-- harness:goal id="canvas-product-ux" status="active" -->
-Goal: turn Agent Design from a proven canvas engine into a coherent professional editing product. Details: `docs/horizons/2026-07-canvas-product-ux.md`.
+<!-- harness:goal id="canvas-production-environment" status="active" -->
+Goal: turn Agent Design into a tool where humans and terminal agents build production UI together in real React projects. Details: `docs/horizons/2026-07-canvas-production-environment.md`.
 
 ## Active Milestones
 
-<!-- harness:milestone id="UX1" status="completed" priority="P0" evidence="phases/agent-design-workspace-foundation/step5.md" -->
-### UX1 — Workspace Foundation
-- DoD: a first-run user can open/resume a trusted project and understand the product shell, persistent editing controls, canvas/inspector panels, connection/recovery state, and constrained-width behavior without weakening existing canvas/desktop contracts.
-- Evidence: phases/agent-design-workspace-foundation/step5.md
-- Gap: the packaged application exposes working capabilities through an AUC/benchmark-oriented development shell rather than a coherent project-entry and editing workspace.
-- Status: [x]
-
-- Completed at: 2026-07-11
-- Summary: Product workspace entry, toolbar, adaptive panels, and integrated packaged quality gates completed
-## Next Candidates
-
-<!-- harness:milestone id="UX2" status="completed" priority="P0" evidence="docs/plans/2026-07-11-ux2-visual-creation-workflow.md" -->
-### UX2 — Visual Creation Workflow
-- DoD: layers, insertion, viewport, selection, alignment/spacing, properties, and shortcuts form one discoverable creation loop with representative UI composition evidence.
-- Evidence: docs/plans/2026-07-11-ux2-visual-creation-workflow.md
-- Gap: UX1 organizes the workspace but does not yet provide a production-grade layer/insertion/layout workflow.
-- Status: [x]
-
-- Completed at: 2026-07-12
-- Summary: Layers tree, insert palette, arrangement/layout controls, viewport+keyboard workflow, and representative creation E2E completed with full gate matrix
-<!-- harness:milestone id="UX3" status="pending" priority="P1" -->
+<!-- harness:milestone id="UX3" status="active" priority="P0" -->
 ### UX3 — Agent Collaboration UX
-- DoD: users can bind selection context, understand Codex/Claude connection and work states, inspect changes/conflicts, and Undo from a human-readable collaboration surface.
-- Evidence: future `docs/plans/` + `phases/agent-design-agent-collaboration-ux/` + dual-terminal collaboration E2E.
-- Gap: bridge/MCP round-trip works technically but is not expressed as an understandable in-product collaboration workflow.
+- DoD: users can bind selection context, understand Codex/Claude connection and work states, inspect changes/conflicts, and Undo from a human-readable collaboration surface; hybrid channel (MCP + thin CLI over one BridgeClient) is wired.
+- Evidence: `docs/plans/2026-07-12-ux3-agent-collaboration-ux.md` + `phases/agent-design-agent-collaboration-ux/` + dual-actor collaboration E2E.
+- Gap: bridge/MCP round-trip works technically but is not expressed as an understandable in-product collaboration workflow; MCP does not reflect live selection; no CLI path for high-frequency operations.
 - Status: [ ]
+
+## Next Candidates
 
 <!-- harness:milestone id="UX4" status="pending" priority="P1" -->
 ### UX4 — Product Polish And Validation
-- DoD: empty/loading/error/recovery states, accessibility, density, visual consistency, and packaged representative workflow pass the final Horizon quality gate.
+- DoD: empty/loading/error/recovery states, accessibility, density, visual consistency, and a packaged representative workflow covering UX2+UX3 features pass the quality gate (resolves the UX2 packaged re-proof carry-over).
 - Evidence: future `docs/plans/` + `phases/agent-design-product-polish/` + packaged UX evidence.
-- Gap: individual workflows need a final cross-product consistency and resilience pass before the canvas can be called a repeatable product experience.
+- Gap: individual workflows need a final cross-product consistency and resilience pass; packaged artifacts predate UX2 renderer.
 - Status: [ ]
+
+<!-- harness:milestone id="CR" status="pending" priority="P1" -->
+### CR — Component Registry
+- DoD: a registry of shadcn/ui, Tailwind primitives, and project components that the Insert palette v2 and agents (MCP/CLI) consume from one catalog; arbitrary npm browsing stays excluded.
+- Evidence: future `docs/plans/` + registry contract doc + palette/agent consumption tests.
+- Gap: insertable components are limited to document-known nodes; agents cannot discover a curated component vocabulary.
+- Status: [ ]
+
+<!-- harness:milestone id="RT" status="pending" priority="P1" -->
+### RT — Real-project Round-trip
+- DoD: open a real React repo, edit on canvas, and verify lossless source reflection with reopen continuity and concurrent agent edits.
+- Evidence: future `docs/plans/` + real-repo round-trip E2E evidence.
+- Gap: round-trip is proven on fixtures only; source mapping continuity in a live repo is unproven.
+- Status: [ ]
+
+<!-- harness:milestone id="AI" status="pending" priority="P2" -->
+### AI — Askewly Identity
+- DoD: editor UI reskinned on the Askewly token SSOT and the canvas consumes ui-dictionary recipes/tokens — first junction of the site system and the canvas.
+- Evidence: future `docs/plans/` + token-lint clean editor chrome + recipe consumption demo.
+- Gap: editor chrome uses ad-hoc styles; canvas does not consume the design system it belongs to.
+- Status: [ ]
+
+## Horizon Queue
+
+1. (active) Canvas Production Environment — `docs/horizons/2026-07-canvas-production-environment.md`
+2. Living Design System — `docs/horizons/2026-07-living-design-system.md` (일부 수집 배치는 H1 후반과 병렬 가능)
+3. Public Product & Monetization — `docs/horizons/2026-07-public-product-monetization.md`
 
 ## Archive Pointer
 
-Completed or archived milestone history lives in `BACKLOG.md`; the Agent-Native UI Canvas horizon (AUC0–AUC4) closed on 2026-07-11.
+Completed or archived milestone history lives in `BACKLOG.md`; Canvas Product UX (UX1–UX2, superseded into Canvas Production Environment) archived 2026-07-12; the Agent-Native UI Canvas horizon (AUC0–AUC4) closed on 2026-07-11.
