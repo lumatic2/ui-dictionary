@@ -50,7 +50,7 @@ Goal: turn Agent Design into a tool where humans and terminal agents build produ
 
 - Completed at: 2026-07-12
 - Summary: Marker-scan ingestion, lossless source reflection, registry materialization via guarded new-file channel, and reopen/concurrent continuity E2E completed
-<!-- harness:milestone id="AI" status="pending" priority="P2" -->
+<!-- harness:milestone id="AI" status="active" priority="P0" -->
 ### AI — Askewly Identity
 - DoD: editor UI reskinned on the Askewly token SSOT and the canvas consumes ui-dictionary recipes/tokens — first junction of the site system and the canvas.
 - Evidence: future `docs/plans/` + token-lint clean editor chrome + recipe consumption demo.

@@ -1,0 +1,11 @@
+{
+  "project": "ui-dictionary",
+  "phase": "agent-design-askewly-identity",
+  "mode": "product",
+  "steps": [
+    { "step": 1, "name": "editor-chrome-token-bridge", "status": "pending" },
+    { "step": 2, "name": "canvas-token-rendering", "status": "pending" },
+    { "step": 3, "name": "identity-polish-pass", "status": "pending" },
+    { "step": 4, "name": "h1-close-audit", "status": "pending" }
+  ]
+}
