@@ -5,6 +5,7 @@
   "type": "module",
   "scripts": {
     "dev": "vite --host 127.0.0.1",
+    "generate:tokens": "node scripts/generate-editor-tokens.mjs",
     "prebuild": "npm --prefix ../../packages/canvas-core run build",
     "build": "tsc -b && vite build",
     "pretest": "npm --prefix ../../packages/canvas-core run build",

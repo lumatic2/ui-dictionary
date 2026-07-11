@@ -17,3 +17,12 @@ describe('workspace toolbar density', () => {
     expect(rule?.[0]).toMatch(/flex:\s*0 0 auto/)
   })
 })
+
+describe('editor chrome color token discipline', () => {
+  it('has no raw hex color literals outside documented token-exception lines', () => {
+    const offendingLines = css
+      .split('\n')
+      .filter((line) => /#[0-9a-fA-F]{3,8}\b/.test(line) && !line.includes('token-exception'))
+    expect(offendingLines).toEqual([])
+  })
+})

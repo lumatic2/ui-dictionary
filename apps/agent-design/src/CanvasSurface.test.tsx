@@ -1,7 +1,8 @@
 import { cleanup, fireEvent, render, waitFor } from '@testing-library/react'
-import { createDocumentFixture } from '@askewly/canvas-core'
+import { applyOperation, createDocumentFixture, firstComponent } from '@askewly/canvas-core'
 import { afterEach, describe, expect, it } from 'vitest'
 import { CanvasSurface } from './CanvasSurface'
+import { editorTokenMaps, FALLBACK_BACKGROUND_TOKEN } from './editorTokens'
 
 afterEach(cleanup)
 
@@ -45,5 +46,38 @@ describe('semantic DOM content plane', () => {
     await waitFor(() => expect(view.getByTestId('editor-plane').getAttribute('data-editor-plane')).toBe('dom'))
     expect(view.getByTestId('editor-plane').getAttribute('data-editor-reason')).toContain(reason)
     expect(view.getByTestId('editor-selection')).toBeTruthy()
+  })
+})
+
+describe('token-driven node background', () => {
+  it('renders a bound node with its resolved SSOT color and updates it when set-token-mode switches to dark', () => {
+    const document = createDocumentFixture(1000)
+    const component = firstComponent(document)
+    const tokenName = component.tokenBindings.background
+    if (!tokenName) throw new Error('fixture component has no background binding')
+
+    const view = render(<CanvasSurface document={document} />)
+    const el = view.container.querySelector(`[data-canvas-id="${component.id}"]`)
+    if (!(el instanceof HTMLElement)) throw new Error('bound node missing')
+    expect(el.style.background).toBe(editorTokenMaps['askewly.default'][tokenName])
+
+    const darkened = applyOperation(document, { id: 'mode', at: new Date().toISOString(), type: 'set-token-mode', tokenSetId: 'askewly.dark' })
+    view.rerender(<CanvasSurface document={darkened} />)
+    const elAfter = view.container.querySelector(`[data-canvas-id="${component.id}"]`)
+    if (!(elAfter instanceof HTMLElement)) throw new Error('bound node missing after mode switch')
+    expect(elAfter.style.background).toBe(editorTokenMaps['askewly.dark'][tokenName])
+    expect(elAfter.style.background).not.toBe(editorTokenMaps['askewly.default'][tokenName])
+  })
+
+  it('falls back to the neutral surface token for a node with no background binding', () => {
+    const document = createDocumentFixture(1000)
+    const component = firstComponent(document)
+    const unbound = structuredClone(document)
+    delete unbound.nodes[component.id].tokenBindings.background
+
+    const view = render(<CanvasSurface document={unbound} />)
+    const el = view.container.querySelector(`[data-canvas-id="${component.id}"]`)
+    if (!(el instanceof HTMLElement)) throw new Error('unbound node missing')
+    expect(el.style.background).toBe(editorTokenMaps['askewly.default'][FALLBACK_BACKGROUND_TOKEN])
   })
 })

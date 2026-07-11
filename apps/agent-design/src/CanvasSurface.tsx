@@ -24,6 +24,7 @@ import {
 } from '@askewly/canvas-core'
 import { EditorPlane } from './EditorPlane'
 import type { EditorPlaneFailure } from './editorPlaneRuntime'
+import { editorTokenMaps, FALLBACK_BACKGROUND_TOKEN, type TokenSetId } from './editorTokens'
 
 interface Props {
   document: CanvasDocument
@@ -39,15 +40,20 @@ function sourceRef(node: CanvasNode) {
   return node.source ? `${node.source.file}:${node.source.startLine}` : undefined
 }
 
-function nodeStyle(node: CanvasNode, previewBounds?: CanvasNode['bounds']): React.CSSProperties {
-  const hue = Number.parseInt(node.id.slice(-3), 10) * 37 % 360
+function resolveNodeBackground(tokenSetId: string, tokenBindings: CanvasNode['tokenBindings']): string {
+  const map = editorTokenMaps[tokenSetId as TokenSetId] ?? editorTokenMaps['askewly.default']
+  const tokenName = tokenBindings.background ?? FALLBACK_BACKGROUND_TOKEN
+  return map[tokenName] ?? map[FALLBACK_BACKGROUND_TOKEN]
+}
+
+function nodeStyle(node: CanvasNode, tokenSetId: string, previewBounds?: CanvasNode['bounds']): React.CSSProperties {
   const bounds = previewBounds ?? node.bounds
   return {
     left: bounds.x,
     top: bounds.y,
     width: bounds.width,
     height: bounds.height,
-    background: `hsl(${hue} 36% 94%)`,
+    background: resolveNodeBackground(tokenSetId, node.tokenBindings),
   }
 }
 
@@ -56,6 +62,7 @@ interface CanvasNodeElementProps {
   selected: boolean
   dropTarget: boolean
   primary: boolean
+  tokenSetId: string
   previewBounds?: CanvasNode['bounds']
   onOperation?: (operation: CanvasOperation) => void
 }
@@ -86,7 +93,7 @@ function TextNodeElement({ node, shared, onOperation }: { node: Extract<CanvasNo
   />
 }
 
-const CanvasNodeElement = memo(function CanvasNodeElement({ node, selected, dropTarget, primary, previewBounds, onOperation }: CanvasNodeElementProps) {
+const CanvasNodeElement = memo(function CanvasNodeElement({ node, selected, dropTarget, primary, tokenSetId, previewBounds, onOperation }: CanvasNodeElementProps) {
   const shared = {
     'data-canvas-id': node.id,
     'data-parent-id': node.parentId ?? '',
@@ -99,7 +106,7 @@ const CanvasNodeElement = memo(function CanvasNodeElement({ node, selected, drop
     draggable: selected && !node.locked,
     tabIndex: primary ? 0 : -1,
     className: `canvas-node node-${node.kind}`,
-    style: nodeStyle(node, previewBounds),
+    style: nodeStyle(node, tokenSetId, previewBounds),
   }
   if (node.kind === 'text') {
     return <TextNodeElement node={node} shared={shared} onOperation={onOperation} />
@@ -131,7 +138,7 @@ export function CanvasSurface({ document, editorPlaneFailure = null, onOperation
   const selectedIds = useMemo(() => new Set(document.selection), [document.selection])
   const orderedNodes = useMemo(() => paintOrder(document).map((id) => document.nodes[id]), [document])
   const primaryId = document.selection.at(-1)
-  const nodeElements = useMemo(() => orderedNodes.map((node) => <CanvasNodeElement key={node.id} node={node} selected={selectedIds.has(node.id)} primary={primaryId === node.id} dropTarget={dropTargetId === node.id} previewBounds={previewBounds[node.id]} onOperation={onOperation} />), [dropTargetId, onOperation, orderedNodes, previewBounds, primaryId, selectedIds])
+  const nodeElements = useMemo(() => orderedNodes.map((node) => <CanvasNodeElement key={node.id} node={node} selected={selectedIds.has(node.id)} primary={primaryId === node.id} dropTarget={dropTargetId === node.id} tokenSetId={document.tokenSetId} previewBounds={previewBounds[node.id]} onOperation={onOperation} />), [document.tokenSetId, dropTargetId, onOperation, orderedNodes, previewBounds, primaryId, selectedIds])
   const activePan = panPreview ?? document.viewport.pan
   const transform = `translate(${activePan.x}px, ${activePan.y}px) scale(${document.viewport.zoom})`
   const canonicalSelection = Object.keys(previewBounds).length ? previewSelectionBounds(document, previewBounds) : selectionBounds(document)
