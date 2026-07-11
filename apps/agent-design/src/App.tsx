@@ -4,9 +4,16 @@ import {
   commitOperation,
   createDocumentFixture,
   createHistory,
+  documentContentBounds,
+  fitViewport,
   loadSnapshot,
+  planDeleteSelection,
+  planDuplicateSelection,
+  planGroupSelection,
+  planUngroup,
   redo,
   saveSnapshot,
+  selectionBounds,
   undo,
   type CanvasHistory,
   type CanvasOperation,
@@ -56,6 +63,8 @@ export function App() {
   const [leftPanelOpen, setLeftPanelOpen] = useState(true)
   const [rightPanelOpen, setRightPanelOpen] = useState(true)
   const [insertOpen, setInsertOpen] = useState(false)
+  const [shortcutsOpen, setShortcutsOpen] = useState(false)
+  const stageRef = useRef<HTMLElement>(null)
   const liveConfig = useMemo(() => desktopHost() ? null : liveBridgeConfig(), [])
   const liveClient = useRef<LiveBridgeClient | null>(null)
   const pendingPaint = useRef<{ revision: number; started: number } | null>(null)
@@ -214,6 +223,53 @@ export function App() {
     setStatus('changed')
   }, [acceptDesktopSnapshot, desktopBridge?.state])
 
+  const fitTo = useCallback((bounds: { x: number; y: number; width: number; height: number } | null) => {
+    if (!bounds || !(bounds.width > 0 && bounds.height > 0)) return
+    const rect = stageRef.current?.getBoundingClientRect()
+    const size = rect && rect.width > 0 && rect.height > 0 ? { width: rect.width, height: rect.height } : { width: 960, height: 640 }
+    commit({ id: `fit-${performance.now()}`, at: new Date().toISOString(), type: 'set-viewport', ...fitViewport(bounds, size) })
+  }, [commit])
+
+  const resetZoom = useCallback(() => {
+    commit({ id: `zoom-reset-${performance.now()}`, at: new Date().toISOString(), type: 'set-viewport', pan: history.present.viewport.pan, zoom: 1 })
+  }, [commit, history.present.viewport.pan])
+
+  useEffect(() => {
+    const isEditable = (target: EventTarget | null) =>
+      target instanceof HTMLElement && (target.isContentEditable || ['INPUT', 'TEXTAREA', 'SELECT'].includes(target.tagName))
+    const onKey = (event: KeyboardEvent) => {
+      if (event.isComposing) return
+      if (event.key === 'Escape' && shortcutsOpen) { setShortcutsOpen(false); return }
+      if (isEditable(event.target)) return
+      const present = history.present
+      const at = new Date().toISOString()
+      const dispatch = (plan: () => CanvasOperation) => { try { commit(plan()) } catch { /* planner rejected the selection */ } }
+      if ((event.key === 'Delete' || event.key === 'Backspace') && present.selection.length) {
+        event.preventDefault()
+        dispatch(() => planDeleteSelection(present, at))
+      } else if ((event.ctrlKey || event.metaKey) && event.key.toLowerCase() === 'd') {
+        event.preventDefault()
+        if (present.selection.length) dispatch(() => planDuplicateSelection(present, at))
+      } else if ((event.ctrlKey || event.metaKey) && event.key.toLowerCase() === 'g') {
+        event.preventDefault()
+        dispatch(() => event.shiftKey ? planUngroup(present, at) : planGroupSelection(present, at))
+      } else if ((event.ctrlKey || event.metaKey) && event.key === '0') {
+        event.preventDefault()
+        resetZoom()
+      } else if (event.shiftKey && event.code === 'Digit1') {
+        event.preventDefault()
+        fitTo(documentContentBounds(present))
+      } else if (event.shiftKey && event.code === 'Digit2') {
+        event.preventDefault()
+        fitTo(selectionBounds(present))
+      } else if (event.key === '?') {
+        setShortcutsOpen(true)
+      }
+    }
+    window.addEventListener('keydown', onKey)
+    return () => window.removeEventListener('keydown', onKey)
+  }, [commit, fitTo, history.present, resetZoom, shortcutsOpen])
+
   const undoCurrent = useCallback(() => {
     const host = desktopHost()
     if (host && desktopBridge?.state === 'ready') {
@@ -336,14 +392,35 @@ export function App() {
       <button type="button" aria-label="Zoom out" onClick={() => commit({ id: `zoom-out-${performance.now()}`, at: new Date().toISOString(), type: 'set-viewport', pan: history.present.viewport.pan, zoom: Math.max(0.25, history.present.viewport.zoom - 0.1) })}>−</button>
       <output className="zoom-value" aria-label="Canvas zoom">{Math.round(history.present.viewport.zoom * 100)}%</output>
       <button type="button" aria-label="Zoom in" onClick={() => commit({ id: `zoom-in-${performance.now()}`, at: new Date().toISOString(), type: 'set-viewport', pan: history.present.viewport.pan, zoom: Math.min(4, history.present.viewport.zoom + 0.1) })}>+</button>
+      <button type="button" aria-label="Zoom to 100 percent" onClick={resetZoom}>1:1</button>
+      <button type="button" aria-label="Fit canvas" onClick={() => fitTo(documentContentBounds(history.present))}>Fit</button>
+      <button type="button" aria-label="Fit selection" disabled={!history.present.selection.length} onClick={() => fitTo(selectionBounds(history.present))}>Fit sel</button>
       <ArrangementToolbar document={history.present} onOperation={commit} />
       <span className="toolbar-spacer" />
       {desktopBridge && <>
         <button type="button" disabled={!activeProject} onClick={() => void togglePreview()}>{preview?.visible ? 'Hide preview' : 'Preview'}</button>
         <button type="button" disabled={!activeProject} onClick={() => activeProject && void desktopHost()?.revealProject({ apiVersion: 1, projectId: activeProject.id })}>Explorer</button>
       </>}
+      <button type="button" aria-haspopup="dialog" data-testid="open-shortcuts" onClick={() => setShortcutsOpen(true)}>Shortcuts</button>
       <button type="button" aria-label="Toggle properties" aria-pressed={rightPanelOpen} onClick={() => setRightPanelOpen((value) => !value)}>Properties</button>
     </nav>
+    {shortcutsOpen && <div role="dialog" aria-label="Keyboard shortcuts" className="shortcuts-dialog" data-testid="shortcuts-dialog">
+      <h2>Keyboard shortcuts</h2>
+      <dl>
+        <div><dt>Delete / Backspace</dt><dd>Delete selection (toolbar: Delete)</dd></div>
+        <div><dt>Ctrl+D</dt><dd>Duplicate selection (toolbar: Duplicate)</dd></div>
+        <div><dt>Ctrl+G / Ctrl+Shift+G</dt><dd>Group / Ungroup (toolbar: Group, Ungroup)</dd></div>
+        <div><dt>Ctrl+0</dt><dd>Zoom to 100% (toolbar: 1:1)</dd></div>
+        <div><dt>Shift+1 / Shift+2</dt><dd>Fit canvas / Fit selection (toolbar: Fit, Fit sel)</dd></div>
+        <div><dt>Ctrl+Wheel</dt><dd>Zoom around cursor (toolbar: − / +)</dd></div>
+        <div><dt>Space+Drag</dt><dd>Pan the canvas</dd></div>
+        <div><dt>← / →</dt><dd>Traverse sibling layers on the canvas</dd></div>
+        <div><dt>Alt+↑ / Alt+↓</dt><dd>Reorder the selected layer</dd></div>
+        <div><dt>F2 / Double-click</dt><dd>Rename in the Layers panel</dd></div>
+        <div><dt>Escape</dt><dd>Clear selection or cancel a gesture</dd></div>
+      </dl>
+      <button type="button" onClick={() => setShortcutsOpen(false)}>Close</button>
+    </div>}
     {desktopHost() && !activeProject ? <section className="project-entry" aria-label="Open a project">
       <div className="entry-copy">
         <span className="entry-mark" aria-hidden="true">A</span>
@@ -400,7 +477,7 @@ export function App() {
           {desktopBridge && <button type="button" onClick={() => void desktopHost()?.exportDiagnostics({ apiVersion: 1 })}>Diagnostics</button>}
         </details>
       </aside>}
-      <section className="canvas-stage" aria-label="Design canvas">
+      <section className="canvas-stage" aria-label="Design canvas" ref={stageRef}>
         {insertOpen && <InsertPalette document={history.present} onOperation={commit} />}
         <CanvasSurface document={history.present} editorPlaneFailure={failure} onOperation={commit} />
       </section>

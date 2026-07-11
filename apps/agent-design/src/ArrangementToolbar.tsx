@@ -1,6 +1,8 @@
 import {
   planAlign,
+  planDeleteSelection,
   planDistribute,
+  planDuplicateSelection,
   planGroupSelection,
   planTidyGap,
   planUngroup,
@@ -46,5 +48,7 @@ export function ArrangementToolbar({ document, onOperation }: Props) {
     <button type="button" disabled={!canTidy} aria-label="Tidy horizontal gap" onClick={() => dispatch(() => planTidyGap(document, 'horizontal', TIDY_GAP, at()))}>Tidy</button>
     <button type="button" disabled={!canGroup} aria-label="Group selection" onClick={() => dispatch(() => planGroupSelection(document, at()))}>Group</button>
     <button type="button" disabled={!canUngroup} aria-label="Ungroup selection" onClick={() => dispatch(() => planUngroup(document, at()))}>Ungroup</button>
+    <button type="button" disabled={!nodes.length} aria-label="Duplicate selection" onClick={() => dispatch(() => planDuplicateSelection(document, at()))}>Duplicate</button>
+    <button type="button" disabled={!nodes.length || anyLocked} aria-label="Delete selection" onClick={() => dispatch(() => planDeleteSelection(document, at()))}>Delete</button>
   </div>
 }

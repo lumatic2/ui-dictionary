@@ -69,6 +69,48 @@ export function planDeleteSelection(document: CanvasDocument, at: string): Batch
   return batch(`delete-${at}`, at, ids.map((nodeId) => ({ id: `delete:${nodeId}:${at}`, at, type: 'delete-node', nodeId })))
 }
 
+export function planDuplicateSelection(document: CanvasDocument, at: string, offset = 16): BatchOperation {
+  const selected = new Set(document.selection)
+  const roots = document.selection.filter((id) => {
+    let parent = document.nodes[id]?.parentId ?? null
+    while (parent) { if (selected.has(parent)) return false; parent = document.nodes[parent]?.parentId ?? null }
+    return true
+  })
+  if (!roots.length) throw new Error('duplicate requires a selection')
+  const used = new Set(Object.keys(document.nodes))
+  let counter = 1
+  const nextId = (): NodeId => {
+    let id = `created-${String(counter).padStart(4, '0')}`
+    while (used.has(id)) { counter += 1; id = `created-${String(counter).padStart(4, '0')}` }
+    used.add(id)
+    return id
+  }
+  const siblingsOf = (parentId: NodeId | null) => parentId === null ? document.rootIds : document.nodes[parentId]!.childIds
+  const operations: Exclude<CanvasOperation, BatchOperation>[] = []
+  const duplicateRootIds: NodeId[] = []
+  for (const rootId of roots) {
+    const idMap = new Map<NodeId, NodeId>()
+    const subtree = childrenDepthFirst(document, rootId)
+    for (const id of subtree) idMap.set(id, nextId())
+    for (const id of subtree) {
+      const original = document.nodes[id]
+      const clone = structuredClone(original)
+      clone.id = idMap.get(id)!
+      clone.childIds = []
+      const isRoot = id === rootId
+      clone.parentId = isRoot ? original.parentId : idMap.get(original.parentId!)!
+      if (isRoot) clone.bounds = { ...clone.bounds, x: clone.bounds.x + offset, y: clone.bounds.y + offset }
+      const index = isRoot
+        ? siblingsOf(original.parentId).indexOf(id) + 1
+        : siblingsOf(original.parentId).indexOf(id)
+      operations.push({ id: `duplicate:${id}:${at}`, at, type: 'create-node', node: clone, parentId: clone.parentId, index })
+    }
+    duplicateRootIds.push(idMap.get(rootId)!)
+  }
+  operations.push({ id: `duplicate:select:${at}`, at, type: 'select-nodes', nodeIds: duplicateRootIds })
+  return batch(`duplicate-${at}`, at, operations)
+}
+
 export function planAlign(document: CanvasDocument, axis: 'left' | 'center-x' | 'right' | 'top' | 'center-y' | 'bottom', at: string): CanvasOperation {
   const nodes = document.selection.map((id) => document.nodes[id])
   if (nodes.length < 2) throw new Error('align requires at least two nodes')

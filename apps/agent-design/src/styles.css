@@ -73,6 +73,13 @@ button, select { font: inherit; }
 .arrangement-toolbar button { min-width: 26px; height: 26px; border: 0; border-radius: 5px; padding: 0 6px; background: transparent; color: #5e5b63; font-size: 11px; }
 .arrangement-toolbar button:hover:not(:disabled) { background: #eee9f6; color: #55208f; }
 .arrangement-toolbar button:disabled { color: #c6c4c9; }
+.shortcuts-dialog { position: fixed; z-index: 40; top: 110px; left: 50%; transform: translateX(-50%); width: 420px; max-height: 70vh; overflow: auto; border: 1px solid #deddd9; border-radius: 10px; padding: 18px; background: #fff; box-shadow: 0 16px 48px rgba(25, 24, 29, 0.18); }
+.shortcuts-dialog h2 { margin: 0 0 12px; font-size: 13px; }
+.shortcuts-dialog dl { display: grid; gap: 7px; margin: 0 0 14px; }
+.shortcuts-dialog dl div { display: flex; justify-content: space-between; gap: 16px; font-size: 11px; }
+.shortcuts-dialog dt { color: #55208f; font-family: ui-monospace, monospace; white-space: nowrap; }
+.shortcuts-dialog dd { margin: 0; color: #5e5b63; text-align: right; }
+.shortcuts-dialog > button { height: 28px; border: 1px solid #deddd9; border-radius: 5px; padding: 0 12px; background: #fff; font-size: 11px; }
 .project-rail select, .diagnostics-panel select { min-width: 0; width: 100%; height: 30px; border: 1px solid #deddd9; border-radius: 5px; padding: 0 7px; background: #fff; color: #444149; font-size: 10px; }
 .diagnostics-panel { margin-top: auto; border-top: 1px solid #deddd9; padding: 10px 4px 0; color: #77747b; font-size: 10px; }
 .diagnostics-panel summary { cursor: pointer; font-weight: 600; }

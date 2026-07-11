@@ -1,7 +1,7 @@
 import { describe, expect, it } from 'vitest'
 import { createDocumentFixture, firstComponent } from './fixtures.js'
 import { applyOperation, commitOperation, createHistory, undo } from './operations.js'
-import { createInstanceNode, createPrimitiveNode, nextNodeId, planAlign, planDeleteSelection, planDistribute, planGroupSelection, planInsert, planInsertBounds, planTidyGap, planUngroup, resolveInsertParent } from './commands.js'
+import { createInstanceNode, createPrimitiveNode, nextNodeId, planAlign, planDeleteSelection, planDistribute, planDuplicateSelection, planGroupSelection, planInsert, planInsertBounds, planTidyGap, planUngroup, resolveInsertParent } from './commands.js'
 
 const at = '2026-07-11T09:00:00.000Z'
 describe('creation commands', () => {
@@ -59,6 +59,28 @@ describe('creation commands', () => {
     expect(instance.kind).toBe('instance')
     expect(instance.kind === 'instance' && instance.componentId).toBe(component.id)
     expect(() => createInstanceNode(doc, 'node-00000', null, { x: 0, y: 0, width: 10, height: 10 })).toThrow('code component')
+  })
+  it('duplicates a leaf beside the original as one undoable entry', () => {
+    const doc = createDocumentFixture(1000); doc.selection = ['node-00004']
+    const changed = commitOperation(createHistory(doc), planDuplicateSelection(doc, at))
+    const duplicate = changed.present.nodes['created-0001']
+    expect(duplicate).toMatchObject({ kind: 'frame', parentId: 'node-00000' })
+    expect(duplicate.bounds.x).toBe(doc.nodes['node-00004'].bounds.x + 16)
+    expect(changed.present.nodes['node-00000'].childIds.indexOf('created-0001')).toBe(changed.present.nodes['node-00000'].childIds.indexOf('node-00004') + 1)
+    expect(changed.present.selection).toEqual(['created-0001'])
+    expect(changed.past).toHaveLength(1)
+    expect(undo(changed).present.nodes['created-0001']).toBeUndefined()
+  })
+  it('duplicates a whole subtree with remapped hierarchy', () => {
+    const doc = createDocumentFixture(1000); doc.selection = ['node-00000']
+    const changed = commitOperation(createHistory(doc), planDuplicateSelection(doc, at))
+    const duplicateRootId = changed.present.selection[0]
+    const duplicateRoot = changed.present.nodes[duplicateRootId]
+    expect(duplicateRoot.parentId).toBeNull()
+    expect(duplicateRoot.childIds).toHaveLength(doc.nodes['node-00000'].childIds.length)
+    expect(Object.keys(changed.present.nodes)).toHaveLength(1100)
+    for (const childId of duplicateRoot.childIds) expect(changed.present.nodes[childId].parentId).toBe(duplicateRootId)
+    expect(() => planDuplicateSelection({ ...doc, selection: [] }, at)).toThrow('requires a selection')
   })
   it('tidies gaps into an exact spacing chain', () => {
     const doc = createDocumentFixture(1000); doc.selection = ['node-00001', 'node-00002', 'node-00003']

@@ -14,6 +14,7 @@ import {
   resizeBounds,
   selectionBounds,
   traverseSelection,
+  zoomAroundPoint,
   type AlignmentGuide,
   type BoundsById,
   type CanvasDocument,
@@ -28,6 +29,10 @@ interface Props {
   document: CanvasDocument
   editorPlaneFailure?: EditorPlaneFailure | null
   onOperation?: (operation: CanvasOperation) => void
+}
+
+function isEditableTarget(target: EventTarget | null): boolean {
+  return target instanceof HTMLElement && (target.isContentEditable || ['INPUT', 'TEXTAREA', 'SELECT'].includes(target.tagName))
 }
 
 function sourceRef(node: CanvasNode) {
@@ -120,11 +125,15 @@ export function CanvasSurface({ document, editorPlaneFailure = null, onOperation
   const [previewBounds, setPreviewBounds] = useState<BoundsById>({})
   const [guides, setGuides] = useState<AlignmentGuide[]>([])
   const [dropTargetId, setDropTargetId] = useState<string | null>(null)
+  const spaceHeld = useRef(false)
+  const panGesture = useRef<{ start: { x: number; y: number }; panBefore: { x: number; y: number } } | null>(null)
+  const [panPreview, setPanPreview] = useState<{ x: number; y: number } | null>(null)
   const selectedIds = useMemo(() => new Set(document.selection), [document.selection])
   const orderedNodes = useMemo(() => paintOrder(document).map((id) => document.nodes[id]), [document])
   const primaryId = document.selection.at(-1)
   const nodeElements = useMemo(() => orderedNodes.map((node) => <CanvasNodeElement key={node.id} node={node} selected={selectedIds.has(node.id)} primary={primaryId === node.id} dropTarget={dropTargetId === node.id} previewBounds={previewBounds[node.id]} onOperation={onOperation} />), [dropTargetId, onOperation, orderedNodes, previewBounds, primaryId, selectedIds])
-  const transform = `translate(${document.viewport.pan.x}px, ${document.viewport.pan.y}px) scale(${document.viewport.zoom})`
+  const activePan = panPreview ?? document.viewport.pan
+  const transform = `translate(${activePan.x}px, ${activePan.y}px) scale(${document.viewport.zoom})`
   const canonicalSelection = Object.keys(previewBounds).length ? previewSelectionBounds(document, previewBounds) : selectionBounds(document)
   const selection = canonicalSelection ? {
     x: canonicalSelection.x * document.viewport.zoom + document.viewport.pan.x,
@@ -154,6 +163,12 @@ export function CanvasSurface({ document, editorPlaneFailure = null, onOperation
   }, [commitSelection, document.selection])
 
   const handleKeyDown = useCallback((event: React.KeyboardEvent) => {
+    if (event.nativeEvent.isComposing || isEditableTarget(event.target)) return
+    if (event.key === ' ') {
+      event.preventDefault()
+      spaceHeld.current = true
+      return
+    }
     if (event.key === 'Escape' && gestureRef.current) {
       event.preventDefault()
       gestureRef.current = null
@@ -229,18 +244,47 @@ export function CanvasSurface({ document, editorPlaneFailure = null, onOperation
     tabIndex={0}
     onClick={handleClick}
     onKeyDown={handleKeyDown}
+    onKeyUp={(event) => { if (event.key === ' ') spaceHeld.current = false }}
+    onWheel={(event) => {
+      if (event.ctrlKey || event.metaKey) {
+        const rect = viewportRef.current?.getBoundingClientRect() ?? { left: 0, top: 0 }
+        const next = zoomAroundPoint(document.viewport, document.viewport.zoom * (event.deltaY < 0 ? 1.1 : 1 / 1.1), { x: event.clientX - rect.left, y: event.clientY - rect.top })
+        onOperation?.({ type: 'set-viewport', id: `wheel-zoom-${performance.now()}`, at: new Date().toISOString(), ...next })
+        return
+      }
+      onOperation?.({ type: 'set-viewport', id: `wheel-pan-${performance.now()}`, at: new Date().toISOString(), pan: { x: document.viewport.pan.x - event.deltaX, y: document.viewport.pan.y - event.deltaY }, zoom: document.viewport.zoom })
+    }}
     onPointerDown={(event) => {
+      if (spaceHeld.current) {
+        event.preventDefault()
+        panGesture.current = { start: { x: event.clientX, y: event.clientY }, panBefore: { ...document.viewport.pan } }
+        setPanPreview({ ...document.viewport.pan })
+        if (event.isTrusted) event.currentTarget.setPointerCapture?.(event.pointerId)
+        return
+      }
       if (event.target !== event.currentTarget) return
       dragStart.current = canvasPoint(event.clientX, event.clientY)
       setMarquee(normalizeRect(dragStart.current, dragStart.current))
       if (event.isTrusted) event.currentTarget.setPointerCapture?.(event.pointerId)
     }}
     onPointerMove={(event) => {
+      if (panGesture.current) {
+        const gesture = panGesture.current
+        setPanPreview({ x: gesture.panBefore.x + event.clientX - gesture.start.x, y: gesture.panBefore.y + event.clientY - gesture.start.y })
+        return
+      }
       if (gestureRef.current) { updateGesture(event); return }
       if (!dragStart.current) return
       setMarquee(normalizeRect(dragStart.current, canvasPoint(event.clientX, event.clientY)))
     }}
     onPointerUp={(event) => {
+      if (panGesture.current) {
+        const finalPan = panPreview ?? panGesture.current.panBefore
+        panGesture.current = null
+        setPanPreview(null)
+        onOperation?.({ type: 'set-viewport', id: `pan-${performance.now()}`, at: new Date().toISOString(), pan: finalPan, zoom: document.viewport.zoom })
+        return
+      }
       if (gestureRef.current) { finishGesture(); return }
       if (!dragStart.current) return
       const rect = normalizeRect(dragStart.current, canvasPoint(event.clientX, event.clientY))
@@ -252,6 +296,8 @@ export function CanvasSurface({ document, editorPlaneFailure = null, onOperation
     onPointerCancel={() => {
       gestureRef.current = null
       dragStart.current = null
+      panGesture.current = null
+      setPanPreview(null)
       setPreviewBounds({})
       setGuides([])
       setMarquee(null)
