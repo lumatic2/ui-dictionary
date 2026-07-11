@@ -21,12 +21,13 @@ import {
 import { BrowserDocumentStore } from './browserStore'
 import { CanvasSurface } from './CanvasSurface'
 import { desktopHost, type DesktopBridgeStatus, type DesktopCanvasSnapshot, type DesktopCanvasSnapshotReason, type PreviewStatus, type TrustedFileSummary, type TrustedProjectSummary } from './desktopHost'
+import { AgentPanel } from './AgentPanel'
 import { ArrangementToolbar } from './ArrangementToolbar'
 import { InsertPalette } from './InsertPalette'
 import { LayersPanel } from './LayersPanel'
 import { PropertyInspector } from './PropertyInspector'
 import type { EditorPlaneFailure } from './editorPlaneRuntime'
-import { LiveBridgeClient, liveBridgeConfig } from './liveBridge'
+import { LiveBridgeClient, liveBridgeConfig, type CollaborationFeed } from './liveBridge'
 
 const store = new BrowserDocumentStore()
 const nextFrame = () => new Promise<number>((resolve) => requestAnimationFrame(resolve))
@@ -64,6 +65,9 @@ export function App() {
   const [rightPanelOpen, setRightPanelOpen] = useState(true)
   const [insertOpen, setInsertOpen] = useState(false)
   const [shortcutsOpen, setShortcutsOpen] = useState(false)
+  const [agentsOpen, setAgentsOpen] = useState(false)
+  const [collabFeed, setCollabFeed] = useState<CollaborationFeed | null>(null)
+  const [agentError, setAgentError] = useState('')
   const stageRef = useRef<HTMLElement>(null)
   const liveConfig = useMemo(() => desktopHost() ? null : liveBridgeConfig(), [])
   const liveClient = useRef<LiveBridgeClient | null>(null)
@@ -75,6 +79,7 @@ export function App() {
     setHistory(createHistory(snapshot.document))
     setStatus(`${reason} revision ${snapshot.revision}`)
     setConnection('connected')
+    setAgentError('')
   }, [])
 
   useEffect(() => {
@@ -92,6 +97,7 @@ export function App() {
         setHistory(createHistory(snapshot.document))
         setStatus(`${meta.reason} revision ${snapshot.revision}`)
       },
+      onCollaborationFeed: setCollabFeed,
     })
     liveClient.current = client
     void client.connect()
@@ -124,12 +130,14 @@ export function App() {
     const host = desktopHost()
     if (!host || desktopBridge?.state !== 'ready') return
     let active = true
+    void host.getCollaborationFeed({ apiVersion: 1 }).then((feed) => { if (active) setCollabFeed(feed) }, () => {})
+    const unsubscribeFeed = host.onCollaborationFeed((feed) => { if (active) setCollabFeed(feed) })
     setConnection('connecting')
     void host.getCanvasSnapshot({ apiVersion: 1 }).then(
       (snapshot) => { if (active) acceptDesktopSnapshot(snapshot, desktopBridge.recoveryMode === 'recovered' ? 'recovery' : 'initial') },
       () => { if (active) setConnection('reconnecting') },
     )
-    return () => { active = false }
+    return () => { active = false; unsubscribeFeed() }
   }, [acceptDesktopSnapshot, desktopBridge?.recoveryMode, desktopBridge?.state])
 
   useEffect(() => {
@@ -211,7 +219,11 @@ export function App() {
       const started = performance.now()
       void host.applyCanvasOperation({ apiVersion: 1, operation }).then(
         (snapshot) => acceptDesktopSnapshot(snapshot, 'transaction', started),
-        (error: unknown) => setStatus(error instanceof Error ? error.message : 'desktop bridge mutation failed'),
+        (error: unknown) => {
+          const message = error instanceof Error ? error.message : 'desktop bridge mutation failed'
+          setStatus(message)
+          setAgentError(message)
+        },
       )
       return
     }
@@ -276,7 +288,11 @@ export function App() {
       const started = performance.now()
       void host.undoCanvas({ apiVersion: 1 }).then(
         (snapshot) => acceptDesktopSnapshot(snapshot, 'transaction', started),
-        (error: unknown) => setStatus(error instanceof Error ? error.message : 'desktop bridge undo failed'),
+        (error: unknown) => {
+          const message = error instanceof Error ? error.message : 'desktop bridge undo failed'
+          setStatus(message)
+          setAgentError(message)
+        },
       )
       return
     }
@@ -401,6 +417,7 @@ export function App() {
         <button type="button" disabled={!activeProject} onClick={() => void togglePreview()}>{preview?.visible ? 'Hide preview' : 'Preview'}</button>
         <button type="button" disabled={!activeProject} onClick={() => activeProject && void desktopHost()?.revealProject({ apiVersion: 1, projectId: activeProject.id })}>Explorer</button>
       </>}
+      <button type="button" data-testid="toggle-agents" aria-pressed={agentsOpen} onClick={() => setAgentsOpen((value) => !value)}>Agents</button>
       <button type="button" aria-haspopup="dialog" data-testid="open-shortcuts" onClick={() => setShortcutsOpen(true)}>Shortcuts</button>
       <button type="button" aria-label="Toggle properties" aria-pressed={rightPanelOpen} onClick={() => setRightPanelOpen((value) => !value)}>Properties</button>
     </nav>
@@ -479,6 +496,13 @@ export function App() {
       </aside>}
       <section className="canvas-stage" aria-label="Design canvas" ref={stageRef}>
         {insertOpen && <InsertPalette document={history.present} onOperation={commit} />}
+        {agentsOpen && <AgentPanel
+          document={history.present}
+          feed={collabFeed}
+          connectionLabel={desktopBridge ? `desktop ${desktopBridge.state}` : connection}
+          error={agentError}
+          onUndoLatest={undoCurrent}
+        />}
         <CanvasSurface document={history.present} editorPlaneFailure={failure} onOperation={commit} />
       </section>
       {rightPanelOpen && <PropertyInspector document={history.present} onOperation={commit} />}

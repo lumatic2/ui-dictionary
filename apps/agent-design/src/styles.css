@@ -80,6 +80,20 @@ button, select { font: inherit; }
 .shortcuts-dialog dt { color: #55208f; font-family: ui-monospace, monospace; white-space: nowrap; }
 .shortcuts-dialog dd { margin: 0; color: #5e5b63; text-align: right; }
 .shortcuts-dialog > button { height: 28px; border: 1px solid #deddd9; border-radius: 5px; padding: 0 12px; background: #fff; font-size: 11px; }
+.agent-panel { position: absolute; z-index: 12; top: 12px; right: 12px; display: grid; gap: 12px; width: 260px; max-height: calc(100% - 24px); overflow: auto; border: 1px solid #deddd9; border-radius: 8px; padding: 12px; background: #fff; box-shadow: 0 8px 24px rgba(25, 24, 29, 0.12); font-size: 11px; color: #444149; }
+.agent-panel-header { display: flex; align-items: center; justify-content: space-between; }
+.agent-panel-header h2 { margin: 0; font-size: 12px; }
+.agent-connection { color: #77747b; font-size: 10px; }
+.agent-section { display: grid; gap: 4px; }
+.agent-section p { margin: 0; }
+.agent-context { font-family: ui-monospace, monospace; font-size: 10px; color: #55208f; overflow-wrap: anywhere; }
+.agent-actor strong { color: #55208f; }
+.agent-empty { color: #908d94; }
+.agent-feed ol { margin: 0; padding-left: 16px; display: grid; gap: 5px; }
+.agent-feed li strong { color: #55208f; }
+.agent-undo { height: 28px; border: 1px solid #deddd9; border-radius: 5px; background: #fff; font-size: 11px; }
+.agent-undo:disabled { color: #c6c4c9; }
+.agent-error { margin: 0; min-height: 12px; color: #a12a3b; font-size: 10px; }
 .project-rail select, .diagnostics-panel select { min-width: 0; width: 100%; height: 30px; border: 1px solid #deddd9; border-radius: 5px; padding: 0 7px; background: #fff; color: #444149; font-size: 10px; }
 .diagnostics-panel { margin-top: auto; border-top: 1px solid #deddd9; padding: 10px 4px 0; color: #77747b; font-size: 10px; }
 .diagnostics-panel summary { cursor: pointer; font-weight: 600; }

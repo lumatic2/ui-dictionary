@@ -239,6 +239,16 @@ describe('Agent Design persistence flow', () => {
     expect(view.getByLabelText('Canvas zoom').textContent).toBe('100%')
   })
 
+  it('toggles the agent collaboration panel with an offline empty state', () => {
+    const view = render(<App />)
+    fireEvent.click(view.getByTestId('toggle-agents'))
+    expect(view.getByTestId('agent-panel')).toBeTruthy()
+    expect(view.getByTestId('agent-context').textContent).toContain('selection node-00000')
+    expect(view.getByTestId('agent-feed-empty')).toBeTruthy()
+    fireEvent.click(view.getByTestId('toggle-agents'))
+    expect(view.queryByTestId('agent-panel')).toBeNull()
+  })
+
   it('discovers shortcuts through a visible dialog', () => {
     const view = render(<App />)
     fireEvent.click(view.getByTestId('open-shortcuts'))
