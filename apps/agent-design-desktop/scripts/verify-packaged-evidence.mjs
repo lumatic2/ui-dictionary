@@ -17,7 +17,8 @@ if (report.performance?.fallbackState !== 'dom' || report.performance?.fallbackT
 if (report.accessibility?.firstFocus !== 'node-00000' || report.accessibility?.secondFocus !== 'node-00001') errors.push('packaged keyboard focus order failed')
 if (report.processCleanup?.packagedExecutableStillRunning) errors.push('packaged process leak detected')
 if (report.consoleErrors?.length) errors.push(`packaged console errors: ${report.consoleErrors.join('; ')}`)
-if (!Number.isInteger(report.instrumentation?.knownElectronSandboxStartupExceptions) || report.instrumentation.knownElectronSandboxStartupExceptions > 4) errors.push('unexpected Electron sandbox startup telemetry volume')
+// Budget = 3 app launches (trusted-project, restart, benchmark) x 2 known Electron 43 sandbox startup messages; CDP attach timing decides how many launches are captured.
+if (!Number.isInteger(report.instrumentation?.knownElectronSandboxStartupExceptions) || report.instrumentation.knownElectronSandboxStartupExceptions > 6) errors.push('unexpected Electron sandbox startup telemetry volume')
 if (!installer.installed || !installer.launched || !installer.rendererSecurityVerified || !installer.startMenuShortcutCreated || !installer.desktopShortcutCreated || !installer.uninstalled || !installer.uninstallerRemovedApplicationPayload || !installer.harnessRemovedExpectedTombstone || !installer.installDirectoryRemoved || !installer.shortcutRemoved) errors.push('installer lifecycle evidence failed')
 const imeGateSatisfied = (ime.actualMicrosoftImePass && !ime.syntheticOnly)
   || (ime.waived === true && ime.waivedBy === 'user')

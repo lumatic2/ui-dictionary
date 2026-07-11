@@ -3,9 +3,9 @@
   "phase": "agent-design-askewly-identity",
   "mode": "product",
   "steps": [
-    { "step": 1, "name": "editor-chrome-token-bridge", "status": "pending" },
-    { "step": 2, "name": "canvas-token-rendering", "status": "pending" },
-    { "step": 3, "name": "identity-polish-pass", "status": "pending" },
-    { "step": 4, "name": "h1-close-audit", "status": "pending" }
+    { "step": 1, "name": "editor-chrome-token-bridge", "status": "completed", "summary": "apps/agent-design/scripts/generate-editor-tokens.mjs가 tokens/askewly.tokens.json(semantic 18종 전부 다크 오버라이드 보유)에서 editorTokens.css(--ad-* 커스텀 프로퍼티, 라이트 정본)와 editorTokens.ts(editorTokenMaps default/dark + FALLBACK_BACKGROUND_TOKEN)를 파생(멱등 검증). styles.css 하드코딩 hex ~40개 전부 var(--ad-*) 치환 — 인스펙터는 모드 독립 다크 크롬이라 primitive gray/brand 바인딩, token-exception 3건(성공 green·teal 마커·다크용 라이트 레드, 각 근거 주석). hex lint 테스트 추가. (sonnet 위임, Fable 게이트)", "completed_at": "2026-07-12T04:50:00+09:00" },
+    { "step": 2, "name": "canvas-token-rendering", "status": "completed", "summary": "CanvasSurface nodeStyle이 hue 해시를 폐기하고 node.tokenBindings.background를 editorTokenMaps[document.tokenSetId]로 해석(미바인딩은 surface.muted fallback, 미지 모드는 default). set-token-mode askewly.dark 전환이 캔버스 실색 변경 — 렌더 테스트 2종(다크 전환 색 변화·fallback) 추가. renderer 69/69+build, 브라우저 라이트/다크 시각 확인. (sonnet 위임, Fable 게이트)", "completed_at": "2026-07-12T04:52:00+09:00" },
+    { "step": 3, "name": "identity-polish-pass", "status": "completed", "summary": "Fable 직접: 다크 모드 결함 2건 수정 — 노드 라벨색이 고정 gray-10이라 다크에서 비가독 → nodeStyle이 text.default를 모드별 해석; .node-text의 white !important가 인라인 토큰 bg를 덮어 텍스트 노드만 라이트 잔존 → 제거. surface.tint(브랜드 민트)의 활성 상태 채택은 Askewly 정체성으로 판정·유지. 브라우저 다크 재검증(전 노드 토큰 surface+대비 라벨, 한글 텍스트 노드 포함), 69/69+build. (tmp/ai-step3-dark-contrast.png)", "completed_at": "2026-07-12T04:58:00+09:00" },
+    { "step": 4, "name": "h1-close-audit", "status": "blocked", "blocked_reason": "packaged 기능 게이트는 전부 PASS(E2E 전 phase, installer lifecycle, package 5 artifacts/9 fuses, watcher 121ms, restart drift 0, telemetry 판정은 3 launches x 2 known 메시지 = 6으로 근거 보정). 유일 실패 = 5k pointer 예산(28~39ms > 16ms). Fable이 worktree 이분 측정으로 코드 무죄 증명: UX4-통과 시점 코드(e53fa15)도 현 환경에서 31~47ms — 원인은 머신 부하(python PID 109052 메모리 11GB, Antigravity IDE 2GB+, cam_helper 등 사용자 프로세스). 사용자 소유 프로세스 정리는 사용자 결정 → 정지 조건. 재현: 부하 정리 후 cd apps/agent-design-desktop; node scripts/run-packaged-e2e.mjs; node scripts/run-installer-lifecycle.mjs; npm run verify:packaged-evidence — PASS 시 H1 close 감사(horizon 문서 close 기록+BACKLOG 이관)만 남음.", "blocked_at": "2026-07-12T05:10:00+09:00" }
   ]
 }

@@ -3,7 +3,7 @@
   "classification": "unsigned-development",
   "runtime": "Electron packaged Windows x64 application",
   "project": {
-    "trustedProjectIdRedacted": "a9cc8d1fa9ba",
+    "trustedProjectIdRedacted": "a5d3f03650a9",
     "importedSource": "src/App.tsx"
   },
   "security": {
@@ -27,7 +27,7 @@
   "roundTrip": {
     "humanEdit": true,
     "watcherEdit": true,
-    "watcherVisibleMs": 124.27509999999984,
+    "watcherVisibleMs": 118.61549999999988,
     "finalLabel": "Watcher packaged update"
   },
   "recovery": {
@@ -42,34 +42,34 @@
     "traces": [
       {
         "frames": 60,
-        "averageLatencyMs": 6.676666679183644,
-        "p95LatencyMs": 11.500000023841835,
-        "overBudgetRatio": 0.016666666666666666,
+        "averageLatencyMs": 14.344999993443496,
+        "p95LatencyMs": 32.59999999999991,
+        "overBudgetRatio": 0.2,
         "revisionDelta": 1
       },
       {
         "frames": 60,
-        "averageLatencyMs": 6.356666679978385,
-        "p95LatencyMs": 12.099999999999909,
-        "overBudgetRatio": 0.03333333333333333,
+        "averageLatencyMs": 14.799999994337577,
+        "p95LatencyMs": 30.400000005960464,
+        "overBudgetRatio": 0.26666666666666666,
         "revisionDelta": 1
       },
       {
         "frames": 60,
-        "averageLatencyMs": 5.251666677892209,
-        "p95LatencyMs": 9.5,
-        "overBudgetRatio": 0,
+        "averageLatencyMs": 21.339999994238216,
+        "p95LatencyMs": 30.700000005960646,
+        "overBudgetRatio": 0.8166666666666667,
         "revisionDelta": 1
       }
     ],
-    "p95WorstMs": 12.099999999999909,
+    "p95WorstMs": 32.59999999999991,
     "targetMs": 16,
     "fallbackState": "dom",
     "fallbackTrace": {
       "frames": 20,
-      "averageLatencyMs": 3.2450000083446637,
-      "p95LatencyMs": 8.199999999999818,
-      "overBudgetRatio": 0,
+      "averageLatencyMs": 21.15499999433755,
+      "p95LatencyMs": 32.59999998807871,
+      "overBudgetRatio": 0.85,
       "revisionDelta": 1
     }
   },
