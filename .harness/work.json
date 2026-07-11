@@ -250,12 +250,13 @@
     {
       "id": "CR",
       "title": "Component Registry",
-      "status": "active",
+      "status": "completed",
       "started": "2026-07-12",
       "plan": "docs/plans/2026-07-12-cr-component-registry.md",
       "session_ids": [
         "claude:062b1016-2fb9-4e1b-9033-47cdf618addf"
-      ]
+      ],
+      "completed": "2026-07-12"
     }
   ]
 }
