@@ -2,7 +2,7 @@
 
 Date: 2026-07-11
 Milestone: UX2 (`ROADMAP.md`, pending)
-Status: approved 2026-07-11 — Steps 1-5 complete; Step 6 in progress
+Status: completed 2026-07-12 — Steps 1-6 complete; evidence: phases/agent-design-visual-creation/ + docs/research/assets/ux2-visual-creation-2026-07-12/
 
 ## Hierarchy
 
@@ -42,7 +42,7 @@ Status: approved 2026-07-11 — Steps 1-5 complete; Step 6 in progress
   - Add space-drag pan, wheel/pinch zoom around cursor, fit canvas/selection, zoom reset, Delete, duplicate, group, rename, layer traversal, and shortcut help.
   - Verify: pointer/keyboard tests cover focus-safe shortcuts, editable-field exclusions, zoom anchoring, bounded viewport, and accessible shortcut discovery.
 
-- [ ] Step 6 — Representative composition quality proof
+- [x] Step 6 — Representative composition quality proof
   - From a fresh project, insert a frame and components, organize layers, align/distribute, edit properties, navigate by keyboard, Undo/Redo, reload, and verify source/canvas continuity.
   - Verify: core + renderer + desktop suites, creation E2E, 5k interaction budget, packaged security/evidence, and fresh Chrome screenshots at desktop/constrained widths.
 
