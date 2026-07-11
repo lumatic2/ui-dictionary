@@ -2,7 +2,7 @@
 
 Date: 2026-07-11
 Milestone: UX2 (`ROADMAP.md`, pending)
-Status: approved 2026-07-11 — Steps 1-3 complete; Step 4 in progress
+Status: approved 2026-07-11 — Steps 1-4 complete; Step 5 in progress
 
 ## Hierarchy
 
@@ -34,7 +34,7 @@ Status: approved 2026-07-11 — Steps 1-3 complete; Step 4 in progress
   - Add Insert mode with Frame/Text/Group primitives plus document/project-supported components; insert at the selected container or canvas root with visible placement feedback.
   - Verify: palette search/category tests and creation-flow tests prove correct parent/index/bounds, post-insert selection, Undo, and empty-result behavior.
 
-- [ ] Step 4 — Layout and arrangement controls
+- [x] Step 4 — Layout and arrangement controls
   - Add align edges/centers, distribute horizontal/vertical, tidy gap, group/ungroup, layout mode, padding/gap, and sizing controls with multi-selection-aware disabled states.
   - Verify: planner/core tests plus inspector/toolbar tests cover exact bounds, responsive constraints, mixed selection, locked nodes, and one-history-entry commits.
 
