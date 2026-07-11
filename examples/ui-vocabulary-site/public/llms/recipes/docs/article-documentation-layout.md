@@ -19,7 +19,7 @@ tokens_used:
   - typography.weight.medium
 code_asset: examples/ui-vocabulary-site/src/App.tsx
 component_refs: []
-term_refs: [breadcrumb, typography, content-section]
+term_refs: [breadcrumb, typography, content-section, anchor-nav]
 source_refs: []
 last_verified: 2026-07-10
 ---
@@ -99,3 +99,4 @@ function DocumentationArticle({ page }: { page: DocsArticlePageData }) {
 - prompt_phrases: "documentation article with a readable main column and responsive outline", "decision-first docs page with related vocabulary"
 - fallbacks: omit the rail when there are fewer than three sections; preserve the article order.
 - canonical guidance: `docs/design-system/principles.md` principles 1, 5, and 7.
+- scroll-spy rail: `anchor-nav` (term) already covers a section-link rail with an active-section indicator; wiring the `onThisPage` rail here to highlight on scroll (IntersectionObserver-based) is an `anchor-nav`-style extension of this rail, not a separate recipe.

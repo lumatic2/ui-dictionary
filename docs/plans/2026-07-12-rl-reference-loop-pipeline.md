@@ -59,7 +59,7 @@ planning_gate:
 - [x] Step 2 — 배치 audit 도구 (changeset): `scripts/audit-recipe-candidates.mjs` — inbox 후보를 기존 recipes/terms 대비 id/name/유사 overlap 검사 + 스키마 검증. (verify: 중복 fixture 검출 + 클린 fixture 통과 2케이스 실행 관측)
 - [x] Step 3 — 실증 배치 1: commerce. 후보 ~10 수집→audit→recipe 1~2종+용어 적응→전체 검증→ledger 기재. (verify: validator 체인 PASS + ledger entry 1)
 - [x] Step 4 — 실증 배치 2: internal-tools. 동일 절차. (verify: validator 체인 PASS + ledger entry 2)
-- [ ] Step 5 — 실증 배치 3: documentation + 절차 회고: 3배치에서 드러난 절차 수정을 reference-loop.md에 반영. (verify: validator 체인 PASS + ledger 3 entries + 절차 Changelog)
+- [x] Step 5 — 실증 배치 3: documentation + 절차 회고: 3배치에서 드러난 절차 수정을 reference-loop.md에 반영. (verify: validator 체인 PASS + ledger 3 entries + 절차 Changelog)
 
 ## 결정 로그
 

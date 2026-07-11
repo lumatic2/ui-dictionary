@@ -1064,6 +1064,13 @@ export const terms = [
         ]
       ]
     },
+    "related": [
+      {
+        "id": "search-suggestions",
+        "relation": "compare",
+        "note": "문서 사이트의 Cmd/Ctrl+K 검색은 command-palette 오버레이 형태를 쓰되, 결과를 Docs/Guides/API 같은 섹션 헤더로 그룹핑한다는 점에서 순수 명령 실행 목록과 다르다 — 그룹핑 구조 자체는 search-suggestions의 추천 목록 개념과 더 가깝다."
+      }
+    ],
     "confidence": "medium"
   },
   {
@@ -1115,6 +1122,13 @@ export const terms = [
       {
         "source_id": "material-m3-components",
         "note": "navigation patterns"
+      }
+    ],
+    "related": [
+      {
+        "id": "pagination",
+        "relation": "use-with",
+        "note": "문서 사이트에서는 상단 breadcrumb(계층 위치)와 하단 prev/next pagination(선형 이동)이 한 세트로 쓰여 순서가 있는 학습 경로를 만든다."
       }
     ],
     "confidence": "medium"
@@ -1169,6 +1183,13 @@ export const terms = [
       {
         "source_id": "shadcn-ui-docs",
         "note": "pagination component"
+      }
+    ],
+    "related": [
+      {
+        "id": "breadcrumb",
+        "relation": "use-with",
+        "note": "문서 페이지 하단의 이전/다음 문서 링크(prev/next)는 pagination의 한 형태로, 상단 breadcrumb와 함께 쓰여 선형 학습 경로를 만든다."
       }
     ],
     "confidence": "high"
@@ -2798,9 +2819,79 @@ export const terms = [
         "id": "inline-alert",
         "relation": "compare",
         "note": "폼이나 섹션 내부 오류처럼 위치 맥락이 중요하면 inline alert로 좁혀 부른다."
+      },
+      {
+        "id": "callout",
+        "relation": "compare",
+        "note": "문서 본문 중간에 삽입되는 note/warning/tip 등급 강조 박스는 callout이고, 앱 화면의 지속적 상태/오류 안내는 alert다."
       }
     ],
     "confidence": "high"
+  },
+  {
+    "kind": "block",
+    "id": "callout",
+    "status": "draft",
+    "category": "feedback",
+    "group": "feedback-alerts-toasts",
+    "ko": {
+      "name": "콜아웃",
+      "aliases": [
+        "callout",
+        "admonition",
+        "강조 박스"
+      ]
+    },
+    "en": {
+      "name": "Callout",
+      "aliases": [
+        "Admonition",
+        "Callout box"
+      ]
+    },
+    "one_liner": "문서 본문 중간에 note/tip/warning/danger 등급으로 구분해 삽입하는 강조 박스.",
+    "description": "좌측 컬러 바 또는 배경색과 아이콘, 등급 라벨로 문단 사이에 삽입되어 본문 흐름을 방해하지 않으면서 중요한 보충 정보를 강조한다.",
+    "visual_anatomy": [
+      "left color bar or tinted background",
+      "grade icon",
+      "title label",
+      "body text",
+      "full-width insertion between paragraphs"
+    ],
+    "when_to_use": [
+      "문서 본문 중간에 보충 설명",
+      "팁",
+      "주의사항을 등급별로 구분해 강조해야 할 때"
+    ],
+    "anti_use": [
+      "앱 화면의 지속적인 상태나 오류 안내는 alert/banner가 더 정확하다",
+      "잠깐 보여줄 완료 피드백은 toast를 쓴다"
+    ],
+    "prompt_phrases": [
+      "문서 본문에 note/warning 등급의 callout box를 넣어줘",
+      "왼쪽 컬러 바가 있는 admonition 박스를 만들어줘"
+    ],
+    "asset": {
+      "kind": "mini-mock",
+      "variant": "callout",
+      "props": {
+        "tone": "warning"
+      }
+    },
+    "sources": [
+      {
+        "source_id": "ui-patterns-library",
+        "note": "documentation callout/admonition box pattern (note/tip/warning/danger grading)"
+      }
+    ],
+    "related": [
+      {
+        "id": "alert",
+        "relation": "compare",
+        "note": "callout은 문서 본문 저작 콘텐츠에 삽입되는 등급별 강조 박스이고, alert는 앱 화면의 상태/오류를 알리는 지속적 메시지 영역이다."
+      }
+    ],
+    "confidence": "medium"
   },
   {
     "kind": "component",
@@ -4548,6 +4639,13 @@ export const terms = [
         "note": "search view and suggestions pattern"
       }
     ],
+    "related": [
+      {
+        "id": "command-palette",
+        "relation": "compare",
+        "note": "문서 사이트의 Cmd/Ctrl+K 검색 오버레이는 command-palette 셸을 쓰면서 결과를 섹션별로 그룹핑한다 — 그룹 헤더로 나뉜 결과 목록이라는 점이 여기의 추천/최근 검색어 그룹핑과 같은 축이다."
+      }
+    ],
     "confidence": "medium"
   },
   {
@@ -5140,12 +5238,13 @@ export const terms = [
       ]
     },
     "one_liner": "같은 페이지 안의 섹션으로 이동하는 링크 목록.",
-    "description": "긴 문서나 설정 화면에서 현재 섹션을 보여주고 클릭하면 해당 위치로 스크롤한다.",
+    "description": "긴 문서나 설정 화면에서 현재 섹션을 보여주고 클릭하면 해당 위치로 스크롤한다. 문서 사이트의 우측 고정 rail은 IntersectionObserver 기반 scroll spy로 스크롤 위치에 따라 활성 섹션 항목을 자동으로 강조하는 형태로 자주 쓰인다.",
     "visual_anatomy": [
       "section links",
       "active section",
       "sticky side or top area",
-      "anchor targets"
+      "anchor targets",
+      "scroll-spy active highlight"
     ],
     "when_to_use": [
       "한 페이지가 길고 섹션이 명확할 때",
@@ -8239,6 +8338,61 @@ export const terms = [
     "confidence": "high"
   },
   {
+    "kind": "block",
+    "id": "docs-feedback-widget",
+    "status": "draft",
+    "category": "feedback",
+    "group": "feedback-confirmation-help",
+    "ko": {
+      "name": "문서 피드백 위젯",
+      "aliases": [
+        "was this helpful widget",
+        "도움이 되었나요 위젯",
+        "문서 평가 위젯"
+      ]
+    },
+    "en": {
+      "name": "Docs feedback widget",
+      "aliases": [
+        "Was this helpful widget",
+        "Page feedback widget"
+      ]
+    },
+    "one_liner": "문서 페이지 하단에서 이 페이지가 도움이 되었는지 즉석으로 묻는 짧은 피드백 위젯.",
+    "description": "짧은 질문과 Yes/No 또는 아이콘 버튼 쌍으로 즉석 반응을 받고, 클릭 후 감사 메시지나 짧은 후속 텍스트 입력으로 상태를 전환한다.",
+    "visual_anatomy": [
+      "short question text",
+      "yes/no or icon button pair",
+      "post-click confirmation state",
+      "optional follow-up text input",
+      "bottom-of-page card"
+    ],
+    "when_to_use": [
+      "문서 페이지가 실제로 도움이 되는지 가벼운 신호를 계속 수집해야 할 때"
+    ],
+    "anti_use": [
+      "상품/서비스에 대한 평점과 리뷰는 reviews-summary-block 같은 커머스 리뷰 UI가 더 적합하다"
+    ],
+    "prompt_phrases": [
+      "문서 페이지 하단에 도움이 되었나요 피드백 위젯을 넣어줘",
+      "Yes No 버튼과 후속 텍스트 입력이 있는 was-this-helpful 위젯을 만들어줘"
+    ],
+    "asset": {
+      "kind": "mini-mock",
+      "variant": "docs-feedback-widget",
+      "props": {
+        "answered": false
+      }
+    },
+    "sources": [
+      {
+        "source_id": "ui-patterns-library",
+        "note": "page-level was-this-helpful feedback widget pattern"
+      }
+    ],
+    "confidence": "medium"
+  },
+  {
     "kind": "component",
     "id": "rate-limit-state",
     "status": "draft",
@@ -10370,6 +10524,69 @@ export const terms = [
       {
         "source_id": "apple-hig-components",
         "note": "account and profile presentation guidance"
+      }
+    ],
+    "confidence": "medium"
+  },
+  {
+    "kind": "block",
+    "id": "versioned-docs-switcher",
+    "status": "draft",
+    "category": "selection",
+    "group": "selection-context",
+    "ko": {
+      "name": "문서 버전 스위처",
+      "aliases": [
+        "versioned docs switcher",
+        "문서 버전 전환",
+        "버전 드롭다운"
+      ]
+    },
+    "en": {
+      "name": "Versioned docs switcher",
+      "aliases": [
+        "Docs version switcher",
+        "Version dropdown with stale banner"
+      ]
+    },
+    "one_liner": "navbar 버전 드롭다운과 과거/미출시 버전 경고 배너로 구성된 문서 버전 전환 패턴.",
+    "description": "여러 버전이 공존하는 문서 사이트에서 현재 보고 있는 버전을 드롭다운으로 바꾸고, 최신이 아닌 버전을 볼 때 상단에 안내 배너를 띄운다. 선택한 버전에 따라 사이드바 트리 전체가 교체된다.",
+    "visual_anatomy": [
+      "navbar version dropdown",
+      "latest-selected default",
+      "stale version banner",
+      "link to latest version",
+      "sidebar tree swap"
+    ],
+    "when_to_use": [
+      "제품/문서가 여러 메이저 버전을 동시에 공개하고 사용자가 과거 버전 문서를 볼 수 있어야 할 때"
+    ],
+    "anti_use": [
+      "단일 버전만 유지되는 문서에는 불필요하다",
+      "조직/워크스페이스 전환은 workspace-switcher를 쓴다"
+    ],
+    "prompt_phrases": [
+      "navbar에 문서 버전 드롭다운을 넣어줘",
+      "오래된 버전을 보고 있으면 상단에 경고 배너를 띄워줘"
+    ],
+    "asset": {
+      "kind": "mini-mock",
+      "variant": "versioned-docs-switcher",
+      "props": {
+        "stale": true
+      }
+    },
+    "sources": [
+      {
+        "source_id": "ui-patterns-library",
+        "note": "versioned documentation navigation and stale-version banner pattern"
+      }
+    ],
+    "related": [
+      {
+        "id": "workspace-switcher",
+        "relation": "compare",
+        "note": "workspace-switcher는 조직/팀 컨텍스트를 바꾸고, versioned-docs-switcher는 같은 문서의 다른 버전 스냅샷으로 전환한다 — 대상이 조직이 아니라 문서 버전이라는 점이 다르다."
       }
     ],
     "confidence": "medium"
@@ -17485,6 +17702,75 @@ export const terms = [
       {
         "source_id": "material-m3-components",
         "note": "card content patterns"
+      }
+    ],
+    "related": [
+      {
+        "id": "docs-changelog-page",
+        "relation": "use-with",
+        "note": "release-note-card는 항목 하나의 카드 단위이고, docs-changelog-page는 그 카드를 날짜별로 그룹핑하고 카테고리 필터/pagination을 더한 페이지 전체 구성이다."
+      }
+    ],
+    "confidence": "medium"
+  },
+  {
+    "kind": "block",
+    "id": "docs-changelog-page",
+    "status": "draft",
+    "category": "data-display",
+    "group": "data-display-misc",
+    "ko": {
+      "name": "체인지로그 페이지",
+      "aliases": [
+        "changelog page",
+        "릴리즈 노트 페이지",
+        "업데이트 히스토리 페이지"
+      ]
+    },
+    "en": {
+      "name": "Changelog page",
+      "aliases": [
+        "Release notes page",
+        "Update history page"
+      ]
+    },
+    "one_liner": "날짜별로 묶인 릴리즈 항목을 카테고리 필터와 함께 나열하는 changelog 전용 페이지.",
+    "description": "release-note-card 단위 항목들을 날짜 헤더 아래 그룹핑하고, 상단 카테고리 필터 chip과 하단 more-보기 페이지네이션으로 긴 변경 이력을 탐색 가능하게 만든다.",
+    "visual_anatomy": [
+      "date header groups",
+      "release note cards per group",
+      "category filter chips",
+      "search field",
+      "show-more pagination"
+    ],
+    "when_to_use": [
+      "제품의 전체 변경 이력을 날짜/카테고리별로 탐색 가능한 한 페이지로 제공해야 할 때"
+    ],
+    "anti_use": [
+      "항목이 몇 개뿐이면 release-note-card 목록만으로 충분하고 별도 페이지 레이아웃은 과하다"
+    ],
+    "prompt_phrases": [
+      "날짜별로 묶이고 카테고리 필터가 있는 changelog 페이지를 만들어줘",
+      "릴리즈 노트를 최신순으로 나열하고 더보기 버튼을 넣어줘"
+    ],
+    "asset": {
+      "kind": "mini-mock",
+      "variant": "docs-changelog-page",
+      "props": {
+        "groups": 3
+      }
+    },
+    "sources": [
+      {
+        "source_id": "ui-patterns-library",
+        "note": "date-grouped changelog/release notes page with category filters"
+      }
+    ],
+    "related": [
+      {
+        "id": "release-note-card",
+        "relation": "use-with",
+        "note": "docs-changelog-page는 release-note-card를 날짜 그룹으로 배치하는 페이지 레이아웃이다."
       }
     ],
     "confidence": "medium"
@@ -30810,6 +31096,61 @@ export const terms = [
       }
     ],
     "confidence": "medium"
+  },
+  {
+    "kind": "block",
+    "id": "interactive-api-playground",
+    "status": "draft",
+    "category": "structure",
+    "group": "structure-content-elements",
+    "ko": {
+      "name": "인터랙티브 API 플레이그라운드",
+      "aliases": [
+        "interactive api playground",
+        "API 플레이그라운드",
+        "try it 위젯"
+      ]
+    },
+    "en": {
+      "name": "Interactive API playground",
+      "aliases": [
+        "API try-it widget",
+        "Embedded API console"
+      ]
+    },
+    "one_liner": "문서 페이지 안에서 실제 파라미터를 입력해 API 요청을 바로 실행하고 응답을 확인하는 임베디드 위젯.",
+    "description": "파라미터 입력 폼, Send/Try it 버튼, 실제 응답(상태 코드+JSON)을 한 화면에 묶고, 입력값에 따라 옆의 언어별 코드 샘플이 동기화된다.",
+    "visual_anatomy": [
+      "parameter input form",
+      "send/try-it button",
+      "response status code",
+      "response body panel",
+      "synced code sample"
+    ],
+    "when_to_use": [
+      "문서 안에서 실제 API 호출을 실행해보고 응답을 즉시 확인해야 할 때"
+    ],
+    "anti_use": [
+      "실행 없이 코드만 보여주면 api-reference-three-column-layout 정도의 정적 레퍼런스로 충분하다"
+    ],
+    "prompt_phrases": [
+      "문서 페이지에 파라미터를 입력하고 바로 실행하는 API 플레이그라운드를 넣어줘",
+      "Try it 버튼으로 실제 응답을 보여주는 임베디드 API 콘솔을 만들어줘"
+    ],
+    "asset": {
+      "kind": "mini-mock",
+      "variant": "interactive-api-playground",
+      "props": {
+        "executed": false
+      }
+    },
+    "sources": [
+      {
+        "source_id": "ui-patterns-library",
+        "note": "embedded interactive API playground/try-it console pattern"
+      }
+    ],
+    "confidence": "medium"
   }
 ] satisfies VocabularyTerm[]
 
@@ -31258,6 +31599,7 @@ export const groups = [
     "ids": [
       "workspace-switcher",
       "account-switcher",
+      "versioned-docs-switcher",
       "payment-method-card"
     ]
   },
@@ -31480,6 +31822,7 @@ export const groups = [
     "ids": [
       "toast",
       "alert",
+      "callout",
       "snackbar",
       "undo-toast",
       "inline-alert",
@@ -31695,7 +32038,8 @@ export const groups = [
     "ids": [
       "aspect-ratio-box",
       "scroll-area",
-      "message-scroller"
+      "message-scroller",
+      "interactive-api-playground"
     ]
   },
   {
@@ -31768,7 +32112,8 @@ export const groups = [
     "label": "확인·도움말",
     "ids": [
       "tooltip",
-      "confirmation-dialog"
+      "confirmation-dialog",
+      "docs-feedback-widget"
     ]
   },
   {
@@ -31957,6 +32302,7 @@ export const groups = [
       "help-center-card",
       "faq-list",
       "release-note-card",
+      "docs-changelog-page",
       "profile-card",
       "blog-post-card",
       "featured-post-card",
