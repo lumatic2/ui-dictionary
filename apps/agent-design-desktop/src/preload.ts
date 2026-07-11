@@ -5,6 +5,7 @@ import {
   parseBridgeStatus,
   parseCanvasMutationRequest,
   parseCanvasSnapshot,
+  parseCollaborationFeed,
   parseFileActionRequest,
   parseHostRequest,
   parsePreviewStatus,
@@ -15,6 +16,7 @@ import {
   type BridgeStatus,
   type CanvasSnapshot,
   type CanvasSnapshotReason,
+  type CollaborationFeed,
   type HostInfo,
   type HostRequest,
   type FileActionRequest,
@@ -63,6 +65,15 @@ const hostApi = Object.freeze({
     }
     ipcRenderer.on(HOST_IPC_CHANNELS.canvasSnapshotChanged, wrapped)
     return () => ipcRenderer.removeListener(HOST_IPC_CHANNELS.canvasSnapshotChanged, wrapped)
+  },
+  async getCollaborationFeed(request: HostRequest): Promise<CollaborationFeed> {
+    return parseCollaborationFeed(await ipcRenderer.invoke(HOST_IPC_CHANNELS.getCollaborationFeed, parseHostRequest(request)))
+  },
+  onCollaborationFeed(listener: (feed: CollaborationFeed) => void): () => void {
+    if (typeof listener !== 'function') throw new TypeError('collaboration feed listener must be a function')
+    const wrapped = (_event: Electron.IpcRendererEvent, rawFeed: unknown) => listener(parseCollaborationFeed(rawFeed))
+    ipcRenderer.on(HOST_IPC_CHANNELS.collaborationFeedChanged, wrapped)
+    return () => ipcRenderer.removeListener(HOST_IPC_CHANNELS.collaborationFeedChanged, wrapped)
   },
   async selectProject(request: HostRequest): Promise<ProjectSelectionResult> {
     return parseProjectSelectionResult(await ipcRenderer.invoke(HOST_IPC_CHANNELS.selectProject, parseHostRequest(request)))

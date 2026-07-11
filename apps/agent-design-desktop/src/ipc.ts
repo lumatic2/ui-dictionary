@@ -5,6 +5,7 @@ import {
   parseFileActionRequest,
   parseCanvasMutationRequest,
   parseCanvasSnapshot,
+  parseCollaborationFeed,
   parseHostRequest,
   parsePreviewStatus,
   parseProjectSelectionResult,
@@ -13,6 +14,7 @@ import {
   parseTrustedProjectSummary,
   type BridgeStatus,
   type CanvasSnapshot,
+  type CollaborationFeed,
   type HostInfo,
   type PreviewStatus,
   type ProjectSelectionResult,
@@ -37,6 +39,7 @@ export interface HostIpcServices {
   canvasSnapshot(): CanvasSnapshot
   applyCanvasOperation(operation: unknown): Promise<CanvasSnapshot>
   undoCanvas(): Promise<CanvasSnapshot>
+  collaborationFeed(): CollaborationFeed
 }
 
 const idleServices: HostIpcServices = {
@@ -65,6 +68,7 @@ const idleServices: HostIpcServices = {
   canvasSnapshot: () => { throw new Error('canvas relay is not ready') },
   applyCanvasOperation: async () => { throw new Error('canvas relay is not ready') },
   undoCanvas: async () => { throw new Error('canvas relay is not ready') },
+  collaborationFeed: () => ({ entries: [], actors: [], cursorRevision: 0 }),
 }
 
 export function isTrustedIpcSender(event: IpcMainInvokeEvent): boolean {
@@ -120,6 +124,12 @@ export function registerHostIpc(appVersion: string, services: HostIpcServices = 
     if (!isTrustedIpcSender(event)) throw new Error('untrusted IPC sender')
     parseHostRequest(rawRequest)
     return parseCanvasSnapshot(await services.undoCanvas())
+  })
+
+  ipcMain.handle(HOST_IPC_CHANNELS.getCollaborationFeed, (event, rawRequest): CollaborationFeed => {
+    if (!isTrustedIpcSender(event)) throw new Error('untrusted IPC sender')
+    parseHostRequest(rawRequest)
+    return parseCollaborationFeed(services.collaborationFeed())
   })
 
   ipcMain.handle(HOST_IPC_CHANNELS.selectProject, async (event, rawRequest): Promise<ProjectSelectionResult> => {
@@ -189,6 +199,7 @@ export function registerHostIpc(appVersion: string, services: HostIpcServices = 
     ipcMain.removeHandler(HOST_IPC_CHANNELS.getCanvasSnapshot)
     ipcMain.removeHandler(HOST_IPC_CHANNELS.applyCanvasOperation)
     ipcMain.removeHandler(HOST_IPC_CHANNELS.undoCanvas)
+    ipcMain.removeHandler(HOST_IPC_CHANNELS.getCollaborationFeed)
     ipcMain.removeHandler(HOST_IPC_CHANNELS.selectProject)
     ipcMain.removeHandler(HOST_IPC_CHANNELS.recentProjects)
     ipcMain.removeHandler(HOST_IPC_CHANNELS.openRecentProject)

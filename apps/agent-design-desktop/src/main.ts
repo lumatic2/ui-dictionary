@@ -97,6 +97,7 @@ app.whenReady().then(async () => {
     canvasSnapshot: () => relay.currentSnapshot(),
     applyCanvasOperation: (operation) => relay.applyOperation(operation),
     undoCanvas: () => relay.undo(),
+    collaborationFeed: () => relay.currentFeed(),
     selectProject: async () => {
       const parent = BrowserWindow.getFocusedWindow()
       const options: Electron.OpenDialogOptions = { title: 'Trust a React project', properties: ['openDirectory', 'dontAddToRecent'] }
@@ -135,6 +136,11 @@ app.whenReady().then(async () => {
   relay.subscribe((snapshot, reason) => {
     for (const window of BrowserWindow.getAllWindows()) {
       window.webContents.send(HOST_IPC_CHANNELS.canvasSnapshotChanged, snapshot, reason)
+    }
+  })
+  relay.subscribeFeed((feed) => {
+    for (const window of BrowserWindow.getAllWindows()) {
+      window.webContents.send(HOST_IPC_CHANNELS.collaborationFeedChanged, feed)
     }
   })
   let relayedProjectId: string | null = null

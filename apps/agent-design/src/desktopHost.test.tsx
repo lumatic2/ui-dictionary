@@ -1,7 +1,8 @@
 import { cleanup, fireEvent, render, waitFor } from '@testing-library/react'
 import { afterEach, describe, expect, it, vi } from 'vitest'
 import { App } from './App'
-import type { AgentDesignDesktopHost, DesktopBridgeStatus } from './desktopHost'
+import { desktopHost } from './desktopHost'
+import type { AgentDesignDesktopHost, DesktopBridgeStatus, DesktopCollaborationFeed } from './desktopHost'
 
 afterEach(() => {
   cleanup()
@@ -31,6 +32,8 @@ describe('desktop bridge surface', () => {
       applyCanvasOperation: vi.fn(),
       undoCanvas: vi.fn(),
       onCanvasSnapshot: vi.fn(() => () => undefined),
+      getCollaborationFeed: vi.fn(async () => ({ entries: [], actors: [], cursorRevision: 0 })),
+      onCollaborationFeed: vi.fn(() => () => undefined),
       selectProject: vi.fn(async () => ({ canceled: false, project: { id: 'project:aaaaaaaaaaaaaaaaaaaaaaaa', displayName: 'fixture', lastOpenedAt: '2026-07-11T01:00:00.000Z' } })),
       recentProjects: vi.fn(async () => []),
       openRecentProject: vi.fn(async () => ({ id: 'project:aaaaaaaaaaaaaaaaaaaaaaaa', displayName: 'fixture', lastOpenedAt: '2026-07-11T01:00:00.000Z' })),
@@ -63,5 +66,40 @@ describe('desktop bridge surface', () => {
     await waitFor(() => expect(view.getByRole('combobox', { name: 'Project files' }).textContent).toContain('src/App.tsx'))
     fireEvent.change(view.getByRole('combobox', { name: 'Project files' }), { target: { value: 'file:bbbbbbbbbbbbbbbbbbbbbbbb' } })
     expect(host.openFile).toHaveBeenCalledWith({ apiVersion: 1, projectId: 'project:aaaaaaaaaaaaaaaaaaaaaaaa', fileId: 'file:bbbbbbbbbbbbbbbbbbbbbbbb' })
+  })
+})
+
+describe('desktop collaboration feed surface', () => {
+  it('fetches and subscribes to an actor-attributed, revision-ordered feed and unsubscribes cleanly', async () => {
+    const feed: DesktopCollaborationFeed = {
+      entries: [
+        { transactionId: 'human:1', actor: 'human', kind: 'operations', revision: 1, at: '2026-07-12T00:01:00.000Z', changeCount: 1, nodeIds: ['node-a'] },
+        { transactionId: 'codex:2', actor: 'codex', kind: 'operations', revision: 2, at: '2026-07-12T00:02:00.000Z', changeCount: 1, nodeIds: ['node-b'] },
+      ],
+      actors: [
+        { actor: 'codex', lastRevision: 2, lastActiveAt: '2026-07-12T00:02:00.000Z' },
+        { actor: 'human', lastRevision: 1, lastActiveAt: '2026-07-12T00:01:00.000Z' },
+      ],
+      cursorRevision: 2,
+    }
+    const removeListener = vi.fn()
+    const host: Pick<AgentDesignDesktopHost, 'getCollaborationFeed' | 'onCollaborationFeed'> = {
+      getCollaborationFeed: vi.fn(async () => feed),
+      onCollaborationFeed: vi.fn((listener: (value: DesktopCollaborationFeed) => void) => {
+        listener(feed)
+        return removeListener
+      }),
+    }
+    window.agentDesignHost = host as unknown as AgentDesignDesktopHost
+
+    const resolved = await desktopHost()?.getCollaborationFeed({ apiVersion: 1 })
+    expect(resolved).toEqual(feed)
+    expect(resolved?.entries.map((entry) => entry.revision)).toEqual([1, 2])
+
+    const received: DesktopCollaborationFeed[] = []
+    const unsubscribe = desktopHost()?.onCollaborationFeed((value) => received.push(value))
+    expect(received).toEqual([feed])
+    unsubscribe?.()
+    expect(removeListener).toHaveBeenCalledTimes(1)
   })
 })

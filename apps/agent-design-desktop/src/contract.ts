@@ -20,6 +20,8 @@ export const HOST_IPC_CHANNELS = Object.freeze({
   revealProject: 'agent-design:os:reveal-project',
   openFile: 'agent-design:os:open-file',
   exportDiagnostics: 'agent-design:diagnostics:export',
+  getCollaborationFeed: 'agent-design:collaboration:get-feed',
+  collaborationFeedChanged: 'agent-design:collaboration:feed-changed',
 })
 
 export type TerminalActor = 'codex' | 'claude'
@@ -90,6 +92,31 @@ export type CanvasSnapshot = Readonly<{
 export type CanvasMutationRequest = Readonly<{
   apiVersion: typeof HOST_API_VERSION
   operation: CanvasOperation
+}>
+
+export type FeedActor = 'codex' | 'claude' | 'human' | 'watcher'
+export type FeedEntryKind = 'operations' | 'source-patch' | 'undo'
+
+export type CollaborationFeedEntry = Readonly<{
+  transactionId: string
+  actor: FeedActor
+  kind: FeedEntryKind
+  revision: number
+  at: string
+  changeCount: number
+  nodeIds: readonly string[]
+}>
+
+export type ActorActivity = Readonly<{
+  actor: FeedActor
+  lastRevision: number
+  lastActiveAt: string
+}>
+
+export type CollaborationFeed = Readonly<{
+  entries: readonly CollaborationFeedEntry[]
+  actors: readonly ActorActivity[]
+  cursorRevision: number
 }>
 
 const REQUEST_KEYS = new Set(['apiVersion', 'projectId', 'sessionId'])
@@ -225,4 +252,49 @@ export function parseCanvasMutationRequest(value: unknown): CanvasMutationReques
   if (typeof operation.at !== 'string' || Number.isNaN(Date.parse(operation.at))) throw new TypeError('invalid canvas operation timestamp')
   if (JSON.stringify(operation).length > 1_000_000) throw new TypeError('canvas operation is too large')
   return Object.freeze({ apiVersion: HOST_API_VERSION, operation: structuredClone(operation) as unknown as CanvasOperation })
+}
+
+const FEED_ACTORS = new Set<FeedActor>(['codex', 'claude', 'human', 'watcher'])
+const FEED_KINDS = new Set<FeedEntryKind>(['operations', 'source-patch', 'undo'])
+const OPAQUE_NODE_ID = /^[A-Za-z0-9][A-Za-z0-9._:-]{0,127}$/
+
+function parseCollaborationFeedEntry(value: unknown): CollaborationFeedEntry {
+  if (!isRecord(value)) throw new TypeError('collaboration feed entry must be an object')
+  const allowed = new Set(['transactionId', 'actor', 'kind', 'revision', 'at', 'changeCount', 'nodeIds'])
+  if (Object.keys(value).some((key) => !allowed.has(key))) throw new TypeError('collaboration feed entry contains an unsupported field')
+  if (typeof value.transactionId !== 'string' || !OPAQUE_ID.test(value.transactionId)) throw new TypeError('invalid feed transactionId')
+  if (typeof value.actor !== 'string' || !FEED_ACTORS.has(value.actor as FeedActor)) throw new TypeError('invalid feed actor')
+  if (typeof value.kind !== 'string' || !FEED_KINDS.has(value.kind as FeedEntryKind)) throw new TypeError('invalid feed kind')
+  if (!Number.isSafeInteger(value.revision) || (value.revision as number) < 0) throw new TypeError('invalid feed revision')
+  if (typeof value.at !== 'string' || Number.isNaN(Date.parse(value.at))) throw new TypeError('invalid feed timestamp')
+  if (!Number.isSafeInteger(value.changeCount) || (value.changeCount as number) < 0) throw new TypeError('invalid feed changeCount')
+  if (!Array.isArray(value.nodeIds) || value.nodeIds.some((id) => typeof id !== 'string' || !OPAQUE_NODE_ID.test(id))) {
+    throw new TypeError('invalid feed nodeIds')
+  }
+  return Object.freeze({ ...value, nodeIds: Object.freeze([...value.nodeIds]) }) as CollaborationFeedEntry
+}
+
+function parseActorActivity(value: unknown): ActorActivity {
+  if (!isRecord(value)) throw new TypeError('actor activity must be an object')
+  if (Object.keys(value).some((key) => key !== 'actor' && key !== 'lastRevision' && key !== 'lastActiveAt')) {
+    throw new TypeError('actor activity contains an unsupported field')
+  }
+  if (typeof value.actor !== 'string' || !FEED_ACTORS.has(value.actor as FeedActor)) throw new TypeError('invalid actor activity actor')
+  if (!Number.isSafeInteger(value.lastRevision) || (value.lastRevision as number) < 0) throw new TypeError('invalid actor activity revision')
+  if (typeof value.lastActiveAt !== 'string' || Number.isNaN(Date.parse(value.lastActiveAt))) throw new TypeError('invalid actor activity timestamp')
+  return Object.freeze(value as unknown as ActorActivity)
+}
+
+export function parseCollaborationFeed(value: unknown): CollaborationFeed {
+  if (!isRecord(value) || Object.keys(value).some((key) => !['entries', 'actors', 'cursorRevision'].includes(key))) {
+    throw new TypeError('invalid collaboration feed')
+  }
+  if (!Array.isArray(value.entries) || !Array.isArray(value.actors)) throw new TypeError('collaboration feed entries/actors must be arrays')
+  if (!Number.isSafeInteger(value.cursorRevision) || (value.cursorRevision as number) < 0) throw new TypeError('invalid collaboration feed cursor')
+  if (JSON.stringify(value).length > 5_000_000) throw new TypeError('collaboration feed is too large')
+  return Object.freeze({
+    entries: Object.freeze(value.entries.map(parseCollaborationFeedEntry)),
+    actors: Object.freeze(value.actors.map(parseActorActivity)),
+    cursorRevision: value.cursorRevision as number,
+  })
 }

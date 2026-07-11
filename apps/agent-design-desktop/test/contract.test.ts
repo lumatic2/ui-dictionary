@@ -1,5 +1,5 @@
 import { describe, expect, it } from 'vitest'
-import { HOST_API_VERSION, parseBridgeStatus, parseCanvasMutationRequest, parseCanvasSnapshot, parseHostRequest, parseTrustedFileSummary, parseTrustedProjectSummary } from '../src/contract'
+import { HOST_API_VERSION, parseBridgeStatus, parseCanvasMutationRequest, parseCanvasSnapshot, parseCollaborationFeed, parseHostRequest, parseTrustedFileSummary, parseTrustedProjectSummary } from '../src/contract'
 
 describe('host authority contract', () => {
   it('accepts versioned opaque project and session identifiers', () => {
@@ -38,6 +38,22 @@ describe('canvas relay contract', () => {
       hash: 'a'.repeat(64),
       token: 'secret',
     })).toThrow('invalid canvas snapshot')
+  })
+})
+
+describe('collaboration feed contract', () => {
+  it('accepts a valid actor-attributed feed', () => {
+    const feed = {
+      entries: [{ transactionId: 'codex:1', actor: 'codex', kind: 'operations', revision: 1, at: '2026-07-12T00:00:00.000Z', changeCount: 1, nodeIds: ['node-a'] }],
+      actors: [{ actor: 'codex', lastRevision: 1, lastActiveAt: '2026-07-12T00:00:00.000Z' }],
+      cursorRevision: 1,
+    }
+    expect(parseCollaborationFeed(feed)).toEqual(feed)
+  })
+
+  it('rejects a feed entry with an unknown actor or unsupported field', () => {
+    expect(() => parseCollaborationFeed({ entries: [{ transactionId: 'x:1', actor: 'attacker', kind: 'operations', revision: 1, at: '2026-07-12T00:00:00.000Z', changeCount: 0, nodeIds: [] }], actors: [], cursorRevision: 1 })).toThrow('invalid feed actor')
+    expect(() => parseCollaborationFeed({ entries: [], actors: [], cursorRevision: 0, token: 'secret' })).toThrow('invalid collaboration feed')
   })
 })
 

@@ -21,6 +21,8 @@ export interface AgentDesignDesktopHost {
   applyCanvasOperation(request: { apiVersion: 1; operation: CanvasOperation }): Promise<DesktopCanvasSnapshot>
   undoCanvas(request: { apiVersion: 1 }): Promise<DesktopCanvasSnapshot>
   onCanvasSnapshot(listener: (snapshot: DesktopCanvasSnapshot, reason: DesktopCanvasSnapshotReason) => void): () => void
+  getCollaborationFeed(request: { apiVersion: 1 }): Promise<DesktopCollaborationFeed>
+  onCollaborationFeed(listener: (feed: DesktopCollaborationFeed) => void): () => void
   selectProject(request: { apiVersion: 1 }): Promise<ProjectSelectionResult>
   recentProjects(request: { apiVersion: 1 }): Promise<TrustedProjectSummary[]>
   openRecentProject(request: { apiVersion: 1; projectId: string }): Promise<TrustedProjectSummary>
@@ -60,6 +62,31 @@ export interface PreviewStatus {
 export interface TrustedFileSummary {
   id: string
   label: string
+}
+
+export type DesktopFeedActor = 'codex' | 'claude' | 'human' | 'watcher'
+export type DesktopFeedEntryKind = 'operations' | 'source-patch' | 'undo'
+
+export interface DesktopCollaborationFeedEntry {
+  transactionId: string
+  actor: DesktopFeedActor
+  kind: DesktopFeedEntryKind
+  revision: number
+  at: string
+  changeCount: number
+  nodeIds: string[]
+}
+
+export interface DesktopActorActivity {
+  actor: DesktopFeedActor
+  lastRevision: number
+  lastActiveAt: string
+}
+
+export interface DesktopCollaborationFeed {
+  entries: DesktopCollaborationFeedEntry[]
+  actors: DesktopActorActivity[]
+  cursorRevision: number
 }
 
 export function desktopHost(): AgentDesignDesktopHost | null {
