@@ -250,6 +250,62 @@ describe('Agent Design persistence flow', () => {
     expect(view.getByRole('dialog', { name: 'Keyboard shortcuts' })).toBeTruthy()
   })
 
+  it('completes a representative creation workflow from insert to reload continuity', async () => {
+    const view = render(<App />)
+    const viewport = view.getByTestId('canvas-viewport')
+
+    fireEvent.keyDown(viewport, { key: 'Escape' })
+    fireEvent.click(view.getByTestId('toggle-insert'))
+    fireEvent.click(view.getByTestId('insert-primitive-frame'))
+    expect(view.getByTestId('insert-feedback').textContent).toBe('Frame inserted into canvas root')
+    fireEvent.click(view.getByTestId('insert-primitive-text'))
+    expect(view.getByTestId('insert-feedback').textContent).toBe('Text inserted into Frame')
+    expect(view.getByText('1,002 nodes')).toBeTruthy()
+
+    fireEvent.click(view.getByTestId('layer-created-0001'))
+    fireEvent.click(view.getByTestId('insert-primitive-group'))
+    expect(view.getByTestId('insert-feedback').textContent).toBe('Group inserted into Frame')
+
+    fireEvent.click(view.getByTestId('layer-created-0002'))
+    fireEvent.click(view.getByTestId('layer-created-0003'), { shiftKey: true })
+    fireEvent.click(view.getByRole('button', { name: 'Tidy horizontal gap' }))
+    const text = view.container.querySelector<HTMLElement>('[data-canvas-id="created-0002"]')
+    const group = view.container.querySelector<HTMLElement>('[data-canvas-id="created-0003"]')
+    if (!text || !group) throw new Error('created nodes missing from canvas')
+    expect(text.style.left).toBe('64px')
+    expect(group.style.left).toBe('200px')
+
+    fireEvent.keyDown(view.getByTestId('layer-created-0001'), { key: 'F2' })
+    const rename = view.getByTestId('layer-rename-input')
+    fireEvent.change(rename, { target: { value: 'Hero section' } })
+    fireEvent.keyDown(rename, { key: 'Enter' })
+    expect(view.getByTestId('layer-created-0001').getAttribute('aria-label')).toBe('Hero section')
+
+    fireEvent.click(view.getByTestId('layer-created-0002'))
+    fireEvent.change(view.getByTestId('property-layout-horizontal'), { target: { value: 'fill' } })
+    fireEvent.keyDown(viewport, { key: 'ArrowRight' })
+    expect(view.getByTestId('layer-created-0003').getAttribute('aria-selected')).toBe('true')
+
+    fireEvent.keyDown(window, { key: 'd', ctrlKey: true })
+    expect(view.getByText('1,004 nodes')).toBeTruthy()
+    fireEvent.keyDown(window, { key: 'Delete' })
+    expect(view.getByText('1,003 nodes')).toBeTruthy()
+    fireEvent.click(view.getByTestId('undo'))
+    expect(view.getByText('1,004 nodes')).toBeTruthy()
+    fireEvent.click(view.getByTestId('undo'))
+    expect(view.getByText('1,003 nodes')).toBeTruthy()
+
+    fireEvent.click(view.getByTestId('save-document'))
+    await waitFor(() => expect(view.getByTestId('persistence-status').textContent).toContain('saved'))
+    fireEvent.click(view.getByTestId('reload-document'))
+    await waitFor(() => expect(view.getByTestId('persistence-status').textContent).toContain('reloaded revision'))
+    expect(view.getByText('1,003 nodes')).toBeTruthy()
+    const frame = view.container.querySelector<HTMLElement>('[data-canvas-id="created-0001"]')
+    expect(frame?.getAttribute('aria-label')).toBe('Hero section')
+    expect(view.container.querySelector('[data-canvas-id="created-0002"]')?.getAttribute('data-parent-id')).toBe('created-0001')
+    expect(view.getByTestId('layer-created-0001').getAttribute('aria-label')).toBe('Hero section')
+  })
+
   it('keeps Korean composition transient and commits one text operation at composition end', () => {
     const view = render(<App />)
     const text = view.container.querySelector('[data-canvas-id="node-00007"]')
