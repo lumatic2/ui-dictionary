@@ -2,7 +2,7 @@
 
 Date: 2026-07-12
 Milestone: AI (`ROADMAP.md`, active) — H1 마지막 milestone
-Status: 3/4 steps 완료, Step 4 blocked 2026-07-12 — packaged 기능 게이트 전부 PASS, 5k 성능 게이트만 머신 부하로 측정 불가(코드 무죄는 worktree 이분으로 증명). 부하 정리 후 재실행 필요.
+Status: approved 2026-07-12 — 3/4 steps 완료; Step 4는 5k 성능 게이트의 부하 내성 보강 후 재시도 중 (기능 게이트 전부 PASS, 코드 무죄는 worktree 이분으로 증명)
 
 ## Hierarchy
 

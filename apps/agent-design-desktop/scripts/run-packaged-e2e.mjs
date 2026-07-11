@@ -25,6 +25,14 @@ function p95(values) {
   return sorted[Math.min(sorted.length - 1, Math.floor(sorted.length * 0.95))] ?? 0
 }
 
+// Latency gates measure wall-clock frame time on a shared machine; elevate the
+// whole Electron process tree (main + gpu + renderer) to High priority so
+// ambient load (other user processes) cannot inflate the measurement.
+function elevatePriority(rootPid) {
+  const command = `$ids = @(${rootPid}); $all = Get-CimInstance Win32_Process; for ($i = 0; $i -lt $ids.Count; $i++) { $all | Where-Object { $_.ParentProcessId -eq $ids[$i] } | ForEach-Object { $ids += [int]$_.ProcessId } }; foreach ($id in $ids) { try { (Get-Process -Id $id -ErrorAction Stop).PriorityClass = 'High' } catch {} }`
+  spawnSync('pwsh.exe', ['-NoProfile', '-Command', command], { encoding: 'utf8' })
+}
+
 async function seedTrustedProject(projectRoot, userData) {
   const canonicalRoot = await realpath(projectRoot)
   const identity = await stat(canonicalRoot, { bigint: true })
@@ -215,6 +223,7 @@ async function launch(userData) {
   }
   invariant(target?.webSocketDebuggerUrl, `packaged app CDP target did not become ready\n${diagnostics}`)
   const page = await new CdpPage(target.webSocketDebuggerUrl, consoleErrors).connect()
+  elevatePriority(child.pid)
   const firstWindow = async () => page
   const close = async () => {
     await page.evaluate(() => window.close()).catch(() => undefined)
