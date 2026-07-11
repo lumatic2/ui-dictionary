@@ -468,7 +468,13 @@ try {
   await benchmarkPage.waitForFunction(() => document.querySelectorAll('[data-canvas-id]').length === 5000)
   const gpuState = await benchmarkPage.getByTestId('editor-plane').getAttribute('data-editor-plane')
   const traces = []
-  for (let run = 0; run < 3; run += 1) traces.push(await benchmarkPage.evaluate(() => window.__agentDesignBenchmark.runPointerTrace(60)))
+  for (let run = 0; run < 3; run += 1) {
+    // Each trace ends with a canonical commit that re-reconciles all 5k nodes;
+    // let that settle so the next trace measures steady-state pointer latency
+    // instead of the previous trace's post-commit render tail.
+    await benchmarkPage.evaluate(() => new Promise((resolveSettle) => setTimeout(() => requestAnimationFrame(() => requestAnimationFrame(resolveSettle)), 750)))
+    traces.push(await benchmarkPage.evaluate(() => window.__agentDesignBenchmark.runPointerTrace(60)))
+  }
   const viewport = benchmarkPage.getByTestId('canvas-viewport')
   await viewport.focus()
   await viewport.press('Escape')

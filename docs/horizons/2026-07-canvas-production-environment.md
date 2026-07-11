@@ -1,7 +1,7 @@
 # Horizon — Canvas Production Environment
 
 Date: 2026-07-12
-Status: active — UX1·UX2 completed (전신 `2026-07-canvas-product-ux.md`에서 승계); UX3 in planning.
+Status: closed 2026-07-12 — 7 milestones 전부 완료 (UX1·UX2 승계분 + UX3·UX4·CR·RT·AI). Close criteria 감사: packaged E2E가 실프로젝트 open·양 에이전트 MCP 편집·human 편집·소스 watcher 반영·crash/restart 복구·5k 예산(median 11.6ms)·a11y·보안 게이트를 증명, registry 조립·협업 패널·무손실 왕복·재열기 연속성은 renderer/bridge E2E+브라우저 증거로 증명. 잔여(비차단): packaged E2E에 registry/협업 시나리오 통합은 후속 유지보수 후보.
 Supersedes: `docs/horizons/2026-07-canvas-product-ux.md` (2026-07-12 사용자 승인으로 확장 흡수 — UX1/UX2 기록·증거는 전신 문서와 BACKLOG에 보존)
 
 ## Goal

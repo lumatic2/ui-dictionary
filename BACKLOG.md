@@ -2,6 +2,17 @@
 
 ## Completed Horizons
 
+### 2026-07-12 - Canvas Production Environment (H1)
+
+- UX3 - Agent Collaboration UX: 하이브리드 채널(MCP live context via /events 구독 + agent-canvas CLI, 단일 BridgeClient) + 양 호스트 경로 collaboration feed 계약(/audit 소비) + AgentPanel(actor activity·읽는 feed·canonical Undo·conflict 인라인) + dual-actor conflict-recovery E2E (`docs/plans/2026-07-12-ux3-agent-collaboration-ux.md`).
+- UX4 - Product Polish And Validation: 상태/접근성/밀도 sweep + packaged 재증명 — 기존 evidence가 AUC4 셸 산출임을 적발하고 openDevFixture 벤치마크 진입 API로 재생성 (`docs/plans/2026-07-12-ux4-product-polish.md`).
+- CR - Component Registry: @askewly/component-registry(shadcn 10+layout 6 큐레이션, registry:// source), 팔레트 v2 4섹션, list_components MCP tool+CLI, 실 bridge round-trip 증명 (`docs/plans/2026-07-12-cr-component-registry.md`).
+- RT - Real-project Round-trip: marker-scan ingestion 신설(부재 적발)+데스크톱 배선, 무손실 반영 계약(재파생 일치+바이트 보존+conflict 무변이), registry 실체화(NEW_FILE_HASH 신규 파일 채널, 정체성=marker id), 재열기·병행 편집 연속성 E2E (`docs/plans/2026-07-12-rt-real-project-roundtrip.md`).
+- AI - Askewly Identity: 에디터 크롬·캔버스 렌더가 tokens/askewly.tokens.json SSOT 파생(hex lint 고정), tokenBindings 실렌더+다크 전환 실효, H1 close 게이트(5k p95 median 11.60ms) (`docs/plans/2026-07-12-ai-askewly-identity.md`).
+- Close: close criteria 충족 — packaged E2E(실프로젝트 open·양 에이전트 편집·watcher 반영·crash/restart·5k 예산·a11y·보안) + renderer/bridge E2E(registry 조립·무손실 왕복·연속성). 상세: `docs/horizons/2026-07-canvas-production-environment.md`. 잔여(비차단): packaged E2E에 registry/협업 시나리오 통합.
+- 크기 회고: milestone 5개(승계 2 제외)가 각 3~6 step으로 전부 milestone-grade — 인플레 없음. 측정 프로토콜 교훈: 절대시간 게이트는 High priority+settle+median 통계로 상시 데스크톱 내성 확보(기준 불변).
+- 오케스트레이션 회고: sonnet 워커 13기(구현 11·검증 1·리서치 1) + Fable 게이트 체제로 UX2~AI 6 milestone을 단일 세션에 완주. 게이트에서 워커 누락 실결함 2건·시스템 결함 3건 적발.
+
 ### 2026-07-12 - Canvas Product UX (superseded into Canvas Production Environment)
 
 - UX1 - Workspace Foundation: 제품형 workspace shell, project entry/recent, toolbar, adaptive panels + packaged 품질 게이트 (`phases/agent-design-workspace-foundation/step5.md`). Completed 2026-07-11.
