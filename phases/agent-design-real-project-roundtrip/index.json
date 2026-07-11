@@ -1,0 +1,11 @@
+{
+  "project": "ui-dictionary",
+  "phase": "agent-design-real-project-roundtrip",
+  "mode": "product",
+  "steps": [
+    { "step": 1, "name": "realistic-fixture-ingestion-audit", "status": "pending" },
+    { "step": 2, "name": "lossless-source-reflection", "status": "pending" },
+    { "step": 3, "name": "registry-materialization", "status": "pending" },
+    { "step": 4, "name": "continuity-concurrent-e2e", "status": "pending" }
+  ]
+}

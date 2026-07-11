@@ -41,7 +41,7 @@ Goal: turn Agent Design into a tool where humans and terminal agents build produ
 
 - Completed at: 2026-07-12
 - Summary: Curated shadcn/layout catalog, palette v2, list_components MCP tool + CLI, and live-bridge registry round-trip proof completed
-<!-- harness:milestone id="RT" status="pending" priority="P1" -->
+<!-- harness:milestone id="RT" status="active" priority="P0" -->
 ### RT — Real-project Round-trip
 - DoD: open a real React repo, edit on canvas, and verify lossless source reflection with reopen continuity and concurrent agent edits.
 - Evidence: future `docs/plans/` + real-repo round-trip E2E evidence.
