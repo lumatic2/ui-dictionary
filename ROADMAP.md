@@ -41,13 +41,15 @@ Goal: turn Agent Design into a tool where humans and terminal agents build produ
 
 - Completed at: 2026-07-12
 - Summary: Curated shadcn/layout catalog, palette v2, list_components MCP tool + CLI, and live-bridge registry round-trip proof completed
-<!-- harness:milestone id="RT" status="active" priority="P0" -->
+<!-- harness:milestone id="RT" status="completed" priority="P0" evidence="docs/plans/2026-07-12-rt-real-project-roundtrip.md" -->
 ### RT — Real-project Round-trip
 - DoD: open a real React repo, edit on canvas, and verify lossless source reflection with reopen continuity and concurrent agent edits.
-- Evidence: future `docs/plans/` + real-repo round-trip E2E evidence.
+- Evidence: docs/plans/2026-07-12-rt-real-project-roundtrip.md
 - Gap: round-trip is proven on fixtures only; source mapping continuity in a live repo is unproven.
-- Status: [ ]
+- Status: [x]
 
+- Completed at: 2026-07-12
+- Summary: Marker-scan ingestion, lossless source reflection, registry materialization via guarded new-file channel, and reopen/concurrent continuity E2E completed
 <!-- harness:milestone id="AI" status="pending" priority="P2" -->
 ### AI — Askewly Identity
 - DoD: editor UI reskinned on the Askewly token SSOT and the canvas consumes ui-dictionary recipes/tokens — first junction of the site system and the canvas.
