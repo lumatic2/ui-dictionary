@@ -2,7 +2,7 @@
 
 Date: 2026-07-11
 Milestone: UX2 (`ROADMAP.md`, pending)
-Status: approved 2026-07-11 — Steps 1-2 complete; Step 3 in progress
+Status: approved 2026-07-11 — Steps 1-3 complete; Step 4 in progress
 
 ## Hierarchy
 
@@ -30,7 +30,7 @@ Status: approved 2026-07-11 — Steps 1-2 complete; Step 3 in progress
   - Replace the UX1 placeholder with an accessible tree supporting selection sync, expand/collapse, inline rename, visibility/lock, reorder, and valid reparent feedback.
   - Verify: component tests cover tree semantics, canvas↔tree selection, keyboard traversal, rename, drag/drop, invalid targets, and stable focus.
 
-- [ ] Step 3 — Searchable Insert palette
+- [x] Step 3 — Searchable Insert palette
   - Add Insert mode with Frame/Text/Group primitives plus document/project-supported components; insert at the selected container or canvas root with visible placement feedback.
   - Verify: palette search/category tests and creation-flow tests prove correct parent/index/bounds, post-insert selection, Undo, and empty-result behavior.
 
