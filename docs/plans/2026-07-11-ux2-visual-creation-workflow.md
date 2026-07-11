@@ -2,7 +2,7 @@
 
 Date: 2026-07-11
 Milestone: UX2 (`ROADMAP.md`, pending)
-Status: approved 2026-07-11 — Step 1 in progress
+Status: approved 2026-07-11 — Step 1 complete; Step 2 in progress
 
 ## Hierarchy
 
@@ -22,7 +22,7 @@ Status: approved 2026-07-11 — Step 1 in progress
 
 ## Step Tree
 
-- [ ] Step 1 — Canonical creation command layer
+- [x] Step 1 — Canonical creation command layer
   - Add deterministic node factories and planners for insert, duplicate, delete, group, align, distribute, and fit-selection using existing atomic operations and stable IDs.
   - Verify: canvas-core unit tests prove validation, inverse/Undo, subtree duplication, locked-node rejection, deterministic ordering, and no partial mutation.
 
