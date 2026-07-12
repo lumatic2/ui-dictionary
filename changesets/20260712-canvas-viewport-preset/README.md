@@ -23,3 +23,8 @@ Added a viewport preset control (`Mobile 390×844` / `Tablet 768×1024` / `Deskt
 ## Result
 
 Added a `Viewport` toolbar group (`data-testid="viewport-preset"`) next to the existing `Zoom` group in `apps/agent-design/src/App.tsx`, backed by an `applyViewportPreset` callback that dispatches `update-node` against `history.present.rootIds[0]`. Test and build both green; no `git commit`/`push` performed.
+
+## 오케스트레이터 게이트 + 실브라우저 E2E (2026-07-12)
+
+- 독립 재실행: `npm test -- --run` 10 files / 70 tests PASS, `npm run build` exit 0.
+- 실브라우저 E2E (Playwright MCP, `npm run dev` @ 127.0.0.1:5173): Viewport preset combobox 렌더 확인 → `Mobile 390×844` 선택 → 라이브 캔버스의 루트 프레임(`data-canvas-id=node-00000`, `node-frame`)이 정확히 390×844로 적용되고 selection overlay가 추종함을 DOM 측정으로 관측. 스크린샷: `docs/research/assets/ms-step4-mobile-viewport-e2e.png`.
