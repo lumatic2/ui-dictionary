@@ -30,38 +30,36 @@ type CartDrawerProps = {
   onContinueShopping: () => void
 }
 
+type CartDrawerBodyProps = Omit<CartDrawerProps, "open" | "trigger" | "onOpenChange">
+
 function formatMoney(value: number, currency: string) {
   return new Intl.NumberFormat("en-US", { style: "currency", currency }).format(value)
 }
 
 /**
- * Slide-over cart overlay: browse a grid, add items, and review/edit the
- * cart without leaving the current page. Only shows a subtotal — full cost
- * breakdown (tax, shipping) is deferred to `checkout-order-summary`.
+ * Cart drawer's header/list/footer markup, extracted from the `Sheet`
+ * chrome so it can be reused verbatim by a contained demo (no portal, no
+ * viewport-fixed positioning) instead of duplicating the item-list JSX.
  */
-export function CartDrawer({
-  open,
+export function CartDrawerBody({
   items,
   currency = "USD",
-  trigger,
-  onOpenChange,
   onQuantityChange,
   onRemove,
   onCheckout,
   onContinueShopping,
-}: CartDrawerProps) {
+}: CartDrawerBodyProps) {
   const subtotal = items.reduce((sum, item) => sum + item.price * item.quantity, 0)
   const isEmpty = items.length === 0
 
   return (
-    <Sheet open={open} onOpenChange={onOpenChange}>
-      <SheetTrigger asChild>{trigger}</SheetTrigger>
-      <SheetContent aria-describedby={undefined} className="w-full sm:max-w-md">
-        <SheetHeader>
-          <SheetTitle>Your cart</SheetTitle>
-        </SheetHeader>
+    <>
+      <SheetHeader>
+        {/* Plain heading: SheetTitle requires Dialog context, and this body also renders in the contained gallery demo without one. */}
+        <h2 className="font-semibold text-foreground">Your cart</h2>
+      </SheetHeader>
 
-        {isEmpty ? (
+      {isEmpty ? (
           <div className="flex flex-1 flex-col items-center justify-center gap-3 px-4 text-center">
             <p className="text-sm text-muted-foreground">Your cart is empty.</p>
             <Button size="sm" variant="outline" onClick={onContinueShopping}>
@@ -138,6 +136,39 @@ export function CartDrawer({
             </Button>
           </SheetFooter>
         ) : null}
+    </>
+  )
+}
+
+/**
+ * Slide-over cart overlay: browse a grid, add items, and review/edit the
+ * cart without leaving the current page. Only shows a subtotal — full cost
+ * breakdown (tax, shipping) is deferred to `checkout-order-summary`.
+ */
+export function CartDrawer({
+  open,
+  items,
+  currency = "USD",
+  trigger,
+  onOpenChange,
+  onQuantityChange,
+  onRemove,
+  onCheckout,
+  onContinueShopping,
+}: CartDrawerProps) {
+  return (
+    <Sheet open={open} onOpenChange={onOpenChange}>
+      <SheetTrigger asChild>{trigger}</SheetTrigger>
+      <SheetContent aria-describedby={undefined} className="w-full sm:max-w-md">
+        <SheetTitle className="sr-only">Your cart</SheetTitle>
+        <CartDrawerBody
+          items={items}
+          currency={currency}
+          onQuantityChange={onQuantityChange}
+          onRemove={onRemove}
+          onCheckout={onCheckout}
+          onContinueShopping={onContinueShopping}
+        />
       </SheetContent>
     </Sheet>
   )

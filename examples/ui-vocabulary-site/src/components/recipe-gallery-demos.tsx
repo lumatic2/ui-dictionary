@@ -21,7 +21,7 @@ import {
 } from "@/components/ui/popover"
 import { AtlasCard } from "@/components/showcase-card"
 import { atlasItems } from "@/lib/atlas-items"
-import { CartDrawer, type CartDrawerItem } from "@/components/cart-drawer"
+import { CartDrawerBody, type CartDrawerItem } from "@/components/cart-drawer"
 import { CategoryProductGrid, type CategoryProduct } from "@/components/category-product-grid"
 import { ProductDetailPurchaseStack, type ProductVariantOption } from "@/components/product-detail-purchase-stack"
 import { PromoBannerSystem } from "@/components/promo-banner-system"
@@ -37,7 +37,8 @@ import { DocsCodeBlock, type DocsCodeBlockVariant } from "@/components/docs-code
 import { AdvancedFilterBuilder, type FilterFieldOption, type FilterGroup } from "@/components/advanced-filter-builder"
 import { DataImportWizardValidationPreviewSteps, type ImportColumnMapping, type ImportPreviewRow, type ImportWizardStep } from "@/components/data-import-wizard-validation-preview-steps"
 import { LandingHero } from "@/components/landing-hero"
-import { DocSearchCmdkGroupedResultsPanel, type DocSearchResultGroup } from "@/components/doc-search-cmdk-grouped-results-panel"
+import { DocSearchCmdkGroupedResultsPanelBody, type DocSearchResultGroup } from "@/components/doc-search-cmdk-grouped-results-panel"
+import { Command } from "@/components/ui/command"
 import { TopbarSearch } from "@/components/topbar-search"
 import { VersionedDocsSwitcherNavbarSidebarSwap, type DocSidebarGroup, type DocVersion } from "@/components/versioned-docs-switcher-navbar-sidebar-swap"
 import { terms } from "@/data/terms.generated"
@@ -53,18 +54,20 @@ export function CartDrawerDemo() {
   ])
 
   return (
-    <CartDrawer
-      open
-      items={items}
-      trigger={<Button variant="outline">Open cart</Button>}
-      onOpenChange={() => {}}
-      onQuantityChange={(id, quantity) =>
-        setItems((current) => current.map((item) => (item.id === id ? { ...item, quantity: Math.max(1, quantity) } : item)))
-      }
-      onRemove={(id) => setItems((current) => current.filter((item) => item.id !== id))}
-      onCheckout={() => {}}
-      onContinueShopping={() => {}}
-    />
+    <div className="relative isolate h-[26rem] w-full max-w-3xl overflow-hidden rounded-lg border bg-muted/30">
+      <div aria-hidden="true" className="absolute inset-0 bg-black/50" />
+      <div className="absolute inset-y-0 right-0 flex w-full max-w-sm flex-col gap-4 border-l bg-background shadow-lg">
+        <CartDrawerBody
+          items={items}
+          onQuantityChange={(id, quantity) =>
+            setItems((current) => current.map((item) => (item.id === id ? { ...item, quantity: Math.max(1, quantity) } : item)))
+          }
+          onRemove={(id) => setItems((current) => current.filter((item) => item.id !== id))}
+          onCheckout={() => {}}
+          onContinueShopping={() => {}}
+        />
+      </div>
+    </div>
   )
 }
 
@@ -361,16 +364,18 @@ export function DocSearchCmdkGroupedResultsPanelDemo() {
   return (
     <div className="rounded-md border bg-card p-4">
       <p className="mb-3 text-sm text-muted-foreground">Panel rendered inline for the gallery (production opens it from Cmd/Ctrl+K).</p>
-      <DocSearchCmdkGroupedResultsPanel
-        open
-        query={query}
-        groups={groups}
-        recentQueries={["command palette"]}
-        suggestedDocs={[{ id: "s1", label: "Agent recipes" }]}
-        onOpenChange={() => {}}
-        onQueryChange={setQuery}
-        onSelect={() => {}}
-      />
+      <div className="overflow-hidden rounded-md border bg-popover text-popover-foreground">
+        <Command>
+          <DocSearchCmdkGroupedResultsPanelBody
+            query={query}
+            groups={groups}
+            recentQueries={["command palette"]}
+            suggestedDocs={[{ id: "s1", label: "Agent recipes" }]}
+            onQueryChange={setQuery}
+            onSelect={() => {}}
+          />
+        </Command>
+      </div>
     </div>
   )
 }

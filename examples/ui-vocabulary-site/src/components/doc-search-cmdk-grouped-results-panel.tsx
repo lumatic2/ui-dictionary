@@ -24,32 +24,28 @@ type DocSearchCmdkGroupedResultsPanelProps = {
   onSelect: (itemId: string) => void
 }
 
+type DocSearchCmdkGroupedResultsPanelBodyProps = Omit<
+  DocSearchCmdkGroupedResultsPanelProps,
+  "open" | "onOpenChange"
+>
+
 /**
- * Docs Cmd/Ctrl+K search: a command-palette overlay whose results are grouped
- * by section (Docs/Guides/API, ...) instead of one flat list, so a query that
- * spans sections stays scannable. When the query is empty it shows recent and
- * suggested-doc rows instead of an empty state — that empty-query content
- * lives inside this same panel rather than as a separate recipe.
+ * The `CommandInput`/`CommandList` markup, extracted from the `CommandDialog`
+ * chrome so a contained demo can render it inside a plain `Command` root
+ * instead of the portal + viewport-centered dialog `CommandDialog` implies.
  */
-export function DocSearchCmdkGroupedResultsPanel({
-  open,
+export function DocSearchCmdkGroupedResultsPanelBody({
   query,
   groups,
   recentQueries,
   suggestedDocs,
-  onOpenChange,
   onQueryChange,
   onSelect,
-}: DocSearchCmdkGroupedResultsPanelProps) {
+}: DocSearchCmdkGroupedResultsPanelBodyProps) {
   const isEmptyQuery = query.trim().length === 0
 
   return (
-    <CommandDialog
-      description="Search docs, guides, and API reference"
-      open={open}
-      title="Search documentation"
-      onOpenChange={onOpenChange}
-    >
+    <>
       <CommandInput
         placeholder="Search docs..."
         value={query}
@@ -95,6 +91,42 @@ export function DocSearchCmdkGroupedResultsPanel({
           </>
         )}
       </CommandList>
+    </>
+  )
+}
+
+/**
+ * Docs Cmd/Ctrl+K search: a command-palette overlay whose results are grouped
+ * by section (Docs/Guides/API, ...) instead of one flat list, so a query that
+ * spans sections stays scannable. When the query is empty it shows recent and
+ * suggested-doc rows instead of an empty state — that empty-query content
+ * lives inside this same panel rather than as a separate recipe.
+ */
+export function DocSearchCmdkGroupedResultsPanel({
+  open,
+  query,
+  groups,
+  recentQueries,
+  suggestedDocs,
+  onOpenChange,
+  onQueryChange,
+  onSelect,
+}: DocSearchCmdkGroupedResultsPanelProps) {
+  return (
+    <CommandDialog
+      description="Search docs, guides, and API reference"
+      open={open}
+      title="Search documentation"
+      onOpenChange={onOpenChange}
+    >
+      <DocSearchCmdkGroupedResultsPanelBody
+        query={query}
+        groups={groups}
+        recentQueries={recentQueries}
+        suggestedDocs={suggestedDocs}
+        onQueryChange={onQueryChange}
+        onSelect={onSelect}
+      />
     </CommandDialog>
   )
 }

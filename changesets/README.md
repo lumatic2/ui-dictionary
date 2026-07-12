@@ -89,3 +89,4 @@
 | 87 | 20260712-shortcuts-focus-trap | 2026-07-12 | QA2 Step 4: shortcuts dialog Tab/Shift+Tab trap completing the modal focus contract | 3/3 | complete |
 | 88 | 20260712-packaged-e2e-batch-contract | 2026-07-12 | QA2 Step 6: desktop batch operation contract + packaged E2E registry assembly and collaboration panel scenarios | 4/4 | complete |
 | 89 | 20260712-recipe-gallery | 2026-07-12 | QA1 Step 1: dedicated Recipe Gallery section, 35/35 live-render detail views, recipe-format live-render contract updated | 3/3 | complete |
+| 90 | 20260712-gallery-overlay-containment | 2026-07-12 | QA1 Step 3: contain cart-drawer/cmdk gallery demos, fix SheetTitle context crash and zero-width demo root | 3/3 | complete |
