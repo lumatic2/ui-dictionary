@@ -52,6 +52,8 @@ const VIEWPORT_PRESET_SIZES: Record<Exclude<ViewportPreset, 'desktop'>, { width:
   tablet: { width: 768, height: 1024 },
 }
 
+const FOCUSABLE_SELECTOR = 'button:not([disabled]), [href], input:not([disabled]), select:not([disabled]), textarea:not([disabled]), [tabindex]:not([tabindex="-1"])'
+
 const CONNECTION_STATE_LABELS: Partial<Record<string, string>> = {
   error: 'Connection error',
   disconnected: 'Disconnected',
@@ -292,6 +294,21 @@ export function App() {
     const onKey = (event: KeyboardEvent) => {
       if (event.isComposing) return
       if (event.key === 'Escape' && shortcutsOpen) { setShortcutsOpen(false); return }
+      if (event.key === 'Tab' && shortcutsOpen) {
+        const dialog = shortcutsDialogRef.current
+        if (!dialog) return
+        const focusable = Array.from(dialog.querySelectorAll<HTMLElement>(FOCUSABLE_SELECTOR))
+        if (focusable.length === 0) { event.preventDefault(); return }
+        const active = document.activeElement
+        const index = active instanceof HTMLElement ? focusable.indexOf(active) : -1
+        event.preventDefault()
+        if (event.shiftKey) {
+          focusable[index <= 0 ? focusable.length - 1 : index - 1].focus()
+        } else {
+          focusable[index === -1 || index === focusable.length - 1 ? 0 : index + 1].focus()
+        }
+        return
+      }
       if (isEditable(event.target)) return
       const present = history.present
       const at = new Date().toISOString()

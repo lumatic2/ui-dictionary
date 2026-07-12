@@ -278,6 +278,26 @@ describe('AskewlyDesign persistence flow', () => {
     expect(document.activeElement).toBe(opener)
   })
 
+  it('traps Tab and Shift+Tab so focus cycles only within the shortcuts dialog', () => {
+    const view = render(<App />)
+    fireEvent.click(view.getByTestId('open-shortcuts'))
+    const dialog = view.getByTestId('shortcuts-dialog')
+    const closeButton = view.getByRole('button', { name: 'Close' })
+    expect(document.activeElement).toBe(dialog)
+
+    fireEvent.keyDown(window, { key: 'Tab' })
+    expect(document.activeElement).toBe(closeButton)
+    expect(dialog.contains(document.activeElement)).toBe(true)
+
+    fireEvent.keyDown(window, { key: 'Tab' })
+    expect(document.activeElement).toBe(closeButton)
+    expect(dialog.contains(document.activeElement)).toBe(true)
+
+    fireEvent.keyDown(window, { key: 'Tab', shiftKey: true })
+    expect(document.activeElement).toBe(closeButton)
+    expect(dialog.contains(document.activeElement)).toBe(true)
+  })
+
   it('groups the workspace toolbar into labeled sections so it can wrap at narrow widths', () => {
     const view = render(<App />)
     expect(view.getByRole('group', { name: 'Panels' })).toBeTruthy()
