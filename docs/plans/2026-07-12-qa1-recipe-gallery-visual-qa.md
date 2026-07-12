@@ -2,7 +2,7 @@
 
 Date: 2026-07-12
 Milestone: QA1 (`ROADMAP.md`, active — horizon-run 연쇄 승격, QA2 완료 직후)
-Status: approved (2026-07-12 horizon-run 연쇄 — QA2 승인 시 연쇄 범위에 포함)
+Status: completed (2026-07-12 — 3/3 steps, changesets #89–90)
 
 ## 위계
 
@@ -49,9 +49,9 @@ planning_gate:
 
 ## Step 트리
 
-- [ ] Step 1 — Recipe Gallery 섹션 (changeset): 전용 네비 진입점 + 갤러리 인덱스(35종, surface 그룹) + 상세 live render(모바일 recipe는 DeviceFrame) + `docs/design-system/recipe-format.md` live-render 유보 계약 갱신. (verify: build + lint 기준선 + 브라우저 smoke)
-- [ ] Step 2 — design-qa sweep (evidence): 전 35 recipe 라이트/다크 스크린샷 + WCAG contrast 자동 검사 → 결함 목록(심각도). (verify: sweep 산출물 + 결함 목록)
-- [ ] Step 3 — 결함 수정 (changeset): sweep 결함 수정 + 재sweep. (verify: 재sweep PASS + build/lint)
+- [x] Step 1 — Recipe Gallery 섹션 (changeset #89): 35/35 매핑, colors 페이지 패턴 배선, recipe-format 계약 갱신, 브라우저 smoke PASS. (커밋 4ab1881)
+- [x] Step 2 — design-qa sweep (evidence): 35×2 캡처, contrast 후보 7건 전수 판독(전부 오탐/AA 통과), 실결함 G1/G2/G3 목록화. (커밋 7b6370f)
+- [x] Step 3 — 결함 수정 (changeset #90): G1/G2 contained 데모 수렴 + 게이트 적발 크래시 2건 수정, 재sweep PASS. (커밋 e6204a1)
 
 ## 결정 로그
 

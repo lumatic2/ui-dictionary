@@ -25,8 +25,8 @@ Milestone: QA1 Step 2 (evidence)
 
 | # | 심각도 | recipe | 증상 | 라우팅 |
 |---|--------|--------|------|--------|
-| G1 | major | cart-drawer | 데모가 auto-open 전면 스크림 + 드로어가 `data-export-root` 밖(body portal)으로 렌더 — 갤러리 화면이 스크림에 덮이고 Back 버튼 클릭 차단, 캡처에 드로어 미포함 | **QA1 Step 3** |
-| G2 | major | doc-search-cmdk-grouped-results-panel | 동일 전면 오버레이 패턴 — 다이얼로그+스크림이 뷰포트 전체를 덮고 컨테이너 높이에 잘림 | **QA1 Step 3** |
+| G1 | major | cart-drawer | 데모가 auto-open 전면 스크림 + 드로어가 `data-export-root` 밖(body portal)으로 렌더 — 갤러리 화면이 스크림에 덮이고 Back 버튼 클릭 차단, 캡처에 드로어 미포함 | **해소 — Step 3** (changeset #90): contained 데모로 재구성, 재sweep PASS |
+| G2 | major | doc-search-cmdk-grouped-results-panel | 동일 전면 오버레이 패턴 — 다이얼로그+스크림이 뷰포트 전체를 덮고 컨테이너 높이에 잘림 | **해소 — Step 3** (changeset #90): plain Command 인라인 렌더, 재sweep PASS |
 | G3 | minor | landing-hero | 데모가 히어로가 아니라 홈페이지 전체(자체 sticky topbar 포함)를 렌더 — 무겁고 갤러리 맥락에서 topbar가 중간에 떠 보임 | 기록 (큐레이션 판단, 차단 아님) |
 
 ## 관측 노트
