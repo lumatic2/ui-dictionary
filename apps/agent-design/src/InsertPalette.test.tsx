@@ -196,6 +196,40 @@ describe('InsertPalette', () => {
     expect(view.getByTestId('probe-revision').textContent).toBe('0')
   })
 
+  it('lists recipe catalog entries under a Recipes category', () => {
+    const view = render(<Harness />)
+    expect(view.getByText('Recipes')).toBeTruthy()
+    expect(view.getByTestId('insert-recipe-bottom-tab-bar').textContent).toBe('Bottom Tab Bar')
+  })
+
+  it('finds a recipe entry by search', () => {
+    const view = render(<Harness />)
+    fireEvent.change(view.getByTestId('insert-search'), { target: { value: 'bottom tab bar' } })
+    expect(view.getByTestId('insert-recipe-bottom-tab-bar').textContent).toBe('Bottom Tab Bar')
+    expect(view.queryByTestId('insert-registry-button')).toBeNull()
+    expect(view.queryByTestId('insert-primitive-frame')).toBeNull()
+  })
+
+  it('inserts a recipe entry through the same registry insertion path as other catalog entries', () => {
+    const view = render(<Harness />)
+    fireEvent.click(view.getByTestId('insert-recipe-bottom-tab-bar'))
+    const state = structure(view)
+    const inserted = state.nodes['created-0001']
+    expect(inserted).toMatchObject({
+      kind: 'code-component',
+      parentId: null,
+      source: { file: 'registry://recipe/bottom-tab-bar', exportName: 'BottomTabBar', startLine: 1, endLine: 1 },
+    })
+    expect(view.getByTestId('probe-selection').textContent).toBe('created-0001')
+    expect(view.getByTestId('probe-revision').textContent).toBe('1')
+    expect(view.getByTestId('insert-feedback').textContent).toBe('Bottom Tab Bar inserted into canvas root')
+
+    fireEvent.click(view.getByTestId('probe-undo'))
+    expect(structure(view).nodes['created-0001']).toBeUndefined()
+    expect(view.getByTestId('probe-selection').textContent).toBe('')
+    expect(view.getByTestId('probe-revision').textContent).toBe('0')
+  })
+
   it('still inserts project components as instances alongside registry sections', () => {
     const view = render(<Harness />)
     fireEvent.click(view.getByTestId('insert-component-comp-x'))

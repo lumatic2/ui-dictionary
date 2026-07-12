@@ -12,6 +12,7 @@ import {
   catalog,
   createRegistryNode,
   projectComponents,
+  recipeCatalog,
   searchRegistry,
   type RegistryCollection,
   type RegistryEntry,
@@ -22,7 +23,7 @@ interface Props {
   onOperation: (operation: CanvasOperation) => void
 }
 
-type Category = 'Primitives' | 'Components' | 'Layout' | 'Project'
+type Category = 'Primitives' | 'Components' | 'Layout' | 'Recipes' | 'Project'
 
 type PaletteEntry =
   | { key: string; label: string; category: 'Primitives'; kind: 'frame' | 'text' | 'group' }
@@ -40,16 +41,19 @@ const primitiveEntries: PaletteEntry[] = [
   { key: 'primitive-group', label: 'Group', category: 'Primitives', kind: 'group' },
 ]
 
-const categories: Category[] = ['Primitives', 'Components', 'Layout', 'Project']
+const categories: Category[] = ['Primitives', 'Components', 'Layout', 'Recipes', 'Project']
 
 function categoryForCollection(collection: RegistryCollection): Exclude<Category, 'Primitives'> {
   if (collection === 'shadcn') return 'Components'
   if (collection === 'layout') return 'Layout'
+  if (collection === 'recipe') return 'Recipes'
   return 'Project'
 }
 
 function paletteKey(entry: RegistryEntry): string {
-  return entry.collection === 'project' ? `component-${entry.slug}` : `registry-${entry.slug}`
+  if (entry.collection === 'project') return `component-${entry.slug}`
+  if (entry.collection === 'recipe') return `recipe-${entry.slug}`
+  return `registry-${entry.slug}`
 }
 
 export function InsertPalette({ document, onOperation }: Props) {
@@ -59,7 +63,7 @@ export function InsertPalette({ document, onOperation }: Props) {
   const projectEntries = useMemo(() => projectComponents(document), [document.nodes])
   const hasProjectComponents = projectEntries.length > 0
 
-  const registryAll = useMemo(() => [...catalog, ...projectEntries], [projectEntries])
+  const registryAll = useMemo(() => [...catalog, ...recipeCatalog, ...projectEntries], [projectEntries])
 
   const visibleRegistry = useMemo(() => searchRegistry(registryAll, query), [registryAll, query])
 
