@@ -745,9 +745,9 @@
   ko: { name: 툴팁, aliases: [도움말 말풍선, tooltip] }
   en: { name: Tooltip, aliases: [Hint bubble] }
   one_liner: hover나 focus 때 짧은 설명을 보여주는 작은 도움말.
-  description: 아이콘 버튼이나 낯선 용어의 의미를 짧게 보충한다.
-  visual_anatomy: [trigger element, small floating bubble, short text, optional arrow]
-  when_to_use: [아이콘 의미를 보충할 때, 짧은 보조 설명이 필요할 때]
+  description: 아이콘 버튼이나 낯선 용어의 의미를 짧게 보충한다. 문서 코드 블록 안에서는 트리거가 특정 토큰/줄에 고정된 어노테이션 마커가 되기도 하는데, 이때도 짧은 설명을 보여준다는 동작 자체는 같고 트리거가 코드 좌표에 앵커된다는 맥락만 다르다.
+  visual_anatomy: [trigger element, small floating bubble, short text, optional arrow, code-anchored marker variant for inline code annotations]
+  when_to_use: [아이콘 의미를 보충할 때, 짧은 보조 설명이 필요할 때, 코드 블록의 특정 토큰/줄에 짧은 설명을 앵커해야 할 때]
   anti_use: [중요한 정보를 tooltip에만 숨기지 않는다, 긴 설명이나 상호작용 요소를 넣지 않는다]
   prompt_phrases: [아이콘 버튼에 tooltip을 붙여줘, hover하면 짧은 도움말이 나오게 해줘]
   asset: { kind: mini-mock, variant: tooltip, props: { open: true } }
@@ -805,14 +805,14 @@
   kind: block
   ko: { name: 콜아웃, aliases: [callout, admonition, 강조 박스] }
   en: { name: Callout, aliases: [Admonition, Callout box] }
-  one_liner: 문서 본문 중간에 note/tip/warning/danger 등급으로 구분해 삽입하는 강조 박스.
-  description: 좌측 컬러 바 또는 배경색과 아이콘, 등급 라벨로 문단 사이에 삽입되어 본문 흐름을 방해하지 않으면서 중요한 보충 정보를 강조한다.
-  visual_anatomy: [left color bar or tinted background, grade icon, title label, body text, full-width insertion between paragraphs]
+  one_liner: 문서 본문 중간에 note/tip/info/caution/danger 등급으로 구분해 삽입하는 강조 박스.
+  description: 좌측 컬러 바 또는 배경색과 아이콘, 등급 라벨로 문단 사이에 삽입되어 본문 흐름을 방해하지 않으면서 중요한 보충 정보를 강조한다. note/tip/info/caution/danger 5등급 명명은 Docusaurus 같은 문서 프레임워크의 admonition 관례를 따른다.
+  visual_anatomy: [left color bar or tinted background, grade icon, title label (Note/Tip/Info/Caution/Danger), body text, full-width insertion between paragraphs]
   when_to_use: [문서 본문 중간에 보충 설명, 팁, 주의사항을 등급별로 구분해 강조해야 할 때]
   anti_use: [앱 화면의 지속적인 상태나 오류 안내는 alert/banner가 더 정확하다, 잠깐 보여줄 완료 피드백은 toast를 쓴다]
   prompt_phrases: [문서 본문에 note/warning 등급의 callout box를 넣어줘, 왼쪽 컬러 바가 있는 admonition 박스를 만들어줘]
   asset: { kind: mini-mock, variant: callout, props: { tone: warning } }
-  sources: [{ source_id: ui-patterns-library, note: documentation callout/admonition box pattern (note/tip/warning/danger grading) }]
+  sources: [{ source_id: ui-patterns-library, note: documentation callout/admonition box pattern (note/tip/info/caution/danger Docusaurus-style admonition grading) }]
   related:
     - { id: alert, relation: compare, note: "callout은 문서 본문 저작 콘텐츠에 삽입되는 등급별 강조 박스이고, alert는 앱 화면의 상태/오류를 알리는 지속적 메시지 영역이다." }
   confidence: medium
@@ -3103,13 +3103,13 @@
   ko: { name: 문서 버전 스위처, aliases: [versioned docs switcher, 문서 버전 전환, 버전 드롭다운] }
   en: { name: Versioned docs switcher, aliases: [Docs version switcher, Version dropdown with stale banner] }
   one_liner: navbar 버전 드롭다운과 과거/미출시 버전 경고 배너로 구성된 문서 버전 전환 패턴.
-  description: 여러 버전이 공존하는 문서 사이트에서 현재 보고 있는 버전을 드롭다운으로 바꾸고, 최신이 아닌 버전을 볼 때 상단에 안내 배너를 띄운다. 선택한 버전에 따라 사이드바 트리 전체가 교체된다.
-  visual_anatomy: [navbar version dropdown, latest-selected default, stale version banner, link to latest version, sidebar tree swap]
+  description: 여러 버전이 공존하는 문서 사이트에서 현재 보고 있는 버전을 드롭다운으로 바꾸고, 최신이 아닌 버전을 볼 때 상단에 안내 배너를 띄운다. 선택한 버전에 따라 사이드바 트리 전체가 교체된다. 교체된 트리 내부에서는 최상위 그룹은 항상 펼쳐진 채로, 하위 그룹만 개별적으로 펼침/접힘 기본값을 가진다 — 버전 전환은 어떤 트리를 보여줄지 정하고, 펼침/접힘은 그 트리를 어떻게 보여줄지 정하는 별개의 축이다.
+  visual_anatomy: [navbar version dropdown, latest-selected default, stale version banner, link to latest version, sidebar tree swap, top-level group always expanded, nested group collapse/expand toggle with a per-group default]
   when_to_use: [제품/문서가 여러 메이저 버전을 동시에 공개하고 사용자가 과거 버전 문서를 볼 수 있어야 할 때]
   anti_use: [단일 버전만 유지되는 문서에는 불필요하다, 조직/워크스페이스 전환은 workspace-switcher를 쓴다]
   prompt_phrases: [navbar에 문서 버전 드롭다운을 넣어줘, 오래된 버전을 보고 있으면 상단에 경고 배너를 띄워줘]
   asset: { kind: mini-mock, variant: versioned-docs-switcher, props: { stale: true } }
-  sources: [{ source_id: ui-patterns-library, note: versioned documentation navigation and stale-version banner pattern }]
+  sources: [{ source_id: ui-patterns-library, note: versioned documentation navigation with stale-version banner and nested collapsible sidebar sections under a version-pinned tree root }]
   related:
     - { id: workspace-switcher, relation: compare, note: "workspace-switcher는 조직/팀 컨텍스트를 바꾸고, versioned-docs-switcher는 같은 문서의 다른 버전 스냅샷으로 전환한다 — 대상이 조직이 아니라 문서 버전이라는 점이 다르다." }
   confidence: medium
@@ -11558,4 +11558,40 @@
   prompt_phrases: [문서 페이지에 파라미터를 입력하고 바로 실행하는 API 플레이그라운드를 넣어줘, Try it 버튼으로 실제 응답을 보여주는 임베디드 API 콘솔을 만들어줘]
   asset: { kind: mini-mock, variant: interactive-api-playground, props: { executed: false } }
   sources: [{ source_id: ui-patterns-library, note: embedded interactive API playground/try-it console pattern }]
+  confidence: medium
+
+- id: docs-landing-hub-category-cards
+  status: draft
+  category: structure
+  group: structure-sections
+  kind: block
+  ko: { name: 문서 랜딩 허브 카드, aliases: [docs landing hub, 문서 홈 카테고리 카드, 문서 진입 페이지] }
+  en: { name: Docs landing hub page with category cards, aliases: [Docs home category cards, Documentation hub page] }
+  one_liner: 문서 루트 진입 페이지에서 하위 카테고리를 아이콘과 설명이 있는 카드로 나열해 다음 탐색 지점을 고르게 하는 허브 페이지.
+  description: 문서 사이트의 최상위 진입점에서 Getting Started, API, Guides 같은 하위 카테고리를 카드 그리드로 보여준다. 각 카드는 사이드바 최상위 그룹과 1:1로 대응해, 카드를 고르는 것이 사이드바의 한 그룹으로 진입하는 것과 같다.
+  visual_anatomy: [hub page header, category card grid, per-card icon, per-card title and short description, optional item-count or auto-generated excerpt]
+  when_to_use: [문서가 여러 하위 카테고리로 나뉘어 있고 방문자가 첫 진입에서 목적지를 골라야 할 때, 사이드바 트리를 보여주기 전에 상위 개요를 먼저 제공하고 싶을 때]
+  anti_use: [카테고리가 하나뿐이거나 문서 규모가 작으면 바로 article-documentation-layout으로 진입시키는 편이 낫다]
+  prompt_phrases: [문서 루트에 카테고리 카드 그리드가 있는 허브 페이지를 만들어줘, Getting Started/API/Guides를 아이콘 카드로 나열한 문서 홈을 만들어줘]
+  asset: { kind: mini-mock, variant: docs-landing-hub-category-cards, props: { cards: 4 } }
+  sources: [{ source_id: ui-patterns-library, note: documentation landing hub page with category card grid pattern }]
+  confidence: medium
+
+- id: api-error-reference-table
+  status: draft
+  category: data-display
+  group: data-tables-lists
+  kind: block
+  ko: { name: API 에러 레퍼런스 테이블, aliases: [api error reference table, 에러 코드 테이블, 에러 참조표] }
+  en: { name: API error reference table, aliases: [Error code reference table, Error reference table] }
+  one_liner: 에러 코드, 타입, HTTP 상태, 설명을 행으로 나열해 실패 케이스를 스캔 가능하게 만든 참조 테이블.
+  description: API 레퍼런스 문서에서 파라미터 표와는 별도로, 발생 가능한 에러를 코드/타입/HTTP 상태 배지/설명 열로 나열한다. 각 행은 anchor id를 가져 특정 에러로 바로 딥링크할 수 있다. 상태 열은 badge 용어의 색상 구분 배지를 그대로 재사용한다.
+  visual_anatomy: [error code column (monospace), error type column, HTTP status badge column, description column, per-row anchor id for deep-linking]
+  when_to_use: [API가 반환하는 에러 코드/상태를 체계적으로 스캔 가능한 표로 문서화해야 할 때]
+  anti_use: [에러가 2~3종뿐이면 표 대신 본문 설명이나 callout으로 충분하다]
+  prompt_phrases: [에러 코드/타입/HTTP 상태를 나열한 API 에러 레퍼런스 테이블을 만들어줘, 각 에러 행에 anchor id가 있어서 딥링크할 수 있는 에러 코드 표를 만들어줘]
+  asset: { kind: mini-mock, variant: api-error-reference-table, props: { rows: 4 } }
+  sources: [{ source_id: ui-patterns-library, note: API error code reference table pattern with status badge column and per-row deep-link anchors }]
+  related:
+    - { id: badge, relation: use-with, note: "api-error-reference-table의 HTTP 상태 열은 badge 용어의 색상 구분 배지를 그대로 재사용한다 — 별도 배지 컴포넌트를 새로 정의하지 않는다." }
   confidence: medium
