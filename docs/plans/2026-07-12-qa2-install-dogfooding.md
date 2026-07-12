@@ -2,7 +2,7 @@
 
 Date: 2026-07-12
 Milestone: QA2 (`ROADMAP.md`, active)
-Status: awaiting approval
+Status: approved (2026-07-12 사용자 "진행")
 
 ## 위계
 
