@@ -154,17 +154,23 @@ describe('AskewlyDesign persistence flow', () => {
 
     fireEvent.change(view.getByTestId('property-prop-disabled'), { target: { value: 'true' } })
     fireEvent.change(view.getByTestId('property-layout-horizontal'), { target: { value: 'fill' } })
+    const appShell = view.container.querySelector('.app-shell')
+    if (!(appShell instanceof HTMLElement)) throw new Error('app shell missing')
+    expect(appShell.getAttribute('data-ad-mode')).toBe('default')
     fireEvent.change(view.getByTestId('token-mode'), { target: { value: 'askewly.dark' } })
     expect(view.getByTestId('document-revision').textContent).toBe('4')
+    expect(appShell.getAttribute('data-ad-mode')).toBe('dark')
+    fireEvent.change(view.getByTestId('token-mode'), { target: { value: 'askewly.default' } })
+    expect(appShell.getAttribute('data-ad-mode')).toBe('default')
 
     const variant = view.getByTestId('property-variant-size')
     fireEvent.change(variant, { target: { value: '' } })
     fireEvent.blur(variant)
     expect(view.getByTestId('property-error').textContent).toContain('invalid variant')
-    expect(view.getByTestId('document-revision').textContent).toBe('4')
+    expect(view.getByTestId('document-revision').textContent).toBe('5')
     fireEvent.change(variant, { target: { value: 'lg' } })
     fireEvent.blur(variant)
-    expect(view.getByTestId('document-revision').textContent).toBe('5')
+    expect(view.getByTestId('document-revision').textContent).toBe('6')
   })
 
   it('runs delete, duplicate, and group shortcuts outside editable fields', () => {

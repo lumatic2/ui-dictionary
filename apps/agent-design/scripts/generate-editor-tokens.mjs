@@ -2,9 +2,11 @@
 // Generates derived editor-chrome + canvas-rendering artifacts from the repo-root
 // token SSOT (tokens/askewly.tokens.json):
 //   (a) apps/agent-design/src/editorTokens.css - CSS custom properties (--ad-*)
-//       consumed by styles.css for editor chrome (light-mode values only; the
-//       chrome does not yet mode-switch with document.tokenSetId, see AI plan
-//       Step 1/结정 로그).
+//       consumed by styles.css for editor chrome. :root defines the light
+//       (askewly.default) values; a `.app-shell[data-ad-mode="dark"]` override
+//       block redefines the semantic tier with dark values. App.tsx sets
+//       data-ad-mode from the same document.tokenSetId the canvas token-mode
+//       toggle already drives, so one control themes both canvas and chrome.
 //   (b) apps/agent-design/src/editorTokens.ts - a TS map of resolved hex colors
 //       per token-set id ('askewly.default' | 'askewly.dark'), keyed by the same
 //       dotted semantic token names used in CanvasNode.tokenBindings (e.g.
@@ -124,7 +126,7 @@ function buildEditorTokensCss() {
     "/* GENERATED from tokens/askewly.tokens.json — do not edit by hand. Regenerate: node apps/agent-design/scripts/generate-editor-tokens.mjs */",
   );
   lines.push(
-    "/* Light-mode (askewly.default) values only. Editor chrome does not mode-switch yet — see docs/plans/2026-07-12-ai-askewly-identity.md decision log. */",
+    "/* :root holds light-mode (askewly.default) values. The .app-shell[data-ad-mode=\"dark\"] block below overrides the semantic tier with askewly.dark values; App.tsx sets data-ad-mode from document.tokenSetId. */",
   );
   lines.push(":root {");
   for (const [cssVar, tokenPath] of SEMANTIC_COLOR_MAPPINGS) {
@@ -149,6 +151,12 @@ function buildEditorTokensCss() {
     const fam = resolveModeLiteral(root, tokenPath, "light");
     const css = (Array.isArray(fam) ? fam : [fam]).map((f) => (/[ ]/.test(f) ? `"${f}"` : f)).join(", ");
     lines.push(`  ${cssVar}: ${css};`);
+  }
+  lines.push("}");
+  lines.push("");
+  lines.push('.app-shell[data-ad-mode="dark"] {');
+  for (const [cssVar, tokenPath] of SEMANTIC_COLOR_MAPPINGS) {
+    lines.push(`  ${cssVar}: ${colorValueToCss(resolveModeLiteral(root, tokenPath, "dark"))};`);
   }
   lines.push("}");
   lines.push("");

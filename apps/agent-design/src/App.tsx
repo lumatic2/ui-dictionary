@@ -433,7 +433,7 @@ export function App() {
     return () => { delete window.__agentDesignBenchmark }
   }, [history.log.length, history.present, runPointerTrace, runTrace])
 
-  return <main className="app-shell">
+  return <main className="app-shell" data-ad-mode={history.present.tokenSetId === 'askewly.dark' ? 'dark' : 'default'}>
     <header className="app-header" aria-label="Application title bar">
       <div className="brand-lockup">
         <span className="brand-mark" aria-hidden="true">A</span>
