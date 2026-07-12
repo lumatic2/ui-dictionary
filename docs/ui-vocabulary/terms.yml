@@ -2510,14 +2510,14 @@
   status: draft
   category: data-display
   group: data-tables-lists
-  ko: { name: 패싯 필터, aliases: [faceted filter, facet filter, 다중 조건 필터, 카테고리 필터] }
-  en: { name: Faceted filter, aliases: [Facet filter, Multi-facet filter, Category filter facets] }
+  ko: { name: 패싯 필터, aliases: [faceted filter, facet filter, 다중 조건 필터, 카테고리 필터, 카테고리 필터 사이드바] }
+  en: { name: Faceted filter, aliases: [Facet filter, Multi-facet filter, Category filter facets, Category filter sidebar] }
   one_liner: 상태, 카테고리, 가격대처럼 여러 속성별 조건을 조합하는 필터.
-  description: 쇼핑, 데이터 테이블, 검색 결과에서 사용자가 여러 차원의 조건을 선택해 결과를 좁힌다.
-  visual_anatomy: [filter groups, checkbox options, selected count, active chips]
+  description: 쇼핑, 데이터 테이블, 검색 결과에서 사용자가 여러 차원의 조건을 선택해 결과를 좁힌다. 카테고리 페이지 좌측에 고정되는 사이드바 형태에서는 속성별 그룹을 아코디언이나 상시 펼침으로 두고, 적용된 조건을 칩으로 요약하며 결과 수를 실시간으로 갱신하고 한 번에 초기화하는 clear-all 행동을 함께 제공한다.
+  visual_anatomy: [filter groups, checkbox options, selected count, active chips, live result count, clear-all action]
   when_to_use: [데이터 속성이 다양하고 조합 검색이 필요할 때]
   anti_use: [조건이 1-2개면 단순 filter chip이나 select가 낫다]
-  prompt_phrases: [상태와 카테고리를 고르는 faceted filter를 사이드바에 넣어줘]
+  prompt_phrases: [상태와 카테고리를 고르는 faceted filter를 사이드바에 넣어줘, 적용된 필터 칩과 실시간 결과 수가 있는 category filter sidebar를 만들어줘]
   asset: { kind: mini-mock, variant: faceted-filter, props: { groups: 2 } }
   sources: [{ source_id: carbon-design-components, note: filtering data table and list controls }]
   navigation:
@@ -4224,6 +4224,10 @@
   prompt_phrases: [사이즈와 색상을 고르는 product option sheet를 아래에서 올려줘]
   asset: { kind: mini-mock, variant: product-option-sheet, props: { selected: M } }
   sources: [{ source_id: material-m3-components, note: bottom sheets and chips for option selection }]
+  related:
+    - id: variant-selector-buttons
+      relation: compare
+      note: "product option sheet는 모바일 하단 시트로 옵션을 감싸는 래퍼이고, variant selector buttons는 시트 없이 데스크톱 인라인에 바로 놓이는 버튼형 선택 컨트롤 자체를 가리킨다."
   confidence: high
 
 - id: cart-summary-bar
@@ -4274,14 +4278,14 @@
   status: draft
   category: feedback
   group: feedback-status-notifications
-  ko: { name: 배송 추적, aliases: [delivery tracker, 배달 추적, 배송 상태 타임라인, 주문 추적] }
-  en: { name: Delivery tracker, aliases: [Order tracker, Delivery status timeline] }
+  ko: { name: 배송 추적, aliases: [delivery tracker, 배달 추적, 배송 상태 타임라인, 주문 추적, 주문 추적 타임라인] }
+  en: { name: Delivery tracker, aliases: [Order tracker, Delivery status timeline, Order tracking timeline] }
   one_liner: 주문이 접수, 준비, 이동, 도착 중 어디에 있는지 단계로 보여주는 모바일 상태 UI.
-  description: 사용자가 기다리는 동안 현재 처리 상태와 다음 단계를 시간 순서로 이해하게 한다.
-  visual_anatomy: [status steps, active step, timeline dots, delivery labels]
+  description: 사용자가 기다리는 동안 현재 처리 상태와 다음 단계를 시간 순서로 이해하게 한다. 각 단계에 타임스탬프를 붙이고 배송사 추적 번호와 외부 링크를 함께 노출하는 데스크톱/세로 타임라인 변형도 같은 개념이다.
+  visual_anatomy: [status steps, active step, timeline dots, delivery labels, per-step timestamp, carrier tracking number and link]
   when_to_use: [배달, 배송, 픽업, 예약 진행 상태를 모바일에서 보여줄 때]
   anti_use: [단순 완료 여부만 있으면 status chip이나 toast로 충분하다]
-  prompt_phrases: [주문 상태를 접수 조리 배달 단계로 보여주는 delivery tracker를 넣어줘]
+  prompt_phrases: [주문 상태를 접수 조리 배달 단계로 보여주는 delivery tracker를 넣어줘, 배송사 추적 번호와 도착 예정일이 있는 order tracking timeline을 넣어줘]
   asset: { kind: mini-mock, variant: delivery-tracker, props: { active: 1 } }
   sources: [{ source_id: material-m3-components, note: progress and status presentation }]
   confidence: high
@@ -4884,6 +4888,10 @@
     canonical_path: [Plus, UI Blocks, Ecommerce, Components]
     also_appears_in:
       - [Plus, Templates, Ecommerce Screens]
+  related:
+    - id: cross-sell-related-strip
+      relation: use-with
+      note: "상품 상세나 장바구니 하단의 cross-sell related strip은 이 product card를 그대로 재사용하는 캐러셀 조합이다."
   confidence: medium
 
 - id: price-card
@@ -11222,6 +11230,9 @@
     - id: testimonial-section
       relation: compare
       note: "마케팅 신뢰용 고객 인용문 나열은 testimonial section, 평점 분포와 실제 상품 리뷰 목록을 함께 보여줘야 하면 reviews summary block이다."
+    - id: review-list-with-filters
+      relation: compare
+      note: "평점 분포 요약과 리뷰 목록을 한 블록으로 묶어 보여주는 것이 reviews summary block이고, 평점/사진 유무/구매 인증 여부로 리뷰를 걸러내고 정렬하는 상호작용이 핵심이면 review list with filters다."
   asset: { kind: mini-mock, variant: reviews-summary-block, props: { rating: 4.5 } }
   sources: [{ source_id: blocks-so-library, note: shadcn block ecosystem ecommerce review summary blocks }]
   navigation:
@@ -11263,11 +11274,11 @@
   ko: { name: 상품 퀵뷰 모달, aliases: [product quickview modal, 퀵뷰, 상품 미리보기 모달] }
   en: { name: Product quickview modal, aliases: [Quick view modal, Product preview modal] }
   one_liner: 카테고리 그리드를 벗어나지 않고 모달로 상품 핵심 정보를 미리 보여주는 패턴.
-  description: 상품 그리드나 검색 결과에서 상세 페이지로 이동하지 않고 이미지, 가격, 옵션, 담기 같은 핵심 구매 정보만 압축해 보여준다.
-  visual_anatomy: [modal overlay, compact product image, title and price, variant selector, quantity stepper, add to cart action, view full details link]
+  description: 상품 그리드나 검색 결과에서 상세 페이지로 이동하지 않고 이미지, 가격, 옵션, 담기 같은 핵심 구매 정보만 압축해 보여준다. 담기를 누른 뒤에는 모달을 바로 닫지 않고 미니 카트 미리보기나 토스트로 담기 완료를 확인시키고, 계속 둘러보기와 장바구니로 이동하기 중 하나를 고르게 하는 post-add 확인 상태로 이어질 수 있다.
+  visual_anatomy: [modal overlay, compact product image, title and price, variant selector, quantity stepper, add to cart action, view full details link, post-add confirmation state, continue-shopping vs go-to-cart choice]
   when_to_use: [카테고리나 그리드 컨텍스트를 유지한 채 빠르게 상품을 확인하고 담게 할 때]
   anti_use: [옵션이 많거나 설명이 길면 전체 상품 상세 페이지로 이동시키는 편이 낫다]
-  prompt_phrases: [그리드에서 벗어나지 않고 이미지 가격 담기 버튼을 보여주는 product quickview modal을 만들어줘]
+  prompt_phrases: [그리드에서 벗어나지 않고 이미지 가격 담기 버튼을 보여주는 product quickview modal을 만들어줘, 담기 완료 후 미니 카트 미리보기와 계속 둘러보기 선택지를 보여주는 quickview add flow를 만들어줘]
   related:
     - id: product-card
       relation: use-with
@@ -11302,6 +11313,86 @@
     canonical_path: [Plus, UI Blocks, Ecommerce, Page Sections]
     also_appears_in:
       - [Plus, UI Blocks, Ecommerce, Components]
+  confidence: medium
+
+- id: review-list-with-filters
+  status: draft
+  category: data-display
+  group: data-tables-lists
+  kind: block
+  ko: { name: 필터 리뷰 목록, aliases: [review list with filters, 리뷰 필터 목록, 후기 필터링 목록] }
+  en: { name: Review list with filters, aliases: [Filterable review list, Review filter and sort list] }
+  one_liner: 평점, 사진 유무, 구매 인증 여부로 개별 리뷰를 걸러내고 정렬하는 목록.
+  description: 필터 칩과 정렬 컨트롤을 목록 위에 두어 사용자가 원하는 리뷰만 좁혀보게 한다. `reviews-summary-block`이 평점 분포 요약과 리뷰 목록을 한 블록으로 묶는 term이라면, 이 term은 그 목록 안에서의 필터/정렬 상호작용 자체가 핵심이다.
+  visual_anatomy: [filter chips for rating/has-photo/verified-purchase, sort control, review row with rating/author/date/body/photos, pagination or load-more]
+  when_to_use: [상품 상세의 리뷰가 많아 사용자가 평점이나 사진, 구매 인증 여부로 좁혀봐야 할 때]
+  anti_use: [리뷰 수가 적으면 필터 없이 reviews-summary-block만으로 충분하다]
+  prompt_phrases: [평점 사진 유무 구매인증으로 거르는 review list with filters를 만들어줘, 최근순 도움순 정렬이 있는 필터 리뷰 목록을 넣어줘]
+  asset: { kind: mini-mock, variant: review-list-with-filters, props: { filters: 2 } }
+  sources: [{ source_id: blocks-so-library, note: shadcn block ecosystem ecommerce review list and filter blocks }]
+  related:
+    - id: reviews-summary-block
+      relation: compare
+      note: "평점 분포 요약과 리뷰 목록을 한 블록으로 묶어 보여주는 것이 reviews summary block이고, 평점/사진 유무/구매 인증 여부로 리뷰를 걸러내고 정렬하는 상호작용이 핵심이면 review list with filters다."
+  confidence: medium
+
+- id: variant-selector-buttons
+  status: draft
+  category: selection
+  group: selection-options
+  kind: component
+  ko: { name: 변형 선택 버튼 그룹, aliases: [variant selector buttons, 사이즈 색상 선택 버튼, 변형 옵션 버튼] }
+  en: { name: Size/color variant selector, aliases: [Variant selector buttons, Swatch and size button group] }
+  one_liner: 색상 스와치나 사이즈 버튼을 나열해 재고 유무를 즉시 드러내는 인라인 선택 컨트롤.
+  description: 드롭다운 뒤에 옵션을 숨기지 않고 버튼 그룹으로 노출해, 선택 상태와 품절 변형을 한눈에 보여준다. Baymard 연구는 사이즈 선택에 드롭다운을 쓰는 사이트가 57%에 달한다고 지목하며 이를 안티패턴으로 본다.
+  visual_anatomy: [swatch or button group per variant axis, selected state with border or checkmark, disabled state for out-of-stock variant with reason, color swatch shows actual color, size button shows label]
+  when_to_use: [상품 상세에서 색상이나 사이즈 같은 변형 옵션을 데스크톱 인라인으로 바로 선택하게 할 때]
+  anti_use: [변형 축이 많아 버튼이 화면을 넘치게 하면 별도 구성 화면이나 product-option-sheet가 더 적합하다]
+  prompt_phrases: [드롭다운 대신 버튼으로 사이즈를 고르는 variant selector buttons를 넣어줘, 품절 사이즈는 흐리게 표시하고 이유를 보여줘]
+  asset: { kind: mini-mock, variant: variant-selector-buttons, props: { selected: true } }
+  sources: [{ source_id: shopify-polaris-components, note: variant and option selection controls }]
+  related:
+    - id: product-option-sheet
+      relation: compare
+      note: "product option sheet는 모바일 하단 시트로 옵션을 감싸는 래퍼이고, variant selector buttons는 시트 없이 데스크톱 인라인에 바로 놓이는 버튼형 선택 컨트롤 자체를 가리킨다."
+  confidence: medium
+
+- id: wishlist-management-view
+  status: draft
+  category: data-display
+  group: data-tables-lists
+  kind: block
+  ko: { name: 위시리스트 관리 화면, aliases: [wishlist management view, 찜 목록 관리, 저장한 상품 목록] }
+  en: { name: Wishlist management view, aliases: [Saved items view, Wishlist page] }
+  one_liner: 저장한 상품을 모아보고 재고·가격 변동을 확인하며 장바구니로 옮기거나 삭제하는 전용 화면.
+  description: Baymard 연구에 따르면 사이트의 60%가 위시리스트 사용에 계정 생성을 강제해 이탈을 유발한다. guest 저장을 허용하고 품절·가격 변동 알림을 목록 안에서 바로 보여주는 것이 핵심 권고다.
+  visual_anatomy: [grid or list of saved items with thumbnail/title/price/availability, price-drop or back-in-stock indicator, move-to-cart action per item, remove action per item, guest-accessible state]
+  when_to_use: [계정이나 마이페이지에서 사용자가 저장해둔 상품을 모아 관리해야 할 때]
+  anti_use: [단순히 하트 아이콘으로 찜 여부만 토글하는 것은 이 term의 범위가 아니다 — 저장 목록 전용 화면 자체를 가리킨다]
+  prompt_phrases: [가격 변동과 재입고 알림이 있는 wishlist management view를 마이페이지에 만들어줘, 로그인 없이도 담을 수 있는 위시리스트 화면을 보여줘]
+  asset: { kind: mini-mock, variant: wishlist-management-view, props: { rows: 3 } }
+  sources: [{ source_id: shopify-polaris-components, note: saved items and list management views }]
+  confidence: medium
+
+- id: cross-sell-related-strip
+  status: draft
+  category: structure
+  group: structure-sections
+  kind: block
+  ko: { name: 연관 상품 추천 스트립, aliases: [cross-sell related strip, 함께 구매하면 좋은 상품, 관련 상품 스트립] }
+  en: { name: Cross-sell / related products strip, aliases: [Related products strip, You may also like strip] }
+  one_liner: 상품 상세나 장바구니 하단에서 관련·추천 상품을 소규모 캐러셀로 보여주는 스트립.
+  description: 함께 구매하면 좋은 상품이나 관련 상품 같은 섹션 헤딩 아래 기존 product-card를 가로 스크롤 캐러셀로 나열한다. 추천 로직 자체는 이 term의 범위 밖이며 UI 구조만 다룬다.
+  visual_anatomy: [section heading, horizontal scrollable row of product-card items, scroll affordance, optional quick add-to-cart action per item]
+  when_to_use: [상품 상세나 장바구니 하단에서 관련·연관 상품을 짧게 노출해야 할 때]
+  anti_use: [추천 로직 자체나 개인화 전략을 설명해야 하면 이 term의 범위 밖이다]
+  prompt_phrases: [상품 상세 하단에 관련 상품 캐러셀인 cross-sell related strip을 넣어줘, 장바구니 아래 함께 구매하면 좋은 상품 스트립을 보여줘]
+  asset: { kind: mini-mock, variant: cross-sell-related-strip, props: { items: 4 } }
+  sources: [{ source_id: blocks-so-library, note: shadcn block ecosystem ecommerce related products blocks }]
+  related:
+    - id: product-card
+      relation: use-with
+      note: "상품 상세나 장바구니 하단의 cross-sell related strip은 이 product card를 그대로 재사용하는 캐러셀 조합이다."
   confidence: medium
 
 - id: permission-matrix-editor

@@ -55,7 +55,7 @@ planning_gate:
 
 ## Step 트리
 
-- [ ] Step 1 — 심화 배치: commerce (RL 루프, recipe 2~3 + 용어). (verify: 검증 체인 + build:catalog + ledger row)
+- [x] Step 1 — 심화 배치: commerce (RL 루프, recipe 2~3 + 용어). (verify: 검증 체인 + build:catalog + ledger row)
 - [ ] Step 2 — 심화 배치: internal-tools. (verify: 동일)
 - [ ] Step 3 — 심화 배치: documentation. (verify: 동일)
 - [ ] Step 4 — 심화 배치: mobile-apps. (verify: 동일)
