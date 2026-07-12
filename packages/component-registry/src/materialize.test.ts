@@ -1,6 +1,7 @@
 import { describe, expect, it } from 'vitest'
 import { applyOperation, createDocumentFixture, planInsert, planInsertBounds } from '@askewly/canvas-core'
 import { catalog } from './catalog.js'
+import { recipeCatalog } from './recipe-catalog.generated.js'
 import { createRegistryNode } from './registry.js'
 import { planMaterializeRegistryNode } from './materialize.js'
 
@@ -12,6 +13,14 @@ function insertButton(existingFiles?: string[]) {
   const node = createRegistryNode(doc, entry, null, planInsertBounds(doc, null, entry.defaultSize))
   const next = applyOperation(doc, planInsert(doc, node, at))
   return { document: next, nodeId: node.id, entry, existingFiles }
+}
+
+function insertRecipe(recipeId: string) {
+  const doc = createDocumentFixture(1000)
+  const entry = recipeCatalog.find((item) => item.id === recipeId)!
+  const node = createRegistryNode(doc, entry, null, planInsertBounds(doc, null, entry.defaultSize))
+  const next = applyOperation(doc, planInsert(doc, node, at))
+  return { document: next, nodeId: node.id, entry }
 }
 
 describe('planMaterializeRegistryNode', () => {
@@ -86,5 +95,52 @@ describe('planMaterializeRegistryNode', () => {
   it('throws for a missing node id', () => {
     const doc = createDocumentFixture(1000)
     expect(() => planMaterializeRegistryNode(doc, 'does-not-exist')).toThrow(/missing node/)
+  })
+})
+
+describe('planMaterializeRegistryNode (recipe nodes)', () => {
+  it('emits the real cart-drawer implementation source with markers substituted, no placeholders left', () => {
+    const { document, nodeId } = insertRecipe('recipe/cart-drawer')
+    const result = planMaterializeRegistryNode(document, nodeId)
+    expect(result.filePath).toBe('src/components/CartDrawer.tsx')
+    expect(result.operations).toEqual([])
+    // Distinctive string from the real cart-drawer.tsx implementation.
+    expect(result.content).toContain('Continue shopping')
+    expect(result.content).toContain('SheetTrigger asChild')
+    expect(result.content).toContain(`data-agent-design-id="${nodeId}"`)
+    expect(result.content).toContain('data-agent-design-name="Cart Drawer"')
+    expect(result.content).toContain('data-agent-design-label="Cart Drawer"')
+    expect(result.content).not.toContain('__AD_')
+  })
+
+  it('is byte-for-byte deterministic across repeated calls for a recipe node', () => {
+    const { document, nodeId } = insertRecipe('recipe/cart-drawer')
+    const first = planMaterializeRegistryNode(document, nodeId)
+    const second = planMaterializeRegistryNode(document, nodeId)
+    expect(first).toEqual(second)
+  })
+
+  it('suffixes the export identifier in the emitted recipe source on file-name collision', () => {
+    const { document, nodeId } = insertRecipe('recipe/cart-drawer')
+    const result = planMaterializeRegistryNode(document, nodeId, { existingFiles: ['src/components/CartDrawer.tsx'] })
+    expect(result.filePath).toBe('src/components/CartDrawer2.tsx')
+    expect(result.content).toContain('export function CartDrawer2(')
+    expect(result.content).not.toMatch(/\bCartDrawer\b(?!2)/)
+  })
+
+  it('materializes a non-recipe registry node with the legacy generic skeleton, unaffected by the recipe branch', () => {
+    const { document, nodeId } = insertButton()
+    const result = planMaterializeRegistryNode(document, nodeId)
+    expect(result.content).toContain('export function Button()')
+    expect(result.content).not.toContain('__AD_')
+    expect(result.content).not.toContain('SheetTrigger')
+  })
+
+  it('throws for a recipe node already backed by a real file', () => {
+    const { document, nodeId } = insertRecipe('recipe/cart-drawer')
+    const node = document.nodes[nodeId]
+    if (node.kind !== 'code-component') throw new Error('expected code-component')
+    const alreadySourced = { ...document, nodes: { ...document.nodes, [nodeId]: { ...node, source: { ...node.source, file: 'src/components/CartDrawer.tsx' } } } }
+    expect(() => planMaterializeRegistryNode(alreadySourced, nodeId)).toThrow(/already source-backed/)
   })
 })

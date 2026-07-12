@@ -1,4 +1,5 @@
 import type { CanvasDocument, CanvasOperation, CodeComponentNode, NodeId } from '@askewly/canvas-core'
+import { recipeSources } from './recipe-sources.generated.js'
 
 export interface MaterializeRegistryNodeOptions {
   /**
@@ -40,6 +41,34 @@ function resolveExportName(base: string, existingFiles: ReadonlySet<string>): st
 function labelFor(node: CodeComponentNode): string {
   const label = node.props.label
   return typeof label === 'string' && label.length > 0 ? label : node.name
+}
+
+const RECIPE_REGISTRY_PREFIX = 'registry://recipe/'
+
+function recipeSlugFor(node: CodeComponentNode): string | null {
+  return node.source.file.startsWith(RECIPE_REGISTRY_PREFIX) ? node.source.file.slice(RECIPE_REGISTRY_PREFIX.length) : null
+}
+
+/**
+ * Fills the `__AD_NODE_*` placeholders embedded (at build:catalog time - see
+ * scripts/build-recipe-catalog.mjs) into a recipe's real implementation
+ * source, and renames the exported component identifier if the file-name
+ * collision logic suffixed it away from the recipe's original export name.
+ */
+function buildRecipeComponentSource(
+  node: CodeComponentNode,
+  recipeSource: { exportName: string; source: string },
+  resolvedExportName: string,
+): string {
+  const label = labelFor(node)
+  let content = recipeSource.source
+    .replaceAll('__AD_NODE_ID__', escapeAttribute(node.id))
+    .replaceAll('__AD_NODE_NAME__', escapeAttribute(node.name))
+    .replaceAll('__AD_NODE_LABEL__', escapeAttribute(label))
+  if (resolvedExportName !== recipeSource.exportName) {
+    content = content.replace(new RegExp(`\\b${recipeSource.exportName}\\b`, 'g'), resolvedExportName)
+  }
+  return content
 }
 
 function classNameFor(node: CodeComponentNode): string {
@@ -93,6 +122,13 @@ function buildComponentSource(node: CodeComponentNode, exportName: string): stri
  * `source` was out of scope (no test or DoD item calls for a live-session
  * source-field rewrite), and the cold re-derive path already yields the
  * correct, single node.
+ *
+ * Recipe nodes (`registry://recipe/<slug>`) are a special case of the same
+ * contract: instead of the generic skeleton below, the node's real
+ * standalone implementation source (embedded at build:catalog time into
+ * `recipe-sources.generated.ts`, see scripts/build-recipe-catalog.mjs) is
+ * emitted with the same `data-agent-design-*` markers spliced into its root
+ * JSX element. `operations` stays empty for the same reason.
  */
 export function planMaterializeRegistryNode(
   document: CanvasDocument,
@@ -107,6 +143,17 @@ export function planMaterializeRegistryNode(
   }
 
   const existingFiles = new Set((options.existingFiles ?? []).map((file) => file.replaceAll('\\', '/')))
+
+  const recipeSlug = recipeSlugFor(node)
+  if (recipeSlug !== null) {
+    const recipeSource = recipeSources[recipeSlug]
+    if (!recipeSource) throw new Error(`planMaterializeRegistryNode: no embedded source found for recipe "${recipeSlug}"`)
+    const exportName = resolveExportName(recipeSource.exportName, existingFiles)
+    const filePath = `src/components/${exportName}.tsx`
+    const content = buildRecipeComponentSource(node, recipeSource, exportName)
+    return { filePath, content, operations: [] }
+  }
+
   const exportName = resolveExportName(baseExportName(node), existingFiles)
   const filePath = `src/components/${exportName}.tsx`
   const content = buildComponentSource(node, exportName)

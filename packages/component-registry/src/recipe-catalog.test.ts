@@ -11,8 +11,8 @@ const pkgRoot = path.resolve(__dirname, '..')
 const generatorScript = path.join(pkgRoot, 'scripts', 'build-recipe-catalog.mjs')
 
 describe('recipeCatalog (generated)', () => {
-  it('has 23 entries, one per recipes/*/*.md', () => {
-    expect(recipeCatalog).toHaveLength(23)
+  it('has 35 entries, one per recipes/*/*.md', () => {
+    expect(recipeCatalog).toHaveLength(35)
   })
 
   it('has unique ids all prefixed with "recipe/"', () => {
