@@ -303,6 +303,16 @@
       "completed": "2026-07-12"
     },
     {
+      "id": "QA1",
+      "title": "Recipe Gallery & Visual QA",
+      "status": "active",
+      "started": "2026-07-12",
+      "plan": "docs/plans/2026-07-12-qa1-recipe-gallery-visual-qa.md",
+      "session_ids": [
+        "claude:086e4b88-d743-44cd-b102-57183afa1b61"
+      ]
+    },
+    {
       "id": "SD",
       "title": "Surface Depth 2세대",
       "status": "completed",
