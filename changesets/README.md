@@ -92,3 +92,4 @@
 | 90 | 20260712-gallery-overlay-containment | 2026-07-12 | QA1 Step 3: contain cart-drawer/cmdk gallery demos, fix SheetTitle context crash and zero-width demo root | 3/3 | complete |
 | 91 | 20260712-recipe-source-materialization | 2026-07-12 | QA3 Step 1: recipe materialization emits real standalone source with build-time identity marker embed, 35 sources generated | 4/4 | complete |
 | 92 | 20260712-canvas-materialize-action | 2026-07-12 | QA3 Step 2: materialize action in canvas UI via new desktop IPC source-patch channel (bridge-connected only) | 5/5 | complete |
+| 93 | 20260712-materialization-roundtrip-e2e | 2026-07-12 | QA3 Step 3: materialization roundtrip in packaged E2E, Windows staging-path colon fix, bridge recipe roundtrip test | 4/4 | complete |

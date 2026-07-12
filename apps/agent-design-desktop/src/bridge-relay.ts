@@ -207,7 +207,9 @@ export class BridgeRelay {
     const body = await this.request('/source-patches', {
       method: 'POST',
       body: JSON.stringify({
-        transactionId: `human:materialize:${Date.now()}`,
+        // Hyphenated id: the bridge stages the patch under `<file>.agent-design-<transactionId>.tmp`,
+        // and Windows rejects ':' in file names.
+        transactionId: `human-materialize-${Date.now()}`,
         actor: 'human',
         baseRevision: snapshot.revision,
         beforeHash: snapshot.hash,

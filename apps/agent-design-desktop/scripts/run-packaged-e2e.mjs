@@ -1,6 +1,6 @@
 import { spawn, spawnSync } from 'node:child_process'
 import { createHash } from 'node:crypto'
-import { mkdir, mkdtemp, realpath, rm, stat, writeFile } from 'node:fs/promises'
+import { mkdir, mkdtemp, readFile, realpath, rm, stat, writeFile } from 'node:fs/promises'
 import { tmpdir } from 'node:os'
 import { createServer } from 'node:net'
 import { basename, join, resolve } from 'node:path'
@@ -442,6 +442,7 @@ try {
   stage(`registry assembly: primitive insertion via batch operation reached revision ${revisionAfterPrimitive} (${nodesBeforePrimitive + 1} nodes)`)
 
   const nodesBeforeRecipe = nodesBeforePrimitive + 1
+  const idsBeforeRecipe = await page.evaluate(() => Array.from(document.querySelectorAll('[data-canvas-id]')).map((element) => element.getAttribute('data-canvas-id')))
   await page.getByTestId('insert-recipe-bottom-tab-bar').waitFor()
   await page.getByTestId('insert-recipe-bottom-tab-bar').click()
   await page.waitForFunction((count) => document.querySelectorAll('[data-canvas-id]').length === count, nodesBeforeRecipe + 1)
@@ -449,6 +450,29 @@ try {
   invariant(revisionAfterRecipe > revisionAfterPrimitive, 'recipe batch insertion did not advance the document revision')
   stage(`registry assembly: recipe insertion (bottom-tab-bar) via batch operation reached revision ${revisionAfterRecipe} (${nodesBeforeRecipe + 1} nodes)`)
   await page.getByTestId('toggle-insert').click()
+
+  // QA3 roundtrip: materialize the freshly inserted recipe node into a real project
+  // source file through the desktop source-patch channel, then verify the file on disk
+  // carries the node's own identity marker (the cold re-derive identity contract).
+  const recipeNodeId = (await page.evaluate((before) => Array.from(document.querySelectorAll('[data-canvas-id]')).map((element) => element.getAttribute('data-canvas-id')).filter((id) => !before.includes(id)), idsBeforeRecipe))[0]
+  invariant(typeof recipeNodeId === 'string' && recipeNodeId.length > 0, 'inserted recipe node id was not observable')
+  await page.getByTestId('materialize-node').waitFor()
+  await page.getByTestId('materialize-node').click()
+  await page.waitForFunction(() => /materialized to /.test(document.querySelector('[data-testid="persistence-status"]')?.textContent ?? '')).catch(async (error) => {
+    const surfaces = await page.evaluate(() => ({
+      persistence: document.querySelector('[data-testid="persistence-status"]')?.textContent,
+      agentError: document.querySelector('[data-testid="agent-error"]')?.textContent ?? null,
+      buttonPresent: Boolean(document.querySelector('[data-testid="materialize-node"]')),
+    }))
+    throw new Error(`materialize status never appeared; surfaces=${JSON.stringify(surfaces)}; ${error.message}`)
+  })
+  const materializedPath = (await page.getByTestId('persistence-status').textContent()).replace(/^.*materialized to /, '').trim()
+  const materializedFile = resolve(projectRoot, materializedPath)
+  const materializedContent = await readFile(materializedFile, 'utf8')
+  invariant(materializedContent.includes(`data-agent-design-id="${recipeNodeId}"`), 'materialized source does not carry the canvas node id marker')
+  invariant(!materializedContent.includes('__AD_'), 'materialized source still contains identity placeholders')
+  invariant(materializedContent.includes('BottomTabBar'), 'materialized source is not the bottom-tab-bar recipe implementation')
+  stage(`materialization roundtrip: node ${recipeNodeId} written to ${materializedPath} with identity marker`)
 
   const watcherStarted = performance.now()
   await writeFile(sourceFile, source('Watcher packaged update'))
@@ -482,6 +506,9 @@ try {
   const differentPixels = pixelmatch(beforePng.data, afterPng.data, diff.data, beforePng.width, beforePng.height, { threshold: 0.1, includeAA: false })
   await writeFile(join(resultsRoot, 'restart-diff.png'), PNG.sync.write(diff))
   stage(`restart drift measured at ${differentPixels} pixels`)
+  const recipeNodeSurvivedRestart = await restartPage.evaluate((id) => document.querySelectorAll(`[data-canvas-id="${id}"]`).length, recipeNodeId)
+  invariant(recipeNodeSurvivedRestart === 1, `materialized recipe node did not survive restart exactly once (${recipeNodeSurvivedRestart})`)
+  stage('materialized recipe node identity survived restart (single node, no duplicate)')
   consoleErrorsByPhase.restart = [...restartApp.consoleErrors]
   consoleErrors.push(...restartApp.consoleErrors)
   await restartApp.close()
@@ -543,6 +570,7 @@ try {
       primitiveInsertion: { revisionBefore: revisionBeforePrimitive, revisionAfter: revisionAfterPrimitive, nodeCountAfter: nodesBeforePrimitive + 1 },
       recipeInsertion: { revisionBefore: revisionAfterPrimitive, revisionAfter: revisionAfterRecipe, nodeCountAfter: nodesBeforeRecipe + 1 },
     },
+    materialization: { nodeIdRedacted: createHash('sha256').update(recipeNodeId).digest('hex').slice(0, 12), filePath: materializedPath, identityMarkerVerified: true, placeholdersAbsent: true, survivedRestartSingle: true },
     roundTrip: { humanEdit: true, watcherEdit: true, watcherVisibleMs, finalLabel: 'Watcher packaged update' },
     recovery: { revisionBeforeCrash, revisionAfterCrashRecovery, restartRevision: revisionBeforeCrash, differentPixels, totalPixels: beforePng.width * beforePng.height },
     performance: { gpuState, traces, p95WorstMs: Math.max(...traces.map((trace) => trace.p95LatencyMs)), targetMs: 16, fallbackState: 'dom', fallbackTrace },

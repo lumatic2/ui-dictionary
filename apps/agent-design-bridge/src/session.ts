@@ -261,8 +261,11 @@ export class BridgeSession {
       throw new BridgeProtocolError('HASH_CONFLICT', `expected file hash ${currentFileHash}, received ${request.beforeFileHash}`, 409)
     }
     if (request.content === beforeContent) throw new BridgeProtocolError('INVALID_TRANSACTION', 'source patch does not change the file', 400)
-    const stagedFile = `${file}.agent-design-${request.transactionId}.tmp`
-    const backupFile = `${file}.agent-design-${request.transactionId}.bak`
+    // Transaction ids may contain characters Windows forbids in file names (':' etc.) -
+    // sanitize before embedding them in the staging/backup paths.
+    const stagingId = request.transactionId.replace(/[^A-Za-z0-9._-]/g, '-')
+    const stagedFile = `${file}.agent-design-${stagingId}.tmp`
+    const backupFile = `${file}.agent-design-${stagingId}.bak`
     if (isNewFile) mkdirSync(dirname(file), { recursive: true })
     writeFileSync(stagedFile, request.content, { encoding: 'utf8', flag: 'wx' })
     try {
