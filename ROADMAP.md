@@ -1,21 +1,30 @@
 # ROADMAP
 
 > Last updated: 2026-07-12
-> Status: Quality & Dogfooding closed (2026-07-12) — 다음 horizon 활성화는 사용자 결정 대기
+> Status: Public Product & Monetization — PX Public Experience Pass planning
 > North star: Build Askewly Design as both a public reference website and an agent-usable implementation system.
 > line budget: <=150
 
 ## Current Horizon
 
-없음 — Quality & Dogfooding (QA2/QA1/QA3) 2026-07-12 close (`docs/horizons/2026-07-quality-dogfooding.md` Close Audit 참조). 다음 후보는 Horizon Queue에서 사용자 승인으로 활성화한다.
+<!-- harness:goal id="public-product-monetization" status="active" -->
+Goal: 공개 탐색 경험을 완성하고 에셋 모델을 정합시킨 뒤 계정·결제·Pro를 열어 결제 사용자가 실제로 구매·사용하는 제품으로 만든다. Details: `docs/horizons/2026-07-public-product-monetization.md`.
 
 ## Active Milestones
 
-없음.
+<!-- harness:milestone id="PX" status="active" priority="P0" -->
+### PX — Public Experience Pass
+- DoD: 헤더 검색이 어느 페이지에서든 결과로 이동하고 전 표면(terms·docs·Patterns·Recipes·Colors)을 인덱싱, Getting set up이 디자인 작업 프로토콜을 서술, Docs/어휘/독립 표면 역할 재정의가 네비에 반영, Docs·Patterns·Recipes 사이드바 독립, 페이지별 meta/OG + 모바일 점검.
+- Evidence: `docs/plans/2026-07-12-px-public-experience.md`
+- Gap: 헤더 검색 자유 텍스트가 결과로 이동 안 함(버그) + stale 인덱스, Docs 역할 중복(Foundations↔어휘↔독립 표면), Docs·Patterns 사이드바 공유·Recipes 사이드바 부재.
+- Status: [ ]
 
-## Horizon Queue (활성화 = 사용자 결정)
+## Next Candidates (활성화 시 §B0.5 Beat 3 확정)
 
-1. **Public Product & Monetization** — `docs/horizons/2026-07-public-product-monetization.md`: 공개 경험 완성 + 에셋 모델 정합 + 계정/결제/Pro. Milestone 후보: PX/AM/AC/PG/PP.
+- **AM — Asset Model Alignment**: 무료/유료 경계·라이선스·다운로드 포맷 (사용자 소유 결정 다수 — §B0-1 토론 필수).
+- **AC — Accounts/Auth**: 계정·인증 (askewly SSO 라우팅 자산 활용).
+- **PG — Payments/Pro Gate**: 결제 연동 + Pro 게이트 해제 (크레덴셜 = 사용자 정지 지점).
+- **PP — Premium Packs**: 프리미엄 코드 복사·에셋 다운로드·implementation pack.
 
 ## 유지보수 후보 (milestone 아님)
 

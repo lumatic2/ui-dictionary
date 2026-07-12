@@ -1,7 +1,7 @@
 # Horizon — Public Product & Monetization
 
 Date: 2026-07-12 (queued — H2 Living Design System 이후 활성화)
-Status: queued
+Status: active (2026-07-12 사용자 승인 — Quality & Dogfooding close 직후, PX부터)
 
 ## Goal
 
