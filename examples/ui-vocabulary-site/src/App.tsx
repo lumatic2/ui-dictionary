@@ -337,6 +337,18 @@ function App() {
   function updateQuery(nextQuery: string) {
     setActiveUseCaseId(null)
     setQuery(nextQuery)
+
+    const isNoExploreLayout = pageMode === "home" || pageMode === "download" || pageMode === "pro" || pageMode === "colors" || pageMode === "recipes"
+    if (nextQuery.trim().length > 0 && isNoExploreLayout) {
+      const nextPage: PageMode = isNavigationFilter(filter) && filter.slice("nav:".length).startsWith("docs-") ? "docs" : "plus"
+      setPageMode(nextPage)
+      setReturnPageMode(nextPage)
+      if (!isNavigationFilter(filter)) {
+        setFilter(navFilter("plus-all"))
+      }
+      setSelectedTermId(null)
+      window.scrollTo({ top: 0, behavior: "smooth" })
+    }
   }
 
   function updateFilter(nextFilter: TermFilter) {
@@ -560,6 +572,7 @@ function App() {
                   onExpandedChange={setSearchExpanded}
                   onFilterChange={updateFilter}
                   onQueryChange={updateQuery}
+                  onNavigate={navigateFromHome}
                 />
                 <SiteThemeToggle activeTheme={siteTheme} onThemeChange={setSiteTheme} />
                 <div className="hidden items-center gap-4 text-sm font-medium text-foreground xl:flex">

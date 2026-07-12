@@ -8,7 +8,7 @@ import {
   PopoverContent,
 } from "@/components/ui/popover"
 import type { VocabularyTerm } from "@/data/terms.generated"
-import { getSearchSuggestions, type SearchSuggestion } from "@/lib/search-suggestions"
+import { getSearchSuggestions, type SearchDestination, type SearchSuggestion } from "@/lib/search-suggestions"
 import type { TermFilter } from "@/lib/search"
 import { navFilter } from "@/lib/navigation-model"
 import { cn } from "@/lib/utils"
@@ -21,6 +21,7 @@ type TopbarSearchProps = {
   onExpandedChange: (expanded: boolean) => void
   onFilterChange: (filter: TermFilter) => void
   onQueryChange: (query: string) => void
+  onNavigate?: (destination: SearchDestination) => void
 }
 
 export function TopbarSearch({
@@ -31,6 +32,7 @@ export function TopbarSearch({
   onExpandedChange,
   onFilterChange,
   onQueryChange,
+  onNavigate,
 }: TopbarSearchProps) {
   const rootRef = useRef<HTMLDivElement>(null)
   const inputRef = useRef<HTMLInputElement>(null)
@@ -75,6 +77,14 @@ export function TopbarSearch({
         return
       }
 
+      // PopoverContent renders through a Portal, so suggestion buttons are
+      // never descendants of rootRef even while the popover is open —
+      // without this check, every pointerdown on a suggestion closes the
+      // popover before its click handler runs.
+      if (target instanceof Element && target.closest('[data-slot="popover-content"]')) {
+        return
+      }
+
       collapse()
     }
 
@@ -95,6 +105,13 @@ export function TopbarSearch({
   function selectSuggestion(suggestion: SearchSuggestion) {
     if (suggestion.type === "category" || suggestion.type === "group") {
       onFilterChange(suggestion.filter)
+      onQueryChange("")
+      collapse()
+      return
+    }
+
+    if (suggestion.type === "page") {
+      onNavigate?.(suggestion.destination)
       onQueryChange("")
       collapse()
       return
@@ -224,28 +241,12 @@ const topbarStarterSuggestions: SearchSuggestion[] = [
     filter: navFilter("plus-marketing-hero-sections"),
   },
   {
-    id: "topbar-header-sections",
-    type: "group",
-    label: "Header Sections",
-    description: "Marketing header section examples",
-    value: "Header Sections",
-    filter: navFilter("plus-marketing-header-sections"),
-  },
-  {
     id: "topbar-footers",
     type: "group",
     label: "Footers",
     description: "Footer layouts and link groups",
     value: "Footers",
     filter: navFilter("plus-marketing-footers"),
-  },
-  {
-    id: "topbar-feature-sections",
-    type: "group",
-    label: "Feature Sections",
-    description: "Product feature layouts and grids",
-    value: "Feature Sections",
-    filter: navFilter("plus-marketing-feature-sections"),
   },
   {
     id: "topbar-pricing-sections",
@@ -256,27 +257,35 @@ const topbarStarterSuggestions: SearchSuggestion[] = [
     filter: navFilter("plus-marketing-pricing-sections"),
   },
   {
-    id: "topbar-application-shells",
-    type: "group",
-    label: "Application Shells",
-    description: "Stacked, sidebar, and multi-column app shells",
-    value: "Application Shells",
-    filter: navFilter("plus-application-shells"),
-  },
-  {
-    id: "topbar-product-overviews",
-    type: "group",
-    label: "Product Overviews",
-    description: "Ecommerce product overview examples",
-    value: "Product Overviews",
-    filter: navFilter("plus-ecommerce-product-overviews"),
-  },
-  {
     id: "topbar-checkout-forms",
     type: "group",
     label: "Checkout Forms",
     description: "Ecommerce checkout form examples",
     value: "Checkout Forms",
     filter: navFilter("plus-ecommerce-checkout-forms"),
+  },
+  {
+    id: "topbar-recipes",
+    type: "page",
+    label: "Recipe Gallery",
+    description: "Live-render index of composed design-system recipes",
+    value: "Recipe Gallery",
+    destination: { page: "recipes" },
+  },
+  {
+    id: "topbar-colors",
+    type: "page",
+    label: "Colors",
+    description: "Color palette and token reference",
+    value: "Colors",
+    destination: { page: "colors" },
+  },
+  {
+    id: "topbar-docs-getting-started",
+    type: "group",
+    label: "Getting set up",
+    description: "Docs / Getting started",
+    value: "Getting set up",
+    filter: navFilter("docs-getting-started-setup"),
   },
 ]

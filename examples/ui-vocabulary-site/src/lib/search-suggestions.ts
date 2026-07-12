@@ -1,6 +1,19 @@
 import type { TermCategory, VocabularyTerm } from "@/data/terms.generated"
 import { navigationCollections, navFilter } from "@/lib/navigation-model"
 import { categoryGroups, categoryLabels, getTermGroup, matchesFilter, type TermFilter, type TermGroupId } from "@/lib/search"
+import { docsArticlePages } from "@/lib/documentation-pages"
+import { recipeGalleryEntries } from "@/lib/recipe-gallery-data"
+
+/**
+ * Navigation destination for suggestions that point at a whole page rather
+ * than a term filter (Recipes gallery, Colors). Mirrors the shape of
+ * `HomePageDestination` from `@/components/home-page` structurally — kept as
+ * a local type instead of importing it to avoid a circular import (home-page
+ * already imports from this module).
+ */
+export type SearchDestination =
+  | { filter: TermFilter; page: "docs" | "plus" }
+  | { page: "download" | "pro" | "colors" | "recipes" | "signin" }
 
 export type SearchSuggestion =
   | {
@@ -28,6 +41,14 @@ export type SearchSuggestion =
       description: string
       value: string
       relatedTermIds: string[]
+    }
+  | {
+      id: string
+      type: "page"
+      label: string
+      description: string
+      value: string
+      destination: SearchDestination
     }
 
 type StarterQuery = {
@@ -113,13 +134,26 @@ export function getSearchSuggestions(
     suggestions.push(suggestion)
   }
 
+  for (const suggestion of getRecipeSuggestions(normalizedQuery)) {
+    suggestions.push(suggestion)
+  }
+
+  for (const suggestion of getColorsSuggestions(normalizedQuery)) {
+    suggestions.push(suggestion)
+  }
+
   return suggestions.slice(0, limit)
 }
 
 function getDocumentationSuggestions(query: string): SearchSuggestion[] {
   return navigationCollections
     .filter((collection) => collection.id.startsWith("docs-") && collection.id !== "docs-all")
-    .filter((collection) => normalize(`${collection.label} ${collection.path.join(" ")} documentation docs`).includes(query))
+    .filter((collection) => {
+      const article = docsArticlePages.get(navFilter(collection.id))
+      return normalize(
+        `${collection.label} ${collection.path.join(" ")} documentation docs ${article?.title ?? ""} ${article?.breadcrumb ?? ""}`
+      ).includes(query)
+    })
     .map((collection) => ({
       id: `docs-${collection.id}`,
       type: "group" as const,
@@ -128,6 +162,43 @@ function getDocumentationSuggestions(query: string): SearchSuggestion[] {
       value: collection.label,
       filter: navFilter(collection.id),
     }))
+}
+
+function getRecipeSuggestions(query: string): SearchSuggestion[] {
+  return recipeGalleryEntries
+    .filter((entry) => normalize(`${entry.title} ${entry.collection} ${entry.description}`).includes(query))
+    .map((entry) => ({
+      id: `recipe-${entry.slug}`,
+      type: "page" as const,
+      label: entry.title,
+      description: `${entry.collection} recipe`,
+      value: entry.title,
+      destination: { page: "recipes" as const },
+    }))
+}
+
+const colorsKeywords = ["color", "colour", "colors", "컬러", "색상", "팔레트", "palette"]
+
+function getColorsSuggestions(query: string): SearchSuggestion[] {
+  const matches = colorsKeywords.some((keyword) => {
+    const normalizedKeyword = normalize(keyword)
+    return normalizedKeyword.includes(query) || query.includes(normalizedKeyword)
+  })
+
+  if (!matches) {
+    return []
+  }
+
+  return [
+    {
+      id: "page-colors",
+      type: "page" as const,
+      label: "Colors",
+      description: "Color palette and token reference",
+      value: "Colors",
+      destination: { page: "colors" as const },
+    },
+  ]
 }
 
 export function getStarterQueries() {
