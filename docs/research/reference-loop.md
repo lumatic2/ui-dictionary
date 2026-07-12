@@ -28,6 +28,7 @@ Milestone: RL (`docs/plans/2026-07-12-rl-reference-loop-pipeline.md`)
 
 - 실행: `node scripts/audit-recipe-candidates.mjs` (기존 `scripts/audit-ui-vocabulary-candidates.mjs`와 동일한 역할을 recipes/`terms.yml` 양쪽 대비로 수행한다).
 - **1회만, 적응 전에.** dedup은 적응(승격) 시작 전에 한 번 통과 확인하고 그 출력을 캡처해둔다. 승격 후 재실행하면 방금 승격한 항목이 자기 자신과 매치되어 에러가 뜨는데 이는 정상이며 회귀가 아니다 (20260712-commerce/internal-tools 배치 실측).
+- **alias 문구도 이웃과 대조한다.** audit은 후보 vs 기존 항목만 검사하고 기존 용어들의 alias 목록끼리는 비교하지 않는다 — 같은 계열의 자매 용어(예: FAB 계열)에 새 alias 문구를 붙일 때는 이웃 용어의 alias를 직접 읽어 문구 충돌을 피한다 (20260712-mobile-input 배치 실측: "확장 FAB"가 이미 `speed-dial`에 점유).
 - **자동 audit은 표현이 다른 동개념을 놓친다.** 토큰/부분문자열 휴리스틱은 `product-gallery`↔`image-gallery` 같은 다른 어휘의 중복을 못 잡는다 — 적응 단계에서 후보의 이웃 `terms.yml` 항목(같은 group/category)을 직접 읽어 수동 대조하는 것이 필수다 (20260712-commerce 배치에서 2건 수동 적발).
 - 검사 대상: 후보 `id`/`name`/`pattern_group`이 기존 `recipes/**/*.md` frontmatter, `docs/ui-vocabulary/terms.yml`과 겹치는지, 유사도 기반 duplicate-risk가 있는지.
 - 판정 규칙은 authoring-workflow.md §3과 동일하게 따른다: 같은 개념이면 신규 항목 대신 alias/related로 흡수, 상태 차이만이면 신규 항목 생략, 행동이 다르면 `related` 비교 추가, 애매하면 이번 배치에서 제외.

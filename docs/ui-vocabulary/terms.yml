@@ -480,11 +480,11 @@
   status: draft
   category: action
   group: action-buttons
-  ko: { name: 플로팅 버튼, aliases: [FAB, floating action button, 떠 있는 버튼] }
-  en: { name: Floating action button, aliases: [FAB] }
+  ko: { name: 플로팅 버튼, aliases: [FAB, floating action button, 떠 있는 버튼, 라벨 FAB, extended FAB] }
+  en: { name: Floating action button, aliases: [FAB, Extended FAB] }
   one_liner: 화면 위에 떠 있는 핵심 행동 버튼.
-  description: 보통 둥글거나 확장형이며 새 항목 만들기 같은 주요 행동을 항상 보이게 한다.
-  visual_anatomy: [floating circular button, elevation shadow, icon, fixed position]
+  description: 보통 둥글거나 확장형이며 새 항목 만들기 같은 주요 행동을 항상 보이게 한다. 아이콘과 텍스트 라벨을 함께 보여주는 넓은 pill 형태(extended FAB)도 같은 개념의 변형이며, 스크롤 시 라벨을 접어 아이콘만 남기는 방식으로 의미를 유지할 수 있다.
+  visual_anatomy: [floating circular button, elevation shadow, icon, fixed position, optional text label pill variant, collapse-to-icon on scroll]
   when_to_use: [모바일이나 앱 화면에서 가장 중요한 생성 행동을 빠르게 제공할 때]
   anti_use: [여러 개를 남발하지 않는다, 일반 폼 제출 버튼 대신 쓰지 않는다]
   prompt_phrases: [오른쪽 아래에 플러스 FAB를 넣어줘, 새 글 작성 floating action button을 만들어줘]
@@ -1930,6 +1930,8 @@
   prompt_phrases: [예약 시간을 고르는 time picker를 넣어줘]
   asset: { kind: mini-mock, variant: time-picker, props: { step: 30 } }
   sources: [{ source_id: material-m3-components, note: time picker component }]
+  related:
+    - { id: mobile-date-picker, relation: compare, note: "예약 날짜와 시간을 함께 받아야 하면 하나의 bottom sheet 안에 이 피커와 mobile-date-picker를 순차적으로 이어붙인다 — 현재 vocabulary에는 그 조합형 시트를 가리키는 전용 용어는 없다." }
   confidence: medium
 
 - id: rating-input
@@ -2046,6 +2048,8 @@
   prompt_phrases: [카드를 우클릭하면 편집 삭제 context menu가 나오게 해줘]
   asset: { kind: mini-mock, variant: context-menu, props: { commands: 3 } }
   sources: [{ source_id: wai-aria-apg-patterns, note: menu pattern for contextual commands }]
+  related:
+    - { id: long-press-menu, relation: compare, note: "모바일에서 트리거 방식이 갈린다 — long-press-menu는 터치-홀드로 우연히 발견되고, 이 항목(툴바 버튼을 눌러 아래로 펼쳐지는 pull-down 방식 포함)은 명시적 버튼으로 발견 가능성이 더 높다. 항목 구성(icon+label 행, destructive 스타일)은 공유한다." }
   confidence: high
 
 - id: loading-button
@@ -2100,8 +2104,8 @@
   status: draft
   category: action
   group: action-buttons
-  ko: { name: 스피드 다이얼, aliases: [speed dial, 확장 FAB, 빠른 작업 메뉴] }
-  en: { name: Speed dial, aliases: [Expandable FAB, Quick actions] }
+  ko: { name: 스피드 다이얼, aliases: [speed dial, 확장 FAB, 빠른 작업 메뉴, FAB 메뉴, 확장 액션 메뉴] }
+  en: { name: Speed dial, aliases: [Expandable FAB, Quick actions, FAB menu, Expanding action menu] }
   one_liner: 플로팅 버튼을 누르면 여러 빠른 행동 버튼이 펼쳐지는 요소.
   description: 모바일이나 좁은 화면에서 하나의 주요 버튼 아래에 관련 작업 여러 개를 숨겨둔다.
   visual_anatomy: [main fab, expanded action buttons, floating stack, labels optional]
@@ -3620,6 +3624,8 @@
   prompt_phrases: [알림 기능을 켤 때 permission prompt를 띄워서 허용 여부를 물어봐줘]
   asset: { kind: mini-mock, variant: permission-prompt, props: { permission: notification } }
   sources: [{ source_id: apple-hig-components, note: requesting permission in context }]
+  related:
+    - { id: permission-education-screen, relation: use-with, note: "온보딩에서 여러 권한이 필요하면, 권한마다 permission-education-screen(soft-ask) 뒤에 이 시스템 프롬프트를 이어붙이되, 모든 권한을 한 번에 몰아 묻지 않고 해당 기능을 실제로 쓰는 시점마다 하나씩 순차 요청한다." }
   confidence: high
 
 - id: permission-education-screen
@@ -3636,14 +3642,16 @@
   prompt_phrases: [위치 권한을 요청하기 전에 왜 필요한지 설명하는 permission education screen을 넣어줘]
   asset: { kind: mini-mock, variant: permission-education-screen, props: { cta: true } }
   sources: [{ source_id: apple-hig-components, note: explaining permission value before system request }]
+  related:
+    - { id: permission-prompt, relation: use-with, note: "온보딩에서 여러 권한이 필요하면, 이 soft-ask 화면 뒤에 permission-prompt를 이어붙이되, 모든 권한을 한 번에 몰아 묻지 않고 해당 기능을 실제로 쓰는 시점마다 하나씩 순차 요청한다." }
   confidence: medium
 
 - id: mobile-snackbar
   status: draft
   category: feedback
   group: feedback-alerts-toasts
-  ko: { name: 모바일 스낵바, aliases: [mobile snackbar, 하단 스낵바, 하단 피드백 바] }
-  en: { name: Mobile snackbar, aliases: [Bottom snackbar, Action snackbar] }
+  ko: { name: 모바일 스낵바, aliases: [mobile snackbar, 하단 스낵바, 하단 피드백 바, 액션 스낵바] }
+  en: { name: Mobile snackbar, aliases: [Bottom snackbar, Action snackbar, Snackbar with action] }
   one_liner: 모바일 화면 하단, 내비게이션 위에 잠깐 나타나 결과와 짧은 행동을 보여주는 피드백.
   description: 저장됨, 실행 취소, 재시도처럼 작업 직후의 상태와 보조 행동을 엄지 영역 근처에 보여준다.
   visual_anatomy: [bottom message bar, short text, optional action, navigation-safe placement]
@@ -3780,6 +3788,8 @@
   prompt_phrases: [카드를 길게 누르면 복사 공유 삭제가 나오는 long press menu를 넣어줘]
   asset: { kind: mini-mock, variant: long-press-menu, props: { open: true } }
   sources: [{ source_id: apple-hig-components, note: touch and hold contextual actions }]
+  related:
+    - { id: context-menu, relation: compare, note: "트리거 위치와 발견 가능성이 다르다 — 이 항목은 터치-홀드로 우연히 발견되고, context-menu(툴바 버튼 아래로 펼쳐지는 pull-down 방식 포함)는 명시적 버튼으로 발견된다. 항목 구성(icon+label 행, destructive 스타일)은 공유한다." }
   confidence: high
 
 - id: drag-to-reorder-list
@@ -3972,6 +3982,8 @@
   prompt_phrases: [예약 날짜를 고르는 mobile date picker를 바텀시트 안에 넣어줘]
   asset: { kind: mini-mock, variant: mobile-date-picker, props: { selected: true } }
   sources: [{ source_id: material-m3-components, note: date picker component for mobile layouts }]
+  related:
+    - { id: time-picker, relation: compare, note: "예약처럼 날짜와 시간을 함께 골라야 하면 하나의 bottom sheet 안에 이 두 피커를 순차적으로 이어붙인다 — 현재 vocabulary에는 그 조합형 시트를 가리키는 전용 용어는 없다." }
   confidence: high
 
 - id: wheel-picker
@@ -4942,8 +4954,8 @@
   status: draft
   category: input
   group: input-pickers
-  ko: { name: 수량 스테퍼, aliases: [quantity stepper, 수량 조절기, plus minus input] }
-  en: { name: Quantity stepper, aliases: [Quantity input stepper, Plus minus input] }
+  ko: { name: 수량 스테퍼, aliases: [quantity stepper, 수량 조절기, plus minus input, 터치 수량 스테퍼] }
+  en: { name: Quantity stepper, aliases: [Quantity input stepper, Plus minus input, Touch quantity stepper] }
   one_liner: 빼기/더하기 버튼으로 상품 수량 같은 숫자를 조절하는 입력.
   description: 직접 입력보다 작은 정수 범위를 빠르게 늘리거나 줄이게 한다.
   visual_anatomy: [minus button, quantity value, plus button, min max constraints]
@@ -6561,6 +6573,24 @@
     - { id: sidebar-nav, relation: alternative, note: "앱 내부 반복 사용 내비게이션은 sidebar navigation이 더 일반적이다." }
   confidence: high
 
+- id: mobile-form-field-stack
+  status: draft
+  category: input
+  group: input-text
+  ko: { name: 모바일 폼 필드 스택, aliases: [mobile form field stack, 모바일 입력 필드 묶음, 세로 폼 필드 스택] }
+  en: { name: Mobile form field stack, aliases: [Stacked mobile form fields, Mobile form stack] }
+  one_liner: 48x48 이상 터치 타깃과 필드별 helper/error 텍스트를 갖춘, 세로로 쌓인 모바일 폼 필드 구성.
+  description: 좁은 화면에서 필드 밀도를 낮추지 않으면서 터치 타깃을 확보하고, 포커스 이동과 제출을 키보드 액션으로 이어주는 모바일 전용 폼 구성이다. 데스크톱 `field-group`과 같은 라벨-입력-helper 단위를 쌓지만, 최소 터치 타깃 크기와 다음 필드로 넘어가는 키보드 액션 설계가 핵심 제약으로 추가된다.
+  visual_anatomy: [stacked text fields, label plus helper or error text per field, 48x48 minimum touch target, focus ring, next-field keyboard action, submit cta pinned or inline]
+  when_to_use: [모바일 화면에서 여러 입력 필드를 세로로 나열해야 할 때, 터치 타깃과 키보드 흐름을 함께 설계해야 할 때]
+  anti_use: [필드가 하나뿐이면 단일 text-field로 충분하다, 데스크톱 전용 화면에는 일반 field-group을 쓴다]
+  prompt_phrases: [모바일 가입 폼을 필드별 최소 터치 타깃을 지키는 mobile form field stack으로 만들어줘]
+  asset: { kind: mini-mock, variant: mobile-form-field-stack, props: { fields: 3 } }
+  sources: [{ source_id: material-m3-components, note: text field touch target and guidelines for stacked mobile forms }]
+  related:
+    - { id: field-group, relation: compare, note: "같은 라벨-입력-helper 단위를 쓰지만, field-group은 데스크톱/범용 폼 구성이고 이 항목은 48x48 최소 터치 타깃과 다음 필드 키보드 액션처럼 모바일 전용 제약이 추가된 구성이다." }
+  confidence: high
+
 - id: field-group
   status: draft
   category: input
@@ -6598,6 +6628,10 @@
   sources:
     - source_id: shadcn-ui-docs
       note: Field component and form layout pattern
+  related:
+    - id: mobile-form-field-stack
+      relation: compare
+      note: 같은 라벨-입력-helper 단위를 쓰지만, 모바일 화면에서는 48x48 최소 터치 타깃과 다음 필드로 넘어가는 키보드 액션 제약이 추가된 mobile-form-field-stack을 쓴다.
   confidence: high
 
 - id: item-row

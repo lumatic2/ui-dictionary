@@ -56,7 +56,7 @@ planning_gate:
 
 - [x] Step 1 — 디바이스 프레임 인프라 (changeset): `examples/ui-vocabulary-site`에 DeviceFrame 컴포넌트(모바일 뷰포트 프레임) + 모바일 예시 렌더 경로. (verify: site build/lint PASS + 프레임 렌더 관측)
 - [x] Step 2 — 모바일 배치 1: 내비게이션·구조 (HIG 우선 — 탭바·내비 스택·시트·풀-투-리프레시 등). RL 5단계 루프, recipe 2종 + 용어 10~20. (verify: audit + validator 체인 PASS + ledger row)
-- [ ] Step 3 — 모바일 배치 2: 입력·피드백 (Material 우선 — 모바일 폼·액션 시트·FAB·스와이프 액션 등). 동일 루프, recipe 2종 + 용어. (verify: 동일 + ledger row)
+- [x] Step 3 — 모바일 배치 2: 입력·피드백 (Material 우선 — 모바일 폼·액션 시트·FAB·스와이프 액션 등). 동일 루프, recipe 2종 + 용어. (verify: 동일 + ledger row)
 - [x] Step 4 — 캔버스 모바일 뷰포트 preset (changeset): `apps/agent-design` 캔버스 설정에 viewport preset(Mobile 390×844 / Tablet 768×1024 / Desktop) + 신규 모바일 recipe를 캔버스에서 여는 E2E. (verify: `cd apps/agent-design; npm test -- --run` 무회귀 + build PASS + E2E 관측)
 
 ## 결정 로그

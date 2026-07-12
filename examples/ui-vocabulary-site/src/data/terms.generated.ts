@@ -1714,22 +1714,27 @@ export const terms = [
       "aliases": [
         "FAB",
         "floating action button",
-        "떠 있는 버튼"
+        "떠 있는 버튼",
+        "라벨 FAB",
+        "extended FAB"
       ]
     },
     "en": {
       "name": "Floating action button",
       "aliases": [
-        "FAB"
+        "FAB",
+        "Extended FAB"
       ]
     },
     "one_liner": "화면 위에 떠 있는 핵심 행동 버튼.",
-    "description": "보통 둥글거나 확장형이며 새 항목 만들기 같은 주요 행동을 항상 보이게 한다.",
+    "description": "보통 둥글거나 확장형이며 새 항목 만들기 같은 주요 행동을 항상 보이게 한다. 아이콘과 텍스트 라벨을 함께 보여주는 넓은 pill 형태(extended FAB)도 같은 개념의 변형이며, 스크롤 시 라벨을 접어 아이콘만 남기는 방식으로 의미를 유지할 수 있다.",
     "visual_anatomy": [
       "floating circular button",
       "elevation shadow",
       "icon",
-      "fixed position"
+      "fixed position",
+      "optional text label pill variant",
+      "collapse-to-icon on scroll"
     ],
     "when_to_use": [
       "모바일이나 앱 화면에서 가장 중요한 생성 행동을 빠르게 제공할 때"
@@ -6750,6 +6755,13 @@ export const terms = [
         "note": "time picker component"
       }
     ],
+    "related": [
+      {
+        "id": "mobile-date-picker",
+        "relation": "compare",
+        "note": "예약 날짜와 시간을 함께 받아야 하면 하나의 bottom sheet 안에 이 피커와 mobile-date-picker를 순차적으로 이어붙인다 — 현재 vocabulary에는 그 조합형 시트를 가리키는 전용 용어는 없다."
+      }
+    ],
     "confidence": "medium"
   },
   {
@@ -7143,6 +7155,13 @@ export const terms = [
         "note": "menu pattern for contextual commands"
       }
     ],
+    "related": [
+      {
+        "id": "long-press-menu",
+        "relation": "compare",
+        "note": "모바일에서 트리거 방식이 갈린다 — long-press-menu는 터치-홀드로 우연히 발견되고, 이 항목(툴바 버튼을 눌러 아래로 펼쳐지는 pull-down 방식 포함)은 명시적 버튼으로 발견 가능성이 더 높다. 항목 구성(icon+label 행, destructive 스타일)은 공유한다."
+      }
+    ],
     "confidence": "high"
   },
   {
@@ -7315,14 +7334,18 @@ export const terms = [
       "aliases": [
         "speed dial",
         "확장 FAB",
-        "빠른 작업 메뉴"
+        "빠른 작업 메뉴",
+        "FAB 메뉴",
+        "확장 액션 메뉴"
       ]
     },
     "en": {
       "name": "Speed dial",
       "aliases": [
         "Expandable FAB",
-        "Quick actions"
+        "Quick actions",
+        "FAB menu",
+        "Expanding action menu"
       ]
     },
     "one_liner": "플로팅 버튼을 누르면 여러 빠른 행동 버튼이 펼쳐지는 요소.",
@@ -12411,6 +12434,13 @@ export const terms = [
         "note": "requesting permission in context"
       }
     ],
+    "related": [
+      {
+        "id": "permission-education-screen",
+        "relation": "use-with",
+        "note": "온보딩에서 여러 권한이 필요하면, 권한마다 permission-education-screen(soft-ask) 뒤에 이 시스템 프롬프트를 이어붙이되, 모든 권한을 한 번에 몰아 묻지 않고 해당 기능을 실제로 쓰는 시점마다 하나씩 순차 요청한다."
+      }
+    ],
     "confidence": "high"
   },
   {
@@ -12467,6 +12497,13 @@ export const terms = [
         "note": "explaining permission value before system request"
       }
     ],
+    "related": [
+      {
+        "id": "permission-prompt",
+        "relation": "use-with",
+        "note": "온보딩에서 여러 권한이 필요하면, 이 soft-ask 화면 뒤에 permission-prompt를 이어붙이되, 모든 권한을 한 번에 몰아 묻지 않고 해당 기능을 실제로 쓰는 시점마다 하나씩 순차 요청한다."
+      }
+    ],
     "confidence": "medium"
   },
   {
@@ -12480,14 +12517,16 @@ export const terms = [
       "aliases": [
         "mobile snackbar",
         "하단 스낵바",
-        "하단 피드백 바"
+        "하단 피드백 바",
+        "액션 스낵바"
       ]
     },
     "en": {
       "name": "Mobile snackbar",
       "aliases": [
         "Bottom snackbar",
-        "Action snackbar"
+        "Action snackbar",
+        "Snackbar with action"
       ]
     },
     "one_liner": "모바일 화면 하단, 내비게이션 위에 잠깐 나타나 결과와 짧은 행동을 보여주는 피드백.",
@@ -12957,6 +12996,13 @@ export const terms = [
       {
         "source_id": "apple-hig-components",
         "note": "touch and hold contextual actions"
+      }
+    ],
+    "related": [
+      {
+        "id": "context-menu",
+        "relation": "compare",
+        "note": "트리거 위치와 발견 가능성이 다르다 — 이 항목은 터치-홀드로 우연히 발견되고, context-menu(툴바 버튼 아래로 펼쳐지는 pull-down 방식 포함)는 명시적 버튼으로 발견된다. 항목 구성(icon+label 행, destructive 스타일)은 공유한다."
       }
     ],
     "confidence": "high"
@@ -13624,6 +13670,13 @@ export const terms = [
       {
         "source_id": "material-m3-components",
         "note": "date picker component for mobile layouts"
+      }
+    ],
+    "related": [
+      {
+        "id": "time-picker",
+        "relation": "compare",
+        "note": "예약처럼 날짜와 시간을 함께 골라야 하면 하나의 bottom sheet 안에 이 두 피커를 순차적으로 이어붙인다 — 현재 vocabulary에는 그 조합형 시트를 가리키는 전용 용어는 없다."
       }
     ],
     "confidence": "high"
@@ -16903,14 +16956,16 @@ export const terms = [
       "aliases": [
         "quantity stepper",
         "수량 조절기",
-        "plus minus input"
+        "plus minus input",
+        "터치 수량 스테퍼"
       ]
     },
     "en": {
       "name": "Quantity stepper",
       "aliases": [
         "Quantity input stepper",
-        "Plus minus input"
+        "Plus minus input",
+        "Touch quantity stepper"
       ]
     },
     "one_liner": "빼기/더하기 버튼으로 상품 수량 같은 숫자를 조절하는 입력.",
@@ -20480,6 +20535,70 @@ export const terms = [
   },
   {
     "kind": "component",
+    "id": "mobile-form-field-stack",
+    "status": "draft",
+    "category": "input",
+    "group": "input-text",
+    "ko": {
+      "name": "모바일 폼 필드 스택",
+      "aliases": [
+        "mobile form field stack",
+        "모바일 입력 필드 묶음",
+        "세로 폼 필드 스택"
+      ]
+    },
+    "en": {
+      "name": "Mobile form field stack",
+      "aliases": [
+        "Stacked mobile form fields",
+        "Mobile form stack"
+      ]
+    },
+    "one_liner": "48x48 이상 터치 타깃과 필드별 helper/error 텍스트를 갖춘, 세로로 쌓인 모바일 폼 필드 구성.",
+    "description": "좁은 화면에서 필드 밀도를 낮추지 않으면서 터치 타깃을 확보하고, 포커스 이동과 제출을 키보드 액션으로 이어주는 모바일 전용 폼 구성이다. 데스크톱 `field-group`과 같은 라벨-입력-helper 단위를 쌓지만, 최소 터치 타깃 크기와 다음 필드로 넘어가는 키보드 액션 설계가 핵심 제약으로 추가된다.",
+    "visual_anatomy": [
+      "stacked text fields",
+      "label plus helper or error text per field",
+      "48x48 minimum touch target",
+      "focus ring",
+      "next-field keyboard action",
+      "submit cta pinned or inline"
+    ],
+    "when_to_use": [
+      "모바일 화면에서 여러 입력 필드를 세로로 나열해야 할 때",
+      "터치 타깃과 키보드 흐름을 함께 설계해야 할 때"
+    ],
+    "anti_use": [
+      "필드가 하나뿐이면 단일 text-field로 충분하다",
+      "데스크톱 전용 화면에는 일반 field-group을 쓴다"
+    ],
+    "prompt_phrases": [
+      "모바일 가입 폼을 필드별 최소 터치 타깃을 지키는 mobile form field stack으로 만들어줘"
+    ],
+    "asset": {
+      "kind": "mini-mock",
+      "variant": "mobile-form-field-stack",
+      "props": {
+        "fields": 3
+      }
+    },
+    "sources": [
+      {
+        "source_id": "material-m3-components",
+        "note": "text field touch target and guidelines for stacked mobile forms"
+      }
+    ],
+    "related": [
+      {
+        "id": "field-group",
+        "relation": "compare",
+        "note": "같은 라벨-입력-helper 단위를 쓰지만, field-group은 데스크톱/범용 폼 구성이고 이 항목은 48x48 최소 터치 타깃과 다음 필드 키보드 액션처럼 모바일 전용 제약이 추가된 구성이다."
+      }
+    ],
+    "confidence": "high"
+  },
+  {
+    "kind": "component",
     "id": "field-group",
     "status": "draft",
     "category": "input",
@@ -20529,6 +20648,13 @@ export const terms = [
       {
         "source_id": "shadcn-ui-docs",
         "note": "Field component and form layout pattern"
+      }
+    ],
+    "related": [
+      {
+        "id": "mobile-form-field-stack",
+        "relation": "compare",
+        "note": "같은 라벨-입력-helper 단위를 쓰지만, 모바일 화면에서는 48x48 최소 터치 타깃과 다음 필드로 넘어가는 키보드 액션 제약이 추가된 mobile-form-field-stack을 쓴다."
       }
     ],
     "confidence": "high"
@@ -31526,6 +31652,7 @@ export const groups = [
       "comment-composer",
       "api-key-field",
       "spin-button",
+      "mobile-form-field-stack",
       "field-group",
       "floating-label-field",
       "clearable-input",

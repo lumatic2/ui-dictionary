@@ -71,3 +71,4 @@
 | 69 | 20260712-canvas-viewport-preset | 2026-07-12 | Canvas settings viewport presets (Mobile/Tablet/Desktop) via canonical update-node, undoable | 2/2 | complete |
 | 70 | 20260712-device-frame | 2026-07-12 | DeviceFrame mobile/tablet viewport component with semantic tokens and colocated demo | 2/2 | complete |
 | 71 | 20260712-batch-mobile-nav | 2026-07-12 | Mobile nav/structure batch: bottom-tab-bar and bottom-sheet-detents recipes in DeviceFrame, 1 term, 7 dedup judgments | 7/7 | complete |
+| 72 | 20260712-batch-mobile-input | 2026-07-12 | Mobile input/feedback batch: action-sheet and swipe-action-row recipes in DeviceFrame, 1 term, 7 dedup judgments | 7/7 | complete |
