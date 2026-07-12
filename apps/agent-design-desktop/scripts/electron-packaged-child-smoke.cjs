@@ -4,7 +4,7 @@ const { tmpdir } = require('node:os')
 const path = require('node:path')
 
 const root = mkdtempSync(path.join(tmpdir(), 'agent-design-packaged-child-'))
-const entry = process.env.AGENT_DESIGN_CHILD_ENTRY || path.resolve(__dirname, '..', 'out', 'Agent Design-win32-x64', 'resources', 'bridge', 'desktop-child.mjs')
+const entry = process.env.AGENT_DESIGN_CHILD_ENTRY || path.resolve(__dirname, '..', 'out', 'AskewlyDesign-win32-x64', 'resources', 'bridge', 'desktop-child.mjs')
 const document = {
   schemaVersion: 1, id: 'packaged-child-smoke', name: 'Smoke', revision: 0, rootIds: ['root'],
   nodes: { root: { id: 'root', kind: 'frame', name: 'Root', parentId: null, childIds: [], bounds: { x: 0, y: 0, width: 800, height: 600 }, layout: { mode: 'absolute', horizontal: 'fixed', vertical: 'fixed', gap: 0, padding: [0, 0, 0, 0] }, visible: true, locked: false, tokenBindings: {}, source: null, clipContent: true } },

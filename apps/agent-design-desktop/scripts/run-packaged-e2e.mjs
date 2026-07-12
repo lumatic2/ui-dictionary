@@ -8,7 +8,7 @@ import pixelmatch from 'pixelmatch'
 import { PNG } from 'pngjs'
 
 const root = resolve(import.meta.dirname, '..')
-const executablePath = resolve(root, 'out', 'Agent Design-win32-x64', 'AgentDesign.exe')
+const executablePath = resolve(root, 'out', 'AskewlyDesign-win32-x64', 'AskewlyDesign.exe')
 const resultsRoot = resolve(root, 'results', 'packaged')
 const temporaryRoot = await mkdtemp(join(tmpdir(), 'agent-design-packaged-e2e-'))
 
@@ -370,7 +370,7 @@ const sourceFile = join(projectRoot, 'src', 'App.tsx')
 const source = (label) => `export function App() { return <article data-agent-design-id="project-app" data-agent-design-name="App" data-agent-design-label="${label}">${label}</article> }\n`
 await mkdir(join(projectRoot, 'src'), { recursive: true })
 await writeFile(sourceFile, source('Initial React source'))
-await writeFile(join(projectRoot, 'index.html'), '<!doctype html><main>Agent Design preview fixture</main>')
+await writeFile(join(projectRoot, 'index.html'), '<!doctype html><main>AskewlyDesign preview fixture</main>')
 const projectId = await seedTrustedProject(projectRoot, userData)
 await mkdir(resultsRoot, { recursive: true })
 

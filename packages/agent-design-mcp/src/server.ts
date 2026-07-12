@@ -43,7 +43,7 @@ export function createAgentDesignMcp(options: {
   server.server.onclose = () => liveContext?.stop()
 
   server.registerTool('get_context', {
-    title: 'Get Agent Design context',
+    title: 'Get AskewlyDesign context',
     description: 'Read the current canvas selection, revision, hash, and project source root before proposing a design mutation.',
     inputSchema: {},
     annotations: { readOnlyHint: true, destructiveHint: false, idempotentHint: true, openWorldHint: false },
@@ -72,7 +72,7 @@ export function createAgentDesignMcp(options: {
 
   server.registerTool('apply_operations', {
     title: 'Apply canvas operations',
-    description: 'Atomically apply typed operations to the current Agent Design document using the exact base revision and hash from get_context.',
+    description: 'Atomically apply typed operations to the current AskewlyDesign document using the exact base revision and hash from get_context.',
     inputSchema: {
       transactionId: z.string().min(1),
       baseRevision: z.number().int().nonnegative(),
@@ -99,7 +99,7 @@ export function createAgentDesignMcp(options: {
   })
 
   server.registerTool('verify', {
-    title: 'Verify Agent Design state',
+    title: 'Verify AskewlyDesign state',
     description: 'Verify that the bridge still has the expected canonical revision and hash.',
     inputSchema: { revision: z.number().int().nonnegative().optional(), hash: z.string().min(1).optional() },
     annotations: { readOnlyHint: true, destructiveHint: false, idempotentHint: true, openWorldHint: false },
@@ -108,7 +108,7 @@ export function createAgentDesignMcp(options: {
   })
 
   server.registerTool('undo', {
-    title: 'Undo latest Agent Design transaction',
+    title: 'Undo latest AskewlyDesign transaction',
     description: 'Undo the latest committed agent transaction as a new guarded canonical revision.',
     inputSchema: {
       transactionId: z.string().min(1),

@@ -54,7 +54,7 @@ export class ElectronBridgeProcessFactory implements BridgeProcessFactory {
       cwd: config.projectRoot,
       env: utilityEnvironment(),
       stdio: 'pipe',
-      serviceName: 'Agent Design Bridge',
+      serviceName: 'AskewlyDesign Bridge',
       allowLoadingUnsignedLibraries: false,
       respondToAuthRequestsFromMainProcess: false,
     })

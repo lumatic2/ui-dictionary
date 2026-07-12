@@ -14,7 +14,7 @@ async function fixture(): Promise<string> {
   const root = await mkdtemp(join(tmpdir(), 'agent-design-desktop-'))
   roots.push(root)
   await mkdir(join(root, 'assets'))
-  await writeFile(join(root, 'index.html'), '<main>Agent Design</main>')
+  await writeFile(join(root, 'index.html'), '<main>AskewlyDesign</main>')
   await writeFile(join(root, 'assets', 'app.js'), 'export {}')
   return root
 }

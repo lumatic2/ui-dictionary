@@ -7,7 +7,7 @@
 웹사이트, 모바일 앱, SaaS, 커머스, 대시보드, 문서 사이트, 운영 도구 등 디지털 제품 UI를 직접 보고, 비교하고, 재사용할 수 있는 디자인 시스템으로 구축한다.
 
 - **Website**: 사람이 UI surfaces, components, patterns, colors, typography, layout, motion, page examples를 탐색하는 공개 사이트
-- **Agent Design App**: 사람이 실제 React UI를 코드 네이티브 캔버스에서 구성·직접 조작하고, 선택 영역에 결합된 에이전트와 함께 코드로 왕복하는 데스크톱 편집기
+- **AskewlyDesign App**: 사람이 실제 React UI를 코드 네이티브 캔버스에서 구성·직접 조작하고, 선택 영역에 결합된 에이전트와 함께 코드로 왕복하는 데스크톱 편집기
 - **Assets**: 향후 결제 사용자에게 더 자유로운 코드 복사, 에셋 다운로드, implementation pack 제공
 - **Agent System**: Codex, Claude Code가 AI 티가 덜 나는 제품 UI를 만들 수 있도록 tokens, pattern recipes, component guidance, prompts, anti-patterns 제공
 - **Reference Loop**: Tailwind/Tailwind Plus, Tailwind Labs repo, Apple HIG, Material Design, 고품질 SaaS/모바일 앱, 기존 `design-manual`/custom skills 작업을 근거 기반으로 흡수

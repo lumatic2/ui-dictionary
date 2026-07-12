@@ -6,13 +6,13 @@ import { extractFile, listPackage } from '@electron/asar'
 import { FuseState, FuseV1Options, getCurrentFuseWire } from '@electron/fuses'
 
 const root = resolve(import.meta.dirname, '..')
-const packageRoot = resolve(root, 'out', 'Agent Design-win32-x64')
+const packageRoot = resolve(root, 'out', 'AskewlyDesign-win32-x64')
 const resourcesRoot = resolve(packageRoot, 'resources')
 const asarPath = resolve(resourcesRoot, 'app.asar')
-const executablePath = resolve(packageRoot, 'AgentDesign.exe')
+const executablePath = resolve(packageRoot, 'AskewlyDesign.exe')
 const makeRoot = resolve(root, 'out', 'make', 'squirrel.windows', 'x64')
-const installerPath = resolve(makeRoot, 'AgentDesign-UnsignedDevelopment-Setup.exe')
-const nupkgPath = resolve(makeRoot, 'agent_design-0.1.0-full.nupkg')
+const installerPath = resolve(makeRoot, 'AskewlyDesign-UnsignedDevelopment-Setup.exe')
+const nupkgPath = resolve(makeRoot, 'askewly_design-0.1.0-full.nupkg')
 const releasesPath = resolve(makeRoot, 'RELEASES')
 const resultsRoot = resolve(root, 'results', 'package')
 
@@ -144,7 +144,7 @@ const sbom = {
   specVersion: '1.5',
   version: 1,
   metadata: {
-    tools: { components: [{ type: 'application', name: 'Agent Design package verifier', version: packageJson.version }] },
+    tools: { components: [{ type: 'application', name: 'AskewlyDesign package verifier', version: packageJson.version }] },
     component: { type: 'application', 'bom-ref': `${packageJson.name}@${packageJson.version}`, name: packageJson.name, version: packageJson.version },
   },
   components,

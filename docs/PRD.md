@@ -79,7 +79,7 @@ The public website structure is defined in `docs/design-system/site-blueprint.md
 - Do not blindly copy Tailwind, Apple, Material, or SaaS product identities.
 - Do not replace the human-facing website with only machine-readable docs.
 - Do not import other local design repositories until a reference/integration strategy exists.
-- Do not turn the first Agent Design horizon into a general vector illustration suite, multiplayer cloud editor, or general-purpose chat product.
+- Do not turn the first AskewlyDesign horizon into a general vector illustration suite, multiplayer cloud editor, or general-purpose chat product.
 - Do not lower the quality bar to a screenshot preview with decorative selection handles; direct manipulation must mutate canonical structure and round-trip to working UI code.
 
 ## Success Criteria
@@ -89,4 +89,4 @@ The public website structure is defined in `docs/design-system/site-blueprint.md
 - Each major example has visual evidence and usable implementation guidance.
 - Codex and Claude Code can use the system to produce UI with better hierarchy, spacing, typography, color, interaction states, and reduced AI-generic feel.
 - Future paid features have a clear path: copyable code, downloadable assets, and reusable implementation packs.
-- A representative Agent Design project can compose, directly edit, agent-revise, diff, apply, and verify a responsive React UI without canvas/browser drift.
+- A representative AskewlyDesign project can compose, directly edit, agent-revise, diff, apply, and verify a responsive React UI without canvas/browser drift.

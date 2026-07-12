@@ -438,7 +438,7 @@ export function App() {
       <div className="brand-lockup">
         <span className="brand-mark" aria-hidden="true">A</span>
         <div>
-          <h1>Agent Design</h1>
+          <h1>AskewlyDesign</h1>
           <p>{activeProject?.displayName ?? 'Untitled workspace'}</p>
         </div>
       </div>
@@ -511,7 +511,7 @@ export function App() {
     {desktopHost() && !activeProject && !devFixtureWorkspace ? <section className="project-entry" aria-label="Open a project">
       <div className="entry-copy">
         <span className="entry-mark" aria-hidden="true">A</span>
-        <p className="eyebrow">Agent Design workspace</p>
+        <p className="eyebrow">AskewlyDesign workspace</p>
         <h2>Turn your React project into a visual canvas.</h2>
         <p>Open a trusted local folder. Your source, canvas, and terminal agents will share one revisioned workspace.</p>
         <button className="primary-action entry-action" type="button" disabled={projectState === 'opening'} onClick={() => void selectProject()}>{projectState === 'opening' ? 'Opening…' : 'Open project'}</button>

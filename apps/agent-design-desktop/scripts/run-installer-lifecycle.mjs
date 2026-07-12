@@ -5,10 +5,10 @@ import { createServer } from 'node:net'
 import { resolve } from 'node:path'
 
 const root = resolve(import.meta.dirname, '..')
-const installer = resolve(root, 'out', 'make', 'squirrel.windows', 'x64', 'AgentDesign-UnsignedDevelopment-Setup.exe')
-const installRoot = resolve(process.env.LOCALAPPDATA, 'agent_design')
+const installer = resolve(root, 'out', 'make', 'squirrel.windows', 'x64', 'AskewlyDesign-UnsignedDevelopment-Setup.exe')
+const installRoot = resolve(process.env.LOCALAPPDATA, 'askewly_design')
 const updateExecutable = resolve(installRoot, 'Update.exe')
-const installedExecutable = resolve(installRoot, 'app-0.1.0', 'AgentDesign.exe')
+const installedExecutable = resolve(installRoot, 'app-0.1.0', 'AskewlyDesign.exe')
 const resultsRoot = resolve(root, 'results', 'packaged')
 const startMenu = resolve(process.env.APPDATA, 'Microsoft', 'Windows', 'Start Menu', 'Programs')
 const desktop = resolve(process.env.USERPROFILE, 'Desktop')
@@ -40,7 +40,7 @@ async function matchingShortcuts(directory, prefix = '') {
   for (const entry of await readdir(directory, { withFileTypes: true }).catch(() => [])) {
     const relative = prefix ? `${prefix}/${entry.name}` : entry.name
     if (entry.isDirectory()) results.push(...await matchingShortcuts(resolve(directory, entry.name), relative))
-    else if (entry.isFile() && /agent.?design/i.test(entry.name) && entry.name.endsWith('.lnk')) results.push(relative)
+    else if (entry.isFile() && /askewly.?design/i.test(entry.name) && entry.name.endsWith('.lnk')) results.push(relative)
   }
   return results
 }
@@ -50,7 +50,7 @@ function uninstall() {
   return spawnSync(updateExecutable, ['--uninstall', '-s'], { encoding: 'utf8', timeout: 60_000, windowsHide: true })
 }
 
-invariant(!existsSync(installRoot), `refusing to overwrite pre-existing Agent Design install: ${installRoot}`)
+invariant(!existsSync(installRoot), `refusing to overwrite pre-existing AskewlyDesign install: ${installRoot}`)
 let installed = false
 try {
   const setup = spawnSync(installer, [], { encoding: 'utf8', timeout: 120_000, windowsHide: true })

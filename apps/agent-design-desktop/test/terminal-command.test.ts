@@ -4,7 +4,7 @@ import { buildTerminalCommand } from '../src/terminal-command'
 const connection = {
   bridgeUrl: 'http://127.0.0.1:43123',
   token: 'session-token-not-written-to-config',
-  adapterPath: "C:\\Program Files\\Agent Design\\mcp\\cli.js",
+  adapterPath: "C:\\Program Files\\AskewlyDesign\\mcp\\cli.js",
 }
 
 describe('session-scoped terminal commands', () => {

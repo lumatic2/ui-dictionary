@@ -20,7 +20,7 @@ const layout = { mode: 'absolute', horizontal: 'fixed', vertical: 'fixed', gap: 
 const document = assertValidDocument({
   schemaVersion: 1,
   id: 'fresh-react-agent-design',
-  name: 'Fresh React Agent Design',
+  name: 'Fresh React AskewlyDesign',
   revision: 0,
   rootIds: ['root'],
   nodes: {

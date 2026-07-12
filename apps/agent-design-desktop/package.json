@@ -4,7 +4,7 @@
   "private": true,
   "description": "Agent-native code canvas for Codex and Claude terminals",
   "author": "Askewly",
-  "productName": "Agent Design",
+  "productName": "AskewlyDesign",
   "main": "dist/main.js",
   "config": {
     "forge": "./forge.config.cjs"

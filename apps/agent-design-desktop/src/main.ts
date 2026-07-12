@@ -175,7 +175,7 @@ app.whenReady().then(async () => {
     if (BrowserWindow.getAllWindows().length === 0) void createMainWindow((window) => { preview = new PreviewManager(window, registry) })
   })
 }).catch((error: unknown) => {
-  console.error('Agent Design desktop failed to start', error)
+  console.error('AskewlyDesign desktop failed to start', error)
   app.exit(1)
 })
 

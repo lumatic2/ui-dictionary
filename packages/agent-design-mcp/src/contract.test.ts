@@ -127,7 +127,7 @@ async function mockBridge(): Promise<MockBridge> {
   }
 }
 
-describe('Agent Design MCP stdio contract', () => {
+describe('AskewlyDesign MCP stdio contract', () => {
   it.each(['codex', 'claude'] as const)('serves the same six tools and roundtrip semantics for %s', async (actor) => {
     const { url } = await mockBridge()
     const cli = fileURLToPath(new URL('../dist/cli.js', import.meta.url))

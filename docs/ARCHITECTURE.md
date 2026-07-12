@@ -43,7 +43,7 @@ Agents need stable, structured guidance instead of only screenshots or prose. Th
 - code assets: copyable React/Tailwind examples and future downloadable packs;
 - evidence links: screenshots, reference captures, parity ledgers, smoke results.
 
-### Agent Design Desktop Canvas
+### AskewlyDesign Desktop Canvas
 
 The desktop app is a third connected surface, not a wrapper around the website or CLI.
 
@@ -60,7 +60,7 @@ The desktop app is a third connected surface, not a wrapper around the website o
 
 ### Terminal Agent Live Bridge
 
-- **User-owned agents:** Agent Design does not embed or spawn Codex/Claude as its primary interaction. The user runs Codex CLI and Claude CLI in terminal windows they control.
+- **User-owned agents:** AskewlyDesign does not embed or spawn Codex/Claude as its primary interaction. The user runs Codex CLI and Claude CLI in terminal windows they control.
 - **Bridge daemon:** a project-scoped Node bridge binds loopback only, owns the canonical revision/event log, validates scoped session tokens, serializes mutations, and broadcasts accepted changes to canvas clients over WebSocket.
 - **MCP adapters:** small stdio adapters let Codex CLI and Claude CLI call the same `get_context`, `apply_operations`, `apply_source_patch`, `verify`, and `undo` protocol while forwarding to one bridge authority.
 - **Immediate apply:** a valid call from a trusted terminal session is the user's apply intent. It commits atomically without a second canvas approval click, then records exact diff, verification, client identity, transaction ID, and Undo history.

@@ -17,8 +17,8 @@ const hardenedFuseConfig = {
 
 module.exports = {
   packagerConfig: {
-    name: 'Agent Design',
-    executableName: 'AgentDesign',
+    name: 'AskewlyDesign',
+    executableName: 'AskewlyDesign',
     asar: true,
     icon: path.join(__dirname, 'staging', 'icons', 'agent-design'),
     extraResource: [
@@ -33,10 +33,10 @@ module.exports = {
     ],
     win32metadata: {
       CompanyName: 'Askewly',
-      FileDescription: 'Agent Design code-native UI canvas',
-      OriginalFilename: 'AgentDesign.exe',
-      ProductName: 'Agent Design',
-      InternalName: 'AgentDesign',
+      FileDescription: 'AskewlyDesign code-native UI canvas',
+      OriginalFilename: 'AskewlyDesign.exe',
+      ProductName: 'AskewlyDesign',
+      InternalName: 'AskewlyDesign',
     },
   },
   rebuildConfig: {},
@@ -44,10 +44,10 @@ module.exports = {
     {
       name: '@electron-forge/maker-squirrel',
       config: {
-        name: 'agent_design',
+        name: 'askewly_design',
         authors: 'Askewly',
         description: 'Agent-native code canvas for Codex and Claude terminals',
-        setupExe: 'AgentDesign-UnsignedDevelopment-Setup.exe',
+        setupExe: 'AskewlyDesign-UnsignedDevelopment-Setup.exe',
         setupIcon: path.join(__dirname, 'staging', 'icons', 'agent-design.ico'),
         noMsi: true,
       },
@@ -60,7 +60,7 @@ module.exports = {
       }
 
       for (const outputPath of packageResult.outputPaths) {
-        await flipFuses(path.join(outputPath, 'AgentDesign.exe'), hardenedFuseConfig)
+        await flipFuses(path.join(outputPath, 'AskewlyDesign.exe'), hardenedFuseConfig)
       }
     },
   },

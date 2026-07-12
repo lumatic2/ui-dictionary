@@ -1,6 +1,6 @@
-# Agent Design
+# AskewlyDesign
 
-The AUC1 proof surface for the code-native Agent Design canvas.
+The AUC1 proof surface for the code-native AskewlyDesign canvas.
 
 ## Architecture
 

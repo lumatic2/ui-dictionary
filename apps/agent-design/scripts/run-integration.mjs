@@ -18,7 +18,7 @@ async function waitForServer() {
     try { if ((await fetch(url)).ok) return } catch {}
     await new Promise((resolve) => setTimeout(resolve, 200))
   }
-  throw new Error('Agent Design integration server did not become ready')
+  throw new Error('AskewlyDesign integration server did not become ready')
 }
 
 let browser

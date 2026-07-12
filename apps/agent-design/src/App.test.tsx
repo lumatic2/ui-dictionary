@@ -8,7 +8,7 @@ beforeEach(() => {
 })
 afterEach(cleanup)
 
-describe('Agent Design persistence flow', () => {
+describe('AskewlyDesign persistence flow', () => {
   it('presents a product workspace before development diagnostics', () => {
     const view = render(<App />)
     expect(view.getByRole('banner', { name: 'Application title bar' })).toBeTruthy()
