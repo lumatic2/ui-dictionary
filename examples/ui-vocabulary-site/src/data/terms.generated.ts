@@ -1763,6 +1763,13 @@ export const terms = [
         "note": "floating action button"
       }
     ],
+    "related": [
+      {
+        "id": "speed-dial",
+        "relation": "compare",
+        "note": "단일 FAB가 눌렸을 때 보조 행동 3-4개로 펼쳐지는 조합은 speed-dial 쪽 전개-펼침 전환이며, 펼침 중 배경 스크림을 둘지는 주 행동과 보조 행동의 위계에 따라 결정한다."
+      }
+    ],
     "confidence": "high"
   },
   {
@@ -3086,24 +3093,30 @@ export const terms = [
       ]
     },
     "one_liner": "실제 콘텐츠가 들어올 자리의 형태를 미리 보여주는 로딩 UI.",
-    "description": "카드, 텍스트, 이미지 영역의 회색 블록을 보여줘 로딩 중 레이아웃을 예측하게 한다.",
+    "description": "카드, 텍스트, 이미지 영역의 회색 블록을 보여줘 로딩 중 레이아웃을 예측하게 한다. 모바일 리스트 행에 쓸 때는 실제 행과 같은 아바타-텍스트-트레일링 3분할 구조를 반복하고, 로딩이 200ms 미만으로 끝나면 스켈레톤 자체를 아예 띄우지 않는다.",
     "visual_anatomy": [
       "placeholder blocks",
       "text lines",
       "media rectangle",
-      "subtle shimmer optional"
+      "subtle shimmer optional",
+      "avatar placeholder circle for list rows",
+      "two-line text placeholder for list rows",
+      "trailing action placeholder for list rows"
     ],
     "when_to_use": [
       "콘텐츠 구조를 알고 있고 로딩 시간이 체감될 때",
-      "레이아웃 점프를 줄이고 싶을 때"
+      "레이아웃 점프를 줄이고 싶을 때",
+      "모바일 리스트/피드 행이 로딩되는 동안 실제 행 구조를 미리 보여줄 때"
     ],
     "anti_use": [
       "매우 짧은 로딩에는 과하다",
-      "실제 구조와 다른 skeleton은 혼란을 준다"
+      "실제 구조와 다른 skeleton은 혼란을 준다",
+      "로딩이 200ms 미만으로 끝나면 아예 표시하지 않는다"
     ],
     "prompt_phrases": [
       "카드 목록 로딩 중에는 skeleton loader를 보여줘",
-      "이미지와 텍스트 자리표시자를 넣어줘"
+      "이미지와 텍스트 자리표시자를 넣어줘",
+      "모바일 리스트 행 로딩에 아바타-텍스트-트레일링 스켈레톤을 반복해줘"
     ],
     "asset": {
       "kind": "mini-mock",
@@ -3116,6 +3129,10 @@ export const terms = [
       {
         "source_id": "shadcn-ui-docs",
         "note": "skeleton component"
+      },
+      {
+        "source_id": "material-m3-components",
+        "note": "loading indicator duration thresholds for skeleton vs progress vs instant"
       }
     ],
     "confidence": "high"
@@ -6764,7 +6781,12 @@ export const terms = [
       {
         "id": "mobile-date-picker",
         "relation": "compare",
-        "note": "예약 날짜와 시간을 함께 받아야 하면 하나의 bottom sheet 안에 이 피커와 mobile-date-picker를 순차적으로 이어붙인다 — 현재 vocabulary에는 그 조합형 시트를 가리키는 전용 용어는 없다."
+        "note": "예약 날짜와 시간을 함께 받아야 하면 하나의 bottom sheet 안에 이 피커와 mobile-date-picker를 순차적으로 이어붙인다."
+      },
+      {
+        "id": "mobile-date-time-picker-sheet",
+        "relation": "use-with",
+        "note": "날짜와 시간을 하나의 bottom sheet 안에서 순차 선택하는 조합형 시트가 이 피커와 mobile-date-picker를 이어붙인 실제 구성이다."
       }
     ],
     "confidence": "medium"
@@ -7354,12 +7376,14 @@ export const terms = [
       ]
     },
     "one_liner": "플로팅 버튼을 누르면 여러 빠른 행동 버튼이 펼쳐지는 요소.",
-    "description": "모바일이나 좁은 화면에서 하나의 주요 버튼 아래에 관련 작업 여러 개를 숨겨둔다.",
+    "description": "모바일이나 좁은 화면에서 하나의 주요 버튼 아래에 관련 작업 여러 개를 숨겨둔다. 배경을 어둡게 까는 스크림은 필수가 아니며, 주 행동과 보조 행동의 위계가 강할 때만 넣는다.",
     "visual_anatomy": [
       "main fab",
+      "expand transition",
       "expanded action buttons",
       "floating stack",
-      "labels optional"
+      "labels optional",
+      "backdrop dim optional"
     ],
     "when_to_use": [
       "주요 행동과 관련 보조 행동을 좁은 화면에 배치해야 할 때"
@@ -7381,6 +7405,13 @@ export const terms = [
       {
         "source_id": "material-m3-components",
         "note": "floating action button and related action patterns"
+      }
+    ],
+    "related": [
+      {
+        "id": "floating-action-button",
+        "relation": "compare",
+        "note": "단일 FAB의 라벨/아이콘 확장(extended FAB)과 달리, speed-dial은 탭 한 번으로 보조 행동 버튼 여러 개가 펼쳐지고 각 버튼은 독립된 44x44 이상 탭 타깃을 갖는다."
       }
     ],
     "confidence": "medium"
@@ -13688,7 +13719,81 @@ export const terms = [
       {
         "id": "time-picker",
         "relation": "compare",
-        "note": "예약처럼 날짜와 시간을 함께 골라야 하면 하나의 bottom sheet 안에 이 두 피커를 순차적으로 이어붙인다 — 현재 vocabulary에는 그 조합형 시트를 가리키는 전용 용어는 없다."
+        "note": "예약처럼 날짜와 시간을 함께 골라야 하면 하나의 bottom sheet 안에 이 두 피커를 순차적으로 이어붙인다."
+      },
+      {
+        "id": "mobile-date-time-picker-sheet",
+        "relation": "use-with",
+        "note": "날짜와 시간을 하나의 bottom sheet 안에서 순차 선택하는 조합형 시트가 이 피커와 time-picker를 이어붙인 실제 구성이다."
+      }
+    ],
+    "confidence": "high"
+  },
+  {
+    "kind": "component",
+    "id": "mobile-date-time-picker-sheet",
+    "status": "draft",
+    "category": "input",
+    "group": "input-pickers",
+    "ko": {
+      "name": "모바일 날짜·시간 선택 시트",
+      "aliases": [
+        "mobile date time picker sheet",
+        "날짜시간 바텀시트",
+        "예약 날짜시간 선택"
+      ]
+    },
+    "en": {
+      "name": "Mobile date time picker sheet",
+      "aliases": [
+        "Combined date-time bottom sheet",
+        "Sequential date time picker"
+      ]
+    },
+    "one_liner": "예약처럼 날짜와 시간을 하나의 bottom sheet 안에서 순차적으로 고르게 하는 조합형 피커.",
+    "description": "mobile-date-picker와 time-picker를 하나의 시트 안에서 날짜 단계 다음 시간 단계로 이어붙인 2단계 구성이다. 각 단계에서 이전 단계로 되돌아가는 back 어포던스를 제공하며, OS 네이티브의 Date and time 단일 화면 동시 노출 모드와는 다른, 순차 단계 시트 구조에 한정한다.",
+    "visual_anatomy": [
+      "bottom sheet container",
+      "date wheel or calendar step",
+      "time wheel step",
+      "step indicator or back",
+      "confirm cta"
+    ],
+    "when_to_use": [
+      "예약이나 약속처럼 날짜와 시간을 함께 받아야 할 때",
+      "두 피커를 하나의 시트 흐름으로 이어붙여야 할 때"
+    ],
+    "anti_use": [
+      "날짜와 시간을 한 화면에 동시에 노출하는 OS 네이티브 Date and time 단일 모드는 이 순차 시트 구조와 다르다",
+      "날짜만 또는 시간만 필요하면 각각 mobile-date-picker/time-picker만 쓴다"
+    ],
+    "prompt_phrases": [
+      "예약 날짜와 시간을 하나의 bottom sheet에서 순서대로 고르게 해줘",
+      "날짜 단계 다음에 시간 단계로 넘어가고 뒤로가기도 되게 해줘"
+    ],
+    "asset": {
+      "kind": "mini-mock",
+      "variant": "mobile-date-time-picker-sheet",
+      "props": {
+        "step": "date"
+      }
+    },
+    "sources": [
+      {
+        "source_id": "apple-hig-components",
+        "note": "pickers for date and time selection"
+      }
+    ],
+    "related": [
+      {
+        "id": "mobile-date-picker",
+        "relation": "use-with",
+        "note": "이 시트의 첫 단계가 mobile-date-picker의 달력 그리드 구조를 그대로 재사용한다."
+      },
+      {
+        "id": "time-picker",
+        "relation": "use-with",
+        "note": "이 시트의 두 번째 단계가 time-picker의 시/분 선택 구조를 그대로 재사용한다."
       }
     ],
     "confidence": "high"
@@ -13826,22 +13931,25 @@ export const terms = [
       ]
     },
     "one_liner": "모바일에서 검색 입력과 추천/결과를 별도 시트나 전체 화면으로 여는 검색 표면.",
-    "description": "작은 화면에서 검색에 집중할 수 있도록 현재 화면 위에 검색 전용 레이어를 만든다.",
+    "description": "작은 화면에서 검색에 집중할 수 있도록 현재 화면 위에 검색 전용 레이어를 만든다. 입력 전에는 최근 검색어 칩을, 입력 중에는 실시간 제안을, 제출 후에는 결과 목록을 보여주는 3단계 상태 전환이며, 최근 검색어는 칩 단위로 개별 삭제할 수 있다.",
     "visual_anatomy": [
-      "search input",
+      "search input autofocus",
       "clear button",
-      "suggestions",
-      "results",
-      "sheet or full-screen surface"
+      "recent searches chips pre-query",
+      "live suggestions post-query",
+      "results list post-submit",
+      "empty no-results state"
     ],
     "when_to_use": [
-      "목록 화면에서 검색을 열 때 결과와 추천을 넓게 보여줘야 할 때"
+      "목록 화면에서 검색을 열 때 결과와 추천을 넓게 보여줘야 할 때",
+      "최근 검색어를 재사용하게 하고 싶을 때"
     ],
     "anti_use": [
       "항상 검색이 핵심이면 mobile-search-header가 더 직접적이다"
     ],
     "prompt_phrases": [
-      "검색 아이콘을 누르면 mobile search sheet가 열리고 추천 검색어를 보여줘"
+      "검색 아이콘을 누르면 mobile search sheet가 열리고 추천 검색어를 보여줘",
+      "입력 전에는 최근 검색어 칩을 보여주고 입력하면 제안으로 바뀌게 해줘"
     ],
     "asset": {
       "kind": "mini-mock",
@@ -13854,6 +13962,13 @@ export const terms = [
       {
         "source_id": "material-m3-components",
         "note": "search component and mobile search surface"
+      }
+    ],
+    "related": [
+      {
+        "id": "search-suggestions",
+        "relation": "use-with",
+        "note": "입력 중 단계의 실시간 제안 목록은 search-suggestions의 추천/최근 검색어 구조를 그대로 재사용하며, mobile-search-sheet는 그 앞뒤로 입력 전 최근 검색어 단계와 제출 후 결과 단계까지 포함한 전체 화면 표면이다."
       }
     ],
     "confidence": "high"
@@ -14906,6 +15021,71 @@ export const terms = [
   },
   {
     "kind": "component",
+    "id": "onboarding-carousel-skip-pattern",
+    "status": "draft",
+    "category": "selection",
+    "group": "selection-navigation",
+    "ko": {
+      "name": "건너뛰기 있는 온보딩 페이저",
+      "aliases": [
+        "onboarding skip pattern",
+        "온보딩 건너뛰기",
+        "스킵 가능한 온보딩"
+      ]
+    },
+    "en": {
+      "name": "Onboarding carousel skip pattern",
+      "aliases": [
+        "Skippable onboarding flow",
+        "Onboarding skip rule"
+      ]
+    },
+    "one_liner": "온보딩 모든 페이지에서 항상 건너뛰기가 가능하고, 한 번 건너뛰면 다음 실행부터 다시 노출되지 않는 규칙.",
+    "description": "onboarding-pager의 페이지 넘김 구조 위에, 언제나 접근 가능한 건너뛰기 버튼과 건너뛴 뒤 재실행 시 자동으로 다시 보여주지 않는 규칙, 그리고 도움말/설정에서 다시 찾아볼 수 있는 경로까지 묶은 상태 계약이다. onboarding-pager 자체의 anatomy는 점과 다음 버튼만 서술하며 건너뛰기 상태나 재노출 금지 규칙은 명시하지 않는다.",
+    "visual_anatomy": [
+      "illustration per page",
+      "headline per page",
+      "page dots indicator",
+      "persistent skip button top-trailing",
+      "primary cta last page"
+    ],
+    "when_to_use": [
+      "첫 실행 온보딩에서 사용자가 언제든 이탈할 수 있어야 할 때",
+      "건너뛴 온보딩을 다음 실행부터 다시 보여주지 않아야 할 때"
+    ],
+    "anti_use": [
+      "건너뛰기 버튼을 특정 페이지에서만 노출하지 않는다",
+      "건너뛴 뒤에도 매 실행마다 다시 노출하지 않는다"
+    ],
+    "prompt_phrases": [
+      "온보딩 모든 페이지에서 건너뛰기 버튼이 보이게 해줘",
+      "건너뛰면 다음 실행부터는 온보딩을 다시 보여주지 마"
+    ],
+    "asset": {
+      "kind": "mini-mock",
+      "variant": "onboarding-carousel-skip-pattern",
+      "props": {
+        "pages": 3,
+        "skip": true
+      }
+    },
+    "sources": [
+      {
+        "source_id": "apple-hig-components",
+        "note": "onboarding should be brief skippable and should not force users to repeat it"
+      }
+    ],
+    "related": [
+      {
+        "id": "onboarding-pager",
+        "relation": "compare",
+        "note": "onboarding-pager는 점과 다음 버튼으로 이루어진 페이지 넘김 구조 자체를 가리키고, 이 항목은 그 위에 언제나 접근 가능한 건너뛰기와 재노출 금지 규칙을 추가한 상태 계약이다."
+      }
+    ],
+    "confidence": "high"
+  },
+  {
+    "kind": "component",
     "id": "coach-mark",
     "status": "draft",
     "category": "feedback",
@@ -15265,21 +15445,25 @@ export const terms = [
       ]
     },
     "one_liner": "인터넷 연결이 없어 일부 기능이 제한된다는 상태 표시.",
-    "description": "사용자가 문제 원인을 네트워크로 이해하고 재연결 또는 오프라인 사용 가능 범위를 알게 한다.",
+    "description": "사용자가 문제 원인을 네트워크로 이해하고 재연결 또는 오프라인 사용 가능 범위를 알게 한다. 모바일에서는 상단 헤더/앱바 바로 아래에 고정 배치해 하단 nav/tab bar 영역과 겹치지 않게 하고, 재연결이 감지되면 사용자 조작 없이 자동으로 사라진다.",
     "visual_anatomy": [
       "connection icon",
       "offline message",
       "retry action",
-      "limited mode hint"
+      "limited mode hint",
+      "top-pinned placement below header on mobile",
+      "auto-dismiss on reconnect"
     ],
     "when_to_use": [
       "네트워크 연결이 필요한 데이터를 불러오지 못할 때"
     ],
     "anti_use": [
-      "서버 오류는 error state나 retry panel로 구분한다"
+      "서버 오류는 error state나 retry panel로 구분한다",
+      "사용자가 직접 닫아야 하는 mobile-snackbar와 달리 네트워크가 실제로 복구되기 전까지는 닫히지 않아야 한다"
     ],
     "prompt_phrases": [
-      "상단에 오프라인 상태 배너와 다시 시도 버튼을 넣어줘"
+      "상단에 오프라인 상태 배너와 다시 시도 버튼을 넣어줘",
+      "헤더 바로 아래에 고정하고 재연결되면 자동으로 사라지게 해줘"
     ],
     "asset": {
       "kind": "mini-mock",
@@ -32231,6 +32415,7 @@ export const groups = [
       "tag-input",
       "pull-to-refresh-indicator",
       "mobile-date-picker",
+      "mobile-date-time-picker-sheet",
       "wheel-picker",
       "time-wheel-picker",
       "chip-input-mobile",
@@ -32338,6 +32523,7 @@ export const groups = [
       "page-control",
       "edge-swipe-back",
       "onboarding-pager",
+      "onboarding-carousel-skip-pattern",
       "scope-bar",
       "navigation-menu",
       "data-import-wizard-validation-preview"

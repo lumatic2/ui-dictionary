@@ -79,3 +79,4 @@
 | 77 | 20260712-batch-commerce-depth | 2026-07-12 | Commerce depth batch: 3 recipes (grid/promo/purchase-stack), 4 terms, 2 alias judgments with un-hinted duplicate catches | 8/8 | complete |
 | 78 | 20260712-batch-internal-tools-depth | 2026-07-12 | Internal-tools depth batch: permission-matrix/import-wizard/audit-log recipes, 2 terms, 4 enrichment judgments | 8/8 | complete |
 | 79 | 20260712-batch-documentation-depth | 2026-07-12 | Documentation depth batch: cmdk search/version switcher/changelog recipes, 2 terms, 5 enrichment judgments | 8/8 | complete |
+| 80 | 20260712-batch-mobile-depth | 2026-07-12 | Mobile depth batch: pull-to-refresh/collapsing-header/signup-stack recipes in DeviceFrame, 2 terms, 5 enrichment judgments | 8/8 | complete |
