@@ -5760,6 +5760,13 @@ export const terms = [
       "상단에 top app bar를 넣고 제목과 더보기 아이콘을 보여줘",
       "앱 화면 상단바에 뒤로가기 버튼을 넣어줘"
     ],
+    "related": [
+      {
+        "id": "large-title-header",
+        "relation": "compare",
+        "note": "스크롤 시 바를 보이거나 숨기는 show/hide 규칙은 top-app-bar 자체의 일반 동작이며, large-title-header의 큰 제목 접힘과는 별개다. 스크린리더 활성 시에는 숨기지 않는 예외가 두 항목 모두에 적용된다."
+      }
+    ],
     "asset": {
       "kind": "mini-mock",
       "variant": "top-app-bar",
@@ -6987,14 +6994,16 @@ export const terms = [
       "aliases": [
         "navigation drawer",
         "앱 메뉴 드로어",
-        "사이드 메뉴"
+        "사이드 메뉴",
+        "모바일 내비게이션 드로어"
       ]
     },
     "en": {
       "name": "Navigation drawer",
       "aliases": [
         "Nav drawer",
-        "App drawer"
+        "App drawer",
+        "Mobile navigation drawer"
       ]
     },
     "one_liner": "화면 한쪽에서 열려 앱의 주요 목적지 목록을 보여주는 내비게이션 패널.",
@@ -8004,6 +8013,13 @@ export const terms = [
     "prompt_phrases": [
       "왼쪽 목록 오른쪽 상세의 master-detail 레이아웃을 만들어줘"
     ],
+    "related": [
+      {
+        "id": "adaptive-split-view",
+        "relation": "compare",
+        "note": "창 크기에 따라 stack과 split을 오가며 목적지 커스터마이즈까지 필요하면 adaptive-split-view를 쓴다. master-detail은 고정 2열 레이아웃만 다룬다."
+      }
+    ],
     "asset": {
       "kind": "diagram",
       "variant": "master-detail",
@@ -8015,6 +8031,72 @@ export const terms = [
       {
         "source_id": "apple-hig-components",
         "note": "split view and layout guidance"
+      }
+    ],
+    "confidence": "medium"
+  },
+  {
+    "kind": "component",
+    "id": "adaptive-split-view",
+    "status": "draft",
+    "category": "structure",
+    "group": "structure-panels",
+    "ko": {
+      "name": "적응형 스플릿 뷰",
+      "aliases": [
+        "adaptive split view",
+        "사이드바 전환형 레이아웃",
+        "탭바 사이드바 전환"
+      ]
+    },
+    "en": {
+      "name": "Adaptive split view",
+      "aliases": [
+        "Sidebar/tab bar convertible layout",
+        "Adaptive sidebar layout"
+      ]
+    },
+    "one_liner": "창 크기에 따라 탭 바가 사이드바로 바뀌거나 목록-상세가 나란히 붙는 적응형 레이아웃.",
+    "description": "좁은 화면에서는 화면 전환(stack) 또는 탭 바로 동작하다가, iPad 같은 넓은 화면에서는 사이드바나 나란한 목록-상세 분할로 전환된다. 사용자가 즐겨찾는 목적지를 골라 커스터마이즈할 수 있다는 점에서 정적 2열 레이아웃인 master-detail과 구분된다.",
+    "visual_anatomy": [
+      "adaptive container",
+      "compact stack view",
+      "regular split view",
+      "primary list pane",
+      "secondary detail pane",
+      "tab-bar-to-sidebar toggle"
+    ],
+    "when_to_use": [
+      "같은 앱이 폰과 태블릿처럼 서로 다른 창 크기에서 동작해야 할 때",
+      "사용자가 목적지 목록을 커스터마이즈할 수 있어야 할 때"
+    ],
+    "anti_use": [
+      "창 크기가 항상 고정된 데스크톱 전용 2열 화면이면 master-detail로 충분하다",
+      "목적지 전환 없이 순수 콘텐츠 레이아웃만 필요하면 과도한 추상화다"
+    ],
+    "prompt_phrases": [
+      "폰에서는 탭바",
+      "태블릿에서는 사이드바로 바뀌는 adaptive split view를 만들어줘",
+      "창을 넓히면 목록과 상세가 나란히 보이게 해줘"
+    ],
+    "related": [
+      {
+        "id": "master-detail",
+        "relation": "compare",
+        "note": "master-detail은 고정 2열 레이아웃만 다루고, 창 크기에 따른 stack/split 전환이나 목적지 커스터마이즈는 다루지 않는다."
+      }
+    ],
+    "asset": {
+      "kind": "diagram",
+      "variant": "adaptive-split-view",
+      "props": {
+        "mode": "split"
+      }
+    },
+    "sources": [
+      {
+        "source_id": "apple-hig-components",
+        "note": "adaptive tab bar to sidebar conversion and split view guidance"
       }
     ],
     "confidence": "medium"
@@ -11577,14 +11659,16 @@ export const terms = [
         "safe area",
         "세이프 에어리어",
         "노치 여백",
-        "홈 인디케이터 여백"
+        "홈 인디케이터 여백",
+        "세이프 에어리어 레이아웃 패턴"
       ]
     },
     "en": {
       "name": "Safe area",
       "aliases": [
         "Safe area inset",
-        "System inset"
+        "System inset",
+        "Safe area layout pattern"
       ]
     },
     "one_liner": "노치, 둥근 모서리, 홈 인디케이터에 가려지지 않도록 비워두는 모바일 화면 영역.",
@@ -11757,23 +11841,26 @@ export const terms = [
         "large title header",
         "라지 타이틀",
         "큰 타이틀 상단바",
-        "접히는 큰 제목"
+        "접히는 큰 제목",
+        "내비게이션 스택 헤더"
       ]
     },
     "en": {
       "name": "Large title header",
       "aliases": [
         "Large title navigation bar",
-        "Collapsing large title"
+        "Collapsing large title",
+        "Navigation stack header"
       ]
     },
     "one_liner": "모바일 화면 상단에서 큰 제목을 보여주고 스크롤 시 작게 접히는 헤더 패턴.",
-    "description": "목록이나 홈 화면에서 현재 섹션을 강하게 드러내다가, 스크롤 후에는 공간을 아껴 compact header처럼 동작한다.",
+    "description": "목록이나 홈 화면에서 현재 섹션을 강하게 드러내다가, 스크롤 후에는 공간을 아껴 compact header처럼 동작한다. 계층형 드릴다운 화면에서는 뒤로가기 버튼과 함께 쓰이며, 뒤로가기는 시트 dismiss와 혼동해서는 안 되는 별개의 동작이다.",
     "visual_anatomy": [
       "large title text",
       "top safe area",
       "collapsing header",
-      "content list below"
+      "content list below",
+      "optional back button"
     ],
     "when_to_use": [
       "모바일 앱의 첫 화면이나 주요 목록에서 섹션 이름을 크게 보여줄 때"
@@ -11784,6 +11871,13 @@ export const terms = [
     ],
     "prompt_phrases": [
       "모바일 목록 화면 상단에 스크롤하면 접히는 large title header를 넣어줘"
+    ],
+    "related": [
+      {
+        "id": "top-app-bar",
+        "relation": "compare",
+        "note": "스크롤 방향에 따라 바가 나타나거나 사라지는 show/hide 규칙은 large-title-header의 큰 제목 접힘과 별개로 top-app-bar 자체에도 적용된다. 스크린리더가 활성 상태일 때는 스크롤로 바를 숨기지 않는 접근성 예외가 두 항목 모두에 적용된다."
+      }
     ],
     "asset": {
       "kind": "mini-mock",
@@ -11923,14 +12017,16 @@ export const terms = [
       "aliases": [
         "mobile segmented tabs",
         "상단 세그먼트 탭",
-        "모바일 구분 탭"
+        "모바일 구분 탭",
+        "세그먼트 뷰 전환기"
       ]
     },
     "en": {
       "name": "Mobile segmented tabs",
       "aliases": [
         "Segmented tabs",
-        "Mobile segmented control"
+        "Mobile segmented control",
+        "Segmented view switcher"
       ]
     },
     "one_liner": "모바일 화면 상단에서 같은 화면 안의 하위 보기들을 짧은 세그먼트 버튼으로 전환하는 패턴.",
@@ -13094,14 +13190,16 @@ export const terms = [
         "edge swipe back",
         "화면 왼쪽에서 밀어 뒤로가기",
         "스와이프 백",
-        "뒤로가기 제스처"
+        "뒤로가기 제스처",
+        "가장자리 스와이프 백 제스처"
       ]
     },
     "en": {
       "name": "Edge swipe back",
       "aliases": [
         "Swipe back gesture",
-        "Back edge gesture"
+        "Back edge gesture",
+        "Edge swipe back gesture"
       ]
     },
     "one_liner": "화면 가장자리에서 안쪽으로 밀어 이전 화면으로 돌아가는 모바일 내비게이션 제스처.",
@@ -31709,6 +31807,7 @@ export const groups = [
       "side-sheet",
       "resizable-panel",
       "master-detail",
+      "adaptive-split-view",
       "right-rail",
       "inspector-panel",
       "properties-panel",

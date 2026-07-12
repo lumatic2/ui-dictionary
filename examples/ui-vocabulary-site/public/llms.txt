@@ -42,5 +42,7 @@ Rules for consumers: reference semantic tokens, never hard-code color/dimension 
 - [recipes/layout/responsive-content-grid.md](https://ui.askewly.com/llms/recipes/layout/responsive-content-grid.md): Responsive Content Grid — layout recipe (status: draft)
 - [recipes/layout/sidebar-application-shell.md](https://ui.askewly.com/llms/recipes/layout/sidebar-application-shell.md): Sidebar Application Shell — layout recipe (status: draft)
 - [recipes/marketing/landing-hero.md](https://ui.askewly.com/llms/recipes/marketing/landing-hero.md): Landing Hero — marketing recipe (status: draft)
+- [recipes/navigation/bottom-tab-bar.md](https://ui.askewly.com/llms/recipes/navigation/bottom-tab-bar.md): Bottom Tab Bar — navigation recipe (status: draft)
 - [recipes/navigation/topbar-command-search.md](https://ui.askewly.com/llms/recipes/navigation/topbar-command-search.md): Topbar Command Search — navigation recipe (status: draft)
+- [recipes/overlays/bottom-sheet-detents.md](https://ui.askewly.com/llms/recipes/overlays/bottom-sheet-detents.md): Bottom Sheet Detents — overlays recipe (status: draft)
 - [recipes/overlays/popover.md](https://ui.askewly.com/llms/recipes/overlays/popover.md): Popover — overlays recipe (status: draft)
