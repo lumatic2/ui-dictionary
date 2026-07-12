@@ -80,3 +80,4 @@
 | 78 | 20260712-batch-internal-tools-depth | 2026-07-12 | Internal-tools depth batch: permission-matrix/import-wizard/audit-log recipes, 2 terms, 4 enrichment judgments | 8/8 | complete |
 | 79 | 20260712-batch-documentation-depth | 2026-07-12 | Documentation depth batch: cmdk search/version switcher/changelog recipes, 2 terms, 5 enrichment judgments | 8/8 | complete |
 | 80 | 20260712-batch-mobile-depth | 2026-07-12 | Mobile depth batch: pull-to-refresh/collapsing-header/signup-stack recipes in DeviceFrame, 2 terms, 5 enrichment judgments | 8/8 | complete |
+| 81 | 20260712-anti-pattern-guide | 2026-07-12 | Agent-facing anti-pattern guide: 12 clusters distilled from 35 recipes, llms.txt FIXED_ASSETS registered | 3/3 | complete |

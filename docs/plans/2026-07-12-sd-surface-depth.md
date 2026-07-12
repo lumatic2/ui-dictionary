@@ -59,7 +59,7 @@ planning_gate:
 - [x] Step 2 — 심화 배치: internal-tools. (verify: 동일)
 - [x] Step 3 — 심화 배치: documentation. (verify: 동일)
 - [x] Step 4 — 심화 배치: mobile-apps. (verify: 동일)
-- [ ] Step 5 — anti-pattern 통합 가이드 (changeset): 전 recipe Anti-patterns 증류 → `docs/design-system/anti-patterns.md`, FIXED_ASSETS 등록. (verify: generate-llms-txt PASS + 문서 링크 검증)
+- [x] Step 5 — anti-pattern 통합 가이드 (changeset): 전 recipe Anti-patterns 증류 → `docs/design-system/anti-patterns.md`, FIXED_ASSETS 등록. (verify: generate-llms-txt PASS + 문서 링크 검증)
 - [ ] Step 6 — 토큰 커버리지 2세대 (changeset): 신규 표면 토큰 갭 점검 리포트 + 필요 확장 → SSOT·파생 재생성. (verify: lint-tokens + generate-tokens + site build)
 
 ## 결정 로그
