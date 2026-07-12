@@ -2,6 +2,16 @@
 
 ## Completed Horizons
 
+### 2026-07-12 - Living Design System (H2)
+
+- RL - Reference Loop Pipeline: 5단계 흡수 루프(수집→dedup→적응→검증→흡수) 표준화 — 절차 문서+inbox+ledger+audit 도구, 실증 3배치(commerce/internal-tools/documentation)로 recipe 6·용어 14·dedup 판정 10 (`docs/plans/2026-07-12-rl-reference-loop-pipeline.md`).
+- MS - Mobile Surface Batch: DeviceFrame 표현 인프라 + 모바일 2배치(recipe 4) + 캔버스 모바일 뷰포트 preset(390×844, canonical update-node, 브라우저 E2E) (`docs/plans/2026-07-12-ms-mobile-surface-batch.md`).
+- FW - Feed Wiring: 전 recipe 23종 code_asset 독립화(7종은 의사코드 적발→신규 구현), frontmatter→recipeCatalog build-time 생성기(결손=loud fail), Insert 팔레트 Recipes 섹션 + 모바일 뷰포트 삽입 E2E — 루프 산출이 사이트·llms.txt·CLI·캔버스 4곳 자동 도달 (`docs/plans/2026-07-12-fw-feed-wiring.md`).
+- SD - Surface Depth 2세대 (구 CS+R2 병합): 4표면 심화 배치(recipe 12, 총 35) + agent-facing anti-patterns.md(12 클러스터, 35/35 커버) + gen-2 토큰 갭 4건 토큰화 (`docs/plans/2026-07-12-sd-surface-depth.md`).
+- Close: close criteria 전부 충족 — 루프 9배치 반복 실증(각 배치 프로덕션 검증 체인 완주), 전 표면 카테고리 실콘텐츠(표면당 recipe 3~6), 신규 배치가 재작업 없이 registry/CLI/llms.txt 소비(build:catalog 배선). 상세: `docs/horizons/2026-07-living-design-system.md`.
+- 크기 회고: 4 milestone이 각 4~6 changeset으로 전부 milestone-grade — 인플레 없음. CS+R2를 SD 하나로 병합한 판단이 적정(중복 범위 제거).
+- 오케스트레이션 회고: sonnet 워커 21기(수집 9·배치 적응 9·구현/도구 3) + Fable 게이트로 4 milestone 단일 세션 완주. 게이트 적발: audit 스크립트 결함 2건, 수집 YAML 결함 4류(name 누락·따옴표 스칼라·빈 필드), FW 추출 불가 7종(의사코드) 재설계.
+
 ### 2026-07-12 - Canvas Production Environment (H1)
 
 - UX3 - Agent Collaboration UX: 하이브리드 채널(MCP live context via /events 구독 + agent-canvas CLI, 단일 BridgeClient) + 양 호스트 경로 collaboration feed 계약(/audit 소비) + AgentPanel(actor activity·읽는 feed·canonical Undo·conflict 인라인) + dual-actor conflict-recovery E2E (`docs/plans/2026-07-12-ux3-agent-collaboration-ux.md`).
