@@ -95,3 +95,4 @@
 | 93 | 20260712-materialization-roundtrip-e2e | 2026-07-12 | QA3 Step 3: materialization roundtrip in packaged E2E, Windows staging-path colon fix, bridge recipe roundtrip test | 4/4 | complete |
 | 94 | 20260712-getting-set-up-protocol | 2026-07-12 | PX Step 2: Getting set up rewritten as the Explore-Acquire-Inject-Verify design work protocol with human/agent tracks | 4/4 | complete |
 | 95 | 20260712-topbar-search-navigation | 2026-07-12 | PX Step 1: free-text search commit navigates from any page, portal click race fix, index expanded to docs/recipes/colors | 4/4 | complete |
+| 96 | 20260712-page-meta-seo | 2026-07-12 | PX Step 5: static og:url/site_name, usePageMeta per-page title+description, mobile 375px overflow pass, bundle size recorded | 5/5 | complete |

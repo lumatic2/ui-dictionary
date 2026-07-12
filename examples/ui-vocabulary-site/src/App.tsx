@@ -58,6 +58,7 @@ import { isNavigationFilterVisible, isShellVisible } from "@/lib/exposure"
 import { docsArticlePages, docsNavGroups, type DocsArticlePageData } from "@/lib/documentation-pages"
 import { getStarterQueries } from "@/lib/search-suggestions"
 import { useCases } from "@/lib/term-ux"
+import { usePageMeta } from "@/lib/page-meta"
 import { cn } from "@/lib/utils"
 
 type PageMode = "home" | "docs" | "plus" | "term" | "download" | "pro" | "colors" | "recipes"
@@ -125,6 +126,17 @@ function App() {
   const marketingSectionPage = pageMode === "plus" && query.trim().length === 0 && !activeUseCase
     ? marketingSectionPages.get(filter)
     : undefined
+  usePageMeta({
+    page: pageMode,
+    sectionTitle:
+      pageMode === "term"
+        ? selectedTerm?.ko.name ?? null
+        : docsArticlePage?.title ?? marketingSectionPage?.title ?? null,
+    description:
+      pageMode === "term"
+        ? null
+        : docsArticlePage?.lead ?? marketingSectionPage?.description ?? null,
+  })
   const visibleSearchResults = useMemo(() => {
     if (!isPlusLanding) {
       return searchResults
