@@ -2,7 +2,7 @@
 
 Date: 2026-07-12
 Milestone: PX (`ROADMAP.md`, active — Public Product & Monetization horizon 활성화 첫 milestone)
-Status: approved (2026-07-12 사용자 "진행" — 연쇄 범위 PX 단독)
+Status: completed (2026-07-12 — 5/5 steps, changesets #94–98)
 
 ## 위계
 
@@ -50,11 +50,11 @@ planning_gate:
 
 ## Step 트리
 
-- [ ] Step 1 — 헤더 검색 수리 + 인덱스 확장 (changeset): 자유 텍스트 커밋 시 결과 화면 이동, suggestion 인덱스에 docs 페이지·Patterns 컬렉션·Recipes·Colors 추가, starter 항목 갱신. (verify: build + lint + 브라우저 smoke — home에서 검색→결과 이동·recipe 검색→갤러리 이동 관측)
-- [ ] Step 2 — Getting set up 프로토콜 개편 (changeset): 탐색→자산 확보→주입→검증 4단 왕복 루프, 사람/에이전트 트랙 병렬 서술. (verify: build + 페이지 렌더 smoke)
-- [ ] Step 3 — Docs 역할 재정의 (changeset): 어휘 카테고리 축을 용어 참조로 통합, Foundations/어휘 중복(Accessibility·Motion) 해소, Elements↔Patterns 경계 명시. (verify: build + nav 전수 클릭 smoke + 기존 nav: filter 하위호환)
-- [ ] Step 4 — 섹션별 독립 사이드 네비 (changeset): Docs 문서 트리 / Patterns 컬렉션 브라우저 분리, Recipes 컬렉션 앵커 사이드바 신설. (verify: build + 브라우저 smoke — 3개 섹션 사이드바 각각 관측, 모바일 레이아웃 확인)
-- [ ] Step 5 — 성능·모바일·SEO 패스 (changeset): 페이지별 title/meta/OG, 모바일 뷰포트 점검, 이미지·번들 예산 확인. (verify: build + preview에서 meta 확인 + 모바일 뷰포트 smoke)
+- [x] Step 1 — 헤더 검색 수리 + 인덱스 확장 (changeset #95, 커밋 23017f4): 자유 텍스트 커밋 결과 이동 + Radix Portal 클릭 결함 추가 적발·수정 + docs/Recipes/Colors 인덱싱. (verify: build+lint+Playwright 3시나리오 PASS)
+- [x] Step 2 — Getting set up 프로토콜 개편 (changeset #94, 커밋 e61eb80): Explore→Acquire→Inject→Verify 루프, 사람/에이전트 트랙. (verify: build+렌더 smoke PASS)
+- [x] Step 3 — Docs 역할 재정의 (changeset #97, 커밋 a96d1cc): Vocabulary 사이드바 그룹 신설(고아 아티클 7종 통합), 중복 축 역할 선언, Elements/Recipes 경계 명시. (verify: build+smoke+딥링크 하위호환 PASS)
+- [x] Step 4 — 섹션별 독립 사이드 네비 (changeset #98, 커밋 b213fa2): Docs 트리 단독 / Patterns 3축 전환기 / Recipes 컬렉션 앵커 신설. (verify: build+5시나리오 smoke PASS)
+- [x] Step 5 — 성능·모바일·SEO 패스 (changeset #96, 커밋 f4ed956): og:url/site_name, usePageMeta per-page title/description, 모바일 375px 5표면 무오버플로. (verify: build+curl og+title 전환 관측 PASS)
 
 ## 결정 로그
 
