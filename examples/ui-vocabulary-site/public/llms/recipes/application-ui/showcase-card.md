@@ -17,7 +17,7 @@ tokens_used:
   - dimension.space.2
   - typography.scale.xl
   - typography.weight.medium
-code_asset: examples/ui-vocabulary-site/src/components/home-page.tsx
+code_asset: examples/ui-vocabulary-site/src/components/showcase-card.tsx
 component_refs: []
 term_refs: [card, hero]
 source_refs: [tailwind-plus-application-ui]

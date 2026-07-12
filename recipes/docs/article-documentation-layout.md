@@ -17,7 +17,7 @@ tokens_used:
   - typography.scale.sm
   - typography.scale.xl
   - typography.weight.medium
-code_asset: examples/ui-vocabulary-site/src/App.tsx
+code_asset: examples/ui-vocabulary-site/src/components/article-documentation-layout.tsx
 component_refs: []
 term_refs: [breadcrumb, typography, content-section, anchor-nav]
 source_refs: []

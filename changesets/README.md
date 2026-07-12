@@ -73,3 +73,4 @@
 | 71 | 20260712-batch-mobile-nav | 2026-07-12 | Mobile nav/structure batch: bottom-tab-bar and bottom-sheet-detents recipes in DeviceFrame, 1 term, 7 dedup judgments | 7/7 | complete |
 | 72 | 20260712-batch-mobile-input | 2026-07-12 | Mobile input/feedback batch: action-sheet and swipe-action-row recipes in DeviceFrame, 1 term, 7 dedup judgments | 7/7 | complete |
 | 73 | 20260712-recipe-catalog-generator | 2026-07-12 | Build-time recipe catalog generator (23 entries) with recipe collection type and loud-failure contract | 4/4 | complete |
+| 74 | 20260712-code-asset-extraction | 2026-07-12 | Extract 3 legacy recipe implementations to standalone components; 7 found to be pseudocode, deferred to fresh implementation | 4/4 | complete |

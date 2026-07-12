@@ -30,7 +30,6 @@ import {
   Minus,
   Moon,
   MoveHorizontal,
-  Palette,
   Play,
   Plus,
   RefreshCw,
@@ -39,26 +38,21 @@ import {
   SkipBack,
   SkipForward,
   Download,
-  Magnet,
-  MousePointerClick,
   PanelsTopLeft,
   Search,
-  ShoppingBag,
-  SlidersHorizontal,
-  Smartphone,
-  Sparkles,
   Truck,
   Unlock,
   User,
   UserPlus,
-  WandSparkles,
   Wifi,
   X,
-  ScrollText,
   type LucideIcon,
 } from "lucide-react"
 import { Button } from "@/components/ui/button"
 import { Switch } from "@/components/ui/switch"
+import { AtlasCard } from "@/components/showcase-card"
+import { LandingHero } from "@/components/landing-hero"
+import { atlasItems, placeholderAtlasItemIds, type AtlasItemId } from "@/lib/atlas-items"
 import type { VocabularyTerm } from "@/data/terms.generated"
 import type { TermFilter } from "@/lib/search"
 import {
@@ -81,7 +75,7 @@ export type HomePageDestination = {
   page: "download" | "pro" | "colors" | "signin"
 }
 
-type HomePageProps = {
+export type HomePageProps = {
   onNavigate: (destination: HomePageDestination) => void
   onSearch: (query: string) => void
   filter: TermFilter
@@ -163,26 +157,6 @@ const invertedBlocks = [
   { id: "g", className: "right-[12%] top-[72%] h-24 w-3 opacity-75" },
 ]
 
-const atlasItems = [
-  { id: "agent", title: "Agent-Ready Design System", copy: "Talk to an agent docked to your canvas: humanize, fix, and animate the UI in place, then hand the build off to Codex or Claude.", layout: "md:col-span-2 xl:col-span-4" },
-  { id: "pointer", title: "Cursor-Reactive Field", copy: "Surfaces that respond to cursor movement with spatial feedback and temporary visual traces.", layout: "md:col-span-2 xl:col-span-2" },
-  { id: "physics", title: "Physics-Based Interaction", copy: "UI primitives fall, collide, and settle in a real rigid-body field.", layout: "md:col-span-1 xl:col-span-2" },
-  { id: "scroll", title: "Product Surface Coverflow", copy: "Distinct product surfaces glide past in a self-playing 3D coverflow.", layout: "md:col-span-1 xl:col-span-2" },
-  { id: "motion", title: "Motion Choreography", copy: "Sequencing multiple motion cues into one coherent, readable rhythm.", layout: "md:col-span-1 xl:col-span-2" },
-  { id: "color", title: "Color Palette Generator", copy: "Generate, lock, inspect, and export five-color palettes from one compact design surface.", layout: "md:col-span-2 xl:col-span-6" },
-  { id: "shader", title: "Shader Gradient System", copy: "Tokenized color palettes rendered as a continuously animated gradient shader.", layout: "md:col-span-1 xl:col-span-3" },
-  { id: "filters", title: "Image Treatment", copy: "Predefined color and grain recipes applied consistently across a set of photos.", layout: "md:col-span-1 xl:col-span-3" },
-  { id: "landing", title: "Hero Composition", copy: "First-viewport structure balancing headline, proof surface, calls to action, media, and visual rhythm.", layout: "md:col-span-1 xl:col-span-3" },
-  { id: "command", title: "Command Center Interface", copy: "Keyboard-first product control with search, review queues, agent actions, and system status in one place.", layout: "md:col-span-1 xl:col-span-3" },
-  { id: "commerce", title: "Commerce Flow", copy: "Product discovery, purchase confidence, cart states, pricing, and checkout signals arranged as one buying path.", layout: "md:col-span-1 xl:col-span-3" },
-  { id: "mobile", title: "Mobile App Patterns", copy: "Compact app states for account, billing, alerts, navigation, density, and thumb-friendly actions.", layout: "md:col-span-1 xl:col-span-3" },
-] as const
-
-type AtlasItemId = (typeof atlasItems)[number]["id"]
-
-/** Atlas cards gated from production until they pass the site-blueprint.md completion criteria. Empty since CF2: all twelve cards ship real interactive demos. */
-const placeholderAtlasItemIds: readonly AtlasItemId[] = []
-
 type CursorFieldCell = {
   id: number
   x: number
@@ -192,53 +166,10 @@ type CursorFieldCell = {
   life: number
 }
 
-const atlasIconMap = {
-  pointer: MousePointerClick,
-  physics: Magnet,
-  scroll: ScrollText,
-  motion: Sparkles,
-  shader: WandSparkles,
-  filters: SlidersHorizontal,
-  color: Palette,
-  landing: PanelsTopLeft,
-  command: Command,
-  commerce: ShoppingBag,
-  mobile: Smartphone,
-  agent: FileCode2,
-} satisfies Record<AtlasItemId, LucideIcon>
-
 export function HomePage({ onNavigate, onSearch, filter, terms }: HomePageProps) {
   return (
     <div className="bg-background text-foreground">
-      <section className="relative isolate overflow-hidden bg-background px-4 pb-10 pt-14 md:px-8 md:pb-14 md:pt-20 lg:px-10">
-        <div className="pointer-events-none absolute inset-0 -z-10 bg-background" />
-        <FloatingField />
-        <div className="relative z-30 mx-auto flex max-w-[1180px] min-w-0 flex-col items-center">
-          <h1 className="mt-4 text-center text-[clamp(3.5rem,16vw,8rem)] font-semibold leading-[0.9] tracking-normal text-foreground">
-            Askewly Design
-          </h1>
-          <p className="mt-7 w-full max-w-2xl text-center text-base leading-7 text-muted-foreground sm:text-lg sm:leading-8 md:text-xl">
-            A visual library and agent-ready system for
-            <br className="hidden md:inline" /> designing better product interfaces.
-          </p>
-
-          <div className="mt-7 flex flex-col gap-3 sm:flex-row">
-            {SHOW_UNFILLED && (
-              <Button className="h-11 rounded-lg bg-askewly-violet px-6 has-[>svg]:px-6 text-white hover:bg-[#5f22a8]" type="button" onClick={() => onNavigate({ page: "download" })}>
-                Get Started
-                <ArrowRight aria-hidden="true" className="size-4" />
-              </Button>
-            )}
-            <Button className="h-11 rounded-lg border-border bg-background px-6 text-foreground hover:bg-muted" variant="outline" type="button" onClick={() => onNavigate({ page: "docs", filter: "nav:docs-getting-started-setup" })}>
-              Open Docs
-            </Button>
-          </div>
-
-          <HeroSearch filter={filter} terms={terms} onNavigate={onNavigate} onSearch={onSearch} />
-
-          <ShowcaseAtlas />
-        </div>
-      </section>
+      <LandingHero onNavigate={onNavigate} onSearch={onSearch} filter={filter} terms={terms} />
 
       <DarkInversionSection />
 
@@ -487,7 +418,7 @@ function Footer({ onNavigate }: { onNavigate: HomePageProps["onNavigate"] }) {
   )
 }
 
-function ShowcaseAtlas() {
+export function ShowcaseAtlas() {
   return (
     <div className="mt-16 w-full text-foreground">
       <div className="flex flex-col gap-4 md:flex-row md:items-end md:justify-between">
@@ -512,41 +443,7 @@ function ShowcaseAtlas() {
   )
 }
 
-function AtlasCard({ item }: { item: (typeof atlasItems)[number] }) {
-  return (
-    <article
-      className={cn(
-        "group flex h-full min-w-0 flex-col overflow-hidden rounded-md border border-border bg-card shadow-sm transition hover:-translate-y-0.5 hover:border-askewly-lavender hover:shadow-[0_18px_50px_rgba(15,23,42,0.08)]",
-        item.layout,
-      )}
-    >
-      <div className={cn("grid gap-5 p-6 sm:grid-cols-[5.75rem_minmax(0,1fr)]", item.id === "agent" && "sm:grid-cols-[4.25rem_minmax(0,1fr)]")}>
-        <div className="flex items-start justify-center sm:justify-start">
-          <LineArtIcon id={item.id} />
-        </div>
-        <div className="min-w-0">
-          <h3 className="text-2xl font-semibold tracking-normal text-card-foreground">{item.title}</h3>
-          <p className="mt-2 text-sm leading-6 text-muted-foreground">{item.copy}</p>
-        </div>
-      </div>
-      <div className="flex flex-1 flex-col border-t border-border bg-slate-50 p-5">
-        <AtlasDemo id={item.id} />
-      </div>
-    </article>
-  )
-}
-
-function LineArtIcon({ id }: { id: AtlasItemId }) {
-  const Icon = atlasIconMap[id]
-
-  return (
-    <span className="flex h-16 w-20 shrink-0 items-start justify-center text-card-foreground">
-      <Icon aria-hidden="true" className="mt-1 size-11" strokeWidth={1.75} absoluteStrokeWidth />
-    </span>
-  )
-}
-
-function AtlasDemo({ id }: { id: AtlasItemId }) {
+export function AtlasDemo({ id }: { id: AtlasItemId }) {
   const prefersReducedMotion = usePrefersReducedMotion()
   const [agentFrame, setAgentFrame] = useState({ left: 18, top: 24, width: 58, height: 150 })
   const [agentSelected, setAgentSelected] = useState(false)
@@ -3093,7 +2990,7 @@ function MatterPhysicsDemo() {
   )
 }
 
-function FloatingField() {
+export function FloatingField() {
   const rootRef = useRef<HTMLDivElement>(null)
 
   useEffect(() => {
@@ -3152,7 +3049,7 @@ function FloatingField() {
   )
 }
 
-function HeroSearch({
+export function HeroSearch({
   filter,
   terms,
   onNavigate,

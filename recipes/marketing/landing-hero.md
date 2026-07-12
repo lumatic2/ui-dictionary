@@ -16,7 +16,7 @@ tokens_used:
   - typography.font.sans
   - typography.scale.xl
   - typography.scale.2xl
-code_asset: examples/ui-vocabulary-site/src/components/home-page.tsx
+code_asset: examples/ui-vocabulary-site/src/components/landing-hero.tsx
 component_refs: [topbar-command-search]
 term_refs: [command-palette, autocomplete]
 source_refs: [tailwind-plus-application-ui]
