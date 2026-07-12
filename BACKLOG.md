@@ -2,6 +2,15 @@
 
 ## Completed Horizons
 
+### 2026-07-12 - Quality & Dogfooding (H2.5)
+
+- QA2 - AskewlyDesign Install & Dogfooding: 리네임 반영 재패키징+verify:package, 첫 실설치·언인스톨 lifecycle PASS, 설치본 CDP dogfooding에서 major 결함 4건 발견(#1 batch 계약 누락은 Step 6 해소, #2~#4 유지보수 등재), 적체 유지보수 4건 소진(다크모드·focus trap·실체화 undo 파일 삭제·packaged E2E registry/협업 통합) (`docs/plans/2026-07-12-qa2-install-dogfooding.md`, changesets #84–88).
+- QA1 - Recipe Gallery & Visual QA: 전용 갤러리 섹션에서 recipe 35종 live render(19종 첫 실노출), 라이트/다크 70장 sweep + contrast 후보 7건 전수 판독(전부 오탐/AA 통과), 오버레이 격리 결함 G1/G2 수정, live-render 유보 계약 갱신 (`docs/plans/2026-07-12-qa1-recipe-gallery-visual-qa.md`, changesets #89–90).
+- QA3 - Canvas Recipe Materialization: recipe 실체화가 빌드타임 marker 임베드된 실 standalone 소스 방출, 캔버스 Materialize 액션+데스크톱 IPC source-patch 채널 신설, packaged E2E 왕복 관측(identity 계약·재시작 단일 생존) — E2E가 Windows 스테이징 경로 콜론 결함 적발·봉합 (`docs/plans/2026-07-12-qa3-canvas-recipe-materialization.md`, changesets #91–93).
+- Close: close criteria 3항목 충족(전 recipe 열람+design-qa, 설치·실사용+유지보수 소진, 실체화 왕복 E2E). 상세: `docs/horizons/2026-07-quality-dogfooding.md`.
+- 크기 회고: milestone 당 changeset 5/2/3 — 인플레 없음.
+- 오케스트레이션 회고: sonnet 워커 7기 + Fable 게이트·E2E. 게이트/E2E 적발: 브리지 batch 계약 누락(dev-only 검증 갭), SheetTitle 컨텍스트 크래시, 데모 폭0, Windows 스테이징 경로 — 전부 "유닛 통과 ≠ 실표면 동작"의 실증으로, packaged/브라우저 실구동 게이트가 매 milestone 실결함을 잡음.
+
 ### 2026-07-12 - Living Design System (H2)
 
 - RL - Reference Loop Pipeline: 5단계 흡수 루프(수집→dedup→적응→검증→흡수) 표준화 — 절차 문서+inbox+ledger+audit 도구, 실증 3배치(commerce/internal-tools/documentation)로 recipe 6·용어 14·dedup 판정 10 (`docs/plans/2026-07-12-rl-reference-loop-pipeline.md`).

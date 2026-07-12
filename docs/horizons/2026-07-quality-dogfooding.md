@@ -1,7 +1,20 @@
 # Horizon — Quality & Dogfooding
 
 Date: 2026-07-12 (사용자 승인 활성화 — H2 Living Design System close 직후)
-Status: active
+Status: closed (2026-07-12 — QA2/QA1/QA3 3/3 완료)
+
+## Close Audit (2026-07-12)
+
+- **QA2 — Install & Dogfooding** (6 steps, changesets #84–88): AskewlyDesign 재패키징·실설치·언인스톨 lifecycle PASS, dogfooding에서 major 결함 4건 발견(#1 삽입 계약은 Step 6에서 해소, #2~#4는 유지보수 후보 등재), 적체 유지보수 4건 소진.
+- **QA1 — Recipe Gallery & Visual QA** (3 steps, changesets #89–90): 갤러리 섹션에서 recipe 35종 전부 live render, 라이트/다크 70장 sweep + contrast 판독(오탐 7건 전수 판독), 오버레이 격리 결함 G1/G2 수정, live-render 유보 계약 갱신.
+- **QA3 — Canvas Recipe Materialization** (3 steps, changesets #91–93): recipe 실체화가 실 standalone 소스 방출, 캔버스 Materialize 액션 신설, packaged E2E 왕복 관측(identity 계약·재시작 단일 생존). E2E가 Windows 스테이징 경로 결함을 적발·봉합.
+- Close criteria 3항목 전부 충족: ① 전 recipe 사이트 열람 + design-qa 패스, ② 설치·실사용 시나리오 통과 + 유지보수 소진, ③ 실체화 왕복 E2E 관측.
+- 크기 회고: milestone 당 changeset 5/2/3 — 인플레 없음.
+- 잔여(후속 유지보수 후보): 데스크톱 human Undo/Redo, 신뢰 프로젝트 소실 에러 표면, 프로덕션 셸 정리(1,000-node fixture·dev 계기판), shortcuts 배경 inert.
+
+## Objective 임팩트 (close 시점)
+
+성공상태 ①(시각 라이브러리 탐색)이 recipe 갤러리로 실품질 도달, ④(캔버스 제작 환경)가 설치·실사용·실체화 왕복까지 검증됨. H3(Public Product & Monetization)의 품질 전제 확보.
 
 ## Goal
 

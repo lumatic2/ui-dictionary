@@ -2,7 +2,7 @@
 
 Date: 2026-07-12
 Milestone: QA3 (`ROADMAP.md`, active — horizon-run 연쇄 승격, QA1 완료 직후)
-Status: approved (2026-07-12 horizon-run 연쇄 — QA2 승인 시 연쇄 범위에 포함)
+Status: completed (2026-07-12 — 3/3 steps, changesets #91–93)
 
 ## 위계
 
@@ -50,9 +50,9 @@ planning_gate:
 
 ## Step 트리
 
-- [ ] Step 1 — recipe 소스 임베드 + 실체화 확장 (changeset, packages/component-registry): build:catalog가 code_asset 내용에 marker placeholder를 주입해 `recipe-sources.generated.ts` 생성, `planMaterializeRegistryNode`가 recipe/* 노드에서 임베드 소스+placeholder 치환 사용(비-recipe는 기존 스켈레톤 유지). (verify: registry 유닛 테스트 + build:catalog 재생성 결정성)
-- [ ] Step 2 — 캔버스 실체화 액션 (changeset, apps/agent-design + bridge/desktop 필요분): 선택 노드가 registry-backed code-component이고 브리지 연결 시 "Materialize" 액션 → NEW_FILE_HASH source-patch 트랜잭션. (verify: 앱/브리지 테스트 무회귀 + targeted test)
-- [ ] Step 3 — 왕복 E2E + 마감 (evidence): 삽입→실체화→파일 확인→cold re-derive 동일 id 해석을 bridge 왕복 테스트/실 구동으로 관측. (verify: E2E PASS)
+- [x] Step 1 — recipe 소스 임베드 + 실체화 확장 (changeset #91): 35 소스 결정적 생성, marker 주입, 실 export명 해석. (커밋 9bc0979)
+- [x] Step 2 — 캔버스 실체화 액션 (changeset #92): PropertyInspector 버튼 + 데스크톱 IPC source-patch 채널. (커밋 eb9a304)
+- [x] Step 3 — 왕복 E2E (changeset #93): packaged E2E 실체화 스테이지 PASS + Windows 스테이징 경로 콜론 결함 적발·수정 + 브리지 recipe 왕복 테스트. (커밋 d12140c)
 
 ## 결정 로그
 
