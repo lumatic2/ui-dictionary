@@ -86,3 +86,5 @@
 | 84 | 20260712-qa2-repackage-install | 2026-07-12 | QA2 Step 1: AskewlyDesign repackage (make:win), verify:package, first real install + uninstall/reinstall lifecycle | 4/4 | complete |
 | 85 | 20260712-editor-chrome-dark-mode | 2026-07-12 | QA2 Step 3: editor chrome full dark mode via token-mode toggle, SSOT dark pass in token generator | 3/3 | complete |
 | 86 | 20260712-materialize-undo-file-deletion | 2026-07-12 | QA2 Step 5: materialization undo deletes created file, hash guard preserved, 3 targeted tests | 3/3 | complete |
+| 87 | 20260712-shortcuts-focus-trap | 2026-07-12 | QA2 Step 4: shortcuts dialog Tab/Shift+Tab trap completing the modal focus contract | 3/3 | complete |
+| 88 | 20260712-packaged-e2e-batch-contract | 2026-07-12 | QA2 Step 6: desktop batch operation contract + packaged E2E registry assembly and collaboration panel scenarios | 4/4 | complete |

@@ -7,7 +7,7 @@
       "components": [
         {
           "type": "application",
-          "name": "Agent Design package verifier",
+          "name": "AskewlyDesign package verifier",
           "version": "0.1.0"
         }
       ]

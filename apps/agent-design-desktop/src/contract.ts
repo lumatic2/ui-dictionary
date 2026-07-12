@@ -242,14 +242,35 @@ export function parseCanvasSnapshot(value: unknown): CanvasSnapshot {
   return structuredClone(value) as CanvasSnapshot
 }
 
+const CANVAS_OPERATION_TYPES = new Set([
+  'create-node', 'delete-node', 'update-node', 'transform-nodes', 'set-node-property',
+  'update-text', 'set-token-mode', 'reparent-node', 'reorder-node', 'select-nodes', 'set-viewport',
+])
+const MAX_BATCH_OPERATIONS = 500
+
+/** Validates a single canvas operation shape. `depth` guards against nested batches: a batch's own
+ *  children must be leaf operations (matching canvas-core's `BatchOperation.operations: Exclude<CanvasOperation, BatchOperation>[]`). */
+function assertValidCanvasOperationShape(operation: Record<string, unknown>, depth: number): void {
+  if (typeof operation.id !== 'string' || !/^[A-Za-z0-9][A-Za-z0-9._:-]{0,127}$/.test(operation.id)) throw new TypeError('invalid canvas operation id')
+  if (typeof operation.at !== 'string' || Number.isNaN(Date.parse(operation.at))) throw new TypeError('invalid canvas operation timestamp')
+  if (operation.type === 'batch') {
+    if (depth > 0) throw new TypeError('unsupported canvas operation')
+    if (!Array.isArray(operation.operations) || operation.operations.length === 0) throw new TypeError('invalid canvas batch operations')
+    if (operation.operations.length > MAX_BATCH_OPERATIONS) throw new TypeError('canvas batch is too large')
+    for (const child of operation.operations) {
+      if (!isRecord(child)) throw new TypeError('invalid canvas batch child operation')
+      assertValidCanvasOperationShape(child, depth + 1)
+    }
+    return
+  }
+  if (typeof operation.type !== 'string' || !CANVAS_OPERATION_TYPES.has(operation.type)) throw new TypeError('unsupported canvas operation')
+}
+
 export function parseCanvasMutationRequest(value: unknown): CanvasMutationRequest {
   if (!isRecord(value) || Object.keys(value).some((key) => key !== 'apiVersion' && key !== 'operation')) throw new TypeError('invalid canvas mutation request')
   if (value.apiVersion !== HOST_API_VERSION || !isRecord(value.operation)) throw new TypeError('invalid canvas mutation version or operation')
   const operation = value.operation
-  const types = new Set(['create-node', 'delete-node', 'update-node', 'transform-nodes', 'set-node-property', 'update-text', 'set-token-mode', 'reparent-node', 'reorder-node', 'select-nodes', 'set-viewport'])
-  if (typeof operation.type !== 'string' || !types.has(operation.type)) throw new TypeError('unsupported canvas operation')
-  if (typeof operation.id !== 'string' || !/^[A-Za-z0-9][A-Za-z0-9._:-]{0,127}$/.test(operation.id)) throw new TypeError('invalid canvas operation id')
-  if (typeof operation.at !== 'string' || Number.isNaN(Date.parse(operation.at))) throw new TypeError('invalid canvas operation timestamp')
+  assertValidCanvasOperationShape(operation, 0)
   if (JSON.stringify(operation).length > 1_000_000) throw new TypeError('canvas operation is too large')
   return Object.freeze({ apiVersion: HOST_API_VERSION, operation: structuredClone(operation) as unknown as CanvasOperation })
 }

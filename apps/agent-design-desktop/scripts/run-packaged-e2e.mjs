@@ -412,12 +412,43 @@ try {
   await page.waitForFunction(() => document.querySelector('[data-canvas-id="project-app"]')?.textContent === 'Claude packaged update')
   stage('Codex and Claude packaged MCP updates visible')
 
+  await page.getByTestId('toggle-agents').click()
+  await page.getByTestId('agent-feed').waitFor()
+  await page.waitForFunction(() => Boolean(document.querySelector('[data-testid="feed-packaged-codex-1"]') && document.querySelector('[data-testid="feed-packaged-claude-1"]')))
+  const collaborationFeedEntries = await page.evaluate(() => Array.from(document.querySelectorAll('[data-testid="agent-feed"] li')).map((entry) => entry.getAttribute('data-testid')))
+  invariant(collaborationFeedEntries.includes('feed-packaged-codex-1') && collaborationFeedEntries.includes('feed-packaged-claude-1'), 'collaboration panel is missing the earlier Codex/Claude MCP transactions')
+  await page.getByTestId('toggle-agents').click()
+  stage(`collaboration panel shows ${collaborationFeedEntries.length} feed entries including both packaged MCP transactions`)
+
   await page.locator('[data-canvas-id="project-app"]').click()
   await page.getByTestId('property-prop-label').waitFor()
   await page.getByTestId('property-prop-label').fill('Human packaged update')
   await page.getByTestId('property-prop-label').press('Tab')
   await page.waitForFunction(() => document.querySelector('[data-canvas-id="project-app"]')?.textContent === 'Human packaged update')
   stage('human property edit visible')
+
+  // Insert-palette insertions dispatch a `batch` operation (create-node + select-nodes, see
+  // canvas-core's planInsert) through the desktop bridge; this exercises the contract fix that
+  // added `batch` to the relay's operation whitelist.
+  await page.getByTestId('toggle-insert').click()
+  await page.getByTestId('insert-palette').waitFor()
+  const revisionBeforePrimitive = Number(await page.getByTestId('document-revision').textContent())
+  const nodesBeforePrimitive = await page.evaluate(() => document.querySelectorAll('[data-canvas-id]').length)
+  await page.getByTestId('insert-primitive-frame').waitFor()
+  await page.getByTestId('insert-primitive-frame').click()
+  await page.waitForFunction((count) => document.querySelectorAll('[data-canvas-id]').length === count, nodesBeforePrimitive + 1)
+  const revisionAfterPrimitive = Number(await page.getByTestId('document-revision').textContent())
+  invariant(revisionAfterPrimitive > revisionBeforePrimitive, 'primitive batch insertion did not advance the document revision')
+  stage(`registry assembly: primitive insertion via batch operation reached revision ${revisionAfterPrimitive} (${nodesBeforePrimitive + 1} nodes)`)
+
+  const nodesBeforeRecipe = nodesBeforePrimitive + 1
+  await page.getByTestId('insert-recipe-bottom-tab-bar').waitFor()
+  await page.getByTestId('insert-recipe-bottom-tab-bar').click()
+  await page.waitForFunction((count) => document.querySelectorAll('[data-canvas-id]').length === count, nodesBeforeRecipe + 1)
+  const revisionAfterRecipe = Number(await page.getByTestId('document-revision').textContent())
+  invariant(revisionAfterRecipe > revisionAfterPrimitive, 'recipe batch insertion did not advance the document revision')
+  stage(`registry assembly: recipe insertion (bottom-tab-bar) via batch operation reached revision ${revisionAfterRecipe} (${nodesBeforeRecipe + 1} nodes)`)
+  await page.getByTestId('toggle-insert').click()
 
   const watcherStarted = performance.now()
   await writeFile(sourceFile, source('Watcher packaged update'))
@@ -507,6 +538,11 @@ try {
     project: { trustedProjectIdRedacted: createHash('sha256').update(projectId).digest('hex').slice(0, 12), importedSource: 'src/App.tsx' },
     security: { rendererNodeAuthority: false, rendererCredentialSurface: false, appProtocol: true, preloadApiVerified: authority.hostKeys.includes('getCanvasSnapshot') },
     terminalAdapters: { codex, claude, packagedAdapter: true, commandCredentialsRedacted: true },
+    collaborationPanel: { feedEntryCount: collaborationFeedEntries.length, includesCodexTransaction: true, includesClaudeTransaction: true },
+    registryAssembly: {
+      primitiveInsertion: { revisionBefore: revisionBeforePrimitive, revisionAfter: revisionAfterPrimitive, nodeCountAfter: nodesBeforePrimitive + 1 },
+      recipeInsertion: { revisionBefore: revisionAfterPrimitive, revisionAfter: revisionAfterRecipe, nodeCountAfter: nodesBeforeRecipe + 1 },
+    },
     roundTrip: { humanEdit: true, watcherEdit: true, watcherVisibleMs, finalLabel: 'Watcher packaged update' },
     recovery: { revisionBeforeCrash, revisionAfterCrashRecovery, restartRevision: revisionBeforeCrash, differentPixels, totalPixels: beforePng.width * beforePng.height },
     performance: { gpuState, traces, p95WorstMs: Math.max(...traces.map((trace) => trace.p95LatencyMs)), targetMs: 16, fallbackState: 'dom', fallbackTrace },
@@ -520,7 +556,7 @@ try {
     },
   }
   await writeFile(join(resultsRoot, 'packaged-e2e.json'), `${JSON.stringify(report, null, 2)}\n`)
-  console.log(`packaged E2E: PASS (agent revisions ${codex.revision}/${claude.revision}; watcher ${watcherVisibleMs.toFixed(1)}ms; 5k p95 ${report.performance.p95WorstMs.toFixed(2)}ms)`)
+  console.log(`packaged E2E: PASS (agent revisions ${codex.revision}/${claude.revision}; collaboration feed ${collaborationFeedEntries.length} entries; registry assembly revision ${revisionAfterRecipe}; watcher ${watcherVisibleMs.toFixed(1)}ms; 5k p95 ${report.performance.p95WorstMs.toFixed(2)}ms)`)
 } finally {
   await benchmarkApp?.close().catch(() => undefined)
   await restartApp?.close().catch(() => undefined)

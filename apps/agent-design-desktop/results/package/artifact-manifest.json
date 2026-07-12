@@ -20,33 +20,33 @@
   "artifacts": [
     {
       "name": "portable-executable",
-      "file": "out/Agent Design-win32-x64/AgentDesign.exe",
+      "file": "out/AskewlyDesign-win32-x64/AskewlyDesign.exe",
       "bytes": 225697792,
-      "sha256": "e881d8092d18a8ead2d9c3591f45d900b0ae4349df80257af0a80a7a6ccd2850"
+      "sha256": "2be5819fe555427d7f3f344a1a1e09e6ca31434ebfadca3bdd2b317d7d036039"
     },
     {
       "name": "application-asar",
-      "file": "out/Agent Design-win32-x64/resources/app.asar",
-      "bytes": 116002,
-      "sha256": "c0ba581a5c9d4013042837af26b55bd8f882a8cb3f7c2792a3fb69aaa34e20aa"
+      "file": "out/AskewlyDesign-win32-x64/resources/app.asar",
+      "bytes": 116005,
+      "sha256": "e8ef75ab2be513e21233e0c781d6041da8aa98f94ca3ed0f6616b9e9f09de5ba"
     },
     {
       "name": "squirrel-installer",
-      "file": "out/make/squirrel.windows/x64/AgentDesign-UnsignedDevelopment-Setup.exe",
-      "bytes": 140403712,
-      "sha256": "61ef74be345b3f775445b6561c8f5b98aaf1ede96305f0c62909243270e1a97d"
+      "file": "out/make/squirrel.windows/x64/AskewlyDesign-UnsignedDevelopment-Setup.exe",
+      "bytes": 140408320,
+      "sha256": "690c9b56293a0ef4967b355725a86e85c0b0a8e04edab32fd6bd52d425d5331c"
     },
     {
       "name": "squirrel-package",
-      "file": "out/make/squirrel.windows/x64/agent_design-0.1.0-full.nupkg",
-      "bytes": 139317134,
-      "sha256": "e73920a669e3b39813d29d817eb7735ee1a0ebe70444eefbc60149c079dffec2"
+      "file": "out/make/squirrel.windows/x64/askewly_design-0.1.0-full.nupkg",
+      "bytes": 139322430,
+      "sha256": "b44d3419095cbcad33b2da917cfa2bf6fc65339fc9172bee3e33ddeb4c8cd332"
     },
     {
       "name": "squirrel-releases",
       "file": "out/make/squirrel.windows/x64/RELEASES",
-      "bytes": 83,
-      "sha256": "834d781f3359bb5b46a4f7ba7000de8bf2ef3791918ede20b2cfccc04ebe319d"
+      "bytes": 85,
+      "sha256": "d4b8e990298b23b3f394cc705daaee1e7f5e6a5b8300e94062d7ab0e9335295c"
     }
   ]
 }

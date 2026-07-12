@@ -30,6 +30,61 @@ describe('canvas relay contract', () => {
     expect(() => parseCanvasMutationRequest({ apiVersion: 1, operation: { id: 'run', at: '2026-07-11T01:00:00.000Z', type: 'run-command', command: 'calc' } })).toThrow('unsupported canvas operation')
   })
 
+  it('accepts a batch operation and validates each child operation against the same whitelist', () => {
+    const request = parseCanvasMutationRequest({
+      apiVersion: 1,
+      operation: {
+        id: 'batch-1',
+        at: '2026-07-11T01:00:00.000Z',
+        type: 'batch',
+        operations: [
+          { id: 'child-1', at: '2026-07-11T01:00:00.000Z', type: 'create-node', node: { id: 'n1' }, parentId: null, index: 0 },
+          { id: 'child-2', at: '2026-07-11T01:00:00.000Z', type: 'select-nodes', nodeIds: ['n1'] },
+        ],
+      },
+    })
+    expect(request.operation.type).toBe('batch')
+  })
+
+  it('rejects a batch operation containing a forbidden child operation type', () => {
+    expect(() =>
+      parseCanvasMutationRequest({
+        apiVersion: 1,
+        operation: {
+          id: 'batch-2',
+          at: '2026-07-11T01:00:00.000Z',
+          type: 'batch',
+          operations: [{ id: 'child-shell', at: '2026-07-11T01:00:00.000Z', type: 'run-command', command: 'calc' }],
+        },
+      }),
+    ).toThrow('unsupported canvas operation')
+  })
+
+  it('rejects a batch operation nesting another batch operation', () => {
+    expect(() =>
+      parseCanvasMutationRequest({
+        apiVersion: 1,
+        operation: {
+          id: 'batch-3',
+          at: '2026-07-11T01:00:00.000Z',
+          type: 'batch',
+          operations: [{ id: 'nested', at: '2026-07-11T01:00:00.000Z', type: 'batch', operations: [{ id: 'leaf', at: '2026-07-11T01:00:00.000Z', type: 'select-nodes', nodeIds: [] }] }],
+        },
+      }),
+    ).toThrow('unsupported canvas operation')
+  })
+
+  it('rejects an empty batch and an oversized batch', () => {
+    expect(() =>
+      parseCanvasMutationRequest({ apiVersion: 1, operation: { id: 'batch-empty', at: '2026-07-11T01:00:00.000Z', type: 'batch', operations: [] } }),
+    ).toThrow('invalid canvas batch operations')
+
+    const oversized = Array.from({ length: 501 }, (_, index) => ({ id: `child-${index}`, at: '2026-07-11T01:00:00.000Z', type: 'select-nodes', nodeIds: [] }))
+    expect(() =>
+      parseCanvasMutationRequest({ apiVersion: 1, operation: { id: 'batch-oversized', at: '2026-07-11T01:00:00.000Z', type: 'batch', operations: oversized } }),
+    ).toThrow('canvas batch is too large')
+  })
+
   it('rejects snapshots with extra secret fields', () => {
     expect(() => parseCanvasSnapshot({
       document: { schemaVersion: 1, revision: 0, nodes: {} },

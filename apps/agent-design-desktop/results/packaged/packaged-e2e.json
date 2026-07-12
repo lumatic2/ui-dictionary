@@ -3,7 +3,7 @@
   "classification": "unsigned-development",
   "runtime": "Electron packaged Windows x64 application",
   "project": {
-    "trustedProjectIdRedacted": "f437816e897c",
+    "trustedProjectIdRedacted": "4ea8bd71fa21",
     "importedSource": "src/App.tsx"
   },
   "security": {
@@ -24,52 +24,69 @@
     "packagedAdapter": true,
     "commandCredentialsRedacted": true
   },
+  "collaborationPanel": {
+    "feedEntryCount": 2,
+    "includesCodexTransaction": true,
+    "includesClaudeTransaction": true
+  },
+  "registryAssembly": {
+    "primitiveInsertion": {
+      "revisionBefore": 4,
+      "revisionAfter": 5,
+      "nodeCountAfter": 3
+    },
+    "recipeInsertion": {
+      "revisionBefore": 5,
+      "revisionAfter": 6,
+      "nodeCountAfter": 4
+    }
+  },
   "roundTrip": {
     "humanEdit": true,
     "watcherEdit": true,
-    "watcherVisibleMs": 123.28899999999976,
+    "watcherVisibleMs": 122.33879999999954,
     "finalLabel": "Watcher packaged update"
   },
   "recovery": {
-    "revisionBeforeCrash": 5,
-    "revisionAfterCrashRecovery": 5,
-    "restartRevision": 5,
+    "revisionBeforeCrash": 7,
+    "revisionAfterCrashRecovery": 7,
+    "restartRevision": 7,
     "differentPixels": 0,
-    "totalPixels": 758588
+    "totalPixels": 722128
   },
   "performance": {
     "gpuState": "dom",
     "traces": [
       {
         "frames": 60,
-        "averageLatencyMs": 4.906666660805505,
-        "p95LatencyMs": 11.099999988079162,
+        "averageLatencyMs": 8.766666654845077,
+        "p95LatencyMs": 18.99999997615805,
+        "overBudgetRatio": 0.06666666666666667,
+        "revisionDelta": 1
+      },
+      {
+        "frames": 60,
+        "averageLatencyMs": 6.5583333228031275,
+        "p95LatencyMs": 15.799999994039354,
         "overBudgetRatio": 0.016666666666666666,
         "revisionDelta": 1
       },
       {
         "frames": 60,
-        "averageLatencyMs": 9.076666660507506,
-        "p95LatencyMs": 21.499999982118425,
-        "overBudgetRatio": 0.08333333333333333,
-        "revisionDelta": 1
-      },
-      {
-        "frames": 60,
-        "averageLatencyMs": 8.058333326578122,
-        "p95LatencyMs": 11.599999988078707,
-        "overBudgetRatio": 0.03333333333333333,
+        "averageLatencyMs": 6.888333322107792,
+        "p95LatencyMs": 17.300000000000182,
+        "overBudgetRatio": 0.05,
         "revisionDelta": 1
       }
     ],
-    "p95WorstMs": 21.499999982118425,
+    "p95WorstMs": 18.99999997615805,
     "targetMs": 16,
     "fallbackState": "dom",
     "fallbackTrace": {
       "frames": 20,
-      "averageLatencyMs": 13.229999992847524,
-      "p95LatencyMs": 90.19999998211824,
-      "overBudgetRatio": 0.1,
+      "averageLatencyMs": 5.4899999892712,
+      "p95LatencyMs": 9.199999988079071,
+      "overBudgetRatio": 0,
       "revisionDelta": 1
     }
   },
@@ -87,10 +104,13 @@
       "Electron sandboxed_renderer.bundle.js script failed to run",
       "TypeError: Cannot destructure property 'preloadScripts' of 'binding.startupData' as it is null.\n    at node:electron/js2c/sandbox_bundle:2:132134\n    at node:electron/js2c/sandbox_bundle:2:133238\n    at ___electron_webpack_init__ (node:electron/js2c/sandbox_bundle:2:133242)\n    at node:electron/js2c/sandbox_bundle:2:133365"
     ],
-    "benchmark": []
+    "benchmark": [
+      "Electron sandboxed_renderer.bundle.js script failed to run",
+      "TypeError: Cannot destructure property 'preloadScripts' of 'binding.startupData' as it is null.\n    at node:electron/js2c/sandbox_bundle:2:132134\n    at node:electron/js2c/sandbox_bundle:2:133238\n    at ___electron_webpack_init__ (node:electron/js2c/sandbox_bundle:2:133242)\n    at node:electron/js2c/sandbox_bundle:2:133365"
+    ]
   },
   "instrumentation": {
-    "knownElectronSandboxStartupExceptions": 2,
+    "knownElectronSandboxStartupExceptions": 4,
     "classification": "CDP-observed Electron 43 sandbox startup telemetry; preload host API verified operational"
   }
 }
