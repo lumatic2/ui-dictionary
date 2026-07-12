@@ -183,47 +183,47 @@ export const docsArticlePages = new Map<TermFilter, DocsArticlePageData>([
     kind: "setup",
     breadcrumb: "UI Blocks / Docs",
     title: "Getting set up",
-    lead: "UI Dictionary 문서는 용어를 외우는 문서가 아니라, 화면을 만들기 전에 구현 기준을 맞추는 작업대입니다. 먼저 프로젝트가 어떤 UI contract를 공유할지 정하고, 그 다음 element별 문서로 내려갑니다.",
+    lead: "Getting set up은 환경 설정 문서가 아니라 Askewly Design을 실제로 쓰는 작업 절차입니다. 화면을 만들 때마다 Explore → Acquire assets → Inject → Verify 네 단계를 왕복합니다. 사람은 사이트를 눈으로 탐색하며 이 루프를 돌고, Codex/Claude Code 같은 코딩 에이전트는 같은 루프를 프롬프트와 세션 컨텍스트로 수행합니다. 철학과 판단 기준은 Principles 문서가 정본이며, 이 글은 그 판단을 실제로 적용하는 순서만 다룹니다.",
     sections: [
       {
-        title: "Requirements",
+        title: "1. Explore — 화면 맥락과 vocabulary를 먼저 좁힙니다",
         body: [
-          "작업을 시작하기 전에 세 가지가 필요합니다. 첫째, 화면이 해결할 사용자 과업입니다. 둘째, 그 과업을 이루는 UI vocabulary입니다. 셋째, desktop, mobile, keyboard, empty/error state를 확인할 검증 기준입니다.",
-          "Tailwind Plus가 font와 dark mode 같은 기반을 먼저 고정하듯, UI Dictionary도 typography, spacing, contrast, focus-visible, overflow를 기본 계약으로 둡니다. 이 기준 없이 컴포넌트만 고르면 화면마다 리듬이 달라집니다.",
-        ],
-        code: "npm run build:data\nnpm run lint\nnpm run build\nnpm run audit:visuals",
-      },
-      {
-        title: "Use the dictionary as implementation context",
-        body: [
-          "용어 페이지는 이름과 의미를 찾는 곳이고, Documentation 페이지는 그 용어를 화면에 배치하는 법을 설명하는 곳입니다. 예를 들어 Dialog를 찾았다면 단순히 modal을 만들라는 뜻이 아니라, focus trap, title, close path, destructive action까지 함께 챙기라는 뜻입니다.",
-          "AI에게 넘길 때도 단어 목록만 주면 안 됩니다. 목적, 상태, 레이아웃, 금지 조건, 검증 방법을 한 번에 넘겨야 결과가 재사용 가능한 화면에 가까워집니다.",
-        ],
-        code: "Build a settings page with:\n- sidebar navigation\n- form layout\n- focus-visible states\n- toast feedback\n\nVerify:\n- no mobile overflow\n- keyboard focus is visible\n- empty/error states are represented",
-      },
-      {
-        title: "Project baseline",
-        body: [
-          "새 화면을 만들 때는 큰 hero나 decorative card보다 실제 작업 surface를 먼저 엽니다. 정보가 많은 SaaS, CRM, 운영 도구라면 quiet, dense, scannable한 구성으로 시작합니다.",
-          "버튼, 입력, 메뉴, 탭, 표, sidebar 같은 반복 primitive는 이미 있는 vocabulary와 연결합니다. 새로운 스타일을 만들기보다 기존 용어와 상태를 정확히 조합하는 것이 먼저입니다.",
+          "가장 먼저 Patterns 축(Marketing / Application UI / Ecommerce / UI Kit)에서 지금 만들 화면이 어떤 제품 맥락에 속하는지 고릅니다. 랜딩 페이지인지, 운영 도구의 설정 화면인지, 커머스 체크아웃인지에 따라 참고할 블록과 위계 기준이 달라집니다.",
+          "맥락을 정했다면 UI vocabulary로 내려가 실제로 필요한 컴포넌트의 이름, 상태, 구조를 확정합니다. 예를 들어 Dialog를 찾았다면 modal 하나가 아니라 focus trap, title, close path, destructive action까지 그 용어가 포함하는 계약을 함께 확인합니다.",
         ],
       },
       {
-        title: "Responsive and dark mode checks",
+        title: "2. Acquire assets — 토큰과 레시피를 가져옵니다",
         body: [
-          "데스크톱에서 좋아 보이는 것과 모바일에서 사용할 수 있는 것은 다릅니다. 첫 viewport에서 핵심 조작이 보이는지, 긴 단어와 code block이 넘치지 않는지, 좌우 rail이 접히는지 확인합니다.",
-          "다크 모드를 지원하는 화면은 단순히 배경만 어둡게 바꾸지 않습니다. border, muted text, focus ring, disabled state, hover surface까지 같이 조정해야 합니다.",
+          "시각적 값의 단일 출처는 디자인 토큰과 DESIGN.md입니다. 색, 치수, 타이포그래피는 여기서 참조하고, 화면마다 값을 새로 정의하지 않습니다. 정본은 tokens/askewly.tokens.json이며 사람이 읽는 표면(DESIGN.md, 문서 페이지)은 그 값을 전달할 뿐 따로 값을 소유하지 않습니다.",
+          "구현 단위가 필요하면 Recipe Gallery에서 실제로 동작하는 standalone React 소스를 고릅니다. 레시피는 추상적인 설명이 아니라 그대로 프로젝트에 옮길 수 있는 코드이며, 각 레시피의 Anatomy/States/Checks/Anti-patterns가 그 코드를 어떻게 써야 하는지 규정합니다.",
+        ],
+      },
+      {
+        title: "3. Inject — 사람과 에이전트가 각자의 경로로 반영합니다",
+        body: [
+          "사람은 Recipe Gallery에서 코드를 그대로 복사하거나, CLI로 프로젝트에 바로 주입합니다. 둘 다 결과물은 같은 레시피 코드이며, CLI는 그 복사 과정을 자동화한 것일 뿐입니다.",
+          "에이전트는 레시피 코드 자체가 아니라 레시피, 토큰, 관련 용어 정의를 프롬프트나 세션 컨텍스트로 함께 전달받아야 합니다. 목적, 상태, 레이아웃, 금지 조건, 검증 방법 없이 용어 이름만 넘기면 결과가 화면마다 달라집니다.",
+        ],
+        code: "# human\nnpm install ui-dictionary\nnpx ui-dictionary add command-palette\n\n# agent (prompt/session context)\nBuild a settings page with:\n- recipe: sidebar-navigation, form-layout\n- tokens: surface.muted, focus.ring, text.destructive\n- terms: Dialog(focus trap/close path), Toast(feedback)\n\nVerify:\n- no mobile overflow\n- keyboard focus is visible\n- empty/error states are represented",
+      },
+      {
+        title: "4. Verify — 출시 전에 체크리스트를 통과시킵니다",
+        body: [
+          "다크 모드는 배경만 반전하는 것이 아닙니다. border, muted text, focus ring, disabled state, hover surface까지 semantic 토큰이 함께 뒤집히는지 `.dark` class를 적용한 상태로 확인합니다.",
+          "interactive state(hover, focus-visible, disabled, loading, empty/error)와 responsive 동작(첫 viewport 핵심 조작, 좌우 rail 접힘, 텍스트/code block overflow), 접근성(landmark, label 연결, focus 이동과 복귀)을 함께 확인합니다.",
+          "이 체크리스트는 다 만든 뒤 붙이는 부가 절차가 아니라 작업 자체의 일부입니다. 통과하지 못한 화면은 공개하지 않습니다.",
         ],
       },
       {
         title: "Next steps",
         body: [
-          "정적 HTML로 빠르게 실험할 때는 Using HTML로 이동합니다. 앱 컴포넌트로 묶을 때는 Using React 또는 Using Vue를 봅니다. 아이콘, 이미지, illustration이 필요한 화면이면 Assets에서 품질 기준을 먼저 정합니다.",
+          "판단 기준과 철학은 Principles 문서를 참고합니다. 토큰과 상태의 근거는 Foundations 문서가 정본입니다. 실제로 옮겨 쓸 구현 단위는 Recipe Gallery에서 고릅니다. 정적 HTML로 빠르게 실험할 때는 Using HTML, 앱 컴포넌트로 묶을 때는 Using React 또는 Using Vue로 이동합니다.",
         ],
       },
     ],
     apiRows: [],
-    onThisPage: ["Requirements", "Use the dictionary", "Project baseline", "Responsive checks", "Next steps"],
+    onThisPage: ["1. Explore", "2. Acquire assets", "3. Inject", "4. Verify", "Next steps"],
   }],
   [navFilter("docs-getting-started-html"), {
     filter: navFilter("docs-getting-started-html"),

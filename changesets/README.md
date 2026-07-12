@@ -93,3 +93,4 @@
 | 91 | 20260712-recipe-source-materialization | 2026-07-12 | QA3 Step 1: recipe materialization emits real standalone source with build-time identity marker embed, 35 sources generated | 4/4 | complete |
 | 92 | 20260712-canvas-materialize-action | 2026-07-12 | QA3 Step 2: materialize action in canvas UI via new desktop IPC source-patch channel (bridge-connected only) | 5/5 | complete |
 | 93 | 20260712-materialization-roundtrip-e2e | 2026-07-12 | QA3 Step 3: materialization roundtrip in packaged E2E, Windows staging-path colon fix, bridge recipe roundtrip test | 4/4 | complete |
+| 94 | 20260712-getting-set-up-protocol | 2026-07-12 | PX Step 2: Getting set up rewritten as the Explore-Acquire-Inject-Verify design work protocol with human/agent tracks | 4/4 | complete |
