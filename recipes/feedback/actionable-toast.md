@@ -16,7 +16,7 @@ tokens_used:
   - dimension.radius.md
   - typography.scale.sm
   - typography.weight.medium
-code_asset: examples/ui-vocabulary-site/src/App.tsx
+code_asset: examples/ui-vocabulary-site/src/components/actionable-toast.tsx
 component_refs: [button]
 term_refs: [toast, toast-stack, undo-toast, alert]
 source_refs: []
@@ -52,7 +52,7 @@ An actionable toast confirms a recent low-risk operation and may offer one short
 ## Code
 
 ```tsx
-function ActionableToast({ toast, onDismiss, onUndo }: Props) {
+export function ActionableToast({ toast, onDismiss, onUndo }: ActionableToastProps) {
   useEffect(() => {
     const timer = window.setTimeout(onDismiss, toast.duration)
     return () => window.clearTimeout(timer)
@@ -60,17 +60,21 @@ function ActionableToast({ toast, onDismiss, onUndo }: Props) {
 
   return (
     <div
-      className="flex items-start gap-4 border bg-popover p-4 text-popover-foreground shadow-sm"
+      className="flex w-[min(23rem,calc(100vw-2rem))] items-start gap-3 rounded-lg border bg-popover p-4 text-popover-foreground shadow-lg"
       role="status"
       aria-live="polite"
     >
       <div className="min-w-0 flex-1">
         <p className="text-sm font-medium">{toast.title}</p>
-        {toast.body && <p className="mt-1 text-sm text-muted-foreground">{toast.body}</p>}
+        {toast.body ? <p className="mt-1 text-sm text-muted-foreground">{toast.body}</p> : null}
       </div>
-      {toast.undoable && <button type="button" onClick={onUndo}>Undo</button>}
-      <button type="button" aria-label="Dismiss notification" onClick={onDismiss}>
-        <X aria-hidden="true" />
+      {toast.undoable ? (
+        <Button className="shrink-0" size="sm" type="button" variant="link" onClick={onUndo}>
+          Undo
+        </Button>
+      ) : null}
+      <button aria-label="Dismiss notification" className="shrink-0 text-muted-foreground transition hover:text-foreground" type="button" onClick={onDismiss}>
+        <XIcon aria-hidden="true" className="size-4" />
       </button>
     </div>
   )

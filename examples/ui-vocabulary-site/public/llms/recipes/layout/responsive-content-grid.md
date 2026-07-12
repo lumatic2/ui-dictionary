@@ -17,7 +17,7 @@ tokens_used:
   - dimension.radius.md
   - typography.scale.sm
   - typography.scale.lg
-code_asset: examples/ui-vocabulary-site/src/App.tsx
+code_asset: examples/ui-vocabulary-site/src/components/responsive-content-grid.tsx
 component_refs: []
 term_refs: [grid, responsive-stack, responsive-layout, container]
 source_refs: [tailwind-plus-application-ui]
@@ -52,30 +52,28 @@ A responsive content grid arranges peer items into as many columns as the conten
 ## Code
 
 ```tsx
-function ResponsiveContentGrid({ items }: { items: Item[] }) {
+export function ResponsiveContentGrid({ items }: ResponsiveContentGridProps) {
   return (
-    <section className="mx-auto w-full max-w-6xl px-6 py-12">
+    <section className="mx-auto w-full max-w-5xl">
       <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
         {items.map((item) => (
-          <article key={item.id} className="min-w-0 border bg-card p-6 text-card-foreground">
+          <article key={item.id} className="min-w-0 rounded-lg border bg-card p-6 text-card-foreground">
             <div className="flex items-start justify-between gap-4">
               <div className="min-w-0">
-                <h2 className="truncate text-lg font-medium">{item.title}</h2>
-                <p className="mt-2 text-sm leading-6 text-muted-foreground">
-                  {item.description}
-                </p>
+                <h3 className="truncate text-base font-medium">{item.title}</h3>
+                <p className="mt-2 text-sm leading-6 text-muted-foreground">{item.description}</p>
               </div>
-              {item.status && <StatusChip value={item.status} />}
+              {item.status ? <Badge variant="secondary">{item.status}</Badge> : null}
             </div>
-            {item.actions && (
+            {item.actions?.length ? (
               <div className="mt-6 flex flex-wrap gap-2">
                 {item.actions.map((action) => (
-                  <button key={action.label} type="button" onClick={action.run}>
+                  <Button key={action.label} size="sm" type="button" variant="outline" onClick={action.run}>
                     {action.label}
-                  </button>
+                  </Button>
                 ))}
               </div>
-            )}
+            ) : null}
           </article>
         ))}
       </div>

@@ -55,9 +55,9 @@ planning_gate:
 ## Step 트리
 
 - [x] Step 1 — code_asset 독립화 마이그레이션 (changeset): App.tsx 내장 심볼을 참조하는 구식 recipe들의 구현을 독립 파일로 추출(이동 원칙). 결과: 10종 중 3종 추출 완료(showcase-card, landing-hero, article-documentation-layout), 7종은 code_asset이 의사코드/얽힌 클로저로 판명 — 이동 불가, Step 1b로 이관. (verify: validate-recipes 23 ok + build/lint PASS)
-- [ ] Step 1b — 잔여 7종 독립 구현 (changeset, 실행 중 발견으로 추가): checkout-order-summary, interactive-data-table, actionable-toast, recoverable-empty-state, responsive-content-grid, sidebar-application-shell, stat-summary-grid를 recipe 문서 anatomy를 스펙 삼아 독립 컴포넌트로 신규 구현 후 code_asset 재지정 — "전 23종" 승인 범위 이행 경로. (verify: validate-recipes 23 ok + build/lint PASS + hex 0)
+- [x] Step 1b — 잔여 7종 독립 구현 (changeset, 실행 중 발견으로 추가): checkout-order-summary, interactive-data-table, actionable-toast, recoverable-empty-state, responsive-content-grid, sidebar-application-shell, stat-summary-grid를 recipe 문서 anatomy를 스펙 삼아 독립 컴포넌트로 신규 구현 후 code_asset 재지정 — "전 23종" 승인 범위 이행 경로. (verify: validate-recipes 23 ok + build/lint PASS + hex 0)
 - [x] Step 2 — recipe 카탈로그 생성기 (changeset): `packages/component-registry`에 recipes frontmatter → `recipeCatalog` 생성 스크립트(build-time, 결손=비제로 exit) + `RegistryCollection` 확장 + 테스트. (verify: 생성 카탈로그 23 entries + registry 테스트 PASS)
-- [ ] Step 3 — 팔레트 소비 + E2E + 절차 갱신 (changeset): InsertPalette가 recipe 컬렉션을 노출(필요 최소 수정), 브라우저 E2E(모바일 뷰포트에서 모바일 recipe 삽입), reference-loop.md 흡수 단계 갱신, ledger 기록. (verify: agent-design 테스트 무회귀 + E2E 스크린샷 evidence)
+- [x] Step 3 — 팔레트 소비 + E2E + 절차 갱신 (changeset): InsertPalette가 recipe 컬렉션을 노출(필요 최소 수정), 브라우저 E2E(모바일 뷰포트에서 모바일 recipe 삽입), reference-loop.md 흡수 단계 갱신, ledger 기록. (verify: agent-design 테스트 무회귀 + E2E 스크린샷 evidence)
 
 ## 결정 로그
 

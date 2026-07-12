@@ -21,7 +21,7 @@ tokens_used:
   - typography.scale.sm
   - typography.scale.lg
   - typography.weight.medium
-code_asset: examples/ui-vocabulary-site/src/App.tsx
+code_asset: examples/ui-vocabulary-site/src/components/checkout-order-summary.tsx
 component_refs: [button]
 term_refs: [cart-summary, checkout-step, checkout-progress-header, payment-method-card, order-status]
 source_refs: [tailwind-plus-ecommerce]
@@ -58,33 +58,43 @@ A checkout order summary keeps the exact purchase commitment visible while the u
 ## Code
 
 ```tsx
-function CheckoutOrderSummary({ order, onConfirm, onEdit }: Props) {
+export function CheckoutOrderSummary({ order, onConfirm, onEdit }: CheckoutOrderSummaryProps) {
   const total = order.subtotal - order.discount + order.shipping + order.tax
   const canConfirm = order.address != null && order.paymentMethod != null && !order.submitting
+
   return (
-    <aside className="border bg-card p-6 text-card-foreground" aria-labelledby="summary-title">
+    <aside className="w-full max-w-md rounded-lg border bg-card p-6 text-card-foreground" aria-labelledby="checkout-summary-title">
       <div className="flex items-center justify-between gap-4">
-        <h2 id="summary-title" className="text-lg font-medium">Order summary</h2>
-        <button type="button" onClick={onEdit}>Edit cart</button>
+        <h2 id="checkout-summary-title" className="text-lg font-medium">
+          Order summary
+        </h2>
+        <Button size="sm" type="button" variant="ghost" onClick={onEdit}>
+          Edit cart
+        </Button>
       </div>
+
       <ul className="mt-6 divide-y">
         {order.items.map((item) => (
           <li key={item.id} className="flex justify-between gap-4 py-4">
-            <div><p>{item.name}</p><p className="text-sm text-muted-foreground">{item.option} · Qty {item.quantity}</p></div>
-            <p>{formatMoney(item.total, order.currency)}</p>
+            <div className="min-w-0">
+              <p className="truncate text-sm font-medium">{item.name}</p>
+              <p className="mt-0.5 text-xs text-muted-foreground">{item.option} · Qty {item.quantity}</p>
+            </div>
+            <p className="shrink-0 text-sm font-medium tabular-nums">{formatMoney(item.total, order.currency)}</p>
           </li>
         ))}
       </ul>
+
       <dl className="space-y-2 border-t pt-4 text-sm">
-        <div className="flex justify-between"><dt>Subtotal</dt><dd>{formatMoney(order.subtotal, order.currency)}</dd></div>
-        <div className="flex justify-between"><dt>Discount</dt><dd>-{formatMoney(order.discount, order.currency)}</dd></div>
-        <div className="flex justify-between"><dt>Shipping</dt><dd>{formatMoney(order.shipping, order.currency)}</dd></div>
-        <div className="flex justify-between"><dt>Tax</dt><dd>{formatMoney(order.tax, order.currency)}</dd></div>
-        <div className="flex justify-between border-t pt-3 font-medium"><dt>Total</dt><dd>{formatMoney(total, order.currency)}</dd></div>
+        <div className="flex justify-between border-t pt-3 text-base font-medium">
+          <dt>Total</dt>
+          <dd className="tabular-nums">{formatMoney(total, order.currency)}</dd>
+        </div>
       </dl>
-      <button className="mt-6 w-full" type="button" disabled={!canConfirm} onClick={onConfirm}>
+
+      <Button className="mt-6 w-full" disabled={!canConfirm} type="button" onClick={onConfirm}>
         {order.submitting ? "Placing order" : `Place order · ${formatMoney(total, order.currency)}`}
-      </button>
+      </Button>
     </aside>
   )
 }

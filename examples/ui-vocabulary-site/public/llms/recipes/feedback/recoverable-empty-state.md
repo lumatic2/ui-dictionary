@@ -18,7 +18,7 @@ tokens_used:
   - typography.scale.sm
   - typography.scale.lg
   - typography.weight.medium
-code_asset: examples/ui-vocabulary-site/src/App.tsx
+code_asset: examples/ui-vocabulary-site/src/components/recoverable-empty-state.tsx
 component_refs: [button]
 term_refs: [empty-state, empty-search-result, empty-filter-state, error-state]
 source_refs: []
@@ -54,22 +54,25 @@ A recoverable empty state explains why expected content is absent and gives the 
 ## Code
 
 ```tsx
-function RecoverableEmptyState({ kind, query, onRecover }: Props) {
-  const copy = {
-    firstUse: { title: "No projects yet", body: "Create the first project for this workspace.", action: "Create project" },
-    search: { title: `No results for ${query}`, body: "Try a broader term or clear the query.", action: "Clear search" },
-    filtered: { title: "No matching records", body: "The current filters exclude every record.", action: "Clear filters" },
-    error: { title: "Could not load records", body: "Your changes are safe. Try loading this view again.", action: "Retry" },
-  }[kind]
+const COPY: Record<EmptyStateKind, { title: (query?: string) => string; body: string; action: string }> = {
+  firstUse: { title: () => "No projects yet", body: "Create the first project for this workspace.", action: "Create project" },
+  search: { title: (query) => `No results for "${query}"`, body: "Try a broader term or clear the query.", action: "Clear search" },
+  filtered: { title: () => "No matching records", body: "The current filters exclude every record.", action: "Clear filters" },
+  error: { title: () => "Could not load records", body: "Your changes are safe. Try loading this view again.", action: "Retry" },
+}
+
+export function RecoverableEmptyState({ kind, query, onRecover }: RecoverableEmptyStateProps) {
+  const copy = COPY[kind]
+
   return (
-    <section className="grid min-h-64 place-items-center border bg-muted/30 p-8 text-center">
+    <section className="grid min-h-64 place-items-center rounded-lg border bg-muted/30 p-8 text-center">
       <div className="max-w-md">
-        <EmptyIcon aria-hidden="true" className="mx-auto text-muted-foreground" />
-        <h2 className="mt-4 text-lg font-medium text-foreground">{copy.title}</h2>
+        <InboxIcon aria-hidden="true" className="mx-auto size-10 text-muted-foreground" />
+        <h2 className="mt-4 text-lg font-medium text-foreground">{copy.title(query)}</h2>
         <p className="mt-2 text-sm leading-6 text-muted-foreground">{copy.body}</p>
-        <button className="mt-6" type="button" onClick={onRecover}>
+        <Button className="mt-6" type="button" onClick={onRecover}>
           {copy.action}
-        </button>
+        </Button>
       </div>
     </section>
   )

@@ -18,7 +18,7 @@ tokens_used:
   - dimension.radius.md
   - typography.scale.sm
   - typography.weight.medium
-code_asset: examples/ui-vocabulary-site/src/App.tsx
+code_asset: examples/ui-vocabulary-site/src/components/interactive-data-table.tsx
 component_refs: [button]
 term_refs: [table, data-grid, data-table-toolbar, table-density-control, table-row-actions]
 source_refs: [tailwind-plus-application-ui]
@@ -55,32 +55,51 @@ An interactive data table supports scanning and acting on structured records whi
 ## Code
 
 ```tsx
-function InteractiveDataTable({ rows }: { rows: UserRow[] }) {
+export function InteractiveDataTable({ rows }: InteractiveDataTableProps) {
   const [selected, setSelected] = useState<string[]>([])
-  const toggle = (id: string) => setSelected((current) =>
-    current.includes(id) ? current.filter((value) => value !== id) : [...current, id]
-  )
+
+  const toggle = (id: string) =>
+    setSelected((current) => (current.includes(id) ? current.filter((value) => value !== id) : [...current, id]))
+
+  const toggleAll = () =>
+    setSelected((current) => (current.length === rows.length ? [] : rows.map((row) => row.id)))
+
+  const allSelected = rows.length > 0 && selected.length === rows.length
+
   return (
-    <section className="border bg-card text-card-foreground">
+    <section className="overflow-hidden rounded-lg border bg-card text-card-foreground">
       <header className="flex items-center justify-between gap-4 border-b p-4">
         <p className="text-sm text-muted-foreground">{rows.length} members</p>
-        {selected.length > 0 && <button type="button">Archive {selected.length}</button>}
+        {selected.length > 0 ? (
+          <Button size="sm" type="button" variant="outline" onClick={() => setSelected([])}>
+            Archive {selected.length}
+          </Button>
+        ) : null}
       </header>
-      <div className="overflow-x-auto">
-        <table className="w-full border-collapse text-left text-sm">
-          <thead className="bg-muted text-muted-foreground">
-            <tr><th scope="col">Select</th><th scope="col">Name</th><th scope="col">Role</th><th scope="col">Status</th></tr>
-          </thead>
-          <tbody>
-            {rows.map((row) => (
-              <tr key={row.id} className="border-t">
-                <td><input aria-label={`Select ${row.name}`} checked={selected.includes(row.id)} type="checkbox" onChange={() => toggle(row.id)} /></td>
-                <th scope="row">{row.name}</th><td>{row.role}</td><td>{row.status}</td>
-              </tr>
-            ))}
-          </tbody>
-        </table>
-      </div>
+      <Table>
+        <TableHeader>
+          <TableRow>
+            <TableHead className="w-10">
+              <Checkbox aria-label="Select all rows" checked={allSelected} onCheckedChange={toggleAll} />
+            </TableHead>
+            <TableHead>Name</TableHead>
+            <TableHead>Role</TableHead>
+            <TableHead>Status</TableHead>
+          </TableRow>
+        </TableHeader>
+        <TableBody>
+          {rows.map((row) => (
+            <TableRow key={row.id} data-state={selected.includes(row.id) ? "selected" : undefined}>
+              <TableCell>
+                <Checkbox aria-label={`Select ${row.name}`} checked={selected.includes(row.id)} onCheckedChange={() => toggle(row.id)} />
+              </TableCell>
+              <TableCell className="font-medium">{row.name}</TableCell>
+              <TableCell className="text-muted-foreground">{row.role}</TableCell>
+              <TableCell className="text-muted-foreground">{row.status}</TableCell>
+            </TableRow>
+          ))}
+        </TableBody>
+      </Table>
     </section>
   )
 }

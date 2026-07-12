@@ -75,3 +75,4 @@
 | 73 | 20260712-recipe-catalog-generator | 2026-07-12 | Build-time recipe catalog generator (23 entries) with recipe collection type and loud-failure contract | 4/4 | complete |
 | 74 | 20260712-code-asset-extraction | 2026-07-12 | Extract 3 legacy recipe implementations to standalone components; 7 found to be pseudocode, deferred to fresh implementation | 4/4 | complete |
 | 75 | 20260712-palette-recipe-feed | 2026-07-12 | Insert palette Recipes section fed by generated catalog, insertion via existing registry path, browser E2E | 3/3 | complete |
+| 76 | 20260712-recipe-standalone-implementations | 2026-07-12 | Standalone implementations for 7 legacy recipes, code_asset repointed, full 23-recipe standalone coverage | 5/5 | complete |

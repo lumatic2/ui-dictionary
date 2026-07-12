@@ -19,7 +19,7 @@ tokens_used:
   - dimension.radius.md
   - typography.scale.sm
   - typography.weight.medium
-code_asset: examples/ui-vocabulary-site/src/App.tsx
+code_asset: examples/ui-vocabulary-site/src/components/sidebar-application-shell.tsx
 component_refs: []
 term_refs: [app-shell, sidebar-nav, collapsible-sidebar, sidebar-dashboard-layout]
 source_refs: [tailwind-plus-application-ui]
@@ -54,34 +54,42 @@ A sidebar application shell gives repeated product navigation a stable rail whil
 ## Code
 
 ```tsx
-function SidebarApplicationShell({ items, activeId, children }: Props) {
+export function SidebarApplicationShell({ items, activeId, onSelect, children }: SidebarApplicationShellProps) {
   const [expanded, setExpanded] = useState(true)
+
   return (
-    <div className="grid min-h-screen bg-background lg:grid-cols-[auto_minmax(0,1fr)]">
-      <aside className={cn("border-r bg-card", expanded ? "w-64" : "w-16")}>
+    <div className="grid min-h-[28rem] overflow-hidden rounded-lg border bg-background lg:grid-cols-[auto_minmax(0,1fr)]">
+      <aside className={cn("flex flex-col gap-1 border-b bg-card p-2 lg:border-b-0 lg:border-r", expanded ? "lg:w-56" : "lg:w-16")}>
         <button
-          type="button"
           aria-expanded={expanded}
           aria-label={expanded ? "Collapse sidebar" : "Expand sidebar"}
+          className="mb-1 inline-flex size-9 items-center justify-center self-start rounded-md text-muted-foreground transition hover:bg-accent hover:text-accent-foreground"
+          type="button"
           onClick={() => setExpanded((value) => !value)}
         >
-          <PanelLeft aria-hidden="true" />
+          <PanelLeftIcon aria-hidden="true" className="size-4" />
         </button>
-        <nav aria-label="Workspace">
-          {items.map((item) => (
-            <button
-              key={item.id}
-              type="button"
-              aria-current={item.id === activeId ? "page" : undefined}
-              className={cn("flex w-full items-center gap-3", item.id === activeId && "bg-muted text-foreground")}
-            >
-              <item.icon aria-hidden="true" />
-              {expanded && <span>{item.label}</span>}
-            </button>
-          ))}
+        <nav aria-label="Workspace" className="flex flex-col gap-1">
+          {items.map((item) => {
+            const isActive = item.id === activeId
+            const Icon = item.icon
+            return (
+              <button
+                key={item.id}
+                aria-current={isActive ? "page" : undefined}
+                aria-label={expanded ? undefined : item.label}
+                className={cn("flex items-center gap-3 rounded-md px-3 py-2 text-sm font-medium transition", isActive ? "bg-muted text-foreground" : "text-muted-foreground hover:bg-accent/50 hover:text-foreground")}
+                type="button"
+                onClick={() => onSelect(item.id)}
+              >
+                <Icon aria-hidden="true" className="size-4 shrink-0" />
+                {expanded ? <span className="truncate">{item.label}</span> : null}
+              </button>
+            )
+          })}
         </nav>
       </aside>
-      <main className="min-w-0 bg-background">{children}</main>
+      <main className="min-w-0 overflow-y-auto bg-background p-6">{children}</main>
     </div>
   )
 }
