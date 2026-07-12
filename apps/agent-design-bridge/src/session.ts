@@ -406,6 +406,13 @@ export class BridgeSession {
 
   private undoSourcePatch(target: Extract<UndoRecord, { kind: 'source-patch' }>, request: UndoRequest): TransactionEvent {
     if (this.transactionIds.has(request.id)) throw new BridgeProtocolError('INVALID_TRANSACTION', `duplicate transaction id: ${request.id}`, 409)
+    // A materialization patch (RT Step 3) had no file before it - its
+    // `beforeFileHash` is the NEW_FILE_HASH sentinel. Undoing it must delete
+    // the file it created, not overwrite it with `beforeContent` (which is
+    // just '', the empty placeholder used for the initial hash check) - that
+    // would leave an empty ghost file on disk instead of restoring the
+    // pre-materialization "file does not exist" state.
+    const isFileCreation = target.request.beforeFileHash === NEW_FILE_HASH
     const file = this.sourceFile(target.request.file)
     const currentContent = readFileSync(file, 'utf8')
     if (sourceHash(currentContent) !== target.afterFileHash) throw new BridgeProtocolError('HASH_CONFLICT', 'source changed after the transaction; refusing undo', 409)
@@ -413,6 +420,7 @@ export class BridgeSession {
     next.revision += 1
     next.metadata.updatedAt = request.at
     const afterHash = documentHash(next)
+    const restoredFileHash = isFileCreation ? NEW_FILE_HASH : sourceHash(target.beforeContent)
     const audit: TransactionAuditEntry = {
       transactionId: request.id,
       actor: request.actor,
@@ -421,12 +429,13 @@ export class BridgeSession {
       beforeHash: request.beforeHash,
       afterHash,
       exactChanges: exactChanges(this.document, next),
-      sourceDiff: unifiedDiff(target.request.file, currentContent, target.beforeContent),
+      sourceDiff: unifiedDiff(target.request.file, currentContent, isFileCreation ? '' : target.beforeContent),
       sourceFile: target.request.file,
       verification: { valid: true, checks: ['source-hash-guard'] },
       committedAt: request.at,
     }
-    writeFileSync(file, target.beforeContent, 'utf8')
+    if (isFileCreation) rmSync(file, { force: true })
+    else writeFileSync(file, target.beforeContent, 'utf8')
     try {
       this.auditSink(structuredClone(audit))
       this.persist(next, audit)
@@ -443,10 +452,11 @@ export class BridgeSession {
       beforeHash: request.beforeHash,
       afterHash,
       operations: [],
-      sourcePatch: { file: target.request.file, beforeFileHash: target.afterFileHash, afterFileHash: sourceHash(target.beforeContent) },
+      sourcePatch: { file: target.request.file, beforeFileHash: target.afterFileHash, afterFileHash: restoredFileHash },
     }
     this.document = next
     this.committed.pop()
+    if (isFileCreation) this.allowedSourceFiles.delete(file)
     this.transactionIds.add(request.id)
     this.audits.push(audit)
     this.events.push(event)

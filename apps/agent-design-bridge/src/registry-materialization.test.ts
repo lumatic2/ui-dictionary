@@ -1,4 +1,4 @@
-import { mkdtempSync, readFileSync, rmSync } from 'node:fs'
+import { existsSync, mkdtempSync, readFileSync, rmSync, writeFileSync } from 'node:fs'
 import { tmpdir } from 'node:os'
 import { join } from 'node:path'
 import { afterEach, describe, expect, it } from 'vitest'
@@ -193,5 +193,85 @@ describe('RT Step 3 — registry component materialization', () => {
     expect(rederived.nodes[firstId].kind === 'code-component' ? rederived.nodes[firstId].source.file : null).toBe('src/components/Button.tsx')
     expect(rederived.nodes[secondId].kind === 'code-component' ? rederived.nodes[secondId].source.file : null).toBe('src/components/Button2.tsx')
     expect(firstId).not.toBe(secondId)
+  })
+
+  it('undoing a materialization DELETES the created file rather than leaving an empty ghost file', () => {
+    const { root, session } = setup()
+
+    const nodeId = insertRegistryButton(session, 'tx-insert-button-undo', '2026-07-12T04:10:00.000Z')
+    const plan = materializeAndPatch(session, session.snapshot().document, nodeId, 'tx-materialize-button-undo', '2026-07-12T04:11:00.000Z')
+    const filePath = join(root, plan.filePath)
+    expect(existsSync(filePath)).toBe(true)
+
+    const snapshot = session.snapshot()
+    const event = session.undo({ id: 'tx-undo-materialize', actor: 'claude', baseRevision: snapshot.revision, beforeHash: snapshot.hash, at: '2026-07-12T04:12:00.000Z' })
+
+    // The file must be gone entirely, not truncated to an empty ghost file.
+    expect(existsSync(filePath)).toBe(false)
+
+    // The audit/event faithfully represent a deletion: the resulting file
+    // hash is the same "does not exist" sentinel used to request creation.
+    expect(event.sourcePatch).toMatchObject({ file: plan.filePath, afterFileHash: NEW_FILE_HASH })
+    const audit = session.auditLog().at(-1)
+    expect(audit?.kind).toBe('undo')
+    expect(audit?.sourceFile).toBe(plan.filePath)
+    expect(audit?.sourceDiff).toContain(`--- a/${plan.filePath}`)
+    for (const line of plan.content.split('\n')) {
+      if (line.length > 0) expect(audit?.sourceDiff).toContain(`-${line}`)
+    }
+    expect(audit?.sourceDiff).not.toContain('+export')
+
+    // A cold re-derive no longer discovers a source-backed node at this path.
+    const rederived = deriveDocumentFromProject(root, { documentId: 'agent-design-materialize', documentName: 'Materialize fixture' })
+    expect(Object.keys(rederived.nodes)).toHaveLength(REALISTIC_COMPONENTS.length + 1)
+  })
+
+  it('refuses to undo a materialization when the created file was modified afterward (hash guard)', () => {
+    const { root, session } = setup()
+
+    const nodeId = insertRegistryButton(session, 'tx-insert-button-guard', '2026-07-12T04:13:00.000Z')
+    const plan = materializeAndPatch(session, session.snapshot().document, nodeId, 'tx-materialize-button-guard', '2026-07-12T04:14:00.000Z')
+    const filePath = join(root, plan.filePath)
+
+    writeFileSync(filePath, `${plan.content}\n// modified after materialization\n`)
+
+    const snapshot = session.snapshot()
+    expect(() =>
+      session.undo({ id: 'tx-undo-guard', actor: 'claude', baseRevision: snapshot.revision, beforeHash: snapshot.hash, at: '2026-07-12T04:15:00.000Z' }),
+    ).toThrowError(expect.objectContaining({ code: 'HASH_CONFLICT' }))
+
+    // The guard must refuse cleanly: the modified file survives untouched.
+    expect(existsSync(filePath)).toBe(true)
+    expect(readFileSync(filePath, 'utf8')).toContain('// modified after materialization')
+  })
+
+  it('fails cleanly (not a crash) when the same undo transaction id is replayed after a materialization delete', () => {
+    const { root, session } = setup()
+
+    const nodeId = insertRegistryButton(session, 'tx-insert-button-replay', '2026-07-12T04:16:00.000Z')
+    const plan = materializeAndPatch(session, session.snapshot().document, nodeId, 'tx-materialize-button-replay', '2026-07-12T04:17:00.000Z')
+    const filePath = join(root, plan.filePath)
+
+    const snapshot = session.snapshot()
+    session.undo({ id: 'tx-undo-replay', actor: 'claude', baseRevision: snapshot.revision, beforeHash: snapshot.hash, at: '2026-07-12T04:18:00.000Z' })
+    expect(existsSync(filePath)).toBe(false)
+
+    // Replaying the same (now-stale) undo request must fail cleanly with the
+    // existing revision-conflict protocol error, not throw an fs error or
+    // crash trying to delete/read the already-deleted file again.
+    expect(() =>
+      session.undo({ id: 'tx-undo-replay', actor: 'claude', baseRevision: snapshot.revision, beforeHash: snapshot.hash, at: '2026-07-12T04:19:00.000Z' }),
+    ).toThrowError(expect.objectContaining({ code: 'REVISION_CONFLICT' }))
+    expect(existsSync(filePath)).toBe(false)
+
+    // A duplicate undo id at the CURRENT (up-to-date) revision — e.g. the
+    // client retrying the exact request it just successfully sent — must
+    // also fail cleanly, via the duplicate-transaction guard, instead of
+    // attempting to delete/read the already-deleted file again.
+    const current = session.snapshot()
+    expect(() =>
+      session.undo({ id: 'tx-undo-replay', actor: 'claude', baseRevision: current.revision, beforeHash: current.hash, at: '2026-07-12T04:20:00.000Z' }),
+    ).toThrowError(expect.objectContaining({ code: 'INVALID_TRANSACTION' }))
+    expect(existsSync(filePath)).toBe(false)
   })
 })
