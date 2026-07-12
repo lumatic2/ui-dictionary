@@ -2,7 +2,7 @@
 
 Date: 2026-07-12
 Milestone: QA2 (`ROADMAP.md`, active)
-Status: approved (2026-07-12 사용자 "진행")
+Status: completed (2026-07-12 — 6/6 steps, changesets #84–88)
 
 ## 위계
 
@@ -49,12 +49,12 @@ planning_gate:
 
 ## Step 트리
 
-- [ ] Step 1 — 재패키징 + 실설치 (changeset): `npm run make:win`(AskewlyDesign 반영) → `verify-package` → 인스톨러 실행·설치 확인(설치 경로·시작 메뉴·실행 스크린샷) → 언인스톨/재설치 lifecycle 1회 관측. (verify: verify-package PASS + 설치본 실행 관측)
-- [ ] Step 2 — Dogfooding 시나리오 검수 (evidence): 설치본으로 프로젝트 trust·열기 → 모바일 뷰포트 + recipe 삽입 → 편집·저장·undo → 앱 재시작 연속성 → 첫 실행 UX·빈 상태·에러 표면 관찰. 결함 목록(심각도) 기록. (verify: 체크리스트 + 스크린샷 + 결함 목록)
-- [ ] Step 3 — 에디터 크롬 전면 다크 모드 (changeset). (verify: agent-design 테스트 무회귀 + 다크 전환 관측)
-- [ ] Step 4 — shortcuts dialog 풀 focus trap (changeset). (verify: 테스트 + 키보드 순환 관측)
-- [ ] Step 5 — 실체화 undo의 파일 삭제 시맨틱 (changeset). (verify: targeted test + 왕복 관측)
-- [ ] Step 6 — packaged E2E에 registry 조립·협업 패널 시나리오 통합 (changeset). (verify: packaged E2E PASS)
+- [x] Step 1 — 재패키징 + 실설치 (changeset #84): make:win → verify:package PASS → 실설치·시작 메뉴·실행 스크린샷 → 언인스톨/재설치 lifecycle PASS. (커밋 f52f473)
+- [x] Step 2 — Dogfooding 시나리오 검수 (evidence): 설치본 CDP 구동으로 전 시나리오 검수, major 결함 4건 발견·라우팅 (`docs/research/qa2-dogfooding-checklist.md`). (커밋 b44cb46)
+- [x] Step 3 — 에디터 크롬 전면 다크 모드 (changeset #85): token-mode 단일 토글로 크롬 다크, 73/73 + 브라우저 실관측. (커밋 9852e92)
+- [x] Step 4 — shortcuts dialog 풀 focus trap (changeset #87): Tab/Shift+Tab 순환 트랩, 74/74. (커밋 7760a98)
+- [x] Step 5 — 실체화 undo의 파일 삭제 시맨틱 (changeset #86): 생성 파일 삭제 + hash 가드, 45/45. (커밋 0192e1f)
+- [x] Step 6 — packaged E2E registry 조립·협업 패널 통합 + batch 계약 (changeset #88): 결함 #1 근본 수정, packaged E2E PASS. (커밋 6fe88d2)
 
 ## 결정 로그
 
