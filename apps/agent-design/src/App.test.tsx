@@ -277,8 +277,36 @@ describe('Agent Design persistence flow', () => {
     expect(view.getByRole('group', { name: 'Panels' })).toBeTruthy()
     expect(view.getByRole('group', { name: 'Document' })).toBeTruthy()
     expect(view.getByRole('group', { name: 'Zoom' })).toBeTruthy()
+    expect(view.getByRole('group', { name: 'Viewport' })).toBeTruthy()
     expect(view.getByRole('group', { name: 'Arrange selection' })).toBeTruthy()
     expect(view.getByRole('group', { name: 'Help and panels' })).toBeTruthy()
+  })
+
+  it('applies a viewport preset to the canvas root through the canonical update-node operation, undoably', () => {
+    const view = render(<App />)
+    const preset = view.getByTestId('viewport-preset')
+    expect((preset as HTMLSelectElement).value).toBe('desktop')
+
+    const root = view.container.querySelector('[data-canvas-id="node-00000"]')
+    if (!(root instanceof HTMLElement)) throw new Error('canvas root node missing')
+    const revisionBefore = Number(view.getByTestId('document-revision').textContent)
+
+    fireEvent.change(preset, { target: { value: 'mobile' } })
+    expect((preset as HTMLSelectElement).value).toBe('mobile')
+    expect(Number(view.getByTestId('document-revision').textContent)).toBe(revisionBefore + 1)
+    expect(root.style.width).toBe('390px')
+    expect(root.style.height).toBe('844px')
+
+    fireEvent.change(preset, { target: { value: 'tablet' } })
+    expect((preset as HTMLSelectElement).value).toBe('tablet')
+    expect(Number(view.getByTestId('document-revision').textContent)).toBe(revisionBefore + 2)
+    expect(root.style.width).toBe('768px')
+    expect(root.style.height).toBe('1024px')
+
+    fireEvent.click(view.getByTestId('undo'))
+    expect(Number(view.getByTestId('document-revision').textContent)).toBe(revisionBefore + 1)
+    expect(root.style.width).toBe('390px')
+    expect(root.style.height).toBe('844px')
   })
 
   it('completes a representative creation workflow from insert to reload continuity', async () => {

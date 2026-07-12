@@ -45,6 +45,13 @@ function percentile(values: number[], ratio: number) {
   return sorted[Math.min(sorted.length - 1, Math.floor(sorted.length * ratio))] ?? 0
 }
 
+type ViewportPreset = 'desktop' | 'mobile' | 'tablet'
+
+const VIEWPORT_PRESET_SIZES: Record<Exclude<ViewportPreset, 'desktop'>, { width: number; height: number }> = {
+  mobile: { width: 390, height: 844 },
+  tablet: { width: 768, height: 1024 },
+}
+
 const CONNECTION_STATE_LABELS: Partial<Record<string, string>> = {
   error: 'Connection error',
   disconnected: 'Disconnected',
@@ -87,6 +94,7 @@ export function App() {
   const [agentsOpen, setAgentsOpen] = useState(false)
   const [devFixtureWorkspace, setDevFixtureWorkspace] = useState(false)
   const [collabFeed, setCollabFeed] = useState<CollaborationFeed | null>(null)
+  const [viewportPreset, setViewportPreset] = useState<ViewportPreset>('desktop')
   const [agentError, setAgentError] = useState('')
   const stageRef = useRef<HTMLElement>(null)
   const shortcutsDialogRef = useRef<HTMLDivElement>(null)
@@ -267,6 +275,16 @@ export function App() {
   const resetZoom = useCallback(() => {
     commit({ id: `zoom-reset-${performance.now()}`, at: new Date().toISOString(), type: 'set-viewport', pan: history.present.viewport.pan, zoom: 1 })
   }, [commit, history.present.viewport.pan])
+
+  const applyViewportPreset = useCallback((preset: ViewportPreset) => {
+    setViewportPreset(preset)
+    if (preset === 'desktop') return
+    const rootId = history.present.rootIds[0]
+    const root = rootId ? history.present.nodes[rootId] : null
+    if (!root) return
+    const size = VIEWPORT_PRESET_SIZES[preset]
+    commit({ id: `viewport-preset-${performance.now()}`, at: new Date().toISOString(), type: 'update-node', nodeId: root.id, patch: { bounds: { ...root.bounds, ...size } } })
+  }, [commit, history.present])
 
   useEffect(() => {
     const isEditable = (target: EventTarget | null) =>
@@ -451,6 +469,15 @@ export function App() {
         <button type="button" aria-label="Zoom to 100 percent" onClick={resetZoom}>1:1</button>
         <button type="button" aria-label="Fit canvas" onClick={() => fitTo(documentContentBounds(history.present))}>Fit</button>
         <button type="button" aria-label="Fit selection" disabled={!history.present.selection.length} onClick={() => fitTo(selectionBounds(history.present))}>Fit sel</button>
+      </div>
+      <div className="toolbar-group" role="group" aria-label="Viewport">
+        <label>Viewport
+          <select aria-label="Viewport preset" data-testid="viewport-preset" value={viewportPreset} onChange={(event) => applyViewportPreset(event.target.value as ViewportPreset)}>
+            <option value="desktop">Desktop</option>
+            <option value="mobile">Mobile 390×844</option>
+            <option value="tablet">Tablet 768×1024</option>
+          </select>
+        </label>
       </div>
       <ArrangementToolbar document={history.present} onOperation={commit} />
       <span className="toolbar-spacer" />

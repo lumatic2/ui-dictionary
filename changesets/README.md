@@ -68,3 +68,4 @@
 | 66 | 20260712-batch-commerce | 2026-07-12 | First reference-loop proof batch: 2 commerce recipes with real implementations, 4 terms, 4 dedup judgments | 7/7 | complete |
 | 67 | 20260712-batch-internal-tools | 2026-07-12 | Second reference-loop proof batch: bulk-action toolbar and filter-builder recipes, 5 terms, 3 dedup judgments | 7/7 | complete |
 | 68 | 20260712-batch-documentation | 2026-07-12 | Third reference-loop proof batch: API reference and code-block recipes, 5 terms, 3 dedup judgments, procedure retro fold | 7/7 | complete |
+| 69 | 20260712-canvas-viewport-preset | 2026-07-12 | Canvas settings viewport presets (Mobile/Tablet/Desktop) via canonical update-node, undoable | 2/2 | complete |
