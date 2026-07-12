@@ -84,3 +84,5 @@
 | 82 | 20260712-token-coverage-gen2 | 2026-07-12 | Gen-2 token gap analysis: 4 gaps tokenized (touch-target/z-index/radius-2xl/overlay-duration), 7 non-gaps documented | 4/4 | complete |
 | 83 | 20260712-askewly-design-rename | 2026-07-12 | Product rename Agent Design to AskewlyDesign across config, tests, UI strings, living docs | 4/4 | complete |
 | 84 | 20260712-qa2-repackage-install | 2026-07-12 | QA2 Step 1: AskewlyDesign repackage (make:win), verify:package, first real install + uninstall/reinstall lifecycle | 4/4 | complete |
+| 85 | 20260712-editor-chrome-dark-mode | 2026-07-12 | QA2 Step 3: editor chrome full dark mode via token-mode toggle, SSOT dark pass in token generator | 3/3 | complete |
+| 86 | 20260712-materialize-undo-file-deletion | 2026-07-12 | QA2 Step 5: materialization undo deletes created file, hash guard preserved, 3 targeted tests | 3/3 | complete |
