@@ -2,7 +2,7 @@
 
 Date: 2026-07-12
 Milestone: PX (`ROADMAP.md`, active — Public Product & Monetization horizon 활성화 첫 milestone)
-Status: pending approval
+Status: approved (2026-07-12 사용자 "진행" — 연쇄 범위 PX 단독)
 
 ## 위계
 
