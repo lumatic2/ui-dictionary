@@ -1,4 +1,4 @@
-export type RegistryCollection = 'shadcn' | 'layout' | 'project'
+export type RegistryCollection = 'shadcn' | 'layout' | 'project' | 'recipe'
 
 export interface RegistryEntry {
   id: string

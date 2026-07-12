@@ -11,7 +11,8 @@
     "prebuild": "npm --prefix ../canvas-core run build",
     "build": "tsc",
     "pretest": "npm --prefix ../canvas-core run build",
-    "test": "vitest run"
+    "test": "vitest run",
+    "build:catalog": "node scripts/build-recipe-catalog.mjs"
   },
   "dependencies": {
     "@askewly/canvas-core": "file:../canvas-core"
@@ -19,6 +20,7 @@
   "devDependencies": {
     "@types/node": "^24.13.2",
     "typescript": "~6.0.2",
-    "vitest": "^3.2.7"
+    "vitest": "^3.2.7",
+    "yaml": "^2.6.0"
   }
 }

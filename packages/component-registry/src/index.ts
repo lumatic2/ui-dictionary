@@ -1,4 +1,5 @@
 export * from './types.js'
 export * from './catalog.js'
+export * from './recipe-catalog.generated.js'
 export * from './registry.js'
 export * from './materialize.js'
