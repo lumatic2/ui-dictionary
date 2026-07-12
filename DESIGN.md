@@ -71,6 +71,7 @@ tokens:
       md: { value: "6px", type: dimension }
       lg: { value: "8px", type: dimension }
       xl: { value: "12px", type: dimension }
+      2xl: { value: "16px", type: dimension }
 
   typography:
     font:

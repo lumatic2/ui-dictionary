@@ -162,7 +162,23 @@
       "sm": { "$value": { "value": 4, "unit": "px" } },
       "md": { "$value": { "value": 6, "unit": "px" } },
       "lg": { "$value": { "value": 8, "unit": "px" } },
-      "xl": { "$value": { "value": 12, "unit": "px" } }
+      "xl": { "$value": { "value": 12, "unit": "px" } },
+      "2xl": {
+        "$description": "SD gen2 (2026-07-12): large-surface corner radius for sheets/overlays that sit above the base scale — device-frame inner viewport, bottom-sheet-detents. Recurs identically in >=2 mobile components as Tailwind's built-in rounded-2xl (16px), currently outside the tokenized sm-xl range.",
+        "$value": { "value": 16, "unit": "px" }
+      }
+    },
+    "size": {
+      "$type": "dimension",
+      "$description": "Fixed-purpose sizing constants that are not part of the 4/8 spacing grid. SD gen2 (2026-07-12): touch-target minimum recurs across mobile surfaces (large-title-collapsing-header back button, mobile-signup-field-stack inputs/submit, plus pre-existing search-autocomplete/showcase-card/term-visual usage) as Tailwind size-11/h-11/min-h-11 (44px) — the WCAG 2.5.5 / iOS HIG minimum hit target.",
+      "touch-target-min": { "$value": { "value": 44, "unit": "px" } }
+    },
+    "z-index": {
+      "$type": "number",
+      "$description": "SD gen2 (2026-07-12): layering scale distilled from recurring hardcoded z-index values across mobile overlays and dense-data sticky headers. 'sticky' = content pinned within its own scroll container (collapsing header bar, bottom-sheet/action-sheet root within DeviceFrame, table sticky header row). 'elevated' = a second layer above a sticky layer in the same local stacking context (permission-matrix-editor-grid's sticky corner cell, which must sit above both its own header row and column). 'overlay' = page-level modal/scrim/popover stacking context (ui/dialog, ui/sheet, ui/popover, ui/tooltip, full-screen confirm overlays).",
+      "sticky": { "$value": 10 },
+      "elevated": { "$value": 20 },
+      "overlay": { "$value": 50 }
     }
   },
   "typography": {
@@ -183,6 +199,16 @@
       "$type": "fontWeight",
       "regular": { "$value": 400 },
       "medium": { "$value": 500 }
+    }
+  },
+  "motion": {
+    "$description": "SD gen2 (2026-07-12): motion timing constants. Kept minimal by the same policy as color.component — only the value that actually recurs, not a full scale invented ahead of need.",
+    "duration": {
+      "$type": "duration",
+      "overlay": {
+        "$description": "Open/close transition for modal-style surfaces. Recurs identically (200ms) in bottom-sheet-detents.tsx and ui/dialog.tsx.",
+        "$value": { "value": 200, "unit": "ms" }
+      }
     }
   }
 }
