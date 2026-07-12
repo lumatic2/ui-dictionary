@@ -294,12 +294,13 @@
     {
       "id": "FW",
       "title": "Feed Wiring",
-      "status": "active",
+      "status": "completed",
       "started": "2026-07-12",
       "plan": "docs/plans/2026-07-12-fw-feed-wiring.md",
       "session_ids": [
         "claude:086e4b88-d743-44cd-b102-57183afa1b61"
-      ]
+      ],
+      "completed": "2026-07-12"
     },
     {
       "id": "MS",
