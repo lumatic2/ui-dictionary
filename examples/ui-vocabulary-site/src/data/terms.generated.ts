@@ -1017,16 +1017,19 @@ export const terms = [
       ]
     },
     "one_liner": "검색으로 화면 이동이나 명령 실행을 빠르게 찾는 오버레이.",
-    "description": "입력창과 결과 목록을 함께 보여주며 키보드 중심 탐색에 적합하다.",
+    "description": "입력창과 결과 목록을 함께 보여주며 키보드 중심 탐색에 적합하다. 운영 도구에서는 현재 선택된 엔티티에 스코프를 좁혀 그 엔티티에만 적용되는 위험 액션만 노출하고, 파괴적 액션은 목록 안에서 시각적으로 분리하는 변형으로도 쓰인다.",
     "visual_anatomy": [
       "overlay panel",
       "command input",
       "grouped results",
-      "keyboard hint"
+      "keyboard hint",
+      "entity-scoped action list when used as an ops variant",
+      "visually separated destructive actions in that variant"
     ],
     "when_to_use": [
       "기능이 많고 빠른 검색 실행이 필요할 때",
-      "파워 유저용 단축 흐름이 필요할 때"
+      "파워 유저용 단축 흐름이 필요할 때",
+      "선택된 엔티티에 스코프된 운영 액션만 빠르게 찾아 실행해야 할 때"
     ],
     "anti_use": [
       "초보자에게 필수 기능을 숨기는 용도로 쓰지 않는다",
@@ -16192,7 +16195,77 @@ export const terms = [
         "note": "error and recovery feedback"
       }
     ],
+    "related": [
+      {
+        "id": "background-job-queue-monitor",
+        "relation": "compare",
+        "note": "retry panel은 하나의 실패 상태를 복구하는 단일 패널이고, background job queue monitor는 여러 비동기 작업의 큐 상태를 목록으로 감시하며 건별 재시도를 제공하는 별도 구조다"
+      }
+    ],
     "confidence": "high"
+  },
+  {
+    "kind": "component",
+    "id": "background-job-queue-monitor",
+    "status": "draft",
+    "category": "data-display",
+    "group": "data-timeline-history",
+    "ko": {
+      "name": "백그라운드 작업 큐 모니터",
+      "aliases": [
+        "job queue monitor",
+        "배치 작업 모니터",
+        "백그라운드 작업 상태"
+      ]
+    },
+    "en": {
+      "name": "Background job queue monitor",
+      "aliases": [
+        "Job queue monitor",
+        "Background task monitor"
+      ]
+    },
+    "one_liner": "배치, 마이그레이션, 이메일 발송 같은 비동기 작업들을 대기중/실행중/성공/실패 상태로 나열하고 실패 건을 개별 재시도하는 운영 모니터.",
+    "description": "여러 백그라운드 작업의 큐 상태를 목록형으로 보여주고, 상태 필터와 건별 재시도 액션을 제공한다. 단일 실패 패널이 아니라 여러 작업을 한 화면에서 감시하는 목록형 모니터다.",
+    "visual_anatomy": [
+      "row per job with id and type",
+      "status badge",
+      "started time and duration",
+      "retry count",
+      "status filter",
+      "per-row retry action for failed jobs"
+    ],
+    "when_to_use": [
+      "비동기 배치나 마이그레이션이나 발송 작업 다수를 운영자가 한 화면에서 감시하고 실패 건만 개별 재시도해야 할 때"
+    ],
+    "anti_use": [
+      "단일 작업의 실패 원인과 재시도만 보여주면 되는 좁은 화면에는 retry panel이 더 적합하다"
+    ],
+    "prompt_phrases": [
+      "배치 작업들의 큐 상태를 pending running succeeded failed로 보여주는 job queue monitor를 만들어줘",
+      "실패한 작업만 재시도할 수 있는 백그라운드 작업 모니터를 넣어줘"
+    ],
+    "asset": {
+      "kind": "mini-mock",
+      "variant": "background-job-queue-monitor",
+      "props": {
+        "jobs": 4
+      }
+    },
+    "sources": [
+      {
+        "source_id": "atlassian-design-components",
+        "note": "activity and status display patterns"
+      }
+    ],
+    "related": [
+      {
+        "id": "retry-panel",
+        "relation": "compare",
+        "note": "retry panel은 하나의 실패 상태를 복구하는 단일 패널이고, background job queue monitor는 여러 비동기 작업의 큐 상태를 목록으로 감시하며 건별 재시도를 제공하는 별도 구조다"
+      }
+    ],
+    "confidence": "medium"
   },
   {
     "kind": "component",
@@ -18216,6 +18289,76 @@ export const terms = [
       {
         "source_id": "carbon-design-components",
         "note": "structured rows and status display"
+      }
+    ],
+    "related": [
+      {
+        "id": "webhook-delivery-log-with-retry",
+        "relation": "compare",
+        "note": "webhook endpoint row는 엔드포인트 설정 한 줄이고, webhook delivery log with retry는 그 엔드포인트의 개별 전송 시도 이력을 상태 코드와 함께 상세히 보여주는 별도 화면이다"
+      }
+    ],
+    "confidence": "medium"
+  },
+  {
+    "kind": "component",
+    "id": "webhook-delivery-log-with-retry",
+    "status": "draft",
+    "category": "data-display",
+    "group": "data-people-integrations",
+    "ko": {
+      "name": "웹훅 전송 로그",
+      "aliases": [
+        "webhook delivery log",
+        "웹훅 재전송 로그",
+        "전송 시도 로그"
+      ]
+    },
+    "en": {
+      "name": "Webhook delivery log with retry",
+      "aliases": [
+        "Webhook delivery attempts",
+        "Webhook retry log"
+      ]
+    },
+    "one_liner": "웹훅 엔드포인트 한 곳의 개별 전송 시도를 HTTP 상태, 응답 시간, 페이로드와 함께 나열하고 실패 건을 수동 재전송하는 로그.",
+    "description": "webhook endpoint row가 엔드포인트 설정 한 줄이라면, 이 로그는 그 엔드포인트의 전송 이력을 상태 코드 중심으로 상세히 보여주는 별도 화면이다.",
+    "visual_anatomy": [
+      "delivery attempt row with timestamp",
+      "HTTP status",
+      "response time",
+      "retry button",
+      "payload preview on row expand",
+      "status and event type filter"
+    ],
+    "when_to_use": [
+      "특정 웹훅 엔드포인트의 전송 성공과 실패 이력을 확인하고 실패 건을 수동으로 재전송해야 할 때"
+    ],
+    "anti_use": [
+      "엔드포인트 자체의 설정과 상태만 보여주면 되면 webhook endpoint row로 충분하다"
+    ],
+    "prompt_phrases": [
+      "HTTP 상태와 응답 시간이 있는 webhook delivery log를 만들어줘",
+      "실패한 전송 시도를 수동으로 재전송할 수 있는 웹훅 로그를 넣어줘"
+    ],
+    "asset": {
+      "kind": "mini-mock",
+      "variant": "webhook-delivery-log-with-retry",
+      "props": {
+        "attempts": 3
+      }
+    },
+    "sources": [
+      {
+        "source_id": "carbon-design-components",
+        "note": "structured rows and status display"
+      }
+    ],
+    "related": [
+      {
+        "id": "webhook-endpoint-row",
+        "relation": "compare",
+        "note": "webhook endpoint row는 엔드포인트 설정 한 줄이고, 이 로그는 그 엔드포인트의 개별 전송 시도 이력을 상태 코드와 함께 상세히 보여주는 별도 화면이다"
       }
     ],
     "confidence": "medium"
@@ -31435,8 +31578,9 @@ export const terms = [
       ]
     },
     "one_liner": "지원팀이 다른 사용자로 임시 로그인했을 때 화면 전역에 고정 노출되는 경고 배너.",
-    "description": "임퍼스네이션 상태, 대상 사용자, 세션 종료 버튼을 항상 볼 수 있게 해 위험 모드를 구조적으로 인지시킨다.",
+    "description": "임퍼스네이션 상태, 대상 사용자, 세션 종료 버튼을 항상 볼 수 있게 해 위험 모드를 구조적으로 인지시킨다. 진입 시에는 대상 사용자 이름을 밝히는 확인 다이얼로그를 먼저 거치고, 종료 시에는 원래 계정으로 즉시 복귀하는 단일 액션을 제공한다.",
     "visual_anatomy": [
+      "entry confirmation dialog naming the impersonated user",
       "persistent top banner",
       "impersonation icon or distinct color",
       "impersonated user identity",
@@ -31451,7 +31595,8 @@ export const terms = [
     ],
     "prompt_phrases": [
       "지원팀이 다른 사용자로 로그인하면 상단에 impersonation banner를 고정해줘",
-      "세션 종료 버튼이 있는 대리 로그인 배너를 넣어줘"
+      "세션 종료 버튼이 있는 대리 로그인 배너를 넣어줘",
+      "진입 확인 다이얼로그와 종료 버튼이 있는 임퍼스네이션 흐름을 만들어줘"
     ],
     "asset": {
       "kind": "mini-mock",
@@ -32513,6 +32658,7 @@ export const groups = [
       "activity-feed",
       "audit-log",
       "notification-list",
+      "background-job-queue-monitor",
       "version-history-list"
     ]
   },
@@ -32524,6 +32670,7 @@ export const groups = [
       "avatar",
       "team-member-row",
       "webhook-endpoint-row",
+      "webhook-delivery-log-with-retry",
       "integration-card",
       "connection-card",
       "avatar-group",

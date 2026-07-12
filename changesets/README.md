@@ -77,3 +77,4 @@
 | 75 | 20260712-palette-recipe-feed | 2026-07-12 | Insert palette Recipes section fed by generated catalog, insertion via existing registry path, browser E2E | 3/3 | complete |
 | 76 | 20260712-recipe-standalone-implementations | 2026-07-12 | Standalone implementations for 7 legacy recipes, code_asset repointed, full 23-recipe standalone coverage | 5/5 | complete |
 | 77 | 20260712-batch-commerce-depth | 2026-07-12 | Commerce depth batch: 3 recipes (grid/promo/purchase-stack), 4 terms, 2 alias judgments with un-hinted duplicate catches | 8/8 | complete |
+| 78 | 20260712-batch-internal-tools-depth | 2026-07-12 | Internal-tools depth batch: permission-matrix/import-wizard/audit-log recipes, 2 terms, 4 enrichment judgments | 8/8 | complete |

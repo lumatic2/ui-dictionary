@@ -56,7 +56,7 @@ planning_gate:
 ## Step 트리
 
 - [x] Step 1 — 심화 배치: commerce (RL 루프, recipe 2~3 + 용어). (verify: 검증 체인 + build:catalog + ledger row)
-- [ ] Step 2 — 심화 배치: internal-tools. (verify: 동일)
+- [x] Step 2 — 심화 배치: internal-tools. (verify: 동일)
 - [ ] Step 3 — 심화 배치: documentation. (verify: 동일)
 - [ ] Step 4 — 심화 배치: mobile-apps. (verify: 동일)
 - [ ] Step 5 — anti-pattern 통합 가이드 (changeset): 전 recipe Anti-patterns 증류 → `docs/design-system/anti-patterns.md`, FIXED_ASSETS 등록. (verify: generate-llms-txt PASS + 문서 링크 검증)
