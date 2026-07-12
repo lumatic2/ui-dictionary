@@ -97,3 +97,4 @@
 | 95 | 20260712-topbar-search-navigation | 2026-07-12 | PX Step 1: free-text search commit navigates from any page, portal click race fix, index expanded to docs/recipes/colors | 4/4 | complete |
 | 96 | 20260712-page-meta-seo | 2026-07-12 | PX Step 5: static og:url/site_name, usePageMeta per-page title+description, mobile 375px overflow pass, bundle size recorded | 5/5 | complete |
 | 97 | 20260712-docs-role-redefinition | 2026-07-12 | PX Step 3: Vocabulary sidebar group for 7 orphaned category articles, role-statement leads resolving Foundations/Vocabulary/Elements/Recipes overlaps | 4/4 | complete |
+| 98 | 20260712-per-section-sidebars | 2026-07-12 | PX Step 4: independent sidebars per section - docs tree only, Patterns 3-axis switcher, new Recipes collection anchor nav | 4/4 | complete |

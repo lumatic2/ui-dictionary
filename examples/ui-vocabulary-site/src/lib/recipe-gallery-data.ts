@@ -85,6 +85,11 @@ export function getRecipeGalleryEntriesByCollection(collection: RecipeCollection
   return recipeGalleryEntries.filter((entry) => entry.collection === collection)
 }
 
+/** Stable DOM anchor id for a collection's section in the gallery index, used by the recipes sidebar nav. */
+export function recipeCollectionAnchorId(collection: RecipeCollection): string {
+  return `recipe-collection-${collection.toLowerCase().replace(/\s+/g, "-")}`
+}
+
 export function getRecipeGalleryEntry(slug: string): RecipeGalleryEntry | undefined {
   return recipeGalleryEntries.find((entry) => entry.slug === slug)
 }

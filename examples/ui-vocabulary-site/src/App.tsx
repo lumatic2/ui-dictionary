@@ -47,6 +47,7 @@ import { Separator } from "@/components/ui/separator"
 import { HomePage, type HomePageDestination } from "@/components/home-page"
 import { ColorsPage } from "@/components/colors-page"
 import { RecipeGallery } from "@/components/recipe-gallery"
+import { recipeCollectionAnchorId, recipeCollectionOrder, type RecipeCollection } from "@/lib/recipe-gallery-data"
 import { TermPage } from "@/components/term-page"
 import { TermResultRow } from "@/components/term-result-row"
 import { TopbarSearch } from "@/components/topbar-search"
@@ -84,6 +85,7 @@ function App() {
   const [selectedTermId, setSelectedTermId] = useState<string | null>(initialSearchState.termId)
   const [returnPageMode, setReturnPageMode] = useState<Exclude<PageMode, "term">>(initialSearchState.returnPage)
   const [activeUseCaseId, setActiveUseCaseId] = useState<string | null>(null)
+  const [activeRecipeCollection, setActiveRecipeCollection] = useState<RecipeCollection | null>(null)
   const [searchExpanded, setSearchExpanded] = useState(false)
   const [topbarFeedback, setTopbarFeedback] = useState("")
   const [signInOpen, setSignInOpen] = useState(false)
@@ -489,6 +491,11 @@ function App() {
     window.scrollTo({ top: 0, behavior: "smooth" })
   }
 
+  function selectRecipeCollection(collection: RecipeCollection) {
+    setActiveRecipeCollection(collection)
+    document.getElementById(recipeCollectionAnchorId(collection))?.scrollIntoView({ behavior: "smooth", block: "start" })
+  }
+
   const visibleDocsNavGroups = docsNavGroups
     .map((group) => ({ ...group, items: group.items.filter((item) => isShellVisible(item.shell)) }))
     .filter((group) => group.items.length > 0)
@@ -543,7 +550,6 @@ function App() {
     </div>
   )
 
-  const exploreNav = activePrimaryAxis === "documentation" ? docsNav : plusNav
   const siteTopNav: Array<{ label: string; active: boolean; onClick: () => void }> = [
     { label: "Docs", active: pageMode === "docs" && filter === navFilter("docs-getting-started-setup"), onClick: () => navigateFromHome({ page: "docs", filter: "nav:docs-getting-started-setup" }) },
     { label: "Patterns", active: pageMode === "plus" && filter === navFilter("plus-marketing"), onClick: () => navigateFromHome({ page: "plus", filter: "nav:plus-marketing" }) },
@@ -551,7 +557,7 @@ function App() {
     { label: "Recipes", active: pageMode === "recipes", onClick: () => navigateFromHome({ page: "recipes" }) },
     { label: "Pro Plan", active: pageMode === "pro", onClick: () => navigateFromHome({ page: "pro" }) },
   ]
-  const noExploreLayout = pageMode === "home" || pageMode === "download" || pageMode === "pro" || pageMode === "colors" || pageMode === "recipes"
+  const noExploreLayout = pageMode === "home" || pageMode === "download" || pageMode === "pro" || pageMode === "colors"
 
   return (
     <main className="min-h-svh bg-background">
@@ -631,11 +637,23 @@ function App() {
       <div className={cn("grid w-full", noExploreLayout ? "lg:grid-cols-1" : "lg:grid-cols-[280px_minmax(0,1fr)]")}>
         <aside className={cn("scrollbar-hidden sticky top-14 hidden h-[calc(100svh-3.5rem)] overflow-y-auto border-r bg-background px-4 py-6 lg:block", noExploreLayout && "lg:hidden")} data-print-hidden>
           <nav aria-label="탐색" className="flex h-full flex-col gap-5">
-            <PrimaryAxisNav
-              activeAxis={activePrimaryAxis}
-              onSelect={selectPrimaryAxis}
-            />
-            {exploreNav}
+            {visiblePageMode === "docs" ? (
+              <>
+                <p className="px-3 text-[0.68rem] font-semibold uppercase tracking-[0.22em] text-slate-500">Docs</p>
+                {docsNav}
+              </>
+            ) : visiblePageMode === "recipes" ? (
+              <RecipesNav activeCollection={activeRecipeCollection} onSelect={selectRecipeCollection} />
+            ) : (
+              <>
+                <PrimaryAxisNav
+                  activeAxis={activePrimaryAxis}
+                  onSelect={selectPrimaryAxis}
+                  includeDocumentation={false}
+                />
+                {plusNav}
+              </>
+            )}
           </nav>
         </aside>
 
@@ -1266,10 +1284,19 @@ function getFilterCount(counts: Map<TermFilter, number>, filter: TermFilter) {
   return counts.get(filter) ?? 0
 }
 
-function PrimaryAxisNav({ activeAxis, onSelect }: { activeAxis: PrimaryAxisId; onSelect: (axis: PrimaryAxisId) => void }) {
+function PrimaryAxisNav({
+  activeAxis,
+  onSelect,
+  includeDocumentation = true,
+}: {
+  activeAxis: PrimaryAxisId
+  onSelect: (axis: PrimaryAxisId) => void
+  includeDocumentation?: boolean
+}) {
+  const axes = includeDocumentation ? primaryAxes : primaryAxes.filter((axis) => axis.id !== "documentation")
   return (
     <div className="flex flex-col gap-1 py-2">
-      {primaryAxes.map((axis) => (
+      {axes.map((axis) => (
         <button
           key={axis.id}
           className={cn(
@@ -1281,6 +1308,33 @@ function PrimaryAxisNav({ activeAxis, onSelect }: { activeAxis: PrimaryAxisId; o
         >
           <axis.icon aria-hidden="true" className={cn("size-5 shrink-0", activeAxis === axis.id ? "text-foreground" : "text-muted-foreground")} />
           <span className="min-w-0 truncate">{axis.label}</span>
+        </button>
+      ))}
+    </div>
+  )
+}
+
+function RecipesNav({
+  activeCollection,
+  onSelect,
+}: {
+  activeCollection: RecipeCollection | null
+  onSelect: (collection: RecipeCollection) => void
+}) {
+  return (
+    <div className="flex flex-col gap-1 py-2">
+      <p className="px-3 text-[0.68rem] font-semibold uppercase tracking-[0.22em] text-slate-500">Collections</p>
+      {recipeCollectionOrder.map((collection) => (
+        <button
+          key={collection}
+          className={cn(
+            "flex min-h-9 items-center rounded-lg px-3 text-left text-sm text-muted-foreground transition hover:bg-muted hover:text-foreground",
+            activeCollection === collection && "bg-background font-semibold text-foreground"
+          )}
+          type="button"
+          onClick={() => onSelect(collection)}
+        >
+          {collection}
         </button>
       ))}
     </div>

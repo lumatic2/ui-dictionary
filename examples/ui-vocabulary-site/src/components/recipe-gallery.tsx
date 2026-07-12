@@ -2,7 +2,7 @@ import { useState } from "react"
 import { ArrowLeft } from "lucide-react"
 import { Badge } from "@/components/ui/badge"
 import { Button } from "@/components/ui/button"
-import { recipeCollectionOrder, recipeGalleryEntries, getRecipeGalleryEntriesByCollection, getRecipeGalleryEntry, type RecipeGalleryEntry } from "@/lib/recipe-gallery-data"
+import { recipeCollectionAnchorId, recipeCollectionOrder, recipeGalleryEntries, getRecipeGalleryEntriesByCollection, getRecipeGalleryEntry, type RecipeGalleryEntry } from "@/lib/recipe-gallery-data"
 import { recipeDemoComponents } from "@/lib/recipe-gallery-demo-registry"
 import { cn } from "@/lib/utils"
 
@@ -43,7 +43,7 @@ function RecipeGalleryIndex({ onSelect }: { onSelect: (slug: string) => void }) 
         if (entries.length === 0) return null
 
         return (
-          <div key={collection} className="flex flex-col gap-4">
+          <div key={collection} id={recipeCollectionAnchorId(collection)} className="flex scroll-mt-20 flex-col gap-4">
             <h2 className="text-lg font-medium text-foreground">{collection}</h2>
             <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3">
               {entries.map((entry) => (
