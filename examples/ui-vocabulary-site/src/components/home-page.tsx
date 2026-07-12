@@ -72,7 +72,7 @@ export type HomePageDestination = {
   filter: TermFilter
   page: "docs" | "plus"
 } | {
-  page: "download" | "pro" | "colors" | "signin"
+  page: "download" | "pro" | "colors" | "recipes" | "signin"
 }
 
 export type HomePageProps = {
@@ -91,6 +91,7 @@ const footerColumns: Array<{
     links: [
       { label: "Docs", destination: { page: "docs", filter: "nav:docs-getting-started-setup" } },
       { label: "Patterns", destination: { page: "plus", filter: "nav:plus-marketing" } },
+      { label: "Recipe Gallery", destination: { page: "recipes" } },
       { label: "Download", destination: { page: "download" } },
       { label: "Pro Plan", destination: { page: "pro" } },
     ],

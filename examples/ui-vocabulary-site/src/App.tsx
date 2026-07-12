@@ -46,6 +46,7 @@ import { Popover, PopoverContent, PopoverDescription, PopoverHeader, PopoverTitl
 import { Separator } from "@/components/ui/separator"
 import { HomePage, type HomePageDestination } from "@/components/home-page"
 import { ColorsPage } from "@/components/colors-page"
+import { RecipeGallery } from "@/components/recipe-gallery"
 import { TermPage } from "@/components/term-page"
 import { TermResultRow } from "@/components/term-result-row"
 import { TopbarSearch } from "@/components/topbar-search"
@@ -59,7 +60,7 @@ import { getStarterQueries } from "@/lib/search-suggestions"
 import { useCases } from "@/lib/term-ux"
 import { cn } from "@/lib/utils"
 
-type PageMode = "home" | "docs" | "plus" | "term" | "download" | "pro" | "colors"
+type PageMode = "home" | "docs" | "plus" | "term" | "download" | "pro" | "colors" | "recipes"
 type SearchState = {
   filter: TermFilter
   page: PageMode
@@ -523,9 +524,10 @@ function App() {
     { label: "Docs", active: pageMode === "docs" && filter === navFilter("docs-getting-started-setup"), onClick: () => navigateFromHome({ page: "docs", filter: "nav:docs-getting-started-setup" }) },
     { label: "Patterns", active: pageMode === "plus" && filter === navFilter("plus-marketing"), onClick: () => navigateFromHome({ page: "plus", filter: "nav:plus-marketing" }) },
     { label: "Colors", active: pageMode === "colors", onClick: () => navigateFromHome({ page: "colors" }) },
+    { label: "Recipes", active: pageMode === "recipes", onClick: () => navigateFromHome({ page: "recipes" }) },
     { label: "Pro Plan", active: pageMode === "pro", onClick: () => navigateFromHome({ page: "pro" }) },
   ]
-  const noExploreLayout = pageMode === "home" || pageMode === "download" || pageMode === "pro" || pageMode === "colors"
+  const noExploreLayout = pageMode === "home" || pageMode === "download" || pageMode === "pro" || pageMode === "colors" || pageMode === "recipes"
 
   return (
     <main className="min-h-svh bg-background">
@@ -629,6 +631,8 @@ function App() {
             <ColorsPage
               onNavigate={navigateFromHome}
             />
+          ) : pageMode === "recipes" ? (
+            <RecipeGallery />
           ) : pageMode === "pro" ? (
             <ProPlanPage
               onSignIn={() => setSignInOpen(true)}
@@ -1184,6 +1188,9 @@ function getDefaultFilterForPage(page: PageMode): TermFilter {
 function parsePageParam(value: string | null, filter: TermFilter): PageMode {
   if (value === "colors") {
     return "colors"
+  }
+  if (value === "recipes") {
+    return "recipes"
   }
   if (value === "download") {
     return isShellVisible(true) ? "download" : "home"
