@@ -82,6 +82,18 @@ export const docsNavGroups: DocsNavGroup[] = [
     ],
   },
   {
+    label: "Vocabulary",
+    items: [
+      { filter: navFilter("docs-ui-blocks"), label: "UI Blocks" },
+      { filter: navFilter("docs-component-api"), label: "Component API" },
+      { filter: navFilter("docs-layout"), label: "Layout" },
+      { filter: navFilter("docs-styling"), label: "Styling" },
+      { filter: navFilter("docs-interaction"), label: "Interaction" },
+      { filter: navFilter("docs-accessibility"), label: "Accessibility" },
+      { filter: navFilter("docs-motion-effects"), label: "Motion effects" },
+    ],
+  },
+  {
     label: "Agent Recipes",
     items: [
       { filter: navFilter("docs-agent-recipes"), label: "Overview" },
@@ -389,7 +401,7 @@ export const docsArticlePages = new Map<TermFilter, DocsArticlePageData>([
     kind: "element",
     breadcrumb: "UI Blocks / Docs",
     title: "Introduction",
-    lead: "Elements 문서는 작은 UI primitive를 언제 쓰고, 어떤 상태를 가져야 하며, AI에게 어떻게 지시할지 정리합니다. 버튼 하나도 역할, 상태, 접근성, 레이아웃 맥락이 함께 있어야 합니다.",
+    lead: "Elements 문서는 작은 UI primitive를 언제 쓰고, 어떤 상태를 가져야 하며, AI에게 어떻게 지시할지 정리합니다. 버튼 하나도 역할, 상태, 접근성, 레이아웃 맥락이 함께 있어야 합니다. Elements는 개별 컴포넌트의 API/동작 계약을 다루며, 화면에 합성된 시각 예시는 Patterns(상단 내비게이션)에서 볼 수 있습니다.",
     sections: [
       {
         title: "Available elements",
@@ -1164,7 +1176,7 @@ export const docsArticlePages = new Map<TermFilter, DocsArticlePageData>([
     kind: "foundation",
     breadcrumb: "UI Blocks / Docs",
     title: "Motion",
-    lead: "Askewly Design의 토큰 SSOT(`tokens/askewly.tokens.json`)에는 아직 duration/easing 토큰 tier가 없습니다. 이 문서는 발명한 규칙이 아니라, 사이트 코드에 실제로 존재하는 모션 관례(dialog/sheet 애니메이션, prefers-reduced-motion 처리)를 있는 그대로 정리합니다.",
+    lead: "Askewly Design의 토큰 SSOT(`tokens/askewly.tokens.json`)에는 아직 duration/easing 토큰 tier가 없습니다. 이 문서는 발명한 규칙이 아니라, 사이트 코드에 실제로 존재하는 모션 관례(dialog/sheet 애니메이션, prefers-reduced-motion 처리)를 있는 그대로 정리합니다. 개별 모션 용어의 정의와 체크리스트는 Vocabulary > Motion effects 문서를 참고합니다.",
     sections: [
       {
         title: "Tokens",
@@ -1219,7 +1231,7 @@ export const docsArticlePages = new Map<TermFilter, DocsArticlePageData>([
     kind: "foundation",
     breadcrumb: "UI Blocks / Docs",
     title: "Accessibility",
-    lead: "Askewly Design의 접근성 기준은 두 곳에서 파생됩니다 — 토큰 SSOT의 대비/포커스 관련 색 토큰, 그리고 WCAG의 일반 원칙입니다. 이 문서는 새 규칙을 만들지 않고, 이미 존재하는 토큰과 표준을 화면 구현에 연결합니다.",
+    lead: "Askewly Design의 접근성 기준은 두 곳에서 파생됩니다 — 토큰 SSOT의 대비/포커스 관련 색 토큰, 그리고 WCAG의 일반 원칙입니다. 이 문서는 새 규칙을 만들지 않고, 이미 존재하는 토큰과 표준을 화면 구현에 연결합니다. 이 문서는 디자인 근거(rationale)와 토큰/상태 계약을 다루며, 개별 용어의 정의는 Vocabulary > Accessibility 문서를 참고합니다.",
     sections: [
       {
         title: "Tokens",
@@ -1386,7 +1398,7 @@ export const docsArticlePages = new Map<TermFilter, DocsArticlePageData>([
     kind: "agent-recipe",
     breadcrumb: "UI Blocks / Docs",
     title: "Agent Recipes",
-    lead: "Codex/Claude Code 같은 코딩 에이전트가 UI Dictionary를 근거로 화면을 만들 때 참고하는 레시피 표면입니다. llms.txt 실자산과 사람이 읽는 레시피/검증 체크리스트를 연결합니다.",
+    lead: "Codex/Claude Code 같은 코딩 에이전트가 UI Dictionary를 근거로 화면을 만들 때 참고하는 레시피 표면입니다. llms.txt 실자산과 사람이 읽는 레시피/검증 체크리스트를 연결합니다. 같은 레시피가 실제로 렌더링되는 모습은 Recipe Gallery(상단 내비게이션 Recipes)에서 확인할 수 있습니다.",
     sections: [
       {
         title: "What are Agent Recipes",
@@ -1560,7 +1572,7 @@ export const docsArticlePages = new Map<TermFilter, DocsArticlePageData>([
     kind: "category",
     breadcrumb: "UI Blocks / Docs",
     title: "Motion & Effects",
-    lead: "Motion & Effects 카테고리는 전환, 등장, 강조 움직임과 시각 효과를 다루는 vocabulary 축입니다. 모션의 역할은 장식이 아니라 방향성과 피드백입니다 — 변화가 어디에서 왔고 어디로 가는지 알려주되, 텍스트와 조작 영역을 가리지 않아야 합니다.",
+    lead: "Motion & Effects 카테고리는 전환, 등장, 강조 움직임과 시각 효과를 다루는 vocabulary 축입니다. 모션의 역할은 장식이 아니라 방향성과 피드백입니다 — 변화가 어디에서 왔고 어디로 가는지 알려주되, 텍스트와 조작 영역을 가리지 않아야 합니다. 이 문서는 용어(term) 레퍼런스이며, 토큰/구현 근거는 Foundations > Motion 문서가 정본입니다.",
     sections: [
       {
         title: "What this category covers",
@@ -1675,7 +1687,7 @@ export const docsArticlePages = new Map<TermFilter, DocsArticlePageData>([
     kind: "category",
     breadcrumb: "UI Blocks / Docs",
     title: "Accessibility",
-    lead: "Accessibility 카테고리는 키보드, 포커스, 스크린리더, 모션 제약을 다루는 vocabulary 축입니다. 접근성은 나중에 붙이는 체크리스트가 아니라 컴포넌트 contract의 일부입니다 — focus ring, aria label, reduced motion, semantic heading을 화면 설계 단계에서 함께 결정합니다.",
+    lead: "Accessibility 카테고리는 키보드, 포커스, 스크린리더, 모션 제약을 다루는 vocabulary 축입니다. 접근성은 나중에 붙이는 체크리스트가 아니라 컴포넌트 contract의 일부입니다 — focus ring, aria label, reduced motion, semantic heading을 화면 설계 단계에서 함께 결정합니다. 이 문서는 용어(term) 레퍼런스이며, 디자인 근거는 Foundations > Accessibility 문서가 정본입니다.",
     sections: [
       {
         title: "What this category covers",
