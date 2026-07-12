@@ -23,6 +23,7 @@ export interface AgentDesignDesktopHost {
   onCanvasSnapshot(listener: (snapshot: DesktopCanvasSnapshot, reason: DesktopCanvasSnapshotReason) => void): () => void
   getCollaborationFeed(request: { apiVersion: 1 }): Promise<DesktopCollaborationFeed>
   onCollaborationFeed(listener: (feed: DesktopCollaborationFeed) => void): () => void
+  materializeNode(request: { apiVersion: 1; file: string; content: string }): Promise<DesktopCanvasSnapshot>
   selectProject(request: { apiVersion: 1 }): Promise<ProjectSelectionResult>
   recentProjects(request: { apiVersion: 1 }): Promise<TrustedProjectSummary[]>
   openRecentProject(request: { apiVersion: 1; projectId: string }): Promise<TrustedProjectSummary>

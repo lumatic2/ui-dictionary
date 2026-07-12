@@ -1,5 +1,5 @@
 import { describe, expect, it } from 'vitest'
-import { HOST_API_VERSION, parseBridgeStatus, parseCanvasMutationRequest, parseCanvasSnapshot, parseCollaborationFeed, parseHostRequest, parseTrustedFileSummary, parseTrustedProjectSummary } from '../src/contract'
+import { HOST_API_VERSION, parseBridgeStatus, parseCanvasMutationRequest, parseCanvasSnapshot, parseCollaborationFeed, parseHostRequest, parseSourcePatchRequest, parseTrustedFileSummary, parseTrustedProjectSummary } from '../src/contract'
 
 describe('host authority contract', () => {
   it('accepts versioned opaque project and session identifiers', () => {
@@ -109,6 +109,23 @@ describe('collaboration feed contract', () => {
   it('rejects a feed entry with an unknown actor or unsupported field', () => {
     expect(() => parseCollaborationFeed({ entries: [{ transactionId: 'x:1', actor: 'attacker', kind: 'operations', revision: 1, at: '2026-07-12T00:00:00.000Z', changeCount: 0, nodeIds: [] }], actors: [], cursorRevision: 1 })).toThrow('invalid feed actor')
     expect(() => parseCollaborationFeed({ entries: [], actors: [], cursorRevision: 0, token: 'secret' })).toThrow('invalid collaboration feed')
+  })
+})
+
+describe('materialize source patch contract', () => {
+  it('accepts a project-relative new-file request', () => {
+    expect(parseSourcePatchRequest({ apiVersion: 1, file: 'src/components/Button.tsx', content: 'export function Button() { return null }\n' }))
+      .toEqual({ apiVersion: 1, file: 'src/components/Button.tsx', content: 'export function Button() { return null }\n' })
+  })
+
+  it('rejects a path that escapes the project root, an absolute path, and an unsupported field', () => {
+    expect(() => parseSourcePatchRequest({ apiVersion: 1, file: '../outside.tsx', content: 'x' })).toThrow('invalid source patch file path')
+    expect(() => parseSourcePatchRequest({ apiVersion: 1, file: 'C:\\secret\\Button.tsx', content: 'x' })).toThrow('invalid source patch file path')
+    expect(() => parseSourcePatchRequest({ apiVersion: 1, file: 'src/components/Button.tsx', content: 'x', token: 'secret' })).toThrow('invalid source patch request')
+  })
+
+  it('rejects empty content', () => {
+    expect(() => parseSourcePatchRequest({ apiVersion: 1, file: 'src/components/Button.tsx', content: '' })).toThrow('invalid source patch content')
   })
 })
 

@@ -9,6 +9,7 @@ import {
   parseHostRequest,
   parsePreviewStatus,
   parseProjectSelectionResult,
+  parseSourcePatchRequest,
   parseTerminalCommandRequest,
   parseTrustedFileSummary,
   parseTrustedProjectSummary,
@@ -40,6 +41,7 @@ export interface HostIpcServices {
   applyCanvasOperation(operation: unknown): Promise<CanvasSnapshot>
   undoCanvas(): Promise<CanvasSnapshot>
   collaborationFeed(): CollaborationFeed
+  materializeNode(file: string, content: string): Promise<CanvasSnapshot>
 }
 
 const idleServices: HostIpcServices = {
@@ -69,6 +71,7 @@ const idleServices: HostIpcServices = {
   applyCanvasOperation: async () => { throw new Error('canvas relay is not ready') },
   undoCanvas: async () => { throw new Error('canvas relay is not ready') },
   collaborationFeed: () => ({ entries: [], actors: [], cursorRevision: 0 }),
+  materializeNode: async () => { throw new Error('canvas relay is not ready') },
 }
 
 export function isTrustedIpcSender(event: IpcMainInvokeEvent): boolean {
@@ -130,6 +133,12 @@ export function registerHostIpc(appVersion: string, services: HostIpcServices = 
     if (!isTrustedIpcSender(event)) throw new Error('untrusted IPC sender')
     parseHostRequest(rawRequest)
     return parseCollaborationFeed(services.collaborationFeed())
+  })
+
+  ipcMain.handle(HOST_IPC_CHANNELS.materializeNode, async (event, rawRequest): Promise<CanvasSnapshot> => {
+    if (!isTrustedIpcSender(event)) throw new Error('untrusted IPC sender')
+    const request = parseSourcePatchRequest(rawRequest)
+    return parseCanvasSnapshot(await services.materializeNode(request.file, request.content))
   })
 
   ipcMain.handle(HOST_IPC_CHANNELS.selectProject, async (event, rawRequest): Promise<ProjectSelectionResult> => {
@@ -209,5 +218,6 @@ export function registerHostIpc(appVersion: string, services: HostIpcServices = 
     ipcMain.removeHandler(HOST_IPC_CHANNELS.revealProject)
     ipcMain.removeHandler(HOST_IPC_CHANNELS.openFile)
     ipcMain.removeHandler(HOST_IPC_CHANNELS.exportDiagnostics)
+    ipcMain.removeHandler(HOST_IPC_CHANNELS.materializeNode)
   }
 }

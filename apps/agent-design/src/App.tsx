@@ -18,6 +18,7 @@ import {
   type CanvasHistory,
   type CanvasOperation,
 } from '@askewly/canvas-core'
+import { planMaterializeRegistryNode } from '@askewly/component-registry'
 import { BrowserDocumentStore } from './browserStore'
 import { CanvasSurface } from './CanvasSurface'
 import { desktopHost, type DesktopBridgeState, type DesktopBridgeStatus, type DesktopCanvasSnapshot, type DesktopCanvasSnapshotReason, type PreviewStatus, type TrustedFileSummary, type TrustedProjectSummary } from './desktopHost'
@@ -372,6 +373,30 @@ export function App() {
     setHistory(undo)
   }, [acceptDesktopSnapshot, desktopBridge?.state])
 
+  const materializeNode = useCallback((nodeId: string) => {
+    const host = desktopHost()
+    if (!host || desktopBridge?.state !== 'ready') return
+    try {
+      const plan = planMaterializeRegistryNode(history.present, nodeId, { existingFiles: projectFiles.map((file) => file.label) })
+      const started = performance.now()
+      void host.materializeNode({ apiVersion: 1, file: plan.filePath, content: plan.content }).then(
+        (snapshot) => {
+          acceptDesktopSnapshot(snapshot, 'transaction', started)
+          setStatus(`materialized to ${plan.filePath}`)
+        },
+        (error: unknown) => {
+          const message = error instanceof Error ? error.message : 'materialize failed'
+          setStatus(message)
+          setAgentError(message)
+        },
+      )
+    } catch (error) {
+      const message = error instanceof Error ? error.message : 'materialize failed'
+      setStatus(message)
+      setAgentError(message)
+    }
+  }, [acceptDesktopSnapshot, desktopBridge?.state, history.present, projectFiles])
+
   const save = useCallback(async () => {
     const bytes = await saveSnapshot(store, storageKey, baseDocument, history.log)
     setStatus(`saved ${bytes} bytes`)
@@ -592,7 +617,7 @@ export function App() {
         />}
         <CanvasSurface document={history.present} editorPlaneFailure={failure} onOperation={commit} />
       </section>
-      {rightPanelOpen && <PropertyInspector document={history.present} onOperation={commit} />}
+      {rightPanelOpen && <PropertyInspector document={history.present} onOperation={commit} bridgeConnected={desktopBridge?.state === 'ready'} onMaterialize={materializeNode} />}
     </section>}
     <footer className="workspace-status" aria-label="Workspace status">
       <output data-testid="persistence-status">{status}</output>

@@ -43,6 +43,7 @@ describe('desktop bridge surface', () => {
       revealProject: vi.fn(async () => ({ opened: true as const })),
       openFile: vi.fn(async () => ({ opened: true as const })),
       exportDiagnostics: vi.fn(async () => ({ exported: true })),
+      materializeNode: vi.fn(),
     }
     window.agentDesignHost = host
 

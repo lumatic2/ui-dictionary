@@ -22,6 +22,7 @@ export const HOST_IPC_CHANNELS = Object.freeze({
   exportDiagnostics: 'agent-design:diagnostics:export',
   getCollaborationFeed: 'agent-design:collaboration:get-feed',
   collaborationFeedChanged: 'agent-design:collaboration:feed-changed',
+  materializeNode: 'agent-design:canvas:materialize-node',
 })
 
 export type TerminalActor = 'codex' | 'claude'
@@ -264,6 +265,32 @@ function assertValidCanvasOperationShape(operation: Record<string, unknown>, dep
     return
   }
   if (typeof operation.type !== 'string' || !CANVAS_OPERATION_TYPES.has(operation.type)) throw new TypeError('unsupported canvas operation')
+}
+
+/** A brand-new project-root-relative source file created by registry-node materialization
+ *  (`planMaterializeRegistryNode` in `@askewly/component-registry`). Only new files go through
+ *  this renderer-facing channel; the bridge's `applySourcePatch` accepts it via the
+ *  `NEW_FILE_HASH` sentinel (see `apps/agent-design-bridge/src/session.ts`). */
+export type SourcePatchRequest = Readonly<{
+  apiVersion: typeof HOST_API_VERSION
+  file: string
+  content: string
+}>
+
+const RELATIVE_SOURCE_FILE = /^[A-Za-z0-9_][A-Za-z0-9_.-]*(?:\/[A-Za-z0-9_][A-Za-z0-9_.-]*)*\.(?:tsx|ts|jsx|js)$/
+
+export function parseSourcePatchRequest(value: unknown): SourcePatchRequest {
+  if (!isRecord(value) || Object.keys(value).some((key) => key !== 'apiVersion' && key !== 'file' && key !== 'content')) {
+    throw new TypeError('invalid source patch request')
+  }
+  if (value.apiVersion !== HOST_API_VERSION) throw new TypeError('unsupported host API version')
+  if (typeof value.file !== 'string' || value.file.includes('..') || isAbsoluteLike(value.file) || !RELATIVE_SOURCE_FILE.test(value.file)) {
+    throw new TypeError('invalid source patch file path')
+  }
+  if (typeof value.content !== 'string' || value.content.length === 0 || value.content.length > 2_000_000) {
+    throw new TypeError('invalid source patch content')
+  }
+  return Object.freeze({ apiVersion: HOST_API_VERSION, file: value.file, content: value.content })
 }
 
 export function parseCanvasMutationRequest(value: unknown): CanvasMutationRequest {

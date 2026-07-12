@@ -90,3 +90,5 @@
 | 88 | 20260712-packaged-e2e-batch-contract | 2026-07-12 | QA2 Step 6: desktop batch operation contract + packaged E2E registry assembly and collaboration panel scenarios | 4/4 | complete |
 | 89 | 20260712-recipe-gallery | 2026-07-12 | QA1 Step 1: dedicated Recipe Gallery section, 35/35 live-render detail views, recipe-format live-render contract updated | 3/3 | complete |
 | 90 | 20260712-gallery-overlay-containment | 2026-07-12 | QA1 Step 3: contain cart-drawer/cmdk gallery demos, fix SheetTitle context crash and zero-width demo root | 3/3 | complete |
+| 91 | 20260712-recipe-source-materialization | 2026-07-12 | QA3 Step 1: recipe materialization emits real standalone source with build-time identity marker embed, 35 sources generated | 4/4 | complete |
+| 92 | 20260712-canvas-materialize-action | 2026-07-12 | QA3 Step 2: materialize action in canvas UI via new desktop IPC source-patch channel (bridge-connected only) | 5/5 | complete |

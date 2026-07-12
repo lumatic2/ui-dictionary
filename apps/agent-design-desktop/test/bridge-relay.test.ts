@@ -1,4 +1,5 @@
 import { describe, expect, it, vi } from 'vitest'
+import { NEW_FILE_HASH } from '@askewly/agent-design-bridge'
 import { BridgeRelay } from '../src/bridge-relay'
 import type { CollaborationFeed } from '../src/contract'
 
@@ -165,6 +166,34 @@ describe('main-only bridge relay', () => {
     expect(latest.entries.map((entry) => entry.transactionId)).toEqual(['human:1', 'codex:2'])
     expect(latest.cursorRevision).toBe(2)
     expect(new Set(latest.entries.map((entry) => entry.transactionId)).size).toBe(latest.entries.length)
+    relay.disconnect()
+  })
+
+  it('materializes a registry node by posting a NEW_FILE_HASH source patch to /source-patches', async () => {
+    const socket = new FakeSocket()
+    const requests: Array<{ url: string; body?: string }> = []
+    const fetchImpl = vi.fn(async (input: string | URL | Request, init?: RequestInit) => {
+      const url = String(input)
+      requests.push({ url, ...(typeof init?.body === 'string' ? { body: init.body } : {}) })
+      const body = url.endsWith('/snapshot') ? snapshot(0) : url.endsWith('/audit') ? { entries: [] } : { snapshot: snapshot(1) }
+      return new Response(JSON.stringify(body), { status: 200, headers: { 'content-type': 'application/json' } })
+    }) as typeof fetch
+    const relay = new BridgeRelay({ fetchImpl, socketFactory: () => socket, reconnectDelayMs: 60_000 })
+    await relay.connect({ bridgeUrl: 'http://127.0.0.1:4311', token: 't'.repeat(32) })
+
+    const result = await relay.materializeSource('src/components/Button.tsx', 'export function Button() { return null }\n')
+    expect(result.revision).toBe(1)
+
+    const request = requests.find((entry) => entry.url.endsWith('/source-patches'))
+    if (!request?.body) throw new Error('source patch request missing')
+    const payload = JSON.parse(request.body)
+    expect(payload).toMatchObject({
+      actor: 'human',
+      baseRevision: 0,
+      file: 'src/components/Button.tsx',
+      beforeFileHash: NEW_FILE_HASH,
+      content: 'export function Button() { return null }\n',
+    })
     relay.disconnect()
   })
 })

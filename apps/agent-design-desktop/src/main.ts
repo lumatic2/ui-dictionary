@@ -98,6 +98,7 @@ app.whenReady().then(async () => {
     applyCanvasOperation: (operation) => relay.applyOperation(operation),
     undoCanvas: () => relay.undo(),
     collaborationFeed: () => relay.currentFeed(),
+    materializeNode: (file, content) => relay.materializeSource(file, content),
     selectProject: async () => {
       const parent = BrowserWindow.getFocusedWindow()
       const options: Electron.OpenDialogOptions = { title: 'Trust a React project', properties: ['openDirectory', 'dontAddToRecent'] }

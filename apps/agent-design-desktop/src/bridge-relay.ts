@@ -16,6 +16,12 @@ export interface BridgeRelayCredentials {
   token: string
 }
 
+/** Sentinel `beforeFileHash` meaning "this file does not exist yet" — must match
+ *  `NEW_FILE_HASH` in `apps/agent-design-bridge/src/session.ts` (kept as a local literal,
+ *  same as this file's other bridge-shaped constants, since the bridge package builds as
+ *  ESM and this desktop package builds as CommonJS). */
+const NEW_FILE_HASH = 'new-file:absent'
+
 interface RawAuditEntry {
   transactionId: string
   actor: FeedActor
@@ -188,6 +194,26 @@ export class BridgeRelay {
         actor: 'human',
         baseRevision: snapshot.revision,
         beforeHash: snapshot.hash,
+        at: new Date().toISOString(),
+      }),
+    })
+    return this.accept((body as { snapshot?: unknown }).snapshot, 'transaction')
+  }
+
+  /** Creates a brand-new project source file (registry-node materialization) via the bridge's
+   *  `/source-patches` route, using the `NEW_FILE_HASH` sentinel for "file does not exist yet". */
+  async materializeSource(file: string, content: string): Promise<CanvasSnapshot> {
+    const snapshot = this.currentSnapshot()
+    const body = await this.request('/source-patches', {
+      method: 'POST',
+      body: JSON.stringify({
+        transactionId: `human:materialize:${Date.now()}`,
+        actor: 'human',
+        baseRevision: snapshot.revision,
+        beforeHash: snapshot.hash,
+        file,
+        beforeFileHash: NEW_FILE_HASH,
+        content,
         at: new Date().toISOString(),
       }),
     })

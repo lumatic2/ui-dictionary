@@ -10,6 +10,7 @@ import {
   parseHostRequest,
   parsePreviewStatus,
   parseProjectSelectionResult,
+  parseSourcePatchRequest,
   parseTerminalCommandRequest,
   parseTrustedFileSummary,
   parseTrustedProjectSummary,
@@ -74,6 +75,10 @@ const hostApi = Object.freeze({
     const wrapped = (_event: Electron.IpcRendererEvent, rawFeed: unknown) => listener(parseCollaborationFeed(rawFeed))
     ipcRenderer.on(HOST_IPC_CHANNELS.collaborationFeedChanged, wrapped)
     return () => ipcRenderer.removeListener(HOST_IPC_CHANNELS.collaborationFeedChanged, wrapped)
+  },
+  async materializeNode(request: unknown): Promise<CanvasSnapshot> {
+    const parsed = parseSourcePatchRequest(request)
+    return parseCanvasSnapshot(await ipcRenderer.invoke(HOST_IPC_CHANNELS.materializeNode, parsed))
   },
   async selectProject(request: HostRequest): Promise<ProjectSelectionResult> {
     return parseProjectSelectionResult(await ipcRenderer.invoke(HOST_IPC_CHANNELS.selectProject, parseHostRequest(request)))

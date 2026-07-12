@@ -13,6 +13,8 @@ import {
 interface Props {
   document: CanvasDocument
   onOperation: (operation: CanvasOperation) => void
+  bridgeConnected: boolean
+  onMaterialize: (nodeId: string) => void
 }
 
 function operationId(prefix: string) {
@@ -31,8 +33,9 @@ function DraftInput({ field, commit }: { field: PropertyField; commit: (value: P
   />
 }
 
-export function PropertyInspector({ document, onOperation }: Props) {
+export function PropertyInspector({ document, onOperation, bridgeConnected, onMaterialize }: Props) {
   const node = document.selection.length === 1 ? document.nodes[document.selection[0]] : null
+  const canMaterialize = bridgeConnected && node?.kind === 'code-component' && node.source.file.startsWith('registry://')
   const [error, setError] = useState('')
   const [name, setName] = useState(node?.name ?? '')
   useEffect(() => { setName(node?.name ?? ''); setError('') }, [node?.id, node?.name])
@@ -63,6 +66,7 @@ export function PropertyInspector({ document, onOperation }: Props) {
     </label>
     {!node ? <p className="inspector-empty">Select one node to edit its properties.</p> : <div className="property-list">
       <div className="selection-summary"><span>{node.kind}</span><code>{node.id}</code></div>
+      {canMaterialize && <button type="button" data-testid="materialize-node" onClick={() => onMaterialize(node.id)}>Materialize</button>}
       <label className="property-field">Name
         <input
           data-testid="property-name"
