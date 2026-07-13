@@ -32,6 +32,7 @@ try {
   await page.goto(url, { waitUntil: 'domcontentloaded' })
   await page.waitForFunction(() => typeof window.__agentDesignBenchmark?.runTrace === 'function')
 
+  await page.getByText('Development', { exact: true }).click()
   await page.getByTestId('fixture-size').selectOption('5000')
   await page.waitForFunction(() => document.querySelectorAll('[data-canvas-id]').length === 5000)
   await page.waitForFunction(() => document.querySelector('[data-testid="editor-plane"]')?.getAttribute('data-editor-plane') !== 'initializing')
