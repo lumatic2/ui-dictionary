@@ -21,16 +21,22 @@ const INSTALL_ORDER = [
 ]
 
 const BUILD_ORDER = [...INSTALL_ORDER]
-const TEST_ORDER = [
-  'packages/canvas-core',
-  'apps/agent-design',
-  'apps/agent-design-bridge',
-  DESKTOP,
-]
+// Every AskewlyDesign runtime package in INSTALL_ORDER currently exposes test.
+const TEST_ORDER = [...INSTALL_ORDER]
 
 const MIN_NODE = [22, 12, 0]
 const MIN_NPM = [10, 0, 0]
-const npmCommand = process.platform === 'win32' ? 'npm.cmd' : 'npm'
+const npmCommand = 'npm'
+const ELECTRON_PACKAGE = join(ROOT, DESKTOP, 'node_modules', 'electron')
+const ELECTRON_INSTALL = join(ELECTRON_PACKAGE, 'install.js')
+const ELECTRON_BIN = join(ROOT, DESKTOP, 'node_modules', '.bin', 'electron')
+const ELECTRON_RUNTIME = join(ELECTRON_PACKAGE, 'dist', 'Electron.app', 'Contents', 'MacOS', 'Electron')
+
+function assertDarwin() {
+  if (process.platform !== 'darwin') {
+    throw new Error(`EQ0 Mac commands require macOS (darwin); found ${process.platform}`)
+  }
+}
 
 function versionParts(value, label) {
   const match = String(value).trim().match(/^(\d+)\.(\d+)\.(\d+)/)
@@ -50,6 +56,7 @@ function formatVersion(version) {
 }
 
 function checkPrerequisites() {
+  assertDarwin()
   const nodeVersion = versionParts(process.versions.node, 'Node')
   if (!versionAtLeast(nodeVersion, MIN_NODE)) {
     throw new Error(`Node ${formatVersion(MIN_NODE)} or newer is required; found ${formatVersion(nodeVersion)}`)
@@ -87,6 +94,13 @@ function runNpm(relativePath, args, label) {
   if (result.status !== 0) throw new Error(`${label} failed with exit code ${result.status ?? 'unknown'}`)
 }
 
+function runProcess(command, args, options, label) {
+  const result = spawnSync(command, args, options)
+  if (result.error) throw new Error(`${label} could not start: ${result.error.message}`)
+  if (result.status !== 0) throw new Error(`${label} failed with exit code ${result.status ?? 'unknown'}`)
+  return result
+}
+
 function installAll() {
   for (const relativePath of INSTALL_ORDER) {
     runNpm(relativePath, ['ci', '--ignore-scripts'], `install ${relativePath}`)
@@ -110,36 +124,59 @@ function ensureDependencies() {
 }
 
 function desktopRuntimePresent() {
-  const runtime = process.platform === 'darwin'
-    ? join(ROOT, DESKTOP, 'node_modules', 'electron', 'dist', 'Electron.app', 'Contents', 'MacOS', 'Electron')
-    : join(ROOT, DESKTOP, 'node_modules', 'electron', 'dist', process.platform === 'win32' ? 'electron.exe' : 'electron')
-  return existsSync(runtime)
+  return existsSync(ELECTRON_RUNTIME)
 }
 
 function prepareDesktopRuntime() {
-  runNpm(DESKTOP, ['--ignore-scripts', 'exec', '--', 'electron', '--version'], 'prepare Electron runtime')
+  if (!existsSync(ELECTRON_INSTALL)) {
+    throw new Error(`Electron preparation script is missing at ${relative(ROOT, ELECTRON_INSTALL)}`)
+  }
+  runProcess(process.execPath, [ELECTRON_INSTALL], {
+    cwd: join(ROOT, DESKTOP),
+    stdio: 'inherit',
+  }, 'prepare Electron runtime')
+  if (!desktopRuntimePresent()) {
+    throw new Error(`Electron preparation did not produce ${relative(ROOT, ELECTRON_RUNTIME)}`)
+  }
+  const versionResult = runProcess(ELECTRON_BIN, ['--version'], {
+    cwd: join(ROOT, DESKTOP),
+    encoding: 'utf8',
+    stdio: ['ignore', 'pipe', 'pipe'],
+  }, 'verify Electron runtime version')
+  const version = String(versionResult.stdout || '').trim()
+  if (!/^v?\d+\.\d+\.\d+/.test(version)) {
+    throw new Error(`Electron --version returned no parseable version: ${version || '<empty>'}`)
+  }
+  const archResult = runProcess('file', [ELECTRON_RUNTIME], {
+    cwd: join(ROOT, DESKTOP),
+    encoding: 'utf8',
+    stdio: ['ignore', 'pipe', 'pipe'],
+  }, 'verify Electron runtime architecture')
+  if (!/\barm64\b/.test(String(archResult.stdout || ''))) {
+    throw new Error(`Electron runtime is not arm64: ${String(archResult.stdout || '').trim()}`)
+  }
+  console.log(`Electron runtime ready: version=${version} arch=arm64`)
 }
 
 function buildAll() {
   for (const relativePath of BUILD_ORDER) {
-    runNpm(relativePath, ['--ignore-scripts', 'run', 'build'], `build ${relativePath}`)
+    runNpm(relativePath, ['run', 'build'], `build ${relativePath}`)
   }
 }
 
 function testAll() {
   for (const relativePath of TEST_ORDER) {
-    runNpm(relativePath, ['--ignore-scripts', 'run', 'test'], `test ${relativePath}`)
+    runNpm(relativePath, ['run', 'test'], `test ${relativePath}`)
   }
 }
 
 function launchDesktop() {
   const desktopDir = join(ROOT, DESKTOP)
-  const electron = join(desktopDir, 'node_modules', '.bin', process.platform === 'win32' ? 'electron.cmd' : 'electron')
-  if (!existsSync(electron)) {
-    throw new Error(`Electron is missing at ${relative(ROOT, electron)}; run npm run bootstrap first`)
+  if (!existsSync(ELECTRON_BIN)) {
+    throw new Error(`Electron is missing at ${relative(ROOT, ELECTRON_BIN)}; run npm run bootstrap first`)
   }
 
-  const child = spawn(electron, ['.'], { cwd: desktopDir, stdio: 'inherit' })
+  const child = spawn(ELECTRON_BIN, ['.'], { cwd: desktopDir, stdio: 'inherit' })
   let finished = false
   const finish = (code) => {
     if (finished) return
@@ -167,6 +204,7 @@ function usage() {
 
 const mode = process.argv[2]
 try {
+  assertDarwin()
   if (!['bootstrap', 'build', 'dev', 'test'].includes(mode)) {
     usage()
     process.exitCode = 2

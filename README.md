@@ -34,17 +34,25 @@ Requirements: macOS, Node `22.12+`, and npm `10+`.
 
 ```bash
 npm run dev:mac       # install missing packages, build in dependency order, launch Electron
-npm run bootstrap     # clean-install every package from its own package-lock.json, then build
-npm run build:mac     # install if needed, then build without package-local prebuild duplication
-npm run test:mac      # install if needed, build, then run the core/renderer/bridge/desktop gate
+npm run bootstrap     # clean-install AskewlyDesign runtime packages, then build
+npm run build:mac     # install if needed, then build with package lifecycle hooks
+npm run test:mac      # install if needed, then run all runtime package test scripts
 ```
 
-The fixed order is `canvas-core`, `component-registry`, `agent-design-engine`,
-the React renderer, the bridge, MCP, and finally the desktop shell. A failed
-command names the package and phase that failed. Rerun `npm run bootstrap`
-after a lockfile change or a damaged dependency tree; do not use a root
-`npm install` to rewrite the package-local lockfiles. Network/cache failures
-remain installation failures and must be resolved before retrying.
+The fixed AskewlyDesign runtime order is `canvas-core`, `component-registry`,
+`agent-design-engine`, the React renderer, the bridge, MCP, and finally the
+desktop shell. After each package-local `npm ci --ignore-scripts`, bootstrap
+explicitly runs the installed Electron preparation script at
+`apps/agent-design-desktop/node_modules/electron/install.js`, then executes
+the installed Electron binary with `--version` and verifies/report its arm64
+runtime. A failed command names the package and phase that failed. Rerun
+`npm run bootstrap` after a lockfile change or damaged dependency tree; do not
+use a root `npm install` to rewrite package-local lockfiles.
+
+This is a macOS-only command contract and rejects non-Darwin hosts. Fresh-clone
+bootstrap, launch, screenshots, and timing evidence belong to EQ0 Step 4; this
+section does not claim that evidence. Security and packaging smokes remain
+outside `test:mac` and belong to Step 4.
 
 ## Tech stack
 
