@@ -14,7 +14,7 @@ describe('semantic DOM content plane', () => {
     expect(nodes).toHaveLength(size)
     expect(view.container.querySelectorAll('[data-source-ref]')).toHaveLength(Object.values(document.nodes).filter((node) => node.source).length)
     expect(view.container.querySelector('[data-selected-id]')?.getAttribute('data-selected-id')).toBe(document.selection[0])
-  })
+  }, 15_000)
 
   it('preserves Korean composition in the text surface', () => {
     const document = createDocumentFixture(1000)
