@@ -4,9 +4,9 @@
   "mode": "product",
   "milestone": "EQ0",
   "steps": [
-    { "step": 1, "name": "root-bootstrap-command-contract", "status": "pending" },
-    { "step": 2, "name": "mac-green-test-matrix", "status": "pending" },
-    { "step": 3, "name": "production-shell-fixture-separation", "status": "pending" },
+    { "step": 1, "name": "root-bootstrap-command-contract", "status": "in_progress" },
+    { "step": 2, "name": "mac-green-test-matrix", "status": "in_progress" },
+    { "step": 3, "name": "production-shell-fixture-separation", "status": "in_progress" },
     { "step": 4, "name": "fresh-clone-mac-baseline-evidence", "status": "pending" }
   ]
 }

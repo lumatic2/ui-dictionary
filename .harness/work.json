@@ -367,6 +367,16 @@
         "claude:086e4b88-d743-44cd-b102-57183afa1b61"
       ],
       "completed": "2026-07-12"
+    },
+    {
+      "id": "EQ0",
+      "title": "AskewlyDesign Mac Reproducible Baseline",
+      "status": "active",
+      "started": "2026-07-13",
+      "plan": "phases/askewlydesign-mac-baseline/index.json",
+      "session_ids": [
+        "codex:2026-07-13-eq0-orchestrator"
+      ]
     }
   ]
 }
