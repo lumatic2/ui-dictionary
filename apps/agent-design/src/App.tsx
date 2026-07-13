@@ -147,6 +147,7 @@ function ProductionProjectEntry({
 
 export function App({ mode = appModeFromSearch(window.location.search), initialBenchmarkNodes = 1000 }: { mode?: AppMode; initialBenchmarkNodes?: 200 | 1000 | 5000 }) {
   const benchmarkMode = mode === 'benchmark'
+  const host = benchmarkMode ? null : desktopHost()
   const [size, setSize] = useState(initialBenchmarkNodes)
   const [failure, setFailure] = useState<EditorPlaneFailure | null>(null)
   const baseDocument = useMemo(() => benchmarkMode ? createDocumentFixture(size as 1000 | 5000) : null, [benchmarkMode, size])
@@ -160,7 +161,7 @@ export function App({ mode = appModeFromSearch(window.location.search), initialB
   const [activeProject, setActiveProject] = useState<TrustedProjectSummary | null>(null)
   const [preview, setPreview] = useState<PreviewStatus | null>(null)
   const [projectFiles, setProjectFiles] = useState<TrustedFileSummary[]>([])
-  const [projectState, setProjectState] = useState<ProjectState>('loading')
+  const [projectState, setProjectState] = useState<ProjectState>(() => host ? 'loading' : 'ready')
   const [projectError, setProjectError] = useState('')
   const [leftPanelOpen, setLeftPanelOpen] = useState(true)
   const [rightPanelOpen, setRightPanelOpen] = useState(true)
@@ -176,7 +177,6 @@ export function App({ mode = appModeFromSearch(window.location.search), initialB
   const activeProjectRef = useRef<TrustedProjectSummary | null>(null)
   const desktopBridgeRef = useRef<DesktopBridgeStatus | null>(null)
   const initialProjectReconciledRef = useRef(false)
-  const host = benchmarkMode ? null : desktopHost()
   const liveConfig = useMemo(() => benchmarkMode || host ? null : liveBridgeConfig(), [benchmarkMode, host])
   const liveClient = useRef<LiveBridgeClient | null>(null)
   const pendingPaint = useRef<{ revision: number; started: number } | null>(null)

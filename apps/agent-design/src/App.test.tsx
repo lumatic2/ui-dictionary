@@ -39,6 +39,8 @@ describe('production and benchmark mode boundary', () => {
     expect(view.queryByTestId('canvas-content')).toBeNull()
     expect(view.queryByText('1,000 nodes')).toBeNull()
     expect(view.queryByText('Development')).toBeNull()
+    expect(view.getByRole('heading', { name: 'Open a trusted React project.' })).toBeTruthy()
+    expect(view.queryByText('Loading trusted projects.')).toBeNull()
     expect(window.__agentDesignBenchmark).toBeUndefined()
   })
 
