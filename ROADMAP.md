@@ -38,4 +38,4 @@ Goal: 공개 탐색 경험을 완성하고 에셋 모델을 정합시킨 뒤 계
 
 ## Archive Pointer
 
-Completed or archived milestone history lives in `BACKLOG.md`; Quality & Dogfooding (QA2–QA3) closed 2026-07-12, Living Design System (RL–SD) closed 2026-07-12, Canvas Production Environment (UX3–AI) closed 2026-07-12, Canvas Product UX (UX1–UX2) superseded 2026-07-12, Agent-Native UI Canvas (AUC0–AUC4) closed 2026-07-11.
+Completed or archived milestone history lives in `docs/BACKLOG.md`; Quality & Dogfooding (QA2–QA3) closed 2026-07-12, Living Design System (RL–SD) closed 2026-07-12, Canvas Production Environment (UX3–AI) closed 2026-07-12, Canvas Product UX (UX1–UX2) superseded 2026-07-12, Agent-Native UI Canvas (AUC0–AUC4) closed 2026-07-11.
