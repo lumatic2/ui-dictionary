@@ -59,6 +59,10 @@
     {
       "dir": "agent-design-desktop-productization",
       "status": "pending"
+    },
+    {
+      "dir": "askewlydesign-mac-baseline",
+      "status": "pending"
     }
   ]
 }

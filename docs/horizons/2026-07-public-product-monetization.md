@@ -1,7 +1,7 @@
 # Horizon — Public Product & Monetization
 
 Date: 2026-07-12 (queued — H2 Living Design System 이후 활성화)
-Status: active (2026-07-12 사용자 승인 — Quality & Dogfooding close 직후, PX부터)
+Status: paused (2026-07-13 사용자 재우선순위 — 수익화보다 AskewlyDesign 편집기 품질을 먼저 개선; PX 완료 증거는 유지)
 
 ## Goal
 
@@ -35,3 +35,4 @@ Objective 성공상태 ②(결제 사용자 프리미엄)와 ①의 완성. Obje
 
 - Objective: `docs/OBJECTIVE.md`
 - Predecessor (queued after): `docs/horizons/2026-07-living-design-system.md`
+- Paused by: `docs/horizons/2026-07-askewlydesign-editor-quality.md`

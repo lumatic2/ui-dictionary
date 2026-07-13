@@ -1,40 +1,34 @@
 # ROADMAP
 
-> Last updated: 2026-07-12
-> Status: Public Product & Monetization — PX completed (2026-07-12), 다음 AM은 사용자 토론 필요
+> Last updated: 2026-07-13
+> Status: AskewlyDesign Editor Quality — EQ0 planning complete, implementation approval pending
 > North star: Build Askewly Design as both a public reference website and an agent-usable implementation system.
 > line budget: <=150
 
 ## Current Horizon
 
-<!-- harness:goal id="public-product-monetization" status="active" -->
-Goal: 공개 탐색 경험을 완성하고 에셋 모델을 정합시킨 뒤 계정·결제·Pro를 열어 결제 사용자가 실제로 구매·사용하는 제품으로 만든다. Details: `docs/horizons/2026-07-public-product-monetization.md`.
+<!-- harness:goal id="askewlydesign-editor-quality" status="active" -->
+Goal: 코드 네이티브 캔버스의 기술 proof를 실제 React UI를 보고 만들고 되돌릴 수 있는 Mac 우선 편집 제품으로 끌어올린다. Details: `docs/horizons/2026-07-askewlydesign-editor-quality.md`.
 
 ## Active Milestones
 
-<!-- harness:milestone id="PX" status="completed" priority="P0" evidence="docs/plans/2026-07-12-px-public-experience.md" -->
-### PX — Public Experience Pass
-- DoD: 헤더 검색이 어느 페이지에서든 결과로 이동하고 전 표면(terms·docs·Patterns·Recipes·Colors)을 인덱싱, Getting set up이 디자인 작업 프로토콜을 서술, Docs/어휘/독립 표면 역할 재정의가 네비에 반영, Docs·Patterns·Recipes 사이드바 독립, 페이지별 meta/OG + 모바일 점검.
-- Evidence: `docs/plans/2026-07-12-px-public-experience.md`
-- Gap: 헤더 검색 자유 텍스트가 결과로 이동 안 함(버그) + stale 인덱스, Docs 역할 중복(Foundations↔어휘↔독립 표면), Docs·Patterns 사이드바 공유·Recipes 사이드바 부재.
-- Status: [x]
+<!-- harness:milestone id="EQ0" status="active" priority="P0" evidence="docs/plans/2026-07-13-eq0-mac-reproducible-baseline.md" -->
+### EQ0 — Mac Reproducible Baseline
+- DoD: fresh clone에서 한 문서화된 진입 명령으로 의존성·로컬 패키지 build·Mac dev launch가 재현되고, core/renderer/bridge/desktop 테스트 행렬이 green이며, production 기본 진입에서 1,000-node fixture와 dev 계기판이 분리된다.
+- Evidence: `docs/plans/2026-07-13-eq0-mac-reproducible-baseline.md`, `phases/askewlydesign-mac-baseline/`
+- Gap: 루트 workspace 진입점이 없어 수동 install/build 순서가 필요하고, renderer 테스트가 Mac에서 깨지며, production shell이 benchmark fixture로 시작한다.
+- Status: [ ] — 상세 계획 완료, 구현 승인 대기
 
-- Completed at: 2026-07-12
-- Summary: 검색 수리(+포털 클릭 결함 추가 적발)·전 표면 인덱싱, Getting set up 프로토콜, Vocabulary 그룹 통합, 섹션별 독립 사이드바, per-page meta/SEO — changesets #94–98
+## Next Milestones
 
-## Next Candidates (활성화 시 §B0.5 Beat 3 확정)
+- **EQ1 — Real React Rendering Contract**: flat 이름표 renderer를 실제 계층·콘텐츠·clipping·z-order가 보이는 source-linked renderer로 교체.
+- **EQ2 — Editor State And Editing Fidelity**: document/ephemeral state 분리, human Undo/Redo, snap·guide, 실제 auto layout, inspector 동기화.
+- **EQ3 — Components And Assets**: 시각 Assets surface, main/instance/override/variant, 실제 component/recipe materialization과 source round-trip.
+- **EQ4 — Trusted Co-Creation And Mac Delivery**: 사람이 읽는 agent diff·conflict·targeted revert와 macOS package/reopen/recovery/source-integrity를 실제 실사용으로 함께 검증.
 
-- **AM — Asset Model Alignment**: 무료/유료 경계·라이선스·다운로드 포맷 (사용자 소유 결정 다수 — §B0-1 토론 필수).
-- **AC — Accounts/Auth**: 계정·인증 (askewly SSO 라우팅 자산 활용).
-- **PG — Payments/Pro Gate**: 결제 연동 + Pro 게이트 해제 (크레덴셜 = 사용자 정지 지점).
-- **PP — Premium Packs**: 프리미엄 코드 복사·에셋 다운로드·implementation pack.
+## Paused Horizon
 
-## 유지보수 후보 (milestone 아님)
-
-- 데스크톱 브리지 모드 human Undo/Redo 활성화 (QA2 dogfooding 결함 #2)
-- 신뢰 프로젝트 소실 시 에러 표면 (QA2 dogfooding 결함 #3 — 현재 조용한 데모 폴백)
-- 프로덕션 셸 정리: 기본 1,000-node fixture·dev 계기판 제거 (QA2 dogfooding 결함 #4)
-- shortcuts dialog 배경 콘텐츠 inert/aria-hidden (스크린리더 가상 커서 — 키보드 트랩은 완료)
+- **Public Product & Monetization**: PX는 완료 상태로 유지. AM·AC·PG·PP는 편집기 품질 horizon 종료 또는 재승인 전까지 보류. Details: `docs/horizons/2026-07-public-product-monetization.md`.
 
 ## Archive Pointer
 
