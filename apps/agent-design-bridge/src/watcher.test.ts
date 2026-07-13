@@ -8,13 +8,16 @@ import { SourceWatcher } from './watcher.js'
 
 const roots: string[] = []
 const watchers: SourceWatcher[] = []
+const nextTurn = () => new Promise<void>((resolve) => setImmediate(resolve))
+const waitForWatcherReady = () => new Promise<void>((resolve) => setTimeout(resolve, 50))
 
-afterEach(() => {
+afterEach(async () => {
   for (const watcher of watchers.splice(0)) watcher.close()
+  await nextTurn()
   for (const root of roots.splice(0)) rmSync(root, { recursive: true, force: true })
 })
 
-function setup() {
+async function setup() {
   const root = mkdtempSync(join(tmpdir(), 'agent-design-watcher-'))
   roots.push(root)
   const document = createDocumentFixture(1000)
@@ -27,6 +30,7 @@ function setup() {
   const watcher = new SourceWatcher(session, { debounceMs: 10 })
   watchers.push(watcher)
   watcher.start()
+  await waitForWatcherReady()
   return { session, component, file, before }
 }
 
@@ -44,7 +48,7 @@ function nextWatcherEvent(session: BridgeSession): Promise<void> {
 
 describe('source watcher reverse synchronization', () => {
   it('promotes a stable direct file edit into one watcher transaction', async () => {
-    const { session, component, file } = setup()
+    const { session, component, file } = await setup()
     const event = nextWatcherEvent(session)
     writeFileSync(file, `export function Fixture1() { return <article data-agent-design-id="${component.id}" data-agent-design-name="Live hero">Watcher update</article> }\n`)
     await event
@@ -54,7 +58,7 @@ describe('source watcher reverse synchronization', () => {
   })
 
   it('suppresses the filesystem echo of a bridge-origin source transaction', async () => {
-    const { session, component, file, before } = setup()
+    const { session, component, file, before } = await setup()
     const snapshot = session.snapshot()
     const after = `export function Fixture1() { return <article data-agent-design-id="${component.id}">Bridge update</article> }\n`
     session.applySourcePatch({
