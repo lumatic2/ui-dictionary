@@ -1,12 +1,29 @@
-import { cleanup, fireEvent, render, waitFor } from '@testing-library/react'
+import { act, cleanup, fireEvent, render, waitFor } from '@testing-library/react'
 import { afterEach, beforeEach, describe, expect, it } from 'vitest'
 import { App, connectionStatusLabel, desktopBridgeStateLabel } from './App'
 
 beforeEach(() => {
+  delete window.agentDesignHost
   window.localStorage.clear()
   Object.defineProperty(window, 'PointerEvent', { value: MouseEvent, configurable: true })
 })
-afterEach(cleanup)
+afterEach(() => {
+  cleanup()
+  delete window.agentDesignHost
+})
+
+function dispatchZoomWheel(viewport: HTMLElement, deltaY: number) {
+  act(() => {
+    viewport.dispatchEvent(new WheelEvent('wheel', {
+      bubbles: true,
+      cancelable: true,
+      clientX: 200,
+      clientY: 150,
+      ctrlKey: true,
+      deltaY,
+    }))
+  })
+}
 
 describe('AskewlyDesign persistence flow', () => {
   it('presents a product workspace before development diagnostics', () => {
@@ -203,16 +220,16 @@ describe('AskewlyDesign persistence flow', () => {
   it('zooms around the cursor with ctrl+wheel inside zoom bounds', () => {
     const view = render(<App />)
     const viewport = view.getByTestId('canvas-viewport')
-    fireEvent.wheel(viewport, { ctrlKey: true, deltaY: -100, clientX: 200, clientY: 150 })
+    dispatchZoomWheel(viewport, -100)
     expect(view.getByLabelText('Canvas zoom').textContent).toBe('110%')
     const transform = view.getByTestId('canvas-content').style.transform.match(/translate\((-?[\d.]+)px, (-?[\d.]+)px\) scale\(([\d.]+)\)/)
     if (!transform) throw new Error('canvas transform missing')
     expect(Number(transform[1])).toBeCloseTo(-20)
     expect(Number(transform[2])).toBeCloseTo(-15)
     expect(Number(transform[3])).toBeCloseTo(1.1)
-    for (let index = 0; index < 40; index += 1) fireEvent.wheel(viewport, { ctrlKey: true, deltaY: -100, clientX: 200, clientY: 150 })
+    for (let index = 0; index < 40; index += 1) dispatchZoomWheel(viewport, -100)
     expect(view.getByLabelText('Canvas zoom').textContent).toBe('400%')
-    for (let index = 0; index < 80; index += 1) fireEvent.wheel(viewport, { ctrlKey: true, deltaY: 100, clientX: 200, clientY: 150 })
+    for (let index = 0; index < 80; index += 1) dispatchZoomWheel(viewport, 100)
     expect(view.getByLabelText('Canvas zoom').textContent).toBe('25%')
   })
 

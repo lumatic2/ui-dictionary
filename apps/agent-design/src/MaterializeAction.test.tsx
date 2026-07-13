@@ -112,8 +112,9 @@ describe('materialize registry node action', () => {
     window.agentDesignHost = host
 
     const view = render(<App />)
-    fireEvent.click(view.getByTestId('toggle-agents'))
+    await waitFor(() => expect(view.getByTestId('desktop-bridge-status').textContent).toContain('desktop ready'))
     await waitFor(() => expect(view.getByTestId('materialize-node')).toBeTruthy())
+    fireEvent.click(view.getByTestId('toggle-agents'))
     fireEvent.click(view.getByTestId('materialize-node'))
 
     await waitFor(() => expect(view.getByTestId('persistence-status').textContent).toContain('source file already exists'))
