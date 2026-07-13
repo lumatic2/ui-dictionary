@@ -23,6 +23,29 @@ Vibe-coding requests often start as vague instructions like "make it clean" or "
 - Site app: `examples/ui-vocabulary-site/`
 - Deployment notes: `docs/ui-vocabulary/deployment.md`
 
+## AskewlyDesign Mac development
+
+The root commands below are the supported entry point for the Electron
+AskewlyDesign development surface. They keep the existing package-local npm
+lockfiles and use npm only; this is not a workspace or package-manager
+migration.
+
+Requirements: macOS, Node `22.12+`, and npm `10+`.
+
+```bash
+npm run dev:mac       # install missing packages, build in dependency order, launch Electron
+npm run bootstrap     # clean-install every package from its own package-lock.json, then build
+npm run build:mac     # install if needed, then build without package-local prebuild duplication
+npm run test:mac      # install if needed, build, then run the core/renderer/bridge/desktop gate
+```
+
+The fixed order is `canvas-core`, `component-registry`, `agent-design-engine`,
+the React renderer, the bridge, MCP, and finally the desktop shell. A failed
+command names the package and phase that failed. Rerun `npm run bootstrap`
+after a lockfile change or a damaged dependency tree; do not use a root
+`npm install` to rewrite the package-local lockfiles. Network/cache failures
+remain installation failures and must be resolved before retrying.
+
 ## Tech stack
 
 - Vite + React + TypeScript
