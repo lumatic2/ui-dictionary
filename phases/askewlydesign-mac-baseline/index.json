@@ -4,9 +4,9 @@
   "mode": "product",
   "milestone": "EQ0",
   "steps": [
-    { "step": 1, "name": "root-bootstrap-command-contract", "status": "in_progress" },
-    { "step": 2, "name": "mac-green-test-matrix", "status": "in_progress" },
-    { "step": 3, "name": "production-shell-fixture-separation", "status": "in_progress" },
-    { "step": 4, "name": "fresh-clone-mac-baseline-evidence", "status": "pending" }
+    { "step": 1, "name": "root-bootstrap-command-contract", "status": "completed", "summary": "Root bootstrap, build, test, and dev entry contracts established for Apple Silicon Mac.", "completed_at": "2026-07-13T20:32:20+09:00" },
+    { "step": 2, "name": "mac-green-test-matrix", "status": "completed", "summary": "Deterministic cross-package Mac matrix passes 297/297 with canonical temp paths and host-independent Windows path parsing.", "completed_at": "2026-07-13T20:32:20+09:00" },
+    { "step": 3, "name": "production-shell-fixture-separation", "status": "completed", "summary": "Production starts from trusted-project entry state; fixtures are explicit benchmark-only and mutations fail closed on project mismatch.", "completed_at": "2026-07-13T20:32:20+09:00" },
+    { "step": 4, "name": "fresh-clone-mac-baseline-evidence", "status": "completed", "summary": "Fresh-clone bootstrap/test, production browser, 5k integration, and two Electron launch cycles recorded; Windows remains not run and 5k latency is deferred to EQ1.", "completed_at": "2026-07-13T20:32:20+09:00" }
   ]
 }

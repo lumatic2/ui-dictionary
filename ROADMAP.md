@@ -1,7 +1,7 @@
 # ROADMAP
 
 > Last updated: 2026-07-13
-> Status: AskewlyDesign Editor Quality — EQ0 planning complete, implementation approval pending
+> Status: AskewlyDesign Editor Quality — EQ0 complete, EQ1 planning next
 > North star: Build Askewly Design as both a public reference website and an agent-usable implementation system.
 > line budget: <=150
 
@@ -12,12 +12,15 @@ Goal: 코드 네이티브 캔버스의 기술 proof를 실제 React UI를 보고
 
 ## Active Milestones
 
-<!-- harness:milestone id="EQ0" status="active" priority="P0" evidence="docs/plans/2026-07-13-eq0-mac-reproducible-baseline.md" -->
+<!-- harness:milestone id="EQ0" status="completed" priority="P0" evidence="docs/research/eq0-mac-baseline/2026-07-13-fresh-clone.json" -->
 ### EQ0 — Mac Reproducible Baseline
 - DoD: fresh clone에서 한 문서화된 진입 명령으로 의존성·로컬 패키지 build·Mac dev launch가 재현되고, core/renderer/bridge/desktop 테스트 행렬이 green이며, production 기본 진입에서 1,000-node fixture와 dev 계기판이 분리된다.
-- Evidence: `docs/plans/2026-07-13-eq0-mac-reproducible-baseline.md`, `phases/askewlydesign-mac-baseline/`
-- Gap: 루트 workspace 진입점이 없어 수동 install/build 순서가 필요하고, renderer 테스트가 Mac에서 깨지며, production shell이 benchmark fixture로 시작한다.
-- Status: [ ] — 상세 계획 완료, 구현 승인 대기
+- Evidence: `docs/research/eq0-mac-baseline/2026-07-13-fresh-clone.json`, `changesets/20260713-eq0-step4-fresh-clone-evidence/`
+- Resolved: root Mac 진입점, 297-test matrix, production/benchmark 분리, clean Electron relaunch 기준선을 확보했다.
+- Status: [x]
+
+- Completed at: 2026-07-13
+- Summary: Fresh-clone Mac bootstrap and 297-test gate pass; production is fixture-free, benchmark evidence is explicit, and two Electron relaunch cycles leave no orphans.
 
 ## Next Milestones
 

@@ -101,3 +101,4 @@
 | 99 | 20260713-eq0-step1-mac-entry | 2026-07-13 | EQ0 Step 1: root Mac bootstrap/build/test/dev entry and Apple Silicon Electron supervision | 4/4 | complete |
 | 100 | 20260713-eq0-step2-mac-green-matrix | 2026-07-13 | EQ0 Step 2: deterministic Mac test matrix, watcher readiness, canonical temp paths, host-independent Squirrel parsing | 4/4 | complete |
 | 101 | 20260713-eq0-step3-production-fixture-separation | 2026-07-13 | EQ0 Step 3: trusted production entry, explicit benchmark mode, fail-closed project authority | 4/4 | complete |
+| 102 | 20260713-eq0-step4-fresh-clone-evidence | 2026-07-13 | EQ0 Step 4: fresh-clone Mac evidence, production/benchmark proof, clean Electron relaunch | 4/4 | complete |

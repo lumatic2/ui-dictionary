@@ -1,37 +1,37 @@
 {
   "schemaVersion": 2,
-  "generatedAt": "2026-07-10T12:17:50.193Z",
+  "generatedAt": "2026-07-13T11:31:46.896Z",
   "runtime": "Playwright system Chrome headless, 1440x900@1x",
   "gpuState": "webgpu",
   "nodeCount": 5000,
   "sourceCount": 250,
   "trace": {
     "frames": 60,
-    "averageLatencyMs": 7.630000003178907,
-    "p95LatencyMs": 13.300000004470348,
-    "overBudgetRatio": 0.016666666666666666,
+    "averageLatencyMs": 124.0233333349228,
+    "p95LatencyMs": 418.90000009536743,
+    "overBudgetRatio": 1,
     "revisionDelta": 1
   },
   "traces": [
     {
       "frames": 60,
-      "averageLatencyMs": 3.818333336388065,
-      "p95LatencyMs": 7.800000001490162,
-      "overBudgetRatio": 0,
+      "averageLatencyMs": 104.52666666507722,
+      "p95LatencyMs": 418,
+      "overBudgetRatio": 1,
       "revisionDelta": 1
     },
     {
       "frames": 60,
-      "averageLatencyMs": 7.630000003178907,
-      "p95LatencyMs": 13.300000004470348,
-      "overBudgetRatio": 0.016666666666666666,
+      "averageLatencyMs": 130.69833333293596,
+      "p95LatencyMs": 399.2999999523163,
+      "overBudgetRatio": 1,
       "revisionDelta": 1
     },
     {
       "frames": 60,
-      "averageLatencyMs": 7.155000002831215,
-      "p95LatencyMs": 13.000000004470166,
-      "overBudgetRatio": 0.016666666666666666,
+      "averageLatencyMs": 124.0233333349228,
+      "p95LatencyMs": 418.90000009536743,
+      "overBudgetRatio": 1,
       "revisionDelta": 1
     }
   ],
@@ -51,16 +51,16 @@
     "osMicrosoftImeManualPass": false
   },
   "persistence": {
-    "savedStatus": "saved 393045 bytes",
+    "savedStatus": "saved 393051 bytes",
     "savedRevision": 7,
     "reloadedRevision": 7,
     "undoRevision": 6,
     "redoRevision": 7
   },
   "reloadPixelDiff": {
-    "differentPixels": 0,
-    "totalPixels": 827160,
-    "mismatchRatio": 0
+    "differentPixels": 19,
+    "totalPixels": 5808552,
+    "mismatchRatio": 0.0000032710389783891064
   },
   "consoleErrors": []
 }

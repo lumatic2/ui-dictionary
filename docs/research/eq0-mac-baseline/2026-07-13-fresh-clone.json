@@ -1,0 +1,110 @@
+{
+  "schemaVersion": 1,
+  "milestone": "EQ0",
+  "capturedAt": "2026-07-13T20:32:20+09:00",
+  "testedCommit": "a6662a105bd49fe7b4258885fd20be2854b7cf19",
+  "environment": {
+    "macOS": "26.3.1 (25D771280a)",
+    "architecture": "arm64",
+    "node": "v25.8.0",
+    "npm": "11.11.0",
+    "electron": "43.1.0"
+  },
+  "freshClone": {
+    "command": "git clone --no-local --branch codex/editor-quality-planning /Users/luma2/projects/ui-dictionary <temporary-directory>",
+    "durationSeconds": null,
+    "durationNote": "Clone duration was not timed separately.",
+    "network": "available",
+    "npmCache": "warm",
+    "nodeModulesPresentBeforeBootstrap": false
+  },
+  "bootstrap": {
+    "command": "npm run bootstrap:mac",
+    "exitCode": 0,
+    "realSeconds": 129.82,
+    "userSeconds": 141.29,
+    "sysSeconds": 30.08
+  },
+  "testMatrix": {
+    "command": "npm run test:mac",
+    "exitCode": 0,
+    "realSeconds": 291.12,
+    "userSeconds": 275.45,
+    "sysSeconds": 32.31,
+    "passed": 297,
+    "failed": 0,
+    "suites": {
+      "canvasCore": 52,
+      "componentRegistry": 29,
+      "agentDesignEngine": 9,
+      "agentDesignRenderer": 84,
+      "agentDesignBridge": 46,
+      "agentDesignMcp": 21,
+      "agentDesignDesktop": 56
+    }
+  },
+  "productionBrowserSmoke": {
+    "runtime": "Playwright system Chrome headless, 1440x900@1x",
+    "productionEmptyStateVisible": true,
+    "canvasPresent": false,
+    "benchmarkGlobalPresent": false,
+    "loadingTrustedProjectsPresent": false,
+    "consoleErrors": [],
+    "screenshot": "docs/research/assets/eq0-mac-baseline-2026-07-13/production-empty.png",
+    "fallbackReason": "The declared Chrome extension skill file was absent from the local plugin cache, so the repository Playwright plus installed system Chrome path was used."
+  },
+  "benchmarkIntegration": {
+    "command": "npm --prefix apps/agent-design run integration",
+    "exitCode": 0,
+    "runtime": "Playwright system Chrome headless, 1440x900@1x",
+    "gpuState": "webgpu",
+    "nodeCount": 5000,
+    "sourceCount": 250,
+    "worstAverageLatencyMs": 124.0233333349228,
+    "worstP95LatencyMs": 418.90000009536743,
+    "overBudgetRatio": 1,
+    "fallbackState": "dom",
+    "savedRevision": 7,
+    "reloadedRevision": 7,
+    "undoRevision": 6,
+    "redoRevision": 7,
+    "reloadPixelMismatchRatio": 0.0000032710389783891064,
+    "consoleErrors": [],
+    "screenshot": "docs/research/assets/eq0-mac-baseline-2026-07-13/benchmark-5k.png",
+    "rawReport": "apps/agent-design/results/integration-results.json"
+  },
+  "legacyIntegrationValidator": {
+    "command": "npm --prefix apps/agent-design run validate:integration",
+    "status": "expected-fail",
+    "exitCode": 1,
+    "reasons": [
+      "The three 5k pointer p95 values exceed the historical 16 ms budget: 418.0, 399.3, and 418.9 ms.",
+      "The reload screenshot mismatch ratio is 0.000003271 rather than exact zero."
+    ],
+    "disposition": "Do not relabel as green. Preserve this red performance/fidelity signal for EQ1 planning."
+  },
+  "developmentLaunchSmoke": {
+    "command": "npm run dev:mac",
+    "cycles": 2,
+    "readyCycles": 2,
+    "runtime": "Electron v43.1.0 arm64",
+    "shutdown": "Ctrl-C",
+    "runnerExitCode": 143,
+    "orphanProcessesAfterEachShutdown": 0
+  },
+  "projectContinuity": {
+    "automatedAuthorityAndRecentRegistryTests": "pass",
+    "manualOsFolderSelectionAndRecentRelaunch": "not-run",
+    "reason": "The baseline used automated authority/registry coverage and launch smoke; interactive Finder selection is retained for later dogfooding."
+  },
+  "windowsPackageGate": {
+    "status": "not-run",
+    "reason": "Windows review pending"
+  },
+  "knownLimitations": [
+    "The 5k pointer trace is over budget: worst p95 418.9 ms and over-budget ratio 1.0. EQ1 must replace the flat structural renderer with a real hierarchical React rendering contract and revisit performance.",
+    "A concurrent dev watcher in the same clone can invalidate browser execution contexts; verification commands were serialized and the exclusive integration run passed.",
+    "The reload screenshot differed by 19 of 5,808,552 pixels, a 0.000003271 mismatch ratio, while persistence revisions and console checks passed.",
+    "macOS packaging and signing remain outside EQ0."
+  ]
+}

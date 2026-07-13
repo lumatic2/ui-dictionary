@@ -371,12 +371,13 @@
     {
       "id": "EQ0",
       "title": "AskewlyDesign Mac Reproducible Baseline",
-      "status": "active",
+      "status": "completed",
       "started": "2026-07-13",
       "plan": "phases/askewlydesign-mac-baseline/index.json",
       "session_ids": [
         "codex:2026-07-13-eq0-orchestrator"
-      ]
+      ],
+      "completed": "2026-07-13"
     }
   ]
 }
