@@ -1,4 +1,4 @@
-import { mkdir, mkdtemp, rm, writeFile } from 'node:fs/promises'
+import { mkdir, mkdtemp, realpath, rm, writeFile } from 'node:fs/promises'
 import { tmpdir } from 'node:os'
 import { join } from 'node:path'
 import { afterEach, describe, expect, it, vi } from 'vitest'
@@ -10,7 +10,7 @@ afterEach(async () => Promise.all(roots.splice(0).map((root) => rm(root, { recur
 
 describe('guarded OS actions', () => {
   it('opens only registry-owned project and file references', async () => {
-    const root = await mkdtemp(join(tmpdir(), 'agent-design-os-'))
+    const root = await realpath(await mkdtemp(join(tmpdir(), 'agent-design-os-')))
     roots.push(root)
     const project = join(root, 'project')
     await mkdir(join(project, 'src'), { recursive: true })

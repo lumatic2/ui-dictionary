@@ -1,4 +1,4 @@
-import { basename, dirname, resolve } from 'node:path'
+import { win32 as path } from 'node:path'
 
 export type SquirrelStartupPlan = Readonly<{
   event: '--squirrel-install' | '--squirrel-updated' | '--squirrel-uninstall' | '--squirrel-obsolete' | '--squirrel-firstrun'
@@ -14,7 +14,7 @@ export function squirrelStartupPlan(argv: readonly string[], executablePath: str
   const action = event === '--squirrel-uninstall' ? '--removeShortcut' : '--createShortcut'
   return Object.freeze({
     event,
-    updateExecutable: resolve(dirname(executablePath), '..', 'Update.exe'),
-    args: Object.freeze([`${action}=${basename(executablePath)}`]),
+    updateExecutable: path.resolve(path.dirname(executablePath), '..', 'Update.exe'),
+    args: Object.freeze([`${action}=${path.basename(executablePath)}`]),
   })
 }

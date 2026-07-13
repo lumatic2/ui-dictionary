@@ -1,4 +1,4 @@
-import { mkdtemp, mkdir, rm, writeFile } from 'node:fs/promises'
+import { mkdtemp, mkdir, realpath, rm, writeFile } from 'node:fs/promises'
 import { tmpdir } from 'node:os'
 import { join } from 'node:path'
 import { afterEach, describe, expect, it } from 'vitest'
@@ -11,7 +11,7 @@ afterEach(async () => {
 })
 
 async function fixture(): Promise<string> {
-  const root = await mkdtemp(join(tmpdir(), 'agent-design-desktop-'))
+  const root = await realpath(await mkdtemp(join(tmpdir(), 'agent-design-desktop-')))
   roots.push(root)
   await mkdir(join(root, 'assets'))
   await writeFile(join(root, 'index.html'), '<main>AskewlyDesign</main>')

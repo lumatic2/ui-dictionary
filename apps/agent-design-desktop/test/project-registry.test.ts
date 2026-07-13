@@ -1,4 +1,4 @@
-import { mkdir, mkdtemp, rename, rm, symlink, writeFile } from 'node:fs/promises'
+import { mkdir, mkdtemp, realpath, rename, rm, symlink, writeFile } from 'node:fs/promises'
 import { tmpdir } from 'node:os'
 import { join } from 'node:path'
 import { afterEach, describe, expect, it } from 'vitest'
@@ -13,7 +13,7 @@ afterEach(async () => {
 })
 
 async function fixture() {
-  const root = await mkdtemp(join(tmpdir(), 'agent-design-trust-'))
+  const root = await realpath(await mkdtemp(join(tmpdir(), 'agent-design-trust-')))
   roots.push(root)
   const userData = join(root, 'user-data')
   const project = join(root, 'project')
