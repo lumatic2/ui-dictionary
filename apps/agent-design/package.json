@@ -9,7 +9,7 @@
     "prebuild": "npm --prefix ../../packages/canvas-core run build",
     "build": "tsc -b && vite build",
     "pretest": "npm --prefix ../../packages/canvas-core run build",
-    "test": "vitest run",
+    "test": "node scripts/run-tests.mjs",
     "preintegration": "npm --prefix ../../packages/canvas-core run build",
     "integration": "node scripts/run-integration.mjs",
     "validate:integration": "node scripts/validate-integration.mjs",
