@@ -1,59 +1,33 @@
 #!/usr/bin/env node
 
-import { existsSync } from 'node:fs'
+import { existsSync, readFileSync } from 'node:fs'
 import { fileURLToPath } from 'node:url'
 import { join, relative } from 'node:path'
 import { spawn, spawnSync } from 'node:child_process'
+import {
+  BUILD_ORDER,
+  DESKTOP,
+  INSTALL_ORDER,
+  MIN_NODE,
+  MIN_NPM,
+  TEST_ORDER,
+  assertDarwinPlatform,
+  formatVersion,
+  validateElectronRuntime,
+  versionAtLeast,
+  versionParts,
+} from './eq0-contract.mjs'
 import { installSignalCleanup } from './eq0-signal.mjs'
 
 const ROOT = fileURLToPath(new URL('../', import.meta.url))
-const DESKTOP = 'apps/agent-design-desktop'
-
-// Keep this graph explicit. Each entry has its own package.json and lockfile;
-// this is orchestration, not a root workspace migration.
-const INSTALL_ORDER = [
-  'packages/canvas-core',
-  'packages/component-registry',
-  'packages/agent-design-engine',
-  'apps/agent-design',
-  'apps/agent-design-bridge',
-  'packages/agent-design-mcp',
-  DESKTOP,
-]
-
-const BUILD_ORDER = [...INSTALL_ORDER]
-// Every AskewlyDesign runtime package in INSTALL_ORDER currently exposes test.
-const TEST_ORDER = [...INSTALL_ORDER]
-
-const MIN_NODE = [22, 12, 0]
-const MIN_NPM = [10, 0, 0]
 const npmCommand = 'npm'
+const DESKTOP_PACKAGE = join(ROOT, DESKTOP, 'package.json')
 const ELECTRON_PACKAGE = join(ROOT, DESKTOP, 'node_modules', 'electron')
 const ELECTRON_INSTALL = join(ELECTRON_PACKAGE, 'install.js')
-const ELECTRON_BIN = join(ROOT, DESKTOP, 'node_modules', '.bin', 'electron')
 const ELECTRON_RUNTIME = join(ELECTRON_PACKAGE, 'dist', 'Electron.app', 'Contents', 'MacOS', 'Electron')
 
 function assertDarwin() {
-  if (process.platform !== 'darwin') {
-    throw new Error(`EQ0 Mac commands require macOS (darwin); found ${process.platform}`)
-  }
-}
-
-function versionParts(value, label) {
-  const match = String(value).trim().match(/^(\d+)\.(\d+)\.(\d+)/)
-  if (!match) throw new Error(`could not read ${label} version from ${JSON.stringify(value)}`)
-  return match.slice(1).map(Number)
-}
-
-function versionAtLeast(actual, minimum) {
-  for (let index = 0; index < minimum.length; index += 1) {
-    if (actual[index] !== minimum[index]) return actual[index] > minimum[index]
-  }
-  return true
-}
-
-function formatVersion(version) {
-  return version.join('.')
+  assertDarwinPlatform(process.platform)
 }
 
 function checkPrerequisites() {
@@ -106,7 +80,7 @@ function installAll() {
   for (const relativePath of INSTALL_ORDER) {
     runNpm(relativePath, ['ci', '--ignore-scripts'], `install ${relativePath}`)
   }
-  prepareDesktopRuntime()
+  ensureDesktopRuntime()
 }
 
 function missingDependencies() {
@@ -121,14 +95,53 @@ function ensureDependencies() {
     installAll()
     return
   }
-  if (!desktopRuntimePresent()) prepareDesktopRuntime()
+  ensureDesktopRuntime()
 }
 
 function desktopRuntimePresent() {
   return existsSync(ELECTRON_RUNTIME)
 }
 
+function readPinnedElectronVersion() {
+  const desktopPackage = JSON.parse(readFileSync(DESKTOP_PACKAGE, 'utf8'))
+  const pinnedVersion = desktopPackage.dependencies?.electron ?? desktopPackage.devDependencies?.electron
+  if (typeof pinnedVersion !== 'string') {
+    throw new Error(`Electron version is not pinned in ${relative(ROOT, DESKTOP_PACKAGE)}`)
+  }
+  return pinnedVersion
+}
+
+function validateDesktopRuntime() {
+  if (!desktopRuntimePresent()) {
+    throw new Error(`Electron runtime is missing at ${relative(ROOT, ELECTRON_RUNTIME)}`)
+  }
+
+  const versionResult = runProcess(ELECTRON_RUNTIME, ['--version'], {
+    cwd: join(ROOT, DESKTOP),
+    encoding: 'utf8',
+    stdio: ['ignore', 'pipe', 'pipe'],
+  }, 'verify Electron runtime version')
+  const archResult = runProcess('file', [ELECTRON_RUNTIME], {
+    cwd: join(ROOT, DESKTOP),
+    encoding: 'utf8',
+    stdio: ['ignore', 'pipe', 'pipe'],
+  }, 'verify Electron runtime architecture')
+  const runtime = validateElectronRuntime({
+    reportedVersion: versionResult.stdout,
+    pinnedVersion: readPinnedElectronVersion(),
+    architectureOutput: archResult.stdout,
+  })
+  console.log(`Electron runtime ready: version=v${runtime.version} arch=${runtime.architecture}`)
+  return runtime
+}
+
+function ensureDesktopRuntime() {
+  if (!desktopRuntimePresent()) return prepareDesktopRuntime()
+  return validateDesktopRuntime()
+}
+
 function prepareDesktopRuntime() {
+  if (desktopRuntimePresent()) return validateDesktopRuntime()
   if (!existsSync(ELECTRON_INSTALL)) {
     throw new Error(`Electron preparation script is missing at ${relative(ROOT, ELECTRON_INSTALL)}`)
   }
@@ -136,27 +149,7 @@ function prepareDesktopRuntime() {
     cwd: join(ROOT, DESKTOP),
     stdio: 'inherit',
   }, 'prepare Electron runtime')
-  if (!desktopRuntimePresent()) {
-    throw new Error(`Electron preparation did not produce ${relative(ROOT, ELECTRON_RUNTIME)}`)
-  }
-  const versionResult = runProcess(ELECTRON_BIN, ['--version'], {
-    cwd: join(ROOT, DESKTOP),
-    encoding: 'utf8',
-    stdio: ['ignore', 'pipe', 'pipe'],
-  }, 'verify Electron runtime version')
-  const version = String(versionResult.stdout || '').trim()
-  if (!/^v?\d+\.\d+\.\d+/.test(version)) {
-    throw new Error(`Electron --version returned no parseable version: ${version || '<empty>'}`)
-  }
-  const archResult = runProcess('file', [ELECTRON_RUNTIME], {
-    cwd: join(ROOT, DESKTOP),
-    encoding: 'utf8',
-    stdio: ['ignore', 'pipe', 'pipe'],
-  }, 'verify Electron runtime architecture')
-  if (!/\barm64\b/.test(String(archResult.stdout || ''))) {
-    throw new Error(`Electron runtime is not arm64: ${String(archResult.stdout || '').trim()}`)
-  }
-  console.log(`Electron runtime ready: version=${version} arch=arm64`)
+  return validateDesktopRuntime()
 }
 
 function buildAll() {
@@ -173,14 +166,20 @@ function testAll() {
 
 function launchDesktop() {
   const desktopDir = join(ROOT, DESKTOP)
-  if (!existsSync(ELECTRON_BIN)) {
-    throw new Error(`Electron is missing at ${relative(ROOT, ELECTRON_BIN)}; run npm run bootstrap first`)
+  if (!desktopRuntimePresent()) {
+    throw new Error(`Electron runtime is missing at ${relative(ROOT, ELECTRON_RUNTIME)}; run npm run bootstrap first`)
   }
 
-  const child = spawn(ELECTRON_BIN, ['.'], { cwd: desktopDir, stdio: 'inherit' })
+  // detached makes Electron the leader of an isolated POSIX process group.
+  const child = spawn(ELECTRON_RUNTIME, ['.'], {
+    cwd: desktopDir,
+    detached: true,
+    stdio: 'inherit',
+  })
   installSignalCleanup({
     child,
     hostProcess: process,
+    processGroupId: child.pid,
     onError: (error) => {
       console.error(`AskewlyDesign launch failed: ${error.message}`)
       process.exitCode = 1

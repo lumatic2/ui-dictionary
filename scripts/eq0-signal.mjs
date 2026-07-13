@@ -3,6 +3,8 @@ export const SIGNAL_ESCALATION_MS = 1500
 export function installSignalCleanup({
   child,
   hostProcess,
+  processGroupId = child.pid,
+  killProcessImpl = (pid, signal) => process.kill(pid, signal),
   escalationMs = SIGNAL_ESCALATION_MS,
   setTimeoutImpl = setTimeout,
   clearTimeoutImpl = clearTimeout,
@@ -50,8 +52,13 @@ export function installSignalCleanup({
     if (childExited || (signal === 'SIGKILL' && killSent)) return
     if (signal === 'SIGKILL') killSent = true
     try {
-      child.kill(signal)
+      if (!Number.isInteger(processGroupId) || processGroupId <= 0) {
+        throw new Error(`Electron process group is unavailable for pid ${processGroupId ?? '<unknown>'}`)
+      }
+      // POSIX negative PIDs target the detached Electron process group.
+      killProcessImpl(-processGroupId, signal)
     } catch (error) {
+      if (error?.code === 'ESRCH') return
       finishError(error)
     }
   }

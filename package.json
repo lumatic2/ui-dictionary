@@ -11,6 +11,6 @@
     "build:mac": "node scripts/eq0-mac.mjs build",
     "dev:mac": "node scripts/eq0-mac.mjs dev",
     "test:mac": "node scripts/eq0-mac.mjs test",
-    "test:runner": "node --test scripts/eq0-signal.test.mjs"
+    "test:runner": "node --test scripts/eq0-contract.test.mjs scripts/eq0-signal.test.mjs"
   }
 }

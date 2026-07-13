@@ -44,8 +44,9 @@ The fixed AskewlyDesign runtime order is `canvas-core`, `component-registry`,
 desktop shell. After each package-local `npm ci --ignore-scripts`, bootstrap
 explicitly runs the installed Electron preparation script at
 `apps/agent-design-desktop/node_modules/electron/install.js`, then executes
-the installed Electron binary with `--version` and verifies/report its arm64
-runtime. A failed command names the package and phase that failed. Rerun
+the actual Electron.app runtime with `--version` and verifies/reports its
+Apple Silicon arm64 runtime. A failed command names the package and phase
+that failed. Rerun
 `npm run bootstrap` after a lockfile change or damaged dependency tree; do not
 use a root `npm install` to rewrite package-local lockfiles.
 
