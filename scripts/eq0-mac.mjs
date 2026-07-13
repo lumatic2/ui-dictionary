@@ -4,6 +4,7 @@ import { existsSync } from 'node:fs'
 import { fileURLToPath } from 'node:url'
 import { join, relative } from 'node:path'
 import { spawn, spawnSync } from 'node:child_process'
+import { installSignalCleanup } from './eq0-signal.mjs'
 
 const ROOT = fileURLToPath(new URL('../', import.meta.url))
 const DESKTOP = 'apps/agent-design-desktop'
@@ -177,24 +178,16 @@ function launchDesktop() {
   }
 
   const child = spawn(ELECTRON_BIN, ['.'], { cwd: desktopDir, stdio: 'inherit' })
-  let finished = false
-  const finish = (code) => {
-    if (finished) return
-    finished = true
-    process.exitCode = code
-  }
-  const forward = (signal) => {
-    if (!child.killed) child.kill(signal)
-  }
-  process.once('SIGINT', () => forward('SIGINT'))
-  process.once('SIGTERM', () => forward('SIGTERM'))
-  child.on('error', (error) => {
-    console.error(`AskewlyDesign launch failed: ${error.message}`)
-    finish(1)
-  })
-  child.on('exit', (code, signal) => {
-    const exitCode = code ?? (signal === 'SIGINT' ? 130 : 143)
-    finish(exitCode)
+  installSignalCleanup({
+    child,
+    hostProcess: process,
+    onError: (error) => {
+      console.error(`AskewlyDesign launch failed: ${error.message}`)
+      process.exitCode = 1
+    },
+    onExit: (code, signal) => {
+      process.exitCode = code ?? (signal === 'SIGINT' ? 130 : 143)
+    },
   })
 }
 
