@@ -619,8 +619,8 @@ export function App({ mode = appModeFromSearch(window.location.search), initialB
     for (let index = 0; index < frames; index += 1) {
       const started = performance.now()
       viewport.dispatchEvent(new PointerEvent('pointermove', { bubbles: true, pointerId, isPrimary: true, clientX: 120 + index + 1, clientY: 120 + (index % 8), buttons: 1 }))
-      const painted = await nextFrame()
-      latencies.push(painted - started)
+      await nextFrame()
+      latencies.push(performance.now() - started)
     }
     viewport.dispatchEvent(new PointerEvent('pointerup', { bubbles: true, pointerId, isPrimary: true, clientX: 120 + frames, clientY: 120 + (frames % 8) }))
     await nextFrame()
