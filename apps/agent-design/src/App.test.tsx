@@ -1,16 +1,22 @@
 import { act, cleanup, fireEvent, render, waitFor } from '@testing-library/react'
-import { afterEach, beforeEach, describe, expect, it } from 'vitest'
+import { afterEach, beforeEach, describe, expect, it, vi } from 'vitest'
 import { App, connectionStatusLabel, desktopBridgeStateLabel } from './App'
 
 beforeEach(() => {
   delete window.agentDesignHost
+  delete window.__agentDesignBenchmark
   window.localStorage.clear()
   Object.defineProperty(window, 'PointerEvent', { value: MouseEvent, configurable: true })
 })
 afterEach(() => {
   cleanup()
   delete window.agentDesignHost
+  delete window.__agentDesignBenchmark
 })
+
+function renderBenchmark() {
+  return render(<App mode="benchmark" initialBenchmarkNodes={200} />)
+}
 
 function dispatchZoomWheel(viewport: HTMLElement, deltaY: number) {
   act(() => {
@@ -25,9 +31,39 @@ function dispatchZoomWheel(viewport: HTMLElement, deltaY: number) {
   })
 }
 
+describe('production and benchmark mode boundary', () => {
+  it('does not create fixture data or benchmark globals in production', () => {
+    const view = render(<App mode="production" />)
+
+    expect(view.getByTestId('production-empty-state')).toBeTruthy()
+    expect(view.queryByTestId('canvas-content')).toBeNull()
+    expect(view.queryByText('1,000 nodes')).toBeNull()
+    expect(view.queryByText('Development')).toBeNull()
+    expect(window.__agentDesignBenchmark).toBeUndefined()
+  })
+
+  it('creates the fixture and benchmark instrumentation only in benchmark mode', () => {
+    const hostCall = vi.fn()
+    window.agentDesignHost = new Proxy({ apiVersion: 1 }, {
+      get(target, property) {
+        if (property === 'apiVersion') return target.apiVersion
+        return hostCall
+      },
+    }) as typeof window.agentDesignHost
+    const view = render(<App mode="benchmark" />)
+
+    expect(view.getByText('1,000 nodes')).toBeTruthy()
+    expect(view.getByTestId('canvas-content')).toBeTruthy()
+    expect(view.queryByTestId('production-empty-state')).toBeNull()
+    expect(view.queryByRole('button', { name: 'Open project' })).toBeNull()
+    expect(window.__agentDesignBenchmark).toBeDefined()
+    expect(hostCall).not.toHaveBeenCalled()
+  })
+})
+
 describe('AskewlyDesign persistence flow', () => {
   it('presents a product workspace before development diagnostics', () => {
-    const view = render(<App />)
+    const view = renderBenchmark()
     expect(view.getByRole('banner', { name: 'Application title bar' })).toBeTruthy()
     expect(view.getByRole('navigation', { name: 'Workspace toolbar' })).toBeTruthy()
     expect(view.getByRole('complementary', { name: 'Workspace navigation' })).toBeTruthy()
@@ -38,7 +74,7 @@ describe('AskewlyDesign persistence flow', () => {
   })
 
   it('keeps viewport and panels available from the persistent toolbar', () => {
-    const view = render(<App />)
+    const view = renderBenchmark()
     expect(view.getByLabelText('Canvas zoom').textContent).toBe('100%')
     fireEvent.click(view.getByRole('button', { name: 'Zoom in' }))
     expect(view.getByLabelText('Canvas zoom').textContent).toBe('110%')
@@ -50,7 +86,7 @@ describe('AskewlyDesign persistence flow', () => {
   })
 
   it('applies, saves, reloads, undoes, and redoes canonical operations', async () => {
-    const view = render(<App />)
+    const view = renderBenchmark()
     fireEvent.click(view.getByTestId('apply-demo'))
     expect(view.getByTestId('document-revision').textContent).toBe('3')
     fireEvent.click(view.getByTestId('save-document'))
@@ -67,7 +103,7 @@ describe('AskewlyDesign persistence flow', () => {
   })
 
   it('commits click, Shift multi-select, arrow traversal, and Escape through history', () => {
-    const view = render(<App />)
+    const view = renderBenchmark()
     const node7 = view.container.querySelector('[data-canvas-id="node-00007"]')
     const node14 = view.container.querySelector('[data-canvas-id="node-00014"]')
     if (!(node7 instanceof HTMLElement) || !(node14 instanceof HTMLElement)) throw new Error('fixture nodes missing')
@@ -86,7 +122,7 @@ describe('AskewlyDesign persistence flow', () => {
   })
 
   it('previews move and resize but commits exactly one operation per gesture', () => {
-    const view = render(<App />)
+    const view = renderBenchmark()
     const viewport = view.getByTestId('canvas-viewport')
     const node1 = view.container.querySelector('[data-canvas-id="node-00001"]')
     if (!(node1 instanceof HTMLElement)) throw new Error('fixture node missing')
@@ -114,7 +150,7 @@ describe('AskewlyDesign persistence flow', () => {
   })
 
   it('opens the insert palette from the toolbar and inserts as one undoable entry', () => {
-    const view = render(<App />)
+    const view = renderBenchmark()
     fireEvent.click(view.getByTestId('toggle-insert'))
     fireEvent.click(view.getByTestId('insert-primitive-frame'))
     expect(view.getByTestId('document-revision').textContent).toBe('1')
@@ -125,7 +161,7 @@ describe('AskewlyDesign persistence flow', () => {
   })
 
   it('synchronizes selection between canvas and layers tree', () => {
-    const view = render(<App />)
+    const view = renderBenchmark()
     const node7 = view.container.querySelector('[data-canvas-id="node-00007"]')
     if (!(node7 instanceof HTMLElement)) throw new Error('fixture node missing')
     fireEvent.click(node7)
@@ -139,7 +175,7 @@ describe('AskewlyDesign persistence flow', () => {
   })
 
   it('reorders by keyboard and reparents by valid native drop', () => {
-    const view = render(<App />)
+    const view = renderBenchmark()
     const viewport = view.getByTestId('canvas-viewport')
     const node1 = view.container.querySelector('[data-canvas-id="node-00001"]')
     const target = view.container.querySelector('[data-canvas-id="node-00100"]')
@@ -164,7 +200,7 @@ describe('AskewlyDesign persistence flow', () => {
   })
 
   it('validates and commits typed props, variants, layout, tokens, and token mode', () => {
-    const view = render(<App />)
+    const view = renderBenchmark()
     const component = view.container.querySelector('[data-canvas-id="node-00001"]')
     if (!(component instanceof HTMLElement)) throw new Error('component missing')
     fireEvent.click(component)
@@ -191,34 +227,34 @@ describe('AskewlyDesign persistence flow', () => {
   })
 
   it('runs delete, duplicate, and group shortcuts outside editable fields', () => {
-    const view = render(<App />)
+    const view = renderBenchmark()
     const node3 = view.container.querySelector('[data-canvas-id="node-00003"]')
     const node4 = view.container.querySelector('[data-canvas-id="node-00004"]')
     if (!(node3 instanceof HTMLElement) || !(node4 instanceof HTMLElement)) throw new Error('fixture nodes missing')
 
     fireEvent.click(node3)
     fireEvent.keyDown(window, { key: 'd', ctrlKey: true })
-    expect(view.getByText('1,001 nodes')).toBeTruthy()
+    expect(view.getByText('201 nodes')).toBeTruthy()
     expect(view.getByTestId('selection-count').textContent).toBe('1')
     fireEvent.keyDown(window, { key: 'Delete' })
-    expect(view.getByText('1,000 nodes')).toBeTruthy()
+    expect(view.getByText('200 nodes')).toBeTruthy()
 
     fireEvent.click(node3)
     fireEvent.click(node4, { shiftKey: true })
     fireEvent.keyDown(window, { key: 'g', ctrlKey: true })
-    expect(view.getByText('1,001 nodes')).toBeTruthy()
+    expect(view.getByText('201 nodes')).toBeTruthy()
     expect(view.getByTestId('selection-count').textContent).toBe('1')
     fireEvent.keyDown(window, { key: 'G', ctrlKey: true, shiftKey: true })
-    expect(view.getByText('1,000 nodes')).toBeTruthy()
+    expect(view.getByText('200 nodes')).toBeTruthy()
     expect(view.getByTestId('selection-count').textContent).toBe('2')
 
     fireEvent.click(node3)
     fireEvent.keyDown(view.getByTestId('property-name'), { key: 'Delete' })
-    expect(view.getByText('1,000 nodes')).toBeTruthy()
+    expect(view.getByText('200 nodes')).toBeTruthy()
   })
 
   it('zooms around the cursor with ctrl+wheel inside zoom bounds', () => {
-    const view = render(<App />)
+    const view = renderBenchmark()
     const viewport = view.getByTestId('canvas-viewport')
     dispatchZoomWheel(viewport, -100)
     expect(view.getByLabelText('Canvas zoom').textContent).toBe('110%')
@@ -234,7 +270,7 @@ describe('AskewlyDesign persistence flow', () => {
   })
 
   it('pans with space drag as a preview and commits one viewport operation', () => {
-    const view = render(<App />)
+    const view = renderBenchmark()
     const viewport = view.getByTestId('canvas-viewport')
     const revisionBefore = Number(view.getByTestId('document-revision').textContent)
     fireEvent.keyDown(viewport, { key: ' ' })
@@ -250,7 +286,7 @@ describe('AskewlyDesign persistence flow', () => {
   })
 
   it('fits canvas, fits selection, and resets zoom from visible commands', () => {
-    const view = render(<App />)
+    const view = renderBenchmark()
     fireEvent.click(view.getByRole('button', { name: 'Fit canvas' }))
     expect(view.getByLabelText('Canvas zoom').textContent).toBe('25%')
     const node3 = view.container.querySelector('[data-canvas-id="node-00003"]')
@@ -263,7 +299,7 @@ describe('AskewlyDesign persistence flow', () => {
   })
 
   it('toggles the agent collaboration panel with an offline empty state', () => {
-    const view = render(<App />)
+    const view = renderBenchmark()
     fireEvent.click(view.getByTestId('toggle-agents'))
     expect(view.getByTestId('agent-panel')).toBeTruthy()
     expect(view.getByTestId('agent-context').textContent).toContain('selection node-00000')
@@ -273,7 +309,7 @@ describe('AskewlyDesign persistence flow', () => {
   })
 
   it('discovers shortcuts through a visible dialog', () => {
-    const view = render(<App />)
+    const view = renderBenchmark()
     fireEvent.click(view.getByTestId('open-shortcuts'))
     expect(view.getByRole('dialog', { name: 'Keyboard shortcuts' })).toBeTruthy()
     expect(view.getByText('Space+Drag')).toBeTruthy()
@@ -284,7 +320,7 @@ describe('AskewlyDesign persistence flow', () => {
   })
 
   it('marks the shortcuts dialog as modal, moves focus into it, and restores focus to the opener on close', () => {
-    const view = render(<App />)
+    const view = renderBenchmark()
     const opener = view.getByTestId('open-shortcuts')
     fireEvent.click(opener)
     const dialog = view.getByTestId('shortcuts-dialog')
@@ -296,7 +332,7 @@ describe('AskewlyDesign persistence flow', () => {
   })
 
   it('traps Tab and Shift+Tab so focus cycles only within the shortcuts dialog', () => {
-    const view = render(<App />)
+    const view = renderBenchmark()
     fireEvent.click(view.getByTestId('open-shortcuts'))
     const dialog = view.getByTestId('shortcuts-dialog')
     const closeButton = view.getByRole('button', { name: 'Close' })
@@ -316,7 +352,7 @@ describe('AskewlyDesign persistence flow', () => {
   })
 
   it('groups the workspace toolbar into labeled sections so it can wrap at narrow widths', () => {
-    const view = render(<App />)
+    const view = renderBenchmark()
     expect(view.getByRole('group', { name: 'Panels' })).toBeTruthy()
     expect(view.getByRole('group', { name: 'Document' })).toBeTruthy()
     expect(view.getByRole('group', { name: 'Zoom' })).toBeTruthy()
@@ -326,7 +362,7 @@ describe('AskewlyDesign persistence flow', () => {
   })
 
   it('applies a viewport preset to the canvas root through the canonical update-node operation, undoably', () => {
-    const view = render(<App />)
+    const view = renderBenchmark()
     const preset = view.getByTestId('viewport-preset')
     expect((preset as HTMLSelectElement).value).toBe('desktop')
 
@@ -353,7 +389,7 @@ describe('AskewlyDesign persistence flow', () => {
   })
 
   it('completes a representative creation workflow from insert to reload continuity', async () => {
-    const view = render(<App />)
+    const view = renderBenchmark()
     const viewport = view.getByTestId('canvas-viewport')
 
     fireEvent.keyDown(viewport, { key: 'Escape' })
@@ -362,7 +398,7 @@ describe('AskewlyDesign persistence flow', () => {
     expect(view.getByTestId('insert-feedback').textContent).toBe('Frame inserted into canvas root')
     fireEvent.click(view.getByTestId('insert-primitive-text'))
     expect(view.getByTestId('insert-feedback').textContent).toBe('Text inserted into Frame')
-    expect(view.getByText('1,002 nodes')).toBeTruthy()
+    expect(view.getByText('202 nodes')).toBeTruthy()
 
     fireEvent.click(view.getByTestId('layer-created-0001'))
     fireEvent.click(view.getByTestId('insert-primitive-group'))
@@ -389,19 +425,19 @@ describe('AskewlyDesign persistence flow', () => {
     expect(view.getByTestId('layer-created-0003').getAttribute('aria-selected')).toBe('true')
 
     fireEvent.keyDown(window, { key: 'd', ctrlKey: true })
-    expect(view.getByText('1,004 nodes')).toBeTruthy()
+    expect(view.getByText('204 nodes')).toBeTruthy()
     fireEvent.keyDown(window, { key: 'Delete' })
-    expect(view.getByText('1,003 nodes')).toBeTruthy()
+    expect(view.getByText('203 nodes')).toBeTruthy()
     fireEvent.click(view.getByTestId('undo'))
-    expect(view.getByText('1,004 nodes')).toBeTruthy()
+    expect(view.getByText('204 nodes')).toBeTruthy()
     fireEvent.click(view.getByTestId('undo'))
-    expect(view.getByText('1,003 nodes')).toBeTruthy()
+    expect(view.getByText('203 nodes')).toBeTruthy()
 
     fireEvent.click(view.getByTestId('save-document'))
     await waitFor(() => expect(view.getByTestId('persistence-status').textContent).toContain('saved'))
     fireEvent.click(view.getByTestId('reload-document'))
     await waitFor(() => expect(view.getByTestId('persistence-status').textContent).toContain('reloaded revision'))
-    expect(view.getByText('1,003 nodes')).toBeTruthy()
+    expect(view.getByText('203 nodes')).toBeTruthy()
     const frame = view.container.querySelector<HTMLElement>('[data-canvas-id="created-0001"]')
     expect(frame?.getAttribute('aria-label')).toBe('Hero section')
     expect(view.container.querySelector('[data-canvas-id="created-0002"]')?.getAttribute('data-parent-id')).toBe('created-0001')
@@ -409,7 +445,7 @@ describe('AskewlyDesign persistence flow', () => {
   })
 
   it('keeps Korean composition transient and commits one text operation at composition end', () => {
-    const view = render(<App />)
+    const view = renderBenchmark()
     const text = view.container.querySelector('[data-canvas-id="node-00007"]')
     if (!(text instanceof HTMLElement)) throw new Error('text node missing')
     fireEvent.click(text)

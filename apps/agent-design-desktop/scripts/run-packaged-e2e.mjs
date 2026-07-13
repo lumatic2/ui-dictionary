@@ -198,13 +198,14 @@ class CdpLocator {
   }
 }
 
-async function launch(userData) {
+async function launch(userData, extraArgs = []) {
   const port = await freePort()
   const child = spawn(executablePath, [
     `--user-data-dir=${userData}`,
     `--remote-debugging-port=${port}`,
     '--enable-unsafe-webgpu',
     '--enable-features=Vulkan,UseSkiaRenderer',
+    ...extraArgs,
   ], { cwd: root, stdio: ['ignore', 'pipe', 'pipe'], windowsHide: true })
   let diagnostics = ''
   child.stdout.on('data', (chunk) => { diagnostics = `${diagnostics}${chunk}`.slice(-8_000) })
@@ -214,7 +215,8 @@ async function launch(userData) {
   for (let attempt = 0; attempt < 100; attempt += 1) {
     try {
       const targets = await (await fetch(`http://127.0.0.1:${port}/json/list`)).json()
-      target = targets.find((candidate) => candidate.url === 'app://renderer/index.html')
+      const expectedUrl = extraArgs.includes('--benchmark=1') ? 'app://renderer/index.html?benchmark=1' : 'app://renderer/index.html'
+      target = targets.find((candidate) => candidate.url === expectedUrl)
       if (target?.webSocketDebuggerUrl) break
     } catch {
       if (child.exitCode !== null) throw new Error(`packaged app exited before CDP became ready: ${child.exitCode}\n${diagnostics}`)
@@ -516,10 +518,9 @@ try {
 
   stage('launching packaged 5k benchmark')
   const benchmarkUserData = join(temporaryRoot, 'benchmark-user-data')
-  benchmarkApp = await launch(benchmarkUserData)
+  benchmarkApp = await launch(benchmarkUserData, ['--benchmark=1'])
   const benchmarkPage = await benchmarkApp.firstWindow()
-  await benchmarkPage.waitForFunction(() => typeof window.__agentDesignBenchmark?.openDevFixture === 'function')
-  await benchmarkPage.evaluate(() => window.__agentDesignBenchmark.openDevFixture())
+  await benchmarkPage.waitForFunction(() => typeof window.__agentDesignBenchmark?.runPointerTrace === 'function')
   const fixtureSize = benchmarkPage.getByTestId('fixture-size')
   await fixtureSize.waitFor()
   await fixtureSize.selectOption('5000')

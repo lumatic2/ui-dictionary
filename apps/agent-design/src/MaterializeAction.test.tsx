@@ -5,6 +5,8 @@ import { planMaterializeRegistryNode } from '@askewly/component-registry'
 import { App } from './App'
 import type { AgentDesignDesktopHost, DesktopCanvasSnapshot } from './desktopHost'
 
+const PROJECT_ID = 'project:aaaaaaaaaaaaaaaaaaaaaaaa'
+
 afterEach(() => {
   cleanup()
   delete window.agentDesignHost
@@ -49,7 +51,7 @@ function buildHost(overrides: Partial<AgentDesignDesktopHost> = {}): AgentDesign
   return {
     apiVersion: 1,
     getHostInfo: vi.fn(),
-    getBridgeStatus: vi.fn(async () => ({ apiVersion: 1 as const, state: 'ready' as const, projectId: 'project:fixture', restartCount: 0, cursor: 1, revision: 1, lastErrorCode: null, recoveryMode: null })),
+    getBridgeStatus: vi.fn(async () => ({ apiVersion: 1 as const, state: 'ready' as const, projectId: PROJECT_ID, restartCount: 0, cursor: 1, revision: 1, lastErrorCode: null, recoveryMode: null })),
     copyTerminalCommand: vi.fn(async () => ({ copied: true as const })),
     onBridgeStatus: vi.fn(() => () => undefined),
     getCanvasSnapshot: vi.fn(async () => snapshotFixture(1)),
@@ -59,7 +61,7 @@ function buildHost(overrides: Partial<AgentDesignDesktopHost> = {}): AgentDesign
     getCollaborationFeed: vi.fn(async () => ({ entries: [], actors: [], cursorRevision: 0 })),
     onCollaborationFeed: vi.fn(() => () => undefined),
     selectProject: vi.fn(),
-    recentProjects: vi.fn(async () => [{ id: 'project:aaaaaaaaaaaaaaaaaaaaaaaa', displayName: 'fixture', lastOpenedAt: '2026-07-12T00:00:00.000Z' }]),
+    recentProjects: vi.fn(async () => [{ id: PROJECT_ID, displayName: 'fixture', lastOpenedAt: '2026-07-12T00:00:00.000Z' }]),
     openRecentProject: vi.fn(),
     openPreview: vi.fn(),
     hidePreview: vi.fn(),
@@ -74,7 +76,7 @@ function buildHost(overrides: Partial<AgentDesignDesktopHost> = {}): AgentDesign
 
 describe('materialize registry node action', () => {
   it('hides the action in web/demo mode with no desktop bridge', () => {
-    const view = render(<App />)
+    const view = render(<App mode="benchmark" />)
     const component = view.container.querySelector('[data-canvas-id="node-00001"]')
     if (!(component instanceof HTMLElement)) throw new Error('code-component fixture missing')
     fireEvent.click(component)

@@ -9,7 +9,7 @@ const root = path.resolve(import.meta.dirname, '..')
 const resultsDir = path.join(root, 'results')
 const screenshotsDir = path.join(resultsDir, 'screenshots')
 const port = 4181
-const url = `http://127.0.0.1:${port}`
+const url = `http://127.0.0.1:${port}/?benchmark=1`
 const vite = path.join(root, 'node_modules', 'vite', 'bin', 'vite.js')
 const server = spawn(process.execPath, [vite, '--host', '127.0.0.1', '--port', String(port)], { cwd: root, stdio: ['ignore', 'pipe', 'pipe'] })
 

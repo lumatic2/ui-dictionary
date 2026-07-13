@@ -4,6 +4,8 @@ import type { CanvasDocument } from '@askewly/canvas-core'
 import { App } from './App'
 import type { AgentDesignDesktopHost, DesktopCanvasSnapshot, DesktopCanvasSnapshotReason, DesktopCollaborationFeed } from './desktopHost'
 
+const PROJECT_ID = 'project:aaaaaaaaaaaaaaaaaaaaaaaa'
+
 afterEach(() => {
   cleanup()
   delete window.agentDesignHost
@@ -46,7 +48,7 @@ describe('dual-actor collaboration round-trip', () => {
     const host = {
       apiVersion: 1,
       getHostInfo: vi.fn(),
-      getBridgeStatus: vi.fn(async () => ({ apiVersion: 1, state: 'ready', projectId: 'project:fixture', restartCount: 0, cursor: 1, revision: 1, lastErrorCode: null, recoveryMode: null })),
+      getBridgeStatus: vi.fn(async () => ({ apiVersion: 1, state: 'ready', projectId: PROJECT_ID, restartCount: 0, cursor: 1, revision: 1, lastErrorCode: null, recoveryMode: null })),
       copyTerminalCommand: vi.fn(async () => ({ copied: true as const })),
       onBridgeStatus: vi.fn(() => () => undefined),
       getCanvasSnapshot: vi.fn(async () => snapshotFixture(1)),
@@ -56,7 +58,7 @@ describe('dual-actor collaboration round-trip', () => {
       getCollaborationFeed: vi.fn(async () => ({ entries: [], actors: [], cursorRevision: 0 })),
       onCollaborationFeed: vi.fn((listener: (feed: DesktopCollaborationFeed) => void) => { feedListener = listener; return () => undefined }),
       selectProject: vi.fn(),
-      recentProjects: vi.fn(async () => [{ id: 'project:aaaaaaaaaaaaaaaaaaaaaaaa', displayName: 'fixture', lastOpenedAt: '2026-07-12T00:00:00.000Z' }]),
+      recentProjects: vi.fn(async () => [{ id: PROJECT_ID, displayName: 'fixture', lastOpenedAt: '2026-07-12T00:00:00.000Z' }]),
       openRecentProject: vi.fn(),
       openPreview: vi.fn(),
       hidePreview: vi.fn(),

@@ -11,10 +11,11 @@ afterEach(() => {
 
 describe('desktop bridge surface', () => {
   it('shows only redacted lifecycle state and asks main to copy terminal commands', async () => {
+    const project = { id: 'project:aaaaaaaaaaaaaaaaaaaaaaaa', displayName: 'fixture', lastOpenedAt: '2026-07-11T01:00:00.000Z' }
     const ready: DesktopBridgeStatus = {
       apiVersion: 1,
       state: 'ready',
-      projectId: 'project:fixture',
+      projectId: project.id,
       restartCount: 1,
       cursor: 4,
       revision: 4,
@@ -34,9 +35,9 @@ describe('desktop bridge surface', () => {
       onCanvasSnapshot: vi.fn(() => () => undefined),
       getCollaborationFeed: vi.fn(async () => ({ entries: [], actors: [], cursorRevision: 0 })),
       onCollaborationFeed: vi.fn(() => () => undefined),
-      selectProject: vi.fn(async () => ({ canceled: false, project: { id: 'project:aaaaaaaaaaaaaaaaaaaaaaaa', displayName: 'fixture', lastOpenedAt: '2026-07-11T01:00:00.000Z' } })),
-      recentProjects: vi.fn(async () => []),
-      openRecentProject: vi.fn(async () => ({ id: 'project:aaaaaaaaaaaaaaaaaaaaaaaa', displayName: 'fixture', lastOpenedAt: '2026-07-11T01:00:00.000Z' })),
+      selectProject: vi.fn(async () => ({ canceled: false, project })),
+      recentProjects: vi.fn(async () => [project]),
+      openRecentProject: vi.fn(async () => project),
       openPreview: vi.fn(async (request) => ({ visible: true, projectId: request.projectId, state: 'ready' as const })),
       hidePreview: vi.fn(async () => ({ visible: false, projectId: null, state: 'idle' as const })),
       catalogFiles: vi.fn(async () => [{ id: 'file:bbbbbbbbbbbbbbbbbbbbbbbb', label: 'src/App.tsx' }]),
@@ -49,24 +50,32 @@ describe('desktop bridge surface', () => {
 
     const view = render(<App />)
     await waitFor(() => expect(view.getByTestId('desktop-bridge-status').textContent).toContain('desktop ready · recovered · restart 1'))
+    expect(host.getCanvasSnapshot).toHaveBeenCalledWith({ apiVersion: 1 })
+    expect(view.queryByTestId('apply-demo')).toBeNull()
+    expect(view.queryByTestId('save-document')).toBeNull()
+    expect(view.queryByTestId('reload-document')).toBeNull()
+    expect(view.queryByText('Development')).toBeNull()
     expect(view.getByTestId('desktop-bridge-status').textContent).not.toMatch(/token|127\.0\.0\.1|C:\\/i)
     fireEvent.click(view.getByRole('button', { name: 'Copy Codex' }))
     fireEvent.click(view.getByRole('button', { name: 'Copy Claude' }))
     await waitFor(() => expect(copyTerminalCommand).toHaveBeenCalledTimes(2))
     expect(copyTerminalCommand).toHaveBeenNthCalledWith(1, { apiVersion: 1, actor: 'codex' })
     expect(copyTerminalCommand).toHaveBeenNthCalledWith(2, { apiVersion: 1, actor: 'claude' })
-    fireEvent.click(view.getByRole('button', { name: 'Open project' }))
-    await waitFor(() => expect(host.selectProject).toHaveBeenCalledWith({ apiVersion: 1 }))
     expect(view.getByRole('combobox', { name: 'Recent projects' }).textContent).toContain('fixture')
     fireEvent.click(view.getByRole('button', { name: 'Preview' }))
     fireEvent.click(view.getByRole('button', { name: 'Explorer' }))
-    fireEvent.click(view.getByRole('button', { name: 'Diagnostics' }))
     await waitFor(() => expect(host.openPreview).toHaveBeenCalledWith({ apiVersion: 1, projectId: 'project:aaaaaaaaaaaaaaaaaaaaaaaa' }))
     expect(host.revealProject).toHaveBeenCalledWith({ apiVersion: 1, projectId: 'project:aaaaaaaaaaaaaaaaaaaaaaaa' })
-    expect(host.exportDiagnostics).toHaveBeenCalledWith({ apiVersion: 1 })
     await waitFor(() => expect(view.getByRole('combobox', { name: 'Project files' }).textContent).toContain('src/App.tsx'))
     fireEvent.change(view.getByRole('combobox', { name: 'Project files' }), { target: { value: 'file:bbbbbbbbbbbbbbbbbbbbbbbb' } })
     expect(host.openFile).toHaveBeenCalledWith({ apiVersion: 1, projectId: 'project:aaaaaaaaaaaaaaaaaaaaaaaa', fileId: 'file:bbbbbbbbbbbbbbbbbbbbbbbb' })
+    vi.mocked(host.openRecentProject).mockRejectedValueOnce(new Error('missing project'))
+    fireEvent.change(view.getByRole('combobox', { name: 'Recent projects' }), { target: { value: project.id } })
+    expect(view.getByTestId('production-empty-state')).toBeTruthy()
+    await waitFor(() => expect(view.getByRole('alert').textContent).toContain('no longer available'))
+    expect(view.queryByTestId('canvas-content')).toBeNull()
+    expect(view.getByRole('button', { name: 'Try again' })).toBeTruthy()
+    expect(host.getCanvasSnapshot).toHaveBeenCalledTimes(1)
   })
 })
 

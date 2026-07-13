@@ -76,7 +76,8 @@ async function createMainWindow(setup?: (window: BrowserWindow) => void): Promis
   configureWindowSecurity(window)
   setup?.(window)
   window.once('ready-to-show', () => window.show())
-  await window.loadURL(`${APP_ORIGIN}/index.html`)
+  const benchmarkQuery = process.argv.includes('--benchmark=1') ? '?benchmark=1' : ''
+  await window.loadURL(`${APP_ORIGIN}/index.html${benchmarkQuery}`)
   return window
 }
 
