@@ -21,4 +21,8 @@
 - [x] `node scripts/generate-llms-txt.mjs` 재생성 + 내장 링크 무결성 검증 PASS (43 assets)
 - [x] 로컬 생성물 확인: `public/llms/docs/design-system/entry-protocol.md` 존재, llms.txt 최상단 섹션 노출
 - [x] 실패 모드 probe: 배포본 오경로 fetch가 200+index.html 반환하는 silent fallback **적발** → 404.html 봉합 (배포 후 재확인 항목 ↓)
-- [ ] 배포 후: `curl https://ui.askewly.com/llms/docs/design-system/entry-protocol.md` 200 + 실제 md 내용, 오경로 404 (push는 사용자 승인 후 — deploy batching)
+- [x] 배포 후: `curl https://ui.askewly.com/llms/docs/design-system/entry-protocol.md` 200 + 실제 md 내용("# Agent Entry Protocol"), 오경로 404 확인, llms.txt line 8 "## Entry Protocol" 노출 (2026-07-17 push 승인 후 관측)
+
+## Round-1 E2E 후속 보강 (커밋 ef36839)
+
+- E2E 1차에서 적발된 실패 모드 반영: ① tokens.css(SSOT 파생 CSS 변수)를 `/llms/tokens/tokens.css`로 노출(generate-llms-txt.mjs destRel 지원), ② 프로토콜에 "URL 정확 복사·경로 구성 금지 + 응답 콘텐츠 타입 검증" 규칙(step 0) 추가, ③ 404.html을 에이전트에게 명시적으로 loud하게("your fetch FAILED … do not proceed with invented styling").

@@ -1,7 +1,7 @@
 # ROADMAP
 
 > Last updated: 2026-07-17
-> Status: Agent Adoption Loop — AD1 활성 (monetization은 parked, `docs/horizons/CANDIDATES.md`)
+> Status: Agent Adoption Loop — AD1 완료(2026-07-17), AD2 활성 (monetization은 parked, `docs/horizons/CANDIDATES.md`)
 > North star: Build Askewly Design as both a public reference website and an agent-usable implementation system.
 > line budget: <=150
 
@@ -12,15 +12,17 @@ Goal: Claude/Codex 디자인 작업에서 askewly design 조회가 기본 경로
 
 ## Active Milestones
 
-<!-- harness:milestone id="AD1" status="active" priority="P0" -->
+<!-- harness:milestone id="AD1" status="completed" priority="P0" evidence="docs/plans/2026-07-17-ad1-default-routing.md" -->
 ### AD1 — Default Routing 배선
 - DoD: 진입 프로토콜이 llms.txt에 노출(링크 무결성 PASS), Claude 배선(전역 CLAUDE.md 규칙 + 디자인 스킬 갱신·재배포) + Codex 배선(전역 지침·배포 미러), 양 에이전트 신규 세션 E2E에서 askewly design 자동 조회 관측 + 산출물 색 리터럴 0, 실패 모드(오경로 fetch loud failure) 확인.
-- Evidence: `docs/plans/2026-07-17-ad1-default-routing.md`
+- Evidence: docs/plans/2026-07-17-ad1-default-routing.md
 - Gap: 발견·소비 경로(llms.txt·스킬)는 있으나 디자인 작업 → askewly design 자동 라우팅 규칙이 없어 실사용 흐름이 발화하지 않음.
 - Scale: changesets>=3; surfaces: llms.txt fetch, Claude·Codex 신규 세션 E2E(외부 프로젝트); capability: 디자인 작업 기본 라우팅
-- Status: [ ]
+- Status: [x]
 
-<!-- harness:milestone id="AD2" status="pending" priority="P0" -->
+- Completed at: 2026-07-17
+- Summary: 진입 프로토콜 llms.txt 노출 + Claude(규칙+hook)·Codex(AGENTS.md) 라우팅 배선 — 양 에이전트 E2E 토큰 파생 PASS(14/14·16/16, 발명 0), silent 404·URL 구성 결함 적발·봉합 — changesets #99–101
+<!-- harness:milestone id="AD2" status="active" priority="P0" -->
 ### AD2 — Style Signature
 - DoD: 기존 자산(토큰 SSOT·templates·사이트·과거 결과물) 역산 초안 → 사용자 인터뷰 확정을 거친 style-signature 정본 + 판정 체크리스트, 체크리스트가 design-qa 스킬·llms.txt에 편입되어 실제 판정 1회 구동.
 - Evidence: `docs/design-system/style-signature.md`(정본) + 활성화 시 plan doc
@@ -50,6 +52,8 @@ Goal: Claude/Codex 디자인 작업에서 askewly design 조회가 기본 경로
 - 신뢰 프로젝트 소실 시 에러 표면 (QA2 dogfooding 결함 #3 — 현재 조용한 데모 폴백)
 - 프로덕션 셸 정리: 기본 1,000-node fixture·dev 계기판 제거 (QA2 dogfooding 결함 #4)
 - shortcuts dialog 배경 콘텐츠 inert/aria-hidden (스크린리더 가상 커서 — 키보드 트랩은 완료)
+- Codex Windows workspace-write sandbox HTTPS 차단("Authentication failed") — headless codex exec에서 토큰 fetch 불가 (AD1 E2E 적발, changeset #101)
+- ui-dictionary CLAUDE.md의 design-bootstrap/custom-skills 스킬 서술 stale — 로컬 design-* 스킬 소스 부재 (AD1 실사, changeset #100)
 
 ## Archive Pointer
 

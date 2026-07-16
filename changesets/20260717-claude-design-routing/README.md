@@ -19,4 +19,8 @@
 
 - [x] `~/.claude/CLAUDE.md`에 섹션 존재 grep (배선 자체)
 - [x] 실사: 스킬 갱신 대상 부재 확인 (custom-skills·~/.claude/skills·plugins 3면 조사)
-- [ ] E2E: 신규 Claude 세션에서 askewly design 미언급 디자인 지시 → 프로토콜 자동 fetch 관측 + 산출물 색 리터럴 0 (**배포 선행 필요** — entry-protocol.md가 아직 미배포라 fetch가 404/SPA fallback)
+- [x] E2E: 신규 Claude 세션(sonnet, 스크래치 외부 레포, askewly 미언급 지시) 3라운드 —
+  - r1(규칙만): 라우팅 발화 PASS(프로토콜+anti-patterns fetch), 토큰 파생 FAIL(오경로 구성 + silent 404 통과 → 발명 팔레트)
+  - r2(규칙만): 라우팅 미발화 — 규칙 단독은 비결정적임을 관측 (사용자 확정 격상 조건 충족)
+  - r3(hook 격상 후): **PASS** — llms.txt→프로토콜→tokens.css→anti-patterns→recipe 체인 소비, 오경로 1회 자가 교정(loud 404 작동), 산출물 색상 14/14 전부 tokens.css 파생·발명 0·var() 48회
+- [x] hook 격상 (2026-07-17 사용자 사전 확정 경로): `~/.claude/hooks/design_routing_inject.py` 신설 + settings.json UserPromptSubmit 등록, match/no-match 단위 테스트 PASS. evidence: 스크래치 `e2e-claude*/log.jsonl`

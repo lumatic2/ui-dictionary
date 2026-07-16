@@ -12,6 +12,10 @@
 ## Verification
 
 - [x] `~/.codex/AGENTS.md`에 섹션 존재 grep (배선 자체)
-- [ ] E2E(Claude): 신규 세션·외부 프로젝트에서 askewly design 미언급 디자인 지시 → 프로토콜 자동 fetch 관측 + 색 리터럴 0 (**배포 선행 필요**)
-- [ ] E2E(Codex): 동일 조건 관측 (**배포 선행 필요**)
-- [ ] 실패 모드: 미언급 지시로만 판정(언급 시 무효), 오경로 fetch 404 확인(404.html 배포 후)
+- [x] E2E(Claude): changeset #100 참조 — r3(hook 격상 후) 완전 PASS, 색상 14/14 토큰 파생·발명 0
+- [x] E2E(Codex): 4런 — r1·r2·r3(workspace-write sandbox): 라우팅 발화 3/3 관측(프로토콜 fetch 시도), 그러나 sandbox 내 HTTPS가 전부 "Authentication failed"(network_access=true여도 TLS 차단) + apply_patch sandbox 오류로 토큰 소비 실패. r4(danger-full-access, 환경 결함 격리): **완전 PASS** — llms.txt→프로토콜→anti-patterns→taxonomy 체인 소비, 색상 16/16 토큰 파생·발명 0·var() 94회. evidence: `~/e2e-codex-tmp/log-full.txt` 판독 기록(본 README·ledger)
+- [x] 실패 모드: 전 런 askewly 미언급 지시로만 판정, 오경로 fetch 404 확인(Claude r3에서 오경로 1회 자가 교정 관측)
+
+## 잔여 (AD1 범위 밖 — 유지보수 후보)
+
+- Codex Windows `workspace-write` sandbox에서 HTTPS fetch 불가(schannel "Authentication failed") — 라우팅 배선이 아니라 Codex 샌드박스 환경 결함. headless `codex exec` 한정이며 사용자 대화형 사용과 조건이 다름. 해소 전까지 headless Codex 디자인 작업은 토큰 소비가 막힐 수 있음 → ROADMAP 유지보수 후보로 등재.
