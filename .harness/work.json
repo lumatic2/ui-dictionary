@@ -1,7 +1,8 @@
 {
-  "works": [
-    {
-      "id": "SFB1",
+  "schema_version": 1,
+  "active_work_id": "AD1",
+  "works": {
+    "SFB1": {
       "title": "Structure Contract And Clean Production",
       "status": "completed",
       "started": "2026-07-10",
@@ -11,8 +12,7 @@
       ],
       "completed": "2026-07-10"
     },
-    {
-      "id": "SFB2",
+    "SFB2": {
       "title": "Shell Buildout (dev-only)",
       "status": "completed",
       "started": "2026-07-10",
@@ -22,8 +22,7 @@
       ],
       "completed": "2026-07-10"
     },
-    {
-      "id": "SFB3",
+    "SFB3": {
       "title": "Content Fill Batch 1: Colors Palettes",
       "status": "completed",
       "started": "2026-07-10",
@@ -33,8 +32,7 @@
       ],
       "completed": "2026-07-10"
     },
-    {
-      "id": "CF1",
+    "CF1": {
       "title": "Docs Foundations And Agent Recipes 공개",
       "status": "completed",
       "started": "2026-07-10",
@@ -44,8 +42,7 @@
       ],
       "completed": "2026-07-10"
     },
-    {
-      "id": "CF2",
+    "CF2": {
       "title": "Showcase Atlas Source-Quality 카드",
       "status": "completed",
       "started": "2026-07-10",
@@ -55,8 +52,7 @@
       ],
       "completed": "2026-07-10"
     },
-    {
-      "id": "CF3",
+    "CF3": {
       "title": "Patterns 빈 컬렉션 배치",
       "status": "completed",
       "started": "2026-07-10",
@@ -66,8 +62,7 @@
       ],
       "completed": "2026-07-10"
     },
-    {
-      "id": "DA1",
+    "DA1": {
       "title": "Docs 카테고리 아티클 7종 심화",
       "status": "completed",
       "started": "2026-07-10",
@@ -77,8 +72,7 @@
       ],
       "completed": "2026-07-10"
     },
-    {
-      "id": "PE1",
+    "PE1": {
       "title": "Marketing Page Examples 3종 제작",
       "status": "completed",
       "started": "2026-07-10",
@@ -88,8 +82,7 @@
       ],
       "completed": "2026-07-10"
     },
-    {
-      "id": "CLI1",
+    "CLI1": {
       "title": "코어 조회 CLI + registry 계약",
       "status": "completed",
       "started": "2026-07-10",
@@ -99,8 +92,7 @@
       ],
       "completed": "2026-07-10"
     },
-    {
-      "id": "CLI2",
+    "CLI2": {
       "title": "프로젝트 주입 (init / add)",
       "status": "completed",
       "started": "2026-07-10",
@@ -110,8 +102,7 @@
       ],
       "completed": "2026-07-10"
     },
-    {
-      "id": "CLI3",
+    "CLI3": {
       "title": "검증 커맨드 + 패키지 공개",
       "status": "completed",
       "started": "2026-07-10",
@@ -121,8 +112,7 @@
       ],
       "completed": "2026-07-10"
     },
-    {
-      "id": "SCD1",
+    "SCD1": {
       "title": "Principles 증류 (사람용 + 에이전트용)",
       "status": "completed",
       "started": "2026-07-10",
@@ -133,8 +123,7 @@
       ],
       "completed": "2026-07-10"
     },
-    {
-      "id": "SCD2",
+    "SCD2": {
       "title": "레시피 커버리지 배치 (pattern_group 10종)",
       "status": "completed",
       "started": "2026-07-10",
@@ -144,8 +133,7 @@
       ],
       "completed": "2026-07-10"
     },
-    {
-      "id": "AUC0",
+    "AUC0": {
       "title": "Canvas Engine Bake-off",
       "status": "completed",
       "started": "2026-07-10",
@@ -155,8 +143,7 @@
       ],
       "completed": "2026-07-10"
     },
-    {
-      "id": "AUC1",
+    "AUC1": {
       "title": "Canonical Canvas Foundation",
       "status": "completed",
       "started": "2026-07-10",
@@ -166,8 +153,7 @@
       ],
       "completed": "2026-07-10"
     },
-    {
-      "id": "AUC2",
+    "AUC2": {
       "title": "Direct Manipulation And Property Runtime",
       "status": "completed",
       "started": "2026-07-10",
@@ -178,8 +164,7 @@
       ],
       "completed": "2026-07-10"
     },
-    {
-      "id": "AUC3",
+    "AUC3": {
       "title": "Terminal Agent Live Canvas Round-trip",
       "status": "completed",
       "started": "2026-07-10",
@@ -190,8 +175,7 @@
       ],
       "completed": "2026-07-10"
     },
-    {
-      "id": "AUC4",
+    "AUC4": {
       "title": "Desktop Productization And Quality Gate",
       "status": "completed",
       "started": "2026-07-10",
@@ -202,8 +186,7 @@
       ],
       "completed": "2026-07-11"
     },
-    {
-      "id": "UX1",
+    "UX1": {
       "title": "Workspace Foundation",
       "status": "completed",
       "started": "2026-07-11",
@@ -213,8 +196,7 @@
       ],
       "completed": "2026-07-11"
     },
-    {
-      "id": "UX2",
+    "UX2": {
       "title": "Visual Creation Workflow",
       "status": "completed",
       "started": "2026-07-11",
@@ -225,8 +207,7 @@
       ],
       "completed": "2026-07-12"
     },
-    {
-      "id": "UX3",
+    "UX3": {
       "title": "Agent Collaboration UX",
       "status": "completed",
       "started": "2026-07-12",
@@ -236,8 +217,7 @@
       ],
       "completed": "2026-07-12"
     },
-    {
-      "id": "UX4",
+    "UX4": {
       "title": "Product Polish And Validation",
       "status": "completed",
       "started": "2026-07-12",
@@ -247,8 +227,7 @@
       ],
       "completed": "2026-07-12"
     },
-    {
-      "id": "CR",
+    "CR": {
       "title": "Component Registry",
       "status": "completed",
       "started": "2026-07-12",
@@ -258,8 +237,7 @@
       ],
       "completed": "2026-07-12"
     },
-    {
-      "id": "RT",
+    "RT": {
       "title": "Real-project Round-trip",
       "status": "completed",
       "started": "2026-07-12",
@@ -269,8 +247,7 @@
       ],
       "completed": "2026-07-12"
     },
-    {
-      "id": "AI",
+    "AI": {
       "title": "Askewly Identity",
       "status": "completed",
       "started": "2026-07-12",
@@ -280,8 +257,7 @@
       ],
       "completed": "2026-07-12"
     },
-    {
-      "id": "RL",
+    "RL": {
       "title": "Reference Loop Pipeline",
       "status": "completed",
       "started": "2026-07-12",
@@ -291,8 +267,7 @@
       ],
       "completed": "2026-07-12"
     },
-    {
-      "id": "QA2",
+    "QA2": {
       "title": "AskewlyDesign Install & Dogfooding",
       "status": "completed",
       "started": "2026-07-12",
@@ -302,8 +277,7 @@
       ],
       "completed": "2026-07-12"
     },
-    {
-      "id": "QA3",
+    "QA3": {
       "title": "Canvas Recipe Materialization",
       "status": "completed",
       "started": "2026-07-12",
@@ -313,8 +287,7 @@
       ],
       "completed": "2026-07-12"
     },
-    {
-      "id": "QA1",
+    "QA1": {
       "title": "Recipe Gallery & Visual QA",
       "status": "completed",
       "started": "2026-07-12",
@@ -324,8 +297,7 @@
       ],
       "completed": "2026-07-12"
     },
-    {
-      "id": "SD",
+    "SD": {
       "title": "Surface Depth 2세대",
       "status": "completed",
       "started": "2026-07-12",
@@ -335,8 +307,7 @@
       ],
       "completed": "2026-07-12"
     },
-    {
-      "id": "FW",
+    "FW": {
       "title": "Feed Wiring",
       "status": "completed",
       "started": "2026-07-12",
@@ -346,8 +317,7 @@
       ],
       "completed": "2026-07-12"
     },
-    {
-      "id": "MS",
+    "MS": {
       "title": "Mobile Surface Batch",
       "status": "completed",
       "started": "2026-07-12",
@@ -357,8 +327,7 @@
       ],
       "completed": "2026-07-12"
     },
-    {
-      "id": "PX",
+    "PX": {
       "title": "Public Experience Pass",
       "status": "completed",
       "started": "2026-07-12",
@@ -367,6 +336,55 @@
         "claude:086e4b88-d743-44cd-b102-57183afa1b61"
       ],
       "completed": "2026-07-12"
+    },
+    "AD1": {
+      "work_id": "AD1",
+      "horizon_id": "agent-adoption-loop",
+      "milestone_id": "AD1",
+      "status": "active",
+      "plan_path": "docs/plans/2026-07-17-ad1-default-routing.md",
+      "changeset_path": "changesets",
+      "next_step": "step-1",
+      "current_step": "step-1",
+      "steps": [
+        {
+          "id": "step-1",
+          "label": "Step 1 — 진입 프로토콜 정본화 (changeset)",
+          "status": "pending"
+        },
+        {
+          "id": "step-2",
+          "label": "Step 2 — Claude 배선 (changeset)",
+          "status": "pending"
+        },
+        {
+          "id": "step-3",
+          "label": "Step 3 — Codex 배선 + 양 에이전트 통합 E2E (changeset)",
+          "status": "pending"
+        }
+      ],
+      "execution_mode": "continuous",
+      "approval": {
+        "approved_by": "user",
+        "approved_at": "2026-07-17",
+        "plan_sha256": "5e1dcc883655f39cc22a33d7512703b09f49b523a9ca0ab9d35e1505527f90d4"
+      },
+      "allowed_stop_reasons": [
+        "completed",
+        "blocked",
+        "decision_required",
+        "risk_gate",
+        "secret_required",
+        "external_authority_required",
+        "user_stopped"
+      ],
+      "stop_reason": null,
+      "stop_detail": {},
+      "session_ids": [
+        "claude:c83fe7a0-b56d-4634-9d86-8d2de5127bb3"
+      ],
+      "updated_at": "2026-07-17",
+      "notes": "Registered atomically by canonical harness approve_harness_plan.py after plan validation."
     }
-  ]
+  }
 }

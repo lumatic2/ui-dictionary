@@ -98,3 +98,4 @@
 | 96 | 20260712-page-meta-seo | 2026-07-12 | PX Step 5: static og:url/site_name, usePageMeta per-page title+description, mobile 375px overflow pass, bundle size recorded | 5/5 | complete |
 | 97 | 20260712-docs-role-redefinition | 2026-07-12 | PX Step 3: Vocabulary sidebar group for 7 orphaned category articles, role-statement leads resolving Foundations/Vocabulary/Elements/Recipes overlaps | 4/4 | complete |
 | 98 | 20260712-per-section-sidebars | 2026-07-12 | PX Step 4: independent sidebars per section - docs tree only, Patterns 3-axis switcher, new Recipes collection anchor nav | 4/4 | complete |
+| 99 | 20260717-agent-entry-protocol | 2026-07-17 | AD1 Step 1: agent entry protocol doc, llms.txt Entry Protocol section, 404.html silent-fallback fix | 3/4 | in_progress |

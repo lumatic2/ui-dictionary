@@ -53,8 +53,9 @@ last_verified: 2026-07-07
 ## 소비 규약
 
 - 에이전트: frontmatter로 필터(grep `^id:` / pattern_group / tokens_used) → 필요 시 본문 섹션 정규식 추출 → code_asset Read.
-- 사이트: 후속 milestone에서 레시피를 페이지로 렌더 (이번 범위 밖).
+- 사이트: `examples/ui-vocabulary-site`의 Recipe Gallery(`src/components/recipe-gallery.tsx`)가 이 site live-render 표면이다. 35개 레시피 전부가 `code_asset` 구현 컴포넌트로 그룹별 인덱스 카드 + 상세 실라이브 렌더를 갖는다. 신규 레시피는 `src/lib/recipe-gallery-data.ts`에 항목을, `src/components/recipe-gallery-demos.tsx`에 데모 wrapper를 추가해야 노출된다 (자동 아님).
 
 ## Changelog
 
+- 2026-07-12: "사이트: 레시피 렌더" 유보 조항을 Recipe Gallery 반영으로 갱신 (35/35 레시피가 site에서 live-render됨).
 - 2026-07-07: 초안 확정 (kind는 term 어휘 재사용, dependencies 평탄화: code_asset/component_refs 최상위).
