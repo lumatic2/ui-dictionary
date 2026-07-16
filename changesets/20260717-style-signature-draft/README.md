@@ -15,4 +15,4 @@
 
 - [x] 각 축 기준이 실제 자산 근거 인용 (DESIGN.md §1–§8, principles.md #2/#4/#6/#8, tokens SSOT gray-270 ramp, CLAUDE.md 카피 규약) — 무근거 항목 0
 - [x] 체크리스트 항목이 PASS/FAIL 판정 가능한 관측 기준으로 서술 (형용사 나열 아님)
-- [ ] 사용자 인터뷰 → 확정 (Step 2 진입 조건)
+- [x] 사용자 인터뷰 → 확정 (2026-07-17 응답 수신 — changeset 20260717-style-signature-final에 반영)

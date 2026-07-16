@@ -32,6 +32,7 @@ const FIXED_ASSETS = [
     items: [
       ["docs/design-system/principles.md", "Canonical Askewly Design principles: task-first hierarchy, semantic tokens, complete interaction states, meaningful motion, and evidence-based publication"],
       ["docs/design-system/anti-patterns.md", "Agent-facing anti-pattern checklist distilled from all recipe Anti-patterns sections: 12 clusters covering cost integrity, destructive actions, accessible interaction paths, and more"],
+      ["docs/design-system/style-signature.md", "User-approved style signature: 5 cross-project operating principles + 5 hard-fail dislikes (left-border accent cards, broken Korean word wrap, emoji icons, …) — judge every design output against this"],
     ],
   },
   {

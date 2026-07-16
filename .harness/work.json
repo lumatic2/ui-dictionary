@@ -423,11 +423,8 @@
         "external_authority_required",
         "user_stopped"
       ],
-      "stop_reason": "decision_required",
-      "stop_detail": {
-        "what": "AD2 계획된 사용자 인터뷰 — style-signature 초안 확정 (질문 6문항)",
-        "resume": "인터뷰 응답 반영 → 정본 확정 → 체크리스트 llms.txt/프로토콜 편입 + 실판정"
-      },
+      "stop_reason": null,
+      "stop_detail": {},
       "session_ids": [
         "claude:c83fe7a0-b56d-4634-9d86-8d2de5127bb3"
       ],
