@@ -17,21 +17,23 @@ Agent Integration horizon(2026-07-07)이 발견(llms.txt)·소비(custom-skills)
 
 ## Milestones
 
+> 실행 순서 (2026-07-17 사용자 확정): AD1 라우팅 → AD2 스타일 시그니처 → AD3 dogfooding → AD4 확장. 근거: close 기준이 "결과물이 스타일 체크리스트 통과"라서 판정 기준(AD2)이 실작업(AD3)보다 먼저 있어야 각 건을 즉시 판정한다.
+
 ### AD1 — Default Routing 배선 (활성)
 
-에이전트 진입 프로토콜 정본화 + 전역 라우팅 규칙(전역 CLAUDE.md·디자인 스킬) 배선. 상세: `docs/plans/2026-07-17-ad1-default-routing.md`.
+에이전트 진입 프로토콜 정본화 + Claude·Codex 양쪽 전역 라우팅 배선. 3 changesets: ① 진입 프로토콜 문서 + llms.txt 노출, ② Claude 배선(전역 CLAUDE.md 규칙 + custom-skills 디자인 스킬 갱신·재배포), ③ Codex 배선(전역 Codex 지침 + 배포 미러) + 양 에이전트 통합 E2E. hook 강제는 이번 범위 밖 — E2E에서 미발화가 관측되면 격상 경로(2026-07-17 사용자 확정: 규칙+스킬 먼저). 상세: `docs/plans/2026-07-17-ad1-default-routing.md`.
 
-### AD2 — Real-work Dogfooding (후보)
+### AD2 — Style Signature (후보, P0)
 
-실제 프로젝트 디자인 작업 3~5건을 askewly design 경유로 수행 (2026-07-17 사용자 확정: 인위 시나리오가 아니라 실작업). 마찰·부족 자산·미조회 사례를 dogfooding ledger로 장부화. 대상 프로젝트 선정은 활성화 시 사용자 결정.
+"내 스타일" 판정 기준 성문화 (2026-07-17 사용자 확정: 역산 + 인터뷰 보강). ① 역산 초안 — 토큰 SSOT·templates(neo-claude 등)·현 사이트·과거 결과물에서 스타일 특징(타이포·컬러 운용·밀도·모션·보더/섀도 성향) 추출 → style-signature 문서 초안, ② 사용자 인터뷰로 확정(계획된 사용자 상호작용 — 연쇄의 정당한 정지점) + 판정 체크리스트 도출, ③ 검증 루프 편입 — design-qa 스킬·anti-patterns·llms.txt에 체크리스트 노출.
 
-### AD3 — Style Signature (후보)
+### AD3 — Real-work Dogfooding (후보, P1)
 
-"내 스타일" 판정 기준 성문화: 기존 토큰 SSOT·templates·과거 결과물에서 역산해 초안 → 사용자 인터뷰로 확정 (2026-07-17 사용자 확정: 역산+인터뷰 보강). 스타일 시그니처 문서 + 체크리스트를 검증 루프(design-qa 계열)에 편입.
+실제 프로젝트 디자인 작업 3~5건을 라우팅 경유로 수행하고 AD2 체크리스트로 즉시 판정 (2026-07-17 사용자 확정: 실작업, 혼합 확보 — 즉시 착수 실작업 2건 지정 + 기회주의 1~3건). ① dogfooding ledger 인프라(건별 조회 경로·체크리스트 판정·마찰·부족 자산 기록), ② 지정 실작업 2건 수행(후보: askewly.com·brain.askewly.com·development-dictionary 표면 — 활성화 시 사용자와 확정), ③ 기회주의 건 수행·장부화. 작업 자체는 외부 레포, evidence는 이 레포 ledger.
 
-### AD4 — Gap-driven 확장 (후보)
+### AD4 — Gap-driven 확장 (후보, P1)
 
-AD2 장부에서 나온 부족 recipe/token/anti-pattern을 수요 주도로만 확장 (AG3의 "선제 배치 확장 없음" 원칙 승계). 장부 항목 → 자산 반영 추적 가능해야 한다.
+AD3 장부에서 나온 부족 recipe/token/anti-pattern/프로토콜 마찰을 수요 주도로만 확장 (AG3 "선제 배치 확장 없음" 원칙 승계). ① 장부 → 우선순위 갭 목록, ② 자산 확장 구현(기존 파이프라인: build:catalog·llms.txt·audit:visuals 검증 체인), ③ 장부 항목 → 자산 반영 추적(각 갭이 어느 changeset으로 닫혔는지).
 
 ## Close Criteria
 

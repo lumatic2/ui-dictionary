@@ -14,17 +14,35 @@ Goal: Claude/Codex 디자인 작업에서 askewly design 조회가 기본 경로
 
 <!-- harness:milestone id="AD1" status="active" priority="P0" -->
 ### AD1 — Default Routing 배선
-- DoD: 진입 프로토콜이 llms.txt에 노출(링크 무결성 PASS), 전역 CLAUDE.md 라우팅 규칙 + 디자인 스킬 참조 갱신·재배포, 신규 세션 E2E에서 askewly design 자동 조회 관측 + 산출물 색 리터럴 0, 실패 모드(오경로 fetch loud failure) 확인.
+- DoD: 진입 프로토콜이 llms.txt에 노출(링크 무결성 PASS), Claude 배선(전역 CLAUDE.md 규칙 + 디자인 스킬 갱신·재배포) + Codex 배선(전역 지침·배포 미러), 양 에이전트 신규 세션 E2E에서 askewly design 자동 조회 관측 + 산출물 색 리터럴 0, 실패 모드(오경로 fetch loud failure) 확인.
 - Evidence: `docs/plans/2026-07-17-ad1-default-routing.md`
 - Gap: 발견·소비 경로(llms.txt·스킬)는 있으나 디자인 작업 → askewly design 자동 라우팅 규칙이 없어 실사용 흐름이 발화하지 않음.
-- Scale: changesets>=2; surfaces: llms.txt fetch, 신규 세션 E2E(외부 프로젝트); capability: 디자인 작업 기본 라우팅
+- Scale: changesets>=3; surfaces: llms.txt fetch, Claude·Codex 신규 세션 E2E(외부 프로젝트); capability: 디자인 작업 기본 라우팅
 - Status: [ ]
 
-## Next Candidates (활성화 시 §B0.5 Beat 3 확정)
+<!-- harness:milestone id="AD2" status="pending" priority="P0" -->
+### AD2 — Style Signature
+- DoD: 기존 자산(토큰 SSOT·templates·사이트·과거 결과물) 역산 초안 → 사용자 인터뷰 확정을 거친 style-signature 정본 + 판정 체크리스트, 체크리스트가 design-qa 스킬·llms.txt에 편입되어 실제 판정 1회 구동.
+- Evidence: `docs/design-system/style-signature.md`(정본) + 활성화 시 plan doc
+- Gap: 결과물이 "유성 스타일"인지 판정할 기준이 시스템에 없음 — close 기준(체크리스트 통과)의 전제.
+- Scale: changesets>=2; surfaces: llms.txt fetch, design-qa 스킬 실판정 구동; capability: 스타일 적합성 판정
+- Status: [ ]
 
-- **AD2 — Real-work Dogfooding**: 실제 프로젝트 디자인 작업 3~5건 askewly design 경유 수행 + 마찰 장부화 (대상 프로젝트 = 사용자 결정).
-- **AD3 — Style Signature**: "내 스타일" 판정 기준 성문화(기존 자산 역산 + 인터뷰 보강) + 검증 루프 편입.
-- **AD4 — Gap-driven 확장**: dogfooding 장부 기반 수요 주도 recipe/token/anti-pattern 확장.
+<!-- harness:milestone id="AD3" status="pending" priority="P1" -->
+### AD3 — Real-work Dogfooding
+- DoD: dogfooding ledger 인프라 + 실작업 3건 이상(지정 2건 + 기회주의)이 라우팅 경유로 수행되어 건별 조회 경로·AD2 체크리스트 판정·마찰이 장부화.
+- Evidence: `docs/research/dogfooding/ledger.md`(신설) + 활성화 시 plan doc
+- Gap: 실사용 0건에 가까워 마찰·부족 자산을 모름 — 채택 흐름의 실증 그 자체.
+- Scale: changesets>=3; surfaces: 외부 레포 실작업 결과물, ledger; capability: 실작업 채택 실증
+- Status: [ ]
+
+<!-- harness:milestone id="AD4" status="pending" priority="P1" -->
+### AD4 — Gap-driven 확장
+- DoD: AD3 장부의 갭 목록이 우선순위화되고, 수요 주도 자산 확장(recipe/token/anti-pattern/프로토콜)이 기존 검증 체인(build:catalog·llms.txt·audit:visuals)을 통과하며, 장부 항목 → 자산 반영 추적이 남는다.
+- Evidence: 활성화 시 plan doc + 갭별 changeset 추적표
+- Gap: 수요 주도 성장 루프 단절 — 쓰다가 부족한 자산을 채우는 루프가 안 돌고 있음.
+- Scale: changesets>=2; surfaces: site build·llms.txt·audit:visuals; capability: 수요 주도 자산 성장 루프
+- Status: [ ]
 
 ## 유지보수 후보 (milestone 아님)
 
