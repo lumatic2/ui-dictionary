@@ -19,6 +19,13 @@ Status: approved (2026-07-17 horizon 전체 승인 "진행"의 연쇄 범위 —
 
 범위 밖: dogfooding 반복(AD3), recipe 확장(AD4), 사이트 UI 변경. DoD의 "design-qa 스킬 편입"은 로컬 design-qa 스킬 소스 부재(AD1 실사)로 "체크리스트 기반 판정 절차의 프로토콜 편입 + 실판정 1회"로 해석한다(동등 효과 — 판정이 실제로 구동되는 것이 본질).
 
+## 스캐폴딩 결정
+
+- 작업 유형: tooling (에이전트 대면 디자인 시스템 자산·프로토콜 정비 — 산출물 changeset 2건)
+- source-of-truth: `docs/design-system/style-signature.md` (이 레포) — `public/llms/**` 사본은 generate-llms-txt.mjs 생성물, 손 편집 금지
+- deploy: git push origin main → Cloudflare Pages 자동 배포 (`ui.askewly.com/llms/**`)
+- 테스트 표면: `node scripts/generate-llms-txt.mjs` 링크 무결성 + 배포 curl + AD1 E2E 산출물 3건 체크리스트 실판정(PASS 2·FAIL 1 기대)
+
 ## Scope Boundary
 
 - Execution mode: continuous
