@@ -99,3 +99,5 @@
 | 97 | 20260712-docs-role-redefinition | 2026-07-12 | PX Step 3: Vocabulary sidebar group for 7 orphaned category articles, role-statement leads resolving Foundations/Vocabulary/Elements/Recipes overlaps | 4/4 | complete |
 | 98 | 20260712-per-section-sidebars | 2026-07-12 | PX Step 4: independent sidebars per section - docs tree only, Patterns 3-axis switcher, new Recipes collection anchor nav | 4/4 | complete |
 | 99 | 20260717-agent-entry-protocol | 2026-07-17 | AD1 Step 1: agent entry protocol doc, llms.txt Entry Protocol section, 404.html silent-fallback fix | 3/4 | in_progress |
+| 100 | 20260717-claude-design-routing | 2026-07-17 | AD1 Step 2: global CLAUDE.md design routing rule, skill-update half reduced (no local design-skill source exists) | 2/3 | in_progress |
+| 101 | 20260717-codex-design-routing | 2026-07-17 | AD1 Step 3: Codex AGENTS.md design routing rule, dual-agent E2E pending deploy | 1/4 | in_progress |

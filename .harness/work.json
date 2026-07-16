@@ -344,18 +344,18 @@
       "status": "active",
       "plan_path": "docs/plans/2026-07-17-ad1-default-routing.md",
       "changeset_path": "changesets",
-      "next_step": "step-1",
-      "current_step": "step-1",
+      "next_step": "step-3",
+      "current_step": "step-3",
       "steps": [
         {
           "id": "step-1",
           "label": "Step 1 — 진입 프로토콜 정본화 (changeset)",
-          "status": "pending"
+          "status": "completed"
         },
         {
           "id": "step-2",
           "label": "Step 2 — Claude 배선 (changeset)",
-          "status": "pending"
+          "status": "completed"
         },
         {
           "id": "step-3",
@@ -384,7 +384,7 @@
         "claude:c83fe7a0-b56d-4634-9d86-8d2de5127bb3"
       ],
       "updated_at": "2026-07-17",
-      "notes": "Registered atomically by canonical harness approve_harness_plan.py after plan validation."
+      "notes": "step-2 wiring done; step-3 wiring done, dual-agent E2E pending deploy (push approval)"
     }
   }
 }
