@@ -8,7 +8,8 @@ Index of all assets: `https://ui.askewly.com/llms.txt` (raw URLs; link-only, val
 
 ## Always, for any design task
 
-1. Fetch [tokens/askewly.tokens.json](https://ui.askewly.com/llms/tokens/askewly.tokens.json) — every color, dimension, and type value must derive from semantic tokens. Never hard-code literals.
+0. **Copy asset URLs exactly as written here or in llms.txt — never construct, shorten, or guess a path.** After every fetch, check the response starts with the expected content type (markdown heading, CSS rule, or JSON). If it looks like an HTML page or a 404, the fetch failed: stop and re-check the URL against llms.txt.
+1. Fetch [tokens/tokens.css](https://ui.askewly.com/llms/tokens/tokens.css) — ready-to-use CSS custom properties (light + dark) generated from the token SSOT. Use these variables directly; never invent color/dimension values. The full DTCG source is [tokens/askewly.tokens.json](https://ui.askewly.com/llms/tokens/askewly.tokens.json).
 2. Fetch [docs/design-system/anti-patterns.md](https://ui.askewly.com/llms/docs/design-system/anti-patterns.md) — the generic-AI-output failure modes to avoid.
 3. Close the loop with verification: interaction states complete (hover/focus/active/disabled/loading/error), dark mode holds, WCAG contrast passes. The website's Getting set up page describes the same loop for humans: Explore → Acquire → Inject → Verify.
 
@@ -33,6 +34,6 @@ Index of all assets: `https://ui.askewly.com/llms.txt` (raw URLs; link-only, val
 
 ## Rules
 
-- Semantic tokens only; never primitive-tier references or raw literals in component code.
+- Semantic tokens only; never primitive-tier references or raw literals in component code. In standalone files, paste the fetched tokens.css block once and reference `var(--…)` everywhere else.
 - If no recipe covers the task, still apply tokens + principles + anti-patterns, and note the gap (it feeds demand-driven recipe expansion).
 - If a fetch fails (404, missing asset), stop and report it — do not silently fall back to invented styling.

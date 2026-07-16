@@ -17,6 +17,7 @@ Rules for consumers: reference semantic tokens, never hard-code color/dimension 
 ## Tokens
 
 - [tokens/askewly.tokens.json](https://ui.askewly.com/llms/tokens/askewly.tokens.json): 3-tier design tokens (primitive/semantic/component), DTCG stable 2025.10 format — the single source all colors, dimensions, and typography derive from
+- [tokens/tokens.css](https://ui.askewly.com/llms/tokens/tokens.css): Ready-to-use CSS custom properties (light + dark) generated from the token SSOT — copy these variables instead of inventing values
 
 ## Taxonomy
 

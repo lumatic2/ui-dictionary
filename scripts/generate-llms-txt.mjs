@@ -38,6 +38,7 @@ const FIXED_ASSETS = [
     section: "Tokens",
     items: [
       ["tokens/askewly.tokens.json", "3-tier design tokens (primitive/semantic/component), DTCG stable 2025.10 format — the single source all colors, dimensions, and typography derive from"],
+      ["examples/ui-vocabulary-site/src/tokens.css", "Ready-to-use CSS custom properties (light + dark) generated from the token SSOT — copy these variables instead of inventing values", "tokens/tokens.css"],
     ],
   },
   {
@@ -84,13 +85,13 @@ function collectRecipes() {
   });
 }
 
-function copyAsset(rel) {
+function copyAsset(rel, destRel = rel) {
   const src = path.join(REPO_ROOT, rel);
   if (!existsSync(src)) throw new Error(`SSOT source missing: ${rel}`);
-  const dest = path.join(LLMS_DIR, rel);
+  const dest = path.join(LLMS_DIR, destRel);
   mkdirSync(path.dirname(dest), { recursive: true });
   copyFileSync(src, dest);
-  return `/llms/${rel}`;
+  return `/llms/${destRel}`;
 }
 
 function main() {
@@ -113,10 +114,10 @@ function main() {
     lines.push("");
     lines.push(`## ${section}`);
     lines.push("");
-    for (const [rel, desc] of items) {
-      const urlPath = copyAsset(rel);
+    for (const [rel, desc, destRel] of items) {
+      const urlPath = copyAsset(rel, destRel);
       writtenUrls.push(urlPath);
-      lines.push(`- [${rel}](${BASE_URL}${urlPath}): ${desc}`);
+      lines.push(`- [${destRel ?? rel}](${BASE_URL}${urlPath}): ${desc}`);
     }
   }
 
