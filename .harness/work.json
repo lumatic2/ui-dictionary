@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "active_work_id": "AD2",
+  "active_work_id": "AD3",
   "works": {
     "SFB1": {
       "title": "Structure Contract And Clean Production",
@@ -391,11 +391,11 @@
       "work_id": "AD2",
       "horizon_id": "agent-adoption-loop",
       "milestone_id": "AD2",
-      "status": "active",
+      "status": "completed",
       "plan_path": "docs/plans/2026-07-17-ad2-style-signature.md",
       "changeset_path": "changesets",
-      "next_step": "step-2",
-      "current_step": "step-2",
+      "next_step": null,
+      "current_step": null,
       "steps": [
         {
           "id": "step-1",
@@ -405,7 +405,7 @@
         {
           "id": "step-2",
           "label": "Step 2 — 인터뷰 확정 + 판정 편입 (changeset)",
-          "status": "pending"
+          "status": "completed"
         }
       ],
       "execution_mode": "continuous",
@@ -413,6 +413,61 @@
         "approved_by": "user",
         "approved_at": "2026-07-17",
         "plan_sha256": "bc35a8a43f23bfefc7078e21dcf51cf3df2e8891ac8d928dd8c21953576e4f32"
+      },
+      "allowed_stop_reasons": [
+        "completed",
+        "blocked",
+        "decision_required",
+        "risk_gate",
+        "secret_required",
+        "external_authority_required",
+        "user_stopped"
+      ],
+      "stop_reason": null,
+      "stop_detail": {},
+      "session_ids": [
+        "claude:c83fe7a0-b56d-4634-9d86-8d2de5127bb3"
+      ],
+      "updated_at": "2026-07-17",
+      "notes": "Registered atomically by canonical harness approve_harness_plan.py after plan validation.",
+      "completed": "2026-07-17"
+    },
+    "AD3": {
+      "work_id": "AD3",
+      "horizon_id": "agent-adoption-loop",
+      "milestone_id": "AD3",
+      "status": "active",
+      "plan_path": "docs/plans/2026-07-17-ad3-realwork-dogfooding.md",
+      "changeset_path": "changesets",
+      "next_step": "step-1",
+      "current_step": "step-1",
+      "steps": [
+        {
+          "id": "step-1",
+          "label": "Step 1 — dogfooding ledger 인프라 (changeset)",
+          "status": "pending"
+        },
+        {
+          "id": "step-2",
+          "label": "Step 2 — 지정 작업 ① bootcamp 표면 A (changeset)",
+          "status": "pending"
+        },
+        {
+          "id": "step-3",
+          "label": "Step 3 — 지정 작업 ② bootcamp 표면 B (changeset)",
+          "status": "pending"
+        },
+        {
+          "id": "step-4",
+          "label": "Step 4 — 기회주의 건 장부화 (changeset, 세션 경계 넘김)",
+          "status": "pending"
+        }
+      ],
+      "execution_mode": "continuous",
+      "approval": {
+        "approved_by": "user",
+        "approved_at": "2026-07-17",
+        "plan_sha256": "d5f74b4d976c1280a7420408b3ecdc0b773c6fb3eb368fd668dc70a44cfd5398"
       },
       "allowed_stop_reasons": [
         "completed",

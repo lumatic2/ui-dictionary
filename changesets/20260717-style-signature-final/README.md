@@ -15,4 +15,4 @@
 - [x] `node scripts/generate-llms-txt.mjs` 재생성 + 링크 무결성 PASS (45 assets)
 - [x] 실판정 1회 구동: AD1 E2E 산출물 3건 재판정 — r1 pricing(발명 팔레트) FAIL(원칙1, 23건), codex onboarding(발명 팔레트) FAIL(원칙1), r3 settings(토큰 파생) FAIL(비선호2: 한글 keep-all 누락 — 새 기준이 기존 통과작의 결함을 추가 적발)
 - [x] 실패 모드: 비스타일 산출물(발명 팔레트 2건)이 PASS로 새지 않음 — 변별력 확인
-- [ ] 배포 후: `curl https://ui.askewly.com/llms/docs/design-system/style-signature.md` 200 + 정본 내용
+- [x] 배포 후: `curl https://ui.askewly.com/llms/docs/design-system/style-signature.md` 200 + 정본 내용("canonical, user-approved" 확인, 2026-07-17)
