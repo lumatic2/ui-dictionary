@@ -1,5 +1,12 @@
 # BACKLOG
 
+## Parked Horizons
+
+### 2026-07-17 - Public Product & Monetization (parked)
+
+- PX - Public Experience Pass: 검색 수리(+포털 클릭 결함 추가 적발)·전 표면 인덱싱, Getting set up 프로토콜, Vocabulary 그룹 통합, 섹션별 독립 사이드바, per-page meta/SEO. Completed 2026-07-12 (`docs/plans/2026-07-12-px-public-experience.md`, changesets #94–98).
+- AM/AC/PG/PP 미착수. Park 사유(2026-07-17 사용자 판정): 수익화 전에 에이전트 워크플로우 채택 흐름이 먼저. 복귀 후보는 `docs/horizons/CANDIDATES.md`, 상세는 `docs/horizons/2026-07-public-product-monetization.md`.
+
 ## Completed Horizons
 
 ### 2026-07-12 - Quality & Dogfooding (H2.5)

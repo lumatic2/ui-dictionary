@@ -1,33 +1,30 @@
 # ROADMAP
 
-> Last updated: 2026-07-12
-> Status: Public Product & Monetization — PX completed (2026-07-12), 다음 AM은 사용자 토론 필요
+> Last updated: 2026-07-17
+> Status: Agent Adoption Loop — AD1 활성 (monetization은 parked, `docs/horizons/CANDIDATES.md`)
 > North star: Build Askewly Design as both a public reference website and an agent-usable implementation system.
 > line budget: <=150
 
 ## Current Horizon
 
-<!-- harness:goal id="public-product-monetization" status="active" -->
-Goal: 공개 탐색 경험을 완성하고 에셋 모델을 정합시킨 뒤 계정·결제·Pro를 열어 결제 사용자가 실제로 구매·사용하는 제품으로 만든다. Details: `docs/horizons/2026-07-public-product-monetization.md`.
+<!-- harness:goal id="agent-adoption-loop" status="active" -->
+Goal: Claude/Codex 디자인 작업에서 askewly design 조회가 기본 경로가 되고 결과물이 사용자 스타일 기준을 통과하는 상태를 만든다. Details: `docs/horizons/2026-07-agent-adoption-loop.md`.
 
 ## Active Milestones
 
-<!-- harness:milestone id="PX" status="completed" priority="P0" evidence="docs/plans/2026-07-12-px-public-experience.md" -->
-### PX — Public Experience Pass
-- DoD: 헤더 검색이 어느 페이지에서든 결과로 이동하고 전 표면(terms·docs·Patterns·Recipes·Colors)을 인덱싱, Getting set up이 디자인 작업 프로토콜을 서술, Docs/어휘/독립 표면 역할 재정의가 네비에 반영, Docs·Patterns·Recipes 사이드바 독립, 페이지별 meta/OG + 모바일 점검.
-- Evidence: `docs/plans/2026-07-12-px-public-experience.md`
-- Gap: 헤더 검색 자유 텍스트가 결과로 이동 안 함(버그) + stale 인덱스, Docs 역할 중복(Foundations↔어휘↔독립 표면), Docs·Patterns 사이드바 공유·Recipes 사이드바 부재.
-- Status: [x]
-
-- Completed at: 2026-07-12
-- Summary: 검색 수리(+포털 클릭 결함 추가 적발)·전 표면 인덱싱, Getting set up 프로토콜, Vocabulary 그룹 통합, 섹션별 독립 사이드바, per-page meta/SEO — changesets #94–98
+<!-- harness:milestone id="AD1" status="active" priority="P0" -->
+### AD1 — Default Routing 배선
+- DoD: 진입 프로토콜이 llms.txt에 노출(링크 무결성 PASS), 전역 CLAUDE.md 라우팅 규칙 + 디자인 스킬 참조 갱신·재배포, 신규 세션 E2E에서 askewly design 자동 조회 관측 + 산출물 색 리터럴 0, 실패 모드(오경로 fetch loud failure) 확인.
+- Evidence: `docs/plans/2026-07-17-ad1-default-routing.md`
+- Gap: 발견·소비 경로(llms.txt·스킬)는 있으나 디자인 작업 → askewly design 자동 라우팅 규칙이 없어 실사용 흐름이 발화하지 않음.
+- Scale: changesets>=2; surfaces: llms.txt fetch, 신규 세션 E2E(외부 프로젝트); capability: 디자인 작업 기본 라우팅
+- Status: [ ]
 
 ## Next Candidates (활성화 시 §B0.5 Beat 3 확정)
 
-- **AM — Asset Model Alignment**: 무료/유료 경계·라이선스·다운로드 포맷 (사용자 소유 결정 다수 — §B0-1 토론 필수).
-- **AC — Accounts/Auth**: 계정·인증 (askewly SSO 라우팅 자산 활용).
-- **PG — Payments/Pro Gate**: 결제 연동 + Pro 게이트 해제 (크레덴셜 = 사용자 정지 지점).
-- **PP — Premium Packs**: 프리미엄 코드 복사·에셋 다운로드·implementation pack.
+- **AD2 — Real-work Dogfooding**: 실제 프로젝트 디자인 작업 3~5건 askewly design 경유 수행 + 마찰 장부화 (대상 프로젝트 = 사용자 결정).
+- **AD3 — Style Signature**: "내 스타일" 판정 기준 성문화(기존 자산 역산 + 인터뷰 보강) + 검증 루프 편입.
+- **AD4 — Gap-driven 확장**: dogfooding 장부 기반 수요 주도 recipe/token/anti-pattern 확장.
 
 ## 유지보수 후보 (milestone 아님)
 
@@ -38,4 +35,4 @@ Goal: 공개 탐색 경험을 완성하고 에셋 모델을 정합시킨 뒤 계
 
 ## Archive Pointer
 
-Completed or archived milestone history lives in `docs/BACKLOG.md`; Quality & Dogfooding (QA2–QA3) closed 2026-07-12, Living Design System (RL–SD) closed 2026-07-12, Canvas Production Environment (UX3–AI) closed 2026-07-12, Canvas Product UX (UX1–UX2) superseded 2026-07-12, Agent-Native UI Canvas (AUC0–AUC4) closed 2026-07-11.
+Completed or archived milestone history lives in `docs/BACKLOG.md`; Public Product & Monetization parked 2026-07-17 (PX completed), Quality & Dogfooding (QA2–QA3) closed 2026-07-12, Living Design System (RL–SD) closed 2026-07-12, Canvas Production Environment (UX3–AI) closed 2026-07-12, Canvas Product UX (UX1–UX2) superseded 2026-07-12, Agent-Native UI Canvas (AUC0–AUC4) closed 2026-07-11.

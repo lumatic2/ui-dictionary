@@ -1,7 +1,7 @@
 # Horizon — Public Product & Monetization
 
 Date: 2026-07-12 (queued — H2 Living Design System 이후 활성화)
-Status: active (2026-07-12 사용자 승인 — Quality & Dogfooding close 직후, PX부터)
+Status: parked 2026-07-17 — PX만 완료(changesets #94–98), AM/AC/PG/PP 미착수. 사용자 판정: 수익화 전에 에이전트 워크플로우 채택 흐름(스스로 쓰는 감각)이 먼저다. 복귀 후보는 `docs/horizons/CANDIDATES.md`에 적재. 후속 horizon: `docs/horizons/2026-07-agent-adoption-loop.md`.
 
 ## Goal
 
