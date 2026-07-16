@@ -104,3 +104,5 @@
 | 102 | 20260717-style-signature-draft | 2026-07-17 | AD2 Step 1: style signature draft from asset back-derivation (7 axes, 10-item checklist v0, interview questionnaire) | 3/3 | complete |
 | 103 | 20260717-style-signature-final | 2026-07-17 | AD2 Step 2: interview-finalized signature (5 principles + 5 dislikes, no scoring), entry-protocol judgment step, llms.txt exposure, live judgment on 3 E2E outputs | 4/4 | complete |
 | 104 | 20260717-dogfooding-ledger | 2026-07-17 | AD3 Step 1: dogfooding ledger infra (per-entry schema incl. negative-result and gap fields) | 2/2 | complete |
+| 105 | 20260717-dogfood-bootcamp-1 | 2026-07-17 | AD3 Step 2: dogfood DF-1 bootcamp hero/translator — routing observed, signature PASS, browser-verified | 4/4 | complete |
+| 106 | 20260717-dogfood-bootcamp-2 | 2026-07-17 | AD3 Step 3: dogfood DF-2 bootcamp size-chat — routing observed, signature PASS, protocol step-3 skip friction logged | 4/4 | complete |
