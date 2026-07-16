@@ -106,3 +106,4 @@
 | 104 | 20260717-dogfooding-ledger | 2026-07-17 | AD3 Step 1: dogfooding ledger infra (per-entry schema incl. negative-result and gap fields) | 2/2 | complete |
 | 105 | 20260717-dogfood-bootcamp-1 | 2026-07-17 | AD3 Step 2: dogfood DF-1 bootcamp hero/translator — routing observed, signature PASS, browser-verified | 4/4 | complete |
 | 106 | 20260717-dogfood-bootcamp-2 | 2026-07-17 | AD3 Step 3: dogfood DF-2 bootcamp size-chat — routing observed, signature PASS, protocol step-3 skip friction logged | 4/4 | complete |
+| 107 | 20260717-routing-convergence-fix | 2026-07-17 | AD3 DF-3: real-use feedback fix — judgment-only global rule, hook disabled, style-injection removed | 3/3 | complete |

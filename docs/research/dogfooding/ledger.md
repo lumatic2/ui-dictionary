@@ -39,3 +39,14 @@
 - 마찰: 워커가 프로토콜 step 3(style-signature 자가 판정)을 또 건너뜀 — **2/2 재현** (판정은 게이트 수행). hook 리마인더 문구에 판정 의무가 없음.
 - 부족 자산(갭): ① 챗/대화 UI recipe 부재 재확인(DF-1과 동일) ② hook 리마인더에 시그니처 판정 의무 미포함 ③ 한글 break-keep 지침 anti-patterns 부재(DF-1 재확인)
 - evidence: bootcamp `dogfood/design-pass` 커밋 bf49546, build PASS, 스크린샷 `changesets/20260717-dogfood-bootcamp-2/dogfood2-chat-mobile.png`, fetch 로그 `dogfood2-log.jsonl`
+
+### DF-3 — 실사용 피드백: 라우팅이 스타일 수렴을 유발 (기회주의 관측)
+
+- 날짜/프로젝트/과제: 2026-07-17 / 전역(모든 프로젝트) / 사용자 실사용 관측 — "모든 디자인 작업에 askewly UI가 자동 적용되어 디자인이 똑같아짐 + hook 노이즈 과다"
+- 유형: 기회주의(실사용 마찰 — 산출물 없는 관측 건)
+- 라우팅 발화: 발화 자체가 문제 — hook·규칙 문구("tokens.css의 var만 사용")가 시그니처 확정("팔레트는 프로젝트별, 스타일 고정 금지")과 모순, askewly 스타일을 전 프로젝트에 주입
+- 시그니처 판정: 해당 없음 (라우팅 인프라 자체의 결함)
+- 마찰: ① AD1 라우팅이 "조회"가 아니라 "스타일 강제"로 작동 — 원 목표(흐름)와 부작용(동질화) 혼동 ② hook이 매 디자인 프롬프트에 발화해 노이즈 과다
+- 교정 (2026-07-17 사용자 "진행" 승인): hook 비활성(설정에서 제거, 파일 보존) + 전역 규칙을 "디자인 판정"으로 축소 — 시그니처(원칙 5·비선호 5) 자가 판정만 유지, askewly 토큰은 무토큰 프로젝트 기본값·명시 요청 시로 한정
+- 부족 자산(갭): 라우팅 설계 원칙 부재 — "판단 주입(시그니처)"과 "스타일 주입(토큰)"의 구분이 프로토콜·horizon 문서에 없었음 → AD4에서 entry-protocol 재정렬 필요
+- evidence: `~/.claude/CLAUDE.md`·`~/.codex/AGENTS.md` 디자인 절 개정, settings.json hook 제거
