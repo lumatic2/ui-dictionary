@@ -22,7 +22,7 @@ Goal: 최상급 레퍼런스(사용자 큐레이션 5종 정본)를 관찰→원
 
 - Completed at: 2026-07-17
 - Summary: taste 흡수 계약(갱신 없는 관찰=미소화·7필드·성립성 게이트 4문항) + ledger + RL 상호 배선 — changesets #122–123
-<!-- harness:milestone id="TC2" status="pending" priority="P0" -->
+<!-- harness:milestone id="TC2" status="active" priority="P0" evidence="plans/2026-07-17-tc2-curation-batch.md" -->
 ### TC2 — 제품 배치: 사용자 큐레이션 5종
 - DoD: Notion·Linear·Codex·Claude·Google 실화면 관찰(제품당 표면 1~2개, 착수 시 사용자 확정)이 taste ledger에 관찰→자산 갱신 추적으로 10건 이상 기록되고, 갱신이 판단 자산 2종 이상에 배포 반영된다.
 - Evidence: 활성화 시 plan doc + taste ledger

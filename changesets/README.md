@@ -123,3 +123,4 @@
 | 121 | 20260717-absorption-criteria | 2026-07-17 | VI5 Step 2: 3-way absorption rules (recipe/link/hold) + 9 candidates classified + toolshelf usage recorded, llms 58 assets | 4/4 | complete |
 | 122 | 20260717-taste-loop-contract | 2026-07-17 | TC1 Step 1: taste absorption contract — unupdated observation counts as undigested, 7-field schema, 4-question feasibility gate | 2/2 | complete |
 | 123 | 20260717-taste-ledger | 2026-07-17 | TC1 Step 2: taste ledger skeleton + RL cross-wiring (augment, not replace) | 2/2 | complete |
+| 124 | 20260717-taste-batch-notion-linear | 2026-07-17 | TC2 Step 1: taste T-1~T-6 (Notion typo compression/ink alpha, Linear borderless lightness ladder/44px rows) — clusters 14·15 added, 2 honest undigested | 4/4 | complete |
