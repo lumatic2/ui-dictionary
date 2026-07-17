@@ -1,7 +1,7 @@
 # Horizon — Taste Corpus (판단 상향 레퍼런스 흡수)
 
 Date: 2026-07-17
-Status: active (2026-07-17 사용자 승인 "ㄱㄱ" — 큐레이션 5종·Dribbble 조건부 포함 구성 확정)
+Status: closed (2026-07-17 — TC1~TC4 전부 완료. Close Criteria 충족: taste ledger 19건(제품 12·표현 2·성문 5, 흡수 15·미소화 2·기각 2) + 갱신이 자산 4종(시그니처·anti-patterns·knowledge·recipes 8파일)에 배포 반영)
 Objective link: `OBJECTIVE.md` (에이전트가 "의도적으로 디자인된 느낌"의 UI를 만든다 — 그 판단의 상한을 올림)
 Preceding horizon: `plans/horizons/2026-07-expressive-stack.md` (closed 2026-07-17)
 

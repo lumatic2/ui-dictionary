@@ -188,3 +188,24 @@
   - Completed: 2026-07-17
   - Result: shadcn 재스타일 계약(동작 불가침·look=프로젝트 토큰) + 흡수 3분기 기준(실측 9종 분류) llms 배포 + toolshelf used 5건 — changesets #120–121
   - Evidence: plans/2026-07-17-vi5-component-layer-absorption.md
+
+### 2026-07
+- TC1 - TC1 — 흡수 계약 개정
+  - Completed: 2026-07-17
+  - Result: taste 흡수 계약(갱신 없는 관찰=미소화·7필드·성립성 게이트 4문항) + ledger + RL 상호 배선 — changesets #122–123
+  - Evidence: plans/2026-07-17-tc1-taste-loop-contract.md
+
+- TC2 - TC2 — 제품 배치: 사용자 큐레이션 5종
+  - Completed: 2026-07-17
+  - Result: 큐레이션 5종 관찰 12건(흡수 9·미소화 2·시그니처 제안 1) — anti-patterns 클러스터 14·15 신설+13 보강, recipe 5파일 갱신, 배포 검증 — changesets #124–126
+  - Evidence: plans/2026-07-17-tc2-curation-batch.md
+
+- TC3 - TC3 — 표현 배치: Dribbble 조건부
+  - Completed: 2026-07-17
+  - Result: Dribbble 게이트 배치 — CRM 콘셉트 FAIL(3/4)→클러스터 16(콘셉트 대시보드 관성), 단일 액센트 차트 PASS→stat-grid 보강, 배포 검증 — changesets #128–129
+  - Evidence: plans/2026-07-17-tc3-dribbble-batch.md
+
+- TC4 - TC4 — 성문 판단 diff: HIG·Material·Polaris
+  - Completed: 2026-07-17
+  - Result: 성문 판단 diff — 채택 3(서체 증식 금지·모션 규모 비례·verb-first)·기각 2(M3 색 역할=스타일 고정 금지 충돌, HIG 재질=중복), 배포 검증 — changesets #130–131
+  - Evidence: plans/2026-07-17-tc4-canonical-diff.md
