@@ -22,14 +22,16 @@ Goal: 최상급 레퍼런스(사용자 큐레이션 5종 정본)를 관찰→원
 
 - Completed at: 2026-07-17
 - Summary: taste 흡수 계약(갱신 없는 관찰=미소화·7필드·성립성 게이트 4문항) + ledger + RL 상호 배선 — changesets #122–123
-<!-- harness:milestone id="TC2" status="active" priority="P0" evidence="plans/2026-07-17-tc2-curation-batch.md" -->
+<!-- harness:milestone id="TC2" status="completed" priority="P0" evidence="plans/2026-07-17-tc2-curation-batch.md" -->
 ### TC2 — 제품 배치: 사용자 큐레이션 5종
 - DoD: Notion·Linear·Codex·Claude·Google 실화면 관찰(제품당 표면 1~2개, 착수 시 사용자 확정)이 taste ledger에 관찰→자산 갱신 추적으로 10건 이상 기록되고, 갱신이 판단 자산 2종 이상에 배포 반영된다.
-- Evidence: 활성화 시 plan doc + taste ledger
+- Evidence: plans/2026-07-17-tc2-curation-batch.md
 - Gap: 취향 판단의 상한을 올릴 1급 제품 관찰이 시스템에 0건.
 - Scale: changesets>=3; surfaces: 실서비스 브라우저 관찰, 판단 자산, llms 배포; capability: 취향 코퍼스 1차
-- Status: [ ]
+- Status: [x]
 
+- Completed at: 2026-07-17
+- Summary: 큐레이션 5종 관찰 12건(흡수 9·미소화 2·시그니처 제안 1) — anti-patterns 클러스터 14·15 신설+13 보강, recipe 5파일 갱신, 배포 검증 — changesets #124–126
 <!-- harness:milestone id="TC3" status="pending" priority="P1" -->
 ### TC3 — 표현 배치: Dribbble 조건부
 - DoD: 성립성 게이트(실데이터·에러·한글·다크모드)를 통과한 원리 흡수 1건 이상 + 탈락 사례의 anti-pattern 역이용 1건 이상이 ledger에 기록·자산 반영된다.
