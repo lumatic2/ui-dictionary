@@ -6,7 +6,9 @@
 ## 후보 (우선순위 순)
 
 1. **public-product-monetization (복귀)** — parked 2026-07-17 (`docs/horizons/2026-07-public-product-monetization.md`). PX 완료, AM/AC/PG/PP 미착수. 복귀 조건 제안: agent-adoption-loop가 닫혀 실사용 흐름·스타일 기준이 검증된 뒤, AM(무료/Pro 경계) §B0-1 토론부터 재개.
+2. **vertical-integration (신규, 사용자 발의 2026-07-17)** — "Tailwind(문법) 위에 shadcn(부품) 위에 Askewly(판단)" 스택을 판단 층에서 그치지 않고 아래 두 층까지 Askewly Design이 다루는 수직 통합. 구성 제안: ① **CSS 표현 기법 knowledge** — "CSS로 예술"급 고급 기법(그라디언트 메시·mask/clip-path·scroll-driven animation·houdini·blend mode 등)을 어떻게 만드는지 해부해 `knowledge/`+recipe로 정본화 ② **부품 층 계약** — shadcn 등 컴포넌트 배포 계층을 우리 recipe가 직접 참조·재스타일하는 가이드(“shadcn 룩” 탈출 레시피) ③ **레퍼런스 흡수** — toolshelf 실측 후보: react-bits(130+ 애니메이션 컴포넌트)·GSAP·magicui·cult-ui·animated-grid-lines·WebGL-Fluid-Simulation·taste-skill·nothing-design-skill. 진입 시 §B0.5 Beat 2 + 재료 수집(리서치) beat 선행 권고 — CSS-art 기법 계보 조사가 milestone 설계의 입력.
 
 ## 이력
 
 - 2026-07-17: 파일 생성 (agent-adoption-loop 활성화와 함께). parked monetization을 첫 복귀 후보로 적재.
+- 2026-07-17: vertical-integration 후보 적재 (사용자 발의 — CSS 표현 기법 편입 + 문법/부품 층 수직 통합, toolshelf recall 근거 포함).

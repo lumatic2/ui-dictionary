@@ -40,14 +40,16 @@ Goal: Claude/Codex 디자인 작업에서 askewly design 조회가 기본 경로
 - Scale: changesets>=3; surfaces: 외부 레포 실작업 결과물, ledger; capability: 실작업 채택 실증
 - Status: [ ]
 
-<!-- harness:milestone id="AD4" status="active" priority="P1" evidence="docs/plans/2026-07-17-ad4-gap-driven-expansion.md" -->
+<!-- harness:milestone id="AD4" status="completed" priority="P1" evidence="docs/plans/2026-07-17-ad4-gap-driven-expansion.md" -->
 ### AD4 — Gap-driven 확장
 - DoD: AD3 장부의 갭 목록이 우선순위화되고, 수요 주도 자산 확장(recipe/token/anti-pattern/프로토콜)이 기존 검증 체인(build:catalog·llms.txt·audit:visuals)을 통과하며, 장부 항목 → 자산 반영 추적이 남는다.
-- Evidence: 활성화 시 plan doc + 갭별 changeset 추적표
+- Evidence: docs/plans/2026-07-17-ad4-gap-driven-expansion.md
 - Gap: 수요 주도 성장 루프 단절 — 쓰다가 부족한 자산을 채우는 루프가 안 돌고 있음.
 - Scale: changesets>=2; surfaces: site build·llms.txt·audit:visuals; capability: 수요 주도 자산 성장 루프
-- Status: [ ]
+- Status: [x]
 
+- Completed at: 2026-07-17
+- Summary: 갭 4건 해소 — chat recipe(live gallery)+한글 break-keep 클러스터+판정-중심 프로토콜 재정렬(hook 불사용 확정), 배포 검증 — changesets #110–111
 ## 유지보수 후보 (milestone 아님)
 
 - 데스크톱 브리지 모드 human Undo/Redo 활성화 (QA2 dogfooding 결함 #2)
@@ -55,7 +57,6 @@ Goal: Claude/Codex 디자인 작업에서 askewly design 조회가 기본 경로
 - 프로덕션 셸 정리: 기본 1,000-node fixture·dev 계기판 제거 (QA2 dogfooding 결함 #4)
 - shortcuts dialog 배경 콘텐츠 inert/aria-hidden (스크린리더 가상 커서 — 키보드 트랩은 완료)
 - Codex Windows workspace-write sandbox HTTPS 차단("Authentication failed") — headless codex exec에서 토큰 fetch 불가 (AD1 E2E 적발, changeset #101)
-- ui-dictionary CLAUDE.md의 design-bootstrap/custom-skills 스킬 서술 stale — 로컬 design-* 스킬 소스 부재 (AD1 실사, changeset #100)
 
 ## Archive Pointer
 
