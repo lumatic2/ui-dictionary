@@ -126,3 +126,4 @@
 | 124 | 20260717-taste-batch-notion-linear | 2026-07-17 | TC2 Step 1: taste T-1~T-6 (Notion typo compression/ink alpha, Linear borderless lightness ladder/44px rows) — clusters 14·15 added, 2 honest undigested | 4/4 | complete |
 | 125 | 20260717-taste-batch-codex-claude | 2026-07-17 | TC2 Step 2: taste T-7~T-10 (Claude warm paper/elevated input, Codex product-as-proof/dark aura) — 3 recipe amendments, 1 signature proposal deferred | 4/4 | complete |
 | 126 | 20260717-taste-batch-antigravity | 2026-07-17 | TC2 Step 3: taste T-11~T-12 (display weight inversion, margin-confined decoration) + batch deploy — 12 entries, 9 digested, 2 undigested, 1 signature proposal | 4/4 | complete |
+| 127 | 20260717-signature-glyph-amendment | 2026-07-17 | TC2 deferred: signature principle 2 glyph-minimum amendment (T-8, user-approved) — final tally 10 digested | 2/2 | complete |
