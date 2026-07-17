@@ -1,8 +1,8 @@
 # Expressive Stack — 표현 기술 티어 지도
 
 Date: 2026-07-17
-Milestone: VI1 (plan: `docs/plans/2026-07-17-vi1-expressive-stack-map.md`)
-지위: 살아있는 정본. 근거·출처 전체는 `docs/research/2026-07-17-expressive-stack-genealogy.md`(동결 기록, 전 항목 출처 URL+접근일) — 이 문서는 판정 규칙만 담고 근거를 중복 서술하지 않는다.
+Milestone: VI1 (plan: `archive/plans/2026-07-17-vi1-expressive-stack-map.md`)
+지위: 살아있는 정본. 근거·출처 전체는 `research/2026-07-17-expressive-stack-genealogy.md`(동결 기록, 전 항목 출처 URL+접근일) — 이 문서는 판정 규칙만 담고 근거를 중복 서술하지 않는다.
 
 Audience: 코드를 생성하는 에이전트(Codex, Claude Code). "이 시각 효과는 무엇으로 만드는가"를 판정하는 데 쓴다.
 
