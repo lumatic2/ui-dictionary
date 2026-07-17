@@ -47,6 +47,7 @@ import { ChatConversationPanelDemo } from "@/components/chat-conversation-panel"
 import { MeshGradientSurfaceDemo } from "@/components/mesh-gradient-surface"
 import { GlassPanelDemo } from "@/components/glass-panel"
 import { GrainTextureOverlayDemo } from "@/components/grain-texture-overlay"
+import { ScrollDrivenRevealDemo } from "@/components/scroll-driven-reveal"
 
 export const recipeDemoComponents: Record<string, ComponentType> = {
   "showcase-card": ShowcaseCardDemo,
@@ -54,6 +55,7 @@ export const recipeDemoComponents: Record<string, ComponentType> = {
   "mesh-gradient-surface": MeshGradientSurfaceDemo,
   "glass-panel": GlassPanelDemo,
   "grain-texture-overlay": GrainTextureOverlayDemo,
+  "scroll-driven-reveal": ScrollDrivenRevealDemo,
   "cart-drawer": CartDrawerDemo,
   "category-product-grid": CategoryProductGridDemo,
   "checkout-order-summary": CheckoutOrderSummaryDemo,
