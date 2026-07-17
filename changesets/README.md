@@ -130,3 +130,4 @@
 | 128 | 20260717-taste-dribbble | 2026-07-17 | TC3 Step 1: dribbble gate observations — CRM concept FAIL (3/4), single-accent chart PASS, gate proven non-rubber-stamp | 2/2 | complete |
 | 129 | 20260717-taste-dribbble-absorb | 2026-07-17 | TC3 Step 2: cluster 16 (concept-dashboard inertia) + stat-grid single-accent check, deployed | 3/3 | complete |
 | 130 | 20260717-canonical-principles | 2026-07-17 | TC4 Step 1: HIG/M3/Polaris canonical principles sourced (5 entries, official docs only) | 2/2 | complete |
+| 131 | 20260717-canonical-diff-absorb | 2026-07-17 | TC4 Step 2: 3 adopted (typeface restraint, motion-scale proportionality, verb-first labels) + 2 rejected with reasons, deployed | 3/3 | complete |
