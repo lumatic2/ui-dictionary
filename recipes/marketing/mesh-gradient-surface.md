@@ -42,6 +42,7 @@ A mesh gradient surface gives a hero, brand section, or empty backdrop an organi
 - Hero backdrop (full-bleed, content overlaid).
 - Card/section accent (bounded, rounded, bordered).
 - Backdrop for glass surfaces (pair with `glass-panel` — the blur needs a busy background to be visible).
+- Dark-base aura: on a near-black base, confine the gradient layers to one region (typically the top) as a soft aura and float content cards above it — mood without sacrificing content contrast (taste ledger T-10).
 
 ## Code
 

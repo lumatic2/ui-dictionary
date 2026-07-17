@@ -99,6 +99,7 @@ Full hero markup, `FloatingField`, and the `HeroSearch` proof-surface component 
 - Subcopy mentions both the public reference site and the agent-facing design system, not just one.
 - Below the CTAs there is exactly one proof surface (search field, or the Proof-variant workspace preview) — never multiple unrelated decorative cards.
 - Ambient background field (if present) has a `motion-reduce` fallback and does not read as a purple-dominated page (§8) on its own.
+- When the product has a real UI, the proof surface prefers an actual product screen (real data, real states) over illustration or abstract mockups — the UI proves itself (taste ledger T-9, Codex measured).
 - CTA buttons have visible hover/active/focus-visible states; focus ring must be keyboard-reachable.
 - At narrow viewports, title and subcopy reflow without clipping or horizontal scroll from the section's `overflow-hidden`.
 
