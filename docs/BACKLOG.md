@@ -162,3 +162,29 @@
   - Completed: 2026-07-17
   - Result: 갭 4건 해소 — chat recipe(live gallery)+한글 break-keep 클러스터+판정-중심 프로토콜 재정렬(hook 불사용 확정), 배포 검증 — changesets #110–111
   - Evidence: docs/plans/2026-07-17-ad4-gap-driven-expansion.md
+
+### 2026-07
+- VI1 - VI1 — 표현 스택 지도
+  - Completed: 2026-07-17
+  - Result: 4티어 계보 리서치(30기법, 전 항목 출처) + 쇼케이스 12종 실코드 역산 + 기법→티어 결정 표 21행 knowledge 정본 llms 배포 — changesets #112–113
+  - Evidence: archive/plans/2026-07-17-vi1-expressive-stack-map.md
+
+- VI2 - VI2 — CSS·SVG 티어 recipes
+  - Completed: 2026-07-17
+  - Result: 선언 티어 recipe 4종(mesh gradient·glass panel·grain overlay·scroll-driven reveal) — 전부 의존성 0·토큰 파생, live 데모 브라우저 검증 + 배포 curl PASS — changesets #114–115
+  - Evidence: archive/plans/2026-07-17-vi2-css-svg-recipes.md
+
+- VI3 - VI3 — 모션 오케스트레이션 티어 recipes
+  - Completed: 2026-07-17
+  - Result: Motion 도입(+43KB gzip 실측) + ② 티어 recipe 3종(magnetic=수동 opt-in·spring drag=중단가능성·stagger=실무 기본) 인터랙션 실검증 — changesets #116–117
+  - Evidence: plans/2026-07-17-vi3-motion-recipes.md
+
+- VI4 - VI4 — Canvas·WebGL·three.js 티어
+  - Completed: 2026-07-17
+  - Result: three.js/R3F lazy 도입(별도 청크 881KB·메인 +2.4KB gzip) + ③ 파티클·④ 3D 씬 recipe — lazy 실증·WebGL 폴백·reduced-motion 게이팅, 배포 검증 — changesets #118–119
+  - Evidence: plans/2026-07-17-vi4-canvas-webgl-tier.md
+
+- VI5 - VI5 — 부품 층 계약 + 레퍼런스 흡수
+  - Completed: 2026-07-17
+  - Result: shadcn 재스타일 계약(동작 불가침·look=프로젝트 토큰) + 흡수 3분기 기준(실측 9종 분류) llms 배포 + toolshelf used 5건 — changesets #120–121
+  - Evidence: plans/2026-07-17-vi5-component-layer-absorption.md

@@ -1,7 +1,7 @@
 # Horizon — Expressive Stack (표현 기술 스택 수직 통합)
 
 Date: 2026-07-17
-Status: active (2026-07-17 사용자 승인 — agent-adoption-loop close 직후, 사용자 발의 "수직적 통합")
+Status: closed (2026-07-17 — VI1~VI5 전부 완료, Close Criteria 3항 충족: 결정 표 llms 배포·4티어 각 1+ live recipe 검증 체인 통과·shadcn 재스타일 가이드 배포)
 Objective link: `OBJECTIVE.md` (성공 상태 ③ 에이전트 소비 — "의도적으로 디자인된 느낌의 UI"의 표현 상한을 끌어올림)
 Preceding horizon: `docs/horizons/2026-07-agent-adoption-loop.md` (closed 2026-07-17)
 
