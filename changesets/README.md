@@ -116,3 +116,4 @@
 | 114 | 20260717-declarative-surface-recipes | 2026-07-17 | VI2 Step 1: declarative surface recipes (mesh-gradient/glass-panel/grain-overlay) — token-derived, zero-dep, live demos verified | 5/5 | complete |
 | 115 | 20260717-scroll-driven-reveal | 2026-07-17 | VI2 Step 2: scroll-driven reveal recipe (CSS view() timeline, @supports-gated hidden state) + llms 51 assets deploy | 5/5 | complete |
 | 116 | 20260717-motion-magnetic-spring | 2026-07-17 | VI3 Step 1: motion dep (+43KB gzip measured) + magnetic-hover (manual opt-in) + spring-drag-snap recipes, interaction-verified | 4/4 | complete |
+| 117 | 20260717-stagger-entrance | 2026-07-17 | VI3 Step 2: staggered entrance recipe (production-default choreography, reduced-motion instant) + llms 54 assets deploy | 4/4 | complete |

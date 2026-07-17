@@ -38,6 +38,8 @@ Rules for consumers: reference semantic tokens, never hard-code color/dimension 
 
 - [recipes/application-ui/chat-conversation-panel.md](https://ui.askewly.com/llms/recipes/application-ui/chat-conversation-panel.md): Chat Conversation Panel — application-ui recipe (status: draft)
 - [recipes/application-ui/showcase-card.md](https://ui.askewly.com/llms/recipes/application-ui/showcase-card.md): Showcase Card — application-ui recipe (status: draft)
+- [recipes/application-ui/spring-drag-snap-card.md](https://ui.askewly.com/llms/recipes/application-ui/spring-drag-snap-card.md): Spring Drag Snap-back Card — application-ui recipe (status: draft)
+- [recipes/application-ui/staggered-entrance-group.md](https://ui.askewly.com/llms/recipes/application-ui/staggered-entrance-group.md): Staggered Entrance Group — application-ui recipe (status: draft)
 - [recipes/commerce/cart-drawer.md](https://ui.askewly.com/llms/recipes/commerce/cart-drawer.md): Cart Drawer — commerce recipe (status: draft)
 - [recipes/commerce/category-product-grid.md](https://ui.askewly.com/llms/recipes/commerce/category-product-grid.md): Category Product Grid — commerce recipe (status: draft)
 - [recipes/commerce/checkout-order-summary.md](https://ui.askewly.com/llms/recipes/commerce/checkout-order-summary.md): Checkout Order Summary — commerce recipe (status: draft)
@@ -65,6 +67,7 @@ Rules for consumers: reference semantic tokens, never hard-code color/dimension 
 - [recipes/layout/sidebar-application-shell.md](https://ui.askewly.com/llms/recipes/layout/sidebar-application-shell.md): Sidebar Application Shell — layout recipe (status: draft)
 - [recipes/marketing/grain-texture-overlay.md](https://ui.askewly.com/llms/recipes/marketing/grain-texture-overlay.md): Grain Texture Overlay — marketing recipe (status: draft)
 - [recipes/marketing/landing-hero.md](https://ui.askewly.com/llms/recipes/marketing/landing-hero.md): Landing Hero — marketing recipe (status: draft)
+- [recipes/marketing/magnetic-hover-button.md](https://ui.askewly.com/llms/recipes/marketing/magnetic-hover-button.md): Magnetic Hover Button — marketing recipe (status: draft)
 - [recipes/marketing/mesh-gradient-surface.md](https://ui.askewly.com/llms/recipes/marketing/mesh-gradient-surface.md): Mesh Gradient Surface — marketing recipe (status: draft)
 - [recipes/marketing/scroll-driven-reveal.md](https://ui.askewly.com/llms/recipes/marketing/scroll-driven-reveal.md): Scroll-Driven Reveal — marketing recipe (status: draft)
 - [recipes/navigation/bottom-tab-bar.md](https://ui.askewly.com/llms/recipes/navigation/bottom-tab-bar.md): Bottom Tab Bar — navigation recipe (status: draft)
