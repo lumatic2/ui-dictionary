@@ -128,6 +128,7 @@ cd packages/component-registry && npm run build:catalog   # 캔버스 recipe 카
 
 ## Changelog
 
+- 2026-07-17: taste 경로 증설 — 판단(취향) 흡수는 `research/taste-loop.md` 계약을 따른다 (RL=커버리지 흡수, taste=기존 판단 자산 갱신. 관찰 중 신규 recipe 후보가 나오면 이 문서의 inbox로 넘어온다).
 - 2026-07-12: 초판. vocabulary 흡수 루프를 pattern/recipe 흡수로 이식하는 5단계 절차, inbox 스키마, ledger 규약, llms.txt 수동 등록 절차를 확정.
 - 2026-07-12: 3배치 실증 회고 fold — ① llms.txt recipe 등록은 glob 자동 발견으로 정정(FIXED_ASSETS는 비-recipe 문서 전용) ② dedup은 적응 전 1회 실행·출력 캡처, 승격 후 자기 매치는 정상 ③ 자동 audit이 놓치는 이형 표현 중복은 이웃 terms.yml 수동 대조로 잡는다 ④ terms.yml unquoted flow-sequence 내 따옴표 금지.
 - 2026-07-12: MS 배치 회고 — 자매 용어 alias 문구 충돌은 audit 미검출, 이웃 alias 직접 대조 필수.

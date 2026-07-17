@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "active_work_id": "VI5",
+  "active_work_id": "TC1",
   "works": {
     "SFB1": {
       "title": "Structure Contract And Clean Production",
@@ -762,6 +762,50 @@
       "notes": "restyle contract + absorption criteria deployed; toolshelf usage recorded; horizon close criteria met",
       "notified_at": "2026-07-17T10:30:47.760643+00:00",
       "completed": "2026-07-17"
+    },
+    "TC1": {
+      "work_id": "TC1",
+      "horizon_id": "taste-corpus",
+      "milestone_id": "TC1",
+      "status": "active",
+      "plan_path": "plans/2026-07-17-tc1-taste-loop-contract.md",
+      "changeset_path": "changesets",
+      "next_step": "step-1",
+      "current_step": "step-1",
+      "steps": [
+        {
+          "id": "step-1",
+          "label": "Step 1 — taste 계약 문서 (changeset)",
+          "status": "pending"
+        },
+        {
+          "id": "step-2",
+          "label": "Step 2 — 장부 스켈레톤 + RL 상호 배선 (changeset)",
+          "status": "pending"
+        }
+      ],
+      "execution_mode": "continuous",
+      "approval": {
+        "approved_by": "user",
+        "approved_at": "2026-07-17",
+        "plan_sha256": "fb74ea09f9c69374023b7c37189128f36b08f72c285a3385ac3eb8cbaf86afba"
+      },
+      "allowed_stop_reasons": [
+        "completed",
+        "blocked",
+        "decision_required",
+        "risk_gate",
+        "secret_required",
+        "external_authority_required",
+        "user_stopped"
+      ],
+      "stop_reason": null,
+      "stop_detail": {},
+      "session_ids": [
+        "claude:ab332db5-5327-43b0-9bef-702291fafaee"
+      ],
+      "updated_at": "2026-07-17",
+      "notes": "Registered atomically by canonical harness approve_harness_plan.py after plan validation."
     }
   }
 }

@@ -121,3 +121,5 @@
 | 119 | 20260717-lazy-three-scene | 2026-07-17 | VI4 Step 2: three.js/R3F behind dynamic import — separate 881KB chunk, main +2.4KB gzip only, WebGL boundary fallback | 4/4 | complete |
 | 120 | 20260717-component-restyle-guide | 2026-07-17 | VI5 Step 1: shadcn-face escape contract — behavior untouched, look remapped to project tokens (DF-3 principle enforced) | 3/3 | complete |
 | 121 | 20260717-absorption-criteria | 2026-07-17 | VI5 Step 2: 3-way absorption rules (recipe/link/hold) + 9 candidates classified + toolshelf usage recorded, llms 58 assets | 4/4 | complete |
+| 122 | 20260717-taste-loop-contract | 2026-07-17 | TC1 Step 1: taste absorption contract — unupdated observation counts as undigested, 7-field schema, 4-question feasibility gate | 2/2 | complete |
+| 123 | 20260717-taste-ledger | 2026-07-17 | TC1 Step 2: taste ledger skeleton + RL cross-wiring (augment, not replace) | 2/2 | complete |
