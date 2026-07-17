@@ -120,3 +120,21 @@
 - diff: `canvas-particle-field` recipe는 배경 전면 배치만 다룸 — 여백 한정 배치 variant 없음
 - 갱신: `recipes/application-ui/canvas-particle-field.md` Variants 보강 (changeset 126)
 - 게이트: 해당 없음
+
+### T-13 — Dribbble: Real Estate CRM 콘셉트 — 게이트 FAIL, 역이용 흡수
+
+- source: "Real Estate CRM Dashboard UI Design" (Nixtio) — https://dribbble.com/shots/27565263 (접근 2026-07-17, `tc3-dribbble-crm.png`)
+- 관찰: 운영 도구 첫 뷰포트를 대형 인사("Good morning, Elizabeth!")+매물 사진 배경이 점유, 스탯 카드가 사진 위 부유, 아크형 장식 차트(축·단위 없음)
+- 원리(역): 콘셉트 아트의 관성이 실무에서 무너지는 3형태 — 인사말 히어로·사진 배경 위 데이터·축 없는 장식 차트
+- diff: 이 실패형이 anti-patterns에 없음 (클러스터 12는 기능 과다 축, 이건 콘셉트 관성 축)
+- 갱신: `docs/design-system/anti-patterns.md` 클러스터 16 신설 (changeset 129)
+- 게이트: **FAIL** — ① 실데이터: 리드 테이블·긴 매물명·수백 행 표면 부재, 사진 밝기에 따라 카드 대비 붕괴 ② 상태: 전 위젯 완벽 데이터 가정, 빈/에러 표현 불가, 차트에 축·단위 없음 ③ 한글: 대형 인사는 성립 가능하나 부차 ④ 접근성: 사진 위 텍스트 대비 미보장·장식 차트 color-only
+
+### T-14 — Dribbble: 단일 액센트 주간 차트 — 게이트 PASS
+
+- source: "Reading tracker – personal library dashboard" (Maria M) — https://dribbble.com/shots/27565039 (접근 2026-07-17, `tc3-dribbble-reading.png`)
+- 관찰: 주간 바 차트에서 6일은 무채 베이지, 강조일(Sat)만 액센트 1색 — 축 라벨(Mon~Sun)·Avg/Peak 각주·강조일 텍스트 라벨 병행
+- 원리: 데이터 강조는 전 계열 채색이 아니라 **무채 베이스 + 강조 1점**(텍스트 라벨 병행 조건) — 시그니처 원칙 2의 데이터 표면 적용형
+- diff: `stat-summary-grid` recipe에 강조 운용 판단 없음 (클러스터 4는 color-only 금지 축으로 별개)
+- 갱신: `recipes/data-display/stat-summary-grid.md` Checks 보강 (changeset 129)
+- 게이트: **PASS** — ① 실데이터: 주 7칸 고정이라 폭발 없음, 값·축 실존 ② 상태: 빈 주간=0높이 바로 표현 가능, 원리는 상태와 독립 ③ 한글: 요일 라벨 치환 성립 ④ 접근성: 강조가 색+텍스트 라벨 병행(단독 색 아님)

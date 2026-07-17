@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "active_work_id": "TC2",
+  "active_work_id": "TC3",
   "works": {
     "SFB1": {
       "title": "Structure Contract And Clean Production",
@@ -859,6 +859,50 @@
       "notes": "12 entries (9 digested, 2 dup-undigested, 1 signature proposal deferred); clusters 14/15 + 5 recipe amendments deployed",
       "notified_at": "2026-07-17T11:53:47.678395+00:00",
       "completed": "2026-07-17"
+    },
+    "TC3": {
+      "work_id": "TC3",
+      "horizon_id": "taste-corpus",
+      "milestone_id": "TC3",
+      "status": "active",
+      "plan_path": "plans/2026-07-17-tc3-dribbble-batch.md",
+      "changeset_path": "changesets",
+      "next_step": "step-1",
+      "current_step": "step-1",
+      "steps": [
+        {
+          "id": "step-1",
+          "label": "Step 1 — Dribbble 관찰 + 게이트 판정 (changeset)",
+          "status": "pending"
+        },
+        {
+          "id": "step-2",
+          "label": "Step 2 — 자산 반영 + 배포 (changeset)",
+          "status": "pending"
+        }
+      ],
+      "execution_mode": "continuous",
+      "approval": {
+        "approved_by": "user",
+        "approved_at": "2026-07-17",
+        "plan_sha256": "33a4323b04fe33637f07723f772f9d0e6585452043ac1bf155a630d422a74afa"
+      },
+      "allowed_stop_reasons": [
+        "completed",
+        "blocked",
+        "decision_required",
+        "risk_gate",
+        "secret_required",
+        "external_authority_required",
+        "user_stopped"
+      ],
+      "stop_reason": null,
+      "stop_detail": {},
+      "session_ids": [
+        "claude:ab332db5-5327-43b0-9bef-702291fafaee"
+      ],
+      "updated_at": "2026-07-17",
+      "notes": "Registered atomically by canonical harness approve_harness_plan.py after plan validation."
     }
   }
 }

@@ -32,7 +32,7 @@ Goal: 최상급 레퍼런스(사용자 큐레이션 5종 정본)를 관찰→원
 
 - Completed at: 2026-07-17
 - Summary: 큐레이션 5종 관찰 12건(흡수 9·미소화 2·시그니처 제안 1) — anti-patterns 클러스터 14·15 신설+13 보강, recipe 5파일 갱신, 배포 검증 — changesets #124–126
-<!-- harness:milestone id="TC3" status="pending" priority="P1" -->
+<!-- harness:milestone id="TC3" status="active" priority="P1" evidence="plans/2026-07-17-tc3-dribbble-batch.md" -->
 ### TC3 — 표현 배치: Dribbble 조건부
 - DoD: 성립성 게이트(실데이터·에러·한글·다크모드)를 통과한 원리 흡수 1건 이상 + 탈락 사례의 anti-pattern 역이용 1건 이상이 ledger에 기록·자산 반영된다.
 - Evidence: 활성화 시 plan doc + taste ledger
