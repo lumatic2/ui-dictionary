@@ -12,14 +12,16 @@ Goal: 최상급 레퍼런스(사용자 큐레이션 5종 정본)를 관찰→원
 
 ## Active Milestones
 
-<!-- harness:milestone id="TC1" status="active" priority="P0" evidence="plans/2026-07-17-tc1-taste-loop-contract.md" -->
+<!-- harness:milestone id="TC1" status="completed" priority="P0" evidence="plans/2026-07-17-tc1-taste-loop-contract.md" -->
 ### TC1 — 흡수 계약 개정
 - DoD: `research/taste-loop.md`(관찰→원리→판단 diff→자산 갱신 의무 + 성립성 게이트) + taste ledger 스켈레톤이 커밋되고, 기존 RL 절차(`research/reference-loop.md`)와의 관계(증설, 대체 아님)가 양쪽에 명문화된다.
-- Evidence: 활성화 시 plan doc
+- Evidence: plans/2026-07-17-tc1-taste-loop-contract.md
 - Gap: RL 루프는 커버리지(신규 recipe/term)만 계수 — 판단 갱신을 강제하는 계약·장부가 없음.
 - Scale: changesets>=1(계약 단일 응집 변경); surfaces: research/ 계약 문서; capability: 판단 갱신 강제 흡수 계약
-- Status: [ ]
+- Status: [x]
 
+- Completed at: 2026-07-17
+- Summary: taste 흡수 계약(갱신 없는 관찰=미소화·7필드·성립성 게이트 4문항) + ledger + RL 상호 배선 — changesets #122–123
 <!-- harness:milestone id="TC2" status="pending" priority="P0" -->
 ### TC2 — 제품 배치: 사용자 큐레이션 5종
 - DoD: Notion·Linear·Codex·Claude·Google 실화면 관찰(제품당 표면 1~2개, 착수 시 사용자 확정)이 taste ledger에 관찰→자산 갱신 추적으로 10건 이상 기록되고, 갱신이 판단 자산 2종 이상에 배포 반영된다.

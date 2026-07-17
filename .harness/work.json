@@ -767,21 +767,21 @@
       "work_id": "TC1",
       "horizon_id": "taste-corpus",
       "milestone_id": "TC1",
-      "status": "active",
+      "status": "completed",
       "plan_path": "plans/2026-07-17-tc1-taste-loop-contract.md",
       "changeset_path": "changesets",
-      "next_step": "step-1",
-      "current_step": "step-1",
+      "next_step": null,
+      "current_step": null,
       "steps": [
         {
           "id": "step-1",
           "label": "Step 1 — taste 계약 문서 (changeset)",
-          "status": "pending"
+          "status": "completed"
         },
         {
           "id": "step-2",
           "label": "Step 2 — 장부 스켈레톤 + RL 상호 배선 (changeset)",
-          "status": "pending"
+          "status": "completed"
         }
       ],
       "execution_mode": "continuous",
@@ -805,7 +805,9 @@
         "claude:ab332db5-5327-43b0-9bef-702291fafaee"
       ],
       "updated_at": "2026-07-17",
-      "notes": "Registered atomically by canonical harness approve_harness_plan.py after plan validation."
+      "notes": "taste contract + ledger; RL augmented not replaced",
+      "notified_at": "2026-07-17T11:28:45.983244+00:00",
+      "completed": "2026-07-17"
     }
   }
 }
