@@ -107,3 +107,6 @@
 | 105 | 20260717-dogfood-bootcamp-1 | 2026-07-17 | AD3 Step 2: dogfood DF-1 bootcamp hero/translator — routing observed, signature PASS, browser-verified | 4/4 | complete |
 | 106 | 20260717-dogfood-bootcamp-2 | 2026-07-17 | AD3 Step 3: dogfood DF-2 bootcamp size-chat — routing observed, signature PASS, protocol step-3 skip friction logged | 4/4 | complete |
 | 107 | 20260717-routing-convergence-fix | 2026-07-17 | AD3 DF-3: real-use feedback fix — judgment-only global rule, hook disabled, style-injection removed | 3/3 | complete |
+| 108 | 20260717-claude-md-stale-cleanup | 2026-07-17 | Maintenance: CLAUDE.md Structure/Related synced to actual repo state (stale templates list, absent design-bootstrap source) | 3/3 | complete |
+| 109 | 20260717-ledger-interruption-remerge | 2026-07-17 | Maintenance: interruption event remerged into execution-ledger chronological position, separate file removed | 4/4 | complete |
+| 110 | 20260717-chat-conversation-recipe | 2026-07-17 | AD4 Step 1: chat-conversation-panel recipe + live gallery demo (gap 1 from DF-1/DF-2) — states complete, break-keep, browser-verified | 4/4 | complete |

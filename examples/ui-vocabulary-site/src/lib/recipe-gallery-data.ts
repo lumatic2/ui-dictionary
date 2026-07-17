@@ -45,6 +45,7 @@ export const recipeCollectionOrder: RecipeCollection[] = [
 
 export const recipeGalleryEntries: RecipeGalleryEntry[] = [
   { slug: "showcase-card", title: "Showcase Card", collection: "Application UI", description: "A self-contained shell that proves an interaction capability rather than describing it: a header sits above a bounded demo region that runs a live, interactive product-interface behavior." },
+  { slug: "chat-conversation-panel", title: "Chat Conversation Panel", collection: "Application UI", description: "Turns a request-response exchange into one continuously readable thread: a bounded, self-scrolling message log above a single always-visible input bar." },
   { slug: "cart-drawer", title: "Cart Drawer", collection: "Commerce", description: "A cart drawer keeps the browsing context intact while confirming what a user has added." },
   { slug: "category-product-grid", title: "Category Product Grid", collection: "Commerce", description: "Assembles many product cards into the higher-order list structure a category or search-results page needs: a filter/sort bar, a matching loading skeleton, and a recoverable empty state." },
   { slug: "checkout-order-summary", title: "Checkout Order Summary", collection: "Commerce", description: "Keeps the exact purchase commitment visible while the user provides delivery and payment details." },

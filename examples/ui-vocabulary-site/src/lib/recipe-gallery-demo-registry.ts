@@ -43,9 +43,11 @@ import { BottomTabBarDemo } from "@/components/bottom-tab-bar"
 import { LargeTitleCollapsingHeaderDemo } from "@/components/large-title-collapsing-header"
 import { ActionSheetDestructiveConfirmationDemo } from "@/components/action-sheet-destructive-confirmation"
 import { BottomSheetDetentsDemo } from "@/components/bottom-sheet-detents"
+import { ChatConversationPanelDemo } from "@/components/chat-conversation-panel"
 
 export const recipeDemoComponents: Record<string, ComponentType> = {
   "showcase-card": ShowcaseCardDemo,
+  "chat-conversation-panel": ChatConversationPanelDemo,
   "cart-drawer": CartDrawerDemo,
   "category-product-grid": CategoryProductGridDemo,
   "checkout-order-summary": CheckoutOrderSummaryDemo,

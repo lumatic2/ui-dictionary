@@ -40,7 +40,7 @@ Goal: Claude/Codex 디자인 작업에서 askewly design 조회가 기본 경로
 - Scale: changesets>=3; surfaces: 외부 레포 실작업 결과물, ledger; capability: 실작업 채택 실증
 - Status: [ ]
 
-<!-- harness:milestone id="AD4" status="pending" priority="P1" -->
+<!-- harness:milestone id="AD4" status="active" priority="P1" evidence="docs/plans/2026-07-17-ad4-gap-driven-expansion.md" -->
 ### AD4 — Gap-driven 확장
 - DoD: AD3 장부의 갭 목록이 우선순위화되고, 수요 주도 자산 확장(recipe/token/anti-pattern/프로토콜)이 기존 검증 체인(build:catalog·llms.txt·audit:visuals)을 통과하며, 장부 항목 → 자산 반영 추적이 남는다.
 - Evidence: 활성화 시 plan doc + 갭별 changeset 추적표

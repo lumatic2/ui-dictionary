@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "active_work_id": "AD3",
+  "active_work_id": "AD4",
   "works": {
     "SFB1": {
       "title": "Structure Contract And Clean Production",
@@ -485,6 +485,50 @@
       },
       "session_ids": [
         "claude:c83fe7a0-b56d-4634-9d86-8d2de5127bb3"
+      ],
+      "updated_at": "2026-07-17",
+      "notes": "Registered atomically by canonical harness approve_harness_plan.py after plan validation."
+    },
+    "AD4": {
+      "work_id": "AD4",
+      "horizon_id": "agent-adoption-loop",
+      "milestone_id": "AD4",
+      "status": "active",
+      "plan_path": "docs/plans/2026-07-17-ad4-gap-driven-expansion.md",
+      "changeset_path": "changesets",
+      "next_step": "step-1",
+      "current_step": "step-1",
+      "steps": [
+        {
+          "id": "step-1",
+          "label": "Step 1 — 챗/대화 UI recipe (changeset)",
+          "status": "pending"
+        },
+        {
+          "id": "step-2",
+          "label": "Step 2 — 프로토콜·안티패턴 재정렬 (changeset)",
+          "status": "pending"
+        }
+      ],
+      "execution_mode": "continuous",
+      "approval": {
+        "approved_by": "user",
+        "approved_at": "2026-07-17",
+        "plan_sha256": "73c9229ce3935ab2fb0bae618041e7a445a81595ca2e00787ef974cf17420bc4"
+      },
+      "allowed_stop_reasons": [
+        "completed",
+        "blocked",
+        "decision_required",
+        "risk_gate",
+        "secret_required",
+        "external_authority_required",
+        "user_stopped"
+      ],
+      "stop_reason": null,
+      "stop_detail": {},
+      "session_ids": [
+        "claude:ab332db5-5327-43b0-9bef-702291fafaee"
       ],
       "updated_at": "2026-07-17",
       "notes": "Registered atomically by canonical harness approve_harness_plan.py after plan validation."
