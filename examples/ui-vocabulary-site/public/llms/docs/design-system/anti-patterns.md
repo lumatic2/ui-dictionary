@@ -200,6 +200,21 @@ Audience: Codex, Claude Code 등 코드를 생성하는 에이전트. 사람이 
 
 ---
 
+## 13. 한글 타이포그래피·줄바꿈
+
+**원칙**: CJK(특히 한글) 텍스트가 흐르는 모든 컨테이너에 `word-break: keep-all`(Tailwind `break-keep`)을 적용해 단어가 중간에서 잘리지 않게 한다. 좁은 컨테이너(말풍선·카드·버튼)에서는 줄바꿈 위치가 어색하지 않은지 실제 렌더로 확인한다.
+
+**왜**: 한글은 기본 `word-break: normal`에서 음절 단위로 아무 데서나 잘린다 — "줄바꿈됩니다"가 "줄바"/"꿈됩니다"로 쪼개지는 식. 영어 데모로 개발하면 절대 안 보이고 한글 실데이터에서만 드러나는 실패라, dogfooding 실작업 2건(DF-1·DF-2)에서 연속으로 교정이 필요했다. 스타일 시그니처 비선호 2·3(한글 단어 잘림·어색한 줄바꿈)의 하드 페일 조건이기도 하다.
+
+**위반 예**:
+- `recipes/application-ui/chat-conversation-panel.md` (Checks: CJK copy wraps with `keep-all` inside bubbles — 이 recipe가 DF 교정에서 역산된 계약)
+- dogfooding ledger DF-1(히어로 카피)·DF-2(챗 말풍선) — `docs/research/dogfooding/ledger.md`
+
+**에이전트 지시형 문구**: "한글이 렌더링되는 텍스트 컨테이너에 `break-keep`(또는 `word-break: keep-all`)을 적용하라. 제목·말풍선·버튼처럼 좁은 컨테이너는 한글 실데이터로 렌더해 줄바꿈 위치를 확인하고, 영어 목업만으로 통과 처리하지 마라."
+
+---
+
 ## Changelog
 
+- 2026-07-17: 클러스터 13(한글 타이포그래피·줄바꿈) 추가 — AD4 갭 ② (dogfooding DF-1·DF-2 실측).
 - 2026-07-12: 초판. `recipes/*/*.md` 35건의 Anti-patterns 섹션을 12개 클러스터로 증류 (SD Step 5).

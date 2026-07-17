@@ -1,17 +1,17 @@
 # Agent Entry Protocol
 
-Date: 2026-07-17
+Date: 2026-07-17 (realigned — judgment-first, gap ③④ from dogfooding DF-2/DF-3)
 
-Operational contract for coding agents (Claude Code, Codex): **when you receive a design or UI task, consult Askewly Design first** — before writing markup, choosing colors, or inventing component structure. This document tells you exactly what to fetch, in what order, per task type. It is the routing target that global agent rules point to.
+Operational contract for coding agents (Claude Code, Codex): **Askewly Design injects design judgment, not a style.** When you receive a design or UI task, consult this system for *what good looks like* — pattern recipes, failure modes, and the quality bar — while the visual identity (palette, radius, type) stays owned by the project you are working in. Fetching this system must never make different projects converge on one look.
 
 Index of all assets: `https://ui.askewly.com/llms.txt` (raw URLs; link-only, values live in the linked files).
 
 ## Always, for any design task
 
 0. **Copy asset URLs exactly as written here or in llms.txt — never construct, shorten, or guess a path.** After every fetch, check the response starts with the expected content type (markdown heading, CSS rule, or JSON). If it looks like an HTML page or a 404, the fetch failed: stop and re-check the URL against llms.txt.
-1. Tokens: **if the working project has its own DESIGN.md or token SSOT, that takes precedence.** Otherwise fetch [tokens/tokens.css](https://ui.askewly.com/llms/tokens/tokens.css) — ready-to-use CSS custom properties (light + dark) generated from the Askewly token SSOT — and use its variables directly. Never invent color/dimension values either way. The full DTCG source is [tokens/askewly.tokens.json](https://ui.askewly.com/llms/tokens/askewly.tokens.json).
+1. Tokens — **the working project's design system owns the look.** If the project has its own DESIGN.md, token SSOT, or established styling, derive every value from *that* and do not import Askewly colors, radii, or type. Fetch [tokens/tokens.css](https://ui.askewly.com/llms/tokens/tokens.css) only as a fallback when the project has no tokens at all, or when the user explicitly asks for Askewly Design. Never invent color/dimension values either way. The full DTCG source is [tokens/askewly.tokens.json](https://ui.askewly.com/llms/tokens/askewly.tokens.json).
 2. Fetch [docs/design-system/anti-patterns.md](https://ui.askewly.com/llms/docs/design-system/anti-patterns.md) — the generic-AI-output failure modes to avoid.
-3. Fetch [docs/design-system/style-signature.md](https://ui.askewly.com/llms/docs/design-system/style-signature.md) and judge your output against it before reporting: 5 operating principles all met + 0 hard-fail dislikes. Include the judgment in your report.
+3. **Self-judgment is a mandatory step, not a suggestion — no runtime hook will remind you; this document is the only place the obligation lives.** Fetch [docs/design-system/style-signature.md](https://ui.askewly.com/llms/docs/design-system/style-signature.md) and judge your finished output against it *before* reporting: all 5 operating principles met + 0 hard-fail dislikes. Include the per-principle judgment in your report; a report without it is incomplete. (Dogfooding DF-1/DF-2: workers skipped this step 2 out of 2 times — do not be the third.)
 4. Close the loop with verification: interaction states complete (hover/focus/active/disabled/loading/error), dark mode holds, WCAG contrast passes. The website's Getting set up page describes the same loop for humans: Explore → Acquire → Inject → Verify.
 
 ## By task type
@@ -35,6 +35,7 @@ Index of all assets: `https://ui.askewly.com/llms.txt` (raw URLs; link-only, val
 
 ## Rules
 
+- **Judgment injection, not style injection.** Recipes, anti-patterns, and the signature apply to every project; Askewly tokens apply only to token-less projects or on explicit request. If you notice your output making an unrelated project look like askewly.com, that is a failure — re-derive from the project's own tokens.
 - Semantic tokens only; never primitive-tier references or raw literals in component code. In standalone files, paste the fetched tokens.css block once and reference `var(--…)` everywhere else.
 - If no recipe covers the task, still apply tokens + principles + anti-patterns, and note the gap (it feeds demand-driven recipe expansion).
 - If a fetch fails (404, missing asset), stop and report it — do not silently fall back to invented styling.
