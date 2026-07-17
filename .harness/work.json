@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "active_work_id": "TC3",
+  "active_work_id": "TC4",
   "works": {
     "SFB1": {
       "title": "Structure Contract And Clean Production",
@@ -905,6 +905,50 @@
       "notes": "gate proven: 1 FAIL->cluster16, 1 PASS->stat-grid check",
       "notified_at": "2026-07-17T12:09:24.972164+00:00",
       "completed": "2026-07-17"
+    },
+    "TC4": {
+      "work_id": "TC4",
+      "horizon_id": "taste-corpus",
+      "milestone_id": "TC4",
+      "status": "active",
+      "plan_path": "plans/2026-07-17-tc4-canonical-diff.md",
+      "changeset_path": "changesets",
+      "next_step": "step-1",
+      "current_step": "step-1",
+      "steps": [
+        {
+          "id": "step-1",
+          "label": "Step 1 — 성문 원칙 수집 (changeset)",
+          "status": "pending"
+        },
+        {
+          "id": "step-2",
+          "label": "Step 2 — diff 판정 + 자산 반영 + 배포 (changeset)",
+          "status": "pending"
+        }
+      ],
+      "execution_mode": "continuous",
+      "approval": {
+        "approved_by": "user",
+        "approved_at": "2026-07-17",
+        "plan_sha256": "60aeb8f68b1e1f4b3045c88d184667f88fb16c648b4b7850f79584ab28d1400d"
+      },
+      "allowed_stop_reasons": [
+        "completed",
+        "blocked",
+        "decision_required",
+        "risk_gate",
+        "secret_required",
+        "external_authority_required",
+        "user_stopped"
+      ],
+      "stop_reason": null,
+      "stop_detail": {},
+      "session_ids": [
+        "claude:ab332db5-5327-43b0-9bef-702291fafaee"
+      ],
+      "updated_at": "2026-07-17",
+      "notes": "Registered atomically by canonical harness approve_harness_plan.py after plan validation."
     }
   }
 }

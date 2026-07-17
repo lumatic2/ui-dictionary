@@ -42,7 +42,7 @@ Goal: 최상급 레퍼런스(사용자 큐레이션 5종 정본)를 관찰→원
 
 - Completed at: 2026-07-17
 - Summary: Dribbble 게이트 배치 — CRM 콘셉트 FAIL(3/4)→클러스터 16(콘셉트 대시보드 관성), 단일 액센트 차트 PASS→stat-grid 보강, 배포 검증 — changesets #128–129
-<!-- harness:milestone id="TC4" status="pending" priority="P1" -->
+<!-- harness:milestone id="TC4" status="active" priority="P1" evidence="plans/2026-07-17-tc4-canonical-diff.md" -->
 ### TC4 — 성문 판단 diff: HIG·Material·Polaris
 - DoD: 1급 디자인 시스템 원칙과 우리 시그니처·anti-patterns의 충돌 검증 diff가 기록되고, 채택·기각 각각 사유와 함께 자산 반영 1건 이상.
 - Evidence: 활성화 시 plan doc + taste ledger
