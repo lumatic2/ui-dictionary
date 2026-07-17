@@ -22,14 +22,16 @@ Goal: 화면에 그려지는 시각 표현 대다수를 4개 렌더링 티어(CS
 
 - Completed at: 2026-07-17
 - Summary: 4티어 계보 리서치(30기법, 전 항목 출처) + 쇼케이스 12종 실코드 역산 + 기법→티어 결정 표 21행 knowledge 정본 llms 배포 — changesets #112–113
-<!-- harness:milestone id="VI2" status="active" priority="P1" evidence="docs/plans/2026-07-17-vi2-css-svg-recipes.md" -->
+<!-- harness:milestone id="VI2" status="completed" priority="P1" evidence="docs/plans/2026-07-17-vi2-css-svg-recipes.md" -->
 ### VI2 — CSS·SVG 티어 recipes
 - DoD: VI1 지도에서 선정한 선언 티어 기법이 recipe + Gallery live 데모로 구현되어 기존 검증 체인(validate-recipes·build·llms.txt·배포 curl)을 통과.
-- Evidence: 활성화 시 plan doc + changeset 추적
+- Evidence: docs/plans/2026-07-17-vi2-css-svg-recipes.md
 - Gap: 선언 티어 고급 기법(gradient mesh·mask·SVG 필터 등) recipe 0건.
 - Scale: changesets>=2; surfaces: Gallery live-render, llms.txt; capability: 선언 티어 표현 recipe
-- Status: [ ]
+- Status: [x]
 
+- Completed at: 2026-07-17
+- Summary: 선언 티어 recipe 4종(mesh gradient·glass panel·grain overlay·scroll-driven reveal) — 전부 의존성 0·토큰 파생, live 데모 브라우저 검증 + 배포 curl PASS — changesets #114–115
 <!-- harness:milestone id="VI3" status="pending" priority="P1" -->
 ### VI3 — 모션 오케스트레이션 티어 recipes
 - DoD: 커서 반응·스프링·모션 안무 recipe가 live 데모로 검증 체인 통과 + 시그니처 원칙 5("실험적 터치는 수동")와의 접점이 recipe마다 명시.
