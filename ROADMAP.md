@@ -32,7 +32,7 @@ Goal: 화면에 그려지는 시각 표현 대다수를 4개 렌더링 티어(CS
 
 - Completed at: 2026-07-17
 - Summary: 선언 티어 recipe 4종(mesh gradient·glass panel·grain overlay·scroll-driven reveal) — 전부 의존성 0·토큰 파생, live 데모 브라우저 검증 + 배포 curl PASS — changesets #114–115
-<!-- harness:milestone id="VI3" status="pending" priority="P1" -->
+<!-- harness:milestone id="VI3" status="active" priority="P1" evidence="docs/plans/2026-07-17-vi3-motion-recipes.md" -->
 ### VI3 — 모션 오케스트레이션 티어 recipes
 - DoD: 커서 반응·스프링·모션 안무 recipe가 live 데모로 검증 체인 통과 + 시그니처 원칙 5("실험적 터치는 수동")와의 접점이 recipe마다 명시.
 - Evidence: 활성화 시 plan doc + changeset 추적

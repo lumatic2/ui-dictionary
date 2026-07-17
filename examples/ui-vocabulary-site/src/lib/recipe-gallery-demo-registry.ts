@@ -48,6 +48,8 @@ import { MeshGradientSurfaceDemo } from "@/components/mesh-gradient-surface"
 import { GlassPanelDemo } from "@/components/glass-panel"
 import { GrainTextureOverlayDemo } from "@/components/grain-texture-overlay"
 import { ScrollDrivenRevealDemo } from "@/components/scroll-driven-reveal"
+import { MagneticHoverButtonDemo } from "@/components/magnetic-hover-button"
+import { SpringDragSnapCardDemo } from "@/components/spring-drag-snap-card"
 
 export const recipeDemoComponents: Record<string, ComponentType> = {
   "showcase-card": ShowcaseCardDemo,
@@ -56,6 +58,8 @@ export const recipeDemoComponents: Record<string, ComponentType> = {
   "glass-panel": GlassPanelDemo,
   "grain-texture-overlay": GrainTextureOverlayDemo,
   "scroll-driven-reveal": ScrollDrivenRevealDemo,
+  "magnetic-hover-button": MagneticHoverButtonDemo,
+  "spring-drag-snap-card": SpringDragSnapCardDemo,
   "cart-drawer": CartDrawerDemo,
   "category-product-grid": CategoryProductGridDemo,
   "checkout-order-summary": CheckoutOrderSummaryDemo,

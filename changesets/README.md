@@ -115,3 +115,4 @@
 | 113 | 20260717-expressive-stack-knowledge | 2026-07-17 | VI1 Step 2: expressive-stack knowledge canon — 4-tier map, 21-row technique-to-tier decision table, 5 judgment rules, llms Knowledge section (47 assets) | 4/4 | complete |
 | 114 | 20260717-declarative-surface-recipes | 2026-07-17 | VI2 Step 1: declarative surface recipes (mesh-gradient/glass-panel/grain-overlay) — token-derived, zero-dep, live demos verified | 5/5 | complete |
 | 115 | 20260717-scroll-driven-reveal | 2026-07-17 | VI2 Step 2: scroll-driven reveal recipe (CSS view() timeline, @supports-gated hidden state) + llms 51 assets deploy | 5/5 | complete |
+| 116 | 20260717-motion-magnetic-spring | 2026-07-17 | VI3 Step 1: motion dep (+43KB gzip measured) + magnetic-hover (manual opt-in) + spring-drag-snap recipes, interaction-verified | 4/4 | complete |

@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "active_work_id": "VI2",
+  "active_work_id": "VI3",
   "works": {
     "SFB1": {
       "title": "Structure Contract And Clean Production",
@@ -342,7 +342,7 @@
       "horizon_id": "agent-adoption-loop",
       "milestone_id": "AD1",
       "status": "completed",
-      "plan_path": "docs/plans/2026-07-17-ad1-default-routing.md",
+      "plan_path": "archive/plans/2026-07-17-ad1-default-routing.md",
       "changeset_path": "changesets",
       "next_step": null,
       "current_step": null,
@@ -392,7 +392,7 @@
       "horizon_id": "agent-adoption-loop",
       "milestone_id": "AD2",
       "status": "completed",
-      "plan_path": "docs/plans/2026-07-17-ad2-style-signature.md",
+      "plan_path": "archive/plans/2026-07-17-ad2-style-signature.md",
       "changeset_path": "changesets",
       "next_step": null,
       "current_step": null,
@@ -437,7 +437,7 @@
       "horizon_id": "agent-adoption-loop",
       "milestone_id": "AD3",
       "status": "completed",
-      "plan_path": "docs/plans/2026-07-17-ad3-realwork-dogfooding.md",
+      "plan_path": "archive/plans/2026-07-17-ad3-realwork-dogfooding.md",
       "changeset_path": "changesets",
       "next_step": null,
       "current_step": null,
@@ -493,7 +493,7 @@
       "horizon_id": "agent-adoption-loop",
       "milestone_id": "AD4",
       "status": "completed",
-      "plan_path": "docs/plans/2026-07-17-ad4-gap-driven-expansion.md",
+      "plan_path": "archive/plans/2026-07-17-ad4-gap-driven-expansion.md",
       "changeset_path": "changesets",
       "next_step": null,
       "current_step": null,
@@ -538,7 +538,7 @@
       "horizon_id": "expressive-stack",
       "milestone_id": "VI1",
       "status": "completed",
-      "plan_path": "docs/plans/2026-07-17-vi1-expressive-stack-map.md",
+      "plan_path": "archive/plans/2026-07-17-vi1-expressive-stack-map.md",
       "changeset_path": "changesets",
       "next_step": null,
       "current_step": null,
@@ -584,7 +584,7 @@
       "horizon_id": "expressive-stack",
       "milestone_id": "VI2",
       "status": "completed",
-      "plan_path": "docs/plans/2026-07-17-vi2-css-svg-recipes.md",
+      "plan_path": "archive/plans/2026-07-17-vi2-css-svg-recipes.md",
       "changeset_path": "changesets",
       "next_step": null,
       "current_step": null,
@@ -624,6 +624,50 @@
       "notes": "4 declarative-tier recipes live (mesh/glass/grain/scroll-reveal), deployed + verified",
       "notified_at": "2026-07-17T09:44:43.656963+00:00",
       "completed": "2026-07-17"
+    },
+    "VI3": {
+      "work_id": "VI3",
+      "horizon_id": "expressive-stack",
+      "milestone_id": "VI3",
+      "status": "active",
+      "plan_path": "docs/plans/2026-07-17-vi3-motion-recipes.md",
+      "changeset_path": "changesets",
+      "next_step": "step-1",
+      "current_step": "step-1",
+      "steps": [
+        {
+          "id": "step-1",
+          "label": "Step 1 — Motion 도입 + 커서·스프링 recipe 2종 (changeset)",
+          "status": "pending"
+        },
+        {
+          "id": "step-2",
+          "label": "Step 2 — stagger 안무 recipe + 배포 (changeset)",
+          "status": "pending"
+        }
+      ],
+      "execution_mode": "continuous",
+      "approval": {
+        "approved_by": "user",
+        "approved_at": "2026-07-17",
+        "plan_sha256": "f8d5e3ebbb1fb01fb2dd562e0be18af4059f677be0323500881bf61413776881"
+      },
+      "allowed_stop_reasons": [
+        "completed",
+        "blocked",
+        "decision_required",
+        "risk_gate",
+        "secret_required",
+        "external_authority_required",
+        "user_stopped"
+      ],
+      "stop_reason": null,
+      "stop_detail": {},
+      "session_ids": [
+        "claude:ab332db5-5327-43b0-9bef-702291fafaee"
+      ],
+      "updated_at": "2026-07-17",
+      "notes": "Registered atomically by canonical harness approve_harness_plan.py after plan validation."
     }
   }
 }
