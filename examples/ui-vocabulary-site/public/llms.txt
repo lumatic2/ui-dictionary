@@ -36,7 +36,9 @@ Rules for consumers: reference semantic tokens, never hard-code color/dimension 
 
 ## Recipes
 
+- [recipes/application-ui/canvas-particle-field.md](https://ui.askewly.com/llms/recipes/application-ui/canvas-particle-field.md): Canvas Particle Field — application-ui recipe (status: draft)
 - [recipes/application-ui/chat-conversation-panel.md](https://ui.askewly.com/llms/recipes/application-ui/chat-conversation-panel.md): Chat Conversation Panel — application-ui recipe (status: draft)
+- [recipes/application-ui/lazy-three-object-scene.md](https://ui.askewly.com/llms/recipes/application-ui/lazy-three-object-scene.md): Lazy three.js Object Scene — application-ui recipe (status: draft)
 - [recipes/application-ui/showcase-card.md](https://ui.askewly.com/llms/recipes/application-ui/showcase-card.md): Showcase Card — application-ui recipe (status: draft)
 - [recipes/application-ui/spring-drag-snap-card.md](https://ui.askewly.com/llms/recipes/application-ui/spring-drag-snap-card.md): Spring Drag Snap-back Card — application-ui recipe (status: draft)
 - [recipes/application-ui/staggered-entrance-group.md](https://ui.askewly.com/llms/recipes/application-ui/staggered-entrance-group.md): Staggered Entrance Group — application-ui recipe (status: draft)
