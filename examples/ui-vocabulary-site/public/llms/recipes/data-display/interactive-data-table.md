@@ -112,6 +112,7 @@ export function InteractiveDataTable({ rows }: InteractiveDataTableProps) {
 - Empty filtered results explain the filter and offer a reset action.
 - Narrow screens preserve priority fields or stack records without unlabeled values.
 - Bulk actions appear only when selection is non-empty and show the affected count.
+- Interactive row height never drops below the touch-target minimum (44px / `dimension.size.touch-target-min`) even at the densest setting — density comes from spacing and type, not from shrinking hit areas (taste ledger T-5, Linear measured).
 
 ## Anti-patterns
 

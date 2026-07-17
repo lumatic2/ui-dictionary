@@ -54,6 +54,7 @@ Demand source: dogfooding ledger DF-1/DF-2 — two consecutive real chat-UI task
 ## Variants
 
 - Assistant chat (AI product): waiting/error states are load-bearing — model latency and failures are routine, not exceptional.
+- Elevated input (first-run / hero chat): the input bar is the product's center of gravity — it may claim the lightest surface and the most distinctive radius on screen (e.g. pure white on a warm off-white base), while everything else stays flat. Reserve this emphasis for the input alone (taste ledger T-7).
 - Human-to-human messaging: waiting indicator maps to the other party typing; delivery/read receipts attach to bubbles.
 - Embedded support widget: same anatomy inside a popover/sheet; the thread height bounds to the overlay, never the page.
 

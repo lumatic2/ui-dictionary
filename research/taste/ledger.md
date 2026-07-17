@@ -103,3 +103,20 @@
 - diff: `mesh-gradient-surface` recipe에 다크 베이스 아우라 variant 없음
 - 갱신: `recipes/marketing/mesh-gradient-surface.md` Variants 보강 (changeset 125)
 - 게이트: 해당 없음
+
+### T-11 — Antigravity: 디스플레이 굵기 역전
+
+- source: Google Antigravity — https://antigravity.google/ (접근 2026-07-17, `tc2-antigravity.png`)
+- 관찰: 히어로 80px가 **weight 450** — 크기가 커질수록 굵기를 오히려 내림(Google Sans Flex 가변축 활용)
+- 원리: 디스플레이 스케일에서 무게는 크기가 담당한다 — 굵기는 본문 수준(±1단)으로 유지해야 대형 타이포가 우아하게 선다
+- diff: T-1과 같은 클러스터(디스플레이 압축)의 굵기 축 근거
+- 갱신: anti-patterns 클러스터 13 보강에 합산 근거로 반영 (changeset 124)
+- 게이트: 해당 없음
+
+### T-12 — Antigravity: 장식은 여백에, 콘텐츠 축은 순정
+
+- source: 동일 페이지 — 컬러 컨페티 파티클이 **좌측 여백에만** 흩어지고 중앙 콘텐츠 축(로고·헤드라인·CTA)은 완전 무장식 백색
+- 원리: 앰비언트 장식은 콘텐츠 축과 공간을 나눈다 — 읽는 축은 순정으로 두고 장식은 주변 여백이 소유
+- diff: `canvas-particle-field` recipe는 배경 전면 배치만 다룸 — 여백 한정 배치 variant 없음
+- 갱신: `recipes/application-ui/canvas-particle-field.md` Variants 보강 (changeset 126)
+- 게이트: 해당 없음

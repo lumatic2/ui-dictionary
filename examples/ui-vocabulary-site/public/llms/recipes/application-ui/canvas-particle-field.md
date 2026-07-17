@@ -43,6 +43,7 @@ A canvas particle field draws dozens-to-hundreds of drifting dots into a 2D pixe
 - Ambient hero backdrop (this demo).
 - Cursor-influenced field: pointer position biases drift — still tier ③, adds a throttled pointermove listener.
 - Density variants: fewer/larger dots for texture, more/smaller for dust.
+- Margin-confined field: particles occupy only the whitespace beside the content axis (e.g. left margin), leaving the reading column fully undecorated — ambient energy without competing with content (taste ledger T-12, Antigravity measured).
 
 ## Code
 
