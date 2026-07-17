@@ -117,3 +117,5 @@
 | 115 | 20260717-scroll-driven-reveal | 2026-07-17 | VI2 Step 2: scroll-driven reveal recipe (CSS view() timeline, @supports-gated hidden state) + llms 51 assets deploy | 5/5 | complete |
 | 116 | 20260717-motion-magnetic-spring | 2026-07-17 | VI3 Step 1: motion dep (+43KB gzip measured) + magnetic-hover (manual opt-in) + spring-drag-snap recipes, interaction-verified | 4/4 | complete |
 | 117 | 20260717-stagger-entrance | 2026-07-17 | VI3 Step 2: staggered entrance recipe (production-default choreography, reduced-motion instant) + llms 54 assets deploy | 4/4 | complete |
+| 118 | 20260717-canvas-particle-field | 2026-07-17 | VI4 Step 1: canvas 2D particle field recipe — rAF cleanup, explicit reduced-motion static frame, token-derived color | 3/3 | complete |
+| 119 | 20260717-lazy-three-scene | 2026-07-17 | VI4 Step 2: three.js/R3F behind dynamic import — separate 881KB chunk, main +2.4KB gzip only, WebGL boundary fallback | 4/4 | complete |

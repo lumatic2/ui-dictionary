@@ -51,6 +51,8 @@ import { ScrollDrivenRevealDemo } from "@/components/scroll-driven-reveal"
 import { MagneticHoverButtonDemo } from "@/components/magnetic-hover-button"
 import { SpringDragSnapCardDemo } from "@/components/spring-drag-snap-card"
 import { StaggeredEntranceGroupDemo } from "@/components/staggered-entrance-group"
+import { CanvasParticleFieldDemo } from "@/components/canvas-particle-field"
+import { LazyThreeObjectSceneDemo } from "@/components/lazy-three-object-scene"
 
 export const recipeDemoComponents: Record<string, ComponentType> = {
   "showcase-card": ShowcaseCardDemo,
@@ -62,6 +64,8 @@ export const recipeDemoComponents: Record<string, ComponentType> = {
   "magnetic-hover-button": MagneticHoverButtonDemo,
   "spring-drag-snap-card": SpringDragSnapCardDemo,
   "staggered-entrance-group": StaggeredEntranceGroupDemo,
+  "canvas-particle-field": CanvasParticleFieldDemo,
+  "lazy-three-object-scene": LazyThreeObjectSceneDemo,
   "cart-drawer": CartDrawerDemo,
   "category-product-grid": CategoryProductGridDemo,
   "checkout-order-summary": CheckoutOrderSummaryDemo,

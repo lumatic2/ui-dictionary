@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "active_work_id": "VI3",
+  "active_work_id": "VI4",
   "works": {
     "SFB1": {
       "title": "Structure Contract And Clean Production",
@@ -629,21 +629,21 @@
       "work_id": "VI3",
       "horizon_id": "expressive-stack",
       "milestone_id": "VI3",
-      "status": "active",
-      "plan_path": "docs/plans/2026-07-17-vi3-motion-recipes.md",
+      "status": "completed",
+      "plan_path": "plans/2026-07-17-vi3-motion-recipes.md",
       "changeset_path": "changesets",
-      "next_step": "step-1",
-      "current_step": "step-1",
+      "next_step": null,
+      "current_step": null,
       "steps": [
         {
           "id": "step-1",
           "label": "Step 1 — Motion 도입 + 커서·스프링 recipe 2종 (changeset)",
-          "status": "pending"
+          "status": "completed"
         },
         {
           "id": "step-2",
           "label": "Step 2 — stagger 안무 recipe + 배포 (changeset)",
-          "status": "pending"
+          "status": "completed"
         }
       ],
       "execution_mode": "continuous",
@@ -651,6 +651,52 @@
         "approved_by": "user",
         "approved_at": "2026-07-17",
         "plan_sha256": "f8d5e3ebbb1fb01fb2dd562e0be18af4059f677be0323500881bf61413776881"
+      },
+      "allowed_stop_reasons": [
+        "completed",
+        "blocked",
+        "decision_required",
+        "risk_gate",
+        "secret_required",
+        "external_authority_required",
+        "user_stopped"
+      ],
+      "stop_reason": null,
+      "stop_detail": {},
+      "session_ids": [
+        "claude:ab332db5-5327-43b0-9bef-702291fafaee"
+      ],
+      "updated_at": "2026-07-17",
+      "notes": "motion dep + 3 tier-2 recipes (magnetic opt-in / spring / stagger), interaction-verified; plan_path updated to new layout (CS5 migration)",
+      "completed": "2026-07-17",
+      "notified_at": "2026-07-17T10:12:00.122065+00:00"
+    },
+    "VI4": {
+      "work_id": "VI4",
+      "horizon_id": "expressive-stack",
+      "milestone_id": "VI4",
+      "status": "active",
+      "plan_path": "plans/2026-07-17-vi4-canvas-webgl-tier.md",
+      "changeset_path": "changesets",
+      "next_step": "step-1",
+      "current_step": "step-1",
+      "steps": [
+        {
+          "id": "step-1",
+          "label": "Step 1 — Canvas 2D 파티클 필드 recipe (changeset)",
+          "status": "pending"
+        },
+        {
+          "id": "step-2",
+          "label": "Step 2 — three.js/R3F lazy 도입 + 3D 씬 recipe + 배포 (changeset)",
+          "status": "pending"
+        }
+      ],
+      "execution_mode": "continuous",
+      "approval": {
+        "approved_by": "user",
+        "approved_at": "2026-07-17",
+        "plan_sha256": "c0c45fb82bce3415c0cebb7d219e0625af8d3dce203e265b1438ba7b18d9f148"
       },
       "allowed_stop_reasons": [
         "completed",
