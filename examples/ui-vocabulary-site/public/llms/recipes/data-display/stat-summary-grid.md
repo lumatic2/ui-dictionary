@@ -85,6 +85,7 @@ export function StatSummaryGrid({ title, rangeLabel, stats, reportHref }: StatSu
 - Unavailable data is distinct from a valid zero.
 - Values align and wrap without pushing peer cells out of the grid.
 - Metrics come from the named product workflow rather than generic dashboard filler.
+- Emphasis within a series uses a neutral base plus a single accent point (with a text label alongside the color), never coloring every bar/cell — the data-surface form of "accent as signal" (taste ledger T-14).
 
 ## Anti-patterns
 
