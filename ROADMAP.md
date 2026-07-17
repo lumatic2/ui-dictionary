@@ -32,14 +32,16 @@ Goal: Claude/Codex 디자인 작업에서 askewly design 조회가 기본 경로
 
 - Completed at: 2026-07-17
 - Summary: 인터뷰 확정 시그니처(운용 원칙 5 + 비선호 5, 점수제 폐기) — entry-protocol 판정 단계 편입·llms.txt 배포, 실판정 1회 구동(발명 팔레트 FAIL 변별) — changesets #102–103
-<!-- harness:milestone id="AD3" status="active" priority="P1" -->
+<!-- harness:milestone id="AD3" status="completed" priority="P1" evidence="docs/research/dogfooding/ledger.md" -->
 ### AD3 — Real-work Dogfooding
 - DoD: dogfooding ledger 인프라 + 실작업 3건 이상(지정 2건=bootcamp.askewly.com 표면 2곳(사용자 확정 2026-07-17) + 기회주의)이 라우팅 경유로 수행되어 건별 조회 경로·AD2 체크리스트 판정·마찰이 장부화.
-- Evidence: `docs/research/dogfooding/ledger.md`(신설) + 활성화 시 plan doc
+- Evidence: docs/research/dogfooding/ledger.md
 - Gap: 실사용 0건에 가까워 마찰·부족 자산을 모름 — 채택 흐름의 실증 그 자체.
 - Scale: changesets>=3; surfaces: 외부 레포 실작업 결과물, ledger; capability: 실작업 채택 실증
-- Status: [ ]
+- Status: [x]
 
+- Completed at: 2026-07-17
+- Summary: 실작업 dogfooding — DF-1·DF-2(bootcamp 2표면) 라우팅 관측+시그니처 PASS, DF-3 실사용 관측(동질화 적발→교정). DF-4 기회주의 건은 사용자 면제 2026-07-17(갭은 AD4에서 해소 완료) — changesets #104–107
 <!-- harness:milestone id="AD4" status="completed" priority="P1" evidence="docs/plans/2026-07-17-ad4-gap-driven-expansion.md" -->
 ### AD4 — Gap-driven 확장
 - DoD: AD3 장부의 갭 목록이 우선순위화되고, 수요 주도 자산 확장(recipe/token/anti-pattern/프로토콜)이 기존 검증 체인(build:catalog·llms.txt·audit:visuals)을 통과하며, 장부 항목 → 자산 반영 추적이 남는다.

@@ -1,7 +1,7 @@
 # Horizon — Agent Adoption Loop (에이전트 채택 루프)
 
 Date: 2026-07-17
-Status: active (2026-07-17 사용자 승인 — public-product-monetization park 직후)
+Status: closed (2026-07-17 — AD1·AD2·AD4 완료, AD3는 DF-4 사용자 면제로 완료 처리. Close Criteria "3건 통과" 중 2건 PASS+1건 관측: 사용자 waiver, 갭 루프는 AD4로 실증 완료)
 Objective link: `OBJECTIVE.md` (성공 상태 ③ 에이전트 소비 + 이동 축 "탐색·주입 도구 → 제작 환경", 장기 아크 5)
 Preceding horizon: `docs/horizons/2026-07-public-product-monetization.md` (parked 2026-07-17)
 
