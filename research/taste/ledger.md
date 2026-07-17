@@ -138,3 +138,47 @@
 - diff: `stat-summary-grid` recipe에 강조 운용 판단 없음 (클러스터 4는 color-only 금지 축으로 별개)
 - 갱신: `recipes/data-display/stat-summary-grid.md` Checks 보강 (changeset 129)
 - 게이트: **PASS** — ① 실데이터: 주 7칸 고정이라 폭발 없음, 값·축 실존 ② 상태: 빈 주간=0높이 바로 표현 가능, 원리는 상태와 독립 ③ 한글: 요일 라벨 치환 성립 ④ 접근성: 강조가 색+텍스트 라벨 병행(단독 색 아님)
+
+### T-15 — HIG: 위계는 서체 증식이 아니라 굵기·크기·색 — 채택
+
+- source: Apple HIG Typography — https://developer.apple.com/design/human-interface-guidelines/typography (접근 2026-07-17, 리서처 수집)
+- 관찰: "Minimize the number of typefaces… Mixing too many different typefaces can obscure your information hierarchy" — 위계는 한두 서체 안에서 weight/size/color 축으로
+- 원리: 타이포 위계의 변수는 서체 수가 아니라 굵기·크기·색 — 서체 추가는 위계를 흐린다
+- diff: 클러스터 13은 줄바꿈·압축만 — 서체 증식 축 부재
+- 갱신: anti-patterns 클러스터 13 보강 (changeset 131)
+- 게이트: 해당 없음(성문 원칙)
+
+### T-16 — Material 3: 모션은 전환 규모에 비례 — 채택
+
+- source: M3 Easing and duration — https://m3.material.io/styles/motion/easing-and-duration/tokens-specs (접근 2026-07-17)
+- 관찰: 작은 유틸리티 전환=짧은 duration+Standard easing, 크고 주목할 전환=긴 duration+Emphasized easing — 규모-비례 규칙
+- 원리: 모션의 길이·표현성은 전환되는 대상의 규모·중요도에 비례한다 — 작은 상태 변화에 과장 모션 금지, 큰 전환에 인색한 모션 금지
+- diff: expressive-stack 판정 절차에 티어 선택 규칙만 있고 모션 스케일 판단 없음
+- 갱신: `knowledge/expressive-stack.md` 판정 절차 6 추가 (changeset 131)
+- 게이트: 해당 없음
+
+### T-17 — Polaris: 버튼 레이블은 동사 선행 — 채택
+
+- source: Polaris Button — https://polaris-react.shopify.com/components/actions/button (접근 2026-07-17)
+- 관찰: "{verb}+{noun}" 형식, 잉여 동사(View/Go/Read) 생략, 관사 배제 — "무슨 일이 일어날지 예측 가능해야"
+- 원리: 액션 레이블은 행동 동사가 선행하고 결과를 예측 가능하게 — 명사형·장식형 레이블 금지
+- diff: `button` recipe에 레이블 문구 판단 부재(시각 계약만)
+- 갱신: `recipes/forms/button.md` Checks 보강 (changeset 131)
+- 게이트: 해당 없음
+
+### T-18 — Material 3: 색 역할 어휘(primary/secondary/tertiary) — 기각
+
+- source: M3 Color roles — https://m3.material.io/styles/color/roles (접근 2026-07-17)
+- 관찰: 강조를 3단 색 역할 토큰 체계로 규정, 역할 오적용은 접근성 파괴
+- 원리(그들의): 강조 = 올바른 역할 토큰 선택
+- diff·기각 사유: **기각** — 우리 철학은 "팔레트·토큰 체계는 프로젝트 소유, 스타일 고정 금지"(시그니처 철학 절). M3 역할 어휘를 전역 채택하면 특정 토큰 체계 종속이 생기고, 액센트 운용 판단은 이미 원칙 2가 체계-중립으로 보유. 접근성-by-construction 취지는 기존 검증 루프(WCAG 체크)가 담당
+- 갱신: 없음 — 기각 기록 자체가 산출물
+- 게이트: 해당 없음
+
+### T-19 — HIG: 재질(Liquid Glass) 계층 — 기각(중복)
+
+- source: HIG Materials — https://developer.apple.com/design/human-interface-guidelines/materials (접근 2026-07-17)
+- 관찰: 콘텐츠 위에 부유하는 재질 레이어로 크롬/콘텐츠 분리, 과용 경계
+- diff·기각 사유: **기각(중복)** — 특정 재질 언어는 플랫폼 스타일(스타일 고정 금지 충돌). "콘텐츠가 주인공, 크롬 후퇴" 취지는 `principles.md` 과제 우선 + glass-panel recipe(블러 과용 금지)에 기존재
+- 갱신: 없음
+- 게이트: 해당 없음
