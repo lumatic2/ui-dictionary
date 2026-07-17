@@ -120,3 +120,4 @@
 | 118 | 20260717-canvas-particle-field | 2026-07-17 | VI4 Step 1: canvas 2D particle field recipe — rAF cleanup, explicit reduced-motion static frame, token-derived color | 3/3 | complete |
 | 119 | 20260717-lazy-three-scene | 2026-07-17 | VI4 Step 2: three.js/R3F behind dynamic import — separate 881KB chunk, main +2.4KB gzip only, WebGL boundary fallback | 4/4 | complete |
 | 120 | 20260717-component-restyle-guide | 2026-07-17 | VI5 Step 1: shadcn-face escape contract — behavior untouched, look remapped to project tokens (DF-3 principle enforced) | 3/3 | complete |
+| 121 | 20260717-absorption-criteria | 2026-07-17 | VI5 Step 2: 3-way absorption rules (recipe/link/hold) + 9 candidates classified + toolshelf usage recorded, llms 58 assets | 4/4 | complete |
