@@ -111,3 +111,4 @@
 | 109 | 20260717-ledger-interruption-remerge | 2026-07-17 | Maintenance: interruption event remerged into execution-ledger chronological position, separate file removed | 4/4 | complete |
 | 110 | 20260717-chat-conversation-recipe | 2026-07-17 | AD4 Step 1: chat-conversation-panel recipe + live gallery demo (gap 1 from DF-1/DF-2) — states complete, break-keep, browser-verified | 4/4 | complete |
 | 111 | 20260717-protocol-realignment | 2026-07-17 | AD4 Step 2: judgment-first entry-protocol realignment + mandatory self-judgment wording + hangul break-keep anti-pattern cluster 13, llms regen 46 assets | 5/5 | complete |
+| 112 | 20260717-expressive-stack-genealogy | 2026-07-17 | VI1 Step 1: 4-tier expressive technique genealogy research (sourced, delegated x2) + showcase 12-demo tier back-derivation | 3/3 | complete |

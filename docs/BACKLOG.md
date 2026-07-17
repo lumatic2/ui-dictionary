@@ -140,3 +140,25 @@
 - DSF3 - Surface Taxonomy: defined cross-surface taxonomy for websites, mobile apps, SaaS/dashboards, commerce, documentation, internal tools, components, axes, IA, and data model implications.
 - DSF4 - Agent-Usable Design System Model: defined the four-layer model linking reference evidence, human previews, implementation assets, and agent recipes with access levels, staged build path, and verification requirements.
 - Evidence: `docs/OBJECTIVE.md`, `docs/PRD.md`, `docs/ARCHITECTURE.md`, `docs/research/design-system-reference-strategy.md`, `docs/design-system/surface-taxonomy.md`, `docs/design-system/agent-asset-model.md`
+
+### 2026-07
+- AD1 - AD1 — Default Routing 배선
+  - Completed: 2026-07-17
+  - Result: 진입 프로토콜 llms.txt 노출 + Claude(규칙+hook)·Codex(AGENTS.md) 라우팅 배선 — 양 에이전트 E2E 토큰 파생 PASS(14/14·16/16, 발명 0), silent 404·URL 구성 결함 적발·봉합 — changesets #99–101
+  - Evidence: docs/plans/2026-07-17-ad1-default-routing.md
+
+### 2026-07
+- AD2 - AD2 — Style Signature
+  - Completed: 2026-07-17
+  - Result: 인터뷰 확정 시그니처(운용 원칙 5 + 비선호 5, 점수제 폐기) — entry-protocol 판정 단계 편입·llms.txt 배포, 실판정 1회 구동(발명 팔레트 FAIL 변별) — changesets #102–103
+  - Evidence: docs/plans/2026-07-17-ad2-style-signature.md
+
+- AD3 - AD3 — Real-work Dogfooding
+  - Completed: 2026-07-17
+  - Result: 실작업 dogfooding — DF-1·DF-2(bootcamp 2표면) 라우팅 관측+시그니처 PASS, DF-3 실사용 관측(동질화 적발→교정). DF-4 기회주의 건은 사용자 면제 2026-07-17(갭은 AD4에서 해소 완료) — changesets #104–107
+  - Evidence: docs/research/dogfooding/ledger.md
+
+- AD4 - AD4 — Gap-driven 확장
+  - Completed: 2026-07-17
+  - Result: 갭 4건 해소 — chat recipe(live gallery)+한글 break-keep 클러스터+판정-중심 프로토콜 재정렬(hook 불사용 확정), 배포 검증 — changesets #110–111
+  - Evidence: docs/plans/2026-07-17-ad4-gap-driven-expansion.md
