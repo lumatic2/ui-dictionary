@@ -54,6 +54,8 @@ const FIXED_ASSETS = [
     items: [
       ["docs/design-system/recipe-format.md", "Recipe format contract: intent / anatomy / tokens / states / checks / anti-patterns"],
       ["docs/design-system/agent-asset-model.md", "How coding agents are expected to consume tokens, taxonomy, and recipes"],
+      ["docs/design-system/component-restyle.md", "Component-layer restyle contract: keep shadcn-class behavior guarantees, remap the look to the working project's own tokens — the escape route from the generic shadcn face"],
+      ["docs/design-system/absorption-criteria.md", "Decision rules for absorbing external expressive libraries: what becomes a canonical recipe, what stays a link reference, what waits"],
     ],
   },
   {

@@ -42,15 +42,17 @@ Goal: 화면에 그려지는 시각 표현 대다수를 4개 렌더링 티어(CS
 
 - Completed at: 2026-07-17
 - Summary: Motion 도입(+43KB gzip 실측) + ② 티어 recipe 3종(magnetic=수동 opt-in·spring drag=중단가능성·stagger=실무 기본) 인터랙션 실검증 — changesets #116–117
-<!-- harness:milestone id="VI4" status="active" priority="P1" evidence="plans/2026-07-17-vi4-canvas-webgl-tier.md" -->
+<!-- harness:milestone id="VI4" status="completed" priority="P1" evidence="plans/2026-07-17-vi4-canvas-webgl-tier.md" -->
 ### VI4 — Canvas·WebGL·three.js 티어
 - DoD: three.js/R3F 정식 도입 + canvas 2D·물리·셰이더 recipe가 live 데모로 검증 체인 통과, 무거운 데모는 dynamic import lazy-load 격리(현 3MB 청크 경고 비악화 — 사용자 GO 조건 2026-07-17).
-- Evidence: 활성화 시 plan doc + changeset 추적 + 번들 크기 전후 비교
+- Evidence: plans/2026-07-17-vi4-canvas-webgl-tier.md
 - Gap: GPU 티어 자산 0건 — three.js 미도입.
 - Scale: changesets>=2; surfaces: Gallery live-render(lazy), 번들 계측; capability: GPU 티어 표현 recipe
-- Status: [ ]
+- Status: [x]
 
-<!-- harness:milestone id="VI5" status="pending" priority="P2" -->
+- Completed at: 2026-07-17
+- Summary: three.js/R3F lazy 도입(별도 청크 881KB·메인 +2.4KB gzip) + ③ 파티클·④ 3D 씬 recipe — lazy 실증·WebGL 폴백·reduced-motion 게이팅, 배포 검증 — changesets #118–119
+<!-- harness:milestone id="VI5" status="active" priority="P2" evidence="plans/2026-07-17-vi5-component-layer-absorption.md" -->
 ### VI5 — 부품 층 계약 + 레퍼런스 흡수
 - DoD: shadcn 재스타일 가이드("shadcn 룩 탈출")가 llms 배포되고, 외부 라이브러리(react-bits·magicui·GSAP 등) 흡수 기준(recipe화 vs 링크)이 정본화되며 toolshelf used 기록이 남는다.
 - Evidence: 활성화 시 plan doc + changeset 추적

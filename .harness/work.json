@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "active_work_id": "VI4",
+  "active_work_id": "VI5",
   "works": {
     "SFB1": {
       "title": "Structure Contract And Clean Production",
@@ -675,21 +675,21 @@
       "work_id": "VI4",
       "horizon_id": "expressive-stack",
       "milestone_id": "VI4",
-      "status": "active",
+      "status": "completed",
       "plan_path": "plans/2026-07-17-vi4-canvas-webgl-tier.md",
       "changeset_path": "changesets",
-      "next_step": "step-1",
-      "current_step": "step-1",
+      "next_step": null,
+      "current_step": null,
       "steps": [
         {
           "id": "step-1",
           "label": "Step 1 — Canvas 2D 파티클 필드 recipe (changeset)",
-          "status": "pending"
+          "status": "completed"
         },
         {
           "id": "step-2",
           "label": "Step 2 — three.js/R3F lazy 도입 + 3D 씬 recipe + 배포 (changeset)",
-          "status": "pending"
+          "status": "completed"
         }
       ],
       "execution_mode": "continuous",
@@ -697,6 +697,52 @@
         "approved_by": "user",
         "approved_at": "2026-07-17",
         "plan_sha256": "c0c45fb82bce3415c0cebb7d219e0625af8d3dce203e265b1438ba7b18d9f148"
+      },
+      "allowed_stop_reasons": [
+        "completed",
+        "blocked",
+        "decision_required",
+        "risk_gate",
+        "secret_required",
+        "external_authority_required",
+        "user_stopped"
+      ],
+      "stop_reason": null,
+      "stop_detail": {},
+      "session_ids": [
+        "claude:ab332db5-5327-43b0-9bef-702291fafaee"
+      ],
+      "updated_at": "2026-07-17",
+      "notes": "tier-3 particle + tier-4 lazy three.js recipes; chunk isolation measured (main +2.4KB gzip)",
+      "notified_at": "2026-07-17T10:24:07.370556+00:00",
+      "completed": "2026-07-17"
+    },
+    "VI5": {
+      "work_id": "VI5",
+      "horizon_id": "expressive-stack",
+      "milestone_id": "VI5",
+      "status": "active",
+      "plan_path": "plans/2026-07-17-vi5-component-layer-absorption.md",
+      "changeset_path": "changesets",
+      "next_step": "step-1",
+      "current_step": "step-1",
+      "steps": [
+        {
+          "id": "step-1",
+          "label": "Step 1 — shadcn 재스타일 가이드 (changeset)",
+          "status": "pending"
+        },
+        {
+          "id": "step-2",
+          "label": "Step 2 — 흡수 기준 + toolshelf 기록 + 배포 (changeset)",
+          "status": "pending"
+        }
+      ],
+      "execution_mode": "continuous",
+      "approval": {
+        "approved_by": "user",
+        "approved_at": "2026-07-17",
+        "plan_sha256": "f6dc82044e99ee29a4fab1fa795ef5e8e1a489376df97844be665dbc54a01826"
       },
       "allowed_stop_reasons": [
         "completed",
