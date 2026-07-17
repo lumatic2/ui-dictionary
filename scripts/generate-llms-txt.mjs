@@ -56,6 +56,12 @@ const FIXED_ASSETS = [
       ["docs/design-system/agent-asset-model.md", "How coding agents are expected to consume tokens, taxonomy, and recipes"],
     ],
   },
+  {
+    section: "Knowledge",
+    items: [
+      ["knowledge/expressive-stack.md", "Expressive stack tier map: which rendering tier (CSS/SVG, JS motion orchestration, Canvas 2D + physics, WebGL/three.js) a visual effect belongs to, with a technique-to-tier decision table and mandatory judgment procedure (lower tier first, reduced-motion gating, lazy-load for GPU)"],
+    ],
+  },
 ];
 
 function repoRel(p) {

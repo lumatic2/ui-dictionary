@@ -30,6 +30,10 @@ Rules for consumers: reference semantic tokens, never hard-code color/dimension 
 - [docs/design-system/recipe-format.md](https://ui.askewly.com/llms/docs/design-system/recipe-format.md): Recipe format contract: intent / anatomy / tokens / states / checks / anti-patterns
 - [docs/design-system/agent-asset-model.md](https://ui.askewly.com/llms/docs/design-system/agent-asset-model.md): How coding agents are expected to consume tokens, taxonomy, and recipes
 
+## Knowledge
+
+- [knowledge/expressive-stack.md](https://ui.askewly.com/llms/knowledge/expressive-stack.md): Expressive stack tier map: which rendering tier (CSS/SVG, JS motion orchestration, Canvas 2D + physics, WebGL/three.js) a visual effect belongs to, with a technique-to-tier decision table and mandatory judgment procedure (lower tier first, reduced-motion gating, lazy-load for GPU)
+
 ## Recipes
 
 - [recipes/application-ui/chat-conversation-panel.md](https://ui.askewly.com/llms/recipes/application-ui/chat-conversation-panel.md): Chat Conversation Panel — application-ui recipe (status: draft)
