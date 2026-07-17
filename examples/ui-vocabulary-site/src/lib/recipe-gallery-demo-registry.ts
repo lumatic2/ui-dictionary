@@ -44,10 +44,16 @@ import { LargeTitleCollapsingHeaderDemo } from "@/components/large-title-collaps
 import { ActionSheetDestructiveConfirmationDemo } from "@/components/action-sheet-destructive-confirmation"
 import { BottomSheetDetentsDemo } from "@/components/bottom-sheet-detents"
 import { ChatConversationPanelDemo } from "@/components/chat-conversation-panel"
+import { MeshGradientSurfaceDemo } from "@/components/mesh-gradient-surface"
+import { GlassPanelDemo } from "@/components/glass-panel"
+import { GrainTextureOverlayDemo } from "@/components/grain-texture-overlay"
 
 export const recipeDemoComponents: Record<string, ComponentType> = {
   "showcase-card": ShowcaseCardDemo,
   "chat-conversation-panel": ChatConversationPanelDemo,
+  "mesh-gradient-surface": MeshGradientSurfaceDemo,
+  "glass-panel": GlassPanelDemo,
+  "grain-texture-overlay": GrainTextureOverlayDemo,
   "cart-drawer": CartDrawerDemo,
   "category-product-grid": CategoryProductGridDemo,
   "checkout-order-summary": CheckoutOrderSummaryDemo,

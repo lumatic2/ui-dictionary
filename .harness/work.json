@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "active_work_id": "VI1",
+  "active_work_id": "VI2",
   "works": {
     "SFB1": {
       "title": "Structure Contract And Clean Production",
@@ -537,21 +537,21 @@
       "work_id": "VI1",
       "horizon_id": "expressive-stack",
       "milestone_id": "VI1",
-      "status": "active",
+      "status": "completed",
       "plan_path": "docs/plans/2026-07-17-vi1-expressive-stack-map.md",
       "changeset_path": "changesets",
-      "next_step": "step-1",
-      "current_step": "step-1",
+      "next_step": null,
+      "current_step": null,
       "steps": [
         {
           "id": "step-1",
           "label": "Step 1 — 계보 리서치 정본화 (changeset)",
-          "status": "pending"
+          "status": "completed"
         },
         {
           "id": "step-2",
           "label": "Step 2 — knowledge 정본 + 결정 표 + llms 배포 (changeset)",
-          "status": "pending"
+          "status": "completed"
         }
       ],
       "execution_mode": "continuous",
@@ -559,6 +559,52 @@
         "approved_by": "user",
         "approved_at": "2026-07-17",
         "plan_sha256": "4f411cf75bf8badc24b3136158ff6133d768615aebaeaa13dc6e62860345a033"
+      },
+      "allowed_stop_reasons": [
+        "completed",
+        "blocked",
+        "decision_required",
+        "risk_gate",
+        "secret_required",
+        "external_authority_required",
+        "user_stopped"
+      ],
+      "stop_reason": null,
+      "stop_detail": {},
+      "session_ids": [
+        "claude:ab332db5-5327-43b0-9bef-702291fafaee"
+      ],
+      "updated_at": "2026-07-17",
+      "notes": "genealogy research (sourced) + knowledge canon + tier decision table deployed",
+      "notified_at": "2026-07-17T09:30:10.931290+00:00",
+      "completed": "2026-07-17"
+    },
+    "VI2": {
+      "work_id": "VI2",
+      "horizon_id": "expressive-stack",
+      "milestone_id": "VI2",
+      "status": "active",
+      "plan_path": "docs/plans/2026-07-17-vi2-css-svg-recipes.md",
+      "changeset_path": "changesets",
+      "next_step": "step-1",
+      "current_step": "step-1",
+      "steps": [
+        {
+          "id": "step-1",
+          "label": "Step 1 — 정적 표면 질감 recipe 3종 (changeset)",
+          "status": "pending"
+        },
+        {
+          "id": "step-2",
+          "label": "Step 2 — scroll-driven reveal recipe + 배포 (changeset)",
+          "status": "pending"
+        }
+      ],
+      "execution_mode": "continuous",
+      "approval": {
+        "approved_by": "user",
+        "approved_at": "2026-07-17",
+        "plan_sha256": "2b09e9d1e0854d928f6e52f50e2dd7aa87a38975b59d62eed36537ea7ec6f330"
       },
       "allowed_stop_reasons": [
         "completed",
