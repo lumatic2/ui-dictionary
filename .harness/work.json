@@ -813,26 +813,26 @@
       "work_id": "TC2",
       "horizon_id": "taste-corpus",
       "milestone_id": "TC2",
-      "status": "active",
+      "status": "completed",
       "plan_path": "plans/2026-07-17-tc2-curation-batch.md",
       "changeset_path": "changesets",
-      "next_step": "step-1",
-      "current_step": "step-1",
+      "next_step": null,
+      "current_step": null,
       "steps": [
         {
           "id": "step-1",
           "label": "Step 1 — Notion·Linear 관찰 배치 (changeset)",
-          "status": "pending"
+          "status": "completed"
         },
         {
           "id": "step-2",
           "label": "Step 2 — Codex·Claude 관찰 배치 (changeset)",
-          "status": "pending"
+          "status": "completed"
         },
         {
           "id": "step-3",
           "label": "Step 3 — Antigravity 관찰 + 갱신 일괄 배포 (changeset)",
-          "status": "pending"
+          "status": "completed"
         }
       ],
       "execution_mode": "continuous",
@@ -856,7 +856,9 @@
         "claude:ab332db5-5327-43b0-9bef-702291fafaee"
       ],
       "updated_at": "2026-07-17",
-      "notes": "Registered atomically by canonical harness approve_harness_plan.py after plan validation."
+      "notes": "12 entries (9 digested, 2 dup-undigested, 1 signature proposal deferred); clusters 14/15 + 5 recipe amendments deployed",
+      "notified_at": "2026-07-17T11:53:47.678395+00:00",
+      "completed": "2026-07-17"
     }
   }
 }
