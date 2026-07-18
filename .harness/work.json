@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "active_work_id": "SE1",
+  "active_work_id": "SE2",
   "works": {
     "SFB1": {
       "title": "Structure Contract And Clean Production",
@@ -956,21 +956,21 @@
       "work_id": "SE1",
       "horizon_id": "skill-entry",
       "milestone_id": "SE1",
-      "status": "active",
+      "status": "completed",
       "plan_path": "plans/2026-07-18-se1-skill-and-human-gate.md",
       "changeset_path": "changesets/20260718-entry-protocol-human-gate",
-      "next_step": "step-1",
-      "current_step": "step-1",
+      "next_step": null,
+      "current_step": null,
       "steps": [
         {
           "id": "step-1",
           "label": "Step 1 — entry-protocol 사람 게이트 개정 + 배포 (changeset)",
-          "status": "pending"
+          "status": "completed"
         },
         {
           "id": "step-2",
           "label": "Step 2 — askewly-design skill 신설 + 배포 (changeset)",
-          "status": "pending"
+          "status": "completed"
         }
       ],
       "execution_mode": "continuous",
@@ -978,6 +978,52 @@
         "approved_by": "user",
         "approved_at": "2026-07-18",
         "plan_sha256": "9708f8413650d995ee91c33b99348e734519ea56fd67a9915a0a9e5fc2e154c9"
+      },
+      "allowed_stop_reasons": [
+        "completed",
+        "blocked",
+        "decision_required",
+        "risk_gate",
+        "secret_required",
+        "external_authority_required",
+        "user_stopped"
+      ],
+      "stop_reason": "completed",
+      "stop_detail": {},
+      "session_ids": [
+        "claude:ab332db5-5327-43b0-9bef-702291fafaee"
+      ],
+      "updated_at": "2026-07-18",
+      "notes": "Registered atomically by canonical harness approve_harness_plan.py after plan validation.",
+      "notified_at": "2026-07-18T12:27:41.693845+00:00",
+      "completed": "2026-07-18"
+    },
+    "SE2": {
+      "work_id": "SE2",
+      "horizon_id": "skill-entry",
+      "milestone_id": "SE2",
+      "status": "active",
+      "plan_path": "plans/2026-07-18-se2-global-removal-e2e.md",
+      "changeset_path": "changesets/20260718-global-routing-removal",
+      "next_step": "step-1",
+      "current_step": "step-1",
+      "steps": [
+        {
+          "id": "step-1",
+          "label": "Step 1 — 전역 \"디자인 판정\" 절 제거 (changeset)",
+          "status": "pending"
+        },
+        {
+          "id": "step-2",
+          "label": "Step 2 — E2E: skill 경유 진입 관측 (changeset)",
+          "status": "pending"
+        }
+      ],
+      "execution_mode": "continuous",
+      "approval": {
+        "approved_by": "user",
+        "approved_at": "2026-07-18",
+        "plan_sha256": "31177bafe24f7b9fbdc01e8a0c0a8ef882939af39a9925bb03a0038336ec8131"
       },
       "allowed_stop_reasons": [
         "completed",
