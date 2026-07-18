@@ -14,3 +14,4 @@
 - 2026-07-17: vertical-integration 후보 적재 (사용자 발의 — CSS 표현 기법 편입 + 문법/부품 층 수직 통합, toolshelf recall 근거 포함).
 - 2026-07-18: skill-entry horizon은 후보 경유 없이 사용자 발의로 직접 개설 (`2026-07-skill-entry.md` — 진입 경량화 + 사람 확인 게이트, 좁은 boundary horizon).
 - 2026-07-19: studio-finish horizon 개설 (사용자 선정 — cascade-studio 이월 갭 3건 마감, `2026-07-studio-finish.md`). 후보 1번(parked horizon 복귀)은 잔류 — 복귀 조건(agent-adoption-loop 닫힘)은 충족된 상태.
+- 2026-07-19: recipe-code-reuse horizon 개설 (사용자 발의 — "사이트 템플릿 활용": 코드 출발 + 스튜디오 연결 선택, `2026-07-recipe-code-reuse.md`).
