@@ -150,3 +150,5 @@
 | 148 | 20260719-rc4-demo | 2026-07-19 | RC4 step 2: pottery studio→mapped code+recipe→restyle→browser integrated demo | 5/5 | complete |
 | 149 | 20260719-template-contract | 2026-07-19 | TPS1 step 1: editable-template boundary, ADR 0009, AI asset role | 4/4 | complete |
 | 150 | 20260719-template-core-scaffold | 2026-07-19 | TPS1 step 2: image/shape scene primitives + template validation fixtures | 4/4 | complete |
+| 151 | 20260719-blueprint-selection | 2026-07-19 | TPS2 step 1: three-format blueprint registry + stable selection | 4/4 | complete |
+| 152 | 20260719-deterministic-template-compiler | 2026-07-19 | TPS2 step 2: deterministic CanvasDocument compiler + signature | 4/4 | complete |
