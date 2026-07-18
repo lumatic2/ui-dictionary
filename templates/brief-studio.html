@@ -145,7 +145,23 @@ h2 { font-size: 19px; margin: 44px 0 4px; }
     </div>
   </div>
 
-  <!-- AGENT(딥 브리프): 발동 조건 충족 시 여기에 컴포넌트 스타일·헤더/푸터 IA 그룹을 같은 .grid[data-group] 패턴으로 추가 (VB4) -->
+  <!-- AGENT(딥 브리프): 발동 조건(사용자 명시 요청 또는 화면 3개 이상 + 수락) 충족 시에만 아래 주석을 해제하고
+       후보를 커스터마이즈하라. 미발동 시 반드시 주석 유지 — 소형 작업에 딥 그룹 노출은 게이트 실패다.
+       카탈로그: design-brief.md 부록 (8 컴포넌트 스타일 · 9 헤더 IA · 10 푸터 IA)
+  <h2>4. 버튼 형태 — 실물 렌더</h2>
+  <div class="grid" data-group="component-button">
+    <div class="opt" data-rec data-value="rect-sm" tabindex="0"><div class="demo"><span class="d-chip" style="border-radius:4px;background:#1a6b3c;color:#fff">주요 버튼</span><p>사각 4px — 단정.</p></div><div class="label">사각</div></div>
+    <div class="opt" data-value="round-lg" tabindex="0"><div class="demo"><span class="d-chip" style="border-radius:12px;background:#1a6b3c;color:#fff">주요 버튼</span><p>라운드 12px — friendly.</p></div><div class="label">라운드</div></div>
+    <div class="opt" data-value="pill" tabindex="0"><div class="demo"><span class="d-chip" style="border-radius:999px;background:#1a6b3c;color:#fff">주요 버튼</span><p>필 — 마케팅 톤.</p></div><div class="label">필</div></div>
+  </div>
+  <h2>5. 헤더 구성 — 미니 와이어프레임</h2>
+  <div class="grid" data-group="header-ia">
+    <div class="opt" data-rec data-value="logo-links-cta" tabindex="0"><div class="demo"><p style="display:flex;gap:8px;align-items:center"><b>로고</b><span style="flex:1;text-align:right;color:rgba(20,18,14,.5)">링크 링크 링크 <span style="background:#1a6b3c;color:#fff;padding:2px 8px;border-radius:4px">CTA</span></span></p><p>로고 + 링크 3 + CTA.</p></div><div class="label">표준</div></div>
+    <div class="opt" data-value="logo-only" tabindex="0"><div class="demo"><p><b>로고</b></p><p>로고만 — 랜딩 집중형.</p></div><div class="label">미니멀</div></div>
+    <div class="opt" data-value="logo-links" tabindex="0"><div class="demo"><p style="display:flex;gap:8px"><b>로고</b><span style="flex:1;text-align:right;color:rgba(20,18,14,.5)">링크 링크 링크</span></p><p>로고 + 링크만.</p></div><div class="label">링크형</div></div>
+  </div>
+  -->
+
 </div>
 
 <div class="submit-bar">

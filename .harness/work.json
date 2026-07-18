@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "active_work_id": "VB3",
+  "active_work_id": "VB4",
   "works": {
     "SFB1": {
       "title": "Structure Contract And Clean Production",
@@ -1260,6 +1260,50 @@
         "approved_by": "user",
         "approved_at": "2026-07-19",
         "plan_sha256": "fbe9431ee18f8a4d06bed2660ebb309053e55911c18f05efcece4787e93afe05"
+      },
+      "allowed_stop_reasons": [
+        "completed",
+        "blocked",
+        "decision_required",
+        "risk_gate",
+        "secret_required",
+        "external_authority_required",
+        "user_stopped"
+      ],
+      "stop_reason": null,
+      "stop_detail": {},
+      "session_ids": [
+        "claude:ab332db5-5327-43b0-9bef-702291fafaee"
+      ],
+      "updated_at": "2026-07-19",
+      "notes": "Registered atomically by canonical harness approve_harness_plan.py after plan validation."
+    },
+    "VB4": {
+      "work_id": "VB4",
+      "horizon_id": "visual-brief",
+      "milestone_id": "VB4",
+      "status": "active",
+      "plan_path": "plans/2026-07-19-vb4-deep-brief.md",
+      "changeset_path": "changesets/20260719-deep-brief",
+      "next_step": "step-1",
+      "current_step": "step-1",
+      "steps": [
+        {
+          "id": "step-1",
+          "label": "Step 1 — 딥 브리프 부록 + 스튜디오 딥 섹션 (changeset)",
+          "status": "pending"
+        },
+        {
+          "id": "step-2",
+          "label": "Step 2 — 배포 + 검증 (changeset)",
+          "status": "pending"
+        }
+      ],
+      "execution_mode": "continuous",
+      "approval": {
+        "approved_by": "user",
+        "approved_at": "2026-07-19",
+        "plan_sha256": "ddb8459089159242c972624dbe28a5dd29b43e0f944fc225f54fee0cbf9e951e"
       },
       "allowed_stop_reasons": [
         "completed",
