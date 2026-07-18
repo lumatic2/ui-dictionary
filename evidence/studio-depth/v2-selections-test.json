@@ -1,0 +1,21 @@
+{
+  "version": 2,
+  "tile": "quiet-literary",
+  "selections": {
+    "base": "warm-paper",
+    "accent": "coffee",
+    "typo": "gowun-full",
+    "composition": "hero-cards-info",
+    "header": "logo-links-cta",
+    "footer": "one-line",
+    "card": "flat-tonal",
+    "density": "airy",
+    "radius": "sharp",
+    "imagery": "photo-warm-doc",
+    "icon": "outline",
+    "dark": "both-auto",
+    "motion": "minimal",
+    "a11y": "aa"
+  },
+  "submittedAt": "2026-07-18T16:23:35.341Z"
+}
