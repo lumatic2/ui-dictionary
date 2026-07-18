@@ -1,19 +1,54 @@
 # ROADMAP
 
 > Last updated: 2026-07-18
-> Status: Studio Depth closed 2026-07-19 (SP1~SP4 완료) — 다음 horizon은 사용자 결정 대기 (`plans/horizons/CANDIDATES.md`)
+> Status: Cascade Studio active (폭포식 선택 + 라이브 미리보기 — 사용자 발의 2026-07-19)
 > North star: Build Askewly Design as both a public reference website and an agent-usable implementation system.
 > line budget: <=150
 
 ## Current Horizon
 
-<!-- harness:goal id="studio-depth" status="completed" -->
+<!-- harness:goal id="cascade-studio" status="active" -->
+Goal: 스튜디오를 폭포식(영향순·캐스케이드 적용)으로 재구축하고 스크롤 추종 라이브 미리보기·영상 후보·카피/인터랙션 축을 더한다. Details: `plans/horizons/2026-07-cascade-studio.md`.
+
+<!-- harness:goal-archive2 id="studio-depth" status="completed" -->
 Goal: 브리프 스튜디오를 시니어 디자이너의 결정 공간 전체로 확장한다 — 스타일 타일 2단 구조·축 14종·후보 6~8 추천순·실사 이미지(Pexels+생성). Details: `plans/horizons/2026-07-studio-depth.md`.
 
 <!-- harness:goal-archive id="visual-brief" status="completed" -->
 Goal: 브리프 선택을 실물 보기(폰트·컬러·인터랙션 스튜디오)로 올리고, 결과물 크롬 상시 표시 게이트와 Stitch 양식 정합, 딥 브리프 선택 모드를 더한다. Details: `plans/horizons/2026-07-visual-brief.md`.
 
 ## Active Milestones
+
+<!-- harness:milestone id="ST1" status="active" priority="P0" -->
+### ST1 — 스튜디오 정비 (칩·크기·순서·해상도)
+- DoD: 칩 겹침 0(좁은 뷰포트 포함)·타일/이미지 대형 카드·영향순 배치·medium/large2x 분리 실구동.
+- Evidence: changesets/20260719-studio-fixes/README.md, 스크린샷
+- Gap: 사용자 적발 결함 4종
+- Scale: changesets>=2; surfaces: 로컬 스튜디오, Pexels; capability: 판독성·해상도 정비
+- Status: [ ]
+
+<!-- harness:milestone id="ST2" status="pending" priority="P0" -->
+### ST2 — 캐스케이드 + 스티키 라이브 미리보기
+- DoD: 상위 선택이 하위 후보 렌더에 반영(evaluate 검증) + 미니 사이트 점진 조립 미리보기 실구동, 선택 보존 확인.
+- Evidence: changesets/20260719-cascade-preview/README.md, 스크린샷 2
+- Gap: 병렬 축은 조합 상상 강요 — 폭포+미리보기로 체감 (사용자 지시)
+- Scale: changesets>=2; surfaces: 로컬 스튜디오; capability: 앱 프로토타입 완성형
+- Status: [ ]
+
+<!-- harness:milestone id="ST3" status="pending" priority="P0" -->
+### ST3 — 영상 파이프라인 (Pexels Videos)
+- DoD: HD mp4+포스터 실호출·스튜디오 hover 재생·히어로 비디오 패턴(reduced-motion 폴백) 계약 배포.
+- Evidence: changesets/20260719-video-pipeline/README.md
+- Gap: 저해상 사진 한계 — "차라리 영상" (사용자)
+- Scale: changesets>=2; surfaces: Pexels Videos API, 로컬, ui.askewly.com; capability: 영상 축
+- Status: [ ]
+
+<!-- harness:milestone id="ST4" status="pending" priority="P1" -->
+### ST4 — 카피·인터랙션 축 + 통합 실연
+- DoD: 헤드라인/서브/CTA/마우스 인터랙션 축 실구동(미리보기 반영) + 통합 실연 관측 → horizon close.
+- Evidence: evidence/cascade-studio/
+- Gap: 문구·인터랙션이 마지막 추정 영역 (사용자)
+- Scale: changesets>=2; surfaces: 로컬 + 대화형 실연; capability: 전 결정 공간 선택화
+- Status: [ ]
 
 <!-- harness:milestone id="SP1" status="completed" priority="P0" evidence="changesets/20260719-brief-v2/README.md, research/2026-07-19-studio-depth-brief-practice.md, research/2026-07-19-studio-depth-tool-practice.md" -->
 ### SP1 — 브리프 v2 계약 (결정 공간 지도)
