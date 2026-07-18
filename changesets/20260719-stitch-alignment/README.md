@@ -26,4 +26,4 @@
 - [x] 리서치 전 인용 출처 URL+접근일 + 무작위 1건(raw spec.md) 실 curl 검증
 - [x] diff 표: 채택 3·제거 1·교정 1·유지 1 각 사유
 - [x] Failure probe: 공식 미발견 항목(stitch 사이트 SPA 본문·예시 2종)은 "발견 실패"로 정직 기록 — 추정 작성 없음
-- [ ] llms 재생성 + push + curl design-brief §3 반영 (커밋 시)
+- [x] llms 재생성 + push + curl design-brief §3 "google-labs-code" grep 1 (attempt 9)

@@ -26,6 +26,7 @@ const FIXED_ASSETS = [
     items: [
       ["docs/design-system/entry-protocol.md", "Start here: what to fetch, in what order, per design task type (new screen / improving existing UI / single component)"],
       ["docs/design-system/design-brief.md", "Kickoff interview contract: scale gate (when to interview vs skip), 7-domain question catalog (tone, look ownership, color, type, structure, interaction level, content), answers persisted as the project's own DESIGN.md"],
+      ["docs/design-system/brief-studio.md", "Visual brief studio contract: show color palettes on a mini UI preview, real font specimens, and touchable interaction demos in the browser; user clicks to choose, selections map into DESIGN.md — text questions are the fallback"],
     ],
   },
   {
