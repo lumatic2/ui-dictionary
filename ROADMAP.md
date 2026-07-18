@@ -1,7 +1,7 @@
 # ROADMAP
 
 > Last updated: 2026-07-19
-> Status: Recipe Code Reuse 실행 중 — RC2 완료, RC3 구성↔레시피 매핑 active
+> Status: Recipe Code Reuse 실행 중 — RC3 완료, RC4 통합 실연 active
 > North star: Build Askewly Design as both a public reference website and an agent-usable implementation system.
 > line budget: <=150
 
