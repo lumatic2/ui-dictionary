@@ -152,3 +152,5 @@
 | 150 | 20260719-template-core-scaffold | 2026-07-19 | TPS1 step 2: image/shape scene primitives + template validation fixtures | 4/4 | complete |
 | 151 | 20260719-blueprint-selection | 2026-07-19 | TPS2 step 1: three-format blueprint registry + stable selection | 4/4 | complete |
 | 152 | 20260719-deterministic-template-compiler | 2026-07-19 | TPS2 step 2: deterministic CanvasDocument compiler + signature | 4/4 | complete |
+| 153 | 20260719-template-studio-renderer | 2026-07-19 | TPS3 step 1: CanvasDocument browser renderer + layers | 4/4 | complete |
+| 154 | 20260719-template-studio-edit-export | 2026-07-19 | TPS3 step 2: text edit + JSON/HTML/SVG export/import | 4/4 | complete |

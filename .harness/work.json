@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "active_work_id": "TPS2",
+  "active_work_id": "TPS3",
   "works": {
     "SFB1": {
       "title": "Structure Contract And Clean Production",
@@ -2102,6 +2102,52 @@
       "updated_at": "2026-07-19",
       "notes": "Registered atomically by canonical harness approve_harness_plan.py after plan validation.",
       "completion_summary": "세 형식 청사진을 안정적으로 선택하고 같은 입력을 같은 CanvasDocument 서명으로 컴파일하는 결정론적 코어를 구축했습니다",
+      "completed": "2026-07-19"
+    },
+    "TPS3": {
+      "work_id": "TPS3",
+      "horizon_id": "template-production-system",
+      "milestone_id": "TPS3",
+      "status": "completed",
+      "plan_path": "plans/2026-07-19-tps3-browser-template-studio.md",
+      "changeset_path": "changesets/20260719-template-studio-edit-export",
+      "next_step": null,
+      "current_step": null,
+      "steps": [
+        {
+          "id": "step-1",
+          "label": "step-1 — scene-renderer-and-shell",
+          "status": "completed"
+        },
+        {
+          "id": "step-2",
+          "label": "step-2 — edit-and-export-loop",
+          "status": "completed"
+        }
+      ],
+      "execution_mode": "continuous",
+      "approval": {
+        "approved_by": "user",
+        "approved_at": "2026-07-19",
+        "plan_sha256": "422baa553a77863f54d11b54f08f4d8a0a944f6d2d791308ca48d7d3ec4a6f15"
+      },
+      "allowed_stop_reasons": [
+        "completed",
+        "blocked",
+        "decision_required",
+        "risk_gate",
+        "secret_required",
+        "external_authority_required",
+        "user_stopped"
+      ],
+      "stop_reason": null,
+      "stop_detail": {},
+      "session_ids": [
+        "codex:template-production-chain"
+      ],
+      "updated_at": "2026-07-19",
+      "notes": "Registered atomically by canonical harness approve_harness_plan.py after plan validation.",
+      "completion_summary": "세 형식 CanvasDocument를 브라우저에서 보고 텍스트를 편집하며 JSON·HTML·SVG로 내보내고 검증 후 다시 가져오는 스튜디오를 구축했습니다",
       "completed": "2026-07-19"
     }
   }

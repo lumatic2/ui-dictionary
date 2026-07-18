@@ -22,3 +22,4 @@
 {"actual_changesets": 1, "declared_min": 2, "milestone_id": "RC4", "ts": "2026-07-19", "verdict": "inflation-candidate"}
 {"actual_changesets": 2, "declared_min": 2, "milestone_id": "TPS1", "ts": "2026-07-19", "verdict": "ok"}
 {"actual_changesets": 2, "declared_min": 2, "milestone_id": "TPS2", "ts": "2026-07-19", "verdict": "ok"}
+{"actual_changesets": 2, "declared_min": 2, "milestone_id": "TPS3", "ts": "2026-07-19", "verdict": "ok"}
