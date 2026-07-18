@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "active_work_id": "ST4",
+  "active_work_id": "SF2",
   "works": {
     "SFB1": {
       "title": "Structure Contract And Clean Production",
@@ -1688,6 +1688,95 @@
       "notes": "Registered atomically by canonical harness approve_harness_plan.py after plan validation.",
       "completed": "2026-07-19",
       "notified_at": "2026-07-18T17:38:47.482175+00:00"
+    },
+    "SF1": {
+      "work_id": "SF1",
+      "horizon_id": "studio-finish",
+      "milestone_id": "SF1",
+      "status": "active",
+      "plan_path": "plans/2026-07-19-sf1-studio-data-injection.md",
+      "changeset_path": "changesets/20260719-studio-data-injection",
+      "next_step": "step-1",
+      "current_step": "step-1",
+      "steps": [
+        {
+          "id": "step-1",
+          "label": "Step 1 — 데이터 분리 + 생성 스크립트 (changeset)",
+          "status": "pending"
+        },
+        {
+          "id": "step-2",
+          "label": "Step 2 — 계약 교체 + 배포 + E2E (changeset)",
+          "status": "pending"
+        }
+      ],
+      "execution_mode": "continuous",
+      "approval": {
+        "approved_by": "user",
+        "approved_at": "2026-07-19",
+        "plan_sha256": "9bab62421639cb6c78c883d3da07050a233fcacd99cd0177c055153c18225be9"
+      },
+      "allowed_stop_reasons": [
+        "completed",
+        "blocked",
+        "decision_required",
+        "risk_gate",
+        "secret_required",
+        "external_authority_required",
+        "user_stopped"
+      ],
+      "stop_reason": null,
+      "stop_detail": {},
+      "session_ids": [
+        "claude:614621c7-09d1-4681-a401-e42324fd8701"
+      ],
+      "updated_at": "2026-07-19",
+      "notes": "Registered atomically by canonical harness approve_harness_plan.py after plan validation.",
+      "completion_summary": "브리프 스튜디오 후보 주입이 HTML 직접 편집에서 데이터 JSON 하나 + 생성 커맨드 하나로 바뀌었고, 잘못된 데이터는 명시 에러로 거부됩니다"
+    },
+    "SF2": {
+      "work_id": "SF2",
+      "horizon_id": "studio-finish",
+      "milestone_id": "SF2",
+      "status": "active",
+      "plan_path": "plans/2026-07-19-sf2-composition-patterns.md",
+      "changeset_path": "changesets/20260719-composition-types",
+      "next_step": "step-1",
+      "current_step": "step-1",
+      "steps": [
+        {
+          "id": "step-1",
+          "label": "Step 1 — 구성 4유형 편입 + 미리보기 반영 (changeset)",
+          "status": "pending"
+        },
+        {
+          "id": "step-2",
+          "label": "Step 2 — 예약형 특수 패턴 편입 + 계약 배포 (changeset)",
+          "status": "pending"
+        }
+      ],
+      "execution_mode": "continuous",
+      "approval": {
+        "approved_by": "user",
+        "approved_at": "2026-07-19",
+        "plan_sha256": "21387ae01e7a9239a8b206312d7ba51f25bece9c72e1c0a1cce7c78e6420eff1"
+      },
+      "allowed_stop_reasons": [
+        "completed",
+        "blocked",
+        "decision_required",
+        "risk_gate",
+        "secret_required",
+        "external_authority_required",
+        "user_stopped"
+      ],
+      "stop_reason": null,
+      "stop_detail": {},
+      "session_ids": [
+        "claude:614621c7-09d1-4681-a401-e42324fd8701"
+      ],
+      "updated_at": "2026-07-19",
+      "notes": "Registered atomically by canonical harness approve_harness_plan.py after plan validation."
     }
   }
 }
