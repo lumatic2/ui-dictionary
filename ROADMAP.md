@@ -1,16 +1,48 @@
 # ROADMAP
 
 > Last updated: 2026-07-18
-> Status: Design Brief closed 2026-07-19 (DB1·DB2 완료) — 차기: 시각적 브리프 제안 대기
+> Status: Visual Brief active (눈으로 고르는 브리프 + 크롬 게이트 — 사용자 발의 2026-07-19)
 > North star: Build Askewly Design as both a public reference website and an agent-usable implementation system.
 > line budget: <=150
 
 ## Current Horizon
 
-<!-- harness:goal id="design-brief" status="completed" -->
-Goal: 디자인 진입에 시니어 디자이너식 브리프 인터뷰를 추가하고(규모 비례), 답변을 프로젝트 DESIGN.md로 저장해 룩 소유권을 생성한다. Details: `plans/horizons/2026-07-design-brief.md`.
+<!-- harness:goal id="visual-brief" status="active" -->
+Goal: 브리프 선택을 실물 보기(폰트·컬러·인터랙션 스튜디오)로 올리고, 결과물 크롬 상시 표시 게이트와 Stitch 양식 정합, 딥 브리프 선택 모드를 더한다. Details: `plans/horizons/2026-07-visual-brief.md`.
 
 ## Active Milestones
+
+<!-- harness:milestone id="VB1" status="active" priority="P0" -->
+### VB1 — Stitch 양식 리서치·정합
+- DoD: 공식 출처 기반 리서치 doc + 템플릿·저장 계약 diff 정합(채택/기각/유지 사유).
+- Evidence: research/2026-07-19-vb1-stitch-design-md.md + templates diff
+- Gap: 템플릿이 Stitch 양식을 따른다고 하나 공식 스펙과 대조한 적 없음 (사용자 지적)
+- Scale: changesets>=2; surfaces: research doc, llms curl; capability: 표준 정합된 DESIGN.md 양식
+- Status: [ ]
+
+<!-- harness:milestone id="VB2" status="pending" priority="P0" -->
+### VB2 — 브리프 스튜디오
+- DoD: 폰트·컬러·인터랙션 실물 선택 스튜디오 실구동(렌더→선택→수집→DESIGN.md) + 계약 배포 + 실연.
+- Evidence: evidence/visual-brief/ + curl brief-studio.md
+- Gap: 브리프 선택지가 텍스트 라벨뿐 — 디자인 결정을 글로 함 (DB2 잔여 리스크)
+- Scale: changesets>=3; surfaces: 로컬 스튜디오, ui.askewly.com, 대화형 실연; capability: 실물 선택 브리프
+- Status: [ ]
+
+<!-- harness:milestone id="VB3" status="pending" priority="P1" -->
+### VB3 — 크롬 상시 표시 게이트
+- DoD: 프로토콜 5단계가 실물 브라우저 열림·유지를 지시하고 E2E로 관측.
+- Evidence: curl + evidence/visual-brief/ 실열림 로그
+- Gap: 사람 게이트 판정이 채팅 스크린샷에 의존 (사용자 지적)
+- Scale: changesets>=2; surfaces: ui.askewly.com, 로컬 브라우저; capability: 실물 판정 게이트
+- Status: [ ]
+
+<!-- harness:milestone id="VB4" status="pending" priority="P1" -->
+### VB4 — 딥 브리프 선택 모드
+- DoD: 컴포넌트·헤더/푸터 IA 부록 + 발동 규칙(요청·대규모만) 배포, 게이트 양방향 판정.
+- Evidence: curl 부록 + 게이트 판정 기록
+- Gap: 세분화 수요(사용자) vs 질문 피로 — 선택 모드로 양립 (사용자 확정)
+- Scale: changesets>=2; surfaces: ui.askewly.com, 스튜디오; capability: 선택형 정밀 브리프
+- Status: [ ]
 
 <!-- harness:milestone id="DB1" status="completed" priority="P0" evidence="changesets/20260718-design-brief-contract/README.md, docs/design-system/design-brief.md" -->
 ### DB1 — 브리프 계약 정본 + 프로토콜 배선

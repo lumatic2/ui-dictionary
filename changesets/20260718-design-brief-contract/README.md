@@ -12,5 +12,5 @@
 
 - [x] 4절 전부 존재 (규모 게이트·질문 카탈로그·저장 계약·폴백)
 - [x] Failure probe: 질문이 주관식 단독이 아님 — 도메인당 선택지+추천 명문화
-- [ ] curl design-brief.md 200 + llms.txt 항목 grep (step-2)
-- [ ] entry-protocol에 브리프 단계 grep (step-2)
+- [x] curl design-brief.md "# Design Brief" 확인 + llms.txt 항목 grep 1 (엣지 1개 지연 후 OK)
+- [x] entry-protocol "Brief interview" 배포 grep 1
