@@ -35,7 +35,7 @@ Date: 2026-07-19 (v2 — 결정 공간 전면 확장, design-brief v2 §3과 쌍
 ## 4. 이미지 축 — 실사 파이프라인 (스톡 우선 + 생성 옵션)
 
 - **스톡(기본)**: `templates/fetch-stock.py`로 Pexels에서 후보 6~8장을 가져온다 — `locale=ko-KR` 한국어 쿼리, 쿼리는 전략층 답변(업종·톤·키워드)에서 파생. **해상도 계약(ST1)**: 스튜디오 썸네일은 `cand-N.jpg`(medium), **최종 페이지에는 반드시 `cand-N-full.jpg`(large2x, 부재 시 large→original 폴백)** — medium을 최종 페이지에 쓰는 것은 결함이다(2026-07-19 실연 적발). 환경변수 `PEXELS_API_KEY`(User 전역, 2026-07-19 등록 — 값 출력·커밋·로그 금지). 다운로드된 썸네일을 스튜디오 이미지 축의 후보 배경으로 주입(`AXES` imagery 후보의 `bg: url(...)` 교체). `candidates.json`의 `avg_color`로 선택된 베이스/액센트와 톤이 맞는 후보를 우선 정렬할 수 있다. photographer·pexels_url 메타 보존(라이선스: Pexels 무료·상업 가능, 표기 권장).
-- **영상(ST3)**: `fetch-stock.py --video "쿼리"` — Pexels Videos(`locale=ko-KR`, 동일 키)에서 **HD(≤1280px) mp4 + 포스터**를 받는다(4K 원본 회피, 15MB 이하 후보 우선). 스튜디오 이미지 축에 영상 후보(`video`/`poster` 필드)를 섞으면 hover 시 muted 재생으로 미리본다. **히어로 비디오 패턴**: `<video autoplay muted loop playsinline poster>` + `prefers-reduced-motion`·모바일(협대역)에서는 자동재생 없이 포스터 폴백 의무. 크리에이터 크레딧 보존.
+- **영상(ST3)**: `fetch-stock.py --video "쿼리"` — Pexels Videos(`locale=ko-KR`, 동일 키)에서 **HD(≤1280px) mp4 + 포스터**를 받는다(4K 원본 회피, 15MB 이하 후보 우선). 스튜디오 이미지 축에 영상 후보(`video`/`poster` 필드)를 섞으면 hover 시 muted 재생으로 미리본다. **히어로 비디오 패턴**: `<video autoplay muted playsinline poster>` + `prefers-reduced-motion`·모바일(협대역)에서는 자동재생 없이 포스터 폴백 의무. 크리에이터 크레딧 보존(로테이션 시 전원). **영상 로테이션 규칙(사용자 확정 2026-07-19)**: 짧은 클립 하나를 `loop`로 돌리면 반복이 어색하다 — **최소 3종의 영상을 `ended` 이벤트로 순환**시켜 자연스러운 흐름을 만든다(같은 쿼리는 동일 결과가 나오니 각도가 다른 쿼리 2~3개로 수집).
 - **생성(옵션)**: 맞춤 이미지가 필요하면 ① `/comfy`(로컬 ComfyUI — 무료·무제한·시드 고정) ② Codex 내장 image_gen(클라우드 단발). 생성 후보를 스톡 후보와 같은 그룹에 섞어 제시할 수 있다.
 - **폴백**: 키 부재·오프라인·율리밋(200/h) 시 헬퍼가 명시 에러를 내고, 스튜디오는 톤 카드(그라디언트)로 degrade — 페이지 불괴.
 
