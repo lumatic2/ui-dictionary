@@ -2,7 +2,7 @@
 
 Date: 2026-07-19
 Milestone: SF2 (`ROADMAP.md`, pending — Studio Finish 2/3)
-Status: proposed
+Status: approved (2026-07-19)
 
 ## 위계
 
