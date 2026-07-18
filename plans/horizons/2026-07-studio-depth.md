@@ -1,7 +1,7 @@
 # Horizon — Studio Depth (결정 공간 전면 확장)
 
 Date: 2026-07-19
-Status: active
+Status: closed (2026-07-19 — SP1~SP4 전부 완료. Close Criteria 4/4: ① 브리프 v2 배포 ② 스튜디오 v2 실구동 ③ 실사(Pexels ko-KR) 스튜디오 노출·최종 페이지 적용 ④ 통합 실연 관측(댄스 뮤지컬 — 14축 실선택·타일 밖 자유 조합 실사용). 갭 3건은 차기 입력: 후보 주입 자동화·섹션별 이미지 규칙·라이트 폴백 규칙)
 Objective link: `OBJECTIVE.md` (성공 상태 ④ AskewlyDesign 앱 브리프 화면 프로토타입 고도화 + ③ 판단 입력 품질)
 Preceding horizon: `plans/horizons/2026-07-visual-brief.md` (closed 2026-07-19)
 

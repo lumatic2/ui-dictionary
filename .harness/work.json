@@ -1466,21 +1466,21 @@
       "work_id": "SP4",
       "horizon_id": "studio-depth",
       "milestone_id": "SP4",
-      "status": "active",
+      "status": "completed",
       "plan_path": "plans/2026-07-19-sp4-integrated-e2e.md",
       "changeset_path": "changesets/20260719-integrated-e2e",
-      "next_step": "step-1",
-      "current_step": "step-1",
+      "next_step": null,
+      "current_step": null,
       "steps": [
         {
           "id": "step-1",
           "label": "Step 1 — 통합 실연 + evidence (changeset)",
-          "status": "pending"
+          "status": "completed"
         },
         {
           "id": "step-2",
           "label": "Step 2 — horizon close 처리 (changeset)",
-          "status": "pending"
+          "status": "completed"
         }
       ],
       "execution_mode": "continuous",
@@ -1498,16 +1498,14 @@
         "external_authority_required",
         "user_stopped"
       ],
-      "stop_reason": "blocked",
-      "stop_detail": {
-        "what": "통합 실연 — 사용자 의뢰 대기 (plan Scope Boundary 명시 중단점)",
-        "resume": "사용자가 신규 페이지를 의뢰하면 v2 전 루프(전략층→타일→14축→실사→DESIGN.md→구현→실물 게이트) 관측 → SP4 완료 → horizon close"
-      },
+      "stop_reason": "completed",
+      "stop_detail": {},
       "session_ids": [
         "claude:ab332db5-5327-43b0-9bef-702291fafaee"
       ],
       "updated_at": "2026-07-19",
-      "notes": "Registered atomically by canonical harness approve_harness_plan.py after plan validation."
+      "notes": "Registered atomically by canonical harness approve_harness_plan.py after plan validation.",
+      "completed": "2026-07-19"
     }
   }
 }
