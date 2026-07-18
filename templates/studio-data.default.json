@@ -350,7 +350,7 @@
       "title": "페이지 구성",
       "type": "wire",
       "size": "lg",
-      "hint": "섹션 조합과 순서 — 선택이 오른쪽 미리보기 구조에 그대로 반영됩니다",
+      "hint": "섹션 조합과 순서 — 선택이 오른쪽 미리보기 구조에 그대로 반영됩니다 (hidden 후보는 카탈로그 — 브리프 맥락에 맞으면 hidden을 빼고 노출, 기본 노출은 8종 이하)",
       "cands": [
         {
           "value": "hero-cards-info",
@@ -482,6 +482,87 @@
           "pv": [
             "fullhero"
           ]
+        },
+        {
+          "value": "compare-table",
+          "label": "히어로 → 비교표 → 후기 → CTA",
+          "sub": "비교표형 · 회의적 시장",
+          "rank": 9,
+          "rows": [
+            "h28",
+            "r:3",
+            "sb12",
+            "b10"
+          ],
+          "pv": [
+            "hero",
+            "compare",
+            "quote",
+            "cta"
+          ],
+          "hidden": true
+        },
+        {
+          "value": "problem-mech-proof",
+          "label": "문제 → 작동 원리 → 증거 → CTA",
+          "sub": "설득 구조형 · 신개념 제품",
+          "rank": 10,
+          "rows": [
+            "h24",
+            "b12",
+            "r:3",
+            "sb12",
+            "b10"
+          ],
+          "pv": [
+            "hero",
+            "problem",
+            "mech",
+            "quote",
+            "cta"
+          ],
+          "hidden": true
+        },
+        {
+          "value": "ugc-first",
+          "label": "미니 히어로 → 사용자 콘텐츠 → CTA",
+          "sub": "커뮤니티·UGC형",
+          "rank": 11,
+          "rows": [
+            "h18",
+            "r:3",
+            "r:3",
+            "b10"
+          ],
+          "pv": [
+            "minihero",
+            "ugc",
+            "cards",
+            "cta"
+          ],
+          "hidden": true
+        },
+        {
+          "value": "faq-trust",
+          "label": "문제 → 과정 → 증거 → FAQ → 보증",
+          "sub": "FAQ·신뢰형 · 고관여/고가",
+          "rank": 12,
+          "rows": [
+            "h24",
+            "b12",
+            "sb12",
+            "b8",
+            "b10"
+          ],
+          "pv": [
+            "hero",
+            "problem",
+            "quote",
+            "faq",
+            "guarantee",
+            "cta"
+          ],
+          "hidden": true
         }
       ]
     },

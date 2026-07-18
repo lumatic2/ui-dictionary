@@ -137,3 +137,4 @@
 | 135 | 20260718-skill-entry-e2e | 2026-07-18 | SE2 Step 2: E2E — Claude attempt1 FAIL -> description hardened -> Claude PASS + Codex PASS (skill fired, protocol fetched, screenshots produced) | 4/4 | complete |
 | 136 | 20260719-studio-data-injection | 2026-07-19 | SF1 step 1: studio data JSON + make-studio.py generator (no more direct HTML edits) | 4/4 | complete |
 | 137 | 20260719-injection-contract | 2026-07-19 | SF1 step 2: injection contract swap (data-driven, no direct HTML edits) + llms regen | 3/4 | complete |
+| 138 | 20260719-composition-types | 2026-07-19 | SF2 step 1: composition catalog 12 types (4 new hidden-by-default) + preview SEC renderers | 4/4 | complete |
