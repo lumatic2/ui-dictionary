@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "active_work_id": "VB4",
+  "active_work_id": "VB2",
   "works": {
     "SFB1": {
       "title": "Structure Contract And Clean Production",
@@ -1284,11 +1284,11 @@
       "work_id": "VB4",
       "horizon_id": "visual-brief",
       "milestone_id": "VB4",
-      "status": "active",
+      "status": "completed",
       "plan_path": "plans/2026-07-19-vb4-deep-brief.md",
       "changeset_path": "changesets/20260719-deep-brief",
-      "next_step": "step-2",
-      "current_step": "step-2",
+      "next_step": null,
+      "current_step": null,
       "steps": [
         {
           "id": "step-1",
@@ -1298,7 +1298,7 @@
         {
           "id": "step-2",
           "label": "Step 2 — 배포 + 검증 (changeset)",
-          "status": "pending"
+          "status": "completed"
         }
       ],
       "execution_mode": "continuous",
@@ -1316,16 +1316,15 @@
         "external_authority_required",
         "user_stopped"
       ],
-      "stop_reason": "blocked",
-      "stop_detail": {
-        "what": "step-1 완료·step-2 배포 push 완료 — CDN 반영 확인만 남음 (백그라운드 폴링 b4h8csa4i 진행 중 — 외부 배포 대기)",
-        "resume": "폴링 DEPLOYED → 완료 체인(3-event·work.json·roadmap_sync) → horizon 잔여=VB2 step-3 대화형 실연"
-      },
+      "stop_reason": "completed",
+      "stop_detail": {},
       "session_ids": [
         "claude:ab332db5-5327-43b0-9bef-702291fafaee"
       ],
       "updated_at": "2026-07-19",
-      "notes": "Registered atomically by canonical harness approve_harness_plan.py after plan validation."
+      "notes": "Registered atomically by canonical harness approve_harness_plan.py after plan validation.",
+      "notified_at": "2026-07-18T15:49:36.040308+00:00",
+      "completed": "2026-07-19"
     }
   }
 }
