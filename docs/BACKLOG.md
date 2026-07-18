@@ -252,3 +252,44 @@
   - Completed: 2026-07-19
   - Result: 데이터 JSON + make-studio.py 1커맨드 주입 실증 — 실패 경로 포함
   - Evidence: evidence/studio-finish/sf1-injection-e2e.md
+
+### 2026-07
+- SF2 - SF2 — 구성 패턴 완편 (4유형 + 예약형)
+  - Completed: 2026-07-19
+  - Result: 구성 12유형+예약형 편입, 조건 노출 경계 실측
+  - Evidence: evidence/studio-finish/sf2-composition-e2e.md, changesets/20260719-composition-types/README.md, changesets/20260719-booking-patterns/README.md
+
+- SF3 - SF3 — 미리보기 고도화 (다크·반응형)
+  - Completed: 2026-07-19
+  - Result: 다크·모바일 토글 + 12조합 매트릭스 + 통합 루프 실측
+  - Evidence: evidence/studio-finish/sf3-preview-e2e.md, changesets/20260719-preview-dark/README.md, changesets/20260719-preview-responsive/README.md
+
+- SP4 - SP4 — 통합 E2E 실연
+  - Completed: 2026-07-19
+  - Result: 통합 실연 관측 — 14축 실선택·자유 조합·실사 적용, 갭 3건 기록
+  - Evidence: changesets/20260719-integrated-e2e/README.md, evidence/studio-depth/dance-selections.json, evidence/studio-depth/dance-DESIGN.md
+
+- VB1 - VB1 — Stitch 양식 리서치·정합
+  - Completed: 2026-07-19
+  - Result: 공식 스펙 확인(google-labs-code/design.md alpha) — flat 스키마·8섹션 채택, 3-tier는 확장 관례로 교정, 배포 반영
+  - Evidence: changesets/20260719-stitch-alignment/README.md, research/2026-07-19-vb1-stitch-design-md.md
+
+- VB2 - VB2 — 브리프 스튜디오
+  - Completed: 2026-07-19
+  - Result: 브리프 스튜디오 실구동+폴백+대화형 실연(실물 선택 3종→DESIGN.md→구현) 전부 관측
+  - Evidence: changesets/20260719-brief-studio/README.md, evidence/visual-brief/cafe-brief-selections.json, evidence/visual-brief/cafe-DESIGN.md
+
+- VB3 - VB3 — 크롬 상시 표시 게이트
+  - Completed: 2026-07-19
+  - Result: 사람 게이트 판정 표면 = 실물 브라우저(열기+서버 유지) 배포, E2E·실패경로 관측
+  - Evidence: changesets/20260719-chrome-gate/README.md, evidence/visual-brief/vb3-live-gate-e2e.log
+
+- VB4 - VB4 — 딥 브리프 선택 모드
+  - Completed: 2026-07-19
+  - Result: 딥 브리프 선택 모드 배포 — 발동 2경로 명문, 기본 게이트 불변
+  - Evidence: changesets/20260719-deep-brief/README.md, docs/design-system/design-brief.md
+
+- DB1 - DB1 — 브리프 계약 정본 + 프로토콜 배선
+  - Completed: 2026-07-19
+  - Result: 브리프 계약 4절 정본 + 프로토콜 0.5단계 배선, llms 59자산 배포
+  - Evidence: changesets/20260718-design-brief-contract/README.md, docs/design-system/design-brief.md
