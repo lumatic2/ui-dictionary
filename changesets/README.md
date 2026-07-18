@@ -147,4 +147,6 @@
 | 145 | 20260719-composition-recipe-map | 2026-07-19 | RC3 step 1: composition catalog recipe map + collected implementation payload | 4/4 | complete |
 | 146 | 20260719-composition-recipe-contract | 2026-07-19 | RC3 step 2: DESIGN.md storage + code/document implementation routing contract | 4/4 | complete |
 | 147 | 20260719-rc4-setup | 2026-07-19 | RC4 step 1: pottery brief, 18-axis studio, implementation link preflight | 4/4 | complete |
-| 148 | 20260719-rc4-demo | 2026-07-19 | RC4 step 2: pottery studio→mapped code+recipe→restyle→browser integrated demo | 4/5 | human gate |
+| 148 | 20260719-rc4-demo | 2026-07-19 | RC4 step 2: pottery studio→mapped code+recipe→restyle→browser integrated demo | 5/5 | complete |
+| 149 | 20260719-template-contract | 2026-07-19 | TPS1 step 1: editable-template boundary, ADR 0009, AI asset role | 4/4 | complete |
+| 150 | 20260719-template-core-scaffold | 2026-07-19 | TPS1 step 2: image/shape scene primitives + template validation fixtures | 4/4 | complete |

@@ -1,7 +1,7 @@
 # PLAN — TPS2 구성 청사진·결정론적 조립기
 
 > 생성: 2026-07-19 · 갈래: product · scope 결정: 형식 선택과 장면 컴파일의 결정론적 코어까지
-Status: proposed (awaiting run approval)
+Status: approved (2026-07-19)
 
 ## 북극성 → horizon → milestone → step (위계)
 - **북극성**: Askewly Design을 공개 참고 시스템이자 에이전트가 직접 쓰는 구현 시스템으로 만든다. (← `OBJECTIVE.md`)

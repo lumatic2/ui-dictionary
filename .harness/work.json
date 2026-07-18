@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "active_work_id": "RC4",
+  "active_work_id": "TPS1",
   "works": {
     "SFB1": {
       "title": "Structure Contract And Clean Production",
@@ -2009,6 +2009,53 @@
       "updated_at": "2026-07-19",
       "notes": "Registered atomically by canonical harness approve_harness_plan.py after plan validation.",
       "completion_summary": "스튜디오에서 직접 고른 도자기 온라인숍이 검증된 코드 자산 조합과 리스타일을 거쳐 실물 페이지로 완성됐고, 실물 확인까지 통과했습니다",
+      "completed": "2026-07-19",
+      "notified_at": "2026-07-18T20:07:09.673472+00:00"
+    },
+    "TPS1": {
+      "work_id": "TPS1",
+      "horizon_id": "template-production-system",
+      "milestone_id": "TPS1",
+      "status": "completed",
+      "plan_path": "plans/2026-07-19-tps1-template-contract.md",
+      "changeset_path": "changesets/20260719-template-core-scaffold",
+      "next_step": null,
+      "current_step": null,
+      "steps": [
+        {
+          "id": "step-1",
+          "label": "step-1 — structured-template-contract",
+          "status": "completed"
+        },
+        {
+          "id": "step-2",
+          "label": "step-2 — scene-primitives-and-core-scaffold",
+          "status": "completed"
+        }
+      ],
+      "execution_mode": "continuous",
+      "approval": {
+        "approved_by": "user",
+        "approved_at": "2026-07-19",
+        "plan_sha256": "0a071abf8a07bfd42e685439e4d078d1966c6ffc10edeeb609658f9acf4c8b03"
+      },
+      "allowed_stop_reasons": [
+        "completed",
+        "blocked",
+        "decision_required",
+        "risk_gate",
+        "secret_required",
+        "external_authority_required",
+        "user_stopped"
+      ],
+      "stop_reason": null,
+      "stop_detail": {},
+      "session_ids": [
+        "codex:template-production-chain"
+      ],
+      "updated_at": "2026-07-19",
+      "notes": "Registered atomically by canonical harness approve_harness_plan.py after plan validation.",
+      "completion_summary": "평면 이미지와 편집 템플릿의 경계를 정본화하고 CanvasDocument 이미지·도형 원시 요소와 템플릿 검증 코어를 구축했습니다",
       "completed": "2026-07-19"
     }
   }

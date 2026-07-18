@@ -1,7 +1,7 @@
 # PLAN — TPS1 템플릿 계약·장면 기반
 
 > 생성: 2026-07-19 · 갈래: product · scope 결정: 편집 템플릿 계약과 최소 장면 원시 요소·검증 기반까지
-Status: proposed (awaiting run approval)
+Status: approved (2026-07-19)
 
 ## 북극성 → horizon → milestone → step (위계)
 - **북극성**: Askewly Design을 공개 참고 시스템이자 에이전트가 직접 쓰는 구현 시스템으로 만든다. (← `OBJECTIVE.md`)

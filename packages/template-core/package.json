@@ -1,0 +1,11 @@
+{
+  "name": "@askewly/template-core",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "exports": { ".": "./dist/index.js" },
+  "types": "./dist/index.d.ts",
+  "scripts": { "build": "tsc", "test": "vitest run" },
+  "dependencies": { "@askewly/canvas-core": "file:../canvas-core" },
+  "devDependencies": { "@types/node": "^22.10.0", "typescript": "^5.7.0", "vitest": "^3.0.0" }
+}

@@ -34,7 +34,7 @@ export type PropValue = string | number | boolean | null
 
 export interface CanvasNodeBase {
   id: NodeId
-  kind: 'frame' | 'group' | 'code-component' | 'text' | 'instance'
+  kind: 'frame' | 'group' | 'code-component' | 'text' | 'image' | 'shape' | 'instance'
   name: string
   parentId: NodeId | null
   childIds: NodeId[]
@@ -73,13 +73,29 @@ export interface TextNode extends CanvasNodeBase {
   }
 }
 
+export interface ImageNode extends CanvasNodeBase {
+  kind: 'image'
+  assetId: string
+  alt: string
+  fit: 'cover' | 'contain' | 'fill'
+  opacity: number
+}
+
+export interface ShapeNode extends CanvasNodeBase {
+  kind: 'shape'
+  shape: 'rectangle' | 'ellipse' | 'line'
+  fill: string
+  stroke: string | null
+  strokeWidth: number
+}
+
 export interface InstanceNode extends CanvasNodeBase {
   kind: 'instance'
   componentId: NodeId
   overrides: Record<string, PropValue>
 }
 
-export type CanvasNode = FrameNode | GroupNode | CodeComponentNode | TextNode | InstanceNode
+export type CanvasNode = FrameNode | GroupNode | CodeComponentNode | TextNode | ImageNode | ShapeNode | InstanceNode
 
 export interface CanvasDocument {
   schemaVersion: 1

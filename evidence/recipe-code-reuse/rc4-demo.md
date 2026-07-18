@@ -27,7 +27,7 @@
 2. 깨끗한 이식 실구동 — 선언 ≥1 / 실측 RC1 stat-summary-grid + RC4 responsive-content-grid / **PASS**.
 3. 코드 출발 E2E — 선언 fetch→적용→토큰 리맵 / 실측 RC2 headless·독립 build/browser / **PASS**.
 4. 매핑 배선 — 선언 13항·수집→DESIGN→구현 / 실측 13/13, 49/49, live 계약 / **PASS**.
-5. 통합 실연 — 선언 선택→조합→리스타일→사람 live gate / 선택·조합·리스타일·브라우저 기술 실측 **PASS**, **사용자 최종 시각 확인 대기**.
+5. 통합 실연 — 선언 선택→조합→리스타일→사람 live gate / 선택·조합·리스타일·브라우저 기술 실측 및 사용자 실물 승인 / **PASS**.
 
 ## 프리모템 대조
 
@@ -42,4 +42,4 @@
 
 ## 판정
 
-기술 DoD와 실제 사용자 선택 반영은 충족했다. RC4 및 Recipe Code Reuse Horizon 완료 표시는 사용자가 최종 화면을 보고 시각 판정을 내린 뒤 수행한다.
+기술 DoD, 실제 사용자 선택 반영, 사용자 최종 시각 승인을 모두 충족했다. RC4 및 Recipe Code Reuse Horizon을 Close Criteria 5/5로 닫는다.

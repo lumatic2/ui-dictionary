@@ -36,7 +36,7 @@ export function planNodeDrop(
   if (nodeId === targetId || ancestors(document, targetId).includes(nodeId)) return { valid: false, reason: 'drop would create a hierarchy cycle' }
   if (ancestors(document, nodeId).some((id) => document.nodes[id]?.kind === 'instance')) return { valid: false, reason: 'cannot move instance-owned structure' }
   if (position === 'inside') {
-    if (target.kind === 'instance' || target.kind === 'text') return { valid: false, reason: `cannot drop inside ${target.kind}` }
+    if (target.kind === 'instance' || target.kind === 'text' || target.kind === 'image' || target.kind === 'shape') return { valid: false, reason: `cannot drop inside ${target.kind}` }
     if (ancestors(document, targetId).some((id) => document.nodes[id]?.kind === 'instance')) return { valid: false, reason: 'cannot drop inside an instance boundary' }
     return { valid: true, nodeId, parentId: targetId, index: target.childIds.length, bounds: bounds ? structuredClone(bounds) : undefined }
   }

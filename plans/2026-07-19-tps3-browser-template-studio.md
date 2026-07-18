@@ -1,7 +1,7 @@
 # PLAN — TPS3 브라우저 템플릿 스튜디오
 
 > 생성: 2026-07-19 · 갈래: product · scope 결정: JSON 장면의 브라우저 렌더·기본 편집·내보내기까지
-Status: proposed (awaiting run approval)
+Status: approved (2026-07-19)
 
 ## 북극성 → horizon → milestone → step (위계)
 - **북극성**: Askewly Design을 공개 참고 시스템이자 에이전트가 직접 쓰는 구현 시스템으로 만든다. (← `OBJECTIVE.md`)

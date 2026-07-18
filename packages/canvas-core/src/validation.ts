@@ -1,6 +1,6 @@
 import type { CanvasDocument, CanvasNode, ValidationResult } from './types.js'
 
-const validKinds = new Set(['frame', 'group', 'code-component', 'text', 'instance'])
+const validKinds = new Set(['frame', 'group', 'code-component', 'text', 'image', 'shape', 'instance'])
 const validSizing = new Set(['fixed', 'hug', 'fill'])
 const validLayout = new Set(['absolute', 'horizontal', 'vertical'])
 
@@ -17,6 +17,11 @@ function validateNodeShape(node: CanvasNode, errors: string[]) {
   if (node.kind === 'code-component' && !node.source) errors.push(`${node.id}: code component requires a source mapping`)
   if (node.kind === 'text' && (!node.textStyle.fontFamily || node.textStyle.fontSize <= 0 || node.textStyle.lineHeight <= 0)) {
     errors.push(`${node.id}: invalid text style`)
+  }
+  if (node.kind === 'image' && (!node.assetId || !node.alt || node.opacity < 0 || node.opacity > 1)) errors.push(`${node.id}: invalid image properties`)
+  if (node.kind === 'shape' && (!node.fill || node.strokeWidth < 0)) errors.push(`${node.id}: invalid shape properties`)
+  if ((node.kind === 'text' || node.kind === 'image' || node.kind === 'shape' || node.kind === 'instance') && node.childIds.length > 0) {
+    errors.push(`${node.id}: ${node.kind} nodes cannot contain children`)
   }
 }
 

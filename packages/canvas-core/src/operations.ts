@@ -186,7 +186,7 @@ function mutateOperation(next: CanvasDocument, operation: CanvasOperation) {
         const parent = next.nodes[operation.parentId]
         if (!parent) throw new Error(`missing parent ${operation.parentId}`)
         if (parent.locked) throw new Error(`cannot reparent into locked node ${parent.id}`)
-        if (parent.kind === 'instance' || parent.kind === 'text') throw new Error(`cannot reparent into ${parent.kind} node ${parent.id}`)
+        if (parent.kind === 'instance' || parent.kind === 'text' || parent.kind === 'image' || parent.kind === 'shape') throw new Error(`cannot reparent into ${parent.kind} node ${parent.id}`)
         if (hasAncestor(next, parent.id, node.id)) throw new Error(`cannot reparent ${node.id} into its descendant ${parent.id}`)
       }
       removeFromParent(next, node)

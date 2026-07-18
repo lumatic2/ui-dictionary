@@ -77,6 +77,10 @@ AUC1 implementation surfaces:
 - `apps/agent-design-desktop/`: sandboxed Electron main/preload host, custom `app://` renderer protocol, versioned host IPC, and desktop security gates.
 - `apps/agent-design/results/`: repeatable system-Chrome performance, persistence, and pixel evidence.
 
+### Structured Template Production
+
+ADR 0009 adds a narrow production layer above the canonical canvas: `packages/template-core` owns requests, asset manifests, format packs, deterministic compilation, and template validation; browser surfaces consume only validated `CanvasDocument` scenes. Generated images remain replaceable assets, never the editable template source of truth. Contract: `docs/design-system/template-production-system.md`.
+
 ## Project Layout Direction
 
 ```text

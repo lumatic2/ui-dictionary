@@ -1,7 +1,7 @@
 # PLAN — TPS5 생성 소재 경계·통합 실연
 
 > 생성: 2026-07-19 · 갈래: product · scope 결정: 오프라인 이미지 공급자 계약과 세 형식 전 구간 실연까지
-Status: proposed (awaiting run approval)
+Status: approved (2026-07-19)
 
 ## 북극성 → horizon → milestone → step (위계)
 - **북극성**: Askewly Design을 공개 참고 시스템이자 에이전트가 직접 쓰는 구현 시스템으로 만든다. (← `OBJECTIVE.md`)
