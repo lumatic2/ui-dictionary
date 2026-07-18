@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "active_work_id": "SP2",
+  "active_work_id": "SP3",
   "works": {
     "SFB1": {
       "title": "Structure Contract And Clean Production",
@@ -1415,6 +1415,50 @@
       "notes": "Registered atomically by canonical harness approve_harness_plan.py after plan validation.",
       "notified_at": "2026-07-18T16:28:37.746826+00:00",
       "completed": "2026-07-19"
+    },
+    "SP3": {
+      "work_id": "SP3",
+      "horizon_id": "studio-depth",
+      "milestone_id": "SP3",
+      "status": "active",
+      "plan_path": "plans/2026-07-19-sp3-image-pipeline.md",
+      "changeset_path": "changesets/20260719-image-pipeline",
+      "next_step": "step-1",
+      "current_step": "step-1",
+      "steps": [
+        {
+          "id": "step-1",
+          "label": "Step 1 — Pexels 헬퍼 + 실호출 검증 (changeset)",
+          "status": "pending"
+        },
+        {
+          "id": "step-2",
+          "label": "Step 2 — 스튜디오 이미지 그룹 + 계약 배포 (changeset)",
+          "status": "pending"
+        }
+      ],
+      "execution_mode": "continuous",
+      "approval": {
+        "approved_by": "user",
+        "approved_at": "2026-07-19",
+        "plan_sha256": "a6f681ad3607b6d2706bdd0f685e9340ef4cdb30114cab1a50772349b60c01ba"
+      },
+      "allowed_stop_reasons": [
+        "completed",
+        "blocked",
+        "decision_required",
+        "risk_gate",
+        "secret_required",
+        "external_authority_required",
+        "user_stopped"
+      ],
+      "stop_reason": null,
+      "stop_detail": {},
+      "session_ids": [
+        "claude:ab332db5-5327-43b0-9bef-702291fafaee"
+      ],
+      "updated_at": "2026-07-19",
+      "notes": "Registered atomically by canonical harness approve_harness_plan.py after plan validation."
     }
   }
 }
