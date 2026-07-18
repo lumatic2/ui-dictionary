@@ -12,3 +12,4 @@
 
 - 2026-07-17: 파일 생성 (agent-adoption-loop 활성화와 함께). parked monetization을 첫 복귀 후보로 적재.
 - 2026-07-17: vertical-integration 후보 적재 (사용자 발의 — CSS 표현 기법 편입 + 문법/부품 층 수직 통합, toolshelf recall 근거 포함).
+- 2026-07-18: skill-entry horizon은 후보 경유 없이 사용자 발의로 직접 개설 (`2026-07-skill-entry.md` — 진입 경량화 + 사람 확인 게이트, 좁은 boundary horizon).

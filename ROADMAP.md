@@ -1,16 +1,32 @@
 # ROADMAP
 
-> Last updated: 2026-07-17
-> Status: Taste Corpus closed 2026-07-17 (TC1~TC4 전부 완료) — 다음 horizon은 사용자 결정 대기 (`plans/horizons/CANDIDATES.md`)
+> Last updated: 2026-07-18
+> Status: Skill Entry active (진입 경량화 + 사람 확인 게이트 — 사용자 발의 2026-07-18)
 > North star: Build Askewly Design as both a public reference website and an agent-usable implementation system.
 > line budget: <=150
 
 ## Current Horizon
 
-<!-- harness:goal id="taste-corpus" status="completed" -->
-Goal: 최상급 레퍼런스(사용자 큐레이션 5종 정본)를 관찰→원리→판단 diff→자산 갱신 계약으로 소화해 판단 시스템의 상한을 올린다. Details: `plans/horizons/2026-07-taste-corpus.md`.
+<!-- harness:goal id="skill-entry" status="active" -->
+Goal: 에이전트 진입 경로를 전역 규칙에서 `askewly-design` skill로 이전(noise 제거)하고, 진입 프로토콜에 사람 눈 확인 게이트를 추가한다. Details: `plans/horizons/2026-07-skill-entry.md`.
 
 ## Active Milestones
+
+<!-- harness:milestone id="SE1" status="active" priority="P0" -->
+### SE1 — skill 신설 + 프로토콜 사람 게이트 개정
+- DoD: entry-protocol에 스크린샷+사람 확인 게이트가 배포 반영되고, askewly-design skill이 Claude·Codex 양쪽에 배포된다.
+- Evidence: curl entry-protocol.md grep + `~/.claude/skills/askewly-design/SKILL.md`·`~/.codex/skills/askewly-design/SKILL.md` 존재
+- Gap: 자가 판정만으론 상한 보증 없음(사람 눈 부재) + 전역 규칙 진입은 비결정적(AD1 실측)
+- Scale: changesets>=2; surfaces: ui.askewly.com curl, skill 배포처 2곳; capability: 사람 게이트 내장된 skill 진입 경로
+- Status: [ ]
+
+<!-- harness:milestone id="SE2" status="pending" priority="P0" -->
+### SE2 — 전역 규칙 제거 + E2E 검증
+- DoD: 양 전역 파일에서 "디자인 판정" 절 제거(grep 0) + headless E2E로 skill 발화·스크린샷 산출 관측.
+- Evidence: grep 0건 + `evidence/` E2E 로그·스크린샷
+- Gap: 전역 절은 모든 세션에 주입되는 noise — skill 단일 경로로 대체 (사용자 확정: 완전 제거)
+- Scale: changesets>=2; surfaces: 전역 파일 2개, headless Claude/Codex 세션; capability: skill 단일 진입 경로 실증
+- Status: [ ]
 
 ## 유지보수 후보 (milestone 아님)
 
