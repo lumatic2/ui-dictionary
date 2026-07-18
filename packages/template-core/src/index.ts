@@ -1,5 +1,6 @@
 export * from './blueprints/registry.js'
 export * from './compiler.js'
+export * from './catalog.js'
 export * from './fixtures.js'
 export * from './selection.js'
 export * from './signature.js'

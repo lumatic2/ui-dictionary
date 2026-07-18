@@ -23,3 +23,4 @@
 {"actual_changesets": 2, "declared_min": 2, "milestone_id": "TPS1", "ts": "2026-07-19", "verdict": "ok"}
 {"actual_changesets": 2, "declared_min": 2, "milestone_id": "TPS2", "ts": "2026-07-19", "verdict": "ok"}
 {"actual_changesets": 2, "declared_min": 2, "milestone_id": "TPS3", "ts": "2026-07-19", "verdict": "ok"}
+{"actual_changesets": 0, "declared_min": 3, "milestone_id": "TPS4", "ts": "2026-07-19", "verdict": "no-refs"}

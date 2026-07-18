@@ -32,3 +32,14 @@ export const blueprintRegistry: TemplateBlueprint[] = [
     ],
   },
 ]
+
+export const formatPackCatalog: TemplateBlueprint[] = [
+  ...blueprintRegistry,
+  ...blueprintRegistry.map((blueprint) => ({
+    ...structuredClone(blueprint),
+    id: `${blueprint.id}-split`,
+    density: 'compact' as const,
+    priority: 5,
+    slots: blueprint.slots.map((slot) => ({ ...slot, bounds: { ...slot.bounds, x: Math.max(24, slot.bounds.x + 24), width: Math.max(80, slot.bounds.width - 48) } })),
+  })),
+]

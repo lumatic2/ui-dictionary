@@ -154,3 +154,6 @@
 | 152 | 20260719-deterministic-template-compiler | 2026-07-19 | TPS2 step 2: deterministic CanvasDocument compiler + signature | 4/4 | complete |
 | 153 | 20260719-template-studio-renderer | 2026-07-19 | TPS3 step 1: CanvasDocument browser renderer + layers | 4/4 | complete |
 | 154 | 20260719-template-studio-edit-export | 2026-07-19 | TPS3 step 2: text edit + JSON/HTML/SVG export/import | 4/4 | complete |
+| 155 | 20260719-print-format-packs | 2026-07-19 | TPS4 step 1: business-card/poster variants + constraints | 4/4 | complete |
+| 156 | 20260719-infographic-pack | 2026-07-19 | TPS4 step 2: infographic variants + data integrity | 4/4 | complete |
+| 157 | 20260719-template-pack-catalog | 2026-07-19 | TPS4 step 3: 6-blueprint catalog matrix | 4/4 | complete |

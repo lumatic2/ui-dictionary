@@ -1,11 +1,11 @@
-import { blueprintRegistry } from './blueprints/registry.js'
+import { formatPackCatalog } from './blueprints/registry.js'
 import type { TemplateBlueprint, TemplateRequest } from './types.js'
 
 export class BlueprintSelectionError extends Error {
   constructor(public readonly code: 'UNSUPPORTED_FORMAT' | 'NO_COMPATIBLE_BLUEPRINT', message: string) { super(message) }
 }
 
-export function selectBlueprint(request: TemplateRequest, registry: TemplateBlueprint[] = blueprintRegistry): TemplateBlueprint {
+export function selectBlueprint(request: TemplateRequest, registry: TemplateBlueprint[] = formatPackCatalog): TemplateBlueprint {
   const formatCandidates = registry.filter((blueprint) => blueprint.format === request.format)
   if (formatCandidates.length === 0) throw new BlueprintSelectionError('UNSUPPORTED_FORMAT', `no blueprint pack for ${request.format}`)
   const candidates = formatCandidates.filter((blueprint) => blueprint.width === request.width && blueprint.height === request.height)
