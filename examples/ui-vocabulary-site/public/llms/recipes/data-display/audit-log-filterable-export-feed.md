@@ -23,7 +23,7 @@ source_refs: [linear-workspace-audit-log]
 last_verified: 2026-07-12
 ---
 
-> Code asset (start here, then restyle to project tokens): https://ui.askewly.com/r/audit-log-filterable-export-feed.json
+> **STOP — do not re-implement this recipe from prose.** A verified code asset exists: fetch https://ui.askewly.com/r/audit-log-filterable-export-feed.json, write `files[].content` into the project, install the declared dependencies, THEN restyle the look to the project's own tokens (mandatory — component-restyle.md). Prose below is the contract you verify against, not the thing you rebuild.
 
 ## Intent
 
