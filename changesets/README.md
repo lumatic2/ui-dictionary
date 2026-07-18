@@ -139,3 +139,4 @@
 | 137 | 20260719-injection-contract | 2026-07-19 | SF1 step 2: injection contract swap (data-driven, no direct HTML edits) + llms regen | 3/4 | complete |
 | 138 | 20260719-composition-types | 2026-07-19 | SF2 step 1: composition catalog 12 types (4 new hidden-by-default) + preview SEC renderers | 4/4 | complete |
 | 139 | 20260719-booking-patterns | 2026-07-19 | SF2 step 2: booking-widget candidate + contract §3.5 (12-type catalog, conditional exposure, urgency truthfulness) + llms regen | 3/4 | complete |
+| 140 | 20260719-preview-dark | 2026-07-19 | SF3 step 1: preview dark toggle (dark-axis linked, light-only disable) | 3/3 | complete |

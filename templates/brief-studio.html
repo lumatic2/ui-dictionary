@@ -14,8 +14,14 @@ body { font-family: ui-sans-serif, system-ui, sans-serif; background: rgb(248,24
 /* ST2: 폭포(좌) + 스티키 라이브 미리보기(우) — 스크롤을 따라오며 선택마다 조립 */
 .studio-cols { display: grid; grid-template-columns: minmax(0,1fr) 400px; gap: 30px; align-items: start; }
 #preview { position: sticky; top: 16px; border: 1px solid rgba(20,18,14,.12); border-radius: 14px; overflow: hidden; background: #fff; }
-#preview .pv-title { padding: 10px 14px; font-size: 12px; font-weight: 700; letter-spacing: .08em; color: rgba(20,18,14,.5); border-bottom: 1px solid rgba(20,18,14,.08); background: #fff; }
+#preview .pv-title { padding: 10px 14px; font-size: 12px; font-weight: 700; letter-spacing: .08em; color: rgba(20,18,14,.5); border-bottom: 1px solid rgba(20,18,14,.08); background: #fff; display: flex; justify-content: space-between; align-items: center; gap: 8px; }
+/* SF3: 미리보기 뷰 토글 (다크·모바일) */
+.pv-toggles { display: flex; gap: 4px; }
+.pv-toggles button { font: inherit; font-size: 11px; letter-spacing: 0; padding: 3px 9px; border-radius: 5px; border: 1px solid rgba(20,18,14,.18); background: #fff; color: rgba(20,18,14,.65); cursor: pointer; }
+.pv-toggles button[aria-pressed="true"] { background: #1a6b3c; border-color: #1a6b3c; color: #fff; }
+.pv-toggles button:disabled { opacity: .35; cursor: not-allowed; }
 #pv-site { font-size: 10px; line-height: 1.5; word-break: keep-all; }
+#pv-site.pv-m { max-width: 320px; margin: 0 auto; border-left: 1px solid rgba(20,18,14,.12); border-right: 1px solid rgba(20,18,14,.12); }
 @media (max-width: 1080px) { .studio-cols { grid-template-columns: 1fr; } #preview { position: static; order: -1; } }
 h1 { font-size: 26px; letter-spacing: -0.02em; }
 .lead { color: rgba(20,18,14,.58); margin-top: 6px; font-size: 15px; max-width: 70ch; }
@@ -102,7 +108,13 @@ h2 .step { color: #1a6b3c; font-size: 13px; font-weight: 700; margin-right: 8px;
      ② 각 축에서 하나씩 고르고 하단 "선택 완료"를 누르세요. 결정은 프로젝트 DESIGN.md에 저장됩니다.</p>
   <div class="studio-cols">
     <div id="app"></div>
-    <aside id="preview" aria-label="라이브 미리보기"><div class="pv-title">라이브 미리보기 — 고를수록 완성됩니다</div><div id="pv-site"></div></aside>
+    <aside id="preview" aria-label="라이브 미리보기">
+      <div class="pv-title"><span>라이브 미리보기 — 고를수록 완성됩니다</span>
+        <span class="pv-toggles">
+          <button id="pv-dark" type="button" aria-pressed="false" title="미리보기를 다크로 보기">다크</button>
+          <button id="pv-mobile" type="button" aria-pressed="false" title="모바일 폭으로 보기">모바일</button>
+        </span></div>
+      <div id="pv-site"></div></aside>
   </div>
 </div>
 <div class="submit-bar">
@@ -1335,6 +1347,8 @@ const TILES = STUDIO_DATA.tiles;
 const AXES = STUDIO_DATA.axes;
 /* ================= 렌더러 (에이전트 수정 불필요) ================= */
 const sel = {}; let tileSel = null;
+/* SF3: 미리보기 뷰 상태 — 다크·모바일 토글 (축 선택이 아니라 보기 방식) */
+let pvDark = false, pvMobile = false;
 const app = document.getElementById('app');
 const AXIS_BY_ID = Object.fromEntries(AXES.map(a => [a.id, a]));
 function getCand(axisId, value) { const a = AXIS_BY_ID[axisId]; return a ? a.cands.find(c => c.value === value) : null; }
@@ -1504,8 +1518,32 @@ function renderFrom(axisId) {
   }
   attachRich(); renderPreview(); refresh();
 }
-function renderPreview() {
+/* SF3: 다크 뷰 — 다크/접근성 축과 연동. light-only 선택 시 토글 비활성(정의된 동작), dark-first 선택 시 자동 다크. */
+function pvCtx() {
   const C = CTX();
+  if (pvDark) {
+    const darkBase = AXIS_BY_ID.base ? visCands(AXIS_BY_ID.base).filter(c => /dark/.test(c.value)).sort((a, b) => a.rank - b.rank)[0] : null;
+    C.bg = darkBase ? darkBase.bg : 'rgb(24,22,26)';
+    C.ink = darkBase ? darkBase.ink : 'rgba(244,244,248,.95)';
+    C.card = darkBase ? darkBase.card : 'rgb(33,33,39)';
+  }
+  return C;
+}
+function syncPvToggles() {
+  const darkSel = sel.dark;
+  const btnD = document.getElementById('pv-dark'), btnM = document.getElementById('pv-mobile');
+  if (!btnD) return;
+  if (darkSel === 'light-only') { pvDark = false; btnD.disabled = true; btnD.title = '다크 모드 축에서 "라이트만"을 선택했습니다'; }
+  else { btnD.disabled = false; btnD.title = '미리보기를 다크로 보기'; if (darkSel === 'dark-first' && !btnD.dataset.userSet) pvDark = true; }
+  btnD.setAttribute('aria-pressed', String(pvDark));
+  btnM.setAttribute('aria-pressed', String(pvMobile));
+  document.getElementById('pv-site').classList.toggle('pv-m', pvMobile);
+}
+function renderPreview() {
+  syncPvToggles();
+  const C = pvCtx();
+  /* 모바일 뷰: 가로 나열 섹션을 세로 스택으로 */
+  const FX = pvMobile ? 'display:flex;flex-direction:column' : 'display:flex';
   const headerV = ctxVal('header'), footerV = ctxVal('footer');
   const comp = getCand('composition', ctxVal('composition')) || { pv: ['hero','cards','info'] };
   const hl = getCand('headline', ctxVal('headline')) || { text: '헤드라인이 여기에' };
@@ -1530,16 +1568,16 @@ function renderPreview() {
       <div style="font-family:${C.hf};font-weight:${C.hw};font-size:17px;line-height:1.15">${hl.text}</div>
       <div style="opacity:.8;margin-top:4px">${sc.text}</div>${ctaBtns(ctaC.btns)}</div>`,
     minihero: () => `<div style="padding:12px 14px;text-align:center"><div style="font-family:${C.hf};font-weight:${C.hw};font-size:13.5px">${hl.text}</div></div>`,
-    split: () => `<div style="display:flex;gap:10px;padding:14px;align-items:center">
+    split: () => `<div style="${FX};gap:10px;padding:14px;align-items:center">
       <div style="flex:1"><div style="font-family:${C.hf};font-weight:${C.hw};font-size:14px;line-height:1.2">${hl.text}</div><div style="opacity:.7;margin-top:3px">${sc.text}</div>${ctaBtns(ctaC.btns)}</div>
       <div style="flex:1;min-height:64px;border-radius:${Math.min(C.r,8)}px;background:${mediaBg ? mediaBg + ' center/cover' : C.ac + '30'}"></div></div>`,
-    cards: () => `<div style="display:flex;gap:${C.gap}px;padding:${C.gap}px 12px">${[1,2,3].map(card1).join('')}</div>`,
-    info: () => `<div style="display:flex;gap:${C.gap}px;padding:0 12px ${C.gap}px">${['일정','장소','가격'].map(t => `<div style="flex:1;background:${cardBg};border-radius:${Math.min(C.r,8)}px;padding:8px 10px"><div style="opacity:.5;font-size:8.5px;letter-spacing:.1em">${t}</div><b>정보 값</b></div>`).join('')}</div>`,
+    cards: () => `<div style="${FX};gap:${C.gap}px;padding:${C.gap}px 12px">${[1,2,3].map(card1).join('')}</div>`,
+    info: () => `<div style="${FX};gap:${C.gap}px;padding:0 12px ${C.gap}px">${['일정','장소','가격'].map(t => `<div style="flex:1;background:${cardBg};border-radius:${Math.min(C.r,8)}px;padding:8px 10px"><div style="opacity:.5;font-size:8.5px;letter-spacing:.1em">${t}</div><b>정보 값</b></div>`).join('')}</div>`,
     steps: () => `<div style="display:flex;gap:${C.gap}px;padding:${C.gap}px 12px">${[1,2,3].map(n => `<div style="flex:1;text-align:center"><div style="width:18px;height:18px;border-radius:999px;background:${C.ac};color:${acOn(C)};font-weight:700;display:grid;place-items:center;margin:0 auto 4px">${n}</div><div style="opacity:.65">단계 ${n}</div></div>`).join('')}</div>`,
     quote: () => `<div style="margin:${C.gap}px 12px;padding:10px 12px;background:${cardBg};border-radius:${Math.min(C.r,8)}px"><span style="color:${C.ac};font-weight:700">“</span>실제 사용 후기가 이 자리에 — 별점과 함께.<div style="opacity:.5;margin-top:3px">— 이용자 이름</div></div>`,
     gallery: () => `<div style="display:grid;grid-template-columns:1fr 1fr;gap:6px;padding:${C.gap}px 12px">${[0,1,2,3].map(n => `<div style="height:34px;border-radius:${Math.min(C.r,6)}px;background:${mediaBg ? mediaBg + ' center/cover' : C.ac + (25 + n * 12)}"></div>`).join('')}</div>`,
-    story: () => `<div style="display:flex;gap:10px;padding:${C.gap}px 12px;align-items:center"><div style="flex:.8;min-height:44px;border-radius:${Math.min(C.r,8)}px;background:${mediaBg ? mediaBg + ' center/cover' : C.ac + '28'}"></div><div style="flex:1.2"><b style="font-family:${C.hf}">이야기 섹션</b><div style="opacity:.6">서사가 흐르는 본문 두 줄이 이 자리에 들어갑니다.</div></div></div>`,
-    story2: () => `<div style="display:flex;gap:10px;padding:0 12px ${C.gap}px;align-items:center"><div style="flex:1.2"><b style="font-family:${C.hf}">이어지는 장</b><div style="opacity:.6">순서를 뒤집어 리듬을 만듭니다.</div></div><div style="flex:.8;min-height:44px;border-radius:${Math.min(C.r,8)}px;background:${C.ac}22"></div></div>`,
+    story: () => `<div style="${FX};gap:10px;padding:${C.gap}px 12px;align-items:center"><div style="flex:.8;min-height:44px;border-radius:${Math.min(C.r,8)}px;background:${mediaBg ? mediaBg + ' center/cover' : C.ac + '28'}"></div><div style="flex:1.2"><b style="font-family:${C.hf}">이야기 섹션</b><div style="opacity:.6">서사가 흐르는 본문 두 줄이 이 자리에 들어갑니다.</div></div></div>`,
+    story2: () => `<div style="${FX};gap:10px;padding:0 12px ${C.gap}px;align-items:center"><div style="flex:1.2"><b style="font-family:${C.hf}">이어지는 장</b><div style="opacity:.6">순서를 뒤집어 리듬을 만듭니다.</div></div><div style="flex:.8;min-height:44px;border-radius:${Math.min(C.r,8)}px;background:${C.ac}22"></div></div>`,
     faq: () => `<div style="padding:0 12px ${C.gap}px">${['자주 묻는 질문 하나','환불은 어떻게 하나요'].map(q => `<div style="border-bottom:1px solid rgba(127,127,127,.25);padding:6px 0;display:flex;justify-content:space-between"><span>${q}</span><span style="color:${C.ac}">+</span></div>`).join('')}</div>`,
     cta: () => `<div style="margin:${C.gap}px 12px;padding:12px;border-radius:${Math.min(C.r,10)}px;background:${C.ac};color:${acOn(C)};text-align:center;font-weight:700">지금 시작하기</div>`,
     /* SF2: 구성 4유형 + 예약형 섹션 */
@@ -1548,7 +1586,7 @@ function renderPreview() {
       ${['핵심 기능','가격','지원'].map(t => `<div style="display:flex;border-top:1px solid rgba(127,127,127,.18)"><div style="flex:1.2;padding:5px 8px;opacity:.7">${t}</div><div style="flex:1;padding:5px 8px;color:${C.ac};font-weight:700">✓</div><div style="flex:1;padding:5px 8px;opacity:.4">—</div></div>`).join('')}</div>`,
     problem: () => `<div style="margin:${C.gap}px 12px;padding:10px 12px;background:${cardBg};border-left:3px solid ${C.ac};border-radius:${Math.min(C.r,6)}px"><b>겪고 있는 문제를 먼저 명명합니다</b><div style="opacity:.6;margin-top:3px">왜 지금 방식이 안 되는지 짚는 문단.</div></div>`,
     mech: () => `<div style="display:flex;gap:${C.gap}px;padding:${C.gap}px 12px;align-items:center">${['원인','작동 원리','달라지는 점'].map((t,i) => `<div style="flex:1;text-align:center"><div style="height:26px;border-radius:${Math.min(C.r,6)}px;background:${C.ac}${22 + i * 11};display:grid;place-items:center;font-weight:700">${i+1}</div><div style="opacity:.65;margin-top:3px">${t}</div></div>`).join('')}</div>`,
-    ugc: () => `<div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:6px;padding:${C.gap}px 12px">${[0,1,2,3,4,5].map(n => `<div style="border-radius:${Math.min(C.r,6)}px;background:${cardBg};padding:6px"><div style="height:22px;border-radius:${Math.min(C.r,4)}px;background:${C.ac}${20 + (n % 3) * 14}"></div><div style="opacity:.55;margin-top:3px;font-size:8px">@사용자${n+1}</div></div>`).join('')}</div>`,
+    ugc: () => `<div style="display:grid;grid-template-columns:${pvMobile ? '1fr 1fr' : '1fr 1fr 1fr'};gap:6px;padding:${C.gap}px 12px">${[0,1,2,3,4,5].map(n => `<div style="border-radius:${Math.min(C.r,6)}px;background:${cardBg};padding:6px"><div style="height:22px;border-radius:${Math.min(C.r,4)}px;background:${C.ac}${20 + (n % 3) * 14}"></div><div style="opacity:.55;margin-top:3px;font-size:8px">@사용자${n+1}</div></div>`).join('')}</div>`,
     guarantee: () => `<div style="margin:${C.gap}px 12px;padding:9px 12px;border:1.5px dashed ${C.ac};border-radius:${Math.min(C.r,8)}px;display:flex;gap:8px;align-items:center"><span style="color:${C.ac};font-weight:700">✓</span><span><b>보증·환불 정책</b> <span style="opacity:.6">— 걱정 없이 시작할 수 있는 이유</span></span></div>`,
     bookhero: () => `<div style="${mediaBg ? `background:${mediaBg} center/cover;` : `background:${C.ac}22;`}padding:${16 + C.gap}px 14px;text-align:center;${onMedia}">
       <div style="font-family:${C.hf};font-weight:${C.hw};font-size:15px;line-height:1.15">${hl.text}</div>
@@ -1616,6 +1654,10 @@ function refresh() {
   document.getElementById('status').textContent = `${n} / ${AXES.length} 축 선택됨${tileSel ? ' · 타일: ' + TILES.find(t => t.value === tileSel).name : ''}`;
   document.getElementById('send').disabled = n < AXES.length;
 }
+document.getElementById('pv-dark').addEventListener('click', e => {
+  pvDark = !pvDark; e.currentTarget.dataset.userSet = '1'; renderPreview();
+});
+document.getElementById('pv-mobile').addEventListener('click', () => { pvMobile = !pvMobile; renderPreview(); });
 document.getElementById('send').addEventListener('click', async () => {
   const payload = { version: 2, tile: tileSel, selections: sel, submittedAt: new Date().toISOString() };
   try {
