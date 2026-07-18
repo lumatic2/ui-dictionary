@@ -1,16 +1,51 @@
 # ROADMAP
 
 > Last updated: 2026-07-18
-> Status: Visual Brief closed 2026-07-19 (VB1~VB4 완료) — 다음 horizon은 사용자 결정 대기 (`plans/horizons/CANDIDATES.md`)
+> Status: Studio Depth active (결정 공간 전면 확장 — 사용자 발의·리서치 기반 2026-07-19)
 > North star: Build Askewly Design as both a public reference website and an agent-usable implementation system.
 > line budget: <=150
 
 ## Current Horizon
 
-<!-- harness:goal id="visual-brief" status="completed" -->
+<!-- harness:goal id="studio-depth" status="active" -->
+Goal: 브리프 스튜디오를 시니어 디자이너의 결정 공간 전체로 확장한다 — 스타일 타일 2단 구조·축 14종·후보 6~8 추천순·실사 이미지(Pexels+생성). Details: `plans/horizons/2026-07-studio-depth.md`.
+
+<!-- harness:goal-archive id="visual-brief" status="completed" -->
 Goal: 브리프 선택을 실물 보기(폰트·컬러·인터랙션 스튜디오)로 올리고, 결과물 크롬 상시 표시 게이트와 Stitch 양식 정합, 딥 브리프 선택 모드를 더한다. Details: `plans/horizons/2026-07-visual-brief.md`.
 
 ## Active Milestones
+
+<!-- harness:milestone id="SP1" status="active" priority="P0" -->
+### SP1 — 브리프 v2 계약 (결정 공간 지도)
+- DoD: design-brief v2(전략층 4항목·축 14종·2단 구조·딥 부록 흡수) + brief-studio 계약 v2가 llms 배포된다.
+- Evidence: changesets/20260719-brief-v2/README.md, curl 양 문서
+- Gap: 현 브리프는 결정 공간의 소부분 — 사용자 적발 + 리서치로 지도 확보
+- Scale: changesets>=2; surfaces: ui.askewly.com curl; capability: 결정 공간 지도 계약
+- Status: [ ]
+
+<!-- harness:milestone id="SP2" status="pending" priority="P0" -->
+### SP2 — 스튜디오 v2 (2단 구조 + 축 14종)
+- DoD: 타일→세부 재정렬→수집 v2 실구동 + 강제필터 금지·reduced-motion 실패 경로 확인.
+- Evidence: changesets/20260719-studio-v2/README.md, evidence/studio-depth/
+- Gap: 3그룹×3~4후보는 최소 실증판 — 사용자 "선택지 적다"
+- Scale: changesets>=2; surfaces: 로컬 스튜디오 실구동; capability: 전체 축 실물 선택
+- Status: [ ]
+
+<!-- harness:milestone id="SP3" status="pending" priority="P0" -->
+### SP3 — 이미지 파이프라인 (Pexels + 생성 옵션)
+- DoD: Pexels 실호출 후보 수신 + 스튜디오 실사 썸네일 그룹 + 계약 배포. 키 부재 명시 에러.
+- Evidence: changesets/20260719-image-pipeline/README.md
+- Gap: 플레이스홀더 사진 자리 — 실사·생성 경로 부재 (사용자 지적)
+- Scale: changesets>=2; surfaces: Pexels API, 로컬 스튜디오, ui.askewly.com; capability: 실사 이미지 축
+- Status: [ ]
+
+<!-- harness:milestone id="SP4" status="pending" priority="P1" -->
+### SP4 — 통합 E2E 실연
+- DoD: 실의뢰 1건 전 루프(전략층→타일→축→실사→DESIGN.md v2→구현→실물 게이트) 관측 + 갭 정직 기록 → horizon close.
+- Evidence: evidence/studio-depth/ 실연 산출
+- Gap: 확장이 실사용감으로 검증돼야 close (SE2 교훈)
+- Scale: changesets>=2; surfaces: 대화형 실연; capability: v2 루프 실증
+- Status: [ ]
 
 <!-- harness:milestone id="VB1" status="completed" priority="P0" evidence="changesets/20260719-stitch-alignment/README.md, research/2026-07-19-vb1-stitch-design-md.md" -->
 ### VB1 — Stitch 양식 리서치·정합
