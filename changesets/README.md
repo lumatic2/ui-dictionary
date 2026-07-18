@@ -131,3 +131,5 @@
 | 129 | 20260717-taste-dribbble-absorb | 2026-07-17 | TC3 Step 2: cluster 16 (concept-dashboard inertia) + stat-grid single-accent check, deployed | 3/3 | complete |
 | 130 | 20260717-canonical-principles | 2026-07-17 | TC4 Step 1: HIG/M3/Polaris canonical principles sourced (5 entries, official docs only) | 2/2 | complete |
 | 131 | 20260717-canonical-diff-absorb | 2026-07-17 | TC4 Step 2: 3 adopted (typeface restraint, motion-scale proportionality, verb-first labels) + 2 rejected with reasons, deployed | 3/3 | complete |
+| 132 | 20260718-entry-protocol-human-gate | 2026-07-18 | SE1 Step 1: human verification gate in entry-protocol (screenshots + no completion claim before human confirms), deployed | 3/3 | complete |
+| 133 | 20260718-askewly-design-skill | 2026-07-18 | SE1 Step 2: askewly-design entry skill (thin router, Claude+Codex deploy) — replaces global design-routing section | 3/3 | complete |
