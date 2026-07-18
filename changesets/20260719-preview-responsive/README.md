@@ -21,4 +21,4 @@
 - [x] 조합 매트릭스 12조합(구성 3 × 다크 2 × 뷰포트 2) 렌더·오버플로 실측 — fails 0
 - [x] Failure probe: 모바일 폭 오버플로 0건 (scrollWidth ≤ clientWidth 전 조합)
 - [x] 통합 루프: 커스텀 데이터 → 생성 → 18/18 선택 → 수집 JSON 파싱 (Close Criteria ④)
-- [ ] curl 배포 확인 (세션 push 후)
+- [x] curl 배포 확인 — "미리보기 뷰 토글" grep 1건 (2026-07-19 push 후 실측)

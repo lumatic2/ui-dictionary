@@ -20,4 +20,4 @@
 - [x] 구 지시 grep 0 — `AGENT: 주석 | AGENT DATA | 주석 지점에서 후보` docs·llms 사본 0건 (프리모템 1 예방)
 - [x] llms 재생성 60 assets + 사본 diff에 신규 절차 포함
 - [x] 커스텀 데이터 E2E (스튜디오 생성→렌더 관측 — `evidence/studio-finish/sf1-injection-e2e.md`)
-- [ ] curl 배포 확인 (세션 push 후 — `curl .../brief-studio.md | grep make-studio.py`)
+- [x] curl 배포 확인 — make-studio.py 4건 grep (2026-07-19 push 후 실측)

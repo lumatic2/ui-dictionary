@@ -23,4 +23,4 @@
 - [x] 예약 업종 데이터 → booking-widget 노출(9종) + 위젯 히어로·잔여 슬롯 미리보기 렌더 (Playwright)
 - [x] 비예약 기본 데이터 → booking-widget 비노출(8종) — 조건 노출 경계 (failure probe)
 - [x] llms 재생성 — 사본에 예약형 절 grep 2건
-- [ ] curl 배포 확인 (세션 push 후)
+- [x] curl 배포 확인 — "예약/티켓형 특수 패턴" grep 1건 (2026-07-19 push 후 실측)

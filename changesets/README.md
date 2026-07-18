@@ -136,8 +136,8 @@
 | 134 | 20260718-global-routing-removal | 2026-07-18 | SE2 Step 1: global design-routing sections removed from ~/.claude/CLAUDE.md and ~/.codex/AGENTS.md (user-confirmed full removal, rollback text preserved) | 3/3 | complete |
 | 135 | 20260718-skill-entry-e2e | 2026-07-18 | SE2 Step 2: E2E — Claude attempt1 FAIL -> description hardened -> Claude PASS + Codex PASS (skill fired, protocol fetched, screenshots produced) | 4/4 | complete |
 | 136 | 20260719-studio-data-injection | 2026-07-19 | SF1 step 1: studio data JSON + make-studio.py generator (no more direct HTML edits) | 4/4 | complete |
-| 137 | 20260719-injection-contract | 2026-07-19 | SF1 step 2: injection contract swap (data-driven, no direct HTML edits) + llms regen | 3/4 | complete |
+| 137 | 20260719-injection-contract | 2026-07-19 | SF1 step 2: injection contract swap (data-driven, no direct HTML edits) + llms regen | 4/4 | complete |
 | 138 | 20260719-composition-types | 2026-07-19 | SF2 step 1: composition catalog 12 types (4 new hidden-by-default) + preview SEC renderers | 4/4 | complete |
-| 139 | 20260719-booking-patterns | 2026-07-19 | SF2 step 2: booking-widget candidate + contract §3.5 (12-type catalog, conditional exposure, urgency truthfulness) + llms regen | 3/4 | complete |
+| 139 | 20260719-booking-patterns | 2026-07-19 | SF2 step 2: booking-widget candidate + contract §3.5 (12-type catalog, conditional exposure, urgency truthfulness) + llms regen | 4/4 | complete |
 | 140 | 20260719-preview-dark | 2026-07-19 | SF3 step 1: preview dark toggle (dark-axis linked, light-only disable) | 3/3 | complete |
-| 141 | 20260719-preview-responsive | 2026-07-19 | SF3 step 2: mobile viewport toggle + 12-combo matrix E2E + integrated loop | 3/4 | complete |
+| 141 | 20260719-preview-responsive | 2026-07-19 | SF3 step 2: mobile viewport toggle + 12-combo matrix E2E + integrated loop | 4/4 | complete |
