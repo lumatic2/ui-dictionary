@@ -1,6 +1,6 @@
 # Agent Entry Protocol
 
-Date: 2026-07-17 (realigned — judgment-first, gap ③④ from dogfooding DF-2/DF-3)
+Date: 2026-07-18 (human verification gate added — self-judgment is the floor, human eyes are the final gate)
 
 Operational contract for coding agents (Claude Code, Codex): **Askewly Design injects design judgment, not a style.** When you receive a design or UI task, consult this system for *what good looks like* — pattern recipes, failure modes, and the quality bar — while the visual identity (palette, radius, type) stays owned by the project you are working in. Fetching this system must never make different projects converge on one look.
 
@@ -13,6 +13,7 @@ Index of all assets: `https://ui.askewly.com/llms.txt` (raw URLs; link-only, val
 2. Fetch [docs/design-system/anti-patterns.md](https://ui.askewly.com/llms/docs/design-system/anti-patterns.md) — the generic-AI-output failure modes to avoid.
 3. **Self-judgment is a mandatory step, not a suggestion — no runtime hook will remind you; this document is the only place the obligation lives.** Fetch [docs/design-system/style-signature.md](https://ui.askewly.com/llms/docs/design-system/style-signature.md) and judge your finished output against it *before* reporting: all 5 operating principles met + 0 hard-fail dislikes. Include the per-principle judgment in your report; a report without it is incomplete. (Dogfooding DF-1/DF-2: workers skipped this step 2 out of 2 times — do not be the third.)
 4. Close the loop with verification: interaction states complete (hover/focus/active/disabled/loading/error), dark mode holds, WCAG contrast passes. The website's Getting set up page describes the same loop for humans: Explore → Acquire → Inject → Verify.
+5. **Human verification is the final gate — self-judgment (step 3) is only the floor, not the ceiling.** Capture screenshots of the finished result (light and dark at minimum, plus key interaction/empty/error states where relevant) and attach the file paths or images to your report. Then wait: do not declare the work complete, and do not deploy, until the user has looked at the screenshots and confirmed. "Passed the signature" and "actually looks good" are different claims — only human eyes settle the second one.
 
 ## By task type
 
