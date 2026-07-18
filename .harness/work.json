@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "active_work_id": "RC1",
+  "active_work_id": "RC2",
   "works": {
     "SFB1": {
       "title": "Structure Contract And Clean Production",
@@ -1830,21 +1830,21 @@
       "work_id": "RC1",
       "horizon_id": "recipe-code-reuse",
       "milestone_id": "RC1",
-      "status": "active",
+      "status": "completed",
       "plan_path": "plans/2026-07-19-rc1-registry-pipeline.md",
       "changeset_path": "changesets/20260719-registry-pipeline",
-      "next_step": "step-1",
-      "current_step": "step-1",
+      "next_step": null,
+      "current_step": null,
       "steps": [
         {
           "id": "step-1",
           "label": "Step 1 — 실사·선별 + 생성기 + registry 빌드 (changeset)",
-          "status": "pending"
+          "status": "completed"
         },
         {
           "id": "step-2",
           "label": "Step 2 — 이식 실구동 + llms 배선 (changeset)",
-          "status": "pending"
+          "status": "completed"
         }
       ],
       "execution_mode": "continuous",
@@ -1852,6 +1852,52 @@
         "approved_by": "user",
         "approved_at": "2026-07-19",
         "plan_sha256": "9e10e13877e9e69ccfcf75b115d248017e028f565da7f650972dcd58abdfaa73"
+      },
+      "allowed_stop_reasons": [
+        "completed",
+        "blocked",
+        "decision_required",
+        "risk_gate",
+        "secret_required",
+        "external_authority_required",
+        "user_stopped"
+      ],
+      "stop_reason": null,
+      "stop_detail": {},
+      "session_ids": [
+        "claude:614621c7-09d1-4681-a401-e42324fd8701"
+      ],
+      "updated_at": "2026-07-19",
+      "notes": "Registered atomically by canonical harness approve_harness_plan.py after plan validation. Step 1 reverified 2026-07-19: registry 27/27, site build PASS, purity gate present.",
+      "completion_summary": "사이트의 검증된 레시피 구현 27종이 표준 registry 코드 자산으로 빌드되고, 순수성 게이트가 사이트 결합 코드를 차단하며, 깨끗한 새 프로젝트에 JSON만으로 이식해 실구동됨을 확인했습니다",
+      "completed": "2026-07-19"
+    },
+    "RC2": {
+      "work_id": "RC2",
+      "horizon_id": "recipe-code-reuse",
+      "milestone_id": "RC2",
+      "status": "active",
+      "plan_path": "plans/2026-07-19-rc2-code-first-contract.md",
+      "changeset_path": "changesets/20260719-code-first-contract",
+      "next_step": "step-1",
+      "current_step": "step-1",
+      "steps": [
+        {
+          "id": "step-1",
+          "label": "Step 1 — 계약 명문 + 배포 (changeset)",
+          "status": "pending"
+        },
+        {
+          "id": "step-2",
+          "label": "Step 2 — 에이전트 E2E (changeset)",
+          "status": "pending"
+        }
+      ],
+      "execution_mode": "continuous",
+      "approval": {
+        "approved_by": "user",
+        "approved_at": "2026-07-19",
+        "plan_sha256": "bdd1d35d2c4713dfb84f04463f2ed10caa55bf6322f68b92a933f71867809f3a"
       },
       "allowed_stop_reasons": [
         "completed",
