@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "active_work_id": "DB1",
+  "active_work_id": "DB2",
   "works": {
     "SFB1": {
       "title": "Structure Contract And Clean Production",
@@ -1048,21 +1048,21 @@
       "work_id": "DB1",
       "horizon_id": "design-brief",
       "milestone_id": "DB1",
-      "status": "active",
+      "status": "completed",
       "plan_path": "plans/2026-07-18-db1-brief-contract.md",
       "changeset_path": "changesets/20260718-design-brief-contract",
-      "next_step": "step-1",
-      "current_step": "step-1",
+      "next_step": null,
+      "current_step": null,
       "steps": [
         {
           "id": "step-1",
           "label": "Step 1 — design-brief.md 작성 (changeset)",
-          "status": "pending"
+          "status": "completed"
         },
         {
           "id": "step-2",
           "label": "Step 2 — entry-protocol 배선 + llms 배포 (changeset)",
-          "status": "pending"
+          "status": "completed"
         }
       ],
       "execution_mode": "continuous",
@@ -1070,6 +1070,52 @@
         "approved_by": "user",
         "approved_at": "2026-07-18",
         "plan_sha256": "efff5b1c9b67099c69ca19adca35456e31cec09852c795ff722b0221ee236cb3"
+      },
+      "allowed_stop_reasons": [
+        "completed",
+        "blocked",
+        "decision_required",
+        "risk_gate",
+        "secret_required",
+        "external_authority_required",
+        "user_stopped"
+      ],
+      "stop_reason": "completed",
+      "stop_detail": {},
+      "session_ids": [
+        "claude:ab332db5-5327-43b0-9bef-702291fafaee"
+      ],
+      "updated_at": "2026-07-18",
+      "notes": "Registered atomically by canonical harness approve_harness_plan.py after plan validation.",
+      "notified_at": "2026-07-18T14:49:58.971049+00:00",
+      "completed": "2026-07-18"
+    },
+    "DB2": {
+      "work_id": "DB2",
+      "horizon_id": "design-brief",
+      "milestone_id": "DB2",
+      "status": "active",
+      "plan_path": "plans/2026-07-18-db2-skill-e2e.md",
+      "changeset_path": "changesets/20260718-brief-skill-e2e",
+      "next_step": "step-1",
+      "current_step": "step-1",
+      "steps": [
+        {
+          "id": "step-1",
+          "label": "Step 1 — skill 브리프 단계 반영 + 배포 (changeset)",
+          "status": "pending"
+        },
+        {
+          "id": "step-2",
+          "label": "Step 2 — E2E 3종 (changeset)",
+          "status": "pending"
+        }
+      ],
+      "execution_mode": "continuous",
+      "approval": {
+        "approved_by": "user",
+        "approved_at": "2026-07-18",
+        "plan_sha256": "5667baf143ebbdf22897eab3992a55f4573f13f85f71a2d87a63bd67cd7d7854"
       },
       "allowed_stop_reasons": [
         "completed",
