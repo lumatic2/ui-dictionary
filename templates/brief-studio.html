@@ -10,7 +10,13 @@
 <style>
 * { box-sizing: border-box; margin: 0; }
 body { font-family: ui-sans-serif, system-ui, sans-serif; background: rgb(248,248,246); color: rgba(20,18,14,.95); line-height: 1.6; word-break: keep-all; }
-.wrap { max-width: 1120px; margin: 0 auto; padding: 32px 24px 110px; }
+.wrap { max-width: 1440px; margin: 0 auto; padding: 32px 24px 110px; }
+/* ST2: 폭포(좌) + 스티키 라이브 미리보기(우) — 스크롤을 따라오며 선택마다 조립 */
+.studio-cols { display: grid; grid-template-columns: minmax(0,1fr) 400px; gap: 30px; align-items: start; }
+#preview { position: sticky; top: 16px; border: 1px solid rgba(20,18,14,.12); border-radius: 14px; overflow: hidden; background: #fff; }
+#preview .pv-title { padding: 10px 14px; font-size: 12px; font-weight: 700; letter-spacing: .08em; color: rgba(20,18,14,.5); border-bottom: 1px solid rgba(20,18,14,.08); background: #fff; }
+#pv-site { font-size: 10px; line-height: 1.5; word-break: keep-all; }
+@media (max-width: 1080px) { .studio-cols { grid-template-columns: 1fr; } #preview { position: static; order: -1; } }
 h1 { font-size: 26px; letter-spacing: -0.02em; }
 .lead { color: rgba(20,18,14,.58); margin-top: 6px; font-size: 15px; max-width: 70ch; }
 h2 { font-size: 19px; margin: 46px 0 2px; }
@@ -81,7 +87,10 @@ h2 .step { color: #1a6b3c; font-size: 13px; font-weight: 700; margin-right: 8px;
   <h1>Brief Studio <span style="color:#1a6b3c">v2</span></h1>
   <p class="lead">① 먼저 방향 타일을 하나 고르면 아래 후보들이 그 방향 추천순으로 재정렬됩니다 (다른 조합도 자유롭게 선택 가능).
      ② 각 축에서 하나씩 고르고 하단 "선택 완료"를 누르세요. 결정은 프로젝트 DESIGN.md에 저장됩니다.</p>
-  <div id="app"></div>
+  <div class="studio-cols">
+    <div id="app"></div>
+    <aside id="preview" aria-label="라이브 미리보기"><div class="pv-title">라이브 미리보기 — 고를수록 완성됩니다</div><div id="pv-site"></div></aside>
+  </div>
 </div>
 <div class="submit-bar">
   <span class="status" id="status"></span>
@@ -226,75 +235,105 @@ const AXES = [
 /* ================= 렌더러 (에이전트 수정 불필요) ================= */
 const sel = {}; let tileSel = null;
 const app = document.getElementById('app');
-function wireRow(code) {
+const AXIS_BY_ID = Object.fromEntries(AXES.map(a => [a.id, a]));
+function getCand(axisId, value) { const a = AXIS_BY_ID[axisId]; return a ? a.cands.find(c => c.value === value) : null; }
+function effRank(axis, c) {
+  if (tileSel) { const t = TILES.find(t => t.value === tileSel); if (t && t.boost && t.boost[axis.id] === c.value) return 0; }
+  return c.rank;
+}
+/* ctx: "지금까지의 선택" — 안 고른 축은 (타일 부스트 →) 추천 1순위. 캐스케이드의 심장. */
+function ctxVal(axisId) {
+  if (sel[axisId]) return sel[axisId];
+  const a = AXIS_BY_ID[axisId]; if (!a) return null;
+  return [...a.cands].sort((x, y) => effRank(a, x) - effRank(a, y))[0].value;
+}
+function CTX() {
+  const base = getCand('base', ctxVal('base')) || {};
+  const accent = getCand('accent', ctxVal('accent')) || {};
+  const typo = getCand('typo', ctxVal('typo')) || {};
+  const radius = getCand('radius', ctxVal('radius')) || { r: 4 };
+  const density = ctxVal('density');
+  return { bg: base.bg || '#faf8f4', ink: base.ink || 'rgba(28,23,16,.95)', card: base.card || '#fff',
+           ac: accent.ac || '#5a5248', hf: typo.hf || 'inherit', hw: typo.hw || 700, bf: typo.bf || 'inherit',
+           r: radius.r ?? 4, gap: density === 'airy' ? 18 : density === 'compact' ? 8 : density === 'dense' ? 5 : 12 };
+}
+function acOn(C) { return /^rgb\(2[0-4]|^rgb\(1|^#[0-4]/.test(C.ac) ? '#fff' : (C.ac === '#F2EFE8' ? '#1a1a1a' : '#fff'); }
+function wireRow(code, C) {
   const d = document.createElement('div');
+  const inkBar = 'rgba(127,127,127,.35)';
+  const A = C ? C.ac : '#1a6b3c';
+  const bar = (st) => `<i style="${st};background:${inkBar}"></i>`;
   if (code.startsWith('hd:')) { d.className = 'wire'; const k = code.slice(3);
-    const map = { cta: '<div class="w-row"><i style="width:36px;height:8px;flex:none"></i><i style="height:8px"></i><i class="w-accent" style="width:34px;height:8px;flex:none"></i></div>',
-      links: '<div class="w-row"><i style="width:36px;height:8px;flex:none"></i><i style="height:8px"></i></div>',
-      logo: '<div class="w-row"><i style="width:36px;height:8px;flex:none"></i></div>',
-      center: '<div class="w-row"><i style="height:8px"></i><i style="width:36px;height:10px;flex:none"></i><i style="height:8px"></i></div>',
-      thin: '<div class="w-row"><i style="height:5px"></i></div>',
-      burger: '<div class="w-row"><i style="width:36px;height:8px;flex:none"></i><i style="height:8px;visibility:hidden"></i><i style="width:14px;height:8px;flex:none"></i></div>' };
+    const map = { cta: `<div class="w-row">${bar('width:36px;height:8px;flex:none')}${bar('height:8px')}<i style="width:34px;height:8px;flex:none;background:${A}"></i></div>`,
+      links: `<div class="w-row">${bar('width:36px;height:8px;flex:none')}${bar('height:8px')}</div>`,
+      logo: `<div class="w-row">${bar('width:36px;height:8px;flex:none')}</div>`,
+      center: `<div class="w-row">${bar('height:8px')}${bar('width:36px;height:10px;flex:none')}${bar('height:8px')}</div>`,
+      thin: `<div class="w-row">${bar('height:5px')}</div>`,
+      burger: `<div class="w-row">${bar('width:36px;height:8px;flex:none')}<i style="height:8px;visibility:hidden"></i>${bar('width:14px;height:8px;flex:none')}</div>` };
     d.innerHTML = map[k]; return d; }
-  if (code === 'nb') { d.className = 'wire'; d.innerHTML = '<div class="w-row"><i style="height:12px"></i><i class="w-accent" style="width:30%;height:12px;flex:none"></i></div>'; return d; }
+  if (code === 'nb') { d.className = 'wire'; d.innerHTML = `<div class="w-row">${bar('height:12px')}<i style="width:30%;height:12px;flex:none;background:${A}"></i></div>`; return d; }
   d.className = 'wire';
-  if (code.startsWith('h')) d.innerHTML = `<i style="height:${code.slice(1)}px"></i>`;
-  else if (code.startsWith('sp')) d.innerHTML = `<div class="w-row"><i style="height:${code.slice(2)}px"></i><i class="w-accent" style="height:${code.slice(2)}px"></i></div>`;
-  else if (code.startsWith('sb')) d.innerHTML = `<div class="w-row"><i class="w-accent" style="height:${code.slice(2)}px;flex:.6"></i><i style="height:${code.slice(2)}px"></i></div>`;
-  else if (code.startsWith('r:')) d.innerHTML = `<div class="w-row">${'<i style="height:16px"></i>'.repeat(+code.slice(2))}</div>`;
-  else if (code.startsWith('b')) d.innerHTML = `<i style="height:${code.slice(1)}px;opacity:.5"></i>`;
+  if (code.startsWith('sp')) d.innerHTML = `<div class="w-row">${bar('height:'+code.slice(2)+'px')}<i style="height:${code.slice(2)}px;flex:1;background:${A};opacity:.55"></i></div>`;
+  else if (code.startsWith('sb')) d.innerHTML = `<div class="w-row"><i style="height:${code.slice(2)}px;flex:.6;background:${A};opacity:.55"></i>${bar('height:'+code.slice(2)+'px')}</div>`;
+  else if (code.startsWith('h')) d.innerHTML = bar(`height:${code.slice(1)}px`);
+  else if (code.startsWith('r:')) d.innerHTML = `<div class="w-row">${bar('height:16px').repeat(+code.slice(2))}</div>`;
+  else if (code.startsWith('b')) d.innerHTML = bar(`height:${code.slice(1)}px;opacity:.5`);
   return d;
 }
-function candBody(axis, c) {
+function candBody(axis, c, C) {
   const b = document.createElement('div'); b.className = 'body-slot';
   if (axis.type === 'mini') {
     b.classList.add('mini');
-    b.style.background = c.bg || 'rgb(250,248,244)'; b.style.color = c.ink || 'rgba(28,23,16,.95)';
-    if (axis.id === 'accent') { b.style.background = 'rgb(250,249,246)'; b.style.color = 'rgba(24,22,18,.95)'; }
-    if (axis.id === 'imagery') { b.style.minHeight = '96px'; b.title = c.label; return b; }
-    b.innerHTML = `<div class="m-title">화면 제목</div><div class="m-sub">보조 설명 텍스트</div>
-      <span class="m-btn" style="background:${c.ac || '#5a5248'};color:#fff">주요 버튼</span>
-      ${c.card ? `<div class="m-card" style="background:${c.card}">카드 위 콘텐츠</div>` : ''}`;
+    if (axis.id === 'base' || axis.id === 'dark') { b.style.background = c.bg || C.bg; b.style.color = c.ink || C.ink; }
+    else if (axis.id === 'imagery') { b.style.background = c.bg; b.style.minHeight = '150px'; b.title = c.label; return b; }
+    else { b.style.background = C.bg; b.style.color = C.ink; }  // 캐스케이드: 선택된 베이스 위에서 렌더
+    const ac = axis.id === 'accent' ? c.ac : C.ac;
+    b.innerHTML = `<div class="m-title" style="font-family:${C.hf}">화면 제목</div><div class="m-sub">보조 설명 텍스트</div>
+      <span class="m-btn" style="background:${ac};color:${acOn({ac})};border-radius:${C.r}px;font-family:${C.bf}">주요 버튼</span>
+      <div class="m-card" style="background:${(axis.id==='base'||axis.id==='dark') ? (c.card||C.card) : C.card};border-radius:${C.r}px">카드 위 콘텐츠</div>`;
   } else if (axis.type === 'spec') {
-    b.classList.add('spec');
+    b.classList.add('spec'); b.style.background = C.bg; b.style.color = C.ink;
     b.innerHTML = `<div class="s-head" style="font-family:${c.hf};font-weight:${c.hw}">오늘 만든 것이 제일 좋다</div>
       <p class="s-body" style="font-family:${c.bf}">본문은 읽기 편해야 합니다. 위계는 굵기와 크기로. 1234 Aa</p>`;
   } else if (axis.type === 'wire') {
     b.style.display = 'flex'; b.style.flexDirection = 'column'; b.style.gap = '5px'; b.style.justifyContent = 'center';
-    c.rows.forEach(r => b.appendChild(wireRow(r)));
+    b.style.background = C.bg;
+    c.rows.forEach(r => b.appendChild(wireRow(r, C)));
   } else if (axis.type === 'cardr') {
-    b.innerHTML = `<div style="${c.style};border-radius:10px;padding:12px 14px;font-size:11.5px">
-      ${c.photo ? '<div style="height:34px;border-radius:6px;background:linear-gradient(135deg,#d9c3a5,#a67c52);margin-bottom:8px"></div>' : ''}
+    b.style.background = C.bg;
+    const cardBg = c.style.includes('background:#fff') ? C.card : null;
+    const st = cardBg ? c.style.replace('background:#fff', 'background:' + cardBg) : c.style.replace('rgba(26,107,60,.06)', C.ac + '18');
+    b.innerHTML = `<div style="${st};border-radius:${Math.min(C.r,14)}px;padding:12px 14px;font-size:11.5px;color:${C.ink}">
+      ${c.photo ? `<div style="height:34px;border-radius:${Math.min(C.r,8)}px;background:${C.ac}33;margin-bottom:8px"></div>` : ''}
       <b style="font-size:12.5px">카드 제목</b><div style="opacity:.6;margin-top:3px">설명 텍스트 한 줄</div></div>`;
   } else if (axis.type === 'iconr') {
     b.style.display = 'flex'; b.style.gap = '14px'; b.style.alignItems = 'center'; b.style.justifyContent = 'center';
+    b.style.background = C.bg; b.style.color = C.ink;
     if (c.none) { b.innerHTML = '<span style="font-size:12px;opacity:.5">텍스트만으로</span>'; }
-    else b.innerHTML = ['M4 8h16M4 14h10', 'M12 4l3 6 6 1-4.5 4 1 6-5.5-3-5.5 3 1-6L3 11l6-1z', 'M5 12a7 7 0 1014 0 7 7 0 00-14 0'].map(p =>
-      `<svg width="26" height="26" viewBox="0 0 24 24" fill="${c.fill}" stroke="currentColor" stroke-width="${c.sw}" stroke-linecap="round"><path d="${p}"/></svg>`).join('');
+    else b.innerHTML = ['M4 8h16M4 14h10', 'M12 4l3 6 6 1-4.5 4 1 6-5.5-3-5.5 3 1-6L3 11l6-1z', 'M5 12a7 7 0 1014 0 7 7 0 00-14 0'].map(pt =>
+      `<svg width="26" height="26" viewBox="0 0 24 24" fill="${c.fill === 'rgba(26,107,60,.25)' ? C.ac + '40' : c.fill}" stroke="currentColor" stroke-width="${c.sw}" stroke-linecap="round"><path d="${pt}"/></svg>`).join('');
   } else if (axis.type === 'demo') {
-    b.classList.add(c.cls);
-    b.innerHTML = `<span class="demo-chip">올려보세요</span><p style="font-size:12px;opacity:.6;margin-top:8px">${c.desc}</p>`;
+    b.classList.add(c.cls); b.style.background = C.bg; b.style.color = C.ink;
+    b.innerHTML = `<span class="demo-chip" style="background:${C.ac};color:${acOn(C)}">올려보세요</span><p style="font-size:12px;opacity:.6;margin-top:8px">${c.desc}</p>`;
   } else if (axis.type === 'textc') {
     b.innerHTML = `<div style="font-size:15px;font-weight:700">${c.label}</div><p style="font-size:12.5px;opacity:.65;margin-top:6px">${c.sub}</p>`;
     b.style.minHeight = '84px';
   }
   return b;
 }
-function effRank(axis, c) {
-  if (tileSel) { const t = TILES.find(t => t.value === tileSel); if (t && t.boost && t.boost[axis.id] === c.value) return 0; }
-  return c.rank;
-}
 function renderAxis(axis) {
+  const C = CTX();
   const sec = document.createElement('section'); sec.id = 'ax-' + axis.id;
-  sec.innerHTML = `<h2><span class="step">2단</span>${axis.title}</h2><p class="hint">${axis.hint || '추천순 정렬 — 1순위가 왼쪽 위'}</p>`;
+  sec.innerHTML = `<h2><span class="step">2단</span>${axis.title}</h2><p class="hint">${axis.hint || '추천순 정렬 — 위 선택이 후보에 실시간 반영됩니다'}</p>`;
   const g = document.createElement('div');
   if (axis.type === 'steps') {
     g.className = 'steps';
-    [...axis.cands].sort((a, b) => a.rank - b.rank && 0 || (a.r ?? a.w) - (b.r ?? b.w)).forEach(c => {
+    [...axis.cands].sort((a, b) => (a.r ?? a.w) - (b.r ?? b.w)).forEach(c => {
       const st = document.createElement('div'); st.className = 'st'; st.tabIndex = 0; st.dataset.value = c.value;
-      const box = axis.id === 'radius' ? `<div class="demo-box" style="border-radius:${c.r}px"></div>` : `<div class="demo-box" style="width:${c.w}px"></div>`;
+      if (sel[axis.id] === c.value) st.classList.add('sel');
+      const box = axis.id === 'radius' ? `<div class="demo-box" style="border-radius:${c.r}px;background:${C.ac}55"></div>` : `<div class="demo-box" style="width:${c.w}px;background:${C.ac}55"></div>`;
       st.innerHTML = `${box}${c.label}${effRank(axis, c) <= 1 ? ' <span style="color:#1a6b3c">★</span>' : ''}`;
-      st.addEventListener('click', () => { g.querySelectorAll('.st').forEach(o => o.classList.remove('sel')); st.classList.add('sel'); sel[axis.id] = c.value; refresh(); });
+      st.addEventListener('click', () => { sel[axis.id] = c.value; renderFrom(axis.id); });
       st.addEventListener('keydown', e => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); st.click(); } });
       g.appendChild(st);
     });
@@ -305,20 +344,68 @@ function renderAxis(axis) {
       if (sel[axis.id] === c.value) o.classList.add('sel');
       const r = effRank(axis, c);
       o.innerHTML = `<div class="band"><span class="rank ${r <= 1 ? 'r1' : ''}">${r === 0 ? '타일 추천' : r + '순위'}</span><span class="sel-mark">✓ 선택됨</span></div>`;
-      o.appendChild(candBody(axis, c));
+      o.appendChild(candBody(axis, c, C));
       const lb = document.createElement('div'); lb.className = 'label';
       lb.innerHTML = `${c.label}${c.sub ? ` <small>${c.sub}</small>` : ''}`; o.appendChild(lb);
-      o.addEventListener('click', () => { g.querySelectorAll('.opt').forEach(x => x.classList.remove('sel')); o.classList.add('sel'); sel[axis.id] = c.value; refresh(); });
+      o.addEventListener('click', () => { sel[axis.id] = c.value; renderFrom(axis.id); });
       o.addEventListener('keydown', e => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); o.click(); } });
       g.appendChild(o);
     });
   }
   sec.appendChild(g); return sec;
 }
+/* 캐스케이드: 선택한 축의 "아래" 축들만 리렌더 (위와 자기 자신의 선택은 보존) */
+function renderFrom(axisId) {
+  const i = AXES.findIndex(a => a.id === axisId);
+  // 자기 섹션은 sel 마크만 갱신
+  const own = document.getElementById('ax-' + axisId);
+  if (own) own.querySelectorAll('.opt,.st').forEach(o => o.classList.toggle('sel', o.dataset.value === sel[axisId]));
+  for (let k = i + 1; k < AXES.length; k++) {
+    const old = document.getElementById('ax-' + AXES[k].id);
+    if (old) old.replaceWith(renderAxis(AXES[k]));
+  }
+  attachRich(); renderPreview(); refresh();
+}
+function renderPreview() {
+  const C = CTX();
+  const headerV = ctxVal('header'), footerV = ctxVal('footer'), compV = ctxVal('composition');
+  const img = getCand('imagery', ctxVal('imagery')) || {};
+  const cardV = getCand('card', ctxVal('card')) || { style: '' };
+  const cardBg = (cardV.style || '').includes('background:#fff') ? C.card : (cardV.style || '').includes('tinted') ? C.ac + '18' : C.card;
+  const cardBorder = (cardV.value === 'bordered') ? `border:1px solid ${C.ink.replace('.95','.2').replace('.96','.2')};` : (cardV.value === 'soft-shadow') ? 'box-shadow:0 4px 12px rgba(0,0,0,.18);' : '';
+  const heroBg = img.bg && img.bg.startsWith('url') ? `${img.bg}, ${C.bg}` : C.bg;
+  const nav = headerV === 'logo-only' ? '' : headerV === 'hamburger' ? '≡' : `<span style="opacity:.6">메뉴 소개</span>`;
+  const cta2 = headerV === 'logo-links-cta' ? `<span style="background:${C.ac};color:${acOn(C)};border-radius:${Math.min(C.r,6)}px;padding:2px 7px">예매</span>` : '';
+  const cards = [1,2,3].map(n => `<div style="background:${cardBg};${cardBorder}border-radius:${Math.min(C.r,10)}px;padding:${C.gap}px;flex:1"><b>카드 ${n}</b><div style="opacity:.55">설명 한 줄</div></div>`).join('');
+  const footer = footerV === 'one-line' ? `<div style="opacity:.55;text-align:center">© 브랜드</div>`
+    : footerV === 'big-brand' ? `<div style="font-family:${C.hf};font-size:15px">브랜드<span style="color:${C.ac}">.</span></div>`
+    : `<div style="display:flex;gap:${C.gap}px"><div style="flex:1"><b>브랜드</b></div><div style="flex:1;opacity:.55">링크<br>링크</div><div style="flex:1;opacity:.55">링크<br>링크</div></div>`;
+  document.getElementById('pv-site').innerHTML = `
+    <div style="background:${C.bg};color:${C.ink};font-family:${C.bf}">
+      <div style="display:flex;justify-content:space-between;align-items:center;gap:8px;padding:8px 12px;font-size:9.5px">
+        <b style="font-family:${C.hf}">브랜드<span style="color:${C.ac}">.</span></b><span style="display:flex;gap:8px;align-items:center">${nav}${cta2}</span>
+      </div>
+      <div style="background:${heroBg};background-size:cover;background-position:center;padding:${22 + C.gap}px 14px;text-align:center;${img.bg && img.bg.startsWith('url') ? 'text-shadow:0 1px 8px rgba(0,0,0,.55);color:#fff' : ''}">
+        <div style="font-family:${C.hf};font-weight:${C.hw};font-size:17px;line-height:1.15">헤드라인이 여기에</div>
+        <div style="opacity:.75;margin-top:5px">서브 카피 한 줄이 이 자리에 들어갑니다</div>
+        <span style="display:inline-block;margin-top:9px;background:${C.ac};color:${acOn(C)};border-radius:${Math.min(C.r,6)}px;padding:4px 12px;font-weight:700">주요 버튼</span>
+      </div>
+      <div style="display:flex;gap:${C.gap}px;padding:${C.gap + 4}px 12px">${cards}</div>
+      <div style="border-top:1px solid rgba(127,127,127,.25);padding:9px 12px">${footer}</div>
+    </div>`;
+}
+function attachRich() {
+  document.querySelectorAll('.d-rich').forEach(dv => {
+    if (dv.dataset.richWired) return; dv.dataset.richWired = '1';
+    const chip = dv.querySelector('.demo-chip');
+    dv.addEventListener('pointermove', e => { const r = dv.getBoundingClientRect();
+      chip.style.transform = `translate(${(e.clientX - r.left - r.width / 2) * .07}px, ${(e.clientY - r.top - r.height / 2) * .1}px)`; });
+  });
+}
 function renderAll() {
   app.innerHTML = '';
   const tsec = document.createElement('section');
-  tsec.innerHTML = `<h2><span class="step">1단</span>방향 타일 — 큰 방향부터</h2><p class="hint">하나를 고르면 아래 축들이 그 방향 추천순으로 재정렬됩니다 (선택은 자유)</p>`;
+  tsec.innerHTML = `<h2><span class="step">1단</span>방향 타일 — 큰 방향부터</h2><p class="hint">하나를 고르면 아래 축들이 그 방향 추천순으로 재정렬되고, 오른쪽 미리보기가 따라옵니다</p>`;
   const tg = document.createElement('div'); tg.className = 'tile-grid';
   [...TILES].sort((a, b) => a.rank - b.rank).forEach(t => {
     const o = document.createElement('div'); o.className = 'opt tile'; o.tabIndex = 0;
@@ -330,18 +417,13 @@ function renderAll() {
         <div class="t-row"><span class="t-btn" style="background:${t.accent};color:#fff;border-radius:${t.radius}">버튼</span>
         <span class="t-dot" style="background:${t.accent}"></span><span class="t-dot" style="background:${t.ink};opacity:.25"></span></div>
       </div><div class="label">${t.name}</div>`;
-    o.addEventListener('click', () => { tileSel = tileSel === t.value ? null : t.value; renderAll(); refresh(); });
+    o.addEventListener('click', () => { tileSel = tileSel === t.value ? null : t.value; renderAll(); });
     o.addEventListener('keydown', e => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); o.click(); } });
     tg.appendChild(o);
   });
   tsec.appendChild(tg); app.appendChild(tsec);
   AXES.forEach(a => app.appendChild(renderAxis(a)));
-  document.querySelectorAll('.d-rich').forEach(dv => {
-    const chip = dv.querySelector('.demo-chip');
-    dv.addEventListener('pointermove', e => { const r = dv.getBoundingClientRect();
-      chip.style.transform = `translate(${(e.clientX - r.left - r.width / 2) * .07}px, ${(e.clientY - r.top - r.height / 2) * .1}px)`; });
-  });
-  refresh();
+  attachRich(); renderPreview(); refresh();
 }
 function refresh() {
   const n = Object.keys(sel).length;
