@@ -246,3 +246,9 @@
   - Completed: 2026-07-19
   - Result: Pexels ko-KR 실호출 6장 + 이미지 축 계약 배포, 키 User 전역 등록
   - Evidence: changesets/20260719-image-pipeline/README.md, templates/fetch-stock.py
+
+### 2026-07
+- SF1 - SF1 — 데이터 주도 스튜디오 주입 (자동화)
+  - Completed: 2026-07-19
+  - Result: 데이터 JSON + make-studio.py 1커맨드 주입 실증 — 실패 경로 포함
+  - Evidence: evidence/studio-finish/sf1-injection-e2e.md

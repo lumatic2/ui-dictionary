@@ -1784,21 +1784,21 @@
       "work_id": "SF3",
       "horizon_id": "studio-finish",
       "milestone_id": "SF3",
-      "status": "active",
+      "status": "completed",
       "plan_path": "plans/2026-07-19-sf3-preview-upgrade.md",
       "changeset_path": "changesets/20260719-preview-dark",
-      "next_step": "step-1",
-      "current_step": "step-1",
+      "next_step": null,
+      "current_step": null,
       "steps": [
         {
           "id": "step-1",
           "label": "Step 1 — 다크 토글 (changeset)",
-          "status": "pending"
+          "status": "completed"
         },
         {
           "id": "step-2",
           "label": "Step 2 — 반응형 뷰포트 + 통합 E2E (changeset)",
-          "status": "pending"
+          "status": "completed"
         }
       ],
       "execution_mode": "continuous",
@@ -1822,7 +1822,9 @@
         "claude:614621c7-09d1-4681-a401-e42324fd8701"
       ],
       "updated_at": "2026-07-19",
-      "notes": "Registered atomically by canonical harness approve_harness_plan.py after plan validation."
+      "notes": "Registered atomically by canonical harness approve_harness_plan.py after plan validation.",
+      "completion_summary": "브리프 스튜디오 미리보기가 다크와 모바일 폭까지 실물로 보여주게 됐고, 열두 조합 화면 검사와 주입-선택-수집 전 루프가 통과했습니다",
+      "completed": "2026-07-19"
     }
   }
 }
