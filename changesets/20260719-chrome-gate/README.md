@@ -12,5 +12,5 @@
 ## 검증 checklist
 
 - [ ] curl 배포 grep "keep that server running"
-- [ ] E2E: 데모 결과물 브라우저 실열림 + 서버 생존 curl 200
-- [ ] Failure probe: 서버 조기 종료 시 페이지 접근 불가(curl 000) 확인 — 유지 의무의 근거
+- [x] E2E: 꽃집 페이지 Start-Process 실열림 + 서버 curl 200 유지 (vb3-live-gate-e2e.log)
+- [x] Failure probe: 별도 서버 조기 종료 → curl 000 — 유지 의무 근거 실증
