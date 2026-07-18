@@ -133,3 +133,5 @@
 | 131 | 20260717-canonical-diff-absorb | 2026-07-17 | TC4 Step 2: 3 adopted (typeface restraint, motion-scale proportionality, verb-first labels) + 2 rejected with reasons, deployed | 3/3 | complete |
 | 132 | 20260718-entry-protocol-human-gate | 2026-07-18 | SE1 Step 1: human verification gate in entry-protocol (screenshots + no completion claim before human confirms), deployed | 3/3 | complete |
 | 133 | 20260718-askewly-design-skill | 2026-07-18 | SE1 Step 2: askewly-design entry skill (thin router, Claude+Codex deploy) — replaces global design-routing section | 3/3 | complete |
+| 134 | 20260718-global-routing-removal | 2026-07-18 | SE2 Step 1: global design-routing sections removed from ~/.claude/CLAUDE.md and ~/.codex/AGENTS.md (user-confirmed full removal, rollback text preserved) | 3/3 | complete |
+| 135 | 20260718-skill-entry-e2e | 2026-07-18 | SE2 Step 2: E2E — Claude attempt1 FAIL -> description hardened -> Claude PASS + Codex PASS (skill fired, protocol fetched, screenshots produced) | 4/4 | complete |
