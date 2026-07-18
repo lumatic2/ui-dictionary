@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Brief Studio v2 — 눈으로 고르는 브리프</title>
-<!-- AGENT: 폰트 목록은 CANDIDATES.typo 후보와 일치시켜 교체. 오프라인이면 시스템 폰트 폴백(페이지 불괴). -->
+<!-- 폰트 목록은 데이터 JSON의 "fonts" 필드로 주입된다 (make-studio.py). 오프라인이면 시스템 폰트 폴백(페이지 불괴). -->
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;800&family=IBM+Plex+Sans+KR:wght@400;600&family=Noto+Serif+KR:wght@400;700&family=Gowun+Batang:wght@400;700&family=Gowun+Dodum&family=Nanum+Myeongjo:wght@400;800&family=Do+Hyeon&family=Black+Han+Sans&display=swap" rel="stylesheet">
 <style>
@@ -112,179 +112,1124 @@ h2 .step { color: #1a6b3c; font-size: 13px; font-weight: 700; margin-right: 8px;
 </div>
 
 <script>
-/* ================= AGENT DATA — 브리프 맥락(톤·비주얼 키워드)에 맞게 이 객체만 교체하라 =================
+/* ================= STUDIO DATA BEGIN — 직접 편집 금지 =================
+   후보 데이터는 studio-data JSON 파일에 작성하고 `python templates/make-studio.py --data <json> --out <html>` 로 생성하라.
    규칙: 타일 3~4(키워드 파생) · 축별 후보 6~8 · rank=추천순(1이 최상단 배지) · boost={axisId: value} 로 타일→추천 재정렬 */
-const TILES = [
-  { value: "warm-honest", name: "따뜻하고 정직한", bg: "rgb(250,248,244)", ink: "rgba(28,23,16,.95)", accent: "#B4552D", font: "'Noto Sans KR',sans-serif", radius: "8px",
-    desc: "웜 페이퍼 · 흙빛 액센트 · 단정한 산세리프", rank: 1,
-    boost: { base: "warm-paper", accent: "terracotta", typo: "noto-pair", motion: "standard" } },
-  { value: "quiet-literary", name: "조용하고 문학적인", bg: "rgb(250,249,246)", ink: "rgba(24,22,18,.95)", accent: "#6B4A2F", font: "'Gowun Batang',serif", radius: "4px",
-    desc: "종이 질감 · 세리프 전면 · 절제된 모션", rank: 2,
-    boost: { base: "warm-paper", accent: "coffee", typo: "gowun-full", motion: "minimal" } },
-  { value: "crisp-technical", name: "선명하고 기술적인", bg: "rgb(247,249,252)", ink: "rgba(12,20,32,.95)", accent: "#20599C", font: "'IBM Plex Sans KR',sans-serif", radius: "6px",
-    desc: "쿨 그레이 · 블루 신호 · 플렉스 산세리프", rank: 3,
-    boost: { base: "cool-gray", accent: "blue", typo: "plex-pair", motion: "standard" } },
-  { value: "bold-night", name: "대담한 밤", bg: "rgb(24,22,26)", ink: "rgba(246,244,248,.95)", accent: "#D9B96C", font: "'Do Hyeon',sans-serif", radius: "10px",
-    desc: "다크 베이스 · 골드 포인트 · 디스플레이 헤드", rank: 4,
-    boost: { base: "pure-dark", accent: "gold", typo: "display-head", motion: "rich", dark: "dark-first" } },
-];
-const AXES = [
-  { id: "base", title: "배경 · 표면 베이스", type: "mini", hint: "같은 화면에 베이스만 바꿔 입혔습니다 — 액센트는 다음 축에서 독립 선택",
-    cands: [
-      { value: "warm-paper", label: "웜 페이퍼", sub: "따뜻한 종이", rank: 1, bg: "rgb(250,248,244)", ink: "rgba(28,23,16,.95)", card: "#fffefb" },
-      { value: "soft-cream", label: "소프트 크림", sub: "노을빛", rank: 2, bg: "rgb(251,248,240)", ink: "rgba(30,25,15,.95)", card: "#fffdf6" },
-      { value: "cool-gray", label: "쿨 그레이", sub: "정제·신뢰", rank: 3, bg: "rgb(247,249,252)", ink: "rgba(12,20,32,.95)", card: "#ffffff" },
-      { value: "sage-tint", label: "세이지 틴트", sub: "식물성", rank: 4, bg: "rgb(246,249,245)", ink: "rgba(20,26,18,.95)", card: "#fdfffc" },
-      { value: "blush-tint", label: "블러시 틴트", sub: "부드러움", rank: 5, bg: "rgb(252,248,247)", ink: "rgba(32,22,20,.95)", card: "#fffdfc" },
-      { value: "warm-dark", label: "웜 다크", sub: "저녁 무드", rank: 6, bg: "rgb(29,24,19)", ink: "rgba(248,244,238,.95)", card: "rgb(40,33,26)" },
-      { value: "pure-dark", label: "딥 다크", sub: "밤·집중", rank: 7, bg: "rgb(22,22,26)", ink: "rgba(244,244,248,.95)", card: "rgb(33,33,39)" },
-    ]},
-  { id: "accent", title: "액센트 (신호 1색)", type: "mini", hint: "버튼·강조에만 쓰는 유일한 색 — 베이스와 조합됩니다",
-    cands: [
-      { value: "terracotta", label: "테라코타", sub: "흙·햇살", rank: 1, ac: "#B4552D" },
-      { value: "coffee", label: "커피 브라운", sub: "깊이", rank: 2, ac: "#6B4A2F" },
-      { value: "forest", label: "포레스트 그린", sub: "안정", rank: 3, ac: "#2F7D4F" },
-      { value: "blue", label: "코발트 블루", sub: "신뢰", rank: 4, ac: "#20599C" },
-      { value: "plum", label: "플럼", sub: "개성", rank: 5, ac: "#7A3E62" },
-      { value: "gold", label: "머스터드 골드", sub: "대담", rank: 6, ac: "#B8860B" },
-      { value: "rose", label: "로즈", sub: "부드러움", rank: 7, ac: "#B04A5A" },
-      { value: "slate", label: "슬레이트", sub: "무채 절제", rank: 8, ac: "#4A5568" },
-    ]},
-  { id: "typo", title: "타이포그래피 페어 (헤딩 / 본문)", type: "spec", hint: "같은 문장을 페어 단위로 — 헤딩·본문이 함께 갑니다",
-    cands: [
-      { value: "noto-pair", label: "Noto Sans 800 / 400", sub: "단정한 기본", rank: 1, hf: "'Noto Sans KR',sans-serif", hw: 800, bf: "'Noto Sans KR',sans-serif" },
-      { value: "plex-pair", label: "IBM Plex 600 / 400", sub: "테크·중립", rank: 2, hf: "'IBM Plex Sans KR',sans-serif", hw: 600, bf: "'IBM Plex Sans KR',sans-serif" },
-      { value: "serif-head", label: "Noto Serif / Sans 본문", sub: "클래식 혼용", rank: 3, hf: "'Noto Serif KR',serif", hw: 700, bf: "'Noto Sans KR',sans-serif" },
-      { value: "gowun-full", label: "고운바탕 전면", sub: "문학적", rank: 4, hf: "'Gowun Batang',serif", hw: 700, bf: "'Gowun Batang',serif" },
-      { value: "myeongjo-head", label: "나눔명조 800 / Sans", sub: "에디토리얼", rank: 5, hf: "'Nanum Myeongjo',serif", hw: 800, bf: "'Noto Sans KR',sans-serif" },
-      { value: "dodum-soft", label: "고운돋움 / 고운돋움", sub: "순한 인상", rank: 6, hf: "'Gowun Dodum',sans-serif", hw: 400, bf: "'Gowun Dodum',sans-serif" },
-      { value: "display-head", label: "도현 디스플레이 / Sans", sub: "포스터 임팩트", rank: 7, hf: "'Do Hyeon',sans-serif", hw: 400, bf: "'Noto Sans KR',sans-serif" },
-      { value: "blackhan-head", label: "검은고딕 / Sans", sub: "최대 임팩트", rank: 8, hf: "'Black Han Sans',sans-serif", hw: 400, bf: "'Noto Sans KR',sans-serif" },
-    ]},
-  { id: "imagery", title: "이미지 스타일", type: "mini", size: "lg", hint: "실사 썸네일은 이미지 파이프라인 연동 시 교체 (지금은 톤 카드)",
-    cands: [
-      { value: "photo-warm-doc", label: "실사 · 따뜻한 다큐", sub: "일상 순간", rank: 1, bg: "linear-gradient(135deg,#d9c3a5,#a67c52)" },
-      { value: "photo-bright-asp", label: "실사 · 밝은 애스퍼레이셔널", sub: "잡지 톤", rank: 2, bg: "linear-gradient(135deg,#f2e8dc,#c9d8e8)" },
-      { value: "photo-moody", label: "실사 · 무디 로우키", sub: "저채도 깊이", rank: 3, bg: "linear-gradient(135deg,#3a322a,#6b5b49)" },
-      { value: "illust-flat", label: "플랫 일러스트", sub: "친근", rank: 4, bg: "linear-gradient(135deg,#ffd9b8,#ffb3a1)" },
-      { value: "illust-line", label: "라인 드로잉", sub: "가벼움", rank: 5, bg: "repeating-linear-gradient(45deg,#f5f2ec 0 8px,#e8e2d6 8px 10px)" },
-      { value: "3d-soft", label: "소프트 3D", sub: "입체 오브젝트", rank: 6, bg: "linear-gradient(135deg,#e0d5f5,#b8c8f0)" },
-      { value: "none", label: "이미지 없음", sub: "타이포 중심", rank: 7, bg: "rgb(240,238,232)" },
-    ]},
-  { id: "composition", title: "페이지 구성", type: "wire", size: "lg", hint: "섹션 조합과 순서 — 선택이 오른쪽 미리보기 구조에 그대로 반영됩니다",
-    cands: [
-      { value: "hero-cards-info", label: "히어로 → 카드 3 → 정보", sub: "표준 소개형", rank: 1, rows: ["h32","r:3","b14"], pv: ["hero","cards","info"] },
-      { value: "split-hero-flow", label: "스플릿 히어로 → 특징 → CTA", sub: "Z-패턴", rank: 2, rows: ["sp30","r:3","b12"], pv: ["split","cards","cta"] },
-      { value: "media-full", label: "풀블리드 미디어 → 정보 → CTA", sub: "영상·사진 주도", rank: 3, rows: ["h48","b12","b10"], pv: ["fullhero","info","cta"] },
-      { value: "steps-flow", label: "히어로 → 3단계 안내 → CTA", sub: "예약·온보딩형", rank: 4, rows: ["h30","r:3","b12"], pv: ["hero","steps","cta"] },
-      { value: "proof-first", label: "히어로 → 후기 → 카드 → CTA", sub: "신뢰 선행형", rank: 5, rows: ["h28","sb14","r:3","b10"], pv: ["hero","quote","cards","cta"] },
-      { value: "gallery-first", label: "미니 히어로 → 갤러리 → 카드", sub: "쇼케이스형", rank: 6, rows: ["h20","r:4","r:4","b10"], pv: ["minihero","gallery","cards"] },
-      { value: "long-story", label: "롱 스크롤 스토리 → FAQ → CTA", sub: "서사·설득형", rank: 7, rows: ["h28","sb16","sb16","b8","b10"], pv: ["hero","story","story2","faq","cta"] },
-      { value: "one-screen", label: "원 스크린 집중", sub: "단일 행동", rank: 8, rows: ["h50"], pv: ["fullhero"] },
-    ]},
-  /* AGENT(ST4): 카피 후보는 전략층 키워드에서 파생해 프로젝트마다 교체하라 */
-  { id: "headline", title: "히어로 헤드라인", type: "copy", size: "lg", hint: "문구를 실물 타이포로 비교 — 선택이 오른쪽 미리보기에 반영됩니다",
-    cands: [
-      { value: "hl-1", text: "오늘 만든 것이 제일 좋다", sub: "담백 선언형", rank: 1 },
-      { value: "hl-2", text: "당신의 하루에 한 줄을 더합니다", sub: "다정 제안형", rank: 2 },
-      { value: "hl-3", text: "작게, 그러나 정확하게", sub: "미니멀 대구형", rank: 3 },
-      { value: "hl-4", text: "지금, 여기서 시작하세요", sub: "행동 촉구형", rank: 4 },
-      { value: "hl-5", text: "우리가 잘하는 단 한 가지", sub: "집중 스토리형", rank: 5 },
-      { value: "hl-6", text: "복잡한 건 우리 몫입니다", sub: "신뢰 약속형", rank: 6 },
-    ]},
-  { id: "subcopy", title: "서브 카피", type: "copy", hint: "",
-    cands: [
-      { value: "sc-1", text: "핵심을 한 문장으로 설명하고, 다음 문장으로 신뢰를 더합니다.", sub: "설명+신뢰", rank: 1 },
-      { value: "sc-2", text: "왜 필요한지 묻기 전에, 어떻게 좋아지는지 보여드립니다.", sub: "가치 우선", rank: 2 },
-      { value: "sc-3", text: "짧게 씁니다. 대신 정확하게.", sub: "초압축", rank: 3 },
-      { value: "sc-4", text: "당신과 비슷한 사람들이 이미 쓰고 있습니다 — 이유가 있습니다.", sub: "사회적 증거", rank: 4 },
-      { value: "sc-5", text: "숫자로 말하겠습니다. 결과는 본문에 있습니다.", sub: "데이터 톤", rank: 5 },
-      { value: "sc-6", text: "처음이라도 괜찮아요. 시작만 하면 나머지는 함께합니다.", sub: "온보딩 다정", rank: 6 },
-    ]},
-  { id: "cta", title: "CTA 구성", type: "ctar", hint: "버튼 개수와 위계",
-    cands: [
-      { value: "two-split", label: "주 + 보조", sub: "솔리드+아웃라인", rank: 1, btns: [["주요 행동","solid"],["더 알아보기","outline"]] },
-      { value: "one-solid", label: "하나로 집중", sub: "솔리드 1개", rank: 2, btns: [["주요 행동","solid"]] },
-      { value: "one-arrow", label: "화살표 링크형", sub: "가벼운 유도", rank: 3, btns: [["시작하기 →","link"]] },
-      { value: "solid-link", label: "주 + 텍스트 링크", sub: "보조를 더 가볍게", rank: 4, btns: [["주요 행동","solid"],["둘러보기 →","link"]] },
-      { value: "two-solid", label: "동급 둘", sub: "선택 분기형", rank: 5, btns: [["옵션 A","solid"],["옵션 B","solid"]] },
-    ]},
-  { id: "header", title: "헤더", type: "wire", hint: "",
-    cands: [
-      { value: "logo-links-cta", label: "로고 + 링크 + CTA", rank: 1, rows: ["hd:cta"] },
-      { value: "logo-links", label: "로고 + 링크", rank: 2, rows: ["hd:links"] },
-      { value: "logo-only", label: "로고만 (집중형)", rank: 3, rows: ["hd:logo"] },
-      { value: "centered", label: "센터 로고 + 양측 링크", rank: 4, rows: ["hd:center"] },
-      { value: "sticky-thin", label: "얇은 고정 바", rank: 5, rows: ["hd:thin"] },
-      { value: "hamburger", label: "로고 + 햄버거", rank: 6, rows: ["hd:burger"] },
-    ]},
-  { id: "footer", title: "푸터", type: "wire", hint: "",
-    cands: [
-      { value: "one-line", label: "한 줄 미니멀", rank: 1, rows: ["b8"] },
-      { value: "contact-focus", label: "연락처 중심", rank: 2, rows: ["r:3","b8"] },
-      { value: "multi-column", label: "멀티 컬럼 링크", rank: 3, rows: ["r:4","b8"] },
-      { value: "newsletter", label: "뉴스레터 + 링크", rank: 4, rows: ["nb","b8"] },
-      { value: "big-brand", label: "빅 브랜드 타입", rank: 5, rows: ["h20","b8"] },
-      { value: "sitemap", label: "사이트맵형", rank: 6, rows: ["r:4","r:4","b8"] },
-    ]},
-  { id: "card", title: "카드 스타일", type: "cardr", hint: "실물 렌더",
-    cands: [
-      { value: "flat-tonal", label: "플랫 + 명도", sub: "보더 없음", rank: 1, style: "background:#fff" },
-      { value: "bordered", label: "보더", sub: "또렷한 경계", rank: 2, style: "background:#fff;border:1px solid rgba(20,18,14,.18)" },
-      { value: "soft-shadow", label: "소프트 섀도", sub: "떠 있는", rank: 3, style: "background:#fff;box-shadow:0 8px 24px rgba(20,18,14,.10)" },
-      { value: "photo-top", label: "사진 상단형", sub: "이미지 주도", rank: 4, style: "background:#fff", photo: true },
-      { value: "tinted", label: "액센트 틴트", sub: "은은한 물듦", rank: 5, style: "background:rgba(26,107,60,.06)" },
-      { value: "underline", label: "언더라인 리스트형", sub: "카드 아님", rank: 6, style: "background:transparent;border-bottom:2px solid rgba(20,18,14,.2);border-radius:0" },
-    ]},
-  { id: "density", title: "그리드 · 밀도", type: "steps", hint: "여백과 정보 밀도",
-    cands: [
-      { value: "airy", label: "여유", rank: 1, w: 26 }, { value: "comfortable", label: "표준", rank: 2, w: 34 },
-      { value: "compact", label: "컴팩트", rank: 3, w: 42 }, { value: "dense", label: "밀집", rank: 4, w: 50 },
-    ]},
-  { id: "radius", title: "모서리 · 형태 언어", type: "steps", hint: "",
-    cands: [
-      { value: "sharp", label: "각진 0", rank: 4, r: 0 }, { value: "subtle", label: "미세 4px", rank: 1, r: 4 },
-      { value: "rounded", label: "라운드 10px", rank: 2, r: 10 }, { value: "soft", label: "소프트 18px", rank: 3, r: 18 },
-      { value: "pill", label: "필", rank: 5, r: 99 },
-    ]},
-  { id: "motion", title: "모션 톤 — 전환·등장의 규모", type: "demo", hint: "화면 전환과 요소 등장이 얼마나 표현적인가 (커서 반응은 아래 별도 축)",
-    cands: [
-      { value: "standard", label: "표준", sub: "hover + 등장", rank: 1, cls: "d-std", desc: "부양·등장 모션. 대부분의 제품에 알맞음." },
-      { value: "minimal", label: "담백", sub: "전환만", rank: 2, cls: "d-plain", desc: "색 전환만, 움직임 없음." },
-      { value: "rich", label: "풍부", sub: "스크롤 연출", rank: 3, cls: "d-rich", desc: "스크롤 스토리텔링급 — 실험적 표현은 수동 승인." },
-      { value: "none", label: "선택 안함", sub: "에이전트 판단", rank: 4, cls: "d-plain", desc: "정하지 않음 — 맥락에 맞게 에이전트가 판단합니다." },
-    ]},
-  { id: "pointer", title: "커서 인터랙션 — 마우스가 닿을 때·움직일 때", type: "demo", size: "lg", hint: "hover 성격과 커서 반응 표현 (모션 톤과 별개 축) — 박스 안에서 마우스를 움직여보세요",
-    cands: [
-      { value: "none", label: "선택 안함", sub: "에이전트 판단", rank: 1, cls: "d-plain", desc: "정하지 않음 — 기본 hover만 두고 에이전트가 판단." },
-      { value: "lift", label: "부양", sub: "hover 떠오름", rank: 2, cls: "d-std", desc: "카드·버튼이 살짝 떠오릅니다." },
-      { value: "cursor-field", label: "커서 반응 필드", sub: "배경이 커서를 따라 빛남", rank: 3, cls: "d-field", desc: "askewly 쇼케이스의 Cursor-Reactive Field — 배경 글로우가 커서를 따라옵니다." },
-      { value: "glow", label: "글로우", sub: "hover 빛 번짐", rank: 4, cls: "d-glow", desc: "액센트빛이 번집니다 — 다크에서 강함." },
-      { value: "underline", label: "밑줄 확장", sub: "타이포 중심", rank: 5, cls: "d-underline", desc: "밑줄이 자라납니다 — 에디토리얼." },
-      { value: "magnet", label: "자석", sub: "요소가 커서 추종", rank: 6, cls: "d-rich", desc: "버튼이 커서를 따라옵니다 — 실험적(수동 승인)." },
-    ]},
-  { id: "icon", title: "아이콘 스타일", type: "iconr", size: "lg", hint: "같은 아이콘 3종을 스타일별로 — 선 굵기·면·색 개입의 차이",
-    cands: [
-      { value: "outline", label: "아웃라인", sub: "얇은 선 1.8 (Lucide풍)", rank: 1, sw: 1.8, fill: "none", join: "round" },
-      { value: "bold-outline", label: "볼드 라인", sub: "굵은 선 2.8", rank: 2, sw: 2.8, fill: "none", join: "round" },
-      { value: "filled", label: "필드(면)", sub: "채운 면", rank: 3, sw: 0, fill: "currentColor", join: "round" },
-      { value: "duotone", label: "듀오톤", sub: "선 + 액센트 면", rank: 4, sw: 1.6, fill: "ACCENT", join: "round" },
-      { value: "sharp", label: "샤프", sub: "각진 조인트", rank: 5, sw: 2, fill: "none", join: "miter" },
-      { value: "none", label: "아이콘 없음", sub: "텍스트만", rank: 6, none: true },
-    ]},
-  { id: "dark", title: "다크 모드", type: "mini", hint: "",
-    cands: [
-      { value: "both-auto", label: "라이트 + 다크 (시스템 따름)", sub: "기본 추천", rank: 1, bg: "linear-gradient(90deg, rgb(250,248,244) 50%, rgb(29,24,19) 50%)", ink: "rgba(20,18,14,.9)" },
-      { value: "light-only", label: "라이트만", sub: "범위 축소", rank: 2, bg: "rgb(250,248,244)", ink: "rgba(28,23,16,.95)" },
-      { value: "dark-first", label: "다크 우선", sub: "밤 무드 브랜드", rank: 3, bg: "rgb(24,22,26)", ink: "rgba(244,244,248,.95)" },
-    ]},
-  { id: "a11y", title: "글자 잘 보이기 기준 (접근성)", type: "textc", hint: "배경과 글자의 명암 차이를 어디까지 보장할지",
-    cands: [
-      { value: "aa", label: "표준", sub: "대부분 서비스의 실무·법적 기준 — 일반 시력 기준 충분히 읽힘 (WCAG AA, 대비 4.5:1)", rank: 1 },
-      { value: "aaa-body", label: "본문 강화", sub: "본문 글자만 더 진하게 — 저시력·고령 사용자도 편안 (본문 AAA 7:1)", rank: 2 },
-      { value: "aaa", label: "최고 수준", sub: "모든 글자·요소를 최고 대비로 — 공공·의료 서비스급 (AAA 전면)", rank: 3 },
-    ]},
-];
+const STUDIO_DATA = {
+  "tiles": [
+    {
+      "value": "warm-honest",
+      "name": "따뜻하고 정직한",
+      "bg": "rgb(250,248,244)",
+      "ink": "rgba(28,23,16,.95)",
+      "accent": "#B4552D",
+      "font": "'Noto Sans KR',sans-serif",
+      "radius": "8px",
+      "desc": "웜 페이퍼 · 흙빛 액센트 · 단정한 산세리프",
+      "rank": 1,
+      "boost": {
+        "base": "warm-paper",
+        "accent": "terracotta",
+        "typo": "noto-pair",
+        "motion": "standard"
+      }
+    },
+    {
+      "value": "quiet-literary",
+      "name": "조용하고 문학적인",
+      "bg": "rgb(250,249,246)",
+      "ink": "rgba(24,22,18,.95)",
+      "accent": "#6B4A2F",
+      "font": "'Gowun Batang',serif",
+      "radius": "4px",
+      "desc": "종이 질감 · 세리프 전면 · 절제된 모션",
+      "rank": 2,
+      "boost": {
+        "base": "warm-paper",
+        "accent": "coffee",
+        "typo": "gowun-full",
+        "motion": "minimal"
+      }
+    },
+    {
+      "value": "crisp-technical",
+      "name": "선명하고 기술적인",
+      "bg": "rgb(247,249,252)",
+      "ink": "rgba(12,20,32,.95)",
+      "accent": "#20599C",
+      "font": "'IBM Plex Sans KR',sans-serif",
+      "radius": "6px",
+      "desc": "쿨 그레이 · 블루 신호 · 플렉스 산세리프",
+      "rank": 3,
+      "boost": {
+        "base": "cool-gray",
+        "accent": "blue",
+        "typo": "plex-pair",
+        "motion": "standard"
+      }
+    },
+    {
+      "value": "bold-night",
+      "name": "대담한 밤",
+      "bg": "rgb(24,22,26)",
+      "ink": "rgba(246,244,248,.95)",
+      "accent": "#D9B96C",
+      "font": "'Do Hyeon',sans-serif",
+      "radius": "10px",
+      "desc": "다크 베이스 · 골드 포인트 · 디스플레이 헤드",
+      "rank": 4,
+      "boost": {
+        "base": "pure-dark",
+        "accent": "gold",
+        "typo": "display-head",
+        "motion": "rich",
+        "dark": "dark-first"
+      }
+    }
+  ],
+  "axes": [
+    {
+      "id": "base",
+      "title": "배경 · 표면 베이스",
+      "type": "mini",
+      "hint": "같은 화면에 베이스만 바꿔 입혔습니다 — 액센트는 다음 축에서 독립 선택",
+      "cands": [
+        {
+          "value": "warm-paper",
+          "label": "웜 페이퍼",
+          "sub": "따뜻한 종이",
+          "rank": 1,
+          "bg": "rgb(250,248,244)",
+          "ink": "rgba(28,23,16,.95)",
+          "card": "#fffefb"
+        },
+        {
+          "value": "soft-cream",
+          "label": "소프트 크림",
+          "sub": "노을빛",
+          "rank": 2,
+          "bg": "rgb(251,248,240)",
+          "ink": "rgba(30,25,15,.95)",
+          "card": "#fffdf6"
+        },
+        {
+          "value": "cool-gray",
+          "label": "쿨 그레이",
+          "sub": "정제·신뢰",
+          "rank": 3,
+          "bg": "rgb(247,249,252)",
+          "ink": "rgba(12,20,32,.95)",
+          "card": "#ffffff"
+        },
+        {
+          "value": "sage-tint",
+          "label": "세이지 틴트",
+          "sub": "식물성",
+          "rank": 4,
+          "bg": "rgb(246,249,245)",
+          "ink": "rgba(20,26,18,.95)",
+          "card": "#fdfffc"
+        },
+        {
+          "value": "blush-tint",
+          "label": "블러시 틴트",
+          "sub": "부드러움",
+          "rank": 5,
+          "bg": "rgb(252,248,247)",
+          "ink": "rgba(32,22,20,.95)",
+          "card": "#fffdfc"
+        },
+        {
+          "value": "warm-dark",
+          "label": "웜 다크",
+          "sub": "저녁 무드",
+          "rank": 6,
+          "bg": "rgb(29,24,19)",
+          "ink": "rgba(248,244,238,.95)",
+          "card": "rgb(40,33,26)"
+        },
+        {
+          "value": "pure-dark",
+          "label": "딥 다크",
+          "sub": "밤·집중",
+          "rank": 7,
+          "bg": "rgb(22,22,26)",
+          "ink": "rgba(244,244,248,.95)",
+          "card": "rgb(33,33,39)"
+        }
+      ]
+    },
+    {
+      "id": "accent",
+      "title": "액센트 (신호 1색)",
+      "type": "mini",
+      "hint": "버튼·강조에만 쓰는 유일한 색 — 베이스와 조합됩니다",
+      "cands": [
+        {
+          "value": "terracotta",
+          "label": "테라코타",
+          "sub": "흙·햇살",
+          "rank": 1,
+          "ac": "#B4552D"
+        },
+        {
+          "value": "coffee",
+          "label": "커피 브라운",
+          "sub": "깊이",
+          "rank": 2,
+          "ac": "#6B4A2F"
+        },
+        {
+          "value": "forest",
+          "label": "포레스트 그린",
+          "sub": "안정",
+          "rank": 3,
+          "ac": "#2F7D4F"
+        },
+        {
+          "value": "blue",
+          "label": "코발트 블루",
+          "sub": "신뢰",
+          "rank": 4,
+          "ac": "#20599C"
+        },
+        {
+          "value": "plum",
+          "label": "플럼",
+          "sub": "개성",
+          "rank": 5,
+          "ac": "#7A3E62"
+        },
+        {
+          "value": "gold",
+          "label": "머스터드 골드",
+          "sub": "대담",
+          "rank": 6,
+          "ac": "#B8860B"
+        },
+        {
+          "value": "rose",
+          "label": "로즈",
+          "sub": "부드러움",
+          "rank": 7,
+          "ac": "#B04A5A"
+        },
+        {
+          "value": "slate",
+          "label": "슬레이트",
+          "sub": "무채 절제",
+          "rank": 8,
+          "ac": "#4A5568"
+        }
+      ]
+    },
+    {
+      "id": "typo",
+      "title": "타이포그래피 페어 (헤딩 / 본문)",
+      "type": "spec",
+      "hint": "같은 문장을 페어 단위로 — 헤딩·본문이 함께 갑니다",
+      "cands": [
+        {
+          "value": "noto-pair",
+          "label": "Noto Sans 800 / 400",
+          "sub": "단정한 기본",
+          "rank": 1,
+          "hf": "'Noto Sans KR',sans-serif",
+          "hw": 800,
+          "bf": "'Noto Sans KR',sans-serif"
+        },
+        {
+          "value": "plex-pair",
+          "label": "IBM Plex 600 / 400",
+          "sub": "테크·중립",
+          "rank": 2,
+          "hf": "'IBM Plex Sans KR',sans-serif",
+          "hw": 600,
+          "bf": "'IBM Plex Sans KR',sans-serif"
+        },
+        {
+          "value": "serif-head",
+          "label": "Noto Serif / Sans 본문",
+          "sub": "클래식 혼용",
+          "rank": 3,
+          "hf": "'Noto Serif KR',serif",
+          "hw": 700,
+          "bf": "'Noto Sans KR',sans-serif"
+        },
+        {
+          "value": "gowun-full",
+          "label": "고운바탕 전면",
+          "sub": "문학적",
+          "rank": 4,
+          "hf": "'Gowun Batang',serif",
+          "hw": 700,
+          "bf": "'Gowun Batang',serif"
+        },
+        {
+          "value": "myeongjo-head",
+          "label": "나눔명조 800 / Sans",
+          "sub": "에디토리얼",
+          "rank": 5,
+          "hf": "'Nanum Myeongjo',serif",
+          "hw": 800,
+          "bf": "'Noto Sans KR',sans-serif"
+        },
+        {
+          "value": "dodum-soft",
+          "label": "고운돋움 / 고운돋움",
+          "sub": "순한 인상",
+          "rank": 6,
+          "hf": "'Gowun Dodum',sans-serif",
+          "hw": 400,
+          "bf": "'Gowun Dodum',sans-serif"
+        },
+        {
+          "value": "display-head",
+          "label": "도현 디스플레이 / Sans",
+          "sub": "포스터 임팩트",
+          "rank": 7,
+          "hf": "'Do Hyeon',sans-serif",
+          "hw": 400,
+          "bf": "'Noto Sans KR',sans-serif"
+        },
+        {
+          "value": "blackhan-head",
+          "label": "검은고딕 / Sans",
+          "sub": "최대 임팩트",
+          "rank": 8,
+          "hf": "'Black Han Sans',sans-serif",
+          "hw": 400,
+          "bf": "'Noto Sans KR',sans-serif"
+        }
+      ]
+    },
+    {
+      "id": "imagery",
+      "title": "이미지 스타일",
+      "type": "mini",
+      "size": "lg",
+      "hint": "실사 썸네일은 이미지 파이프라인 연동 시 교체 (지금은 톤 카드)",
+      "cands": [
+        {
+          "value": "photo-warm-doc",
+          "label": "실사 · 따뜻한 다큐",
+          "sub": "일상 순간",
+          "rank": 1,
+          "bg": "linear-gradient(135deg,#d9c3a5,#a67c52)"
+        },
+        {
+          "value": "photo-bright-asp",
+          "label": "실사 · 밝은 애스퍼레이셔널",
+          "sub": "잡지 톤",
+          "rank": 2,
+          "bg": "linear-gradient(135deg,#f2e8dc,#c9d8e8)"
+        },
+        {
+          "value": "photo-moody",
+          "label": "실사 · 무디 로우키",
+          "sub": "저채도 깊이",
+          "rank": 3,
+          "bg": "linear-gradient(135deg,#3a322a,#6b5b49)"
+        },
+        {
+          "value": "illust-flat",
+          "label": "플랫 일러스트",
+          "sub": "친근",
+          "rank": 4,
+          "bg": "linear-gradient(135deg,#ffd9b8,#ffb3a1)"
+        },
+        {
+          "value": "illust-line",
+          "label": "라인 드로잉",
+          "sub": "가벼움",
+          "rank": 5,
+          "bg": "repeating-linear-gradient(45deg,#f5f2ec 0 8px,#e8e2d6 8px 10px)"
+        },
+        {
+          "value": "3d-soft",
+          "label": "소프트 3D",
+          "sub": "입체 오브젝트",
+          "rank": 6,
+          "bg": "linear-gradient(135deg,#e0d5f5,#b8c8f0)"
+        },
+        {
+          "value": "none",
+          "label": "이미지 없음",
+          "sub": "타이포 중심",
+          "rank": 7,
+          "bg": "rgb(240,238,232)"
+        }
+      ]
+    },
+    {
+      "id": "composition",
+      "title": "페이지 구성",
+      "type": "wire",
+      "size": "lg",
+      "hint": "섹션 조합과 순서 — 선택이 오른쪽 미리보기 구조에 그대로 반영됩니다",
+      "cands": [
+        {
+          "value": "hero-cards-info",
+          "label": "히어로 → 카드 3 → 정보",
+          "sub": "표준 소개형",
+          "rank": 1,
+          "rows": [
+            "h32",
+            "r:3",
+            "b14"
+          ],
+          "pv": [
+            "hero",
+            "cards",
+            "info"
+          ]
+        },
+        {
+          "value": "split-hero-flow",
+          "label": "스플릿 히어로 → 특징 → CTA",
+          "sub": "Z-패턴",
+          "rank": 2,
+          "rows": [
+            "sp30",
+            "r:3",
+            "b12"
+          ],
+          "pv": [
+            "split",
+            "cards",
+            "cta"
+          ]
+        },
+        {
+          "value": "media-full",
+          "label": "풀블리드 미디어 → 정보 → CTA",
+          "sub": "영상·사진 주도",
+          "rank": 3,
+          "rows": [
+            "h48",
+            "b12",
+            "b10"
+          ],
+          "pv": [
+            "fullhero",
+            "info",
+            "cta"
+          ]
+        },
+        {
+          "value": "steps-flow",
+          "label": "히어로 → 3단계 안내 → CTA",
+          "sub": "예약·온보딩형",
+          "rank": 4,
+          "rows": [
+            "h30",
+            "r:3",
+            "b12"
+          ],
+          "pv": [
+            "hero",
+            "steps",
+            "cta"
+          ]
+        },
+        {
+          "value": "proof-first",
+          "label": "히어로 → 후기 → 카드 → CTA",
+          "sub": "신뢰 선행형",
+          "rank": 5,
+          "rows": [
+            "h28",
+            "sb14",
+            "r:3",
+            "b10"
+          ],
+          "pv": [
+            "hero",
+            "quote",
+            "cards",
+            "cta"
+          ]
+        },
+        {
+          "value": "gallery-first",
+          "label": "미니 히어로 → 갤러리 → 카드",
+          "sub": "쇼케이스형",
+          "rank": 6,
+          "rows": [
+            "h20",
+            "r:4",
+            "r:4",
+            "b10"
+          ],
+          "pv": [
+            "minihero",
+            "gallery",
+            "cards"
+          ]
+        },
+        {
+          "value": "long-story",
+          "label": "롱 스크롤 스토리 → FAQ → CTA",
+          "sub": "서사·설득형",
+          "rank": 7,
+          "rows": [
+            "h28",
+            "sb16",
+            "sb16",
+            "b8",
+            "b10"
+          ],
+          "pv": [
+            "hero",
+            "story",
+            "story2",
+            "faq",
+            "cta"
+          ]
+        },
+        {
+          "value": "one-screen",
+          "label": "원 스크린 집중",
+          "sub": "단일 행동",
+          "rank": 8,
+          "rows": [
+            "h50"
+          ],
+          "pv": [
+            "fullhero"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "headline",
+      "title": "히어로 헤드라인",
+      "type": "copy",
+      "size": "lg",
+      "hint": "문구를 실물 타이포로 비교 — 선택이 오른쪽 미리보기에 반영됩니다",
+      "cands": [
+        {
+          "value": "hl-1",
+          "text": "오늘 만든 것이 제일 좋다",
+          "sub": "담백 선언형",
+          "rank": 1
+        },
+        {
+          "value": "hl-2",
+          "text": "당신의 하루에 한 줄을 더합니다",
+          "sub": "다정 제안형",
+          "rank": 2
+        },
+        {
+          "value": "hl-3",
+          "text": "작게, 그러나 정확하게",
+          "sub": "미니멀 대구형",
+          "rank": 3
+        },
+        {
+          "value": "hl-4",
+          "text": "지금, 여기서 시작하세요",
+          "sub": "행동 촉구형",
+          "rank": 4
+        },
+        {
+          "value": "hl-5",
+          "text": "우리가 잘하는 단 한 가지",
+          "sub": "집중 스토리형",
+          "rank": 5
+        },
+        {
+          "value": "hl-6",
+          "text": "복잡한 건 우리 몫입니다",
+          "sub": "신뢰 약속형",
+          "rank": 6
+        }
+      ]
+    },
+    {
+      "id": "subcopy",
+      "title": "서브 카피",
+      "type": "copy",
+      "hint": "",
+      "cands": [
+        {
+          "value": "sc-1",
+          "text": "핵심을 한 문장으로 설명하고, 다음 문장으로 신뢰를 더합니다.",
+          "sub": "설명+신뢰",
+          "rank": 1
+        },
+        {
+          "value": "sc-2",
+          "text": "왜 필요한지 묻기 전에, 어떻게 좋아지는지 보여드립니다.",
+          "sub": "가치 우선",
+          "rank": 2
+        },
+        {
+          "value": "sc-3",
+          "text": "짧게 씁니다. 대신 정확하게.",
+          "sub": "초압축",
+          "rank": 3
+        },
+        {
+          "value": "sc-4",
+          "text": "당신과 비슷한 사람들이 이미 쓰고 있습니다 — 이유가 있습니다.",
+          "sub": "사회적 증거",
+          "rank": 4
+        },
+        {
+          "value": "sc-5",
+          "text": "숫자로 말하겠습니다. 결과는 본문에 있습니다.",
+          "sub": "데이터 톤",
+          "rank": 5
+        },
+        {
+          "value": "sc-6",
+          "text": "처음이라도 괜찮아요. 시작만 하면 나머지는 함께합니다.",
+          "sub": "온보딩 다정",
+          "rank": 6
+        }
+      ]
+    },
+    {
+      "id": "cta",
+      "title": "CTA 구성",
+      "type": "ctar",
+      "hint": "버튼 개수와 위계",
+      "cands": [
+        {
+          "value": "two-split",
+          "label": "주 + 보조",
+          "sub": "솔리드+아웃라인",
+          "rank": 1,
+          "btns": [
+            [
+              "주요 행동",
+              "solid"
+            ],
+            [
+              "더 알아보기",
+              "outline"
+            ]
+          ]
+        },
+        {
+          "value": "one-solid",
+          "label": "하나로 집중",
+          "sub": "솔리드 1개",
+          "rank": 2,
+          "btns": [
+            [
+              "주요 행동",
+              "solid"
+            ]
+          ]
+        },
+        {
+          "value": "one-arrow",
+          "label": "화살표 링크형",
+          "sub": "가벼운 유도",
+          "rank": 3,
+          "btns": [
+            [
+              "시작하기 →",
+              "link"
+            ]
+          ]
+        },
+        {
+          "value": "solid-link",
+          "label": "주 + 텍스트 링크",
+          "sub": "보조를 더 가볍게",
+          "rank": 4,
+          "btns": [
+            [
+              "주요 행동",
+              "solid"
+            ],
+            [
+              "둘러보기 →",
+              "link"
+            ]
+          ]
+        },
+        {
+          "value": "two-solid",
+          "label": "동급 둘",
+          "sub": "선택 분기형",
+          "rank": 5,
+          "btns": [
+            [
+              "옵션 A",
+              "solid"
+            ],
+            [
+              "옵션 B",
+              "solid"
+            ]
+          ]
+        }
+      ]
+    },
+    {
+      "id": "header",
+      "title": "헤더",
+      "type": "wire",
+      "hint": "",
+      "cands": [
+        {
+          "value": "logo-links-cta",
+          "label": "로고 + 링크 + CTA",
+          "rank": 1,
+          "rows": [
+            "hd:cta"
+          ]
+        },
+        {
+          "value": "logo-links",
+          "label": "로고 + 링크",
+          "rank": 2,
+          "rows": [
+            "hd:links"
+          ]
+        },
+        {
+          "value": "logo-only",
+          "label": "로고만 (집중형)",
+          "rank": 3,
+          "rows": [
+            "hd:logo"
+          ]
+        },
+        {
+          "value": "centered",
+          "label": "센터 로고 + 양측 링크",
+          "rank": 4,
+          "rows": [
+            "hd:center"
+          ]
+        },
+        {
+          "value": "sticky-thin",
+          "label": "얇은 고정 바",
+          "rank": 5,
+          "rows": [
+            "hd:thin"
+          ]
+        },
+        {
+          "value": "hamburger",
+          "label": "로고 + 햄버거",
+          "rank": 6,
+          "rows": [
+            "hd:burger"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "footer",
+      "title": "푸터",
+      "type": "wire",
+      "hint": "",
+      "cands": [
+        {
+          "value": "one-line",
+          "label": "한 줄 미니멀",
+          "rank": 1,
+          "rows": [
+            "b8"
+          ]
+        },
+        {
+          "value": "contact-focus",
+          "label": "연락처 중심",
+          "rank": 2,
+          "rows": [
+            "r:3",
+            "b8"
+          ]
+        },
+        {
+          "value": "multi-column",
+          "label": "멀티 컬럼 링크",
+          "rank": 3,
+          "rows": [
+            "r:4",
+            "b8"
+          ]
+        },
+        {
+          "value": "newsletter",
+          "label": "뉴스레터 + 링크",
+          "rank": 4,
+          "rows": [
+            "nb",
+            "b8"
+          ]
+        },
+        {
+          "value": "big-brand",
+          "label": "빅 브랜드 타입",
+          "rank": 5,
+          "rows": [
+            "h20",
+            "b8"
+          ]
+        },
+        {
+          "value": "sitemap",
+          "label": "사이트맵형",
+          "rank": 6,
+          "rows": [
+            "r:4",
+            "r:4",
+            "b8"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "card",
+      "title": "카드 스타일",
+      "type": "cardr",
+      "hint": "실물 렌더",
+      "cands": [
+        {
+          "value": "flat-tonal",
+          "label": "플랫 + 명도",
+          "sub": "보더 없음",
+          "rank": 1,
+          "style": "background:#fff"
+        },
+        {
+          "value": "bordered",
+          "label": "보더",
+          "sub": "또렷한 경계",
+          "rank": 2,
+          "style": "background:#fff;border:1px solid rgba(20,18,14,.18)"
+        },
+        {
+          "value": "soft-shadow",
+          "label": "소프트 섀도",
+          "sub": "떠 있는",
+          "rank": 3,
+          "style": "background:#fff;box-shadow:0 8px 24px rgba(20,18,14,.10)"
+        },
+        {
+          "value": "photo-top",
+          "label": "사진 상단형",
+          "sub": "이미지 주도",
+          "rank": 4,
+          "style": "background:#fff",
+          "photo": true
+        },
+        {
+          "value": "tinted",
+          "label": "액센트 틴트",
+          "sub": "은은한 물듦",
+          "rank": 5,
+          "style": "background:rgba(26,107,60,.06)"
+        },
+        {
+          "value": "underline",
+          "label": "언더라인 리스트형",
+          "sub": "카드 아님",
+          "rank": 6,
+          "style": "background:transparent;border-bottom:2px solid rgba(20,18,14,.2);border-radius:0"
+        }
+      ]
+    },
+    {
+      "id": "density",
+      "title": "그리드 · 밀도",
+      "type": "steps",
+      "hint": "여백과 정보 밀도",
+      "cands": [
+        {
+          "value": "airy",
+          "label": "여유",
+          "rank": 1,
+          "w": 26
+        },
+        {
+          "value": "comfortable",
+          "label": "표준",
+          "rank": 2,
+          "w": 34
+        },
+        {
+          "value": "compact",
+          "label": "컴팩트",
+          "rank": 3,
+          "w": 42
+        },
+        {
+          "value": "dense",
+          "label": "밀집",
+          "rank": 4,
+          "w": 50
+        }
+      ]
+    },
+    {
+      "id": "radius",
+      "title": "모서리 · 형태 언어",
+      "type": "steps",
+      "hint": "",
+      "cands": [
+        {
+          "value": "sharp",
+          "label": "각진 0",
+          "rank": 4,
+          "r": 0
+        },
+        {
+          "value": "subtle",
+          "label": "미세 4px",
+          "rank": 1,
+          "r": 4
+        },
+        {
+          "value": "rounded",
+          "label": "라운드 10px",
+          "rank": 2,
+          "r": 10
+        },
+        {
+          "value": "soft",
+          "label": "소프트 18px",
+          "rank": 3,
+          "r": 18
+        },
+        {
+          "value": "pill",
+          "label": "필",
+          "rank": 5,
+          "r": 99
+        }
+      ]
+    },
+    {
+      "id": "motion",
+      "title": "모션 톤 — 전환·등장의 규모",
+      "type": "demo",
+      "hint": "화면 전환과 요소 등장이 얼마나 표현적인가 (커서 반응은 아래 별도 축)",
+      "cands": [
+        {
+          "value": "standard",
+          "label": "표준",
+          "sub": "hover + 등장",
+          "rank": 1,
+          "cls": "d-std",
+          "desc": "부양·등장 모션. 대부분의 제품에 알맞음."
+        },
+        {
+          "value": "minimal",
+          "label": "담백",
+          "sub": "전환만",
+          "rank": 2,
+          "cls": "d-plain",
+          "desc": "색 전환만, 움직임 없음."
+        },
+        {
+          "value": "rich",
+          "label": "풍부",
+          "sub": "스크롤 연출",
+          "rank": 3,
+          "cls": "d-rich",
+          "desc": "스크롤 스토리텔링급 — 실험적 표현은 수동 승인."
+        },
+        {
+          "value": "none",
+          "label": "선택 안함",
+          "sub": "에이전트 판단",
+          "rank": 4,
+          "cls": "d-plain",
+          "desc": "정하지 않음 — 맥락에 맞게 에이전트가 판단합니다."
+        }
+      ]
+    },
+    {
+      "id": "pointer",
+      "title": "커서 인터랙션 — 마우스가 닿을 때·움직일 때",
+      "type": "demo",
+      "size": "lg",
+      "hint": "hover 성격과 커서 반응 표현 (모션 톤과 별개 축) — 박스 안에서 마우스를 움직여보세요",
+      "cands": [
+        {
+          "value": "none",
+          "label": "선택 안함",
+          "sub": "에이전트 판단",
+          "rank": 1,
+          "cls": "d-plain",
+          "desc": "정하지 않음 — 기본 hover만 두고 에이전트가 판단."
+        },
+        {
+          "value": "lift",
+          "label": "부양",
+          "sub": "hover 떠오름",
+          "rank": 2,
+          "cls": "d-std",
+          "desc": "카드·버튼이 살짝 떠오릅니다."
+        },
+        {
+          "value": "cursor-field",
+          "label": "커서 반응 필드",
+          "sub": "배경이 커서를 따라 빛남",
+          "rank": 3,
+          "cls": "d-field",
+          "desc": "askewly 쇼케이스의 Cursor-Reactive Field — 배경 글로우가 커서를 따라옵니다."
+        },
+        {
+          "value": "glow",
+          "label": "글로우",
+          "sub": "hover 빛 번짐",
+          "rank": 4,
+          "cls": "d-glow",
+          "desc": "액센트빛이 번집니다 — 다크에서 강함."
+        },
+        {
+          "value": "underline",
+          "label": "밑줄 확장",
+          "sub": "타이포 중심",
+          "rank": 5,
+          "cls": "d-underline",
+          "desc": "밑줄이 자라납니다 — 에디토리얼."
+        },
+        {
+          "value": "magnet",
+          "label": "자석",
+          "sub": "요소가 커서 추종",
+          "rank": 6,
+          "cls": "d-rich",
+          "desc": "버튼이 커서를 따라옵니다 — 실험적(수동 승인)."
+        }
+      ]
+    },
+    {
+      "id": "icon",
+      "title": "아이콘 스타일",
+      "type": "iconr",
+      "size": "lg",
+      "hint": "같은 아이콘 3종을 스타일별로 — 선 굵기·면·색 개입의 차이",
+      "cands": [
+        {
+          "value": "outline",
+          "label": "아웃라인",
+          "sub": "얇은 선 1.8 (Lucide풍)",
+          "rank": 1,
+          "sw": 1.8,
+          "fill": "none",
+          "join": "round"
+        },
+        {
+          "value": "bold-outline",
+          "label": "볼드 라인",
+          "sub": "굵은 선 2.8",
+          "rank": 2,
+          "sw": 2.8,
+          "fill": "none",
+          "join": "round"
+        },
+        {
+          "value": "filled",
+          "label": "필드(면)",
+          "sub": "채운 면",
+          "rank": 3,
+          "sw": 0,
+          "fill": "currentColor",
+          "join": "round"
+        },
+        {
+          "value": "duotone",
+          "label": "듀오톤",
+          "sub": "선 + 액센트 면",
+          "rank": 4,
+          "sw": 1.6,
+          "fill": "ACCENT",
+          "join": "round"
+        },
+        {
+          "value": "sharp",
+          "label": "샤프",
+          "sub": "각진 조인트",
+          "rank": 5,
+          "sw": 2,
+          "fill": "none",
+          "join": "miter"
+        },
+        {
+          "value": "none",
+          "label": "아이콘 없음",
+          "sub": "텍스트만",
+          "rank": 6,
+          "none": true
+        }
+      ]
+    },
+    {
+      "id": "dark",
+      "title": "다크 모드",
+      "type": "mini",
+      "hint": "",
+      "cands": [
+        {
+          "value": "both-auto",
+          "label": "라이트 + 다크 (시스템 따름)",
+          "sub": "기본 추천",
+          "rank": 1,
+          "bg": "linear-gradient(90deg, rgb(250,248,244) 50%, rgb(29,24,19) 50%)",
+          "ink": "rgba(20,18,14,.9)"
+        },
+        {
+          "value": "light-only",
+          "label": "라이트만",
+          "sub": "범위 축소",
+          "rank": 2,
+          "bg": "rgb(250,248,244)",
+          "ink": "rgba(28,23,16,.95)"
+        },
+        {
+          "value": "dark-first",
+          "label": "다크 우선",
+          "sub": "밤 무드 브랜드",
+          "rank": 3,
+          "bg": "rgb(24,22,26)",
+          "ink": "rgba(244,244,248,.95)"
+        }
+      ]
+    },
+    {
+      "id": "a11y",
+      "title": "글자 잘 보이기 기준 (접근성)",
+      "type": "textc",
+      "hint": "배경과 글자의 명암 차이를 어디까지 보장할지",
+      "cands": [
+        {
+          "value": "aa",
+          "label": "표준",
+          "sub": "대부분 서비스의 실무·법적 기준 — 일반 시력 기준 충분히 읽힘 (WCAG AA, 대비 4.5:1)",
+          "rank": 1
+        },
+        {
+          "value": "aaa-body",
+          "label": "본문 강화",
+          "sub": "본문 글자만 더 진하게 — 저시력·고령 사용자도 편안 (본문 AAA 7:1)",
+          "rank": 2
+        },
+        {
+          "value": "aaa",
+          "label": "최고 수준",
+          "sub": "모든 글자·요소를 최고 대비로 — 공공·의료 서비스급 (AAA 전면)",
+          "rank": 3
+        }
+      ]
+    }
+  ]
+};
+/* ================= STUDIO DATA END ================= */
+const TILES = STUDIO_DATA.tiles;
+const AXES = STUDIO_DATA.axes;
 /* ================= 렌더러 (에이전트 수정 불필요) ================= */
 const sel = {}; let tileSel = null;
 const app = document.getElementById('app');

@@ -135,3 +135,4 @@
 | 133 | 20260718-askewly-design-skill | 2026-07-18 | SE1 Step 2: askewly-design entry skill (thin router, Claude+Codex deploy) — replaces global design-routing section | 3/3 | complete |
 | 134 | 20260718-global-routing-removal | 2026-07-18 | SE2 Step 1: global design-routing sections removed from ~/.claude/CLAUDE.md and ~/.codex/AGENTS.md (user-confirmed full removal, rollback text preserved) | 3/3 | complete |
 | 135 | 20260718-skill-entry-e2e | 2026-07-18 | SE2 Step 2: E2E — Claude attempt1 FAIL -> description hardened -> Claude PASS + Codex PASS (skill fired, protocol fetched, screenshots produced) | 4/4 | complete |
+| 136 | 20260719-studio-data-injection | 2026-07-19 | SF1 step 1: studio data JSON + make-studio.py generator (no more direct HTML edits) | 4/4 | complete |
