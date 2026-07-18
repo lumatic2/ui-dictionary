@@ -362,11 +362,12 @@
             "r:3",
             "b14"
           ],
-          "pv": [
-            "hero",
-            "cards",
-            "info"
-          ]
+      "pv": [
+        "hero",
+        "cards",
+        "info"
+      ],
+      "recipes": { "hero": "landing-hero", "cards": "responsive-content-grid", "info": "article-documentation-layout" }
         },
         {
           "value": "split-hero-flow",
@@ -378,11 +379,12 @@
             "r:3",
             "b12"
           ],
-          "pv": [
-            "split",
-            "cards",
-            "cta"
-          ]
+      "pv": [
+        "split",
+        "cards",
+        "cta"
+      ],
+      "recipes": { "split": "landing-hero", "cards": "responsive-content-grid", "cta": "button" }
         },
         {
           "value": "media-full",
@@ -394,11 +396,12 @@
             "b12",
             "b10"
           ],
-          "pv": [
-            "fullhero",
-            "info",
-            "cta"
-          ]
+      "pv": [
+        "fullhero",
+        "info",
+        "cta"
+      ],
+      "recipes": { "fullhero": "landing-hero", "info": "article-documentation-layout", "cta": "button" }
         },
         {
           "value": "steps-flow",
@@ -410,11 +413,12 @@
             "r:3",
             "b12"
           ],
-          "pv": [
-            "hero",
-            "steps",
-            "cta"
-          ]
+      "pv": [
+        "hero",
+        "steps",
+        "cta"
+      ],
+      "recipes": { "hero": "landing-hero", "steps": "data-import-wizard-validation-preview-steps", "cta": "button" }
         },
         {
           "value": "proof-first",
@@ -427,12 +431,13 @@
             "r:3",
             "b10"
           ],
-          "pv": [
-            "hero",
-            "quote",
-            "cards",
-            "cta"
-          ]
+      "pv": [
+        "hero",
+        "quote",
+        "cards",
+        "cta"
+      ],
+      "recipes": { "hero": "landing-hero", "quote": "showcase-card", "cards": "responsive-content-grid", "cta": "button" }
         },
         {
           "value": "gallery-first",
@@ -445,11 +450,12 @@
             "r:4",
             "b10"
           ],
-          "pv": [
-            "minihero",
-            "gallery",
-            "cards"
-          ]
+      "pv": [
+        "minihero",
+        "gallery",
+        "cards"
+      ],
+      "recipes": { "minihero": "landing-hero", "gallery": "category-product-grid", "cards": "responsive-content-grid" }
         },
         {
           "value": "long-story",
@@ -463,13 +469,14 @@
             "b8",
             "b10"
           ],
-          "pv": [
-            "hero",
-            "story",
-            "story2",
-            "faq",
-            "cta"
-          ]
+      "pv": [
+        "hero",
+        "story",
+        "story2",
+        "faq",
+        "cta"
+      ],
+      "recipes": { "hero": "landing-hero", "story": "article-documentation-layout", "story2": "scroll-driven-reveal", "faq": "recoverable-empty-state", "cta": "button" }
         },
         {
           "value": "one-screen",
@@ -479,9 +486,10 @@
           "rows": [
             "h50"
           ],
-          "pv": [
-            "fullhero"
-          ]
+      "pv": [
+        "fullhero"
+      ],
+      "recipes": { "fullhero": "landing-hero" }
         },
         {
           "value": "compare-table",
@@ -494,13 +502,14 @@
             "sb12",
             "b10"
           ],
-          "pv": [
-            "hero",
-            "compare",
-            "quote",
-            "cta"
-          ],
-          "hidden": true
+      "pv": [
+        "hero",
+        "compare",
+        "quote",
+        "cta"
+      ],
+      "recipes": { "hero": "landing-hero", "compare": "interactive-data-table", "quote": "showcase-card", "cta": "button" },
+      "hidden": true
         },
         {
           "value": "problem-mech-proof",
@@ -514,14 +523,15 @@
             "sb12",
             "b10"
           ],
-          "pv": [
-            "hero",
-            "problem",
-            "mech",
-            "quote",
-            "cta"
-          ],
-          "hidden": true
+      "pv": [
+        "hero",
+        "problem",
+        "mech",
+        "quote",
+        "cta"
+      ],
+      "recipes": { "hero": "landing-hero", "problem": "recoverable-empty-state", "mech": "data-import-wizard-validation-preview-steps", "quote": "showcase-card", "cta": "button" },
+      "hidden": true
         },
         {
           "value": "ugc-first",
@@ -534,13 +544,14 @@
             "r:3",
             "b10"
           ],
-          "pv": [
-            "minihero",
-            "ugc",
-            "cards",
-            "cta"
-          ],
-          "hidden": true
+      "pv": [
+        "minihero",
+        "ugc",
+        "cards",
+        "cta"
+      ],
+      "recipes": { "minihero": "landing-hero", "ugc": "category-product-grid", "cards": "responsive-content-grid", "cta": "button" },
+      "hidden": true
         },
         {
           "value": "faq-trust",
@@ -554,15 +565,16 @@
             "b8",
             "b10"
           ],
-          "pv": [
-            "hero",
-            "problem",
-            "quote",
-            "faq",
-            "guarantee",
-            "cta"
-          ],
-          "hidden": true
+      "pv": [
+        "hero",
+        "problem",
+        "quote",
+        "faq",
+        "guarantee",
+        "cta"
+      ],
+      "recipes": { "hero": "landing-hero", "problem": "recoverable-empty-state", "quote": "showcase-card", "faq": "article-documentation-layout", "guarantee": "actionable-toast", "cta": "button" },
+      "hidden": true
         },
         {
           "value": "booking-widget",
@@ -576,14 +588,15 @@
             "b8",
             "b10"
           ],
-          "pv": [
-            "bookhero",
-            "slots",
-            "quote",
-            "faq",
-            "cta"
-          ],
-          "hidden": true
+      "pv": [
+        "bookhero",
+        "slots",
+        "quote",
+        "faq",
+        "cta"
+      ],
+      "recipes": { "bookhero": "product-detail-purchase-stack", "slots": "shipping-method-selector", "quote": "showcase-card", "faq": "article-documentation-layout", "cta": "button" },
+      "hidden": true
         }
       ]
     },

@@ -52,6 +52,22 @@ def validate(data: dict) -> None:
             for f in ("value", "rank"):
                 if f not in c:
                     fail(f"axes[{i}].cands[{j}] ({a['id']}) 필수 필드 누락: {f}")
+            if a["id"] == "composition":
+                pv = c.get("pv")
+                recipes = c.get("recipes")
+                if not isinstance(pv, list) or not pv:
+                    fail(f"composition 후보 {c.get('value', '?')} pv 가 비어 있음")
+                if not isinstance(recipes, dict):
+                    fail(f"composition 후보 {c.get('value', '?')} recipes 매핑 누락")
+                missing_recipe_keys = sorted(set(pv) - set(recipes))
+                if missing_recipe_keys:
+                    fail(f"composition 후보 {c.get('value', '?')} recipes 키 누락: {', '.join(missing_recipe_keys)}")
+                extra_recipe_keys = sorted(set(recipes) - set(pv))
+                if extra_recipe_keys:
+                    fail(f"composition 후보 {c.get('value', '?')} recipes 불필요 키: {', '.join(extra_recipe_keys)}")
+                for section_key, recipe in recipes.items():
+                    if not isinstance(recipe, str) or not recipe.strip():
+                        fail(f"composition 후보 {c.get('value', '?')} recipes.{section_key} 값이 비어 있음")
     absent = REQUIRED_AXIS_IDS - axis_ids
     if absent:
         fail(f"렌더러 필수 축 누락: {', '.join(sorted(absent))}")

@@ -495,7 +495,12 @@ const STUDIO_DATA = {
             "hero",
             "cards",
             "info"
-          ]
+          ],
+          "recipes": {
+            "hero": "landing-hero",
+            "cards": "responsive-content-grid",
+            "info": "article-documentation-layout"
+          }
         },
         {
           "value": "split-hero-flow",
@@ -511,7 +516,12 @@ const STUDIO_DATA = {
             "split",
             "cards",
             "cta"
-          ]
+          ],
+          "recipes": {
+            "split": "landing-hero",
+            "cards": "responsive-content-grid",
+            "cta": "button"
+          }
         },
         {
           "value": "media-full",
@@ -527,7 +537,12 @@ const STUDIO_DATA = {
             "fullhero",
             "info",
             "cta"
-          ]
+          ],
+          "recipes": {
+            "fullhero": "landing-hero",
+            "info": "article-documentation-layout",
+            "cta": "button"
+          }
         },
         {
           "value": "steps-flow",
@@ -543,7 +558,12 @@ const STUDIO_DATA = {
             "hero",
             "steps",
             "cta"
-          ]
+          ],
+          "recipes": {
+            "hero": "landing-hero",
+            "steps": "data-import-wizard-validation-preview-steps",
+            "cta": "button"
+          }
         },
         {
           "value": "proof-first",
@@ -561,7 +581,13 @@ const STUDIO_DATA = {
             "quote",
             "cards",
             "cta"
-          ]
+          ],
+          "recipes": {
+            "hero": "landing-hero",
+            "quote": "showcase-card",
+            "cards": "responsive-content-grid",
+            "cta": "button"
+          }
         },
         {
           "value": "gallery-first",
@@ -578,7 +604,12 @@ const STUDIO_DATA = {
             "minihero",
             "gallery",
             "cards"
-          ]
+          ],
+          "recipes": {
+            "minihero": "landing-hero",
+            "gallery": "category-product-grid",
+            "cards": "responsive-content-grid"
+          }
         },
         {
           "value": "long-story",
@@ -598,7 +629,14 @@ const STUDIO_DATA = {
             "story2",
             "faq",
             "cta"
-          ]
+          ],
+          "recipes": {
+            "hero": "landing-hero",
+            "story": "article-documentation-layout",
+            "story2": "scroll-driven-reveal",
+            "faq": "recoverable-empty-state",
+            "cta": "button"
+          }
         },
         {
           "value": "one-screen",
@@ -610,7 +648,10 @@ const STUDIO_DATA = {
           ],
           "pv": [
             "fullhero"
-          ]
+          ],
+          "recipes": {
+            "fullhero": "landing-hero"
+          }
         },
         {
           "value": "compare-table",
@@ -629,6 +670,12 @@ const STUDIO_DATA = {
             "quote",
             "cta"
           ],
+          "recipes": {
+            "hero": "landing-hero",
+            "compare": "interactive-data-table",
+            "quote": "showcase-card",
+            "cta": "button"
+          },
           "hidden": true
         },
         {
@@ -650,6 +697,13 @@ const STUDIO_DATA = {
             "quote",
             "cta"
           ],
+          "recipes": {
+            "hero": "landing-hero",
+            "problem": "recoverable-empty-state",
+            "mech": "data-import-wizard-validation-preview-steps",
+            "quote": "showcase-card",
+            "cta": "button"
+          },
           "hidden": true
         },
         {
@@ -669,6 +723,12 @@ const STUDIO_DATA = {
             "cards",
             "cta"
           ],
+          "recipes": {
+            "minihero": "landing-hero",
+            "ugc": "category-product-grid",
+            "cards": "responsive-content-grid",
+            "cta": "button"
+          },
           "hidden": true
         },
         {
@@ -691,6 +751,14 @@ const STUDIO_DATA = {
             "guarantee",
             "cta"
           ],
+          "recipes": {
+            "hero": "landing-hero",
+            "problem": "recoverable-empty-state",
+            "quote": "showcase-card",
+            "faq": "article-documentation-layout",
+            "guarantee": "actionable-toast",
+            "cta": "button"
+          },
           "hidden": true
         },
         {
@@ -712,6 +780,13 @@ const STUDIO_DATA = {
             "faq",
             "cta"
           ],
+          "recipes": {
+            "bookhero": "product-detail-purchase-stack",
+            "slots": "shipping-method-selector",
+            "quote": "showcase-card",
+            "faq": "article-documentation-layout",
+            "cta": "button"
+          },
           "hidden": true
         }
       ]
@@ -1659,7 +1734,14 @@ document.getElementById('pv-dark').addEventListener('click', e => {
 });
 document.getElementById('pv-mobile').addEventListener('click', () => { pvMobile = !pvMobile; renderPreview(); });
 document.getElementById('send').addEventListener('click', async () => {
-  const payload = { version: 2, tile: tileSel, selections: sel, submittedAt: new Date().toISOString() };
+  const composition = getCand('composition', sel.composition);
+  const payload = {
+    version: 2,
+    tile: tileSel,
+    selections: sel,
+    implementation: composition ? { composition: composition.value, recipes: composition.recipes } : null,
+    submittedAt: new Date().toISOString()
+  };
   try {
     const res = await fetch('/select', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(payload) });
     if (!res.ok) throw new Error(res.status);
