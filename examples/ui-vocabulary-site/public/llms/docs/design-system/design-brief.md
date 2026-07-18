@@ -30,7 +30,7 @@ Date: 2026-07-18
 
 ## 3. DESIGN.md 저장 계약
 
-- 풀 브리프의 답변은 **작업 프로젝트 루트 `DESIGN.md`**로 저장한다 — 포맷은 askewly `templates/DESIGN.md.tmpl`(YAML frontmatter 토큰 + 본문 rationale)을 따르고, 답변에서 파생한 실제 토큰 값(베이스·액센트·서체·radius·간격)을 채운다.
+- 풀 브리프의 답변은 **작업 프로젝트 루트 `DESIGN.md`**로 저장한다 — 포맷은 **Google Stitch 공식 스펙**(google-labs-code/design.md, alpha)을 따른다: frontmatter `name/colors/typography/rounded/spacing/components` + 고정 순서 8섹션(Overview → Colors → Typography → Layout → Elevation & Depth → Shapes → Components → Do's and Don'ts, 생략 가능), 토큰 참조 `{path.to.token}`, `colors.primary` 필수. 출발점은 askewly `templates/DESIGN.md.tmpl`(공식 정합판). 답변에서 파생한 실제 토큰 값(베이스·액센트·서체·radius·간격)을 채운다.
 - rationale 본문에 브리프 요약(톤·구조·인터랙션 수위·콘텐츠 출처)과 **추천값 채택 항목**(사용자가 명시하지 않아 기본값으로 간 것)을 구분해 기록한다 — 다음 세션이 "결정"과 "추정"을 구분할 수 있어야 한다.
 - 이 파일이 생기는 순간 프로젝트는 룩 소유권을 가진다: 이후 모든 디자인 작업은 entry-protocol 토큰 판정에 따라 askewly 토큰이 아니라 이 파일에서 파생한다.
 
