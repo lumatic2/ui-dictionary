@@ -2,7 +2,7 @@
 
 Date: 2026-07-19
 Milestone: RC4 (`ROADMAP.md`, pending — Recipe Code Reuse 4/4)
-Status: proposed
+Status: approved (2026-07-19)
 
 ## 위계
 
@@ -29,13 +29,20 @@ Status: proposed
 
 ## Step 트리
 
-- [ ] Step 1 — 통합 실연 + horizon close (changeset)
+- [ ] Step 1 — 실연 준비 (changeset)
+  - Artifact: changeset
+  - Files: scratchpad 실연 프로젝트(브리프 데이터 JSON·스튜디오 생성·서버), `evidence/recipe-code-reuse/rc4-setup.md`
+  - Dependencies: RC1~RC3
+  - Verify: 의뢰 업종 확정(사용자, 없으면 제안) → 커스텀 데이터 생성 → 스튜디오 실구동 + 매핑 포함 수집 준비 상태 확인
+  - Failure probe: 매핑·자산 fetch 사전 점검 — 끊긴 링크 0 확인 후에만 사용자 호출
+  - Commit: `feat(agent): RC4 step 1 — demo setup`
+- [ ] Step 2 — 통합 실연 + horizon close (changeset)
   - Artifact: changeset (evidence)
   - Files: `evidence/recipe-code-reuse/rc4-demo.md`(+선택 JSON·스크린샷), horizon doc·ROADMAP
-  - Dependencies: RC1~RC3 + 사용자 의뢰
+  - Dependencies: Step 1 + 사용자 참여
   - Verify: 전 루프 관측 + Close Criteria 5항 선언/실측/판정 대조 + 프리모템 대조 + 크기 회고
   - Failure probe: 루프 중 단절(매핑 미사용·리맵 생략 등) 발견 시 미화 없이 기록·즉시 교정·재실연
-  - Commit: `feat(agent): RC4 — integrated demo + horizon close`
+  - Commit: `feat(agent): RC4 step 2 — integrated demo + horizon close`
 
 ## Scope Boundary
 

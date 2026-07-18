@@ -2,7 +2,7 @@
 
 Date: 2026-07-19
 Milestone: RC2 (`ROADMAP.md`, pending — Recipe Code Reuse 2/4)
-Status: proposed
+Status: approved (2026-07-19)
 
 ## 위계
 

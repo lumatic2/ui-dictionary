@@ -2,7 +2,7 @@
 
 Date: 2026-07-19
 Milestone: RC1 (`ROADMAP.md`, active — Recipe Code Reuse 1/4)
-Status: proposed
+Status: approved (2026-07-19)
 
 ## 위계
 
