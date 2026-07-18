@@ -1,0 +1,33 @@
+{
+  "version": 2,
+  "tile": "clay-hands",
+  "selections": {
+    "base": "warm-paper",
+    "accent": "forest",
+    "typo": "serif-head",
+    "imagery": "photo-5",
+    "composition": "hero-cards-info",
+    "headline": "hl-1",
+    "subcopy": "sc-1",
+    "header": "logo-links-cta",
+    "card": "flat-tonal",
+    "density": "airy",
+    "motion": "standard",
+    "pointer": "none",
+    "icon": "outline",
+    "dark": "both-auto",
+    "a11y": "aa",
+    "radius": "subtle",
+    "footer": "one-line",
+    "cta": "two-split"
+  },
+  "implementation": {
+    "composition": "hero-cards-info",
+    "recipes": {
+      "hero": "landing-hero",
+      "cards": "responsive-content-grid",
+      "info": "article-documentation-layout"
+    }
+  },
+  "submittedAt": "2026-07-18T19:54:39.142Z"
+}

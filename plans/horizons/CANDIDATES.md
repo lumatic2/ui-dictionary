@@ -18,3 +18,4 @@
 - 2026-07-19: studio-finish horizon 개설 (사용자 선정 — cascade-studio 이월 갭 3건 마감, `2026-07-studio-finish.md`). 후보 1번(parked horizon 복귀)은 잔류 — 복귀 조건(agent-adoption-loop 닫힘)은 충족된 상태.
 - 2026-07-19: recipe-code-reuse horizon 개설 (사용자 발의 — "사이트 템플릿 활용": 코드 출발 + 스튜디오 연결 선택, `2026-07-recipe-code-reuse.md`).
 - 2026-07-19: template-production-system next 번들 작성 (사용자 발의·추천 범위 확정 — 명함/제품 포스터/인포그래픽, 구조 우선, 고정 fixture 우선). 기존 active와 후보 우선순위는 사용자 결정 전 변경하지 않음.
+- 2026-07-19: recipe-code-reuse closed (RC1~RC4 — 27 코드 자산·코드 출발 계약·매핑·실연 사람 게이트. 2세션 병행 1일 완주 — 디플레 재적발, 다음 설계 입력).

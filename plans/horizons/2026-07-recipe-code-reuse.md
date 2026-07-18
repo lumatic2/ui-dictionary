@@ -1,7 +1,7 @@
 # Horizon — Recipe Code Reuse (레시피 코드 자산화 + 스튜디오 연결)
 
 Date: 2026-07-19
-Status: proposed
+Status: closed (2026-07-19 — RC1~RC4 완료, Close Criteria 5/5. 사람 게이트: 사용자 실물 확인 승인. 상세는 하단 Close 절)
 Objective link: `OBJECTIVE.md` (성공 상태 ③ 에이전트 소비 — 문서 읽고 재구현 → 검증된 코드에서 출발로 격상 / 이동 축 "시각적 영감에서 → 구현 가능한 코드·에셋·에이전트 가이드로")
 Preceding horizon: `plans/horizons/2026-07-studio-finish.md` (closed 2026-07-19)
 
@@ -27,10 +27,10 @@ Preceding horizon: `plans/horizons/2026-07-studio-finish.md` (closed 2026-07-19)
 
 | ID | 이름 | plan doc | 승인 | 리서치 |
 |---|---|---|---|---|
-| RC1 | 코드 자산 registry 파이프라인 | `plans/2026-07-19-rc1-registry-pipeline.md` | proposed | `research/2026-07-19-recipe-code-reuse-shadcn-registry.md` |
-| RC2 | 코드 출발 계약 + 에이전트 E2E | `plans/2026-07-19-rc2-code-first-contract.md` | proposed | 불요 — RC1 산출이 입력 |
-| RC3 | 스튜디오 구성 ↔ 레시피 매핑 | `plans/2026-07-19-rc3-composition-recipe-map.md` | proposed | 불요 — 내부 매핑 |
-| RC4 | 통합 실연 (스튜디오→코드 조합→리스타일) | `plans/2026-07-19-rc4-integrated-demo.md` | proposed | 불요 — 실연 |
+| RC1 | 코드 자산 registry 파이프라인 | `plans/2026-07-19-rc1-registry-pipeline.md` | completed 2026-07-19 | `research/2026-07-19-recipe-code-reuse-shadcn-registry.md` |
+| RC2 | 코드 출발 계약 + 에이전트 E2E | `plans/2026-07-19-rc2-code-first-contract.md` | completed 2026-07-19 (2세션 병행 실측) | 불요 — RC1 산출이 입력 |
+| RC3 | 스튜디오 구성 ↔ 레시피 매핑 | `plans/2026-07-19-rc3-composition-recipe-map.md` | completed 2026-07-19 (피어 실행·독립 리뷰) | 불요 — 내부 매핑 |
+| RC4 | 통합 실연 (스튜디오→코드 조합→리스타일) | `plans/2026-07-19-rc4-integrated-demo.md` | completed 2026-07-19 (사람 게이트 승인) | 불요 — 실연 |
 
 ## Close Criteria (선언 / 실측 / 판정 대조용)
 
@@ -54,6 +54,32 @@ Preceding horizon: `plans/horizons/2026-07-studio-finish.md` (closed 2026-07-19)
 - 사이트 결합 데모의 결합 절단 리팩터(1차 배치는 순수 데모만 — 절단은 후속 배치)
 - 사이트 코드 복사 UI (사람용 — 이번 범위는 에이전트 경로)
 - AskewlyDesign 네이티브 앱
+
+## Close (2026-07-19)
+
+### Close Criteria 선언 / 실측 / 판정
+
+1. 코드 자산 배포(≥12) / 27 자산 curl 200 + 의존 선언 전수 / **충족**
+2. 깨끗한 이식 실구동(≥1) / RC1 stat-summary-grid + RC4 responsive-content-grid, 결합 잔재 0 / **충족**
+3. 코드 출발 E2E / headless 2세션 병행 실측 — fetch→이식→토큰 리맵 관측 (2차 FAIL→STOP 백링크 강화→PASS 교정 루프 포함) / **충족**
+4. 매핑 배선 / 13항·49/49 키 전수 + 수집 payload `implementation.recipes` 실측 + 계약 배포 / **충족**
+5. 통합 실연 / 사용자 실선택 18/18(도자기숍) → 매핑 소비 → 코드 이식+문서 폴백 → 리스타일 → **사용자 실물 확인 승인** / **충족**
+
+### 프리모템 대조
+
+- ① 가져온 코드 미동작: 발생 안 함 — 순수성 게이트 + 깨끗한 프로젝트 이식 실구동이 예방.
+- ② shadcn 표정 고착: **RC2 2차 시도에서 실제 발생**(코드 출발 미발화·prose 재구현) — 예방장치가 아니라 E2E가 잡았고, STOP 백링크·공통 1.5단계 계약 강화로 교정 후 재발 없음. 프리모템이 예측한 실패가 실측된 사례.
+- ③ 매핑 장식화: 발생 안 함 — RC4 실사용에서 매핑 3건이 실제 구현 경로를 결정.
+- 예상 밖: TS6 baseUrl 폐기(두 세션 동일 발견), preflight urllib UA 오탐 — 둘 다 절차 마찰, 결함 아님.
+
+### 크기 회고
+
+- **인플레 적발 (RC4)**: changeset 1개로 닫힘 — 실연 milestone은 step 크기였다. 다음부터 같은 크기의 실연은 직전 milestone의 step(E2E 항목)으로 담는다.
+- **디플레 적발 (horizon)**: 선언 `최소 2~3 무감독 세션` 대비 달력 1일 완주(세션 2개 *병행* — 순차 무감독 세션 기준 1). 2세션 병행이 순차 선언을 무의미하게 만든 면도 있으나, 선언 취지(그릇 크기) 기준으로는 재차 과소 — studio-finish에 이어 2연속. 다음 Horizon 설계는 milestone 5개+ 또는 병행 세션을 분량 산정에 명시.
+
+### Objective 임팩트
+
+성공 상태 ③(에이전트 소비)의 축을 크게 움직였다 — 에이전트 소비가 "문서를 읽고 재구현"에서 **"검증된 코드에서 출발해 프로젝트 토큰으로 리스타일"**로 격상됐고(27 자산·계약·E2E 실증), 성공 상태 ② 방향의 기반(공개 코드 자산 계층)도 처음 생겼다. 브리프(스튜디오)와 구현(코드 자산)이 매핑으로 연결돼 이동 축 "시각적 영감 → 구현 가능한 코드"가 실사용 루프로 닫혔다. ROADMAP 자기평가 재측정 불요.
 
 ## Backlinks
 
