@@ -26,6 +26,8 @@ source_refs: [tailwind-plus-application-ui]
 last_verified: 2026-07-10
 ---
 
+> Code asset (start here, then restyle to project tokens): https://ui.askewly.com/r/stat-summary-grid.json
+
 ## Intent
 
 A stat summary grid gives a small set of operational measures a consistent hierarchy: label, current value, and a contextual trend or status. It supports quick orientation at the top of a real dashboard; it is not a license to fabricate metrics for decorative proof.

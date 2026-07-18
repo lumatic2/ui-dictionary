@@ -23,6 +23,8 @@ source_refs: [tailwind-plus-ecommerce]
 last_verified: 2026-07-12
 ---
 
+> Code asset (start here, then restyle to project tokens): https://ui.askewly.com/r/promo-banner-system.json
+
 ## Intent
 
 A promo banner system is one banner shape that carries different urgency-driven offer copy — a discount rate, a limited-time sale, a countdown — depending on where it's placed (top-of-site vs in-page). It exists specifically for time-limited, dismissible promotional messaging. It is **not** the same thing as the `incentive-trust-strip` term: that term shows fixed reassurance signals (free shipping, returns, secure checkout) that don't expire and aren't urgency-driven, and it is not user-dismissible in the same session-scoped way this recipe is.

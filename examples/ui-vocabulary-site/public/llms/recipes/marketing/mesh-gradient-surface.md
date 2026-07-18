@@ -20,6 +20,8 @@ source_refs: []
 last_verified: 2026-07-17
 ---
 
+> Code asset (start here, then restyle to project tokens): https://ui.askewly.com/r/mesh-gradient-surface.json
+
 ## Intent
 
 A mesh gradient surface gives a hero, brand section, or empty backdrop an organic multi-point color field without imagery. Tier ① (CSS-only) in `knowledge/expressive-stack.md`: several radial-gradient layers stacked on one element approximate a mesh — no JS, no dependency, static by default. Use it where a flat token background feels inert but a photo or 3D scene would be overkill.

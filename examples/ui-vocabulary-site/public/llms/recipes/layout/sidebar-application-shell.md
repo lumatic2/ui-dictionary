@@ -26,6 +26,8 @@ source_refs: [tailwind-plus-application-ui]
 last_verified: 2026-07-10
 ---
 
+> Code asset (start here, then restyle to project tokens): https://ui.askewly.com/r/sidebar-application-shell.json
+
 ## Intent
 
 A sidebar application shell gives repeated product navigation a stable rail while keeping the task surface flexible. It is appropriate for dashboards, internal tools, and documentation products where users move among peer work areas many times per session.

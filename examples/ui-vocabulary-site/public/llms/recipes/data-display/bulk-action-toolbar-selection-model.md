@@ -23,6 +23,8 @@ source_refs: [tailwind-plus-application-ui]
 last_verified: 2026-07-12
 ---
 
+> Code asset (start here, then restyle to project tokens): https://ui.askewly.com/r/bulk-action-toolbar.json
+
 ## Intent
 
 A bulk action toolbar turns a table's per-row selection into a single place to act on many rows at once. It appears only once a selection exists, always states the selected count out loud, and offers an explicit way to go beyond the current page — selecting every row that matches the active filter, not just the ones currently rendered. It builds directly on `interactive-data-table`'s selection state rather than defining a second, competing selection model.

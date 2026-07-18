@@ -25,6 +25,8 @@ source_refs: [tailwind-plus-ecommerce]
 last_verified: 2026-07-12
 ---
 
+> Code asset (start here, then restyle to project tokens): https://ui.askewly.com/r/category-product-grid.json
+
 ## Intent
 
 A category product grid assembles many `product-card` cells into the higher-order list structure a category or search-results page actually needs: a filter/sort bar above the grid, a loading skeleton that matches the final column count, and an empty state that offers a way out instead of a dead end. The card itself stays a separate term — this recipe is the layout and state machine around it.

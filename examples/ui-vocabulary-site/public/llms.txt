@@ -40,83 +40,51 @@ Rules for consumers: reference semantic tokens, never hard-code color/dimension 
 
 ## Recipes
 
-- [recipes/application-ui/canvas-particle-field.md](https://ui.askewly.com/llms/recipes/application-ui/canvas-particle-field.md): Canvas Particle Field — application-ui recipe (status: draft)
-- [recipes/application-ui/chat-conversation-panel.md](https://ui.askewly.com/llms/recipes/application-ui/chat-conversation-panel.md): Chat Conversation Panel — application-ui recipe (status: draft)
-- [recipes/application-ui/lazy-three-object-scene.md](https://ui.askewly.com/llms/recipes/application-ui/lazy-three-object-scene.md): Lazy three.js Object Scene — application-ui recipe (status: draft)
+- [recipes/application-ui/canvas-particle-field.md](https://ui.askewly.com/llms/recipes/application-ui/canvas-particle-field.md): Canvas Particle Field — application-ui recipe (status: draft) [code: /r/canvas-particle-field.json]
+- [recipes/application-ui/chat-conversation-panel.md](https://ui.askewly.com/llms/recipes/application-ui/chat-conversation-panel.md): Chat Conversation Panel — application-ui recipe (status: draft) [code: /r/chat-conversation-panel.json]
+- [recipes/application-ui/lazy-three-object-scene.md](https://ui.askewly.com/llms/recipes/application-ui/lazy-three-object-scene.md): Lazy three.js Object Scene — application-ui recipe (status: draft) [code: /r/lazy-three-object-scene.json]
 - [recipes/application-ui/showcase-card.md](https://ui.askewly.com/llms/recipes/application-ui/showcase-card.md): Showcase Card — application-ui recipe (status: draft)
 - [recipes/application-ui/spring-drag-snap-card.md](https://ui.askewly.com/llms/recipes/application-ui/spring-drag-snap-card.md): Spring Drag Snap-back Card — application-ui recipe (status: draft)
 - [recipes/application-ui/staggered-entrance-group.md](https://ui.askewly.com/llms/recipes/application-ui/staggered-entrance-group.md): Staggered Entrance Group — application-ui recipe (status: draft)
-- [recipes/commerce/cart-drawer.md](https://ui.askewly.com/llms/recipes/commerce/cart-drawer.md): Cart Drawer — commerce recipe (status: draft)
-- [recipes/commerce/category-product-grid.md](https://ui.askewly.com/llms/recipes/commerce/category-product-grid.md): Category Product Grid — commerce recipe (status: draft)
-- [recipes/commerce/checkout-order-summary.md](https://ui.askewly.com/llms/recipes/commerce/checkout-order-summary.md): Checkout Order Summary — commerce recipe (status: draft)
-- [recipes/commerce/product-detail-purchase-stack.md](https://ui.askewly.com/llms/recipes/commerce/product-detail-purchase-stack.md): Product Detail Purchase Stack — commerce recipe (status: draft)
-- [recipes/commerce/promo-banner-system.md](https://ui.askewly.com/llms/recipes/commerce/promo-banner-system.md): Promo Banner System — commerce recipe (status: draft)
-- [recipes/commerce/shipping-method-selector.md](https://ui.askewly.com/llms/recipes/commerce/shipping-method-selector.md): Shipping Method Selector — commerce recipe (status: draft)
-- [recipes/data-display/audit-log-filterable-export-feed.md](https://ui.askewly.com/llms/recipes/data-display/audit-log-filterable-export-feed.md): Audit Log Filterable Export Feed — data-display recipe (status: draft)
-- [recipes/data-display/bulk-action-toolbar-selection-model.md](https://ui.askewly.com/llms/recipes/data-display/bulk-action-toolbar-selection-model.md): Bulk Action Toolbar with Selection Model — data-display recipe (status: draft)
-- [recipes/data-display/interactive-data-table.md](https://ui.askewly.com/llms/recipes/data-display/interactive-data-table.md): Interactive Data Table — data-display recipe (status: draft)
-- [recipes/data-display/permission-matrix-editor-grid.md](https://ui.askewly.com/llms/recipes/data-display/permission-matrix-editor-grid.md): Permission Matrix Editor Grid — data-display recipe (status: draft)
+- [recipes/commerce/cart-drawer.md](https://ui.askewly.com/llms/recipes/commerce/cart-drawer.md): Cart Drawer — commerce recipe (status: draft) [code: /r/cart-drawer.json]
+- [recipes/commerce/category-product-grid.md](https://ui.askewly.com/llms/recipes/commerce/category-product-grid.md): Category Product Grid — commerce recipe (status: draft) [code: /r/category-product-grid.json]
+- [recipes/commerce/checkout-order-summary.md](https://ui.askewly.com/llms/recipes/commerce/checkout-order-summary.md): Checkout Order Summary — commerce recipe (status: draft) [code: /r/checkout-order-summary.json]
+- [recipes/commerce/product-detail-purchase-stack.md](https://ui.askewly.com/llms/recipes/commerce/product-detail-purchase-stack.md): Product Detail Purchase Stack — commerce recipe (status: draft) [code: /r/product-detail-purchase-stack.json]
+- [recipes/commerce/promo-banner-system.md](https://ui.askewly.com/llms/recipes/commerce/promo-banner-system.md): Promo Banner System — commerce recipe (status: draft) [code: /r/promo-banner-system.json]
+- [recipes/commerce/shipping-method-selector.md](https://ui.askewly.com/llms/recipes/commerce/shipping-method-selector.md): Shipping Method Selector — commerce recipe (status: draft) [code: /r/shipping-method-selector.json]
+- [recipes/data-display/audit-log-filterable-export-feed.md](https://ui.askewly.com/llms/recipes/data-display/audit-log-filterable-export-feed.md): Audit Log Filterable Export Feed — data-display recipe (status: draft) [code: /r/audit-log-filterable-export-feed.json]
+- [recipes/data-display/bulk-action-toolbar-selection-model.md](https://ui.askewly.com/llms/recipes/data-display/bulk-action-toolbar-selection-model.md): Bulk Action Toolbar with Selection Model — data-display recipe (status: draft) [code: /r/bulk-action-toolbar.json]
+- [recipes/data-display/interactive-data-table.md](https://ui.askewly.com/llms/recipes/data-display/interactive-data-table.md): Interactive Data Table — data-display recipe (status: draft) [code: /r/interactive-data-table.json]
+- [recipes/data-display/permission-matrix-editor-grid.md](https://ui.askewly.com/llms/recipes/data-display/permission-matrix-editor-grid.md): Permission Matrix Editor Grid — data-display recipe (status: draft) [code: /r/permission-matrix-editor-grid.json]
 - [recipes/data-display/pull-to-refresh-list-pattern.md](https://ui.askewly.com/llms/recipes/data-display/pull-to-refresh-list-pattern.md): Pull to Refresh List Pattern — data-display recipe (status: draft)
-- [recipes/data-display/stat-summary-grid.md](https://ui.askewly.com/llms/recipes/data-display/stat-summary-grid.md): Stat Summary Grid — data-display recipe (status: draft)
+- [recipes/data-display/stat-summary-grid.md](https://ui.askewly.com/llms/recipes/data-display/stat-summary-grid.md): Stat Summary Grid — data-display recipe (status: draft) [code: /r/stat-summary-grid.json]
 - [recipes/data-display/swipe-action-row-pattern.md](https://ui.askewly.com/llms/recipes/data-display/swipe-action-row-pattern.md): Swipe Action Row (Leading/Trailing) — data-display recipe (status: draft)
 - [recipes/docs/api-reference-three-column-layout.md](https://ui.askewly.com/llms/recipes/docs/api-reference-three-column-layout.md): API Reference Three-Column Layout — docs recipe (status: draft)
 - [recipes/docs/article-documentation-layout.md](https://ui.askewly.com/llms/recipes/docs/article-documentation-layout.md): Article Documentation Layout — docs recipe (status: draft)
-- [recipes/docs/docs-changelog-category-filter-page.md](https://ui.askewly.com/llms/recipes/docs/docs-changelog-category-filter-page.md): Docs Changelog Page With Category Filter Chips And Pagination — docs recipe (status: draft)
-- [recipes/docs/docs-code-block-with-tabs-and-copy.md](https://ui.askewly.com/llms/recipes/docs/docs-code-block-with-tabs-and-copy.md): Docs Code Block With Language Tabs And Copy — docs recipe (status: draft)
-- [recipes/feedback/actionable-toast.md](https://ui.askewly.com/llms/recipes/feedback/actionable-toast.md): Actionable Toast — feedback recipe (status: draft)
-- [recipes/feedback/recoverable-empty-state.md](https://ui.askewly.com/llms/recipes/feedback/recoverable-empty-state.md): Recoverable Empty State — feedback recipe (status: draft)
-- [recipes/forms/advanced-filter-builder-condition-groups.md](https://ui.askewly.com/llms/recipes/forms/advanced-filter-builder-condition-groups.md): Advanced Filter Builder with Condition Groups — forms recipe (status: draft)
+- [recipes/docs/docs-changelog-category-filter-page.md](https://ui.askewly.com/llms/recipes/docs/docs-changelog-category-filter-page.md): Docs Changelog Page With Category Filter Chips And Pagination — docs recipe (status: draft) [code: /r/docs-changelog-category-filter-page.json]
+- [recipes/docs/docs-code-block-with-tabs-and-copy.md](https://ui.askewly.com/llms/recipes/docs/docs-code-block-with-tabs-and-copy.md): Docs Code Block With Language Tabs And Copy — docs recipe (status: draft) [code: /r/docs-code-block.json]
+- [recipes/feedback/actionable-toast.md](https://ui.askewly.com/llms/recipes/feedback/actionable-toast.md): Actionable Toast — feedback recipe (status: draft) [code: /r/actionable-toast.json]
+- [recipes/feedback/recoverable-empty-state.md](https://ui.askewly.com/llms/recipes/feedback/recoverable-empty-state.md): Recoverable Empty State — feedback recipe (status: draft) [code: /r/recoverable-empty-state.json]
+- [recipes/forms/advanced-filter-builder-condition-groups.md](https://ui.askewly.com/llms/recipes/forms/advanced-filter-builder-condition-groups.md): Advanced Filter Builder with Condition Groups — forms recipe (status: draft) [code: /r/advanced-filter-builder.json]
 - [recipes/forms/button.md](https://ui.askewly.com/llms/recipes/forms/button.md): Button — forms recipe (status: draft)
-- [recipes/forms/data-import-wizard-validation-preview-steps.md](https://ui.askewly.com/llms/recipes/forms/data-import-wizard-validation-preview-steps.md): Data Import Wizard Validation Preview Steps — forms recipe (status: draft)
+- [recipes/forms/data-import-wizard-validation-preview-steps.md](https://ui.askewly.com/llms/recipes/forms/data-import-wizard-validation-preview-steps.md): Data Import Wizard Validation Preview Steps — forms recipe (status: draft) [code: /r/data-import-wizard-validation-preview-steps.json]
 - [recipes/forms/mobile-signup-field-stack.md](https://ui.askewly.com/llms/recipes/forms/mobile-signup-field-stack.md): Mobile Signup Field Stack — forms recipe (status: draft)
-- [recipes/layout/responsive-content-grid.md](https://ui.askewly.com/llms/recipes/layout/responsive-content-grid.md): Responsive Content Grid — layout recipe (status: draft)
-- [recipes/layout/sidebar-application-shell.md](https://ui.askewly.com/llms/recipes/layout/sidebar-application-shell.md): Sidebar Application Shell — layout recipe (status: draft)
+- [recipes/layout/responsive-content-grid.md](https://ui.askewly.com/llms/recipes/layout/responsive-content-grid.md): Responsive Content Grid — layout recipe (status: draft) [code: /r/responsive-content-grid.json]
+- [recipes/layout/sidebar-application-shell.md](https://ui.askewly.com/llms/recipes/layout/sidebar-application-shell.md): Sidebar Application Shell — layout recipe (status: draft) [code: /r/sidebar-application-shell.json]
 - [recipes/marketing/grain-texture-overlay.md](https://ui.askewly.com/llms/recipes/marketing/grain-texture-overlay.md): Grain Texture Overlay — marketing recipe (status: draft)
 - [recipes/marketing/landing-hero.md](https://ui.askewly.com/llms/recipes/marketing/landing-hero.md): Landing Hero — marketing recipe (status: draft)
 - [recipes/marketing/magnetic-hover-button.md](https://ui.askewly.com/llms/recipes/marketing/magnetic-hover-button.md): Magnetic Hover Button — marketing recipe (status: draft)
-- [recipes/marketing/mesh-gradient-surface.md](https://ui.askewly.com/llms/recipes/marketing/mesh-gradient-surface.md): Mesh Gradient Surface — marketing recipe (status: draft)
-- [recipes/marketing/scroll-driven-reveal.md](https://ui.askewly.com/llms/recipes/marketing/scroll-driven-reveal.md): Scroll-Driven Reveal — marketing recipe (status: draft)
+- [recipes/marketing/mesh-gradient-surface.md](https://ui.askewly.com/llms/recipes/marketing/mesh-gradient-surface.md): Mesh Gradient Surface — marketing recipe (status: draft) [code: /r/mesh-gradient-surface.json]
+- [recipes/marketing/scroll-driven-reveal.md](https://ui.askewly.com/llms/recipes/marketing/scroll-driven-reveal.md): Scroll-Driven Reveal — marketing recipe (status: draft) [code: /r/scroll-driven-reveal.json]
 - [recipes/navigation/bottom-tab-bar.md](https://ui.askewly.com/llms/recipes/navigation/bottom-tab-bar.md): Bottom Tab Bar — navigation recipe (status: draft)
-- [recipes/navigation/doc-search-cmdk-grouped-results-panel.md](https://ui.askewly.com/llms/recipes/navigation/doc-search-cmdk-grouped-results-panel.md): Doc Search Cmd-K Grouped Results Panel — navigation recipe (status: draft)
+- [recipes/navigation/doc-search-cmdk-grouped-results-panel.md](https://ui.askewly.com/llms/recipes/navigation/doc-search-cmdk-grouped-results-panel.md): Doc Search Cmd-K Grouped Results Panel — navigation recipe (status: draft) [code: /r/doc-search-cmdk-grouped-results-panel.json]
 - [recipes/navigation/large-title-collapsing-header.md](https://ui.askewly.com/llms/recipes/navigation/large-title-collapsing-header.md): Large Title Collapsing Header — navigation recipe (status: draft)
 - [recipes/navigation/topbar-command-search.md](https://ui.askewly.com/llms/recipes/navigation/topbar-command-search.md): Topbar Command Search — navigation recipe (status: draft)
-- [recipes/navigation/versioned-docs-switcher-navbar-sidebar-swap.md](https://ui.askewly.com/llms/recipes/navigation/versioned-docs-switcher-navbar-sidebar-swap.md): Versioned Docs Switcher With Navbar Dropdown And Sidebar Swap — navigation recipe (status: draft)
+- [recipes/navigation/versioned-docs-switcher-navbar-sidebar-swap.md](https://ui.askewly.com/llms/recipes/navigation/versioned-docs-switcher-navbar-sidebar-swap.md): Versioned Docs Switcher With Navbar Dropdown And Sidebar Swap — navigation recipe (status: draft) [code: /r/versioned-docs-switcher-navbar-sidebar-swap.json]
 - [recipes/overlays/action-sheet-destructive-confirmation.md](https://ui.askewly.com/llms/recipes/overlays/action-sheet-destructive-confirmation.md): Action Sheet Destructive Confirmation — overlays recipe (status: draft)
 - [recipes/overlays/bottom-sheet-detents.md](https://ui.askewly.com/llms/recipes/overlays/bottom-sheet-detents.md): Bottom Sheet Detents — overlays recipe (status: draft)
 - [recipes/overlays/glass-panel.md](https://ui.askewly.com/llms/recipes/overlays/glass-panel.md): Glass Panel — overlays recipe (status: draft)
 - [recipes/overlays/popover.md](https://ui.askewly.com/llms/recipes/overlays/popover.md): Popover — overlays recipe (status: draft)
-
-## Code Assets
-
-Fetch a registry JSON, transplant its files, then remap semantic classes and CSS variables to the working project's own tokens. Do not treat the shipped look as a final style.
-- [Actionable Toast](https://ui.askewly.com/r/actionable-toast.json): registry code asset `actionable-toast`
-- [Advanced Filter Builder](https://ui.askewly.com/r/advanced-filter-builder.json): registry code asset `advanced-filter-builder`
-- [Api Reference Layout](https://ui.askewly.com/r/api-reference-layout.json): registry code asset `api-reference-layout`
-- [Audit Log Filterable Export Feed](https://ui.askewly.com/r/audit-log-filterable-export-feed.json): registry code asset `audit-log-filterable-export-feed`
-- [Bulk Action Toolbar](https://ui.askewly.com/r/bulk-action-toolbar.json): registry code asset `bulk-action-toolbar`
-- [Canvas Particle Field](https://ui.askewly.com/r/canvas-particle-field.json): registry code asset `canvas-particle-field`
-- [Cart Drawer](https://ui.askewly.com/r/cart-drawer.json): registry code asset `cart-drawer`
-- [Category Product Grid](https://ui.askewly.com/r/category-product-grid.json): registry code asset `category-product-grid`
-- [Chat Conversation Panel](https://ui.askewly.com/r/chat-conversation-panel.json): registry code asset `chat-conversation-panel`
-- [Checkout Order Summary](https://ui.askewly.com/r/checkout-order-summary.json): registry code asset `checkout-order-summary`
-- [Data Import Wizard Validation Preview Steps](https://ui.askewly.com/r/data-import-wizard-validation-preview-steps.json): registry code asset `data-import-wizard-validation-preview-steps`
-- [Doc Search Cmdk Grouped Results Panel](https://ui.askewly.com/r/doc-search-cmdk-grouped-results-panel.json): registry code asset `doc-search-cmdk-grouped-results-panel`
-- [Docs Changelog Category Filter Page](https://ui.askewly.com/r/docs-changelog-category-filter-page.json): registry code asset `docs-changelog-category-filter-page`
-- [Docs Code Block](https://ui.askewly.com/r/docs-code-block.json): registry code asset `docs-code-block`
-- [Interactive Data Table](https://ui.askewly.com/r/interactive-data-table.json): registry code asset `interactive-data-table`
-- [Lazy Three Object Scene](https://ui.askewly.com/r/lazy-three-object-scene.json): registry code asset `lazy-three-object-scene`
-- [Mesh Gradient Surface](https://ui.askewly.com/r/mesh-gradient-surface.json): registry code asset `mesh-gradient-surface`
-- [Permission Matrix Editor Grid](https://ui.askewly.com/r/permission-matrix-editor-grid.json): registry code asset `permission-matrix-editor-grid`
-- [Product Detail Purchase Stack](https://ui.askewly.com/r/product-detail-purchase-stack.json): registry code asset `product-detail-purchase-stack`
-- [Promo Banner System](https://ui.askewly.com/r/promo-banner-system.json): registry code asset `promo-banner-system`
-- [Recoverable Empty State](https://ui.askewly.com/r/recoverable-empty-state.json): registry code asset `recoverable-empty-state`
-- [Responsive Content Grid](https://ui.askewly.com/r/responsive-content-grid.json): registry code asset `responsive-content-grid`
-- [Scroll Driven Reveal](https://ui.askewly.com/r/scroll-driven-reveal.json): registry code asset `scroll-driven-reveal`
-- [Shipping Method Selector](https://ui.askewly.com/r/shipping-method-selector.json): registry code asset `shipping-method-selector`
-- [Sidebar Application Shell](https://ui.askewly.com/r/sidebar-application-shell.json): registry code asset `sidebar-application-shell`
-- [Stat Summary Grid](https://ui.askewly.com/r/stat-summary-grid.json): registry code asset `stat-summary-grid`
-- [Versioned Docs Switcher Navbar Sidebar Swap](https://ui.askewly.com/r/versioned-docs-switcher-navbar-sidebar-swap.json): registry code asset `versioned-docs-switcher-navbar-sidebar-swap`
-
 ## Code Assets (verified implementations)
 
 Fetch the JSON, write files[].content into your project, install declared dependencies, then remap the look to your project's tokens per component-restyle.md. Human path: npx shadcn add https://ui.askewly.com/r/<name>.json. Index: [r/registry.json](https://ui.askewly.com/r/registry.json)

@@ -26,6 +26,8 @@ source_refs: [retool-user-permissions-template]
 last_verified: 2026-07-12
 ---
 
+> Code asset (start here, then restyle to project tokens): https://ui.askewly.com/r/permission-matrix-editor-grid.json
+
 ## Intent
 
 A permission matrix editor grid implements the `permission-matrix-editor` term's role-by-permission table as an editable, high-density admin surface: both axes stay readable while scrolling a large matrix, explicit grants are visually distinct from inherited ones, and a batch of checkbox edits stays pending behind a diff step instead of writing to the backend on every click. This is the interaction shape Retool-style admin templates and workspace role-settings screens repeat once a permission table grows past a handful of rows and columns.

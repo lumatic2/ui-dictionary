@@ -23,6 +23,8 @@ source_refs: [retool-csv-import-flow-blog]
 last_verified: 2026-07-12
 ---
 
+> Code asset (start here, then restyle to project tokens): https://ui.askewly.com/r/data-import-wizard-validation-preview-steps.json
+
 ## Intent
 
 A data import wizard validation preview steps recipe implements the `data-import-wizard-validation-preview` term's upload-to-summary contract as five discrete steps: upload, map, validate, preview, confirm. Each step is its own screen rather than a single scrolling form, per-row validation errors surface inline in the preview table instead of only as an aggregate count, and a failing row can be fixed or explicitly skipped without aborting the whole import. This is the structure Retool/Linear/Stripe-style admin CSV import flows repeat.

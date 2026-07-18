@@ -28,6 +28,8 @@ source_refs: []
 last_verified: 2026-07-17
 ---
 
+> Code asset (start here, then restyle to project tokens): https://ui.askewly.com/r/chat-conversation-panel.json
+
 ## Intent
 
 A chat conversation panel turns a request-response exchange with a person or an AI assistant into one continuously readable thread: a bounded, self-scrolling message log above a single always-visible input bar. It exists for turn-taking conversation — not for comment threads (no reply nesting), notification feeds (no input), or one-shot form submission.

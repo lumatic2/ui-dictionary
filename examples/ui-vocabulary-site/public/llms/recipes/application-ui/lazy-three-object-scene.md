@@ -18,6 +18,8 @@ source_refs: []
 last_verified: 2026-07-17
 ---
 
+> Code asset (start here, then restyle to project tokens): https://ui.askewly.com/r/lazy-three-object-scene.json
+
 ## Intent
 
 A real 3D object (lighting, depth, materials) rendered with three.js via React Three Fiber, loaded strictly behind a dynamic import. Tier ④ in `knowledge/expressive-stack.md` — CSS `perspective` can fake a rotated plane but cannot do lit, shaded geometry. The recipe's load-bearing part is the delivery contract: three.js is a ~155KB gzip fixed cost, so **the lazy boundary is not an optimization, it is the pattern** (judgment rule 4: tier ④ requires lazy-load).

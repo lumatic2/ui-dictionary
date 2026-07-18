@@ -135,10 +135,30 @@ function main() {
   lines.push("");
   lines.push("## Recipes");
   lines.push("");
+  // RC2: recipe copies get a code-asset backlink injected when a registry asset matches.
+  const regPath = path.join(SITE_PUBLIC, "r", "registry.json");
+  const regNames = existsSync(regPath) ? JSON.parse(readFileSync(regPath, "utf8")).items.map((i) => i.name) : [];
+  const assetFor = (recipeStem) => {
+    if (regNames.includes(recipeStem)) return recipeStem;
+    const hits = regNames.filter((n) => recipeStem.startsWith(n) || n.startsWith(recipeStem));
+    return hits.length === 1 ? hits[0] : null;
+  };
   for (const { rel, desc } of collectRecipes()) {
     const urlPath = copyAsset(rel);
     writtenUrls.push(urlPath);
-    lines.push(`- [${rel}](${BASE_URL}${urlPath}): ${desc}`);
+    const stem = path.basename(rel, ".md");
+    const asset = assetFor(stem);
+    if (asset) {
+      const dest = path.join(LLMS_DIR, rel);
+      const md = readFileSync(dest, "utf8");
+      const link = `> Code asset (start here, then restyle to project tokens): ${BASE_URL}/r/${asset}.json\n`;
+      // 레시피는 YAML frontmatter로 시작 — 첫 마크다운 헤딩 뒤에 주입, 헤딩 없는 레시피는 frontmatter 직후
+      let injected = md.replace(/^(# .+\r?\n)/m, `$1\n${link}`);
+      if (injected === md) injected = md.replace(/^(---\r?\n[\s\S]*?\r?\n---\r?\n)/, `$1\n${link}`);
+      if (injected === md) throw new Error(`code-asset link injection failed (no heading/frontmatter): ${rel}`);
+      writeFileSync(dest, injected);
+    }
+    lines.push(`- [${rel}](${BASE_URL}${urlPath}): ${desc}${asset ? ` [code: /r/${asset}.json]` : ""}`);
   }
 
   // Code Assets (RC1): shadcn-registry-compatible verified implementations built by

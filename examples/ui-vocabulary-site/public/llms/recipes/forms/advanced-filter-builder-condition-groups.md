@@ -22,6 +22,8 @@ source_refs: [appmaster-io-blog]
 last_verified: 2026-07-12
 ---
 
+> Code asset (start here, then restyle to project tokens): https://ui.askewly.com/r/advanced-filter-builder.json
+
 ## Intent
 
 An advanced filter builder with condition groups implements the `advanced-filter-builder` term's field-operator-value contract at composition scale: instead of one flat list of conditions, conditions nest inside groups, and groups combine with a top-level AND/OR join. This is the structure Retool-style internal admin tools repeat when a single filter row can't express "status is active AND (region is US OR region is EU)".

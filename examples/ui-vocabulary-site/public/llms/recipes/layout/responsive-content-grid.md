@@ -24,6 +24,8 @@ source_refs: [tailwind-plus-application-ui]
 last_verified: 2026-07-10
 ---
 
+> Code asset (start here, then restyle to project tokens): https://ui.askewly.com/r/responsive-content-grid.json
+
 ## Intent
 
 A responsive content grid arranges peer items into as many columns as the content can support, then collapses without changing their reading order. It is a layout contract for cards, examples, products, or records, not a decorative checkerboard.

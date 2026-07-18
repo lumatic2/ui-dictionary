@@ -23,6 +23,8 @@ source_refs: [linear-workspace-audit-log]
 last_verified: 2026-07-12
 ---
 
+> Code asset (start here, then restyle to project tokens): https://ui.askewly.com/r/audit-log-filterable-export-feed.json
+
 ## Intent
 
 An audit log filterable export feed implements the `audit-log` term's actor/action/target/timestamp record as a filterable, exportable operational surface: filters scope by actor, action type, and date range, and export always applies to the currently active filter rather than silently dumping the full unfiltered table. Unlike `activity-feed`, which reads as a lightweight social/collaboration stream, this recipe is a forensic/compliance record — the column order (actor, action, target, timestamp) stays fixed regardless of filter state, and metadata expands on demand rather than always rendering inline.

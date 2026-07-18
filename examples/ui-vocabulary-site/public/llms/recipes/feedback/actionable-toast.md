@@ -23,6 +23,8 @@ source_refs: []
 last_verified: 2026-07-10
 ---
 
+> Code asset (start here, then restyle to project tokens): https://ui.askewly.com/r/actionable-toast.json
+
 ## Intent
 
 An actionable toast confirms a recent low-risk operation and may offer one short recovery action such as Undo or Retry. It does not request a decision, carry long instructions, or hide a persistent error that belongs next to the affected content.

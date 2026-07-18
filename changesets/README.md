@@ -143,3 +143,4 @@
 | 141 | 20260719-preview-responsive | 2026-07-19 | SF3 step 2: mobile viewport toggle + 12-combo matrix E2E + integrated loop | 4/4 | complete |
 | 142 | 20260719-registry-pipeline | 2026-07-19 | RC1 step 1: shadcn-compatible registry generator + 27-asset first batch (purity gate) | 4/4 | complete |
 | 143 | 20260719-registry-llms | 2026-07-19 | RC1 step 2: clean-project transplant E2E + llms.txt Code Assets section | 3/4 | complete |
+| 144 | 20260719-code-first-contract | 2026-07-19 | RC2 step 1: code-first consumption contract (A-2.5, mandatory restyle) + recipe backlink injection | 3/4 | complete |

@@ -139,6 +139,8 @@ Fields:
 
 Reusable implementation artifact.
 
+> **Realized (RC2, 2026-07-19)**: the first production form of this entity is the shadcn-registry-compatible asset at `https://ui.askewly.com/r/<name>.json` (index: `/r/registry.json`, listed in llms.txt "Code Assets"). `files[].content` embeds the verified source; `registryDependencies`/`dependencies` are the declared deps; consumption contract is entry-protocol A-2.5 (fetch → transplant → mandatory restyle to project tokens per component-restyle.md). `license_level` for the first batch is `public`.
+
 Fields:
 
 - `id`

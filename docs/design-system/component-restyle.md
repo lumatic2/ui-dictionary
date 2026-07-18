@@ -20,6 +20,14 @@ Tailwind(문법) → **shadcn류(부품)** → 판단(recipe·signature). 부품
 4. **정체성 지점 선택**: 전부 바꾸려 하지 말 것. 제품의 얼굴이 되는 2~3곳(주 버튼 형태, radius 성격, 포커스 링, 액센트 운용)만 뚜렷하게 — 나머지는 중립 유지가 오히려 세련.
 5. **시그니처 판정**: 결과를 style-signature(원칙 5·비선호 5)로 자가 판정 — 특히 "대충 그린 CSS"(기본값 그대로 방치)와 "액센트는 신호"(변경 지점 과다) 사이 균형.
 
+## Registry 코드 자산 이식 후 리맵 (RC2, 2026-07-19)
+
+Askewly Code Asset(`https://ui.askewly.com/r/<name>.json`)을 이식했다면 위 절차를 그대로 적용하되, 진입점이 정해져 있다:
+
+1. 자산의 `registryDependencies`(shadcn primitives)가 요구하는 CSS 변수(`--background`·`--primary`·`--radius` 등)는 **소비 프로젝트가 정의**한다 — 자산 파일이 아니라 프로젝트의 토큰 정의부(DESIGN.md→tokens)가 값의 정본.
+2. 자산 코드 안의 semantic Tailwind 클래스(`bg-background`, `text-muted-foreground` …)는 그대로 두는 것이 기본 — 변수 정의만 프로젝트 값으로 바꾸는 최소 수술(절차 3)이 여기서도 성립한다.
+3. 이식 직후 "기본 얼굴 그대로"는 미완성이다 — 체크리스트(아래) 중 최소 radius·주 버튼·포커스 링을 프로젝트 결정으로 바꾼 뒤에만 보고한다. 리맵 생략은 style-signature 판정 실패로 취급.
+
 ## "shadcn 룩 탈출" 체크리스트
 
 기본값 흔적이 남는 대표 지점 — 하나도 안 바꿨다면 그 제품은 아직 부품 층의 얼굴을 쓰고 있다:

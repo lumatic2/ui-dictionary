@@ -19,6 +19,8 @@ source_refs: []
 last_verified: 2026-07-17
 ---
 
+> Code asset (start here, then restyle to project tokens): https://ui.askewly.com/r/scroll-driven-reveal.json
+
 ## Intent
 
 A scroll-driven reveal fades/raises content in as it enters the scrollport, using CSS view-progress timelines (`animation-timeline: view()`). Tier ① in `knowledge/expressive-stack.md`: for a plain "appear on entry" mapping this needs no scroll listeners, no IntersectionObserver, and runs off the main thread. Escalate to tier ② (GSAP ScrollTrigger) only for pinning, scrubbing, or cross-element sequencing — per the decision table.

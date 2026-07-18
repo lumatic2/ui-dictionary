@@ -19,6 +19,8 @@ source_refs: []
 last_verified: 2026-07-17
 ---
 
+> Code asset (start here, then restyle to project tokens): https://ui.askewly.com/r/canvas-particle-field.json
+
 ## Intent
 
 A canvas particle field draws dozens-to-hundreds of drifting dots into a 2D pixel buffer as ambient backdrop texture. Tier ③ in `knowledge/expressive-stack.md`: at this element count, DOM nodes pay layout/paint cost per node while the canvas pays none. An experimental/showcase touch (signature principle 5) — hero and event surfaces on request, never behind forms or data UI.

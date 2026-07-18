@@ -22,6 +22,7 @@ Index of all assets: `https://ui.askewly.com/llms.txt` (raw URLs; link-only, val
 
 1. [docs/design-system/pattern-taxonomy.md](https://ui.askewly.com/llms/docs/design-system/pattern-taxonomy.md) — locate the surface (marketing, application UI, commerce, docs, …) and pattern groups the screen belongs to.
 2. From the llms.txt Recipes section, fetch every recipe matching those pattern groups. Follow each recipe's Structure, Tokens, States, Checks, and Anti-patterns sections.
+2.5. **Code-first (RC2, 2026-07-19): when a matching entry exists in the llms.txt "Code Assets" section, start from the verified implementation instead of re-implementing the recipe from prose.** Fetch `https://ui.askewly.com/r/<name>.json`, write `files[].content` into the project, install the declared `dependencies`, and resolve `registryDependencies` (shadcn primitives — `npx shadcn add <name>` or existing project copies). Then the **restyle step is mandatory, not optional**: remap the look to the working project's own tokens per [component-restyle.md](https://ui.askewly.com/llms/docs/design-system/component-restyle.md) before reporting — shipping the asset with its default face is a style-signature failure ("대충 그린 CSS"). Prose re-implementation remains the fallback for recipes without a code asset.
 3. [docs/design-system/principles.md](https://ui.askewly.com/llms/docs/design-system/principles.md) — apply task-first hierarchy and meaningful motion when composing recipes into a page.
 
 ### B. Improving existing UI
@@ -33,6 +34,7 @@ Index of all assets: `https://ui.askewly.com/llms.txt` (raw URLs; link-only, val
 ### C. Single component
 
 1. Fetch the matching recipe if one exists (llms.txt Recipes section); otherwise use [docs/design-system/recipe-format.md](https://ui.askewly.com/llms/docs/design-system/recipe-format.md) as the checklist of what a complete component needs (intent, anatomy, tokens, states, checks, anti-patterns).
+1.5. If the recipe has a Code Asset (llms.txt "Code Assets" section), apply the code-first path from A-2.5: fetch the asset JSON, transplant, then mandatorily restyle to project tokens.
 2. Implement all interaction states and the keyboard/aria contract before visual polish.
 
 ## Rules

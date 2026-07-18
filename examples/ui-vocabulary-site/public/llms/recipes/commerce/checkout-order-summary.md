@@ -28,6 +28,8 @@ source_refs: [tailwind-plus-ecommerce]
 last_verified: 2026-07-10
 ---
 
+> Code asset (start here, then restyle to project tokens): https://ui.askewly.com/r/checkout-order-summary.json
+
 ## Intent
 
 A checkout order summary keeps the exact purchase commitment visible while the user provides delivery and payment details. Products, quantities, discounts, shipping, tax, total, fulfillment method, and final action stay consistent across steps and remain editable before confirmation.

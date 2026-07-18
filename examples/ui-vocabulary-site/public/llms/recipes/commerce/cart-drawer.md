@@ -27,6 +27,8 @@ source_refs: [tailwind-plus-ecommerce]
 last_verified: 2026-07-12
 ---
 
+> Code asset (start here, then restyle to project tokens): https://ui.askewly.com/r/cart-drawer.json
+
 ## Intent
 
 A cart drawer keeps the browsing context intact while confirming what a user has added. It opens as a slide-over panel, shows each item with enough detail to double-check the choice, and moves the user toward checkout without a full page navigation. It intentionally shows only a subtotal — a full cost breakdown belongs to `checkout-order-summary`.

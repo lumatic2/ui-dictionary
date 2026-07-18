@@ -21,6 +21,8 @@ source_refs: [nextra-docs-theme]
 last_verified: 2026-07-12
 ---
 
+> Code asset (start here, then restyle to project tokens): https://ui.askewly.com/r/docs-code-block.json
+
 ## Intent
 
 Documentation readers often need the same instruction in more than one equivalent form (npm/yarn/pnpm, or curl/node/python) and want to copy it without hand-selecting text. Tabs switch between equivalent code variants in place, and a fixed copy button turns the block into a one-click action instead of a select-and-copy chore.

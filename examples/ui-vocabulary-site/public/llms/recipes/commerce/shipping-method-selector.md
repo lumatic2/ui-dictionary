@@ -24,6 +24,8 @@ source_refs: [baymard-checkout-flow-ux]
 last_verified: 2026-07-12
 ---
 
+> Code asset (start here, then restyle to project tokens): https://ui.askewly.com/r/shipping-method-selector.json
+
 ## Intent
 
 A shipping method selector lets a checkout user compare delivery/pickup options by cost and timing in one glance, and binds the choice directly to the order total. Baymard's checkout-flow research treats a total that changes unexpectedly after this step as a trust problem — so selecting a method must recalculate the visible total immediately, not just at final confirmation.

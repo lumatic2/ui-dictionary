@@ -25,6 +25,8 @@ source_refs: [tailwind-plus-application-ui]
 last_verified: 2026-07-10
 ---
 
+> Code asset (start here, then restyle to project tokens): https://ui.askewly.com/r/interactive-data-table.json
+
 ## Intent
 
 An interactive data table supports scanning and acting on structured records while preserving column meaning. Selection, sorting, filtering, density, and row actions are added only when the user task needs them; the table remains readable without those controls.
