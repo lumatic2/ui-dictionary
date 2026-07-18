@@ -37,6 +37,16 @@ headless 에이전트는 registry의 `files[0].content`를 verbatim 이식하고
 - PID command line과 HTML title로 잘못된 서버를 확인·종료하고 `--strictPort`로 재실행해 PASS했다.
 - 레시피 백링크 주입은 Windows CRLF에서 heading/frontmatter 탐지가 실패했으며 `\r?\n` 지원 후 87 assets 재생성과 사이트 build가 PASS했다.
 
+## 병행 세션 3시도 기록 (Claude root session — 독립 실측, 미화 없음)
+
+같은 날 별도 세션이 독립적으로 수행한 headless E2E 3시도 (프로젝트: 한강주조 대시보드 DESIGN.md, scratchpad):
+
+1. **시도 1 — 조건 미성립**: 단일 HTML 의뢰라 React 코드 자산 경로가 발화할 조건이 아니었음(계약 4문서 fetch·토큰 파생·시그니처 판정은 수행). E2E 재설계.
+2. **시도 2 — FAIL (코드 출발 미발화)**: Vite+React 맥락에서 레시피 md(백링크 포함)를 읽고도 `/r/*.json` 미fetch, prose 재구현. **교정(커밋 1fcdfd3)**: 레시피 백링크를 "**STOP — do not re-implement this recipe from prose.**" 지시형으로 강화 + entry-protocol 공통 1.5단계(코드 자산 우선) 신설 → push·CDN 확인.
+3. **시도 3 — PASS**: `/r/stat-summary-grid.json` fetch 5회 관측, 이식본 동작 계약 유지, `src/index.css` 스캐폴드 팔레트(녹색)→DESIGN.md 정본(브라운 #7A5C2E·웜 페이퍼·4px·Noto Serif/Sans KR) 리맵 — 기본 표정 탈출 실측. `tsc -b && vite build`·oxlint PASS, WCAG 대비 13.96:1. (스트림: scratchpad `rc2-e2e-3/e2e3-stream.jsonl` — 세션 만료 소실, 판정 근거 본 절 전사)
+
+두 세션의 독립 실측이 같은 결론에 수렴: 계약 강화(STOP 백링크) 후 코드 출발 경로가 안정적으로 발화한다.
+
 ## 판정
 
-RC2 DoD 충족: headless 에이전트가 registry 코드에서 출발해 프로젝트 토큰으로 재결합했고, 독립 build·브라우저·실배포 검증이 모두 통과했다.
+RC2 DoD 충족: headless 에이전트가 registry 코드에서 출발해 프로젝트 토큰으로 재결합했고, 독립 build·브라우저·실배포 검증이 모두 통과했다. 병행 세션의 2차 FAIL이 계약 강화(STOP 백링크·공통 1.5단계)로 이어진 것 포함.

@@ -1693,21 +1693,21 @@
       "work_id": "SF1",
       "horizon_id": "studio-finish",
       "milestone_id": "SF1",
-      "status": "active",
+      "status": "completed",
       "plan_path": "plans/2026-07-19-sf1-studio-data-injection.md",
       "changeset_path": "changesets/20260719-studio-data-injection",
-      "next_step": "step-1",
-      "current_step": "step-1",
+      "next_step": null,
+      "current_step": null,
       "steps": [
         {
           "id": "step-1",
           "label": "Step 1 — 데이터 분리 + 생성 스크립트 (changeset)",
-          "status": "pending"
+          "status": "completed"
         },
         {
           "id": "step-2",
           "label": "Step 2 — 계약 교체 + 배포 + E2E (changeset)",
-          "status": "pending"
+          "status": "completed"
         }
       ],
       "execution_mode": "continuous",
@@ -1732,7 +1732,8 @@
       ],
       "updated_at": "2026-07-19",
       "notes": "Registered atomically by canonical harness approve_harness_plan.py after plan validation.",
-      "completion_summary": "브리프 스튜디오 후보 주입이 HTML 직접 편집에서 데이터 JSON 하나 + 생성 커맨드 하나로 바뀌었고, 잘못된 데이터는 명시 에러로 거부됩니다"
+      "completion_summary": "브리프 스튜디오 후보 주입이 HTML 직접 편집에서 데이터 JSON 하나 + 생성 커맨드 하나로 바뀌었고, 잘못된 데이터는 명시 에러로 거부됩니다",
+      "completed": "2026-07-19"
     },
     "SF2": {
       "work_id": "SF2",

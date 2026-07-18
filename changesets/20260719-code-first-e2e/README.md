@@ -2,7 +2,7 @@
 
 - Date: 2026-07-19
 - Plan: `plans/2026-07-19-rc2-code-first-contract.md`
-- Evidence: `evidence/recipe-code-reuse/rc2-agent-e2e.md`
+- Evidence: `evidence/recipe-code-reuse/rc2-agent-e2e.md` (병행 세션 3시도 기록 포함 — 2차 코드출발 미발화 FAIL → STOP 백링크·공통 1.5단계 계약 강화(1fcdfd3) → 3차 PASS)
 
 ## Result
 
