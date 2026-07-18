@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "active_work_id": "RC3",
+  "active_work_id": "RC4",
   "works": {
     "SFB1": {
       "title": "Structure Contract And Clean Production",
@@ -1923,21 +1923,21 @@
       "work_id": "RC3",
       "horizon_id": "recipe-code-reuse",
       "milestone_id": "RC3",
-      "status": "active",
+      "status": "completed",
       "plan_path": "plans/2026-07-19-rc3-composition-recipe-map.md",
       "changeset_path": "changesets/20260719-composition-recipe-map",
-      "next_step": "step-1",
-      "current_step": "step-1",
+      "next_step": null,
+      "current_step": null,
       "steps": [
         {
           "id": "step-1",
           "label": "Step 1 — 매핑 데이터 + 수집 노출 (changeset)",
-          "status": "pending"
+          "status": "completed"
         },
         {
           "id": "step-2",
           "label": "Step 2 — 계약 배선 + 배포 (changeset)",
-          "status": "pending"
+          "status": "completed"
         }
       ],
       "execution_mode": "continuous",
@@ -1959,6 +1959,52 @@
       "stop_detail": {},
       "session_ids": [
         "codex:template-production-chain"
+      ],
+      "updated_at": "2026-07-19",
+      "notes": "Registered atomically by canonical harness approve_harness_plan.py after plan validation.",
+      "completion_summary": "스튜디오에서 고른 페이지 구성이 어떤 검증된 코드 자산으로 구현을 시작할지까지 수집 결과에 함께 담기게 됐습니다",
+      "completed": "2026-07-19"
+    },
+    "RC4": {
+      "work_id": "RC4",
+      "horizon_id": "recipe-code-reuse",
+      "milestone_id": "RC4",
+      "status": "active",
+      "plan_path": "plans/2026-07-19-rc4-integrated-demo.md",
+      "changeset_path": "changesets/20260719-rc4-demo",
+      "next_step": "step-1",
+      "current_step": "step-1",
+      "steps": [
+        {
+          "id": "step-1",
+          "label": "Step 1 — 실연 준비 (changeset)",
+          "status": "pending"
+        },
+        {
+          "id": "step-2",
+          "label": "Step 2 — 통합 실연 + horizon close (changeset)",
+          "status": "pending"
+        }
+      ],
+      "execution_mode": "continuous",
+      "approval": {
+        "approved_by": "user",
+        "approved_at": "2026-07-19",
+        "plan_sha256": "9ae8747a22add95a44361b0ff942ffff3d27037beab7b8588c14c8fb765b560b"
+      },
+      "allowed_stop_reasons": [
+        "completed",
+        "blocked",
+        "decision_required",
+        "risk_gate",
+        "secret_required",
+        "external_authority_required",
+        "user_stopped"
+      ],
+      "stop_reason": null,
+      "stop_detail": {},
+      "session_ids": [
+        "claude:614621c7-09d1-4681-a401-e42324fd8701"
       ],
       "updated_at": "2026-07-19",
       "notes": "Registered atomically by canonical harness approve_harness_plan.py after plan validation."
