@@ -1,7 +1,7 @@
 # Horizon — Design Brief (착수 인터뷰 + 프로젝트 룩 소유권 생성)
 
 Date: 2026-07-18
-Status: active
+Status: closed (2026-07-19 — DB1·DB2 완료. Close Criteria 3/3: 계약 배포 + 프로토콜·skill 배선 + E2E 3경로(생략·발동·파생) 관측. 사용자 피드백 5건은 차기 horizon 입력: 시각적 선택(폰트·컬러·인터랙션 실물 보기), Stitch 양식 정합, 결과물 크롬 상시 표시, 컴포넌트/IA 세분화 여부)
 Objective link: `OBJECTIVE.md` (성공 상태 ③ — "의도적으로 디자인된 느낌"의 상한을 사용자 의도 반영으로 올림)
 Preceding horizon: `plans/horizons/2026-07-skill-entry.md` (closed 2026-07-18)
 
