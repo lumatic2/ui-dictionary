@@ -1,31 +1,25 @@
 {
   "version": 2,
-  "brief": {
-    "product": "Askewly Team Pulse",
-    "audience": "AI 팀 운영자와 에이전트 워크플로우 설계자",
-    "goal": "팀 상태를 빠르게 이해하고 검토가 필요한 작업으로 이동",
-    "tone": ["정제", "신뢰", "인간적"]
-  },
-  "tile": "editorial-warm",
+  "tile": "clay-hands",
   "selections": {
     "base": "warm-paper",
-    "accent": "terracotta",
-    "typo": "noto-pair",
-    "imagery": "photo-warm-doc",
+    "accent": "forest",
+    "typo": "serif-head",
+    "imagery": "photo-5",
     "composition": "hero-cards-info",
     "headline": "hl-1",
     "subcopy": "sc-1",
-    "cta": "two-split",
     "header": "logo-links-cta",
-    "footer": "one-line",
     "card": "flat-tonal",
     "density": "airy",
-    "radius": "sharp",
     "motion": "standard",
     "pointer": "none",
     "icon": "outline",
     "dark": "both-auto",
-    "a11y": "aa"
+    "a11y": "aa",
+    "radius": "subtle",
+    "footer": "one-line",
+    "cta": "two-split"
   },
   "implementation": {
     "composition": "hero-cards-info",
@@ -34,5 +28,6 @@
       "cards": "responsive-content-grid",
       "info": "article-documentation-layout"
     }
-  }
+  },
+  "submittedAt": "2026-07-18T19:54:39.142Z"
 }

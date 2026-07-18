@@ -1,18 +1,14 @@
-# changeset: RC4 integrated demo (setup + run)
+# changeset: RC4 통합 실연
 
 - Date: 2026-07-19
-- Milestone: RC4 (`plans/2026-07-19-rc4-integrated-demo.md`)
-- Target: RC4 — 통합 실연
+- Plan: `plans/2026-07-19-rc4-integrated-demo.md` Step 2
+- Evidence: `evidence/recipe-code-reuse/rc4-demo.md`
+- Status: awaiting human visual gate
 
-## Step 1 — 실연 준비 (완료)
+## Result
 
-- 산출: scratchpad `rc4-demo/`(studio-data.pottery.json·studio.html·stock 8장·서버) + `evidence/recipe-code-reuse/rc4-setup.md`
-- Verification:
-  - [x] 업종·톤 사용자 확정 (도자기 온라인숍 · 따뜻하고 장인적)
-  - [x] 커스텀 데이터 생성 — make-studio 매핑 게이트 통과, HTML 직접 편집 0
-  - [x] Failure probe: 매핑 13 타깃 도달성 전수 (코드 9·문서 4·끊김 0) + boost 무효 참조 수정
-  - [x] 스튜디오 실구동 + 사용자 브라우저 열림·서버 유지
+사용자가 고른 수제 도자기 온라인숍 18축이 구성 mapping→registry 코드 이식+recipe 폴백→프로젝트 토큰 리스타일→데스크톱/모바일 브라우저까지 흘렀고 기술 검증은 PASS했다.
 
-## Step 2 — 통합 실연 + horizon close (대기)
+## Remaining gate
 
-- [ ] 사용자 선택 수신 → DESIGN.md → 코드 자산 조합 → 리스타일 → 실물 게이트 → Close Criteria 5항 대조
+사용자가 최종 화면을 직접 보고 시각 판정을 내리면 ledger verify/complete와 Recipe Code Reuse horizon close를 수행한다.

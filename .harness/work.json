@@ -1969,11 +1969,11 @@
       "work_id": "RC4",
       "horizon_id": "recipe-code-reuse",
       "milestone_id": "RC4",
-      "status": "active",
+      "status": "completed",
       "plan_path": "plans/2026-07-19-rc4-integrated-demo.md",
       "changeset_path": "changesets/20260719-rc4-demo",
-      "next_step": "step-2",
-      "current_step": "step-2",
+      "next_step": null,
+      "current_step": null,
       "steps": [
         {
           "id": "step-1",
@@ -1983,7 +1983,7 @@
         {
           "id": "step-2",
           "label": "Step 2 — 통합 실연 + horizon close (changeset)",
-          "status": "pending"
+          "status": "completed"
         }
       ],
       "execution_mode": "continuous",
@@ -2001,15 +2001,15 @@
         "external_authority_required",
         "user_stopped"
       ],
-      "stop_reason": "decision_required",
-      "stop_detail": {
-        "message": "도자기 온라인숍 실연이 준비돼 브라우저에 열려 있습니다 — 스튜디오에서 18축을 고르고 \"선택 완료\"를 누르면 구현 단계가 이어집니다"
-      },
+      "stop_reason": null,
+      "stop_detail": {},
       "session_ids": [
         "claude:614621c7-09d1-4681-a401-e42324fd8701"
       ],
       "updated_at": "2026-07-19",
-      "notes": "Registered atomically by canonical harness approve_harness_plan.py after plan validation."
+      "notes": "Registered atomically by canonical harness approve_harness_plan.py after plan validation.",
+      "completion_summary": "스튜디오에서 직접 고른 도자기 온라인숍이 검증된 코드 자산 조합과 리스타일을 거쳐 실물 페이지로 완성됐고, 실물 확인까지 통과했습니다",
+      "completed": "2026-07-19"
     }
   }
 }

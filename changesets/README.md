@@ -146,5 +146,5 @@
 | 144 | 20260719-code-first-contract | 2026-07-19 | RC2 step 1: code-first consumption contract (A-2.5, mandatory restyle) + recipe backlink injection | 3/4 | complete |
 | 145 | 20260719-composition-recipe-map | 2026-07-19 | RC3 step 1: composition catalog recipe map + collected implementation payload | 4/4 | complete |
 | 146 | 20260719-composition-recipe-contract | 2026-07-19 | RC3 step 2: DESIGN.md storage + code/document implementation routing contract | 4/4 | complete |
-| 147 | 20260719-rc4-setup | 2026-07-19 | RC4 step 1: integrated demo brief, 18-axis selections, implementation link preflight | 4/4 | complete |
-| 147 | 20260719-rc4-demo | 2026-07-19 | RC4: pottery shop integrated demo — setup complete (preflight 13/13), awaiting user selection | 4/5 | in_progress |
+| 147 | 20260719-rc4-setup | 2026-07-19 | RC4 step 1: pottery brief, 18-axis studio, implementation link preflight | 4/4 | complete |
+| 148 | 20260719-rc4-demo | 2026-07-19 | RC4 step 2: pottery studio→mapped code+recipe→restyle→browser integrated demo | 4/5 | human gate |
