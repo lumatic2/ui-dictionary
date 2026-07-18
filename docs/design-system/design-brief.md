@@ -62,6 +62,7 @@ Date: 2026-07-19 (v2 — 리서치 기반 전면 개정: `research/2026-07-19-st
 
 - 풀 브리프 결과는 프로젝트 루트 `DESIGN.md` — **Google Stitch 공식 스펙**(google-labs-code/design.md, alpha: frontmatter `name/colors/typography/rounded/spacing/components` + 고정 8섹션 + `{path.to.token}` 참조, `colors.primary` 필수). 출발점 `templates/DESIGN.md.tmpl`.
 - 전략층 답변은 Overview에, 축 선택은 대응 토큰·섹션에(구성·헤더·푸터·그리드=Layout, 카드·아이콘=Components, 이미지 스타일·모션 톤·접근성=Do's and Don'ts 또는 해당 섹션 프로즈).
+- 구성 선택은 스튜디오 payload의 `implementation.composition`과 `implementation.recipes`를 `Layout`에 함께 기록한다. 구현 에이전트는 각 섹션에서 `/r/<recipe>.json` 코드 자산이 있으면 그 코드에서 출발해 프로젝트 토큰으로 다시 입히고, 자산이 없으면 같은 이름의 recipe 문서를 읽어 재구현한다. 매핑을 기록만 하고 구현 출발점으로 소비하지 않는 것은 브리프 완료가 아니다.
 - **결정 vs 추정 구분 기록** 의무 — 사용자가 명시한 것과 추천값 채택을 다음 세션이 구분할 수 있어야 한다.
 
 ## 5. 대화 불가 환경(headless) 폴백
@@ -70,6 +71,7 @@ Date: 2026-07-19 (v2 — 리서치 기반 전면 개정: `research/2026-07-19-st
 
 ## Changelog
 
+- 2026-07-19: RC3 — 구성 선택의 `implementation.recipes`를 DESIGN.md Layout과 코드/문서 출발 경로에 배선.
 - 2026-07-19: **v2** — 결정 공간 지도 전면 개정 (전략층 6항목·시각 축 14종·스타일 타일 2단 구조, 리서치 2건 근거). 구 "딥 브리프 부록"은 축 카탈로그로 흡수(스튜디오 클릭 선택은 텍스트 문항과 피로 구조가 다름 — 사용자 방향 확인). 
 - 2026-07-19: 부록 딥 브리프 추가 (VB4) + 시각 선택 경로 (VB2).
 - 2026-07-18: 초판 (DB1).

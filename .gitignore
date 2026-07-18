@@ -7,6 +7,8 @@ archive/
 tmp/
 node_modules/
 dist/
+__pycache__/
+*.pyc
 .design/
 .wrangler/
 .playwright-mcp/
