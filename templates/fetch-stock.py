@@ -49,18 +49,26 @@ def main():
     if not photos:
         die(f"'{query}' 결과 0건 — 쿼리를 바꿔 재시도", 3)
 
+    def download(url, fn):
+        tr = urllib.request.Request(url, headers={"User-Agent": "askewly-brief-studio/1.0"})
+        with urllib.request.urlopen(tr, timeout=60) as img, open(fn, "wb") as out:
+            out.write(img.read())
+
     cands = []
     for i, p in enumerate(photos, 1):
+        # 해상도 분리 (ST1): 스튜디오 썸네일 = medium / 최종 페이지 = large2x (부재 시 large → original 폴백)
         fn = f"{outdir}/cand-{i}.jpg"
-        tr = urllib.request.Request(p["src"]["medium"], headers={"User-Agent": "askewly-brief-studio/1.0"})
-        with urllib.request.urlopen(tr, timeout=30) as img, open(fn, "wb") as out:
-            out.write(img.read())
+        full = f"{outdir}/cand-{i}-full.jpg"
+        src = p["src"]
+        download(src["medium"], fn)
+        download(src.get("large2x") or src.get("large") or src["original"], full)
         cands.append({
-            "file": fn, "id": p["id"], "alt": p.get("alt", ""),
+            "file": fn, "file_full": full, "id": p["id"], "alt": p.get("alt", ""),
             "photographer": p["photographer"], "pexels_url": p["url"],
             "avg_color": p.get("avg_color"),
         })
-        print(f"[{i}/{len(photos)}] {fn}  ({p['photographer']}, avg {p.get('avg_color')})")
+        kb = os.path.getsize(full) // 1024
+        print(f"[{i}/{len(photos)}] {fn} + full({kb}KB)  ({p['photographer']}, avg {p.get('avg_color')})")
     with open(f"{outdir}/candidates.json", "w", encoding="utf-8") as f:
         json.dump({"query": query, "locale": "ko-KR", "candidates": cands}, f, ensure_ascii=False, indent=2)
     print(f"OK: {len(cands)}건 → {outdir}/candidates.json")

@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "active_work_id": "SP4",
+  "active_work_id": "ST1",
   "works": {
     "SFB1": {
       "title": "Structure Contract And Clean Production",
@@ -1505,7 +1505,52 @@
       ],
       "updated_at": "2026-07-19",
       "notes": "Registered atomically by canonical harness approve_harness_plan.py after plan validation.",
-      "completed": "2026-07-19"
+      "completed": "2026-07-19",
+      "notified_at": "2026-07-18T16:51:26.369862+00:00"
+    },
+    "ST1": {
+      "work_id": "ST1",
+      "horizon_id": "cascade-studio",
+      "milestone_id": "ST1",
+      "status": "active",
+      "plan_path": "plans/2026-07-19-st1-studio-fixes.md",
+      "changeset_path": "changesets/20260719-studio-fixes",
+      "next_step": "step-1",
+      "current_step": "step-1",
+      "steps": [
+        {
+          "id": "step-1",
+          "label": "Step 1 — 스튜디오 레이아웃 정비 (changeset)",
+          "status": "pending"
+        },
+        {
+          "id": "step-2",
+          "label": "Step 2 — 해상도 분리 + 계약 배포 (changeset)",
+          "status": "pending"
+        }
+      ],
+      "execution_mode": "continuous",
+      "approval": {
+        "approved_by": "user",
+        "approved_at": "2026-07-19",
+        "plan_sha256": "0073e8da0dcc7904a2419c6c39822458fc8d8adf565d47e97b47166ea264e2b2"
+      },
+      "allowed_stop_reasons": [
+        "completed",
+        "blocked",
+        "decision_required",
+        "risk_gate",
+        "secret_required",
+        "external_authority_required",
+        "user_stopped"
+      ],
+      "stop_reason": null,
+      "stop_detail": {},
+      "session_ids": [
+        "claude:ab332db5-5327-43b0-9bef-702291fafaee"
+      ],
+      "updated_at": "2026-07-19",
+      "notes": "Registered atomically by canonical harness approve_harness_plan.py after plan validation."
     }
   }
 }

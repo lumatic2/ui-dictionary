@@ -20,9 +20,16 @@ h2 .step { color: #1a6b3c; font-size: 13px; font-weight: 700; margin-right: 8px;
 .opt { position: relative; background: #fff; border: 2px solid rgba(20,18,14,.10); border-radius: 12px; cursor: pointer; transition: border-color .15s ease; overflow: hidden; }
 .opt:hover { border-color: rgba(20,18,14,.35); }
 .opt.sel { border-color: #1a6b3c; }
-.opt.sel::after { content: "✓"; position: absolute; top: 8px; right: 10px; font-size: 13px; font-weight: 700; color: #1a6b3c; background: rgba(26,107,60,.1); border-radius: 999px; padding: 1px 7px; }
-.opt .rank { position: absolute; top: 8px; left: 10px; font-size: 11px; font-weight: 700; color: rgba(20,18,14,.45); background: rgba(20,18,14,.06); border-radius: 4px; padding: 1px 6px; }
+/* 순위·선택 표시는 오버레이가 아니라 예약된 상단 밴드 — 콘텐츠와 절대 겹치지 않음 (ST1) */
+.opt .band { display: flex; justify-content: space-between; align-items: center; padding: 8px 12px 6px; min-height: 30px; background: #fff; border-bottom: 1px solid rgba(20,18,14,.06); }
+.opt .rank { font-size: 11px; font-weight: 700; color: rgba(20,18,14,.45); background: rgba(20,18,14,.06); border-radius: 4px; padding: 1px 7px; }
 .opt .rank.r1 { color: #1a6b3c; background: rgba(26,107,60,.1); }
+.opt .sel-mark { display: none; font-size: 12px; font-weight: 700; color: #1a6b3c; }
+.opt.sel .sel-mark { display: inline; }
+/* 대형 그룹 (판단 정보가 많은 축: 타일·이미지) */
+.grid.lg { grid-template-columns: repeat(auto-fill, minmax(330px, 1fr)); gap: 16px; }
+.grid.lg .body-slot { min-height: 190px; }
+.tile-grid .body-slot { min-height: 170px; }
 .opt .label { padding: 9px 12px; font-size: 12.5px; font-weight: 600; border-top: 1px solid rgba(20,18,14,.08); display: flex; justify-content: space-between; gap: 8px; }
 .opt .label small { font-weight: 400; color: rgba(20,18,14,.55); white-space: nowrap; }
 .body-slot { padding: 16px; min-height: 118px; }
@@ -132,6 +139,16 @@ const AXES = [
       { value: "display-head", label: "도현 디스플레이 / Sans", sub: "포스터 임팩트", rank: 7, hf: "'Do Hyeon',sans-serif", hw: 400, bf: "'Noto Sans KR',sans-serif" },
       { value: "blackhan-head", label: "검은고딕 / Sans", sub: "최대 임팩트", rank: 8, hf: "'Black Han Sans',sans-serif", hw: 400, bf: "'Noto Sans KR',sans-serif" },
     ]},
+  { id: "imagery", title: "이미지 스타일", type: "mini", size: "lg", hint: "실사 썸네일은 이미지 파이프라인 연동 시 교체 (지금은 톤 카드)",
+    cands: [
+      { value: "photo-warm-doc", label: "실사 · 따뜻한 다큐", sub: "일상 순간", rank: 1, bg: "linear-gradient(135deg,#d9c3a5,#a67c52)" },
+      { value: "photo-bright-asp", label: "실사 · 밝은 애스퍼레이셔널", sub: "잡지 톤", rank: 2, bg: "linear-gradient(135deg,#f2e8dc,#c9d8e8)" },
+      { value: "photo-moody", label: "실사 · 무디 로우키", sub: "저채도 깊이", rank: 3, bg: "linear-gradient(135deg,#3a322a,#6b5b49)" },
+      { value: "illust-flat", label: "플랫 일러스트", sub: "친근", rank: 4, bg: "linear-gradient(135deg,#ffd9b8,#ffb3a1)" },
+      { value: "illust-line", label: "라인 드로잉", sub: "가벼움", rank: 5, bg: "repeating-linear-gradient(45deg,#f5f2ec 0 8px,#e8e2d6 8px 10px)" },
+      { value: "3d-soft", label: "소프트 3D", sub: "입체 오브젝트", rank: 6, bg: "linear-gradient(135deg,#e0d5f5,#b8c8f0)" },
+      { value: "none", label: "이미지 없음", sub: "타이포 중심", rank: 7, bg: "rgb(240,238,232)" },
+    ]},
   { id: "composition", title: "페이지 구성", type: "wire", hint: "섹션 조합 — 첫 화면부터 아래로",
     cands: [
       { value: "hero-cards-info", label: "히어로 → 카드 3 → 정보", rank: 1, rows: ["h32","r:3","b14"] },
@@ -179,15 +196,11 @@ const AXES = [
       { value: "rounded", label: "라운드 10px", rank: 2, r: 10 }, { value: "soft", label: "소프트 18px", rank: 3, r: 18 },
       { value: "pill", label: "필", rank: 5, r: 99 },
     ]},
-  { id: "imagery", title: "이미지 스타일", type: "mini", hint: "실사 썸네일은 이미지 파이프라인 연동 시 교체 (지금은 톤 카드)",
+  { id: "motion", title: "모션 톤 (만져보세요)", type: "demo", hint: "칩에 마우스를 올려보기",
     cands: [
-      { value: "photo-warm-doc", label: "실사 · 따뜻한 다큐", sub: "일상 순간", rank: 1, bg: "linear-gradient(135deg,#d9c3a5,#a67c52)" },
-      { value: "photo-bright-asp", label: "실사 · 밝은 애스퍼레이셔널", sub: "잡지 톤", rank: 2, bg: "linear-gradient(135deg,#f2e8dc,#c9d8e8)" },
-      { value: "photo-moody", label: "실사 · 무디 로우키", sub: "저채도 깊이", rank: 3, bg: "linear-gradient(135deg,#3a322a,#6b5b49)" },
-      { value: "illust-flat", label: "플랫 일러스트", sub: "친근", rank: 4, bg: "linear-gradient(135deg,#ffd9b8,#ffb3a1)" },
-      { value: "illust-line", label: "라인 드로잉", sub: "가벼움", rank: 5, bg: "repeating-linear-gradient(45deg,#f5f2ec 0 8px,#e8e2d6 8px 10px)" },
-      { value: "3d-soft", label: "소프트 3D", sub: "입체 오브젝트", rank: 6, bg: "linear-gradient(135deg,#e0d5f5,#b8c8f0)" },
-      { value: "none", label: "이미지 없음", sub: "타이포 중심", rank: 7, bg: "rgb(240,238,232)" },
+      { value: "minimal", label: "담백", sub: "전환만", rank: 2, cls: "d-plain", desc: "색 전환만, 모션 없음." },
+      { value: "standard", label: "표준", sub: "hover + 등장", rank: 1, cls: "d-std", desc: "부양·등장 모션. 대부분의 제품에 알맞음." },
+      { value: "rich", label: "풍부", sub: "스크롤·커서 연출", rank: 3, cls: "d-rich", desc: "실험적 표현은 별도 승인." },
     ]},
   { id: "icon", title: "아이콘 스타일", type: "iconr", hint: "",
     cands: [
@@ -202,12 +215,6 @@ const AXES = [
       { value: "both-auto", label: "라이트 + 다크 (시스템 따름)", sub: "기본 추천", rank: 1, bg: "linear-gradient(90deg, rgb(250,248,244) 50%, rgb(29,24,19) 50%)", ink: "rgba(20,18,14,.9)" },
       { value: "light-only", label: "라이트만", sub: "범위 축소", rank: 2, bg: "rgb(250,248,244)", ink: "rgba(28,23,16,.95)" },
       { value: "dark-first", label: "다크 우선", sub: "밤 무드 브랜드", rank: 3, bg: "rgb(24,22,26)", ink: "rgba(244,244,248,.95)" },
-    ]},
-  { id: "motion", title: "모션 톤 (만져보세요)", type: "demo", hint: "칩에 마우스를 올려보기",
-    cands: [
-      { value: "minimal", label: "담백", sub: "전환만", rank: 2, cls: "d-plain", desc: "색 전환만, 모션 없음." },
-      { value: "standard", label: "표준", sub: "hover + 등장", rank: 1, cls: "d-std", desc: "부양·등장 모션. 대부분의 제품에 알맞음." },
-      { value: "rich", label: "풍부", sub: "스크롤·커서 연출", rank: 3, cls: "d-rich", desc: "실험적 표현은 별도 승인." },
     ]},
   { id: "a11y", title: "접근성 레벨", type: "textc", hint: "대비·키보드·스크린리더 기준",
     cands: [
@@ -292,12 +299,12 @@ function renderAxis(axis) {
       g.appendChild(st);
     });
   } else {
-    g.className = 'grid';
+    g.className = 'grid' + (axis.size === 'lg' ? ' lg' : '');
     [...axis.cands].sort((a, b) => effRank(axis, a) - effRank(axis, b)).forEach(c => {
       const o = document.createElement('div'); o.className = 'opt'; o.tabIndex = 0; o.dataset.value = c.value;
       if (sel[axis.id] === c.value) o.classList.add('sel');
       const r = effRank(axis, c);
-      o.innerHTML = `<span class="rank ${r <= 1 ? 'r1' : ''}">${r === 0 ? '타일 추천' : r + '순위'}</span>`;
+      o.innerHTML = `<div class="band"><span class="rank ${r <= 1 ? 'r1' : ''}">${r === 0 ? '타일 추천' : r + '순위'}</span><span class="sel-mark">✓ 선택됨</span></div>`;
       o.appendChild(candBody(axis, c));
       const lb = document.createElement('div'); lb.className = 'label';
       lb.innerHTML = `${c.label}${c.sub ? ` <small>${c.sub}</small>` : ''}`; o.appendChild(lb);
@@ -316,7 +323,7 @@ function renderAll() {
   [...TILES].sort((a, b) => a.rank - b.rank).forEach(t => {
     const o = document.createElement('div'); o.className = 'opt tile'; o.tabIndex = 0;
     if (tileSel === t.value) o.classList.add('sel');
-    o.innerHTML = `<span class="rank ${t.rank === 1 ? 'r1' : ''}">${t.rank}순위</span>
+    o.innerHTML = `<div class="band"><span class="rank ${t.rank === 1 ? 'r1' : ''}">${t.rank}순위</span><span class="sel-mark">✓ 선택됨</span></div>
       <div class="body-slot" style="background:${t.bg};color:${t.ink}">
         <div class="t-head" style="font-family:${t.font}">${t.name}</div>
         <div class="t-sub">${t.desc}</div>
