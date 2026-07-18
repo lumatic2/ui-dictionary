@@ -1,7 +1,7 @@
 # Horizon — Skill Entry (진입 경량화 + 사람 확인 게이트)
 
 Date: 2026-07-18
-Status: active
+Status: closed (2026-07-18 — SE1·SE2 완료. Close Criteria 4/4: ① skill 양 배포처 존재 ② entry-protocol 사람 게이트 curl 확인 ③ 전역 절 grep 0 ④ E2E 발화·스크린샷 관측 — Claude 1차 FAIL을 description 강화로 교정 후 Claude·Codex 양쪽 PASS)
 Objective link: `OBJECTIVE.md` (성공 상태 ③ 에이전트 통합 — 판단 주입 경로의 인체공학 교정)
 Preceding horizon: `plans/horizons/2026-07-taste-corpus.md` (closed 2026-07-17)
 

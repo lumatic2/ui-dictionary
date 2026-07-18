@@ -1002,21 +1002,21 @@
       "work_id": "SE2",
       "horizon_id": "skill-entry",
       "milestone_id": "SE2",
-      "status": "active",
+      "status": "completed",
       "plan_path": "plans/2026-07-18-se2-global-removal-e2e.md",
       "changeset_path": "changesets/20260718-global-routing-removal",
-      "next_step": "step-1",
-      "current_step": "step-1",
+      "next_step": null,
+      "current_step": null,
       "steps": [
         {
           "id": "step-1",
           "label": "Step 1 — 전역 \"디자인 판정\" 절 제거 (changeset)",
-          "status": "pending"
+          "status": "completed"
         },
         {
           "id": "step-2",
           "label": "Step 2 — E2E: skill 경유 진입 관측 (changeset)",
-          "status": "pending"
+          "status": "completed"
         }
       ],
       "execution_mode": "continuous",
@@ -1034,13 +1034,15 @@
         "external_authority_required",
         "user_stopped"
       ],
-      "stop_reason": null,
+      "stop_reason": "completed",
       "stop_detail": {},
       "session_ids": [
         "claude:ab332db5-5327-43b0-9bef-702291fafaee"
       ],
       "updated_at": "2026-07-18",
-      "notes": "Registered atomically by canonical harness approve_harness_plan.py after plan validation."
+      "notes": "Registered atomically by canonical harness approve_harness_plan.py after plan validation.",
+      "notified_at": "2026-07-18T12:36:08.329732+00:00",
+      "completed": "2026-07-18"
     }
   }
 }
