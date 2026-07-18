@@ -142,3 +142,4 @@
 | 140 | 20260719-preview-dark | 2026-07-19 | SF3 step 1: preview dark toggle (dark-axis linked, light-only disable) | 3/3 | complete |
 | 141 | 20260719-preview-responsive | 2026-07-19 | SF3 step 2: mobile viewport toggle + 12-combo matrix E2E + integrated loop | 4/4 | complete |
 | 142 | 20260719-registry-pipeline | 2026-07-19 | RC1 step 1: shadcn-compatible registry generator + 27-asset first batch (purity gate) | 4/4 | complete |
+| 143 | 20260719-registry-llms | 2026-07-19 | RC1 step 2: clean-project transplant E2E + llms.txt Code Assets section | 3/4 | complete |

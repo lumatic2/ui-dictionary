@@ -140,7 +140,23 @@ function main() {
     writtenUrls.push(urlPath);
     lines.push(`- [${rel}](${BASE_URL}${urlPath}): ${desc}`);
   }
-  lines.push("");
+
+  // Code Assets (RC1): shadcn-registry-compatible verified implementations built by
+  // scripts/generate-registry.mjs into public/r/ -- linked here, not copied (same public/ tree).
+  const registryIndexPath = path.join(SITE_PUBLIC, "r", "registry.json");
+  if (existsSync(registryIndexPath)) {
+    const reg = JSON.parse(readFileSync(registryIndexPath, "utf8"));
+    lines.push("## Code Assets (verified implementations)");
+    lines.push("");
+    lines.push(`Fetch the JSON, write files[].content into your project, install declared dependencies, then remap the look to your project's tokens per component-restyle.md. Human path: npx shadcn add ${BASE_URL}/r/<name>.json. Index: [r/registry.json](${BASE_URL}/r/registry.json)`);
+    lines.push("");
+    for (const item of reg.items) {
+      writtenUrls.push(`/r/${item.name}.json`);
+      lines.push(`- [r/${item.name}.json](${BASE_URL}/r/${item.name}.json): ${item.title} -- ${item.description}`);
+    }
+    lines.push("");
+  }
+
 
   writeFileSync(LLMS_TXT, lines.join("\n"));
 
