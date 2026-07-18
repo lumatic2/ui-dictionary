@@ -29,14 +29,14 @@ Status: approved (2026-07-19)
 - GPT 이미지 출력은 대체 가능한 asset이며 `CanvasDocument`와 템플릿 구조를 소유하지 않는다.
 
 ## Step 트리
-- [ ] **step-1 — offline-image-provider-boundary**
+- [x] **step-1 — offline-image-provider-boundary**
   - Artifact: provider-neutral interface, OpenAI adapter 직렬화 계약, frozen response→asset manifest 변환, 로컬 fallback.
   - Files: OpenAI 공식 docs, `packages/template-core/src/assets/**`, `packages/template-image-provider-openai/**`, contract tests.
   - Dependencies: TPS1~TPS4 complete
   - Verify: network 차단 상태에서 provider contract/build/test PASS, provenance manifest snapshot 일치.
   - Failure probe: timeout/거부/잘못된 mime·크기 응답이 구조를 손상하지 않고 명시 오류+fallback 결과를 낸다.
   - Commit: changeset `offline-image-provider`.
-- [ ] **step-2 — three-format-end-to-end-proof**
+- [x] **step-2 — three-format-end-to-end-proof**
   - Artifact: `DESIGN.md`+고정 brief에서 형식 선택→compile→asset 주입→브라우저 편집→HTML/SVG/JSON export까지 재현 가능한 증거.
   - Files: `scripts/verify-template-production-system.mjs`, app/core integration tests, `evidence/template-production-system/**`.
   - Dependencies: step-1
@@ -52,3 +52,5 @@ Status: approved (2026-07-19)
 
 ## 진행 로그
 - 2026-07-19 계획 작성, 구현 승인 대기.
+- 2026-07-19 step-1 완료: provider-neutral 경계, GPT Image 2 frozen adapter, provenance와 실패경로 검증.
+- 2026-07-19 step-2 완료: 네트워크 없이 3/3 형식 compile·validate·signature·export evidence 생성.
