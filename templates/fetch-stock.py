@@ -14,6 +14,7 @@ import urllib.parse
 import urllib.request
 
 API = "https://api.pexels.com/v1/search"
+VIDEO_API = "https://api.pexels.com/videos/search"
 
 
 def die(msg: str, code: int = 1):
@@ -25,12 +26,17 @@ def main():
     key = os.environ.get("PEXELS_API_KEY")
     if not key:
         die("PEXELS_API_KEY 환경변수가 없다 — User 전역 등록 여부 확인 (새 셸에서 재시도)")
-    if len(sys.argv) < 2:
-        die("사용법: fetch-stock.py \"쿼리\" [count] [outdir]", 2)
-    query = sys.argv[1]
-    count = int(sys.argv[2]) if len(sys.argv) > 2 else 6
-    outdir = sys.argv[3] if len(sys.argv) > 3 else "stock"
+    args = [a for a in sys.argv[1:] if a != "--video"]
+    video_mode = "--video" in sys.argv
+    if not args:
+        die("사용법: fetch-stock.py [--video] \"쿼리\" [count] [outdir]", 2)
+    query = args[0]
+    count = int(args[1]) if len(args) > 1 else 6
+    outdir = args[2] if len(args) > 2 else ("video" if video_mode else "stock")
     os.makedirs(outdir, exist_ok=True)
+
+    if video_mode:
+        return fetch_videos(key, query, count, outdir)
 
     url = f"{API}?{urllib.parse.urlencode({'query': query, 'per_page': count, 'locale': 'ko-KR'})}"
     req = urllib.request.Request(url, headers={
@@ -71,6 +77,46 @@ def main():
         print(f"[{i}/{len(photos)}] {fn} + full({kb}KB)  ({p['photographer']}, avg {p.get('avg_color')})")
     with open(f"{outdir}/candidates.json", "w", encoding="utf-8") as f:
         json.dump({"query": query, "locale": "ko-KR", "candidates": cands}, f, ensure_ascii=False, indent=2)
+    print(f"OK: {len(cands)}건 → {outdir}/candidates.json")
+
+
+def fetch_videos(key, query, count, outdir):
+    """Pexels Videos (ST3): HD(≤1280) mp4 + 포스터 이미지. 히어로 배경용 — reduced-motion/모바일은 포스터 폴백."""
+    url = f"{VIDEO_API}?{urllib.parse.urlencode({'query': query, 'per_page': count, 'locale': 'ko-KR'})}"
+    req = urllib.request.Request(url, headers={"Authorization": key, "User-Agent": "askewly-brief-studio/1.0"})
+    try:
+        with urllib.request.urlopen(req, timeout=20) as r:
+            data = json.load(r)
+    except urllib.error.HTTPError as e:
+        die(f"Pexels Videos API {e.code} — {'키 무효' if e.code == 401 else '율리밋 초과(200/h)' if e.code == 429 else e.reason}")
+    except urllib.error.URLError as e:
+        die(f"네트워크 실패 — {e.reason}")
+    videos = data.get("videos", [])
+    if not videos:
+        die(f"'{query}' 영상 결과 0건 — 쿼리를 바꿔 재시도", 3)
+
+    def download(u, fn):
+        tr = urllib.request.Request(u, headers={"User-Agent": "askewly-brief-studio/1.0"})
+        with urllib.request.urlopen(tr, timeout=120) as f, open(fn, "wb") as out:
+            out.write(f.read())
+
+    cands = []
+    for i, v in enumerate(videos, 1):
+        files = [f for f in v.get("video_files", []) if f.get("file_type") == "video/mp4" and f.get("width")]
+        if not files:
+            continue
+        # HD 상한: 1280 이하 중 최대 폭 (없으면 최소 폭 — 4K 원본 회피)
+        hd = sorted([f for f in files if f["width"] <= 1280], key=lambda f: -f["width"]) or sorted(files, key=lambda f: f["width"])
+        mp4 = f"{outdir}/vid-{i}.mp4"
+        poster = f"{outdir}/vid-{i}-poster.jpg"
+        download(hd[0]["link"], mp4)
+        download(v["image"], poster)
+        mb = os.path.getsize(mp4) / 1048576
+        cands.append({"file": mp4, "poster": poster, "id": v["id"], "duration": v.get("duration"),
+                      "width": hd[0]["width"], "user": v.get("user", {}).get("name"), "pexels_url": v.get("url"), "size_mb": round(mb, 1)})
+        print(f"[{i}] {mp4} ({hd[0]['width']}px, {mb:.1f}MB, {v.get('duration')}s) + poster  ({v.get('user',{}).get('name')})")
+    with open(f"{outdir}/candidates.json", "w", encoding="utf-8") as f:
+        json.dump({"query": query, "locale": "ko-KR", "type": "video", "candidates": cands}, f, ensure_ascii=False, indent=2)
     print(f"OK: {len(cands)}건 → {outdir}/candidates.json")
 
 

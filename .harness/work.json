@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "active_work_id": "ST2",
+  "active_work_id": "ST3",
   "works": {
     "SFB1": {
       "title": "Structure Contract And Clean Production",
@@ -1578,6 +1578,50 @@
         "approved_by": "user",
         "approved_at": "2026-07-19",
         "plan_sha256": "93b63ae3c8d16fec8a449061586f301c250f0aa75352217471c07048da9bfb07"
+      },
+      "allowed_stop_reasons": [
+        "completed",
+        "blocked",
+        "decision_required",
+        "risk_gate",
+        "secret_required",
+        "external_authority_required",
+        "user_stopped"
+      ],
+      "stop_reason": null,
+      "stop_detail": {},
+      "session_ids": [
+        "claude:ab332db5-5327-43b0-9bef-702291fafaee"
+      ],
+      "updated_at": "2026-07-19",
+      "notes": "Registered atomically by canonical harness approve_harness_plan.py after plan validation."
+    },
+    "ST3": {
+      "work_id": "ST3",
+      "horizon_id": "cascade-studio",
+      "milestone_id": "ST3",
+      "status": "active",
+      "plan_path": "plans/2026-07-19-st3-video-pipeline.md",
+      "changeset_path": "changesets/20260719-video-pipeline",
+      "next_step": "step-1",
+      "current_step": "step-1",
+      "steps": [
+        {
+          "id": "step-1",
+          "label": "Step 1 — Videos API 헬퍼 확장 + 실호출 (changeset)",
+          "status": "pending"
+        },
+        {
+          "id": "step-2",
+          "label": "Step 2 — 스튜디오 영상 후보 + 히어로 패턴 계약 (changeset)",
+          "status": "pending"
+        }
+      ],
+      "execution_mode": "continuous",
+      "approval": {
+        "approved_by": "user",
+        "approved_at": "2026-07-19",
+        "plan_sha256": "93546c437abdaa50ab26de437a380e20f6af3672352cab5fb5d2b283c0b11232"
       },
       "allowed_stop_reasons": [
         "completed",

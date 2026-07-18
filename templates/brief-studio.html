@@ -285,7 +285,22 @@ function candBody(axis, c, C) {
   if (axis.type === 'mini') {
     b.classList.add('mini');
     if (axis.id === 'base' || axis.id === 'dark') { b.style.background = c.bg || C.bg; b.style.color = c.ink || C.ink; }
-    else if (axis.id === 'imagery') { b.style.background = c.bg; b.style.minHeight = '150px'; b.title = c.label; return b; }
+    else if (axis.id === 'imagery') {
+      b.style.minHeight = '150px'; b.title = c.label;
+      if (c.video) {  // ST3: 영상 후보 — hover 시 muted 재생, reduced-motion이면 포스터 고정
+        b.style.padding = '0';
+        const v = document.createElement('video');
+        v.muted = true; v.loop = true; v.playsInline = true; v.preload = 'none';
+        v.poster = c.poster || ''; v.src = c.video;
+        v.style.cssText = 'width:100%;height:100%;min-height:150px;object-fit:cover;display:block';
+        if (!matchMedia('(prefers-reduced-motion: reduce)').matches) {
+          b.addEventListener('pointerenter', () => v.play().catch(() => {}));
+          b.addEventListener('pointerleave', () => { v.pause(); });
+        }
+        b.appendChild(v);
+      } else { b.style.background = c.bg; }
+      return b;
+    }
     else { b.style.background = C.bg; b.style.color = C.ink; }  // 캐스케이드: 선택된 베이스 위에서 렌더
     const ac = axis.id === 'accent' ? c.ac : C.ac;
     b.innerHTML = `<div class="m-title" style="font-family:${C.hf}">화면 제목</div><div class="m-sub">보조 설명 텍스트</div>
