@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "active_work_id": "TPS4",
+  "active_work_id": "TPS5",
   "works": {
     "SFB1": {
       "title": "Structure Contract And Clean Production",
@@ -2199,6 +2199,52 @@
       "updated_at": "2026-07-19",
       "notes": "Registered atomically by canonical harness approve_harness_plan.py after plan validation.",
       "completion_summary": "명함·제품 포스터·인포그래픽 각 2개 청사진과 형식 고유 무결성 검증을 6개 카탈로그로 완성했습니다",
+      "completed": "2026-07-19"
+    },
+    "TPS5": {
+      "work_id": "TPS5",
+      "horizon_id": "template-production-system",
+      "milestone_id": "TPS5",
+      "status": "completed",
+      "plan_path": "plans/2026-07-19-tps5-asset-provider-integration.md",
+      "changeset_path": "changesets/20260719-template-production-e2e",
+      "next_step": null,
+      "current_step": null,
+      "steps": [
+        {
+          "id": "step-1",
+          "label": "step-1 — offline-image-provider-boundary",
+          "status": "completed"
+        },
+        {
+          "id": "step-2",
+          "label": "step-2 — three-format-end-to-end-proof",
+          "status": "completed"
+        }
+      ],
+      "execution_mode": "continuous",
+      "approval": {
+        "approved_by": "user",
+        "approved_at": "2026-07-19",
+        "plan_sha256": "2375834ee9d2c376818fec2a80d663c93822d7299196866ae20485241d00c87e"
+      },
+      "allowed_stop_reasons": [
+        "completed",
+        "blocked",
+        "decision_required",
+        "risk_gate",
+        "secret_required",
+        "external_authority_required",
+        "user_stopped"
+      ],
+      "stop_reason": null,
+      "stop_detail": {},
+      "session_ids": [
+        "codex:template-production-chain"
+      ],
+      "updated_at": "2026-07-19",
+      "notes": "Registered atomically by canonical harness approve_harness_plan.py after plan validation.",
+      "completion_summary": "실제 호출 없이 GPT Image 2 소재 공급자 경계와 provenance·실패 처리를 검증하고 세 형식 전체 제작 루프를 재현했습니다",
       "completed": "2026-07-19"
     }
   }

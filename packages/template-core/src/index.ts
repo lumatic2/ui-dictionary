@@ -1,4 +1,5 @@
 export * from './blueprints/registry.js'
+export * from './assets/provider.js'
 export * from './compiler.js'
 export * from './catalog.js'
 export * from './fixtures.js'

@@ -1,0 +1,5 @@
+import type { AssetManifestEntry,ImageAssetRequest } from '@askewly/template-core'
+export interface OpenAIImageRequest{model:'gpt-image-2';prompt:string;size:string;output_format:'png'}
+export interface FrozenImageResponse{b64_json?:string;mimeType?:string;width?:number;height?:number;requestId?:string}
+export function serializeOpenAIImageRequest(request:ImageAssetRequest):OpenAIImageRequest{return{model:'gpt-image-2',prompt:request.prompt,size:`${request.width}x${request.height}`,output_format:'png'}}
+export function responseToAsset(request:ImageAssetRequest,response:FrozenImageResponse):AssetManifestEntry{if(!response.b64_json)throw new Error('PROVIDER_EMPTY_RESPONSE');if(response.mimeType!=='image/png')throw new Error('PROVIDER_INVALID_MIME');if(response.width!==request.width||response.height!==request.height)throw new Error('PROVIDER_INVALID_SIZE');return{id:request.id,role:request.role,uri:`data:image/png;base64,${response.b64_json}`,mimeType:'image/png',width:request.width,height:request.height,provenance:{provider:'generated',source:`openai:gpt-image-2:${response.requestId??'frozen'}`}}}

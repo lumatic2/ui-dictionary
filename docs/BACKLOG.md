@@ -293,3 +293,9 @@
   - Completed: 2026-07-19
   - Result: 브리프 계약 4절 정본 + 프로토콜 0.5단계 배선, llms 59자산 배포
   - Evidence: changesets/20260718-design-brief-contract/README.md, docs/design-system/design-brief.md
+
+### 2026-07
+- TPS5 - TPS5 — 생성 소재 경계·통합 실연
+  - Completed: 2026-07-19
+  - Result: 오프라인 GPT Image 2 소재 경계 + 세 형식 전체 제작 루프
+  - Evidence: evidence/template-production-system/tps5-e2e.md, evidence/template-production-system/e2e-manifest.json

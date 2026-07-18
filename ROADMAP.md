@@ -1,13 +1,13 @@
 # ROADMAP
 
 > Last updated: 2026-07-19
-> Status: 편집 가능한 템플릿 제작 시스템 실행 중 — TPS4 active
+> Status: 편집 가능한 템플릿 제작 시스템 완료 — TPS1~TPS5 closed
 > North star: Build Askewly Design as both a public reference website and an agent-usable implementation system.
 > line budget: <=150
 
 ## Current Horizon
 
-<!-- harness:goal id="template-production-system" status="active" -->
+<!-- harness:goal id="template-production-system" status="completed" -->
 Goal: 브리프·토큰·레시피를 명함·제품 포스터·인포그래픽의 편집 가능한 CanvasDocument와 브라우저 제작 루프로 바꾼다. Details: `plans/horizons/2026-07-template-production-system.md`.
 
 <!-- harness:goal-archive5 id="recipe-code-reuse" status="completed" -->

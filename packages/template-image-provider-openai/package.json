@@ -1,0 +1,1 @@
+{"name":"@askewly/template-image-provider-openai","version":"0.1.0","private":true,"type":"module","exports":{".":"./dist/index.js"},"types":"./dist/index.d.ts","scripts":{"test":"vitest run","build":"tsc"},"dependencies":{"@askewly/template-core":"file:../template-core"},"devDependencies":{"typescript":"^5.7.0","vitest":"^3.2.0"}}

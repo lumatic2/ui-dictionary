@@ -1,6 +1,6 @@
 # HORIZON — 편집 가능한 템플릿 제작 시스템
 
-> 생성: 2026-07-19 · marker: `harness:goal id="template-production-system"` · 상태: active
+> 생성: 2026-07-19 · marker: `harness:goal id="template-production-system"` · 상태: closed (2026-07-19)
 > 위계: Objective(`OBJECTIVE.md`) → **Horizon**(이 문서) → Milestone(`plans/2026-07-19-tps*.md`) → Step.
 > 진행 상태의 정본은 `ROADMAP.md` marker다. `recipe-code-reuse` close 후 2026-07-19 승인·승격됐다.
 
@@ -44,3 +44,12 @@
 - 위(Objective): `OBJECTIVE.md`
 - 설계 결정 예정: `docs/adr/0009-structured-template-production-boundary.md`
 - 아래: `plans/2026-07-19-tps1-template-contract.md` ~ `plans/2026-07-19-tps5-asset-provider-integration.md`
+
+## Close (2026-07-19)
+
+- 결정성: 세 기준 fixture 동일 signature 재현 및 6개 catalog compile matrix PASS.
+- 편집성: text/image/shape/frame/token binding 보존, 평면 artwork 거부.
+- 브라우저: 세 형식 렌더·텍스트 편집·JSON/HTML/SVG export/import, desktop/mobile PASS.
+- 실패경로: 비율·필수 콘텐츠·overflow·asset·token·출처/단위·provider 응답 명시 거부.
+- 외부 호출: 0. GPT Image 2는 구조 정본이 아닌 provenance 소재 경계로만 편입.
+- Objective 임팩트: 브리프·토큰·레시피가 실제 편집 가능한 제작 장면과 에이전트 검증 명령까지 이어졌다.
