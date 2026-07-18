@@ -1512,21 +1512,21 @@
       "work_id": "ST1",
       "horizon_id": "cascade-studio",
       "milestone_id": "ST1",
-      "status": "active",
+      "status": "completed",
       "plan_path": "plans/2026-07-19-st1-studio-fixes.md",
       "changeset_path": "changesets/20260719-studio-fixes",
-      "next_step": "step-1",
-      "current_step": "step-1",
+      "next_step": null,
+      "current_step": null,
       "steps": [
         {
           "id": "step-1",
           "label": "Step 1 — 스튜디오 레이아웃 정비 (changeset)",
-          "status": "pending"
+          "status": "completed"
         },
         {
           "id": "step-2",
           "label": "Step 2 — 해상도 분리 + 계약 배포 (changeset)",
-          "status": "pending"
+          "status": "completed"
         }
       ],
       "execution_mode": "continuous",
@@ -1544,33 +1544,34 @@
         "external_authority_required",
         "user_stopped"
       ],
-      "stop_reason": null,
+      "stop_reason": "completed",
       "stop_detail": {},
       "session_ids": [
         "claude:ab332db5-5327-43b0-9bef-702291fafaee"
       ],
       "updated_at": "2026-07-19",
-      "notes": "Registered atomically by canonical harness approve_harness_plan.py after plan validation."
+      "notes": "Registered atomically by canonical harness approve_harness_plan.py after plan validation.",
+      "completed": "2026-07-19"
     },
     "ST2": {
       "work_id": "ST2",
       "horizon_id": "cascade-studio",
       "milestone_id": "ST2",
-      "status": "active",
+      "status": "completed",
       "plan_path": "plans/2026-07-19-st2-cascade-preview.md",
       "changeset_path": "changesets/20260719-cascade-preview",
-      "next_step": "step-1",
-      "current_step": "step-1",
+      "next_step": null,
+      "current_step": null,
       "steps": [
         {
           "id": "step-1",
           "label": "Step 1 — 캐스케이드 렌더 엔진 (changeset)",
-          "status": "pending"
+          "status": "completed"
         },
         {
           "id": "step-2",
           "label": "Step 2 — 스티키 라이브 미리보기 + 계약 (changeset)",
-          "status": "pending"
+          "status": "completed"
         }
       ],
       "execution_mode": "continuous",
@@ -1588,33 +1589,34 @@
         "external_authority_required",
         "user_stopped"
       ],
-      "stop_reason": null,
+      "stop_reason": "completed",
       "stop_detail": {},
       "session_ids": [
         "claude:ab332db5-5327-43b0-9bef-702291fafaee"
       ],
       "updated_at": "2026-07-19",
-      "notes": "Registered atomically by canonical harness approve_harness_plan.py after plan validation."
+      "notes": "Registered atomically by canonical harness approve_harness_plan.py after plan validation.",
+      "completed": "2026-07-19"
     },
     "ST3": {
       "work_id": "ST3",
       "horizon_id": "cascade-studio",
       "milestone_id": "ST3",
-      "status": "active",
+      "status": "completed",
       "plan_path": "plans/2026-07-19-st3-video-pipeline.md",
       "changeset_path": "changesets/20260719-video-pipeline",
-      "next_step": "step-1",
-      "current_step": "step-1",
+      "next_step": null,
+      "current_step": null,
       "steps": [
         {
           "id": "step-1",
           "label": "Step 1 — Videos API 헬퍼 확장 + 실호출 (changeset)",
-          "status": "pending"
+          "status": "completed"
         },
         {
           "id": "step-2",
           "label": "Step 2 — 스튜디오 영상 후보 + 히어로 패턴 계약 (changeset)",
-          "status": "pending"
+          "status": "completed"
         }
       ],
       "execution_mode": "continuous",
@@ -1632,13 +1634,14 @@
         "external_authority_required",
         "user_stopped"
       ],
-      "stop_reason": null,
+      "stop_reason": "completed",
       "stop_detail": {},
       "session_ids": [
         "claude:ab332db5-5327-43b0-9bef-702291fafaee"
       ],
       "updated_at": "2026-07-19",
-      "notes": "Registered atomically by canonical harness approve_harness_plan.py after plan validation."
+      "notes": "Registered atomically by canonical harness approve_harness_plan.py after plan validation.",
+      "completed": "2026-07-19"
     },
     "ST4": {
       "work_id": "ST4",
@@ -1647,13 +1650,13 @@
       "status": "active",
       "plan_path": "plans/2026-07-19-st4-copy-axes-e2e.md",
       "changeset_path": "changesets/20260719-copy-axes",
-      "next_step": "step-1",
-      "current_step": "step-1",
+      "next_step": "step-2",
+      "current_step": "step-2",
       "steps": [
         {
           "id": "step-1",
           "label": "Step 1 — 카피·인터랙션 축 구현 + 계약 배포 (changeset)",
-          "status": "pending"
+          "status": "completed"
         },
         {
           "id": "step-2",
@@ -1676,8 +1679,11 @@
         "external_authority_required",
         "user_stopped"
       ],
-      "stop_reason": null,
-      "stop_detail": {},
+      "stop_reason": "blocked",
+      "stop_detail": {
+        "what": "step-2 통합 실연 — 사용자 의뢰 대기 (plan 명시 중단점)",
+        "resume": "의뢰 유입 시 18축 폭포+미리보기+영상 실연 → ST4 완료 → horizon close"
+      },
       "session_ids": [
         "claude:ab332db5-5327-43b0-9bef-702291fafaee"
       ],
