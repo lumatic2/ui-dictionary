@@ -22,4 +22,4 @@
 - [x] llms 재생성 87 assets — 인덱스 code 태그 26 + 레시피 사본 백링크 주입 26 (자산 27 중 api-reference-layout는 다중 매칭으로 미주입 — 퍼지 매칭 단일해석 규칙)
 - [x] 자산 없는 레시피(landing-hero) 백링크 0 (잘못된 링크 없음 — failure probe)
 - [x] 코드 출발 절 grep — entry-protocol A-2.5·C-1.5, restyle 리맵 절, asset-model 실현체 주석
-- [ ] curl 배포 확인 (세션 push 후)
+- [x] curl 배포 확인 — `llms.txt` Code Assets 절과 `r/stat-summary-grid.json` HTTP 200

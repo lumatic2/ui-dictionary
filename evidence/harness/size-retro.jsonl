@@ -17,3 +17,4 @@
 {"actual_changesets": 2, "declared_min": 2, "milestone_id": "SF2", "ts": "2026-07-19", "verdict": "ok"}
 {"actual_changesets": 2, "declared_min": 2, "milestone_id": "SF3", "ts": "2026-07-19", "verdict": "ok"}
 {"actual_changesets": 2, "declared_min": 2, "milestone_id": "RC1", "ts": "2026-07-19", "verdict": "ok"}
+{"actual_changesets": 2, "declared_min": 2, "milestone_id": "RC2", "ts": "2026-07-19", "verdict": "ok"}
