@@ -1686,7 +1686,8 @@
       ],
       "updated_at": "2026-07-19",
       "notes": "Registered atomically by canonical harness approve_harness_plan.py after plan validation.",
-      "completed": "2026-07-19"
+      "completed": "2026-07-19",
+      "notified_at": "2026-07-18T17:38:47.482175+00:00"
     }
   }
 }

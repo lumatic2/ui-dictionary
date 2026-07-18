@@ -235,3 +235,14 @@
   - Completed: 2026-07-19
   - Result: 브리프 v2 배포 — 전략층 6·시각 축 14·스타일 타일 2단 구조 (리서치 2건 근거)
   - Evidence: changesets/20260719-brief-v2/README.md, research/2026-07-19-studio-depth-brief-practice.md, research/2026-07-19-studio-depth-tool-practice.md
+
+### 2026-07
+- SP2 - SP2 — 스튜디오 v2 (2단 구조 + 축 14종)
+  - Completed: 2026-07-19
+  - Result: 스튜디오 v2 실구동 — 타일 재정렬·강제필터 금지·수집 v2 검증
+  - Evidence: changesets/20260719-studio-v2/README.md, evidence/studio-depth/v2-selections-test.json
+
+- SP3 - SP3 — 이미지 파이프라인 (Pexels + 생성 옵션)
+  - Completed: 2026-07-19
+  - Result: Pexels ko-KR 실호출 6장 + 이미지 축 계약 배포, 키 User 전역 등록
+  - Evidence: changesets/20260719-image-pipeline/README.md, templates/fetch-stock.py
