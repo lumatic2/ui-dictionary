@@ -2245,7 +2245,8 @@
       "updated_at": "2026-07-19",
       "notes": "Registered atomically by canonical harness approve_harness_plan.py after plan validation.",
       "completion_summary": "실제 호출 없이 GPT Image 2 소재 공급자 경계와 provenance·실패 처리를 검증하고 세 형식 전체 제작 루프를 재현했습니다",
-      "completed": "2026-07-19"
+      "completed": "2026-07-19",
+      "notified_at": "2026-07-18T20:25:14.055324+00:00"
     }
   }
 }
