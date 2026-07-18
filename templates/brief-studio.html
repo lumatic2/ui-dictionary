@@ -78,6 +78,9 @@ h2 .step { color: #1a6b3c; font-size: 13px; font-weight: 700; margin-right: 8px;
 .d-underline .demo-chip { border-radius: 0; background: transparent !important; border-bottom: 2px solid currentColor; padding-bottom: 4px; position: relative; }
 .d-underline .demo-chip::after { content: ""; position: absolute; left: 0; bottom: -2px; height: 2px; width: 0; background: currentColor; transition: width .25s ease; }
 .d-underline .demo-chip:hover::after { width: 100%; }
+.d-field { position: relative; overflow: hidden; }
+.d-field .field-bg { position: absolute; inset: 0; background: radial-gradient(140px circle at var(--fx,50%) var(--fy,50%), currentColor, transparent 70%); opacity: .18; pointer-events: none; transition: opacity .2s; }
+.d-field:hover .field-bg { opacity: .32; }
 /* 카피 후보 */
 .copy-slot { display: grid; place-items: center; text-align: center; }
 .copy-slot .c-head { font-size: 19px; line-height: 1.25; letter-spacing: -0.015em; }
@@ -168,14 +171,16 @@ const AXES = [
       { value: "3d-soft", label: "소프트 3D", sub: "입체 오브젝트", rank: 6, bg: "linear-gradient(135deg,#e0d5f5,#b8c8f0)" },
       { value: "none", label: "이미지 없음", sub: "타이포 중심", rank: 7, bg: "rgb(240,238,232)" },
     ]},
-  { id: "composition", title: "페이지 구성", type: "wire", hint: "섹션 조합 — 첫 화면부터 아래로",
+  { id: "composition", title: "페이지 구성", type: "wire", size: "lg", hint: "섹션 조합과 순서 — 선택이 오른쪽 미리보기 구조에 그대로 반영됩니다",
     cands: [
-      { value: "hero-cards-info", label: "히어로 → 카드 3 → 정보", rank: 1, rows: ["h32","r:3","b14"] },
-      { value: "hero-story-cards", label: "히어로 → 이야기 → 카드", rank: 2, rows: ["h32","sb18","r:3"] },
-      { value: "split-hero", label: "스플릿 히어로 → 카드", rank: 3, rows: ["sp32","r:3","b10"] },
-      { value: "long-scroll", label: "롱 스크롤 스토리", rank: 4, rows: ["h28","sb16","sb16","r:2","b10"] },
-      { value: "gallery-first", label: "갤러리 우선", rank: 5, rows: ["h20","r:4","r:4","b10"] },
-      { value: "one-screen", label: "원 스크린 집중", rank: 6, rows: ["h44","b12"] },
+      { value: "hero-cards-info", label: "히어로 → 카드 3 → 정보", sub: "표준 소개형", rank: 1, rows: ["h32","r:3","b14"], pv: ["hero","cards","info"] },
+      { value: "split-hero-flow", label: "스플릿 히어로 → 특징 → CTA", sub: "Z-패턴", rank: 2, rows: ["sp30","r:3","b12"], pv: ["split","cards","cta"] },
+      { value: "media-full", label: "풀블리드 미디어 → 정보 → CTA", sub: "영상·사진 주도", rank: 3, rows: ["h48","b12","b10"], pv: ["fullhero","info","cta"] },
+      { value: "steps-flow", label: "히어로 → 3단계 안내 → CTA", sub: "예약·온보딩형", rank: 4, rows: ["h30","r:3","b12"], pv: ["hero","steps","cta"] },
+      { value: "proof-first", label: "히어로 → 후기 → 카드 → CTA", sub: "신뢰 선행형", rank: 5, rows: ["h28","sb14","r:3","b10"], pv: ["hero","quote","cards","cta"] },
+      { value: "gallery-first", label: "미니 히어로 → 갤러리 → 카드", sub: "쇼케이스형", rank: 6, rows: ["h20","r:4","r:4","b10"], pv: ["minihero","gallery","cards"] },
+      { value: "long-story", label: "롱 스크롤 스토리 → FAQ → CTA", sub: "서사·설득형", rank: 7, rows: ["h28","sb16","sb16","b8","b10"], pv: ["hero","story","story2","faq","cta"] },
+      { value: "one-screen", label: "원 스크린 집중", sub: "단일 행동", rank: 8, rows: ["h50"], pv: ["fullhero"] },
     ]},
   /* AGENT(ST4): 카피 후보는 전략층 키워드에서 파생해 프로젝트마다 교체하라 */
   { id: "headline", title: "히어로 헤드라인", type: "copy", size: "lg", hint: "문구를 실물 타이포로 비교 — 선택이 오른쪽 미리보기에 반영됩니다",
@@ -242,27 +247,30 @@ const AXES = [
       { value: "rounded", label: "라운드 10px", rank: 2, r: 10 }, { value: "soft", label: "소프트 18px", rank: 3, r: 18 },
       { value: "pill", label: "필", rank: 5, r: 99 },
     ]},
-  { id: "motion", title: "모션 톤 (만져보세요)", type: "demo", hint: "칩에 마우스를 올려보기",
+  { id: "motion", title: "모션 톤 — 전환·등장의 규모", type: "demo", hint: "화면 전환과 요소 등장이 얼마나 표현적인가 (커서 반응은 아래 별도 축)",
     cands: [
-      { value: "minimal", label: "담백", sub: "전환만", rank: 2, cls: "d-plain", desc: "색 전환만, 모션 없음." },
       { value: "standard", label: "표준", sub: "hover + 등장", rank: 1, cls: "d-std", desc: "부양·등장 모션. 대부분의 제품에 알맞음." },
-      { value: "rich", label: "풍부", sub: "스크롤·커서 연출", rank: 3, cls: "d-rich", desc: "실험적 표현은 별도 승인." },
+      { value: "minimal", label: "담백", sub: "전환만", rank: 2, cls: "d-plain", desc: "색 전환만, 움직임 없음." },
+      { value: "rich", label: "풍부", sub: "스크롤 연출", rank: 3, cls: "d-rich", desc: "스크롤 스토리텔링급 — 실험적 표현은 수동 승인." },
+      { value: "none", label: "선택 안함", sub: "에이전트 판단", rank: 4, cls: "d-plain", desc: "정하지 않음 — 맥락에 맞게 에이전트가 판단합니다." },
     ]},
-  { id: "pointer", title: "마우스 인터랙션 (만져보세요)", type: "demo", hint: "카드·버튼 hover의 성격",
+  { id: "pointer", title: "커서 인터랙션 — 마우스가 닿을 때·움직일 때", type: "demo", size: "lg", hint: "hover 성격과 커서 반응 표현 (모션 톤과 별개 축) — 박스 안에서 마우스를 움직여보세요",
     cands: [
-      { value: "lift", label: "부양", sub: "떠오름+그림자", rank: 1, cls: "d-std", desc: "hover 시 살짝 떠오릅니다 — 표준." },
-      { value: "tint", label: "틴트", sub: "색만 변화", rank: 2, cls: "d-plain", desc: "이동 없이 색만 — 가장 담백." },
-      { value: "glow", label: "글로우", sub: "빛 번짐", rank: 3, cls: "d-glow", desc: "액센트빛이 번집니다 — 다크에서 강함." },
-      { value: "underline", label: "밑줄 확장", sub: "타이포 중심", rank: 4, cls: "d-underline", desc: "밑줄이 자라납니다 — 에디토리얼." },
-      { value: "magnet", label: "자석", sub: "커서 추종", rank: 5, cls: "d-rich", desc: "커서를 따라옵니다 — 실험적(수동 승인)." },
+      { value: "none", label: "선택 안함", sub: "에이전트 판단", rank: 1, cls: "d-plain", desc: "정하지 않음 — 기본 hover만 두고 에이전트가 판단." },
+      { value: "lift", label: "부양", sub: "hover 떠오름", rank: 2, cls: "d-std", desc: "카드·버튼이 살짝 떠오릅니다." },
+      { value: "cursor-field", label: "커서 반응 필드", sub: "배경이 커서를 따라 빛남", rank: 3, cls: "d-field", desc: "askewly 쇼케이스의 Cursor-Reactive Field — 배경 글로우가 커서를 따라옵니다." },
+      { value: "glow", label: "글로우", sub: "hover 빛 번짐", rank: 4, cls: "d-glow", desc: "액센트빛이 번집니다 — 다크에서 강함." },
+      { value: "underline", label: "밑줄 확장", sub: "타이포 중심", rank: 5, cls: "d-underline", desc: "밑줄이 자라납니다 — 에디토리얼." },
+      { value: "magnet", label: "자석", sub: "요소가 커서 추종", rank: 6, cls: "d-rich", desc: "버튼이 커서를 따라옵니다 — 실험적(수동 승인)." },
     ]},
-  { id: "icon", title: "아이콘 스타일", type: "iconr", hint: "",
+  { id: "icon", title: "아이콘 스타일", type: "iconr", size: "lg", hint: "같은 아이콘 3종을 스타일별로 — 선 굵기·면·색 개입의 차이",
     cands: [
-      { value: "outline", label: "아웃라인", rank: 1, sw: 1.8, fill: "none" },
-      { value: "filled", label: "필드", rank: 3, sw: 0, fill: "currentColor" },
-      { value: "duotone", label: "듀오톤", rank: 2, sw: 1.5, fill: "rgba(26,107,60,.25)" },
-      { value: "thin", label: "씬 라인", rank: 4, sw: 1, fill: "none" },
-      { value: "none", label: "아이콘 없음", rank: 5, none: true },
+      { value: "outline", label: "아웃라인", sub: "얇은 선 1.8 (Lucide풍)", rank: 1, sw: 1.8, fill: "none", join: "round" },
+      { value: "bold-outline", label: "볼드 라인", sub: "굵은 선 2.8", rank: 2, sw: 2.8, fill: "none", join: "round" },
+      { value: "filled", label: "필드(면)", sub: "채운 면", rank: 3, sw: 0, fill: "currentColor", join: "round" },
+      { value: "duotone", label: "듀오톤", sub: "선 + 액센트 면", rank: 4, sw: 1.6, fill: "ACCENT", join: "round" },
+      { value: "sharp", label: "샤프", sub: "각진 조인트", rank: 5, sw: 2, fill: "none", join: "miter" },
+      { value: "none", label: "아이콘 없음", sub: "텍스트만", rank: 6, none: true },
     ]},
   { id: "dark", title: "다크 모드", type: "mini", hint: "",
     cands: [
@@ -270,11 +278,11 @@ const AXES = [
       { value: "light-only", label: "라이트만", sub: "범위 축소", rank: 2, bg: "rgb(250,248,244)", ink: "rgba(28,23,16,.95)" },
       { value: "dark-first", label: "다크 우선", sub: "밤 무드 브랜드", rank: 3, bg: "rgb(24,22,26)", ink: "rgba(244,244,248,.95)" },
     ]},
-  { id: "a11y", title: "접근성 레벨", type: "textc", hint: "대비·키보드·스크린리더 기준",
+  { id: "a11y", title: "글자 잘 보이기 기준 (접근성)", type: "textc", hint: "배경과 글자의 명암 차이를 어디까지 보장할지",
     cands: [
-      { value: "aa", label: "WCAG AA", sub: "실무 표준 (4.5:1) — 기본", rank: 1 },
-      { value: "aaa-body", label: "AA + 본문 AAA", sub: "본문 7:1 목표", rank: 2 },
-      { value: "aaa", label: "WCAG AAA 전면", sub: "공공·의료급", rank: 3 },
+      { value: "aa", label: "표준", sub: "대부분 서비스의 실무·법적 기준 — 일반 시력 기준 충분히 읽힘 (WCAG AA, 대비 4.5:1)", rank: 1 },
+      { value: "aaa-body", label: "본문 강화", sub: "본문 글자만 더 진하게 — 저시력·고령 사용자도 편안 (본문 AAA 7:1)", rank: 2 },
+      { value: "aaa", label: "최고 수준", sub: "모든 글자·요소를 최고 대비로 — 공공·의료 서비스급 (AAA 전면)", rank: 3 },
     ]},
 ];
 /* ================= 렌더러 (에이전트 수정 불필요) ================= */
@@ -367,11 +375,19 @@ function candBody(axis, c, C) {
       ${c.photo ? `<div style="height:34px;border-radius:${Math.min(C.r,8)}px;background:${C.ac}33;margin-bottom:8px"></div>` : ''}
       <b style="font-size:12.5px">카드 제목</b><div style="opacity:.6;margin-top:3px">설명 텍스트 한 줄</div></div>`;
   } else if (axis.type === 'iconr') {
-    b.style.display = 'flex'; b.style.gap = '14px'; b.style.alignItems = 'center'; b.style.justifyContent = 'center';
+    b.style.display = 'flex'; b.style.gap = '18px'; b.style.alignItems = 'center'; b.style.justifyContent = 'center';
     b.style.background = C.bg; b.style.color = C.ink;
     if (c.none) { b.innerHTML = '<span style="font-size:12px;opacity:.5">텍스트만으로</span>'; }
-    else b.innerHTML = ['M4 8h16M4 14h10', 'M12 4l3 6 6 1-4.5 4 1 6-5.5-3-5.5 3 1-6L3 11l6-1z', 'M5 12a7 7 0 1014 0 7 7 0 00-14 0'].map(pt =>
-      `<svg width="26" height="26" viewBox="0 0 24 24" fill="${c.fill === 'rgba(26,107,60,.25)' ? C.ac + '40' : c.fill}" stroke="currentColor" stroke-width="${c.sw}" stroke-linecap="round"><path d="${pt}"/></svg>`).join('');
+    else {
+      const fill = c.fill === 'ACCENT' ? C.ac + '55' : c.fill;
+      const stroke = c.fill === 'currentColor' ? 'none' : 'currentColor';
+      b.innerHTML = [
+        'M12 3l7 6v11H5V9z',                                  // 집
+        'M12 21s-7-5.5-7-11a7 7 0 0114 0c0 5.5-7 11-7 11z',   // 핀
+        'M4 6h16v12H4zM4 10h16'                               // 티켓
+      ].map(pt =>
+      `<svg width="34" height="34" viewBox="0 0 24 24" fill="${fill}" stroke="${stroke}" stroke-width="${c.sw}" stroke-linecap="${c.join === 'miter' ? 'butt' : 'round'}" stroke-linejoin="${c.join}"><path d="${pt}"/></svg>`).join('');
+    }
   } else if (axis.type === 'demo') {
     b.classList.add(c.cls); b.style.background = C.bg; b.style.color = C.ink;
     const chipStyle = (c.cls === 'd-underline' || c.cls === 'd-glow') ? `color:${C.ac}` : `background:${C.ac};color:${acOn(C)}`;
@@ -415,7 +431,7 @@ function renderAxis(axis) {
       const o = document.createElement('div'); o.className = 'opt'; o.tabIndex = 0; o.dataset.value = c.value;
       if (sel[axis.id] === c.value) o.classList.add('sel');
       const r = effRank(axis, c);
-      o.innerHTML = `<div class="band"><span class="rank ${r <= 1 ? 'r1' : ''}">${r === 0 ? '타일 추천' : r + '순위'}</span><span class="sel-mark">✓ 선택됨</span></div>`;
+      o.innerHTML = `<div class="band"><span class="rank ${r <= 1 ? 'r1' : ''}">${r === 0 ? '타일과 한 세트' : r + '순위'}</span><span class="sel-mark">✓ 선택됨</span></div>`;
       o.appendChild(candBody(axis, c, C));
       const lb = document.createElement('div'); lb.className = 'label';
       lb.innerHTML = `${c.label}${c.sub ? ` <small>${c.sub}</small>` : ''}`; o.appendChild(lb);
@@ -440,18 +456,45 @@ function renderFrom(axisId) {
 }
 function renderPreview() {
   const C = CTX();
-  const headerV = ctxVal('header'), footerV = ctxVal('footer'), compV = ctxVal('composition');
+  const headerV = ctxVal('header'), footerV = ctxVal('footer');
+  const comp = getCand('composition', ctxVal('composition')) || { pv: ['hero','cards','info'] };
   const hl = getCand('headline', ctxVal('headline')) || { text: '헤드라인이 여기에' };
   const sc = getCand('subcopy', ctxVal('subcopy')) || { text: '서브 카피 한 줄이 이 자리에 들어갑니다' };
   const ctaC = getCand('cta', ctxVal('cta')) || { btns: [['주요 버튼', 'solid']] };
   const img = getCand('imagery', ctxVal('imagery')) || {};
   const cardV = getCand('card', ctxVal('card')) || { style: '' };
-  const cardBg = (cardV.style || '').includes('background:#fff') ? C.card : (cardV.style || '').includes('tinted') ? C.ac + '18' : C.card;
-  const cardBorder = (cardV.value === 'bordered') ? `border:1px solid ${C.ink.replace('.95','.2').replace('.96','.2')};` : (cardV.value === 'soft-shadow') ? 'box-shadow:0 4px 12px rgba(0,0,0,.18);' : '';
-  const heroBg = img.bg && img.bg.startsWith('url') ? `${img.bg}, ${C.bg}` : C.bg;
+  const cardBg = (cardV.style || '').includes('background:#fff') ? C.card : (cardV.value === 'tinted') ? C.ac + '18' : C.card;
+  const cardBorder = (cardV.value === 'bordered') ? 'border:1px solid rgba(127,127,127,.35);' : (cardV.value === 'soft-shadow') ? 'box-shadow:0 4px 12px rgba(0,0,0,.18);' : '';
+  const mediaBg = img.poster ? `url('${img.poster}')` : (img.bg && img.bg.startsWith('url') ? img.bg.replace(/ center\/cover$/, '') : null);
+  const onMedia = mediaBg ? 'text-shadow:0 1px 8px rgba(0,0,0,.55);color:#fff' : '';
+  const ctaBtns = (list) => `<div style="margin-top:8px;display:flex;gap:6px;justify-content:center;flex-wrap:wrap">${list.map(([t,k]) =>
+    k === 'solid' ? `<span style="background:${C.ac};color:${acOn(C)};border-radius:${Math.min(C.r,6)}px;padding:4px 12px;font-weight:700">${t}</span>`
+    : k === 'outline' ? `<span style="border:1px solid currentColor;opacity:.85;border-radius:${Math.min(C.r,6)}px;padding:4px 12px;font-weight:600">${t}</span>`
+    : `<span style="color:${C.ac};font-weight:700">${t}</span>`).join('')}</div>`;
+  const card1 = (n) => `<div style="background:${cardBg};${cardBorder}border-radius:${Math.min(C.r,10)}px;padding:${C.gap}px;flex:1"><b>카드 ${n}</b><div style="opacity:.55">설명 한 줄</div></div>`;
+  const SEC = {
+    hero: () => `<div style="${mediaBg ? `background:${mediaBg} center/cover;` : ''}padding:${20 + C.gap}px 14px;text-align:center;${onMedia}">
+      <div style="font-family:${C.hf};font-weight:${C.hw};font-size:16px;line-height:1.15">${hl.text}</div>
+      <div style="opacity:.75;margin-top:4px">${sc.text}</div>${ctaBtns(ctaC.btns)}</div>`,
+    fullhero: () => `<div style="${mediaBg ? `background:${mediaBg} center/cover;` : `background:${C.ac}22;`}padding:${34 + C.gap}px 14px;text-align:center;${onMedia}">
+      <div style="font-family:${C.hf};font-weight:${C.hw};font-size:17px;line-height:1.15">${hl.text}</div>
+      <div style="opacity:.8;margin-top:4px">${sc.text}</div>${ctaBtns(ctaC.btns)}</div>`,
+    minihero: () => `<div style="padding:12px 14px;text-align:center"><div style="font-family:${C.hf};font-weight:${C.hw};font-size:13.5px">${hl.text}</div></div>`,
+    split: () => `<div style="display:flex;gap:10px;padding:14px;align-items:center">
+      <div style="flex:1"><div style="font-family:${C.hf};font-weight:${C.hw};font-size:14px;line-height:1.2">${hl.text}</div><div style="opacity:.7;margin-top:3px">${sc.text}</div>${ctaBtns(ctaC.btns)}</div>
+      <div style="flex:1;min-height:64px;border-radius:${Math.min(C.r,8)}px;background:${mediaBg ? mediaBg + ' center/cover' : C.ac + '30'}"></div></div>`,
+    cards: () => `<div style="display:flex;gap:${C.gap}px;padding:${C.gap}px 12px">${[1,2,3].map(card1).join('')}</div>`,
+    info: () => `<div style="display:flex;gap:${C.gap}px;padding:0 12px ${C.gap}px">${['일정','장소','가격'].map(t => `<div style="flex:1;background:${cardBg};border-radius:${Math.min(C.r,8)}px;padding:8px 10px"><div style="opacity:.5;font-size:8.5px;letter-spacing:.1em">${t}</div><b>정보 값</b></div>`).join('')}</div>`,
+    steps: () => `<div style="display:flex;gap:${C.gap}px;padding:${C.gap}px 12px">${[1,2,3].map(n => `<div style="flex:1;text-align:center"><div style="width:18px;height:18px;border-radius:999px;background:${C.ac};color:${acOn(C)};font-weight:700;display:grid;place-items:center;margin:0 auto 4px">${n}</div><div style="opacity:.65">단계 ${n}</div></div>`).join('')}</div>`,
+    quote: () => `<div style="margin:${C.gap}px 12px;padding:10px 12px;background:${cardBg};border-radius:${Math.min(C.r,8)}px"><span style="color:${C.ac};font-weight:700">“</span>실제 사용 후기가 이 자리에 — 별점과 함께.<div style="opacity:.5;margin-top:3px">— 이용자 이름</div></div>`,
+    gallery: () => `<div style="display:grid;grid-template-columns:1fr 1fr;gap:6px;padding:${C.gap}px 12px">${[0,1,2,3].map(n => `<div style="height:34px;border-radius:${Math.min(C.r,6)}px;background:${mediaBg ? mediaBg + ' center/cover' : C.ac + (25 + n * 12)}"></div>`).join('')}</div>`,
+    story: () => `<div style="display:flex;gap:10px;padding:${C.gap}px 12px;align-items:center"><div style="flex:.8;min-height:44px;border-radius:${Math.min(C.r,8)}px;background:${mediaBg ? mediaBg + ' center/cover' : C.ac + '28'}"></div><div style="flex:1.2"><b style="font-family:${C.hf}">이야기 섹션</b><div style="opacity:.6">서사가 흐르는 본문 두 줄이 이 자리에 들어갑니다.</div></div></div>`,
+    story2: () => `<div style="display:flex;gap:10px;padding:0 12px ${C.gap}px;align-items:center"><div style="flex:1.2"><b style="font-family:${C.hf}">이어지는 장</b><div style="opacity:.6">순서를 뒤집어 리듬을 만듭니다.</div></div><div style="flex:.8;min-height:44px;border-radius:${Math.min(C.r,8)}px;background:${C.ac}22"></div></div>`,
+    faq: () => `<div style="padding:0 12px ${C.gap}px">${['자주 묻는 질문 하나','환불은 어떻게 하나요'].map(q => `<div style="border-bottom:1px solid rgba(127,127,127,.25);padding:6px 0;display:flex;justify-content:space-between"><span>${q}</span><span style="color:${C.ac}">+</span></div>`).join('')}</div>`,
+    cta: () => `<div style="margin:${C.gap}px 12px;padding:12px;border-radius:${Math.min(C.r,10)}px;background:${C.ac};color:${acOn(C)};text-align:center;font-weight:700">지금 시작하기</div>`,
+  };
   const nav = headerV === 'logo-only' ? '' : headerV === 'hamburger' ? '≡' : `<span style="opacity:.6">메뉴 소개</span>`;
   const cta2 = headerV === 'logo-links-cta' ? `<span style="background:${C.ac};color:${acOn(C)};border-radius:${Math.min(C.r,6)}px;padding:2px 7px">예매</span>` : '';
-  const cards = [1,2,3].map(n => `<div style="background:${cardBg};${cardBorder}border-radius:${Math.min(C.r,10)}px;padding:${C.gap}px;flex:1"><b>카드 ${n}</b><div style="opacity:.55">설명 한 줄</div></div>`).join('');
   const footer = footerV === 'one-line' ? `<div style="opacity:.55;text-align:center">© 브랜드</div>`
     : footerV === 'big-brand' ? `<div style="font-family:${C.hf};font-size:15px">브랜드<span style="color:${C.ac}">.</span></div>`
     : `<div style="display:flex;gap:${C.gap}px"><div style="flex:1"><b>브랜드</b></div><div style="flex:1;opacity:.55">링크<br>링크</div><div style="flex:1;opacity:.55">링크<br>링크</div></div>`;
@@ -460,19 +503,18 @@ function renderPreview() {
       <div style="display:flex;justify-content:space-between;align-items:center;gap:8px;padding:8px 12px;font-size:9.5px">
         <b style="font-family:${C.hf}">브랜드<span style="color:${C.ac}">.</span></b><span style="display:flex;gap:8px;align-items:center">${nav}${cta2}</span>
       </div>
-      <div style="background:${heroBg};background-size:cover;background-position:center;padding:${22 + C.gap}px 14px;text-align:center;${img.bg && img.bg.startsWith('url') ? 'text-shadow:0 1px 8px rgba(0,0,0,.55);color:#fff' : ''}">
-        <div style="font-family:${C.hf};font-weight:${C.hw};font-size:17px;line-height:1.15">${hl.text}</div>
-        <div style="opacity:.75;margin-top:5px">${sc.text}</div>
-        <div style="margin-top:9px;display:flex;gap:6px;justify-content:center;flex-wrap:wrap">${ctaC.btns.map(([t,k]) =>
-          k === 'solid' ? `<span style="background:${C.ac};color:${acOn(C)};border-radius:${Math.min(C.r,6)}px;padding:4px 12px;font-weight:700">${t}</span>`
-          : k === 'outline' ? `<span style="border:1px solid currentColor;opacity:.85;border-radius:${Math.min(C.r,6)}px;padding:4px 12px;font-weight:600">${t}</span>`
-          : `<span style="color:${C.ac};font-weight:700">${t}</span>`).join('')}</div>
-      </div>
-      <div style="display:flex;gap:${C.gap}px;padding:${C.gap + 4}px 12px">${cards}</div>
+      ${(comp.pv || ['hero','cards','info']).map(k => (SEC[k] || (() => ''))()).join('')}
       <div style="border-top:1px solid rgba(127,127,127,.25);padding:9px 12px">${footer}</div>
     </div>`;
 }
 function attachRich() {
+  document.querySelectorAll('.d-field').forEach(dv => {
+    if (dv.dataset.fieldWired) return; dv.dataset.fieldWired = '1';
+    if (!dv.querySelector('.field-bg')) { const f = document.createElement('div'); f.className = 'field-bg'; dv.prepend(f); }
+    dv.addEventListener('pointermove', e => { const r = dv.getBoundingClientRect();
+      dv.style.setProperty('--fx', ((e.clientX - r.left) / r.width * 100) + '%');
+      dv.style.setProperty('--fy', ((e.clientY - r.top) / r.height * 100) + '%'); });
+  });
   document.querySelectorAll('.d-rich').forEach(dv => {
     if (dv.dataset.richWired) return; dv.dataset.richWired = '1';
     const chip = dv.querySelector('.demo-chip');
