@@ -15,4 +15,4 @@
 - [x] Failure probe A: 키 부재 시 명시 에러("PEXELS_API_KEY 환경변수가 없다") 실증 — 등록 전 첫 실행에서 관측
 - [x] Failure probe B(디버깅 기록): urllib 기본 UA가 Pexels CDN 403 차단 → UA 헤더 추가로 해소 (Invoke-WebRequest 200 대조로 원인 분리)
 - [x] degrade: 오프라인/키 부재 시 스튜디오는 톤 카드 유지(이미지 축 독립) — 계약 명문
-- [ ] curl brief-studio.md §4 배포 (폴링)
+- [x] curl brief-studio.md §4 "이미지 축 — 실사 파이프라인" 배포 확인
