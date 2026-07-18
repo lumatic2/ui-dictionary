@@ -1,7 +1,7 @@
 # Horizon — Visual Brief (눈으로 고르는 브리프 + 크롬 게이트)
 
 Date: 2026-07-19
-Status: active
+Status: closed (2026-07-19 — VB1~VB4 전부 완료. Close Criteria 4/4: ① Stitch 공식 스펙 정합(채택 3·제거 1·교정 1·유지 1) ② 스튜디오 실연 1회 관측(카페 랜딩 — 실물 선택 3종→DESIGN.md→구현) ③ 실물 브라우저 게이트 배포 ④ 딥 브리프 부록 배포)
 Objective link: `OBJECTIVE.md` (성공 상태 ④ AskewlyDesign 앱 — 브리프 화면의 웹 프로토타입 + 성공 상태 ③ 판단 주입의 입력 품질)
 Preceding horizon: `plans/horizons/2026-07-design-brief.md` (closed 2026-07-19)
 

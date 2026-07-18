@@ -14,5 +14,5 @@
 - [x] Failure probe A: 서버 사망 시 폴백 textarea에 선택 JSON 표시 확인 (수동 전달 경로)
 - [x] Failure probe 설계: 오프라인 폰트 실패 시 시스템 폰트 렌더(link 실패 무해) — 계약 §2 명시
 - [x] 계약에 "스튜디오 실패 ≠ 브리프 중단" 폴백 명문화 (plan failure probe 조건)
-- [ ] curl brief-studio.md 배포 확인 (폴링 중)
-- [ ] step-3: 대화형 실연 (사용자 참여 대기)
+- [x] curl brief-studio.md "# Brief Studio" 배포 확인
+- [x] step-3 대화형 실연 2026-07-19: "카페 랜딩" → 텍스트 3도메인 질문 + 스튜디오 실물 선택(커피 브라운·고운바탕·표준 수신) → DESIGN.md 매핑 → 구현 → 실물 브라우저 게이트 (evidence: cafe-brief-selections.json, cafe-DESIGN.md, cafe-*.png)

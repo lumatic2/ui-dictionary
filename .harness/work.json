@@ -1186,11 +1186,11 @@
       "work_id": "VB2",
       "horizon_id": "visual-brief",
       "milestone_id": "VB2",
-      "status": "active",
+      "status": "completed",
       "plan_path": "plans/2026-07-19-vb2-brief-studio.md",
       "changeset_path": "changesets/20260719-brief-studio",
-      "next_step": "step-3",
-      "current_step": "step-3",
+      "next_step": null,
+      "current_step": null,
       "steps": [
         {
           "id": "step-1",
@@ -1205,7 +1205,7 @@
         {
           "id": "step-3",
           "label": "Step 3 — 실연 E2E (changeset)",
-          "status": "pending"
+          "status": "completed"
         }
       ],
       "execution_mode": "continuous",
@@ -1223,16 +1223,15 @@
         "external_authority_required",
         "user_stopped"
       ],
-      "stop_reason": "blocked",
-      "stop_detail": {
-        "what": "step-3 대화형 실연 — 사용자 참여 필요(plan Scope Boundary 명시 중단점) + step-2 CDN 폴링 백그라운드 진행 중",
-        "resume": "CDN 확인 → 사용자 신규 페이지 의뢰 시 스튜디오 실연 → VB2 완료 체인. VB3·VB4는 자율 진행 가능"
-      },
+      "stop_reason": "completed",
+      "stop_detail": {},
       "session_ids": [
         "claude:ab332db5-5327-43b0-9bef-702291fafaee"
       ],
       "updated_at": "2026-07-19",
-      "notes": "Registered atomically by canonical harness approve_harness_plan.py after plan validation."
+      "notes": "Registered atomically by canonical harness approve_harness_plan.py after plan validation.",
+      "notified_at": "2026-07-18T16:04:34.786381+00:00",
+      "completed": "2026-07-19"
     },
     "VB3": {
       "work_id": "VB3",
