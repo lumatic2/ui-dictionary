@@ -13,4 +13,4 @@
 
 - [x] 전략층 6 + 축 14종 표 + 2단 구조 절 존재, 리서치 백링크
 - [x] Failure probe: 축 14종 전부에 제시 형태(카드/스펙시멘/와이어프레임/슬라이더/썸네일/토글/데모) 명시 — 공란 0
-- [ ] llms 재생성 + push + curl 양 문서 v2 grep
+- [x] llms 재생성 + push + curl 양 문서 v2 grep (attempt 14)

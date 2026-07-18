@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "active_work_id": "SP1",
+  "active_work_id": "SP2",
   "works": {
     "SFB1": {
       "title": "Structure Contract And Clean Production",
@@ -1329,21 +1329,21 @@
       "work_id": "SP1",
       "horizon_id": "studio-depth",
       "milestone_id": "SP1",
-      "status": "active",
+      "status": "completed",
       "plan_path": "plans/2026-07-19-sp1-brief-v2.md",
       "changeset_path": "changesets/20260719-brief-v2",
-      "next_step": "step-1",
-      "current_step": "step-1",
+      "next_step": null,
+      "current_step": null,
       "steps": [
         {
           "id": "step-1",
           "label": "Step 1 — design-brief v2 개정 (changeset)",
-          "status": "pending"
+          "status": "completed"
         },
         {
           "id": "step-2",
           "label": "Step 2 — brief-studio 계약 v2 + 배포 (changeset)",
-          "status": "pending"
+          "status": "completed"
         }
       ],
       "execution_mode": "continuous",
@@ -1361,13 +1361,60 @@
         "external_authority_required",
         "user_stopped"
       ],
-      "stop_reason": null,
+      "stop_reason": "completed",
       "stop_detail": {},
       "session_ids": [
         "claude:ab332db5-5327-43b0-9bef-702291fafaee"
       ],
       "updated_at": "2026-07-19",
-      "notes": "Registered atomically by canonical harness approve_harness_plan.py after plan validation."
+      "notes": "Registered atomically by canonical harness approve_harness_plan.py after plan validation.",
+      "completed": "2026-07-19"
+    },
+    "SP2": {
+      "work_id": "SP2",
+      "horizon_id": "studio-depth",
+      "milestone_id": "SP2",
+      "status": "completed",
+      "plan_path": "plans/2026-07-19-sp2-studio-v2.md",
+      "changeset_path": "changesets/20260719-studio-v2",
+      "next_step": null,
+      "current_step": null,
+      "steps": [
+        {
+          "id": "step-1",
+          "label": "Step 1 — 스튜디오 v2 템플릿 (changeset)",
+          "status": "completed"
+        },
+        {
+          "id": "step-2",
+          "label": "Step 2 — 검증 evidence + 커밋 (changeset)",
+          "status": "completed"
+        }
+      ],
+      "execution_mode": "continuous",
+      "approval": {
+        "approved_by": "user",
+        "approved_at": "2026-07-19",
+        "plan_sha256": "9112fef0990d224a8be7964b3cb0d2b8b7c187886573953c50a2019fee62b6a2"
+      },
+      "allowed_stop_reasons": [
+        "completed",
+        "blocked",
+        "decision_required",
+        "risk_gate",
+        "secret_required",
+        "external_authority_required",
+        "user_stopped"
+      ],
+      "stop_reason": "completed",
+      "stop_detail": {},
+      "session_ids": [
+        "claude:ab332db5-5327-43b0-9bef-702291fafaee"
+      ],
+      "updated_at": "2026-07-19",
+      "notes": "Registered atomically by canonical harness approve_harness_plan.py after plan validation.",
+      "notified_at": "2026-07-18T16:28:37.746826+00:00",
+      "completed": "2026-07-19"
     }
   }
 }
