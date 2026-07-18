@@ -209,3 +209,29 @@
   - Completed: 2026-07-17
   - Result: 성문 판단 diff — 채택 3(서체 증식 금지·모션 규모 비례·verb-first)·기각 2(M3 색 역할=스타일 고정 금지 충돌, HIG 재질=중복), 배포 검증 — changesets #130–131
   - Evidence: plans/2026-07-17-tc4-canonical-diff.md
+
+### 2026-07
+- ST1 - ST1 — 스튜디오 정비 (칩·크기·순서·해상도)
+  - Completed: 2026-07-19
+  - Result: 구현·실측 검증·배포 완료
+  - Evidence: changeset + evidence/cascade-studio/
+
+- ST2 - ST2 — 캐스케이드 + 스티키 라이브 미리보기
+  - Completed: 2026-07-19
+  - Result: 구현·실측 검증·배포 완료
+  - Evidence: changeset + evidence/cascade-studio/
+
+- ST3 - ST3 — 영상 파이프라인 (Pexels Videos)
+  - Completed: 2026-07-19
+  - Result: 구현·실측 검증·배포 완료
+  - Evidence: changeset + evidence/cascade-studio/
+
+- ST4 - ST4 — 카피·인터랙션 축 + 통합 실연
+  - Completed: 2026-07-19
+  - Result: 카피·인터랙션 축 + 통합 실연(영상 히어로) + 피드백-교정-재실연 루프 관측
+  - Evidence: changesets/20260719-copy-axes/README.md, evidence/cascade-studio/baseball-selections.json, research/2026-07-19-st4-composition-patterns.md
+
+- SP1 - SP1 — 브리프 v2 계약 (결정 공간 지도)
+  - Completed: 2026-07-19
+  - Result: 브리프 v2 배포 — 전략층 6·시각 축 14·스타일 타일 2단 구조 (리서치 2건 근거)
+  - Evidence: changesets/20260719-brief-v2/README.md, research/2026-07-19-studio-depth-brief-practice.md, research/2026-07-19-studio-depth-tool-practice.md

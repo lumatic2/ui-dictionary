@@ -1,7 +1,7 @@
 # Horizon — Cascade Studio (폭포식 선택 + 라이브 미리보기)
 
 Date: 2026-07-19
-Status: active
+Status: closed (2026-07-19 — ST1~ST4 전부 완료. Close Criteria 4/4: ① 정비 실측 ② 캐스케이드+스티키 미리보기 실구동 ③ 영상 실재(스튜디오 hover 재생 + 최종 페이지 영상 히어로) ④ 통합 실연(야구장 — 18축 실선택·피드백 6건 즉시 교정·재실연). 이월 갭 3건: 후보 주입 자동화·구성 4유형 미편입·예약형 특수 패턴)
 Objective link: `OBJECTIVE.md` (성공 상태 ④ — AskewlyDesign 앱 브리프 화면의 완전한 웹 프로토타입)
 Preceding horizon: `plans/horizons/2026-07-studio-depth.md` (closed 2026-07-19)
 
