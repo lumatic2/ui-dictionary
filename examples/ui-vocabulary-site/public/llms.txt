@@ -8,6 +8,7 @@ Rules for consumers: reference semantic tokens, never hard-code color/dimension 
 ## Entry Protocol
 
 - [docs/design-system/entry-protocol.md](https://ui.askewly.com/llms/docs/design-system/entry-protocol.md): Start here: what to fetch, in what order, per design task type (new screen / improving existing UI / single component)
+- [docs/design-system/design-brief.md](https://ui.askewly.com/llms/docs/design-system/design-brief.md): Kickoff interview contract: scale gate (when to interview vs skip), 7-domain question catalog (tone, look ownership, color, type, structure, interaction level, content), answers persisted as the project's own DESIGN.md
 
 ## Principles
 

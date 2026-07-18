@@ -25,6 +25,7 @@ const FIXED_ASSETS = [
     section: "Entry Protocol",
     items: [
       ["docs/design-system/entry-protocol.md", "Start here: what to fetch, in what order, per design task type (new screen / improving existing UI / single component)"],
+      ["docs/design-system/design-brief.md", "Kickoff interview contract: scale gate (when to interview vs skip), 7-domain question catalog (tone, look ownership, color, type, structure, interaction level, content), answers persisted as the project's own DESIGN.md"],
     ],
   },
   {
