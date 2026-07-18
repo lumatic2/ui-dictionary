@@ -11,6 +11,6 @@
 
 ## 검증 checklist
 
-- [ ] curl 배포 grep "keep that server running"
+- [x] curl 배포 grep "keep that server running" 1 (attempt 6)
 - [x] E2E: 꽃집 페이지 Start-Process 실열림 + 서버 curl 200 유지 (vb3-live-gate-e2e.log)
 - [x] Failure probe: 별도 서버 조기 종료 → curl 000 — 유지 의무 근거 실증
