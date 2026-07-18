@@ -11,8 +11,8 @@ Date: 2026-07-19 (v2 — 결정 공간 전면 확장, design-brief v2 §3과 쌍
 
 ## 1. 에이전트 구동 절차
 
-1. 템플릿 2파일을 작업 폴더로 복사: `templates/brief-studio.html` + `templates/brief-studio-server.py` (askewly 레포 로컬이 없으면 텍스트 인터뷰 폴백).
-2. **후보 커스터마이즈**: HTML의 `AGENT:` 주석 지점에서 후보를 브리프 맥락에 맞게 교체한다 — 컬러 팔레트 3~4개(각각 미니 UI 프리뷰에 실값 적용), 폰트 3~4종(Google Fonts CSS API, 스펙시멘 문장은 프로젝트 문구로), 인터랙션 3수위(살아있는 데모). 그룹당 추천 1개(`data-rec`)를 톤 답변 근거로 지정.
+1. 템플릿 3파일 확보: `templates/brief-studio.html`(렌더러) + `templates/studio-data.default.json`(기준 데이터) + `templates/make-studio.py`(생성기), 서버는 `templates/brief-studio-server.py` (askewly 레포 로컬이 없으면 텍스트 인터뷰 폴백).
+2. **후보 커스터마이즈 (SF1, 2026-07-19 — 데이터 주도)**: **HTML을 직접 편집하지 마라.** `studio-data.default.json`을 복사해 작업 폴더에 브리프 맥락(톤·비주얼 키워드)에 맞는 데이터 JSON을 만들고 — 타일 3~4(키워드 파생, `boost`로 추천 재정렬) · 축별 후보 6~8 `rank` 추천순 · 카피 축은 전략층 키워드 파생 문구, 이미지 축은 fetch-stock 산출 `bg: url(...)`/`video`/`poster`, 폰트 로딩은 최상위 `fonts`(Google Fonts CSS URL — typo 후보와 일치) — 1커맨드로 생성한다: `python templates/make-studio.py --data <data.json> --out <studio.html>`. 필수 필드·렌더러 필수 축이 빠지면 생성기가 명시 에러로 거부한다(조용한 폴백 없음). 렌더러 수정이 필요한 개선은 데이터가 아니라 템플릿 정본(`brief-studio.html`)에 하라.
 3. `python brief-studio-server.py <port>` 구동 → **사용자 기본 브라우저로 열기** (Windows `Start-Process`, mac `open`).
 4. `brief-selections.json` 생성을 폴링(백그라운드) — 사용자가 "선택 완료"를 누르면 생성된다.
 5. 선택값을 DESIGN.md(공식 Stitch 스키마)로 매핑: 팔레트 → `colors:` 실값, 폰트 → `typography.*.fontFamily`, 인터랙션 수위 → Do's and Don'ts·모션 프로즈 + expressive-stack 티어 상한.
@@ -34,12 +34,13 @@ Date: 2026-07-19 (v2 — 결정 공간 전면 확장, design-brief v2 §3과 쌍
 
 ## 4. 이미지 축 — 실사 파이프라인 (스톡 우선 + 생성 옵션)
 
-- **스톡(기본)**: `templates/fetch-stock.py`로 Pexels에서 후보 6~8장을 가져온다 — `locale=ko-KR` 한국어 쿼리, 쿼리는 전략층 답변(업종·톤·키워드)에서 파생. **해상도 계약(ST1)**: 스튜디오 썸네일은 `cand-N.jpg`(medium), **최종 페이지에는 반드시 `cand-N-full.jpg`(large2x, 부재 시 large→original 폴백)** — medium을 최종 페이지에 쓰는 것은 결함이다(2026-07-19 실연 적발). 환경변수 `PEXELS_API_KEY`(User 전역, 2026-07-19 등록 — 값 출력·커밋·로그 금지). 다운로드된 썸네일을 스튜디오 이미지 축의 후보 배경으로 주입(`AXES` imagery 후보의 `bg: url(...)` 교체). `candidates.json`의 `avg_color`로 선택된 베이스/액센트와 톤이 맞는 후보를 우선 정렬할 수 있다. photographer·pexels_url 메타 보존(라이선스: Pexels 무료·상업 가능, 표기 권장).
+- **스톡(기본)**: `templates/fetch-stock.py`로 Pexels에서 후보 6~8장을 가져온다 — `locale=ko-KR` 한국어 쿼리, 쿼리는 전략층 답변(업종·톤·키워드)에서 파생. **해상도 계약(ST1)**: 스튜디오 썸네일은 `cand-N.jpg`(medium), **최종 페이지에는 반드시 `cand-N-full.jpg`(large2x, 부재 시 large→original 폴백)** — medium을 최종 페이지에 쓰는 것은 결함이다(2026-07-19 실연 적발). 환경변수 `PEXELS_API_KEY`(User 전역, 2026-07-19 등록 — 값 출력·커밋·로그 금지). 다운로드된 썸네일을 데이터 JSON의 imagery 후보 `bg: url(...)`에 넣어 make-studio.py로 주입한다. `candidates.json`의 `avg_color`로 선택된 베이스/액센트와 톤이 맞는 후보를 우선 정렬할 수 있다. photographer·pexels_url 메타 보존(라이선스: Pexels 무료·상업 가능, 표기 권장).
 - **영상(ST3)**: `fetch-stock.py --video "쿼리"` — Pexels Videos(`locale=ko-KR`, 동일 키)에서 **HD(≤1280px) mp4 + 포스터**를 받는다(4K 원본 회피, 15MB 이하 후보 우선). 스튜디오 이미지 축에 영상 후보(`video`/`poster` 필드)를 섞으면 hover 시 muted 재생으로 미리본다. **히어로 비디오 패턴**: `<video autoplay muted playsinline poster>` + `prefers-reduced-motion`·모바일(협대역)에서는 자동재생 없이 포스터 폴백 의무. 크리에이터 크레딧 보존(로테이션 시 전원). **영상 로테이션 규칙(사용자 확정 2026-07-19)**: 짧은 클립 하나를 `loop`로 돌리면 반복이 어색하다 — **최소 3종의 영상을 `ended` 이벤트로 순환**시켜 자연스러운 흐름을 만든다(같은 쿼리는 동일 결과가 나오니 각도가 다른 쿼리 2~3개로 수집).
 - **생성(옵션)**: 맞춤 이미지가 필요하면 ① `/comfy`(로컬 ComfyUI — 무료·무제한·시드 고정) ② Codex 내장 image_gen(클라우드 단발). 생성 후보를 스톡 후보와 같은 그룹에 섞어 제시할 수 있다.
 - **폴백**: 키 부재·오프라인·율리밋(200/h) 시 헬퍼가 명시 에러를 내고, 스튜디오는 톤 카드(그라디언트)로 degrade — 페이지 불괴.
 
 ## Changelog
 
+- 2026-07-19: SF1 — 후보 주입을 데이터 JSON + `make-studio.py` 1커맨드로 전환 (HTML 직접 편집 금지).
 - 2026-07-19: v2 — 2단 구조·축 14종·이미지 파이프라인 절(SP1·SP2·SP3).
 - 2026-07-19: 초판 (VB2 — 사용자 발의: "폰트·컬러·인터랙션을 눈으로 보고 선택").
