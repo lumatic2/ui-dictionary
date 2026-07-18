@@ -1,29 +1,15 @@
-# RC4 통합 실연 준비
+# RC4 step 1 — 실연 준비 (2026-07-19)
 
-- Date: 2026-07-19
-- 의뢰: Askewly Team Pulse — AI 팀 운영 B2B SaaS 랜딩
-- 선택: `hero-cards-info`
-- 선택 JSON: `evidence/recipe-code-reuse/rc4-selections.json`
+- 의뢰: 수제 도자기 온라인숍 (사용자 확정) · 톤 "따뜻하고 장인적" (AskUserQuestion 매듭)
+- 실사: Pexels 2각도 쿼리("수제 도자기 공방"·"ceramic pottery hands wheel") 8장 수집 → 6장 이미지 축 배치 (썸네일 medium + full 분리, 크레딧 candidates.json 보존)
+- 데이터: `studio-data.pottery.json` — 타일 4종(흙과 손·조용한 공방·갤러리 화이트·가마의 밤, boost 포함) · 헤드라인/서브 카피 각 6안 · recipes 매핑 13항 기본 상속. HTML 직접 편집 0 (SF1 경로)
+- 생성: `make-studio.py` OK (tiles=4 axes=18) — 매핑 완전성 게이트(RC3) 통과
 
-## 선택 이유
+## 사전 점검 (failure probe — 끊긴 링크 0 확인 후에만 사용자 호출)
 
-`hero-cards-info`는 같은 실연에서 registry 코드 자산과 문서 재구현 폴백을 함께 검증한다.
+- 매핑 타깃 13 전부 도달: registry 코드 자산 9 · recipe 문서 폴백 4 · 끊김 0 (urllib 기본 UA 차단 오탐 → UA 헤더로 재검 — 점검 스크립트 결함이었지 배포 결함 아님)
+- boost 무효 참조 1건 발견·수정 (clay-hands imagery → photo-1)
+- Playwright 사전 렌더: 타일 4종·19섹션(18축)·실사 6장 url 렌더·헤드라인 반영·구성 8종(기본 노출)·미리보기 조립 확인
+- 서버 `brief-studio-server.py :8740` 구동 + 사용자 기본 브라우저 열림 (Start-Process)
 
-| section | mapping | 출발 경로 |
-|---|---|---|
-| hero | `landing-hero` | recipe 문서 폴백 |
-| cards | `responsive-content-grid` | `/r/responsive-content-grid.json` 코드 이식 |
-| info | `article-documentation-layout` | recipe 문서 폴백 |
-
-## 사전 점검
-
-- 스튜디오 기본 데이터 생성: PASS — tiles 4, axes 18.
-- 선택 JSON: 18/18 축 + `implementation.recipes` 포함.
-- live registry `responsive-content-grid.json`: HTTP 200.
-- live recipe `landing-hero.md`: HTTP 200.
-- live recipe `article-documentation-layout.md`: HTTP 200.
-- 끊긴 구현 출발 링크: 0.
-
-## 다음 단계
-
-격리 Vite+React+Tailwind 앱에서 코드 자산을 이식하고 두 폴백 섹션을 recipe 계약으로 구현한 뒤, warm-paper/terracotta/Noto 토큰으로 전체를 다시 입혀 브라우저 실연한다.
+상태: 사용자 선택 대기 (brief-selections.json 폴링 백그라운드).
