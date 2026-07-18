@@ -1,0 +1,25 @@
+{
+  "version": 2,
+  "tile": "field-day",
+  "selections": {
+    "base": "grass-light",
+    "accent": "team-orange",
+    "typo": "serif-head",
+    "imagery": "video-1",
+    "composition": "media-full",
+    "headline": "hl-1",
+    "subcopy": "sc-3",
+    "cta": "one-solid",
+    "header": "hamburger",
+    "footer": "newsletter",
+    "card": "flat-tonal",
+    "density": "airy",
+    "radius": "subtle",
+    "motion": "standard",
+    "pointer": "none",
+    "icon": "outline",
+    "dark": "both-auto",
+    "a11y": "aa"
+  },
+  "submittedAt": "2026-07-18T17:34:43.827Z"
+}
