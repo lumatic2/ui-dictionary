@@ -1,0 +1,195 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Brief Studio — 눈으로 고르는 브리프</title>
+<!-- AGENT: 폰트 후보를 프로젝트 톤에 맞게 교체하라 (Google Fonts CSS API). 오프라인이면 이 link가 실패해도 시스템 폰트로 스펙시멘이 렌더된다(폴백). -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;800&family=Noto+Serif+KR:wght@400;700&family=Gowun+Batang&family=IBM+Plex+Sans+KR:wght@400;600&display=swap" rel="stylesheet">
+<style>
+/* 스튜디오 자체 크롬은 중립 — 후보가 주인공 (askewly 판단: 배경은 물러선다) */
+* { box-sizing: border-box; margin: 0; }
+body { font-family: ui-sans-serif, system-ui, sans-serif; background: rgb(248,248,246); color: rgba(20,18,14,.95); line-height: 1.6; word-break: keep-all; }
+.wrap { max-width: 1080px; margin: 0 auto; padding: 32px 24px 96px; }
+h1 { font-size: 26px; letter-spacing: -0.02em; }
+.lead { color: rgba(20,18,14,.58); margin-top: 6px; font-size: 15px; }
+h2 { font-size: 19px; margin: 44px 0 4px; }
+.hint { font-size: 13px; color: rgba(20,18,14,.58); margin-bottom: 16px; }
+.grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 14px; }
+.opt { position: relative; background: #fff; border: 2px solid rgba(20,18,14,.10); border-radius: 12px; cursor: pointer; transition: border-color .15s ease; overflow: hidden; }
+.opt:hover { border-color: rgba(20,18,14,.35); }
+.opt.sel { border-color: #1a6b3c; }
+.opt.sel::after { content: "✓ 선택됨"; position: absolute; top: 10px; right: 12px; font-size: 12px; font-weight: 600; color: #1a6b3c; }
+.opt .label { padding: 10px 14px; font-size: 13px; font-weight: 600; border-top: 1px solid rgba(20,18,14,.08); display: flex; justify-content: space-between; }
+.opt .label small { font-weight: 400; color: rgba(20,18,14,.55); }
+
+/* 팔레트 후보 = 미니 UI 프리뷰 */
+.mini { padding: 18px; min-height: 150px; }
+.mini .m-title { font-size: 15px; font-weight: 700; }
+.mini .m-sub { font-size: 12px; margin-top: 3px; }
+.mini .m-btn { display: inline-block; margin-top: 12px; padding: 7px 14px; border-radius: 6px; font-size: 12px; font-weight: 600; }
+.mini .m-card { margin-top: 10px; padding: 9px 11px; border-radius: 8px; font-size: 11.5px; }
+
+/* 폰트 스펙시멘 */
+.spec { padding: 18px 18px 14px; }
+.spec .s-head { font-size: 24px; line-height: 1.15; letter-spacing: -0.02em; }
+.spec .s-body { font-size: 13.5px; margin-top: 8px; color: rgba(20,18,14,.75); }
+
+/* 인터랙션 데모 */
+.demo { padding: 18px; min-height: 150px; display: flex; flex-direction: column; gap: 10px; }
+.demo .d-chip { align-self: flex-start; padding: 7px 14px; border-radius: 6px; background: rgba(20,18,14,.08); font-size: 12.5px; }
+.demo p { font-size: 12.5px; color: rgba(20,18,14,.6); }
+/* 담백 */
+.d-plain .d-chip { transition: background-color .15s ease; }
+.d-plain .d-chip:hover { background: rgba(20,18,14,.16); }
+/* 표준 */
+.d-std .d-chip { transition: transform .18s ease, box-shadow .18s ease, background-color .15s ease; }
+.d-std .d-chip:hover { transform: translateY(-3px); box-shadow: 0 6px 16px rgba(20,18,14,.12); }
+.d-std .stagger span { display: inline-block; opacity: 0; transform: translateY(8px); animation: rise .45s ease forwards; }
+.d-std .stagger span:nth-child(2) { animation-delay: .12s } .d-std .stagger span:nth-child(3) { animation-delay: .24s }
+@keyframes rise { to { opacity: 1; transform: none } }
+/* 풍부 */
+.d-rich { position: relative; }
+.d-rich .d-chip { transition: transform .12s ease-out; }
+@media (prefers-reduced-motion: reduce) { .demo * { animation: none !important; transition: none !important; transform: none !important; } }
+
+.submit-bar { position: fixed; left: 0; right: 0; bottom: 0; background: rgba(255,255,254,.94); border-top: 1px solid rgba(20,18,14,.10); padding: 14px 24px; display: flex; gap: 16px; align-items: center; justify-content: center; backdrop-filter: blur(6px); }
+.submit-bar .status { font-size: 13px; color: rgba(20,18,14,.58); }
+#send { height: 42px; padding: 0 26px; border: none; border-radius: 6px; background: #1a6b3c; color: #fff; font-size: 14.5px; font-weight: 600; cursor: pointer; font-family: inherit; }
+#send:hover { background: #14582f; }
+#send:disabled { opacity: .45; cursor: not-allowed; }
+#send:focus-visible { outline: 3px solid rgba(26,107,60,.4); outline-offset: 2px; }
+#fallback { display: none; margin-top: 10px; width: 100%; max-width: 640px; font-family: ui-monospace, monospace; font-size: 12px; padding: 10px; }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <h1>Brief Studio</h1>
+  <p class="lead">각 묶음에서 마음에 드는 것을 하나씩 클릭하고, 아래 "선택 완료"를 누르세요. 결정은 프로젝트의 DESIGN.md에 저장됩니다.</p>
+
+  <!-- AGENT: 후보 값(data-value·미리보기 색·문구)을 브리프 맥락에 맞게 교체하라. 그룹당 3~4개 + 추천 1개(data-rec) 유지. -->
+
+  <h2>1. 컬러 — 같은 화면에 네 팔레트를 입혀봤습니다</h2>
+  <p class="hint">추천: 첫 번째</p>
+  <div class="grid" data-group="color">
+    <div class="opt" data-rec data-value="warm-paper-green" tabindex="0">
+      <div class="mini" style="background:rgb(250,248,244);color:rgba(26,22,16,.95)">
+        <div class="m-title">화면 제목</div><div class="m-sub" style="color:rgba(26,22,16,.58)">보조 설명 텍스트</div>
+        <span class="m-btn" style="background:#2F7D4F;color:#fff">주요 버튼</span>
+        <div class="m-card" style="background:#fffefb">카드 위 콘텐츠</div>
+      </div>
+      <div class="label">웜 페이퍼 + 그린 <small>따뜻함</small></div>
+    </div>
+    <div class="opt" data-value="warm-paper-rose" tabindex="0">
+      <div class="mini" style="background:rgb(250,248,245);color:rgba(26,20,18,.95)">
+        <div class="m-title">화면 제목</div><div class="m-sub" style="color:rgba(26,20,18,.58)">보조 설명 텍스트</div>
+        <span class="m-btn" style="background:#B04A5A;color:#fff">주요 버튼</span>
+        <div class="m-card" style="background:#fffefc">카드 위 콘텐츠</div>
+      </div>
+      <div class="label">웜 페이퍼 + 로즈 <small>부드러움</small></div>
+    </div>
+    <div class="opt" data-value="cool-gray-blue" tabindex="0">
+      <div class="mini" style="background:rgb(246,249,252);color:rgba(12,22,34,.95)">
+        <div class="m-title">화면 제목</div><div class="m-sub" style="color:rgba(12,22,34,.58)">보조 설명 텍스트</div>
+        <span class="m-btn" style="background:#20599c;color:#fff">주요 버튼</span>
+        <div class="m-card" style="background:#ffffff">카드 위 콘텐츠</div>
+      </div>
+      <div class="label">쿨 그레이 + 블루 <small>신뢰·정제</small></div>
+    </div>
+    <div class="opt" data-value="dark-cream" tabindex="0">
+      <div class="mini" style="background:rgb(26,24,20);color:rgba(248,246,240,.95)">
+        <div class="m-title">화면 제목</div><div class="m-sub" style="color:rgba(248,246,240,.6)">보조 설명 텍스트</div>
+        <span class="m-btn" style="background:#D9B96C;color:#211d14">주요 버튼</span>
+        <div class="m-card" style="background:rgb(37,34,29)">카드 위 콘텐츠</div>
+      </div>
+      <div class="label">다크 + 크림 <small>고급 무드</small></div>
+    </div>
+  </div>
+
+  <h2>2. 타이포그래피 — 같은 문장을 네 서체로</h2>
+  <p class="hint">추천: 첫 번째 · 온라인이 아니면 시스템 폰트로 보일 수 있습니다</p>
+  <div class="grid" data-group="typography">
+    <div class="opt" data-rec data-value="noto-sans-kr" tabindex="0">
+      <div class="spec" style="font-family:'Noto Sans KR',sans-serif"><div class="s-head" style="font-weight:800">꽃은 오늘이 제일 싱싱하다</div><p class="s-body">본문은 읽기 편해야 합니다. 굵기와 크기만으로 위계를 만듭니다. 1234 Aa</p></div>
+      <div class="label">Noto Sans KR <small>단정한 기본</small></div>
+    </div>
+    <div class="opt" data-value="ibm-plex-sans-kr" tabindex="0">
+      <div class="spec" style="font-family:'IBM Plex Sans KR',sans-serif"><div class="s-head" style="font-weight:600">꽃은 오늘이 제일 싱싱하다</div><p class="s-body">본문은 읽기 편해야 합니다. 굵기와 크기만으로 위계를 만듭니다. 1234 Aa</p></div>
+      <div class="label">IBM Plex Sans KR <small>테크·중립</small></div>
+    </div>
+    <div class="opt" data-value="noto-serif-kr" tabindex="0">
+      <div class="spec" style="font-family:'Noto Serif KR',serif"><div class="s-head" style="font-weight:700">꽃은 오늘이 제일 싱싱하다</div><p class="s-body" style="font-family:'Noto Sans KR',sans-serif">제목만 세리프, 본문은 산세리프로 섞는 구성입니다. 1234 Aa</p></div>
+      <div class="label">Noto Serif 제목 혼용 <small>클래식</small></div>
+    </div>
+    <div class="opt" data-value="gowun-batang" tabindex="0">
+      <div class="spec" style="font-family:'Gowun Batang',serif"><div class="s-head">꽃은 오늘이 제일 싱싱하다</div><p class="s-body">부드러운 바탕체 전면 사용. 감성적인 톤에 어울립니다. 1234 Aa</p></div>
+      <div class="label">고운바탕 <small>감성·수필</small></div>
+    </div>
+  </div>
+
+  <h2>3. 인터랙션 수위 — 만져보세요 (칩에 마우스를 올려보기)</h2>
+  <p class="hint">추천: 표준</p>
+  <div class="grid" data-group="interaction">
+    <div class="opt d-plain" data-value="minimal" tabindex="0">
+      <div class="demo"><span class="d-chip">올려보세요</span><p>색 전환만. 모션 없음. 가장 담백합니다.</p></div>
+      <div class="label">담백 <small>전환만</small></div>
+    </div>
+    <div class="opt d-std" data-rec data-value="standard" tabindex="0">
+      <div class="demo"><span class="d-chip">올려보세요</span><p class="stagger"><span>하나</span> <span>둘</span> <span>셋</span> — 등장 모션과 hover 부양.</p></div>
+      <div class="label">표준 <small>hover + 등장</small></div>
+    </div>
+    <div class="opt d-rich" data-value="rich" tabindex="0">
+      <div class="demo"><span class="d-chip">따라와요</span><p>커서 반응·스크롤 연출까지. 실험적 터치는 별도 승인.</p></div>
+      <div class="label">풍부 <small>커서·연출</small></div>
+    </div>
+  </div>
+
+  <!-- AGENT(딥 브리프): 발동 조건 충족 시 여기에 컴포넌트 스타일·헤더/푸터 IA 그룹을 같은 .grid[data-group] 패턴으로 추가 (VB4) -->
+</div>
+
+<div class="submit-bar">
+  <span class="status" id="status">0 / 3 선택됨</span>
+  <button id="send" disabled>선택 완료</button>
+  <textarea id="fallback" rows="4" readonly aria-label="선택 결과 JSON (수동 전달용)"></textarea>
+</div>
+
+<script>
+const sel = {};
+const groups = [...document.querySelectorAll('[data-group]')];
+function refresh() {
+  const n = Object.keys(sel).length;
+  document.getElementById('status').textContent = `${n} / ${groups.length} 선택됨`;
+  document.getElementById('send').disabled = n < groups.length;
+}
+groups.forEach(g => g.addEventListener('click', e => {
+  const opt = e.target.closest('.opt'); if (!opt) return;
+  g.querySelectorAll('.opt').forEach(o => o.classList.remove('sel'));
+  opt.classList.add('sel');
+  sel[g.dataset.group] = opt.dataset.value;
+  refresh();
+}));
+document.querySelectorAll('.opt').forEach(o => o.addEventListener('keydown', e => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); o.click(); } }));
+// 풍부 데모: 커서 추종 (reduced-motion이면 CSS가 무력화)
+const rich = document.querySelector('.d-rich .d-chip');
+document.querySelector('.d-rich .demo').addEventListener('pointermove', e => {
+  const r = e.currentTarget.getBoundingClientRect();
+  rich.style.transform = `translate(${(e.clientX - r.left - r.width/2) * .08}px, ${(e.clientY - r.top - r.height/2) * .12}px)`;
+});
+document.getElementById('send').addEventListener('click', async () => {
+  const payload = { selections: sel, submittedAt: new Date().toISOString() };
+  try {
+    const res = await fetch('/select', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(payload) });
+    if (!res.ok) throw new Error(res.status);
+    document.getElementById('status').textContent = '전달 완료 — 이 창을 닫아도 됩니다. 에이전트가 DESIGN.md에 반영합니다.';
+    document.getElementById('send').disabled = true;
+  } catch (err) {
+    // 폴백: 수집 서버가 없으면 JSON을 보여주고 사람이 채팅으로 붙여넣게 한다
+    const fb = document.getElementById('fallback');
+    fb.style.display = 'block'; fb.value = JSON.stringify(payload, null, 2);
+    document.getElementById('status').textContent = '서버에 전달하지 못했습니다 — 아래 JSON을 복사해 에이전트에게 붙여넣어 주세요.';
+  }
+});
+</script>
+</body>
+</html>
