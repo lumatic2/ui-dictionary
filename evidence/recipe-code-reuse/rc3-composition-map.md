@@ -25,4 +25,12 @@
 
 ## 판정
 
-RC3의 데이터·수집·저장·구현 지시가 하나의 추적 가능한 경로로 연결됐다. 실배포 curl 결과는 push 후 이 문서에 추가한다.
+RC3의 데이터·수집·저장·구현 지시가 하나의 추적 가능한 경로로 연결됐고 실제 CDN에서 확인됐다.
+
+## 실배포
+
+- Cloudflare Pages project: `ui-dictionary`.
+- Deployment: `https://f33f2bcd.ui-dictionary.pages.dev`.
+- `ui.askewly.com/llms/docs/design-system/brief-studio.md`: HTTP 200, `implementation: { composition, recipes }`와 문서-재구현 폴백 확인.
+- `ui.askewly.com/llms/docs/design-system/design-brief.md`: HTTP 200, `implementation.recipes` 저장 규칙 확인.
+- 수동 배포 문서와 `wrangler.toml`의 stale 프로젝트명 `ui-vocabulary`를 `ui-dictionary`로 교정했다.

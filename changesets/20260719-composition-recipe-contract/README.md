@@ -17,6 +17,8 @@
 - 기본 스튜디오 18축 제출 payload에서 `hero-cards-info`의 recipe 3개 관측.
 - 누락 매핑은 `make-studio.py`가 exit 1로 거부.
 - 사이트 build PASS.
+- Cloudflare deployment `f33f2bcd`, custom domain의 새 구성→구현 계약 HTTP 200.
+- stale Pages project name(`ui-vocabulary`)을 `ui-dictionary`로 교정.
 
 ## Result
 

@@ -1962,7 +1962,7 @@
       ],
       "updated_at": "2026-07-19",
       "notes": "Registered atomically by canonical harness approve_harness_plan.py after plan validation.",
-      "completion_summary": "스튜디오에서 고른 페이지 구성이 어떤 검증된 코드 자산으로 구현을 시작할지까지 수집 결과에 함께 담기게 됐습니다",
+      "completion_summary": "스튜디오에서 고른 페이지 구성이 DESIGN.md와 실제 코드·레시피 구현 출발점으로 바로 이어집니다",
       "completed": "2026-07-19"
     },
     "RC4": {
