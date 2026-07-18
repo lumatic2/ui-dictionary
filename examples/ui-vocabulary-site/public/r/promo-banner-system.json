@@ -1,0 +1,21 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "promo-banner-system",
+  "type": "registry:block",
+  "title": "Promo Banner System",
+  "description": "A promo banner system is one banner shape that carries different urgency-driven offer copy — a discount rate, a limited-time sale, a countdown — depending on where it's placed (top-of-site vs in-page). It exists specifically for time-limited, dismissible promotional messaging. It is **not** the same thing as the `incentive-trust-strip` term: that term shows fixed reassurance signals (free shipping, returns, secure checkout) that don't expire and aren't urgency-driven, and it is not user-dismissible in the same session-scoped way this recipe is.",
+  "docs": "Recipe contract (intent/anatomy/tokens/checks/anti-patterns): https://ui.askewly.com/llms/recipes/commerce/promo-banner-system.md — after transplant, remap look to the project's own tokens per https://ui.askewly.com/llms/docs/design-system/component-restyle.md",
+  "registryDependencies": [
+    "button"
+  ],
+  "dependencies": [
+    "lucide-react"
+  ],
+  "files": [
+    {
+      "path": "registry/askewly/promo-banner-system/promo-banner-system.tsx",
+      "type": "registry:component",
+      "content": "import { XIcon } from \"lucide-react\"\nimport { Button } from \"@/components/ui/button\"\nimport { cn } from \"@/lib/utils\"\n\ntype PromoBannerSystemProps = {\n  copy: string\n  ctaLabel: string\n  onCtaClick: () => void\n  dismissed: boolean\n  onDismiss: () => void\n  countdownLabel?: string\n  placement?: \"top-of-site\" | \"in-page\"\n}\n\n/**\n * A single banner shape that carries different promo copy/countdown per\n * placement. Dismissal is session-scoped only (`onDismiss` should not persist\n * across sessions) — this is a promotional urgency strip, distinct from\n * `incentive-trust-strip`, which shows fixed reassurance signals (free\n * shipping, returns, secure checkout) rather than time-limited offers.\n */\nexport function PromoBannerSystem({\n  copy,\n  ctaLabel,\n  onCtaClick,\n  dismissed,\n  onDismiss,\n  countdownLabel,\n  placement = \"top-of-site\",\n}: PromoBannerSystemProps) {\n  if (dismissed) return null\n\n  return (\n    <div\n      className={cn(\n        \"flex items-center justify-center gap-3 border-b bg-accent px-4 py-2 text-sm\",\n        placement === \"in-page\" && \"rounded-md border\"\n      )}\n      role=\"region\"\n      aria-label=\"Promotion\"\n    >\n      <p className=\"text-center\">\n        {copy}\n        {countdownLabel ? (\n          <span className=\"ml-2 font-medium tabular-nums\" role=\"timer\">\n            {countdownLabel}\n          </span>\n        ) : null}\n      </p>\n      <Button size=\"sm\" variant=\"link\" onClick={onCtaClick}>\n        {ctaLabel}\n      </Button>\n      <button\n        aria-label=\"Dismiss promotion\"\n        className=\"ml-1 shrink-0 text-muted-foreground transition hover:text-foreground\"\n        type=\"button\"\n        onClick={onDismiss}\n      >\n        <XIcon aria-hidden=\"true\" className=\"size-4\" />\n      </button>\n    </div>\n  )\n}\n"
+    }
+  ]
+}

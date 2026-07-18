@@ -1,0 +1,21 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "actionable-toast",
+  "type": "registry:block",
+  "title": "Actionable Toast",
+  "description": "An actionable toast confirms a recent low-risk operation and may offer one short recovery action such as Undo or Retry. It does not request a decision, carry long instructions, or hide a persistent error that belongs next to the affected content.",
+  "docs": "Recipe contract (intent/anatomy/tokens/checks/anti-patterns): https://ui.askewly.com/llms/recipes/feedback/actionable-toast.md — after transplant, remap look to the project's own tokens per https://ui.askewly.com/llms/docs/design-system/component-restyle.md",
+  "registryDependencies": [
+    "button"
+  ],
+  "dependencies": [
+    "lucide-react"
+  ],
+  "files": [
+    {
+      "path": "registry/askewly/actionable-toast/actionable-toast.tsx",
+      "type": "registry:component",
+      "content": "import { useEffect, useState } from \"react\"\nimport { XIcon } from \"lucide-react\"\nimport { Button } from \"@/components/ui/button\"\n\nexport type Toast = {\n  id: string\n  title: string\n  body?: string\n  duration: number\n  undoable?: boolean\n}\n\ntype ActionableToastProps = {\n  toast: Toast\n  onDismiss: () => void\n  onUndo?: () => void\n}\n\n/**\n * Actionable toast: confirms a recent low-risk operation with at most one\n * recovery action (Undo). Uses `role=\"status\"`/`aria-live=\"polite\"` so the\n * outcome is announced without stealing focus, and clears its dismiss timer\n * on unmount/dismiss so it cannot fire against unmounted state.\n */\nexport function ActionableToast({ toast, onDismiss, onUndo }: ActionableToastProps) {\n  useEffect(() => {\n    const timer = window.setTimeout(onDismiss, toast.duration)\n    return () => window.clearTimeout(timer)\n  }, [onDismiss, toast.duration])\n\n  return (\n    <div\n      className=\"flex w-[min(23rem,calc(100vw-2rem))] items-start gap-3 rounded-lg border bg-popover p-4 text-popover-foreground shadow-lg\"\n      role=\"status\"\n      aria-live=\"polite\"\n    >\n      <div className=\"min-w-0 flex-1\">\n        <p className=\"text-sm font-medium\">{toast.title}</p>\n        {toast.body ? <p className=\"mt-1 text-sm text-muted-foreground\">{toast.body}</p> : null}\n      </div>\n      {toast.undoable ? (\n        <Button className=\"shrink-0\" size=\"sm\" type=\"button\" variant=\"link\" onClick={onUndo}>\n          Undo\n        </Button>\n      ) : null}\n      <button\n        aria-label=\"Dismiss notification\"\n        className=\"shrink-0 text-muted-foreground transition hover:text-foreground\"\n        type=\"button\"\n        onClick={onDismiss}\n      >\n        <XIcon aria-hidden=\"true\" className=\"size-4\" />\n      </button>\n    </div>\n  )\n}\n\nlet demoToastId = 0\n\n/**\n * Colocated demo: posts a new toast into a bounded, newest-first stack on\n * each click, each with its own dismiss timer and an Undo action.\n */\nexport function ActionableToastDemo() {\n  const [stack, setStack] = useState<Toast[]>([])\n  const [lastUndo, setLastUndo] = useState<string | null>(null)\n\n  const post = () => {\n    demoToastId += 1\n    const toast: Toast = {\n      id: `toast-${demoToastId}`,\n      title: \"Changes saved\",\n      body: \"Your draft was archived.\",\n      duration: 4000,\n      undoable: true,\n    }\n    setStack((current) => [toast, ...current].slice(0, 3))\n  }\n\n  const dismiss = (id: string) => setStack((current) => current.filter((toast) => toast.id !== id))\n\n  const undo = (id: string) => {\n    setLastUndo(id)\n    dismiss(id)\n  }\n\n  return (\n    <div className=\"flex flex-col gap-4\">\n      <Button size=\"sm\" type=\"button\" onClick={post}>\n        Archive draft\n      </Button>\n      <div className=\"flex flex-col gap-2\">\n        {stack.map((toast) => (\n          <ActionableToast key={toast.id} toast={toast} onDismiss={() => dismiss(toast.id)} onUndo={() => undo(toast.id)} />\n        ))}\n      </div>\n      {lastUndo ? <p className=\"text-sm text-muted-foreground\">Archive undone.</p> : null}\n    </div>\n  )\n}\n"
+    }
+  ]
+}
