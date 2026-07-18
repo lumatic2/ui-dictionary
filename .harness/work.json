@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "active_work_id": "ST3",
+  "active_work_id": "ST4",
   "works": {
     "SFB1": {
       "title": "Structure Contract And Clean Production",
@@ -1622,6 +1622,50 @@
         "approved_by": "user",
         "approved_at": "2026-07-19",
         "plan_sha256": "93546c437abdaa50ab26de437a380e20f6af3672352cab5fb5d2b283c0b11232"
+      },
+      "allowed_stop_reasons": [
+        "completed",
+        "blocked",
+        "decision_required",
+        "risk_gate",
+        "secret_required",
+        "external_authority_required",
+        "user_stopped"
+      ],
+      "stop_reason": null,
+      "stop_detail": {},
+      "session_ids": [
+        "claude:ab332db5-5327-43b0-9bef-702291fafaee"
+      ],
+      "updated_at": "2026-07-19",
+      "notes": "Registered atomically by canonical harness approve_harness_plan.py after plan validation."
+    },
+    "ST4": {
+      "work_id": "ST4",
+      "horizon_id": "cascade-studio",
+      "milestone_id": "ST4",
+      "status": "active",
+      "plan_path": "plans/2026-07-19-st4-copy-axes-e2e.md",
+      "changeset_path": "changesets/20260719-copy-axes",
+      "next_step": "step-1",
+      "current_step": "step-1",
+      "steps": [
+        {
+          "id": "step-1",
+          "label": "Step 1 — 카피·인터랙션 축 구현 + 계약 배포 (changeset)",
+          "status": "pending"
+        },
+        {
+          "id": "step-2",
+          "label": "Step 2 — 통합 실연 + horizon close (changeset)",
+          "status": "pending"
+        }
+      ],
+      "execution_mode": "continuous",
+      "approval": {
+        "approved_by": "user",
+        "approved_at": "2026-07-19",
+        "plan_sha256": "83c8f33e1734b94d18b9c482033dd1bc776c7372b82298473cec3c67f37b29a8"
       },
       "allowed_stop_reasons": [
         "completed",

@@ -72,6 +72,16 @@ h2 .step { color: #1a6b3c; font-size: 13px; font-weight: 700; margin-right: 8px;
 .d-std .demo-chip:hover { transform: translateY(-3px); box-shadow: 0 6px 16px rgba(20,18,14,.12); }
 .d-plain .demo-chip { transition: background-color .15s ease; } .d-plain .demo-chip:hover { background: rgba(20,18,14,.16); }
 .d-rich .demo-chip { transition: transform .12s ease-out; }
+/* ST4: 마우스 인터랙션 종류 데모 */
+.d-glow .demo-chip { transition: box-shadow .2s ease; }
+.d-glow .demo-chip:hover { box-shadow: 0 0 18px 2px currentColor; }
+.d-underline .demo-chip { border-radius: 0; background: transparent !important; border-bottom: 2px solid currentColor; padding-bottom: 4px; position: relative; }
+.d-underline .demo-chip::after { content: ""; position: absolute; left: 0; bottom: -2px; height: 2px; width: 0; background: currentColor; transition: width .25s ease; }
+.d-underline .demo-chip:hover::after { width: 100%; }
+/* 카피 후보 */
+.copy-slot { display: grid; place-items: center; text-align: center; }
+.copy-slot .c-head { font-size: 19px; line-height: 1.25; letter-spacing: -0.015em; }
+.copy-slot .c-sub { font-size: 12.5px; opacity: .7; }
 @media (prefers-reduced-motion: reduce) { .opt * { transition: none !important; transform: none !important; } }
 /* 제출 바 */
 .submit-bar { position: fixed; left: 0; right: 0; bottom: 0; background: rgba(255,255,254,.94); border-top: 1px solid rgba(20,18,14,.10); padding: 12px 24px; display: flex; gap: 16px; align-items: center; justify-content: center; backdrop-filter: blur(6px); z-index: 5; }
@@ -167,6 +177,33 @@ const AXES = [
       { value: "gallery-first", label: "갤러리 우선", rank: 5, rows: ["h20","r:4","r:4","b10"] },
       { value: "one-screen", label: "원 스크린 집중", rank: 6, rows: ["h44","b12"] },
     ]},
+  /* AGENT(ST4): 카피 후보는 전략층 키워드에서 파생해 프로젝트마다 교체하라 */
+  { id: "headline", title: "히어로 헤드라인", type: "copy", size: "lg", hint: "문구를 실물 타이포로 비교 — 선택이 오른쪽 미리보기에 반영됩니다",
+    cands: [
+      { value: "hl-1", text: "오늘 만든 것이 제일 좋다", sub: "담백 선언형", rank: 1 },
+      { value: "hl-2", text: "당신의 하루에 한 줄을 더합니다", sub: "다정 제안형", rank: 2 },
+      { value: "hl-3", text: "작게, 그러나 정확하게", sub: "미니멀 대구형", rank: 3 },
+      { value: "hl-4", text: "지금, 여기서 시작하세요", sub: "행동 촉구형", rank: 4 },
+      { value: "hl-5", text: "우리가 잘하는 단 한 가지", sub: "집중 스토리형", rank: 5 },
+      { value: "hl-6", text: "복잡한 건 우리 몫입니다", sub: "신뢰 약속형", rank: 6 },
+    ]},
+  { id: "subcopy", title: "서브 카피", type: "copy", hint: "",
+    cands: [
+      { value: "sc-1", text: "핵심을 한 문장으로 설명하고, 다음 문장으로 신뢰를 더합니다.", sub: "설명+신뢰", rank: 1 },
+      { value: "sc-2", text: "왜 필요한지 묻기 전에, 어떻게 좋아지는지 보여드립니다.", sub: "가치 우선", rank: 2 },
+      { value: "sc-3", text: "짧게 씁니다. 대신 정확하게.", sub: "초압축", rank: 3 },
+      { value: "sc-4", text: "당신과 비슷한 사람들이 이미 쓰고 있습니다 — 이유가 있습니다.", sub: "사회적 증거", rank: 4 },
+      { value: "sc-5", text: "숫자로 말하겠습니다. 결과는 본문에 있습니다.", sub: "데이터 톤", rank: 5 },
+      { value: "sc-6", text: "처음이라도 괜찮아요. 시작만 하면 나머지는 함께합니다.", sub: "온보딩 다정", rank: 6 },
+    ]},
+  { id: "cta", title: "CTA 구성", type: "ctar", hint: "버튼 개수와 위계",
+    cands: [
+      { value: "two-split", label: "주 + 보조", sub: "솔리드+아웃라인", rank: 1, btns: [["주요 행동","solid"],["더 알아보기","outline"]] },
+      { value: "one-solid", label: "하나로 집중", sub: "솔리드 1개", rank: 2, btns: [["주요 행동","solid"]] },
+      { value: "one-arrow", label: "화살표 링크형", sub: "가벼운 유도", rank: 3, btns: [["시작하기 →","link"]] },
+      { value: "solid-link", label: "주 + 텍스트 링크", sub: "보조를 더 가볍게", rank: 4, btns: [["주요 행동","solid"],["둘러보기 →","link"]] },
+      { value: "two-solid", label: "동급 둘", sub: "선택 분기형", rank: 5, btns: [["옵션 A","solid"],["옵션 B","solid"]] },
+    ]},
   { id: "header", title: "헤더", type: "wire", hint: "",
     cands: [
       { value: "logo-links-cta", label: "로고 + 링크 + CTA", rank: 1, rows: ["hd:cta"] },
@@ -210,6 +247,14 @@ const AXES = [
       { value: "minimal", label: "담백", sub: "전환만", rank: 2, cls: "d-plain", desc: "색 전환만, 모션 없음." },
       { value: "standard", label: "표준", sub: "hover + 등장", rank: 1, cls: "d-std", desc: "부양·등장 모션. 대부분의 제품에 알맞음." },
       { value: "rich", label: "풍부", sub: "스크롤·커서 연출", rank: 3, cls: "d-rich", desc: "실험적 표현은 별도 승인." },
+    ]},
+  { id: "pointer", title: "마우스 인터랙션 (만져보세요)", type: "demo", hint: "카드·버튼 hover의 성격",
+    cands: [
+      { value: "lift", label: "부양", sub: "떠오름+그림자", rank: 1, cls: "d-std", desc: "hover 시 살짝 떠오릅니다 — 표준." },
+      { value: "tint", label: "틴트", sub: "색만 변화", rank: 2, cls: "d-plain", desc: "이동 없이 색만 — 가장 담백." },
+      { value: "glow", label: "글로우", sub: "빛 번짐", rank: 3, cls: "d-glow", desc: "액센트빛이 번집니다 — 다크에서 강함." },
+      { value: "underline", label: "밑줄 확장", sub: "타이포 중심", rank: 4, cls: "d-underline", desc: "밑줄이 자라납니다 — 에디토리얼." },
+      { value: "magnet", label: "자석", sub: "커서 추종", rank: 5, cls: "d-rich", desc: "커서를 따라옵니다 — 실험적(수동 승인)." },
     ]},
   { id: "icon", title: "아이콘 스타일", type: "iconr", hint: "",
     cands: [
@@ -329,7 +374,19 @@ function candBody(axis, c, C) {
       `<svg width="26" height="26" viewBox="0 0 24 24" fill="${c.fill === 'rgba(26,107,60,.25)' ? C.ac + '40' : c.fill}" stroke="currentColor" stroke-width="${c.sw}" stroke-linecap="round"><path d="${pt}"/></svg>`).join('');
   } else if (axis.type === 'demo') {
     b.classList.add(c.cls); b.style.background = C.bg; b.style.color = C.ink;
-    b.innerHTML = `<span class="demo-chip" style="background:${C.ac};color:${acOn(C)}">올려보세요</span><p style="font-size:12px;opacity:.6;margin-top:8px">${c.desc}</p>`;
+    const chipStyle = (c.cls === 'd-underline' || c.cls === 'd-glow') ? `color:${C.ac}` : `background:${C.ac};color:${acOn(C)}`;
+    b.innerHTML = `<span class="demo-chip" style="${chipStyle}">올려보세요</span><p style="font-size:12px;opacity:.6;margin-top:8px">${c.desc}</p>`;
+  } else if (axis.type === 'copy') {
+    b.classList.add('copy-slot'); b.style.background = C.bg; b.style.color = C.ink;
+    const big = axis.id === 'headline';
+    b.innerHTML = `<div><div class="${big ? 'c-head' : 'c-sub'}" style="font-family:${big ? C.hf : C.bf};${big ? 'font-weight:' + C.hw : ''}">${c.text}</div></div>`;
+  } else if (axis.type === 'ctar') {
+    b.style.display = 'flex'; b.style.gap = '8px'; b.style.alignItems = 'center'; b.style.justifyContent = 'center';
+    b.style.background = C.bg; b.style.color = C.ink; b.style.flexWrap = 'wrap';
+    b.innerHTML = c.btns.map(([t, k]) =>
+      k === 'solid' ? `<span style="background:${C.ac};color:${acOn(C)};border-radius:${Math.min(C.r,8)}px;padding:7px 14px;font-size:12px;font-weight:700">${t}</span>`
+      : k === 'outline' ? `<span style="border:1px solid currentColor;opacity:.85;border-radius:${Math.min(C.r,8)}px;padding:7px 14px;font-size:12px;font-weight:600">${t}</span>`
+      : `<span style="color:${C.ac};font-size:12.5px;font-weight:700">${t}</span>`).join('');
   } else if (axis.type === 'textc') {
     b.innerHTML = `<div style="font-size:15px;font-weight:700">${c.label}</div><p style="font-size:12.5px;opacity:.65;margin-top:6px">${c.sub}</p>`;
     b.style.minHeight = '84px';
@@ -384,6 +441,9 @@ function renderFrom(axisId) {
 function renderPreview() {
   const C = CTX();
   const headerV = ctxVal('header'), footerV = ctxVal('footer'), compV = ctxVal('composition');
+  const hl = getCand('headline', ctxVal('headline')) || { text: '헤드라인이 여기에' };
+  const sc = getCand('subcopy', ctxVal('subcopy')) || { text: '서브 카피 한 줄이 이 자리에 들어갑니다' };
+  const ctaC = getCand('cta', ctxVal('cta')) || { btns: [['주요 버튼', 'solid']] };
   const img = getCand('imagery', ctxVal('imagery')) || {};
   const cardV = getCand('card', ctxVal('card')) || { style: '' };
   const cardBg = (cardV.style || '').includes('background:#fff') ? C.card : (cardV.style || '').includes('tinted') ? C.ac + '18' : C.card;
@@ -401,9 +461,12 @@ function renderPreview() {
         <b style="font-family:${C.hf}">브랜드<span style="color:${C.ac}">.</span></b><span style="display:flex;gap:8px;align-items:center">${nav}${cta2}</span>
       </div>
       <div style="background:${heroBg};background-size:cover;background-position:center;padding:${22 + C.gap}px 14px;text-align:center;${img.bg && img.bg.startsWith('url') ? 'text-shadow:0 1px 8px rgba(0,0,0,.55);color:#fff' : ''}">
-        <div style="font-family:${C.hf};font-weight:${C.hw};font-size:17px;line-height:1.15">헤드라인이 여기에</div>
-        <div style="opacity:.75;margin-top:5px">서브 카피 한 줄이 이 자리에 들어갑니다</div>
-        <span style="display:inline-block;margin-top:9px;background:${C.ac};color:${acOn(C)};border-radius:${Math.min(C.r,6)}px;padding:4px 12px;font-weight:700">주요 버튼</span>
+        <div style="font-family:${C.hf};font-weight:${C.hw};font-size:17px;line-height:1.15">${hl.text}</div>
+        <div style="opacity:.75;margin-top:5px">${sc.text}</div>
+        <div style="margin-top:9px;display:flex;gap:6px;justify-content:center;flex-wrap:wrap">${ctaC.btns.map(([t,k]) =>
+          k === 'solid' ? `<span style="background:${C.ac};color:${acOn(C)};border-radius:${Math.min(C.r,6)}px;padding:4px 12px;font-weight:700">${t}</span>`
+          : k === 'outline' ? `<span style="border:1px solid currentColor;opacity:.85;border-radius:${Math.min(C.r,6)}px;padding:4px 12px;font-weight:600">${t}</span>`
+          : `<span style="color:${C.ac};font-weight:700">${t}</span>`).join('')}</div>
       </div>
       <div style="display:flex;gap:${C.gap}px;padding:${C.gap + 4}px 12px">${cards}</div>
       <div style="border-top:1px solid rgba(127,127,127,.25);padding:9px 12px">${footer}</div>
