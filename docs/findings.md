@@ -14,7 +14,8 @@
 
 ## B. 편집기 결함 — TH10에서 닫는다
 
-- [ ] 토큰 모드 드롭다운이 문서 상태를 잘못 보고한다 — 문서가 `askewly.warm`인데 옵션에 없어 첫 항목(`askewly.default`)을 표시하고, `validateTokenMode`도 편집기 세트 2개만 허용해 템플릿 세트로 전환할 수 없다. (TH7)
+- [ ] 토큰 모드 드롭다운이 문서 상태를 잘못 보고한다 — 문서가 `askewly.warm`인데 옵션에 `askewly.default`/`askewly.dark` 둘만 하드코딩돼 첫 항목이 선택돼 보인다. (TH7)
+- [ ] `validateTokenMode`가 **모양만 본다**(`/^[a-z][a-z0-9-]*(\.[a-z][a-z0-9-]*)+$/`) — 존재하지 않는 세트(`foo.bar`)도 통과시켜 조용히 미해석 상태로 들어간다. (2026-07-20 정정: 이 항목은 원래 "편집기 세트 2개만 허용"으로 잘못 적혀 있었다. TH10 착수 전 실측으로 확인해 정정 — 기록을 믿고 계획을 세우면 틀린 문제를 푼다.)
 - [ ] `App.tsx`의 `storageKey`가 `baseDocument.id` 기준이라 템플릿을 열어도 저장 키가 fixture 문서 키다 — 저장·재적재가 템플릿을 따라가지 않는다. (TH3)
 - [ ] 뷰포트 크기 토글을 건드리면 `baseDocument`가 재생성돼 열어둔 템플릿이 fixture로 되돌아간다. (TH3)
 - [ ] 토큰 **값** 개별 편집 UI가 없다 — 세트 전환만 가능하고 `resolveProjectTokens`의 override 경로는 계약·테스트만 있다. (TH3)

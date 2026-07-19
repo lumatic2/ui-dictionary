@@ -15,6 +15,7 @@ import {
   saveSnapshot,
   selectionBounds,
   undo,
+  type CanvasDocument,
   type CanvasHistory,
   type CanvasOperation,
 } from '@askewly/canvas-core'
@@ -80,6 +81,14 @@ export function App() {
   const [size, setSize] = useState<1000 | 5000>(1000)
   const [failure, setFailure] = useState<EditorPlaneFailure | null>(null)
   const baseDocument = useMemo(() => createDocumentFixture(size), [size])
+  /**
+   * 지금 편집 중인 이력의 **출발 문서**. `baseDocument`(dev fixture)와 다를 수 있다 —
+   * 템플릿을 열거나 데스크톱 스냅샷을 받으면 그쪽이 출발점이 된다.
+   *
+   * 이걸 분리하지 않으면 저장이 깨진다: 스냅샷은 `출발 문서 + 연산 로그`로 직렬화되는데,
+   * 템플릿을 열어 편집한 뒤 fixture를 출발 문서로 저장하면 재적재 때 템플릿이 사라진다.
+   */
+  const [editingBase, setEditingBase] = useState<CanvasDocument>(baseDocument)
   const [history, setHistory] = useState<CanvasHistory>(() => createHistory(baseDocument))
   const [status, setStatus] = useState('unsaved')
   const [connection, setConnection] = useState<'offline' | 'connecting' | 'connected' | 'reconnecting' | 'disconnected' | 'error'>('offline')
@@ -109,10 +118,12 @@ export function App() {
   const liveConfig = useMemo(() => desktopHost() ? null : liveBridgeConfig(), [])
   const liveClient = useRef<LiveBridgeClient | null>(null)
   const pendingPaint = useRef<{ revision: number; started: number } | null>(null)
-  const storageKey = `agent-design:${baseDocument.id}`
+  // 저장 슬롯은 **편집 중인 문서**를 따라간다 — 템플릿마다 독립 슬롯을 갖는다.
+  const storageKey = `agent-design:${editingBase.id}`
 
   const acceptDesktopSnapshot = useCallback((snapshot: DesktopCanvasSnapshot, reason: DesktopCanvasSnapshotReason, receivedAt = performance.now()) => {
     pendingPaint.current = { revision: snapshot.revision, started: receivedAt }
+    setEditingBase(snapshot.document)
     setHistory(createHistory(snapshot.document))
     setStatus(`${reason} revision ${snapshot.revision}`)
     setConnection('connected')
@@ -122,15 +133,19 @@ export function App() {
   // 템플릿 열기 — 컴파일된 장면이 곧 캔버스 문서다. 실패 시 갤러리가 여기까지 오지 않는다.
   const openTemplate = useCallback((project: TemplateProject) => {
     setTemplateProject(project)
+    setEditingBase(project.scene)
     setHistory(createHistory(project.scene))
     setStatus(`template ${project.request.id} · ${templateSignature(project)}`)
     setFailure(null)
   }, [])
 
   useEffect(() => {
+    // 템플릿이 열려 있으면 fixture 크기 변경이 문서를 갈아치우지 않는다 — 템플릿이 이긴다.
+    if (templateProject) return
+    setEditingBase(baseDocument)
     setHistory(createHistory(baseDocument))
     setStatus('unsaved')
-  }, [baseDocument])
+  }, [baseDocument, templateProject])
 
   useEffect(() => {
     if (!liveConfig) return
@@ -139,6 +154,7 @@ export function App() {
       onError: (error) => setStatus(error instanceof Error ? error.message : 'bridge error'),
       onSnapshot: (snapshot, meta) => {
         pendingPaint.current = { revision: snapshot.revision, started: meta.receivedAt }
+        setEditingBase(snapshot.document)
         setHistory(createHistory(snapshot.document))
         setStatus(`${meta.reason} revision ${snapshot.revision}`)
       },
@@ -410,9 +426,9 @@ export function App() {
   }, [acceptDesktopSnapshot, desktopBridge?.state, history.present, projectFiles])
 
   const save = useCallback(async () => {
-    const bytes = await saveSnapshot(store, storageKey, baseDocument, history.log)
+    const bytes = await saveSnapshot(store, storageKey, editingBase, history.log)
     setStatus(`saved ${bytes} bytes`)
-  }, [baseDocument, history.log, storageKey])
+  }, [editingBase, history.log, storageKey])
 
   const reload = useCallback(async () => {
     const recovered = await loadSnapshot(store, storageKey)
@@ -603,7 +619,7 @@ export function App() {
         <details className="diagnostics-panel">
           <summary>Development</summary>
           <label>Nodes
-            <select value={size} onChange={(event) => setSize(Number(event.target.value) as 1000 | 5000)} data-testid="fixture-size">
+            <select value={size} disabled={Boolean(templateProject)} onChange={(event) => setSize(Number(event.target.value) as 1000 | 5000)} data-testid="fixture-size">
               <option value={1000}>1,000</option>
               <option value={5000}>5,000</option>
             </select>
@@ -636,7 +652,7 @@ export function App() {
     <footer className="workspace-status" aria-label="Workspace status">
       <output data-testid="persistence-status">{status}</output>
       <span>Revision {history.present.revision}</span>
-      <span>{Object.keys(history.present.nodes).length.toLocaleString()} nodes</span>
+      <span data-testid="document-node-count">{Object.keys(history.present.nodes).length.toLocaleString()} nodes</span>
       <output className={`connection-status status-${connection}`} data-testid="bridge-status">{connectionStatusLabel(connection)}{liveLatency === null ? '' : ` · ${liveLatency.toFixed(1)}ms`}</output>
       {desktopBridge && <div className="desktop-bridge-controls">
         <output className={`connection-status status-${desktopBridge.state}`} data-testid="desktop-bridge-status">

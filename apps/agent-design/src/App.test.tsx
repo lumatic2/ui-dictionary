@@ -424,3 +424,50 @@ describe('connection status labels', () => {
     expect(desktopBridgeStateLabel('backoff')).toBe('Reconnecting…')
   })
 })
+
+describe('편집 상태 지속성 (TH10)', () => {
+  /** 템플릿을 열고 캔버스 문서가 템플릿 장면으로 바뀔 때까지 기다린다. */
+  async function openTemplate(view: ReturnType<typeof render>) {
+    fireEvent.click(view.getByTestId('toggle-templates'))
+    fireEvent.click(view.getByTestId('template-open-business-card-minimal'))
+    await waitFor(() =>
+      expect(view.getByTestId('persistence-status').textContent).toContain('template'),
+    )
+  }
+
+  it('템플릿을 열고 저장한 뒤 재적재하면 템플릿이 돌아온다', async () => {
+    const view = render(<App />)
+    await openTemplate(view)
+    const opened = view.getByTestId('document-node-count').textContent
+
+    fireEvent.click(view.getByTestId('save-document'))
+    await waitFor(() => expect(view.getByTestId('persistence-status').textContent).toContain('saved'))
+
+    fireEvent.click(view.getByTestId('reload-document'))
+    await waitFor(() => expect(view.getByTestId('persistence-status').textContent).toContain('reloaded'))
+
+    // 저장 슬롯이 fixture 문서에 묶여 있으면 여기서 1,000노드 fixture가 복원된다.
+    expect(view.getByTestId('document-node-count').textContent).toBe(opened)
+  })
+
+  it('fixture 크기 토글이 열어둔 템플릿을 파괴하지 않는다', async () => {
+    const view = render(<App />)
+    await openTemplate(view)
+    const opened = view.getByTestId('document-node-count').textContent
+
+    const sizeSelect = view.getByTestId('fixture-size') as HTMLSelectElement
+    expect(sizeSelect.disabled).toBe(true)
+
+    // 비활성이어도 상태 변화가 새어들어오지 않는지 직접 확인한다.
+    fireEvent.change(sizeSelect, { target: { value: '5000' } })
+    expect(view.getByTestId('document-node-count').textContent).toBe(opened)
+  })
+
+  it('템플릿이 없으면 fixture 크기 토글이 그대로 동작한다', () => {
+    const view = render(<App />)
+    const sizeSelect = view.getByTestId('fixture-size') as HTMLSelectElement
+    expect(sizeSelect.disabled).toBe(false)
+    fireEvent.change(sizeSelect, { target: { value: '5000' } })
+    expect(view.getByTestId('document-node-count').textContent).toContain('5,000')
+  })
+})

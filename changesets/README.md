@@ -181,3 +181,4 @@
 | 179 | 20260720-codex-imagegen-provider | 2026-07-20 | TH5 step 1: codex exec image provider — PNG header truth, real dimensions (not requested), cover-crop-loss rejection at 1/3, injectable runner | 4/4 | complete |
 | 180 | 20260720-codex-imagegen-live-proof | 2026-07-20 | TH5 step 2: live codex exec produced a real 1000x800 asset rendered in the poster — the live run caught spawn ENOENT (.cmd shim) and argv quoting, fixed via stdin prompt | 6/6 | complete |
 | 181 | 20260720-retire-openai-image-adapter | 2026-07-20 | TH5 step 3: removed the broken OpenAI image adapter (response type never matched the real API) — 439 tests green after removal | 5/5 | complete |
+| 182 | 20260720-editor-state-persistence | 2026-07-20 | TH10 step 1: separated editingBase from dev fixture — saving a template no longer serializes the 1,000-node fixture; size toggle can't destroy an open template | 4/4 | complete |
