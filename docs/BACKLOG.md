@@ -299,3 +299,59 @@
   - Completed: 2026-07-19
   - Result: 오프라인 GPT Image 2 소재 경계 + 세 형식 전체 제작 루프
   - Evidence: evidence/template-production-system/tps5-e2e.md, evidence/template-production-system/e2e-manifest.json
+
+### 2026-07
+- TPS4 - TPS4 — 명함·제품 포스터·인포그래픽 팩
+  - Completed: 2026-07-20
+  - Result: 세 형식 6청사진 + 안전영역·CTA·연락처·데이터 무결성
+  - Evidence: evidence/template-production-system/tps4-packs.md
+
+- TPS3 - TPS3 — 브라우저 템플릿 스튜디오
+  - Completed: 2026-07-20
+  - Result: CanvasDocument 브라우저 렌더·텍스트 편집·JSON/HTML/SVG 왕복
+  - Evidence: evidence/template-production-system/tps3-studio.md, changesets/20260719-template-studio-renderer/README.md, changesets/20260719-template-studio-edit-export/README.md
+
+- TPS2 - TPS2 — 구성 청사진·결정론적 조립기
+  - Completed: 2026-07-20
+  - Result: 세 형식 청사진 선택 + 결정론적 CanvasDocument 컴파일·서명
+  - Evidence: evidence/template-production-system/tps2-compiler.md, changesets/20260719-blueprint-selection/README.md, changesets/20260719-deterministic-template-compiler/README.md
+
+- TPS1 - TPS1 — 템플릿 계약·장면 기반
+  - Completed: 2026-07-20
+  - Result: 구조화 템플릿 경계 + CanvasDocument image/shape + template-core 검증 기반
+  - Evidence: evidence/template-production-system/tps1-contract.md, changesets/20260719-template-contract/README.md, changesets/20260719-template-core-scaffold/README.md
+
+- RC1 - RC1 — 코드 자산 registry 파이프라인
+  - Completed: 2026-07-20
+  - Result: 27자산 registry 빌드+순수성 게이트+깨끗한 프로젝트 이식 실구동
+  - Evidence: evidence/recipe-code-reuse/rc1-transplant.md, changesets/20260719-registry-pipeline/README.md, changesets/20260719-registry-llms/README.md
+
+- RC2 - RC2 — 코드 출발 계약 + 에이전트 E2E
+  - Completed: 2026-07-20
+  - Result: 코드 출발 계약 배포 + headless 이식·프로젝트 토큰 재결합·브라우저 실증
+  - Evidence: evidence/recipe-code-reuse/rc2-agent-e2e.md, changesets/20260719-code-first-contract/README.md, changesets/20260719-code-first-e2e/README.md
+
+- RC3 - RC3 — 스튜디오 구성 ↔ 레시피 매핑
+  - Completed: 2026-07-20
+  - Result: 구성 13항 recipes 매핑+payload 노출+계약 배선 (피어 실측·독립 리뷰)
+  - Evidence: evidence/recipe-code-reuse/rc3-composition-map.md, changesets/20260719-composition-recipe-map/README.md, changesets/20260719-composition-recipe-contract/README.md
+
+- RC4 - RC4 — 통합 실연 (스튜디오→코드 조합→리스타일)
+  - Completed: 2026-07-20
+  - Result: 사용자 실선택 전 루프 + 사람 게이트 승인 — Close Criteria 5/5
+  - Evidence: evidence/recipe-code-reuse/rc4-demo.md, changesets/20260719-rc4-demo/README.md
+
+- DB2 - DB2 — skill 개정 + E2E
+  - Completed: 2026-07-20
+  - Result: skill 브리프 배선 + E2E 3경로(생략·발동·파생) 전부 관측 — 대화형 실연 포함
+  - Evidence: changesets/20260718-brief-skill-e2e/README.md, evidence/design-brief/flower-DESIGN.md
+
+- SE1 - SE1 — skill 신설 + 프로토콜 사람 게이트 개정
+  - Completed: 2026-07-18
+  - Result: entry-protocol 사람 게이트 배포 + askewly-design skill Claude·Codex 배포
+  - Evidence: changesets/20260718-entry-protocol-human-gate/README.md, changesets/20260718-askewly-design-skill/README.md
+
+- SE2 - SE2 — 전역 규칙 제거 + E2E 검증
+  - Completed: 2026-07-18
+  - Result: 전역 절 제거(grep 0) + 양 에이전트 E2E skill 발화·스크린샷 관측 (1차 FAIL→교정→PASS)
+  - Evidence: changesets/20260718-global-routing-removal/README.md, changesets/20260718-skill-entry-e2e/README.md
