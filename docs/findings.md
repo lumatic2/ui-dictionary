@@ -4,13 +4,13 @@
 > 규칙: **닫힌 항목은 지우지 말고 `[x]`로 표시하고 닫은 milestone을 적는다** — 지우면 같은 결함이 새 발견으로 되돌아온다.
 > 수집: 2026-07-20 (template-production-hardening TH1~TH9 전수 대조 — 코드로 현행성 확인해 이미 닫힌 항목은 제외).
 
-## A. 인쇄 규격 — TH11에서 닫는다
+## A. 인쇄 규격 — TH11에서 닫았다 (완료 2026-07-20)
 
-- [ ] `catalog.ts`의 `SAFE_AREA_INSET = 24`가 px 고정값이다. 도련·안전영역은 mm 개념이라 px 상수로는 발주 규격을 표현할 수 없다. (TH1·TH2)
-- [ ] 도련(bleed) 개념 자체가 없다 — `business-card-vertical`의 인물 슬롯이 안전영역 때문에 인셋 배치이고 full-bleed가 불가능하다. (TH2)
-- [ ] 포스터·인포그래픽에 규격 프리셋이 없어 `matchPrintSpec`이 `null`을 반환한다. (TH2)
-- [ ] 포스터 캔버스 1080×1350은 소셜 비율(4:5)이다 — 인쇄 표준 비율로 이전 필요. (TH2)
-- [ ] HTML 내보내기에 `@page` 여백·재단 표시 규약이 없다. `surface.canvas`가 프레임 배경으로만 들어간다. (TH7)
+- [x] `catalog.ts`의 `SAFE_AREA_INSET = 24`가 px 고정값이다. 도련·안전영역은 mm 개념이라 px 상수로는 발주 규격을 표현할 수 없다. (TH1·TH2) → **닫힘**: 규격 mm 유래 `safeMarginPx`로 대체 (TH11 step-1)
+- [x] 도련(bleed) 개념 자체가 없다 — `business-card-vertical`의 인물 슬롯이 안전영역 때문에 인셋 배치이고 full-bleed가 불가능하다. (TH2) → **닫힘**: `bleedPx`·`printSheetGeometry`, SVG가 도련 포함 지면으로 나간다 (TH11 step-1·3)
+- [x] 포스터·인포그래픽에 규격 프리셋이 없어 `matchPrintSpec`이 `null`을 반환한다. (TH2) → **닫힘**: A계열 4종 + 인쇄판 청사진 2종 (TH11 step-2)
+- [x] 포스터 캔버스 1080×1350은 소셜 비율(4:5)이다 — 인쇄 표준 비율로 이전 필요. (TH2) → **닫힘(방향 변경)**: 소셜 비율은 실사용 산출물이라 보존하고, 인쇄용 A3 청사진을 따로 신설했다 (TH11 step-2)
+- [x] HTML 내보내기에 `@page` 여백·재단 표시 규약이 없다. `surface.canvas`가 프레임 배경으로만 들어간다. (TH7) → **닫힘(경로 변경)**: `@page`의 bleed/marks는 브라우저 미지원(리서치 3.1~3.3). SVG에 벡터로 그린다. HTML은 화면 미리보기로 남는다 (TH11 step-3)
 
 ## B. 편집기 결함 — TH10에서 닫는다
 
