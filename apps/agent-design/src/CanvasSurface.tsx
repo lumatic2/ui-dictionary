@@ -24,7 +24,7 @@ import {
 } from '@askewly/canvas-core'
 import { EditorPlane } from './EditorPlane'
 import type { EditorPlaneFailure } from './editorPlaneRuntime'
-import { editorTokenMaps, FALLBACK_BACKGROUND_TOKEN, type TokenSetId } from './editorTokens'
+import { documentTokens } from './documentTokens'
 
 interface Props {
   document: CanvasDocument
@@ -40,26 +40,56 @@ function sourceRef(node: CanvasNode) {
   return node.source ? `${node.source.file}:${node.source.startLine}` : undefined
 }
 
-function tokenMapFor(tokenSetId: string) {
-  return editorTokenMaps[tokenSetId as TokenSetId] ?? editorTokenMaps['askewly.default']
-}
-
-function resolveNodeBackground(tokenSetId: string, tokenBindings: CanvasNode['tokenBindings']): string {
-  const map = tokenMapFor(tokenSetId)
-  const tokenName = tokenBindings.background ?? FALLBACK_BACKGROUND_TOKEN
-  return map[tokenName] ?? map[FALLBACK_BACKGROUND_TOKEN]
-}
-
+/**
+ * 노드 표면 스타일 — 색·글꼴은 문서의 토큰 세트에서만 온다.
+ *
+ * 도형은 `tokenBindings.fill`이 있으면 그것이 이긴다. 컴파일러가 넣는 `node.fill`
+ * 리터럴은 토큰이 없는 자유 도형용 폴백으로만 남는다.
+ */
 function nodeStyle(node: CanvasNode, tokenSetId: string, previewBounds?: CanvasNode['bounds']): React.CSSProperties {
   const bounds = previewBounds ?? node.bounds
-  return {
+  const tokens = documentTokens(tokenSetId)
+
+  // 규칙 하나: **바인딩이 있으면 그 바인딩만이 값을 정한다.** 안 풀리면 칠하지 않는다.
+  // 다른 경로로 흘러내려 그럴듯한 색을 얻으면 결함이 화면에서 사라진다.
+  const fillBinding = node.kind === 'shape' ? node.tokenBindings.fill : undefined
+  const backgroundBinding = node.tokenBindings.background
+  const colorBinding = node.tokenBindings.color
+
+  let background: string | null = null
+  if (fillBinding) background = tokens.resolve(fillBinding)
+  else if (node.kind === 'shape') background = node.fill
+  else background = tokens.resolveBackground(backgroundBinding)
+
+  const color = colorBinding ? tokens.resolve(colorBinding) : tokens.resolve('text.default')
+  const fontFamily = tokens.resolve(node.tokenBindings.fontFamily)
+
+  const style: React.CSSProperties = {
     left: bounds.x,
     top: bounds.y,
     width: bounds.width,
     height: bounds.height,
-    background: resolveNodeBackground(tokenSetId, node.tokenBindings),
-    color: tokenMapFor(tokenSetId)['text.default'],
   }
+  if (background) style.background = background
+  if (color) style.color = color
+  if (fontFamily) style.fontFamily = fontFamily
+
+  if (node.kind === 'text') {
+    style.fontSize = node.textStyle.fontSize
+    style.fontWeight = node.textStyle.fontWeight
+    style.lineHeight = `${node.textStyle.lineHeight}px`
+    if (!fontFamily) style.fontFamily = node.textStyle.fontFamily
+  }
+
+  return style
+}
+
+/** 토큰이 해석되지 않은 노드는 미해결로 표시한다 — 그럴듯한 색으로 덮지 않는다. */
+function unresolvedBindings(node: CanvasNode, tokenSetId: string): boolean {
+  const tokens = documentTokens(tokenSetId)
+  if (tokens.source === 'unknown') return true
+  const bindings = [node.tokenBindings.background, node.tokenBindings.fill, node.tokenBindings.color, node.tokenBindings.fontFamily]
+  return bindings.some((binding) => binding !== undefined && tokens.resolve(binding) === null)
 }
 
 interface CanvasNodeElementProps {
@@ -111,6 +141,7 @@ const CanvasNodeElement = memo(function CanvasNodeElement({ node, selected, drop
     draggable: selected && !node.locked,
     tabIndex: primary ? 0 : -1,
     className: `canvas-node node-${node.kind}`,
+    'data-token-unresolved': unresolvedBindings(node, tokenSetId) ? '' : undefined,
     style: nodeStyle(node, tokenSetId, previewBounds),
   }
   if (node.kind === 'text') {

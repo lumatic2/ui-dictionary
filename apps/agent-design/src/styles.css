@@ -187,3 +187,5 @@ button, select { font: inherit; }
 .template-roundtrip > button { height: 26px; border: 1px solid var(--ad-border-default); border-radius: 5px; background: var(--ad-surface-base); color: var(--ad-text-secondary); font-size: 10px; }
 .template-hint, .template-notice { margin: 0; color: var(--ad-text-muted); font-size: 10px; word-break: keep-all; }
 .template-notice { color: var(--ad-action-primary); }
+/* 토큰이 풀리지 않은 노드 — 그럴듯한 색으로 덮지 않고 미해결임을 드러낸다. token-exception: 진단 표면 전용 */
+.canvas-node[data-token-unresolved] { outline: 1px dashed var(--ad-action-destructive); background-image: repeating-linear-gradient(45deg, transparent 0 6px, var(--ad-surface-secondary) 6px 12px); }

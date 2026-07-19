@@ -21,7 +21,8 @@ const MAX_LINE_LENGTH = 300
  */
 const SCANNED_ROOTS = [
   'packages/template-core/src',
-  'apps/template-studio/src',
+  'apps/agent-design/src/TemplateGallery.tsx',
+  'apps/agent-design/src/documentTokens.ts',
   'scripts/verify-template-production-system.mjs',
   'scripts/check-line-length.mjs',
 ]
@@ -53,7 +54,11 @@ const violations = []
 
 async function resolveTargets(root) {
   const absolute = resolve(repoRoot, root)
-  const info = await stat(absolute)
+  // 감시 대상이 사라졌으면 조용히 건너뛰지 않는다 — 대상이 없는 가드는 통과를 가장한다.
+  const info = await stat(absolute).catch(() => null)
+  if (!info) {
+    throw new Error(`감시 대상이 없습니다: ${root} — 파일이 이동·삭제됐다면 SCANNED_ROOTS를 갱신하십시오.`)
+  }
   return info.isDirectory() ? collectFiles(absolute) : [absolute]
 }
 

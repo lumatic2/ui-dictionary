@@ -168,3 +168,4 @@
 | 166 | 20260720-studio-token-driven-render | 2026-07-20 | TH3 step 1: token set canon, hardcoded palette removed, diagnostic panel instead of silent fallback | 6/6 | complete |
 | 167 | 20260720-askewly-design-template-gallery | 2026-07-20 | TH3 step 2: template gallery in AskewlyDesign, 6 blueprints open as canvas documents, studio surface superseded | 5/5 | complete |
 | 168 | 20260720-askewly-design-roundtrip-and-studio-retire | 2026-07-20 | TH3 step 3: exporters moved to core, export/import roundtrip measured in app, template-studio retired | 4/4 | complete |
+| 169 | 20260720-canvas-token-paint | 2026-07-20 | TH7 step 1: canvas paints template tokens (source split, no silent fallback), line-length guard repaired | 3/3 | complete |

@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "active_work_id": null,
+  "active_work_id": "th7-canvas-render-fidelity",
   "works": {
     "SFB1": {
       "title": "Structure Contract And Clean Production",
@@ -2401,6 +2401,56 @@
       "updated_at": "2026-07-20",
       "notes": "편집 표면 AskewlyDesign 단일화(사용자 지시 개정). template-studio 은퇴. 적발: 캔버스 렌더 충실도 공백 — milestone 급 후속 필요.",
       "completed": "2026-07-20"
+    },
+    "th7-canvas-render-fidelity": {
+      "work_id": "th7-canvas-render-fidelity",
+      "horizon_id": "template-production-hardening",
+      "milestone_id": "TH7",
+      "status": "active",
+      "plan_path": "plans/2026-07-20-th7-canvas-render-fidelity.md",
+      "changeset_path": "changesets/20260720-canvas-token-paint",
+      "next_step": "step-1",
+      "current_step": "step-1",
+      "steps": [
+        {
+          "id": "step-1",
+          "label": "step-1 — 토큰 해석 일원화",
+          "status": "pending"
+        },
+        {
+          "id": "step-2",
+          "label": "step-2 — 이미지·타이포 실렌더",
+          "status": "pending"
+        },
+        {
+          "id": "step-3",
+          "label": "step-3 — 내보내기 충실도",
+          "status": "pending"
+        }
+      ],
+      "execution_mode": "continuous",
+      "approval": {
+        "approved_by": "user",
+        "approved_at": "2026-07-20",
+        "plan_sha256": "b04192d12754136c49ecfdee2499ba92a53d7c8bac3e566c1823efbf2be8b0ea"
+      },
+      "allowed_stop_reasons": [
+        "completed",
+        "blocked",
+        "decision_required",
+        "risk_gate",
+        "secret_required",
+        "external_authority_required",
+        "user_stopped"
+      ],
+      "stop_reason": null,
+      "stop_detail": {},
+      "session_ids": [
+        "claude:f84fec52-c73d-4a49-b95f-53d9e9345cb2"
+      ],
+      "owner_session_uuid": "claude:f84fec52-c73d-4a49-b95f-53d9e9345cb2",
+      "updated_at": "2026-07-20",
+      "notes": "Registered atomically by canonical harness approve_harness_plan.py after plan validation."
     }
   }
 }
