@@ -1,5 +1,7 @@
 import { useMemo, useState } from 'react'
 import {
+  listTokenSets,
+  resolveProjectTokens,
   templateSignature,
   validateTemplateProject,
   type TemplateFormat,
@@ -15,21 +17,8 @@ const labels: Record<TemplateFormat, string> = {
   infographic: '인포그래픽',
 }
 
-// TODO(TH3): 이 팔레트는 하드코딩이라 tokenSetId를 무시한다. 토큰 세트 조회로 대체한다.
-const palette: Record<string, string> = {
-  'surface.canvas': '#f7f2e8',
-  'brand.primary': '#2f7d4f',
-  'text.primary': '#2b241b',
-  'text.secondary': '#685d50',
-  'text.muted': '#8d8172',
-}
-
 const EXPORT_KINDS = ['json', 'html', 'svg'] as const
 type ExportKind = (typeof EXPORT_KINDS)[number]
-
-function nodeColor(binding?: string) {
-  return binding ? palette[binding] : '#d8d0c2'
-}
 
 function download(name: string, text: string, type: string) {
   const url = URL.createObjectURL(new Blob([text], { type }))
@@ -60,11 +49,25 @@ export default function App() {
   const selectedNode = project.scene.nodes[selected]
   const signature = useMemo(() => templateSignature(project), [project])
 
+  // 색·타이포의 정본은 토큰 세트다. 렌더러는 리터럴을 갖지 않는다 — 조회 실패는 진단으로 드러낸다.
+  const tokens = useMemo(() => resolveProjectTokens(project), [project])
+  const canvasBackground = tokens.values['surface.canvas']
+
   function choose(next: TemplateFormat) {
+    const base = structuredClone(studioProjects[next])
+    // 형식을 바꿔도 보고 있던 토큰 세트는 유지한다 — 세트 비교 중 형식을 바꾸면 값이 되돌아가면 안 된다.
+    base.request.tokenSetId = project.request.tokenSetId
     setFormat(next)
-    setProject(structuredClone(studioProjects[next]))
+    setProject(base)
     setSelected('')
     setDiagnostic('')
+  }
+
+  function chooseTokenSet(tokenSetId: string) {
+    const next = structuredClone(project)
+    next.request.tokenSetId = tokenSetId
+    next.scene.revision += 1
+    setProject(next)
   }
 
   function updateText(value: string) {
@@ -114,6 +117,23 @@ export default function App() {
             ))}
           </select>
         </label>
+        <label>
+          토큰 세트
+          <select
+            aria-label="토큰 세트"
+            value={project.request.tokenSetId}
+            onChange={(event) => chooseTokenSet(event.target.value)}
+          >
+            {listTokenSets().map((set) => (
+              <option key={set.id} value={set.id}>
+                {set.label}
+              </option>
+            ))}
+            {!tokens.set && (
+              <option value={project.request.tokenSetId}>{project.request.tokenSetId} (없음)</option>
+            )}
+          </select>
+        </label>
         {EXPORT_KINDS.map((kind) => (
           <button
             key={kind}
@@ -146,14 +166,32 @@ export default function App() {
         </aside>
 
         <section className="stage">
+          {tokens.issues.length > 0 && (
+            <div className="token-diagnostic" role="alert" data-testid="token-diagnostic">
+              <h2>토큰 조회 실패 {tokens.issues.length}건</h2>
+              <p>
+                해석되지 않은 값은 기본색으로 대체하지 않습니다. 아래 항목을 고치기 전까지 캔버스는
+                미해결 상태로 표시됩니다.
+              </p>
+              <ul>
+                {tokens.issues.map((issue, index) => (
+                  <li key={`${issue.code}-${index}`}>
+                    <code>{issue.code}</code> {issue.message}
+                  </li>
+                ))}
+              </ul>
+            </div>
+          )}
+
           <div
-            className="canvas"
+            className={canvasBackground ? 'canvas' : 'canvas canvas--unresolved'}
+            data-testid="canvas"
             style={{
               width: project.request.width,
               height: project.request.height,
               transform: `scale(${scale})`,
               transformOrigin: 'top left',
-              background: nodeColor('surface.canvas'),
+              ...(canvasBackground ? { background: canvasBackground } : {}),
             }}
           >
             {nodes.map((node) => {
@@ -166,13 +204,19 @@ export default function App() {
               }
 
               if (node.kind === 'text') {
+                const color = tokens.values[node.tokenBindings.color ?? '']
+                const fontFamily = tokens.values[node.tokenBindings.fontFamily ?? '']
                 return (
                   <div
                     key={node.id}
+                    data-node-id={node.id}
+                    data-unresolved={color ? undefined : ''}
+                    className={color ? undefined : 'unresolved'}
                     onClick={() => setSelected(node.id)}
                     style={{
                       ...common,
-                      color: nodeColor(node.tokenBindings.color),
+                      ...(color ? { color } : {}),
+                      ...(fontFamily ? { fontFamily } : {}),
                       fontSize: node.textStyle.fontSize,
                       fontWeight: node.textStyle.fontWeight,
                       lineHeight: `${node.textStyle.lineHeight}px`,
@@ -184,10 +228,14 @@ export default function App() {
               }
 
               if (node.kind === 'shape') {
+                const fill = tokens.values[node.tokenBindings.fill ?? '']
                 return (
                   <div
                     key={node.id}
-                    style={{ ...common, background: nodeColor(node.tokenBindings.fill) }}
+                    data-node-id={node.id}
+                    data-unresolved={fill ? undefined : ''}
+                    className={fill ? undefined : 'unresolved'}
+                    style={{ ...common, ...(fill ? { background: fill } : {}) }}
                   />
                 )
               }
@@ -197,6 +245,7 @@ export default function App() {
                 return (
                   <img
                     key={node.id}
+                    data-node-id={node.id}
                     alt={node.alt}
                     src={asset?.uri}
                     style={{ ...common, objectFit: node.fit }}
