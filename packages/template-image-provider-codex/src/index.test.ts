@@ -1,6 +1,6 @@
 import { describe, expect, it } from 'vitest'
 import type { ImageAssetRequest } from '@askewly/template-core'
-import { buildImagePrompt, CodexImageError, CodexImageProvider } from './index.js'
+import { buildImagePrompt, CodexImageError, CodexImageProvider, MAX_ASSET_BYTES } from './index.js'
 import { coverCropLoss, fitsSlot, MAX_COVER_CROP_LOSS } from './fit.js'
 import { PngReadError, readPngHeader } from './png.js'
 
@@ -94,9 +94,12 @@ describe('공급자 계약 — 고정 응답', () => {
     expect(asset.provenance).toEqual({ provider: 'generated', source: 'codex:image_generation:hero' })
   })
 
-  it('출력 경로를 URI로 쓴다', async () => {
+  it('출력 경로를 URI로 쓰지 않는다 — 문서에 소재를 싣는다', async () => {
+    // TH12에서 뒤집혔다. 경로를 실으면 문서가 파일 시스템에 묶여, 내보낸 SVG가
+    // 다른 곳에서 그림 없이 렌더된다(TH6 실연이 실물로 잡은 결함).
     const asset = await provider(pngBytes(1000, 800), 'fixtures/cup.png').provide(request)
-    expect(asset.uri).toBe('fixtures/cup.png')
+    expect(asset.uri).not.toBe('fixtures/cup.png')
+    expect(asset.uri.startsWith('data:image/png;base64,')).toBe(true)
   })
 
   it('파일이 없으면 빈 소재를 만들지 않고 실패한다', async () => {
@@ -128,5 +131,48 @@ describe('공급자 계약 — 고정 응답', () => {
     await expect(failing.provide(request)).rejects.toThrowError(
       expect.objectContaining({ code: 'CODEX_RUN_FAILED' }),
     )
+  })
+})
+
+describe('자기완결 소재 (TH12)', () => {
+  it('기본 URI가 data URI이고 원본 바이트와 왕복한다', async () => {
+    const bytes = pngBytes(504, 396)
+    const provider = new CodexImageProvider({
+      outputPathFor: () => 'out.png',
+      runner: async () => {},
+      readFileBytes: async () => bytes,
+    })
+    const asset = await provider.provide({ id: 'a', role: 'portrait', width: 504, height: 396, prompt: 'x', fallbackUri: './x.svg' })
+
+    expect(asset.uri.startsWith('data:image/png;base64,')).toBe(true)
+    // 문서에 실린 것이 원본과 같은 바이트인지 — 인코딩만 하고 잃지 않았음을 확인한다.
+    const decoded = Buffer.from(asset.uri.slice('data:image/png;base64,'.length), 'base64')
+    expect(decoded.equals(bytes)).toBe(true)
+    // 파일 경로가 새어 들어가면 문서가 파일 시스템에 묶인다.
+    expect(asset.uri).not.toContain('out.png')
+  })
+
+  it('상한을 넘는 소재는 거부한다', async () => {
+    const huge = Buffer.concat([pngBytes(504, 396), Buffer.alloc(MAX_ASSET_BYTES)])
+    const provider = new CodexImageProvider({
+      outputPathFor: () => 'big.png',
+      runner: async () => {},
+      readFileBytes: async () => huge,
+    })
+    await expect(
+      provider.provide({ id: 'a', role: 'portrait', width: 504, height: 396, prompt: 'x', fallbackUri: './x.svg' }),
+    ).rejects.toMatchObject({ code: 'ASSET_TOO_LARGE' })
+  })
+
+  it('호출자가 URI를 정하고 싶으면 바이트를 함께 받는다', async () => {
+    const bytes = pngBytes(504, 396)
+    const provider = new CodexImageProvider({
+      outputPathFor: () => 'out.png',
+      uriFor: (_r, path, given) => `${path}:${given.byteLength}`,
+      runner: async () => {},
+      readFileBytes: async () => bytes,
+    })
+    const asset = await provider.provide({ id: 'a', role: 'portrait', width: 504, height: 396, prompt: 'x', fallbackUri: './x.svg' })
+    expect(asset.uri).toBe(`out.png:${bytes.byteLength}`)
   })
 })

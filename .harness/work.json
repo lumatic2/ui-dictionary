@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "active_work_id": "TH6",
+  "active_work_id": "TH12",
   "works": {
     "SFB1": {
       "title": "Structure Contract And Clean Production",
@@ -2748,6 +2748,51 @@
         "what": "편집기 UI 재설계 범위 — 사람 확인 게이트에서 편집기 판단 불가 판정, horizon close 판정에 영향",
         "asked_at": "2026-07-20"
       },
+      "session_ids": [
+        "claude:f84fec52-c73d-4a49-b95f-53d9e9345cb2"
+      ],
+      "owner_session_uuid": "claude:f84fec52-c73d-4a49-b95f-53d9e9345cb2",
+      "updated_at": "2026-07-20",
+      "notes": "Registered atomically by canonical harness approve_harness_plan.py after plan validation."
+    },
+    "TH12": {
+      "work_id": "TH12",
+      "horizon_id": "template-production-hardening",
+      "milestone_id": "TH12",
+      "status": "active",
+      "plan_path": "plans/2026-07-20-th12-self-contained-artifacts.md",
+      "changeset_path": "changesets/20260720-self-contained-assets",
+      "next_step": "step-2",
+      "current_step": "step-2",
+      "steps": [
+        {
+          "id": "step-1",
+          "label": "step-1 — 소재가 자기완결적으로 나온다",
+          "status": "completed"
+        },
+        {
+          "id": "step-2",
+          "label": "step-2 — 외부 참조 0 게이트 + 실물 재확인",
+          "status": "pending"
+        }
+      ],
+      "execution_mode": "continuous",
+      "approval": {
+        "approved_by": "user",
+        "approved_at": "2026-07-20",
+        "plan_sha256": "ee183c2aebc75d1042ed11864456999a4ecad248a53e619546e2863c8d1e602e"
+      },
+      "allowed_stop_reasons": [
+        "completed",
+        "blocked",
+        "decision_required",
+        "risk_gate",
+        "secret_required",
+        "external_authority_required",
+        "user_stopped"
+      ],
+      "stop_reason": null,
+      "stop_detail": {},
       "session_ids": [
         "claude:f84fec52-c73d-4a49-b95f-53d9e9345cb2"
       ],
