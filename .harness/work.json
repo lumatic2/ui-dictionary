@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "active_work_id": null,
+  "active_work_id": "th9-text-fitting",
   "works": {
     "SFB1": {
       "title": "Structure Contract And Clean Production",
@@ -2452,6 +2452,56 @@
       "updated_at": "2026-07-20",
       "notes": "토큰 채색·이미지 렌더·내보내기 충실도 완료. 적발: 텍스트 넘침(TH9로 분리). 하위 파급 0(선택 필드).",
       "completed": "2026-07-20"
+    },
+    "th9-text-fitting": {
+      "work_id": "th9-text-fitting",
+      "horizon_id": "template-production-hardening",
+      "milestone_id": "TH9",
+      "status": "active",
+      "plan_path": "plans/2026-07-20-th9-text-fitting.md",
+      "changeset_path": "changesets/20260720-text-fitting-model",
+      "next_step": "step-1",
+      "current_step": "step-1",
+      "steps": [
+        {
+          "id": "step-1",
+          "label": "step-1 — 문자폭 모델 + 맞춤 함수",
+          "status": "pending"
+        },
+        {
+          "id": "step-2",
+          "label": "step-2 — 컴파일러가 맞춤을 쓴다",
+          "status": "pending"
+        },
+        {
+          "id": "step-3",
+          "label": "step-3 — 여러 줄 출력 + 넘침 게이트",
+          "status": "pending"
+        }
+      ],
+      "execution_mode": "continuous",
+      "approval": {
+        "approved_by": "user",
+        "approved_at": "2026-07-20",
+        "plan_sha256": "4e34f2f74e8c2152bdd79a7e69693f7ee17aa77313ca9169956d82547d1293ef"
+      },
+      "allowed_stop_reasons": [
+        "completed",
+        "blocked",
+        "decision_required",
+        "risk_gate",
+        "secret_required",
+        "external_authority_required",
+        "user_stopped"
+      ],
+      "stop_reason": null,
+      "stop_detail": {},
+      "session_ids": [
+        "claude:f84fec52-c73d-4a49-b95f-53d9e9345cb2"
+      ],
+      "owner_session_uuid": "claude:f84fec52-c73d-4a49-b95f-53d9e9345cb2",
+      "updated_at": "2026-07-20",
+      "notes": "Registered atomically by canonical harness approve_harness_plan.py after plan validation."
     }
   }
 }
