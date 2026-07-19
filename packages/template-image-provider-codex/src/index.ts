@@ -53,11 +53,15 @@ export type CodexRunner = (prompt: string, outputPath: string) => Promise<void>
 
 export const spawnCodexRunner: CodexRunner = (prompt, outputPath) =>
   new Promise((resolve, reject) => {
-    const child = spawn(
-      'codex',
-      ['exec', '--skip-git-repo-check', '--sandbox', 'workspace-write', prompt],
-      { stdio: ['ignore', 'pipe', 'pipe'] },
-    )
+    // 지시문은 argv가 아니라 **stdin**으로 넘긴다(`codex exec -`). 줄바꿈·따옴표를 품은 문자열을
+    // argv에 실으면 셸 인용 규칙에 걸린다 — 특히 Windows는 shell 경유가 필요해 위험이 커진다.
+    // Windows에서 shell이 필요한 이유: npm 전역 설치본이 `codex.cmd` 셸 심이라
+    // shell 없이는 `spawn ENOENT`가 난다(2026-07-20 라이브 실행에서 적발).
+    const child = spawn('codex', ['exec', '-', '--skip-git-repo-check', '--sandbox', 'workspace-write'], {
+      stdio: ['pipe', 'pipe', 'pipe'],
+      shell: process.platform === 'win32',
+    })
+    child.stdin.end(prompt)
     let stderr = ''
     child.stderr.on('data', (chunk) => (stderr += String(chunk)))
     child.on('error', (error) =>
