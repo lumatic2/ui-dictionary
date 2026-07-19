@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "active_work_id": "th2-blueprint-archetypes",
+  "active_work_id": "th3-studio-real-editing",
   "works": {
     "SFB1": {
       "title": "Structure Contract And Clean Production",
@@ -2303,7 +2303,7 @@
       "work_id": "th2-blueprint-archetypes",
       "horizon_id": "template-production-hardening",
       "milestone_id": "TH2",
-      "status": "active",
+      "status": "completed",
       "plan_path": "plans/2026-07-20-th2-blueprint-archetypes.md",
       "changeset_path": "changesets/20260720-template-repeating-slot-contract",
       "next_step": "step-1",
@@ -2330,6 +2330,58 @@
         "approved_by": "user",
         "approved_at": "2026-07-20",
         "plan_sha256": "697bc272400311e5af4413fa947e2171fe8050e95448168aab3fee408c2b197c"
+      },
+      "allowed_stop_reasons": [
+        "completed",
+        "blocked",
+        "decision_required",
+        "risk_gate",
+        "secret_required",
+        "external_authority_required",
+        "user_stopped"
+      ],
+      "stop_reason": null,
+      "stop_detail": {},
+      "session_ids": [
+        "claude:f84fec52-c73d-4a49-b95f-53d9e9345cb2"
+      ],
+      "owner_session_uuid": "claude:f84fec52-c73d-4a49-b95f-53d9e9345cb2",
+      "updated_at": "2026-07-20",
+      "notes": "Registered atomically by canonical harness approve_harness_plan.py after plan validation.",
+      "completion_summary": "청사진 6종을 파생 생성기 없이 실재화했고, 좌표만 옮긴 가짜 변주는 게이트가 실제로 막는 것까지 확인했습니다.",
+      "completed": "2026-07-20"
+    },
+    "th3-studio-real-editing": {
+      "work_id": "th3-studio-real-editing",
+      "horizon_id": "template-production-hardening",
+      "milestone_id": "TH3",
+      "status": "active",
+      "plan_path": "plans/2026-07-20-th3-studio-real-editing.md",
+      "changeset_path": "changesets/20260720-studio-token-driven-render",
+      "next_step": "step-1",
+      "current_step": "step-1",
+      "steps": [
+        {
+          "id": "step-1",
+          "label": "step-1 — token-driven-render",
+          "status": "pending"
+        },
+        {
+          "id": "step-2",
+          "label": "step-2 — edit-surfaces",
+          "status": "pending"
+        },
+        {
+          "id": "step-3",
+          "label": "step-3 — export-import-roundtrip",
+          "status": "pending"
+        }
+      ],
+      "execution_mode": "continuous",
+      "approval": {
+        "approved_by": "user",
+        "approved_at": "2026-07-20",
+        "plan_sha256": "45772c05c6ac8fc47f5299fb059165994ea72fbd0f8cdfe1f6078babc0cd8445"
       },
       "allowed_stop_reasons": [
         "completed",
