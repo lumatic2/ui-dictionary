@@ -63,7 +63,13 @@ const FIXED_ASSETS = [
   {
     section: "Knowledge",
     items: [
-      ["knowledge/expressive-stack.md", "Expressive stack tier map: which rendering tier (CSS/SVG, JS motion orchestration, Canvas 2D + physics, WebGL/three.js) a visual effect belongs to, with a technique-to-tier decision table and mandatory judgment procedure (lower tier first, reduced-motion gating, lazy-load for GPU)"],
+      [
+        "knowledge/expressive-stack.md",
+        "Expressive stack tier map: which rendering tier (CSS/SVG, JS motion orchestration, " +
+          "Canvas 2D + physics, WebGL/three.js) a visual effect belongs to, with a technique-to-tier " +
+          "decision table and mandatory judgment procedure (lower tier first, reduced-motion gating, " +
+          "lazy-load for GPU)",
+      ],
     ],
   },
 ];
@@ -151,7 +157,12 @@ function main() {
     if (asset) {
       const dest = path.join(LLMS_DIR, rel);
       const md = readFileSync(dest, "utf8");
-      const link = `> **STOP — do not re-implement this recipe from prose.** A verified code asset exists: fetch ${BASE_URL}/r/${asset}.json, write \`files[].content\` into the project, install the declared dependencies, THEN restyle the look to the project's own tokens (mandatory — component-restyle.md). Prose below is the contract you verify against, not the thing you rebuild.\n`;
+      const link =
+        "> **STOP — do not re-implement this recipe from prose.** A verified code asset exists: " +
+        `fetch ${BASE_URL}/r/${asset}.json, write \`files[].content\` into the project, ` +
+        "install the declared dependencies, THEN restyle the look to the project's own tokens " +
+        "(mandatory — component-restyle.md). Prose below is the contract you verify against, " +
+        "not the thing you rebuild.\n";
       // 레시피는 YAML frontmatter로 시작 — 첫 마크다운 헤딩 뒤에 주입, 헤딩 없는 레시피는 frontmatter 직후
       let injected = md.replace(/^(# .+\r?\n)/m, `$1\n${link}`);
       if (injected === md) injected = md.replace(/^(---\r?\n[\s\S]*?\r?\n---\r?\n)/, `$1\n${link}`);

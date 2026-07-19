@@ -46,7 +46,7 @@ Status: approved (2026-07-20)
   - Artifact: 라이브 `codex exec` 호출 1회로 실제 소재를 생성해 fixture로 커밋하고, 그 소재가 템플릿에 렌더된 증거를 남긴다.
   - Files: write `packages/template-core/src/__fixtures__/assets/**`(생성 이미지), `evidence/template-production-hardening/th5-imagegen.md`.
   - Dependencies: step-1
-  - Verify: 실호출 로그 + 생성 이미지 파일 + 그 이미지를 쓴 포스터 청사진의 스튜디오 렌더 스크린샷.
+  - Verify: 실호출 로그 + 생성 이미지 파일 + 그 이미지를 쓴 포스터 청사진의 AskewlyDesign 렌더 스크린샷.
   - Failure probe: `codex exec`이 실패하거나(비로그인·네트워크 차단) 이미지가 생성되지 않는 경우, 공급자가 조용히 빈 asset을 반환하지 않고 명시 실패한다 — 잘못된 경로로 호출해 확인한다.
   - Commit: changeset `codex-imagegen-live-proof`.
 
@@ -68,3 +68,4 @@ Status: approved (2026-07-20)
 
 ## 진행 로그
 - 2026-07-20 계획 작성, 승인 대기.
+- 2026-07-20 정리: step-2 verify의 "스튜디오"를 AskewlyDesign으로 정정 — TH3에서 template-studio가 은퇴해 표면이 하나다. 계약 내용 변경 아님(표면 이름 정정).

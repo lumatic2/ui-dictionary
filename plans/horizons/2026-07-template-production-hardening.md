@@ -30,8 +30,12 @@
 | **TH1** | 코드 가독성 복구 + 회귀 방어망 — core/studio/스크립트 3표면 + 불변 증명 | `plans/2026-07-20-th1-code-legibility.md` | 승인 | 없음 (내부 실사) |
 | **TH2** | 청사진 6종 실재화 — 타입 계약 변경 + 6청사진 + 규격 검증 | `plans/2026-07-20-th2-blueprint-archetypes.md` | 승인 | `research/2026-07-20-template-production-hardening-format-layout-taxonomy.md` |
 | **TH3** | 스튜디오 토큰 구동 + 실편집 — 토큰 배선·편집 UI·왕복 실측 | `plans/2026-07-20-th3-studio-real-editing.md` | 승인 | 위와 같음 (청사진 선택 UI) |
-| **TH4** | 검증 실체화 — exporter 실행 + negative probe | `plans/2026-07-20-th4-real-verification.md` | 승인 | 없음 (내부 실사) |
+| **TH4** | 검증 실체화 — exporter 실행 + negative probe | `plans/2026-07-20-th4-verification-materialization.md` | 승인 | 없음 (내부 실사) |
+| **TH7** | 캔버스 렌더 충실도 — 편집기·내보내기가 토큰 색·글꼴·이미지를 실제로 그린다 | `plans/2026-07-20-th7-canvas-render-fidelity.md` | 승인 | 없음 (TH3 적발) |
+| **TH9** | 텍스트 맞춤 — 글자 크기가 폭·줄 수를 보고 정해진다 | `plans/2026-07-20-th9-text-fitting.md` | 승인 | 없음 (TH7 적발) |
 | **TH5** | Codex imagegen 소재 공급자 — 계약 재작성 + 실호출 실증 | `plans/2026-07-20-th5-codex-imagegen-provider.md` | 승인 | `research/2026-07-20-template-production-hardening-openai-image-api-contract.md` + 2026-07-20 실호출 실측 |
+| **TH10** | 편집기 결함 마감 — 템플릿을 열어 작업하다 잃는 결함 7건 | `plans/2026-07-20-th10-editor-defects.md` | 대기 | 없음 (TH3·TH7 적발) |
+| **TH11** | 인쇄 규격 mm 기반 재정의 — 발주 가능한 도련·안전영역·규격 | `plans/2026-07-20-th11-print-spec-mm.md` | 대기 | `research/2026-07-20-template-production-hardening-print-spec.md` |
 | **TH6** | 실사용 실연 + horizon close — 전 루프 1건 + 사람 게이트 | `plans/2026-07-20-th6-real-commission.md` | 승인 | 위 두 리서치 |
 
 ## 닫는 기준
@@ -41,10 +45,12 @@
 1. **가독성** — `packages/template-core`·`apps/template-studio`·`scripts/verify-*.mjs`에 300자 초과 라인이 0개다. 관측: lint 규칙 실행 결과 exit 0.
 2. **불변** — 가독성 복구 전후로 세 기준 fixture의 `templateSignature`가 동일하다. 관측: 복구 전 서명을 파일로 고정해두고 복구 후 대조.
 3. **청사진 실재성** — 6개 청사진 각각에 대해, 같은 포맷의 다른 청사진과 **슬롯 개수 또는 그리드 열 수가 다르다**. 관측: 기계 검증 테스트 PASS (좌표 차이만으로는 통과 불가).
-4. **토큰 구동** — 스튜디오에서 semantic token 값을 바꾸면 캔버스 렌더 결과가 바뀐다. 관측: Playwright로 변경 전후 요소 computed style 대조.
+4. **토큰 구동** — **AskewlyDesign**에서 토큰 세트·값을 바꾸면 캔버스 렌더 결과가 바뀐다. 관측: Playwright로 변경 전후 요소 computed style 대조. (2026-07-20 개정 — TH3에서 편집 표면이 template-studio에서 AskewlyDesign 단일로 바뀌었다.)
 5. **검증 실체성** — verify 스크립트가 exporter를 실제 실행해 산출물을 파싱 검사하고, fixture 훼손 3종에 대해 각각 exit≠0을 낸다. 관측: negative probe 3종 실행 로그.
 6. **소재 경로** — Codex imagegen 실호출 1회로 생성한 이미지가 `AssetManifestEntry`로 편입돼 템플릿에 렌더된다. 관측: 실호출 로그 + 결과 이미지 + 스튜디오 스크린샷.
 7. **실사용** — 실제 의뢰 1건이 청사진 선택→토큰→소재→편집→내보내기 전 루프를 통과하고 사람 확인 게이트를 받는다. 관측: `evidence/template-production-hardening/th6-commission.md`.
+8. **편집 지속성** — 템플릿을 열어 편집한 상태가 저장·재적재·뷰포트 변경을 건너 살아남는다. 관측: TH10 실측. (2026-07-20 추가 — 사용자 확정)
+9. **발주 가능성** — 명함·포스터 규격이 도련·안전영역을 mm 기반으로 선언하고, 내보낸 산출물이 인쇄 발주 요건을 충족한다. 관측: TH11 실측. (2026-07-20 추가 — 사용자 확정)
 
 ## 미리 쓰는 실패 회고
 
@@ -73,3 +79,8 @@
 - 직전 horizon(경화 대상): `plans/horizons/2026-07-template-production-system.md`
 - 리서치: `research/2026-07-20-template-production-hardening-format-layout-taxonomy.md`, `research/2026-07-20-template-production-hardening-openai-image-api-contract.md`
 - 아래: `plans/2026-07-20-th1-code-legibility.md` ~ `plans/2026-07-20-th6-real-commission.md`
+
+## 개정 이력
+
+- **2026-07-20** — milestone 표에 TH7·TH9 등재(개설 후 추가된 milestone이 표에 없었다). TH4 계획 경로를 실제 실행된 문서로 정정.
+- **2026-07-20** — 사용자 결정으로 TH10(편집기 결함)·TH11(인쇄 규격)을 추가하고 닫는 기준을 7항 → 9항으로 확장. 순서: TH5 → TH10 → TH11 → TH6.
