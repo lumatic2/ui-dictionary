@@ -6,6 +6,8 @@ import {
   formatPackCatalog,
   templateSignature,
   validateFormatIntegrity,
+  validatePrintSpec,
+  matchPrintSpec,
 } from '../packages/template-core/dist/index.js'
 
 /**
@@ -68,13 +70,23 @@ for (const blueprint of formatPackCatalog) {
   }
 
   const project = compileTemplate(request, assets, blueprint)
+
   const errors = validateFormatIntegrity(project)
-  if (errors.length) throw new Error(`${blueprint.format}:${errors}`)
+  if (errors.length) throw new Error(`${blueprint.id}: ${errors}`)
+
+  const printViolations = validatePrintSpec(blueprint)
+  if (printViolations.length) {
+    throw new Error(`${blueprint.id}: ${printViolations.map((item) => item.code)}`)
+  }
 
   rows.push({
     format: blueprint.format,
     blueprint: blueprint.id,
     signature: templateSignature(project),
+    gridColumns: blueprint.gridColumns,
+    slotCount: blueprint.slots.length,
+    repeatGroups: (blueprint.repeatGroups ?? []).length,
+    printSpec: matchPrintSpec(blueprint)?.id ?? null,
     exports: ['json', 'html', 'svg'],
     network: false,
   })
