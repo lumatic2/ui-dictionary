@@ -1,3 +1,4 @@
+import { formatPackCatalog } from './blueprints/registry.js'
 import type { TemplateBlueprint, TemplateFormat } from './types.js'
 
 /**
@@ -37,6 +38,15 @@ export interface PrintSpec {
   bleedMm: number
   /** 안전영역 인셋(mm) — 필수 콘텐츠가 재단선에서 안쪽으로 확보해야 하는 거리. */
   safeAreaMm: number
+  /**
+   * 게시 여백(mm) — 액자·게시판 클립에 가려지는 바깥 띠.
+   *
+   * **안전영역과 다른 값이고 다른 목적이다.** 안전영역은 재단 오차 대비(3mm),
+   * 게시 여백은 게시물이 물리적으로 가려지는 것 대비(15mm)다. 한 값으로 뭉개면
+   * 명함을 15mm로 조이거나 포스터를 3mm로 방치하게 된다. 재단 검증에는 쓰지 않는다.
+   * 출처: 리서치 4.3(포스터 게시 여백 15mm, 단일 출처).
+   */
+  postingMarginMm?: number
 }
 
 export const printSpecs: Record<string, PrintSpec> = {
@@ -63,6 +73,39 @@ export const printSpecs: Record<string, PrintSpec> = {
     bleedMm: 3.175,
     safeAreaMm: 3.175,
   },
+  ...aSeriesSpecs(),
+}
+
+/**
+ * ISO 216 A계열 — 포스터·인포그래픽 인쇄의 정본 규격.
+ *
+ * 치수 출처: 리서치 4.1(A3 297×420 · A2 420×594 · A1 594×841mm — 국제 1 + 한국 2 교차검증),
+ * A4 210×297mm. 도련 3mm는 명함과 공통(리서치 4.2, 2개 출처 일치).
+ *
+ * **안전영역 3mm는 유추다 — 포스터 전용 수치의 1차 출처를 찾지 못했다(리서치 4.4 "출처 확인 실패").**
+ * 근거 있는 값처럼 쓰지 않기 위해 여기 남긴다: 명함의 "재단선 안쪽 3mm" 원칙이 재단 오차라는
+ * 같은 물리 현상에서 나오므로 그대로 옮겼다. 실제 발주 전 인쇄소 확인 대상이다.
+ */
+function aSeriesSpecs(): Record<string, PrintSpec> {
+  const sizes: Array<[string, number, number]> = [
+    ['iso-a4', 210, 297],
+    ['iso-a3', 297, 420],
+    ['iso-a2', 420, 594],
+    ['iso-a1', 594, 841],
+  ]
+  return Object.fromEntries(
+    sizes.map(([id, width, height]) => [
+      id,
+      {
+        id,
+        label: `ISO ${id.slice(4).toUpperCase()} ${width}×${height}mm`,
+        trim: { width, height },
+        bleedMm: 3,
+        safeAreaMm: 3,
+        postingMarginMm: 15,
+      } satisfies PrintSpec,
+    ]),
+  )
 }
 
 /** 종횡비 대조 허용 오차. 논리 px 반올림을 흡수할 만큼만 둔다. */
@@ -226,9 +269,16 @@ export function validatePrintSpec(blueprint: TemplateBlueprint): PrintSpecViolat
   return violations
 }
 
-/** 이 포맷에 인쇄 규격 프리셋이 정의돼 있는가. */
+/**
+ * 이 포맷에 인쇄용 청사진이 있는가.
+ *
+ * 전에는 `format === 'business-card'`로 고정돼 있었다. A계열 인쇄 청사진이 생긴 지금
+ * 그 상수는 거짓말이 되므로, 답을 카탈로그에서 읽는다.
+ */
 export function hasPrintSpecs(format: TemplateFormat): boolean {
-  return format === 'business-card'
+  return formatPackCatalog.some(
+    (blueprint) => blueprint.format === format && blueprint.output.medium === 'print',
+  )
 }
 
 /**

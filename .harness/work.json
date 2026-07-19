@@ -2663,9 +2663,9 @@
       "milestone_id": "TH11",
       "status": "active",
       "plan_path": "plans/2026-07-20-th11-print-spec-mm.md",
-      "changeset_path": "changesets/20260720-absolute-mm-contract",
-      "next_step": "step-2",
-      "current_step": "step-2",
+      "changeset_path": "changesets/20260720-print-spec-presets",
+      "next_step": "step-3",
+      "current_step": "step-3",
       "steps": [
         {
           "id": "step-1",
@@ -2675,7 +2675,7 @@
         {
           "id": "step-2",
           "label": "step-2 — 규격 프리셋 확장 + 인쇄용 포스터",
-          "status": "pending"
+          "status": "completed"
         },
         {
           "id": "step-3",

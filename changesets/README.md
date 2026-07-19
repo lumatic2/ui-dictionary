@@ -185,3 +185,4 @@
 | 183 | 20260720-token-set-parity | 2026-07-20 | TH10 step 2: dropdown options generated from real registries (was misreporting warm as default), membership check beyond shape check, disabled select state styled | 4/4 | complete |
 | 184 | 20260720-structured-input-rejection | 2026-07-20 | TH10 step 3: malformed template input rejected with codes instead of TypeError, gallery silent fallback made impossible by passing the object, full browser walkthrough | 5/5 | complete |
 | 185 | 20260720-absolute-mm-contract | 2026-07-20 | TH11 step 1: blueprints declare their print spec (ratio inference was ambiguous — 600x1050 matched two specs), mm<->print-px conversion, 24px constant removed | 5/5 | complete |
+| 186 | 20260720-print-spec-presets | 2026-07-20 | TH11 step 2: A-series presets (A4/A3/A2/A1) + print blueprints for poster/infographic, posting margin kept separate from safe area, distinctness scoped per medium | 4/4 | complete |

@@ -110,6 +110,33 @@
       "network": false
     },
     {
+      "format": "product-poster",
+      "blueprint": "product-poster-print-a3",
+      "signature": "tpl-21a43873",
+      "gridColumns": 1,
+      "slotCount": 5,
+      "repeatGroups": 0,
+      "printSpec": "iso-a3",
+      "exports": [
+        {
+          "format": "json",
+          "bytes": 7321,
+          "sha256": "1cf4a9cd57c2"
+        },
+        {
+          "format": "html",
+          "bytes": 1065,
+          "sha256": "6fa24b4741b9"
+        },
+        {
+          "format": "svg",
+          "bytes": 781,
+          "sha256": "99779aab99be"
+        }
+      ],
+      "network": false
+    },
+    {
       "format": "infographic",
       "blueprint": "infographic-stats",
       "signature": "tpl-74a3edbb",
@@ -159,6 +186,33 @@
           "format": "svg",
           "bytes": 1448,
           "sha256": "ee17d7833f31"
+        }
+      ],
+      "network": false
+    },
+    {
+      "format": "infographic",
+      "blueprint": "infographic-print-a4",
+      "signature": "tpl-a3625fdf",
+      "gridColumns": 1,
+      "slotCount": 5,
+      "repeatGroups": 0,
+      "printSpec": "iso-a4",
+      "exports": [
+        {
+          "format": "json",
+          "bytes": 7397,
+          "sha256": "378da35037ed"
+        },
+        {
+          "format": "html",
+          "bytes": 1168,
+          "sha256": "8a9c0080e222"
+        },
+        {
+          "format": "svg",
+          "bytes": 920,
+          "sha256": "82c7b5b45afa"
         }
       ],
       "network": false

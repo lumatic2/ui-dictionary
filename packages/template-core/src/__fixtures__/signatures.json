@@ -39,6 +39,8 @@
   "signatures": {
     "business-card-minimal": "tpl-767d040e",
     "product-poster-hero": "tpl-09040c7f",
-    "infographic-stats": "tpl-5a75b937"
+    "infographic-stats": "tpl-5a75b937",
+    "product-poster-print-a3": "tpl-c8369959",
+    "infographic-print-a4": "tpl-8525ebcf"
   }
 }

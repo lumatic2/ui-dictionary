@@ -268,6 +268,72 @@ const productPosterEditorial: TemplateBlueprint = {
   ],
 }
 
+/**
+ * 인쇄판 — A3(297×420mm) 포스터.
+ *
+ * **새 아키타입이 아니다.** hero(이미지 지배 1-column)를 인쇄 지면으로 옮긴 것이다.
+ * 소셜 4:5(0.800)와 A3(0.707)는 비율이 달라 좌표를 그대로 옮길 수 없고, 안전 여백도
+ * 규격 mm에서 나온다 — 그래서 별도 청사진이지 hero의 변형 플래그가 아니다.
+ * 소셜 청사진은 그대로 둔다(리서치 4.4 — 4:5는 인쇄 표준이 아니지만 실사용 산출물이다).
+ *
+ * 논리 px는 A3를 100dpi로 잡은 값이다(297mm→1169px). 인쇄 시 300dpi로 환산된다.
+ */
+const productPosterPrintA3: TemplateBlueprint = {
+  id: 'product-poster-print-a3',
+  format: 'product-poster',
+  output: { medium: 'print', printSpecId: 'iso-a3' },
+  width: 1169,
+  height: 1654,
+  density: 'balanced',
+  priority: 6,
+  gridColumns: 1,
+  slots: [
+    {
+      id: 'backdrop',
+      kind: 'shape',
+      required: true,
+      bounds: { x: 0, y: 0, width: 1169, height: 1654 },
+      tokenBindings: { fill: 'surface.canvas' },
+      shape: 'rectangle',
+    },
+    {
+      id: 'product-image',
+      kind: 'image',
+      assetRole: 'product',
+      required: true,
+      bounds: { x: 130, y: 140, width: 909, height: 830 },
+      tokenBindings: {},
+    },
+    {
+      id: 'headline',
+      kind: 'text',
+      contentKey: 'headline',
+      required: true,
+      bounds: { x: 130, y: 1030, width: 909, height: 180 },
+      tokenBindings: { color: 'text.primary', fontFamily: 'type.heading' },
+      maxChars: 70,
+    },
+    {
+      id: 'product',
+      kind: 'text',
+      contentKey: 'product',
+      required: true,
+      bounds: { x: 130, y: 1230, width: 909, height: 70 },
+      tokenBindings: { color: 'text.secondary' },
+      maxChars: 80,
+    },
+    {
+      id: 'cta',
+      kind: 'text',
+      contentKey: 'cta',
+      required: true,
+      bounds: { x: 130, y: 1380, width: 400, height: 90 },
+      tokenBindings: { color: 'brand.primary' },
+      maxChars: 30,
+    },
+  ],
+}
+
 // ─── 인포그래픽 ──────────────────────────────────────────────────────────────
 
 /** A — 단일 초점. 하나의 수치가 압도적으로 크고 나머지가 그것을 설명한다. */
@@ -403,6 +469,70 @@ const infographicComparison: TemplateBlueprint = {
   ],
 }
 
+/**
+ * 인쇄판 — A4(210×297mm) 인포그래픽.
+ *
+ * 인포그래픽에는 **고유 인쇄 규격이 없다**(리서치 5.1). 그래서 A계열을 차용한다 —
+ * 배포용 유인물은 A4, 게시용은 A3다. 그 관계를 산문 주석이 아니라 `printSpecId`로 못박는다.
+ * 단일 초점(stats) 아키타입의 인쇄판이며, 화면용 두 청사진은 그대로 둔다.
+ */
+const infographicPrintA4: TemplateBlueprint = {
+  id: 'infographic-print-a4',
+  format: 'infographic',
+  output: { medium: 'print', printSpecId: 'iso-a4' },
+  width: 827,
+  height: 1169,
+  density: 'balanced',
+  priority: 6,
+  gridColumns: 1,
+  slots: [
+    {
+      id: 'backdrop',
+      kind: 'shape',
+      required: true,
+      bounds: { x: 0, y: 0, width: 827, height: 1169 },
+      tokenBindings: { fill: 'surface.canvas' },
+      shape: 'rectangle',
+    },
+    {
+      id: 'title',
+      kind: 'text',
+      contentKey: 'title',
+      required: true,
+      bounds: { x: 70, y: 70, width: 687, height: 115 },
+      tokenBindings: { color: 'text.primary', fontFamily: 'type.heading' },
+      maxChars: 80,
+    },
+    {
+      id: 'stat',
+      kind: 'text',
+      contentKey: 'stat',
+      required: true,
+      bounds: { x: 70, y: 300, width: 687, height: 215 },
+      tokenBindings: { color: 'brand.primary', fontFamily: 'type.display' },
+      maxChars: 50,
+    },
+    {
+      id: 'explanation',
+      kind: 'text',
+      contentKey: 'explanation',
+      required: true,
+      bounds: { x: 70, y: 570, width: 687, height: 305 },
+      tokenBindings: { color: 'text.secondary' },
+      maxChars: 360,
+    },
+    {
+      id: 'source',
+      kind: 'text',
+      contentKey: 'source',
+      required: true,
+      bounds: { x: 70, y: 1045, width: 687, height: 45 },
+      tokenBindings: { color: 'text.muted' },
+      maxChars: 160,
+    },
+  ],
+}
+
 /** 기준 청사진(포맷당 A안). 서명 기준선과 기본 선택이 여기서 나온다. */
 export const blueprintRegistry: TemplateBlueprint[] = [
   businessCardMinimal,
@@ -410,12 +540,20 @@ export const blueprintRegistry: TemplateBlueprint[] = [
   infographicStats,
 ]
 
-/** 전체 카탈로그 — 포맷당 2개씩 6개. 파생 생성기 없이 전부 명시 선언. */
+/**
+ * 전체 카탈로그 — 8개. 파생 생성기 없이 전부 명시 선언.
+ *
+ * 매체별 구성: 명함은 둘 다 인쇄, 포스터·인포그래픽은 화면 2 + 인쇄 1이다.
+ * 화면용 소셜 비율 청사진을 인쇄로 개조하지 않고 인쇄판을 따로 둔 이유는
+ * 4:5와 A계열의 비율이 달라 같은 판을 두 매체가 공유할 수 없기 때문이다.
+ */
 export const formatPackCatalog: TemplateBlueprint[] = [
   businessCardMinimal,
   businessCardVertical,
   productPosterHero,
   productPosterEditorial,
+  productPosterPrintA3,
   infographicStats,
   infographicComparison,
+  infographicPrintA4,
 ]

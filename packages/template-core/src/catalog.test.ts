@@ -40,8 +40,9 @@ const lists = {
 }
 
 describe('six-format catalog', () => {
-  it('exposes 6 blueprints and compiles all', () => {
-    expect(listBlueprints()).toHaveLength(6)
+  it('exposes 8 blueprints and compiles all', () => {
+    // 화면 6 + 인쇄 2. 인쇄판이 늘어도 컴파일·무결성 계약은 같아야 한다.
+    expect(listBlueprints()).toHaveLength(8)
 
     for (const blueprint of formatPackCatalog) {
       const request: TemplateRequest = {

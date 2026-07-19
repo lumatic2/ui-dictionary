@@ -1,5 +1,6 @@
 import { describe, expect, it } from 'vitest'
 import { formatPackCatalog } from './blueprints/registry.js'
+import { hasPrintSpecs } from './print-spec.js'
 import { templateFormats, type TemplateBlueprint } from './types.js'
 
 /**
@@ -19,19 +20,31 @@ function structuralSlotCount(blueprint: TemplateBlueprint): number {
   return blueprint.slots.length + repeated
 }
 
-function byFormat(format: string): TemplateBlueprint[] {
-  return formatPackCatalog.filter((blueprint) => blueprint.format === format)
+/** 같은 포맷·같은 매체의 청사진 — 구별 요구가 성립하는 단위다. */
+function byFormat(format: string, medium = 'screen'): TemplateBlueprint[] {
+  return formatPackCatalog.filter(
+    (blueprint) => blueprint.format === format && blueprint.output.medium === medium,
+  )
 }
 
 describe('청사진 구별', () => {
-  it('카탈로그가 6개이고 id가 중복되지 않는다', () => {
-    expect(formatPackCatalog).toHaveLength(6)
-    expect(new Set(formatPackCatalog.map((blueprint) => blueprint.id)).size).toBe(6)
+  it('카탈로그가 8개이고 id가 중복되지 않는다', () => {
+    expect(formatPackCatalog).toHaveLength(8)
+    expect(new Set(formatPackCatalog.map((blueprint) => blueprint.id)).size).toBe(8)
   })
 
-  it('포맷마다 청사진이 정확히 2개다', () => {
+  it('포맷마다 화면용 청사진 아키타입이 2개다', () => {
+    // 구별 요구는 **같은 매체 안**에서 성립한다. 인쇄판은 같은 아키타입의 다른 지면이지
+    // 세 번째 아키타입이 아니므로 이 계수에 넣지 않는다.
     for (const format of templateFormats) {
-      expect(byFormat(format)).toHaveLength(2)
+      expect(byFormat(format)).toHaveLength(format === 'business-card' ? 0 : 2)
+    }
+  })
+
+  it('포맷마다 인쇄용 청사진이 있다', () => {
+    // 인쇄 발주가 목표인 이상 어떤 포맷도 인쇄판 없이 남지 않는다.
+    for (const format of templateFormats) {
+      expect(hasPrintSpecs(format), `${format}에 인쇄용 청사진이 없다`).toBe(true)
     }
   })
 
@@ -42,7 +55,7 @@ describe('청사진 구별', () => {
   it.each(templateFormats)(
     '%s의 두 청사진은 슬롯 개수 또는 그리드 열 수가 다르다',
     (format) => {
-      const [a, b] = byFormat(format)
+      const [a, b] = byFormat(format, format === 'business-card' ? 'print' : 'screen')
 
       const slotCountDiffers = structuralSlotCount(a) !== structuralSlotCount(b)
       const gridDiffers = a.gridColumns !== b.gridColumns
@@ -56,7 +69,7 @@ describe('청사진 구별', () => {
 
   it('좌표만 다른 쌍은 이 검증을 통과할 수 없다', () => {
     // 프리모템 2가 경고한 퇴화를 직접 재현해, 게이트가 실제로 막는지 확인한다.
-    const original = byFormat('business-card')[0]
+    const original = byFormat('business-card', 'print')[0]
     const coordinateOnlyClone: TemplateBlueprint = {
       ...structuredClone(original),
       id: `${original.id}-shifted`,
@@ -75,7 +88,9 @@ describe('청사진 구별', () => {
 
   it('각 포맷의 기본 선택(우선순위 최고)은 A안이다', () => {
     const top = (format: string) =>
-      [...byFormat(format)].sort((left, right) => right.priority - left.priority)[0].id
+      formatPackCatalog
+        .filter((blueprint) => blueprint.format === format)
+        .sort((left, right) => right.priority - left.priority)[0].id
 
     expect(top('business-card')).toBe('business-card-minimal')
     expect(top('product-poster')).toBe('product-poster-hero')
