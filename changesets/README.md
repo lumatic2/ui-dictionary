@@ -166,3 +166,4 @@
 | 164 | 20260720-template-six-blueprints | 2026-07-20 | TH2 step 2: six real blueprints, -split removed, machine-checked distinctness | 5/5 | complete |
 | 165 | 20260720-template-print-spec-validation | 2026-07-20 | TH2 step 3: print spec presets, bleed/safe-area validation wired into verify gate | 4/4 | complete |
 | 166 | 20260720-studio-token-driven-render | 2026-07-20 | TH3 step 1: token set canon, hardcoded palette removed, diagnostic panel instead of silent fallback | 6/6 | complete |
+| 167 | 20260720-askewly-design-template-gallery | 2026-07-20 | TH3 step 2: template gallery in AskewlyDesign, 6 blueprints open as canvas documents, studio surface superseded | 5/5 | complete |

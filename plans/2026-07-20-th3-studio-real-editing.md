@@ -1,6 +1,6 @@
-# PLAN — TH3 스튜디오 토큰 구동 + 실편집
+# PLAN — TH3 AskewlyDesign 템플릿 편집 배선
 
-> 생성: 2026-07-20 · 갈래: product · scope 결정: 토큰 실배선·값 편집·이미지 교체·청사진 6종 선택·왕복 실측까지
+> 생성: 2026-07-20 · 개정: 2026-07-20(편집 표면을 AskewlyDesign으로 단일화, 사용자 지시) · 갈래: product
 Status: approved (2026-07-20)
 
 ## 북극성 → horizon → milestone → step (위계)
@@ -9,7 +9,11 @@ Status: approved (2026-07-20)
 - **milestone**: TH3 — TPS3가 선언하고 구현하지 않은 "semantic token 변경"을 실제로 배선하고, 스튜디오를 편집 가능한 표면으로 만든다.
 
 ## Scope Boundary
-- **결정**: 스튜디오는 계속 좁은 제품 표면이다. 범용 `apps/agent-design` 캔버스와 통합하지 않는다.
+- **결정 (2026-07-20 개정, 사용자 지시)**: 편집 표면은 **AskewlyDesign(`apps/agent-design` + `apps/agent-design-desktop`) 하나**다. `apps/template-studio`는 은퇴한다.
+  - 근거: 컴파일된 템플릿의 `scene`은 이미 AskewlyDesign이 쓰는 `CanvasDocument`다 — 6종 전부 `validateDocument` VALID(실측). 포팅이 아니라 배선이다.
+  - 근거: step-2로 만들려던 속성 편집·이미지 교체·레이어 조작은 AskewlyDesign에 이미 있다(`PropertyInspector`·`InsertPalette`·`LayersPanel`·실행취소). 스튜디오에 두 번째로 만드는 셈이었다.
+  - 폐기된 구 결정: "스튜디오는 계속 좁은 제품 표면이다. 범용 캔버스와 통합하지 않는다." — 편집 표면 이원화는 이 horizon이 고치는 "선언과 구현이 갈라지는" 병리를 표면 수준에서 재생산한다.
+- **유지되는 것**: step-1의 토큰 세트 정본(`packages/template-core/src/tokens.ts`)은 표면과 무관하게 그대로 쓴다.
 - execution mode: continuous
 - **중단점(stop points)**: completed / 증거가 있는 blocked / decision_required / risk_gate / secret_required / external_authority_required / user_stopped
 - **진행 보고**: commentary only. 미완 leaf는 턴 종료점이 아니다.
@@ -40,28 +44,31 @@ Status: approved (2026-07-20)
   - Failure probe: 존재하지 않는 `tokenSetId`를 주면 조용한 기본색이 아니라 진단 패널이 뜬다.
   - Commit: changeset `studio-token-driven-render`.
 
-- [ ] **step-2 — edit-surfaces**
-  - Artifact: semantic token 값 편집, 이미지 교체(로컬 파일), 청사진 6종 직접 선택·비교가 스튜디오에서 가능하다.
-  - Files: read/write `apps/template-studio/src/**`(토큰 패널·이미지 컨트롤·청사진 선택기), 테스트.
+- [ ] **step-2 — template-gallery-in-app**
+  - Artifact: AskewlyDesign에서 청사진 6종을 카드로 보고 고르면 그 템플릿이 캔버스 문서로 열린다. 토큰 세트도 앱에서 고른다.
+  - Files: write `apps/agent-design/src/TemplatePicker.tsx`·`App.tsx`·`package.json`(template-core 의존 추가)·테스트; read `packages/template-core/src/**`.
   - Dependencies: step-1
-  - Verify: Playwright로 ① 토큰 값 편집 → 렌더 반영 ② 이미지 교체 → 슬롯 이미지 변경 ③ 청사진 6종 전환 → 각각 nonblank 렌더 관측.
-  - Failure probe: 지원하지 않는 파일 형식·과대 용량 이미지·잘못된 토큰 값(색이 아닌 문자열)이 명시 차단된다.
-  - Commit: changeset `studio-edit-surfaces`.
+  - Verify: Playwright로 6종을 각각 열어 캔버스 노드 수·서명이 청사진별로 **서로 다름**을 관측하고, 연 뒤 직접 조작(노드 이동)이 동작함을 확인.
+  - Failure probe: 필수 content가 빠진 요청·없는 청사진 id를 주면 진단이 뜨고 **기존 캔버스가 보존된다**(빈 문서로 덮어쓰지 않는다).
+  - Commit: changeset `askewly-design-template-gallery`.
 
-- [ ] **step-3 — export-import-roundtrip**
-  - Artifact: JSON/HTML/SVG 내보내기 → JSON 재가져오기 왕복이 Playwright로 실측되고, 편집 상태가 손실 없이 복원된다.
-  - Files: read/write `apps/template-studio/src/exporters.ts`, Playwright 스펙.
+- [ ] **step-3 — export-roundtrip + 스튜디오 은퇴**
+  - Artifact: 내보내기(JSON/HTML/SVG)와 JSON 재가져오기가 AskewlyDesign에서 왕복 실측되고, `apps/template-studio`가 `archive/`로 은퇴한다.
+  - Files: write `packages/template-core/src/exporters.ts`(스튜디오에서 이관)·`apps/agent-design/src/**`·Playwright 스펙; delete `apps/template-studio/`.
   - Dependencies: step-2
-  - Verify: 편집(텍스트+토큰+이미지) → JSON 다운로드 → 재가져오기 후 `templateSignature`와 화면 표시값이 편집 직후와 일치.
-  - Failure probe: 깨진 JSON·스키마 불일치·필수 슬롯 삭제본을 가져오면 차단되고 기존 상태가 보존된다(부분 적용 금지).
-  - Commit: changeset `studio-roundtrip-e2e`.
+  - Verify: 템플릿 열기 → 캔버스에서 편집 → JSON 내보내기 → 재가져오기 후 서명·표시값이 편집 직후와 일치. 이관된 exporter는 기존 테스트가 그대로 통과.
+  - Failure probe: 깨진 JSON·스키마 불일치본을 가져오면 차단되고 기존 문서가 보존된다(부분 적용 금지).
+  - Commit: changeset `askewly-design-roundtrip-and-studio-retire`.
 
 ## 검증/DoD
-- **DoD**: 스튜디오에서 토큰 값을 바꾸면 렌더가 실제로 바뀌고(computed style 관측), 이미지 교체·청사진 6종 선택이 되며, 편집 상태가 내보내기→재가져오기 왕복에서 손실 없이 복원된다.
+- **DoD**: 토큰 세트를 바꾸면 렌더가 실제로 바뀌고(computed style 관측), AskewlyDesign에서 청사진 6종을 골라 캔버스로 열어 편집할 수 있으며, 편집 상태가 내보내기→재가져오기 왕복에서 손실 없이 복원된다. 편집 표면은 하나만 남는다.
 - **Evidence**: `evidence/template-production-hardening/th3-studio.md` + Playwright 스크린샷
 
 ## finding 큐
-- 실행취소/다시실행, 다중 선택, 슬롯 직접 드래그는 별도 후보.
+- 실행취소/다시실행·다중 선택·슬롯 드래그는 AskewlyDesign이 이미 갖고 있다 — 별도 후보가 아니라 흡수 대상이었다(개정 근거).
+- `apps/agent-design`의 시작 문서가 `createDocumentFixture(1000)`(성능용 더미)인 점은 step-2가 대체한다.
 
 ## 진행 로그
-- 2026-07-20 계획 작성, 승인 대기.
+- 2026-07-20 계획 작성, 승인.
+- 2026-07-20 step-1 완료 (changeset `20260720-studio-token-driven-render`, commit 02cb489).
+- 2026-07-20 사용자 지시로 step-2·3 개정 — 편집 표면을 AskewlyDesign 단일로. 사용자 결정 2건: 스튜디오 은퇴 / 진입은 청사진 6종 갤러리.

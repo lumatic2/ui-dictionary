@@ -19,6 +19,7 @@ import {
   type CanvasOperation,
 } from '@askewly/canvas-core'
 import { planMaterializeRegistryNode } from '@askewly/component-registry'
+import { templateSignature, type TemplateProject } from '@askewly/template-core'
 import { BrowserDocumentStore } from './browserStore'
 import { CanvasSurface } from './CanvasSurface'
 import { desktopHost, type DesktopBridgeState, type DesktopBridgeStatus, type DesktopCanvasSnapshot, type DesktopCanvasSnapshotReason, type PreviewStatus, type TrustedFileSummary, type TrustedProjectSummary } from './desktopHost'
@@ -26,6 +27,7 @@ import { AgentPanel } from './AgentPanel'
 import { ArrangementToolbar } from './ArrangementToolbar'
 import { InsertPalette } from './InsertPalette'
 import { LayersPanel } from './LayersPanel'
+import { TemplateGallery } from './TemplateGallery'
 import { PropertyInspector } from './PropertyInspector'
 import type { EditorPlaneFailure } from './editorPlaneRuntime'
 import { LiveBridgeClient, liveBridgeConfig, type CollaborationFeed } from './liveBridge'
@@ -93,6 +95,7 @@ export function App() {
   const [leftPanelOpen, setLeftPanelOpen] = useState(true)
   const [rightPanelOpen, setRightPanelOpen] = useState(true)
   const [insertOpen, setInsertOpen] = useState(false)
+  const [templatesOpen, setTemplatesOpen] = useState(false)
   const [shortcutsOpen, setShortcutsOpen] = useState(false)
   const [agentsOpen, setAgentsOpen] = useState(false)
   const [devFixtureWorkspace, setDevFixtureWorkspace] = useState(false)
@@ -113,6 +116,13 @@ export function App() {
     setStatus(`${reason} revision ${snapshot.revision}`)
     setConnection('connected')
     setAgentError('')
+  }, [])
+
+  // 템플릿 열기 — 컴파일된 장면이 곧 캔버스 문서다. 실패 시 갤러리가 여기까지 오지 않는다.
+  const openTemplate = useCallback((project: TemplateProject) => {
+    setHistory(createHistory(project.scene))
+    setStatus(`template ${project.request.id} · ${templateSignature(project)}`)
+    setFailure(null)
   }, [])
 
   useEffect(() => {
@@ -496,6 +506,7 @@ export function App() {
       <div className="toolbar-group" role="group" aria-label="Panels">
         <button type="button" aria-label="Toggle workspace navigation" aria-pressed={leftPanelOpen} onClick={() => setLeftPanelOpen((value) => !value)}>Sidebar</button>
         <button type="button" data-testid="toggle-insert" aria-pressed={insertOpen} onClick={() => setInsertOpen((value) => !value)}>Insert</button>
+        <button type="button" data-testid="toggle-templates" aria-pressed={templatesOpen} onClick={() => setTemplatesOpen((value) => !value)}>Templates</button>
       </div>
       <div className="toolbar-group" role="group" aria-label="Document">
         <button type="button" data-testid="apply-demo" onClick={applyDemo}>Apply operation</button>
@@ -608,6 +619,7 @@ export function App() {
       </aside>}
       <section className="canvas-stage" aria-label="Design canvas" ref={stageRef}>
         {insertOpen && <InsertPalette document={history.present} onOperation={commit} />}
+        {templatesOpen && <TemplateGallery onOpen={openTemplate} />}
         {agentsOpen && <AgentPanel
           document={history.present}
           feed={collabFeed}

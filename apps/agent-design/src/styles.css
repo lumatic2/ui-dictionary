@@ -164,3 +164,17 @@ button, select { font: inherit; }
 .property-error { min-height: 16px; color: #fda4af; font-size: 10px; } /* token-exception: light error red for dark inspector chrome has no SSOT token */
 .inspector-empty { color: var(--ad-gray-7); font-size: 11px; line-height: 1.5; }
 .document-meta { margin-top: 18px !important; padding-top: 14px; border-top: 1px solid var(--ad-gray-10); }
+
+/* 템플릿 갤러리 — 청사진 6종에서 캔버스를 시작한다. Insert 팔레트와 같은 오버레이 계열. */
+.template-gallery { position: absolute; z-index: 12; top: 12px; left: 12px; display: grid; gap: 10px; width: 268px; max-height: calc(100% - 24px); overflow: auto; border: 1px solid var(--ad-border-default); border-radius: 8px; padding: 12px; background: var(--ad-surface-raised); box-shadow: 0 8px 24px rgba(25, 24, 29, 0.12); }
+.template-gallery header { display: grid; gap: 8px; }
+.template-gallery h2 { margin: 0; color: var(--ad-text-default); font-size: 12px; word-break: keep-all; }
+.template-gallery label { display: grid; gap: 4px; color: var(--ad-text-muted); font-size: 10px; }
+.template-gallery select { height: 26px; border: 1px solid var(--ad-border-input); border-radius: 5px; padding: 0 6px; background: var(--ad-surface-base); color: var(--ad-text-default); font-size: 11px; }
+.template-gallery ul { display: grid; gap: 6px; margin: 0; padding: 0; list-style: none; }
+.template-gallery li button { display: grid; gap: 2px; width: 100%; border: 1px solid var(--ad-border-default); border-radius: 6px; padding: 8px 10px; background: var(--ad-surface-base); text-align: left; }
+.template-gallery li button:hover { border-color: var(--ad-border-accent); background: var(--ad-surface-tint); }
+.template-gallery strong { color: var(--ad-text-default); font-size: 11px; font-weight: 600; }
+.template-format { color: var(--ad-action-primary); font-size: 10px; }
+.template-structure, .template-size { color: var(--ad-text-muted); font-size: 10px; word-break: keep-all; }
+.template-gallery-error { margin: 0; border: 1px solid var(--ad-action-destructive); border-radius: 6px; padding: 8px 10px; color: var(--ad-action-destructive); font-size: 10px; line-height: 1.5; word-break: keep-all; }
