@@ -162,3 +162,4 @@
 | 160 | 20260720-template-core-legibility | 2026-07-20 | TH1 step 1: template-core unminify + signature regression lock | 4/4 | complete |
 | 161 | 20260720-template-studio-script-legibility | 2026-07-20 | TH1 step 2: studio + verify script unminify, browser smoke, infographic overflow finding | 4/4 | complete |
 | 162 | 20260720-template-line-length-guard | 2026-07-20 | TH1 step 3: dependency-free line-length guard + failure probe | 2/2 | complete |
+| 163 | 20260720-template-repeating-slot-contract | 2026-07-20 | TH2 step 1: repeat-unit contract (lists, repeatGroups, gridColumns) + 3 negative paths | 4/4 | complete |

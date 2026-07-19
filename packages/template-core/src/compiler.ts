@@ -10,6 +10,9 @@ export type TemplateCompileErrorCode =
   | 'TEXT_OVERFLOW'
   | 'MISSING_ASSET'
   | 'INVALID_TOKEN_BINDING'
+  | 'REPEAT_LIST_MISSING'
+  | 'REPEAT_COUNT_OUT_OF_RANGE'
+  | 'REPEAT_FIELD_MISSING'
 
 export class TemplateCompileError extends Error {
   constructor(
@@ -106,6 +109,109 @@ export function compileTemplate(request: TemplateRequest, assets: AssetManifestE
       }
     }
   }
+
+  for (const group of blueprint.repeatGroups ?? []) {
+    const units = request.lists?.[group.listKey]
+    if (!units) {
+      throw new TemplateCompileError(
+        'REPEAT_LIST_MISSING',
+        `${group.id} requires lists.${group.listKey}`,
+      )
+    }
+    if (units.length < group.minUnits || units.length > group.maxUnits) {
+      throw new TemplateCompileError(
+        'REPEAT_COUNT_OUT_OF_RANGE',
+        `${group.id} accepts ${group.minUnits}-${group.maxUnits} units, got ${units.length}`,
+      )
+    }
+
+    const horizontal = group.axis === 'horizontal'
+    const span = horizontal ? group.bounds.width : group.bounds.height
+    const unitSpan = Math.round((span - group.gap * (units.length - 1)) / units.length)
+
+    units.forEach((unit, index) => {
+      const offset = index * (unitSpan + group.gap)
+
+      for (const slot of group.unitSlots) {
+        for (const binding of Object.values(slot.tokenBindings)) {
+          if (!TOKEN_BINDING_PATTERN.test(binding)) {
+            throw new TemplateCompileError('INVALID_TOKEN_BINDING', `${group.id}.${slot.id}: ${binding}`)
+          }
+        }
+
+        const id = `${blueprint.id}:${group.id}:${index}:${slot.id}`
+        const bounds = {
+          x: group.bounds.x + slot.bounds.x + (horizontal ? offset : 0),
+          y: group.bounds.y + slot.bounds.y + (horizontal ? 0 : offset),
+          width: slot.bounds.width,
+          height: slot.bounds.height,
+        }
+        const base = {
+          id,
+          name: `${group.id}-${index + 1}-${slot.id}`,
+          parentId: rootId,
+          childIds: [],
+          bounds,
+          layout,
+          visible: true,
+          locked: false,
+          tokenBindings: slot.tokenBindings,
+          source: null,
+        }
+
+        if (slot.kind === 'text') {
+          const value = slot.contentKey ? unit[slot.contentKey]?.trim() : ''
+          if (slot.required && !value) {
+            throw new TemplateCompileError(
+              'REPEAT_FIELD_MISSING',
+              `${group.listKey}[${index}] requires ${slot.contentKey}`,
+            )
+          }
+          if (slot.maxChars && value.length > slot.maxChars) {
+            throw new TemplateCompileError(
+              'TEXT_OVERFLOW',
+              `${group.id}.${slot.id}[${index}] exceeds ${slot.maxChars} characters`,
+            )
+          }
+          nodes[id] = {
+            ...base,
+            kind: 'text',
+            text: value,
+            textStyle: {
+              fontFamily: 'system-ui',
+              fontSize: Math.max(18, Math.round(bounds.height * 0.45)),
+              fontWeight: BOLD_SLOT_IDS.has(slot.id) ? 700 : 500,
+              lineHeight: Math.max(24, Math.round(bounds.height * 0.58)),
+            },
+          }
+        } else if (slot.kind === 'image') {
+          const asset = assets.find((candidate) => candidate.role === slot.assetRole)
+          if (!asset) {
+            if (slot.required) {
+              throw new TemplateCompileError(
+                'MISSING_ASSET',
+                `${group.id}.${slot.id} requires asset role ${slot.assetRole}`,
+              )
+            }
+            continue
+          }
+          nodes[id] = { ...base, kind: 'image', assetId: asset.id, alt: slot.id, fit: 'cover', opacity: 1 }
+        } else {
+          nodes[id] = {
+            ...base,
+            kind: 'shape',
+            shape: slot.shape ?? 'rectangle',
+            fill: '#000000',
+            stroke: null,
+            strokeWidth: 0,
+          }
+        }
+
+        nodes[rootId].childIds.push(id)
+      }
+    })
+  }
+
   // 컴파일은 결정론적이어야 하므로 타임스탬프를 고정한다 — 실제 시각을 쓰면 서명이 매 실행마다 바뀐다.
   const now = '2026-07-19T00:00:00.000Z'
   const scene: CanvasDocument = assertValidDocument({
