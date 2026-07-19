@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "active_work_id": "th7-canvas-render-fidelity",
+  "active_work_id": null,
   "works": {
     "SFB1": {
       "title": "Structure Contract And Clean Production",
@@ -2406,11 +2406,11 @@
       "work_id": "th7-canvas-render-fidelity",
       "horizon_id": "template-production-hardening",
       "milestone_id": "TH7",
-      "status": "active",
+      "status": "completed",
       "plan_path": "plans/2026-07-20-th7-canvas-render-fidelity.md",
       "changeset_path": "changesets/20260720-export-token-fidelity",
-      "next_step": "step-3",
-      "current_step": "step-3",
+      "next_step": null,
+      "current_step": null,
       "steps": [
         {
           "id": "step-1",
@@ -2425,7 +2425,7 @@
         {
           "id": "step-3",
           "label": "step-3 — 내보내기 충실도",
-          "status": "pending"
+          "status": "completed"
         }
       ],
       "execution_mode": "continuous",
@@ -2443,14 +2443,15 @@
         "external_authority_required",
         "user_stopped"
       ],
-      "stop_reason": null,
+      "stop_reason": "completed",
       "stop_detail": {},
       "session_ids": [
         "claude:f84fec52-c73d-4a49-b95f-53d9e9345cb2"
       ],
       "owner_session_uuid": "claude:f84fec52-c73d-4a49-b95f-53d9e9345cb2",
       "updated_at": "2026-07-20",
-      "notes": "Registered atomically by canonical harness approve_harness_plan.py after plan validation."
+      "notes": "토큰 채색·이미지 렌더·내보내기 충실도 완료. 적발: 텍스트 넘침(TH9로 분리). 하위 파급 0(선택 필드).",
+      "completed": "2026-07-20"
     }
   }
 }
