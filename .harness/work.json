@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "active_work_id": "TH5",
+  "active_work_id": null,
   "works": {
     "SFB1": {
       "title": "Structure Contract And Clean Production",
@@ -2559,11 +2559,11 @@
       "work_id": "TH5",
       "horizon_id": "template-production-hardening",
       "milestone_id": "TH5",
-      "status": "active",
+      "status": "completed",
       "plan_path": "plans/2026-07-20-th5-codex-imagegen-provider.md",
       "changeset_path": "changesets/20260720-codex-imagegen-provider",
-      "next_step": "step-2",
-      "current_step": "step-2",
+      "next_step": null,
+      "current_step": "step-3",
       "steps": [
         {
           "id": "step-1",
@@ -2573,12 +2573,12 @@
         {
           "id": "step-2",
           "label": "step-2 — live-call-proof",
-          "status": "pending"
+          "status": "completed"
         },
         {
           "id": "step-3",
           "label": "step-3 — retire-openai-adapter",
-          "status": "pending"
+          "status": "completed"
         }
       ],
       "execution_mode": "continuous",
@@ -2596,14 +2596,15 @@
         "external_authority_required",
         "user_stopped"
       ],
-      "stop_reason": null,
+      "stop_reason": "completed",
       "stop_detail": {},
       "session_ids": [
         "claude:f84fec52-c73d-4a49-b95f-53d9e9345cb2"
       ],
       "owner_session_uuid": "claude:f84fec52-c73d-4a49-b95f-53d9e9345cb2",
       "updated_at": "2026-07-20",
-      "notes": "Registered atomically by canonical harness approve_harness_plan.py after plan validation."
+      "notes": "Registered atomically by canonical harness approve_harness_plan.py after plan validation.",
+      "completed": "2026-07-20"
     }
   }
 }
