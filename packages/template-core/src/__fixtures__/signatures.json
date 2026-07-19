@@ -1,6 +1,18 @@
 {
   "capturedAt": "2026-07-20",
-  "reason": "TH1 가독성 복구 전 동작 기준선. 압축 해제가 동작을 바꾸지 않았음을 증명하는 대조 값이다. 청사진 구성이 의도적으로 바뀌는 TH2 전까지 이 값은 변하지 않아야 한다.",
+  "reason": "청사진 구성·장면 스키마가 의도적으로 바뀌지 않는 한 이 값은 변하지 않아야 한다. 기준선이 바뀌면 그 근거를 rebaselines에 남긴다 — 근거 없는 갱신은 가드를 무력화한다.",
+  "rebaselines": [
+    {
+      "at": "2026-07-20",
+      "milestone": "TH7 step-2",
+      "why": "장면이 소재(assets)를 직접 싣게 됐다. 문서 바깥 매니페스트에 두면 문서만 오가는 경로(에이전트 브리지·스냅샷·JSON 재가져오기)에서 이미지가 사라지므로, CanvasDocument에 assets를 추가하고 컴파일러가 채우도록 바꿨다. 서명은 정본 JSON 전체를 해싱하므로 필드 추가만으로 값이 바뀐다 — 레이아웃·내용은 그대로다.",
+      "from": {
+        "business-card-minimal": "tpl-a5add834",
+        "product-poster-hero": "tpl-e523954b",
+        "infographic-stats": "tpl-f864dd3b"
+      }
+    }
+  ],
   "content": {
     "name": "Askewly",
     "role": "AI Builder",
@@ -15,8 +27,8 @@
     "source": "Askewly fixed fixture"
   },
   "signatures": {
-    "business-card-minimal": "tpl-a5add834",
-    "product-poster-hero": "tpl-e523954b",
-    "infographic-stats": "tpl-f864dd3b"
+    "business-card-minimal": "tpl-bb88ad00",
+    "product-poster-hero": "tpl-40154e67",
+    "infographic-stats": "tpl-c1cb1877"
   }
 }

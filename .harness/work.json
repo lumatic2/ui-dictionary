@@ -2408,14 +2408,14 @@
       "milestone_id": "TH7",
       "status": "active",
       "plan_path": "plans/2026-07-20-th7-canvas-render-fidelity.md",
-      "changeset_path": "changesets/20260720-canvas-token-paint",
-      "next_step": "step-1",
-      "current_step": "step-1",
+      "changeset_path": "changesets/20260720-canvas-image-typography",
+      "next_step": "step-2",
+      "current_step": "step-2",
       "steps": [
         {
           "id": "step-1",
           "label": "step-1 — 토큰 해석 일원화",
-          "status": "pending"
+          "status": "completed"
         },
         {
           "id": "step-2",

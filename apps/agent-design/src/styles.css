@@ -189,3 +189,5 @@ button, select { font: inherit; }
 .template-notice { color: var(--ad-action-primary); }
 /* 토큰이 풀리지 않은 노드 — 그럴듯한 색으로 덮지 않고 미해결임을 드러낸다. token-exception: 진단 표면 전용 */
 .canvas-node[data-token-unresolved] { outline: 1px dashed var(--ad-action-destructive); background-image: repeating-linear-gradient(45deg, transparent 0 6px, var(--ad-surface-secondary) 6px 12px); }
+/* 소재를 못 찾은 이미지 노드 — 빈 상자 대신 무엇이 없는지 적는다. token-exception: 진단 표면 전용 */
+.canvas-node[data-asset-missing] { display: grid; place-items: center; outline: 1px dashed var(--ad-action-destructive); color: var(--ad-action-destructive); font-size: 11px; word-break: keep-all; }

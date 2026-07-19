@@ -98,6 +98,7 @@ interface CanvasNodeElementProps {
   dropTarget: boolean
   primary: boolean
   tokenSetId: string
+  assets: CanvasDocument['assets']
   previewBounds?: CanvasNode['bounds']
   onOperation?: (operation: CanvasOperation) => void
 }
@@ -128,7 +129,7 @@ function TextNodeElement({ node, shared, onOperation }: { node: Extract<CanvasNo
   />
 }
 
-const CanvasNodeElement = memo(function CanvasNodeElement({ node, selected, dropTarget, primary, tokenSetId, previewBounds, onOperation }: CanvasNodeElementProps) {
+const CanvasNodeElement = memo(function CanvasNodeElement({ node, selected, dropTarget, primary, tokenSetId, assets, previewBounds, onOperation }: CanvasNodeElementProps) {
   const shared = {
     'data-canvas-id': node.id,
     'data-parent-id': node.parentId ?? '',
@@ -146,6 +147,14 @@ const CanvasNodeElement = memo(function CanvasNodeElement({ node, selected, drop
   }
   if (node.kind === 'text') {
     return <TextNodeElement node={node} shared={shared} onOperation={onOperation} />
+  }
+  if (node.kind === 'image') {
+    const asset = assets?.[node.assetId]
+    // 소재를 못 찾으면 빈 상자로 넘기지 않는다 — 무엇이 없는지 화면에 적는다.
+    if (!asset) {
+      return <div {...shared} role="img" aria-label={node.alt} data-asset-missing="">{`소재 없음: ${node.assetId}`}</div>
+    }
+    return <img {...shared} alt={node.alt} src={asset.uri} data-asset-id={node.assetId} style={{ ...shared.style, objectFit: node.fit, opacity: node.opacity }} />
   }
   if (node.kind === 'instance') {
     return <button {...shared} type="button">{String(node.overrides.label ?? node.name)}</button>
@@ -174,7 +183,7 @@ export function CanvasSurface({ document, editorPlaneFailure = null, onOperation
   const selectedIds = useMemo(() => new Set(document.selection), [document.selection])
   const orderedNodes = useMemo(() => paintOrder(document).map((id) => document.nodes[id]), [document])
   const primaryId = document.selection.at(-1)
-  const nodeElements = useMemo(() => orderedNodes.map((node) => <CanvasNodeElement key={node.id} node={node} selected={selectedIds.has(node.id)} primary={primaryId === node.id} dropTarget={dropTargetId === node.id} tokenSetId={document.tokenSetId} previewBounds={previewBounds[node.id]} onOperation={onOperation} />), [document.tokenSetId, dropTargetId, onOperation, orderedNodes, previewBounds, primaryId, selectedIds])
+  const nodeElements = useMemo(() => orderedNodes.map((node) => <CanvasNodeElement key={node.id} node={node} selected={selectedIds.has(node.id)} primary={primaryId === node.id} dropTarget={dropTargetId === node.id} tokenSetId={document.tokenSetId} assets={document.assets} previewBounds={previewBounds[node.id]} onOperation={onOperation} />), [document.assets, document.tokenSetId, dropTargetId, onOperation, orderedNodes, previewBounds, primaryId, selectedIds])
   const activePan = panPreview ?? document.viewport.pan
   const transform = `translate(${activePan.x}px, ${activePan.y}px) scale(${document.viewport.zoom})`
   const canonicalSelection = Object.keys(previewBounds).length ? previewSelectionBounds(document, previewBounds) : selectionBounds(document)

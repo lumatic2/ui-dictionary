@@ -81,6 +81,19 @@ export interface ImageNode extends CanvasNodeBase {
   opacity: number
 }
 
+/**
+ * 문서에 실린 소재. `ImageNode.assetId`가 이걸 가리킨다.
+ *
+ * 문서 바깥(별도 매니페스트)에 두면 문서만 오가는 경로 — 에이전트 브리지·스냅샷·
+ * JSON 재가져오기 — 에서 이미지가 사라진다. 문서는 자족적이어야 한다.
+ */
+export interface CanvasAsset {
+  uri: string
+  mimeType: string
+  width: number
+  height: number
+}
+
 export interface ShapeNode extends CanvasNodeBase {
   kind: 'shape'
   shape: 'rectangle' | 'ellipse' | 'line'
@@ -107,6 +120,8 @@ export interface CanvasDocument {
   selection: NodeId[]
   viewport: { pan: CanvasPoint; zoom: number }
   tokenSetId: string
+  /** assetId → 소재. 이미지 노드가 없는 문서는 생략할 수 있다(기존 문서 호환). */
+  assets?: Record<string, CanvasAsset>
   metadata: {
     createdAt: string
     updatedAt: string

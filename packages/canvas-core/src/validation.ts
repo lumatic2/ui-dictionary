@@ -33,6 +33,14 @@ export function validateDocument(document: CanvasDocument): ValidationResult {
   if (!document.tokenSetId) errors.push('tokenSetId is required')
   if (!document.metadata.sourceRoot) errors.push('metadata.sourceRoot is required')
 
+  // 이미지 노드가 가리키는 소재가 문서에 없으면 빈 상자로 조용히 렌더된다 — 그건 결함이지 상태가 아니다.
+  const assets = document.assets ?? {}
+  for (const node of Object.values(document.nodes)) {
+    if (node.kind === 'image' && node.assetId && !assets[node.assetId]) {
+      errors.push(`${node.id}: missing asset ${node.assetId}`)
+    }
+  }
+
   const ids = new Set(Object.keys(document.nodes))
   for (const [key, node] of Object.entries(document.nodes)) {
     if (key !== node.id) errors.push(`${key}: node key does not match id ${node.id}`)

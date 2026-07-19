@@ -69,6 +69,15 @@ export function businessCardFixture(): TemplateProject {
     selection: [],
     viewport: { pan: { x: 0, y: 0 }, zoom: 1 },
     tokenSetId: 'askewly.default',
+    // 장면은 자족적이어야 한다 — 이미지 노드가 가리키는 소재를 문서가 직접 갖는다.
+    assets: {
+      portrait: {
+        uri: './fixtures/portrait.svg',
+        mimeType: 'image/svg+xml',
+        width: 240,
+        height: 400,
+      },
+    },
     metadata: {
       createdAt: '2026-07-19T00:00:00.000Z',
       updatedAt: '2026-07-19T00:00:00.000Z',

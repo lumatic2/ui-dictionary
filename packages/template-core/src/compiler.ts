@@ -224,6 +224,13 @@ export function compileTemplate(request: TemplateRequest, assets: AssetManifestE
     selection: [],
     viewport: { pan: { x: 0, y: 0 }, zoom: 1 },
     tokenSetId: request.tokenSetId,
+    // 장면이 자족적이도록 소재를 문서에 싣는다 — 문서만 오가는 경로에서도 이미지가 산다.
+    assets: Object.fromEntries(
+      assets.map((asset) => [
+        asset.id,
+        { uri: asset.uri, mimeType: asset.mimeType, width: asset.width, height: asset.height },
+      ]),
+    ),
     metadata: { createdAt: now, updatedAt: now, sourceRoot: '.' },
   })
   return assertValidTemplateProject({ schemaVersion: 1, request, assets, scene })
