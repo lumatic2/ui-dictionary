@@ -96,6 +96,7 @@ export function App() {
   const [rightPanelOpen, setRightPanelOpen] = useState(true)
   const [insertOpen, setInsertOpen] = useState(false)
   const [templatesOpen, setTemplatesOpen] = useState(false)
+  const [templateProject, setTemplateProject] = useState<TemplateProject | null>(null)
   const [shortcutsOpen, setShortcutsOpen] = useState(false)
   const [agentsOpen, setAgentsOpen] = useState(false)
   const [devFixtureWorkspace, setDevFixtureWorkspace] = useState(false)
@@ -120,6 +121,7 @@ export function App() {
 
   // 템플릿 열기 — 컴파일된 장면이 곧 캔버스 문서다. 실패 시 갤러리가 여기까지 오지 않는다.
   const openTemplate = useCallback((project: TemplateProject) => {
+    setTemplateProject(project)
     setHistory(createHistory(project.scene))
     setStatus(`template ${project.request.id} · ${templateSignature(project)}`)
     setFailure(null)
@@ -619,7 +621,7 @@ export function App() {
       </aside>}
       <section className="canvas-stage" aria-label="Design canvas" ref={stageRef}>
         {insertOpen && <InsertPalette document={history.present} onOperation={commit} />}
-        {templatesOpen && <TemplateGallery onOpen={openTemplate} />}
+        {templatesOpen && <TemplateGallery onOpen={openTemplate} project={templateProject} document={history.present} />}
         {agentsOpen && <AgentPanel
           document={history.present}
           feed={collabFeed}

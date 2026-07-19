@@ -1,5 +1,12 @@
 import type { CanvasNode } from '@askewly/canvas-core'
-import type { TemplateProject } from '@askewly/template-core'
+
+/**
+ * 템플릿 내보내기 — JSON(왕복용 정본) / HTML / SVG.
+ *
+ * TH3 step-3에서 `apps/template-studio`에서 이관했다. 편집 표면이 AskewlyDesign 하나로
+ * 모이면서, 내보내기는 표면이 아니라 코어가 소유해야 한다.
+ */
+import type { TemplateProject } from './types.js'
 
 const HTML_ENTITIES: Record<string, string> = {
   '&': '&amp;',

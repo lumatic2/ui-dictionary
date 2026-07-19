@@ -2357,9 +2357,9 @@
       "milestone_id": "TH3",
       "status": "active",
       "plan_path": "plans/2026-07-20-th3-studio-real-editing.md",
-      "changeset_path": "changesets/20260720-askewly-design-template-gallery",
-      "next_step": "step-2",
-      "current_step": "step-2",
+      "changeset_path": "changesets/20260720-askewly-design-roundtrip-and-studio-retire",
+      "next_step": "step-3",
+      "current_step": "step-3",
       "steps": [
         {
           "id": "step-1",
@@ -2369,7 +2369,7 @@
         {
           "id": "step-2",
           "label": "step-2 — template-gallery-in-app",
-          "status": "pending"
+          "status": "completed"
         },
         {
           "id": "step-3",

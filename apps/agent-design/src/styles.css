@@ -178,3 +178,12 @@ button, select { font: inherit; }
 .template-format { color: var(--ad-action-primary); font-size: 10px; }
 .template-structure, .template-size { color: var(--ad-text-muted); font-size: 10px; word-break: keep-all; }
 .template-gallery-error { margin: 0; border: 1px solid var(--ad-action-destructive); border-radius: 6px; padding: 8px 10px; color: var(--ad-action-destructive); font-size: 10px; line-height: 1.5; word-break: keep-all; }
+.template-roundtrip { display: grid; gap: 6px; border-top: 1px solid var(--ad-border-default); padding-top: 10px; }
+.template-roundtrip h3 { margin: 0; color: var(--ad-text-default); font-size: 11px; }
+.template-export-actions { display: flex; gap: 4px; }
+.template-export-actions button { flex: 1; height: 26px; border: 1px solid var(--ad-border-default); border-radius: 5px; background: var(--ad-surface-base); color: var(--ad-text-secondary); font-size: 10px; }
+.template-export-actions button:hover { border-color: var(--ad-border-accent); color: var(--ad-action-primary); }
+.template-roundtrip textarea { width: 100%; min-height: 56px; border: 1px solid var(--ad-border-input); border-radius: 5px; padding: 6px; font-family: monospace; font-size: 10px; }
+.template-roundtrip > button { height: 26px; border: 1px solid var(--ad-border-default); border-radius: 5px; background: var(--ad-surface-base); color: var(--ad-text-secondary); font-size: 10px; }
+.template-hint, .template-notice { margin: 0; color: var(--ad-text-muted); font-size: 10px; word-break: keep-all; }
+.template-notice { color: var(--ad-action-primary); }
