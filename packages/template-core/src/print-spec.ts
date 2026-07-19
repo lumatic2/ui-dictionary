@@ -173,6 +173,47 @@ export function bleedPx(blueprint: TemplateBlueprint, spec: PrintSpec): number {
   return mmToLogicalPx(blueprint, spec, spec.bleedMm)
 }
 
+/**
+ * 인쇄 지면 기하 — 재단 크기 바깥에 도련과 재단 표시가 차지하는 자리.
+ *
+ * ```
+ *   ┌ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ┐   ← 지면(sheet) = 재단 + 2×margin
+ *   │  ╔═══════════════╗  │   ← 도련(bleed) — 배경이 넘어오는 구간
+ *   │  ║ ┌───────────┐ ║  │   ← 재단선(trim) = 논리 캔버스 0,0,W,H
+ *   ─┼─ ║ │           │ ║ ─┼─  ← 재단 표시는 도련 **바깥**에서 시작한다
+ * ```
+ *
+ * 재단 표시가 도련 안에 들어가면 그 선이 작품과 함께 인쇄된다. 그래서 표시는
+ * 도련 끝에서 시작한다. 선 길이는 도련 폭과 같게 뒀다 — **이 값의 출처는 없다.**
+ * 도련이 이미 규격이 정한 유일한 "재단선 바깥 여유" 치수라 그것을 기준으로 삼았다.
+ */
+export interface PrintSheetGeometry {
+  spec: PrintSpec
+  /** 도련 폭(논리 px). */
+  bleed: number
+  /** 재단 표시 선 길이(논리 px). */
+  markLength: number
+  /** 재단선에서 지면 가장자리까지(논리 px) = 도련 + 표시 길이. */
+  margin: number
+  /** 지면 전체 크기(논리 px). */
+  sheet: { width: number; height: number }
+}
+
+export function printSheetGeometry(blueprint: TemplateBlueprint): PrintSheetGeometry | null {
+  const spec = matchPrintSpec(blueprint)
+  if (!spec) return null
+  const bleed = bleedPx(blueprint, spec)
+  const markLength = bleed
+  const margin = bleed + markLength
+  return {
+    spec,
+    bleed,
+    markLength,
+    margin,
+    sheet: { width: blueprint.width + margin * 2, height: blueprint.height + margin * 2 },
+  }
+}
+
 export type PrintSpecViolation =
   | { code: 'SAFE_AREA_VIOLATION'; slotId: string; message: string }
   | { code: 'BLEED_NOT_COVERED'; slotId: string; message: string }

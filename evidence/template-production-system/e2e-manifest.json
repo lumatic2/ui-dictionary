@@ -22,8 +22,8 @@
         },
         {
           "format": "svg",
-          "bytes": 645,
-          "sha256": "18db40c8e08b"
+          "bytes": 1261,
+          "sha256": "a99a8119dfec"
         }
       ],
       "network": false
@@ -49,8 +49,8 @@
         },
         {
           "format": "svg",
-          "bytes": 647,
-          "sha256": "c5a95730b351"
+          "bytes": 1267,
+          "sha256": "fc98526ef570"
         }
       ],
       "network": false
@@ -130,8 +130,8 @@
         },
         {
           "format": "svg",
-          "bytes": 781,
-          "sha256": "99779aab99be"
+          "bytes": 1409,
+          "sha256": "62267298cc6d"
         }
       ],
       "network": false
@@ -211,8 +211,8 @@
         },
         {
           "format": "svg",
-          "bytes": 920,
-          "sha256": "82c7b5b45afa"
+          "bytes": 1540,
+          "sha256": "54d8647f5012"
         }
       ],
       "network": false

@@ -9,6 +9,7 @@ import {
   exportJson,
   exportSvg,
   formatPackCatalog,
+  printSpecs,
   resolveTokenSet,
 } from '../packages/template-core/dist/index.js'
 
@@ -171,14 +172,55 @@ function inspectSvg(text, project, expectations, blueprint) {
 
   const document = readSvgDocument(text)
   problems.push(...checkPresence(expectations, document))
-  // 치수는 청사진 선언에서 온다.
-  if (!new RegExp(`width="${blueprint.width}"`).test(text)) {
-    problems.push(`SVG 폭이 청사진 ${blueprint.width}과 다르다`)
-  }
-  if (!new RegExp(`height="${blueprint.height}"`).test(text)) {
-    problems.push(`SVG 높이가 청사진 ${blueprint.height}과 다르다`)
-  }
+  problems.push(...checkSheetGeometry(text, blueprint))
   return { problems }
+}
+
+/**
+ * 지면 기하 검사 — 기대값을 **규격 mm 표에서 유도한다.**
+ *
+ * exporter가 계산한 값을 되읽어 비교하면 서로 같은 말을 하는 검사가 된다. 여기서는
+ * `printSpecs`의 mm과 청사진 치수만 가지고 독립적으로 계산한다: 재단선 바깥은
+ * 도련 한 겹 + 재단 표시 한 겹이므로, 지면은 재단 크기보다 사방 2×도련만큼 크다.
+ */
+function checkSheetGeometry(text, blueprint) {
+  const problems = []
+  if (blueprint.output.medium !== 'print') {
+    // 화면용에 인쇄 요건이 새어 들어가면 안 된다.
+    if (text.includes('<line ')) problems.push('화면용 SVG에 재단 표시가 있다')
+    if (!new RegExp(`width="${blueprint.width}"`).test(text)) {
+      problems.push(`SVG 폭이 청사진 ${blueprint.width}과 다르다`)
+    }
+    return problems
+  }
+
+  const spec = printSpecs[blueprint.output.printSpecId]
+  if (!spec) return [`선언한 규격 ${blueprint.output.printSpecId}가 규격 표에 없다`]
+
+  const portrait = blueprint.height > blueprint.width
+  const trimWidthMm = portrait ? Math.min(spec.trim.width, spec.trim.height) : Math.max(spec.trim.width, spec.trim.height)
+  const bleed = Math.round(spec.bleedMm / (trimWidthMm / blueprint.width))
+  const sheet = { width: blueprint.width + bleed * 4, height: blueprint.height + bleed * 4 }
+
+  if (!new RegExp(`width="${sheet.width}" height="${sheet.height}"`).test(text)) {
+    problems.push(`SVG 지면이 규격에서 유도한 ${sheet.width}×${sheet.height}과 다르다`)
+  }
+  if (!text.includes(`viewBox="${-bleed * 2} ${-bleed * 2} ${sheet.width} ${sheet.height}"`)) {
+    problems.push('viewBox 원점이 재단선 바깥 여백만큼 밀려 있지 않다')
+  }
+  // 배경이 도련까지 나가는가 — 재단 오차로 흰 띠가 생기는 결함을 막는 유일한 장치다.
+  if (!text.includes(`<rect x="${-bleed}" y="${-bleed}" width="${blueprint.width + bleed * 2}" height="${blueprint.height + bleed * 2}"`)) {
+    problems.push(`배경이 도련(${spec.bleedMm}mm ≈ ${bleed}px)까지 확장되지 않았다`)
+  }
+  // exporter 자체 backdrop이 도련 상자를 그리므로, 위 검사만으로는 **장면의** 배경 노드가
+  // 재단선에서 멈춘 걸 잡지 못한다(probe가 이 구멍을 드러냈다). 재단 크기 그대로인
+  // 전면 사각형이 남아 있으면 그게 확장되지 않은 배경이다.
+  if (text.includes(`<rect x="0" y="0" width="${blueprint.width}" height="${blueprint.height}"`)) {
+    problems.push('배경이 재단선에서 멈춰 있다 — 도련까지 확장되지 않았다')
+  }
+  const marks = text.match(/<line /g) ?? []
+  if (marks.length !== 8) problems.push(`재단 표시가 8개가 아니라 ${marks.length}개다`)
+  return problems
 }
 
 /** backdrop `<rect x="0" y="0" ...>` 1개를 뺀 나머지 그리기 요소 수. */

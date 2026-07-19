@@ -37,7 +37,7 @@ function hasSlotNamed(project: TemplateProject, slotId: string): boolean {
  * 장면이 어느 청사진에서 나왔는지 — 노드 id는 `<청사진 id>:<슬롯 id>` 규약을 따른다.
  * 못 찾으면 조용히 넘어가지 않고 호출부가 청사진을 직접 넘기게 한다.
  */
-function blueprintOf(project: TemplateProject): TemplateBlueprint | null {
+export function blueprintOf(project: TemplateProject): TemplateBlueprint | null {
   const rootId = Object.values(project.scene.nodes).find((node) => !node.parentId)?.id ?? ''
   const blueprintId = rootId.split(':')[0]
   return formatPackCatalog.find((item) => item.id === blueprintId) ?? null

@@ -1,6 +1,8 @@
 import { describe, expect, it } from 'vitest'
 import { formatPackCatalog } from './blueprints/registry.js'
+import { blueprintOf } from './catalog.js'
 import { exportHtml, exportJson, exportSvg, TemplateExportError } from './exporters.js'
+import { printSheetGeometry } from './print-spec.js'
 import { createTemplateProject } from './starter.js'
 import { resolveTokenSet } from './tokens.js'
 import { validateTemplateProject } from './validation.js'
@@ -32,7 +34,16 @@ describe('내보내기 3종', () => {
     for (const project of projects) {
       const { width, height } = project.request
       expect(exportHtml(project)).toContain(`width:${width}px`)
-      expect(exportSvg(project)).toContain(`viewBox="0 0 ${width} ${height}"`)
+      // 인쇄용은 지면이 재단 크기보다 크다(도련 + 재단 표시). 화면용만 캔버스와 같다.
+      const blueprint = blueprintOf(project)!
+      if (blueprint.output.medium === 'screen') {
+        expect(exportSvg(project)).toContain(`viewBox="0 0 ${width} ${height}"`)
+      } else {
+        const { margin, sheet } = printSheetGeometry(blueprint)!
+        expect(exportSvg(project)).toContain(
+          `viewBox="${-margin} ${-margin} ${sheet.width} ${sheet.height}"`,
+        )
+      }
     }
   })
 
@@ -110,8 +121,9 @@ describe('내보내기 충실도 — 화면과 같은 값을 담는가', () => {
 
   it('도형 채움은 리터럴이 아니라 토큰이 정한다', () => {
     const svg = exportSvg(createTemplateProject({ blueprintId: 'business-card-minimal' }))
-    // 컴파일러가 넣는 #000000 리터럴이 그대로 새어나가면 안 된다.
-    expect(svg).not.toContain('#000000')
+    // 컴파일러가 넣는 #000000 리터럴이 채움으로 새어나가면 안 된다.
+    // (재단 표시 선은 검정이 맞다 — 그건 작품이 아니라 인쇄 지시다.)
+    expect(svg).not.toContain('fill="#000000"')
   })
 
   it('토큰이 해석되지 않으면 검은색으로 때우지 않고 거부한다', () => {
@@ -136,5 +148,54 @@ describe('내보내기 충실도 — 화면과 같은 값을 담는가', () => {
       expect((error as TemplateExportError).code).toBe('TOKEN_NOT_DEFINED')
       expect((error as TemplateExportError).message).toContain(nodeId)
     }
+  })
+})
+
+describe('도련과 재단 표시 (TH11 step-3)', () => {
+  const printProject = () => createTemplateProject({ blueprintId: 'business-card-vertical' })
+  const screenProject = () => createTemplateProject({ blueprintId: 'product-poster-hero' })
+
+  it('인쇄용 SVG 지면이 재단 크기 + 도련 + 표시 자리만큼 크다', () => {
+    const project = printProject()
+    const svg = exportSvg(project)
+    const geometry = printSheetGeometry(blueprintOf(project)!)!
+
+    // 규격 mm에서 유도한다 — exporter 출력끼리 비교하지 않는다.
+    // 세로 명함 600px = 50mm이므로 3mm 도련 = 36px, 표시 자리도 36px.
+    expect(geometry.bleed).toBe(36)
+    expect(geometry.margin).toBe(72)
+    expect(svg).toContain(`width="${600 + 144}"`)
+    expect(svg).toContain(`height="${1050 + 144}"`)
+  })
+
+  it('배경이 재단선을 넘어 도련까지 확장된다', () => {
+    const svg = exportSvg(printProject())
+    // backdrop이 -36에서 시작해 672(600+72) 폭으로 나간다 — 재단 오차가 나도 흰 띠가 없다.
+    expect(svg).toContain('<rect x="-36" y="-36" width="672" height="1122"')
+  })
+
+  it('재단 표시가 네 모서리에 선 8개로 그려진다', () => {
+    const marks = exportSvg(printProject()).match(/<line /g) ?? []
+    expect(marks).toHaveLength(8)
+  })
+
+  it('재단 표시가 도련 안으로 들어오지 않는다', () => {
+    // 도련 안에 그리면 그 선이 작품과 함께 인쇄된다. 선은 -72..-36 구간에만 있어야 한다.
+    const svg = exportSvg(printProject())
+    const lines = [...svg.matchAll(/<line x1="(-?\d+)" y1="(-?\d+)" x2="(-?\d+)" y2="(-?\d+)"/g)]
+    expect(lines).toHaveLength(8)
+    for (const [, x1, y1, x2, y2] of lines) {
+      const horizontal = y1 === y2
+      const [from, to] = horizontal ? [Number(x1), Number(x2)] : [Number(y1), Number(y2)]
+      const limit = horizontal ? 600 : 1050
+      const insideBleed = (value: number) => value > -36 && value < limit + 36
+      expect(insideBleed(from) || insideBleed(to), `${x1},${y1} → ${x2},${y2}`).toBe(false)
+    }
+  })
+
+  it('화면용 산출물은 그대로다 — 인쇄 요건을 얹지 않는다', () => {
+    const svg = exportSvg(screenProject())
+    expect(svg).toContain('viewBox="0 0 1080 1350"')
+    expect(svg).not.toContain('<line ')
   })
 })

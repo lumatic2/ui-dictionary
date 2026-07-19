@@ -1,4 +1,6 @@
 import type { CanvasNode } from '@askewly/canvas-core'
+import { blueprintOf } from './catalog.js'
+import { printSheetGeometry, type PrintSheetGeometry } from './print-spec.js'
 import { resolveTokenSet, type TokenSet } from './tokens.js'
 import { wrapLines } from './text-fitting.js'
 
@@ -122,6 +124,18 @@ export function exportHtml(project: TemplateProject) {
 export function exportSvg(project: TemplateProject) {
   const assets = assetUris(project)
   const set = exportTokens(project)
+  // 인쇄용 청사진이면 지면이 재단 크기보다 크다. 화면용이면 geometry가 null이라
+  // 예전과 똑같은 산출물이 나온다 — 인쇄 요건을 화면 산출물에 얹지 않는다.
+  const blueprint = blueprintOf(project)
+  const geometry = blueprint ? printSheetGeometry(blueprint) : null
+  const bleedBox = geometry
+    ? {
+        x: -geometry.bleed,
+        y: -geometry.bleed,
+        width: project.request.width + geometry.bleed * 2,
+        height: project.request.height + geometry.bleed * 2,
+      }
+    : { x: 0, y: 0, width: project.request.width, height: project.request.height }
 
   const body = paintableNodes(project)
     .map((node) => {
@@ -155,7 +169,10 @@ export function exportSvg(project: TemplateProject) {
         return `<image href="${href}" x="${node.bounds.x}" y="${node.bounds.y}" width="${node.bounds.width}" height="${node.bounds.height}" preserveAspectRatio="xMidYMid slice"/>`
       }
       if (node.kind === 'shape') {
-        return `<rect x="${node.bounds.x}" y="${node.bounds.y}" width="${node.bounds.width}" height="${node.bounds.height}" fill="${esc(shapeFill(set, node))}"/>`
+        // 캔버스를 덮으려는 배경은 재단선이 아니라 도련 끝까지 나가야 한다.
+        // 재단 오차가 어느 쪽으로 나든 흰 띠가 생기지 않게 하는 게 도련의 목적이다.
+        const bounds = coversCanvas(node.bounds, project) ? bleedBox : node.bounds
+        return `<rect x="${bounds.x}" y="${bounds.y}" width="${bounds.width}" height="${bounds.height}" fill="${esc(shapeFill(set, node))}"/>`
       }
       return ''
     })
@@ -163,6 +180,52 @@ export function exportSvg(project: TemplateProject) {
 
   const { width, height } = project.request
   const canvas = set.tokens['surface.canvas']?.value ?? 'transparent'
-  const backdrop = `<rect x="0" y="0" width="${width}" height="${height}" fill="${esc(canvas)}"/>`
-  return `<svg xmlns="http://www.w3.org/2000/svg" width="${width}" height="${height}" viewBox="0 0 ${width} ${height}">${backdrop}${body}</svg>`
+  const backdrop = `<rect x="${bleedBox.x}" y="${bleedBox.y}" width="${bleedBox.width}" height="${bleedBox.height}" fill="${esc(canvas)}"/>`
+  const sheet = geometry
+    ? { width: geometry.sheet.width, height: geometry.sheet.height, origin: -geometry.margin }
+    : { width, height, origin: 0 }
+  const viewBox = `${sheet.origin} ${sheet.origin} ${sheet.width} ${sheet.height}`
+  return (
+    `<svg xmlns="http://www.w3.org/2000/svg" width="${sheet.width}" height="${sheet.height}" viewBox="${viewBox}">` +
+    `${backdrop}${body}${cropMarks(geometry, width, height)}</svg>`
+  )
+}
+
+/** 캔버스 전체를 덮으려는 도형인가 — 도련까지 확장할 대상을 가른다. */
+function coversCanvas(
+  bounds: { x: number; y: number; width: number; height: number },
+  project: TemplateProject,
+): boolean {
+  const { width, height } = project.request
+  return bounds.x <= 0 && bounds.y <= 0 && bounds.x + bounds.width >= width && bounds.y + bounds.height >= height
+}
+
+/**
+ * 재단 표시(crop marks) — 네 모서리에 벡터 선 8개.
+ *
+ * CSS `@page`의 `marks`는 어느 브라우저도 지원하지 않는다(리서치 3.1~3.3). 그래서
+ * 표시를 SVG에 직접 그린다. 외부 의존성이 없고 어떤 변환 도구를 거쳐도 살아남는다.
+ *
+ * 각 선은 재단선의 연장이며 도련 **바깥**에서 시작한다 — 도련 안에 그리면 작품과
+ * 함께 인쇄된다.
+ */
+function cropMarks(geometry: PrintSheetGeometry | null, width: number, height: number): string {
+  if (!geometry) return ''
+  const { bleed, margin } = geometry
+  const stroke = Math.max(1, Math.round(bleed / 12))
+  const line = (x1: number, y1: number, x2: number, y2: number) =>
+    `<line x1="${x1}" y1="${y1}" x2="${x2}" y2="${y2}" stroke="#000000" stroke-width="${stroke}"/>`
+
+  return [
+    [0, 0],
+    [width, 0],
+    [0, height],
+    [width, height],
+  ]
+    .map(([x, y]) => {
+      const horizontal = x === 0 ? [-margin, -bleed] : [width + bleed, width + margin]
+      const vertical = y === 0 ? [-margin, -bleed] : [height + bleed, height + margin]
+      return line(horizontal[0]!, y, horizontal[1]!, y) + line(x, vertical[0]!, x, vertical[1]!)
+    })
+    .join('')
 }

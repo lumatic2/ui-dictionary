@@ -2663,9 +2663,9 @@
       "milestone_id": "TH11",
       "status": "active",
       "plan_path": "plans/2026-07-20-th11-print-spec-mm.md",
-      "changeset_path": "changesets/20260720-print-spec-presets",
-      "next_step": "step-3",
-      "current_step": "step-3",
+      "changeset_path": "changesets/20260720-bleed-and-crop-marks",
+      "next_step": null,
+      "current_step": null,
       "steps": [
         {
           "id": "step-1",
@@ -2680,7 +2680,7 @@
         {
           "id": "step-3",
           "label": "step-3 — 도련 + 재단 표시 SVG 출력",
-          "status": "pending"
+          "status": "completed"
         }
       ],
       "execution_mode": "continuous",
