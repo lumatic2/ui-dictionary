@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "active_work_id": "TH12",
+  "active_work_id": "TH6",
   "works": {
     "SFB1": {
       "title": "Structure Contract And Clean Production",
@@ -2761,9 +2761,9 @@
       "milestone_id": "TH12",
       "status": "active",
       "plan_path": "plans/2026-07-20-th12-self-contained-artifacts.md",
-      "changeset_path": "changesets/20260720-self-contained-assets",
-      "next_step": "step-2",
-      "current_step": "step-2",
+      "changeset_path": "changesets/20260720-no-external-references",
+      "next_step": null,
+      "current_step": null,
       "steps": [
         {
           "id": "step-1",
@@ -2773,7 +2773,7 @@
         {
           "id": "step-2",
           "label": "step-2 — 외부 참조 0 게이트 + 실물 재확인",
-          "status": "pending"
+          "status": "completed"
         }
       ],
       "execution_mode": "continuous",

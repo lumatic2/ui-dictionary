@@ -140,6 +140,29 @@ function readHtmlDocument(html) {
   return { text: text.join(''), attributes }
 }
 
+/**
+ * 외부 참조 검사 — 산출물 한 장이 그대로 옮겨져도 그림이 함께 가는가.
+ *
+ * TH6 실연이 실물로 잡았다: 소재 URI가 파일 경로라 내보낸 SVG를 `<img>`로 끼우면
+ * 그림 없이 조용히 렌더됐다. 문서가 파일 시스템에 묶여 있으면 발주할 수 없다.
+ *
+ * 기대값은 산출물이 아니라 **매니페스트**에서 온다 — 모든 소재 URI가 `data:`여야 한다.
+ */
+function checkNoExternalReferences(text, project) {
+  const problems = []
+  for (const asset of project.assets) {
+    if (!asset.uri.startsWith('data:')) {
+      problems.push(`소재 ${asset.id}의 URI가 외부 참조다: ${asset.uri.slice(0, 60)}`)
+    }
+  }
+  // 산출물 쪽에서도 확인한다 — 매니페스트가 깨끗해도 exporter가 경로를 지어낼 수 있다.
+  for (const [, value] of text.matchAll(/(?:href|src)="([^"]*)"/g)) {
+    if (value.startsWith('data:') || value.startsWith('http://www.w3.org/')) continue
+    problems.push(`산출물이 외부 자원을 참조한다: ${value.slice(0, 60)}`)
+  }
+  return problems
+}
+
 /** 산출물 하나에 대한 검사 결과. `problems`가 비어 있어야 통과다. */
 function inspectJson(text, project) {
   const problems = []
@@ -173,6 +196,7 @@ function inspectSvg(text, project, expectations, blueprint) {
   const document = readSvgDocument(text)
   problems.push(...checkPresence(expectations, document))
   problems.push(...checkSheetGeometry(text, blueprint))
+  problems.push(...checkNoExternalReferences(text, project))
   return { problems }
 }
 
@@ -240,6 +264,7 @@ function inspectHtml(text, project, expectations, blueprint) {
   }
 
   problems.push(...checkPresence(expectations, readHtmlDocument(text)))
+  problems.push(...checkNoExternalReferences(text, project))
   const frame = (main.attrs ?? []).find((attribute) => attribute.name === 'style')?.value ?? ''
   if (!frame.includes(`width:${blueprint.width}px`)) {
     problems.push(`HTML 프레임 폭이 청사진 ${blueprint.width}과 다르다`)
