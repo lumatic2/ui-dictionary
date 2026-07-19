@@ -2664,13 +2664,13 @@
       "status": "active",
       "plan_path": "plans/2026-07-20-th11-print-spec-mm.md",
       "changeset_path": "changesets/20260720-absolute-mm-contract",
-      "next_step": "step-1",
-      "current_step": "step-1",
+      "next_step": "step-2",
+      "current_step": "step-2",
       "steps": [
         {
           "id": "step-1",
           "label": "step-1 — 절대 mm 계약",
-          "status": "pending"
+          "status": "completed"
         },
         {
           "id": "step-2",
