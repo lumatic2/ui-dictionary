@@ -3,9 +3,14 @@ import { formatPackCatalog } from './blueprints/registry.js'
 import {
   bleedPx,
   matchPrintSpec,
+  mmToPrintPx,
+  orientedTrim,
+  printPixelSize,
   printSpecs,
   safeAreaInsetPx,
+  safeMarginPx,
   validatePrintSpec,
+  validateSpecDeclaration,
 } from './print-spec.js'
 import type { TemplateBlueprint } from './types.js'
 
@@ -112,5 +117,97 @@ describe('인쇄 규격 위반 검사', () => {
     }
 
     expect(validatePrintSpec(tampered).filter((item) => item.slotId === 'portrait')).toEqual([])
+  })
+})
+
+describe('절대 mm 계약 (TH11)', () => {
+  it('mm→인쇄 px가 리서치 수치와 일치한다', () => {
+    // 리서치 6.2 검증 예시: 300dpi에서 85×55mm → 1004×650px
+    expect(mmToPrintPx(85)).toBe(1004)
+    expect(mmToPrintPx(55)).toBe(650)
+    expect(mmToPrintPx(210)).toBe(2480) // A4 폭
+    expect(mmToPrintPx(297)).toBe(3508) // A4 높이
+  })
+
+  it('규격을 종횡비로 추론하지 않고 선언에서 읽는다', () => {
+    // 이게 결함의 정체였다 — 1050×600(비율 1.75)은 두 규격 오차 안에 다 들어온다.
+    const minimal = blueprint('business-card-minimal')
+    expect(matchPrintSpec(minimal)?.id).toBe('us-business-card-3.5x2')
+    expect(minimal.output.medium).toBe('print')
+  })
+
+  it('화면용 청사진은 인쇄 규격을 갖지 않는다', () => {
+    const poster = blueprint('product-poster-hero')
+    expect(poster.output.medium).toBe('screen')
+    expect(matchPrintSpec(poster)).toBeNull()
+    // 왜 인쇄 규격이 아닌지 이유가 남아 있다.
+    if (poster.output.medium === 'screen') expect(poster.output.reason).toContain('소셜')
+  })
+
+  it('세로 청사진은 규격 치수를 방향에 맞춰 뒤집는다', () => {
+    const vertical = blueprint('business-card-vertical')
+    const spec = matchPrintSpec(vertical)!
+    expect(orientedTrim(vertical, spec)).toEqual({ width: 50, height: 90 })
+    expect(printPixelSize(vertical, spec)).toEqual({ width: 591, height: 1063 })
+  })
+
+  it('안전 여백이 규격 mm에서 나온다 (px 고정 상수 아님)', () => {
+    // 그전에는 전 포맷이 24px 고정이었다. 이제 규격마다 다르다.
+    expect(safeMarginPx(blueprint('business-card-minimal'))).toBe(38)
+    expect(safeMarginPx(blueprint('business-card-vertical'))).toBe(36)
+    // 화면용은 청사진이 직접 선언한 px를 쓴다.
+    expect(safeMarginPx(blueprint('product-poster-hero'))).toBe(24)
+  })
+
+  it('없는 규격을 선언하면 거부한다', () => {
+    const fake = { ...blueprint('business-card-minimal'), output: { medium: 'print' as const, printSpecId: 'nope' } }
+    expect(validateSpecDeclaration(fake).map((v) => v.code)).toEqual(['PRINT_SPEC_NOT_FOUND'])
+  })
+
+  it('선언한 규격과 비율이 어긋나면 거부한다', () => {
+    // 선언이 정본이 된 만큼 거짓 선언을 잡아야 한다.
+    const lying = { ...blueprint('business-card-minimal'), width: 1050, height: 300 }
+    expect(validateSpecDeclaration(lying).map((v) => v.code)).toEqual(['SPEC_RATIO_MISMATCH'])
+    expect(validatePrintSpec(lying).map((v) => v.code)).toEqual(['SPEC_RATIO_MISMATCH'])
+  })
+
+  it('카탈로그의 모든 청사진이 출력 매체를 선언한다', () => {
+    for (const item of formatPackCatalog) {
+      expect(['print', 'screen']).toContain(item.output.medium)
+      expect(validateSpecDeclaration(item)).toEqual([])
+    }
+  })
+})
+
+describe('종횡비 추론은 답을 낼 수 없다 (TH11 — 계약이 존재하는 이유)', () => {
+  const TOLERANCE = 0.02
+  const withinTolerance = (ratio: number) =>
+    Object.values(printSpecs).filter((spec) => {
+      const landscape = spec.trim.width / spec.trim.height
+      return Math.abs(ratio - landscape) < TOLERANCE || Math.abs(ratio - 1 / landscape) < TOLERANCE
+    })
+
+  it('세로 명함 비율은 두 규격에 동시에 들어맞는다', () => {
+    // 600×1050(0.5714)은 kr-90x50(0.5556)과 us-3.5x2(0.5714) 양쪽 오차 안이다.
+    // 종횡비만 보면 어느 쪽인지 **고를 수 없다** — 순서에 따라 답이 달라진다.
+    const candidates = withinTolerance(600 / 1050)
+    expect(candidates.length).toBeGreaterThan(1)
+    expect(candidates.map((spec) => spec.id)).toEqual(
+      expect.arrayContaining(['kr-business-card-90x50', 'us-business-card-3.5x2']),
+    )
+  })
+
+  it('같은 치수라도 선언이 다르면 다른 규격이 나온다', () => {
+    const base = blueprint('business-card-vertical')
+    const asKorean = matchPrintSpec(base)
+    const asAmerican = matchPrintSpec({
+      ...base,
+      output: { medium: 'print' as const, printSpecId: 'us-business-card-3.5x2' },
+    })
+    // 치수는 같은데 규격이 다르다 — 종횡비 추론으로는 불가능한 구별이다.
+    expect(asKorean?.id).toBe('kr-business-card-90x50')
+    expect(asAmerican?.id).toBe('us-business-card-3.5x2')
+    // 그리고 인쇄 px가 실제로 달라진다.
+    expect(printPixelSize(base, asKorean!)).not.toEqual(printPixelSize(base, asAmerican!))
   })
 })

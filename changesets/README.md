@@ -184,3 +184,4 @@
 | 182 | 20260720-editor-state-persistence | 2026-07-20 | TH10 step 1: separated editingBase from dev fixture — saving a template no longer serializes the 1,000-node fixture; size toggle can't destroy an open template | 4/4 | complete |
 | 183 | 20260720-token-set-parity | 2026-07-20 | TH10 step 2: dropdown options generated from real registries (was misreporting warm as default), membership check beyond shape check, disabled select state styled | 4/4 | complete |
 | 184 | 20260720-structured-input-rejection | 2026-07-20 | TH10 step 3: malformed template input rejected with codes instead of TypeError, gallery silent fallback made impossible by passing the object, full browser walkthrough | 5/5 | complete |
+| 185 | 20260720-absolute-mm-contract | 2026-07-20 | TH11 step 1: blueprints declare their print spec (ratio inference was ambiguous — 600x1050 matched two specs), mm<->print-px conversion, 24px constant removed | 5/5 | complete |

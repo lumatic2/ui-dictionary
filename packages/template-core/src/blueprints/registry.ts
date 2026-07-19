@@ -28,6 +28,7 @@ import type { TemplateBlueprint } from '../types.js'
 const businessCardMinimal: TemplateBlueprint = {
   id: 'business-card-minimal',
   format: 'business-card',
+  output: { medium: 'print', printSpecId: 'us-business-card-3.5x2' },
   width: 1050,
   height: 600,
   density: 'airy',
@@ -87,6 +88,7 @@ const businessCardMinimal: TemplateBlueprint = {
 const businessCardVertical: TemplateBlueprint = {
   id: 'business-card-vertical',
   format: 'business-card',
+  output: { medium: 'print', printSpecId: 'kr-business-card-90x50' },
   width: 600,
   height: 1050,
   density: 'balanced',
@@ -145,6 +147,7 @@ const businessCardVertical: TemplateBlueprint = {
 const productPosterHero: TemplateBlueprint = {
   id: 'product-poster-hero',
   format: 'product-poster',
+  output: { medium: 'screen', reason: '소셜 4:5 비율 — 인쇄 표준 아님(리서치 4.4). 인쇄용은 별도 A계열 청사진.', safeMarginPx: 24 },
   width: 1080,
   height: 1350,
   density: 'balanced',
@@ -204,6 +207,7 @@ const productPosterHero: TemplateBlueprint = {
 const productPosterEditorial: TemplateBlueprint = {
   id: 'product-poster-editorial',
   format: 'product-poster',
+  output: { medium: 'screen', reason: '소셜 4:5 비율 — 인쇄 표준 아님(리서치 4.4). 인쇄용은 별도 A계열 청사진.', safeMarginPx: 24 },
   width: 1080,
   height: 1350,
   density: 'compact',
@@ -270,6 +274,7 @@ const productPosterEditorial: TemplateBlueprint = {
 const infographicStats: TemplateBlueprint = {
   id: 'infographic-stats',
   format: 'infographic',
+  output: { medium: 'screen', reason: '인포그래픽 고유 인쇄 규격은 없다(리서치 5.1). 인쇄가 필요하면 A4/A3를 차용한다.', safeMarginPx: 24 },
   width: 1200,
   height: 1600,
   density: 'balanced',
@@ -331,6 +336,7 @@ const infographicStats: TemplateBlueprint = {
 const infographicComparison: TemplateBlueprint = {
   id: 'infographic-comparison',
   format: 'infographic',
+  output: { medium: 'screen', reason: '인포그래픽 고유 인쇄 규격은 없다(리서치 5.1). 인쇄가 필요하면 A4/A3를 차용한다.', safeMarginPx: 24 },
   width: 1200,
   height: 1600,
   density: 'compact',

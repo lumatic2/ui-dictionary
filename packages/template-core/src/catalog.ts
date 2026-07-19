@@ -1,5 +1,6 @@
 import type { TemplateBlueprint, TemplateFormat, TemplateProject } from './types.js'
 import { formatPackCatalog } from './blueprints/registry.js'
+import { safeMarginPx } from './print-spec.js'
 
 export function listBlueprints(filter: { format?: TemplateFormat; density?: TemplateBlueprint['density']; ratio?: number } = {}) {
   return formatPackCatalog.filter((item) => !filter.format || item.format === filter.format)
@@ -8,17 +9,22 @@ export function listBlueprints(filter: { format?: TemplateFormat; density?: Temp
     .sort((a, b) => a.format.localeCompare(b.format) || a.id.localeCompare(b.id))
 }
 
-/** 재단선에서 안쪽으로 확보하는 여백(px). 필수 콘텐츠는 이 안에 들어와야 한다. */
-const SAFE_AREA_INSET = 24
-
 type Bounds = { x: number; y: number; width: number; height: number }
 
-function violatesSafeArea(bounds: Bounds, canvasWidth: number, canvasHeight: number): boolean {
+/**
+ * 안전 여백 침범 검사 — 여백은 **청사진이 소유한다**.
+ *
+ * 그전에는 여기 `SAFE_AREA_INSET = 24`가 있었다. 포맷·규격과 무관한 단일 px 값이라
+ * 명함 안전영역(3mm)과 포스터 게시 여백(15mm)이 5배 차이인 사실을 표현할 수 없었고,
+ * 24가 어떤 mm 근거에서 나왔는지도 코드에 없었다(리서치 8.1).
+ */
+function violatesSafeArea(bounds: Bounds, blueprint: TemplateBlueprint): boolean {
+  const inset = safeMarginPx(blueprint)
   return (
-    bounds.x < SAFE_AREA_INSET ||
-    bounds.y < SAFE_AREA_INSET ||
-    bounds.x + bounds.width > canvasWidth - SAFE_AREA_INSET ||
-    bounds.y + bounds.height > canvasHeight - SAFE_AREA_INSET
+    bounds.x < inset ||
+    bounds.y < inset ||
+    bounds.x + bounds.width > blueprint.width - inset ||
+    bounds.y + bounds.height > blueprint.height - inset
   )
 }
 
@@ -27,7 +33,20 @@ function hasSlotNamed(project: TemplateProject, slotId: string): boolean {
   return Object.values(project.scene.nodes).some((node) => node.name === slotId)
 }
 
-export function validateFormatIntegrity(project: TemplateProject): string[] {
+/**
+ * 장면이 어느 청사진에서 나왔는지 — 노드 id는 `<청사진 id>:<슬롯 id>` 규약을 따른다.
+ * 못 찾으면 조용히 넘어가지 않고 호출부가 청사진을 직접 넘기게 한다.
+ */
+function blueprintOf(project: TemplateProject): TemplateBlueprint | null {
+  const rootId = Object.values(project.scene.nodes).find((node) => !node.parentId)?.id ?? ''
+  const blueprintId = rootId.split(':')[0]
+  return formatPackCatalog.find((item) => item.id === blueprintId) ?? null
+}
+
+export function validateFormatIntegrity(
+  project: TemplateProject,
+  blueprint: TemplateBlueprint | null = blueprintOf(project),
+): string[] {
   const errors: string[] = []
   const { format, content } = project.request
   if (format === 'business-card' && !content.contact?.trim()) errors.push('CONTACT_REQUIRED')
@@ -43,10 +62,16 @@ export function validateFormatIntegrity(project: TemplateProject): string[] {
       if (!content.unit?.trim()) errors.push('UNIT_REQUIRED')
     }
   }
+  if (!blueprint) {
+    // 여백 기준을 지어내지 않는다 — 청사진을 모르면 그 사실을 오류로 낸다.
+    errors.push('BLUEPRINT_UNKNOWN')
+    return errors
+  }
+
   for (const node of Object.values(project.scene.nodes)) {
     // 배경 도형은 재단선까지 채우는 게 정상이므로 안전영역 검사에서 뺀다.
     if (!node.parentId || node.kind === 'shape') continue
-    if (violatesSafeArea(node.bounds, project.request.width, project.request.height)) {
+    if (violatesSafeArea(node.bounds, blueprint)) {
       errors.push(`SAFE_AREA:${node.id}`)
     }
   }

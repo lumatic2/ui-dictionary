@@ -3,18 +3,30 @@ import type { TemplateBlueprint, TemplateFormat } from './types.js'
 /**
  * 인쇄 규격 — 재단 크기·도련(bleed)·안전영역(safe area).
  *
- * 근거: `research/2026-07-20-template-production-hardening-format-layout-taxonomy.md`
+ * 근거: `research/2026-07-20-template-production-hardening-format-layout-taxonomy.md`,
+ * `research/2026-07-20-template-production-hardening-print-spec.md`
  * - 한국 명함은 두 표준이 공존한다: 90×50mm(전통, 금융·법률·공공 선호)와
  *   85×55mm(카드지갑 규격, IT·디자인·스타트업 선호). 비율이 1.8 대 1.545로 다르다.
  * - 도련과 안전영역은 두 규격 모두 사방 3mm(≈0.125in)로 같다.
  *
- * 규격 프리셋은 청사진의 **방향 축과 직교**한다 — 가로/세로 어느 쪽이든 두 규격을 다 쓸 수 있다.
- * 그래서 청사진을 늘리는 축으로 쓰지 않고 검증 규칙으로만 인코딩한다.
+ * **TH11에서 방향이 뒤집혔다.** 그전에는 청사진 px가 정본이고 규격을 종횡비로 역추론했다.
+ * 이제 청사진이 자기 규격을 선언하고 px가 거기서 파생된다 — 그러지 않으면
+ * 1050×600px가 90mm인지 88.9mm인지 코드가 답할 수 없어 인쇄 파일을 만들지 못한다.
  */
 
-/** 렌더 좌표는 px다. 300dpi 기준 1mm ≈ 11.811px이지만, 청사진은 논리 px로 작성되므로
- *  규격 대조는 **종횡비**로 하고 도련·안전영역은 캔버스 짧은 변 대비 비율로 환산한다. */
 export const MM_PER_INCH = 25.4
+
+/** 인쇄 발주 표준 해상도. 출처: 리서치 6.1 (Venngage / 파란디자인, 접근 2026-07-20). */
+export const PRINT_DPI = 300
+
+/**
+ * mm → 인쇄 px. `px = mm / 25.4 × dpi` (리서치 6.2 — 2개 출처 일치).
+ *
+ * 300dpi에서 1mm ≈ 11.811px. **절대 환산의 유일한 출처**다.
+ */
+export function mmToPrintPx(mm: number, dpi: number = PRINT_DPI): number {
+  return Math.round((mm / MM_PER_INCH) * dpi)
+}
 
 export interface PrintSpec {
   id: string
@@ -61,38 +73,100 @@ export function specAspectRatio(spec: PrintSpec): number {
 }
 
 /**
- * 청사진이 어느 인쇄 규격에 해당하는지 — 가로/세로 양쪽을 다 본다.
- * 어느 규격과도 맞지 않으면 `null`(자유 비율 청사진).
+ * 청사진이 어느 인쇄 규격인지 — **청사진의 선언을 읽는다.**
+ *
+ * 그전에는 종횡비로 역추론했다. 그 방식은 답을 낼 수 없는 질문이 있다:
+ * 1050×600px(비율 1.75)가 90×50mm인지 88.9×50.8mm인지 종횡비만으로는 갈리지 않는다.
+ * 이제 청사진이 자기 규격을 말하고, 종횡비는 그 선언을 **검증**하는 데만 쓴다.
  */
 export function matchPrintSpec(blueprint: TemplateBlueprint): PrintSpec | null {
-  const ratio = blueprint.width / blueprint.height
+  if (blueprint.output.medium !== 'print') return null
+  return printSpecs[blueprint.output.printSpecId] ?? null
+}
 
-  for (const spec of Object.values(printSpecs)) {
-    const landscape = specAspectRatio(spec)
-    const portrait = 1 / landscape
-    if (Math.abs(ratio - landscape) < RATIO_TOLERANCE) return spec
-    if (Math.abs(ratio - portrait) < RATIO_TOLERANCE) return spec
-  }
-  return null
+/** 청사진 방향에 맞춘 재단 크기(mm). 세로 청사진이면 규격의 가로·세로를 바꾼다. */
+export function orientedTrim(
+  blueprint: TemplateBlueprint,
+  spec: PrintSpec,
+): { width: number; height: number } {
+  const blueprintIsPortrait = blueprint.height > blueprint.width
+  const specIsPortrait = spec.trim.height > spec.trim.width
+  return blueprintIsPortrait === specIsPortrait
+    ? { ...spec.trim }
+    : { width: spec.trim.height, height: spec.trim.width }
+}
+
+/** 논리 px 1개가 몇 mm인가. 절대 환산의 다리다. */
+export function mmPerLogicalPx(blueprint: TemplateBlueprint, spec: PrintSpec): number {
+  return orientedTrim(blueprint, spec).width / blueprint.width
+}
+
+/**
+ * 이 청사진을 실제로 인쇄할 때의 픽셀 크기(재단 크기 기준, 도련 제외).
+ *
+ * 리서치 검증 예시: 85×55mm → 300dpi에서 1004×650px.
+ */
+export function printPixelSize(
+  blueprint: TemplateBlueprint,
+  spec: PrintSpec,
+  dpi: number = PRINT_DPI,
+): { width: number; height: number } {
+  const trim = orientedTrim(blueprint, spec)
+  return { width: mmToPrintPx(trim.width, dpi), height: mmToPrintPx(trim.height, dpi) }
+}
+
+/** mm 길이를 이 청사진의 논리 px로 환산한다. */
+export function mmToLogicalPx(blueprint: TemplateBlueprint, spec: PrintSpec, mm: number): number {
+  return Math.round(mm / mmPerLogicalPx(blueprint, spec))
 }
 
 /** 규격의 안전영역 인셋을 이 청사진의 논리 px로 환산한다. */
 export function safeAreaInsetPx(blueprint: TemplateBlueprint, spec: PrintSpec): number {
-  const shortEdgePx = Math.min(blueprint.width, blueprint.height)
-  const shortEdgeMm = Math.min(spec.trim.width, spec.trim.height)
-  return Math.round((spec.safeAreaMm / shortEdgeMm) * shortEdgePx)
+  return mmToLogicalPx(blueprint, spec, spec.safeAreaMm)
 }
 
 /** 도련 폭을 이 청사진의 논리 px로 환산한다. */
 export function bleedPx(blueprint: TemplateBlueprint, spec: PrintSpec): number {
-  const shortEdgePx = Math.min(blueprint.width, blueprint.height)
-  const shortEdgeMm = Math.min(spec.trim.width, spec.trim.height)
-  return Math.round((spec.bleedMm / shortEdgeMm) * shortEdgePx)
+  return mmToLogicalPx(blueprint, spec, spec.bleedMm)
 }
 
 export type PrintSpecViolation =
   | { code: 'SAFE_AREA_VIOLATION'; slotId: string; message: string }
   | { code: 'BLEED_NOT_COVERED'; slotId: string; message: string }
+  | { code: 'PRINT_SPEC_NOT_FOUND'; slotId: string; message: string }
+  | { code: 'SPEC_RATIO_MISMATCH'; slotId: string; message: string }
+
+/**
+ * 선언한 규격과 실제 치수가 맞는가 — 선언이 정본이 된 만큼 거짓 선언을 잡아야 한다.
+ *
+ * 종횡비는 이제 규격을 **고르는** 근거가 아니라 선언을 **검증하는** 수단이다.
+ */
+export function validateSpecDeclaration(blueprint: TemplateBlueprint): PrintSpecViolation[] {
+  if (blueprint.output.medium !== 'print') return []
+
+  const spec = printSpecs[blueprint.output.printSpecId]
+  if (!spec) {
+    return [{
+      code: 'PRINT_SPEC_NOT_FOUND',
+      slotId: blueprint.id,
+      message: `${blueprint.id}가 선언한 규격 '${blueprint.output.printSpecId}'가 없습니다.`,
+    }]
+  }
+
+  const trim = orientedTrim(blueprint, spec)
+  const declared = trim.width / trim.height
+  const actual = blueprint.width / blueprint.height
+  if (Math.abs(declared - actual) >= RATIO_TOLERANCE) {
+    return [{
+      code: 'SPEC_RATIO_MISMATCH',
+      slotId: blueprint.id,
+      message:
+        `${blueprint.id}의 비율 ${actual.toFixed(3)}이 선언 규격 ${spec.id}의 ` +
+        `${declared.toFixed(3)}과 다릅니다(허용 ${RATIO_TOLERANCE}).`,
+    }]
+  }
+  return []
+}
 
 /**
  * 인쇄 규격 위반 검사.
@@ -101,6 +175,9 @@ export type PrintSpecViolation =
  * - **도련**: 배경 도형은 재단선을 넘어 캔버스 전체를 덮어야 한다. 안 그러면 재단 오차로 흰 띠가 생긴다.
  */
 export function validatePrintSpec(blueprint: TemplateBlueprint): PrintSpecViolation[] {
+  const declaration = validateSpecDeclaration(blueprint)
+  if (declaration.length) return declaration
+
   const spec = matchPrintSpec(blueprint)
   if (!spec) return []
 
@@ -152,4 +229,17 @@ export function validatePrintSpec(blueprint: TemplateBlueprint): PrintSpecViolat
 /** 이 포맷에 인쇄 규격 프리셋이 정의돼 있는가. */
 export function hasPrintSpecs(format: TemplateFormat): boolean {
   return format === 'business-card'
+}
+
+/**
+ * 이 청사진의 안전 여백(논리 px) — 인쇄면 규격 mm에서, 화면이면 청사진이 선언한 px에서.
+ *
+ * 그전에는 `catalog.ts`의 `SAFE_AREA_INSET = 24`가 포맷·규격과 무관하게 전부에 적용됐다.
+ * 명함 안전영역(3mm)과 포스터 게시 여백(15mm)이 5배 차이인데 하나의 상수로는 둘 다 틀린다.
+ * 그리고 24가 어떤 mm 근거에서 나왔는지 코드 어디에도 없었다.
+ */
+export function safeMarginPx(blueprint: TemplateBlueprint): number {
+  if (blueprint.output.medium === 'screen') return blueprint.output.safeMarginPx
+  const spec = printSpecs[blueprint.output.printSpecId]
+  return spec ? safeAreaInsetPx(blueprint, spec) : 0
 }

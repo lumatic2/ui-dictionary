@@ -65,9 +65,26 @@ export interface TemplateRepeatGroup {
   unitSlots: TemplateSlot[]
 }
 
+/**
+ * 이 청사진이 무엇을 위한 판인가 — **모든 청사진이 선언해야 한다.**
+ *
+ * 침묵을 허용하지 않는 이유: 인쇄용인지 화면용인지 코드가 모르면 도련·안전영역을
+ * 어디서 가져와야 할지도 모른다. 그전에는 포맷 무관 px 상수 하나로 전부 처리했다.
+ */
+export type BlueprintOutput =
+  /** 인쇄용 — 규격(mm)이 정본이고 논리 px가 거기서 파생된다. */
+  | { medium: 'print'; printSpecId: string }
+  /**
+   * 화면용 — mm 규격이 없다. 안전 여백은 청사진이 px로 직접 선언한다.
+   * `reason`은 왜 인쇄 규격을 따르지 않는지를 남긴다(예: 소셜 비율).
+   */
+  | { medium: 'screen'; reason: string; safeMarginPx: number }
+
 export interface TemplateBlueprint {
   id: string
   format: TemplateFormat
+  /** 인쇄용인가 화면용인가. 선언하지 않는 청사진은 없다. */
+  output: BlueprintOutput
   width: number
   height: number
   density: 'compact' | 'balanced' | 'airy'

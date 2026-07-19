@@ -24,6 +24,7 @@ const assets: AssetManifestEntry[] = [
 const comparisonBlueprint: TemplateBlueprint = {
   id: 'infographic-comparison-test',
   format: 'infographic',
+  output: { medium: 'screen', reason: '테스트 fixture — 인쇄 규격 대상 아님', safeMarginPx: 24 },
   width: 1200,
   height: 1600,
   density: 'balanced',
