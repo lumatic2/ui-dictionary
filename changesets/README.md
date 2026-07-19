@@ -180,3 +180,4 @@
 | 178 | 20260720-horizon-cleanup-and-finding-ledger | 2026-07-20 | maintenance: horizon doc synced (TH7/TH9 were missing), duplicate TH4 plan retired, 30 open findings ledgered, close criteria 7→9 | 5/5 | complete |
 | 179 | 20260720-codex-imagegen-provider | 2026-07-20 | TH5 step 1: codex exec image provider — PNG header truth, real dimensions (not requested), cover-crop-loss rejection at 1/3, injectable runner | 4/4 | complete |
 | 180 | 20260720-codex-imagegen-live-proof | 2026-07-20 | TH5 step 2: live codex exec produced a real 1000x800 asset rendered in the poster — the live run caught spawn ENOENT (.cmd shim) and argv quoting, fixed via stdin prompt | 6/6 | complete |
+| 181 | 20260720-retire-openai-image-adapter | 2026-07-20 | TH5 step 3: removed the broken OpenAI image adapter (response type never matched the real API) — 439 tests green after removal | 5/5 | complete |
