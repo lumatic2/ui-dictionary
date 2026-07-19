@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "active_work_id": "th1-code-legibility",
+  "active_work_id": "th2-blueprint-archetypes",
   "works": {
     "SFB1": {
       "title": "Structure Contract And Clean Production",
@@ -2279,6 +2279,57 @@
         "approved_by": "user",
         "approved_at": "2026-07-20",
         "plan_sha256": "732fbd56501ad964e334f6a1afeda3dfb16ed78c016e46e0dfe373b1502a59d4"
+      },
+      "allowed_stop_reasons": [
+        "completed",
+        "blocked",
+        "decision_required",
+        "risk_gate",
+        "secret_required",
+        "external_authority_required",
+        "user_stopped"
+      ],
+      "stop_reason": null,
+      "stop_detail": {},
+      "session_ids": [
+        "claude:f84fec52-c73d-4a49-b95f-53d9e9345cb2"
+      ],
+      "owner_session_uuid": "claude:f84fec52-c73d-4a49-b95f-53d9e9345cb2",
+      "updated_at": "2026-07-20",
+      "notes": "Registered atomically by canonical harness approve_harness_plan.py after plan validation.",
+      "completion_summary": "템플릿 제작 스택의 압축 코드를 전부 해제하고, 해제가 동작을 바꾸지 않았음을 서명 대조로 증명했으며, 재발을 막는 줄 길이 가드를 걸었습니다."
+    },
+    "th2-blueprint-archetypes": {
+      "work_id": "th2-blueprint-archetypes",
+      "horizon_id": "template-production-hardening",
+      "milestone_id": "TH2",
+      "status": "active",
+      "plan_path": "plans/2026-07-20-th2-blueprint-archetypes.md",
+      "changeset_path": "changesets/20260720-template-repeating-slot-contract",
+      "next_step": "step-1",
+      "current_step": "step-1",
+      "steps": [
+        {
+          "id": "step-1",
+          "label": "step-1 — repeating-slot-contract",
+          "status": "pending"
+        },
+        {
+          "id": "step-2",
+          "label": "step-2 — six-real-blueprints",
+          "status": "pending"
+        },
+        {
+          "id": "step-3",
+          "label": "step-3 — print-spec-validation",
+          "status": "pending"
+        }
+      ],
+      "execution_mode": "continuous",
+      "approval": {
+        "approved_by": "user",
+        "approved_at": "2026-07-20",
+        "plan_sha256": "697bc272400311e5af4413fa947e2171fe8050e95448168aab3fee408c2b197c"
       },
       "allowed_stop_reasons": [
         "completed",
