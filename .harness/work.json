@@ -2459,14 +2459,14 @@
       "milestone_id": "TH9",
       "status": "active",
       "plan_path": "plans/2026-07-20-th9-text-fitting.md",
-      "changeset_path": "changesets/20260720-text-fitting-model",
-      "next_step": "step-1",
-      "current_step": "step-1",
+      "changeset_path": "changesets/20260720-compiler-text-fitting",
+      "next_step": "step-2",
+      "current_step": "step-2",
       "steps": [
         {
           "id": "step-1",
           "label": "step-1 — 문자폭 모델 + 맞춤 함수",
-          "status": "pending"
+          "status": "completed"
         },
         {
           "id": "step-2",

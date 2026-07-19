@@ -38,6 +38,8 @@ export interface TemplateSlot {
   bounds: { x: number; y: number; width: number; height: number }
   tokenBindings: Record<string, string>
   maxChars?: number
+  /** 허용 줄 수. 미선언이면 슬롯 높이가 허용하는 만큼 — 헤드라인처럼 줄 수를 통제할 때 쓴다. */
+  maxLines?: number
   shape?: 'rectangle' | 'ellipse' | 'line'
 }
 

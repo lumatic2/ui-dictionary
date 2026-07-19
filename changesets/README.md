@@ -172,3 +172,4 @@
 | 170 | 20260720-canvas-image-typography | 2026-07-20 | TH7 step 2: CanvasDocument carries assets, image nodes render, dangling asset refs rejected, signatures rebaselined with rationale | 5/5 | complete |
 | 171 | 20260720-export-token-fidelity | 2026-07-20 | TH7 step 3: exports carry token colors/typography, refuse unresolved tokens, 12 SVGs eyeballed (text overflow found) | 4/4 | complete |
 | 172 | 20260720-text-fitting-model | 2026-07-20 | TH9 step 1: char-width model + fitText/measureOverflow, browser-measured error bounds (under 8%/over 25%) | 3/3 | complete |
+| 173 | 20260720-compiler-text-fitting | 2026-07-20 | TH9 step 2: compiler sizes text by width+lines (not height alone), overflow 2 to 0 across 24 nodes, signatures rebaselined | 4/4 | complete |

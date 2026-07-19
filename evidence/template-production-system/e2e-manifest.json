@@ -4,7 +4,7 @@
     {
       "format": "business-card",
       "blueprint": "business-card-minimal",
-      "signature": "tpl-02681302",
+      "signature": "tpl-ffbfc938",
       "gridColumns": 3,
       "slotCount": 5,
       "repeatGroups": 0,
@@ -19,7 +19,7 @@
     {
       "format": "business-card",
       "blueprint": "business-card-vertical",
-      "signature": "tpl-326e1772",
+      "signature": "tpl-36a989ba",
       "gridColumns": 2,
       "slotCount": 5,
       "repeatGroups": 0,
@@ -34,7 +34,7 @@
     {
       "format": "product-poster",
       "blueprint": "product-poster-hero",
-      "signature": "tpl-b7424373",
+      "signature": "tpl-4563d543",
       "gridColumns": 1,
       "slotCount": 5,
       "repeatGroups": 0,
@@ -49,7 +49,7 @@
     {
       "format": "product-poster",
       "blueprint": "product-poster-editorial",
-      "signature": "tpl-d2227331",
+      "signature": "tpl-39a2fef1",
       "gridColumns": 2,
       "slotCount": 6,
       "repeatGroups": 0,
@@ -64,7 +64,7 @@
     {
       "format": "infographic",
       "blueprint": "infographic-stats",
-      "signature": "tpl-d6bbe6cb",
+      "signature": "tpl-74a3edbb",
       "gridColumns": 1,
       "slotCount": 5,
       "repeatGroups": 0,
@@ -79,7 +79,7 @@
     {
       "format": "infographic",
       "blueprint": "infographic-comparison",
-      "signature": "tpl-e9ce6e65",
+      "signature": "tpl-fcedbed8",
       "gridColumns": 3,
       "slotCount": 3,
       "repeatGroups": 1,

@@ -11,6 +11,16 @@
         "product-poster-hero": "tpl-e523954b",
         "infographic-stats": "tpl-f864dd3b"
       }
+    },
+    {
+      "at": "2026-07-20",
+      "milestone": "TH9 step-2",
+      "why": "글자 크기 결정이 슬롯 높이(height*0.45)에서 폭·줄 수를 함께 보는 맞춤으로 바뀌었다. 긴 텍스트만 줄어든다 — editorial headline 126→108(2줄), stats explanation 189→104(3줄). 짧은 텍스트는 상한이 예전 규칙이라 값이 그대로다(명함 41/22/20 유지). 레이아웃 좌표는 무변경.",
+      "from": {
+        "business-card-minimal": "tpl-bb88ad00",
+        "product-poster-hero": "tpl-40154e67",
+        "infographic-stats": "tpl-c1cb1877"
+      }
     }
   ],
   "content": {
@@ -27,8 +37,8 @@
     "source": "Askewly fixed fixture"
   },
   "signatures": {
-    "business-card-minimal": "tpl-bb88ad00",
-    "product-poster-hero": "tpl-40154e67",
-    "infographic-stats": "tpl-c1cb1877"
+    "business-card-minimal": "tpl-767d040e",
+    "product-poster-hero": "tpl-09040c7f",
+    "infographic-stats": "tpl-5a75b937"
   }
 }

@@ -1,6 +1,7 @@
 import { assertValidDocument, type CanvasDocument, type CanvasNode, type LayoutConstraints } from '@askewly/canvas-core'
 import { selectBlueprint } from './selection.js'
-import type { TemplateBlueprint, TemplateProject, TemplateRequest, AssetManifestEntry } from './types.js'
+import { fitText } from './text-fitting.js'
+import type { TemplateBlueprint, TemplateProject, TemplateRequest, TemplateSlot, AssetManifestEntry } from './types.js'
 import { assertValidTemplateProject } from './validation.js'
 
 const layout: LayoutConstraints = { mode: 'absolute', horizontal: 'fixed', vertical: 'fixed', gap: 0, padding: [0, 0, 0, 0] }
@@ -28,6 +29,28 @@ const TOKEN_BINDING_PATTERN = /^[a-z][a-z0-9-]*(\.[a-z][a-z0-9-]*)+$/
 
 /** 강조 슬롯은 굵게, 나머지는 보통 두께로 조판한다. */
 const BOLD_SLOT_IDS = new Set(['headline', 'title', 'name'])
+
+/**
+ * 슬롯 텍스트의 글자 크기·행간을 정한다.
+ *
+ * 그전에는 `fontSize = 슬롯높이 × 0.45` — 슬롯 **높이**만 보고 글자 수·폭을 보지 않아
+ * 긴 문장이 캔버스 밖으로 잘렸다(TH7이 산출물 실물에서 적발). 이제 폭·줄 수를 함께 본다.
+ *
+ * 최소 크기로도 안 들어가면 `fitText`가 던진다 — 잘린 채 통과시키지 않는다.
+ */
+function fitSlotText(
+  text: string,
+  slot: Pick<TemplateSlot, 'id' | 'bounds' | 'maxLines'>,
+): { fontSize: number; lineHeight: number } {
+  // 상한은 예전 규칙을 그대로 둔다 — 짧은 텍스트는 지금 크기를 유지하고, 긴 것만 줄어든다.
+  const maxFontSize = Math.max(18, Math.round(slot.bounds.height * 0.45))
+  const fit = fitText(text, slot.bounds, {
+    maxFontSize,
+    maxLines: slot.maxLines,
+    minFontSize: 18,
+  })
+  return { fontSize: fit.fontSize, lineHeight: fit.lineHeight }
+}
 
 export function compileTemplate(request: TemplateRequest, assets: AssetManifestEntry[], blueprint: TemplateBlueprint = selectBlueprint(request)): TemplateProject {
   const rootId = `${blueprint.id}:root`
@@ -82,9 +105,8 @@ export function compileTemplate(request: TemplateRequest, assets: AssetManifestE
         text: value,
         textStyle: {
           fontFamily: 'system-ui',
-          fontSize: Math.max(18, Math.round(slot.bounds.height * 0.45)),
           fontWeight: BOLD_SLOT_IDS.has(slot.id) ? 700 : 500,
-          lineHeight: Math.max(24, Math.round(slot.bounds.height * 0.58)),
+          ...fitSlotText(value, slot),
         },
       }
     } else if (slot.kind === 'image') {
@@ -179,9 +201,8 @@ export function compileTemplate(request: TemplateRequest, assets: AssetManifestE
             text: value,
             textStyle: {
               fontFamily: 'system-ui',
-              fontSize: Math.max(18, Math.round(bounds.height * 0.45)),
               fontWeight: BOLD_SLOT_IDS.has(slot.id) ? 700 : 500,
-              lineHeight: Math.max(24, Math.round(bounds.height * 0.58)),
+              ...fitSlotText(value, { ...slot, bounds }),
             },
           }
         } else if (slot.kind === 'image') {
