@@ -161,3 +161,4 @@
 | 159 | 20260719-template-production-e2e | 2026-07-19 | TPS5 step 2: offline three-format E2E manifest | 4/4 | complete |
 | 160 | 20260720-template-core-legibility | 2026-07-20 | TH1 step 1: template-core unminify + signature regression lock | 4/4 | complete |
 | 161 | 20260720-template-studio-script-legibility | 2026-07-20 | TH1 step 2: studio + verify script unminify, browser smoke, infographic overflow finding | 4/4 | complete |
+| 162 | 20260720-template-line-length-guard | 2026-07-20 | TH1 step 3: dependency-free line-length guard + failure probe | 2/2 | complete |
