@@ -178,3 +178,4 @@
 | 176 | 20260720-export-input-derived-assertions | 2026-07-20 | TH4 step 2: assertions derived from blueprint/request/tokens, 6 content-corruption probes — caught unescaped font-family breaking every HTML style attribute | 6/6 | complete |
 | 177 | 20260720-verify-manifest-materialization | 2026-07-20 | TH4 step 3: manifest exports/negativePaths become measurements (bytes+sha256, real error codes), npm run verify chain, probe-neutering fails the gate | 5/5 | complete |
 | 178 | 20260720-horizon-cleanup-and-finding-ledger | 2026-07-20 | maintenance: horizon doc synced (TH7/TH9 were missing), duplicate TH4 plan retired, 30 open findings ledgered, close criteria 7→9 | 5/5 | complete |
+| 179 | 20260720-codex-imagegen-provider | 2026-07-20 | TH5 step 1: codex exec image provider — PNG header truth, real dimensions (not requested), cover-crop-loss rejection at 1/3, injectable runner | 4/4 | complete |
