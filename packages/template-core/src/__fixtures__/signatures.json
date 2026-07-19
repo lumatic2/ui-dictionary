@@ -1,0 +1,22 @@
+{
+  "capturedAt": "2026-07-20",
+  "reason": "TH1 가독성 복구 전 동작 기준선. 압축 해제가 동작을 바꾸지 않았음을 증명하는 대조 값이다. 청사진 구성이 의도적으로 바뀌는 TH2 전까지 이 값은 변하지 않아야 한다.",
+  "content": {
+    "name": "Askewly",
+    "role": "AI Builder",
+    "contact": "hello@askewly.com",
+    "product": "Handmade cup",
+    "headline": "Crafted for every day",
+    "cta": "View collection",
+    "title": "Editable templates",
+    "stat": "3",
+    "unit": "formats",
+    "explanation": "One structured scene preserves every editable layer.",
+    "source": "Askewly fixed fixture"
+  },
+  "signatures": {
+    "business-card-minimal": "tpl-a5add834",
+    "product-poster-hero": "tpl-e523954b",
+    "infographic-stats": "tpl-f864dd3b"
+  }
+}

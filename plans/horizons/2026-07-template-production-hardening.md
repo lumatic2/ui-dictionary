@@ -1,6 +1,6 @@
 # HORIZON — 템플릿 제작 시스템 경화
 
-> 생성: 2026-07-20 · marker: `harness:goal id="template-production-hardening"` · 상태: 승인 대기
+> 생성: 2026-07-20 · marker: `harness:goal id="template-production-hardening"` · 상태: active (승인 2026-07-20)
 > 위계: Objective(`OBJECTIVE.md`) → **Horizon**(이 문서) → Milestone(`plans/2026-07-20-th*.md`) → Step.
 > 진행 상태의 정본은 `ROADMAP.md` marker다. `template-production-system` close(2026-07-19) 직후 실사에서 드러난 갭으로 개설한다.
 
@@ -27,12 +27,12 @@
 
 | milestone | 제목 (왜 milestone 규모인가) | plan doc | 승인 | 리서치 입력 |
 |---|---|---|---|---|
-| **TH1** | 코드 가독성 복구 + 회귀 방어망 — core/studio/스크립트 3표면 + 불변 증명 | `plans/2026-07-20-th1-code-legibility.md` | 대기 | 없음 (내부 실사) |
-| **TH2** | 청사진 6종 실재화 — 타입 계약 변경 + 6청사진 + 규격 검증 | `plans/2026-07-20-th2-blueprint-archetypes.md` | 대기 | `research/2026-07-20-template-production-hardening-format-layout-taxonomy.md` |
-| **TH3** | 스튜디오 토큰 구동 + 실편집 — 토큰 배선·편집 UI·왕복 실측 | `plans/2026-07-20-th3-studio-real-editing.md` | 대기 | 위와 같음 (청사진 선택 UI) |
-| **TH4** | 검증 실체화 — exporter 실행 + negative probe | `plans/2026-07-20-th4-real-verification.md` | 대기 | 없음 (내부 실사) |
-| **TH5** | Codex imagegen 소재 공급자 — 계약 재작성 + 실호출 실증 | `plans/2026-07-20-th5-codex-imagegen-provider.md` | 대기 | `research/2026-07-20-template-production-hardening-openai-image-api-contract.md` + 2026-07-20 실호출 실측 |
-| **TH6** | 실사용 실연 + horizon close — 전 루프 1건 + 사람 게이트 | `plans/2026-07-20-th6-real-commission.md` | 대기 | 위 두 리서치 |
+| **TH1** | 코드 가독성 복구 + 회귀 방어망 — core/studio/스크립트 3표면 + 불변 증명 | `plans/2026-07-20-th1-code-legibility.md` | 승인 | 없음 (내부 실사) |
+| **TH2** | 청사진 6종 실재화 — 타입 계약 변경 + 6청사진 + 규격 검증 | `plans/2026-07-20-th2-blueprint-archetypes.md` | 승인 | `research/2026-07-20-template-production-hardening-format-layout-taxonomy.md` |
+| **TH3** | 스튜디오 토큰 구동 + 실편집 — 토큰 배선·편집 UI·왕복 실측 | `plans/2026-07-20-th3-studio-real-editing.md` | 승인 | 위와 같음 (청사진 선택 UI) |
+| **TH4** | 검증 실체화 — exporter 실행 + negative probe | `plans/2026-07-20-th4-real-verification.md` | 승인 | 없음 (내부 실사) |
+| **TH5** | Codex imagegen 소재 공급자 — 계약 재작성 + 실호출 실증 | `plans/2026-07-20-th5-codex-imagegen-provider.md` | 승인 | `research/2026-07-20-template-production-hardening-openai-image-api-contract.md` + 2026-07-20 실호출 실측 |
+| **TH6** | 실사용 실연 + horizon close — 전 루프 1건 + 사람 게이트 | `plans/2026-07-20-th6-real-commission.md` | 승인 | 위 두 리서치 |
 
 ## 닫는 기준
 

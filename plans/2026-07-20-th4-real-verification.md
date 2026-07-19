@@ -1,7 +1,7 @@
 # PLAN — TH4 검증 실체화
 
 > 생성: 2026-07-20 · 갈래: tooling · scope 결정: exporter 실제 실행·산출물 파싱 검사·negative probe까지
-Status: 승인 대기
+Status: approved (2026-07-20)
 
 ## 북극성 → horizon → milestone → step (위계)
 - **북극성**: Askewly Design을 공개 참고 시스템이자 에이전트가 직접 쓰는 구현 시스템으로 만든다. (← `OBJECTIVE.md`)

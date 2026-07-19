@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "active_work_id": "TPS5",
+  "active_work_id": "th1-code-legibility",
   "works": {
     "SFB1": {
       "title": "Structure Contract And Clean Production",
@@ -2247,6 +2247,56 @@
       "completion_summary": "실제 호출 없이 GPT Image 2 소재 공급자 경계와 provenance·실패 처리를 검증하고 세 형식 전체 제작 루프를 재현했습니다",
       "completed": "2026-07-19",
       "notified_at": "2026-07-18T20:25:14.055324+00:00"
+    },
+    "th1-code-legibility": {
+      "work_id": "th1-code-legibility",
+      "horizon_id": "template-production-hardening",
+      "milestone_id": "TH1",
+      "status": "active",
+      "plan_path": "plans/2026-07-20-th1-code-legibility.md",
+      "changeset_path": "changesets/20260720-template-core-legibility",
+      "next_step": "step-1",
+      "current_step": "step-1",
+      "steps": [
+        {
+          "id": "step-1",
+          "label": "step-1 — core-legibility",
+          "status": "pending"
+        },
+        {
+          "id": "step-2",
+          "label": "step-2 — studio-and-script-legibility",
+          "status": "pending"
+        },
+        {
+          "id": "step-3",
+          "label": "step-3 — line-length-guard",
+          "status": "pending"
+        }
+      ],
+      "execution_mode": "continuous",
+      "approval": {
+        "approved_by": "user",
+        "approved_at": "2026-07-20",
+        "plan_sha256": "732fbd56501ad964e334f6a1afeda3dfb16ed78c016e46e0dfe373b1502a59d4"
+      },
+      "allowed_stop_reasons": [
+        "completed",
+        "blocked",
+        "decision_required",
+        "risk_gate",
+        "secret_required",
+        "external_authority_required",
+        "user_stopped"
+      ],
+      "stop_reason": null,
+      "stop_detail": {},
+      "session_ids": [
+        "claude:f84fec52-c73d-4a49-b95f-53d9e9345cb2"
+      ],
+      "owner_session_uuid": "claude:f84fec52-c73d-4a49-b95f-53d9e9345cb2",
+      "updated_at": "2026-07-20",
+      "notes": "Registered atomically by canonical harness approve_harness_plan.py after plan validation."
     }
   }
 }

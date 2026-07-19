@@ -1,7 +1,7 @@
 # PLAN — TH2 청사진 6종 실재화
 
 > 생성: 2026-07-20 · 갈래: product · scope 결정: 포맷당 2개의 구조적으로 구별되는 청사진과 그 규격 검증까지
-Status: 승인 대기
+Status: approved (2026-07-20)
 
 ## 북극성 → horizon → milestone → step (위계)
 - **북극성**: Askewly Design을 공개 참고 시스템이자 에이전트가 직접 쓰는 구현 시스템으로 만든다. (← `OBJECTIVE.md`)

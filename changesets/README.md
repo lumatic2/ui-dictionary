@@ -159,3 +159,4 @@
 | 157 | 20260719-template-pack-catalog | 2026-07-19 | TPS4 step 3: 6-blueprint catalog matrix | 4/4 | complete |
 | 158 | 20260719-offline-image-provider | 2026-07-19 | TPS5 step 1: provider-neutral + GPT Image 2 frozen adapter | 4/4 | complete |
 | 159 | 20260719-template-production-e2e | 2026-07-19 | TPS5 step 2: offline three-format E2E manifest | 4/4 | complete |
+| 160 | 20260720-template-core-legibility | 2026-07-20 | TH1 step 1: template-core unminify + signature regression lock | 4/4 | complete |

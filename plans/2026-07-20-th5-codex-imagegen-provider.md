@@ -1,7 +1,7 @@
 # PLAN — TH5 Codex imagegen 소재 공급자
 
 > 생성: 2026-07-20 · 갈래: tooling · scope 결정: OpenAI HTTP 어댑터 은퇴·codex exec 경유 공급자 재작성·실호출 실증까지
-Status: 승인 대기
+Status: approved (2026-07-20)
 
 ## 북극성 → horizon → milestone → step (위계)
 - **북극성**: Askewly Design을 공개 참고 시스템이자 에이전트가 직접 쓰는 구현 시스템으로 만든다. (← `OBJECTIVE.md`)

@@ -1,7 +1,7 @@
 # PLAN — TH3 스튜디오 토큰 구동 + 실편집
 
 > 생성: 2026-07-20 · 갈래: product · scope 결정: 토큰 실배선·값 편집·이미지 교체·청사진 6종 선택·왕복 실측까지
-Status: 승인 대기
+Status: approved (2026-07-20)
 
 ## 북극성 → horizon → milestone → step (위계)
 - **북극성**: Askewly Design을 공개 참고 시스템이자 에이전트가 직접 쓰는 구현 시스템으로 만든다. (← `OBJECTIVE.md`)

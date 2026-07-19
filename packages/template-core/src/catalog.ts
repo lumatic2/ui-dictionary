@@ -8,6 +8,20 @@ export function listBlueprints(filter: { format?: TemplateFormat; density?: Temp
     .sort((a, b) => a.format.localeCompare(b.format) || a.id.localeCompare(b.id))
 }
 
+/** 재단선에서 안쪽으로 확보하는 여백(px). 필수 콘텐츠는 이 안에 들어와야 한다. */
+const SAFE_AREA_INSET = 24
+
+type Bounds = { x: number; y: number; width: number; height: number }
+
+function violatesSafeArea(bounds: Bounds, canvasWidth: number, canvasHeight: number): boolean {
+  return (
+    bounds.x < SAFE_AREA_INSET ||
+    bounds.y < SAFE_AREA_INSET ||
+    bounds.x + bounds.width > canvasWidth - SAFE_AREA_INSET ||
+    bounds.y + bounds.height > canvasHeight - SAFE_AREA_INSET
+  )
+}
+
 export function validateFormatIntegrity(project: TemplateProject): string[] {
   const errors: string[] = []
   const { format, content } = project.request
@@ -18,6 +32,12 @@ export function validateFormatIntegrity(project: TemplateProject): string[] {
     if (!content.stat?.match(/\d/)) errors.push('NUMERIC_VALUE_REQUIRED')
     if (!content.unit?.trim()) errors.push('UNIT_REQUIRED')
   }
-  for (const node of Object.values(project.scene.nodes)) if (node.parentId && (node.bounds.x < 24 || node.bounds.y < 24 || node.bounds.x + node.bounds.width > project.request.width - 24 || node.bounds.y + node.bounds.height > project.request.height - 24) && node.kind !== 'shape') errors.push(`SAFE_AREA:${node.id}`)
+  for (const node of Object.values(project.scene.nodes)) {
+    // 배경 도형은 재단선까지 채우는 게 정상이므로 안전영역 검사에서 뺀다.
+    if (!node.parentId || node.kind === 'shape') continue
+    if (violatesSafeArea(node.bounds, project.request.width, project.request.height)) {
+      errors.push(`SAFE_AREA:${node.id}`)
+    }
+  }
   return errors
 }

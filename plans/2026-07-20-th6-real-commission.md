@@ -1,7 +1,7 @@
 # PLAN — TH6 실사용 실연 + horizon close
 
 > 생성: 2026-07-20 · 갈래: product · scope 결정: 실제 의뢰 1건의 전 루프 관측과 닫는 기준 7항 대조까지
-Status: 승인 대기
+Status: approved (2026-07-20)
 
 ## 북극성 → horizon → milestone → step (위계)
 - **북극성**: Askewly Design을 공개 참고 시스템이자 에이전트가 직접 쓰는 구현 시스템으로 만든다. (← `OBJECTIVE.md`)
