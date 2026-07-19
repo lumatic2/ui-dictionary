@@ -170,3 +170,4 @@
 | 168 | 20260720-askewly-design-roundtrip-and-studio-retire | 2026-07-20 | TH3 step 3: exporters moved to core, export/import roundtrip measured in app, template-studio retired | 4/4 | complete |
 | 169 | 20260720-canvas-token-paint | 2026-07-20 | TH7 step 1: canvas paints template tokens (source split, no silent fallback), line-length guard repaired | 3/3 | complete |
 | 170 | 20260720-canvas-image-typography | 2026-07-20 | TH7 step 2: CanvasDocument carries assets, image nodes render, dangling asset refs rejected, signatures rebaselined with rationale | 5/5 | complete |
+| 171 | 20260720-export-token-fidelity | 2026-07-20 | TH7 step 3: exports carry token colors/typography, refuse unresolved tokens, 12 SVGs eyeballed (text overflow found) | 4/4 | complete |
