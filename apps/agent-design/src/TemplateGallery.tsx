@@ -11,6 +11,7 @@ import {
   templateSignature,
   validateTemplateProject,
   DEFAULT_TOKEN_SET_ID,
+  type TemplateBlueprint,
   type TemplateProject,
 } from '@askewly/template-core'
 
@@ -54,11 +55,14 @@ const FORMAT_LABELS: Record<string, string> = {
   infographic: '인포그래픽',
 }
 
-/** 청사진이 무엇으로 구별되는지 — 좌표가 아니라 구조로 말한다. */
-function structureSummary(blueprintId: string): string {
-  const blueprint = formatPackCatalog.find((item) => item.id === blueprintId)
-  // 카드가 카탈로그에 없는 id를 들고 있으면(청사진 은퇴·오타) 화면을 깨뜨리지 않고 그렇다고 말한다.
-  if (!blueprint) return '구조 정보 없음'
+/**
+ * 청사진이 무엇으로 구별되는지 — 좌표가 아니라 구조로 말한다.
+ *
+ * **청사진 객체를 직접 받는다.** 전에는 id로 카탈로그를 되찾다가 못 찾으면 조용히
+ * '구조 정보 없음'을 표시했다. 그 상태면 카드 자체가 잘못된 것인데 화면은 정상처럼 보인다.
+ * 카드가 이미 들고 있는 객체를 그대로 쓰면 그 분기가 **존재할 수 없다**.
+ */
+function structureSummary(blueprint: TemplateBlueprint): string {
   const repeated = (blueprint.repeatGroups ?? []).reduce(
     (total, group) => total + group.unitSlots.length,
     0,
@@ -143,7 +147,7 @@ export function TemplateGallery({ onOpen, project, document }: Props) {
             >
               <span className="template-format">{FORMAT_LABELS[blueprint.format]}</span>
               <strong>{blueprint.id}</strong>
-              <span className="template-structure">{structureSummary(blueprint.id)}</span>
+              <span className="template-structure">{structureSummary(blueprint)}</span>
               <span className="template-size">
                 {blueprint.width} × {blueprint.height}
               </span>

@@ -183,3 +183,4 @@
 | 181 | 20260720-retire-openai-image-adapter | 2026-07-20 | TH5 step 3: removed the broken OpenAI image adapter (response type never matched the real API) — 439 tests green after removal | 5/5 | complete |
 | 182 | 20260720-editor-state-persistence | 2026-07-20 | TH10 step 1: separated editingBase from dev fixture — saving a template no longer serializes the 1,000-node fixture; size toggle can't destroy an open template | 4/4 | complete |
 | 183 | 20260720-token-set-parity | 2026-07-20 | TH10 step 2: dropdown options generated from real registries (was misreporting warm as default), membership check beyond shape check, disabled select state styled | 4/4 | complete |
+| 184 | 20260720-structured-input-rejection | 2026-07-20 | TH10 step 3: malformed template input rejected with codes instead of TypeError, gallery silent fallback made impossible by passing the object, full browser walkthrough | 5/5 | complete |
