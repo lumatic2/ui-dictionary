@@ -2459,9 +2459,9 @@
       "milestone_id": "TH9",
       "status": "active",
       "plan_path": "plans/2026-07-20-th9-text-fitting.md",
-      "changeset_path": "changesets/20260720-compiler-text-fitting",
-      "next_step": "step-2",
-      "current_step": "step-2",
+      "changeset_path": "changesets/20260720-svg-multiline-and-overflow-gate",
+      "next_step": "step-3",
+      "current_step": "step-3",
       "steps": [
         {
           "id": "step-1",
@@ -2471,7 +2471,7 @@
         {
           "id": "step-2",
           "label": "step-2 — 컴파일러가 맞춤을 쓴다",
-          "status": "pending"
+          "status": "completed"
         },
         {
           "id": "step-3",

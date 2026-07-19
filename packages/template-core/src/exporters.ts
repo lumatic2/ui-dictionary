@@ -1,5 +1,6 @@
 import type { CanvasNode } from '@askewly/canvas-core'
 import { resolveTokenSet, type TokenSet } from './tokens.js'
+import { wrapLines } from './text-fitting.js'
 
 /**
  * 템플릿 내보내기 — JSON(왕복용 정본) / HTML / SVG.
@@ -135,7 +136,17 @@ export function exportSvg(project: TemplateProject) {
           `font-family="${esc(family)}"`,
           color ? `fill="${esc(color)}"` : '',
         ].filter(Boolean).join(' ')
-        return `<text ${attrs}>${esc(node.text)}</text>`
+        // SVG `<text>`는 자동 줄바꿈이 없다. 화면과 같은 함수로 줄을 나눠 tspan으로 낸다 —
+        // 그러지 않으면 한 줄로 뻗어 캔버스를 넘친다.
+        const lines = wrapLines(node.text, node.textStyle.fontSize, node.bounds.width)
+        const spans = lines
+          .map((line, index) =>
+            index === 0
+              ? `<tspan x="${node.bounds.x}">${esc(line)}</tspan>`
+              : `<tspan x="${node.bounds.x}" dy="${node.textStyle.lineHeight}">${esc(line)}</tspan>`,
+          )
+          .join('')
+        return `<text ${attrs}>${spans}</text>`
       }
       if (node.kind === 'image') {
         const href = esc(assets.get(node.assetId) ?? '')
