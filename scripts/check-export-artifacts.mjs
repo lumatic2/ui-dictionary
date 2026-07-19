@@ -1,7 +1,7 @@
 import { mkdir, rm, writeFile } from 'node:fs/promises'
 import { dirname, resolve } from 'node:path'
 import { fileURLToPath } from 'node:url'
-import { XMLValidator } from 'fast-xml-parser'
+import { XMLParser, XMLValidator } from 'fast-xml-parser'
 import { parse as parseHtml } from 'parse5'
 import {
   createTemplateProject,
@@ -9,6 +9,7 @@ import {
   exportJson,
   exportSvg,
   formatPackCatalog,
+  resolveTokenSet,
 } from '../packages/template-core/dist/index.js'
 
 /**
@@ -25,6 +26,118 @@ import {
 const TOKEN_SET_ID = 'askewly.warm'
 const repoRoot = resolve(dirname(fileURLToPath(import.meta.url)), '..')
 const outputDir = resolve(repoRoot, 'tmp/th4-exports')
+
+// ─── 기대값 — 근거를 산출물이 아니라 입력에서 가져온다 ────────────────────────
+
+/**
+ * 청사진 선언 + 요청 내용 + 토큰 세트에서 "산출물에 있어야 할 것"을 유도한다.
+ *
+ * 셋 다 exporter가 만든 값이 아니다. 청사진은 손으로 쓴 선언이고, 내용은 요청이며,
+ * 색·글꼴은 `tokens.ts`가 정본이다. exporter가 무엇을 냈는지는 보지 않는다.
+ */
+function expectationsFor(blueprint, project) {
+  const set = resolveTokenSet(project.request.tokenSetId)
+  if (!set) throw new Error(`토큰 세트 '${project.request.tokenSetId}'를 찾을 수 없다`)
+
+  const texts = []
+  const colors = new Set()
+  const fonts = new Set()
+  const assetUris = new Set()
+
+  const canvas = set.tokens['surface.canvas']?.value
+  if (canvas) colors.add(canvas)
+
+  const readSlot = (slot, content) => {
+    for (const binding of [slot.tokenBindings?.fill, slot.tokenBindings?.color]) {
+      const value = binding ? set.tokens[binding]?.value : null
+      if (value) colors.add(value)
+    }
+    const family = slot.tokenBindings?.fontFamily
+      ? set.tokens[slot.tokenBindings.fontFamily]?.value
+      : null
+    if (family) fonts.add(family)
+
+    if (slot.kind === 'text' && slot.contentKey) {
+      const value = content?.[slot.contentKey]
+      if (value) texts.push({ slot: slot.id, value })
+    }
+    if (slot.kind === 'image' && slot.assetRole) {
+      const asset = project.assets.find((entry) => entry.role === slot.assetRole)
+      if (asset) assetUris.add(asset.uri)
+    }
+  }
+
+  for (const slot of blueprint.slots) readSlot(slot, project.request.content)
+
+  for (const group of blueprint.repeatGroups ?? []) {
+    const list = project.request.lists?.[group.listKey] ?? []
+    const units = list.slice(0, group.maxUnits)
+    for (const unit of units) for (const slot of group.unitSlots) readSlot(slot, unit)
+  }
+
+  return { texts, colors: [...colors], fonts: [...fonts], assetUris: [...assetUris], set }
+}
+
+/** 공백을 지운 비교용 문자열. SVG는 줄바꿈으로 tspan이 쪼개지므로 이어붙여 본다. */
+const squash = (value) => value.replace(/\s+/g, '')
+
+/** 기대 텍스트·색·글꼴·자산이 산출물에 실재하는지. 형식 무관 공통 판정. */
+function checkPresence(expectations, { text, attributes }) {
+  const problems = []
+  const haystack = squash(text)
+  const blob = attributes.join('|')
+
+  for (const entry of expectations.texts) {
+    if (!haystack.includes(squash(entry.value))) {
+      problems.push(`요청 내용 '${entry.slot}'(${entry.value})가 산출물에 없다`)
+    }
+  }
+  for (const color of expectations.colors) {
+    if (!blob.includes(color)) problems.push(`토큰 색 ${color}이 산출물에 없다`)
+  }
+  for (const font of expectations.fonts) {
+    if (!blob.includes(font)) problems.push(`토큰 글꼴 ${font}이 산출물에 없다`)
+  }
+  for (const uri of expectations.assetUris) {
+    if (!blob.includes(uri)) problems.push(`자산 URI ${uri}가 산출물에 없다`)
+  }
+  return problems
+}
+
+/** SVG를 XML 트리로 읽어 텍스트와 속성값을 모은다. */
+function readSvgDocument(svg) {
+  const parser = new XMLParser({ ignoreAttributes: false, attributeNamePrefix: '', preserveOrder: true })
+  const text = []
+  const attributes = []
+  const walk = (nodes) => {
+    for (const node of nodes ?? []) {
+      for (const [key, value] of Object.entries(node)) {
+        if (key === ':@') {
+          for (const attribute of Object.values(value)) attributes.push(String(attribute))
+        } else if (key === '#text') {
+          text.push(String(value))
+        } else if (Array.isArray(value)) {
+          walk(value)
+        }
+      }
+    }
+  }
+  walk(parser.parse(svg))
+  return { text: text.join(''), attributes }
+}
+
+/** HTML을 parse5 트리로 읽어 텍스트와 속성값을 모은다(style 속성 포함). */
+function readHtmlDocument(html) {
+  const text = []
+  const attributes = []
+  const walk = (node) => {
+    if (node.nodeName === '#text') text.push(node.value)
+    for (const attribute of node.attrs ?? []) attributes.push(attribute.value)
+    for (const child of node.childNodes ?? []) walk(child)
+  }
+  walk(parseHtml(html))
+  return { text: text.join(''), attributes }
+}
 
 /** 산출물 하나에 대한 검사 결과. `problems`가 비어 있어야 통과다. */
 function inspectJson(text, project) {
@@ -44,7 +157,7 @@ function inspectJson(text, project) {
   return { problems }
 }
 
-function inspectSvg(text, project) {
+function inspectSvg(text, project, expectations, blueprint) {
   const problems = []
   const valid = XMLValidator.validate(text)
   if (valid !== true) {
@@ -55,6 +168,16 @@ function inspectSvg(text, project) {
   const painted = countPaintedElements(text)
   const expected = paintableNodes(project).length
   if (painted !== expected) problems.push(`SVG 화면 요소 ${painted} ≠ 그려야 할 노드 ${expected}`)
+
+  const document = readSvgDocument(text)
+  problems.push(...checkPresence(expectations, document))
+  // 치수는 청사진 선언에서 온다.
+  if (!new RegExp(`width="${blueprint.width}"`).test(text)) {
+    problems.push(`SVG 폭이 청사진 ${blueprint.width}과 다르다`)
+  }
+  if (!new RegExp(`height="${blueprint.height}"`).test(text)) {
+    problems.push(`SVG 높이가 청사진 ${blueprint.height}과 다르다`)
+  }
   return { problems }
 }
 
@@ -64,15 +187,23 @@ function countPaintedElements(svg) {
   return matches.length - 1
 }
 
-function inspectHtml(text, project) {
+function inspectHtml(text, project, expectations, blueprint) {
   const problems = []
-  const document = parseHtml(text)
-  const main = findElement(document, 'main')
+  const main = findElement(parseHtml(text), 'main')
   if (!main) return { problems: ['HTML에 <main> 프레임이 없다'] }
   const children = (main.childNodes ?? []).filter((node) => node.tagName)
   const expected = paintableNodes(project).length
   if (children.length !== expected) {
     problems.push(`HTML 자식 요소 ${children.length} ≠ 그려야 할 노드 ${expected}`)
+  }
+
+  problems.push(...checkPresence(expectations, readHtmlDocument(text)))
+  const frame = (main.attrs ?? []).find((attribute) => attribute.name === 'style')?.value ?? ''
+  if (!frame.includes(`width:${blueprint.width}px`)) {
+    problems.push(`HTML 프레임 폭이 청사진 ${blueprint.width}과 다르다`)
+  }
+  if (!frame.includes(`height:${blueprint.height}px`)) {
+    problems.push(`HTML 프레임 높이가 청사진 ${blueprint.height}과 다르다`)
   }
   return { problems }
 }
@@ -103,13 +234,14 @@ async function run() {
 
   for (const blueprint of formatPackCatalog) {
     const project = createTemplateProject({ blueprintId: blueprint.id, tokenSetId: TOKEN_SET_ID })
+    const expectations = expectationsFor(blueprint, project)
 
     for (const [format, spec] of Object.entries(INSPECTORS)) {
       const text = spec.exporter(project)
       const path = resolve(outputDir, `${blueprint.id}.${spec.extension}`)
       await writeFile(path, text, 'utf8')
 
-      const { problems } = spec.inspect(text, project)
+      const { problems } = spec.inspect(text, project, expectations, blueprint)
       artifacts.push({ blueprint: blueprint.id, format, bytes: Buffer.byteLength(text, 'utf8') })
       for (const problem of problems) failures.push(`${blueprint.id} / ${format}: ${problem}`)
     }
@@ -125,25 +257,58 @@ async function run() {
  * (은퇴한 경로를 가리킨 채 죽어 있던 `check-line-length.mjs` 선례).
  */
 function selfCheck() {
-  const project = createTemplateProject({ blueprintId: formatPackCatalog[0].id, tokenSetId: TOKEN_SET_ID })
+  const blueprint = formatPackCatalog[0]
+  const project = createTemplateProject({ blueprintId: blueprint.id, tokenSetId: TOKEN_SET_ID })
+  const expectations = expectationsFor(blueprint, project)
   const misses = []
+  let probes = 0
+  const passes = (inspect, text) => {
+    probes += 1
+    return inspect(text, project, expectations, blueprint).problems.length === 0
+  }
 
-  const truncatedSvg = exportSvg(project).slice(0, 400)
-  if (inspectSvg(truncatedSvg, project).problems.length === 0) misses.push('잘린 SVG를 통과시킨다')
+  // ① 형식 훼손 — 범용 파서가 잡아야 한다.
+  if (passes(inspectSvg, exportSvg(project).slice(0, 400))) misses.push('잘린 SVG를 통과시킨다')
+  if (passes(inspectSvg, exportSvg(project).replace('</svg>', ''))) misses.push('닫히지 않은 SVG를 통과시킨다')
+  if (passes(inspectHtml, exportHtml(project).replace(/<div[^>]*>.*?<\/div>/, ''))) {
+    misses.push('요소가 빠진 HTML을 통과시킨다')
+  }
+  if (passes(inspectJson, exportJson(project).slice(0, -1))) misses.push('잘린 JSON을 통과시킨다')
 
-  const brokenSvg = exportSvg(project).replace('</svg>', '')
-  if (inspectSvg(brokenSvg, project).problems.length === 0) misses.push('닫히지 않은 SVG를 통과시킨다')
+  // ② 내용 훼손 — 형식은 멀쩡한데 값이 틀린 경우. 입력 유래 단언이 유일한 방어선이다.
+  const color = expectations.colors[0]
+  if (passes(inspectSvg, exportSvg(project).replaceAll(color, '#ff00ff'))) {
+    misses.push(`SVG의 토큰 색 ${color} 치환을 통과시킨다`)
+  }
+  if (passes(inspectHtml, exportHtml(project).replaceAll(color, '#ff00ff'))) {
+    misses.push(`HTML의 토큰 색 ${color} 치환을 통과시킨다`)
+  }
 
-  const strippedHtml = exportHtml(project).replace(/<div[^>]*>.*?<\/div>/, '')
-  if (inspectHtml(strippedHtml, project).problems.length === 0) misses.push('요소가 빠진 HTML을 통과시킨다')
+  const phrase = expectations.texts[0]?.value
+  if (phrase && passes(inspectSvg, exportSvg(project).replaceAll(phrase, ''))) {
+    misses.push(`SVG의 요청 문자열 '${phrase}' 삭제를 통과시킨다`)
+  }
+  if (phrase && passes(inspectHtml, exportHtml(project).replaceAll(phrase, ''))) {
+    misses.push(`HTML의 요청 문자열 '${phrase}' 삭제를 통과시킨다`)
+  }
 
-  const brokenJson = exportJson(project).slice(0, -1)
-  if (inspectJson(brokenJson, project).problems.length === 0) misses.push('잘린 JSON을 통과시킨다')
+  const uri = expectations.assetUris[0]
+  if (uri && passes(inspectSvg, exportSvg(project).replaceAll(uri, ''))) {
+    misses.push('SVG의 자산 URI 삭제를 통과시킨다')
+  }
+  if (uri && passes(inspectHtml, exportHtml(project).replaceAll(uri, ''))) {
+    misses.push('HTML의 자산 URI 삭제를 통과시킨다')
+  }
 
-  return misses
+  // 훼손 대상이 애초에 없으면 probe가 조용히 사라진다 — 그것도 실패다.
+  if (!color) misses.push('기대 토큰 색이 0개다 — 색 probe가 무의미하다')
+  if (!phrase) misses.push('기대 요청 문자열이 0개다 — 내용 probe가 무의미하다')
+  if (!uri) misses.push('기대 자산 URI가 0개다 — 자산 probe가 무의미하다')
+
+  return { misses, probes }
 }
 
-const misses = selfCheck()
+const { misses, probes } = selfCheck()
 if (misses.length) {
   console.error('export-artifacts: FAIL — 검사기가 훼손을 잡지 못한다')
   for (const miss of misses) console.error(`  자기검사: ${miss}`)
@@ -158,4 +323,4 @@ if (failures.length) {
   process.exit(1)
 }
 
-console.log(`export-artifacts: PASS (산출물 ${artifacts.length}개 생성·파싱, 자기검사 ${4}건 통과)`)
+console.log(`export-artifacts: PASS (산출물 ${artifacts.length}개 생성·파싱, 자기검사 ${probes}건 통과)`)

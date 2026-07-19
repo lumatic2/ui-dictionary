@@ -47,6 +47,15 @@ describe('내보내기 3종', () => {
     expect(exportSvg(project)).not.toContain('<script>')
   })
 
+  it('글꼴 스택의 따옴표가 style 속성을 끊지 않는다', () => {
+    // `Georgia, "Noto Serif KR", serif`를 날것으로 넣으면 style="..."이 그 자리에서 닫힌다.
+    // TH4 산출물 게이트가 적발: 파서가 style을 앞부분만 읽어 글꼴이 사라졌다.
+    const project = createTemplateProject({ blueprintId: 'business-card-minimal' })
+    const html = exportHtml(project)
+    expect(html).toContain('font-family:Georgia, &quot;Noto Serif KR&quot;, serif')
+    expect(html).not.toContain('font-family:Georgia, "Noto Serif KR"')
+  })
+
   it('반복 유닛 노드도 내보내기에 포함된다', () => {
     const project = createTemplateProject({ blueprintId: 'infographic-comparison' })
     const svg = exportSvg(project)

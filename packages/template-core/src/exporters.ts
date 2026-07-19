@@ -94,7 +94,9 @@ export function exportHtml(project: TemplateProject) {
         const family = tokenValue(set, node.tokenBindings.fontFamily, node.id) ?? node.textStyle.fontFamily
         const type = [
           color ? `color:${color}` : '',
-          `font-family:${family}`,
+          // 글꼴 스택은 `Georgia, "Noto Serif KR", serif`처럼 따옴표를 품는다.
+          // 이스케이프하지 않으면 style 속성이 그 자리에서 끊긴다.
+          `font-family:${esc(family)}`,
           `font-size:${node.textStyle.fontSize}px`,
           `font-weight:${node.textStyle.fontWeight}`,
           `line-height:${node.textStyle.lineHeight}px`,

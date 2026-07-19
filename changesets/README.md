@@ -175,3 +175,4 @@
 | 173 | 20260720-compiler-text-fitting | 2026-07-20 | TH9 step 2: compiler sizes text by width+lines (not height alone), overflow 2 to 0 across 24 nodes, signatures rebaselined | 4/4 | complete |
 | 174 | 20260720-svg-multiline-and-overflow-gate | 2026-07-20 | TH9 step 3: SVG tspan multiline + overflow gate over 48 content combos (probe caught a tautological gate) | 4/4 | complete |
 | 175 | 20260720-export-artifact-parsing | 2026-07-20 | TH4 step 1: exporters actually run, 18 artifacts parsed by general-purpose parsers, resident self-check | 5/5 | complete |
+| 176 | 20260720-export-input-derived-assertions | 2026-07-20 | TH4 step 2: assertions derived from blueprint/request/tokens, 6 content-corruption probes — caught unescaped font-family breaking every HTML style attribute | 6/6 | complete |
