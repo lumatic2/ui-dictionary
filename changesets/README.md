@@ -176,3 +176,4 @@
 | 174 | 20260720-svg-multiline-and-overflow-gate | 2026-07-20 | TH9 step 3: SVG tspan multiline + overflow gate over 48 content combos (probe caught a tautological gate) | 4/4 | complete |
 | 175 | 20260720-export-artifact-parsing | 2026-07-20 | TH4 step 1: exporters actually run, 18 artifacts parsed by general-purpose parsers, resident self-check | 5/5 | complete |
 | 176 | 20260720-export-input-derived-assertions | 2026-07-20 | TH4 step 2: assertions derived from blueprint/request/tokens, 6 content-corruption probes — caught unescaped font-family breaking every HTML style attribute | 6/6 | complete |
+| 177 | 20260720-verify-manifest-materialization | 2026-07-20 | TH4 step 3: manifest exports/negativePaths become measurements (bytes+sha256, real error codes), npm run verify chain, probe-neutering fails the gate | 5/5 | complete |

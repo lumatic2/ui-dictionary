@@ -10,9 +10,21 @@
       "repeatGroups": 0,
       "printSpec": "us-business-card-3.5x2",
       "exports": [
-        "json",
-        "html",
-        "svg"
+        {
+          "format": "json",
+          "bytes": 6361,
+          "sha256": "fd0406b962c1"
+        },
+        {
+          "format": "html",
+          "bytes": 883,
+          "sha256": "c16305b99159"
+        },
+        {
+          "format": "svg",
+          "bytes": 645,
+          "sha256": "18db40c8e08b"
+        }
       ],
       "network": false
     },
@@ -25,9 +37,21 @@
       "repeatGroups": 0,
       "printSpec": "kr-business-card-90x50",
       "exports": [
-        "json",
-        "html",
-        "svg"
+        {
+          "format": "json",
+          "bytes": 6395,
+          "sha256": "7ffc3dffa370"
+        },
+        {
+          "format": "html",
+          "bytes": 885,
+          "sha256": "ef2ede5070fa"
+        },
+        {
+          "format": "svg",
+          "bytes": 647,
+          "sha256": "c5a95730b351"
+        }
       ],
       "network": false
     },
@@ -40,9 +64,21 @@
       "repeatGroups": 0,
       "printSpec": null,
       "exports": [
-        "json",
-        "html",
-        "svg"
+        {
+          "format": "json",
+          "bytes": 7211,
+          "sha256": "6576be85eeb5"
+        },
+        {
+          "format": "html",
+          "bytes": 1063,
+          "sha256": "82e18ee228a8"
+        },
+        {
+          "format": "svg",
+          "bytes": 780,
+          "sha256": "4e76b751a886"
+        }
       ],
       "network": false
     },
@@ -55,9 +91,21 @@
       "repeatGroups": 0,
       "printSpec": null,
       "exports": [
-        "json",
-        "html",
-        "svg"
+        {
+          "format": "json",
+          "bytes": 8217,
+          "sha256": "bf4035aaade2"
+        },
+        {
+          "format": "html",
+          "bytes": 1182,
+          "sha256": "a6ca4e3c3f08"
+        },
+        {
+          "format": "svg",
+          "bytes": 867,
+          "sha256": "da96301b39c9"
+        }
       ],
       "network": false
     },
@@ -70,9 +118,21 @@
       "repeatGroups": 0,
       "printSpec": null,
       "exports": [
-        "json",
-        "html",
-        "svg"
+        {
+          "format": "json",
+          "bytes": 7330,
+          "sha256": "76c1a0903ded"
+        },
+        {
+          "format": "html",
+          "bytes": 1181,
+          "sha256": "a509a02c2733"
+        },
+        {
+          "format": "svg",
+          "bytes": 937,
+          "sha256": "0dd4475baac1"
+        }
       ],
       "network": false
     },
@@ -85,19 +145,50 @@
       "repeatGroups": 1,
       "printSpec": null,
       "exports": [
-        "json",
-        "html",
-        "svg"
+        {
+          "format": "json",
+          "bytes": 11473,
+          "sha256": "2e8d8e76ad0c"
+        },
+        {
+          "format": "html",
+          "bytes": 2013,
+          "sha256": "25b95fb0726e"
+        },
+        {
+          "format": "svg",
+          "bytes": 1448,
+          "sha256": "ee17d7833f31"
+        }
       ],
       "network": false
     }
   ],
   "negativePaths": [
-    "missing-content",
-    "text-overflow",
-    "missing-asset",
-    "invalid-token",
-    "source-unit-integrity",
-    "provider-invalid-mime-size"
+    {
+      "id": "missing-content",
+      "rejected": true,
+      "code": "CONTENT_INCOMPLETE"
+    },
+    {
+      "id": "text-overflow",
+      "rejected": true,
+      "code": "TEXT_OVERFLOW"
+    },
+    {
+      "id": "missing-asset",
+      "rejected": true,
+      "code": "BROKEN_ASSET_REFERENCE"
+    },
+    {
+      "id": "invalid-token",
+      "rejected": true,
+      "code": "TOKEN_SET_NOT_FOUND"
+    },
+    {
+      "id": "repeat-count-out-of-range",
+      "rejected": true,
+      "code": "REPEAT_COUNT_OUT_OF_RANGE"
+    }
   ]
 }
