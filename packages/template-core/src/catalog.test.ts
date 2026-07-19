@@ -30,6 +30,15 @@ const content = {
   source: 'Askewly fixture',
 }
 
+/** 반복 유닛 청사진용 목록 데이터. 고정 슬롯만 쓰는 청사진은 이걸 무시한다. */
+const lists = {
+  comparisons: [
+    { label: '명함', value: '5 슬롯' },
+    { label: '제품 포스터', value: '5 슬롯' },
+    { label: '인포그래픽', value: '5 슬롯' },
+  ],
+}
+
 describe('six-format catalog', () => {
   it('exposes 6 blueprints and compiles all', () => {
     expect(listBlueprints()).toHaveLength(6)
@@ -42,6 +51,7 @@ describe('six-format catalog', () => {
         height: blueprint.height,
         tokenSetId: 'brand.test',
         content,
+        lists,
       }
       const project = compileTemplate(request, assets, blueprint)
       expect(validateFormatIntegrity(project)).toEqual([])

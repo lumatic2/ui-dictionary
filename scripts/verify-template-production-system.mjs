@@ -44,17 +44,27 @@ const assets = [
   },
 ]
 
+/** 반복 유닛 청사진용 목록 데이터. 고정 슬롯만 쓰는 청사진은 무시한다. */
+const lists = {
+  comparisons: [
+    { label: '명함', value: '5 슬롯' },
+    { label: '제품 포스터', value: '5 슬롯' },
+    { label: '인포그래픽', value: '3 슬롯' },
+  ],
+}
+
 const rows = []
 
-// `-split` 변종은 기준 청사진의 기계적 변형이라 대표 3종만 검증한다 (TH2에서 실재 6종으로 교체).
-for (const blueprint of formatPackCatalog.filter((item) => !item.id.endsWith('-split'))) {
+// TH2부터 카탈로그 6종이 전부 실재 청사진이다 — 파생 변종 제외 로직은 사라졌다.
+for (const blueprint of formatPackCatalog) {
   const request = {
-    id: `e2e-${blueprint.format}`,
+    id: `e2e-${blueprint.id}`,
     format: blueprint.format,
     width: blueprint.width,
     height: blueprint.height,
     tokenSetId: 'askewly.warm',
     content,
+    lists,
   }
 
   const project = compileTemplate(request, assets, blueprint)

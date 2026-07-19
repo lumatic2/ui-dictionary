@@ -4,7 +4,18 @@
     {
       "format": "business-card",
       "blueprint": "business-card-minimal",
-      "signature": "tpl-a5add834",
+      "signature": "tpl-8fedf616",
+      "exports": [
+        "json",
+        "html",
+        "svg"
+      ],
+      "network": false
+    },
+    {
+      "format": "business-card",
+      "blueprint": "business-card-vertical",
+      "signature": "tpl-41c422ae",
       "exports": [
         "json",
         "html",
@@ -15,7 +26,18 @@
     {
       "format": "product-poster",
       "blueprint": "product-poster-hero",
-      "signature": "tpl-e523954b",
+      "signature": "tpl-1f4dfcaf",
+      "exports": [
+        "json",
+        "html",
+        "svg"
+      ],
+      "network": false
+    },
+    {
+      "format": "product-poster",
+      "blueprint": "product-poster-editorial",
+      "signature": "tpl-b3578505",
       "exports": [
         "json",
         "html",
@@ -26,7 +48,18 @@
     {
       "format": "infographic",
       "blueprint": "infographic-stats",
-      "signature": "tpl-f864dd3b",
+      "signature": "tpl-724494b3",
+      "exports": [
+        "json",
+        "html",
+        "svg"
+      ],
+      "network": false
+    },
+    {
+      "format": "infographic",
+      "blueprint": "infographic-comparison",
+      "signature": "tpl-635ecb25",
       "exports": [
         "json",
         "html",
