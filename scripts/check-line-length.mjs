@@ -25,6 +25,8 @@ const SCANNED_ROOTS = [
   'apps/agent-design/src/documentTokens.ts',
   'scripts/verify-template-production-system.mjs',
   'scripts/check-line-length.mjs',
+  'scripts/check-text-overflow.mjs',
+  'scripts/check-export-artifacts.mjs',
 ]
 
 const SCANNED_EXTENSIONS = new Set(['.ts', '.tsx', '.mjs', '.js'])

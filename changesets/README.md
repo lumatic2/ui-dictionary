@@ -174,3 +174,4 @@
 | 172 | 20260720-text-fitting-model | 2026-07-20 | TH9 step 1: char-width model + fitText/measureOverflow, browser-measured error bounds (under 8%/over 25%) | 3/3 | complete |
 | 173 | 20260720-compiler-text-fitting | 2026-07-20 | TH9 step 2: compiler sizes text by width+lines (not height alone), overflow 2 to 0 across 24 nodes, signatures rebaselined | 4/4 | complete |
 | 174 | 20260720-svg-multiline-and-overflow-gate | 2026-07-20 | TH9 step 3: SVG tspan multiline + overflow gate over 48 content combos (probe caught a tautological gate) | 4/4 | complete |
+| 175 | 20260720-export-artifact-parsing | 2026-07-20 | TH4 step 1: exporters actually run, 18 artifacts parsed by general-purpose parsers, resident self-check | 5/5 | complete |

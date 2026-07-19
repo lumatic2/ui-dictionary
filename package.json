@@ -1,0 +1,16 @@
+{
+  "name": "ui-dictionary-gates",
+  "private": true,
+  "type": "module",
+  "description": "레포 루트 게이트 실행기. 하위 apps/packages는 각자 package.json을 유지한다 — 여기는 workspaces를 선언하지 않는다.",
+  "scripts": {
+    "check:lines": "node scripts/check-line-length.mjs",
+    "check:overflow": "node scripts/check-text-overflow.mjs",
+    "check:exports": "node scripts/check-export-artifacts.mjs",
+    "verify": "npm run check:lines && npm run check:overflow && npm run check:exports && node scripts/verify-template-production-system.mjs"
+  },
+  "devDependencies": {
+    "fast-xml-parser": "^4.5.0",
+    "parse5": "^7.2.1"
+  }
+}
