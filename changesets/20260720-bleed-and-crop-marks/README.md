@@ -43,9 +43,9 @@ CSS `@page`의 `bleed`·`marks`는 **어느 브라우저에도 지원이 없다*
 ## 실측
 
 ```
-business-card-vertical  600×1050 논리 → 지면  672×1122  (도련 36px = 3mm)
-product-poster-print-a3 1169×1654 논리 → 지면 1217×1702  (도련 12px = 3mm)
-infographic-print-a4     827×1169 논리 → 지면  851×1193  (도련 12px = 3mm)
+business-card-vertical  600×1050 논리 → 지면  744×1194  (도련 36px, 표시 자리 36px)
+product-poster-print-a3 1169×1654 논리 → 지면 1217×1702  (도련 12px, 표시 자리 12px)
+infographic-print-a4     827×1169 논리 → 지면  875×1217  (도련 12px, 표시 자리 12px)
 product-poster-hero     1080×1350 → 변화 없음 (화면용)
 ```
 

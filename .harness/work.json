@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "active_work_id": "TH11",
+  "active_work_id": "TH6",
   "works": {
     "SFB1": {
       "title": "Structure Contract And Clean Production",
@@ -2688,6 +2688,51 @@
         "approved_by": "user",
         "approved_at": "2026-07-20",
         "plan_sha256": "bb03fb15fd17f17683c43719b689d358006ae06a9c3c93e5d39e5da169a565c2"
+      },
+      "allowed_stop_reasons": [
+        "completed",
+        "blocked",
+        "decision_required",
+        "risk_gate",
+        "secret_required",
+        "external_authority_required",
+        "user_stopped"
+      ],
+      "stop_reason": null,
+      "stop_detail": {},
+      "session_ids": [
+        "claude:f84fec52-c73d-4a49-b95f-53d9e9345cb2"
+      ],
+      "owner_session_uuid": "claude:f84fec52-c73d-4a49-b95f-53d9e9345cb2",
+      "updated_at": "2026-07-20",
+      "notes": "Registered atomically by canonical harness approve_harness_plan.py after plan validation."
+    },
+    "TH6": {
+      "work_id": "TH6",
+      "horizon_id": "template-production-hardening",
+      "milestone_id": "TH6",
+      "status": "active",
+      "plan_path": "plans/2026-07-20-th6-real-commission.md",
+      "changeset_path": "changesets/20260720-th6-commission-run",
+      "next_step": "step-1",
+      "current_step": "step-1",
+      "steps": [
+        {
+          "id": "step-1",
+          "label": "step-1 — commission-run",
+          "status": "pending"
+        },
+        {
+          "id": "step-2",
+          "label": "step-2 — close-audit",
+          "status": "pending"
+        }
+      ],
+      "execution_mode": "continuous",
+      "approval": {
+        "approved_by": "user",
+        "approved_at": "2026-07-20",
+        "plan_sha256": "34155ee73bc5960020d09c188c870e5ca1dbc7abb635190f1fb8d7fdd07b2d7d"
       },
       "allowed_stop_reasons": [
         "completed",

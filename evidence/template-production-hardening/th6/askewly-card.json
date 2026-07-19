@@ -1,0 +1,285 @@
+{
+  "schemaVersion": 1,
+  "request": {
+    "id": "askewly-card",
+    "format": "business-card",
+    "width": 600,
+    "height": 1050,
+    "tokenSetId": "askewly.warm",
+    "content": {
+      "name": "전유성",
+      "role": "AI Builder · askewly",
+      "contact": "hello@askewly.com · ui.askewly.com"
+    }
+  },
+  "assets": [
+    {
+      "id": "askewly-portrait",
+      "role": "portrait",
+      "uri": "/th6/askewly-portrait.png",
+      "mimeType": "image/png",
+      "width": 504,
+      "height": 396,
+      "provenance": {
+        "provider": "generated",
+        "source": "codex:image_generation:askewly-portrait"
+      }
+    }
+  ],
+  "scene": {
+    "schemaVersion": 1,
+    "id": "askewly-card",
+    "name": "business-card-vertical",
+    "revision": 2,
+    "rootIds": [
+      "business-card-vertical:root"
+    ],
+    "nodes": {
+      "business-card-vertical:root": {
+        "id": "business-card-vertical:root",
+        "kind": "frame",
+        "name": "business-card-vertical",
+        "parentId": null,
+        "childIds": [
+          "business-card-vertical:backdrop",
+          "business-card-vertical:portrait",
+          "business-card-vertical:name",
+          "business-card-vertical:role",
+          "business-card-vertical:contact"
+        ],
+        "bounds": {
+          "x": 0,
+          "y": 0,
+          "width": 600,
+          "height": 1050
+        },
+        "layout": {
+          "mode": "absolute",
+          "horizontal": "fixed",
+          "vertical": "fixed",
+          "gap": 0,
+          "padding": [
+            0,
+            0,
+            0,
+            0
+          ]
+        },
+        "visible": true,
+        "locked": false,
+        "tokenBindings": {
+          "background": "surface.canvas"
+        },
+        "source": null,
+        "clipContent": true
+      },
+      "business-card-vertical:backdrop": {
+        "id": "business-card-vertical:backdrop",
+        "name": "backdrop",
+        "parentId": "business-card-vertical:root",
+        "childIds": [],
+        "bounds": {
+          "x": 0,
+          "y": 0,
+          "width": 600,
+          "height": 1050
+        },
+        "layout": {
+          "mode": "absolute",
+          "horizontal": "fixed",
+          "vertical": "fixed",
+          "gap": 0,
+          "padding": [
+            0,
+            0,
+            0,
+            0
+          ]
+        },
+        "visible": true,
+        "locked": false,
+        "tokenBindings": {
+          "fill": "surface.canvas"
+        },
+        "source": null,
+        "kind": "shape",
+        "shape": "rectangle",
+        "fill": "#000000",
+        "stroke": null,
+        "strokeWidth": 0
+      },
+      "business-card-vertical:portrait": {
+        "id": "business-card-vertical:portrait",
+        "name": "portrait",
+        "parentId": "business-card-vertical:root",
+        "childIds": [],
+        "bounds": {
+          "x": 48,
+          "y": 48,
+          "width": 504,
+          "height": 396
+        },
+        "layout": {
+          "mode": "absolute",
+          "horizontal": "fixed",
+          "vertical": "fixed",
+          "gap": 0,
+          "padding": [
+            0,
+            0,
+            0,
+            0
+          ]
+        },
+        "visible": true,
+        "locked": false,
+        "tokenBindings": {},
+        "source": null,
+        "kind": "image",
+        "assetId": "askewly-portrait",
+        "alt": "portrait",
+        "fit": "cover",
+        "opacity": 1
+      },
+      "business-card-vertical:name": {
+        "id": "business-card-vertical:name",
+        "name": "name",
+        "parentId": "business-card-vertical:root",
+        "childIds": [],
+        "bounds": {
+          "x": 48,
+          "y": 520,
+          "width": 504,
+          "height": 90
+        },
+        "layout": {
+          "mode": "absolute",
+          "horizontal": "fixed",
+          "vertical": "fixed",
+          "gap": 0,
+          "padding": [
+            0,
+            0,
+            0,
+            0
+          ]
+        },
+        "visible": true,
+        "locked": false,
+        "tokenBindings": {
+          "color": "text.primary",
+          "fontFamily": "type.heading"
+        },
+        "source": null,
+        "kind": "text",
+        "text": "전유성",
+        "textStyle": {
+          "fontFamily": "system-ui",
+          "fontWeight": 700,
+          "fontSize": 41,
+          "lineHeight": 53
+        }
+      },
+      "business-card-vertical:role": {
+        "id": "business-card-vertical:role",
+        "name": "role",
+        "parentId": "business-card-vertical:root",
+        "childIds": [],
+        "bounds": {
+          "x": 48,
+          "y": 626,
+          "width": 504,
+          "height": 48
+        },
+        "layout": {
+          "mode": "absolute",
+          "horizontal": "fixed",
+          "vertical": "fixed",
+          "gap": 0,
+          "padding": [
+            0,
+            0,
+            0,
+            0
+          ]
+        },
+        "visible": true,
+        "locked": false,
+        "tokenBindings": {
+          "color": "brand.primary"
+        },
+        "source": null,
+        "kind": "text",
+        "text": "AI Builder · askewly",
+        "textStyle": {
+          "fontFamily": "system-ui",
+          "fontWeight": 500,
+          "fontSize": 22,
+          "lineHeight": 29
+        }
+      },
+      "business-card-vertical:contact": {
+        "id": "business-card-vertical:contact",
+        "name": "contact",
+        "parentId": "business-card-vertical:root",
+        "childIds": [],
+        "bounds": {
+          "x": 48,
+          "y": 940,
+          "width": 504,
+          "height": 44
+        },
+        "layout": {
+          "mode": "absolute",
+          "horizontal": "fixed",
+          "vertical": "fixed",
+          "gap": 0,
+          "padding": [
+            0,
+            0,
+            0,
+            0
+          ]
+        },
+        "visible": true,
+        "locked": false,
+        "tokenBindings": {
+          "color": "text.secondary"
+        },
+        "source": null,
+        "kind": "text",
+        "text": "hello@askewly.com · ui.askewly.com",
+        "textStyle": {
+          "fontFamily": "system-ui",
+          "fontWeight": 500,
+          "fontSize": 20,
+          "lineHeight": 26
+        }
+      }
+    },
+    "selection": [
+      "business-card-vertical:role"
+    ],
+    "viewport": {
+      "pan": {
+        "x": 0,
+        "y": 0
+      },
+      "zoom": 1
+    },
+    "tokenSetId": "askewly.warm",
+    "assets": {
+      "askewly-portrait": {
+        "uri": "/th6/askewly-portrait.png",
+        "mimeType": "image/png",
+        "width": 504,
+        "height": 396
+      }
+    },
+    "metadata": {
+      "createdAt": "2026-07-19T00:00:00.000Z",
+      "updatedAt": "2026-07-19T22:50:09.678Z",
+      "sourceRoot": "."
+    }
+  }
+}
