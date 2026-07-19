@@ -9,6 +9,7 @@ import {
   type PropValue,
   type PropertyField,
 } from '@askewly/canvas-core'
+import { isKnownTokenSet, listDocumentTokenSets } from './documentTokens'
 
 interface Props {
   document: CanvasDocument
@@ -37,6 +38,7 @@ export function PropertyInspector({ document, onOperation, bridgeConnected, onMa
   const node = document.selection.length === 1 ? document.nodes[document.selection[0]] : null
   const canMaterialize = bridgeConnected && node?.kind === 'code-component' && node.source.file.startsWith('registry://')
   const [error, setError] = useState('')
+  const tokenSetChoices = listDocumentTokenSets()
   const [name, setName] = useState(node?.name ?? '')
   useEffect(() => { setName(node?.name ?? ''); setError('') }, [node?.id, node?.name])
 
@@ -56,12 +58,24 @@ export function PropertyInspector({ document, onOperation, bridgeConnected, onMa
         data-testid="token-mode"
         value={document.tokenSetId}
         onChange={(event) => {
-          if (!validateTokenMode(event.target.value)) { setError('invalid token mode'); return }
-          onOperation({ ...operationId('mode'), type: 'set-token-mode', tokenSetId: event.target.value })
+          const tokenSetId = event.target.value
+          // 모양 검사만으로는 `foo.bar` 같은 없는 세트가 통과한다 — 실재 여부까지 본다.
+          if (!validateTokenMode(tokenSetId) || !isKnownTokenSet(tokenSetId)) {
+            setError(`토큰 세트 '${tokenSetId}'가 없습니다.`)
+            return
+          }
+          setError('')
+          onOperation({ ...operationId('mode'), type: 'set-token-mode', tokenSetId })
         }}
       >
-        <option value="askewly.default">Default</option>
-        <option value="askewly.dark">Dark</option>
+        {/* 옵션은 실재하는 세트에서 생성한다 — 손으로 적으면 목록과 실재가 어긋난다. */}
+        {tokenSetChoices.map((choice) => (
+          <option key={choice.id} value={choice.id}>{choice.label}</option>
+        ))}
+        {/* 문서가 모르는 세트를 들고 있으면 그 사실을 숨기지 않고 보여준다. */}
+        {!isKnownTokenSet(document.tokenSetId) && (
+          <option value={document.tokenSetId}>{document.tokenSetId} (알 수 없음)</option>
+        )}
       </select>
     </label>
     {!node ? <p className="inspector-empty">Select one node to edit its properties.</p> : <div className="property-list">

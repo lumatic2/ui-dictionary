@@ -99,6 +99,8 @@ button, select { font: inherit; }
 .agent-undo:disabled { color: var(--ad-gray-7); }
 .agent-error { margin: 0; min-height: 12px; color: var(--ad-action-destructive); font-size: 10px; }
 .project-rail select, .diagnostics-panel select { min-width: 0; width: 100%; height: 30px; border: 1px solid var(--ad-border-default); border-radius: 5px; padding: 0 7px; background: var(--ad-surface-raised); color: var(--ad-text-secondary); font-size: 10px; }
+/* 템플릿이 열려 있으면 fixture 크기 토글이 잠긴다 — 브라우저 기본 회색에 맡기지 않고 상태를 명시한다. */
+.project-rail select:disabled, .diagnostics-panel select:disabled { border-color: var(--ad-gray-9); background: var(--ad-surface-muted); color: var(--ad-text-muted); cursor: not-allowed; }
 .diagnostics-panel { margin-top: auto; border-top: 1px solid var(--ad-border-default); padding: 10px 4px 0; color: var(--ad-text-muted); font-size: 10px; }
 .diagnostics-panel summary { cursor: pointer; font-weight: 600; }
 .diagnostics-panel[open] { display: grid; gap: 8px; }

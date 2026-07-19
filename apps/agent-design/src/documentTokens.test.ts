@@ -1,5 +1,6 @@
 import { describe, expect, it } from 'vitest'
-import { documentTokens } from './documentTokens'
+import { validateTokenMode } from '@askewly/canvas-core'
+import { documentTokens, isKnownTokenSet, listDocumentTokenSets } from './documentTokens'
 import { editorTokenMaps, FALLBACK_BACKGROUND_TOKEN } from './editorTokens'
 
 /**
@@ -50,5 +51,28 @@ describe('배경 폴백 경계', () => {
 
   it('템플릿 문서는 바인딩이 없어도 폴백하지 않는다', () => {
     expect(documentTokens('askewly.warm').resolveBackground(undefined)).toBeNull()
+  })
+})
+
+describe('토큰 세트 목록·실재 판정 (TH10)', () => {
+  it('실재하는 세트 넷을 전부 담고 출처로 가른다', () => {
+    const choices = listDocumentTokenSets()
+    expect(choices.map((choice) => choice.id).sort()).toEqual([
+      'askewly.dark',
+      'askewly.default',
+      'askewly.ink',
+      'askewly.warm',
+    ])
+    expect(choices.filter((choice) => choice.source === 'editor')).toHaveLength(2)
+    expect(choices.filter((choice) => choice.source === 'template')).toHaveLength(2)
+  })
+
+  it('모양 검사와 실재 판정은 다른 질문이다', () => {
+    // 이게 결함의 정체다 — `validateTokenMode`는 점 표기 모양만 보므로 없는 세트를 통과시킨다.
+    expect(validateTokenMode('foo.bar')).toBe(true)
+    expect(isKnownTokenSet('foo.bar')).toBe(false)
+    for (const id of ['askewly.default', 'askewly.dark', 'askewly.warm', 'askewly.ink']) {
+      expect(isKnownTokenSet(id)).toBe(true)
+    }
   })
 })

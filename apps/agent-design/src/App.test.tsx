@@ -471,3 +471,38 @@ describe('편집 상태 지속성 (TH10)', () => {
     expect(view.getByTestId('document-node-count').textContent).toContain('5,000')
   })
 })
+
+describe('토큰 세트 표시·검증 정합 (TH10)', () => {
+  async function openBusinessCard(view: ReturnType<typeof render>) {
+    fireEvent.click(view.getByTestId('toggle-templates'))
+    fireEvent.click(view.getByTestId('template-open-business-card-minimal'))
+    await waitFor(() =>
+      expect(view.getByTestId('persistence-status').textContent).toContain('template'),
+    )
+  }
+
+  it('템플릿을 열면 드롭다운이 문서의 세트를 그대로 보여준다', async () => {
+    const view = render(<App />)
+    await openBusinessCard(view)
+    // 옵션이 편집기 세트 둘로 하드코딩돼 있으면 여기서 askewly.default가 나온다.
+    expect((view.getByTestId('token-mode') as HTMLSelectElement).value).toBe('askewly.warm')
+  })
+
+  it('옵션이 실재하는 세트 전부를 담는다', () => {
+    const view = render(<App />)
+    const values = Array.from((view.getByTestId('token-mode') as HTMLSelectElement).options).map((o) => o.value)
+    expect(values).toContain('askewly.default')
+    expect(values).toContain('askewly.dark')
+    expect(values).toContain('askewly.warm')
+    expect(values).toContain('askewly.ink')
+  })
+
+  it('목록 밖 값은 문서를 바꾸지 않고 오류를 표면화한다', () => {
+    const view = render(<App />)
+    const before = view.getByTestId('document-revision').textContent
+    fireEvent.change(view.getByTestId('token-mode'), { target: { value: 'foo.bar' } })
+    // select는 목록 밖 값을 담지 못해 빈 값으로 떨어진다 — 어느 쪽이든 **통과하면 안 된다**.
+    expect(view.getByTestId('property-error').textContent).toContain('없습니다')
+    expect(view.getByTestId('document-revision').textContent).toBe(before)
+  })
+})

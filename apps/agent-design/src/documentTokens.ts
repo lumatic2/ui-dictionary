@@ -1,4 +1,4 @@
-import { resolveTokenSet } from '@askewly/template-core'
+import { listTokenSets, resolveTokenSet } from '@askewly/template-core'
 import { editorTokenMaps, FALLBACK_BACKGROUND_TOKEN, type TokenSetId } from './editorTokens'
 
 /**
@@ -52,4 +52,42 @@ export function documentTokens(tokenSetId: string): DocumentTokens {
   }
 
   return { source: 'unknown', resolve: () => null, resolveBackground: () => null }
+}
+
+export interface TokenSetChoice {
+  id: string
+  label: string
+  source: Exclude<TokenSource, 'unknown'>
+}
+
+const EDITOR_SET_LABELS: Record<string, string> = {
+  'askewly.default': '편집기 · 밝게',
+  'askewly.dark': '편집기 · 어둡게',
+}
+
+/**
+ * 문서에 붙일 수 있는 **실재하는** 토큰 세트 목록.
+ *
+ * UI가 옵션을 손으로 적으면 목록과 실재가 어긋난다 — 실제로 어긋났다. 드롭다운이
+ * 편집기 세트 둘만 적어둔 탓에, `askewly.warm` 템플릿을 열면 그 값이 옵션에 없어
+ * 첫 항목이 선택돼 보였다. **문서 상태를 잘못 보고하는 화면**이다.
+ */
+export function listDocumentTokenSets(): TokenSetChoice[] {
+  return [
+    ...Object.keys(editorTokenMaps).map((id): TokenSetChoice => ({
+      id,
+      label: EDITOR_SET_LABELS[id] ?? id,
+      source: 'editor',
+    })),
+    ...listTokenSets().map((set): TokenSetChoice => ({
+      id: set.id,
+      label: `템플릿 · ${set.label}`,
+      source: 'template',
+    })),
+  ]
+}
+
+/** 그 세트가 실재하는가. 모양 검사(`validateTokenMode`)는 이걸 대신하지 못한다. */
+export function isKnownTokenSet(tokenSetId: string): boolean {
+  return documentTokens(tokenSetId).source !== 'unknown'
 }
