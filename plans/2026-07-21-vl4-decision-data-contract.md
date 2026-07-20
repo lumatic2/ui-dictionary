@@ -1,4 +1,4 @@
-# PLAN — ED1 판별 데이터 계약
+# PLAN — VL4 판별 데이터 계약
 
 > 생성: 2026-07-21 · 갈래: tooling · scope 결정: 포맷 계약 + 검증기 + 첫 군집(펼침류) 1개까지
 > milestone-레벨 durable plan doc.
@@ -8,12 +8,12 @@ Status: 승인 대기
 ## 북극성 → horizon → milestone → step (위계)
 
 - **북극성**: 에이전트가 "일반적인 AI 결과물"이 아니라 의도적으로 디자인된 UI를 만들게 한다 (← `OBJECTIVE.md`)
-- **horizon**: 요소 결정 계층 (← `plans/horizons/2026-07-element-decision-layer.md`)
-- **milestone**: ED1 — 판별 축을 담는 데이터 포맷을 정하고, 기계 검증기를 세우고, 첫 군집을 실제로 채운다. 3개의 독립 changeset(계약 문서·검증기·데이터)이고 통합검증은 "검증기가 첫 군집을 통과하는가" — milestone 규모.
+- **horizon**: 용어가 실제로 쓰이는 흐름 (← `plans/horizons/2026-07-vocabulary-in-use.md`)
+- **milestone**: VL4 — 판별 축을 담는 데이터 포맷을 정하고, 기계 검증기를 세우고, 첫 군집을 실제로 채운다. 3개의 독립 changeset(계약 문서·검증기·데이터)이고 통합검증은 "검증기가 첫 군집을 통과하는가" — milestone 규모.
 
 ## 중단점 · run 전 scope 결정 (확정)
 
-- **결정**: step-1~3 전부. 두 번째 군집부터는 ED2.
+- **결정**: step-1~3 전부. 두 번째 군집부터는 VL5.
 - execution mode: `continuous`
 - **중단점(stop points)**: completed / 증거 있는 blocked / decision_required / risk_gate / user_stopped
 - **진행 보고**: commentary only. 미완 leaf 는 턴 종료점이 아니다.
@@ -23,7 +23,7 @@ Status: 승인 대기
 
 - source-of-truth: 판별 데이터 정본 = `docs/design-system/decisions/<cluster-id>.md` (YAML frontmatter + 마크다운 본문 — `recipes/`와 같은 관례). 포맷 계약 정본 = `docs/design-system/decision-format.md` (`recipe-format.md`와 짝).
 - 검증: `python scripts/validate-decisions.py` — ① frontmatter 필수 필드 ② `candidates`의 모든 id가 `docs/ui-vocabulary/terms.yml`에 실존 ③ 모든 축에 `source` + `confidence` 존재 ④ `rules`가 가리키는 `pick`이 `candidates` 안에 있음. 기존 `validate-recipes.py`·`validate-ui-vocabulary.py`와 같은 자리·같은 호출 방식.
-- 배포/운영: 이 milestone은 배포 없음 — llms.txt 등재는 ED3 소관. (해당 없음 — ED3에서 처리)
+- 배포/운영: 이 milestone은 배포 없음 — llms.txt 등재는 VL6 소관. (해당 없음 — VL6에서 처리)
 - 데이터 스키마: frontmatter 키 = `id · name · question · candidates · axes[] · rules[] · default · term_refs · source_refs · last_verified`. 축 레코드 = `id · question · values · source · confidence(high|medium|low)`. 규칙 레코드 = `when(축→값) · pick · because`. 근거: 선례 조사에서 uxpatterns.dev의 4단 구조(결정 규칙·매트릭스·choose-when·기본값)가 가장 가까운 형식 모델로 확인됨(`research/2026-07-21-element-decision-layer-…md` §2).
 - 문서 본문 계약: frontmatter가 기계 판정용, 본문은 사람이 읽는 비교 매트릭스 + 기각 사유 서술. 레시피와 동일한 이중 구조.
 - 검토 후 제외: 화면·서버·데이터스토어·관측 — 정적 마크다운 자산과 파이썬 검증기만 추가하므로 걸리지 않는다. 디자인 — 사람이 보는 표면을 만들지 않는다(사이트는 horizon 범위 밖).
@@ -63,7 +63,7 @@ Status: 승인 대기
 ## 검증/DoD
 
 - **DoD**: `python scripts/validate-decisions.py`가 exit 0으로 1개 군집을 검증하고, 그 군집의 규칙이 서로 다른 요구 문장 5개를 서로 다른 요소로 가른다(step-3 failure probe 기록). 계약 문서·검증기·데이터 3자가 서로를 참조한다.
-- Evidence: `evidence/element-decision-layer/ed1-data-contract.md`
+- Evidence: `evidence/vocabulary-in-use/ed1-data-contract.md`
 
 ## finding 큐
 

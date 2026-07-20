@@ -1,4 +1,4 @@
-# PLAN — ED2 군집 채우기
+# PLAN — VL5 군집 채우기
 
 > 생성: 2026-07-21 · 갈래: tooling · scope 결정: 펼침류 외 나머지 군집 14개를 4배치로 전부 작성
 > milestone-레벨 durable plan doc.
@@ -8,12 +8,12 @@ Status: 승인 대기
 ## 북극성 → horizon → milestone → step (위계)
 
 - **북극성**: 에이전트가 의도적으로 디자인된 UI를 만들게 한다 (← `OBJECTIVE.md`)
-- **horizon**: 요소 결정 계층 (← `plans/horizons/2026-07-element-decision-layer.md`)
-- **milestone**: ED2 — 4개의 독립 배치(각각 별개 changeset)로 군집 14개를 채우고, 마지막에 전 군집 참조 무결성을 통합 검증한다. milestone 규모.
+- **horizon**: 용어가 실제로 쓰이는 흐름 (← `plans/horizons/2026-07-vocabulary-in-use.md`)
+- **milestone**: VL5 — 4개의 독립 배치(각각 별개 changeset)로 군집 14개를 채우고, 마지막에 전 군집 참조 무결성을 통합 검증한다. milestone 규모.
 
 ## 중단점 · run 전 scope 결정 (확정)
 
-- **결정**: step-1~5. 15군집(ED1의 펼침류 포함) 전부가 정본화되면 닫는다.
+- **결정**: step-1~5. 15군집(VL4의 펼침류 포함) 전부가 정본화되면 닫는다.
 - execution mode: `continuous`
 - **중단점(stop points)**: completed / 증거 있는 blocked / decision_required / risk_gate / user_stopped
 - **진행 보고**: commentary only.
@@ -21,10 +21,10 @@ Status: 승인 대기
 
 ## 스캐폴딩 결정
 
-- source-of-truth: `docs/design-system/decisions/<cluster-id>.md` (ED1 계약). 새로 찾은 근거는 `research/2026-07-21-ed2-cluster-axis-sources.md`에 누적하고 각 군집 파일이 백링크.
+- source-of-truth: `docs/design-system/decisions/<cluster-id>.md` (VL4 계약). 새로 찾은 근거는 `research/2026-07-21-ed2-cluster-axis-sources.md`에 누적하고 각 군집 파일이 백링크.
 - 검증: `python scripts/validate-decisions.py`(전 군집) + 배치마다 판정 분리 종이 검증(요구 문장 → 서로 다른 답).
-- 배포/운영: 해당 없음 — 등재는 ED3.
-- 리서치: 배치마다 그 군집의 축 근거를 먼저 확인한다. ED1 리서치가 **제약 종료**로 닫혔고 미열람 소스 목록(NN/G Checkboxes vs Radio·Data Tables·Modal & Nonmodal, Doctolib Oxygen 원문, Smashing 2026-03 Modal vs Separate Page)이 남아 있다 — 해당 군집 배치에서 마저 연다.
+- 배포/운영: 해당 없음 — 등재는 VL6.
+- 리서치: 배치마다 그 군집의 축 근거를 먼저 확인한다. VL4 리서치가 **제약 종료**로 닫혔고 미열람 소스 목록(NN/G Checkboxes vs Radio·Data Tables·Modal & Nonmodal, Doctolib Oxygen 원문, Smashing 2026-03 Modal vs Separate Page)이 남아 있다 — 해당 군집 배치에서 마저 연다.
 - 군집 id 어휘: `pattern-taxonomy.md`의 `pattern_group` 10종과 충돌하지 않는 별도 네임스페이스(`decisions/<cluster-id>`). 군집은 분류가 아니라 **혼동 쌍의 묶음**이라 기존 축과 다르다 — 계약 문서에 이 구분을 명시.
 - 검토 후 제외: 화면·서버·데이터스토어·배포·관측·디자인 — 정적 마크다운 자산만 추가.
 
@@ -56,7 +56,7 @@ Status: 승인 대기
   - Files: 읽기 `terms.yml`·NN/G Data Tables 원문·uxpatterns Table vs List vs Cards / 쓰기 위 4파일 + 리서치 누적 파일
   - Dependencies: step-2
   - Verify: validator exit 0, 11 clusters
-  - Failure probe: `card-vs-text-expand`가 ED1의 펼침류와 중복되지 않는지 확인 — 후보·축이 대부분 겹치면 별도 군집이 아니라 펼침류의 하위 규칙으로 흡수한다
+  - Failure probe: `card-vs-text-expand`가 VL4의 펼침류와 중복되지 않는지 확인 — 후보·축이 대부분 겹치면 별도 군집이 아니라 펼침류의 하위 규칙으로 흡수한다
   - Commit: changeset `<n>-decision-display-batch`
 - [ ] **step-4 — 탐색·흐름 배치 (4군)**
   - Artifact: `decisions/finding-things.md`(search field/command palette/filter panel) · `decisions/navigation-scope.md`(breadcrumb/section tabs/sidebar nav) · `decisions/long-form-strategy.md`(wizard/single long form/accordion form) · `decisions/mobile-view-switch.md`(segmented/tab bar/top tabs)
@@ -76,7 +76,7 @@ Status: 승인 대기
 ## 검증/DoD
 
 - **DoD**: 군집 ≥10개가 검증기를 통과하고, 모든 후보가 `terms.yml` 실존 id이며, 모든 축에 출처와 confidence가 있고, 교차 군집 모순이 0이다.
-- Evidence: `evidence/element-decision-layer/ed2-cluster-corpus.md`
+- Evidence: `evidence/vocabulary-in-use/ed2-cluster-corpus.md`
 
 ## finding 큐
 
