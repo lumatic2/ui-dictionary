@@ -3,7 +3,7 @@
 > 생성: 2026-07-21 · 갈래: tooling · scope 결정: 처치 측정 · 기준선 대조 · 오판 축 보정까지
 > milestone-레벨 durable plan doc.
 
-Status: 승인 대기
+Status: approved 2026-07-21 (horizon 전체 연쇄 승인)
 
 ## 북극성 → horizon → milestone → step (위계)
 

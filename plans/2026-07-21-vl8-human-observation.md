@@ -3,7 +3,7 @@
 > 생성: 2026-07-21 · 갈래: tooling · scope 결정: 관측 준비 → 사용자 관측 실행 → 발견 결함 마감
 > milestone-레벨 durable plan doc.
 
-Status: 승인 대기
+Status: approved 2026-07-21 (horizon 전체 연쇄 승인)
 
 ## 북극성 → horizon → milestone → step (위계)
 

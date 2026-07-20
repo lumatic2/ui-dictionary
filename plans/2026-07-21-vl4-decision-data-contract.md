@@ -3,7 +3,7 @@
 > 생성: 2026-07-21 · 갈래: tooling · scope 결정: 포맷 계약 + 검증기 + 첫 군집(펼침류) 1개까지
 > milestone-레벨 durable plan doc.
 
-Status: 승인 대기
+Status: approved 2026-07-21 (horizon 전체 연쇄 승인)
 
 ## 북극성 → horizon → milestone → step (위계)
 
