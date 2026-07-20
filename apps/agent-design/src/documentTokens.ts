@@ -145,3 +145,13 @@ export function listDocumentTokenSets(): TokenSetChoice[] {
 export function isKnownTokenSet(tokenSetId: string): boolean {
   return documentTokens(tokenSetId).source !== 'unknown'
 }
+
+/**
+ * 그 세트에 그 이름의 토큰이 실재하는가 — canvas-core가 등록받는 조회 함수(ECT1 step-3).
+ *
+ * 모르는 세트에서는 `false`다. 세트를 모르면 그 안에 뭐가 있는지도 모르는 게 맞고,
+ * 여기서 통과시키면 오타난 세트 이름 하나가 모든 토큰 검사를 무력화한다.
+ */
+export function documentTokenExists(tokenSetId: string, tokenName: string): boolean {
+  return documentTokens(tokenSetId).listTokens().some((token) => token.name === tokenName)
+}

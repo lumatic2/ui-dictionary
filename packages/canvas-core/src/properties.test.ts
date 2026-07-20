@@ -1,7 +1,8 @@
-import { describe, expect, it } from 'vitest'
+import { afterEach, describe, expect, it } from 'vitest'
 import { createDocumentFixture, firstComponent } from './fixtures.js'
 import { applyOperation, commitOperation, createHistory, redo, undo } from './operations.js'
-import { propertyFieldsForNode, validateNodePropertyEdit } from './properties.js'
+import { recoverSnapshot, serializeSnapshot } from './persistence.js'
+import { propertyFieldsForNode, registerTokenVocabulary, validateNodePropertyEdit } from './properties.js'
 
 const at = '2026-07-10T09:47:00.000Z'
 
@@ -52,5 +53,91 @@ describe('typed property runtime', () => {
     expect(history.present.nodes['node-00007']).toMatchObject({ kind: 'text', text: '한글 조합 완료' })
     expect(undo(history).present.nodes['node-00007']).toMatchObject({ kind: 'text', text: '한글 캔버스 입력' })
     expect(redo(undo(history)).present.nodes['node-00007']).toMatchObject({ kind: 'text', text: '한글 조합 완료' })
+  })
+})
+
+/**
+ * ECT1 step-3 — 없는 토큰은 저장되지 않는다.
+ *
+ * EU5까지 이 검사가 없었다. 모양(`x.y`)만 맞으면 없는 토큰도 **저장됐고**, 결함은
+ * 렌더 시점의 `data-token-unresolved`로만 남았다 — 화면은 아무 말도 하지 않았다.
+ * "조용히 거부"가 아니라 "조용히 수용"이었다.
+ */
+describe('토큰 실재 검증 (ECT1 step-3)', () => {
+  const vocabulary = (tokenSetId: string, name: string) =>
+    tokenSetId === 'askewly.default' && ['surface.base', 'surface.muted', 'text.default'].includes(name)
+
+  afterEach(() => registerTokenVocabulary(null))
+
+  it('등록 전에는 모양 검사만 한다 — 이 계층은 어휘를 모른다', () => {
+    const document = createDocumentFixture(1000)
+    const component = firstComponent(document)
+    // "통과"가 아니라 "답할 수 없다"는 상태다. 등록하는 쪽이 이 구멍을 닫는다.
+    expect(validateNodePropertyEdit(document, {
+      nodeId: component.id, scope: 'token', key: 'background', value: 'surface.nonexistent',
+    })).toBeNull()
+  })
+
+  it('등록 후에는 실재하지 않는 토큰을 거부한다', () => {
+    registerTokenVocabulary(vocabulary)
+    const document = createDocumentFixture(1000)
+    const component = firstComponent(document)
+    const error = validateNodePropertyEdit(document, {
+      nodeId: component.id, scope: 'token', key: 'background', value: 'surface.nonexistent',
+    })
+    expect(error).toContain('surface.nonexistent')
+    // 사유는 role="alert"로 사용자에게 그대로 나간다 — 내부 용어가 아니어야 한다.
+    expect(error).toContain('토큰 세트에 없습니다')
+  })
+
+  it('실재하는 토큰은 그대로 저장된다', () => {
+    registerTokenVocabulary(vocabulary)
+    let document = createDocumentFixture(1000)
+    const component = firstComponent(document)
+    expect(validateNodePropertyEdit(document, {
+      nodeId: component.id, scope: 'token', key: 'background', value: 'surface.muted',
+    })).toBeNull()
+    document = applyOperation(document, {
+      id: 'token', at, type: 'set-node-property', nodeId: component.id, scope: 'token', key: 'background', value: 'surface.muted',
+    })
+    expect(firstComponent(document).tokenBindings.background).toBe('surface.muted')
+  })
+
+  it('저장 경로(applyOperation)도 막는다 — 검증만 통과시키고 쓰기를 열어두지 않는다', () => {
+    registerTokenVocabulary(vocabulary)
+    const document = createDocumentFixture(1000)
+    const component = firstComponent(document)
+    expect(() => applyOperation(document, {
+      id: 'token', at, type: 'set-node-property', nodeId: component.id, scope: 'token', key: 'background', value: 'surface.nonexistent',
+    })).toThrow(/surface\.nonexistent/)
+    // 문서는 건드려지지 않았다.
+    expect(firstComponent(document).tokenBindings.background).not.toBe('surface.nonexistent')
+  })
+
+  it('모양이 틀린 값은 어휘와 무관하게 여전히 거부된다', () => {
+    registerTokenVocabulary(vocabulary)
+    const document = createDocumentFixture(1000)
+    const component = firstComponent(document)
+    expect(validateNodePropertyEdit(document, {
+      nodeId: component.id, scope: 'token', key: 'background', value: 'notatoken',
+    })).toContain('invalid token reference')
+  })
+
+  it('이미 미해결 바인딩이 든 문서는 그대로 열린다 — 소급 무효화하지 않는다', () => {
+    // 저장 시점만 막는다. 여기서 읽기까지 막으면 사용자가 자기 문서를 못 연다.
+    registerTokenVocabulary(vocabulary)
+    const document = createDocumentFixture(1000)
+    const component = firstComponent(document)
+    component.tokenBindings.background = 'surface.gone'
+    const reopened = recoverSnapshot(serializeSnapshot(document, []))
+    expect(reopened.present.nodes[component.id].tokenBindings.background).toBe('surface.gone')
+  })
+
+  it('모르는 세트에서는 아무 토큰도 실재하지 않는다', () => {
+    registerTokenVocabulary(vocabulary)
+    const document = { ...createDocumentFixture(1000), tokenSetId: 'nope.set' }
+    expect(validateNodePropertyEdit(document, {
+      nodeId: firstComponent(document).id, scope: 'token', key: 'background', value: 'surface.muted',
+    })).toContain('토큰 세트에 없습니다')
   })
 })

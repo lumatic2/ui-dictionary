@@ -18,6 +18,24 @@ export interface PropertyField {
   options?: string[]
 }
 
+/**
+ * 토큰 이름이 그 세트에 **실재하는가**를 답하는 조회 함수.
+ *
+ * canvas-core는 런타임 의존이 없고 어휘(편집기/템플릿)를 알지 못한다 — 알아선 안 된다.
+ * 그래서 어휘를 아는 쪽(앱)이 조회 함수를 등록한다.
+ *
+ * 등록 전에는 **모양 검사만** 한다. 이건 이 계층이 답할 수 없는 질문에 대해
+ * "모른다"로 남는 것이지 "통과"가 아니다 — 등록하는 쪽이 그 구멍을 닫는다.
+ */
+export type TokenVocabularyLookup = (tokenSetId: string, tokenName: string) => boolean
+
+let tokenVocabulary: TokenVocabularyLookup | null = null
+
+/** 어휘를 아는 쪽이 부른다. `null`이면 모양 검사만 하던 상태로 돌아간다(테스트 격리용). */
+export function registerTokenVocabulary(lookup: TokenVocabularyLookup | null): void {
+  tokenVocabulary = lookup
+}
+
 const layoutModes = new Set<LayoutMode>(['absolute', 'horizontal', 'vertical'])
 const sizingModes = new Set<SizingMode>(['fixed', 'hug', 'fill'])
 const safeKey = /^[a-zA-Z][a-zA-Z0-9._-]*$/
@@ -45,6 +63,12 @@ export function validateNodePropertyEdit(document: CanvasDocument, edit: NodePro
     if (typeof edit.value !== 'string' || !edit.value.trim() || !safeKey.test(edit.value)) return `invalid variant ${edit.key}`
   } else if (edit.scope === 'token') {
     if (typeof edit.value !== 'string' || !tokenReference.test(edit.value)) return `invalid token reference ${String(edit.value)}`
+    // 모양이 맞아도 없는 토큰일 수 있다. EU5까지 이 검사가 없어서 오타가 조용히 *저장*됐고,
+    // 결함은 렌더 시점의 data-token-unresolved로만 남았다 — 화면은 아무 말도 하지 않았다.
+    // 사유는 그대로 role="alert"로 사용자에게 나가므로 사용자 언어로 적는다.
+    if (tokenVocabulary && !tokenVocabulary(document.tokenSetId, edit.value)) {
+      return `'${edit.value}' 토큰은 이 문서의 토큰 세트에 없습니다`
+    }
   } else if (edit.scope === 'layout') {
     if (edit.key === 'mode' && (typeof edit.value !== 'string' || !layoutModes.has(edit.value as LayoutMode))) return 'invalid layout mode'
     if ((edit.key === 'horizontal' || edit.key === 'vertical') && (typeof edit.value !== 'string' || !sizingModes.has(edit.value as SizingMode))) return 'invalid sizing mode'

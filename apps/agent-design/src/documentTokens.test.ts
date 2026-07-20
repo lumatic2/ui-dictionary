@@ -1,7 +1,7 @@
 import { describe, expect, it } from 'vitest'
-import { validateTokenMode } from '@askewly/canvas-core'
+import { createDocumentFixture, registerTokenVocabulary, validateNodePropertyEdit, validateTokenMode } from '@askewly/canvas-core'
 import { resolveTokenSet } from '@askewly/template-core'
-import { documentTokens, isKnownTokenSet, listDocumentTokenSets } from './documentTokens'
+import { documentTokenExists, documentTokens, isKnownTokenSet, listDocumentTokenSets } from './documentTokens'
 import { editorTokenKinds, editorTokenMaps, FALLBACK_BACKGROUND_TOKEN } from './editorTokens'
 
 /**
@@ -183,5 +183,48 @@ describe('토큰 열거 (ECT1 step-1)', () => {
     } finally {
       delete set.tokens['brand.secondary']
     }
+  })
+})
+
+/**
+ * ECT1 step-3 — 어휘 조회 함수가 canvas-core에 **실제로 등록되는가.**
+ *
+ * canvas-core의 테스트는 가짜 어휘를 손으로 등록해 통과한다. 그건 검증 로직이 도는지만 보고,
+ * **앱이 진짜 어휘를 실제로 건네는지**는 보지 못한다. 등록을 빠뜨리면 모든 canvas-core 테스트가
+ * 초록인 채로 편집기에는 구멍이 그대로 남는다 — EU5가 정확히 그런 종류의 결함이었다.
+ */
+describe('어휘 등록 배선 (ECT1 step-3)', () => {
+  it('documentTokenExists가 실재/부재를 가른다', () => {
+    expect(documentTokenExists('askewly.default', 'surface.muted')).toBe(true)
+    expect(documentTokenExists('askewly.warm', 'surface.canvas')).toBe(true)
+
+    // 상대 어휘의 토큰은 이 세트에 없다 — 격리가 검증에도 걸린다.
+    expect(documentTokenExists('askewly.warm', 'surface.base')).toBe(false)
+    expect(documentTokenExists('askewly.default', 'type.heading')).toBe(false)
+
+    expect(documentTokenExists('askewly.default', 'surface.nonexistent')).toBe(false)
+    // 모르는 세트는 아무것도 실재하지 않는다 — 오타난 세트 하나가 검사를 무력화하면 안 된다.
+    expect(documentTokenExists('nope.set', 'surface.muted')).toBe(false)
+  })
+
+  it('App 모듈을 들이면 canvas-core가 실재 검증을 하게 된다', async () => {
+    const document = createDocumentFixture(1000)
+    const node = Object.values(document.nodes).find((n) => 'background' in n.tokenBindings)!
+
+    // 등록 전: canvas-core는 답할 수 없다.
+    registerTokenVocabulary(null)
+    expect(validateNodePropertyEdit(document, {
+      nodeId: node.id, scope: 'token', key: 'background', value: 'surface.nonexistent',
+    })).toBeNull()
+
+    // App을 들이는 것만으로 등록된다(모듈 최상위 부수효과).
+    await import('./App')
+
+    expect(validateNodePropertyEdit(document, {
+      nodeId: node.id, scope: 'token', key: 'background', value: 'surface.nonexistent',
+    })).toContain('토큰 세트에 없습니다')
+    expect(validateNodePropertyEdit(document, {
+      nodeId: node.id, scope: 'token', key: 'background', value: 'surface.base',
+    })).toBeNull()
   })
 })
