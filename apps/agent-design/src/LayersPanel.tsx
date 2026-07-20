@@ -113,6 +113,7 @@ export function LayersPanel({ document, onOperation }: Props) {
           parentId = document.nodes[parentId]?.parentId ?? null
         }
       }
+
       return next.size === current.size ? current : next
     })
   }, [document.nodes, document.selection])

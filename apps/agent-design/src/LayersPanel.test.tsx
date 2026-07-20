@@ -307,3 +307,29 @@ describe('이름으로 찾는다 (EU3 step-2)', () => {
     expect(select.nodeIds).toEqual(['node-00042'])
   })
 })
+
+describe('선택하면 부모 경로가 펼쳐진다 (EU3 step-3)', () => {
+  /** 이 동작은 EU3 이전부터 있었지만 지키는 테스트가 없었다 — 여기서 고정한다. */
+  it('깊은 노드를 선택하면 그 행이 보이고 조상이 전부 펼쳐진다', () => {
+    const document = createDocumentFixture(1000)
+    const deepId = 'node-00042'
+    const ancestors: string[] = []
+    let parentId = document.nodes[deepId].parentId
+    while (parentId) { ancestors.push(parentId); parentId = document.nodes[parentId].parentId }
+    expect(ancestors.length, '조상이 없으면 이 테스트가 아무것도 증명하지 않는다').toBeGreaterThan(0)
+
+    const view = render(<LayersPanel document={{ ...document, selection: [deepId] }} onOperation={() => {}} />)
+    expect(view.getByTestId(`layer-${deepId}`)).toBeTruthy()
+    for (const ancestorId of ancestors) {
+      expect(view.getByTestId(`layer-${ancestorId}`).getAttribute('aria-expanded')).toBe('true')
+    }
+  })
+
+  it('선택을 옮겨도 이미 펼친 경로는 접히지 않는다', () => {
+    const document = createDocumentFixture(1000)
+    const view = render(<LayersPanel document={{ ...document, selection: ['node-00042'] }} onOperation={() => {}} />)
+    const parentId = document.nodes['node-00042'].parentId!
+    view.rerender(<LayersPanel document={{ ...document, selection: ['node-00000'] }} onOperation={() => {}} />)
+    expect(view.getByTestId(`layer-${parentId}`).getAttribute('aria-expanded')).toBe('true')
+  })
+})
