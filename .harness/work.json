@@ -3059,7 +3059,7 @@
       "work_id": "vl1-flow-audit",
       "horizon_id": "vocabulary-in-use",
       "milestone_id": "VL1",
-      "status": "active",
+      "status": "completed",
       "plan_path": "plans/2026-07-21-vl1-flow-audit.md",
       "changeset_path": "changesets",
       "next_step": "step-1",
@@ -3103,7 +3103,8 @@
       ],
       "owner_session_uuid": "claude:037069fb-2833-497c-ae4e-3f985ecea495",
       "updated_at": "2026-07-21",
-      "notes": "Registered atomically by canonical harness approve_harness_plan.py after plan validation."
+      "notes": "Registered atomically by canonical harness approve_harness_plan.py after plan validation.",
+      "completion_summary": "VL1 완료 — 배포본 실사로 용어 사전이 에이전트 경로 밖임을 확정하고, 기준선 84.4%를 쟀다. 12군집 중 8군집이 이미 만점이라 결정 계층(VL4·VL5·VL7) 규모 재검토가 필요하다."
     }
   }
 }

@@ -31,3 +31,4 @@
 {"actual_changesets": 3, "declared_min": 3, "milestone_id": "TH3", "ts": "2026-07-20", "verdict": "ok"}
 {"actual_changesets": 3, "declared_min": 3, "milestone_id": "TH7", "ts": "2026-07-20", "verdict": "ok"}
 {"actual_changesets": 3, "declared_min": 2, "milestone_id": "TH9", "ts": "2026-07-20", "verdict": "ok"}
+{"actual_changesets": 0, "declared_min": 3, "milestone_id": "VL1", "ts": "2026-07-21", "verdict": "no-refs"}
