@@ -3116,13 +3116,14 @@
       "status": "active",
       "plan_path": "plans/2026-07-21-ect2-color-swatch-and-picker.md",
       "changeset_path": "changesets",
-      "next_step": "step-1",
+      "next_step": "step-2",
       "current_step": "step-1",
       "steps": [
         {
           "id": "step-1",
           "label": "step-1 — 색이 견본으로 보인다",
-          "status": "pending"
+          "status": "completed",
+          "changeset": "20260721-color-swatch"
         },
         {
           "id": "step-2",

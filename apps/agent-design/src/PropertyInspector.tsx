@@ -9,7 +9,7 @@ import {
   type PropValue,
   type PropertyField,
 } from '@askewly/canvas-core'
-import { documentTokens, isKnownTokenSet, listDocumentTokenSets } from './documentTokens'
+import { documentTokens, isKnownTokenSet, listDocumentTokenSets, type TokenEntry } from './documentTokens'
 
 /**
  * 기하 필드 — 위치·크기·각도.
@@ -135,7 +135,24 @@ function isColorBinding(tokenSetId: string, field: PropertyField): boolean {
 }
 
 /**
- * 색 바인딩 하나 — **해석된 색 견본 + 토큰 이름**.
+ * 점표기 이름을 그룹으로 접는다 — `surface.canvas` → 그룹 `surface`.
+ *
+ * 그룹 목록을 손으로 적지 않는다. 리서치가 확인한 Penpot(점표기)·Webflow(슬래시) 방식이
+ * "이름 규칙 자체가 정보구조"라는 것이고, 우리 토큰은 이미 점표기다.
+ */
+function groupTokens(tokens: TokenEntry[]): Array<[string, TokenEntry[]]> {
+  const groups = new Map<string, TokenEntry[]>()
+  for (const token of tokens) {
+    const group = token.name.includes('.') ? token.name.slice(0, token.name.indexOf('.')) : '기타'
+    const bucket = groups.get(group)
+    if (bucket) bucket.push(token)
+    else groups.set(group, [token])
+  }
+  return [...groups]
+}
+
+/**
+ * 색 바인딩 하나 — **해석된 색 견본 + 토큰 이름**, 누르면 선택 목록이 열린다.
  *
  * 견본에 칠하는 색은 렌더러가 캔버스를 칠할 때 쓰는 그 함수에서 온다
  * (`documentTokens().resolve`). 별도 해석 경로를 만들면 견본과 캔버스가 다른 색을
@@ -144,27 +161,71 @@ function isColorBinding(tokenSetId: string, field: PropertyField): boolean {
  * 색만으로 상태를 말하지 않는다(anti-patterns 4) — 견본 옆에 토큰 이름이 글자로 함께 있고,
  * 해석 실패는 회색 폴백이 아니라 **미해결이라고 적는다**.
  */
-function ColorBindingField({ field, tokenSetId }: { field: PropertyField; tokenSetId: string }) {
+function ColorBindingField({ field, tokenSetId, commit }: {
+  field: PropertyField
+  tokenSetId: string
+  commit: (value: PropValue) => void
+}) {
   const binding = String(field.value ?? '')
-  const resolved = documentTokens(tokenSetId).resolve(binding)
+  const tokens = documentTokens(tokenSetId)
+  const resolved = tokens.resolve(binding)
   const label = COLOR_BINDING_LABELS[field.key] ?? field.key
+  const [open, setOpen] = useState(false)
+  const [query, setQuery] = useState('')
+
+  // 목록은 **이 문서 어휘의 색 토큰만**이다. 다른 어휘를 섞으면 템플릿이 편집기 색으로 칠해진다.
+  const choices = tokens.listTokens().filter((token) => token.kind === 'color')
+  const q = query.trim().toLowerCase()
+  const matched = q ? choices.filter((token) => token.name.toLowerCase().includes(q)) : choices
+
+  const choose = (name: string) => {
+    setOpen(false)
+    setQuery('')
+    if (name !== binding) commit(name)
+  }
 
   return <div className="color-field" data-testid={`color-field-${field.key}`}>
     <span className="color-field-label">{label}</span>
     <span className="color-field-value">
-      {resolved
-        ? <span
-            className="color-swatch"
-            data-testid={`color-swatch-${field.key}`}
-            data-resolved={resolved}
-            style={{ background: resolved }}
-            role="img"
-            aria-label={`${label}: ${binding}`}
-          />
-        : <span className="color-swatch color-swatch-unresolved" data-testid={`color-swatch-${field.key}`} role="img" aria-label={`${label}: 해석되지 않음`} />}
+      <button
+        type="button"
+        className={`color-swatch${resolved ? '' : ' color-swatch-unresolved'}`}
+        data-testid={`color-swatch-${field.key}`}
+        data-resolved={resolved ?? undefined}
+        style={resolved ? { background: resolved } : undefined}
+        aria-label={`${label}: ${resolved ? binding : '해석되지 않음'} — 눌러서 바꾸기`}
+        aria-expanded={open}
+        onClick={() => setOpen((was) => !was)}
+      />
       <span className="color-token-name">{binding}</span>
     </span>
     {!resolved && <span className="color-field-note">이 토큰은 지금 문서의 토큰 세트에서 해석되지 않는다.</span>}
+    {open && <div className="color-picker" data-testid={`color-picker-${field.key}`}>
+      <input
+        className="color-picker-search"
+        data-testid={`color-picker-search-${field.key}`}
+        value={query}
+        placeholder="색 이름으로 찾기"
+        aria-label="색 토큰 검색"
+        onChange={(event) => setQuery(event.target.value)}
+      />
+      {matched.length === 0
+        ? <p className="color-picker-empty">찾는 색이 없다.</p>
+        : groupTokens(matched).map(([group, groupTokensList]) => <div className="color-picker-group" key={group}>
+          <p className="color-picker-group-name">{group}</p>
+          {groupTokensList.map((token) => <button
+            type="button"
+            key={token.name}
+            className="color-picker-option"
+            data-testid={`color-option-${token.name}`}
+            aria-current={token.name === binding}
+            onClick={() => choose(token.name)}
+          >
+            <span className="color-swatch" style={{ background: token.value }} aria-hidden="true" />
+            <span className="color-token-name">{token.name}</span>
+          </button>)}
+        </div>)}
+    </div>}
   </div>
 }
 
@@ -288,7 +349,7 @@ export function PropertyInspector({ document, onOperation, bridgeConnected, onMa
           ? <p className="section-empty">이 노드에 묶인 토큰이 없다.</p>
           : fieldsBySection.visual.map((field) => isColorBinding(document.tokenSetId, field)
             // 색은 색으로 보여준다. 색이 아닌 토큰(글꼴 등)은 기존 텍스트 입력 그대로 둔다.
-            ? <ColorBindingField key={`${field.scope}.${field.key}`} field={field} tokenSetId={document.tokenSetId} />
+            ? <ColorBindingField key={`${field.scope}.${field.key}`} field={field} tokenSetId={document.tokenSetId} commit={(value) => commitProperty(field, value)} />
             : <label className="property-field" key={`${field.scope}.${field.key}`}>{field.label}
               <DraftInput field={field} commit={(value) => commitProperty(field, value)} />
             </label>)}

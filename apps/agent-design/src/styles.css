@@ -299,3 +299,22 @@ button, select { font: inherit; }
 .color-swatch-unresolved { border-style: dashed; background: repeating-linear-gradient(45deg, transparent, transparent 3px, var(--ad-gray-9) 3px, var(--ad-gray-9) 4px); }
 .color-token-name { overflow: hidden; color: var(--ad-gray-1); font: 11px ui-monospace, monospace; text-overflow: ellipsis; white-space: nowrap; }
 .color-field-note { color: var(--ad-gray-7); font-size: 10px; line-height: 1.5; word-break: keep-all; }
+
+/* 견본이 버튼이 된다 — 상호작용 요소는 상태를 갖는다(무상태 인터랙션은 하드페일). */
+button.color-swatch { padding: 0; cursor: pointer; }
+button.color-swatch:hover { border-color: var(--ad-gray-6); }
+button.color-swatch:focus-visible { outline: 2px solid var(--ad-brand-lavender); outline-offset: 2px; }
+
+/* 토큰 선택 목록. 인스펙터 폭 안에 들어가는 인라인 패널 — 캔버스를 가리지 않는다. */
+.color-picker { display: grid; gap: 8px; margin-top: 6px; border: 1px solid var(--ad-gray-9); border-radius: 6px; padding: 8px; background: var(--ad-gray-12); max-height: 260px; overflow: auto; }
+.color-picker-search { width: 100%; height: 28px; border: 1px solid var(--ad-gray-9); border-radius: 4px; padding: 0 6px; background: transparent; color: var(--ad-gray-1); font: 11px ui-monospace, monospace; }
+.color-picker-search:focus { outline: 0; border-color: var(--ad-brand-lavender); }
+.color-picker-empty { margin: 0; color: var(--ad-gray-7); font-size: 10px; word-break: keep-all; }
+.color-picker-group { display: grid; gap: 2px; }
+.color-picker-group-name { margin: 0 0 2px; color: var(--ad-gray-7); font-size: 9px; letter-spacing: 0.04em; text-transform: uppercase; }
+.color-picker-option { display: flex; align-items: center; gap: 8px; width: 100%; border: 0; border-radius: 4px; padding: 4px 6px; background: transparent; text-align: left; cursor: pointer; }
+.color-picker-option:hover { background: var(--ad-gray-10); }
+.color-picker-option:focus-visible { outline: 2px solid var(--ad-brand-lavender); outline-offset: -2px; }
+/* 현재 선택은 색이 아니라 형태·글자로도 말한다(색만으로 상태 전달 금지). */
+.color-picker-option[aria-current="true"] { background: var(--ad-gray-10); }
+.color-picker-option[aria-current="true"] .color-token-name::after { content: ' · 지금 이 색'; color: var(--ad-gray-7); }

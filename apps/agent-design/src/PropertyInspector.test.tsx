@@ -253,3 +253,100 @@ describe('색이 견본으로 보인다 (ECT2 step-1)', () => {
     expect(view.queryByTestId('property-token-fontFamily')).not.toBeNull()
   })
 })
+
+/**
+ * ECT2 step-2 — 목록에서 고른다.
+ *
+ * "유효 토큰 목록이 없다"는 데이터가 없어서가 아니라 UI가 안 물어봐서 생긴 결함이었다.
+ * 이제 물어본다. 다만 **자기 어휘만** 물어야 한다 — 섞으면 템플릿이 편집기 색으로 칠해진다.
+ */
+describe('목록에서 고른다 (ECT2 step-2)', () => {
+  /** 지정한 어휘의 문서로 인스펙터를 띄우고 색 선택 목록을 연다. */
+  function openPicker(tokenSetId: string, bindings: Record<string, string>, key = 'background') {
+    const base = createDocumentFixture(1000)
+    const id = base.selection[0]
+    const document = structuredClone(base)
+    document.tokenSetId = tokenSetId
+    document.nodes[id].tokenBindings = bindings
+    const operations: CanvasOperation[] = []
+    const view = render(<PropertyInspector
+      document={document} onOperation={(op) => operations.push(op)} bridgeConnected={false} onMaterialize={() => {}}
+    />)
+    fireEvent.click(view.getByTestId(`color-swatch-${key}`))
+    return { view, operations, document, id }
+  }
+
+  it('편집기 문서에는 편집기 색만 — 템플릿 토큰 0건', () => {
+    const { view } = openPicker('askewly.default', { background: 'surface.raised' })
+    const picker = view.getByTestId('color-picker-background')
+    expect(picker.textContent).toContain('surface.base')
+    expect(picker.textContent).toContain('action.primary')
+    // 상대 어휘 고유 이름은 하나도 없다.
+    expect(picker.textContent).not.toContain('surface.canvas')
+    expect(picker.textContent).not.toContain('brand.primary')
+  })
+
+  it('템플릿 문서에는 템플릿 색만 — 편집기 토큰 0건 (반대 방향)', () => {
+    const { view } = openPicker('askewly.warm', { fill: 'surface.canvas' }, 'fill')
+    const picker = view.getByTestId('color-picker-fill')
+    expect(picker.textContent).toContain('surface.canvas')
+    expect(picker.textContent).toContain('brand.primary')
+    expect(picker.textContent).not.toContain('surface.base')
+    expect(picker.textContent).not.toContain('action.primary')
+  })
+
+  it('색만 나온다 — 글꼴 토큰은 목록에 없다', () => {
+    const { view } = openPicker('askewly.warm', { fill: 'surface.canvas' }, 'fill')
+    const picker = view.getByTestId('color-picker-fill')
+    expect(picker.textContent).not.toContain('type.heading')
+    expect(picker.textContent).not.toContain('type.display')
+  })
+
+  it('모든 항목이 자기 색을 견본으로 보여준다', () => {
+    const { view } = openPicker('askewly.warm', { fill: 'surface.canvas' }, 'fill')
+    const option = view.getByTestId('color-option-brand.primary')
+    const swatch = option.querySelector('.color-swatch') as HTMLElement
+    expect(swatch.style.background).toBeTruthy()
+    expect(option.textContent).toContain('brand.primary')
+  })
+
+  it('검색하면 목록이 줄고 그룹은 보존된다', () => {
+    const { view } = openPicker('askewly.default', { background: 'surface.raised' })
+    const picker = view.getByTestId('color-picker-background')
+    const before = picker.querySelectorAll('.color-picker-option').length
+    fireEvent.change(view.getByTestId('color-picker-search-background'), { target: { value: 'border' } })
+    const after = picker.querySelectorAll('.color-picker-option').length
+    expect(after).toBeGreaterThan(0)
+    expect(after).toBeLessThan(before)
+    expect([...picker.querySelectorAll('.color-picker-option')].every((o) => o.textContent!.includes('border'))).toBe(true)
+    expect(picker.querySelector('.color-picker-group-name')!.textContent).toBe('border')
+  })
+
+  it('없는 색을 찾으면 빈 목록이 아니라 그렇다고 말한다', () => {
+    const { view } = openPicker('askewly.default', { background: 'surface.raised' })
+    fireEvent.change(view.getByTestId('color-picker-search-background'), { target: { value: 'zzzz' } })
+    expect(view.getByTestId('color-picker-background').textContent).toContain('찾는 색이 없다')
+  })
+
+  it('고르면 연산이 커밋되고 목록이 닫힌다', () => {
+    const { view, operations, id } = openPicker('askewly.default', { background: 'surface.raised' })
+    fireEvent.click(view.getByTestId('color-option-action.primary'))
+    expect(operations).toHaveLength(1)
+    expect(operations[0]).toMatchObject({
+      type: 'set-node-property', nodeId: id, scope: 'token', key: 'background', value: 'action.primary',
+    })
+    expect(view.queryByTestId('color-picker-background')).toBeNull()
+  })
+
+  it('지금 색이 목록에서 글자로 표시된다 — 색만으로 말하지 않는다', () => {
+    const { view } = openPicker('askewly.default', { background: 'surface.raised' })
+    const current = view.getByTestId('color-option-surface.raised')
+    expect(current.getAttribute('aria-current')).toBe('true')
+  })
+
+  it('같은 색을 다시 고르면 연산을 만들지 않는다', () => {
+    const { view, operations } = openPicker('askewly.default', { background: 'surface.raised' })
+    fireEvent.click(view.getByTestId('color-option-surface.raised'))
+    expect(operations).toHaveLength(0)
+  })
+})
