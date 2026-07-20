@@ -59,13 +59,20 @@ function nodeStyle(node: CanvasNode, tokenSetId: string, previewBounds?: CanvasN
   const fillBinding = node.kind === 'shape' ? node.tokenBindings.fill : undefined
   const backgroundBinding = node.tokenBindings.background
   const colorBinding = node.tokenBindings.color
+  // 토큰에서 벗어난 색(ECT3 detach). **바인딩이 이긴다** — 둘이 겹쳐도 모호하지 않다.
+  const literal = node.literalColors ?? {}
 
   let background: string | null = null
   if (fillBinding) background = tokens.resolve(fillBinding)
+  else if (literal.fill && node.kind === 'shape') background = literal.fill
+  else if (backgroundBinding) background = tokens.resolveBackground(backgroundBinding)
+  else if (literal.background) background = literal.background
   else if (node.kind === 'shape') background = node.fill
   else background = tokens.resolveBackground(backgroundBinding)
 
-  const color = colorBinding ? tokens.resolve(colorBinding) : tokens.resolve('text.default')
+  const color = colorBinding
+    ? tokens.resolve(colorBinding)
+    : (literal.color ?? tokens.resolve('text.default'))
   const fontFamily = tokens.resolve(node.tokenBindings.fontFamily)
 
   const style: React.CSSProperties = {

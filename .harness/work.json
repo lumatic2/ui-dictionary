@@ -3170,13 +3170,14 @@
       "status": "active",
       "plan_path": "plans/2026-07-21-ect3-bind-and-detach.md",
       "changeset_path": "changesets",
-      "next_step": "step-1",
+      "next_step": "step-2",
       "current_step": "step-1",
       "steps": [
         {
           "id": "step-1",
           "label": "step-1 — 안 묶인 것을 묶는다",
-          "status": "pending"
+          "status": "completed",
+          "changeset": "20260721-bind-new-token"
         },
         {
           "id": "step-2",

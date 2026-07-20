@@ -1,6 +1,6 @@
 import { afterEach, describe, expect, it } from 'vitest'
 import { createDocumentFixture, firstComponent } from './fixtures.js'
-import { applyOperation, commitOperation, createHistory, redo, undo } from './operations.js'
+import { applyOperation, commitOperation, createHistory, invertOperation, redo, undo } from './operations.js'
 import { recoverSnapshot, serializeSnapshot } from './persistence.js'
 import { propertyFieldsForNode, registerTokenVocabulary, validateNodePropertyEdit } from './properties.js'
 
@@ -255,5 +255,104 @@ describe('토큰 검증은 경로를 가리지 않는다 (ECT1 검증 후속)', 
       })
     } catch (error) { viaPatch = (error as Error).message }
     expect(viaPatch).toContain(viaProperty!)
+  })
+})
+
+/**
+ * ECT3 step-2 — 묶인 것을 푼다(Figma식 detach).
+ *
+ * 사용자 결정: 탈출구 있음. 기본은 토큰이고 명시적 detach로 벗어나면 리터럴을 쓴다.
+ * **푸는 것이지 바꾸는 게 아니다** — detach 순간 화면 색은 그대로여야 한다.
+ */
+describe('토큰에서 벗어나고 되돌아온다 (ECT3 step-2)', () => {
+  const vocabulary = (tokenSetId: string, name: string) =>
+    tokenSetId === 'askewly.default' && ['surface.base', 'surface.muted'].includes(name)
+
+  afterEach(() => registerTokenVocabulary(null))
+
+  const detach = (nodeId: string, key: string, literal: string) =>
+    ({ id: 'detach', at, type: 'detach-token-binding' as const, nodeId, key, literal })
+  const attach = (nodeId: string, key: string, name: string) =>
+    ({ id: 'attach', at, type: 'attach-token-binding' as const, nodeId, key, name })
+
+  it('풀면 바인딩이 사라지고 그 색이 리터럴로 남는다 — 색은 안 변한다', () => {
+    registerTokenVocabulary(vocabulary)
+    let document = createDocumentFixture(1000)
+    const id = firstComponent(document).id
+    document = applyOperation(document, attach(id, 'background', 'surface.muted'))
+    document = applyOperation(document, detach(id, 'background', '#123456'))
+    const node = document.nodes[id]
+    expect(node.tokenBindings.background).toBeUndefined()
+    expect(node.literalColors?.background).toBe('#123456')
+  })
+
+  it('색 없는 detach는 거부한다 — 색을 잃어버리는 detach는 없다', () => {
+    const document = createDocumentFixture(1000)
+    const id = firstComponent(document).id
+    expect(() => applyOperation(document, detach(id, 'background', ''))).toThrow(/detaching to/)
+  })
+
+  it('다시 묶으면 리터럴이 사라진다 — 두 출처가 같이 남지 않는다', () => {
+    registerTokenVocabulary(vocabulary)
+    let document = createDocumentFixture(1000)
+    const id = firstComponent(document).id
+    document = applyOperation(document, detach(id, 'background', '#123456'))
+    document = applyOperation(document, attach(id, 'background', 'surface.base'))
+    const node = document.nodes[id]
+    expect(node.tokenBindings.background).toBe('surface.base')
+    expect(node.literalColors?.background).toBeUndefined()
+  })
+
+  it('다시 묶을 때도 토큰 실재를 검사한다 — 이 경로로 새지 않는다', () => {
+    registerTokenVocabulary(vocabulary)
+    const document = createDocumentFixture(1000)
+    const id = firstComponent(document).id
+    expect(() => applyOperation(document, attach(id, 'background', 'surface.nonexistent'))).toThrow(/토큰 세트에 없습니다/)
+  })
+
+  it('undo가 detach를 정확히 되돌린다', () => {
+    registerTokenVocabulary(vocabulary)
+    let history = createHistory(createDocumentFixture(1000))
+    const id = firstComponent(history.present).id
+    history = commitOperation(history, attach(id, 'background', 'surface.muted'))
+    history = commitOperation(history, detach(id, 'background', '#123456'))
+    expect(history.present.nodes[id].literalColors?.background).toBe('#123456')
+
+    history = undo(history)
+    expect(history.present.nodes[id].tokenBindings.background).toBe('surface.muted')
+    expect(history.present.nodes[id].literalColors?.background).toBeUndefined()
+
+    history = redo(history)
+    expect(history.present.nodes[id].literalColors?.background).toBe('#123456')
+    expect(history.present.nodes[id].tokenBindings.background).toBeUndefined()
+  })
+
+  it('undo가 attach도 정확히 되돌린다 — 리터럴로 복귀', () => {
+    registerTokenVocabulary(vocabulary)
+    let history = createHistory(createDocumentFixture(1000))
+    const id = firstComponent(history.present).id
+    history = commitOperation(history, detach(id, 'background', '#abcdef'))
+    history = commitOperation(history, attach(id, 'background', 'surface.base'))
+    history = undo(history)
+    expect(history.present.nodes[id].literalColors?.background).toBe('#abcdef')
+    expect(history.present.nodes[id].tokenBindings.background).toBeUndefined()
+  })
+
+  it('이미 벗어난 키에 다시 쓰면 리터럴만 갱신된다 — 원시 색 편집이 같은 연산을 탄다', () => {
+    let document = createDocumentFixture(1000)
+    const id = firstComponent(document).id
+    document = applyOperation(document, detach(id, 'background', '#111111'))
+    document = applyOperation(document, detach(id, 'background', '#222222'))
+    expect(document.nodes[id].literalColors?.background).toBe('#222222')
+    expect(document.nodes[id].tokenBindings.background).toBeUndefined()
+  })
+
+  it('되돌릴 색 출처가 없으면 역함수가 조용히 넘어가지 않는다', () => {
+    const document = createDocumentFixture(1000)
+    const id = firstComponent(document).id
+    // background 바인딩도 리터럴도 없는 상태에서의 detach 역함수
+    const bare = structuredClone(document)
+    delete bare.nodes[id].tokenBindings.background
+    expect(() => invertOperation(bare, detach(id, 'background', '#000000'))).toThrow(/colour source/)
   })
 })

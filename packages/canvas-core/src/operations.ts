@@ -25,6 +25,29 @@ export interface UpdateNodeOperation extends OperationBase {
   patch: Partial<Pick<CanvasNode, 'name' | 'bounds' | 'visible' | 'locked' | 'tokenBindings'>>
 }
 
+/**
+ * 토큰에서 벗어난다 — 바인딩을 지우고 그 시점 색을 리터럴로 남긴다.
+ *
+ * `literal`을 연산이 들고 오는 이유: canvas-core는 어휘를 모른다(ECT1 계층 결정).
+ * "지금 이 토큰이 무슨 색인가"는 어휘를 아는 앱만 답할 수 있으므로 앱이 넣어 보낸다.
+ *
+ * 이미 벗어난 키에 다시 쓰면 리터럴만 갱신된다 — 원시 색 편집이 같은 연산을 탄다.
+ */
+export interface DetachTokenBindingOperation extends OperationBase {
+  type: 'detach-token-binding'
+  nodeId: NodeId
+  key: string
+  literal: string
+}
+
+/** 다시 묶는다 — 리터럴을 지우고 바인딩을 세운다. `detach`의 역이다. */
+export interface AttachTokenBindingOperation extends OperationBase {
+  type: 'attach-token-binding'
+  nodeId: NodeId
+  key: string
+  name: string
+}
+
 export interface TransformNodesOperation extends OperationBase {
   type: 'transform-nodes'
   boundsById: Record<NodeId, CanvasRect>
@@ -85,6 +108,8 @@ export type CanvasOperation =
   | CreateNodeOperation
   | DeleteNodeOperation
   | UpdateNodeOperation
+  | DetachTokenBindingOperation
+  | AttachTokenBindingOperation
   | TransformNodesOperation
   | RotateNodesOperation
   | SetNodePropertyOperation
@@ -187,6 +212,27 @@ function mutateOperation(next: CanvasDocument, operation: CanvasOperation) {
       const node = next.nodes[operation.nodeId]
       if (!node) throw new Error(`missing node ${operation.nodeId}`)
       Object.assign(node, copyPatch(operation.patch))
+      break
+    }
+    case 'detach-token-binding': {
+      const node = next.nodes[operation.nodeId]
+      if (!node) throw new Error(`missing node ${operation.nodeId}`)
+      if (!operation.literal) throw new Error('detach requires the colour it is detaching to')
+      delete node.tokenBindings[operation.key]
+      node.literalColors = { ...node.literalColors, [operation.key]: operation.literal }
+      break
+    }
+    case 'attach-token-binding': {
+      const node = next.nodes[operation.nodeId]
+      if (!node) throw new Error(`missing node ${operation.nodeId}`)
+      const error = validateTokenBinding(next.tokenSetId, operation.name)
+      if (error) throw new Error(`${operation.nodeId}.${operation.key}: ${error}`)
+      node.tokenBindings[operation.key] = operation.name
+      if (node.literalColors) {
+        const rest = { ...node.literalColors }
+        delete rest[operation.key]
+        node.literalColors = rest
+      }
       break
     }
     case 'transform-nodes': {
@@ -316,6 +362,21 @@ export function invertOperation(before: CanvasDocument, operation: CanvasOperati
         ;(patch as Record<string, unknown>)[key] = structuredClone(node[key])
       }
       return { ...inverseBase, type: 'update-node', nodeId: node.id, patch }
+    }
+    case 'detach-token-binding':
+    case 'attach-token-binding': {
+      /*
+       * 두 연산의 역은 같은 질문이다 — "이 키의 색 출처가 원래 무엇이었나".
+       * 바인딩이었으면 다시 묶고, 리터럴이었으면 그 리터럴로 되돌린다.
+       * 아무것도 없었으면 되돌릴 것이 없다(빈 리터럴은 detach가 거부한다).
+       */
+      const node = before.nodes[operation.nodeId]
+      if (!node) throw new Error(`cannot invert missing node ${operation.nodeId}`)
+      const binding = node.tokenBindings[operation.key]
+      if (binding) return { ...inverseBase, type: 'attach-token-binding', nodeId: node.id, key: operation.key, name: binding }
+      const literal = node.literalColors?.[operation.key]
+      if (literal) return { ...inverseBase, type: 'detach-token-binding', nodeId: node.id, key: operation.key, literal }
+      throw new Error(`${operation.nodeId}.${operation.key} had no colour source to restore`)
     }
     case 'transform-nodes': {
       const boundsById: Record<NodeId, CanvasRect> = {}

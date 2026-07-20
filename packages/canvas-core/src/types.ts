@@ -51,6 +51,17 @@ export interface CanvasNodeBase {
   visible: boolean
   locked: boolean
   tokenBindings: Record<string, string>
+  /**
+   * 토큰에서 **벗어난** 색(ECT3 detach). 키는 `tokenBindings`와 같다(`fill`·`background`·`color`).
+   *
+   * 왜 새 필드인가 — 리터럴 색을 담을 자리가 `ShapeNode.fill` 하나뿐이라 frame·text의
+   * 배경/글자색을 detach하면 둘 곳이 없다. `tokenBindings`에 리터럴을 섞으면 방금 세운
+   * 토큰 실재 검증(ECT1)이 무너진다.
+   *
+   * 왜 선택 필드인가 — 필수로 두면 **이미 저장된 문서가 안 열린다.** 없으면 없는 것이지
+   * 잘못된 문서가 아니다. 우선순위는 바인딩 > 리터럴이므로 둘이 겹쳐도 모호하지 않다.
+   */
+  literalColors?: Record<string, string>
   source: SourceMapping | null
 }
 

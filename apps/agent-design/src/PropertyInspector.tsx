@@ -286,10 +286,11 @@ function usePickerTrigger() {
  * 색만으로 상태를 말하지 않는다(anti-patterns 4) — 견본 옆에 토큰 이름이 글자로 함께 있고,
  * 해석 실패는 회색 폴백이 아니라 **미해결이라고 적는다**.
  */
-function ColorBindingField({ field, tokenSetId, commit }: {
+function ColorBindingField({ field, tokenSetId, commit, onDetach }: {
   field: PropertyField
   tokenSetId: string
   commit: (value: PropValue) => void
+  onDetach?: (literal: string) => void
 }) {
   const binding = String(field.value ?? '')
   const resolved = documentTokens(tokenSetId).resolve(binding)
@@ -318,6 +319,16 @@ function ColorBindingField({ field, tokenSetId, commit }: {
       <span className="color-token-name">{binding}</span>
     </span>
     {!resolved && <span className="color-field-note">이 토큰은 지금 문서의 토큰 세트에서 해석되지 않는다.</span>}
+    {/*
+      * 토큰에서 벗어나는 문. 해석되는 색일 때만 낸다 — 안 풀리는 토큰은 벗어날 색이 없다.
+      * 사용자 결정(2026-07-21): 탈출구 있음(Figma식). 벗어난 상태는 화면에 표시한다.
+      */}
+    {onDetach && resolved && <button
+      type="button"
+      className="color-detach-button"
+      data-testid={`detach-color-${field.key}`}
+      onClick={() => onDetach(resolved)}
+    >토큰에서 풀기</button>}
     {open && <TokenColorPicker id={field.key} tokenSetId={tokenSetId} current={binding} onChoose={choose} onClose={close} />}
   </div>
 }
@@ -366,6 +377,55 @@ function UnboundColorField({ bindingKey, tokenSetId, commit }: {
       tokenSetId={tokenSetId}
       current={null}
       onChoose={(name) => { close(); commit(name) }}
+      onClose={close}
+    />}
+  </div>
+}
+
+/**
+ * 토큰에서 **벗어난** 색. 벗어났다는 사실을 화면에 적는다.
+ *
+ * horizon 프리모템 2가 이 결정의 리스크를 맡는다 — 원시 색이 편한 기본 습관이 되면
+ * 토큰 SSOT라는 논지가 안에서부터 무너진다. 표시 없는 detach는 만들지 않는다.
+ */
+function LiteralColorField({ bindingKey, value, tokenSetId, onRebind, onEdit }: {
+  bindingKey: string
+  value: string
+  tokenSetId: string
+  onRebind: (name: string) => void
+  onEdit: (literal: string) => void
+}) {
+  const label = COLOR_BINDING_LABELS[bindingKey] ?? bindingKey
+  const { open, setOpen, close, triggerRef } = usePickerTrigger()
+
+  return <div className="color-field" data-testid={`literal-color-field-${bindingKey}`}>
+    <span className="color-field-label">{label}</span>
+    <span className="color-field-value">
+      <button
+        ref={triggerRef}
+        type="button"
+        className="color-swatch color-swatch-literal"
+        data-testid={`color-swatch-${bindingKey}`}
+        data-resolved={value}
+        style={{ background: value }}
+        aria-label={`${label}: ${value} — 토큰에서 벗어남, 눌러서 다시 묶기`}
+        aria-expanded={open}
+        onClick={() => setOpen((was) => !was)}
+      />
+      <input
+        className="color-literal-input"
+        data-testid={`literal-input-${bindingKey}`}
+        value={value}
+        aria-label={`${label} 원시 값`}
+        onChange={(event) => onEdit(event.target.value)}
+      />
+    </span>
+    <span className="color-field-note" data-testid={`detached-note-${bindingKey}`}>토큰에서 벗어난 색이다. 견본을 눌러 다시 묶을 수 있다.</span>
+    {open && <TokenColorPicker
+      id={bindingKey}
+      tokenSetId={tokenSetId}
+      current={null}
+      onChoose={(name) => { close(); onRebind(name) }}
       onClose={close}
     />}
   </div>
@@ -491,17 +551,35 @@ export function PropertyInspector({ document, onOperation, bridgeConnected, onMa
           * 아직 안 묶인 색은 **묶는 경로**를 보여준다. 막다른 안내문만 두면 사용자가
           * 그 노드에서 색을 바꿀 방법이 없다(EU5에서 실제로 막힌 지점).
           */}
-        {node && bindableColorKeys(node).filter((key) => !(key in node.tokenBindings)).map((key) => <UnboundColorField
-          key={`unbound-${key}`}
-          bindingKey={key}
-          tokenSetId={document.tokenSetId}
-          commit={(value) => commitProperty({ scope: 'token', key, label: key, value: null, valueType: 'string' }, value)}
-        />)}
+        {node && bindableColorKeys(node)
+          .filter((key) => !(key in node.tokenBindings))
+          .map((key) => node.literalColors?.[key]
+            // 벗어난 색은 묶기 버튼이 아니라 리터럴 필드로 나온다 — 지금 색이 무엇인지 보여야 한다.
+            ? <LiteralColorField
+              key={`literal-${key}`}
+              bindingKey={key}
+              value={node.literalColors[key]}
+              tokenSetId={document.tokenSetId}
+              onRebind={(name) => onOperation({ ...operationId('attach'), type: 'attach-token-binding', nodeId: node.id, key, name })}
+              onEdit={(literal) => onOperation({ ...operationId('literal'), type: 'detach-token-binding', nodeId: node.id, key, literal })}
+            />
+            : <UnboundColorField
+              key={`unbound-${key}`}
+              bindingKey={key}
+              tokenSetId={document.tokenSetId}
+              commit={(value) => commitProperty({ scope: 'token', key, label: key, value: null, valueType: 'string' }, value)}
+            />)}
         {fieldsBySection.visual.length === 0 && node && bindableColorKeys(node).length === 0
           ? <p className="section-empty">이 노드에는 색 속성이 없다.</p>
           : fieldsBySection.visual.map((field) => isColorBinding(document.tokenSetId, field)
             // 색은 색으로 보여준다. 색이 아닌 토큰(글꼴 등)은 기존 텍스트 입력 그대로 둔다.
-            ? <ColorBindingField key={`${field.scope}.${field.key}`} field={field} tokenSetId={document.tokenSetId} commit={(value) => commitProperty(field, value)} />
+            ? <ColorBindingField
+              key={`${field.scope}.${field.key}`}
+              field={field}
+              tokenSetId={document.tokenSetId}
+              commit={(value) => commitProperty(field, value)}
+              onDetach={node ? (literal) => onOperation({ ...operationId('detach'), type: 'detach-token-binding', nodeId: node.id, key: field.key, literal }) : undefined}
+            />
             : <label className="property-field" key={`${field.scope}.${field.key}`}>{field.label}
               <DraftInput field={field} commit={(value) => commitProperty(field, value)} />
             </label>)}
