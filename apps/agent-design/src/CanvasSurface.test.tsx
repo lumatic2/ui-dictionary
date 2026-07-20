@@ -312,3 +312,55 @@ describe('정적 거리 측정 (EU2 step-2)', () => {
     expect(view.queryByTestId('measure-readout')).toBeNull()
   })
 })
+
+describe('스냅과 측정은 서로를 켜지 않는다 (EU2 step-3)', () => {
+  const scene = () => {
+    const document = createDocumentFixture(1000)
+    for (const node of Object.values(document.nodes)) node.visible = false
+    const id = document.selection.at(-1)!
+    const otherId = Object.keys(document.nodes).find((key) => key !== id)!
+    document.nodes[id].visible = true
+    document.nodes[id].bounds = { x: 0, y: 0, width: 100, height: 50 }
+    document.nodes[otherId].visible = true
+    document.nodes[otherId].bounds = { x: 200, y: 400, width: 100, height: 50 }
+    return { document, id, otherId }
+  }
+
+  it('정적 Alt 호버 중에는 정렬 가이드가 뜨지 않는다', () => {
+    const { document, otherId } = scene()
+    const view = render(<CanvasSurface document={document} />)
+    const target = view.container.querySelector(`[data-canvas-id="${otherId}"]`)!
+    fireEvent(target, new MouseEvent('pointermove', { bubbles: true, altKey: true }))
+    expect(view.getByTestId('measure-readout')).toBeTruthy()
+    expect(view.container.querySelectorAll('.dom-alignment-guide')).toHaveLength(0)
+  })
+
+  it('드래그 중에는 정렬 가이드만 뜨고 측정 배지는 없다', () => {
+    const { document } = scene()
+    const view = render(<CanvasSurface document={document} />)
+    pointer(view.getByTestId('manipulation-selection'), 'pointerdown', 0, 0)
+    pointer(view.getByTestId('canvas-viewport'), 'pointermove', 197, 400)
+    expect(view.container.querySelectorAll('.dom-alignment-guide').length).toBeGreaterThan(0)
+    expect(view.queryByTestId('measure-readout')).toBeNull()
+  })
+})
+
+describe('떠 있던 측정은 드래그가 시작되면 꺼진다 (EU2 step-3)', () => {
+  it('Alt 호버로 띄운 배지가 드래그 시작과 함께 사라진다', () => {
+    const document = createDocumentFixture(1000)
+    for (const node of Object.values(document.nodes)) node.visible = false
+    const id = document.selection.at(-1)!
+    const otherId = Object.keys(document.nodes).find((key) => key !== id)!
+    document.nodes[id].visible = true
+    document.nodes[otherId].visible = true
+    const view = render(<CanvasSurface document={document} />)
+
+    const target = view.container.querySelector(`[data-canvas-id="${otherId}"]`)!
+    fireEvent(target, new MouseEvent('pointermove', { bubbles: true, altKey: true }))
+    expect(view.getByTestId('measure-readout'), '측정이 먼저 떠 있어야 이 테스트가 의미 있다').toBeTruthy()
+
+    // 배지가 떠 있는 상태에서 드래그를 시작한다.
+    pointer(view.getByTestId('manipulation-selection'), 'pointerdown', 0, 0)
+    expect(view.queryByTestId('measure-readout')).toBeNull()
+  })
+})

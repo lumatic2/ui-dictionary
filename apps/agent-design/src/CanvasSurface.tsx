@@ -193,6 +193,16 @@ export function CanvasSurface({ document, editorPlaneFailure = null, onOperation
     grab?: { center: { x: number; y: number }; pointer: { x: number; y: number }; rotation: number }
   } | null>(null)
   const [previewBounds, setPreviewBounds] = useState<BoundsById>({})
+  /**
+   * 같은 값의 ref. `finishGesture`는 state 를 클로저로 읽는데, 누르고 끌고 놓는 일이 한 틱 안에
+   * 일어나면 그 클로저는 아직 `{}`다 — 빈 `transform-nodes`가 커밋돼 편집기 전체가 죽었다
+   * (브라우저 실조작에서 적발: "transform-nodes requires at least one node").
+   */
+  const previewBoundsRef = useRef<BoundsById>({})
+  const writePreviewBounds = useCallback((next: BoundsById) => {
+    previewBoundsRef.current = next
+    setPreviewBounds(next)
+  }, [])
   const [previewRotation, setPreviewRotation] = useState<number | null>(null)
   const [guides, setGuides] = useState<AlignmentGuide[]>([])
   const [snapEnabled, setSnapEnabled] = useState(true)
@@ -258,7 +268,7 @@ export function CanvasSurface({ document, editorPlaneFailure = null, onOperation
     if (event.key === 'Escape' && gestureRef.current) {
       event.preventDefault()
       gestureRef.current = null
-      setPreviewBounds({})
+      writePreviewBounds({})
       setGuides([])
       return
     }
@@ -305,8 +315,11 @@ export function CanvasSurface({ document, editorPlaneFailure = null, onOperation
       }
       setPreviewRotation(node.rotation)
     }
+    // 드래그가 시작되면 떠 있던 측정 판독을 끈다. 진입만 막으면 직전 Alt 호버의 배지가
+    // 드래그 내내 남는다 — 브라우저 실조작에서 적발됐고, 진입만 보던 테스트는 놓쳤다.
+    setMeasureTargetId(null)
     gestureRef.current = { start: { x: event.clientX, y: event.clientY }, before, kind, handle, grab }
-    setPreviewBounds(before)
+    writePreviewBounds(before)
     if (event.isTrusted) event.currentTarget.setPointerCapture?.(event.pointerId)
   }, [document])
 
@@ -329,7 +342,7 @@ export function CanvasSurface({ document, editorPlaneFailure = null, onOperation
     // 스냅이 보정한 좌표를 그대로 preview 로 쓴다 — 가이드만 그리고 원래 좌표를 커밋하면
     // 화면의 선과 문서의 값이 어긋난다(EU2 실사에서 발견된 상태가 정확히 그거였다).
     const snapped = snapBounds(document, dragged, { handle: gesture.kind === 'resize' ? gesture.handle ?? 'se' : undefined, enabled: snapEnabled })
-    setPreviewBounds(snapped.bounds)
+    writePreviewBounds(snapped.bounds)
     setGuides(snapped.guides)
   }, [document, snapEnabled])
 
@@ -356,16 +369,18 @@ export function CanvasSurface({ document, editorPlaneFailure = null, onOperation
         onOperation?.({ type: 'rotate-nodes', id: `rotate-${performance.now()}`, at: new Date().toISOString(), rotationById: { [id]: previewRotation } })
       }
       setPreviewRotation(null)
-      setPreviewBounds({})
+      writePreviewBounds({})
       setGuides([])
       return
     }
-    if (boundsChanged(gesture.before, previewBounds)) {
-      onOperation?.({ type: 'transform-nodes', id: `transform-${performance.now()}`, at: new Date().toISOString(), boundsById: previewBounds })
+    const finalBounds = previewBoundsRef.current
+    // 빈 preview 는 "아무 데도 안 끌었다"는 뜻이다 — 연산으로 만들면 문서 계층이 거부하고 앱이 죽는다.
+    if (Object.keys(finalBounds).length && boundsChanged(gesture.before, finalBounds)) {
+      onOperation?.({ type: 'transform-nodes', id: `transform-${performance.now()}`, at: new Date().toISOString(), boundsById: finalBounds })
     }
-    setPreviewBounds({})
+    writePreviewBounds({})
     setGuides([])
-  }, [document, onOperation, previewBounds, previewRotation])
+  }, [document, onOperation, previewRotation, writePreviewBounds])
 
   useEffect(() => {
     const primary = document.selection.at(-1)
@@ -437,7 +452,7 @@ export function CanvasSurface({ document, editorPlaneFailure = null, onOperation
       dragStart.current = null
       panGesture.current = null
       setPanPreview(null)
-      setPreviewBounds({})
+      writePreviewBounds({})
       setGuides([])
       setMarquee(null)
     }}

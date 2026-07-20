@@ -115,6 +115,26 @@ The current `terms.yml` model remains useful for vocabulary entries, but the bro
 - `agent_recipe`: implementation instructions, anti-patterns, and prompt language for coding agents;
 - `asset_pack`: future paid/downloadable bundle.
 
+## 편집기 측정 기준 (Editor Measurement Basis)
+
+캔버스의 **모든 정렬·스냅·거리 측정은 바운딩 박스를 기준으로 한다.** 이 정의가 흔들리면
+가이드가 가리키는 곳과 커밋되는 좌표가 어긋난다.
+
+- **바운딩 박스 = 노드의 `bounds`**(`x`, `y`, `width`, `height`) — 축 정렬 사각형이다.
+- **회전한 노드도 회전 *전* `bounds`로 잰다.** 회전 후 외접 사각형을 쓰면 각도가 조금만 달라져도
+  측정값이 변해 정렬 도구로 쓸 수 없다. 대가로 **화면에 보이는 외곽선과 다를 수 있다** —
+  45° 돌린 사각형의 측정 기준은 여전히 돌리기 전 변이다.
+- **stroke 두께·텍스트 베이스라인·비정형 도형의 시각적 가장자리는 `bounds`에 들어가지 않으므로
+  측정에도 들어가지 않는다.** Figma도 같은 규약을 명시한다("the bounding box that surrounds an
+  object or layer" — [Measure distances between layers](https://help.figma.com/hc/en-us/articles/360039956974-Measure-distances-between-layers), 접근 2026-07-20).
+- **거리 = 축마다 가장 가까운 변 사이의 빈 거리.** 그 축에서 겹쳐 있으면 0이다(음수 거리 없음).
+- **스냅 허용 오차 4px**(`SNAP_THRESHOLD`)는 **우리가 정한 값**이다 — Figma·Penpot 모두 수치를
+  공개하지 않는다. 출처 있는 값인 척하지 않는다.
+- 드래그 중 **자동 스냅**과 정적 상태의 **거리 측정**은 서로 다른 상호작용이며 상태를 공유하지
+  않는다. 한쪽이 켜져 있는 동안 다른 쪽은 화면에 나타나지 않는다.
+
+구현: `packages/canvas-core/src/manipulation.ts` (`snapBounds`, `measureDistance`).
+
 ## Reference Intake Direction
 
 External references should be captured with provenance:
