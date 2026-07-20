@@ -12,8 +12,10 @@
 
 3. **editor-color-and-token-editing (신규, 2026-07-21 EU5 관측에서 적재)** — **편집기에서 색을 바꿀 수 없다.** `editor-legibility` 닫는 기준 6 관측에서 사용자가 과업 3건 중 색 토큰 변경 하나에서 막혔다("색은 어떻게 바꾸는지 모르겠네"). 계측: 화면 전체에 **"색" 단어 0건 · 색 견본 0개**, 유일 경로가 `Token · fill` 자유 텍스트 입력(유효 토큰 이름을 미리 알고 오타 없이 타이핑해야 함), 바인딩이 없는 노드(이미지 등)는 **컨트롤 자체가 없어 색 변경 불가**. 구성 제안: ① 해석된 색 견본 + 선택 목록(자유 타이핑 대신) ② 토큰을 **새로 묶는** 경로 ③ 사용자 언어 라벨(`Token · fill` → "채움 색") ④ 유효 토큰 자동완성·오타 피드백. 근거: `evidence/editor-legibility/eu5-judgeability.md`. **이 결함은 probe 11건과 브라우저 계측이 전부 못 잡았고 사람이 한 번 만져서 나왔다** — 다음 horizon에도 과업 관측 게이트를 유지할 근거.
 
-4. **editor-motion (신규, 2026-07-20 리서치에서 적재)** — Figma Motion(Config 2026 발표, Open beta)이 확립한 구조: **모션이 캔버스 안에 살고**, 컴포넌트 단위로 정의한 애니메이션이 색·타이포처럼 모든 인스턴스에 전파되며, Dev Mode에서 CSS/JSON/React 코드로 나온다. AskewlyDesign의 "코드 네이티브 캔버스"와 축이 같다. 근거: `research/2026-07-20-editor-ui-horizon-figma-motion.md`. **진입 조건: `editor-legibility` 완료** — 선택·레이어가 안 읽히는 상태에서 타임라인을 얹으면 판단 불가가 한 겹 더 쌓인다.
-5. **framer 실물 관찰 (태스크 규모)** — Framer 공식 문서는 저수준 조작 스펙(핸들·스냅 판정)을 텍스트로 노출하지 않아 문서 리서치로 5개 항목이 확인 실패로 남았다. 알고 싶으면 실물 사용 관찰이 필요하다. horizon이 아니라 단일 태스크.
+4. **design-output-static-linter (신규, 2026-07-21 적재 — 사용자 확정 순서: 3번 다음)** — **askewly-design의 품질 게이트가 모델 자가 판정 + 사람 눈으로만 닫힌다.** 레포에 검사기 7종(`lint-tokens.mjs`·`scripts/lint/`·`check-text-overflow.mjs` 등)이 있지만 **전부 "스펙과 레포 자산"만 본다** — 세션 중 에이전트가 남의 프로젝트에 실제로 뱉은 UI 코드를 보는 검사기는 0개다. 산출물 판정은 `docs/design-system/anti-patterns.md` 체크리스트를 모델이 스스로 훑는 것으로 끝난다. 핵심 논거: **사람 눈은 스크린샷에서 `#3B82F6`과 `var(--color-accent)`를 구분하지 못한다 — 렌더 결과가 같기 때문**이고, 지금 게이트의 구조적 사각지대가 정확히 거기다. 구성 제안: ① 색 하드코딩 검사기(토큰 정의 파일·SVG 내부·주석 예외) ② 타이포 단계 수 검사기(임계값은 사람이 정함) ③ 실세션 3회 물려보고 확장 여부 판단. 참조 사례: 당근 Kraft의 채점기 11개(코드 정적분석 7 + LLM 4) — 단 **7개 중 실제 해당은 2~3개**다(layout-structure·icon-usage는 우리 스택에 해당 없음, LLM 채점기 4개는 anti-patterns 12클러스터가 이미 더 구체적으로 담당). 근거: `research/2026-07-20-design-output-static-linter-brief.md`. **먼저 정해야 할 사용자 소유 결정 4건**: 검사기 실행 위치(askewly-design은 *남의 프로젝트*에서 도는데 `scripts/`에 두면 손이 안 닿는다 — 최대 설계 질문)·차단 대 경고·타이포 임계값·적용 파일 범위. 크기 주의: horizon이 아니라 milestone 1~2개 규모일 수 있어 진입 시 분량 하한(§B0.5-3) 재검토 필요.
+
+5. **editor-motion (신규, 2026-07-20 리서치에서 적재)** — Figma Motion(Config 2026 발표, Open beta)이 확립한 구조: **모션이 캔버스 안에 살고**, 컴포넌트 단위로 정의한 애니메이션이 색·타이포처럼 모든 인스턴스에 전파되며, Dev Mode에서 CSS/JSON/React 코드로 나온다. AskewlyDesign의 "코드 네이티브 캔버스"와 축이 같다. 근거: `research/2026-07-20-editor-ui-horizon-figma-motion.md`. **진입 조건: `editor-legibility` 완료** — 선택·레이어가 안 읽히는 상태에서 타임라인을 얹으면 판단 불가가 한 겹 더 쌓인다.
+6. **framer 실물 관찰 (태스크 규모)** — Framer 공식 문서는 저수준 조작 스펙(핸들·스냅 판정)을 텍스트로 노출하지 않아 문서 리서치로 5개 항목이 확인 실패로 남았다. 알고 싶으면 실물 사용 관찰이 필요하다. horizon이 아니라 단일 태스크.
 
 ## 이력
 
@@ -26,4 +28,5 @@
 - 2026-07-20: public-product-monetization 후보 제거 (사용자 지시 — "noise가 심하다, 내가 원할 때 얘기하겠다"). 에이전트 발의 금지 항목.
 - 2026-07-19: recipe-code-reuse closed (RC1~RC4 — 27 코드 자산·코드 출발 계약·매핑·실연 사람 게이트. 2세션 병행 1일 완주 — 디플레 재적발, 다음 설계 입력).
 - 2026-07-21: **editor-legibility closed** — 닫는 기준 6항 중 5 PASS·1 **미달**(판단 가능성: 과업 3건 중 2건 성공). 미달을 미달로 적고 닫았다. 실패에서 editor-color-and-token-editing 후보 적재. 크기 회고: 5 milestone·13 changeset(195~205)·14 leaf — 선언(최소 3 무감독 세션·예상 14 leaf)과 일치, 인플레·디플레 없음.
+- 2026-07-21: design-output-static-linter 후보 적재 (사용자 발의 — 레포 밖 브리프를 `research/2026-07-20-design-output-static-linter-brief.md`로 반입). **사용자 확정 순서: 3번(editor-color-and-token-editing) → 4번(design-output-static-linter).**
 - 2026-07-20: editor-legibility horizon 설계 번들 작성(사용자 발의 — 편집기 UI "Figma만큼이라도", 조작감+판독성 둘 다). 승인 대기: `plans/horizons/2026-07-editor-legibility.md`. 같은 리서치에서 editor-motion·framer 관찰 후보 적재.

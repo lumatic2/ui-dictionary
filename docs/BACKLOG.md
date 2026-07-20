@@ -375,3 +375,18 @@ plan doc: `archive/plans/2026-07-20-th*.md` · 증거: `evidence/template-produc
 
 **미달로 닫힌 항목**: 닫는 기준 7(실사용) 중 편집기 축 — 사람이 화면을 읽지 못해 판단 불가.
 이 미달이 `plans/horizons/2026-07-editor-legibility.md`의 개설 근거다.
+
+## editor-legibility (closed 2026-07-21 — 닫는 기준 6항 중 5 PASS·1 미달)
+
+horizon 문서: `archive/horizons/2026-07-editor-legibility.md` (닫는 기준 6항 대조·크기/프리모템 회고 수록)
+plan doc: `archive/plans/2026-07-21-eu*.md` · 증거: `evidence/editor-legibility/`
+
+- EU1 — 조작 종류가 구분되는 선택: 핸들 8개가 전부 같은 사각형이던 것을 모서리/변으로 가르고, 없던 회전을 문서 모델부터 신설 (eu1-selection.md)
+- EU2 — 스냅·정렬 가이드·거리 측정: 가이드가 좌표를 보정하지 않던 결함 수정, Alt+호버 거리 측정 신설, 양방향 분리 게이트 (eu2-snap-measure.md)
+- EU3 — 레이어 패널 판독성: 아이콘 폴백이 3종을 삼키던 것 마감, 계층 보존 검색 1000행→13행 (eu3-layers.md)
+- EU4 — 인스펙터 정보구조: 위치·크기·각도가 통째로 없던 것을 신설, Figma·Penpot 공통 순서 적용 (eu4-inspector.md)
+- EU5 — 판단 가능성 게이트: 사용자 관측 3건 중 2 성공·**색 토큰 변경 실패** (eu5-judgeability.md)
+
+**미달로 닫힌 항목**: 닫는 기준 6(판단 가능성) — 화면에 "색" 단어 0건·견본 0개, 유일 경로가 자유 텍스트 입력.
+이 미달이 `plans/horizons/2026-07-editor-color-and-token-editing.md`의 개설 근거다.
+**이 결함은 probe 11건과 브라우저 계측이 전부 못 잡았고 사람이 한 번 만져서 나왔다** — 과업 관측 게이트를 유지할 근거.
