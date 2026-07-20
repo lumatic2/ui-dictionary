@@ -3059,7 +3059,7 @@
       "work_id": "ect1-token-lookup",
       "horizon_id": "editor-color-and-token-editing",
       "milestone_id": "ECT1",
-      "status": "active",
+      "status": "completed",
       "plan_path": "plans/2026-07-21-ect1-token-lookup-and-validation.md",
       "changeset_path": "changesets",
       "next_step": null,
@@ -3106,7 +3106,8 @@
       ],
       "owner_session_uuid": "claude:3208f4f6-fadd-4411-a59a-092e510b8529",
       "updated_at": "2026-07-21",
-      "notes": "steps 1-3 완료(206/207/208). 독립 검증 refuted → update-node 경로 우회 결함 수정(209). 재검증 대기 중."
+      "notes": "steps 1-3 완료(206/207/208). 독립 검증 refuted → update-node 경로 우회 결함 수정(209). 재검증 대기 중.",
+      "completion_summary": "편집기가 이제 \"이 문서가 쓸 수 있는 토큰이 뭐냐\"고 물어볼 수 있다."
     }
   }
 }

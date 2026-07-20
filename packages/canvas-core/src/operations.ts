@@ -149,7 +149,9 @@ function assertTokenBindingDelta(before: CanvasDocument, next: CanvasDocument) {
   for (const [nodeId, node] of Object.entries(next.nodes)) {
     const previous = before.nodes[nodeId]?.tokenBindings
     for (const [key, value] of Object.entries(node.tokenBindings)) {
-      if (previous && previous[key] === value) continue // 손대지 않은 기존 바인딩
+      // 손대지 않은 기존 바인딩. 죽은 값을 **같은 값으로 재기입**하는 것도 여기 걸려 통과하는데,
+      // 값이 바뀌지 않으므로 새 오염을 만들지 못한다 — 이미 죽어 있던 것이 그대로 남을 뿐이다.
+      if (previous && previous[key] === value) continue
       const error = validateTokenBinding(next.tokenSetId, value)
       if (error) throw new Error(`${nodeId}.tokenBindings.${key}: ${error}`)
     }
