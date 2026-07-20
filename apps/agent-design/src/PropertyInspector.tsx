@@ -174,7 +174,15 @@ export function PropertyInspector({ document, onOperation, bridgeConnected, onMa
         )}
       </select>
     </label>
-    {!node ? <p className="inspector-empty">Select one node to edit its properties.</p> : <div className="property-list">
+    {/*
+      선택 없음 / 다중 / 단일을 **다른 말로** 구분한다.
+      전에는 셋을 하나로 뭉쳐 3개를 골라도 "Select one node"가 떠서, 아무것도 안 골랐다는 뜻으로 읽혔다.
+    */}
+    {!node && document.selection.length > 1
+      ? <p className="inspector-empty" data-testid="inspector-multi">
+        {`${document.selection.length}개를 골랐다. 값 편집은 하나만 골랐을 때 한다.`}
+      </p>
+      : !node ? <p className="inspector-empty" data-testid="inspector-none">아직 아무것도 고르지 않았다. 캔버스나 레이어에서 하나를 고른다.</p> : <div className="property-list">
       <div className="selection-summary"><span>{node.kind}</span><code>{node.id}</code></div>
       {canMaterialize && <button type="button" data-testid="materialize-node" onClick={() => onMaterialize(node.id)}>Materialize</button>}
       <Section id="geometry">

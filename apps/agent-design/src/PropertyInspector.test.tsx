@@ -118,3 +118,58 @@ describe('섹션이 규약 순서를 따른다 (EU4 step-2)', () => {
     expect(view.getByTestId('export-status').textContent).toContain('아직 없다')
   })
 })
+
+describe('선택 종류에 따라 달라진다 (EU4 step-3)', () => {
+  it('선택 없음과 다중선택이 서로 다른 말을 한다', () => {
+    const base = createDocumentFixture(1000)
+    const none = render(<PropertyInspector document={{ ...base, selection: [] }} onOperation={() => {}} bridgeConnected={false} onMaterialize={() => {}} />)
+    expect(none.getByTestId('inspector-none')).toBeTruthy()
+    expect(none.queryByTestId('inspector-multi')).toBeNull()
+    cleanup()
+
+    // 전에는 둘 다 "Select one node" 였다 — 3개를 골라도 아무것도 안 고른 것처럼 읽혔다.
+    const many = render(<PropertyInspector document={{ ...base, selection: Object.keys(base.nodes).slice(0, 3) }} onOperation={() => {}} bridgeConnected={false} onMaterialize={() => {}} />)
+    expect(many.getByTestId('inspector-multi').textContent).toContain('3개')
+    expect(many.queryByTestId('inspector-none')).toBeNull()
+  })
+
+  it('code-component 에만 Prop·Variant 가 나온다', () => {
+    const base = createDocumentFixture(1000)
+    const componentId = Object.keys(base.nodes).find((id) => base.nodes[id].kind === 'code-component')!
+    const frameId = Object.keys(base.nodes).find((id) => base.nodes[id].kind === 'frame')!
+
+    const component = render(<PropertyInspector document={{ ...base, selection: [componentId] }} onOperation={() => {}} bridgeConnected={false} onMaterialize={() => {}} />)
+    const structure = component.container.querySelector('[data-inspector-section="structure"]')!
+    expect(structure.textContent).toContain('Prop · ')
+    expect(structure.textContent).toContain('Variant · ')
+    cleanup()
+
+    const frame = render(<PropertyInspector document={{ ...base, selection: [frameId] }} onOperation={() => {}} bridgeConnected={false} onMaterialize={() => {}} />)
+    const frameStructure = frame.container.querySelector('[data-inspector-section="structure"]')!
+    expect(frameStructure.textContent).not.toContain('Prop · ')
+    expect(frameStructure.textContent).not.toContain('Variant · ')
+  })
+
+  it('instance 에만 Override 가 나온다', () => {
+    const base = createDocumentFixture(1000)
+    const instanceId = Object.keys(base.nodes).find((id) => base.nodes[id].kind === 'instance')!
+    const frameId = Object.keys(base.nodes).find((id) => base.nodes[id].kind === 'frame')!
+
+    const instance = render(<PropertyInspector document={{ ...base, selection: [instanceId] }} onOperation={() => {}} bridgeConnected={false} onMaterialize={() => {}} />)
+    expect(instance.container.querySelector('[data-inspector-section="structure"]')!.textContent).toContain('Override · ')
+    cleanup()
+
+    const frame = render(<PropertyInspector document={{ ...base, selection: [frameId] }} onOperation={() => {}} bridgeConnected={false} onMaterialize={() => {}} />)
+    expect(frame.container.querySelector('[data-inspector-section="structure"]')!.textContent).not.toContain('Override · ')
+  })
+
+  it('기하 섹션은 종류와 무관하게 늘 있다 — 무엇을 고르든 어디에 얼마나 큰지는 읽혀야 한다', () => {
+    const base = createDocumentFixture(1000)
+    for (const kind of ['frame', 'text', 'instance', 'code-component'] as const) {
+      const id = Object.keys(base.nodes).find((key) => base.nodes[key].kind === kind)!
+      const view = render(<PropertyInspector document={{ ...base, selection: [id] }} onOperation={() => {}} bridgeConnected={false} onMaterialize={() => {}} />)
+      expect(view.getByTestId('geometry-x'), `${kind} 에 기하가 없다`).toBeTruthy()
+      cleanup()
+    }
+  })
+})

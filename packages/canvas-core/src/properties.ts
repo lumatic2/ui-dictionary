@@ -83,8 +83,10 @@ function valueType(value: PropValue): PropertyField['valueType'] {
 export function propertyFieldsForNode(node: CanvasNode): PropertyField[] {
   const fields: PropertyField[] = [
     { scope: 'layout', key: 'mode', label: 'Layout', value: node.layout.mode, valueType: 'select', options: [...layoutModes] },
-    { scope: 'layout', key: 'horizontal', label: 'Width', value: node.layout.horizontal, valueType: 'select', options: [...sizingModes] },
-    { scope: 'layout', key: 'vertical', label: 'Height', value: node.layout.vertical, valueType: 'select', options: [...sizingModes] },
+    // 'Width'/'Height'로 부르면 기하 섹션의 실제 너비·높이 숫자와 이름이 겹쳐 서로를 가린다.
+    // 이 값은 크기가 아니라 크기를 **정하는 방식**(fixed|hug|fill)이다.
+    { scope: 'layout', key: 'horizontal', label: '가로 사이징', value: node.layout.horizontal, valueType: 'select', options: [...sizingModes] },
+    { scope: 'layout', key: 'vertical', label: '세로 사이징', value: node.layout.vertical, valueType: 'select', options: [...sizingModes] },
     { scope: 'layout', key: 'gap', label: 'Gap', value: node.layout.gap, valueType: 'number' },
     { scope: 'layout', key: 'padding', label: 'Padding', value: node.layout.padding[0], valueType: 'number' },
     ...Object.entries(node.tokenBindings).map(([key, value]): PropertyField => ({ scope: 'token', key, label: `Token · ${key}`, value, valueType: 'string' })),
