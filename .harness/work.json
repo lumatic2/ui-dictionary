@@ -3110,7 +3110,7 @@
       "work_id": "vl2-vocabulary-publication",
       "horizon_id": "vocabulary-in-use",
       "milestone_id": "VL2",
-      "status": "active",
+      "status": "completed",
       "plan_path": "plans/2026-07-21-vl2-vocabulary-publication.md",
       "changeset_path": "changesets",
       "next_step": "step-1",
@@ -3154,7 +3154,8 @@
       ],
       "owner_session_uuid": "claude:037069fb-2833-497c-ae4e-3f985ecea495",
       "updated_at": "2026-07-21",
-      "notes": "Registered atomically by canonical harness approve_harness_plan.py after plan validation."
+      "notes": "Registered atomically by canonical harness approve_harness_plan.py after plan validation.",
+      "completion_summary": "VL2 완료 — 562개 용어를 인덱스+샤드 58개로 배포해 조회 2 fetch로 만들고, 끊긴 참조 91곳을 전부 해소했다. 재생성이 샤드를 조용히 지우던 결함을 커밋 전에 잡았다."
     }
   }
 }
