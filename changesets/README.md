@@ -210,3 +210,4 @@
 | 208 | 20260721-vl1-cases-and-baseline | 2026-07-21 | VL1 step 3: 외부 출처 라벨 32건·채점기·격리 에이전트 기준선. 84.4%로 예상보다 높고 12군집 중 8군집 만점 — 결정 계층 향상 여지 5건(진짜 오판 3건). 자를 사후 보정한 사실과 케이스 결함 2건을 그대로 남김 | 4/4 | complete |
 | 209 | 20260721-vocabulary-shard-generator | 2026-07-21 | VL2 step 1: 665KB 원본을 인덱스(23.9KB)+그룹 샤드 58개로 분할하는 생성기. 상한 초과 그룹은 정렬 id 기준 하위 분할, group 없는 용어는 명시 에러로 거부. 계수기 스캔 확장으로 끊긴 term_refs 91→0 확인 | 3/3 | complete |
 | 210 | 20260721-vocabulary-lookup-contract | 2026-07-21 | VL2 step 2: 용어 조회 규약 3갈래(이름 앎/모름/사전 밖) 신설. 사전에 없는 개념에서 막히지 않고 흐르게 규정. 3개 용어 실측 2 fetch, 인덱스에 정의 누출 0 | 2/2 | complete |
+| 211 | 20260721-llms-vocabulary-section | 2026-07-21 | VL2 step 3: llms.txt에 Vocabulary 섹션 등재. 재생성이 샤드를 조용히 지우던 near-miss를 실증·차단(562→0 되돌림), CRLF 체크아웃에서 생성기가 못 돌던 것과 필드가 전부 undefined이던 것 수정 | 4/4 | complete |
