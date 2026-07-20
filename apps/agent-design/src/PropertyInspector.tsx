@@ -11,6 +11,51 @@ import {
 } from '@askewly/canvas-core'
 import { isKnownTokenSet, listDocumentTokenSets } from './documentTokens'
 
+/**
+ * 기하 필드 — 위치·크기·각도.
+ *
+ * `propertyFieldsForNode`에 섞지 않는다. 그쪽은 `set-node-property` 계약(prop/override/variant/
+ * token/layout)을 따르는데, 기하는 캔버스 드래그와 **같은 연산**(`transform-nodes`·`rotate-nodes`)
+ * 으로 커밋돼야 한다 — 인스펙터 전용 경로를 따로 만들면 undo 이력이 갈라진다.
+ */
+const GEOMETRY_FIELDS = [
+  { key: 'x', label: 'X' },
+  { key: 'y', label: 'Y' },
+  { key: 'width', label: '너비' },
+  { key: 'height', label: '높이' },
+  { key: 'rotation', label: '각도' },
+] as const
+
+type GeometryKey = (typeof GEOMETRY_FIELDS)[number]['key']
+
+/** 크기는 0 이하가 될 수 없다. 각도는 임의 실수를 받아 [0,360)으로 접는다. */
+function geometryError(key: GeometryKey, value: number): string | null {
+  if (!Number.isFinite(value)) return `${key}: 숫자가 필요합니다.`
+  if ((key === 'width' || key === 'height') && value <= 0) return `${key}: 0보다 커야 합니다.`
+  return null
+}
+
+/** 빈 칸은 0이 아니다 — `Number('')`이 0이라 그냥 넘기면 빈 입력이 좌표를 0으로 만든다. */
+function parseGeometry(draft: string): number {
+  return draft.trim() === '' ? Number.NaN : Number(draft)
+}
+
+function GeometryInput({ id, label, value, commit }: { id: string; label: string; value: number; commit: (next: number) => void }) {
+  const [draft, setDraft] = useState(String(value))
+  // 문서가 바뀌면(캔버스에서 끌었을 때) 표시가 따라와야 한다 — 로컬 상태만 보면 안 따라온다.
+  useEffect(() => setDraft(String(value)), [value])
+  return <label className="property-field">{label}
+    <input
+      data-testid={`geometry-${id}`}
+      type="number"
+      value={draft}
+      onChange={(event) => setDraft(event.target.value)}
+      onBlur={() => commit(parseGeometry(draft))}
+      onKeyDown={(event) => { if (event.key === 'Enter') commit(parseGeometry(draft)) }}
+    />
+  </label>
+}
+
 interface Props {
   document: CanvasDocument
   onOperation: (operation: CanvasOperation) => void
@@ -41,6 +86,24 @@ export function PropertyInspector({ document, onOperation, bridgeConnected, onMa
   const tokenSetChoices = listDocumentTokenSets()
   const [name, setName] = useState(node?.name ?? '')
   useEffect(() => { setName(node?.name ?? ''); setError('') }, [node?.id, node?.name])
+
+  /**
+   * 기하 편집을 캔버스 드래그와 **같은 연산**으로 커밋한다.
+   * 각도는 `rotate-nodes`, 나머지는 `transform-nodes` — 문서 모델이 이미 갖고 있는 축 그대로다.
+   */
+  const commitGeometry = (key: GeometryKey, value: number) => {
+    if (!node) return
+    const nextError = geometryError(key, value)
+    if (nextError) { setError(nextError); return }
+    setError('')
+    if (key === 'rotation') {
+      if (value === node.rotation) return
+      onOperation({ ...operationId('geometry'), type: 'rotate-nodes', rotationById: { [node.id]: value } })
+      return
+    }
+    if (node.bounds[key] === value) return
+    onOperation({ ...operationId('geometry'), type: 'transform-nodes', boundsById: { [node.id]: { ...node.bounds, [key]: value } } })
+  }
 
   const commitProperty = (field: PropertyField, value: PropValue) => {
     if (!node) return
@@ -81,6 +144,18 @@ export function PropertyInspector({ document, onOperation, bridgeConnected, onMa
     {!node ? <p className="inspector-empty">Select one node to edit its properties.</p> : <div className="property-list">
       <div className="selection-summary"><span>{node.kind}</span><code>{node.id}</code></div>
       {canMaterialize && <button type="button" data-testid="materialize-node" onClick={() => onMaterialize(node.id)}>Materialize</button>}
+      <div className="inspector-section" data-inspector-section="geometry">
+        <h3>기하</h3>
+        <div className="geometry-grid">
+          {GEOMETRY_FIELDS.map((field) => <GeometryInput
+            key={field.key}
+            id={field.key}
+            label={field.label}
+            value={field.key === 'rotation' ? node.rotation : node.bounds[field.key]}
+            commit={(next) => commitGeometry(field.key, next)}
+          />)}
+        </div>
+      </div>
       <label className="property-field">Name
         <input
           data-testid="property-name"

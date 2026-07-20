@@ -272,3 +272,17 @@ button, select { font: inherit; }
 /* 매칭 행은 굵게, 조상은 맥락으로 흐리게 — 무엇이 결과이고 무엇이 경로인지 갈린다. */
 .layer-row.layer-match .layer-name { font-weight: 600; }
 .layer-row[data-layer-match="context"] .layer-name { opacity: 0.62; }
+
+/* 인스펙터 섹션 (EU4). 기하 → 구조 → 시각 → 내보내기 순서는 Figma·Penpot 공통 규약을 따른다. */
+.inspector-section { padding: 8px 0; border-bottom: 1px solid var(--ad-border-subtle, var(--ad-border-default)); }
+.inspector-section h3 {
+  margin: 0 0 6px;
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  color: var(--ad-text-muted);
+  text-transform: uppercase;
+}
+/* 위치·크기는 짝으로 읽힌다 — 2열로 묶어 X/Y, 너비/높이가 나란히 오게 한다. */
+.geometry-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 6px 8px; }
+.geometry-grid .property-field { margin: 0; }

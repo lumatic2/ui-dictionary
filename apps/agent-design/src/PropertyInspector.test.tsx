@@ -1,0 +1,95 @@
+import { cleanup, fireEvent, render } from '@testing-library/react'
+import { createDocumentFixture, type CanvasDocument, type CanvasOperation } from '@askewly/canvas-core'
+import { afterEach, describe, expect, it } from 'vitest'
+import { PropertyInspector } from './PropertyInspector'
+
+afterEach(cleanup)
+
+/** 선택 하나짜리 문서와, 그 노드의 알려진 기하값. */
+function setup(overrides?: Partial<CanvasDocument>) {
+  const operations: CanvasOperation[] = []
+  const base = createDocumentFixture(1000)
+  const id = base.selection[0]
+  const document = { ...base, ...overrides }
+  const view = render(<PropertyInspector
+    document={document}
+    onOperation={(operation) => operations.push(operation)}
+    bridgeConnected={false}
+    onMaterialize={() => {}}
+  />)
+  return { view, operations, id, node: document.nodes[id] }
+}
+
+describe('기하값이 보이고 고쳐진다 (EU4 step-1)', () => {
+  it('선택한 노드의 위치·크기·각도를 문서 값 그대로 보인다', () => {
+    const { view, node } = setup()
+    // 인스펙터에 기하값이 아예 없던 것이 EU4 실사의 출발점이다.
+    expect((view.getByTestId('geometry-x') as HTMLInputElement).value).toBe(String(node.bounds.x))
+    expect((view.getByTestId('geometry-y') as HTMLInputElement).value).toBe(String(node.bounds.y))
+    expect((view.getByTestId('geometry-width') as HTMLInputElement).value).toBe(String(node.bounds.width))
+    expect((view.getByTestId('geometry-height') as HTMLInputElement).value).toBe(String(node.bounds.height))
+    expect((view.getByTestId('geometry-rotation') as HTMLInputElement).value).toBe(String(node.rotation))
+  })
+
+  it('X를 고치면 그 축만 바뀐 transform-nodes 가 커밋된다', () => {
+    const { view, operations, id, node } = setup()
+    const input = view.getByTestId('geometry-x')
+    fireEvent.change(input, { target: { value: '512' } })
+    fireEvent.blur(input)
+
+    const transform = operations.find((op) => op.type === 'transform-nodes') as { boundsById: Record<string, { x: number; y: number; width: number }> }
+    expect(transform, '기하를 고쳤는데 문서 연산이 없다 — 입력만 바뀐 상태다').toBeDefined()
+    expect(transform.boundsById[id].x).toBe(512)
+    // 다른 축은 건드리지 않는다.
+    expect(transform.boundsById[id].y).toBe(node.bounds.y)
+    expect(transform.boundsById[id].width).toBe(node.bounds.width)
+  })
+
+  it('각도는 rotate-nodes 로 간다 — 캔버스 회전과 같은 연산이다', () => {
+    const { view, operations, id } = setup()
+    const input = view.getByTestId('geometry-rotation')
+    fireEvent.change(input, { target: { value: '45' } })
+    fireEvent.blur(input)
+
+    const rotate = operations.find((op) => op.type === 'rotate-nodes') as { rotationById: Record<string, number> }
+    expect(rotate, '각도가 transform 으로 갔거나 아예 커밋되지 않았다').toBeDefined()
+    expect(rotate.rotationById[id]).toBe(45)
+    expect(operations.some((op) => op.type === 'transform-nodes')).toBe(false)
+  })
+
+  it('크기 0 이하는 거부하고 이유를 말한다', () => {
+    const { view, operations } = setup()
+    const input = view.getByTestId('geometry-width')
+    fireEvent.change(input, { target: { value: '0' } })
+    fireEvent.blur(input)
+
+    expect(operations.filter((op) => op.type === 'transform-nodes')).toHaveLength(0)
+    expect(view.getByTestId('property-error').textContent).toContain('0보다')
+  })
+
+  it('숫자가 아니면 커밋하지 않는다', () => {
+    const { view, operations } = setup()
+    const input = view.getByTestId('geometry-x')
+    fireEvent.change(input, { target: { value: '' } })
+    fireEvent.blur(input)
+    expect(operations.filter((op) => op.type === 'transform-nodes')).toHaveLength(0)
+  })
+
+  it('값이 그대로면 연산을 만들지 않는다', () => {
+    const { view, operations, node } = setup()
+    const input = view.getByTestId('geometry-x')
+    fireEvent.change(input, { target: { value: String(node.bounds.x) } })
+    fireEvent.blur(input)
+    expect(operations).toHaveLength(0)
+  })
+
+  it('문서가 바뀌면 표시가 따라온다 — 캔버스에서 끌었을 때', () => {
+    const base = createDocumentFixture(1000)
+    const id = base.selection[0]
+    const view = render(<PropertyInspector document={base} onOperation={() => {}} bridgeConnected={false} onMaterialize={() => {}} />)
+
+    const moved = { ...base, nodes: { ...base.nodes, [id]: { ...base.nodes[id], bounds: { ...base.nodes[id].bounds, x: 777 } } } }
+    view.rerender(<PropertyInspector document={moved} onOperation={() => {}} bridgeConnected={false} onMaterialize={() => {}} />)
+    expect((view.getByTestId('geometry-x') as HTMLInputElement).value).toBe('777')
+  })
+})
