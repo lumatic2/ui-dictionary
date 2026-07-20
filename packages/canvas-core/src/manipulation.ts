@@ -225,6 +225,29 @@ export function rotationFromPointer(
   return grab.rotation + (angle(pointer) - angle(grab.pointer))
 }
 
+/** 두 요소 사이 간격. 축마다 **가장 가까운 변 사이의 빈 거리**이며, 그 축에서 겹쳐 있으면 0이다. */
+export interface Distance {
+  horizontal: number
+  vertical: number
+}
+
+/**
+ * 두 요소의 간격을 잰다 — **바운딩 박스 기준이다.**
+ *
+ * 회전한 노드도 회전 **전** 축 정렬 bounds로 잰다. 회전 후 외접 사각형을 쓰면 각도가 조금만
+ * 달라져도 측정값이 흔들려 정렬 도구로 못 쓴다. 대신 화면에 보이는 외곽선과는 다를 수 있다.
+ * 스트로크 두께·텍스트 베이스라인도 bounds에 안 들어간다 — 같은 이유로 측정에 안 들어간다.
+ * (Figma도 같은 규약을 쓴다: "the bounding box that surrounds an object or layer".)
+ */
+export function measureDistance(a: CanvasRect, b: CanvasRect): Distance {
+  const gap = (aStart: number, aSize: number, bStart: number, bSize: number) =>
+    Math.max(0, Math.max(aStart - (bStart + bSize), bStart - (aStart + aSize)))
+  return {
+    horizontal: gap(a.x, a.width, b.x, b.width),
+    vertical: gap(a.y, a.height, b.y, b.height),
+  }
+}
+
 /** 바운딩 박스의 중심 — 회전축이다. */
 export function rectCenter(bounds: CanvasRect): CanvasPoint {
   return { x: bounds.x + bounds.width / 2, y: bounds.y + bounds.height / 2 }

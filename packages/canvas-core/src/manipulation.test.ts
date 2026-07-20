@@ -1,6 +1,6 @@
 import { describe, expect, it } from 'vitest'
 import { createDocumentFixture } from './fixtures.js'
-import { alignmentGuides, boundsChanged, captureBounds, moveBounds, rectCenter, resizeBounds, resizeRect, rotationFromPointer, snapBounds } from './manipulation.js'
+import { alignmentGuides, boundsChanged, captureBounds, moveBounds, rectCenter, resizeBounds, resizeRect, rotationFromPointer, snapBounds, measureDistance } from './manipulation.js'
 import { applyOperation, commitOperation, createHistory, invertOperation, normalizeRotation, redo, undo } from './operations.js'
 
 const at = '2026-07-10T09:40:00.000Z'
@@ -121,6 +121,37 @@ describe('스냅이 좌표를 실제로 보정한다 (EU2)', () => {
     const preview = { [dragged.id]: { x: 397, y: 300, width: 20, height: 50 } }
     const snapped = snapBounds(document, preview, { handle: 'e' })
     expect(snapped.bounds[dragged.id].x).toBe(397)
+  })
+})
+
+describe('거리 측정은 바운딩 박스 기준이다 (EU2)', () => {
+  it('가장 가까운 변 사이의 빈 거리를 잰다', () => {
+    const a = { x: 0, y: 0, width: 100, height: 50 }
+    const b = { x: 160, y: 90, width: 40, height: 40 }
+    // 가로: 160 - 100 = 60 · 세로: 90 - 50 = 40
+    expect(measureDistance(a, b)).toEqual({ horizontal: 60, vertical: 40 })
+  })
+
+  it('순서를 바꿔도 같은 값이다', () => {
+    const a = { x: 0, y: 0, width: 100, height: 50 }
+    const b = { x: 160, y: 90, width: 40, height: 40 }
+    expect(measureDistance(b, a)).toEqual(measureDistance(a, b))
+  })
+
+  it('겹친 축은 0이다 — 음수 거리를 지어내지 않는다', () => {
+    const a = { x: 0, y: 0, width: 100, height: 50 }
+    const b = { x: 50, y: 200, width: 100, height: 50 }
+    expect(measureDistance(a, b)).toEqual({ horizontal: 0, vertical: 150 })
+  })
+
+  it('회전한 노드도 회전 전 축 정렬 bounds로 잰다 — 각도가 값을 흔들지 않는다', () => {
+    const document = createDocumentFixture(1000)
+    const [first, second] = [document.nodes['node-00002'], document.nodes['node-00003']]
+    first.bounds = { x: 0, y: 0, width: 100, height: 50 }
+    second.bounds = { x: 160, y: 0, width: 40, height: 40 }
+    const before = measureDistance(first.bounds, second.bounds)
+    const rotated = applyOperation(document, { id: 'm1', at, type: 'rotate-nodes', rotationById: { [first.id]: 45 } })
+    expect(measureDistance(rotated.nodes[first.id].bounds, second.bounds)).toEqual(before)
   })
 })
 

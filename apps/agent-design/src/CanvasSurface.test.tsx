@@ -258,3 +258,57 @@ describe('스냅이 커밋된 좌표까지 간다 (EU2 step-1)', () => {
     expect(transform.boundsById[id].x).toBe(197)
   })
 })
+
+describe('정적 거리 측정 (EU2 step-2)', () => {
+  /** 선택 하나 + 상대 하나. 좌표를 직접 박아 기대값을 산술로 계산한다. */
+  const pair = () => {
+    const document = createDocumentFixture(1000)
+    for (const node of Object.values(document.nodes)) node.visible = false
+    const id = document.selection.at(-1)!
+    const otherId = Object.keys(document.nodes).find((key) => key !== id)!
+    document.nodes[id].visible = true
+    document.nodes[id].bounds = { x: 0, y: 0, width: 100, height: 50 }
+    document.nodes[otherId].visible = true
+    document.nodes[otherId].bounds = { x: 160, y: 90, width: 40, height: 40 }
+    return { document, id, otherId }
+  }
+
+  /** 노드 위에서 발사한다 — 버블링으로 뷰포트에 닿으면서 event.target이 그 노드가 된다. */
+  const hover = (view: ReturnType<typeof render>, id: string, altKey: boolean) => {
+    const target = view.container.querySelector(`[data-canvas-id="${id}"]`)!
+    fireEvent(target, new MouseEvent('pointermove', { bubbles: true, altKey }))
+  }
+
+  it('Alt를 누른 채 호버하면 바운딩 박스 간 거리가 뜬다', () => {
+    const { document, otherId } = pair()
+    const view = render(<CanvasSurface document={document} />)
+    hover(view, otherId, true)
+    // 가로 160-100=60 · 세로 90-50=40 — 기대값은 좌표에서 계산했다.
+    expect(view.getByTestId('measure-horizontal').textContent).toContain('60')
+    expect(view.getByTestId('measure-vertical').textContent).toContain('40')
+  })
+
+  it('Alt 없이 호버하면 뜨지 않는다 — 그냥 마우스를 움직인 것이다', () => {
+    const { document, otherId } = pair()
+    const view = render(<CanvasSurface document={document} />)
+    hover(view, otherId, false)
+    expect(view.queryByTestId('measure-readout')).toBeNull()
+  })
+
+  it('Alt를 떼면 사라진다', () => {
+    const { document, otherId } = pair()
+    const view = render(<CanvasSurface document={document} />)
+    hover(view, otherId, true)
+    expect(view.getByTestId('measure-readout')).toBeTruthy()
+    hover(view, otherId, false)
+    expect(view.queryByTestId('measure-readout')).toBeNull()
+  })
+
+  it('드래그 중에는 측정이 켜지지 않는다 — 스냅과 측정은 별개 상호작용이다', () => {
+    const { document, otherId } = pair()
+    const view = render(<CanvasSurface document={document} />)
+    pointer(view.getByTestId('manipulation-selection'), 'pointerdown', 0, 0)
+    hover(view, otherId, true) // 드래그 중 Alt를 눌러도
+    expect(view.queryByTestId('measure-readout')).toBeNull()
+  })
+})

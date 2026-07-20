@@ -238,3 +238,20 @@ button, select { font: inherit; }
   font-size: 12px;
 }
 .canvas-toggle { display: flex; align-items: center; gap: 6px; cursor: pointer; user-select: none; }
+
+/* 정적 거리 측정 판독 (EU2). 드래그 중 가이드와 다른 표현이어야 두 상호작용이 갈린다. */
+.measure-readout {
+  position: absolute;
+  z-index: 7;
+  display: flex;
+  gap: 8px;
+  padding: 2px 6px;
+  transform: translate(-50%, -50%);
+  border-radius: 4px;
+  background: var(--ad-brand-orchid);
+  color: var(--ad-surface-base);
+  font-size: 11px;
+  font-variant-numeric: tabular-nums;
+  pointer-events: none;
+  white-space: nowrap;
+}

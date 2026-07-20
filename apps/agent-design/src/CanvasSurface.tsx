@@ -11,6 +11,7 @@ import {
   previewSelectionBounds,
   reduceSelection,
   resizeBounds,
+  measureDistance,
   selectionBounds,
   snapBounds,
   traverseSelection,
@@ -195,6 +196,11 @@ export function CanvasSurface({ document, editorPlaneFailure = null, onOperation
   const [previewRotation, setPreviewRotation] = useState<number | null>(null)
   const [guides, setGuides] = useState<AlignmentGuide[]>([])
   const [snapEnabled, setSnapEnabled] = useState(true)
+  /**
+   * 정적 거리 측정의 상대 노드. 드래그 gesture와 **다른 상태**다 — 하나로 합치면
+   * "지금 끄는 중인지 재는 중인지"가 화면에서 갈리지 않는다(리서치 함의 2).
+   */
+  const [measureTargetId, setMeasureTargetId] = useState<string | null>(null)
   const [dropTargetId, setDropTargetId] = useState<string | null>(null)
   const spaceHeld = useRef(false)
   const panGesture = useRef<{ start: { x: number; y: number }; panBefore: { x: number; y: number } } | null>(null)
@@ -212,6 +218,15 @@ export function CanvasSurface({ document, editorPlaneFailure = null, onOperation
     width: canonicalSelection.width * document.viewport.zoom,
     height: canonicalSelection.height * document.viewport.zoom,
   } : null
+
+  // 측정은 문서 좌표에서 한다 — 화면 픽셀에서 되읽으면 zoom·pan이 값에 섞인다.
+  const measurement = useMemo(() => {
+    if (!measureTargetId) return null
+    const target = document.nodes[measureTargetId]
+    const from = selectionBounds(document)
+    if (!target || !from) return null
+    return { distance: measureDistance(from, target.bounds), target: target.bounds }
+  }, [document, measureTargetId])
 
   const commitSelection = useCallback((nodeIds: string[]) => {
     onOperation?.({ type: 'select-nodes', id: `select-${performance.now()}`, at: new Date().toISOString(), nodeIds })
@@ -318,6 +333,19 @@ export function CanvasSurface({ document, editorPlaneFailure = null, onOperation
     setGuides(snapped.guides)
   }, [document, snapEnabled])
 
+  /**
+   * Alt를 누른 채 다른 요소 위에 있을 때만 측정 상대를 잡는다.
+   *
+   * 드래그 중에는 절대 켜지 않는다 — 자동 스냅 가이드와 측정이 한 화면에 겹치면
+   * 사용자가 지금 뭘 보고 있는지 갈리지 않는다(리서치 함의 2).
+   */
+  const updateMeasureTarget = useCallback((event: React.PointerEvent) => {
+    if (!event.altKey || !document.selection.length) { setMeasureTargetId(null); return }
+    const target = event.target instanceof Element ? event.target.closest<HTMLElement>('[data-canvas-id]') : null
+    const id = target?.dataset.canvasId ?? null
+    setMeasureTargetId(id && !document.selection.includes(id) ? id : null)
+  }, [document.selection])
+
   const finishGesture = useCallback(() => {
     const gesture = gestureRef.current
     if (!gesture) return
@@ -385,7 +413,7 @@ export function CanvasSurface({ document, editorPlaneFailure = null, onOperation
         return
       }
       if (gestureRef.current) { updateGesture(event); return }
-      if (!dragStart.current) return
+      if (!dragStart.current) { updateMeasureTarget(event); return }
       setMarquee(normalizeRect(dragStart.current, canvasPoint(event.clientX, event.clientY)))
     }}
     onPointerUp={(event) => {
@@ -457,6 +485,17 @@ export function CanvasSurface({ document, editorPlaneFailure = null, onOperation
     <div className="canvas-content" data-testid="canvas-content" style={{ transform }}>
       {nodeElements}
     </div>
+    {measurement ? <div
+      className="measure-readout"
+      data-testid="measure-readout"
+      style={{
+        left: (measurement.target.x + measurement.target.width / 2) * document.viewport.zoom + document.viewport.pan.x,
+        top: (measurement.target.y + measurement.target.height / 2) * document.viewport.zoom + document.viewport.pan.y,
+      }}
+    >
+      <span data-testid="measure-horizontal">↔ {Math.round(measurement.distance.horizontal)}</span>
+      <span data-testid="measure-vertical">↕ {Math.round(measurement.distance.vertical)}</span>
+    </div> : null}
     <div className="canvas-toolbar" onPointerDown={(event) => event.stopPropagation()}>
       <label className="canvas-toggle">
         <input
