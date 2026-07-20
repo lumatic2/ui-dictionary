@@ -27,3 +27,4 @@
 - 2026-07-19: recipe-code-reuse closed (RC1~RC4 — 27 코드 자산·코드 출발 계약·매핑·실연 사람 게이트. 2세션 병행 1일 완주 — 디플레 재적발, 다음 설계 입력).
 - 2026-07-21: **editor-legibility closed** — 닫는 기준 6항 중 5 PASS·1 **미달**(판단 가능성: 과업 3건 중 2건 성공). 미달을 미달로 적고 닫았다. 실패에서 editor-color-and-token-editing 후보 적재. 크기 회고: 5 milestone·13 changeset(195~205)·14 leaf — 선언(최소 3 무감독 세션·예상 14 leaf)과 일치, 인플레·디플레 없음.
 - 2026-07-20: editor-legibility horizon 설계 번들 작성(사용자 발의 — 편집기 UI "Figma만큼이라도", 조작감+판독성 둘 다). 승인 대기: `plans/horizons/2026-07-editor-legibility.md`. 같은 리서치에서 editor-motion·framer 관찰 후보 적재.
+- 2026-07-21: **element-decision-layer horizon 개설** (사용자 발의 — "원하는 것에 최적 UI를 알려주고 결정하고 구현하는 흐름", 예시 = 펼침/접힘 → 아코디언). 진입 표면·데이터 범위는 사용자 선택(에이전트 프로토콜 먼저 · 헷갈리는 군집 10~15개). 리서치 선행: 컴포넌트 선택의 기계 판독 표준은 **존재하지 않음** 확인. 후보 3(editor-color-and-token-editing)은 잔류 — 직전 horizon 미달에서 나온 항목이라 다음 순번 유력.

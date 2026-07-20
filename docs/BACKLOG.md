@@ -375,3 +375,14 @@ plan doc: `archive/plans/2026-07-20-th*.md` · 증거: `evidence/template-produc
 
 **미달로 닫힌 항목**: 닫는 기준 7(실사용) 중 편집기 축 — 사람이 화면을 읽지 못해 판단 불가.
 이 미달이 `plans/horizons/2026-07-editor-legibility.md`의 개설 근거다.
+
+## editor-legibility (EU1–EU5) — closed 2026-07-21
+
+- EU1 — 조작 종류가 구분되는 선택: 핸들을 모서리/변으로 가르고 회전을 문서 모델부터 신설 (cs 192–194)
+- EU2 — 스냅·정렬 가이드·거리 측정: 가이드가 좌표를 보정하게 고침, Alt+호버 거리 측정 신설 (cs 195–197)
+- EU3 — 레이어 패널 판독성: 아이콘 망라·계층 보존 검색, 브라우저 1000행→13행 (cs 198–200)
+- EU4 — 인스펙터 정보구조: 없던 기하 필드 신설 + Figma·Penpot 공통 섹션 순서 (cs 201–203)
+- EU5 — 판단 가능성 게이트: 사용자 관측 3건 중 색 토큰 변경 **실패** (cs 204–205)
+
+**미달로 닫힌 항목**: 닫는 기준 6(판단 가능성) — 화면에 "색" 단어 0건·견본 0개.
+후보 `editor-color-and-token-editing`으로 `plans/horizons/CANDIDATES.md`에 적재됨.
