@@ -27,6 +27,7 @@ import {
 } from '@askewly/canvas-core'
 import { EditorPlane } from './EditorPlane'
 import type { EditorPlaneFailure } from './editorPlaneRuntime'
+import { TOKEN_BINDING_KINDS } from '@askewly/canvas-core'
 import { documentTokens } from './documentTokens'
 
 interface Props {
@@ -101,7 +102,8 @@ function nodeStyle(node: CanvasNode, tokenSetId: string, previewBounds?: CanvasN
 function unresolvedBindings(node: CanvasNode, tokenSetId: string): boolean {
   const tokens = documentTokens(tokenSetId)
   if (tokens.source === 'unknown') return true
-  const bindings = [node.tokenBindings.background, node.tokenBindings.fill, node.tokenBindings.color, node.tokenBindings.fontFamily]
+  // 정본에서 키를 얻는다 — 손으로 나열하면 정본에 키가 늘 때 여기가 조용히 뒤처진다(ECT4).
+  const bindings = Object.keys(TOKEN_BINDING_KINDS).map((key) => node.tokenBindings[key])
   return bindings.some((binding) => binding !== undefined && tokens.resolve(binding) === null)
 }
 

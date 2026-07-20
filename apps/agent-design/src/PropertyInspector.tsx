@@ -1,6 +1,7 @@
 import { useEffect, useRef, useState, type KeyboardEvent as ReactKeyboardEvent, type ReactNode } from 'react'
 import {
   propertyFieldsForNode,
+  COLOR_BINDING_KEYS,
   validateLiteralColor,
   validateNodePropertyEdit,
   validateTokenMode,
@@ -118,6 +119,18 @@ const COLOR_BINDING_LABELS: Record<string, string> = {
   fill: '채움 색',
   background: '배경 색',
   color: '글자 색',
+}
+
+/*
+ * 라벨 목록이 정본(`COLOR_BINDING_KEYS`)과 어긋나면 **개발 중에 즉시 드러난다.**
+ * 정본에 색 키가 늘었는데 라벨을 안 붙이면 사용자에게 내부 키 이름이 그대로 나간다 —
+ * `Token · fill`이 EU5에서 정확히 그 형태였다.
+ */
+if (import.meta.env?.DEV) {
+  const 라벨없는키 = COLOR_BINDING_KEYS.filter((key) => !(key in COLOR_BINDING_LABELS))
+  if (라벨없는키.length) {
+    throw new Error(`색 키에 사용자 언어 라벨이 없다: ${라벨없는키.join(', ')} (COLOR_BINDING_LABELS에 추가)`)
+  }
 }
 
 /**
@@ -343,9 +356,11 @@ function ColorBindingField({ field, tokenSetId, commit, onDetach }: {
  */
 function bindableColorKeys(node: CanvasNode): string[] {
   if (node.kind === 'image') return []
-  if (node.kind === 'shape') return ['fill', 'background']
-  if (node.kind === 'text') return ['color', 'background']
-  return ['background']
+  // 종류별로 고르는 것이지 새로 만드는 게 아니다 — 후보는 정본에서만 온다.
+  const 후보 = (keys: string[]) => keys.filter((key) => COLOR_BINDING_KEYS.includes(key as never))
+  if (node.kind === 'shape') return 후보(['fill', 'background'])
+  if (node.kind === 'text') return 후보(['color', 'background'])
+  return 후보(['background'])
 }
 
 /**

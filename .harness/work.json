@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "active_work_id": "ect3-bind-detach",
+  "active_work_id": "ect4-image-contract",
   "works": {
     "SFB1": {
       "title": "Structure Contract And Clean Production",
@@ -3167,7 +3167,7 @@
       "work_id": "ect3-bind-detach",
       "horizon_id": "editor-color-and-token-editing",
       "milestone_id": "ECT3",
-      "status": "active",
+      "status": "completed",
       "plan_path": "plans/2026-07-21-ect3-bind-and-detach.md",
       "changeset_path": "changesets",
       "next_step": null,
@@ -3197,6 +3197,53 @@
         "approved_by": "user",
         "approved_at": "2026-07-21",
         "plan_sha256": "d0b5c7068e69bcd13c53027ad33c6d9054c48bf290257216629b939b6f127685"
+      },
+      "allowed_stop_reasons": [
+        "completed",
+        "blocked",
+        "decision_required",
+        "risk_gate",
+        "secret_required",
+        "external_authority_required",
+        "user_stopped"
+      ],
+      "stop_reason": null,
+      "stop_detail": {},
+      "session_ids": [
+        "claude:3208f4f6-fadd-4411-a59a-092e510b8529"
+      ],
+      "owner_session_uuid": "claude:3208f4f6-fadd-4411-a59a-092e510b8529",
+      "updated_at": "2026-07-21",
+      "notes": "Registered atomically by canonical harness approve_harness_plan.py after plan validation.",
+      "completion_summary": "색이 없던 요소에 색을 묶을 수 있다."
+    },
+    "ect4-image-contract": {
+      "work_id": "ect4-image-contract",
+      "horizon_id": "editor-color-and-token-editing",
+      "milestone_id": "ECT4",
+      "status": "active",
+      "plan_path": "plans/2026-07-21-ect4-image-node-and-contract.md",
+      "changeset_path": "changesets",
+      "next_step": "step-2",
+      "current_step": "step-1",
+      "steps": [
+        {
+          "id": "step-1",
+          "label": "step-1 — 허용 키의 정본이 하나가 된다",
+          "status": "completed",
+          "changeset": "20260721-binding-key-contract"
+        },
+        {
+          "id": "step-2",
+          "label": "step-2 — 이미지 노드가 칠해진다 + 게이트",
+          "status": "pending"
+        }
+      ],
+      "execution_mode": "continuous",
+      "approval": {
+        "approved_by": "user",
+        "approved_at": "2026-07-21",
+        "plan_sha256": "0f8c87e3f338932471d8d83954929e5e1ac405f54bc1fa71b560fdaa99cb4176"
       },
       "allowed_stop_reasons": [
         "completed",

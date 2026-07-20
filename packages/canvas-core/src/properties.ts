@@ -64,6 +64,33 @@ export function validateLiteralColor(value: unknown): string | null {
   return `'${trimmed}'은(는) 쓸 수 있는 색이 아닙니다`
 }
 
+/**
+ * 노드가 토큰을 묶을 수 있는 속성 — **이 집합의 정본은 여기 하나다.**
+ *
+ * 같은 목록이 네 군데 따로 살고 있었다: `template-core`의 `EXPECTED_KIND`,
+ * `CanvasSurface.nodeStyle`의 하드코딩, 같은 파일의 미해결 검사 배열, 인스펙터 라벨.
+ * 한쪽에 키를 더하면 나머지가 조용히 뒤처진다.
+ *
+ * 이 horizon은 "규칙이 여러 곳에 흩어져서 한 곳만 막힌다"에 **네 번** 당했다
+ * (토큰: update-node→create-node, 키보드: Tab-out, 리터럴: patch·create-node).
+ * 그래서 ECT4는 단일 출처를 선택지가 아니라 **통과 조건**으로 잡는다.
+ *
+ * `canvas-core`에 두는 이유: `tokenBindings`가 여기 정의된 개념이고,
+ * `template-core`·앱이 모두 이 패키지에 의존한다(반대 방향은 없다).
+ */
+export const TOKEN_BINDING_KINDS = {
+  background: 'color',
+  fill: 'color',
+  color: 'color',
+  fontFamily: 'fontFamily',
+} as const satisfies Record<string, 'color' | 'fontFamily'>
+
+export type TokenBindingKey = keyof typeof TOKEN_BINDING_KINDS
+
+/** 색으로 칠해지는 바인딩 키만. 인스펙터·렌더러가 "색이냐"를 물을 때 쓴다. */
+export const COLOR_BINDING_KEYS = (Object.keys(TOKEN_BINDING_KINDS) as TokenBindingKey[])
+  .filter((key) => TOKEN_BINDING_KINDS[key] === 'color')
+
 const layoutModes = new Set<LayoutMode>(['absolute', 'horizontal', 'vertical'])
 const sizingModes = new Set<SizingMode>(['fixed', 'hug', 'fill'])
 const safeKey = /^[a-zA-Z][a-zA-Z0-9._-]*$/
