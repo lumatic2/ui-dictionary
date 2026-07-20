@@ -78,7 +78,7 @@ term_refs: [cart-summary, cart-summary-bar, quantity-stepper]
 
 **미확인 항목**: 없음 — 5단계 전부 실제 응답으로 확인했다.
 
-## 8. 계수 (step-2 — 재현 가능한 계측)
+## 7. 계수 (step-2 — 재현 가능한 계측)
 
 `node scripts/audit-vocabulary-reach.mjs` (2026-07-21 실행):
 
@@ -111,7 +111,7 @@ distinct term_refs   81
 
 `cart-summary`를 참조하는 레시피 3건만큼 정확히 줄었다 — 로컬 존재를 해소로 치지 않고 **배포 여부로만** 판정한다는 뜻이다. 또한 `groups.yml`은 같은 디렉터리에 있지만 `published_sources`가 빈 배열로 나와 **축 데이터를 용어로 오인하지 않는다**.
 
-## 7. 후속 milestone으로 흘리는 것
+## 8. 후속 milestone으로 흘리는 것
 
 - VL2 ← §2(섹션 부재), §5(통짜 배포 불가)
 - VL3 ← §4(끊긴 참조), §3(레시피 없을 때 경로 없음)

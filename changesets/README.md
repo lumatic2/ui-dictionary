@@ -207,3 +207,4 @@
 | 205 | 20260721-judgeability-verdict | 2026-07-21 | EU5 step 3: user observation ran — element select and resize succeeded, colour token change failed; measurement showed the word for colour appears nowhere on screen and there are zero swatches, so the horizon closes 5 PASS / 1 미달 | 0/0 | complete |
 | 206 | 20260721-vl1-flow-audit | 2026-07-21 | VL1 step 1: askewly-design 호출 경로를 배포본 기준으로 실제 fetch해 실사 — 5단계 어디에서도 용어 사전에 도달하지 못하고, terms.yml은 404이며, entry-protocol의 용어 언급은 0회. 추정 0건 | 2/2 | complete |
 | 207 | 20260721-vl1-reach-audit-script | 2026-07-21 | VL1 step 2: 수기 관측을 배포본 기준 계수기로 승격 — 끊긴 term_refs는 distinct 81이 아니라 등장 91회, 사유는 전부 미배포. fixture 투입/제거로 배포 기준 판정을 증명 | 3/3 | complete |
+| 208 | 20260721-vl1-cases-and-baseline | 2026-07-21 | VL1 step 3: 외부 출처 라벨 32건·채점기·격리 에이전트 기준선. 84.4%로 예상보다 높고 12군집 중 8군집 만점 — 결정 계층 향상 여지 5건(진짜 오판 3건). 자를 사후 보정한 사실과 케이스 결함 2건을 그대로 남김 | 4/4 | complete |
