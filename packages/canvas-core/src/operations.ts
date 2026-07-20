@@ -134,6 +134,28 @@ function copyPatch(patch: UpdateNodeOperation['patch']): UpdateNodeOperation['pa
   return structuredClone(patch)
 }
 
+/**
+ * 이 연산이 **새로 넣거나 바꾼** 토큰 바인딩만 검사한다.
+ *
+ * 왜 여기냐 — 연산 종류마다 검사를 심는 방식은 실패했다. `set-node-property`를 막았더니
+ * `update-node`가 뚫렸고, 그걸 막았더니 `create-node`가 뚫렸다(독립 검증 2회 refuted, 2026-07-21).
+ * 연산은 앞으로도 늘어난다. 그래서 **모든 연산이 지나는 길목 하나**에서 본다.
+ *
+ * 왜 델타냐 — 문서 전체를 보면 이미 저장돼 있던 죽은 바인딩까지 걸려 사용자가 자기 문서를
+ * 못 연다. 저장 시점만 막고 기존 값은 건드리지 않는다는 ECT1 결정을 지키려면 **바뀐 것만** 봐야 한다.
+ * (문서를 *불러오는* 경로는 연산이 아니므로 여기 걸리지 않는다 — 그건 의도된 경계다.)
+ */
+function assertTokenBindingDelta(before: CanvasDocument, next: CanvasDocument) {
+  for (const [nodeId, node] of Object.entries(next.nodes)) {
+    const previous = before.nodes[nodeId]?.tokenBindings
+    for (const [key, value] of Object.entries(node.tokenBindings)) {
+      if (previous && previous[key] === value) continue // 손대지 않은 기존 바인딩
+      const error = validateTokenBinding(next.tokenSetId, value)
+      if (error) throw new Error(`${nodeId}.tokenBindings.${key}: ${error}`)
+    }
+  }
+}
+
 function mutateOperation(next: CanvasDocument, operation: CanvasOperation) {
   const revisionBefore = next.revision
   switch (operation.type) {
@@ -162,14 +184,6 @@ function mutateOperation(next: CanvasDocument, operation: CanvasOperation) {
     case 'update-node': {
       const node = next.nodes[operation.nodeId]
       if (!node) throw new Error(`missing node ${operation.nodeId}`)
-      // 토큰은 어느 경로로 들어오든 같은 규칙을 통과한다. 이 경로가 뚫려 있었고,
-      // 하필 라이브 브리지로 에이전트가 문서를 고치는 표면이었다(독립 검증 refuted, 2026-07-21).
-      if (operation.patch.tokenBindings) {
-        for (const [key, value] of Object.entries(operation.patch.tokenBindings)) {
-          const error = validateTokenBinding(next.tokenSetId, value)
-          if (error) throw new Error(`tokenBindings.${key}: ${error}`)
-        }
-      }
       Object.assign(node, copyPatch(operation.patch))
       break
     }
@@ -262,12 +276,14 @@ export function applyOperation(document: CanvasDocument, operation: CanvasOperat
   }
   const next = structuredClone(document)
   mutateOperation(next, operation)
+  assertTokenBindingDelta(document, next)
   return assertValidDocument(next)
 }
 
 export function replayOperations(initial: CanvasDocument, operations: CanvasOperation[]): CanvasDocument {
   const next = structuredClone(initial)
   for (const operation of operations) mutateOperation(next, operation)
+  assertTokenBindingDelta(initial, next)
   return assertValidDocument(next)
 }
 

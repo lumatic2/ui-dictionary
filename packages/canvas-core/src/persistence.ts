@@ -41,6 +41,16 @@ export function serializeSnapshot(baseDocument: CanvasDocument, operations: Canv
   return JSON.stringify(envelope)
 }
 
+/**
+ * 스냅샷 로드는 **토큰 바인딩의 실재를 검사하지 않는다 — 의도된 경계다.**
+ *
+ * 독립 검증(2026-07-21)이 이 경로를 "우회로"로 분류했으나, 여기서 막으면 **사용자가 자기 문서를
+ * 못 연다.** 토큰 세트가 바뀌거나 토큰이 사라진 옛 문서는 열려야 하고, 죽은 바인딩은
+ * 렌더 시점에 `data-token-unresolved`로 드러난다.
+ *
+ * 쓰기(연산)는 `applyOperation`의 길목에서 델타로 막는다. 읽기는 막지 않는다.
+ * 이 둘의 구분이 ECT1의 결정("저장 시점만 막고 소급 무효화하지 않는다")이다.
+ */
 export function recoverSnapshot(serialized: string): CanvasHistory {
   const value = JSON.parse(serialized) as Partial<SnapshotEnvelope>
   if (value.format !== 'askewly.canvas.snapshot' || value.formatVersion !== 1) throw new Error('unsupported canvas snapshot format')

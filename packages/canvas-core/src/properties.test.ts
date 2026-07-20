@@ -158,6 +158,47 @@ describe('토큰 검증은 경로를 가리지 않는다 (ECT1 검증 후속)', 
 
   afterEach(() => registerTokenVocabulary(null))
 
+  it('create-node로 처음부터 가짜 토큰을 박는 것도 거부한다', () => {
+    // 독립 검증 2차가 뚫은 경로. update-node를 막았더니 여기가 열려 있었다.
+    registerTokenVocabulary(vocabulary)
+    const document = createDocumentFixture(1000)
+    const parentId = document.rootIds[0]
+    const evil = {
+      ...structuredClone(document.nodes[parentId]),
+      id: 'evil-node-1', parentId, childIds: [],
+      tokenBindings: { background: 'totally.fake.token' },
+    }
+    expect(() => applyOperation(document, {
+      id: 'create', at, type: 'create-node', node: evil as never, parentId, index: 0,
+    })).toThrow(/totally\.fake\.token/)
+    expect(document.nodes['evil-node-1']).toBeUndefined()
+  })
+
+  it('batch로 감싸도 거부한다 — 길목은 하나다', () => {
+    registerTokenVocabulary(vocabulary)
+    const document = createDocumentFixture(1000)
+    const component = firstComponent(document)
+    expect(() => applyOperation(document, {
+      id: 'batch', at, type: 'batch', operations: [
+        { id: 'inner', at, type: 'update-node', nodeId: component.id,
+          patch: { tokenBindings: { background: 'totally.fake.token' } } },
+      ],
+    })).toThrow(/totally\.fake\.token/)
+  })
+
+  it('손대지 않은 기존 죽은 바인딩은 다른 연산을 막지 않는다', () => {
+    // 델타 검사인 이유. 문서 전체를 보면 사용자가 자기 문서에서 아무 것도 못 하게 된다.
+    registerTokenVocabulary(vocabulary)
+    const document = createDocumentFixture(1000)
+    const component = firstComponent(document)
+    component.tokenBindings.background = 'surface.longgone'
+    const moved = applyOperation(document, {
+      id: 'rename', at, type: 'update-node', nodeId: component.id, patch: { name: '이름만 바꾼다' },
+    })
+    expect(moved.nodes[component.id].name).toBe('이름만 바꾼다')
+    expect(moved.nodes[component.id].tokenBindings.background).toBe('surface.longgone')
+  })
+
   it('update-node의 patch.tokenBindings도 없는 토큰을 거부한다', () => {
     registerTokenVocabulary(vocabulary)
     const document = createDocumentFixture(1000)
