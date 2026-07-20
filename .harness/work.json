@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "active_work_id": null,
+  "active_work_id": "ect1-token-lookup",
   "works": {
     "SFB1": {
       "title": "Structure Contract And Clean Production",
@@ -3054,6 +3054,56 @@
       "updated_at": "2026-07-20",
       "notes": "Registered atomically by canonical harness approve_harness_plan.py after plan validation.",
       "completed": "2026-07-21"
+    },
+    "ect1-token-lookup": {
+      "work_id": "ect1-token-lookup",
+      "horizon_id": "editor-color-and-token-editing",
+      "milestone_id": "ECT1",
+      "status": "active",
+      "plan_path": "plans/2026-07-21-ect1-token-lookup-and-validation.md",
+      "changeset_path": "changesets",
+      "next_step": "step-1",
+      "current_step": "step-1",
+      "steps": [
+        {
+          "id": "step-1",
+          "label": "step-1 — 세트가 자기 토큰을 열거한다",
+          "status": "pending"
+        },
+        {
+          "id": "step-2",
+          "label": "step-2 — 편집기 토큰이 자기 종류를 안다",
+          "status": "pending"
+        },
+        {
+          "id": "step-3",
+          "label": "step-3 — 없는 토큰은 저장되지 않는다",
+          "status": "pending"
+        }
+      ],
+      "execution_mode": "continuous",
+      "approval": {
+        "approved_by": "user",
+        "approved_at": "2026-07-21",
+        "plan_sha256": "745e5c35c8a355cf8c10a6046e0863c41f387a3bb65be37742dfb722710cb8db"
+      },
+      "allowed_stop_reasons": [
+        "completed",
+        "blocked",
+        "decision_required",
+        "risk_gate",
+        "secret_required",
+        "external_authority_required",
+        "user_stopped"
+      ],
+      "stop_reason": null,
+      "stop_detail": {},
+      "session_ids": [
+        "claude:3208f4f6-fadd-4411-a59a-092e510b8529"
+      ],
+      "owner_session_uuid": "claude:3208f4f6-fadd-4411-a59a-092e510b8529",
+      "updated_at": "2026-07-21",
+      "notes": "Registered atomically by canonical harness approve_harness_plan.py after plan validation."
     }
   }
 }

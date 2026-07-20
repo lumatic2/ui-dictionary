@@ -1,5 +1,6 @@
 import { describe, expect, it } from 'vitest'
 import { validateTokenMode } from '@askewly/canvas-core'
+import { resolveTokenSet } from '@askewly/template-core'
 import { documentTokens, isKnownTokenSet, listDocumentTokenSets } from './documentTokens'
 import { editorTokenMaps, FALLBACK_BACKGROUND_TOKEN } from './editorTokens'
 
@@ -73,6 +74,91 @@ describe('토큰 세트 목록·실재 판정 (TH10)', () => {
     expect(isKnownTokenSet('foo.bar')).toBe(false)
     for (const id of ['askewly.default', 'askewly.dark', 'askewly.warm', 'askewly.ink']) {
       expect(isKnownTokenSet(id)).toBe(true)
+    }
+  })
+})
+
+/**
+ * ECT1 step-1 — 화면이 "이 문서가 쓸 수 있는 토큰이 뭐냐"고 물어볼 곳을 만든다.
+ *
+ * EU5에서 사용자가 색을 못 바꾼 이유는 데이터가 없어서가 아니라 **UI가 안 물어봐서**였다.
+ * 물어볼 API 자체가 없었다.
+ *
+ * 대조 상대는 열거 API가 아니라 **세트 원본 객체**다 — 자기 출력을 자기 출력으로 검사하면
+ * 둘 다 틀렸을 때 통과한다.
+ */
+describe('토큰 열거 (ECT1 step-1)', () => {
+  it('템플릿 세트는 원본 객체와 정확히 같은 토큰을 내놓는다', () => {
+    const set = resolveTokenSet('askewly.warm')!
+    const listed = documentTokens('askewly.warm').listTokens()
+
+    expect(listed.map((t) => t.name).sort()).toEqual(Object.keys(set.tokens).sort())
+    for (const entry of listed) {
+      expect(entry.value).toBe(set.tokens[entry.name].value)
+      expect(entry.kind).toBe(set.tokens[entry.name].kind)
+    }
+  })
+
+  it('편집기 세트는 원본 맵과 정확히 같은 토큰을 내놓는다', () => {
+    const map = editorTokenMaps['askewly.default']
+    const listed = documentTokens('askewly.default').listTokens()
+
+    expect(listed.map((t) => t.name).sort()).toEqual(Object.keys(map).sort())
+    for (const entry of listed) {
+      expect(entry.value).toBe(map[entry.name])
+    }
+  })
+
+  it('편집기 토큰의 종류는 아직 모른다 — 색으로 단정하지 않는다', () => {
+    // 여기서 'color'로 채우면 나중에 글꼴 토큰이 들어오는 순간 색 목록에 섞인다.
+    // step-2에서 생성기가 SSOT로부터 채우고, 그때 이 테스트가 뒤집힌다.
+    expect(documentTokens('askewly.default').listTokens().every((t) => t.kind === null)).toBe(true)
+  })
+
+  it('두 어휘는 열거에서도 서로를 알지 못한다 — 양방향', () => {
+    const templateNames = new Set(documentTokens('askewly.warm').listTokens().map((t) => t.name))
+    const editorNames = new Set(documentTokens('askewly.default').listTokens().map((t) => t.name))
+
+    // 어느 쪽 목록에도 **상대 어휘 고유의 이름**이 없다. 한쪽만 보는 게이트는 EU2에서 이미 새어 봤다.
+    expect(templateNames.has('surface.canvas')).toBe(true)
+    expect(templateNames.has('type.heading')).toBe(true)
+    expect(templateNames.has('surface.base')).toBe(false)
+    expect(templateNames.has('action.primary')).toBe(false)
+
+    expect(editorNames.has('surface.base')).toBe(true)
+    expect(editorNames.has('action.primary')).toBe(true)
+    expect(editorNames.has('surface.canvas')).toBe(false)
+    expect(editorNames.has('type.heading')).toBe(false)
+  })
+
+  it('이름이 겹쳐도 값은 갈린다 — 격리는 이름이 아니라 출처로 이뤄진다', () => {
+    // ECT1 step-1 실측: `text.muted`·`text.secondary`는 **양쪽에 다 있다.**
+    // 기존 주석("두 어휘는 겹치지 않는다")은 사실이 아니었다. 겹치는 이름이 있어도
+    // 문서는 자기 세트에서만 값을 얻으므로 격리는 유지된다 — 그걸 여기서 못박는다.
+    const shared = ['text.muted', 'text.secondary']
+    for (const name of shared) {
+      const fromTemplate = documentTokens('askewly.warm').listTokens().find((t) => t.name === name)
+      const fromEditor = documentTokens('askewly.default').listTokens().find((t) => t.name === name)
+      expect(fromTemplate, `${name}은 템플릿 어휘에 있어야 한다`).toBeDefined()
+      expect(fromEditor, `${name}은 편집기 어휘에 있어야 한다`).toBeDefined()
+      expect(fromTemplate!.value).not.toBe(fromEditor!.value)
+    }
+  })
+
+  it('모르는 세트는 빈 목록이다 — 그럴듯한 팔레트를 지어내지 않는다', () => {
+    expect(documentTokens('warm.craft').listTokens()).toEqual([])
+  })
+
+  it('열거는 하드코딩된 목록이 아니다 — 세트가 늘면 목록도 는다', () => {
+    const set = resolveTokenSet('askewly.ink')!
+    const before = documentTokens('askewly.ink').listTokens().length
+    set.tokens['brand.secondary'] = { kind: 'color', value: '#123456' }
+    try {
+      const after = documentTokens('askewly.ink').listTokens()
+      expect(after).toHaveLength(before + 1)
+      expect(after.find((t) => t.name === 'brand.secondary')?.value).toBe('#123456')
+    } finally {
+      delete set.tokens['brand.secondary']
     }
   })
 })
