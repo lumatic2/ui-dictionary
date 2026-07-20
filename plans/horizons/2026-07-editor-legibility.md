@@ -80,5 +80,5 @@
 ## 링크
 
 - 위(Objective): `OBJECTIVE.md`
-- 직전 horizon: `plans/horizons/2026-07-template-production-hardening.md` (close 보류 — 기준 7 미달이 이 horizon의 개설 근거)
+- 직전 horizon: `archive/horizons/2026-07-template-production-hardening.md` (close 보류 — 기준 7 미달이 이 horizon의 개설 근거)
 - 리서치: `research/2026-07-20-editor-ui-horizon-canvas-interaction.md`, `research/2026-07-20-editor-ui-horizon-figma-motion.md`

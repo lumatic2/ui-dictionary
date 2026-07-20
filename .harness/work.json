@@ -2855,7 +2855,7 @@
       "work_id": "EU2",
       "horizon_id": "editor-legibility",
       "milestone_id": "EU2",
-      "status": "active",
+      "status": "completed",
       "plan_path": "plans/2026-07-21-eu2-snap-measure.md",
       "changeset_path": "changesets/20260721-snap-applies-coordinates",
       "next_step": "step-1",
@@ -2864,17 +2864,17 @@
         {
           "id": "step-1",
           "label": "step-1 — 스냅이 실제로 붙는다",
-          "status": "pending"
+          "status": "completed"
         },
         {
           "id": "step-2",
           "label": "step-2 — 정적 거리 측정",
-          "status": "pending"
+          "status": "completed"
         },
         {
           "id": "step-3",
           "label": "step-3 — 분리 게이트 + 측정 기준 문서",
-          "status": "pending"
+          "status": "completed"
         }
       ],
       "execution_mode": "continuous",
@@ -2892,14 +2892,15 @@
         "external_authority_required",
         "user_stopped"
       ],
-      "stop_reason": null,
+      "stop_reason": "completed",
       "stop_detail": {},
       "session_ids": [
         "claude:f84fec52-c73d-4a49-b95f-53d9e9345cb2"
       ],
       "owner_session_uuid": "claude:f84fec52-c73d-4a49-b95f-53d9e9345cb2",
       "updated_at": "2026-07-20",
-      "notes": "Registered atomically by canonical harness approve_harness_plan.py after plan validation."
+      "notes": "Registered atomically by canonical harness approve_harness_plan.py after plan validation.",
+      "completed": "2026-07-21"
     }
   }
 }
