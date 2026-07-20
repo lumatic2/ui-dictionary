@@ -153,3 +153,61 @@ describe('회전이 문서까지 간다 (EU1 step-2)', () => {
     expect(operations.filter((op) => op.type === 'rotate-nodes')).toHaveLength(0)
   })
 })
+
+describe('조작 결과 게이트 (EU1 step-3)', () => {
+  /** 기대값을 입력에서 계산한다 — 렌더 출력을 되읽지 않는다. */
+  const boundsOf = (view: ReturnType<typeof render>, id: string) => {
+    const el = view.container.querySelector(`[data-canvas-id="${id}"]`) as HTMLElement
+    return { left: el.style.left, top: el.style.top, width: el.style.width, height: el.style.height }
+  }
+
+  const setup = () => {
+    const operations: CanvasOperation[] = []
+    const document = createDocumentFixture(1000)
+    const view = render(<CanvasSurface document={document} onOperation={(op) => operations.push(op)} />)
+    return { view, operations, id: document.selection.at(-1)!, before: document.nodes[document.selection.at(-1)!].bounds }
+  }
+
+  it('이동은 두 축을 델타만큼 옮기고 크기를 바꾸지 않는다', () => {
+    const { view, id, before } = setup()
+    pointer(view.getByTestId('manipulation-selection'), 'pointerdown', 0, 0)
+    pointer(view.getByTestId('canvas-viewport'), 'pointermove', 20, 10)
+    expect(boundsOf(view, id)).toEqual({
+      left: `${before.x + 20}px`, top: `${before.y + 10}px`,
+      width: `${before.width}px`, height: `${before.height}px`,
+    })
+  })
+
+  it('변 핸들(n)은 세로만 바꾼다 — 가로는 그대로다', () => {
+    const { view, id, before } = setup()
+    pointer(view.getByTestId('resize-n'), 'pointerdown', 0, 0)
+    pointer(view.getByTestId('canvas-viewport'), 'pointermove', 30, 12)
+    const after = boundsOf(view, id)
+    // 이게 역할 분리의 증명이다: x·width가 움직이면 변 핸들이 양축을 바꾸고 있다는 뜻이다.
+    expect(after.left).toBe(`${before.x}px`)
+    expect(after.width).toBe(`${before.width}px`)
+    expect(after.top).toBe(`${before.y + 12}px`)
+    expect(after.height).toBe(`${before.height - 12}px`)
+  })
+
+  it('모서리 핸들(se)은 두 축을 함께 바꾼다', () => {
+    const { view, id, before } = setup()
+    pointer(view.getByTestId('resize-se'), 'pointerdown', 0, 0)
+    pointer(view.getByTestId('canvas-viewport'), 'pointermove', 20, 10)
+    const after = boundsOf(view, id)
+    expect(after.width).toBe(`${before.width + 20}px`)
+    expect(after.height).toBe(`${before.height + 10}px`)
+    expect(after.left).toBe(`${before.x}px`)
+  })
+
+  it('회전은 각도만 바꾸고 위치·크기를 건드리지 않는다', () => {
+    const { view, operations, id, before } = setup()
+    pointer(view.getByTestId('rotate-handle'), 'pointerdown', 100, 0)
+    pointer(view.getByTestId('canvas-viewport'), 'pointermove', 0, 100)
+    pointer(view.getByTestId('canvas-viewport'), 'pointerup', 0, 100)
+    const after = boundsOf(view, id)
+    expect(after).toMatchObject({ left: `${before.x}px`, width: `${before.width}px` })
+    const rotate = operations.find((op) => op.type === 'rotate-nodes') as { rotationById: Record<string, number> }
+    expect(Object.values(rotate.rotationById)[0]).toBeCloseTo(90, 3)
+  })
+})

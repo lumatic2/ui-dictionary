@@ -2806,9 +2806,9 @@
       "milestone_id": "EU1",
       "status": "active",
       "plan_path": "plans/2026-07-20-eu1-selection-affordance.md",
-      "changeset_path": "changesets/20260720-handle-role-affordance",
-      "next_step": "step-3",
-      "current_step": "step-3",
+      "changeset_path": "changesets/20260720-manipulation-result-gate",
+      "next_step": null,
+      "current_step": null,
       "steps": [
         {
           "id": "step-1",
@@ -2823,7 +2823,7 @@
         {
           "id": "step-3",
           "label": "step-3 — 조작 결과 게이트",
-          "status": "pending"
+          "status": "completed"
         }
       ],
       "execution_mode": "continuous",
