@@ -470,3 +470,97 @@ describe('키보드로 색을 고른다 (ECT2 step-3)', () => {
     expect(operations[0]).toMatchObject({ scope: 'token', key: 'background', value: 'action.primary' })
   })
 })
+
+/**
+ * ECT3 step-1 — 안 묶인 것을 묶는다.
+ *
+ * 리서치가 본 5개 시스템 전부 미바인딩 어포던스를 갖는다. 우리는 0이었고,
+ * EU5에서 사용자가 막힌 지점이 정확히 "이 노드에 묶인 토큰이 없다"는 막다른 길이었다.
+ */
+describe('안 묶인 색을 묶는다 (ECT3 step-1)', () => {
+  /** 주어진 종류·바인딩의 노드 하나만 선택된 문서로 인스펙터를 띄운다. */
+  function withNode(kind: string, tokenBindings: Record<string, string>, extra: Record<string, unknown> = {}) {
+    const base = createDocumentFixture(1000)
+    const id = base.selection[0]
+    const document = structuredClone(base)
+    Object.assign(document.nodes[id], { kind, tokenBindings, ...extra })
+    const operations: CanvasOperation[] = []
+    const view = render(<PropertyInspector
+      document={document} onOperation={(op) => operations.push(op)} bridgeConnected={false} onMaterialize={() => {}}
+    />)
+    return { view, operations, id }
+  }
+
+  it('바인딩이 없으면 막다른 안내문 대신 묶는 버튼이 있다', () => {
+    const { view } = withNode('frame', {})
+    expect(view.getByTestId('bind-color-background').textContent).toContain('묶기')
+    // 예전 막다른 문구가 그 자리를 대신하지 않는다.
+    expect(view.container.textContent).not.toContain('이 노드에 묶인 토큰이 없다')
+  })
+
+  it('묶기 버튼이 같은 색 목록을 연다 — 목록이 두 벌 생기지 않는다', () => {
+    const { view } = withNode('frame', {})
+    fireEvent.click(view.getByTestId('bind-color-background'))
+    const picker = view.getByTestId('color-picker-background')
+    // 어휘 필터가 살아 있다(따로 만든 목록이면 이게 빠진다).
+    expect(picker.textContent).toContain('surface.base')
+    expect(picker.textContent).not.toContain('surface.canvas')
+    expect(picker.textContent).not.toContain('type.heading')
+  })
+
+  it('고르면 바인딩 연산이 커밋된다', () => {
+    const { view, operations, id } = withNode('frame', {})
+    fireEvent.click(view.getByTestId('bind-color-background'))
+    fireEvent.click(view.getByTestId('color-option-action.primary'))
+    expect(operations).toHaveLength(1)
+    expect(operations[0]).toMatchObject({
+      type: 'set-node-property', nodeId: id, scope: 'token', key: 'background', value: 'action.primary',
+    })
+  })
+
+  it('이미 묶인 색은 묶기 버튼이 아니라 견본으로 나온다', () => {
+    const { view } = withNode('frame', { background: 'surface.raised' })
+    expect(view.queryByTestId('bind-color-background')).toBeNull()
+    expect(view.queryByTestId('color-swatch-background')).not.toBeNull()
+  })
+
+  it('노드 종류마다 묶을 수 있는 키가 다르다 — 렌더러가 칠하는 것만', () => {
+    // shape은 fill이 우선이고 background도 읽는다.
+    const shape = withNode('shape', {}, { fill: '#000' })
+    expect(shape.view.queryByTestId('bind-color-fill')).not.toBeNull()
+    expect(shape.view.queryByTestId('bind-color-background')).not.toBeNull()
+    cleanup()
+
+    // text는 글자 색.
+    const text = withNode('text', {}, { text: '가나다' })
+    expect(text.view.queryByTestId('bind-color-color')).not.toBeNull()
+    expect(text.view.queryByTestId('bind-color-fill')).toBeNull()
+  })
+
+  it('이미지 노드는 묶기를 제안하지 않는다 — 렌더러가 아직 안 읽는다', () => {
+    // 검증자가 지적: fixture에 image 종류가 없어 확인이 안 됐던 경로.
+    // 여기서 묶게 하면 "묶이긴 하는데 안 칠해지는" 상태가 된다(ECT4가 렌더러를 확장한 뒤 열린다).
+    const { view } = withNode('image', {}, { assetId: 'a1', alt: '', fit: 'cover', opacity: 1 })
+    expect(view.queryByTestId('bind-color-background')).toBeNull()
+    expect(view.container.textContent).toContain('이 노드에는 색 속성이 없다')
+  })
+
+  it('묶기도 키보드로 된다', () => {
+    const { view, operations } = withNode('frame', {})
+    const trigger = view.getByTestId('bind-color-background')
+    fireEvent.click(trigger)
+    const search = view.getByTestId('color-picker-search-background')
+    fireEvent.change(search, { target: { value: 'action.destructive' } })
+    fireEvent.keyDown(search, { key: 'Enter' })
+    expect(operations[0]).toMatchObject({ scope: 'token', key: 'background', value: 'action.destructive' })
+  })
+
+  it('Esc로 닫으면 포커스가 묶기 버튼으로 돌아온다', () => {
+    const { view } = withNode('frame', {})
+    const trigger = view.getByTestId('bind-color-background')
+    fireEvent.click(trigger)
+    fireEvent.keyDown(view.getByTestId('color-picker-search-background'), { key: 'Escape' })
+    expect(view.queryByTestId('color-picker-background')).toBeNull()
+    expect(window.document.activeElement).toBe(trigger)
+  })
+})

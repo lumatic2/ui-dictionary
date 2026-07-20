@@ -320,3 +320,7 @@ button.color-swatch:focus-visible { outline: 2px solid var(--ad-brand-lavender);
 .color-picker-option[aria-current="true"] .color-token-name::after { content: ' · 지금 이 색'; color: var(--ad-gray-7); }
 /* 키보드 커서 — 마우스 hover와 구분되게 테두리로도 말한다(색만으로 상태 전달 금지). */
 .color-picker-option[data-active] { background: var(--ad-gray-10); outline: 1px solid var(--ad-brand-lavender); outline-offset: -1px; }
+/* 아직 안 묶인 색 — 막다른 안내문 대신 누를 수 있는 것을 둔다. */
+.color-bind-button { justify-self: start; border: 1px dashed var(--ad-gray-9); border-radius: 5px; padding: 5px 9px; background: transparent; color: var(--ad-gray-1); font-size: 11px; cursor: pointer; word-break: keep-all; }
+.color-bind-button:hover { border-style: solid; border-color: var(--ad-gray-6); }
+.color-bind-button:focus-visible { outline: 2px solid var(--ad-brand-lavender); outline-offset: 2px; }

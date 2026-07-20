@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "active_work_id": "ect2-color-picker",
+  "active_work_id": "ect3-bind-detach",
   "works": {
     "SFB1": {
       "title": "Structure Contract And Clean Production",
@@ -3162,6 +3162,56 @@
       "updated_at": "2026-07-21",
       "notes": "Registered atomically by canonical harness approve_harness_plan.py after plan validation.",
       "completion_summary": "사용자가 색 견본을 보고, 눌러서 목록을 열고, 검색해서, 골라 색을 바꾼다."
+    },
+    "ect3-bind-detach": {
+      "work_id": "ect3-bind-detach",
+      "horizon_id": "editor-color-and-token-editing",
+      "milestone_id": "ECT3",
+      "status": "active",
+      "plan_path": "plans/2026-07-21-ect3-bind-and-detach.md",
+      "changeset_path": "changesets",
+      "next_step": "step-1",
+      "current_step": "step-1",
+      "steps": [
+        {
+          "id": "step-1",
+          "label": "step-1 — 안 묶인 것을 묶는다",
+          "status": "pending"
+        },
+        {
+          "id": "step-2",
+          "label": "step-2 — 묶인 것을 푼다",
+          "status": "pending"
+        },
+        {
+          "id": "step-3",
+          "label": "step-3 — 원시 색을 고치고, 다시 묶는다 + 게이트",
+          "status": "pending"
+        }
+      ],
+      "execution_mode": "continuous",
+      "approval": {
+        "approved_by": "user",
+        "approved_at": "2026-07-21",
+        "plan_sha256": "d0b5c7068e69bcd13c53027ad33c6d9054c48bf290257216629b939b6f127685"
+      },
+      "allowed_stop_reasons": [
+        "completed",
+        "blocked",
+        "decision_required",
+        "risk_gate",
+        "secret_required",
+        "external_authority_required",
+        "user_stopped"
+      ],
+      "stop_reason": null,
+      "stop_detail": {},
+      "session_ids": [
+        "claude:3208f4f6-fadd-4411-a59a-092e510b8529"
+      ],
+      "owner_session_uuid": "claude:3208f4f6-fadd-4411-a59a-092e510b8529",
+      "updated_at": "2026-07-21",
+      "notes": "Registered atomically by canonical harness approve_harness_plan.py after plan validation."
     }
   }
 }

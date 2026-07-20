@@ -7,6 +7,7 @@ import {
   type CanvasOperation,
   type NodePropertyEdit,
   type PropValue,
+  type CanvasNode,
   type PropertyField,
 } from '@askewly/canvas-core'
 import { documentTokens, isKnownTokenSet, listDocumentTokenSets, type TokenEntry } from './documentTokens'
@@ -161,65 +162,32 @@ function groupTokens(tokens: TokenEntry[]): Array<[string, TokenEntry[]]> {
  * 색만으로 상태를 말하지 않는다(anti-patterns 4) — 견본 옆에 토큰 이름이 글자로 함께 있고,
  * 해석 실패는 회색 폴백이 아니라 **미해결이라고 적는다**.
  */
-function ColorBindingField({ field, tokenSetId, commit }: {
-  field: PropertyField
+/**
+ * 색 토큰 선택 목록 — **바인딩이 있든 없든 같은 목록을 쓴다.**
+ *
+ * 따로 만들면 같은 목록이 두 벌 생기고 한쪽만 어휘 필터를 갖게 된다(ECT3 결정).
+ * 열림 상태·포커스 복귀는 부모(트리거 버튼을 가진 쪽)가 소유한다.
+ */
+function TokenColorPicker({ id, tokenSetId, current, onChoose, onClose }: {
+  id: string
   tokenSetId: string
-  commit: (value: PropValue) => void
+  current: string | null
+  onChoose: (name: string) => void
+  onClose: (restoreFocus: boolean) => void
 }) {
-  const binding = String(field.value ?? '')
-  const tokens = documentTokens(tokenSetId)
-  const resolved = tokens.resolve(binding)
-  const label = COLOR_BINDING_LABELS[field.key] ?? field.key
-  const [open, setOpen] = useState(false)
   const [query, setQuery] = useState('')
   const [cursor, setCursor] = useState(0)
-  const swatchRef = useRef<HTMLButtonElement>(null)
 
   // 목록은 **이 문서 어휘의 색 토큰만**이다. 다른 어휘를 섞으면 템플릿이 편집기 색으로 칠해진다.
-  const choices = tokens.listTokens().filter((token) => token.kind === 'color')
+  const choices = documentTokens(tokenSetId).listTokens().filter((token) => token.kind === 'color')
   const q = query.trim().toLowerCase()
   const matched = q ? choices.filter((token) => token.name.toLowerCase().includes(q)) : choices
-
   // 검색으로 목록이 줄면 커서가 목록 밖을 가리킬 수 있다.
   const active = Math.min(cursor, Math.max(0, matched.length - 1))
 
-  /**
-   * 닫힌 뒤 포커스를 견본으로 되돌린다 — **다시 그려진 다음에.**
-   *
-   * 여기서 바로 `focus()`를 부르면 브라우저에서 안 먹는다. 색을 고르면 문서가 바뀌고,
-   * 그 리렌더에서 캔버스가 선택 노드에 포커스를 준다 — 우리 호출이 먼저 나가고
-   * 캔버스가 나중에 가져간다. 실측: 키보드로 색을 고른 뒤 포커스가 `section.canvas-node`에
-   * 있었다(ECT2 step-3 브라우저 확인). 인스펙터만 렌더하는 단위 테스트는 이걸 못 본다.
-   */
-  const pendingFocus = useRef(false)
-  useEffect(() => {
-    if (!pendingFocus.current) return
-    pendingFocus.current = false
-    swatchRef.current?.focus()
-  })
-
-  /**
-   * @param restoreFocus 견본으로 포커스를 되돌릴지.
-   *
-   * Esc·선택으로 닫을 때는 되돌린다 — 안 그러면 키보드 사용자가 문서 처음으로 튕긴다.
-   * **Tab으로 나갈 때는 되돌리지 않는다** — 사용자가 스스로 다음 컨트롤로 간 것이라
-   * 붙잡으면 포커스 덫이 된다.
-   */
-  const close = (restoreFocus = true) => {
-    setOpen(false)
-    setQuery('')
-    setCursor(0)
-    pendingFocus.current = restoreFocus
-  }
-
-  const choose = (name: string) => {
-    close()
-    if (name !== binding) commit(name)
-  }
-
   /** 열기·이동·선택·닫기가 전부 키보드로 된다(anti-patterns 3). */
   const onKeyDown = (event: ReactKeyboardEvent) => {
-    if (event.key === 'Escape') { event.preventDefault(); close(); return }
+    if (event.key === 'Escape') { event.preventDefault(); onClose(true); return }
     if (event.key === 'ArrowDown' || event.key === 'ArrowUp') {
       event.preventDefault()
       if (!matched.length) return
@@ -232,15 +200,112 @@ function ColorBindingField({ field, tokenSetId, commit }: {
     }
     if (event.key === 'Enter') {
       event.preventDefault()
-      if (matched[active]) choose(matched[active].name)
+      if (matched[active]) onChoose(matched[active].name)
     }
+  }
+
+  return <div
+    className="color-picker"
+    data-testid={`color-picker-${id}`}
+    onKeyDown={onKeyDown}
+    /*
+     * 포커스가 목록 밖으로 나가면 닫는다.
+     *
+     * Tab으로 목록을 다 지나면 포커스는 툴바로 가는데 목록은 화면에 그대로 떠 있었다
+     * (독립 검증 refuted, 2026-07-21) — 키보드 사용자에게 유령 UI다. 되돌리지는 않는다:
+     * 사용자가 스스로 나간 것이라 붙잡으면 포커스 덫이 된다.
+     */
+    onBlur={(event) => {
+      if (!event.currentTarget.contains(event.relatedTarget as Node | null)) onClose(false)
+    }}
+  >
+    <input
+      className="color-picker-search"
+      data-testid={`color-picker-search-${id}`}
+      value={query}
+      placeholder="색 이름으로 찾기"
+      aria-label="색 토큰 검색"
+      autoFocus
+      onChange={(event) => { setQuery(event.target.value); setCursor(0) }}
+    />
+    {matched.length === 0
+      ? <p className="color-picker-empty">찾는 색이 없다.</p>
+      : groupTokens(matched).map(([group, groupTokensList]) => <div className="color-picker-group" key={group}>
+        <p className="color-picker-group-name">{group}</p>
+        {groupTokensList.map((token) => <button
+          type="button"
+          key={token.name}
+          className="color-picker-option"
+          data-testid={`color-option-${token.name}`}
+          data-active={matched[active]?.name === token.name || undefined}
+          aria-current={token.name === current}
+          onClick={() => onChoose(token.name)}
+        >
+          <span className="color-swatch" style={{ background: token.value }} aria-hidden="true" />
+          <span className="color-token-name">{token.name}</span>
+        </button>)}
+      </div>)}
+  </div>
+}
+
+/**
+ * 목록을 여는 트리거의 공통 살림 — 열림 상태와 **리렌더 후 포커스 복귀**.
+ *
+ * 여기서 바로 `focus()`를 부르면 브라우저에서 안 먹는다. 색을 고르면 문서가 바뀌고,
+ * 그 리렌더에서 캔버스가 선택 노드에 포커스를 준다 — 우리 호출이 먼저 나가고
+ * 캔버스가 나중에 가져간다(ECT2 step-3 브라우저 실측). 인스펙터만 렌더하는 단위 테스트는
+ * 이 경합을 못 본다.
+ */
+function usePickerTrigger() {
+  const [open, setOpen] = useState(false)
+  const triggerRef = useRef<HTMLButtonElement>(null)
+  const pendingFocus = useRef(false)
+  useEffect(() => {
+    if (!pendingFocus.current) return
+    pendingFocus.current = false
+    triggerRef.current?.focus()
+  })
+  /**
+   * @param restoreFocus Esc·선택으로 닫을 때는 되돌린다 — 안 그러면 키보드 사용자가 튕긴다.
+   *   **Tab으로 나갈 때는 되돌리지 않는다** — 붙잡으면 포커스 덫이 된다.
+   */
+  const close = (restoreFocus = true) => {
+    setOpen(false)
+    pendingFocus.current = restoreFocus
+  }
+  return { open, setOpen, close, triggerRef }
+}
+
+/**
+ * 색 바인딩 하나 — **해석된 색 견본 + 토큰 이름**, 누르면 선택 목록이 열린다.
+ *
+ * 견본에 칠하는 색은 렌더러가 캔버스를 칠할 때 쓰는 그 함수에서 온다
+ * (`documentTokens().resolve`). 별도 해석 경로를 만들면 견본과 캔버스가 다른 색을
+ * 보여주게 되고, 그건 조용히 틀리는 종류의 결함이다.
+ *
+ * 색만으로 상태를 말하지 않는다(anti-patterns 4) — 견본 옆에 토큰 이름이 글자로 함께 있고,
+ * 해석 실패는 회색 폴백이 아니라 **미해결이라고 적는다**.
+ */
+function ColorBindingField({ field, tokenSetId, commit }: {
+  field: PropertyField
+  tokenSetId: string
+  commit: (value: PropValue) => void
+}) {
+  const binding = String(field.value ?? '')
+  const resolved = documentTokens(tokenSetId).resolve(binding)
+  const label = COLOR_BINDING_LABELS[field.key] ?? field.key
+  const { open, setOpen, close, triggerRef } = usePickerTrigger()
+
+  const choose = (name: string) => {
+    close()
+    if (name !== binding) commit(name)
   }
 
   return <div className="color-field" data-testid={`color-field-${field.key}`}>
     <span className="color-field-label">{label}</span>
     <span className="color-field-value">
       <button
-        ref={swatchRef}
+        ref={triggerRef}
         type="button"
         className={`color-swatch${resolved ? '' : ' color-swatch-unresolved'}`}
         data-testid={`color-swatch-${field.key}`}
@@ -253,48 +318,56 @@ function ColorBindingField({ field, tokenSetId, commit }: {
       <span className="color-token-name">{binding}</span>
     </span>
     {!resolved && <span className="color-field-note">이 토큰은 지금 문서의 토큰 세트에서 해석되지 않는다.</span>}
-    {open && <div
-      className="color-picker"
-      data-testid={`color-picker-${field.key}`}
-      onKeyDown={onKeyDown}
-      /*
-       * 포커스가 목록 밖으로 나가면 닫는다.
-       *
-       * Tab으로 목록을 다 지나면 포커스는 툴바로 가는데 목록은 화면에 그대로 떠 있었다
-       * (독립 검증 refuted, 2026-07-21) — 키보드 사용자에게 유령 UI다. 되돌리지는 않는다:
-       * 사용자가 스스로 나간 것이라 붙잡으면 포커스 덫이 된다.
-       */
-      onBlur={(event) => {
-        if (!event.currentTarget.contains(event.relatedTarget as Node | null)) close(false)
-      }}
-    >
-      <input
-        className="color-picker-search"
-        data-testid={`color-picker-search-${field.key}`}
-        value={query}
-        placeholder="색 이름으로 찾기"
-        aria-label="색 토큰 검색"
-        autoFocus
-        onChange={(event) => { setQuery(event.target.value); setCursor(0) }}
-      />
-      {matched.length === 0
-        ? <p className="color-picker-empty">찾는 색이 없다.</p>
-        : groupTokens(matched).map(([group, groupTokensList]) => <div className="color-picker-group" key={group}>
-          <p className="color-picker-group-name">{group}</p>
-          {groupTokensList.map((token) => <button
-            type="button"
-            key={token.name}
-            className="color-picker-option"
-            data-testid={`color-option-${token.name}`}
-            data-active={matched[active]?.name === token.name || undefined}
-            aria-current={token.name === binding}
-            onClick={() => choose(token.name)}
-          >
-            <span className="color-swatch" style={{ background: token.value }} aria-hidden="true" />
-            <span className="color-token-name">{token.name}</span>
-          </button>)}
-        </div>)}
-    </div>}
+    {open && <TokenColorPicker id={field.key} tokenSetId={tokenSetId} current={binding} onChoose={choose} onClose={close} />}
+  </div>
+}
+
+/**
+ * 이 노드에 **새로 묶을 수 있는** 색 키.
+ *
+ * 렌더러가 실제로 칠하는 키만 낸다(`CanvasSurface.nodeStyle`) — 안 칠해지는 키를 묶게 하면
+ * "묶이긴 하는데 안 칠해지는" 상태가 된다. 이미지 노드는 렌더러가 `tokenBindings`를 아예
+ * 참조하지 않으므로 여기서 제외한다(ECT4가 렌더러를 확장한 뒤 열린다).
+ */
+function bindableColorKeys(node: CanvasNode): string[] {
+  if (node.kind === 'image') return []
+  if (node.kind === 'shape') return ['fill', 'background']
+  if (node.kind === 'text') return ['color', 'background']
+  return ['background']
+}
+
+/**
+ * 아직 색이 안 묶인 속성 — **묶는 경로**.
+ *
+ * 리서치가 본 5개 시스템(Figma·Penpot·Framer·Webflow·Tokens Studio)이 **전부** 미바인딩
+ * 상태에서 새로 묶는 명시적 어포던스를 갖는다. 우리는 0이었다 — EU5에서 사용자가 막힌
+ * 이미지 노드가 "이 노드에 묶인 토큰이 없다"는 막다른 길만 보여줬다.
+ */
+function UnboundColorField({ bindingKey, tokenSetId, commit }: {
+  bindingKey: string
+  tokenSetId: string
+  commit: (value: PropValue) => void
+}) {
+  const label = COLOR_BINDING_LABELS[bindingKey] ?? bindingKey
+  const { open, setOpen, close, triggerRef } = usePickerTrigger()
+
+  return <div className="color-field" data-testid={`unbound-color-field-${bindingKey}`}>
+    <span className="color-field-label">{label}</span>
+    <button
+      ref={triggerRef}
+      type="button"
+      className="color-bind-button"
+      data-testid={`bind-color-${bindingKey}`}
+      aria-expanded={open}
+      onClick={() => setOpen((was) => !was)}
+    >{label} 묶기</button>
+    {open && <TokenColorPicker
+      id={bindingKey}
+      tokenSetId={tokenSetId}
+      current={null}
+      onChoose={(name) => { close(); commit(name) }}
+      onClose={close}
+    />}
   </div>
 }
 
@@ -414,8 +487,18 @@ export function PropertyInspector({ document, onOperation, bridgeConnected, onMa
       </label>)}
       </Section>
       <Section id="visual">
-        {fieldsBySection.visual.length === 0
-          ? <p className="section-empty">이 노드에 묶인 토큰이 없다.</p>
+        {/*
+          * 아직 안 묶인 색은 **묶는 경로**를 보여준다. 막다른 안내문만 두면 사용자가
+          * 그 노드에서 색을 바꿀 방법이 없다(EU5에서 실제로 막힌 지점).
+          */}
+        {node && bindableColorKeys(node).filter((key) => !(key in node.tokenBindings)).map((key) => <UnboundColorField
+          key={`unbound-${key}`}
+          bindingKey={key}
+          tokenSetId={document.tokenSetId}
+          commit={(value) => commitProperty({ scope: 'token', key, label: key, value: null, valueType: 'string' }, value)}
+        />)}
+        {fieldsBySection.visual.length === 0 && node && bindableColorKeys(node).length === 0
+          ? <p className="section-empty">이 노드에는 색 속성이 없다.</p>
           : fieldsBySection.visual.map((field) => isColorBinding(document.tokenSetId, field)
             // 색은 색으로 보여준다. 색이 아닌 토큰(글꼴 등)은 기존 텍스트 입력 그대로 둔다.
             ? <ColorBindingField key={`${field.scope}.${field.key}`} field={field} tokenSetId={document.tokenSetId} commit={(value) => commitProperty(field, value)} />
