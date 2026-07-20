@@ -350,3 +350,94 @@ describe('목록에서 고른다 (ECT2 step-2)', () => {
     expect(operations).toHaveLength(0)
   })
 })
+
+/**
+ * ECT2 step-3 — 키보드로도 완주된다.
+ *
+ * 리서치가 본 5개 시스템 전부 포인터 외 경로를 갖는다. anti-patterns 3(접근 가능한
+ * 인터랙션 경로)이 요구하는 것도 같다 — 열기·이동·선택·닫기 + 포커스 복귀.
+ */
+describe('키보드로 색을 고른다 (ECT2 step-3)', () => {
+  function openPicker() {
+    const base = createDocumentFixture(1000)
+    const id = base.selection[0]
+    const document = structuredClone(base)
+    const operations: CanvasOperation[] = []
+    const view = render(<PropertyInspector
+      document={document} onOperation={(op) => operations.push(op)} bridgeConnected={false} onMaterialize={() => {}}
+    />)
+    const swatch = view.getByTestId('color-swatch-background')
+    fireEvent.click(swatch)
+    return { view, operations, swatch, picker: view.getByTestId('color-picker-background') }
+  }
+
+  it('열면 검색창으로 포커스가 간다 — 바로 타이핑할 수 있다', () => {
+    const { view } = openPicker()
+    expect(window.document.activeElement).toBe(view.getByTestId('color-picker-search-background'))
+  })
+
+  it('화살표로 커서가 움직인다', () => {
+    const { view, picker } = openPicker()
+    const search = view.getByTestId('color-picker-search-background')
+    const names = () => [...picker.querySelectorAll('.color-picker-option')].map((o) => o.getAttribute('data-testid'))
+    const activeName = () => picker.querySelector('[data-active]')?.getAttribute('data-testid')
+
+    expect(activeName()).toBe(names()[0])
+    fireEvent.keyDown(search, { key: 'ArrowDown' })
+    expect(activeName()).toBe(names()[1])
+    fireEvent.keyDown(search, { key: 'ArrowUp' })
+    expect(activeName()).toBe(names()[0])
+  })
+
+  it('끝에서 화살표를 더 누르면 반대편으로 돈다 — 막다른 길이 없다', () => {
+    const { view, picker } = openPicker()
+    const search = view.getByTestId('color-picker-search-background')
+    const names = [...picker.querySelectorAll('.color-picker-option')].map((o) => o.getAttribute('data-testid'))
+    fireEvent.keyDown(search, { key: 'ArrowUp' })
+    expect(picker.querySelector('[data-active]')?.getAttribute('data-testid')).toBe(names[names.length - 1])
+  })
+
+  it('Enter로 고르면 활성 항목이 커밋되고 목록이 닫힌다', () => {
+    const { view, operations, picker } = openPicker()
+    const search = view.getByTestId('color-picker-search-background')
+    // 현재 색이 아닌 항목까지 내려간다 — 같은 색 재선택은 연산을 만들지 않는 게 정상이다.
+    let activeName = ''
+    for (let i = 0; i < 6; i += 1) {
+      activeName = picker.querySelector('[data-active]')!.getAttribute('data-testid')!.replace('color-option-', '')
+      if (activeName !== 'surface.raised') break
+      fireEvent.keyDown(search, { key: 'ArrowDown' })
+    }
+    expect(activeName).not.toBe('surface.raised')
+    fireEvent.keyDown(search, { key: 'Enter' })
+    expect(operations).toHaveLength(1)
+    expect(operations[0]).toMatchObject({ scope: 'token', key: 'background', value: activeName })
+    expect(view.queryByTestId('color-picker-background')).toBeNull()
+  })
+
+  it('Esc로 닫히고 포커스가 견본으로 돌아온다 — 키보드 사용자가 튕기지 않는다', () => {
+    const { view, swatch } = openPicker()
+    fireEvent.keyDown(view.getByTestId('color-picker-search-background'), { key: 'Escape' })
+    expect(view.queryByTestId('color-picker-background')).toBeNull()
+    expect(window.document.activeElement).toBe(swatch)
+  })
+
+  it('검색으로 목록이 줄어도 커서가 목록 밖을 가리키지 않는다', () => {
+    const { view, picker } = openPicker()
+    const search = view.getByTestId('color-picker-search-background')
+    // 커서를 뒤로 보낸 뒤 목록을 확 줄인다.
+    for (let i = 0; i < 12; i += 1) fireEvent.keyDown(search, { key: 'ArrowDown' })
+    fireEvent.change(search, { target: { value: 'border.focus' } })
+    const options = [...picker.querySelectorAll('.color-picker-option')]
+    expect(options).toHaveLength(1)
+    // 활성 항목이 남아 있고 Enter가 그걸 고른다(빈 곳을 가리키지 않는다).
+    expect(picker.querySelector('[data-active]')).not.toBeNull()
+  })
+
+  it('키보드만으로 색 변경 1회 완주', () => {
+    const { view, operations } = openPicker()
+    const search = view.getByTestId('color-picker-search-background')
+    fireEvent.change(search, { target: { value: 'action.primary' } })
+    fireEvent.keyDown(search, { key: 'Enter' })
+    expect(operations[0]).toMatchObject({ scope: 'token', key: 'background', value: 'action.primary' })
+  })
+})

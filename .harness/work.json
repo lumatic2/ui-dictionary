@@ -3116,8 +3116,8 @@
       "status": "active",
       "plan_path": "plans/2026-07-21-ect2-color-swatch-and-picker.md",
       "changeset_path": "changesets",
-      "next_step": "step-2",
-      "current_step": "step-1",
+      "next_step": "step-3",
+      "current_step": "step-2",
       "steps": [
         {
           "id": "step-1",
@@ -3128,7 +3128,8 @@
         {
           "id": "step-2",
           "label": "step-2 — 목록에서 고른다",
-          "status": "pending"
+          "status": "completed",
+          "changeset": "20260721-token-color-picker + 20260721-webgpu-selection-tint"
         },
         {
           "id": "step-3",

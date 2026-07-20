@@ -1,4 +1,4 @@
-import { useEffect, useState, type ReactNode } from 'react'
+import { useEffect, useRef, useState, type KeyboardEvent as ReactKeyboardEvent, type ReactNode } from 'react'
 import {
   propertyFieldsForNode,
   validateNodePropertyEdit,
@@ -172,22 +172,69 @@ function ColorBindingField({ field, tokenSetId, commit }: {
   const label = COLOR_BINDING_LABELS[field.key] ?? field.key
   const [open, setOpen] = useState(false)
   const [query, setQuery] = useState('')
+  const [cursor, setCursor] = useState(0)
+  const swatchRef = useRef<HTMLButtonElement>(null)
 
   // 목록은 **이 문서 어휘의 색 토큰만**이다. 다른 어휘를 섞으면 템플릿이 편집기 색으로 칠해진다.
   const choices = tokens.listTokens().filter((token) => token.kind === 'color')
   const q = query.trim().toLowerCase()
   const matched = q ? choices.filter((token) => token.name.toLowerCase().includes(q)) : choices
 
-  const choose = (name: string) => {
+  // 검색으로 목록이 줄면 커서가 목록 밖을 가리킬 수 있다.
+  const active = Math.min(cursor, Math.max(0, matched.length - 1))
+
+  /**
+   * 닫힌 뒤 포커스를 견본으로 되돌린다 — **다시 그려진 다음에.**
+   *
+   * 여기서 바로 `focus()`를 부르면 브라우저에서 안 먹는다. 색을 고르면 문서가 바뀌고,
+   * 그 리렌더에서 캔버스가 선택 노드에 포커스를 준다 — 우리 호출이 먼저 나가고
+   * 캔버스가 나중에 가져간다. 실측: 키보드로 색을 고른 뒤 포커스가 `section.canvas-node`에
+   * 있었다(ECT2 step-3 브라우저 확인). 인스펙터만 렌더하는 단위 테스트는 이걸 못 본다.
+   */
+  const pendingFocus = useRef(false)
+  useEffect(() => {
+    if (!pendingFocus.current) return
+    pendingFocus.current = false
+    swatchRef.current?.focus()
+  })
+
+  const close = () => {
     setOpen(false)
     setQuery('')
+    setCursor(0)
+    // 포커스를 되돌려 놓지 않으면 키보드 사용자가 문서 처음으로 튕긴다.
+    pendingFocus.current = true
+  }
+
+  const choose = (name: string) => {
+    close()
     if (name !== binding) commit(name)
+  }
+
+  /** 열기·이동·선택·닫기가 전부 키보드로 된다(anti-patterns 3). */
+  const onKeyDown = (event: ReactKeyboardEvent) => {
+    if (event.key === 'Escape') { event.preventDefault(); close(); return }
+    if (event.key === 'ArrowDown' || event.key === 'ArrowUp') {
+      event.preventDefault()
+      if (!matched.length) return
+      const delta = event.key === 'ArrowDown' ? 1 : -1
+      setCursor((was) => {
+        const from = Math.min(was, matched.length - 1)
+        return (from + delta + matched.length) % matched.length
+      })
+      return
+    }
+    if (event.key === 'Enter') {
+      event.preventDefault()
+      if (matched[active]) choose(matched[active].name)
+    }
   }
 
   return <div className="color-field" data-testid={`color-field-${field.key}`}>
     <span className="color-field-label">{label}</span>
     <span className="color-field-value">
       <button
+        ref={swatchRef}
         type="button"
         className={`color-swatch${resolved ? '' : ' color-swatch-unresolved'}`}
         data-testid={`color-swatch-${field.key}`}
@@ -200,14 +247,15 @@ function ColorBindingField({ field, tokenSetId, commit }: {
       <span className="color-token-name">{binding}</span>
     </span>
     {!resolved && <span className="color-field-note">이 토큰은 지금 문서의 토큰 세트에서 해석되지 않는다.</span>}
-    {open && <div className="color-picker" data-testid={`color-picker-${field.key}`}>
+    {open && <div className="color-picker" data-testid={`color-picker-${field.key}`} onKeyDown={onKeyDown}>
       <input
         className="color-picker-search"
         data-testid={`color-picker-search-${field.key}`}
         value={query}
         placeholder="색 이름으로 찾기"
         aria-label="색 토큰 검색"
-        onChange={(event) => setQuery(event.target.value)}
+        autoFocus
+        onChange={(event) => { setQuery(event.target.value); setCursor(0) }}
       />
       {matched.length === 0
         ? <p className="color-picker-empty">찾는 색이 없다.</p>
@@ -218,6 +266,7 @@ function ColorBindingField({ field, tokenSetId, commit }: {
             key={token.name}
             className="color-picker-option"
             data-testid={`color-option-${token.name}`}
+            data-active={matched[active]?.name === token.name || undefined}
             aria-current={token.name === binding}
             onClick={() => choose(token.name)}
           >
