@@ -74,3 +74,20 @@ describe('텍스트 맞춤 (TH9)', () => {
     ).toThrowError(TextFitError)
   })
 })
+
+it('컴파일된 문서의 토큰 바인딩을 바꿔도 청사진이 오염되지 않는다', () => {
+  // 참조로 넘기던 시절에는 이 편집이 registry의 청사진을 바꿔, 다음 컴파일이 전부 물려받았다.
+  const blueprint = formatPackCatalog.find((item) => item.id === 'business-card-minimal')!
+  const slot = blueprint.slots.find((item) => item.tokenBindings.color)!
+  const original = slot.tokenBindings.color
+
+  const project = compileTemplate(
+    { id: 'x', format: 'business-card', width: blueprint.width, height: blueprint.height, tokenSetId: 'askewly.warm', content: { name: '이름', role: '역할', contact: '연락처' } },
+    [],
+    blueprint,
+  )
+  const nodeId = Object.keys(project.scene.nodes).find((id) => project.scene.nodes[id].tokenBindings?.color)!
+  project.scene.nodes[nodeId].tokenBindings.color = 'text.ghost'
+
+  expect(slot.tokenBindings.color).toBe(original)
+})

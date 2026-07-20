@@ -63,6 +63,7 @@ export function compileTemplate(request: TemplateRequest, assets: AssetManifestE
       parentId: null,
       childIds,
       bounds: { x: 0, y: 0, width: blueprint.width, height: blueprint.height },
+      rotation: 0,
       layout,
       visible: true,
       locked: false,
@@ -84,10 +85,13 @@ export function compileTemplate(request: TemplateRequest, assets: AssetManifestE
       parentId: rootId,
       childIds: [],
       bounds: slot.bounds,
+      rotation: 0,
       layout,
       visible: true,
       locked: false,
-      tokenBindings: slot.tokenBindings,
+      // 복사한다 — 참조로 넘기면 문서에서 토큰을 바꿀 때 청사진 자체가 오염되고,
+      // 그 뒤 모든 컴파일이 바뀐 값을 물려받는다(EU1 step-2 테스트가 적발).
+      tokenBindings: { ...slot.tokenBindings },
       source: null,
     }
 
@@ -174,10 +178,11 @@ export function compileTemplate(request: TemplateRequest, assets: AssetManifestE
           parentId: rootId,
           childIds: [],
           bounds,
+          rotation: 0,
           layout,
           visible: true,
           locked: false,
-          tokenBindings: slot.tokenBindings,
+          tokenBindings: { ...slot.tokenBindings },
           source: null,
         }
 

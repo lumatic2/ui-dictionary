@@ -39,6 +39,14 @@ export interface CanvasNodeBase {
   parentId: NodeId | null
   childIds: NodeId[]
   bounds: CanvasRect
+  /**
+   * 회전 각도(도, 시계 방향). 회전 중심은 **바운딩 박스 중심**이다.
+   *
+   * 렌더 층 CSS transform으로만 두지 않는 이유: 내보내기·좌표 계산이 각도를 모르면
+   * 화면에서만 돌아가고 산출물은 안 돌아간 채로 나간다. 선택 필드로 두면 "각도를
+   * 안 쓰는 경로"가 조용히 생기므로 필수로 둔다.
+   */
+  rotation: number
   layout: LayoutConstraints
   visible: boolean
   locked: boolean

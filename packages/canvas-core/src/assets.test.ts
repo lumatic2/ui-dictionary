@@ -18,6 +18,7 @@ function documentWithImage(assets?: CanvasDocument['assets']): CanvasDocument {
     kind: 'image',
     name: 'hero',
     parentId: rootId,
+    rotation: 0,
     childIds: [],
     bounds: { x: 0, y: 0, width: 100, height: 100 },
     layout: { mode: 'absolute', horizontal: 'fixed', vertical: 'fixed', gap: 0, padding: [0, 0, 0, 0] },

@@ -30,6 +30,12 @@ export interface TransformNodesOperation extends OperationBase {
   boundsById: Record<NodeId, CanvasRect>
 }
 
+/** 회전은 bounds를 바꾸지 않는다 — 각도만 바뀌므로 transform-nodes와 별개 연산이다. */
+export interface RotateNodesOperation extends OperationBase {
+  type: 'rotate-nodes'
+  rotationById: Record<NodeId, number>
+}
+
 export interface SetNodePropertyOperation extends OperationBase, NodePropertyEdit {
   type: 'set-node-property'
 }
@@ -80,6 +86,7 @@ export type CanvasOperation =
   | DeleteNodeOperation
   | UpdateNodeOperation
   | TransformNodesOperation
+  | RotateNodesOperation
   | SetNodePropertyOperation
   | UpdateTextOperation
   | SetTokenModeOperation
@@ -88,6 +95,12 @@ export type CanvasOperation =
   | SelectNodesOperation
   | SetViewportOperation
   | BatchOperation
+
+/** 각도를 [0, 360)으로 접는다 — 370°와 10°가 다른 문서가 되지 않게. */
+export function normalizeRotation(degrees: number): number {
+  const wrapped = degrees % 360
+  return Object.is(wrapped, -0) ? 0 : wrapped < 0 ? wrapped + 360 : wrapped
+}
 
 function insertAt<T>(items: T[], value: T, index: number) {
   items.splice(Math.max(0, Math.min(index, items.length)), 0, value)
@@ -160,6 +173,18 @@ function mutateOperation(next: CanvasDocument, operation: CanvasOperation) {
         if (!node) throw new Error(`missing node ${id}`)
         if (node.locked) throw new Error(`cannot transform locked node ${id}`)
         node.bounds = structuredClone(bounds)
+      }
+      break
+    }
+    case 'rotate-nodes': {
+      const entries = Object.entries(operation.rotationById)
+      if (!entries.length) throw new Error('rotate-nodes requires at least one node')
+      for (const [id, rotation] of entries) {
+        const node = next.nodes[id]
+        if (!node) throw new Error(`missing node ${id}`)
+        if (node.locked) throw new Error(`cannot rotate locked node ${id}`)
+        if (!Number.isFinite(rotation)) throw new Error(`rotation must be finite for ${id}`)
+        node.rotation = normalizeRotation(rotation)
       }
       break
     }
@@ -274,6 +299,15 @@ export function invertOperation(before: CanvasDocument, operation: CanvasOperati
         boundsById[id] = structuredClone(node.bounds)
       }
       return { ...inverseBase, type: 'transform-nodes', boundsById }
+    }
+    case 'rotate-nodes': {
+      const rotationById: Record<NodeId, number> = {}
+      for (const id of Object.keys(operation.rotationById)) {
+        const node = before.nodes[id]
+        if (!node) throw new Error(`cannot invert missing node ${id}`)
+        rotationById[id] = node.rotation
+      }
+      return { ...inverseBase, type: 'rotate-nodes', rotationById }
     }
     case 'set-node-property': {
       const node = before.nodes[operation.nodeId]

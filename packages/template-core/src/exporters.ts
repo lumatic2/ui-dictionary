@@ -71,8 +71,18 @@ const style = (node: CanvasNode) =>
     `width:${node.bounds.width}px`,
     `height:${node.bounds.height}px`,
     'box-sizing:border-box',
+    // 회전은 문서 모델이 소유한다 — 산출물이 각도를 잃으면 화면에서만 돌아간 셈이 된다.
+    ...(node.rotation ? [`transform:rotate(${node.rotation}deg)`] : []),
     '',
   ].join(';')
+
+/** SVG 회전 — 중심 좌표를 명시한다. 문서 모델의 회전축(바운딩 박스 중심)과 같은 정의다. */
+function svgRotate(node: CanvasNode): string {
+  if (!node.rotation) return ''
+  const cx = node.bounds.x + node.bounds.width / 2
+  const cy = node.bounds.y + node.bounds.height / 2
+  return ` transform="rotate(${node.rotation} ${cx} ${cy})"`
+}
 
 /** root frame은 컨테이너가 대신하므로 자식 노드만 그린다. */
 const paintableNodes = (project: TemplateProject) =>
@@ -162,17 +172,17 @@ export function exportSvg(project: TemplateProject) {
               : `<tspan x="${node.bounds.x}" dy="${node.textStyle.lineHeight}">${esc(line)}</tspan>`,
           )
           .join('')
-        return `<text ${attrs}>${spans}</text>`
+        return `<text ${attrs}${svgRotate(node)}>${spans}</text>`
       }
       if (node.kind === 'image') {
         const href = esc(assets.get(node.assetId) ?? '')
-        return `<image href="${href}" x="${node.bounds.x}" y="${node.bounds.y}" width="${node.bounds.width}" height="${node.bounds.height}" preserveAspectRatio="xMidYMid slice"/>`
+        return `<image href="${href}" x="${node.bounds.x}" y="${node.bounds.y}" width="${node.bounds.width}" height="${node.bounds.height}" preserveAspectRatio="xMidYMid slice"${svgRotate(node)}/>`
       }
       if (node.kind === 'shape') {
         // 캔버스를 덮으려는 배경은 재단선이 아니라 도련 끝까지 나가야 한다.
         // 재단 오차가 어느 쪽으로 나든 흰 띠가 생기지 않게 하는 게 도련의 목적이다.
         const bounds = coversCanvas(node.bounds, project) ? bleedBox : node.bounds
-        return `<rect x="${bounds.x}" y="${bounds.y}" width="${bounds.width}" height="${bounds.height}" fill="${esc(shapeFill(set, node))}"/>`
+        return `<rect x="${bounds.x}" y="${bounds.y}" width="${bounds.width}" height="${bounds.height}" fill="${esc(shapeFill(set, node))}"${svgRotate(node)}/>`
       }
       return ''
     })

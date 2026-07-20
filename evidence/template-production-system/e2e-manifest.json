@@ -4,7 +4,7 @@
     {
       "format": "business-card",
       "blueprint": "business-card-minimal",
-      "signature": "tpl-ffbfc938",
+      "signature": "tpl-dafec0d8",
       "gridColumns": 3,
       "slotCount": 5,
       "repeatGroups": 0,
@@ -12,8 +12,8 @@
       "exports": [
         {
           "format": "json",
-          "bytes": 6361,
-          "sha256": "fd0406b962c1"
+          "bytes": 6476,
+          "sha256": "44c6a7fee7e3"
         },
         {
           "format": "html",
@@ -31,7 +31,7 @@
     {
       "format": "business-card",
       "blueprint": "business-card-vertical",
-      "signature": "tpl-36a989ba",
+      "signature": "tpl-2303a034",
       "gridColumns": 2,
       "slotCount": 5,
       "repeatGroups": 0,
@@ -39,8 +39,8 @@
       "exports": [
         {
           "format": "json",
-          "bytes": 6395,
-          "sha256": "7ffc3dffa370"
+          "bytes": 6510,
+          "sha256": "80350e4d0f59"
         },
         {
           "format": "html",
@@ -58,7 +58,7 @@
     {
       "format": "product-poster",
       "blueprint": "product-poster-hero",
-      "signature": "tpl-4563d543",
+      "signature": "tpl-4e07fa05",
       "gridColumns": 1,
       "slotCount": 5,
       "repeatGroups": 0,
@@ -66,8 +66,8 @@
       "exports": [
         {
           "format": "json",
-          "bytes": 7211,
-          "sha256": "6576be85eeb5"
+          "bytes": 7349,
+          "sha256": "23a7b055aeef"
         },
         {
           "format": "html",
@@ -85,7 +85,7 @@
     {
       "format": "product-poster",
       "blueprint": "product-poster-editorial",
-      "signature": "tpl-39a2fef1",
+      "signature": "tpl-9c3ddf91",
       "gridColumns": 2,
       "slotCount": 6,
       "repeatGroups": 0,
@@ -93,8 +93,8 @@
       "exports": [
         {
           "format": "json",
-          "bytes": 8217,
-          "sha256": "bf4035aaade2"
+          "bytes": 8378,
+          "sha256": "27151db888b3"
         },
         {
           "format": "html",
@@ -112,7 +112,7 @@
     {
       "format": "product-poster",
       "blueprint": "product-poster-print-a3",
-      "signature": "tpl-21a43873",
+      "signature": "tpl-0edfb779",
       "gridColumns": 1,
       "slotCount": 5,
       "repeatGroups": 0,
@@ -120,8 +120,8 @@
       "exports": [
         {
           "format": "json",
-          "bytes": 7321,
-          "sha256": "1cf4a9cd57c2"
+          "bytes": 7459,
+          "sha256": "8938a155d46f"
         },
         {
           "format": "html",
@@ -139,7 +139,7 @@
     {
       "format": "infographic",
       "blueprint": "infographic-stats",
-      "signature": "tpl-74a3edbb",
+      "signature": "tpl-bb022be7",
       "gridColumns": 1,
       "slotCount": 5,
       "repeatGroups": 0,
@@ -147,8 +147,8 @@
       "exports": [
         {
           "format": "json",
-          "bytes": 7330,
-          "sha256": "76c1a0903ded"
+          "bytes": 7468,
+          "sha256": "372299b81742"
         },
         {
           "format": "html",
@@ -166,7 +166,7 @@
     {
       "format": "infographic",
       "blueprint": "infographic-comparison",
-      "signature": "tpl-fcedbed8",
+      "signature": "tpl-a6a42bba",
       "gridColumns": 3,
       "slotCount": 3,
       "repeatGroups": 1,
@@ -174,8 +174,8 @@
       "exports": [
         {
           "format": "json",
-          "bytes": 11473,
-          "sha256": "2e8d8e76ad0c"
+          "bytes": 11703,
+          "sha256": "1b7f75b20907"
         },
         {
           "format": "html",
@@ -193,7 +193,7 @@
     {
       "format": "infographic",
       "blueprint": "infographic-print-a4",
-      "signature": "tpl-a3625fdf",
+      "signature": "tpl-b8bc0f01",
       "gridColumns": 1,
       "slotCount": 5,
       "repeatGroups": 0,
@@ -201,8 +201,8 @@
       "exports": [
         {
           "format": "json",
-          "bytes": 7397,
-          "sha256": "378da35037ed"
+          "bytes": 7535,
+          "sha256": "423a1b06e91d"
         },
         {
           "format": "html",

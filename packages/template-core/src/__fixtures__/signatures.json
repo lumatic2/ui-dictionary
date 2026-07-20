@@ -21,6 +21,18 @@
         "product-poster-hero": "tpl-40154e67",
         "infographic-stats": "tpl-c1cb1877"
       }
+    },
+    {
+      "at": "2026-07-20",
+      "milestone": "EU1 step-2",
+      "why": "노드가 회전 각도(rotation)를 갖게 됐다. 회전을 렌더 층 CSS transform으로만 두면 내보내기가 각도를 잃어 화면에서만 돌아간다 — 그래서 문서 모델에 필수 필드로 넣었다. 서명은 정본 JSON 전체를 해싱하므로 필드 추가만으로 값이 바뀐다. 레이아웃·내용·각도값(전부 0)은 그대로다.",
+      "from": {
+        "business-card-minimal": "tpl-767d040e",
+        "product-poster-hero": "tpl-09040c7f",
+        "infographic-stats": "tpl-5a75b937",
+        "product-poster-print-a3": "tpl-c8369959",
+        "infographic-print-a4": "tpl-8525ebcf"
+      }
     }
   ],
   "content": {
@@ -37,10 +49,10 @@
     "source": "Askewly fixed fixture"
   },
   "signatures": {
-    "business-card-minimal": "tpl-767d040e",
-    "product-poster-hero": "tpl-09040c7f",
-    "infographic-stats": "tpl-5a75b937",
-    "product-poster-print-a3": "tpl-c8369959",
-    "infographic-print-a4": "tpl-8525ebcf"
+    "business-card-minimal": "tpl-e514ee66",
+    "product-poster-hero": "tpl-399e7171",
+    "infographic-stats": "tpl-0349ae73",
+    "product-poster-print-a3": "tpl-141345bf",
+    "infographic-print-a4": "tpl-4af715b1"
   }
 }

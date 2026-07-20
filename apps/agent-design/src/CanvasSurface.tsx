@@ -21,6 +21,8 @@ import {
   type CanvasNode,
   type CanvasOperation,
   type ResizeHandle,
+  normalizeRotation,
+  rotationFromPointer,
 } from '@askewly/canvas-core'
 import { EditorPlane } from './EditorPlane'
 import type { EditorPlaneFailure } from './editorPlaneRuntime'
@@ -46,8 +48,9 @@ function sourceRef(node: CanvasNode) {
  * 도형은 `tokenBindings.fill`이 있으면 그것이 이긴다. 컴파일러가 넣는 `node.fill`
  * 리터럴은 토큰이 없는 자유 도형용 폴백으로만 남는다.
  */
-function nodeStyle(node: CanvasNode, tokenSetId: string, previewBounds?: CanvasNode['bounds']): React.CSSProperties {
+function nodeStyle(node: CanvasNode, tokenSetId: string, previewBounds?: CanvasNode['bounds'], previewRotation?: number): React.CSSProperties {
   const bounds = previewBounds ?? node.bounds
+  const rotation = previewRotation ?? node.rotation
   const tokens = documentTokens(tokenSetId)
 
   // 규칙 하나: **바인딩이 있으면 그 바인딩만이 값을 정한다.** 안 풀리면 칠하지 않는다.
@@ -70,6 +73,8 @@ function nodeStyle(node: CanvasNode, tokenSetId: string, previewBounds?: CanvasN
     width: bounds.width,
     height: bounds.height,
   }
+  // 회전축은 바운딩 박스 중심 — 문서 모델의 정의와 같은 축을 쓴다.
+  if (rotation) style.transform = `rotate(${rotation}deg)`
   if (background) style.background = background
   if (color) style.color = color
   if (fontFamily) style.fontFamily = fontFamily
@@ -102,6 +107,8 @@ interface CanvasNodeElementProps {
   tokenSetId: string
   assets: CanvasDocument['assets']
   previewBounds?: CanvasNode['bounds']
+  /** 회전 드래그 중인 각도 — 놓기 전까지는 문서를 건드리지 않는다. */
+  previewRotation?: number
   onOperation?: (operation: CanvasOperation) => void
 }
 
@@ -131,7 +138,7 @@ function TextNodeElement({ node, shared, onOperation }: { node: Extract<CanvasNo
   />
 }
 
-const CanvasNodeElement = memo(function CanvasNodeElement({ node, selected, dropTarget, primary, selectionScope, tokenSetId, assets, previewBounds, onOperation }: CanvasNodeElementProps) {
+const CanvasNodeElement = memo(function CanvasNodeElement({ node, selected, dropTarget, primary, selectionScope, tokenSetId, assets, previewBounds, previewRotation, onOperation }: CanvasNodeElementProps) {
   const shared = {
     'data-canvas-id': node.id,
     'data-parent-id': node.parentId ?? '',
@@ -146,7 +153,7 @@ const CanvasNodeElement = memo(function CanvasNodeElement({ node, selected, drop
     tabIndex: primary ? 0 : -1,
     className: `canvas-node node-${node.kind}`,
     'data-token-unresolved': unresolvedBindings(node, tokenSetId) ? '' : undefined,
-    style: nodeStyle(node, tokenSetId, previewBounds),
+    style: nodeStyle(node, tokenSetId, previewBounds, previewRotation),
   }
   if (node.kind === 'text') {
     return <TextNodeElement node={node} shared={shared} onOperation={onOperation} />
@@ -176,8 +183,16 @@ export function CanvasSurface({ document, editorPlaneFailure = null, onOperation
   const dragStart = useRef<{ x: number; y: number } | null>(null)
   const structureDragId = useRef<string | null>(null)
   const [marquee, setMarquee] = useState<ReturnType<typeof normalizeRect> | null>(null)
-  const gestureRef = useRef<{ start: { x: number; y: number }; before: BoundsById; kind: 'move' | 'resize'; handle?: ResizeHandle } | null>(null)
+  const gestureRef = useRef<{
+    start: { x: number; y: number }
+    before: BoundsById
+    kind: 'move' | 'resize' | 'rotate'
+    handle?: ResizeHandle
+    /** 회전 시작 순간의 상태 — 잡은 위치가 각도를 튀게 하지 않도록 기준으로 삼는다. */
+    grab?: { center: { x: number; y: number }; pointer: { x: number; y: number }; rotation: number }
+  } | null>(null)
   const [previewBounds, setPreviewBounds] = useState<BoundsById>({})
+  const [previewRotation, setPreviewRotation] = useState<number | null>(null)
   const [guides, setGuides] = useState<AlignmentGuide[]>([])
   const [dropTargetId, setDropTargetId] = useState<string | null>(null)
   const spaceHeld = useRef(false)
@@ -186,7 +201,7 @@ export function CanvasSurface({ document, editorPlaneFailure = null, onOperation
   const selectedIds = useMemo(() => new Set(document.selection), [document.selection])
   const orderedNodes = useMemo(() => paintOrder(document).map((id) => document.nodes[id]), [document])
   const primaryId = document.selection.at(-1)
-  const nodeElements = useMemo(() => orderedNodes.map((node) => <CanvasNodeElement key={node.id} node={node} selected={selectedIds.has(node.id)} primary={primaryId === node.id} selectionScope={document.selection.length > 1 ? 'multi' : 'single'} dropTarget={dropTargetId === node.id} tokenSetId={document.tokenSetId} assets={document.assets} previewBounds={previewBounds[node.id]} onOperation={onOperation} />), [document.assets, document.tokenSetId, dropTargetId, onOperation, orderedNodes, previewBounds, primaryId, selectedIds])
+  const nodeElements = useMemo(() => orderedNodes.map((node) => <CanvasNodeElement key={node.id} node={node} selected={selectedIds.has(node.id)} primary={primaryId === node.id} selectionScope={document.selection.length > 1 ? 'multi' : 'single'} dropTarget={dropTargetId === node.id} tokenSetId={document.tokenSetId} assets={document.assets} previewBounds={previewBounds[node.id]} previewRotation={primaryId === node.id && previewRotation !== null ? previewRotation : undefined} onOperation={onOperation} />), [document.assets, document.tokenSetId, dropTargetId, onOperation, orderedNodes, previewBounds, primaryId, selectedIds])
   const activePan = panPreview ?? document.viewport.pan
   const transform = `translate(${activePan.x}px, ${activePan.y}px) scale(${document.viewport.zoom})`
   const canonicalSelection = Object.keys(previewBounds).length ? previewSelectionBounds(document, previewBounds) : selectionBounds(document)
@@ -251,12 +266,30 @@ export function CanvasSurface({ document, editorPlaneFailure = null, onOperation
     if (next) commitSelection([next])
   }, [commitSelection, document, onOperation])
 
-  const beginGesture = useCallback((event: React.PointerEvent, kind: 'move' | 'resize', handle?: ResizeHandle) => {
+  const beginGesture = useCallback((event: React.PointerEvent, kind: 'move' | 'resize' | 'rotate', handle?: ResizeHandle) => {
     const before = captureBounds(document)
     if (!Object.keys(before).length) return
     event.preventDefault()
     event.stopPropagation()
-    gestureRef.current = { start: { x: event.clientX, y: event.clientY }, before, kind, handle }
+    let grab: { center: { x: number; y: number }; pointer: { x: number; y: number }; rotation: number } | undefined
+    if (kind === 'rotate') {
+      const id = document.selection.at(-1)
+      const node = id ? document.nodes[id] : undefined
+      if (!node) return
+      // 회전축을 **화면에 있는 선택 상자**에서 직접 읽는다.
+      // 문서 좌표를 zoom·pan으로 환산하면 뷰포트 요소가 창 안에서 밀려 있는 만큼
+      // 중심이 어긋난다 — 브라우저 실조작에서 90° 드래그가 8°로 나와 적발됐다.
+      const box = event.currentTarget.parentElement?.getBoundingClientRect()
+      if (!box) return
+      grab = {
+        // `left`/`top`을 쓴다 — 일부 DOM 구현의 DOMRect에는 `x`/`y`가 없어 중심이 NaN이 된다.
+        center: { x: box.left + box.width / 2, y: box.top + box.height / 2 },
+        pointer: { x: event.clientX, y: event.clientY },
+        rotation: node.rotation,
+      }
+      setPreviewRotation(node.rotation)
+    }
+    gestureRef.current = { start: { x: event.clientX, y: event.clientY }, before, kind, handle, grab }
     setPreviewBounds(before)
     if (event.isTrusted) event.currentTarget.setPointerCapture?.(event.pointerId)
   }, [document])
@@ -264,6 +297,15 @@ export function CanvasSurface({ document, editorPlaneFailure = null, onOperation
   const updateGesture = useCallback((event: React.PointerEvent) => {
     const gesture = gestureRef.current
     if (!gesture) return
+    if (gesture.kind === 'rotate' && gesture.grab) {
+      // 중심·포인터가 둘 다 화면 좌표라 zoom·pan·요소 오프셋이 전부 상쇄된다.
+      setPreviewRotation(normalizeRotation(rotationFromPointer(
+        gesture.grab.center,
+        { x: event.clientX, y: event.clientY },
+        { pointer: gesture.grab.pointer, rotation: gesture.grab.rotation },
+      )))
+      return
+    }
     const delta = { x: event.clientX - gesture.start.x, y: event.clientY - gesture.start.y }
     const next = gesture.kind === 'move'
       ? moveBounds(gesture.before, delta, document.viewport.zoom)
@@ -276,12 +318,22 @@ export function CanvasSurface({ document, editorPlaneFailure = null, onOperation
     const gesture = gestureRef.current
     if (!gesture) return
     gestureRef.current = null
+    if (gesture.kind === 'rotate') {
+      const id = document.selection.at(-1)
+      if (id && previewRotation !== null && previewRotation !== document.nodes[id]?.rotation) {
+        onOperation?.({ type: 'rotate-nodes', id: `rotate-${performance.now()}`, at: new Date().toISOString(), rotationById: { [id]: previewRotation } })
+      }
+      setPreviewRotation(null)
+      setPreviewBounds({})
+      setGuides([])
+      return
+    }
     if (boundsChanged(gesture.before, previewBounds)) {
       onOperation?.({ type: 'transform-nodes', id: `transform-${performance.now()}`, at: new Date().toISOString(), boundsById: previewBounds })
     }
     setPreviewBounds({})
     setGuides([])
-  }, [onOperation, previewBounds])
+  }, [document, onOperation, previewBounds, previewRotation])
 
   useEffect(() => {
     const primary = document.selection.at(-1)
@@ -428,6 +480,13 @@ export function CanvasSurface({ document, editorPlaneFailure = null, onOperation
         {document.selection.length > 1 ? <span className="selection-count" data-testid="selection-count-badge">
           {document.selection.length}개 선택
         </span> : null}
+        {document.selection.length === 1 ? <button
+          type="button"
+          className="rotate-handle"
+          data-testid="rotate-handle"
+          aria-label="Rotate selection"
+          onPointerDown={(event) => beginGesture(event, 'rotate')}
+        /> : null}
         {(['nw', 'n', 'ne', 'e', 'se', 's', 'sw', 'w'] as ResizeHandle[]).map((handle) => <button
           key={handle}
           type="button"

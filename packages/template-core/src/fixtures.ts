@@ -17,6 +17,7 @@ const base = (id: string, parentId: string | null, childIds: string[], bounds: B
   parentId,
   childIds,
   bounds,
+  rotation: 0,
   layout,
   visible: true,
   locked: false,

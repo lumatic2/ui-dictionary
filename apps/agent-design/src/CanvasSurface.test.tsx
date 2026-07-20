@@ -1,5 +1,5 @@
 import { cleanup, fireEvent, render, waitFor } from '@testing-library/react'
-import { applyOperation, createDocumentFixture, firstComponent } from '@askewly/canvas-core'
+import { applyOperation, createDocumentFixture, firstComponent, type CanvasOperation } from '@askewly/canvas-core'
 import { afterEach, describe, expect, it } from 'vitest'
 import { CanvasSurface } from './CanvasSurface'
 import { editorTokenMaps, FALLBACK_BACKGROUND_TOKEN } from './editorTokens'
@@ -118,5 +118,38 @@ describe('조작 종류가 구분되는 선택 (EU1)', () => {
     const view = render(<CanvasSurface document={createDocumentFixture(1000)} />)
     const selected = view.container.querySelector('[data-selection-state="selected"]')
     expect(selected?.getAttribute('data-selection-scope')).toBe('single')
+  })
+})
+
+/** jsdom에 PointerEvent가 없어 fireEvent.pointer*는 clientX/Y를 버린다. */
+function pointer(element: Element, type: string, clientX: number, clientY: number) {
+  fireEvent(element, new MouseEvent(type, { bubbles: true, clientX, clientY }))
+}
+
+describe('회전이 문서까지 간다 (EU1 step-2)', () => {
+  it('회전 드래그가 rotate-nodes 연산을 커밋한다', () => {
+    const operations: CanvasOperation[] = []
+    const view = render(<CanvasSurface document={createDocumentFixture(1000)} onOperation={(op) => operations.push(op)} />)
+
+    // jsdom에서 선택 상자 rect는 0,0이므로 중심이 (0,0)이다.
+    // 오른쪽(0°)에서 아래(90°)로 끌면 +90°가 나와야 한다.
+    // jsdom에는 PointerEvent가 없어 fireEvent.pointerDown이 좌표를 잃는다.
+    // 좌표가 살아 있는 MouseEvent를 pointer 타입으로 보낸다 — 회전은 좌표가 전부인 조작이다.
+    pointer(view.getByTestId('rotate-handle'), 'pointerdown', 100, 0)
+    pointer(view.getByTestId('canvas-viewport'), 'pointermove', 0, 100)
+    pointer(view.getByTestId('canvas-viewport'), 'pointerup', 0, 100)
+
+    const rotate = operations.find((op) => op.type === 'rotate-nodes')
+    expect(rotate, '회전을 놓았는데 문서 연산이 나오지 않았다 — 렌더에서만 도는 상태다').toBeDefined()
+    const rotation = Object.values((rotate as { rotationById: Record<string, number> }).rotationById)[0]
+    expect(rotation).toBeCloseTo(90, 3)
+  })
+
+  it('각도가 그대로면 연산을 만들지 않는다', () => {
+    const operations: CanvasOperation[] = []
+    const view = render(<CanvasSurface document={createDocumentFixture(1000)} onOperation={(op) => operations.push(op)} />)
+    pointer(view.getByTestId('rotate-handle'), 'pointerdown', 100, 0)
+    pointer(view.getByTestId('canvas-viewport'), 'pointerup', 100, 0)
+    expect(operations.filter((op) => op.type === 'rotate-nodes')).toHaveLength(0)
   })
 })

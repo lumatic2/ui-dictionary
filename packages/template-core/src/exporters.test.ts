@@ -199,3 +199,37 @@ describe('도련과 재단 표시 (TH11 step-3)', () => {
     expect(svg).not.toContain('<line ')
   })
 })
+
+describe('회전이 산출물까지 간다 (EU1 step-2)', () => {
+  const rotated = () => {
+    const project = createTemplateProject({ blueprintId: 'business-card-minimal' })
+    const id = 'business-card-minimal:name'
+    project.scene.nodes[id] = { ...project.scene.nodes[id], rotation: 45 }
+    return { project, node: project.scene.nodes[id] }
+  }
+
+  it('SVG가 각도와 회전축을 함께 낸다', () => {
+    const { project, node } = rotated()
+    const cx = node.bounds.x + node.bounds.width / 2
+    const cy = node.bounds.y + node.bounds.height / 2
+    // 기대값을 노드 bounds에서 계산한다 — exporter 출력을 되읽지 않는다.
+    expect(exportSvg(project)).toContain(`transform="rotate(45 ${cx} ${cy})"`)
+  })
+
+  it('HTML도 같은 각도를 낸다', () => {
+    const { project } = rotated()
+    expect(exportHtml(project)).toContain('transform:rotate(45deg)')
+  })
+
+  it('각도가 0이면 transform을 붙이지 않는다', () => {
+    const project = createTemplateProject({ blueprintId: 'business-card-minimal' })
+    expect(exportSvg(project)).not.toContain('rotate(')
+    expect(exportHtml(project)).not.toContain('transform:rotate')
+  })
+
+  it('JSON 왕복이 각도를 보존한다', () => {
+    const { project } = rotated()
+    const restored = JSON.parse(exportJson(project))
+    expect(restored.scene.nodes['business-card-minimal:name'].rotation).toBe(45)
+  })
+})

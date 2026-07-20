@@ -1,7 +1,7 @@
 import { describe, expect, it } from 'vitest'
 import { createDocumentFixture } from './fixtures.js'
-import { alignmentGuides, boundsChanged, captureBounds, moveBounds, resizeBounds, resizeRect } from './manipulation.js'
-import { applyOperation, commitOperation, createHistory, redo, undo } from './operations.js'
+import { alignmentGuides, boundsChanged, captureBounds, moveBounds, rectCenter, resizeBounds, resizeRect, rotationFromPointer } from './manipulation.js'
+import { applyOperation, commitOperation, createHistory, invertOperation, normalizeRotation, redo, undo } from './operations.js'
 
 const at = '2026-07-10T09:40:00.000Z'
 
@@ -49,5 +49,60 @@ describe('bounds manipulation transaction', () => {
     expect(boundsChanged(captured, structuredClone(captured))).toBe(false)
     document.nodes['node-00003'].bounds.x = document.nodes['node-00002'].bounds.x + 2
     expect(alignmentGuides(document, captured).some((guide) => guide.axis === 'x')).toBe(true)
+  })
+})
+
+describe('회전 (EU1)', () => {
+  const center = { x: 100, y: 100 }
+
+  it('중심 기준 포인터 방향이 각도가 된다', () => {
+    // 오른쪽(0°)에서 잡아 아래쪽(90°)으로 끌면 90° 돈다.
+    const rotation = rotationFromPointer(center, { x: 100, y: 200 }, { pointer: { x: 200, y: 100 }, rotation: 0 })
+    expect(rotation).toBeCloseTo(90, 5)
+  })
+
+  it('잡은 지점이 어디든 그 순간의 각도가 기준이 된다', () => {
+    // 위쪽에서 잡아 오른쪽으로 끌면 +90° — 잡은 위치 자체는 각도를 튀게 하지 않는다.
+    const rotation = rotationFromPointer(center, { x: 200, y: 100 }, { pointer: { x: 100, y: 0 }, rotation: 30 })
+    expect(rotation).toBeCloseTo(120, 5)
+  })
+
+  it('회전축은 바운딩 박스 중심이다', () => {
+    expect(rectCenter({ x: 10, y: 20, width: 100, height: 40 })).toEqual({ x: 60, y: 40 })
+  })
+
+  it('각도를 [0,360)으로 접는다', () => {
+    expect(normalizeRotation(370)).toBeCloseTo(10, 5)
+    expect(normalizeRotation(-90)).toBeCloseTo(270, 5)
+    expect(normalizeRotation(0)).toBe(0)
+    expect(normalizeRotation(-0)).toBe(0)
+  })
+})
+
+describe('회전 연산 (EU1)', () => {
+  it('각도만 바꾸고 bounds는 건드리지 않는다', () => {
+    const document = createDocumentFixture(1000)
+    const id = document.selection[0]
+    const before = structuredClone(document.nodes[id].bounds)
+    const next = applyOperation(document, { id: 'r1', at: 1, type: 'rotate-nodes', rotationById: { [id]: 45 } })
+    expect(next.nodes[id].rotation).toBe(45)
+    expect(next.nodes[id].bounds).toEqual(before)
+  })
+
+  it('되돌리면 이전 각도로 돌아온다', () => {
+    const document = createDocumentFixture(1000)
+    const id = document.selection[0]
+    const operation = { id: 'r2', at: 1, type: 'rotate-nodes' as const, rotationById: { [id]: 30 } }
+    const rotated = applyOperation(document, operation)
+    const inverse = invertOperation(document, operation)
+    expect(applyOperation(rotated, inverse).nodes[id].rotation).toBe(0)
+  })
+
+  it('잠긴 노드는 회전하지 않는다', () => {
+    const document = createDocumentFixture(1000)
+    const id = document.selection[0]
+    const locked = { ...document, nodes: { ...document.nodes, [id]: { ...document.nodes[id], locked: true } } }
+    expect(() => applyOperation(locked, { id: 'r3', at: 1, type: 'rotate-nodes', rotationById: { [id]: 10 } }))
+      .toThrowError(/locked/)
   })
 })

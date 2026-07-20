@@ -97,3 +97,24 @@ export function previewSelectionBounds(document: CanvasDocument, preview: Bounds
   if (!Object.keys(preview).length) return selectionBounds(document)
   return boundsUnion(preview)
 }
+
+/**
+ * 포인터 위치로 회전 각도를 구한다.
+ *
+ * 회전은 델타(이동량)가 아니라 **중심에서 포인터로 향하는 각도**로 정해진다 —
+ * 드래그를 시작한 지점이 어디였든 손이 가리키는 방향이 곧 각도여야 손에 붙는다.
+ * `startRotation`은 잡기 시작한 순간의 각도라, 핸들을 잡는 위치가 각도를 튀게 하지 않는다.
+ */
+export function rotationFromPointer(
+  center: CanvasPoint,
+  pointer: CanvasPoint,
+  grab: { pointer: CanvasPoint; rotation: number },
+): number {
+  const angle = (point: CanvasPoint) => (Math.atan2(point.y - center.y, point.x - center.x) * 180) / Math.PI
+  return grab.rotation + (angle(pointer) - angle(grab.pointer))
+}
+
+/** 바운딩 박스의 중심 — 회전축이다. */
+export function rectCenter(bounds: CanvasRect): CanvasPoint {
+  return { x: bounds.x + bounds.width / 2, y: bounds.y + bounds.height / 2 }
+}
