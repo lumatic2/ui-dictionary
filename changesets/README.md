@@ -190,3 +190,4 @@
 | 188 | 20260720-th6-commission-run | 2026-07-20 | TH6 step 1: real askewly business-card commission through the whole loop (live imagegen, studio edit, 3-format export) — found 3 defects including a non-self-contained SVG that renders artwork-less | 3/3 | complete |
 | 189 | 20260720-self-contained-assets | 2026-07-20 | TH12 step 1: asset manifests carry data URIs instead of file paths (TH6 caught exported SVGs rendering artwork-less), 4MB ceiling with ASSET_TOO_LARGE | 3/3 | complete |
 | 190 | 20260720-no-external-references | 2026-07-20 | TH12 step 2: gate derives 'no external references' from the manifest; the same <img> render path that produced an artwork-less card now shows the image | 3/3 | complete |
+| 191 | 20260720-th6-horizon-close | 2026-07-20 | TH6 step 2: close audit against 9 criteria — 8 pass, 1 fails (editor usability), so the plan's own rule blocked a close verdict; size/volume/premortem retrospectives recorded | 3/3 | complete |

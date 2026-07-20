@@ -2714,8 +2714,8 @@
       "status": "active",
       "plan_path": "plans/2026-07-20-th6-real-commission.md",
       "changeset_path": "changesets/20260720-th6-commission-run",
-      "next_step": "step-2",
-      "current_step": "step-2",
+      "next_step": null,
+      "current_step": null,
       "steps": [
         {
           "id": "step-1",
@@ -2725,7 +2725,7 @@
         {
           "id": "step-2",
           "label": "step-2 — close-audit",
-          "status": "pending"
+          "status": "completed"
         }
       ],
       "execution_mode": "continuous",
@@ -2745,7 +2745,7 @@
       ],
       "stop_reason": "decision_required",
       "stop_detail": {
-        "what": "편집기 UI 재설계 범위 — 사람 확인 게이트에서 편집기 판단 불가 판정, horizon close 판정에 영향",
+        "what": "horizon close 여부 — 닫는 기준 7(실사용: 편집기) 미달. 계획 규칙상 에이전트가 close 판정을 내리지 않는다",
         "asked_at": "2026-07-20"
       },
       "session_ids": [
