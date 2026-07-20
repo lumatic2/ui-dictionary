@@ -36,6 +36,34 @@ export function registerTokenVocabulary(lookup: TokenVocabularyLookup | null): v
   tokenVocabulary = lookup
 }
 
+/**
+ * 리터럴 색으로 쓸 수 있는 값인가 — **화면에 실제로 칠해질 수 있는 것만** 통과시킨다.
+ *
+ * 독립 검증(refuted, 2026-07-21): 형식 검사가 "빈 문자열 아님" 하나뿐이라
+ * `javascript:alert(1)`·`#zzz`·10만 자 문자열이 전부 저장됐다. 스크립트로 실행되지는
+ * 않지만(React가 CSSOM 속성 대입을 쓰므로 파싱 실패 값은 조용히 버려진다) **문서에는
+ * 저장되고 화면은 옛 색 그대로 남는다** — 문서와 화면이 어긋난 채 undo 이력에까지 들어간다.
+ *
+ * 허용: `#RGB[A]`·`#RRGGBB[AA]`, 그리고 색 함수(rgb·hsl·oklch 등)의 괄호 안이
+ * 숫자·단위·구분자로만 이뤄진 것. `url(...)`·`javascript:`·`expression(...)`은 걸린다.
+ */
+const hexColor = /^#(?:[0-9a-fA-F]{3,4}|[0-9a-fA-F]{6}|[0-9a-fA-F]{8})$/
+const colorFunctions = new Set(['rgb', 'rgba', 'hsl', 'hsla', 'hwb', 'lab', 'lch', 'oklab', 'oklch', 'color'])
+const colorFunctionCall = /^([a-z]+)\(([^()]*)\)$/
+const colorFunctionArgs = /^[0-9a-zA-Z.%,\s/+-]*$/
+
+export function validateLiteralColor(value: unknown): string | null {
+  if (typeof value !== 'string') return '색 값은 문자열이어야 합니다'
+  const trimmed = value.trim()
+  if (!trimmed) return '색 값이 비어 있습니다'
+  // 길이 상한 — 파싱 실패 값이 문서를 부풀리는 걸 막는다.
+  if (trimmed.length > 64) return '색 값이 너무 깁니다'
+  if (hexColor.test(trimmed)) return null
+  const call = colorFunctionCall.exec(trimmed)
+  if (call && colorFunctions.has(call[1]) && colorFunctionArgs.test(call[2])) return null
+  return `'${trimmed}'은(는) 쓸 수 있는 색이 아닙니다`
+}
+
 const layoutModes = new Set<LayoutMode>(['absolute', 'horizontal', 'vertical'])
 const sizingModes = new Set<SizingMode>(['fixed', 'hug', 'fill'])
 const safeKey = /^[a-zA-Z][a-zA-Z0-9._-]*$/

@@ -1,5 +1,5 @@
 import type { CanvasDocument, CanvasNode, CanvasRect, NodeId } from './types.js'
-import { applyNodeProperty, readNodeProperty, validateTokenBinding, validateTokenMode, type NodePropertyEdit } from './properties.js'
+import { applyNodeProperty, readNodeProperty, validateLiteralColor, validateTokenBinding, validateTokenMode, type NodePropertyEdit } from './properties.js'
 import { assertValidDocument } from './validation.js'
 
 interface OperationBase {
@@ -183,6 +183,31 @@ function assertTokenBindingDelta(before: CanvasDocument, next: CanvasDocument) {
   }
 }
 
+/**
+ * 이 연산이 **새로 넣거나 바꾼** 리터럴 색만 검사한다 — 그리고 두 출처가 겹치지 않는지 본다.
+ *
+ * `assertTokenBindingDelta`와 같은 자리에 같은 이유로 있다. `detach-token-binding` 하나에만
+ * 검사를 두었더니 `update-node.patch`와 `create-node`가 그대로 통과했다
+ * (독립 검증 refuted, 2026-07-21) — ECT1에서 토큰에 대해 똑같이 당한 실패를
+ * **새 필드에 되풀이했다.** 경로마다 막지 않고 길목에서 한 번 본다.
+ */
+function assertLiteralColorDelta(before: CanvasDocument, next: CanvasDocument) {
+  for (const [nodeId, node] of Object.entries(next.nodes)) {
+    const literals = node.literalColors
+    if (!literals) continue
+    const previous = before.nodes[nodeId]?.literalColors
+    for (const [key, value] of Object.entries(literals)) {
+      // 한 키에 바인딩과 리터럴이 같이 살면 리터럴은 화면에서 안 보이는 죽은 값이 된다.
+      if (key in node.tokenBindings) {
+        throw new Error(`${nodeId}.${key}: 토큰 바인딩과 원시 색이 동시에 있을 수 없습니다`)
+      }
+      if (previous && previous[key] === value) continue // 손대지 않은 기존 값
+      const error = validateLiteralColor(value)
+      if (error) throw new Error(`${nodeId}.literalColors.${key}: ${error}`)
+    }
+  }
+}
+
 function mutateOperation(next: CanvasDocument, operation: CanvasOperation) {
   const revisionBefore = next.revision
   switch (operation.type) {
@@ -217,7 +242,8 @@ function mutateOperation(next: CanvasDocument, operation: CanvasOperation) {
     case 'detach-token-binding': {
       const node = next.nodes[operation.nodeId]
       if (!node) throw new Error(`missing node ${operation.nodeId}`)
-      if (!operation.literal) throw new Error('detach requires the colour it is detaching to')
+      const literalError = validateLiteralColor(operation.literal)
+      if (literalError) throw new Error(`${operation.nodeId}.${operation.key}: ${literalError}`)
       delete node.tokenBindings[operation.key]
       node.literalColors = { ...node.literalColors, [operation.key]: operation.literal }
       break
@@ -325,6 +351,7 @@ export function applyOperation(document: CanvasDocument, operation: CanvasOperat
   const next = structuredClone(document)
   mutateOperation(next, operation)
   assertTokenBindingDelta(document, next)
+  assertLiteralColorDelta(document, next)
   return assertValidDocument(next)
 }
 
@@ -332,6 +359,7 @@ export function replayOperations(initial: CanvasDocument, operations: CanvasOper
   const next = structuredClone(initial)
   for (const operation of operations) mutateOperation(next, operation)
   assertTokenBindingDelta(initial, next)
+  assertLiteralColorDelta(initial, next)
   return assertValidDocument(next)
 }
 

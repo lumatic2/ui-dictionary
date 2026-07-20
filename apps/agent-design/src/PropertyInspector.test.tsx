@@ -630,3 +630,25 @@ describe('벗어난 색을 고치고 되묶는다 (ECT3 step-3)', () => {
     expect(view.getByTestId('color-swatch-background').className).toContain('color-swatch-literal')
   })
 })
+
+describe('쓸 수 없는 색은 커밋 전에 막힌다 (ECT3 검증 후속)', () => {
+  it('나쁜 값은 연산을 만들지 않고 사유를 화면에 낸다', () => {
+    const base = createDocumentFixture(1000)
+    const id = base.selection[0]
+    const document = structuredClone(base)
+    delete document.nodes[id].tokenBindings.background
+    document.nodes[id].literalColors = { background: '#123456' }
+    const operations: CanvasOperation[] = []
+    const view = render(<PropertyInspector
+      document={document} onOperation={(op) => operations.push(op)} bridgeConnected={false} onMaterialize={() => {}}
+    />)
+    const input = view.getByTestId('literal-input-background')
+    fireEvent.change(input, { target: { value: 'javascript:alert(1)' } })
+    fireEvent.keyDown(input, { key: 'Enter' })
+
+    expect(operations).toHaveLength(0)
+    expect(view.getByTestId('property-error').textContent).toContain('쓸 수 있는 색이 아닙니다')
+    // 입력은 원래 값으로 되돌아온다 — 안 먹은 값이 남아 있으면 먹은 줄 안다.
+    expect((input as HTMLInputElement).value).toBe('#123456')
+  })
+})

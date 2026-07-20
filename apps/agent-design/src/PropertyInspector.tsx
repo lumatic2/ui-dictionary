@@ -1,6 +1,7 @@
 import { useEffect, useRef, useState, type KeyboardEvent as ReactKeyboardEvent, type ReactNode } from 'react'
 import {
   propertyFieldsForNode,
+  validateLiteralColor,
   validateNodePropertyEdit,
   validateTokenMode,
   type CanvasDocument,
@@ -388,12 +389,13 @@ function UnboundColorField({ bindingKey, tokenSetId, commit }: {
  * horizon 프리모템 2가 이 결정의 리스크를 맡는다 — 원시 색이 편한 기본 습관이 되면
  * 토큰 SSOT라는 논지가 안에서부터 무너진다. 표시 없는 detach는 만들지 않는다.
  */
-function LiteralColorField({ bindingKey, value, tokenSetId, onRebind, onEdit }: {
+function LiteralColorField({ bindingKey, value, tokenSetId, onRebind, onEdit, onError }: {
   bindingKey: string
   value: string
   tokenSetId: string
   onRebind: (name: string) => void
   onEdit: (literal: string) => void
+  onError: (message: string) => void
 }) {
   const label = COLOR_BINDING_LABELS[bindingKey] ?? bindingKey
   const { open, setOpen, close, triggerRef } = usePickerTrigger()
@@ -407,6 +409,14 @@ function LiteralColorField({ bindingKey, value, tokenSetId, onRebind, onEdit }: 
   const commitDraft = () => {
     const next = draft.trim()
     if (!next || next === value) { setDraft(value); return }
+    /*
+     * 쓸 수 없는 색은 커밋 전에 막고 **사유를 화면에 낸다.**
+     * 검증만 통과시키면 문서에는 저장되고 화면은 옛 색 그대로 남는다 —
+     * 문서와 화면이 어긋난 채 undo 이력에까지 들어간다(독립 검증 refuted, 2026-07-21).
+     */
+    const error = validateLiteralColor(next)
+    if (error) { onError(error); setDraft(value); return }
+    onError('')
     onEdit(next)
   }
 
@@ -576,6 +586,7 @@ export function PropertyInspector({ document, onOperation, bridgeConnected, onMa
               tokenSetId={document.tokenSetId}
               onRebind={(name) => onOperation({ ...operationId('attach'), type: 'attach-token-binding', nodeId: node.id, key, name })}
               onEdit={(literal) => onOperation({ ...operationId('literal'), type: 'detach-token-binding', nodeId: node.id, key, literal })}
+              onError={setError}
             />
             : <UnboundColorField
               key={`unbound-${key}`}

@@ -3,7 +3,7 @@ import { createDocumentFixture, firstComponent } from './fixtures.js'
 import type { CanvasDocument } from './types.js'
 import { applyOperation, commitOperation, createHistory, invertOperation, redo, undo } from './operations.js'
 import { recoverSnapshot, serializeSnapshot } from './persistence.js'
-import { propertyFieldsForNode, registerTokenVocabulary, validateNodePropertyEdit } from './properties.js'
+import { propertyFieldsForNode, registerTokenVocabulary, validateLiteralColor, validateNodePropertyEdit } from './properties.js'
 
 const at = '2026-07-10T09:47:00.000Z'
 
@@ -290,7 +290,7 @@ describe('토큰에서 벗어나고 되돌아온다 (ECT3 step-2)', () => {
   it('색 없는 detach는 거부한다 — 색을 잃어버리는 detach는 없다', () => {
     const document = createDocumentFixture(1000)
     const id = firstComponent(document).id
-    expect(() => applyOperation(document, detach(id, 'background', ''))).toThrow(/detaching to/)
+    expect(() => applyOperation(document, detach(id, 'background', ''))).toThrow(/색 값이 비어 있습니다/)
   })
 
   it('다시 묶으면 리터럴이 사라진다 — 두 출처가 같이 남지 않는다', () => {
@@ -445,5 +445,86 @@ describe('색 출처 5단계 왕복 (ECT3 step-3)', () => {
       id: 'd', at, type: 'detach-token-binding', nodeId: id, key: 'background', literal: '#444444',
     })
     expect(detached.nodes[id].literalColors?.background).toBe('#444444')
+  })
+})
+
+/**
+ * ECT3 검증 후속 — 리터럴 색도 **길목**에서 본다.
+ *
+ * 독립 검증이 refuted했다(2026-07-21): `detach-token-binding` 하나에만 검사를 두었더니
+ * `update-node.patch`와 `create-node`가 그대로 통과했다. **ECT1에서 토큰에 대해 똑같이
+ * 당한 실패를 새 필드에 되풀이한 것이다** — 이 horizon에서 네 번째.
+ *
+ * 검증자가 실제로 뚫은 값들을 그대로 회귀로 박는다.
+ */
+describe('리터럴 색 검증은 경로를 가리지 않는다 (ECT3 검증 후속)', () => {
+  const 나쁜값 = ['javascript:alert(1)', 'url(evil)', '#zzz', 'expression(alert(1))', '   ', 'x'.repeat(200)]
+
+  it('쓸 수 없는 색은 형식 검사에서 걸린다', () => {
+    for (const value of 나쁜값) expect(validateLiteralColor(value), value).not.toBeNull()
+    // 실제 토큰 해석 결과 형태는 통과해야 한다.
+    for (const value of ['#f7f2e8', '#ABC', '#11223344', 'oklch(0.58 0.22 27)', 'rgb(255, 136, 0)', 'hsl(210 40% 50% / 0.5)']) {
+      expect(validateLiteralColor(value), value).toBeNull()
+    }
+  })
+
+  it('detach 경로가 나쁜 색을 거부한다', () => {
+    const document = createDocumentFixture(1000)
+    const id = firstComponent(document).id
+    for (const value of 나쁜값) {
+      expect(() => applyOperation(document, {
+        id: 'd', at, type: 'detach-token-binding', nodeId: id, key: 'background', literal: value,
+      }), value).toThrow()
+    }
+  })
+
+  it('update-node patch로 몰래 넣는 경로도 막는다', () => {
+    // 검증자가 실제로 뚫은 경로. 타입에는 없지만 Object.assign이 런타임에서 통과시켰다.
+    const document = createDocumentFixture(1000)
+    const id = firstComponent(document).id
+    // 상호배타 검사가 아니라 **색 형식 검사**가 걸리는지 보려고 바인딩을 먼저 비운다.
+    delete document.nodes[id].tokenBindings.background
+    expect(() => applyOperation(document, {
+      id: 'p', at, type: 'update-node', nodeId: id,
+      patch: { literalColors: { background: 'javascript:alert(1)' } } as never,
+    })).toThrow(/쓸 수 있는 색이 아닙니다/)
+  })
+
+  it('create-node로 박아 넣는 경로도 막는다', () => {
+    const document = createDocumentFixture(1000)
+    const parentId = document.rootIds[0]
+    const evil = {
+      ...structuredClone(document.nodes[parentId]),
+      id: 'evil-literal', parentId, childIds: [],
+      tokenBindings: {},
+      literalColors: { background: 'url(evil)' },
+    }
+    expect(() => applyOperation(document, {
+      id: 'c', at, type: 'create-node', node: evil as never, parentId, index: 0,
+    })).toThrow(/쓸 수 있는 색이 아닙니다/)
+    expect(document.nodes['evil-literal']).toBeUndefined()
+  })
+
+  it('바인딩과 리터럴이 한 키에 동시에 살 수 없다', () => {
+    // 검증자 지적: 이 상태가 되면 리터럴이 화면에 안 보이는 죽은 값이 된다.
+    const document = createDocumentFixture(1000)
+    const id = firstComponent(document).id
+    expect(() => applyOperation(document, {
+      id: 'p', at, type: 'update-node', nodeId: id,
+      patch: { literalColors: { background: '#123456' } } as never,
+    })).toThrow(/동시에 있을 수 없습니다/)
+  })
+
+  it('손대지 않은 기존 리터럴은 다른 연산을 막지 않는다', () => {
+    // 델타인 이유. 옛 문서에 이상한 값이 들어 있어도 사용자가 자기 문서를 쓸 수 있어야 한다.
+    const document = createDocumentFixture(1000)
+    const id = firstComponent(document).id
+    delete document.nodes[id].tokenBindings.background
+    document.nodes[id].literalColors = { background: 'legacy-garbage' }
+    const renamed = applyOperation(document, {
+      id: 'r', at, type: 'update-node', nodeId: id, patch: { name: '이름만' },
+    })
+    expect(renamed.nodes[id].name).toBe('이름만')
+    expect(renamed.nodes[id].literalColors?.background).toBe('legacy-garbage')
   })
 })
