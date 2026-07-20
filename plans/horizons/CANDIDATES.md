@@ -10,6 +10,9 @@
 1. ~~**public-product-monetization (복귀)**~~ → **후보 제거 2026-07-20 (사용자 지시)**. 이 주제는 에이전트가 제안·언급하지 않는다 — 사용자가 먼저 꺼낼 때만 다시 다룬다. parked 기록은 `docs/horizons/2026-07-public-product-monetization.md`에 동결 보존.
 2. ~~**vertical-integration (신규, 사용자 발의 2026-07-17)**~~ → **선정·개명 2026-07-17**: `docs/horizons/2026-07-expressive-stack.md`로 active 승격 (범위 확장 — "화면 표시 대다수" 4티어, 사용자 확정). 원 후보 기술: "Tailwind(문법) 위에 shadcn(부품) 위에 Askewly(판단)" 스택을 판단 층에서 그치지 않고 아래 두 층까지 Askewly Design이 다루는 수직 통합. 구성 제안: ① **CSS 표현 기법 knowledge** — "CSS로 예술"급 고급 기법(그라디언트 메시·mask/clip-path·scroll-driven animation·houdini·blend mode 등)을 어떻게 만드는지 해부해 `knowledge/`+recipe로 정본화 ② **부품 층 계약** — shadcn 등 컴포넌트 배포 계층을 우리 recipe가 직접 참조·재스타일하는 가이드(“shadcn 룩” 탈출 레시피) ③ **레퍼런스 흡수** — toolshelf 실측 후보: react-bits(130+ 애니메이션 컴포넌트)·GSAP·magicui·cult-ui·animated-grid-lines·WebGL-Fluid-Simulation·taste-skill·nothing-design-skill. 진입 시 §B0.5 Beat 2 + 재료 수집(리서치) beat 선행 권고 — CSS-art 기법 계보 조사가 milestone 설계의 입력.
 
+3. **editor-motion (신규, 2026-07-20 리서치에서 적재)** — Figma Motion(Config 2026 발표, Open beta)이 확립한 구조: **모션이 캔버스 안에 살고**, 컴포넌트 단위로 정의한 애니메이션이 색·타이포처럼 모든 인스턴스에 전파되며, Dev Mode에서 CSS/JSON/React 코드로 나온다. AskewlyDesign의 "코드 네이티브 캔버스"와 축이 같다. 근거: `research/2026-07-20-editor-ui-horizon-figma-motion.md`. **진입 조건: `editor-legibility` 완료** — 선택·레이어가 안 읽히는 상태에서 타임라인을 얹으면 판단 불가가 한 겹 더 쌓인다.
+4. **framer 실물 관찰 (태스크 규모)** — Framer 공식 문서는 저수준 조작 스펙(핸들·스냅 판정)을 텍스트로 노출하지 않아 문서 리서치로 5개 항목이 확인 실패로 남았다. 알고 싶으면 실물 사용 관찰이 필요하다. horizon이 아니라 단일 태스크.
+
 ## 이력
 
 - 2026-07-17: 파일 생성 (agent-adoption-loop 활성화와 함께). parked monetization을 첫 복귀 후보로 적재.
@@ -20,3 +23,4 @@
 - 2026-07-19: template-production-system next 번들 작성 (사용자 발의·추천 범위 확정 — 명함/제품 포스터/인포그래픽, 구조 우선, 고정 fixture 우선). 기존 active와 후보 우선순위는 사용자 결정 전 변경하지 않음.
 - 2026-07-20: public-product-monetization 후보 제거 (사용자 지시 — "noise가 심하다, 내가 원할 때 얘기하겠다"). 에이전트 발의 금지 항목.
 - 2026-07-19: recipe-code-reuse closed (RC1~RC4 — 27 코드 자산·코드 출발 계약·매핑·실연 사람 게이트. 2세션 병행 1일 완주 — 디플레 재적발, 다음 설계 입력).
+- 2026-07-20: editor-legibility horizon 설계 번들 작성(사용자 발의 — 편집기 UI "Figma만큼이라도", 조작감+판독성 둘 다). 승인 대기: `plans/horizons/2026-07-editor-legibility.md`. 같은 리서치에서 editor-motion·framer 관찰 후보 적재.
