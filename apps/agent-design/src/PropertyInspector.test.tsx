@@ -1,7 +1,7 @@
 import { cleanup, fireEvent, render } from '@testing-library/react'
 import { createDocumentFixture, type CanvasDocument, type CanvasOperation } from '@askewly/canvas-core'
 import { afterEach, describe, expect, it } from 'vitest'
-import { PropertyInspector } from './PropertyInspector'
+import { INSPECTOR_SECTIONS, PropertyInspector } from './PropertyInspector'
 
 afterEach(cleanup)
 
@@ -91,5 +91,30 @@ describe('기하값이 보이고 고쳐진다 (EU4 step-1)', () => {
     const moved = { ...base, nodes: { ...base.nodes, [id]: { ...base.nodes[id], bounds: { ...base.nodes[id].bounds, x: 777 } } } }
     view.rerender(<PropertyInspector document={moved} onOperation={() => {}} bridgeConnected={false} onMaterialize={() => {}} />)
     expect((view.getByTestId('geometry-x') as HTMLInputElement).value).toBe('777')
+  })
+})
+
+describe('섹션이 규약 순서를 따른다 (EU4 step-2)', () => {
+  it('기하 → 구조 → 시각 → 내보내기 순서로 나온다', () => {
+    const { view } = setup()
+    const order = [...view.container.querySelectorAll('[data-inspector-section]')]
+      .map((el) => el.getAttribute('data-inspector-section'))
+    // 우리가 정한 순서가 아니라 리서치가 Figma·Penpot 공통으로 확인한 순서다.
+    expect(order).toEqual([...INSPECTOR_SECTIONS])
+  })
+
+  it('토큰 바인딩은 시각 섹션에, 레이아웃은 구조 섹션에 있다', () => {
+    const { view } = setup()
+    const visual = view.container.querySelector('[data-inspector-section="visual"]')!
+    const structure = view.container.querySelector('[data-inspector-section="structure"]')!
+    expect(visual.textContent).toContain('Token · background')
+    expect(structure.textContent).toContain('Layout')
+    // 섞이면 안 된다.
+    expect(structure.textContent).not.toContain('Token · background')
+  })
+
+  it('빈 섹션은 가짜 컨트롤 대신 상태를 말한다', () => {
+    const { view } = setup()
+    expect(view.getByTestId('export-status').textContent).toContain('아직 없다')
   })
 })

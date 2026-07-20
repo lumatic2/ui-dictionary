@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react'
+import { useEffect, useState, type ReactNode } from 'react'
 import {
   propertyFieldsForNode,
   validateNodePropertyEdit,
@@ -18,6 +18,26 @@ import { isKnownTokenSet, listDocumentTokenSets } from './documentTokens'
  * token/layout)을 따르는데, 기하는 캔버스 드래그와 **같은 연산**(`transform-nodes`·`rotate-nodes`)
  * 으로 커밋돼야 한다 — 인스펙터 전용 경로를 따로 만들면 undo 이력이 갈라진다.
  */
+/**
+ * 인스펙터 섹션 순서 — **우리가 지어낸 순서가 아니다.**
+ * 리서치가 Figma·Penpot 공통으로 확인한 순서다(기하 → 구조 → 시각 → 내보내기).
+ * 근거: research/2026-07-20-editor-ui-horizon-canvas-interaction.md §1.4·§3.4
+ */
+export const INSPECTOR_SECTIONS = ['geometry', 'structure', 'visual', 'export'] as const
+export type InspectorSection = (typeof INSPECTOR_SECTIONS)[number]
+
+const SECTION_LABELS: Record<InspectorSection, string> = {
+  geometry: '기하',
+  structure: '구조',
+  visual: '시각',
+  export: '내보내기',
+}
+
+/** 필드가 어느 섹션에 속하는가. token 은 시각, 나머지(layout·prop·variant·override)는 구조다. */
+function sectionForScope(scope: PropertyField['scope']): InspectorSection {
+  return scope === 'token' ? 'visual' : 'structure'
+}
+
 const GEOMETRY_FIELDS = [
   { key: 'x', label: 'X' },
   { key: 'y', label: 'Y' },
@@ -38,6 +58,13 @@ function geometryError(key: GeometryKey, value: number): string | null {
 /** 빈 칸은 0이 아니다 — `Number('')`이 0이라 그냥 넘기면 빈 입력이 좌표를 0으로 만든다. */
 function parseGeometry(draft: string): number {
   return draft.trim() === '' ? Number.NaN : Number(draft)
+}
+
+function Section({ id, children }: { id: InspectorSection; children: ReactNode }) {
+  return <div className="inspector-section" data-inspector-section={id}>
+    <h3>{SECTION_LABELS[id]}</h3>
+    {children}
+  </div>
 }
 
 function GeometryInput({ id, label, value, commit }: { id: string; label: string; value: number; commit: (next: number) => void }) {
@@ -105,6 +132,12 @@ export function PropertyInspector({ document, onOperation, bridgeConnected, onMa
     onOperation({ ...operationId('geometry'), type: 'transform-nodes', boundsById: { [node.id]: { ...node.bounds, [key]: value } } })
   }
 
+  // 섹션별로 필드를 가른다 — scope 전부가 어딘가에 속하므로 조용히 사라지는 필드가 없다.
+  const emptySections = () => ({ geometry: [], structure: [], visual: [], export: [] } as Record<InspectorSection, PropertyField[]>)
+  const fieldsBySection = node
+    ? propertyFieldsForNode(node).reduce((acc, field) => { acc[sectionForScope(field.scope)].push(field); return acc }, emptySections())
+    : emptySections()
+
   const commitProperty = (field: PropertyField, value: PropValue) => {
     if (!node) return
     const edit: NodePropertyEdit = { nodeId: node.id, scope: field.scope, key: field.key, value }
@@ -144,8 +177,7 @@ export function PropertyInspector({ document, onOperation, bridgeConnected, onMa
     {!node ? <p className="inspector-empty">Select one node to edit its properties.</p> : <div className="property-list">
       <div className="selection-summary"><span>{node.kind}</span><code>{node.id}</code></div>
       {canMaterialize && <button type="button" data-testid="materialize-node" onClick={() => onMaterialize(node.id)}>Materialize</button>}
-      <div className="inspector-section" data-inspector-section="geometry">
-        <h3>기하</h3>
+      <Section id="geometry">
         <div className="geometry-grid">
           {GEOMETRY_FIELDS.map((field) => <GeometryInput
             key={field.key}
@@ -155,7 +187,8 @@ export function PropertyInspector({ document, onOperation, bridgeConnected, onMa
             commit={(next) => commitGeometry(field.key, next)}
           />)}
         </div>
-      </div>
+      </Section>
+      <Section id="structure">
       <label className="property-field">Name
         <input
           data-testid="property-name"
@@ -166,7 +199,7 @@ export function PropertyInspector({ document, onOperation, bridgeConnected, onMa
           }}
         />
       </label>
-      {propertyFieldsForNode(node).map((field) => <label className="property-field" key={`${field.scope}.${field.key}`}>{field.label}
+      {fieldsBySection.structure.map((field) => <label className="property-field" key={`${field.scope}.${field.key}`}>{field.label}
         {field.valueType === 'select' ? <select
           data-testid={`property-${field.scope}-${field.key}`}
           value={String(field.value)}
@@ -179,6 +212,18 @@ export function PropertyInspector({ document, onOperation, bridgeConnected, onMa
           ><option value="false">False</option><option value="true">True</option></select>
             : <DraftInput field={field} commit={(value) => commitProperty(field, value)} />}
       </label>)}
+      </Section>
+      <Section id="visual">
+        {fieldsBySection.visual.length === 0
+          ? <p className="section-empty">이 노드에 묶인 토큰이 없다.</p>
+          : fieldsBySection.visual.map((field) => <label className="property-field" key={`${field.scope}.${field.key}`}>{field.label}
+            <DraftInput field={field} commit={(value) => commitProperty(field, value)} />
+          </label>)}
+      </Section>
+      <Section id="export">
+        {/* 내보내기 기능 자체는 template-core 소관이다. 빈 자리에 가짜 버튼을 두지 않고 상태만 말한다. */}
+        <p className="section-empty" data-testid="export-status">이 노드 단위 내보내기는 아직 없다. 문서 전체 내보내기는 상단 도구모음에서 한다.</p>
+      </Section>
     </div>}
     <p className="property-error" role="alert" data-testid="property-error">{error}</p>
     <dl className="document-meta">

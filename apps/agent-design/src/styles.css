@@ -286,3 +286,4 @@ button, select { font: inherit; }
 /* 위치·크기는 짝으로 읽힌다 — 2열로 묶어 X/Y, 너비/높이가 나란히 오게 한다. */
 .geometry-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 6px 8px; }
 .geometry-grid .property-field { margin: 0; }
+.section-empty { margin: 0; font-size: 11px; color: var(--ad-text-muted); line-height: 1.5; }
