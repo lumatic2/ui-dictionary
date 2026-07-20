@@ -241,3 +241,69 @@ describe('타입이 아이콘으로 갈린다 (EU3 step-1)', () => {
     }
   })
 })
+
+describe('이름으로 찾는다 (EU3 step-2)', () => {
+  const search = (view: ReturnType<typeof render>, value: string) =>
+    fireEvent.change(view.getByTestId('layer-search'), { target: { value } })
+
+  const visibleIds = (view: ReturnType<typeof render>) =>
+    [...view.container.querySelectorAll('[role="treeitem"]')].map((row) => row.getAttribute('data-testid')!.replace('layer-', ''))
+
+  it('매칭 행과 그 조상만 남는다 — 계층이 사라지지 않는다', () => {
+    const document = createDocumentFixture(1000)
+    // 깊이가 있는 노드를 하나 골라 고유한 이름을 준다.
+    const target = document.nodes['node-00042']
+    const parentId = target.parentId!
+    target.name = '고유한이름ZZZ'
+
+    const view = render(<LayersPanel document={document} onOperation={() => {}} />)
+    search(view, '고유한이름ZZZ')
+
+    const ids = visibleIds(view)
+    expect(view.getByTestId('layer-search-count').textContent).toContain('1건')
+    expect(ids).toContain(target.id)
+    // 조상이 함께 보여야 "어디 있는지"가 읽힌다.
+    expect(ids).toContain(parentId)
+    // 관계없는 형제는 사라진다.
+    expect(ids).not.toContain('node-00043')
+  })
+
+  it('매칭 행과 맥락 행이 구분된다', () => {
+    const document = createDocumentFixture(1000)
+    document.nodes['node-00042'].name = '고유한이름ZZZ'
+    const view = render(<LayersPanel document={document} onOperation={() => {}} />)
+    search(view, '고유한이름ZZZ')
+
+    expect(view.container.querySelector(`[data-testid="layer-node-00042"]`)?.getAttribute('data-layer-match')).toBe('hit')
+    const parentId = document.nodes['node-00042'].parentId!
+    expect(view.container.querySelector(`[data-testid="layer-${parentId}"]`)?.getAttribute('data-layer-match')).toBe('context')
+  })
+
+  it('검색어를 비우면 원래 트리로 돌아온다', () => {
+    const document = createDocumentFixture(1000)
+    const view = render(<LayersPanel document={document} onOperation={() => {}} />)
+    const before = visibleIds(view).length
+    search(view, '고유한이름ZZZ')
+    expect(visibleIds(view).length).not.toBe(before)
+    search(view, '')
+    expect(visibleIds(view).length).toBe(before)
+  })
+
+  it('맞는 게 없으면 없다고 말한다 — 빈 트리로 넘기지 않는다', () => {
+    const document = createDocumentFixture(1000)
+    const view = render(<LayersPanel document={document} onOperation={() => {}} />)
+    search(view, '존재하지않는이름QQQ')
+    expect(view.getByTestId('layers-no-match').textContent).toContain('존재하지않는이름QQQ')
+  })
+
+  it('검색 결과에서도 선택이 동작한다', () => {
+    const operations: CanvasOperation[] = []
+    const document = createDocumentFixture(1000)
+    document.nodes['node-00042'].name = '고유한이름ZZZ'
+    const view = render(<LayersPanel document={document} onOperation={(op) => operations.push(op)} />)
+    search(view, '고유한이름ZZZ')
+    fireEvent.click(view.getByTestId('layer-node-00042'))
+    const select = operations.find((op) => op.type === 'select-nodes') as { nodeIds: string[] }
+    expect(select.nodeIds).toEqual(['node-00042'])
+  })
+})

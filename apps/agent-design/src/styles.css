@@ -255,3 +255,20 @@ button, select { font: inherit; }
   pointer-events: none;
   white-space: nowrap;
 }
+
+/* 레이어 검색 (EU3). 결과는 계층을 지운 목록이 아니라 트리 안에서 보인다. */
+.layers-search { display: flex; align-items: center; gap: 6px; padding: 6px 8px; }
+.layers-search input {
+  flex: 1;
+  min-width: 0;
+  padding: 4px 8px;
+  border: 1px solid var(--ad-border-default);
+  border-radius: 6px;
+  background: var(--ad-surface-base);
+  color: inherit;
+  font-size: 12px;
+}
+.layers-search-count { font-size: 11px; color: var(--ad-text-muted); font-variant-numeric: tabular-nums; }
+/* 매칭 행은 굵게, 조상은 맥락으로 흐리게 — 무엇이 결과이고 무엇이 경로인지 갈린다. */
+.layer-row.layer-match .layer-name { font-weight: 600; }
+.layer-row[data-layer-match="context"] .layer-name { opacity: 0.62; }
