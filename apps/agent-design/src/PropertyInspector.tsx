@@ -351,11 +351,14 @@ function ColorBindingField({ field, tokenSetId, commit, onDetach }: {
  * 이 노드에 **새로 묶을 수 있는** 색 키.
  *
  * 렌더러가 실제로 칠하는 키만 낸다(`CanvasSurface.nodeStyle`) — 안 칠해지는 키를 묶게 하면
- * "묶이긴 하는데 안 칠해지는" 상태가 된다. 이미지 노드는 렌더러가 `tokenBindings`를 아예
- * 참조하지 않으므로 여기서 제외한다(ECT4가 렌더러를 확장한 뒤 열린다).
+ * "묶이긴 하는데 안 칠해지는" 상태가 된다.
+ *
+ * **이미지 노드도 포함한다(ECT4 실측 정정, 2026-07-21).** ECT3까지는 "렌더러가 image kind에서
+ * `tokenBindings`를 참조하지 않는다"는 실사를 믿고 제외했는데, **그 실사가 틀렸다** —
+ * `<img>`도 `shared.style`을 받으므로 배경 바인딩이 그대로 칠해진다(측정: 인라인 배경 =
+ * 토큰 해석값). 다만 불투명한 이미지는 자기 배경을 덮으므로 눈에 안 보일 수 있다.
  */
 function bindableColorKeys(node: CanvasNode): string[] {
-  if (node.kind === 'image') return []
   // 종류별로 고르는 것이지 새로 만드는 게 아니다 — 후보는 정본에서만 온다.
   const 후보 = (keys: string[]) => keys.filter((key) => COLOR_BINDING_KEYS.includes(key as never))
   if (node.kind === 'shape') return 후보(['fill', 'background'])

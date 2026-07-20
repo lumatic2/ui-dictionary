@@ -2,6 +2,7 @@ import { cleanup, fireEvent, render, waitFor } from '@testing-library/react'
 import { applyOperation, createDocumentFixture, firstComponent, type CanvasOperation } from '@askewly/canvas-core'
 import { afterEach, describe, expect, it } from 'vitest'
 import { CanvasSurface } from './CanvasSurface'
+import { documentTokens } from './documentTokens'
 import { editorTokenMaps, FALLBACK_BACKGROUND_TOKEN } from './editorTokens'
 
 afterEach(cleanup)
@@ -362,5 +363,50 @@ describe('떠 있던 측정은 드래그가 시작되면 꺼진다 (EU2 step-3)'
     // 배지가 떠 있는 상태에서 드래그를 시작한다.
     pointer(view.getByTestId('manipulation-selection'), 'pointerdown', 0, 0)
     expect(view.queryByTestId('measure-readout')).toBeNull()
+  })
+})
+
+/**
+ * ECT4 step-2 — 이미지 노드가 실제로 칠해진다.
+ *
+ * **이 테스트가 존재하는 이유는 실사가 틀렸기 때문이다.** 세션 첫 실사가
+ * "렌더러가 image kind에서 `tokenBindings`를 아예 참조하지 않는다"고 적었고, 그 문장이
+ * horizon 문서·ECT3의 이미지 제외·사용자 결정 3까지 전파됐다. ECT4에서 실측하니
+ * `<img>`도 `shared.style`을 받아 배경이 그대로 칠해진다.
+ *
+ * 다시는 추측으로 두지 않도록 렌더 결과를 여기서 고정한다.
+ */
+describe('이미지 노드 색 바인딩 (ECT4 step-2)', () => {
+  function withImage(tokenBindings: Record<string, string>) {
+    const doc = structuredClone(createDocumentFixture(1000))
+    const id = doc.selection[0]
+    const parentId = doc.nodes[id].parentId ?? doc.rootIds[0]
+    doc.nodes['img-node'] = {
+      ...structuredClone(doc.nodes[id]),
+      id: 'img-node', kind: 'image', parentId, childIds: [],
+      assetId: 'no-asset', alt: '이미지', fit: 'cover', opacity: 1, tokenBindings,
+    } as never
+    doc.nodes[parentId].childIds = [...doc.nodes[parentId].childIds, 'img-node']
+    const view = render(<CanvasSurface document={doc} onOperation={() => {}} />)
+    return { view, doc, el: view.container.querySelector('[data-canvas-id="img-node"]') as HTMLElement }
+  }
+
+  it('배경 바인딩이 렌더에 반영된다 — 캔버스와 같은 해석 함수 값', () => {
+    const { doc, el } = withImage({ background: 'surface.muted' })
+    const expected = documentTokens(doc.tokenSetId).resolve('surface.muted')
+    expect(expected).toBeTruthy()
+    expect(el.style.background).toBe(expected)
+  })
+
+  it('바인딩이 없으면 이전과 같다 — 시각 회귀 없음', () => {
+    const { doc, el } = withImage({})
+    // 편집기 문서는 바인딩이 없을 때 중립 배경으로 떨어지는 기존 계약을 유지한다.
+    expect(el.style.background).toBe(documentTokens(doc.tokenSetId).resolveBackground(undefined))
+  })
+
+  it('미해결 바인딩은 표시되고 폴백 색으로 덮이지 않는다', () => {
+    const { el } = withImage({ background: 'surface.longgone' })
+    expect(el.getAttribute('data-token-unresolved')).not.toBeNull()
+    expect(el.style.background).toBe('')
   })
 })

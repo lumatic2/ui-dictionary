@@ -537,12 +537,11 @@ describe('안 묶인 색을 묶는다 (ECT3 step-1)', () => {
     expect(text.view.queryByTestId('bind-color-fill')).toBeNull()
   })
 
-  it('이미지 노드는 묶기를 제안하지 않는다 — 렌더러가 아직 안 읽는다', () => {
-    // 검증자가 지적: fixture에 image 종류가 없어 확인이 안 됐던 경로.
-    // 여기서 묶게 하면 "묶이긴 하는데 안 칠해지는" 상태가 된다(ECT4가 렌더러를 확장한 뒤 열린다).
+  it('이미지 노드도 색을 묶을 수 있다 (ECT4 실측 정정)', () => {
+    // ECT3까지는 "렌더러가 image kind에서 tokenBindings를 안 읽는다"는 실사를 믿고 제외했다.
+    // ECT4에서 실측하니 **그 실사가 틀렸다** — <img>도 shared.style을 받아 배경이 칠해진다.
     const { view } = withNode('image', {}, { assetId: 'a1', alt: '', fit: 'cover', opacity: 1 })
-    expect(view.queryByTestId('bind-color-background')).toBeNull()
-    expect(view.container.textContent).toContain('이 노드에는 색 속성이 없다')
+    expect(view.queryByTestId('bind-color-background')).not.toBeNull()
   })
 
   it('묶기도 키보드로 된다', () => {

@@ -51,7 +51,8 @@
 **나쁜 소식 — EU5 evidence가 본 것보다 깊다.**
 
 1. **검증이 형태만 본다.** `validateNodePropertyEdit`의 token 분기는 값이 `x.y` 꼴인지만 보고 **그 토큰이 실재하는지는 안 본다** (`packages/canvas-core/src/properties.ts:24,46-47`). 그래서 오타는 조용히 **저장되고** 렌더에서만 `data-token-unresolved`로 남는다. EU5 finding 4는 "오타가 조용히 거부된다"였지만 정확히는 **조용히 수용된다** — 더 나쁘다.
-2. **이미지 노드는 인스펙터만 고쳐선 안 된다.** 렌더러가 image kind에서 `tokenBindings`를 **아예 참조하지 않는다** (`CanvasSurface.tsx:162-168`). 바인딩 경로만 붙이면 "묶이긴 하는데 안 칠해지는" 상태가 된다.
+2. ~~**이미지 노드는 인스펙터만 고쳐선 안 된다.** 렌더러가 image kind에서 `tokenBindings`를 **아예 참조하지 않는다** (`CanvasSurface.tsx:162-168`).~~
+   > ⚠ **이 실사는 틀렸다 (ECT4 실측 정정, 2026-07-21).** `<img>`도 `shared.style`을 받으므로 배경 바인딩이 **그대로 칠해진다** — 렌더 테스트로 확인: 인라인 배경 = 토큰 해석값. EU5에서 이미지 노드에 색을 못 바꾼 진짜 이유는 렌더러가 아니라 **그 노드에 바인딩이 없었고 묶을 경로도 없었던 것**이며, 그건 ECT3의 묶기 어포던스가 이미 해결한다. 이 틀린 문장이 horizon 실사·ECT3의 이미지 제외·**사용자 결정 3**까지 전파됐다. 근거: `evidence/editor-color-and-token-editing/ect4-image-render.md`.
 3. **어휘가 둘인데 메타데이터가 비대칭이다.** 템플릿 세트는 토큰마다 `kind`(color/fontFamily)를 갖는데(`template-core/src/tokens.ts:16-19`), 편집기 세트는 `Record<string,string>` 평면이라 **kind가 없다**(`editorTokens.ts:9`). "색 토큰만 골라 보여준다"를 두 어휘에 똑같이 하려면 생성기(`apps/agent-design/scripts/generate-editor-tokens.mjs`)부터 손대야 한다.
 4. **두 어휘를 섞으면 안 된다는 건 이미 코드에 규약으로 박혀 있다** (`documentTokens.ts:12-16` — "템플릿을 편집기 chrome 색으로 칠하면 디자인이 아니라 편집기가 보인다"). 색 선택기는 **문서 자기 세트만** 보여줘야 한다. 이건 이번에 발명할 제약이 아니라 이미 내려진 결정이다.
 5. **두 경로의 계약이 어긋나 있다.** `template-core`의 `EXPECTED_KIND`는 `background/fill/color/fontFamily`를 명시 제한하는데(`tokens.ts:74-80`), canvas 렌더 경로는 별도로 키를 하드코드한다(`CanvasSurface.tsx:59-69`). 같은 개념이 두 군데 따로 산다.
