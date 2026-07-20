@@ -122,7 +122,10 @@ button, select { font: inherit; }
 .canvas-viewport { position: relative; overflow: hidden; background-color: var(--ad-surface-raised); background-image: linear-gradient(var(--ad-border-default) 1px, transparent 1px), linear-gradient(90deg, var(--ad-border-default) 1px, transparent 1px); background-size: 24px 24px; }
 .canvas-content { position: absolute; inset: 0; transform-origin: 0 0; }
 .canvas-node { position: absolute; display: block; overflow: hidden; border: 1px solid hsl(250 18% 80%); border-radius: 6px; padding: 6px; color: var(--ad-gray-10); font-size: 10px; text-align: left; } /* token-exception: hsl() node border is not a hex literal */
+.canvas-node[data-selection-state="idle"]:hover { outline: 1px dashed var(--ad-border-default); outline-offset: 1px; }
 .canvas-node[data-selection-state="selected"] { outline: 1px solid var(--ad-border-focus); outline-offset: 1px; }
+/* 다중선택은 굵기로도 갈린다 — 개수 배지와 함께 두 경로로 알린다. */
+.canvas-node[data-selection-state="selected"][data-selection-scope="multi"] { outline-width: 2px; }
 .canvas-node[data-drop-target="active"] { box-shadow: inset 0 0 0 2px var(--ad-brand-orchid); }
 .canvas-node:focus-visible { outline: 2px solid var(--ad-action-primary); outline-offset: 2px; }
 .node-code-component { border-color: var(--ad-brand-violet); box-shadow: inset 0 0 0 1px rgb(139 92 246 / 0.2); }
@@ -136,15 +139,32 @@ button, select { font: inherit; }
 .selection-marquee { position: absolute; pointer-events: none; border: 1px solid var(--ad-action-primary); background: rgb(111 45 189 / 0.08); }
 .manipulation-selection { position: absolute; z-index: 4; border: 1px solid transparent; cursor: move; touch-action: none; }
 .manipulation-selection-text { pointer-events: none; }
-.resize-handle { position: absolute; width: 9px; height: 9px; padding: 0; border: 1px solid var(--ad-action-primary); border-radius: 2px; background: white; }
+/*
+ * 핸들 모양이 조작 종류를 말한다 (EU1).
+ *
+ * 전에는 8개가 전부 같은 9×9 사각형이라 커서를 올리기 전에는 무엇이 달라지는지 알 수 없었다.
+ * 모서리는 두 축을, 변은 한 축을 바꾼다 — 그 차이를 형태로 낸다:
+ * 모서리=정사각(양축), 변=이동 축 방향으로 누운 막대(단축).
+ * 근거는 리서치 §1.1의 역할 분리 규칙이다. 정확한 px 규격은 1차 출처가 없어(확인 실패 2번)
+ * 여기 값은 우리가 정한 것이다 — 8px 그리드와 기존 9px 핸들에서 이어받았다.
+ */
+.resize-handle { position: absolute; padding: 0; border: 1px solid var(--ad-action-primary); background: var(--ad-surface-base); }
+.resize-handle-corner { width: 9px; height: 9px; border-radius: 2px; }
+.resize-handle-edge { border-radius: 999px; }
+.resize-handle-edge.resize-handle-n, .resize-handle-edge.resize-handle-s { width: 20px; height: 6px; }
+.resize-handle-edge.resize-handle-e, .resize-handle-edge.resize-handle-w { width: 6px; height: 20px; }
 .resize-handle-nw { left: -5px; top: -5px; cursor: nwse-resize; }
-.resize-handle-n { left: calc(50% - 4px); top: -5px; cursor: ns-resize; }
+.resize-handle-n { left: calc(50% - 10px); top: -3px; cursor: ns-resize; }
 .resize-handle-ne { right: -5px; top: -5px; cursor: nesw-resize; }
-.resize-handle-e { right: -5px; top: calc(50% - 4px); cursor: ew-resize; }
+.resize-handle-e { right: -3px; top: calc(50% - 10px); cursor: ew-resize; }
 .resize-handle-se { right: -5px; bottom: -5px; cursor: nwse-resize; }
-.resize-handle-s { left: calc(50% - 4px); bottom: -5px; cursor: ns-resize; }
+.resize-handle-s { left: calc(50% - 10px); bottom: -3px; cursor: ns-resize; }
 .resize-handle-sw { left: -5px; bottom: -5px; cursor: nesw-resize; }
-.resize-handle-w { left: -5px; top: calc(50% - 4px); cursor: ew-resize; }
+.resize-handle-w { left: -3px; top: calc(50% - 10px); cursor: ew-resize; }
+.resize-handle:hover, .resize-handle:focus-visible { background: var(--ad-action-primary); outline: none; }
+
+/* 선택 개수는 색이 아니라 글자로도 말한다 — 색만으로 신호하지 않는다(anti-pattern 3). */
+.selection-count { position: absolute; left: 0; top: -22px; padding: 1px 6px; border-radius: 999px; background: var(--ad-action-primary); color: var(--ad-surface-base); font-size: 11px; line-height: 16px; white-space: nowrap; word-break: keep-all; }
 .structure-drag-handle { position: absolute; left: 6px; top: -25px; width: 20px; height: 20px; padding: 2px; border: 1px solid var(--ad-action-primary); border-radius: 3px; background: white; color: var(--ad-action-primary); cursor: grab; }
 .structure-drag-handle svg { width: 14px; height: 14px; fill: none; stroke: currentColor; stroke-width: 1.5; stroke-linecap: round; }
 .dom-alignment-guide { position: absolute; pointer-events: none; background: var(--ad-brand-orchid); }

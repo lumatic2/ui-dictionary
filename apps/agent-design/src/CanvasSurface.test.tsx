@@ -81,3 +81,42 @@ describe('token-driven node background', () => {
     expect(el.style.background).toBe(editorTokenMaps['askewly.default'][FALLBACK_BACKGROUND_TOKEN])
   })
 })
+
+describe('조작 종류가 구분되는 선택 (EU1)', () => {
+  const withSelection = (ids: string[]) => {
+    const document = createDocumentFixture(1000)
+    return { ...document, selection: ids.length ? ids : document.selection }
+  }
+
+  it('모서리 4 · 변 4로 갈리고 클래스가 역할을 말한다', () => {
+    const view = render(<CanvasSurface document={createDocumentFixture(1000)} />)
+    const handles = [...view.container.querySelectorAll('.resize-handle')]
+    expect(handles).toHaveLength(8)
+    expect(handles.filter((h) => h.classList.contains('resize-handle-corner'))).toHaveLength(4)
+    expect(handles.filter((h) => h.classList.contains('resize-handle-edge'))).toHaveLength(4)
+
+    // 모서리는 양축, 변은 단축 — 어느 핸들이 어느 역할인지 고정한다.
+    expect(view.getByTestId('resize-nw').className).toContain('resize-handle-corner')
+    expect(view.getByTestId('resize-n').className).toContain('resize-handle-edge')
+    expect(view.getByTestId('resize-nw').className).not.toContain('resize-handle-edge')
+  })
+
+  it('다중선택은 개수 글자로도 알린다 — 색만으로 신호하지 않는다', () => {
+    const single = render(<CanvasSurface document={createDocumentFixture(1000)} />)
+    expect(single.queryByTestId('selection-count-badge')).toBeNull()
+    cleanup()
+
+    const document = createDocumentFixture(1000)
+    const two = Object.keys(document.nodes).slice(1, 3)
+    const multi = render(<CanvasSurface document={{ ...document, selection: two }} />)
+    expect(multi.getByTestId('selection-count-badge').textContent).toContain('2개 선택')
+    const marked = multi.container.querySelectorAll('[data-selection-scope="multi"][data-selection-state="selected"]')
+    expect(marked).toHaveLength(2)
+  })
+
+  it('단일선택 노드는 multi 표시를 갖지 않는다', () => {
+    const view = render(<CanvasSurface document={createDocumentFixture(1000)} />)
+    const selected = view.container.querySelector('[data-selection-state="selected"]')
+    expect(selected?.getAttribute('data-selection-scope')).toBe('single')
+  })
+})

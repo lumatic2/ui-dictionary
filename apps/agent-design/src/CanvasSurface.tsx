@@ -97,6 +97,8 @@ interface CanvasNodeElementProps {
   selected: boolean
   dropTarget: boolean
   primary: boolean
+  /** 이 선택이 단일인지 다중인지 — 다중은 외곽선이 굵어지고 개수 배지가 함께 뜬다. */
+  selectionScope: 'single' | 'multi'
   tokenSetId: string
   assets: CanvasDocument['assets']
   previewBounds?: CanvasNode['bounds']
@@ -129,7 +131,7 @@ function TextNodeElement({ node, shared, onOperation }: { node: Extract<CanvasNo
   />
 }
 
-const CanvasNodeElement = memo(function CanvasNodeElement({ node, selected, dropTarget, primary, tokenSetId, assets, previewBounds, onOperation }: CanvasNodeElementProps) {
+const CanvasNodeElement = memo(function CanvasNodeElement({ node, selected, dropTarget, primary, selectionScope, tokenSetId, assets, previewBounds, onOperation }: CanvasNodeElementProps) {
   const shared = {
     'data-canvas-id': node.id,
     'data-parent-id': node.parentId ?? '',
@@ -138,6 +140,7 @@ const CanvasNodeElement = memo(function CanvasNodeElement({ node, selected, drop
     'aria-label': node.name,
     'aria-selected': selected,
     'data-selection-state': selected ? 'selected' : 'idle',
+    'data-selection-scope': selectionScope,
     'data-drop-target': dropTarget ? 'active' : 'idle',
     draggable: selected && !node.locked,
     tabIndex: primary ? 0 : -1,
@@ -183,7 +186,7 @@ export function CanvasSurface({ document, editorPlaneFailure = null, onOperation
   const selectedIds = useMemo(() => new Set(document.selection), [document.selection])
   const orderedNodes = useMemo(() => paintOrder(document).map((id) => document.nodes[id]), [document])
   const primaryId = document.selection.at(-1)
-  const nodeElements = useMemo(() => orderedNodes.map((node) => <CanvasNodeElement key={node.id} node={node} selected={selectedIds.has(node.id)} primary={primaryId === node.id} dropTarget={dropTargetId === node.id} tokenSetId={document.tokenSetId} assets={document.assets} previewBounds={previewBounds[node.id]} onOperation={onOperation} />), [document.assets, document.tokenSetId, dropTargetId, onOperation, orderedNodes, previewBounds, primaryId, selectedIds])
+  const nodeElements = useMemo(() => orderedNodes.map((node) => <CanvasNodeElement key={node.id} node={node} selected={selectedIds.has(node.id)} primary={primaryId === node.id} selectionScope={document.selection.length > 1 ? 'multi' : 'single'} dropTarget={dropTargetId === node.id} tokenSetId={document.tokenSetId} assets={document.assets} previewBounds={previewBounds[node.id]} onOperation={onOperation} />), [document.assets, document.tokenSetId, dropTargetId, onOperation, orderedNodes, previewBounds, primaryId, selectedIds])
   const activePan = panPreview ?? document.viewport.pan
   const transform = `translate(${activePan.x}px, ${activePan.y}px) scale(${document.viewport.zoom})`
   const canonicalSelection = Object.keys(previewBounds).length ? previewSelectionBounds(document, previewBounds) : selectionBounds(document)
@@ -422,10 +425,14 @@ export function CanvasSurface({ document, editorPlaneFailure = null, onOperation
         >
           <svg viewBox="0 0 16 16" aria-hidden="true"><path d="M5 4h6M5 8h6M5 12h6" /></svg>
         </button> : null}
+        {document.selection.length > 1 ? <span className="selection-count" data-testid="selection-count-badge">
+          {document.selection.length}개 선택
+        </span> : null}
         {(['nw', 'n', 'ne', 'e', 'se', 's', 'sw', 'w'] as ResizeHandle[]).map((handle) => <button
           key={handle}
           type="button"
-          className={`resize-handle resize-handle-${handle}`}
+          // 모서리는 양축, 변은 단축을 바꾼다. 그 역할 차이를 형태로 낸다(EU1).
+          className={`resize-handle resize-handle-${handle} resize-handle-${handle.length === 2 ? 'corner' : 'edge'}`}
           data-testid={`resize-${handle}`}
           aria-label={`Resize ${handle}`}
           onPointerDown={(event) => beginGesture(event, 'resize', handle)}

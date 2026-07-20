@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "active_work_id": "TH6",
+  "active_work_id": "EU1",
   "works": {
     "SFB1": {
       "title": "Structure Contract And Clean Production",
@@ -2781,6 +2781,56 @@
         "approved_by": "user",
         "approved_at": "2026-07-20",
         "plan_sha256": "ee183c2aebc75d1042ed11864456999a4ecad248a53e619546e2863c8d1e602e"
+      },
+      "allowed_stop_reasons": [
+        "completed",
+        "blocked",
+        "decision_required",
+        "risk_gate",
+        "secret_required",
+        "external_authority_required",
+        "user_stopped"
+      ],
+      "stop_reason": null,
+      "stop_detail": {},
+      "session_ids": [
+        "claude:f84fec52-c73d-4a49-b95f-53d9e9345cb2"
+      ],
+      "owner_session_uuid": "claude:f84fec52-c73d-4a49-b95f-53d9e9345cb2",
+      "updated_at": "2026-07-20",
+      "notes": "Registered atomically by canonical harness approve_harness_plan.py after plan validation."
+    },
+    "EU1": {
+      "work_id": "EU1",
+      "horizon_id": "editor-legibility",
+      "milestone_id": "EU1",
+      "status": "active",
+      "plan_path": "plans/2026-07-20-eu1-selection-affordance.md",
+      "changeset_path": "changesets/20260720-handle-role-affordance",
+      "next_step": "step-2",
+      "current_step": "step-2",
+      "steps": [
+        {
+          "id": "step-1",
+          "label": "step-1 — 핸들 역할이 보인다",
+          "status": "completed"
+        },
+        {
+          "id": "step-2",
+          "label": "step-2 — 회전이 실제로 된다",
+          "status": "pending"
+        },
+        {
+          "id": "step-3",
+          "label": "step-3 — 조작 결과 게이트",
+          "status": "pending"
+        }
+      ],
+      "execution_mode": "continuous",
+      "approval": {
+        "approved_by": "user",
+        "approved_at": "2026-07-20",
+        "plan_sha256": "b2759f766b767653b918395b83d9795acd4f66ce4d7b44e4cbbdb0556f7e74e9"
       },
       "allowed_stop_reasons": [
         "completed",
