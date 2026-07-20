@@ -3012,12 +3012,12 @@
       "plan_path": "plans/2026-07-21-eu5-judgeability-gate.md",
       "changeset_path": "changesets/20260721-judgeability-observation-setup",
       "next_step": "step-1",
-      "current_step": "step-1",
+      "current_step": "step-2",
       "steps": [
         {
           "id": "step-1",
           "label": "step-1 — 관측 준비",
-          "status": "pending"
+          "status": "completed"
         },
         {
           "id": "step-2",
@@ -3045,8 +3045,11 @@
         "external_authority_required",
         "user_stopped"
       ],
-      "stop_reason": null,
-      "stop_detail": {},
+      "stop_reason": "user_stopped",
+      "stop_detail": {
+        "reason": "EU5 step-2 는 설계된 인계 지점이다 — 증거의 소유자가 사용자다. 에이전트가 과업을 대신 수행하면 게이트가 무효가 된다.",
+        "awaiting": "사용자가 과업 3건(요소 선택·크기 변경·색 토큰 변경)을 사전 설명 없이 수행한 결과"
+      },
       "session_ids": [
         "claude:f84fec52-c73d-4a49-b95f-53d9e9345cb2"
       ],
