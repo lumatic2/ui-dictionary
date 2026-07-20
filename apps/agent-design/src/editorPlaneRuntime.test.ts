@@ -41,4 +41,13 @@ describe('WebGPU 선택 틴트 프리멀티플라이 (ECT2 후속)', () => {
     const 곱함 = composite(premultiplied(SELECTION_TINT, 0.18), 빨강)
     expect(toHex(곱함)).toEqual([205, 36, 68])
   })
+
+  it('정렬 가이드(알파 0.72)도 같은 규칙을 지난다', () => {
+    // 독립 검증 near-miss: 선택 사각형(0.18)만 테스트하고 가이드 호출부는 커버가 없었다.
+    // 가이드 렌더 경로가 바뀌면 조용히 깨질 수 있어 여기서 함께 고정한다.
+    const guide = premultiplied(SELECTION_TINT, 0.72)
+    expect(guide).toEqual([0.49 * 0.72, 0.18 * 0.72, 0.83 * 0.72, 0.72])
+    // 프리멀티플라이드 값은 절대 알파를 넘지 않는다 — 넘으면 밑색을 밝히는 그 결함이다.
+    expect(guide.slice(0, 3).every((c) => c <= guide[3])).toBe(true)
+  })
 })

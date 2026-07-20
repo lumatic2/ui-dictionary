@@ -3116,8 +3116,8 @@
       "status": "active",
       "plan_path": "plans/2026-07-21-ect2-color-swatch-and-picker.md",
       "changeset_path": "changesets",
-      "next_step": "step-3",
-      "current_step": "step-2",
+      "next_step": null,
+      "current_step": "step-3",
       "steps": [
         {
           "id": "step-1",
@@ -3134,7 +3134,8 @@
         {
           "id": "step-3",
           "label": "step-3 — 키보드로도 되고, 사람이 본다",
-          "status": "pending"
+          "status": "completed",
+          "changeset": "20260721-color-picker-keyboard"
         }
       ],
       "execution_mode": "continuous",

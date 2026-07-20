@@ -433,6 +433,35 @@ describe('키보드로 색을 고른다 (ECT2 step-3)', () => {
     expect(picker.querySelector('[data-active]')).not.toBeNull()
   })
 
+  it('Tab으로 목록을 빠져나가면 목록이 닫힌다 — 유령 UI를 남기지 않는다', () => {
+    // 독립 검증이 잡은 결함(refuted, 2026-07-21): Tab으로 목록 끝을 지나면 포커스는
+    // 툴바로 가는데 목록은 화면에 그대로 떠 있었다. Esc·화살표·Enter만 테스트했던 탓이다.
+    const { view, picker } = openPicker()
+    const 바깥 = window.document.createElement('button')
+    window.document.body.appendChild(바깥)
+    fireEvent.blur(picker, { relatedTarget: 바깥 })
+    expect(view.queryByTestId('color-picker-background')).toBeNull()
+    바깥.remove()
+  })
+
+  it('목록 안에서 포커스가 옮겨가는 건 닫지 않는다', () => {
+    // 검색창 → 항목 이동은 정상 사용이다. 이걸 닫으면 Tab 탐색이 불가능해진다.
+    const { view, picker } = openPicker()
+    const option = picker.querySelector('.color-picker-option')!
+    fireEvent.blur(picker, { relatedTarget: option })
+    expect(view.queryByTestId('color-picker-background')).not.toBeNull()
+  })
+
+  it('Tab으로 나갈 때는 포커스를 붙잡지 않는다 — 포커스 덫 금지', () => {
+    const { view, picker } = openPicker()
+    const 바깥 = window.document.createElement('button')
+    window.document.body.appendChild(바깥)
+    바깥.focus()
+    fireEvent.blur(picker, { relatedTarget: 바깥 })
+    expect(window.document.activeElement).toBe(바깥)
+    바깥.remove()
+  })
+
   it('키보드만으로 색 변경 1회 완주', () => {
     const { view, operations } = openPicker()
     const search = view.getByTestId('color-picker-search-background')

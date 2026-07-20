@@ -198,12 +198,18 @@ function ColorBindingField({ field, tokenSetId, commit }: {
     swatchRef.current?.focus()
   })
 
-  const close = () => {
+  /**
+   * @param restoreFocus 견본으로 포커스를 되돌릴지.
+   *
+   * Esc·선택으로 닫을 때는 되돌린다 — 안 그러면 키보드 사용자가 문서 처음으로 튕긴다.
+   * **Tab으로 나갈 때는 되돌리지 않는다** — 사용자가 스스로 다음 컨트롤로 간 것이라
+   * 붙잡으면 포커스 덫이 된다.
+   */
+  const close = (restoreFocus = true) => {
     setOpen(false)
     setQuery('')
     setCursor(0)
-    // 포커스를 되돌려 놓지 않으면 키보드 사용자가 문서 처음으로 튕긴다.
-    pendingFocus.current = true
+    pendingFocus.current = restoreFocus
   }
 
   const choose = (name: string) => {
@@ -247,7 +253,21 @@ function ColorBindingField({ field, tokenSetId, commit }: {
       <span className="color-token-name">{binding}</span>
     </span>
     {!resolved && <span className="color-field-note">이 토큰은 지금 문서의 토큰 세트에서 해석되지 않는다.</span>}
-    {open && <div className="color-picker" data-testid={`color-picker-${field.key}`} onKeyDown={onKeyDown}>
+    {open && <div
+      className="color-picker"
+      data-testid={`color-picker-${field.key}`}
+      onKeyDown={onKeyDown}
+      /*
+       * 포커스가 목록 밖으로 나가면 닫는다.
+       *
+       * Tab으로 목록을 다 지나면 포커스는 툴바로 가는데 목록은 화면에 그대로 떠 있었다
+       * (독립 검증 refuted, 2026-07-21) — 키보드 사용자에게 유령 UI다. 되돌리지는 않는다:
+       * 사용자가 스스로 나간 것이라 붙잡으면 포커스 덫이 된다.
+       */
+      onBlur={(event) => {
+        if (!event.currentTarget.contains(event.relatedTarget as Node | null)) close(false)
+      }}
+    >
       <input
         className="color-picker-search"
         data-testid={`color-picker-search-${field.key}`}
