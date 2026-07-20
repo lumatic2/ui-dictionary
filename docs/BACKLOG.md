@@ -355,3 +355,23 @@
   - Completed: 2026-07-18
   - Result: 전역 절 제거(grep 0) + 양 에이전트 E2E skill 발화·스크린샷 관측 (1차 FAIL→교정→PASS)
   - Evidence: changesets/20260718-global-routing-removal/README.md, changesets/20260718-skill-entry-e2e/README.md
+
+## template-production-hardening (closed 2026-07-20 — 기준 7 미달 명시)
+
+horizon 문서: `archive/horizons/2026-07-template-production-hardening.md` (닫는 기준 9항 대조·크기/분량/프리모템 회고 수록)
+plan doc: `archive/plans/2026-07-20-th*.md` · 증거: `evidence/template-production-hardening/`
+
+- TH1 — 코드 가독성 복구 + 회귀 방어망: 300자 초과 0, 복구 전후 서명 동일 (th1-legibility.md)
+- TH2 — 청사진 6종 실재화: 좌표 변형 clone이 통과 불가한 기계 검증 (th2-blueprints.md)
+- TH3 — AskewlyDesign 템플릿 편집 배선: 편집 표면을 단일화, template-studio 은퇴 (th3-studio.md)
+- TH7 — 캔버스 렌더 충실도: 토큰 색·글꼴·이미지가 실제로 그려진다 (th7-render-fidelity.md)
+- TH9 — 텍스트 맞춤: 글자 크기가 폭·줄 수를 본다. 넘침 2→0 (th9-text-fitting.md)
+- TH4 — 검증 실체화: exporter 실행 + negative probe 5종 exit≠0 (th4-verification.md)
+- TH5 — Codex imagegen 소재 공급자: 라이브 실호출 실증, 깨진 OpenAI 어댑터 제거 (th5-imagegen.md)
+- TH10 — 편집기 결함 마감: 작업하다 잃는 결함 4종 차단 (th10-editor-defects.md)
+- TH11 — 인쇄 규격 mm 기반 재정의: 규격 선언 계약·A계열·도련·재단 표시 (th11-print-spec.md)
+- TH12 — 자기완결 산출물: 소재가 문서에 실린다(data URI) (th12-self-contained.md)
+- TH6 — 실사용 실연 + close audit: 명함 1건 전 루프 통과, 결함 3건 계수 (th6-commission.md)
+
+**미달로 닫힌 항목**: 닫는 기준 7(실사용) 중 편집기 축 — 사람이 화면을 읽지 못해 판단 불가.
+이 미달이 `plans/horizons/2026-07-editor-legibility.md`의 개설 근거다.
