@@ -2,6 +2,7 @@ import { cleanup, fireEvent, render } from '@testing-library/react'
 import { createDocumentFixture, type CanvasDocument, type CanvasOperation } from '@askewly/canvas-core'
 import { afterEach, describe, expect, it } from 'vitest'
 import { INSPECTOR_SECTIONS, PropertyInspector } from './PropertyInspector'
+import { documentTokens } from './documentTokens'
 
 afterEach(cleanup)
 
@@ -18,6 +19,17 @@ function setup(overrides?: Partial<CanvasDocument>) {
     onMaterialize={() => {}}
   />)
   return { view, operations, id, node: document.nodes[id] }
+}
+
+/** 문서까지 함께 돌려주는 setup — 견본 색 대조에 문서의 tokenSetId가 필요하다. */
+function setupWithDocument() {
+  const base = createDocumentFixture(1000)
+  const document = structuredClone(base)
+  const view = render(<PropertyInspector
+    document={document} onOperation={() => {}} bridgeConnected={false} onMaterialize={() => {}}
+  />)
+  const id = document.selection[0]
+  return { view, document, binding: document.nodes[id].tokenBindings.background }
 }
 
 describe('기하값이 보이고 고쳐진다 (EU4 step-1)', () => {
@@ -107,10 +119,12 @@ describe('섹션이 규약 순서를 따른다 (EU4 step-2)', () => {
     const { view } = setup()
     const visual = view.container.querySelector('[data-inspector-section="visual"]')!
     const structure = view.container.querySelector('[data-inspector-section="structure"]')!
-    expect(visual.textContent).toContain('Token · background')
+    // ECT2 step-1에서 라벨이 `Token · background`(내부 용어)에서 사용자 언어로 바뀌었다.
+    // 섹션 소속을 보는 테스트이므로 새 라벨로 대조한다.
+    expect(visual.textContent).toContain('배경 색')
     expect(structure.textContent).toContain('Layout')
     // 섞이면 안 된다.
-    expect(structure.textContent).not.toContain('Token · background')
+    expect(structure.textContent).not.toContain('배경 색')
   })
 
   it('빈 섹션은 가짜 컨트롤 대신 상태를 말한다', () => {
@@ -171,5 +185,71 @@ describe('선택 종류에 따라 달라진다 (EU4 step-3)', () => {
       expect(view.getByTestId('geometry-x'), `${kind} 에 기하가 없다`).toBeTruthy()
       cleanup()
     }
+  })
+})
+
+/**
+ * ECT2 step-1 — 색이 색으로 보인다.
+ *
+ * EU5 관측 계측: 화면 전체에 "색"이라는 단어 **0건**, 색 견본 **0개**.
+ * 여기서 재는 건 그 계측의 정확한 역이다.
+ */
+describe('색이 견본으로 보인다 (ECT2 step-1)', () => {
+  it('화면에 "색"이라는 말이 있다 — EU5 계측 0건의 역', () => {
+    const { view } = setup()
+    const visual = view.container.querySelector('[data-inspector-section="visual"]')!
+    expect(visual.textContent).toContain('색')
+  })
+
+  it('견본이 캔버스와 **같은 함수**로 해석한 색을 칠한다', () => {
+    const { view, document, binding } = setupWithDocument()
+    const swatch = view.getByTestId('color-swatch-background')
+    // 대조 상대는 컴포넌트가 아니라 렌더러가 쓰는 해석 함수다.
+    const expected = documentTokens(document.tokenSetId).resolve(binding)
+    expect(expected).toBeTruthy()
+    expect(swatch.getAttribute('data-resolved')).toBe(expected)
+  })
+
+  it('라벨이 사용자 언어다 — `Token · background`가 아니다', () => {
+    const { view } = setup()
+    const visual = view.container.querySelector('[data-inspector-section="visual"]')!
+    expect(visual.textContent).toContain('배경 색')
+    expect(visual.textContent).not.toContain('Token · background')
+  })
+
+  it('색 옆에 토큰 이름이 글자로 함께 있다 — 색만으로 말하지 않는다', () => {
+    const { view, binding } = setupWithDocument()
+    const field = view.getByTestId('color-field-background')
+    expect(field.textContent).toContain(binding)
+    expect(view.getByTestId('color-swatch-background').getAttribute('aria-label')).toContain('배경 색')
+  })
+
+  it('해석 실패는 회색 폴백이 아니라 미해결이라고 적는다', () => {
+    const base = createDocumentFixture(1000)
+    const id = base.selection[0]
+    const document = structuredClone(base)
+    document.nodes[id].tokenBindings.background = 'surface.longgone'
+    const view = render(<PropertyInspector
+      document={document} onOperation={() => {}} bridgeConnected={false} onMaterialize={() => {}}
+    />)
+    const swatch = view.getByTestId('color-swatch-background')
+    expect(swatch.getAttribute('data-resolved')).toBeNull()
+    expect(swatch.className).toContain('unresolved')
+    expect(view.getByTestId('color-field-background').textContent).toContain('해석되지 않는다')
+  })
+
+  it('색이 아닌 토큰은 색 컨트롤이 되지 않는다', () => {
+    // 글꼴 토큰을 색 견본으로 보여주면 거짓말이 된다.
+    const base = createDocumentFixture(1000)
+    const id = base.selection[0]
+    const document = structuredClone(base)
+    document.tokenSetId = 'askewly.warm'
+    document.nodes[id].tokenBindings = { fill: 'surface.canvas', fontFamily: 'type.heading' }
+    const view = render(<PropertyInspector
+      document={document} onOperation={() => {}} bridgeConnected={false} onMaterialize={() => {}}
+    />)
+    expect(view.queryByTestId('color-field-fill')).not.toBeNull()
+    expect(view.queryByTestId('color-field-fontFamily')).toBeNull()
+    expect(view.queryByTestId('property-token-fontFamily')).not.toBeNull()
   })
 })

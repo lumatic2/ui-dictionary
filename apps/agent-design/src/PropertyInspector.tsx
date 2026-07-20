@@ -9,7 +9,7 @@ import {
   type PropValue,
   type PropertyField,
 } from '@askewly/canvas-core'
-import { isKnownTokenSet, listDocumentTokenSets } from './documentTokens'
+import { documentTokens, isKnownTokenSet, listDocumentTokenSets } from './documentTokens'
 
 /**
  * 기하 필드 — 위치·크기·각도.
@@ -104,6 +104,68 @@ function DraftInput({ field, commit }: { field: PropertyField; commit: (value: P
     onChange={(event) => setValue(event.target.value)}
     onBlur={() => commit(field.valueType === 'number' ? Number(value) : value)}
   />
+}
+
+/**
+ * 토큰 바인딩 키 → 사용자 언어. `Token · fill`은 내부 용어였다.
+ *
+ * EU5 관측에서 사용자가 색을 못 찾은 이유 중 하나가 이것이다 — 화면 어디에도
+ * "색"이라는 단어가 없었다(계측 0건). 목록에 없는 키는 키 이름을 그대로 쓴다.
+ */
+const COLOR_BINDING_LABELS: Record<string, string> = {
+  fill: '채움 색',
+  background: '배경 색',
+  color: '글자 색',
+}
+
+/**
+ * 이 필드가 색인가.
+ *
+ * 토큰이 해석되면 그 토큰의 `kind`가 답한다(ECT1 step-2가 두 어휘에 심은 값).
+ * 해석되지 않는 죽은 바인딩은 kind를 물을 대상이 없으므로 **키 계약**으로 판정한다 —
+ * `fill`·`background`·`color`는 렌더러가 색으로 칠하는 키다. 죽었다고 색 컨트롤에서
+ * 빼버리면 사용자가 그걸 고칠 방법이 사라진다.
+ */
+function isColorBinding(tokenSetId: string, field: PropertyField): boolean {
+  if (field.scope !== 'token') return false
+  const binding = String(field.value ?? '')
+  const entry = documentTokens(tokenSetId).listTokens().find((token) => token.name === binding)
+  if (entry) return entry.kind === 'color'
+  return field.key in COLOR_BINDING_LABELS
+}
+
+/**
+ * 색 바인딩 하나 — **해석된 색 견본 + 토큰 이름**.
+ *
+ * 견본에 칠하는 색은 렌더러가 캔버스를 칠할 때 쓰는 그 함수에서 온다
+ * (`documentTokens().resolve`). 별도 해석 경로를 만들면 견본과 캔버스가 다른 색을
+ * 보여주게 되고, 그건 조용히 틀리는 종류의 결함이다.
+ *
+ * 색만으로 상태를 말하지 않는다(anti-patterns 4) — 견본 옆에 토큰 이름이 글자로 함께 있고,
+ * 해석 실패는 회색 폴백이 아니라 **미해결이라고 적는다**.
+ */
+function ColorBindingField({ field, tokenSetId }: { field: PropertyField; tokenSetId: string }) {
+  const binding = String(field.value ?? '')
+  const resolved = documentTokens(tokenSetId).resolve(binding)
+  const label = COLOR_BINDING_LABELS[field.key] ?? field.key
+
+  return <div className="color-field" data-testid={`color-field-${field.key}`}>
+    <span className="color-field-label">{label}</span>
+    <span className="color-field-value">
+      {resolved
+        ? <span
+            className="color-swatch"
+            data-testid={`color-swatch-${field.key}`}
+            data-resolved={resolved}
+            style={{ background: resolved }}
+            role="img"
+            aria-label={`${label}: ${binding}`}
+          />
+        : <span className="color-swatch color-swatch-unresolved" data-testid={`color-swatch-${field.key}`} role="img" aria-label={`${label}: 해석되지 않음`} />}
+      <span className="color-token-name">{binding}</span>
+    </span>
+    {!resolved && <span className="color-field-note">이 토큰은 지금 문서의 토큰 세트에서 해석되지 않는다.</span>}
+  </div>
 }
 
 export function PropertyInspector({ document, onOperation, bridgeConnected, onMaterialize }: Props) {
@@ -224,9 +286,12 @@ export function PropertyInspector({ document, onOperation, bridgeConnected, onMa
       <Section id="visual">
         {fieldsBySection.visual.length === 0
           ? <p className="section-empty">이 노드에 묶인 토큰이 없다.</p>
-          : fieldsBySection.visual.map((field) => <label className="property-field" key={`${field.scope}.${field.key}`}>{field.label}
-            <DraftInput field={field} commit={(value) => commitProperty(field, value)} />
-          </label>)}
+          : fieldsBySection.visual.map((field) => isColorBinding(document.tokenSetId, field)
+            // 색은 색으로 보여준다. 색이 아닌 토큰(글꼴 등)은 기존 텍스트 입력 그대로 둔다.
+            ? <ColorBindingField key={`${field.scope}.${field.key}`} field={field} tokenSetId={document.tokenSetId} />
+            : <label className="property-field" key={`${field.scope}.${field.key}`}>{field.label}
+              <DraftInput field={field} commit={(value) => commitProperty(field, value)} />
+            </label>)}
       </Section>
       <Section id="export">
         {/* 내보내기 기능 자체는 template-core 소관이다. 빈 자리에 가짜 버튼을 두지 않고 상태만 말한다. */}
