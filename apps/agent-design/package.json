@@ -10,6 +10,7 @@
     "build": "tsc -b && vite build",
     "pretest": "npm --prefix ../../packages/canvas-core run build && npm --prefix ../../packages/template-core run build",
     "test": "vitest run",
+    "typecheck": "tsc -b",
     "preintegration": "npm --prefix ../../packages/canvas-core run build",
     "integration": "node scripts/run-integration.mjs",
     "validate:integration": "node scripts/validate-integration.mjs",

@@ -3,12 +3,13 @@ import { cleanup, fireEvent, render } from '@testing-library/react'
 import { afterEach, describe, expect, it } from 'vitest'
 import {
   commitOperation,
+  createDocumentFixture,
   createHistory,
   type CanvasDocument,
   type CanvasNode,
   type CanvasOperation,
 } from '@askewly/canvas-core'
-import { LayersPanel } from './LayersPanel'
+import { LAYER_KIND_ICONS, LayersPanel } from './LayersPanel'
 
 afterEach(cleanup)
 
@@ -217,5 +218,26 @@ describe('LayersPanel', () => {
     expect(view.getByTestId('layer-frame-e').getAttribute('data-drop-target')).toBe('invalid')
     fireEvent.drop(view.getByTestId('layer-frame-e'), { dataTransfer: lockedTransfer })
     expect(view.getByTestId('probe-revision').textContent).toBe('1')
+  })
+})
+
+describe('타입이 아이콘으로 갈린다 (EU3 step-1)', () => {
+  it('7종이 서로 다른 아이콘을 갖는다 — 겹치는 종류가 없다', () => {
+    const kinds: Array<CanvasNode['kind']> = ['frame', 'group', 'code-component', 'text', 'image', 'shape', 'instance']
+    const icons = kinds.map((kind) => LAYER_KIND_ICONS[kind])
+    // 전에는 frame·image·shape가 전부 '▭'로 뭉쳐 있었다.
+    expect(new Set(icons).size).toBe(kinds.length)
+    expect(icons.every((icon) => icon.length > 0)).toBe(true)
+  })
+
+  it('행이 자기 종류를 아이콘과 속성 양쪽으로 말한다', () => {
+    const document = createDocumentFixture(1000)
+    const view = render(<LayersPanel document={document} onOperation={() => {}} />)
+    const rows = [...view.container.querySelectorAll('.layer-kind')]
+    expect(rows.length).toBeGreaterThan(0)
+    for (const row of rows) {
+      const kind = row.getAttribute('data-layer-kind') as CanvasNode['kind']
+      expect(row.textContent).toBe(LAYER_KIND_ICONS[kind])
+    }
   })
 })

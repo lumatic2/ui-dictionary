@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "active_work_id": "EU2",
+  "active_work_id": "EU3",
   "works": {
     "SFB1": {
       "title": "Structure Contract And Clean Production",
@@ -2901,6 +2901,56 @@
       "updated_at": "2026-07-20",
       "notes": "Registered atomically by canonical harness approve_harness_plan.py after plan validation.",
       "completed": "2026-07-21"
+    },
+    "EU3": {
+      "work_id": "EU3",
+      "horizon_id": "editor-legibility",
+      "milestone_id": "EU3",
+      "status": "active",
+      "plan_path": "plans/2026-07-21-eu3-layer-legibility.md",
+      "changeset_path": "changesets/20260721-layer-kind-icons",
+      "next_step": "step-1",
+      "current_step": "step-1",
+      "steps": [
+        {
+          "id": "step-1",
+          "label": "step-1 — 타입이 아이콘으로 갈린다",
+          "status": "pending"
+        },
+        {
+          "id": "step-2",
+          "label": "step-2 — 이름으로 찾는다",
+          "status": "pending"
+        },
+        {
+          "id": "step-3",
+          "label": "step-3 — 판독성 게이트",
+          "status": "pending"
+        }
+      ],
+      "execution_mode": "continuous",
+      "approval": {
+        "approved_by": "user",
+        "approved_at": "2026-07-20",
+        "plan_sha256": "00e452b99b72c1ce41a36935c33fc9b56b5c213d3915e859cac2f6cb66edcc64"
+      },
+      "allowed_stop_reasons": [
+        "completed",
+        "blocked",
+        "decision_required",
+        "risk_gate",
+        "secret_required",
+        "external_authority_required",
+        "user_stopped"
+      ],
+      "stop_reason": null,
+      "stop_detail": {},
+      "session_ids": [
+        "claude:f84fec52-c73d-4a49-b95f-53d9e9345cb2"
+      ],
+      "owner_session_uuid": "claude:f84fec52-c73d-4a49-b95f-53d9e9345cb2",
+      "updated_at": "2026-07-20",
+      "notes": "Registered atomically by canonical harness approve_harness_plan.py after plan validation."
     }
   }
 }

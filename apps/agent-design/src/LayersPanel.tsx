@@ -3,6 +3,7 @@ import {
   planNodeDrop,
   planSiblingReorder,
   type CanvasDocument,
+  type CanvasNode,
   type CanvasOperation,
   type NodeId,
 } from '@askewly/canvas-core'
@@ -20,6 +21,23 @@ interface LayerRow {
 }
 
 const LAYER_DRAG_TYPE = 'application/x-agent-design-layer'
+
+/**
+ * 종류마다 다른 글자.
+ *
+ * `Record<CanvasNode['kind'], …>`로 두는 게 핵심이다 — 전에는 삼항 연쇄 끝의 `: '▭'` 폴백이
+ * frame·image·shape 세 종류를 조용히 삼켰고, 1000행 트리에서 프레임과 이미지가 같아 보였다.
+ * 이제 새 kind가 생기면 여기가 비어 컴파일이 거부한다.
+ */
+export const LAYER_KIND_ICONS: Record<CanvasNode['kind'], string> = {
+  frame: '▣',
+  group: '⌗',
+  'code-component': '⧉',
+  text: 'T',
+  image: '▤',
+  shape: '◑',
+  instance: '◇',
+}
 
 function operationId(prefix: string) {
   return { id: `${prefix}-${performance.now()}`, at: new Date().toISOString() }
@@ -227,7 +245,7 @@ export function LayersPanel({ document, onOperation }: Props) {
               onClick={(event) => { event.stopPropagation(); toggleExpanded(row.id) }}
             >{row.expanded ? '▾' : '▸'}</button>
             : <span className="layer-toggle" aria-hidden="true" />}
-          <span className="layer-kind" aria-hidden="true">{node.kind === 'code-component' ? '⧉' : node.kind === 'instance' ? '◇' : node.kind === 'text' ? 'T' : node.kind === 'group' ? '⌗' : '▭'}</span>
+          <span className="layer-kind" data-layer-kind={node.kind} title={node.kind}>{LAYER_KIND_ICONS[node.kind]}</span>
           {renaming
             ? <input
               className="layer-rename"
