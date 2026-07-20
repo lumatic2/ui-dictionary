@@ -3,6 +3,9 @@
 
 export type TokenSetId = 'askewly.default' | 'askewly.dark'
 
+/** Mirrors TokenKind in @askewly/template-core so both vocabularies describe tokens the same way. */
+export type EditorTokenKind = 'color' | 'fontFamily'
+
 /** Neutral background used for canvas nodes with no tokenBindings.background. */
 export const FALLBACK_BACKGROUND_TOKEN = 'surface.muted'
 
@@ -49,4 +52,27 @@ export const editorTokenMaps: Record<TokenSetId, Record<string, string>> = {
     "border.focus": "#B298DC",
     "border.accent": "#A663CC"
   },
+}
+
+/** Token kind per name, derived from the SSOT's DTCG `$type`. Both sets share these names. */
+export const editorTokenKinds: Record<string, EditorTokenKind> = {
+  "surface.base": "color",
+  "surface.raised": "color",
+  "surface.overlay": "color",
+  "surface.muted": "color",
+  "surface.secondary": "color",
+  "surface.tint": "color",
+  "text.default": "color",
+  "text.muted": "color",
+  "text.secondary": "color",
+  "text.on-accent": "color",
+  "action.primary": "color",
+  "action.secondary": "color",
+  "action.destructive": "color",
+  "accent.base": "color",
+  "accent.foreground": "color",
+  "border.default": "color",
+  "border.input": "color",
+  "border.focus": "color",
+  "border.accent": "color"
 }

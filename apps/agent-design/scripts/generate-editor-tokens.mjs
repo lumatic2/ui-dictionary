@@ -175,9 +175,44 @@ function buildSemanticColorMap(mode) {
   return map;
 }
 
+// DTCG `$type` is declared on a group and inherited by its descendants, so the
+// kind of a leaf is whatever the nearest ancestor declaring `$type` says.
+function declaredType(dotPath) {
+  const parts = dotPath.split(".");
+  for (let i = parts.length; i > 0; i -= 1) {
+    const node = getNode(root, parts.slice(0, i).join("."));
+    if (node?.$type) return node.$type;
+  }
+  return null;
+}
+
+// The editor vocabulary carried no kind at all, so the canvas could not tell a
+// colour token from a font one and would have offered both in a colour picker
+// (ECT1 step-1 left it null rather than guessing). Derive it from the SSOT.
+const DTCG_TO_TOKEN_KIND = { color: "color", fontFamily: "fontFamily" };
+
+function buildSemanticKindMap() {
+  const map = {};
+  walkLeaves(getNode(root, "color.semantic"), [], (leafPath) => {
+    const dtcgType = declaredType(`color.semantic.${leafPath}`);
+    const kind = DTCG_TO_TOKEN_KIND[dtcgType];
+    if (!kind) {
+      // Guessing here is how a font token ends up in a colour list. Fail loudly:
+      // a new DTCG type means someone must decide what the editor does with it.
+      throw new Error(
+        `color.semantic.${leafPath} has DTCG $type "${dtcgType}", which maps to no editor token kind. ` +
+          `Add it to DTCG_TO_TOKEN_KIND (and to TokenKind in template-core) before regenerating.`,
+      );
+    }
+    map[leafPath] = kind;
+  });
+  return map;
+}
+
 function buildEditorTokensTs() {
   const defaultMap = buildSemanticColorMap("light");
   const darkMap = buildSemanticColorMap("dark");
+  const kindMap = buildSemanticKindMap();
 
   // Report which semantic tokens have no explicit dark override (they fall
   // back to their light value in darkMap, per AI plan decision log).
@@ -199,6 +234,9 @@ function buildEditorTokensTs() {
   lines.push("");
   lines.push("export type TokenSetId = 'askewly.default' | 'askewly.dark'");
   lines.push("");
+  lines.push("/** Mirrors TokenKind in @askewly/template-core so both vocabularies describe tokens the same way. */");
+  lines.push("export type EditorTokenKind = 'color' | 'fontFamily'");
+  lines.push("");
   lines.push("/** Neutral background used for canvas nodes with no tokenBindings.background. */");
   lines.push("export const FALLBACK_BACKGROUND_TOKEN = 'surface.muted'");
   lines.push("");
@@ -206,6 +244,9 @@ function buildEditorTokensTs() {
   lines.push("  'askewly.default': " + JSON.stringify(defaultMap, null, 2).replace(/\n/g, "\n  ") + ",");
   lines.push("  'askewly.dark': " + JSON.stringify(darkMap, null, 2).replace(/\n/g, "\n  ") + ",");
   lines.push("}");
+  lines.push("");
+  lines.push("/** Token kind per name, derived from the SSOT's DTCG `$type`. Both sets share these names. */");
+  lines.push("export const editorTokenKinds: Record<string, EditorTokenKind> = " + JSON.stringify(kindMap, null, 2));
   lines.push("");
   return lines.join("\n");
 }

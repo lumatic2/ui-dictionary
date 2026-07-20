@@ -1,5 +1,10 @@
 import { listTokenSets, resolveTokenSet, type TokenKind } from '@askewly/template-core'
-import { editorTokenMaps, FALLBACK_BACKGROUND_TOKEN, type TokenSetId } from './editorTokens'
+import {
+  editorTokenKinds,
+  editorTokenMaps,
+  FALLBACK_BACKGROUND_TOKEN,
+  type TokenSetId,
+} from './editorTokens'
 
 /**
  * 문서 토큰 해석 — 두 어휘가 한 캔버스에 공존한다.
@@ -78,7 +83,13 @@ export function documentTokens(tokenSetId: string): DocumentTokens {
       source: 'editor',
       resolve: (binding) => (binding ? (editorMap[binding] ?? null) : null),
       listTokens: () =>
-        Object.entries(editorMap).map(([name, value]) => ({ name, kind: null, value })),
+        Object.entries(editorMap).map(([name, value]) => ({
+          // 생성기가 SSOT의 DTCG `$type`에서 유도한 값이다(ECT1 step-2). 여기서 기본값을
+          // 지어내지 않는다 — 이름이 kinds에 없다는 건 생성물이 어긋났다는 신호다.
+          kind: editorTokenKinds[name] ?? null,
+          name,
+          value,
+        })),
       // 바인딩이 **없을 때만** 중립 배경으로 떨어진다(기존 편집기 문서 계약).
       // 바인딩이 있는데 그 세트에 없으면 폴백하지 않는다 — 그게 템플릿이 회색이 된 원인이었다.
       resolveBackground: (binding) =>

@@ -2,7 +2,7 @@ import { describe, expect, it } from 'vitest'
 import { validateTokenMode } from '@askewly/canvas-core'
 import { resolveTokenSet } from '@askewly/template-core'
 import { documentTokens, isKnownTokenSet, listDocumentTokenSets } from './documentTokens'
-import { editorTokenMaps, FALLBACK_BACKGROUND_TOKEN } from './editorTokens'
+import { editorTokenKinds, editorTokenMaps, FALLBACK_BACKGROUND_TOKEN } from './editorTokens'
 
 /**
  * TH7 step-1 — 두 토큰 어휘가 한 캔버스에 공존한다. 출처로 가르고, 폴백하지 않는다.
@@ -109,10 +109,33 @@ describe('토큰 열거 (ECT1 step-1)', () => {
     }
   })
 
-  it('편집기 토큰의 종류는 아직 모른다 — 색으로 단정하지 않는다', () => {
-    // 여기서 'color'로 채우면 나중에 글꼴 토큰이 들어오는 순간 색 목록에 섞인다.
-    // step-2에서 생성기가 SSOT로부터 채우고, 그때 이 테스트가 뒤집힌다.
-    expect(documentTokens('askewly.default').listTokens().every((t) => t.kind === null)).toBe(true)
+  it('편집기 토큰도 자기 종류를 안다 — 생성기가 SSOT에서 유도한다 (step-2)', () => {
+    // step-1에서는 전부 null이었다("모르는 건 모른다"). step-2가 그걸 채웠다.
+    const listed = documentTokens('askewly.default').listTokens()
+    expect(listed.length).toBeGreaterThan(0)
+    expect(listed.filter((t) => t.kind === null)).toEqual([])
+
+    // 값은 손으로 적은 게 아니라 생성물에서 온다.
+    for (const entry of listed) {
+      expect(entry.kind).toBe(editorTokenKinds[entry.name])
+    }
+  })
+
+  it('두 어휘가 종류를 같은 모양으로 말한다 — 색만 걸러낼 수 있다', () => {
+    // ECT2의 색 선택기가 서는 자리. 한쪽만 kind를 가지면 필터를 두 벌 짜게 된다.
+    for (const setId of ['askewly.warm', 'askewly.default']) {
+      const colors = documentTokens(setId).listTokens().filter((t) => t.kind === 'color')
+      expect(colors.length).toBeGreaterThan(0)
+      expect(colors.every((t) => t.kind === 'color')).toBe(true)
+    }
+
+    // 템플릿 어휘의 글꼴 토큰은 색 필터에서 빠진다.
+    const warmColors = documentTokens('askewly.warm')
+      .listTokens()
+      .filter((t) => t.kind === 'color')
+      .map((t) => t.name)
+    expect(warmColors).toContain('surface.canvas')
+    expect(warmColors).not.toContain('type.heading')
   })
 
   it('두 어휘는 열거에서도 서로를 알지 못한다 — 양방향', () => {
