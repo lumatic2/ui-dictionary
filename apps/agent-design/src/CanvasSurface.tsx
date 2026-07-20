@@ -1,6 +1,5 @@
 import { memo, useCallback, useEffect, useMemo, useRef, useState } from 'react'
 import {
-  alignmentGuides,
   boundsChanged,
   captureBounds,
   marqueeHitTest,
@@ -13,6 +12,7 @@ import {
   reduceSelection,
   resizeBounds,
   selectionBounds,
+  snapBounds,
   traverseSelection,
   zoomAroundPoint,
   type AlignmentGuide,
@@ -194,6 +194,7 @@ export function CanvasSurface({ document, editorPlaneFailure = null, onOperation
   const [previewBounds, setPreviewBounds] = useState<BoundsById>({})
   const [previewRotation, setPreviewRotation] = useState<number | null>(null)
   const [guides, setGuides] = useState<AlignmentGuide[]>([])
+  const [snapEnabled, setSnapEnabled] = useState(true)
   const [dropTargetId, setDropTargetId] = useState<string | null>(null)
   const spaceHeld = useRef(false)
   const panGesture = useRef<{ start: { x: number; y: number }; panBefore: { x: number; y: number } } | null>(null)
@@ -307,12 +308,15 @@ export function CanvasSurface({ document, editorPlaneFailure = null, onOperation
       return
     }
     const delta = { x: event.clientX - gesture.start.x, y: event.clientY - gesture.start.y }
-    const next = gesture.kind === 'move'
+    const dragged = gesture.kind === 'move'
       ? moveBounds(gesture.before, delta, document.viewport.zoom)
       : resizeBounds(gesture.before, gesture.handle ?? 'se', delta, document.viewport.zoom)
-    setPreviewBounds(next)
-    setGuides(alignmentGuides(document, next))
-  }, [document])
+    // 스냅이 보정한 좌표를 그대로 preview 로 쓴다 — 가이드만 그리고 원래 좌표를 커밋하면
+    // 화면의 선과 문서의 값이 어긋난다(EU2 실사에서 발견된 상태가 정확히 그거였다).
+    const snapped = snapBounds(document, dragged, { handle: gesture.kind === 'resize' ? gesture.handle ?? 'se' : undefined, enabled: snapEnabled })
+    setPreviewBounds(snapped.bounds)
+    setGuides(snapped.guides)
+  }, [document, snapEnabled])
 
   const finishGesture = useCallback(() => {
     const gesture = gestureRef.current
@@ -452,6 +456,17 @@ export function CanvasSurface({ document, editorPlaneFailure = null, onOperation
   >
     <div className="canvas-content" data-testid="canvas-content" style={{ transform }}>
       {nodeElements}
+    </div>
+    <div className="canvas-toolbar" onPointerDown={(event) => event.stopPropagation()}>
+      <label className="canvas-toggle">
+        <input
+          type="checkbox"
+          data-testid="snap-toggle"
+          checked={snapEnabled}
+          onChange={(event) => setSnapEnabled(event.target.checked)}
+        />
+        스냅
+      </label>
     </div>
     {selection ? <div data-selected-id={document.selection.at(-1)}>
       <EditorPlane

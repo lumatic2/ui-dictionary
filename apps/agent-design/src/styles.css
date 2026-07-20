@@ -222,3 +222,19 @@ button, select { font: inherit; }
 .canvas-node[data-token-unresolved] { outline: 1px dashed var(--ad-action-destructive); background-image: repeating-linear-gradient(45deg, transparent 0 6px, var(--ad-surface-secondary) 6px 12px); }
 /* 소재를 못 찾은 이미지 노드 — 빈 상자 대신 무엇이 없는지 적는다. token-exception: 진단 표면 전용 */
 .canvas-node[data-asset-missing] { display: grid; place-items: center; outline: 1px dashed var(--ad-action-destructive); color: var(--ad-action-destructive); font-size: 11px; word-break: keep-all; }
+
+/* 캔버스 위에 떠 있는 조작 옵션 (EU2). 스냅은 끄고 켤 수 있어야 미세 조정이 가능하다. */
+.canvas-toolbar {
+  position: absolute;
+  right: 12px;
+  bottom: 12px;
+  z-index: 6;
+  display: flex;
+  gap: 8px;
+  padding: 6px 10px;
+  border: 1px solid var(--ad-border-default);
+  border-radius: 8px;
+  background: var(--ad-surface-base);
+  font-size: 12px;
+}
+.canvas-toggle { display: flex; align-items: center; gap: 6px; cursor: pointer; user-select: none; }

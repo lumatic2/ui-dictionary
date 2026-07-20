@@ -165,6 +165,9 @@ describe('조작 결과 게이트 (EU1 step-3)', () => {
     const operations: CanvasOperation[] = []
     const document = createDocumentFixture(1000)
     const view = render(<CanvasSurface document={document} onOperation={(op) => operations.push(op)} />)
+    // 스냅을 끈다 — 여기서 재는 건 조작 자체의 산술이다.
+    // 켜두면 이웃 모서리가 몇 px 끌어당겨 "입력 델타 = 결과 델타"가 성립하지 않는다(EU2에서 실제로 깨졌다).
+    fireEvent.click(view.getByTestId('snap-toggle'))
     return { view, operations, id: document.selection.at(-1)!, before: document.nodes[document.selection.at(-1)!].bounds }
   }
 
@@ -209,5 +212,49 @@ describe('조작 결과 게이트 (EU1 step-3)', () => {
     expect(after).toMatchObject({ left: `${before.x}px`, width: `${before.width}px` })
     const rotate = operations.find((op) => op.type === 'rotate-nodes') as { rotationById: Record<string, number> }
     expect(Object.values(rotate.rotationById)[0]).toBeCloseTo(90, 3)
+  })
+})
+
+describe('스냅이 커밋된 좌표까지 간다 (EU2 step-1)', () => {
+  /** 이웃 하나만 보이게 남긴다 — 어디에 붙었는지가 한 개로 확정된다. */
+  const oneNeighbour = () => {
+    const document = createDocumentFixture(1000)
+    for (const node of Object.values(document.nodes)) node.visible = false
+    const id = document.selection.at(-1)!
+    const neighbourId = Object.keys(document.nodes).find((key) => key !== id)!
+    document.nodes[id].visible = true
+    document.nodes[id].bounds = { x: 0, y: 0, width: 100, height: 50 }
+    document.nodes[neighbourId].visible = true
+    document.nodes[neighbourId].bounds = { x: 200, y: 400, width: 100, height: 50 }
+    return { document, id, neighbour: document.nodes[neighbourId].bounds }
+  }
+
+  it('이웃에서 3px 모자란 드래그가 이웃 모서리에 정확히 붙어 커밋된다', () => {
+    const operations: CanvasOperation[] = []
+    const { document, id, neighbour } = oneNeighbour()
+    const view = render(<CanvasSurface document={document} onOperation={(op) => operations.push(op)} />)
+    // 0,0 에서 197,400 으로 끈다 — 이웃 왼쪽(200)·위(400)에서 x는 3px 모자라고 y는 정확하다.
+    pointer(view.getByTestId('manipulation-selection'), 'pointerdown', 0, 0)
+    pointer(view.getByTestId('canvas-viewport'), 'pointermove', 197, 400)
+    pointer(view.getByTestId('canvas-viewport'), 'pointerup', 197, 400)
+
+    const transform = operations.find((op) => op.type === 'transform-nodes') as { boundsById: Record<string, { x: number; y: number }> }
+    expect(transform, '드래그를 놓았는데 문서 연산이 없다').toBeDefined()
+    // 197이 아니라 200이어야 한다 — 가이드만 그리고 원래 좌표를 커밋하면 여기서 걸린다.
+    expect(transform.boundsById[id].x).toBe(neighbour.x)
+    expect(transform.boundsById[id].y).toBe(neighbour.y)
+  })
+
+  it('스냅을 끄면 3px 어긋난 그대로 커밋된다', () => {
+    const operations: CanvasOperation[] = []
+    const { document, id } = oneNeighbour()
+    const view = render(<CanvasSurface document={document} onOperation={(op) => operations.push(op)} />)
+    fireEvent.click(view.getByTestId('snap-toggle'))
+    pointer(view.getByTestId('manipulation-selection'), 'pointerdown', 0, 0)
+    pointer(view.getByTestId('canvas-viewport'), 'pointermove', 197, 400)
+    pointer(view.getByTestId('canvas-viewport'), 'pointerup', 197, 400)
+
+    const transform = operations.find((op) => op.type === 'transform-nodes') as { boundsById: Record<string, { x: number }> }
+    expect(transform.boundsById[id].x).toBe(197)
   })
 })
