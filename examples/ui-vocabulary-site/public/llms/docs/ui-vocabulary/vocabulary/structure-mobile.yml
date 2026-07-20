@@ -1,0 +1,629 @@
+# 반응형·모바일 (structure-mobile)
+# category: structure · 용어 15개
+# 파생물 — 정본은 docs/ui-vocabulary/terms.yml. 손으로 고치지 마라.
+
+- id: carousel-peek
+  status: draft
+  category: structure
+  group: structure-mobile
+  ko:
+    name: 피크 캐러셀
+    aliases:
+      - carousel peek
+      - 옆 카드 살짝 보이기
+      - 카드 피크
+      - 다음 카드 보임
+  en:
+    name: Carousel peek
+    aliases:
+      - Peeking carousel
+      - Partial next card
+  one_liner: 다음 카드가 화면 가장자리에 살짝 보여 좌우 스와이프 가능함을 암시하는 모바일 캐러셀.
+  description: 사용자가 가로 스크롤 가능한 콘텐츠임을 직관적으로 알아차리게 하는 시각적 힌트다.
+  visual_anatomy:
+    - active card
+    - partially visible next card
+    - horizontal overflow
+    - swipe direction cue
+  when_to_use:
+    - 모바일에서 카드 목록이 가로로 더 있음을 보여주고 싶을 때
+  anti_use:
+    - 정확한 비교가 필요한 표나 긴 텍스트 카드에는 부적합하다
+  prompt_phrases:
+    - 다음 카드가 오른쪽에 살짝 보이는 carousel peek 레이아웃으로 만들어줘
+  asset:
+    kind: mini-mock
+    variant: carousel-peek
+    props:
+      peeking: true
+  sources:
+    - source_id: material-m3-components
+      note: carousel layouts and scroll affordance
+  confidence: medium
+- id: full-screen-dialog
+  status: draft
+  category: structure
+  group: structure-mobile
+  ko:
+    name: 전체 화면 다이얼로그
+    aliases:
+      - full-screen dialog
+      - 전체 화면 모달
+      - 모바일 전체 화면 편집
+  en:
+    name: Full-screen dialog
+    aliases:
+      - Fullscreen dialog
+      - Full-screen modal
+  one_liner: 모바일에서 복잡한 작업을 별도 화면처럼 전체 화면으로 여는 모달.
+  description: 작은 dialog나 bottom sheet에 담기 어려운 편집, 작성, 설정 흐름을 현재 맥락 위의 전체 화면 작업으로 만든다.
+  visual_anatomy:
+    - full-screen surface
+    - close button
+    - title
+    - save action
+    - form content
+  when_to_use:
+    - 모바일에서 작성이나 편집처럼 집중 작업이 필요할 때
+  anti_use:
+    - 단순 확인에는 alert dialog나 bottom sheet가 더 가볍다
+  prompt_phrases:
+    - 모바일에서 프로필 편집을 full-screen dialog로 열어줘
+  asset:
+    kind: mini-mock
+    variant: full-screen-dialog
+    props:
+      title: true
+  sources:
+    - source_id: material-m3-components
+      note: full-screen dialog component
+  confidence: high
+- id: large-title-header
+  status: draft
+  category: structure
+  group: structure-mobile
+  ko:
+    name: 큰 제목 헤더
+    aliases:
+      - large title header
+      - 라지 타이틀
+      - 큰 타이틀 상단바
+      - 접히는 큰 제목
+      - 내비게이션 스택 헤더
+  en:
+    name: Large title header
+    aliases:
+      - Large title navigation bar
+      - Collapsing large title
+      - Navigation stack header
+  one_liner: 모바일 화면 상단에서 큰 제목을 보여주고 스크롤 시 작게 접히는 헤더 패턴.
+  description: 목록이나 홈 화면에서 현재 섹션을 강하게 드러내다가, 스크롤 후에는 공간을 아껴 compact header처럼 동작한다.
+    계층형 드릴다운 화면에서는 뒤로가기 버튼과 함께 쓰이며, 뒤로가기는 시트 dismiss와 혼동해서는 안 되는 별개의 동작이다.
+  visual_anatomy:
+    - large title text
+    - top safe area
+    - collapsing header
+    - content list below
+    - optional back button
+  when_to_use:
+    - 모바일 앱의 첫 화면이나 주요 목록에서 섹션 이름을 크게 보여줄 때
+  anti_use:
+    - 작업 폼이나 밀도 높은 화면에는 공간을 많이 차지할 수 있다
+    - 데스크톱 hero headline과 혼동하지 않는다
+  prompt_phrases:
+    - 모바일 목록 화면 상단에 스크롤하면 접히는 large title header를 넣어줘
+  related:
+    - id: top-app-bar
+      relation: compare
+      note: 스크롤 방향에 따라 바가 나타나거나 사라지는 show/hide 규칙은 large-title-header의 큰 제목 접힘과 별개로
+        top-app-bar 자체에도 적용된다. 스크린리더가 활성 상태일 때는 스크롤로 바를 숨기지 않는 접근성 예외가 두 항목 모두에
+        적용된다.
+  asset:
+    kind: mini-mock
+    variant: large-title-header
+    props:
+      collapsible: true
+  sources:
+    - source_id: apple-hig-components
+      note: navigation bars with large titles in app screens
+  confidence: medium
+- id: map-bottom-panel
+  status: draft
+  category: structure
+  group: structure-mobile
+  ko:
+    name: 지도 하단 패널
+    aliases:
+      - map bottom panel
+      - 지도 아래 패널
+      - 지도 바텀시트
+      - 장소 정보 패널
+  en:
+    name: Map bottom panel
+    aliases:
+      - Map bottom sheet
+      - Place details panel
+  one_liner: 모바일 지도 위에 하단에서 올라와 장소나 경로 정보를 보여주는 패널.
+  description: 지도 조작을 유지하면서 선택한 장소, 경로, 주문 위치 같은 세부 정보를 하단에서 확인하게 한다.
+  visual_anatomy:
+    - map background
+    - marker
+    - draggable bottom panel
+    - place summary
+  when_to_use:
+    - 지도 기반 검색
+    - 배달 추적
+    - 장소 상세를 모바일에서 보여줄 때
+  anti_use:
+    - 지도와 무관한 일반 상세 정보에는 standard-bottom-sheet가 더 적합하다
+  prompt_phrases:
+    - 지도 아래에 드래그 가능한 map bottom panel로 장소 정보를 보여줘
+  asset:
+    kind: mini-mock
+    variant: map-bottom-panel
+    props:
+      expanded: false
+  sources:
+    - source_id: material-m3-components
+      note: bottom sheets over map surfaces
+  confidence: high
+- id: media-lightbox-mobile
+  status: draft
+  category: structure
+  group: structure-mobile
+  ko:
+    name: 모바일 미디어 라이트박스
+    aliases:
+      - media lightbox mobile
+      - 모바일 이미지 뷰어
+      - 전체 화면 사진 보기
+  en:
+    name: Mobile media lightbox
+    aliases:
+      - Mobile image viewer
+      - Full-screen media viewer
+  one_liner: 모바일에서 이미지나 영상을 전체 화면으로 열어 집중해서 보게 하는 뷰어.
+  description: 닫기, 현재 순서, 제스처 확대 같은 컨트롤을 최소한으로 유지해 미디어를 크게 보여준다.
+  visual_anatomy:
+    - full-screen dark surface
+    - media content
+    - close button
+    - page count
+  when_to_use:
+    - 사진
+    - 상품 이미지
+    - 첨부 미디어를 크게 확인해야 할 때
+  anti_use:
+    - 단순 썸네일 목록에는 과하다
+    - 편집 기능은 별도 editor가 필요하다
+  prompt_phrases:
+    - 상품 이미지를 누르면 모바일 전체 화면 media lightbox로 열어줘
+  asset:
+    kind: mini-mock
+    variant: media-lightbox-mobile
+    props:
+      chrome: true
+  sources:
+    - source_id: apple-hig-components
+      note: full-screen media viewing patterns
+  confidence: high
+- id: mobile-app-bar
+  status: draft
+  category: structure
+  group: structure-mobile
+  ko:
+    name: 모바일 앱 바
+    aliases:
+      - mobile app bar
+      - 모바일 상단바
+      - 앱 상단바
+      - top app bar
+  en:
+    name: Mobile app bar
+    aliases:
+      - Top app bar
+      - Mobile top bar
+  one_liner: 모바일 화면 상단에서 제목, 뒤로가기나 메뉴, 주요 액션을 담는 앱 내부 헤더.
+  description: 현재 화면의 위치와 기본 행동을 작은 화면 상단에 고정해 사용자가 맥락을 잃지 않게 한다.
+  visual_anatomy:
+    - top bar surface
+    - title
+    - navigation icon
+    - trailing action icons
+  when_to_use:
+    - 모바일 앱의 각 화면 제목과 기본 액션을 보여줄 때
+    - 뒤로가기나 메뉴 버튼이 필요한 화면에서
+  anti_use:
+    - 웹사이트의 넓은 navigation bar처럼 많은 링크를 넣지 않는다
+    - 하단 탭과 같은 목적지 전환을 대신하지 않는다
+  prompt_phrases:
+    - 모바일 화면 상단에 제목과 뒤로가기 아이콘이 있는 app bar를 넣어줘
+  asset:
+    kind: mini-mock
+    variant: mobile-app-bar
+    props:
+      title: true
+  sources:
+    - source_id: material-m3-components
+      note: top app bar component for app screens
+  confidence: high
+- id: mobile-bottom-sheet
+  status: draft
+  category: structure
+  group: structure-mobile
+  ko:
+    name: 모바일 바텀 시트
+    aliases:
+      - mobile bottom sheet
+      - 바텀시트
+      - 하단 시트
+  en:
+    name: Mobile bottom sheet
+    aliases:
+      - Bottom sheet
+      - Modal bottom sheet
+  one_liner: 모바일 화면 하단에서 올라오는 작업 또는 선택 패널.
+  description: 작은 화면에서 추가 선택지, 필터, 간단한 폼을 현재 맥락 위에 표시한다.
+  visual_anatomy:
+    - scrim
+    - bottom surface
+    - drag handle
+    - action rows
+  when_to_use:
+    - 모바일에서 현재 화면을 유지한 채 보조 선택을 받아야 할 때
+  anti_use:
+    - 복잡한 긴 폼은 별도 화면이나 dialog가 낫다
+  prompt_phrases:
+    - 모바일에서 필터를 누르면 bottom sheet가 올라오게 해줘
+  asset:
+    kind: mini-mock
+    variant: mobile-bottom-sheet
+    props:
+      open: true
+  sources:
+    - source_id: material-m3-components
+      note: bottom sheets component
+  confidence: high
+- id: mobile-filter-bottom-sheet
+  status: draft
+  category: structure
+  group: structure-mobile
+  ko:
+    name: 모바일 필터 바텀 시트
+    aliases:
+      - 필터 시트
+      - 모바일 필터 패널
+      - filter bottom sheet
+  en:
+    name: Mobile filter bottom sheet
+    aliases:
+      - Filter sheet
+      - Filter bottom sheet
+  one_liner: 모바일 목록 화면에서 필터 옵션을 아래에서 올라오는 시트로 고르는 패턴.
+  description: 검색 결과, 상품 목록, 지도 목록처럼 필터 조건이 많지만 화면 공간이 좁을 때 사용한다.
+  visual_anatomy:
+    - bottom sheet container
+    - drag handle
+    - filter groups
+    - apply button
+    - clear filters action
+  when_to_use:
+    - 모바일에서 필터 조건이 여러 그룹으로 나뉠 때
+    - 목록을 보면서 조건을 조정해야 할 때
+  anti_use:
+    - 필터가 1-2개뿐이면 filter chip이나 segmented tabs가 더 빠르다
+  prompt_phrases:
+    - 상품 목록 아래에서 올라오는 mobile filter bottom sheet를 만들어줘
+  asset:
+    kind: mini-mock
+    variant: mobile-filter-bottom-sheet
+    props:
+      groups: 3
+  sources:
+    - source_id: material-m3-components
+      note: bottom sheet and filter behavior reference
+  confidence: medium
+- id: mobile-status-bar
+  status: draft
+  category: structure
+  group: structure-mobile
+  ko:
+    name: 모바일 상태 바
+    aliases:
+      - mobile status bar
+      - 상단 시스템 바
+      - 시간 배터리 영역
+  en:
+    name: Mobile status bar
+    aliases:
+      - Status bar
+      - System status bar
+  one_liner: 모바일 화면 맨 위에서 시간, 신호, 배터리 같은 시스템 상태를 보여주는 영역.
+  description: 앱 콘텐츠 위에 놓이는 시스템 chrome이라서 헤더와 콘텐츠가 이 영역을 침범하지 않도록 고려해야 한다.
+  visual_anatomy:
+    - time
+    - signal indicator
+    - battery indicator
+    - top system strip
+  when_to_use:
+    - 모바일 mockup에서 실제 폰 화면 맥락을 보여줄 때
+    - 상단 app bar와 시스템 영역을 구분해야 할 때
+  anti_use:
+    - 앱 내부 상태 표시줄인 status-bar와 혼동하지 않는다
+    - 중요한 앱 알림을 시스템 상태 바에 넣지 않는다
+  prompt_phrases:
+    - 모바일 목업 상단에 시간과 배터리가 보이는 status bar를 넣어줘
+  asset:
+    kind: mini-mock
+    variant: mobile-status-bar
+    props:
+      battery: 72
+  sources:
+    - source_id: apple-hig-components
+      note: status bar as system-provided mobile chrome
+  confidence: medium
+- id: modal-bottom-sheet
+  status: draft
+  category: structure
+  group: structure-mobile
+  ko:
+    name: 모달 바텀 시트
+    aliases:
+      - modal bottom sheet
+      - 막는 바텀시트
+      - 아래에서 뜨는 모달
+      - 하단 모달
+  en:
+    name: Modal bottom sheet
+    aliases:
+      - Blocking bottom sheet
+      - Modal sheet
+  one_liner: 배경을 어둡게 막고 하단에서 올라와 사용자의 선택을 요구하는 모바일 시트.
+  description: 중요한 선택, 확인, 짧은 폼처럼 완료 전까지 현재 화면 조작을 막아야 할 때 쓴다.
+  visual_anatomy:
+    - scrim
+    - bottom sheet
+    - drag handle
+    - primary action
+    - underlying page
+  when_to_use:
+    - 모바일에서 짧지만 집중이 필요한 선택이나 폼을 받을 때
+  anti_use:
+    - 긴 작업 흐름은 full-screen-dialog나 별도 화면이 더 적합하다
+  prompt_phrases:
+    - 배경을 어둡게 깔고 아래에서 modal bottom sheet가 올라오게 해줘
+  asset:
+    kind: mini-mock
+    variant: modal-bottom-sheet
+    props:
+      scrim: true
+  sources:
+    - source_id: material-m3-components
+      note: modal bottom sheets behavior
+  related:
+    - id: dialog
+      relation: compare
+      note: 중앙 집중 창이면 dialog, 모바일 하단에서 올라오는 짧은 선택/폼이면 modal bottom sheet가 자연스럽다.
+    - id: drawer
+      relation: compare
+      note: 측면 패널이면 drawer, 하단에서 배경을 막고 올라오면 modal bottom sheet다.
+    - id: side-sheet
+      relation: alternative
+      note: 데스크톱의 보조 상세/편집 패널은 side sheet가 더 적합할 수 있다.
+  confidence: high
+- id: responsive-stack
+  status: draft
+  category: structure
+  group: structure-mobile
+  ko:
+    name: 반응형 스택
+    aliases:
+      - responsive stack
+      - responsive layout stack
+      - 모바일 스택
+  en:
+    name: Responsive stack
+    aliases:
+      - Stacked responsive layout
+      - Mobile stack
+  one_liner: 데스크톱의 가로 배치를 좁은 화면에서 세로로 쌓는 레이아웃 패턴.
+  description: 카드, 폼, 패널이 화면 폭에 따라 열 구조에서 단일 열 구조로 바뀐다.
+  visual_anatomy:
+    - wide columns
+    - narrow stacked layout
+    - breakpoint
+    - consistent spacing
+  when_to_use:
+    - 같은 콘텐츠를 데스크톱과 모바일에서 모두 읽기 쉽게 보여줘야 할 때
+  anti_use:
+    - 정보 우선순위가 바뀌어야 하면 단순 stack만으로 해결하지 않는다
+  prompt_phrases:
+    - 데스크톱에서는 3열
+    - 모바일에서는 세로로 쌓이는 responsive stack을 만들어줘
+  asset:
+    kind: mini-mock
+    variant: responsive-stack
+    props:
+      breakpoint: true
+  sources:
+    - source_id: material-m3-components
+      note: adaptive layout guidance
+  navigation:
+    canonical_path:
+      - Docs
+      - Layout
+    also_appears_in:
+      - - Plus
+        - UI Blocks
+        - Application UI
+        - Layout
+  confidence: medium
+- id: safe-area
+  status: draft
+  category: structure
+  group: structure-mobile
+  ko:
+    name: 안전 영역
+    aliases:
+      - safe area
+      - 세이프 에어리어
+      - 노치 여백
+      - 홈 인디케이터 여백
+      - 세이프 에어리어 레이아웃 패턴
+  en:
+    name: Safe area
+    aliases:
+      - Safe area inset
+      - System inset
+      - Safe area layout pattern
+  one_liner: 노치, 둥근 모서리, 홈 인디케이터에 가려지지 않도록 비워두는 모바일 화면 영역.
+  description: 모바일 화면의 상단과 하단 시스템 영역을 피해 콘텐츠와 버튼을 배치하게 해준다.
+  visual_anatomy:
+    - phone frame
+    - top inset
+    - bottom home indicator inset
+    - content safe bounds
+  when_to_use:
+    - 모바일 화면 가장자리에 버튼이나 입력창을 배치할 때
+    - 전체 화면 레이아웃에서 시스템 UI와 겹침을 피해야 할 때
+  anti_use:
+    - 데스크톱 웹 레이아웃의 일반 margin과 혼동하지 않는다
+    - safe area 안쪽 콘텐츠를 과하게 좁히지 않는다
+  prompt_phrases:
+    - 모바일 화면에서 safe area를 고려해서 하단 버튼이 홈 인디케이터와 겹치지 않게 해줘
+  asset:
+    kind: mini-mock
+    variant: safe-area
+    props:
+      highlighted: true
+  sources:
+    - source_id: apple-hig-components
+      note: layout guidance for safe areas and system chrome
+  navigation:
+    canonical_path:
+      - Docs
+      - Layout
+    also_appears_in:
+      - - Plus
+        - Templates
+        - Ecommerce Screens
+  confidence: high
+- id: scrim
+  status: draft
+  category: structure
+  group: structure-mobile
+  ko:
+    name: 스크림
+    aliases:
+      - scrim
+      - dim overlay
+      - 어두운 배경
+      - 모달 배경막
+  en:
+    name: Scrim
+    aliases:
+      - Dim overlay
+      - Modal overlay
+      - Backdrop
+  one_liner: 모달이나 시트 뒤의 배경을 어둡게 덮어 현재 레이어에 집중시키는 반투명 막.
+  description: 뒤쪽 화면이 비활성화되었고 앞쪽 dialog나 sheet가 현재 작업 대상임을 알려준다.
+  visual_anatomy:
+    - translucent overlay
+    - underlying content
+    - foreground modal or sheet
+  when_to_use:
+    - 모달 dialog
+    - modal bottom sheet
+    - drawer처럼 배경 조작을 막아야 할 때
+  anti_use:
+    - 단순 hover 설명이나 작은 non-modal popover에는 과할 수 있다
+  prompt_phrases:
+    - 모달이 열릴 때 뒤 화면에 어두운 scrim을 깔아줘
+  asset:
+    kind: mini-mock
+    variant: scrim
+    props:
+      visible: true
+  sources:
+    - source_id: material-m3-components
+      note: modal surfaces use scrims to separate layers
+  confidence: high
+- id: sheet-drag-handle
+  status: draft
+  category: structure
+  group: structure-mobile
+  ko:
+    name: 시트 드래그 핸들
+    aliases:
+      - sheet drag handle
+      - 바텀시트 손잡이
+      - grabber
+      - 드래그 바
+  en:
+    name: Sheet drag handle
+    aliases:
+      - Drag handle
+      - Grabber
+      - Bottom sheet handle
+  one_liner: 바텀 시트를 끌어올리거나 내릴 수 있음을 알려주는 작은 손잡이 표시.
+  description: 하단 시트 상단에 짧은 막대 형태로 놓여 사용자가 드래그 가능한 레이어임을 인식하게 한다.
+  visual_anatomy:
+    - rounded handle bar
+    - sheet top edge
+    - draggable surface
+    - expanded/collapsed states
+  when_to_use:
+    - 바텀 시트를 드래그로 확장하거나 닫을 수 있을 때
+  anti_use:
+    - 드래그가 불가능한 일반 카드나 dialog에 장식처럼 붙이지 않는다
+  prompt_phrases:
+    - 바텀시트 상단에 드래그 가능한 sheet drag handle을 넣어줘
+  asset:
+    kind: mini-mock
+    variant: sheet-drag-handle
+    props:
+      draggable: true
+  sources:
+    - source_id: material-m3-components
+      note: bottom sheet drag handle affordance
+  confidence: high
+- id: standard-bottom-sheet
+  status: draft
+  category: structure
+  group: structure-mobile
+  ko:
+    name: 표준 바텀 시트
+    aliases:
+      - standard bottom sheet
+      - 아래에서 올라오는 창
+      - 하단 패널
+      - 바텀시트
+  en:
+    name: Standard bottom sheet
+    aliases:
+      - Bottom sheet
+      - Persistent bottom sheet
+  one_liner: 모바일 화면 아래에서 올라와 보조 정보나 선택지를 보여주는 비차단 시트.
+  description: 현재 화면 맥락을 유지하면서 필터, 세부 정보, 간단한 선택지를 하단에서 보여준다.
+  visual_anatomy:
+    - phone screen
+    - bottom sheet surface
+    - drag handle
+    - content rows
+    - underlying page
+  when_to_use:
+    - 모바일에서 현재 화면을 유지한 채 보조 선택지를 보여줄 때
+    - 지도나 목록 위에 요약 패널을 붙일 때
+  anti_use:
+    - 사용자 결정을 반드시 막아야 하면 modal-bottom-sheet나 dialog를 쓴다
+  prompt_phrases:
+    - 아래에서 올라오는 standard bottom sheet에 필터 옵션을 보여줘
+  asset:
+    kind: mini-mock
+    variant: standard-bottom-sheet
+    props:
+      open: true
+  sources:
+    - source_id: material-m3-components
+      note: bottom sheets component
+  confidence: high

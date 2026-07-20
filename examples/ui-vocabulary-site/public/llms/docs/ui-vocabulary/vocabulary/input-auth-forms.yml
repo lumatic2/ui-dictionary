@@ -1,0 +1,782 @@
+# 계정·설정 폼 (input-auth-forms)
+# category: input · 용어 20개
+# 파생물 — 정본은 docs/ui-vocabulary/terms.yml. 손으로 고치지 마라.
+
+- id: account-creation-form
+  status: draft
+  category: input
+  group: input-auth-forms
+  kind: form-pattern
+  ko:
+    name: 계정 생성 폼
+    aliases:
+      - account creation form
+      - create account form
+      - 계정 만들기 폼
+  en:
+    name: Account creation form
+    aliases:
+      - Create account form
+      - New account form
+  one_liner: 제품 가입 초기에 최소 정보로 계정을 생성하는 간단한 폼.
+  description: signup-form보다 일반적인 이름으로, 이메일 또는 소셜 계정 기반의 계정 생성 첫 단계를 말한다.
+  visual_anatomy:
+    - email field
+    - create account action
+    - provider alternatives
+    - terms hint
+  when_to_use:
+    - 가입 첫 단계를 최소 입력으로 시작할 때
+  anti_use:
+    - 이름, 비밀번호, 약관 등 전체 가입 흐름을 말하면 signup-form이 더 구체적이다
+  prompt_phrases:
+    - 이메일만 먼저 받는 account creation form을 만들어줘
+  asset:
+    kind: mini-mock
+    variant: account-creation-form
+  sources:
+    - source_id: page-flows
+      note: account creation flow reference
+  confidence: medium
+- id: change-password-form
+  status: draft
+  category: input
+  group: input-auth-forms
+  kind: form-pattern
+  ko:
+    name: 비밀번호 변경 폼
+    aliases:
+      - change password form
+      - 계정 비밀번호 변경
+  en:
+    name: Change password form
+    aliases:
+      - Account password change form
+      - Update password form
+  one_liner: 로그인된 사용자가 기존 비밀번호와 새 비밀번호를 입력해 비밀번호를 변경하는 폼.
+  description: 계정 설정 안에서 현재 비밀번호 확인, 새 비밀번호 입력, 저장 버튼을 제공한다.
+  visual_anatomy:
+    - current password field
+    - new password field
+    - confirm password field
+    - save button
+  when_to_use:
+    - 계정 설정에서 사용자가 비밀번호를 바꾸게 할 때
+  anti_use:
+    - 비밀번호를 잊은 사용자의 복구 흐름은 forgot-password-form과 reset-password-form을 쓴다
+  prompt_phrases:
+    - 현재 비밀번호와 새 비밀번호를 입력하는 change password form을 만들어줘
+  asset:
+    kind: mini-mock
+    variant: change-password-form
+  sources:
+    - source_id: shadcn-ui-docs
+      note: account settings form composition reference
+  confidence: high
+- id: email-change-form
+  status: draft
+  category: input
+  group: input-auth-forms
+  kind: form-pattern
+  ko:
+    name: 이메일 변경 폼
+    aliases:
+      - email change form
+      - 계정 이메일 변경
+      - change email form
+  en:
+    name: Email change form
+    aliases:
+      - Change email form
+      - Account email update form
+  one_liner: 로그인된 사용자가 계정 이메일 주소를 바꾸고 새 주소 인증을 시작하는 폼.
+  description: 현재 이메일, 새 이메일 입력, 비밀번호 재확인 또는 인증 안내를 함께 보여준다.
+  visual_anatomy:
+    - current email display
+    - new email field
+    - password or reauth field
+    - send verification action
+  when_to_use:
+    - 계정 설정에서 로그인 이메일을 변경해야 할 때
+  anti_use:
+    - 단순 이메일 인증 상태 안내는 email-verification-banner가 더 가볍다
+  prompt_phrases:
+    - 현재 이메일과 새 이메일 입력이 있는 email change form을 만들어줘
+  asset:
+    kind: mini-mock
+    variant: email-change-form
+  sources:
+    - source_id: shadcn-ui-docs
+      note: account settings form composition reference
+  confidence: medium
+- id: forgot-password-form
+  status: draft
+  category: input
+  group: input-auth-forms
+  kind: form-pattern
+  ko:
+    name: 비밀번호 찾기 폼
+    aliases:
+      - forgot password form
+      - 비밀번호 재설정 요청
+      - reset link form
+  en:
+    name: Forgot password form
+    aliases:
+      - Password reset request form
+      - Reset link form
+  one_liner: 사용자가 이메일을 입력해 비밀번호 재설정 링크를 요청하는 폼.
+  description: 로그인에 실패했거나 비밀번호를 잊은 사용자가 계정 이메일로 복구 절차를 시작하게 한다.
+  visual_anatomy:
+    - email field
+    - explanation text
+    - send reset link button
+    - back to login link
+  when_to_use:
+    - 비밀번호 재설정 이메일을 보내야 할 때
+  anti_use:
+    - 새 비밀번호를 직접 입력하는 단계는 reset-password-form이 맞다
+  prompt_phrases:
+    - 이메일을 입력하면 재설정 링크를 보내는 forgot password form을 만들어줘
+  asset:
+    kind: mini-mock
+    variant: forgot-password-form
+  sources:
+    - source_id: page-flows
+      note: password recovery flow reference
+  confidence: high
+- id: formisch-form-pattern
+  status: draft
+  category: input
+  group: input-auth-forms
+  kind: form-pattern
+  ko:
+    name: Formisch 폼 패턴
+    aliases:
+      - formisch form
+      - valibot form
+      - schema-first form
+  en:
+    name: Formisch form pattern
+    aliases:
+      - Valibot form
+      - Schema-first form
+  one_liner: Formisch와 Valibot을 사용해 스키마를 중심으로 타입 안전한 폼을 만드는 패턴.
+  description: Formisch의 form store, render-prop field, Valibot schema를 shadcn
+    Field 구성과 함께 사용한다.
+  visual_anatomy:
+    - Valibot schema
+    - Formisch form store
+    - render-prop field
+    - Field validation state
+    - reset and submit actions
+  when_to_use:
+    - Valibot 기반의 가벼운 schema-first 폼을 선호할 때
+  anti_use:
+    - 팀 표준이 Zod와 React Hook Form이면 react-hook-form-pattern이 더 익숙하다
+  prompt_phrases:
+    - Formisch와 Valibot으로 schema-first form pattern을 만들어줘
+  asset:
+    kind: mini-mock
+    variant: formisch-form-pattern
+  sources:
+    - source_id: shadcn-ui-docs
+      note: Formisch guide using Valibot and shadcn Field
+  confidence: high
+- id: invite-signup-form
+  status: draft
+  category: input
+  group: input-auth-forms
+  kind: form-pattern
+  ko:
+    name: 초대 가입 폼
+    aliases:
+      - invite signup form
+      - 초대 수락 가입
+      - invitation signup
+  en:
+    name: Invite signup form
+    aliases:
+      - Invitation signup form
+      - Join by invite form
+  one_liner: 초대받은 사용자가 계정 정보를 입력하고 팀이나 워크스페이스에 합류하는 가입 폼.
+  description: 초대 대상 이메일, 팀 이름, 역할을 보여주면서 이름/비밀번호 설정 또는 소셜 로그인을 제공한다.
+  visual_anatomy:
+    - invitation summary
+    - invited email
+    - name field
+    - password or provider action
+    - accept invite button
+  when_to_use:
+    - 초대 링크를 통해 새 사용자를 팀에 합류시킬 때
+  anti_use:
+    - 초대 수락만 확인하고 계정 입력이 없으면 invite-acceptance-screen이 더 맞다
+  prompt_phrases:
+    - 팀 초대 정보를 보여주고 계정을 만드는 invite signup form을 만들어줘
+  asset:
+    kind: mini-mock
+    variant: invite-signup-form
+  sources:
+    - source_id: page-flows
+      note: invitation signup flow reference
+  related:
+    - id: invite-acceptance-screen
+      relation: compare
+      note: 초대 정보를 확인만 하면 invite acceptance screen, 계정 생성 입력까지 있으면 invite signup
+        form이다.
+  confidence: high
+- id: login-form
+  status: draft
+  category: input
+  group: input-auth-forms
+  kind: form-pattern
+  ko:
+    name: 로그인 폼
+    aliases:
+      - login form
+      - 로그인 창
+      - sign in form
+  en:
+    name: Login form
+    aliases:
+      - Sign in form
+      - Authentication form
+  one_liner: 이메일 또는 아이디와 비밀번호로 사용자를 로그인시키는 기본 인증 폼.
+  description: 인증 화면의 가장 표준적인 패턴으로, 계정 입력, 비밀번호 입력, 로그인 버튼, 보조 링크를 함께 배치한다.
+  visual_anatomy:
+    - email or username field
+    - password field
+    - submit button
+    - forgot password link
+    - signup link
+  when_to_use:
+    - 기존 계정으로 제품에 들어오게 할 때
+    - 이메일/비밀번호 인증이 기본 로그인 방식일 때
+  anti_use:
+    - 비밀번호 없는 로그인만 제공하면 magic-link-login-form이나 passkey-login-form이 더 정확하다
+  prompt_phrases:
+    - 이메일과 비밀번호가 있는 login form을 카드 안에 만들어줘
+  asset:
+    kind: mini-mock
+    variant: login-form
+  sources:
+    - source_id: shadcn-ui-docs
+      note: form field and card composition reference
+  related:
+    - id: password-field
+      relation: use-with
+      note: 비밀번호 입력은 login form 안의 핵심 field다.
+    - id: auth-card
+      relation: use-with
+      note: 로그인 폼을 독립 카드로 감싸면 auth card가 된다.
+  confidence: high
+- id: magic-link-login-form
+  status: draft
+  category: input
+  group: input-auth-forms
+  kind: form-pattern
+  ko:
+    name: 매직 링크 로그인 폼
+    aliases:
+      - magic link login
+      - 이메일 링크 로그인
+      - passwordless login form
+  en:
+    name: Magic link login form
+    aliases:
+      - Passwordless login form
+      - Email link sign in form
+  one_liner: 이메일만 입력하면 로그인 링크를 보내는 비밀번호 없는 로그인 폼.
+  description: 비밀번호 입력 없이 이메일 주소를 받아 로그인 링크를 발송하고, 발송 후에는 대기 상태로 전환한다.
+  visual_anatomy:
+    - email field
+    - send magic link button
+    - password login alternative
+    - sent state link
+  when_to_use:
+    - 비밀번호 없는 로그인 경험을 제공할 때
+  anti_use:
+    - 사용자가 앱 안에서 코드를 입력해야 하면 otp-challenge-form이 더 적합하다
+  prompt_phrases:
+    - 이메일만 입력하면 로그인 링크를 보내는 magic link login form을 만들어줘
+  asset:
+    kind: mini-mock
+    variant: magic-link-login-form
+  sources:
+    - source_id: page-flows
+      note: passwordless email sign-in flow reference
+  related:
+    - id: magic-link-sent-state
+      relation: use-with
+      note: 링크를 보낸 뒤에는 magic link sent state로 이어진다.
+  confidence: high
+- id: mfa-challenge-form
+  status: draft
+  category: input
+  group: input-auth-forms
+  kind: form-pattern
+  ko:
+    name: 2단계 인증 폼
+    aliases:
+      - MFA challenge form
+      - 2FA form
+      - 이중 인증 폼
+  en:
+    name: MFA challenge form
+    aliases:
+      - Two-factor challenge form
+      - 2FA form
+  one_liner: 로그인 후 두 번째 인증 수단을 확인하는 보안 폼.
+  description: 인증 앱 코드, SMS 코드, 복구 코드, 다른 방법 선택 같은 MFA 선택지를 포함할 수 있다.
+  visual_anatomy:
+    - challenge title
+    - code input
+    - verify action
+    - use another method link
+    - recovery code link
+  when_to_use:
+    - 비밀번호 이후 추가 인증이 필요한 로그인 흐름에서
+  anti_use:
+    - 단순 이메일 인증만이면 otp-challenge-form이 더 구체적이다
+  prompt_phrases:
+    - 인증 앱 코드를 입력하고 다른 방법을 선택할 수 있는 mfa challenge form을 만들어줘
+  asset:
+    kind: mini-mock
+    variant: mfa-challenge-form
+  sources:
+    - source_id: page-flows
+      note: multi-factor authentication flow reference
+  confidence: high
+- id: newsletter-section
+  status: draft
+  category: input
+  group: input-auth-forms
+  kind: block
+  ko:
+    name: 뉴스레터 섹션
+    aliases:
+      - newsletter section
+      - 구독 섹션
+      - 이메일 구독 블록
+  en:
+    name: Newsletter section
+    aliases:
+      - Email signup section
+      - Subscribe block
+  one_liner: 이메일 입력과 구독 CTA를 랜딩 페이지 섹션으로 배치한 블록.
+  description: 방문자가 업데이트, 제품 소식, 리소스를 받기 위해 이메일을 남기게 한다.
+  visual_anatomy:
+    - section copy
+    - email field
+    - inline submit
+    - privacy note
+    - optional illustration
+  when_to_use:
+    - 랜딩 페이지에서 이메일 구독 전환을 유도할 때
+  anti_use:
+    - 앱 내부의 작은 이메일 입력은 inline-submit-field가 충분하다
+  prompt_phrases:
+    - 랜딩 하단에 이메일 구독 newsletter section을 넣어줘
+  related:
+    - id: inline-submit-field
+      relation: compare
+      note: inline-submit-field는 입력 조합이고 newsletter-section은 카피와 CTA를 포함한 섹션이다.
+  asset:
+    kind: mini-mock
+    variant: newsletter-section
+  sources:
+    - source_id: blocks-so-library
+      note: shadcn marketing block examples for newsletter signup sections
+  navigation:
+    canonical_path:
+      - Plus
+      - UI Blocks
+      - Marketing
+      - Page Sections
+      - Newsletter Sections
+    also_appears_in:
+      - - Plus
+        - UI Blocks
+        - Marketing
+        - Page Sections
+      - - Plus
+        - Templates
+        - Marketing Pages
+  confidence: medium
+- id: otp-challenge-form
+  status: draft
+  category: input
+  group: input-auth-forms
+  kind: form-pattern
+  ko:
+    name: OTP 인증 폼
+    aliases:
+      - otp challenge form
+      - 인증번호 확인 폼
+      - verification code form
+  en:
+    name: OTP challenge form
+    aliases:
+      - Verification code form
+      - One-time code challenge
+  one_liner: 이메일, 문자, 인증 앱에서 받은 일회용 코드를 입력해 본인 확인을 완료하는 폼.
+  description: 코드 입력 필드, 남은 시간, 재전송, 확인 버튼을 함께 배치한다.
+  visual_anatomy:
+    - OTP code input
+    - destination hint
+    - verify button
+    - resend code link
+    - expiry timer
+  when_to_use:
+    - 로그인, 가입, 계정 변경에서 일회용 코드를 확인해야 할 때
+  anti_use:
+    - 보안 키나 생체 인증은 passkey-login-form이나 biometric-prompt가 더 맞다
+  prompt_phrases:
+    - 6자리 인증번호를 입력하는 otp challenge form을 만들어줘
+  asset:
+    kind: mini-mock
+    variant: otp-challenge-form
+  sources:
+    - source_id: shadcn-ui-docs
+      note: Input OTP component and form composition reference
+  related:
+    - id: otp-code-input
+      relation: use-with
+      note: OTP code input은 이 폼 안의 핵심 입력 컴포넌트다.
+  confidence: high
+- id: passkey-login-form
+  status: draft
+  category: input
+  group: input-auth-forms
+  kind: form-pattern
+  ko:
+    name: 패스키 로그인 폼
+    aliases:
+      - passkey login form
+      - 패스키 로그인
+      - passwordless passkey form
+  en:
+    name: Passkey login form
+    aliases:
+      - Passkey sign-in form
+      - Passwordless passkey form
+  one_liner: 패스키를 기본 로그인 방식으로 제안하고 다른 로그인 방법으로 fallback하는 폼.
+  description: 패스키 로그인 버튼, 계정 힌트, 비밀번호/이메일 로그인 대체 링크를 제공한다.
+  visual_anatomy:
+    - passkey primary action
+    - account hint
+    - fallback login link
+    - security explanation
+  when_to_use:
+    - 패스키가 제품의 권장 로그인 방식일 때
+  anti_use:
+    - 패스키 등록을 유도하는 설정 흐름은 passkey-enrollment-prompt가 더 정확하다
+  prompt_phrases:
+    - 패스키로 계속하기를 기본으로 둔 passkey login form을 만들어줘
+  asset:
+    kind: mini-mock
+    variant: passkey-login-form
+  sources:
+    - source_id: apple-hig-components
+      note: passkey and secure authentication guidance
+  related:
+    - id: passkey-sign-in-sheet
+      relation: use-with
+      note: 실제 인증이 시작되면 passkey sign-in sheet가 열릴 수 있다.
+  confidence: high
+- id: popover-form
+  status: draft
+  category: input
+  group: input-auth-forms
+  kind: form-pattern
+  ko:
+    name: 팝오버 폼
+    aliases:
+      - popover form
+      - 팝오버 입력폼
+      - 작은 플로팅 폼
+  en:
+    name: Popover form
+    aliases:
+      - Floating form
+      - Inline popover form
+  one_liner: 버튼이나 항목을 눌렀을 때 작은 팝오버 안에서 짧은 입력과 저장 행동을 처리하는 폼.
+  description: 이름 변경, 빠른 필터 저장, 라벨 추가처럼 현재 화면을 떠나지 않아도 되는 작은 입력 작업에 쓴다.
+  visual_anatomy:
+    - trigger
+    - floating popover surface
+    - compact fields
+    - save or cancel action
+  when_to_use:
+    - 짧은 값을 빠르게 입력하고 현재 맥락으로 돌아와야 할 때
+  anti_use:
+    - 검토가 필요한 긴 폼은 dialog나 drawer가 더 안전하다
+  prompt_phrases:
+    - 필터 저장 버튼을 누르면 이름을 입력하는 popover form을 열어줘
+  related:
+    - id: popover
+      relation: compare
+      note: popover는 떠 있는 표면 자체이고, popover form은 그 안에서 입력과 제출까지 처리하는 패턴이다.
+  asset:
+    kind: mini-mock
+    variant: popover-form
+  sources:
+    - source_id: coss-ui-docs
+      note: Origin popover examples include compact interactive content
+  confidence: medium
+- id: profile-settings-form
+  status: draft
+  category: input
+  group: input-auth-forms
+  kind: form-pattern
+  ko:
+    name: 프로필 설정 폼
+    aliases:
+      - profile settings form
+      - 프로필 편집 폼
+      - account profile form
+  en:
+    name: Profile settings form
+    aliases:
+      - Profile form
+      - Account profile form
+  one_liner: 이름, 아바타, 소개, 연락처 같은 개인 프로필 정보를 편집하는 설정 폼.
+  description: 계정 설정 안에서 사용자 정체성 정보를 보여주고 변경 저장 흐름을 제공한다.
+  visual_anatomy:
+    - avatar upload
+    - name fields
+    - bio field
+    - email field
+    - save button
+  when_to_use:
+    - 사용자가 자신의 표시 이름과 프로필 정보를 수정해야 할 때
+  anti_use:
+    - 로그인이나 가입 입력은 auth-form 계열이 더 적합하다
+  prompt_phrases:
+    - 아바타 업로드와 이름 입력이 있는 profile settings form을 만들어줘
+  asset:
+    kind: mini-mock
+    variant: profile-settings-form
+  sources:
+    - source_id: blocks-so-library
+      note: shadcn settings and account form block examples
+  confidence: medium
+- id: react-hook-form-pattern
+  status: draft
+  category: input
+  group: input-auth-forms
+  kind: form-pattern
+  ko:
+    name: React Hook Form 패턴
+    aliases:
+      - react hook form
+      - RHF form
+      - controller form
+  en:
+    name: React Hook Form pattern
+    aliases:
+      - RHF form
+      - Controller form
+  one_liner: React Hook Form의 `useForm`과 `Controller`를 shadcn Field 구성과 연결하는 폼 구현 패턴.
+  description: Zod 같은 스키마 검증, controlled input, 필드 오류 표시를 조합해 접근성 있는 폼을 만든다.
+  visual_anatomy:
+    - form schema
+    - useForm instance
+    - Controller
+    - Field and FieldError
+    - submit action
+  when_to_use:
+    - React Hook Form 기반으로 성능 좋은 클라이언트 폼을 구현할 때
+  anti_use:
+    - 라이브러리 없는 단순 폼이면 기본 field-group만으로 충분할 수 있다
+  prompt_phrases:
+    - React Hook Form과 Zod로 검증하는 form pattern을 만들어줘
+  asset:
+    kind: mini-mock
+    variant: react-hook-form-pattern
+  sources:
+    - source_id: shadcn-ui-docs
+      note: React Hook Form guide using Field, Controller, and Zod validation
+  confidence: high
+- id: reauthentication-form
+  status: draft
+  category: input
+  group: input-auth-forms
+  kind: form-pattern
+  ko:
+    name: 재인증 폼
+    aliases:
+      - reauthentication form
+      - 민감 작업 재로그인
+      - confirm identity form
+  en:
+    name: Reauthentication form
+    aliases:
+      - Confirm identity form
+      - Re-login form
+  one_liner: 결제, 삭제, 보안 설정처럼 민감한 작업 전에 사용자의 신원을 다시 확인하는 폼.
+  description: 비밀번호, 패스키, OTP 중 하나로 현재 사용자가 맞는지 확인하고 작업을 계속하게 한다.
+  visual_anatomy:
+    - security explanation
+    - password or passkey action
+    - confirm button
+    - cancel action
+  when_to_use:
+    - 민감한 계정 변경이나 결제/삭제 작업 전에 재확인이 필요할 때
+  anti_use:
+    - 세션이 완전히 만료된 상황은 session-expired-dialog가 더 명확하다
+  prompt_phrases:
+    - 계정 삭제 전에 비밀번호를 다시 입력하는 reauthentication form을 보여줘
+  asset:
+    kind: mini-mock
+    variant: reauthentication-form
+  sources:
+    - source_id: apple-hig-components
+      note: confirming identity before sensitive actions
+  confidence: high
+- id: reset-password-form
+  status: draft
+  category: input
+  group: input-auth-forms
+  kind: form-pattern
+  ko:
+    name: 비밀번호 재설정 폼
+    aliases:
+      - reset password form
+      - 새 비밀번호 설정
+      - password reset form
+  en:
+    name: Reset password form
+    aliases:
+      - New password form
+      - Password reset form
+  one_liner: 복구 링크나 인증 후 새 비밀번호를 입력하고 확인하는 폼.
+  description: 새 비밀번호와 확인 입력, 강도 안내, 저장 버튼을 통해 안전하게 비밀번호를 바꾸게 한다.
+  visual_anatomy:
+    - new password field
+    - confirm password field
+    - password requirements
+    - submit button
+  when_to_use:
+    - 비밀번호 복구 링크를 연 뒤 새 비밀번호를 설정할 때
+  anti_use:
+    - 로그인된 사용자가 기존 비밀번호를 바꾸는 설정 화면은 change-password-form이 더 정확하다
+  prompt_phrases:
+    - 새 비밀번호와 확인 입력이 있는 reset password form을 만들어줘
+  asset:
+    kind: mini-mock
+    variant: reset-password-form
+  sources:
+    - source_id: page-flows
+      note: password reset flow reference
+  confidence: high
+- id: signup-form
+  status: draft
+  category: input
+  group: input-auth-forms
+  kind: form-pattern
+  ko:
+    name: 회원가입 폼
+    aliases:
+      - signup form
+      - 가입 폼
+      - sign up form
+  en:
+    name: Signup form
+    aliases:
+      - Sign up form
+      - Registration form
+  one_liner: 새 사용자가 이메일, 비밀번호, 이름 같은 정보를 입력해 계정을 만드는 폼.
+  description: 신규 계정 생성에 필요한 입력과 약관 동의, 가입 버튼, 로그인 링크를 함께 제공한다.
+  visual_anatomy:
+    - name or email fields
+    - password field
+    - terms consent
+    - create account button
+    - existing account link
+  when_to_use:
+    - 사용자가 직접 계정을 만들 수 있어야 할 때
+  anti_use:
+    - 초대 링크를 통해 가입하면 invite-signup-form이 더 정확하다
+  prompt_phrases:
+    - 이름 이메일 비밀번호와 약관 동의가 있는 signup form을 만들어줘
+  asset:
+    kind: mini-mock
+    variant: signup-form
+  sources:
+    - source_id: shadcn-ui-docs
+      note: form field and checkbox composition reference
+  confidence: high
+- id: sso-login-form
+  status: draft
+  category: input
+  group: input-auth-forms
+  kind: form-pattern
+  ko:
+    name: SSO 로그인 폼
+    aliases:
+      - sso login
+      - 조직 로그인
+      - single sign-on form
+  en:
+    name: SSO login form
+    aliases:
+      - Single sign-on form
+      - Organization login form
+  one_liner: 회사 도메인이나 조직 식별자를 입력해 SSO 인증으로 이동하는 로그인 폼.
+  description: B2B 제품에서 이메일 도메인, workspace slug, 조직 이름을 받아 SSO provider로 넘긴다.
+  visual_anatomy:
+    - organization or email field
+    - continue with SSO button
+    - password login fallback
+    - help link
+  when_to_use:
+    - 기업 고객이 SAML, OIDC, Google Workspace 같은 SSO로 로그인해야 할 때
+  anti_use:
+    - 개인 사용자 로그인만 있으면 일반 login-form이 더 단순하다
+  prompt_phrases:
+    - 회사 이메일을 입력하고 SSO로 계속하는 sso login form을 만들어줘
+  asset:
+    kind: mini-mock
+    variant: sso-login-form
+  sources:
+    - source_id: page-flows
+      note: enterprise sign-in flow reference
+  confidence: high
+- id: tanstack-form-pattern
+  status: draft
+  category: input
+  group: input-auth-forms
+  kind: form-pattern
+  ko:
+    name: TanStack Form 패턴
+    aliases:
+      - tanstack form
+      - headless form
+      - render prop form
+  en:
+    name: TanStack Form pattern
+    aliases:
+      - Headless form
+      - Render prop form
+  one_liner: TanStack Form의 headless form state와 shadcn Field UI를 연결하는 폼 구현 패턴.
+  description: "`form.Field` 렌더 prop으로 필드 상태와 오류를 읽고, Zod 검증과 실시간 피드백을 조합한다."
+  visual_anatomy:
+    - useForm instance
+    - form.Field render prop
+    - field state
+    - validation errors
+    - accessible Field UI
+  when_to_use:
+    - 필드 상태를 세밀하게 제어하는 headless 폼이 필요할 때
+  anti_use:
+    - React Hook Form 기반 코드베이스라면 react-hook-form-pattern이 더 자연스럽다
+  prompt_phrases:
+    - TanStack Form으로 실시간 검증이 있는 form pattern을 만들어줘
+  asset:
+    kind: mini-mock
+    variant: tanstack-form-pattern
+  sources:
+    - source_id: shadcn-ui-docs
+      note: TanStack Form guide using Field render props and Zod validation
+  confidence: high

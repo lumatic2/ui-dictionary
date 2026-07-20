@@ -1,0 +1,306 @@
+# 기타 상태·피드백 (feedback-misc)
+# category: feedback · 용어 8개
+# 파생물 — 정본은 docs/ui-vocabulary/terms.yml. 손으로 고치지 마라.
+
+- id: blur-fade-in
+  status: draft
+  category: feedback
+  group: feedback-misc
+  kind: motion-pattern
+  ko:
+    name: 블러 페이드 인
+    aliases:
+      - blur fade
+      - blur fade in
+      - 흐림 페이드 등장
+  en:
+    name: Blur fade in
+    aliases:
+      - Blur fade
+      - Soft reveal
+  one_liner: 요소가 흐린 상태에서 선명해지며 부드럽게 나타나는 등장 애니메이션.
+  description: 카드, 이미지, 문단을 순차적으로 드러낼 때 갑작스러운 등장보다 부드러운 인상을 준다.
+  visual_anatomy:
+    - blurred start
+    - opacity transition
+    - final sharp state
+    - stagger optional
+  when_to_use:
+    - 랜딩 페이지 카드나 이미지가 스크롤에 맞춰 등장할 때
+  anti_use:
+    - 상태 변화가 즉시 인지되어야 하는 컨트롤에는 쓰지 않는다
+  prompt_phrases:
+    - 기능 카드들이 blur fade in으로 순서대로 나타나게 해줘
+  asset:
+    kind: mini-mock
+    variant: blur-fade-in
+  sources:
+    - source_id: magic-ui-docs
+      note: Magic UI blur/fade animation examples
+  confidence: medium
+- id: duration
+  status: draft
+  category: feedback
+  group: feedback-misc
+  kind: motion-pattern
+  ko:
+    name: 지속 시간
+    aliases:
+      - duration
+      - animation duration
+      - transition duration
+  en:
+    name: Duration
+    aliases:
+      - Animation duration
+      - Transition duration
+  one_liner: 전환이나 애니메이션이 시작해서 끝날 때까지 걸리는 시간.
+  description: 짧은 micro interaction은 빠르게, 페이지 전환이나 큰 패널 이동은 조금 길게 잡아 움직임의 무게를 맞춘다.
+  visual_anatomy:
+    - same motion
+    - fast duration
+    - slow duration
+    - timing label
+  when_to_use:
+    - 모션이 너무 튀거나 느릴 때 시간을 조정할 때
+  anti_use:
+    - 모든 모션에 같은 시간을 강제로 쓰면 크기와 목적에 맞지 않을 수 있다
+  prompt_phrases:
+    - drawer 열림 duration을 조금 더 빠르게 줄여줘
+  asset:
+    kind: mini-mock
+    variant: duration
+  sources:
+    - source_id: material-m3-motion
+      note: Material motion guidance covers duration and motion timing
+  confidence: high
+- id: easing
+  status: draft
+  category: feedback
+  group: feedback-misc
+  kind: motion-pattern
+  ko:
+    name: 이징
+    aliases:
+      - easing
+      - ease
+      - cubic-bezier
+      - 가속 곡선
+  en:
+    name: Easing
+    aliases:
+      - Ease curve
+      - Cubic bezier
+  one_liner: 모션이 일정 속도로 움직일지, 빠르게 출발하거나 천천히 멈출지를 정하는 속도 곡선.
+  description: 같은 duration이라도 easing에 따라 자연스럽거나 기계적인 느낌이 달라진다.
+  visual_anatomy:
+    - motion curve
+    - start speed
+    - end speed
+    - moving object
+  when_to_use:
+    - 패널
+    - 카드
+    - 메뉴 움직임을 자연스럽게 조정할 때
+  anti_use:
+    - 복잡한 custom curve를 남발하면 제품 전체 모션 언어가 흐트러진다
+  prompt_phrases:
+    - sheet가 열릴 때 ease-out 느낌의 easing을 적용해줘
+  asset:
+    kind: mini-mock
+    variant: easing
+  sources:
+    - source_id: mdn-css-transitions
+      note: CSS transition timing functions define easing behavior
+  confidence: high
+- id: fade-transition
+  status: draft
+  category: feedback
+  group: feedback-misc
+  kind: motion-pattern
+  ko:
+    name: 페이드 전환
+    aliases:
+      - fade transition
+      - fade in
+      - fade out
+      - opacity transition
+  en:
+    name: Fade transition
+    aliases:
+      - Fade in
+      - Fade out
+      - Opacity transition
+  one_liner: 요소가 투명도 변화를 통해 나타나거나 사라지는 전환.
+  description: modal backdrop, toast, tooltip처럼 위치 이동보다 존재감만 부드럽게 바꾸고 싶을 때 쓴다.
+  visual_anatomy:
+    - transparent start
+    - opacity change
+    - visible end
+    - optional overlay
+  when_to_use:
+    - 가벼운 안내나 배경 레이어를 부드럽게 표시할 때
+  anti_use:
+    - 공간 변화가 중요한 drawer나 sheet에는 slide transition이 더 명확하다
+  prompt_phrases:
+    - tooltip이 fade transition으로 나타나게 해줘
+  asset:
+    kind: mini-mock
+    variant: fade-transition
+  sources:
+    - source_id: mdn-css-transitions
+      note: opacity transitions are a common CSS transition use case
+  confidence: high
+- id: scale-transition
+  status: draft
+  category: feedback
+  group: feedback-misc
+  kind: motion-pattern
+  ko:
+    name: 스케일 전환
+    aliases:
+      - scale transition
+      - zoom transition
+      - 크기 전환
+  en:
+    name: Scale transition
+    aliases:
+      - Zoom transition
+      - Scale animation
+  one_liner: 요소가 커지거나 작아지며 등장, 선택, 강조 상태를 표현하는 전환.
+  description: 버튼 press, selected card, popover 등장처럼 중심에서 변화하는 느낌을 줄 때 쓴다.
+  visual_anatomy:
+    - initial scale
+    - transform origin
+    - scaled surface
+    - final size
+  when_to_use:
+    - 작은 인터랙션에 즉각적인 반응감을 줄 때
+  anti_use:
+    - 텍스트 레이아웃이 흔들릴 정도로 크게 확대하면 안정성이 떨어진다
+  prompt_phrases:
+    - 선택된 카드가 살짝 scale transition으로 커지게 해줘
+  asset:
+    kind: mini-mock
+    variant: scale-transition
+  sources:
+    - source_id: web-dev-animations
+      note: web.dev animation guidance covers transform-based motion
+  confidence: high
+- id: slide-transition
+  status: draft
+  category: feedback
+  group: feedback-misc
+  kind: motion-pattern
+  ko:
+    name: 슬라이드 전환
+    aliases:
+      - slide transition
+      - slide in
+      - slide out
+      - 밀려 나오는 전환
+  en:
+    name: Slide transition
+    aliases:
+      - Slide in
+      - Slide out
+  one_liner: 요소가 화면 가장자리나 기준 위치에서 밀려 들어오거나 나가는 전환.
+  description: drawer, sheet, mobile bottom sheet처럼 방향과 출처가 중요한 레이어에 적합하다.
+  visual_anatomy:
+    - offscreen start
+    - direction
+    - translated surface
+    - settled state
+  when_to_use:
+    - 패널이 어느 방향에서 열리는지 보여줘야 할 때
+  anti_use:
+    - 작은 badge나 tooltip에는 움직임이 과하게 느껴질 수 있다
+  prompt_phrases:
+    - 오른쪽 drawer가 slide transition으로 열리게 해줘
+  asset:
+    kind: mini-mock
+    variant: slide-transition
+  sources:
+    - source_id: material-m3-motion
+      note: Material motion guidance covers transitions between UI states
+  confidence: high
+- id: transition
+  status: draft
+  category: feedback
+  group: feedback-misc
+  kind: motion-pattern
+  ko:
+    name: 전환
+    aliases:
+      - transition
+      - CSS transition
+      - 상태 전환
+  en:
+    name: Transition
+    aliases:
+      - CSS transition
+      - State transition
+  one_liner: 요소의 상태 변화가 즉시 바뀌지 않고 일정 시간에 걸쳐 이어지게 하는 모션.
+  description: hover, focus, open 상태 변화가 갑자기 튀지 않도록 색, 위치, 투명도 변화를 부드럽게 연결한다.
+  visual_anatomy:
+    - start state
+    - changed property
+    - duration
+    - end state
+  when_to_use:
+    - 버튼 hover나 패널 열림처럼 짧은 상태 변화를 부드럽게 만들 때
+  anti_use:
+    - 사용자 입력 결과가 즉시 보여야 하는 중요한 상태를 느리게 만들지 않는다
+  prompt_phrases:
+    - 버튼 hover에 180ms transition을 넣어줘
+  asset:
+    kind: mini-mock
+    variant: transition
+  sources:
+    - source_id: mdn-css-transitions
+      note: CSS transitions define animated changes between property values
+  navigation:
+    canonical_path:
+      - Docs
+      - Motion & Effects
+    also_appears_in:
+      - - Plus
+        - UI Kit
+        - Motion Patterns
+  confidence: high
+- id: typing-text-effect
+  status: draft
+  category: feedback
+  group: feedback-misc
+  kind: motion-pattern
+  ko:
+    name: 타이핑 텍스트 효과
+    aliases:
+      - typing effect
+      - 타자 효과
+      - typewriter text
+  en:
+    name: Typing text effect
+    aliases:
+      - Typewriter effect
+      - Typing animation
+  one_liner: 글자가 한 글자씩 입력되는 것처럼 나타나는 텍스트 애니메이션.
+  description: AI 응답, 히어로 카피, 데모 문구가 생성되거나 말해지는 느낌을 줄 때 사용한다.
+  visual_anatomy:
+    - text string
+    - cursor
+    - staged reveal
+    - optional loop
+  when_to_use:
+    - AI나 자동 생성 메시지의 등장감을 표현할 때
+  anti_use:
+    - 중요 안내문이나 긴 본문에는 읽기 속도를 방해한다
+  prompt_phrases:
+    - AI가 답하는 문구에 typing text effect를 적용해줘
+  asset:
+    kind: mini-mock
+    variant: typing-text-effect
+  sources:
+    - source_id: magic-ui-docs
+      note: Magic UI text animation examples
+  confidence: medium

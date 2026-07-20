@@ -1,0 +1,435 @@
+# 기본 콘텐츠 요소 (data-basic-content-elements)
+# category: data-display · 용어 11개
+# 파생물 — 정본은 docs/ui-vocabulary/terms.yml. 손으로 고치지 마라.
+
+- id: accordion
+  status: draft
+  category: data-display
+  group: data-basic-content-elements
+  ko:
+    name: 아코디언
+    aliases:
+      - 접히는 목록
+      - accordion
+  en:
+    name: Accordion
+    aliases:
+      - Disclosure list
+  one_liner: 제목을 누르면 내용을 펼치거나 접는 구조.
+  description: FAQ나 설정 그룹처럼 많은 내용을 압축해 보여준다.
+  visual_anatomy:
+    - accordion item
+    - trigger row
+    - chevron
+    - expanded content panel
+  when_to_use:
+    - 여러 섹션 중 필요한 내용만 펼쳐 보게 할 때
+    - FAQ처럼 질문과 답변을 묶을 때
+  anti_use:
+    - 항상 비교해야 하는 정보는 접지 않는다
+    - 핵심 정보를 숨기는 용도로 쓰지 않는다
+  prompt_phrases:
+    - FAQ를 accordion으로 만들어줘
+    - 각 항목을 접고 펼칠 수 있게 해줘
+  asset:
+    kind: mini-mock
+    variant: accordion
+    props:
+      openIndex: 0
+  sources:
+    - source_id: wai-aria-apg-patterns
+      note: accordion pattern
+  confidence: high
+- id: carousel
+  status: draft
+  category: data-display
+  group: data-basic-content-elements
+  ko:
+    name: 캐러셀
+    aliases:
+      - 슬라이드 카드
+      - carousel
+  en:
+    name: Carousel
+    aliases:
+      - Slider carousel
+  one_liner: 여러 콘텐츠를 좌우로 넘겨 보는 구조.
+  description: 카드나 이미지를 한 번에 일부만 보여주고 이전/다음으로 이동한다.
+  visual_anatomy:
+    - viewport
+    - slides
+    - previous and next controls
+    - indicators
+  when_to_use:
+    - 추천 카드나 이미지 묶음을 제한된 공간에서 보여줄 때
+  anti_use:
+    - 중요 정보를 숨기기 쉽다
+    - 사용자가 반드시 봐야 하는 콘텐츠에는 부적합하다
+  prompt_phrases:
+    - 추천 카드를 carousel로 넘기게 해줘
+    - 좌우 화살표가 있는 슬라이드 영역을 만들어줘
+  asset:
+    kind: mini-mock
+    variant: carousel
+    props:
+      slides: 3
+  sources:
+    - source_id: shadcn-ui-docs
+      note: carousel component
+  confidence: medium
+- id: divider
+  status: draft
+  category: data-display
+  group: data-basic-content-elements
+  ko:
+    name: 구분선
+    aliases:
+      - divider
+      - separator
+      - 분리선
+  en:
+    name: Divider
+    aliases:
+      - Separator
+      - Rule
+  one_liner: 관련 영역이나 항목 사이를 얇은 선으로 구분하는 요소.
+  description: 목록, 메뉴, 카드 내부에서 정보 덩어리의 경계를 시각적으로 만든다.
+  visual_anatomy:
+    - thin horizontal or vertical line
+    - spacing around line
+    - low contrast color
+  when_to_use:
+    - 항목 사이의 경계를 가볍게 보여줄 때
+    - 섹션이 붙어 보여 혼란스러울 때
+  anti_use:
+    - 간격만으로 충분하면 선을 남발하지 않는다
+    - 너무 강한 색상으로 시선을 빼앗지 않는다
+  prompt_phrases:
+    - 설정 항목 사이에 divider를 넣어줘
+    - 카드 제목과 본문 사이를 얇은 구분선으로 나눠줘
+  asset:
+    kind: mini-mock
+    variant: divider
+    props:
+      orientation: horizontal
+  sources:
+    - source_id: material-m3-components
+      note: divider component
+  confidence: high
+- id: icon
+  status: draft
+  category: data-display
+  group: data-basic-content-elements
+  ko:
+    name: 아이콘
+    aliases:
+      - icon
+      - 심볼
+      - 그림 기호
+  en:
+    name: Icon
+    aliases:
+      - Symbol
+      - Glyph
+  one_liner: 행동, 상태, 대상을 작은 그림 기호로 표현하는 요소.
+  description: 텍스트를 보조하거나 공간이 좁은 곳에서 의미를 빠르게 전달한다.
+  visual_anatomy:
+    - simple pictogram
+    - consistent stroke or fill
+    - optional label
+    - accessible name when interactive
+  when_to_use:
+    - 반복되는 행동이나 상태를 빠르게 인식시킬 때
+    - 버튼이나 메뉴의 의미를 보조할 때
+  anti_use:
+    - 낯선 아이콘을 라벨 없이 단독으로 쓰지 않는다
+    - 장식 아이콘에 의미를 부여하지 않는다
+  prompt_phrases:
+    - 저장 버튼 옆에 save icon을 넣어줘
+    - 메뉴 항목마다 의미를 보여주는 아이콘을 붙여줘
+  asset:
+    kind: icon-composition
+    variant: icon
+    props:
+      symbol: home
+  sources:
+    - source_id: apple-hig-components
+      note: icon guidance and component usage
+  confidence: high
+- id: image
+  status: draft
+  category: data-display
+  group: data-basic-content-elements
+  ko:
+    name: 이미지
+    aliases:
+      - image
+      - 사진
+      - 그림
+  en:
+    name: Image
+    aliases:
+      - Picture
+      - Media image
+  one_liner: 사진이나 그림을 화면 안에 표시하는 시각 요소.
+  description: 제품, 프로필, 콘텐츠 미리보기처럼 텍스트보다 시각 확인이 중요한 정보를 보여준다.
+  visual_anatomy:
+    - image frame
+    - aspect ratio
+    - alt text meaning
+    - optional caption
+  when_to_use:
+    - 사용자가 실제 모습이나 분위기를 확인해야 할 때
+    - 카드나 상세 화면의 시각 자료가 필요할 때
+  anti_use:
+    - 의미 없는 stock 이미지를 장식으로 남발하지 않는다
+    - 비율이 깨지거나 중요한 부분이 잘리지 않게 한다
+  prompt_phrases:
+    - 카드 상단에 상품 image를 넣어줘
+    - 16대9 비율의 썸네일 이미지를 보여줘
+  asset:
+    kind: mini-mock
+    variant: image
+    props:
+      ratio: 16:9
+  sources:
+    - source_id: apple-hig-components
+      note: image and media presentation guidance
+  confidence: medium
+- id: item-row
+  status: draft
+  category: data-display
+  group: data-basic-content-elements
+  ko:
+    name: 아이템 행
+    aliases:
+      - item
+      - item row
+      - 리스트 아이템 행
+  en:
+    name: Item row
+    aliases:
+      - Item
+      - List item row
+  one_liner: 아이콘, 제목, 설명, 보조 액션을 한 줄 카드처럼 정렬한 반복 행.
+  description: 설정 항목, 계정 옵션, 알림 항목처럼 작은 정보 단위를 일관된 행 구조로 보여준다.
+  visual_anatomy:
+    - leading icon
+    - title
+    - description
+    - trailing action or metadata
+    - row container
+  when_to_use:
+    - 목록 안의 각 항목이 제목과 설명, 보조 액션을 함께 가져야 할 때
+  anti_use:
+    - 복잡한 열 정렬과 정렬/필터가 필요하면 table이나 data grid를 쓴다
+  prompt_phrases:
+    - 설정 목록을 아이콘과 설명이 있는 item row로 만들어줘
+  asset:
+    kind: mini-mock
+    variant: item-row
+    props:
+      action: true
+  sources:
+    - source_id: shadcn-ui-docs
+      note: Item component reference
+  confidence: high
+- id: label
+  status: draft
+  category: data-display
+  group: data-basic-content-elements
+  ko:
+    name: 라벨
+    aliases:
+      - label
+      - 이름표
+      - 필드명
+  en:
+    name: Label
+    aliases:
+      - Field label
+      - Text label
+  one_liner: 입력값이나 UI 요소가 무엇을 의미하는지 이름을 붙이는 짧은 텍스트.
+  description: 입력창, 스위치, 체크박스, 값 옆에 붙어 사용자가 목적을 이해하게 한다.
+  visual_anatomy:
+    - short text
+    - associated control
+    - optional required mark
+    - helper relationship
+  when_to_use:
+    - 입력 요소의 의미를 명확히 알려야 할 때
+    - 아이콘이나 값만으로 의미가 부족할 때
+  anti_use:
+    - placeholder만으로 label을 대체하지 않는다
+    - 너무 긴 설명은 helper text로 분리한다
+  prompt_phrases:
+    - 입력창 위에 이름 label을 붙여줘
+    - 스위치 오른쪽에 알림 받기 라벨을 넣어줘
+  asset:
+    kind: mini-mock
+    variant: label
+    props:
+      target: text-field
+  sources:
+    - source_id: material-m3-components
+      note: labels in text fields and controls
+  confidence: high
+- id: logo
+  status: draft
+  category: data-display
+  group: data-basic-content-elements
+  ko:
+    name: 로고
+    aliases:
+      - logo
+      - 브랜드 마크
+      - product mark
+  en:
+    name: Logo
+    aliases:
+      - Brand mark
+      - Product mark
+  one_liner: 제품이나 브랜드를 식별하게 하는 고유한 시각 표시.
+  description: 헤더, 로그인 화면, 빈 상태, 문서 표지에서 제품 정체성을 알려준다.
+  visual_anatomy:
+    - brand mark
+    - optional wordmark
+    - clear space
+    - consistent size
+  when_to_use:
+    - 사용자가 어느 제품이나 조직에 있는지 알아야 할 때
+    - 첫 화면에서 브랜드를 식별시킬 때
+  anti_use:
+    - 작은 버튼 아이콘처럼 남용하지 않는다
+    - 주변 여백 없이 찌그러뜨리지 않는다
+  prompt_phrases:
+    - 헤더 왼쪽에 logo를 넣어줘
+    - 로그인 화면 상단에 브랜드 마크를 크게 배치해줘
+  asset:
+    kind: icon-composition
+    variant: logo
+    props:
+      shape: mark
+  sources:
+    - source_id: apple-hig-components
+      note: branding and icon presentation guidance
+  confidence: low
+- id: spacer
+  status: draft
+  category: data-display
+  group: data-basic-content-elements
+  ko:
+    name: 여백
+    aliases:
+      - spacing
+      - spacer
+      - 간격
+  en:
+    name: Spacer
+    aliases:
+      - Spacing
+      - Gap
+  one_liner: 요소 사이에 의도적인 빈 공간을 만들어 구조와 리듬을 잡는 요소.
+  description: 실제 보이는 컴포넌트는 아니지만 UI의 묶음, 위계, 읽기 흐름을 결정한다.
+  visual_anatomy:
+    - empty space
+    - consistent gap size
+    - alignment relationship
+  when_to_use:
+    - 요소가 너무 붙어 보여 읽기 어려울 때
+    - 그룹 사이의 관계를 표현할 때
+  anti_use:
+    - 아무 의미 없이 큰 빈 공간을 만들지 않는다
+    - 반응형에서 여백이 콘텐츠를 밀어내지 않게 한다
+  prompt_phrases:
+    - 카드 사이 여백을 넉넉하게 줘
+    - 버튼 그룹과 본문 사이에 spacer를 넣어줘
+  asset:
+    kind: diagram
+    variant: spacer
+    props:
+      size: md
+  sources:
+    - source_id: apple-hig-components
+      note: layout spacing guidance
+  confidence: medium
+- id: thumbnail
+  status: draft
+  category: data-display
+  group: data-basic-content-elements
+  ko:
+    name: 썸네일
+    aliases:
+      - thumbnail
+      - 미리보기 이미지
+      - preview image
+  en:
+    name: Thumbnail
+    aliases:
+      - Preview image
+      - Cover image
+  one_liner: 콘텐츠를 빠르게 알아보게 하는 작은 미리보기 이미지.
+  description: 목록이나 카드에서 영상, 글, 파일, 상품의 대표 장면을 작게 보여준다.
+  visual_anatomy:
+    - small image frame
+    - fixed aspect ratio
+    - optional overlay icon
+    - fallback state
+  when_to_use:
+    - 콘텐츠가 시각적으로 구분될 때
+    - 목록에서 항목을 빠르게 찾게 할 때
+  anti_use:
+    - 모든 항목이 비슷한 이미지라면 정보 가치가 낮다
+    - 너무 작아 식별이 안 되면 의미가 없다
+  prompt_phrases:
+    - 게시글 카드 왼쪽에 thumbnail을 넣어줘
+    - 영상 썸네일 위에 재생 아이콘을 올려줘
+  asset:
+    kind: mini-mock
+    variant: thumbnail
+    props:
+      overlay: play
+  sources:
+    - source_id: material-m3-components
+      note: cards and media thumbnails
+  confidence: medium
+- id: typography
+  status: draft
+  category: data-display
+  group: data-basic-content-elements
+  ko:
+    name: 타이포그래피
+    aliases:
+      - typography
+      - 글자 스타일
+      - 텍스트 스타일
+  en:
+    name: Typography
+    aliases:
+      - Text style
+      - Type scale
+  one_liner: 제목, 본문, 캡션처럼 글자의 크기와 굵기, 위계를 정하는 체계.
+  description: 화면의 정보 우선순위를 글자 크기, 굵기, 줄간격으로 전달한다.
+  visual_anatomy:
+    - heading text
+    - body text
+    - caption text
+    - weight and size contrast
+  when_to_use:
+    - 정보의 위계를 명확히 보여줘야 할 때
+    - 같은 종류의 텍스트 스타일을 반복 적용할 때
+  anti_use:
+    - 너무 많은 글자 크기를 섞지 않는다
+    - 작은 영역에 hero 크기 글자를 쓰지 않는다
+  prompt_phrases:
+    - 제목 본문 캡션이 구분되는 typography scale을 적용해줘
+    - 카드 제목은 더 굵게 보여줘
+  asset:
+    kind: diagram
+    variant: typography
+    props:
+      levels: 3
+  sources:
+    - source_id: material-m3-components
+      note: typography and component text hierarchy
+  confidence: medium

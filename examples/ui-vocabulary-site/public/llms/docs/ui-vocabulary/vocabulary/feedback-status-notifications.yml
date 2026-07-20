@@ -1,0 +1,738 @@
+# 상태·알림 센터 (feedback-status-notifications)
+# category: feedback · 용어 18개
+# 파생물 — 정본은 docs/ui-vocabulary/terms.yml. 손으로 고치지 마라.
+
+- id: badge
+  status: draft
+  category: feedback
+  group: feedback-status-notifications
+  ko:
+    name: 배지
+    aliases:
+      - badge
+      - 숫자 표시
+      - 상태 표시
+  en:
+    name: Badge
+    aliases:
+      - Status badge
+      - Count badge
+  one_liner: 숫자나 짧은 상태를 작게 강조하는 표시.
+  description: 알림 개수, 상태, 라벨을 작고 눈에 띄게 보여준다.
+  visual_anatomy:
+    - small pill or dot
+    - count or label
+    - status color
+  when_to_use:
+    - 읽지 않은 개수나 상태를 빠르게 표시할 때
+    - 카드나 메뉴 옆에 짧은 메타 정보를 붙일 때
+  anti_use:
+    - 긴 문장을 담지 않는다
+    - 주요 행동 버튼처럼 쓰지 않는다
+  prompt_phrases:
+    - 알림 아이콘 위에 숫자 badge를 붙여줘
+    - 상태를 초록색 배지로 표시해줘
+  asset:
+    kind: mini-mock
+    variant: badge
+    props:
+      count: 3
+  sources:
+    - source_id: material-m3-components
+      note: badges component
+  confidence: high
+- id: checkout-progress-header
+  status: draft
+  category: feedback
+  group: feedback-status-notifications
+  ko:
+    name: 결제 진행 헤더
+    aliases:
+      - checkout progress header
+      - 결제 단계 헤더
+      - 주문 단계 표시
+      - 결제 진행바
+  en:
+    name: Checkout progress header
+    aliases:
+      - Checkout step header
+      - Checkout progress bar
+  one_liner: 모바일 결제 흐름 상단에서 현재 단계와 남은 단계를 보여주는 헤더.
+  description: 주소, 결제, 확인처럼 여러 단계의 checkout에서 사용자가 위치를 잃지 않게 한다.
+  visual_anatomy:
+    - header title
+    - current step number
+    - progress segments
+    - back affordance
+  when_to_use:
+    - 모바일 결제나 예약처럼 여러 단계가 있는 전환 흐름에서
+  anti_use:
+    - 단일 화면 결제에는 과할 수 있다
+  prompt_phrases:
+    - 결제 화면 상단에 3단계 checkout progress header를 넣어줘
+  asset:
+    kind: mini-mock
+    variant: checkout-progress-header
+    props:
+      step: 2
+  sources:
+    - source_id: material-m3-components
+      note: progress indicators and app bars for tasks
+  navigation:
+    canonical_path:
+      - Plus
+      - UI Blocks
+      - Ecommerce
+      - Components
+    also_appears_in:
+      - - Plus
+        - Templates
+        - Ecommerce Screens
+  confidence: high
+- id: coach-mark
+  status: draft
+  category: feedback
+  group: feedback-status-notifications
+  ko:
+    name: 코치마크
+    aliases:
+      - coach mark
+      - 기능 힌트
+      - 튜토리얼 말풍선
+      - spotlight hint
+  en:
+    name: Coach mark
+    aliases:
+      - Feature hint
+      - Spotlight hint
+      - Guided tip
+  one_liner: 특정 UI 요소를 강조하고 사용법을 짧게 알려주는 안내 오버레이.
+  description: 새 기능이나 중요한 버튼을 처음 보여줄 때, 화면 위에 힌트 말풍선과 강조 영역을 덧씌운다.
+  visual_anatomy:
+    - highlighted target
+    - overlay hint
+    - pointer
+    - dismiss action
+  when_to_use:
+    - 사용자가 놓치기 쉬운 새 기능이나 첫 사용 행동을 안내할 때
+  anti_use:
+    - 모든 기능을 코치마크로 설명하면 방해가 된다
+    - 반복 노출은 피한다
+  prompt_phrases:
+    - 새 추가 버튼을 강조하는 coach mark를 한 번만 보여줘
+  asset:
+    kind: mini-mock
+    variant: coach-mark
+    props:
+      visible: true
+  sources:
+    - source_id: apple-hig-components
+      note: help and onboarding guidance for features
+  confidence: medium
+- id: connection-status
+  status: draft
+  category: feedback
+  group: feedback-status-notifications
+  ko:
+    name: 연결 상태
+    aliases:
+      - connection status
+      - 연결 표시
+      - 네트워크 상태
+  en:
+    name: Connection status
+    aliases:
+      - Connectivity status
+      - Network status
+  one_liner: 실시간 연결, 재연결, 끊김 상태를 사용자에게 보여주는 표시.
+  description: 채팅, 협업 편집, 스트리밍처럼 연결 상태가 기능 동작에 직접 영향을 줄 때 쓴다.
+  visual_anatomy:
+    - connection dot
+    - label
+    - reconnecting state
+    - last update
+  when_to_use:
+    - 실시간 연결이 끊기면 사용자가 바로 알아야 하는 화면에서
+  anti_use:
+    - 일반 오프라인 안내는 offline state가 더 넓은 패턴이다
+  prompt_phrases:
+    - 상단에 연결됨 재연결중 연결 끊김 connection status를 보여줘
+  asset:
+    kind: mini-mock
+    variant: connection-status
+    props:
+      reconnecting: true
+  sources:
+    - source_id: material-m3-components
+      note: status and progress feedback
+  confidence: medium
+- id: conversation-marker
+  status: draft
+  category: feedback
+  group: feedback-status-notifications
+  kind: component
+  ko:
+    name: 대화 마커
+    aliases:
+      - marker
+      - conversation marker
+      - 대화 상태 마커
+  en:
+    name: Conversation marker
+    aliases:
+      - Marker
+      - Conversation status marker
+  one_liner: 대화 흐름 사이에 상태, 시스템 노트, 구분선을 인라인으로 표시하는 작은 행.
+  description: 대화 압축, 도구 실행, 파일 탐색, 날짜 구분처럼 메시지는 아니지만 흐름 안에 남겨야 하는 사건을 표시한다.
+  visual_anatomy:
+    - optional icon
+    - marker content
+    - inline or bordered row
+    - optional separator lines
+  when_to_use:
+    - 채팅 중 상태 업데이트나 시스템 이벤트를 메시지 사이에 보여줄 때
+    - 스트리밍 중 진행 상태를 접근성 있게 알릴 때
+  anti_use:
+    - 사용자 발화는 chat-message를 쓴다
+  prompt_phrases:
+    - 대화 중간에 파일 4개를 읽었다는 conversation marker를 넣어줘
+  asset:
+    kind: mini-mock
+    variant: conversation-marker
+  sources:
+    - source_id: shadcn-ui-docs
+      note: Marker component for inline conversation status and separators
+  confidence: high
+- id: delivery-tracker
+  status: draft
+  category: feedback
+  group: feedback-status-notifications
+  ko:
+    name: 배송 추적
+    aliases:
+      - delivery tracker
+      - 배달 추적
+      - 배송 상태 타임라인
+      - 주문 추적
+      - 주문 추적 타임라인
+  en:
+    name: Delivery tracker
+    aliases:
+      - Order tracker
+      - Delivery status timeline
+      - Order tracking timeline
+  one_liner: 주문이 접수, 준비, 이동, 도착 중 어디에 있는지 단계로 보여주는 모바일 상태 UI.
+  description: 사용자가 기다리는 동안 현재 처리 상태와 다음 단계를 시간 순서로 이해하게 한다. 각 단계에 타임스탬프를 붙이고 배송사
+    추적 번호와 외부 링크를 함께 노출하는 데스크톱/세로 타임라인 변형도 같은 개념이다.
+  visual_anatomy:
+    - status steps
+    - active step
+    - timeline dots
+    - delivery labels
+    - per-step timestamp
+    - carrier tracking number and link
+  when_to_use:
+    - 배달
+    - 배송
+    - 픽업
+    - 예약 진행 상태를 모바일에서 보여줄 때
+  anti_use:
+    - 단순 완료 여부만 있으면 status chip이나 toast로 충분하다
+  prompt_phrases:
+    - 주문 상태를 접수 조리 배달 단계로 보여주는 delivery tracker를 넣어줘
+    - 배송사 추적 번호와 도착 예정일이 있는 order tracking timeline을 넣어줘
+  asset:
+    kind: mini-mock
+    variant: delivery-tracker
+    props:
+      active: 1
+  sources:
+    - source_id: material-m3-components
+      note: progress and status presentation
+  confidence: high
+- id: health-indicator
+  status: draft
+  category: feedback
+  group: feedback-status-notifications
+  ko:
+    name: 헬스 인디케이터
+    aliases:
+      - health indicator
+      - 상태등
+      - 서비스 상태 표시
+  en:
+    name: Health indicator
+    aliases:
+      - Service health indicator
+      - Health status
+  one_liner: 시스템이나 서비스의 정상, 경고, 장애 상태를 색과 라벨로 보여주는 표시.
+  description: 운영 대시보드에서 서비스 상태를 빠르게 스캔할 수 있게 한다.
+  visual_anatomy:
+    - health dot
+    - status label
+    - severity color
+    - service name
+  when_to_use:
+    - 서버
+    - API
+    - 작업 큐 같은 시스템 상태를 모니터링할 때
+  anti_use:
+    - 사용자 작업 성공 여부는 success/error toast가 더 적합하다
+  prompt_phrases:
+    - API 정상 경고 장애를 health indicator로 보여줘
+  asset:
+    kind: mini-mock
+    variant: health-indicator
+    props:
+      severity: warning
+  sources:
+    - source_id: carbon-design-components
+      note: status indicators and data table status
+  confidence: medium
+- id: hover-card
+  status: draft
+  category: feedback
+  group: feedback-status-notifications
+  ko:
+    name: 호버 카드
+    aliases:
+      - hover card
+      - 마우스오버 카드
+      - 미리보기 카드
+  en:
+    name: Hover card
+    aliases:
+      - HoverCard
+      - Hover preview card
+  one_liner: 항목 위에 마우스를 올렸을 때 짧은 프로필, 설명, 미리보기를 보여주는 떠 있는 카드.
+  description: 링크, 사용자, 용어, 파일처럼 클릭 전에 더 많은 맥락을 살짝 보여주고 싶을 때 쓴다.
+  visual_anatomy:
+    - trigger text or avatar
+    - floating card
+    - title
+    - supporting metadata
+    - optional arrow
+  when_to_use:
+    - 데스크톱에서 hover로 보조 정보를 미리 보여줄 때
+    - tooltip보다 긴 콘텐츠가 필요할 때
+  anti_use:
+    - 모바일 주요 정보에는 hover가 없으므로 popover나 detail view를 쓴다
+    - 한 줄 도움말은 tooltip이 더 가볍다
+  prompt_phrases:
+    - 사용자 아바타에 마우스를 올리면 프로필 hover card가 뜨게 해줘
+  asset:
+    kind: mini-mock
+    variant: hover-card
+    props:
+      open: true
+  sources:
+    - source_id: shadcn-ui-docs
+      note: Hover Card component reference
+  related:
+    - id: tooltip
+      relation: compare
+      note: 짧은 한 줄 설명이면 tooltip, 여러 줄 정보나 미리보기면 hover card가 맞다.
+    - id: popover
+      relation: compare
+      note: 클릭해서 열고 상호작용해야 하면 popover가 더 적합하다.
+  confidence: high
+- id: info-label
+  status: draft
+  category: feedback
+  group: feedback-status-notifications
+  ko:
+    name: 정보 라벨
+    aliases:
+      - 설명 아이콘 라벨
+      - info label
+      - 도움말 라벨
+  en:
+    name: Info label
+    aliases:
+      - Label with info
+      - Help label
+  one_liner: 라벨 옆에 작은 정보 아이콘을 붙여 보조 설명을 열 수 있게 하는 요소.
+  description: 폼 필드나 설정 항목의 뜻을 짧게 보충하되 화면을 복잡하게 만들고 싶지 않을 때 사용한다.
+  visual_anatomy:
+    - label text
+    - info icon
+    - hover or focus popover
+    - short explanation
+  when_to_use:
+    - 전문 용어나 설정 의미를 짧게 설명해야 할 때
+  anti_use:
+    - 항상 읽어야 하는 중요한 설명은 helper text나 inline alert로 노출한다
+  prompt_phrases:
+    - 설정 이름 옆에 info label을 넣어 설명을 보여줘
+  asset:
+    kind: mini-mock
+    variant: info-label
+    props:
+      open: true
+  sources:
+    - source_id: fluent2-react-components
+      note: info label component reference
+  confidence: high
+- id: meter
+  status: draft
+  category: feedback
+  group: feedback-status-notifications
+  kind: component
+  ko:
+    name: 미터
+    aliases:
+      - meter
+      - 수치 미터
+      - 사용량 미터
+  en:
+    name: Meter
+    aliases:
+      - Usage meter
+      - Gauge meter
+  one_liner: 알려진 범위 안에서 현재 값이 어느 정도인지 보여주는 수치 표시 막대.
+  description: 저장공간, 할당량, 품질 점수처럼 전체 범위와 현재 값의 비율을 보여준다.
+  visual_anatomy:
+    - value label
+    - minimum and maximum range
+    - filled track
+    - threshold color
+  when_to_use:
+    - 진행 중인 작업보다 현재 사용량이나 상태 값을 보여줄 때
+  anti_use:
+    - 작업 완료 진행률은 progress-bar가 더 적합하다
+  prompt_phrases:
+    - 저장공간 사용량을 72% meter로 보여줘
+  related:
+    - id: progress-bar
+      relation: compare
+      note: progress bar는 작업 진행을, meter는 정해진 범위 안의 현재 값을 보여준다.
+  asset:
+    kind: mini-mock
+    variant: meter
+  sources:
+    - source_id: coss-ui-docs
+      note: coss ui exposes Meter as a primitive
+  confidence: high
+- id: notification-center
+  status: draft
+  category: feedback
+  group: feedback-status-notifications
+  ko:
+    name: 알림 센터
+    aliases:
+      - notification center
+      - 알림함
+      - notification panel
+  en:
+    name: Notification center
+    aliases:
+      - Notifications panel
+      - Notification drawer
+  one_liner: 여러 알림을 모아 읽고 상태를 관리하는 패널.
+  description: 읽음 처리, 필터, 알림 목록, 설정 이동을 한곳에서 제공한다.
+  visual_anatomy:
+    - trigger badge
+    - notification panel
+    - unread count
+    - notification rows
+  when_to_use:
+    - 알림이 누적되고 사용자가 나중에 다시 확인해야 할 때
+  anti_use:
+    - 한 번 보고 사라질 메시지는 toast나 snackbar가 가볍다
+  prompt_phrases:
+    - 벨을 누르면 unread 알림이 보이는 notification center를 열어줘
+  asset:
+    kind: mini-mock
+    variant: notification-center
+    props:
+      unread: 3
+  sources:
+    - source_id: atlassian-design-components
+      note: notification and flag patterns
+  confidence: medium
+- id: order-status
+  status: draft
+  category: feedback
+  group: feedback-status-notifications
+  ko:
+    name: 주문 상태
+    aliases:
+      - order status
+      - 배송 상태
+      - 주문 진행상태
+  en:
+    name: Order status
+    aliases:
+      - Delivery status
+      - Fulfillment status
+  one_liner: 주문 접수, 결제, 배송, 완료 같은 진행 상태를 표시하는 UI.
+  description: 현재 주문이 어디까지 진행됐는지와 예상 도착일, 다음 행동을 알려준다.
+  visual_anatomy:
+    - status label
+    - progress steps
+    - timestamp
+    - delivery estimate
+  when_to_use:
+    - 구매 후 주문이나 배송 진행을 추적해야 할 때
+  anti_use:
+    - 결제 전 단계 안내는 checkout step이 더 정확하다
+  prompt_phrases:
+    - 주문 접수 배송중 완료 order status를 보여줘
+  asset:
+    kind: mini-mock
+    variant: order-status
+    props:
+      step: 2
+  sources:
+    - source_id: material-m3-components
+      note: progress and status display
+  navigation:
+    canonical_path:
+      - Plus
+      - Templates
+      - Ecommerce Screens
+    also_appears_in:
+      - - Plus
+        - UI Blocks
+        - Ecommerce
+        - Page Examples
+  confidence: medium
+- id: password-strength-meter
+  status: draft
+  category: feedback
+  group: feedback-status-notifications
+  kind: component
+  ko:
+    name: 비밀번호 강도 미터
+    aliases:
+      - password strength
+      - 비밀번호 강도
+      - password meter
+  en:
+    name: Password strength meter
+    aliases:
+      - Password meter
+      - Strength meter
+  one_liner: 비밀번호 입력값의 강도를 막대, 단계, 안내 문구로 보여주는 피드백 요소.
+  description: 사용자가 더 안전한 비밀번호를 만들도록 길이, 다양성, 예측 가능성 같은 기준을 입력 중에 알려준다.
+  visual_anatomy:
+    - password field
+    - strength bars
+    - strength label
+    - requirement hints
+  when_to_use:
+    - 새 비밀번호를 만들거나 변경하는 폼에서 보안 기준을 안내할 때
+  anti_use:
+    - 로그인처럼 이미 만든 비밀번호를 입력하는 화면에는 보통 필요 없다
+  prompt_phrases:
+    - 회원가입 비밀번호 필드 아래에 password strength meter를 넣어줘
+  related:
+    - id: password-field
+      relation: compare
+      note: password field는 값을 숨기는 입력이고, password strength meter는 새 비밀번호 품질을 알려주는
+        피드백이다.
+  asset:
+    kind: mini-mock
+    variant: password-strength-meter
+  sources:
+    - source_id: coss-ui-docs
+      note: Origin input examples include password helper and validation compositions
+  confidence: medium
+- id: progress-stepper
+  status: draft
+  category: feedback
+  group: feedback-status-notifications
+  kind: component
+  ko:
+    name: 진행 스테퍼
+    aliases:
+      - progress stepper
+      - 단계 진행 표시
+      - step progress
+  en:
+    name: Progress stepper
+    aliases:
+      - Step progress
+      - Step indicator
+  one_liner: 여러 단계 중 현재 단계와 완료된 단계를 점, 선, 라벨로 보여주는 진행 표시.
+  description: 주문, 온보딩, 설정 마법사처럼 순서가 있는 흐름에서 전체 진행 위치를 보여준다.
+  visual_anatomy:
+    - ordered steps
+    - completed step marker
+    - active step marker
+    - connector line
+  when_to_use:
+    - 사용자가 다단계 흐름에서 현재 위치를 알아야 할 때
+  anti_use:
+    - 단계 이동 자체가 핵심이면 stepper나 wizard가 더 적합하다
+  prompt_phrases:
+    - 결제 흐름 상단에 현재 단계가 보이는 progress stepper를 넣어줘
+  related:
+    - id: stepper
+      relation: compare
+      note: stepper는 단계 이동 컨트롤이고, progress stepper는 진행 상태 표시가 중심이다.
+  asset:
+    kind: mini-mock
+    variant: progress-stepper
+  sources:
+    - source_id: coss-ui-docs
+      note: Origin stepper examples include progress-style step indicators
+  confidence: medium
+- id: role-badge
+  status: draft
+  category: feedback
+  group: feedback-status-notifications
+  ko:
+    name: 역할 배지
+    aliases:
+      - role badge
+      - 권한 배지
+      - member role badge
+  en:
+    name: Role badge
+    aliases:
+      - Permission badge
+      - Member role badge
+  one_liner: 관리자, 편집자, 뷰어 같은 사용자 역할을 작은 배지로 표시하는 UI.
+  description: 팀원 목록, 댓글, 프로필에서 사용자 권한 수준을 빠르게 구분한다.
+  visual_anatomy:
+    - role label
+    - badge shape
+    - permission tone
+    - optional icon
+  when_to_use:
+    - 역할이 화면 이해나 조작 권한에 중요할 때
+  anti_use:
+    - 상태 진행을 표현하려면 status chip이 더 일반적이다
+  prompt_phrases:
+    - 관리자 편집자 뷰어 role badge를 표시해줘
+  asset:
+    kind: mini-mock
+    variant: role-badge
+    props:
+      role: admin
+  sources:
+    - source_id: material-m3-components
+      note: badges and chips for compact labels
+  confidence: medium
+- id: sonner-toast
+  status: draft
+  category: feedback
+  group: feedback-status-notifications
+  ko:
+    name: 소너 토스트
+    aliases:
+      - sonner
+      - sonner toast
+      - shadcn toast
+  en:
+    name: Sonner toast
+    aliases:
+      - Sonner
+      - Toast notification
+  one_liner: shadcn에서 자주 쓰는 Sonner 기반의 가벼운 토스트 알림.
+  description: 저장 완료, 복사됨, 실패 같은 짧은 결과를 화면 가장자리의 임시 알림으로 보여준다.
+  visual_anatomy:
+    - toast surface
+    - short message
+    - optional icon
+    - optional action
+    - stack position
+  when_to_use:
+    - 사용자의 작업 결과를 짧게 알려줄 때
+    - 여러 toast가 stack될 수 있을 때
+  anti_use:
+    - 화면을 막아야 하는 중요한 결정은 dialog나 alert dialog를 쓴다
+    - 긴 설명은 alert가 낫다
+  prompt_phrases:
+    - 저장 완료 후 오른쪽 아래에 sonner toast를 띄워줘
+  asset:
+    kind: mini-mock
+    variant: sonner-toast
+    props:
+      stacked: false
+  sources:
+    - source_id: shadcn-ui-docs
+      note: Sonner component reference
+  related:
+    - id: toast
+      relation: compare
+      note: toast는 일반 패턴명이고 sonner toast는 shadcn에서 쓰는 구현/스타일 이름이다.
+  confidence: high
+- id: status-chip
+  status: draft
+  category: feedback
+  group: feedback-status-notifications
+  ko:
+    name: 상태 칩
+    aliases:
+      - status chip
+      - 상태 태그
+      - state chip
+  en:
+    name: Status chip
+    aliases:
+      - State chip
+      - Status tag
+  one_liner: 항목의 상태를 작은 pill 형태로 표시하는 컴팩트 라벨.
+  description: 진행중, 승인됨, 보류, 실패 같은 상태를 리스트나 테이블 안에서 빠르게 구분한다.
+  visual_anatomy:
+    - pill shape
+    - state color
+    - short label
+    - optional icon
+  when_to_use:
+    - 테이블이나 카드에서 항목 상태를 짧게 보여줄 때
+  anti_use:
+    - 긴 설명이나 조치가 필요하면 alert나 inline message가 낫다
+  prompt_phrases:
+    - 테이블 상태 열에 승인됨 보류 status chip을 넣어줘
+  asset:
+    kind: mini-mock
+    variant: status-chip
+    props:
+      states: 3
+  sources:
+    - source_id: material-m3-components
+      note: chips and assistive status labels
+  confidence: high
+- id: status-indicator
+  status: draft
+  category: feedback
+  group: feedback-status-notifications
+  ko:
+    name: 상태 표시
+    aliases:
+      - status indicator
+      - 상태 점
+      - presence
+  en:
+    name: Status indicator
+    aliases:
+      - Presence indicator
+      - Status dot
+  one_liner: 온라인, 성공, 오류 같은 상태를 작은 색상 표시로 보여주는 요소.
+  description: 점, 라벨, 색상으로 항목이나 사용자의 현재 상태를 빠르게 전달한다.
+  visual_anatomy:
+    - colored dot
+    - short label
+    - optional outline or pulse
+  when_to_use:
+    - 서버 상태
+    - 사용자 접속 상태
+    - 처리 상태를 빠르게 구분할 때
+  anti_use:
+    - 색상만으로 의미를 전달하지 않는다
+    - 복잡한 설명은 alert나 detail text를 함께 쓴다
+  prompt_phrases:
+    - 온라인 상태를 초록색 status indicator로 표시해줘
+    - 서버 상태 옆에 상태 점을 붙여줘
+  asset:
+    kind: mini-mock
+    variant: status-indicator
+    props:
+      tone: online
+  sources:
+    - source_id: fluent2-react-components
+      note: presence and status components
+  confidence: medium

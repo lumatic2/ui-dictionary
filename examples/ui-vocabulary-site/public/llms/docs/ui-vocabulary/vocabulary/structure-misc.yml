@@ -1,0 +1,147 @@
+# 기타 구조 (structure-misc)
+# category: structure · 용어 3개
+# 파생물 — 정본은 docs/ui-vocabulary/terms.yml. 손으로 고치지 마라.
+
+- id: favicon
+  status: draft
+  category: structure
+  group: structure-misc
+  ko:
+    name: 파비콘
+    aliases:
+      - favicon
+      - 브라우저 탭 아이콘
+      - 사이트 아이콘
+  en:
+    name: Favicon
+    aliases:
+      - Site icon
+      - Browser tab icon
+  one_liner: 브라우저 탭, 북마크, 검색 결과에서 사이트를 식별하게 하는 작은 아이콘.
+  description: 제품 로고를 아주 작은 크기에서도 알아볼 수 있게 단순화한 웹사이트 식별 자산이다.
+  visual_anatomy:
+    - small icon
+    - browser tab
+    - bookmark context
+    - simplified brand mark
+  when_to_use:
+    - 웹사이트나 웹앱을 배포할 때
+    - 탭이나 북마크에서 제품을 구분시켜야 할 때
+  anti_use:
+    - 복잡한 로고 원본을 그대로 축소하지 않는다
+    - 작은 크기에서 글자가 뭉개지면 쓰지 않는다
+  prompt_phrases:
+    - 브라우저 탭에 보이는 favicon을 바꿔줘
+    - 작은 크기에서도 보이는 사이트 아이콘을 만들어줘
+  asset:
+    kind: icon-composition
+    variant: favicon
+    props:
+      context: browser-tab
+  sources:
+    - source_id: mdn-html-rel-icon
+      note: rel icon metadata for browser site icons
+  confidence: high
+- id: open-graph-image
+  status: draft
+  category: structure
+  group: structure-misc
+  ko:
+    name: 공유 미리보기 이미지
+    aliases:
+      - Open Graph image
+      - OG image
+      - 링크 썸네일
+      - social preview image
+      - link preview image
+  en:
+    name: Open Graph image
+    aliases:
+      - OG image
+      - Social preview image
+      - Link preview image
+  one_liner: 링크를 공유했을 때 메신저나 SNS 카드에 표시되는 대표 이미지.
+  description: 페이지 제목과 설명만으로 부족한 맥락을 보완해 공유 카드에서 사이트나 콘텐츠를 한눈에 알아보게 한다.
+  visual_anatomy:
+    - preview image canvas
+    - title area
+    - brand mark
+    - page description
+    - share card crop
+  when_to_use:
+    - 사이트 링크를 카카오톡
+    - Slack
+    - X
+    - Facebook 등에 공유할 때
+    - 콘텐츠 대표 이미지를 통제하고 싶을 때
+  anti_use:
+    - 일반 썸네일과 혼동해 카드 내부 이미지로만 취급하지 않는다
+    - 너무 작은 글자나 잘릴 핵심 정보를 넣지 않는다
+  prompt_phrases:
+    - 링크 공유할 때 보이는 OG image를 추가해줘
+    - 카카오톡에 공유되는 social preview image를 만들어줘
+  asset:
+    kind: mini-mock
+    variant: open-graph-image
+    props:
+      ratio: 1200:630
+  sources:
+    - source_id: open-graph-protocol
+      note: og:image metadata for link preview cards
+  related:
+    - id: thumbnail
+      relation: compare
+      note: thumbnail은 콘텐츠 목록 안의 작은 미리보기이고 OG image는 외부 공유 카드용 메타 이미지다
+  confidence: high
+- id: testimonial-section
+  status: draft
+  category: structure
+  group: structure-misc
+  kind: block
+  ko:
+    name: 후기 섹션
+    aliases:
+      - testimonial section
+      - 고객 후기 섹션
+      - 리뷰 블록
+  en:
+    name: Testimonial section
+    aliases:
+      - Testimonials block
+      - Review section
+  one_liner: 고객 인용문, 이름, 역할, 아바타를 묶어 신뢰를 보여주는 랜딩 페이지 섹션.
+  description: 제품의 사회적 증거를 보여주기 위해 여러 고객 후기를 카드나 그리드로 배치한다.
+  visual_anatomy:
+    - quote cards
+    - avatar
+    - name and role
+    - rating optional
+    - section heading
+  when_to_use:
+    - 랜딩 페이지에서 실제 사용자 만족이나 신뢰를 보여줄 때
+  anti_use:
+    - 상품별 개별 리뷰 목록은 review-list나 data table 형태가 더 적합하다
+  prompt_phrases:
+    - 고객 인용문 3개가 있는 testimonial section을 넣어줘
+  asset:
+    kind: mini-mock
+    variant: testimonial-section
+  sources:
+    - source_id: blocks-so-library
+      note: shadcn block ecosystem testimonial marketing sections
+  navigation:
+    canonical_path:
+      - Plus
+      - UI Blocks
+      - Marketing
+      - Page Sections
+      - Testimonials
+    also_appears_in:
+      - - Plus
+        - UI Blocks
+        - Marketing
+        - Page Sections
+      - - Plus
+        - Templates
+        - Marketing Pages
+  confidence: medium

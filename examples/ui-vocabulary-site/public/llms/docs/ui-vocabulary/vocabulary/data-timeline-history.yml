@@ -1,0 +1,253 @@
+# 활동·히스토리 (data-timeline-history)
+# category: data-display · 용어 6개
+# 파생물 — 정본은 docs/ui-vocabulary/terms.yml. 손으로 고치지 마라.
+
+- id: activity-feed
+  status: draft
+  category: data-display
+  group: data-timeline-history
+  ko:
+    name: 활동 피드
+    aliases:
+      - activity feed
+      - 활동 내역
+      - 이벤트 피드
+  en:
+    name: Activity feed
+    aliases:
+      - Activity log
+      - Event feed
+  one_liner: 사용자나 시스템의 최근 활동을 시간순으로 보여주는 목록.
+  description: 누가 무엇을 했는지, 언제 바뀌었는지 추적하는 협업/관리 화면에 쓴다.
+  visual_anatomy:
+    - actor
+    - action text
+    - timestamp
+    - vertical list
+  when_to_use:
+    - 변경 이력이나 협업 활동을 시간순으로 보여줘야 할 때
+  anti_use:
+    - 정확한 감사 로그가 필요하면 audit log처럼 더 구조화한다
+  prompt_phrases:
+    - 최근 팀 활동을 activity feed로 보여줘
+  asset:
+    kind: mini-mock
+    variant: activity-feed
+    props:
+      items: 3
+  sources:
+    - source_id: atlassian-design-components
+      note: activity and status display patterns
+  related:
+    - id: audit-log
+      relation: compare
+      note: activity feed는 협업 맥락의 소셜/최근 활동 스트림이고, audit log는 권한·결제·설정 변경처럼 추적 가능성이 중요한
+        이벤트를 actor-action-target-timestamp로 엄격히 구조화한 컴플라이언스급 불변 기록이다
+  confidence: high
+- id: audit-log
+  status: draft
+  category: data-display
+  group: data-timeline-history
+  ko:
+    name: 감사 로그
+    aliases:
+      - audit log
+      - 변경 이력
+      - 보안 로그
+  en:
+    name: Audit log
+    aliases:
+      - Change log
+      - Security log
+  one_liner: 누가 언제 어떤 중요한 변경을 했는지 구조적으로 기록해 보여주는 목록.
+  description: 활동 피드보다 더 엄격하게 actor, action, target, timestamp를 보여준다.
+  visual_anatomy:
+    - actor
+    - action
+    - target
+    - timestamp
+    - filter controls
+  when_to_use:
+    - 권한
+    - 결제
+    - 설정 변경처럼 추적 가능성이 중요한 이벤트에서
+  anti_use:
+    - 가벼운 소셜 활동에는 activity feed가 더 자연스럽다
+  prompt_phrases:
+    - 관리자 설정 변경 내역을 audit log로 보여줘
+  asset:
+    kind: mini-mock
+    variant: audit-log
+    props:
+      filters: true
+  sources:
+    - source_id: atlassian-design-components
+      note: activity and status display patterns
+  related:
+    - id: activity-feed
+      relation: compare
+      note: audit log는 컴플라이언스급 불변 기록으로 actor-action-target-timestamp를 엄격히 구조화하고,
+        activity feed는 협업 맥락의 소셜/최근 활동 스트림으로 더 가볍게 보여준다
+  confidence: medium
+- id: background-job-queue-monitor
+  status: draft
+  category: data-display
+  group: data-timeline-history
+  ko:
+    name: 백그라운드 작업 큐 모니터
+    aliases:
+      - job queue monitor
+      - 배치 작업 모니터
+      - 백그라운드 작업 상태
+  en:
+    name: Background job queue monitor
+    aliases:
+      - Job queue monitor
+      - Background task monitor
+  one_liner: 배치, 마이그레이션, 이메일 발송 같은 비동기 작업들을 대기중/실행중/성공/실패 상태로 나열하고 실패 건을 개별 재시도하는 운영 모니터.
+  description: 여러 백그라운드 작업의 큐 상태를 목록형으로 보여주고, 상태 필터와 건별 재시도 액션을 제공한다. 단일 실패 패널이
+    아니라 여러 작업을 한 화면에서 감시하는 목록형 모니터다.
+  visual_anatomy:
+    - row per job with id and type
+    - status badge
+    - started time and duration
+    - retry count
+    - status filter
+    - per-row retry action for failed jobs
+  when_to_use:
+    - 비동기 배치나 마이그레이션이나 발송 작업 다수를 운영자가 한 화면에서 감시하고 실패 건만 개별 재시도해야 할 때
+  anti_use:
+    - 단일 작업의 실패 원인과 재시도만 보여주면 되는 좁은 화면에는 retry panel이 더 적합하다
+  prompt_phrases:
+    - 배치 작업들의 큐 상태를 pending running succeeded failed로 보여주는 job queue monitor를
+      만들어줘
+    - 실패한 작업만 재시도할 수 있는 백그라운드 작업 모니터를 넣어줘
+  asset:
+    kind: mini-mock
+    variant: background-job-queue-monitor
+    props:
+      jobs: 4
+  sources:
+    - source_id: atlassian-design-components
+      note: activity and status display patterns
+  related:
+    - id: retry-panel
+      relation: compare
+      note: retry panel은 하나의 실패 상태를 복구하는 단일 패널이고, background job queue monitor는 여러 비동기
+        작업의 큐 상태를 목록으로 감시하며 건별 재시도를 제공하는 별도 구조다
+  confidence: medium
+- id: notification-list
+  status: draft
+  category: data-display
+  group: data-timeline-history
+  ko:
+    name: 알림 목록
+    aliases:
+      - notification list
+      - 알림 리스트
+      - notification feed
+  en:
+    name: Notification list
+    aliases:
+      - Notification feed
+      - Alerts list
+  one_liner: 알림 항목을 시간순이나 상태별로 나열한 목록.
+  description: 각 알림의 제목, 설명, 시간, 읽음 상태, 관련 행동을 행 단위로 보여준다.
+  visual_anatomy:
+    - notification row
+    - unread marker
+    - timestamp
+    - row action
+  when_to_use:
+    - 알림 센터나 활동 피드 안에서 알림을 구조적으로 보여줄 때
+  anti_use:
+    - 사용자 활동 전체를 보여주려면 activity feed가 더 넓은 개념이다
+  prompt_phrases:
+    - 읽지 않은 점과 시간이 있는 notification list를 만들어줘
+  asset:
+    kind: mini-mock
+    variant: notification-list
+    props:
+      unread: true
+  sources:
+    - source_id: atlassian-design-components
+      note: notification list and activity patterns
+  confidence: medium
+- id: timeline
+  status: draft
+  category: data-display
+  group: data-timeline-history
+  ko:
+    name: 타임라인
+    aliases:
+      - 이력 목록
+      - timeline
+  en:
+    name: Timeline
+    aliases:
+      - Activity timeline
+  one_liner: 시간 순서대로 사건이나 활동을 보여주는 구조.
+  description: 점, 선, 시간 라벨, 이벤트 카드로 변경 이력이나 진행 과정을 표현한다.
+  visual_anatomy:
+    - vertical line
+    - event dots
+    - timestamps
+    - event content
+  when_to_use:
+    - 작업 이력
+    - 배송 상태
+    - 활동 로그처럼 순서가 중요한 데이터를 보여줄 때
+  anti_use:
+    - 순서가 중요하지 않은 항목은 list나 table이 낫다
+    - 너무 많은 이벤트는 필터가 필요하다
+  prompt_phrases:
+    - 주문 상태를 timeline으로 보여줘
+    - 활동 로그를 시간순 타임라인으로 정리해줘
+  asset:
+    kind: mini-mock
+    variant: timeline
+    props:
+      events: 3
+  sources:
+    - source_id: atlassian-design-components
+      note: activity and status display patterns
+  confidence: low
+- id: version-history-list
+  status: draft
+  category: data-display
+  group: data-timeline-history
+  ko:
+    name: 버전 히스토리 목록
+    aliases:
+      - version history list
+      - 버전 기록
+      - revision list
+  en:
+    name: Version history list
+    aliases:
+      - Revision list
+      - Version history
+  one_liner: 문서나 디자인의 저장 버전을 시간순으로 보여주는 목록.
+  description: 버전 시간, 작성자, 변경 요약, 복원 행동을 함께 제공한다.
+  visual_anatomy:
+    - version timestamp
+    - author
+    - change summary
+    - restore action
+  when_to_use:
+    - 문서
+    - 디자인
+    - 설정의 이전 버전을 확인하거나 복원해야 할 때
+  anti_use:
+    - 보안 추적 목적이면 audit log가 더 엄격하다
+  prompt_phrases:
+    - 복원 버튼이 있는 version history list를 만들어줘
+  asset:
+    kind: mini-mock
+    variant: version-history-list
+    props:
+      restore: true
+  sources:
+    - source_id: atlassian-design-components
+      note: history and activity display patterns
+  confidence: medium

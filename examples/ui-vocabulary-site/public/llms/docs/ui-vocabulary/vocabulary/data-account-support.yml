@@ -1,0 +1,115 @@
+# 계정·지원 정보 (data-account-support)
+# category: data-display · 용어 3개
+# 파생물 — 정본은 docs/ui-vocabulary/terms.yml. 손으로 고치지 마라.
+
+- id: keyboard-shortcut-key
+  status: draft
+  category: data-display
+  group: data-account-support
+  ko:
+    name: 키보드 단축키 키
+    aliases:
+      - kbd
+      - 단축키 키캡
+      - 키보드 키 표시
+  en:
+    name: Keyboard shortcut key
+    aliases:
+      - Kbd
+      - Keyboard key
+      - Shortcut keycap
+  one_liner: Cmd, Ctrl, K 같은 키보드 입력을 작은 키캡 모양으로 보여주는 표시 요소.
+  description: 메뉴 항목, command palette, 도움말에서 단축키를 실제 키처럼 읽히게 보여준다.
+  visual_anatomy:
+    - small keycap container
+    - key label
+    - subtle border
+    - inline placement
+  when_to_use:
+    - 명령이나 메뉴 옆에 키보드 단축키를 안내할 때
+    - 도움말에서 조합키를 보여줄 때
+  anti_use:
+    - 클릭 가능한 버튼처럼 쓰지 않는다
+    - 긴 설명 문장 전체를 kbd로 감싸지 않는다
+  prompt_phrases:
+    - command palette 항목 오른쪽에 Cmd K kbd 키캡을 보여줘
+  asset:
+    kind: mini-mock
+    variant: keyboard-shortcut-key
+    props:
+      keys:
+        - Cmd
+        - K
+  sources:
+    - source_id: shadcn-ui-docs
+      note: Kbd component reference
+  confidence: high
+- id: mfa-enrollment-card
+  status: draft
+  category: data-display
+  group: data-account-support
+  ko:
+    name: 2단계 인증 등록 카드
+    aliases:
+      - MFA 설정 카드
+      - 이중 인증 등록
+  en:
+    name: MFA enrollment card
+    aliases:
+      - Two-factor setup card
+      - 2FA enrollment card
+  one_liner: 사용자가 2단계 인증을 설정하도록 보안 상태와 등록 행동을 보여주는 카드.
+  description: 보안 설정, 관리자 콘솔, 계정 점검 화면에서 아직 설정하지 않은 보호 수단을 안내한다.
+  visual_anatomy:
+    - security method icon
+    - setup status
+    - benefit text
+    - set up button
+  when_to_use:
+    - 선택형 보안 기능을 사용자가 직접 켜야 할 때
+  anti_use:
+    - 인증 코드를 입력하는 순간에는 otp-code-input을 쓴다
+  prompt_phrases:
+    - 보안 설정에 2단계 인증 등록 카드를 넣고 아직 설정 안 됨 상태를 보여줘
+  asset:
+    kind: mini-mock
+    variant: mfa-enrollment-card
+  sources:
+    - source_id: atlassian-design-components
+      note: settings card and status pattern reference
+  confidence: medium
+- id: recovery-code-panel
+  status: draft
+  category: data-display
+  group: data-account-support
+  ko:
+    name: 복구 코드 패널
+    aliases:
+      - 백업 코드 패널
+      - recovery codes
+  en:
+    name: Recovery code panel
+    aliases:
+      - Backup code panel
+      - Recovery codes list
+  one_liner: 2단계 인증 복구 코드를 보여주고 저장 또는 복사하도록 하는 보안 패널.
+  description: MFA 설정 직후 사용자가 계정 복구용 코드를 안전하게 보관하도록 돕는다.
+  visual_anatomy:
+    - code list
+    - masked or grouped codes
+    - copy action
+    - download action
+    - warning text
+  when_to_use:
+    - 2단계 인증 설정 후 복구 수단을 사용자가 보관해야 할 때
+  anti_use:
+    - 짧은 일회용 인증번호 입력에는 otp-code-input을 쓴다
+  prompt_phrases:
+    - 2단계 인증 설정 후 recovery code panel을 보여주고 복사와 다운로드 버튼을 넣어줘
+  asset:
+    kind: mini-mock
+    variant: recovery-code-panel
+  sources:
+    - source_id: carbon-design-components
+      note: structured list and security warning presentation reference
+  confidence: medium

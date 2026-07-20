@@ -1,0 +1,157 @@
+# 채팅·메시지 (data-chat-messaging)
+# category: data-display · 용어 4개
+# 파생물 — 정본은 docs/ui-vocabulary/terms.yml. 손으로 고치지 마라.
+
+- id: chat-attachment
+  status: draft
+  category: data-display
+  group: data-chat-messaging
+  kind: component
+  ko:
+    name: 채팅 첨부 파일
+    aliases:
+      - attachment
+      - message attachment
+      - 대화 첨부
+  en:
+    name: Chat attachment
+    aliases:
+      - Attachment
+      - Message attachment
+  one_liner: 채팅 메시지나 입력창 안에서 파일, 이미지, 업로드 상태와 액션을 보여주는 첨부 요소.
+  description: 파일명, 형식, 용량, 미리보기, 제거/다운로드 행동을 한 덩어리로 보여준다.
+  visual_anatomy:
+    - media icon or preview
+    - file title
+    - metadata
+    - upload state
+    - actions
+  when_to_use:
+    - 대화 중 파일이나 이미지를 주고받을 때
+    - 업로드 진행률이나 실패 상태를 첨부 카드 안에 표시해야 할 때
+  anti_use:
+    - 일반 파일 목록 화면은 attachment-list나 file-card가 더 적합하다
+  prompt_phrases:
+    - 채팅 메시지 아래에 PDF chat attachment를 보여줘
+  asset:
+    kind: mini-mock
+    variant: chat-attachment
+  sources:
+    - source_id: shadcn-ui-docs
+      note: Attachment component with media, metadata, upload state, and actions
+  confidence: high
+- id: chat-bubble
+  status: draft
+  category: data-display
+  group: data-chat-messaging
+  kind: component
+  ko:
+    name: 채팅 말풍선
+    aliases:
+      - bubble
+      - message bubble
+      - 대화 말풍선
+  en:
+    name: Chat bubble
+    aliases:
+      - Bubble
+      - Message bubble
+  one_liner: 채팅 메시지의 실제 텍스트나 콘텐츠를 감싸는 둥근 말풍선 표면.
+  description: 메시지 행 안에서 발화 내용만 시각적으로 묶고, 보낸 사람에 따라 좌우 정렬이나 색상을 다르게 둔다.
+  visual_anatomy:
+    - rounded surface
+    - bubble content
+    - start or end alignment
+    - optional grouped bubbles
+  when_to_use:
+    - 같은 대화 안에서 메시지 본문을 명확히 구분해야 할 때
+  anti_use:
+    - 카드형 정보 묶음은 card나 chat-attachment가 더 적합하다
+  prompt_phrases:
+    - 사용자 메시지는 오른쪽에 정렬된 chat bubble로 보여줘
+  asset:
+    kind: mini-mock
+    variant: chat-bubble
+  sources:
+    - source_id: shadcn-ui-docs
+      note: Bubble component for visible conversation surface and alignment
+  confidence: high
+- id: chat-message
+  status: draft
+  category: data-display
+  group: data-chat-messaging
+  kind: component
+  ko:
+    name: 채팅 메시지
+    aliases:
+      - message
+      - chat message
+      - 대화 메시지
+  en:
+    name: Chat message
+    aliases:
+      - Message
+      - Conversation message
+  one_liner: 대화에서 한 발화의 아바타, 정렬, 말풍선, 헤더, 푸터를 함께 배치하는 메시지 행.
+  description: 사람과 AI, 사용자와 상담원처럼 대화 주체가 번갈아 등장하는 화면에서 한 메시지 단위를 구성한다.
+  visual_anatomy:
+    - avatar slot
+    - message content
+    - optional header
+    - bubble surface
+    - footer or actions
+  when_to_use:
+    - 채팅이나 AI 대화 화면에서 한 발화를 행 단위로 보여줄 때
+    - 보낸 사람과 받은 사람의 정렬을 구분해야 할 때
+  anti_use:
+    - 단순 알림 문구는 message-bar나 toast가 더 적합하다
+  prompt_phrases:
+    - 아바타와 말풍선이 있는 chat message를 만들어줘
+  asset:
+    kind: mini-mock
+    variant: chat-message
+  sources:
+    - source_id: shadcn-ui-docs
+      note: Message component for conversation row layout
+  confidence: high
+- id: notification-inbox-row
+  status: draft
+  category: data-display
+  group: data-chat-messaging
+  kind: component
+  ko:
+    name: 알림 인박스 행
+    aliases:
+      - notification inbox row
+      - 알림 행
+      - 읽지 않은 알림 행
+  en:
+    name: Notification inbox row
+    aliases:
+      - Notification row
+      - Inbox notification item
+  one_liner: 알림함 안에서 읽음 상태, 아이콘, 본문, 시간, 행 작업을 한 줄에 보여주는 항목.
+  description: 여러 알림을 목록으로 스캔하고 읽음/안읽음 상태와 관련 작업을 바로 파악하게 한다.
+  visual_anatomy:
+    - unread marker
+    - notification icon
+    - title and body
+    - timestamp
+    - row action
+  when_to_use:
+    - 알림 센터나 인박스에서 알림을 목록으로 보여줄 때
+  anti_use:
+    - 일회성 완료 메시지는 toast가 더 적합하다
+  prompt_phrases:
+    - 알림함에 unread dot이 있는 notification inbox row를 보여줘
+  related:
+    - id: notification-list
+      relation: compare
+      note: notification-list는 목록 전체이고, notification inbox row는 그 안의 개별 행 구조다.
+  asset:
+    kind: mini-mock
+    variant: notification-inbox-row
+  sources:
+    - source_id: coss-ui-docs
+      note: Origin notification examples include inbox-like notification rows
+  confidence: medium

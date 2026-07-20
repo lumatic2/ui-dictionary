@@ -1,0 +1,80 @@
+# 움직이는 콘텐츠 (data-motion-content)
+# category: data-display · 용어 2개
+# 파생물 — 정본은 docs/ui-vocabulary/terms.yml. 손으로 고치지 마라.
+
+- id: infinite-moving-cards
+  status: draft
+  category: data-display
+  group: data-motion-content
+  kind: motion-pattern
+  ko:
+    name: 무한 이동 카드
+    aliases:
+      - infinite moving cards
+      - 무한 스크롤 카드
+      - moving cards
+  en:
+    name: Infinite moving cards
+    aliases:
+      - Infinite cards
+      - Moving card loop
+  one_liner: 카드 목록이 끊김 없이 반복 이동하며 여러 후기나 항목을 보여주는 패턴.
+  description: 후기, 로고, 사용 사례를 정적인 그리드보다 생동감 있게 노출한다.
+  visual_anatomy:
+    - card row
+    - repeated cards
+    - seamless loop
+    - masked edges
+  when_to_use:
+    - 랜딩 페이지에서 많은 카드형 증거를 압축해 보여줄 때
+  anti_use:
+    - 사용자가 카드를 선택하거나 상세히 읽어야 하면 static grid가 더 낫다
+  prompt_phrases:
+    - 후기 카드들이 무한히 흐르는 infinite moving cards 섹션을 넣어줘
+  related:
+    - id: marquee-row
+      relation: compare
+      note: marquee-row는 일반 자동 흐름 행이고 infinite-moving-cards는 카드형 콘텐츠 루프에 초점이 있다.
+  asset:
+    kind: mini-mock
+    variant: infinite-moving-cards
+  sources:
+    - source_id: aceternity-ui-docs
+      note: Aceternity infinite moving cards examples
+  confidence: medium
+- id: number-ticker
+  status: draft
+  category: data-display
+  group: data-motion-content
+  kind: motion-pattern
+  ko:
+    name: 숫자 티커
+    aliases:
+      - number ticker
+      - count up
+      - 숫자 카운트업
+  en:
+    name: Number ticker
+    aliases:
+      - Count up number
+      - Animated number
+  one_liner: 숫자가 목표 값까지 올라가거나 바뀌며 지표 변화를 보여주는 애니메이션 숫자.
+  description: 통계, KPI, 사용자 수처럼 숫자 자체를 강조하고 증가감을 보여줄 때 사용한다.
+  visual_anatomy:
+    - numeric value
+    - animated digits
+    - unit label
+    - optional trend
+  when_to_use:
+    - 랜딩 페이지나 대시보드에서 핵심 수치를 강조할 때
+  anti_use:
+    - 정확한 표 형식 비교는 table이나 metric-card가 더 적합하다
+  prompt_phrases:
+    - 총 사용자 수가 올라가는 number ticker를 넣어줘
+  asset:
+    kind: mini-mock
+    variant: number-ticker
+  sources:
+    - source_id: magic-ui-docs
+      note: Magic UI number ticker component examples
+  confidence: medium

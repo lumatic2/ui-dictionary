@@ -1,0 +1,129 @@
+# 확인·도움말 (feedback-confirmation-help)
+# category: feedback · 용어 3개
+# 파생물 — 정본은 docs/ui-vocabulary/terms.yml. 손으로 고치지 마라.
+
+- id: confirmation-dialog
+  status: draft
+  category: feedback
+  group: feedback-confirmation-help
+  ko:
+    name: 확인 다이얼로그
+    aliases:
+      - confirmation dialog
+      - confirm modal
+      - 확인 모달
+  en:
+    name: Confirmation dialog
+    aliases:
+      - Confirm dialog
+      - Confirmation modal
+  one_liner: 중요한 행동을 실행하기 전에 사용자의 명시적 확인을 받는 모달.
+  description: 삭제, 결제, 권한 변경처럼 되돌리기 어렵거나 영향이 큰 행동 앞에 쓴다.
+  visual_anatomy:
+    - dialog title
+    - risk message
+    - cancel action
+    - confirm action
+  when_to_use:
+    - 파괴적이거나 비용이 발생하는 행동 전에
+  anti_use:
+    - 사소한 행동마다 확인을 요구하면 사용자를 피로하게 한다
+  prompt_phrases:
+    - 삭제 전에 취소와 삭제 버튼이 있는 confirmation dialog를 띄워줘
+  asset:
+    kind: mini-mock
+    variant: confirmation-dialog
+    props:
+      destructive: true
+  sources:
+    - source_id: wai-aria-apg-patterns
+      note: dialog modal pattern
+  confidence: high
+- id: docs-feedback-widget
+  status: draft
+  category: feedback
+  group: feedback-confirmation-help
+  kind: block
+  ko:
+    name: 문서 피드백 위젯
+    aliases:
+      - was this helpful widget
+      - 도움이 되었나요 위젯
+      - 문서 평가 위젯
+  en:
+    name: Docs feedback widget
+    aliases:
+      - Was this helpful widget
+      - Page feedback widget
+  one_liner: 문서 페이지 하단에서 이 페이지가 도움이 되었는지 즉석으로 묻는 짧은 피드백 위젯.
+  description: 짧은 질문과 Yes/No 또는 아이콘 버튼 쌍으로 즉석 반응을 받고, 클릭 후 감사 메시지나 짧은 후속 텍스트 입력으로 상태를 전환한다.
+  visual_anatomy:
+    - short question text
+    - yes/no or icon button pair
+    - post-click confirmation state
+    - optional follow-up text input
+    - bottom-of-page card
+  when_to_use:
+    - 문서 페이지가 실제로 도움이 되는지 가벼운 신호를 계속 수집해야 할 때
+  anti_use:
+    - 상품/서비스에 대한 평점과 리뷰는 reviews-summary-block 같은 커머스 리뷰 UI가 더 적합하다
+  prompt_phrases:
+    - 문서 페이지 하단에 도움이 되었나요 피드백 위젯을 넣어줘
+    - Yes No 버튼과 후속 텍스트 입력이 있는 was-this-helpful 위젯을 만들어줘
+  asset:
+    kind: mini-mock
+    variant: docs-feedback-widget
+    props:
+      answered: false
+  sources:
+    - source_id: ui-patterns-library
+      note: page-level was-this-helpful feedback widget pattern
+  confidence: medium
+- id: tooltip
+  status: draft
+  category: feedback
+  group: feedback-confirmation-help
+  ko:
+    name: 툴팁
+    aliases:
+      - 도움말 말풍선
+      - tooltip
+  en:
+    name: Tooltip
+    aliases:
+      - Hint bubble
+  one_liner: hover나 focus 때 짧은 설명을 보여주는 작은 도움말.
+  description: 아이콘 버튼이나 낯선 용어의 의미를 짧게 보충한다. 문서 코드 블록 안에서는 트리거가 특정 토큰/줄에 고정된 어노테이션
+    마커가 되기도 하는데, 이때도 짧은 설명을 보여준다는 동작 자체는 같고 트리거가 코드 좌표에 앵커된다는 맥락만 다르다.
+  visual_anatomy:
+    - trigger element
+    - small floating bubble
+    - short text
+    - optional arrow
+    - code-anchored marker variant for inline code annotations
+  when_to_use:
+    - 아이콘 의미를 보충할 때
+    - 짧은 보조 설명이 필요할 때
+    - 코드 블록의 특정 토큰/줄에 짧은 설명을 앵커해야 할 때
+  anti_use:
+    - 중요한 정보를 tooltip에만 숨기지 않는다
+    - 긴 설명이나 상호작용 요소를 넣지 않는다
+  prompt_phrases:
+    - 아이콘 버튼에 tooltip을 붙여줘
+    - hover하면 짧은 도움말이 나오게 해줘
+  asset:
+    kind: mini-mock
+    variant: tooltip
+    props:
+      open: true
+  sources:
+    - source_id: wai-aria-apg-patterns
+      note: tooltip pattern
+  related:
+    - id: popover
+      relation: compare
+      note: 짧은 설명만 보여주면 tooltip, 버튼이나 입력 같은 상호작용 콘텐츠가 있으면 popover다.
+    - id: dropdown-menu
+      relation: compare
+      note: 선택하거나 실행할 항목 목록이면 tooltip이 아니라 dropdown menu다.
+  confidence: high

@@ -1,0 +1,328 @@
+# 선·색상 처리 (style-border-color)
+# category: style · 용어 8개
+# 파생물 — 정본은 docs/ui-vocabulary/terms.yml. 손으로 고치지 마라.
+
+- id: blend-mode
+  status: draft
+  category: style
+  group: style-border-color
+  kind: visual-treatment
+  ko:
+    name: 블렌드 모드
+    aliases:
+      - blend mode
+      - mix-blend-mode
+      - 합성 모드
+  en:
+    name: Blend mode
+    aliases:
+      - Mix blend mode
+      - Compositing mode
+  one_liner: 겹친 색이나 이미지가 서로 어떻게 섞일지 정하는 시각 합성 방식.
+  description: 배경 이미지 위 텍스트, 장식 레이어, hover 효과에서 단순 투명도와 다른 색 섞임을 만든다.
+  visual_anatomy:
+    - background color
+    - foreground layer
+    - blended overlap
+    - contrast result
+  when_to_use:
+    - 브랜드 그래픽이나 hero 배경에서 레이어 색이 자연스럽게 섞여야 할 때
+  anti_use:
+    - 본문 가독성이나 접근성 대비가 불안정해지면 쓰지 않는다
+  prompt_phrases:
+    - 히어로 이미지 위 그래픽에 subtle blend mode를 적용해줘
+  asset:
+    kind: mini-mock
+    variant: blend-mode
+  sources:
+    - source_id: mdn-css-reference
+      note: CSS blend mode properties define visual compositing behavior
+  confidence: medium
+- id: border-radius
+  status: draft
+  category: style
+  group: style-border-color
+  kind: visual-treatment
+  ko:
+    name: 모서리 반경
+    aliases:
+      - border radius
+      - radius
+      - 둥근 모서리
+  en:
+    name: Border radius
+    aliases:
+      - Corner radius
+      - Rounded corners
+  one_liner: 사각형 요소의 모서리를 얼마나 둥글게 만들지 정하는 시각 속성.
+  description: 버튼, 카드, 입력창의 형태 언어를 맞추고 브랜드의 부드럽거나 단단한 인상을 조절한다.
+  visual_anatomy:
+    - rectangular surfaces
+    - corner radius comparison
+    - consistent shape language
+  when_to_use:
+    - 디자인 시스템의 버튼과 카드 형태를 통일할 때
+  anti_use:
+    - 같은 화면에서 radius 단계가 너무 많으면 일관성이 깨진다
+  prompt_phrases:
+    - 카드와 버튼의 border radius를 같은 단계로 맞춰줘
+  asset:
+    kind: mini-mock
+    variant: border-radius
+  sources:
+    - source_id: mdn-css-reference
+      note: CSS border-radius property reference
+  confidence: high
+- id: gradient-fill
+  status: draft
+  category: style
+  group: style-border-color
+  kind: visual-treatment
+  ko:
+    name: 그라디언트 채움
+    aliases:
+      - gradient fill
+      - gradient
+      - 색상 그라디언트
+  en:
+    name: Gradient fill
+    aliases:
+      - Gradient
+      - Linear gradient
+  one_liner: 단색 대신 두 개 이상의 색이 이어지는 채움 방식.
+  description: 버튼, 배경, 강조 카드에 방향성과 브랜드감을 주지만 본문 가독성은 유지해야 한다.
+  visual_anatomy:
+    - color stops
+    - direction
+    - filled surface
+    - foreground contrast
+  when_to_use:
+    - 히어로나 CTA처럼 시각 신호가 필요한 표면에 분위기를 줄 때
+  anti_use:
+    - 정보를 오래 읽는 영역의 배경으로 쓰면 피로해질 수 있다
+  prompt_phrases:
+    - CTA 버튼에 subtle gradient fill을 적용해줘
+  asset:
+    kind: mini-mock
+    variant: gradient-fill
+  sources:
+    - source_id: mdn-css-reference
+      note: CSS gradient image functions reference
+  confidence: high
+- id: hairline-border
+  status: draft
+  category: style
+  group: style-border-color
+  kind: visual-treatment
+  ko:
+    name: 헤어라인 보더
+    aliases:
+      - hairline border
+      - 얇은 테두리
+      - 1px border
+      - 미세 테두리
+  en:
+    name: Hairline border
+    aliases:
+      - Thin border
+      - One pixel border
+      - Fine border
+  one_liner: 표면의 경계를 아주 얇은 선으로만 구분하는 미세한 테두리 처리.
+  description: 카드, 패널, 입력창을 그림자 없이 조용하게 구분하거나 glassmorphism 표면의 가장자리를 잡을 때 쓴다.
+  visual_anatomy:
+    - thin border
+    - adjacent surface
+    - subtle contrast
+    - rounded corner optional
+  when_to_use:
+    - 밀도 높은 UI에서 그림자 대신 경계를 살짝 보여줄 때
+    - 반투명 표면의 가장자리를 정리할 때
+  anti_use:
+    - 배경과 선 색이 너무 비슷해 경계가 보이지 않으면 대비를 높인다
+  prompt_phrases:
+    - 카드에 그림자 대신 얇은 hairline border를 넣어줘
+  related:
+    - id: shadow-elevation
+      relation: alternative
+      note: 그림자 대신 조용한 경계만 필요하면 hairline border가 낫다
+    - id: color-contrast
+      relation: use-with
+      note: 얇은 선은 대비가 낮으면 보이지 않는다
+  asset:
+    kind: mini-mock
+    variant: hairline-border
+  sources:
+    - source_id: mdn-css-reference
+      note: CSS border properties define thin surface boundaries
+  confidence: high
+- id: highlight-stroke
+  status: draft
+  category: style
+  group: style-border-color
+  kind: visual-treatment
+  ko:
+    name: 하이라이트 스트로크
+    aliases:
+      - highlight stroke
+      - edge highlight
+      - 빛 테두리
+      - 상단 하이라이트
+  en:
+    name: Highlight stroke
+    aliases:
+      - Edge highlight
+      - Light stroke
+      - Top highlight
+  one_liner: 표면 가장자리에 밝은 선을 더해 빛을 받은 듯한 입체감을 주는 처리.
+  description: 어두운 카드나 glass surface의 상단/외곽에 얇은 밝은 선을 넣어 표면 방향과 깊이를 강조한다.
+  visual_anatomy:
+    - surface edge
+    - bright stroke
+    - darker body
+    - directional light
+  when_to_use:
+    - 어두운 표면이나 유리 표면이 배경과 섞여 경계가 약할 때
+  anti_use:
+    - 모든 카드에 강하게 넣으면 과장된 glossy UI처럼 보일 수 있다
+  prompt_phrases:
+    - 어두운 카드 위쪽에 은은한 highlight stroke를 넣어줘
+  related:
+    - id: hairline-border
+      relation: compare
+      note: hairline border는 경계 전체를 균일하게 잡고 highlight stroke는 빛 방향을 표현한다
+    - id: glassmorphism
+      relation: use-with
+      note: 유리 표면의 가장자리와 빛 반사를 강조할 때 함께 쓴다
+  asset:
+    kind: mini-mock
+    variant: highlight-stroke
+  sources:
+    - source_id: mdn-css-reference
+      note: CSS border, outline, and shadow styling can create edge highlight
+        treatments
+  confidence: medium
+- id: opacity
+  status: draft
+  category: style
+  group: style-border-color
+  kind: visual-treatment
+  ko:
+    name: 투명도
+    aliases:
+      - opacity
+      - 불투명도
+      - 투명 처리
+  en:
+    name: Opacity
+    aliases:
+      - Transparency
+      - Alpha
+  one_liner: 요소가 얼마나 투명하거나 불투명하게 보이는지를 조절하는 시각 속성.
+  description: 비활성 상태, 배경 레이어, hover 전후 상태처럼 강도를 낮춰 위계를 만들 때 쓴다.
+  visual_anatomy:
+    - same element repeated
+    - opacity levels
+    - visible background
+    - emphasis difference
+  when_to_use:
+    - 비활성 상태를 약하게 보이게 할 때
+    - 배경 위의 보조 정보를 덜 강조할 때
+  anti_use:
+    - 중요 텍스트의 대비를 낮춰 가독성을 해치면 안 된다
+  prompt_phrases:
+    - 비활성 카드는 opacity를 낮춰서 덜 강조되게 해줘
+  asset:
+    kind: mini-mock
+    variant: opacity
+  sources:
+    - source_id: mdn-css-reference
+      note: CSS opacity property reference
+  navigation:
+    canonical_path:
+      - Docs
+      - Styling
+    also_appears_in:
+      - - Plus
+        - UI Kit
+        - Visual Treatments
+  confidence: high
+- id: outline
+  status: draft
+  category: style
+  group: style-border-color
+  kind: visual-treatment
+  ko:
+    name: 아웃라인
+    aliases:
+      - outline
+      - 외곽선
+      - 윤곽선
+  en:
+    name: Outline
+    aliases:
+      - Outer outline
+      - Focus outline
+  one_liner: 요소 바깥쪽에 그려지는 윤곽선으로 경계나 포커스 상태를 보여주는 처리.
+  description: focus ring, 선택 영역, 강조 상태를 border와 별도로 표시해 레이아웃 크기를 바꾸지 않고 상태를 드러낸다.
+  visual_anatomy:
+    - element boundary
+    - outside outline
+    - offset gap
+    - highlighted state
+  when_to_use:
+    - 포커스나 선택 상태를 레이아웃 흔들림 없이 표시할 때
+  anti_use:
+    - outline을 없애고 대체 표시를 제공하지 않으면 접근성이 나빠진다
+  related:
+    - id: focus-ring
+      relation: use-with
+      note: focus ring은 outline이나 ring으로 구현되는 대표 접근성 상태다
+  prompt_phrases:
+    - 키보드 focus 상태에는 선명한 outline을 남겨줘
+  asset:
+    kind: mini-mock
+    variant: outline-ring
+  sources:
+    - source_id: mdn-css-reference
+      note: CSS outline properties define outlines outside element borders
+  confidence: high
+- id: semantic-color
+  status: draft
+  category: style
+  group: style-border-color
+  kind: visual-treatment
+  ko:
+    name: 의미 색상
+    aliases:
+      - semantic color
+      - semantic token
+      - 의미 기반 색
+  en:
+    name: Semantic color
+    aliases:
+      - Semantic token
+      - Meaning-based color
+  one_liner: 파랑, 회색 같은 실제 색값이 아니라 성공, 위험, 배경, 본문처럼 의미로 이름 붙인 색상.
+  description: 테마나 브랜드가 바뀌어도 UI 의도는 `destructive`, `muted`, `primary` 같은 의미 이름으로 유지한다.
+  visual_anatomy:
+    - semantic labels
+    - color swatches
+    - UI states
+    - token mapping
+  when_to_use:
+    - 디자인 시스템에서 상태와 역할 중심으로 색을 관리할 때
+  anti_use:
+    - 일회성 장식 색까지 모두 semantic token으로 만들면 관리 비용이 커진다
+  prompt_phrases:
+    - 삭제 버튼은 red가 아니라 destructive semantic color를 쓰게 해줘
+  related:
+    - id: color-contrast
+      relation: use-with
+      note: semantic color도 실제 배경과 텍스트 대비를 만족해야 한다
+  asset:
+    kind: mini-mock
+    variant: semantic-color
+  sources:
+    - source_id: material-m3-components
+      note: Material design systems organize color by roles and states
+  confidence: high

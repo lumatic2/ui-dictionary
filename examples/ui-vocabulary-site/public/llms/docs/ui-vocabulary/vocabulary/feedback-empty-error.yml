@@ -1,0 +1,551 @@
+# 빈 상태·오류 복구 (feedback-empty-error)
+# category: feedback · 용어 14개
+# 파생물 — 정본은 docs/ui-vocabulary/terms.yml. 손으로 고치지 마라.
+
+- id: empty-filter-state
+  status: draft
+  category: feedback
+  group: feedback-empty-error
+  kind: component
+  ko:
+    name: 필터 결과 없음 상태
+    aliases:
+      - empty filter state
+      - 필터 빈 상태
+      - 검색 결과 없음
+  en:
+    name: Empty filter state
+    aliases:
+      - Filtered empty state
+      - No matching results
+  one_liner: 필터나 검색 조건 때문에 결과가 없을 때 조건 해제와 재검색 행동을 함께 보여주는 빈 상태.
+  description: 데이터가 아예 없는 것이 아니라 현재 조건에 맞는 항목이 없다는 점을 알려주고 필터 초기화를 돕는다.
+  visual_anatomy:
+    - empty illustration or icon
+    - filter-specific message
+    - clear filters action
+    - optional suggested query
+  when_to_use:
+    - 검색어 또는 필터 적용 후 결과가 0개일 때
+  anti_use:
+    - 데이터 자체가 없으면 empty-state나 empty-table이 더 적합하다
+  prompt_phrases:
+    - 필터 결과가 없을 때 clear filters 버튼이 있는 empty filter state를 보여줘
+  related:
+    - id: empty-state
+      relation: compare
+      note: empty filter state는 조건 때문에 비어 있음을 설명하고, 조건 해제를 주요 행동으로 둔다.
+  asset:
+    kind: mini-mock
+    variant: empty-filter-state
+  sources:
+    - source_id: coss-ui-docs
+      note: coss ui Empty primitive and Origin table/filter examples inform filtered
+        empty states
+  confidence: medium
+- id: empty-search-result
+  status: draft
+  category: feedback
+  group: feedback-empty-error
+  ko:
+    name: 검색 결과 없음
+    aliases:
+      - empty search result
+      - no results
+      - 검색 빈 상태
+  en:
+    name: Empty search result
+    aliases:
+      - No results state
+      - Empty results
+  one_liner: 검색어에 맞는 결과가 없을 때 다음 행동을 안내하는 빈 상태.
+  description: 검색어 확인, 필터 해제, 새 항목 생성 같은 복구 행동을 제공한다.
+  visual_anatomy:
+    - empty icon
+    - query echo
+    - suggestion text
+    - clear filters action
+  when_to_use:
+    - 검색이나 필터 결과가 0개일 때
+  anti_use:
+    - 아직 데이터가 전혀 없는 상태는 empty state와 구분한다
+  prompt_phrases:
+    - 검색어와 필터 초기화 버튼이 있는 empty search result를 보여줘
+  asset:
+    kind: mini-mock
+    variant: empty-search-result
+    props:
+      query: true
+  sources:
+    - source_id: material-m3-components
+      note: empty and search states
+  confidence: high
+- id: empty-state
+  status: draft
+  category: feedback
+  group: feedback-empty-error
+  ko:
+    name: 빈 상태
+    aliases:
+      - empty state
+      - 데이터 없음 화면
+  en:
+    name: Empty state
+    aliases:
+      - No data state
+  one_liner: 보여줄 데이터가 없을 때 이유와 다음 행동을 안내하는 화면.
+  description: 아이콘, 짧은 문구, 보조 설명, 생성 버튼으로 빈 화면을 의미 있게 만든다.
+  visual_anatomy:
+    - empty icon or illustration
+    - title
+    - explanation
+    - optional action button
+  when_to_use:
+    - 검색 결과가 없거나 아직 데이터가 없을 때
+    - 사용자가 다음 행동을 알아야 할 때
+  anti_use:
+    - 오류 상태와 섞지 않는다
+    - 빈 화면을 아무 설명 없이 방치하지 않는다
+  prompt_phrases:
+    - 데이터가 없을 때 empty state를 보여줘
+    - 빈 목록에는 새 항목 만들기 버튼을 넣어줘
+  asset:
+    kind: mini-mock
+    variant: empty-state
+    props:
+      action: true
+  sources:
+    - source_id: carbon-design-components
+      note: empty states guidance
+  confidence: medium
+- id: empty-table
+  status: draft
+  category: feedback
+  group: feedback-empty-error
+  ko:
+    name: 빈 테이블
+    aliases:
+      - empty table
+      - 빈 표
+      - no rows table
+  en:
+    name: Empty table
+    aliases:
+      - No rows table
+      - Empty data table
+  one_liner: 테이블에 표시할 행이 없을 때 빈 상태와 다음 행동을 보여주는 패턴.
+  description: 단순히 빈 표만 보여주지 않고 이유, 검색 초기화, 새 항목 추가 같은 행동을 함께 제공한다.
+  visual_anatomy:
+    - table header
+    - empty body
+    - message
+    - recovery action
+  when_to_use:
+    - 필터 결과가 없거나 아직 데이터가 없는 테이블에서
+  anti_use:
+    - 오류로 데이터를 못 불러온 상황은 error state로 구분한다
+  prompt_phrases:
+    - 테이블에 데이터가 없으면 empty table 상태와 추가 버튼을 보여줘
+  asset:
+    kind: mini-mock
+    variant: empty-table
+    props:
+      action: true
+  sources:
+    - source_id: carbon-design-components
+      note: empty states guidance
+  confidence: high
+- id: error-boundary
+  status: draft
+  category: feedback
+  group: feedback-empty-error
+  ko:
+    name: 오류 경계 화면
+    aliases:
+      - error boundary
+      - fallback UI
+      - 컴포넌트 오류 화면
+  en:
+    name: Error boundary
+    aliases:
+      - Fallback UI
+      - Component error fallback
+  one_liner: 일부 UI가 실패했을 때 전체 앱 대신 해당 영역에 보여주는 복구 화면.
+  description: 컴포넌트 렌더 오류나 데이터 실패를 격리하고 다시 시도 행동을 제공한다.
+  visual_anatomy:
+    - failed region
+    - error message
+    - retry action
+    - contained fallback
+  when_to_use:
+    - 한 영역의 실패가 전체 화면을 망가뜨리지 않게 해야 할 때
+  anti_use:
+    - 사용자가 이해 못 하는 stack trace를 그대로 노출하지 않는다
+  prompt_phrases:
+    - 위젯 로딩 실패 시 retry 버튼이 있는 error boundary UI를 보여줘
+  asset:
+    kind: mini-mock
+    variant: error-boundary
+    props:
+      retry: true
+  sources:
+    - source_id: carbon-design-components
+      note: error and empty state guidance
+  confidence: medium
+- id: error-state
+  status: draft
+  category: feedback
+  group: feedback-empty-error
+  ko:
+    name: 오류 상태
+    aliases:
+      - error state
+      - 실패 화면
+      - 오류 UI
+  en:
+    name: Error state
+    aliases:
+      - Failure state
+      - Error UI
+  one_liner: 작업이나 데이터 로딩이 실패했을 때 원인과 복구 행동을 보여주는 상태 화면.
+  description: 오류 메시지, 재시도 버튼, 대체 행동을 함께 제공해 사용자가 막히지 않게 한다.
+  visual_anatomy:
+    - error icon
+    - clear message
+    - recovery action
+    - optional detail text
+  when_to_use:
+    - 요청 실패
+    - 권한 문제
+    - 네트워크 오류처럼 사용자가 알아야 하는 실패가 발생했을 때
+  anti_use:
+    - 기술적인 에러 코드만 보여주지 않는다
+    - 사용자가 할 수 있는 행동 없이 막아두지 않는다
+  prompt_phrases:
+    - 데이터 로딩 실패 시 error state를 보여줘
+    - 재시도 버튼이 있는 오류 화면을 만들어줘
+  asset:
+    kind: mini-mock
+    variant: error-state
+    props:
+      retry: true
+  sources:
+    - source_id: carbon-design-components
+      note: error and empty state guidance
+  confidence: medium
+- id: info-state
+  status: draft
+  category: feedback
+  group: feedback-empty-error
+  ko:
+    name: 정보 상태
+    aliases:
+      - info state
+      - 안내 상태
+      - informational message
+  en:
+    name: Info state
+    aliases:
+      - Informational state
+      - Info message
+  one_liner: 사용자가 알아두면 좋은 보조 정보를 중립적으로 보여주는 상태.
+  description: 기능 제한, 팁, 시스템 안내처럼 경고나 오류는 아니지만 맥락 설명이 필요할 때 쓴다.
+  visual_anatomy:
+    - info icon
+    - neutral container
+    - concise message
+    - optional link
+  when_to_use:
+    - 사용자에게 맥락이나 추가 설명을 제공해야 할 때
+  anti_use:
+    - 중요한 오류를 info처럼 약하게 표현하지 않는다
+    - 긴 도움말은 documentation link로 분리한다
+  prompt_phrases:
+    - 상단에 info state 안내 박스를 넣어줘
+    - 도움말 링크가 있는 정보 메시지를 보여줘
+  asset:
+    kind: mini-mock
+    variant: info-state
+    props:
+      link: true
+  sources:
+    - source_id: shadcn-ui-docs
+      note: alert component for informational messages
+  confidence: medium
+- id: location-permission-empty
+  status: draft
+  category: feedback
+  group: feedback-empty-error
+  ko:
+    name: 위치 권한 빈 상태
+    aliases:
+      - location permission empty
+      - 위치 권한 필요 화면
+      - 주변 장소 없음
+      - 위치 허용 안내
+  en:
+    name: Location permission empty state
+    aliases:
+      - Location permission empty
+      - Location access empty state
+  one_liner: 위치 권한이 없어 지도나 주변 결과를 보여줄 수 없을 때 나타나는 빈 상태.
+  description: 왜 위치 권한이 필요한지 설명하고 권한 요청 행동을 제공한다.
+  visual_anatomy:
+    - location icon
+    - empty message
+    - permission CTA
+    - map/list placeholder
+  when_to_use:
+    - 주변 장소
+    - 배달 주소
+    - 지도 기능이 위치 권한 없이 비어 있을 때
+  anti_use:
+    - 권한이 아니라 데이터가 없는 경우에는 일반 empty-state를 쓴다
+  prompt_phrases:
+    - 위치 권한이 없을 때 location permission empty state를 보여주고 허용 버튼을 넣어줘
+  asset:
+    kind: mini-mock
+    variant: location-permission-empty
+    props:
+      requested: false
+  sources:
+    - source_id: apple-hig-components
+      note: contextual location permission education
+  confidence: high
+- id: maintenance-state
+  status: draft
+  category: feedback
+  group: feedback-empty-error
+  ko:
+    name: 점검 상태
+    aliases:
+      - maintenance state
+      - 서비스 점검 화면
+      - maintenance page
+  en:
+    name: Maintenance state
+    aliases:
+      - Service maintenance state
+      - Maintenance page
+  one_liner: 서비스나 기능이 계획된 점검 중임을 알려주는 상태 화면.
+  description: 예상 종료 시간, 영향 범위, 상태 페이지 링크를 제공해 불확실성을 줄인다.
+  visual_anatomy:
+    - maintenance icon
+    - schedule
+    - affected area
+    - status link
+  when_to_use:
+    - 계획된 서비스 점검이나 배포로 기능이 일시 중단될 때
+  anti_use:
+    - 예상치 못한 실패는 error state나 retry panel이 맞다
+  prompt_phrases:
+    - 예상 종료 시간이 있는 maintenance state를 만들어줘
+  asset:
+    kind: mini-mock
+    variant: maintenance-state
+    props:
+      eta: true
+  sources:
+    - source_id: material-m3-components
+      note: status communication pattern
+  confidence: medium
+- id: mobile-empty-feed
+  status: draft
+  category: feedback
+  group: feedback-empty-error
+  ko:
+    name: 모바일 빈 피드
+    aliases:
+      - mobile empty feed
+      - 빈 피드 화면
+      - 첫 게시물 없음
+      - 피드 없음
+  en:
+    name: Mobile empty feed
+    aliases:
+      - Empty feed state
+      - Feed empty state
+  one_liner: 모바일 피드에 아직 콘텐츠가 없을 때 첫 행동을 안내하는 빈 상태.
+  description: 글 없음, 팔로잉 없음, 사진 없음 같은 상태에서 사용자가 무엇을 하면 되는지 명확히 알려준다.
+  visual_anatomy:
+    - empty illustration
+    - empty message
+    - starter CTA
+    - feed background
+  when_to_use:
+    - 새 계정
+    - 검색 결과 없음
+    - 팔로잉 없음처럼 피드가 비어 있을 때
+  anti_use:
+    - 로딩 중에는 skeleton이나 spinner를 쓰고 empty feed로 오해시키지 않는다
+  prompt_phrases:
+    - 아직 글이 없을 때 첫 글 작성 버튼이 있는 mobile empty feed를 보여줘
+  asset:
+    kind: mini-mock
+    variant: mobile-empty-feed
+    props:
+      cta: true
+  sources:
+    - source_id: material-m3-components
+      note: empty state guidance and mobile content layout
+  confidence: high
+- id: retry-panel
+  status: draft
+  category: feedback
+  group: feedback-empty-error
+  ko:
+    name: 재시도 패널
+    aliases:
+      - retry panel
+      - 다시 시도 영역
+      - 실패 복구 패널
+  en:
+    name: Retry panel
+    aliases:
+      - Retry state panel
+      - Recovery panel
+  one_liner: 데이터 로드나 작업 실패 후 원인과 다시 시도 행동을 제공하는 패널.
+  description: 사용자가 화면을 떠나지 않고 오류를 복구할 수 있도록 실패 메시지와 재시도 버튼을 둔다.
+  visual_anatomy:
+    - error message
+    - retry action
+    - support hint
+    - optional details
+  when_to_use:
+    - 목록이나 카드 영역 일부가 실패했지만 재요청 가능할 때
+  anti_use:
+    - 전체 앱 장애나 점검은 maintenance state로 분리한다
+  prompt_phrases:
+    - 데이터 로드 실패 영역에 retry panel을 넣어줘
+  asset:
+    kind: mini-mock
+    variant: retry-panel
+    props:
+      retry: true
+  sources:
+    - source_id: material-m3-components
+      note: error and recovery feedback
+  related:
+    - id: background-job-queue-monitor
+      relation: compare
+      note: retry panel은 하나의 실패 상태를 복구하는 단일 패널이고, background job queue monitor는 여러 비동기
+        작업의 큐 상태를 목록으로 감시하며 건별 재시도를 제공하는 별도 구조다
+  confidence: high
+- id: success-state
+  status: draft
+  category: feedback
+  group: feedback-empty-error
+  ko:
+    name: 성공 상태
+    aliases:
+      - success state
+      - 완료 화면
+      - 성공 UI
+  en:
+    name: Success state
+    aliases:
+      - Completion state
+      - Success UI
+  one_liner: 작업이 성공적으로 끝났음을 확인시켜 주는 상태 화면이나 메시지.
+  description: 체크 아이콘, 완료 문구, 다음 행동을 제공해 사용자가 결과를 확신하게 한다.
+  visual_anatomy:
+    - success icon
+    - confirmation title
+    - supporting text
+    - next action
+  when_to_use:
+    - 결제
+    - 제출
+    - 업로드처럼 완료 확인이 중요한 작업 뒤에
+  anti_use:
+    - 사소한 저장 완료에는 toast가 충분할 수 있다
+    - 다음 단계 없이 막다른 화면을 만들지 않는다
+  prompt_phrases:
+    - 결제 완료 success state를 보여줘
+    - 체크 아이콘과 다음으로 버튼이 있는 완료 화면을 만들어줘
+  asset:
+    kind: mini-mock
+    variant: success-state
+    props:
+      action: true
+  sources:
+    - source_id: material-m3-components
+      note: feedback and confirmation patterns
+  confidence: medium
+- id: validation-message
+  status: draft
+  category: feedback
+  group: feedback-empty-error
+  ko:
+    name: 검증 메시지
+    aliases:
+      - 입력 오류 문구
+      - validation error
+      - helper text
+  en:
+    name: Validation message
+    aliases:
+      - Error message
+      - Helper text
+  one_liner: 입력값의 오류나 도움말을 필드 근처에서 알려주는 문구.
+  description: 어떤 값이 왜 잘못됐고 어떻게 고쳐야 하는지 입력 요소 바로 아래에 표시한다.
+  visual_anatomy:
+    - field
+    - error color
+    - message text
+    - optional error icon
+  when_to_use:
+    - 폼 입력값이 잘못됐거나 형식 안내가 필요할 때
+  anti_use:
+    - 오류를 필드와 떨어진 곳에만 표시하지 않는다
+    - 모호한 문구만 쓰지 않는다
+  prompt_phrases:
+    - 이메일 형식이 틀리면 validation message를 입력창 아래에 보여줘
+  asset:
+    kind: mini-mock
+    variant: validation-message
+    props:
+      tone: error
+  sources:
+    - source_id: material-m3-components
+      note: text field supporting text and error
+  confidence: high
+- id: warning-state
+  status: draft
+  category: feedback
+  group: feedback-empty-error
+  ko:
+    name: 경고 상태
+    aliases:
+      - warning state
+      - 주의 상태
+      - warning UI
+  en:
+    name: Warning state
+    aliases:
+      - Caution state
+      - Warning UI
+  one_liner: 위험하거나 주의가 필요한 상황을 노란색 계열과 설명으로 알려주는 상태.
+  description: 삭제 전 확인, 할당량 초과 임박, 불완전한 설정처럼 즉시 실패는 아니지만 주의가 필요할 때 쓴다.
+  visual_anatomy:
+    - warning icon
+    - caution color
+    - message text
+    - optional action
+  when_to_use:
+    - 사용자가 계속 진행하기 전에 위험을 알아야 할 때
+  anti_use:
+    - 모든 안내를 warning으로 만들지 않는다
+    - 실제 오류는 error state나 alert로 구분한다
+  prompt_phrases:
+    - 저장되지 않은 변경사항 warning state를 보여줘
+    - 경고 아이콘과 노란 배너를 넣어줘
+  asset:
+    kind: mini-mock
+    variant: warning-state
+    props:
+      tone: warning
+  sources:
+    - source_id: shadcn-ui-docs
+      note: alert component variants
+  confidence: medium

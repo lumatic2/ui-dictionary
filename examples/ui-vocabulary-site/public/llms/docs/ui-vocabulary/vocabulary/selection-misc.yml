@@ -1,0 +1,41 @@
+# 기타 선택·탐색 (selection-misc)
+# category: selection · 용어 1개
+# 파생물 — 정본은 docs/ui-vocabulary/terms.yml. 손으로 고치지 마라.
+
+- id: row-selection
+  status: draft
+  category: selection
+  group: selection-misc
+  ko:
+    name: 행 선택
+    aliases:
+      - row selection
+      - 테이블 행 선택
+      - 체크박스 행 선택
+  en:
+    name: Row selection
+    aliases:
+      - Selectable rows
+      - Table row selection
+  one_liner: 테이블이나 리스트의 행을 체크해 하나 이상 선택하는 패턴.
+  description: 선택된 행 수를 추적하고 일괄 작업, 삭제, 내보내기 같은 행동으로 이어진다.
+  visual_anatomy:
+    - row checkboxes
+    - selected rows
+    - selected count
+    - header checkbox
+  when_to_use:
+    - 사용자가 여러 데이터 항목을 골라 작업해야 할 때
+  anti_use:
+    - 단순 탐색 리스트에는 선택 체크박스가 불필요할 수 있다
+  prompt_phrases:
+    - 테이블 왼쪽에 row selection 체크박스를 넣어줘
+  asset:
+    kind: mini-mock
+    variant: row-selection
+    props:
+      selected: 2
+  sources:
+    - source_id: carbon-design-components
+      note: data table row selection behavior
+  confidence: high

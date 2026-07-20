@@ -1,0 +1,273 @@
+# 툴바·커맨드 (action-command-bars)
+# category: action · 용어 7개
+# 파생물 — 정본은 docs/ui-vocabulary/terms.yml. 손으로 고치지 마라.
+
+- id: action-sheet
+  status: draft
+  category: action
+  group: action-command-bars
+  ko:
+    name: 액션 시트
+    aliases:
+      - action sheet
+      - 작업 시트
+      - 하단 액션 메뉴
+      - 모바일 액션 메뉴
+  en:
+    name: Action sheet
+    aliases:
+      - Action menu sheet
+      - Bottom action menu
+  one_liner: 모바일 화면 하단에서 여러 작업 명령을 목록으로 보여주는 메뉴형 시트.
+  description: 공유, 복사, 삭제처럼 현재 항목에 대한 행동을 엄지 조작 영역에 모아 보여준다.
+  visual_anatomy:
+    - bottom sheet surface
+    - action rows
+    - destructive action
+    - cancel or close area
+  when_to_use:
+    - 모바일에서 한 항목에 대한 여러 행동을 선택하게 할 때
+  anti_use:
+    - 최상위 탐색에는 쓰지 않는다
+    - 자주 쓰는 단일 행동은 버튼으로 노출한다
+  prompt_phrases:
+    - 카드 더보기 버튼을 누르면 아래에서 action sheet가 올라오게 해줘
+  asset:
+    kind: mini-mock
+    variant: action-sheet
+    props:
+      actions: 3
+  sources:
+    - source_id: apple-hig-components
+      note: action sheets for action choices
+  confidence: high
+- id: canvas-toolbar
+  status: draft
+  category: action
+  group: action-command-bars
+  ko:
+    name: 캔버스 툴바
+    aliases:
+      - canvas toolbar
+      - 작업 캔버스 도구막대
+      - 편집 툴바
+  en:
+    name: Canvas toolbar
+    aliases:
+      - Editor toolbar
+      - Canvas tool palette
+  one_liner: 캔버스 위나 옆에서 선택, 그리기, 확대 같은 편집 도구를 제공하는 막대.
+  description: 디자인 편집기나 화이트보드에서 현재 도구 모드와 캔버스 조작을 빠르게 바꾼다.
+  visual_anatomy:
+    - tool buttons
+    - selected tool
+    - zoom control
+    - canvas context
+  when_to_use:
+    - 사용자가 캔버스 객체를 직접 만들고 조작할 때
+  anti_use:
+    - 일반 목록 화면의 액션을 캔버스 툴처럼 표현하지 않는다
+  prompt_phrases:
+    - 캔버스 왼쪽에 선택 펜 도형 도구가 있는 canvas toolbar를 붙여줘
+  asset:
+    kind: mini-mock
+    variant: canvas-toolbar
+    props:
+      selectedTool: select
+  sources:
+    - source_id: wai-aria-apg-patterns
+      note: toolbar pattern for grouped editor commands
+  confidence: medium
+- id: command-bar
+  status: draft
+  category: action
+  group: action-command-bars
+  ko:
+    name: 커맨드 바
+    aliases:
+      - command bar
+      - 명령 바
+      - 액션 바
+  en:
+    name: Command bar
+    aliases:
+      - Action command bar
+      - Command toolbar
+  one_liner: 선택된 문서나 데이터에 적용할 주요 명령을 한 줄로 모은 도구 막대.
+  description: 저장, 공유, 복제, 삭제처럼 현재 작업 대상에 대한 명령을 빠르게 실행하게 한다.
+  visual_anatomy:
+    - primary command
+    - secondary commands
+    - overflow menu
+    - target context
+  when_to_use:
+    - 편집기나 관리 화면에서 명령이 여러 개 반복적으로 쓰일 때
+  anti_use:
+    - 전역 탐색 링크를 command bar에 섞지 않는다
+  prompt_phrases:
+    - 저장 공유 삭제와 더보기 메뉴가 있는 command bar를 만들어줘
+  asset:
+    kind: mini-mock
+    variant: command-bar
+    props:
+      overflow: true
+  sources:
+    - source_id: fluent2-react-components
+      note: command-like toolbar patterns
+  confidence: high
+- id: menu-item
+  status: draft
+  category: action
+  group: action-command-bars
+  ko:
+    name: 메뉴 항목
+    aliases:
+      - menu item
+      - 메뉴 아이템
+  en:
+    name: Menu item
+    aliases:
+      - Menu option
+  one_liner: 메뉴 안에서 하나의 명령이나 선택지를 나타내는 행.
+  description: 라벨, 아이콘, 단축키, 위험 상태 등을 한 줄에 표시한다.
+  visual_anatomy:
+    - row container
+    - optional icon
+    - label
+    - shortcut or checkmark
+  when_to_use:
+    - dropdown menu나 command menu 안의 개별 행동을 보여줄 때
+  anti_use:
+    - 독립적인 주요 행동은 메뉴 안에 숨기지 않는다
+    - 긴 설명을 메뉴 항목에 넣지 않는다
+  prompt_phrases:
+    - 드롭다운 안에 삭제 menu item을 넣어줘
+    - 메뉴 항목 오른쪽에 단축키를 보여줘
+  asset:
+    kind: mini-mock
+    variant: menu-item
+    props:
+      icon: true
+  sources:
+    - source_id: wai-aria-apg-patterns
+      note: menu item behavior
+  confidence: high
+- id: share-sheet
+  status: draft
+  category: action
+  group: action-command-bars
+  ko:
+    name: 공유 시트
+    aliases:
+      - share sheet
+      - 공유 패널
+      - 공유 대상 선택
+      - 모바일 공유창
+  en:
+    name: Share sheet
+    aliases:
+      - Sharing sheet
+      - Share panel
+  one_liner: 링크나 콘텐츠를 보낼 대상과 공유 행동을 모바일 하단 패널로 보여주는 UI.
+  description: 사용자에게 메시지, 메일, 링크 복사 같은 공유 대상을 빠르게 선택하게 한다.
+  visual_anatomy:
+    - share title
+    - share targets
+    - action icons
+    - bottom sheet surface
+  when_to_use:
+    - 콘텐츠
+    - 상품
+    - 장소
+    - 문서를 다른 앱이나 사람에게 보내게 할 때
+  anti_use:
+    - 앱 내부 단순 초대 흐름이면 전용 invite form이 더 명확할 수 있다
+  prompt_phrases:
+    - 공유 버튼을 누르면 share sheet가 열리고 링크 복사와 메일 보내기를 보여줘
+  asset:
+    kind: mini-mock
+    variant: share-sheet
+    props:
+      targets: 3
+  sources:
+    - source_id: apple-hig-components
+      note: share sheet as mobile sharing interface
+  confidence: medium
+- id: table-row-actions
+  status: draft
+  category: action
+  group: action-command-bars
+  kind: component
+  ko:
+    name: 테이블 행 액션
+    aliases:
+      - table row actions
+      - row actions
+      - 행 작업 메뉴
+  en:
+    name: Table row actions
+    aliases:
+      - Row actions
+      - Row action menu
+  one_liner: 테이블의 각 행 끝에 보기, 수정, 삭제 같은 해당 행 전용 작업을 배치하는 액션 영역.
+  description: 데이터 행마다 가능한 작업이 다를 때 메뉴 버튼이나 아이콘 버튼 묶음으로 행 단위 행동을 제공한다.
+  visual_anatomy:
+    - table row
+    - trailing action button
+    - action menu
+    - destructive action separation
+  when_to_use:
+    - 목록 행마다 세부 보기, 편집, 삭제 같은 작업을 제공할 때
+  anti_use:
+    - 여러 행을 한 번에 처리하면 bulk-action-bar가 더 적합하다
+  prompt_phrases:
+    - 사용자 테이블 각 행 끝에 table row actions 메뉴를 넣어줘
+  related:
+    - id: data-table-toolbar
+      relation: compare
+      note: data-table-toolbar는 테이블 전체 작업이고, table row actions는 개별 행 작업이다.
+  asset:
+    kind: mini-mock
+    variant: table-row-actions
+  sources:
+    - source_id: coss-ui-docs
+      note: Origin table examples include row action menu compositions
+  confidence: medium
+- id: toolbar
+  status: draft
+  category: action
+  group: action-command-bars
+  ko:
+    name: 툴바
+    aliases:
+      - 도구막대
+      - toolbar
+  en:
+    name: Toolbar
+    aliases:
+      - Action toolbar
+  one_liner: 관련 명령 버튼들을 한 줄이나 한 영역에 모은 도구 영역.
+  description: 편집, 정렬, 필터, 보기 전환 같은 반복 행동을 한 곳에 배치한다.
+  visual_anatomy:
+    - horizontal action group
+    - icon buttons
+    - separators
+    - optional dropdowns
+  when_to_use:
+    - 여러 명령을 빠르게 반복 실행해야 할 때
+    - 편집기나 데이터 화면의 도구를 모을 때
+  anti_use:
+    - 명령이 한두 개뿐이면 과하다
+    - 서로 무관한 행동을 한 툴바에 섞지 않는다
+  prompt_phrases:
+    - 표 위에 필터와 정렬 toolbar를 넣어줘
+    - 에디터 상단에 아이콘 툴바를 만들어줘
+  asset:
+    kind: mini-mock
+    variant: toolbar
+    props:
+      items: 4
+  sources:
+    - source_id: wai-aria-apg-patterns
+      note: toolbar pattern
+  confidence: high

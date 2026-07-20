@@ -1,0 +1,353 @@
+# 로딩·진행 (feedback-loading-progress)
+# category: feedback · 용어 9개
+# 파생물 — 정본은 docs/ui-vocabulary/terms.yml. 손으로 고치지 마라.
+
+- id: inline-loading
+  status: draft
+  category: feedback
+  group: feedback-loading-progress
+  ko:
+    name: 인라인 로딩
+    aliases:
+      - inline loading
+      - 작은 로딩 상태
+      - 행 안 로딩
+  en:
+    name: Inline loading
+    aliases:
+      - Inline loading state
+      - Inline spinner
+  one_liner: 버튼, 행, 작은 영역 안에서 처리 중임을 짧은 텍스트와 스피너로 보여주는 상태.
+  description: 전체 화면 로딩이 아니라 특정 작업 하나가 진행 중임을 그 자리에서 알려준다.
+  visual_anatomy:
+    - small spinner
+    - status text
+    - inline placement
+    - optional success state
+  when_to_use:
+    - 저장
+    - 업로드
+    - 동기화처럼 작은 단위 작업의 진행 상태를 보여줄 때
+  anti_use:
+    - 페이지 전체 데이터를 불러오면 skeleton이나 loading state가 더 적합하다
+  prompt_phrases:
+    - 저장 중 문구가 붙은 inline loading을 버튼 옆에 보여줘
+  asset:
+    kind: mini-mock
+    variant: inline-loading
+    props:
+      state: loading
+  sources:
+    - source_id: carbon-design-components
+      note: inline loading component
+  confidence: high
+- id: loading-state
+  status: draft
+  category: feedback
+  group: feedback-loading-progress
+  ko:
+    name: 로딩 상태
+    aliases:
+      - loading state
+      - 불러오는 중 화면
+      - 대기 상태
+  en:
+    name: Loading state
+    aliases:
+      - Loading UI
+      - Pending state
+  one_liner: 데이터나 화면이 준비되는 동안 사용자가 기다리고 있음을 보여주는 상태.
+  description: spinner, skeleton, progress bar, 로딩 문구를 상황에 맞게 조합한다.
+  visual_anatomy:
+    - loading indicator
+    - placeholder area
+    - optional message
+    - disabled actions
+  when_to_use:
+    - 비동기 작업 때문에 콘텐츠를 즉시 보여줄 수 없을 때
+  anti_use:
+    - 빈 화면으로 방치하지 않는다
+    - 긴 작업에 이유나 예상 시간을 전혀 주지 않으면 불안하다
+  prompt_phrases:
+    - 목록을 불러오는 동안 loading state를 보여줘
+    - skeleton과 로딩 문구를 함께 넣어줘
+  asset:
+    kind: mini-mock
+    variant: loading-state
+    props:
+      skeleton: true
+  sources:
+    - source_id: material-m3-components
+      note: progress indicators and loading feedback
+  confidence: high
+- id: progress-bar
+  status: draft
+  category: feedback
+  group: feedback-loading-progress
+  ko:
+    name: 진행바
+    aliases:
+      - 프로그레스 바
+      - progress bar
+  en:
+    name: Progress bar
+    aliases:
+      - Linear progress
+  one_liner: 작업 진행 정도를 막대 길이로 보여주는 요소.
+  description: 업로드, 설치, 단계 진행처럼 전체 대비 현재 진행률을 시각화한다.
+  visual_anatomy:
+    - track
+    - filled indicator
+    - optional percentage label
+  when_to_use:
+    - 진행률을 알 수 있고 사용자가 기다려야 할 때
+    - 긴 작업의 상태를 안정적으로 보여줄 때
+  anti_use:
+    - 진행률을 알 수 없으면 spinner나 indeterminate progress를 쓴다
+    - 짧은 즉시 동작에는 불필요하다
+  prompt_phrases:
+    - 업로드 진행률을 progress bar로 보여줘
+    - 65퍼센트가 채워진 진행바를 넣어줘
+  asset:
+    kind: mini-mock
+    variant: progress-bar
+    props:
+      value: 65
+  sources:
+    - source_id: material-m3-components
+      note: progress indicators
+  confidence: high
+- id: saving-indicator
+  status: draft
+  category: feedback
+  group: feedback-loading-progress
+  ko:
+    name: 저장 표시기
+    aliases:
+      - saving indicator
+      - 저장 중 표시
+      - autosave status
+  en:
+    name: Saving indicator
+    aliases:
+      - Autosave indicator
+      - Save status
+  one_liner: 입력 내용이 저장 중인지 저장 완료인지 작게 보여주는 상태 표시.
+  description: 자동 저장 편집기에서 사용자가 닫기 전에 저장 상태를 확인할 수 있게 한다.
+  visual_anatomy:
+    - saving spinner
+    - saved check
+    - compact label
+    - timestamp
+  when_to_use:
+    - 자동 저장이나 비동기 저장이 있는 편집 화면에서
+  anti_use:
+    - 저장 실패는 error toast나 inline alert로 더 명확히 알려야 한다
+  prompt_phrases:
+    - 우측 상단에 저장 중에서 저장됨으로 바뀌는 saving indicator를 넣어줘
+  asset:
+    kind: mini-mock
+    variant: saving-indicator
+    props:
+      autosave: true
+  sources:
+    - source_id: apple-hig-components
+      note: save and progress feedback
+  confidence: medium
+- id: setup-progress
+  status: draft
+  category: feedback
+  group: feedback-loading-progress
+  ko:
+    name: 설정 진행률
+    aliases:
+      - setup progress
+      - 설정 완료도
+      - setup completion
+  en:
+    name: Setup progress
+    aliases:
+      - Setup completion
+      - Configuration progress
+  one_liner: 제품 설정이나 계정 준비가 몇 퍼센트 완료됐는지 보여주는 상태.
+  description: 남은 설정 항목과 완료율을 보여줘 다음 행동을 유도한다.
+  visual_anatomy:
+    - progress meter
+    - completed count
+    - remaining task
+    - continue action
+  when_to_use:
+    - 초기 설정이나 연동 설정이 여러 단계로 나뉠 때
+  anti_use:
+    - 일회성 로딩 진행률에는 progress bar가 더 정확하다
+  prompt_phrases:
+    - 설정 완료도 60% setup progress를 보여줘
+  asset:
+    kind: mini-mock
+    variant: setup-progress
+    props:
+      percent: 60
+  sources:
+    - source_id: material-m3-components
+      note: progress indicators
+  confidence: high
+- id: skeleton
+  status: draft
+  category: feedback
+  group: feedback-loading-progress
+  ko:
+    name: 스켈레톤
+    aliases:
+      - skeleton loader
+      - 로딩 자리표시자
+  en:
+    name: Skeleton
+    aliases:
+      - Skeleton loader
+      - Placeholder
+  one_liner: 실제 콘텐츠가 들어올 자리의 형태를 미리 보여주는 로딩 UI.
+  description: 카드, 텍스트, 이미지 영역의 회색 블록을 보여줘 로딩 중 레이아웃을 예측하게 한다. 모바일 리스트 행에 쓸 때는 실제
+    행과 같은 아바타-텍스트-트레일링 3분할 구조를 반복하고, 로딩이 200ms 미만으로 끝나면 스켈레톤 자체를 아예 띄우지 않는다.
+  visual_anatomy:
+    - placeholder blocks
+    - text lines
+    - media rectangle
+    - subtle shimmer optional
+    - avatar placeholder circle for list rows
+    - two-line text placeholder for list rows
+    - trailing action placeholder for list rows
+  when_to_use:
+    - 콘텐츠 구조를 알고 있고 로딩 시간이 체감될 때
+    - 레이아웃 점프를 줄이고 싶을 때
+    - 모바일 리스트/피드 행이 로딩되는 동안 실제 행 구조를 미리 보여줄 때
+  anti_use:
+    - 매우 짧은 로딩에는 과하다
+    - 실제 구조와 다른 skeleton은 혼란을 준다
+    - 로딩이 200ms 미만으로 끝나면 아예 표시하지 않는다
+  prompt_phrases:
+    - 카드 목록 로딩 중에는 skeleton loader를 보여줘
+    - 이미지와 텍스트 자리표시자를 넣어줘
+    - 모바일 리스트 행 로딩에 아바타-텍스트-트레일링 스켈레톤을 반복해줘
+  asset:
+    kind: mini-mock
+    variant: skeleton
+    props:
+      rows: 3
+  sources:
+    - source_id: shadcn-ui-docs
+      note: skeleton component
+    - source_id: material-m3-components
+      note: loading indicator duration thresholds for skeleton vs progress vs instant
+  confidence: high
+- id: skeleton-table
+  status: draft
+  category: feedback
+  group: feedback-loading-progress
+  ko:
+    name: 테이블 스켈레톤
+    aliases:
+      - skeleton table
+      - table skeleton
+      - 표 로딩 자리표시자
+  en:
+    name: Skeleton table
+    aliases:
+      - Table skeleton
+      - Loading table skeleton
+  one_liner: 테이블 데이터가 로딩되는 동안 행과 열 형태를 미리 보여주는 스켈레톤.
+  description: 실제 표가 들어올 구조를 유지해 로딩 중에도 화면 흔들림을 줄인다.
+  visual_anatomy:
+    - header placeholders
+    - row placeholders
+    - column grid
+    - loading shimmer optional
+  when_to_use:
+    - 테이블 데이터를 불러오는 동안 구조를 먼저 보여주고 싶을 때
+  anti_use:
+    - 로딩 시간이 매우 짧으면 spinner나 아무 표시 없이도 충분할 수 있다
+  prompt_phrases:
+    - 테이블 데이터를 불러오는 동안 skeleton table을 보여줘
+  asset:
+    kind: mini-mock
+    variant: skeleton-table
+    props:
+      rows: 3
+  sources:
+    - source_id: shadcn-ui-docs
+      note: skeleton component
+  confidence: high
+- id: spinner
+  status: draft
+  category: feedback
+  group: feedback-loading-progress
+  ko:
+    name: 로딩 스피너
+    aliases:
+      - spinner
+      - loading indicator
+  en:
+    name: Spinner
+    aliases:
+      - Loading spinner
+      - Circular progress
+  one_liner: 작업 중임을 회전 애니메이션으로 보여주는 로딩 표시.
+  description: 정확한 진행률은 모르지만 처리 중임을 알려야 할 때 쓴다.
+  visual_anatomy:
+    - circular ring
+    - rotating gap
+    - loading label optional
+  when_to_use:
+    - 짧은 비동기 처리 중 상태를 알려야 할 때
+    - 진행률을 측정할 수 없을 때
+  anti_use:
+    - 긴 작업에는 설명과 progress bar를 함께 검토한다
+    - 화면 전체를 불필요하게 막지 않는다
+  prompt_phrases:
+    - 데이터 불러오는 동안 loading spinner를 보여줘
+    - 버튼 안에 작은 스피너를 넣어줘
+  asset:
+    kind: mini-mock
+    variant: spinner
+    props:
+      size: sm
+  sources:
+    - source_id: material-m3-components
+      note: circular progress indicator
+  confidence: high
+- id: syncing-state
+  status: draft
+  category: feedback
+  group: feedback-loading-progress
+  ko:
+    name: 동기화 중 상태
+    aliases:
+      - syncing state
+      - 동기화 표시
+      - syncing indicator
+  en:
+    name: Syncing state
+    aliases:
+      - Sync status
+      - Syncing indicator
+  one_liner: 로컬 변경이나 원격 데이터가 동기화 중임을 보여주는 상태.
+  description: 사용자가 저장 완료와 아직 동기화 중인 상태를 구분하게 한다.
+  visual_anatomy:
+    - sync spinner
+    - status label
+    - last synced hint
+    - progress feedback
+  when_to_use:
+    - 백그라운드 동기화가 사용자 작업 결과에 영향을 줄 때
+  anti_use:
+    - 단순 로딩은 loading state가 더 간단하다
+  prompt_phrases:
+    - 문서 상단에 syncing state와 마지막 동기화 시간을 보여줘
+  asset:
+    kind: mini-mock
+    variant: syncing-state
+    props:
+      progress: true
+  sources:
+    - source_id: material-m3-components
+      note: progress indicators and status
+  confidence: high

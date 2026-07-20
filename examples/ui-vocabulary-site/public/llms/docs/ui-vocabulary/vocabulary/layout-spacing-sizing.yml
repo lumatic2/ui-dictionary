@@ -1,0 +1,157 @@
+# 간격·크기 (layout-spacing-sizing)
+# category: layout-rendering · 용어 4개
+# 파생물 — 정본은 docs/ui-vocabulary/terms.yml. 손으로 고치지 마라.
+
+- id: aspect-ratio
+  status: draft
+  category: layout-rendering
+  group: layout-spacing-sizing
+  kind: visual-treatment
+  ko:
+    name: 종횡비
+    aliases:
+      - aspect ratio
+      - 비율 고정
+      - 화면 비율
+  en:
+    name: Aspect ratio
+    aliases:
+      - Fixed ratio
+      - Width height ratio
+  one_liner: 이미지나 카드 같은 영역의 가로와 세로 비율을 일정하게 유지하는 제약.
+  description: 썸네일, 영상, 미리보기 카드가 로딩 상태나 화면 크기 변화에도 같은 형태를 유지하게 한다.
+  visual_anatomy:
+    - fixed ratio frame
+    - image placeholder
+    - width height label
+    - responsive size
+  when_to_use:
+    - 이미지 카드나 비디오 영역의 높이가 흔들리지 않아야 할 때
+  anti_use:
+    - 콘텐츠 자체의 비율이 다양해야 의미가 있는 갤러리에서는 과하게 통일하지 않는다
+  prompt_phrases:
+    - 썸네일은 16:9 aspect-ratio로 고정해줘
+  asset:
+    kind: mini-mock
+    variant: aspect-ratio
+  sources:
+    - source_id: mdn-css-reference
+      note: CSS aspect-ratio property reference
+  confidence: high
+- id: gap
+  status: draft
+  category: layout-rendering
+  group: layout-spacing-sizing
+  kind: visual-treatment
+  ko:
+    name: 갭
+    aliases:
+      - gap
+      - 간격
+      - grid gap
+      - flex gap
+  en:
+    name: Gap
+    aliases:
+      - Grid gap
+      - Flex gap
+      - Item gap
+  one_liner: flex나 grid 안에서 인접한 항목 사이의 간격을 정하는 레이아웃 속성.
+  description: 카드, 버튼 그룹, 폼 필드 사이의 리듬을 일관되게 만들고 margin 조합을 줄인다.
+  visual_anatomy:
+    - sibling items
+    - equal spacing
+    - layout container
+    - gap label
+  when_to_use:
+    - 같은 컨테이너 안의 반복 항목 사이 간격을 통일할 때
+  anti_use:
+    - 컨테이너 바깥 여백까지 gap으로 해결하려고 하면 구조가 모호해진다
+  prompt_phrases:
+    - 카드 그리드 항목 사이에 consistent gap을 줘
+  asset:
+    kind: mini-mock
+    variant: layout-gap
+  sources:
+    - source_id: mdn-css-layout
+      note: CSS layout documentation covers gap in grid and flex layout
+  confidence: high
+- id: object-fit
+  status: draft
+  category: layout-rendering
+  group: layout-spacing-sizing
+  kind: visual-treatment
+  ko:
+    name: 오브젝트 맞춤
+    aliases:
+      - object fit
+      - 이미지 맞춤
+      - cover contain
+  en:
+    name: Object fit
+    aliases:
+      - Image fit
+      - Cover fit
+      - Contain fit
+  one_liner: 이미지나 비디오가 고정된 프레임 안에서 잘릴지, 맞춰질지, 늘어날지를 정하는 처리.
+  description: 썸네일과 프로필 이미지가 프레임을 채우면서도 왜곡되지 않도록 cover, contain 같은 방식을 고른다.
+  visual_anatomy:
+    - image frame
+    - cover crop
+    - contain fit
+    - empty area or crop
+  when_to_use:
+    - 이미지 카드
+    - 아바타
+    - 미디어 썸네일의 비율이 제각각일 때
+  anti_use:
+    - 중요한 이미지 일부가 잘리면 contain이나 수동 crop을 검토해야 한다
+  prompt_phrases:
+    - 상품 이미지는 object-fit cover로 카드 프레임을 채우게 해줘
+  related:
+    - id: aspect-ratio
+      relation: use-with
+      note: 프레임 비율은 aspect-ratio로 잡고 내부 이미지는 object-fit으로 맞춘다
+  asset:
+    kind: mini-mock
+    variant: object-fit
+  sources:
+    - source_id: mdn-css-reference
+      note: CSS object-fit property reference
+  confidence: high
+- id: padding
+  status: draft
+  category: layout-rendering
+  group: layout-spacing-sizing
+  kind: visual-treatment
+  ko:
+    name: 패딩
+    aliases:
+      - padding
+      - 안쪽 여백
+      - 내부 여백
+  en:
+    name: Padding
+    aliases:
+      - Inner spacing
+      - Inset spacing
+  one_liner: 표면의 테두리와 내부 콘텐츠 사이에 두는 안쪽 여백.
+  description: 버튼, 카드, 입력창이 답답하지 않도록 콘텐츠 주변에 숨 쉴 공간을 만든다.
+  visual_anatomy:
+    - surface boundary
+    - inner content
+    - padded area
+    - spacing measurement
+  when_to_use:
+    - 카드나 버튼 안의 텍스트가 테두리에 붙어 보일 때
+  anti_use:
+    - 항목 사이 간격은 padding보다 gap이나 margin이 더 명확할 수 있다
+  prompt_phrases:
+    - 카드 안쪽 padding을 조금 늘려서 답답하지 않게 해줘
+  asset:
+    kind: mini-mock
+    variant: inner-padding
+  sources:
+    - source_id: mdn-css-reference
+      note: CSS padding property reference
+  confidence: high

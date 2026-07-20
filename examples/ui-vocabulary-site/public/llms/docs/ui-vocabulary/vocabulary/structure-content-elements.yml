@@ -1,0 +1,157 @@
+# 콘텐츠 구조 요소 (structure-content-elements)
+# category: structure · 용어 4개
+# 파생물 — 정본은 docs/ui-vocabulary/terms.yml. 손으로 고치지 마라.
+
+- id: aspect-ratio-box
+  status: draft
+  category: structure
+  group: structure-content-elements
+  ko:
+    name: 비율 고정 박스
+    aliases:
+      - aspect ratio
+      - 종횡비 박스
+      - 비율 컨테이너
+  en:
+    name: Aspect ratio box
+    aliases:
+      - AspectRatio
+      - Ratio container
+  one_liner: 이미지나 영상 영역을 16:9, 4:3처럼 일정한 비율로 유지하는 레이아웃 컨테이너.
+  description: 카드 썸네일, 영상 프리뷰, 갤러리 이미지처럼 로딩 전후에도 같은 화면 비율을 유지해야 할 때 쓴다.
+  visual_anatomy:
+    - fixed-ratio frame
+    - media placeholder
+    - crop-safe content
+    - stable width
+  when_to_use:
+    - 미디어 영역의 높이가 콘텐츠 로딩 전후에 흔들리면 안 될 때
+    - 썸네일 목록의 비율을 통일해야 할 때
+  anti_use:
+    - 콘텐츠 높이가 자연스럽게 늘어나야 하는 본문 영역에는 쓰지 않는다
+  prompt_phrases:
+    - 카드 썸네일을 16대9 aspect ratio box로 고정해줘
+  asset:
+    kind: mini-mock
+    variant: aspect-ratio-box
+    props:
+      ratio: 16:9
+  sources:
+    - source_id: shadcn-ui-docs
+      note: Aspect Ratio component naming and media layout use
+  confidence: high
+- id: interactive-api-playground
+  status: draft
+  category: structure
+  group: structure-content-elements
+  kind: block
+  ko:
+    name: 인터랙티브 API 플레이그라운드
+    aliases:
+      - interactive api playground
+      - API 플레이그라운드
+      - try it 위젯
+  en:
+    name: Interactive API playground
+    aliases:
+      - API try-it widget
+      - Embedded API console
+  one_liner: 문서 페이지 안에서 실제 파라미터를 입력해 API 요청을 바로 실행하고 응답을 확인하는 임베디드 위젯.
+  description: 파라미터 입력 폼, Send/Try it 버튼, 실제 응답(상태 코드+JSON)을 한 화면에 묶고, 입력값에 따라 옆의
+    언어별 코드 샘플이 동기화된다.
+  visual_anatomy:
+    - parameter input form
+    - send/try-it button
+    - response status code
+    - response body panel
+    - synced code sample
+  when_to_use:
+    - 문서 안에서 실제 API 호출을 실행해보고 응답을 즉시 확인해야 할 때
+  anti_use:
+    - 실행 없이 코드만 보여주면 api-reference-three-column-layout 정도의 정적 레퍼런스로 충분하다
+  prompt_phrases:
+    - 문서 페이지에 파라미터를 입력하고 바로 실행하는 API 플레이그라운드를 넣어줘
+    - Try it 버튼으로 실제 응답을 보여주는 임베디드 API 콘솔을 만들어줘
+  asset:
+    kind: mini-mock
+    variant: interactive-api-playground
+    props:
+      executed: false
+  sources:
+    - source_id: ui-patterns-library
+      note: embedded interactive API playground/try-it console pattern
+  confidence: medium
+- id: message-scroller
+  status: draft
+  category: structure
+  group: structure-content-elements
+  kind: component
+  ko:
+    name: 메시지 스크롤러
+    aliases:
+      - message scroller
+      - chat scroller
+      - 대화 스크롤 컨테이너
+  en:
+    name: Message scroller
+    aliases:
+      - Chat scroller
+      - Conversation scroll container
+  one_liner: 스트리밍 채팅에서 스크롤 위치, 새 메시지 따라가기, 이전 기록 로딩을 관리하는 대화 컨테이너.
+  description: AI 답변이 스트리밍되는 동안 사용자가 읽던 위치를 보존하고, 필요할 때만 최신 메시지로 이동하도록 돕는다.
+  visual_anatomy:
+    - scroll container
+    - message stack
+    - jump to latest control
+    - history loading boundary
+  when_to_use:
+    - AI 채팅이나 긴 대화에서 새 메시지와 이전 기록을 안정적으로 스크롤해야 할 때
+  anti_use:
+    - 짧은 고정 목록은 scroll-area만으로 충분하다
+  prompt_phrases:
+    - 스트리밍 답변 중에도 위치가 튀지 않는 message scroller를 만들어줘
+  asset:
+    kind: mini-mock
+    variant: message-scroller
+  sources:
+    - source_id: shadcn-ui-docs
+      note: Message Scroller for streaming chat scroll behavior
+  confidence: high
+- id: scroll-area
+  status: draft
+  category: structure
+  group: structure-content-elements
+  ko:
+    name: 스크롤 영역
+    aliases:
+      - scroll area
+      - 내부 스크롤 영역
+      - 커스텀 스크롤
+  en:
+    name: Scroll area
+    aliases:
+      - ScrollArea
+      - Custom scroll area
+  one_liner: 페이지 전체가 아니라 특정 패널이나 목록 안에서만 스크롤되도록 만든 영역.
+  description: 사이드바, 알림 목록, 긴 메뉴처럼 고정된 크기 안에서 내용만 스크롤해야 할 때 사용한다.
+  visual_anatomy:
+    - fixed-height container
+    - scrollable content
+    - scrollbar
+    - clipped overflow
+  when_to_use:
+    - 패널 크기는 유지하면서 내부 목록만 스크롤해야 할 때
+    - 사이드바 안에 긴 메뉴가 들어갈 때
+  anti_use:
+    - 페이지 전체 흐름을 자연스럽게 읽는 콘텐츠에는 별도 scroll area를 남용하지 않는다
+  prompt_phrases:
+    - 알림 목록을 고정 높이 scroll area 안에서만 스크롤되게 해줘
+  asset:
+    kind: mini-mock
+    variant: scroll-area
+    props:
+      rows: 6
+  sources:
+    - source_id: shadcn-ui-docs
+      note: Scroll Area component reference
+  confidence: high

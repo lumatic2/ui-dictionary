@@ -1,0 +1,446 @@
+# 사람·연동 (data-people-integrations)
+# category: data-display · 용어 11개
+# 파생물 — 정본은 docs/ui-vocabulary/terms.yml. 손으로 고치지 마라.
+
+- id: avatar
+  status: draft
+  category: data-display
+  group: data-people-integrations
+  ko:
+    name: 아바타
+    aliases:
+      - 프로필 이미지
+      - avatar
+  en:
+    name: Avatar
+    aliases:
+      - User avatar
+      - Profile image
+  one_liner: 사용자나 조직을 나타내는 작은 이미지 또는 이니셜.
+  description: 프로필 사진, 이니셜, fallback 색상으로 사람이나 계정을 식별한다.
+  visual_anatomy:
+    - circular or rounded image
+    - fallback initials
+    - optional status badge
+  when_to_use:
+    - 사용자 목록
+    - 댓글
+    - 프로필 메뉴에서 사람을 빠르게 구분할 때
+  anti_use:
+    - 장식 이미지처럼 쓰지 않는다
+    - 의미 없는 랜덤 이미지는 혼란을 줄 수 있다
+  prompt_phrases:
+    - 댓글 옆에 avatar를 넣어줘
+    - 프로필 이미지가 없으면 이니셜을 보여줘
+  asset:
+    kind: mini-mock
+    variant: avatar
+    props:
+      status: online
+  sources:
+    - source_id: shadcn-ui-docs
+      note: avatar component
+  confidence: high
+- id: avatar-group
+  status: draft
+  category: data-display
+  group: data-people-integrations
+  ko:
+    name: 아바타 그룹
+    aliases:
+      - 겹친 아바타
+      - 사용자 묶음
+      - avatar stack
+  en:
+    name: Avatar group
+    aliases:
+      - Avatar stack
+      - Facepile
+  one_liner: 여러 사용자의 아바타를 겹치거나 나란히 보여주는 사람 묶음 표시.
+  description: 공유 문서, 팀 공간, 댓글 참여자처럼 여러 사람의 존재를 compact하게 보여준다.
+  visual_anatomy:
+    - overlapping avatars
+    - overflow count
+    - optional tooltip
+    - participant order
+  when_to_use:
+    - 참여자나 담당자가 여러 명일 때
+    - 공간을 아끼며 사람 수를 보여줘야 할 때
+  anti_use:
+    - 각 사람의 역할과 상태를 조작해야 하면 team member row가 더 적합하다
+  prompt_phrases:
+    - 공유 중인 사람들을 avatar group으로 보여줘
+  asset:
+    kind: mini-mock
+    variant: avatar-group
+    props:
+      count: 4
+  sources:
+    - source_id: fluent2-react-components
+      note: avatar and persona composition reference
+  confidence: medium
+- id: avatar-stack
+  status: draft
+  category: data-display
+  group: data-people-integrations
+  kind: component
+  ko:
+    name: 아바타 스택
+    aliases:
+      - avatar stack
+      - 겹친 아바타
+      - 팀 아바타
+  en:
+    name: Avatar stack
+    aliases:
+      - Avatar group
+      - Stacked avatars
+  one_liner: 여러 사용자의 아바타를 겹쳐 보여 팀, 참여자, 공유 대상을 요약하는 요소.
+  description: 모든 사람을 목록으로 펼치지 않고 참여자 수와 일부 대표 사용자를 작게 보여준다.
+  visual_anatomy:
+    - overlapping avatars
+    - border ring
+    - overflow count
+    - optional tooltip
+  when_to_use:
+    - 카드나 테이블 행에서 참여자 여러 명을 compact하게 보여줄 때
+  anti_use:
+    - 이름과 역할을 읽어야 하면 team-member-row나 table이 더 적합하다
+  prompt_phrases:
+    - 프로젝트 카드 오른쪽에 참여자 avatar stack을 넣어줘
+  related:
+    - id: avatar
+      relation: compare
+      note: avatar는 한 사람이고, avatar stack은 여러 사람을 겹쳐 요약한다.
+  asset:
+    kind: mini-mock
+    variant: avatar-stack
+  sources:
+    - source_id: coss-ui-docs
+      note: Origin avatar category includes grouped avatar examples
+  confidence: medium
+- id: badge-group
+  status: draft
+  category: data-display
+  group: data-people-integrations
+  kind: component
+  ko:
+    name: 배지 그룹
+    aliases:
+      - badge group
+      - 태그 배지 묶음
+      - 상태 배지 묶음
+  en:
+    name: Badge group
+    aliases:
+      - Badge cluster
+      - Tag badge group
+  one_liner: 여러 배지를 한 줄이나 묶음으로 배치해 속성, 상태, 태그를 compact하게 보여주는 요소.
+  description: 카드나 테이블 행에서 카테고리, 상태, 권한 같은 여러 짧은 메타데이터를 함께 표시한다.
+  visual_anatomy:
+    - badge chips
+    - wrapping row
+    - optional overflow count
+    - consistent color semantics
+  when_to_use:
+    - 한 항목에 여러 짧은 속성을 보여줘야 할 때
+  anti_use:
+    - 사용자가 직접 선택하거나 제거해야 하면 chip이나 tag-input이 더 적합하다
+  prompt_phrases:
+    - 카드 상단에 New, Beta, Admin badge group을 보여줘
+  related:
+    - id: badge
+      relation: compare
+      note: badge group은 여러 badge를 의미 있는 묶음으로 정렬한다.
+  asset:
+    kind: mini-mock
+    variant: badge-group
+  sources:
+    - source_id: coss-ui-docs
+      note: Origin badge examples include grouped metadata compositions
+  confidence: medium
+- id: connection-card
+  status: draft
+  category: data-display
+  group: data-people-integrations
+  ko:
+    name: 연결 카드
+    aliases:
+      - connection card
+      - 연결된 계정 카드
+      - connected account card
+  en:
+    name: Connection card
+    aliases:
+      - Connected account card
+      - Account connection card
+  one_liner: 이미 연결된 외부 계정이나 서비스 인스턴스의 상태를 보여주는 카드.
+  description: 계정명, 연결 상태, 동기화 시각, 연결 해제 행동을 제공한다.
+  visual_anatomy:
+    - service identity
+    - connected account
+    - sync status
+    - disconnect action
+  when_to_use:
+    - 연결된 외부 계정의 상태와 관리 행동이 필요할 때
+  anti_use:
+    - 연동 후보 목록은 integration card가 더 적합하다
+  prompt_phrases:
+    - 연결됨 상태와 해제 버튼이 있는 connection card를 넣어줘
+  asset:
+    kind: mini-mock
+    variant: connection-card
+    props:
+      synced: true
+  sources:
+    - source_id: atlassian-design-components
+      note: integration management patterns
+  confidence: medium
+- id: integration-card
+  status: draft
+  category: data-display
+  group: data-people-integrations
+  ko:
+    name: 연동 카드
+    aliases:
+      - integration card
+      - 앱 연동 카드
+      - integration tile
+  en:
+    name: Integration card
+    aliases:
+      - App integration card
+      - Integration tile
+  one_liner: 외부 서비스 연동의 로고, 이름, 설명, 연결 행동을 보여주는 카드.
+  description: Slack, Notion, GitHub 같은 연동을 탐색하고 연결 상태를 확인하게 한다.
+  visual_anatomy:
+    - service logo
+    - integration name
+    - description
+    - connect action
+    - status
+  when_to_use:
+    - 여러 외부 연동 옵션을 카드로 보여줄 때
+  anti_use:
+    - 이미 연결된 인스턴스 하나는 connection card가 더 구체적이다
+  prompt_phrases:
+    - Slack 로고와 연결 버튼이 있는 integration card를 만들어줘
+  asset:
+    kind: mini-mock
+    variant: integration-card
+    props:
+      connected: false
+  sources:
+    - source_id: material-m3-components
+      note: cards and action composition
+  confidence: medium
+- id: integration-grid-section
+  status: draft
+  category: data-display
+  group: data-people-integrations
+  kind: block
+  ko:
+    name: 연동 그리드 섹션
+    aliases:
+      - integration grid
+      - integrations section
+      - 연동 앱 섹션
+  en:
+    name: Integration grid section
+    aliases:
+      - Integrations grid
+      - Logo integration section
+  one_liner: 외부 서비스 로고와 연동 상태를 카드 그리드로 보여주는 섹션.
+  description: 제품이 어떤 도구와 연결되는지 보여주고 설치, 연결, 자세히 보기 행동을 제공한다.
+  visual_anatomy:
+    - integration cards
+    - logo
+    - service name
+    - connection status
+    - action
+  when_to_use:
+    - SaaS 앱에서 지원 연동 목록이나 마켓플레이스를 보여줄 때
+  anti_use:
+    - 단일 연동 설정은 integration-card가 더 직접적이다
+  prompt_phrases:
+    - Slack
+    - GitHub
+    - Notion이 있는 integration grid section을 만들어줘
+  related:
+    - id: integration-card
+      relation: compare
+      note: integration-card는 단일 연동 카드이고 integration-grid-section은 여러 연동을 탐색하는 섹션이다.
+  asset:
+    kind: mini-mock
+    variant: integration-grid-section
+  sources:
+    - source_id: blocks-so-library
+      note: shadcn blocks for integration and SaaS marketing sections
+  confidence: medium
+- id: status-avatar
+  status: draft
+  category: data-display
+  group: data-people-integrations
+  kind: component
+  ko:
+    name: 상태 아바타
+    aliases:
+      - status avatar
+      - presence avatar
+      - 접속 상태 아바타
+  en:
+    name: Status avatar
+    aliases:
+      - Presence avatar
+      - Avatar with status
+  one_liner: 아바타 위에 온라인, 자리비움, 오류 같은 작은 상태 점을 붙인 사용자 표시.
+  description: 채팅, 협업, 담당자 목록에서 사람 자체와 현재 상태를 한 번에 보여준다.
+  visual_anatomy:
+    - avatar image or initials
+    - status dot
+    - status color
+    - optional accessible label
+  when_to_use:
+    - 사용자 목록에서 현재 접속 상태나 가용성을 보여줄 때
+  anti_use:
+    - 상태만 보여주면 status-indicator가 더 직접적이다
+  prompt_phrases:
+    - 담당자 아바타에 온라인 상태 dot이 있는 status avatar를 넣어줘
+  related:
+    - id: status-indicator
+      relation: compare
+      note: status indicator는 상태만 표시하고, status avatar는 사람 식별과 상태를 결합한다.
+  asset:
+    kind: mini-mock
+    variant: status-avatar
+  sources:
+    - source_id: coss-ui-docs
+      note: Origin avatar examples include presence/status decorations
+  confidence: medium
+- id: team-member-row
+  status: draft
+  category: data-display
+  group: data-people-integrations
+  ko:
+    name: 팀원 행
+    aliases:
+      - team member row
+      - 멤버 행
+      - user row
+  en:
+    name: Team member row
+    aliases:
+      - Member row
+      - User row
+  one_liner: 팀원 한 명의 아바타, 이름, 이메일, 역할, 상태를 한 줄로 보여주는 행.
+  description: 멤버 관리 화면에서 권한 변경, 초대 상태, 제거 행동을 함께 제공한다.
+  visual_anatomy:
+    - avatar
+    - name and email
+    - role selector
+    - status
+    - row actions
+  when_to_use:
+    - 팀 관리 목록에서 사용자별 정보를 조작해야 할 때
+  anti_use:
+    - 사람을 홍보하거나 소개하는 영역은 profile card가 더 적합하다
+  prompt_phrases:
+    - 역할 셀렉트와 초대 상태가 있는 team member row를 만들어줘
+  asset:
+    kind: mini-mock
+    variant: team-member-row
+    props:
+      role: true
+  sources:
+    - source_id: atlassian-design-components
+      note: user and team management rows
+  confidence: medium
+- id: webhook-delivery-log-with-retry
+  status: draft
+  category: data-display
+  group: data-people-integrations
+  ko:
+    name: 웹훅 전송 로그
+    aliases:
+      - webhook delivery log
+      - 웹훅 재전송 로그
+      - 전송 시도 로그
+  en:
+    name: Webhook delivery log with retry
+    aliases:
+      - Webhook delivery attempts
+      - Webhook retry log
+  one_liner: 웹훅 엔드포인트 한 곳의 개별 전송 시도를 HTTP 상태, 응답 시간, 페이로드와 함께 나열하고 실패 건을 수동 재전송하는 로그.
+  description: webhook endpoint row가 엔드포인트 설정 한 줄이라면, 이 로그는 그 엔드포인트의 전송 이력을 상태 코드
+    중심으로 상세히 보여주는 별도 화면이다.
+  visual_anatomy:
+    - delivery attempt row with timestamp
+    - HTTP status
+    - response time
+    - retry button
+    - payload preview on row expand
+    - status and event type filter
+  when_to_use:
+    - 특정 웹훅 엔드포인트의 전송 성공과 실패 이력을 확인하고 실패 건을 수동으로 재전송해야 할 때
+  anti_use:
+    - 엔드포인트 자체의 설정과 상태만 보여주면 되면 webhook endpoint row로 충분하다
+  prompt_phrases:
+    - HTTP 상태와 응답 시간이 있는 webhook delivery log를 만들어줘
+    - 실패한 전송 시도를 수동으로 재전송할 수 있는 웹훅 로그를 넣어줘
+  asset:
+    kind: mini-mock
+    variant: webhook-delivery-log-with-retry
+    props:
+      attempts: 3
+  sources:
+    - source_id: carbon-design-components
+      note: structured rows and status display
+  related:
+    - id: webhook-endpoint-row
+      relation: compare
+      note: webhook endpoint row는 엔드포인트 설정 한 줄이고, 이 로그는 그 엔드포인트의 개별 전송 시도 이력을 상태 코드와
+        함께 상세히 보여주는 별도 화면이다
+  confidence: medium
+- id: webhook-endpoint-row
+  status: draft
+  category: data-display
+  group: data-people-integrations
+  ko:
+    name: 웹훅 엔드포인트 행
+    aliases:
+      - webhook endpoint row
+      - webhook row
+      - 엔드포인트 행
+  en:
+    name: Webhook endpoint row
+    aliases:
+      - Webhook row
+      - Endpoint row
+  one_liner: 웹훅 URL, 이벤트, 상태, 마지막 전송 결과를 한 줄로 보여주는 행.
+  description: 개발자 설정에서 웹훅 연결 상태와 테스트/비활성화 행동을 관리한다.
+  visual_anatomy:
+    - endpoint url
+    - event tags
+    - status
+    - last delivery
+    - actions
+  when_to_use:
+    - 여러 웹훅 엔드포인트를 관리하는 설정 화면에서
+  anti_use:
+    - 단일 URL 입력만 필요하면 text field나 copy field로 충분하다
+  prompt_phrases:
+    - 이벤트 태그와 테스트 버튼이 있는 webhook endpoint row를 만들어줘
+  asset:
+    kind: mini-mock
+    variant: webhook-endpoint-row
+    props:
+      status: active
+  sources:
+    - source_id: carbon-design-components
+      note: structured rows and status display
+  related:
+    - id: webhook-delivery-log-with-retry
+      relation: compare
+      note: webhook endpoint row는 엔드포인트 설정 한 줄이고, webhook delivery log with retry는 그
+        엔드포인트의 개별 전송 시도 이력을 상태 코드와 함께 상세히 보여주는 별도 화면이다
+  confidence: medium

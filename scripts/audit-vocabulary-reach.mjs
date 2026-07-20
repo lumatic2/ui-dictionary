@@ -52,7 +52,17 @@ async function listRecipes() {
 // VL2 가 샤드를 배포하면 이 함수가 샤드에서 id 를 읽어 채운다.
 async function publishedTermIds() {
   if (!(await exists(publishedVocabDir))) return { ids: new Set(), sources: [] }
-  const files = await readdir(publishedVocabDir)
+  // VL2 가 샤드를 하위 디렉터리(`vocabulary/`)로 낸다 — 최상위만 보면 배포된 사전을 못 본다.
+  const entries = await readdir(publishedVocabDir, { withFileTypes: true })
+  const files = []
+  for (const e of entries) {
+    if (e.isFile()) files.push(e.name)
+    else if (e.isDirectory()) {
+      for (const inner of await readdir(path.join(publishedVocabDir, e.name))) {
+        files.push(path.join(e.name, inner))
+      }
+    }
+  }
   const ids = new Set()
   const sources = []
   for (const f of files) {

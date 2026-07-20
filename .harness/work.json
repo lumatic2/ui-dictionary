@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "active_work_id": "vl1-flow-audit",
+  "active_work_id": "vl2-vocabulary-publication",
   "works": {
     "SFB1": {
       "title": "Structure Contract And Clean Production",
@@ -3105,6 +3105,56 @@
       "updated_at": "2026-07-21",
       "notes": "Registered atomically by canonical harness approve_harness_plan.py after plan validation.",
       "completion_summary": "VL1 완료 — 배포본 실사로 용어 사전이 에이전트 경로 밖임을 확정하고, 기준선 84.4%를 쟀다. 12군집 중 8군집이 이미 만점이라 결정 계층(VL4·VL5·VL7) 규모 재검토가 필요하다."
+    },
+    "vl2-vocabulary-publication": {
+      "work_id": "vl2-vocabulary-publication",
+      "horizon_id": "vocabulary-in-use",
+      "milestone_id": "VL2",
+      "status": "active",
+      "plan_path": "plans/2026-07-21-vl2-vocabulary-publication.md",
+      "changeset_path": "changesets",
+      "next_step": "step-1",
+      "current_step": "step-1",
+      "steps": [
+        {
+          "id": "step-1",
+          "label": "step-1 — 샤딩 생성기",
+          "status": "pending"
+        },
+        {
+          "id": "step-2",
+          "label": "step-2 — 조회 규약 문서",
+          "status": "pending"
+        },
+        {
+          "id": "step-3",
+          "label": "step-3 — llms.txt 등재",
+          "status": "pending"
+        }
+      ],
+      "execution_mode": "continuous",
+      "approval": {
+        "approved_by": "user",
+        "approved_at": "2026-07-21",
+        "plan_sha256": "e8a4f6b4f9f5f4bf2356bdb361929e28ad1c6e8ab6f1aa7f97b1ed0539ad412e"
+      },
+      "allowed_stop_reasons": [
+        "completed",
+        "blocked",
+        "decision_required",
+        "risk_gate",
+        "secret_required",
+        "external_authority_required",
+        "user_stopped"
+      ],
+      "stop_reason": null,
+      "stop_detail": {},
+      "session_ids": [
+        "claude:037069fb-2833-497c-ae4e-3f985ecea495"
+      ],
+      "owner_session_uuid": "claude:037069fb-2833-497c-ae4e-3f985ecea495",
+      "updated_at": "2026-07-21",
+      "notes": "Registered atomically by canonical harness approve_harness_plan.py after plan validation."
     }
   }
 }

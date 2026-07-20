@@ -1,0 +1,743 @@
+# 테이블·리스트 (data-tables-lists) — part 1/2
+# category: data-display · 용어 18개
+# 파생물 — 정본은 docs/ui-vocabulary/terms.yml. 손으로 고치지 마라.
+
+- id: advanced-filter-builder
+  status: draft
+  category: data-display
+  group: data-tables-lists
+  ko:
+    name: 고급 필터 빌더
+    aliases:
+      - advanced filter
+      - filter builder
+      - 조건 빌더
+  en:
+    name: Advanced filter builder
+    aliases:
+      - Filter builder
+      - Conditional filter
+  one_liner: 필드, 연산자, 값을 조합해 복잡한 필터 조건을 만드는 UI.
+  description: 상태가 활성이고 금액이 10만원 이상 같은 조건식을 사용자가 직접 구성하게 한다.
+  visual_anatomy:
+    - field selector
+    - operator selector
+    - value input
+    - add condition
+  when_to_use:
+    - 데이터 탐색 조건이 다양하고 조합이 복잡할 때
+  anti_use:
+    - 초보자용 단순 목록에는 지나치게 어렵다
+  prompt_phrases:
+    - 필드 연산자 값을 조합하는 advanced filter builder를 넣어줘
+  asset:
+    kind: mini-mock
+    variant: advanced-filter-builder
+    props:
+      conditions: 2
+  sources:
+    - source_id: carbon-design-components
+      note: filtering data table and list controls
+  confidence: medium
+- id: api-error-reference-table
+  status: draft
+  category: data-display
+  group: data-tables-lists
+  kind: block
+  ko:
+    name: API 에러 레퍼런스 테이블
+    aliases:
+      - api error reference table
+      - 에러 코드 테이블
+      - 에러 참조표
+  en:
+    name: API error reference table
+    aliases:
+      - Error code reference table
+      - Error reference table
+  one_liner: 에러 코드, 타입, HTTP 상태, 설명을 행으로 나열해 실패 케이스를 스캔 가능하게 만든 참조 테이블.
+  description: API 레퍼런스 문서에서 파라미터 표와는 별도로, 발생 가능한 에러를 코드/타입/HTTP 상태 배지/설명 열로 나열한다.
+    각 행은 anchor id를 가져 특정 에러로 바로 딥링크할 수 있다. 상태 열은 badge 용어의 색상 구분 배지를 그대로 재사용한다.
+  visual_anatomy:
+    - error code column (monospace)
+    - error type column
+    - HTTP status badge column
+    - description column
+    - per-row anchor id for deep-linking
+  when_to_use:
+    - API가 반환하는 에러 코드/상태를 체계적으로 스캔 가능한 표로 문서화해야 할 때
+  anti_use:
+    - 에러가 2~3종뿐이면 표 대신 본문 설명이나 callout으로 충분하다
+  prompt_phrases:
+    - 에러 코드/타입/HTTP 상태를 나열한 API 에러 레퍼런스 테이블을 만들어줘
+    - 각 에러 행에 anchor id가 있어서 딥링크할 수 있는 에러 코드 표를 만들어줘
+  asset:
+    kind: mini-mock
+    variant: api-error-reference-table
+    props:
+      rows: 4
+  sources:
+    - source_id: ui-patterns-library
+      note: API error code reference table pattern with status badge column and
+        per-row deep-link anchors
+  related:
+    - id: badge
+      relation: use-with
+      note: api-error-reference-table의 HTTP 상태 열은 badge 용어의 색상 구분 배지를 그대로 재사용한다 — 별도
+        배지 컴포넌트를 새로 정의하지 않는다.
+  confidence: medium
+- id: column-header-menu
+  status: draft
+  category: data-display
+  group: data-tables-lists
+  ko:
+    name: 컬럼 헤더 메뉴
+    aliases:
+      - column header menu
+      - 열 메뉴
+      - 컬럼 옵션
+  en:
+    name: Column header menu
+    aliases:
+      - Column menu
+      - Header menu
+  one_liner: 테이블 열 제목에서 정렬, 필터, 숨김 같은 열별 행동을 여는 메뉴.
+  description: 특정 컬럼에 적용되는 조작을 컬럼 헤더 근처에 모아둔다.
+  visual_anatomy:
+    - column header
+    - menu trigger
+    - sort option
+    - hide or filter action
+  when_to_use:
+    - 각 열마다 정렬/필터/숨김 행동이 필요할 때
+  anti_use:
+    - 단순 표에는 메뉴보다 직접 sort icon이 충분할 수 있다
+  prompt_phrases:
+    - 테이블 컬럼 헤더에 정렬과 숨김 column menu를 넣어줘
+  asset:
+    kind: mini-mock
+    variant: column-header-menu
+    props:
+      open: true
+  sources:
+    - source_id: carbon-design-components
+      note: data table sorting controls
+  confidence: medium
+- id: column-visibility-menu
+  status: draft
+  category: data-display
+  group: data-tables-lists
+  ko:
+    name: 컬럼 표시 메뉴
+    aliases:
+      - column visibility
+      - 컬럼 숨김
+      - 표시할 열
+  en:
+    name: Column visibility menu
+    aliases:
+      - Show columns menu
+      - Column chooser
+  one_liner: 테이블에서 어떤 열을 보이거나 숨길지 선택하는 메뉴.
+  description: 사용자가 자신의 작업에 필요한 컬럼만 남겨 표를 단순하게 만든다.
+  visual_anatomy:
+    - menu trigger
+    - column checkboxes
+    - visible columns
+    - table preview
+  when_to_use:
+    - 컬럼이 많고 사용자마다 필요한 정보가 다를 때
+  anti_use:
+    - 컬럼이 적으면 숨김 메뉴가 불필요하다
+  prompt_phrases:
+    - 테이블 설정에 column visibility menu를 넣어줘
+  asset:
+    kind: mini-mock
+    variant: column-visibility-menu
+    props:
+      columns: 3
+  sources:
+    - source_id: carbon-design-components
+      note: data table component
+  confidence: medium
+- id: comparison-table
+  status: draft
+  category: data-display
+  group: data-tables-lists
+  ko:
+    name: 비교 테이블
+    aliases:
+      - comparison table
+      - 비교표
+      - 기능 비교
+  en:
+    name: Comparison table
+    aliases:
+      - Feature comparison table
+      - Compare table
+  one_liner: 여러 상품이나 옵션의 속성을 열로 나란히 비교하는 표.
+  description: 요금제, 제품, 기능 차이를 한눈에 비교하게 한다.
+  visual_anatomy:
+    - comparison columns
+    - feature rows
+    - checkmarks
+    - highlighted plan
+  when_to_use:
+    - 사용자가 여러 선택지를 비교해 결정해야 할 때
+  anti_use:
+    - 선택지가 하나뿐이면 일반 description list가 낫다
+  prompt_phrases:
+    - Basic Pro Enterprise를 비교하는 comparison table을 넣어줘
+  asset:
+    kind: mini-mock
+    variant: comparison-table
+    props:
+      columns: 3
+  sources:
+    - source_id: carbon-design-components
+      note: structured data display patterns
+  confidence: medium
+- id: config-environment-diff-view
+  status: draft
+  category: data-display
+  group: data-tables-lists
+  kind: block
+  ko:
+    name: 환경 설정 비교 뷰
+    aliases:
+      - config diff view
+      - environment diff
+      - 환경 설정 diff
+  en:
+    name: Environment / config diff view
+    aliases:
+      - Config diff view
+      - Environment comparison view
+  one_liner: staging/production 같은 두 환경의 설정값을 나란히 비교해 추가·삭제·변경을 색으로 구분하는 뷰.
+  description: 두 환경 사이의 설정 드리프트를 좌우 비교 레이아웃으로 보여주고, 시크릿 값은 마스킹한 채 다른 환경으로 동기화하는 행동을 함께 제공한다.
+  visual_anatomy:
+    - two-column environment comparison
+    - key name column
+    - added or removed or changed color coding
+    - masked secret value
+    - sync or copy-to-other-environment action
+    - missing-in-target warning
+  when_to_use:
+    - 두 환경의 설정이나 변수 차이를 점검하고 동기화해야 할 때
+  anti_use:
+    - 환경이 하나뿐이거나 값이 몇 개 안 되면 단순 목록으로 충분하다
+  prompt_phrases:
+    - staging과 production 설정을 좌우로 비교하는 config diff view를 만들어줘
+    - 값이 다르면 색으로 표시되는 환경 설정 비교 화면을 넣어줘
+  asset:
+    kind: mini-mock
+    variant: config-environment-diff-view
+    props:
+      changed: 2
+  sources:
+    - source_id: github-primer-components
+      note: diff-style comparison view conventions
+  confidence: medium
+- id: contained-list
+  status: draft
+  category: data-display
+  group: data-tables-lists
+  ko:
+    name: 컨테인드 리스트
+    aliases:
+      - contained list
+      - 박스형 목록
+      - bordered list
+  en:
+    name: Contained list
+    aliases:
+      - ContainedList
+      - Boxed list
+  one_liner: 목록 전체를 하나의 경계 박스 안에 넣어 행들을 묶어 보여주는 리스트.
+  description: 카드보다 반복성이 강하고, 일반 list보다 그룹 경계가 명확해야 하는 설정/관리 화면에 쓴다.
+  visual_anatomy:
+    - outer container
+    - list rows
+    - row dividers
+    - optional row actions
+  when_to_use:
+    - 관련 항목 여러 개를 하나의 그룹으로 묶어 보여줄 때
+  anti_use:
+    - 각 항목을 독립적으로 강조해야 하면 card list가 더 낫다
+  prompt_phrases:
+    - 알림 설정 항목을 contained list로 묶어줘
+  asset:
+    kind: mini-mock
+    variant: contained-list
+    props:
+      rows: 4
+  sources:
+    - source_id: carbon-design-components
+      note: contained list component reference
+  confidence: medium
+- id: data-grid
+  status: draft
+  category: data-display
+  group: data-tables-lists
+  ko:
+    name: 데이터 그리드
+    aliases:
+      - data grid
+      - 고급 테이블
+      - spreadsheet grid
+  en:
+    name: Data grid
+    aliases:
+      - Interactive grid
+      - Spreadsheet grid
+  one_liner: 행과 열 데이터를 선택, 편집, 정렬할 수 있는 고급 표 형태.
+  description: 단순 table보다 상호작용이 많고 키보드 탐색, 셀 선택, 대량 데이터 조작을 포함한다.
+  visual_anatomy:
+    - column headers
+    - row headers optional
+    - selected cell
+    - grid lines
+    - keyboard focus
+  when_to_use:
+    - 대량 데이터를 표 안에서 탐색하거나 편집해야 할 때
+  anti_use:
+    - 단순 읽기용 데이터에는 table이 낫다
+    - 모바일에서는 복잡도가 크게 올라간다
+  prompt_phrases:
+    - 셀 선택이 가능한 data grid를 넣어줘
+    - 행 선택과 컬럼 정렬이 되는 고급 테이블을 만들어줘
+  asset:
+    kind: mini-mock
+    variant: data-grid
+    props:
+      selectedCell: true
+  sources:
+    - source_id: wai-aria-apg-patterns
+      note: grid pattern for interactive tabular widgets
+  related:
+    - id: inline-edit
+      relation: compare
+      note: data grid는 키보드 탐색과 셀/행 단위 저장 상태를 포함하는 그리드 전체의 편집 계약이고, inline edit는 제목·이름
+        같은 단일 필드를 그 자리에서 바로 고치는 더 가벼운 패턴이다
+  confidence: high
+- id: data-table-toolbar
+  status: draft
+  category: data-display
+  group: data-tables-lists
+  ko:
+    name: 데이터 테이블 툴바
+    aliases:
+      - data table toolbar
+      - table toolbar
+      - 표 도구막대
+  en:
+    name: Data table toolbar
+    aliases:
+      - Table toolbar
+      - Data grid toolbar
+  one_liner: 테이블 위에서 검색, 필터, 보기 설정, 일괄 행동을 모아 제공하는 영역.
+  description: 데이터 테이블을 탐색하고 조작하는 주요 컨트롤을 한 줄에 배치한다.
+  visual_anatomy:
+    - search field
+    - filter button
+    - view options
+    - action buttons
+  when_to_use:
+    - 테이블의 검색/필터/내보내기/보기 설정이 필요할 때
+  anti_use:
+    - 컨트롤이 하나뿐이면 별도 toolbar가 과하다
+  prompt_phrases:
+    - 테이블 위에 검색 필터 내보내기 버튼이 있는 data table toolbar를 넣어줘
+  asset:
+    kind: mini-mock
+    variant: data-table-toolbar
+    props:
+      filters: true
+  sources:
+    - source_id: carbon-design-components
+      note: filtering data table and list controls
+  navigation:
+    canonical_path:
+      - Plus
+      - UI Blocks
+      - Application UI
+      - Lists
+    also_appears_in:
+      - - Plus
+        - UI Blocks
+        - Application UI
+        - Data Display
+      - - Plus
+        - Templates
+        - Dashboard Screens
+  confidence: high
+- id: detail-row
+  status: draft
+  category: data-display
+  group: data-tables-lists
+  ko:
+    name: 상세 행
+    aliases:
+      - detail row
+      - row details
+      - 테이블 상세 행
+  en:
+    name: Detail row
+    aliases:
+      - Row details
+      - Detail panel row
+  one_liner: 선택된 행 아래에 추가 세부 정보를 별도 행처럼 표시하는 영역.
+  description: expandable row의 확장 영역으로, 메타데이터나 보조 액션을 보여준다.
+  visual_anatomy:
+    - selected row
+    - detail area
+    - metadata
+    - secondary actions
+  when_to_use:
+    - 테이블 행의 보조 정보를 빠르게 보여줘야 할 때
+  anti_use:
+    - 상세 정보가 많으면 side sheet나 master-detail이 낫다
+  prompt_phrases:
+    - 주문 행 아래에 배송 정보 detail row를 펼쳐줘
+  asset:
+    kind: mini-mock
+    variant: detail-row
+    props:
+      metadata: true
+  sources:
+    - source_id: carbon-design-components
+      note: data table expanded content patterns
+  confidence: medium
+- id: drag-to-reorder-list
+  status: draft
+  category: data-display
+  group: data-tables-lists
+  ko:
+    name: 드래그 순서 변경 목록
+    aliases:
+      - drag to reorder list
+      - 끌어서 순서 변경
+      - 모바일 순서 바꾸기
+      - reorder list
+  en:
+    name: Drag-to-reorder list
+    aliases:
+      - Reorderable list
+      - Drag reorder list
+  one_liner: 모바일 목록 항목을 길게 잡고 끌어 순서를 바꾸는 리스트 패턴.
+  description: 사용자가 우선순위, 메뉴 순서, 체크리스트 순서를 직접 재배치할 수 있게 한다.
+  visual_anatomy:
+    - list rows
+    - grab handles
+    - lifted row
+    - reordered position
+  when_to_use:
+    - 사용자 정의 순서가 중요한 목록에서
+    - 항목 수가 적거나 중간 정도일 때
+  anti_use:
+    - 정렬 기준이 명확한 데이터 테이블에는 sort control이 더 낫다
+  prompt_phrases:
+    - 모바일 체크리스트를 길게 잡고 끌어서 순서 변경할 수 있게 해줘
+  asset:
+    kind: mini-mock
+    variant: drag-to-reorder-list
+    props:
+      moved: true
+  sources:
+    - source_id: apple-hig-components
+      note: reordering list items through drag interactions
+  confidence: high
+- id: draggable-list
+  status: draft
+  category: data-display
+  group: data-tables-lists
+  ko:
+    name: 드래그 리스트
+    aliases:
+      - draggable list
+      - reorderable list
+      - 순서 변경 목록
+  en:
+    name: Draggable list
+    aliases:
+      - Reorderable list
+      - Drag list
+  one_liner: 항목을 드래그해 순서를 바꿀 수 있는 목록.
+  description: 우선순위, 메뉴 순서, 재생목록처럼 사용자가 항목 순서를 직접 정한다.
+  visual_anatomy:
+    - drag handles
+    - list rows
+    - selected row
+    - reorder position
+  when_to_use:
+    - 순서 자체가 중요한 목록에서
+  anti_use:
+    - 정렬 기준이 명확하면 sort control이 더 예측 가능하다
+  prompt_phrases:
+    - 항목을 드래그해서 순서를 바꾸는 draggable list를 만들어줘
+  asset:
+    kind: mini-mock
+    variant: draggable-list
+    props:
+      dragging: true
+  sources:
+    - source_id: atlassian-design-components
+      note: work management list patterns
+  confidence: medium
+- id: expandable-row
+  status: draft
+  category: data-display
+  group: data-tables-lists
+  ko:
+    name: 펼침 행
+    aliases:
+      - expandable row
+      - expandable table row
+      - 상세 펼침 행
+  en:
+    name: Expandable row
+    aliases:
+      - Expandable table row
+      - Row disclosure
+  one_liner: 테이블이나 리스트 행을 펼쳐 추가 정보를 같은 자리에서 보여주는 패턴.
+  description: 별도 상세 화면으로 이동하지 않고 요약 행 아래에 상세를 드러낸다.
+  visual_anatomy:
+    - row trigger
+    - chevron
+    - expanded content
+    - nested area
+  when_to_use:
+    - 행별 상세가 짧고 현재 맥락에서 바로 확인해야 할 때
+  anti_use:
+    - 상세가 길거나 편집이 복잡하면 detail panel이 낫다
+  prompt_phrases:
+    - 테이블 행을 클릭하면 상세가 펼쳐지는 expandable row를 넣어줘
+  asset:
+    kind: mini-mock
+    variant: expandable-row
+    props:
+      open: true
+  sources:
+    - source_id: wai-aria-apg-patterns
+      note: disclosure show-hide pattern
+  confidence: high
+- id: faceted-filter
+  status: draft
+  category: data-display
+  group: data-tables-lists
+  ko:
+    name: 패싯 필터
+    aliases:
+      - faceted filter
+      - facet filter
+      - 다중 조건 필터
+      - 카테고리 필터
+      - 카테고리 필터 사이드바
+  en:
+    name: Faceted filter
+    aliases:
+      - Facet filter
+      - Multi-facet filter
+      - Category filter facets
+      - Category filter sidebar
+  one_liner: 상태, 카테고리, 가격대처럼 여러 속성별 조건을 조합하는 필터.
+  description: 쇼핑, 데이터 테이블, 검색 결과에서 사용자가 여러 차원의 조건을 선택해 결과를 좁힌다. 카테고리 페이지 좌측에 고정되는
+    사이드바 형태에서는 속성별 그룹을 아코디언이나 상시 펼침으로 두고, 적용된 조건을 칩으로 요약하며 결과 수를 실시간으로 갱신하고 한 번에
+    초기화하는 clear-all 행동을 함께 제공한다.
+  visual_anatomy:
+    - filter groups
+    - checkbox options
+    - selected count
+    - active chips
+    - live result count
+    - clear-all action
+  when_to_use:
+    - 데이터 속성이 다양하고 조합 검색이 필요할 때
+  anti_use:
+    - 조건이 1-2개면 단순 filter chip이나 select가 낫다
+  prompt_phrases:
+    - 상태와 카테고리를 고르는 faceted filter를 사이드바에 넣어줘
+    - 적용된 필터 칩과 실시간 결과 수가 있는 category filter sidebar를 만들어줘
+  asset:
+    kind: mini-mock
+    variant: faceted-filter
+    props:
+      groups: 2
+  sources:
+    - source_id: carbon-design-components
+      note: filtering data table and list controls
+  navigation:
+    canonical_path:
+      - Plus
+      - UI Blocks
+      - Application UI
+      - Data Display
+    also_appears_in:
+      - - Plus
+        - UI Blocks
+        - Application UI
+        - Lists
+      - - Plus
+        - Templates
+        - Dashboard Screens
+  confidence: high
+- id: filter-bar
+  status: draft
+  category: data-display
+  group: data-tables-lists
+  ko:
+    name: 필터 바
+    aliases:
+      - filter bar
+      - 검색 필터 영역
+      - 필터 툴바
+  en:
+    name: Filter bar
+    aliases:
+      - Filter toolbar
+      - Search and filter bar
+  one_liner: 목록 위에서 검색, 필터, 정렬 조건을 한 줄로 조작하는 영역.
+  description: 데이터 목록이나 카드 그리드의 결과를 좁히는 조건들을 모아 보여준다.
+  visual_anatomy:
+    - search input
+    - filter controls
+    - sort control
+    - active filter count
+  when_to_use:
+    - 목록 데이터가 많고 사용자가 조건으로 좁혀야 할 때
+  anti_use:
+    - 항목이 적으면 과하다
+    - 복잡한 필터는 별도 panel이나 drawer로 분리한다
+  prompt_phrases:
+    - 테이블 위에 search와 filter chip이 있는 filter bar를 넣어줘
+    - 목록 상단에 필터 바와 정렬 선택을 배치해줘
+  asset:
+    kind: mini-mock
+    variant: filter-bar
+    props:
+      chips: 3
+  sources:
+    - source_id: carbon-design-components
+      note: filtering data table and list controls
+  confidence: medium
+- id: filter-panel
+  status: draft
+  category: data-display
+  group: data-tables-lists
+  ko:
+    name: 필터 패널
+    aliases:
+      - filter panel
+      - filter drawer
+      - 필터 사이드 패널
+  en:
+    name: Filter panel
+    aliases:
+      - Filter drawer
+      - Filter sidebar
+  one_liner: 검색 결과나 목록의 여러 필터 조건을 별도 패널에 모아둔 영역.
+  description: 조건이 많아 한 줄 필터 바에 담기 어려울 때 사이드 패널이나 드로어로 제공한다.
+  visual_anatomy:
+    - panel surface
+    - filter groups
+    - apply button
+    - reset action
+  when_to_use:
+    - 필터 조건이 많고 세부 옵션이 필요할 때
+  anti_use:
+    - 간단한 필터 두세 개는 filter bar가 더 빠르다
+  prompt_phrases:
+    - 목록 오른쪽에 조건을 고르는 filter panel을 열어줘
+  asset:
+    kind: mini-mock
+    variant: filter-panel
+    props:
+      open: true
+  sources:
+    - source_id: carbon-design-components
+      note: filtering data table and list controls
+  navigation:
+    canonical_path:
+      - Plus
+      - UI Blocks
+      - Application UI
+      - Data Display
+    also_appears_in:
+      - - Plus
+        - Templates
+        - Dashboard Screens
+  confidence: high
+- id: grouped-list
+  status: draft
+  category: data-display
+  group: data-tables-lists
+  ko:
+    name: 그룹 리스트
+    aliases:
+      - grouped list
+      - sectioned list
+      - 묶음 목록
+  en:
+    name: Grouped list
+    aliases:
+      - Sectioned list
+      - Grouped rows
+  one_liner: 목록 항목을 날짜, 상태, 카테고리 같은 제목 아래에 묶어 보여주는 리스트.
+  description: 긴 목록을 의미 있는 덩어리로 나눠 스캔하기 쉽게 만든다.
+  visual_anatomy:
+    - group header
+    - grouped rows
+    - row separators
+    - counts optional
+  when_to_use:
+    - 항목이 많고 자연스러운 그룹 기준이 있을 때
+  anti_use:
+    - 그룹당 항목이 하나뿐이면 오히려 복잡하다
+  prompt_phrases:
+    - 알림을 오늘 어제로 나누는 grouped list로 보여줘
+  asset:
+    kind: mini-mock
+    variant: grouped-list
+    props:
+      groups: 2
+  sources:
+    - source_id: material-m3-components
+      note: lists component
+  confidence: high
+- id: infinite-scroll
+  status: draft
+  category: data-display
+  group: data-tables-lists
+  ko:
+    name: 무한 스크롤
+    aliases:
+      - infinite scroll
+      - 끝없는 목록
+      - 자동 더보기
+  en:
+    name: Infinite scroll
+    aliases:
+      - Endless scroll
+      - Load on scroll
+  one_liner: 목록 끝에 도달하면 다음 항목을 자동으로 불러오는 패턴.
+  description: 피드나 탐색 목록에서 페이지 버튼 없이 계속 콘텐츠를 이어 보여준다.
+  visual_anatomy:
+    - list items
+    - bottom loader
+    - appended items
+    - scroll position
+  when_to_use:
+    - 탐색형 콘텐츠를 연속적으로 소비하게 할 때
+  anti_use:
+    - 정확한 위치 이동이나 footer 접근이 중요하면 pagination이 낫다
+  prompt_phrases:
+    - 목록 끝에 도달하면 더 불러오는 infinite scroll을 넣어줘
+  asset:
+    kind: mini-mock
+    variant: infinite-scroll
+    props:
+      loadingMore: true
+  sources:
+    - source_id: carbon-design-components
+      note: structured data display patterns
+  confidence: medium

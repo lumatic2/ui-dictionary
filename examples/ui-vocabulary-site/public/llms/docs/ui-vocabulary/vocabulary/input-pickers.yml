@@ -1,0 +1,922 @@
+# 선택형 입력 (input-pickers)
+# category: input · 용어 22개
+# 파생물 — 정본은 docs/ui-vocabulary/terms.yml. 손으로 고치지 마라.
+
+- id: chip-input-mobile
+  status: draft
+  category: input
+  group: input-pickers
+  ko:
+    name: 모바일 칩 입력
+    aliases:
+      - chip input mobile
+      - 모바일 태그 입력
+      - 토큰 입력
+      - 태그 칩
+  en:
+    name: Mobile chip input
+    aliases:
+      - Mobile tag input
+      - Tokenized input
+  one_liner: 모바일 입력창 안에서 여러 값을 칩 형태로 추가하고 지우는 입력 패턴.
+  description: 관심사, 수신자, 태그처럼 여러 짧은 값을 작은 화면에서도 구분해 편집하게 한다.
+  visual_anatomy:
+    - input container
+    - chips
+    - remove affordance
+    - add token button
+  when_to_use:
+    - 여러 태그
+    - 사람
+    - 키워드를 모바일에서 입력할 때
+  anti_use:
+    - 값이 많아지면 좁은 화면에서 복잡해지므로 별도 선택 화면을 검토한다
+  prompt_phrases:
+    - 관심사를 여러 개 추가하는 mobile chip input을 넣어줘
+  asset:
+    kind: mini-mock
+    variant: chip-input-mobile
+    props:
+      chips: 2
+  sources:
+    - source_id: material-m3-components
+      note: chips as compact input tokens
+  confidence: high
+- id: color-picker
+  status: draft
+  category: input
+  group: input-pickers
+  ko:
+    name: 색상 선택기
+    aliases:
+      - color picker
+      - 컬러 피커
+      - 색 선택
+  en:
+    name: Color picker
+    aliases:
+      - Color input
+      - Swatch picker
+  one_liner: 색상 값을 팔레트, 스와치, 입력값으로 고르는 요소.
+  description: 테마 색, 태그 색, 그래픽 편집처럼 시각적 색 선택이 필요한 곳에 쓴다.
+  visual_anatomy:
+    - color swatch
+    - palette grid
+    - selected color
+    - optional hex input
+  when_to_use:
+    - 사용자가 색상을 직접 선택해야 할 때
+    - 제한된 브랜드 색 중 하나를 골라야 할 때
+  anti_use:
+    - 색상 선택이 제품 사용에 불필요하면 복잡도를 늘리지 않는다
+    - 색상만으로 상태 의미를 정하지 않는다
+  prompt_phrases:
+    - 태그 색상을 고르는 color picker를 넣어줘
+    - 스와치 팔레트와 hex 입력을 함께 보여줘
+  asset:
+    kind: mini-mock
+    variant: color-picker
+    props:
+      swatches: 6
+  sources:
+    - source_id: shadcn-ui-docs
+      note: form input composition for custom controls
+  confidence: low
+- id: combobox
+  status: draft
+  category: input
+  group: input-pickers
+  ko:
+    name: 콤보박스
+    aliases:
+      - 검색 가능한 선택창
+      - 자동완성 선택
+      - combobox
+  en:
+    name: Combobox
+    aliases:
+      - Autocomplete select
+      - Searchable select
+  one_liner: 입력과 선택을 함께 제공하는 검색 가능한 선택 요소.
+  description: 사용자가 텍스트를 입력해 옵션을 필터링하고 목록에서 값을 고를 수 있다.
+  visual_anatomy:
+    - input trigger
+    - typed query
+    - filtered option list
+    - highlighted option
+  when_to_use:
+    - 선택지가 많아 검색이 필요할 때
+    - 사용자가 값을 입력하며 고르게 할 때
+  anti_use:
+    - 선택지가 적으면 select나 radio group이 더 단순하다
+    - 자유 입력만 필요하면 text field를 쓴다
+  prompt_phrases:
+    - 국가를 검색해서 고르는 combobox를 넣어줘
+    - 옵션이 많은 선택창은 검색 가능하게 만들어줘
+  asset:
+    kind: mini-mock
+    variant: combobox
+    props:
+      open: true
+  sources:
+    - source_id: wai-aria-apg-patterns
+      note: combobox interaction pattern
+  related:
+    - id: select
+      relation: compare
+      note: 검색 없이 정해진 값 하나만 고르면 combobox보다 select가 단순하다.
+    - id: autocomplete
+      relation: compare
+      note: 추천 입력과 검색 선택이 핵심이면 autocomplete와 겹치므로 입력 자유도와 선택 강도를 먼저 정한다.
+    - id: dropdown-menu
+      relation: compare
+      note: combobox는 값을 입력/선택하는 control이고 dropdown menu는 명령 목록이다.
+  confidence: high
+- id: contact-picker
+  status: draft
+  category: input
+  group: input-pickers
+  ko:
+    name: 연락처 선택
+    aliases:
+      - contact picker
+      - 사람 선택
+      - 연락처 목록
+      - 친구 선택
+  en:
+    name: Contact picker
+    aliases:
+      - People picker
+      - Contact selector
+  one_liner: 모바일에서 사람이나 연락처를 검색하고 선택하는 목록형 입력.
+  description: 초대, 공유, 송금처럼 사람을 대상으로 하는 흐름에서 이름과 아바타를 보고 고르게 한다.
+  visual_anatomy:
+    - contact rows
+    - avatar
+    - name
+    - selected contact
+    - optional search
+  when_to_use:
+    - 친구 초대
+    - 수신자 선택
+    - 담당자 선택처럼 사람을 골라야 할 때
+  anti_use:
+    - 단순 텍스트 이름 입력에는 text field가 더 빠를 수 있다
+  prompt_phrases:
+    - 친구를 선택하는 contact picker를 모바일 화면으로 만들어줘
+  asset:
+    kind: mini-mock
+    variant: contact-picker
+    props:
+      selected: true
+  sources:
+    - source_id: apple-hig-components
+      note: people/contact selection patterns
+  confidence: medium
+- id: coupon-field
+  status: draft
+  category: input
+  group: input-pickers
+  ko:
+    name: 쿠폰 입력 필드
+    aliases:
+      - coupon field
+      - 프로모션 코드 입력
+      - 할인 코드
+  en:
+    name: Coupon field
+    aliases:
+      - Promo code field
+      - Discount code input
+  one_liner: 쿠폰이나 프로모션 코드를 입력하고 적용하는 입력+버튼 조합.
+  description: 결제 요약 근처에서 코드 입력, 적용, 성공/실패 상태를 보여준다.
+  visual_anatomy:
+    - code input
+    - apply button
+    - validation state
+    - discount feedback
+  when_to_use:
+    - 체크아웃이나 결제 화면에서 할인 코드를 받을 때
+  anti_use:
+    - 일반 검색이나 인증 코드를 coupon field라고 부르지 않는다
+  prompt_phrases:
+    - 결제 요약 아래에 적용 버튼이 있는 coupon field를 넣어줘
+  asset:
+    kind: mini-mock
+    variant: coupon-field
+    props:
+      applied: false
+  sources:
+    - source_id: shadcn-ui-docs
+      note: input and button composition
+  confidence: medium
+- id: date-picker
+  status: draft
+  category: input
+  group: input-pickers
+  ko:
+    name: 날짜 선택
+    aliases:
+      - 데이트피커
+      - 달력 입력
+      - date picker
+  en:
+    name: Date picker
+    aliases:
+      - Calendar picker
+  one_liner: 달력 UI로 날짜를 선택하는 입력 요소.
+  description: 날짜 입력창과 달력 팝오버를 함께 제공해 날짜를 직접 고르게 한다.
+  visual_anatomy:
+    - date input
+    - calendar icon
+    - calendar popover
+    - selected day
+  when_to_use:
+    - 예약일이나 마감일처럼 날짜를 고르게 할 때
+    - 날짜 형식 오류를 줄이고 싶을 때
+  anti_use:
+    - 연도나 월만 고르면 simpler select가 낫다
+    - 자유 텍스트 날짜는 오류가 많다
+  prompt_phrases:
+    - 예약 날짜를 고르는 date picker를 넣어줘
+    - 달력으로 마감일을 선택하게 해줘
+  asset:
+    kind: mini-mock
+    variant: date-picker
+    props:
+      date: 2026-05-20
+  sources:
+    - source_id: material-m3-components
+      note: date picker component
+  confidence: high
+- id: date-preset-picker
+  status: draft
+  category: input
+  group: input-pickers
+  kind: component
+  ko:
+    name: 날짜 프리셋 선택기
+    aliases:
+      - date preset picker
+      - 빠른 날짜 선택
+      - 기간 프리셋
+  en:
+    name: Date preset picker
+    aliases:
+      - Date picker with presets
+      - Range presets
+  one_liner: 직접 날짜를 고르기 전에 오늘, 이번 주, 지난 30일 같은 빠른 기간을 제공하는 날짜 선택기.
+  description: 대시보드, 로그, 매출 조회처럼 반복적으로 쓰는 기간을 빠르게 고르게 한다.
+  visual_anatomy:
+    - date picker trigger
+    - preset list
+    - calendar panel
+    - selected range
+  when_to_use:
+    - 사용자가 자주 쓰는 기간을 반복해서 선택할 때
+    - 직접 달력을 조작하기 전에 빠른 선택지를 제공하고 싶을 때
+  anti_use:
+    - 임의의 하루만 고르면 date-picker가 충분하다
+  prompt_phrases:
+    - 지난 7일과 이번 달 프리셋이 있는 date preset picker를 넣어줘
+  related:
+    - id: date-range-picker
+      relation: compare
+      note: date range picker는 기간 선택 자체이고, date preset picker는 자주 쓰는 기간 shortcut이
+        핵심이다.
+  asset:
+    kind: mini-mock
+    variant: date-preset-picker
+  sources:
+    - source_id: coss-ui-docs
+      note: Origin calendar and date picker examples include preset range compositions
+  confidence: medium
+- id: date-range-picker
+  status: draft
+  category: input
+  group: input-pickers
+  ko:
+    name: 날짜 범위 선택
+    aliases:
+      - date range picker
+      - 기간 선택
+      - 시작일 종료일 선택
+  en:
+    name: Date range picker
+    aliases:
+      - Range calendar
+      - Start and end date picker
+  one_liner: 시작 날짜와 종료 날짜를 함께 선택하는 날짜 입력 요소.
+  description: 예약 기간, 조회 기간, 리포트 기간처럼 두 날짜 사이의 범위를 지정할 때 쓴다.
+  visual_anatomy:
+    - start date
+    - end date
+    - range highlight
+    - calendar grid
+  when_to_use:
+    - 기간 검색이나 예약처럼 시작과 끝 날짜가 모두 필요할 때
+  anti_use:
+    - 하루만 고르면 date picker가 더 단순하다
+  prompt_phrases:
+    - 시작일과 종료일을 고르는 date range picker를 넣어줘
+  asset:
+    kind: mini-mock
+    variant: date-range-picker
+    props:
+      range: true
+  sources:
+    - source_id: material-m3-components
+      note: date picker component and date selection patterns
+  confidence: medium
+- id: mobile-date-picker
+  status: draft
+  category: input
+  group: input-pickers
+  ko:
+    name: 모바일 날짜 선택
+    aliases:
+      - mobile date picker
+      - 모바일 달력 선택
+      - 날짜 선택 화면
+      - calendar picker
+  en:
+    name: Mobile date picker
+    aliases:
+      - Mobile calendar picker
+      - Date selector
+  one_liner: 작은 화면에서 터치로 날짜를 고르게 만든 모바일 최적화 달력 입력.
+  description: 날짜 셀, 월 이동, 선택된 날짜를 손가락으로 누르기 쉬운 크기로 보여준다.
+  visual_anatomy:
+    - month header
+    - calendar grid
+    - selected day
+    - touch-sized date cells
+  when_to_use:
+    - 예약일
+    - 생년월일
+    - 일정 날짜를 모바일에서 고를 때
+  anti_use:
+    - 정확한 시간까지 필요하면 time picker나 datetime flow를 함께 쓴다
+  prompt_phrases:
+    - 예약 날짜를 고르는 mobile date picker를 바텀시트 안에 넣어줘
+  asset:
+    kind: mini-mock
+    variant: mobile-date-picker
+    props:
+      selected: true
+  sources:
+    - source_id: material-m3-components
+      note: date picker component for mobile layouts
+  related:
+    - id: time-picker
+      relation: compare
+      note: 예약처럼 날짜와 시간을 함께 골라야 하면 하나의 bottom sheet 안에 이 두 피커를 순차적으로 이어붙인다.
+    - id: mobile-date-time-picker-sheet
+      relation: use-with
+      note: 날짜와 시간을 하나의 bottom sheet 안에서 순차 선택하는 조합형 시트가 이 피커와 time-picker를 이어붙인 실제
+        구성이다.
+  confidence: high
+- id: mobile-date-time-picker-sheet
+  status: draft
+  category: input
+  group: input-pickers
+  ko:
+    name: 모바일 날짜·시간 선택 시트
+    aliases:
+      - mobile date time picker sheet
+      - 날짜시간 바텀시트
+      - 예약 날짜시간 선택
+  en:
+    name: Mobile date time picker sheet
+    aliases:
+      - Combined date-time bottom sheet
+      - Sequential date time picker
+  one_liner: 예약처럼 날짜와 시간을 하나의 bottom sheet 안에서 순차적으로 고르게 하는 조합형 피커.
+  description: mobile-date-picker와 time-picker를 하나의 시트 안에서 날짜 단계 다음 시간 단계로 이어붙인
+    2단계 구성이다. 각 단계에서 이전 단계로 되돌아가는 back 어포던스를 제공하며, OS 네이티브의 Date and time 단일 화면
+    동시 노출 모드와는 다른, 순차 단계 시트 구조에 한정한다.
+  visual_anatomy:
+    - bottom sheet container
+    - date wheel or calendar step
+    - time wheel step
+    - step indicator or back
+    - confirm cta
+  when_to_use:
+    - 예약이나 약속처럼 날짜와 시간을 함께 받아야 할 때
+    - 두 피커를 하나의 시트 흐름으로 이어붙여야 할 때
+  anti_use:
+    - 날짜와 시간을 한 화면에 동시에 노출하는 OS 네이티브 Date and time 단일 모드는 이 순차 시트 구조와 다르다
+    - 날짜만 또는 시간만 필요하면 각각 mobile-date-picker/time-picker만 쓴다
+  prompt_phrases:
+    - 예약 날짜와 시간을 하나의 bottom sheet에서 순서대로 고르게 해줘
+    - 날짜 단계 다음에 시간 단계로 넘어가고 뒤로가기도 되게 해줘
+  asset:
+    kind: mini-mock
+    variant: mobile-date-time-picker-sheet
+    props:
+      step: date
+  sources:
+    - source_id: apple-hig-components
+      note: pickers for date and time selection
+  related:
+    - id: mobile-date-picker
+      relation: use-with
+      note: 이 시트의 첫 단계가 mobile-date-picker의 달력 그리드 구조를 그대로 재사용한다.
+    - id: time-picker
+      relation: use-with
+      note: 이 시트의 두 번째 단계가 time-picker의 시/분 선택 구조를 그대로 재사용한다.
+  confidence: high
+- id: native-select
+  status: draft
+  category: input
+  group: input-pickers
+  ko:
+    name: 네이티브 선택창
+    aliases:
+      - native select
+      - 기본 select
+      - 브라우저 선택창
+  en:
+    name: Native select
+    aliases:
+      - NativeSelect
+      - HTML select
+  one_liner: 브라우저나 OS 기본 선택 UI를 그대로 사용하는 단순 선택 입력.
+  description: 커스텀 드롭다운보다 가볍고 접근성/모바일 기본 동작을 우선할 때 쓴다.
+  visual_anatomy:
+    - native select control
+    - selected option
+    - platform chevron
+    - option list
+  when_to_use:
+    - 스타일보다 기본 접근성과 모바일 네이티브 동작이 중요할 때
+    - 단순한 선택 입력이 필요할 때
+  anti_use:
+    - 검색, 커스텀 옵션 렌더링, 복잡한 그룹이 필요하면 select나 combobox를 쓴다
+  prompt_phrases:
+    - 모바일에서도 기본 동작이 자연스러운 native select로 언어를 고르게 해줘
+  asset:
+    kind: mini-mock
+    variant: native-select
+    props:
+      open: false
+  sources:
+    - source_id: shadcn-ui-docs
+      note: Native Select component reference
+  related:
+    - id: select
+      relation: compare
+      note: 커스텀 스타일과 옵션 렌더링이 필요하면 select, 기본 플랫폼 동작을 우선하면 native select가 낫다.
+  confidence: high
+- id: otp-input
+  status: draft
+  category: input
+  group: input-pickers
+  ko:
+    name: 인증번호 입력
+    aliases:
+      - OTP 입력
+      - verification code
+      - 코드 입력
+  en:
+    name: OTP input
+    aliases:
+      - One-time code input
+      - Verification code input
+  one_liner: 일회용 인증번호를 여러 칸에 나누어 입력받는 요소.
+  description: SMS, 이메일, 2단계 인증 코드처럼 짧은 숫자/문자 코드를 빠르게 입력하게 한다.
+  visual_anatomy:
+    - multiple small input boxes
+    - focused box
+    - fixed code length
+    - paste behavior
+  when_to_use:
+    - 인증번호나 2FA 코드를 받을 때
+    - 코드 길이가 짧고 고정되어 있을 때
+  anti_use:
+    - 긴 문자열이나 자유 입력에는 쓰지 않는다
+    - 복사 붙여넣기를 막지 않는다
+  prompt_phrases:
+    - 6자리 인증번호 OTP input을 넣어줘
+    - 각 숫자가 한 칸씩 들어가는 코드 입력 UI를 만들어줘
+  asset:
+    kind: mini-mock
+    variant: otp-input
+    props:
+      length: 6
+  sources:
+    - source_id: shadcn-ui-docs
+      note: input OTP component
+  confidence: high
+- id: product-option-sheet
+  status: draft
+  category: input
+  group: input-pickers
+  ko:
+    name: 상품 옵션 시트
+    aliases:
+      - product option sheet
+      - 상품 옵션 바텀시트
+      - 옵션 선택 시트
+      - 사이즈 선택
+  en:
+    name: Product option sheet
+    aliases:
+      - Variant option sheet
+      - Commerce option sheet
+  one_liner: 모바일 커머스에서 사이즈, 색상, 수량 같은 상품 옵션을 하단 시트로 고르는 패턴.
+  description: 상품 상세를 유지한 채 구매 전 필요한 변형 옵션을 좁은 화면에서 선택하게 한다.
+  visual_anatomy:
+    - bottom sheet
+    - option chips
+    - selected variant
+    - quantity or CTA
+  when_to_use:
+    - 모바일 상품 상세에서 옵션 선택 후 장바구니나 구매로 이어질 때
+  anti_use:
+    - 옵션 조합이 매우 복잡하면 별도 구성 화면이 더 명확하다
+  prompt_phrases:
+    - 사이즈와 색상을 고르는 product option sheet를 아래에서 올려줘
+  asset:
+    kind: mini-mock
+    variant: product-option-sheet
+    props:
+      selected: M
+  sources:
+    - source_id: material-m3-components
+      note: bottom sheets and chips for option selection
+  related:
+    - id: variant-selector-buttons
+      relation: compare
+      note: product option sheet는 모바일 하단 시트로 옵션을 감싸는 래퍼이고, variant selector buttons는
+        시트 없이 데스크톱 인라인에 바로 놓이는 버튼형 선택 컨트롤 자체를 가리킨다.
+  confidence: high
+- id: pull-to-refresh-indicator
+  status: draft
+  category: input
+  group: input-pickers
+  ko:
+    name: 당겨서 새로고침 표시
+    aliases:
+      - pull to refresh indicator
+      - 끌어내려 새로고침
+      - 아래로 당기면 새로고침
+      - 새로고침 스피너
+  en:
+    name: Pull-to-refresh indicator
+    aliases:
+      - Refresh spinner
+      - Pull refresh indicator
+  one_liner: 사용자가 목록을 아래로 당겼을 때 새로고침 가능 상태와 진행을 보여주는 표시.
+  description: 모바일 목록 상단에서 당기는 거리와 새로고침 진행 상태를 스피너나 아이콘으로 알려준다.
+  visual_anatomy:
+    - top refresh area
+    - spinner
+    - pulled offset
+    - list content below
+  when_to_use:
+    - 모바일 피드나 목록을 최신 상태로 갱신할 때
+    - 사용자가 제스처로 새로고침할 수 있음을 보여줄 때
+  anti_use:
+    - 데스크톱 데이터 새로고침에는 명시적 refresh button이 더 낫다
+    - 자동 갱신 중인 화면에 중복으로 넣지 않는다
+  prompt_phrases:
+    - 목록을 끌어내리면 pull-to-refresh indicator가 보이고 새로고침되게 해줘
+  asset:
+    kind: mini-mock
+    variant: pull-to-refresh-indicator
+    props:
+      pulled: true
+  sources:
+    - source_id: apple-hig-components
+      note: refresh content gesture in scroll views
+  confidence: high
+- id: quantity-stepper
+  status: draft
+  category: input
+  group: input-pickers
+  ko:
+    name: 수량 스테퍼
+    aliases:
+      - quantity stepper
+      - 수량 조절기
+      - plus minus input
+      - 터치 수량 스테퍼
+  en:
+    name: Quantity stepper
+    aliases:
+      - Quantity input stepper
+      - Plus minus input
+      - Touch quantity stepper
+  one_liner: 빼기/더하기 버튼으로 상품 수량 같은 숫자를 조절하는 입력.
+  description: 직접 입력보다 작은 정수 범위를 빠르게 늘리거나 줄이게 한다.
+  visual_anatomy:
+    - minus button
+    - quantity value
+    - plus button
+    - min max constraints
+  when_to_use:
+    - 장바구니 수량
+    - 인원수
+    - 티켓 수처럼 작은 정수를 조절할 때
+  anti_use:
+    - 큰 범위나 연속 값은 slider나 number input이 낫다
+  prompt_phrases:
+    - 장바구니에 plus minus quantity stepper를 넣어줘
+  asset:
+    kind: mini-mock
+    variant: quantity-stepper
+    props:
+      min: 1
+  sources:
+    - source_id: apple-hig-components
+      note: steppers and numeric controls
+  confidence: high
+- id: rating-input
+  status: draft
+  category: input
+  group: input-pickers
+  ko:
+    name: 평점 입력
+    aliases:
+      - rating input
+      - 별점
+      - star rating
+  en:
+    name: Rating input
+    aliases:
+      - Star rating
+      - Rating control
+  one_liner: 별이나 점수 기호를 눌러 만족도나 평가 점수를 입력하는 요소.
+  description: 리뷰, 피드백, 추천도처럼 숫자 평가를 빠르게 선택하게 한다.
+  visual_anatomy:
+    - rating icons
+    - selected count
+    - hover or pressed state
+    - numeric value
+  when_to_use:
+    - 사용자에게 간단한 점수 평가를 받을 때
+  anti_use:
+    - 정확한 숫자 입력이나 긴 설문에는 slider나 radio group을 검토한다
+  prompt_phrases:
+    - 리뷰 작성 폼에 5점 star rating input을 넣어줘
+  asset:
+    kind: mini-mock
+    variant: rating-input
+    props:
+      max: 5
+  sources:
+    - source_id: material-m3-components
+      note: selection controls and icon button behavior
+  confidence: medium
+- id: select
+  status: draft
+  category: input
+  group: input-pickers
+  ko:
+    name: 선택창
+    aliases:
+      - 셀렉트
+      - 드롭다운 선택
+      - select box
+  en:
+    name: Select
+    aliases:
+      - Select box
+      - Dropdown select
+  one_liner: 정해진 보기 중 하나를 선택하는 입력 요소.
+  description: 현재 선택값과 펼침 화살표를 보여주고, 클릭하면 옵션 목록을 연다.
+  visual_anatomy:
+    - selected value
+    - trigger container
+    - chevron icon
+    - option list
+  when_to_use:
+    - 선택지가 정해져 있고 하나만 고를 때
+    - 공간을 아껴야 할 때
+  anti_use:
+    - 선택지가 2-4개면 radio group이나 segmented control이 더 잘 보인다
+    - 검색이 필요하면 combobox를 쓴다
+  prompt_phrases:
+    - 카테고리를 고르는 select를 넣어줘
+    - 옵션 목록에서 하나 고르는 드롭다운을 만들어줘
+  asset:
+    kind: mini-mock
+    variant: select
+    props:
+      open: false
+  sources:
+    - source_id: material-m3-components
+      note: menus and select-like input behavior
+  related:
+    - id: combobox
+      relation: compare
+      note: 옵션이 많거나 검색 입력이 필요하면 select보다 combobox가 맞다.
+    - id: dropdown-menu
+      relation: compare
+      note: 값을 고르는 입력이면 select, 명령을 숨겨 실행하는 목록이면 dropdown menu다.
+    - id: radio-group
+      relation: alternative
+      note: 선택지가 적고 모두 보여줘야 하면 select보다 radio group이 더 명확하다.
+    - id: segmented-control
+      relation: alternative
+      note: 2-5개의 보기 모드를 즉시 전환하면 segmented control이 더 빠르다.
+  confidence: medium
+- id: tag-input
+  status: draft
+  category: input
+  group: input-pickers
+  ko:
+    name: 태그 입력
+    aliases:
+      - tag input
+      - chip input
+      - 태그 추가
+  en:
+    name: Tag input
+    aliases:
+      - Chip input
+      - Token input
+  one_liner: 여러 키워드를 작은 태그나 칩으로 추가하고 제거하는 입력 요소.
+  description: 관심사, 기술 스택, 수신자, 필터 조건처럼 여러 짧은 값을 모아 입력한다.
+  visual_anatomy:
+    - chips
+    - inline text input
+    - remove buttons
+    - add action
+  when_to_use:
+    - 사용자가 여러 개의 짧은 값을 자유롭게 추가해야 할 때
+  anti_use:
+    - 선택지가 고정되어 있으면 multi-select가 더 적합할 수 있다
+  prompt_phrases:
+    - 기술 스택을 여러 chip으로 추가하는 tag input을 넣어줘
+  asset:
+    kind: mini-mock
+    variant: tag-input
+    props:
+      chips: 2
+  sources:
+    - source_id: material-m3-components
+      note: chips component and input-like chip usage
+  confidence: medium
+- id: tag-picker
+  status: draft
+  category: input
+  group: input-pickers
+  ko:
+    name: 태그 선택기
+    aliases:
+      - tag picker
+      - 태그 고르기
+      - 칩 선택 입력
+  en:
+    name: Tag picker
+    aliases:
+      - Tag picker input
+      - Tag selector
+  one_liner: 검색하거나 입력해서 여러 태그를 선택하고 칩으로 쌓는 입력 패턴.
+  description: 프로젝트 라벨, 관심사, 담당 역할처럼 여러 개의 짧은 분류값을 고르게 한다.
+  visual_anatomy:
+    - input field
+    - selected tag chips
+    - suggestion list
+    - remove icons
+  when_to_use:
+    - 태그 후보가 많고 여러 개를 선택해야 할 때
+  anti_use:
+    - 자유 텍스트 태그 생성만 필요하면 tag input이 더 단순하다
+  prompt_phrases:
+    - 라벨을 검색해서 여러 개 고르는 tag picker를 넣어줘
+  asset:
+    kind: mini-mock
+    variant: tag-picker
+    props:
+      selected: 2
+  sources:
+    - source_id: fluent2-react-components
+      note: tag picker and tag composition reference
+  confidence: medium
+- id: time-picker
+  status: draft
+  category: input
+  group: input-pickers
+  ko:
+    name: 시간 선택
+    aliases:
+      - time picker
+      - 시간 입력
+      - 시각 선택
+  en:
+    name: Time picker
+    aliases:
+      - Time selector
+      - Time input
+  one_liner: 사용자가 시와 분 같은 시간을 고르게 하는 입력 요소.
+  description: 예약 시간, 알림 시간, 근무 시작 시간처럼 특정 시각을 선택할 때 사용한다.
+  visual_anatomy:
+    - hour value
+    - minute value
+    - increment controls
+    - selected time
+  when_to_use:
+    - 정해진 시간 값을 입력받아야 할 때
+  anti_use:
+    - 시간 범위나 일정 전체를 다루면 calendar view나 scheduler가 더 적합하다
+  prompt_phrases:
+    - 예약 시간을 고르는 time picker를 넣어줘
+  asset:
+    kind: mini-mock
+    variant: time-picker
+    props:
+      step: 30
+  sources:
+    - source_id: material-m3-components
+      note: time picker component
+  related:
+    - id: mobile-date-picker
+      relation: compare
+      note: 예약 날짜와 시간을 함께 받아야 하면 하나의 bottom sheet 안에 이 피커와 mobile-date-picker를 순차적으로
+        이어붙인다.
+    - id: mobile-date-time-picker-sheet
+      relation: use-with
+      note: 날짜와 시간을 하나의 bottom sheet 안에서 순차 선택하는 조합형 시트가 이 피커와 mobile-date-picker를
+        이어붙인 실제 구성이다.
+  confidence: medium
+- id: time-wheel-picker
+  status: draft
+  category: input
+  group: input-pickers
+  ko:
+    name: 시간 휠 피커
+    aliases:
+      - time wheel picker
+      - 시간 스크롤 선택
+      - 시각 휠
+      - 모바일 시간 선택
+  en:
+    name: Time wheel picker
+    aliases:
+      - Wheel time picker
+      - Spinning time picker
+  one_liner: 시와 분을 각각 휠처럼 굴려 모바일에서 시간을 고르는 입력.
+  description: 손가락으로 시/분 컬럼을 스크롤해 정확한 시간을 빠르게 맞추게 한다.
+  visual_anatomy:
+    - hour wheel
+    - minute wheel
+    - center selected row
+    - time separator
+  when_to_use:
+    - 알람
+    - 예약
+    - 일정 시간처럼 시각을 모바일에서 선택할 때
+  anti_use:
+    - 시간 범위를 고르는 경우에는 range picker나 별도 duration control을 검토한다
+  prompt_phrases:
+    - 예약 시간을 고르는 time wheel picker를 넣어줘
+  asset:
+    kind: mini-mock
+    variant: time-wheel-picker
+    props:
+      hour: 9
+      minute: 30
+  sources:
+    - source_id: apple-hig-components
+      note: date and time picker wheel controls
+  confidence: high
+- id: wheel-picker
+  status: draft
+  category: input
+  group: input-pickers
+  ko:
+    name: 휠 피커
+    aliases:
+      - wheel picker
+      - 스크롤 선택
+      - iOS 휠 선택
+      - 돌리는 선택창
+  en:
+    name: Wheel picker
+    aliases:
+      - Picker wheel
+      - Spinning picker
+  one_liner: 값을 세로로 굴려 가운데 줄에 맞춰 선택하는 모바일 피커.
+  description: 크기, 날짜 일부, 숫자처럼 순서가 있는 값을 손가락 스크롤로 빠르게 선택하게 한다.
+  visual_anatomy:
+    - scrolling value column
+    - center selection band
+    - adjacent values
+  when_to_use:
+    - 값의 범위가 정해져 있고 사용자가 순서대로 훑으며 고를 때
+  anti_use:
+    - 옵션이 적고 비교가 중요하면 radio group이나 segmented control이 더 명확하다
+  prompt_phrases:
+    - 사이즈를 S M L로 고르는 wheel picker를 만들어줘
+  asset:
+    kind: mini-mock
+    variant: wheel-picker
+    props:
+      selected: M
+  sources:
+    - source_id: apple-hig-components
+      note: pickers use spinning wheels for value selection
+  confidence: high

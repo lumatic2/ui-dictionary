@@ -1,0 +1,314 @@
+# 메뉴·드롭다운 (selection-menus)
+# category: selection · 용어 7개
+# 파생물 — 정본은 docs/ui-vocabulary/terms.yml. 손으로 고치지 마라.
+
+- id: context-menu
+  status: draft
+  category: selection
+  group: selection-menus
+  ko:
+    name: 컨텍스트 메뉴
+    aliases:
+      - context menu
+      - 우클릭 메뉴
+      - 상황 메뉴
+  en:
+    name: Context menu
+    aliases:
+      - Right-click menu
+      - Contextual menu
+  one_liner: 특정 항목이나 영역의 상황에 맞는 명령을 띄우는 메뉴.
+  description: 파일, 카드, 셀 같은 대상 위에서 열리며 복사, 이름 변경, 삭제 같은 대상별 행동을 제공한다.
+  visual_anatomy:
+    - target item
+    - floating menu
+    - command rows
+    - selected command
+  when_to_use:
+    - 대상별 보조 명령이 많고 기본 화면에 모두 노출하기 어려울 때
+  anti_use:
+    - 중요한 행동을 우클릭에만 숨기지 않는다
+  prompt_phrases:
+    - 카드를 우클릭하면 편집 삭제 context menu가 나오게 해줘
+  asset:
+    kind: mini-mock
+    variant: context-menu
+    props:
+      commands: 3
+  sources:
+    - source_id: wai-aria-apg-patterns
+      note: menu pattern for contextual commands
+  related:
+    - id: long-press-menu
+      relation: compare
+      note: 모바일에서 트리거 방식이 갈린다 — long-press-menu는 터치-홀드로 우연히 발견되고, 이 항목(툴바 버튼을 눌러 아래로
+        펼쳐지는 pull-down 방식 포함)은 명시적 버튼으로 발견 가능성이 더 높다. 항목 구성(icon+label 행,
+        destructive 스타일)은 공유한다.
+  confidence: high
+- id: dropdown-menu
+  status: draft
+  category: selection
+  group: selection-menus
+  ko:
+    name: 드롭다운 메뉴
+    aliases:
+      - 더보기 메뉴
+      - 펼침 메뉴
+      - dropdown
+  en:
+    name: Dropdown menu
+    aliases:
+      - Menu
+      - Popup menu
+  one_liner: 버튼을 누르면 아래로 펼쳐지는 명령 또는 선택 목록.
+  description: 숨겨진 동작이나 옵션을 한 곳에 모아 표시한다.
+  visual_anatomy:
+    - trigger button
+    - chevron or more icon
+    - floating menu
+    - menu items
+  when_to_use:
+    - 자주 쓰지 않는 명령을 숨길 때
+    - 공간을 아끼며 옵션을 제공할 때
+  anti_use:
+    - 중요한 주요 행동은 숨기지 않는다
+    - 값 선택이 목적이면 select나 combobox를 검토한다
+  prompt_phrases:
+    - 카드 오른쪽에 더보기 dropdown menu를 넣어줘
+    - 정렬 옵션을 드롭다운 메뉴로 보여줘
+  asset:
+    kind: mini-mock
+    variant: dropdown-menu
+    props:
+      open: true
+  sources:
+    - source_id: wai-aria-apg-patterns
+      note: menu button pattern
+  related:
+    - id: select
+      relation: compare
+      note: 사용자가 값 하나를 선택하는 입력이면 select, 숨겨진 명령을 실행하면 dropdown menu다.
+    - id: popover
+      relation: compare
+      note: 단순 명령 목록이면 dropdown menu, 작은 폼이나 보조 콘텐츠면 popover가 맞다.
+    - id: tooltip
+      relation: compare
+      note: 설명을 잠깐 보여주는 용도면 tooltip이고, 클릭 가능한 명령 목록은 dropdown menu다.
+  confidence: high
+- id: long-press-menu
+  status: draft
+  category: selection
+  group: selection-menus
+  ko:
+    name: 길게 누르기 메뉴
+    aliases:
+      - long press menu
+      - 롱프레스 메뉴
+      - 길게 누르면 메뉴
+      - 터치 컨텍스트 메뉴
+  en:
+    name: Long press menu
+    aliases:
+      - Touch context menu
+      - Press-and-hold menu
+  one_liner: 모바일에서 항목을 길게 눌렀을 때 나타나는 문맥 명령 메뉴.
+  description: 마우스 우클릭이 없는 터치 환경에서 복사, 공유, 삭제 같은 보조 명령을 숨겨둘 때 쓴다.
+  visual_anatomy:
+    - pressed item
+    - floating context menu
+    - command rows
+    - touch anchor
+  when_to_use:
+    - 주요 화면을 복잡하게 만들지 않고 항목별 보조 행동을 제공할 때
+  anti_use:
+    - 핵심 행동을 long press 안에만 숨기면 발견성이 낮다
+  prompt_phrases:
+    - 카드를 길게 누르면 복사 공유 삭제가 나오는 long press menu를 넣어줘
+  asset:
+    kind: mini-mock
+    variant: long-press-menu
+    props:
+      open: true
+  sources:
+    - source_id: apple-hig-components
+      note: touch and hold contextual actions
+  related:
+    - id: context-menu
+      relation: compare
+      note: 트리거 위치와 발견 가능성이 다르다 — 이 항목은 터치-홀드로 우연히 발견되고, context-menu(툴바 버튼 아래로 펼쳐지는
+        pull-down 방식 포함)는 명시적 버튼으로 발견된다. 항목 구성(icon+label 행, destructive 스타일)은
+        공유한다.
+  confidence: high
+- id: mega-menu
+  status: draft
+  category: selection
+  group: selection-menus
+  ko:
+    name: 메가 메뉴
+    aliases:
+      - mega menu
+      - 대형 메뉴
+      - 다열 메뉴
+  en:
+    name: Mega menu
+    aliases:
+      - Large menu
+      - Multi-column menu
+  one_liner: 상단 메뉴에서 여러 카테고리와 링크를 큰 패널로 펼쳐 보여주는 메뉴.
+  description: 서비스, 제품군, 문서처럼 항목이 많을 때 2열 이상으로 구조화해 탐색하게 한다.
+  visual_anatomy:
+    - top trigger
+    - large panel
+    - columns
+    - grouped links
+  when_to_use:
+    - 전역 내비게이션의 하위 항목이 많고 구조를 한눈에 보여줘야 할 때
+  anti_use:
+    - 항목이 적으면 dropdown menu가 더 단순하다
+    - 모바일에서는 별도 drawer 구성이 필요하다
+  prompt_phrases:
+    - 상단 제품 메뉴를 누르면 3열 mega menu가 펼쳐지게 해줘
+  asset:
+    kind: mini-mock
+    variant: mega-menu
+    props:
+      columns: 3
+  sources:
+    - source_id: wai-aria-apg-patterns
+      note: menu and menubar pattern
+  confidence: medium
+- id: menu-bar
+  status: draft
+  category: selection
+  group: selection-menus
+  ko:
+    name: 메뉴바
+    aliases:
+      - menubar
+      - 상단 메뉴
+      - 앱 메뉴
+  en:
+    name: Menubar
+    aliases:
+      - Menu bar
+      - Application menu
+  one_liner: 여러 메뉴를 가로로 배치하고 각 메뉴에서 하위 명령을 여는 구조.
+  description: 데스크톱 앱처럼 파일, 편집, 보기 같은 명령 묶음을 제공할 때 쓴다.
+  visual_anatomy:
+    - horizontal menu items
+    - active menu
+    - dropdown submenu
+    - keyboard navigation
+  when_to_use:
+    - 명령이 많고 분류가 명확한 생산성 도구에서
+    - 데스크톱 앱과 비슷한 조작이 필요할 때
+  anti_use:
+    - 일반 웹사이트 내비게이션을 ARIA menubar처럼 과하게 만들지 않는다
+    - 모바일에서는 단순 메뉴가 낫다
+  prompt_phrases:
+    - 상단에 파일 편집 보기 menubar를 넣어줘
+    - 메뉴를 열면 하위 명령이 나오게 해줘
+  asset:
+    kind: mini-mock
+    variant: menu-bar
+    props:
+      open: true
+  sources:
+    - source_id: wai-aria-apg-patterns
+      note: menu and menubar pattern
+  confidence: high
+- id: mobile-popover-menu
+  status: draft
+  category: selection
+  group: selection-menus
+  ko:
+    name: 모바일 팝오버 메뉴
+    aliases:
+      - mobile popover menu
+      - 점 세개 메뉴
+      - 더보기 메뉴
+      - anchored menu
+  en:
+    name: Mobile popover menu
+    aliases:
+      - Anchored menu
+      - Overflow popover
+  one_liner: 모바일 화면의 아이콘이나 더보기 버튼 근처에 작게 붙어 뜨는 명령 메뉴.
+  description: 현재 항목에 대한 수정, 공유, 삭제 같은 짧은 명령을 앵커 위치 가까이에 보여준다.
+  visual_anatomy:
+    - anchor icon
+    - floating menu surface
+    - menu items
+    - small shadow
+  when_to_use:
+    - 명령 수가 적고 현재 항목과의 위치 관계를 유지하고 싶을 때
+  anti_use:
+    - 화면 아래 엄지 영역에서 선택하게 해야 하면 action-sheet가 더 편할 수 있다
+  prompt_phrases:
+    - 카드 오른쪽 위 점 세개 버튼을 누르면 mobile popover menu를 띄워줘
+  asset:
+    kind: mini-mock
+    variant: mobile-popover-menu
+    props:
+      open: true
+  sources:
+    - source_id: material-m3-components
+      note: menus anchored to controls
+  confidence: high
+- id: saved-view-tabs
+  status: draft
+  category: selection
+  group: selection-menus
+  ko:
+    name: 저장된 뷰 탭
+    aliases:
+      - saved views
+      - view tabs
+      - 저장 필터 탭
+  en:
+    name: Saved view tabs
+    aliases:
+      - Saved views
+      - View presets
+  one_liner: 자주 쓰는 필터나 정렬 조합을 탭처럼 저장해 전환하는 패턴.
+  description: 전체, 내 작업, 보관됨처럼 목록의 보기 조건을 빠르게 바꾼다. 개인만 보는 뷰와 팀에 공유된 뷰를 함께 저장하는 내부
+    도구에서는 각 뷰에 personal/shared 배지를 붙여 소유 범위를 구분한다.
+  visual_anatomy:
+    - tabs
+    - saved filter names
+    - active view
+    - list count
+    - personal or shared scope badge
+    - default view indicator
+  when_to_use:
+    - 사용자가 같은 조건 조합을 반복해서 볼 때
+    - 팀원과 같은 필터 조합을 공유해야 할 때
+  anti_use:
+    - 일회성 필터는 filter chip이나 faceted filter가 낫다
+  prompt_phrases:
+    - 전체 내 작업 보관됨 saved view tabs를 테이블 위에 넣어줘
+    - 개인 뷰와 팀 공유 뷰를 구분하는 saved view tabs를 만들어줘
+  asset:
+    kind: mini-mock
+    variant: saved-view-tabs
+    props:
+      active: mine
+  sources:
+    - source_id: atlassian-design-components
+      note: work management view patterns
+  navigation:
+    canonical_path:
+      - Plus
+      - UI Blocks
+      - Application UI
+      - Navigation
+    also_appears_in:
+      - - Plus
+        - Templates
+        - Dashboard Screens
+  related:
+    - id: workspace-switcher
+      relation: use-with
+      note: saved view tabs의 personal/shared 스코프는 workspace switcher가 정하는 현재 팀·조직 컨텍스트
+        안에서 해석된다 — 뷰 자체를 전환하는 것과 작업 공간을 전환하는 것은 별개의 조작이다
+  confidence: medium

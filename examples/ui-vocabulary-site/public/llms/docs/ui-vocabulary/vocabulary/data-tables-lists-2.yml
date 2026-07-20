@@ -1,0 +1,701 @@
+# 테이블·리스트 (data-tables-lists) — part 2/2
+# category: data-display · 용어 17개
+# 파생물 — 정본은 docs/ui-vocabulary/terms.yml. 손으로 고치지 마라.
+
+- id: list
+  status: draft
+  category: data-display
+  group: data-tables-lists
+  ko:
+    name: 리스트
+    aliases:
+      - 목록
+      - list
+  en:
+    name: List
+    aliases:
+      - List view
+  one_liner: 항목을 세로로 나열해 읽고 선택하게 하는 구조.
+  description: 각 행은 텍스트, 아이콘, 보조 정보, 행동을 가질 수 있다.
+  visual_anatomy:
+    - stacked rows
+    - primary text
+    - secondary text
+    - optional leading icon
+  when_to_use:
+    - 항목을 순서대로 읽거나 비교해야 할 때
+    - 모바일에서 스캔 가능한 목록이 필요할 때
+  anti_use:
+    - 시각 비교가 중요하면 grid나 card layout이 낫다
+    - 표 형식의 행열 데이터는 table을 쓴다
+  prompt_phrases:
+    - 알림을 list로 세로 나열해줘
+    - 각 행에 아이콘과 설명이 있는 목록을 만들어줘
+  asset:
+    kind: mini-mock
+    variant: list
+    props:
+      rows: 3
+  sources:
+    - source_id: material-m3-components
+      note: lists component
+  confidence: high
+- id: nested-list
+  status: draft
+  category: data-display
+  group: data-tables-lists
+  ko:
+    name: 중첩 리스트
+    aliases:
+      - nested list
+      - 하위 목록
+      - nested rows
+  en:
+    name: Nested list
+    aliases:
+      - Sublist
+      - Nested rows
+  one_liner: 목록 안의 항목 아래에 하위 항목을 들여쓰기해 보여주는 구조.
+  description: 댓글 답글, 카테고리 하위 항목, 작업 subtasks처럼 부모-자식 관계를 표현한다.
+  visual_anatomy:
+    - parent row
+    - indented child rows
+    - expand state
+    - hierarchy spacing
+  when_to_use:
+    - 목록 항목 사이에 위계가 있을 때
+  anti_use:
+    - 깊이가 깊어지면 tree view가 더 명확하다
+  prompt_phrases:
+    - 작업과 하위 작업을 nested list로 보여줘
+  asset:
+    kind: mini-mock
+    variant: nested-list
+    props:
+      children: true
+  sources:
+    - source_id: material-m3-components
+      note: lists component
+  confidence: medium
+- id: order-history-list
+  status: draft
+  category: data-display
+  group: data-tables-lists
+  kind: block
+  ko:
+    name: 주문 내역 목록
+    aliases:
+      - order history list
+      - 주문 이력
+      - 지난 주문 목록
+  en:
+    name: Order history list
+    aliases:
+      - Order list
+      - Purchase history list
+  one_liner: 과거 주문들을 날짜·금액·상태로 훑어보고 상세나 재주문으로 이어지는 목록.
+  description: 계정의 여러 주문을 행 단위로 나열해 사용자가 과거 구매를 스캔하고 상세 확인이나 재주문을 시작하게 한다.
+  visual_anatomy:
+    - order row
+    - date and order number
+    - item thumbnails
+    - total price
+    - status chip
+    - view detail or reorder action
+  when_to_use:
+    - 계정이나 마이페이지에서 여러 주문을 한 번에 훑어봐야 할 때
+  anti_use:
+    - 단일 주문 하나의 진행 상태만 보여줄 때는 order status가 더 적합하다
+  prompt_phrases:
+    - 날짜 금액 상태 칩이 있는 order history list를 마이페이지에 넣어줘
+  related:
+    - id: order-status
+      relation: compare
+      note: 단일 주문의 진행 상태 표시는 order status, 여러 주문을 스캔 가능한 행으로 나열하는 목록 뷰는 order history
+        list다.
+  asset:
+    kind: mini-mock
+    variant: order-history-list
+    props:
+      rows: 3
+  sources:
+    - source_id: blocks-so-library
+      note: shadcn block ecosystem ecommerce order history blocks
+  navigation:
+    canonical_path:
+      - Plus
+      - Templates
+      - Ecommerce Screens
+    also_appears_in:
+      - - Plus
+        - UI Blocks
+        - Ecommerce
+        - Components
+  confidence: medium
+- id: permission-matrix-editor
+  status: draft
+  category: data-display
+  group: data-tables-lists
+  kind: block
+  ko:
+    name: 권한 매트릭스 편집기
+    aliases:
+      - permission matrix editor
+      - 역할 권한 매트릭스
+      - 권한표
+  en:
+    name: Permission matrix editor
+    aliases:
+      - Role permission matrix
+      - Access matrix editor
+  one_liner: 역할을 열, 권한·모듈을 행으로 배치해 체크박스로 접근 범위를 부여하는 매트릭스 편집기.
+  description: ERP, CRM, 내부 어드민 도구에서 역할별로 어떤 모듈에 어떤 권한을 허용할지 표 형태로 한눈에 편집하게 한다.
+  visual_anatomy:
+    - role columns
+    - permission rows grouped by module
+    - checkbox or toggle cell
+    - select-all in row/column
+    - role inheritance indicator
+    - duplicate role as base action
+    - default-deny visualization
+  when_to_use:
+    - 역할별 접근 범위를 여러 모듈에 걸쳐 한 화면에서 관리해야 할 때
+  anti_use:
+    - 역할이 하나뿐이거나 권한이 단순하면 개별 permission-prompt나 role-badge 정도로 충분하다
+  prompt_phrases:
+    - 역할을 열로 권한을 행으로 배치한 permission matrix editor를 만들어줘
+    - 체크박스로 모듈별 접근 권한을 켜고 끄는 권한 매트릭스를 넣어줘
+  asset:
+    kind: mini-mock
+    variant: permission-matrix-editor
+    props:
+      roles: 3
+  sources:
+    - source_id: ui-patterns-library
+      note: matrix-style permission and access control editors in admin tools
+  related:
+    - id: role-badge
+      relation: compare
+      note: role badge는 한 사용자의 역할을 작은 배지로 보여주는 표시 전용 요소이고, permission matrix editor는
+        여러 역할과 모듈 조합의 접근 권한 자체를 표 형태로 편집하는 도구다
+  confidence: medium
+- id: pivot-table
+  status: draft
+  category: data-display
+  group: data-tables-lists
+  ko:
+    name: 피벗 테이블
+    aliases:
+      - pivot table
+      - 요약 테이블
+      - cross table
+  en:
+    name: Pivot table
+    aliases:
+      - Cross table
+      - Summary table
+  one_liner: 행과 열 기준을 바꿔 데이터를 집계하고 요약하는 고급 테이블.
+  description: 지역별 월별 매출처럼 차원을 교차해 합계와 소계를 보여준다.
+  visual_anatomy:
+    - row groups
+    - column groups
+    - aggregate cells
+    - totals
+  when_to_use:
+    - 다차원 데이터를 요약 분석해야 할 때
+  anti_use:
+    - 단순 행 목록에는 data table이 더 적합하다
+  prompt_phrases:
+    - 월별 지역별 매출을 pivot table로 보여줘
+  asset:
+    kind: mini-mock
+    variant: pivot-table
+    props:
+      totals: true
+  sources:
+    - source_id: carbon-design-components
+      note: structured data display patterns
+  confidence: medium
+- id: pull-to-refresh
+  status: draft
+  category: data-display
+  group: data-tables-lists
+  ko:
+    name: 당겨서 새로고침
+    aliases:
+      - pull to refresh
+      - swipe refresh
+      - 아래로 당겨 새로고침
+  en:
+    name: Pull to refresh
+    aliases:
+      - Swipe refresh
+      - Pull refresh
+  one_liner: 모바일에서 목록을 아래로 당겨 새 데이터를 불러오는 제스처 패턴.
+  description: 피드나 메시지 목록에서 최신 상태를 사용자가 직접 갱신하게 한다.
+  visual_anatomy:
+    - pulled list
+    - refresh indicator
+    - release state
+    - updated list
+  when_to_use:
+    - 모바일 목록에서 새 데이터를 수동 갱신해야 할 때
+  anti_use:
+    - 데스크톱 웹에서는 명시적 refresh button이 더 발견 가능하다
+  prompt_phrases:
+    - 모바일 피드에 pull-to-refresh 상태 표시를 넣어줘
+  asset:
+    kind: diagram
+    variant: pull-to-refresh
+    props:
+      pulled: true
+  sources:
+    - source_id: apple-hig-components
+      note: mobile refresh interaction guidance
+  confidence: medium
+- id: query-builder
+  status: draft
+  category: data-display
+  group: data-tables-lists
+  ko:
+    name: 쿼리 빌더
+    aliases:
+      - query builder
+      - 조건식 빌더
+      - rules builder
+  en:
+    name: Query builder
+    aliases:
+      - Rules builder
+      - Condition builder
+  one_liner: 여러 조건 그룹을 AND/OR로 묶어 검색 규칙을 만드는 고급 UI.
+  description: 필터 빌더보다 더 구조화된 규칙 집합을 만들 때 쓴다.
+  visual_anatomy:
+    - condition rows
+    - and-or selector
+    - nested group
+    - run query action
+  when_to_use:
+    - 사용자가 복잡한 검색 규칙을 저장하거나 재사용해야 할 때
+  anti_use:
+    - 일반 사용자의 간단한 검색에는 search field가 낫다
+  prompt_phrases:
+    - AND OR 조건을 추가하는 query builder를 만들어줘
+  asset:
+    kind: mini-mock
+    variant: query-builder
+    props:
+      groups: true
+  sources:
+    - source_id: carbon-design-components
+      note: advanced filtering patterns
+  confidence: medium
+- id: review-list-with-filters
+  status: draft
+  category: data-display
+  group: data-tables-lists
+  kind: block
+  ko:
+    name: 필터 리뷰 목록
+    aliases:
+      - review list with filters
+      - 리뷰 필터 목록
+      - 후기 필터링 목록
+  en:
+    name: Review list with filters
+    aliases:
+      - Filterable review list
+      - Review filter and sort list
+  one_liner: 평점, 사진 유무, 구매 인증 여부로 개별 리뷰를 걸러내고 정렬하는 목록.
+  description: 필터 칩과 정렬 컨트롤을 목록 위에 두어 사용자가 원하는 리뷰만 좁혀보게 한다.
+    `reviews-summary-block`이 평점 분포 요약과 리뷰 목록을 한 블록으로 묶는 term이라면, 이 term은 그 목록
+    안에서의 필터/정렬 상호작용 자체가 핵심이다.
+  visual_anatomy:
+    - filter chips for rating/has-photo/verified-purchase
+    - sort control
+    - review row with rating/author/date/body/photos
+    - pagination or load-more
+  when_to_use:
+    - 상품 상세의 리뷰가 많아 사용자가 평점이나 사진
+    - 구매 인증 여부로 좁혀봐야 할 때
+  anti_use:
+    - 리뷰 수가 적으면 필터 없이 reviews-summary-block만으로 충분하다
+  prompt_phrases:
+    - 평점 사진 유무 구매인증으로 거르는 review list with filters를 만들어줘
+    - 최근순 도움순 정렬이 있는 필터 리뷰 목록을 넣어줘
+  asset:
+    kind: mini-mock
+    variant: review-list-with-filters
+    props:
+      filters: 2
+  sources:
+    - source_id: blocks-so-library
+      note: shadcn block ecosystem ecommerce review list and filter blocks
+  related:
+    - id: reviews-summary-block
+      relation: compare
+      note: 평점 분포 요약과 리뷰 목록을 한 블록으로 묶어 보여주는 것이 reviews summary block이고, 평점/사진 유무/구매 인증
+        여부로 리뷰를 걸러내고 정렬하는 상호작용이 핵심이면 review list with filters다.
+  confidence: medium
+- id: selection-summary
+  status: draft
+  category: data-display
+  group: data-tables-lists
+  ko:
+    name: 선택 요약
+    aliases:
+      - selection summary
+      - selected summary
+      - 선택 개수 표시
+  en:
+    name: Selection summary
+    aliases:
+      - Selected summary
+      - Selection count
+  one_liner: 현재 선택된 항목 수와 적용 가능한 행동을 요약해 보여주는 영역.
+  description: row selection이나 multi-select 후 사용자가 선택 상태를 파악하고 해제할 수 있게 한다.
+  visual_anatomy:
+    - selected count
+    - clear action
+    - bulk action
+    - summary bar
+  when_to_use:
+    - 여러 항목 선택 후 사용자가 현재 선택 범위를 알아야 할 때
+  anti_use:
+    - 선택 상태가 하나뿐이면 별도 요약이 필요 없다
+  prompt_phrases:
+    - 3개 선택됨과 전체 해제가 있는 selection summary를 보여줘
+  asset:
+    kind: mini-mock
+    variant: selection-summary
+    props:
+      selected: 3
+  sources:
+    - source_id: carbon-design-components
+      note: data table row selection behavior
+  confidence: high
+- id: sort-control
+  status: draft
+  category: data-display
+  group: data-tables-lists
+  ko:
+    name: 정렬 컨트롤
+    aliases:
+      - sort control
+      - sort dropdown
+      - 정렬 선택
+  en:
+    name: Sort control
+    aliases:
+      - Sort dropdown
+      - Sort selector
+  one_liner: 목록이나 테이블의 표시 순서를 바꾸는 선택 요소.
+  description: 최신순, 이름순, 가격순처럼 사용자가 데이터를 원하는 기준으로 재배열하게 한다.
+  visual_anatomy:
+    - sort label
+    - selected criterion
+    - direction indicator
+    - dropdown or button
+  when_to_use:
+    - 사용자가 목록 순서를 바꿔 탐색해야 할 때
+    - 여러 정렬 기준이 의미 있을 때
+  anti_use:
+    - 정렬 기준이 하나뿐이면 노출하지 않는다
+    - 필터와 정렬의 의미를 섞지 않는다
+  prompt_phrases:
+    - 목록 오른쪽에 sort control을 넣어줘
+    - 최신순 인기순을 고르는 정렬 드롭다운을 만들어줘
+  asset:
+    kind: mini-mock
+    variant: sort-control
+    props:
+      selected: recent
+  sources:
+    - source_id: carbon-design-components
+      note: data table sorting controls
+  confidence: medium
+- id: structured-list
+  status: draft
+  category: data-display
+  group: data-tables-lists
+  ko:
+    name: 구조화 목록
+    aliases:
+      - structured list
+      - 행 목록
+      - 구조 목록
+  en:
+    name: Structured list
+    aliases:
+      - StructuredList
+      - Property list
+  one_liner: 여러 행을 같은 열 구조로 정리하지만 완전한 데이터 테이블보다 가벼운 목록.
+  description: 제목, 설명, 상태, 보조 메타데이터를 반복 행으로 보여주는 설정/요약 화면에 적합하다.
+  visual_anatomy:
+    - row container
+    - aligned columns
+    - primary text
+    - secondary metadata
+    - optional action
+  when_to_use:
+    - 테이블만큼 복잡하지 않은 구조화 정보를 반복해서 보여줄 때
+  anti_use:
+    - 정렬
+    - 필터
+    - 열 조작이 중요하면 table이나 data grid를 쓴다
+  prompt_phrases:
+    - 설정 항목을 structured list로 정리해줘
+  asset:
+    kind: mini-mock
+    variant: structured-list
+    props:
+      rows: 3
+  sources:
+    - source_id: carbon-design-components
+      note: structured list component reference
+  confidence: high
+- id: table
+  status: draft
+  category: data-display
+  group: data-tables-lists
+  ko:
+    name: 테이블
+    aliases:
+      - 표
+      - data table
+  en:
+    name: Table
+    aliases:
+      - Data table
+  one_liner: 행과 열로 구조화된 데이터를 보여주는 요소.
+  description: 같은 속성을 가진 여러 항목을 비교, 정렬, 스캔하게 한다.
+  visual_anatomy:
+    - header row
+    - columns
+    - data rows
+    - cell borders or dividers
+  when_to_use:
+    - 여러 항목의 속성을 비교해야 할 때
+    - 정렬이나 행 선택이 필요한 데이터 화면에서
+  anti_use:
+    - 모바일에서 열이 너무 많으면 카드나 list로 바꾼다
+    - 단순 텍스트 목록에는 list가 낫다
+  prompt_phrases:
+    - 사용자 목록을 data table로 보여줘
+    - 행과 열이 있는 테이블을 만들어줘
+  asset:
+    kind: mini-mock
+    variant: table
+    props:
+      rows: 3
+      columns: 3
+  sources:
+    - source_id: carbon-design-components
+      note: data table component
+  navigation:
+    canonical_path:
+      - Plus
+      - UI Kit
+      - Data Display
+    also_appears_in:
+      - - Plus
+        - UI Blocks
+        - Application UI
+        - Lists
+      - - Plus
+        - UI Blocks
+        - Application UI
+        - Data Display
+  confidence: high
+- id: table-density-control
+  status: draft
+  category: data-display
+  group: data-tables-lists
+  ko:
+    name: 테이블 밀도 조절
+    aliases:
+      - table density
+      - density control
+      - 행 높이 조절
+  en:
+    name: Table density control
+    aliases:
+      - Density control
+      - Row density selector
+  one_liner: 테이블 행 간격을 compact, default, spacious처럼 바꾸는 컨트롤.
+  description: 데이터 밀도와 읽기 편안함 사이를 사용자가 선택하게 한다.
+  visual_anatomy:
+    - density buttons
+    - table rows
+    - row height change
+    - selected density
+  when_to_use:
+    - 데이터를 조밀하게 보거나 여유 있게 읽는 요구가 모두 있을 때
+  anti_use:
+    - 일반 카드 목록에는 밀도 조절이 과할 수 있다
+  prompt_phrases:
+    - 테이블 우측에 compact comfortable density control을 넣어줘
+  asset:
+    kind: mini-mock
+    variant: table-density-control
+    props:
+      density: compact
+  sources:
+    - source_id: carbon-design-components
+      note: data table display controls
+  confidence: medium
+- id: tree-table
+  status: draft
+  category: data-display
+  group: data-tables-lists
+  ko:
+    name: 트리 테이블
+    aliases:
+      - tree table
+      - treegrid
+      - 계층 테이블
+  en:
+    name: Tree table
+    aliases:
+      - Treegrid
+      - Hierarchical table
+  one_liner: 테이블 행이 계층 구조를 갖고 펼치거나 접을 수 있는 데이터 표.
+  description: 폴더, 조직도, 계정 구조처럼 행에 부모-자식 관계가 있을 때 사용한다.
+  visual_anatomy:
+    - expandable row
+    - indentation
+    - columns
+    - child rows
+  when_to_use:
+    - 계층 데이터와 열 데이터를 동시에 보여줘야 할 때
+  anti_use:
+    - 위계만 중요하면 tree view가 더 단순하다
+  prompt_phrases:
+    - 폴더 구조를 펼칠 수 있는 tree table로 보여줘
+  asset:
+    kind: mini-mock
+    variant: tree-table
+    props:
+      expanded: true
+  sources:
+    - source_id: wai-aria-apg-patterns
+      note: grid and treeview pattern combination
+  confidence: medium
+- id: tree-view
+  status: draft
+  category: data-display
+  group: data-tables-lists
+  ko:
+    name: 트리 뷰
+    aliases:
+      - 계층 목록
+      - tree view
+  en:
+    name: Tree view
+    aliases:
+      - Tree
+      - Hierarchical list
+  one_liner: 폴더처럼 계층 구조를 펼치고 접어 보는 목록.
+  description: 부모와 자식 항목을 indentation, chevron, expanded state로 표현한다.
+  visual_anatomy:
+    - nested rows
+    - disclosure chevrons
+    - indentation
+    - selected row
+  when_to_use:
+    - 폴더
+    - 카테고리
+    - 문서 구조처럼 계층이 중요한 데이터를 탐색할 때
+  anti_use:
+    - 계층이 얕으면 list나 accordion이 더 단순하다
+    - 너무 깊은 구조는 검색이 필요하다
+  prompt_phrases:
+    - 파일 목록을 tree view로 보여줘
+    - 카테고리를 펼치고 접는 계층 목록으로 만들어줘
+  asset:
+    kind: mini-mock
+    variant: tree-view
+    props:
+      expanded: true
+  sources:
+    - source_id: wai-aria-apg-patterns
+      note: treeview pattern
+  confidence: high
+- id: virtualized-list
+  status: draft
+  category: data-display
+  group: data-tables-lists
+  ko:
+    name: 가상화 리스트
+    aliases:
+      - virtualized list
+      - windowed list
+      - 대량 리스트
+  en:
+    name: Virtualized list
+    aliases:
+      - Windowed list
+      - Virtual list
+  one_liner: 많은 항목 중 화면에 보이는 일부만 렌더링하는 긴 목록 패턴.
+  description: 수천 개 항목을 빠르게 스크롤해야 할 때 성능을 위해 보이는 범위만 그린다.
+  visual_anatomy:
+    - long scroll area
+    - visible rows
+    - scroll thumb
+    - offscreen placeholders
+  when_to_use:
+    - 항목 수가 매우 많아 일반 list가 느려질 때
+  anti_use:
+    - 짧은 목록에는 구현 복잡도만 늘어난다
+  prompt_phrases:
+    - 수천 개 항목을 virtualized list로 빠르게 스크롤되게 해줘
+  asset:
+    kind: diagram
+    variant: virtualized-list
+    props:
+      windowed: true
+  sources:
+    - source_id: carbon-design-components
+      note: structured data display patterns
+  confidence: medium
+- id: wishlist-management-view
+  status: draft
+  category: data-display
+  group: data-tables-lists
+  kind: block
+  ko:
+    name: 위시리스트 관리 화면
+    aliases:
+      - wishlist management view
+      - 찜 목록 관리
+      - 저장한 상품 목록
+  en:
+    name: Wishlist management view
+    aliases:
+      - Saved items view
+      - Wishlist page
+  one_liner: 저장한 상품을 모아보고 재고·가격 변동을 확인하며 장바구니로 옮기거나 삭제하는 전용 화면.
+  description: Baymard 연구에 따르면 사이트의 60%가 위시리스트 사용에 계정 생성을 강제해 이탈을 유발한다. guest 저장을
+    허용하고 품절·가격 변동 알림을 목록 안에서 바로 보여주는 것이 핵심 권고다.
+  visual_anatomy:
+    - grid or list of saved items with thumbnail/title/price/availability
+    - price-drop or back-in-stock indicator
+    - move-to-cart action per item
+    - remove action per item
+    - guest-accessible state
+  when_to_use:
+    - 계정이나 마이페이지에서 사용자가 저장해둔 상품을 모아 관리해야 할 때
+  anti_use:
+    - 단순히 하트 아이콘으로 찜 여부만 토글하는 것은 이 term의 범위가 아니다 — 저장 목록 전용 화면 자체를 가리킨다
+  prompt_phrases:
+    - 가격 변동과 재입고 알림이 있는 wishlist management view를 마이페이지에 만들어줘
+    - 로그인 없이도 담을 수 있는 위시리스트 화면을 보여줘
+  asset:
+    kind: mini-mock
+    variant: wishlist-management-view
+    props:
+      rows: 3
+  sources:
+    - source_id: shopify-polaris-components
+      note: saved items and list management views
+  confidence: medium

@@ -1,0 +1,40 @@
+# 스크롤 동작 (layout-scroll-behavior)
+# category: layout-rendering · 용어 1개
+# 파생물 — 정본은 docs/ui-vocabulary/terms.yml. 손으로 고치지 마라.
+
+- id: scroll-snap
+  status: draft
+  category: layout-rendering
+  group: layout-scroll-behavior
+  kind: motion-pattern
+  ko:
+    name: 스크롤 스냅
+    aliases:
+      - scroll snap
+      - 스냅 스크롤
+      - snap carousel
+  en:
+    name: Scroll snap
+    aliases:
+      - Snap scrolling
+      - Scroll snapping
+  one_liner: 스크롤이 특정 카드나 섹션 위치에 자연스럽게 맞춰 멈추도록 하는 패턴.
+  description: 모바일 carousel, 온보딩 페이지, 가로 카드 레일에서 항목이 어정쩡하게 걸치지 않게 한다.
+  visual_anatomy:
+    - scroll container
+    - snap points
+    - centered item
+    - partial neighbors
+  when_to_use:
+    - 가로 카드나 페이지 단위 콘텐츠를 한 항목씩 읽게 하고 싶을 때
+  anti_use:
+    - 긴 문서 읽기처럼 자유로운 스크롤이 중요한 화면에서는 방해가 될 수 있다
+  prompt_phrases:
+    - 모바일 카드 carousel은 scroll snap으로 한 장씩 맞춰 멈추게 해줘
+  asset:
+    kind: mini-mock
+    variant: scroll-snap
+  sources:
+    - source_id: mdn-css-reference
+      note: CSS scroll snap properties define snapping scroll containers
+  confidence: high

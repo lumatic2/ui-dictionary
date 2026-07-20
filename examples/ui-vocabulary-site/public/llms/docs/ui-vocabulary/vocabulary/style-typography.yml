@@ -1,0 +1,229 @@
+# 타이포그래피 처리 (style-typography)
+# category: style · 용어 6개
+# 파생물 — 정본은 docs/ui-vocabulary/terms.yml. 손으로 고치지 마라.
+
+- id: animated-shiny-text
+  status: draft
+  category: style
+  group: style-typography
+  kind: visual-effect
+  ko:
+    name: 샤이니 텍스트
+    aliases:
+      - shiny text
+      - 빛나는 텍스트
+      - animated shiny text
+  en:
+    name: Animated shiny text
+    aliases:
+      - Shiny text
+      - Text shimmer
+  one_liner: 텍스트 위로 빛이 지나가는 듯한 하이라이트를 반복하는 텍스트 효과.
+  description: 배지, 새 기능 라벨, AI 상태 문구처럼 짧은 텍스트를 눈에 띄게 한다.
+  visual_anatomy:
+    - short text
+    - moving highlight
+    - muted base
+    - loop animation
+  when_to_use:
+    - 짧은 마케팅 문구나 새 기능 라벨을 강조할 때
+  anti_use:
+    - 긴 문장이나 본문에는 shimmer-effect보다 더 산만할 수 있다
+  prompt_phrases:
+    - New feature 배지에 animated shiny text를 적용해줘
+  related:
+    - id: shimmer-effect
+      relation: compare
+      note: shimmer-effect는 로딩/진행 표면에도 쓰이고, animated shiny text는 짧은 텍스트 강조에 초점이 있다.
+  asset:
+    kind: mini-mock
+    variant: animated-shiny-text
+  sources:
+    - source_id: magic-ui-docs
+      note: Magic UI shiny text component examples
+  confidence: medium
+- id: font-weight
+  status: draft
+  category: style
+  group: style-typography
+  kind: visual-treatment
+  ko:
+    name: 글자 굵기
+    aliases:
+      - font weight
+      - 폰트 굵기
+      - weight
+      - 볼드 단계
+  en:
+    name: Font weight
+    aliases:
+      - Weight
+      - Boldness
+      - Type weight
+  one_liner: 텍스트가 얼마나 얇거나 굵게 보이는지 정하는 타이포그래피 속성.
+  description: 제목, 라벨, 강조 문구의 위계를 만들 때 크기만 키우지 않고 굵기로 중요도를 조절한다.
+  visual_anatomy:
+    - same text
+    - light weight
+    - regular weight
+    - bold weight
+  when_to_use:
+    - 제목과 본문 위계를 분명히 할 때
+    - 버튼이나 라벨을 더 강하게 보이게 할 때
+  anti_use:
+    - 모든 텍스트를 굵게 만들면 위계가 사라지고 읽기 피로가 커진다
+  prompt_phrases:
+    - 섹션 제목은 font-weight를 높여서 본문과 구분해줘
+  asset:
+    kind: mini-mock
+    variant: font-weight
+  sources:
+    - source_id: mdn-css-reference
+      note: CSS font-weight property reference
+  confidence: high
+- id: letter-spacing
+  status: draft
+  category: style
+  group: style-typography
+  kind: visual-treatment
+  ko:
+    name: 자간
+    aliases:
+      - letter spacing
+      - 글자 간격
+      - tracking
+  en:
+    name: Letter spacing
+    aliases:
+      - Tracking
+      - Character spacing
+  one_liner: 글자 사이의 가로 간격을 넓히거나 좁히는 타이포그래피 속성.
+  description: 작은 대문자 라벨, 숫자, 섹션 eyebrow처럼 짧은 텍스트의 밀도와 분위기를 조절한다.
+  visual_anatomy:
+    - same word
+    - tight spacing
+    - normal spacing
+    - loose spacing
+  when_to_use:
+    - 짧은 라벨이나 코드성 텍스트를 더 또렷하게 만들 때
+  anti_use:
+    - 한글 본문 전체에 과한 자간을 주면 읽기 흐름이 깨진다
+  prompt_phrases:
+    - 작은 섹션 라벨에 살짝 넓은 letter spacing을 줘
+  asset:
+    kind: mini-mock
+    variant: letter-spacing
+  sources:
+    - source_id: mdn-css-reference
+      note: CSS letter-spacing property reference
+  confidence: high
+- id: line-clamp
+  status: draft
+  category: style
+  group: style-typography
+  kind: visual-treatment
+  ko:
+    name: 줄 수 제한
+    aliases:
+      - line clamp
+      - multi-line ellipsis
+      - 여러 줄 말줄임
+  en:
+    name: Line clamp
+    aliases:
+      - Multi-line truncation
+      - Multi-line ellipsis
+  one_liner: 여러 줄 텍스트를 정해진 줄 수까지만 보이고 나머지를 말줄임 처리하는 패턴.
+  description: 카드 설명이나 목록 요약의 높이를 맞추면서 긴 문장이 레이아웃을 밀지 않게 한다.
+  visual_anatomy:
+    - text block
+    - visible line count
+    - fade or ellipsis
+    - fixed card height
+  when_to_use:
+    - 카드 그리드에서 설명 길이가 제각각일 때
+    - 요약 목록의 높이를 일정하게 유지할 때
+  anti_use:
+    - 법적 고지나 오류 원인처럼 전문을 읽어야 하는 내용에는 쓰지 않는다
+  prompt_phrases:
+    - 상품 설명은 2줄 line-clamp로 카드 높이를 맞춰줘
+  asset:
+    kind: mini-mock
+    variant: line-clamp
+  sources:
+    - source_id: tailwind-utilities
+      note: Tailwind utilities include line-clamp style text truncation patterns
+  confidence: high
+- id: line-height
+  status: draft
+  category: style
+  group: style-typography
+  kind: visual-treatment
+  ko:
+    name: 줄 높이
+    aliases:
+      - line height
+      - 행간
+      - 줄 간격
+  en:
+    name: Line height
+    aliases:
+      - Leading
+      - Text leading
+  one_liner: 여러 줄 텍스트에서 줄과 줄 사이의 세로 간격을 정하는 속성.
+  description: 본문, 카드 설명, 긴 안내 문구가 답답하거나 흩어져 보이지 않도록 읽기 리듬을 조절한다.
+  visual_anatomy:
+    - multi-line text
+    - compact leading
+    - comfortable leading
+    - line box
+  when_to_use:
+    - 본문이나 설명 문구가 두 줄 이상일 때
+    - 모바일에서 읽기 폭이 좁을 때
+  anti_use:
+    - 단일 라벨이나 버튼 안에서는 line-height가 높으면 정렬이 어색해질 수 있다
+  prompt_phrases:
+    - 카드 설명의 line-height를 조금 넉넉하게 잡아줘
+  asset:
+    kind: mini-mock
+    variant: line-height
+  sources:
+    - source_id: mdn-css-reference
+      note: CSS line-height property reference
+  confidence: high
+- id: text-overflow
+  status: draft
+  category: style
+  group: style-typography
+  kind: visual-treatment
+  ko:
+    name: 텍스트 넘침 처리
+    aliases:
+      - text overflow
+      - 말줄임
+      - ellipsis
+  en:
+    name: Text overflow
+    aliases:
+      - Ellipsis
+      - Overflow text
+  one_liner: 긴 텍스트가 한 줄 영역을 넘을 때 자르거나 말줄임표로 표시하는 처리.
+  description: 테이블 셀, 카드 제목, 사이드바 항목처럼 폭이 제한된 곳에서 레이아웃을 깨지 않게 한다.
+  visual_anatomy:
+    - fixed width text box
+    - overflowing title
+    - ellipsis
+    - clipped text
+  when_to_use:
+    - 행 높이나 카드 폭을 유지하면서 긴 제목을 보여줘야 할 때
+  anti_use:
+    - 중요 정보를 말줄임으로 숨기면 tooltip이나 상세 보기 같은 보완이 필요하다
+  prompt_phrases:
+    - 긴 카드 제목은 text-overflow ellipsis로 한 줄 처리해줘
+  asset:
+    kind: mini-mock
+    variant: text-overflow
+  sources:
+    - source_id: mdn-css-reference
+      note: CSS text-overflow and overflow handling reference
+  confidence: high
