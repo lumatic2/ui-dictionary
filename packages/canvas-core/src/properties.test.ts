@@ -141,3 +141,78 @@ describe('토큰 실재 검증 (ECT1 step-3)', () => {
     })).toContain('토큰 세트에 없습니다')
   })
 })
+
+/**
+ * ECT1 검증 후속 — 토큰이 문서에 들어가는 **모든 경로**가 같은 규칙을 통과한다.
+ *
+ * 독립 검증이 ECT1 주장을 refuted했다(2026-07-21): `set-node-property`는 막았지만
+ * `update-node`의 `patch.tokenBindings`는 검사 0으로 통과했다. 그리고 그쪽이 하필
+ * 라이브 브리지로 **에이전트가 문서를 고치는 표면**이었다 — 이 milestone이 닫겠다고 한 바로 그곳.
+ *
+ * 경로마다 규칙을 따로 두면 한 경로만 막힌다. 규칙을 `validateTokenBinding` 하나로 모았고,
+ * 여기서 두 경로를 같은 공격으로 두드린다.
+ */
+describe('토큰 검증은 경로를 가리지 않는다 (ECT1 검증 후속)', () => {
+  const vocabulary = (tokenSetId: string, name: string) =>
+    tokenSetId === 'askewly.default' && ['surface.base', 'surface.muted'].includes(name)
+
+  afterEach(() => registerTokenVocabulary(null))
+
+  it('update-node의 patch.tokenBindings도 없는 토큰을 거부한다', () => {
+    registerTokenVocabulary(vocabulary)
+    const document = createDocumentFixture(1000)
+    const component = firstComponent(document)
+    expect(() => applyOperation(document, {
+      id: 'patch', at, type: 'update-node', nodeId: component.id,
+      patch: { tokenBindings: { background: 'totally.fake.token' } },
+    })).toThrow(/totally\.fake\.token/)
+    expect(firstComponent(document).tokenBindings.background).not.toBe('totally.fake.token')
+  })
+
+  it('update-node의 patch.tokenBindings는 모양도 본다', () => {
+    const document = createDocumentFixture(1000)
+    const component = firstComponent(document)
+    expect(() => applyOperation(document, {
+      id: 'patch', at, type: 'update-node', nodeId: component.id,
+      patch: { tokenBindings: { background: 'notatoken' } },
+    })).toThrow(/invalid token reference/)
+  })
+
+  it('실재하는 토큰은 update-node로도 들어간다', () => {
+    registerTokenVocabulary(vocabulary)
+    let document = createDocumentFixture(1000)
+    const component = firstComponent(document)
+    document = applyOperation(document, {
+      id: 'patch', at, type: 'update-node', nodeId: component.id,
+      patch: { tokenBindings: { background: 'surface.muted' } },
+    })
+    expect(firstComponent(document).tokenBindings.background).toBe('surface.muted')
+  })
+
+  it('토큰이 없는 patch는 영향받지 않는다 — 이름·bounds 갱신은 그대로', () => {
+    registerTokenVocabulary(vocabulary)
+    let document = createDocumentFixture(1000)
+    const component = firstComponent(document)
+    document = applyOperation(document, {
+      id: 'patch', at, type: 'update-node', nodeId: component.id, patch: { name: '새 이름' },
+    })
+    expect(firstComponent(document).name).toBe('새 이름')
+  })
+
+  it('두 경로가 같은 사유 문자열을 낸다 — 규칙이 하나라는 증거', () => {
+    registerTokenVocabulary(vocabulary)
+    const document = createDocumentFixture(1000)
+    const component = firstComponent(document)
+    const viaProperty = validateNodePropertyEdit(document, {
+      nodeId: component.id, scope: 'token', key: 'background', value: 'surface.gone',
+    })
+    let viaPatch = ''
+    try {
+      applyOperation(document, {
+        id: 'patch', at, type: 'update-node', nodeId: component.id,
+        patch: { tokenBindings: { background: 'surface.gone' } },
+      })
+    } catch (error) { viaPatch = (error as Error).message }
+    expect(viaPatch).toContain(viaProperty!)
+  })
+})

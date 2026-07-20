@@ -1,5 +1,5 @@
 import type { CanvasDocument, CanvasNode, CanvasRect, NodeId } from './types.js'
-import { applyNodeProperty, readNodeProperty, validateTokenMode, type NodePropertyEdit } from './properties.js'
+import { applyNodeProperty, readNodeProperty, validateTokenBinding, validateTokenMode, type NodePropertyEdit } from './properties.js'
 import { assertValidDocument } from './validation.js'
 
 interface OperationBase {
@@ -162,6 +162,14 @@ function mutateOperation(next: CanvasDocument, operation: CanvasOperation) {
     case 'update-node': {
       const node = next.nodes[operation.nodeId]
       if (!node) throw new Error(`missing node ${operation.nodeId}`)
+      // 토큰은 어느 경로로 들어오든 같은 규칙을 통과한다. 이 경로가 뚫려 있었고,
+      // 하필 라이브 브리지로 에이전트가 문서를 고치는 표면이었다(독립 검증 refuted, 2026-07-21).
+      if (operation.patch.tokenBindings) {
+        for (const [key, value] of Object.entries(operation.patch.tokenBindings)) {
+          const error = validateTokenBinding(next.tokenSetId, value)
+          if (error) throw new Error(`tokenBindings.${key}: ${error}`)
+        }
+      }
       Object.assign(node, copyPatch(operation.patch))
       break
     }

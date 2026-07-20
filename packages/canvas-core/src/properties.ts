@@ -45,6 +45,22 @@ function sameValueType(current: PropValue, next: PropValue): boolean {
   return current === null || next === null || typeof current === typeof next
 }
 
+/**
+ * 토큰 바인딩 값 하나가 쓰일 수 있는가 — **토큰이 문서에 들어가는 모든 경로가 이걸 쓴다.**
+ *
+ * 규칙을 경로마다 따로 두면 한 경로만 막힌다. 실제로 그랬다: ECT1이 `set-node-property`를
+ * 막았지만 `update-node`의 `patch.tokenBindings`는 검사 없이 통과했고, 그쪽이 하필
+ * 라이브 브리지로 에이전트가 쓰는 표면이었다(독립 검증 refuted, 2026-07-21).
+ */
+export function validateTokenBinding(tokenSetId: string, value: unknown): string | null {
+  if (typeof value !== 'string' || !tokenReference.test(value)) return `invalid token reference ${String(value)}`
+  // 사유는 role="alert"로 사용자에게 그대로 나가므로 사용자 언어로 적는다.
+  if (tokenVocabulary && !tokenVocabulary(tokenSetId, value)) {
+    return `'${value}' 토큰은 이 문서의 토큰 세트에 없습니다`
+  }
+  return null
+}
+
 export function validateNodePropertyEdit(document: CanvasDocument, edit: NodePropertyEdit): string | null {
   const node = document.nodes[edit.nodeId]
   if (!node) return `missing node ${edit.nodeId}`
@@ -62,13 +78,9 @@ export function validateNodePropertyEdit(document: CanvasDocument, edit: NodePro
     if (!(edit.key in node.variants)) return `unknown variant ${edit.key}`
     if (typeof edit.value !== 'string' || !edit.value.trim() || !safeKey.test(edit.value)) return `invalid variant ${edit.key}`
   } else if (edit.scope === 'token') {
-    if (typeof edit.value !== 'string' || !tokenReference.test(edit.value)) return `invalid token reference ${String(edit.value)}`
     // 모양이 맞아도 없는 토큰일 수 있다. EU5까지 이 검사가 없어서 오타가 조용히 *저장*됐고,
     // 결함은 렌더 시점의 data-token-unresolved로만 남았다 — 화면은 아무 말도 하지 않았다.
-    // 사유는 그대로 role="alert"로 사용자에게 나가므로 사용자 언어로 적는다.
-    if (tokenVocabulary && !tokenVocabulary(document.tokenSetId, edit.value)) {
-      return `'${edit.value}' 토큰은 이 문서의 토큰 세트에 없습니다`
-    }
+    return validateTokenBinding(document.tokenSetId, edit.value)
   } else if (edit.scope === 'layout') {
     if (edit.key === 'mode' && (typeof edit.value !== 'string' || !layoutModes.has(edit.value as LayoutMode))) return 'invalid layout mode'
     if ((edit.key === 'horizontal' || edit.key === 'vertical') && (typeof edit.value !== 'string' || !sizingModes.has(edit.value as SizingMode))) return 'invalid sizing mode'
