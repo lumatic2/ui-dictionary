@@ -564,3 +564,69 @@ describe('안 묶인 색을 묶는다 (ECT3 step-1)', () => {
     expect(window.document.activeElement).toBe(trigger)
   })
 })
+
+/**
+ * ECT3 step-3 — 원시 색을 고치고, 다시 묶는다.
+ */
+describe('벗어난 색을 고치고 되묶는다 (ECT3 step-3)', () => {
+  function detached(literal = '#123456') {
+    const base = createDocumentFixture(1000)
+    const id = base.selection[0]
+    const document = structuredClone(base)
+    delete document.nodes[id].tokenBindings.background
+    document.nodes[id].literalColors = { background: literal }
+    const operations: CanvasOperation[] = []
+    const view = render(<PropertyInspector
+      document={document} onOperation={(op) => operations.push(op)} bridgeConnected={false} onMaterialize={() => {}}
+    />)
+    return { view, operations, id }
+  }
+
+  it('벗어난 색은 리터럴 필드로 나오고 벗어났다고 적혀 있다', () => {
+    const { view } = detached()
+    expect(view.getByTestId('literal-color-field-background')).not.toBeNull()
+    expect(view.getByTestId('detached-note-background').textContent).toContain('토큰에서 벗어난')
+    expect(view.queryByTestId('bind-color-background')).toBeNull()
+  })
+
+  it('타이핑 중에는 연산을 만들지 않는다 — undo가 한 글자씩 되감기지 않게', () => {
+    const { view, operations } = detached()
+    const input = view.getByTestId('literal-input-background')
+    fireEvent.change(input, { target: { value: '#a' } })
+    fireEvent.change(input, { target: { value: '#ab' } })
+    fireEvent.change(input, { target: { value: '#abcdef' } })
+    expect(operations).toHaveLength(0)
+  })
+
+  it('Enter로 원시 색이 커밋된다', () => {
+    const { view, operations, id } = detached()
+    const input = view.getByTestId('literal-input-background')
+    fireEvent.change(input, { target: { value: '#abcdef' } })
+    fireEvent.keyDown(input, { key: 'Enter' })
+    expect(operations).toHaveLength(1)
+    expect(operations[0]).toMatchObject({ type: 'detach-token-binding', nodeId: id, key: 'background', literal: '#abcdef' })
+  })
+
+  it('빈 값이나 같은 값은 커밋하지 않는다', () => {
+    const { view, operations } = detached()
+    const input = view.getByTestId('literal-input-background')
+    fireEvent.change(input, { target: { value: '   ' } })
+    fireEvent.blur(input)
+    fireEvent.change(input, { target: { value: '#123456' } })
+    fireEvent.blur(input)
+    expect(operations).toHaveLength(0)
+  })
+
+  it('견본을 눌러 다시 묶을 수 있다', () => {
+    const { view, operations, id } = detached()
+    fireEvent.click(view.getByTestId('color-swatch-background'))
+    fireEvent.click(view.getByTestId('color-option-action.primary'))
+    expect(operations).toHaveLength(1)
+    expect(operations[0]).toMatchObject({ type: 'attach-token-binding', nodeId: id, key: 'background', name: 'action.primary' })
+  })
+
+  it('벗어난 견본은 모양이 다르다 — 형태로도 구분한다', () => {
+    const { view } = detached()
+    expect(view.getByTestId('color-swatch-background').className).toContain('color-swatch-literal')
+  })
+})

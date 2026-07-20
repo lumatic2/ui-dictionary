@@ -398,6 +398,18 @@ function LiteralColorField({ bindingKey, value, tokenSetId, onRebind, onEdit }: 
   const label = COLOR_BINDING_LABELS[bindingKey] ?? bindingKey
   const { open, setOpen, close, triggerRef } = usePickerTrigger()
 
+  /*
+   * 타이핑 중에는 커밋하지 않는다. 글자마다 연산을 내면 undo가 한 글자씩 되감기고,
+   * 중간 상태(`#12`)가 문서에 실제로 저장된다. 다른 입력들과 같은 규약(blur·Enter)을 쓴다.
+   */
+  const [draft, setDraft] = useState(value)
+  useEffect(() => setDraft(value), [value])
+  const commitDraft = () => {
+    const next = draft.trim()
+    if (!next || next === value) { setDraft(value); return }
+    onEdit(next)
+  }
+
   return <div className="color-field" data-testid={`literal-color-field-${bindingKey}`}>
     <span className="color-field-label">{label}</span>
     <span className="color-field-value">
@@ -415,9 +427,11 @@ function LiteralColorField({ bindingKey, value, tokenSetId, onRebind, onEdit }: 
       <input
         className="color-literal-input"
         data-testid={`literal-input-${bindingKey}`}
-        value={value}
+        value={draft}
         aria-label={`${label} 원시 값`}
-        onChange={(event) => onEdit(event.target.value)}
+        onChange={(event) => setDraft(event.target.value)}
+        onBlur={() => commitDraft()}
+        onKeyDown={(event) => { if (event.key === 'Enter') commitDraft() }}
       />
     </span>
     <span className="color-field-note" data-testid={`detached-note-${bindingKey}`}>토큰에서 벗어난 색이다. 견본을 눌러 다시 묶을 수 있다.</span>

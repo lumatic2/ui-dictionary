@@ -1,5 +1,6 @@
 import { afterEach, describe, expect, it } from 'vitest'
 import { createDocumentFixture, firstComponent } from './fixtures.js'
+import type { CanvasDocument } from './types.js'
 import { applyOperation, commitOperation, createHistory, invertOperation, redo, undo } from './operations.js'
 import { recoverSnapshot, serializeSnapshot } from './persistence.js'
 import { propertyFieldsForNode, registerTokenVocabulary, validateNodePropertyEdit } from './properties.js'
@@ -354,5 +355,95 @@ describe('토큰에서 벗어나고 되돌아온다 (ECT3 step-2)', () => {
     const bare = structuredClone(document)
     delete bare.nodes[id].tokenBindings.background
     expect(() => invertOperation(bare, detach(id, 'background', '#000000'))).toThrow(/colour source/)
+  })
+})
+
+/**
+ * ECT3 step-3 — 왕복이 닫힌다.
+ *
+ * 미바인딩 → 바인딩 → detach → 원시값 변경 → 재바인딩. 각 단계마다 undo가
+ * **정확히 한 단계씩** 되돌아와야 한다. 한 군데라도 새면 사용자가 자기 색을 잃는다.
+ */
+describe('색 출처 5단계 왕복 (ECT3 step-3)', () => {
+  const vocabulary = (tokenSetId: string, name: string) =>
+    tokenSetId === 'askewly.default' && ['surface.base', 'surface.muted'].includes(name)
+
+  afterEach(() => registerTokenVocabulary(null))
+
+  /** 그 키의 색 출처를 한 문장으로 — 테스트가 상태를 눈으로 읽게. */
+  const source = (document: CanvasDocument, id: string, key: string) => {
+    const node = document.nodes[id]
+    if (node.tokenBindings[key]) return `token:${node.tokenBindings[key]}`
+    if (node.literalColors?.[key]) return `literal:${node.literalColors[key]}`
+    return 'none'
+  }
+
+  it('5단계를 지나고 5단계를 정확히 되감는다', () => {
+    registerTokenVocabulary(vocabulary)
+    let history = createHistory(createDocumentFixture(1000))
+    const id = firstComponent(history.present).id
+    // 시작을 미바인딩으로 만든다(fixture는 background가 묶여 있다).
+    delete history.present.nodes[id].tokenBindings.background
+
+    const 단계 = [
+      { op: { id: '1', at, type: 'attach-token-binding' as const, nodeId: id, key: 'background', name: 'surface.muted' }, 기대: 'token:surface.muted' },
+      { op: { id: '2', at, type: 'detach-token-binding' as const, nodeId: id, key: 'background', literal: '#111111' }, 기대: 'literal:#111111' },
+      { op: { id: '3', at, type: 'detach-token-binding' as const, nodeId: id, key: 'background', literal: '#222222' }, 기대: 'literal:#222222' },
+      { op: { id: '4', at, type: 'attach-token-binding' as const, nodeId: id, key: 'background', name: 'surface.base' }, 기대: 'token:surface.base' },
+    ]
+
+    const 지나온상태 = ['none']
+    for (const { op, 기대 } of 단계) {
+      history = commitOperation(history, op)
+      expect(source(history.present, id, 'background')).toBe(기대)
+      지나온상태.push(기대)
+    }
+
+    // 되감으면 지나온 상태를 역순으로 정확히 다시 만난다.
+    for (let i = 지나온상태.length - 2; i >= 0; i -= 1) {
+      history = undo(history)
+      expect(source(history.present, id, 'background'), `undo ${i}`).toBe(지나온상태[i])
+    }
+
+    // 다시 앞으로 감아도 같은 길이다.
+    for (let i = 1; i < 지나온상태.length; i += 1) {
+      history = redo(history)
+      expect(source(history.present, id, 'background'), `redo ${i}`).toBe(지나온상태[i])
+    }
+  })
+
+  it('왕복 중 두 출처가 동시에 살아 있는 순간이 없다', () => {
+    registerTokenVocabulary(vocabulary)
+    let history = createHistory(createDocumentFixture(1000))
+    const id = firstComponent(history.present).id
+    const 확인 = () => {
+      const node = history.present.nodes[id]
+      const 바인딩 = 'background' in node.tokenBindings
+      const 리터럴 = !!node.literalColors?.background
+      expect(바인딩 && 리터럴, '바인딩과 리터럴이 동시에 살아 있다').toBe(false)
+    }
+    확인()
+    history = commitOperation(history, { id: 'a', at, type: 'detach-token-binding', nodeId: id, key: 'background', literal: '#333333' })
+    확인()
+    history = commitOperation(history, { id: 'b', at, type: 'attach-token-binding', nodeId: id, key: 'background', name: 'surface.base' })
+    확인()
+    history = undo(history)
+    확인()
+  })
+
+  it('literalColors가 없는 옛 문서도 그대로 열리고 detach된다', () => {
+    // 선택 필드로 둔 이유가 이것이다. 필수였으면 저장된 문서가 안 열린다.
+    registerTokenVocabulary(vocabulary)
+    const document = createDocumentFixture(1000)
+    const id = firstComponent(document).id
+    expect(document.nodes[id].literalColors).toBeUndefined()
+
+    const reopened = recoverSnapshot(serializeSnapshot(document, []))
+    expect(reopened.present.nodes[id].literalColors).toBeUndefined()
+
+    const detached = applyOperation(reopened.present, {
+      id: 'd', at, type: 'detach-token-binding', nodeId: id, key: 'background', literal: '#444444',
+    })
+    expect(detached.nodes[id].literalColors?.background).toBe('#444444')
   })
 })
