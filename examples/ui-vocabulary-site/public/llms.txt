@@ -37,6 +37,11 @@ Rules for consumers: reference semantic tokens, never hard-code color/dimension 
 - [docs/design-system/no-asset-fallback.md](https://ui.askewly.com/llms/docs/design-system/no-asset-fallback.md): What to build from when a term has NO recipe and NO code asset (481 of 562 terms): use the term entry itself as material — visual_anatomy as a parts checklist, anti_use as the boundary, related as the neighbour diff. A missing recipe must not stop the work
 - [docs/ui-vocabulary/term-asset-map.json](https://ui.askewly.com/llms/docs/ui-vocabulary/term-asset-map.json): Generated term↔recipe↔code-asset map: for any term, what exists to build it with. Empty recipes AND code_assets means take the no-asset-fallback path
 
+## Media
+
+- [docs/design-system/medium-taxonomy.md](https://ui.askewly.com/llms/docs/design-system/medium-taxonomy.md): Which gate applies to what: screen / print / deck each fail differently, so each is checked differently. Read this BEFORE assuming the screen checklist (states, dark mode) is the whole job — a print piece that passes it can still be broken paper
+- [docs/design-system/print-spec.md](https://ui.askewly.com/llms/docs/design-system/print-spec.md): Print contract: trim sizes (KR/US business cards, ISO A4–A1), bleed, safe area, posting margin, 300dpi mm→px conversion, and the validation API. Generated from packages/template-core — the code is canonical
+
 ## Knowledge
 
 - [knowledge/expressive-stack.md](https://ui.askewly.com/llms/knowledge/expressive-stack.md): Expressive stack tier map: which rendering tier (CSS/SVG, JS motion orchestration, Canvas 2D + physics, WebGL/three.js) a visual effect belongs to, with a technique-to-tier decision table and mandatory judgment procedure (lower tier first, reduced-motion gating, lazy-load for GPU)
