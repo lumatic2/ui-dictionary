@@ -1,3 +1,4 @@
 {"event": "undocumented_stop", "next_task": "step-1 — 현행 경로 계측", "remaining": 3, "runtime": "claude", "total": 3, "ts": "2026-07-20T18:53:44.586925+00:00", "unhonored_reason": null, "work_id": "vl1-flow-audit"}
 {"event": "undocumented_stop", "next_task": "step-1 — 샤딩 생성기", "remaining": 3, "runtime": "claude", "total": 3, "ts": "2026-07-20T19:12:39.046898+00:00", "unhonored_reason": null, "work_id": "vl2-vocabulary-publication"}
 {"event": "undocumented_stop", "next_task": "step-1 — 오판 배치 (3군)", "remaining": 3, "runtime": "claude", "total": 3, "ts": "2026-07-21T04:25:04.887021+00:00", "unhonored_reason": null, "work_id": "vl5-cluster-corpus"}
+{"event": "undocumented_stop", "next_task": "step-1 — 관측 준비", "remaining": 3, "runtime": "claude", "total": 3, "ts": "2026-07-21T04:43:32.045617+00:00", "unhonored_reason": null, "work_id": "vl8-human-observation"}

@@ -3458,8 +3458,13 @@
         "external_authority_required",
         "user_stopped"
       ],
-      "stop_reason": null,
-      "stop_detail": {},
+      "stop_reason": "decision_required",
+      "stop_detail": {
+        "summary": "요소 결정 계층 horizon의 마지막 단계는 사용자가 UI 요구 문장 3개를 던져 에이전트의 판정이 맞는지 보는 관측입니다. 사람의 행동 자체가 증거라 대신 수행할 수 없어 여기서 멈춥니다.",
+        "needs": "요구 문장 3개 — ① 대화 출발점이던 \"정보가 많은데 펼치고 접히는 형태\" ② 오버레이 관련 요구 ③ 즉석에서 지어낸 것(준비 못 한 입력에 대한 방어력 측정용)",
+        "plan": "plans/2026-07-21-vl8-human-observation.md step-2",
+        "evidence": "evidence/vocabulary-in-use/vl8-observation.md (기준·과업·자산 스냅샷은 관측 전에 확정 완료)"
+      },
       "session_ids": [
         "claude:037069fb-2833-497c-ae4e-3f985ecea495"
       ],
