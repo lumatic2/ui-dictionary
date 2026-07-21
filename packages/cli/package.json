@@ -1,6 +1,6 @@
 {
   "name": "@askewly/design",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "description": "Query, inject, and verify the Askewly Design system (tokens, UI vocabulary, recipes) from your terminal or coding agent.",
   "license": "MIT",
   "homepage": "https://ui.askewly.com",
