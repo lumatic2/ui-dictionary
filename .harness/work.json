@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "active_work_id": "vl4-decision-data-contract",
+  "active_work_id": "vl5-cluster-corpus",
   "works": {
     "SFB1": {
       "title": "Structure Contract And Clean Production",
@@ -3212,7 +3212,7 @@
       "work_id": "vl4-decision-data-contract",
       "horizon_id": "vocabulary-in-use",
       "milestone_id": "VL4",
-      "status": "active",
+      "status": "completed",
       "plan_path": "plans/2026-07-21-vl4-decision-data-contract.md",
       "changeset_path": "changesets",
       "next_step": "step-1",
@@ -3239,6 +3239,57 @@
         "approved_by": "user",
         "approved_at": "2026-07-21",
         "plan_sha256": "c8507163d7790af6fced5b1052002baef981a991b4724e5fcc64ac95d8857360"
+      },
+      "allowed_stop_reasons": [
+        "completed",
+        "blocked",
+        "decision_required",
+        "risk_gate",
+        "secret_required",
+        "external_authority_required",
+        "user_stopped"
+      ],
+      "stop_reason": null,
+      "stop_detail": {},
+      "session_ids": [
+        "claude:037069fb-2833-497c-ae4e-3f985ecea495"
+      ],
+      "owner_session_uuid": "claude:037069fb-2833-497c-ae4e-3f985ecea495",
+      "updated_at": "2026-07-21",
+      "notes": "Registered atomically by canonical harness approve_harness_plan.py after plan validation.",
+      "completion_summary": "VL4 완료 — 판별 축을 담을 자리를 만들고 검증기로 잠갔다. 첫 군집에서 규칙 순서가 곧 판정이라는 것을 분리력 검증이 잡았다."
+    },
+    "vl5-cluster-corpus": {
+      "work_id": "vl5-cluster-corpus",
+      "horizon_id": "vocabulary-in-use",
+      "milestone_id": "VL5",
+      "status": "active",
+      "plan_path": "plans/2026-07-21b-vl5-cluster-corpus-narrowed.md",
+      "changeset_path": "changesets",
+      "next_step": "step-1",
+      "current_step": "step-1",
+      "steps": [
+        {
+          "id": "step-1",
+          "label": "step-1 — 오판 배치 (3군)",
+          "status": "pending"
+        },
+        {
+          "id": "step-2",
+          "label": "step-2 — 미확인 배치 (3군, 원문 확보된 것만)",
+          "status": "pending"
+        },
+        {
+          "id": "step-3",
+          "label": "step-3 — 전 군집 무결성 통합",
+          "status": "pending"
+        }
+      ],
+      "execution_mode": "continuous",
+      "approval": {
+        "approved_by": "user",
+        "approved_at": "2026-07-21",
+        "plan_sha256": "47d7e0ecb0b27da56b81aef3419ab2c121da043b2f963401370ba05e78685443"
       },
       "allowed_stop_reasons": [
         "completed",
