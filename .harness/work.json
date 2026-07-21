@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "active_work_id": "vl7-separation-gate",
+  "active_work_id": "vl8-human-observation",
   "works": {
     "SFB1": {
       "title": "Structure Contract And Clean Production",
@@ -3370,7 +3370,7 @@
       "work_id": "vl7-separation-gate",
       "horizon_id": "vocabulary-in-use",
       "milestone_id": "VL7",
-      "status": "active",
+      "status": "completed",
       "plan_path": "plans/2026-07-21-vl7-separation-gate.md",
       "changeset_path": "changesets",
       "next_step": "step-1",
@@ -3397,6 +3397,57 @@
         "approved_by": "user",
         "approved_at": "2026-07-21",
         "plan_sha256": "0c154a6f4b4cd20df672c445385c9ae5815f13a78e9cf669865234ac7b2a44e7"
+      },
+      "allowed_stop_reasons": [
+        "completed",
+        "blocked",
+        "decision_required",
+        "risk_gate",
+        "secret_required",
+        "external_authority_required",
+        "user_stopped"
+      ],
+      "stop_reason": null,
+      "stop_detail": {},
+      "session_ids": [
+        "claude:037069fb-2833-497c-ae4e-3f985ecea495"
+      ],
+      "owner_session_uuid": "claude:037069fb-2833-497c-ae4e-3f985ecea495",
+      "updated_at": "2026-07-21",
+      "notes": "Registered atomically by canonical harness approve_harness_plan.py after plan validation.",
+      "completion_summary": "VL7 완료 — 84.4%에서 96.9%로, 회귀 0. 고쳐진 3건이 VL5가 넣은 세 임계값에서 정확히 갈렸다. 자 보정이 처치에 유리했던 사실도 그대로 기록했다."
+    },
+    "vl8-human-observation": {
+      "work_id": "vl8-human-observation",
+      "horizon_id": "vocabulary-in-use",
+      "milestone_id": "VL8",
+      "status": "active",
+      "plan_path": "plans/2026-07-21-vl8-human-observation.md",
+      "changeset_path": "changesets",
+      "next_step": "step-1",
+      "current_step": "step-1",
+      "steps": [
+        {
+          "id": "step-1",
+          "label": "step-1 — 관측 준비",
+          "status": "pending"
+        },
+        {
+          "id": "step-2",
+          "label": "step-2 — 사용자 관측 실행",
+          "status": "pending"
+        },
+        {
+          "id": "step-3",
+          "label": "step-3 — 발견 결함 마감",
+          "status": "pending"
+        }
+      ],
+      "execution_mode": "continuous",
+      "approval": {
+        "approved_by": "user",
+        "approved_at": "2026-07-21",
+        "plan_sha256": "a083325f752b3eda597299bbfcc8ac397d56e86918e62e046a40b5b8015e79a2"
       },
       "allowed_stop_reasons": [
         "completed",
