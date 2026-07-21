@@ -2,14 +2,29 @@
   "name": "@askewly/design",
   "version": "0.1.0",
   "description": "Query, inject, and verify the Askewly Design system (tokens, UI vocabulary, recipes) from your terminal or coding agent.",
-  "license": "UNLICENSED",
+  "license": "MIT",
+  "homepage": "https://ui.askewly.com",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/lumatic2/ui-dictionary.git",
+    "directory": "packages/cli"
+  },
+  "keywords": [
+    "design-system",
+    "design-tokens",
+    "linter",
+    "ui",
+    "coding-agent"
+  ],
   "type": "module",
   "bin": {
     "askewly-design": "./dist/index.js"
   },
   "files": [
     "dist",
-    "data"
+    "data",
+    "README.md",
+    "LICENSE"
   ],
   "engines": {
     "node": ">=18"

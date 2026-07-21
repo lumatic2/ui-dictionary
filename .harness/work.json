@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "active_work_id": "dog1-linter-precision",
+  "active_work_id": "dog2-cli-publication",
   "works": {
     "SFB1": {
       "title": "Structure Contract And Clean Production",
@@ -3795,6 +3795,57 @@
       "updated_at": "2026-07-22",
       "notes": "Registered atomically by canonical harness approve_harness_plan.py after plan validation.",
       "completion_summary": "DOG1 완료 — 색 검사기 오탐 4건·누락 1건 해소. 브리프의 '검사기 없음' 진단이 틀렸고 실제 문제는 정확도였다. 테스트 21→32."
+    },
+    "dog2-cli-publication": {
+      "work_id": "dog2-cli-publication",
+      "horizon_id": "design-output-gates",
+      "milestone_id": "DOG2",
+      "status": "active",
+      "plan_path": "plans/2026-07-22-dog2-cli-publication.md",
+      "changeset_path": "changesets/20260722-cli-publish-readiness",
+      "next_step": "step-1",
+      "current_step": "step-1",
+      "steps": [
+        {
+          "id": "step-1",
+          "label": "step-1 — 배포 준비와 dry-run",
+          "status": "pending"
+        },
+        {
+          "id": "step-2",
+          "label": "step-2 — 실제 배포",
+          "status": "pending"
+        },
+        {
+          "id": "step-3",
+          "label": "step-3 — 버전·재배포 절차",
+          "status": "pending"
+        }
+      ],
+      "execution_mode": "continuous",
+      "approval": {
+        "approved_by": "user",
+        "approved_at": "2026-07-22",
+        "plan_sha256": "fd16be4084547d9d1b073777101f1573ab99ae380b7772360bdb62aab2c2b571"
+      },
+      "allowed_stop_reasons": [
+        "completed",
+        "blocked",
+        "decision_required",
+        "risk_gate",
+        "secret_required",
+        "external_authority_required",
+        "user_stopped"
+      ],
+      "stop_reason": null,
+      "stop_detail": {},
+      "session_ids": [
+        "codex:claude-session",
+        "claude:c35bd5f3-2423-44d5-bdcd-cfa5c54eb080"
+      ],
+      "owner_session_uuid": "claude:c35bd5f3-2423-44d5-bdcd-cfa5c54eb080",
+      "updated_at": "2026-07-22",
+      "notes": "Registered atomically by canonical harness approve_harness_plan.py after plan validation."
     }
   }
 }

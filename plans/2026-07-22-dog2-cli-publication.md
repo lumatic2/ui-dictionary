@@ -75,7 +75,7 @@ Status: approved (2026-07-22 — 사용자가 horizon `design-output-gates` 6 mi
 
 ## Step 트리
 
-- [ ] **step-1 — 배포 준비와 dry-run**
+- [x] **step-1 — 배포 준비와 dry-run**
   - Artifact: 정비된 `packages/cli/package.json`(description·repository·keywords·engines 확인/보강), `npm pack` 실행 결과로 관측한 실제 tarball 파일 목록, 레포 밖 임시 디렉터리에 tarball을 풀어 `node dist/index.js verify <fixture>`가 도는 것을 확인한 로그.
   - Files: write `packages/cli/package.json`(메타데이터 필드만, `license` 값은 결정 5 확정 전까지 미변경), write `evidence/design-output-gates/dog2-publication.md`(dry-run 관측 기록).
   - Dependencies: 없음
