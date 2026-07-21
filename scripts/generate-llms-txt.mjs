@@ -68,6 +68,7 @@ const FIXED_ASSETS = [
     section: "Media",
     items: [
       ["docs/design-system/medium-taxonomy.md", "Which gate applies to what: screen / print / deck each fail differently, so each is checked differently. Read this BEFORE assuming the screen checklist (states, dark mode) is the whole job — a print piece that passes it can still be broken paper"],
+      ["docs/design-system/slide-spec.md", "Slide contract: five canvas presets across PowerPoint/Google Slides/Keynote (16:9 alone does NOT fix the canvas — 13.333in vs 10in), WCAG contrast, and the folklore rules (safe area, 24pt minimum, 6x6) shipped opt-in with an evidence grade attached to every value"],
       ["docs/design-system/print-spec.md", "Print contract: trim sizes (KR/US business cards, ISO A4–A1), bleed, safe area, posting margin, 300dpi mm→px conversion, and the validation API. Generated from packages/template-core — the code is canonical"],
     ],
   },
