@@ -213,3 +213,4 @@
 | 211 | 20260721-llms-vocabulary-section | 2026-07-21 | VL2 step 3: llms.txt에 Vocabulary 섹션 등재. 재생성이 샤드를 조용히 지우던 near-miss를 실증·차단(562→0 되돌림), CRLF 체크아웃에서 생성기가 못 돌던 것과 필드가 전부 undefined이던 것 수정 | 4/4 | complete |
 | 212 | 20260721-term-asset-map | 2026-07-21 | VL3 step 1: 용어↔레시피↔코드자산 3자 매핑 생성기. 파생물로 두어 손 목록 드리프트를 원천 차단. 자산 없는 용어 481개를 명시적으로 계수 — 폴백 규약 대상 | 3/3 | complete |
 | 213 | 20260721-reference-integrity | 2026-07-21 | VL3 step 2: 끊긴 참조는 VL2 배포로 이미 0이라, 고치는 대신 --strict 무결성 게이트로 잠갔다. 생성기 --check 를 호출해 규칙 중복을 피함. probe로 exit 1 확인 | 2/2 | complete |
+| 214 | 20260721-no-asset-fallback | 2026-07-21 | VL3 step 3: 자산 없는 용어 481개의 구현 경로 신설 — 용어 항목 자체를 재료로. combobox로 실증(부위 4/4, 경계 2/2 미위반, tsc 통과). 규약이 없는 레시피를 요구하지 않는지 순환 probe 확인 | 4/4 | complete |

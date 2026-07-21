@@ -1,0 +1,3111 @@
+{
+  "generated_from": [
+    "docs/ui-vocabulary/terms.yml",
+    "recipes/**/*.md",
+    "public/r/registry.json"
+  ],
+  "summary": {
+    "terms": 562,
+    "recipes": 45,
+    "code_assets": 27,
+    "terms_with_recipe": 81,
+    "terms_with_code_asset": 52,
+    "terms_with_nothing": 481,
+    "coverage_pct": 14.4
+  },
+  "terms": {
+    "text-field": {
+      "group": "input-text",
+      "recipes": [
+        "recipes/forms/advanced-filter-builder-condition-groups.md"
+      ],
+      "code_assets": [
+        "advanced-filter-builder"
+      ]
+    },
+    "search-field": {
+      "group": "input-search-command",
+      "recipes": [],
+      "code_assets": []
+    },
+    "textarea": {
+      "group": "input-text",
+      "recipes": [],
+      "code_assets": []
+    },
+    "select": {
+      "group": "input-pickers",
+      "recipes": [
+        "recipes/forms/advanced-filter-builder-condition-groups.md"
+      ],
+      "code_assets": [
+        "advanced-filter-builder"
+      ]
+    },
+    "combobox": {
+      "group": "input-pickers",
+      "recipes": [],
+      "code_assets": []
+    },
+    "checkbox": {
+      "group": "selection-options",
+      "recipes": [
+        "recipes/data-display/bulk-action-toolbar-selection-model.md"
+      ],
+      "code_assets": [
+        "bulk-action-toolbar"
+      ]
+    },
+    "radio-group": {
+      "group": "selection-options",
+      "recipes": [],
+      "code_assets": []
+    },
+    "switch": {
+      "group": "selection-options",
+      "recipes": [],
+      "code_assets": []
+    },
+    "slider": {
+      "group": "selection-options",
+      "recipes": [],
+      "code_assets": []
+    },
+    "date-picker": {
+      "group": "input-pickers",
+      "recipes": [],
+      "code_assets": []
+    },
+    "file-upload": {
+      "group": "input-file-media",
+      "recipes": [],
+      "code_assets": []
+    },
+    "tabs": {
+      "group": "selection-options",
+      "recipes": [],
+      "code_assets": []
+    },
+    "segmented-control": {
+      "group": "selection-options",
+      "recipes": [],
+      "code_assets": []
+    },
+    "dropdown-menu": {
+      "group": "selection-menus",
+      "recipes": [
+        "recipes/overlays/popover.md"
+      ],
+      "code_assets": []
+    },
+    "command-palette": {
+      "group": "input-search-command",
+      "recipes": [
+        "recipes/marketing/landing-hero.md",
+        "recipes/navigation/doc-search-cmdk-grouped-results-panel.md",
+        "recipes/navigation/topbar-command-search.md"
+      ],
+      "code_assets": [
+        "doc-search-cmdk-grouped-results-panel"
+      ]
+    },
+    "breadcrumb": {
+      "group": "selection-navigation",
+      "recipes": [
+        "recipes/docs/article-documentation-layout.md"
+      ],
+      "code_assets": []
+    },
+    "pagination": {
+      "group": "selection-navigation",
+      "recipes": [],
+      "code_assets": []
+    },
+    "stepper": {
+      "group": "selection-navigation",
+      "recipes": [],
+      "code_assets": []
+    },
+    "navigation-rail": {
+      "group": "selection-navigation",
+      "recipes": [],
+      "code_assets": []
+    },
+    "sidebar-nav": {
+      "group": "selection-navigation",
+      "recipes": [
+        "recipes/layout/sidebar-application-shell.md"
+      ],
+      "code_assets": [
+        "sidebar-application-shell"
+      ]
+    },
+    "chip": {
+      "group": "selection-options",
+      "recipes": [],
+      "code_assets": []
+    },
+    "button": {
+      "group": "action-buttons",
+      "recipes": [
+        "recipes/forms/button.md"
+      ],
+      "code_assets": []
+    },
+    "primary-button": {
+      "group": "action-buttons",
+      "recipes": [
+        "recipes/forms/button.md"
+      ],
+      "code_assets": []
+    },
+    "secondary-button": {
+      "group": "action-buttons",
+      "recipes": [
+        "recipes/forms/button.md"
+      ],
+      "code_assets": []
+    },
+    "destructive-button": {
+      "group": "action-buttons",
+      "recipes": [],
+      "code_assets": []
+    },
+    "icon-button": {
+      "group": "action-buttons",
+      "recipes": [],
+      "code_assets": []
+    },
+    "floating-action-button": {
+      "group": "action-buttons",
+      "recipes": [],
+      "code_assets": []
+    },
+    "link": {
+      "group": "action-buttons",
+      "recipes": [],
+      "code_assets": []
+    },
+    "toolbar": {
+      "group": "action-command-bars",
+      "recipes": [],
+      "code_assets": []
+    },
+    "split-button": {
+      "group": "action-buttons",
+      "recipes": [],
+      "code_assets": []
+    },
+    "menu-item": {
+      "group": "action-command-bars",
+      "recipes": [],
+      "code_assets": []
+    },
+    "card": {
+      "group": "structure-panels",
+      "recipes": [
+        "recipes/application-ui/showcase-card.md"
+      ],
+      "code_assets": []
+    },
+    "dialog": {
+      "group": "structure-panels",
+      "recipes": [
+        "recipes/overlays/popover.md"
+      ],
+      "code_assets": []
+    },
+    "drawer": {
+      "group": "structure-panels",
+      "recipes": [],
+      "code_assets": []
+    },
+    "popover": {
+      "group": "structure-panels",
+      "recipes": [
+        "recipes/overlays/popover.md"
+      ],
+      "code_assets": []
+    },
+    "header": {
+      "group": "structure-app-layout",
+      "recipes": [],
+      "code_assets": []
+    },
+    "footer": {
+      "group": "structure-app-layout",
+      "recipes": [],
+      "code_assets": []
+    },
+    "grid": {
+      "group": "structure-sections",
+      "recipes": [
+        "recipes/layout/responsive-content-grid.md"
+      ],
+      "code_assets": [
+        "responsive-content-grid"
+      ]
+    },
+    "list": {
+      "group": "data-tables-lists",
+      "recipes": [],
+      "code_assets": []
+    },
+    "accordion": {
+      "group": "data-basic-content-elements",
+      "recipes": [],
+      "code_assets": []
+    },
+    "carousel": {
+      "group": "data-basic-content-elements",
+      "recipes": [],
+      "code_assets": []
+    },
+    "tooltip": {
+      "group": "feedback-confirmation-help",
+      "recipes": [
+        "recipes/overlays/popover.md"
+      ],
+      "code_assets": []
+    },
+    "toast": {
+      "group": "feedback-alerts-toasts",
+      "recipes": [
+        "recipes/feedback/actionable-toast.md"
+      ],
+      "code_assets": [
+        "actionable-toast"
+      ]
+    },
+    "alert": {
+      "group": "feedback-alerts-toasts",
+      "recipes": [
+        "recipes/feedback/actionable-toast.md"
+      ],
+      "code_assets": [
+        "actionable-toast"
+      ]
+    },
+    "callout": {
+      "group": "feedback-alerts-toasts",
+      "recipes": [],
+      "code_assets": []
+    },
+    "badge": {
+      "group": "feedback-status-notifications",
+      "recipes": [
+        "recipes/docs/api-reference-three-column-layout.md"
+      ],
+      "code_assets": []
+    },
+    "progress-bar": {
+      "group": "feedback-loading-progress",
+      "recipes": [],
+      "code_assets": []
+    },
+    "spinner": {
+      "group": "feedback-loading-progress",
+      "recipes": [],
+      "code_assets": []
+    },
+    "skeleton": {
+      "group": "feedback-loading-progress",
+      "recipes": [],
+      "code_assets": []
+    },
+    "empty-state": {
+      "group": "feedback-empty-error",
+      "recipes": [
+        "recipes/feedback/recoverable-empty-state.md"
+      ],
+      "code_assets": [
+        "recoverable-empty-state"
+      ]
+    },
+    "validation-message": {
+      "group": "feedback-empty-error",
+      "recipes": [],
+      "code_assets": []
+    },
+    "status-indicator": {
+      "group": "feedback-status-notifications",
+      "recipes": [
+        "recipes/data-display/stat-summary-grid.md"
+      ],
+      "code_assets": [
+        "stat-summary-grid"
+      ]
+    },
+    "table": {
+      "group": "data-tables-lists",
+      "recipes": [
+        "recipes/data-display/bulk-action-toolbar-selection-model.md",
+        "recipes/data-display/interactive-data-table.md"
+      ],
+      "code_assets": [
+        "bulk-action-toolbar",
+        "interactive-data-table"
+      ]
+    },
+    "avatar": {
+      "group": "data-people-integrations",
+      "recipes": [],
+      "code_assets": []
+    },
+    "metric-card": {
+      "group": "data-metrics-charts",
+      "recipes": [],
+      "code_assets": []
+    },
+    "chart": {
+      "group": "data-metrics-charts",
+      "recipes": [],
+      "code_assets": []
+    },
+    "timeline": {
+      "group": "data-timeline-history",
+      "recipes": [],
+      "code_assets": []
+    },
+    "kanban": {
+      "group": "data-display-misc",
+      "recipes": [],
+      "code_assets": []
+    },
+    "calendar-view": {
+      "group": "data-display-misc",
+      "recipes": [],
+      "code_assets": []
+    },
+    "tree-view": {
+      "group": "data-tables-lists",
+      "recipes": [],
+      "code_assets": []
+    },
+    "description-list": {
+      "group": "data-display-misc",
+      "recipes": [],
+      "code_assets": []
+    },
+    "icon": {
+      "group": "data-basic-content-elements",
+      "recipes": [],
+      "code_assets": []
+    },
+    "label": {
+      "group": "data-basic-content-elements",
+      "recipes": [],
+      "code_assets": []
+    },
+    "divider": {
+      "group": "data-basic-content-elements",
+      "recipes": [],
+      "code_assets": []
+    },
+    "spacer": {
+      "group": "data-basic-content-elements",
+      "recipes": [],
+      "code_assets": []
+    },
+    "typography": {
+      "group": "data-basic-content-elements",
+      "recipes": [
+        "recipes/docs/article-documentation-layout.md"
+      ],
+      "code_assets": []
+    },
+    "image": {
+      "group": "data-basic-content-elements",
+      "recipes": [],
+      "code_assets": []
+    },
+    "logo": {
+      "group": "data-basic-content-elements",
+      "recipes": [],
+      "code_assets": []
+    },
+    "favicon": {
+      "group": "structure-misc",
+      "recipes": [],
+      "code_assets": []
+    },
+    "thumbnail": {
+      "group": "data-basic-content-elements",
+      "recipes": [],
+      "code_assets": []
+    },
+    "open-graph-image": {
+      "group": "structure-misc",
+      "recipes": [],
+      "code_assets": []
+    },
+    "password-field": {
+      "group": "input-text",
+      "recipes": [],
+      "code_assets": []
+    },
+    "number-input": {
+      "group": "input-text",
+      "recipes": [],
+      "code_assets": []
+    },
+    "otp-input": {
+      "group": "input-pickers",
+      "recipes": [],
+      "code_assets": []
+    },
+    "autocomplete": {
+      "group": "input-search-command",
+      "recipes": [
+        "recipes/marketing/landing-hero.md",
+        "recipes/navigation/topbar-command-search.md"
+      ],
+      "code_assets": []
+    },
+    "search-suggestions": {
+      "group": "input-search-command",
+      "recipes": [
+        "recipes/navigation/doc-search-cmdk-grouped-results-panel.md"
+      ],
+      "code_assets": [
+        "doc-search-cmdk-grouped-results-panel"
+      ]
+    },
+    "inline-edit": {
+      "group": "input-editing",
+      "recipes": [],
+      "code_assets": []
+    },
+    "rich-text-editor": {
+      "group": "input-editing",
+      "recipes": [],
+      "code_assets": []
+    },
+    "color-picker": {
+      "group": "input-pickers",
+      "recipes": [],
+      "code_assets": []
+    },
+    "listbox": {
+      "group": "selection-options",
+      "recipes": [],
+      "code_assets": []
+    },
+    "menu-bar": {
+      "group": "selection-menus",
+      "recipes": [],
+      "code_assets": []
+    },
+    "bottom-navigation": {
+      "group": "selection-navigation",
+      "recipes": [],
+      "code_assets": []
+    },
+    "tab-bar": {
+      "group": "selection-navigation",
+      "recipes": [
+        "recipes/navigation/bottom-tab-bar.md"
+      ],
+      "code_assets": []
+    },
+    "filter-chip": {
+      "group": "selection-options",
+      "recipes": [],
+      "code_assets": []
+    },
+    "toggle-button": {
+      "group": "selection-options",
+      "recipes": [],
+      "code_assets": []
+    },
+    "disclosure": {
+      "group": "selection-options",
+      "recipes": [],
+      "code_assets": []
+    },
+    "anchor-nav": {
+      "group": "selection-navigation",
+      "recipes": [
+        "recipes/docs/article-documentation-layout.md"
+      ],
+      "code_assets": []
+    },
+    "back-button": {
+      "group": "selection-navigation",
+      "recipes": [],
+      "code_assets": []
+    },
+    "navigation-bar": {
+      "group": "selection-navigation",
+      "recipes": [],
+      "code_assets": []
+    },
+    "button-group": {
+      "group": "action-buttons",
+      "recipes": [],
+      "code_assets": []
+    },
+    "copy-button": {
+      "group": "action-buttons",
+      "recipes": [
+        "recipes/docs/docs-code-block-with-tabs-and-copy.md"
+      ],
+      "code_assets": [
+        "docs-code-block"
+      ]
+    },
+    "download-button": {
+      "group": "action-buttons",
+      "recipes": [],
+      "code_assets": []
+    },
+    "share-button": {
+      "group": "action-buttons",
+      "recipes": [],
+      "code_assets": []
+    },
+    "close-button": {
+      "group": "action-buttons",
+      "recipes": [],
+      "code_assets": []
+    },
+    "overflow-button": {
+      "group": "action-buttons",
+      "recipes": [],
+      "code_assets": []
+    },
+    "top-app-bar": {
+      "group": "structure-app-layout",
+      "recipes": [
+        "recipes/navigation/large-title-collapsing-header.md"
+      ],
+      "code_assets": []
+    },
+    "section": {
+      "group": "structure-sections",
+      "recipes": [],
+      "code_assets": []
+    },
+    "container": {
+      "group": "structure-sections",
+      "recipes": [
+        "recipes/layout/responsive-content-grid.md"
+      ],
+      "code_assets": [
+        "responsive-content-grid"
+      ]
+    },
+    "hero": {
+      "group": "structure-sections",
+      "recipes": [
+        "recipes/application-ui/showcase-card.md"
+      ],
+      "code_assets": []
+    },
+    "filter-bar": {
+      "group": "data-tables-lists",
+      "recipes": [
+        "recipes/commerce/category-product-grid.md"
+      ],
+      "code_assets": [
+        "category-product-grid"
+      ]
+    },
+    "sort-control": {
+      "group": "data-tables-lists",
+      "recipes": [
+        "recipes/commerce/category-product-grid.md"
+      ],
+      "code_assets": [
+        "category-product-grid"
+      ]
+    },
+    "data-grid": {
+      "group": "data-tables-lists",
+      "recipes": [
+        "recipes/data-display/interactive-data-table.md"
+      ],
+      "code_assets": [
+        "interactive-data-table"
+      ]
+    },
+    "legend": {
+      "group": "data-metrics-charts",
+      "recipes": [],
+      "code_assets": []
+    },
+    "chart-axis": {
+      "group": "data-metrics-charts",
+      "recipes": [],
+      "code_assets": []
+    },
+    "error-state": {
+      "group": "feedback-empty-error",
+      "recipes": [
+        "recipes/feedback/recoverable-empty-state.md"
+      ],
+      "code_assets": [
+        "recoverable-empty-state"
+      ]
+    },
+    "success-state": {
+      "group": "feedback-empty-error",
+      "recipes": [],
+      "code_assets": []
+    },
+    "warning-state": {
+      "group": "feedback-empty-error",
+      "recipes": [],
+      "code_assets": []
+    },
+    "info-state": {
+      "group": "feedback-empty-error",
+      "recipes": [],
+      "code_assets": []
+    },
+    "loading-state": {
+      "group": "feedback-loading-progress",
+      "recipes": [],
+      "code_assets": []
+    },
+    "textarea-autosize": {
+      "group": "input-text",
+      "recipes": [],
+      "code_assets": []
+    },
+    "input-group": {
+      "group": "input-text",
+      "recipes": [],
+      "code_assets": []
+    },
+    "date-range-picker": {
+      "group": "input-pickers",
+      "recipes": [],
+      "code_assets": []
+    },
+    "time-picker": {
+      "group": "input-pickers",
+      "recipes": [],
+      "code_assets": []
+    },
+    "rating-input": {
+      "group": "input-pickers",
+      "recipes": [],
+      "code_assets": []
+    },
+    "tag-input": {
+      "group": "input-pickers",
+      "recipes": [],
+      "code_assets": []
+    },
+    "masked-input": {
+      "group": "input-text",
+      "recipes": [],
+      "code_assets": []
+    },
+    "toggle-group": {
+      "group": "selection-options",
+      "recipes": [],
+      "code_assets": []
+    },
+    "navigation-drawer": {
+      "group": "structure-navigation",
+      "recipes": [],
+      "code_assets": []
+    },
+    "mega-menu": {
+      "group": "selection-menus",
+      "recipes": [],
+      "code_assets": []
+    },
+    "context-menu": {
+      "group": "selection-menus",
+      "recipes": [],
+      "code_assets": []
+    },
+    "loading-button": {
+      "group": "action-buttons",
+      "recipes": [],
+      "code_assets": []
+    },
+    "copy-field": {
+      "group": "input-text",
+      "recipes": [],
+      "code_assets": []
+    },
+    "bulk-action-bar": {
+      "group": "action-bulk-danger",
+      "recipes": [
+        "recipes/data-display/bulk-action-toolbar-selection-model.md"
+      ],
+      "code_assets": [
+        "bulk-action-toolbar"
+      ]
+    },
+    "speed-dial": {
+      "group": "action-buttons",
+      "recipes": [],
+      "code_assets": []
+    },
+    "app-shell": {
+      "group": "structure-app-layout",
+      "recipes": [
+        "recipes/layout/sidebar-application-shell.md"
+      ],
+      "code_assets": [
+        "sidebar-application-shell"
+      ]
+    },
+    "split-pane": {
+      "group": "structure-panels",
+      "recipes": [],
+      "code_assets": []
+    },
+    "snackbar": {
+      "group": "feedback-alerts-toasts",
+      "recipes": [],
+      "code_assets": []
+    },
+    "undo-toast": {
+      "group": "feedback-alerts-toasts",
+      "recipes": [
+        "recipes/feedback/actionable-toast.md"
+      ],
+      "code_assets": [
+        "actionable-toast"
+      ]
+    },
+    "row-selection": {
+      "group": "selection-misc",
+      "recipes": [],
+      "code_assets": []
+    },
+    "search-view": {
+      "group": "input-search-command",
+      "recipes": [],
+      "code_assets": []
+    },
+    "tree-navigation": {
+      "group": "selection-navigation",
+      "recipes": [],
+      "code_assets": []
+    },
+    "side-sheet": {
+      "group": "structure-panels",
+      "recipes": [],
+      "code_assets": []
+    },
+    "breadcrumbs-menu": {
+      "group": "selection-navigation",
+      "recipes": [],
+      "code_assets": []
+    },
+    "icon-toggle-button": {
+      "group": "action-buttons",
+      "recipes": [],
+      "code_assets": []
+    },
+    "resizable-panel": {
+      "group": "structure-panels",
+      "recipes": [],
+      "code_assets": []
+    },
+    "master-detail": {
+      "group": "structure-panels",
+      "recipes": [],
+      "code_assets": []
+    },
+    "adaptive-split-view": {
+      "group": "structure-panels",
+      "recipes": [],
+      "code_assets": []
+    },
+    "sticky-header": {
+      "group": "structure-sections",
+      "recipes": [],
+      "code_assets": []
+    },
+    "sticky-footer-bar": {
+      "group": "structure-sections",
+      "recipes": [],
+      "code_assets": []
+    },
+    "sidebar-section": {
+      "group": "structure-navigation",
+      "recipes": [],
+      "code_assets": []
+    },
+    "inline-alert": {
+      "group": "feedback-alerts-toasts",
+      "recipes": [],
+      "code_assets": []
+    },
+    "error-boundary": {
+      "group": "feedback-empty-error",
+      "recipes": [],
+      "code_assets": []
+    },
+    "confirmation-dialog": {
+      "group": "feedback-confirmation-help",
+      "recipes": [],
+      "code_assets": []
+    },
+    "docs-feedback-widget": {
+      "group": "feedback-confirmation-help",
+      "recipes": [],
+      "code_assets": []
+    },
+    "rate-limit-state": {
+      "group": "feedback-access-limits",
+      "recipes": [],
+      "code_assets": []
+    },
+    "data-table-toolbar": {
+      "group": "data-tables-lists",
+      "recipes": [
+        "recipes/data-display/interactive-data-table.md"
+      ],
+      "code_assets": [
+        "interactive-data-table"
+      ]
+    },
+    "column-header-menu": {
+      "group": "data-tables-lists",
+      "recipes": [],
+      "code_assets": []
+    },
+    "faceted-filter": {
+      "group": "data-tables-lists",
+      "recipes": [],
+      "code_assets": []
+    },
+    "stat-list": {
+      "group": "data-metrics-charts",
+      "recipes": [
+        "recipes/data-display/stat-summary-grid.md"
+      ],
+      "code_assets": [
+        "stat-summary-grid"
+      ]
+    },
+    "activity-feed": {
+      "group": "data-timeline-history",
+      "recipes": [
+        "recipes/data-display/audit-log-filterable-export-feed.md"
+      ],
+      "code_assets": [
+        "audit-log-filterable-export-feed"
+      ]
+    },
+    "map-marker": {
+      "group": "data-metrics-charts",
+      "recipes": [],
+      "code_assets": []
+    },
+    "scrubber": {
+      "group": "action-editor-media",
+      "recipes": [],
+      "code_assets": []
+    },
+    "range-slider": {
+      "group": "selection-options",
+      "recipes": [],
+      "code_assets": []
+    },
+    "multi-select": {
+      "group": "selection-options",
+      "recipes": [],
+      "code_assets": []
+    },
+    "transfer-list": {
+      "group": "selection-options",
+      "recipes": [],
+      "code_assets": []
+    },
+    "virtualized-list": {
+      "group": "data-tables-lists",
+      "recipes": [],
+      "code_assets": []
+    },
+    "infinite-scroll": {
+      "group": "data-tables-lists",
+      "recipes": [],
+      "code_assets": []
+    },
+    "pull-to-refresh": {
+      "group": "data-tables-lists",
+      "recipes": [
+        "recipes/data-display/pull-to-refresh-list-pattern.md"
+      ],
+      "code_assets": []
+    },
+    "swipe-action": {
+      "group": "action-bulk-danger",
+      "recipes": [
+        "recipes/data-display/swipe-action-row-pattern.md"
+      ],
+      "code_assets": []
+    },
+    "wizard": {
+      "group": "selection-navigation",
+      "recipes": [
+        "recipes/forms/data-import-wizard-validation-preview-steps.md"
+      ],
+      "code_assets": [
+        "data-import-wizard-validation-preview-steps"
+      ]
+    },
+    "toast-stack": {
+      "group": "feedback-alerts-toasts",
+      "recipes": [
+        "recipes/feedback/actionable-toast.md"
+      ],
+      "code_assets": [
+        "actionable-toast"
+      ]
+    },
+    "skeleton-table": {
+      "group": "feedback-loading-progress",
+      "recipes": [],
+      "code_assets": []
+    },
+    "empty-table": {
+      "group": "feedback-empty-error",
+      "recipes": [],
+      "code_assets": []
+    },
+    "table-density-control": {
+      "group": "data-tables-lists",
+      "recipes": [
+        "recipes/data-display/interactive-data-table.md"
+      ],
+      "code_assets": [
+        "interactive-data-table"
+      ]
+    },
+    "column-visibility-menu": {
+      "group": "data-tables-lists",
+      "recipes": [],
+      "code_assets": []
+    },
+    "saved-view-tabs": {
+      "group": "selection-menus",
+      "recipes": [],
+      "code_assets": []
+    },
+    "filter-panel": {
+      "group": "data-tables-lists",
+      "recipes": [],
+      "code_assets": []
+    },
+    "advanced-filter-builder": {
+      "group": "data-tables-lists",
+      "recipes": [
+        "recipes/forms/advanced-filter-builder-condition-groups.md"
+      ],
+      "code_assets": [
+        "advanced-filter-builder"
+      ]
+    },
+    "query-builder": {
+      "group": "data-tables-lists",
+      "recipes": [],
+      "code_assets": []
+    },
+    "grouped-list": {
+      "group": "data-tables-lists",
+      "recipes": [],
+      "code_assets": []
+    },
+    "nested-list": {
+      "group": "data-tables-lists",
+      "recipes": [],
+      "code_assets": []
+    },
+    "draggable-list": {
+      "group": "data-tables-lists",
+      "recipes": [],
+      "code_assets": []
+    },
+    "reorder-handle": {
+      "group": "action-misc",
+      "recipes": [],
+      "code_assets": []
+    },
+    "selection-summary": {
+      "group": "data-tables-lists",
+      "recipes": [],
+      "code_assets": []
+    },
+    "comparison-table": {
+      "group": "data-tables-lists",
+      "recipes": [],
+      "code_assets": []
+    },
+    "pivot-table": {
+      "group": "data-tables-lists",
+      "recipes": [],
+      "code_assets": []
+    },
+    "tree-table": {
+      "group": "data-tables-lists",
+      "recipes": [],
+      "code_assets": []
+    },
+    "expandable-row": {
+      "group": "data-tables-lists",
+      "recipes": [],
+      "code_assets": []
+    },
+    "detail-row": {
+      "group": "data-tables-lists",
+      "recipes": [],
+      "code_assets": []
+    },
+    "audit-log": {
+      "group": "data-timeline-history",
+      "recipes": [
+        "recipes/data-display/audit-log-filterable-export-feed.md"
+      ],
+      "code_assets": [
+        "audit-log-filterable-export-feed"
+      ]
+    },
+    "workspace-switcher": {
+      "group": "selection-context",
+      "recipes": [],
+      "code_assets": []
+    },
+    "account-switcher": {
+      "group": "selection-context",
+      "recipes": [],
+      "code_assets": []
+    },
+    "versioned-docs-switcher": {
+      "group": "selection-context",
+      "recipes": [
+        "recipes/navigation/versioned-docs-switcher-navbar-sidebar-swap.md"
+      ],
+      "code_assets": [
+        "versioned-docs-switcher-navbar-sidebar-swap"
+      ]
+    },
+    "global-header": {
+      "group": "structure-app-layout",
+      "recipes": [],
+      "code_assets": []
+    },
+    "utility-bar": {
+      "group": "structure-app-layout",
+      "recipes": [],
+      "code_assets": []
+    },
+    "command-bar": {
+      "group": "action-command-bars",
+      "recipes": [],
+      "code_assets": []
+    },
+    "status-bar": {
+      "group": "structure-app-layout",
+      "recipes": [],
+      "code_assets": []
+    },
+    "breadcrumb-header": {
+      "group": "structure-app-layout",
+      "recipes": [],
+      "code_assets": []
+    },
+    "page-title-bar": {
+      "group": "structure-app-layout",
+      "recipes": [],
+      "code_assets": []
+    },
+    "content-tabs": {
+      "group": "selection-options",
+      "recipes": [],
+      "code_assets": []
+    },
+    "right-rail": {
+      "group": "structure-panels",
+      "recipes": [],
+      "code_assets": []
+    },
+    "inspector-panel": {
+      "group": "structure-panels",
+      "recipes": [],
+      "code_assets": []
+    },
+    "properties-panel": {
+      "group": "structure-panels",
+      "recipes": [],
+      "code_assets": []
+    },
+    "preview-pane": {
+      "group": "structure-panels",
+      "recipes": [],
+      "code_assets": []
+    },
+    "canvas-toolbar": {
+      "group": "action-command-bars",
+      "recipes": [],
+      "code_assets": []
+    },
+    "floating-panel": {
+      "group": "structure-panels",
+      "recipes": [],
+      "code_assets": []
+    },
+    "dockable-panel": {
+      "group": "structure-panels",
+      "recipes": [],
+      "code_assets": []
+    },
+    "collapsible-sidebar": {
+      "group": "structure-navigation",
+      "recipes": [
+        "recipes/layout/sidebar-application-shell.md"
+      ],
+      "code_assets": [
+        "sidebar-application-shell"
+      ]
+    },
+    "mini-sidebar": {
+      "group": "structure-navigation",
+      "recipes": [],
+      "code_assets": []
+    },
+    "responsive-stack": {
+      "group": "structure-mobile",
+      "recipes": [
+        "recipes/layout/responsive-content-grid.md"
+      ],
+      "code_assets": [
+        "responsive-content-grid"
+      ]
+    },
+    "mobile-bottom-sheet": {
+      "group": "structure-mobile",
+      "recipes": [
+        "recipes/overlays/bottom-sheet-detents.md"
+      ],
+      "code_assets": []
+    },
+    "safe-area": {
+      "group": "structure-mobile",
+      "recipes": [],
+      "code_assets": []
+    },
+    "mobile-status-bar": {
+      "group": "structure-mobile",
+      "recipes": [],
+      "code_assets": []
+    },
+    "mobile-app-bar": {
+      "group": "structure-mobile",
+      "recipes": [],
+      "code_assets": []
+    },
+    "large-title-header": {
+      "group": "structure-mobile",
+      "recipes": [
+        "recipes/navigation/large-title-collapsing-header.md"
+      ],
+      "code_assets": []
+    },
+    "bottom-app-bar": {
+      "group": "action-buttons",
+      "recipes": [],
+      "code_assets": []
+    },
+    "mobile-search-header": {
+      "group": "input-search-command",
+      "recipes": [],
+      "code_assets": []
+    },
+    "mobile-segmented-tabs": {
+      "group": "selection-navigation",
+      "recipes": [],
+      "code_assets": []
+    },
+    "standard-bottom-sheet": {
+      "group": "structure-mobile",
+      "recipes": [
+        "recipes/overlays/bottom-sheet-detents.md"
+      ],
+      "code_assets": []
+    },
+    "modal-bottom-sheet": {
+      "group": "structure-mobile",
+      "recipes": [
+        "recipes/overlays/bottom-sheet-detents.md"
+      ],
+      "code_assets": []
+    },
+    "action-sheet": {
+      "group": "action-command-bars",
+      "recipes": [
+        "recipes/overlays/action-sheet-destructive-confirmation.md"
+      ],
+      "code_assets": []
+    },
+    "share-sheet": {
+      "group": "action-command-bars",
+      "recipes": [],
+      "code_assets": []
+    },
+    "full-screen-dialog": {
+      "group": "structure-mobile",
+      "recipes": [],
+      "code_assets": []
+    },
+    "permission-prompt": {
+      "group": "feedback-access-limits",
+      "recipes": [],
+      "code_assets": []
+    },
+    "permission-education-screen": {
+      "group": "feedback-access-limits",
+      "recipes": [],
+      "code_assets": []
+    },
+    "mobile-snackbar": {
+      "group": "feedback-alerts-toasts",
+      "recipes": [],
+      "code_assets": []
+    },
+    "mobile-toast": {
+      "group": "feedback-alerts-toasts",
+      "recipes": [],
+      "code_assets": []
+    },
+    "mobile-alert-dialog": {
+      "group": "feedback-alerts-toasts",
+      "recipes": [],
+      "code_assets": []
+    },
+    "mobile-popover-menu": {
+      "group": "selection-menus",
+      "recipes": [],
+      "code_assets": []
+    },
+    "sheet-drag-handle": {
+      "group": "structure-mobile",
+      "recipes": [],
+      "code_assets": []
+    },
+    "pull-to-refresh-indicator": {
+      "group": "input-pickers",
+      "recipes": [
+        "recipes/data-display/pull-to-refresh-list-pattern.md"
+      ],
+      "code_assets": []
+    },
+    "swipe-to-delete": {
+      "group": "action-bulk-danger",
+      "recipes": [
+        "recipes/data-display/swipe-action-row-pattern.md"
+      ],
+      "code_assets": []
+    },
+    "swipe-action-row": {
+      "group": "action-bulk-danger",
+      "recipes": [
+        "recipes/data-display/swipe-action-row-pattern.md"
+      ],
+      "code_assets": []
+    },
+    "long-press-menu": {
+      "group": "selection-menus",
+      "recipes": [],
+      "code_assets": []
+    },
+    "drag-to-reorder-list": {
+      "group": "data-tables-lists",
+      "recipes": [],
+      "code_assets": []
+    },
+    "grab-handle": {
+      "group": "action-bulk-danger",
+      "recipes": [],
+      "code_assets": []
+    },
+    "page-control": {
+      "group": "selection-navigation",
+      "recipes": [],
+      "code_assets": []
+    },
+    "carousel-peek": {
+      "group": "structure-mobile",
+      "recipes": [],
+      "code_assets": []
+    },
+    "edge-swipe-back": {
+      "group": "selection-navigation",
+      "recipes": [],
+      "code_assets": []
+    },
+    "pinch-zoom-viewer": {
+      "group": "action-editor-media",
+      "recipes": [],
+      "code_assets": []
+    },
+    "scrim": {
+      "group": "structure-mobile",
+      "recipes": [],
+      "code_assets": []
+    },
+    "touch-ripple": {
+      "group": "feedback-alerts-toasts",
+      "recipes": [],
+      "code_assets": []
+    },
+    "otp-code-input": {
+      "group": "input-text",
+      "recipes": [],
+      "code_assets": []
+    },
+    "passcode-keypad": {
+      "group": "input-text",
+      "recipes": [],
+      "code_assets": []
+    },
+    "biometric-prompt": {
+      "group": "feedback-access-limits",
+      "recipes": [],
+      "code_assets": []
+    },
+    "mobile-date-picker": {
+      "group": "input-pickers",
+      "recipes": [],
+      "code_assets": []
+    },
+    "mobile-date-time-picker-sheet": {
+      "group": "input-pickers",
+      "recipes": [],
+      "code_assets": []
+    },
+    "wheel-picker": {
+      "group": "input-pickers",
+      "recipes": [],
+      "code_assets": []
+    },
+    "time-wheel-picker": {
+      "group": "input-pickers",
+      "recipes": [],
+      "code_assets": []
+    },
+    "mobile-search-sheet": {
+      "group": "input-search-command",
+      "recipes": [],
+      "code_assets": []
+    },
+    "chip-input-mobile": {
+      "group": "input-pickers",
+      "recipes": [],
+      "code_assets": []
+    },
+    "contact-picker": {
+      "group": "input-pickers",
+      "recipes": [],
+      "code_assets": []
+    },
+    "address-autocomplete": {
+      "group": "input-search-command",
+      "recipes": [],
+      "code_assets": []
+    },
+    "voice-input-button": {
+      "group": "action-buttons",
+      "recipes": [],
+      "code_assets": []
+    },
+    "clear-text-button": {
+      "group": "action-buttons",
+      "recipes": [],
+      "code_assets": []
+    },
+    "feed-card-mobile": {
+      "group": "data-display-misc",
+      "recipes": [],
+      "code_assets": []
+    },
+    "story-rail": {
+      "group": "data-display-misc",
+      "recipes": [],
+      "code_assets": []
+    },
+    "story-viewer": {
+      "group": "data-display-misc",
+      "recipes": [],
+      "code_assets": []
+    },
+    "media-lightbox-mobile": {
+      "group": "structure-mobile",
+      "recipes": [],
+      "code_assets": []
+    },
+    "comment-composer": {
+      "group": "input-text",
+      "recipes": [],
+      "code_assets": []
+    },
+    "bottom-cta-bar": {
+      "group": "action-buttons",
+      "recipes": [],
+      "code_assets": []
+    },
+    "product-option-sheet": {
+      "group": "input-pickers",
+      "recipes": [
+        "recipes/commerce/product-detail-purchase-stack.md"
+      ],
+      "code_assets": [
+        "product-detail-purchase-stack"
+      ]
+    },
+    "cart-summary-bar": {
+      "group": "data-commerce-billing",
+      "recipes": [
+        "recipes/commerce/cart-drawer.md"
+      ],
+      "code_assets": [
+        "cart-drawer"
+      ]
+    },
+    "checkout-progress-header": {
+      "group": "feedback-status-notifications",
+      "recipes": [
+        "recipes/commerce/checkout-order-summary.md",
+        "recipes/commerce/shipping-method-selector.md"
+      ],
+      "code_assets": [
+        "checkout-order-summary",
+        "shipping-method-selector"
+      ]
+    },
+    "delivery-tracker": {
+      "group": "feedback-status-notifications",
+      "recipes": [],
+      "code_assets": []
+    },
+    "map-bottom-panel": {
+      "group": "structure-mobile",
+      "recipes": [],
+      "code_assets": []
+    },
+    "location-permission-empty": {
+      "group": "feedback-empty-error",
+      "recipes": [],
+      "code_assets": []
+    },
+    "onboarding-pager": {
+      "group": "selection-navigation",
+      "recipes": [],
+      "code_assets": []
+    },
+    "onboarding-carousel-skip-pattern": {
+      "group": "selection-navigation",
+      "recipes": [],
+      "code_assets": []
+    },
+    "coach-mark": {
+      "group": "feedback-status-notifications",
+      "recipes": [],
+      "code_assets": []
+    },
+    "mobile-empty-feed": {
+      "group": "feedback-empty-error",
+      "recipes": [],
+      "code_assets": []
+    },
+    "page-layout": {
+      "group": "structure-app-layout",
+      "recipes": [],
+      "code_assets": []
+    },
+    "dashboard-grid": {
+      "group": "structure-app-layout",
+      "recipes": [
+        "recipes/data-display/stat-summary-grid.md"
+      ],
+      "code_assets": [
+        "stat-summary-grid"
+      ]
+    },
+    "permission-state": {
+      "group": "feedback-access-limits",
+      "recipes": [],
+      "code_assets": []
+    },
+    "locked-state": {
+      "group": "feedback-access-limits",
+      "recipes": [],
+      "code_assets": []
+    },
+    "offline-state": {
+      "group": "feedback-access-limits",
+      "recipes": [],
+      "code_assets": []
+    },
+    "maintenance-state": {
+      "group": "feedback-empty-error",
+      "recipes": [],
+      "code_assets": []
+    },
+    "syncing-state": {
+      "group": "feedback-loading-progress",
+      "recipes": [],
+      "code_assets": []
+    },
+    "saving-indicator": {
+      "group": "feedback-loading-progress",
+      "recipes": [],
+      "code_assets": []
+    },
+    "unsaved-changes-banner": {
+      "group": "feedback-access-limits",
+      "recipes": [],
+      "code_assets": []
+    },
+    "session-expired-dialog": {
+      "group": "feedback-access-limits",
+      "recipes": [],
+      "code_assets": []
+    },
+    "upgrade-prompt": {
+      "group": "feedback-access-limits",
+      "recipes": [],
+      "code_assets": []
+    },
+    "quota-warning": {
+      "group": "feedback-access-limits",
+      "recipes": [],
+      "code_assets": []
+    },
+    "trial-banner": {
+      "group": "feedback-alerts-toasts",
+      "recipes": [],
+      "code_assets": []
+    },
+    "destructive-confirmation": {
+      "group": "action-bulk-danger",
+      "recipes": [],
+      "code_assets": []
+    },
+    "success-toast": {
+      "group": "feedback-alerts-toasts",
+      "recipes": [],
+      "code_assets": []
+    },
+    "error-toast": {
+      "group": "feedback-alerts-toasts",
+      "recipes": [],
+      "code_assets": []
+    },
+    "notification-center": {
+      "group": "feedback-status-notifications",
+      "recipes": [],
+      "code_assets": []
+    },
+    "notification-list": {
+      "group": "data-timeline-history",
+      "recipes": [],
+      "code_assets": []
+    },
+    "status-chip": {
+      "group": "feedback-status-notifications",
+      "recipes": [],
+      "code_assets": []
+    },
+    "health-indicator": {
+      "group": "feedback-status-notifications",
+      "recipes": [],
+      "code_assets": []
+    },
+    "connection-status": {
+      "group": "feedback-status-notifications",
+      "recipes": [],
+      "code_assets": []
+    },
+    "retry-panel": {
+      "group": "feedback-empty-error",
+      "recipes": [],
+      "code_assets": []
+    },
+    "background-job-queue-monitor": {
+      "group": "data-timeline-history",
+      "recipes": [],
+      "code_assets": []
+    },
+    "media-card": {
+      "group": "data-display-misc",
+      "recipes": [],
+      "code_assets": []
+    },
+    "video-player-controls": {
+      "group": "action-editor-media",
+      "recipes": [],
+      "code_assets": []
+    },
+    "audio-player-controls": {
+      "group": "action-editor-media",
+      "recipes": [],
+      "code_assets": []
+    },
+    "image-gallery": {
+      "group": "data-commerce-billing",
+      "recipes": [],
+      "code_assets": []
+    },
+    "lightbox": {
+      "group": "structure-panels",
+      "recipes": [],
+      "code_assets": []
+    },
+    "cropper": {
+      "group": "action-editor-media",
+      "recipes": [],
+      "code_assets": []
+    },
+    "upload-dropzone": {
+      "group": "input-file-media",
+      "recipes": [],
+      "code_assets": []
+    },
+    "attachment-list": {
+      "group": "data-commerce-billing",
+      "recipes": [],
+      "code_assets": []
+    },
+    "file-card": {
+      "group": "data-display-misc",
+      "recipes": [],
+      "code_assets": []
+    },
+    "product-card": {
+      "group": "data-display-misc",
+      "recipes": [
+        "recipes/commerce/category-product-grid.md"
+      ],
+      "code_assets": [
+        "category-product-grid"
+      ]
+    },
+    "price-card": {
+      "group": "data-display-misc",
+      "recipes": [],
+      "code_assets": []
+    },
+    "plan-card": {
+      "group": "data-display-misc",
+      "recipes": [],
+      "code_assets": []
+    },
+    "feature-comparison": {
+      "group": "data-commerce-billing",
+      "recipes": [],
+      "code_assets": []
+    },
+    "coupon-field": {
+      "group": "input-pickers",
+      "recipes": [],
+      "code_assets": []
+    },
+    "quantity-stepper": {
+      "group": "input-pickers",
+      "recipes": [
+        "recipes/commerce/cart-drawer.md",
+        "recipes/commerce/product-detail-purchase-stack.md"
+      ],
+      "code_assets": [
+        "cart-drawer",
+        "product-detail-purchase-stack"
+      ]
+    },
+    "cart-summary": {
+      "group": "data-commerce-billing",
+      "recipes": [
+        "recipes/commerce/cart-drawer.md",
+        "recipes/commerce/checkout-order-summary.md",
+        "recipes/commerce/shipping-method-selector.md"
+      ],
+      "code_assets": [
+        "cart-drawer",
+        "checkout-order-summary",
+        "shipping-method-selector"
+      ]
+    },
+    "checkout-step": {
+      "group": "structure-app-layout",
+      "recipes": [
+        "recipes/commerce/checkout-order-summary.md",
+        "recipes/commerce/shipping-method-selector.md"
+      ],
+      "code_assets": [
+        "checkout-order-summary",
+        "shipping-method-selector"
+      ]
+    },
+    "payment-method-card": {
+      "group": "selection-context",
+      "recipes": [
+        "recipes/commerce/checkout-order-summary.md",
+        "recipes/commerce/shipping-method-selector.md"
+      ],
+      "code_assets": [
+        "checkout-order-summary",
+        "shipping-method-selector"
+      ]
+    },
+    "address-card": {
+      "group": "data-commerce-billing",
+      "recipes": [],
+      "code_assets": []
+    },
+    "order-status": {
+      "group": "feedback-status-notifications",
+      "recipes": [
+        "recipes/commerce/checkout-order-summary.md"
+      ],
+      "code_assets": [
+        "checkout-order-summary"
+      ]
+    },
+    "calendar-event-card": {
+      "group": "data-display-misc",
+      "recipes": [],
+      "code_assets": []
+    },
+    "kanban-card": {
+      "group": "data-display-misc",
+      "recipes": [],
+      "code_assets": []
+    },
+    "board-column": {
+      "group": "structure-navigation",
+      "recipes": [],
+      "code_assets": []
+    },
+    "empty-search-result": {
+      "group": "feedback-empty-error",
+      "recipes": [
+        "recipes/feedback/recoverable-empty-state.md"
+      ],
+      "code_assets": [
+        "recoverable-empty-state"
+      ]
+    },
+    "onboarding-checklist": {
+      "group": "data-display-misc",
+      "recipes": [],
+      "code_assets": []
+    },
+    "setup-progress": {
+      "group": "feedback-loading-progress",
+      "recipes": [],
+      "code_assets": []
+    },
+    "help-center-card": {
+      "group": "data-display-misc",
+      "recipes": [],
+      "code_assets": []
+    },
+    "faq-list": {
+      "group": "data-display-misc",
+      "recipes": [],
+      "code_assets": []
+    },
+    "announcement-banner": {
+      "group": "feedback-alerts-toasts",
+      "recipes": [],
+      "code_assets": []
+    },
+    "release-note-card": {
+      "group": "data-display-misc",
+      "recipes": [
+        "recipes/docs/docs-changelog-category-filter-page.md"
+      ],
+      "code_assets": [
+        "docs-changelog-category-filter-page"
+      ]
+    },
+    "docs-changelog-page": {
+      "group": "data-display-misc",
+      "recipes": [
+        "recipes/docs/docs-changelog-category-filter-page.md"
+      ],
+      "code_assets": [
+        "docs-changelog-category-filter-page"
+      ]
+    },
+    "profile-card": {
+      "group": "data-display-misc",
+      "recipes": [],
+      "code_assets": []
+    },
+    "team-member-row": {
+      "group": "data-people-integrations",
+      "recipes": [],
+      "code_assets": []
+    },
+    "role-badge": {
+      "group": "feedback-status-notifications",
+      "recipes": [],
+      "code_assets": []
+    },
+    "api-key-field": {
+      "group": "input-text",
+      "recipes": [],
+      "code_assets": []
+    },
+    "webhook-endpoint-row": {
+      "group": "data-people-integrations",
+      "recipes": [],
+      "code_assets": []
+    },
+    "webhook-delivery-log-with-retry": {
+      "group": "data-people-integrations",
+      "recipes": [],
+      "code_assets": []
+    },
+    "integration-card": {
+      "group": "data-people-integrations",
+      "recipes": [],
+      "code_assets": []
+    },
+    "connection-card": {
+      "group": "data-people-integrations",
+      "recipes": [],
+      "code_assets": []
+    },
+    "billing-summary": {
+      "group": "data-commerce-billing",
+      "recipes": [],
+      "code_assets": []
+    },
+    "invoice-row": {
+      "group": "data-commerce-billing",
+      "recipes": [],
+      "code_assets": []
+    },
+    "version-history-list": {
+      "group": "data-timeline-history",
+      "recipes": [],
+      "code_assets": []
+    },
+    "mobile-filter-bottom-sheet": {
+      "group": "structure-mobile",
+      "recipes": [],
+      "code_assets": []
+    },
+    "inline-date-range-chip": {
+      "group": "selection-options",
+      "recipes": [],
+      "code_assets": []
+    },
+    "floating-search-button": {
+      "group": "action-buttons",
+      "recipes": [],
+      "code_assets": []
+    },
+    "avatar-group": {
+      "group": "data-people-integrations",
+      "recipes": [],
+      "code_assets": []
+    },
+    "info-label": {
+      "group": "feedback-status-notifications",
+      "recipes": [],
+      "code_assets": []
+    },
+    "message-bar": {
+      "group": "feedback-alerts-toasts",
+      "recipes": [],
+      "code_assets": []
+    },
+    "spin-button": {
+      "group": "input-text",
+      "recipes": [],
+      "code_assets": []
+    },
+    "scope-bar": {
+      "group": "selection-navigation",
+      "recipes": [],
+      "code_assets": []
+    },
+    "structured-list": {
+      "group": "data-tables-lists",
+      "recipes": [],
+      "code_assets": []
+    },
+    "inline-loading": {
+      "group": "feedback-loading-progress",
+      "recipes": [],
+      "code_assets": []
+    },
+    "tag-picker": {
+      "group": "input-pickers",
+      "recipes": [],
+      "code_assets": []
+    },
+    "disclosure-group": {
+      "group": "structure-sections",
+      "recipes": [],
+      "code_assets": []
+    },
+    "contained-list": {
+      "group": "data-tables-lists",
+      "recipes": [],
+      "code_assets": []
+    },
+    "email-verification-banner": {
+      "group": "feedback-auth-security",
+      "recipes": [],
+      "code_assets": []
+    },
+    "verification-required-screen": {
+      "group": "feedback-auth-security",
+      "recipes": [],
+      "code_assets": []
+    },
+    "magic-link-sent-state": {
+      "group": "feedback-auth-security",
+      "recipes": [],
+      "code_assets": []
+    },
+    "passkey-enrollment-prompt": {
+      "group": "feedback-auth-security",
+      "recipes": [],
+      "code_assets": []
+    },
+    "passkey-sign-in-sheet": {
+      "group": "feedback-auth-security",
+      "recipes": [],
+      "code_assets": []
+    },
+    "mfa-enrollment-card": {
+      "group": "data-account-support",
+      "recipes": [],
+      "code_assets": []
+    },
+    "recovery-code-panel": {
+      "group": "data-account-support",
+      "recipes": [],
+      "code_assets": []
+    },
+    "recovery-code-warning": {
+      "group": "feedback-auth-security",
+      "recipes": [],
+      "code_assets": []
+    },
+    "trusted-device-prompt": {
+      "group": "feedback-auth-security",
+      "recipes": [],
+      "code_assets": []
+    },
+    "device-approval-state": {
+      "group": "feedback-auth-security",
+      "recipes": [],
+      "code_assets": []
+    },
+    "access-request-panel": {
+      "group": "feedback-auth-security",
+      "recipes": [],
+      "code_assets": []
+    },
+    "access-pending-state": {
+      "group": "feedback-auth-security",
+      "recipes": [],
+      "code_assets": []
+    },
+    "invite-acceptance-screen": {
+      "group": "structure-auth-layouts",
+      "recipes": [],
+      "code_assets": []
+    },
+    "invite-expired-state": {
+      "group": "feedback-auth-security",
+      "recipes": [],
+      "code_assets": []
+    },
+    "workspace-join-request": {
+      "group": "feedback-auth-security",
+      "recipes": [],
+      "code_assets": []
+    },
+    "welcome-choice-screen": {
+      "group": "structure-auth-layouts",
+      "recipes": [],
+      "code_assets": []
+    },
+    "import-data-choice": {
+      "group": "selection-options",
+      "recipes": [],
+      "code_assets": []
+    },
+    "setup-blocker-state": {
+      "group": "feedback-auth-security",
+      "recipes": [],
+      "code_assets": []
+    },
+    "reconnect-account-state": {
+      "group": "feedback-auth-security",
+      "recipes": [],
+      "code_assets": []
+    },
+    "consent-review-screen": {
+      "group": "structure-auth-layouts",
+      "recipes": [],
+      "code_assets": []
+    },
+    "aspect-ratio-box": {
+      "group": "structure-content-elements",
+      "recipes": [],
+      "code_assets": []
+    },
+    "hover-card": {
+      "group": "feedback-status-notifications",
+      "recipes": [],
+      "code_assets": []
+    },
+    "scroll-area": {
+      "group": "structure-content-elements",
+      "recipes": [],
+      "code_assets": []
+    },
+    "native-select": {
+      "group": "input-pickers",
+      "recipes": [],
+      "code_assets": []
+    },
+    "keyboard-shortcut-key": {
+      "group": "data-account-support",
+      "recipes": [],
+      "code_assets": []
+    },
+    "navigation-menu": {
+      "group": "selection-navigation",
+      "recipes": [],
+      "code_assets": []
+    },
+    "mobile-form-field-stack": {
+      "group": "input-text",
+      "recipes": [
+        "recipes/forms/mobile-signup-field-stack.md"
+      ],
+      "code_assets": []
+    },
+    "field-group": {
+      "group": "input-text",
+      "recipes": [],
+      "code_assets": []
+    },
+    "item-row": {
+      "group": "data-basic-content-elements",
+      "recipes": [],
+      "code_assets": []
+    },
+    "sonner-toast": {
+      "group": "feedback-status-notifications",
+      "recipes": [],
+      "code_assets": []
+    },
+    "direction-provider": {
+      "group": "accessibility-focus-motion",
+      "recipes": [],
+      "code_assets": []
+    },
+    "login-form": {
+      "group": "input-auth-forms",
+      "recipes": [],
+      "code_assets": []
+    },
+    "signup-form": {
+      "group": "input-auth-forms",
+      "recipes": [],
+      "code_assets": []
+    },
+    "forgot-password-form": {
+      "group": "input-auth-forms",
+      "recipes": [],
+      "code_assets": []
+    },
+    "reset-password-form": {
+      "group": "input-auth-forms",
+      "recipes": [],
+      "code_assets": []
+    },
+    "change-password-form": {
+      "group": "input-auth-forms",
+      "recipes": [],
+      "code_assets": []
+    },
+    "magic-link-login-form": {
+      "group": "input-auth-forms",
+      "recipes": [],
+      "code_assets": []
+    },
+    "sso-login-form": {
+      "group": "input-auth-forms",
+      "recipes": [],
+      "code_assets": []
+    },
+    "social-login-button-group": {
+      "group": "action-buttons",
+      "recipes": [],
+      "code_assets": []
+    },
+    "otp-challenge-form": {
+      "group": "input-auth-forms",
+      "recipes": [],
+      "code_assets": []
+    },
+    "mfa-challenge-form": {
+      "group": "input-auth-forms",
+      "recipes": [],
+      "code_assets": []
+    },
+    "passkey-login-form": {
+      "group": "input-auth-forms",
+      "recipes": [],
+      "code_assets": []
+    },
+    "invite-signup-form": {
+      "group": "input-auth-forms",
+      "recipes": [],
+      "code_assets": []
+    },
+    "account-creation-form": {
+      "group": "input-auth-forms",
+      "recipes": [],
+      "code_assets": []
+    },
+    "email-change-form": {
+      "group": "input-auth-forms",
+      "recipes": [],
+      "code_assets": []
+    },
+    "reauthentication-form": {
+      "group": "input-auth-forms",
+      "recipes": [],
+      "code_assets": []
+    },
+    "auth-method-choice": {
+      "group": "selection-options",
+      "recipes": [],
+      "code_assets": []
+    },
+    "auth-card": {
+      "group": "structure-auth-layouts",
+      "recipes": [],
+      "code_assets": []
+    },
+    "login-page": {
+      "group": "structure-auth-layouts",
+      "recipes": [],
+      "code_assets": []
+    },
+    "split-auth-layout": {
+      "group": "structure-auth-layouts",
+      "recipes": [],
+      "code_assets": []
+    },
+    "login-dialog": {
+      "group": "structure-auth-layouts",
+      "recipes": [],
+      "code_assets": []
+    },
+    "dashboard-overview-page": {
+      "group": "structure-app-layout",
+      "recipes": [],
+      "code_assets": []
+    },
+    "sidebar-dashboard-layout": {
+      "group": "structure-sidebar-layouts",
+      "recipes": [
+        "recipes/layout/sidebar-application-shell.md"
+      ],
+      "code_assets": [
+        "sidebar-application-shell"
+      ]
+    },
+    "collapsible-sidebar-layout": {
+      "group": "structure-sidebar-layouts",
+      "recipes": [],
+      "code_assets": []
+    },
+    "icon-sidebar-layout": {
+      "group": "structure-sidebar-layouts",
+      "recipes": [],
+      "code_assets": []
+    },
+    "inset-sidebar-layout": {
+      "group": "structure-sidebar-layouts",
+      "recipes": [],
+      "code_assets": []
+    },
+    "right-sidebar-layout": {
+      "group": "structure-sidebar-layouts",
+      "recipes": [],
+      "code_assets": []
+    },
+    "dual-sidebar-layout": {
+      "group": "structure-sidebar-layouts",
+      "recipes": [],
+      "code_assets": []
+    },
+    "file-tree-sidebar-layout": {
+      "group": "structure-sidebar-layouts",
+      "recipes": [],
+      "code_assets": []
+    },
+    "calendar-sidebar-layout": {
+      "group": "structure-sidebar-layouts",
+      "recipes": [],
+      "code_assets": []
+    },
+    "sidebar-dialog-layout": {
+      "group": "structure-sidebar-layouts",
+      "recipes": [],
+      "code_assets": []
+    },
+    "area-chart-card": {
+      "group": "data-metrics-charts",
+      "recipes": [],
+      "code_assets": []
+    },
+    "bar-chart-card": {
+      "group": "data-metrics-charts",
+      "recipes": [],
+      "code_assets": []
+    },
+    "line-chart-card": {
+      "group": "data-metrics-charts",
+      "recipes": [],
+      "code_assets": []
+    },
+    "pie-chart-card": {
+      "group": "data-metrics-charts",
+      "recipes": [],
+      "code_assets": []
+    },
+    "radar-chart-card": {
+      "group": "data-metrics-charts",
+      "recipes": [],
+      "code_assets": []
+    },
+    "radial-chart-card": {
+      "group": "data-metrics-charts",
+      "recipes": [],
+      "code_assets": []
+    },
+    "interactive-chart-card": {
+      "group": "data-metrics-charts",
+      "recipes": [],
+      "code_assets": []
+    },
+    "stacked-chart-card": {
+      "group": "data-metrics-charts",
+      "recipes": [],
+      "code_assets": []
+    },
+    "chart-tooltip-pattern": {
+      "group": "data-metrics-charts",
+      "recipes": [],
+      "code_assets": []
+    },
+    "chart-kpi-card": {
+      "group": "data-metrics-charts",
+      "recipes": [],
+      "code_assets": []
+    },
+    "chat-message": {
+      "group": "data-chat-messaging",
+      "recipes": [],
+      "code_assets": []
+    },
+    "chat-bubble": {
+      "group": "data-chat-messaging",
+      "recipes": [],
+      "code_assets": []
+    },
+    "chat-attachment": {
+      "group": "data-chat-messaging",
+      "recipes": [],
+      "code_assets": []
+    },
+    "conversation-marker": {
+      "group": "feedback-status-notifications",
+      "recipes": [],
+      "code_assets": []
+    },
+    "message-scroller": {
+      "group": "structure-content-elements",
+      "recipes": [],
+      "code_assets": []
+    },
+    "react-hook-form-pattern": {
+      "group": "input-auth-forms",
+      "recipes": [],
+      "code_assets": []
+    },
+    "tanstack-form-pattern": {
+      "group": "input-auth-forms",
+      "recipes": [],
+      "code_assets": []
+    },
+    "formisch-form-pattern": {
+      "group": "input-auth-forms",
+      "recipes": [],
+      "code_assets": []
+    },
+    "scroll-fade": {
+      "group": "style-decorative-effects",
+      "recipes": [],
+      "code_assets": []
+    },
+    "shimmer-effect": {
+      "group": "style-decorative-effects",
+      "recipes": [],
+      "code_assets": []
+    },
+    "floating-label-field": {
+      "group": "input-text",
+      "recipes": [],
+      "code_assets": []
+    },
+    "clearable-input": {
+      "group": "input-text",
+      "recipes": [],
+      "code_assets": []
+    },
+    "inline-submit-field": {
+      "group": "input-text",
+      "recipes": [],
+      "code_assets": []
+    },
+    "character-count-field": {
+      "group": "input-text",
+      "recipes": [],
+      "code_assets": []
+    },
+    "password-strength-meter": {
+      "group": "feedback-status-notifications",
+      "recipes": [],
+      "code_assets": []
+    },
+    "fieldset": {
+      "group": "input-text",
+      "recipes": [],
+      "code_assets": []
+    },
+    "checkbox-card": {
+      "group": "selection-options",
+      "recipes": [],
+      "code_assets": []
+    },
+    "date-preset-picker": {
+      "group": "input-pickers",
+      "recipes": [],
+      "code_assets": []
+    },
+    "navbar-menu": {
+      "group": "structure-navigation",
+      "recipes": [],
+      "code_assets": []
+    },
+    "nav-user-menu": {
+      "group": "structure-navigation",
+      "recipes": [],
+      "code_assets": []
+    },
+    "breadcrumb-overflow": {
+      "group": "structure-navigation",
+      "recipes": [],
+      "code_assets": []
+    },
+    "popover-form": {
+      "group": "input-auth-forms",
+      "recipes": [
+        "recipes/overlays/popover.md"
+      ],
+      "code_assets": []
+    },
+    "disclosure-card": {
+      "group": "structure-panels",
+      "recipes": [],
+      "code_assets": []
+    },
+    "pagination-jump": {
+      "group": "structure-navigation",
+      "recipes": [],
+      "code_assets": []
+    },
+    "avatar-stack": {
+      "group": "data-people-integrations",
+      "recipes": [],
+      "code_assets": []
+    },
+    "status-avatar": {
+      "group": "data-people-integrations",
+      "recipes": [],
+      "code_assets": []
+    },
+    "badge-group": {
+      "group": "data-people-integrations",
+      "recipes": [],
+      "code_assets": []
+    },
+    "meter": {
+      "group": "feedback-status-notifications",
+      "recipes": [],
+      "code_assets": []
+    },
+    "table-row-actions": {
+      "group": "action-command-bars",
+      "recipes": [
+        "recipes/data-display/interactive-data-table.md"
+      ],
+      "code_assets": [
+        "interactive-data-table"
+      ]
+    },
+    "empty-filter-state": {
+      "group": "feedback-empty-error",
+      "recipes": [
+        "recipes/feedback/recoverable-empty-state.md"
+      ],
+      "code_assets": [
+        "recoverable-empty-state"
+      ]
+    },
+    "notification-inbox-row": {
+      "group": "data-chat-messaging",
+      "recipes": [],
+      "code_assets": []
+    },
+    "progress-stepper": {
+      "group": "feedback-status-notifications",
+      "recipes": [],
+      "code_assets": []
+    },
+    "pricing-section": {
+      "group": "structure-sections",
+      "recipes": [],
+      "code_assets": []
+    },
+    "testimonial-section": {
+      "group": "structure-misc",
+      "recipes": [],
+      "code_assets": []
+    },
+    "feature-grid-section": {
+      "group": "structure-sections",
+      "recipes": [],
+      "code_assets": []
+    },
+    "integration-grid-section": {
+      "group": "data-people-integrations",
+      "recipes": [],
+      "code_assets": []
+    },
+    "settings-page-layout": {
+      "group": "structure-app-layout",
+      "recipes": [],
+      "code_assets": []
+    },
+    "profile-settings-form": {
+      "group": "input-auth-forms",
+      "recipes": [],
+      "code_assets": []
+    },
+    "billing-settings-page": {
+      "group": "structure-app-layout",
+      "recipes": [],
+      "code_assets": []
+    },
+    "onboarding-flow-page": {
+      "group": "structure-app-layout",
+      "recipes": [],
+      "code_assets": []
+    },
+    "newsletter-section": {
+      "group": "input-auth-forms",
+      "recipes": [],
+      "code_assets": []
+    },
+    "cta-section": {
+      "group": "action-buttons",
+      "recipes": [],
+      "code_assets": []
+    },
+    "animated-gradient-background": {
+      "group": "style-decorative-effects",
+      "recipes": [],
+      "code_assets": []
+    },
+    "marquee-row": {
+      "group": "style-decorative-effects",
+      "recipes": [],
+      "code_assets": []
+    },
+    "border-beam": {
+      "group": "style-decorative-effects",
+      "recipes": [],
+      "code_assets": []
+    },
+    "orbiting-icons": {
+      "group": "style-decorative-effects",
+      "recipes": [],
+      "code_assets": []
+    },
+    "spotlight-card": {
+      "group": "style-decorative-effects",
+      "recipes": [],
+      "code_assets": []
+    },
+    "grid-pattern-background": {
+      "group": "style-decorative-effects",
+      "recipes": [],
+      "code_assets": []
+    },
+    "typing-text-effect": {
+      "group": "feedback-misc",
+      "recipes": [],
+      "code_assets": []
+    },
+    "number-ticker": {
+      "group": "data-motion-content",
+      "recipes": [],
+      "code_assets": []
+    },
+    "blur-fade-in": {
+      "group": "feedback-misc",
+      "recipes": [],
+      "code_assets": []
+    },
+    "animated-shiny-text": {
+      "group": "style-typography",
+      "recipes": [],
+      "code_assets": []
+    },
+    "dot-pattern-background": {
+      "group": "style-decorative-effects",
+      "recipes": [],
+      "code_assets": []
+    },
+    "bento-grid": {
+      "group": "structure-sections",
+      "recipes": [],
+      "code_assets": []
+    },
+    "sticky-scroll-section": {
+      "group": "structure-sections",
+      "recipes": [],
+      "code_assets": []
+    },
+    "floating-navbar": {
+      "group": "structure-navigation",
+      "recipes": [],
+      "code_assets": []
+    },
+    "three-d-card": {
+      "group": "style-decorative-effects",
+      "recipes": [],
+      "code_assets": []
+    },
+    "hover-card-stack": {
+      "group": "style-misc",
+      "recipes": [],
+      "code_assets": []
+    },
+    "background-beams": {
+      "group": "style-decorative-effects",
+      "recipes": [],
+      "code_assets": []
+    },
+    "aurora-background": {
+      "group": "style-decorative-effects",
+      "recipes": [],
+      "code_assets": []
+    },
+    "spotlight-hero": {
+      "group": "structure-sections",
+      "recipes": [],
+      "code_assets": []
+    },
+    "infinite-moving-cards": {
+      "group": "data-motion-content",
+      "recipes": [],
+      "code_assets": []
+    },
+    "canvas-reveal-card": {
+      "group": "style-decorative-effects",
+      "recipes": [],
+      "code_assets": []
+    },
+    "tracing-beam-section": {
+      "group": "style-decorative-effects",
+      "recipes": [],
+      "code_assets": []
+    },
+    "opacity": {
+      "group": "style-border-color",
+      "recipes": [],
+      "code_assets": []
+    },
+    "backdrop-blur": {
+      "group": "style-surface-material",
+      "recipes": [],
+      "code_assets": []
+    },
+    "shadow-elevation": {
+      "group": "style-surface-material",
+      "recipes": [],
+      "code_assets": []
+    },
+    "border-radius": {
+      "group": "style-border-color",
+      "recipes": [],
+      "code_assets": []
+    },
+    "gradient-fill": {
+      "group": "style-border-color",
+      "recipes": [],
+      "code_assets": []
+    },
+    "color-contrast": {
+      "group": "accessibility-focus-motion",
+      "recipes": [],
+      "code_assets": []
+    },
+    "transition": {
+      "group": "feedback-misc",
+      "recipes": [],
+      "code_assets": []
+    },
+    "duration": {
+      "group": "feedback-misc",
+      "recipes": [],
+      "code_assets": []
+    },
+    "easing": {
+      "group": "feedback-misc",
+      "recipes": [],
+      "code_assets": []
+    },
+    "fade-transition": {
+      "group": "feedback-misc",
+      "recipes": [],
+      "code_assets": []
+    },
+    "slide-transition": {
+      "group": "feedback-misc",
+      "recipes": [],
+      "code_assets": []
+    },
+    "scale-transition": {
+      "group": "feedback-misc",
+      "recipes": [],
+      "code_assets": []
+    },
+    "reduced-motion": {
+      "group": "accessibility-focus-motion",
+      "recipes": [],
+      "code_assets": []
+    },
+    "hover-state": {
+      "group": "feedback-interaction-states",
+      "recipes": [],
+      "code_assets": []
+    },
+    "focus-ring": {
+      "group": "feedback-interaction-states",
+      "recipes": [],
+      "code_assets": []
+    },
+    "active-state": {
+      "group": "feedback-interaction-states",
+      "recipes": [],
+      "code_assets": []
+    },
+    "disabled-state": {
+      "group": "feedback-interaction-states",
+      "recipes": [],
+      "code_assets": []
+    },
+    "selected-state": {
+      "group": "feedback-interaction-states",
+      "recipes": [],
+      "code_assets": []
+    },
+    "drag-state": {
+      "group": "feedback-interaction-states",
+      "recipes": [],
+      "code_assets": []
+    },
+    "drop-target": {
+      "group": "feedback-interaction-states",
+      "recipes": [],
+      "code_assets": []
+    },
+    "z-index": {
+      "group": "layout-stacking-overflow",
+      "recipes": [],
+      "code_assets": []
+    },
+    "stacking-context": {
+      "group": "layout-stacking-overflow",
+      "recipes": [],
+      "code_assets": []
+    },
+    "overflow": {
+      "group": "layout-stacking-overflow",
+      "recipes": [],
+      "code_assets": []
+    },
+    "clipping-mask": {
+      "group": "layout-stacking-overflow",
+      "recipes": [],
+      "code_assets": []
+    },
+    "breakpoint": {
+      "group": "layout-responsive-viewport",
+      "recipes": [],
+      "code_assets": []
+    },
+    "responsive-layout": {
+      "group": "layout-responsive-viewport",
+      "recipes": [
+        "recipes/layout/responsive-content-grid.md"
+      ],
+      "code_assets": [
+        "responsive-content-grid"
+      ]
+    },
+    "sticky-position": {
+      "group": "layout-stacking-overflow",
+      "recipes": [],
+      "code_assets": []
+    },
+    "glassmorphism": {
+      "group": "style-surface-material",
+      "recipes": [],
+      "code_assets": []
+    },
+    "translucent-surface": {
+      "group": "style-surface-material",
+      "recipes": [],
+      "code_assets": []
+    },
+    "hairline-border": {
+      "group": "style-border-color",
+      "recipes": [],
+      "code_assets": []
+    },
+    "inner-shadow": {
+      "group": "style-surface-material",
+      "recipes": [],
+      "code_assets": []
+    },
+    "noise-texture": {
+      "group": "style-surface-material",
+      "recipes": [],
+      "code_assets": []
+    },
+    "highlight-stroke": {
+      "group": "style-border-color",
+      "recipes": [],
+      "code_assets": []
+    },
+    "font-weight": {
+      "group": "style-typography",
+      "recipes": [],
+      "code_assets": []
+    },
+    "line-height": {
+      "group": "style-typography",
+      "recipes": [],
+      "code_assets": []
+    },
+    "letter-spacing": {
+      "group": "style-typography",
+      "recipes": [],
+      "code_assets": []
+    },
+    "text-overflow": {
+      "group": "style-typography",
+      "recipes": [],
+      "code_assets": []
+    },
+    "line-clamp": {
+      "group": "style-typography",
+      "recipes": [],
+      "code_assets": []
+    },
+    "gap": {
+      "group": "layout-spacing-sizing",
+      "recipes": [],
+      "code_assets": []
+    },
+    "padding": {
+      "group": "layout-spacing-sizing",
+      "recipes": [],
+      "code_assets": []
+    },
+    "aspect-ratio": {
+      "group": "layout-spacing-sizing",
+      "recipes": [],
+      "code_assets": []
+    },
+    "container-query": {
+      "group": "layout-responsive-viewport",
+      "recipes": [],
+      "code_assets": []
+    },
+    "layout-shift": {
+      "group": "layout-stacking-overflow",
+      "recipes": [],
+      "code_assets": []
+    },
+    "aria-expanded": {
+      "group": "accessibility-aria-screen-reader",
+      "recipes": [],
+      "code_assets": []
+    },
+    "aria-invalid": {
+      "group": "accessibility-aria-screen-reader",
+      "recipes": [],
+      "code_assets": []
+    },
+    "aria-live": {
+      "group": "accessibility-aria-screen-reader",
+      "recipes": [],
+      "code_assets": []
+    },
+    "sr-only": {
+      "group": "accessibility-aria-screen-reader",
+      "recipes": [],
+      "code_assets": []
+    },
+    "focus-trap": {
+      "group": "accessibility-focus-motion",
+      "recipes": [],
+      "code_assets": []
+    },
+    "mobile-first": {
+      "group": "layout-responsive-viewport",
+      "recipes": [],
+      "code_assets": []
+    },
+    "fluid-layout": {
+      "group": "layout-responsive-viewport",
+      "recipes": [],
+      "code_assets": []
+    },
+    "dynamic-viewport-unit": {
+      "group": "layout-responsive-viewport",
+      "recipes": [],
+      "code_assets": []
+    },
+    "safe-area-inset": {
+      "group": "layout-responsive-viewport",
+      "recipes": [],
+      "code_assets": []
+    },
+    "scroll-snap": {
+      "group": "layout-scroll-behavior",
+      "recipes": [],
+      "code_assets": []
+    },
+    "tap-feedback": {
+      "group": "feedback-interaction-states",
+      "recipes": [],
+      "code_assets": []
+    },
+    "optimistic-update": {
+      "group": "feedback-accessibility-states",
+      "recipes": [],
+      "code_assets": []
+    },
+    "pending-state": {
+      "group": "feedback-accessibility-states",
+      "recipes": [],
+      "code_assets": []
+    },
+    "hover-reveal": {
+      "group": "feedback-interaction-states",
+      "recipes": [],
+      "code_assets": []
+    },
+    "gesture-hint": {
+      "group": "feedback-accessibility-states",
+      "recipes": [],
+      "code_assets": []
+    },
+    "outline": {
+      "group": "style-border-color",
+      "recipes": [],
+      "code_assets": []
+    },
+    "blend-mode": {
+      "group": "style-border-color",
+      "recipes": [],
+      "code_assets": []
+    },
+    "object-fit": {
+      "group": "layout-spacing-sizing",
+      "recipes": [],
+      "code_assets": []
+    },
+    "semantic-color": {
+      "group": "style-border-color",
+      "recipes": [],
+      "code_assets": []
+    },
+    "theme-token": {
+      "group": "style-tokens",
+      "recipes": [],
+      "code_assets": []
+    },
+    "blog-post-card": {
+      "group": "data-display-misc",
+      "recipes": [],
+      "code_assets": []
+    },
+    "blog-grid-section": {
+      "group": "structure-sections",
+      "recipes": [],
+      "code_assets": []
+    },
+    "featured-post-card": {
+      "group": "data-display-misc",
+      "recipes": [],
+      "code_assets": []
+    },
+    "contact-form-section": {
+      "group": "structure-sections",
+      "recipes": [],
+      "code_assets": []
+    },
+    "contact-info-panel": {
+      "group": "data-display-misc",
+      "recipes": [],
+      "code_assets": []
+    },
+    "office-location-card": {
+      "group": "data-display-misc",
+      "recipes": [],
+      "code_assets": []
+    },
+    "content-section": {
+      "group": "structure-sections",
+      "recipes": [
+        "recipes/docs/article-documentation-layout.md"
+      ],
+      "code_assets": []
+    },
+    "split-content-section": {
+      "group": "structure-sections",
+      "recipes": [],
+      "code_assets": []
+    },
+    "logo-cloud-section": {
+      "group": "structure-sections",
+      "recipes": [],
+      "code_assets": []
+    },
+    "reviews-summary-block": {
+      "group": "data-commerce-billing",
+      "recipes": [],
+      "code_assets": []
+    },
+    "order-history-list": {
+      "group": "data-tables-lists",
+      "recipes": [],
+      "code_assets": []
+    },
+    "product-quickview-modal": {
+      "group": "structure-panels",
+      "recipes": [],
+      "code_assets": []
+    },
+    "incentive-trust-strip": {
+      "group": "structure-sections",
+      "recipes": [
+        "recipes/commerce/promo-banner-system.md"
+      ],
+      "code_assets": [
+        "promo-banner-system"
+      ]
+    },
+    "review-list-with-filters": {
+      "group": "data-tables-lists",
+      "recipes": [],
+      "code_assets": []
+    },
+    "variant-selector-buttons": {
+      "group": "selection-options",
+      "recipes": [],
+      "code_assets": []
+    },
+    "wishlist-management-view": {
+      "group": "data-tables-lists",
+      "recipes": [],
+      "code_assets": []
+    },
+    "cross-sell-related-strip": {
+      "group": "structure-sections",
+      "recipes": [],
+      "code_assets": []
+    },
+    "permission-matrix-editor": {
+      "group": "data-tables-lists",
+      "recipes": [
+        "recipes/data-display/permission-matrix-editor-grid.md"
+      ],
+      "code_assets": [
+        "permission-matrix-editor-grid"
+      ]
+    },
+    "danger-zone": {
+      "group": "structure-sections",
+      "recipes": [],
+      "code_assets": []
+    },
+    "impersonation-session-banner": {
+      "group": "feedback-access-limits",
+      "recipes": [],
+      "code_assets": []
+    },
+    "config-environment-diff-view": {
+      "group": "data-tables-lists",
+      "recipes": [],
+      "code_assets": []
+    },
+    "data-import-wizard-validation-preview": {
+      "group": "selection-navigation",
+      "recipes": [
+        "recipes/forms/data-import-wizard-validation-preview-steps.md"
+      ],
+      "code_assets": [
+        "data-import-wizard-validation-preview-steps"
+      ]
+    },
+    "interactive-api-playground": {
+      "group": "structure-content-elements",
+      "recipes": [],
+      "code_assets": []
+    },
+    "docs-landing-hub-category-cards": {
+      "group": "structure-sections",
+      "recipes": [],
+      "code_assets": []
+    },
+    "api-error-reference-table": {
+      "group": "data-tables-lists",
+      "recipes": [],
+      "code_assets": []
+    }
+  }
+}

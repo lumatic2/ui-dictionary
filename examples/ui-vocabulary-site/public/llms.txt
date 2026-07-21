@@ -33,6 +33,8 @@ Rules for consumers: reference semantic tokens, never hard-code color/dimension 
 - [docs/design-system/agent-asset-model.md](https://ui.askewly.com/llms/docs/design-system/agent-asset-model.md): How coding agents are expected to consume tokens, taxonomy, and recipes
 - [docs/design-system/component-restyle.md](https://ui.askewly.com/llms/docs/design-system/component-restyle.md): Component-layer restyle contract: keep shadcn-class behavior guarantees, remap the look to the working project's own tokens — the escape route from the generic shadcn face
 - [docs/design-system/absorption-criteria.md](https://ui.askewly.com/llms/docs/design-system/absorption-criteria.md): Decision rules for absorbing external expressive libraries: what becomes a canonical recipe, what stays a link reference, what waits
+- [docs/design-system/no-asset-fallback.md](https://ui.askewly.com/llms/docs/design-system/no-asset-fallback.md): What to build from when a term has NO recipe and NO code asset (481 of 562 terms): use the term entry itself as material — visual_anatomy as a parts checklist, anti_use as the boundary, related as the neighbour diff. A missing recipe must not stop the work
+- [docs/ui-vocabulary/term-asset-map.json](https://ui.askewly.com/llms/docs/ui-vocabulary/term-asset-map.json): Generated term↔recipe↔code-asset map: for any term, what exists to build it with. Empty recipes AND code_assets means take the no-asset-fallback path
 
 ## Knowledge
 
