@@ -14,14 +14,26 @@ Index of all assets: `https://ui.askewly.com/llms.txt` (raw URLs; link-only, val
 1.5. **Code assets before re-implementation.** Before writing any component from a recipe, check the llms.txt "Code Assets" section (or the recipe's own "Code asset" callout). If an asset exists for the pattern you are building, the code-first path (A-2.5 below) is the default — re-implementing from prose when an asset exists wastes verification and produces drift.
 2. Fetch [docs/design-system/anti-patterns.md](https://ui.askewly.com/llms/docs/design-system/anti-patterns.md) — the generic-AI-output failure modes to avoid.
 3. **Self-judgment is a mandatory step, not a suggestion — no runtime hook will remind you; this document is the only place the obligation lives.** Fetch [docs/design-system/style-signature.md](https://ui.askewly.com/llms/docs/design-system/style-signature.md) and judge your finished output against it *before* reporting: all 5 operating principles met + 0 hard-fail dislikes. Include the per-principle judgment in your report; a report without it is incomplete. (Dogfooding DF-1/DF-2: workers skipped this step 2 out of 2 times — do not be the third.)
-4. Close the loop with verification: interaction states complete (hover/focus/active/disabled/loading/error), dark mode holds, WCAG contrast passes. The website's Getting set up page describes the same loop for humans: Explore → Acquire → Inject → Verify.
+4. **Close the loop with verification — and the gate depends on the medium you decided in N-0.** Checking a print piece with the screen checklist passes work that is broken paper. Fetch [docs/design-system/medium-taxonomy.md](https://ui.askewly.com/llms/docs/design-system/medium-taxonomy.md) if you need the reasoning; the gate itself is:
+
+   - **Screen** — interaction states complete (hover/focus/active/disabled/loading/empty/error), dark mode holds, WCAG contrast passes, responsive boundaries do not collapse. The website's Getting set up page describes the same loop for humans: Explore → Acquire → Inject → Verify.
+   - **Print** — bleed covers past the trim line and required content sits inside the safe area ([print-spec.md](https://ui.askewly.com/llms/docs/design-system/print-spec.md), `validatePrintSpec`). **Paper defaults to white — do not carry screen canvas tokens onto the page.** Then **rasterize the final format itself and look at it**: for a PDF, render the PDF pages to images (PyMuPDF or equivalent), never an HTML screenshot, and inspect at least three — first, a middle one, and last. A browser screenshot and a print engine's output diverge on `@page` margins, pagination, font embedding, and color profile.
+   - **Deck** — the declared canvas preset matches the actual ratio ([slide-spec.md](https://ui.askewly.com/llms/docs/design-system/slide-spec.md), `validateSlideDeclaration` — "16:9" alone does not fix the canvas), and body contrast clears WCAG AA (4.5:1 normal / 3:1 large). The folklore rules (safe area, 24pt minimum, 6×6) are **opt-in warnings with an evidence grade attached, not pass conditions** — do not report them as failures.
 5. **Human verification is the final gate — self-judgment (step 3) is only the floor, not the ceiling.** The user judges the *live* result, not a screenshot: open the finished work in the user's default browser (`Start-Process <url>` on Windows, `open` on macOS) and, if it needs a local server, **keep that server running until the user has confirmed** — a killed server turns the page into an error the moment they look. Capture screenshots as well (light and dark at minimum, plus key interaction/empty/error states) and attach them to your report as the durable evidence record. Then wait: do not declare the work complete, and do not deploy, until the user has looked and confirmed. Clean up the server after confirmation or at session end. "Passed the signature" and "actually looks good" are different claims — only human eyes on the live page settle the second one.
 
-## Before the task branches: name it, pick it, then find what to build it with
+## Before the task branches: pin the medium, name it, pick it, then find what to build it with
 
-These three steps run **before** A/B/C below, in this order. They exist because a request usually names an outcome ("정보가 많은데 펼치고 접혔으면"), not a UI element — and the branches below all assume the element is already decided.
+These steps run **before** A/B/C below, in this order. They exist because a request usually names an outcome ("정보가 많은데 펼치고 접혔으면"), not a UI element — and the branches below all assume the element is already decided.
 
 Skip a step only when it is genuinely moot, and say so in the report (`요소 결정: 해당 없음 — 요소 지정됨`).
+
+### N-0. Pin the medium — decide it once, carry it to the end
+
+Ask one question: **does the output get interacted with?** Pressed, typed into, navigated → **screen**. Only read → **print**. Presented to a room, slide by slide → **deck**.
+
+Default is screen. Say the answer in your report — it decides which gate closes the work (step 4 above), and getting it wrong means passing the wrong checklist. One project can produce more than one medium; then each artifact runs its own gate. A component that passed the screen gate is **not** cleared for the page it gets printed on.
+
+Why this is step zero rather than a detail at the end: the medium changes what you build, not just what you check. Paper has no hover state and no dark mode; a deck has no responsive breakpoint. Deciding it after the work is done means rebuilding.
 
 ### N-1. Name it — look the vocabulary up
 
