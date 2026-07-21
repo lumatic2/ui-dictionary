@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "active_work_id": "dog2-cli-publication",
+  "active_work_id": "dog3-typography-scale",
   "works": {
     "SFB1": {
       "title": "Structure Contract And Clean Production",
@@ -3849,6 +3849,57 @@
       "updated_at": "2026-07-22",
       "notes": "Registered atomically by canonical harness approve_harness_plan.py after plan validation.",
       "completion_summary": "DOG2 완료 — @askewly/design@0.1.0 공개 배포. 검사기가 이제 남의 프로젝트에서 npx로 돈다. 계획에 없던 2FA 벽(WebAuthn만 제공·자동화 불가)은 스코프 한정 토큰으로 우회 후 즉시 폐기."
+    },
+    "dog3-typography-scale": {
+      "work_id": "dog3-typography-scale",
+      "horizon_id": "design-output-gates",
+      "milestone_id": "DOG3",
+      "status": "active",
+      "plan_path": "plans/2026-07-22-dog3-typography-scale.md",
+      "changeset_path": "changesets/20260722-typography-scale-rule",
+      "next_step": "step-1",
+      "current_step": "step-1",
+      "steps": [
+        {
+          "id": "step-1",
+          "label": "step-1 — 무엇을 '단계'로 셀 것인가",
+          "status": "pending"
+        },
+        {
+          "id": "step-2",
+          "label": "step-2 — CLI 표면",
+          "status": "pending"
+        },
+        {
+          "id": "step-3",
+          "label": "step-3 — 우리 자산에 돌려본다",
+          "status": "pending"
+        }
+      ],
+      "execution_mode": "continuous",
+      "approval": {
+        "approved_by": "user",
+        "approved_at": "2026-07-22",
+        "plan_sha256": "a7f6b15df501b14922ae256a3bc8091ff762bb4bfd9537a919a9ee1c5f62ae96"
+      },
+      "allowed_stop_reasons": [
+        "completed",
+        "blocked",
+        "decision_required",
+        "risk_gate",
+        "secret_required",
+        "external_authority_required",
+        "user_stopped"
+      ],
+      "stop_reason": null,
+      "stop_detail": {},
+      "session_ids": [
+        "codex:claude-session",
+        "claude:c35bd5f3-2423-44d5-bdcd-cfa5c54eb080"
+      ],
+      "owner_session_uuid": "claude:c35bd5f3-2423-44d5-bdcd-cfa5c54eb080",
+      "updated_at": "2026-07-22",
+      "notes": "Registered atomically by canonical harness approve_harness_plan.py after plan validation."
     }
   }
 }

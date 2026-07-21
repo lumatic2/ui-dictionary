@@ -1,0 +1,7 @@
+/* FIXTURE — CSS 선언. 기대: {14, 24} */
+.caption {
+  font-size: 14px;
+}
+.lead {
+  font-size: 1.5rem;
+}

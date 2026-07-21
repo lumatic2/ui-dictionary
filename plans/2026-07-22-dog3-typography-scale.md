@@ -72,7 +72,7 @@ horizon 실사가 확정한 사실 두 가지가 이 milestone의 근거다.
 
 ## Step 트리
 
-- [ ] **step-1 — 무엇을 '단계'로 셀 것인가**
+- [x] **step-1 — 무엇을 '단계'로 셀 것인가**
   - Artifact: font-size 정규화 규칙(Tailwind 이름 유틸리티·임의값·인라인 style·CSS 선언 → 해석된 px 정수 Set)과, 위 "설계 결정" 표의 조회 테이블·반응형 비계수 규칙을 구현한 순수 함수(`resolveTypographySteps(fileContent): Set<number>` 형태). fixture로 규칙을 고정한다.
   - Files: write `packages/cli/src/typography.ts`, `packages/cli/test/typography.test.ts`, `packages/cli/test/fixtures/typography-regression/named-utility.tsx`(토큰 스케일 안 5개 이름), `packages/cli/test/fixtures/typography-regression/out-of-scale.tsx`(`text-xs`·`text-4xl` 등 스케일 밖 이름), `packages/cli/test/fixtures/typography-regression/arbitrary-and-inline.tsx`(임의 px/rem + 인라인 style), `packages/cli/test/fixtures/typography-regression/responsive.tsx`(`md:text-lg` 등 — 기저 이름과 같은 단계로 합쳐지는지), `packages/cli/test/fixtures/typography-regression/mixed.css`(CSS `font-size` 선언).
   - Dependencies: 없음
