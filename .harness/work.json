@@ -3837,8 +3837,10 @@
         "external_authority_required",
         "user_stopped"
       ],
-      "stop_reason": null,
-      "stop_detail": {},
+      "stop_reason": "decision_required",
+      "stop_detail": {
+        "summary": "디자인 검사기 CLI를 npm에 공개 배포하기 직전에 멈췄습니다. 한 번 올린 버전 번호는 영구히 재사용할 수 없어 되돌릴 수 없고, 이 PC는 지금 npm에 로그인돼 있지 않습니다(ENEEDAUTH). 로그인과 배포 승인이 필요합니다."
+      },
       "session_ids": [
         "codex:claude-session",
         "claude:c35bd5f3-2423-44d5-bdcd-cfa5c54eb080"
