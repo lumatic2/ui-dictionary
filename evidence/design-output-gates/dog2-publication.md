@@ -152,3 +152,38 @@ npx --yes @askewly/design@0.1.0 terms search accordion    # 정상
 
 - **2027-01 전에 Trusted Publishing으로 옮겨야 한다.** bypass 2FA 토큰은 그때 직접 배포에서 막힌다. GitHub Actions OIDC 경로(레포가 이미 GitHub에 있다)가 npm 공식 권고다. DOG2 step-3(재배포 절차)에 시한과 함께 적는다.
 - **재배포마다 이 토큰 절차를 반복해야 한다** — 발급·사용·폐기 3단계. 이것 자체가 Trusted Publishing으로 옮길 이유다.
+
+---
+
+## step-3 — 버전·재배포 절차 (2026-07-22)
+
+`docs/design-system/cli-release-procedure.md` 신설. 담은 것:
+
+- **버전 정책** — patch=오탐·누락 수정 / minor=새 규칙·새 커맨드·데이터 갱신 / major=CLI 인터페이스 변경
+- **배포 전 확인** — `npm pack --dry-run` 기준값(13 files·약 237 kB)과 누출 금지 목록
+- **현행 토큰 경로** — 발급(스코프 한정·7일)·사용·**즉시 폐기** 3단계, 토큰 값 비기록 원칙
+- **배포 후 검증** — 전파 확인 → 버전 확인 → **레포 밖 `npx` 실증**. "publish 성공"과 "받을 수 있음"을 갈라서 본다(이번 배포에서 실제로 3분간 갈렸다)
+- **배포본↔소스 어긋남 확인** — 소스가 앞서면 남의 프로젝트는 옛 규칙으로 검사받는다
+- **⚠ 2027-01 시한** — bypass 2FA 토큰 폐지, Trusted Publishing(GitHub Actions OIDC) 전환 필요
+
+### 절차 자체 검증
+
+문서의 "배포본↔소스 어긋남 확인" 절차를 실제로 돌렸다:
+
+| 표면 | 값 |
+|---|---|
+| `npm view @askewly/design version` | `0.1.0` |
+| `packages/cli/package.json` | `0.1.0` |
+
+일치 — 미배포 변경 없음.
+
+## DOG2 종합 (2026-07-22)
+
+| 항목 | step-1 이전 | 최종 |
+|---|---|---|
+| `npm view @askewly/design` | **E404** | `0.1.0` |
+| license | `UNLICENSED` (공개 불가) | `MIT` |
+| 레포 밖 실행 | 불가 | `npx @askewly/design verify` 동작 |
+| 재배포 절차 | 없음 | `docs/design-system/cli-release-procedure.md` |
+
+DoD 충족: `npx @askewly/design@0.1.0 verify <dir>` 가 이 레포 밖에서 동작한다.

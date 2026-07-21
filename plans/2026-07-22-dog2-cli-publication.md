@@ -94,7 +94,7 @@ Status: approved (2026-07-22 — 사용자가 horizon `design-output-gates` 6 mi
   - Failure probe: 잘못된 버전 번호로 publish했을 경우 그 정확한 `name@version` 조합은 영구히 재사용 불가(위 unpublish 제약 확인됨) — 이 leaf의 verify를 실행하기 전에 `npm view`로 배포된 버전이 의도한 값과 일치하는지 먼저 대조해, 불일치가 발견되면 **unpublish가 아니라 다음 패치 버전으로 정정 publish**하는 경로를 따른다.
   - Commit: changeset `cli-npm-publish`.
 
-- [ ] **step-3 — 버전·재배포 절차**
+- [x] **step-3 — 버전·재배포 절차**
   - Artifact: 검사 규칙 변경(오탐 수정=패치, 새 규칙 추가=마이너, CLI 인터페이스 변경=메이저) 시 재배포가 필요하다는 semver 규약을 문서화한 절차서. 배포본과 소스가 어긋났는지 확인하는 방법(예: `npm view @askewly/design version`과 `packages/cli/package.json`의 `version` 필드 대조, 또는 배포된 tarball의 `data/terms.json` 항목 수와 로컬 `build:data` 재실행 결과 대조) 포함.
   - Files: write `packages/cli/README.md`(신규 — 현재 없음. 배포 상태·설치법·재배포 절차 안내), write `evidence/design-output-gates/dog2-publication.md`(절차 링크 추가).
   - Dependencies: step-2
