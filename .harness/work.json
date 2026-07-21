@@ -3688,11 +3688,11 @@
       "work_id": "gp1-linear-pptx-pilot",
       "horizon_id": "getdesign-pptx-pilot",
       "milestone_id": "GP1",
-      "status": "active",
+      "status": "completed",
       "plan_path": "plans/2026-07-21-gp1-linear-pptx-pilot.md",
       "changeset_path": "changesets/20260721-getdesign-linear-intake",
-      "next_step": "step-3",
-      "current_step": "step-3",
+      "next_step": null,
+      "current_step": null,
       "steps": [
         {
           "id": "step-1",
@@ -3707,7 +3707,7 @@
         {
           "id": "step-3",
           "label": "step-3 — 네이티브 PPTX 생성과 교차 검증",
-          "status": "pending"
+          "status": "completed"
         }
       ],
       "execution_mode": "continuous",
@@ -3725,14 +3725,17 @@
         "external_authority_required",
         "user_stopped"
       ],
-      "stop_reason": null,
-      "stop_detail": {},
+      "stop_reason": "completed",
+      "stop_detail": {
+        "summary": "Native editable PPTX confirmed; visual-quality refinement is outside this thin pilot."
+      },
       "session_ids": [
         "codex:getdesign-pptx-pilot-20260721"
       ],
       "owner_session_uuid": null,
       "updated_at": "2026-07-21",
-      "notes": "Registered atomically by canonical harness approve_harness_plan.py after plan validation."
+      "notes": "Registered atomically by canonical harness approve_harness_plan.py after plan validation.",
+      "completion_summary": "getdesign 기반 DESIGN.md에서 웹과 수정 가능한 6장 PPTX를 생성·편집 확인했다."
     }
   }
 }

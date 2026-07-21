@@ -6,3 +6,4 @@
 {"event": "undocumented_stop", "next_task": "step-2 — 목록에서 고른다", "remaining": 2, "runtime": "claude", "total": 3, "ts": "2026-07-20T17:46:01.623623+00:00", "unhonored_reason": null, "work_id": "ect2-color-picker"}
 {"event": "undocumented_stop", "next_task": "step-2 — 목록에서 고른다", "remaining": 2, "runtime": "claude", "total": 3, "ts": "2026-07-20T18:13:12.302497+00:00", "unhonored_reason": null, "work_id": "ect2-color-picker"}
 {"event": "undocumented_stop", "next_task": "step-2 — 묶인 것을 푼다", "remaining": 2, "runtime": "claude", "total": 3, "ts": "2026-07-20T18:41:33.298136+00:00", "unhonored_reason": null, "work_id": "ect3-bind-detach"}
+{"event": "undocumented_stop", "next_task": "step-3 — 네이티브 PPTX 생성과 교차 검증", "remaining": 1, "runtime": "codex", "total": 3, "ts": "2026-07-21T06:35:16.493686+00:00", "unhonored_reason": null, "work_id": "gp1-linear-pptx-pilot"}

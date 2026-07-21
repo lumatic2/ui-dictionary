@@ -16,4 +16,9 @@ Date: 2026-07-21
 
 ## Pending human gate
 
-Open `examples/getdesign-pptx-pilot/output/askewly-design-intro.pptx` in a presentation editor and change a text box and a rectangle. Record the result before closing GP1.
+2026-07-21: user opened the deck and confirmed both a text box and a rectangle can be edited.
+
+## Human observation
+
+- Result: editable PPTX requirement confirmed.
+- Limitation: the user found multiple visual-quality gaps. This thin pilot proves the native-output path, not production-ready slide quality; collect a concrete critique and add a quality rubric before expanding the pipeline.
