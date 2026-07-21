@@ -3,6 +3,7 @@ import { readFileSync } from "node:fs"
 import path from "node:path"
 import { Command } from "commander"
 import { addRecipe, initProject, InjectError } from "./inject.js"
+import { DEFAULT_TYPOGRAPHY_THRESHOLD } from "./typography.js"
 import { verifyDir } from "./verify.js"
 import {
   loadRecipes,
@@ -158,19 +159,30 @@ program
   .command("verify")
   .argument("[dir]", "directory to scan", ".")
   .option("--ext <list>", "comma-separated extensions to scan", "tsx,ts,jsx,js,css,html")
-  .description("scan for color values that bypass the token system (hex literals, raw rgb/hsl/oklch)")
-  .action((dir: string, options: { ext: string }) => {
+  .option("--typography-threshold <n>", "max distinct font sizes per file", String(DEFAULT_TYPOGRAPHY_THRESHOLD))
+  .description("scan for color values that bypass the token system and screens with too many type sizes")
+  .action((dir: string, options: { ext: string; typographyThreshold: string }) => {
     const target = path.resolve(dir)
-    const { files, violations } = verifyDir(target, options.ext.split(",").map((e) => e.trim()))
+    const typographyThreshold = Number(options.typographyThreshold)
+    if (!Number.isInteger(typographyThreshold) || typographyThreshold < 1) {
+      console.error(`--typography-threshold must be a positive integer (got "${options.typographyThreshold}")`)
+      process.exit(2)
+    }
+    const { files, violations } = verifyDir(
+      target,
+      options.ext.split(",").map((e) => e.trim()),
+      { typographyThreshold },
+    )
     if (violations.length === 0) {
-      console.log(`verify PASS — ${files} file(s) scanned, no color literals (tokens.css/askewly.css and build dirs are excluded)`)
+      console.log(`verify PASS — ${files} file(s) scanned, no color literals and no file over ${typographyThreshold} type sizes`)
       return
     }
     console.error(`verify FAIL — ${violations.length} violation(s) in ${files} file(s):`)
     for (const violation of violations) {
       console.error(`  ${path.relative(target, violation.file)}:${violation.line} [${violation.rule}] ${violation.excerpt}`)
     }
-    console.error("\nFix: replace literals with semantic token utilities (bg-primary, text-foreground, border-border, ...).")
+    console.error("\nFix: replace color literals with semantic token utilities (bg-primary, text-foreground, ...);")
+    console.error("     collapse extra type sizes onto the token scale, or raise --typography-threshold.")
     process.exit(1)
   })
 

@@ -7,6 +7,7 @@ import { initProject } from "../src/inject.js"
 import { maskIgnoredRegions, verifyDir } from "../src/verify.js"
 
 const FIXTURES = path.join(path.dirname(fileURLToPath(import.meta.url)), "fixtures", "verify-regression")
+const FIXTURES_TYPO = path.join(path.dirname(fileURLToPath(import.meta.url)), "fixtures", "typography-regression")
 
 const dirs: string[] = []
 function tempDir(): string {
@@ -53,7 +54,8 @@ describe("verifyDir", () => {
 describe("verifyDir — ignored regions (DOG1 step-2)", () => {
   function scanFixture(name: string) {
     const dir = tempDir()
-    const source = readFileSync(path.join(FIXTURES, name), "utf8")
+    const base = name.includes("steps") ? FIXTURES_TYPO : FIXTURES
+    const source = readFileSync(path.join(base, name), "utf8")
     writeFileSync(path.join(dir, name), source)
     return verifyDir(dir).violations
   }
@@ -121,6 +123,42 @@ describe("verifyDir — ignored regions (DOG1 step-2)", () => {
     const dir = tempDir()
     writeFileSync(path.join(dir, "one.tsx"), `const a = "#111"\n`)
     expect(verifyDir(dir).violations).toHaveLength(1)
+  })
+
+  // DOG3 step-2 — typography rule wired into the same scan.
+  it("passes a file within the type-size limit", () => {
+    expect(scanFixture("three-steps.tsx")).toHaveLength(0)
+  })
+
+  it("passes a file using exactly our full token scale", () => {
+    // Five steps is our SSOT scale in full. If this ever fails, the threshold
+    // makes the design system violate itself — the reason we did not take
+    // Kraft's 4 unchanged.
+    expect(scanFixture("five-steps.tsx")).toHaveLength(0)
+  })
+
+  it("flags a file over the limit, pointing at the breaking line", () => {
+    const violations = scanFixture("six-steps.tsx")
+    expect(violations).toHaveLength(1)
+    expect(violations[0]).toMatchObject({ line: 10, rule: "typography-scale-exceeded" })
+    expect(violations[0].excerpt).toBe("font-size steps: 12, 14, 16, 20, 28, 40 (6 > limit 5)")
+  })
+
+  it("honours a raised threshold", () => {
+    const dir = tempDir()
+    const name = "six-steps.tsx"
+    writeFileSync(path.join(dir, name), readFileSync(path.join(FIXTURES_TYPO, name), "utf8"))
+    expect(verifyDir(dir, ["tsx"], { typographyThreshold: 8 }).violations).toHaveLength(0)
+    expect(verifyDir(dir, ["tsx"], { typographyThreshold: 5 }).violations).toHaveLength(1)
+  })
+
+  it("does not count type sizes mentioned in comments", () => {
+    const dir = tempDir()
+    writeFileSync(
+      path.join(dir, "c.tsx"),
+      `// old sizes: text-xs text-3xl text-5xl text-7xl text-9xl text-4xl\n<p className="text-base" />\n`,
+    )
+    expect(verifyDir(dir, ["tsx"]).violations).toHaveLength(0)
   })
 
   it("masks without shifting line numbers", () => {

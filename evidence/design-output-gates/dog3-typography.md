@@ -71,3 +71,45 @@
 
 - `packages/cli` 43 tests PASS (32 → +11)
 - `tsc --noEmit` exit 0
+
+---
+
+## step-2 — CLI 표면 (2026-07-22)
+
+### 임계값: 계획 4 → 실제 5 (승인 결정 반영)
+
+plan 본문은 기본값 4로 적혀 있으나, **horizon 결정 로그 5번(사용자 승인 2026-07-22)은 5**다. plan이 승인 이전에 작성돼 옛 값을 담고 있었다. 승인된 값을 따랐고 근거는 plan 자신이 이미 적어둔 것과 같다:
+
+> 우리 SSOT(`typography.scale`)가 이미 5단계라, 4를 그대로 쓰면 **토큰 정의를 다 쓰는 것만으로도 위반**이 된다.
+
+`five-steps.tsx` fixture가 이 판단을 코드에 고정한다 — 우리 스케일 전부를 쓴 파일이 PASS여야 한다.
+
+### 실표면 관측 (`node dist/index.js verify`)
+
+| fixture | 단계 수 | 결과 |
+|---|---|---|
+| `three-steps.tsx` | 3 | `verify PASS — no file over 5 type sizes` |
+| `five-steps.tsx` | **5 (경계)** | **PASS** — 우리 토큰 스케일 전부 |
+| `six-steps.tsx` | **6 (경계)** | **FAIL** — `six-steps.tsx:10 [typography-scale-exceeded] font-size steps: 12, 14, 16, 20, 28, 40 (6 > limit 5)` |
+| `six-steps.tsx` + `--typography-threshold 8` | 6 | **PASS** (옵션이 실제로 임계값을 바꾼다) |
+
+보고 줄이 **10행**이다 — 6번째 값 `12px`(`text-xs`)이 처음 등장한 줄. 파일 첫 줄을 가리켰으면 무엇을 고칠지 말해주지 못한다.
+
+### Failure probe
+
+| probe | 조작 | 결과 |
+|---|---|---|
+| D | `--typography-threshold` 옵션 무시 | **1건 실패** (`honours a raised threshold`) |
+| E | 경계 비교 `>` → `>=` | **2건 실패** — 그중 하나가 `passes a file using exactly our full token scale` |
+
+E가 이 step의 핵심 위험을 정확히 잡는다: 부호 하나가 틀리면 **디자인 시스템 스케일을 온전히 쓴 화면이 위반**이 된다.
+
+### 부수 확인
+
+- 주석 안의 `text-xs text-3xl …` 6종은 계수되지 않는다 — DOG1의 마스킹이 타이포 규칙에도 적용된다(같은 마스킹 산출물을 쓴다).
+- 실패 안내문이 색 얘기만 하던 것을 타이포 항목까지 포함하도록 고쳤다.
+
+### 게이트
+
+- `packages/cli` 48 tests PASS (43 → +5)
+- `tsc --noEmit` exit 0 · `npm run build` 성공 · 루트 `npm run verify` exit 0

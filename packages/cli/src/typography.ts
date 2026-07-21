@@ -121,3 +121,44 @@ export function resolveTypographySteps(source: string, scale = typographyScale()
 
   return steps
 }
+
+/**
+ * Default step limit.
+ *
+ * Kraft (당근) uses 4. We use 5 because our own token scale defines five sizes
+ * (sm 14 / base 16 / lg 20 / xl 28 / 2xl 40) — at 4, a screen that uses the
+ * design system's full scale and nothing else would be a violation. Borrowing
+ * someone else's number without checking it against our tokens would have made
+ * the rule contradict the system it is supposed to defend.
+ */
+export const DEFAULT_TYPOGRAPHY_THRESHOLD = 5
+
+export type TypographyViolation = {
+  line: number
+  steps: number[]
+  threshold: number
+}
+
+/**
+ * Returns the violation for one file, or null when it stays within the limit.
+ * The reported line is where the step that broke the limit first appears —
+ * pointing at the first line of the file would say nothing about what to fix.
+ */
+export function typographyViolation(
+  source: string,
+  threshold = DEFAULT_TYPOGRAPHY_THRESHOLD,
+  scale = typographyScale(),
+): TypographyViolation | null {
+  const seen = new Set<number>()
+  let breakingLine: number | null = null
+
+  source.split("\n").forEach((text, index) => {
+    for (const step of resolveTypographySteps(text, scale)) {
+      seen.add(step)
+      if (breakingLine === null && seen.size > threshold) breakingLine = index + 1
+    }
+  })
+
+  if (breakingLine === null) return null
+  return { line: breakingLine, steps: [...seen].sort((a, b) => a - b), threshold }
+}

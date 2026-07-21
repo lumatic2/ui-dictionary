@@ -80,7 +80,7 @@ horizon 실사가 확정한 사실 두 가지가 이 milestone의 근거다.
   - Failure probe: rem→px 환산 계수를 16이 아닌 다른 값으로 바꾸면 `arbitrary-and-inline.tsx`의 기대값 14가 깨진다. 반응형 접두사를 벗기지 않고 별도 이름(`md:text-lg`)으로 취급하도록 되돌리면 `responsive.tsx` 기대 Set 크기가 달라져 테스트가 실패한다. 스케일 밖 조회 테이블 값을 하나 틀리게 고치면 `out-of-scale.tsx` 기대값이 깨진다.
   - Commit: changeset `typography-scale-rule`.
 
-- [ ] **step-2 — CLI 표면**
+- [x] **step-2 — CLI 표면**
   - Artifact: `askewly-design verify`가 색 규칙과 나란히 타이포 규칙을 돈다. 파일별 고유 font-size 개수가 임계값(기본 4, `--typography-threshold <n>` 옵션으로 조정)을 넘으면 위반 1건을 보고한다. 보고 형식은 기존 색 위반과 같은 모양(파일:줄·규칙명·발췌) — 규칙명은 `typography-scale-exceeded`, 줄은 임계값을 넘긴 시점(정렬된 고유값 중 (threshold+1)번째 값)이 처음 등장한 줄, 발췌는 파일에서 검출된 전체 고유값 목록(예: `font-size steps: 12, 14, 16, 20, 28, 36 (6 > limit 4)`).
   - Files: write `packages/cli/src/verify.ts`, `packages/cli/src/typography.ts`, `packages/cli/src/index.ts`(`verify` 커맨드에 `--typography-threshold` 옵션 추가), `packages/cli/test/verify.test.ts`, `packages/cli/test/fixtures/typography-regression/three-steps.tsx`(3단계, PASS 기대), `packages/cli/test/fixtures/typography-regression/six-steps.tsx`(6단계, FAIL 기대).
   - Dependencies: step-1

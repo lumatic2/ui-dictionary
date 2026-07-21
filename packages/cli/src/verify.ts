@@ -1,10 +1,11 @@
 import { readFileSync, readdirSync, statSync } from "node:fs"
 import path from "node:path"
+import { DEFAULT_TYPOGRAPHY_THRESHOLD, typographyViolation } from "./typography.js"
 
 export type Violation = {
   file: string
   line: number
-  rule: "hex-literal" | "raw-color-fn"
+  rule: "hex-literal" | "raw-color-fn" | "typography-scale-exceeded"
   excerpt: string
 }
 
@@ -134,12 +135,18 @@ function collectFiles(dir: string, extensions: string[]): string[] {
  * hex literals and raw color functions. Token indirection means UI code
  * should only reference semantic utilities (bg-primary, text-foreground, ...).
  */
-export function verifyDir(dir: string, extensions: string[] = DEFAULT_EXTENSIONS): { files: number; violations: Violation[] } {
+export function verifyDir(
+  dir: string,
+  extensions: string[] = DEFAULT_EXTENSIONS,
+  options: { typographyThreshold?: number } = {},
+): { files: number; violations: Violation[] } {
+  const threshold = options.typographyThreshold ?? DEFAULT_TYPOGRAPHY_THRESHOLD
   const files = collectFiles(dir, extensions)
   const violations: Violation[] = []
   for (const file of files) {
     const source = readFileSync(file, "utf8")
-    const scanned = maskIgnoredRegions(source, path.extname(file).slice(1)).split("\n")
+    const masked = maskIgnoredRegions(source, path.extname(file).slice(1))
+    const scanned = masked.split("\n")
     const original = source.split("\n")
     scanned.forEach((text, index) => {
       for (const { name, pattern } of RULES) {
@@ -149,6 +156,19 @@ export function verifyDir(dir: string, extensions: string[] = DEFAULT_EXTENSIONS
         violations.push({ file, line: index + 1, rule: name, excerpt: original[index].trim().slice(0, 120) })
       }
     })
+
+    // Typography counts per file, not per line: the question is how many sizes
+    // one screen uses. Comments and SVG are masked out here too — a size
+    // mentioned in a comment is not rendered.
+    const typography = typographyViolation(masked, threshold)
+    if (typography) {
+      violations.push({
+        file,
+        line: typography.line,
+        rule: "typography-scale-exceeded",
+        excerpt: `font-size steps: ${typography.steps.join(", ")} (${typography.steps.length} > limit ${typography.threshold})`,
+      })
+    }
   }
   return { files: files.length, violations }
 }
