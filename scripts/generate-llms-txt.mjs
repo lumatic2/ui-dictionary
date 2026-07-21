@@ -59,6 +59,7 @@ const FIXED_ASSETS = [
       ["docs/design-system/agent-asset-model.md", "How coding agents are expected to consume tokens, taxonomy, and recipes"],
       ["docs/design-system/component-restyle.md", "Component-layer restyle contract: keep shadcn-class behavior guarantees, remap the look to the working project's own tokens — the escape route from the generic shadcn face"],
       ["docs/design-system/absorption-criteria.md", "Decision rules for absorbing external expressive libraries: what becomes a canonical recipe, what stays a link reference, what waits"],
+      ["docs/design-system/decision-format.md", "Decision data contract: how a cluster file encodes the axes that split confusable candidates (axis needs a source URL + confidence; rule order is itself the judgment), and the 요소 결정 report block every decision must leave behind"],
       ["docs/design-system/no-asset-fallback.md", "What to build from when a term has NO recipe and NO code asset (481 of 562 terms): use the term entry itself as material — visual_anatomy as a parts checklist, anti_use as the boundary, related as the neighbour diff. A missing recipe must not stop the work"],
       ["docs/ui-vocabulary/term-asset-map.json", "Generated term↔recipe↔code-asset map: for any term, what exists to build it with. Empty recipes AND code_assets means take the no-asset-fallback path"],
     ],
@@ -231,6 +232,39 @@ function main() {
     `- Group shards (${shardFiles.length}): ${BASE_URL}/llms/${vocabDirRel}/<group>.yml — full term bodies (one_liner, visual_anatomy, when_to_use, anti_use, related). Group ids come from the index`,
   );
   lines.push("");
+
+  // Decisions (VL5/VL6): 후보들 사이를 가르는 축. 군집 파일은 손으로 쓰는 정본이라
+  // 생성기가 만들지 않고 **있는 것을 전부 등재**한다 — 새 군집을 추가하면 자동으로 실린다.
+  const decisionsSrc = path.join(REPO_ROOT, "docs", "design-system", "decisions");
+  if (existsSync(decisionsSrc)) {
+    const clusterFiles = readdirSync(decisionsSrc).filter((f) => f.endsWith(".md")).sort();
+    if (!clusterFiles.includes("README.md")) {
+      throw new Error("decisions/README.md 가 없다 — 군집 인덱스 없이 등재하면 에이전트가 진입점을 못 찾는다");
+    }
+    lines.push("## Decisions (which element to use)");
+    lines.push("");
+    lines.push(
+      "When a request names an outcome but not an element, these files split the confusable candidates. Start at the README index, open the ONE cluster that covers your candidates, answer its axes, then evaluate rules top-to-bottom — rule order is itself the judgment. Leave a 요소 결정 block in your report (contract: decision-format.md).",
+    );
+    lines.push("");
+    for (const f of clusterFiles) {
+      const rel = `docs/design-system/decisions/${f}`;
+      const urlPath = copyAsset(rel);
+      writtenUrls.push(urlPath);
+      const text = readFileSync(path.join(decisionsSrc, f), "utf8");
+      let desc
+      if (f === "README.md") {
+        desc = "Cluster index — start here. Also lists the clusters deliberately NOT written and why (already answered correctly without axes / no external source for the label)";
+      } else {
+        const fm = text.match(/^---\r?\n([\s\S]*?)\r?\n---/);
+        const line = (key) => fm?.[1].split(/\r?\n/).find((l) => l.startsWith(`${key}:`))?.replace(new RegExp(`^${key}:\\s*`), "").replace(/^"|"$/g, "").trim();
+        const cands = line("candidates") ?? "";
+        desc = `${line("name") ?? f} — ${line("question") ?? ""} · candidates ${cands}`;
+      }
+      lines.push(`- [${rel}](${BASE_URL}${urlPath}): ${desc}`);
+    }
+    lines.push("");
+  }
 
   writeFileSync(LLMS_TXT, lines.join("\n"));
 

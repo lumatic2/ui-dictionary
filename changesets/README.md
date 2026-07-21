@@ -220,3 +220,7 @@
 | 218 | 20260721-decision-miss-batch | 2026-07-21 | VL5 step 1: 오판 3군집(오버레이·단일선택·기다림). 모델이 못 맞히는 임계값만 담음 — 분량이 표면을 바꾼다/공간이 개수보다 먼저/범위가 형태를 바꾼다. 기준선 오판 3/3 정답 도달, 과적합 probe 10건 어긋남 0 | 3/3 | complete |
 | 219 | 20260721-decision-unverified-batch | 2026-07-21 | VL5 step 2: 미확인 3군집 재조사 — 긍정 라벨 확보한 2개만 신설(내비게이션·카드형), 1개는 단일선택에 흡수, "더보기" 절단은 확인 실패로 미작성. AI 요약이 제시한 미확인 인용은 쓰지 않음 | 3/3 | complete |
 | 220 | 20260721-decision-corpus-integrity | 2026-07-21 | VL5 step 3: 군집 인덱스에 만들지 않은 군집과 사유를 명시. 교차 모순 검사 probe로 exit 1 확인. 최종 6 clusters/축 26/규칙 32 | 2/2 | complete |
+| 221 | 20260721-protocol-vocabulary-lookup | 2026-07-21 | VL6 step 1: 프로토콜에 용어 조회 단계 신설(언급 0회이던 것). 조회 실패가 작업 중단이 되지 않게 폴백 명시 | 2/2 | complete |
+| 222 | 20260721-protocol-element-decision | 2026-07-21 | VL6 step 2: 요소 결정 단계 신설 + A/B/C 우회 경로 차단. 축을 못 답하면 사용자에게 그대로 되묻는 것을 정상 경로로 규정 | 2/2 | complete |
+| 223 | 20260721-protocol-asset-branch-and-record | 2026-07-21 | VL6 step 3: 자산 분기(코드>레시피>폴백)로 C 분기의 열린 끝을 메우고, 요소 결정 보고 블록을 계약화 | 2/2 | complete |
+| 224 | 20260721-protocol-publication | 2026-07-21 | VL6 step 4: llms.txt Decisions 섹션 등재(군집 자동 수집). README 없으면 거부하는 probe, 필수 단계 밀림 없음 확인 | 4/4 | complete |

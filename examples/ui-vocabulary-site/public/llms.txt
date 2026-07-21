@@ -33,6 +33,7 @@ Rules for consumers: reference semantic tokens, never hard-code color/dimension 
 - [docs/design-system/agent-asset-model.md](https://ui.askewly.com/llms/docs/design-system/agent-asset-model.md): How coding agents are expected to consume tokens, taxonomy, and recipes
 - [docs/design-system/component-restyle.md](https://ui.askewly.com/llms/docs/design-system/component-restyle.md): Component-layer restyle contract: keep shadcn-class behavior guarantees, remap the look to the working project's own tokens — the escape route from the generic shadcn face
 - [docs/design-system/absorption-criteria.md](https://ui.askewly.com/llms/docs/design-system/absorption-criteria.md): Decision rules for absorbing external expressive libraries: what becomes a canonical recipe, what stays a link reference, what waits
+- [docs/design-system/decision-format.md](https://ui.askewly.com/llms/docs/design-system/decision-format.md): Decision data contract: how a cluster file encodes the axes that split confusable candidates (axis needs a source URL + confidence; rule order is itself the judgment), and the 요소 결정 report block every decision must leave behind
 - [docs/design-system/no-asset-fallback.md](https://ui.askewly.com/llms/docs/design-system/no-asset-fallback.md): What to build from when a term has NO recipe and NO code asset (481 of 562 terms): use the term entry itself as material — visual_anatomy as a parts checklist, anti_use as the boundary, related as the neighbour diff. A missing recipe must not stop the work
 - [docs/ui-vocabulary/term-asset-map.json](https://ui.askewly.com/llms/docs/ui-vocabulary/term-asset-map.json): Generated term↔recipe↔code-asset map: for any term, what exists to build it with. Empty recipes AND code_assets means take the no-asset-fallback path
 
@@ -126,3 +127,15 @@ Do NOT fetch the whole dictionary — the source is 665KB. Read the lookup contr
 - [docs/design-system/vocabulary-lookup.md](https://ui.askewly.com/llms/docs/design-system/vocabulary-lookup.md): How to look a term up: by name, by intent (category axis), and what to do when the concept is not in the dictionary — a lookup miss must not stop the work
 - [docs/ui-vocabulary/vocabulary/index.md](https://ui.askewly.com/llms/docs/ui-vocabulary/vocabulary/index.md): Term index — ids and Korean names only, grouped by category then group. No definitions here; it tells you which shard to open
 - Group shards (58): https://ui.askewly.com/llms/docs/ui-vocabulary/vocabulary/<group>.yml — full term bodies (one_liner, visual_anatomy, when_to_use, anti_use, related). Group ids come from the index
+
+## Decisions (which element to use)
+
+When a request names an outcome but not an element, these files split the confusable candidates. Start at the README index, open the ONE cluster that covers your candidates, answer its axes, then evaluate rules top-to-bottom — rule order is itself the judgment. Leave a 요소 결정 block in your report (contract: decision-format.md).
+
+- [docs/design-system/decisions/README.md](https://ui.askewly.com/llms/docs/design-system/decisions/README.md): Cluster index — start here. Also lists the clusters deliberately NOT written and why (already answered correctly without axes / no external source for the label)
+- [docs/design-system/decisions/card-vs-list-expand.md](https://ui.askewly.com/llms/docs/design-system/decisions/card-vs-list-expand.md): 카드형 펼침 — 항목마다 요약을 보여주고 필요하면 자세히 펼치게 하고 싶다 · candidates [disclosure-card, accordion, card, expandable-row]
+- [docs/design-system/decisions/disclosure-family.md](https://ui.askewly.com/llms/docs/design-system/decisions/disclosure-family.md): 펼침류 — 정보가 많은데 펼치고 접혔으면 좋겠다 · candidates [accordion, tabs, disclosure, disclosure-card, stepper, drawer]
+- [docs/design-system/decisions/navigation-scope.md](https://ui.askewly.com/llms/docs/design-system/decisions/navigation-scope.md): 내비게이션 범위 — 여기서 저기로 갈 수 있게 해야 하는데 무엇을 두나 · candidates [breadcrumb, sidebar-nav, navigation-drawer, tabs, anchor-nav]
+- [docs/design-system/decisions/overlay-surfaces.md](https://ui.askewly.com/llms/docs/design-system/decisions/overlay-surfaces.md): 오버레이 표면 — 이 작업을 지금 화면 위에 띄워야 하는데 어떤 방식이 맞나 · candidates [dialog, drawer, side-sheet, modal-bottom-sheet, full-screen-dialog]
+- [docs/design-system/decisions/single-choice-input.md](https://ui.askewly.com/llms/docs/design-system/decisions/single-choice-input.md): 단일 선택 입력 — 여럿 중 하나를 고르게 해야 한다 · candidates [radio-group, select, segmented-control, switch, combobox]
+- [docs/design-system/decisions/waiting-and-absence.md](https://ui.askewly.com/llms/docs/design-system/decisions/waiting-and-absence.md): 기다림과 비어 있음 — 아직 보여줄 게 없다 — 무엇을 그 자리에 두나 · candidates [skeleton, spinner, progress-bar, empty-state]
