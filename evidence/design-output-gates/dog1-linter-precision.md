@@ -98,3 +98,44 @@ step-1이 적은 기준선 숫자가 그대로 뒤집혔다: 오탐 **4 → 0**,
 
 - `packages/cli` 30 tests PASS (21 → +9)
 - `tsc --noEmit` exit 0 · `npm run build` 성공 · 루트 `npm run verify` exit 0
+
+---
+
+## step-3 — 한 줄 다중 위반 전수 보고 (2026-07-22)
+
+### 접근
+
+삼항 분기(`HEX ? ... : FN ? ... : null`)를 규칙 배열의 독립 검사로 바꿨다. 보고 단위는 **줄 × 규칙**(줄 × 발생 횟수가 아니다).
+
+### 관측 (step-1 기준선 대비)
+
+| fixture | step-1 | step-3 | 판정 |
+|---|---|---|---|
+| `oneline.tsx` | 위반 **1** (`hex-literal` 만) | 위반 **2** (`:4 hex-literal` + `:4 raw-color-fn`) | 누락 해소 |
+| `svg.tsx` | 2 → (step-2) 0 | 0 | 유지 |
+| `comment.tsx` | 2 → (step-2) 0 | 0 | 유지 |
+| `clean.tsx` | 0 | 0 | 유지 |
+| `svg-outside.tsx` | — | 2 | 유지 |
+| `comment-outside.tsx` | — | 2 | 유지 |
+
+### Failure probe 실행 결과
+
+삼항 분기 동작으로 되돌림 → `reports every rule matched on one line, not just the first` **1건만** 실패. 원복 후 32/32 PASS.
+
+### 게이트
+
+- `packages/cli` 32 tests PASS (30 → +2)
+- `tsc --noEmit` exit 0 · `npm run build` 성공 · 루트 `npm run verify` exit 0
+
+---
+
+## DOG1 종합 — 기준선 대조 (2026-07-22)
+
+| 항목 | step-1 기준선 | 최종 | 판정 |
+|---|---|---|---|
+| 오탐 | **4건** (svg 2 + comment 2) | **0건** | 해소 |
+| 누락 | **1건** (oneline의 raw-color-fn) | **0건** | 해소 |
+| 정탐 하한 | clean PASS | clean PASS + 예외밖 4건 검출 | 강화 |
+| 테스트 | 21 | **32** (+11) | — |
+
+DoD 충족: 검사기가 SVG 내부·주석 안의 색 리터럴을 보고하지 않고, 한 줄에 여러 위반이 있으면 전부 보고한다.

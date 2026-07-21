@@ -16,6 +16,14 @@ const SKIP_FILES = new Set(["tokens.css", "askewly.css"])
 const HEX_RULE = /#[0-9a-fA-F]{3,8}\b/
 const COLOR_FN_RULE = /\b(?:rgb|rgba|hsl|hsla|oklch)\(/
 
+// Every rule is checked independently per line. A single ternary would report
+// only the first match and silently drop the rest — `"#111" + "rgb(1,2,3)"`
+// hid its raw-color-fn violation that way (DOG1 step-1 baseline).
+const RULES: ReadonlyArray<{ name: Violation["rule"]; pattern: RegExp }> = [
+  { name: "hex-literal", pattern: HEX_RULE },
+  { name: "raw-color-fn", pattern: COLOR_FN_RULE },
+]
+
 // `//` starts a comment in JS-family sources only. In CSS it does not, and
 // blanking to end-of-line there would hide real declarations.
 const LINE_COMMENT_EXTENSIONS = new Set(["ts", "tsx", "js", "jsx"])
@@ -134,11 +142,11 @@ export function verifyDir(dir: string, extensions: string[] = DEFAULT_EXTENSIONS
     const scanned = maskIgnoredRegions(source, path.extname(file).slice(1)).split("\n")
     const original = source.split("\n")
     scanned.forEach((text, index) => {
-      const rule = HEX_RULE.test(text) ? "hex-literal" : COLOR_FN_RULE.test(text) ? "raw-color-fn" : null
-      if (rule) {
+      for (const { name, pattern } of RULES) {
+        if (!pattern.test(text)) continue
         // Report the untouched source line — the mask is a matching device,
         // not something the reader should have to decode.
-        violations.push({ file, line: index + 1, rule, excerpt: original[index].trim().slice(0, 120) })
+        violations.push({ file, line: index + 1, rule: name, excerpt: original[index].trim().slice(0, 120) })
       }
     })
   }

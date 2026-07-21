@@ -106,6 +106,23 @@ describe("verifyDir — ignored regions (DOG1 step-2)", () => {
     expect(verifyDir(dir).violations).toHaveLength(1)
   })
 
+  // DOG1 step-3.
+  it("reports every rule matched on one line, not just the first", () => {
+    const dir = tempDir()
+    const source = readFileSync(path.join(FIXTURES, "oneline.tsx"), "utf8")
+    writeFileSync(path.join(dir, "oneline.tsx"), source)
+    const violations = verifyDir(dir).violations
+    expect(violations).toHaveLength(2)
+    expect(violations[0]).toMatchObject({ line: 4, rule: "hex-literal" })
+    expect(violations[1]).toMatchObject({ line: 4, rule: "raw-color-fn" })
+  })
+
+  it("still reports a single rule once when only one matches", () => {
+    const dir = tempDir()
+    writeFileSync(path.join(dir, "one.tsx"), `const a = "#111"\n`)
+    expect(verifyDir(dir).violations).toHaveLength(1)
+  })
+
   it("masks without shifting line numbers", () => {
     const source = `/* rgb(1,2,3)\n   #ffffff */\nconst c = "#abc"\n`
     const masked = maskIgnoredRegions(source, "tsx")

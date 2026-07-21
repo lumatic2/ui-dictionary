@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "active_work_id": "ect5-judgeability",
+  "active_work_id": "dog1-linter-precision",
   "works": {
     "SFB1": {
       "title": "Structure Contract And Clean Production",
@@ -3743,6 +3743,57 @@
       "updated_at": "2026-07-21",
       "notes": "Registered atomically by canonical harness approve_harness_plan.py after plan validation.",
       "completion_summary": "편집기 색 UI가 사람 말을 쓰게 됐고 ECT horizon을 닫았다 — 과업 ①은 안내 없이 성공, 기준 6은 부분 충족으로 명시."
+    },
+    "dog1-linter-precision": {
+      "work_id": "dog1-linter-precision",
+      "horizon_id": "design-output-gates",
+      "milestone_id": "DOG1",
+      "status": "active",
+      "plan_path": "plans/2026-07-22-dog1-linter-precision.md",
+      "changeset_path": "changesets/20260722-linter-regression-corpus",
+      "next_step": "step-1",
+      "current_step": "step-1",
+      "steps": [
+        {
+          "id": "step-1",
+          "label": "step-1 — 지금 상태를 실측해 고정한다",
+          "status": "pending"
+        },
+        {
+          "id": "step-2",
+          "label": "step-2 — SVG 내부·주석 예외",
+          "status": "pending"
+        },
+        {
+          "id": "step-3",
+          "label": "step-3 — 한 줄 다중 위반 전수 보고",
+          "status": "pending"
+        }
+      ],
+      "execution_mode": "continuous",
+      "approval": {
+        "approved_by": "user",
+        "approved_at": "2026-07-22",
+        "plan_sha256": "e8a640ddef83289b6f65bd51d01ce8c827fd8791fb063f14a300b5e24abe6587"
+      },
+      "allowed_stop_reasons": [
+        "completed",
+        "blocked",
+        "decision_required",
+        "risk_gate",
+        "secret_required",
+        "external_authority_required",
+        "user_stopped"
+      ],
+      "stop_reason": null,
+      "stop_detail": {},
+      "session_ids": [
+        "codex:claude-session",
+        "claude:c35bd5f3-2423-44d5-bdcd-cfa5c54eb080"
+      ],
+      "owner_session_uuid": "claude:c35bd5f3-2423-44d5-bdcd-cfa5c54eb080",
+      "updated_at": "2026-07-22",
+      "notes": "Registered atomically by canonical harness approve_harness_plan.py after plan validation."
     }
   }
 }
