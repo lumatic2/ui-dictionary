@@ -3731,8 +3731,11 @@
         "external_authority_required",
         "user_stopped"
       ],
-      "stop_reason": null,
-      "stop_detail": {},
+      "stop_reason": "decision_required",
+      "stop_detail": {
+        "message": "편집기 색 문구를 사용자가 알아듣는 말로 바꿔 놓았다. 그게 실제로 통하는지는 사람이 화면을 보고 확인해야 한다 — 브라우저에서 과업 두 건만 해보면 이 horizon이 닫힌다.",
+        "step": "step-3"
+      },
       "session_ids": [
         "claude:fbf7b6fa-e5b1-407b-b379-6b760846cb21"
       ],
