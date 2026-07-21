@@ -57,3 +57,44 @@ done
 - 오탐: **4건** (svg 2 + comment 2)
 - 누락: **1건** (oneline의 `raw-color-fn`)
 - 정탐: clean.tsx PASS 유지 — step-2에서 예외를 넓게 뚫어도 이 값은 안 바뀌어야 한다
+
+---
+
+## step-2 — SVG 내부·주석 예외 (2026-07-22)
+
+### 접근
+
+step-1의 발견(오탐이 두 규칙 모두에 있다)에 따라 **규칙별 예외가 아니라 스캔 전 문맥 제거**로 구현했다. `maskIgnoredRegions(source, ext)` 가 주석과 SVG 마크업을 공백으로 덮되 문자 위치·줄바꿈을 보존한다.
+
+### 관측 (step-1 기준선 대비)
+
+| fixture | step-1 실측 | step-2 실측 | 판정 |
+|---|---|---|---|
+| `svg.tsx` | 위반 2 | **0** | 오탐 해소 |
+| `comment.tsx` | 위반 2 | **0** | 오탐 해소 |
+| `clean.tsx` | 0 | 0 | 유지 |
+| `svg-outside.tsx` (신규) | — | **2** (`:5` hex-literal · `:8` raw-color-fn) | 예외 밖 정탐 |
+| `comment-outside.tsx` (신규) | — | **2** (`:6` hex-literal · `:10` raw-color-fn) | 예외 밖 정탐 |
+| `oneline.tsx` | 위반 1 | 1 | step-3 대상 (미변경) |
+
+step-1이 적은 기준선 숫자가 그대로 뒤집혔다: 오탐 **4 → 0**, 정탐 하한 유지.
+
+### Failure probe 실행 결과
+
+| probe | 조작 | 관측 |
+|---|---|---|
+| A | 마스킹 제거 | 5건 실패 |
+| B | 예외를 파일 전체 스킵으로 확대 | 1건 실패 (`still flags literals outside the SVG block`) |
+
+둘 다 원복 후 30/30 PASS 확인.
+
+### ⚠ 첫 probe 시도 무효 (절차 기록)
+
+첫 시도는 heredoc 내 문자열 치환의 이스케이프 불일치로 **치환이 전혀 일어나지 않은 채** 테스트가 통과했다. 원본 코드가 그대로였으니 통과가 당연했다. 대상 문자열을 바이트 비교해 드러났고, 파일 편집 도구로 다시 돌려 A/B 실패를 확인했다.
+
+→ **probe는 통과하면 probe 자체를 의심한다.** 실패를 봐야 검증이다.
+
+### 게이트
+
+- `packages/cli` 30 tests PASS (21 → +9)
+- `tsc --noEmit` exit 0 · `npm run build` 성공 · 루트 `npm run verify` exit 0
