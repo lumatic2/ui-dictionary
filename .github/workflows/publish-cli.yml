@@ -58,31 +58,49 @@ jobs:
         run: npm publish --access public
 
       # "publish 가 성공을 찍었다"와 "레지스트리에서 받을 수 있다"는 다른 사실이다.
-      # 2026-07-22 최초 배포에서 실제로 3분간 갈렸다. 그래서 여기서 다시 잰다.
-      - name: 전파 확인 + 레포 밖 실증
+      # 2026-07-22 최초 배포에서 실제로 3분간 갈렸다.
+      #
+      # 이 단계는 한 번 틀렸다(run 29852373791): 패키지 문서가 200 이면 통과로 봤는데,
+      # 그건 이전 버전 때문에 즉시 통과한다. **버전**이 받아지는지를 물어야 한다.
+      - name: 전파 확인 (버전 단위)
         if: ${{ !inputs.dry_run }}
         run: |
           VERSION=$(node -p "require('./package.json').version")
           echo "배포한 버전: $VERSION"
-
           for i in $(seq 1 20); do
-            CODE=$(curl -s -o /dev/null -w "%{http_code}" https://registry.npmjs.org/@askewly%2fdesign)
-            echo "try $i: HTTP $CODE"
-            [ "$CODE" = "200" ] && break
+            if npm view "@askewly/design@$VERSION" version > /dev/null 2>&1; then
+              echo "try $i: $VERSION 조회 성공"
+              exit 0
+            fi
+            echo "try $i: 아직 전파되지 않음"
             sleep 15
           done
+          echo "::error::5분 안에 $VERSION 이 레지스트리에서 조회되지 않았다"
+          exit 1
 
+      # 설치와 검사를 분리한다. 합쳐 두면 npx 실패(ETARGET 등)와 "린터가 위반을
+      # 찾음"이 둘 다 exit 1 이라 서로를 가린다 — 위 run 에서 실제로 거짓 안심과
+      # 거짓 경보가 동시에 났다. 설치가 먼저 실패하면 그 자리에서 멈춘다.
+      - name: 레포 밖 실증
+        if: ${{ !inputs.dry_run }}
+        run: |
+          VERSION=$(node -p "require('./package.json').version")
           WORK=$(mktemp -d)
-          mkdir -p "$WORK/bad" "$WORK/clean"
-          printf 'export const A = () => <div style={{ color: "#111", background: "rgb(1,2,3)" }} />\n' > "$WORK/bad/a.tsx"
-          printf 'export const B = () => <div className="bg-primary" />\n' > "$WORK/clean/b.tsx"
-
           cd "$WORK"
-          npx --yes "@askewly/design@$VERSION" verify bad --ext tsx && {
-            echo "::error::위반이 있는데 exit 0 이 나왔다"; exit 1
-          } || echo "위반 검출 OK (exit 1)"
+          npm init -y > /dev/null
+          npm install "@askewly/design@$VERSION"   # 실패하면 여기서 멈춘다
 
-          npx --yes "@askewly/design@$VERSION" verify clean --ext tsx || {
-            echo "::error::깨끗한 코드에 위반이 잡혔다(오탐)"; exit 1
-          }
-          echo "clean PASS OK (exit 0)"
+          mkdir -p bad clean
+          printf 'export const A = () => <div style={{ color: "#111", background: "rgb(1,2,3)" }} />\n' > bad/a.tsx
+          printf 'export const B = () => <div className="bg-primary" />\n' > clean/b.tsx
+          BIN=node_modules/.bin/askewly-design
+
+          set +e
+          "$BIN" verify bad --ext tsx; BAD=$?
+          "$BIN" verify clean --ext tsx; CLEAN=$?
+          set -e
+
+          echo "bad exit=$BAD (기대 1) · clean exit=$CLEAN (기대 0)"
+          [ "$BAD" -eq 1 ]   || { echo "::error::위반이 있는데 exit $BAD"; exit 1; }
+          [ "$CLEAN" -eq 0 ] || { echo "::error::깨끗한 코드에 exit $CLEAN (오탐)"; exit 1; }
+          echo "레포 밖 실증 OK"
