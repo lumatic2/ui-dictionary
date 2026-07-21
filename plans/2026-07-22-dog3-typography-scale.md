@@ -88,7 +88,7 @@ horizon 실사가 확정한 사실 두 가지가 이 milestone의 근거다.
   - Failure probe: 옵션을 무시하고 기본값만 쓰도록 배선을 되돌리면 `--typography-threshold 8` 테스트가 여전히 FAIL을 내 실패를 잡는다. 임계값 비교를 `>=`가 아니라 `>`로(또는 반대로) 잘못 두면 3단계·4단계 경계 fixture 중 하나가 기대와 어긋난다 — 이 경계 케이스를 fixture에 반드시 포함한다.
   - Commit: changeset `typography-scale-cli`.
 
-- [ ] **step-3 — 우리 자산에 돌려본다**
+- [x] **step-3 — 우리 자산에 돌려본다**
   - Artifact: `examples/ui-vocabulary-site`에 새 타이포 검사를 실제로 실행한 결과와, 임계값 4(및 대안 5)가 우리 자산 기준으로 현실적인지 판정한 evidence. "설계 결정" 절에서 미리 지목한 `home-page.tsx` 반례가 (a) 셈법 문제인지 (b) 임계값 문제인지 실측으로 가른다.
   - Files: write `evidence/design-output-gates/dog3-typography.md`, 필요 시 `packages/cli/src/typography.ts`(step-3에서 셈법 결함이 드러나면 이 leaf 안에서 수정 — 새 leaf를 만들지 않고 실측→보정을 한 changeset에 묶는다).
   - Dependencies: step-2
