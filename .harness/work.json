@@ -3055,6 +3055,218 @@
       "notes": "Registered atomically by canonical harness approve_harness_plan.py after plan validation.",
       "completed": "2026-07-21"
     },
+    "ect1-token-lookup": {
+      "work_id": "ect1-token-lookup",
+      "horizon_id": "editor-color-and-token-editing",
+      "milestone_id": "ECT1",
+      "status": "completed",
+      "plan_path": "plans/2026-07-21-ect1-token-lookup-and-validation.md",
+      "changeset_path": "changesets",
+      "next_step": null,
+      "current_step": "step-3",
+      "steps": [
+        {
+          "id": "step-1",
+          "label": "step-1 — 세트가 자기 토큰을 열거한다",
+          "status": "completed",
+          "changeset": "20260721-token-enumeration"
+        },
+        {
+          "id": "step-2",
+          "label": "step-2 — 편집기 토큰이 자기 종류를 안다",
+          "status": "completed",
+          "changeset": "20260721-editor-token-kind"
+        },
+        {
+          "id": "step-3",
+          "label": "step-3 — 없는 토큰은 저장되지 않는다",
+          "status": "completed",
+          "changeset": "20260721-token-existence-validation"
+        }
+      ],
+      "execution_mode": "continuous",
+      "approval": {
+        "approved_by": "user",
+        "approved_at": "2026-07-21",
+        "plan_sha256": "745e5c35c8a355cf8c10a6046e0863c41f387a3bb65be37742dfb722710cb8db"
+      },
+      "allowed_stop_reasons": [
+        "completed",
+        "blocked",
+        "decision_required",
+        "risk_gate",
+        "secret_required",
+        "external_authority_required",
+        "user_stopped"
+      ],
+      "stop_reason": null,
+      "stop_detail": {},
+      "session_ids": [
+        "claude:3208f4f6-fadd-4411-a59a-092e510b8529"
+      ],
+      "owner_session_uuid": "claude:3208f4f6-fadd-4411-a59a-092e510b8529",
+      "updated_at": "2026-07-21",
+      "notes": "steps 1-3 완료(206/207/208). 독립 검증 refuted → update-node 경로 우회 결함 수정(209). 재검증 대기 중.",
+      "completion_summary": "편집기가 이제 \"이 문서가 쓸 수 있는 토큰이 뭐냐\"고 물어볼 수 있다."
+    },
+    "ect2-color-picker": {
+      "work_id": "ect2-color-picker",
+      "horizon_id": "editor-color-and-token-editing",
+      "milestone_id": "ECT2",
+      "status": "completed",
+      "plan_path": "plans/2026-07-21-ect2-color-swatch-and-picker.md",
+      "changeset_path": "changesets",
+      "next_step": null,
+      "current_step": "step-3",
+      "steps": [
+        {
+          "id": "step-1",
+          "label": "step-1 — 색이 견본으로 보인다",
+          "status": "completed",
+          "changeset": "20260721-color-swatch"
+        },
+        {
+          "id": "step-2",
+          "label": "step-2 — 목록에서 고른다",
+          "status": "completed",
+          "changeset": "20260721-token-color-picker + 20260721-webgpu-selection-tint"
+        },
+        {
+          "id": "step-3",
+          "label": "step-3 — 키보드로도 되고, 사람이 본다",
+          "status": "completed",
+          "changeset": "20260721-color-picker-keyboard"
+        }
+      ],
+      "execution_mode": "continuous",
+      "approval": {
+        "approved_by": "user",
+        "approved_at": "2026-07-21",
+        "plan_sha256": "306bb9c5e086f40baa84395e59d859d9a269c8c54a157fc5cc4828637a07a9d8"
+      },
+      "allowed_stop_reasons": [
+        "completed",
+        "blocked",
+        "decision_required",
+        "risk_gate",
+        "secret_required",
+        "external_authority_required",
+        "user_stopped"
+      ],
+      "stop_reason": null,
+      "stop_detail": {},
+      "session_ids": [
+        "claude:3208f4f6-fadd-4411-a59a-092e510b8529"
+      ],
+      "owner_session_uuid": "claude:3208f4f6-fadd-4411-a59a-092e510b8529",
+      "updated_at": "2026-07-21",
+      "notes": "Registered atomically by canonical harness approve_harness_plan.py after plan validation.",
+      "completion_summary": "사용자가 색 견본을 보고, 눌러서 목록을 열고, 검색해서, 골라 색을 바꾼다."
+    },
+    "ect3-bind-detach": {
+      "work_id": "ect3-bind-detach",
+      "horizon_id": "editor-color-and-token-editing",
+      "milestone_id": "ECT3",
+      "status": "completed",
+      "plan_path": "plans/2026-07-21-ect3-bind-and-detach.md",
+      "changeset_path": "changesets",
+      "next_step": null,
+      "current_step": "step-3",
+      "steps": [
+        {
+          "id": "step-1",
+          "label": "step-1 — 안 묶인 것을 묶는다",
+          "status": "completed",
+          "changeset": "20260721-bind-new-token"
+        },
+        {
+          "id": "step-2",
+          "label": "step-2 — 묶인 것을 푼다",
+          "status": "completed",
+          "changeset": "20260721-detach-token-binding"
+        },
+        {
+          "id": "step-3",
+          "label": "step-3 — 원시 색을 고치고, 다시 묶는다 + 게이트",
+          "status": "completed",
+          "changeset": "20260721-raw-color-and-rebind"
+        }
+      ],
+      "execution_mode": "continuous",
+      "approval": {
+        "approved_by": "user",
+        "approved_at": "2026-07-21",
+        "plan_sha256": "d0b5c7068e69bcd13c53027ad33c6d9054c48bf290257216629b939b6f127685"
+      },
+      "allowed_stop_reasons": [
+        "completed",
+        "blocked",
+        "decision_required",
+        "risk_gate",
+        "secret_required",
+        "external_authority_required",
+        "user_stopped"
+      ],
+      "stop_reason": null,
+      "stop_detail": {},
+      "session_ids": [
+        "claude:3208f4f6-fadd-4411-a59a-092e510b8529"
+      ],
+      "owner_session_uuid": "claude:3208f4f6-fadd-4411-a59a-092e510b8529",
+      "updated_at": "2026-07-21",
+      "notes": "Registered atomically by canonical harness approve_harness_plan.py after plan validation.",
+      "completion_summary": "색이 없던 요소에 색을 묶을 수 있다."
+    },
+    "ect4-image-contract": {
+      "work_id": "ect4-image-contract",
+      "horizon_id": "editor-color-and-token-editing",
+      "milestone_id": "ECT4",
+      "status": "completed",
+      "plan_path": "plans/2026-07-21-ect4-image-node-and-contract.md",
+      "changeset_path": "changesets",
+      "next_step": null,
+      "current_step": "step-2",
+      "steps": [
+        {
+          "id": "step-1",
+          "label": "step-1 — 허용 키의 정본이 하나가 된다",
+          "status": "completed",
+          "changeset": "20260721-binding-key-contract"
+        },
+        {
+          "id": "step-2",
+          "label": "step-2 — 이미지 노드가 칠해진다 + 게이트",
+          "status": "completed",
+          "changeset": "20260721-image-node-token-render"
+        }
+      ],
+      "execution_mode": "continuous",
+      "approval": {
+        "approved_by": "user",
+        "approved_at": "2026-07-21",
+        "plan_sha256": "0f8c87e3f338932471d8d83954929e5e1ac405f54bc1fa71b560fdaa99cb4176"
+      },
+      "allowed_stop_reasons": [
+        "completed",
+        "blocked",
+        "decision_required",
+        "risk_gate",
+        "secret_required",
+        "external_authority_required",
+        "user_stopped"
+      ],
+      "stop_reason": "blocked",
+      "stop_detail": {
+        "reason": "ECT5는 사용자가 브라우저로 직접 편집기를 만져봐야 판정되는 관측 milestone인데, 사용자가 지금 브라우저를 쓸 수 없다. 색 바꾸기·색 새로 묶기·원시 색 지정 세 가지를 사용자가 해보고 되는지 말해주면 horizon이 닫힌다."
+      },
+      "session_ids": [
+        "claude:3208f4f6-fadd-4411-a59a-092e510b8529"
+      ],
+      "owner_session_uuid": "claude:3208f4f6-fadd-4411-a59a-092e510b8529",
+      "updated_at": "2026-07-21",
+      "notes": "Registered atomically by canonical harness approve_harness_plan.py after plan validation.",
+      "completion_summary": "허용 바인딩 키의 정본이 `canvas-core` 하나가 됐다."
+    },
     "vl1-flow-audit": {
       "work_id": "vl1-flow-audit",
       "horizon_id": "vocabulary-in-use",

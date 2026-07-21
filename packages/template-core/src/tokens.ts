@@ -1,3 +1,4 @@
+import { TOKEN_BINDING_KINDS } from '@askewly/canvas-core'
 import type { TemplateProject } from './types.js'
 
 /**
@@ -70,14 +71,13 @@ export function resolveTokenValue(set: TokenSet | null, binding: string): string
   return set?.tokens[binding]?.value ?? null
 }
 
-/** 노드의 `tokenBindings` 키가 요구하는 토큰 종류. 키가 늘면 여기에 추가한다. */
-const EXPECTED_KIND: Record<string, TokenKind> = {
-  /** 루트 프레임의 캔버스 바탕 — 컴파일러가 항상 `surface.canvas`로 건다. */
-  background: 'color',
-  fill: 'color',
-  color: 'color',
-  fontFamily: 'fontFamily',
-}
+/**
+ * 노드의 `tokenBindings` 키가 요구하는 토큰 종류.
+ *
+ * **정본은 `@askewly/canvas-core`의 `TOKEN_BINDING_KINDS` 하나다** (ECT4).
+ * 여기서 다시 적으면 두 목록이 갈라지고, 한쪽에 키를 더할 때 다른 쪽이 조용히 뒤처진다.
+ */
+const EXPECTED_KIND: Record<string, TokenKind> = TOKEN_BINDING_KINDS
 
 export type TokenIssue =
   | { code: 'TOKEN_SET_NOT_FOUND'; tokenSetId: string; message: string }

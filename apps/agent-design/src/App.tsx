@@ -18,6 +18,7 @@ import {
   type CanvasDocument,
   type CanvasHistory,
   type CanvasOperation,
+  registerTokenVocabulary,
 } from '@askewly/canvas-core'
 import { planMaterializeRegistryNode } from '@askewly/component-registry'
 import { templateSignature, type TemplateProject } from '@askewly/template-core'
@@ -30,6 +31,12 @@ import { InsertPalette } from './InsertPalette'
 import { LayersPanel } from './LayersPanel'
 import { TemplateGallery } from './TemplateGallery'
 import { PropertyInspector } from './PropertyInspector'
+import { documentTokenExists } from './documentTokens'
+
+// canvas-core는 어휘를 모른다(런타임 의존 0). 어휘를 아는 이쪽이 조회 함수를 건넨다 —
+// 이게 없으면 토큰 검증이 모양 검사로만 남아 없는 토큰이 조용히 저장된다(ECT1 step-3).
+// 모듈 최상위에서 등록하므로 App을 렌더하는 모든 경로(앱·테스트)가 같은 규칙을 쓴다.
+registerTokenVocabulary(documentTokenExists)
 import type { EditorPlaneFailure } from './editorPlaneRuntime'
 import { LiveBridgeClient, liveBridgeConfig, type CollaborationFeed } from './liveBridge'
 

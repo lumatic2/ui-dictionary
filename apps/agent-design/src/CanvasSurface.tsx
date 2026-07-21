@@ -27,6 +27,7 @@ import {
 } from '@askewly/canvas-core'
 import { EditorPlane } from './EditorPlane'
 import type { EditorPlaneFailure } from './editorPlaneRuntime'
+import { TOKEN_BINDING_KINDS } from '@askewly/canvas-core'
 import { documentTokens } from './documentTokens'
 
 interface Props {
@@ -59,13 +60,20 @@ function nodeStyle(node: CanvasNode, tokenSetId: string, previewBounds?: CanvasN
   const fillBinding = node.kind === 'shape' ? node.tokenBindings.fill : undefined
   const backgroundBinding = node.tokenBindings.background
   const colorBinding = node.tokenBindings.color
+  // 토큰에서 벗어난 색(ECT3 detach). **바인딩이 이긴다** — 둘이 겹쳐도 모호하지 않다.
+  const literal = node.literalColors ?? {}
 
   let background: string | null = null
   if (fillBinding) background = tokens.resolve(fillBinding)
+  else if (literal.fill && node.kind === 'shape') background = literal.fill
+  else if (backgroundBinding) background = tokens.resolveBackground(backgroundBinding)
+  else if (literal.background) background = literal.background
   else if (node.kind === 'shape') background = node.fill
   else background = tokens.resolveBackground(backgroundBinding)
 
-  const color = colorBinding ? tokens.resolve(colorBinding) : tokens.resolve('text.default')
+  const color = colorBinding
+    ? tokens.resolve(colorBinding)
+    : (literal.color ?? tokens.resolve('text.default'))
   const fontFamily = tokens.resolve(node.tokenBindings.fontFamily)
 
   const style: React.CSSProperties = {
@@ -94,7 +102,8 @@ function nodeStyle(node: CanvasNode, tokenSetId: string, previewBounds?: CanvasN
 function unresolvedBindings(node: CanvasNode, tokenSetId: string): boolean {
   const tokens = documentTokens(tokenSetId)
   if (tokens.source === 'unknown') return true
-  const bindings = [node.tokenBindings.background, node.tokenBindings.fill, node.tokenBindings.color, node.tokenBindings.fontFamily]
+  // 정본에서 키를 얻는다 — 손으로 나열하면 정본에 키가 늘 때 여기가 조용히 뒤처진다(ECT4).
+  const bindings = Object.keys(TOKEN_BINDING_KINDS).map((key) => node.tokenBindings[key])
   return bindings.some((binding) => binding !== undefined && tokens.resolve(binding) === null)
 }
 

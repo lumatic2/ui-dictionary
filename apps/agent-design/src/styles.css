@@ -287,3 +287,47 @@ button, select { font: inherit; }
 .geometry-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 6px 8px; }
 .geometry-grid .property-field { margin: 0; }
 .section-empty { margin: 0; font-size: 11px; color: var(--ad-text-muted); line-height: 1.5; }
+
+/* 색 바인딩 — 견본이 색을 말하고, 토큰 이름이 무엇인지 말한다.
+   색만으로 상태를 전달하지 않는다(견본 + 이름 + aria-label 3중). */
+.color-field { display: grid; gap: 5px; }
+.color-field-label { color: var(--ad-gray-7); font-size: 10px; }
+.color-field-value { display: flex; align-items: center; gap: 8px; min-width: 0; }
+/* 테두리가 없으면 밝은 견본이 패널 배경에 묻히고 어두운 견본은 경계가 사라진다. */
+.color-swatch { flex: none; width: 18px; height: 18px; border: 1px solid var(--ad-gray-9); border-radius: 4px; }
+/* 해석 실패는 회색으로 덮지 않는다 — 빈 상태라는 걸 형태로 말한다. */
+.color-swatch-unresolved { border-style: dashed; background: repeating-linear-gradient(45deg, transparent, transparent 3px, var(--ad-gray-9) 3px, var(--ad-gray-9) 4px); }
+.color-token-name { overflow: hidden; color: var(--ad-gray-1); font: 11px ui-monospace, monospace; text-overflow: ellipsis; white-space: nowrap; }
+.color-field-note { color: var(--ad-gray-7); font-size: 10px; line-height: 1.5; word-break: keep-all; }
+
+/* 견본이 버튼이 된다 — 상호작용 요소는 상태를 갖는다(무상태 인터랙션은 하드페일). */
+button.color-swatch { padding: 0; cursor: pointer; }
+button.color-swatch:hover { border-color: var(--ad-gray-6); }
+button.color-swatch:focus-visible { outline: 2px solid var(--ad-brand-lavender); outline-offset: 2px; }
+
+/* 토큰 선택 목록. 인스펙터 폭 안에 들어가는 인라인 패널 — 캔버스를 가리지 않는다. */
+.color-picker { display: grid; gap: 8px; margin-top: 6px; border: 1px solid var(--ad-gray-9); border-radius: 6px; padding: 8px; background: var(--ad-gray-12); max-height: 260px; overflow: auto; }
+.color-picker-search { width: 100%; height: 28px; border: 1px solid var(--ad-gray-9); border-radius: 4px; padding: 0 6px; background: transparent; color: var(--ad-gray-1); font: 11px ui-monospace, monospace; }
+.color-picker-search:focus { outline: 0; border-color: var(--ad-brand-lavender); }
+.color-picker-empty { margin: 0; color: var(--ad-gray-7); font-size: 10px; word-break: keep-all; }
+.color-picker-group { display: grid; gap: 2px; }
+.color-picker-group-name { margin: 0 0 2px; color: var(--ad-gray-7); font-size: 9px; letter-spacing: 0.04em; text-transform: uppercase; }
+.color-picker-option { display: flex; align-items: center; gap: 8px; width: 100%; border: 0; border-radius: 4px; padding: 4px 6px; background: transparent; text-align: left; cursor: pointer; }
+.color-picker-option:hover { background: var(--ad-gray-10); }
+.color-picker-option:focus-visible { outline: 2px solid var(--ad-brand-lavender); outline-offset: -2px; }
+/* 현재 선택은 색이 아니라 형태·글자로도 말한다(색만으로 상태 전달 금지). */
+.color-picker-option[aria-current="true"] { background: var(--ad-gray-10); }
+.color-picker-option[aria-current="true"] .color-token-name::after { content: ' · 지금 이 색'; color: var(--ad-gray-7); }
+/* 키보드 커서 — 마우스 hover와 구분되게 테두리로도 말한다(색만으로 상태 전달 금지). */
+.color-picker-option[data-active] { background: var(--ad-gray-10); outline: 1px solid var(--ad-brand-lavender); outline-offset: -1px; }
+/* 아직 안 묶인 색 — 막다른 안내문 대신 누를 수 있는 것을 둔다. */
+.color-bind-button { justify-self: start; border: 1px dashed var(--ad-gray-9); border-radius: 5px; padding: 5px 9px; background: transparent; color: var(--ad-gray-1); font-size: 11px; cursor: pointer; word-break: keep-all; }
+.color-bind-button:hover { border-style: solid; border-color: var(--ad-gray-6); }
+.color-bind-button:focus-visible { outline: 2px solid var(--ad-brand-lavender); outline-offset: 2px; }
+/* 토큰에서 벗어난 색 — 견본 모양으로도 구분한다(리서치: Figma·Penpot이 형태로 종류를 말한다). */
+.color-swatch-literal { border-radius: 50%; }
+.color-literal-input { min-width: 0; flex: 1; height: 24px; border: 0; border-bottom: 1px solid var(--ad-gray-9); padding: 2px; background: transparent; color: var(--ad-gray-1); font: 11px ui-monospace, monospace; }
+.color-literal-input:focus { outline: 0; border-bottom-color: var(--ad-brand-lavender); }
+.color-detach-button { justify-self: start; border: 0; padding: 2px 0; background: transparent; color: var(--ad-gray-7); font-size: 10px; text-decoration: underline; cursor: pointer; }
+.color-detach-button:hover { color: var(--ad-gray-1); }
+.color-detach-button:focus-visible { outline: 2px solid var(--ad-brand-lavender); outline-offset: 2px; }

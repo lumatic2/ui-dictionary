@@ -1,7 +1,9 @@
-import { describe, expect, it } from 'vitest'
+import { afterEach, describe, expect, it } from 'vitest'
 import { createDocumentFixture, firstComponent } from './fixtures.js'
-import { applyOperation, commitOperation, createHistory, redo, undo } from './operations.js'
-import { propertyFieldsForNode, validateNodePropertyEdit } from './properties.js'
+import type { CanvasDocument } from './types.js'
+import { applyOperation, commitOperation, createHistory, invertOperation, redo, undo } from './operations.js'
+import { recoverSnapshot, serializeSnapshot } from './persistence.js'
+import { propertyFieldsForNode, registerTokenVocabulary, validateLiteralColor, validateNodePropertyEdit } from './properties.js'
 
 const at = '2026-07-10T09:47:00.000Z'
 
@@ -52,5 +54,477 @@ describe('typed property runtime', () => {
     expect(history.present.nodes['node-00007']).toMatchObject({ kind: 'text', text: '한글 조합 완료' })
     expect(undo(history).present.nodes['node-00007']).toMatchObject({ kind: 'text', text: '한글 캔버스 입력' })
     expect(redo(undo(history)).present.nodes['node-00007']).toMatchObject({ kind: 'text', text: '한글 조합 완료' })
+  })
+})
+
+/**
+ * ECT1 step-3 — 없는 토큰은 저장되지 않는다.
+ *
+ * EU5까지 이 검사가 없었다. 모양(`x.y`)만 맞으면 없는 토큰도 **저장됐고**, 결함은
+ * 렌더 시점의 `data-token-unresolved`로만 남았다 — 화면은 아무 말도 하지 않았다.
+ * "조용히 거부"가 아니라 "조용히 수용"이었다.
+ */
+describe('토큰 실재 검증 (ECT1 step-3)', () => {
+  const vocabulary = (tokenSetId: string, name: string) =>
+    tokenSetId === 'askewly.default' && ['surface.base', 'surface.muted', 'text.default'].includes(name)
+
+  afterEach(() => registerTokenVocabulary(null))
+
+  it('등록 전에는 모양 검사만 한다 — 이 계층은 어휘를 모른다', () => {
+    const document = createDocumentFixture(1000)
+    const component = firstComponent(document)
+    // "통과"가 아니라 "답할 수 없다"는 상태다. 등록하는 쪽이 이 구멍을 닫는다.
+    expect(validateNodePropertyEdit(document, {
+      nodeId: component.id, scope: 'token', key: 'background', value: 'surface.nonexistent',
+    })).toBeNull()
+  })
+
+  it('등록 후에는 실재하지 않는 토큰을 거부한다', () => {
+    registerTokenVocabulary(vocabulary)
+    const document = createDocumentFixture(1000)
+    const component = firstComponent(document)
+    const error = validateNodePropertyEdit(document, {
+      nodeId: component.id, scope: 'token', key: 'background', value: 'surface.nonexistent',
+    })
+    expect(error).toContain('surface.nonexistent')
+    // 사유는 role="alert"로 사용자에게 그대로 나간다 — 내부 용어가 아니어야 한다.
+    expect(error).toContain('토큰 세트에 없습니다')
+  })
+
+  it('실재하는 토큰은 그대로 저장된다', () => {
+    registerTokenVocabulary(vocabulary)
+    let document = createDocumentFixture(1000)
+    const component = firstComponent(document)
+    expect(validateNodePropertyEdit(document, {
+      nodeId: component.id, scope: 'token', key: 'background', value: 'surface.muted',
+    })).toBeNull()
+    document = applyOperation(document, {
+      id: 'token', at, type: 'set-node-property', nodeId: component.id, scope: 'token', key: 'background', value: 'surface.muted',
+    })
+    expect(firstComponent(document).tokenBindings.background).toBe('surface.muted')
+  })
+
+  it('저장 경로(applyOperation)도 막는다 — 검증만 통과시키고 쓰기를 열어두지 않는다', () => {
+    registerTokenVocabulary(vocabulary)
+    const document = createDocumentFixture(1000)
+    const component = firstComponent(document)
+    expect(() => applyOperation(document, {
+      id: 'token', at, type: 'set-node-property', nodeId: component.id, scope: 'token', key: 'background', value: 'surface.nonexistent',
+    })).toThrow(/surface\.nonexistent/)
+    // 문서는 건드려지지 않았다.
+    expect(firstComponent(document).tokenBindings.background).not.toBe('surface.nonexistent')
+  })
+
+  it('모양이 틀린 값은 어휘와 무관하게 여전히 거부된다', () => {
+    registerTokenVocabulary(vocabulary)
+    const document = createDocumentFixture(1000)
+    const component = firstComponent(document)
+    expect(validateNodePropertyEdit(document, {
+      nodeId: component.id, scope: 'token', key: 'background', value: 'notatoken',
+    })).toContain('invalid token reference')
+  })
+
+  it('이미 미해결 바인딩이 든 문서는 그대로 열린다 — 소급 무효화하지 않는다', () => {
+    // 저장 시점만 막는다. 여기서 읽기까지 막으면 사용자가 자기 문서를 못 연다.
+    registerTokenVocabulary(vocabulary)
+    const document = createDocumentFixture(1000)
+    const component = firstComponent(document)
+    component.tokenBindings.background = 'surface.gone'
+    const reopened = recoverSnapshot(serializeSnapshot(document, []))
+    expect(reopened.present.nodes[component.id].tokenBindings.background).toBe('surface.gone')
+  })
+
+  it('모르는 세트에서는 아무 토큰도 실재하지 않는다', () => {
+    registerTokenVocabulary(vocabulary)
+    const document = { ...createDocumentFixture(1000), tokenSetId: 'nope.set' }
+    expect(validateNodePropertyEdit(document, {
+      nodeId: firstComponent(document).id, scope: 'token', key: 'background', value: 'surface.muted',
+    })).toContain('토큰 세트에 없습니다')
+  })
+})
+
+/**
+ * ECT1 검증 후속 — 토큰이 문서에 들어가는 **모든 경로**가 같은 규칙을 통과한다.
+ *
+ * 독립 검증이 ECT1 주장을 refuted했다(2026-07-21): `set-node-property`는 막았지만
+ * `update-node`의 `patch.tokenBindings`는 검사 0으로 통과했다. 그리고 그쪽이 하필
+ * 라이브 브리지로 **에이전트가 문서를 고치는 표면**이었다 — 이 milestone이 닫겠다고 한 바로 그곳.
+ *
+ * 경로마다 규칙을 따로 두면 한 경로만 막힌다. 규칙을 `validateTokenBinding` 하나로 모았고,
+ * 여기서 두 경로를 같은 공격으로 두드린다.
+ */
+describe('토큰 검증은 경로를 가리지 않는다 (ECT1 검증 후속)', () => {
+  const vocabulary = (tokenSetId: string, name: string) =>
+    tokenSetId === 'askewly.default' && ['surface.base', 'surface.muted'].includes(name)
+
+  afterEach(() => registerTokenVocabulary(null))
+
+  it('create-node로 처음부터 가짜 토큰을 박는 것도 거부한다', () => {
+    // 독립 검증 2차가 뚫은 경로. update-node를 막았더니 여기가 열려 있었다.
+    registerTokenVocabulary(vocabulary)
+    const document = createDocumentFixture(1000)
+    const parentId = document.rootIds[0]
+    const evil = {
+      ...structuredClone(document.nodes[parentId]),
+      id: 'evil-node-1', parentId, childIds: [],
+      tokenBindings: { background: 'totally.fake.token' },
+    }
+    expect(() => applyOperation(document, {
+      id: 'create', at, type: 'create-node', node: evil as never, parentId, index: 0,
+    })).toThrow(/totally\.fake\.token/)
+    expect(document.nodes['evil-node-1']).toBeUndefined()
+  })
+
+  it('batch로 감싸도 거부한다 — 길목은 하나다', () => {
+    registerTokenVocabulary(vocabulary)
+    const document = createDocumentFixture(1000)
+    const component = firstComponent(document)
+    expect(() => applyOperation(document, {
+      id: 'batch', at, type: 'batch', operations: [
+        { id: 'inner', at, type: 'update-node', nodeId: component.id,
+          patch: { tokenBindings: { background: 'totally.fake.token' } } },
+      ],
+    })).toThrow(/totally\.fake\.token/)
+  })
+
+  it('손대지 않은 기존 죽은 바인딩은 다른 연산을 막지 않는다', () => {
+    // 델타 검사인 이유. 문서 전체를 보면 사용자가 자기 문서에서 아무 것도 못 하게 된다.
+    registerTokenVocabulary(vocabulary)
+    const document = createDocumentFixture(1000)
+    const component = firstComponent(document)
+    component.tokenBindings.background = 'surface.longgone'
+    const moved = applyOperation(document, {
+      id: 'rename', at, type: 'update-node', nodeId: component.id, patch: { name: '이름만 바꾼다' },
+    })
+    expect(moved.nodes[component.id].name).toBe('이름만 바꾼다')
+    expect(moved.nodes[component.id].tokenBindings.background).toBe('surface.longgone')
+  })
+
+  it('update-node의 patch.tokenBindings도 없는 토큰을 거부한다', () => {
+    registerTokenVocabulary(vocabulary)
+    const document = createDocumentFixture(1000)
+    const component = firstComponent(document)
+    expect(() => applyOperation(document, {
+      id: 'patch', at, type: 'update-node', nodeId: component.id,
+      patch: { tokenBindings: { background: 'totally.fake.token' } },
+    })).toThrow(/totally\.fake\.token/)
+    expect(firstComponent(document).tokenBindings.background).not.toBe('totally.fake.token')
+  })
+
+  it('update-node의 patch.tokenBindings는 모양도 본다', () => {
+    const document = createDocumentFixture(1000)
+    const component = firstComponent(document)
+    expect(() => applyOperation(document, {
+      id: 'patch', at, type: 'update-node', nodeId: component.id,
+      patch: { tokenBindings: { background: 'notatoken' } },
+    })).toThrow(/invalid token reference/)
+  })
+
+  it('실재하는 토큰은 update-node로도 들어간다', () => {
+    registerTokenVocabulary(vocabulary)
+    let document = createDocumentFixture(1000)
+    const component = firstComponent(document)
+    document = applyOperation(document, {
+      id: 'patch', at, type: 'update-node', nodeId: component.id,
+      patch: { tokenBindings: { background: 'surface.muted' } },
+    })
+    expect(firstComponent(document).tokenBindings.background).toBe('surface.muted')
+  })
+
+  it('토큰이 없는 patch는 영향받지 않는다 — 이름·bounds 갱신은 그대로', () => {
+    registerTokenVocabulary(vocabulary)
+    let document = createDocumentFixture(1000)
+    const component = firstComponent(document)
+    document = applyOperation(document, {
+      id: 'patch', at, type: 'update-node', nodeId: component.id, patch: { name: '새 이름' },
+    })
+    expect(firstComponent(document).name).toBe('새 이름')
+  })
+
+  it('두 경로가 같은 사유 문자열을 낸다 — 규칙이 하나라는 증거', () => {
+    registerTokenVocabulary(vocabulary)
+    const document = createDocumentFixture(1000)
+    const component = firstComponent(document)
+    const viaProperty = validateNodePropertyEdit(document, {
+      nodeId: component.id, scope: 'token', key: 'background', value: 'surface.gone',
+    })
+    let viaPatch = ''
+    try {
+      applyOperation(document, {
+        id: 'patch', at, type: 'update-node', nodeId: component.id,
+        patch: { tokenBindings: { background: 'surface.gone' } },
+      })
+    } catch (error) { viaPatch = (error as Error).message }
+    expect(viaPatch).toContain(viaProperty!)
+  })
+})
+
+/**
+ * ECT3 step-2 — 묶인 것을 푼다(Figma식 detach).
+ *
+ * 사용자 결정: 탈출구 있음. 기본은 토큰이고 명시적 detach로 벗어나면 리터럴을 쓴다.
+ * **푸는 것이지 바꾸는 게 아니다** — detach 순간 화면 색은 그대로여야 한다.
+ */
+describe('토큰에서 벗어나고 되돌아온다 (ECT3 step-2)', () => {
+  const vocabulary = (tokenSetId: string, name: string) =>
+    tokenSetId === 'askewly.default' && ['surface.base', 'surface.muted'].includes(name)
+
+  afterEach(() => registerTokenVocabulary(null))
+
+  const detach = (nodeId: string, key: string, literal: string) =>
+    ({ id: 'detach', at, type: 'detach-token-binding' as const, nodeId, key, literal })
+  const attach = (nodeId: string, key: string, name: string) =>
+    ({ id: 'attach', at, type: 'attach-token-binding' as const, nodeId, key, name })
+
+  it('풀면 바인딩이 사라지고 그 색이 리터럴로 남는다 — 색은 안 변한다', () => {
+    registerTokenVocabulary(vocabulary)
+    let document = createDocumentFixture(1000)
+    const id = firstComponent(document).id
+    document = applyOperation(document, attach(id, 'background', 'surface.muted'))
+    document = applyOperation(document, detach(id, 'background', '#123456'))
+    const node = document.nodes[id]
+    expect(node.tokenBindings.background).toBeUndefined()
+    expect(node.literalColors?.background).toBe('#123456')
+  })
+
+  it('색 없는 detach는 거부한다 — 색을 잃어버리는 detach는 없다', () => {
+    const document = createDocumentFixture(1000)
+    const id = firstComponent(document).id
+    expect(() => applyOperation(document, detach(id, 'background', ''))).toThrow(/색 값이 비어 있습니다/)
+  })
+
+  it('다시 묶으면 리터럴이 사라진다 — 두 출처가 같이 남지 않는다', () => {
+    registerTokenVocabulary(vocabulary)
+    let document = createDocumentFixture(1000)
+    const id = firstComponent(document).id
+    document = applyOperation(document, detach(id, 'background', '#123456'))
+    document = applyOperation(document, attach(id, 'background', 'surface.base'))
+    const node = document.nodes[id]
+    expect(node.tokenBindings.background).toBe('surface.base')
+    expect(node.literalColors?.background).toBeUndefined()
+  })
+
+  it('다시 묶을 때도 토큰 실재를 검사한다 — 이 경로로 새지 않는다', () => {
+    registerTokenVocabulary(vocabulary)
+    const document = createDocumentFixture(1000)
+    const id = firstComponent(document).id
+    expect(() => applyOperation(document, attach(id, 'background', 'surface.nonexistent'))).toThrow(/토큰 세트에 없습니다/)
+  })
+
+  it('undo가 detach를 정확히 되돌린다', () => {
+    registerTokenVocabulary(vocabulary)
+    let history = createHistory(createDocumentFixture(1000))
+    const id = firstComponent(history.present).id
+    history = commitOperation(history, attach(id, 'background', 'surface.muted'))
+    history = commitOperation(history, detach(id, 'background', '#123456'))
+    expect(history.present.nodes[id].literalColors?.background).toBe('#123456')
+
+    history = undo(history)
+    expect(history.present.nodes[id].tokenBindings.background).toBe('surface.muted')
+    expect(history.present.nodes[id].literalColors?.background).toBeUndefined()
+
+    history = redo(history)
+    expect(history.present.nodes[id].literalColors?.background).toBe('#123456')
+    expect(history.present.nodes[id].tokenBindings.background).toBeUndefined()
+  })
+
+  it('undo가 attach도 정확히 되돌린다 — 리터럴로 복귀', () => {
+    registerTokenVocabulary(vocabulary)
+    let history = createHistory(createDocumentFixture(1000))
+    const id = firstComponent(history.present).id
+    history = commitOperation(history, detach(id, 'background', '#abcdef'))
+    history = commitOperation(history, attach(id, 'background', 'surface.base'))
+    history = undo(history)
+    expect(history.present.nodes[id].literalColors?.background).toBe('#abcdef')
+    expect(history.present.nodes[id].tokenBindings.background).toBeUndefined()
+  })
+
+  it('이미 벗어난 키에 다시 쓰면 리터럴만 갱신된다 — 원시 색 편집이 같은 연산을 탄다', () => {
+    let document = createDocumentFixture(1000)
+    const id = firstComponent(document).id
+    document = applyOperation(document, detach(id, 'background', '#111111'))
+    document = applyOperation(document, detach(id, 'background', '#222222'))
+    expect(document.nodes[id].literalColors?.background).toBe('#222222')
+    expect(document.nodes[id].tokenBindings.background).toBeUndefined()
+  })
+
+  it('되돌릴 색 출처가 없으면 역함수가 조용히 넘어가지 않는다', () => {
+    const document = createDocumentFixture(1000)
+    const id = firstComponent(document).id
+    // background 바인딩도 리터럴도 없는 상태에서의 detach 역함수
+    const bare = structuredClone(document)
+    delete bare.nodes[id].tokenBindings.background
+    expect(() => invertOperation(bare, detach(id, 'background', '#000000'))).toThrow(/colour source/)
+  })
+})
+
+/**
+ * ECT3 step-3 — 왕복이 닫힌다.
+ *
+ * 미바인딩 → 바인딩 → detach → 원시값 변경 → 재바인딩. 각 단계마다 undo가
+ * **정확히 한 단계씩** 되돌아와야 한다. 한 군데라도 새면 사용자가 자기 색을 잃는다.
+ */
+describe('색 출처 5단계 왕복 (ECT3 step-3)', () => {
+  const vocabulary = (tokenSetId: string, name: string) =>
+    tokenSetId === 'askewly.default' && ['surface.base', 'surface.muted'].includes(name)
+
+  afterEach(() => registerTokenVocabulary(null))
+
+  /** 그 키의 색 출처를 한 문장으로 — 테스트가 상태를 눈으로 읽게. */
+  const source = (document: CanvasDocument, id: string, key: string) => {
+    const node = document.nodes[id]
+    if (node.tokenBindings[key]) return `token:${node.tokenBindings[key]}`
+    if (node.literalColors?.[key]) return `literal:${node.literalColors[key]}`
+    return 'none'
+  }
+
+  it('5단계를 지나고 5단계를 정확히 되감는다', () => {
+    registerTokenVocabulary(vocabulary)
+    let history = createHistory(createDocumentFixture(1000))
+    const id = firstComponent(history.present).id
+    // 시작을 미바인딩으로 만든다(fixture는 background가 묶여 있다).
+    delete history.present.nodes[id].tokenBindings.background
+
+    const 단계 = [
+      { op: { id: '1', at, type: 'attach-token-binding' as const, nodeId: id, key: 'background', name: 'surface.muted' }, 기대: 'token:surface.muted' },
+      { op: { id: '2', at, type: 'detach-token-binding' as const, nodeId: id, key: 'background', literal: '#111111' }, 기대: 'literal:#111111' },
+      { op: { id: '3', at, type: 'detach-token-binding' as const, nodeId: id, key: 'background', literal: '#222222' }, 기대: 'literal:#222222' },
+      { op: { id: '4', at, type: 'attach-token-binding' as const, nodeId: id, key: 'background', name: 'surface.base' }, 기대: 'token:surface.base' },
+    ]
+
+    const 지나온상태 = ['none']
+    for (const { op, 기대 } of 단계) {
+      history = commitOperation(history, op)
+      expect(source(history.present, id, 'background')).toBe(기대)
+      지나온상태.push(기대)
+    }
+
+    // 되감으면 지나온 상태를 역순으로 정확히 다시 만난다.
+    for (let i = 지나온상태.length - 2; i >= 0; i -= 1) {
+      history = undo(history)
+      expect(source(history.present, id, 'background'), `undo ${i}`).toBe(지나온상태[i])
+    }
+
+    // 다시 앞으로 감아도 같은 길이다.
+    for (let i = 1; i < 지나온상태.length; i += 1) {
+      history = redo(history)
+      expect(source(history.present, id, 'background'), `redo ${i}`).toBe(지나온상태[i])
+    }
+  })
+
+  it('왕복 중 두 출처가 동시에 살아 있는 순간이 없다', () => {
+    registerTokenVocabulary(vocabulary)
+    let history = createHistory(createDocumentFixture(1000))
+    const id = firstComponent(history.present).id
+    const 확인 = () => {
+      const node = history.present.nodes[id]
+      const 바인딩 = 'background' in node.tokenBindings
+      const 리터럴 = !!node.literalColors?.background
+      expect(바인딩 && 리터럴, '바인딩과 리터럴이 동시에 살아 있다').toBe(false)
+    }
+    확인()
+    history = commitOperation(history, { id: 'a', at, type: 'detach-token-binding', nodeId: id, key: 'background', literal: '#333333' })
+    확인()
+    history = commitOperation(history, { id: 'b', at, type: 'attach-token-binding', nodeId: id, key: 'background', name: 'surface.base' })
+    확인()
+    history = undo(history)
+    확인()
+  })
+
+  it('literalColors가 없는 옛 문서도 그대로 열리고 detach된다', () => {
+    // 선택 필드로 둔 이유가 이것이다. 필수였으면 저장된 문서가 안 열린다.
+    registerTokenVocabulary(vocabulary)
+    const document = createDocumentFixture(1000)
+    const id = firstComponent(document).id
+    expect(document.nodes[id].literalColors).toBeUndefined()
+
+    const reopened = recoverSnapshot(serializeSnapshot(document, []))
+    expect(reopened.present.nodes[id].literalColors).toBeUndefined()
+
+    const detached = applyOperation(reopened.present, {
+      id: 'd', at, type: 'detach-token-binding', nodeId: id, key: 'background', literal: '#444444',
+    })
+    expect(detached.nodes[id].literalColors?.background).toBe('#444444')
+  })
+})
+
+/**
+ * ECT3 검증 후속 — 리터럴 색도 **길목**에서 본다.
+ *
+ * 독립 검증이 refuted했다(2026-07-21): `detach-token-binding` 하나에만 검사를 두었더니
+ * `update-node.patch`와 `create-node`가 그대로 통과했다. **ECT1에서 토큰에 대해 똑같이
+ * 당한 실패를 새 필드에 되풀이한 것이다** — 이 horizon에서 네 번째.
+ *
+ * 검증자가 실제로 뚫은 값들을 그대로 회귀로 박는다.
+ */
+describe('리터럴 색 검증은 경로를 가리지 않는다 (ECT3 검증 후속)', () => {
+  const 나쁜값 = ['javascript:alert(1)', 'url(evil)', '#zzz', 'expression(alert(1))', '   ', 'x'.repeat(200)]
+
+  it('쓸 수 없는 색은 형식 검사에서 걸린다', () => {
+    for (const value of 나쁜값) expect(validateLiteralColor(value), value).not.toBeNull()
+    // 실제 토큰 해석 결과 형태는 통과해야 한다.
+    for (const value of ['#f7f2e8', '#ABC', '#11223344', 'oklch(0.58 0.22 27)', 'rgb(255, 136, 0)', 'hsl(210 40% 50% / 0.5)']) {
+      expect(validateLiteralColor(value), value).toBeNull()
+    }
+  })
+
+  it('detach 경로가 나쁜 색을 거부한다', () => {
+    const document = createDocumentFixture(1000)
+    const id = firstComponent(document).id
+    for (const value of 나쁜값) {
+      expect(() => applyOperation(document, {
+        id: 'd', at, type: 'detach-token-binding', nodeId: id, key: 'background', literal: value,
+      }), value).toThrow()
+    }
+  })
+
+  it('update-node patch로 몰래 넣는 경로도 막는다', () => {
+    // 검증자가 실제로 뚫은 경로. 타입에는 없지만 Object.assign이 런타임에서 통과시켰다.
+    const document = createDocumentFixture(1000)
+    const id = firstComponent(document).id
+    // 상호배타 검사가 아니라 **색 형식 검사**가 걸리는지 보려고 바인딩을 먼저 비운다.
+    delete document.nodes[id].tokenBindings.background
+    expect(() => applyOperation(document, {
+      id: 'p', at, type: 'update-node', nodeId: id,
+      patch: { literalColors: { background: 'javascript:alert(1)' } } as never,
+    })).toThrow(/쓸 수 있는 색이 아닙니다/)
+  })
+
+  it('create-node로 박아 넣는 경로도 막는다', () => {
+    const document = createDocumentFixture(1000)
+    const parentId = document.rootIds[0]
+    const evil = {
+      ...structuredClone(document.nodes[parentId]),
+      id: 'evil-literal', parentId, childIds: [],
+      tokenBindings: {},
+      literalColors: { background: 'url(evil)' },
+    }
+    expect(() => applyOperation(document, {
+      id: 'c', at, type: 'create-node', node: evil as never, parentId, index: 0,
+    })).toThrow(/쓸 수 있는 색이 아닙니다/)
+    expect(document.nodes['evil-literal']).toBeUndefined()
+  })
+
+  it('바인딩과 리터럴이 한 키에 동시에 살 수 없다', () => {
+    // 검증자 지적: 이 상태가 되면 리터럴이 화면에 안 보이는 죽은 값이 된다.
+    const document = createDocumentFixture(1000)
+    const id = firstComponent(document).id
+    expect(() => applyOperation(document, {
+      id: 'p', at, type: 'update-node', nodeId: id,
+      patch: { literalColors: { background: '#123456' } } as never,
+    })).toThrow(/동시에 있을 수 없습니다/)
+  })
+
+  it('손대지 않은 기존 리터럴은 다른 연산을 막지 않는다', () => {
+    // 델타인 이유. 옛 문서에 이상한 값이 들어 있어도 사용자가 자기 문서를 쓸 수 있어야 한다.
+    const document = createDocumentFixture(1000)
+    const id = firstComponent(document).id
+    delete document.nodes[id].tokenBindings.background
+    document.nodes[id].literalColors = { background: 'legacy-garbage' }
+    const renamed = applyOperation(document, {
+      id: 'r', at, type: 'update-node', nodeId: id, patch: { name: '이름만' },
+    })
+    expect(renamed.nodes[id].name).toBe('이름만')
+    expect(renamed.nodes[id].literalColors?.background).toBe('legacy-garbage')
   })
 })
