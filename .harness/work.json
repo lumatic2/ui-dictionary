@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "active_work_id": "vl8-human-observation",
+  "active_work_id": "ect5-judgeability",
   "works": {
     "SFB1": {
       "title": "Structure Contract And Clean Production",
@@ -3684,6 +3684,61 @@
       "updated_at": "2026-07-21",
       "notes": "Registered atomically by canonical harness approve_harness_plan.py after plan validation.",
       "completion_summary": "### 수행 현황 | 과업 | 결과 | |---|---| | 1 — \"정보가 많은데 펼치고 접히는 형태\" | **미수행** (흐름이 먼저 무너져 관측 중단) | | 2 — 오버레이 군집 | **미수행** | | 3 — 사용자 즉석 요구 | **수행 · 실패** | ### 과업 3에서 무슨 일이 있었나 사용자 요구: *\"마우스를 화면에서 움직이면 그 포인터를"
+    },
+    "ect5-judgeability": {
+      "work_id": "ect5-judgeability",
+      "horizon_id": "editor-color-and-token-editing",
+      "milestone_id": "ECT5",
+      "status": "active",
+      "plan_path": "plans/2026-07-21-ect5-judgeability-observation.md",
+      "changeset_path": "changesets/20260721-ect-report-relocation",
+      "next_step": "step-0",
+      "current_step": "step-0",
+      "steps": [
+        {
+          "id": "step-0",
+          "label": "step-0 — 보고서가 추적 밖으로 새지 않는다",
+          "status": "pending"
+        },
+        {
+          "id": "step-1",
+          "label": "step-1 — 관측이 기록된다",
+          "status": "pending"
+        },
+        {
+          "id": "step-2",
+          "label": "step-2 — 화면이 알아들을 수 있는 말을 쓴다",
+          "status": "pending"
+        },
+        {
+          "id": "step-3",
+          "label": "step-3 — 사람이 다시 해본다 (설계된 정지)",
+          "status": "pending"
+        }
+      ],
+      "execution_mode": "continuous",
+      "approval": {
+        "approved_by": "user",
+        "approved_at": "2026-07-21",
+        "plan_sha256": "9c9d5bd0125f7751e504f57013c706ec4417e00e716b71084e20c6b330ba573d"
+      },
+      "allowed_stop_reasons": [
+        "completed",
+        "blocked",
+        "decision_required",
+        "risk_gate",
+        "secret_required",
+        "external_authority_required",
+        "user_stopped"
+      ],
+      "stop_reason": null,
+      "stop_detail": {},
+      "session_ids": [
+        "claude:fbf7b6fa-e5b1-407b-b379-6b760846cb21"
+      ],
+      "owner_session_uuid": "claude:fbf7b6fa-e5b1-407b-b379-6b760846cb21",
+      "updated_at": "2026-07-21",
+      "notes": "Registered atomically by canonical harness approve_harness_plan.py after plan validation."
     }
   }
 }
