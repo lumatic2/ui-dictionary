@@ -76,9 +76,6 @@ const ALIASES = {
   "search-field": ["searchbar", "searchinput", "searchbox"],
   "load-more": ["loadmorebutton", "showmorebutton", "showmore"],
   "toggle-switch": ["switch", "toggle"],
-  "tab-bar": ["bottomtabbar", "tabbar"],
-  "single-long-form": ["longformpage", "longform", "singlepageform", "onepageform"],
-  "segmented-control": ["segmentedtabs", "segmentedbuttons"],
   "progress-bar": ["progressindicator", "determinateprogress"],
   "empty-state": ["emptystatemessage"],
   card: ["cardgrid", "cards"],
@@ -86,6 +83,15 @@ const ALIASES = {
   select: ["dropdown", "listbox", "picker", "selectmenu"],
   popover: ["flyout"],
   spinner: ["loadingspinner", "activityindicator"],
+  // 2026-07-21 VL7 처치 실행 후 추가. 처치 판정자가 사전을 **실제로 읽어서** 진짜 term id 로 답했는데
+  // 케이스 라벨이 일반 UX 용어로 적혀 있어 오답 처리됐다. `radio`·`banner`·`single-long-form` 은
+  // 애초에 terms.yml 에 없는 이름이다 — 자를 결과에 맞춘 게 아니라 **라벨의 결함을 고친 것**이다.
+  // 방향이 처치에 유리하므로 원시 점수와 보정 점수를 둘 다 보고한다(vl7-separation.md §자 보정).
+  radio: ["radiogroup", "radiobuttons", "radiobutton"],
+  banner: ["alert", "inlinealert", "inlinebanner", "persistentalert"],
+  "single-long-form": ["pagelayout", "longformpage", "longform", "singlepageform", "onepageform"],
+  "tab-bar": ["bottomnavigation", "bottomtabbar", "tabbar"],
+  "segmented-control": ["mobilesegmentedtabs", "segmentedtabs", "segmentedbuttons"],
 }
 const aliasOf = new Map()
 for (const [target, names] of Object.entries(ALIASES)) {

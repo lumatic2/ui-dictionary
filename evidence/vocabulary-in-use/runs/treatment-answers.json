@@ -1,0 +1,162 @@
+[
+ {
+  "id": "disclosure-1",
+  "answer": "accordion",
+  "because": "펼침류: section-count=8+, section-length=short"
+ },
+ {
+  "id": "disclosure-2",
+  "answer": "tabs",
+  "because": "펼침류: section-count=2-7, section-length=long"
+ },
+ {
+  "id": "disclosure-3",
+  "answer": "accordion",
+  "because": "펼침류: simultaneous-access=not-needed → tabs 규칙 미발화, default=accordion"
+ },
+ {
+  "id": "overlay-1",
+  "answer": "drawer",
+  "because": "오버레이: context-visible=required"
+ },
+ {
+  "id": "overlay-2",
+  "answer": "dialog",
+  "because": "오버레이: must-resolve-first=required"
+ },
+ {
+  "id": "overlay-3",
+  "answer": "drawer",
+  "because": "오버레이: content-overflow=scrolls (Carbon 명시)"
+ },
+ {
+  "id": "floating-1",
+  "answer": "popover",
+  "because": "군집 없음 — popover when_to_use(비차단 보조 정보). 확신도 중간"
+ },
+ {
+  "id": "floating-2",
+  "answer": "dropdown-menu",
+  "because": "군집 없음 — popover related: 단순 명령 목록이면 dropdown menu"
+ },
+ {
+  "id": "single-choice-1",
+  "answer": "radio-group",
+  "because": "단일선택: space-available=yes, option-count=2-4"
+ },
+ {
+  "id": "single-choice-2",
+  "answer": "select",
+  "because": "단일선택: option-count=5-20"
+ },
+ {
+  "id": "single-choice-3",
+  "answer": "radio-group",
+  "because": "단일선택: space-available=yes, option-count=2-4 (공간 축이 먼저)"
+ },
+ {
+  "id": "on-off-1",
+  "answer": "checkbox",
+  "because": "군집 없음 — checkbox when_to_use(동시 다중 선택)"
+ },
+ {
+  "id": "collection-1",
+  "answer": "table",
+  "because": "군집 없음 — list anti_use(행열 데이터는 table)"
+ },
+ {
+  "id": "collection-2",
+  "answer": "list",
+  "because": "군집 없음 — list when_to_use(순서대로 읽기)"
+ },
+ {
+  "id": "collection-3",
+  "answer": "card",
+  "because": "군집 없음 — list anti_use(시각 비교면 card layout)"
+ },
+ {
+  "id": "load-more-1",
+  "answer": "pagination",
+  "because": "군집 없음 — infinite-scroll anti_use(공유 URL·footer면 pagination)"
+ },
+ {
+  "id": "load-more-2",
+  "answer": "infinite-scroll",
+  "because": "군집 없음 — infinite-scroll when_to_use(연속 소비)"
+ },
+ {
+  "id": "load-more-3",
+  "answer": "load-more-button",
+  "because": "사전 밖 개념 — 전용 term 없음. 확신도 낮음"
+ },
+ {
+  "id": "finding-1",
+  "answer": "search-field",
+  "because": "군집 없음 — search-field when_to_use(많은 데이터에서 빠르게 찾기)"
+ },
+ {
+  "id": "finding-2",
+  "answer": "command-palette",
+  "because": "군집 없음 — command-palette when_to_use(파워 유저 단축 흐름)"
+ },
+ {
+  "id": "notification-1",
+  "answer": "toast",
+  "because": "군집 없음 — toast when_to_use(행동 직후 짧은 결과)"
+ },
+ {
+  "id": "notification-2",
+  "answer": "alert",
+  "because": "군집 없음 — toast anti_use(반드시 읽어야 할 정보를 사라지게 하지 않는다)"
+ },
+ {
+  "id": "waiting-1",
+  "answer": "skeleton",
+  "because": "기다림: scope=full-screen, duration=under-10s"
+ },
+ {
+  "id": "waiting-2",
+  "answer": "progress-bar",
+  "because": "기다림: duration=over-10s"
+ },
+ {
+  "id": "waiting-3",
+  "answer": "spinner",
+  "because": "기다림: scope=single-module"
+ },
+ {
+  "id": "waiting-4",
+  "answer": "empty-state",
+  "because": "기다림: cause=no-data"
+ },
+ {
+  "id": "longform-1",
+  "answer": "wizard",
+  "because": "군집 없음 — wizard when_to_use(복잡한 작업 순서 안내)"
+ },
+ {
+  "id": "longform-2",
+  "answer": "page-layout",
+  "because": "군집 없음 — 전용 term 없음. 확신도 낮음"
+ },
+ {
+  "id": "mobile-switch-1",
+  "answer": "bottom-navigation",
+  "because": "군집 없음 — bottom-navigation when_to_use(최상위 목적지)"
+ },
+ {
+  "id": "mobile-switch-2",
+  "answer": "mobile-segmented-tabs",
+  "because": "군집 없음 — mobile-segmented-tabs anti_use 대비"
+ },
+ {
+  "id": "on-off-2",
+  "answer": "switch",
+  "because": "군집 없음 — switch when_to_use(즉시 적용)"
+ },
+ {
+  "id": "on-off-3",
+  "answer": "checkbox",
+  "because": "군집 없음 — switch anti_use(제출 전 미확정이면 checkbox)"
+ }
+]

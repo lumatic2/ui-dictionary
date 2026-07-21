@@ -224,3 +224,4 @@
 | 222 | 20260721-protocol-element-decision | 2026-07-21 | VL6 step 2: 요소 결정 단계 신설 + A/B/C 우회 경로 차단. 축을 못 답하면 사용자에게 그대로 되묻는 것을 정상 경로로 규정 | 2/2 | complete |
 | 223 | 20260721-protocol-asset-branch-and-record | 2026-07-21 | VL6 step 3: 자산 분기(코드>레시피>폴백)로 C 분기의 열린 끝을 메우고, 요소 결정 보고 블록을 계약화 | 2/2 | complete |
 | 224 | 20260721-protocol-publication | 2026-07-21 | VL6 step 4: llms.txt Decisions 섹션 등재(군집 자동 수집). README 없으면 거부하는 probe, 필수 단계 밀림 없음 확인 | 4/4 | complete |
+| 225 | 20260721-vl7-treatment-comparison | 2026-07-21 | VL7: 처치 측정·대조. 84.4%→96.9%(+12.5pp), 회귀 0. 고쳐진 3건이 VL5가 넣은 세 임계값에서 정확히 갈림. 원시 78.1%였던 것은 케이스 라벨이 사전에 없는 이름이었기 때문 — 보정이 처치에 유리한 방향임을 명시하고 원시·보정 둘 다 기록 | 4/4 | complete |
