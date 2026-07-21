@@ -3689,7 +3689,7 @@
       "work_id": "ect5-judgeability",
       "horizon_id": "editor-color-and-token-editing",
       "milestone_id": "ECT5",
-      "status": "active",
+      "status": "completed",
       "plan_path": "plans/2026-07-21-ect5-judgeability-observation.md",
       "changeset_path": "changesets/20260721-ect-report-relocation",
       "next_step": "step-0",
@@ -3741,7 +3741,8 @@
       ],
       "owner_session_uuid": "claude:fbf7b6fa-e5b1-407b-b379-6b760846cb21",
       "updated_at": "2026-07-21",
-      "notes": "Registered atomically by canonical harness approve_harness_plan.py after plan validation."
+      "notes": "Registered atomically by canonical harness approve_harness_plan.py after plan validation.",
+      "completion_summary": "편집기 색 UI가 사람 말을 쓰게 됐고 ECT horizon을 닫았다 — 과업 ①은 안내 없이 성공, 기준 6은 부분 충족으로 명시."
     }
   }
 }

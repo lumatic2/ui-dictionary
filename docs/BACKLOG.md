@@ -401,3 +401,24 @@ plan doc: `archive/plans/2026-07-21-eu*.md` · 증거: `evidence/editor-legibili
 
 **미달로 닫힌 항목**: 닫는 기준 6(판단 가능성) — 화면에 "색" 단어 0건·견본 0개.
 후보 `editor-color-and-token-editing`으로 `plans/horizons/CANDIDATES.md`에 적재됨.
+
+### 2026-07
+- ECT1 - ECT1 — 토큰이 조회되고, 실재가 검증된다
+  - Completed: 2026-07-21
+  - Result: 화면이 물어볼 수 있는 토큰 목록 API가 있고(두 어휘 격리 보장) + 편집기·템플릿 어휘가 같은 메타데이터 모양을 가지며 + 실재하지 않는 토큰은 저장되지 않는다.
+  - Evidence: evidence/editor-color-and-token-editing/ect1-lookup.md — changesets 206/207/208/209 · 보고서 docs/reports/2026-07-21-ect1-token-lookup-and-validation.md
+
+- ECT2 - ECT2 — 색이 색으로 보인다
+  - Completed: 2026-07-21
+  - Result: 이미 색 토큰이 묶인 노드에서 사람이 해석된 색 견본을 보고 목록에서 골라 색을 바꾼다 + 어휘 격리가 양방향으로 지켜지고 + 키보드로 완주된다.
+  - Evidence: evidence/editor-color-and-token-editing/ect2-swatch.md
+
+- ECT3 - ECT3 — 묶고 푼다
+  - Completed: 2026-07-21
+  - Result: 색이 안 묶인 노드에 색을 묶고 + 묶인 색을 풀어 원시 색으로 벗어나며 + 그 상태가 화면에 보이고 undo로 전 구간이 되돌아온다.
+  - Evidence: evidence/editor-color-and-token-editing/ect3-bind-detach.md
+
+- ECT4 - ECT4 — 이미지 노드가 실제로 칠해진다
+  - Completed: 2026-07-21
+  - Result: 이미지 노드에 묶은 색 토큰이 실제로 칠해지고(브라우저 계산값 대조) + 바인딩 없는 노드는 시각 회귀가 없으며 + 허용 바인딩 키의 정본이 하나다.
+  - Evidence: evidence/editor-color-and-token-editing/ect4-image-render.md
