@@ -3854,7 +3854,7 @@
       "work_id": "dog3-typography-scale",
       "horizon_id": "design-output-gates",
       "milestone_id": "DOG3",
-      "status": "active",
+      "status": "completed",
       "plan_path": "plans/2026-07-22-dog3-typography-scale.md",
       "changeset_path": "changesets/20260722-typography-scale-rule",
       "next_step": "step-1",
@@ -3899,7 +3899,8 @@
       ],
       "owner_session_uuid": "claude:c35bd5f3-2423-44d5-bdcd-cfa5c54eb080",
       "updated_at": "2026-07-22",
-      "notes": "Registered atomically by canonical harness approve_harness_plan.py after plan validation."
+      "notes": "Registered atomically by canonical harness approve_harness_plan.py after plan validation.",
+      "completion_summary": "DOG3 완료 — 타이포 단계 검사기. 임계값은 Kraft의 4가 아니라 5(우리 스케일이 5단계라 4면 자기모순). 자기 자산 실측 91.9% 통과, 초과는 대부분 다중 컴포넌트 파일 — 임계값이 아니라 파일=화면 경계가 한계."
     }
   }
 }
