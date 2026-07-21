@@ -211,3 +211,4 @@
 | 209 | 20260721-vocabulary-shard-generator | 2026-07-21 | VL2 step 1: 665KB 원본을 인덱스(23.9KB)+그룹 샤드 58개로 분할하는 생성기. 상한 초과 그룹은 정렬 id 기준 하위 분할, group 없는 용어는 명시 에러로 거부. 계수기 스캔 확장으로 끊긴 term_refs 91→0 확인 | 3/3 | complete |
 | 210 | 20260721-vocabulary-lookup-contract | 2026-07-21 | VL2 step 2: 용어 조회 규약 3갈래(이름 앎/모름/사전 밖) 신설. 사전에 없는 개념에서 막히지 않고 흐르게 규정. 3개 용어 실측 2 fetch, 인덱스에 정의 누출 0 | 2/2 | complete |
 | 211 | 20260721-llms-vocabulary-section | 2026-07-21 | VL2 step 3: llms.txt에 Vocabulary 섹션 등재. 재생성이 샤드를 조용히 지우던 near-miss를 실증·차단(562→0 되돌림), CRLF 체크아웃에서 생성기가 못 돌던 것과 필드가 전부 undefined이던 것 수정 | 4/4 | complete |
+| 212 | 20260721-term-asset-map | 2026-07-21 | VL3 step 1: 용어↔레시피↔코드자산 3자 매핑 생성기. 파생물로 두어 손 목록 드리프트를 원천 차단. 자산 없는 용어 481개를 명시적으로 계수 — 폴백 규약 대상 | 3/3 | complete |

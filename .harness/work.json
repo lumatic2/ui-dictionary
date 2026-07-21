@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "active_work_id": "vl2-vocabulary-publication",
+  "active_work_id": "vl3-reference-repair",
   "works": {
     "SFB1": {
       "title": "Structure Contract And Clean Production",
@@ -3156,6 +3156,56 @@
       "updated_at": "2026-07-21",
       "notes": "Registered atomically by canonical harness approve_harness_plan.py after plan validation.",
       "completion_summary": "VL2 완료 — 562개 용어를 인덱스+샤드 58개로 배포해 조회 2 fetch로 만들고, 끊긴 참조 91곳을 전부 해소했다. 재생성이 샤드를 조용히 지우던 결함을 커밋 전에 잡았다."
+    },
+    "vl3-reference-repair": {
+      "work_id": "vl3-reference-repair",
+      "horizon_id": "vocabulary-in-use",
+      "milestone_id": "VL3",
+      "status": "active",
+      "plan_path": "plans/2026-07-21-vl3-reference-repair.md",
+      "changeset_path": "changesets",
+      "next_step": "step-1",
+      "current_step": "step-1",
+      "steps": [
+        {
+          "id": "step-1",
+          "label": "step-1 — 3자 매핑 생성",
+          "status": "pending"
+        },
+        {
+          "id": "step-2",
+          "label": "step-2 — 끊긴 참조 해소 + 무결성 검사",
+          "status": "pending"
+        },
+        {
+          "id": "step-3",
+          "label": "step-3 — 자산 없는 용어의 폴백 규약",
+          "status": "pending"
+        }
+      ],
+      "execution_mode": "continuous",
+      "approval": {
+        "approved_by": "user",
+        "approved_at": "2026-07-21",
+        "plan_sha256": "f27c9db98afda96b4b6111ac475530398cbd0acf9da9a1f93c53ac9ffb88eba2"
+      },
+      "allowed_stop_reasons": [
+        "completed",
+        "blocked",
+        "decision_required",
+        "risk_gate",
+        "secret_required",
+        "external_authority_required",
+        "user_stopped"
+      ],
+      "stop_reason": null,
+      "stop_detail": {},
+      "session_ids": [
+        "claude:037069fb-2833-497c-ae4e-3f985ecea495"
+      ],
+      "owner_session_uuid": "claude:037069fb-2833-497c-ae4e-3f985ecea495",
+      "updated_at": "2026-07-21",
+      "notes": "Registered atomically by canonical harness approve_harness_plan.py after plan validation."
     }
   }
 }
