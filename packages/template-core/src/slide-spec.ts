@@ -227,3 +227,134 @@ export function meetsWcagContrast(
 ): boolean {
   return contrastRatio(foreground, background) >= wcagThresholdFor(text)
 }
+
+/* ------------------------------------------------------------------------- *
+ * 통설·유추 — 옵트인이고, 켜도 경고만 낸다
+ *
+ * 위 함수들과 **의도적으로 분리돼 있다.** 아래 세 규칙의 임계값은 전부 1차 실증이
+ * 없다. 인쇄물 안전영역(3mm)조차 "재단 오차라는 같은 물리 현상의 유추"라는 최소한의
+ * 연결고리가 있는데, 슬라이드 안전영역은 그 고리마저 약하다 — 원출처가 TV 방송이다.
+ *
+ * 근거 없는 임계값을 기본으로 켜두면 성가셔서 무시당하고, 무시가 습관이 되면 근거
+ * 있는 검사(대비·비율)까지 함께 무시당한다. 그래서 기본은 꺼져 있고, 켜도 예외를
+ * 던지지 않는다.
+ * ------------------------------------------------------------------------- */
+
+/** 안전영역 인셋 — 방송 표준 SMPTE ST 2046-1:2009 (슬라이드로의 유추 적용). */
+export const TITLE_SAFE_RATIO = 0.9
+export const ACTION_SAFE_RATIO = 0.93
+/** 본문 최소 pt — Guy Kawasaki 10/20/30 규칙(개인 경험칙). */
+export const BODY_MIN_PT = 24
+/** 6×6 규칙 — 창안자·1차 연구 특정 실패. 방향성만 인지부하 이론이 지지한다. */
+export const MAX_BULLETS = 6
+export const MAX_WORDS_PER_BULLET = 6
+
+export type SlideHeuristicCode =
+  | 'OUTSIDE_TITLE_SAFE'
+  | 'BODY_TEXT_TOO_SMALL'
+  | 'TOO_MANY_BULLETS'
+  | 'BULLET_TOO_WORDY'
+
+export interface SlideHeuristicViolation {
+  code: SlideHeuristicCode
+  /** 이 규칙의 임계값이 어디서 왔는가 — 확정 사실이 아님을 값 자체가 들고 다닌다. */
+  evidenceGrade: Exclude<EvidenceGrade, 'confirmed'>
+  /** 항상 'warning'. 이 검사는 무엇도 차단하지 않는다. */
+  severity: 'warning'
+  /** 근거의 출처와 한계. */
+  basis: string
+  message: string
+}
+
+export interface SlideTextRegion {
+  id: string
+  /** 캔버스 좌표계 기준 위치·크기. 캔버스와 같은 단위를 쓴다. */
+  bounds: { x: number; y: number; width: number; height: number }
+  fontSizePt: number
+  /** 본문 텍스트인가 — 제목·장식은 최소 pt 규칙 대상이 아니다. */
+  role: 'title' | 'body' | 'caption'
+  /** 불릿 항목 텍스트. 불릿이 아니면 생략한다. */
+  bullets?: string[]
+}
+
+export interface SlideHeuristicOptions {
+  /**
+   * 이 검사를 켤 것인가. **기본값 false.**
+   *
+   * 사용자가 "통설이라도 항상 경고로 노출하자"고 판단하면 이 기본값 한 줄로 뒤집힌다 —
+   * 설계가 그 전환을 위해 분리돼 있다.
+   */
+  enable?: boolean
+  /** 캔버스 크기. 안전영역 계산에만 쓴다. */
+  canvas: { width: number; height: number }
+}
+
+/**
+ * 통설·유추 규칙 검사. 꺼져 있으면 아무것도 하지 않는다.
+ *
+ * 반환값의 `severity`는 언제나 `'warning'`이고 이 함수는 예외를 던지지 않는다.
+ */
+export function checkSlideHeuristics(
+  regions: SlideTextRegion[],
+  options: SlideHeuristicOptions,
+): SlideHeuristicViolation[] {
+  if (options.enable !== true) return []
+
+  const { canvas } = options
+  const insetX = (canvas.width * (1 - TITLE_SAFE_RATIO)) / 2
+  const insetY = (canvas.height * (1 - TITLE_SAFE_RATIO)) / 2
+  const violations: SlideHeuristicViolation[] = []
+
+  for (const region of regions) {
+    const { bounds } = region
+    const outside =
+      bounds.x < insetX ||
+      bounds.y < insetY ||
+      bounds.x + bounds.width > canvas.width - insetX ||
+      bounds.y + bounds.height > canvas.height - insetY
+    if (outside) {
+      violations.push({
+        code: 'OUTSIDE_TITLE_SAFE',
+        evidenceGrade: 'inferred',
+        severity: 'warning',
+        basis: 'SMPTE ST 2046-1:2009 title-safe 90% — TV 방송 표준을 슬라이드에 유추 적용. 슬라이드 전용 1차 출처 없음.',
+        message: `${region.id}가 title-safe 90% 영역을 벗어난다.`,
+      })
+    }
+
+    if (region.role === 'body' && region.fontSizePt < BODY_MIN_PT) {
+      violations.push({
+        code: 'BODY_TEXT_TOO_SMALL',
+        evidenceGrade: 'folklore',
+        severity: 'warning',
+        basis: 'Guy Kawasaki 10/20/30 규칙 — 저자는 특정되나 "왜 그 숫자인가"의 실증 근거 없음.',
+        message: `${region.id}의 본문이 ${region.fontSizePt}pt로 하한 ${BODY_MIN_PT}pt 미만이다.`,
+      })
+    }
+
+    const bullets = region.bullets ?? []
+    if (bullets.length > MAX_BULLETS) {
+      violations.push({
+        code: 'TOO_MANY_BULLETS',
+        evidenceGrade: 'folklore',
+        severity: 'warning',
+        basis: '6×6 규칙 — 창안자·1차 연구 특정 실패. "적을수록 낫다"는 방향만 인지부하 이론이 지지한다.',
+        message: `${region.id}의 불릿이 ${bullets.length}개로 상한 ${MAX_BULLETS}개를 넘는다.`,
+      })
+    }
+    for (const [index, bullet] of bullets.entries()) {
+      const words = bullet.trim().split(/\s+/).filter(Boolean).length
+      if (words > MAX_WORDS_PER_BULLET) {
+        violations.push({
+          code: 'BULLET_TOO_WORDY',
+          evidenceGrade: 'folklore',
+          severity: 'warning',
+          basis: '6×6 규칙 — 위와 같은 출처 한계.',
+          message: `${region.id} 불릿 ${index + 1}이 ${words}단어로 상한 ${MAX_WORDS_PER_BULLET}단어를 넘는다.`,
+        })
+      }
+    }
+  }
+
+  return violations
+}

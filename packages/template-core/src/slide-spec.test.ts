@@ -1,5 +1,6 @@
 import { describe, expect, it } from 'vitest'
 import {
+  checkSlideHeuristics,
   contrastRatio,
   meetsWcagContrast,
   presetAspectRatio,
@@ -9,6 +10,7 @@ import {
   WCAG_AA_LARGE,
   WCAG_AA_NORMAL,
 } from './slide-spec.js'
+import type { SlideTextRegion } from './slide-spec.js'
 
 /**
  * DOG5 step-1 — 확정 사실만으로 서는 슬라이드 규격 계약.
@@ -97,5 +99,79 @@ describe('WCAG 대비', () => {
 
     expect(meetsWcagContrast(gray, '#FFFFFF', { fontSizePt: 24 })).toBe(true)
     expect(meetsWcagContrast(gray, '#FFFFFF', { fontSizePt: 12 })).toBe(false)
+  })
+})
+
+/**
+ * DOG5 step-2 — 통설·유추 항목은 근거 등급을 달고 옵트인으로 들어온다.
+ *
+ * 근거: `research/2026-07-22-design-output-gates-slide-spec.md` §2(안전영역)·§3(최소 pt)·§4(6×6)
+ */
+
+const CANVAS = { width: 1920, height: 1080 }
+
+/** 세 규칙을 모두 어기는 fixture. */
+const messy: SlideTextRegion[] = [
+  {
+    id: 'body-outside',
+    bounds: { x: 10, y: 10, width: 1900, height: 1060 }, // title-safe 90% 밖
+    fontSizePt: 8,
+    role: 'body',
+    bullets: [
+      'one two three four five six seven eight nine ten eleven twelve',
+      'a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i',
+    ],
+  },
+]
+
+/** 세 규칙을 모두 지키는 fixture. */
+const tidy: SlideTextRegion[] = [
+  {
+    id: 'body-inside',
+    bounds: { x: 200, y: 200, width: 1500, height: 600 },
+    fontSizePt: 28,
+    role: 'body',
+    bullets: ['짧은 항목 하나', '짧은 항목 둘'],
+  },
+]
+
+describe('통설 항목 — 옵트인', () => {
+  it('기본값에서는 명백한 위반에도 아무것도 보고하지 않는다', () => {
+    expect(checkSlideHeuristics(messy, { canvas: CANVAS })).toEqual([])
+  })
+
+  it('켜면 세 규칙이 모두 보고된다', () => {
+    const violations = checkSlideHeuristics(messy, { canvas: CANVAS, enable: true })
+    const codes = new Set(violations.map((v) => v.code))
+    expect(codes).toContain('OUTSIDE_TITLE_SAFE')
+    expect(codes).toContain('BODY_TEXT_TOO_SMALL')
+    expect(codes).toContain('TOO_MANY_BULLETS')
+    expect(codes).toContain('BULLET_TOO_WORDY')
+  })
+
+  it('모든 위반이 근거 등급을 달고 나온다 — 확정 사실인 척 나가지 않는다', () => {
+    const violations = checkSlideHeuristics(messy, { canvas: CANVAS, enable: true })
+    expect(violations.length).toBeGreaterThan(0)
+    for (const violation of violations) {
+      expect(['inferred', 'folklore']).toContain(violation.evidenceGrade)
+      expect(violation.basis.length).toBeGreaterThan(0)
+    }
+  })
+
+  it('무엇도 차단하지 않는다 — severity 는 warning 뿐', () => {
+    const violations = checkSlideHeuristics(messy, { canvas: CANVAS, enable: true })
+    expect(violations.every((v) => v.severity === 'warning')).toBe(true)
+  })
+
+  it('규칙을 지킨 fixture 는 켜도 위반 0건', () => {
+    expect(checkSlideHeuristics(tidy, { canvas: CANVAS, enable: true })).toEqual([])
+  })
+
+  it('안전영역은 방송 표준 차용이라 inferred, 나머지는 folklore', () => {
+    const violations = checkSlideHeuristics(messy, { canvas: CANVAS, enable: true })
+    const safe = violations.find((v) => v.code === 'OUTSIDE_TITLE_SAFE')!
+    const small = violations.find((v) => v.code === 'BODY_TEXT_TOO_SMALL')!
+    expect(safe.evidenceGrade).toBe('inferred')
+    expect(small.evidenceGrade).toBe('folklore')
   })
 })
