@@ -3691,8 +3691,8 @@
       "status": "active",
       "plan_path": "plans/2026-07-21-gp1-linear-pptx-pilot.md",
       "changeset_path": "changesets/20260721-getdesign-linear-intake",
-      "next_step": "step-2",
-      "current_step": "step-2",
+      "next_step": "step-3",
+      "current_step": "step-3",
       "steps": [
         {
           "id": "step-1",
@@ -3702,7 +3702,7 @@
         {
           "id": "step-2",
           "label": "step-2 — 동일 토큰의 웹 미니 페이지",
-          "status": "pending"
+          "status": "completed"
         },
         {
           "id": "step-3",
