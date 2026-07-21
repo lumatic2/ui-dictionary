@@ -422,3 +422,39 @@ plan doc: `archive/plans/2026-07-21-eu*.md` · 증거: `evidence/editor-legibili
   - Completed: 2026-07-21
   - Result: 이미지 노드에 묶은 색 토큰이 실제로 칠해지고(브라우저 계산값 대조) + 바인딩 없는 노드는 시각 회귀가 없으며 + 허용 바인딩 키의 정본이 하나다.
   - Evidence: evidence/editor-color-and-token-editing/ect4-image-render.md
+
+### 2026-07
+- ECT5 - ECT5 — 판단 가능성 재관측
+  - Completed: 2026-07-22
+  - Result: 사람이 사전 설명 없이 화면만 보고 과업 3건(색 토큰 변경·미바인딩 노드에 색 묶기·원시 색으로 벗어나기)을 수행한다. 과업별 성공/실패와 막힌 지점을 기록한다.
+  - Evidence: evidence/editor-color-and-token-editing/ect5-judgeability.md
+
+- VL1 - VL1 — 흐름 실사 + 기준선
+  - Completed: 2026-07-22
+  - Result: 배포본 실사·계수기·기준선 84.4% (changesets 222/223/224)
+  - Evidence: evidence/vocabulary-in-use/vl1-flow-audit.md
+
+- VL2 - VL2 — 어휘 배포
+  - Completed: 2026-07-22
+  - Result: 562개 배포·조회 2 fetch·끊긴 참조 91→0 (changesets 225/226/227)
+  - Evidence: changesets/20260721-vocabulary-shard-generator, changesets/20260721-vocabulary-lookup-contract, changesets/20260721-llms-vocabulary-section
+
+- VL3 - VL3 — 참조 복구 + 역방향 매핑
+  - Completed: 2026-07-22
+  - Result: 3자 매핑·무결성 게이트·폴백 규약 (changesets 228/229/230)
+  - Evidence: changesets/20260721-term-asset-map, changesets/20260721-reference-integrity, changesets/20260721-no-asset-fallback
+
+- VL4 - VL4 — 판별 데이터 계약
+  - Completed: 2026-07-22
+  - Result: 계약·검증기·첫 군집 (changesets 231/232/233)
+  - Evidence: changesets/20260721-decision-format-contract, changesets/20260721-decision-validator, changesets/20260721-disclosure-family-decision
+
+- VL5 - VL5 — 군집 채우기
+  - Completed: 2026-07-22
+  - Result: 6군집·축 26·규칙 32, 오판 3/3 정답 도달 (changesets 234/235/236)
+  - Evidence: changesets/20260721-decision-miss-batch, changesets/20260721-decision-unverified-batch, changesets/20260721-decision-corpus-integrity
+
+- VL6 - VL6 — 프로토콜 재배선
+  - Completed: 2026-07-22
+  - Result: 3단계 배선·우회 0·등재 (changesets 237-240)
+  - Evidence: changesets/20260721-protocol-vocabulary-lookup, changesets/20260721-protocol-element-decision, changesets/20260721-protocol-asset-branch-and-record, changesets/20260721-protocol-publication
