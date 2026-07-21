@@ -115,8 +115,8 @@ export function InsertPalette({ document, onOperation }: Props) {
   return <div className="insert-palette" data-testid="insert-palette" aria-label="Insert">
     <input
       data-testid="insert-search"
-      aria-label="Search insertable items"
-      placeholder="Search components…"
+      aria-label="넣을 수 있는 것 검색"
+      placeholder="컴포넌트 찾기…"
       value={query}
       onChange={(event) => setQuery(event.target.value)}
     />

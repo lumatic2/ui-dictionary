@@ -26,6 +26,8 @@ source_refs: [tailwind-plus-application-ui]
 last_verified: 2026-07-10
 ---
 
+> **STOP — do not re-implement this recipe from prose.** A verified code asset exists: fetch https://ui.askewly.com/r/sidebar-application-shell.json, write `files[].content` into the project, install the declared dependencies, THEN restyle the look to the project's own tokens (mandatory — component-restyle.md). Prose below is the contract you verify against, not the thing you rebuild.
+
 ## Intent
 
 A sidebar application shell gives repeated product navigation a stable rail while keeping the task surface flexible. It is appropriate for dashboards, internal tools, and documentation products where users move among peer work areas many times per session.

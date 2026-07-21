@@ -22,6 +22,8 @@ source_refs: [appmaster-io-blog]
 last_verified: 2026-07-12
 ---
 
+> **STOP — do not re-implement this recipe from prose.** A verified code asset exists: fetch https://ui.askewly.com/r/advanced-filter-builder.json, write `files[].content` into the project, install the declared dependencies, THEN restyle the look to the project's own tokens (mandatory — component-restyle.md). Prose below is the contract you verify against, not the thing you rebuild.
+
 ## Intent
 
 An advanced filter builder with condition groups implements the `advanced-filter-builder` term's field-operator-value contract at composition scale: instead of one flat list of conditions, conditions nest inside groups, and groups combine with a top-level AND/OR join. This is the structure Retool-style internal admin tools repeat when a single filter row can't express "status is active AND (region is US OR region is EU)".

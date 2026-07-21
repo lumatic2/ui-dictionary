@@ -2,6 +2,8 @@
 
 > 스펙(`docs/spec.md`)은 "무엇이 합법인가"를 정의한다. 본 문서는 "**어떻게 잘 쓰는가**"를 다룬다.
 
+> **⚠ 공식 스펙 정합 (2026-07-19, VB1)** — 정본 스펙은 Google Labs `google-labs-code/design.md`(version: alpha)로 확인됨: frontmatter는 `name/colors/typography/rounded/spacing/components`의 **flat 스키마**이고, 본문은 고정 순서 8섹션(Overview → Colors → Typography → Layout → Elevation & Depth → Shapes → Components → Do's and Don'ts, 생략 가능·순서 고정), 토큰 참조는 `{path.to.token}`. **아래 본문의 "3-tier(primitive→semantic)" 서술은 공식 규칙이 아니라 본 레포의 확장 관례다** — 공식 스키마는 primitive 계층이 없고 unknown-key를 허용하므로, 시맨틱 네이밍(`surface`/`on-surface`/`muted`)을 flat map 안에서 쓰는 것으로 같은 규율을 달성한다. 신규 파일은 `templates/DESIGN.md.tmpl`(공식 스키마 정합판)에서 출발할 것. 근거·원문: `research/2026-07-19-vb1-stitch-design-md.md`.
+
 ## 0. 첫 30 분 — 어디부터 손대는가
 
 순서대로 채우면 막히지 않는다.

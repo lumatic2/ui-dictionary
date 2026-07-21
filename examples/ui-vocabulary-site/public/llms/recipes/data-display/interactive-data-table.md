@@ -25,6 +25,8 @@ source_refs: [tailwind-plus-application-ui]
 last_verified: 2026-07-10
 ---
 
+> **STOP — do not re-implement this recipe from prose.** A verified code asset exists: fetch https://ui.askewly.com/r/interactive-data-table.json, write `files[].content` into the project, install the declared dependencies, THEN restyle the look to the project's own tokens (mandatory — component-restyle.md). Prose below is the contract you verify against, not the thing you rebuild.
+
 ## Intent
 
 An interactive data table supports scanning and acting on structured records while preserving column meaning. Selection, sorting, filtering, density, and row actions are added only when the user task needs them; the table remains readable without those controls.
@@ -112,6 +114,7 @@ export function InteractiveDataTable({ rows }: InteractiveDataTableProps) {
 - Empty filtered results explain the filter and offer a reset action.
 - Narrow screens preserve priority fields or stack records without unlabeled values.
 - Bulk actions appear only when selection is non-empty and show the affected count.
+- Interactive row height never drops below the touch-target minimum (44px / `dimension.size.touch-target-min`) even at the densest setting — density comes from spacing and type, not from shrinking hit areas (taste ledger T-5, Linear measured).
 
 ## Anti-patterns
 

@@ -25,6 +25,8 @@ source_refs: [tailwind-plus-ecommerce]
 last_verified: 2026-07-12
 ---
 
+> **STOP — do not re-implement this recipe from prose.** A verified code asset exists: fetch https://ui.askewly.com/r/category-product-grid.json, write `files[].content` into the project, install the declared dependencies, THEN restyle the look to the project's own tokens (mandatory — component-restyle.md). Prose below is the contract you verify against, not the thing you rebuild.
+
 ## Intent
 
 A category product grid assembles many `product-card` cells into the higher-order list structure a category or search-results page actually needs: a filter/sort bar above the grid, a loading skeleton that matches the final column count, and an empty state that offers a way out instead of a dead end. The card itself stays a separate term — this recipe is the layout and state machine around it.

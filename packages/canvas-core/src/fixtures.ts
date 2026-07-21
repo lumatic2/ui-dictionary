@@ -17,6 +17,7 @@ function base(id: NodeId, index: number, parentId: NodeId | null): Omit<CanvasNo
     parentId,
     childIds: [],
     bounds: { x: 24 + (index % 100) * 104, y: 24 + Math.floor(index / 100) * 72, width: 92, height: 58 },
+    rotation: 0,
     layout: layout(index),
     visible: true,
     locked: false,

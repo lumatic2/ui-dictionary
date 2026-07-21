@@ -1,0 +1,462 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry.json",
+  "name": "askewly",
+  "homepage": "https://ui.askewly.com",
+  "items": [
+    {
+      "name": "actionable-toast",
+      "type": "registry:block",
+      "title": "Actionable Toast",
+      "description": "An actionable toast confirms a recent low-risk operation and may offer one short recovery action such as Undo or Retry. It does not request a decision, carry long instructions, or hide a persistent error that belongs next to the affected content.",
+      "registryDependencies": [
+        "button"
+      ],
+      "dependencies": [
+        "lucide-react"
+      ],
+      "files": [
+        {
+          "path": "registry/askewly/actionable-toast/actionable-toast.tsx",
+          "type": "registry:component"
+        }
+      ]
+    },
+    {
+      "name": "advanced-filter-builder",
+      "type": "registry:block",
+      "title": "Advanced Filter Builder",
+      "description": "An advanced filter builder with condition groups implements the `advanced-filter-builder` term's field-operator-value contract at composition scale: instead of one flat list of conditions, conditions nest inside groups, and groups combine with a top-level AND/OR join. This is the structure Retool-style internal admin tools repeat when a single filter row can't express \"status is active AND (region is US OR region is EU)\".",
+      "registryDependencies": [
+        "button",
+        "input",
+        "select"
+      ],
+      "dependencies": [],
+      "files": [
+        {
+          "path": "registry/askewly/advanced-filter-builder/advanced-filter-builder.tsx",
+          "type": "registry:component"
+        }
+      ]
+    },
+    {
+      "name": "api-reference-layout",
+      "type": "registry:block",
+      "title": "Api Reference Layout",
+      "description": "Api Reference Layout — verified recipe demo implementation from the Askewly Design site.",
+      "registryDependencies": [
+        "badge",
+        "tabs"
+      ],
+      "dependencies": [],
+      "files": [
+        {
+          "path": "registry/askewly/api-reference-layout/api-reference-layout.tsx",
+          "type": "registry:component"
+        }
+      ]
+    },
+    {
+      "name": "audit-log-filterable-export-feed",
+      "type": "registry:block",
+      "title": "Audit Log Filterable Export Feed",
+      "description": "An audit log filterable export feed implements the `audit-log` term's actor/action/target/timestamp record as a filterable, exportable operational surface: filters scope by actor, action type, and date range, and export always applies to the currently active filter rather than silently dumping the full unfiltered table. Unlike `activity-feed`, which reads as a lightweight social/collaboration stream, this recipe is a forensic/compliance record — the column order (actor, action, target, timestamp) stays fixed regardless of filter state, and metadata expands on demand rather than always rendering inline.",
+      "registryDependencies": [
+        "button",
+        "select",
+        "table"
+      ],
+      "dependencies": [],
+      "files": [
+        {
+          "path": "registry/askewly/audit-log-filterable-export-feed/audit-log-filterable-export-feed.tsx",
+          "type": "registry:component"
+        }
+      ]
+    },
+    {
+      "name": "bulk-action-toolbar",
+      "type": "registry:block",
+      "title": "Bulk Action Toolbar",
+      "description": "A bulk action toolbar turns a table's per-row selection into a single place to act on many rows at once. It appears only once a selection exists, always states the selected count out loud, and offers an explicit way to go beyond the current page — selecting every row that matches the active filter, not just the ones currently rendered. It builds directly on `interactive-data-table`'s selection state rather than defining a second, competing selection model.",
+      "registryDependencies": [
+        "badge",
+        "button"
+      ],
+      "dependencies": [],
+      "files": [
+        {
+          "path": "registry/askewly/bulk-action-toolbar/bulk-action-toolbar.tsx",
+          "type": "registry:component"
+        }
+      ]
+    },
+    {
+      "name": "canvas-particle-field",
+      "type": "registry:block",
+      "title": "Canvas Particle Field",
+      "description": "A canvas particle field draws dozens-to-hundreds of drifting dots into a 2D pixel buffer as ambient backdrop texture. Tier ③ in `knowledge/expressive-stack.md`: at this element count, DOM nodes pay layout/paint cost per node while the canvas pays none. An experimental/showcase touch (signature principle 5) — hero and event surfaces on request, never behind forms or data UI.",
+      "registryDependencies": [],
+      "dependencies": [],
+      "files": [
+        {
+          "path": "registry/askewly/canvas-particle-field/canvas-particle-field.tsx",
+          "type": "registry:component"
+        }
+      ]
+    },
+    {
+      "name": "cart-drawer",
+      "type": "registry:block",
+      "title": "Cart Drawer",
+      "description": "A cart drawer keeps the browsing context intact while confirming what a user has added. It opens as a slide-over panel, shows each item with enough detail to double-check the choice, and moves the user toward checkout without a full page navigation. It intentionally shows only a subtotal — a full cost breakdown belongs to `checkout-order-summary`.",
+      "registryDependencies": [
+        "button",
+        "sheet"
+      ],
+      "dependencies": [
+        "lucide-react"
+      ],
+      "files": [
+        {
+          "path": "registry/askewly/cart-drawer/cart-drawer.tsx",
+          "type": "registry:component"
+        }
+      ]
+    },
+    {
+      "name": "category-product-grid",
+      "type": "registry:block",
+      "title": "Category Product Grid",
+      "description": "A category product grid assembles many `product-card` cells into the higher-order list structure a category or search-results page actually needs: a filter/sort bar above the grid, a loading skeleton that matches the final column count, and an empty state that offers a way out instead of a dead end. The card itself stays a separate term — this recipe is the layout and state machine around it.",
+      "registryDependencies": [
+        "button",
+        "select",
+        "skeleton"
+      ],
+      "dependencies": [],
+      "files": [
+        {
+          "path": "registry/askewly/category-product-grid/category-product-grid.tsx",
+          "type": "registry:component"
+        }
+      ]
+    },
+    {
+      "name": "chat-conversation-panel",
+      "type": "registry:block",
+      "title": "Chat Conversation Panel",
+      "description": "A chat conversation panel turns a request-response exchange with a person or an AI assistant into one continuously readable thread: a bounded, self-scrolling message log above a single always-visible input bar. It exists for turn-taking conversation — not for comment threads (no reply nesting), notification feeds (no input), or one-shot form submission.",
+      "registryDependencies": [
+        "button"
+      ],
+      "dependencies": [
+        "lucide-react"
+      ],
+      "files": [
+        {
+          "path": "registry/askewly/chat-conversation-panel/chat-conversation-panel.tsx",
+          "type": "registry:component"
+        }
+      ]
+    },
+    {
+      "name": "checkout-order-summary",
+      "type": "registry:block",
+      "title": "Checkout Order Summary",
+      "description": "A checkout order summary keeps the exact purchase commitment visible while the user provides delivery and payment details. Products, quantities, discounts, shipping, tax, total, fulfillment method, and final action stay consistent across steps and remain editable before confirmation.",
+      "registryDependencies": [
+        "button"
+      ],
+      "dependencies": [],
+      "files": [
+        {
+          "path": "registry/askewly/checkout-order-summary/checkout-order-summary.tsx",
+          "type": "registry:component"
+        }
+      ]
+    },
+    {
+      "name": "data-import-wizard-validation-preview-steps",
+      "type": "registry:block",
+      "title": "Data Import Wizard Validation Preview Steps",
+      "description": "A data import wizard validation preview steps recipe implements the `data-import-wizard-validation-preview` term's upload-to-summary contract as five discrete steps: upload, map, validate, preview, confirm. Each step is its own screen rather than a single scrolling form, per-row validation errors surface inline in the preview table instead of only as an aggregate count, and a failing row can be fixed or explicitly skipped without aborting the whole import. This is the structure Retool/Linear/Stripe-style admin CSV import flows repeat.",
+      "registryDependencies": [
+        "badge",
+        "button",
+        "table"
+      ],
+      "dependencies": [],
+      "files": [
+        {
+          "path": "registry/askewly/data-import-wizard-validation-preview-steps/data-import-wizard-validation-preview-steps.tsx",
+          "type": "registry:component"
+        }
+      ]
+    },
+    {
+      "name": "doc-search-cmdk-grouped-results-panel",
+      "type": "registry:block",
+      "title": "Doc Search Cmdk Grouped Results Panel",
+      "description": "A documentation site's Cmd/Ctrl+K search reuses the `command-palette` overlay shell (`topbar-command-search` implements the same input+popover idea inline in a topbar), but a docs search result set spans several kinds of content — pages, guides, API entries — and a flat list makes the reader scan section by section anyway. Grouping results under section headers (Docs/Guides/API) inside the same overlay does that scanning for them, without inventing a second overlay pattern.",
+      "registryDependencies": [
+        "command"
+      ],
+      "dependencies": [],
+      "files": [
+        {
+          "path": "registry/askewly/doc-search-cmdk-grouped-results-panel/doc-search-cmdk-grouped-results-panel.tsx",
+          "type": "registry:component"
+        }
+      ]
+    },
+    {
+      "name": "docs-changelog-category-filter-page",
+      "type": "registry:block",
+      "title": "Docs Changelog Category Filter Page",
+      "description": "`docs-changelog-page` already names a date-grouped `release-note-card` list as a page; this recipe is the concrete implementation with the two controls that make a long changelog navigable — a category filter chip row (All/GA/Preview-style categories) that narrows which cards show, and pagination so the page doesn't grow unbounded. Filtering and pagination share one state contract: changing the category resets which date groups are visible, and a date group with zero remaining cards after filtering disappears rather than rendering with an empty heading.",
+      "registryDependencies": [
+        "badge",
+        "pagination"
+      ],
+      "dependencies": [],
+      "files": [
+        {
+          "path": "registry/askewly/docs-changelog-category-filter-page/docs-changelog-category-filter-page.tsx",
+          "type": "registry:component"
+        }
+      ]
+    },
+    {
+      "name": "docs-code-block",
+      "type": "registry:block",
+      "title": "Docs Code Block",
+      "description": "Documentation readers often need the same instruction in more than one equivalent form (npm/yarn/pnpm, or curl/node/python) and want to copy it without hand-selecting text. Tabs switch between equivalent code variants in place, and a fixed copy button turns the block into a one-click action instead of a select-and-copy chore.",
+      "registryDependencies": [
+        "button",
+        "tabs"
+      ],
+      "dependencies": [
+        "lucide-react"
+      ],
+      "files": [
+        {
+          "path": "registry/askewly/docs-code-block/docs-code-block.tsx",
+          "type": "registry:component"
+        }
+      ]
+    },
+    {
+      "name": "interactive-data-table",
+      "type": "registry:block",
+      "title": "Interactive Data Table",
+      "description": "An interactive data table supports scanning and acting on structured records while preserving column meaning. Selection, sorting, filtering, density, and row actions are added only when the user task needs them; the table remains readable without those controls.",
+      "registryDependencies": [
+        "button",
+        "checkbox",
+        "table"
+      ],
+      "dependencies": [],
+      "files": [
+        {
+          "path": "registry/askewly/interactive-data-table/interactive-data-table.tsx",
+          "type": "registry:component"
+        }
+      ]
+    },
+    {
+      "name": "lazy-three-object-scene",
+      "type": "registry:block",
+      "title": "Lazy Three Object Scene",
+      "description": "A real 3D object (lighting, depth, materials) rendered with three.js via React Three Fiber, loaded strictly behind a dynamic import. Tier ④ in `knowledge/expressive-stack.md` — CSS `perspective` can fake a rotated plane but cannot do lit, shaded geometry. The recipe's load-bearing part is the delivery contract: three.js is a ~155KB gzip fixed cost, so **the lazy boundary is not an optimization, it is the pattern** (judgment rule 4: tier ④ requires lazy-load).",
+      "registryDependencies": [],
+      "dependencies": [],
+      "files": [
+        {
+          "path": "registry/askewly/lazy-three-object-scene/lazy-three-object-scene.tsx",
+          "type": "registry:component"
+        }
+      ]
+    },
+    {
+      "name": "mesh-gradient-surface",
+      "type": "registry:block",
+      "title": "Mesh Gradient Surface",
+      "description": "A mesh gradient surface gives a hero, brand section, or empty backdrop an organic multi-point color field without imagery. Tier ① (CSS-only) in `knowledge/expressive-stack.md`: several radial-gradient layers stacked on one element approximate a mesh — no JS, no dependency, static by default. Use it where a flat token background feels inert but a photo or 3D scene would be overkill.",
+      "registryDependencies": [],
+      "dependencies": [],
+      "files": [
+        {
+          "path": "registry/askewly/mesh-gradient-surface/mesh-gradient-surface.tsx",
+          "type": "registry:component"
+        }
+      ]
+    },
+    {
+      "name": "permission-matrix-editor-grid",
+      "type": "registry:block",
+      "title": "Permission Matrix Editor Grid",
+      "description": "A permission matrix editor grid implements the `permission-matrix-editor` term's role-by-permission table as an editable, high-density admin surface: both axes stay readable while scrolling a large matrix, explicit grants are visually distinct from inherited ones, and a batch of checkbox edits stays pending behind a diff step instead of writing to the backend on every click. This is the interaction shape Retool-style admin templates and workspace role-settings screens repeat once a permission table grows past a handful of rows and columns.",
+      "registryDependencies": [
+        "badge",
+        "button",
+        "checkbox",
+        "table"
+      ],
+      "dependencies": [],
+      "files": [
+        {
+          "path": "registry/askewly/permission-matrix-editor-grid/permission-matrix-editor-grid.tsx",
+          "type": "registry:component"
+        }
+      ]
+    },
+    {
+      "name": "product-detail-purchase-stack",
+      "type": "registry:block",
+      "title": "Product Detail Purchase Stack",
+      "description": "The product detail purchase stack is the desktop-default vertical block that binds title, price, variant selection, quantity, and the add-to-cart CTA into one continuously visible unit. Baymard's product-page research recommends exposing variant choices (size/color) as visible buttons rather than hiding them behind a dropdown, and surfacing the estimated total plus a return-policy link right next to the CTA rather than deferring cost/policy facts to a later step. `product-option-sheet` is the mobile bottom-sheet variant of this same decision set — this recipe is the inline desktop default, not a replacement for it.",
+      "registryDependencies": [
+        "button"
+      ],
+      "dependencies": [],
+      "files": [
+        {
+          "path": "registry/askewly/product-detail-purchase-stack/product-detail-purchase-stack.tsx",
+          "type": "registry:component"
+        }
+      ]
+    },
+    {
+      "name": "promo-banner-system",
+      "type": "registry:block",
+      "title": "Promo Banner System",
+      "description": "A promo banner system is one banner shape that carries different urgency-driven offer copy — a discount rate, a limited-time sale, a countdown — depending on where it's placed (top-of-site vs in-page). It exists specifically for time-limited, dismissible promotional messaging. It is **not** the same thing as the `incentive-trust-strip` term: that term shows fixed reassurance signals (free shipping, returns, secure checkout) that don't expire and aren't urgency-driven, and it is not user-dismissible in the same session-scoped way this recipe is.",
+      "registryDependencies": [
+        "button"
+      ],
+      "dependencies": [
+        "lucide-react"
+      ],
+      "files": [
+        {
+          "path": "registry/askewly/promo-banner-system/promo-banner-system.tsx",
+          "type": "registry:component"
+        }
+      ]
+    },
+    {
+      "name": "recoverable-empty-state",
+      "type": "registry:block",
+      "title": "Recoverable Empty State",
+      "description": "A recoverable empty state explains why expected content is absent and gives the user the most direct next action. It distinguishes first-use emptiness, no search results, filtered-out content, permission limits, and load failures instead of showing one generic illustration for every cause.",
+      "registryDependencies": [
+        "button"
+      ],
+      "dependencies": [
+        "lucide-react"
+      ],
+      "files": [
+        {
+          "path": "registry/askewly/recoverable-empty-state/recoverable-empty-state.tsx",
+          "type": "registry:component"
+        }
+      ]
+    },
+    {
+      "name": "responsive-content-grid",
+      "type": "registry:block",
+      "title": "Responsive Content Grid",
+      "description": "A responsive content grid arranges peer items into as many columns as the content can support, then collapses without changing their reading order. It is a layout contract for cards, examples, products, or records, not a decorative checkerboard.",
+      "registryDependencies": [
+        "badge",
+        "button"
+      ],
+      "dependencies": [],
+      "files": [
+        {
+          "path": "registry/askewly/responsive-content-grid/responsive-content-grid.tsx",
+          "type": "registry:component"
+        }
+      ]
+    },
+    {
+      "name": "scroll-driven-reveal",
+      "type": "registry:block",
+      "title": "Scroll Driven Reveal",
+      "description": "A scroll-driven reveal fades/raises content in as it enters the scrollport, using CSS view-progress timelines (`animation-timeline: view()`). Tier ① in `knowledge/expressive-stack.md`: for a plain \"appear on entry\" mapping this needs no scroll listeners, no IntersectionObserver, and runs off the main thread. Escalate to tier ② (GSAP ScrollTrigger) only for pinning, scrubbing, or cross-element sequencing — per the decision table.",
+      "registryDependencies": [],
+      "dependencies": [],
+      "files": [
+        {
+          "path": "registry/askewly/scroll-driven-reveal/scroll-driven-reveal.tsx",
+          "type": "registry:component"
+        }
+      ]
+    },
+    {
+      "name": "shipping-method-selector",
+      "type": "registry:block",
+      "title": "Shipping Method Selector",
+      "description": "A shipping method selector lets a checkout user compare delivery/pickup options by cost and timing in one glance, and binds the choice directly to the order total. Baymard's checkout-flow research treats a total that changes unexpectedly after this step as a trust problem — so selecting a method must recalculate the visible total immediately, not just at final confirmation.",
+      "registryDependencies": [
+        "radio-group"
+      ],
+      "dependencies": [],
+      "files": [
+        {
+          "path": "registry/askewly/shipping-method-selector/shipping-method-selector.tsx",
+          "type": "registry:component"
+        }
+      ]
+    },
+    {
+      "name": "sidebar-application-shell",
+      "type": "registry:block",
+      "title": "Sidebar Application Shell",
+      "description": "A sidebar application shell gives repeated product navigation a stable rail while keeping the task surface flexible. It is appropriate for dashboards, internal tools, and documentation products where users move among peer work areas many times per session.",
+      "registryDependencies": [],
+      "dependencies": [
+        "lucide-react"
+      ],
+      "files": [
+        {
+          "path": "registry/askewly/sidebar-application-shell/sidebar-application-shell.tsx",
+          "type": "registry:component"
+        }
+      ]
+    },
+    {
+      "name": "stat-summary-grid",
+      "type": "registry:block",
+      "title": "Stat Summary Grid",
+      "description": "A stat summary grid gives a small set of operational measures a consistent hierarchy: label, current value, and a contextual trend or status. It supports quick orientation at the top of a real dashboard; it is not a license to fabricate metrics for decorative proof.",
+      "registryDependencies": [],
+      "dependencies": [],
+      "files": [
+        {
+          "path": "registry/askewly/stat-summary-grid/stat-summary-grid.tsx",
+          "type": "registry:component"
+        }
+      ]
+    },
+    {
+      "name": "versioned-docs-switcher-navbar-sidebar-swap",
+      "type": "registry:block",
+      "title": "Versioned Docs Switcher Navbar Sidebar Swap",
+      "description": "The `versioned-docs-switcher` term already names the dropdown-plus-stale-banner concept; this recipe is the actual three-part state contract behind it — picking a version in the navbar dropdown does not just relabel the page, it swaps the sidebar tree's entire data source to that version's structure, and shows a stale-version banner whenever the selected version is not the latest. The dropdown, banner, and sidebar all read from one `activeVersionId` value instead of three independently-set flags.",
+      "registryDependencies": [
+        "select"
+      ],
+      "dependencies": [
+        "lucide-react"
+      ],
+      "files": [
+        {
+          "path": "registry/askewly/versioned-docs-switcher-navbar-sidebar-swap/versioned-docs-switcher-navbar-sidebar-swap.tsx",
+          "type": "registry:component"
+        }
+      ]
+    }
+  ]
+}

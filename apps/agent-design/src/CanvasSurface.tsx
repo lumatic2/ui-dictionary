@@ -1,6 +1,5 @@
 import { memo, useCallback, useEffect, useMemo, useRef, useState } from 'react'
 import {
-  alignmentGuides,
   boundsChanged,
   captureBounds,
   marqueeHitTest,
@@ -12,7 +11,9 @@ import {
   previewSelectionBounds,
   reduceSelection,
   resizeBounds,
+  measureDistance,
   selectionBounds,
+  snapBounds,
   traverseSelection,
   zoomAroundPoint,
   type AlignmentGuide,
@@ -21,10 +22,13 @@ import {
   type CanvasNode,
   type CanvasOperation,
   type ResizeHandle,
+  normalizeRotation,
+  rotationFromPointer,
 } from '@askewly/canvas-core'
 import { EditorPlane } from './EditorPlane'
 import type { EditorPlaneFailure } from './editorPlaneRuntime'
-import { editorTokenMaps, FALLBACK_BACKGROUND_TOKEN, type TokenSetId } from './editorTokens'
+import { TOKEN_BINDING_KINDS } from '@askewly/canvas-core'
+import { documentTokens } from './documentTokens'
 
 interface Props {
   document: CanvasDocument
@@ -40,26 +44,67 @@ function sourceRef(node: CanvasNode) {
   return node.source ? `${node.source.file}:${node.source.startLine}` : undefined
 }
 
-function tokenMapFor(tokenSetId: string) {
-  return editorTokenMaps[tokenSetId as TokenSetId] ?? editorTokenMaps['askewly.default']
-}
-
-function resolveNodeBackground(tokenSetId: string, tokenBindings: CanvasNode['tokenBindings']): string {
-  const map = tokenMapFor(tokenSetId)
-  const tokenName = tokenBindings.background ?? FALLBACK_BACKGROUND_TOKEN
-  return map[tokenName] ?? map[FALLBACK_BACKGROUND_TOKEN]
-}
-
-function nodeStyle(node: CanvasNode, tokenSetId: string, previewBounds?: CanvasNode['bounds']): React.CSSProperties {
+/**
+ * 노드 표면 스타일 — 색·글꼴은 문서의 토큰 세트에서만 온다.
+ *
+ * 도형은 `tokenBindings.fill`이 있으면 그것이 이긴다. 컴파일러가 넣는 `node.fill`
+ * 리터럴은 토큰이 없는 자유 도형용 폴백으로만 남는다.
+ */
+function nodeStyle(node: CanvasNode, tokenSetId: string, previewBounds?: CanvasNode['bounds'], previewRotation?: number): React.CSSProperties {
   const bounds = previewBounds ?? node.bounds
-  return {
+  const rotation = previewRotation ?? node.rotation
+  const tokens = documentTokens(tokenSetId)
+
+  // 규칙 하나: **바인딩이 있으면 그 바인딩만이 값을 정한다.** 안 풀리면 칠하지 않는다.
+  // 다른 경로로 흘러내려 그럴듯한 색을 얻으면 결함이 화면에서 사라진다.
+  const fillBinding = node.kind === 'shape' ? node.tokenBindings.fill : undefined
+  const backgroundBinding = node.tokenBindings.background
+  const colorBinding = node.tokenBindings.color
+  // 토큰에서 벗어난 색(ECT3 detach). **바인딩이 이긴다** — 둘이 겹쳐도 모호하지 않다.
+  const literal = node.literalColors ?? {}
+
+  let background: string | null = null
+  if (fillBinding) background = tokens.resolve(fillBinding)
+  else if (literal.fill && node.kind === 'shape') background = literal.fill
+  else if (backgroundBinding) background = tokens.resolveBackground(backgroundBinding)
+  else if (literal.background) background = literal.background
+  else if (node.kind === 'shape') background = node.fill
+  else background = tokens.resolveBackground(backgroundBinding)
+
+  const color = colorBinding
+    ? tokens.resolve(colorBinding)
+    : (literal.color ?? tokens.resolve('text.default'))
+  const fontFamily = tokens.resolve(node.tokenBindings.fontFamily)
+
+  const style: React.CSSProperties = {
     left: bounds.x,
     top: bounds.y,
     width: bounds.width,
     height: bounds.height,
-    background: resolveNodeBackground(tokenSetId, node.tokenBindings),
-    color: tokenMapFor(tokenSetId)['text.default'],
   }
+  // 회전축은 바운딩 박스 중심 — 문서 모델의 정의와 같은 축을 쓴다.
+  if (rotation) style.transform = `rotate(${rotation}deg)`
+  if (background) style.background = background
+  if (color) style.color = color
+  if (fontFamily) style.fontFamily = fontFamily
+
+  if (node.kind === 'text') {
+    style.fontSize = node.textStyle.fontSize
+    style.fontWeight = node.textStyle.fontWeight
+    style.lineHeight = `${node.textStyle.lineHeight}px`
+    if (!fontFamily) style.fontFamily = node.textStyle.fontFamily
+  }
+
+  return style
+}
+
+/** 토큰이 해석되지 않은 노드는 미해결로 표시한다 — 그럴듯한 색으로 덮지 않는다. */
+function unresolvedBindings(node: CanvasNode, tokenSetId: string): boolean {
+  const tokens = documentTokens(tokenSetId)
+  if (tokens.source === 'unknown') return true
+  // 정본에서 키를 얻는다 — 손으로 나열하면 정본에 키가 늘 때 여기가 조용히 뒤처진다(ECT4).
+  const bindings = Object.keys(TOKEN_BINDING_KINDS).map((key) => node.tokenBindings[key])
+  return bindings.some((binding) => binding !== undefined && tokens.resolve(binding) === null)
 }
 
 interface CanvasNodeElementProps {
@@ -67,8 +112,13 @@ interface CanvasNodeElementProps {
   selected: boolean
   dropTarget: boolean
   primary: boolean
+  /** 이 선택이 단일인지 다중인지 — 다중은 외곽선이 굵어지고 개수 배지가 함께 뜬다. */
+  selectionScope: 'single' | 'multi'
   tokenSetId: string
+  assets: CanvasDocument['assets']
   previewBounds?: CanvasNode['bounds']
+  /** 회전 드래그 중인 각도 — 놓기 전까지는 문서를 건드리지 않는다. */
+  previewRotation?: number
   onOperation?: (operation: CanvasOperation) => void
 }
 
@@ -98,7 +148,7 @@ function TextNodeElement({ node, shared, onOperation }: { node: Extract<CanvasNo
   />
 }
 
-const CanvasNodeElement = memo(function CanvasNodeElement({ node, selected, dropTarget, primary, tokenSetId, previewBounds, onOperation }: CanvasNodeElementProps) {
+const CanvasNodeElement = memo(function CanvasNodeElement({ node, selected, dropTarget, primary, selectionScope, tokenSetId, assets, previewBounds, previewRotation, onOperation }: CanvasNodeElementProps) {
   const shared = {
     'data-canvas-id': node.id,
     'data-parent-id': node.parentId ?? '',
@@ -107,14 +157,24 @@ const CanvasNodeElement = memo(function CanvasNodeElement({ node, selected, drop
     'aria-label': node.name,
     'aria-selected': selected,
     'data-selection-state': selected ? 'selected' : 'idle',
+    'data-selection-scope': selectionScope,
     'data-drop-target': dropTarget ? 'active' : 'idle',
     draggable: selected && !node.locked,
     tabIndex: primary ? 0 : -1,
     className: `canvas-node node-${node.kind}`,
-    style: nodeStyle(node, tokenSetId, previewBounds),
+    'data-token-unresolved': unresolvedBindings(node, tokenSetId) ? '' : undefined,
+    style: nodeStyle(node, tokenSetId, previewBounds, previewRotation),
   }
   if (node.kind === 'text') {
     return <TextNodeElement node={node} shared={shared} onOperation={onOperation} />
+  }
+  if (node.kind === 'image') {
+    const asset = assets?.[node.assetId]
+    // 소재를 못 찾으면 빈 상자로 넘기지 않는다 — 무엇이 없는지 화면에 적는다.
+    if (!asset) {
+      return <div {...shared} role="img" aria-label={node.alt} data-asset-missing="">{`소재 없음: ${node.assetId}`}</div>
+    }
+    return <img {...shared} alt={node.alt} src={asset.uri} data-asset-id={node.assetId} style={{ ...shared.style, objectFit: node.fit, opacity: node.opacity }} />
   }
   if (node.kind === 'instance') {
     return <button {...shared} type="button">{String(node.overrides.label ?? node.name)}</button>
@@ -133,9 +193,33 @@ export function CanvasSurface({ document, editorPlaneFailure = null, onOperation
   const dragStart = useRef<{ x: number; y: number } | null>(null)
   const structureDragId = useRef<string | null>(null)
   const [marquee, setMarquee] = useState<ReturnType<typeof normalizeRect> | null>(null)
-  const gestureRef = useRef<{ start: { x: number; y: number }; before: BoundsById; kind: 'move' | 'resize'; handle?: ResizeHandle } | null>(null)
+  const gestureRef = useRef<{
+    start: { x: number; y: number }
+    before: BoundsById
+    kind: 'move' | 'resize' | 'rotate'
+    handle?: ResizeHandle
+    /** 회전 시작 순간의 상태 — 잡은 위치가 각도를 튀게 하지 않도록 기준으로 삼는다. */
+    grab?: { center: { x: number; y: number }; pointer: { x: number; y: number }; rotation: number }
+  } | null>(null)
   const [previewBounds, setPreviewBounds] = useState<BoundsById>({})
+  /**
+   * 같은 값의 ref. `finishGesture`는 state 를 클로저로 읽는데, 누르고 끌고 놓는 일이 한 틱 안에
+   * 일어나면 그 클로저는 아직 `{}`다 — 빈 `transform-nodes`가 커밋돼 편집기 전체가 죽었다
+   * (브라우저 실조작에서 적발: "transform-nodes requires at least one node").
+   */
+  const previewBoundsRef = useRef<BoundsById>({})
+  const writePreviewBounds = useCallback((next: BoundsById) => {
+    previewBoundsRef.current = next
+    setPreviewBounds(next)
+  }, [])
+  const [previewRotation, setPreviewRotation] = useState<number | null>(null)
   const [guides, setGuides] = useState<AlignmentGuide[]>([])
+  const [snapEnabled, setSnapEnabled] = useState(true)
+  /**
+   * 정적 거리 측정의 상대 노드. 드래그 gesture와 **다른 상태**다 — 하나로 합치면
+   * "지금 끄는 중인지 재는 중인지"가 화면에서 갈리지 않는다(리서치 함의 2).
+   */
+  const [measureTargetId, setMeasureTargetId] = useState<string | null>(null)
   const [dropTargetId, setDropTargetId] = useState<string | null>(null)
   const spaceHeld = useRef(false)
   const panGesture = useRef<{ start: { x: number; y: number }; panBefore: { x: number; y: number } } | null>(null)
@@ -143,7 +227,7 @@ export function CanvasSurface({ document, editorPlaneFailure = null, onOperation
   const selectedIds = useMemo(() => new Set(document.selection), [document.selection])
   const orderedNodes = useMemo(() => paintOrder(document).map((id) => document.nodes[id]), [document])
   const primaryId = document.selection.at(-1)
-  const nodeElements = useMemo(() => orderedNodes.map((node) => <CanvasNodeElement key={node.id} node={node} selected={selectedIds.has(node.id)} primary={primaryId === node.id} dropTarget={dropTargetId === node.id} tokenSetId={document.tokenSetId} previewBounds={previewBounds[node.id]} onOperation={onOperation} />), [document.tokenSetId, dropTargetId, onOperation, orderedNodes, previewBounds, primaryId, selectedIds])
+  const nodeElements = useMemo(() => orderedNodes.map((node) => <CanvasNodeElement key={node.id} node={node} selected={selectedIds.has(node.id)} primary={primaryId === node.id} selectionScope={document.selection.length > 1 ? 'multi' : 'single'} dropTarget={dropTargetId === node.id} tokenSetId={document.tokenSetId} assets={document.assets} previewBounds={previewBounds[node.id]} previewRotation={primaryId === node.id && previewRotation !== null ? previewRotation : undefined} onOperation={onOperation} />), [document.assets, document.tokenSetId, dropTargetId, onOperation, orderedNodes, previewBounds, primaryId, selectedIds])
   const activePan = panPreview ?? document.viewport.pan
   const transform = `translate(${activePan.x}px, ${activePan.y}px) scale(${document.viewport.zoom})`
   const canonicalSelection = Object.keys(previewBounds).length ? previewSelectionBounds(document, previewBounds) : selectionBounds(document)
@@ -153,6 +237,15 @@ export function CanvasSurface({ document, editorPlaneFailure = null, onOperation
     width: canonicalSelection.width * document.viewport.zoom,
     height: canonicalSelection.height * document.viewport.zoom,
   } : null
+
+  // 측정은 문서 좌표에서 한다 — 화면 픽셀에서 되읽으면 zoom·pan이 값에 섞인다.
+  const measurement = useMemo(() => {
+    if (!measureTargetId) return null
+    const target = document.nodes[measureTargetId]
+    const from = selectionBounds(document)
+    if (!target || !from) return null
+    return { distance: measureDistance(from, target.bounds), target: target.bounds }
+  }, [document, measureTargetId])
 
   const commitSelection = useCallback((nodeIds: string[]) => {
     onOperation?.({ type: 'select-nodes', id: `select-${performance.now()}`, at: new Date().toISOString(), nodeIds })
@@ -184,7 +277,7 @@ export function CanvasSurface({ document, editorPlaneFailure = null, onOperation
     if (event.key === 'Escape' && gestureRef.current) {
       event.preventDefault()
       gestureRef.current = null
-      setPreviewBounds({})
+      writePreviewBounds({})
       setGuides([])
       return
     }
@@ -208,37 +301,95 @@ export function CanvasSurface({ document, editorPlaneFailure = null, onOperation
     if (next) commitSelection([next])
   }, [commitSelection, document, onOperation])
 
-  const beginGesture = useCallback((event: React.PointerEvent, kind: 'move' | 'resize', handle?: ResizeHandle) => {
+  const beginGesture = useCallback((event: React.PointerEvent, kind: 'move' | 'resize' | 'rotate', handle?: ResizeHandle) => {
     const before = captureBounds(document)
     if (!Object.keys(before).length) return
     event.preventDefault()
     event.stopPropagation()
-    gestureRef.current = { start: { x: event.clientX, y: event.clientY }, before, kind, handle }
-    setPreviewBounds(before)
+    let grab: { center: { x: number; y: number }; pointer: { x: number; y: number }; rotation: number } | undefined
+    if (kind === 'rotate') {
+      const id = document.selection.at(-1)
+      const node = id ? document.nodes[id] : undefined
+      if (!node) return
+      // 회전축을 **화면에 있는 선택 상자**에서 직접 읽는다.
+      // 문서 좌표를 zoom·pan으로 환산하면 뷰포트 요소가 창 안에서 밀려 있는 만큼
+      // 중심이 어긋난다 — 브라우저 실조작에서 90° 드래그가 8°로 나와 적발됐다.
+      const box = event.currentTarget.parentElement?.getBoundingClientRect()
+      if (!box) return
+      grab = {
+        // `left`/`top`을 쓴다 — 일부 DOM 구현의 DOMRect에는 `x`/`y`가 없어 중심이 NaN이 된다.
+        center: { x: box.left + box.width / 2, y: box.top + box.height / 2 },
+        pointer: { x: event.clientX, y: event.clientY },
+        rotation: node.rotation,
+      }
+      setPreviewRotation(node.rotation)
+    }
+    // 드래그가 시작되면 떠 있던 측정 판독을 끈다. 진입만 막으면 직전 Alt 호버의 배지가
+    // 드래그 내내 남는다 — 브라우저 실조작에서 적발됐고, 진입만 보던 테스트는 놓쳤다.
+    setMeasureTargetId(null)
+    gestureRef.current = { start: { x: event.clientX, y: event.clientY }, before, kind, handle, grab }
+    writePreviewBounds(before)
     if (event.isTrusted) event.currentTarget.setPointerCapture?.(event.pointerId)
   }, [document])
 
   const updateGesture = useCallback((event: React.PointerEvent) => {
     const gesture = gestureRef.current
     if (!gesture) return
+    if (gesture.kind === 'rotate' && gesture.grab) {
+      // 중심·포인터가 둘 다 화면 좌표라 zoom·pan·요소 오프셋이 전부 상쇄된다.
+      setPreviewRotation(normalizeRotation(rotationFromPointer(
+        gesture.grab.center,
+        { x: event.clientX, y: event.clientY },
+        { pointer: gesture.grab.pointer, rotation: gesture.grab.rotation },
+      )))
+      return
+    }
     const delta = { x: event.clientX - gesture.start.x, y: event.clientY - gesture.start.y }
-    const next = gesture.kind === 'move'
+    const dragged = gesture.kind === 'move'
       ? moveBounds(gesture.before, delta, document.viewport.zoom)
       : resizeBounds(gesture.before, gesture.handle ?? 'se', delta, document.viewport.zoom)
-    setPreviewBounds(next)
-    setGuides(alignmentGuides(document, next))
-  }, [document])
+    // 스냅이 보정한 좌표를 그대로 preview 로 쓴다 — 가이드만 그리고 원래 좌표를 커밋하면
+    // 화면의 선과 문서의 값이 어긋난다(EU2 실사에서 발견된 상태가 정확히 그거였다).
+    const snapped = snapBounds(document, dragged, { handle: gesture.kind === 'resize' ? gesture.handle ?? 'se' : undefined, enabled: snapEnabled })
+    writePreviewBounds(snapped.bounds)
+    setGuides(snapped.guides)
+  }, [document, snapEnabled])
+
+  /**
+   * Alt를 누른 채 다른 요소 위에 있을 때만 측정 상대를 잡는다.
+   *
+   * 드래그 중에는 절대 켜지 않는다 — 자동 스냅 가이드와 측정이 한 화면에 겹치면
+   * 사용자가 지금 뭘 보고 있는지 갈리지 않는다(리서치 함의 2).
+   */
+  const updateMeasureTarget = useCallback((event: React.PointerEvent) => {
+    if (!event.altKey || !document.selection.length) { setMeasureTargetId(null); return }
+    const target = event.target instanceof Element ? event.target.closest<HTMLElement>('[data-canvas-id]') : null
+    const id = target?.dataset.canvasId ?? null
+    setMeasureTargetId(id && !document.selection.includes(id) ? id : null)
+  }, [document.selection])
 
   const finishGesture = useCallback(() => {
     const gesture = gestureRef.current
     if (!gesture) return
     gestureRef.current = null
-    if (boundsChanged(gesture.before, previewBounds)) {
-      onOperation?.({ type: 'transform-nodes', id: `transform-${performance.now()}`, at: new Date().toISOString(), boundsById: previewBounds })
+    if (gesture.kind === 'rotate') {
+      const id = document.selection.at(-1)
+      if (id && previewRotation !== null && previewRotation !== document.nodes[id]?.rotation) {
+        onOperation?.({ type: 'rotate-nodes', id: `rotate-${performance.now()}`, at: new Date().toISOString(), rotationById: { [id]: previewRotation } })
+      }
+      setPreviewRotation(null)
+      writePreviewBounds({})
+      setGuides([])
+      return
     }
-    setPreviewBounds({})
+    const finalBounds = previewBoundsRef.current
+    // 빈 preview 는 "아무 데도 안 끌었다"는 뜻이다 — 연산으로 만들면 문서 계층이 거부하고 앱이 죽는다.
+    if (Object.keys(finalBounds).length && boundsChanged(gesture.before, finalBounds)) {
+      onOperation?.({ type: 'transform-nodes', id: `transform-${performance.now()}`, at: new Date().toISOString(), boundsById: finalBounds })
+    }
+    writePreviewBounds({})
     setGuides([])
-  }, [onOperation, previewBounds])
+  }, [document, onOperation, previewRotation, writePreviewBounds])
 
   useEffect(() => {
     const primary = document.selection.at(-1)
@@ -286,7 +437,7 @@ export function CanvasSurface({ document, editorPlaneFailure = null, onOperation
         return
       }
       if (gestureRef.current) { updateGesture(event); return }
-      if (!dragStart.current) return
+      if (!dragStart.current) { updateMeasureTarget(event); return }
       setMarquee(normalizeRect(dragStart.current, canvasPoint(event.clientX, event.clientY)))
     }}
     onPointerUp={(event) => {
@@ -310,7 +461,7 @@ export function CanvasSurface({ document, editorPlaneFailure = null, onOperation
       dragStart.current = null
       panGesture.current = null
       setPanPreview(null)
-      setPreviewBounds({})
+      writePreviewBounds({})
       setGuides([])
       setMarquee(null)
     }}
@@ -358,6 +509,28 @@ export function CanvasSurface({ document, editorPlaneFailure = null, onOperation
     <div className="canvas-content" data-testid="canvas-content" style={{ transform }}>
       {nodeElements}
     </div>
+    {measurement ? <div
+      className="measure-readout"
+      data-testid="measure-readout"
+      style={{
+        left: (measurement.target.x + measurement.target.width / 2) * document.viewport.zoom + document.viewport.pan.x,
+        top: (measurement.target.y + measurement.target.height / 2) * document.viewport.zoom + document.viewport.pan.y,
+      }}
+    >
+      <span data-testid="measure-horizontal">↔ {Math.round(measurement.distance.horizontal)}</span>
+      <span data-testid="measure-vertical">↕ {Math.round(measurement.distance.vertical)}</span>
+    </div> : null}
+    <div className="canvas-toolbar" onPointerDown={(event) => event.stopPropagation()}>
+      <label className="canvas-toggle">
+        <input
+          type="checkbox"
+          data-testid="snap-toggle"
+          checked={snapEnabled}
+          onChange={(event) => setSnapEnabled(event.target.checked)}
+        />
+        스냅
+      </label>
+    </div>
     {selection ? <div data-selected-id={document.selection.at(-1)}>
       <EditorPlane
         selection={selection}
@@ -382,10 +555,21 @@ export function CanvasSurface({ document, editorPlaneFailure = null, onOperation
         >
           <svg viewBox="0 0 16 16" aria-hidden="true"><path d="M5 4h6M5 8h6M5 12h6" /></svg>
         </button> : null}
+        {document.selection.length > 1 ? <span className="selection-count" data-testid="selection-count-badge">
+          {document.selection.length}개 선택
+        </span> : null}
+        {document.selection.length === 1 ? <button
+          type="button"
+          className="rotate-handle"
+          data-testid="rotate-handle"
+          aria-label="Rotate selection"
+          onPointerDown={(event) => beginGesture(event, 'rotate')}
+        /> : null}
         {(['nw', 'n', 'ne', 'e', 'se', 's', 'sw', 'w'] as ResizeHandle[]).map((handle) => <button
           key={handle}
           type="button"
-          className={`resize-handle resize-handle-${handle}`}
+          // 모서리는 양축, 변은 단축을 바꾼다. 그 역할 차이를 형태로 낸다(EU1).
+          className={`resize-handle resize-handle-${handle} resize-handle-${handle.length === 2 ? 'corner' : 'edge'}`}
           data-testid={`resize-${handle}`}
           aria-label={`Resize ${handle}`}
           onPointerDown={(event) => beginGesture(event, 'resize', handle)}

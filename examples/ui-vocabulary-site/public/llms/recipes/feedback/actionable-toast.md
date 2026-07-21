@@ -23,6 +23,8 @@ source_refs: []
 last_verified: 2026-07-10
 ---
 
+> **STOP — do not re-implement this recipe from prose.** A verified code asset exists: fetch https://ui.askewly.com/r/actionable-toast.json, write `files[].content` into the project, install the declared dependencies, THEN restyle the look to the project's own tokens (mandatory — component-restyle.md). Prose below is the contract you verify against, not the thing you rebuild.
+
 ## Intent
 
 An actionable toast confirms a recent low-risk operation and may offer one short recovery action such as Undo or Retry. It does not request a decision, carry long instructions, or hide a persistent error that belongs next to the affected content.

@@ -1,0 +1,46 @@
+[
+  {
+    "stage": "청사진",
+    "detail": "business-card-vertical (600×1050, 2열)"
+  },
+  {
+    "stage": "규격",
+    "detail": "한국 표준 명함 90×50mm · 300dpi {\"width\":591,\"height\":1063} · 도련 36px · 지면 744×1194"
+  },
+  {
+    "stage": "규격 위반",
+    "detail": "[]"
+  },
+  {
+    "stage": "소재",
+    "detail": "504×396 PNG, 302.9s, codex:image_generation:askewly-portrait"
+  },
+  {
+    "stage": "소재 슬롯 적합",
+    "detail": "슬롯 504×396 — 잘림 한도 통과"
+  },
+  {
+    "stage": "문서 검증",
+    "detail": "valid=true errors=[]"
+  },
+  {
+    "stage": "무결성",
+    "detail": "[]"
+  },
+  {
+    "stage": "노드",
+    "detail": "6개"
+  },
+  {
+    "stage": "내보내기",
+    "detail": "json 6868 bytes"
+  },
+  {
+    "stage": "내보내기",
+    "detail": "html 1153 bytes"
+  },
+  {
+    "stage": "내보내기",
+    "detail": "svg 1491 bytes"
+  }
+]

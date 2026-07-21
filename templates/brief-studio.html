@@ -1,0 +1,1759 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Brief Studio v2 — 눈으로 고르는 브리프</title>
+<!-- 폰트 목록은 데이터 JSON의 "fonts" 필드로 주입된다 (make-studio.py). 오프라인이면 시스템 폰트 폴백(페이지 불괴). -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;800&family=IBM+Plex+Sans+KR:wght@400;600&family=Noto+Serif+KR:wght@400;700&family=Gowun+Batang:wght@400;700&family=Gowun+Dodum&family=Nanum+Myeongjo:wght@400;800&family=Do+Hyeon&family=Black+Han+Sans&display=swap" rel="stylesheet">
+<style>
+* { box-sizing: border-box; margin: 0; }
+body { font-family: ui-sans-serif, system-ui, sans-serif; background: rgb(248,248,246); color: rgba(20,18,14,.95); line-height: 1.6; word-break: keep-all; }
+.wrap { max-width: 1440px; margin: 0 auto; padding: 32px 24px 110px; }
+/* ST2: 폭포(좌) + 스티키 라이브 미리보기(우) — 스크롤을 따라오며 선택마다 조립 */
+.studio-cols { display: grid; grid-template-columns: minmax(0,1fr) 400px; gap: 30px; align-items: start; }
+#preview { position: sticky; top: 16px; border: 1px solid rgba(20,18,14,.12); border-radius: 14px; overflow: hidden; background: #fff; }
+#preview .pv-title { padding: 10px 14px; font-size: 12px; font-weight: 700; letter-spacing: .08em; color: rgba(20,18,14,.5); border-bottom: 1px solid rgba(20,18,14,.08); background: #fff; display: flex; justify-content: space-between; align-items: center; gap: 8px; }
+/* SF3: 미리보기 뷰 토글 (다크·모바일) */
+.pv-toggles { display: flex; gap: 4px; }
+.pv-toggles button { font: inherit; font-size: 11px; letter-spacing: 0; padding: 3px 9px; border-radius: 5px; border: 1px solid rgba(20,18,14,.18); background: #fff; color: rgba(20,18,14,.65); cursor: pointer; }
+.pv-toggles button[aria-pressed="true"] { background: #1a6b3c; border-color: #1a6b3c; color: #fff; }
+.pv-toggles button:disabled { opacity: .35; cursor: not-allowed; }
+#pv-site { font-size: 10px; line-height: 1.5; word-break: keep-all; }
+#pv-site.pv-m { max-width: 320px; margin: 0 auto; border-left: 1px solid rgba(20,18,14,.12); border-right: 1px solid rgba(20,18,14,.12); }
+@media (max-width: 1080px) { .studio-cols { grid-template-columns: 1fr; } #preview { position: static; order: -1; } }
+h1 { font-size: 26px; letter-spacing: -0.02em; }
+.lead { color: rgba(20,18,14,.58); margin-top: 6px; font-size: 15px; max-width: 70ch; }
+h2 { font-size: 19px; margin: 46px 0 2px; }
+h2 .step { color: #1a6b3c; font-size: 13px; font-weight: 700; margin-right: 8px; vertical-align: 2px; }
+.hint { font-size: 13px; color: rgba(20,18,14,.58); margin-bottom: 14px; }
+.grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(230px, 1fr)); gap: 12px; }
+.opt { position: relative; background: #fff; border: 2px solid rgba(20,18,14,.10); border-radius: 12px; cursor: pointer; transition: border-color .15s ease; overflow: hidden; }
+.opt:hover { border-color: rgba(20,18,14,.35); }
+.opt.sel { border-color: #1a6b3c; }
+/* 순위·선택 표시는 오버레이가 아니라 예약된 상단 밴드 — 콘텐츠와 절대 겹치지 않음 (ST1) */
+.opt .band { display: flex; justify-content: space-between; align-items: center; padding: 8px 12px 6px; min-height: 30px; background: #fff; border-bottom: 1px solid rgba(20,18,14,.06); }
+.opt .rank { font-size: 11px; font-weight: 700; color: rgba(20,18,14,.45); background: rgba(20,18,14,.06); border-radius: 4px; padding: 1px 7px; }
+.opt .rank.r1 { color: #1a6b3c; background: rgba(26,107,60,.1); }
+.opt .sel-mark { display: none; font-size: 12px; font-weight: 700; color: #1a6b3c; }
+.opt.sel .sel-mark { display: inline; }
+/* 대형 그룹 (판단 정보가 많은 축: 타일·이미지) */
+.grid.lg { grid-template-columns: repeat(auto-fill, minmax(330px, 1fr)); gap: 16px; }
+.grid.lg .body-slot { min-height: 190px; }
+.tile-grid .body-slot { min-height: 170px; }
+.opt .label { padding: 9px 12px; font-size: 12.5px; font-weight: 600; border-top: 1px solid rgba(20,18,14,.08); display: flex; justify-content: space-between; gap: 8px; }
+.opt .label small { font-weight: 400; color: rgba(20,18,14,.55); white-space: nowrap; }
+.body-slot { padding: 16px; min-height: 118px; }
+/* 타일 */
+.tile-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(250px, 1fr)); gap: 14px; }
+.tile .t-head { font-size: 21px; line-height: 1.2; }
+.tile .t-sub { font-size: 12px; margin-top: 4px; opacity: .75; }
+.tile .t-row { display: flex; gap: 6px; margin-top: 12px; align-items: center; }
+.tile .t-btn { padding: 6px 13px; font-size: 11.5px; font-weight: 600; }
+.tile .t-dot { width: 14px; height: 14px; border-radius: 999px; }
+/* 미니 UI 프리뷰 (베이스/액센트) */
+.mini .m-title { font-size: 14px; font-weight: 700; }
+.mini .m-sub { font-size: 11.5px; margin-top: 2px; opacity: .62; }
+.mini .m-btn { display: inline-block; margin-top: 10px; padding: 6px 12px; border-radius: 6px; font-size: 11.5px; font-weight: 600; }
+.mini .m-card { margin-top: 8px; padding: 8px 10px; border-radius: 8px; font-size: 11px; }
+/* 스펙시멘 */
+.spec .s-head { font-size: 21px; line-height: 1.2; letter-spacing: -0.015em; }
+.spec .s-body { font-size: 12.5px; margin-top: 7px; opacity: .78; }
+/* 와이어프레임 */
+.wire { display: flex; flex-direction: column; gap: 4px; }
+.wire i { display: block; background: rgba(20,18,14,.10); border-radius: 3px; font-style: normal; }
+.wire .w-accent { background: rgba(26,107,60,.35); }
+.wire .w-row { display: flex; gap: 4px; }
+.wire .w-row i { flex: 1; }
+/* 슬라이더(스텝) */
+.steps { display: flex; gap: 8px; padding: 16px; }
+.steps .st { flex: 1; text-align: center; padding: 12px 4px 10px; border: 2px solid rgba(20,18,14,.10); border-radius: 10px; cursor: pointer; font-size: 12px; }
+.steps .st:hover { border-color: rgba(20,18,14,.35); }
+.steps .st.sel { border-color: #1a6b3c; font-weight: 700; }
+.steps .st .demo-box { margin: 0 auto 6px; width: 34px; height: 24px; background: rgba(20,18,14,.14); }
+/* 데모(모션) */
+.demo-chip { display: inline-block; padding: 7px 14px; border-radius: 6px; background: rgba(20,18,14,.08); font-size: 12.5px; }
+.d-std .demo-chip { transition: transform .18s ease, box-shadow .18s ease; }
+.d-std .demo-chip:hover { transform: translateY(-3px); box-shadow: 0 6px 16px rgba(20,18,14,.12); }
+.d-plain .demo-chip { transition: background-color .15s ease; } .d-plain .demo-chip:hover { background: rgba(20,18,14,.16); }
+.d-rich .demo-chip { transition: transform .12s ease-out; }
+/* ST4: 마우스 인터랙션 종류 데모 */
+.d-glow .demo-chip { transition: box-shadow .2s ease; }
+.d-glow .demo-chip:hover { box-shadow: 0 0 18px 2px currentColor; }
+.d-underline .demo-chip { border-radius: 0; background: transparent !important; border-bottom: 2px solid currentColor; padding-bottom: 4px; position: relative; }
+.d-underline .demo-chip::after { content: ""; position: absolute; left: 0; bottom: -2px; height: 2px; width: 0; background: currentColor; transition: width .25s ease; }
+.d-underline .demo-chip:hover::after { width: 100%; }
+.d-field { position: relative; overflow: hidden; }
+.d-field .field-bg { position: absolute; inset: 0; background: radial-gradient(140px circle at var(--fx,50%) var(--fy,50%), currentColor, transparent 70%); opacity: .18; pointer-events: none; transition: opacity .2s; }
+.d-field:hover .field-bg { opacity: .32; }
+/* 카피 후보 */
+.copy-slot { display: grid; place-items: center; text-align: center; }
+.copy-slot .c-head { font-size: 19px; line-height: 1.25; letter-spacing: -0.015em; }
+.copy-slot .c-sub { font-size: 12.5px; opacity: .7; }
+@media (prefers-reduced-motion: reduce) { .opt * { transition: none !important; transform: none !important; } }
+/* 제출 바 */
+.submit-bar { position: fixed; left: 0; right: 0; bottom: 0; background: rgba(255,255,254,.94); border-top: 1px solid rgba(20,18,14,.10); padding: 12px 24px; display: flex; gap: 16px; align-items: center; justify-content: center; backdrop-filter: blur(6px); z-index: 5; }
+.submit-bar .status { font-size: 13px; color: rgba(20,18,14,.58); }
+#send { height: 42px; padding: 0 26px; border: none; border-radius: 6px; background: #1a6b3c; color: #fff; font-size: 14.5px; font-weight: 600; cursor: pointer; font-family: inherit; }
+#send:hover { background: #14582f; } #send:disabled { opacity: .45; cursor: not-allowed; }
+#send:focus-visible { outline: 3px solid rgba(26,107,60,.4); outline-offset: 2px; }
+#fallback { display: none; width: 100%; max-width: 640px; font-family: ui-monospace, monospace; font-size: 12px; padding: 10px; }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <h1>Brief Studio <span style="color:#1a6b3c">v2</span></h1>
+  <p class="lead">① 먼저 방향 타일을 하나 고르면 아래 후보들이 그 방향 추천순으로 재정렬됩니다 (다른 조합도 자유롭게 선택 가능).
+     ② 각 축에서 하나씩 고르고 하단 "선택 완료"를 누르세요. 결정은 프로젝트 DESIGN.md에 저장됩니다.</p>
+  <div class="studio-cols">
+    <div id="app"></div>
+    <aside id="preview" aria-label="라이브 미리보기">
+      <div class="pv-title"><span>라이브 미리보기 — 고를수록 완성됩니다</span>
+        <span class="pv-toggles">
+          <button id="pv-dark" type="button" aria-pressed="false" title="미리보기를 다크로 보기">다크</button>
+          <button id="pv-mobile" type="button" aria-pressed="false" title="모바일 폭으로 보기">모바일</button>
+        </span></div>
+      <div id="pv-site"></div></aside>
+  </div>
+</div>
+<div class="submit-bar">
+  <span class="status" id="status"></span>
+  <button id="send" disabled>선택 완료</button>
+  <textarea id="fallback" rows="4" readonly aria-label="선택 결과 JSON"></textarea>
+</div>
+
+<script>
+/* ================= STUDIO DATA BEGIN — 직접 편집 금지 =================
+   후보 데이터는 studio-data JSON 파일에 작성하고 `python templates/make-studio.py --data <json> --out <html>` 로 생성하라.
+   규칙: 타일 3~4(키워드 파생) · 축별 후보 6~8 · rank=추천순(1이 최상단 배지) · boost={axisId: value} 로 타일→추천 재정렬 */
+const STUDIO_DATA = {
+  "fonts": "https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;800&family=IBM+Plex+Sans+KR:wght@400;600&family=Noto+Serif+KR:wght@400;700&family=Gowun+Batang:wght@400;700&family=Gowun+Dodum&family=Nanum+Myeongjo:wght@400;800&family=Do+Hyeon&family=Black+Han+Sans&display=swap",
+  "tiles": [
+    {
+      "value": "warm-honest",
+      "name": "따뜻하고 정직한",
+      "bg": "rgb(250,248,244)",
+      "ink": "rgba(28,23,16,.95)",
+      "accent": "#B4552D",
+      "font": "'Noto Sans KR',sans-serif",
+      "radius": "8px",
+      "desc": "웜 페이퍼 · 흙빛 액센트 · 단정한 산세리프",
+      "rank": 1,
+      "boost": {
+        "base": "warm-paper",
+        "accent": "terracotta",
+        "typo": "noto-pair",
+        "motion": "standard"
+      }
+    },
+    {
+      "value": "quiet-literary",
+      "name": "조용하고 문학적인",
+      "bg": "rgb(250,249,246)",
+      "ink": "rgba(24,22,18,.95)",
+      "accent": "#6B4A2F",
+      "font": "'Gowun Batang',serif",
+      "radius": "4px",
+      "desc": "종이 질감 · 세리프 전면 · 절제된 모션",
+      "rank": 2,
+      "boost": {
+        "base": "warm-paper",
+        "accent": "coffee",
+        "typo": "gowun-full",
+        "motion": "minimal"
+      }
+    },
+    {
+      "value": "crisp-technical",
+      "name": "선명하고 기술적인",
+      "bg": "rgb(247,249,252)",
+      "ink": "rgba(12,20,32,.95)",
+      "accent": "#20599C",
+      "font": "'IBM Plex Sans KR',sans-serif",
+      "radius": "6px",
+      "desc": "쿨 그레이 · 블루 신호 · 플렉스 산세리프",
+      "rank": 3,
+      "boost": {
+        "base": "cool-gray",
+        "accent": "blue",
+        "typo": "plex-pair",
+        "motion": "standard"
+      }
+    },
+    {
+      "value": "bold-night",
+      "name": "대담한 밤",
+      "bg": "rgb(24,22,26)",
+      "ink": "rgba(246,244,248,.95)",
+      "accent": "#D9B96C",
+      "font": "'Do Hyeon',sans-serif",
+      "radius": "10px",
+      "desc": "다크 베이스 · 골드 포인트 · 디스플레이 헤드",
+      "rank": 4,
+      "boost": {
+        "base": "pure-dark",
+        "accent": "gold",
+        "typo": "display-head",
+        "motion": "rich",
+        "dark": "dark-first"
+      }
+    }
+  ],
+  "axes": [
+    {
+      "id": "base",
+      "title": "배경 · 표면 베이스",
+      "type": "mini",
+      "hint": "같은 화면에 베이스만 바꿔 입혔습니다 — 액센트는 다음 축에서 독립 선택",
+      "cands": [
+        {
+          "value": "warm-paper",
+          "label": "웜 페이퍼",
+          "sub": "따뜻한 종이",
+          "rank": 1,
+          "bg": "rgb(250,248,244)",
+          "ink": "rgba(28,23,16,.95)",
+          "card": "#fffefb"
+        },
+        {
+          "value": "soft-cream",
+          "label": "소프트 크림",
+          "sub": "노을빛",
+          "rank": 2,
+          "bg": "rgb(251,248,240)",
+          "ink": "rgba(30,25,15,.95)",
+          "card": "#fffdf6"
+        },
+        {
+          "value": "cool-gray",
+          "label": "쿨 그레이",
+          "sub": "정제·신뢰",
+          "rank": 3,
+          "bg": "rgb(247,249,252)",
+          "ink": "rgba(12,20,32,.95)",
+          "card": "#ffffff"
+        },
+        {
+          "value": "sage-tint",
+          "label": "세이지 틴트",
+          "sub": "식물성",
+          "rank": 4,
+          "bg": "rgb(246,249,245)",
+          "ink": "rgba(20,26,18,.95)",
+          "card": "#fdfffc"
+        },
+        {
+          "value": "blush-tint",
+          "label": "블러시 틴트",
+          "sub": "부드러움",
+          "rank": 5,
+          "bg": "rgb(252,248,247)",
+          "ink": "rgba(32,22,20,.95)",
+          "card": "#fffdfc"
+        },
+        {
+          "value": "warm-dark",
+          "label": "웜 다크",
+          "sub": "저녁 무드",
+          "rank": 6,
+          "bg": "rgb(29,24,19)",
+          "ink": "rgba(248,244,238,.95)",
+          "card": "rgb(40,33,26)"
+        },
+        {
+          "value": "pure-dark",
+          "label": "딥 다크",
+          "sub": "밤·집중",
+          "rank": 7,
+          "bg": "rgb(22,22,26)",
+          "ink": "rgba(244,244,248,.95)",
+          "card": "rgb(33,33,39)"
+        }
+      ]
+    },
+    {
+      "id": "accent",
+      "title": "액센트 (신호 1색)",
+      "type": "mini",
+      "hint": "버튼·강조에만 쓰는 유일한 색 — 베이스와 조합됩니다",
+      "cands": [
+        {
+          "value": "terracotta",
+          "label": "테라코타",
+          "sub": "흙·햇살",
+          "rank": 1,
+          "ac": "#B4552D"
+        },
+        {
+          "value": "coffee",
+          "label": "커피 브라운",
+          "sub": "깊이",
+          "rank": 2,
+          "ac": "#6B4A2F"
+        },
+        {
+          "value": "forest",
+          "label": "포레스트 그린",
+          "sub": "안정",
+          "rank": 3,
+          "ac": "#2F7D4F"
+        },
+        {
+          "value": "blue",
+          "label": "코발트 블루",
+          "sub": "신뢰",
+          "rank": 4,
+          "ac": "#20599C"
+        },
+        {
+          "value": "plum",
+          "label": "플럼",
+          "sub": "개성",
+          "rank": 5,
+          "ac": "#7A3E62"
+        },
+        {
+          "value": "gold",
+          "label": "머스터드 골드",
+          "sub": "대담",
+          "rank": 6,
+          "ac": "#B8860B"
+        },
+        {
+          "value": "rose",
+          "label": "로즈",
+          "sub": "부드러움",
+          "rank": 7,
+          "ac": "#B04A5A"
+        },
+        {
+          "value": "slate",
+          "label": "슬레이트",
+          "sub": "무채 절제",
+          "rank": 8,
+          "ac": "#4A5568"
+        }
+      ]
+    },
+    {
+      "id": "typo",
+      "title": "타이포그래피 페어 (헤딩 / 본문)",
+      "type": "spec",
+      "hint": "같은 문장을 페어 단위로 — 헤딩·본문이 함께 갑니다",
+      "cands": [
+        {
+          "value": "noto-pair",
+          "label": "Noto Sans 800 / 400",
+          "sub": "단정한 기본",
+          "rank": 1,
+          "hf": "'Noto Sans KR',sans-serif",
+          "hw": 800,
+          "bf": "'Noto Sans KR',sans-serif"
+        },
+        {
+          "value": "plex-pair",
+          "label": "IBM Plex 600 / 400",
+          "sub": "테크·중립",
+          "rank": 2,
+          "hf": "'IBM Plex Sans KR',sans-serif",
+          "hw": 600,
+          "bf": "'IBM Plex Sans KR',sans-serif"
+        },
+        {
+          "value": "serif-head",
+          "label": "Noto Serif / Sans 본문",
+          "sub": "클래식 혼용",
+          "rank": 3,
+          "hf": "'Noto Serif KR',serif",
+          "hw": 700,
+          "bf": "'Noto Sans KR',sans-serif"
+        },
+        {
+          "value": "gowun-full",
+          "label": "고운바탕 전면",
+          "sub": "문학적",
+          "rank": 4,
+          "hf": "'Gowun Batang',serif",
+          "hw": 700,
+          "bf": "'Gowun Batang',serif"
+        },
+        {
+          "value": "myeongjo-head",
+          "label": "나눔명조 800 / Sans",
+          "sub": "에디토리얼",
+          "rank": 5,
+          "hf": "'Nanum Myeongjo',serif",
+          "hw": 800,
+          "bf": "'Noto Sans KR',sans-serif"
+        },
+        {
+          "value": "dodum-soft",
+          "label": "고운돋움 / 고운돋움",
+          "sub": "순한 인상",
+          "rank": 6,
+          "hf": "'Gowun Dodum',sans-serif",
+          "hw": 400,
+          "bf": "'Gowun Dodum',sans-serif"
+        },
+        {
+          "value": "display-head",
+          "label": "도현 디스플레이 / Sans",
+          "sub": "포스터 임팩트",
+          "rank": 7,
+          "hf": "'Do Hyeon',sans-serif",
+          "hw": 400,
+          "bf": "'Noto Sans KR',sans-serif"
+        },
+        {
+          "value": "blackhan-head",
+          "label": "검은고딕 / Sans",
+          "sub": "최대 임팩트",
+          "rank": 8,
+          "hf": "'Black Han Sans',sans-serif",
+          "hw": 400,
+          "bf": "'Noto Sans KR',sans-serif"
+        }
+      ]
+    },
+    {
+      "id": "imagery",
+      "title": "이미지 스타일",
+      "type": "mini",
+      "size": "lg",
+      "hint": "실사 썸네일은 이미지 파이프라인 연동 시 교체 (지금은 톤 카드)",
+      "cands": [
+        {
+          "value": "photo-warm-doc",
+          "label": "실사 · 따뜻한 다큐",
+          "sub": "일상 순간",
+          "rank": 1,
+          "bg": "linear-gradient(135deg,#d9c3a5,#a67c52)"
+        },
+        {
+          "value": "photo-bright-asp",
+          "label": "실사 · 밝은 애스퍼레이셔널",
+          "sub": "잡지 톤",
+          "rank": 2,
+          "bg": "linear-gradient(135deg,#f2e8dc,#c9d8e8)"
+        },
+        {
+          "value": "photo-moody",
+          "label": "실사 · 무디 로우키",
+          "sub": "저채도 깊이",
+          "rank": 3,
+          "bg": "linear-gradient(135deg,#3a322a,#6b5b49)"
+        },
+        {
+          "value": "illust-flat",
+          "label": "플랫 일러스트",
+          "sub": "친근",
+          "rank": 4,
+          "bg": "linear-gradient(135deg,#ffd9b8,#ffb3a1)"
+        },
+        {
+          "value": "illust-line",
+          "label": "라인 드로잉",
+          "sub": "가벼움",
+          "rank": 5,
+          "bg": "repeating-linear-gradient(45deg,#f5f2ec 0 8px,#e8e2d6 8px 10px)"
+        },
+        {
+          "value": "3d-soft",
+          "label": "소프트 3D",
+          "sub": "입체 오브젝트",
+          "rank": 6,
+          "bg": "linear-gradient(135deg,#e0d5f5,#b8c8f0)"
+        },
+        {
+          "value": "none",
+          "label": "이미지 없음",
+          "sub": "타이포 중심",
+          "rank": 7,
+          "bg": "rgb(240,238,232)"
+        }
+      ]
+    },
+    {
+      "id": "composition",
+      "title": "페이지 구성",
+      "type": "wire",
+      "size": "lg",
+      "hint": "섹션 조합과 순서 — 선택이 오른쪽 미리보기 구조에 그대로 반영됩니다 (hidden 후보는 카탈로그 — 브리프 맥락에 맞으면 hidden을 빼고 노출, 기본 노출은 8종 이하)",
+      "cands": [
+        {
+          "value": "hero-cards-info",
+          "label": "히어로 → 카드 3 → 정보",
+          "sub": "표준 소개형",
+          "rank": 1,
+          "rows": [
+            "h32",
+            "r:3",
+            "b14"
+          ],
+          "pv": [
+            "hero",
+            "cards",
+            "info"
+          ],
+          "recipes": {
+            "hero": "landing-hero",
+            "cards": "responsive-content-grid",
+            "info": "article-documentation-layout"
+          }
+        },
+        {
+          "value": "split-hero-flow",
+          "label": "스플릿 히어로 → 특징 → CTA",
+          "sub": "Z-패턴",
+          "rank": 2,
+          "rows": [
+            "sp30",
+            "r:3",
+            "b12"
+          ],
+          "pv": [
+            "split",
+            "cards",
+            "cta"
+          ],
+          "recipes": {
+            "split": "landing-hero",
+            "cards": "responsive-content-grid",
+            "cta": "button"
+          }
+        },
+        {
+          "value": "media-full",
+          "label": "풀블리드 미디어 → 정보 → CTA",
+          "sub": "영상·사진 주도",
+          "rank": 3,
+          "rows": [
+            "h48",
+            "b12",
+            "b10"
+          ],
+          "pv": [
+            "fullhero",
+            "info",
+            "cta"
+          ],
+          "recipes": {
+            "fullhero": "landing-hero",
+            "info": "article-documentation-layout",
+            "cta": "button"
+          }
+        },
+        {
+          "value": "steps-flow",
+          "label": "히어로 → 3단계 안내 → CTA",
+          "sub": "예약·온보딩형",
+          "rank": 4,
+          "rows": [
+            "h30",
+            "r:3",
+            "b12"
+          ],
+          "pv": [
+            "hero",
+            "steps",
+            "cta"
+          ],
+          "recipes": {
+            "hero": "landing-hero",
+            "steps": "data-import-wizard-validation-preview-steps",
+            "cta": "button"
+          }
+        },
+        {
+          "value": "proof-first",
+          "label": "히어로 → 후기 → 카드 → CTA",
+          "sub": "신뢰 선행형",
+          "rank": 5,
+          "rows": [
+            "h28",
+            "sb14",
+            "r:3",
+            "b10"
+          ],
+          "pv": [
+            "hero",
+            "quote",
+            "cards",
+            "cta"
+          ],
+          "recipes": {
+            "hero": "landing-hero",
+            "quote": "showcase-card",
+            "cards": "responsive-content-grid",
+            "cta": "button"
+          }
+        },
+        {
+          "value": "gallery-first",
+          "label": "미니 히어로 → 갤러리 → 카드",
+          "sub": "쇼케이스형",
+          "rank": 6,
+          "rows": [
+            "h20",
+            "r:4",
+            "r:4",
+            "b10"
+          ],
+          "pv": [
+            "minihero",
+            "gallery",
+            "cards"
+          ],
+          "recipes": {
+            "minihero": "landing-hero",
+            "gallery": "category-product-grid",
+            "cards": "responsive-content-grid"
+          }
+        },
+        {
+          "value": "long-story",
+          "label": "롱 스크롤 스토리 → FAQ → CTA",
+          "sub": "서사·설득형",
+          "rank": 7,
+          "rows": [
+            "h28",
+            "sb16",
+            "sb16",
+            "b8",
+            "b10"
+          ],
+          "pv": [
+            "hero",
+            "story",
+            "story2",
+            "faq",
+            "cta"
+          ],
+          "recipes": {
+            "hero": "landing-hero",
+            "story": "article-documentation-layout",
+            "story2": "scroll-driven-reveal",
+            "faq": "recoverable-empty-state",
+            "cta": "button"
+          }
+        },
+        {
+          "value": "one-screen",
+          "label": "원 스크린 집중",
+          "sub": "단일 행동",
+          "rank": 8,
+          "rows": [
+            "h50"
+          ],
+          "pv": [
+            "fullhero"
+          ],
+          "recipes": {
+            "fullhero": "landing-hero"
+          }
+        },
+        {
+          "value": "compare-table",
+          "label": "히어로 → 비교표 → 후기 → CTA",
+          "sub": "비교표형 · 회의적 시장",
+          "rank": 9,
+          "rows": [
+            "h28",
+            "r:3",
+            "sb12",
+            "b10"
+          ],
+          "pv": [
+            "hero",
+            "compare",
+            "quote",
+            "cta"
+          ],
+          "recipes": {
+            "hero": "landing-hero",
+            "compare": "interactive-data-table",
+            "quote": "showcase-card",
+            "cta": "button"
+          },
+          "hidden": true
+        },
+        {
+          "value": "problem-mech-proof",
+          "label": "문제 → 작동 원리 → 증거 → CTA",
+          "sub": "설득 구조형 · 신개념 제품",
+          "rank": 10,
+          "rows": [
+            "h24",
+            "b12",
+            "r:3",
+            "sb12",
+            "b10"
+          ],
+          "pv": [
+            "hero",
+            "problem",
+            "mech",
+            "quote",
+            "cta"
+          ],
+          "recipes": {
+            "hero": "landing-hero",
+            "problem": "recoverable-empty-state",
+            "mech": "data-import-wizard-validation-preview-steps",
+            "quote": "showcase-card",
+            "cta": "button"
+          },
+          "hidden": true
+        },
+        {
+          "value": "ugc-first",
+          "label": "미니 히어로 → 사용자 콘텐츠 → CTA",
+          "sub": "커뮤니티·UGC형",
+          "rank": 11,
+          "rows": [
+            "h18",
+            "r:3",
+            "r:3",
+            "b10"
+          ],
+          "pv": [
+            "minihero",
+            "ugc",
+            "cards",
+            "cta"
+          ],
+          "recipes": {
+            "minihero": "landing-hero",
+            "ugc": "category-product-grid",
+            "cards": "responsive-content-grid",
+            "cta": "button"
+          },
+          "hidden": true
+        },
+        {
+          "value": "faq-trust",
+          "label": "문제 → 과정 → 증거 → FAQ → 보증",
+          "sub": "FAQ·신뢰형 · 고관여/고가",
+          "rank": 12,
+          "rows": [
+            "h24",
+            "b12",
+            "sb12",
+            "b8",
+            "b10"
+          ],
+          "pv": [
+            "hero",
+            "problem",
+            "quote",
+            "faq",
+            "guarantee",
+            "cta"
+          ],
+          "recipes": {
+            "hero": "landing-hero",
+            "problem": "recoverable-empty-state",
+            "quote": "showcase-card",
+            "faq": "article-documentation-layout",
+            "guarantee": "actionable-toast",
+            "cta": "button"
+          },
+          "hidden": true
+        },
+        {
+          "value": "booking-widget",
+          "label": "위젯 히어로 → 남은 자리 → 후기 → FAQ",
+          "sub": "예약·티켓형 (업종 일치 시만 노출)",
+          "rank": 13,
+          "rows": [
+            "h34",
+            "r:4",
+            "sb12",
+            "b8",
+            "b10"
+          ],
+          "pv": [
+            "bookhero",
+            "slots",
+            "quote",
+            "faq",
+            "cta"
+          ],
+          "recipes": {
+            "bookhero": "product-detail-purchase-stack",
+            "slots": "shipping-method-selector",
+            "quote": "showcase-card",
+            "faq": "article-documentation-layout",
+            "cta": "button"
+          },
+          "hidden": true
+        }
+      ]
+    },
+    {
+      "id": "headline",
+      "title": "히어로 헤드라인",
+      "type": "copy",
+      "size": "lg",
+      "hint": "문구를 실물 타이포로 비교 — 선택이 오른쪽 미리보기에 반영됩니다",
+      "cands": [
+        {
+          "value": "hl-1",
+          "text": "오늘 만든 것이 제일 좋다",
+          "sub": "담백 선언형",
+          "rank": 1
+        },
+        {
+          "value": "hl-2",
+          "text": "당신의 하루에 한 줄을 더합니다",
+          "sub": "다정 제안형",
+          "rank": 2
+        },
+        {
+          "value": "hl-3",
+          "text": "작게, 그러나 정확하게",
+          "sub": "미니멀 대구형",
+          "rank": 3
+        },
+        {
+          "value": "hl-4",
+          "text": "지금, 여기서 시작하세요",
+          "sub": "행동 촉구형",
+          "rank": 4
+        },
+        {
+          "value": "hl-5",
+          "text": "우리가 잘하는 단 한 가지",
+          "sub": "집중 스토리형",
+          "rank": 5
+        },
+        {
+          "value": "hl-6",
+          "text": "복잡한 건 우리 몫입니다",
+          "sub": "신뢰 약속형",
+          "rank": 6
+        }
+      ]
+    },
+    {
+      "id": "subcopy",
+      "title": "서브 카피",
+      "type": "copy",
+      "hint": "",
+      "cands": [
+        {
+          "value": "sc-1",
+          "text": "핵심을 한 문장으로 설명하고, 다음 문장으로 신뢰를 더합니다.",
+          "sub": "설명+신뢰",
+          "rank": 1
+        },
+        {
+          "value": "sc-2",
+          "text": "왜 필요한지 묻기 전에, 어떻게 좋아지는지 보여드립니다.",
+          "sub": "가치 우선",
+          "rank": 2
+        },
+        {
+          "value": "sc-3",
+          "text": "짧게 씁니다. 대신 정확하게.",
+          "sub": "초압축",
+          "rank": 3
+        },
+        {
+          "value": "sc-4",
+          "text": "당신과 비슷한 사람들이 이미 쓰고 있습니다 — 이유가 있습니다.",
+          "sub": "사회적 증거",
+          "rank": 4
+        },
+        {
+          "value": "sc-5",
+          "text": "숫자로 말하겠습니다. 결과는 본문에 있습니다.",
+          "sub": "데이터 톤",
+          "rank": 5
+        },
+        {
+          "value": "sc-6",
+          "text": "처음이라도 괜찮아요. 시작만 하면 나머지는 함께합니다.",
+          "sub": "온보딩 다정",
+          "rank": 6
+        }
+      ]
+    },
+    {
+      "id": "cta",
+      "title": "CTA 구성",
+      "type": "ctar",
+      "hint": "버튼 개수와 위계",
+      "cands": [
+        {
+          "value": "two-split",
+          "label": "주 + 보조",
+          "sub": "솔리드+아웃라인",
+          "rank": 1,
+          "btns": [
+            [
+              "주요 행동",
+              "solid"
+            ],
+            [
+              "더 알아보기",
+              "outline"
+            ]
+          ]
+        },
+        {
+          "value": "one-solid",
+          "label": "하나로 집중",
+          "sub": "솔리드 1개",
+          "rank": 2,
+          "btns": [
+            [
+              "주요 행동",
+              "solid"
+            ]
+          ]
+        },
+        {
+          "value": "one-arrow",
+          "label": "화살표 링크형",
+          "sub": "가벼운 유도",
+          "rank": 3,
+          "btns": [
+            [
+              "시작하기 →",
+              "link"
+            ]
+          ]
+        },
+        {
+          "value": "solid-link",
+          "label": "주 + 텍스트 링크",
+          "sub": "보조를 더 가볍게",
+          "rank": 4,
+          "btns": [
+            [
+              "주요 행동",
+              "solid"
+            ],
+            [
+              "둘러보기 →",
+              "link"
+            ]
+          ]
+        },
+        {
+          "value": "two-solid",
+          "label": "동급 둘",
+          "sub": "선택 분기형",
+          "rank": 5,
+          "btns": [
+            [
+              "옵션 A",
+              "solid"
+            ],
+            [
+              "옵션 B",
+              "solid"
+            ]
+          ]
+        }
+      ]
+    },
+    {
+      "id": "header",
+      "title": "헤더",
+      "type": "wire",
+      "hint": "",
+      "cands": [
+        {
+          "value": "logo-links-cta",
+          "label": "로고 + 링크 + CTA",
+          "rank": 1,
+          "rows": [
+            "hd:cta"
+          ]
+        },
+        {
+          "value": "logo-links",
+          "label": "로고 + 링크",
+          "rank": 2,
+          "rows": [
+            "hd:links"
+          ]
+        },
+        {
+          "value": "logo-only",
+          "label": "로고만 (집중형)",
+          "rank": 3,
+          "rows": [
+            "hd:logo"
+          ]
+        },
+        {
+          "value": "centered",
+          "label": "센터 로고 + 양측 링크",
+          "rank": 4,
+          "rows": [
+            "hd:center"
+          ]
+        },
+        {
+          "value": "sticky-thin",
+          "label": "얇은 고정 바",
+          "rank": 5,
+          "rows": [
+            "hd:thin"
+          ]
+        },
+        {
+          "value": "hamburger",
+          "label": "로고 + 햄버거",
+          "rank": 6,
+          "rows": [
+            "hd:burger"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "footer",
+      "title": "푸터",
+      "type": "wire",
+      "hint": "",
+      "cands": [
+        {
+          "value": "one-line",
+          "label": "한 줄 미니멀",
+          "rank": 1,
+          "rows": [
+            "b8"
+          ]
+        },
+        {
+          "value": "contact-focus",
+          "label": "연락처 중심",
+          "rank": 2,
+          "rows": [
+            "r:3",
+            "b8"
+          ]
+        },
+        {
+          "value": "multi-column",
+          "label": "멀티 컬럼 링크",
+          "rank": 3,
+          "rows": [
+            "r:4",
+            "b8"
+          ]
+        },
+        {
+          "value": "newsletter",
+          "label": "뉴스레터 + 링크",
+          "rank": 4,
+          "rows": [
+            "nb",
+            "b8"
+          ]
+        },
+        {
+          "value": "big-brand",
+          "label": "빅 브랜드 타입",
+          "rank": 5,
+          "rows": [
+            "h20",
+            "b8"
+          ]
+        },
+        {
+          "value": "sitemap",
+          "label": "사이트맵형",
+          "rank": 6,
+          "rows": [
+            "r:4",
+            "r:4",
+            "b8"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "card",
+      "title": "카드 스타일",
+      "type": "cardr",
+      "hint": "실물 렌더",
+      "cands": [
+        {
+          "value": "flat-tonal",
+          "label": "플랫 + 명도",
+          "sub": "보더 없음",
+          "rank": 1,
+          "style": "background:#fff"
+        },
+        {
+          "value": "bordered",
+          "label": "보더",
+          "sub": "또렷한 경계",
+          "rank": 2,
+          "style": "background:#fff;border:1px solid rgba(20,18,14,.18)"
+        },
+        {
+          "value": "soft-shadow",
+          "label": "소프트 섀도",
+          "sub": "떠 있는",
+          "rank": 3,
+          "style": "background:#fff;box-shadow:0 8px 24px rgba(20,18,14,.10)"
+        },
+        {
+          "value": "photo-top",
+          "label": "사진 상단형",
+          "sub": "이미지 주도",
+          "rank": 4,
+          "style": "background:#fff",
+          "photo": true
+        },
+        {
+          "value": "tinted",
+          "label": "액센트 틴트",
+          "sub": "은은한 물듦",
+          "rank": 5,
+          "style": "background:rgba(26,107,60,.06)"
+        },
+        {
+          "value": "underline",
+          "label": "언더라인 리스트형",
+          "sub": "카드 아님",
+          "rank": 6,
+          "style": "background:transparent;border-bottom:2px solid rgba(20,18,14,.2);border-radius:0"
+        }
+      ]
+    },
+    {
+      "id": "density",
+      "title": "그리드 · 밀도",
+      "type": "steps",
+      "hint": "여백과 정보 밀도",
+      "cands": [
+        {
+          "value": "airy",
+          "label": "여유",
+          "rank": 1,
+          "w": 26
+        },
+        {
+          "value": "comfortable",
+          "label": "표준",
+          "rank": 2,
+          "w": 34
+        },
+        {
+          "value": "compact",
+          "label": "컴팩트",
+          "rank": 3,
+          "w": 42
+        },
+        {
+          "value": "dense",
+          "label": "밀집",
+          "rank": 4,
+          "w": 50
+        }
+      ]
+    },
+    {
+      "id": "radius",
+      "title": "모서리 · 형태 언어",
+      "type": "steps",
+      "hint": "",
+      "cands": [
+        {
+          "value": "sharp",
+          "label": "각진 0",
+          "rank": 4,
+          "r": 0
+        },
+        {
+          "value": "subtle",
+          "label": "미세 4px",
+          "rank": 1,
+          "r": 4
+        },
+        {
+          "value": "rounded",
+          "label": "라운드 10px",
+          "rank": 2,
+          "r": 10
+        },
+        {
+          "value": "soft",
+          "label": "소프트 18px",
+          "rank": 3,
+          "r": 18
+        },
+        {
+          "value": "pill",
+          "label": "필",
+          "rank": 5,
+          "r": 99
+        }
+      ]
+    },
+    {
+      "id": "motion",
+      "title": "모션 톤 — 전환·등장의 규모",
+      "type": "demo",
+      "hint": "화면 전환과 요소 등장이 얼마나 표현적인가 (커서 반응은 아래 별도 축)",
+      "cands": [
+        {
+          "value": "standard",
+          "label": "표준",
+          "sub": "hover + 등장",
+          "rank": 1,
+          "cls": "d-std",
+          "desc": "부양·등장 모션. 대부분의 제품에 알맞음."
+        },
+        {
+          "value": "minimal",
+          "label": "담백",
+          "sub": "전환만",
+          "rank": 2,
+          "cls": "d-plain",
+          "desc": "색 전환만, 움직임 없음."
+        },
+        {
+          "value": "rich",
+          "label": "풍부",
+          "sub": "스크롤 연출",
+          "rank": 3,
+          "cls": "d-rich",
+          "desc": "스크롤 스토리텔링급 — 실험적 표현은 수동 승인."
+        },
+        {
+          "value": "none",
+          "label": "선택 안함",
+          "sub": "에이전트 판단",
+          "rank": 4,
+          "cls": "d-plain",
+          "desc": "정하지 않음 — 맥락에 맞게 에이전트가 판단합니다."
+        }
+      ]
+    },
+    {
+      "id": "pointer",
+      "title": "커서 인터랙션 — 마우스가 닿을 때·움직일 때",
+      "type": "demo",
+      "size": "lg",
+      "hint": "hover 성격과 커서 반응 표현 (모션 톤과 별개 축) — 박스 안에서 마우스를 움직여보세요",
+      "cands": [
+        {
+          "value": "none",
+          "label": "선택 안함",
+          "sub": "에이전트 판단",
+          "rank": 1,
+          "cls": "d-plain",
+          "desc": "정하지 않음 — 기본 hover만 두고 에이전트가 판단."
+        },
+        {
+          "value": "lift",
+          "label": "부양",
+          "sub": "hover 떠오름",
+          "rank": 2,
+          "cls": "d-std",
+          "desc": "카드·버튼이 살짝 떠오릅니다."
+        },
+        {
+          "value": "cursor-field",
+          "label": "커서 반응 필드",
+          "sub": "배경이 커서를 따라 빛남",
+          "rank": 3,
+          "cls": "d-field",
+          "desc": "askewly 쇼케이스의 Cursor-Reactive Field — 배경 글로우가 커서를 따라옵니다."
+        },
+        {
+          "value": "glow",
+          "label": "글로우",
+          "sub": "hover 빛 번짐",
+          "rank": 4,
+          "cls": "d-glow",
+          "desc": "액센트빛이 번집니다 — 다크에서 강함."
+        },
+        {
+          "value": "underline",
+          "label": "밑줄 확장",
+          "sub": "타이포 중심",
+          "rank": 5,
+          "cls": "d-underline",
+          "desc": "밑줄이 자라납니다 — 에디토리얼."
+        },
+        {
+          "value": "magnet",
+          "label": "자석",
+          "sub": "요소가 커서 추종",
+          "rank": 6,
+          "cls": "d-rich",
+          "desc": "버튼이 커서를 따라옵니다 — 실험적(수동 승인)."
+        }
+      ]
+    },
+    {
+      "id": "icon",
+      "title": "아이콘 스타일",
+      "type": "iconr",
+      "size": "lg",
+      "hint": "같은 아이콘 3종을 스타일별로 — 선 굵기·면·색 개입의 차이",
+      "cands": [
+        {
+          "value": "outline",
+          "label": "아웃라인",
+          "sub": "얇은 선 1.8 (Lucide풍)",
+          "rank": 1,
+          "sw": 1.8,
+          "fill": "none",
+          "join": "round"
+        },
+        {
+          "value": "bold-outline",
+          "label": "볼드 라인",
+          "sub": "굵은 선 2.8",
+          "rank": 2,
+          "sw": 2.8,
+          "fill": "none",
+          "join": "round"
+        },
+        {
+          "value": "filled",
+          "label": "필드(면)",
+          "sub": "채운 면",
+          "rank": 3,
+          "sw": 0,
+          "fill": "currentColor",
+          "join": "round"
+        },
+        {
+          "value": "duotone",
+          "label": "듀오톤",
+          "sub": "선 + 액센트 면",
+          "rank": 4,
+          "sw": 1.6,
+          "fill": "ACCENT",
+          "join": "round"
+        },
+        {
+          "value": "sharp",
+          "label": "샤프",
+          "sub": "각진 조인트",
+          "rank": 5,
+          "sw": 2,
+          "fill": "none",
+          "join": "miter"
+        },
+        {
+          "value": "none",
+          "label": "아이콘 없음",
+          "sub": "텍스트만",
+          "rank": 6,
+          "none": true
+        }
+      ]
+    },
+    {
+      "id": "dark",
+      "title": "다크 모드",
+      "type": "mini",
+      "hint": "",
+      "cands": [
+        {
+          "value": "both-auto",
+          "label": "라이트 + 다크 (시스템 따름)",
+          "sub": "기본 추천",
+          "rank": 1,
+          "bg": "linear-gradient(90deg, rgb(250,248,244) 50%, rgb(29,24,19) 50%)",
+          "ink": "rgba(20,18,14,.9)"
+        },
+        {
+          "value": "light-only",
+          "label": "라이트만",
+          "sub": "범위 축소",
+          "rank": 2,
+          "bg": "rgb(250,248,244)",
+          "ink": "rgba(28,23,16,.95)"
+        },
+        {
+          "value": "dark-first",
+          "label": "다크 우선",
+          "sub": "밤 무드 브랜드",
+          "rank": 3,
+          "bg": "rgb(24,22,26)",
+          "ink": "rgba(244,244,248,.95)"
+        }
+      ]
+    },
+    {
+      "id": "a11y",
+      "title": "글자 잘 보이기 기준 (접근성)",
+      "type": "textc",
+      "hint": "배경과 글자의 명암 차이를 어디까지 보장할지",
+      "cands": [
+        {
+          "value": "aa",
+          "label": "표준",
+          "sub": "대부분 서비스의 실무·법적 기준 — 일반 시력 기준 충분히 읽힘 (WCAG AA, 대비 4.5:1)",
+          "rank": 1
+        },
+        {
+          "value": "aaa-body",
+          "label": "본문 강화",
+          "sub": "본문 글자만 더 진하게 — 저시력·고령 사용자도 편안 (본문 AAA 7:1)",
+          "rank": 2
+        },
+        {
+          "value": "aaa",
+          "label": "최고 수준",
+          "sub": "모든 글자·요소를 최고 대비로 — 공공·의료 서비스급 (AAA 전면)",
+          "rank": 3
+        }
+      ]
+    }
+  ]
+};
+/* ================= STUDIO DATA END ================= */
+const TILES = STUDIO_DATA.tiles;
+const AXES = STUDIO_DATA.axes;
+/* ================= 렌더러 (에이전트 수정 불필요) ================= */
+const sel = {}; let tileSel = null;
+/* SF3: 미리보기 뷰 상태 — 다크·모바일 토글 (축 선택이 아니라 보기 방식) */
+let pvDark = false, pvMobile = false;
+const app = document.getElementById('app');
+const AXIS_BY_ID = Object.fromEntries(AXES.map(a => [a.id, a]));
+function getCand(axisId, value) { const a = AXIS_BY_ID[axisId]; return a ? a.cands.find(c => c.value === value) : null; }
+function effRank(axis, c) {
+  if (tileSel) { const t = TILES.find(t => t.value === tileSel); if (t && t.boost && t.boost[axis.id] === c.value) return 0; }
+  return c.rank;
+}
+/* SF2: hidden 후보 = 카탈로그에는 있으나 이 브리프에서 노출 안 함 (구성 과밀 방지 — 데이터 JSON에서 맥락 맞으면 hidden 해제) */
+function visCands(axis) { return axis.cands.filter(c => !c.hidden); }
+/* ctx: "지금까지의 선택" — 안 고른 축은 (타일 부스트 →) 추천 1순위. 캐스케이드의 심장. */
+function ctxVal(axisId) {
+  if (sel[axisId]) return sel[axisId];
+  const a = AXIS_BY_ID[axisId]; if (!a) return null;
+  return [...visCands(a)].sort((x, y) => effRank(a, x) - effRank(a, y))[0].value;
+}
+function CTX() {
+  const base = getCand('base', ctxVal('base')) || {};
+  const accent = getCand('accent', ctxVal('accent')) || {};
+  const typo = getCand('typo', ctxVal('typo')) || {};
+  const radius = getCand('radius', ctxVal('radius')) || { r: 4 };
+  const density = ctxVal('density');
+  return { bg: base.bg || '#faf8f4', ink: base.ink || 'rgba(28,23,16,.95)', card: base.card || '#fff',
+           ac: accent.ac || '#5a5248', hf: typo.hf || 'inherit', hw: typo.hw || 700, bf: typo.bf || 'inherit',
+           r: radius.r ?? 4, gap: density === 'airy' ? 18 : density === 'compact' ? 8 : density === 'dense' ? 5 : 12 };
+}
+function acOn(C) { return /^rgb\(2[0-4]|^rgb\(1|^#[0-4]/.test(C.ac) ? '#fff' : (C.ac === '#F2EFE8' ? '#1a1a1a' : '#fff'); }
+function wireRow(code, C) {
+  const d = document.createElement('div');
+  const inkBar = 'rgba(127,127,127,.35)';
+  const A = C ? C.ac : '#1a6b3c';
+  const bar = (st) => `<i style="${st};background:${inkBar}"></i>`;
+  if (code.startsWith('hd:')) { d.className = 'wire'; const k = code.slice(3);
+    const map = { cta: `<div class="w-row">${bar('width:36px;height:8px;flex:none')}${bar('height:8px')}<i style="width:34px;height:8px;flex:none;background:${A}"></i></div>`,
+      links: `<div class="w-row">${bar('width:36px;height:8px;flex:none')}${bar('height:8px')}</div>`,
+      logo: `<div class="w-row">${bar('width:36px;height:8px;flex:none')}</div>`,
+      center: `<div class="w-row">${bar('height:8px')}${bar('width:36px;height:10px;flex:none')}${bar('height:8px')}</div>`,
+      thin: `<div class="w-row">${bar('height:5px')}</div>`,
+      burger: `<div class="w-row">${bar('width:36px;height:8px;flex:none')}<i style="height:8px;visibility:hidden"></i>${bar('width:14px;height:8px;flex:none')}</div>` };
+    d.innerHTML = map[k]; return d; }
+  if (code === 'nb') { d.className = 'wire'; d.innerHTML = `<div class="w-row">${bar('height:12px')}<i style="width:30%;height:12px;flex:none;background:${A}"></i></div>`; return d; }
+  d.className = 'wire';
+  if (code.startsWith('sp')) d.innerHTML = `<div class="w-row">${bar('height:'+code.slice(2)+'px')}<i style="height:${code.slice(2)}px;flex:1;background:${A};opacity:.55"></i></div>`;
+  else if (code.startsWith('sb')) d.innerHTML = `<div class="w-row"><i style="height:${code.slice(2)}px;flex:.6;background:${A};opacity:.55"></i>${bar('height:'+code.slice(2)+'px')}</div>`;
+  else if (code.startsWith('h')) d.innerHTML = bar(`height:${code.slice(1)}px`);
+  else if (code.startsWith('r:')) d.innerHTML = `<div class="w-row">${bar('height:16px').repeat(+code.slice(2))}</div>`;
+  else if (code.startsWith('b')) d.innerHTML = bar(`height:${code.slice(1)}px;opacity:.5`);
+  return d;
+}
+function candBody(axis, c, C) {
+  const b = document.createElement('div'); b.className = 'body-slot';
+  if (axis.type === 'mini') {
+    b.classList.add('mini');
+    if (axis.id === 'base' || axis.id === 'dark') { b.style.background = c.bg || C.bg; b.style.color = c.ink || C.ink; }
+    else if (axis.id === 'imagery') {
+      b.style.minHeight = '150px'; b.title = c.label;
+      if (c.video) {  // ST3: 영상 후보 — hover 시 muted 재생, reduced-motion이면 포스터 고정
+        b.style.padding = '0';
+        const v = document.createElement('video');
+        v.muted = true; v.loop = true; v.playsInline = true; v.preload = 'none';
+        v.poster = c.poster || ''; v.src = c.video;
+        v.style.cssText = 'width:100%;height:100%;min-height:150px;object-fit:cover;display:block';
+        if (!matchMedia('(prefers-reduced-motion: reduce)').matches) {
+          b.addEventListener('pointerenter', () => v.play().catch(() => {}));
+          b.addEventListener('pointerleave', () => { v.pause(); });
+        }
+        b.appendChild(v);
+      } else { b.style.background = c.bg; }
+      return b;
+    }
+    else { b.style.background = C.bg; b.style.color = C.ink; }  // 캐스케이드: 선택된 베이스 위에서 렌더
+    const ac = axis.id === 'accent' ? c.ac : C.ac;
+    b.innerHTML = `<div class="m-title" style="font-family:${C.hf}">화면 제목</div><div class="m-sub">보조 설명 텍스트</div>
+      <span class="m-btn" style="background:${ac};color:${acOn({ac})};border-radius:${C.r}px;font-family:${C.bf}">주요 버튼</span>
+      <div class="m-card" style="background:${(axis.id==='base'||axis.id==='dark') ? (c.card||C.card) : C.card};border-radius:${C.r}px">카드 위 콘텐츠</div>`;
+  } else if (axis.type === 'spec') {
+    b.classList.add('spec'); b.style.background = C.bg; b.style.color = C.ink;
+    b.innerHTML = `<div class="s-head" style="font-family:${c.hf};font-weight:${c.hw}">오늘 만든 것이 제일 좋다</div>
+      <p class="s-body" style="font-family:${c.bf}">본문은 읽기 편해야 합니다. 위계는 굵기와 크기로. 1234 Aa</p>`;
+  } else if (axis.type === 'wire') {
+    b.style.display = 'flex'; b.style.flexDirection = 'column'; b.style.gap = '5px'; b.style.justifyContent = 'center';
+    b.style.background = C.bg;
+    c.rows.forEach(r => b.appendChild(wireRow(r, C)));
+  } else if (axis.type === 'cardr') {
+    b.style.background = C.bg;
+    const cardBg = c.style.includes('background:#fff') ? C.card : null;
+    const st = cardBg ? c.style.replace('background:#fff', 'background:' + cardBg) : c.style.replace('rgba(26,107,60,.06)', C.ac + '18');
+    b.innerHTML = `<div style="${st};border-radius:${Math.min(C.r,14)}px;padding:12px 14px;font-size:11.5px;color:${C.ink}">
+      ${c.photo ? `<div style="height:34px;border-radius:${Math.min(C.r,8)}px;background:${C.ac}33;margin-bottom:8px"></div>` : ''}
+      <b style="font-size:12.5px">카드 제목</b><div style="opacity:.6;margin-top:3px">설명 텍스트 한 줄</div></div>`;
+  } else if (axis.type === 'iconr') {
+    b.style.display = 'flex'; b.style.gap = '18px'; b.style.alignItems = 'center'; b.style.justifyContent = 'center';
+    b.style.background = C.bg; b.style.color = C.ink;
+    if (c.none) { b.innerHTML = '<span style="font-size:12px;opacity:.5">텍스트만으로</span>'; }
+    else {
+      const fill = c.fill === 'ACCENT' ? C.ac + '55' : c.fill;
+      const stroke = c.fill === 'currentColor' ? 'none' : 'currentColor';
+      b.innerHTML = [
+        'M12 3l7 6v11H5V9z',                                  // 집
+        'M12 21s-7-5.5-7-11a7 7 0 0114 0c0 5.5-7 11-7 11z',   // 핀
+        'M4 6h16v12H4zM4 10h16'                               // 티켓
+      ].map(pt =>
+      `<svg width="34" height="34" viewBox="0 0 24 24" fill="${fill}" stroke="${stroke}" stroke-width="${c.sw}" stroke-linecap="${c.join === 'miter' ? 'butt' : 'round'}" stroke-linejoin="${c.join}"><path d="${pt}"/></svg>`).join('');
+    }
+  } else if (axis.type === 'demo') {
+    b.classList.add(c.cls); b.style.background = C.bg; b.style.color = C.ink;
+    const chipStyle = (c.cls === 'd-underline' || c.cls === 'd-glow') ? `color:${C.ac}` : `background:${C.ac};color:${acOn(C)}`;
+    b.innerHTML = `<span class="demo-chip" style="${chipStyle}">올려보세요</span><p style="font-size:12px;opacity:.6;margin-top:8px">${c.desc}</p>`;
+  } else if (axis.type === 'copy') {
+    b.classList.add('copy-slot'); b.style.background = C.bg; b.style.color = C.ink;
+    const big = axis.id === 'headline';
+    b.innerHTML = `<div><div class="${big ? 'c-head' : 'c-sub'}" style="font-family:${big ? C.hf : C.bf};${big ? 'font-weight:' + C.hw : ''}">${c.text}</div></div>`;
+  } else if (axis.type === 'ctar') {
+    b.style.display = 'flex'; b.style.gap = '8px'; b.style.alignItems = 'center'; b.style.justifyContent = 'center';
+    b.style.background = C.bg; b.style.color = C.ink; b.style.flexWrap = 'wrap';
+    b.innerHTML = c.btns.map(([t, k]) =>
+      k === 'solid' ? `<span style="background:${C.ac};color:${acOn(C)};border-radius:${Math.min(C.r,8)}px;padding:7px 14px;font-size:12px;font-weight:700">${t}</span>`
+      : k === 'outline' ? `<span style="border:1px solid currentColor;opacity:.85;border-radius:${Math.min(C.r,8)}px;padding:7px 14px;font-size:12px;font-weight:600">${t}</span>`
+      : `<span style="color:${C.ac};font-size:12.5px;font-weight:700">${t}</span>`).join('');
+  } else if (axis.type === 'textc') {
+    b.innerHTML = `<div style="font-size:15px;font-weight:700">${c.label}</div><p style="font-size:12.5px;opacity:.65;margin-top:6px">${c.sub}</p>`;
+    b.style.minHeight = '84px';
+  }
+  return b;
+}
+function renderAxis(axis) {
+  const C = CTX();
+  const sec = document.createElement('section'); sec.id = 'ax-' + axis.id;
+  sec.innerHTML = `<h2><span class="step">2단</span>${axis.title}</h2><p class="hint">${axis.hint || '추천순 정렬 — 위 선택이 후보에 실시간 반영됩니다'}</p>`;
+  const g = document.createElement('div');
+  if (axis.type === 'steps') {
+    g.className = 'steps';
+    [...visCands(axis)].sort((a, b) => (a.r ?? a.w) - (b.r ?? b.w)).forEach(c => {
+      const st = document.createElement('div'); st.className = 'st'; st.tabIndex = 0; st.dataset.value = c.value;
+      if (sel[axis.id] === c.value) st.classList.add('sel');
+      const box = axis.id === 'radius' ? `<div class="demo-box" style="border-radius:${c.r}px;background:${C.ac}55"></div>` : `<div class="demo-box" style="width:${c.w}px;background:${C.ac}55"></div>`;
+      st.innerHTML = `${box}${c.label}${effRank(axis, c) <= 1 ? ' <span style="color:#1a6b3c">★</span>' : ''}`;
+      st.addEventListener('click', () => { sel[axis.id] = c.value; renderFrom(axis.id); });
+      st.addEventListener('keydown', e => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); st.click(); } });
+      g.appendChild(st);
+    });
+  } else {
+    g.className = 'grid' + (axis.size === 'lg' ? ' lg' : '');
+    [...visCands(axis)].sort((a, b) => effRank(axis, a) - effRank(axis, b)).forEach(c => {
+      const o = document.createElement('div'); o.className = 'opt'; o.tabIndex = 0; o.dataset.value = c.value;
+      if (sel[axis.id] === c.value) o.classList.add('sel');
+      const r = effRank(axis, c);
+      o.innerHTML = `<div class="band"><span class="rank ${r <= 1 ? 'r1' : ''}">${r === 0 ? '타일과 한 세트' : r + '순위'}</span><span class="sel-mark">✓ 선택됨</span></div>`;
+      o.appendChild(candBody(axis, c, C));
+      const lb = document.createElement('div'); lb.className = 'label';
+      lb.innerHTML = `${c.label}${c.sub ? ` <small>${c.sub}</small>` : ''}`; o.appendChild(lb);
+      o.addEventListener('click', () => { sel[axis.id] = c.value; renderFrom(axis.id); });
+      o.addEventListener('keydown', e => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); o.click(); } });
+      g.appendChild(o);
+    });
+  }
+  sec.appendChild(g); return sec;
+}
+/* 캐스케이드: 선택한 축의 "아래" 축들만 리렌더 (위와 자기 자신의 선택은 보존) */
+function renderFrom(axisId) {
+  const i = AXES.findIndex(a => a.id === axisId);
+  // 자기 섹션은 sel 마크만 갱신
+  const own = document.getElementById('ax-' + axisId);
+  if (own) own.querySelectorAll('.opt,.st').forEach(o => o.classList.toggle('sel', o.dataset.value === sel[axisId]));
+  for (let k = i + 1; k < AXES.length; k++) {
+    const old = document.getElementById('ax-' + AXES[k].id);
+    if (old) old.replaceWith(renderAxis(AXES[k]));
+  }
+  attachRich(); renderPreview(); refresh();
+}
+/* SF3: 다크 뷰 — 다크/접근성 축과 연동. light-only 선택 시 토글 비활성(정의된 동작), dark-first 선택 시 자동 다크. */
+function pvCtx() {
+  const C = CTX();
+  if (pvDark) {
+    const darkBase = AXIS_BY_ID.base ? visCands(AXIS_BY_ID.base).filter(c => /dark/.test(c.value)).sort((a, b) => a.rank - b.rank)[0] : null;
+    C.bg = darkBase ? darkBase.bg : 'rgb(24,22,26)';
+    C.ink = darkBase ? darkBase.ink : 'rgba(244,244,248,.95)';
+    C.card = darkBase ? darkBase.card : 'rgb(33,33,39)';
+  }
+  return C;
+}
+function syncPvToggles() {
+  const darkSel = sel.dark;
+  const btnD = document.getElementById('pv-dark'), btnM = document.getElementById('pv-mobile');
+  if (!btnD) return;
+  if (darkSel === 'light-only') { pvDark = false; btnD.disabled = true; btnD.title = '다크 모드 축에서 "라이트만"을 선택했습니다'; }
+  else { btnD.disabled = false; btnD.title = '미리보기를 다크로 보기'; if (darkSel === 'dark-first' && !btnD.dataset.userSet) pvDark = true; }
+  btnD.setAttribute('aria-pressed', String(pvDark));
+  btnM.setAttribute('aria-pressed', String(pvMobile));
+  document.getElementById('pv-site').classList.toggle('pv-m', pvMobile);
+}
+function renderPreview() {
+  syncPvToggles();
+  const C = pvCtx();
+  /* 모바일 뷰: 가로 나열 섹션을 세로 스택으로 */
+  const FX = pvMobile ? 'display:flex;flex-direction:column' : 'display:flex';
+  const headerV = ctxVal('header'), footerV = ctxVal('footer');
+  const comp = getCand('composition', ctxVal('composition')) || { pv: ['hero','cards','info'] };
+  const hl = getCand('headline', ctxVal('headline')) || { text: '헤드라인이 여기에' };
+  const sc = getCand('subcopy', ctxVal('subcopy')) || { text: '서브 카피 한 줄이 이 자리에 들어갑니다' };
+  const ctaC = getCand('cta', ctxVal('cta')) || { btns: [['주요 버튼', 'solid']] };
+  const img = getCand('imagery', ctxVal('imagery')) || {};
+  const cardV = getCand('card', ctxVal('card')) || { style: '' };
+  const cardBg = (cardV.style || '').includes('background:#fff') ? C.card : (cardV.value === 'tinted') ? C.ac + '18' : C.card;
+  const cardBorder = (cardV.value === 'bordered') ? 'border:1px solid rgba(127,127,127,.35);' : (cardV.value === 'soft-shadow') ? 'box-shadow:0 4px 12px rgba(0,0,0,.18);' : '';
+  const mediaBg = img.poster ? `url('${img.poster}')` : (img.bg && img.bg.startsWith('url') ? img.bg.replace(/ center\/cover$/, '') : null);
+  const onMedia = mediaBg ? 'text-shadow:0 1px 8px rgba(0,0,0,.55);color:#fff' : '';
+  const ctaBtns = (list) => `<div style="margin-top:8px;display:flex;gap:6px;justify-content:center;flex-wrap:wrap">${list.map(([t,k]) =>
+    k === 'solid' ? `<span style="background:${C.ac};color:${acOn(C)};border-radius:${Math.min(C.r,6)}px;padding:4px 12px;font-weight:700">${t}</span>`
+    : k === 'outline' ? `<span style="border:1px solid currentColor;opacity:.85;border-radius:${Math.min(C.r,6)}px;padding:4px 12px;font-weight:600">${t}</span>`
+    : `<span style="color:${C.ac};font-weight:700">${t}</span>`).join('')}</div>`;
+  const card1 = (n) => `<div style="background:${cardBg};${cardBorder}border-radius:${Math.min(C.r,10)}px;padding:${C.gap}px;flex:1"><b>카드 ${n}</b><div style="opacity:.55">설명 한 줄</div></div>`;
+  const SEC = {
+    hero: () => `<div style="${mediaBg ? `background:${mediaBg} center/cover;` : ''}padding:${20 + C.gap}px 14px;text-align:center;${onMedia}">
+      <div style="font-family:${C.hf};font-weight:${C.hw};font-size:16px;line-height:1.15">${hl.text}</div>
+      <div style="opacity:.75;margin-top:4px">${sc.text}</div>${ctaBtns(ctaC.btns)}</div>`,
+    fullhero: () => `<div style="${mediaBg ? `background:${mediaBg} center/cover;` : `background:${C.ac}22;`}padding:${34 + C.gap}px 14px;text-align:center;${onMedia}">
+      <div style="font-family:${C.hf};font-weight:${C.hw};font-size:17px;line-height:1.15">${hl.text}</div>
+      <div style="opacity:.8;margin-top:4px">${sc.text}</div>${ctaBtns(ctaC.btns)}</div>`,
+    minihero: () => `<div style="padding:12px 14px;text-align:center"><div style="font-family:${C.hf};font-weight:${C.hw};font-size:13.5px">${hl.text}</div></div>`,
+    split: () => `<div style="${FX};gap:10px;padding:14px;align-items:center">
+      <div style="flex:1"><div style="font-family:${C.hf};font-weight:${C.hw};font-size:14px;line-height:1.2">${hl.text}</div><div style="opacity:.7;margin-top:3px">${sc.text}</div>${ctaBtns(ctaC.btns)}</div>
+      <div style="flex:1;min-height:64px;border-radius:${Math.min(C.r,8)}px;background:${mediaBg ? mediaBg + ' center/cover' : C.ac + '30'}"></div></div>`,
+    cards: () => `<div style="${FX};gap:${C.gap}px;padding:${C.gap}px 12px">${[1,2,3].map(card1).join('')}</div>`,
+    info: () => `<div style="${FX};gap:${C.gap}px;padding:0 12px ${C.gap}px">${['일정','장소','가격'].map(t => `<div style="flex:1;background:${cardBg};border-radius:${Math.min(C.r,8)}px;padding:8px 10px"><div style="opacity:.5;font-size:8.5px;letter-spacing:.1em">${t}</div><b>정보 값</b></div>`).join('')}</div>`,
+    steps: () => `<div style="display:flex;gap:${C.gap}px;padding:${C.gap}px 12px">${[1,2,3].map(n => `<div style="flex:1;text-align:center"><div style="width:18px;height:18px;border-radius:999px;background:${C.ac};color:${acOn(C)};font-weight:700;display:grid;place-items:center;margin:0 auto 4px">${n}</div><div style="opacity:.65">단계 ${n}</div></div>`).join('')}</div>`,
+    quote: () => `<div style="margin:${C.gap}px 12px;padding:10px 12px;background:${cardBg};border-radius:${Math.min(C.r,8)}px"><span style="color:${C.ac};font-weight:700">“</span>실제 사용 후기가 이 자리에 — 별점과 함께.<div style="opacity:.5;margin-top:3px">— 이용자 이름</div></div>`,
+    gallery: () => `<div style="display:grid;grid-template-columns:1fr 1fr;gap:6px;padding:${C.gap}px 12px">${[0,1,2,3].map(n => `<div style="height:34px;border-radius:${Math.min(C.r,6)}px;background:${mediaBg ? mediaBg + ' center/cover' : C.ac + (25 + n * 12)}"></div>`).join('')}</div>`,
+    story: () => `<div style="${FX};gap:10px;padding:${C.gap}px 12px;align-items:center"><div style="flex:.8;min-height:44px;border-radius:${Math.min(C.r,8)}px;background:${mediaBg ? mediaBg + ' center/cover' : C.ac + '28'}"></div><div style="flex:1.2"><b style="font-family:${C.hf}">이야기 섹션</b><div style="opacity:.6">서사가 흐르는 본문 두 줄이 이 자리에 들어갑니다.</div></div></div>`,
+    story2: () => `<div style="${FX};gap:10px;padding:0 12px ${C.gap}px;align-items:center"><div style="flex:1.2"><b style="font-family:${C.hf}">이어지는 장</b><div style="opacity:.6">순서를 뒤집어 리듬을 만듭니다.</div></div><div style="flex:.8;min-height:44px;border-radius:${Math.min(C.r,8)}px;background:${C.ac}22"></div></div>`,
+    faq: () => `<div style="padding:0 12px ${C.gap}px">${['자주 묻는 질문 하나','환불은 어떻게 하나요'].map(q => `<div style="border-bottom:1px solid rgba(127,127,127,.25);padding:6px 0;display:flex;justify-content:space-between"><span>${q}</span><span style="color:${C.ac}">+</span></div>`).join('')}</div>`,
+    cta: () => `<div style="margin:${C.gap}px 12px;padding:12px;border-radius:${Math.min(C.r,10)}px;background:${C.ac};color:${acOn(C)};text-align:center;font-weight:700">지금 시작하기</div>`,
+    /* SF2: 구성 4유형 + 예약형 섹션 */
+    compare: () => `<div style="margin:${C.gap}px 12px;border:1px solid rgba(127,127,127,.25);border-radius:${Math.min(C.r,8)}px;overflow:hidden">
+      <div style="display:flex;background:${cardBg}"><div style="flex:1.2;padding:5px 8px;opacity:.5">비교 항목</div><div style="flex:1;padding:5px 8px;font-weight:700;color:${C.ac}">우리</div><div style="flex:1;padding:5px 8px;opacity:.55">다른 곳</div></div>
+      ${['핵심 기능','가격','지원'].map(t => `<div style="display:flex;border-top:1px solid rgba(127,127,127,.18)"><div style="flex:1.2;padding:5px 8px;opacity:.7">${t}</div><div style="flex:1;padding:5px 8px;color:${C.ac};font-weight:700">✓</div><div style="flex:1;padding:5px 8px;opacity:.4">—</div></div>`).join('')}</div>`,
+    problem: () => `<div style="margin:${C.gap}px 12px;padding:10px 12px;background:${cardBg};border-left:3px solid ${C.ac};border-radius:${Math.min(C.r,6)}px"><b>겪고 있는 문제를 먼저 명명합니다</b><div style="opacity:.6;margin-top:3px">왜 지금 방식이 안 되는지 짚는 문단.</div></div>`,
+    mech: () => `<div style="display:flex;gap:${C.gap}px;padding:${C.gap}px 12px;align-items:center">${['원인','작동 원리','달라지는 점'].map((t,i) => `<div style="flex:1;text-align:center"><div style="height:26px;border-radius:${Math.min(C.r,6)}px;background:${C.ac}${22 + i * 11};display:grid;place-items:center;font-weight:700">${i+1}</div><div style="opacity:.65;margin-top:3px">${t}</div></div>`).join('')}</div>`,
+    ugc: () => `<div style="display:grid;grid-template-columns:${pvMobile ? '1fr 1fr' : '1fr 1fr 1fr'};gap:6px;padding:${C.gap}px 12px">${[0,1,2,3,4,5].map(n => `<div style="border-radius:${Math.min(C.r,6)}px;background:${cardBg};padding:6px"><div style="height:22px;border-radius:${Math.min(C.r,4)}px;background:${C.ac}${20 + (n % 3) * 14}"></div><div style="opacity:.55;margin-top:3px;font-size:8px">@사용자${n+1}</div></div>`).join('')}</div>`,
+    guarantee: () => `<div style="margin:${C.gap}px 12px;padding:9px 12px;border:1.5px dashed ${C.ac};border-radius:${Math.min(C.r,8)}px;display:flex;gap:8px;align-items:center"><span style="color:${C.ac};font-weight:700">✓</span><span><b>보증·환불 정책</b> <span style="opacity:.6">— 걱정 없이 시작할 수 있는 이유</span></span></div>`,
+    bookhero: () => `<div style="${mediaBg ? `background:${mediaBg} center/cover;` : `background:${C.ac}22;`}padding:${16 + C.gap}px 14px;text-align:center;${onMedia}">
+      <div style="font-family:${C.hf};font-weight:${C.hw};font-size:15px;line-height:1.15">${hl.text}</div>
+      <div style="opacity:.8;margin-top:3px">${sc.text}</div>
+      <div style="margin:8px auto 0;max-width:92%;display:flex;gap:4px;background:${C.card};color:${C.ink};border-radius:${Math.min(C.r,8)}px;padding:5px;text-shadow:none">
+        <span style="flex:1;padding:4px 6px;opacity:.6;text-align:left">날짜</span><span style="flex:1;padding:4px 6px;opacity:.6;text-align:left;border-left:1px solid rgba(127,127,127,.25)">인원</span>
+        <span style="background:${C.ac};color:${acOn(C)};border-radius:${Math.min(C.r,6)}px;padding:4px 10px;font-weight:700">예약</span></div></div>`,
+    slots: () => `<div style="padding:${C.gap}px 12px"><div style="display:flex;justify-content:space-between;margin-bottom:5px"><b>남은 자리</b><span style="color:${C.ac};font-weight:700">실시간</span></div>
+      <div style="display:flex;gap:4px">${['10:00','13:00','16:00','19:00'].map((t,i) => `<div style="flex:1;text-align:center;padding:5px 2px;border-radius:${Math.min(C.r,6)}px;border:1px solid ${i === 2 ? 'rgba(127,127,127,.2)' : C.ac};${i === 2 ? 'opacity:.4' : ''}">${t}<div style="font-size:8px;${i === 2 ? '' : 'color:' + C.ac}">${i === 2 ? '마감' : (3 - i + 2) + '석'}</div></div>`).join('')}</div></div>`,
+  };
+  const nav = headerV === 'logo-only' ? '' : headerV === 'hamburger' ? '≡' : `<span style="opacity:.6">메뉴 소개</span>`;
+  const cta2 = headerV === 'logo-links-cta' ? `<span style="background:${C.ac};color:${acOn(C)};border-radius:${Math.min(C.r,6)}px;padding:2px 7px">예매</span>` : '';
+  const footer = footerV === 'one-line' ? `<div style="opacity:.55;text-align:center">© 브랜드</div>`
+    : footerV === 'big-brand' ? `<div style="font-family:${C.hf};font-size:15px">브랜드<span style="color:${C.ac}">.</span></div>`
+    : `<div style="display:flex;gap:${C.gap}px"><div style="flex:1"><b>브랜드</b></div><div style="flex:1;opacity:.55">링크<br>링크</div><div style="flex:1;opacity:.55">링크<br>링크</div></div>`;
+  document.getElementById('pv-site').innerHTML = `
+    <div style="background:${C.bg};color:${C.ink};font-family:${C.bf}">
+      <div style="display:flex;justify-content:space-between;align-items:center;gap:8px;padding:8px 12px;font-size:9.5px">
+        <b style="font-family:${C.hf}">브랜드<span style="color:${C.ac}">.</span></b><span style="display:flex;gap:8px;align-items:center">${nav}${cta2}</span>
+      </div>
+      ${(comp.pv || ['hero','cards','info']).map(k => (SEC[k] || (() => ''))()).join('')}
+      <div style="border-top:1px solid rgba(127,127,127,.25);padding:9px 12px">${footer}</div>
+    </div>`;
+}
+function attachRich() {
+  document.querySelectorAll('.d-field').forEach(dv => {
+    if (dv.dataset.fieldWired) return; dv.dataset.fieldWired = '1';
+    if (!dv.querySelector('.field-bg')) { const f = document.createElement('div'); f.className = 'field-bg'; dv.prepend(f); }
+    dv.addEventListener('pointermove', e => { const r = dv.getBoundingClientRect();
+      dv.style.setProperty('--fx', ((e.clientX - r.left) / r.width * 100) + '%');
+      dv.style.setProperty('--fy', ((e.clientY - r.top) / r.height * 100) + '%'); });
+  });
+  document.querySelectorAll('.d-rich').forEach(dv => {
+    if (dv.dataset.richWired) return; dv.dataset.richWired = '1';
+    const chip = dv.querySelector('.demo-chip');
+    dv.addEventListener('pointermove', e => { const r = dv.getBoundingClientRect();
+      chip.style.transform = `translate(${(e.clientX - r.left - r.width / 2) * .07}px, ${(e.clientY - r.top - r.height / 2) * .1}px)`; });
+  });
+}
+function renderAll() {
+  app.innerHTML = '';
+  const tsec = document.createElement('section');
+  tsec.innerHTML = `<h2><span class="step">1단</span>방향 타일 — 큰 방향부터</h2><p class="hint">하나를 고르면 아래 축들이 그 방향 추천순으로 재정렬되고, 오른쪽 미리보기가 따라옵니다</p>`;
+  const tg = document.createElement('div'); tg.className = 'tile-grid';
+  [...TILES].sort((a, b) => a.rank - b.rank).forEach(t => {
+    const o = document.createElement('div'); o.className = 'opt tile'; o.tabIndex = 0;
+    if (tileSel === t.value) o.classList.add('sel');
+    o.innerHTML = `<div class="band"><span class="rank ${t.rank === 1 ? 'r1' : ''}">${t.rank}순위</span><span class="sel-mark">✓ 선택됨</span></div>
+      <div class="body-slot" style="background:${t.bg};color:${t.ink}">
+        <div class="t-head" style="font-family:${t.font}">${t.name}</div>
+        <div class="t-sub">${t.desc}</div>
+        <div class="t-row"><span class="t-btn" style="background:${t.accent};color:#fff;border-radius:${t.radius}">버튼</span>
+        <span class="t-dot" style="background:${t.accent}"></span><span class="t-dot" style="background:${t.ink};opacity:.25"></span></div>
+      </div><div class="label">${t.name}</div>`;
+    o.addEventListener('click', () => { tileSel = tileSel === t.value ? null : t.value; renderAll(); });
+    o.addEventListener('keydown', e => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); o.click(); } });
+    tg.appendChild(o);
+  });
+  tsec.appendChild(tg); app.appendChild(tsec);
+  AXES.forEach(a => app.appendChild(renderAxis(a)));
+  attachRich(); renderPreview(); refresh();
+}
+function refresh() {
+  const n = Object.keys(sel).length;
+  document.getElementById('status').textContent = `${n} / ${AXES.length} 축 선택됨${tileSel ? ' · 타일: ' + TILES.find(t => t.value === tileSel).name : ''}`;
+  document.getElementById('send').disabled = n < AXES.length;
+}
+document.getElementById('pv-dark').addEventListener('click', e => {
+  pvDark = !pvDark; e.currentTarget.dataset.userSet = '1'; renderPreview();
+});
+document.getElementById('pv-mobile').addEventListener('click', () => { pvMobile = !pvMobile; renderPreview(); });
+document.getElementById('send').addEventListener('click', async () => {
+  const composition = getCand('composition', sel.composition);
+  const payload = {
+    version: 2,
+    tile: tileSel,
+    selections: sel,
+    implementation: composition ? { composition: composition.value, recipes: composition.recipes } : null,
+    submittedAt: new Date().toISOString()
+  };
+  try {
+    const res = await fetch('/select', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(payload) });
+    if (!res.ok) throw new Error(res.status);
+    document.getElementById('status').textContent = '전달 완료 — 에이전트가 DESIGN.md에 반영합니다.';
+    document.getElementById('send').disabled = true;
+  } catch {
+    const fb = document.getElementById('fallback');
+    fb.style.display = 'block'; fb.value = JSON.stringify(payload, null, 2);
+    document.getElementById('status').textContent = '서버 전달 실패 — 아래 JSON을 복사해 에이전트에게 붙여넣어 주세요.';
+  }
+});
+renderAll();
+</script>
+</body>
+</html>

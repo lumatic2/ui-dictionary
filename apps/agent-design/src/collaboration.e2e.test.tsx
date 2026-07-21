@@ -22,6 +22,7 @@ function documentFixture(revision: number): CanvasDocument {
       'node-a': {
         id: 'node-a', kind: 'frame', name: `Frame r${revision}`, parentId: null, childIds: [],
         bounds: { x: 0, y: 0, width: 200, height: 120 },
+        rotation: 0,
         layout: { mode: 'absolute', horizontal: 'fixed', vertical: 'fixed', gap: 0, padding: [0, 0, 0, 0] },
         visible: true, locked: false, tokenBindings: {}, source: null, clipContent: false,
       },

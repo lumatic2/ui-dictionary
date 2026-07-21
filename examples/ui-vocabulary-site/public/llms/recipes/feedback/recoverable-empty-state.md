@@ -25,6 +25,8 @@ source_refs: []
 last_verified: 2026-07-10
 ---
 
+> **STOP — do not re-implement this recipe from prose.** A verified code asset exists: fetch https://ui.askewly.com/r/recoverable-empty-state.json, write `files[].content` into the project, install the declared dependencies, THEN restyle the look to the project's own tokens (mandatory — component-restyle.md). Prose below is the contract you verify against, not the thing you rebuild.
+
 ## Intent
 
 A recoverable empty state explains why expected content is absent and gives the user the most direct next action. It distinguishes first-use emptiness, no search results, filtered-out content, permission limits, and load failures instead of showing one generic illustration for every cause.

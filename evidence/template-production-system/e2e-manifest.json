@@ -1,0 +1,248 @@
+{
+  "status": "pass",
+  "formats": [
+    {
+      "format": "business-card",
+      "blueprint": "business-card-minimal",
+      "signature": "tpl-dafec0d8",
+      "gridColumns": 3,
+      "slotCount": 5,
+      "repeatGroups": 0,
+      "printSpec": "us-business-card-3.5x2",
+      "exports": [
+        {
+          "format": "json",
+          "bytes": 6476,
+          "sha256": "44c6a7fee7e3"
+        },
+        {
+          "format": "html",
+          "bytes": 883,
+          "sha256": "c16305b99159"
+        },
+        {
+          "format": "svg",
+          "bytes": 1261,
+          "sha256": "a99a8119dfec"
+        }
+      ],
+      "network": false
+    },
+    {
+      "format": "business-card",
+      "blueprint": "business-card-vertical",
+      "signature": "tpl-2303a034",
+      "gridColumns": 2,
+      "slotCount": 5,
+      "repeatGroups": 0,
+      "printSpec": "kr-business-card-90x50",
+      "exports": [
+        {
+          "format": "json",
+          "bytes": 6510,
+          "sha256": "80350e4d0f59"
+        },
+        {
+          "format": "html",
+          "bytes": 885,
+          "sha256": "ef2ede5070fa"
+        },
+        {
+          "format": "svg",
+          "bytes": 1267,
+          "sha256": "fc98526ef570"
+        }
+      ],
+      "network": false
+    },
+    {
+      "format": "product-poster",
+      "blueprint": "product-poster-hero",
+      "signature": "tpl-4e07fa05",
+      "gridColumns": 1,
+      "slotCount": 5,
+      "repeatGroups": 0,
+      "printSpec": null,
+      "exports": [
+        {
+          "format": "json",
+          "bytes": 7349,
+          "sha256": "23a7b055aeef"
+        },
+        {
+          "format": "html",
+          "bytes": 1063,
+          "sha256": "82e18ee228a8"
+        },
+        {
+          "format": "svg",
+          "bytes": 780,
+          "sha256": "4e76b751a886"
+        }
+      ],
+      "network": false
+    },
+    {
+      "format": "product-poster",
+      "blueprint": "product-poster-editorial",
+      "signature": "tpl-9c3ddf91",
+      "gridColumns": 2,
+      "slotCount": 6,
+      "repeatGroups": 0,
+      "printSpec": null,
+      "exports": [
+        {
+          "format": "json",
+          "bytes": 8378,
+          "sha256": "27151db888b3"
+        },
+        {
+          "format": "html",
+          "bytes": 1182,
+          "sha256": "a6ca4e3c3f08"
+        },
+        {
+          "format": "svg",
+          "bytes": 867,
+          "sha256": "da96301b39c9"
+        }
+      ],
+      "network": false
+    },
+    {
+      "format": "product-poster",
+      "blueprint": "product-poster-print-a3",
+      "signature": "tpl-0edfb779",
+      "gridColumns": 1,
+      "slotCount": 5,
+      "repeatGroups": 0,
+      "printSpec": "iso-a3",
+      "exports": [
+        {
+          "format": "json",
+          "bytes": 7459,
+          "sha256": "8938a155d46f"
+        },
+        {
+          "format": "html",
+          "bytes": 1065,
+          "sha256": "6fa24b4741b9"
+        },
+        {
+          "format": "svg",
+          "bytes": 1409,
+          "sha256": "62267298cc6d"
+        }
+      ],
+      "network": false
+    },
+    {
+      "format": "infographic",
+      "blueprint": "infographic-stats",
+      "signature": "tpl-bb022be7",
+      "gridColumns": 1,
+      "slotCount": 5,
+      "repeatGroups": 0,
+      "printSpec": null,
+      "exports": [
+        {
+          "format": "json",
+          "bytes": 7468,
+          "sha256": "372299b81742"
+        },
+        {
+          "format": "html",
+          "bytes": 1181,
+          "sha256": "a509a02c2733"
+        },
+        {
+          "format": "svg",
+          "bytes": 937,
+          "sha256": "0dd4475baac1"
+        }
+      ],
+      "network": false
+    },
+    {
+      "format": "infographic",
+      "blueprint": "infographic-comparison",
+      "signature": "tpl-a6a42bba",
+      "gridColumns": 3,
+      "slotCount": 3,
+      "repeatGroups": 1,
+      "printSpec": null,
+      "exports": [
+        {
+          "format": "json",
+          "bytes": 11703,
+          "sha256": "1b7f75b20907"
+        },
+        {
+          "format": "html",
+          "bytes": 2013,
+          "sha256": "25b95fb0726e"
+        },
+        {
+          "format": "svg",
+          "bytes": 1448,
+          "sha256": "ee17d7833f31"
+        }
+      ],
+      "network": false
+    },
+    {
+      "format": "infographic",
+      "blueprint": "infographic-print-a4",
+      "signature": "tpl-b8bc0f01",
+      "gridColumns": 1,
+      "slotCount": 5,
+      "repeatGroups": 0,
+      "printSpec": "iso-a4",
+      "exports": [
+        {
+          "format": "json",
+          "bytes": 7535,
+          "sha256": "423a1b06e91d"
+        },
+        {
+          "format": "html",
+          "bytes": 1168,
+          "sha256": "8a9c0080e222"
+        },
+        {
+          "format": "svg",
+          "bytes": 1540,
+          "sha256": "54d8647f5012"
+        }
+      ],
+      "network": false
+    }
+  ],
+  "negativePaths": [
+    {
+      "id": "missing-content",
+      "rejected": true,
+      "code": "CONTENT_INCOMPLETE"
+    },
+    {
+      "id": "text-overflow",
+      "rejected": true,
+      "code": "TEXT_OVERFLOW"
+    },
+    {
+      "id": "missing-asset",
+      "rejected": true,
+      "code": "BROKEN_ASSET_REFERENCE"
+    },
+    {
+      "id": "invalid-token",
+      "rejected": true,
+      "code": "TOKEN_SET_NOT_FOUND"
+    },
+    {
+      "id": "repeat-count-out-of-range",
+      "rejected": true,
+      "code": "REPEAT_COUNT_OUT_OF_RANGE"
+    }
+  ]
+}

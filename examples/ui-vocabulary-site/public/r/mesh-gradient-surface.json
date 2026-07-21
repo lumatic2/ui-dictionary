@@ -1,0 +1,17 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "mesh-gradient-surface",
+  "type": "registry:block",
+  "title": "Mesh Gradient Surface",
+  "description": "A mesh gradient surface gives a hero, brand section, or empty backdrop an organic multi-point color field without imagery. Tier ① (CSS-only) in `knowledge/expressive-stack.md`: several radial-gradient layers stacked on one element approximate a mesh — no JS, no dependency, static by default. Use it where a flat token background feels inert but a photo or 3D scene would be overkill.",
+  "docs": "Recipe contract (intent/anatomy/tokens/checks/anti-patterns): https://ui.askewly.com/llms/recipes/marketing/mesh-gradient-surface.md — after transplant, remap look to the project's own tokens per https://ui.askewly.com/llms/docs/design-system/component-restyle.md",
+  "registryDependencies": [],
+  "dependencies": [],
+  "files": [
+    {
+      "path": "registry/askewly/mesh-gradient-surface/mesh-gradient-surface.tsx",
+      "type": "registry:component",
+      "content": "import type { CSSProperties, ReactNode } from \"react\"\n\ntype MeshGradientSurfaceProps = {\n  children?: ReactNode\n  className?: string\n}\n\n/**\n * Mesh gradient surface: several token-derived radial-gradient layers stacked\n * on one element approximate a mesh gradient — pure CSS, zero dependencies,\n * static by default (tier ① in knowledge/expressive-stack.md). Colors are\n * mixed from the project's own --primary/--accent variables via color-mix, so\n * the surface re-themes with the token system instead of hardcoding stops.\n */\nexport function MeshGradientSurface({ children, className }: MeshGradientSurfaceProps) {\n  const style: CSSProperties = {\n    backgroundImage: [\n      \"radial-gradient(42% 55% at 18% 22%, color-mix(in oklch, var(--primary) 34%, transparent) 0%, transparent 100%)\",\n      \"radial-gradient(50% 60% at 82% 18%, color-mix(in oklch, var(--accent) 65%, transparent) 0%, transparent 100%)\",\n      \"radial-gradient(55% 65% at 70% 85%, color-mix(in oklch, var(--primary) 22%, transparent) 0%, transparent 100%)\",\n      \"radial-gradient(40% 45% at 12% 88%, color-mix(in oklch, var(--accent) 40%, transparent) 0%, transparent 100%)\",\n    ].join(\", \"),\n  }\n\n  return (\n    <div className={`relative overflow-hidden bg-background ${className ?? \"\"}`} style={style}>\n      {children}\n    </div>\n  )\n}\n\n/** Colocated demo: the surface as a hero-style backdrop with readable foreground copy. */\nexport function MeshGradientSurfaceDemo() {\n  return (\n    <MeshGradientSurface className=\"flex h-64 w-full max-w-2xl items-center justify-center rounded-lg border\">\n      <div className=\"px-8 text-center\">\n        <p className=\"text-lg font-semibold text-foreground\">Token-derived mesh surface</p>\n        <p className=\"mt-1 break-keep text-sm text-muted-foreground\">네 개의 radial-gradient 레이어가 프로젝트 토큰에서 파생됩니다.</p>\n      </div>\n    </MeshGradientSurface>\n  )\n}\n"
+    }
+  ]
+}

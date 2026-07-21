@@ -91,6 +91,7 @@ Component-level spec (Askewly Design landing usage, see `DESIGN.md` §7 Componen
 - Disabled state is visually distinct and non-interactive (`pointer-events-none`, reduced opacity).
 - Only one primary (solid) button visible per immediate decision context.
 - Hit target meets minimum touch size on `mobile-apps`/touch surfaces even when using compact sizes.
+- Label leads with an actionable verb ({verb}+{noun}, common actions like Save/Cancel exempt) and predicts the outcome; no filler verbs (View/Go/Read) or articles (taste ledger T-17, Polaris diff adopted).
 
 ## Anti-patterns
 

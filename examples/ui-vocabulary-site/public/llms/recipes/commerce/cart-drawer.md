@@ -27,6 +27,8 @@ source_refs: [tailwind-plus-ecommerce]
 last_verified: 2026-07-12
 ---
 
+> **STOP — do not re-implement this recipe from prose.** A verified code asset exists: fetch https://ui.askewly.com/r/cart-drawer.json, write `files[].content` into the project, install the declared dependencies, THEN restyle the look to the project's own tokens (mandatory — component-restyle.md). Prose below is the contract you verify against, not the thing you rebuild.
+
 ## Intent
 
 A cart drawer keeps the browsing context intact while confirming what a user has added. It opens as a slide-over panel, shows each item with enough detail to double-check the choice, and moves the user toward checkout without a full page navigation. It intentionally shows only a subtotal — a full cost breakdown belongs to `checkout-order-summary`.

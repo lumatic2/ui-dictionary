@@ -26,6 +26,8 @@ source_refs: [tailwind-plus-application-ui]
 last_verified: 2026-07-10
 ---
 
+> **STOP — do not re-implement this recipe from prose.** A verified code asset exists: fetch https://ui.askewly.com/r/stat-summary-grid.json, write `files[].content` into the project, install the declared dependencies, THEN restyle the look to the project's own tokens (mandatory — component-restyle.md). Prose below is the contract you verify against, not the thing you rebuild.
+
 ## Intent
 
 A stat summary grid gives a small set of operational measures a consistent hierarchy: label, current value, and a contextual trend or status. It supports quick orientation at the top of a real dashboard; it is not a license to fabricate metrics for decorative proof.
@@ -85,6 +87,7 @@ export function StatSummaryGrid({ title, rangeLabel, stats, reportHref }: StatSu
 - Unavailable data is distinct from a valid zero.
 - Values align and wrap without pushing peer cells out of the grid.
 - Metrics come from the named product workflow rather than generic dashboard filler.
+- Emphasis within a series uses a neutral base plus a single accent point (with a text label alongside the color), never coloring every bar/cell — the data-surface form of "accent as signal" (taste ledger T-14).
 
 ## Anti-patterns
 

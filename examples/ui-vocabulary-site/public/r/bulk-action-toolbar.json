@@ -1,0 +1,19 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "bulk-action-toolbar",
+  "type": "registry:block",
+  "title": "Bulk Action Toolbar",
+  "description": "A bulk action toolbar turns a table's per-row selection into a single place to act on many rows at once. It appears only once a selection exists, always states the selected count out loud, and offers an explicit way to go beyond the current page — selecting every row that matches the active filter, not just the ones currently rendered. It builds directly on `interactive-data-table`'s selection state rather than defining a second, competing selection model.",
+  "registryDependencies": [
+    "badge",
+    "button"
+  ],
+  "dependencies": [],
+  "files": [
+    {
+      "path": "registry/askewly/bulk-action-toolbar/bulk-action-toolbar.tsx",
+      "type": "registry:component",
+      "content": "import { Badge } from \"@/components/ui/badge\"\nimport { Button } from \"@/components/ui/button\"\n\nexport type BulkAction = {\n  id: string\n  label: string\n  variant?: \"default\" | \"outline\" | \"destructive\"\n  onAction: () => void\n}\n\ntype BulkActionToolbarProps = {\n  selectedCount: number\n  visibleCount: number\n  totalMatchingCount?: number\n  onClearSelection: () => void\n  onSelectAllMatching?: () => void\n  actions: BulkAction[]\n}\n\n/**\n * Floating toolbar bound to a table/list selection model: it only renders\n * once selectedCount > 0, always shows an explicit count and a clear action,\n * and offers \"select all N matching filter\" only when every visible row is\n * already selected and more rows exist behind the current filter (builds on\n * `interactive-data-table`'s selection state rather than owning its own).\n */\nexport function BulkActionToolbar({\n  selectedCount,\n  visibleCount,\n  totalMatchingCount,\n  onClearSelection,\n  onSelectAllMatching,\n  actions,\n}: BulkActionToolbarProps) {\n  if (selectedCount === 0) return null\n\n  const allVisibleSelected = selectedCount === visibleCount\n  const canSelectAllMatching =\n    allVisibleSelected && typeof totalMatchingCount === \"number\" && totalMatchingCount > selectedCount\n\n  return (\n    <div className=\"flex flex-wrap items-center justify-between gap-3 rounded-md border bg-card p-2 text-card-foreground\">\n      <div className=\"flex flex-wrap items-center gap-2 text-sm\">\n        <Badge variant=\"secondary\">{selectedCount} selected</Badge>\n        <Button size=\"sm\" variant=\"ghost\" onClick={onClearSelection}>\n          Clear\n        </Button>\n        {canSelectAllMatching ? (\n          <Button size=\"sm\" variant=\"link\" onClick={onSelectAllMatching}>\n            Select all {totalMatchingCount} matching filter\n          </Button>\n        ) : null}\n      </div>\n      <div className=\"flex flex-wrap items-center gap-2\">\n        {actions.map((action) => (\n          <Button\n            key={action.id}\n            size=\"sm\"\n            variant={action.variant === \"destructive\" ? \"destructive\" : \"outline\"}\n            onClick={action.onAction}\n          >\n            {action.label}\n          </Button>\n        ))}\n      </div>\n    </div>\n  )\n}\n"
+    }
+  ]
+}

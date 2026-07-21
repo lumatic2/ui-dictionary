@@ -1,0 +1,21 @@
+{
+  "version": 2,
+  "tile": "ink-and-light",
+  "selections": {
+    "base": "ink-black",
+    "accent": "crimson",
+    "typo": "myeongjo-head",
+    "composition": "hero-cards-info",
+    "header": "logo-links-cta",
+    "footer": "multi-column",
+    "card": "flat-tonal",
+    "density": "airy",
+    "radius": "subtle",
+    "imagery": "img-4",
+    "icon": "outline",
+    "dark": "dark-first",
+    "motion": "standard",
+    "a11y": "aa"
+  },
+  "submittedAt": "2026-07-18T16:47:21.023Z"
+}

@@ -24,6 +24,8 @@ source_refs: [baymard-product-page-ux]
 last_verified: 2026-07-12
 ---
 
+> **STOP — do not re-implement this recipe from prose.** A verified code asset exists: fetch https://ui.askewly.com/r/product-detail-purchase-stack.json, write `files[].content` into the project, install the declared dependencies, THEN restyle the look to the project's own tokens (mandatory — component-restyle.md). Prose below is the contract you verify against, not the thing you rebuild.
+
 ## Intent
 
 The product detail purchase stack is the desktop-default vertical block that binds title, price, variant selection, quantity, and the add-to-cart CTA into one continuously visible unit. Baymard's product-page research recommends exposing variant choices (size/color) as visible buttons rather than hiding them behind a dropdown, and surfacing the estimated total plus a return-policy link right next to the CTA rather than deferring cost/policy facts to a later step. `product-option-sheet` is the mobile bottom-sheet variant of this same decision set — this recipe is the inline desktop default, not a replacement for it.

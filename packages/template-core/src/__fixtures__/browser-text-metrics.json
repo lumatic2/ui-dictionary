@@ -1,0 +1,422 @@
+[
+  {
+    "font": "serif",
+    "size": 24,
+    "label": "hangul-short",
+    "text": "이름을 입력하세요",
+    "measured": 191.260986328125
+  },
+  {
+    "font": "serif",
+    "size": 24,
+    "label": "hangul-long",
+    "text": "숫자가 무엇을 뜻하는지 한 문장으로 설명합니다.",
+    "measured": 499.0938720703125
+  },
+  {
+    "font": "serif",
+    "size": 24,
+    "label": "hangul-headline",
+    "text": "한 줄로 말하는 약속",
+    "measured": 202.839111328125
+  },
+  {
+    "font": "serif",
+    "size": 24,
+    "label": "latin-lower",
+    "text": "hello@example.com",
+    "measured": 215.109375
+  },
+  {
+    "font": "serif",
+    "size": 24,
+    "label": "latin-mixed",
+    "text": "AI Builder · askewly",
+    "measured": 211.4296875
+  },
+  {
+    "font": "serif",
+    "size": 24,
+    "label": "latin-caps",
+    "text": "ASKEWLY DESIGN",
+    "measured": 212.6484375
+  },
+  {
+    "font": "serif",
+    "size": 24,
+    "label": "digits",
+    "text": "0123456789 42%",
+    "measured": 183.83203125
+  },
+  {
+    "font": "serif",
+    "size": 24,
+    "label": "mixed",
+    "text": "무엇을 보여줄 것인가 42 formats",
+    "measured": 341.2418518066406
+  },
+  {
+    "font": "serif",
+    "size": 24,
+    "label": "thin",
+    "text": "illiteracy fifties",
+    "measured": 158.0390625
+  },
+  {
+    "font": "serif",
+    "size": 24,
+    "label": "punct",
+    "text": "a-b/c\"d?e+f=g",
+    "measured": 154.30078125
+  },
+  {
+    "font": "serif",
+    "size": 63,
+    "label": "hangul-short",
+    "text": "이름을 입력하세요",
+    "measured": 502.060302734375
+  },
+  {
+    "font": "serif",
+    "size": 63,
+    "label": "hangul-long",
+    "text": "숫자가 무엇을 뜻하는지 한 문장으로 설명합니다.",
+    "measured": 1310.1219482421875
+  },
+  {
+    "font": "serif",
+    "size": 63,
+    "label": "hangul-headline",
+    "text": "한 줄로 말하는 약속",
+    "measured": 532.452880859375
+  },
+  {
+    "font": "serif",
+    "size": 63,
+    "label": "latin-lower",
+    "text": "hello@example.com",
+    "measured": 564.662109375
+  },
+  {
+    "font": "serif",
+    "size": 63,
+    "label": "latin-mixed",
+    "text": "AI Builder · askewly",
+    "measured": 555.0029296875
+  },
+  {
+    "font": "serif",
+    "size": 63,
+    "label": "latin-caps",
+    "text": "ASKEWLY DESIGN",
+    "measured": 558.2021484375
+  },
+  {
+    "font": "serif",
+    "size": 63,
+    "label": "digits",
+    "text": "0123456789 42%",
+    "measured": 482.55908203125
+  },
+  {
+    "font": "serif",
+    "size": 63,
+    "label": "mixed",
+    "text": "무엇을 보여줄 것인가 42 formats",
+    "measured": 895.7601318359375
+  },
+  {
+    "font": "serif",
+    "size": 63,
+    "label": "thin",
+    "text": "illiteracy fifties",
+    "measured": 414.8525390625
+  },
+  {
+    "font": "serif",
+    "size": 63,
+    "label": "punct",
+    "text": "a-b/c\"d?e+f=g",
+    "measured": 405.03955078125
+  },
+  {
+    "font": "serif",
+    "size": 126,
+    "label": "hangul-short",
+    "text": "이름을 입력하세요",
+    "measured": 1004.12060546875
+  },
+  {
+    "font": "serif",
+    "size": 126,
+    "label": "hangul-long",
+    "text": "숫자가 무엇을 뜻하는지 한 문장으로 설명합니다.",
+    "measured": 2620.243896484375
+  },
+  {
+    "font": "serif",
+    "size": 126,
+    "label": "hangul-headline",
+    "text": "한 줄로 말하는 약속",
+    "measured": 1064.90576171875
+  },
+  {
+    "font": "serif",
+    "size": 126,
+    "label": "latin-lower",
+    "text": "hello@example.com",
+    "measured": 1129.32421875
+  },
+  {
+    "font": "serif",
+    "size": 126,
+    "label": "latin-mixed",
+    "text": "AI Builder · askewly",
+    "measured": 1110.005859375
+  },
+  {
+    "font": "serif",
+    "size": 126,
+    "label": "latin-caps",
+    "text": "ASKEWLY DESIGN",
+    "measured": 1116.404296875
+  },
+  {
+    "font": "serif",
+    "size": 126,
+    "label": "digits",
+    "text": "0123456789 42%",
+    "measured": 965.1181640625
+  },
+  {
+    "font": "serif",
+    "size": 126,
+    "label": "mixed",
+    "text": "무엇을 보여줄 것인가 42 formats",
+    "measured": 1791.520263671875
+  },
+  {
+    "font": "serif",
+    "size": 126,
+    "label": "thin",
+    "text": "illiteracy fifties",
+    "measured": 829.705078125
+  },
+  {
+    "font": "serif",
+    "size": 126,
+    "label": "punct",
+    "text": "a-b/c\"d?e+f=g",
+    "measured": 810.0791015625
+  },
+  {
+    "font": "sans",
+    "size": 24,
+    "label": "hangul-short",
+    "text": "이름을 입력하세요",
+    "measured": 182.01588439941406
+  },
+  {
+    "font": "sans",
+    "size": 24,
+    "label": "hangul-long",
+    "text": "숫자가 무엇을 뜻하는지 한 문장으로 설명합니다.",
+    "measured": 475.1756591796875
+  },
+  {
+    "font": "sans",
+    "size": 24,
+    "label": "hangul-headline",
+    "text": "한 줄로 말하는 약속",
+    "measured": 192.7678680419922
+  },
+  {
+    "font": "sans",
+    "size": 24,
+    "label": "latin-lower",
+    "text": "hello@example.com",
+    "measured": 229.19432067871094
+  },
+  {
+    "font": "sans",
+    "size": 24,
+    "label": "latin-mixed",
+    "text": "AI Builder · askewly",
+    "measured": 215.06886291503906
+  },
+  {
+    "font": "sans",
+    "size": 24,
+    "label": "latin-caps",
+    "text": "ASKEWLY DESIGN",
+    "measured": 194.5323486328125
+  },
+  {
+    "font": "sans",
+    "size": 24,
+    "label": "digits",
+    "text": "0123456789 42%",
+    "measured": 187.31988525390625
+  },
+  {
+    "font": "sans",
+    "size": 24,
+    "label": "mixed",
+    "text": "무엇을 보여줄 것인가 42 formats",
+    "measured": 333.42547607421875
+  },
+  {
+    "font": "sans",
+    "size": 24,
+    "label": "thin",
+    "text": "illiteracy fifties",
+    "measured": 163.46240234375
+  },
+  {
+    "font": "sans",
+    "size": 24,
+    "label": "punct",
+    "text": "a-b/c\"d?e+f=g",
+    "measured": 157.31988525390625
+  },
+  {
+    "font": "sans",
+    "size": 63,
+    "label": "hangul-short",
+    "text": "이름을 입력하세요",
+    "measured": 477.79193115234375
+  },
+  {
+    "font": "sans",
+    "size": 63,
+    "label": "hangul-long",
+    "text": "숫자가 무엇을 뜻하는지 한 문장으로 설명합니다.",
+    "measured": 1247.3367919921875
+  },
+  {
+    "font": "sans",
+    "size": 63,
+    "label": "hangul-headline",
+    "text": "한 줄로 말하는 약속",
+    "measured": 506.01593017578125
+  },
+  {
+    "font": "sans",
+    "size": 63,
+    "label": "latin-lower",
+    "text": "hello@example.com",
+    "measured": 601.6353759765625
+  },
+  {
+    "font": "sans",
+    "size": 63,
+    "label": "latin-mixed",
+    "text": "AI Builder · askewly",
+    "measured": 564.55615234375
+  },
+  {
+    "font": "sans",
+    "size": 63,
+    "label": "latin-caps",
+    "text": "ASKEWLY DESIGN",
+    "measured": 510.6476745605469
+  },
+  {
+    "font": "sans",
+    "size": 63,
+    "label": "digits",
+    "text": "0123456789 42%",
+    "measured": 491.7149658203125
+  },
+  {
+    "font": "sans",
+    "size": 63,
+    "label": "mixed",
+    "text": "무엇을 보여줄 것인가 42 formats",
+    "measured": 875.242431640625
+  },
+  {
+    "font": "sans",
+    "size": 63,
+    "label": "thin",
+    "text": "illiteracy fifties",
+    "measured": 429.08905029296875
+  },
+  {
+    "font": "sans",
+    "size": 63,
+    "label": "punct",
+    "text": "a-b/c\"d?e+f=g",
+    "measured": 412.96490478515625
+  },
+  {
+    "font": "sans",
+    "size": 126,
+    "label": "hangul-short",
+    "text": "이름을 입력하세요",
+    "measured": 955.583984375
+  },
+  {
+    "font": "sans",
+    "size": 126,
+    "label": "hangul-long",
+    "text": "숫자가 무엇을 뜻하는지 한 문장으로 설명합니다.",
+    "measured": 2494.674072265625
+  },
+  {
+    "font": "sans",
+    "size": 126,
+    "label": "hangul-headline",
+    "text": "한 줄로 말하는 약속",
+    "measured": 1012.031982421875
+  },
+  {
+    "font": "sans",
+    "size": 126,
+    "label": "latin-lower",
+    "text": "hello@example.com",
+    "measured": 1203.2708740234375
+  },
+  {
+    "font": "sans",
+    "size": 126,
+    "label": "latin-mixed",
+    "text": "AI Builder · askewly",
+    "measured": 1129.1123046875
+  },
+  {
+    "font": "sans",
+    "size": 126,
+    "label": "latin-caps",
+    "text": "ASKEWLY DESIGN",
+    "measured": 1021.29541015625
+  },
+  {
+    "font": "sans",
+    "size": 126,
+    "label": "digits",
+    "text": "0123456789 42%",
+    "measured": 983.429931640625
+  },
+  {
+    "font": "sans",
+    "size": 126,
+    "label": "mixed",
+    "text": "무엇을 보여줄 것인가 42 formats",
+    "measured": 1750.485107421875
+  },
+  {
+    "font": "sans",
+    "size": 126,
+    "label": "thin",
+    "text": "illiteracy fifties",
+    "measured": 858.1783447265625
+  },
+  {
+    "font": "sans",
+    "size": 126,
+    "label": "punct",
+    "text": "a-b/c\"d?e+f=g",
+    "measured": 825.929931640625
+  }
+]

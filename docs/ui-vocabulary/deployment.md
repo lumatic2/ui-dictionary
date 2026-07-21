@@ -56,7 +56,7 @@ cd examples/ui-vocabulary-site
 npm ci
 npm run build
 cd ../..
-npx wrangler pages deploy examples/ui-vocabulary-site/dist --project-name ui-vocabulary --branch main
+npx wrangler pages deploy examples/ui-vocabulary-site/dist --project-name ui-dictionary --branch main
 ```
 
 ## Automatic Deploy

@@ -1,121 +1,91 @@
 ---
+# 공식 스키마: google-labs-code/design.md spec (version: alpha) — research/2026-07-19-vb1-stitch-design-md.md
 name: "${PROJECT}"
-version: "0.1.0"
-inherits: null
-
-tokens:
-  color:
-    primitive:
-      gray:
-        "50":  { value: "oklch(98% 0 0)", type: color }
-        "100": { value: "oklch(96% 0 0)", type: color }
-        "300": { value: "oklch(82% 0 0)", type: color }
-        "500": { value: "oklch(55% 0 0)", type: color }
-        "700": { value: "oklch(32% 0 0)", type: color }
-        "900": { value: "oklch(15% 0 0)", type: color }
-      brand:
-        "500": { value: "oklch(62% 0.18 250)", type: color }
-    semantic:
-      surface:
-        base:  { value: "{color.primitive.gray.50}",  type: color }
-        muted: { value: "{color.primitive.gray.100}", type: color }
-      text:
-        default: { value: "{color.primitive.gray.900}", type: color }
-        muted:   { value: "{color.primitive.gray.700}", type: color }
-      action:
-        primary: { value: "{color.primitive.brand.500}", type: color }
-      border:
-        default: { value: "{color.primitive.gray.300}", type: color }
-
-  dimension:
-    space:
-      "1": { value: "4px",  type: dimension }
-      "2": { value: "8px",  type: dimension }
-      "3": { value: "12px", type: dimension }
-      "4": { value: "16px", type: dimension }
-      "6": { value: "24px", type: dimension }
-      "8": { value: "32px", type: dimension }
-    radius:
-      sm:   { value: "4px",   type: dimension }
-      md:   { value: "8px",   type: dimension }
-      lg:   { value: "16px",  type: dimension }
-      full: { value: "9999px", type: dimension }
-
-  typography:
-    font:
-      sans: { value: "Inter Variable, system-ui, sans-serif", type: fontFamily }
-      mono: { value: "JetBrains Mono, ui-monospace, monospace", type: fontFamily }
-    scale:
-      xs:   { value: "12px", type: dimension }
-      sm:   { value: "14px", type: dimension }
-      base: { value: "16px", type: dimension }
-      lg:   { value: "20px", type: dimension }
-      xl:   { value: "24px", type: dimension }
-      "2xl": { value: "32px", type: dimension }
-      "3xl": { value: "48px", type: dimension }
-    weight:
-      regular: { value: 400, type: fontWeight }
-      medium:  { value: 500, type: fontWeight }
-      bold:    { value: 700, type: fontWeight }
+description: "${ONE_LINE_BRIEF}"
+colors:
+  # primary 는 필수 (spec: "At least the primary color palette must be defined")
+  primary: "#2F6FDE"
+  on-primary: "#FAFAF8"
+  surface: "#FAF9F6"          # 순백 대신 미세 틴트 (askewly anti-patterns 클러스터 14)
+  on-surface: "rgba(20, 18, 14, 0.95)"
+  surface-raised: "#FFFFFE"
+  muted: "rgba(20, 18, 14, 0.58)"
+  border: "rgba(20, 18, 14, 0.12)"
+typography:
+  headline-lg:
+    fontFamily: "${FONT_SANS}"
+    fontSize: 48px
+    fontWeight: "800"
+    lineHeight: 1.1
+    letterSpacing: -0.03em
+  body-md:
+    fontFamily: "${FONT_SANS}"
+    fontSize: 16px
+    fontWeight: "400"
+    lineHeight: 1.65
+  label-md:
+    fontFamily: "${FONT_SANS}"
+    fontSize: 14px
+    fontWeight: "500"
+    lineHeight: 1.4
+rounded:
+  sm: 4px
+  md: 8px
+  lg: 16px
+  full: 9999px
+spacing:
+  unit: 4px
+  gap: 16px
+  container-padding: 24px
+  section-margin: 64px
+components:
+  button-primary:
+    backgroundColor: "{colors.primary}"
+    textColor: "{colors.on-primary}"
+    rounded: "{rounded.sm}"
+    padding: 12px
+  card:
+    backgroundColor: "{colors.surface-raised}"
+    rounded: "{rounded.lg}"
+    padding: "{spacing.container-padding}"
 ---
 
-# ${PROJECT} — Design System
+# ${PROJECT} — DESIGN.md
 
-> Style family: `${STYLE}` · 본 파일은 [design-manual](https://github.com/) `init-design.sh` 가 생성.
+## Overview
 
-## 1. Personality
+(브랜드 톤 3–5줄. 브리프 인터뷰의 정체성·톤 답변을 여기에 — "결정"과 "추정(기본값 채택)"을 구분해 기록한다.)
 
-(여기에 브랜드 톤 3-5 줄)
+## Colors
 
-## 2. Color
+- 코드에서는 의미 이름(`surface`, `on-surface`, `muted`)만 참조 — 값 하드코딩 금지. (공식 스키마는 flat map이지만 시맨틱 네이밍으로 위계를 표현한다 — 공식 권장명도 `primary`/`surface`/`on-surface` 계열.)
+- `primary`는 유일한 액센트: CTA·핵심 신호에만. WCAG AA(4.5:1) 통과 필수.
 
-- semantic 토큰만 코드에서 참조. primitive 직접 사용 금지.
-- `action.primary` 는 CTA 에만.
-- WCAG AA (4.5:1) 통과 필수, body 텍스트는 AAA (7:1) 목표.
+## Typography
 
-## 3. Typography
+- 서체는 1~2종 이내. 위계는 굵기·크기·색으로만 (서체 증식 금지).
+- 한글: `word-break: keep-all`. 디스플레이 제목(≥48px)은 자간 -2~-5%·행간 1.0~1.1 압축.
 
-- 본문 16/24 (`scale.base` / line-height 1.5).
-- 헤딩 letter-spacing -1%.
-- variable font weight 범위: 400-700 만 사용.
+## Layout
 
-## 4. Spacing & Layout
+- `spacing.unit` 그리드 준수. container max-width와 breakpoint를 여기 명시.
 
-- 4px 그리드. 인접 컴포넌트 최소 gap `space.4`.
-- container max-width 1200px. breakpoint: 640 / 768 / 1024 / 1280.
+## Elevation & Depth
 
-## 5. Radius & Borders
+- 위계는 배경 명도 사다리 우선(다크 ΔL≈3), 보더는 보조. 그림자 정책을 여기 명시.
 
-- 기본 radius `md`. 카드는 `lg`. 알약 버튼은 `full`.
-- 보더 1px solid `border.default`.
+## Shapes
 
-## 6. Elevation & Motion
+- 기본 radius `md`, 카드 `lg`. 임의 radius 발명 금지.
 
-- 그림자 사용 정책: (style family 에 따라 채움)
-- 모션 duration: 150ms (micro) / 250ms (UI) / 400ms (page). easing `cubic-bezier(0.2, 0, 0, 1)`.
-- `prefers-reduced-motion` 존중.
+## Components
 
-## 7. Components
+- 모든 component 토큰은 `{path.to.token}` 참조로 — 리터럴 값은 padding 등 치수만.
+- 상태 variant는 `button-primary-hover`처럼 별도 키로.
 
-### Button
-- height `space.8`+`space.2` = 40px. padding-x `space.4`.
-- variants: primary / secondary / ghost / destructive.
-- states: hover (배경 4% 어둡게) / active (8%) / disabled (opacity 0.5) / focus-visible (2px outline `action.primary`).
+## Do's and Don'ts
 
-### Input
-- height 40px. radius `md`. border `border.default` → focus `action.primary`.
+- Do: 상태 완비(hover/focus-visible/active/disabled/loading/error), 다크 모드, reduced-motion 분기.
+- Don't: 이모지 아이콘, 좌측 컬러 라인 카드, 그라디언트 남발, primary의 비-CTA 사용.
 
-### Card
-- padding `space.6`. radius `lg`. border 1px solid `border.default`.
-
-## 8. Anti-patterns
-
-- gradient 남발
-- 본문에 3개 이상의 폰트 weight 혼용
-- 그림자 + 진한 보더 동시 사용
-- primary 색을 비-CTA 에 사용
-
-## 9. Changelog
-
-## $(date +%Y-%m-%d)
-- 초기화. style family: ${STYLE}.
+<!-- Changelog: ${DATE} 초기화 (브리프 인터뷰 산출) -->

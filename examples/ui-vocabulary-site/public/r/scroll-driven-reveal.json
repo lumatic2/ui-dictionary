@@ -1,0 +1,17 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "scroll-driven-reveal",
+  "type": "registry:block",
+  "title": "Scroll Driven Reveal",
+  "description": "A scroll-driven reveal fades/raises content in as it enters the scrollport, using CSS view-progress timelines (`animation-timeline: view()`). Tier ① in `knowledge/expressive-stack.md`: for a plain \"appear on entry\" mapping this needs no scroll listeners, no IntersectionObserver, and runs off the main thread. Escalate to tier ② (GSAP ScrollTrigger) only for pinning, scrubbing, or cross-element sequencing — per the decision table.",
+  "docs": "Recipe contract (intent/anatomy/tokens/checks/anti-patterns): https://ui.askewly.com/llms/recipes/marketing/scroll-driven-reveal.md — after transplant, remap look to the project's own tokens per https://ui.askewly.com/llms/docs/design-system/component-restyle.md",
+  "registryDependencies": [],
+  "dependencies": [],
+  "files": [
+    {
+      "path": "registry/askewly/scroll-driven-reveal/scroll-driven-reveal.tsx",
+      "type": "registry:component",
+      "content": "import type { ReactNode } from \"react\"\n\nconst REVEAL_CSS = `\n@supports (animation-timeline: view()) {\n  .sdr-item {\n    animation: sdr-reveal both;\n    animation-timeline: view();\n    animation-range: entry 0% entry 70%;\n  }\n  @keyframes sdr-reveal {\n    from { opacity: 0; transform: translateY(1.25rem); }\n    to { opacity: 1; transform: none; }\n  }\n}\n@media (prefers-reduced-motion: reduce) {\n  .sdr-item { animation: none; }\n}\n`\n\ntype ScrollDrivenRevealProps = {\n  children: ReactNode\n  className?: string\n}\n\n/**\n * Scroll-driven reveal: items fade/rise in as they enter the scrollport,\n * driven entirely by CSS view-progress timelines (tier ① — no scroll\n * listeners, no IntersectionObserver, off-main-thread). The hidden initial\n * state exists ONLY inside @supports (animation-timeline: view()), so\n * unsupported browsers and reduced-motion users always see the content —\n * reveal failure must never become content loss.\n */\nexport function ScrollDrivenRevealItem({ children, className }: ScrollDrivenRevealProps) {\n  return (\n    <div className={`sdr-item ${className ?? \"\"}`}>\n      <style>{REVEAL_CSS}</style>\n      {children}\n    </div>\n  )\n}\n\n/** Colocated demo: a bounded scrollport where cards reveal on entry — scroll to observe. */\nexport function ScrollDrivenRevealDemo() {\n  return (\n    <div className=\"h-64 w-full max-w-md overflow-y-auto rounded-lg border bg-background p-4\">\n      <p className=\"mb-4 text-sm text-muted-foreground\">Scroll down — cards reveal as they enter the scrollport.</p>\n      <div className=\"space-y-4\">\n        {[\"Declarative\", \"Off the main thread\", \"No listeners\", \"Progressive\", \"한국어 카피도 자연스럽게 줄바꿈됩니다\"].map((label, index) => (\n          <ScrollDrivenRevealItem key={index}>\n            <div className=\"rounded-md border bg-muted/40 px-4 py-6\">\n              <p className=\"break-keep text-sm font-medium text-foreground\">{label}</p>\n              <p className=\"mt-1 break-keep text-sm text-muted-foreground\">animation-timeline: view() — 진입 구간 0~70%에서 나타납니다.</p>\n            </div>\n          </ScrollDrivenRevealItem>\n        ))}\n      </div>\n    </div>\n  )\n}\n"
+    }
+  ]
+}

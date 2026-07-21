@@ -43,9 +43,29 @@ import { BottomTabBarDemo } from "@/components/bottom-tab-bar"
 import { LargeTitleCollapsingHeaderDemo } from "@/components/large-title-collapsing-header"
 import { ActionSheetDestructiveConfirmationDemo } from "@/components/action-sheet-destructive-confirmation"
 import { BottomSheetDetentsDemo } from "@/components/bottom-sheet-detents"
+import { ChatConversationPanelDemo } from "@/components/chat-conversation-panel"
+import { MeshGradientSurfaceDemo } from "@/components/mesh-gradient-surface"
+import { GlassPanelDemo } from "@/components/glass-panel"
+import { GrainTextureOverlayDemo } from "@/components/grain-texture-overlay"
+import { ScrollDrivenRevealDemo } from "@/components/scroll-driven-reveal"
+import { MagneticHoverButtonDemo } from "@/components/magnetic-hover-button"
+import { SpringDragSnapCardDemo } from "@/components/spring-drag-snap-card"
+import { StaggeredEntranceGroupDemo } from "@/components/staggered-entrance-group"
+import { CanvasParticleFieldDemo } from "@/components/canvas-particle-field"
+import { LazyThreeObjectSceneDemo } from "@/components/lazy-three-object-scene"
 
 export const recipeDemoComponents: Record<string, ComponentType> = {
   "showcase-card": ShowcaseCardDemo,
+  "chat-conversation-panel": ChatConversationPanelDemo,
+  "mesh-gradient-surface": MeshGradientSurfaceDemo,
+  "glass-panel": GlassPanelDemo,
+  "grain-texture-overlay": GrainTextureOverlayDemo,
+  "scroll-driven-reveal": ScrollDrivenRevealDemo,
+  "magnetic-hover-button": MagneticHoverButtonDemo,
+  "spring-drag-snap-card": SpringDragSnapCardDemo,
+  "staggered-entrance-group": StaggeredEntranceGroupDemo,
+  "canvas-particle-field": CanvasParticleFieldDemo,
+  "lazy-three-object-scene": LazyThreeObjectSceneDemo,
   "cart-drawer": CartDrawerDemo,
   "category-product-grid": CategoryProductGridDemo,
   "checkout-order-summary": CheckoutOrderSummaryDemo,

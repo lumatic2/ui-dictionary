@@ -1,7 +1,8 @@
 {
-  "works": [
-    {
-      "id": "SFB1",
+  "schema_version": 1,
+  "active_work_id": "ect4-image-contract",
+  "works": {
+    "SFB1": {
       "title": "Structure Contract And Clean Production",
       "status": "completed",
       "started": "2026-07-10",
@@ -11,8 +12,7 @@
       ],
       "completed": "2026-07-10"
     },
-    {
-      "id": "SFB2",
+    "SFB2": {
       "title": "Shell Buildout (dev-only)",
       "status": "completed",
       "started": "2026-07-10",
@@ -22,8 +22,7 @@
       ],
       "completed": "2026-07-10"
     },
-    {
-      "id": "SFB3",
+    "SFB3": {
       "title": "Content Fill Batch 1: Colors Palettes",
       "status": "completed",
       "started": "2026-07-10",
@@ -33,8 +32,7 @@
       ],
       "completed": "2026-07-10"
     },
-    {
-      "id": "CF1",
+    "CF1": {
       "title": "Docs Foundations And Agent Recipes 공개",
       "status": "completed",
       "started": "2026-07-10",
@@ -44,8 +42,7 @@
       ],
       "completed": "2026-07-10"
     },
-    {
-      "id": "CF2",
+    "CF2": {
       "title": "Showcase Atlas Source-Quality 카드",
       "status": "completed",
       "started": "2026-07-10",
@@ -55,8 +52,7 @@
       ],
       "completed": "2026-07-10"
     },
-    {
-      "id": "CF3",
+    "CF3": {
       "title": "Patterns 빈 컬렉션 배치",
       "status": "completed",
       "started": "2026-07-10",
@@ -66,8 +62,7 @@
       ],
       "completed": "2026-07-10"
     },
-    {
-      "id": "DA1",
+    "DA1": {
       "title": "Docs 카테고리 아티클 7종 심화",
       "status": "completed",
       "started": "2026-07-10",
@@ -77,8 +72,7 @@
       ],
       "completed": "2026-07-10"
     },
-    {
-      "id": "PE1",
+    "PE1": {
       "title": "Marketing Page Examples 3종 제작",
       "status": "completed",
       "started": "2026-07-10",
@@ -88,8 +82,7 @@
       ],
       "completed": "2026-07-10"
     },
-    {
-      "id": "CLI1",
+    "CLI1": {
       "title": "코어 조회 CLI + registry 계약",
       "status": "completed",
       "started": "2026-07-10",
@@ -99,8 +92,7 @@
       ],
       "completed": "2026-07-10"
     },
-    {
-      "id": "CLI2",
+    "CLI2": {
       "title": "프로젝트 주입 (init / add)",
       "status": "completed",
       "started": "2026-07-10",
@@ -110,8 +102,7 @@
       ],
       "completed": "2026-07-10"
     },
-    {
-      "id": "CLI3",
+    "CLI3": {
       "title": "검증 커맨드 + 패키지 공개",
       "status": "completed",
       "started": "2026-07-10",
@@ -121,8 +112,7 @@
       ],
       "completed": "2026-07-10"
     },
-    {
-      "id": "SCD1",
+    "SCD1": {
       "title": "Principles 증류 (사람용 + 에이전트용)",
       "status": "completed",
       "started": "2026-07-10",
@@ -133,8 +123,7 @@
       ],
       "completed": "2026-07-10"
     },
-    {
-      "id": "SCD2",
+    "SCD2": {
       "title": "레시피 커버리지 배치 (pattern_group 10종)",
       "status": "completed",
       "started": "2026-07-10",
@@ -144,8 +133,7 @@
       ],
       "completed": "2026-07-10"
     },
-    {
-      "id": "AUC0",
+    "AUC0": {
       "title": "Canvas Engine Bake-off",
       "status": "completed",
       "started": "2026-07-10",
@@ -155,8 +143,7 @@
       ],
       "completed": "2026-07-10"
     },
-    {
-      "id": "AUC1",
+    "AUC1": {
       "title": "Canonical Canvas Foundation",
       "status": "completed",
       "started": "2026-07-10",
@@ -166,8 +153,7 @@
       ],
       "completed": "2026-07-10"
     },
-    {
-      "id": "AUC2",
+    "AUC2": {
       "title": "Direct Manipulation And Property Runtime",
       "status": "completed",
       "started": "2026-07-10",
@@ -178,8 +164,7 @@
       ],
       "completed": "2026-07-10"
     },
-    {
-      "id": "AUC3",
+    "AUC3": {
       "title": "Terminal Agent Live Canvas Round-trip",
       "status": "completed",
       "started": "2026-07-10",
@@ -190,8 +175,7 @@
       ],
       "completed": "2026-07-10"
     },
-    {
-      "id": "AUC4",
+    "AUC4": {
       "title": "Desktop Productization And Quality Gate",
       "status": "completed",
       "started": "2026-07-10",
@@ -202,8 +186,7 @@
       ],
       "completed": "2026-07-11"
     },
-    {
-      "id": "UX1",
+    "UX1": {
       "title": "Workspace Foundation",
       "status": "completed",
       "started": "2026-07-11",
@@ -213,8 +196,7 @@
       ],
       "completed": "2026-07-11"
     },
-    {
-      "id": "UX2",
+    "UX2": {
       "title": "Visual Creation Workflow",
       "status": "completed",
       "started": "2026-07-11",
@@ -225,8 +207,7 @@
       ],
       "completed": "2026-07-12"
     },
-    {
-      "id": "UX3",
+    "UX3": {
       "title": "Agent Collaboration UX",
       "status": "completed",
       "started": "2026-07-12",
@@ -236,8 +217,7 @@
       ],
       "completed": "2026-07-12"
     },
-    {
-      "id": "UX4",
+    "UX4": {
       "title": "Product Polish And Validation",
       "status": "completed",
       "started": "2026-07-12",
@@ -247,8 +227,7 @@
       ],
       "completed": "2026-07-12"
     },
-    {
-      "id": "CR",
+    "CR": {
       "title": "Component Registry",
       "status": "completed",
       "started": "2026-07-12",
@@ -258,8 +237,7 @@
       ],
       "completed": "2026-07-12"
     },
-    {
-      "id": "RT",
+    "RT": {
       "title": "Real-project Round-trip",
       "status": "completed",
       "started": "2026-07-12",
@@ -269,8 +247,7 @@
       ],
       "completed": "2026-07-12"
     },
-    {
-      "id": "AI",
+    "AI": {
       "title": "Askewly Identity",
       "status": "completed",
       "started": "2026-07-12",
@@ -280,8 +257,7 @@
       ],
       "completed": "2026-07-12"
     },
-    {
-      "id": "RL",
+    "RL": {
       "title": "Reference Loop Pipeline",
       "status": "completed",
       "started": "2026-07-12",
@@ -291,8 +267,7 @@
       ],
       "completed": "2026-07-12"
     },
-    {
-      "id": "QA2",
+    "QA2": {
       "title": "AskewlyDesign Install & Dogfooding",
       "status": "completed",
       "started": "2026-07-12",
@@ -302,8 +277,7 @@
       ],
       "completed": "2026-07-12"
     },
-    {
-      "id": "QA3",
+    "QA3": {
       "title": "Canvas Recipe Materialization",
       "status": "completed",
       "started": "2026-07-12",
@@ -313,8 +287,7 @@
       ],
       "completed": "2026-07-12"
     },
-    {
-      "id": "QA1",
+    "QA1": {
       "title": "Recipe Gallery & Visual QA",
       "status": "completed",
       "started": "2026-07-12",
@@ -324,8 +297,7 @@
       ],
       "completed": "2026-07-12"
     },
-    {
-      "id": "SD",
+    "SD": {
       "title": "Surface Depth 2세대",
       "status": "completed",
       "started": "2026-07-12",
@@ -335,8 +307,7 @@
       ],
       "completed": "2026-07-12"
     },
-    {
-      "id": "FW",
+    "FW": {
       "title": "Feed Wiring",
       "status": "completed",
       "started": "2026-07-12",
@@ -346,8 +317,7 @@
       ],
       "completed": "2026-07-12"
     },
-    {
-      "id": "MS",
+    "MS": {
       "title": "Mobile Surface Batch",
       "status": "completed",
       "started": "2026-07-12",
@@ -357,8 +327,7 @@
       ],
       "completed": "2026-07-12"
     },
-    {
-      "id": "PX",
+    "PX": {
       "title": "Public Experience Pass",
       "status": "completed",
       "started": "2026-07-12",
@@ -368,16 +337,2935 @@
       ],
       "completed": "2026-07-12"
     },
-    {
-      "id": "EQ0",
-      "title": "AskewlyDesign Mac Reproducible Baseline",
+    "AD1": {
+      "work_id": "AD1",
+      "horizon_id": "agent-adoption-loop",
+      "milestone_id": "AD1",
       "status": "completed",
-      "started": "2026-07-13",
-      "plan": "phases/askewlydesign-mac-baseline/index.json",
-      "session_ids": [
-        "codex:2026-07-13-eq0-orchestrator"
+      "plan_path": "archive/plans/2026-07-17-ad1-default-routing.md",
+      "changeset_path": "changesets",
+      "next_step": null,
+      "current_step": null,
+      "steps": [
+        {
+          "id": "step-1",
+          "label": "Step 1 — 진입 프로토콜 정본화 (changeset)",
+          "status": "completed"
+        },
+        {
+          "id": "step-2",
+          "label": "Step 2 — Claude 배선 (changeset)",
+          "status": "completed"
+        },
+        {
+          "id": "step-3",
+          "label": "Step 3 — Codex 배선 + 양 에이전트 통합 E2E (changeset)",
+          "status": "completed"
+        }
       ],
-      "completed": "2026-07-13"
+      "execution_mode": "continuous",
+      "approval": {
+        "approved_by": "user",
+        "approved_at": "2026-07-17",
+        "plan_sha256": "5e1dcc883655f39cc22a33d7512703b09f49b523a9ca0ab9d35e1505527f90d4"
+      },
+      "allowed_stop_reasons": [
+        "completed",
+        "blocked",
+        "decision_required",
+        "risk_gate",
+        "secret_required",
+        "external_authority_required",
+        "user_stopped"
+      ],
+      "stop_reason": null,
+      "stop_detail": {},
+      "session_ids": [
+        "claude:c83fe7a0-b56d-4634-9d86-8d2de5127bb3"
+      ],
+      "updated_at": "2026-07-17",
+      "notes": "all steps completed; E2E dual-agent PASS; pending ledger 3-event + roadmap complete",
+      "completed": "2026-07-17"
+    },
+    "AD2": {
+      "work_id": "AD2",
+      "horizon_id": "agent-adoption-loop",
+      "milestone_id": "AD2",
+      "status": "completed",
+      "plan_path": "archive/plans/2026-07-17-ad2-style-signature.md",
+      "changeset_path": "changesets",
+      "next_step": null,
+      "current_step": null,
+      "steps": [
+        {
+          "id": "step-1",
+          "label": "Step 1 — 역산 초안 + 인터뷰 질문지 (changeset)",
+          "status": "completed"
+        },
+        {
+          "id": "step-2",
+          "label": "Step 2 — 인터뷰 확정 + 판정 편입 (changeset)",
+          "status": "completed"
+        }
+      ],
+      "execution_mode": "continuous",
+      "approval": {
+        "approved_by": "user",
+        "approved_at": "2026-07-17",
+        "plan_sha256": "bc35a8a43f23bfefc7078e21dcf51cf3df2e8891ac8d928dd8c21953576e4f32"
+      },
+      "allowed_stop_reasons": [
+        "completed",
+        "blocked",
+        "decision_required",
+        "risk_gate",
+        "secret_required",
+        "external_authority_required",
+        "user_stopped"
+      ],
+      "stop_reason": null,
+      "stop_detail": {},
+      "session_ids": [
+        "claude:c83fe7a0-b56d-4634-9d86-8d2de5127bb3"
+      ],
+      "updated_at": "2026-07-17",
+      "notes": "Registered atomically by canonical harness approve_harness_plan.py after plan validation.",
+      "completed": "2026-07-17"
+    },
+    "AD3": {
+      "work_id": "AD3",
+      "horizon_id": "agent-adoption-loop",
+      "milestone_id": "AD3",
+      "status": "completed",
+      "plan_path": "archive/plans/2026-07-17-ad3-realwork-dogfooding.md",
+      "changeset_path": "changesets",
+      "next_step": null,
+      "current_step": null,
+      "steps": [
+        {
+          "id": "step-1",
+          "label": "Step 1 — dogfooding ledger 인프라 (changeset)",
+          "status": "completed"
+        },
+        {
+          "id": "step-2",
+          "label": "Step 2 — 지정 작업 ① bootcamp 표면 A (changeset)",
+          "status": "completed"
+        },
+        {
+          "id": "step-3",
+          "label": "Step 3 — 지정 작업 ② bootcamp 표면 B (changeset)",
+          "status": "completed"
+        },
+        {
+          "id": "step-4",
+          "label": "Step 4 — 기회주의 건 장부화 (changeset, 세션 경계 넘김) — 사용자 면제 2026-07-17",
+          "status": "skipped"
+        }
+      ],
+      "execution_mode": "continuous",
+      "approval": {
+        "approved_by": "user",
+        "approved_at": "2026-07-17",
+        "plan_sha256": "d5f74b4d976c1280a7420408b3ecdc0b773c6fb3eb368fd668dc70a44cfd5398"
+      },
+      "allowed_stop_reasons": [
+        "completed",
+        "blocked",
+        "decision_required",
+        "risk_gate",
+        "secret_required",
+        "external_authority_required",
+        "user_stopped"
+      ],
+      "stop_reason": null,
+      "stop_detail": {},
+      "session_ids": [
+        "claude:c83fe7a0-b56d-4634-9d86-8d2de5127bb3",
+        "claude:ab332db5-5327-43b0-9bef-702291fafaee"
+      ],
+      "updated_at": "2026-07-17",
+      "notes": "DF-1/DF-2 PASS + DF-3 observation; DF-4 waived by user 2026-07-17 (gaps already resolved in AD4)",
+      "completed": "2026-07-17"
+    },
+    "AD4": {
+      "work_id": "AD4",
+      "horizon_id": "agent-adoption-loop",
+      "milestone_id": "AD4",
+      "status": "completed",
+      "plan_path": "archive/plans/2026-07-17-ad4-gap-driven-expansion.md",
+      "changeset_path": "changesets",
+      "next_step": null,
+      "current_step": null,
+      "steps": [
+        {
+          "id": "step-1",
+          "label": "Step 1 — 챗/대화 UI recipe (changeset)",
+          "status": "completed"
+        },
+        {
+          "id": "step-2",
+          "label": "Step 2 — 프로토콜·안티패턴 재정렬 (changeset)",
+          "status": "completed"
+        }
+      ],
+      "execution_mode": "continuous",
+      "approval": {
+        "approved_by": "user",
+        "approved_at": "2026-07-17",
+        "plan_sha256": "73c9229ce3935ab2fb0bae618041e7a445a81595ca2e00787ef974cf17420bc4"
+      },
+      "allowed_stop_reasons": [
+        "completed",
+        "blocked",
+        "decision_required",
+        "risk_gate",
+        "secret_required",
+        "external_authority_required",
+        "user_stopped"
+      ],
+      "stop_reason": null,
+      "stop_detail": {},
+      "session_ids": [
+        "claude:ab332db5-5327-43b0-9bef-702291fafaee"
+      ],
+      "updated_at": "2026-07-17",
+      "notes": "gaps 1-4 resolved (2 changesets); deployed + verified; hook retirement confirmed by user",
+      "completed": "2026-07-17"
+    },
+    "VI1": {
+      "work_id": "VI1",
+      "horizon_id": "expressive-stack",
+      "milestone_id": "VI1",
+      "status": "completed",
+      "plan_path": "archive/plans/2026-07-17-vi1-expressive-stack-map.md",
+      "changeset_path": "changesets",
+      "next_step": null,
+      "current_step": null,
+      "steps": [
+        {
+          "id": "step-1",
+          "label": "Step 1 — 계보 리서치 정본화 (changeset)",
+          "status": "completed"
+        },
+        {
+          "id": "step-2",
+          "label": "Step 2 — knowledge 정본 + 결정 표 + llms 배포 (changeset)",
+          "status": "completed"
+        }
+      ],
+      "execution_mode": "continuous",
+      "approval": {
+        "approved_by": "user",
+        "approved_at": "2026-07-17",
+        "plan_sha256": "4f411cf75bf8badc24b3136158ff6133d768615aebaeaa13dc6e62860345a033"
+      },
+      "allowed_stop_reasons": [
+        "completed",
+        "blocked",
+        "decision_required",
+        "risk_gate",
+        "secret_required",
+        "external_authority_required",
+        "user_stopped"
+      ],
+      "stop_reason": null,
+      "stop_detail": {},
+      "session_ids": [
+        "claude:ab332db5-5327-43b0-9bef-702291fafaee"
+      ],
+      "updated_at": "2026-07-17",
+      "notes": "genealogy research (sourced) + knowledge canon + tier decision table deployed",
+      "notified_at": "2026-07-17T09:30:10.931290+00:00",
+      "completed": "2026-07-17"
+    },
+    "VI2": {
+      "work_id": "VI2",
+      "horizon_id": "expressive-stack",
+      "milestone_id": "VI2",
+      "status": "completed",
+      "plan_path": "archive/plans/2026-07-17-vi2-css-svg-recipes.md",
+      "changeset_path": "changesets",
+      "next_step": null,
+      "current_step": null,
+      "steps": [
+        {
+          "id": "step-1",
+          "label": "Step 1 — 정적 표면 질감 recipe 3종 (changeset)",
+          "status": "completed"
+        },
+        {
+          "id": "step-2",
+          "label": "Step 2 — scroll-driven reveal recipe + 배포 (changeset)",
+          "status": "completed"
+        }
+      ],
+      "execution_mode": "continuous",
+      "approval": {
+        "approved_by": "user",
+        "approved_at": "2026-07-17",
+        "plan_sha256": "2b09e9d1e0854d928f6e52f50e2dd7aa87a38975b59d62eed36537ea7ec6f330"
+      },
+      "allowed_stop_reasons": [
+        "completed",
+        "blocked",
+        "decision_required",
+        "risk_gate",
+        "secret_required",
+        "external_authority_required",
+        "user_stopped"
+      ],
+      "stop_reason": null,
+      "stop_detail": {},
+      "session_ids": [
+        "claude:ab332db5-5327-43b0-9bef-702291fafaee"
+      ],
+      "updated_at": "2026-07-17",
+      "notes": "4 declarative-tier recipes live (mesh/glass/grain/scroll-reveal), deployed + verified",
+      "notified_at": "2026-07-17T09:44:43.656963+00:00",
+      "completed": "2026-07-17"
+    },
+    "VI3": {
+      "work_id": "VI3",
+      "horizon_id": "expressive-stack",
+      "milestone_id": "VI3",
+      "status": "completed",
+      "plan_path": "plans/2026-07-17-vi3-motion-recipes.md",
+      "changeset_path": "changesets",
+      "next_step": null,
+      "current_step": null,
+      "steps": [
+        {
+          "id": "step-1",
+          "label": "Step 1 — Motion 도입 + 커서·스프링 recipe 2종 (changeset)",
+          "status": "completed"
+        },
+        {
+          "id": "step-2",
+          "label": "Step 2 — stagger 안무 recipe + 배포 (changeset)",
+          "status": "completed"
+        }
+      ],
+      "execution_mode": "continuous",
+      "approval": {
+        "approved_by": "user",
+        "approved_at": "2026-07-17",
+        "plan_sha256": "f8d5e3ebbb1fb01fb2dd562e0be18af4059f677be0323500881bf61413776881"
+      },
+      "allowed_stop_reasons": [
+        "completed",
+        "blocked",
+        "decision_required",
+        "risk_gate",
+        "secret_required",
+        "external_authority_required",
+        "user_stopped"
+      ],
+      "stop_reason": null,
+      "stop_detail": {},
+      "session_ids": [
+        "claude:ab332db5-5327-43b0-9bef-702291fafaee"
+      ],
+      "updated_at": "2026-07-17",
+      "notes": "motion dep + 3 tier-2 recipes (magnetic opt-in / spring / stagger), interaction-verified; plan_path updated to new layout (CS5 migration)",
+      "completed": "2026-07-17",
+      "notified_at": "2026-07-17T10:12:00.122065+00:00"
+    },
+    "VI4": {
+      "work_id": "VI4",
+      "horizon_id": "expressive-stack",
+      "milestone_id": "VI4",
+      "status": "completed",
+      "plan_path": "plans/2026-07-17-vi4-canvas-webgl-tier.md",
+      "changeset_path": "changesets",
+      "next_step": null,
+      "current_step": null,
+      "steps": [
+        {
+          "id": "step-1",
+          "label": "Step 1 — Canvas 2D 파티클 필드 recipe (changeset)",
+          "status": "completed"
+        },
+        {
+          "id": "step-2",
+          "label": "Step 2 — three.js/R3F lazy 도입 + 3D 씬 recipe + 배포 (changeset)",
+          "status": "completed"
+        }
+      ],
+      "execution_mode": "continuous",
+      "approval": {
+        "approved_by": "user",
+        "approved_at": "2026-07-17",
+        "plan_sha256": "c0c45fb82bce3415c0cebb7d219e0625af8d3dce203e265b1438ba7b18d9f148"
+      },
+      "allowed_stop_reasons": [
+        "completed",
+        "blocked",
+        "decision_required",
+        "risk_gate",
+        "secret_required",
+        "external_authority_required",
+        "user_stopped"
+      ],
+      "stop_reason": null,
+      "stop_detail": {},
+      "session_ids": [
+        "claude:ab332db5-5327-43b0-9bef-702291fafaee"
+      ],
+      "updated_at": "2026-07-17",
+      "notes": "tier-3 particle + tier-4 lazy three.js recipes; chunk isolation measured (main +2.4KB gzip)",
+      "notified_at": "2026-07-17T10:24:07.370556+00:00",
+      "completed": "2026-07-17"
+    },
+    "VI5": {
+      "work_id": "VI5",
+      "horizon_id": "expressive-stack",
+      "milestone_id": "VI5",
+      "status": "completed",
+      "plan_path": "plans/2026-07-17-vi5-component-layer-absorption.md",
+      "changeset_path": "changesets",
+      "next_step": null,
+      "current_step": null,
+      "steps": [
+        {
+          "id": "step-1",
+          "label": "Step 1 — shadcn 재스타일 가이드 (changeset)",
+          "status": "completed"
+        },
+        {
+          "id": "step-2",
+          "label": "Step 2 — 흡수 기준 + toolshelf 기록 + 배포 (changeset)",
+          "status": "completed"
+        }
+      ],
+      "execution_mode": "continuous",
+      "approval": {
+        "approved_by": "user",
+        "approved_at": "2026-07-17",
+        "plan_sha256": "f6dc82044e99ee29a4fab1fa795ef5e8e1a489376df97844be665dbc54a01826"
+      },
+      "allowed_stop_reasons": [
+        "completed",
+        "blocked",
+        "decision_required",
+        "risk_gate",
+        "secret_required",
+        "external_authority_required",
+        "user_stopped"
+      ],
+      "stop_reason": null,
+      "stop_detail": {},
+      "session_ids": [
+        "claude:ab332db5-5327-43b0-9bef-702291fafaee"
+      ],
+      "updated_at": "2026-07-17",
+      "notes": "restyle contract + absorption criteria deployed; toolshelf usage recorded; horizon close criteria met",
+      "notified_at": "2026-07-17T10:30:47.760643+00:00",
+      "completed": "2026-07-17"
+    },
+    "TC1": {
+      "work_id": "TC1",
+      "horizon_id": "taste-corpus",
+      "milestone_id": "TC1",
+      "status": "completed",
+      "plan_path": "plans/2026-07-17-tc1-taste-loop-contract.md",
+      "changeset_path": "changesets",
+      "next_step": null,
+      "current_step": null,
+      "steps": [
+        {
+          "id": "step-1",
+          "label": "Step 1 — taste 계약 문서 (changeset)",
+          "status": "completed"
+        },
+        {
+          "id": "step-2",
+          "label": "Step 2 — 장부 스켈레톤 + RL 상호 배선 (changeset)",
+          "status": "completed"
+        }
+      ],
+      "execution_mode": "continuous",
+      "approval": {
+        "approved_by": "user",
+        "approved_at": "2026-07-17",
+        "plan_sha256": "fb74ea09f9c69374023b7c37189128f36b08f72c285a3385ac3eb8cbaf86afba"
+      },
+      "allowed_stop_reasons": [
+        "completed",
+        "blocked",
+        "decision_required",
+        "risk_gate",
+        "secret_required",
+        "external_authority_required",
+        "user_stopped"
+      ],
+      "stop_reason": null,
+      "stop_detail": {},
+      "session_ids": [
+        "claude:ab332db5-5327-43b0-9bef-702291fafaee"
+      ],
+      "updated_at": "2026-07-17",
+      "notes": "taste contract + ledger; RL augmented not replaced",
+      "notified_at": "2026-07-17T11:28:45.983244+00:00",
+      "completed": "2026-07-17"
+    },
+    "TC2": {
+      "work_id": "TC2",
+      "horizon_id": "taste-corpus",
+      "milestone_id": "TC2",
+      "status": "completed",
+      "plan_path": "plans/2026-07-17-tc2-curation-batch.md",
+      "changeset_path": "changesets",
+      "next_step": null,
+      "current_step": null,
+      "steps": [
+        {
+          "id": "step-1",
+          "label": "Step 1 — Notion·Linear 관찰 배치 (changeset)",
+          "status": "completed"
+        },
+        {
+          "id": "step-2",
+          "label": "Step 2 — Codex·Claude 관찰 배치 (changeset)",
+          "status": "completed"
+        },
+        {
+          "id": "step-3",
+          "label": "Step 3 — Antigravity 관찰 + 갱신 일괄 배포 (changeset)",
+          "status": "completed"
+        }
+      ],
+      "execution_mode": "continuous",
+      "approval": {
+        "approved_by": "user",
+        "approved_at": "2026-07-17",
+        "plan_sha256": "dc0aeecfafa1bbff4654d3cd2940e9dd8aab6ef11350ed7fe5dd1bf9ea7d7133"
+      },
+      "allowed_stop_reasons": [
+        "completed",
+        "blocked",
+        "decision_required",
+        "risk_gate",
+        "secret_required",
+        "external_authority_required",
+        "user_stopped"
+      ],
+      "stop_reason": null,
+      "stop_detail": {},
+      "session_ids": [
+        "claude:ab332db5-5327-43b0-9bef-702291fafaee"
+      ],
+      "updated_at": "2026-07-17",
+      "notes": "12 entries (9 digested, 2 dup-undigested, 1 signature proposal deferred); clusters 14/15 + 5 recipe amendments deployed",
+      "notified_at": "2026-07-17T11:53:47.678395+00:00",
+      "completed": "2026-07-17"
+    },
+    "TC3": {
+      "work_id": "TC3",
+      "horizon_id": "taste-corpus",
+      "milestone_id": "TC3",
+      "status": "completed",
+      "plan_path": "plans/2026-07-17-tc3-dribbble-batch.md",
+      "changeset_path": "changesets",
+      "next_step": null,
+      "current_step": null,
+      "steps": [
+        {
+          "id": "step-1",
+          "label": "Step 1 — Dribbble 관찰 + 게이트 판정 (changeset)",
+          "status": "completed"
+        },
+        {
+          "id": "step-2",
+          "label": "Step 2 — 자산 반영 + 배포 (changeset)",
+          "status": "completed"
+        }
+      ],
+      "execution_mode": "continuous",
+      "approval": {
+        "approved_by": "user",
+        "approved_at": "2026-07-17",
+        "plan_sha256": "33a4323b04fe33637f07723f772f9d0e6585452043ac1bf155a630d422a74afa"
+      },
+      "allowed_stop_reasons": [
+        "completed",
+        "blocked",
+        "decision_required",
+        "risk_gate",
+        "secret_required",
+        "external_authority_required",
+        "user_stopped"
+      ],
+      "stop_reason": null,
+      "stop_detail": {},
+      "session_ids": [
+        "claude:ab332db5-5327-43b0-9bef-702291fafaee"
+      ],
+      "updated_at": "2026-07-17",
+      "notes": "gate proven: 1 FAIL->cluster16, 1 PASS->stat-grid check",
+      "notified_at": "2026-07-17T12:09:24.972164+00:00",
+      "completed": "2026-07-17"
+    },
+    "TC4": {
+      "work_id": "TC4",
+      "horizon_id": "taste-corpus",
+      "milestone_id": "TC4",
+      "status": "completed",
+      "plan_path": "plans/2026-07-17-tc4-canonical-diff.md",
+      "changeset_path": "changesets",
+      "next_step": null,
+      "current_step": null,
+      "steps": [
+        {
+          "id": "step-1",
+          "label": "Step 1 — 성문 원칙 수집 (changeset)",
+          "status": "completed"
+        },
+        {
+          "id": "step-2",
+          "label": "Step 2 — diff 판정 + 자산 반영 + 배포 (changeset)",
+          "status": "completed"
+        }
+      ],
+      "execution_mode": "continuous",
+      "approval": {
+        "approved_by": "user",
+        "approved_at": "2026-07-17",
+        "plan_sha256": "60aeb8f68b1e1f4b3045c88d184667f88fb16c648b4b7850f79584ab28d1400d"
+      },
+      "allowed_stop_reasons": [
+        "completed",
+        "blocked",
+        "decision_required",
+        "risk_gate",
+        "secret_required",
+        "external_authority_required",
+        "user_stopped"
+      ],
+      "stop_reason": null,
+      "stop_detail": {},
+      "session_ids": [
+        "claude:ab332db5-5327-43b0-9bef-702291fafaee"
+      ],
+      "updated_at": "2026-07-17",
+      "notes": "3 adopted / 2 rejected with reasons; deployed",
+      "notified_at": "2026-07-17T12:21:18.646223+00:00",
+      "completed": "2026-07-17"
+    },
+    "SE1": {
+      "work_id": "SE1",
+      "horizon_id": "skill-entry",
+      "milestone_id": "SE1",
+      "status": "completed",
+      "plan_path": "plans/2026-07-18-se1-skill-and-human-gate.md",
+      "changeset_path": "changesets/20260718-entry-protocol-human-gate",
+      "next_step": null,
+      "current_step": null,
+      "steps": [
+        {
+          "id": "step-1",
+          "label": "Step 1 — entry-protocol 사람 게이트 개정 + 배포 (changeset)",
+          "status": "completed"
+        },
+        {
+          "id": "step-2",
+          "label": "Step 2 — askewly-design skill 신설 + 배포 (changeset)",
+          "status": "completed"
+        }
+      ],
+      "execution_mode": "continuous",
+      "approval": {
+        "approved_by": "user",
+        "approved_at": "2026-07-18",
+        "plan_sha256": "9708f8413650d995ee91c33b99348e734519ea56fd67a9915a0a9e5fc2e154c9"
+      },
+      "allowed_stop_reasons": [
+        "completed",
+        "blocked",
+        "decision_required",
+        "risk_gate",
+        "secret_required",
+        "external_authority_required",
+        "user_stopped"
+      ],
+      "stop_reason": "completed",
+      "stop_detail": {},
+      "session_ids": [
+        "claude:ab332db5-5327-43b0-9bef-702291fafaee"
+      ],
+      "updated_at": "2026-07-18",
+      "notes": "Registered atomically by canonical harness approve_harness_plan.py after plan validation.",
+      "notified_at": "2026-07-18T12:27:41.693845+00:00",
+      "completed": "2026-07-18"
+    },
+    "SE2": {
+      "work_id": "SE2",
+      "horizon_id": "skill-entry",
+      "milestone_id": "SE2",
+      "status": "completed",
+      "plan_path": "plans/2026-07-18-se2-global-removal-e2e.md",
+      "changeset_path": "changesets/20260718-global-routing-removal",
+      "next_step": null,
+      "current_step": null,
+      "steps": [
+        {
+          "id": "step-1",
+          "label": "Step 1 — 전역 \"디자인 판정\" 절 제거 (changeset)",
+          "status": "completed"
+        },
+        {
+          "id": "step-2",
+          "label": "Step 2 — E2E: skill 경유 진입 관측 (changeset)",
+          "status": "completed"
+        }
+      ],
+      "execution_mode": "continuous",
+      "approval": {
+        "approved_by": "user",
+        "approved_at": "2026-07-18",
+        "plan_sha256": "31177bafe24f7b9fbdc01e8a0c0a8ef882939af39a9925bb03a0038336ec8131"
+      },
+      "allowed_stop_reasons": [
+        "completed",
+        "blocked",
+        "decision_required",
+        "risk_gate",
+        "secret_required",
+        "external_authority_required",
+        "user_stopped"
+      ],
+      "stop_reason": "completed",
+      "stop_detail": {},
+      "session_ids": [
+        "claude:ab332db5-5327-43b0-9bef-702291fafaee"
+      ],
+      "updated_at": "2026-07-18",
+      "notes": "Registered atomically by canonical harness approve_harness_plan.py after plan validation.",
+      "notified_at": "2026-07-18T12:36:08.329732+00:00",
+      "completed": "2026-07-18"
+    },
+    "DB1": {
+      "work_id": "DB1",
+      "horizon_id": "design-brief",
+      "milestone_id": "DB1",
+      "status": "completed",
+      "plan_path": "plans/2026-07-18-db1-brief-contract.md",
+      "changeset_path": "changesets/20260718-design-brief-contract",
+      "next_step": null,
+      "current_step": null,
+      "steps": [
+        {
+          "id": "step-1",
+          "label": "Step 1 — design-brief.md 작성 (changeset)",
+          "status": "completed"
+        },
+        {
+          "id": "step-2",
+          "label": "Step 2 — entry-protocol 배선 + llms 배포 (changeset)",
+          "status": "completed"
+        }
+      ],
+      "execution_mode": "continuous",
+      "approval": {
+        "approved_by": "user",
+        "approved_at": "2026-07-18",
+        "plan_sha256": "efff5b1c9b67099c69ca19adca35456e31cec09852c795ff722b0221ee236cb3"
+      },
+      "allowed_stop_reasons": [
+        "completed",
+        "blocked",
+        "decision_required",
+        "risk_gate",
+        "secret_required",
+        "external_authority_required",
+        "user_stopped"
+      ],
+      "stop_reason": "completed",
+      "stop_detail": {},
+      "session_ids": [
+        "claude:ab332db5-5327-43b0-9bef-702291fafaee"
+      ],
+      "updated_at": "2026-07-18",
+      "notes": "Registered atomically by canonical harness approve_harness_plan.py after plan validation.",
+      "notified_at": "2026-07-18T14:49:58.971049+00:00",
+      "completed": "2026-07-18"
+    },
+    "DB2": {
+      "work_id": "DB2",
+      "horizon_id": "design-brief",
+      "milestone_id": "DB2",
+      "status": "completed",
+      "plan_path": "plans/2026-07-18-db2-skill-e2e.md",
+      "changeset_path": "changesets/20260718-brief-skill-e2e",
+      "next_step": null,
+      "current_step": null,
+      "steps": [
+        {
+          "id": "step-1",
+          "label": "Step 1 — skill 브리프 단계 반영 + 배포 (changeset)",
+          "status": "completed"
+        },
+        {
+          "id": "step-2",
+          "label": "Step 2 — E2E 3종 (changeset)",
+          "status": "completed"
+        }
+      ],
+      "execution_mode": "continuous",
+      "approval": {
+        "approved_by": "user",
+        "approved_at": "2026-07-18",
+        "plan_sha256": "5667baf143ebbdf22897eab3992a55f4573f13f85f71a2d87a63bd67cd7d7854"
+      },
+      "allowed_stop_reasons": [
+        "completed",
+        "blocked",
+        "decision_required",
+        "risk_gate",
+        "secret_required",
+        "external_authority_required",
+        "user_stopped"
+      ],
+      "stop_reason": "completed",
+      "stop_detail": {},
+      "session_ids": [
+        "claude:ab332db5-5327-43b0-9bef-702291fafaee"
+      ],
+      "updated_at": "2026-07-18",
+      "notes": "Registered atomically by canonical harness approve_harness_plan.py after plan validation.",
+      "notified_at": "2026-07-18T15:11:53.725900+00:00",
+      "completed": "2026-07-19"
+    },
+    "VB1": {
+      "work_id": "VB1",
+      "horizon_id": "visual-brief",
+      "milestone_id": "VB1",
+      "status": "completed",
+      "plan_path": "plans/2026-07-19-vb1-stitch-alignment.md",
+      "changeset_path": "changesets/20260719-stitch-alignment",
+      "next_step": null,
+      "current_step": null,
+      "steps": [
+        {
+          "id": "step-1",
+          "label": "Step 1 — Stitch DESIGN.md 스펙 리서치 (artifact: analysis)",
+          "status": "completed"
+        },
+        {
+          "id": "step-2",
+          "label": "Step 2 — 템플릿·계약 diff 정합 + 배포 (changeset)",
+          "status": "completed"
+        }
+      ],
+      "execution_mode": "continuous",
+      "approval": {
+        "approved_by": "user",
+        "approved_at": "2026-07-19",
+        "plan_sha256": "48caba3536e90daa40087990ef9d8e4cbf41773f4e9a39f798fd6a74979e0df5"
+      },
+      "allowed_stop_reasons": [
+        "completed",
+        "blocked",
+        "decision_required",
+        "risk_gate",
+        "secret_required",
+        "external_authority_required",
+        "user_stopped"
+      ],
+      "stop_reason": "completed",
+      "stop_detail": {},
+      "session_ids": [
+        "claude:ab332db5-5327-43b0-9bef-702291fafaee"
+      ],
+      "updated_at": "2026-07-19",
+      "notes": "Registered atomically by canonical harness approve_harness_plan.py after plan validation.",
+      "notified_at": "2026-07-18T15:34:22.442226+00:00",
+      "completed": "2026-07-19"
+    },
+    "VB2": {
+      "work_id": "VB2",
+      "horizon_id": "visual-brief",
+      "milestone_id": "VB2",
+      "status": "completed",
+      "plan_path": "plans/2026-07-19-vb2-brief-studio.md",
+      "changeset_path": "changesets/20260719-brief-studio",
+      "next_step": null,
+      "current_step": null,
+      "steps": [
+        {
+          "id": "step-1",
+          "label": "Step 1 — 스튜디오 템플릿 + 수집 서버 (changeset)",
+          "status": "completed"
+        },
+        {
+          "id": "step-2",
+          "label": "Step 2 — 계약 문서 + 배선 + 배포 (changeset)",
+          "status": "completed"
+        },
+        {
+          "id": "step-3",
+          "label": "Step 3 — 실연 E2E (changeset)",
+          "status": "completed"
+        }
+      ],
+      "execution_mode": "continuous",
+      "approval": {
+        "approved_by": "user",
+        "approved_at": "2026-07-19",
+        "plan_sha256": "9e728f1e398fed4251d22ba2bbf19e202b87e9fe7d6dc952e38680b5d4eef744"
+      },
+      "allowed_stop_reasons": [
+        "completed",
+        "blocked",
+        "decision_required",
+        "risk_gate",
+        "secret_required",
+        "external_authority_required",
+        "user_stopped"
+      ],
+      "stop_reason": "completed",
+      "stop_detail": {},
+      "session_ids": [
+        "claude:ab332db5-5327-43b0-9bef-702291fafaee"
+      ],
+      "updated_at": "2026-07-19",
+      "notes": "Registered atomically by canonical harness approve_harness_plan.py after plan validation.",
+      "notified_at": "2026-07-18T16:04:34.786381+00:00",
+      "completed": "2026-07-19"
+    },
+    "VB3": {
+      "work_id": "VB3",
+      "horizon_id": "visual-brief",
+      "milestone_id": "VB3",
+      "status": "completed",
+      "plan_path": "plans/2026-07-19-vb3-chrome-gate.md",
+      "changeset_path": "changesets/20260719-chrome-gate",
+      "next_step": null,
+      "current_step": null,
+      "steps": [
+        {
+          "id": "step-1",
+          "label": "Step 1 — 프로토콜 5단계 개정 + 배포 (changeset)",
+          "status": "completed"
+        },
+        {
+          "id": "step-2",
+          "label": "Step 2 — skill 재강조 + E2E (changeset)",
+          "status": "completed"
+        }
+      ],
+      "execution_mode": "continuous",
+      "approval": {
+        "approved_by": "user",
+        "approved_at": "2026-07-19",
+        "plan_sha256": "fbe9431ee18f8a4d06bed2660ebb309053e55911c18f05efcece4787e93afe05"
+      },
+      "allowed_stop_reasons": [
+        "completed",
+        "blocked",
+        "decision_required",
+        "risk_gate",
+        "secret_required",
+        "external_authority_required",
+        "user_stopped"
+      ],
+      "stop_reason": "completed",
+      "stop_detail": {},
+      "session_ids": [
+        "claude:ab332db5-5327-43b0-9bef-702291fafaee"
+      ],
+      "updated_at": "2026-07-19",
+      "notes": "Registered atomically by canonical harness approve_harness_plan.py after plan validation.",
+      "notified_at": "2026-07-18T15:45:13.632099+00:00",
+      "completed": "2026-07-19"
+    },
+    "VB4": {
+      "work_id": "VB4",
+      "horizon_id": "visual-brief",
+      "milestone_id": "VB4",
+      "status": "completed",
+      "plan_path": "plans/2026-07-19-vb4-deep-brief.md",
+      "changeset_path": "changesets/20260719-deep-brief",
+      "next_step": null,
+      "current_step": null,
+      "steps": [
+        {
+          "id": "step-1",
+          "label": "Step 1 — 딥 브리프 부록 + 스튜디오 딥 섹션 (changeset)",
+          "status": "completed"
+        },
+        {
+          "id": "step-2",
+          "label": "Step 2 — 배포 + 검증 (changeset)",
+          "status": "completed"
+        }
+      ],
+      "execution_mode": "continuous",
+      "approval": {
+        "approved_by": "user",
+        "approved_at": "2026-07-19",
+        "plan_sha256": "ddb8459089159242c972624dbe28a5dd29b43e0f944fc225f54fee0cbf9e951e"
+      },
+      "allowed_stop_reasons": [
+        "completed",
+        "blocked",
+        "decision_required",
+        "risk_gate",
+        "secret_required",
+        "external_authority_required",
+        "user_stopped"
+      ],
+      "stop_reason": "completed",
+      "stop_detail": {},
+      "session_ids": [
+        "claude:ab332db5-5327-43b0-9bef-702291fafaee"
+      ],
+      "updated_at": "2026-07-19",
+      "notes": "Registered atomically by canonical harness approve_harness_plan.py after plan validation.",
+      "notified_at": "2026-07-18T15:49:36.040308+00:00",
+      "completed": "2026-07-19"
+    },
+    "SP1": {
+      "work_id": "SP1",
+      "horizon_id": "studio-depth",
+      "milestone_id": "SP1",
+      "status": "completed",
+      "plan_path": "plans/2026-07-19-sp1-brief-v2.md",
+      "changeset_path": "changesets/20260719-brief-v2",
+      "next_step": null,
+      "current_step": null,
+      "steps": [
+        {
+          "id": "step-1",
+          "label": "Step 1 — design-brief v2 개정 (changeset)",
+          "status": "completed"
+        },
+        {
+          "id": "step-2",
+          "label": "Step 2 — brief-studio 계약 v2 + 배포 (changeset)",
+          "status": "completed"
+        }
+      ],
+      "execution_mode": "continuous",
+      "approval": {
+        "approved_by": "user",
+        "approved_at": "2026-07-19",
+        "plan_sha256": "ee6862c6a547c7924cb6e2b88ae375b1c81f4ddc5cbb00b15ac0f99a20f362fd"
+      },
+      "allowed_stop_reasons": [
+        "completed",
+        "blocked",
+        "decision_required",
+        "risk_gate",
+        "secret_required",
+        "external_authority_required",
+        "user_stopped"
+      ],
+      "stop_reason": "completed",
+      "stop_detail": {},
+      "session_ids": [
+        "claude:ab332db5-5327-43b0-9bef-702291fafaee"
+      ],
+      "updated_at": "2026-07-19",
+      "notes": "Registered atomically by canonical harness approve_harness_plan.py after plan validation.",
+      "completed": "2026-07-19"
+    },
+    "SP2": {
+      "work_id": "SP2",
+      "horizon_id": "studio-depth",
+      "milestone_id": "SP2",
+      "status": "completed",
+      "plan_path": "plans/2026-07-19-sp2-studio-v2.md",
+      "changeset_path": "changesets/20260719-studio-v2",
+      "next_step": null,
+      "current_step": null,
+      "steps": [
+        {
+          "id": "step-1",
+          "label": "Step 1 — 스튜디오 v2 템플릿 (changeset)",
+          "status": "completed"
+        },
+        {
+          "id": "step-2",
+          "label": "Step 2 — 검증 evidence + 커밋 (changeset)",
+          "status": "completed"
+        }
+      ],
+      "execution_mode": "continuous",
+      "approval": {
+        "approved_by": "user",
+        "approved_at": "2026-07-19",
+        "plan_sha256": "9112fef0990d224a8be7964b3cb0d2b8b7c187886573953c50a2019fee62b6a2"
+      },
+      "allowed_stop_reasons": [
+        "completed",
+        "blocked",
+        "decision_required",
+        "risk_gate",
+        "secret_required",
+        "external_authority_required",
+        "user_stopped"
+      ],
+      "stop_reason": "completed",
+      "stop_detail": {},
+      "session_ids": [
+        "claude:ab332db5-5327-43b0-9bef-702291fafaee"
+      ],
+      "updated_at": "2026-07-19",
+      "notes": "Registered atomically by canonical harness approve_harness_plan.py after plan validation.",
+      "notified_at": "2026-07-18T16:28:37.746826+00:00",
+      "completed": "2026-07-19"
+    },
+    "SP3": {
+      "work_id": "SP3",
+      "horizon_id": "studio-depth",
+      "milestone_id": "SP3",
+      "status": "completed",
+      "plan_path": "plans/2026-07-19-sp3-image-pipeline.md",
+      "changeset_path": "changesets/20260719-image-pipeline",
+      "next_step": null,
+      "current_step": null,
+      "steps": [
+        {
+          "id": "step-1",
+          "label": "Step 1 — Pexels 헬퍼 + 실호출 검증 (changeset)",
+          "status": "completed"
+        },
+        {
+          "id": "step-2",
+          "label": "Step 2 — 스튜디오 이미지 그룹 + 계약 배포 (changeset)",
+          "status": "completed"
+        }
+      ],
+      "execution_mode": "continuous",
+      "approval": {
+        "approved_by": "user",
+        "approved_at": "2026-07-19",
+        "plan_sha256": "a6f681ad3607b6d2706bdd0f685e9340ef4cdb30114cab1a50772349b60c01ba"
+      },
+      "allowed_stop_reasons": [
+        "completed",
+        "blocked",
+        "decision_required",
+        "risk_gate",
+        "secret_required",
+        "external_authority_required",
+        "user_stopped"
+      ],
+      "stop_reason": "completed",
+      "stop_detail": {},
+      "session_ids": [
+        "claude:ab332db5-5327-43b0-9bef-702291fafaee"
+      ],
+      "updated_at": "2026-07-19",
+      "notes": "Registered atomically by canonical harness approve_harness_plan.py after plan validation.",
+      "notified_at": "2026-07-18T16:39:30.105426+00:00",
+      "completed": "2026-07-19"
+    },
+    "SP4": {
+      "work_id": "SP4",
+      "horizon_id": "studio-depth",
+      "milestone_id": "SP4",
+      "status": "completed",
+      "plan_path": "plans/2026-07-19-sp4-integrated-e2e.md",
+      "changeset_path": "changesets/20260719-integrated-e2e",
+      "next_step": null,
+      "current_step": null,
+      "steps": [
+        {
+          "id": "step-1",
+          "label": "Step 1 — 통합 실연 + evidence (changeset)",
+          "status": "completed"
+        },
+        {
+          "id": "step-2",
+          "label": "Step 2 — horizon close 처리 (changeset)",
+          "status": "completed"
+        }
+      ],
+      "execution_mode": "continuous",
+      "approval": {
+        "approved_by": "user",
+        "approved_at": "2026-07-19",
+        "plan_sha256": "402b365ffbad5ac644384d21336708c751c700977d993122bf2c51153565d1d3"
+      },
+      "allowed_stop_reasons": [
+        "completed",
+        "blocked",
+        "decision_required",
+        "risk_gate",
+        "secret_required",
+        "external_authority_required",
+        "user_stopped"
+      ],
+      "stop_reason": "completed",
+      "stop_detail": {},
+      "session_ids": [
+        "claude:ab332db5-5327-43b0-9bef-702291fafaee"
+      ],
+      "updated_at": "2026-07-19",
+      "notes": "Registered atomically by canonical harness approve_harness_plan.py after plan validation.",
+      "completed": "2026-07-19",
+      "notified_at": "2026-07-18T16:51:26.369862+00:00"
+    },
+    "ST1": {
+      "work_id": "ST1",
+      "horizon_id": "cascade-studio",
+      "milestone_id": "ST1",
+      "status": "completed",
+      "plan_path": "plans/2026-07-19-st1-studio-fixes.md",
+      "changeset_path": "changesets/20260719-studio-fixes",
+      "next_step": null,
+      "current_step": null,
+      "steps": [
+        {
+          "id": "step-1",
+          "label": "Step 1 — 스튜디오 레이아웃 정비 (changeset)",
+          "status": "completed"
+        },
+        {
+          "id": "step-2",
+          "label": "Step 2 — 해상도 분리 + 계약 배포 (changeset)",
+          "status": "completed"
+        }
+      ],
+      "execution_mode": "continuous",
+      "approval": {
+        "approved_by": "user",
+        "approved_at": "2026-07-19",
+        "plan_sha256": "0073e8da0dcc7904a2419c6c39822458fc8d8adf565d47e97b47166ea264e2b2"
+      },
+      "allowed_stop_reasons": [
+        "completed",
+        "blocked",
+        "decision_required",
+        "risk_gate",
+        "secret_required",
+        "external_authority_required",
+        "user_stopped"
+      ],
+      "stop_reason": "completed",
+      "stop_detail": {},
+      "session_ids": [
+        "claude:ab332db5-5327-43b0-9bef-702291fafaee"
+      ],
+      "updated_at": "2026-07-19",
+      "notes": "Registered atomically by canonical harness approve_harness_plan.py after plan validation.",
+      "completed": "2026-07-19"
+    },
+    "ST2": {
+      "work_id": "ST2",
+      "horizon_id": "cascade-studio",
+      "milestone_id": "ST2",
+      "status": "completed",
+      "plan_path": "plans/2026-07-19-st2-cascade-preview.md",
+      "changeset_path": "changesets/20260719-cascade-preview",
+      "next_step": null,
+      "current_step": null,
+      "steps": [
+        {
+          "id": "step-1",
+          "label": "Step 1 — 캐스케이드 렌더 엔진 (changeset)",
+          "status": "completed"
+        },
+        {
+          "id": "step-2",
+          "label": "Step 2 — 스티키 라이브 미리보기 + 계약 (changeset)",
+          "status": "completed"
+        }
+      ],
+      "execution_mode": "continuous",
+      "approval": {
+        "approved_by": "user",
+        "approved_at": "2026-07-19",
+        "plan_sha256": "93b63ae3c8d16fec8a449061586f301c250f0aa75352217471c07048da9bfb07"
+      },
+      "allowed_stop_reasons": [
+        "completed",
+        "blocked",
+        "decision_required",
+        "risk_gate",
+        "secret_required",
+        "external_authority_required",
+        "user_stopped"
+      ],
+      "stop_reason": "completed",
+      "stop_detail": {},
+      "session_ids": [
+        "claude:ab332db5-5327-43b0-9bef-702291fafaee"
+      ],
+      "updated_at": "2026-07-19",
+      "notes": "Registered atomically by canonical harness approve_harness_plan.py after plan validation.",
+      "completed": "2026-07-19"
+    },
+    "ST3": {
+      "work_id": "ST3",
+      "horizon_id": "cascade-studio",
+      "milestone_id": "ST3",
+      "status": "completed",
+      "plan_path": "plans/2026-07-19-st3-video-pipeline.md",
+      "changeset_path": "changesets/20260719-video-pipeline",
+      "next_step": null,
+      "current_step": null,
+      "steps": [
+        {
+          "id": "step-1",
+          "label": "Step 1 — Videos API 헬퍼 확장 + 실호출 (changeset)",
+          "status": "completed"
+        },
+        {
+          "id": "step-2",
+          "label": "Step 2 — 스튜디오 영상 후보 + 히어로 패턴 계약 (changeset)",
+          "status": "completed"
+        }
+      ],
+      "execution_mode": "continuous",
+      "approval": {
+        "approved_by": "user",
+        "approved_at": "2026-07-19",
+        "plan_sha256": "93546c437abdaa50ab26de437a380e20f6af3672352cab5fb5d2b283c0b11232"
+      },
+      "allowed_stop_reasons": [
+        "completed",
+        "blocked",
+        "decision_required",
+        "risk_gate",
+        "secret_required",
+        "external_authority_required",
+        "user_stopped"
+      ],
+      "stop_reason": "completed",
+      "stop_detail": {},
+      "session_ids": [
+        "claude:ab332db5-5327-43b0-9bef-702291fafaee"
+      ],
+      "updated_at": "2026-07-19",
+      "notes": "Registered atomically by canonical harness approve_harness_plan.py after plan validation.",
+      "completed": "2026-07-19"
+    },
+    "ST4": {
+      "work_id": "ST4",
+      "horizon_id": "cascade-studio",
+      "milestone_id": "ST4",
+      "status": "completed",
+      "plan_path": "plans/2026-07-19-st4-copy-axes-e2e.md",
+      "changeset_path": "changesets/20260719-copy-axes",
+      "next_step": null,
+      "current_step": null,
+      "steps": [
+        {
+          "id": "step-1",
+          "label": "Step 1 — 카피·인터랙션 축 구현 + 계약 배포 (changeset)",
+          "status": "completed"
+        },
+        {
+          "id": "step-2",
+          "label": "Step 2 — 통합 실연 + horizon close (changeset)",
+          "status": "completed"
+        }
+      ],
+      "execution_mode": "continuous",
+      "approval": {
+        "approved_by": "user",
+        "approved_at": "2026-07-19",
+        "plan_sha256": "83c8f33e1734b94d18b9c482033dd1bc776c7372b82298473cec3c67f37b29a8"
+      },
+      "allowed_stop_reasons": [
+        "completed",
+        "blocked",
+        "decision_required",
+        "risk_gate",
+        "secret_required",
+        "external_authority_required",
+        "user_stopped"
+      ],
+      "stop_reason": "completed",
+      "stop_detail": {},
+      "session_ids": [
+        "claude:ab332db5-5327-43b0-9bef-702291fafaee"
+      ],
+      "updated_at": "2026-07-19",
+      "notes": "Registered atomically by canonical harness approve_harness_plan.py after plan validation.",
+      "completed": "2026-07-19",
+      "notified_at": "2026-07-18T17:38:47.482175+00:00"
+    },
+    "SF1": {
+      "work_id": "SF1",
+      "horizon_id": "studio-finish",
+      "milestone_id": "SF1",
+      "status": "completed",
+      "plan_path": "plans/2026-07-19-sf1-studio-data-injection.md",
+      "changeset_path": "changesets/20260719-studio-data-injection",
+      "next_step": null,
+      "current_step": null,
+      "steps": [
+        {
+          "id": "step-1",
+          "label": "Step 1 — 데이터 분리 + 생성 스크립트 (changeset)",
+          "status": "completed"
+        },
+        {
+          "id": "step-2",
+          "label": "Step 2 — 계약 교체 + 배포 + E2E (changeset)",
+          "status": "completed"
+        }
+      ],
+      "execution_mode": "continuous",
+      "approval": {
+        "approved_by": "user",
+        "approved_at": "2026-07-19",
+        "plan_sha256": "9bab62421639cb6c78c883d3da07050a233fcacd99cd0177c055153c18225be9"
+      },
+      "allowed_stop_reasons": [
+        "completed",
+        "blocked",
+        "decision_required",
+        "risk_gate",
+        "secret_required",
+        "external_authority_required",
+        "user_stopped"
+      ],
+      "stop_reason": null,
+      "stop_detail": {},
+      "session_ids": [
+        "claude:614621c7-09d1-4681-a401-e42324fd8701"
+      ],
+      "updated_at": "2026-07-19",
+      "notes": "Registered atomically by canonical harness approve_harness_plan.py after plan validation.",
+      "completion_summary": "브리프 스튜디오 후보 주입이 HTML 직접 편집에서 데이터 JSON 하나 + 생성 커맨드 하나로 바뀌었고, 잘못된 데이터는 명시 에러로 거부됩니다",
+      "completed": "2026-07-19"
+    },
+    "SF2": {
+      "work_id": "SF2",
+      "horizon_id": "studio-finish",
+      "milestone_id": "SF2",
+      "status": "completed",
+      "plan_path": "plans/2026-07-19-sf2-composition-patterns.md",
+      "changeset_path": "changesets/20260719-composition-types",
+      "next_step": null,
+      "current_step": null,
+      "steps": [
+        {
+          "id": "step-1",
+          "label": "Step 1 — 구성 4유형 편입 + 미리보기 반영 (changeset)",
+          "status": "completed"
+        },
+        {
+          "id": "step-2",
+          "label": "Step 2 — 예약형 특수 패턴 편입 + 계약 배포 (changeset)",
+          "status": "completed"
+        }
+      ],
+      "execution_mode": "continuous",
+      "approval": {
+        "approved_by": "user",
+        "approved_at": "2026-07-19",
+        "plan_sha256": "21387ae01e7a9239a8b206312d7ba51f25bece9c72e1c0a1cce7c78e6420eff1"
+      },
+      "allowed_stop_reasons": [
+        "completed",
+        "blocked",
+        "decision_required",
+        "risk_gate",
+        "secret_required",
+        "external_authority_required",
+        "user_stopped"
+      ],
+      "stop_reason": null,
+      "stop_detail": {},
+      "session_ids": [
+        "claude:614621c7-09d1-4681-a401-e42324fd8701"
+      ],
+      "updated_at": "2026-07-19",
+      "notes": "Registered atomically by canonical harness approve_harness_plan.py after plan validation.",
+      "completion_summary": "브리프 스튜디오 구성 축이 리서치 12유형 전량과 예약형 특수 패턴을 갖추고, 업종에 맞을 때만 조건 노출되며 가짜 희소성 금지 규칙이 계약에 들어갔습니다",
+      "completed": "2026-07-19"
+    },
+    "SF3": {
+      "work_id": "SF3",
+      "horizon_id": "studio-finish",
+      "milestone_id": "SF3",
+      "status": "completed",
+      "plan_path": "plans/2026-07-19-sf3-preview-upgrade.md",
+      "changeset_path": "changesets/20260719-preview-dark",
+      "next_step": null,
+      "current_step": null,
+      "steps": [
+        {
+          "id": "step-1",
+          "label": "Step 1 — 다크 토글 (changeset)",
+          "status": "completed"
+        },
+        {
+          "id": "step-2",
+          "label": "Step 2 — 반응형 뷰포트 + 통합 E2E (changeset)",
+          "status": "completed"
+        }
+      ],
+      "execution_mode": "continuous",
+      "approval": {
+        "approved_by": "user",
+        "approved_at": "2026-07-19",
+        "plan_sha256": "efa06bb5f21b85b9b5ce0547b57a99b6daa52e7b985b8fc2d99de7b48edc7346"
+      },
+      "allowed_stop_reasons": [
+        "completed",
+        "blocked",
+        "decision_required",
+        "risk_gate",
+        "secret_required",
+        "external_authority_required",
+        "user_stopped"
+      ],
+      "stop_reason": null,
+      "stop_detail": {},
+      "session_ids": [
+        "claude:614621c7-09d1-4681-a401-e42324fd8701"
+      ],
+      "updated_at": "2026-07-19",
+      "notes": "Registered atomically by canonical harness approve_harness_plan.py after plan validation.",
+      "completion_summary": "브리프 스튜디오 미리보기가 다크와 모바일 폭까지 실물로 보여주게 됐고, 열두 조합 화면 검사와 주입-선택-수집 전 루프가 통과했습니다",
+      "completed": "2026-07-19"
+    },
+    "RC1": {
+      "work_id": "RC1",
+      "horizon_id": "recipe-code-reuse",
+      "milestone_id": "RC1",
+      "status": "completed",
+      "plan_path": "plans/2026-07-19-rc1-registry-pipeline.md",
+      "changeset_path": "changesets/20260719-registry-pipeline",
+      "next_step": null,
+      "current_step": null,
+      "steps": [
+        {
+          "id": "step-1",
+          "label": "Step 1 — 실사·선별 + 생성기 + registry 빌드 (changeset)",
+          "status": "completed"
+        },
+        {
+          "id": "step-2",
+          "label": "Step 2 — 이식 실구동 + llms 배선 (changeset)",
+          "status": "completed"
+        }
+      ],
+      "execution_mode": "continuous",
+      "approval": {
+        "approved_by": "user",
+        "approved_at": "2026-07-19",
+        "plan_sha256": "9e10e13877e9e69ccfcf75b115d248017e028f565da7f650972dcd58abdfaa73"
+      },
+      "allowed_stop_reasons": [
+        "completed",
+        "blocked",
+        "decision_required",
+        "risk_gate",
+        "secret_required",
+        "external_authority_required",
+        "user_stopped"
+      ],
+      "stop_reason": null,
+      "stop_detail": {},
+      "session_ids": [
+        "claude:614621c7-09d1-4681-a401-e42324fd8701"
+      ],
+      "updated_at": "2026-07-19",
+      "notes": "Registered atomically by canonical harness approve_harness_plan.py after plan validation. Step 1 reverified 2026-07-19: registry 27/27, site build PASS, purity gate present.",
+      "completion_summary": "사이트의 검증된 레시피 구현 27종이 표준 registry 코드 자산으로 빌드되고, 순수성 게이트가 사이트 결합 코드를 차단하며, 깨끗한 새 프로젝트에 JSON만으로 이식해 실구동됨을 확인했습니다",
+      "completed": "2026-07-19"
+    },
+    "RC2": {
+      "work_id": "RC2",
+      "horizon_id": "recipe-code-reuse",
+      "milestone_id": "RC2",
+      "status": "completed",
+      "plan_path": "plans/2026-07-19-rc2-code-first-contract.md",
+      "changeset_path": "changesets/20260719-code-first-contract",
+      "next_step": null,
+      "current_step": null,
+      "steps": [
+        {
+          "id": "step-1",
+          "label": "Step 1 — 계약 명문 + 배포 (changeset)",
+          "status": "completed"
+        },
+        {
+          "id": "step-2",
+          "label": "Step 2 — 에이전트 E2E (changeset)",
+          "status": "completed"
+        }
+      ],
+      "execution_mode": "continuous",
+      "approval": {
+        "approved_by": "user",
+        "approved_at": "2026-07-19",
+        "plan_sha256": "bdd1d35d2c4713dfb84f04463f2ed10caa55bf6322f68b92a933f71867809f3a"
+      },
+      "allowed_stop_reasons": [
+        "completed",
+        "blocked",
+        "decision_required",
+        "risk_gate",
+        "secret_required",
+        "external_authority_required",
+        "user_stopped"
+      ],
+      "stop_reason": null,
+      "stop_detail": {},
+      "session_ids": [
+        "claude:614621c7-09d1-4681-a401-e42324fd8701"
+      ],
+      "updated_at": "2026-07-19",
+      "notes": "Registered atomically by canonical harness approve_harness_plan.py after plan validation. Headless first-pass permission failure retained; root build, Playwright and live curl confirmed.",
+      "completion_summary": "검증된 레시피 코드에서 출발해 프로젝트 토큰으로 다시 입히는 경로가 실제 에이전트 작업과 브라우저에서 작동합니다",
+      "completed": "2026-07-19"
+    },
+    "RC3": {
+      "work_id": "RC3",
+      "horizon_id": "recipe-code-reuse",
+      "milestone_id": "RC3",
+      "status": "completed",
+      "plan_path": "plans/2026-07-19-rc3-composition-recipe-map.md",
+      "changeset_path": "changesets/20260719-composition-recipe-map",
+      "next_step": null,
+      "current_step": null,
+      "steps": [
+        {
+          "id": "step-1",
+          "label": "Step 1 — 매핑 데이터 + 수집 노출 (changeset)",
+          "status": "completed"
+        },
+        {
+          "id": "step-2",
+          "label": "Step 2 — 계약 배선 + 배포 (changeset)",
+          "status": "completed"
+        }
+      ],
+      "execution_mode": "continuous",
+      "approval": {
+        "approved_by": "user",
+        "approved_at": "2026-07-19",
+        "plan_sha256": "c9a9795f6cf4ed691a0e5664ab097492a89844bbaa422487ded749d5c7437af2"
+      },
+      "allowed_stop_reasons": [
+        "completed",
+        "blocked",
+        "decision_required",
+        "risk_gate",
+        "secret_required",
+        "external_authority_required",
+        "user_stopped"
+      ],
+      "stop_reason": null,
+      "stop_detail": {},
+      "session_ids": [
+        "codex:template-production-chain"
+      ],
+      "updated_at": "2026-07-19",
+      "notes": "Registered atomically by canonical harness approve_harness_plan.py after plan validation.",
+      "completion_summary": "스튜디오에서 고른 페이지 구성이 DESIGN.md와 실제 코드·레시피 구현 출발점으로 바로 이어집니다",
+      "completed": "2026-07-19"
+    },
+    "RC4": {
+      "work_id": "RC4",
+      "horizon_id": "recipe-code-reuse",
+      "milestone_id": "RC4",
+      "status": "completed",
+      "plan_path": "plans/2026-07-19-rc4-integrated-demo.md",
+      "changeset_path": "changesets/20260719-rc4-demo",
+      "next_step": null,
+      "current_step": null,
+      "steps": [
+        {
+          "id": "step-1",
+          "label": "Step 1 — 실연 준비 (changeset)",
+          "status": "completed"
+        },
+        {
+          "id": "step-2",
+          "label": "Step 2 — 통합 실연 + horizon close (changeset)",
+          "status": "completed"
+        }
+      ],
+      "execution_mode": "continuous",
+      "approval": {
+        "approved_by": "user",
+        "approved_at": "2026-07-19",
+        "plan_sha256": "9ae8747a22add95a44361b0ff942ffff3d27037beab7b8588c14c8fb765b560b"
+      },
+      "allowed_stop_reasons": [
+        "completed",
+        "blocked",
+        "decision_required",
+        "risk_gate",
+        "secret_required",
+        "external_authority_required",
+        "user_stopped"
+      ],
+      "stop_reason": null,
+      "stop_detail": {},
+      "session_ids": [
+        "claude:614621c7-09d1-4681-a401-e42324fd8701"
+      ],
+      "updated_at": "2026-07-19",
+      "notes": "Registered atomically by canonical harness approve_harness_plan.py after plan validation.",
+      "completion_summary": "스튜디오에서 직접 고른 도자기 온라인숍이 검증된 코드 자산 조합과 리스타일을 거쳐 실물 페이지로 완성됐고, 실물 확인까지 통과했습니다",
+      "completed": "2026-07-19",
+      "notified_at": "2026-07-18T20:07:09.673472+00:00"
+    },
+    "TPS1": {
+      "work_id": "TPS1",
+      "horizon_id": "template-production-system",
+      "milestone_id": "TPS1",
+      "status": "completed",
+      "plan_path": "plans/2026-07-19-tps1-template-contract.md",
+      "changeset_path": "changesets/20260719-template-core-scaffold",
+      "next_step": null,
+      "current_step": null,
+      "steps": [
+        {
+          "id": "step-1",
+          "label": "step-1 — structured-template-contract",
+          "status": "completed"
+        },
+        {
+          "id": "step-2",
+          "label": "step-2 — scene-primitives-and-core-scaffold",
+          "status": "completed"
+        }
+      ],
+      "execution_mode": "continuous",
+      "approval": {
+        "approved_by": "user",
+        "approved_at": "2026-07-19",
+        "plan_sha256": "0a071abf8a07bfd42e685439e4d078d1966c6ffc10edeeb609658f9acf4c8b03"
+      },
+      "allowed_stop_reasons": [
+        "completed",
+        "blocked",
+        "decision_required",
+        "risk_gate",
+        "secret_required",
+        "external_authority_required",
+        "user_stopped"
+      ],
+      "stop_reason": null,
+      "stop_detail": {},
+      "session_ids": [
+        "codex:template-production-chain"
+      ],
+      "updated_at": "2026-07-19",
+      "notes": "Registered atomically by canonical harness approve_harness_plan.py after plan validation.",
+      "completion_summary": "평면 이미지와 편집 템플릿의 경계를 정본화하고 CanvasDocument 이미지·도형 원시 요소와 템플릿 검증 코어를 구축했습니다",
+      "completed": "2026-07-19"
+    },
+    "TPS2": {
+      "work_id": "TPS2",
+      "horizon_id": "template-production-system",
+      "milestone_id": "TPS2",
+      "status": "completed",
+      "plan_path": "plans/2026-07-19-tps2-blueprint-compiler.md",
+      "changeset_path": "changesets/20260719-deterministic-template-compiler",
+      "next_step": null,
+      "current_step": null,
+      "steps": [
+        {
+          "id": "step-1",
+          "label": "step-1 — blueprint-registry-and-selection",
+          "status": "completed"
+        },
+        {
+          "id": "step-2",
+          "label": "step-2 — deterministic-scene-compiler",
+          "status": "completed"
+        }
+      ],
+      "execution_mode": "continuous",
+      "approval": {
+        "approved_by": "user",
+        "approved_at": "2026-07-19",
+        "plan_sha256": "40fc0d152697edc61cb17d805ae05c8c9c5e8c77fb702d30b7d5e95ed65e9d3e"
+      },
+      "allowed_stop_reasons": [
+        "completed",
+        "blocked",
+        "decision_required",
+        "risk_gate",
+        "secret_required",
+        "external_authority_required",
+        "user_stopped"
+      ],
+      "stop_reason": null,
+      "stop_detail": {},
+      "session_ids": [
+        "codex:template-production-chain"
+      ],
+      "updated_at": "2026-07-19",
+      "notes": "Registered atomically by canonical harness approve_harness_plan.py after plan validation.",
+      "completion_summary": "세 형식 청사진을 안정적으로 선택하고 같은 입력을 같은 CanvasDocument 서명으로 컴파일하는 결정론적 코어를 구축했습니다",
+      "completed": "2026-07-19"
+    },
+    "TPS3": {
+      "work_id": "TPS3",
+      "horizon_id": "template-production-system",
+      "milestone_id": "TPS3",
+      "status": "completed",
+      "plan_path": "plans/2026-07-19-tps3-browser-template-studio.md",
+      "changeset_path": "changesets/20260719-template-studio-edit-export",
+      "next_step": null,
+      "current_step": null,
+      "steps": [
+        {
+          "id": "step-1",
+          "label": "step-1 — scene-renderer-and-shell",
+          "status": "completed"
+        },
+        {
+          "id": "step-2",
+          "label": "step-2 — edit-and-export-loop",
+          "status": "completed"
+        }
+      ],
+      "execution_mode": "continuous",
+      "approval": {
+        "approved_by": "user",
+        "approved_at": "2026-07-19",
+        "plan_sha256": "422baa553a77863f54d11b54f08f4d8a0a944f6d2d791308ca48d7d3ec4a6f15"
+      },
+      "allowed_stop_reasons": [
+        "completed",
+        "blocked",
+        "decision_required",
+        "risk_gate",
+        "secret_required",
+        "external_authority_required",
+        "user_stopped"
+      ],
+      "stop_reason": null,
+      "stop_detail": {},
+      "session_ids": [
+        "codex:template-production-chain"
+      ],
+      "updated_at": "2026-07-19",
+      "notes": "Registered atomically by canonical harness approve_harness_plan.py after plan validation.",
+      "completion_summary": "세 형식 CanvasDocument를 브라우저에서 보고 텍스트를 편집하며 JSON·HTML·SVG로 내보내고 검증 후 다시 가져오는 스튜디오를 구축했습니다",
+      "completed": "2026-07-19"
+    },
+    "TPS4": {
+      "work_id": "TPS4",
+      "horizon_id": "template-production-system",
+      "milestone_id": "TPS4",
+      "status": "completed",
+      "plan_path": "plans/2026-07-19-tps4-three-format-packs.md",
+      "changeset_path": "changesets/20260719-template-pack-catalog",
+      "next_step": null,
+      "current_step": null,
+      "steps": [
+        {
+          "id": "step-1",
+          "label": "step-1 — business-card-and-product-poster-packs",
+          "status": "completed"
+        },
+        {
+          "id": "step-2",
+          "label": "step-2 — infographic-pack-and-data-integrity",
+          "status": "completed"
+        },
+        {
+          "id": "step-3",
+          "label": "step-3 — cross-format-catalog-and-variants",
+          "status": "completed"
+        }
+      ],
+      "execution_mode": "continuous",
+      "approval": {
+        "approved_by": "user",
+        "approved_at": "2026-07-19",
+        "plan_sha256": "71c8667ed24cf1ba2b806ca422bd6633f8d42e5bb6bd23fcbafe881feef7eace"
+      },
+      "allowed_stop_reasons": [
+        "completed",
+        "blocked",
+        "decision_required",
+        "risk_gate",
+        "secret_required",
+        "external_authority_required",
+        "user_stopped"
+      ],
+      "stop_reason": null,
+      "stop_detail": {},
+      "session_ids": [
+        "codex:template-production-chain"
+      ],
+      "updated_at": "2026-07-19",
+      "notes": "Registered atomically by canonical harness approve_harness_plan.py after plan validation.",
+      "completion_summary": "명함·제품 포스터·인포그래픽 각 2개 청사진과 형식 고유 무결성 검증을 6개 카탈로그로 완성했습니다",
+      "completed": "2026-07-19"
+    },
+    "TPS5": {
+      "work_id": "TPS5",
+      "horizon_id": "template-production-system",
+      "milestone_id": "TPS5",
+      "status": "completed",
+      "plan_path": "plans/2026-07-19-tps5-asset-provider-integration.md",
+      "changeset_path": "changesets/20260719-template-production-e2e",
+      "next_step": null,
+      "current_step": null,
+      "steps": [
+        {
+          "id": "step-1",
+          "label": "step-1 — offline-image-provider-boundary",
+          "status": "completed"
+        },
+        {
+          "id": "step-2",
+          "label": "step-2 — three-format-end-to-end-proof",
+          "status": "completed"
+        }
+      ],
+      "execution_mode": "continuous",
+      "approval": {
+        "approved_by": "user",
+        "approved_at": "2026-07-19",
+        "plan_sha256": "2375834ee9d2c376818fec2a80d663c93822d7299196866ae20485241d00c87e"
+      },
+      "allowed_stop_reasons": [
+        "completed",
+        "blocked",
+        "decision_required",
+        "risk_gate",
+        "secret_required",
+        "external_authority_required",
+        "user_stopped"
+      ],
+      "stop_reason": null,
+      "stop_detail": {},
+      "session_ids": [
+        "codex:template-production-chain"
+      ],
+      "updated_at": "2026-07-19",
+      "notes": "Registered atomically by canonical harness approve_harness_plan.py after plan validation.",
+      "completion_summary": "실제 호출 없이 GPT Image 2 소재 공급자 경계와 provenance·실패 처리를 검증하고 세 형식 전체 제작 루프를 재현했습니다",
+      "completed": "2026-07-19",
+      "notified_at": "2026-07-18T20:25:14.055324+00:00"
+    },
+    "th1-code-legibility": {
+      "work_id": "th1-code-legibility",
+      "horizon_id": "template-production-hardening",
+      "milestone_id": "TH1",
+      "status": "active",
+      "plan_path": "plans/2026-07-20-th1-code-legibility.md",
+      "changeset_path": "changesets/20260720-template-core-legibility",
+      "next_step": "step-1",
+      "current_step": "step-1",
+      "steps": [
+        {
+          "id": "step-1",
+          "label": "step-1 — core-legibility",
+          "status": "pending"
+        },
+        {
+          "id": "step-2",
+          "label": "step-2 — studio-and-script-legibility",
+          "status": "pending"
+        },
+        {
+          "id": "step-3",
+          "label": "step-3 — line-length-guard",
+          "status": "pending"
+        }
+      ],
+      "execution_mode": "continuous",
+      "approval": {
+        "approved_by": "user",
+        "approved_at": "2026-07-20",
+        "plan_sha256": "732fbd56501ad964e334f6a1afeda3dfb16ed78c016e46e0dfe373b1502a59d4"
+      },
+      "allowed_stop_reasons": [
+        "completed",
+        "blocked",
+        "decision_required",
+        "risk_gate",
+        "secret_required",
+        "external_authority_required",
+        "user_stopped"
+      ],
+      "stop_reason": null,
+      "stop_detail": {},
+      "session_ids": [
+        "claude:f84fec52-c73d-4a49-b95f-53d9e9345cb2"
+      ],
+      "owner_session_uuid": "claude:f84fec52-c73d-4a49-b95f-53d9e9345cb2",
+      "updated_at": "2026-07-20",
+      "notes": "Registered atomically by canonical harness approve_harness_plan.py after plan validation.",
+      "completion_summary": "템플릿 제작 스택의 압축 코드를 전부 해제하고, 해제가 동작을 바꾸지 않았음을 서명 대조로 증명했으며, 재발을 막는 줄 길이 가드를 걸었습니다."
+    },
+    "th2-blueprint-archetypes": {
+      "work_id": "th2-blueprint-archetypes",
+      "horizon_id": "template-production-hardening",
+      "milestone_id": "TH2",
+      "status": "completed",
+      "plan_path": "plans/2026-07-20-th2-blueprint-archetypes.md",
+      "changeset_path": "changesets/20260720-template-repeating-slot-contract",
+      "next_step": "step-1",
+      "current_step": "step-1",
+      "steps": [
+        {
+          "id": "step-1",
+          "label": "step-1 — repeating-slot-contract",
+          "status": "pending"
+        },
+        {
+          "id": "step-2",
+          "label": "step-2 — six-real-blueprints",
+          "status": "pending"
+        },
+        {
+          "id": "step-3",
+          "label": "step-3 — print-spec-validation",
+          "status": "pending"
+        }
+      ],
+      "execution_mode": "continuous",
+      "approval": {
+        "approved_by": "user",
+        "approved_at": "2026-07-20",
+        "plan_sha256": "697bc272400311e5af4413fa947e2171fe8050e95448168aab3fee408c2b197c"
+      },
+      "allowed_stop_reasons": [
+        "completed",
+        "blocked",
+        "decision_required",
+        "risk_gate",
+        "secret_required",
+        "external_authority_required",
+        "user_stopped"
+      ],
+      "stop_reason": null,
+      "stop_detail": {},
+      "session_ids": [
+        "claude:f84fec52-c73d-4a49-b95f-53d9e9345cb2"
+      ],
+      "owner_session_uuid": "claude:f84fec52-c73d-4a49-b95f-53d9e9345cb2",
+      "updated_at": "2026-07-20",
+      "notes": "Registered atomically by canonical harness approve_harness_plan.py after plan validation.",
+      "completion_summary": "청사진 6종을 파생 생성기 없이 실재화했고, 좌표만 옮긴 가짜 변주는 게이트가 실제로 막는 것까지 확인했습니다.",
+      "completed": "2026-07-20"
+    },
+    "th3-studio-real-editing": {
+      "work_id": "th3-studio-real-editing",
+      "horizon_id": "template-production-hardening",
+      "milestone_id": "TH3",
+      "status": "completed",
+      "plan_path": "plans/2026-07-20-th3-studio-real-editing.md",
+      "changeset_path": "changesets/20260720-askewly-design-roundtrip-and-studio-retire",
+      "next_step": null,
+      "current_step": null,
+      "steps": [
+        {
+          "id": "step-1",
+          "label": "step-1 — token-driven-render",
+          "status": "completed"
+        },
+        {
+          "id": "step-2",
+          "label": "step-2 — template-gallery-in-app",
+          "status": "completed"
+        },
+        {
+          "id": "step-3",
+          "label": "step-3 — export-roundtrip + 스튜디오 은퇴",
+          "status": "completed"
+        }
+      ],
+      "execution_mode": "continuous",
+      "approval": {
+        "approved_by": "user",
+        "approved_at": "2026-07-20",
+        "plan_sha256": "56049122a80023efd0783cc560aa7997146fd631b111668545282f928a7b433e"
+      },
+      "allowed_stop_reasons": [
+        "completed",
+        "blocked",
+        "decision_required",
+        "risk_gate",
+        "secret_required",
+        "external_authority_required",
+        "user_stopped"
+      ],
+      "stop_reason": "completed",
+      "stop_detail": {},
+      "session_ids": [
+        "claude:f84fec52-c73d-4a49-b95f-53d9e9345cb2"
+      ],
+      "owner_session_uuid": "claude:f84fec52-c73d-4a49-b95f-53d9e9345cb2",
+      "updated_at": "2026-07-20",
+      "notes": "편집 표면 AskewlyDesign 단일화(사용자 지시 개정). template-studio 은퇴. 적발: 캔버스 렌더 충실도 공백 — milestone 급 후속 필요.",
+      "completed": "2026-07-20"
+    },
+    "th7-canvas-render-fidelity": {
+      "work_id": "th7-canvas-render-fidelity",
+      "horizon_id": "template-production-hardening",
+      "milestone_id": "TH7",
+      "status": "completed",
+      "plan_path": "plans/2026-07-20-th7-canvas-render-fidelity.md",
+      "changeset_path": "changesets/20260720-export-token-fidelity",
+      "next_step": null,
+      "current_step": null,
+      "steps": [
+        {
+          "id": "step-1",
+          "label": "step-1 — 토큰 해석 일원화",
+          "status": "completed"
+        },
+        {
+          "id": "step-2",
+          "label": "step-2 — 이미지·타이포 실렌더",
+          "status": "completed"
+        },
+        {
+          "id": "step-3",
+          "label": "step-3 — 내보내기 충실도",
+          "status": "completed"
+        }
+      ],
+      "execution_mode": "continuous",
+      "approval": {
+        "approved_by": "user",
+        "approved_at": "2026-07-20",
+        "plan_sha256": "b04192d12754136c49ecfdee2499ba92a53d7c8bac3e566c1823efbf2be8b0ea"
+      },
+      "allowed_stop_reasons": [
+        "completed",
+        "blocked",
+        "decision_required",
+        "risk_gate",
+        "secret_required",
+        "external_authority_required",
+        "user_stopped"
+      ],
+      "stop_reason": "completed",
+      "stop_detail": {},
+      "session_ids": [
+        "claude:f84fec52-c73d-4a49-b95f-53d9e9345cb2"
+      ],
+      "owner_session_uuid": "claude:f84fec52-c73d-4a49-b95f-53d9e9345cb2",
+      "updated_at": "2026-07-20",
+      "notes": "토큰 채색·이미지 렌더·내보내기 충실도 완료. 적발: 텍스트 넘침(TH9로 분리). 하위 파급 0(선택 필드).",
+      "completed": "2026-07-20"
+    },
+    "th9-text-fitting": {
+      "work_id": "th9-text-fitting",
+      "horizon_id": "template-production-hardening",
+      "milestone_id": "TH9",
+      "status": "completed",
+      "plan_path": "plans/2026-07-20-th9-text-fitting.md",
+      "changeset_path": "changesets/20260720-svg-multiline-and-overflow-gate",
+      "next_step": null,
+      "current_step": null,
+      "steps": [
+        {
+          "id": "step-1",
+          "label": "step-1 — 문자폭 모델 + 맞춤 함수",
+          "status": "completed"
+        },
+        {
+          "id": "step-2",
+          "label": "step-2 — 컴파일러가 맞춤을 쓴다",
+          "status": "completed"
+        },
+        {
+          "id": "step-3",
+          "label": "step-3 — 여러 줄 출력 + 넘침 게이트",
+          "status": "completed"
+        }
+      ],
+      "execution_mode": "continuous",
+      "approval": {
+        "approved_by": "user",
+        "approved_at": "2026-07-20",
+        "plan_sha256": "4e34f2f74e8c2152bdd79a7e69693f7ee17aa77313ca9169956d82547d1293ef"
+      },
+      "allowed_stop_reasons": [
+        "completed",
+        "blocked",
+        "decision_required",
+        "risk_gate",
+        "secret_required",
+        "external_authority_required",
+        "user_stopped"
+      ],
+      "stop_reason": "completed",
+      "stop_detail": {},
+      "session_ids": [
+        "claude:f84fec52-c73d-4a49-b95f-53d9e9345cb2"
+      ],
+      "owner_session_uuid": "claude:f84fec52-c73d-4a49-b95f-53d9e9345cb2",
+      "updated_at": "2026-07-20",
+      "notes": "문자폭 모델(오차 계약)·컴파일러 맞춤·SVG 여러 줄·넘침 게이트. 근접 실패: 첫 게이트가 동어반복이었다.",
+      "completed": "2026-07-20"
+    },
+    "TH4": {
+      "work_id": "TH4",
+      "horizon_id": "template-production-hardening",
+      "milestone_id": "TH4",
+      "status": "completed",
+      "plan_path": "plans/2026-07-20-th4-verification-materialization.md",
+      "changeset_path": "changesets/20260720-export-artifact-parsing",
+      "next_step": null,
+      "current_step": "step-3",
+      "steps": [
+        {
+          "id": "step-1",
+          "label": "step-1 — 산출물을 실제로 만들고 파싱한다",
+          "status": "completed"
+        },
+        {
+          "id": "step-2",
+          "label": "step-2 — 단언의 근거를 입력에서 가져온다 + 훼손 3종",
+          "status": "completed"
+        },
+        {
+          "id": "step-3",
+          "label": "step-3 — 매니페스트 실측화 + 통합 커맨드",
+          "status": "completed"
+        }
+      ],
+      "execution_mode": "continuous",
+      "approval": {
+        "approved_by": "user",
+        "approved_at": "2026-07-20",
+        "plan_sha256": "f6683786bd76667dcc9ad42408faabc1d8d259deab5259479ff3073bed57a078"
+      },
+      "allowed_stop_reasons": [
+        "completed",
+        "blocked",
+        "decision_required",
+        "risk_gate",
+        "secret_required",
+        "external_authority_required",
+        "user_stopped"
+      ],
+      "stop_reason": "completed",
+      "stop_detail": {},
+      "session_ids": [
+        "claude:f84fec52-c73d-4a49-b95f-53d9e9345cb2"
+      ],
+      "owner_session_uuid": "claude:f84fec52-c73d-4a49-b95f-53d9e9345cb2",
+      "updated_at": "2026-07-20",
+      "notes": "Registered atomically by canonical harness approve_harness_plan.py after plan validation.",
+      "completed": "2026-07-20"
+    },
+    "TH5": {
+      "work_id": "TH5",
+      "horizon_id": "template-production-hardening",
+      "milestone_id": "TH5",
+      "status": "completed",
+      "plan_path": "plans/2026-07-20-th5-codex-imagegen-provider.md",
+      "changeset_path": "changesets/20260720-codex-imagegen-provider",
+      "next_step": null,
+      "current_step": "step-3",
+      "steps": [
+        {
+          "id": "step-1",
+          "label": "step-1 — codex-imagegen-provider",
+          "status": "completed"
+        },
+        {
+          "id": "step-2",
+          "label": "step-2 — live-call-proof",
+          "status": "completed"
+        },
+        {
+          "id": "step-3",
+          "label": "step-3 — retire-openai-adapter",
+          "status": "completed"
+        }
+      ],
+      "execution_mode": "continuous",
+      "approval": {
+        "approved_by": "user",
+        "approved_at": "2026-07-20",
+        "plan_sha256": "eb1b8ea88a92443dab0a01fa44b684300a6664ef5c6b9e9bf6eba7a3c3293007"
+      },
+      "allowed_stop_reasons": [
+        "completed",
+        "blocked",
+        "decision_required",
+        "risk_gate",
+        "secret_required",
+        "external_authority_required",
+        "user_stopped"
+      ],
+      "stop_reason": "completed",
+      "stop_detail": {},
+      "session_ids": [
+        "claude:f84fec52-c73d-4a49-b95f-53d9e9345cb2"
+      ],
+      "owner_session_uuid": "claude:f84fec52-c73d-4a49-b95f-53d9e9345cb2",
+      "updated_at": "2026-07-20",
+      "notes": "Registered atomically by canonical harness approve_harness_plan.py after plan validation.",
+      "completed": "2026-07-20"
+    },
+    "TH10": {
+      "work_id": "TH10",
+      "horizon_id": "template-production-hardening",
+      "milestone_id": "TH10",
+      "status": "completed",
+      "plan_path": "plans/2026-07-20-th10-editor-defects.md",
+      "changeset_path": "changesets/20260720-editor-state-persistence",
+      "next_step": null,
+      "current_step": "step-3",
+      "steps": [
+        {
+          "id": "step-1",
+          "label": "step-1 — 편집 상태가 살아남는다",
+          "status": "completed"
+        },
+        {
+          "id": "step-2",
+          "label": "step-2 — 토큰 세트 표시·검증 정합",
+          "status": "completed"
+        },
+        {
+          "id": "step-3",
+          "label": "step-3 — 깨진 입력을 코드로 거부한다",
+          "status": "completed"
+        }
+      ],
+      "execution_mode": "continuous",
+      "approval": {
+        "approved_by": "user",
+        "approved_at": "2026-07-20",
+        "plan_sha256": "2792a5fe1b262bf838507320d3add452c5bfef41ccb9fa6ad412df8a62ccd971"
+      },
+      "allowed_stop_reasons": [
+        "completed",
+        "blocked",
+        "decision_required",
+        "risk_gate",
+        "secret_required",
+        "external_authority_required",
+        "user_stopped"
+      ],
+      "stop_reason": "completed",
+      "stop_detail": {},
+      "session_ids": [
+        "claude:f84fec52-c73d-4a49-b95f-53d9e9345cb2"
+      ],
+      "owner_session_uuid": "claude:f84fec52-c73d-4a49-b95f-53d9e9345cb2",
+      "updated_at": "2026-07-20",
+      "notes": "Registered atomically by canonical harness approve_harness_plan.py after plan validation.",
+      "completed": "2026-07-20"
+    },
+    "TH11": {
+      "work_id": "TH11",
+      "horizon_id": "template-production-hardening",
+      "milestone_id": "TH11",
+      "status": "active",
+      "plan_path": "plans/2026-07-20-th11-print-spec-mm.md",
+      "changeset_path": "changesets/20260720-bleed-and-crop-marks",
+      "next_step": null,
+      "current_step": null,
+      "steps": [
+        {
+          "id": "step-1",
+          "label": "step-1 — 절대 mm 계약",
+          "status": "completed"
+        },
+        {
+          "id": "step-2",
+          "label": "step-2 — 규격 프리셋 확장 + 인쇄용 포스터",
+          "status": "completed"
+        },
+        {
+          "id": "step-3",
+          "label": "step-3 — 도련 + 재단 표시 SVG 출력",
+          "status": "completed"
+        }
+      ],
+      "execution_mode": "continuous",
+      "approval": {
+        "approved_by": "user",
+        "approved_at": "2026-07-20",
+        "plan_sha256": "bb03fb15fd17f17683c43719b689d358006ae06a9c3c93e5d39e5da169a565c2"
+      },
+      "allowed_stop_reasons": [
+        "completed",
+        "blocked",
+        "decision_required",
+        "risk_gate",
+        "secret_required",
+        "external_authority_required",
+        "user_stopped"
+      ],
+      "stop_reason": null,
+      "stop_detail": {},
+      "session_ids": [
+        "claude:f84fec52-c73d-4a49-b95f-53d9e9345cb2"
+      ],
+      "owner_session_uuid": "claude:f84fec52-c73d-4a49-b95f-53d9e9345cb2",
+      "updated_at": "2026-07-20",
+      "notes": "Registered atomically by canonical harness approve_harness_plan.py after plan validation."
+    },
+    "TH6": {
+      "work_id": "TH6",
+      "horizon_id": "template-production-hardening",
+      "milestone_id": "TH6",
+      "status": "active",
+      "plan_path": "plans/2026-07-20-th6-real-commission.md",
+      "changeset_path": "changesets/20260720-th6-commission-run",
+      "next_step": null,
+      "current_step": null,
+      "steps": [
+        {
+          "id": "step-1",
+          "label": "step-1 — commission-run",
+          "status": "completed"
+        },
+        {
+          "id": "step-2",
+          "label": "step-2 — close-audit",
+          "status": "completed"
+        }
+      ],
+      "execution_mode": "continuous",
+      "approval": {
+        "approved_by": "user",
+        "approved_at": "2026-07-20",
+        "plan_sha256": "34155ee73bc5960020d09c188c870e5ca1dbc7abb635190f1fb8d7fdd07b2d7d"
+      },
+      "allowed_stop_reasons": [
+        "completed",
+        "blocked",
+        "decision_required",
+        "risk_gate",
+        "secret_required",
+        "external_authority_required",
+        "user_stopped"
+      ],
+      "stop_reason": "decision_required",
+      "stop_detail": {
+        "what": "horizon close 여부 — 닫는 기준 7(실사용: 편집기) 미달. 계획 규칙상 에이전트가 close 판정을 내리지 않는다",
+        "asked_at": "2026-07-20"
+      },
+      "session_ids": [
+        "claude:f84fec52-c73d-4a49-b95f-53d9e9345cb2"
+      ],
+      "owner_session_uuid": "claude:f84fec52-c73d-4a49-b95f-53d9e9345cb2",
+      "updated_at": "2026-07-20",
+      "notes": "Registered atomically by canonical harness approve_harness_plan.py after plan validation."
+    },
+    "TH12": {
+      "work_id": "TH12",
+      "horizon_id": "template-production-hardening",
+      "milestone_id": "TH12",
+      "status": "active",
+      "plan_path": "plans/2026-07-20-th12-self-contained-artifacts.md",
+      "changeset_path": "changesets/20260720-no-external-references",
+      "next_step": null,
+      "current_step": null,
+      "steps": [
+        {
+          "id": "step-1",
+          "label": "step-1 — 소재가 자기완결적으로 나온다",
+          "status": "completed"
+        },
+        {
+          "id": "step-2",
+          "label": "step-2 — 외부 참조 0 게이트 + 실물 재확인",
+          "status": "completed"
+        }
+      ],
+      "execution_mode": "continuous",
+      "approval": {
+        "approved_by": "user",
+        "approved_at": "2026-07-20",
+        "plan_sha256": "ee183c2aebc75d1042ed11864456999a4ecad248a53e619546e2863c8d1e602e"
+      },
+      "allowed_stop_reasons": [
+        "completed",
+        "blocked",
+        "decision_required",
+        "risk_gate",
+        "secret_required",
+        "external_authority_required",
+        "user_stopped"
+      ],
+      "stop_reason": null,
+      "stop_detail": {},
+      "session_ids": [
+        "claude:f84fec52-c73d-4a49-b95f-53d9e9345cb2"
+      ],
+      "owner_session_uuid": "claude:f84fec52-c73d-4a49-b95f-53d9e9345cb2",
+      "updated_at": "2026-07-20",
+      "notes": "Registered atomically by canonical harness approve_harness_plan.py after plan validation."
+    },
+    "EU1": {
+      "work_id": "EU1",
+      "horizon_id": "editor-legibility",
+      "milestone_id": "EU1",
+      "status": "completed",
+      "plan_path": "plans/2026-07-20-eu1-selection-affordance.md",
+      "changeset_path": "changesets/20260720-manipulation-result-gate",
+      "next_step": null,
+      "current_step": null,
+      "steps": [
+        {
+          "id": "step-1",
+          "label": "step-1 — 핸들 역할이 보인다",
+          "status": "completed"
+        },
+        {
+          "id": "step-2",
+          "label": "step-2 — 회전이 실제로 된다",
+          "status": "completed"
+        },
+        {
+          "id": "step-3",
+          "label": "step-3 — 조작 결과 게이트",
+          "status": "completed"
+        }
+      ],
+      "execution_mode": "continuous",
+      "approval": {
+        "approved_by": "user",
+        "approved_at": "2026-07-20",
+        "plan_sha256": "b2759f766b767653b918395b83d9795acd4f66ce4d7b44e4cbbdb0556f7e74e9"
+      },
+      "allowed_stop_reasons": [
+        "completed",
+        "blocked",
+        "decision_required",
+        "risk_gate",
+        "secret_required",
+        "external_authority_required",
+        "user_stopped"
+      ],
+      "stop_reason": "completed",
+      "stop_detail": {},
+      "session_ids": [
+        "claude:f84fec52-c73d-4a49-b95f-53d9e9345cb2"
+      ],
+      "owner_session_uuid": "claude:f84fec52-c73d-4a49-b95f-53d9e9345cb2",
+      "updated_at": "2026-07-20",
+      "notes": "Registered atomically by canonical harness approve_harness_plan.py after plan validation.",
+      "completed": "2026-07-20"
+    },
+    "EU2": {
+      "work_id": "EU2",
+      "horizon_id": "editor-legibility",
+      "milestone_id": "EU2",
+      "status": "completed",
+      "plan_path": "plans/2026-07-21-eu2-snap-measure.md",
+      "changeset_path": "changesets/20260721-snap-applies-coordinates",
+      "next_step": "step-1",
+      "current_step": "step-1",
+      "steps": [
+        {
+          "id": "step-1",
+          "label": "step-1 — 스냅이 실제로 붙는다",
+          "status": "completed"
+        },
+        {
+          "id": "step-2",
+          "label": "step-2 — 정적 거리 측정",
+          "status": "completed"
+        },
+        {
+          "id": "step-3",
+          "label": "step-3 — 분리 게이트 + 측정 기준 문서",
+          "status": "completed"
+        }
+      ],
+      "execution_mode": "continuous",
+      "approval": {
+        "approved_by": "user",
+        "approved_at": "2026-07-20",
+        "plan_sha256": "ef2df5818e0ec537592867048d35d9308bfdf662a27451a2ac8a78e1ffe6427d"
+      },
+      "allowed_stop_reasons": [
+        "completed",
+        "blocked",
+        "decision_required",
+        "risk_gate",
+        "secret_required",
+        "external_authority_required",
+        "user_stopped"
+      ],
+      "stop_reason": "completed",
+      "stop_detail": {},
+      "session_ids": [
+        "claude:f84fec52-c73d-4a49-b95f-53d9e9345cb2"
+      ],
+      "owner_session_uuid": "claude:f84fec52-c73d-4a49-b95f-53d9e9345cb2",
+      "updated_at": "2026-07-20",
+      "notes": "Registered atomically by canonical harness approve_harness_plan.py after plan validation.",
+      "completed": "2026-07-21"
+    },
+    "EU3": {
+      "work_id": "EU3",
+      "horizon_id": "editor-legibility",
+      "milestone_id": "EU3",
+      "status": "completed",
+      "plan_path": "plans/2026-07-21-eu3-layer-legibility.md",
+      "changeset_path": "changesets/20260721-layer-kind-icons",
+      "next_step": "step-1",
+      "current_step": "step-1",
+      "steps": [
+        {
+          "id": "step-1",
+          "label": "step-1 — 타입이 아이콘으로 갈린다",
+          "status": "completed"
+        },
+        {
+          "id": "step-2",
+          "label": "step-2 — 이름으로 찾는다",
+          "status": "completed"
+        },
+        {
+          "id": "step-3",
+          "label": "step-3 — 판독성 게이트",
+          "status": "completed"
+        }
+      ],
+      "execution_mode": "continuous",
+      "approval": {
+        "approved_by": "user",
+        "approved_at": "2026-07-20",
+        "plan_sha256": "00e452b99b72c1ce41a36935c33fc9b56b5c213d3915e859cac2f6cb66edcc64"
+      },
+      "allowed_stop_reasons": [
+        "completed",
+        "blocked",
+        "decision_required",
+        "risk_gate",
+        "secret_required",
+        "external_authority_required",
+        "user_stopped"
+      ],
+      "stop_reason": "completed",
+      "stop_detail": {},
+      "session_ids": [
+        "claude:f84fec52-c73d-4a49-b95f-53d9e9345cb2"
+      ],
+      "owner_session_uuid": "claude:f84fec52-c73d-4a49-b95f-53d9e9345cb2",
+      "updated_at": "2026-07-20",
+      "notes": "Registered atomically by canonical harness approve_harness_plan.py after plan validation.",
+      "completed": "2026-07-21"
+    },
+    "EU4": {
+      "work_id": "EU4",
+      "horizon_id": "editor-legibility",
+      "milestone_id": "EU4",
+      "status": "completed",
+      "plan_path": "plans/2026-07-21-eu4-inspector-ia.md",
+      "changeset_path": "changesets/20260721-inspector-geometry",
+      "next_step": "step-1",
+      "current_step": "step-1",
+      "steps": [
+        {
+          "id": "step-1",
+          "label": "step-1 — 값이 보이고, 고쳐진다",
+          "status": "completed"
+        },
+        {
+          "id": "step-2",
+          "label": "step-2 — 섹션이 규약 순서를 따른다",
+          "status": "completed"
+        },
+        {
+          "id": "step-3",
+          "label": "step-3 — 선택 종류에 따라 달라진다 + 게이트",
+          "status": "completed"
+        }
+      ],
+      "execution_mode": "continuous",
+      "approval": {
+        "approved_by": "user",
+        "approved_at": "2026-07-20",
+        "plan_sha256": "a29127411b34b372cc195c383b77e7ca735c3020bcf21d2f108df404a6d5f386"
+      },
+      "allowed_stop_reasons": [
+        "completed",
+        "blocked",
+        "decision_required",
+        "risk_gate",
+        "secret_required",
+        "external_authority_required",
+        "user_stopped"
+      ],
+      "stop_reason": "completed",
+      "stop_detail": {},
+      "session_ids": [
+        "claude:f84fec52-c73d-4a49-b95f-53d9e9345cb2"
+      ],
+      "owner_session_uuid": "claude:f84fec52-c73d-4a49-b95f-53d9e9345cb2",
+      "updated_at": "2026-07-20",
+      "notes": "Registered atomically by canonical harness approve_harness_plan.py after plan validation.",
+      "completed": "2026-07-21"
+    },
+    "EU5": {
+      "work_id": "EU5",
+      "horizon_id": "editor-legibility",
+      "milestone_id": "EU5",
+      "status": "completed",
+      "plan_path": "plans/2026-07-21-eu5-judgeability-gate.md",
+      "changeset_path": "changesets/20260721-judgeability-observation-setup",
+      "next_step": "step-1",
+      "current_step": "step-2",
+      "steps": [
+        {
+          "id": "step-1",
+          "label": "step-1 — 관측 준비",
+          "status": "completed"
+        },
+        {
+          "id": "step-2",
+          "label": "step-2 — 사용자 관측** ⏸ **여기서 정지한다(user_stopped)",
+          "status": "completed"
+        },
+        {
+          "id": "step-3",
+          "label": "step-3 — 결과 판정과 다음 행선지",
+          "status": "completed"
+        }
+      ],
+      "execution_mode": "continuous",
+      "approval": {
+        "approved_by": "user",
+        "approved_at": "2026-07-20",
+        "plan_sha256": "c1ca7577d829d8c3bac3030c55a413b3432ce0dbca05fc6e817598160872f6ce"
+      },
+      "allowed_stop_reasons": [
+        "completed",
+        "blocked",
+        "decision_required",
+        "risk_gate",
+        "secret_required",
+        "external_authority_required",
+        "user_stopped"
+      ],
+      "stop_reason": "completed",
+      "stop_detail": {},
+      "session_ids": [
+        "claude:f84fec52-c73d-4a49-b95f-53d9e9345cb2"
+      ],
+      "owner_session_uuid": "claude:f84fec52-c73d-4a49-b95f-53d9e9345cb2",
+      "updated_at": "2026-07-20",
+      "notes": "Registered atomically by canonical harness approve_harness_plan.py after plan validation.",
+      "completed": "2026-07-21"
+    },
+    "ect1-token-lookup": {
+      "work_id": "ect1-token-lookup",
+      "horizon_id": "editor-color-and-token-editing",
+      "milestone_id": "ECT1",
+      "status": "completed",
+      "plan_path": "plans/2026-07-21-ect1-token-lookup-and-validation.md",
+      "changeset_path": "changesets",
+      "next_step": null,
+      "current_step": "step-3",
+      "steps": [
+        {
+          "id": "step-1",
+          "label": "step-1 — 세트가 자기 토큰을 열거한다",
+          "status": "completed",
+          "changeset": "20260721-token-enumeration"
+        },
+        {
+          "id": "step-2",
+          "label": "step-2 — 편집기 토큰이 자기 종류를 안다",
+          "status": "completed",
+          "changeset": "20260721-editor-token-kind"
+        },
+        {
+          "id": "step-3",
+          "label": "step-3 — 없는 토큰은 저장되지 않는다",
+          "status": "completed",
+          "changeset": "20260721-token-existence-validation"
+        }
+      ],
+      "execution_mode": "continuous",
+      "approval": {
+        "approved_by": "user",
+        "approved_at": "2026-07-21",
+        "plan_sha256": "745e5c35c8a355cf8c10a6046e0863c41f387a3bb65be37742dfb722710cb8db"
+      },
+      "allowed_stop_reasons": [
+        "completed",
+        "blocked",
+        "decision_required",
+        "risk_gate",
+        "secret_required",
+        "external_authority_required",
+        "user_stopped"
+      ],
+      "stop_reason": null,
+      "stop_detail": {},
+      "session_ids": [
+        "claude:3208f4f6-fadd-4411-a59a-092e510b8529"
+      ],
+      "owner_session_uuid": "claude:3208f4f6-fadd-4411-a59a-092e510b8529",
+      "updated_at": "2026-07-21",
+      "notes": "steps 1-3 완료(206/207/208). 독립 검증 refuted → update-node 경로 우회 결함 수정(209). 재검증 대기 중.",
+      "completion_summary": "편집기가 이제 \"이 문서가 쓸 수 있는 토큰이 뭐냐\"고 물어볼 수 있다."
+    },
+    "ect2-color-picker": {
+      "work_id": "ect2-color-picker",
+      "horizon_id": "editor-color-and-token-editing",
+      "milestone_id": "ECT2",
+      "status": "completed",
+      "plan_path": "plans/2026-07-21-ect2-color-swatch-and-picker.md",
+      "changeset_path": "changesets",
+      "next_step": null,
+      "current_step": "step-3",
+      "steps": [
+        {
+          "id": "step-1",
+          "label": "step-1 — 색이 견본으로 보인다",
+          "status": "completed",
+          "changeset": "20260721-color-swatch"
+        },
+        {
+          "id": "step-2",
+          "label": "step-2 — 목록에서 고른다",
+          "status": "completed",
+          "changeset": "20260721-token-color-picker + 20260721-webgpu-selection-tint"
+        },
+        {
+          "id": "step-3",
+          "label": "step-3 — 키보드로도 되고, 사람이 본다",
+          "status": "completed",
+          "changeset": "20260721-color-picker-keyboard"
+        }
+      ],
+      "execution_mode": "continuous",
+      "approval": {
+        "approved_by": "user",
+        "approved_at": "2026-07-21",
+        "plan_sha256": "306bb9c5e086f40baa84395e59d859d9a269c8c54a157fc5cc4828637a07a9d8"
+      },
+      "allowed_stop_reasons": [
+        "completed",
+        "blocked",
+        "decision_required",
+        "risk_gate",
+        "secret_required",
+        "external_authority_required",
+        "user_stopped"
+      ],
+      "stop_reason": null,
+      "stop_detail": {},
+      "session_ids": [
+        "claude:3208f4f6-fadd-4411-a59a-092e510b8529"
+      ],
+      "owner_session_uuid": "claude:3208f4f6-fadd-4411-a59a-092e510b8529",
+      "updated_at": "2026-07-21",
+      "notes": "Registered atomically by canonical harness approve_harness_plan.py after plan validation.",
+      "completion_summary": "사용자가 색 견본을 보고, 눌러서 목록을 열고, 검색해서, 골라 색을 바꾼다."
+    },
+    "ect3-bind-detach": {
+      "work_id": "ect3-bind-detach",
+      "horizon_id": "editor-color-and-token-editing",
+      "milestone_id": "ECT3",
+      "status": "completed",
+      "plan_path": "plans/2026-07-21-ect3-bind-and-detach.md",
+      "changeset_path": "changesets",
+      "next_step": null,
+      "current_step": "step-3",
+      "steps": [
+        {
+          "id": "step-1",
+          "label": "step-1 — 안 묶인 것을 묶는다",
+          "status": "completed",
+          "changeset": "20260721-bind-new-token"
+        },
+        {
+          "id": "step-2",
+          "label": "step-2 — 묶인 것을 푼다",
+          "status": "completed",
+          "changeset": "20260721-detach-token-binding"
+        },
+        {
+          "id": "step-3",
+          "label": "step-3 — 원시 색을 고치고, 다시 묶는다 + 게이트",
+          "status": "completed",
+          "changeset": "20260721-raw-color-and-rebind"
+        }
+      ],
+      "execution_mode": "continuous",
+      "approval": {
+        "approved_by": "user",
+        "approved_at": "2026-07-21",
+        "plan_sha256": "d0b5c7068e69bcd13c53027ad33c6d9054c48bf290257216629b939b6f127685"
+      },
+      "allowed_stop_reasons": [
+        "completed",
+        "blocked",
+        "decision_required",
+        "risk_gate",
+        "secret_required",
+        "external_authority_required",
+        "user_stopped"
+      ],
+      "stop_reason": null,
+      "stop_detail": {},
+      "session_ids": [
+        "claude:3208f4f6-fadd-4411-a59a-092e510b8529"
+      ],
+      "owner_session_uuid": "claude:3208f4f6-fadd-4411-a59a-092e510b8529",
+      "updated_at": "2026-07-21",
+      "notes": "Registered atomically by canonical harness approve_harness_plan.py after plan validation.",
+      "completion_summary": "색이 없던 요소에 색을 묶을 수 있다."
+    },
+    "ect4-image-contract": {
+      "work_id": "ect4-image-contract",
+      "horizon_id": "editor-color-and-token-editing",
+      "milestone_id": "ECT4",
+      "status": "completed",
+      "plan_path": "plans/2026-07-21-ect4-image-node-and-contract.md",
+      "changeset_path": "changesets",
+      "next_step": null,
+      "current_step": "step-2",
+      "steps": [
+        {
+          "id": "step-1",
+          "label": "step-1 — 허용 키의 정본이 하나가 된다",
+          "status": "completed",
+          "changeset": "20260721-binding-key-contract"
+        },
+        {
+          "id": "step-2",
+          "label": "step-2 — 이미지 노드가 칠해진다 + 게이트",
+          "status": "completed",
+          "changeset": "20260721-image-node-token-render"
+        }
+      ],
+      "execution_mode": "continuous",
+      "approval": {
+        "approved_by": "user",
+        "approved_at": "2026-07-21",
+        "plan_sha256": "0f8c87e3f338932471d8d83954929e5e1ac405f54bc1fa71b560fdaa99cb4176"
+      },
+      "allowed_stop_reasons": [
+        "completed",
+        "blocked",
+        "decision_required",
+        "risk_gate",
+        "secret_required",
+        "external_authority_required",
+        "user_stopped"
+      ],
+      "stop_reason": "blocked",
+      "stop_detail": {
+        "reason": "ECT5는 사용자가 브라우저로 직접 편집기를 만져봐야 판정되는 관측 milestone인데, 사용자가 지금 브라우저를 쓸 수 없다. 색 바꾸기·색 새로 묶기·원시 색 지정 세 가지를 사용자가 해보고 되는지 말해주면 horizon이 닫힌다."
+      },
+      "session_ids": [
+        "claude:3208f4f6-fadd-4411-a59a-092e510b8529"
+      ],
+      "owner_session_uuid": "claude:3208f4f6-fadd-4411-a59a-092e510b8529",
+      "updated_at": "2026-07-21",
+      "notes": "Registered atomically by canonical harness approve_harness_plan.py after plan validation.",
+      "completion_summary": "허용 바인딩 키의 정본이 `canvas-core` 하나가 됐다."
     }
-  ]
+  }
 }

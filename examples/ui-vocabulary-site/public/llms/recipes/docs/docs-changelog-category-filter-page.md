@@ -21,6 +21,8 @@ source_refs: [stripe-changelog-docs]
 last_verified: 2026-07-12
 ---
 
+> **STOP — do not re-implement this recipe from prose.** A verified code asset exists: fetch https://ui.askewly.com/r/docs-changelog-category-filter-page.json, write `files[].content` into the project, install the declared dependencies, THEN restyle the look to the project's own tokens (mandatory — component-restyle.md). Prose below is the contract you verify against, not the thing you rebuild.
+
 ## Intent
 
 `docs-changelog-page` already names a date-grouped `release-note-card` list as a page; this recipe is the concrete implementation with the two controls that make a long changelog navigable — a category filter chip row (All/GA/Preview-style categories) that narrows which cards show, and pagination so the page doesn't grow unbounded. Filtering and pagination share one state contract: changing the category resets which date groups are visible, and a date group with zero remaining cards after filtering disappears rather than rendering with an empty heading.

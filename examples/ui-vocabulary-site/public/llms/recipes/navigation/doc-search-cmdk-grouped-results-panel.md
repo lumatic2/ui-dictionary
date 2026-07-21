@@ -22,6 +22,8 @@ source_refs: [tailwind-plus-documentation-command-palette]
 last_verified: 2026-07-12
 ---
 
+> **STOP — do not re-implement this recipe from prose.** A verified code asset exists: fetch https://ui.askewly.com/r/doc-search-cmdk-grouped-results-panel.json, write `files[].content` into the project, install the declared dependencies, THEN restyle the look to the project's own tokens (mandatory — component-restyle.md). Prose below is the contract you verify against, not the thing you rebuild.
+
 ## Intent
 
 A documentation site's Cmd/Ctrl+K search reuses the `command-palette` overlay shell (`topbar-command-search` implements the same input+popover idea inline in a topbar), but a docs search result set spans several kinds of content — pages, guides, API entries — and a flat list makes the reader scan section by section anyway. Grouping results under section headers (Docs/Guides/API) inside the same overlay does that scanning for them, without inventing a second overlay pattern.

@@ -1,0 +1,17 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "stat-summary-grid",
+  "type": "registry:block",
+  "title": "Stat Summary Grid",
+  "description": "A stat summary grid gives a small set of operational measures a consistent hierarchy: label, current value, and a contextual trend or status. It supports quick orientation at the top of a real dashboard; it is not a license to fabricate metrics for decorative proof.",
+  "docs": "Recipe contract (intent/anatomy/tokens/checks/anti-patterns): https://ui.askewly.com/llms/recipes/data-display/stat-summary-grid.md — after transplant, remap look to the project's own tokens per https://ui.askewly.com/llms/docs/design-system/component-restyle.md",
+  "registryDependencies": [],
+  "dependencies": [],
+  "files": [
+    {
+      "path": "registry/askewly/stat-summary-grid/stat-summary-grid.tsx",
+      "type": "registry:component",
+      "content": "export type StatSummaryItem = {\n  label: string\n  value: string\n  trend?: string\n}\n\ntype StatSummaryGridProps = {\n  title: string\n  rangeLabel: string\n  stats: StatSummaryItem[]\n  reportHref?: string\n}\n\n/**\n * Stat summary grid: a small set of operational measures sharing one\n * label/value/trend hierarchy and one time range, so peer values compare\n * cleanly. Trend meaning is carried in text, never color alone.\n */\nexport function StatSummaryGrid({ title, rangeLabel, stats, reportHref }: StatSummaryGridProps) {\n  return (\n    <section aria-labelledby=\"stat-summary-title\">\n      <div className=\"flex items-end justify-between gap-4\">\n        <div>\n          <h2 id=\"stat-summary-title\" className=\"text-base font-medium text-foreground\">\n            {title}\n          </h2>\n          <p className=\"text-sm text-muted-foreground\">{rangeLabel}</p>\n        </div>\n        {reportHref ? (\n          <a className=\"text-sm font-medium text-primary hover:underline\" href={reportHref}>\n            Open report\n          </a>\n        ) : null}\n      </div>\n      <dl className=\"mt-6 grid grid-cols-1 overflow-hidden rounded-lg border sm:grid-cols-3\">\n        {stats.map((stat) => (\n          <div key={stat.label} className=\"border-b p-6 last:border-b-0 sm:border-b-0 sm:border-r sm:last:border-r-0\">\n            <dt className=\"text-sm text-muted-foreground\">{stat.label}</dt>\n            <dd className=\"mt-2 text-3xl font-medium text-foreground tabular-nums\">{stat.value}</dd>\n            {stat.trend ? <p className=\"mt-1 text-sm text-muted-foreground\">{stat.trend}</p> : null}\n          </div>\n        ))}\n      </dl>\n    </section>\n  )\n}\n\nconst demoStats: StatSummaryItem[] = [\n  { label: \"Active workspaces\", value: \"24\", trend: \"+3 this week\" },\n  { label: \"Checks passing\", value: \"98%\", trend: \"Stable\" },\n  { label: \"Pending reviews\", value: \"6\", trend: \"2 due today\" },\n]\n\n/**\n * Colocated demo: fixed workspace metrics with named time range and text\n * trends, standing in for the caller-owned data this component expects.\n */\nexport function StatSummaryGridDemo() {\n  return (\n    <StatSummaryGrid rangeLabel=\"Last seven days\" reportHref=\"#\" stats={demoStats} title=\"Workspace summary\" />\n  )\n}\n"
+    }
+  ]
+}

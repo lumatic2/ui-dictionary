@@ -1,0 +1,20 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "responsive-content-grid",
+  "type": "registry:block",
+  "title": "Responsive Content Grid",
+  "description": "A responsive content grid arranges peer items into as many columns as the content can support, then collapses without changing their reading order. It is a layout contract for cards, examples, products, or records, not a decorative checkerboard.",
+  "docs": "Recipe contract (intent/anatomy/tokens/checks/anti-patterns): https://ui.askewly.com/llms/recipes/layout/responsive-content-grid.md — after transplant, remap look to the project's own tokens per https://ui.askewly.com/llms/docs/design-system/component-restyle.md",
+  "registryDependencies": [
+    "badge",
+    "button"
+  ],
+  "dependencies": [],
+  "files": [
+    {
+      "path": "registry/askewly/responsive-content-grid/responsive-content-grid.tsx",
+      "type": "registry:component",
+      "content": "import { useState } from \"react\"\nimport { Badge } from \"@/components/ui/badge\"\nimport { Button } from \"@/components/ui/button\"\n\nexport type ContentGridAction = {\n  label: string\n  run: () => void\n}\n\nexport type ContentGridItem = {\n  id: string\n  title: string\n  description: string\n  status?: string\n  actions?: ContentGridAction[]\n}\n\ntype ResponsiveContentGridProps = {\n  items: ContentGridItem[]\n}\n\n/**\n * Responsive content grid: one column on mobile, up to three on wide\n * screens, in stable source (and keyboard) order. Every item and its text\n * wrapper carries `min-w-0` so titles truncate instead of forcing overflow.\n */\nexport function ResponsiveContentGrid({ items }: ResponsiveContentGridProps) {\n  return (\n    <section className=\"mx-auto w-full max-w-5xl\">\n      <div className=\"grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3\">\n        {items.map((item) => (\n          <article key={item.id} className=\"min-w-0 rounded-lg border bg-card p-6 text-card-foreground\">\n            <div className=\"flex items-start justify-between gap-4\">\n              <div className=\"min-w-0\">\n                <h3 className=\"truncate text-base font-medium\">{item.title}</h3>\n                <p className=\"mt-2 text-sm leading-6 text-muted-foreground\">{item.description}</p>\n              </div>\n              {item.status ? <Badge variant=\"secondary\">{item.status}</Badge> : null}\n            </div>\n            {item.actions?.length ? (\n              <div className=\"mt-6 flex flex-wrap gap-2\">\n                {item.actions.map((action) => (\n                  <Button key={action.label} size=\"sm\" type=\"button\" variant=\"outline\" onClick={action.run}>\n                    {action.label}\n                  </Button>\n                ))}\n              </div>\n            ) : null}\n          </article>\n        ))}\n      </div>\n    </section>\n  )\n}\n\nconst baseItems: Omit<ContentGridItem, \"actions\">[] = [\n  { id: \"item-1\", title: \"Design tokens\", description: \"Primitive, semantic, and component-scoped values.\", status: \"Stable\" },\n  { id: \"item-2\", title: \"Recipe library\", description: \"Anatomy, states, and checks for reusable UI patterns.\", status: \"Draft\" },\n  { id: \"item-3\", title: \"Canvas registry\", description: \"Recipes wired into the Insert palette for direct reuse.\", status: \"In progress\" },\n]\n\n/**\n * Colocated demo: peer items with a per-card action wired to local state,\n * so the grid's `min-w-0`/reading-order contract can be seen with content\n * that actually changes.\n */\nexport function ResponsiveContentGridDemo() {\n  const [openedId, setOpenedId] = useState<string | null>(null)\n\n  const items: ContentGridItem[] = baseItems.map((item) => ({\n    ...item,\n    actions: [{ label: \"Open\", run: () => setOpenedId(item.id) }],\n  }))\n\n  return (\n    <div className=\"flex flex-col gap-4\">\n      <ResponsiveContentGrid items={items} />\n      {openedId ? <p className=\"text-sm text-muted-foreground\">Opened \"{openedId}\".</p> : null}\n    </div>\n  )\n}\n"
+    }
+  ]
+}

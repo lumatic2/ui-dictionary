@@ -1,5 +1,5 @@
 import type { CanvasDocument, CanvasNode, CanvasRect, NodeId } from './types.js'
-import { applyNodeProperty, readNodeProperty, validateTokenMode, type NodePropertyEdit } from './properties.js'
+import { applyNodeProperty, readNodeProperty, validateLiteralColor, validateTokenBinding, validateTokenMode, type NodePropertyEdit } from './properties.js'
 import { assertValidDocument } from './validation.js'
 
 interface OperationBase {
@@ -25,9 +25,38 @@ export interface UpdateNodeOperation extends OperationBase {
   patch: Partial<Pick<CanvasNode, 'name' | 'bounds' | 'visible' | 'locked' | 'tokenBindings'>>
 }
 
+/**
+ * 토큰에서 벗어난다 — 바인딩을 지우고 그 시점 색을 리터럴로 남긴다.
+ *
+ * `literal`을 연산이 들고 오는 이유: canvas-core는 어휘를 모른다(ECT1 계층 결정).
+ * "지금 이 토큰이 무슨 색인가"는 어휘를 아는 앱만 답할 수 있으므로 앱이 넣어 보낸다.
+ *
+ * 이미 벗어난 키에 다시 쓰면 리터럴만 갱신된다 — 원시 색 편집이 같은 연산을 탄다.
+ */
+export interface DetachTokenBindingOperation extends OperationBase {
+  type: 'detach-token-binding'
+  nodeId: NodeId
+  key: string
+  literal: string
+}
+
+/** 다시 묶는다 — 리터럴을 지우고 바인딩을 세운다. `detach`의 역이다. */
+export interface AttachTokenBindingOperation extends OperationBase {
+  type: 'attach-token-binding'
+  nodeId: NodeId
+  key: string
+  name: string
+}
+
 export interface TransformNodesOperation extends OperationBase {
   type: 'transform-nodes'
   boundsById: Record<NodeId, CanvasRect>
+}
+
+/** 회전은 bounds를 바꾸지 않는다 — 각도만 바뀌므로 transform-nodes와 별개 연산이다. */
+export interface RotateNodesOperation extends OperationBase {
+  type: 'rotate-nodes'
+  rotationById: Record<NodeId, number>
 }
 
 export interface SetNodePropertyOperation extends OperationBase, NodePropertyEdit {
@@ -79,7 +108,10 @@ export type CanvasOperation =
   | CreateNodeOperation
   | DeleteNodeOperation
   | UpdateNodeOperation
+  | DetachTokenBindingOperation
+  | AttachTokenBindingOperation
   | TransformNodesOperation
+  | RotateNodesOperation
   | SetNodePropertyOperation
   | UpdateTextOperation
   | SetTokenModeOperation
@@ -88,6 +120,12 @@ export type CanvasOperation =
   | SelectNodesOperation
   | SetViewportOperation
   | BatchOperation
+
+/** 각도를 [0, 360)으로 접는다 — 370°와 10°가 다른 문서가 되지 않게. */
+export function normalizeRotation(degrees: number): number {
+  const wrapped = degrees % 360
+  return Object.is(wrapped, -0) ? 0 : wrapped < 0 ? wrapped + 360 : wrapped
+}
 
 function insertAt<T>(items: T[], value: T, index: number) {
   items.splice(Math.max(0, Math.min(index, items.length)), 0, value)
@@ -121,6 +159,55 @@ function copyPatch(patch: UpdateNodeOperation['patch']): UpdateNodeOperation['pa
   return structuredClone(patch)
 }
 
+/**
+ * 이 연산이 **새로 넣거나 바꾼** 토큰 바인딩만 검사한다.
+ *
+ * 왜 여기냐 — 연산 종류마다 검사를 심는 방식은 실패했다. `set-node-property`를 막았더니
+ * `update-node`가 뚫렸고, 그걸 막았더니 `create-node`가 뚫렸다(독립 검증 2회 refuted, 2026-07-21).
+ * 연산은 앞으로도 늘어난다. 그래서 **모든 연산이 지나는 길목 하나**에서 본다.
+ *
+ * 왜 델타냐 — 문서 전체를 보면 이미 저장돼 있던 죽은 바인딩까지 걸려 사용자가 자기 문서를
+ * 못 연다. 저장 시점만 막고 기존 값은 건드리지 않는다는 ECT1 결정을 지키려면 **바뀐 것만** 봐야 한다.
+ * (문서를 *불러오는* 경로는 연산이 아니므로 여기 걸리지 않는다 — 그건 의도된 경계다.)
+ */
+function assertTokenBindingDelta(before: CanvasDocument, next: CanvasDocument) {
+  for (const [nodeId, node] of Object.entries(next.nodes)) {
+    const previous = before.nodes[nodeId]?.tokenBindings
+    for (const [key, value] of Object.entries(node.tokenBindings)) {
+      // 손대지 않은 기존 바인딩. 죽은 값을 **같은 값으로 재기입**하는 것도 여기 걸려 통과하는데,
+      // 값이 바뀌지 않으므로 새 오염을 만들지 못한다 — 이미 죽어 있던 것이 그대로 남을 뿐이다.
+      if (previous && previous[key] === value) continue
+      const error = validateTokenBinding(next.tokenSetId, value)
+      if (error) throw new Error(`${nodeId}.tokenBindings.${key}: ${error}`)
+    }
+  }
+}
+
+/**
+ * 이 연산이 **새로 넣거나 바꾼** 리터럴 색만 검사한다 — 그리고 두 출처가 겹치지 않는지 본다.
+ *
+ * `assertTokenBindingDelta`와 같은 자리에 같은 이유로 있다. `detach-token-binding` 하나에만
+ * 검사를 두었더니 `update-node.patch`와 `create-node`가 그대로 통과했다
+ * (독립 검증 refuted, 2026-07-21) — ECT1에서 토큰에 대해 똑같이 당한 실패를
+ * **새 필드에 되풀이했다.** 경로마다 막지 않고 길목에서 한 번 본다.
+ */
+function assertLiteralColorDelta(before: CanvasDocument, next: CanvasDocument) {
+  for (const [nodeId, node] of Object.entries(next.nodes)) {
+    const literals = node.literalColors
+    if (!literals) continue
+    const previous = before.nodes[nodeId]?.literalColors
+    for (const [key, value] of Object.entries(literals)) {
+      // 한 키에 바인딩과 리터럴이 같이 살면 리터럴은 화면에서 안 보이는 죽은 값이 된다.
+      if (key in node.tokenBindings) {
+        throw new Error(`${nodeId}.${key}: 토큰 바인딩과 원시 색이 동시에 있을 수 없습니다`)
+      }
+      if (previous && previous[key] === value) continue // 손대지 않은 기존 값
+      const error = validateLiteralColor(value)
+      if (error) throw new Error(`${nodeId}.literalColors.${key}: ${error}`)
+    }
+  }
+}
+
 function mutateOperation(next: CanvasDocument, operation: CanvasOperation) {
   const revisionBefore = next.revision
   switch (operation.type) {
@@ -152,6 +239,28 @@ function mutateOperation(next: CanvasDocument, operation: CanvasOperation) {
       Object.assign(node, copyPatch(operation.patch))
       break
     }
+    case 'detach-token-binding': {
+      const node = next.nodes[operation.nodeId]
+      if (!node) throw new Error(`missing node ${operation.nodeId}`)
+      const literalError = validateLiteralColor(operation.literal)
+      if (literalError) throw new Error(`${operation.nodeId}.${operation.key}: ${literalError}`)
+      delete node.tokenBindings[operation.key]
+      node.literalColors = { ...node.literalColors, [operation.key]: operation.literal }
+      break
+    }
+    case 'attach-token-binding': {
+      const node = next.nodes[operation.nodeId]
+      if (!node) throw new Error(`missing node ${operation.nodeId}`)
+      const error = validateTokenBinding(next.tokenSetId, operation.name)
+      if (error) throw new Error(`${operation.nodeId}.${operation.key}: ${error}`)
+      node.tokenBindings[operation.key] = operation.name
+      if (node.literalColors) {
+        const rest = { ...node.literalColors }
+        delete rest[operation.key]
+        node.literalColors = rest
+      }
+      break
+    }
     case 'transform-nodes': {
       const entries = Object.entries(operation.boundsById)
       if (!entries.length) throw new Error('transform-nodes requires at least one node')
@@ -160,6 +269,18 @@ function mutateOperation(next: CanvasDocument, operation: CanvasOperation) {
         if (!node) throw new Error(`missing node ${id}`)
         if (node.locked) throw new Error(`cannot transform locked node ${id}`)
         node.bounds = structuredClone(bounds)
+      }
+      break
+    }
+    case 'rotate-nodes': {
+      const entries = Object.entries(operation.rotationById)
+      if (!entries.length) throw new Error('rotate-nodes requires at least one node')
+      for (const [id, rotation] of entries) {
+        const node = next.nodes[id]
+        if (!node) throw new Error(`missing node ${id}`)
+        if (node.locked) throw new Error(`cannot rotate locked node ${id}`)
+        if (!Number.isFinite(rotation)) throw new Error(`rotation must be finite for ${id}`)
+        node.rotation = normalizeRotation(rotation)
       }
       break
     }
@@ -186,7 +307,7 @@ function mutateOperation(next: CanvasDocument, operation: CanvasOperation) {
         const parent = next.nodes[operation.parentId]
         if (!parent) throw new Error(`missing parent ${operation.parentId}`)
         if (parent.locked) throw new Error(`cannot reparent into locked node ${parent.id}`)
-        if (parent.kind === 'instance' || parent.kind === 'text') throw new Error(`cannot reparent into ${parent.kind} node ${parent.id}`)
+        if (parent.kind === 'instance' || parent.kind === 'text' || parent.kind === 'image' || parent.kind === 'shape') throw new Error(`cannot reparent into ${parent.kind} node ${parent.id}`)
         if (hasAncestor(next, parent.id, node.id)) throw new Error(`cannot reparent ${node.id} into its descendant ${parent.id}`)
       }
       removeFromParent(next, node)
@@ -229,12 +350,16 @@ export function applyOperation(document: CanvasDocument, operation: CanvasOperat
   }
   const next = structuredClone(document)
   mutateOperation(next, operation)
+  assertTokenBindingDelta(document, next)
+  assertLiteralColorDelta(document, next)
   return assertValidDocument(next)
 }
 
 export function replayOperations(initial: CanvasDocument, operations: CanvasOperation[]): CanvasDocument {
   const next = structuredClone(initial)
   for (const operation of operations) mutateOperation(next, operation)
+  assertTokenBindingDelta(initial, next)
+  assertLiteralColorDelta(initial, next)
   return assertValidDocument(next)
 }
 
@@ -266,6 +391,21 @@ export function invertOperation(before: CanvasDocument, operation: CanvasOperati
       }
       return { ...inverseBase, type: 'update-node', nodeId: node.id, patch }
     }
+    case 'detach-token-binding':
+    case 'attach-token-binding': {
+      /*
+       * 두 연산의 역은 같은 질문이다 — "이 키의 색 출처가 원래 무엇이었나".
+       * 바인딩이었으면 다시 묶고, 리터럴이었으면 그 리터럴로 되돌린다.
+       * 아무것도 없었으면 되돌릴 것이 없다(빈 리터럴은 detach가 거부한다).
+       */
+      const node = before.nodes[operation.nodeId]
+      if (!node) throw new Error(`cannot invert missing node ${operation.nodeId}`)
+      const binding = node.tokenBindings[operation.key]
+      if (binding) return { ...inverseBase, type: 'attach-token-binding', nodeId: node.id, key: operation.key, name: binding }
+      const literal = node.literalColors?.[operation.key]
+      if (literal) return { ...inverseBase, type: 'detach-token-binding', nodeId: node.id, key: operation.key, literal }
+      throw new Error(`${operation.nodeId}.${operation.key} had no colour source to restore`)
+    }
     case 'transform-nodes': {
       const boundsById: Record<NodeId, CanvasRect> = {}
       for (const id of Object.keys(operation.boundsById)) {
@@ -274,6 +414,15 @@ export function invertOperation(before: CanvasDocument, operation: CanvasOperati
         boundsById[id] = structuredClone(node.bounds)
       }
       return { ...inverseBase, type: 'transform-nodes', boundsById }
+    }
+    case 'rotate-nodes': {
+      const rotationById: Record<NodeId, number> = {}
+      for (const id of Object.keys(operation.rotationById)) {
+        const node = before.nodes[id]
+        if (!node) throw new Error(`cannot invert missing node ${id}`)
+        rotationById[id] = node.rotation
+      }
+      return { ...inverseBase, type: 'rotate-nodes', rotationById }
     }
     case 'set-node-property': {
       const node = before.nodes[operation.nodeId]

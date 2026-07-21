@@ -3,6 +3,7 @@ import {
   planNodeDrop,
   planSiblingReorder,
   type CanvasDocument,
+  type CanvasNode,
   type CanvasOperation,
   type NodeId,
 } from '@askewly/canvas-core'
@@ -17,9 +18,28 @@ interface LayerRow {
   level: number
   hasChildren: boolean
   expanded: boolean
+  /** 검색어에 직접 걸린 행인가. 조상은 맥락으로 함께 보이지만 매칭은 아니다. */
+  match: boolean
 }
 
 const LAYER_DRAG_TYPE = 'application/x-agent-design-layer'
+
+/**
+ * 종류마다 다른 글자.
+ *
+ * `Record<CanvasNode['kind'], …>`로 두는 게 핵심이다 — 전에는 삼항 연쇄 끝의 `: '▭'` 폴백이
+ * frame·image·shape 세 종류를 조용히 삼켰고, 1000행 트리에서 프레임과 이미지가 같아 보였다.
+ * 이제 새 kind가 생기면 여기가 비어 컴파일이 거부한다.
+ */
+export const LAYER_KIND_ICONS: Record<CanvasNode['kind'], string> = {
+  frame: '▣',
+  group: '⌗',
+  'code-component': '⧉',
+  text: 'T',
+  image: '▤',
+  shape: '◑',
+  instance: '◇',
+}
 
 function operationId(prefix: string) {
   return { id: `${prefix}-${performance.now()}`, at: new Date().toISOString() }
@@ -31,10 +51,36 @@ export function LayersPanel({ document, onOperation }: Props) {
   const [renamingId, setRenamingId] = useState<NodeId | null>(null)
   const [renameDraft, setRenameDraft] = useState('')
   const [dropState, setDropState] = useState<{ id: NodeId; valid: boolean } | null>(null)
+  const [search, setSearch] = useState('')
   const itemRefs = useRef(new Map<NodeId, HTMLDivElement>())
   const renameReturnId = useRef<NodeId | null>(null)
   const renameClosing = useRef(false)
   const layerDragId = useRef<NodeId | null>(null)
+
+  /**
+   * 검색어에 걸린 노드와 **그 조상 전부**의 집합. 검색어가 없으면 null(= 필터 없음)이다.
+   *
+   * 조상을 같이 담는 게 요점이다. 매칭 행만 남기면 계층이 사라져 "어디 있는 건지"를 못 답한다 —
+   * 그건 검색이 아니라 목록이다.
+   */
+  const searchMatches = useMemo(() => {
+    const needle = search.trim().toLowerCase()
+    if (!needle) return null
+    const keep = new Set<NodeId>()
+    const hits = new Set<NodeId>()
+    for (const node of Object.values(document.nodes)) {
+      if (!node.name.toLowerCase().includes(needle)) continue
+      hits.add(node.id)
+      keep.add(node.id)
+      let parentId = node.parentId
+      while (parentId && !keep.has(parentId)) {
+        keep.add(parentId)
+        parentId = document.nodes[parentId]?.parentId ?? null
+      }
+
+    }
+    return { keep, hits }
+  }, [document.nodes, search])
 
   const rows = useMemo(() => {
     const result: LayerRow[] = []
@@ -42,14 +88,19 @@ export function LayersPanel({ document, onOperation }: Props) {
       for (const id of ids) {
         const node = document.nodes[id]
         if (!node) continue
-        const expanded = expandedIds.has(id)
-        result.push({ id, level, hasChildren: node.childIds.length > 0, expanded })
+        if (searchMatches && !searchMatches.keep.has(id)) continue
+        // 검색 중에는 조상을 강제로 펼친다 — 접힌 조상 아래 결과가 숨으면 찾은 게 아니다.
+        const expanded = searchMatches ? node.childIds.some((childId) => searchMatches.keep.has(childId)) : expandedIds.has(id)
+        const hasChildren = searchMatches
+          ? node.childIds.some((childId) => searchMatches.keep.has(childId))
+          : node.childIds.length > 0
+        result.push({ id, level, hasChildren, expanded, match: searchMatches ? searchMatches.hits.has(id) : false })
         if (expanded && node.childIds.length) walk(node.childIds, level + 1)
       }
     }
     walk(document.rootIds, 1)
     return result
-  }, [document.nodes, document.rootIds, expandedIds])
+  }, [document.nodes, document.rootIds, expandedIds, searchMatches])
 
   useEffect(() => {
     if (!document.selection.length) return
@@ -62,6 +113,7 @@ export function LayersPanel({ document, onOperation }: Props) {
           parentId = document.nodes[parentId]?.parentId ?? null
         }
       }
+
       return next.size === current.size ? current : next
     })
   }, [document.nodes, document.selection])
@@ -177,7 +229,22 @@ export function LayersPanel({ document, onOperation }: Props) {
   const focusTargetId = focusedId && document.nodes[focusedId] ? focusedId : document.selection[0] ?? rows[0]?.id
 
   return <div className="layers-panel" data-testid="layers-panel">
-    {rows.length === 0
+    <div className="layers-search">
+      <input
+        type="search"
+        data-testid="layer-search"
+        aria-label="레이어 검색"
+        placeholder="레이어 검색"
+        value={search}
+        onChange={(event) => setSearch(event.target.value)}
+      />
+      {searchMatches ? <span className="layers-search-count" data-testid="layer-search-count">
+        {`${searchMatches.hits.size}건`}
+      </span> : null}
+    </div>
+    {searchMatches && searchMatches.hits.size === 0
+      ? <p className="layers-empty" data-testid="layers-no-match">{`"${search}"에 맞는 레이어가 없다.`}</p>
+      : rows.length === 0
       ? <p className="layers-empty" data-testid="layers-empty">No layers yet. Insert a frame to get started.</p>
       : <div role="tree" aria-label="Layers" className="layers-tree">
       {rows.map((row, rowIndex) => {
@@ -195,7 +262,8 @@ export function LayersPanel({ document, onOperation }: Props) {
           data-testid={`layer-${row.id}`}
           data-layer-parent-id={node.parentId ?? ''}
           data-drop-target={dropState?.id === row.id ? (dropState.valid ? 'active' : 'invalid') : 'idle'}
-          className={`layer-row${selected ? ' selected' : ''}${node.visible ? '' : ' hidden-node'}`}
+          className={`layer-row${selected ? ' selected' : ''}${node.visible ? '' : ' hidden-node'}${row.match ? ' layer-match' : ''}`}
+          data-layer-match={row.match ? 'hit' : searchMatches ? 'context' : undefined}
           style={{ paddingLeft: `${(row.level - 1) * 14 + 6}px` }}
           tabIndex={focusTargetId === row.id ? 0 : -1}
           draggable={!node.locked && !renaming}
@@ -227,7 +295,7 @@ export function LayersPanel({ document, onOperation }: Props) {
               onClick={(event) => { event.stopPropagation(); toggleExpanded(row.id) }}
             >{row.expanded ? '▾' : '▸'}</button>
             : <span className="layer-toggle" aria-hidden="true" />}
-          <span className="layer-kind" aria-hidden="true">{node.kind === 'code-component' ? '⧉' : node.kind === 'instance' ? '◇' : node.kind === 'text' ? 'T' : node.kind === 'group' ? '⌗' : '▭'}</span>
+          <span className="layer-kind" data-layer-kind={node.kind} title={node.kind}>{LAYER_KIND_ICONS[node.kind]}</span>
           {renaming
             ? <input
               className="layer-rename"

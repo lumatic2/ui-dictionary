@@ -1,0 +1,19 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "shipping-method-selector",
+  "type": "registry:block",
+  "title": "Shipping Method Selector",
+  "description": "A shipping method selector lets a checkout user compare delivery/pickup options by cost and timing in one glance, and binds the choice directly to the order total. Baymard's checkout-flow research treats a total that changes unexpectedly after this step as a trust problem — so selecting a method must recalculate the visible total immediately, not just at final confirmation.",
+  "docs": "Recipe contract (intent/anatomy/tokens/checks/anti-patterns): https://ui.askewly.com/llms/recipes/commerce/shipping-method-selector.md — after transplant, remap look to the project's own tokens per https://ui.askewly.com/llms/docs/design-system/component-restyle.md",
+  "registryDependencies": [
+    "radio-group"
+  ],
+  "dependencies": [],
+  "files": [
+    {
+      "path": "registry/askewly/shipping-method-selector/shipping-method-selector.tsx",
+      "type": "registry:component",
+      "content": "import { RadioGroup, RadioGroupItem } from \"@/components/ui/radio-group\"\nimport { cn } from \"@/lib/utils\"\n\nexport type ShippingMethod = {\n  id: string\n  name: string\n  carrier: string\n  eta: string\n  price: number\n  kind?: \"delivery\" | \"pickup\"\n}\n\ntype ShippingMethodSelectorProps = {\n  methods: ShippingMethod[]\n  selectedId: string\n  currency?: string\n  onChange: (id: string) => void\n}\n\nfunction formatMoney(value: number, currency: string) {\n  if (value === 0) return \"Free\"\n  return new Intl.NumberFormat(\"en-US\", { style: \"currency\", currency }).format(value)\n}\n\n/**\n * Radio group comparing shipping/pickup options side by side, each row\n * binding carrier, ETA, and price together so the recalculated total is\n * visible before the user commits to a method (Baymard checkout-flow\n * guidance: avoid a cost that only appears at final confirmation).\n */\nexport function ShippingMethodSelector({\n  methods,\n  selectedId,\n  currency = \"USD\",\n  onChange,\n}: ShippingMethodSelectorProps) {\n  return (\n    <RadioGroup value={selectedId} onValueChange={onChange}>\n      {methods.map((method) => {\n        const inputId = `shipping-method-${method.id}`\n        const selected = method.id === selectedId\n\n        return (\n          <label\n            key={method.id}\n            className={cn(\n              \"flex cursor-pointer items-start justify-between gap-4 rounded-md border p-3 transition\",\n              selected ? \"border-ring bg-accent/50\" : \"hover:bg-accent/30\"\n            )}\n            htmlFor={inputId}\n          >\n            <span className=\"flex items-start gap-3\">\n              <RadioGroupItem className=\"mt-0.5\" id={inputId} value={method.id} />\n              <span className=\"flex flex-col gap-0.5\">\n                <span className=\"text-sm font-medium\">\n                  {method.name}\n                  {method.kind === \"pickup\" ? (\n                    <span className=\"ml-2 text-xs font-normal text-muted-foreground\">In-store pickup</span>\n                  ) : null}\n                </span>\n                <span className=\"text-xs text-muted-foreground\">\n                  {method.carrier} · {method.eta}\n                </span>\n              </span>\n            </span>\n            <span className=\"shrink-0 text-sm font-medium tabular-nums\">\n              {formatMoney(method.price, currency)}\n            </span>\n          </label>\n        )\n      })}\n    </RadioGroup>\n  )\n}\n"
+    }
+  ]
+}

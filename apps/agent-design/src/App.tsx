@@ -7,7 +7,6 @@ import {
   documentContentBounds,
   fitViewport,
   loadSnapshot,
-  MemoryDocumentStore,
   planDeleteSelection,
   planDuplicateSelection,
   planGroupSelection,
@@ -16,10 +15,13 @@ import {
   saveSnapshot,
   selectionBounds,
   undo,
+  type CanvasDocument,
   type CanvasHistory,
   type CanvasOperation,
+  registerTokenVocabulary,
 } from '@askewly/canvas-core'
 import { planMaterializeRegistryNode } from '@askewly/component-registry'
+import { templateSignature, type TemplateProject } from '@askewly/template-core'
 import { BrowserDocumentStore } from './browserStore'
 import { CanvasSurface } from './CanvasSurface'
 import { desktopHost, type DesktopBridgeState, type DesktopBridgeStatus, type DesktopCanvasSnapshot, type DesktopCanvasSnapshotReason, type PreviewStatus, type TrustedFileSummary, type TrustedProjectSummary } from './desktopHost'
@@ -27,10 +29,16 @@ import { AgentPanel } from './AgentPanel'
 import { ArrangementToolbar } from './ArrangementToolbar'
 import { InsertPalette } from './InsertPalette'
 import { LayersPanel } from './LayersPanel'
+import { TemplateGallery } from './TemplateGallery'
 import { PropertyInspector } from './PropertyInspector'
+import { documentTokenExists } from './documentTokens'
+
+// canvas-core는 어휘를 모른다(런타임 의존 0). 어휘를 아는 이쪽이 조회 함수를 건넨다 —
+// 이게 없으면 토큰 검증이 모양 검사로만 남아 없는 토큰이 조용히 저장된다(ECT1 step-3).
+// 모듈 최상위에서 등록하므로 App을 렌더하는 모든 경로(앱·테스트)가 같은 규칙을 쓴다.
+registerTokenVocabulary(documentTokenExists)
 import type { EditorPlaneFailure } from './editorPlaneRuntime'
 import { LiveBridgeClient, liveBridgeConfig, type CollaborationFeed } from './liveBridge'
-import { appModeFromSearch, type AppMode } from './benchmark'
 
 const store = new BrowserDocumentStore()
 const nextFrame = () => new Promise<number>((resolve) => requestAnimationFrame(resolve))
@@ -76,83 +84,20 @@ export function desktopBridgeStateLabel(state: DesktopBridgeState): string {
   return DESKTOP_BRIDGE_STATE_LABELS[state] ?? state
 }
 
-type ProjectState = 'loading' | 'ready' | 'opening' | 'error'
-
-function desktopProjectMatches(activeProject: TrustedProjectSummary | null, bridge: DesktopBridgeStatus | null): boolean {
-  return Boolean(activeProject?.id && bridge?.projectId && activeProject.id === bridge.projectId)
-}
-
-function ProductionProjectEntry({
-  hostAvailable,
-  activeProject,
-  recentProjects,
-  projectState,
-  projectError,
-  onOpenProject,
-  onOpenRecentProject,
-}: {
-  hostAvailable: boolean
-  activeProject: TrustedProjectSummary | null
-  recentProjects: TrustedProjectSummary[]
-  projectState: ProjectState
-  projectError: string
-  onOpenProject: () => void
-  onOpenRecentProject: (projectId: string) => void
-}) {
-  const hasTarget = Boolean(activeProject)
-  const isOpening = projectState === 'opening'
-  const waitingForSnapshot = projectState === 'ready' && hasTarget
-  const heading = projectState === 'loading'
-    ? 'Loading trusted projects.'
-    : projectState === 'error'
-      ? 'This project could not be opened.'
-      : isOpening
-        ? `Opening ${activeProject?.displayName ?? 'project'}…`
-        : waitingForSnapshot
-          ? `Loading ${activeProject?.displayName ?? 'project'}…`
-          : recentProjects.length > 0
-            ? 'Continue with a trusted project.'
-            : 'Open a trusted React project.'
-  const description = projectState === 'error'
-    ? 'The previous document is not available until a trusted snapshot is loaded.'
-    : isOpening || waitingForSnapshot
-      ? 'Waiting for a trusted project snapshot.'
-      : 'Choose a local project. Demo and benchmark data never appears in this workspace.'
-  const status = projectState === 'loading'
-    ? 'Loading recent projects…'
-    : isOpening || waitingForSnapshot
-      ? 'Waiting for a trusted snapshot…'
-      : null
-
-  return <section className="project-entry" data-testid="production-empty-state" data-project-state={projectState} aria-label="Production document state">
-    <div className="entry-copy">
-      <span className="entry-mark" aria-hidden="true">A</span>
-      <p className="eyebrow">AskewlyDesign workspace</p>
-      <h2>{heading}</h2>
-      <p>{description}</p>
-      {hostAvailable && <button className="primary-action entry-action" type="button" disabled={isOpening} onClick={onOpenProject}>{isOpening ? 'Opening…' : 'Open project'}</button>}
-      {status && <p className="production-loading" data-testid="production-loading-state" role="status">{status}</p>}
-      {projectState === 'error' && <p className="entry-error" data-testid="production-error-state" role="alert">{projectError || 'The trusted project is unavailable.'} {hostAvailable && <button type="button" onClick={onOpenProject}>Try again</button>}</p>}
-      {!hostAvailable && <p role="status">Open this surface from the desktop app or connect a trusted live bridge.</p>}
-    </div>
-    {recentProjects.length > 0 && <div className="recent-projects" data-testid="recent-projects">
-      <h3>Recent projects</h3>
-      {recentProjects.map((project) => <button type="button" key={project.id} data-testid={`recent-project-${project.id}`} disabled={isOpening} onClick={() => onOpenRecentProject(project.id)}>
-        <strong>{project.displayName}</strong>
-        <span>Open workspace</span>
-      </button>)}
-    </div>}
-  </section>
-}
-
-export function App({ mode = appModeFromSearch(window.location.search), initialBenchmarkNodes = 1000 }: { mode?: AppMode; initialBenchmarkNodes?: 200 | 1000 | 5000 }) {
-  const benchmarkMode = mode === 'benchmark'
-  const host = benchmarkMode ? null : desktopHost()
-  const [size, setSize] = useState(initialBenchmarkNodes)
+export function App() {
+  const [size, setSize] = useState<1000 | 5000>(1000)
   const [failure, setFailure] = useState<EditorPlaneFailure | null>(null)
-  const baseDocument = useMemo(() => benchmarkMode ? createDocumentFixture(size as 1000 | 5000) : null, [benchmarkMode, size])
-  const [history, setHistory] = useState<CanvasHistory | null>(() => baseDocument ? createHistory(baseDocument) : null)
-  const [status, setStatus] = useState(() => benchmarkMode ? 'unsaved' : 'No trusted document loaded')
+  const baseDocument = useMemo(() => createDocumentFixture(size), [size])
+  /**
+   * 지금 편집 중인 이력의 **출발 문서**. `baseDocument`(dev fixture)와 다를 수 있다 —
+   * 템플릿을 열거나 데스크톱 스냅샷을 받으면 그쪽이 출발점이 된다.
+   *
+   * 이걸 분리하지 않으면 저장이 깨진다: 스냅샷은 `출발 문서 + 연산 로그`로 직렬화되는데,
+   * 템플릿을 열어 편집한 뒤 fixture를 출발 문서로 저장하면 재적재 때 템플릿이 사라진다.
+   */
+  const [editingBase, setEditingBase] = useState<CanvasDocument>(baseDocument)
+  const [history, setHistory] = useState<CanvasHistory>(() => createHistory(baseDocument))
+  const [status, setStatus] = useState('unsaved')
   const [connection, setConnection] = useState<'offline' | 'connecting' | 'connected' | 'reconnecting' | 'disconnected' | 'error'>('offline')
   const [liveLatency, setLiveLatency] = useState<number | null>(null)
   const [desktopBridge, setDesktopBridge] = useState<DesktopBridgeStatus | null>(null)
@@ -161,69 +106,62 @@ export function App({ mode = appModeFromSearch(window.location.search), initialB
   const [activeProject, setActiveProject] = useState<TrustedProjectSummary | null>(null)
   const [preview, setPreview] = useState<PreviewStatus | null>(null)
   const [projectFiles, setProjectFiles] = useState<TrustedFileSummary[]>([])
-  const [projectState, setProjectState] = useState<ProjectState>(() => host ? 'loading' : 'ready')
+  const [projectState, setProjectState] = useState<'loading' | 'ready' | 'opening' | 'error'>('loading')
   const [projectError, setProjectError] = useState('')
   const [leftPanelOpen, setLeftPanelOpen] = useState(true)
   const [rightPanelOpen, setRightPanelOpen] = useState(true)
   const [insertOpen, setInsertOpen] = useState(false)
+  const [templatesOpen, setTemplatesOpen] = useState(false)
+  const [templateProject, setTemplateProject] = useState<TemplateProject | null>(null)
   const [shortcutsOpen, setShortcutsOpen] = useState(false)
   const [agentsOpen, setAgentsOpen] = useState(false)
+  const [devFixtureWorkspace, setDevFixtureWorkspace] = useState(false)
   const [collabFeed, setCollabFeed] = useState<CollaborationFeed | null>(null)
   const [viewportPreset, setViewportPreset] = useState<ViewportPreset>('desktop')
   const [agentError, setAgentError] = useState('')
   const stageRef = useRef<HTMLElement>(null)
   const shortcutsDialogRef = useRef<HTMLDivElement>(null)
   const shortcutsOpenerRef = useRef<HTMLElement | null>(null)
-  const activeProjectRef = useRef<TrustedProjectSummary | null>(null)
-  const desktopBridgeRef = useRef<DesktopBridgeStatus | null>(null)
-  const initialProjectReconciledRef = useRef(false)
-  const liveConfig = useMemo(() => benchmarkMode || host ? null : liveBridgeConfig(), [benchmarkMode, host])
+  const liveConfig = useMemo(() => desktopHost() ? null : liveBridgeConfig(), [])
   const liveClient = useRef<LiveBridgeClient | null>(null)
   const pendingPaint = useRef<{ revision: number; started: number } | null>(null)
-  const benchmarkStore = useMemo(() => new MemoryDocumentStore(), [])
-  const documentStore = benchmarkMode ? benchmarkStore : store
-  const storageKey = history ? `agent-design:${history.present.id}` : ''
+  // 저장 슬롯은 **편집 중인 문서**를 따라간다 — 템플릿마다 독립 슬롯을 갖는다.
+  const storageKey = `agent-design:${editingBase.id}`
 
-  const acceptDesktopSnapshot = useCallback((snapshot: DesktopCanvasSnapshot, reason: DesktopCanvasSnapshotReason, receivedAt = performance.now(), expectedProjectId?: string): boolean => {
-    if (benchmarkMode) return false
-    if (host && !desktopProjectMatches(activeProjectRef.current, desktopBridgeRef.current)) return false
-    if (host && expectedProjectId && expectedProjectId !== activeProjectRef.current?.id) return false
+  const acceptDesktopSnapshot = useCallback((snapshot: DesktopCanvasSnapshot, reason: DesktopCanvasSnapshotReason, receivedAt = performance.now()) => {
     pendingPaint.current = { revision: snapshot.revision, started: receivedAt }
+    setEditingBase(snapshot.document)
     setHistory(createHistory(snapshot.document))
     setStatus(`${reason} revision ${snapshot.revision}`)
     setConnection('connected')
-    setProjectState('ready')
     setAgentError('')
-    return true
-  }, [benchmarkMode, host])
+  }, [])
 
-  const trustedDesktopProjectId = useCallback(() => {
-    if (!host || desktopBridgeRef.current?.state !== 'ready') return null
-    const activeProjectId = activeProjectRef.current?.id
-    const bridgeProjectId = desktopBridgeRef.current.projectId
-    return activeProjectId && bridgeProjectId && activeProjectId === bridgeProjectId ? bridgeProjectId : null
-  }, [host])
-
-  useEffect(() => { activeProjectRef.current = activeProject }, [activeProject])
-  useEffect(() => { desktopBridgeRef.current = desktopBridge }, [desktopBridge])
+  // 템플릿 열기 — 컴파일된 장면이 곧 캔버스 문서다. 실패 시 갤러리가 여기까지 오지 않는다.
+  const openTemplate = useCallback((project: TemplateProject) => {
+    setTemplateProject(project)
+    setEditingBase(project.scene)
+    setHistory(createHistory(project.scene))
+    setStatus(`template ${project.request.id} · ${templateSignature(project)}`)
+    setFailure(null)
+  }, [])
 
   useEffect(() => {
-    if (baseDocument) {
-      setHistory(createHistory(baseDocument))
-      setStatus('unsaved')
-    } else {
-      setHistory(null)
-      setStatus('No trusted document loaded')
-    }
-  }, [baseDocument])
+    // 템플릿이 열려 있으면 fixture 크기 변경이 문서를 갈아치우지 않는다 — 템플릿이 이긴다.
+    if (templateProject) return
+    setEditingBase(baseDocument)
+    setHistory(createHistory(baseDocument))
+    setStatus('unsaved')
+  }, [baseDocument, templateProject])
 
   useEffect(() => {
-    if (benchmarkMode || !liveConfig) return
+    if (!liveConfig) return
     const client = new LiveBridgeClient(liveConfig, {
       onStatus: setConnection,
       onError: (error) => setStatus(error instanceof Error ? error.message : 'bridge error'),
       onSnapshot: (snapshot, meta) => {
         pendingPaint.current = { revision: snapshot.revision, started: meta.receivedAt }
+        setEditingBase(snapshot.document)
         setHistory(createHistory(snapshot.document))
         setStatus(`${meta.reason} revision ${snapshot.revision}`)
       },
@@ -232,192 +170,123 @@ export function App({ mode = appModeFromSearch(window.location.search), initialB
     liveClient.current = client
     void client.connect()
     return () => { client.disconnect(); liveClient.current = null }
-  }, [benchmarkMode, liveConfig])
+  }, [liveConfig])
 
   useEffect(() => {
-    if (benchmarkMode || !host) return
-    initialProjectReconciledRef.current = false
+    const host = desktopHost()
+    if (!host) return
     let active = true
-    const bridgeStatus = host.getBridgeStatus({ apiVersion: 1 })
-    const recentProjectsRequest = host.recentProjects({ apiVersion: 1 })
-    void Promise.allSettled([bridgeStatus, recentProjectsRequest]).then(([bridgeResult, projectsResult]) => {
-      if (!active) return
-      const statusLoaded = bridgeResult.status === 'fulfilled'
-      const projectsLoaded = projectsResult.status === 'fulfilled'
-      const failed = { apiVersion: 1, state: 'failed', projectId: null, restartCount: 0, cursor: 0, revision: 0, lastErrorCode: 'HOST_STATUS_ERROR', recoveryMode: null } as const
-      const next = statusLoaded ? bridgeResult.value : failed
-      const projects = projectsLoaded ? projectsResult.value : []
-      desktopBridgeRef.current = next
-      setDesktopBridge(next)
-      setRecentProjects(projects)
-      const currentProject = next.projectId ? projects.find((project) => project.id === next.projectId) ?? null : null
-      activeProjectRef.current = currentProject
-      setActiveProject(currentProject)
-      setHistory(null)
-      if (!statusLoaded || !projectsLoaded) {
-        setProjectState('error')
-        setProjectError(!projectsLoaded ? 'Recent projects could not be loaded.' : 'The desktop project service could not be reached.')
-      } else if (next.projectId && !currentProject) {
-        setProjectState('error')
-        setProjectError('The active desktop project is not in the recent project list. Choose Open project to select it again.')
-      } else {
-        setProjectState('ready')
-        setProjectError('')
-      }
-      initialProjectReconciledRef.current = true
-    })
-    const unsubscribe = host.onBridgeStatus((next) => {
+    void host.getBridgeStatus({ apiVersion: 1 }).then(
+      (next) => { if (active) setDesktopBridge(next) },
+      () => { if (active) setDesktopBridge({ apiVersion: 1, state: 'failed', projectId: null, restartCount: 0, cursor: 0, revision: 0, lastErrorCode: 'HOST_STATUS_ERROR', recoveryMode: null }) },
+    )
+    void host.recentProjects({ apiVersion: 1 }).then((projects) => {
       if (active) {
-        desktopBridgeRef.current = next
-        setDesktopBridge(next)
-        if (!initialProjectReconciledRef.current) return
-        const activeProjectId = activeProjectRef.current?.id ?? null
-        const bridgeProjectId = next.projectId
-        if ((activeProjectId || bridgeProjectId) && activeProjectId !== bridgeProjectId) {
-          setHistory(null)
-          setStatus('Waiting for a trusted project snapshot')
-          setConnection(next.state === 'failed' ? 'error' : 'reconnecting')
-          setProjectState(next.state === 'failed' ? 'error' : 'opening')
-          setProjectError(next.state === 'failed' ? 'The desktop project connection failed. Choose Open project to try again.' : '')
-        }
+        setRecentProjects(projects)
+        setActiveProject((current) => current ?? projects[0] ?? null)
+        setProjectState('ready')
       }
-    })
+    }, () => { if (active) { setProjectState('error'); setProjectError('Recent projects could not be loaded.') } })
+    const unsubscribe = host.onBridgeStatus((next) => { if (active) setDesktopBridge(next) })
     const unsubscribeCanvas = host.onCanvasSnapshot((snapshot, reason) => {
-      if (active && desktopProjectMatches(activeProjectRef.current, desktopBridgeRef.current)) acceptDesktopSnapshot(snapshot, reason)
+      if (active) acceptDesktopSnapshot(snapshot, reason)
     })
     return () => { active = false; unsubscribe(); unsubscribeCanvas() }
-  }, [acceptDesktopSnapshot, benchmarkMode, host])
+  }, [acceptDesktopSnapshot])
 
   useEffect(() => {
-    if (benchmarkMode || !desktopBridge?.projectId) return
-    const project = recentProjects.find((candidate) => candidate.id === desktopBridge.projectId)
-    if (!project || activeProjectRef.current?.id === project.id) return
-    setHistory(null)
-    activeProjectRef.current = project
-    setActiveProject(project)
-    setProjectState(desktopBridge.state === 'ready' ? 'ready' : 'opening')
-    setProjectError('')
-  }, [benchmarkMode, desktopBridge?.projectId, desktopBridge?.state, recentProjects])
-
-  useEffect(() => {
-    const trustedProjectId = activeProject?.id && desktopBridge?.projectId === activeProject.id ? activeProject.id : null
-    if (benchmarkMode || !host || projectState !== 'ready' || desktopBridge?.state !== 'ready' || !trustedProjectId) return
+    const host = desktopHost()
+    if (!host || desktopBridge?.state !== 'ready') return
     let active = true
     void host.getCollaborationFeed({ apiVersion: 1 }).then((feed) => { if (active) setCollabFeed(feed) }, () => {})
     const unsubscribeFeed = host.onCollaborationFeed((feed) => { if (active) setCollabFeed(feed) })
     setConnection('connecting')
     void host.getCanvasSnapshot({ apiVersion: 1 }).then(
-      (snapshot) => {
-        if (active && activeProjectRef.current?.id === trustedProjectId && desktopBridgeRef.current?.projectId === trustedProjectId) {
-          acceptDesktopSnapshot(snapshot, desktopBridge.recoveryMode === 'recovered' ? 'recovery' : 'initial', performance.now(), trustedProjectId)
-        }
-      },
-      () => {
-        if (active) {
-          setHistory(null)
-          setConnection('reconnecting')
-          setProjectState('error')
-          setProjectError('The project snapshot could not be loaded. Try opening the project again.')
-        }
-      },
+      (snapshot) => { if (active) acceptDesktopSnapshot(snapshot, desktopBridge.recoveryMode === 'recovered' ? 'recovery' : 'initial') },
+      () => { if (active) setConnection('reconnecting') },
     )
     return () => { active = false; unsubscribeFeed() }
-  }, [acceptDesktopSnapshot, activeProject?.id, benchmarkMode, desktopBridge?.projectId, desktopBridge?.recoveryMode, desktopBridge?.state, host, projectState])
+  }, [acceptDesktopSnapshot, desktopBridge?.recoveryMode, desktopBridge?.state])
 
   useEffect(() => {
-    if (benchmarkMode || !host || !activeProject) { setProjectFiles([]); return }
+    const host = desktopHost()
+    if (!host || !activeProject) { setProjectFiles([]); return }
     let active = true
     void host.catalogFiles({ apiVersion: 1, projectId: activeProject.id }).then((files) => { if (active) setProjectFiles(files) }, () => { if (active) setProjectFiles([]) })
     return () => { active = false }
-  }, [activeProject, benchmarkMode, host])
+  }, [activeProject])
 
   const copyTerminalCommand = useCallback(async (actor: 'codex' | 'claude') => {
-    if (benchmarkMode || !host) return
+    const host = desktopHost()
+    if (!host) return
     try {
       await host.copyTerminalCommand({ apiVersion: 1, actor })
       setTerminalCopy(actor)
     } catch {
       setTerminalCopy('error')
     }
-  }, [benchmarkMode, host])
+  }, [])
 
   const selectProject = useCallback(async () => {
-    if (benchmarkMode || !host) return
+    const host = desktopHost()
+    if (!host) return
     setProjectState('opening')
     setProjectError('')
     try {
       const result = await host.selectProject({ apiVersion: 1 })
       if (!result.canceled && result.project) {
-        setHistory(null)
-        activeProjectRef.current = result.project
         setActiveProject(result.project)
         setRecentProjects((current) => [result.project!, ...current.filter((project) => project.id !== result.project?.id)])
-      } else {
-        setProjectState('ready')
       }
+      setProjectState('ready')
     } catch {
-      setHistory(null)
-      activeProjectRef.current = null
-      setActiveProject(null)
       setProjectState('error')
       setProjectError('This folder could not be opened. Check access and try again.')
     }
-  }, [benchmarkMode, host])
+  }, [])
 
   const openRecentProject = useCallback(async (projectId: string) => {
-    if (benchmarkMode || !host || !projectId) return
+    const host = desktopHost()
+    if (!host || !projectId) return
     setProjectState('opening')
-    setProjectError('')
-    setHistory(null)
-    const target = recentProjects.find((project) => project.id === projectId) ?? null
-    activeProjectRef.current = target
-    setActiveProject(target)
     try {
-      const project = await host.openRecentProject({ apiVersion: 1, projectId })
-      activeProjectRef.current = project
-      setActiveProject(project)
+      setActiveProject(await host.openRecentProject({ apiVersion: 1, projectId }))
+      setProjectState('ready')
     } catch {
-      activeProjectRef.current = null
-      setActiveProject(null)
       setProjectState('error')
       setProjectError('The recent project is no longer available.')
     }
-  }, [benchmarkMode, host, recentProjects])
+  }, [])
 
   const togglePreview = useCallback(async () => {
-    if (benchmarkMode || !host || !activeProject) return
+    const host = desktopHost()
+    if (!host || !activeProject) return
     setPreview(preview?.visible
       ? await host.hidePreview({ apiVersion: 1 })
       : await host.openPreview({ apiVersion: 1, projectId: activeProject.id }))
-  }, [activeProject, benchmarkMode, host, preview?.visible])
+  }, [activeProject, preview?.visible])
 
   useEffect(() => {
     const pending = pendingPaint.current
-    if (!pending || !history || pending.revision !== history.present.revision) return
+    if (!pending || pending.revision !== history.present.revision) return
     const frame = requestAnimationFrame(() => {
       setLiveLatency(performance.now() - pending.started)
       pendingPaint.current = null
     })
     return () => cancelAnimationFrame(frame)
-  }, [history?.present.revision])
+  }, [history.present.revision])
 
   const applyDemo = useCallback(() => {
-    setHistory((current) => current ? demoOperations().reduce(commitOperation, current) : current)
+    setHistory((current) => demoOperations().reduce(commitOperation, current))
     setStatus('changed')
   }, [])
 
   const commit = useCallback((operation: CanvasOperation) => {
-    if (host) {
-      const projectId = trustedDesktopProjectId()
-      if (!projectId) {
-        const message = 'Editing is unavailable until the trusted project is connected.'
-        setStatus(message)
-        setAgentError(message)
-        return
-      }
+    const host = desktopHost()
+    if (host && desktopBridge?.state === 'ready') {
       const started = performance.now()
       void host.applyCanvasOperation({ apiVersion: 1, operation }).then(
-        (snapshot) => acceptDesktopSnapshot(snapshot, 'transaction', started, projectId),
+        (snapshot) => acceptDesktopSnapshot(snapshot, 'transaction', started),
         (error: unknown) => {
           const message = error instanceof Error ? error.message : 'desktop bridge mutation failed'
           setStatus(message)
@@ -426,13 +295,13 @@ export function App({ mode = appModeFromSearch(window.location.search), initialB
       )
       return
     }
-    if (!benchmarkMode && liveClient.current) {
+    if (liveClient.current) {
       void liveClient.current.applyOperation(operation).catch((error) => setStatus(error instanceof Error ? error.message : 'bridge mutation failed'))
       return
     }
-    setHistory((current) => current ? commitOperation(current, operation) : current)
+    setHistory((current) => commitOperation(current, operation))
     setStatus('changed')
-  }, [acceptDesktopSnapshot, benchmarkMode, host, trustedDesktopProjectId])
+  }, [acceptDesktopSnapshot, desktopBridge?.state])
 
   const fitTo = useCallback((bounds: { x: number; y: number; width: number; height: number } | null) => {
     if (!bounds || !(bounds.width > 0 && bounds.height > 0)) return
@@ -442,19 +311,18 @@ export function App({ mode = appModeFromSearch(window.location.search), initialB
   }, [commit])
 
   const resetZoom = useCallback(() => {
-    if (!history) return
     commit({ id: `zoom-reset-${performance.now()}`, at: new Date().toISOString(), type: 'set-viewport', pan: history.present.viewport.pan, zoom: 1 })
-  }, [commit, history?.present.viewport.pan])
+  }, [commit, history.present.viewport.pan])
 
   const applyViewportPreset = useCallback((preset: ViewportPreset) => {
     setViewportPreset(preset)
-    if (preset === 'desktop' || !history) return
+    if (preset === 'desktop') return
     const rootId = history.present.rootIds[0]
     const root = rootId ? history.present.nodes[rootId] : null
     if (!root) return
     const size = VIEWPORT_PRESET_SIZES[preset]
     commit({ id: `viewport-preset-${performance.now()}`, at: new Date().toISOString(), type: 'update-node', nodeId: root.id, patch: { bounds: { ...root.bounds, ...size } } })
-  }, [commit, history])
+  }, [commit, history.present])
 
   useEffect(() => {
     const isEditable = (target: EventTarget | null) =>
@@ -478,7 +346,6 @@ export function App({ mode = appModeFromSearch(window.location.search), initialB
         return
       }
       if (isEditable(event.target)) return
-      if (!history) return
       const present = history.present
       const at = new Date().toISOString()
       const dispatch = (plan: () => CanvasOperation) => { try { commit(plan()) } catch { /* planner rejected the selection */ } }
@@ -506,7 +373,7 @@ export function App({ mode = appModeFromSearch(window.location.search), initialB
     }
     window.addEventListener('keydown', onKey)
     return () => window.removeEventListener('keydown', onKey)
-  }, [commit, fitTo, history?.present, resetZoom, shortcutsOpen])
+  }, [commit, fitTo, history.present, resetZoom, shortcutsOpen])
 
   useEffect(() => {
     if (shortcutsOpen) {
@@ -521,17 +388,11 @@ export function App({ mode = appModeFromSearch(window.location.search), initialB
   }, [shortcutsOpen])
 
   const undoCurrent = useCallback(() => {
-    if (host) {
-      const projectId = trustedDesktopProjectId()
-      if (!projectId) {
-        const message = 'Undo is unavailable until the trusted project is connected.'
-        setStatus(message)
-        setAgentError(message)
-        return
-      }
+    const host = desktopHost()
+    if (host && desktopBridge?.state === 'ready') {
       const started = performance.now()
       void host.undoCanvas({ apiVersion: 1 }).then(
-        (snapshot) => acceptDesktopSnapshot(snapshot, 'transaction', started, projectId),
+        (snapshot) => acceptDesktopSnapshot(snapshot, 'transaction', started),
         (error: unknown) => {
           const message = error instanceof Error ? error.message : 'desktop bridge undo failed'
           setStatus(message)
@@ -540,22 +401,22 @@ export function App({ mode = appModeFromSearch(window.location.search), initialB
       )
       return
     }
-    if (!benchmarkMode && liveClient.current) {
+    if (liveClient.current) {
       void liveClient.current.undo().catch((error) => setStatus(error instanceof Error ? error.message : 'bridge undo failed'))
       return
     }
-    setHistory((current) => current ? undo(current) : current)
-  }, [acceptDesktopSnapshot, benchmarkMode, host, trustedDesktopProjectId])
+    setHistory(undo)
+  }, [acceptDesktopSnapshot, desktopBridge?.state])
 
   const materializeNode = useCallback((nodeId: string) => {
-    const projectId = trustedDesktopProjectId()
-    if (benchmarkMode || !host || !projectId || !history) return
+    const host = desktopHost()
+    if (!host || desktopBridge?.state !== 'ready') return
     try {
       const plan = planMaterializeRegistryNode(history.present, nodeId, { existingFiles: projectFiles.map((file) => file.label) })
       const started = performance.now()
       void host.materializeNode({ apiVersion: 1, file: plan.filePath, content: plan.content }).then(
         (snapshot) => {
-          acceptDesktopSnapshot(snapshot, 'transaction', started, projectId)
+          acceptDesktopSnapshot(snapshot, 'transaction', started)
           setStatus(`materialized to ${plan.filePath}`)
         },
         (error: unknown) => {
@@ -569,32 +430,30 @@ export function App({ mode = appModeFromSearch(window.location.search), initialB
       setStatus(message)
       setAgentError(message)
     }
-  }, [acceptDesktopSnapshot, benchmarkMode, history?.present, host, projectFiles, trustedDesktopProjectId])
+  }, [acceptDesktopSnapshot, desktopBridge?.state, history.present, projectFiles])
 
   const save = useCallback(async () => {
-    if (!history || !storageKey) return
-    const bytes = await saveSnapshot(documentStore, storageKey, baseDocument ?? history.present, history.log)
+    const bytes = await saveSnapshot(store, storageKey, editingBase, history.log)
     setStatus(`saved ${bytes} bytes`)
-  }, [baseDocument, documentStore, history, storageKey])
+  }, [editingBase, history.log, storageKey])
 
   const reload = useCallback(async () => {
-    if (!storageKey) return
-    const recovered = await loadSnapshot(documentStore, storageKey)
+    const recovered = await loadSnapshot(store, storageKey)
     if (!recovered) { setStatus('no saved document'); return }
     setHistory(recovered)
     setStatus(`reloaded revision ${recovered.present.revision}`)
-  }, [documentStore, storageKey])
+  }, [storageKey])
 
   const runTrace = useCallback(async (frames = 90) => {
     const intervals: number[] = []
     let previous = await nextFrame()
     for (let index = 0; index < frames; index += 1) {
-      setHistory((current) => current ? ({
+      setHistory((current) => ({
         ...current,
         present: applyOperation(current.present, index % 2 === 0
           ? { id: `trace-view-${index}`, at: '2026-07-10T04:00:00.000Z', type: 'set-viewport', pan: { x: -index * 1.5, y: -index * 0.7 }, zoom: 0.9 + (index % 20) * 0.005 }
           : { id: `trace-select-${index}`, at: '2026-07-10T04:00:00.000Z', type: 'select-nodes', nodeIds: [`node-${String((index % 99) + 1).padStart(5, '0')}`] }),
-      }) : current)
+      }))
       const now = await nextFrame()
       intervals.push(now - previous)
       previous = now
@@ -619,8 +478,8 @@ export function App({ mode = appModeFromSearch(window.location.search), initialB
     for (let index = 0; index < frames; index += 1) {
       const started = performance.now()
       viewport.dispatchEvent(new PointerEvent('pointermove', { bubbles: true, pointerId, isPrimary: true, clientX: 120 + index + 1, clientY: 120 + (index % 8), buttons: 1 }))
-      await nextFrame()
-      latencies.push(performance.now() - started)
+      const painted = await nextFrame()
+      latencies.push(painted - started)
     }
     viewport.dispatchEvent(new PointerEvent('pointerup', { bubbles: true, pointerId, isPrimary: true, clientX: 120 + frames, clientY: 120 + (frames % 8) }))
     await nextFrame()
@@ -636,13 +495,10 @@ export function App({ mode = appModeFromSearch(window.location.search), initialB
   }, [])
 
   useEffect(() => {
-    if (!benchmarkMode || !history) {
-      delete window.__agentDesignBenchmark
-      return
-    }
     window.__agentDesignBenchmark = {
       runTrace,
       runPointerTrace,
+      openDevFixture: () => setDevFixtureWorkspace(true),
       inspect: (nodeId?: string) => ({
         revision: history.present.revision,
         selection: [...history.present.selection],
@@ -652,31 +508,7 @@ export function App({ mode = appModeFromSearch(window.location.search), initialB
       }),
     }
     return () => { delete window.__agentDesignBenchmark }
-  }, [benchmarkMode, history?.log.length, history?.present, runPointerTrace, runTrace])
-
-  if (!history) {
-    const hostAvailable = Boolean(host)
-    return <main className="app-shell" data-ad-mode="default">
-      <header className="app-header" aria-label="Application title bar">
-        <div className="brand-lockup">
-          <span className="brand-mark" aria-hidden="true">A</span>
-          <div>
-            <h1>AskewlyDesign</h1>
-            <p>Untitled workspace</p>
-          </div>
-        </div>
-      </header>
-      <ProductionProjectEntry
-        hostAvailable={hostAvailable}
-        activeProject={activeProject}
-        recentProjects={recentProjects}
-        projectState={projectState}
-        projectError={projectError}
-        onOpenProject={() => void selectProject()}
-        onOpenRecentProject={(projectId) => void openRecentProject(projectId)}
-      />
-    </main>
-  }
+  }, [history.log.length, history.present, runPointerTrace, runTrace])
 
   return <main className="app-shell" data-ad-mode={history.present.tokenSetId === 'askewly.dark' ? 'dark' : 'default'}>
     <header className="app-header" aria-label="Application title bar">
@@ -699,13 +531,14 @@ export function App({ mode = appModeFromSearch(window.location.search), initialB
       <div className="toolbar-group" role="group" aria-label="Panels">
         <button type="button" aria-label="Toggle workspace navigation" aria-pressed={leftPanelOpen} onClick={() => setLeftPanelOpen((value) => !value)}>Sidebar</button>
         <button type="button" data-testid="toggle-insert" aria-pressed={insertOpen} onClick={() => setInsertOpen((value) => !value)}>Insert</button>
+        <button type="button" data-testid="toggle-templates" aria-pressed={templatesOpen} onClick={() => setTemplatesOpen((value) => !value)}>Templates</button>
       </div>
       <div className="toolbar-group" role="group" aria-label="Document">
-        {benchmarkMode && <button type="button" data-testid="apply-demo" onClick={applyDemo}>Apply operation</button>}
+        <button type="button" data-testid="apply-demo" onClick={applyDemo}>Apply operation</button>
         <button type="button" data-testid="undo" disabled={!liveConfig && !history.past.length} onClick={undoCurrent}>Undo</button>
-        <button type="button" data-testid="redo" disabled={!history.future.length} onClick={() => setHistory((current) => current ? redo(current) : current)}>Redo</button>
-        {benchmarkMode && <button type="button" data-testid="save-document" onClick={() => void save()}>Save</button>}
-        {benchmarkMode && <button type="button" data-testid="reload-document" onClick={() => void reload()}>Reload</button>}
+        <button type="button" data-testid="redo" disabled={!history.future.length} onClick={() => setHistory(redo)}>Redo</button>
+        <button type="button" data-testid="save-document" onClick={() => void save()}>Save</button>
+        <button type="button" data-testid="reload-document" onClick={() => void reload()}>Reload</button>
       </div>
       <div className="toolbar-group" role="group" aria-label="Zoom">
         <button type="button" aria-label="Zoom out" onClick={() => commit({ id: `zoom-out-${performance.now()}`, at: new Date().toISOString(), type: 'set-viewport', pan: history.present.viewport.pan, zoom: Math.max(0.25, history.present.viewport.zoom - 0.1) })}>−</button>
@@ -728,7 +561,7 @@ export function App({ mode = appModeFromSearch(window.location.search), initialB
       <span className="toolbar-spacer" />
       {desktopBridge && <div className="toolbar-group" role="group" aria-label="Project">
         <button type="button" disabled={!activeProject} onClick={() => void togglePreview()}>{preview?.visible ? 'Hide preview' : 'Preview'}</button>
-        <button type="button" disabled={!activeProject} onClick={() => activeProject && void host?.revealProject({ apiVersion: 1, projectId: activeProject.id })}>Explorer</button>
+        <button type="button" disabled={!activeProject} onClick={() => activeProject && void desktopHost()?.revealProject({ apiVersion: 1, projectId: activeProject.id })}>Explorer</button>
       </div>}
       <div className="toolbar-group" role="group" aria-label="Help and panels">
         <button type="button" data-testid="toggle-agents" aria-pressed={agentsOpen} onClick={() => setAgentsOpen((value) => !value)}>Agents</button>
@@ -753,7 +586,7 @@ export function App({ mode = appModeFromSearch(window.location.search), initialB
       </dl>
       <button type="button" onClick={() => setShortcutsOpen(false)}>Close</button>
     </div>}
-    {!benchmarkMode && host && !activeProject ? <section className="project-entry" aria-label="Open a project">
+    {desktopHost() && !activeProject && !devFixtureWorkspace ? <section className="project-entry" aria-label="Open a project">
       <div className="entry-copy">
         <span className="entry-mark" aria-hidden="true">A</span>
         <p className="eyebrow">AskewlyDesign workspace</p>
@@ -783,17 +616,17 @@ export function App({ mode = appModeFromSearch(window.location.search), initialB
           </select>
           <select aria-label="Project files" defaultValue="" onChange={(event) => {
             const fileId = event.target.value
-            if (activeProject && fileId) void host?.openFile({ apiVersion: 1, projectId: activeProject.id, fileId })
+            if (activeProject && fileId) void desktopHost()?.openFile({ apiVersion: 1, projectId: activeProject.id, fileId })
             event.target.value = ''
           }}>
             <option value="">Open file</option>
             {projectFiles.map((file) => <option key={file.id} value={file.id}>{file.label}</option>)}
           </select>
         </div>}
-        {benchmarkMode && <details className="diagnostics-panel">
+        <details className="diagnostics-panel">
           <summary>Development</summary>
           <label>Nodes
-            <select value={size} onChange={(event) => setSize(Number(event.target.value) as 1000 | 5000)} data-testid="fixture-size">
+            <select value={size} disabled={Boolean(templateProject)} onChange={(event) => setSize(Number(event.target.value) as 1000 | 5000)} data-testid="fixture-size">
               <option value={1000}>1,000</option>
               <option value={5000}>5,000</option>
             </select>
@@ -806,11 +639,12 @@ export function App({ mode = appModeFromSearch(window.location.search), initialB
               <option value="device-lost">Device loss</option>
             </select>
           </label>
-          {desktopBridge && <button type="button" onClick={() => void host?.exportDiagnostics({ apiVersion: 1 })}>Diagnostics</button>}
-        </details>}
+          {desktopBridge && <button type="button" onClick={() => void desktopHost()?.exportDiagnostics({ apiVersion: 1 })}>Diagnostics</button>}
+        </details>
       </aside>}
       <section className="canvas-stage" aria-label="Design canvas" ref={stageRef}>
         {insertOpen && <InsertPalette document={history.present} onOperation={commit} />}
+        {templatesOpen && <TemplateGallery onOpen={openTemplate} project={templateProject} document={history.present} />}
         {agentsOpen && <AgentPanel
           document={history.present}
           feed={collabFeed}
@@ -825,7 +659,7 @@ export function App({ mode = appModeFromSearch(window.location.search), initialB
     <footer className="workspace-status" aria-label="Workspace status">
       <output data-testid="persistence-status">{status}</output>
       <span>Revision {history.present.revision}</span>
-      <span>{Object.keys(history.present.nodes).length.toLocaleString()} nodes</span>
+      <span data-testid="document-node-count">{Object.keys(history.present.nodes).length.toLocaleString()} nodes</span>
       <output className={`connection-status status-${connection}`} data-testid="bridge-status">{connectionStatusLabel(connection)}{liveLatency === null ? '' : ` · ${liveLatency.toFixed(1)}ms`}</output>
       {desktopBridge && <div className="desktop-bridge-controls">
         <output className={`connection-status status-${desktopBridge.state}`} data-testid="desktop-bridge-status">
@@ -844,6 +678,7 @@ declare global {
     __agentDesignBenchmark?: {
       runTrace: (frames?: number) => Promise<{ frames: number; averageFrameMs: number; p95FrameMs: number; droppedFrameRatio: number }>
       runPointerTrace: (frames?: number) => Promise<{ frames: number; averageLatencyMs: number; p95LatencyMs: number; overBudgetRatio: number; revisionDelta: number }>
+      openDevFixture: () => void
       inspect: (nodeId?: string) => { revision: number; selection: string[]; historyLength: number; tokenSetId: string; node: unknown }
     }
   }

@@ -27,6 +27,7 @@ function documentFixture(revision: number, sourceFile = 'registry://shadcn/butto
         parentId: null,
         childIds: [],
         bounds: { x: 0, y: 0, width: 96, height: 36 },
+        rotation: 0,
         layout: { mode: 'absolute', horizontal: 'fixed', vertical: 'fixed', gap: 0, padding: [0, 0, 0, 0] },
         visible: true,
         locked: false,

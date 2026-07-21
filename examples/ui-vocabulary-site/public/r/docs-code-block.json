@@ -1,0 +1,21 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "docs-code-block",
+  "type": "registry:block",
+  "title": "Docs Code Block",
+  "description": "Documentation readers often need the same instruction in more than one equivalent form (npm/yarn/pnpm, or curl/node/python) and want to copy it without hand-selecting text. Tabs switch between equivalent code variants in place, and a fixed copy button turns the block into a one-click action instead of a select-and-copy chore.",
+  "registryDependencies": [
+    "button",
+    "tabs"
+  ],
+  "dependencies": [
+    "lucide-react"
+  ],
+  "files": [
+    {
+      "path": "registry/askewly/docs-code-block/docs-code-block.tsx",
+      "type": "registry:component",
+      "content": "import { useState } from \"react\"\nimport { CheckIcon, CopyIcon } from \"lucide-react\"\nimport { Button } from \"@/components/ui/button\"\nimport {\n  Tabs,\n  TabsContent,\n  TabsList,\n  TabsTrigger,\n} from \"@/components/ui/tabs\"\nimport { cn } from \"@/lib/utils\"\n\nexport type DocsCodeBlockVariant = {\n  id: string\n  label: string\n  code: string\n}\n\ntype DocsCodeBlockProps = {\n  variants: DocsCodeBlockVariant[]\n  className?: string\n}\n\n/**\n * Documentation code block with language/package-manager tabs and a copy\n * button. `article-documentation-layout`'s `<pre>` block only defines a\n * single code sample with local scroll — this adds tab switching between\n * equivalent variants (e.g. npm/yarn/pnpm) and one-click copy.\n */\nexport function DocsCodeBlock({ variants, className }: DocsCodeBlockProps) {\n  const [copied, setCopied] = useState(false)\n\n  async function handleCopy(code: string) {\n    await navigator.clipboard.writeText(code)\n    setCopied(true)\n    window.setTimeout(() => setCopied(false), 1500)\n  }\n\n  return (\n    <Tabs defaultValue={variants[0]?.id} className={cn(\"w-full max-w-2xl\", className)}>\n      <div className=\"flex items-center justify-between\">\n        <TabsList variant=\"line\">\n          {variants.map((variant) => (\n            <TabsTrigger key={variant.id} value={variant.id}>\n              {variant.label}\n            </TabsTrigger>\n          ))}\n        </TabsList>\n      </div>\n      {variants.map((variant) => (\n        <TabsContent key={variant.id} value={variant.id} className=\"relative\">\n          <Button\n            aria-label=\"Copy code\"\n            className=\"absolute right-2 top-2\"\n            size=\"icon\"\n            type=\"button\"\n            variant=\"ghost\"\n            onClick={() => handleCopy(variant.code)}\n          >\n            {copied ? <CheckIcon className=\"size-4\" /> : <CopyIcon className=\"size-4\" />}\n          </Button>\n          <pre className=\"overflow-x-auto rounded-md bg-foreground p-4 pr-10 text-background\">\n            <code className=\"text-xs\">{variant.code}</code>\n          </pre>\n        </TabsContent>\n      ))}\n    </Tabs>\n  )\n}\n"
+    }
+  ]
+}

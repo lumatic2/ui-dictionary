@@ -99,6 +99,8 @@ button, select { font: inherit; }
 .agent-undo:disabled { color: var(--ad-gray-7); }
 .agent-error { margin: 0; min-height: 12px; color: var(--ad-action-destructive); font-size: 10px; }
 .project-rail select, .diagnostics-panel select { min-width: 0; width: 100%; height: 30px; border: 1px solid var(--ad-border-default); border-radius: 5px; padding: 0 7px; background: var(--ad-surface-raised); color: var(--ad-text-secondary); font-size: 10px; }
+/* 템플릿이 열려 있으면 fixture 크기 토글이 잠긴다 — 브라우저 기본 회색에 맡기지 않고 상태를 명시한다. */
+.project-rail select:disabled, .diagnostics-panel select:disabled { border-color: var(--ad-gray-9); background: var(--ad-surface-muted); color: var(--ad-text-muted); cursor: not-allowed; }
 .diagnostics-panel { margin-top: auto; border-top: 1px solid var(--ad-border-default); padding: 10px 4px 0; color: var(--ad-text-muted); font-size: 10px; }
 .diagnostics-panel summary { cursor: pointer; font-weight: 600; }
 .diagnostics-panel[open] { display: grid; gap: 8px; }
@@ -120,7 +122,10 @@ button, select { font: inherit; }
 .canvas-viewport { position: relative; overflow: hidden; background-color: var(--ad-surface-raised); background-image: linear-gradient(var(--ad-border-default) 1px, transparent 1px), linear-gradient(90deg, var(--ad-border-default) 1px, transparent 1px); background-size: 24px 24px; }
 .canvas-content { position: absolute; inset: 0; transform-origin: 0 0; }
 .canvas-node { position: absolute; display: block; overflow: hidden; border: 1px solid hsl(250 18% 80%); border-radius: 6px; padding: 6px; color: var(--ad-gray-10); font-size: 10px; text-align: left; } /* token-exception: hsl() node border is not a hex literal */
+.canvas-node[data-selection-state="idle"]:hover { outline: 1px dashed var(--ad-border-default); outline-offset: 1px; }
 .canvas-node[data-selection-state="selected"] { outline: 1px solid var(--ad-border-focus); outline-offset: 1px; }
+/* 다중선택은 굵기로도 갈린다 — 개수 배지와 함께 두 경로로 알린다. */
+.canvas-node[data-selection-state="selected"][data-selection-scope="multi"] { outline-width: 2px; }
 .canvas-node[data-drop-target="active"] { box-shadow: inset 0 0 0 2px var(--ad-brand-orchid); }
 .canvas-node:focus-visible { outline: 2px solid var(--ad-action-primary); outline-offset: 2px; }
 .node-code-component { border-color: var(--ad-brand-violet); box-shadow: inset 0 0 0 1px rgb(139 92 246 / 0.2); }
@@ -134,15 +139,41 @@ button, select { font: inherit; }
 .selection-marquee { position: absolute; pointer-events: none; border: 1px solid var(--ad-action-primary); background: rgb(111 45 189 / 0.08); }
 .manipulation-selection { position: absolute; z-index: 4; border: 1px solid transparent; cursor: move; touch-action: none; }
 .manipulation-selection-text { pointer-events: none; }
-.resize-handle { position: absolute; width: 9px; height: 9px; padding: 0; border: 1px solid var(--ad-action-primary); border-radius: 2px; background: white; }
+/*
+ * 핸들 모양이 조작 종류를 말한다 (EU1).
+ *
+ * 전에는 8개가 전부 같은 9×9 사각형이라 커서를 올리기 전에는 무엇이 달라지는지 알 수 없었다.
+ * 모서리는 두 축을, 변은 한 축을 바꾼다 — 그 차이를 형태로 낸다:
+ * 모서리=정사각(양축), 변=이동 축 방향으로 누운 막대(단축).
+ * 근거는 리서치 §1.1의 역할 분리 규칙이다. 정확한 px 규격은 1차 출처가 없어(확인 실패 2번)
+ * 여기 값은 우리가 정한 것이다 — 8px 그리드와 기존 9px 핸들에서 이어받았다.
+ */
+.resize-handle { position: absolute; padding: 0; border: 1px solid var(--ad-action-primary); background: var(--ad-surface-base); }
+.resize-handle-corner { width: 9px; height: 9px; border-radius: 2px; }
+.resize-handle-edge { border-radius: 999px; }
+.resize-handle-edge.resize-handle-n, .resize-handle-edge.resize-handle-s { width: 20px; height: 6px; }
+.resize-handle-edge.resize-handle-e, .resize-handle-edge.resize-handle-w { width: 6px; height: 20px; }
 .resize-handle-nw { left: -5px; top: -5px; cursor: nwse-resize; }
-.resize-handle-n { left: calc(50% - 4px); top: -5px; cursor: ns-resize; }
+.resize-handle-n { left: calc(50% - 10px); top: -3px; cursor: ns-resize; }
 .resize-handle-ne { right: -5px; top: -5px; cursor: nesw-resize; }
-.resize-handle-e { right: -5px; top: calc(50% - 4px); cursor: ew-resize; }
+.resize-handle-e { right: -3px; top: calc(50% - 10px); cursor: ew-resize; }
 .resize-handle-se { right: -5px; bottom: -5px; cursor: nwse-resize; }
-.resize-handle-s { left: calc(50% - 4px); bottom: -5px; cursor: ns-resize; }
+.resize-handle-s { left: calc(50% - 10px); bottom: -3px; cursor: ns-resize; }
 .resize-handle-sw { left: -5px; bottom: -5px; cursor: nesw-resize; }
-.resize-handle-w { left: -5px; top: calc(50% - 4px); cursor: ew-resize; }
+.resize-handle-w { left: -3px; top: calc(50% - 10px); cursor: ew-resize; }
+.resize-handle:hover, .resize-handle:focus-visible { background: var(--ad-action-primary); outline: none; }
+
+/*
+ * 회전 핫존은 모서리 **바깥**에 둔다 — 리사이즈 핸들과 겹치면 어느 조작인지 손이 알 수 없다.
+ * 오프셋 값의 1차 출처는 없다(리서치 확인 실패 1번). 모서리 핸들(9px) 밖으로 완전히 벗어나는
+ * 최소 거리로 우리가 정했다.
+ */
+.rotate-handle { position: absolute; left: -18px; top: -18px; width: 14px; height: 14px; padding: 0; border: 1px solid var(--ad-action-primary); border-radius: 50%; background: var(--ad-surface-base); cursor: grab; }
+.rotate-handle:hover, .rotate-handle:focus-visible { background: var(--ad-action-primary); outline: none; }
+.rotate-handle:active { cursor: grabbing; }
+
+/* 선택 개수는 색이 아니라 글자로도 말한다 — 색만으로 신호하지 않는다(anti-pattern 3). */
+.selection-count { position: absolute; left: 0; top: -22px; padding: 1px 6px; border-radius: 999px; background: var(--ad-action-primary); color: var(--ad-surface-base); font-size: 11px; line-height: 16px; white-space: nowrap; word-break: keep-all; }
 .structure-drag-handle { position: absolute; left: 6px; top: -25px; width: 20px; height: 20px; padding: 2px; border: 1px solid var(--ad-action-primary); border-radius: 3px; background: white; color: var(--ad-action-primary); cursor: grab; }
 .structure-drag-handle svg { width: 14px; height: 14px; fill: none; stroke: currentColor; stroke-width: 1.5; stroke-linecap: round; }
 .dom-alignment-guide { position: absolute; pointer-events: none; background: var(--ad-brand-orchid); }
@@ -164,3 +195,139 @@ button, select { font: inherit; }
 .property-error { min-height: 16px; color: #fda4af; font-size: 10px; } /* token-exception: light error red for dark inspector chrome has no SSOT token */
 .inspector-empty { color: var(--ad-gray-7); font-size: 11px; line-height: 1.5; }
 .document-meta { margin-top: 18px !important; padding-top: 14px; border-top: 1px solid var(--ad-gray-10); }
+
+/* 템플릿 갤러리 — 청사진 6종에서 캔버스를 시작한다. Insert 팔레트와 같은 오버레이 계열. */
+.template-gallery { position: absolute; z-index: 12; top: 12px; left: 12px; display: grid; gap: 10px; width: 268px; max-height: calc(100% - 24px); overflow: auto; border: 1px solid var(--ad-border-default); border-radius: 8px; padding: 12px; background: var(--ad-surface-raised); box-shadow: 0 8px 24px rgba(25, 24, 29, 0.12); }
+.template-gallery header { display: grid; gap: 8px; }
+.template-gallery h2 { margin: 0; color: var(--ad-text-default); font-size: 12px; word-break: keep-all; }
+.template-gallery label { display: grid; gap: 4px; color: var(--ad-text-muted); font-size: 10px; }
+.template-gallery select { height: 26px; border: 1px solid var(--ad-border-input); border-radius: 5px; padding: 0 6px; background: var(--ad-surface-base); color: var(--ad-text-default); font-size: 11px; }
+.template-gallery ul { display: grid; gap: 6px; margin: 0; padding: 0; list-style: none; }
+.template-gallery li button { display: grid; gap: 2px; width: 100%; border: 1px solid var(--ad-border-default); border-radius: 6px; padding: 8px 10px; background: var(--ad-surface-base); text-align: left; }
+.template-gallery li button:hover { border-color: var(--ad-border-accent); background: var(--ad-surface-tint); }
+.template-gallery strong { color: var(--ad-text-default); font-size: 11px; font-weight: 600; }
+.template-format { color: var(--ad-action-primary); font-size: 10px; }
+.template-structure, .template-size { color: var(--ad-text-muted); font-size: 10px; word-break: keep-all; }
+.template-gallery-error { margin: 0; border: 1px solid var(--ad-action-destructive); border-radius: 6px; padding: 8px 10px; color: var(--ad-action-destructive); font-size: 10px; line-height: 1.5; word-break: keep-all; }
+.template-roundtrip { display: grid; gap: 6px; border-top: 1px solid var(--ad-border-default); padding-top: 10px; }
+.template-roundtrip h3 { margin: 0; color: var(--ad-text-default); font-size: 11px; }
+.template-export-actions { display: flex; gap: 4px; }
+.template-export-actions button { flex: 1; height: 26px; border: 1px solid var(--ad-border-default); border-radius: 5px; background: var(--ad-surface-base); color: var(--ad-text-secondary); font-size: 10px; }
+.template-export-actions button:hover { border-color: var(--ad-border-accent); color: var(--ad-action-primary); }
+.template-roundtrip textarea { width: 100%; min-height: 56px; border: 1px solid var(--ad-border-input); border-radius: 5px; padding: 6px; font-family: monospace; font-size: 10px; }
+.template-roundtrip > button { height: 26px; border: 1px solid var(--ad-border-default); border-radius: 5px; background: var(--ad-surface-base); color: var(--ad-text-secondary); font-size: 10px; }
+.template-hint, .template-notice { margin: 0; color: var(--ad-text-muted); font-size: 10px; word-break: keep-all; }
+.template-notice { color: var(--ad-action-primary); }
+/* 토큰이 풀리지 않은 노드 — 그럴듯한 색으로 덮지 않고 미해결임을 드러낸다. token-exception: 진단 표면 전용 */
+.canvas-node[data-token-unresolved] { outline: 1px dashed var(--ad-action-destructive); background-image: repeating-linear-gradient(45deg, transparent 0 6px, var(--ad-surface-secondary) 6px 12px); }
+/* 소재를 못 찾은 이미지 노드 — 빈 상자 대신 무엇이 없는지 적는다. token-exception: 진단 표면 전용 */
+.canvas-node[data-asset-missing] { display: grid; place-items: center; outline: 1px dashed var(--ad-action-destructive); color: var(--ad-action-destructive); font-size: 11px; word-break: keep-all; }
+
+/* 캔버스 위에 떠 있는 조작 옵션 (EU2). 스냅은 끄고 켤 수 있어야 미세 조정이 가능하다. */
+.canvas-toolbar {
+  position: absolute;
+  right: 12px;
+  bottom: 12px;
+  z-index: 6;
+  display: flex;
+  gap: 8px;
+  padding: 6px 10px;
+  border: 1px solid var(--ad-border-default);
+  border-radius: 8px;
+  background: var(--ad-surface-base);
+  font-size: 12px;
+}
+.canvas-toggle { display: flex; align-items: center; gap: 6px; cursor: pointer; user-select: none; }
+
+/* 정적 거리 측정 판독 (EU2). 드래그 중 가이드와 다른 표현이어야 두 상호작용이 갈린다. */
+.measure-readout {
+  position: absolute;
+  z-index: 7;
+  display: flex;
+  gap: 8px;
+  padding: 2px 6px;
+  transform: translate(-50%, -50%);
+  border-radius: 4px;
+  background: var(--ad-brand-orchid);
+  color: var(--ad-surface-base);
+  font-size: 11px;
+  font-variant-numeric: tabular-nums;
+  pointer-events: none;
+  white-space: nowrap;
+}
+
+/* 레이어 검색 (EU3). 결과는 계층을 지운 목록이 아니라 트리 안에서 보인다. */
+.layers-search { display: flex; align-items: center; gap: 6px; padding: 6px 8px; }
+.layers-search input {
+  flex: 1;
+  min-width: 0;
+  padding: 4px 8px;
+  border: 1px solid var(--ad-border-default);
+  border-radius: 6px;
+  background: var(--ad-surface-base);
+  color: inherit;
+  font-size: 12px;
+}
+.layers-search-count { font-size: 11px; color: var(--ad-text-muted); font-variant-numeric: tabular-nums; }
+/* 매칭 행은 굵게, 조상은 맥락으로 흐리게 — 무엇이 결과이고 무엇이 경로인지 갈린다. */
+.layer-row.layer-match .layer-name { font-weight: 600; }
+.layer-row[data-layer-match="context"] .layer-name { opacity: 0.62; }
+
+/* 인스펙터 섹션 (EU4). 기하 → 구조 → 시각 → 내보내기 순서는 Figma·Penpot 공통 규약을 따른다. */
+.inspector-section { padding: 8px 0; border-bottom: 1px solid var(--ad-border-subtle, var(--ad-border-default)); }
+.inspector-section h3 {
+  margin: 0 0 6px;
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  color: var(--ad-text-muted);
+  text-transform: uppercase;
+}
+/* 위치·크기는 짝으로 읽힌다 — 2열로 묶어 X/Y, 너비/높이가 나란히 오게 한다. */
+.geometry-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 6px 8px; }
+.geometry-grid .property-field { margin: 0; }
+.section-empty { margin: 0; font-size: 11px; color: var(--ad-text-muted); line-height: 1.5; }
+
+/* 색 바인딩 — 견본이 색을 말하고, 토큰 이름이 무엇인지 말한다.
+   색만으로 상태를 전달하지 않는다(견본 + 이름 + aria-label 3중). */
+.color-field { display: grid; gap: 5px; }
+.color-field-label { color: var(--ad-gray-7); font-size: 10px; }
+.color-field-value { display: flex; align-items: center; gap: 8px; min-width: 0; }
+/* 테두리가 없으면 밝은 견본이 패널 배경에 묻히고 어두운 견본은 경계가 사라진다. */
+.color-swatch { flex: none; width: 18px; height: 18px; border: 1px solid var(--ad-gray-9); border-radius: 4px; }
+/* 해석 실패는 회색으로 덮지 않는다 — 빈 상태라는 걸 형태로 말한다. */
+.color-swatch-unresolved { border-style: dashed; background: repeating-linear-gradient(45deg, transparent, transparent 3px, var(--ad-gray-9) 3px, var(--ad-gray-9) 4px); }
+.color-token-name { overflow: hidden; color: var(--ad-gray-1); font: 11px ui-monospace, monospace; text-overflow: ellipsis; white-space: nowrap; }
+.color-field-note { color: var(--ad-gray-7); font-size: 10px; line-height: 1.5; word-break: keep-all; }
+
+/* 견본이 버튼이 된다 — 상호작용 요소는 상태를 갖는다(무상태 인터랙션은 하드페일). */
+button.color-swatch { padding: 0; cursor: pointer; }
+button.color-swatch:hover { border-color: var(--ad-gray-6); }
+button.color-swatch:focus-visible { outline: 2px solid var(--ad-brand-lavender); outline-offset: 2px; }
+
+/* 토큰 선택 목록. 인스펙터 폭 안에 들어가는 인라인 패널 — 캔버스를 가리지 않는다. */
+.color-picker { display: grid; gap: 8px; margin-top: 6px; border: 1px solid var(--ad-gray-9); border-radius: 6px; padding: 8px; background: var(--ad-gray-12); max-height: 260px; overflow: auto; }
+.color-picker-search { width: 100%; height: 28px; border: 1px solid var(--ad-gray-9); border-radius: 4px; padding: 0 6px; background: transparent; color: var(--ad-gray-1); font: 11px ui-monospace, monospace; }
+.color-picker-search:focus { outline: 0; border-color: var(--ad-brand-lavender); }
+.color-picker-empty { margin: 0; color: var(--ad-gray-7); font-size: 10px; word-break: keep-all; }
+.color-picker-group { display: grid; gap: 2px; }
+.color-picker-group-name { margin: 0 0 2px; color: var(--ad-gray-7); font-size: 9px; letter-spacing: 0.04em; text-transform: uppercase; }
+.color-picker-option { display: flex; align-items: center; gap: 8px; width: 100%; border: 0; border-radius: 4px; padding: 4px 6px; background: transparent; text-align: left; cursor: pointer; }
+.color-picker-option:hover { background: var(--ad-gray-10); }
+.color-picker-option:focus-visible { outline: 2px solid var(--ad-brand-lavender); outline-offset: -2px; }
+/* 현재 선택은 색이 아니라 형태·글자로도 말한다(색만으로 상태 전달 금지). */
+.color-picker-option[aria-current="true"] { background: var(--ad-gray-10); }
+.color-picker-option[aria-current="true"] .color-token-name::after { content: ' · 지금 이 색'; color: var(--ad-gray-7); }
+/* 키보드 커서 — 마우스 hover와 구분되게 테두리로도 말한다(색만으로 상태 전달 금지). */
+.color-picker-option[data-active] { background: var(--ad-gray-10); outline: 1px solid var(--ad-brand-lavender); outline-offset: -1px; }
+/* 아직 안 묶인 색 — 막다른 안내문 대신 누를 수 있는 것을 둔다. */
+.color-bind-button { justify-self: start; border: 1px dashed var(--ad-gray-9); border-radius: 5px; padding: 5px 9px; background: transparent; color: var(--ad-gray-1); font-size: 11px; cursor: pointer; word-break: keep-all; }
+.color-bind-button:hover { border-style: solid; border-color: var(--ad-gray-6); }
+.color-bind-button:focus-visible { outline: 2px solid var(--ad-brand-lavender); outline-offset: 2px; }
+/* 토큰에서 벗어난 색 — 견본 모양으로도 구분한다(리서치: Figma·Penpot이 형태로 종류를 말한다). */
+.color-swatch-literal { border-radius: 50%; }
+.color-literal-input { min-width: 0; flex: 1; height: 24px; border: 0; border-bottom: 1px solid var(--ad-gray-9); padding: 2px; background: transparent; color: var(--ad-gray-1); font: 11px ui-monospace, monospace; }
+.color-literal-input:focus { outline: 0; border-bottom-color: var(--ad-brand-lavender); }
+.color-detach-button { justify-self: start; border: 0; padding: 2px 0; background: transparent; color: var(--ad-gray-7); font-size: 10px; text-decoration: underline; cursor: pointer; }
+.color-detach-button:hover { color: var(--ad-gray-1); }
+.color-detach-button:focus-visible { outline: 2px solid var(--ad-brand-lavender); outline-offset: 2px; }

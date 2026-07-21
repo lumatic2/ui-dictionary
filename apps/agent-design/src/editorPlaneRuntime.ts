@@ -27,6 +27,21 @@ const fallback = (reason: string, onState: (state: EditorPlaneState) => void): E
   return { update: () => undefined, destroy: () => undefined }
 }
 
+/** 선택·가이드 틴트 색(비프리멀티플라이드 RGB). 알파는 쓰임새마다 다르다. */
+export const SELECTION_TINT: readonly [number, number, number] = [0.49, 0.18, 0.83]
+
+/**
+ * 캔버스가 `alphaMode: 'premultiplied'`라 RGB는 **알파가 곱해진 값**이어야 한다.
+ *
+ * 곱하지 않고 넘기면 합성식 `src.rgb + dst.rgb*(1-src.a)`에서 src가 과하게 밝아져
+ * **선택한 노드의 색이 바뀌어 보인다.** 실측(ECT2 step-2 픽셀 측정): 빨강 `#DF2225` 노드를
+ * 선택하면 `#FF4AF2` 마젠타로 그려졌다 — 하필 색을 판단하려는 그 노드가 오염된다.
+ * 수정 후 같은 지점이 `#CD2444`(빨강 + 보라 틴트 18%)로 측정됐다.
+ */
+export function premultiplied([r, g, b]: readonly [number, number, number], alpha: number): number[] {
+  return [r * alpha, g * alpha, b * alpha, alpha]
+}
+
 export async function createEditorPlane(
   canvas: HTMLCanvasElement,
   geometry: EditorPlaneGeometry,
@@ -90,12 +105,12 @@ export async function createEditorPlane(
     })
     const draw = ({ selection: nextSelection, guides }: EditorPlaneGeometry) => {
       rects.fill(0)
-      rects.set([nextSelection.x * dpr, nextSelection.y * dpr, nextSelection.width * dpr, nextSelection.height * dpr, 0.49, 0.18, 0.83, 0.18])
+      rects.set([nextSelection.x * dpr, nextSelection.y * dpr, nextSelection.width * dpr, nextSelection.height * dpr, ...premultiplied(SELECTION_TINT, 0.18)])
       guides.slice(0, 4).forEach((guide, index) => {
         const offset = (index + 1) * 8
         rects.set(guide.axis === 'x'
-          ? [guide.value * dpr, 0, 1 * dpr, canvas.height, 0.49, 0.18, 0.83, 0.72]
-          : [0, guide.value * dpr, canvas.width, 1 * dpr, 0.49, 0.18, 0.83, 0.72], offset)
+          ? [guide.value * dpr, 0, 1 * dpr, canvas.height, ...premultiplied(SELECTION_TINT, 0.72)]
+          : [0, guide.value * dpr, canvas.width, 1 * dpr, ...premultiplied(SELECTION_TINT, 0.72)], offset)
       })
       device.queue.writeBuffer(rectBuffer, 0, rects)
       const encoder = device.createCommandEncoder()

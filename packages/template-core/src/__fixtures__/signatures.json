@@ -1,0 +1,58 @@
+{
+  "capturedAt": "2026-07-20",
+  "reason": "청사진 구성·장면 스키마가 의도적으로 바뀌지 않는 한 이 값은 변하지 않아야 한다. 기준선이 바뀌면 그 근거를 rebaselines에 남긴다 — 근거 없는 갱신은 가드를 무력화한다.",
+  "rebaselines": [
+    {
+      "at": "2026-07-20",
+      "milestone": "TH7 step-2",
+      "why": "장면이 소재(assets)를 직접 싣게 됐다. 문서 바깥 매니페스트에 두면 문서만 오가는 경로(에이전트 브리지·스냅샷·JSON 재가져오기)에서 이미지가 사라지므로, CanvasDocument에 assets를 추가하고 컴파일러가 채우도록 바꿨다. 서명은 정본 JSON 전체를 해싱하므로 필드 추가만으로 값이 바뀐다 — 레이아웃·내용은 그대로다.",
+      "from": {
+        "business-card-minimal": "tpl-a5add834",
+        "product-poster-hero": "tpl-e523954b",
+        "infographic-stats": "tpl-f864dd3b"
+      }
+    },
+    {
+      "at": "2026-07-20",
+      "milestone": "TH9 step-2",
+      "why": "글자 크기 결정이 슬롯 높이(height*0.45)에서 폭·줄 수를 함께 보는 맞춤으로 바뀌었다. 긴 텍스트만 줄어든다 — editorial headline 126→108(2줄), stats explanation 189→104(3줄). 짧은 텍스트는 상한이 예전 규칙이라 값이 그대로다(명함 41/22/20 유지). 레이아웃 좌표는 무변경.",
+      "from": {
+        "business-card-minimal": "tpl-bb88ad00",
+        "product-poster-hero": "tpl-40154e67",
+        "infographic-stats": "tpl-c1cb1877"
+      }
+    },
+    {
+      "at": "2026-07-20",
+      "milestone": "EU1 step-2",
+      "why": "노드가 회전 각도(rotation)를 갖게 됐다. 회전을 렌더 층 CSS transform으로만 두면 내보내기가 각도를 잃어 화면에서만 돌아간다 — 그래서 문서 모델에 필수 필드로 넣었다. 서명은 정본 JSON 전체를 해싱하므로 필드 추가만으로 값이 바뀐다. 레이아웃·내용·각도값(전부 0)은 그대로다.",
+      "from": {
+        "business-card-minimal": "tpl-767d040e",
+        "product-poster-hero": "tpl-09040c7f",
+        "infographic-stats": "tpl-5a75b937",
+        "product-poster-print-a3": "tpl-c8369959",
+        "infographic-print-a4": "tpl-8525ebcf"
+      }
+    }
+  ],
+  "content": {
+    "name": "Askewly",
+    "role": "AI Builder",
+    "contact": "hello@askewly.com",
+    "product": "Handmade cup",
+    "headline": "Crafted for every day",
+    "cta": "View collection",
+    "title": "Editable templates",
+    "stat": "3",
+    "unit": "formats",
+    "explanation": "One structured scene preserves every editable layer.",
+    "source": "Askewly fixed fixture"
+  },
+  "signatures": {
+    "business-card-minimal": "tpl-e514ee66",
+    "product-poster-hero": "tpl-399e7171",
+    "infographic-stats": "tpl-0349ae73",
+    "product-poster-print-a3": "tpl-141345bf",
+    "infographic-print-a4": "tpl-4af715b1"
+  }
+}

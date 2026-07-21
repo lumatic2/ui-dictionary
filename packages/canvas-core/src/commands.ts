@@ -11,7 +11,7 @@ export function nextNodeId(document: CanvasDocument, prefix = 'created'): NodeId
 
 export function createPrimitiveNode(document: CanvasDocument, kind: 'frame' | 'group' | 'text', parentId: NodeId | null, bounds: CanvasRect): CanvasNode {
   const id = nextNodeId(document)
-  const base = { id, kind, name: kind[0].toUpperCase() + kind.slice(1), parentId, childIds: [], bounds: { ...bounds }, layout: structuredClone(layout), visible: true, locked: false, tokenBindings: {}, source: null }
+  const base = { id, kind, name: kind[0].toUpperCase() + kind.slice(1), parentId, childIds: [], bounds: { ...bounds }, rotation: 0, layout: structuredClone(layout), visible: true, locked: false, tokenBindings: {}, source: null }
   if (kind === 'frame') return { ...base, kind, clipContent: false }
   if (kind === 'text') return { ...base, kind, text: 'Text', textStyle: { fontFamily: 'Geist, sans-serif', fontSize: 16, fontWeight: 400, lineHeight: 24 } }
   return { ...base, kind }
@@ -21,7 +21,7 @@ export function createInstanceNode(document: CanvasDocument, componentId: NodeId
   const component = document.nodes[componentId]
   if (!component || component.kind !== 'code-component') throw new Error(`missing code component ${componentId}`)
   const id = nextNodeId(document)
-  return { id, kind: 'instance', name: component.name, parentId, childIds: [], bounds: { ...bounds }, layout: structuredClone(layout), visible: true, locked: false, tokenBindings: {}, source: null, componentId, overrides: {} }
+  return { id, kind: 'instance', name: component.name, parentId, childIds: [], bounds: { ...bounds }, rotation: 0, layout: structuredClone(layout), visible: true, locked: false, tokenBindings: {}, source: null, componentId, overrides: {} }
 }
 
 export function resolveInsertParent(document: CanvasDocument): NodeId | null {
@@ -155,7 +155,7 @@ export function planGroupSelection(document: CanvasDocument, at: string): BatchO
     width: Math.max(...nodes.map((node) => node.bounds.x + node.bounds.width)) - Math.min(...nodes.map((node) => node.bounds.x)),
     height: Math.max(...nodes.map((node) => node.bounds.y + node.bounds.height)) - Math.min(...nodes.map((node) => node.bounds.y)),
   }
-  const group: CanvasNode = { id: nextNodeId(document, 'grouped'), kind: 'group', name: 'Group', parentId, childIds: [], bounds, layout: structuredClone(layout), visible: true, locked: false, tokenBindings: {}, source: null }
+  const group: CanvasNode = { id: nextNodeId(document, 'grouped'), kind: 'group', name: 'Group', parentId, childIds: [], bounds, rotation: 0, layout: structuredClone(layout), visible: true, locked: false, tokenBindings: {}, source: null }
   return batch(`group-${at}`, at, [
     { id: `group:create:${at}`, at, type: 'create-node', node: group, parentId, index: Math.min(...ordered.map((node) => siblings.indexOf(node.id))) },
     ...ordered.map((node, index) => ({ id: `group:reparent:${node.id}:${at}`, at, type: 'reparent-node' as const, nodeId: node.id, parentId: group.id, index })),

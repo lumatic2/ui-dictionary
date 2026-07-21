@@ -22,6 +22,8 @@ source_refs: [mintlify-docs-navigation]
 last_verified: 2026-07-12
 ---
 
+> **STOP — do not re-implement this recipe from prose.** A verified code asset exists: fetch https://ui.askewly.com/r/versioned-docs-switcher-navbar-sidebar-swap.json, write `files[].content` into the project, install the declared dependencies, THEN restyle the look to the project's own tokens (mandatory — component-restyle.md). Prose below is the contract you verify against, not the thing you rebuild.
+
 ## Intent
 
 The `versioned-docs-switcher` term already names the dropdown-plus-stale-banner concept; this recipe is the actual three-part state contract behind it — picking a version in the navbar dropdown does not just relabel the page, it swaps the sidebar tree's entire data source to that version's structure, and shows a stale-version banner whenever the selected version is not the latest. The dropdown, banner, and sidebar all read from one `activeVersionId` value instead of three independently-set flags.

@@ -479,3 +479,85 @@ describe('connection status labels', () => {
     expect(desktopBridgeStateLabel('backoff')).toBe('Reconnecting…')
   })
 })
+
+describe('편집 상태 지속성 (TH10)', () => {
+  /** 템플릿을 열고 캔버스 문서가 템플릿 장면으로 바뀔 때까지 기다린다. */
+  async function openTemplate(view: ReturnType<typeof render>) {
+    fireEvent.click(view.getByTestId('toggle-templates'))
+    fireEvent.click(view.getByTestId('template-open-business-card-minimal'))
+    await waitFor(() =>
+      expect(view.getByTestId('persistence-status').textContent).toContain('template'),
+    )
+  }
+
+  it('템플릿을 열고 저장한 뒤 재적재하면 템플릿이 돌아온다', async () => {
+    const view = render(<App />)
+    await openTemplate(view)
+    const opened = view.getByTestId('document-node-count').textContent
+
+    fireEvent.click(view.getByTestId('save-document'))
+    await waitFor(() => expect(view.getByTestId('persistence-status').textContent).toContain('saved'))
+
+    fireEvent.click(view.getByTestId('reload-document'))
+    await waitFor(() => expect(view.getByTestId('persistence-status').textContent).toContain('reloaded'))
+
+    // 저장 슬롯이 fixture 문서에 묶여 있으면 여기서 1,000노드 fixture가 복원된다.
+    expect(view.getByTestId('document-node-count').textContent).toBe(opened)
+  })
+
+  it('fixture 크기 토글이 열어둔 템플릿을 파괴하지 않는다', async () => {
+    const view = render(<App />)
+    await openTemplate(view)
+    const opened = view.getByTestId('document-node-count').textContent
+
+    const sizeSelect = view.getByTestId('fixture-size') as HTMLSelectElement
+    expect(sizeSelect.disabled).toBe(true)
+
+    // 비활성이어도 상태 변화가 새어들어오지 않는지 직접 확인한다.
+    fireEvent.change(sizeSelect, { target: { value: '5000' } })
+    expect(view.getByTestId('document-node-count').textContent).toBe(opened)
+  })
+
+  it('템플릿이 없으면 fixture 크기 토글이 그대로 동작한다', () => {
+    const view = render(<App />)
+    const sizeSelect = view.getByTestId('fixture-size') as HTMLSelectElement
+    expect(sizeSelect.disabled).toBe(false)
+    fireEvent.change(sizeSelect, { target: { value: '5000' } })
+    expect(view.getByTestId('document-node-count').textContent).toContain('5,000')
+  })
+})
+
+describe('토큰 세트 표시·검증 정합 (TH10)', () => {
+  async function openBusinessCard(view: ReturnType<typeof render>) {
+    fireEvent.click(view.getByTestId('toggle-templates'))
+    fireEvent.click(view.getByTestId('template-open-business-card-minimal'))
+    await waitFor(() =>
+      expect(view.getByTestId('persistence-status').textContent).toContain('template'),
+    )
+  }
+
+  it('템플릿을 열면 드롭다운이 문서의 세트를 그대로 보여준다', async () => {
+    const view = render(<App />)
+    await openBusinessCard(view)
+    // 옵션이 편집기 세트 둘로 하드코딩돼 있으면 여기서 askewly.default가 나온다.
+    expect((view.getByTestId('token-mode') as HTMLSelectElement).value).toBe('askewly.warm')
+  })
+
+  it('옵션이 실재하는 세트 전부를 담는다', () => {
+    const view = render(<App />)
+    const values = Array.from((view.getByTestId('token-mode') as HTMLSelectElement).options).map((o) => o.value)
+    expect(values).toContain('askewly.default')
+    expect(values).toContain('askewly.dark')
+    expect(values).toContain('askewly.warm')
+    expect(values).toContain('askewly.ink')
+  })
+
+  it('목록 밖 값은 문서를 바꾸지 않고 오류를 표면화한다', () => {
+    const view = render(<App />)
+    const before = view.getByTestId('document-revision').textContent
+    fireEvent.change(view.getByTestId('token-mode'), { target: { value: 'foo.bar' } })
+    // select는 목록 밖 값을 담지 못해 빈 값으로 떨어진다 — 어느 쪽이든 **통과하면 안 된다**.
+    expect(view.getByTestId('property-error').textContent).toContain('없습니다')
+    expect(view.getByTestId('document-revision').textContent).toBe(before)
+  })
+})

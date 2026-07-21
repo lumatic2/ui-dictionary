@@ -6,10 +6,11 @@
   "scripts": {
     "dev": "vite --host 127.0.0.1",
     "generate:tokens": "node scripts/generate-editor-tokens.mjs",
-    "prebuild": "npm --prefix ../../packages/canvas-core run build",
+    "prebuild": "npm --prefix ../../packages/canvas-core run build && npm --prefix ../../packages/template-core run build",
     "build": "tsc -b && vite build",
-    "pretest": "npm --prefix ../../packages/canvas-core run build",
-    "test": "node scripts/run-tests.mjs",
+    "pretest": "npm --prefix ../../packages/canvas-core run build && npm --prefix ../../packages/template-core run build",
+    "test": "vitest run",
+    "typecheck": "tsc -b",
     "preintegration": "npm --prefix ../../packages/canvas-core run build",
     "integration": "node scripts/run-integration.mjs",
     "validate:integration": "node scripts/validate-integration.mjs",
@@ -20,6 +21,7 @@
   "dependencies": {
     "@askewly/canvas-core": "file:../../packages/canvas-core",
     "@askewly/component-registry": "file:../../packages/component-registry",
+    "@askewly/template-core": "file:../../packages/template-core",
     "@vitejs/plugin-react": "^6.0.2",
     "react": "^19.2.7",
     "react-dom": "^19.2.7",
