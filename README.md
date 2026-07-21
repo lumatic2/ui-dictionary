@@ -1,27 +1,41 @@
-# UI Dictionary
+# Askewly Design
 
-UI Dictionary is a searchable vocabulary site for people who know what kind of interface they want, but do not yet know the names of the components.
+Askewly Design is a design system that spans every form of design work — product design, slide design, and frontend design. This repository (`ui-dictionary`) is its canonical source.
 
-It explains UI terms in Korean and English, shows compact visual examples, and gives prompt phrases that can be used when asking an AI coding agent to build a screen.
+It has three faces:
+
+- **A public reference site** people browse, compare, and learn from — live at `https://ui.askewly.com/`.
+- **An agent-facing design system** that Codex and Claude Code actually read while building UI, published at `https://ui.askewly.com/llms.txt`.
+- **The AskewlyDesign app** (in development), a desktop editor where the canvas is code rather than a vector file, and an agent edits the same canonical document you do.
 
 ## Why
 
-Vibe-coding requests often start as vague instructions like "make it clean" or "add a popup." This project turns that into more precise language: card, toggle, dropdown, modal, drawer, toast, data table, and so on.
+Coding agents already write senior-level code. They do not yet make senior-level design decisions. Askewly Design supplies the missing half: tokens as a single source of truth, pattern recipes, component guidance, and anti-patterns — so the output looks deliberately designed rather than generically generated.
 
-## What it does
+The same gap shows up on the human side. Requests often start as "make it clean" or "add a popup." The vocabulary layer turns that into precise language: card, toggle, dropdown, modal, drawer, toast, data table.
 
-- Maintains a human-editable UI vocabulary dataset in `docs/ui-vocabulary/terms.yml`.
-- Generates site-ready data for a Vite + React glossary app.
-- Shows Korean names, English names, aliases, plain definitions, visual anatomy, anti-use cases, and prompt phrases.
-- Renders small React/CSS visual examples that can be reused in cards, detail pages, and poster exports.
-- Documents authoring, search, mobile, export, and deployment workflows under `docs/ui-vocabulary/`.
+## Scope
 
-## Evidence
+Websites, mobile apps, SaaS products, commerce flows, dashboards, documentation sites, marketing pages, internal tools, and application UI patterns — plus print and presentation output such as slides and PDFs, which are read rather than operated.
 
+Different media get different gates. Screens are checked for states and dark mode; print is checked by rendering the final format itself and looking at the actual pages.
+
+## What ships today
+
+- A human-editable UI vocabulary dataset in `docs/ui-vocabulary/terms.yml`, with Korean and English names, aliases, plain definitions, visual anatomy, anti-use cases, and prompt phrases.
+- Small React/CSS visual examples for each term, reusable in cards, detail pages, and poster exports.
+- The agent-facing system under `docs/design-system/` — entry protocol, style signature, tokens, recipes, anti-patterns.
+- Authoring, search, mobile, export, and deployment workflows documented under `docs/ui-vocabulary/`.
+
+## Map
+
+- North star: [OBJECTIVE.md](OBJECTIVE.md)
+- Working brief and conventions: [CLAUDE.md](CLAUDE.md)
+- Milestones and status: [ROADMAP.md](ROADMAP.md)
 - Production target: `https://ui.askewly.com/`
-- Dataset source: `docs/ui-vocabulary/terms.yml`
+- Agent entry point: `https://ui.askewly.com/llms.txt`
 - Site app: `examples/ui-vocabulary-site/`
-- Deployment notes: `docs/ui-vocabulary/deployment.md`
+- Deployment notes: [docs/ui-vocabulary/deployment.md](docs/ui-vocabulary/deployment.md)
 
 ## Tech stack
 
@@ -30,10 +44,11 @@ Vibe-coding requests often start as vague instructions like "make it clean" or "
 - shadcn/ui-style component patterns
 - lucide-react
 - YAML data source with a generated TypeScript data module
+- `DESIGN.md` (Google Stitch open format) as the design token format
 
 ## Status
 
-Active public project. The current focus is vocabulary coverage, search quality, mobile readability, and poster/export reuse. It is a static site: no login, backend, account storage, or user-generated content is part of the MVP.
+Active public project. The reference site is a static site — no login, backend, account storage, or user-generated content. The desktop app is under development and not yet released.
 
 ## License
 
