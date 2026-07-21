@@ -84,7 +84,7 @@ Status: approved (2026-07-22 — 사용자가 horizon `design-output-gates` 6 mi
   - Failure probe: `data/`를 `files` 배열에서 빼고 재실행하면 `askewly-design verify`가 `data/terms.json`을 못 찾아 즉시 실패한다(번들 누락이 실제로 실행을 깨뜨림을 증명). `files`에 `src`를 추가하면 tarball 크기가 관측 가능하게 늘어난다(누출 여부를 크기로도 교차 확인).
   - Commit: changeset `cli-publish-readiness`.
 
-- [ ] **step-2 — 실제 배포**
+- [x] **step-2 — 실제 배포**
   - ⚠ **사용자 승인 정지점.** license(결정 5)와 npm scope 공개 여부(결정 6)가 `resolved`로 확정되기 전에는 이 leaf에 착수하지 않는다. 공개 레지스트리 배포는 위 "npm unpublish 제약"에 따라 실질적으로 되돌릴 수 없다.
   - Artifact: `@askewly/design`이 npm 공개 레지스트리에 실재하는 상태(`npm view @askewly/design` 응답이 E404가 아니라 실제 버전 메타데이터를 반환), 레포 밖 임시 디렉터리에서 `npx @askewly/design@<ver> verify <dir>`가 정상 실행된 로그.
   - Files: write `packages/cli/package.json`(license 필드를 결정 5의 확정값으로, 필요 시 `publishConfig.access: "public"` 추가), write `evidence/design-output-gates/dog2-publication.md`(publish 실행 로그 + `npm view` 응답 + `npx` 실증 로그 추가).

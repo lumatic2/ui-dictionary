@@ -72,3 +72,83 @@ Error: ENOENT: no such file or directory,
 
 - 결정 7(license=MIT)·8(scope=public) **확정됨**
 - 그러나 **publish 실행 자체가 승인 정지점**이다 — `name@version`은 unpublish 후에도 영구 재사용 불가([npm Unpublish Policy](https://docs.npmjs.com/policies/unpublish), 접근 2026-07-22).
+
+---
+
+## step-2 — 실제 배포 (2026-07-22)
+
+### 승인
+
+사용자가 `npm login` 실행으로 배포 진행을 선택. 계정 `askewly`, 스코프 `@askewly`는 **user scope**(조직 아님 — 사이드바 Organizations: None).
+
+### 계획에 없던 장벽 — 2FA
+
+`npm publish --access public` → **E403**:
+
+> Two-factor authentication or granular access token with bypass 2fa enabled is required to publish packages.
+
+계획은 "로그인하면 publish 가능"을 전제했으나 **npm이 직접 배포에 2FA를 요구**한다. 실패 시점에 아무것도 올라가지 않았음을 확인(`npm view` → E404, 버전 `0.1.0` 미소모).
+
+브라우저로 계정 상태 실사:
+
+| 확인 | 결과 |
+|---|---|
+| 2FA 설정 화면(`/settings/askewly/tfa`) | **보안 키(WebAuthn)만 제공** — 인증 앱(TOTP) 옵션 없음 |
+| WebAuthn 자동화 가능성 | **불가** — 지문·PIN 등 OS 수준 인증이 필요하고 페이지 DOM 밖이다. 자동화를 막는 것이 이 방식의 목적 |
+| 토큰 페이지 배너 | bypass 2FA 토큰 제한 시한 명시 — **계정 변경 2026-08 · 직접 배포 2027-01** |
+
+### 경로 선택
+
+열려 있는 문은 **granular access token(bypass 2FA)** 하나였다. npm UI 자신이 경고한다: *"There are security risks with this option. For automation or CI/CD uses, please use Trusted Publishing instead."*
+
+노출을 최소화해 발급:
+
+| 설정 | 값 |
+|---|---|
+| 이름 | `askewly-design-publish-2026-07` |
+| 권한 | Read and write, **`@askewly` 스코프 한정** (All packages 아님) |
+| 조직 접근 | 없음 |
+| 만료 | 7일 (2026-07-29) |
+| 사용 후 | **즉시 폐기** — 토큰 목록 0건 확인 |
+
+토큰 값은 어떤 파일에도 기록하지 않았고 `~/.npmrc`에도 저장하지 않았다(1회 커맨드 인자로만 사용).
+
+### publish 결과
+
+```
+npm notice Publishing to https://registry.npmjs.org/ with tag latest and public access
++ @askewly/design@0.1.0
+```
+
+### 전파 지연 — 웹은 배포, API는 404
+
+publish 직후 갈렸다:
+
+| 표면 | 응답 |
+|---|---|
+| 웹 UI `/settings/askewly/packages` | **"@askewly/design · published 0.1.0 · a minute ago"** |
+| `npm access get status` | **public** (API가 패키지를 안다) |
+| `registry.npmjs.org/@askewly%2fdesign` | **404** |
+| Staged Packages | 비어 있음 (보류 아님) |
+
+45초 간격 폴링으로 **약 3분 뒤 HTTP 200**. 신규 패키지의 CDN 전파 지연이었다.
+
+> 관측 규율: "publish가 성공을 찍었다"와 "레지스트리에서 받을 수 있다"는 **다른 사실**이다. 전자만 보고 닫았으면 DOG6이 배선할 대상이 아직 없는 상태로 넘어갔다.
+
+### DoD 검증 — 레포 밖 `npx` 실증
+
+```bash
+cd <레포 밖 임시 디렉터리>
+npx --yes @askewly/design@0.1.0 verify probe  --ext tsx   # exit 1, 위반 2건
+npx --yes @askewly/design@0.1.0 verify probe2 --ext tsx   # exit 0, PASS
+npx --yes @askewly/design@0.1.0 terms search accordion    # 정상
+```
+
+`npm view @askewly/design version` → `0.1.0`.
+
+**DOG1의 수정이 공개 배포본에 실려 있다** — 같은 줄의 두 규칙이 둘 다 보고된다.
+
+### finding 큐
+
+- **2027-01 전에 Trusted Publishing으로 옮겨야 한다.** bypass 2FA 토큰은 그때 직접 배포에서 막힌다. GitHub Actions OIDC 경로(레포가 이미 GitHub에 있다)가 npm 공식 권고다. DOG2 step-3(재배포 절차)에 시한과 함께 적는다.
+- **재배포마다 이 토큰 절차를 반복해야 한다** — 발급·사용·폐기 3단계. 이것 자체가 Trusted Publishing으로 옮길 이유다.
