@@ -76,7 +76,7 @@ ECT1~ECT4 완료분 위에서 사용자가 브라우저(`127.0.0.1:5174`)로 직
 
 ## Step 트리
 
-- [ ] **step-0 — 보고서가 추적 밖으로 새지 않는다**
+- [x] **step-0 — 보고서가 추적 밖으로 새지 않는다**
   - Artifact: ECT1~ECT4 완료 보고서 4건이 `archive/reports/`(gitignore)에서 `docs/reports/`로 이관돼 추적된다.
   - Files: write `docs/reports/2026-07-21-ect{1,2,3,4}-*.md`(이동), `changesets/20260721-ect-report-relocation/README.md`, `changesets/README.md`.
   - Dependencies: 없음
@@ -84,7 +84,7 @@ ECT1~ECT4 완료분 위에서 사용자가 브라우저(`127.0.0.1:5174`)로 직
   - Failure probe: `git check-ignore docs/reports/<파일>` 이 아무것도 반환하지 않아야 한다(무시되지 않음을 증명). `archive/reports/` 경로는 여전히 무시돼야 한다.
   - Commit: changeset `20260721-ect-report-relocation` (#243).
 
-- [ ] **step-1 — 관측이 기록된다**
+- [x] **step-1 — 관측이 기록된다**
   - Artifact: `evidence/editor-color-and-token-editing/ect5-judgeability.md` — 과업 3건의 성공/실패·막힌 지점·**발화 인용**, 실측으로 기각된 가설 2건, 진입점 부재 finding.
   - Files: write `evidence/editor-color-and-token-editing/ect5-judgeability.md`, `changesets/20260721-ect5-observation/README.md`, `changesets/README.md`(인덱스 행).
   - Dependencies: 없음
@@ -92,7 +92,7 @@ ECT1~ECT4 완료분 위에서 사용자가 브라우저(`127.0.0.1:5174`)로 직
   - Failure probe: 판정 없이 서술만 있는 과업이 있으면 실패로 본다 — EU5 evidence 형식과 대조해 확인한다.
   - Commit: changeset `20260721-ect5-observation` (#244).
 
-- [ ] **step-2 — 화면이 알아들을 수 있는 말을 쓴다**
+- [x] **step-2 — 화면이 알아들을 수 있는 말을 쓴다**
   - Artifact: 결정 로그 3의 문구 7건이 전부 교체되고, 테스트가 새 문구를 고정한다.
   - Files: write `apps/agent-design/src/PropertyInspector.tsx`, `apps/agent-design/src/PropertyInspector.test.tsx`, `changesets/20260721-color-wording/README.md`, `changesets/README.md`.
   - Dependencies: step-1
@@ -100,7 +100,7 @@ ECT1~ECT4 완료분 위에서 사용자가 브라우저(`127.0.0.1:5174`)로 직
   - Failure probe: 옛 문구(`묶기`·`풀기`·`벗어난`)를 사용자 대면 문자열에서 grep 했을 때 0건이어야 한다. 한 건이라도 되살리면 테스트가 실패한다.
   - Commit: changeset `20260721-color-wording` (#245).
 
-- [ ] **step-3 — 사람이 다시 해본다 (설계된 정지)**
+- [x] **step-3 — 사람이 다시 해본다 (설계된 정지)**
   - Artifact: 고친 문구로 과업 ②③ 재관측 결과가 `ect5-judgeability.md`에 추가되고, horizon 닫는 기준 7항이 `선언/실측/판정`으로 대조된다.
   - Files: write `evidence/editor-color-and-token-editing/ect5-judgeability.md`(추가), `changesets/20260721-ect5-reobservation/README.md`, `changesets/README.md`.
   - Dependencies: step-2
