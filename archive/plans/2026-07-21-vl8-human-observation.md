@@ -38,21 +38,21 @@ Status: approved 2026-07-21 (horizon 전체 연쇄 승인)
 
 ## Step 트리
 
-- [ ] **step-1 — 관측 준비**
+- [x] **step-1 — 관측 준비**
   - Artifact: `evidence/vocabulary-in-use/ed5-observation.md` 스켈레톤 — 과업 3건 정의, 사전 설명 금지 프로토콜, 성공/실패 판정 기준(위 "정당한 실패" 구분 포함), 사용할 결정 자산 상태 스냅샷(군집 수·VL7 향상 폭)
   - Files: 읽기 `evidence/vocabulary-in-use/ed4-separation.md`·`docs/design-system/entry-protocol.md` / 쓰기 관측 기록 스켈레톤
   - Dependencies: none
   - Verify: 과업 3건이 서로 다른 군집을 건드리고, 판정 기준이 관측 전에 확정되어 문서에 있다(사후 기준 조정 방지)
   - Failure probe: 과업이 답을 유도하지 않는지 점검 — 요구 문장에 `아코디언`·`모달` 같은 요소 이름이 들어가면 판정할 게 없어진다. 3건 전부에서 요소 이름 0건을 확인
   - Commit: changeset `<n>-ed5-observation-setup` (코드 변경 없음 — 설계된 핸드오프)
-- [ ] **step-2 — 사용자 관측 실행**
+- [x] **step-2 — 사용자 관측 실행**
   - Artifact: (설계된 정지 — 사람의 행동이 증거) 과업별 결과 기록 — 판정한 요소·제시한 근거·사용자 판단(맞나/틀리나)·막힌 지점
   - Files: 쓰기 `evidence/vocabulary-in-use/ed5-observation.md`
   - Dependencies: step-1
   - Verify: 과업 3건 전부에 성공/실패와 사유가 기록됨. **미달이면 미달로 적는다** — 직전 horizon이 기준 6 미달을 명시하고 닫은 선례를 따른다
   - Failure probe: 기록이 관측이 아니라 해석이 되지 않았는지 점검 — 사용자 발화를 그대로 인용하고, 우리 해석은 별도 문단으로 분리한다
   - Commit: changeset `<n>-ed5-observation-verdict`
-- [ ] **step-3 — 발견 결함 마감**
+- [x] **step-3 — 발견 결함 마감**
   - Artifact: 관측에서 나온 결함 중 이 horizon 범위 내의 것을 수정 + 범위 밖은 `CANDIDATES.md` 적재
   - Files: 쓰기 결함이 가리키는 파일(`decisions/*`·`entry-protocol.md`·`decision-format.md`)·`plans/horizons/CANDIDATES.md`
   - Dependencies: step-2
@@ -72,3 +72,7 @@ Status: approved 2026-07-21 (horizon 전체 연쇄 승인)
 ## 진행 로그 (append-only)
 
 - 2026-07-21 plan 작성
+- 2026-07-21 step-1 완료 (cs 242) — 관측 준비, 설계된 정지로 사용자 대기
+- 2026-07-21 step-2 완료 (cs 243) — 관측 실행. **미달**: 과업 3건 중 1건만 수행·그 1건 실패. 조회 절차 미준수로 거짓 "사전 밖" 판정
+- 2026-07-21 step-3 완료 (cs 243) — 범위 내 마감 없음. 두 결함 모두 문서 추가로 닫히지 않아 `vocabulary-lookup-discipline` 후보 적재(failure probe가 명시한 경우). VL7 재측정은 제품 자산 무변경으로 회귀 원인이 없어 생략
+- 2026-07-21 보고서 `docs/reports/2026-07-21-vl8-human-observation.md`

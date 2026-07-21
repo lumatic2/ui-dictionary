@@ -3633,7 +3633,7 @@
       "work_id": "vl8-human-observation",
       "horizon_id": "vocabulary-in-use",
       "milestone_id": "VL8",
-      "status": "active",
+      "status": "completed",
       "plan_path": "plans/2026-07-21-vl8-human-observation.md",
       "changeset_path": "changesets",
       "next_step": "step-1",
@@ -3682,7 +3682,8 @@
       ],
       "owner_session_uuid": "claude:037069fb-2833-497c-ae4e-3f985ecea495",
       "updated_at": "2026-07-21",
-      "notes": "Registered atomically by canonical harness approve_harness_plan.py after plan validation."
+      "notes": "Registered atomically by canonical harness approve_harness_plan.py after plan validation.",
+      "completion_summary": "### 수행 현황 | 과업 | 결과 | |---|---| | 1 — \"정보가 많은데 펼치고 접히는 형태\" | **미수행** (흐름이 먼저 무너져 관측 중단) | | 2 — 오버레이 군집 | **미수행** | | 3 — 사용자 즉석 요구 | **수행 · 실패** | ### 과업 3에서 무슨 일이 있었나 사용자 요구: *\"마우스를 화면에서 움직이면 그 포인터를"
     }
   }
 }
