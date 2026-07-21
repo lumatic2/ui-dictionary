@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "active_work_id": "vl8-human-observation",
+  "active_work_id": "gp1-linear-pptx-pilot",
   "works": {
     "SFB1": {
       "title": "Structure Contract And Clean Production",
@@ -3681,6 +3681,56 @@
         "claude:037069fb-2833-497c-ae4e-3f985ecea495"
       ],
       "owner_session_uuid": "claude:037069fb-2833-497c-ae4e-3f985ecea495",
+      "updated_at": "2026-07-21",
+      "notes": "Registered atomically by canonical harness approve_harness_plan.py after plan validation."
+    },
+    "gp1-linear-pptx-pilot": {
+      "work_id": "gp1-linear-pptx-pilot",
+      "horizon_id": "getdesign-pptx-pilot",
+      "milestone_id": "GP1",
+      "status": "active",
+      "plan_path": "plans/2026-07-21-gp1-linear-pptx-pilot.md",
+      "changeset_path": "changesets/20260721-getdesign-linear-intake",
+      "next_step": "step-1",
+      "current_step": "step-1",
+      "steps": [
+        {
+          "id": "step-1",
+          "label": "step-1 — Linear intake와 프로젝트 DESIGN.md",
+          "status": "pending"
+        },
+        {
+          "id": "step-2",
+          "label": "step-2 — 동일 토큰의 웹 미니 페이지",
+          "status": "pending"
+        },
+        {
+          "id": "step-3",
+          "label": "step-3 — 네이티브 PPTX 생성과 교차 검증",
+          "status": "pending"
+        }
+      ],
+      "execution_mode": "continuous",
+      "approval": {
+        "approved_by": "user",
+        "approved_at": "2026-07-21",
+        "plan_sha256": "a412806cbefa8d8221b19ad55299c43aac9cef2cb2d9c1b6bd08208cc41fb61b"
+      },
+      "allowed_stop_reasons": [
+        "completed",
+        "blocked",
+        "decision_required",
+        "risk_gate",
+        "secret_required",
+        "external_authority_required",
+        "user_stopped"
+      ],
+      "stop_reason": null,
+      "stop_detail": {},
+      "session_ids": [
+        "codex:getdesign-pptx-pilot-20260721"
+      ],
+      "owner_session_uuid": null,
       "updated_at": "2026-07-21",
       "notes": "Registered atomically by canonical harness approve_harness_plan.py after plan validation."
     }
