@@ -8,6 +8,7 @@
 
 import { createRequire } from "node:module"
 import { readFile, readdir, access } from "node:fs/promises"
+import { execFileSync } from "node:child_process"
 import path from "node:path"
 import { fileURLToPath } from "node:url"
 
@@ -188,6 +189,31 @@ async function main() {
     console.log("끊긴 참조 사유별:")
     for (const [reason, n] of Object.entries(byReason)) console.log(`  ${reason}: ${n}`)
     console.log("전수는 --json 으로.")
+  }
+
+  // --strict (VL3): 계수에 그치지 않고 **무결성 게이트**로 쓴다. 하나라도 깨지면 exit 1.
+  //   ① 배포본 기준 끊긴 term_refs 0  ② 샤드가 원본과 일치  ③ 매핑 양방향 일치·죽은 참조 0
+  // ②③ 은 각 생성기의 --check 를 그대로 호출한다 — 같은 규칙을 두 곳에 적으면 갈라진다.
+  if (process.argv.includes("--strict")) {
+    console.log("---")
+    const failures = []
+    if (report.term_refs_broken > 0) failures.push(`끊긴 term_refs ${report.term_refs_broken}건`)
+    if (report.terms_published !== report.terms_total) {
+      failures.push(`배포된 용어 ${report.terms_published} ≠ 원본 ${report.terms_total}`)
+    }
+    for (const script of ["generate-vocabulary-shards.mjs", "generate-term-asset-map.mjs"]) {
+      try {
+        execFileSync(process.execPath, [path.join(root, "scripts", script), "--check"], { stdio: "pipe" })
+      } catch (err) {
+        failures.push(`${script} --check 실패: ${String(err.stderr ?? err.message).trim().split("\n")[0]}`)
+      }
+    }
+    if (failures.length > 0) {
+      console.error("무결성 FAIL:")
+      for (const f of failures) console.error(`  - ${f}`)
+      process.exit(1)
+    }
+    console.log("무결성 PASS — 끊긴 참조 0 · 샤드 일치 · 매핑 양방향 일치")
   }
 }
 
