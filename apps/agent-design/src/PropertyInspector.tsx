@@ -115,6 +115,19 @@ function DraftInput({ field, commit }: { field: PropertyField; commit: (value: P
  * EU5 관측에서 사용자가 색을 못 찾은 이유 중 하나가 이것이다 — 화면 어디에도
  * "색"이라는 단어가 없었다(계측 0건). 목록에 없는 키는 키 이름을 그대로 쓴다.
  */
+/**
+ * 셀렉트 옵션의 **화면 표시명**. 내부 값(`vertical`·`fixed`)은 문서 모델의 것이라 그대로 두고
+ * 사람이 읽는 자리만 바꾼다 — EU5가 드러낸 건 "내부 용어가 사용자 자리에 나온다"였다.
+ */
+const OPTION_LABELS: Record<string, string> = {
+  absolute: '자유 배치',
+  horizontal: '가로로 쌓기',
+  vertical: '세로로 쌓기',
+  fixed: '고정',
+  hug: '내용에 맞춤',
+  fill: '남는 공간 채움',
+}
+
 const COLOR_BINDING_LABELS: Record<string, string> = {
   fill: '채움 색',
   background: '배경 색',
@@ -515,8 +528,8 @@ export function PropertyInspector({ document, onOperation, bridgeConnected, onMa
   }
 
   return <aside className="inspector">
-    <h2>Properties</h2>
-    <label className="property-field">Token mode
+    <h2>속성</h2>
+    <label className="property-field">토큰 세트
       <select
         data-testid="token-mode"
         value={document.tokenSetId}
@@ -564,7 +577,7 @@ export function PropertyInspector({ document, onOperation, bridgeConnected, onMa
         </div>
       </Section>
       <Section id="structure">
-      <label className="property-field">Name
+      <label className="property-field">이름
         <input
           data-testid="property-name"
           value={name}
@@ -579,12 +592,12 @@ export function PropertyInspector({ document, onOperation, bridgeConnected, onMa
           data-testid={`property-${field.scope}-${field.key}`}
           value={String(field.value)}
           onChange={(event) => commitProperty(field, event.target.value)}
-        >{field.options?.map((option) => <option key={option}>{option}</option>)}</select>
+        >{field.options?.map((option) => <option key={option} value={option}>{OPTION_LABELS[option] ?? option}</option>)}</select>
           : field.valueType === 'boolean' ? <select
             data-testid={`property-${field.scope}-${field.key}`}
             value={String(field.value)}
             onChange={(event) => commitProperty(field, event.target.value === 'true')}
-          ><option value="false">False</option><option value="true">True</option></select>
+          ><option value="false">아니오</option><option value="true">예</option></select>
             : <DraftInput field={field} commit={(value) => commitProperty(field, value)} />}
       </label>)}
       </Section>
@@ -634,9 +647,9 @@ export function PropertyInspector({ document, onOperation, bridgeConnected, onMa
     </div>}
     <p className="property-error" role="alert" data-testid="property-error">{error}</p>
     <dl className="document-meta">
-      <div><dt>Revision</dt><dd data-testid="document-revision">{document.revision}</dd></div>
-      <div><dt>Nodes</dt><dd>{Object.keys(document.nodes).length.toLocaleString()}</dd></div>
-      <div><dt>Selection</dt><dd data-testid="selection-count">{document.selection.length}</dd></div>
+      <div><dt>수정 횟수</dt><dd data-testid="document-revision">{document.revision}</dd></div>
+      <div><dt>요소 수</dt><dd>{Object.keys(document.nodes).length.toLocaleString()}</dd></div>
+      <div><dt>선택</dt><dd data-testid="selection-count">{document.selection.length}</dd></div>
     </dl>
   </aside>
 }

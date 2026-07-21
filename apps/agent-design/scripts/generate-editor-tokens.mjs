@@ -33,27 +33,19 @@ const root = loadTokens(TOKENS_PATH);
 
 // Semantic tier: the tokens editor chrome (app shell, panels, toolbars) should
 // reference. Mirrors color.semantic.* 1:1 for every group defined in the SSOT.
-const SEMANTIC_COLOR_MAPPINGS = [
-  ["--ad-surface-base", "color.semantic.surface.base"],
-  ["--ad-surface-raised", "color.semantic.surface.raised"],
-  ["--ad-surface-overlay", "color.semantic.surface.overlay"],
-  ["--ad-surface-muted", "color.semantic.surface.muted"],
-  ["--ad-surface-secondary", "color.semantic.surface.secondary"],
-  ["--ad-surface-tint", "color.semantic.surface.tint"],
-  ["--ad-text-default", "color.semantic.text.default"],
-  ["--ad-text-muted", "color.semantic.text.muted"],
-  ["--ad-text-secondary", "color.semantic.text.secondary"],
-  ["--ad-text-on-accent", "color.semantic.text.on-accent"],
-  ["--ad-action-primary", "color.semantic.action.primary"],
-  ["--ad-action-secondary", "color.semantic.action.secondary"],
-  ["--ad-action-destructive", "color.semantic.action.destructive"],
-  ["--ad-accent-base", "color.semantic.accent.base"],
-  ["--ad-accent-foreground", "color.semantic.accent.foreground"],
-  ["--ad-border-default", "color.semantic.border.default"],
-  ["--ad-border-input", "color.semantic.border.input"],
-  ["--ad-border-focus", "color.semantic.border.focus"],
-  ["--ad-border-accent", "color.semantic.border.accent"],
-];
+//
+// SSOT의 color.semantic 잎을 순회해 CSS 변수 이름을 만든다.
+// 손으로 나열하던 19줄을 대체한다 — 같은 집합을 두 방식(손 나열 + walkLeaves)으로
+// 표현하고 있어서, SSOT에 토큰이 늘면 한쪽만 따라가고 다른 쪽이 뒤처졌다
+// (ECT1 finding). 정본은 SSOT 하나다.
+const semanticColorMappings = () => {
+  const out = [];
+  walkLeaves(getNode(root, "color.semantic"), [], (leafPath) => {
+    out.push([`--ad-${leafPath.replace(/\./g, "-")}`, `color.semantic.${leafPath}`]);
+  });
+  return out;
+};
+
 
 // Primitive tier: mode-independent values. Used for (1) chrome surfaces that
 // deliberately stay dark regardless of document.tokenSetId (the inspector
@@ -129,7 +121,7 @@ function buildEditorTokensCss() {
     "/* :root holds light-mode (askewly.default) values. The .app-shell[data-ad-mode=\"dark\"] block below overrides the semantic tier with askewly.dark values; App.tsx sets data-ad-mode from document.tokenSetId. */",
   );
   lines.push(":root {");
-  for (const [cssVar, tokenPath] of SEMANTIC_COLOR_MAPPINGS) {
+  for (const [cssVar, tokenPath] of semanticColorMappings()) {
     lines.push(`  ${cssVar}: ${colorValueToCss(resolveModeLiteral(root, tokenPath, "light"))};`);
   }
   for (const [cssVar, tokenPath] of PRIMITIVE_COLOR_MAPPINGS) {
@@ -155,7 +147,7 @@ function buildEditorTokensCss() {
   lines.push("}");
   lines.push("");
   lines.push('.app-shell[data-ad-mode="dark"] {');
-  for (const [cssVar, tokenPath] of SEMANTIC_COLOR_MAPPINGS) {
+  for (const [cssVar, tokenPath] of semanticColorMappings()) {
     lines.push(`  ${cssVar}: ${colorValueToCss(resolveModeLiteral(root, tokenPath, "dark"))};`);
   }
   lines.push("}");

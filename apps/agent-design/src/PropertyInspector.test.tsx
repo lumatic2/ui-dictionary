@@ -122,7 +122,7 @@ describe('섹션이 규약 순서를 따른다 (EU4 step-2)', () => {
     // ECT2 step-1에서 라벨이 `Token · background`(내부 용어)에서 사용자 언어로 바뀌었다.
     // 섹션 소속을 보는 테스트이므로 새 라벨로 대조한다.
     expect(visual.textContent).toContain('배경 색')
-    expect(structure.textContent).toContain('Layout')
+    expect(structure.textContent).toContain('배치')
     // 섞이면 안 된다.
     expect(structure.textContent).not.toContain('배경 색')
   })
@@ -154,14 +154,14 @@ describe('선택 종류에 따라 달라진다 (EU4 step-3)', () => {
 
     const component = render(<PropertyInspector document={{ ...base, selection: [componentId] }} onOperation={() => {}} bridgeConnected={false} onMaterialize={() => {}} />)
     const structure = component.container.querySelector('[data-inspector-section="structure"]')!
-    expect(structure.textContent).toContain('Prop · ')
-    expect(structure.textContent).toContain('Variant · ')
+    expect(structure.textContent).toContain('속성 · ')
+    expect(structure.textContent).toContain('변형 · ')
     cleanup()
 
     const frame = render(<PropertyInspector document={{ ...base, selection: [frameId] }} onOperation={() => {}} bridgeConnected={false} onMaterialize={() => {}} />)
     const frameStructure = frame.container.querySelector('[data-inspector-section="structure"]')!
-    expect(frameStructure.textContent).not.toContain('Prop · ')
-    expect(frameStructure.textContent).not.toContain('Variant · ')
+    expect(frameStructure.textContent).not.toContain('속성 · ')
+    expect(frameStructure.textContent).not.toContain('변형 · ')
   })
 
   it('instance 에만 Override 가 나온다', () => {
@@ -170,11 +170,11 @@ describe('선택 종류에 따라 달라진다 (EU4 step-3)', () => {
     const frameId = Object.keys(base.nodes).find((id) => base.nodes[id].kind === 'frame')!
 
     const instance = render(<PropertyInspector document={{ ...base, selection: [instanceId] }} onOperation={() => {}} bridgeConnected={false} onMaterialize={() => {}} />)
-    expect(instance.container.querySelector('[data-inspector-section="structure"]')!.textContent).toContain('Override · ')
+    expect(instance.container.querySelector('[data-inspector-section="structure"]')!.textContent).toContain('덮어쓰기 · ')
     cleanup()
 
     const frame = render(<PropertyInspector document={{ ...base, selection: [frameId] }} onOperation={() => {}} bridgeConnected={false} onMaterialize={() => {}} />)
-    expect(frame.container.querySelector('[data-inspector-section="structure"]')!.textContent).not.toContain('Override · ')
+    expect(frame.container.querySelector('[data-inspector-section="structure"]')!.textContent).not.toContain('덮어쓰기 · ')
   })
 
   it('기하 섹션은 종류와 무관하게 늘 있다 — 무엇을 고르든 어디에 얼마나 큰지는 읽혀야 한다', () => {
@@ -649,5 +649,56 @@ describe('쓸 수 없는 색은 커밋 전에 막힌다 (ECT3 검증 후속)', (
     expect(view.getByTestId('property-error').textContent).toContain('쓸 수 있는 색이 아닙니다')
     // 입력은 원래 값으로 되돌아온다 — 안 먹은 값이 남아 있으면 먹은 줄 안다.
     expect((input as HTMLInputElement).value).toBe('#123456')
+  })
+})
+
+/**
+ * ECT4 후속 — 인스펙터가 **한 언어로 말한다.**
+ *
+ * ECT2에서 색 라벨만 한국어로 옮겼더니 `Properties`·`Layout`·`Gap`·`Padding`과 섞여
+ * 오히려 혼재가 눈에 띄었다. EU5가 드러낸 것과 같은 종류(사용자가 읽어야 할 자리에
+ * 내부·영어 용어)라 ECT5 재관측에서 다시 걸릴 수 있어 마감한다.
+ *
+ * **내부 값은 그대로 둔다** — `vertical`·`fixed`는 문서 모델의 것이고, 사람이 읽는
+ * 자리만 바꾼다.
+ */
+describe('인스펙터가 한 언어로 말한다 (ECT4 후속)', () => {
+  /** 사용자에게 보이는 텍스트에 남아 있으면 안 되는 내부·영어 용어. */
+  const 금지어 = ['Properties', 'Token mode', 'Layout', 'Gap', 'Padding', 'Revision', 'Selection', 'True', 'False']
+
+  it('화면 텍스트에 영어 라벨이 남아 있지 않다', () => {
+    const { view } = setup()
+    const 화면 = view.container.textContent ?? ''
+    for (const 말 of 금지어) {
+      expect(화면, `"${말}"이 화면에 남아 있다`).not.toContain(말)
+    }
+  })
+
+  it('사람이 읽는 자리는 한국어다', () => {
+    const { view } = setup()
+    const 화면 = view.container.textContent ?? ''
+    for (const 말 of ['속성', '토큰 세트', '이름', '배치', '간격', '안쪽 여백', '수정 횟수', '선택']) {
+      expect(화면, `"${말}"이 없다`).toContain(말)
+    }
+  })
+
+  it('셀렉트는 사람 말을 보여주되 값은 문서 모델 그대로다', () => {
+    const { view } = setup()
+    const select = view.container.querySelector('[data-inspector-section="structure"] select') as HTMLSelectElement
+    const options = [...select.options]
+    // 표시는 한국어, value는 내부 값 — 둘이 갈라져 있어야 한다.
+    expect(options.map((o) => o.value)).toContain('vertical')
+    expect(options.map((o) => o.textContent)).not.toContain('vertical')
+    expect(options.map((o) => o.textContent)).toContain('세로로 쌓기')
+  })
+
+  it('스크린리더가 읽는 문자열도 사용자 언어다', () => {
+    const { view } = setup()
+    for (const el of view.container.querySelectorAll('[aria-label]')) {
+      const label = el.getAttribute('aria-label') ?? ''
+      // 순수 ASCII 영문만으로 된 aria-label은 남기지 않는다(토큰 이름이 섞인 건 허용).
+      const 영문만 = /^[A-Za-z][A-Za-z\s]+$/.test(label)
+      expect(영문만, `aria-label이 영어다: "${label}"`).toBe(false)
+    }
   })
 })

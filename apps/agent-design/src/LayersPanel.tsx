@@ -233,7 +233,7 @@ export function LayersPanel({ document, onOperation }: Props) {
       <input
         type="search"
         data-testid="layer-search"
-        aria-label="Search layers"
+        aria-label="레이어 검색"
         placeholder="레이어 검색"
         value={search}
         onChange={(event) => setSearch(event.target.value)}

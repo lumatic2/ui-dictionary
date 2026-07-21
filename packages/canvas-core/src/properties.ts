@@ -173,20 +173,20 @@ function valueType(value: PropValue): PropertyField['valueType'] {
 
 export function propertyFieldsForNode(node: CanvasNode): PropertyField[] {
   const fields: PropertyField[] = [
-    { scope: 'layout', key: 'mode', label: 'Layout', value: node.layout.mode, valueType: 'select', options: [...layoutModes] },
+    { scope: 'layout', key: 'mode', label: '배치', value: node.layout.mode, valueType: 'select', options: [...layoutModes] },
     // 'Width'/'Height'로 부르면 기하 섹션의 실제 너비·높이 숫자와 이름이 겹쳐 서로를 가린다.
     // 이 값은 크기가 아니라 크기를 **정하는 방식**(fixed|hug|fill)이다.
     { scope: 'layout', key: 'horizontal', label: '가로 사이징', value: node.layout.horizontal, valueType: 'select', options: [...sizingModes] },
     { scope: 'layout', key: 'vertical', label: '세로 사이징', value: node.layout.vertical, valueType: 'select', options: [...sizingModes] },
-    { scope: 'layout', key: 'gap', label: 'Gap', value: node.layout.gap, valueType: 'number' },
-    { scope: 'layout', key: 'padding', label: 'Padding', value: node.layout.padding[0], valueType: 'number' },
+    { scope: 'layout', key: 'gap', label: '간격', value: node.layout.gap, valueType: 'number' },
+    { scope: 'layout', key: 'padding', label: '안쪽 여백', value: node.layout.padding[0], valueType: 'number' },
     ...Object.entries(node.tokenBindings).map(([key, value]): PropertyField => ({ scope: 'token', key, label: `Token · ${key}`, value, valueType: 'string' })),
   ]
   if (node.kind === 'code-component') {
-    fields.push(...Object.entries(node.props).map(([key, value]): PropertyField => ({ scope: 'prop', key, label: `Prop · ${key}`, value, valueType: valueType(value) })))
-    fields.push(...Object.entries(node.variants).map(([key, value]): PropertyField => ({ scope: 'variant', key, label: `Variant · ${key}`, value, valueType: 'string' })))
+    fields.push(...Object.entries(node.props).map(([key, value]): PropertyField => ({ scope: 'prop', key, label: `속성 · ${key}`, value, valueType: valueType(value) })))
+    fields.push(...Object.entries(node.variants).map(([key, value]): PropertyField => ({ scope: 'variant', key, label: `변형 · ${key}`, value, valueType: 'string' })))
   }
-  if (node.kind === 'instance') fields.push(...Object.entries(node.overrides).map(([key, value]): PropertyField => ({ scope: 'override', key, label: `Override · ${key}`, value, valueType: valueType(value) })))
+  if (node.kind === 'instance') fields.push(...Object.entries(node.overrides).map(([key, value]): PropertyField => ({ scope: 'override', key, label: `덮어쓰기 · ${key}`, value, valueType: valueType(value) })))
   return fields
 }
 

@@ -3224,8 +3224,8 @@
       "status": "active",
       "plan_path": "plans/2026-07-21-ect4-image-node-and-contract.md",
       "changeset_path": "changesets",
-      "next_step": "step-2",
-      "current_step": "step-1",
+      "next_step": null,
+      "current_step": "step-2",
       "steps": [
         {
           "id": "step-1",
@@ -3236,7 +3236,8 @@
         {
           "id": "step-2",
           "label": "step-2 — 이미지 노드가 칠해진다 + 게이트",
-          "status": "pending"
+          "status": "completed",
+          "changeset": "20260721-image-node-token-render"
         }
       ],
       "execution_mode": "continuous",
