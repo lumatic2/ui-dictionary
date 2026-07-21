@@ -1,7 +1,7 @@
 # ROADMAP
 
 > Last updated: 2026-07-21
-> Status: `vocabulary-in-use` **closed 2026-07-21**(VL1~VL8 — 6 PASS · VL8 미달). 남은 active 는 `editor-color-and-token-editing`(ECT1~4 완료·**ECT5 blocked**, 별도 세션). 다음 방향은 `plans/horizons/CANDIDATES.md` 에서 사용자가 선정한다 — VL8 이 적재한 6번 `vocabulary-lookup-discipline` 포함.
+> Status: **활성 horizon 0.** `vocabulary-in-use` closed 2026-07-21(VL1~VL8 — 6 PASS · VL8 미달) · `editor-color-and-token-editing` closed 2026-07-21(7항 중 6 PASS · 기준 6 부분 충족). 두 horizon 다 **사람 관측 게이트에서 미달·부분**으로 닫혔다 — 관측 설계 손볼 시점. 다음 방향은 `plans/horizons/CANDIDATES.md` 에서 사용자가 선정한다.
 > North star: Build Askewly Design as both a public reference website and an agent-usable implementation system.
 > line budget: <=150
 
