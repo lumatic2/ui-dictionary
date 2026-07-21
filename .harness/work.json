@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "active_work_id": "vl3-reference-repair",
+  "active_work_id": "vl4-decision-data-contract",
   "works": {
     "SFB1": {
       "title": "Structure Contract And Clean Production",
@@ -3161,7 +3161,7 @@
       "work_id": "vl3-reference-repair",
       "horizon_id": "vocabulary-in-use",
       "milestone_id": "VL3",
-      "status": "active",
+      "status": "completed",
       "plan_path": "plans/2026-07-21-vl3-reference-repair.md",
       "changeset_path": "changesets",
       "next_step": "step-1",
@@ -3188,6 +3188,57 @@
         "approved_by": "user",
         "approved_at": "2026-07-21",
         "plan_sha256": "f27c9db98afda96b4b6111ac475530398cbd0acf9da9a1f93c53ac9ffb88eba2"
+      },
+      "allowed_stop_reasons": [
+        "completed",
+        "blocked",
+        "decision_required",
+        "risk_gate",
+        "secret_required",
+        "external_authority_required",
+        "user_stopped"
+      ],
+      "stop_reason": null,
+      "stop_detail": {},
+      "session_ids": [
+        "claude:037069fb-2833-497c-ae4e-3f985ecea495"
+      ],
+      "owner_session_uuid": "claude:037069fb-2833-497c-ae4e-3f985ecea495",
+      "updated_at": "2026-07-21",
+      "notes": "Registered atomically by canonical harness approve_harness_plan.py after plan validation.",
+      "completion_summary": "VL3 완료 — 용어별로 무엇으로 만들 수 있는지 답하는 매핑을 세우고, 자산 없는 481개에 폴백 구현 경로를 부여했다(combobox로 실증). 무결성은 --strict 게이트로 잠갔다."
+    },
+    "vl4-decision-data-contract": {
+      "work_id": "vl4-decision-data-contract",
+      "horizon_id": "vocabulary-in-use",
+      "milestone_id": "VL4",
+      "status": "active",
+      "plan_path": "plans/2026-07-21-vl4-decision-data-contract.md",
+      "changeset_path": "changesets",
+      "next_step": "step-1",
+      "current_step": "step-1",
+      "steps": [
+        {
+          "id": "step-1",
+          "label": "step-1 — 포맷 계약 문서",
+          "status": "pending"
+        },
+        {
+          "id": "step-2",
+          "label": "step-2 — 검증기",
+          "status": "pending"
+        },
+        {
+          "id": "step-3",
+          "label": "step-3 — 첫 군집(펼침류)",
+          "status": "pending"
+        }
+      ],
+      "execution_mode": "continuous",
+      "approval": {
+        "approved_by": "user",
+        "approved_at": "2026-07-21",
+        "plan_sha256": "c8507163d7790af6fced5b1052002baef981a991b4724e5fcc64ac95d8857360"
       },
       "allowed_stop_reasons": [
         "completed",
