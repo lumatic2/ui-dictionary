@@ -46,6 +46,8 @@ diff 없음 (동일)
 exit=0
 ```
 
+배포본 entry-protocol 에도 `npx @askewly/design verify` 가 반영됐다(1건).
+
 - 낡은 문장 ① `"전역 CLAUDE.md §askewly-design"`(삭제된 절 참조) → **없음**
 - 낡은 문장 ② `"이 스킬의 대상이 아니다"`(인쇄·슬라이드 배제) → **없음**
 - `npx @askewly/design verify` → **있음**
