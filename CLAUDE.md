@@ -1,13 +1,15 @@
 # ui-dictionary
 
-> 유성의 디지털 제품 디자인 시스템 — 사람이 탐색하는 UI reference website + Codex/Claude Code가 활용하는 agent-facing design system
+> 유성의 디자인 시스템 정본 레포 — 사람이 탐색하는 reference website + Codex/Claude Code가 활용하는 agent-facing design system + 사람이 직접 만드는 AskewlyDesign 앱
 
 ## 목적
 
-웹사이트, 모바일 앱, SaaS, 커머스, 대시보드, 문서 사이트, 운영 도구 등 디지털 제품 UI를 직접 보고, 비교하고, 재사용할 수 있는 디자인 시스템으로 구축한다.
+Askewly Design은 모든 형태의 디자인을 총괄한다 — 프로덕트 디자인, 슬라이드 디자인, 프론트엔드 디자인. 본 레포는 그 정본이고, `/askewly-design` 스킬이 공통 진입점이다. (북극성은 [OBJECTIVE.md](OBJECTIVE.md) — 이 절은 그 요약이다.)
+
+범위는 웹사이트, 모바일 앱, SaaS, 커머스, 대시보드, 문서 사이트, 운영 도구 등 디지털 제품 UI에 더해, 슬라이드·인쇄물처럼 상호작용 없이 읽히는 지면 산출물까지다. 매체가 다르면 게이트도 다르다 — 화면은 상태·다크모드, 지면은 최종 형식 그대로 렌더해 확인한다.
 
 - **Website**: 사람이 UI surfaces, components, patterns, colors, typography, layout, motion, page examples를 탐색하는 공개 사이트
-- **AskewlyDesign App**: 사람이 실제 React UI를 코드 네이티브 캔버스에서 구성·직접 조작하고, 선택 영역에 결합된 에이전트와 함께 코드로 왕복하는 데스크톱 편집기
+- **AskewlyDesign App**: Figma·Adobe 제품군이 맡던 자리 — 사람이 실제 React UI를 코드 네이티브 캔버스에서 구성·직접 조작하고, 선택 영역에 결합된 에이전트와 함께 코드로 왕복하는 데스크톱 편집기
 - **Assets**: 향후 결제 사용자에게 더 자유로운 코드 복사, 에셋 다운로드, implementation pack 제공
 - **Agent System**: Codex, Claude Code가 AI 티가 덜 나는 제품 UI를 만들 수 있도록 tokens, pattern recipes, component guidance, prompts, anti-patterns 제공
 - **Reference Loop**: Tailwind/Tailwind Plus, Tailwind Labs repo, Apple HIG, Material Design, 고품질 SaaS/모바일 앱, 기존 `design-manual`/custom skills 작업을 근거 기반으로 흡수
