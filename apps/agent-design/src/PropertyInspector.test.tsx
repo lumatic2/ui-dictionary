@@ -235,7 +235,7 @@ describe('색이 견본으로 보인다 (ECT2 step-1)', () => {
     const swatch = view.getByTestId('color-swatch-background')
     expect(swatch.getAttribute('data-resolved')).toBeNull()
     expect(swatch.className).toContain('unresolved')
-    expect(view.getByTestId('color-field-background').textContent).toContain('해석되지 않는다')
+    expect(view.getByTestId('color-field-background').textContent).toContain('이 이름의 토큰이 지금 문서에 없습니다')
   })
 
   it('색이 아닌 토큰은 색 컨트롤이 되지 않는다', () => {
@@ -493,7 +493,7 @@ describe('안 묶인 색을 묶는다 (ECT3 step-1)', () => {
 
   it('바인딩이 없으면 막다른 안내문 대신 묶는 버튼이 있다', () => {
     const { view } = withNode('frame', {})
-    expect(view.getByTestId('bind-color-background').textContent).toContain('묶기')
+    expect(view.getByTestId('bind-color-background').textContent).toContain('색 고르기')
     // 예전 막다른 문구가 그 자리를 대신하지 않는다.
     expect(view.container.textContent).not.toContain('이 노드에 묶인 토큰이 없다')
   })
@@ -584,7 +584,7 @@ describe('벗어난 색을 고치고 되묶는다 (ECT3 step-3)', () => {
   it('벗어난 색은 리터럴 필드로 나오고 벗어났다고 적혀 있다', () => {
     const { view } = detached()
     expect(view.getByTestId('literal-color-field-background')).not.toBeNull()
-    expect(view.getByTestId('detached-note-background').textContent).toContain('토큰에서 벗어난')
+    expect(view.getByTestId('detached-note-background').textContent).toContain('직접 지정한 색')
     expect(view.queryByTestId('bind-color-background')).toBeNull()
   })
 
@@ -700,5 +700,67 @@ describe('인스펙터가 한 언어로 말한다 (ECT4 후속)', () => {
       const 영문만 = /^[A-Za-z][A-Za-z\s]+$/.test(label)
       expect(영문만, `aria-label이 영어다: "${label}"`).toBe(false)
     }
+  })
+})
+
+/**
+ * ECT5 — 내부 설계 언어가 사용자 화면에 새지 않는다.
+ *
+ * 사람 관측(2026-07-21)에서 사용자가 막힌 곳이 기능이 아니라 **어휘**였다:
+ * *"색을 묶으라는게 무슨 말이지? 색을 붙인다는 건 뭐고?"*
+ *
+ * "묶다/풀다/벗어나다"는 ECT3 milestone 제목에서 코드로, 코드에서 화면으로
+ * 검문 없이 흘러내렸다. 이 게이트가 그 경로를 막는다 — **화면과 aria 양쪽**을 본다.
+ * 코드·테스트 이름·에이전트 문서에서는 계속 써도 된다(의도된 분리).
+ */
+describe('내부 어휘가 화면에 새지 않는다 (ECT5)', () => {
+  /** 사람이 읽는 모든 문자열 — 화면 텍스트 + aria-label. */
+  function 사용자가읽는문자열(container: HTMLElement): string[] {
+    const labels = [...container.querySelectorAll('[aria-label]')]
+      .map((el) => el.getAttribute('aria-label') ?? '')
+    return [container.textContent ?? '', ...labels]
+  }
+
+  const 금지어 = ['묶기', '묶인', '묶을', '풀기', '벗어난', '벗어남', '원시 값', '해석되지 않']
+
+  function 검사(container: HTMLElement, 상태: string) {
+    for (const 문자열 of 사용자가읽는문자열(container)) {
+      for (const 말 of 금지어) {
+        expect(문자열.includes(말), `${상태} 상태 화면에 내부 어휘 "${말}"가 있다: "${문자열.slice(0, 120)}"`).toBe(false)
+      }
+    }
+  }
+
+  function 인스펙터(tokenBindings: Record<string, string>, literalColors?: Record<string, string>) {
+    const base = createDocumentFixture(1000)
+    const id = base.selection[0]
+    const document = structuredClone(base)
+    Object.assign(document.nodes[id], { kind: 'frame', tokenBindings, ...(literalColors ? { literalColors } : {}) })
+    return render(<PropertyInspector
+      document={document} onOperation={() => {}} bridgeConnected={false} onMaterialize={() => {}}
+    />)
+  }
+
+  it('토큰이 묶인 상태 — 화면에도 aria에도 내부 어휘가 없다', () => {
+    검사(인스펙터({ background: 'surface.raised' }).container, '바인딩')
+  })
+
+  it('토큰이 없는 상태 — 고르는 경로가 사용자 말로 나온다', () => {
+    const view = 인스펙터({})
+    검사(view.container, '미바인딩')
+    expect(view.getByTestId('bind-color-background').textContent).toBe('색 고르기')
+  })
+
+  it('직접 지정한 상태 — 되돌아갈 길이 사용자 말로 적혀 있다', () => {
+    const view = 인스펙터({}, { background: '#123456' })
+    검사(view.container, '직접 지정')
+    expect(view.getByTestId('detached-note-background').textContent)
+      .toBe('토큰을 쓰지 않고 직접 지정한 색입니다. 견본을 누르면 토큰으로 돌아갑니다.')
+  })
+
+  it('없는 토큰 상태 — 사유가 사용자 말로 나온다', () => {
+    const view = 인스펙터({ background: 'surface.없는이름' })
+    검사(view.container, '미해결')
+    expect(view.container.textContent).toContain('이 이름의 토큰이 지금 문서에 없습니다.')
   })
 })

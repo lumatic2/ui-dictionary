@@ -128,6 +128,20 @@ const OPTION_LABELS: Record<string, string> = {
   fill: '남는 공간 채움',
 }
 
+/*
+ * **사람 화면의 어휘와 코드·문서의 어휘는 일부러 다르다** (ECT5 관측, 2026-07-21).
+ *
+ * 코드·테스트 이름·에이전트 대면 문서(`docs/design-system/`·`llms.txt`)는 계속
+ * "바인딩(binding)·묶다·detach"로 말한다. 그게 정확한 기계 어휘다.
+ * 하지만 **사용자 화면에서는 쓰지 않는다** — 사람 관측에서 사용자가 정확히 그 말에 막혔다:
+ * *"색을 묶으라는게 무슨 말이지? 색을 붙인다는 건 뭐고?"*
+ *
+ * 화면 축은 "토큰은 남기고, 동사만 쉬운 말로"다(사용자 결정 2026-07-21):
+ * 묶다 → 고르다 · 풀다/벗어나다 → 직접 지정하다.
+ *
+ * 그러니 아래 문자열이 함수명·testid와 어긋나 보여도 **불일치가 아니라 의도된 분리다.**
+ * 되돌리기 전에 `evidence/editor-color-and-token-editing/ect5-judgeability.md` 를 읽을 것.
+ */
 const COLOR_BINDING_LABELS: Record<string, string> = {
   fill: '채움 색',
   background: '배경 색',
@@ -339,23 +353,24 @@ function ColorBindingField({ field, tokenSetId, commit, onDetach }: {
         data-testid={`color-swatch-${field.key}`}
         data-resolved={resolved ?? undefined}
         style={resolved ? { background: resolved } : undefined}
-        aria-label={`${label}: ${resolved ? binding : '해석되지 않음'} — 눌러서 바꾸기`}
+        aria-label={`${label}: ${resolved ? binding : '없는 토큰'} — 눌러서 바꾸기`}
         aria-expanded={open}
         onClick={() => setOpen((was) => !was)}
       />
       <span className="color-token-name">{binding}</span>
     </span>
-    {!resolved && <span className="color-field-note">이 토큰은 지금 문서의 토큰 세트에서 해석되지 않는다.</span>}
+    {!resolved && <span className="color-field-note">이 이름의 토큰이 지금 문서에 없습니다.</span>}
     {/*
-      * 토큰에서 벗어나는 문. 해석되는 색일 때만 낸다 — 안 풀리는 토큰은 벗어날 색이 없다.
-      * 사용자 결정(2026-07-21): 탈출구 있음(Figma식). 벗어난 상태는 화면에 표시한다.
+      * 토큰을 안 쓰고 직접 지정하는 문. 해석되는 색일 때만 낸다 —
+      * 없는 토큰은 출발점으로 삼을 색이 없다.
+      * 사용자 결정(2026-07-21): 탈출구 있음(Figma식). 직접 지정한 상태는 화면에 표시한다.
       */}
     {onDetach && resolved && <button
       type="button"
       className="color-detach-button"
       data-testid={`detach-color-${field.key}`}
       onClick={() => onDetach(resolved)}
-    >토큰에서 풀기</button>}
+    >직접 색 지정</button>}
     {open && <TokenColorPicker id={field.key} tokenSetId={tokenSetId} current={binding} onChoose={choose} onClose={close} />}
   </div>
 }
@@ -401,9 +416,10 @@ function UnboundColorField({ bindingKey, tokenSetId, commit }: {
       type="button"
       className="color-bind-button"
       data-testid={`bind-color-${bindingKey}`}
+      aria-label={`${label} 고르기`}
       aria-expanded={open}
       onClick={() => setOpen((was) => !was)}
-    >{label} 묶기</button>
+    >색 고르기</button>
     {open && <TokenColorPicker
       id={bindingKey}
       tokenSetId={tokenSetId}
@@ -461,7 +477,7 @@ function LiteralColorField({ bindingKey, value, tokenSetId, onRebind, onEdit, on
         data-testid={`color-swatch-${bindingKey}`}
         data-resolved={value}
         style={{ background: value }}
-        aria-label={`${label}: ${value} — 토큰에서 벗어남, 눌러서 다시 묶기`}
+        aria-label={`${label}: ${value} — 직접 지정한 색, 눌러서 토큰으로 되돌리기`}
         aria-expanded={open}
         onClick={() => setOpen((was) => !was)}
       />
@@ -469,13 +485,13 @@ function LiteralColorField({ bindingKey, value, tokenSetId, onRebind, onEdit, on
         className="color-literal-input"
         data-testid={`literal-input-${bindingKey}`}
         value={draft}
-        aria-label={`${label} 원시 값`}
+        aria-label={`${label} 직접 지정 값`}
         onChange={(event) => setDraft(event.target.value)}
         onBlur={() => commitDraft()}
         onKeyDown={(event) => { if (event.key === 'Enter') commitDraft() }}
       />
     </span>
-    <span className="color-field-note" data-testid={`detached-note-${bindingKey}`}>토큰에서 벗어난 색이다. 견본을 눌러 다시 묶을 수 있다.</span>
+    <span className="color-field-note" data-testid={`detached-note-${bindingKey}`}>토큰을 쓰지 않고 직접 지정한 색입니다. 견본을 누르면 토큰으로 돌아갑니다.</span>
     {open && <TokenColorPicker
       id={bindingKey}
       tokenSetId={tokenSetId}
