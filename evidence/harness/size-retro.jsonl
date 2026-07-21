@@ -42,3 +42,4 @@
 {"actual_changesets": 0, "declared_min": 3, "milestone_id": "DOG2", "ts": "2026-07-22", "unresolved_refs": [], "verdict": "no-refs"}
 {"actual_changesets": 0, "declared_min": 3, "milestone_id": "DOG3", "ts": "2026-07-22", "unresolved_refs": [], "verdict": "no-refs"}
 {"actual_changesets": 0, "declared_min": 3, "milestone_id": "DOG4", "ts": "2026-07-22", "unresolved_refs": [], "verdict": "no-refs"}
+{"actual_changesets": 0, "declared_min": 3, "milestone_id": "DOG5", "ts": "2026-07-22", "unresolved_refs": [], "verdict": "no-refs"}
