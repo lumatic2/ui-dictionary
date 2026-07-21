@@ -2255,13 +2255,13 @@
       "status": "active",
       "plan_path": "plans/2026-07-20-th1-code-legibility.md",
       "changeset_path": "changesets/20260720-template-core-legibility",
-      "next_step": "step-2",
-      "current_step": "step-2",
+      "next_step": "step-1",
+      "current_step": "step-1",
       "steps": [
         {
           "id": "step-1",
           "label": "step-1 — core-legibility",
-          "status": "completed"
+          "status": "pending"
         },
         {
           "id": "step-2",
@@ -3691,13 +3691,13 @@
       "status": "active",
       "plan_path": "plans/2026-07-21-gp1-linear-pptx-pilot.md",
       "changeset_path": "changesets/20260721-getdesign-linear-intake",
-      "next_step": "step-1",
-      "current_step": "step-1",
+      "next_step": "step-2",
+      "current_step": "step-2",
       "steps": [
         {
           "id": "step-1",
           "label": "step-1 — Linear intake와 프로젝트 DESIGN.md",
-          "status": "pending"
+          "status": "completed"
         },
         {
           "id": "step-2",
