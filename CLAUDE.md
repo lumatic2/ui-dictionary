@@ -113,3 +113,14 @@ Google Labs(Stitch) 가 오픈소스화한 포맷. 코딩 에이전트가 디자
 - 글로벌 디자인 스킬 (기존, 별도 출처): `/design`, `/design-system`, `/design-qa`, `/design-export`, `/design-flow`, `/design-full`
 - 프론트엔드 코드 생성: `frontend-design:frontend-design` 스킬
 - UI 용어 사전 배포: [docs/ui-vocabulary/deployment.md](docs/ui-vocabulary/deployment.md)
+
+## 완료 보고서 위치 (2026-07-21 사용자 확정)
+
+- milestone/horizon **완료 보고서는 `docs/reports/`** 에 둔다. harness §0 배치 규약의 기본값은 `archive/reports/` 이지만, 이 레포는 `.gitignore` 에 `archive/` 가 있어 **보고서가 조용히 버전 관리 밖으로 나갔다.**
+- 발견 경위: 2026-07-21 병렬 horizon 병합 중 `git checkout archive/reports` 가 실패해서 드러났다. 그 시점까지 `vocabulary-in-use` 7건과 `editor-color-and-token-editing` 쪽 보고서가 **양쪽 다 커밋된 적이 없었다** — 워크트리가 사라지면 같이 사라지는 상태였다.
+- `report_close.py` 는 보고서 경로를 인자로 받으므로 위치만 바꾸면 된다: `report_close.py docs/reports/<date>-<id>-<slug>.md --task-id <id> --root .`
+
+## 병렬 horizon 의 changeset 번호 (2026-07-21)
+
+- 두 horizon 이 같은 base 에서 병렬로 달리면 **changeset 번호가 겹친다.** 실제로 206~221 이 양쪽에서 서로 다른 변경을 가리켰다(병합 시 한쪽을 222~242 로 이동해 해소).
+- 병렬 horizon 을 열 때는 **번호 구간을 먼저 나눠 잡는다.** 이력: `plans/horizons/CANDIDATES.md`

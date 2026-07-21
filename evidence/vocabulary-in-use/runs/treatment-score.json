@@ -1,0 +1,360 @@
+{
+  "cases_path": "evidence\\vocabulary-in-use\\cases.yml",
+  "answers_path": "evidence\\vocabulary-in-use\\runs\\treatment-answers.json",
+  "total": 32,
+  "correct": 31,
+  "accuracy_pct": 96.9,
+  "ungrounded": 0,
+  "by_cluster": {
+    "펼침류": {
+      "total": 3,
+      "correct": 3,
+      "pct": 100
+    },
+    "오버레이": {
+      "total": 3,
+      "correct": 3,
+      "pct": 100
+    },
+    "떠있는 것": {
+      "total": 2,
+      "correct": 1,
+      "pct": 50
+    },
+    "단일 선택 입력": {
+      "total": 3,
+      "correct": 3,
+      "pct": 100
+    },
+    "온오프 입력": {
+      "total": 3,
+      "correct": 3,
+      "pct": 100
+    },
+    "목록 표시": {
+      "total": 3,
+      "correct": 3,
+      "pct": 100
+    },
+    "더 불러오기": {
+      "total": 3,
+      "correct": 3,
+      "pct": 100
+    },
+    "찾기": {
+      "total": 2,
+      "correct": 2,
+      "pct": 100
+    },
+    "알림": {
+      "total": 2,
+      "correct": 2,
+      "pct": 100
+    },
+    "기다림·비어있음": {
+      "total": 4,
+      "correct": 4,
+      "pct": 100
+    },
+    "긴 폼": {
+      "total": 2,
+      "correct": 2,
+      "pct": 100
+    },
+    "모바일 뷰 전환": {
+      "total": 2,
+      "correct": 2,
+      "pct": 100
+    }
+  },
+  "rows": [
+    {
+      "id": "disclosure-1",
+      "cluster": "펼침류",
+      "expected": "accordion",
+      "got": "accordion",
+      "correct": true,
+      "grounded": true,
+      "because": "펼침류: section-count=8+, section-length=short"
+    },
+    {
+      "id": "disclosure-2",
+      "cluster": "펼침류",
+      "expected": "tabs",
+      "got": "tabs",
+      "correct": true,
+      "grounded": true,
+      "because": "펼침류: section-count=2-7, section-length=long"
+    },
+    {
+      "id": "disclosure-3",
+      "cluster": "펼침류",
+      "expected": "accordion",
+      "got": "accordion",
+      "correct": true,
+      "grounded": true,
+      "because": "펼침류: simultaneous-access=not-needed → tabs 규칙 미발화, default=accordion"
+    },
+    {
+      "id": "overlay-1",
+      "cluster": "오버레이",
+      "expected": "drawer",
+      "got": "drawer",
+      "correct": true,
+      "grounded": true,
+      "because": "오버레이: context-visible=required"
+    },
+    {
+      "id": "overlay-2",
+      "cluster": "오버레이",
+      "expected": "modal",
+      "got": "dialog",
+      "correct": true,
+      "grounded": true,
+      "because": "오버레이: must-resolve-first=required"
+    },
+    {
+      "id": "overlay-3",
+      "cluster": "오버레이",
+      "expected": "drawer",
+      "got": "drawer",
+      "correct": true,
+      "grounded": true,
+      "because": "오버레이: content-overflow=scrolls (Carbon 명시)"
+    },
+    {
+      "id": "floating-1",
+      "cluster": "떠있는 것",
+      "expected": "popover",
+      "got": "popover",
+      "correct": true,
+      "grounded": true,
+      "because": "군집 없음 — popover when_to_use(비차단 보조 정보). 확신도 중간"
+    },
+    {
+      "id": "floating-2",
+      "cluster": "떠있는 것",
+      "expected": "popover",
+      "got": "dropdown-menu",
+      "correct": false,
+      "grounded": true,
+      "because": "군집 없음 — popover related: 단순 명령 목록이면 dropdown menu"
+    },
+    {
+      "id": "single-choice-1",
+      "cluster": "단일 선택 입력",
+      "expected": "radio",
+      "got": "radio-group",
+      "correct": true,
+      "grounded": true,
+      "because": "단일선택: space-available=yes, option-count=2-4"
+    },
+    {
+      "id": "single-choice-2",
+      "cluster": "단일 선택 입력",
+      "expected": "select",
+      "got": "select",
+      "correct": true,
+      "grounded": true,
+      "because": "단일선택: option-count=5-20"
+    },
+    {
+      "id": "single-choice-3",
+      "cluster": "단일 선택 입력",
+      "expected": "radio",
+      "got": "radio-group",
+      "correct": true,
+      "grounded": true,
+      "because": "단일선택: space-available=yes, option-count=2-4 (공간 축이 먼저)"
+    },
+    {
+      "id": "on-off-1",
+      "cluster": "온오프 입력",
+      "expected": "checkbox",
+      "got": "checkbox",
+      "correct": true,
+      "grounded": true,
+      "because": "군집 없음 — checkbox when_to_use(동시 다중 선택)"
+    },
+    {
+      "id": "collection-1",
+      "cluster": "목록 표시",
+      "expected": "table",
+      "got": "table",
+      "correct": true,
+      "grounded": true,
+      "because": "군집 없음 — list anti_use(행열 데이터는 table)"
+    },
+    {
+      "id": "collection-2",
+      "cluster": "목록 표시",
+      "expected": "list",
+      "got": "list",
+      "correct": true,
+      "grounded": true,
+      "because": "군집 없음 — list when_to_use(순서대로 읽기)"
+    },
+    {
+      "id": "collection-3",
+      "cluster": "목록 표시",
+      "expected": "card",
+      "got": "card",
+      "correct": true,
+      "grounded": true,
+      "because": "군집 없음 — list anti_use(시각 비교면 card layout)"
+    },
+    {
+      "id": "load-more-1",
+      "cluster": "더 불러오기",
+      "expected": "pagination",
+      "got": "pagination",
+      "correct": true,
+      "grounded": true,
+      "because": "군집 없음 — infinite-scroll anti_use(공유 URL·footer면 pagination)"
+    },
+    {
+      "id": "load-more-2",
+      "cluster": "더 불러오기",
+      "expected": "infinite-scroll",
+      "got": "infinite-scroll",
+      "correct": true,
+      "grounded": true,
+      "because": "군집 없음 — infinite-scroll when_to_use(연속 소비)"
+    },
+    {
+      "id": "load-more-3",
+      "cluster": "더 불러오기",
+      "expected": "load-more",
+      "got": "load-more-button",
+      "correct": true,
+      "grounded": true,
+      "because": "사전 밖 개념 — 전용 term 없음. 확신도 낮음"
+    },
+    {
+      "id": "finding-1",
+      "cluster": "찾기",
+      "expected": "search-field",
+      "got": "search-field",
+      "correct": true,
+      "grounded": true,
+      "because": "군집 없음 — search-field when_to_use(많은 데이터에서 빠르게 찾기)"
+    },
+    {
+      "id": "finding-2",
+      "cluster": "찾기",
+      "expected": "command-palette",
+      "got": "command-palette",
+      "correct": true,
+      "grounded": true,
+      "because": "군집 없음 — command-palette when_to_use(파워 유저 단축 흐름)"
+    },
+    {
+      "id": "notification-1",
+      "cluster": "알림",
+      "expected": "toast",
+      "got": "toast",
+      "correct": true,
+      "grounded": true,
+      "because": "군집 없음 — toast when_to_use(행동 직후 짧은 결과)"
+    },
+    {
+      "id": "notification-2",
+      "cluster": "알림",
+      "expected": "banner",
+      "got": "alert",
+      "correct": true,
+      "grounded": true,
+      "because": "군집 없음 — toast anti_use(반드시 읽어야 할 정보를 사라지게 하지 않는다)"
+    },
+    {
+      "id": "waiting-1",
+      "cluster": "기다림·비어있음",
+      "expected": "skeleton",
+      "got": "skeleton",
+      "correct": true,
+      "grounded": true,
+      "because": "기다림: scope=full-screen, duration=under-10s"
+    },
+    {
+      "id": "waiting-2",
+      "cluster": "기다림·비어있음",
+      "expected": "progress-bar",
+      "got": "progress-bar",
+      "correct": true,
+      "grounded": true,
+      "because": "기다림: duration=over-10s"
+    },
+    {
+      "id": "waiting-3",
+      "cluster": "기다림·비어있음",
+      "expected": "spinner",
+      "got": "spinner",
+      "correct": true,
+      "grounded": true,
+      "because": "기다림: scope=single-module"
+    },
+    {
+      "id": "waiting-4",
+      "cluster": "기다림·비어있음",
+      "expected": "empty-state",
+      "got": "empty-state",
+      "correct": true,
+      "grounded": true,
+      "because": "기다림: cause=no-data"
+    },
+    {
+      "id": "longform-1",
+      "cluster": "긴 폼",
+      "expected": "wizard",
+      "got": "wizard",
+      "correct": true,
+      "grounded": true,
+      "because": "군집 없음 — wizard when_to_use(복잡한 작업 순서 안내)"
+    },
+    {
+      "id": "longform-2",
+      "cluster": "긴 폼",
+      "expected": "single-long-form",
+      "got": "page-layout",
+      "correct": true,
+      "grounded": true,
+      "because": "군집 없음 — 전용 term 없음. 확신도 낮음"
+    },
+    {
+      "id": "mobile-switch-1",
+      "cluster": "모바일 뷰 전환",
+      "expected": "tab-bar",
+      "got": "bottom-navigation",
+      "correct": true,
+      "grounded": true,
+      "because": "군집 없음 — bottom-navigation when_to_use(최상위 목적지)"
+    },
+    {
+      "id": "mobile-switch-2",
+      "cluster": "모바일 뷰 전환",
+      "expected": "segmented-control",
+      "got": "mobile-segmented-tabs",
+      "correct": true,
+      "grounded": true,
+      "because": "군집 없음 — mobile-segmented-tabs anti_use 대비"
+    },
+    {
+      "id": "on-off-2",
+      "cluster": "온오프 입력",
+      "expected": "toggle-switch",
+      "got": "switch",
+      "correct": true,
+      "grounded": true,
+      "because": "군집 없음 — switch when_to_use(즉시 적용)"
+    },
+    {
+      "id": "on-off-3",
+      "cluster": "온오프 입력",
+      "expected": "checkbox",
+      "got": "checkbox",
+      "correct": true,
+      "grounded": true,
+      "because": "군집 없음 — switch anti_use(제출 전 미확정이면 checkbox)"
+    }
+  ]
+}

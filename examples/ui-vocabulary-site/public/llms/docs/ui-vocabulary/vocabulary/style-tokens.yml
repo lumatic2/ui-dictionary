@@ -1,0 +1,44 @@
+# 토큰·시맨틱 (style-tokens)
+# category: style · 용어 1개
+# 파생물 — 정본은 docs/ui-vocabulary/terms.yml. 손으로 고치지 마라.
+
+- id: theme-token
+  status: draft
+  category: style
+  group: style-tokens
+  kind: visual-treatment
+  ko:
+    name: 테마 토큰
+    aliases:
+      - theme token
+      - design token
+      - 테마 변수
+  en:
+    name: Theme token
+    aliases:
+      - Design token
+      - Theme variable
+  one_liner: 색, 간격, radius, shadow 같은 디자인 값을 코드에서 재사용하도록 이름 붙인 변수.
+  description: light/dark mode, 브랜드 변경, 컴포넌트 일관성을 위해 원시 값 대신 토큰 이름을 참조한다.
+  visual_anatomy:
+    - token names
+    - mapped values
+    - component usage
+    - theme switch
+  when_to_use:
+    - 여러 컴포넌트가 같은 시각 규칙을 공유하고 테마 전환이 필요할 때
+  anti_use:
+    - 한 번만 쓰는 값까지 모두 토큰화하면 시스템이 불필요하게 복잡해진다
+  prompt_phrases:
+    - 버튼 색은 하드코딩하지 말고 theme token을 참조하게 해줘
+  related:
+    - id: semantic-color
+      relation: use-with
+      note: semantic color는 색상 theme token의 대표 형태다
+  asset:
+    kind: diagram
+    variant: theme-token
+  sources:
+    - source_id: tailwind-utilities
+      note: Tailwind utility and theme systems expose reusable design values
+  confidence: high

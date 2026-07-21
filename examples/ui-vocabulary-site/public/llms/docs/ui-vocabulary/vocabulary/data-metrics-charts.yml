@@ -1,0 +1,619 @@
+# 지표·차트 (data-metrics-charts)
+# category: data-display · 용어 16개
+# 파생물 — 정본은 docs/ui-vocabulary/terms.yml. 손으로 고치지 마라.
+
+- id: area-chart-card
+  status: draft
+  category: data-display
+  group: data-metrics-charts
+  kind: block
+  ko:
+    name: 영역 차트 카드
+    aliases:
+      - area chart card
+      - chart-area-default
+      - chart-area-gradient
+  en:
+    name: Area chart card
+    aliases:
+      - Area chart card
+      - chart-area-default
+      - chart-area-gradient
+  one_liner: 시간에 따른 추세와 누적 변화를 영역으로 채워 보여주는 차트 카드.
+  description: 방문자, 매출, 사용량처럼 흐름과 규모감을 동시에 보여줘야 하는 지표에 쓴다.
+  visual_anatomy:
+    - card title
+    - time range
+    - filled area chart
+    - summary value
+  when_to_use:
+    - 기간별 추세와 총량의 느낌을 함께 보여줄 때
+  anti_use:
+    - 정확한 항목 비교는 bar-chart-card가 더 읽기 쉽다
+  prompt_phrases:
+    - 기간별 트래픽을 보여주는 area chart card를 만들어줘
+  asset:
+    kind: mini-mock
+    variant: area-chart-card
+  sources:
+    - source_id: shadcn-ui-docs
+      note: area chart block examples
+  confidence: high
+- id: bar-chart-card
+  status: draft
+  category: data-display
+  group: data-metrics-charts
+  kind: block
+  ko:
+    name: 막대 차트 카드
+    aliases:
+      - bar chart card
+      - chart-bar-default
+      - chart-bar-horizontal
+  en:
+    name: Bar chart card
+    aliases:
+      - Bar chart card
+      - chart-bar-default
+      - chart-bar-horizontal
+  one_liner: 항목이나 기간별 값을 막대 길이로 비교하는 차트 카드.
+  description: 카테고리별 매출, 월별 가입자, 상태별 건수처럼 값의 차이를 빠르게 비교한다.
+  visual_anatomy:
+    - card title
+    - category axis
+    - value bars
+    - optional labels
+  when_to_use:
+    - 여러 항목의 크기 차이를 명확히 비교해야 할 때
+  anti_use:
+    - 비율 구성이 핵심이면 pie-chart-card나 radial-chart-card가 더 적합하다
+  prompt_phrases:
+    - 월별 매출을 비교하는 bar chart card를 만들어줘
+  asset:
+    kind: mini-mock
+    variant: bar-chart-card
+  sources:
+    - source_id: shadcn-ui-docs
+      note: bar chart block examples
+  confidence: high
+- id: chart
+  status: draft
+  category: data-display
+  group: data-metrics-charts
+  ko:
+    name: 차트
+    aliases:
+      - 그래프
+      - chart
+  en:
+    name: Chart
+    aliases:
+      - Graph
+      - Data visualization
+  one_liner: 숫자 데이터를 시각적 형태로 보여주는 요소.
+  description: 막대, 선, 영역, 원형 등 데이터 관계에 맞는 형태로 추세나 비교를 표현한다.
+  visual_anatomy:
+    - plot area
+    - axes or labels
+    - data marks
+    - legend optional
+  when_to_use:
+    - 추세
+    - 비교
+    - 분포를 숫자보다 빠르게 이해하게 할 때
+  anti_use:
+    - 값이 한두 개뿐이면 metric card나 plain text가 낫다
+    - 장식용 차트는 피한다
+  prompt_phrases:
+    - 월별 매출을 line chart로 보여줘
+    - 카테고리별 비중을 bar chart로 비교해줘
+  asset:
+    kind: diagram
+    variant: chart
+    props:
+      type: bar
+  sources:
+    - source_id: carbon-design-components
+      note: data visualization guidance
+  confidence: medium
+- id: chart-axis
+  status: draft
+  category: data-display
+  group: data-metrics-charts
+  ko:
+    name: 차트 축
+    aliases:
+      - axis
+      - x축
+      - y축
+  en:
+    name: Chart axis
+    aliases:
+      - Axis
+      - X-axis
+      - Y-axis
+  one_liner: 차트에서 값의 기준과 범위를 보여주는 가로·세로 기준선.
+  description: 데이터 위치가 어떤 값이나 범주를 의미하는지 눈금과 라벨로 설명한다.
+  visual_anatomy:
+    - axis line
+    - tick marks
+    - tick labels
+    - axis title optional
+  when_to_use:
+    - 숫자 규모나 범주 위치를 읽어야 하는 차트에서
+  anti_use:
+    - 작은 sparkline처럼 추세만 보여줄 때는 축을 줄일 수 있다
+    - 눈금이 너무 많으면 읽기 어렵다
+  prompt_phrases:
+    - 라인 차트에 x-axis와 y-axis 라벨을 넣어줘
+    - 축 눈금이 보이는 bar chart를 만들어줘
+  asset:
+    kind: diagram
+    variant: chart-axis
+    props:
+      axes: 2
+  sources:
+    - source_id: carbon-design-components
+      note: chart axes and data visualization guidance
+  confidence: medium
+- id: chart-kpi-card
+  status: draft
+  category: data-display
+  group: data-metrics-charts
+  kind: block
+  ko:
+    name: KPI 차트 카드
+    aliases:
+      - chart KPI card
+      - metric chart card
+      - dashboard chart card
+  en:
+    name: KPI chart card
+    aliases:
+      - Chart KPI card
+      - Metric chart card
+      - Dashboard chart card
+  one_liner: 핵심 숫자, 변화율, 작은 차트를 한 카드 안에 묶어 보여주는 대시보드 카드.
+  description: 대시보드 상단에서 숫자만 있는 metric-card보다 추세까지 함께 보여주고 싶을 때 쓴다.
+  visual_anatomy:
+    - KPI value
+    - change badge
+    - compact chart
+    - period label
+  when_to_use:
+    - 핵심 지표와 추세를 한눈에 보여줘야 할 때
+  anti_use:
+    - 상세 분석이 필요하면 더 큰 line-chart-card나 area-chart-card를 쓴다
+  prompt_phrases:
+    - KPI 숫자와 작은 추세 차트가 있는 chart KPI card를 만들어줘
+  asset:
+    kind: mini-mock
+    variant: chart-kpi-card
+  sources:
+    - source_id: shadcn-ui-docs
+      note: dashboard and chart card composition reference
+  confidence: high
+- id: chart-tooltip-pattern
+  status: draft
+  category: data-display
+  group: data-metrics-charts
+  kind: block
+  ko:
+    name: 차트 툴팁 패턴
+    aliases:
+      - chart tooltip
+      - chart-tooltip-default
+      - chart-tooltip-advanced
+  en:
+    name: Chart tooltip pattern
+    aliases:
+      - Chart tooltip
+      - chart-tooltip-default
+      - chart-tooltip-advanced
+  one_liner: 차트의 특정 점이나 구간에 마우스를 올렸을 때 상세 값과 시리즈 정보를 보여주는 패턴.
+  description: 차트 자체는 간결하게 유지하면서 hover나 focus 시점에 정확한 날짜, 값, 비교 정보를 제공한다.
+  visual_anatomy:
+    - hovered point
+    - floating tooltip
+    - series markers
+    - formatted values
+  when_to_use:
+    - 차트 위에서 정확한 값을 읽어야 할 때
+  anti_use:
+    - 항상 보여야 하는 핵심 수치는 card header나 metric-card에 둔다
+  prompt_phrases:
+    - 차트에 hover하면 값과 범례가 나오는 chart tooltip pattern을 넣어줘
+  asset:
+    kind: mini-mock
+    variant: chart-tooltip-pattern
+  sources:
+    - source_id: shadcn-ui-docs
+      note: chart tooltip block examples
+  confidence: high
+- id: interactive-chart-card
+  status: draft
+  category: data-display
+  group: data-metrics-charts
+  kind: block
+  ko:
+    name: 인터랙티브 차트 카드
+    aliases:
+      - interactive chart card
+      - chart-area-interactive
+      - chart-line-interactive
+  en:
+    name: Interactive chart card
+    aliases:
+      - Interactive chart card
+      - chart-area-interactive
+      - chart-line-interactive
+  one_liner: 기간, 지표, 범례를 조작해 차트 데이터를 바꿔 볼 수 있는 분석 카드.
+  description: 사용자가 최근 7일/30일, 데스크톱/모바일, 매출/주문 같은 관점을 전환하며 탐색한다.
+  visual_anatomy:
+    - chart canvas
+    - segmented time control
+    - hover tooltip
+    - active series
+  when_to_use:
+    - 차트를 단순 표시가 아니라 탐색 도구로 써야 할 때
+  anti_use:
+    - 정적 리포트에는 불필요한 조작이 될 수 있다
+  prompt_phrases:
+    - 기간을 바꿀 수 있는 interactive chart card를 만들어줘
+  asset:
+    kind: mini-mock
+    variant: interactive-chart-card
+  sources:
+    - source_id: shadcn-ui-docs
+      note: interactive chart block examples
+  confidence: high
+- id: legend
+  status: draft
+  category: data-display
+  group: data-metrics-charts
+  ko:
+    name: 범례
+    aliases:
+      - legend
+      - 차트 범례
+      - 색상 설명
+  en:
+    name: Legend
+    aliases:
+      - Chart legend
+      - Key
+  one_liner: 차트나 지도에서 색상, 선, 기호가 무엇을 뜻하는지 설명하는 요소.
+  description: 여러 데이터 시리즈를 구분하고 사용자가 시각 부호의 의미를 해석하게 돕는다.
+  visual_anatomy:
+    - color swatches
+    - series labels
+    - marker shapes
+    - optional toggle behavior
+  when_to_use:
+    - 차트에 여러 색상이나 시리즈가 있을 때
+    - 색상 의미를 명확히 알려야 할 때
+  anti_use:
+    - 라벨을 직접 붙일 수 있으면 불필요할 수 있다
+    - 색상만으로 의미를 전달하지 않는다
+  prompt_phrases:
+    - 차트 아래에 legend를 넣어줘
+    - 색상별 범례로 매출과 비용을 구분해줘
+  asset:
+    kind: mini-mock
+    variant: legend
+    props:
+      items: 3
+  sources:
+    - source_id: carbon-design-components
+      note: data visualization legend guidance
+  confidence: medium
+- id: line-chart-card
+  status: draft
+  category: data-display
+  group: data-metrics-charts
+  kind: block
+  ko:
+    name: 선 차트 카드
+    aliases:
+      - line chart card
+      - chart-line-default
+      - chart-line-multiple
+  en:
+    name: Line chart card
+    aliases:
+      - Line chart card
+      - chart-line-default
+      - chart-line-multiple
+  one_liner: 시간 흐름에 따른 하나 이상의 지표 변화를 선으로 보여주는 차트 카드.
+  description: 변화 추세, 피크, 감소 구간을 읽어야 하는 분석 화면에서 기본 지표 카드로 쓴다.
+  visual_anatomy:
+    - card title
+    - line series
+    - x axis
+    - tooltip point
+  when_to_use:
+    - 기간에 따른 증감 패턴을 보여줘야 할 때
+  anti_use:
+    - 단일 현재값만 중요하면 metric-card가 더 빠르다
+  prompt_phrases:
+    - 가입자 추이를 보여주는 line chart card를 만들어줘
+  asset:
+    kind: mini-mock
+    variant: line-chart-card
+  sources:
+    - source_id: shadcn-ui-docs
+      note: line chart block examples
+  confidence: high
+- id: map-marker
+  status: draft
+  category: data-display
+  group: data-metrics-charts
+  ko:
+    name: 지도 마커
+    aliases:
+      - map marker
+      - 지도 핀
+      - location pin
+  en:
+    name: Map marker
+    aliases:
+      - Map pin
+      - Location marker
+  one_liner: 지도나 공간 화면에서 특정 위치를 표시하는 핀 형태 요소.
+  description: 장소, 배송 위치, 이벤트 위치처럼 좌표가 있는 항목을 시각적으로 표시한다.
+  visual_anatomy:
+    - pin icon
+    - map surface
+    - selected marker
+    - label optional
+  when_to_use:
+    - 위치 기반 정보를 지도 위에 표시해야 할 때
+  anti_use:
+    - 지도 없이 단순 주소 목록이면 list나 card가 더 적합하다
+  prompt_phrases:
+    - 지도 위에 선택된 장소를 map marker로 표시해줘
+  asset:
+    kind: icon-composition
+    variant: map-marker
+    props:
+      selected: true
+  sources:
+    - source_id: apple-hig-components
+      note: map and location presentation guidance
+  confidence: medium
+- id: metric-card
+  status: draft
+  category: data-display
+  group: data-metrics-charts
+  ko:
+    name: 지표 카드
+    aliases:
+      - 통계 카드
+      - KPI card
+      - metric card
+  en:
+    name: Metric card
+    aliases:
+      - Stat card
+      - KPI card
+  one_liner: 핵심 숫자와 변화량을 카드 형태로 보여주는 데이터 요소.
+  description: 매출, 방문자, 전환율 같은 지표를 제목, 숫자, 증감 표시로 요약한다.
+  visual_anatomy:
+    - label
+    - large value
+    - trend indicator
+    - supporting text
+  when_to_use:
+    - 대시보드에서 중요한 지표를 빠르게 훑게 할 때
+  anti_use:
+    - 원인 분석이나 상세 데이터는 chart나 table을 함께 제공한다
+    - 너무 많은 지표 카드는 집중을 흐린다
+  prompt_phrases:
+    - 대시보드 상단에 metric card 4개를 배치해줘
+    - 방문자 수와 증감률을 지표 카드로 보여줘
+  asset:
+    kind: mini-mock
+    variant: metric-card
+    props:
+      trend: up
+  sources:
+    - source_id: atlassian-design-components
+      note: dashboard display patterns
+  confidence: low
+- id: pie-chart-card
+  status: draft
+  category: data-display
+  group: data-metrics-charts
+  kind: block
+  ko:
+    name: 파이 차트 카드
+    aliases:
+      - pie chart card
+      - donut chart card
+      - chart-pie-donut
+  en:
+    name: Pie chart card
+    aliases:
+      - Pie chart card
+      - Donut chart card
+      - chart-pie-donut
+  one_liner: 전체에서 각 항목이 차지하는 비율을 원형이나 도넛 형태로 보여주는 차트 카드.
+  description: 유입 채널, 플랜 구성, 카테고리 비율처럼 부분-전체 관계를 짧게 보여준다.
+  visual_anatomy:
+    - circular chart
+    - segment colors
+    - center label
+    - legend
+  when_to_use:
+    - 소수의 항목이 전체에서 차지하는 비중을 보여줄 때
+  anti_use:
+    - 항목이 많거나 작은 차이를 비교해야 하면 bar-chart-card가 낫다
+  prompt_phrases:
+    - 유입 채널 비율을 보여주는 donut pie chart card를 만들어줘
+  asset:
+    kind: mini-mock
+    variant: pie-chart-card
+  sources:
+    - source_id: shadcn-ui-docs
+      note: pie and donut chart block examples
+  confidence: high
+- id: radar-chart-card
+  status: draft
+  category: data-display
+  group: data-metrics-charts
+  kind: block
+  ko:
+    name: 레이더 차트 카드
+    aliases:
+      - radar chart card
+      - chart-radar-default
+      - spider chart
+  en:
+    name: Radar chart card
+    aliases:
+      - Radar chart card
+      - chart-radar-default
+      - Spider chart
+  one_liner: 여러 축의 점수를 방사형으로 연결해 프로필이나 역량 균형을 보여주는 차트 카드.
+  description: 제품 속성, 팀 역량, 평가 기준처럼 여러 차원의 균형을 한눈에 비교한다.
+  visual_anatomy:
+    - radial grid
+    - axis labels
+    - polygon area
+    - legend
+  when_to_use:
+    - 여러 기준의 균형이나 편차를 보여줘야 할 때
+  anti_use:
+    - 정확한 수치 비교가 중요하면 table이나 bar-chart-card가 낫다
+  prompt_phrases:
+    - 역량 점수를 보여주는 radar chart card를 만들어줘
+  asset:
+    kind: mini-mock
+    variant: radar-chart-card
+  sources:
+    - source_id: shadcn-ui-docs
+      note: radar chart block examples
+  confidence: high
+- id: radial-chart-card
+  status: draft
+  category: data-display
+  group: data-metrics-charts
+  kind: block
+  ko:
+    name: 방사형 차트 카드
+    aliases:
+      - radial chart card
+      - radial progress chart
+      - chart-radial-simple
+  en:
+    name: Radial chart card
+    aliases:
+      - Radial chart card
+      - Radial progress chart
+      - chart-radial-simple
+  one_liner: 진행률이나 비율을 원형 호 형태로 강조해 보여주는 차트 카드.
+  description: 목표 달성률, 사용량, 점수처럼 하나의 핵심 비율을 시각적으로 강조한다.
+  visual_anatomy:
+    - circular arc
+    - center value
+    - label
+    - supporting caption
+  when_to_use:
+    - 하나의 비율이나 진행률을 카드의 핵심으로 보여줄 때
+  anti_use:
+    - 여러 항목 비교에는 bar-chart-card가 더 명확하다
+  prompt_phrases:
+    - 목표 달성률을 보여주는 radial chart card를 만들어줘
+  asset:
+    kind: mini-mock
+    variant: radial-chart-card
+  sources:
+    - source_id: shadcn-ui-docs
+      note: radial chart block examples
+  confidence: high
+- id: stacked-chart-card
+  status: draft
+  category: data-display
+  group: data-metrics-charts
+  kind: block
+  ko:
+    name: 누적 차트 카드
+    aliases:
+      - stacked chart card
+      - chart-area-stacked
+      - chart-bar-stacked
+  en:
+    name: Stacked chart card
+    aliases:
+      - Stacked chart card
+      - chart-area-stacked
+      - chart-bar-stacked
+  one_liner: 여러 시리즈를 한 막대나 영역 안에 쌓아 전체와 구성 비율을 함께 보여주는 차트 카드.
+  description: 총량이 변하는 동시에 구성 항목이 어떻게 달라지는지 확인하는 분석 화면에 쓴다.
+  visual_anatomy:
+    - stacked series
+    - color legend
+    - total scale
+    - tooltip breakdown
+  when_to_use:
+    - 전체 추세와 세부 구성의 변화를 동시에 보여줘야 할 때
+  anti_use:
+    - 각 시리즈의 정확한 개별 추세 비교에는 line-chart-card가 낫다
+  prompt_phrases:
+    - 데스크톱과 모바일 사용량을 쌓아서 보여주는 stacked chart card를 만들어줘
+  asset:
+    kind: mini-mock
+    variant: stacked-chart-card
+  sources:
+    - source_id: shadcn-ui-docs
+      note: stacked chart block examples
+  confidence: high
+- id: stat-list
+  status: draft
+  category: data-display
+  group: data-metrics-charts
+  ko:
+    name: 지표 리스트
+    aliases:
+      - stat list
+      - metric list
+      - 통계 목록
+  en:
+    name: Stat list
+    aliases:
+      - Metric list
+      - Stats list
+  one_liner: 여러 핵심 숫자를 세로 목록으로 작게 정리해 보여주는 데이터 요소.
+  description: 카드보다 더 조밀하게 여러 지표와 변화량을 한 영역에서 비교한다.
+  visual_anatomy:
+    - metric label
+    - value
+    - delta
+    - stacked rows
+  when_to_use:
+    - 여러 작은 지표를 한눈에 비교해야 할 때
+  anti_use:
+    - 각 지표를 크게 강조해야 하면 metric card가 낫다
+  prompt_phrases:
+    - 방문자 전환율 매출을 stat list로 보여줘
+  asset:
+    kind: mini-mock
+    variant: stat-list
+    props:
+      rows: 3
+  sources:
+    - source_id: atlassian-design-components
+      note: dashboard display patterns
+  navigation:
+    canonical_path:
+      - Plus
+      - UI Blocks
+      - Marketing
+      - Page Sections
+      - Stats
+    also_appears_in:
+      - - Plus
+        - UI Blocks
+        - Application UI
+        - Data Display
+  confidence: medium

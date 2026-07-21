@@ -1,0 +1,701 @@
+# 앱·페이지 레이아웃 (structure-app-layout)
+# category: structure · 용어 16개
+# 파생물 — 정본은 docs/ui-vocabulary/terms.yml. 손으로 고치지 마라.
+
+- id: app-shell
+  status: draft
+  category: structure
+  group: structure-app-layout
+  ko:
+    name: 앱 셸
+    aliases:
+      - app shell
+      - 앱 레이아웃
+      - application shell
+  en:
+    name: App shell
+    aliases:
+      - Application shell
+      - App layout frame
+  one_liner: 헤더, 사이드바, 콘텐츠 영역처럼 앱의 고정 뼈대를 이루는 레이아웃.
+  description: 대시보드나 관리 도구에서 반복되는 전역 내비게이션과 작업 영역을 안정적으로 배치한다.
+  visual_anatomy:
+    - top bar
+    - sidebar
+    - content area
+    - persistent navigation
+  when_to_use:
+    - 여러 화면이 같은 앱 구조를 공유할 때
+  anti_use:
+    - 단일 랜딩 페이지처럼 앱 내비게이션이 필요 없는 화면에는 과하다
+  prompt_phrases:
+    - 왼쪽 사이드바와 상단바가 있는 app shell 레이아웃을 만들어줘
+  asset:
+    kind: diagram
+    variant: app-shell
+    props:
+      sidebar: true
+  sources:
+    - source_id: material-m3-components
+      note: app bars and navigation components
+  confidence: medium
+- id: billing-settings-page
+  status: draft
+  category: structure
+  group: structure-app-layout
+  kind: block
+  ko:
+    name: 결제 설정 페이지
+    aliases:
+      - billing settings
+      - billing page
+      - 결제 관리 화면
+  en:
+    name: Billing settings page
+    aliases:
+      - Billing page
+      - Subscription settings
+  one_liner: 현재 플랜, 결제 수단, 청구 내역, 업그레이드 행동을 모은 설정 페이지.
+  description: SaaS 앱에서 구독 상태와 결제 관련 작업을 한 화면에서 관리하게 한다.
+  visual_anatomy:
+    - current plan summary
+    - payment method card
+    - invoices list
+    - upgrade action
+  when_to_use:
+    - 사용자가 요금제와 결제 정보를 관리해야 할 때
+  anti_use:
+    - 한 장의 결제 요약만 필요하면 billing-summary가 더 단순하다
+  prompt_phrases:
+    - 현재 플랜과 invoice row가 있는 billing settings page를 만들어줘
+  related:
+    - id: billing-summary
+      relation: compare
+      note: billing-summary는 요약 카드이고 billing-settings-page는 결제 관리 화면 전체다.
+  asset:
+    kind: mini-mock
+    variant: billing-settings-page
+  sources:
+    - source_id: blocks-so-library
+      note: shadcn billing and settings block examples
+  navigation:
+    canonical_path:
+      - Plus
+      - Templates
+      - Dashboard Screens
+    also_appears_in:
+      - - Plus
+        - Templates
+        - Ecommerce Screens
+  confidence: medium
+- id: breadcrumb-header
+  status: draft
+  category: structure
+  group: structure-app-layout
+  ko:
+    name: 브레드크럼 헤더
+    aliases:
+      - breadcrumb header
+      - 경로 헤더
+      - 위치 헤더
+  en:
+    name: Breadcrumb header
+    aliases:
+      - Path header
+      - Location header
+  one_liner: 상단 제목 영역에 현재 위치 경로와 페이지 제목을 함께 보여주는 헤더.
+  description: 깊은 정보 구조에서 사용자가 현재 위치를 확인하고 상위 경로로 이동할 수 있게 한다.
+  visual_anatomy:
+    - breadcrumb trail
+    - page title
+    - optional actions
+    - hierarchy context
+  when_to_use:
+    - 문서
+    - 설정
+    - 관리 화면처럼 깊은 계층이 있을 때
+  anti_use:
+    - 평면 구조 앱에서 장식용 경로를 만들지 않는다
+  prompt_phrases:
+    - 브레드크럼과 페이지 제목이 같이 있는 breadcrumb header를 넣어줘
+  asset:
+    kind: mini-mock
+    variant: breadcrumb-header
+    props:
+      depth: 3
+  sources:
+    - source_id: shadcn-ui-docs
+      note: breadcrumb and page header composition
+  confidence: high
+- id: checkout-step
+  status: draft
+  category: structure
+  group: structure-app-layout
+  ko:
+    name: 체크아웃 단계
+    aliases:
+      - checkout step
+      - 결제 단계
+      - 주문 단계
+  en:
+    name: Checkout step
+    aliases:
+      - Checkout stepper
+      - Purchase step
+  one_liner: 배송, 결제, 확인처럼 구매 흐름의 현재 단계를 보여주는 구조.
+  description: 사용자가 결제 흐름에서 어디에 있고 다음에 무엇을 해야 하는지 알게 한다.
+  visual_anatomy:
+    - step indicator
+    - current step
+    - completed steps
+    - step content
+  when_to_use:
+    - 구매나 가입처럼 여러 단계가 순서대로 진행될 때
+  anti_use:
+    - 한 화면에서 끝나는 간단 결제에는 stepper가 과하다
+  prompt_phrases:
+    - 배송 결제 확인 checkout step을 상단에 보여줘
+  asset:
+    kind: mini-mock
+    variant: checkout-step
+    props:
+      current: 2
+  sources:
+    - source_id: material-m3-components
+      note: progress and step-like navigation
+  navigation:
+    canonical_path:
+      - Plus
+      - UI Blocks
+      - Ecommerce
+      - Components
+    also_appears_in:
+      - - Plus
+        - Templates
+        - Ecommerce Screens
+  confidence: medium
+- id: dashboard-grid
+  status: draft
+  category: structure
+  group: structure-app-layout
+  ko:
+    name: 대시보드 그리드
+    aliases:
+      - dashboard grid
+      - 위젯 그리드
+      - 카드 대시보드
+  en:
+    name: Dashboard grid
+    aliases:
+      - Widget grid
+      - Card dashboard grid
+  one_liner: 여러 지표 카드와 차트 위젯을 격자로 배치하는 대시보드 구조.
+  description: 크기가 다른 카드와 차트를 일관된 컬럼과 간격으로 정렬해 한눈에 비교하게 한다.
+  visual_anatomy:
+    - metric cards
+    - chart widgets
+    - grid columns
+    - responsive rows
+  when_to_use:
+    - 여러 지표와 시각화를 동시에 모니터링해야 할 때
+  anti_use:
+    - 단일 리포트나 긴 본문 콘텐츠에는 일반 page layout이 낫다
+  prompt_phrases:
+    - 지표 카드와 차트를 12컬럼 dashboard grid로 배치해줘
+  asset:
+    kind: mini-mock
+    variant: dashboard-grid
+    props:
+      widgets: 5
+  sources:
+    - source_id: carbon-design-components
+      note: dashboard and structured data composition
+  navigation:
+    canonical_path:
+      - Plus
+      - UI Blocks
+      - Application UI
+      - Layout
+    also_appears_in:
+      - - Plus
+        - Templates
+        - Dashboard Screens
+  confidence: medium
+- id: dashboard-overview-page
+  status: draft
+  category: structure
+  group: structure-app-layout
+  kind: block
+  ko:
+    name: 대시보드 개요 페이지
+    aliases:
+      - dashboard block
+      - dashboard overview
+      - dashboard-01
+  en:
+    name: Dashboard overview page
+    aliases:
+      - Dashboard block
+      - Overview dashboard
+      - dashboard-01
+  one_liner: 사이드바, 주요 지표, 차트, 데이터 테이블을 한 화면에 배치한 관리형 대시보드 페이지.
+  description: 제품 운영, 분석, 관리자 화면처럼 반복 확인해야 하는 상태와 표 작업을 한 화면에서 처리한다.
+  visual_anatomy:
+    - app sidebar
+    - page header
+    - metric cards
+    - chart panel
+    - data table
+  when_to_use:
+    - 관리자가 지표와 목록을 동시에 확인해야 할 때
+    - 제품의 홈 화면이 운영 현황 요약이어야 할 때
+  anti_use:
+    - 단일 지표만 보여주면 metric-card나 chart가 더 가볍다
+  prompt_phrases:
+    - 사이드바와 차트, 데이터 테이블이 있는 dashboard overview page를 만들어줘
+  asset:
+    kind: mini-mock
+    variant: dashboard-overview-page
+  sources:
+    - source_id: shadcn-ui-docs
+      note: dashboard-01 block composition reference
+  navigation:
+    canonical_path:
+      - Plus
+      - Templates
+      - Dashboard Screens
+    also_appears_in:
+      - - Plus
+        - UI Blocks
+        - Application UI
+        - Page Examples
+  confidence: high
+- id: footer
+  status: draft
+  category: structure
+  group: structure-app-layout
+  ko:
+    name: 푸터
+    aliases:
+      - 하단 영역
+      - footer
+  en:
+    name: Footer
+    aliases:
+      - Page footer
+  one_liner: 화면 하단에서 보조 링크와 메타 정보를 담는 영역.
+  description: 저작권, 정책 링크, 보조 navigation, 연락처 등을 정리한다.
+  visual_anatomy:
+    - bottom container
+    - link groups
+    - metadata
+    - optional social icons
+  when_to_use:
+    - 웹사이트 하단에 반복되는 보조 정보를 제공할 때
+  anti_use:
+    - 앱의 핵심 명령을 footer에 숨기지 않는다
+    - 모바일 고정 하단바와 혼동하지 않는다
+  prompt_phrases:
+    - 페이지 아래에 정책 링크가 있는 footer를 넣어줘
+    - 하단에 저작권과 보조 링크를 정리해줘
+  asset:
+    kind: mini-mock
+    variant: footer
+    props:
+      columns: 3
+  sources:
+    - source_id: apple-hig-components
+      note: layout and navigation conventions
+  navigation:
+    canonical_path:
+      - Plus
+      - UI Blocks
+      - Marketing
+      - Page Sections
+      - Footers
+  confidence: low
+- id: global-header
+  status: draft
+  category: structure
+  group: structure-app-layout
+  ko:
+    name: 전역 헤더
+    aliases:
+      - global header
+      - 글로벌 헤더
+      - 최상단 헤더
+  en:
+    name: Global header
+    aliases:
+      - App header
+      - Global navigation header
+  one_liner: 앱 전체에 공통으로 고정되는 최상단 탐색과 계정 영역.
+  description: 제품 로고, 전역 탐색, 검색, 알림, 계정 메뉴처럼 모든 화면에서 필요한 항목을 배치한다.
+  visual_anatomy:
+    - brand
+    - primary navigation
+    - global search
+    - utility actions
+    - account menu
+  when_to_use:
+    - 여러 페이지를 가진 앱에서 전역 이동과 계정 행동이 필요할 때
+  anti_use:
+    - 단일 화면 위젯에는 별도 global header가 과하다
+  prompt_phrases:
+    - 로고 검색 알림 아바타가 있는 global header를 만들어줘
+  asset:
+    kind: mini-mock
+    variant: global-header
+    props:
+      search: true
+  sources:
+    - source_id: material-m3-components
+      note: top app bar and navigation structure
+  confidence: medium
+- id: header
+  status: draft
+  category: structure
+  group: structure-app-layout
+  ko:
+    name: 헤더
+    aliases:
+      - 상단바
+      - top bar
+      - header
+  en:
+    name: Header
+    aliases:
+      - Top bar
+      - App header
+  one_liner: 화면 상단에서 브랜드, 제목, 주요 동작을 담는 영역.
+  description: 로고, 페이지 제목, 검색, 내비게이션, 사용자 메뉴가 배치된다.
+  visual_anatomy:
+    - top container
+    - brand or title
+    - navigation
+    - actions
+    - profile area
+  when_to_use:
+    - 페이지의 정체성과 주요 이동/행동을 항상 보여줘야 할 때
+  anti_use:
+    - 콘텐츠보다 과하게 커지면 작업 화면의 밀도가 낮아진다
+    - 모바일에서는 간결해야 한다
+  prompt_phrases:
+    - 상단에 로고와 검색창이 있는 header를 넣어줘
+    - 오른쪽에 사용자 메뉴가 있는 top bar를 만들어줘
+  asset:
+    kind: mini-mock
+    variant: header
+    props:
+      search: true
+  sources:
+    - source_id: material-m3-components
+      note: top app bar component
+  navigation:
+    canonical_path:
+      - Plus
+      - UI Blocks
+      - Marketing
+      - Page Sections
+      - Header Sections
+    also_appears_in:
+      - - Plus
+        - UI Blocks
+        - Marketing
+        - Elements
+        - Headers
+  confidence: medium
+- id: onboarding-flow-page
+  status: draft
+  category: structure
+  group: structure-app-layout
+  kind: block
+  ko:
+    name: 온보딩 플로우 페이지
+    aliases:
+      - onboarding flow
+      - onboarding page
+      - 초기 설정 흐름
+  en:
+    name: Onboarding flow page
+    aliases:
+      - Onboarding page
+      - Setup flow
+  one_liner: 새 사용자가 제품 사용을 시작하기 위해 단계별 선택과 설정을 완료하는 페이지.
+  description: 팀 생성, 역할 선택, 데이터 가져오기, 첫 작업 생성처럼 초기 설정을 안내한다.
+  visual_anatomy:
+    - progress stepper
+    - setup form
+    - choice cards
+    - continue action
+    - skip option
+  when_to_use:
+    - 가입 직후 사용자가 첫 성공 경험까지 안내가 필요할 때
+  anti_use:
+    - 단순 안내 목록이면 onboarding-checklist가 더 가볍다
+  prompt_phrases:
+    - 팀 생성부터 데이터 가져오기까지 이어지는 onboarding flow page를 만들어줘
+  related:
+    - id: wizard
+      relation: compare
+      note: wizard는 단계형 컨트롤이고 onboarding-flow-page는 첫 사용 설정 경험 전체다.
+  asset:
+    kind: mini-mock
+    variant: onboarding-flow-page
+  sources:
+    - source_id: blocks-so-library
+      note: shadcn onboarding and setup page block examples
+  navigation:
+    canonical_path:
+      - Plus
+      - Templates
+      - Onboarding Screens
+    also_appears_in:
+      - - Plus
+        - UI Blocks
+        - Application UI
+        - Page Examples
+  confidence: medium
+- id: page-layout
+  status: draft
+  category: structure
+  group: structure-app-layout
+  ko:
+    name: 페이지 레이아웃
+    aliases:
+      - page layout
+      - 화면 레이아웃
+      - page frame
+  en:
+    name: Page layout
+    aliases:
+      - Page frame
+      - Content layout
+  one_liner: 헤더, 사이드바, 본문, 보조 영역처럼 페이지의 큰 영역 배치를 정한 구조.
+  description: 개별 컴포넌트보다 상위 수준에서 화면의 정보 영역과 행동 영역을 나눈다.
+  visual_anatomy:
+    - header area
+    - navigation area
+    - main content
+    - supporting region
+  when_to_use:
+    - 앱 화면을 처음 설계하며 큰 영역을 먼저 정해야 할 때
+  anti_use:
+    - 작은 카드 하나를 설명할 때 page layout이라고 부르지 않는다
+  prompt_phrases:
+    - 헤더 사이드바 본문 우측 보조영역이 있는 page layout을 잡아줘
+  asset:
+    kind: mini-mock
+    variant: page-layout
+    props:
+      regions: 4
+  sources:
+    - source_id: atlassian-design-components
+      note: page layout composition
+  confidence: high
+- id: page-title-bar
+  status: draft
+  category: structure
+  group: structure-app-layout
+  ko:
+    name: 페이지 제목 바
+    aliases:
+      - page title bar
+      - 페이지 헤더
+      - 타이틀 바
+  en:
+    name: Page title bar
+    aliases:
+      - Page header bar
+      - Title bar
+  one_liner: 페이지 제목, 설명, 주요 액션을 한 영역에 묶는 상단 헤더.
+  description: 화면이 무엇인지 설명하고 가장 중요한 생성, 저장, 내보내기 같은 액션을 가까이 둔다.
+  visual_anatomy:
+    - page title
+    - supporting text
+    - primary action
+    - secondary actions
+  when_to_use:
+    - 목록
+    - 설정
+    - 리포트 화면의 목적과 주요 행동을 명확히 해야 할 때
+  anti_use:
+    - 이미 global header가 화면 제목을 충분히 설명하면 중복하지 않는다
+  prompt_phrases:
+    - 제목 설명 새로 만들기 버튼이 있는 page title bar를 만들어줘
+  asset:
+    kind: mini-mock
+    variant: page-title-bar
+    props:
+      primaryAction: true
+  sources:
+    - source_id: atlassian-design-components
+      note: page layout and header composition
+  confidence: medium
+- id: settings-page-layout
+  status: draft
+  category: structure
+  group: structure-app-layout
+  kind: block
+  ko:
+    name: 설정 페이지 레이아웃
+    aliases:
+      - settings page
+      - settings layout
+      - 설정 화면 레이아웃
+  en:
+    name: Settings page layout
+    aliases:
+      - Settings layout
+      - Settings screen
+  one_liner: 설정 카테고리 내비게이션과 설정 폼 카드들을 함께 배치한 페이지 구조.
+  description: 계정, 보안, 결제, 알림처럼 여러 설정 영역을 탐색하고 수정하게 한다.
+  visual_anatomy:
+    - settings nav
+    - active category
+    - form cards
+    - save actions
+    - helper text
+  when_to_use:
+    - 제품 내부에서 사용자가 계정이나 워크스페이스 설정을 관리할 때
+  anti_use:
+    - 설정 항목 하나만 바꾸면 popover-form이나 dialog가 더 가볍다
+  prompt_phrases:
+    - 왼쪽 설정 메뉴와 오른쪽 form card가 있는 settings page layout을 만들어줘
+  asset:
+    kind: mini-mock
+    variant: settings-page-layout
+  sources:
+    - source_id: blocks-so-library
+      note: shadcn block ecosystem settings page examples
+  navigation:
+    canonical_path:
+      - Plus
+      - Templates
+      - Dashboard Screens
+    also_appears_in:
+      - - Plus
+        - UI Blocks
+        - Application UI
+        - Page Examples
+  confidence: medium
+- id: status-bar
+  status: draft
+  category: structure
+  group: structure-app-layout
+  ko:
+    name: 상태 표시줄
+    aliases:
+      - status bar
+      - 상태 바
+      - 하단 상태줄
+  en:
+    name: Status bar
+    aliases:
+      - Bottom status bar
+      - Editor status bar
+  one_liner: 현재 문서, 연결, 저장, 선택 상태를 작게 지속 표시하는 막대.
+  description: 편집기나 대시보드 하단에서 저장됨, 온라인, 선택 수, 좌표 같은 주변 상태 정보를 제공한다.
+  visual_anatomy:
+    - status segments
+    - connection state
+    - selection count
+    - compact indicators
+  when_to_use:
+    - 작업 중 계속 참고해야 하는 보조 상태가 있을 때
+  anti_use:
+    - 중요 오류나 확인 요청을 작게 묻어두지 않는다
+  prompt_phrases:
+    - 화면 하단에 온라인과 저장됨을 표시하는 status bar를 넣어줘
+  asset:
+    kind: mini-mock
+    variant: status-bar
+    props:
+      connected: true
+  sources:
+    - source_id: apple-hig-components
+      note: status presentation and persistent chrome
+  confidence: medium
+- id: top-app-bar
+  status: draft
+  category: structure
+  group: structure-app-layout
+  ko:
+    name: 상단 앱 바
+    aliases:
+      - top app bar
+      - app bar
+      - 앱 상단바
+  en:
+    name: Top app bar
+    aliases:
+      - App bar
+      - Top bar
+  one_liner: 화면 상단에서 제목, 내비게이션, 주요 행동을 담는 앱 구조 요소.
+  description: 모바일/앱 화면에서 뒤로가기, 화면 제목, 검색이나 더보기 같은 행동을 배치한다.
+  visual_anatomy:
+    - top bar container
+    - navigation icon
+    - title
+    - action icons
+  when_to_use:
+    - 현재 화면의 제목과 주요 행동을 계속 보여줘야 할 때
+    - 앱 화면 간 이동이 있을 때
+  anti_use:
+    - 브랜드 웹사이트의 복잡한 전역 메뉴와 혼동하지 않는다
+    - 행동 아이콘을 너무 많이 넣지 않는다
+  prompt_phrases:
+    - 상단에 top app bar를 넣고 제목과 더보기 아이콘을 보여줘
+    - 앱 화면 상단바에 뒤로가기 버튼을 넣어줘
+  related:
+    - id: large-title-header
+      relation: compare
+      note: 스크롤 시 바를 보이거나 숨기는 show/hide 규칙은 top-app-bar 자체의 일반 동작이며,
+        large-title-header의 큰 제목 접힘과는 별개다. 스크린리더 활성 시에는 숨기지 않는 예외가 두 항목 모두에
+        적용된다.
+  asset:
+    kind: mini-mock
+    variant: top-app-bar
+    props:
+      actions: 2
+  sources:
+    - source_id: material-m3-components
+      note: top app bar component
+  confidence: high
+- id: utility-bar
+  status: draft
+  category: structure
+  group: structure-app-layout
+  ko:
+    name: 유틸리티 바
+    aliases:
+      - utility bar
+      - 보조 도구 바
+      - 상단 보조 바
+  en:
+    name: Utility bar
+    aliases:
+      - Utility toolbar
+      - Secondary app bar
+  one_liner: 현재 화면의 보조 도구, 상태, 빠른 설정을 한 줄로 모은 영역.
+  description: 필터, 보기 방식, 동기화 상태, 도움말처럼 전역 탐색보다 낮은 우선순위의 기능을 제공한다.
+  visual_anatomy:
+    - secondary controls
+    - status text
+    - quick actions
+    - compact layout
+  when_to_use:
+    - 페이지마다 자주 쓰는 보조 도구가 여러 개 있을 때
+  anti_use:
+    - 주요 CTA를 숨기는 잡다한 버튼 모음으로 쓰지 않는다
+  prompt_phrases:
+    - 필터 보기 옵션 동기화 상태가 있는 utility bar를 넣어줘
+  asset:
+    kind: mini-mock
+    variant: utility-bar
+    props:
+      actions: 3
+  sources:
+    - source_id: fluent2-react-components
+      note: toolbar and command surface composition
+  confidence: medium

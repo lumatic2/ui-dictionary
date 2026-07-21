@@ -1,0 +1,387 @@
+# 커머스·청구 (data-commerce-billing)
+# category: data-display · 용어 9개
+# 파생물 — 정본은 docs/ui-vocabulary/terms.yml. 손으로 고치지 마라.
+
+- id: address-card
+  status: draft
+  category: data-display
+  group: data-commerce-billing
+  ko:
+    name: 주소 카드
+    aliases:
+      - address card
+      - 배송지 카드
+      - address selector
+  en:
+    name: Address card
+    aliases:
+      - Shipping address card
+      - Address selector
+  one_liner: 배송지나 청구지 주소를 카드 형태로 표시하고 선택하는 UI.
+  description: 수령인, 주소, 전화번호, 기본 주소 배지, 편집 행동을 함께 보여준다.
+  visual_anatomy:
+    - recipient
+    - address lines
+    - default badge
+    - selected state
+    - edit action
+  when_to_use:
+    - 여러 배송지나 청구지 중 하나를 고를 때
+  anti_use:
+    - 주소를 새로 입력하는 폼은 address form으로 분리한다
+  prompt_phrases:
+    - 기본 배송지 배지가 있는 address card를 만들어줘
+  asset:
+    kind: mini-mock
+    variant: address-card
+    props:
+      default: true
+  sources:
+    - source_id: material-m3-components
+      note: cards and selection controls
+  confidence: medium
+- id: attachment-list
+  status: draft
+  category: data-display
+  group: data-commerce-billing
+  ko:
+    name: 첨부파일 목록
+    aliases:
+      - attachment list
+      - 첨부 목록
+      - 파일 첨부 리스트
+  en:
+    name: Attachment list
+    aliases:
+      - File attachments list
+      - Attachment rows
+  one_liner: 첨부된 파일을 이름, 크기, 상태, 제거 행동과 함께 나열하는 목록.
+  description: 메시지, 폼, 이슈, 문서에 붙은 파일을 업로드 상태와 함께 관리한다.
+  visual_anatomy:
+    - file icon
+    - filename
+    - size
+    - upload status
+    - remove action
+  when_to_use:
+    - 여러 첨부파일을 확인하거나 삭제해야 할 때
+  anti_use:
+    - 파일 자체가 주요 콘텐츠면 file card나 gallery가 더 잘 보인다
+  prompt_phrases:
+    - 업로드 진행 상태가 있는 attachment list를 넣어줘
+  asset:
+    kind: mini-mock
+    variant: attachment-list
+    props:
+      removable: true
+  sources:
+    - source_id: carbon-design-components
+      note: file uploader and file list patterns
+  confidence: medium
+- id: billing-summary
+  status: draft
+  category: data-display
+  group: data-commerce-billing
+  ko:
+    name: 결제 요약
+    aliases:
+      - billing summary
+      - 청구 요약
+      - billing overview
+  en:
+    name: Billing summary
+    aliases:
+      - Billing overview
+      - Subscription summary
+  one_liner: 현재 플랜, 다음 청구일, 결제 금액, 결제수단을 요약하는 영역.
+  description: 계정 설정에서 구독과 청구 상태를 한눈에 확인하게 한다.
+  visual_anatomy:
+    - current plan
+    - next invoice date
+    - amount
+    - payment method
+    - manage action
+  when_to_use:
+    - 구독 설정이나 계정 결제 화면의 상단 요약에서
+  anti_use:
+    - 장바구니 결제 전 합계는 cart summary가 더 정확하다
+  prompt_phrases:
+    - 플랜 다음 청구일 결제수단이 있는 billing summary를 만들어줘
+  asset:
+    kind: mini-mock
+    variant: billing-summary
+    props:
+      plan: Pro
+  sources:
+    - source_id: carbon-design-components
+      note: structured summary card patterns
+  confidence: medium
+- id: cart-summary
+  status: draft
+  category: data-display
+  group: data-commerce-billing
+  ko:
+    name: 장바구니 요약
+    aliases:
+      - cart summary
+      - 주문 요약
+      - checkout summary
+  en:
+    name: Cart summary
+    aliases:
+      - Order summary
+      - Checkout summary
+  one_liner: 상품 합계, 배송비, 할인, 총 결제 금액을 요약하는 영역.
+  description: 결제 전 사용자가 비용 구성을 확인하고 다음 단계로 이동하게 한다.
+  visual_anatomy:
+    - line items
+    - subtotal
+    - discount
+    - shipping
+    - total
+    - checkout action
+  when_to_use:
+    - 장바구니나 체크아웃에서 결제 금액을 확인해야 할 때
+  anti_use:
+    - 주문 완료 이후에는 order status나 receipt가 더 적절하다
+  prompt_phrases:
+    - 소계 배송비 할인 총액이 있는 cart summary를 만들어줘
+  asset:
+    kind: mini-mock
+    variant: cart-summary
+    props:
+      total: true
+  sources:
+    - source_id: material-m3-components
+      note: lists and cards for commerce summary
+  confidence: medium
+- id: cart-summary-bar
+  status: draft
+  category: data-display
+  group: data-commerce-billing
+  ko:
+    name: 장바구니 요약 바
+    aliases:
+      - cart summary bar
+      - 하단 장바구니 바
+      - 주문 요약 바
+      - 결제 바
+  en:
+    name: Cart summary bar
+    aliases:
+      - Cart bottom bar
+      - Checkout summary bar
+  one_liner: 모바일 화면 하단에 장바구니 수량, 금액, 결제 버튼을 압축해 보여주는 바.
+  description: 사용자가 상품을 둘러보는 동안 현재 장바구니 상태와 다음 행동을 계속 확인하게 한다.
+  visual_anatomy:
+    - item count
+    - total price
+    - checkout action
+    - sticky bottom bar
+  when_to_use:
+    - 모바일 쇼핑
+    - 음식 주문
+    - 예약 흐름에서 누적 선택 상태를 보여줄 때
+  anti_use:
+    - 상세한 비용 내역은 cart-summary나 checkout screen에 따로 보여준다
+  prompt_phrases:
+    - 화면 아래에 수량과 총액이 보이는 cart summary bar를 고정해줘
+  asset:
+    kind: mini-mock
+    variant: cart-summary-bar
+    props:
+      count: 2
+  sources:
+    - source_id: material-m3-components
+      note: bottom action and summary placement
+  navigation:
+    canonical_path:
+      - Plus
+      - UI Blocks
+      - Ecommerce
+      - Components
+    also_appears_in:
+      - - Plus
+        - Templates
+        - Ecommerce Screens
+  related:
+    - id: cart-summary
+      relation: compare
+      note: browsing 중 누적 상태를 보여주는 하단 바는 cart summary bar고, checkout 단계에서 세금·배송비까지 포함해
+        스크롤과 무관하게 고정 노출하는 최종 총액(sticky order total 개념,
+        `recipes/commerce/checkout-order-summary.md` 참고)은 cart summary와 항상 일치해야
+        한다.
+  confidence: high
+- id: feature-comparison
+  status: draft
+  category: data-display
+  group: data-commerce-billing
+  ko:
+    name: 기능 비교
+    aliases:
+      - feature comparison
+      - 기능 비교표
+      - 플랜 비교
+  en:
+    name: Feature comparison
+    aliases:
+      - Feature comparison table
+      - Plan comparison
+  one_liner: 플랜이나 제품별 기능 제공 여부를 행과 열로 비교하는 UI.
+  description: comparison table의 커머스/플랜 특화 형태로 체크, 제한, 강조 열을 사용한다.
+  visual_anatomy:
+    - feature rows
+    - plan columns
+    - checkmarks
+    - highlighted tier
+  when_to_use:
+    - 사용자가 플랜별 기능 차이를 근거로 선택해야 할 때
+  anti_use:
+    - 기능이 3개 이하이면 plan card 안 요약으로 충분하다
+  prompt_phrases:
+    - Basic Pro Team 기능 차이를 feature comparison으로 보여줘
+  asset:
+    kind: mini-mock
+    variant: feature-comparison
+    props:
+      columns: 3
+  sources:
+    - source_id: carbon-design-components
+      note: comparison table structure
+  confidence: medium
+- id: image-gallery
+  status: draft
+  category: data-display
+  group: data-commerce-billing
+  ko:
+    name: 이미지 갤러리
+    aliases:
+      - image gallery
+      - 사진 갤러리
+      - gallery grid
+      - 상품 이미지 갤러리
+  en:
+    name: Image gallery
+    aliases:
+      - Photo gallery
+      - Gallery grid
+      - Product gallery
+  one_liner: 여러 이미지를 격자나 썸네일 목록으로 탐색하는 UI.
+  description: 사진, 제품 이미지, 포트폴리오처럼 이미지 묶음을 빠르게 훑고 선택하게 한다.
+  visual_anatomy:
+    - image grid
+    - selected thumbnail
+    - preview
+    - navigation controls
+  when_to_use:
+    - 여러 이미지를 비교하거나 선택해야 할 때
+  anti_use:
+    - 하나의 대표 이미지만 있으면 image나 media card가 더 단순하다
+  prompt_phrases:
+    - 썸네일을 누르면 선택되는 image gallery를 넣어줘
+  asset:
+    kind: mini-mock
+    variant: image-gallery
+    props:
+      selected: 1
+  sources:
+    - source_id: apple-hig-components
+      note: image and media presentation
+  confidence: medium
+- id: invoice-row
+  status: draft
+  category: data-display
+  group: data-commerce-billing
+  ko:
+    name: 인보이스 행
+    aliases:
+      - invoice row
+      - 청구서 행
+      - billing row
+  en:
+    name: Invoice row
+    aliases:
+      - Billing row
+      - Invoice list row
+  one_liner: 청구서의 날짜, 금액, 상태, 다운로드 행동을 한 줄로 보여주는 행.
+  description: 결제 내역 목록에서 각 인보이스를 확인하고 PDF를 내려받게 한다.
+  visual_anatomy:
+    - invoice date
+    - amount
+    - status
+    - invoice number
+    - download action
+  when_to_use:
+    - 청구 내역이나 영수증 목록을 보여줄 때
+  anti_use:
+    - 결제 예정 요약은 billing summary가 더 적합하다
+  prompt_phrases:
+    - 상태 배지와 PDF 다운로드가 있는 invoice row를 넣어줘
+  asset:
+    kind: mini-mock
+    variant: invoice-row
+    props:
+      downloadable: true
+  sources:
+    - source_id: carbon-design-components
+      note: data table and list row status patterns
+  confidence: medium
+- id: reviews-summary-block
+  status: draft
+  category: data-display
+  group: data-commerce-billing
+  kind: block
+  ko:
+    name: 리뷰 요약 블록
+    aliases:
+      - reviews summary block
+      - 리뷰 평점 요약
+      - 상품 리뷰 요약
+  en:
+    name: Reviews summary block
+    aliases:
+      - Review summary block
+      - Rating summary block
+  one_liner: 평균 평점과 별점 분포, 개별 리뷰 목록을 한 블록에 묶어 구매 결정을 돕는 UI.
+  description: 상품 상세 페이지에서 평균 평점과 분포 막대 같은 요약 지표를 개별 리뷰 목록과 함께 배치해 신뢰를 만든다.
+  visual_anatomy:
+    - average rating number
+    - star distribution bars
+    - review count
+    - individual review cards
+    - verified purchase badge
+  when_to_use:
+    - 상품 상세에서 평점 요약과 실제 리뷰를 함께 보여줘야 할 때
+  anti_use:
+    - 평점 분포 없이 인용문만 나열하는 마케팅 신뢰 섹션은 testimonial section이 더 적합하다
+  prompt_phrases:
+    - 평균 평점과 별점 분포
+    - 개별 리뷰가 있는 reviews summary block을 상품 상세에 넣어줘
+  related:
+    - id: testimonial-section
+      relation: compare
+      note: 마케팅 신뢰용 고객 인용문 나열은 testimonial section, 평점 분포와 실제 상품 리뷰 목록을 함께 보여줘야 하면
+        reviews summary block이다.
+    - id: review-list-with-filters
+      relation: compare
+      note: 평점 분포 요약과 리뷰 목록을 한 블록으로 묶어 보여주는 것이 reviews summary block이고, 평점/사진 유무/구매 인증
+        여부로 리뷰를 걸러내고 정렬하는 상호작용이 핵심이면 review list with filters다.
+  asset:
+    kind: mini-mock
+    variant: reviews-summary-block
+    props:
+      rating: 4.5
+  sources:
+    - source_id: blocks-so-library
+      note: shadcn block ecosystem ecommerce review summary blocks
+  navigation:
+    canonical_path:
+      - Plus
+      - UI Blocks
+      - Ecommerce
+      - Components
+    also_appears_in:
+      - - Plus
+        - Templates
+        - Ecommerce Screens
+  confidence: medium

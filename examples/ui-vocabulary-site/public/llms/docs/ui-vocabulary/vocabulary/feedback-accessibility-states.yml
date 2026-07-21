@@ -1,0 +1,118 @@
+# 동기화·예측 상태 (feedback-accessibility-states)
+# category: feedback · 용어 3개
+# 파생물 — 정본은 docs/ui-vocabulary/terms.yml. 손으로 고치지 마라.
+
+- id: gesture-hint
+  status: draft
+  category: feedback
+  group: feedback-accessibility-states
+  kind: component
+  ko:
+    name: 제스처 힌트
+    aliases:
+      - gesture hint
+      - 스와이프 힌트
+      - 조작 힌트
+  en:
+    name: Gesture hint
+    aliases:
+      - Swipe hint
+      - Interaction hint
+  one_liner: 스와이프, 드래그, 핀치 같은 숨은 제스처를 사용자가 발견하도록 보여주는 작은 단서.
+  description: 살짝 보이는 다음 카드, 핸들, 방향 화살표, 짧은 안내 문구로 가능한 조작을 암시한다.
+  visual_anatomy:
+    - gesture target
+    - directional cue
+    - partial next item
+    - optional label
+  when_to_use:
+    - 제스처가 주요 조작인데 화면만 봐서는 알기 어려울 때
+  anti_use:
+    - 표준 버튼으로 충분히 명확한 행동을 숨겨 제스처에만 의존하지 않는다
+  prompt_phrases:
+    - 카드가 옆으로 더 있다는 gesture hint를 살짝 보여줘
+  asset:
+    kind: mini-mock
+    variant: gesture-hint
+  sources:
+    - source_id: apple-hig-components
+      note: Apple HIG covers discoverable gestures and touch interaction cues
+  confidence: medium
+- id: optimistic-update
+  status: draft
+  category: feedback
+  group: feedback-accessibility-states
+  kind: component
+  ko:
+    name: 낙관적 업데이트
+    aliases:
+      - optimistic update
+      - optimistic UI
+      - 선반영 UI
+  en:
+    name: Optimistic update
+    aliases:
+      - Optimistic UI
+      - Optimistic state
+  one_liner: 서버 응답을 기다리기 전에 성공할 것으로 보고 UI를 먼저 바꾸는 인터랙션 패턴.
+  description: 좋아요, 저장, 체크 완료처럼 실패 가능성이 낮은 행동에서 반응 속도를 빠르게 느끼게 한다.
+  visual_anatomy:
+    - user action
+    - immediate UI change
+    - pending marker
+    - rollback optional
+  when_to_use:
+    - 실패 가능성이 낮고 되돌리기 쉬운 작은 행동을 빠르게 반영할 때
+  anti_use:
+    - 결제
+    - 삭제
+    - 권한 변경처럼 실패나 부작용이 큰 행동에는 신중해야 한다
+  prompt_phrases:
+    - 좋아요 버튼은 optimistic update로 즉시 선택 상태를 보여줘
+  asset:
+    kind: mini-mock
+    variant: optimistic-update
+  sources:
+    - source_id: ui-patterns-library
+      note: UI pattern references cover immediate feedback and recovery behavior
+  confidence: medium
+- id: pending-state
+  status: draft
+  category: feedback
+  group: feedback-accessibility-states
+  kind: component
+  ko:
+    name: 대기 상태
+    aliases:
+      - pending state
+      - 처리 중 상태
+      - 요청 대기
+  en:
+    name: Pending state
+    aliases:
+      - In-flight state
+      - Waiting state
+  one_liner: 사용자의 요청이 접수되었지만 아직 완료나 실패가 확정되지 않은 중간 상태.
+  description: 버튼, 행, 카드에 spinner, disabled, 임시 문구를 붙여 중복 클릭과 불확실성을 줄인다.
+  visual_anatomy:
+    - submitted action
+    - temporary indicator
+    - disabled control
+    - unresolved result
+  when_to_use:
+    - 저장
+    - 업로드
+    - 승인 요청처럼 결과를 기다리는 동안
+  anti_use:
+    - 너무 오래 지속되면 진행률
+    - 취소
+    - 재시도 정보를 제공해야 한다
+  prompt_phrases:
+    - 저장 요청 중에는 버튼을 pending state로 바꾸고 중복 클릭을 막아줘
+  asset:
+    kind: mini-mock
+    variant: pending-state
+  sources:
+    - source_id: material-m3-components
+      note: Material progress and state guidance covers pending work feedback
+  confidence: high

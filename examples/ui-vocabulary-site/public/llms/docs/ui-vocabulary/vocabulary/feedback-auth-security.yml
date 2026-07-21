@@ -1,0 +1,494 @@
+# 인증·보안 상태 (feedback-auth-security)
+# category: feedback · 용어 14개
+# 파생물 — 정본은 docs/ui-vocabulary/terms.yml. 손으로 고치지 마라.
+
+- id: access-pending-state
+  status: draft
+  category: feedback
+  group: feedback-auth-security
+  ko:
+    name: 접근 승인 대기 상태
+    aliases:
+      - 권한 승인 대기
+      - access pending
+  en:
+    name: Access pending state
+    aliases:
+      - Request pending state
+      - Waiting for access approval
+  one_liner: 접근 요청을 보낸 뒤 승인 전까지 현재 상태와 다음 가능 행동을 보여주는 화면.
+  description: 요청이 접수되었음을 확인시키고 승인자, 예상 처리, 요청 취소나 다시 알림 같은 행동을 제공한다.
+  visual_anatomy:
+    - pending icon
+    - request summary
+    - approver hint
+    - cancel or notify action
+  when_to_use:
+    - 권한 요청 후 즉시 접근할 수 없고 승인 처리를 기다려야 할 때
+  anti_use:
+    - 요청 전에는 access-request-panel이 맞고
+    - 기술적 지연은 loading-state가 맞다
+  prompt_phrases:
+    - 권한 요청 후 access pending state를 보여주고 승인자 정보를 표시해줘
+  asset:
+    kind: mini-mock
+    variant: access-pending-state
+  sources:
+    - source_id: atlassian-design-components
+      note: status and permission flow reference
+  confidence: medium
+- id: access-request-panel
+  status: draft
+  category: feedback
+  group: feedback-auth-security
+  ko:
+    name: 접근 요청 패널
+    aliases:
+      - 리소스 접근 요청
+      - access request
+  en:
+    name: Access request panel
+    aliases:
+      - Request access panel
+      - Resource access request
+  one_liner: 접근 권한이 없는 리소스에서 관리자에게 권한을 요청하는 패널.
+  description: 사용자가 왜 막혔는지, 어떤 권한을 요청하는지, 누구에게 요청되는지 확인하게 한다.
+  visual_anatomy:
+    - locked resource message
+    - requested role
+    - optional reason field
+    - request access button
+  when_to_use:
+    - 문서
+    - 프로젝트
+    - 워크스페이스 접근 권한이 없지만 요청할 수 있을 때
+  anti_use:
+    - 권한 요청 자체가 불가능하면 locked-state가 더 적합하다
+  prompt_phrases:
+    - 접근 권한이 없을 때 사유 입력이 있는 access request panel을 보여줘
+  asset:
+    kind: mini-mock
+    variant: access-request-panel
+  sources:
+    - source_id: atlassian-design-components
+      note: permission and empty state pattern reference
+  confidence: medium
+- id: device-approval-state
+  status: draft
+  category: feedback
+  group: feedback-auth-security
+  ko:
+    name: 기기 승인 대기 상태
+    aliases:
+      - 새 기기 승인 대기
+      - device approval
+  en:
+    name: Device approval state
+    aliases:
+      - New device approval state
+      - Waiting for device approval
+  one_liner: 새 기기 로그인이나 접근 요청이 다른 기기에서 승인되기를 기다리는 상태.
+  description: 사용자가 현재 화면에서 대기해야 하는 이유, 승인할 위치, 만료 시간을 알려준다.
+  visual_anatomy:
+    - device illustration
+    - waiting status
+    - countdown or expiry
+    - resend or cancel action
+  when_to_use:
+    - 보안상 다른 기기나 관리자 승인이 필요한 로그인 흐름에서
+  anti_use:
+    - 일반 로딩이면 loading-state를 쓰고 승인 주체가 없으면 pending-approval-state가 더 넓다
+  prompt_phrases:
+    - 새 기기 로그인 승인 대기 device approval state를 보여주고 만료 시간을 표시해줘
+  asset:
+    kind: mini-mock
+    variant: device-approval-state
+  sources:
+    - source_id: page-flows
+      note: cross-device account approval flow reference
+  confidence: medium
+- id: email-verification-banner
+  status: draft
+  category: feedback
+  group: feedback-auth-security
+  ko:
+    name: 이메일 인증 배너
+    aliases:
+      - 메일 인증 안내
+      - 이메일 확인 배너
+  en:
+    name: Email verification banner
+    aliases:
+      - Verify email banner
+      - Email confirmation notice
+  one_liner: 아직 이메일을 인증하지 않은 사용자에게 상단에서 인증을 요청하는 배너.
+  description: 가입 직후나 계정 설정 화면에서 이메일 인증이 필요한 상태를 계속 알려주고 재전송 행동을 제공한다.
+  visual_anatomy:
+    - inline banner
+    - verification message
+    - resend action
+    - dismiss optional
+  when_to_use:
+    - 이메일 인증 전에도 일부 화면을 사용할 수 있지만 인증 완료를 유도해야 할 때
+  anti_use:
+    - 인증 없이는 진행할 수 없는 차단 상황이면 verification-required-screen이 더 명확하다
+  prompt_phrases:
+    - 상단에 이메일 인증 배너를 넣고 인증 메일 재전송 버튼을 보여줘
+  asset:
+    kind: mini-mock
+    variant: email-verification-banner
+  sources:
+    - source_id: uswds-components
+      note: banner and alert-like status messaging reference
+  confidence: medium
+- id: invite-expired-state
+  status: draft
+  category: feedback
+  group: feedback-auth-security
+  ko:
+    name: 초대 만료 상태
+    aliases:
+      - 만료된 초대 링크
+      - invite expired
+  en:
+    name: Invite expired state
+    aliases:
+      - Expired invitation state
+      - Expired invite link
+  one_liner: 초대 링크가 만료되었거나 사용할 수 없을 때 재요청 행동을 제공하는 상태 화면.
+  description: 사용자가 링크가 왜 실패했는지 이해하고 새 초대를 요청하거나 관리자에게 문의할 수 있게 한다.
+  visual_anatomy:
+    - expired icon
+    - invalid link message
+    - request new invite action
+    - contact support link
+  when_to_use:
+    - 초대 링크가 만료
+    - 취소
+    - 이미 사용됨 상태일 때
+  anti_use:
+    - 일반 링크 오류는 error-state나 retry-panel이 충분하다
+  prompt_phrases:
+    - 초대 링크가 만료되면 invite expired state와 새 초대 요청 버튼을 보여줘
+  asset:
+    kind: mini-mock
+    variant: invite-expired-state
+  sources:
+    - source_id: page-flows
+      note: account invitation failure flow reference
+  confidence: medium
+- id: magic-link-sent-state
+  status: draft
+  category: feedback
+  group: feedback-auth-security
+  ko:
+    name: 매직 링크 전송 상태
+    aliases:
+      - 로그인 링크 전송됨
+      - 이메일 로그인 대기 화면
+  en:
+    name: Magic link sent state
+    aliases:
+      - Sign-in link sent
+      - Email link sent state
+  one_liner: 로그인 링크를 이메일로 보낸 뒤 사용자가 메일함을 확인하도록 안내하는 상태 화면.
+  description: 비밀번호 없는 로그인 흐름에서 전송된 이메일 주소, 재전송, 이메일 변경 행동을 함께 보여준다.
+  visual_anatomy:
+    - mail icon
+    - sent address
+    - check inbox message
+    - resend timer
+    - change email link
+  when_to_use:
+    - 매직 링크나 이메일 로그인 링크를 보낸 뒤 사용자가 앱 밖에서 확인해야 할 때
+  anti_use:
+    - 앱 안에서 코드를 바로 입력받는 흐름이면 otp-code-input이 더 적합하다
+  prompt_phrases:
+    - 로그인 링크를 보낸 뒤 magic link sent state를 보여주고 30초 후 재전송 버튼을 활성화해줘
+  asset:
+    kind: mini-mock
+    variant: magic-link-sent-state
+  sources:
+    - source_id: page-flows
+      note: email sign-in and account flow reference
+  confidence: medium
+- id: passkey-enrollment-prompt
+  status: draft
+  category: feedback
+  group: feedback-auth-security
+  ko:
+    name: 패스키 등록 유도
+    aliases:
+      - 패스키 설정 안내
+      - passkey 등록 프롬프트
+  en:
+    name: Passkey enrollment prompt
+    aliases:
+      - Set up passkey prompt
+      - Passkey setup prompt
+  one_liner: 사용자가 비밀번호 대신 패스키를 등록하도록 유도하는 보안 설정 프롬프트.
+  description: 로그인 이후나 보안 설정 화면에서 더 빠르고 안전한 로그인 방법을 제안한다.
+  visual_anatomy:
+    - security icon
+    - passkey benefit text
+    - set up action
+    - skip action
+  when_to_use:
+    - 계정 보안을 강화하거나 비밀번호 없는 로그인을 도입할 때
+  anti_use:
+    - 이미 인증이 필요한 순간에는 biometric-prompt나 passkey-sign-in-sheet가 더 직접적이다
+  prompt_phrases:
+    - 로그인 후 패스키를 등록하라는 passkey enrollment prompt를 보여줘
+  asset:
+    kind: mini-mock
+    variant: passkey-enrollment-prompt
+  sources:
+    - source_id: apple-hig-components
+      note: account authentication and secure sign-in guidance
+  confidence: medium
+- id: passkey-sign-in-sheet
+  status: draft
+  category: feedback
+  group: feedback-auth-security
+  ko:
+    name: 패스키 로그인 시트
+    aliases:
+      - 패스키 인증 시트
+      - passkey 로그인
+  en:
+    name: Passkey sign-in sheet
+    aliases:
+      - Passkey authentication sheet
+      - Passkey login sheet
+  one_liner: 패스키로 로그인할 계정과 인증 행동을 보여주는 로그인 시트.
+  description: 사용자가 저장된 패스키를 선택하거나 기기 인증을 진행하는 순간에 쓰는 집중형 인증 UI다.
+  visual_anatomy:
+    - bottom or modal sheet
+    - account identity
+    - passkey icon
+    - continue action
+    - fallback link
+  when_to_use:
+    - 패스키 인증을 시작했지만 계정 선택이나 fallback이 필요할 때
+  anti_use:
+    - 패스키 등록을 제안하는 마케팅성 안내에는 passkey-enrollment-prompt가 낫다
+  prompt_phrases:
+    - 패스키로 로그인하는 passkey sign-in sheet를 만들고 다른 방법으로 로그인 링크를 넣어줘
+  asset:
+    kind: mini-mock
+    variant: passkey-sign-in-sheet
+  sources:
+    - source_id: apple-hig-components
+      note: secure authentication presentation guidance
+  confidence: medium
+- id: reconnect-account-state
+  status: draft
+  category: feedback
+  group: feedback-auth-security
+  ko:
+    name: 계정 재연결 상태
+    aliases:
+      - 연동 만료 상태
+      - reconnect account
+  en:
+    name: Reconnect account state
+    aliases:
+      - Account disconnected state
+      - Reconnect integration state
+  one_liner: 외부 계정 연결이 만료되거나 끊겼을 때 다시 연결하도록 안내하는 상태.
+  description: 연동 카드나 데이터 영역에서 동기화가 멈춘 이유와 재연결 행동을 명확히 보여준다.
+  visual_anatomy:
+    - disconnected icon
+    - service name
+    - last sync or expiry text
+    - reconnect button
+  when_to_use:
+    - OAuth 토큰 만료
+    - 외부 서비스 연결 해제
+    - 동기화 권한 변경이 발생했을 때
+  anti_use:
+    - 정상 연결 정보를 보여주는 경우에는 connection-card가 맞다
+  prompt_phrases:
+    - Google 계정 연결이 끊기면 reconnect account state와 다시 연결 버튼을 보여줘
+  asset:
+    kind: mini-mock
+    variant: reconnect-account-state
+  sources:
+    - source_id: atlassian-design-components
+      note: integration status and recovery pattern reference
+  confidence: medium
+- id: recovery-code-warning
+  status: draft
+  category: feedback
+  group: feedback-auth-security
+  ko:
+    name: 복구 코드 경고
+    aliases:
+      - 백업 코드 저장 경고
+      - recovery code warning
+  en:
+    name: Recovery code warning
+    aliases:
+      - Backup code warning
+      - Save recovery codes warning
+  one_liner: 복구 코드를 저장하지 않으면 계정 복구가 어려울 수 있음을 강조하는 경고.
+  description: 사용자가 보안 설정을 완료하기 전에 중요한 백업 행동을 놓치지 않게 한다.
+  visual_anatomy:
+    - warning callout
+    - risk statement
+    - confirm checkbox or action
+    - continue button
+  when_to_use:
+    - 사용자가 복구 코드를 저장하지 않고 다음 단계로 넘어가려 할 때
+  anti_use:
+    - 일반 주의 문구는 warning-state나 inline alert가 충분하다
+  prompt_phrases:
+    - 복구 코드를 저장하지 않고 넘어가려 할 때 recovery code warning을 보여줘
+  asset:
+    kind: mini-mock
+    variant: recovery-code-warning
+  sources:
+    - source_id: carbon-design-components
+      note: warning notification and callout reference
+  confidence: medium
+- id: setup-blocker-state
+  status: draft
+  category: feedback
+  group: feedback-auth-security
+  ko:
+    name: 설정 차단 상태
+    aliases:
+      - 설정 미완료 차단
+      - setup blocker
+  en:
+    name: Setup blocker state
+    aliases:
+      - Setup required blocker
+      - Configuration required state
+  one_liner: 필수 설정이 끝나지 않아 현재 기능을 사용할 수 없음을 보여주는 차단 상태.
+  description: 사용자가 어떤 설정을 완료해야 막힌 기능이 열리는지와 바로 이동할 행동을 제공한다.
+  visual_anatomy:
+    - blocked feature area
+    - missing setup item
+    - go to setup action
+    - help link
+  when_to_use:
+    - 결제
+    - 연동
+    - 권한
+    - 초기 설정이 완료되어야 기능을 사용할 수 있을 때
+  anti_use:
+    - 진행률만 보여주면 setup-progress가 충분하고 오류 상황은 error-state가 맞다
+  prompt_phrases:
+    - 연동 설정 전에는 setup blocker state를 보여주고 설정으로 이동 버튼을 넣어줘
+  asset:
+    kind: mini-mock
+    variant: setup-blocker-state
+  sources:
+    - source_id: atlassian-design-components
+      note: empty state and setup guidance reference
+  confidence: medium
+- id: trusted-device-prompt
+  status: draft
+  category: feedback
+  group: feedback-auth-security
+  ko:
+    name: 신뢰 기기 등록 프롬프트
+    aliases:
+      - 이 기기 기억하기
+      - trusted device prompt
+  en:
+    name: Trusted device prompt
+    aliases:
+      - Remember this device prompt
+      - Trust this device
+  one_liner: 로그인 후 현재 기기를 신뢰할지 물어 다음 인증 빈도를 줄이는 프롬프트.
+  description: 사용자가 개인 기기에서 반복 인증을 줄일 수 있게 하되 공용 기기에서는 건너뛰도록 안내한다.
+  visual_anatomy:
+    - device icon
+    - trust explanation
+    - trust action
+    - not now action
+    - safety note
+  when_to_use:
+    - 2단계 인증 이후 현재 기기를 기억할지 선택하게 할 때
+  anti_use:
+    - 단순 로그인 성공 알림에는 success-toast가 더 가볍다
+  prompt_phrases:
+    - 2단계 인증 후 이 기기를 신뢰할지 묻는 trusted device prompt를 보여줘
+  asset:
+    kind: mini-mock
+    variant: trusted-device-prompt
+  sources:
+    - source_id: apple-hig-components
+      note: device and account authentication guidance
+  confidence: medium
+- id: verification-required-screen
+  status: draft
+  category: feedback
+  group: feedback-auth-security
+  ko:
+    name: 인증 필요 화면
+    aliases:
+      - 이메일 인증 필요
+      - 계정 인증 필요 화면
+  en:
+    name: Verification required screen
+    aliases:
+      - Email verification required
+      - Account verification gate
+  one_liner: 이메일이나 계정 인증을 완료해야 다음 화면으로 갈 수 있음을 보여주는 차단 화면.
+  description: 보안이나 신뢰가 필요한 기능 앞에서 사용자가 무엇을 인증해야 하는지와 다음 행동을 분명히 보여준다.
+  visual_anatomy:
+    - centered gate panel
+    - verification icon
+    - explanation text
+    - primary verify action
+    - secondary resend link
+  when_to_use:
+    - 인증이 완료되기 전에는 핵심 기능을 사용할 수 없을 때
+  anti_use:
+    - 단순 알림이면 email-verification-banner가 덜 방해된다
+  prompt_phrases:
+    - 이메일 인증 전에는 verification required screen을 보여주고 인증 메일 다시 보내기 버튼을 넣어줘
+  asset:
+    kind: mini-mock
+    variant: verification-required-screen
+  sources:
+    - source_id: material-m3-components
+      note: full-screen empty/error style feedback structure
+  confidence: medium
+- id: workspace-join-request
+  status: draft
+  category: feedback
+  group: feedback-auth-security
+  ko:
+    name: 워크스페이스 참여 요청
+    aliases:
+      - 팀 참여 요청
+      - join request
+  en:
+    name: Workspace join request
+    aliases:
+      - Team join request
+      - Request to join workspace
+  one_liner: 사용자가 조직이나 워크스페이스에 참여 요청을 보내는 UI.
+  description: 도메인 기반 조직 발견이나 제한된 워크스페이스에서 가입 사유와 요청 행동을 보여준다.
+  visual_anatomy:
+    - workspace card
+    - membership status
+    - optional reason field
+    - request to join button
+  when_to_use:
+    - 사용자가 바로 참여할 수 없고 관리자 승인이 필요한 워크스페이스일 때
+  anti_use:
+    - 초대 링크가 이미 있으면 invite-acceptance-screen이 더 직접적이다
+  prompt_phrases:
+    - 회사 도메인으로 찾은 워크스페이스에 참여 요청하는 workspace join request를 만들어줘
+  asset:
+    kind: mini-mock
+    variant: workspace-join-request
+  sources:
+    - source_id: atlassian-design-components
+      note: team and access request flow reference
+  confidence: medium

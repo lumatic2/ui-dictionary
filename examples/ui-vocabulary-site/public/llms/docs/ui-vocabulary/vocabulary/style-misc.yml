@@ -1,0 +1,40 @@
+# 기타 스타일·재질 (style-misc)
+# category: style · 용어 1개
+# 파생물 — 정본은 docs/ui-vocabulary/terms.yml. 손으로 고치지 마라.
+
+- id: hover-card-stack
+  status: draft
+  category: style
+  group: style-misc
+  kind: visual-effect
+  ko:
+    name: 호버 카드 스택
+    aliases:
+      - card stack hover
+      - hover card stack
+      - 겹친 카드 효과
+  en:
+    name: Hover card stack
+    aliases:
+      - Card stack hover
+      - Stacked cards
+  one_liner: 여러 카드가 겹쳐 있다가 hover나 스크롤에 따라 펼쳐지는 카드 묶음 효과.
+  description: 사례, 이미지, 기능 미리보기를 압축해서 보여주고 상호작용 시 레이어를 드러낸다.
+  visual_anatomy:
+    - stacked cards
+    - offset layers
+    - hover reveal
+    - depth shadow
+  when_to_use:
+    - 여러 미리보기를 한 공간에 압축해 보여줄 때
+  anti_use:
+    - 각 카드를 비교해야 하면 grid나 carousel이 더 명확하다
+  prompt_phrases:
+    - 프로젝트 미리보기를 겹친 hover card stack으로 보여줘
+  asset:
+    kind: mini-mock
+    variant: hover-card-stack
+  sources:
+    - source_id: aceternity-ui-docs
+      note: Aceternity card hover and stacked card examples
+  confidence: medium

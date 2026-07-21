@@ -9,7 +9,8 @@
 
 import path from "node:path";
 import { fileURLToPath } from "node:url";
-import { readFileSync, writeFileSync, mkdirSync, rmSync, copyFileSync, existsSync } from "node:fs";
+import { readFileSync, writeFileSync, mkdirSync, rmSync, copyFileSync, existsSync, readdirSync } from "node:fs";
+import { execFileSync } from "node:child_process";
 import { globSync } from "node:fs";
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
@@ -58,6 +59,9 @@ const FIXED_ASSETS = [
       ["docs/design-system/agent-asset-model.md", "How coding agents are expected to consume tokens, taxonomy, and recipes"],
       ["docs/design-system/component-restyle.md", "Component-layer restyle contract: keep shadcn-class behavior guarantees, remap the look to the working project's own tokens — the escape route from the generic shadcn face"],
       ["docs/design-system/absorption-criteria.md", "Decision rules for absorbing external expressive libraries: what becomes a canonical recipe, what stays a link reference, what waits"],
+      ["docs/design-system/decision-format.md", "Decision data contract: how a cluster file encodes the axes that split confusable candidates (axis needs a source URL + confidence; rule order is itself the judgment), and the 요소 결정 report block every decision must leave behind"],
+      ["docs/design-system/no-asset-fallback.md", "What to build from when a term has NO recipe and NO code asset (481 of 562 terms): use the term entry itself as material — visual_anatomy as a parts checklist, anti_use as the boundary, related as the neighbour diff. A missing recipe must not stop the work"],
+      ["docs/ui-vocabulary/term-asset-map.json", "Generated term↔recipe↔code-asset map: for any term, what exists to build it with. Empty recipes AND code_assets means take the no-asset-fallback path"],
     ],
   },
   {
@@ -81,10 +85,12 @@ function repoRel(p) {
 /** Parse minimal YAML frontmatter fields (id, name, pattern_group, status) from a recipe file. */
 function parseRecipeFrontmatter(filePath) {
   const text = readFileSync(filePath, "utf8");
-  const match = text.match(/^---\n([\s\S]*?)\n---/);
+  // CRLF 체크아웃(Windows autocrlf)에서도 읽혀야 한다 — \n 만 보면 frontmatter 를 통째로 못 본다.
+  const match = text.match(/^---\r?\n([\s\S]*?)\r?\n---/);
   if (!match) throw new Error(`recipe has no frontmatter: ${repoRel(filePath)}`);
   const fields = {};
-  for (const line of match[1].split("\n")) {
+  // \r 로 쪼개야 한다 — JS 정규식에서 \r 은 줄 종결자라 `.` 가 먹지 못하고, 남겨두면 모든 필드가 null 이 된다.
+  for (const line of match[1].split(/\r?\n/)) {
     const m = line.match(/^(id|name|pattern_group|status):\s*(.+)$/);
     if (m) fields[m[1]] = m[2].trim().replace(/^"|"$/g, "");
   }
@@ -188,6 +194,77 @@ function main() {
     lines.push("");
   }
 
+
+  // Vocabulary (VL2): 562-term dictionary, published as a lightweight index + per-group shards.
+  // 이 블록은 **샤드 생성을 직접 호출한다.** main() 첫 줄의 rmSync 가 LLMS_DIR 을 통째로 지우므로,
+  // 샤드를 따로 만들어 두면 다음 재생성 때 조용히 사라진다(2026-07-21 실증: 배포 용어 562→0,
+  // 끊긴 참조 0→91). 파이프라인에 묶어 두 산출물의 수명을 하나로 만든다.
+  execFileSync(process.execPath, [path.join(REPO_ROOT, "scripts", "generate-vocabulary-shards.mjs")], {
+    stdio: "pipe",
+  });
+  const vocabDirRel = "docs/ui-vocabulary/vocabulary";
+  const vocabDir = path.join(LLMS_DIR, vocabDirRel);
+  if (!existsSync(path.join(vocabDir, "index.md"))) {
+    throw new Error("vocabulary shards were not produced — generate-vocabulary-shards.mjs 가 index.md 를 내지 않았다");
+  }
+  const shardFiles = readdirSync(vocabDir).filter((f) => f.endsWith(".yml")).sort();
+  lines.push("## Vocabulary (562 UI terms)");
+  lines.push("");
+  lines.push(
+    `Do NOT fetch the whole dictionary — the source is 665KB. Read the lookup contract first, then the index, then the ONE group shard you need (2–3 fetches). The raw ${"`docs/ui-vocabulary/terms.yml`"} is deliberately not published; a 404 there is expected.`,
+  );
+  lines.push("");
+  for (const [rel, desc] of [
+    ["docs/design-system/vocabulary-lookup.md", "How to look a term up: by name, by intent (category axis), and what to do when the concept is not in the dictionary — a lookup miss must not stop the work"],
+  ]) {
+    const urlPath = copyAsset(rel);
+    writtenUrls.push(urlPath);
+    lines.push(`- [${rel}](${BASE_URL}${urlPath}): ${desc}`);
+  }
+  writtenUrls.push(`/llms/${vocabDirRel}/index.md`);
+  lines.push(
+    `- [${vocabDirRel}/index.md](${BASE_URL}/llms/${vocabDirRel}/index.md): Term index — ids and Korean names only, grouped by category then group. No definitions here; it tells you which shard to open`,
+  );
+  for (const f of shardFiles) {
+    writtenUrls.push(`/llms/${vocabDirRel}/${f}`);
+  }
+  lines.push(
+    `- Group shards (${shardFiles.length}): ${BASE_URL}/llms/${vocabDirRel}/<group>.yml — full term bodies (one_liner, visual_anatomy, when_to_use, anti_use, related). Group ids come from the index`,
+  );
+  lines.push("");
+
+  // Decisions (VL5/VL6): 후보들 사이를 가르는 축. 군집 파일은 손으로 쓰는 정본이라
+  // 생성기가 만들지 않고 **있는 것을 전부 등재**한다 — 새 군집을 추가하면 자동으로 실린다.
+  const decisionsSrc = path.join(REPO_ROOT, "docs", "design-system", "decisions");
+  if (existsSync(decisionsSrc)) {
+    const clusterFiles = readdirSync(decisionsSrc).filter((f) => f.endsWith(".md")).sort();
+    if (!clusterFiles.includes("README.md")) {
+      throw new Error("decisions/README.md 가 없다 — 군집 인덱스 없이 등재하면 에이전트가 진입점을 못 찾는다");
+    }
+    lines.push("## Decisions (which element to use)");
+    lines.push("");
+    lines.push(
+      "When a request names an outcome but not an element, these files split the confusable candidates. Start at the README index, open the ONE cluster that covers your candidates, answer its axes, then evaluate rules top-to-bottom — rule order is itself the judgment. Leave a 요소 결정 block in your report (contract: decision-format.md).",
+    );
+    lines.push("");
+    for (const f of clusterFiles) {
+      const rel = `docs/design-system/decisions/${f}`;
+      const urlPath = copyAsset(rel);
+      writtenUrls.push(urlPath);
+      const text = readFileSync(path.join(decisionsSrc, f), "utf8");
+      let desc
+      if (f === "README.md") {
+        desc = "Cluster index — start here. Also lists the clusters deliberately NOT written and why (already answered correctly without axes / no external source for the label)";
+      } else {
+        const fm = text.match(/^---\r?\n([\s\S]*?)\r?\n---/);
+        const line = (key) => fm?.[1].split(/\r?\n/).find((l) => l.startsWith(`${key}:`))?.replace(new RegExp(`^${key}:\\s*`), "").replace(/^"|"$/g, "").trim();
+        const cands = line("candidates") ?? "";
+        desc = `${line("name") ?? f} — ${line("question") ?? ""} · candidates ${cands}`;
+      }
+      lines.push(`- [${rel}](${BASE_URL}${urlPath}): ${desc}`);
+    }
+    lines.push("");
+  }
 
   writeFileSync(LLMS_TXT, lines.join("\n"));
 

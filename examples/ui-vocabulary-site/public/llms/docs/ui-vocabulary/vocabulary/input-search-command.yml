@@ -1,0 +1,355 @@
+# 검색·명령 입력 (input-search-command)
+# category: input · 용어 8개
+# 파생물 — 정본은 docs/ui-vocabulary/terms.yml. 손으로 고치지 마라.
+
+- id: address-autocomplete
+  status: draft
+  category: input
+  group: input-search-command
+  ko:
+    name: 주소 자동완성
+    aliases:
+      - address autocomplete
+      - 주소 검색
+      - 위치 자동완성
+      - 주소 제안
+  en:
+    name: Address autocomplete
+    aliases:
+      - Address search autocomplete
+      - Location autocomplete
+  one_liner: 사용자가 주소 일부를 입력하면 후보 위치나 주소를 제안하는 모바일 입력.
+  description: 배달, 지도, 프로필 주소 입력에서 긴 주소를 끝까지 치지 않고 선택하게 한다.
+  visual_anatomy:
+    - address input
+    - location icon
+    - suggestion rows
+    - highlighted match
+  when_to_use:
+    - 주소
+    - 장소
+    - 위치를 모바일에서 빠르게 입력해야 할 때
+  anti_use:
+    - 정확한 법정 주소 검증이 필요하면 후속 확인 단계를 둔다
+  prompt_phrases:
+    - 주소를 입력하면 후보가 뜨는 address autocomplete를 넣어줘
+  asset:
+    kind: mini-mock
+    variant: address-autocomplete
+    props:
+      suggestions: true
+  sources:
+    - source_id: material-m3-components
+      note: autocomplete and search suggestions for text input
+  confidence: high
+- id: autocomplete
+  status: draft
+  category: input
+  group: input-search-command
+  ko:
+    name: 자동완성
+    aliases:
+      - autocomplete
+      - 자동 추천
+      - 입력 제안
+  en:
+    name: Autocomplete
+    aliases:
+      - Typeahead
+      - Autosuggest
+  one_liner: 사용자가 입력하는 동안 관련 후보를 추천하는 입력 패턴.
+  description: 검색어, 주소, 사용자 이름처럼 후보가 많은 값을 빠르게 완성하게 돕는다.
+  visual_anatomy:
+    - text input
+    - suggestion list
+    - highlighted match
+    - keyboard selection
+  when_to_use:
+    - 입력 후보를 예측할 수 있을 때
+    - 사용자가 긴 값을 빠르게 입력해야 할 때
+  anti_use:
+    - 추천 품질이 낮으면 오히려 방해가 된다
+    - 선택만 필요한 경우 combobox와 구분한다
+  prompt_phrases:
+    - 검색어를 입력하면 autocomplete suggestions가 나오게 해줘
+    - 도시 이름 자동완성을 붙여줘
+  asset:
+    kind: mini-mock
+    variant: autocomplete
+    props:
+      open: true
+  sources:
+    - source_id: material-m3-components
+      note: autocomplete-like input and menu behavior
+  confidence: medium
+- id: command-palette
+  status: draft
+  category: input
+  group: input-search-command
+  ko:
+    name: 커맨드 팔레트
+    aliases:
+      - 명령 검색창
+      - command menu
+      - 빠른 실행
+  en:
+    name: Command palette
+    aliases:
+      - Command menu
+  one_liner: 검색으로 화면 이동이나 명령 실행을 빠르게 찾는 오버레이.
+  description: 입력창과 결과 목록을 함께 보여주며 키보드 중심 탐색에 적합하다. 운영 도구에서는 현재 선택된 엔티티에 스코프를 좁혀 그
+    엔티티에만 적용되는 위험 액션만 노출하고, 파괴적 액션은 목록 안에서 시각적으로 분리하는 변형으로도 쓰인다.
+  visual_anatomy:
+    - overlay panel
+    - command input
+    - grouped results
+    - keyboard hint
+    - entity-scoped action list when used as an ops variant
+    - visually separated destructive actions in that variant
+  when_to_use:
+    - 기능이 많고 빠른 검색 실행이 필요할 때
+    - 파워 유저용 단축 흐름이 필요할 때
+    - 선택된 엔티티에 스코프된 운영 액션만 빠르게 찾아 실행해야 할 때
+  anti_use:
+    - 초보자에게 필수 기능을 숨기는 용도로 쓰지 않는다
+    - 항목이 적으면 일반 검색이나 메뉴가 더 쉽다
+  prompt_phrases:
+    - Ctrl K로 여는 command palette를 넣어줘
+    - 명령어를 검색해서 실행하는 팔레트를 만들어줘
+  asset:
+    kind: mini-mock
+    variant: command-palette
+    props:
+      open: true
+  sources:
+    - source_id: shadcn-ui-docs
+      note: command component
+  navigation:
+    canonical_path:
+      - Plus
+      - UI Blocks
+      - Application UI
+      - Navigation
+    also_appears_in:
+      - - Plus
+        - UI Kit
+        - Navigation
+  related:
+    - id: search-suggestions
+      relation: compare
+      note: 문서 사이트의 Cmd/Ctrl+K 검색은 command-palette 오버레이 형태를 쓰되, 결과를 Docs/Guides/API 같은
+        섹션 헤더로 그룹핑한다는 점에서 순수 명령 실행 목록과 다르다 — 그룹핑 구조 자체는 search-suggestions의 추천
+        목록 개념과 더 가깝다.
+  confidence: medium
+- id: mobile-search-header
+  status: draft
+  category: input
+  group: input-search-command
+  ko:
+    name: 모바일 검색 헤더
+    aliases:
+      - mobile search header
+      - 상단 검색창
+      - 검색 상단바
+      - 검색 헤더
+  en:
+    name: Mobile search header
+    aliases:
+      - Search app bar
+      - Search header
+  one_liner: 모바일 화면 상단 헤더 영역에 검색 입력창을 직접 배치한 패턴.
+  description: 목록, 장소, 메시지처럼 검색이 화면의 핵심 행동일 때 제목 대신 검색창을 상단에 고정한다.
+  visual_anatomy:
+    - top search field
+    - search icon
+    - placeholder
+    - optional clear button
+    - result list below
+  when_to_use:
+    - 모바일에서 사용자가 화면 진입 직후 검색해야 할 때
+    - 검색 결과 목록과 입력을 함께 유지해야 할 때
+  anti_use:
+    - 간단한 보조 검색이면 일반 search-field를 콘텐츠 안에 둘 수 있다
+    - 복잡한 검색 흐름은 mobile-search-sheet가 낫다
+  prompt_phrases:
+    - 모바일 목록 화면 상단을 검색창으로 만든 search header를 넣어줘
+  asset:
+    kind: mini-mock
+    variant: mobile-search-header
+    props:
+      active: true
+  sources:
+    - source_id: material-m3-components
+      note: search component and app bar search pattern
+  confidence: high
+- id: mobile-search-sheet
+  status: draft
+  category: input
+  group: input-search-command
+  ko:
+    name: 모바일 검색 시트
+    aliases:
+      - mobile search sheet
+      - 전체 검색 시트
+      - 검색 바텀시트
+      - 검색 화면
+  en:
+    name: Mobile search sheet
+    aliases:
+      - Search sheet
+      - Full-screen search sheet
+  one_liner: 모바일에서 검색 입력과 추천/결과를 별도 시트나 전체 화면으로 여는 검색 표면.
+  description: 작은 화면에서 검색에 집중할 수 있도록 현재 화면 위에 검색 전용 레이어를 만든다. 입력 전에는 최근 검색어 칩을, 입력
+    중에는 실시간 제안을, 제출 후에는 결과 목록을 보여주는 3단계 상태 전환이며, 최근 검색어는 칩 단위로 개별 삭제할 수 있다.
+  visual_anatomy:
+    - search input autofocus
+    - clear button
+    - recent searches chips pre-query
+    - live suggestions post-query
+    - results list post-submit
+    - empty no-results state
+  when_to_use:
+    - 목록 화면에서 검색을 열 때 결과와 추천을 넓게 보여줘야 할 때
+    - 최근 검색어를 재사용하게 하고 싶을 때
+  anti_use:
+    - 항상 검색이 핵심이면 mobile-search-header가 더 직접적이다
+  prompt_phrases:
+    - 검색 아이콘을 누르면 mobile search sheet가 열리고 추천 검색어를 보여줘
+    - 입력 전에는 최근 검색어 칩을 보여주고 입력하면 제안으로 바뀌게 해줘
+  asset:
+    kind: mini-mock
+    variant: mobile-search-sheet
+    props:
+      query: true
+  sources:
+    - source_id: material-m3-components
+      note: search component and mobile search surface
+  related:
+    - id: search-suggestions
+      relation: use-with
+      note: 입력 중 단계의 실시간 제안 목록은 search-suggestions의 추천/최근 검색어 구조를 그대로 재사용하며,
+        mobile-search-sheet는 그 앞뒤로 입력 전 최근 검색어 단계와 제출 후 결과 단계까지 포함한 전체 화면 표면이다.
+  confidence: high
+- id: search-field
+  status: draft
+  category: input
+  group: input-search-command
+  ko:
+    name: 검색창
+    aliases:
+      - 검색 입력창
+      - search input
+      - 서치바
+  en:
+    name: Search field
+    aliases:
+      - Search input
+      - Search bar
+  one_liner: 검색어를 입력해 목록이나 콘텐츠를 찾는 입력 요소.
+  description: 돋보기 아이콘, placeholder, 지우기 버튼이 함께 쓰이는 경우가 많다.
+  visual_anatomy:
+    - magnifying glass icon
+    - input container
+    - placeholder text
+    - optional clear button
+  when_to_use:
+    - 리스트나 데이터가 많아 사용자가 빠르게 찾게 할 때
+    - 이름이나 키워드로 필터링할 때
+  anti_use:
+    - 항목 수가 적으면 category filter가 더 단순할 수 있다
+    - 복잡한 조건 검색은 filter panel을 쓴다
+  prompt_phrases:
+    - 카드 목록 위에 검색창을 넣어줘
+    - 검색창 안에 돋보기 아이콘을 넣어줘
+  asset:
+    kind: mini-mock
+    variant: search-field
+    props:
+      state: default
+  sources:
+    - source_id: material-m3-components
+      note: search component pattern
+  confidence: high
+- id: search-suggestions
+  status: draft
+  category: input
+  group: input-search-command
+  ko:
+    name: 검색 제안
+    aliases:
+      - search suggestions
+      - 추천 검색어
+      - 자동 추천 목록
+  en:
+    name: Search suggestions
+    aliases:
+      - Suggested searches
+      - Query suggestions
+  one_liner: 검색창 아래에 추천 검색어나 최근 검색어를 보여주는 목록.
+  description: 사용자가 무엇을 찾을지 빠르게 고르게 하고 오타나 빈 검색 상태를 줄인다.
+  visual_anatomy:
+    - search field
+    - suggestion rows
+    - icons or history marker
+    - highlighted query
+  when_to_use:
+    - 검색어 후보가 많거나 최근 검색 기록을 활용할 때
+    - 사용자가 검색 범위를 잘 모를 때
+  anti_use:
+    - 개인정보가 담긴 최근 검색어를 무심코 노출하지 않는다
+    - 결과 목록과 시각적으로 혼동시키지 않는다
+  prompt_phrases:
+    - 검색창 아래에 search suggestions를 보여줘
+    - 최근 검색어와 추천 검색어를 나눠서 표시해줘
+  asset:
+    kind: mini-mock
+    variant: search-suggestions
+    props:
+      rows: 3
+  sources:
+    - source_id: material-m3-components
+      note: search view and suggestions pattern
+  related:
+    - id: command-palette
+      relation: compare
+      note: 문서 사이트의 Cmd/Ctrl+K 검색 오버레이는 command-palette 셸을 쓰면서 결과를 섹션별로 그룹핑한다 — 그룹 헤더로
+        나뉜 결과 목록이라는 점이 여기의 추천/최근 검색어 그룹핑과 같은 축이다.
+  confidence: medium
+- id: search-view
+  status: draft
+  category: input
+  group: input-search-command
+  ko:
+    name: 검색 뷰
+    aliases:
+      - search view
+      - 전체 검색 화면
+      - 검색 패널
+  en:
+    name: Search view
+    aliases:
+      - Search surface
+      - Search panel
+  one_liner: 검색창, 제안, 결과를 한 화면이나 패널로 묶은 검색 전용 영역.
+  description: 단순 검색창보다 넓은 표면에서 추천어, 최근 검색어, 결과 목록을 함께 보여준다.
+  visual_anatomy:
+    - search input
+    - suggestions
+    - result list
+    - active query
+  when_to_use:
+    - 검색이 화면의 주요 작업일 때
+    - 제안과 결과를 함께 보여줘야 할 때
+  anti_use:
+    - 간단한 목록 필터에는 search field만으로 충분하다
+  prompt_phrases:
+    - 검색창과 추천 결과가 함께 보이는 search view를 만들어줘
+  asset:
+    kind: mini-mock
+    variant: search-view
+    props:
+      suggestions: true
+  sources:
+    - source_id: material-m3-components
+      note: search view and suggestions pattern
+  confidence: high

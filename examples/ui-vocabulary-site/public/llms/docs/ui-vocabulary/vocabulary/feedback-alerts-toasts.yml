@@ -1,0 +1,660 @@
+# 알림·토스트·배너 (feedback-alerts-toasts)
+# category: feedback · 용어 16개
+# 파생물 — 정본은 docs/ui-vocabulary/terms.yml. 손으로 고치지 마라.
+
+- id: alert
+  status: draft
+  category: feedback
+  group: feedback-alerts-toasts
+  ko:
+    name: 알림 배너
+    aliases:
+      - alert
+      - banner
+      - 경고 박스
+  en:
+    name: Alert
+    aliases:
+      - Banner
+      - Inline alert
+  one_liner: 중요한 상태나 경고를 지속적으로 보여주는 메시지 영역.
+  description: 페이지 안에 배치되어 정보, 성공, 경고, 오류 상태를 설명한다.
+  visual_anatomy:
+    - status icon
+    - message
+    - colored container
+    - optional action
+  when_to_use:
+    - 사용자가 알아야 하는 상태를 화면 안에 유지해야 할 때
+    - 오류나 경고를 맥락 안에서 설명할 때
+  anti_use:
+    - 짧은 완료 피드백은 toast가 낫다
+    - 확인을 요구하는 위험 행동은 dialog를 검토한다
+  prompt_phrases:
+    - 상단에 오류 alert banner를 보여줘
+    - 결제 실패 안내를 inline alert로 넣어줘
+  asset:
+    kind: mini-mock
+    variant: alert
+    props:
+      tone: warning
+  sources:
+    - source_id: shadcn-ui-docs
+      note: alert component
+  related:
+    - id: toast
+      relation: compare
+      note: 잠깐 보여도 되는 완료 피드백은 toast, 화면 안에 유지해야 하는 안내는 alert/banner다.
+    - id: snackbar
+      relation: compare
+      note: 짧은 메시지와 한 가지 action이면 snackbar, 맥락 안에서 지속 표시하면 alert가 맞다.
+    - id: inline-alert
+      relation: compare
+      note: 폼이나 섹션 내부 오류처럼 위치 맥락이 중요하면 inline alert로 좁혀 부른다.
+    - id: callout
+      relation: compare
+      note: 문서 본문 중간에 삽입되는 note/warning/tip 등급 강조 박스는 callout이고, 앱 화면의 지속적 상태/오류 안내는
+        alert다.
+  confidence: high
+- id: announcement-banner
+  status: draft
+  category: feedback
+  group: feedback-alerts-toasts
+  ko:
+    name: 공지 배너
+    aliases:
+      - announcement banner
+      - 공지사항 배너
+      - notice banner
+  en:
+    name: Announcement banner
+    aliases:
+      - Notice banner
+      - Announcement bar
+  one_liner: 제품 공지, 변경사항, 이벤트를 눈에 띄게 알리는 배너.
+  description: 중요한 안내를 페이지 상단이나 섹션 상단에 배치하고 자세히 보기 행동을 제공한다.
+  visual_anatomy:
+    - announcement text
+    - icon
+    - link action
+    - dismiss action
+  when_to_use:
+    - 사용자가 알아야 하는 제품 공지나 일시적 안내가 있을 때
+  anti_use:
+    - 사용자 작업 실패나 오류에는 error toast/alert가 더 정확하다
+  prompt_phrases:
+    - 상단에 닫을 수 있는 announcement banner를 넣어줘
+  asset:
+    kind: mini-mock
+    variant: announcement-banner
+    props:
+      dismissible: true
+  sources:
+    - source_id: atlassian-design-components
+      note: banner communication
+  confidence: high
+- id: callout
+  status: draft
+  category: feedback
+  group: feedback-alerts-toasts
+  kind: block
+  ko:
+    name: 콜아웃
+    aliases:
+      - callout
+      - admonition
+      - 강조 박스
+  en:
+    name: Callout
+    aliases:
+      - Admonition
+      - Callout box
+  one_liner: 문서 본문 중간에 note/tip/info/caution/danger 등급으로 구분해 삽입하는 강조 박스.
+  description: 좌측 컬러 바 또는 배경색과 아이콘, 등급 라벨로 문단 사이에 삽입되어 본문 흐름을 방해하지 않으면서 중요한 보충 정보를
+    강조한다. note/tip/info/caution/danger 5등급 명명은 Docusaurus 같은 문서 프레임워크의
+    admonition 관례를 따른다.
+  visual_anatomy:
+    - left color bar or tinted background
+    - grade icon
+    - title label (Note/Tip/Info/Caution/Danger)
+    - body text
+    - full-width insertion between paragraphs
+  when_to_use:
+    - 문서 본문 중간에 보충 설명
+    - 팁
+    - 주의사항을 등급별로 구분해 강조해야 할 때
+  anti_use:
+    - 앱 화면의 지속적인 상태나 오류 안내는 alert/banner가 더 정확하다
+    - 잠깐 보여줄 완료 피드백은 toast를 쓴다
+  prompt_phrases:
+    - 문서 본문에 note/warning 등급의 callout box를 넣어줘
+    - 왼쪽 컬러 바가 있는 admonition 박스를 만들어줘
+  asset:
+    kind: mini-mock
+    variant: callout
+    props:
+      tone: warning
+  sources:
+    - source_id: ui-patterns-library
+      note: documentation callout/admonition box pattern (note/tip/info/caution/danger
+        Docusaurus-style admonition grading)
+  related:
+    - id: alert
+      relation: compare
+      note: callout은 문서 본문 저작 콘텐츠에 삽입되는 등급별 강조 박스이고, alert는 앱 화면의 상태/오류를 알리는 지속적 메시지
+        영역이다.
+  confidence: medium
+- id: error-toast
+  status: draft
+  category: feedback
+  group: feedback-alerts-toasts
+  ko:
+    name: 오류 토스트
+    aliases:
+      - error toast
+      - 실패 토스트
+      - 에러 알림
+  en:
+    name: Error toast
+    aliases:
+      - Error notification
+      - Failure toast
+  one_liner: 가벼운 작업 실패를 짧게 알리고 재시도 같은 행동을 제공하는 알림.
+  description: 저장 실패나 복사 실패처럼 맥락은 유지하되 즉시 피드백이 필요한 오류에 쓴다.
+  visual_anatomy:
+    - error icon
+    - failure message
+    - retry action
+    - close action
+  when_to_use:
+    - 오류가 현재 화면 전체를 막지는 않지만 사용자가 알아야 할 때
+  anti_use:
+    - 화면을 사용할 수 없는 심각한 오류는 error state나 retry panel이 낫다
+  prompt_phrases:
+    - 업로드 실패 시 다시 시도 버튼이 있는 error toast를 보여줘
+  asset:
+    kind: mini-mock
+    variant: error-toast
+    props:
+      retry: true
+  sources:
+    - source_id: material-m3-components
+      note: snackbar action and feedback behavior
+  confidence: high
+- id: inline-alert
+  status: draft
+  category: feedback
+  group: feedback-alerts-toasts
+  ko:
+    name: 인라인 알림
+    aliases:
+      - inline alert
+      - section alert
+      - 폼 내부 알림
+  en:
+    name: Inline alert
+    aliases:
+      - Section alert
+      - Inline message
+  one_liner: 폼이나 섹션 안에 직접 배치되는 짧은 알림 메시지.
+  description: 전체 화면 배너보다 좁은 범위의 오류, 안내, 경고를 해당 맥락 가까이에 보여준다.
+  visual_anatomy:
+    - small alert container
+    - icon
+    - message
+    - local placement
+  when_to_use:
+    - 특정 필드 묶음이나 섹션에만 관련된 안내가 있을 때
+  anti_use:
+    - 전역 문제는 alert banner나 dialog로 더 명확히 알린다
+  prompt_phrases:
+    - 결제 섹션 안에 inline alert로 카드 오류를 보여줘
+  asset:
+    kind: mini-mock
+    variant: inline-alert
+    props:
+      tone: warning
+  sources:
+    - source_id: shadcn-ui-docs
+      note: alert component variants
+  confidence: high
+- id: message-bar
+  status: draft
+  category: feedback
+  group: feedback-alerts-toasts
+  ko:
+    name: 메시지 바
+    aliases:
+      - message bar
+      - 상태 메시지 바
+      - 제품 알림 바
+  en:
+    name: Message bar
+    aliases:
+      - MessageBar
+      - Status message bar
+  one_liner: 화면 상단이나 섹션 안에서 상태, 경고, 성공, 정보 메시지를 가로 바 형태로 보여주는 요소.
+  description: 토스트보다 오래 남고, alert보다 제품 UI 안에 자연스럽게 붙는 안내 메시지다.
+  visual_anatomy:
+    - tone icon
+    - message text
+    - optional action
+    - dismiss button
+    - horizontal container
+  when_to_use:
+    - 사용자가 읽고 조치해야 하는 상태 메시지를 화면 안에 유지할 때
+  anti_use:
+    - 짧은 저장 완료 피드백은 toast나 snackbar가 더 가볍다
+  prompt_phrases:
+    - 동기화 실패를 알려주는 dismissible message bar를 상단에 넣어줘
+  asset:
+    kind: mini-mock
+    variant: message-bar
+    props:
+      tone: warning
+  sources:
+    - source_id: fluent2-react-components
+      note: message bar communication component
+  confidence: medium
+- id: mobile-alert-dialog
+  status: draft
+  category: feedback
+  group: feedback-alerts-toasts
+  ko:
+    name: 모바일 경고 다이얼로그
+    aliases:
+      - mobile alert dialog
+      - 모바일 알림창
+      - 삭제 확인창
+      - 확인 팝업
+  en:
+    name: Mobile alert dialog
+    aliases:
+      - Alert dialog
+      - Confirmation alert
+  one_liner: 모바일 화면 중앙에 떠서 중요한 확인이나 선택을 요구하는 작은 차단 dialog.
+  description: 삭제, 로그아웃, 권한 실패처럼 사용자가 명확히 결정을 내려야 하는 순간에 쓴다.
+  visual_anatomy:
+    - scrim
+    - compact dialog
+    - title
+    - message
+    - confirm action
+    - cancel action
+  when_to_use:
+    - 되돌리기 어렵거나 중요한 선택을 확인해야 할 때
+  anti_use:
+    - 일상적인 안내나 성공 메시지에는 toast나 snackbar가 더 가볍다
+  prompt_phrases:
+    - 삭제 버튼을 누르면 mobile alert dialog로 정말 삭제할지 물어봐줘
+  asset:
+    kind: mini-mock
+    variant: mobile-alert-dialog
+    props:
+      destructive: true
+  sources:
+    - source_id: apple-hig-components
+      note: alerts ask users to make decisions
+  confidence: high
+- id: mobile-snackbar
+  status: draft
+  category: feedback
+  group: feedback-alerts-toasts
+  ko:
+    name: 모바일 스낵바
+    aliases:
+      - mobile snackbar
+      - 하단 스낵바
+      - 하단 피드백 바
+      - 액션 스낵바
+  en:
+    name: Mobile snackbar
+    aliases:
+      - Bottom snackbar
+      - Action snackbar
+      - Snackbar with action
+  one_liner: 모바일 화면 하단, 내비게이션 위에 잠깐 나타나 결과와 짧은 행동을 보여주는 피드백.
+  description: 저장됨, 실행 취소, 재시도처럼 작업 직후의 상태와 보조 행동을 엄지 영역 근처에 보여준다.
+  visual_anatomy:
+    - bottom message bar
+    - short text
+    - optional action
+    - navigation-safe placement
+  when_to_use:
+    - 모바일에서 작업 결과를 방해 없이 알려줄 때
+    - 실행 취소 같은 짧은 행동을 함께 줄 때
+  anti_use:
+    - 중요 확인이나 오류 복구를 짧게 사라지는 snackbar에만 의존하지 않는다
+  prompt_phrases:
+    - 저장 후 화면 아래에 실행 취소가 있는 mobile snackbar를 보여줘
+  asset:
+    kind: mini-mock
+    variant: mobile-snackbar
+    props:
+      action: true
+  sources:
+    - source_id: material-m3-components
+      note: snackbar component and mobile placement
+  confidence: high
+- id: mobile-toast
+  status: draft
+  category: feedback
+  group: feedback-alerts-toasts
+  ko:
+    name: 모바일 토스트
+    aliases:
+      - mobile toast
+      - 작은 모바일 알림
+      - 복사됨 토스트
+  en:
+    name: Mobile toast
+    aliases:
+      - Mobile notification toast
+      - Floating toast
+  one_liner: 모바일 화면 위에 작게 떠서 매우 짧은 상태를 알려주는 비차단 알림.
+  description: 복사됨, 저장됨처럼 사용자의 흐름을 끊지 않아도 되는 짧은 피드백을 보여준다.
+  visual_anatomy:
+    - small floating pill
+    - short message
+    - temporary visibility
+  when_to_use:
+    - 사용자가 이미 결과를 예상할 수 있는 작은 작업 성공을 알려줄 때
+  anti_use:
+    - 사용자가 행동해야 하는 오류나 경고에는 alert
+    - snackbar action
+    - inline message를 쓴다
+  prompt_phrases:
+    - 복사 버튼을 누르면 중앙에 작게 mobile toast로 복사됨을 보여줘
+  asset:
+    kind: mini-mock
+    variant: mobile-toast
+    props:
+      message: copied
+  sources:
+    - source_id: material-m3-components
+      note: transient feedback pattern comparable to snackbar/toast
+  confidence: medium
+- id: snackbar
+  status: draft
+  category: feedback
+  group: feedback-alerts-toasts
+  ko:
+    name: 스낵바
+    aliases:
+      - snackbar
+      - 하단 알림
+      - action toast
+  en:
+    name: Snackbar
+    aliases:
+      - Bottom notification
+      - Action snackbar
+  one_liner: 화면 하단에 잠깐 나타나 결과 메시지와 간단한 행동을 제공하는 알림.
+  description: toast와 비슷하지만 하단 위치와 하나의 보조 action을 함께 제공하는 패턴으로 자주 쓰인다.
+  visual_anatomy:
+    - bottom bar
+    - message
+    - optional action
+    - dismiss or timeout
+  when_to_use:
+    - 작업 결과를 짧게 알리고 되돌리기 같은 한 가지 행동을 제공할 때
+  anti_use:
+    - 중요한 오류나 긴 안내에는 alert나 dialog를 쓴다
+  prompt_phrases:
+    - 저장 완료 후 하단 snackbar에 실행 취소 버튼을 보여줘
+  asset:
+    kind: mini-mock
+    variant: snackbar
+    props:
+      action: true
+  sources:
+    - source_id: material-m3-components
+      note: snackbar component
+  related:
+    - id: toast
+      relation: compare
+      note: action 없이 짧은 상태만 알리면 toast, 실행 취소 같은 action이 있으면 snackbar가 좋다.
+    - id: alert
+      relation: compare
+      note: 사용자가 계속 읽어야 하는 오류나 안내는 snackbar보다 alert/banner로 유지한다.
+    - id: undo-toast
+      relation: use-with
+      note: 삭제나 보관처럼 되돌릴 수 있는 작업 뒤에는 undo toast/snackbar 패턴을 함께 검토한다.
+  confidence: high
+- id: success-toast
+  status: draft
+  category: feedback
+  group: feedback-alerts-toasts
+  ko:
+    name: 성공 토스트
+    aliases:
+      - success toast
+      - 완료 토스트
+      - 성공 알림
+  en:
+    name: Success toast
+    aliases:
+      - Success notification
+      - Completion toast
+  one_liner: 작업이 성공적으로 끝났음을 짧게 알려주는 비차단 알림.
+  description: 저장, 복사, 업로드 완료처럼 즉시 확인만 필요한 성공 상태를 표시한다.
+  visual_anatomy:
+    - check icon
+    - success message
+    - optional undo or close
+    - transient surface
+  when_to_use:
+    - 사용자가 결과 확인만 하면 되는 짧은 성공 피드백에서
+  anti_use:
+    - 다음 행동이 필수라면 dialog나 inline result가 더 적절하다
+  prompt_phrases:
+    - 저장되면 success toast가 잠깐 뜨게 해줘
+  asset:
+    kind: mini-mock
+    variant: success-toast
+    props:
+      dismissible: true
+  sources:
+    - source_id: material-m3-components
+      note: snackbar and feedback behavior
+  confidence: high
+- id: toast
+  status: draft
+  category: feedback
+  group: feedback-alerts-toasts
+  ko:
+    name: 토스트
+    aliases:
+      - 스낵바
+      - toast
+      - snackbar
+  en:
+    name: Toast
+    aliases:
+      - Snackbar
+      - Notification toast
+  one_liner: 작업 결과를 잠깐 보여주고 사라지는 작은 알림.
+  description: 저장 완료, 복사 완료, 오류처럼 즉각적인 피드백을 화면 가장자리에서 보여준다.
+  visual_anatomy:
+    - floating notification
+    - message text
+    - icon optional
+    - close or action button
+  when_to_use:
+    - 사용자 행동 직후 결과를 짧게 알려줄 때
+    - 화면 흐름을 막지 않아야 할 때
+  anti_use:
+    - 중요한 결정이나 긴 오류 설명은 dialog나 alert를 쓴다
+    - 사용자가 반드시 읽어야 하는 정보를 자동으로 사라지게 하지 않는다
+  prompt_phrases:
+    - 저장되면 오른쪽 아래에 toast를 띄워줘
+    - 복사 완료 스낵바를 보여줘
+  asset:
+    kind: mini-mock
+    variant: toast
+    props:
+      tone: success
+  sources:
+    - source_id: material-m3-components
+      note: snackbar component
+  related:
+    - id: snackbar
+      relation: compare
+      note: 짧은 결과만 알리면 toast, 되돌리기 같은 한 가지 action이 중요하면 snackbar가 더 명확하다.
+    - id: alert
+      relation: compare
+      note: 사용자가 계속 봐야 하는 상태나 오류는 자동으로 사라지는 toast보다 alert/banner가 낫다.
+    - id: dialog
+      relation: alternative
+      note: 사용자 결정을 받아야 하는 위험 행동은 toast가 아니라 dialog를 쓴다.
+  confidence: high
+- id: toast-stack
+  status: draft
+  category: feedback
+  group: feedback-alerts-toasts
+  ko:
+    name: 토스트 스택
+    aliases:
+      - toast stack
+      - stacked toasts
+      - 알림 묶음
+  en:
+    name: Toast stack
+    aliases:
+      - Stacked toasts
+      - Notification stack
+  one_liner: 여러 개의 토스트 알림이 겹치거나 쌓여 나타나는 상태.
+  description: 짧은 알림이 연속 발생할 때 위치와 순서를 유지해 사용자가 놓치지 않게 한다.
+  visual_anatomy:
+    - multiple toast cards
+    - stacking offset
+    - close actions
+    - newest item
+  when_to_use:
+    - 짧은 알림이 동시에 여러 개 발생할 수 있을 때
+  anti_use:
+    - 중요한 알림을 토스트 더미 속에 묻지 않는다
+  prompt_phrases:
+    - 오른쪽 아래에 여러 toast가 쌓이는 toast stack을 보여줘
+  asset:
+    kind: mini-mock
+    variant: toast-stack
+    props:
+      count: 3
+  sources:
+    - source_id: shadcn-ui-docs
+      note: toast component
+  confidence: medium
+- id: touch-ripple
+  status: draft
+  category: feedback
+  group: feedback-alerts-toasts
+  ko:
+    name: 터치 리플
+    aliases:
+      - touch ripple
+      - 터치 피드백
+      - 누름 효과
+      - ripple effect
+  en:
+    name: Touch ripple
+    aliases:
+      - Ripple effect
+      - Touch feedback
+  one_liner: 모바일에서 버튼이나 항목을 눌렀음을 물결처럼 보여주는 즉각적인 터치 피드백.
+  description: 사용자의 탭이 인식되었음을 빠르게 알려 주어 터치 인터페이스의 반응성을 높인다.
+  visual_anatomy:
+    - pressed control
+    - expanding ripple
+    - highlight layer
+    - touch target
+  when_to_use:
+    - 모바일의 tappable item이나 icon button에 즉각 반응을 보여줄 때
+  anti_use:
+    - 애니메이션이 과하면 피로감을 준다
+    - 비활성 요소에는 적용하지 않는다
+  prompt_phrases:
+    - 아이콘 버튼을 누르면 touch ripple 피드백이 보이게 해줘
+  asset:
+    kind: mini-mock
+    variant: touch-ripple
+    props:
+      pressed: true
+  sources:
+    - source_id: material-m3-components
+      note: ripple as touch state feedback
+  confidence: medium
+- id: trial-banner
+  status: draft
+  category: feedback
+  group: feedback-alerts-toasts
+  ko:
+    name: 체험판 배너
+    aliases:
+      - trial banner
+      - 무료 체험 배너
+      - trial notice
+  en:
+    name: Trial banner
+    aliases:
+      - Free trial banner
+      - Trial notice
+  one_liner: 무료 체험 기간, 남은 일수, 전환 행동을 상단이나 하단에 표시하는 배너.
+  description: 현재 계정의 체험 상태와 종료 전 필요한 행동을 지속적으로 알려준다.
+  visual_anatomy:
+    - trial days left
+    - plan action
+    - dismiss or learn link
+    - banner placement
+  when_to_use:
+    - 체험 기간이 제품 사용 맥락에 영향을 줄 때
+  anti_use:
+    - 일회성 마케팅 메시지는 announcement banner가 더 적합하다
+  prompt_phrases:
+    - 상단에 5일 남음 trial banner를 넣어줘
+  asset:
+    kind: mini-mock
+    variant: trial-banner
+    props:
+      days: 5
+  sources:
+    - source_id: atlassian-design-components
+      note: banner and flag communication
+  confidence: medium
+- id: undo-toast
+  status: draft
+  category: feedback
+  group: feedback-alerts-toasts
+  ko:
+    name: 실행 취소 토스트
+    aliases:
+      - undo toast
+      - 되돌리기 알림
+      - undo snackbar
+  en:
+    name: Undo toast
+    aliases:
+      - Undo snackbar
+      - Reversible toast
+  one_liner: 작업 완료 메시지와 함께 실행 취소 행동을 제공하는 짧은 알림.
+  description: 삭제, 보관, 이동처럼 즉시 되돌릴 수 있는 행동 뒤에 사용자가 실수를 복구하게 한다.
+  visual_anatomy:
+    - message
+    - undo action
+    - transient container
+    - dismiss affordance
+  when_to_use:
+    - 되돌릴 수 있는 파괴적 또는 이동 작업 직후
+  anti_use:
+    - 되돌릴 수 없는 작업에는 confirmation dialog가 먼저 필요하다
+  prompt_phrases:
+    - 삭제 후 undo toast를 띄워서 실행 취소할 수 있게 해줘
+  asset:
+    kind: mini-mock
+    variant: undo-toast
+    props:
+      undo: true
+  sources:
+    - source_id: shadcn-ui-docs
+      note: toast action composition
+  confidence: medium

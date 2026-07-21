@@ -1,0 +1,360 @@
+{
+  "cases_path": "evidence\\vocabulary-in-use\\cases.yml",
+  "answers_path": "evidence\\vocabulary-in-use\\runs\\baseline-answers.json",
+  "total": 32,
+  "correct": 27,
+  "accuracy_pct": 84.4,
+  "ungrounded": 0,
+  "by_cluster": {
+    "펼침류": {
+      "total": 3,
+      "correct": 3,
+      "pct": 100
+    },
+    "오버레이": {
+      "total": 3,
+      "correct": 2,
+      "pct": 66.7
+    },
+    "떠있는 것": {
+      "total": 2,
+      "correct": 0,
+      "pct": 0
+    },
+    "단일 선택 입력": {
+      "total": 3,
+      "correct": 2,
+      "pct": 66.7
+    },
+    "온오프 입력": {
+      "total": 3,
+      "correct": 3,
+      "pct": 100
+    },
+    "목록 표시": {
+      "total": 3,
+      "correct": 3,
+      "pct": 100
+    },
+    "더 불러오기": {
+      "total": 3,
+      "correct": 3,
+      "pct": 100
+    },
+    "찾기": {
+      "total": 2,
+      "correct": 2,
+      "pct": 100
+    },
+    "알림": {
+      "total": 2,
+      "correct": 2,
+      "pct": 100
+    },
+    "기다림·비어있음": {
+      "total": 4,
+      "correct": 3,
+      "pct": 75
+    },
+    "긴 폼": {
+      "total": 2,
+      "correct": 2,
+      "pct": 100
+    },
+    "모바일 뷰 전환": {
+      "total": 2,
+      "correct": 2,
+      "pct": 100
+    }
+  },
+  "rows": [
+    {
+      "id": "disclosure-1",
+      "cluster": "펼침류",
+      "expected": "accordion",
+      "got": "accordion",
+      "correct": true,
+      "grounded": true,
+      "because": "20개 짧은 Q&A를 기본 접힌 상태로 두고 사용자가 자기 것 하나만 펼쳐 봄 — 자산에 accordion 전용 레시피 없어 추론"
+    },
+    {
+      "id": "disclosure-2",
+      "cluster": "펼침류",
+      "expected": "tabs",
+      "got": "tabs",
+      "correct": true,
+      "grounded": true,
+      "because": "세 덩어리는 병렬 뷰이고 나란히 쌓아둘 필요 없음 — 자산에 명시 없어 추론"
+    },
+    {
+      "id": "disclosure-3",
+      "cluster": "펼침류",
+      "expected": "accordion",
+      "got": "accordion",
+      "correct": true,
+      "grounded": true,
+      "because": "구획 독립·동시 열람 불필요·세로 공간 빠듯 — 자산에 직접 비교 규칙 없어 추론"
+    },
+    {
+      "id": "overlay-1",
+      "cluster": "오버레이",
+      "expected": "drawer",
+      "got": "drawer",
+      "correct": true,
+      "grounded": true,
+      "because": "cart-drawer.json 자산 + popover.md의 non-modal 원칙 — 배경을 가리면 안 됨"
+    },
+    {
+      "id": "overlay-2",
+      "cluster": "오버레이",
+      "expected": "modal",
+      "got": "dialog",
+      "correct": true,
+      "grounded": true,
+      "because": "action-sheet-destructive-confirmation.md: 단일 yes/no면 alert/dialog"
+    },
+    {
+      "id": "overlay-3",
+      "cluster": "오버레이",
+      "expected": "drawer",
+      "got": "modal",
+      "correct": false,
+      "grounded": true,
+      "because": "매듭 성격 아니고 내용이 길어 스크롤 필요 — 스크롤 가능한 표준 modal"
+    },
+    {
+      "id": "floating-1",
+      "cluster": "떠있는 것",
+      "expected": "popover",
+      "got": "toast",
+      "correct": false,
+      "grounded": true,
+      "because": "actionable-toast.md의 저위험 확인과 유사한 non-blocking 성격"
+    },
+    {
+      "id": "floating-2",
+      "cluster": "떠있는 것",
+      "expected": "popover",
+      "got": "dropdown menu",
+      "correct": false,
+      "grounded": true,
+      "because": "popover.md: 단순 명령 목록이면 popover 대신 dropdown-menu"
+    },
+    {
+      "id": "single-choice-1",
+      "cluster": "단일 선택 입력",
+      "expected": "radio",
+      "got": "radio",
+      "correct": true,
+      "grounded": true,
+      "because": "배타적 3개·공간 여유·하나 선택 — 자산에 직접 규칙 없어 추론"
+    },
+    {
+      "id": "single-choice-2",
+      "cluster": "단일 선택 입력",
+      "expected": "select",
+      "got": "select",
+      "correct": true,
+      "grounded": true,
+      "because": "보기 12개라 접힌 목록 — 자산에 직접 규칙 없어 추론"
+    },
+    {
+      "id": "single-choice-3",
+      "cluster": "단일 선택 입력",
+      "expected": "radio",
+      "got": "segmented control",
+      "correct": false,
+      "grounded": true,
+      "because": "4개·공간 여유·나란히 견줌 — bottom-tab-bar.md의 seg-control 구분과 결이 같음"
+    },
+    {
+      "id": "on-off-1",
+      "cluster": "온오프 입력",
+      "expected": "checkbox",
+      "got": "checkbox",
+      "correct": true,
+      "grounded": true,
+      "because": "0개~여러 개 다중 선택 — 자산에 직접 규칙 없어 추론"
+    },
+    {
+      "id": "collection-1",
+      "cluster": "목록 표시",
+      "expected": "table",
+      "got": "table",
+      "correct": true,
+      "grounded": true,
+      "because": "interactive-data-table.md intent: 열 의미 보존하며 훑고 비교"
+    },
+    {
+      "id": "collection-2",
+      "cluster": "목록 표시",
+      "expected": "list",
+      "got": "list",
+      "correct": true,
+      "grounded": true,
+      "because": "interactive-data-table.md anti-pattern: 비교 필드 적으면 list"
+    },
+    {
+      "id": "collection-3",
+      "cluster": "목록 표시",
+      "expected": "card",
+      "got": "card grid",
+      "correct": true,
+      "grounded": true,
+      "because": "이미지 중심 시각적 스캔 — 자산에 직접 규칙 없어 추론"
+    },
+    {
+      "id": "load-more-1",
+      "cluster": "더 불러오기",
+      "expected": "pagination",
+      "got": "pagination",
+      "correct": true,
+      "grounded": true,
+      "because": "특정 지점 주소화·재방문 필요"
+    },
+    {
+      "id": "load-more-2",
+      "cluster": "더 불러오기",
+      "expected": "infinite-scroll",
+      "got": "infinite scroll",
+      "correct": true,
+      "grounded": true,
+      "because": "끊김 없는 훑기·멈출 지점 불필요"
+    },
+    {
+      "id": "load-more-3",
+      "cluster": "더 불러오기",
+      "expected": "load-more",
+      "got": "load more button",
+      "correct": true,
+      "grounded": true,
+      "because": "사용자 통제 + 푸터 접근 유지"
+    },
+    {
+      "id": "finding-1",
+      "cluster": "찾기",
+      "expected": "search-field",
+      "got": "search bar",
+      "correct": true,
+      "grounded": true,
+      "because": "상시 노출 검색 — topbar-command-search.md의 인라인 진입점 성격"
+    },
+    {
+      "id": "finding-2",
+      "cluster": "찾기",
+      "expected": "command-palette",
+      "got": "command palette",
+      "correct": true,
+      "grounded": true,
+      "because": "topbar-command-search.md: 전역 단축키 팔레트가 필요하면 command-palette"
+    },
+    {
+      "id": "notification-1",
+      "cluster": "알림",
+      "expected": "toast",
+      "got": "toast",
+      "correct": true,
+      "grounded": true,
+      "because": "actionable-toast.md intent: 최근 저위험 작업 확인"
+    },
+    {
+      "id": "notification-2",
+      "cluster": "알림",
+      "expected": "banner",
+      "got": "banner",
+      "correct": true,
+      "grounded": true,
+      "because": "actionable-toast.md: 상태가 계속 유효하면 persistent alert"
+    },
+    {
+      "id": "waiting-1",
+      "cluster": "기다림·비어있음",
+      "expected": "skeleton",
+      "got": "skeleton",
+      "correct": true,
+      "grounded": true,
+      "because": "전체 화면 3초 + 무엇이 올지 미리 감"
+    },
+    {
+      "id": "waiting-2",
+      "cluster": "기다림·비어있음",
+      "expected": "progress-bar",
+      "got": "progress bar",
+      "correct": true,
+      "grounded": true,
+      "because": "15초는 스피너보다 진행 표시 — 자산에 시간 임계값 없어 추론"
+    },
+    {
+      "id": "waiting-3",
+      "cluster": "기다림·비어있음",
+      "expected": "spinner",
+      "got": "skeleton",
+      "correct": false,
+      "grounded": true,
+      "because": "waiting-1 논리를 컴포넌트 단위로 국소화"
+    },
+    {
+      "id": "waiting-4",
+      "cluster": "기다림·비어있음",
+      "expected": "empty-state",
+      "got": "empty state",
+      "correct": true,
+      "grounded": true,
+      "because": "recoverable-empty-state.md: 매치 없음 use case"
+    },
+    {
+      "id": "longform-1",
+      "cluster": "긴 폼",
+      "expected": "wizard",
+      "got": "wizard",
+      "correct": true,
+      "grounded": true,
+      "because": "초보·드문 절차 — data-import-wizard 처럼 단계별"
+    },
+    {
+      "id": "longform-2",
+      "cluster": "긴 폼",
+      "expected": "single-long-form",
+      "got": "long-form page",
+      "correct": true,
+      "grounded": true,
+      "because": "내용 대부분을 봐야 함 — 단일 스크롤 페이지"
+    },
+    {
+      "id": "mobile-switch-1",
+      "cluster": "모바일 뷰 전환",
+      "expected": "tab-bar",
+      "got": "bottom tab bar",
+      "correct": true,
+      "grounded": true,
+      "because": "bottom-tab-bar.md intent: 최상위 동등 목적지 전환"
+    },
+    {
+      "id": "mobile-switch-2",
+      "cluster": "모바일 뷰 전환",
+      "expected": "segmented-control",
+      "got": "segmented control",
+      "correct": true,
+      "grounded": true,
+      "because": "bottom-tab-bar.md: 같은 화면 안 뷰 전환은 segmented"
+    },
+    {
+      "id": "on-off-2",
+      "cluster": "온오프 입력",
+      "expected": "toggle-switch",
+      "got": "switch",
+      "correct": true,
+      "grounded": true,
+      "because": "저장 버튼 없이 즉시 반영"
+    },
+    {
+      "id": "on-off-3",
+      "cluster": "온오프 입력",
+      "expected": "checkbox",
+      "got": "checkbox",
+      "correct": true,
+      "grounded": true,
+      "because": "긴 폼 + 제출 버튼 전제"
+    }
+  ]
+}

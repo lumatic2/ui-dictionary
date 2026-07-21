@@ -1,0 +1,194 @@
+# 편집·미디어 제어 (action-editor-media)
+# category: action · 용어 5개
+# 파생물 — 정본은 docs/ui-vocabulary/terms.yml. 손으로 고치지 마라.
+
+- id: audio-player-controls
+  status: draft
+  category: action
+  group: action-editor-media
+  ko:
+    name: 오디오 플레이어 컨트롤
+    aliases:
+      - audio player controls
+      - 음악 컨트롤
+      - 음성 재생 컨트롤
+  en:
+    name: Audio player controls
+    aliases:
+      - Audio controls
+      - Music player controls
+  one_liner: 오디오 재생, 진행, 시간, 음량을 조작하는 compact 컨트롤.
+  description: 팟캐스트, 음성 메모, 음악 같은 오디오 콘텐츠의 재생 상태를 보여준다.
+  visual_anatomy:
+    - play pause button
+    - waveform or progress
+    - time
+    - volume
+  when_to_use:
+    - 오디오 파일이나 음성 콘텐츠를 화면 안에서 재생할 때
+  anti_use:
+    - 다운로드 링크만 제공할 파일에는 불필요하다
+  prompt_phrases:
+    - 파형과 재생 버튼이 있는 audio player controls를 만들어줘
+  asset:
+    kind: mini-mock
+    variant: audio-player-controls
+    props:
+      waveform: true
+  sources:
+    - source_id: apple-hig-components
+      note: media playback controls
+  confidence: high
+- id: cropper
+  status: draft
+  category: action
+  group: action-editor-media
+  ko:
+    name: 크롭퍼
+    aliases:
+      - cropper
+      - 이미지 자르기
+      - crop tool
+  en:
+    name: Cropper
+    aliases:
+      - Image cropper
+      - Crop tool
+  one_liner: 이미지의 자를 영역을 선택하고 비율을 조정하는 편집 컨트롤.
+  description: 프로필 사진, 썸네일, 업로드 이미지의 사용 영역을 사용자가 직접 지정한다.
+  visual_anatomy:
+    - image canvas
+    - crop box
+    - handles
+    - aspect ratio control
+    - apply action
+  when_to_use:
+    - 사용자 업로드 이미지를 특정 비율에 맞춰야 할 때
+  anti_use:
+    - 단순 파일 첨부만 필요하면 upload dropzone이 적합하다
+  prompt_phrases:
+    - 아바타 업로드 뒤 cropper로 정사각형 영역을 고르게 해줘
+  asset:
+    kind: mini-mock
+    variant: cropper
+    props:
+      handles: true
+  sources:
+    - source_id: apple-hig-components
+      note: image editing controls
+  confidence: medium
+- id: pinch-zoom-viewer
+  status: draft
+  category: action
+  group: action-editor-media
+  ko:
+    name: 핀치 줌 뷰어
+    aliases:
+      - pinch zoom viewer
+      - 두 손가락 확대
+      - 이미지 확대 뷰어
+      - 지도 확대
+  en:
+    name: Pinch zoom viewer
+    aliases:
+      - Pinch-to-zoom viewer
+      - Zoomable viewer
+  one_liner: 이미지나 지도 같은 콘텐츠를 두 손가락 제스처로 확대/축소하는 모바일 뷰어.
+  description: 작은 화면에서 세부 내용을 살펴볼 수 있도록 콘텐츠 자체를 확대 가능한 표면으로 만든다.
+  visual_anatomy:
+    - zoomable surface
+    - image or map content
+    - zoom scale
+    - pinch gesture affordance
+  when_to_use:
+    - 이미지
+    - 지도
+    - 문서처럼 세부 탐색이 필요한 콘텐츠에서
+  anti_use:
+    - 일반 카드나 버튼 크기 문제를 pinch zoom으로 해결하지 않는다
+  prompt_phrases:
+    - 상품 이미지를 두 손가락으로 확대할 수 있는 pinch zoom viewer로 보여줘
+  asset:
+    kind: mini-mock
+    variant: pinch-zoom-viewer
+    props:
+      zoom: 2
+  sources:
+    - source_id: apple-hig-components
+      note: pinch gesture for zooming content
+  confidence: high
+- id: scrubber
+  status: draft
+  category: action
+  group: action-editor-media
+  ko:
+    name: 스크러버
+    aliases:
+      - scrubber
+      - 재생 위치 바
+      - timeline scrubber
+  en:
+    name: Scrubber
+    aliases:
+      - Timeline scrubber
+      - Seek bar
+  one_liner: 영상이나 오디오의 재생 위치를 드래그해 이동하는 컨트롤.
+  description: 현재 위치, 전체 길이, thumb를 함께 보여주며 사용자가 원하는 시점으로 이동한다.
+  visual_anatomy:
+    - timeline track
+    - current progress
+    - draggable thumb
+    - time labels
+  when_to_use:
+    - 미디어나 타임라인에서 위치를 빠르게 이동해야 할 때
+  anti_use:
+    - 단순 숫자 범위 조절에는 slider가 더 일반적이다
+  prompt_phrases:
+    - 동영상 하단에 재생 위치를 조절하는 scrubber를 넣어줘
+  asset:
+    kind: mini-mock
+    variant: scrubber
+    props:
+      progress: 40
+  sources:
+    - source_id: apple-hig-components
+      note: media playback controls
+  confidence: medium
+- id: video-player-controls
+  status: draft
+  category: action
+  group: action-editor-media
+  ko:
+    name: 비디오 플레이어 컨트롤
+    aliases:
+      - video player controls
+      - 영상 컨트롤
+      - 재생 컨트롤
+  en:
+    name: Video player controls
+    aliases:
+      - Video controls
+      - Player controls
+  one_liner: 영상 재생, 일시정지, 진행바, 음량, 전체화면을 조작하는 컨트롤 묶음.
+  description: 영상 위나 아래에 배치되어 사용자가 재생 상태와 위치를 직접 제어하게 한다.
+  visual_anatomy:
+    - play pause button
+    - timeline
+    - time label
+    - volume
+    - fullscreen action
+  when_to_use:
+    - 앱 안에서 사용자가 동영상을 직접 재생해야 할 때
+  anti_use:
+    - 단순 썸네일 미리보기에는 play overlay만으로 충분하다
+  prompt_phrases:
+    - 재생 버튼과 타임라인이 있는 video player controls를 넣어줘
+  asset:
+    kind: mini-mock
+    variant: video-player-controls
+    props:
+      playing: false
+  sources:
+    - source_id: apple-hig-components
+      note: media playback controls
+  confidence: high

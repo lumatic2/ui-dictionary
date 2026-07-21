@@ -4,6 +4,8 @@
 
 # design-manual
 archive/
+# ⚠ 완료 보고서는 archive/ 가 아니라 docs/reports/ 에 둔다 — archive/ 가 여기 있어
+# 보고서가 조용히 추적 밖으로 나가던 것을 2026-07-21 병합에서 발견했다 (VL·ECT 양쪽 다 유실 상태였다)
 tmp/
 node_modules/
 dist/

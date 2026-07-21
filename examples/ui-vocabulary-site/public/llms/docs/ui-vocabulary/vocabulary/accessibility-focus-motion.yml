@@ -1,0 +1,155 @@
+# 포커스·움직임 접근성 (accessibility-focus-motion)
+# category: accessibility · 용어 4개
+# 파생물 — 정본은 docs/ui-vocabulary/terms.yml. 손으로 고치지 마라.
+
+- id: color-contrast
+  status: draft
+  category: accessibility
+  group: accessibility-focus-motion
+  kind: visual-treatment
+  ko:
+    name: 색 대비
+    aliases:
+      - color contrast
+      - contrast
+      - 텍스트 대비
+  en:
+    name: Color contrast
+    aliases:
+      - Contrast ratio
+      - Text contrast
+  one_liner: 텍스트와 배경처럼 두 색이 얼마나 구분되어 읽히는지를 나타내는 기준.
+  description: 버튼 라벨, 입력 안내, 비활성 텍스트가 실제로 읽히는지 판단하는 핵심 접근성 기준이다.
+  visual_anatomy:
+    - foreground text
+    - background surface
+    - pass example
+    - fail example
+  when_to_use:
+    - 색을 바꾸거나 opacity를 낮출 때 가독성을 확인할 때
+  anti_use:
+    - 색상 취향만 보고 대비가 낮은 조합을 선택하면 접근성이 떨어진다
+  prompt_phrases:
+    - 본문과 버튼 텍스트가 충분한 color contrast를 갖게 조정해줘
+  asset:
+    kind: mini-mock
+    variant: color-contrast
+  sources:
+    - source_id: uswds-components
+      note: USWDS emphasizes accessible color contrast across UI components
+  confidence: high
+- id: direction-provider
+  status: draft
+  category: accessibility
+  group: accessibility-focus-motion
+  ko:
+    name: 방향성 제공자
+    aliases:
+      - direction provider
+      - RTL provider
+      - 텍스트 방향 제공자
+  en:
+    name: Direction provider
+    aliases:
+      - DirectionProvider
+      - RTL provider
+  one_liner: UI 전체나 일부 영역의 읽기 방향을 LTR 또는 RTL로 지정하는 보이지 않는 구조 요소.
+  description: 아랍어, 히브리어처럼 오른쪽에서 왼쪽으로 읽는 언어를 지원할 때 컴포넌트 방향성을 일관되게 전달한다.
+  visual_anatomy:
+    - direction boundary
+    - ltr or rtl label
+    - mirrored layout hint
+    - child component area
+  when_to_use:
+    - 다국어 제품에서 RTL 레이아웃을 지원해야 할 때
+    - 특정 영역만 방향성을 바꿔야 할 때
+  anti_use:
+    - 단순 텍스트 정렬을 바꾸는 용도로 남용하지 않는다
+    - 일반 사용자는 보이는 컴포넌트명보다 RTL layout이라고 말하는 편이 낫다
+  prompt_phrases:
+    - 아랍어 화면을 위해 전체 앱을 RTL direction provider 안에 넣어줘
+  asset:
+    kind: diagram
+    variant: direction-provider
+    props:
+      direction: rtl
+  sources:
+    - source_id: shadcn-ui-docs
+      note: Direction Provider utility reference
+  confidence: medium
+- id: focus-trap
+  status: draft
+  category: accessibility
+  group: accessibility-focus-motion
+  kind: component
+  ko:
+    name: 포커스 트랩
+    aliases:
+      - focus trap
+      - 포커스 가두기
+      - modal focus loop
+  en:
+    name: Focus trap
+    aliases:
+      - Modal focus trap
+      - Focus loop
+  one_liner: 모달이나 dialog가 열렸을 때 키보드 포커스가 그 안에서만 순환하도록 하는 접근성 패턴.
+  description: 배경 화면으로 포커스가 빠져 사용자가 현재 작업 맥락을 잃지 않도록 막고, 닫힌 뒤 원래 위치로 돌려야 한다.
+  visual_anatomy:
+    - modal surface
+    - focusable controls
+    - loop arrow
+    - blocked background
+  when_to_use:
+    - modal dialog처럼 배경 조작을 막는 레이어를 열 때
+  anti_use:
+    - non-modal popover처럼 배경 조작이 가능한 UI에는 포커스를 강제로 가두지 않는다
+  prompt_phrases:
+    - 모달이 열리면 focus trap을 적용하고 닫을 때 이전 버튼으로 포커스를 돌려줘
+  related:
+    - id: dialog
+      relation: use-with
+      note: 모달은 키보드 포커스가 내부에서 순환해야 한다
+  asset:
+    kind: diagram
+    variant: focus-trap
+  sources:
+    - source_id: wai-aria-apg-patterns
+      note: APG dialog pattern describes modal keyboard focus behavior
+  confidence: high
+- id: reduced-motion
+  status: draft
+  category: accessibility
+  group: accessibility-focus-motion
+  kind: motion-pattern
+  ko:
+    name: 모션 줄이기
+    aliases:
+      - reduced motion
+      - prefers-reduced-motion
+      - 움직임 최소화
+  en:
+    name: Reduced motion
+    aliases:
+      - Prefers reduced motion
+      - Motion reduction
+  one_liner: 움직임에 민감한 사용자를 위해 애니메이션을 줄이거나 제거하는 접근성 대응.
+  description: 운영체제의 reduced motion 설정을 존중해 큰 이동, 반복 애니메이션, 깜빡임을 최소화한다.
+  visual_anatomy:
+    - motion setting
+    - normal animation
+    - reduced alternative
+    - accessible state
+  when_to_use:
+    - 반복 모션이나 큰 화면 이동을 구현할 때 항상 함께 고려한다
+  anti_use:
+    - 모션을 줄인다고 상태 변화 자체를 숨기면 안 된다
+  prompt_phrases:
+    - prefers-reduced-motion 사용자는 애니메이션을 거의 끄도록 처리해줘
+  asset:
+    kind: mini-mock
+    variant: reduced-motion
+  sources:
+    - source_id: web-dev-animations
+      note: web.dev animation guidance includes reduced motion considerations
+  confidence: high

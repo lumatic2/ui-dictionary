@@ -1,0 +1,781 @@
+# 패널·오버레이 (structure-panels)
+# category: structure · 용어 18개
+# 파생물 — 정본은 docs/ui-vocabulary/terms.yml. 손으로 고치지 마라.
+
+- id: adaptive-split-view
+  status: draft
+  category: structure
+  group: structure-panels
+  ko:
+    name: 적응형 스플릿 뷰
+    aliases:
+      - adaptive split view
+      - 사이드바 전환형 레이아웃
+      - 탭바 사이드바 전환
+  en:
+    name: Adaptive split view
+    aliases:
+      - Sidebar/tab bar convertible layout
+      - Adaptive sidebar layout
+  one_liner: 창 크기에 따라 탭 바가 사이드바로 바뀌거나 목록-상세가 나란히 붙는 적응형 레이아웃.
+  description: 좁은 화면에서는 화면 전환(stack) 또는 탭 바로 동작하다가, iPad 같은 넓은 화면에서는 사이드바나 나란한
+    목록-상세 분할로 전환된다. 사용자가 즐겨찾는 목적지를 골라 커스터마이즈할 수 있다는 점에서 정적 2열 레이아웃인
+    master-detail과 구분된다.
+  visual_anatomy:
+    - adaptive container
+    - compact stack view
+    - regular split view
+    - primary list pane
+    - secondary detail pane
+    - tab-bar-to-sidebar toggle
+  when_to_use:
+    - 같은 앱이 폰과 태블릿처럼 서로 다른 창 크기에서 동작해야 할 때
+    - 사용자가 목적지 목록을 커스터마이즈할 수 있어야 할 때
+  anti_use:
+    - 창 크기가 항상 고정된 데스크톱 전용 2열 화면이면 master-detail로 충분하다
+    - 목적지 전환 없이 순수 콘텐츠 레이아웃만 필요하면 과도한 추상화다
+  prompt_phrases:
+    - 폰에서는 탭바
+    - 태블릿에서는 사이드바로 바뀌는 adaptive split view를 만들어줘
+    - 창을 넓히면 목록과 상세가 나란히 보이게 해줘
+  related:
+    - id: master-detail
+      relation: compare
+      note: master-detail은 고정 2열 레이아웃만 다루고, 창 크기에 따른 stack/split 전환이나 목적지 커스터마이즈는 다루지
+        않는다.
+  asset:
+    kind: diagram
+    variant: adaptive-split-view
+    props:
+      mode: split
+  sources:
+    - source_id: apple-hig-components
+      note: adaptive tab bar to sidebar conversion and split view guidance
+  confidence: medium
+- id: card
+  status: draft
+  category: structure
+  group: structure-panels
+  ko:
+    name: 카드
+    aliases:
+      - card
+      - 정보 카드
+  en:
+    name: Card
+    aliases:
+      - Content card
+  one_liner: 관련 정보를 하나의 박스 안에 묶어 보여주는 컨테이너.
+  description: 제목, 설명, 이미지, 행동 버튼을 한 덩어리로 묶어 스캔하기 쉽게 한다.
+  visual_anatomy:
+    - container
+    - title
+    - body text
+    - optional media
+    - optional actions
+  when_to_use:
+    - 반복되는 항목을 목록이나 그리드로 보여줄 때
+    - 하나의 주제를 독립적으로 묶을 때
+  anti_use:
+    - 페이지 섹션 전체를 카드처럼 중첩하지 않는다
+    - 단순 텍스트 한 줄만 담기에는 과하다
+  prompt_phrases:
+    - 각 기능을 card로 묶어서 보여줘
+    - 이미지와 설명이 있는 정보 카드를 만들어줘
+  asset:
+    kind: mini-mock
+    variant: card
+    props:
+      media: true
+  sources:
+    - source_id: material-m3-components
+      note: card component
+  confidence: high
+- id: dialog
+  status: draft
+  category: structure
+  group: structure-panels
+  ko:
+    name: 모달
+    aliases:
+      - 다이얼로그
+      - modal
+      - dialog
+  en:
+    name: Dialog
+    aliases:
+      - Modal
+      - Modal dialog
+  one_liner: 현재 화면 위에 떠서 사용자의 집중 행동을 요구하는 창.
+  description: 배경을 덮고 제목, 내용, 행동 버튼을 보여주며 닫기 전까지 주의를 모은다.
+  visual_anatomy:
+    - backdrop
+    - dialog surface
+    - title
+    - content
+    - action buttons
+    - close button
+  when_to_use:
+    - 확인
+    - 입력
+    - 중요한 결정을 화면 흐름 위에서 처리할 때
+  anti_use:
+    - 단순 안내는 toast나 banner가 낫다
+    - 긴 복잡한 작업은 별도 페이지나 drawer가 적합할 수 있다
+  prompt_phrases:
+    - 삭제 확인 modal을 띄워줘
+    - 화면 중앙에 dialog를 열고 취소와 삭제 버튼을 넣어줘
+  asset:
+    kind: mini-mock
+    variant: dialog
+    props:
+      open: true
+  sources:
+    - source_id: wai-aria-apg-patterns
+      note: dialog modal pattern
+  related:
+    - id: drawer
+      relation: compare
+      note: 즉시 결정이나 확인을 막고 받아야 하면 dialog, 현재 화면 맥락을 유지하며 보조 작업을 하면 drawer가 낫다.
+    - id: side-sheet
+      relation: alternative
+      note: 넓은 화면에서 상세나 편집을 옆으로 열면 side sheet가 더 작업 친화적이다.
+    - id: modal-bottom-sheet
+      relation: alternative
+      note: 모바일에서 짧은 선택을 하단에서 받으면 modal bottom sheet가 더 자연스럽다.
+  navigation:
+    canonical_path:
+      - Plus
+      - UI Kit
+      - Overlays
+    also_appears_in:
+      - - Plus
+        - UI Blocks
+        - Application UI
+        - Overlays
+  confidence: high
+- id: disclosure-card
+  status: draft
+  category: structure
+  group: structure-panels
+  kind: component
+  ko:
+    name: 펼침 카드
+    aliases:
+      - disclosure card
+      - expandable card
+      - 접히는 카드
+  en:
+    name: Disclosure card
+    aliases:
+      - Expandable card
+      - Collapsible card
+  one_liner: 카드 헤더를 눌러 세부 내용을 펼치거나 접는 카드형 disclosure.
+  description: 설정 요약, FAQ, 요금제 세부 기능처럼 기본 정보는 보이고 자세한 내용은 필요할 때 펼치게 한다.
+  visual_anatomy:
+    - card header
+    - chevron indicator
+    - summary content
+    - expandable body
+  when_to_use:
+    - 카드 목록에서 각 항목의 상세 정보를 필요할 때만 보여줄 때
+  anti_use:
+    - 단순 텍스트 목록이면 accordion이 더 표준적이다
+  prompt_phrases:
+    - 설정 항목을 펼칠 수 있는 disclosure card로 보여줘
+  related:
+    - id: disclosure
+      relation: compare
+      note: disclosure는 펼침/접힘 동작이고, disclosure card는 그 동작을 카드 표면에 적용한 조합이다.
+  asset:
+    kind: mini-mock
+    variant: disclosure-card
+  sources:
+    - source_id: coss-ui-docs
+      note: Origin accordion/collapsible examples include card-like disclosure
+        compositions
+  confidence: medium
+- id: dockable-panel
+  status: draft
+  category: structure
+  group: structure-panels
+  ko:
+    name: 도킹 패널
+    aliases:
+      - dockable panel
+      - 고정 가능한 패널
+      - dock panel
+  en:
+    name: Dockable panel
+    aliases:
+      - Dock panel
+      - Docked panel
+  one_liner: 떠 있는 패널을 화면 가장자리나 레이아웃 안에 고정할 수 있는 패턴.
+  description: 전문 도구에서 사용자가 작업 방식에 맞춰 패널을 붙이거나 분리해 배치한다.
+  visual_anatomy:
+    - panel surface
+    - dock target
+    - attached state
+    - undocked state
+  when_to_use:
+    - 고급 사용자가 작업 공간 배치를 자주 바꾸는 생산성 도구에서
+  anti_use:
+    - 초보자용 단순 앱에서는 배치 자유도가 오히려 부담이다
+  prompt_phrases:
+    - 오른쪽에 붙이거나 띄울 수 있는 dockable panel을 구현해줘
+  asset:
+    kind: mini-mock
+    variant: dockable-panel
+    props:
+      docked: true
+  sources:
+    - source_id: fluent2-react-components
+      note: panels and command surfaces in productivity UI
+  confidence: medium
+- id: drawer
+  status: draft
+  category: structure
+  group: structure-panels
+  ko:
+    name: 드로어
+    aliases:
+      - 시트
+      - 사이드 패널
+      - drawer
+      - sheet
+  en:
+    name: Drawer
+    aliases:
+      - Sheet
+      - Side panel
+  one_liner: 화면 한쪽에서 밀려 나오는 보조 패널.
+  description: 세부 정보, 필터, 편집 폼을 현재 화면 맥락 안에서 보여준다.
+  visual_anatomy:
+    - side or bottom panel
+    - backdrop optional
+    - handle or close button
+    - content area
+  when_to_use:
+    - 현재 목록을 유지한 채 상세나 설정을 보여줄 때
+    - 필터 패널을 옆에서 열 때
+  anti_use:
+    - 사용자의 즉각 확인이 필요한 경고에는 dialog가 더 명확하다
+    - 전체 작업 흐름은 page가 낫다
+  prompt_phrases:
+    - 오른쪽에서 열리는 drawer에 상세 정보를 보여줘
+    - 모바일에서는 bottom sheet로 열리게 해줘
+  asset:
+    kind: mini-mock
+    variant: drawer
+    props:
+      side: right
+  sources:
+    - source_id: material-m3-components
+      note: navigation drawer and sheet-like surfaces
+  related:
+    - id: dialog
+      relation: compare
+      note: 사용자 결정을 막고 받아야 하면 dialog, 화면 맥락을 유지한 보조 패널이면 drawer다.
+    - id: side-sheet
+      relation: compare
+      note: drawer는 탐색/패널 전반을 넓게 부르고, side sheet는 작업 맥락의 측면 표면에 더 가깝다.
+    - id: modal-bottom-sheet
+      relation: alternative
+      note: 모바일 하단에서 배경을 막아 선택을 받으면 modal bottom sheet를 쓴다.
+  confidence: medium
+- id: floating-panel
+  status: draft
+  category: structure
+  group: structure-panels
+  ko:
+    name: 플로팅 패널
+    aliases:
+      - floating panel
+      - 떠 있는 패널
+      - floating palette
+  en:
+    name: Floating panel
+    aliases:
+      - Floating palette
+      - Floating inspector
+  one_liner: 화면 흐름 위에 떠서 이동 가능한 보조 도구나 정보를 담는 패널.
+  description: 캔버스나 지도처럼 넓은 작업면 위에서 맥락 도구를 가볍게 제공한다.
+  visual_anatomy:
+    - floating surface
+    - shadow
+    - compact controls
+    - draggable affordance
+  when_to_use:
+    - 작업면을 유지한 채 보조 도구를 가까이 두고 싶을 때
+  anti_use:
+    - 읽기 화면에서 장식 패널을 띄워 본문을 가리지 않는다
+  prompt_phrases:
+    - 캔버스 위에 이동 가능한 floating panel을 만들어줘
+  asset:
+    kind: mini-mock
+    variant: floating-panel
+    props:
+      draggable: true
+  sources:
+    - source_id: radix-ui-primitives
+      note: layered floating surfaces and popover behavior
+  confidence: medium
+- id: inspector-panel
+  status: draft
+  category: structure
+  group: structure-panels
+  ko:
+    name: 인스펙터 패널
+    aliases:
+      - inspector panel
+      - 검사 패널
+      - 선택 항목 패널
+  en:
+    name: Inspector panel
+    aliases:
+      - Object inspector
+      - Selection inspector
+  one_liner: 선택한 객체의 속성과 상태를 오른쪽에서 확인하고 조정하는 패널.
+  description: 디자인 도구, 빌더, 관리 도구에서 현재 선택 항목의 세부 정보를 보여준다.
+  visual_anatomy:
+    - selected object title
+    - property groups
+    - controls
+    - preview metadata
+  when_to_use:
+    - 캔버스나 리스트에서 선택한 대상의 속성을 편집해야 할 때
+  anti_use:
+    - 전역 설정처럼 선택 대상과 무관한 정보는 settings panel이 낫다
+  prompt_phrases:
+    - 선택한 카드의 속성을 보여주는 inspector panel을 만들어줘
+  asset:
+    kind: mini-mock
+    variant: inspector-panel
+    props:
+      sections: 2
+  sources:
+    - source_id: apple-hig-components
+      note: inspector and sidebar-like editing panels
+  confidence: medium
+- id: lightbox
+  status: draft
+  category: structure
+  group: structure-panels
+  ko:
+    name: 라이트박스
+    aliases:
+      - lightbox
+      - 이미지 확대 모달
+      - 갤러리 모달
+  en:
+    name: Lightbox
+    aliases:
+      - Image lightbox
+      - Media overlay
+  one_liner: 이미지나 미디어를 화면 위 오버레이로 크게 보여주는 패턴.
+  description: 배경을 어둡게 하고 미디어, 닫기, 이전/다음 탐색을 제공한다.
+  visual_anatomy:
+    - scrim
+    - enlarged media
+    - close button
+    - previous next controls
+  when_to_use:
+    - 목록의 미디어를 현재 맥락 위에서 크게 확인해야 할 때
+  anti_use:
+    - 복잡한 편집은 별도 detail page나 editor가 낫다
+  prompt_phrases:
+    - 이미지를 클릭하면 lightbox로 크게 열리게 해줘
+  asset:
+    kind: mini-mock
+    variant: lightbox
+    props:
+      open: true
+  sources:
+    - source_id: wai-aria-apg-patterns
+      note: dialog pattern for modal media
+  confidence: medium
+- id: master-detail
+  status: draft
+  category: structure
+  group: structure-panels
+  ko:
+    name: 마스터-디테일
+    aliases:
+      - master detail
+      - 목록 상세
+      - list detail layout
+  en:
+    name: Master-detail
+    aliases:
+      - List-detail layout
+      - Master detail view
+  one_liner: 왼쪽 목록에서 항목을 고르면 오른쪽에 상세가 표시되는 레이아웃.
+  description: 이메일, 주문, 고객 관리처럼 많은 항목을 탐색하며 상세를 빠르게 확인할 때 쓴다.
+  visual_anatomy:
+    - master list
+    - selected item
+    - detail pane
+    - two-column layout
+  when_to_use:
+    - 목록과 상세를 오가며 비교하거나 편집해야 할 때
+  anti_use:
+    - 모바일에서는 단계 전환이나 bottom sheet가 더 적합할 수 있다
+  prompt_phrases:
+    - 왼쪽 목록 오른쪽 상세의 master-detail 레이아웃을 만들어줘
+  related:
+    - id: adaptive-split-view
+      relation: compare
+      note: 창 크기에 따라 stack과 split을 오가며 목적지 커스터마이즈까지 필요하면 adaptive-split-view를 쓴다.
+        master-detail은 고정 2열 레이아웃만 다룬다.
+  asset:
+    kind: diagram
+    variant: master-detail
+    props:
+      selected: true
+  sources:
+    - source_id: apple-hig-components
+      note: split view and layout guidance
+  confidence: medium
+- id: popover
+  status: draft
+  category: structure
+  group: structure-panels
+  ko:
+    name: 팝오버
+    aliases:
+      - 작은 떠있는 패널
+      - popover
+  en:
+    name: Popover
+    aliases:
+      - Floating panel
+  one_liner: 특정 트리거 근처에 뜨는 작은 보조 패널.
+  description: 날짜 선택, 간단한 설정, 보조 정보를 현재 위치 근처에서 보여준다.
+  visual_anatomy:
+    - trigger
+    - floating panel
+    - arrow optional
+    - compact content
+  when_to_use:
+    - 작은 입력이나 보조 정보를 주변 맥락에서 보여줄 때
+  anti_use:
+    - 중요한 결정이나 긴 내용은 dialog나 drawer가 낫다
+    - hover-only 정보는 tooltip을 검토한다
+  prompt_phrases:
+    - 버튼을 누르면 작은 popover가 열리게 해줘
+    - 날짜 선택기를 팝오버로 띄워줘
+  asset:
+    kind: mini-mock
+    variant: popover
+    props:
+      open: true
+  sources:
+    - source_id: radix-ui-primitives
+      note: popover primitive
+  related:
+    - id: dropdown-menu
+      relation: compare
+      note: 명령 목록이면 dropdown menu, 작은 폼이나 보조 콘텐츠가 있으면 popover가 적합하다.
+    - id: tooltip
+      relation: compare
+      note: hover/focus의 짧은 설명만 필요하면 tooltip이고, 상호작용 콘텐츠가 있으면 popover다.
+    - id: dialog
+      relation: alternative
+      note: 중요한 결정이나 긴 내용은 popover보다 dialog가 안전하다.
+  confidence: high
+- id: preview-pane
+  status: draft
+  category: structure
+  group: structure-panels
+  ko:
+    name: 미리보기 패널
+    aliases:
+      - preview pane
+      - 프리뷰 패널
+      - 미리보기 영역
+  en:
+    name: Preview pane
+    aliases:
+      - Preview panel
+      - Reading pane
+  one_liner: 목록이나 편집 결과를 선택 즉시 옆에서 미리 보여주는 영역.
+  description: 이메일, 파일, 템플릿, 리포트처럼 선택 결과를 열기 전에 확인할 수 있게 한다.
+  visual_anatomy:
+    - source list
+    - preview area
+    - title
+    - content snapshot
+  when_to_use:
+    - 항목을 빠르게 훑고 비교해야 할 때
+  anti_use:
+    - 미리보기 내용이 복잡한 전체 작업이면 detail page가 낫다
+  prompt_phrases:
+    - 왼쪽 목록을 고르면 오른쪽에 preview pane이 바뀌게 해줘
+  asset:
+    kind: mini-mock
+    variant: preview-pane
+    props:
+      selected: true
+  sources:
+    - source_id: apple-hig-components
+      note: sidebars and preview-oriented layouts
+  confidence: medium
+- id: product-quickview-modal
+  status: draft
+  category: structure
+  group: structure-panels
+  kind: block
+  ko:
+    name: 상품 퀵뷰 모달
+    aliases:
+      - product quickview modal
+      - 퀵뷰
+      - 상품 미리보기 모달
+  en:
+    name: Product quickview modal
+    aliases:
+      - Quick view modal
+      - Product preview modal
+  one_liner: 카테고리 그리드를 벗어나지 않고 모달로 상품 핵심 정보를 미리 보여주는 패턴.
+  description: 상품 그리드나 검색 결과에서 상세 페이지로 이동하지 않고 이미지, 가격, 옵션, 담기 같은 핵심 구매 정보만 압축해
+    보여준다. 담기를 누른 뒤에는 모달을 바로 닫지 않고 미니 카트 미리보기나 토스트로 담기 완료를 확인시키고, 계속 둘러보기와 장바구니로
+    이동하기 중 하나를 고르게 하는 post-add 확인 상태로 이어질 수 있다.
+  visual_anatomy:
+    - modal overlay
+    - compact product image
+    - title and price
+    - variant selector
+    - quantity stepper
+    - add to cart action
+    - view full details link
+    - post-add confirmation state
+    - continue-shopping vs go-to-cart choice
+  when_to_use:
+    - 카테고리나 그리드 컨텍스트를 유지한 채 빠르게 상품을 확인하고 담게 할 때
+  anti_use:
+    - 옵션이 많거나 설명이 길면 전체 상품 상세 페이지로 이동시키는 편이 낫다
+  prompt_phrases:
+    - 그리드에서 벗어나지 않고 이미지 가격 담기 버튼을 보여주는 product quickview modal을 만들어줘
+    - 담기 완료 후 미니 카트 미리보기와 계속 둘러보기 선택지를 보여주는 quickview add flow를 만들어줘
+  related:
+    - id: product-card
+      relation: use-with
+      note: 그리드의 product card에서 퀵뷰 진입점을 눌러 product quickview modal을 여는 조합이 흔하다.
+    - id: modal-bottom-sheet
+      relation: compare
+      note: 데스크톱 그리드 컨텍스트 유지가 목적이면 product quickview modal, 모바일에서 배경을 막고 아래에서 올라오는 짧은
+        선택이면 modal bottom sheet다.
+  asset:
+    kind: mini-mock
+    variant: product-quickview-modal
+    props:
+      open: true
+  sources:
+    - source_id: blocks-so-library
+      note: shadcn block ecosystem ecommerce quickview modal blocks
+  navigation:
+    canonical_path:
+      - Plus
+      - UI Blocks
+      - Ecommerce
+      - Components
+    also_appears_in:
+      - - Plus
+        - Templates
+        - Ecommerce Screens
+  confidence: medium
+- id: properties-panel
+  status: draft
+  category: structure
+  group: structure-panels
+  ko:
+    name: 속성 패널
+    aliases:
+      - properties panel
+      - 프로퍼티 패널
+      - 속성 편집 영역
+  en:
+    name: Properties panel
+    aliases:
+      - Property panel
+      - Property editor
+  one_liner: 선택 항목이나 설정 대상의 값을 폼 컨트롤로 편집하는 패널.
+  description: 인스펙터보다 편집 폼 성격이 강하며 라벨, 입력, 토글, 셀렉트가 그룹으로 배치된다.
+  visual_anatomy:
+    - property labels
+    - form controls
+    - grouped sections
+    - apply state
+  when_to_use:
+    - 사용자가 대상의 여러 속성을 한곳에서 조정해야 할 때
+  anti_use:
+    - 단일 값만 바꾸면 inline edit이나 popover가 더 가볍다
+  prompt_phrases:
+    - 오른쪽에 색상 크기 공개 여부를 바꾸는 properties panel을 넣어줘
+  asset:
+    kind: mini-mock
+    variant: properties-panel
+    props:
+      editable: true
+  sources:
+    - source_id: fluent2-react-components
+      note: form controls in side panels
+  confidence: medium
+- id: resizable-panel
+  status: draft
+  category: structure
+  group: structure-panels
+  ko:
+    name: 크기 조절 패널
+    aliases:
+      - resizable panel
+      - resize handle
+      - 조절 가능한 패널
+  en:
+    name: Resizable panel
+    aliases:
+      - Resizable pane
+      - Resize handle
+  one_liner: 사용자가 경계선을 끌어 패널의 폭이나 높이를 조절하는 레이아웃.
+  description: 코드 에디터, 대시보드, 데이터 탐색 화면에서 영역 크기를 사용자가 조절하게 한다.
+  visual_anatomy:
+    - two panels
+    - resize handle
+    - adjusted size
+    - drag affordance
+  when_to_use:
+    - 사용자마다 필요한 정보 영역의 크기가 다를 때
+  anti_use:
+    - 간단한 콘텐츠에는 고정 레이아웃이 더 예측 가능하다
+  prompt_phrases:
+    - 좌우 패널 사이에 resize handle이 있는 resizable panel을 만들어줘
+  asset:
+    kind: diagram
+    variant: resizable-panel
+    props:
+      handle: true
+  sources:
+    - source_id: shadcn-ui-docs
+      note: resizable composition pattern
+  confidence: medium
+- id: right-rail
+  status: draft
+  category: structure
+  group: structure-panels
+  ko:
+    name: 우측 레일
+    aliases:
+      - right rail
+      - 오른쪽 보조 패널
+      - 사이드 레일
+  en:
+    name: Right rail
+    aliases:
+      - Side rail
+      - Right sidebar
+  one_liner: 본문 오른쪽에 보조 정보나 도구를 세로로 배치하는 좁은 영역.
+  description: 관련 항목, 도움말, 속성 요약처럼 본문을 방해하지 않고 참고해야 하는 정보를 둔다.
+  visual_anatomy:
+    - main content
+    - narrow right column
+    - supporting cards
+    - sticky area
+  when_to_use:
+    - 본문과 함께 참고해야 할 보조 정보가 있을 때
+  anti_use:
+    - 핵심 작업을 좁은 rail 안에 가두지 않는다
+  prompt_phrases:
+    - 본문 오른쪽에 관련 문서와 상태를 보여주는 right rail을 넣어줘
+  asset:
+    kind: mini-mock
+    variant: right-rail
+    props:
+      sticky: true
+  sources:
+    - source_id: atlassian-design-components
+      note: layout side content patterns
+  confidence: medium
+- id: side-sheet
+  status: draft
+  category: structure
+  group: structure-panels
+  ko:
+    name: 사이드 시트
+    aliases:
+      - side sheet
+      - 측면 시트
+      - side panel
+  en:
+    name: Side sheet
+    aliases:
+      - Side panel
+      - Side surface
+  one_liner: 화면 옆에서 열려 보조 작업이나 상세 정보를 담는 패널.
+  description: drawer보다 작업 맥락이 강하고, 현재 화면을 유지한 채 폼이나 상세를 보여준다.
+  visual_anatomy:
+    - side surface
+    - header
+    - close action
+    - supporting content
+  when_to_use:
+    - 목록에서 상세를 빠르게 확인하거나 보조 작업을 해야 할 때
+  anti_use:
+    - 사용자 집중을 완전히 요구하면 dialog가 더 적합하다
+  prompt_phrases:
+    - 오른쪽 side sheet에서 선택 항목 상세를 보여줘
+  asset:
+    kind: mini-mock
+    variant: side-sheet
+    props:
+      side: right
+  sources:
+    - source_id: material-m3-components
+      note: navigation drawer and sheet-like surfaces
+  related:
+    - id: drawer
+      relation: compare
+      note: drawer는 넓은 패널 계열의 일반명이고, side sheet는 보조 작업을 담는 측면 표면에 더 가깝다.
+    - id: dialog
+      relation: alternative
+      note: 사용자의 집중 결정이 필요하면 side sheet보다 dialog가 더 명확하다.
+    - id: modal-bottom-sheet
+      relation: alternative
+      note: 모바일에서 같은 보조 작업을 하단에서 막아 처리하면 modal bottom sheet를 쓴다.
+  confidence: medium
+- id: split-pane
+  status: draft
+  category: structure
+  group: structure-panels
+  ko:
+    name: 분할 패널
+    aliases:
+      - split pane
+      - split panel
+      - 좌우 분할
+  en:
+    name: Split pane
+    aliases:
+      - Split panel
+      - Split layout
+  one_liner: 화면을 두 개 이상의 패널로 나눠 동시에 보여주는 레이아웃.
+  description: 목록과 미리보기, 코드와 결과, 설정과 상세처럼 관련 영역을 나란히 비교하게 한다.
+  visual_anatomy:
+    - left pane
+    - divider
+    - right pane
+    - adjustable width optional
+  when_to_use:
+    - 두 정보를 함께 보며 작업해야 할 때
+  anti_use:
+    - 모바일 좁은 화면에서는 탭이나 드로어 전환이 더 낫다
+  prompt_phrases:
+    - 왼쪽 목록 오른쪽 미리보기로 나뉜 split pane을 만들어줘
+  asset:
+    kind: diagram
+    variant: split-pane
+    props:
+      resizable: false
+  sources:
+    - source_id: apple-hig-components
+      note: split view and layout guidance
+  confidence: medium

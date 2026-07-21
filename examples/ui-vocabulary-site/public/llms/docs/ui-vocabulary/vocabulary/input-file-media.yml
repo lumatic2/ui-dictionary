@@ -1,0 +1,82 @@
+# 파일·미디어 입력 (input-file-media)
+# category: input · 용어 2개
+# 파생물 — 정본은 docs/ui-vocabulary/terms.yml. 손으로 고치지 마라.
+
+- id: file-upload
+  status: draft
+  category: input
+  group: input-file-media
+  ko:
+    name: 파일 업로드
+    aliases:
+      - 파일 선택
+      - 첨부
+      - upload input
+  en:
+    name: File upload
+    aliases:
+      - File input
+      - Upload button
+  one_liner: 사용자가 로컬 파일을 선택하거나 끌어다 놓게 하는 입력 요소.
+  description: 파일 선택 버튼, 드롭존, 선택된 파일 이름을 함께 보여주는 경우가 많다.
+  visual_anatomy:
+    - upload icon
+    - file button or dropzone
+    - filename
+    - optional progress
+  when_to_use:
+    - 이미지나 문서를 첨부받을 때
+    - 파일 업로드 상태를 보여줘야 할 때
+  anti_use:
+    - 단순 링크 입력에는 text field를 쓴다
+    - 대용량 업로드는 별도 progress와 error recovery가 필요하다
+  prompt_phrases:
+    - 프로필 이미지를 올리는 file upload를 넣어줘
+    - 파일 선택 버튼과 업로드 상태를 보여줘
+  asset:
+    kind: mini-mock
+    variant: file-upload
+    props:
+      state: idle
+  sources:
+    - source_id: shadcn-ui-docs
+      note: input and form composition
+  confidence: medium
+- id: upload-dropzone
+  status: draft
+  category: input
+  group: input-file-media
+  ko:
+    name: 업로드 드롭존
+    aliases:
+      - upload dropzone
+      - 드래그 업로드 영역
+      - 파일 드롭 영역
+  en:
+    name: Upload dropzone
+    aliases:
+      - Dropzone
+      - File drop area
+  one_liner: 파일을 클릭 선택하거나 끌어다 놓아 업로드하는 큰 입력 영역.
+  description: 허용 파일 형식, 크기 제한, 드래그 상태, 업로드 행동을 명확히 보여준다.
+  visual_anatomy:
+    - drop area
+    - upload icon
+    - instruction text
+    - file constraints
+    - drag state
+  when_to_use:
+    - 파일 업로드가 화면의 주요 행동일 때
+  anti_use:
+    - 작은 첨부만 필요하면 file upload button이나 attachment list가 낫다
+  prompt_phrases:
+    - PDF를 끌어다 놓는 upload dropzone을 만들어줘
+  asset:
+    kind: mini-mock
+    variant: upload-dropzone
+    props:
+      dragging: true
+  sources:
+    - source_id: shadcn-ui-docs
+      note: input and file upload composition
+  confidence: high

@@ -1,0 +1,388 @@
+# 사이드바·보드 구조 (structure-navigation)
+# category: structure · 용어 10개
+# 파생물 — 정본은 docs/ui-vocabulary/terms.yml. 손으로 고치지 마라.
+
+- id: board-column
+  status: draft
+  category: structure
+  group: structure-navigation
+  ko:
+    name: 보드 컬럼
+    aliases:
+      - board column
+      - 칸반 컬럼
+      - lane
+  en:
+    name: Board column
+    aliases:
+      - Kanban column
+      - Board lane
+  one_liner: 칸반 보드에서 같은 상태의 카드를 세로로 묶는 열.
+  description: 할 일, 진행 중, 완료 같은 상태를 기준으로 카드 묶음을 보여준다.
+  visual_anatomy:
+    - column header
+    - item count
+    - card stack
+    - add card action
+  when_to_use:
+    - 작업 상태별로 카드를 이동시키는 보드 화면에서
+  anti_use:
+    - 단순 목록 그룹은 grouped list가 더 자연스럽다
+  prompt_phrases:
+    - 할 일 진행 중 완료 board column을 만들어줘
+  asset:
+    kind: mini-mock
+    variant: board-column
+    props:
+      count: 3
+  sources:
+    - source_id: atlassian-design-components
+      note: board and column composition
+  confidence: medium
+- id: breadcrumb-overflow
+  status: draft
+  category: structure
+  group: structure-navigation
+  kind: component
+  ko:
+    name: 축약 브레드크럼
+    aliases:
+      - breadcrumb overflow
+      - collapsed breadcrumb
+      - 생략 경로
+  en:
+    name: Breadcrumb overflow
+    aliases:
+      - Collapsed breadcrumb
+      - Overflow breadcrumb
+  one_liner: 긴 경로의 중간 항목을 말줄임이나 메뉴로 접어 좁은 공간에서도 현재 위치를 보여주는 브레드크럼.
+  description: 폴더, 문서, 설정처럼 계층이 깊은 화면에서 상위 경로를 모두 나열하지 않고 필요한 만큼만 펼치게 한다.
+  visual_anatomy:
+    - first crumb
+    - overflow trigger
+    - current crumb
+    - hidden crumb menu
+  when_to_use:
+    - 브레드크럼 경로가 길어 헤더 폭을 밀어낼 때
+  anti_use:
+    - 경로가 짧으면 일반 breadcrumb가 더 명확하다
+  prompt_phrases:
+    - 긴 문서 경로는 가운데를 접은 breadcrumb overflow로 보여줘
+  related:
+    - id: breadcrumbs-menu
+      relation: compare
+      note: breadcrumbs-menu는 특정 crumb의 형제 항목을 고르는 메뉴이고, breadcrumb overflow는 긴 경로를 접는
+        구조다.
+  asset:
+    kind: mini-mock
+    variant: breadcrumb-overflow
+  sources:
+    - source_id: coss-ui-docs
+      note: Origin breadcrumb examples include collapsed and overflow path variants
+  confidence: medium
+- id: collapsible-sidebar
+  status: draft
+  category: structure
+  group: structure-navigation
+  ko:
+    name: 접이식 사이드바
+    aliases:
+      - collapsible sidebar
+      - 접히는 사이드바
+      - collapse nav
+  en:
+    name: Collapsible sidebar
+    aliases:
+      - Collapsible navigation
+      - Expandable sidebar
+  one_liner: 넓은 메뉴를 아이콘만 남기거나 다시 펼칠 수 있는 좌측 탐색 영역.
+  description: 화면 공간을 아끼면서도 앱의 주요 탐색 구조를 유지한다.
+  visual_anatomy:
+    - expanded sidebar
+    - collapsed rail
+    - toggle control
+    - nav items
+  when_to_use:
+    - 데스크톱 앱에서 탐색 메뉴가 크고 작업 공간도 넓게 필요할 때
+  anti_use:
+    - 모바일에서는 drawer나 bottom navigation이 더 자연스럽다
+  prompt_phrases:
+    - 좌측 사이드바를 접으면 아이콘만 남는 collapsible sidebar로 만들어줘
+  asset:
+    kind: mini-mock
+    variant: collapsible-sidebar
+    props:
+      collapsed: false
+  sources:
+    - source_id: atlassian-design-components
+      note: side navigation and collapsible layout patterns
+  confidence: high
+- id: floating-navbar
+  status: draft
+  category: structure
+  group: structure-navigation
+  kind: component
+  ko:
+    name: 플로팅 내비게이션 바
+    aliases:
+      - floating navbar
+      - 떠 있는 nav
+      - floating nav
+  en:
+    name: Floating navbar
+    aliases:
+      - Floating navigation bar
+      - Floating nav
+  one_liner: 페이지 상단에 고정되지 않고 떠 있는 pill 형태로 배치되는 내비게이션 바.
+  description: 포트폴리오나 랜딩 페이지에서 화면 위에 가볍게 떠 있는 주요 링크를 제공한다.
+  visual_anatomy:
+    - floating pill surface
+    - nav links
+    - shadow
+    - centered or top placement
+  when_to_use:
+    - 랜딩 페이지에서 nav가 콘텐츠 위에 떠 있는 느낌을 주고 싶을 때
+  anti_use:
+    - 복잡한 제품 앱의 전역 내비게이션은 navigation-bar나 sidebar가 더 안정적이다
+  prompt_phrases:
+    - 히어로 위에 떠 있는 floating navbar를 넣어줘
+  asset:
+    kind: mini-mock
+    variant: floating-navbar
+  sources:
+    - source_id: aceternity-ui-docs
+      note: Aceternity floating navbar component examples
+  confidence: medium
+- id: mini-sidebar
+  status: draft
+  category: structure
+  group: structure-navigation
+  ko:
+    name: 미니 사이드바
+    aliases:
+      - mini sidebar
+      - 아이콘 사이드바
+      - compact sidebar
+  en:
+    name: Mini sidebar
+    aliases:
+      - Icon sidebar
+      - Compact sidebar
+  one_liner: 아이콘 중심의 매우 좁은 세로 탐색 영역.
+  description: 상세 라벨 대신 툴팁이나 선택 상태로 주요 섹션 이동을 제공한다.
+  visual_anatomy:
+    - icon rail
+    - active item
+    - compact width
+    - optional tooltip
+  when_to_use:
+    - 사용자가 아이콘 의미를 익힌 반복 사용 앱에서
+  anti_use:
+    - 초보자에게 처음 보이는 주요 탐색에는 라벨 없는 아이콘만 쓰지 않는다
+  prompt_phrases:
+    - 왼쪽에 아이콘만 있는 mini sidebar를 넣어줘
+  asset:
+    kind: mini-mock
+    variant: mini-sidebar
+    props:
+      active: 1
+  sources:
+    - source_id: material-m3-components
+      note: navigation rail and compact navigation
+  confidence: medium
+- id: nav-user-menu
+  status: draft
+  category: structure
+  group: structure-navigation
+  kind: component
+  ko:
+    name: 사용자 메뉴
+    aliases:
+      - user menu
+      - profile menu
+      - 계정 메뉴
+  en:
+    name: User menu
+    aliases:
+      - Profile menu
+      - Account menu
+  one_liner: 아바타나 사용자 이름을 눌러 계정, 설정, 로그아웃 같은 개인 메뉴를 여는 패턴.
+  description: 전역 내비게이션에서 현재 사용자와 계정 관련 행동을 한곳에 모은다.
+  visual_anatomy:
+    - avatar or name trigger
+    - dropdown menu
+    - account metadata
+    - menu actions
+  when_to_use:
+    - 로그인된 앱에서 계정 설정과 로그아웃을 제공할 때
+  anti_use:
+    - 알림 목록은 notification-center가 더 적합하다
+  prompt_phrases:
+    - 오른쪽 상단 아바타를 누르면 user menu가 열리게 해줘
+  related:
+    - id: dropdown-menu
+      relation: compare
+      note: user menu는 dropdown-menu의 계정 전용 사용 패턴이다.
+  asset:
+    kind: mini-mock
+    variant: nav-user-menu
+  sources:
+    - source_id: coss-ui-docs
+      note: navbar and dropdown examples include profile menu compositions
+  confidence: medium
+- id: navbar-menu
+  status: draft
+  category: structure
+  group: structure-navigation
+  kind: component
+  ko:
+    name: 내비게이션 메뉴
+    aliases:
+      - navbar menu
+      - 상단 내비 메뉴
+      - 헤더 메뉴
+  en:
+    name: Navbar menu
+    aliases:
+      - Header navigation menu
+      - Top nav menu
+  one_liner: 상단 내비게이션 바 안에서 주요 섹션 링크와 드롭다운 항목을 보여주는 메뉴 영역.
+  description: 제품, 가격, 문서, 리소스처럼 사이트의 큰 목적지를 헤더 안에서 빠르게 탐색하게 한다.
+  visual_anatomy:
+    - navbar container
+    - top-level links
+    - active item
+    - optional dropdown panel
+  when_to_use:
+    - 웹사이트의 상위 섹션을 헤더에서 탐색해야 할 때
+  anti_use:
+    - 앱 내부의 깊은 좌측 메뉴는 sidebar-nav나 navigation-rail이 더 적합하다
+  prompt_phrases:
+    - 헤더에 제품과 문서 링크가 있는 navbar menu를 넣어줘
+  related:
+    - id: navigation-bar
+      relation: compare
+      note: navigation bar는 전체 헤더 구조이고, navbar menu는 그 안의 링크/메뉴 묶음이다.
+  asset:
+    kind: mini-mock
+    variant: navbar-menu
+  sources:
+    - source_id: coss-ui-docs
+      note: legacy Origin navbar category provides header menu examples
+  confidence: medium
+- id: navigation-drawer
+  status: draft
+  category: structure
+  group: structure-navigation
+  ko:
+    name: 내비게이션 드로어
+    aliases:
+      - navigation drawer
+      - 앱 메뉴 드로어
+      - 사이드 메뉴
+      - 모바일 내비게이션 드로어
+  en:
+    name: Navigation drawer
+    aliases:
+      - Nav drawer
+      - App drawer
+      - Mobile navigation drawer
+  one_liner: 화면 한쪽에서 열려 앱의 주요 목적지 목록을 보여주는 내비게이션 패널.
+  description: 모바일이나 앱형 화면에서 메뉴 버튼을 눌러 전체 섹션 이동 목록을 펼친다.
+  visual_anatomy:
+    - drawer surface
+    - menu trigger
+    - destination rows
+    - active destination
+  when_to_use:
+    - 주요 이동 경로가 많고 항상 노출하기엔 공간이 부족할 때
+  anti_use:
+    - 핵심 목적지를 너무 깊게 숨기지 않는다
+  prompt_phrases:
+    - 메뉴 버튼을 누르면 왼쪽 navigation drawer가 열리게 해줘
+  asset:
+    kind: mini-mock
+    variant: navigation-drawer
+    props:
+      side: left
+  sources:
+    - source_id: material-m3-components
+      note: navigation drawer component
+  confidence: high
+- id: pagination-jump
+  status: draft
+  category: structure
+  group: structure-navigation
+  kind: component
+  ko:
+    name: 페이지 점프 입력
+    aliases:
+      - pagination jump
+      - page jump
+      - 페이지 번호 입력
+  en:
+    name: Pagination jump
+    aliases:
+      - Page jump input
+      - Go to page
+  one_liner: 페이지네이션 옆에 페이지 번호를 직접 입력해 특정 페이지로 이동하는 컨트롤.
+  description: 데이터가 많아 숫자 버튼만으로는 멀리 이동하기 어려울 때 사용자가 페이지 번호를 직접 입력하게 한다.
+  visual_anatomy:
+    - pagination controls
+    - page number input
+    - go action
+    - total pages label
+  when_to_use:
+    - 수십 페이지 이상을 빠르게 이동해야 할 때
+  anti_use:
+    - 페이지 수가 적으면 일반 pagination이 충분하다
+  prompt_phrases:
+    - 테이블 하단에 원하는 페이지로 바로 가는 pagination jump를 넣어줘
+  related:
+    - id: pagination
+      relation: compare
+      note: pagination jump는 일반 페이지 이동에 직접 번호 입력 행동을 추가한다.
+  asset:
+    kind: mini-mock
+    variant: pagination-jump
+  sources:
+    - source_id: coss-ui-docs
+      note: Origin pagination examples include compact page controls
+  confidence: medium
+- id: sidebar-section
+  status: draft
+  category: structure
+  group: structure-navigation
+  ko:
+    name: 사이드바 섹션
+    aliases:
+      - sidebar section
+      - grouped sidebar
+      - 사이드바 그룹
+  en:
+    name: Sidebar section
+    aliases:
+      - Sidebar group
+      - Navigation section
+  one_liner: 사이드바 안에서 관련 메뉴를 제목과 함께 묶은 구역.
+  description: 많은 내비게이션 항목을 계층과 주제로 나눠 스캔하기 쉽게 만든다.
+  visual_anatomy:
+    - section label
+    - grouped nav items
+    - active item
+    - vertical spacing
+  when_to_use:
+    - 사이드바 항목이 많아 그룹화가 필요할 때
+  anti_use:
+    - 항목이 적으면 섹션 제목이 오히려 소음이 된다
+  prompt_phrases:
+    - 사이드바 메뉴를 관리와 설정 sidebar section으로 나눠줘
+  asset:
+    kind: mini-mock
+    variant: sidebar-section
+    props:
+      groups: 2
+  sources:
+    - source_id: atlassian-design-components
+      note: side navigation pattern
+  confidence: high

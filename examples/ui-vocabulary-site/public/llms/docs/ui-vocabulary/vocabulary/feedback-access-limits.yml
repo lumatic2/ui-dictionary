@@ -1,0 +1,482 @@
+# 권한·제한·세션 (feedback-access-limits)
+# category: feedback · 용어 12개
+# 파생물 — 정본은 docs/ui-vocabulary/terms.yml. 손으로 고치지 마라.
+
+- id: biometric-prompt
+  status: draft
+  category: feedback
+  group: feedback-access-limits
+  ko:
+    name: 생체 인증 프롬프트
+    aliases:
+      - biometric prompt
+      - Face ID
+      - 지문 인증
+      - 생체 인증 팝업
+  en:
+    name: Biometric prompt
+    aliases:
+      - Face ID prompt
+      - Fingerprint prompt
+      - Biometric authentication
+  one_liner: 얼굴 인식이나 지문으로 사용자를 확인하는 모바일 인증 프롬프트.
+  description: 민감한 행동을 실행하기 전에 시스템 생체 인증을 통해 사용자의 의도를 확인한다.
+  visual_anatomy:
+    - biometric icon
+    - authentication message
+    - confirm state
+    - modal prompt
+  when_to_use:
+    - 결제
+    - 잠금 해제
+    - 비밀번호 보기처럼 높은 신뢰가 필요한 행동에서
+  anti_use:
+    - 일반 설정 변경처럼 낮은 위험 작업에는 과하다
+  prompt_phrases:
+    - 결제 전에 Face ID biometric prompt로 본인 인증을 하게 해줘
+  asset:
+    kind: mini-mock
+    variant: biometric-prompt
+    props:
+      approved: false
+  sources:
+    - source_id: apple-hig-components
+      note: biometric authentication prompt behavior
+  confidence: high
+- id: impersonation-session-banner
+  status: draft
+  category: feedback
+  group: feedback-access-limits
+  kind: block
+  ko:
+    name: 임퍼스네이션 세션 배너
+    aliases:
+      - impersonation banner
+      - 로그인 대행 배너
+      - 대리 로그인 표시
+  en:
+    name: Impersonation session banner
+    aliases:
+      - Login-as banner
+      - Support impersonation banner
+  one_liner: 지원팀이 다른 사용자로 임시 로그인했을 때 화면 전역에 고정 노출되는 경고 배너.
+  description: 임퍼스네이션 상태, 대상 사용자, 세션 종료 버튼을 항상 볼 수 있게 해 위험 모드를 구조적으로 인지시킨다. 진입 시에는
+    대상 사용자 이름을 밝히는 확인 다이얼로그를 먼저 거치고, 종료 시에는 원래 계정으로 즉시 복귀하는 단일 액션을 제공한다.
+  visual_anatomy:
+    - entry confirmation dialog naming the impersonated user
+    - persistent top banner
+    - impersonation icon or distinct color
+    - impersonated user identity
+    - remaining session time
+    - exit or end session button
+  when_to_use:
+    - 지원팀이 고객 계정으로 임시 로그인해 문제를 재현하거나 대신 조작할 때
+  anti_use:
+    - 일반 계정 전환에는 account-switcher가 낫다 — impersonation banner는 위험·대리 모드 전용이다
+  prompt_phrases:
+    - 지원팀이 다른 사용자로 로그인하면 상단에 impersonation banner를 고정해줘
+    - 세션 종료 버튼이 있는 대리 로그인 배너를 넣어줘
+    - 진입 확인 다이얼로그와 종료 버튼이 있는 임퍼스네이션 흐름을 만들어줘
+  asset:
+    kind: mini-mock
+    variant: impersonation-session-banner
+    props:
+      active: true
+  sources:
+    - source_id: atlassian-design-components
+      note: banner and flag communication for risk and mode states
+  confidence: medium
+- id: locked-state
+  status: draft
+  category: feedback
+  group: feedback-access-limits
+  ko:
+    name: 잠금 상태
+    aliases:
+      - locked state
+      - 잠긴 화면
+      - 잠금 안내
+  en:
+    name: Locked state
+    aliases:
+      - Locked content state
+      - Read-only locked state
+  one_liner: 콘텐츠나 설정이 현재 조건에서 잠겨 있음을 알려주는 상태.
+  description: 편집 권한, 플랜, 워크플로 단계 때문에 조작할 수 없는 영역을 명확히 표시한다.
+  visual_anatomy:
+    - lock indicator
+    - disabled content
+    - reason text
+    - unlock hint
+  when_to_use:
+    - 콘텐츠는 보이지만 수정이나 사용이 막혀 있을 때
+  anti_use:
+    - 권한 요청이 가능한 경우에는 permission state가 더 구체적이다
+  prompt_phrases:
+    - 잠긴 설정 카드에 locked state를 표시해줘
+  asset:
+    kind: mini-mock
+    variant: locked-state
+    props:
+      locked: true
+  sources:
+    - source_id: apple-hig-components
+      note: disabled and locked content presentation
+  confidence: medium
+- id: offline-state
+  status: draft
+  category: feedback
+  group: feedback-access-limits
+  ko:
+    name: 오프라인 상태
+    aliases:
+      - offline state
+      - 네트워크 끊김 상태
+      - offline banner
+  en:
+    name: Offline state
+    aliases:
+      - No connection state
+      - Offline banner
+  one_liner: 인터넷 연결이 없어 일부 기능이 제한된다는 상태 표시.
+  description: 사용자가 문제 원인을 네트워크로 이해하고 재연결 또는 오프라인 사용 가능 범위를 알게 한다. 모바일에서는 상단 헤더/앱바
+    바로 아래에 고정 배치해 하단 nav/tab bar 영역과 겹치지 않게 하고, 재연결이 감지되면 사용자 조작 없이 자동으로 사라진다.
+  visual_anatomy:
+    - connection icon
+    - offline message
+    - retry action
+    - limited mode hint
+    - top-pinned placement below header on mobile
+    - auto-dismiss on reconnect
+  when_to_use:
+    - 네트워크 연결이 필요한 데이터를 불러오지 못할 때
+  anti_use:
+    - 서버 오류는 error state나 retry panel로 구분한다
+    - 사용자가 직접 닫아야 하는 mobile-snackbar와 달리 네트워크가 실제로 복구되기 전까지는 닫히지 않아야 한다
+  prompt_phrases:
+    - 상단에 오프라인 상태 배너와 다시 시도 버튼을 넣어줘
+    - 헤더 바로 아래에 고정하고 재연결되면 자동으로 사라지게 해줘
+  asset:
+    kind: mini-mock
+    variant: offline-state
+    props:
+      retry: true
+  sources:
+    - source_id: material-m3-components
+      note: banners and status communication
+  confidence: high
+- id: permission-education-screen
+  status: draft
+  category: feedback
+  group: feedback-access-limits
+  ko:
+    name: 권한 안내 화면
+    aliases:
+      - permission education screen
+      - 권한 요청 화면
+      - 권한 설명 화면
+      - 권한 전 안내
+      - pre-permission screen
+  en:
+    name: Permission education screen
+    aliases:
+      - Pre-permission screen
+      - Permission explainer
+  one_liner: 시스템 권한을 요청하기 전에 왜 필요한지 앱 안에서 먼저 설명하는 모바일 화면.
+  description: 권한 요청의 이유와 사용자 이득을 설명해 갑작스러운 시스템 팝업보다 이해하기 쉽게 만든다.
+  visual_anatomy:
+    - permission icon
+    - benefit headline
+    - explanation text
+    - continue button
+  when_to_use:
+    - 권한 거부율을 낮추고 싶을 때
+    - 카메라나 위치처럼 민감한 권한을 요청하기 전
+  anti_use:
+    - 실제 권한 요청을 숨기거나 강제로 유도하는 dark pattern으로 쓰지 않는다
+  prompt_phrases:
+    - 위치 권한을 요청하기 전에 왜 필요한지 설명하는 permission education screen을 넣어줘
+  asset:
+    kind: mini-mock
+    variant: permission-education-screen
+    props:
+      cta: true
+  sources:
+    - source_id: apple-hig-components
+      note: explaining permission value before system request
+  related:
+    - id: permission-prompt
+      relation: use-with
+      note: 온보딩에서 여러 권한이 필요하면, 이 soft-ask 화면 뒤에 permission-prompt를 이어붙이되, 모든 권한을 한 번에
+        몰아 묻지 않고 해당 기능을 실제로 쓰는 시점마다 하나씩 순차 요청한다.
+  confidence: medium
+- id: permission-prompt
+  status: draft
+  category: feedback
+  group: feedback-access-limits
+  ko:
+    name: 권한 요청 프롬프트
+    aliases:
+      - permission prompt
+      - 권한 요청 화면
+      - 권한 요청 팝업
+      - 알림 권한 요청
+      - 위치 권한 요청
+  en:
+    name: Permission prompt
+    aliases:
+      - Permission request prompt
+      - System permission prompt
+  one_liner: 카메라, 위치, 알림 같은 권한 허용을 사용자에게 묻는 모바일 프롬프트.
+  description: 실제 시스템 권한 요청 전후로 앱이 사용자에게 권한의 필요성과 선택을 보여주는 화면 요소다.
+  visual_anatomy:
+    - system-like dialog
+    - permission icon
+    - allow action
+    - deny action
+    - dimmed background
+  when_to_use:
+    - 권한 없이는 기능을 쓸 수 없을 때
+    - 사용자의 명시적 허용이 필요한 기능에서
+  anti_use:
+    - 맥락 없이 앱 시작 직후 모든 권한을 한꺼번에 요구하지 않는다
+  prompt_phrases:
+    - 알림 기능을 켤 때 permission prompt를 띄워서 허용 여부를 물어봐줘
+  asset:
+    kind: mini-mock
+    variant: permission-prompt
+    props:
+      permission: notification
+  sources:
+    - source_id: apple-hig-components
+      note: requesting permission in context
+  related:
+    - id: permission-education-screen
+      relation: use-with
+      note: 온보딩에서 여러 권한이 필요하면, 권한마다 permission-education-screen(soft-ask) 뒤에 이 시스템
+        프롬프트를 이어붙이되, 모든 권한을 한 번에 몰아 묻지 않고 해당 기능을 실제로 쓰는 시점마다 하나씩 순차 요청한다.
+  confidence: high
+- id: permission-state
+  status: draft
+  category: feedback
+  group: feedback-access-limits
+  ko:
+    name: 권한 필요 상태
+    aliases:
+      - permission state
+      - 권한 없음 화면
+      - 접근 권한 안내
+  en:
+    name: Permission state
+    aliases:
+      - Permission required state
+      - Access denied state
+  one_liner: 현재 기능을 쓰려면 권한 요청이나 관리자 승인이 필요하다고 안내하는 상태.
+  description: 왜 접근할 수 없는지, 어떤 권한이 필요한지, 요청 행동은 무엇인지 보여준다.
+  visual_anatomy:
+    - lock icon
+    - permission explanation
+    - request access action
+    - contact hint
+  when_to_use:
+    - 사용자가 볼 수 있지만 권한이 없어 접근하지 못하는 기능에서
+  anti_use:
+    - 기능 자체가 없거나 유료 제한이면 upgrade prompt가 더 정확하다
+  prompt_phrases:
+    - 권한 요청 버튼이 있는 permission state를 보여줘
+  asset:
+    kind: mini-mock
+    variant: permission-state
+    props:
+      requestable: true
+  sources:
+    - source_id: atlassian-design-components
+      note: empty and permission-like state patterns
+  confidence: medium
+- id: quota-warning
+  status: draft
+  category: feedback
+  group: feedback-access-limits
+  ko:
+    name: 사용량 경고
+    aliases:
+      - quota warning
+      - 한도 경고
+      - usage warning
+  en:
+    name: Quota warning
+    aliases:
+      - Usage limit warning
+      - Quota alert
+  one_liner: 저장공간, API 호출, 크레딧 같은 사용 한도에 가까워졌음을 알려주는 경고.
+  description: 현재 사용량, 한도, 남은 양, 업그레이드나 정리 행동을 함께 제공한다.
+  visual_anatomy:
+    - usage meter
+    - warning text
+    - limit value
+    - action link
+  when_to_use:
+    - 사용자가 한도 초과 전에 조치할 수 있어야 할 때
+  anti_use:
+    - 이미 차단된 상태면 rate-limit state나 locked state가 더 직접적이다
+  prompt_phrases:
+    - 월 사용량 80% quota warning을 표시해줘
+  asset:
+    kind: mini-mock
+    variant: quota-warning
+    props:
+      percent: 80
+  sources:
+    - source_id: material-m3-components
+      note: progress and warning communication
+  confidence: high
+- id: rate-limit-state
+  status: draft
+  category: feedback
+  group: feedback-access-limits
+  ko:
+    name: 사용량 제한 상태
+    aliases:
+      - rate limit state
+      - 제한 상태
+      - retry after
+  en:
+    name: Rate limit state
+    aliases:
+      - Retry-after state
+      - Limit reached state
+  one_liner: 요청이 너무 많아 잠시 기다려야 함을 알려주는 상태 UI.
+  description: 남은 대기 시간, 다시 시도 버튼, 제한 이유를 함께 보여 사용자가 다음 행동을 알게 한다.
+  visual_anatomy:
+    - limit message
+    - countdown or retry time
+    - retry action
+    - neutral warning tone
+  when_to_use:
+    - API 호출
+    - 로그인 시도
+    - 생성 요청 등 사용량 제한이 걸렸을 때
+  anti_use:
+    - 단순 네트워크 오류와 혼동하지 않는다
+  prompt_phrases:
+    - 요청 제한이 걸리면 남은 시간을 보여주는 rate limit state를 넣어줘
+  asset:
+    kind: mini-mock
+    variant: rate-limit-state
+    props:
+      retryAfter: true
+  sources:
+    - source_id: carbon-design-components
+      note: error and empty state guidance
+  confidence: medium
+- id: session-expired-dialog
+  status: draft
+  category: feedback
+  group: feedback-access-limits
+  ko:
+    name: 세션 만료 다이얼로그
+    aliases:
+      - session expired dialog
+      - 로그인 만료 모달
+      - 세션 만료 창
+  en:
+    name: Session expired dialog
+    aliases:
+      - Session timeout dialog
+      - Login expired modal
+  one_liner: 로그인 세션이 만료되어 다시 인증해야 함을 알리는 모달.
+  description: 사용자가 현재 작업을 잃지 않도록 재로그인 행동과 취소 가능성을 명확히 한다.
+  visual_anatomy:
+    - modal surface
+    - timeout message
+    - sign in action
+    - secondary action
+  when_to_use:
+    - 보안 세션이 만료되어 API 요청이나 저장이 막혔을 때
+  anti_use:
+    - 일반 권한 부족은 permission state가 더 정확하다
+  prompt_phrases:
+    - 세션이 만료되면 재로그인 버튼이 있는 dialog를 띄워줘
+  asset:
+    kind: mini-mock
+    variant: session-expired-dialog
+    props:
+      modal: true
+  sources:
+    - source_id: wai-aria-apg-patterns
+      note: modal dialog pattern
+  confidence: high
+- id: unsaved-changes-banner
+  status: draft
+  category: feedback
+  group: feedback-access-limits
+  ko:
+    name: 저장 안 된 변경 배너
+    aliases:
+      - unsaved changes banner
+      - 변경사항 배너
+      - 저장 필요 배너
+  en:
+    name: Unsaved changes banner
+    aliases:
+      - Unsaved changes bar
+      - Dirty state banner
+  one_liner: 저장되지 않은 변경이 있음을 알리고 저장 또는 취소 행동을 제공하는 배너.
+  description: 편집 화면에서 사용자가 변경 상태를 잃지 않도록 명확한 행동을 제공한다.
+  visual_anatomy:
+    - dirty state text
+    - save action
+    - discard action
+    - sticky placement
+  when_to_use:
+    - 저장 전 변경을 잃을 위험이 있는 설정이나 폼에서
+  anti_use:
+    - 자동 저장이 즉시 완료되면 saving indicator만으로 충분하다
+  prompt_phrases:
+    - 하단에 저장 안 된 변경 배너와 저장 취소 버튼을 넣어줘
+  asset:
+    kind: mini-mock
+    variant: unsaved-changes-banner
+    props:
+      sticky: true
+  sources:
+    - source_id: atlassian-design-components
+      note: form state and flag patterns
+  confidence: high
+- id: upgrade-prompt
+  status: draft
+  category: feedback
+  group: feedback-access-limits
+  ko:
+    name: 업그레이드 유도
+    aliases:
+      - upgrade prompt
+      - 유료 플랜 안내
+      - paywall prompt
+  en:
+    name: Upgrade prompt
+    aliases:
+      - Plan upgrade prompt
+      - Paywall prompt
+  one_liner: 현재 플랜에서 제한된 기능을 상위 플랜으로 안내하는 UI.
+  description: 기능 가치와 제한 이유를 설명하고 업그레이드 CTA를 제공한다.
+  visual_anatomy:
+    - locked feature
+    - value message
+    - plan label
+    - upgrade action
+  when_to_use:
+    - 유료 플랜 차이 때문에 기능 접근이 제한될 때
+  anti_use:
+    - 권한 문제나 오류를 과금 유도처럼 보이게 만들지 않는다
+  prompt_phrases:
+    - 고급 분석 기능에 upgrade prompt를 보여줘
+  asset:
+    kind: mini-mock
+    variant: upgrade-prompt
+    props:
+      cta: true
+  sources:
+    - source_id: carbon-design-components
+      note: callout and actionable notification patterns
+  confidence: medium

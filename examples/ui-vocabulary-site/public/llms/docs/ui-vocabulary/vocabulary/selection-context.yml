@@ -1,0 +1,178 @@
+# 계정·결제 컨텍스트 (selection-context)
+# category: selection · 용어 4개
+# 파생물 — 정본은 docs/ui-vocabulary/terms.yml. 손으로 고치지 마라.
+
+- id: account-switcher
+  status: draft
+  category: selection
+  group: selection-context
+  ko:
+    name: 계정 전환기
+    aliases:
+      - account switcher
+      - 프로필 전환
+      - 사용자 전환
+  en:
+    name: Account switcher
+    aliases:
+      - Profile switcher
+      - User switcher
+  one_liner: 현재 로그인 계정을 확인하고 다른 계정으로 전환하는 메뉴.
+  description: 사용자 아바타와 이메일, 계정 목록, 로그아웃 같은 행동을 함께 제공한다.
+  visual_anatomy:
+    - avatar
+    - current account
+    - account list
+    - sign out action
+  when_to_use:
+    - 여러 계정 사용이나 프로필 관리가 필요한 앱에서
+  anti_use:
+    - 인증이 없는 앱에는 불필요하다
+  prompt_phrases:
+    - 우측 상단 아바타를 누르면 account switcher가 열리게 해줘
+  asset:
+    kind: mini-mock
+    variant: account-switcher
+    props:
+      accounts: 2
+  sources:
+    - source_id: apple-hig-components
+      note: account and profile presentation guidance
+  confidence: medium
+- id: payment-method-card
+  status: draft
+  category: selection
+  group: selection-context
+  ko:
+    name: 결제수단 카드
+    aliases:
+      - payment method card
+      - 카드 선택 UI
+      - 결제 카드
+  en:
+    name: Payment method card
+    aliases:
+      - Payment card selector
+      - Billing method card
+  one_liner: 신용카드나 계좌 같은 결제수단을 선택하고 관리하는 카드.
+  description: 브랜드, 마지막 번호, 만료일, 기본 결제수단 여부, 선택 상태를 보여준다.
+  visual_anatomy:
+    - payment brand
+    - masked number
+    - expiry
+    - selected state
+    - manage action
+  when_to_use:
+    - 여러 결제수단 중 하나를 선택하거나 기본값을 관리할 때
+  anti_use:
+    - 카드 정보 입력 폼은 별도 payment form으로 구분한다
+  prompt_phrases:
+    - 기본 배지가 있는 payment method card를 선택 가능하게 만들어줘
+  asset:
+    kind: mini-mock
+    variant: payment-method-card
+    props:
+      selected: true
+  sources:
+    - source_id: material-m3-components
+      note: selectable cards and list items
+  navigation:
+    canonical_path:
+      - Plus
+      - UI Blocks
+      - Ecommerce
+      - Components
+    also_appears_in:
+      - - Plus
+        - Templates
+        - Ecommerce Screens
+  confidence: medium
+- id: versioned-docs-switcher
+  status: draft
+  category: selection
+  group: selection-context
+  kind: block
+  ko:
+    name: 문서 버전 스위처
+    aliases:
+      - versioned docs switcher
+      - 문서 버전 전환
+      - 버전 드롭다운
+  en:
+    name: Versioned docs switcher
+    aliases:
+      - Docs version switcher
+      - Version dropdown with stale banner
+  one_liner: navbar 버전 드롭다운과 과거/미출시 버전 경고 배너로 구성된 문서 버전 전환 패턴.
+  description: 여러 버전이 공존하는 문서 사이트에서 현재 보고 있는 버전을 드롭다운으로 바꾸고, 최신이 아닌 버전을 볼 때 상단에 안내
+    배너를 띄운다. 선택한 버전에 따라 사이드바 트리 전체가 교체된다. 교체된 트리 내부에서는 최상위 그룹은 항상 펼쳐진 채로, 하위 그룹만
+    개별적으로 펼침/접힘 기본값을 가진다 — 버전 전환은 어떤 트리를 보여줄지 정하고, 펼침/접힘은 그 트리를 어떻게 보여줄지 정하는 별개의
+    축이다.
+  visual_anatomy:
+    - navbar version dropdown
+    - latest-selected default
+    - stale version banner
+    - link to latest version
+    - sidebar tree swap
+    - top-level group always expanded
+    - nested group collapse/expand toggle with a per-group default
+  when_to_use:
+    - 제품/문서가 여러 메이저 버전을 동시에 공개하고 사용자가 과거 버전 문서를 볼 수 있어야 할 때
+  anti_use:
+    - 단일 버전만 유지되는 문서에는 불필요하다
+    - 조직/워크스페이스 전환은 workspace-switcher를 쓴다
+  prompt_phrases:
+    - navbar에 문서 버전 드롭다운을 넣어줘
+    - 오래된 버전을 보고 있으면 상단에 경고 배너를 띄워줘
+  asset:
+    kind: mini-mock
+    variant: versioned-docs-switcher
+    props:
+      stale: true
+  sources:
+    - source_id: ui-patterns-library
+      note: versioned documentation navigation with stale-version banner and nested
+        collapsible sidebar sections under a version-pinned tree root
+  related:
+    - id: workspace-switcher
+      relation: compare
+      note: workspace-switcher는 조직/팀 컨텍스트를 바꾸고, versioned-docs-switcher는 같은 문서의 다른 버전
+        스냅샷으로 전환한다 — 대상이 조직이 아니라 문서 버전이라는 점이 다르다.
+  confidence: medium
+- id: workspace-switcher
+  status: draft
+  category: selection
+  group: selection-context
+  ko:
+    name: 워크스페이스 전환기
+    aliases:
+      - workspace switcher
+      - 조직 전환
+      - 팀 전환
+  en:
+    name: Workspace switcher
+    aliases:
+      - Organization switcher
+      - Team switcher
+  one_liner: 현재 작업 공간이나 조직을 선택하고 다른 공간으로 전환하는 메뉴.
+  description: SaaS 앱에서 개인/팀/조직 컨텍스트를 바꾸는 상단 또는 사이드바 컨트롤이다.
+  visual_anatomy:
+    - current workspace
+    - avatar or logo
+    - dropdown menu
+    - workspace list
+  when_to_use:
+    - 사용자가 여러 조직이나 프로젝트 공간을 오갈 때
+  anti_use:
+    - 단일 조직 앱에는 필요 없다
+  prompt_phrases:
+    - 사이드바 상단에 현재 팀을 바꾸는 workspace switcher를 넣어줘
+  asset:
+    kind: mini-mock
+    variant: workspace-switcher
+    props:
+      open: true
+  sources:
+    - source_id: atlassian-design-components
+      note: workspace and product navigation patterns
+  confidence: medium

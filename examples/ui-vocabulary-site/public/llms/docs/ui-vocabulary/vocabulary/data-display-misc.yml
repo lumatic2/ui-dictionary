@@ -1,0 +1,974 @@
+# 기타 데이터·콘텐츠 (data-display-misc)
+# category: data-display · 용어 23개
+# 파생물 — 정본은 docs/ui-vocabulary/terms.yml. 손으로 고치지 마라.
+
+- id: blog-post-card
+  status: draft
+  category: data-display
+  group: data-display-misc
+  kind: component
+  ko:
+    name: 블로그 포스트 카드
+    aliases:
+      - blog post card
+      - 블로그 카드
+      - article card
+  en:
+    name: Blog post card
+    aliases:
+      - Article card
+      - Post preview card
+  one_liner: 블로그 글 하나를 썸네일과 요약으로 미리 보여주는 카드.
+  description: 블로그 목록이나 그리드에서 글 제목, 요약, 작성자, 날짜를 함께 보여줘 클릭 전에 내용을 가늠하게 한다.
+  visual_anatomy:
+    - cover image
+    - category tag
+    - title
+    - excerpt
+    - author avatar
+    - date
+  when_to_use:
+    - 블로그 목록에서 여러 글을 미리보기로 나열할 때
+    - 관련 글 추천 영역을 만들 때
+  anti_use:
+    - 본문 전체를 카드에 담지 않는다
+    - 단일 공지나 안내는 banner나 alert가 더 적합하다
+  prompt_phrases:
+    - 썸네일과 요약이 있는 blog post card를 만들어줘
+    - 작성자와 날짜가 보이는 블로그 카드를 그리드에 배치해줘
+  navigation:
+    canonical_path:
+      - Plus
+      - UI Blocks
+      - Marketing
+      - Page Sections
+      - Blog Sections
+    also_appears_in:
+      - - Plus
+        - UI Blocks
+        - Marketing
+        - Page Sections
+  asset:
+    kind: mini-mock
+    variant: blog-post-card
+  sources:
+    - source_id: blocks-so-library
+      note: shadcn block ecosystem blog and article card examples
+  confidence: medium
+- id: calendar-event-card
+  status: draft
+  category: data-display
+  group: data-display-misc
+  ko:
+    name: 캘린더 이벤트 카드
+    aliases:
+      - calendar event card
+      - 일정 카드
+      - 이벤트 카드
+  en:
+    name: Calendar event card
+    aliases:
+      - Event card
+      - Schedule card
+  one_liner: 일정 하나의 제목, 시간, 장소, 참석 상태를 카드처럼 보여주는 UI.
+  description: 캘린더나 일정 목록에서 이벤트를 빠르게 확인하고 선택하게 한다.
+  visual_anatomy:
+    - event title
+    - time range
+    - location
+    - attendee status
+    - color marker
+  when_to_use:
+    - 일정 목록이나 캘린더 상세에서 이벤트 단위를 보여줄 때
+  anti_use:
+    - 월/주 전체 배치는 calendar view가 더 정확하다
+  prompt_phrases:
+    - 시간 장소 참석자가 있는 calendar event card를 만들어줘
+  asset:
+    kind: mini-mock
+    variant: calendar-event-card
+    props:
+      selected: true
+  sources:
+    - source_id: apple-hig-components
+      note: event and calendar presentation
+  confidence: medium
+- id: calendar-view
+  status: draft
+  category: data-display
+  group: data-display-misc
+  ko:
+    name: 캘린더 뷰
+    aliases:
+      - 달력 화면
+      - calendar view
+  en:
+    name: Calendar view
+    aliases:
+      - Calendar
+  one_liner: 날짜 격자 위에 일정이나 이벤트를 보여주는 화면.
+  description: 월, 주, 일 단위로 날짜와 이벤트를 배치해 시간 기반 정보를 탐색하게 한다.
+  visual_anatomy:
+    - date grid
+    - weekday header
+    - event chips
+    - current day highlight
+  when_to_use:
+    - 예약
+    - 일정
+    - 마감처럼 날짜 위치가 중요한 데이터를 보여줄 때
+  anti_use:
+    - 단순 날짜 선택은 date picker가 충분하다
+    - 이벤트가 적으면 list가 더 읽기 쉽다
+  prompt_phrases:
+    - 마감 일정을 calendar view로 보여줘
+    - 월간 달력에 이벤트 chip을 배치해줘
+  asset:
+    kind: diagram
+    variant: calendar-view
+    props:
+      weeks: 2
+  sources:
+    - source_id: material-m3-components
+      note: date and calendar patterns
+  confidence: medium
+- id: contact-info-panel
+  status: draft
+  category: data-display
+  group: data-display-misc
+  kind: component
+  ko:
+    name: 연락처 정보 패널
+    aliases:
+      - contact info panel
+      - 연락처 안내 패널
+      - 오피스 정보 패널
+  en:
+    name: Contact info panel
+    aliases:
+      - Contact details panel
+      - Get in touch panel
+  one_liner: 이메일, 전화번호, 주소 같은 연락 채널을 보여주는 정보 패널.
+  description: 문의 폼 옆이나 푸터 근처에서 회사가 연락받는 다른 채널들을 정리해 보여준다.
+  visual_anatomy:
+    - icon
+    - label
+    - contact value
+    - optional map or social links
+  when_to_use:
+    - 문의 폼과 함께 다른 연락 채널을 안내할 때
+    - 오피스 위치나 소셜 링크를 보여줄 때
+  anti_use:
+    - 사용자 입력을 받아야 하면 contact-form-section이 필요하다
+  prompt_phrases:
+    - 이메일과 전화번호
+    - 주소가 있는 contact info panel을 폼 옆에 넣어줘
+  related:
+    - id: contact-form-section
+      relation: compare
+      note: contact-form-section은 입력을 받는 폼이고 contact-info-panel은 읽기 전용 연락처 안내다.
+  navigation:
+    canonical_path:
+      - Plus
+      - UI Blocks
+      - Marketing
+      - Page Sections
+      - Contact Sections
+    also_appears_in:
+      - - Plus
+        - UI Blocks
+        - Marketing
+        - Page Sections
+  asset:
+    kind: mini-mock
+    variant: contact-info-panel
+  sources:
+    - source_id: blocks-so-library
+      note: shadcn block ecosystem contact and location info sections
+  confidence: medium
+- id: description-list
+  status: draft
+  category: data-display
+  group: data-display-misc
+  ko:
+    name: 설명 목록
+    aliases:
+      - key value list
+      - 속성 목록
+  en:
+    name: Description list
+    aliases:
+      - Key-value list
+      - Detail list
+  one_liner: 이름과 값을 짝지어 상세 정보를 보여주는 목록.
+  description: 프로필, 주문 상세, 설정 요약처럼 속성명과 값을 나란히 표시한다.
+  visual_anatomy:
+    - term label
+    - value text
+    - repeated rows
+    - optional separators
+  when_to_use:
+    - 한 객체의 여러 속성을 읽기 쉽게 보여줄 때
+  anti_use:
+    - 여러 객체를 비교해야 하면 table이 낫다
+    - 긴 본문에는 일반 text layout이 낫다
+  prompt_phrases:
+    - 주문 상세를 key-value list로 보여줘
+    - 사용자 정보를 설명 목록으로 정리해줘
+  asset:
+    kind: mini-mock
+    variant: description-list
+    props:
+      rows: 3
+  sources:
+    - source_id: carbon-design-components
+      note: structured data display patterns
+  confidence: low
+- id: docs-changelog-page
+  status: draft
+  category: data-display
+  group: data-display-misc
+  kind: block
+  ko:
+    name: 체인지로그 페이지
+    aliases:
+      - changelog page
+      - 릴리즈 노트 페이지
+      - 업데이트 히스토리 페이지
+  en:
+    name: Changelog page
+    aliases:
+      - Release notes page
+      - Update history page
+  one_liner: 날짜별로 묶인 릴리즈 항목을 카테고리 필터와 함께 나열하는 changelog 전용 페이지.
+  description: release-note-card 단위 항목들을 날짜 헤더 아래 그룹핑하고, 상단 카테고리 필터 chip과 하단
+    more-보기 페이지네이션으로 긴 변경 이력을 탐색 가능하게 만든다.
+  visual_anatomy:
+    - date header groups
+    - release note cards per group
+    - category filter chips
+    - search field
+    - show-more pagination
+  when_to_use:
+    - 제품의 전체 변경 이력을 날짜/카테고리별로 탐색 가능한 한 페이지로 제공해야 할 때
+  anti_use:
+    - 항목이 몇 개뿐이면 release-note-card 목록만으로 충분하고 별도 페이지 레이아웃은 과하다
+  prompt_phrases:
+    - 날짜별로 묶이고 카테고리 필터가 있는 changelog 페이지를 만들어줘
+    - 릴리즈 노트를 최신순으로 나열하고 더보기 버튼을 넣어줘
+  asset:
+    kind: mini-mock
+    variant: docs-changelog-page
+    props:
+      groups: 3
+  sources:
+    - source_id: ui-patterns-library
+      note: date-grouped changelog/release notes page with category filters
+  related:
+    - id: release-note-card
+      relation: use-with
+      note: docs-changelog-page는 release-note-card를 날짜 그룹으로 배치하는 페이지 레이아웃이다.
+  confidence: medium
+- id: faq-list
+  status: draft
+  category: data-display
+  group: data-display-misc
+  ko:
+    name: FAQ 목록
+    aliases:
+      - faq list
+      - 자주 묻는 질문
+      - 질문 목록
+  en:
+    name: FAQ list
+    aliases:
+      - Frequently asked questions list
+      - Q&A list
+  one_liner: 자주 묻는 질문을 접고 펼칠 수 있는 질문/답변 목록.
+  description: 사용자가 도움말 페이지 안에서 짧은 답을 빠르게 확인하게 한다.
+  visual_anatomy:
+    - question row
+    - expand icon
+    - answer panel
+    - grouped topics
+  when_to_use:
+    - 반복 질문에 대한 짧은 답을 페이지 안에서 제공할 때
+  anti_use:
+    - 긴 문서는 help article이나 documentation page로 분리한다
+  prompt_phrases:
+    - 질문을 누르면 답이 펼쳐지는 FAQ list를 만들어줘
+  asset:
+    kind: mini-mock
+    variant: faq-list
+    props:
+      open: true
+  sources:
+    - source_id: wai-aria-apg-patterns
+      note: accordion disclosure behavior
+  navigation:
+    canonical_path:
+      - Plus
+      - UI Blocks
+      - Marketing
+      - Page Sections
+      - FAQs
+  confidence: high
+- id: featured-post-card
+  status: draft
+  category: data-display
+  group: data-display-misc
+  kind: component
+  ko:
+    name: 대표 포스트 카드
+    aliases:
+      - featured post card
+      - 추천 글 카드
+      - 강조 포스트 카드
+  en:
+    name: Featured post card
+    aliases:
+      - Highlighted post card
+      - Spotlight article card
+  one_liner: 블로그 글 중 하나를 크게 강조해서 보여주는 대표 카드.
+  description: 블로그 홈 상단에서 가장 중요한 글 하나를 큰 이미지와 긴 요약으로 눈에 띄게 배치한다.
+  visual_anatomy:
+    - large cover image
+    - title
+    - longer excerpt
+    - author
+    - date
+    - prominent placement
+  when_to_use:
+    - 블로그 홈 최상단에서 신작이나 대표 글을 강조할 때
+  anti_use:
+    - 일반 글 목록에는 blog-post-card 그리드가 더 적합하다
+  prompt_phrases:
+    - 상단에 큰 이미지로 강조된 featured post card를 넣어줘
+  related:
+    - id: blog-post-card
+      relation: compare
+      note: blog-post-card는 표준 카드이고 featured-post-card는 그 중 하나를 크게 강조한 변형이다.
+  navigation:
+    canonical_path:
+      - Plus
+      - UI Blocks
+      - Marketing
+      - Page Sections
+      - Blog Sections
+    also_appears_in:
+      - - Plus
+        - UI Blocks
+        - Marketing
+        - Page Sections
+  asset:
+    kind: mini-mock
+    variant: featured-post-card
+  sources:
+    - source_id: blocks-so-library
+      note: shadcn block ecosystem blog and article card examples
+  confidence: medium
+- id: feed-card-mobile
+  status: draft
+  category: data-display
+  group: data-display-misc
+  ko:
+    name: 모바일 피드 카드
+    aliases:
+      - feed card mobile
+      - 피드 카드
+      - 모바일 콘텐츠 카드
+      - 세로 피드 카드
+  en:
+    name: Mobile feed card
+    aliases:
+      - Feed card
+      - Mobile content card
+  one_liner: 모바일 피드 안에서 이미지, 본문, 반응 버튼을 세로로 묶어 보여주는 카드.
+  description: SNS, 뉴스, 커뮤니티처럼 스크롤 흐름 안에서 콘텐츠 하나를 독립 단위로 보여준다.
+  visual_anatomy:
+    - thumbnail or media area
+    - title/body lines
+    - reaction actions
+    - vertical card
+  when_to_use:
+    - 모바일 피드에서 게시물이나 콘텐츠 항목을 반복해서 보여줄 때
+  anti_use:
+    - 한 화면에서 많은 항목을 비교해야 하면 compact list가 더 낫다
+  prompt_phrases:
+    - 모바일 피드에 이미지와 좋아요 버튼이 있는 feed card를 넣어줘
+  asset:
+    kind: mini-mock
+    variant: feed-card-mobile
+    props:
+      liked: false
+  sources:
+    - source_id: material-m3-components
+      note: cards in mobile content feeds
+  confidence: high
+- id: file-card
+  status: draft
+  category: data-display
+  group: data-display-misc
+  ko:
+    name: 파일 카드
+    aliases:
+      - file card
+      - 문서 카드
+      - 파일 타일
+  en:
+    name: File card
+    aliases:
+      - Document card
+      - File tile
+  one_liner: 파일 하나를 아이콘, 이름, 메타데이터, 액션과 함께 카드로 보여주는 UI.
+  description: 드라이브, 문서함, 업로드 결과에서 파일을 시각적으로 선택하게 한다.
+  visual_anatomy:
+    - file icon
+    - filename
+    - metadata
+    - preview area
+    - actions
+  when_to_use:
+    - 파일을 카드/타일 뷰로 탐색해야 할 때
+  anti_use:
+    - 열 정렬과 대량 작업이 중요하면 table이 낫다
+  prompt_phrases:
+    - PDF 아이콘과 더보기 메뉴가 있는 file card를 만들어줘
+  asset:
+    kind: mini-mock
+    variant: file-card
+    props:
+      menu: true
+  sources:
+    - source_id: material-m3-components
+      note: cards and list item composition
+  confidence: medium
+- id: help-center-card
+  status: draft
+  category: data-display
+  group: data-display-misc
+  ko:
+    name: 도움말 센터 카드
+    aliases:
+      - help center card
+      - 도움말 카드
+      - support card
+  en:
+    name: Help center card
+    aliases:
+      - Support card
+      - Help article card
+  one_liner: 도움말 문서나 지원 주제를 카드로 안내하는 UI.
+  description: 제목, 설명, 카테고리, 이동 행동을 통해 사용자를 관련 도움말로 보낸다.
+  visual_anatomy:
+    - help icon
+    - title
+    - description
+    - category
+    - link action
+  when_to_use:
+    - 설정이나 빈 상태에서 사용자가 도움말로 이동해야 할 때
+  anti_use:
+    - 질문과 답을 바로 펼치려면 FAQ list가 더 적합하다
+  prompt_phrases:
+    - 결제 도움말로 이동하는 help center card를 넣어줘
+  asset:
+    kind: mini-mock
+    variant: help-center-card
+    props:
+      link: true
+  sources:
+    - source_id: material-m3-components
+      note: cards and supporting content
+  confidence: medium
+- id: kanban
+  status: draft
+  category: data-display
+  group: data-display-misc
+  ko:
+    name: 칸반
+    aliases:
+      - kanban board
+      - 보드
+  en:
+    name: Kanban
+    aliases:
+      - Kanban board
+      - Board
+  one_liner: 항목을 상태별 열로 나눠 보여주는 보드 구조.
+  description: 할 일, 진행 중, 완료처럼 상태 column과 draggable card로 작업 흐름을 표현한다.
+  visual_anatomy:
+    - columns
+    - column headers
+    - cards
+    - drag handles optional
+  when_to_use:
+    - 작업이나 후보를 상태별로 이동시키며 관리할 때
+  anti_use:
+    - 정렬과 숫자 비교가 핵심이면 table이 낫다
+    - 항목 수가 너무 많으면 필터와 검색이 필요하다
+  prompt_phrases:
+    - 작업을 할 일 진행 중 완료 kanban board로 보여줘
+    - 카드를 상태별 열에 배치해줘
+  asset:
+    kind: diagram
+    variant: kanban
+    props:
+      columns: 3
+  sources:
+    - source_id: atlassian-design-components
+      note: board-like work management patterns
+  confidence: low
+- id: kanban-card
+  status: draft
+  category: data-display
+  group: data-display-misc
+  ko:
+    name: 칸반 카드
+    aliases:
+      - kanban card
+      - 보드 카드
+      - 작업 카드
+  en:
+    name: Kanban card
+    aliases:
+      - Board card
+      - Task card
+  one_liner: 칸반 보드의 한 작업을 제목, 라벨, 담당자, 상태로 보여주는 카드.
+  description: 보드 컬럼 안에서 드래그하거나 열어볼 수 있는 작업 단위다.
+  visual_anatomy:
+    - task title
+    - labels
+    - assignee avatar
+    - metadata
+    - drag affordance
+  when_to_use:
+    - 작업 보드에서 항목 하나를 표현할 때
+  anti_use:
+    - 보드 전체 구조는 kanban이나 board column으로 부른다
+  prompt_phrases:
+    - 라벨과 담당자 아바타가 있는 kanban card를 넣어줘
+  asset:
+    kind: mini-mock
+    variant: kanban-card
+    props:
+      labels: 2
+  sources:
+    - source_id: atlassian-design-components
+      note: card and board patterns
+  confidence: medium
+- id: media-card
+  status: draft
+  category: data-display
+  group: data-display-misc
+  ko:
+    name: 미디어 카드
+    aliases:
+      - media card
+      - 콘텐츠 카드
+      - 이미지 카드
+  en:
+    name: Media card
+    aliases:
+      - Content card
+      - Image card
+  one_liner: 이미지나 영상 썸네일과 제목, 메타 정보를 묶어 보여주는 카드.
+  description: 콘텐츠 목록에서 시각 자료를 먼저 보여주고 제목, 설명, 행동을 함께 배치한다.
+  visual_anatomy:
+    - thumbnail
+    - title
+    - metadata
+    - action area
+  when_to_use:
+    - 동영상
+    - 글
+    - 이미지 자료처럼 썸네일이 선택에 중요한 콘텐츠에서
+  anti_use:
+    - 텍스트 속성 비교가 핵심이면 table이나 list가 낫다
+  prompt_phrases:
+    - 썸네일 제목 조회수가 있는 media card를 만들어줘
+  asset:
+    kind: mini-mock
+    variant: media-card
+    props:
+      thumbnail: true
+  sources:
+    - source_id: material-m3-components
+      note: card media usage
+  confidence: high
+- id: office-location-card
+  status: draft
+  category: data-display
+  group: data-display-misc
+  kind: component
+  ko:
+    name: 오피스 위치 카드
+    aliases:
+      - office location card
+      - 지점 카드
+      - 오피스 카드
+  en:
+    name: Office location card
+    aliases:
+      - Location card
+      - Office card
+  one_liner: 회사의 특정 오피스나 지점 하나의 주소와 정보를 보여주는 카드.
+  description: 여러 지사가 있는 회사에서 각 오피스의 주소, 사진, 연락처를 개별 카드로 나열한다.
+  visual_anatomy:
+    - office photo
+    - city or branch name
+    - address
+    - contact info
+    - map link
+  when_to_use:
+    - 회사가 여러 지점을 갖고 있어 각각 소개해야 할 때
+  anti_use:
+    - 지점이 하나뿐이면 contact-info-panel 하나로 충분하다
+  prompt_phrases:
+    - 서울
+    - 도쿄 지점이 각각 카드로 있는 office location card 목록을 만들어줘
+  related:
+    - id: contact-info-panel
+      relation: compare
+      note: contact-info-panel은 일반 연락처 정보이고 office-location-card는 지점별 위치 정보에 초점이 있다.
+  navigation:
+    canonical_path:
+      - Plus
+      - UI Blocks
+      - Marketing
+      - Page Sections
+      - Contact Sections
+    also_appears_in:
+      - - Plus
+        - UI Blocks
+        - Marketing
+        - Page Sections
+  asset:
+    kind: mini-mock
+    variant: office-location-card
+  sources:
+    - source_id: blocks-so-library
+      note: shadcn block ecosystem contact and location info sections
+  confidence: medium
+- id: onboarding-checklist
+  status: draft
+  category: data-display
+  group: data-display-misc
+  ko:
+    name: 온보딩 체크리스트
+    aliases:
+      - onboarding checklist
+      - 시작 체크리스트
+      - setup checklist
+  en:
+    name: Onboarding checklist
+    aliases:
+      - Setup checklist
+      - Getting started checklist
+  one_liner: 사용자가 시작에 필요한 여러 작업을 순서대로 완료하게 돕는 체크리스트.
+  description: 계정 설정, 초대, 첫 프로젝트 생성 같은 초기 행동을 진행률과 함께 보여준다.
+  visual_anatomy:
+    - checklist rows
+    - completed check
+    - progress count
+    - next action
+  when_to_use:
+    - 신규 사용자가 초기 설정을 마쳐야 제품 가치를 볼 수 있을 때
+  anti_use:
+    - 단순 도움말 링크 목록은 help center card가 더 적합하다
+  prompt_phrases:
+    - 3단계 온보딩 체크리스트와 진행률을 넣어줘
+  asset:
+    kind: mini-mock
+    variant: onboarding-checklist
+    props:
+      completed: 2
+  sources:
+    - source_id: atlassian-design-components
+      note: onboarding and empty state guidance
+  confidence: medium
+- id: plan-card
+  status: draft
+  category: data-display
+  group: data-display-misc
+  ko:
+    name: 플랜 카드
+    aliases:
+      - plan card
+      - 요금제 카드
+      - subscription plan card
+  en:
+    name: Plan card
+    aliases:
+      - Subscription plan card
+      - Tier card
+  one_liner: 구독 플랜의 이름, 대상, 기능, 현재 선택 상태를 보여주는 카드.
+  description: price card보다 구독 tier의 차이와 현재 플랜 표시가 중심이다.
+  visual_anatomy:
+    - tier name
+    - current badge
+    - feature summary
+    - upgrade or select action
+  when_to_use:
+    - 구독 플랜을 선택하거나 변경하는 설정 화면에서
+  anti_use:
+    - 단순 가격 노출만 필요하면 price card가 더 직접적이다
+  prompt_phrases:
+    - 현재 플랜 배지가 있는 plan card 목록을 보여줘
+  asset:
+    kind: mini-mock
+    variant: plan-card
+    props:
+      current: true
+  sources:
+    - source_id: carbon-design-components
+      note: card-based product option display
+  confidence: medium
+- id: price-card
+  status: draft
+  category: data-display
+  group: data-display-misc
+  ko:
+    name: 가격 카드
+    aliases:
+      - price card
+      - 요금 카드
+      - pricing card
+  en:
+    name: Price card
+    aliases:
+      - Pricing card
+      - Price plan card
+  one_liner: 요금제나 상품 가격, 핵심 혜택, 선택 행동을 보여주는 카드.
+  description: 가격과 주요 조건을 빠르게 비교하고 사용자가 선택 행동으로 이어지게 한다.
+  visual_anatomy:
+    - plan name
+    - price
+    - billing period
+    - feature bullets
+    - select action
+  when_to_use:
+    - 요금제나 상품 옵션을 카드 형태로 제시할 때
+  anti_use:
+    - 세부 기능 비교가 많으면 comparison table과 함께 쓴다
+  prompt_phrases:
+    - 월 가격과 시작하기 버튼이 있는 price card를 넣어줘
+  asset:
+    kind: mini-mock
+    variant: price-card
+    props:
+      highlighted: true
+  sources:
+    - source_id: material-m3-components
+      note: cards and commerce-like content
+  confidence: medium
+- id: product-card
+  status: draft
+  category: data-display
+  group: data-display-misc
+  ko:
+    name: 상품 카드
+    aliases:
+      - product card
+      - 제품 카드
+      - commerce card
+  en:
+    name: Product card
+    aliases:
+      - Commerce card
+      - Item card
+  one_liner: 상품 이미지, 이름, 가격, 평점, 장바구니 행동을 묶은 카드.
+  description: 커머스 목록에서 사용자가 상품을 훑고 선택하거나 바로 담을 수 있게 한다.
+  visual_anatomy:
+    - product image
+    - title
+    - price
+    - rating
+    - add action
+  when_to_use:
+    - 상품 목록이나 추천 영역을 카드로 보여줄 때
+  anti_use:
+    - 상품 속성 비교가 핵심이면 comparison table이 낫다
+  prompt_phrases:
+    - 이미지 가격 장바구니 버튼이 있는 product card를 만들어줘
+  asset:
+    kind: mini-mock
+    variant: product-card
+    props:
+      rating: true
+  sources:
+    - source_id: material-m3-components
+      note: card component for product content
+  navigation:
+    canonical_path:
+      - Plus
+      - UI Blocks
+      - Ecommerce
+      - Components
+    also_appears_in:
+      - - Plus
+        - Templates
+        - Ecommerce Screens
+  related:
+    - id: cross-sell-related-strip
+      relation: use-with
+      note: 상품 상세나 장바구니 하단의 cross-sell related strip은 이 product card를 그대로 재사용하는 캐러셀
+        조합이다.
+  confidence: medium
+- id: profile-card
+  status: draft
+  category: data-display
+  group: data-display-misc
+  ko:
+    name: 프로필 카드
+    aliases:
+      - profile card
+      - 사용자 카드
+      - person card
+  en:
+    name: Profile card
+    aliases:
+      - User card
+      - Person card
+  one_liner: 사용자 아바타, 이름, 역할, 연락 행동을 묶은 카드.
+  description: 팀, 작성자, 고객, 담당자 정보를 카드 형태로 보여준다.
+  visual_anatomy:
+    - avatar
+    - name
+    - role
+    - metadata
+    - contact action
+  when_to_use:
+    - 사람 정보를 눈에 띄는 카드로 보여줘야 할 때
+  anti_use:
+    - 테이블 행 안의 짧은 사용자 정보는 avatar와 text만으로 충분하다
+  prompt_phrases:
+    - 아바타 이름 역할 버튼이 있는 profile card를 만들어줘
+  asset:
+    kind: mini-mock
+    variant: profile-card
+    props:
+      action: true
+  sources:
+    - source_id: material-m3-components
+      note: card and avatar composition
+  confidence: high
+- id: release-note-card
+  status: draft
+  category: data-display
+  group: data-display-misc
+  ko:
+    name: 릴리즈 노트 카드
+    aliases:
+      - release note card
+      - 업데이트 카드
+      - 변경사항 카드
+  en:
+    name: Release note card
+    aliases:
+      - Update card
+      - Changelog card
+  one_liner: 제품 업데이트 내용을 버전, 날짜, 주요 변경과 함께 보여주는 카드.
+  description: 변경 이력이나 새 기능 안내에서 항목 하나를 구조적으로 보여준다.
+  visual_anatomy:
+    - version label
+    - date
+    - change summary
+    - tags
+    - read more action
+  when_to_use:
+    - 제품 업데이트나 changelog 항목을 카드로 나열할 때
+  anti_use:
+    - 감사/보안 로그는 audit log가 더 엄격하다
+  prompt_phrases:
+    - 버전 날짜 변경 요약이 있는 release note card를 만들어줘
+  asset:
+    kind: mini-mock
+    variant: release-note-card
+    props:
+      version: true
+  sources:
+    - source_id: material-m3-components
+      note: card content patterns
+  related:
+    - id: docs-changelog-page
+      relation: use-with
+      note: release-note-card는 항목 하나의 카드 단위이고, docs-changelog-page는 그 카드를 날짜별로 그룹핑하고
+        카테고리 필터/pagination을 더한 페이지 전체 구성이다.
+  confidence: medium
+- id: story-rail
+  status: draft
+  category: data-display
+  group: data-display-misc
+  ko:
+    name: 스토리 레일
+    aliases:
+      - story rail
+      - 스토리 목록
+      - 원형 아바타 레일
+      - story carousel
+  en:
+    name: Story rail
+    aliases:
+      - Stories rail
+      - Avatar story carousel
+  one_liner: 모바일 피드 상단에 원형 아바타들을 가로로 나열해 스토리를 여는 패턴.
+  description: 짧은 임시 콘텐츠나 사용자별 스토리를 가로 스크롤 가능한 원형 목록으로 보여준다.
+  visual_anatomy:
+    - horizontal rail
+    - circular avatars
+    - active ring
+    - story labels
+  when_to_use:
+    - 사용자별 짧은 콘텐츠나 상태 업데이트를 모바일 피드 위에 둘 때
+  anti_use:
+    - 영구 콘텐츠나 복잡한 카드 목록에는 일반 carousel이나 list가 더 적합하다
+  prompt_phrases:
+    - 홈 피드 상단에 원형 아바타가 있는 story rail을 넣어줘
+  asset:
+    kind: mini-mock
+    variant: story-rail
+    props:
+      active: 0
+  sources:
+    - source_id: apple-hig-components
+      note: horizontal content browsing and avatar-based navigation
+  confidence: medium
+- id: story-viewer
+  status: draft
+  category: data-display
+  group: data-display-misc
+  ko:
+    name: 스토리 뷰어
+    aliases:
+      - story viewer
+      - 스토리 화면
+      - 탭해서 넘기는 화면
+      - 풀스크린 스토리
+  en:
+    name: Story viewer
+    aliases:
+      - Full-screen story viewer
+      - Story screen
+  one_liner: 화면 전체를 써서 짧은 콘텐츠를 보여주고 탭이나 스와이프로 넘기는 모바일 뷰어.
+  description: 진행 바, 작성자, 미디어 영역을 함께 보여주며 사용자가 다음 스토리로 빠르게 넘길 수 있다.
+  visual_anatomy:
+    - full-screen media
+    - progress bars
+    - profile header
+    - tap zones
+  when_to_use:
+    - 짧은 이미지/영상 콘텐츠를 몰입형으로 빠르게 소비하게 할 때
+  anti_use:
+    - 긴 글이나 상세 비교가 필요한 콘텐츠에는 부적합하다
+  prompt_phrases:
+    - 탭하면 다음 화면으로 넘어가는 full-screen story viewer를 만들어줘
+  asset:
+    kind: mini-mock
+    variant: story-viewer
+    props:
+      progress: true
+  sources:
+    - source_id: apple-hig-components
+      note: full-screen media browsing and paged progress
+  confidence: medium

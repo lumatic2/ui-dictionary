@@ -1,0 +1,41 @@
+# 기타 행동 (action-misc)
+# category: action · 용어 1개
+# 파생물 — 정본은 docs/ui-vocabulary/terms.yml. 손으로 고치지 마라.
+
+- id: reorder-handle
+  status: draft
+  category: action
+  group: action-misc
+  ko:
+    name: 순서 변경 핸들
+    aliases:
+      - reorder handle
+      - drag handle
+      - 잡고 끄는 핸들
+  en:
+    name: Reorder handle
+    aliases:
+      - Drag handle
+      - Move handle
+  one_liner: 항목을 잡고 끌어 순서를 바꿀 수 있음을 나타내는 작은 핸들.
+  description: 점이나 줄 아이콘으로 표현되며 리스트 항목의 왼쪽에 자주 놓인다.
+  visual_anatomy:
+    - handle icon
+    - row
+    - drag affordance
+    - moved state
+  when_to_use:
+    - 행 전체 클릭과 드래그 행동을 구분해야 할 때
+  anti_use:
+    - 드래그가 지원되지 않으면 장식으로 두지 않는다
+  prompt_phrases:
+    - 리스트 항목 왼쪽에 reorder handle을 넣어줘
+  asset:
+    kind: icon-composition
+    variant: reorder-handle
+    props:
+      draggable: true
+  sources:
+    - source_id: material-m3-components
+      note: lists and drag affordances
+  confidence: medium

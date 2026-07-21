@@ -1,0 +1,238 @@
+# 요소 판정 케이스 세트 — VL1 기준선 / VL7 처치가 공유하는 자
+#
+# 규율 (VL1 plan 스캐폴딩 결정):
+#   1. 정답 라벨은 **외부 출처**에서 온다. 우리 규칙으로 라벨링하면 순환 논증이라 측정이 무의미해진다.
+#   2. 모든 케이스에 `answer_source`(URL) + `source_quote`(원문 그대로) 필수.
+#   3. `prompt`에 요소 이름을 넣지 않는다 — 답을 유도하면 판정할 게 없어진다.
+#   4. VL7은 이 파일을 **바꾸지 않는다**. 자를 바꾸면 대조가 무너진다.
+#
+# 접근일: 전부 2026-07-21
+
+- id: disclosure-1
+  cluster: 펼침류
+  prompt: 도움말 페이지에 짧은 질문·답변 스무 덩어리가 있다. 한 화면에 다 펼치면 너무 길고, 사용자는 보통 자기 것 하나만 본다.
+  answer: accordion
+  answer_source: https://www.nngroup.com/videos/tabs-vs-accordions/
+  source_quote: "Tabs are great for a few long sections, while accordions are ideal for many short ones."
+
+- id: disclosure-2
+  cluster: 펼침류
+  prompt: 제품 상세 화면에 설명·사양·리뷰 세 덩어리가 있고 각각 길다. 사용자는 한 번에 하나만 읽으면 되고 세 개를 나란히 비교하지 않는다.
+  answer: tabs
+  answer_source: https://www.nngroup.com/videos/tabs-vs-accordions/
+  source_quote: "Tabs are great for a few long sections, while accordions are ideal for many short ones."
+
+- id: disclosure-3
+  cluster: 펼침류
+  prompt: 각 구획의 정보가 서로 독립적이고, 사용자가 두 구획을 동시에 열어둘 일이 거의 없다. 창이 작아 세로 공간도 빠듯하다.
+  answer: accordion
+  answer_source: https://www.nngroup.com/articles/accordions-on-desktop/
+  source_quote: "When the information in each section is independent and users are unlikely to need simultaneous access to multiple sections."
+
+- id: overlay-1
+  cluster: 오버레이
+  prompt: 목록에서 항목 하나를 골라 세부 내용을 손보는 작업이다. 뒤 목록이 계속 보여야 어디를 고치는 중인지 알 수 있다.
+  answer: drawer
+  answer_source: https://uxpatterns.dev/pattern-guide/modal-vs-drawer
+  source_quote: "Default to Drawer for contextual editing, inspection, filters, and navigation. Choose Modal only when the user must stop and resolve the task before continuing."
+
+- id: overlay-2
+  cluster: 오버레이
+  prompt: 되돌릴 수 없는 삭제다. 사용자가 다른 일을 계속하기 전에 반드시 이 판단을 매듭지어야 한다.
+  answer: modal
+  answer_source: https://uxpatterns.dev/pattern-guide/modal-vs-drawer
+  source_quote: "Default to Drawer for contextual editing, inspection, filters, and navigation. Choose Modal only when the user must stop and resolve the task before continuing."
+
+- id: overlay-3
+  cluster: 오버레이
+  prompt: 편집할 항목이 많아 내용이 화면 높이를 넘어 스크롤해야 한다.
+  answer: drawer
+  also_acceptable: [full-page]
+  answer_source: https://carbondesignsystem.com/components/modal/usage/
+  source_quote: "If enough fields are editable to require scrolling, use a side-panel or full-page edit dialog instead."
+
+- id: floating-1
+  cluster: 떠있는 것
+  prompt: 사용자가 이걸 보는 동안에도 뒤 화면을 계속 조작할 수 있어야 한다. 급히 붙잡아 세울 일이 아니다.
+  answer: popover
+  also_acceptable: [flyout, tooltip]
+  answer_source: https://learn.microsoft.com/en-us/windows/apps/develop/ui/controls/dialogs-and-flyouts/
+  source_quote: "Given that dialogs block interactions and flyouts do not, dialogs should be reserved for situations where you want the user to drop everything to focus on a specific bit of information."
+
+- id: floating-2
+  cluster: 떠있는 것
+  prompt: 버튼을 누르면 작은 면이 뜨고 그 안에 실행할 수 있는 동작 몇 개가 들어간다.
+  answer: popover
+  answer_source: https://polaris-react.shopify.com/components
+  source_quote: "Use popovers for presenting a set of actions in a disclosable menu."
+
+- id: single-choice-1
+  cluster: 단일 선택 입력
+  prompt: 서로 배타적인 보기가 셋이고 사용자는 반드시 하나를 고른다. 화면에 자리는 넉넉하다.
+  answer: radio
+  answer_source: https://www.nngroup.com/articles/checkboxes-vs-radio-buttons/
+  source_quote: "Radio buttons are used when there is a list of two or more options that are mutually exclusive and the user must select exactly one choice."
+
+- id: single-choice-2
+  cluster: 단일 선택 입력
+  prompt: 고를 수 있는 보기가 열둘이고 하나만 고른다.
+  answer: select
+  also_acceptable: [dropdown, listbox]
+  answer_source: https://www.nngroup.com/articles/listbox-dropdown/
+  source_quote: "it's better to use a listbox or dropdown list when there are 5 or more items from which users can choose."
+
+- id: single-choice-3
+  cluster: 단일 선택 입력
+  prompt: 보기가 넷인데 화면에 자리가 있고, 사용자가 네 개를 나란히 견주어 보고 정하면 좋겠다.
+  answer: radio
+  answer_source: https://www.nngroup.com/articles/checkboxes-vs-radio-buttons/
+  source_quote: "If possible, use radio buttons rather than drop-down menus."
+
+- id: on-off-1
+  cluster: 온오프 입력
+  prompt: 보기 목록에서 사용자가 아무것도 안 고를 수도, 여러 개를 고를 수도 있다.
+  answer: checkbox
+  answer_source: https://www.nngroup.com/articles/checkboxes-vs-radio-buttons/
+  source_quote: "Checkboxes are used when there are lists of options and the user may select any number of choices, including zero, one, or several."
+
+- id: collection-1
+  cluster: 목록 표시
+  prompt: 사용자가 여러 항목의 값을 서로 견주고, 열을 기준으로 정렬해가며 촘촘한 자료를 훑는다.
+  answer: table
+  answer_source: https://uxpatterns.dev/pattern-guide/table-vs-list-vs-cards
+  source_quote: "Use Table when users must compare attributes across multiple items, sort columns, or scan dense structured data."
+
+- id: collection-2
+  cluster: 목록 표시
+  prompt: 사용자가 위에서 아래로 죽 읽어 내려가고, 항목마다 눈에 담을 값은 두어 개뿐이다.
+  answer: list
+  answer_source: https://uxpatterns.dev/pattern-guide/table-vs-list-vs-cards
+  source_quote: "Use List View when users mainly read down a single stream and only a few key attributes matter per item."
+
+- id: collection-3
+  cluster: 목록 표시
+  prompt: 표지 이미지를 보고 고르는 일이다. 항목끼리 값을 나란히 대조하는 것보다 눈으로 훑는 게 중요하다.
+  answer: card
+  also_acceptable: [card-grid]
+  answer_source: https://uxpatterns.dev/pattern-guide/table-vs-list-vs-cards
+  source_quote: "Use Card Grid when visual browsing matters more than strict side-by-side comparison."
+
+- id: load-more-1
+  cluster: 더 불러오기
+  prompt: 검색 결과다. 사용자가 특정 지점으로 바로 뛰거나, 주소를 공유하거나, 나중에 다시 같은 자리로 돌아오는 일이 잦다.
+  answer: pagination
+  answer_source: https://uxpatterns.dev/pattern-guide/pagination-vs-infinite-scroll-vs-load-more
+  source_quote: "Use Pagination when users need precision: page jumps, stable URLs, revisiting earlier results, or stronger SEO support."
+
+- id: load-more-2
+  cluster: 더 불러오기
+  prompt: 모바일 피드다. 끊김 없이 계속 훑어보는 것이 목적이고, 사용자가 멈출 지점을 따로 필요로 하지 않는다.
+  answer: infinite-scroll
+  answer_source: https://uxpatterns.dev/pattern-guide/pagination-vs-infinite-scroll-vs-load-more
+  source_quote: "Use Infinite Scroll when the product is optimized for continuous discovery and the main goal is uninterrupted browsing momentum."
+
+- id: load-more-3
+  cluster: 더 불러오기
+  prompt: 조금씩 더 보여주되 사용자가 언제 더 볼지 스스로 정하게 하고 싶다. 화면 아래 영역에도 계속 닿을 수 있어야 한다.
+  answer: load-more
+  answer_source: https://uxpatterns.dev/pattern-guide/pagination-vs-infinite-scroll-vs-load-more
+  source_quote: "Use Load More when you want progressive disclosure without giving up user control, footer access, or implementation sanity."
+
+- id: finding-1
+  cluster: 찾기
+  prompt: 사용자가 이미 있는 글을 찾거나 자료를 걸러낸다. 그 도구가 화면에 늘 보이는 편이 낫다.
+  answer: search-field
+  answer_source: https://uxpatterns.dev/pattern-guide/search-field-vs-command-palette
+  source_quote: "Use Search Field when the main job is finding existing content, filtering data, or giving users a visible retrieval control."
+
+- id: finding-2
+  cluster: 찾기
+  prompt: 이미 복잡한 제품이고, 숙련 사용자가 키보드만으로 동작·이동·최근 항목을 한자리에서 처리하길 원한다.
+  answer: command-palette
+  answer_source: https://uxpatterns.dev/pattern-guide/search-field-vs-command-palette
+  source_quote: "Use Command Palette when the product needs a keyboard-first launcher for actions, destinations, recent items, and power-user workflows."
+
+- id: notification-1
+  cluster: 알림
+  prompt: 방금 저장이 잘 됐다는 것을 알린다. 급하지 않고 세 마디면 끝난다.
+  answer: toast
+  answer_source: https://polaris-react.shopify.com/components/feedback-indicators/toast
+  source_quote: "For success messages"
+
+- id: notification-2
+  cluster: 알림
+  prompt: 계속 남아 있는 오류다. 사용자가 이걸 해결하기 전까지 상황이 그대로다.
+  answer: banner
+  answer_source: https://polaris-react.shopify.com/components/feedback-indicators/toast
+  source_quote: "Avoid using toast for error messages. Always try to use a banner to prominently inform merchants about persistent errors."
+
+- id: waiting-1
+  cluster: 기다림·비어있음
+  prompt: 화면 전체가 뜨는 데 3초쯤 걸린다. 그동안 사용자는 무엇이 오는지 감을 잡을 수 있으면 좋겠다.
+  answer: skeleton
+  also_acceptable: [spinner]
+  answer_source: https://www.nngroup.com/articles/skeleton-screens/
+  source_quote: "Skeleton screens (with the exception of frame-display ones) are better when the full screen is loading because the wireframe gives users a sense of what the page will look like"
+
+- id: waiting-2
+  cluster: 기다림·비어있음
+  prompt: 처리에 15초쯤 걸린다.
+  answer: progress-bar
+  answer_source: https://www.nngroup.com/articles/skeleton-screens/
+  source_quote: "progress bars are strongly recommended for any page that takes longer that 10 seconds to load"
+
+- id: waiting-3
+  cluster: 기다림·비어있음
+  prompt: 대시보드 안의 카드 하나만 자료를 불러오는 중이다. 나머지 화면은 이미 다 떠 있다.
+  answer: spinner
+  answer_source: https://www.nngroup.com/articles/skeleton-screens/
+  source_quote: "Spinners are typically best used on a single module, like a video or a card which is on a dashboard."
+
+- id: waiting-4
+  cluster: 기다림·비어있음
+  prompt: 조회가 끝났는데 조건에 맞는 자료가 하나도 없다. 화면을 그냥 비워두면 사용자가 고장인지 아닌지 모른다.
+  answer: empty-state
+  answer_source: https://www.nngroup.com/articles/empty-state-interface-design/
+  source_quote: "Totally empty states cause confusion about how and whether the system is working."
+
+- id: longform-1
+  cluster: 긴 폼
+  prompt: 처음 쓰는 사람이 어쩌다 한 번 하는 초기 설정 절차다.
+  answer: wizard
+  answer_source: https://www.nngroup.com/articles/wizards/
+  source_quote: "Use wizards for novice users or infrequent processes (e.g., configuration or setup)."
+
+- id: longform-2
+  cluster: 긴 폼
+  prompt: 사용자가 이 페이지의 내용 대부분을 다 봐야 답을 찾는다.
+  answer: single-long-form
+  answer_source: https://www.nngroup.com/articles/accordions-on-desktop/
+  source_quote: "When your audience requires the majority or all the content on the page to find answers to their questions, show all the content at once."
+
+- id: mobile-switch-1
+  cluster: 모바일 뷰 전환
+  prompt: 앱의 서로 완전히 분리된 최상위 영역들 사이를 오간다.
+  answer: tab-bar
+  answer_source: https://developer.apple.com/design/human-interface-guidelines/tab-bars
+  source_quote: "A tab bar lets people navigate between top-level sections of your app."
+
+- id: mobile-switch-2
+  cluster: 모바일 뷰 전환
+  prompt: 같은 화면 안에서 서로 밀접하게 연관된 하위 화면들을 빠르게 갈아 끼운다. 완전히 다른 영역으로 가는 게 아니다.
+  answer: segmented-control
+  answer_source: https://developer.apple.com/design/human-interface-guidelines/segmented-controls
+  source_quote: "Consider a segmented control to switch between closely related subviews. ... For switching between completely separate sections of an app, use a tab bar instead."
+
+- id: on-off-2
+  cluster: 온오프 입력
+  prompt: 켜고 끄면 그 자리에서 바로 반영되어야 한다. 저장 버튼을 누를 필요가 없다.
+  answer: toggle-switch
+  answer_source: https://www.nngroup.com/articles/toggle-switch-guidelines/
+  source_quote: "Toggle switches should take immediate effect and should not require the user to click Save or Submit to apply the new state."
+
+- id: on-off-3
+  cluster: 온오프 입력
+  prompt: 다른 입력들과 함께 있는 긴 폼이고, 변경은 제출 버튼을 눌러야 적용된다.
+  answer: checkbox
+  answer_source: https://www.nngroup.com/articles/toggle-switch-guidelines/
+  source_quote: "If you're considering including toggles in long forms where other types of form fields are present, and users will need to click a Submit button for other changes to take effect, don't."

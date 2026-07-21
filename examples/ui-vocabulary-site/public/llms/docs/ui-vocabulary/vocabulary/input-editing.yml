@@ -1,0 +1,88 @@
+# 인라인 편집 (input-editing)
+# category: input · 용어 2개
+# 파생물 — 정본은 docs/ui-vocabulary/terms.yml. 손으로 고치지 마라.
+
+- id: inline-edit
+  status: draft
+  category: input
+  group: input-editing
+  ko:
+    name: 인라인 편집
+    aliases:
+      - inline edit
+      - 바로 수정
+      - 직접 편집
+  en:
+    name: Inline edit
+    aliases:
+      - Inline editing
+      - Editable text
+  one_liner: 표시된 텍스트를 같은 자리에서 바로 입력 상태로 바꾸는 패턴.
+  description: 제목, 이름, 라벨처럼 짧은 값을 상세 화면 이동 없이 수정하게 한다.
+  visual_anatomy:
+    - display text
+    - edit affordance
+    - focused input state
+    - save or confirm behavior
+  when_to_use:
+    - 짧은 텍스트를 빠르게 수정해야 할 때
+    - 목록이나 상세 화면 맥락을 유지해야 할 때
+  anti_use:
+    - 복잡한 폼이나 검증이 많은 값에는 별도 편집 화면이 낫다
+    - 편집 가능 여부가 숨겨지면 안 된다
+  prompt_phrases:
+    - 제목을 클릭하면 inline edit로 바로 수정되게 해줘
+    - 이름 옆에 연필 아이콘을 넣어줘
+  asset:
+    kind: mini-mock
+    variant: inline-edit
+    props:
+      editing: true
+  sources:
+    - source_id: atlassian-design-components
+      note: inline edit component pattern
+  related:
+    - id: data-grid
+      relation: compare
+      note: inline edit는 제목·이름 같은 단일 필드를 그 자리에서 바로 고치는 패턴이고, data grid는 셀 단위 편집에 키보드
+        탐색(Tab/Enter/Escape)과 행/셀 단위 저장 상태 표시까지 포함하는 더 넓은 그리드 전체의 편집 계약이다
+  confidence: medium
+- id: rich-text-editor
+  status: draft
+  category: input
+  group: input-editing
+  ko:
+    name: 리치 텍스트 에디터
+    aliases:
+      - rich text editor
+      - WYSIWYG
+      - 서식 편집기
+  en:
+    name: Rich text editor
+    aliases:
+      - WYSIWYG editor
+      - Formatting editor
+  one_liner: 굵게, 링크, 목록 같은 서식을 포함해 글을 작성하는 입력 영역.
+  description: 본문 작성, 댓글, 문서 편집처럼 텍스트에 구조와 스타일을 넣어야 할 때 쓴다.
+  visual_anatomy:
+    - formatting toolbar
+    - editable area
+    - selection state
+    - placeholder
+  when_to_use:
+    - 사용자가 긴 글에 서식이나 링크를 넣어야 할 때
+  anti_use:
+    - 단순 메모에는 textarea가 더 가볍다
+    - 저장 형식과 접근성을 고려하지 않고 붙이지 않는다
+  prompt_phrases:
+    - 본문 작성용 rich text editor를 넣어줘
+    - 굵게 링크 목록 버튼이 있는 에디터를 만들어줘
+  asset:
+    kind: mini-mock
+    variant: rich-text-editor
+    props:
+      toolbar: true
+  sources:
+    - source_id: wai-aria-apg-patterns
+      note: toolbar pattern for editor controls
+  confidence: medium

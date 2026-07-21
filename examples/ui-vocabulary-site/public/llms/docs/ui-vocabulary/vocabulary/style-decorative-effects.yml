@@ -1,0 +1,513 @@
+# 장식·배경 효과 (style-decorative-effects)
+# category: style · 용어 14개
+# 파생물 — 정본은 docs/ui-vocabulary/terms.yml. 손으로 고치지 마라.
+
+- id: animated-gradient-background
+  status: draft
+  category: style
+  group: style-decorative-effects
+  kind: visual-treatment
+  ko:
+    name: 애니메이션 그라디언트 배경
+    aliases:
+      - animated gradient
+      - 움직이는 그라디언트
+      - gradient background
+  en:
+    name: Animated gradient background
+    aliases:
+      - Moving gradient background
+      - Gradient animation
+  one_liner: 배경의 색상 흐름이 천천히 움직이며 화면에 동적인 분위기를 주는 효과.
+  description: 히어로, 빈 상태, 로딩 화면에서 정적인 배경보다 부드러운 움직임을 줄 때 사용한다.
+  visual_anatomy:
+    - gradient surface
+    - animated color stops
+    - soft motion
+    - content overlay
+  when_to_use:
+    - 랜딩이나 AI 화면에서 배경에 은은한 동적 분위기를 줄 때
+  anti_use:
+    - 업무용 밀도 높은 폼이나 표 화면에서는 집중을 방해할 수 있다
+  prompt_phrases:
+    - 히어로 배경에 은은한 animated gradient background를 넣어줘
+  asset:
+    kind: mini-mock
+    variant: animated-gradient-background
+  sources:
+    - source_id: magic-ui-docs
+      note: Magic UI background and animation effect examples
+  confidence: medium
+- id: aurora-background
+  status: draft
+  category: style
+  group: style-decorative-effects
+  kind: visual-treatment
+  ko:
+    name: 오로라 배경
+    aliases:
+      - aurora background
+      - 오로라 그라디언트
+      - aurora effect
+  en:
+    name: Aurora background
+    aliases:
+      - Aurora effect
+      - Aurora gradient
+  one_liner: 오로라처럼 넓은 색 덩어리가 부드럽게 흐르는 랜딩 페이지 배경 효과.
+  description: 차분하지만 인상적인 첫 화면이나 제품 소개 섹션에 큰 분위기를 만든다.
+  visual_anatomy:
+    - soft color bands
+    - large blur
+    - animated drift
+    - foreground content
+  when_to_use:
+    - 브랜드 랜딩의 hero 배경을 강하게 만들 때
+  anti_use:
+    - 색 대비가 낮아지면 CTA와 본문 가독성이 떨어질 수 있다
+  prompt_phrases:
+    - 첫 화면 배경을 부드러운 aurora background로 만들어줘
+  asset:
+    kind: mini-mock
+    variant: aurora-background
+  sources:
+    - source_id: aceternity-ui-docs
+      note: Aceternity aurora background examples
+  confidence: medium
+- id: background-beams
+  status: draft
+  category: style
+  group: style-decorative-effects
+  kind: visual-treatment
+  ko:
+    name: 배경 빔
+    aliases:
+      - background beams
+      - beam background
+      - 빛줄기 배경
+  en:
+    name: Background beams
+    aliases:
+      - Beam background
+      - Light beams
+  one_liner: 배경에 흐르는 빛줄기나 선형 광선을 깔아 공간감과 움직임을 주는 효과.
+  description: 히어로나 CTA 섹션에서 미래적이고 기술적인 분위기를 만들 때 사용한다.
+  visual_anatomy:
+    - beam lines
+    - soft glow
+    - dark or light surface
+    - content overlay
+  when_to_use:
+    - AI/개발자 도구 랜딩의 첫 화면에 강한 시각 신호가 필요할 때
+  anti_use:
+    - 텍스트 가독성이 중요한 본문 섹션에는 쓰지 않는다
+  prompt_phrases:
+    - AI 제품 hero 뒤에 background beams 효과를 넣어줘
+  asset:
+    kind: mini-mock
+    variant: background-beams
+  sources:
+    - source_id: aceternity-ui-docs
+      note: Aceternity background beams examples
+  confidence: medium
+- id: border-beam
+  status: draft
+  category: style
+  group: style-decorative-effects
+  kind: visual-effect
+  ko:
+    name: 보더 빔
+    aliases:
+      - border beam
+      - 빛나는 테두리
+      - animated border
+  en:
+    name: Border beam
+    aliases:
+      - Animated border beam
+      - Glowing border
+  one_liner: 카드나 버튼 테두리를 따라 빛이 이동하는 강조 효과.
+  description: 새 기능, 추천 플랜, AI 응답 카드처럼 특정 표면을 은은하게 강조할 때 쓴다.
+  visual_anatomy:
+    - surface border
+    - moving highlight
+    - rounded corners
+    - focused content
+  when_to_use:
+    - 중요한 카드나 CTA를 과하지 않게 강조할 때
+  anti_use:
+    - 상태나 오류를 전달해야 하면 alert나 status-indicator가 더 명확하다
+  prompt_phrases:
+    - 추천 플랜 카드에 border beam 효과를 넣어줘
+  asset:
+    kind: mini-mock
+    variant: border-beam
+  sources:
+    - source_id: magic-ui-docs
+      note: Magic UI border beam effect examples
+  confidence: medium
+- id: canvas-reveal-card
+  status: draft
+  category: style
+  group: style-decorative-effects
+  kind: visual-effect
+  ko:
+    name: 캔버스 리빌 카드
+    aliases:
+      - canvas reveal card
+      - reveal card
+      - 캔버스 효과 카드
+  en:
+    name: Canvas reveal card
+    aliases:
+      - Reveal card
+      - Canvas hover card
+  one_liner: hover 시 캔버스 기반 패턴이나 빛 효과가 드러나는 인터랙티브 카드.
+  description: 기능 카드나 팀 카드에 일반 hover보다 강한 시각적 reveal을 주는 마케팅 효과다.
+  visual_anatomy:
+    - card surface
+    - hidden canvas effect
+    - hover reveal
+    - foreground content
+  when_to_use:
+    - 랜딩 카드에 고유한 hover reveal 효과를 주고 싶을 때
+  anti_use:
+    - 정적인 정보 카드나 접근성이 중요한 업무 화면에는 과하다
+  prompt_phrases:
+    - 서비스 카드에 hover하면 패턴이 드러나는 canvas reveal card를 넣어줘
+  asset:
+    kind: mini-mock
+    variant: canvas-reveal-card
+  sources:
+    - source_id: aceternity-ui-docs
+      note: Aceternity canvas reveal card examples
+  confidence: medium
+- id: dot-pattern-background
+  status: draft
+  category: style
+  group: style-decorative-effects
+  kind: visual-treatment
+  ko:
+    name: 점 패턴 배경
+    aliases:
+      - dot pattern
+      - dotted background
+      - 점 배경
+  en:
+    name: Dot pattern background
+    aliases:
+      - Dotted background
+      - Dot grid
+  one_liner: 작은 점들이 반복되는 배경 패턴으로 빈 공간에 질서 있는 질감을 주는 요소.
+  description: 히어로, empty state, feature section 뒤에 배경 질감을 추가하되 콘텐츠 위계를 유지한다.
+  visual_anatomy:
+    - repeating dots
+    - muted contrast
+    - fade mask
+    - content layer
+  when_to_use:
+    - 미니멀한 화면에 가벼운 배경 질감이 필요할 때
+  anti_use:
+    - 복잡한 카드 그리드 뒤에서는 시각적 혼잡을 만든다
+  prompt_phrases:
+    - 빈 상태 뒤에 연한 dot pattern background를 깔아줘
+  asset:
+    kind: mini-mock
+    variant: dot-pattern-background
+  sources:
+    - source_id: magic-ui-docs
+      note: Magic UI dot pattern background examples
+  confidence: medium
+- id: grid-pattern-background
+  status: draft
+  category: style
+  group: style-decorative-effects
+  kind: visual-treatment
+  ko:
+    name: 그리드 패턴 배경
+    aliases:
+      - grid pattern background
+      - 격자 배경
+      - grid background
+  en:
+    name: Grid pattern background
+    aliases:
+      - Grid background
+      - Graph paper background
+  one_liner: 얇은 격자선을 배경에 깔아 기술적이거나 구조적인 분위기를 주는 배경 패턴.
+  description: 히어로, 빈 상태, 개발자 도구 화면에서 공간감을 주되 콘텐츠를 방해하지 않게 한다.
+  visual_anatomy:
+    - repeating grid lines
+    - muted color
+    - content overlay
+    - optional fade mask
+  when_to_use:
+    - 기술 제품 랜딩이나 캔버스형 화면의 배경을 만들 때
+  anti_use:
+    - 글이 많은 본문이나 폼에서는 가독성을 해칠 수 있다
+  prompt_phrases:
+    - 히어로 섹션 뒤에 흐린 grid pattern background를 넣어줘
+  asset:
+    kind: mini-mock
+    variant: grid-pattern-background
+  sources:
+    - source_id: magic-ui-docs
+      note: Magic UI grid and pattern background examples
+  confidence: medium
+- id: marquee-row
+  status: draft
+  category: style
+  group: style-decorative-effects
+  kind: motion-pattern
+  ko:
+    name: 마키 행
+    aliases:
+      - marquee row
+      - 흐르는 카드 행
+      - 자동 스크롤 행
+      - 로고 마키
+  en:
+    name: Marquee row
+    aliases:
+      - Scrolling marquee
+      - Auto-scrolling row
+      - Logo marquee
+  one_liner: 로고, 후기, 카드가 가로로 계속 흐르며 반복되는 자동 스크롤 행.
+  description: 많은 항목을 압축해서 보여주거나 랜딩 페이지에 움직임을 줄 때 사용한다.
+  visual_anatomy:
+    - horizontal track
+    - repeated items
+    - masked edges
+    - continuous motion
+  when_to_use:
+    - 로고 목록이나 후기 카드를 흐르는 형태로 보여줄 때
+  anti_use:
+    - 사용자가 항목을 읽고 선택해야 하면 carousel이나 grid가 더 낫다
+  prompt_phrases:
+    - 고객 로고가 천천히 흐르는 marquee row를 넣어줘
+  asset:
+    kind: mini-mock
+    variant: marquee-row
+  sources:
+    - source_id: magic-ui-docs
+      note: Magic UI marquee component examples
+  confidence: medium
+- id: orbiting-icons
+  status: draft
+  category: style
+  group: style-decorative-effects
+  kind: motion-pattern
+  ko:
+    name: 궤도 아이콘
+    aliases:
+      - orbiting icons
+      - orbit icons
+      - 회전 아이콘
+  en:
+    name: Orbiting icons
+    aliases:
+      - Orbit icons
+      - Icon orbit
+  one_liner: 중심 대상 주변을 여러 아이콘이 원형 궤도로 배치되거나 회전하는 시각 패턴.
+  description: 제품이 여러 도구와 연결되거나 중심 기능 주변에 생태계가 있음을 상징적으로 보여준다.
+  visual_anatomy:
+    - center object
+    - circular orbit
+    - icon nodes
+    - motion path
+  when_to_use:
+    - 연동
+    - 생태계
+    - AI agent 주변 도구를 시각적으로 보여줄 때
+  anti_use:
+    - 정확한 관계나 상태를 읽어야 하면 integration-grid-section이 더 명확하다
+  prompt_phrases:
+    - AI 로고 주변에 도구 아이콘이 도는 orbiting icons를 만들어줘
+  asset:
+    kind: mini-mock
+    variant: orbiting-icons
+  sources:
+    - source_id: magic-ui-docs
+      note: Magic UI orbiting circles/icon examples
+  confidence: medium
+- id: scroll-fade
+  status: draft
+  category: style
+  group: style-decorative-effects
+  kind: visual-treatment
+  ko:
+    name: 스크롤 페이드
+    aliases:
+      - scroll fade
+      - edge fade
+      - 스크롤 가장자리 페이드
+  en:
+    name: Scroll fade
+    aliases:
+      - Edge fade
+      - Scroll edge fade
+  one_liner: 스크롤 가능한 영역의 가장자리에 페이드 효과를 넣어 더 볼 콘텐츠가 있음을 암시하는 시각 효과.
+  description: 가로 첨부 목록, 채팅 기록, 카드 레일처럼 경계 밖 콘텐츠가 이어지는 영역에서 스크롤 가능성을 부드럽게 보여준다.
+  visual_anatomy:
+    - scroll container
+    - fading edge
+    - clipped content
+    - optional snap row
+  when_to_use:
+    - 스크롤바 없이도 추가 콘텐츠가 있음을 알려야 할 때
+  anti_use:
+    - 콘텐츠가 잘리면 안 되는 핵심 정보 영역에는 쓰지 않는다
+  prompt_phrases:
+    - 가로 카드 목록 양끝에 scroll fade를 넣어줘
+  asset:
+    kind: mini-mock
+    variant: scroll-fade
+  sources:
+    - source_id: shadcn-ui-docs
+      note: scroll-fade utility listed in shadcn utilities
+  confidence: medium
+- id: shimmer-effect
+  status: draft
+  category: style
+  group: style-decorative-effects
+  kind: visual-effect
+  ko:
+    name: 쉬머 효과
+    aliases:
+      - shimmer
+      - shimmer text
+      - 반짝임 로딩
+  en:
+    name: Shimmer effect
+    aliases:
+      - Shimmer
+      - Shimmer text
+  one_liner: 텍스트나 로딩 표면 위에 은은히 흐르는 빛 효과를 주어 진행 중 상태를 표현하는 효과.
+  description: AI가 생각 중이거나 파일을 처리 중일 때 정적인 로딩 문구보다 생동감 있게 진행 상태를 보여준다.
+  visual_anatomy:
+    - shimmering text
+    - animated highlight
+    - loading marker
+    - muted base color
+  when_to_use:
+    - 스트리밍이나 처리 중 상태를 짧은 문구로 보여줄 때
+    - conversation-marker나 skeleton과 함께 진행감을 줄 때
+  anti_use:
+    - 완료된 정보나 긴 본문에는 주의를 분산시킨다
+  prompt_phrases:
+    - Thinking 문구에 shimmer effect를 적용해줘
+  asset:
+    kind: mini-mock
+    variant: shimmer-effect
+  sources:
+    - source_id: shadcn-ui-docs
+      note: shimmer utility listed in shadcn utilities and marker examples
+  confidence: medium
+- id: spotlight-card
+  status: draft
+  category: style
+  group: style-decorative-effects
+  kind: visual-effect
+  ko:
+    name: 스포트라이트 카드
+    aliases:
+      - spotlight card
+      - 마우스 빛 카드
+      - hover spotlight
+  en:
+    name: Spotlight card
+    aliases:
+      - Hover spotlight card
+      - Cursor spotlight
+  one_liner: 마우스 위치나 hover 상태에 따라 카드 표면에 빛 번짐이 나타나는 카드 효과.
+  description: 기능 카드나 갤러리 카드에 상호작용감을 주되 카드 정보 구조는 유지한다.
+  visual_anatomy:
+    - card surface
+    - radial highlight
+    - hover area
+    - content stack
+  when_to_use:
+    - 마케팅 카드에 hover 반응과 깊이를 주고 싶을 때
+  anti_use:
+    - 데이터 테이블이나 반복 업무 UI에서는 시각 noise가 될 수 있다
+  prompt_phrases:
+    - feature card에 hover spotlight card 효과를 넣어줘
+  asset:
+    kind: mini-mock
+    variant: spotlight-card
+  sources:
+    - source_id: magic-ui-docs
+      note: Magic UI interactive card and spotlight effects
+  confidence: medium
+- id: three-d-card
+  status: draft
+  category: style
+  group: style-decorative-effects
+  kind: visual-effect
+  ko:
+    name: 3D 카드
+    aliases:
+      - 3d card
+      - tilt card
+      - 기울어지는 카드
+  en:
+    name: 3D card
+    aliases:
+      - Tilt card
+      - 3D hover card
+  one_liner: hover나 마우스 위치에 따라 입체적으로 기울어지는 카드 효과.
+  description: 포트폴리오, 제품 카드, 랜딩 feature card에 깊이감과 상호작용감을 준다.
+  visual_anatomy:
+    - card surface
+    - perspective tilt
+    - hover depth
+    - layered content
+  when_to_use:
+    - 마케팅 카드나 포트폴리오 카드에 입체 반응을 주고 싶을 때
+  anti_use:
+    - 정확한 읽기와 반복 작업이 중요한 admin UI에는 피한다
+  prompt_phrases:
+    - 제품 카드에 hover하면 기울어지는 3D card 효과를 넣어줘
+  asset:
+    kind: mini-mock
+    variant: three-d-card
+  sources:
+    - source_id: aceternity-ui-docs
+      note: Aceternity 3D card hover component examples
+  confidence: medium
+- id: tracing-beam-section
+  status: draft
+  category: style
+  group: style-decorative-effects
+  kind: motion-pattern
+  ko:
+    name: 트레이싱 빔 섹션
+    aliases:
+      - tracing beam
+      - scroll tracing beam
+      - 스크롤 빔
+  en:
+    name: Tracing beam section
+    aliases:
+      - Scroll tracing beam
+      - Timeline beam
+  one_liner: 스크롤 진행에 따라 세로 빛줄기나 선이 콘텐츠 옆을 따라 내려가는 섹션.
+  description: 긴 설명, 스토리, 로드맵을 읽는 동안 현재 위치를 시각적으로 따라가게 한다.
+  visual_anatomy:
+    - vertical beam
+    - scroll progress
+    - content sections
+    - active highlight
+  when_to_use:
+    - 긴 랜딩 설명이나 타임라인형 스토리에 진행감을 주고 싶을 때
+  anti_use:
+    - 짧은 카드 목록에는 단순 divider나 timeline이 더 명확하다
+  prompt_phrases:
+    - 스크롤하면 왼쪽 빔이 따라오는 tracing beam section을 만들어줘
+  asset:
+    kind: mini-mock
+    variant: tracing-beam-section
+  sources:
+    - source_id: aceternity-ui-docs
+      note: Aceternity tracing beam examples
+  confidence: medium

@@ -1,0 +1,863 @@
+# 탐색 전환 (selection-navigation)
+# category: selection · 용어 21개
+# 파생물 — 정본은 docs/ui-vocabulary/terms.yml. 손으로 고치지 마라.
+
+- id: anchor-nav
+  status: draft
+  category: selection
+  group: selection-navigation
+  ko:
+    name: 앵커 내비게이션
+    aliases:
+      - anchor nav
+      - 목차 링크
+      - 섹션 내비게이션
+  en:
+    name: Anchor navigation
+    aliases:
+      - In-page navigation
+      - Table of contents nav
+  one_liner: 같은 페이지 안의 섹션으로 이동하는 링크 목록.
+  description: 긴 문서나 설정 화면에서 현재 섹션을 보여주고 클릭하면 해당 위치로 스크롤한다. 문서 사이트의 우측 고정 rail은
+    IntersectionObserver 기반 scroll spy로 스크롤 위치에 따라 활성 섹션 항목을 자동으로 강조하는 형태로 자주
+    쓰인다.
+  visual_anatomy:
+    - section links
+    - active section
+    - sticky side or top area
+    - anchor targets
+    - scroll-spy active highlight
+  when_to_use:
+    - 한 페이지가 길고 섹션이 명확할 때
+    - 사용자가 원하는 부분으로 바로 이동해야 할 때
+  anti_use:
+    - 페이지가 짧으면 불필요하다
+    - 앱의 주요 페이지 이동과 섞지 않는다
+  prompt_phrases:
+    - 문서 왼쪽에 anchor navigation을 넣어줘
+    - 스크롤 위치에 따라 현재 섹션을 강조해줘
+  asset:
+    kind: mini-mock
+    variant: anchor-nav
+    props:
+      active: 1
+  sources:
+    - source_id: apple-hig-components
+      note: navigation and content structure guidance
+  confidence: medium
+- id: back-button
+  status: draft
+  category: selection
+  group: selection-navigation
+  ko:
+    name: 뒤로가기 버튼
+    aliases:
+      - back button
+      - 이전 버튼
+      - 뒤로
+  en:
+    name: Back button
+    aliases:
+      - Back navigation
+      - Previous button
+  one_liner: 이전 화면이나 상위 화면으로 돌아가게 하는 내비게이션 버튼.
+  description: 상세 화면, 설정 하위 화면, 모바일 내비게이션에서 현재 흐름을 되돌린다.
+  visual_anatomy:
+    - left arrow icon
+    - optional label
+    - top bar placement
+    - navigation target
+  when_to_use:
+    - 사용자가 상세나 하위 화면에서 원래 위치로 돌아가야 할 때
+  anti_use:
+    - 취소나 닫기 행동과 의미를 섞지 않는다
+    - 브라우저 뒤로가기와 충돌하지 않게 한다
+  prompt_phrases:
+    - 상단 왼쪽에 back button을 넣어줘
+    - 뒤로가기 화살표와 이전 라벨을 보여줘
+  asset:
+    kind: mini-mock
+    variant: back-button
+    props:
+      label: 이전
+  sources:
+    - source_id: apple-hig-components
+      note: navigation bars and back affordance
+  confidence: high
+- id: bottom-navigation
+  status: draft
+  category: selection
+  group: selection-navigation
+  ko:
+    name: 하단 내비게이션
+    aliases:
+      - bottom navigation
+      - bottom nav
+      - 하단 탭
+  en:
+    name: Bottom navigation
+    aliases:
+      - Bottom nav
+      - Navigation bar
+  one_liner: 모바일 화면 하단에 주요 목적지를 아이콘과 라벨로 배치한 내비게이션.
+  description: 앱의 최상위 섹션을 엄지로 쉽게 전환하게 한다.
+  visual_anatomy:
+    - bottom bar
+    - destination icons
+    - labels
+    - active indicator
+    - optional badge
+  when_to_use:
+    - 모바일 앱의 주요 섹션이 3-5개일 때
+    - 어디서든 최상위 목적지로 이동해야 할 때
+  anti_use:
+    - 일회성 행동이나 설정을 목적지로 넣지 않는다
+    - 항목이 너무 많으면 숨김 메뉴를 검토한다
+  prompt_phrases:
+    - 모바일 화면 아래에 bottom navigation을 넣어줘
+    - 홈 검색 프로필 3개 탭을 하단에 배치해줘
+  asset:
+    kind: mini-mock
+    variant: bottom-navigation
+    props:
+      items: 3
+  sources:
+    - source_id: mui-material-components
+      note: bottom navigation component definition
+  confidence: high
+- id: breadcrumb
+  status: draft
+  category: selection
+  group: selection-navigation
+  ko:
+    name: 브레드크럼
+    aliases:
+      - 현재 위치 경로
+      - breadcrumb
+  en:
+    name: Breadcrumb
+    aliases:
+      - Breadcrumb navigation
+  one_liner: 현재 페이지가 전체 구조에서 어디인지 보여주는 경로 표시.
+  description: 홈부터 현재 페이지까지 상위 경로를 링크로 나열한다.
+  visual_anatomy:
+    - ancestor links
+    - separators
+    - current page label
+  when_to_use:
+    - 계층 구조가 깊은 사이트에서 현재 위치를 알려줄 때
+    - 상위 페이지로 돌아가기 쉽게 할 때
+  anti_use:
+    - 단일 페이지나 얕은 구조에는 불필요하다
+    - 주요 navigation을 대체하지 않는다
+  prompt_phrases:
+    - 상단에 홈 > 대시보드 > 설정 breadcrumb를 넣어줘
+    - 현재 위치 경로를 브레드크럼으로 보여줘
+  asset:
+    kind: mini-mock
+    variant: breadcrumb
+    props:
+      depth: 3
+  sources:
+    - source_id: material-m3-components
+      note: navigation patterns
+  related:
+    - id: pagination
+      relation: use-with
+      note: 문서 사이트에서는 상단 breadcrumb(계층 위치)와 하단 prev/next pagination(선형 이동)이 한 세트로 쓰여
+        순서가 있는 학습 경로를 만든다.
+  confidence: medium
+- id: breadcrumbs-menu
+  status: draft
+  category: selection
+  group: selection-navigation
+  ko:
+    name: 브레드크럼 메뉴
+    aliases:
+      - breadcrumb menu
+      - 경로 메뉴
+      - sibling path menu
+  en:
+    name: Breadcrumbs menu
+    aliases:
+      - Breadcrumb menu
+      - Path menu
+  one_liner: 브레드크럼의 한 경로 항목에서 형제 위치를 펼쳐 고르는 메뉴.
+  description: 현재 위치를 보여주면서 같은 깊이의 다른 섹션으로 빠르게 이동하게 한다.
+  visual_anatomy:
+    - breadcrumb path
+    - menu trigger
+    - sibling options
+    - current item
+  when_to_use:
+    - 계층 경로 안에서 형제 페이지 이동이 잦을 때
+  anti_use:
+    - 경로가 짧고 단순하면 일반 breadcrumb가 충분하다
+  prompt_phrases:
+    - breadcrumb의 중간 항목을 누르면 sibling menu가 열리게 해줘
+  asset:
+    kind: mini-mock
+    variant: breadcrumbs-menu
+    props:
+      menu: true
+  sources:
+    - source_id: wai-aria-apg-patterns
+      note: menu button pattern
+  confidence: medium
+- id: data-import-wizard-validation-preview
+  status: draft
+  category: selection
+  group: selection-navigation
+  kind: block
+  ko:
+    name: 데이터 임포트 검증 위저드
+    aliases:
+      - import wizard
+      - CSV 임포트 마법사
+      - 데이터 가져오기 검증 미리보기
+  en:
+    name: Data import wizard with validation preview
+    aliases:
+      - CSV import wizard
+      - Import validation wizard
+  one_liner: 파일 업로드부터 컬럼 매핑, 행 단위 검증 미리보기, 결과 요약까지 이어지는 다단계 데이터 임포트 흐름.
+  description: CSV·파일 업로드 이후 컬럼을 자동·수동으로 매핑하고, 제출 전 행·열 단위 오류를 미리보기에서 강조해 실패를 줄인다.
+  visual_anatomy:
+    - file upload step
+    - auto-detected column mapping table
+    - manual remap control per column
+    - when-blank default choice
+    - preview table with row-level error highlighting
+    - inline fix affordance
+    - import summary count
+  when_to_use:
+    - 사용자가 대량의 외부 데이터를 업로드해 시스템에 반영해야 할 때
+  anti_use:
+    - 시작 방법 자체를 고르는 단계라면 import-data-choice가 더 적합하다 — 이 위저드는 방법을 고른 이후의 실제 임포트
+      실행 흐름이다
+  prompt_phrases:
+    - CSV 업로드 후 컬럼 매핑과 오류 미리보기가 있는 data import wizard를 만들어줘
+    - 행 단위 오류를 강조하는 임포트 검증 미리보기를 넣어줘
+  asset:
+    kind: mini-mock
+    variant: data-import-wizard-validation-preview
+    props:
+      step: 3
+  sources:
+    - source_id: material-m3-components
+      note: progress and navigation pattern for multi-step flows
+  related:
+    - id: wizard
+      relation: compare
+      note: wizard는 다단계 흐름의 일반 패턴이고, 이 항목은 파일 업로드→컬럼 매핑→행 단위 검증 미리보기→제출 요약으로 이어지는 데이터
+        임포트에 특화된 구체적 인스턴스다
+    - id: import-data-choice
+      relation: compare
+      note: import-data-choice는 CSV·직접 입력·외부 연결 중 시작 방법을 고르는 선택 UI이고, 이 위저드는 그 방법을 고른
+        이후 실제 파일을 매핑·검증·제출하는 다단계 실행 흐름이다
+  confidence: medium
+- id: edge-swipe-back
+  status: draft
+  category: selection
+  group: selection-navigation
+  ko:
+    name: 가장자리 스와이프 뒤로가기
+    aliases:
+      - edge swipe back
+      - 화면 왼쪽에서 밀어 뒤로가기
+      - 스와이프 백
+      - 뒤로가기 제스처
+      - 가장자리 스와이프 백 제스처
+  en:
+    name: Edge swipe back
+    aliases:
+      - Swipe back gesture
+      - Back edge gesture
+      - Edge swipe back gesture
+  one_liner: 화면 가장자리에서 안쪽으로 밀어 이전 화면으로 돌아가는 모바일 내비게이션 제스처.
+  description: 뒤로가기 버튼 없이도 화면 계층을 자연스럽게 빠져나가게 하는 플랫폼 관습이다.
+  visual_anatomy:
+    - screen edge
+    - back chevron cue
+    - shifted page surface
+    - previous screen hint
+  when_to_use:
+    - 모바일 앱의 상세 화면에서 이전 화면으로 돌아가는 흐름을 설명할 때
+  anti_use:
+    - 앱 내부 가로 스와이프와 충돌하지 않게 한다
+    - 중요한 닫기 행동은 명시 버튼도 고려한다
+  prompt_phrases:
+    - 상세 화면에서 왼쪽 가장자리를 밀면 뒤로가는 edge swipe back 제스처를 고려해줘
+  asset:
+    kind: mini-mock
+    variant: edge-swipe-back
+    props:
+      offset: true
+  sources:
+    - source_id: apple-hig-components
+      note: edge swipe navigation gesture
+  confidence: medium
+- id: mobile-segmented-tabs
+  status: draft
+  category: selection
+  group: selection-navigation
+  ko:
+    name: 모바일 세그먼트 탭
+    aliases:
+      - mobile segmented tabs
+      - 상단 세그먼트 탭
+      - 모바일 구분 탭
+      - 세그먼트 뷰 전환기
+  en:
+    name: Mobile segmented tabs
+    aliases:
+      - Segmented tabs
+      - Mobile segmented control
+      - Segmented view switcher
+  one_liner: 모바일 화면 상단에서 같은 화면 안의 하위 보기들을 짧은 세그먼트 버튼으로 전환하는 패턴.
+  description: 전체/인기/내 항목처럼 같은 맥락의 보기만 빠르게 바꿀 때, 탭보다 compact한 형태로 쓴다.
+  visual_anatomy:
+    - segmented container
+    - two to four options
+    - selected segment
+    - content below
+  when_to_use:
+    - 모바일에서 같은 화면의 하위 필터나 보기 모드를 전환할 때
+  anti_use:
+    - 앱의 최상위 목적지 전환에는 tab bar나 bottom navigation을 쓴다
+    - 옵션이 많으면 chip group이나 dropdown을 검토한다
+  prompt_phrases:
+    - 모바일 화면 상단에 전체 인기 내 글을 바꾸는 segmented tabs를 넣어줘
+  asset:
+    kind: mini-mock
+    variant: mobile-segmented-tabs
+    props:
+      active: 0
+  sources:
+    - source_id: apple-hig-components
+      note: segmented controls for switching closely related views
+  confidence: high
+- id: navigation-bar
+  status: draft
+  category: selection
+  group: selection-navigation
+  ko:
+    name: 내비게이션 바
+    aliases:
+      - navbar
+      - nav bar
+      - 상단 메뉴
+  en:
+    name: Navigation bar
+    aliases:
+      - Navbar
+      - Nav bar
+  one_liner: 주요 페이지나 섹션으로 이동하는 링크를 한 줄로 배치한 영역.
+  description: 웹사이트나 앱 상단에서 브랜드, 메뉴, 행동 버튼을 함께 담는 경우가 많다.
+  visual_anatomy:
+    - brand area
+    - navigation links
+    - active link
+    - optional actions
+  when_to_use:
+    - 여러 주요 페이지를 반복적으로 이동해야 할 때
+    - 현재 섹션을 상단에서 보여줘야 할 때
+  anti_use:
+    - 명령 메뉴와 혼동하지 않는다
+    - 너무 많은 링크는 grouping이나 sidebar를 검토한다
+  prompt_phrases:
+    - 상단에 logo와 메뉴 링크가 있는 navigation bar를 넣어줘
+    - 현재 페이지 메뉴를 강조해줘
+  asset:
+    kind: mini-mock
+    variant: navigation-bar
+    props:
+      active: 0
+  sources:
+    - source_id: material-m3-components
+      note: app bars and navigation components
+  confidence: high
+- id: navigation-menu
+  status: draft
+  category: selection
+  group: selection-navigation
+  ko:
+    name: 내비게이션 메뉴
+    aliases:
+      - navigation menu
+      - 상단 메가 메뉴
+      - 제품 내비게이션 메뉴
+  en:
+    name: Navigation menu
+    aliases:
+      - NavigationMenu
+      - Top navigation menu
+  one_liner: 상단 내비게이션 항목을 누르거나 hover했을 때 하위 링크 패널을 보여주는 메뉴.
+  description: 제품, 리소스, 솔루션처럼 상위 항목 아래에 여러 링크 그룹이 있는 웹사이트 내비게이션에 적합하다.
+  visual_anatomy:
+    - top nav trigger
+    - active item
+    - dropdown panel
+    - grouped links
+    - viewport transition
+  when_to_use:
+    - 마케팅 사이트나 문서 사이트의 상단 메뉴에 여러 하위 링크 그룹을 넣을 때
+  anti_use:
+    - 앱 내부 주요 이동은 sidebar navigation이나 tabs가 더 적합할 수 있다
+    - 단순 명령 목록은 dropdown menu를 쓴다
+  prompt_phrases:
+    - 상단에 제품과 리소스가 펼쳐지는 navigation menu를 만들어줘
+  asset:
+    kind: mini-mock
+    variant: navigation-menu
+    props:
+      open: true
+  sources:
+    - source_id: shadcn-ui-docs
+      note: Navigation Menu component reference
+  related:
+    - id: mega-menu
+      relation: compare
+      note: 콘텐츠가 더 크고 마케팅형이면 mega menu, shadcn식 상단 링크 패널은 navigation menu라고 부른다.
+    - id: sidebar-nav
+      relation: alternative
+      note: 앱 내부 반복 사용 내비게이션은 sidebar navigation이 더 일반적이다.
+  confidence: high
+- id: navigation-rail
+  status: draft
+  category: selection
+  group: selection-navigation
+  ko:
+    name: 내비게이션 레일
+    aliases:
+      - 좌측 아이콘 메뉴
+      - nav rail
+  en:
+    name: Navigation rail
+    aliases:
+      - Nav rail
+  one_liner: 화면 한쪽에 세로로 배치된 주요 목적지 이동 영역.
+  description: 아이콘과 짧은 라벨로 주요 섹션을 전환하며 데스크톱/태블릿 레이아웃에서 자주 쓰인다.
+  visual_anatomy:
+    - vertical rail
+    - destination icons
+    - active indicator
+    - optional labels
+  when_to_use:
+    - 앱의 주요 섹션이 3-7개일 때
+    - 콘텐츠 영역을 넓게 유지하고 싶을 때
+  anti_use:
+    - 복잡한 계층 메뉴는 sidebar가 낫다
+    - 모바일 하단 navigation과 경쟁시키지 않는다
+  prompt_phrases:
+    - 왼쪽에 아이콘 중심 navigation rail을 넣어줘
+    - 현재 메뉴가 강조된 세로 내비게이션을 만들어줘
+  asset:
+    kind: mini-mock
+    variant: navigation-rail
+    props:
+      active: 0
+  sources:
+    - source_id: material-m3-components
+      note: navigation rail component
+  confidence: high
+- id: onboarding-carousel-skip-pattern
+  status: draft
+  category: selection
+  group: selection-navigation
+  ko:
+    name: 건너뛰기 있는 온보딩 페이저
+    aliases:
+      - onboarding skip pattern
+      - 온보딩 건너뛰기
+      - 스킵 가능한 온보딩
+  en:
+    name: Onboarding carousel skip pattern
+    aliases:
+      - Skippable onboarding flow
+      - Onboarding skip rule
+  one_liner: 온보딩 모든 페이지에서 항상 건너뛰기가 가능하고, 한 번 건너뛰면 다음 실행부터 다시 노출되지 않는 규칙.
+  description: onboarding-pager의 페이지 넘김 구조 위에, 언제나 접근 가능한 건너뛰기 버튼과 건너뛴 뒤 재실행 시
+    자동으로 다시 보여주지 않는 규칙, 그리고 도움말/설정에서 다시 찾아볼 수 있는 경로까지 묶은 상태 계약이다.
+    onboarding-pager 자체의 anatomy는 점과 다음 버튼만 서술하며 건너뛰기 상태나 재노출 금지 규칙은 명시하지 않는다.
+  visual_anatomy:
+    - illustration per page
+    - headline per page
+    - page dots indicator
+    - persistent skip button top-trailing
+    - primary cta last page
+  when_to_use:
+    - 첫 실행 온보딩에서 사용자가 언제든 이탈할 수 있어야 할 때
+    - 건너뛴 온보딩을 다음 실행부터 다시 보여주지 않아야 할 때
+  anti_use:
+    - 건너뛰기 버튼을 특정 페이지에서만 노출하지 않는다
+    - 건너뛴 뒤에도 매 실행마다 다시 노출하지 않는다
+  prompt_phrases:
+    - 온보딩 모든 페이지에서 건너뛰기 버튼이 보이게 해줘
+    - 건너뛰면 다음 실행부터는 온보딩을 다시 보여주지 마
+  asset:
+    kind: mini-mock
+    variant: onboarding-carousel-skip-pattern
+    props:
+      pages: 3
+      skip: true
+  sources:
+    - source_id: apple-hig-components
+      note: onboarding should be brief skippable and should not force users to repeat
+        it
+  related:
+    - id: onboarding-pager
+      relation: compare
+      note: onboarding-pager는 점과 다음 버튼으로 이루어진 페이지 넘김 구조 자체를 가리키고, 이 항목은 그 위에 언제나 접근
+        가능한 건너뛰기와 재노출 금지 규칙을 추가한 상태 계약이다.
+  confidence: high
+- id: onboarding-pager
+  status: draft
+  category: selection
+  group: selection-navigation
+  ko:
+    name: 온보딩 페이저
+    aliases:
+      - onboarding pager
+      - 온보딩 넘김 화면
+      - 시작 화면 점
+      - 튜토리얼 페이지
+  en:
+    name: Onboarding pager
+    aliases:
+      - Onboarding carousel
+      - Intro pager
+  one_liner: 앱 첫 사용 흐름에서 여러 소개 화면을 좌우로 넘기고 점으로 위치를 보여주는 패턴.
+  description: 핵심 가치나 초기 설정을 짧은 페이지 묶음으로 설명하고 다음 행동으로 이어준다.
+  visual_anatomy:
+    - illustration area
+    - headline
+    - page dots
+    - next or start button
+  when_to_use:
+    - 새 사용자가 앱의 핵심 기능을 처음 이해해야 할 때
+  anti_use:
+    - 사용자가 바로 써야 하는 도구에서 긴 온보딩을 강제하지 않는다
+  prompt_phrases:
+    - 앱 첫 실행에 3장짜리 onboarding pager를 넣고 하단에 점을 보여줘
+  asset:
+    kind: mini-mock
+    variant: onboarding-pager
+    props:
+      pages: 3
+  sources:
+    - source_id: apple-hig-components
+      note: onboarding should be brief and skippable
+  confidence: high
+- id: page-control
+  status: draft
+  category: selection
+  group: selection-navigation
+  ko:
+    name: 페이지 컨트롤
+    aliases:
+      - page control
+      - 페이지 점
+      - 인디케이터 점
+      - 온보딩 점
+  en:
+    name: Page control
+    aliases:
+      - Page indicator dots
+      - Pagination dots
+  one_liner: 좌우로 넘기는 모바일 화면에서 현재 페이지 위치를 점으로 보여주는 컨트롤.
+  description: 온보딩, 스토리, 캐러셀처럼 짧은 페이지 묶음에서 사용자가 현재 위치를 알게 한다.
+  visual_anatomy:
+    - dot indicators
+    - active dot
+    - page count
+    - swipeable page
+  when_to_use:
+    - 모바일에서 2-5개 정도의 페이지나 카드 묶음을 넘길 때
+  anti_use:
+    - 페이지 수가 많거나 임의 접근이 중요하면 pagination이나 tabs가 더 명확하다
+  prompt_phrases:
+    - 온보딩 화면 아래에 현재 위치를 보여주는 page control 점을 넣어줘
+  asset:
+    kind: mini-mock
+    variant: page-control
+    props:
+      pages: 4
+  sources:
+    - source_id: apple-hig-components
+      note: page controls indicate current page in a sequence
+  confidence: high
+- id: pagination
+  status: draft
+  category: selection
+  group: selection-navigation
+  ko:
+    name: 페이지네이션
+    aliases:
+      - 페이지 이동
+      - pagination
+  en:
+    name: Pagination
+    aliases:
+      - Page navigation
+  one_liner: 긴 목록을 여러 페이지로 나누고 이동하게 하는 요소.
+  description: 이전/다음, 페이지 번호, 현재 페이지 표시로 구성된다.
+  visual_anatomy:
+    - previous button
+    - page numbers
+    - active page
+    - next button
+  when_to_use:
+    - 데이터가 많아 한 번에 모두 보여주기 어려울 때
+    - 사용자가 위치를 유지하며 탐색해야 할 때
+  anti_use:
+    - 끊김 없는 탐색이 더 중요하면 infinite scroll을 검토한다
+    - 적은 항목에는 불필요하다
+  prompt_phrases:
+    - 테이블 아래에 pagination을 넣어줘
+    - 이전 다음 버튼과 페이지 번호를 보여줘
+  asset:
+    kind: mini-mock
+    variant: pagination
+    props:
+      page: 2
+  sources:
+    - source_id: shadcn-ui-docs
+      note: pagination component
+  related:
+    - id: breadcrumb
+      relation: use-with
+      note: 문서 페이지 하단의 이전/다음 문서 링크(prev/next)는 pagination의 한 형태로, 상단 breadcrumb와 함께 쓰여
+        선형 학습 경로를 만든다.
+  confidence: high
+- id: scope-bar
+  status: draft
+  category: selection
+  group: selection-navigation
+  ko:
+    name: 스코프 바
+    aliases:
+      - 검색 범위 바
+      - scope tabs
+      - scope bar
+  en:
+    name: Scope bar
+    aliases:
+      - Search scope bar
+      - Scope tabs
+  one_liner: 검색이나 필터 결과의 범위를 상단에서 빠르게 전환하는 선택 막대.
+  description: 전체, 파일, 사람, 메시지처럼 검색 범주를 좁히는 iOS/macOS 계열 탐색 패턴이다.
+  visual_anatomy:
+    - segmented scope options
+    - selected scope
+    - result context
+    - compact horizontal bar
+  when_to_use:
+    - 검색 결과를 몇 개의 명확한 범주로 빠르게 전환해야 할 때
+  anti_use:
+    - 일반 화면 콘텐츠 전환에는 tabs나 segmented control이 더 보편적이다
+  prompt_phrases:
+    - 검색 결과 위에 전체 파일 사람 scope bar를 넣어줘
+  asset:
+    kind: mini-mock
+    variant: scope-bar
+    props:
+      active: 0
+  sources:
+    - source_id: apple-hig-components
+      note: platform search and filtering convention
+  confidence: medium
+- id: sidebar-nav
+  status: draft
+  category: selection
+  group: selection-navigation
+  ko:
+    name: 사이드바 내비게이션
+    aliases:
+      - 사이드 메뉴
+      - sidebar menu
+  en:
+    name: Sidebar navigation
+    aliases:
+      - Side navigation
+      - Sidebar menu
+  one_liner: 화면 옆에 메뉴 목록을 세로로 배치한 내비게이션.
+  description: 섹션, 하위 메뉴, active 상태를 함께 보여주며 관리 도구에 자주 쓰인다.
+  visual_anatomy:
+    - side panel
+    - nav items
+    - active item
+    - optional nested groups
+  when_to_use:
+    - 대시보드나 관리 화면처럼 반복 탐색이 필요할 때
+    - 메뉴 계층을 계속 보여줘야 할 때
+  anti_use:
+    - 단순 랜딩 페이지에는 과하다
+    - 좁은 모바일에서는 drawer나 bottom nav로 바꾼다
+  prompt_phrases:
+    - 대시보드 왼쪽에 sidebar navigation을 넣어줘
+    - 활성 메뉴가 표시된 사이드 메뉴를 만들어줘
+  asset:
+    kind: mini-mock
+    variant: sidebar-nav
+    props:
+      active: 1
+  sources:
+    - source_id: atlassian-design-components
+      note: side navigation pattern
+  confidence: medium
+- id: stepper
+  status: draft
+  category: selection
+  group: selection-navigation
+  ko:
+    name: 스테퍼
+    aliases:
+      - 단계 표시
+      - progress steps
+      - 단계 네비게이션
+  en:
+    name: Stepper
+    aliases:
+      - Progress steps
+      - Wizard steps
+  one_liner: 여러 단계로 된 절차에서 현재 진행 단계를 보여주는 요소.
+  description: 가입, 결제, 설정 마법사처럼 순서가 있는 과정을 단계로 표시한다.
+  visual_anatomy:
+    - step indicators
+    - completed state
+    - active step
+    - connecting line
+  when_to_use:
+    - 사용자가 몇 단계 중 어디에 있는지 알아야 할 때
+    - 순서대로 완료하는 흐름일 때
+  anti_use:
+    - 단일 화면 작업에는 과하다
+    - 순서가 자유로운 탐색에는 tabs가 더 적합할 수 있다
+  prompt_phrases:
+    - 가입 절차를 보여주는 stepper를 넣어줘
+    - 현재 2단계가 강조된 단계 표시를 만들어줘
+  asset:
+    kind: mini-mock
+    variant: stepper
+    props:
+      current: 2
+  sources:
+    - source_id: material-m3-components
+      note: progress and navigation pattern
+  confidence: medium
+- id: tab-bar
+  status: draft
+  category: selection
+  group: selection-navigation
+  ko:
+    name: 탭 바
+    aliases:
+      - tab bar
+      - 모바일 탭바
+      - iOS 탭
+  en:
+    name: Tab bar
+    aliases:
+      - iOS tab bar
+      - Mobile tab bar
+  one_liner: 앱의 여러 섹션을 전환하는 하단 또는 상단 탭형 내비게이션.
+  description: 각 탭은 앱의 동등한 주요 영역으로 이동하며 아이콘과 라벨을 함께 쓰는 경우가 많다.
+  visual_anatomy:
+    - bar container
+    - tab icons
+    - tab labels
+    - selected tab
+    - optional badge
+  when_to_use:
+    - 앱의 주요 섹션을 빠르게 오갈 때
+    - 현재 선택된 섹션을 계속 보여줘야 할 때
+  anti_use:
+    - 서로 관련 없는 행동 버튼을 탭으로 넣지 않는다
+    - 섹션이 너무 많으면 sidebar나 more 탭을 검토한다
+  prompt_phrases:
+    - 하단에 tab bar를 넣고 홈 검색 설정 탭을 보여줘
+    - 선택된 탭은 아이콘과 라벨을 강조해줘
+  asset:
+    kind: mini-mock
+    variant: tab-bar
+    props:
+      active: 0
+  sources:
+    - source_id: apple-hig-components
+      note: tab bars for app sections
+  confidence: high
+- id: tree-navigation
+  status: draft
+  category: selection
+  group: selection-navigation
+  ko:
+    name: 트리 내비게이션
+    aliases:
+      - tree navigation
+      - 계층 메뉴
+      - 폴더형 내비게이션
+  en:
+    name: Tree navigation
+    aliases:
+      - Navigation tree
+      - Hierarchical navigation
+  one_liner: 계층 구조를 펼치고 접으며 목적지로 이동하는 내비게이션.
+  description: 문서, 파일, 설정처럼 부모-자식 관계가 있는 항목을 탐색할 때 쓴다.
+  visual_anatomy:
+    - parent node
+    - disclosure icon
+    - child nodes
+    - active item
+  when_to_use:
+    - 정보 구조가 계층적이고 사용자가 하위 항목을 탐색해야 할 때
+  anti_use:
+    - 항목이 평면적이면 sidebar navigation이나 list가 단순하다
+  prompt_phrases:
+    - 문서 목차를 펼치고 접는 tree navigation으로 보여줘
+  asset:
+    kind: mini-mock
+    variant: tree-navigation
+    props:
+      active: true
+  sources:
+    - source_id: wai-aria-apg-patterns
+      note: treeview pattern
+  confidence: high
+- id: wizard
+  status: draft
+  category: selection
+  group: selection-navigation
+  ko:
+    name: 위저드
+    aliases:
+      - wizard
+      - 단계형 폼
+      - multi-step flow
+  en:
+    name: Wizard
+    aliases:
+      - Multi-step flow
+      - Step-by-step form
+  one_liner: 복잡한 작업을 여러 단계 화면으로 나눠 순서대로 진행하게 하는 흐름.
+  description: 가입, 설정, 결제처럼 한 번에 입력하기 많은 절차를 단계별로 줄인다.
+  visual_anatomy:
+    - step indicator
+    - current panel
+    - next button
+    - back button
+  when_to_use:
+    - 복잡한 작업을 순서대로 안내해야 할 때
+  anti_use:
+    - 간단한 폼을 불필요하게 여러 단계로 쪼개지 않는다
+  prompt_phrases:
+    - 가입 과정을 3단계 wizard로 만들어줘
+  asset:
+    kind: mini-mock
+    variant: wizard
+    props:
+      step: 2
+  sources:
+    - source_id: material-m3-components
+      note: progress and navigation pattern
+  confidence: medium

@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "active_work_id": "ect4-image-contract",
+  "active_work_id": "vl8-human-observation",
   "works": {
     "SFB1": {
       "title": "Structure Contract And Clean Production",
@@ -3266,6 +3266,423 @@
       "updated_at": "2026-07-21",
       "notes": "Registered atomically by canonical harness approve_harness_plan.py after plan validation.",
       "completion_summary": "허용 바인딩 키의 정본이 `canvas-core` 하나가 됐다."
+    },
+    "vl1-flow-audit": {
+      "work_id": "vl1-flow-audit",
+      "horizon_id": "vocabulary-in-use",
+      "milestone_id": "VL1",
+      "status": "completed",
+      "plan_path": "plans/2026-07-21-vl1-flow-audit.md",
+      "changeset_path": "changesets",
+      "next_step": "step-1",
+      "current_step": "step-1",
+      "steps": [
+        {
+          "id": "step-1",
+          "label": "step-1 — 현행 경로 계측",
+          "status": "pending"
+        },
+        {
+          "id": "step-2",
+          "label": "step-2 — 갭 장부 계수",
+          "status": "pending"
+        },
+        {
+          "id": "step-3",
+          "label": "step-3 — 케이스 세트 + 기준선 측정",
+          "status": "pending"
+        }
+      ],
+      "execution_mode": "continuous",
+      "approval": {
+        "approved_by": "user",
+        "approved_at": "2026-07-21",
+        "plan_sha256": "b0d55eae72eda499f65ad829d558068d209d56758cdd722a449f9e943ff6417d"
+      },
+      "allowed_stop_reasons": [
+        "completed",
+        "blocked",
+        "decision_required",
+        "risk_gate",
+        "secret_required",
+        "external_authority_required",
+        "user_stopped"
+      ],
+      "stop_reason": null,
+      "stop_detail": {},
+      "session_ids": [
+        "claude:037069fb-2833-497c-ae4e-3f985ecea495"
+      ],
+      "owner_session_uuid": "claude:037069fb-2833-497c-ae4e-3f985ecea495",
+      "updated_at": "2026-07-21",
+      "notes": "Registered atomically by canonical harness approve_harness_plan.py after plan validation.",
+      "completion_summary": "VL1 완료 — 배포본 실사로 용어 사전이 에이전트 경로 밖임을 확정하고, 기준선 84.4%를 쟀다. 12군집 중 8군집이 이미 만점이라 결정 계층(VL4·VL5·VL7) 규모 재검토가 필요하다."
+    },
+    "vl2-vocabulary-publication": {
+      "work_id": "vl2-vocabulary-publication",
+      "horizon_id": "vocabulary-in-use",
+      "milestone_id": "VL2",
+      "status": "completed",
+      "plan_path": "plans/2026-07-21-vl2-vocabulary-publication.md",
+      "changeset_path": "changesets",
+      "next_step": "step-1",
+      "current_step": "step-1",
+      "steps": [
+        {
+          "id": "step-1",
+          "label": "step-1 — 샤딩 생성기",
+          "status": "pending"
+        },
+        {
+          "id": "step-2",
+          "label": "step-2 — 조회 규약 문서",
+          "status": "pending"
+        },
+        {
+          "id": "step-3",
+          "label": "step-3 — llms.txt 등재",
+          "status": "pending"
+        }
+      ],
+      "execution_mode": "continuous",
+      "approval": {
+        "approved_by": "user",
+        "approved_at": "2026-07-21",
+        "plan_sha256": "e8a4f6b4f9f5f4bf2356bdb361929e28ad1c6e8ab6f1aa7f97b1ed0539ad412e"
+      },
+      "allowed_stop_reasons": [
+        "completed",
+        "blocked",
+        "decision_required",
+        "risk_gate",
+        "secret_required",
+        "external_authority_required",
+        "user_stopped"
+      ],
+      "stop_reason": null,
+      "stop_detail": {},
+      "session_ids": [
+        "claude:037069fb-2833-497c-ae4e-3f985ecea495"
+      ],
+      "owner_session_uuid": "claude:037069fb-2833-497c-ae4e-3f985ecea495",
+      "updated_at": "2026-07-21",
+      "notes": "Registered atomically by canonical harness approve_harness_plan.py after plan validation.",
+      "completion_summary": "VL2 완료 — 562개 용어를 인덱스+샤드 58개로 배포해 조회 2 fetch로 만들고, 끊긴 참조 91곳을 전부 해소했다. 재생성이 샤드를 조용히 지우던 결함을 커밋 전에 잡았다."
+    },
+    "vl3-reference-repair": {
+      "work_id": "vl3-reference-repair",
+      "horizon_id": "vocabulary-in-use",
+      "milestone_id": "VL3",
+      "status": "completed",
+      "plan_path": "plans/2026-07-21-vl3-reference-repair.md",
+      "changeset_path": "changesets",
+      "next_step": "step-1",
+      "current_step": "step-1",
+      "steps": [
+        {
+          "id": "step-1",
+          "label": "step-1 — 3자 매핑 생성",
+          "status": "pending"
+        },
+        {
+          "id": "step-2",
+          "label": "step-2 — 끊긴 참조 해소 + 무결성 검사",
+          "status": "pending"
+        },
+        {
+          "id": "step-3",
+          "label": "step-3 — 자산 없는 용어의 폴백 규약",
+          "status": "pending"
+        }
+      ],
+      "execution_mode": "continuous",
+      "approval": {
+        "approved_by": "user",
+        "approved_at": "2026-07-21",
+        "plan_sha256": "f27c9db98afda96b4b6111ac475530398cbd0acf9da9a1f93c53ac9ffb88eba2"
+      },
+      "allowed_stop_reasons": [
+        "completed",
+        "blocked",
+        "decision_required",
+        "risk_gate",
+        "secret_required",
+        "external_authority_required",
+        "user_stopped"
+      ],
+      "stop_reason": null,
+      "stop_detail": {},
+      "session_ids": [
+        "claude:037069fb-2833-497c-ae4e-3f985ecea495"
+      ],
+      "owner_session_uuid": "claude:037069fb-2833-497c-ae4e-3f985ecea495",
+      "updated_at": "2026-07-21",
+      "notes": "Registered atomically by canonical harness approve_harness_plan.py after plan validation.",
+      "completion_summary": "VL3 완료 — 용어별로 무엇으로 만들 수 있는지 답하는 매핑을 세우고, 자산 없는 481개에 폴백 구현 경로를 부여했다(combobox로 실증). 무결성은 --strict 게이트로 잠갔다."
+    },
+    "vl4-decision-data-contract": {
+      "work_id": "vl4-decision-data-contract",
+      "horizon_id": "vocabulary-in-use",
+      "milestone_id": "VL4",
+      "status": "completed",
+      "plan_path": "plans/2026-07-21-vl4-decision-data-contract.md",
+      "changeset_path": "changesets",
+      "next_step": "step-1",
+      "current_step": "step-1",
+      "steps": [
+        {
+          "id": "step-1",
+          "label": "step-1 — 포맷 계약 문서",
+          "status": "pending"
+        },
+        {
+          "id": "step-2",
+          "label": "step-2 — 검증기",
+          "status": "pending"
+        },
+        {
+          "id": "step-3",
+          "label": "step-3 — 첫 군집(펼침류)",
+          "status": "pending"
+        }
+      ],
+      "execution_mode": "continuous",
+      "approval": {
+        "approved_by": "user",
+        "approved_at": "2026-07-21",
+        "plan_sha256": "c8507163d7790af6fced5b1052002baef981a991b4724e5fcc64ac95d8857360"
+      },
+      "allowed_stop_reasons": [
+        "completed",
+        "blocked",
+        "decision_required",
+        "risk_gate",
+        "secret_required",
+        "external_authority_required",
+        "user_stopped"
+      ],
+      "stop_reason": null,
+      "stop_detail": {},
+      "session_ids": [
+        "claude:037069fb-2833-497c-ae4e-3f985ecea495"
+      ],
+      "owner_session_uuid": "claude:037069fb-2833-497c-ae4e-3f985ecea495",
+      "updated_at": "2026-07-21",
+      "notes": "Registered atomically by canonical harness approve_harness_plan.py after plan validation.",
+      "completion_summary": "VL4 완료 — 판별 축을 담을 자리를 만들고 검증기로 잠갔다. 첫 군집에서 규칙 순서가 곧 판정이라는 것을 분리력 검증이 잡았다."
+    },
+    "vl5-cluster-corpus": {
+      "work_id": "vl5-cluster-corpus",
+      "horizon_id": "vocabulary-in-use",
+      "milestone_id": "VL5",
+      "status": "completed",
+      "plan_path": "plans/2026-07-21b-vl5-cluster-corpus-narrowed.md",
+      "changeset_path": "changesets",
+      "next_step": "step-1",
+      "current_step": "step-1",
+      "steps": [
+        {
+          "id": "step-1",
+          "label": "step-1 — 오판 배치 (3군)",
+          "status": "pending"
+        },
+        {
+          "id": "step-2",
+          "label": "step-2 — 미확인 배치 (3군, 원문 확보된 것만)",
+          "status": "pending"
+        },
+        {
+          "id": "step-3",
+          "label": "step-3 — 전 군집 무결성 통합",
+          "status": "pending"
+        }
+      ],
+      "execution_mode": "continuous",
+      "approval": {
+        "approved_by": "user",
+        "approved_at": "2026-07-21",
+        "plan_sha256": "47d7e0ecb0b27da56b81aef3419ab2c121da043b2f963401370ba05e78685443"
+      },
+      "allowed_stop_reasons": [
+        "completed",
+        "blocked",
+        "decision_required",
+        "risk_gate",
+        "secret_required",
+        "external_authority_required",
+        "user_stopped"
+      ],
+      "stop_reason": null,
+      "stop_detail": {},
+      "session_ids": [
+        "claude:037069fb-2833-497c-ae4e-3f985ecea495"
+      ],
+      "owner_session_uuid": "claude:037069fb-2833-497c-ae4e-3f985ecea495",
+      "updated_at": "2026-07-21",
+      "notes": "Registered atomically by canonical harness approve_harness_plan.py after plan validation.",
+      "completion_summary": "VL5 완료 — 군집 6개를 채웠고 기준선 오판 3건이 전부 규칙으로 정답에 도달한다. 세 군집이 담은 것은 전부 '어느 축이 먼저 걸리는가'였다."
+    },
+    "vl6-protocol-rewiring": {
+      "work_id": "vl6-protocol-rewiring",
+      "horizon_id": "vocabulary-in-use",
+      "milestone_id": "VL6",
+      "status": "completed",
+      "plan_path": "plans/2026-07-21-vl6-protocol-rewiring.md",
+      "changeset_path": "changesets",
+      "next_step": "step-1",
+      "current_step": "step-1",
+      "steps": [
+        {
+          "id": "step-1",
+          "label": "step-1 — 용어 조회 단계",
+          "status": "pending"
+        },
+        {
+          "id": "step-2",
+          "label": "step-2 — 요소 결정 단계",
+          "status": "pending"
+        },
+        {
+          "id": "step-3",
+          "label": "step-3 — 자산 획득·폴백 분기 + 결정 기록 형식",
+          "status": "pending"
+        },
+        {
+          "id": "step-4",
+          "label": "step-4 — 배포 등재 + 회귀 확인",
+          "status": "pending"
+        }
+      ],
+      "execution_mode": "continuous",
+      "approval": {
+        "approved_by": "user",
+        "approved_at": "2026-07-21",
+        "plan_sha256": "06b987ca04e5526baeb39449965b54d0985d76cd537d557bfad465e014545e29"
+      },
+      "allowed_stop_reasons": [
+        "completed",
+        "blocked",
+        "decision_required",
+        "risk_gate",
+        "secret_required",
+        "external_authority_required",
+        "user_stopped"
+      ],
+      "stop_reason": null,
+      "stop_detail": {},
+      "session_ids": [
+        "claude:037069fb-2833-497c-ae4e-3f985ecea495"
+      ],
+      "owner_session_uuid": "claude:037069fb-2833-497c-ae4e-3f985ecea495",
+      "updated_at": "2026-07-21",
+      "notes": "Registered atomically by canonical harness approve_harness_plan.py after plan validation.",
+      "completion_summary": "VL6 완료 — 만든 자산을 프로토콜이 실제로 부르게 배선했다. 자기 적용에서 세 단계가 손 판단과 같은 답에 도달했다."
+    },
+    "vl7-separation-gate": {
+      "work_id": "vl7-separation-gate",
+      "horizon_id": "vocabulary-in-use",
+      "milestone_id": "VL7",
+      "status": "completed",
+      "plan_path": "plans/2026-07-21-vl7-separation-gate.md",
+      "changeset_path": "changesets",
+      "next_step": "step-1",
+      "current_step": "step-1",
+      "steps": [
+        {
+          "id": "step-1",
+          "label": "step-1 — 처치 측정",
+          "status": "pending"
+        },
+        {
+          "id": "step-2",
+          "label": "step-2 — 기준선 대조 + 회귀 분리",
+          "status": "pending"
+        },
+        {
+          "id": "step-3",
+          "label": "step-3 — 오판 축 보정",
+          "status": "pending"
+        }
+      ],
+      "execution_mode": "continuous",
+      "approval": {
+        "approved_by": "user",
+        "approved_at": "2026-07-21",
+        "plan_sha256": "0c154a6f4b4cd20df672c445385c9ae5815f13a78e9cf669865234ac7b2a44e7"
+      },
+      "allowed_stop_reasons": [
+        "completed",
+        "blocked",
+        "decision_required",
+        "risk_gate",
+        "secret_required",
+        "external_authority_required",
+        "user_stopped"
+      ],
+      "stop_reason": null,
+      "stop_detail": {},
+      "session_ids": [
+        "claude:037069fb-2833-497c-ae4e-3f985ecea495"
+      ],
+      "owner_session_uuid": "claude:037069fb-2833-497c-ae4e-3f985ecea495",
+      "updated_at": "2026-07-21",
+      "notes": "Registered atomically by canonical harness approve_harness_plan.py after plan validation.",
+      "completion_summary": "VL7 완료 — 84.4%에서 96.9%로, 회귀 0. 고쳐진 3건이 VL5가 넣은 세 임계값에서 정확히 갈렸다. 자 보정이 처치에 유리했던 사실도 그대로 기록했다."
+    },
+    "vl8-human-observation": {
+      "work_id": "vl8-human-observation",
+      "horizon_id": "vocabulary-in-use",
+      "milestone_id": "VL8",
+      "status": "active",
+      "plan_path": "plans/2026-07-21-vl8-human-observation.md",
+      "changeset_path": "changesets",
+      "next_step": "step-1",
+      "current_step": "step-1",
+      "steps": [
+        {
+          "id": "step-1",
+          "label": "step-1 — 관측 준비",
+          "status": "pending"
+        },
+        {
+          "id": "step-2",
+          "label": "step-2 — 사용자 관측 실행",
+          "status": "pending"
+        },
+        {
+          "id": "step-3",
+          "label": "step-3 — 발견 결함 마감",
+          "status": "pending"
+        }
+      ],
+      "execution_mode": "continuous",
+      "approval": {
+        "approved_by": "user",
+        "approved_at": "2026-07-21",
+        "plan_sha256": "a083325f752b3eda597299bbfcc8ac397d56e86918e62e046a40b5b8015e79a2"
+      },
+      "allowed_stop_reasons": [
+        "completed",
+        "blocked",
+        "decision_required",
+        "risk_gate",
+        "secret_required",
+        "external_authority_required",
+        "user_stopped"
+      ],
+      "stop_reason": "decision_required",
+      "stop_detail": {
+        "summary": "요소 결정 계층 horizon의 마지막 단계는 사용자가 UI 요구 문장 3개를 던져 에이전트의 판정이 맞는지 보는 관측입니다. 사람의 행동 자체가 증거라 대신 수행할 수 없어 여기서 멈춥니다.",
+        "needs": "요구 문장 3개 — ① 대화 출발점이던 \"정보가 많은데 펼치고 접히는 형태\" ② 오버레이 관련 요구 ③ 즉석에서 지어낸 것(준비 못 한 입력에 대한 방어력 측정용)",
+        "plan": "plans/2026-07-21-vl8-human-observation.md step-2",
+        "evidence": "evidence/vocabulary-in-use/vl8-observation.md (기준·과업·자산 스냅샷은 관측 전에 확정 완료)"
+      },
+      "session_ids": [
+        "claude:037069fb-2833-497c-ae4e-3f985ecea495"
+      ],
+      "owner_session_uuid": "claude:037069fb-2833-497c-ae4e-3f985ecea495",
+      "updated_at": "2026-07-21",
+      "notes": "Registered atomically by canonical harness approve_harness_plan.py after plan validation."
     }
   }
 }

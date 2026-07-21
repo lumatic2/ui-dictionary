@@ -1,0 +1,272 @@
+# 표면·재질 (style-surface-material)
+# category: style · 용어 6개
+# 파생물 — 정본은 docs/ui-vocabulary/terms.yml. 손으로 고치지 마라.
+
+- id: backdrop-blur
+  status: draft
+  category: style
+  group: style-surface-material
+  kind: visual-treatment
+  ko:
+    name: 백드롭 블러
+    aliases:
+      - backdrop blur
+      - 배경 흐림
+      - 유리 효과
+  en:
+    name: Backdrop blur
+    aliases:
+      - Glass blur
+      - Backdrop filter
+  one_liner: 반투명 표면 뒤쪽의 배경을 흐리게 만들어 레이어감을 주는 처리.
+  description: sticky header, modal overlay, floating panel에서 뒤 콘텐츠와 앞 레이어를 분리한다.
+  visual_anatomy:
+    - blurred background
+    - translucent surface
+    - foreground content
+    - soft border
+  when_to_use:
+    - 떠 있는 패널이 뒤 콘텐츠와 겹칠 때
+    - glassmorphism 느낌을 줄 때
+  anti_use:
+    - 저사양 환경이나 복잡한 배경에서 성능과 가독성이 떨어질 수 있다
+  prompt_phrases:
+    - 상단 고정 헤더에 backdrop blur를 넣어 뒤 내용이 흐리게 보이게 해줘
+  asset:
+    kind: mini-mock
+    variant: backdrop-blur
+  sources:
+    - source_id: mdn-css-reference
+      note: CSS backdrop-filter and filter references
+  confidence: high
+- id: glassmorphism
+  status: draft
+  category: style
+  group: style-surface-material
+  kind: visual-treatment
+  ko:
+    name: 글래스모피즘
+    aliases:
+      - glassmorphism
+      - 유리 느낌
+      - 유리 패널
+      - 프로스트 글래스
+  en:
+    name: Glassmorphism
+    aliases:
+      - Glass morphism
+      - Frosted glass style
+      - Glass surface
+  one_liner: 반투명 표면, 배경 흐림, 얇은 테두리, 그림자를 함께 써서 유리처럼 보이게 하는 스타일 패키지.
+  description: 카드, 헤더, floating panel을 배경 위에 올릴 때 뒤쪽 색과 형태가 살짝 비치도록 만들어 깊이와 분위기를 준다.
+  visual_anatomy:
+    - translucent surface
+    - backdrop blur
+    - soft border
+    - subtle shadow
+    - visible background
+  when_to_use:
+    - 히어로나 floating panel에 가벼운 유리 질감을 주고 싶을 때
+    - 배경과 앞 레이어를 부드럽게 연결할 때
+  anti_use:
+    - 본문을 오래 읽는 영역에서 대비가 낮아지면 쓰지 않는다
+    - 복잡한 배경 위에서 텍스트가 흐려지면 단순 surface가 낫다
+  prompt_phrases:
+    - 히어로 위 카드에 glassmorphism 스타일을 적용해줘
+  related:
+    - id: backdrop-blur
+      relation: use-with
+      note: backdrop-blur는 글래스모피즘을 만드는 핵심 처리지만 그 자체가 전체 스타일 패키지는 아니다
+    - id: opacity
+      relation: use-with
+      note: 반투명 표면의 강도를 조절할 때 함께 본다
+    - id: shadow-elevation
+      relation: use-with
+      note: 유리 표면이 배경 위에 떠 보이도록 깊이를 보완한다
+    - id: color-contrast
+      relation: use-with
+      note: 반투명 표면 위 텍스트가 충분히 읽히는지 확인해야 한다
+  asset:
+    kind: mini-mock
+    variant: glassmorphism-surface
+  sources:
+    - source_id: mdn-css-reference
+      note: CSS backdrop-filter, opacity, border, and shadow properties support the
+        visual treatment
+    - source_id: material-m3-components
+      note: Material surfaces and elevation guidance provide the layer hierarchy
+        framing
+  confidence: medium
+- id: inner-shadow
+  status: draft
+  category: style
+  group: style-surface-material
+  kind: visual-treatment
+  ko:
+    name: 내부 그림자
+    aliases:
+      - inner shadow
+      - inset shadow
+      - 안쪽 그림자
+  en:
+    name: Inner shadow
+    aliases:
+      - Inset shadow
+      - Recessed shadow
+  one_liner: 요소 안쪽 가장자리에 그림자를 넣어 파인 듯한 깊이나 눌린 표면을 만드는 처리.
+  description: 입력창, 눌린 버튼, inset panel처럼 바깥으로 뜨기보다 안쪽으로 들어간 표면감을 보여줄 때 쓴다.
+  visual_anatomy:
+    - inset surface
+    - inner edge shadow
+    - content area
+    - depressed depth
+  when_to_use:
+    - 입력 영역이나 pressed surface가 안으로 들어간 느낌을 줘야 할 때
+  anti_use:
+    - 작은 텍스트 주변에 과하게 넣으면 흐릿하고 낡아 보일 수 있다
+  prompt_phrases:
+    - 검색 입력창 안쪽에 은은한 inner shadow를 넣어줘
+  related:
+    - id: shadow-elevation
+      relation: compare
+      note: shadow elevation은 표면이 밖으로 뜨는 느낌이고 inner shadow는 안쪽으로 파인 느낌이다
+    - id: active-state
+      relation: use-with
+      note: 눌린 상태를 표현할 때 함께 쓸 수 있다
+  asset:
+    kind: mini-mock
+    variant: inner-shadow
+  sources:
+    - source_id: mdn-css-reference
+      note: CSS box-shadow supports inset shadows for inner depth
+  confidence: high
+- id: noise-texture
+  status: draft
+  category: style
+  group: style-surface-material
+  kind: visual-treatment
+  ko:
+    name: 노이즈 텍스처
+    aliases:
+      - noise texture
+      - grain texture
+      - 입자 질감
+      - 그레인
+  en:
+    name: Noise texture
+    aliases:
+      - Grain texture
+      - Noise overlay
+      - Grain overlay
+  one_liner: 평평한 색이나 그라디언트 위에 아주 미세한 입자감을 더하는 표면 질감.
+  description: 넓은 배경이나 반투명 표면이 너무 밋밋하거나 banding이 보일 때 약한 질감을 더해 깊이를 만든다.
+  visual_anatomy:
+    - base surface
+    - fine grain
+    - low opacity texture
+    - foreground content
+  when_to_use:
+    - 히어로 배경이나 glass surface에 미세한 질감을 더하고 싶을 때
+  anti_use:
+    - 업무용 데이터 화면에서 정보보다 질감이 먼저 보이면 빼는 편이 낫다
+  prompt_phrases:
+    - 그라디언트 배경 위에 아주 약한 noise texture를 깔아줘
+  related:
+    - id: gradient-fill
+      relation: use-with
+      note: 넓은 그라디언트의 banding을 줄이거나 질감을 줄 때 함께 쓴다
+    - id: glassmorphism
+      relation: use-with
+      note: 유리 표면에 미세한 질감을 더해 밋밋함을 줄일 수 있다
+  asset:
+    kind: mini-mock
+    variant: noise-texture
+  sources:
+    - source_id: mdn-css-reference
+      note: CSS backgrounds and layered images can implement texture overlays
+  confidence: medium
+- id: shadow-elevation
+  status: draft
+  category: style
+  group: style-surface-material
+  kind: visual-treatment
+  ko:
+    name: 그림자 깊이
+    aliases:
+      - shadow elevation
+      - elevation
+      - box shadow
+      - 그림자 단계
+  en:
+    name: Shadow elevation
+    aliases:
+      - Elevation
+      - Box shadow
+  one_liner: 그림자 강도로 카드나 패널이 화면 위에 떠 있는 정도를 표현하는 처리.
+  description: 기본 카드, hover 카드, modal처럼 레이어 위계를 시각적으로 구분한다.
+  visual_anatomy:
+    - surface
+    - shadow
+    - elevation steps
+    - surrounding background
+  when_to_use:
+    - 카드 hover나 floating panel의 깊이를 보여줄 때
+  anti_use:
+    - 테두리만으로 충분한 밀집 UI에서 그림자를 과하게 쓰면 산만하다
+  prompt_phrases:
+    - hover된 카드에 shadow elevation을 조금 더 줘
+  asset:
+    kind: mini-mock
+    variant: shadow-elevation
+  sources:
+    - source_id: material-m3-components
+      note: Material surfaces use elevation to express hierarchy
+  confidence: high
+- id: translucent-surface
+  status: draft
+  category: style
+  group: style-surface-material
+  kind: visual-treatment
+  ko:
+    name: 반투명 표면
+    aliases:
+      - translucent surface
+      - 투명한 표면
+      - 반투명 패널
+  en:
+    name: Translucent surface
+    aliases:
+      - Semi-transparent surface
+      - Translucent panel
+      - Alpha surface
+  one_liner: 배경이 일부 비쳐 보이도록 색상이나 투명도를 낮춘 UI 표면.
+  description: 카드나 패널을 완전히 불투명하게 막지 않고 뒤 배경과 연결된 느낌을 줄 때 쓰는 표면 처리다.
+  visual_anatomy:
+    - foreground surface
+    - alpha fill
+    - visible background
+    - foreground content
+  when_to_use:
+    - 배경 이미지나 그라디언드 위에 가벼운 패널을 올릴 때
+    - 레이어감을 주되 무겁게 막고 싶지 않을 때
+  anti_use:
+    - 텍스트 대비가 부족하거나 배경이 너무 복잡하면 불투명 표면을 쓴다
+  prompt_phrases:
+    - 카드를 반투명 surface로 만들어 배경이 살짝 비치게 해줘
+  related:
+    - id: opacity
+      relation: use-with
+      note: 투명도는 반투명 표면을 만드는 기본 속성이다
+    - id: glassmorphism
+      relation: compare
+      note: 글래스모피즘은 반투명 표면에 blur, border, shadow를 더한 스타일 패키지다
+    - id: color-contrast
+      relation: use-with
+      note: 반투명 표면은 배경에 따라 대비가 달라지므로 함께 확인한다
+  asset:
+    kind: mini-mock
+    variant: translucent-surface
+  sources:
+    - source_id: mdn-css-reference
+      note: CSS opacity and color alpha values define translucent rendering
+  confidence: high

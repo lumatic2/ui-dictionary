@@ -1,0 +1,890 @@
+# 옵션 선택 (selection-options)
+# category: selection · 용어 21개
+# 파생물 — 정본은 docs/ui-vocabulary/terms.yml. 손으로 고치지 마라.
+
+- id: auth-method-choice
+  status: draft
+  category: selection
+  group: selection-options
+  kind: form-pattern
+  ko:
+    name: 인증 방식 선택
+    aliases:
+      - auth method choice
+      - 로그인 방식 선택
+      - choose sign-in method
+  en:
+    name: Auth method choice
+    aliases:
+      - Sign-in method choice
+      - Choose login method
+  one_liner: 비밀번호, SSO, 매직 링크, 패스키 중 어떤 방식으로 인증할지 고르는 선택 패턴.
+  description: 여러 인증 옵션을 모두 보여주되 사용자가 현재 상황에 맞는 방법을 선택하게 한다.
+  visual_anatomy:
+    - method option cards
+    - recommended method
+    - provider icons
+    - continue action
+  when_to_use:
+    - 하나의 제품이 여러 로그인 방식을 제공할 때
+  anti_use:
+    - 로그인 방식이 하나뿐이면 해당 form을 바로 보여주는 편이 낫다
+  prompt_phrases:
+    - 비밀번호 SSO 패스키 중 고르는 auth method choice 화면을 만들어줘
+  asset:
+    kind: mini-mock
+    variant: auth-method-choice
+  sources:
+    - source_id: page-flows
+      note: sign-in method selection flow reference
+  confidence: medium
+- id: checkbox
+  status: draft
+  category: selection
+  group: selection-options
+  ko:
+    name: 체크박스
+    aliases:
+      - checkbox
+      - 다중 선택 체크
+  en:
+    name: Checkbox
+    aliases:
+      - Check box
+  one_liner: 여러 항목을 각각 켜거나 선택할 수 있는 작은 체크 요소.
+  description: 동의, 옵션 선택, 다중 선택 리스트에서 쓰이며 체크 표시로 상태를 보여준다.
+  visual_anatomy:
+    - square control
+    - check mark
+    - label
+    - optional indeterminate state
+  when_to_use:
+    - 여러 옵션을 동시에 선택할 수 있을 때
+    - 약관 동의처럼 yes/no 상태가 필요할 때
+  anti_use:
+    - 상호 배타적 선택에는 radio group을 쓴다
+    - 즉시 켜고 끄는 설정에는 switch가 더 자연스럽다
+  prompt_phrases:
+    - 약관 동의 체크박스를 넣어줘
+    - 여러 개 선택 가능한 checkbox 목록을 만들어줘
+  asset:
+    kind: mini-mock
+    variant: checkbox
+    props:
+      checked: true
+  sources:
+    - source_id: wai-aria-apg-patterns
+      note: checkbox pattern
+  related:
+    - id: switch
+      relation: compare
+      note: 즉시 켜고 끄는 설정이면 switch, 제출 전 선택값이면 checkbox가 더 명확하다.
+    - id: radio-group
+      relation: compare
+      note: 여러 개 선택할 수 있으면 checkbox, 정확히 하나만 골라야 하면 radio group이다.
+  navigation:
+    canonical_path:
+      - Plus
+      - UI Kit
+      - Forms
+    also_appears_in:
+      - - Plus
+        - UI Blocks
+        - Application UI
+        - Forms
+  confidence: high
+- id: checkbox-card
+  status: draft
+  category: selection
+  group: selection-options
+  kind: component
+  ko:
+    name: 체크박스 카드
+    aliases:
+      - checkbox card
+      - 선택 카드
+      - 카드형 체크박스
+  en:
+    name: Checkbox card
+    aliases:
+      - Selectable checkbox card
+      - Card checkbox
+  one_liner: 카드 전체를 체크박스 선택 영역으로 만들어 옵션 설명과 선택 상태를 함께 보여주는 요소.
+  description: 요금제 기능, 알림 채널, 권한 범위처럼 옵션마다 설명이 필요할 때 체크박스를 카드 형태로 확장한다.
+  visual_anatomy:
+    - card surface
+    - checkbox control
+    - option title
+    - option description
+    - selected border
+  when_to_use:
+    - 여러 옵션을 동시에 고르되 각 옵션 설명이 길 때
+    - 작은 체크박스만으로는 선택 영역이 너무 좁을 때
+  anti_use:
+    - 옵션 텍스트가 짧으면 checkbox나 checkbox group이 더 단순하다
+  prompt_phrases:
+    - 알림 채널을 checkbox card 목록으로 보여줘
+  related:
+    - id: checkbox
+      relation: compare
+      note: checkbox card는 체크박스를 카드 표면으로 확장해 설명과 큰 클릭 영역을 제공한다.
+  asset:
+    kind: mini-mock
+    variant: checkbox-card
+  sources:
+    - source_id: coss-ui-docs
+      note: Origin checkbox examples include card-like selectable options
+  confidence: medium
+- id: chip
+  status: draft
+  category: selection
+  group: selection-options
+  ko:
+    name: 칩
+    aliases:
+      - 태그 버튼
+      - pill
+      - chip
+  en:
+    name: Chip
+    aliases:
+      - Pill
+      - Tag chip
+  one_liner: 작은 알약 모양으로 선택, 필터, 속성을 표시하는 요소.
+  description: 라벨, 선택 상태, 삭제 아이콘을 조합해 필터나 태그를 표현한다.
+  visual_anatomy:
+    - rounded pill container
+    - text label
+    - selected state
+    - optional remove icon
+  when_to_use:
+    - 선택된 필터를 보여줄 때
+    - 항목의 짧은 속성이나 태그를 표시할 때
+  anti_use:
+    - 긴 설명 문장을 담지 않는다
+    - 주요 CTA 버튼처럼 쓰지 않는다
+  prompt_phrases:
+    - 선택된 필터를 chip으로 보여줘
+    - 삭제 가능한 태그 칩을 넣어줘
+  asset:
+    kind: mini-mock
+    variant: chip
+    props:
+      selected: true
+  sources:
+    - source_id: material-m3-components
+      note: chips component
+  confidence: high
+- id: content-tabs
+  status: draft
+  category: selection
+  group: selection-options
+  ko:
+    name: 콘텐츠 탭
+    aliases:
+      - content tabs
+      - section tabs
+      - 내부 탭
+  en:
+    name: Content tabs
+    aliases:
+      - Section tabs
+      - In-page tabs
+  one_liner: 같은 페이지 안에서 관련 콘텐츠 섹션을 탭으로 전환하는 패턴.
+  description: 전역 네비게이션이 아니라 상세 화면 안의 개요, 활동, 설정 같은 하위 콘텐츠를 나눈다.
+  visual_anatomy:
+    - tab list
+    - active tab
+    - content panel
+    - section scope
+  when_to_use:
+    - 한 리소스 안의 관련 정보를 짧은 섹션으로 나눌 때
+  anti_use:
+    - 서로 다른 페이지 이동은 navigation tab이나 sidebar가 낫다
+  prompt_phrases:
+    - 상세 화면에 개요 활동 설정 content tabs를 넣어줘
+  asset:
+    kind: mini-mock
+    variant: content-tabs
+    props:
+      active: 1
+  sources:
+    - source_id: wai-aria-apg-patterns
+      note: tabs pattern applied to page sections
+  confidence: high
+- id: disclosure
+  status: draft
+  category: selection
+  group: selection-options
+  ko:
+    name: 펼침 버튼
+    aliases:
+      - disclosure
+      - show hide
+      - 접기 펼치기
+  en:
+    name: Disclosure
+    aliases:
+      - Show-hide
+      - Disclosure button
+  one_liner: 버튼을 눌러 관련 내용을 펼치거나 접는 패턴.
+  description: 아코디언보다 단순하게 한 덩어리의 추가 정보를 열고 닫을 때 쓴다.
+  visual_anatomy:
+    - trigger button
+    - chevron
+    - expanded state
+    - revealed content
+  when_to_use:
+    - 보조 정보를 사용자가 필요할 때만 보게 할 때
+    - 설정의 세부 옵션을 접어둘 때
+  anti_use:
+    - 핵심 정보를 숨기는 용도로 쓰지 않는다
+    - 여러 항목을 체계적으로 접으려면 accordion을 검토한다
+  prompt_phrases:
+    - 상세 옵션을 disclosure로 접어둬
+    - 더보기 버튼을 누르면 설명이 펼쳐지게 해줘
+  asset:
+    kind: mini-mock
+    variant: disclosure
+    props:
+      open: true
+  sources:
+    - source_id: wai-aria-apg-patterns
+      note: disclosure show-hide pattern
+  confidence: high
+- id: filter-chip
+  status: draft
+  category: selection
+  group: selection-options
+  ko:
+    name: 필터 칩
+    aliases:
+      - filter chip
+      - 필터 태그
+      - 선택 칩
+  en:
+    name: Filter chip
+    aliases:
+      - Filter tag
+      - Choice chip
+  one_liner: 조건을 작은 칩 형태로 켜고 끄며 목록을 필터링하는 요소.
+  description: 카테고리, 상태, 태그 같은 여러 조건을 빠르게 선택하거나 해제하게 한다.
+  visual_anatomy:
+    - pill shape
+    - label
+    - selected state
+    - optional check or close icon
+  when_to_use:
+    - 필터 조건이 짧고 여러 개일 때
+    - 사용자가 조건을 빠르게 바꾸게 할 때
+  anti_use:
+    - 복잡한 범위나 다단 조건은 filter panel이 낫다
+    - 칩이 너무 많으면 스캔이 어려워진다
+  prompt_phrases:
+    - 목록 위에 filter chip들을 넣어줘
+    - 선택된 필터 칩에는 체크 아이콘을 보여줘
+  asset:
+    kind: mini-mock
+    variant: filter-chip
+    props:
+      selected: true
+  sources:
+    - source_id: material-m3-components
+      note: chips component and filter chip usage
+  confidence: high
+- id: import-data-choice
+  status: draft
+  category: selection
+  group: selection-options
+  ko:
+    name: 데이터 가져오기 선택
+    aliases:
+      - 가져오기 방식 선택
+      - import choice
+  en:
+    name: Import data choice
+    aliases:
+      - Import method choice
+      - Data import option picker
+  one_liner: 사용자가 CSV, 직접 입력, 외부 서비스 연결 중 데이터 시작 방법을 고르는 선택 UI.
+  description: 온보딩이나 빈 상태에서 첫 데이터를 만드는 방법을 여러 경로로 제안한다.
+  visual_anatomy:
+    - import option cards
+    - method icons
+    - effort hint
+    - recommended badge
+    - continue action
+  when_to_use:
+    - 제품 사용을 시작하려면 먼저 데이터나 계정을 연결해야 할 때
+  anti_use:
+    - 이미 연결된 서비스 상태는 connection-card가 더 적합하다
+  prompt_phrases:
+    - 처음 시작할 때 CSV 업로드 직접 입력 서비스 연결을 고르는 import data choice를 보여줘
+  asset:
+    kind: mini-mock
+    variant: import-data-choice
+  sources:
+    - source_id: page-flows
+      note: onboarding import and setup flow reference
+  confidence: medium
+- id: inline-date-range-chip
+  status: draft
+  category: selection
+  group: selection-options
+  ko:
+    name: 인라인 날짜 범위 칩
+    aliases:
+      - 날짜 필터 칩
+      - 기간 칩
+      - date range chip
+  en:
+    name: Inline date range chip
+    aliases:
+      - Date range filter chip
+      - Date chip
+  one_liner: 선택된 기간을 작은 칩으로 표시하고 눌러 수정할 수 있는 필터 요소.
+  description: 대시보드나 리스트 상단에서 현재 적용 중인 기간 조건을 compact하게 보여준다.
+  visual_anatomy:
+    - pill container
+    - calendar icon
+    - date range label
+    - remove or edit affordance
+  when_to_use:
+    - 현재 적용된 날짜 필터를 계속 보여줘야 할 때
+    - 필터 바 공간을 아껴야 할 때
+  anti_use:
+    - 날짜를 처음 입력하는 주 흐름에는 date range picker가 더 명확하다
+  prompt_phrases:
+    - 지난 7일 기간을 보여주는 inline date range chip을 넣어줘
+  asset:
+    kind: mini-mock
+    variant: inline-date-range-chip
+    props:
+      range: 7d
+  sources:
+    - source_id: material-m3-components
+      note: chips and date picker composition
+  confidence: medium
+- id: listbox
+  status: draft
+  category: selection
+  group: selection-options
+  ko:
+    name: 리스트박스
+    aliases:
+      - listbox
+      - 선택 목록
+      - 옵션 리스트
+  en:
+    name: Listbox
+    aliases:
+      - Selection list
+      - Option list
+  one_liner: 여러 옵션을 펼쳐진 목록으로 보여주고 선택하게 하는 요소.
+  description: select와 달리 목록이 화면에 직접 보이며 단일 또는 다중 선택을 지원할 수 있다.
+  visual_anatomy:
+    - visible option list
+    - selected option
+    - focus highlight
+    - optional multi-select marks
+  when_to_use:
+    - 옵션을 항상 보여줘야 할 때
+    - 키보드로 목록 선택이 중요할 때
+  anti_use:
+    - 공간이 좁으면 select가 낫다
+    - 단순 텍스트 목록에는 선택 상태를 억지로 붙이지 않는다
+  prompt_phrases:
+    - 옵션을 펼쳐진 listbox로 보여줘
+    - 선택된 항목이 강조되는 선택 목록을 만들어줘
+  asset:
+    kind: mini-mock
+    variant: listbox
+    props:
+      selected: 1
+  sources:
+    - source_id: wai-aria-apg-patterns
+      note: listbox pattern
+  confidence: high
+- id: multi-select
+  status: draft
+  category: selection
+  group: selection-options
+  ko:
+    name: 다중 선택창
+    aliases:
+      - multi select
+      - multiple select
+      - 멀티셀렉트
+  en:
+    name: Multi-select
+    aliases:
+      - Multiple select
+      - Multi select dropdown
+  one_liner: 여러 옵션을 선택하고 선택값을 칩이나 목록으로 보여주는 선택 입력.
+  description: 역할, 태그, 카테고리처럼 고정된 보기 중 여러 개를 고르게 한다.
+  visual_anatomy:
+    - select trigger
+    - selected chips
+    - option list
+    - checkmarks
+  when_to_use:
+    - 정해진 보기 중 여러 값을 선택해야 할 때
+  anti_use:
+    - 자유 입력이 필요하면 tag input이 더 적합하다
+  prompt_phrases:
+    - 여러 카테고리를 고르는 multi-select를 넣어줘
+  asset:
+    kind: mini-mock
+    variant: multi-select
+    props:
+      selected: 2
+  sources:
+    - source_id: wai-aria-apg-patterns
+      note: listbox pattern
+  confidence: high
+- id: radio-group
+  status: draft
+  category: selection
+  group: selection-options
+  ko:
+    name: 라디오그룹
+    aliases:
+      - 라디오 버튼
+      - 하나만 선택
+      - radio
+  en:
+    name: Radio group
+    aliases:
+      - Radio buttons
+  one_liner: 여러 선택지 중 정확히 하나를 고르는 요소 묶음.
+  description: 각 옵션 앞에 원형 버튼이 있고, 하나를 선택하면 다른 선택은 해제된다.
+  visual_anatomy:
+    - group label
+    - circular controls
+    - selected dot
+    - option labels
+  when_to_use:
+    - 선택지가 적고 모두 보여줘야 할 때
+    - 사용자가 하나만 선택해야 할 때
+  anti_use:
+    - 여러 개 선택 가능하면 checkbox를 쓴다
+    - 선택지가 많으면 select를 검토한다
+  prompt_phrases:
+    - 요금제를 하나 고르는 radio group을 넣어줘
+    - 결제 방식을 라디오 버튼으로 선택하게 해줘
+  asset:
+    kind: mini-mock
+    variant: radio-group
+    props:
+      selected: 1
+  sources:
+    - source_id: wai-aria-apg-patterns
+      note: radio group pattern
+  related:
+    - id: checkbox
+      relation: compare
+      note: 하나만 선택하면 radio group, 여러 개 선택 가능하면 checkbox를 쓴다.
+    - id: select
+      relation: alternative
+      note: 선택지가 많거나 공간을 아껴야 하면 select가 더 적합하다.
+    - id: segmented-control
+      relation: alternative
+      note: 보기 모드처럼 즉시 전환되는 소수 옵션은 segmented control이 더 compact하다.
+  navigation:
+    canonical_path:
+      - Plus
+      - UI Kit
+      - Forms
+    also_appears_in:
+      - - Plus
+        - UI Blocks
+        - Application UI
+        - Forms
+  confidence: high
+- id: range-slider
+  status: draft
+  category: selection
+  group: selection-options
+  ko:
+    name: 범위 슬라이더
+    aliases:
+      - range slider
+      - 양방향 슬라이더
+      - 가격 범위
+  en:
+    name: Range slider
+    aliases:
+      - Dual-thumb slider
+      - Range control
+  one_liner: 두 손잡이로 최소값과 최대값을 함께 조절하는 슬라이더.
+  description: 가격대, 기간, 점수 범위처럼 연속적인 범위를 선택할 때 쓴다.
+  visual_anatomy:
+    - track
+    - lower thumb
+    - upper thumb
+    - selected range
+  when_to_use:
+    - 최소/최대 범위를 시각적으로 조절해야 할 때
+  anti_use:
+    - 정확한 숫자 입력이 중요하면 number input을 함께 제공한다
+  prompt_phrases:
+    - 가격 최소 최대를 고르는 range slider를 넣어줘
+  asset:
+    kind: mini-mock
+    variant: range-slider
+    props:
+      min: 25
+      max: 75
+  sources:
+    - source_id: material-m3-components
+      note: slider component
+  confidence: high
+- id: segmented-control
+  status: draft
+  category: selection
+  group: selection-options
+  ko:
+    name: 세그먼트 버튼
+    aliases:
+      - 분할 버튼
+      - segmented control
+      - 옵션 토글
+  en:
+    name: Segmented control
+    aliases:
+      - Segmented button
+  one_liner: 몇 개의 선택지를 버튼처럼 나란히 보여주고 하나를 선택하는 요소.
+  description: 필터 모드나 보기 방식을 빠르게 전환할 때 쓰며 선택된 segment를 강조한다.
+  visual_anatomy:
+    - group container
+    - segments
+    - active segment
+    - labels
+  when_to_use:
+    - 2-5개 정도의 선택지를 항상 보여주고 싶을 때
+    - 보기 모드나 필터를 빠르게 바꿀 때
+  anti_use:
+    - 선택지가 많으면 select를 쓴다
+    - 다중 선택이면 checkbox나 chips를 검토한다
+  prompt_phrases:
+    - 일간 주간 월간을 고르는 segmented control을 넣어줘
+    - 보기 방식을 세그먼트 버튼으로 전환하게 해줘
+  asset:
+    kind: mini-mock
+    variant: segmented-control
+    props:
+      active: 1
+  sources:
+    - source_id: material-m3-components
+      note: segmented buttons
+  related:
+    - id: tabs
+      relation: compare
+      note: 패널 구조가 명확하면 tabs, 같은 화면의 보기 방식만 바꾸면 segmented control이 더 적합하다.
+    - id: toggle-group
+      relation: compare
+      note: 하나만 선택되는 모드 전환이면 segmented control, 여러 pressed state가 필요하면 toggle group이다.
+    - id: radio-group
+      relation: alternative
+      note: 폼 선택값을 명확히 제출해야 하면 radio group이 더 보수적이다.
+  confidence: high
+- id: slider
+  status: draft
+  category: selection
+  group: selection-options
+  ko:
+    name: 슬라이더
+    aliases:
+      - range slider
+      - 값 조절 바
+  en:
+    name: Slider
+    aliases:
+      - Range slider
+  one_liner: 연속적인 값이나 범위를 손잡이로 조절하는 요소.
+  description: 트랙 위 thumb를 움직여 볼륨, 가격, 강도 같은 값을 조정한다.
+  visual_anatomy:
+    - track
+    - filled range
+    - thumb
+    - value label
+  when_to_use:
+    - 정확한 숫자보다 대략적인 조절이 중요할 때
+    - 값의 크기를 시각적으로 보여주고 싶을 때
+  anti_use:
+    - 정확한 숫자 입력이 필요하면 number input을 쓴다
+    - 선택지가 이산적이면 segmented control이나 radio를 쓴다
+  prompt_phrases:
+    - 볼륨을 조절하는 slider를 넣어줘
+    - 가격 범위를 고르는 range slider를 만들어줘
+  asset:
+    kind: mini-mock
+    variant: slider
+    props:
+      value: 65
+  sources:
+    - source_id: material-m3-components
+      note: slider component
+  confidence: high
+- id: switch
+  status: draft
+  category: selection
+  group: selection-options
+  ko:
+    name: 스위치
+    aliases:
+      - 토글
+      - toggle
+      - 켜기 끄기
+  en:
+    name: Switch
+    aliases:
+      - Toggle switch
+      - Toggle
+  one_liner: 설정을 즉시 켜거나 끄는 요소.
+  description: 손잡이가 좌우로 움직이며 on/off 상태를 직관적으로 보여준다.
+  visual_anatomy:
+    - track
+    - thumb
+    - on/off position
+    - label
+  when_to_use:
+    - 설정을 바로 활성화하거나 비활성화할 때
+    - 변경 결과가 즉시 적용될 때
+  anti_use:
+    - 폼 제출 전까지 확정되지 않는 값에는 checkbox가 더 명확할 수 있다
+    - 여러 선택지 중 하나는 radio group을 쓴다
+  prompt_phrases:
+    - 알림을 켜고 끄는 toggle switch를 넣어줘
+    - 다크모드 스위치를 만들어줘
+  asset:
+    kind: mini-mock
+    variant: switch
+    props:
+      checked: true
+  sources:
+    - source_id: material-m3-components
+      note: switch component
+  related:
+    - id: checkbox
+      relation: compare
+      note: 스위치는 즉시 적용되는 on/off 설정에 쓰고, checkbox는 폼 안 선택값에 더 적합하다.
+    - id: toggle-group
+      relation: compare
+      note: 여러 버튼형 상태를 묶어 켜고 끄면 toggle group이 더 낫다.
+  confidence: high
+- id: tabs
+  status: draft
+  category: selection
+  group: selection-options
+  ko:
+    name: 탭
+    aliases:
+      - 탭 메뉴
+      - tab
+  en:
+    name: Tabs
+    aliases:
+      - Tab list
+  one_liner: 같은 영역 안에서 관련 화면이나 패널을 전환하는 요소.
+  description: 탭 목록과 선택된 탭 패널로 구성되며 현재 위치를 강조한다.
+  visual_anatomy:
+    - tab list
+    - active tab
+    - inactive tabs
+    - tab panel
+  when_to_use:
+    - 같은 맥락의 콘텐츠를 몇 개 섹션으로 나눌 때
+    - 화면 이동 없이 내용을 전환할 때
+  anti_use:
+    - 서로 관련 없는 페이지 이동에는 navigation을 쓴다
+    - 탭이 너무 많으면 overflow나 다른 구조를 검토한다
+  prompt_phrases:
+    - 상세 화면에 탭 메뉴를 넣어줘
+    - 개요와 설정을 tabs로 전환하게 해줘
+  asset:
+    kind: mini-mock
+    variant: tabs
+    props:
+      active: 0
+  sources:
+    - source_id: wai-aria-apg-patterns
+      note: tabs pattern
+  related:
+    - id: segmented-control
+      relation: compare
+      note: 콘텐츠 패널을 나누면 tabs, 보기 모드나 필터 값을 빠르게 바꾸면 segmented control이 맞다.
+    - id: tab-bar
+      relation: compare
+      note: 모바일 앱의 최상위 destination 전환이면 tab bar라는 이름이 더 자연스럽다.
+  confidence: high
+- id: toggle-button
+  status: draft
+  category: selection
+  group: selection-options
+  ko:
+    name: 토글 버튼
+    aliases:
+      - toggle button
+      - 선택 버튼
+      - pressed button
+  en:
+    name: Toggle button
+    aliases:
+      - Pressed button
+      - Selectable button
+  one_liner: 버튼처럼 보이지만 눌린 상태를 유지해 선택 여부를 표현하는 요소.
+  description: 굵게, 즐겨찾기, 보기 옵션처럼 on/off 상태를 버튼 형태로 보여준다.
+  visual_anatomy:
+    - button container
+    - icon or label
+    - pressed state
+    - optional group
+  when_to_use:
+    - 명령 버튼과 선택 상태가 연결되어 있을 때
+    - 툴바에서 기능을 켜고 끌 때
+  anti_use:
+    - 즉시 적용되는 설정은 switch가 더 명확할 수 있다
+    - 여러 독립 옵션은 checkbox와 비교한다
+  prompt_phrases:
+    - 즐겨찾기를 켜는 toggle button을 넣어줘
+    - 선택되면 눌린 상태가 유지되게 해줘
+  asset:
+    kind: mini-mock
+    variant: toggle-button
+    props:
+      pressed: true
+  sources:
+    - source_id: wai-aria-apg-patterns
+      note: button pattern with pressed state
+  confidence: high
+- id: toggle-group
+  status: draft
+  category: selection
+  group: selection-options
+  ko:
+    name: 토글 그룹
+    aliases:
+      - toggle group
+      - 토글 버튼 묶음
+      - 다중 토글
+  en:
+    name: Toggle group
+    aliases:
+      - Toggle button group
+      - Multi-toggle
+  one_liner: 여러 토글 버튼을 한 묶음으로 보여주고 하나 이상을 켜는 선택 요소.
+  description: 텍스트 정렬, 서식, 필터 옵션처럼 버튼 모양 선택지를 눌린 상태로 유지한다.
+  visual_anatomy:
+    - group container
+    - toggle buttons
+    - pressed state
+    - icons or labels
+  when_to_use:
+    - 서식이나 보기 옵션처럼 즉시 켜고 끄는 선택지를 묶을 때
+  anti_use:
+    - 단 하나만 골라야 하면 segmented control이나 radio group이 더 명확하다
+  prompt_phrases:
+    - 굵게 기울임 밑줄을 고르는 toggle group을 넣어줘
+  asset:
+    kind: mini-mock
+    variant: toggle-group
+    props:
+      multi: true
+  sources:
+    - source_id: wai-aria-apg-patterns
+      note: button pattern with pressed state
+  related:
+    - id: segmented-control
+      relation: compare
+      note: 하나의 보기 모드만 고르면 segmented control, 여러 버튼 상태를 동시에 켜면 toggle group이다.
+    - id: switch
+      relation: compare
+      note: 개별 설정 하나를 즉시 켜고 끄면 switch, 여러 pressed button을 묶으면 toggle group이다.
+    - id: checkbox
+      relation: alternative
+      note: 폼 제출용 다중 선택값이면 toggle group보다 checkbox가 더 명확하다.
+  confidence: high
+- id: transfer-list
+  status: draft
+  category: selection
+  group: selection-options
+  ko:
+    name: 전송 리스트
+    aliases:
+      - transfer list
+      - dual listbox
+      - 좌우 이동 목록
+  en:
+    name: Transfer list
+    aliases:
+      - Dual listbox
+      - Shuttle list
+  one_liner: 왼쪽 목록의 항목을 오른쪽 목록으로 옮겨 선택 집합을 만드는 패턴.
+  description: 사용자 권한, 멤버 선택, 포함/제외 항목을 명확히 나눠 관리할 때 쓴다.
+  visual_anatomy:
+    - source list
+    - target list
+    - move buttons
+    - selected items
+  when_to_use:
+    - 선택 가능한 항목과 선택된 항목을 동시에 보여줘야 할 때
+  anti_use:
+    - 항목 수가 적으면 checkbox list가 더 단순하다
+  prompt_phrases:
+    - 사용자를 왼쪽에서 오른쪽으로 옮기는 transfer list를 만들어줘
+  asset:
+    kind: mini-mock
+    variant: transfer-list
+    props:
+      move: true
+  sources:
+    - source_id: mui-material-components
+      note: transfer list component pattern
+  confidence: medium
+- id: variant-selector-buttons
+  status: draft
+  category: selection
+  group: selection-options
+  kind: component
+  ko:
+    name: 변형 선택 버튼 그룹
+    aliases:
+      - variant selector buttons
+      - 사이즈 색상 선택 버튼
+      - 변형 옵션 버튼
+  en:
+    name: Size/color variant selector
+    aliases:
+      - Variant selector buttons
+      - Swatch and size button group
+  one_liner: 색상 스와치나 사이즈 버튼을 나열해 재고 유무를 즉시 드러내는 인라인 선택 컨트롤.
+  description: 드롭다운 뒤에 옵션을 숨기지 않고 버튼 그룹으로 노출해, 선택 상태와 품절 변형을 한눈에 보여준다. Baymard 연구는
+    사이즈 선택에 드롭다운을 쓰는 사이트가 57%에 달한다고 지목하며 이를 안티패턴으로 본다.
+  visual_anatomy:
+    - swatch or button group per variant axis
+    - selected state with border or checkmark
+    - disabled state for out-of-stock variant with reason
+    - color swatch shows actual color
+    - size button shows label
+  when_to_use:
+    - 상품 상세에서 색상이나 사이즈 같은 변형 옵션을 데스크톱 인라인으로 바로 선택하게 할 때
+  anti_use:
+    - 변형 축이 많아 버튼이 화면을 넘치게 하면 별도 구성 화면이나 product-option-sheet가 더 적합하다
+  prompt_phrases:
+    - 드롭다운 대신 버튼으로 사이즈를 고르는 variant selector buttons를 넣어줘
+    - 품절 사이즈는 흐리게 표시하고 이유를 보여줘
+  asset:
+    kind: mini-mock
+    variant: variant-selector-buttons
+    props:
+      selected: true
+  sources:
+    - source_id: shopify-polaris-components
+      note: variant and option selection controls
+  related:
+    - id: product-option-sheet
+      relation: compare
+      note: product option sheet는 모바일 하단 시트로 옵션을 감싸는 래퍼이고, variant selector buttons는
+        시트 없이 데스크톱 인라인에 바로 놓이는 버튼형 선택 컨트롤 자체를 가리킨다.
+  confidence: medium
