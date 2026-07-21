@@ -1,0 +1,88 @@
+# @askewly/design 를 npm 에 배포한다 — 토큰 없이(OIDC Trusted Publishing).
+#
+# 왜 수동 트리거인가: 이 패키지는 검사 규칙을 담고 있어 배포가 곧 남의 프로젝트의
+# 판정 기준 변경이다. main push 마다 자동으로 나가면 의도하지 않은 규칙이 퍼진다.
+# 사람이 버전을 올리고 명시적으로 실행한다.
+#
+# 절차 정본: docs/design-system/cli-release-procedure.md
+name: publish-cli
+
+on:
+  workflow_dispatch:
+    inputs:
+      dry_run:
+        description: "true 면 실제 배포 없이 pack 내용만 확인한다"
+        type: boolean
+        default: false
+
+permissions:
+  contents: read
+  id-token: write # OIDC — 이것이 npm 토큰을 대체한다
+
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: packages/cli
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          registry-url: https://registry.npmjs.org
+
+      # Trusted Publishing 은 npm 11.5.1+ 에서만 동작한다. setup-node 가 딸려
+      # 보내는 npm 은 더 낮을 수 있어 명시적으로 올린다.
+      - name: npm 버전 확보
+        run: |
+          npm install -g npm@latest
+          npm --version
+
+      - run: npm ci
+
+      - name: 게이트
+        run: |
+          npm run build
+          npx tsc --noEmit
+          npx vitest run
+
+      # 담기는 파일을 로그에 남긴다 — 누출(src/·test/)이 있으면 여기서 보인다.
+      - name: pack 내용 확인
+        run: npm pack --dry-run
+
+      - name: 배포
+        if: ${{ !inputs.dry_run }}
+        run: npm publish --access public
+
+      # "publish 가 성공을 찍었다"와 "레지스트리에서 받을 수 있다"는 다른 사실이다.
+      # 2026-07-22 최초 배포에서 실제로 3분간 갈렸다. 그래서 여기서 다시 잰다.
+      - name: 전파 확인 + 레포 밖 실증
+        if: ${{ !inputs.dry_run }}
+        run: |
+          VERSION=$(node -p "require('./package.json').version")
+          echo "배포한 버전: $VERSION"
+
+          for i in $(seq 1 20); do
+            CODE=$(curl -s -o /dev/null -w "%{http_code}" https://registry.npmjs.org/@askewly%2fdesign)
+            echo "try $i: HTTP $CODE"
+            [ "$CODE" = "200" ] && break
+            sleep 15
+          done
+
+          WORK=$(mktemp -d)
+          mkdir -p "$WORK/bad" "$WORK/clean"
+          printf 'export const A = () => <div style={{ color: "#111", background: "rgb(1,2,3)" }} />\n' > "$WORK/bad/a.tsx"
+          printf 'export const B = () => <div className="bg-primary" />\n' > "$WORK/clean/b.tsx"
+
+          cd "$WORK"
+          npx --yes "@askewly/design@$VERSION" verify bad --ext tsx && {
+            echo "::error::위반이 있는데 exit 0 이 나왔다"; exit 1
+          } || echo "위반 검출 OK (exit 1)"
+
+          npx --yes "@askewly/design@$VERSION" verify clean --ext tsx || {
+            echo "::error::깨끗한 코드에 위반이 잡혔다(오탐)"; exit 1
+          }
+          echo "clean PASS OK (exit 0)"
