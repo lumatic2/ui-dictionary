@@ -28,6 +28,8 @@ probe exit=1
 
 원복 후 exit 0.
 
+**배포본 확인**: `https://ui.askewly.com/llms/docs/design-system/entry-protocol.md` 를 fetch해 같은 검사를 돌렸다 — `entry-protocol 매체 분기 OK`(exit 0), 로컬 파일과 `diff` 없음(줄끝 정규화 후). 전파는 step-2 분과 합쳐 한 번에 확인했고 **약 8분** 걸렸다(DOG4 3분30초 · DOG5 5분보다 길다).
+
 ## 2. 검사기 호출 배선 + 스킬 정합 (step-2)
 
 **두 레포에 걸친 변경**: `custom-skills`(원본 `a63253f`) + `ui-dictionary`(entry-protocol).
