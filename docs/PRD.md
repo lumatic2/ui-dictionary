@@ -90,3 +90,13 @@ The public website structure is defined in `docs/design-system/site-blueprint.md
 - Codex and Claude Code can use the system to produce UI with better hierarchy, spacing, typography, color, interaction states, and reduced AI-generic feel.
 - Future paid features have a clear path: copyable code, downloadable assets, and reusable implementation packs.
 - A representative AskewlyDesign project can compose, directly edit, agent-revise, diff, apply, and verify a responsive React UI without canvas/browser drift.
+
+## 포지셔닝 (2026-07-12 사용자 제안 · 2026-07-22 OBJECTIVE.md 에서 이관, 문구 원문 그대로)
+
+Claude와 Codex는 이미 "시니어 개발자"다. Askewly Design은 그 시니어 개발자들이 **시니어 디자이너처럼 일하게** 만든다 — 토큰 SSOT, recipe, 프로토콜, 안티패턴 가이드는 전부 코딩 능력이 아니라 디자인 판단력을 주입하는 장치다. 사람용 레퍼런스 사이트(보는 눈)와 에이전트 시스템(판단 주입)은 이 한 문장의 양날개다. 대외 카피는 채용 대체 뉘앙스를 피해 "에이전트가 디자인 감각을 갖게 된다" 계열로 다듬는다 (예: "Your coding agent already writes senior-level code. Askewly Design makes it design like one, too.").
+
+## AskewlyDesign 앱 (2026-07-22 OBJECTIVE.md 에서 이관, 문구 원문 그대로)
+
+Figma, Adobe 제품군이 맡던 자리를 맡는다 — 디자이너가 매일 여는 창. 다만 캔버스의 정본이 벡터 파일이 아니라 코드이고, 옆에 에이전트가 앉아 있다. 사람은 실제 컴포넌트를 배치·선택·이동·변형하고, 에이전트는 같은 정본 document를 편집한다. 결과물은 export가 아니라 production code로 무손실 왕복한다.
+
+한 벌의 앱이 매체를 가로지른다: 제품 UI 화면, 슬라이드, 지면 산출물이 같은 토큰 SSOT와 같은 편집 표면을 공유한다. 도구를 갈아타는 순간이 사라지는 것이 이 앱의 존재 이유다.
