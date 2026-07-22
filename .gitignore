@@ -3,7 +3,7 @@
 .claude/.last-opened
 
 # design-manual
-archive/
+archive/*
 # ⚠ 완료 보고서는 archive/ 가 아니라 docs/reports/ 에 둔다 — archive/ 가 여기 있어
 # 보고서가 조용히 추적 밖으로 나가던 것을 2026-07-21 병합에서 발견했다 (VL·ECT 양쪽 다 유실 상태였다)
 tmp/
@@ -22,3 +22,7 @@ tmp-*.log
 # AI internal
 BUGLOG.md
 CLAUDE.local.md
+
+# 완료 노트는 폐기물이 아니라 milestone 완료의 정본 증거다 (하네스 배치 규약).
+# archive/ 를 폐기물 창고로 쓰더라도 이 경로는 추적한다.
+!archive/reports/
