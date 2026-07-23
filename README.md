@@ -29,7 +29,7 @@ Different media get different gates. Screens are checked for states and dark mod
 
 ## Map
 
-- North star: [OBJECTIVE.md](OBJECTIVE.md)
+- North star: `CLAUDE.md` 「북극성」 절
 - Working brief and conventions: [CLAUDE.md](CLAUDE.md)
 - Milestones and status: [ROADMAP.md](ROADMAP.md)
 - Production target: `https://ui.askewly.com/`
