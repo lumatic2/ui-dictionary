@@ -1,11 +1,14 @@
 # ROADMAP
 
 > Last updated: 2026-07-27
-> Status: **`real-use-lap` PARK (2026-07-27).** RU1 미달 마감 후 보류 — 웹사이트를 UI 백과사전으로 정비하는 축이 우선(사용자 확정). 부활 조건: 백과사전 축 진행 후 RU2(브리프 게이트, D10)부터 재개 — 재료는 evidence 원본(D1~D10, 2026-07-27 복원)과 `research/2026-07-27-ru2-pilot-defect-measurement.md`. 다음 horizon(UI 백과사전)은 개설 대기.
+> Status: **`ui-encyclopedia` active (2026-07-27 승인 — 사용자 "ㄱㄱ").** 사이트가 UI 백과사전 역할을 다한다 — 탐색 수리(UE1) → 바리에이션 갤러리(UE2) → Page Sections 전체 레퍼런스 데모(UE3, 배치식·헤더/푸터 우선) → Pro 잠금+오너 언락(UE4). `real-use-lap` 은 PARK(2026-07-27) — 부활 조건은 horizon 문서 헤더, 재료는 evidence 원본(D1~D10 복원)과 `research/2026-07-27-ru2-pilot-defect-measurement.md`.
 > North star: Build Askewly Design as both a public reference website and an agent-usable implementation system.
 > line budget: <=150
 
-## Current Horizon
+## Current Goal
+
+<!-- harness:goal id="ui-encyclopedia" status="active" -->
+Goal: UI 백과사전 — 들어가서 용어의 생김새·쓰임·바리에이션을 보고, 헤더·푸터 등 Page Sections 의 종류와 디자인 레퍼런스(직접 구현 데모)를 본다. 유료 경계 = Tailwind Plus 모델, 오너 로그인 전체 열람(결제는 범위 밖). Details: `plans/2026-07-27-ue1-encyclopedia-navigation.md`(연쇄 정의) + `research/2026-07-27-ue1-encyclopedia-diagnosis.md`.
 
 <!-- harness:goal id="real-use-lap" status="pending" -->
 Goal: 실사용 한 바퀴 — Askewly Design으로 Askewly Design 소개 덱(PPTX)을 실제로 만들고, 막히는 지점만 결함으로 기록해 milestone으로 삼는다. **보류(2026-07-27)** — UI 백과사전 축 우선, 부활 조건은 horizon 문서 헤더. Details: `plans/horizons/2026-07-real-use-lap.md`.
@@ -34,6 +37,35 @@ Goal: 사이트 레시피 데모 실구현을 registry 코드 자산으로 배�
 <!-- harness:goal-archive3 id="studio-finish" status="completed" -->
 Goal: 스튜디오 이월 갭 3건 마감 — 데이터 주도 주입 자동화·구성 패턴 완편(4유형+예약형)·미리보기 고도화(다크·반응형). Details: `plans/horizons/2026-07-studio-finish.md`.
 
+
+## Active Milestones — ui-encyclopedia
+
+<!-- harness:milestone id="UE1" status="active" priority="P0" evidence="evidence/ui-encyclopedia/ue1-navigation.md" -->
+### UE1 — 탐색이 작동한다
+- DoD: 사용자가 ① 검색으로 '아코디언' 상세에 도달하고 ② 사이드바로 'Header Sections' 목록에 도달하고 ③ 그 주소를 새 탭에서 재현할 수 있으며, 사람 관측 1회로 확인된다. 기존 URL 형태 전부 하위호환.
+- Evidence: evidence/ui-encyclopedia/ue1-navigation.md
+- Gap: 사이드바 카테고리 클릭 무반응(조용한 return)·딥링크 홈 폴백 — 실측 `research/2026-07-27-ue1-encyclopedia-diagnosis.md`
+- Scale: steps=3 (내비 수리·URL 계약·통합 E2E+사람 관측); surfaces: App.tsx 내비·URL 배선, navigation-model; capability: 백과사전의 첫 동사 "찾는다"
+- Plan: plans/2026-07-27-ue1-encyclopedia-navigation.md
+- Status: [ ]
+
+<!-- harness:milestone id="UE2" status="pending" priority="P1" evidence="evidence/ui-encyclopedia/ue2-variation-gallery.md" -->
+### UE2 — 용어 상세에 바리에이션 갤러리
+- DoD: terms 스키마에 변형·상태 층이 있고 상세 페이지가 갤러리로 렌더하며, 파일럿 용어(아코디언 포함 1~2건)가 실데이터로 채워진다. 무료/Pro 경계 표시 자리 마련(잠금 동작은 UE4).
+- Plan: (UE1 완료 후 별도 plan doc)
+- Status: [ ]
+
+<!-- harness:milestone id="UE3" status="pending" priority="P1" evidence="evidence/ui-encyclopedia/ue3-page-sections.md" -->
+### UE3 — Page Sections 전체 레퍼런스 → 직접 구현 데모 (배치식)
+- DoD: Page Sections 컬렉션(약 16종)이 Dribbble·Pinterest 등 레퍼런스 헌팅(출처 URL+접근일 장부) → 재해석 직접 구현 데모로 채워진다. 배치 1 = Header Sections·Footers. source-quality + 노출 정책(채워진 것만 나열·실개수) 적용.
+- Plan: (UE2 완료 후 별도 plan doc — 배치 순서·카테고리당 최소 기준 확정)
+- Status: [ ]
+
+<!-- harness:milestone id="UE4" status="pending" priority="P2" evidence="evidence/ui-encyclopedia/ue4-pro-owner-unlock.md" -->
+### UE4 — Pro 잠금 + 오너 언락
+- DoD: Tailwind Plus 모델 잠금(정의·대표 데모 미리보기 무료, 바리에이션 전체·코드 복사 Pro)이 동작하고, Google 로그인 세션 이메일이 소유자와 일치하면 전체 열람된다. 결제 연동은 범위 밖.
+- Plan: (UE3 진행과 병행 검토 — 별도 plan doc)
+- Status: [ ]
 
 ## Active Milestones — real-use-lap
 
