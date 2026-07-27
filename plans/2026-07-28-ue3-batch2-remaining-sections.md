@@ -70,7 +70,7 @@ Status: approved (2026-07-28 — UE1 승인 연쇄 `--chain UE2,UE3,UE4` 의 UE3
   - Failure probe: step-2 와 동일.
   - Commit: changeset `ue3-batch2-remaining-sections` (README 절: step-4).
 
-- [ ] **step-5 — 통합 검증 + 사람 관측 + UE3 마감**
+- [x] **step-5 — 통합 검증 + 사람 관측 + UE3 마감**
   - Artifact: 통합 시나리오(사이드바→14 컬렉션 순회) 로그 + build 청크 크기 기록 + **사람 관측 1회**(과업: "컬렉션들 훑어봐 주세요 — 카테고리마다 변형이 서로 달라 보이고 새 변형이 어색하지 않나요?") 발화 기록. 통과 시 UE3 milestone 완료 처리.
   - Files: write `evidence/ui-encyclopedia/ue3-batch2.md`.
   - Risk: 없음 (관측·기록 중심)

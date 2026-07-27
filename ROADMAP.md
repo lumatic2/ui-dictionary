@@ -62,12 +62,15 @@ Goal: 스튜디오 이월 갭 3건 마감 — 데이터 주도 주입 자동화�
 
 - Completed at: 2026-07-27
 - Summary: 변형·상태 레지스트리 + 상세 갤러리 — 아코디언 4변형·탭 3변형 실동작, Pro 배지 표시 층, 미등록 용어 무변화. Playwright 6항·디자인 verify PASS, 사람 관측 통과
-<!-- harness:milestone id="UE3" status="pending" priority="P1" evidence="evidence/ui-encyclopedia/ue3-page-sections.md" -->
+<!-- harness:milestone id="UE3" status="completed" priority="P1" evidence="evidence/ui-encyclopedia/ue3-batch2.md" -->
 ### UE3 — Page Sections 전체 레퍼런스 → 직접 구현 데모 (배치식)
 - DoD: Page Sections 컬렉션(약 16종)이 Dribbble·Pinterest 등 레퍼런스 헌팅(출처 URL+접근일 장부) → 재해석 직접 구현 데모로 채워진다. 배치 1 = Header Sections·Footers. source-quality + 노출 정책(채워진 것만 나열·실개수) 적용.
 - Plan: (UE2 완료 후 별도 plan doc — 배치 순서·카테고리당 최소 기준 확정)
-- Status: [ ]
+- Status: [x]
 
+- Completed at: 2026-07-28
+- Evidence: evidence/ui-encyclopedia/ue3-batch2.md
+- Summary: Page Sections 16종 레퍼런스→실동작 데모 정비 (배치 1 헤더/푸터 + 배치 2 나머지 14종)
 <!-- harness:milestone id="UE4" status="pending" priority="P2" evidence="evidence/ui-encyclopedia/ue4-pro-owner-unlock.md" -->
 ### UE4 — Pro 잠금 + 오너 언락
 - DoD: Tailwind Plus 모델 잠금(정의·대표 데모 미리보기 무료, 바리에이션 전체·코드 복사 Pro)이 동작하고, Google 로그인 세션 이메일이 소유자와 일치하면 전체 열람된다. 결제 연동은 범위 밖.

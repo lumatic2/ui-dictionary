@@ -27,4 +27,4 @@
 ## step-5 — 통합 검증 + 사람 관측
 
 - 통합 스위트: 14 컬렉션 `/patterns/:slug` 직접 진입(=UE5 라우팅 스모크) 전부 PASS · 콘솔 에러 0 · build·lint exit 0 · 청크 941→978kB(임계 내). 원문: `evidence/ui-encyclopedia/ue3-batch2.md`.
-- 사람 관측: 대기 — 통과 시 UE3 milestone 마감.
+- 사람 관측: 2회 왕복 통과 — 1회차에서 contact 폼 `w-full` 누락 배치 붕괴 발견(잠복 결함, 기계 스위트 미검출)·즉시 수리(`efa6786`), 2회차 "응 통과". UE3 milestone 마감.
