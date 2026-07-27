@@ -61,7 +61,7 @@ Status: approved (2026-07-27 — 사용자 "ㄱㄱ")
   - Failure probe: 한 라우트 모듈의 lazy 를 동기 import 로 되돌리면 청크 비교 검증이 감소 없음으로 FAIL. 공유 상태 컨텍스트를 끊으면 검색어 유지 케이스가 FAIL.
   - Commit: changeset `ue5-routing-split` (README 절: step-2 — 화면 모듈별 다중 커밋 허용).
 
-- [ ] **step-3 — 통합 회귀 + 사람 관측**
+- [x] **step-3 — 통합 회귀 + 사람 관측**
   - Artifact: 통합 시나리오(홈→검색→상세→사이드바→목록→새 탭 공유→뒤로가기)의 경로 기반 실행 로그 + 청크 전/후 수치 + **사람 관측 1회**(과업: UE1 과 동일 + "주소창이 읽을 수 있는 경로로 보이는가") 기록을 담은 evidence.
   - Files: write `evidence/ui-encyclopedia/ue5-routing-split.md`. 관측의 좁은 결함은 이 leaf 안에서 수정, 구조 결함은 finding 큐.
   - Risk: 없음 (관측·기록 중심)

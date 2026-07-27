@@ -51,7 +51,7 @@ Status: approved (2026-07-27 — UE1 승인 연쇄 `--chain UE2,UE3,UE4` 집행.
   - Failure probe: 미등록 용어에서 빈 "바리에이션" 헤딩이 노출되면 FAIL (노출 정책 위반). lazy 를 끊으면 초기 청크 증가로 회귀 확인.
   - Commit: changeset `ue2-variation-gallery` (README 절: step-2).
 
-- [ ] **step-3 — 통합 검증 + 사람 관측**
+- [x] **step-3 — 통합 검증 + 사람 관측**
   - Artifact: 통합 시나리오(검색→아코디언 상세→바리에이션 조작→탭 상세) 실행 로그 + 스크린샷 + **사람 관측 1회**(과업: "아코디언 페이지에서 바리에이션들을 만져 보세요 — 서로 달라 보이나요? 원하시던 '생김새·쓰임·바리에이션' 그림에 가까운가요?") 발화 기록을 담은 evidence.
   - Files: write `evidence/ui-encyclopedia/ue2-variation-gallery.md`.
   - Risk: 없음 (관측·기록 중심)

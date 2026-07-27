@@ -4006,7 +4006,7 @@
     "ue2-variation-gallery": {
       "work_id": "ue2-variation-gallery",
       "milestone_id": "UE2",
-      "status": "active",
+      "status": "completed",
       "plan_path": "plans/2026-07-27-ue2-variation-gallery.md",
       "changeset_path": "changesets/20260727-ue2-variation-gallery",
       "next_step": "step-1",
@@ -4048,7 +4048,8 @@
       ],
       "owner_session_uuid": "claude:e1f9766b-7ec5-4959-a125-6af2a1f7e798",
       "updated_at": "2026-07-27",
-      "notes": "Registered atomically by canonical harness approve_harness_plan.py after plan validation."
+      "notes": "Registered atomically by canonical harness approve_harness_plan.py after plan validation.",
+      "completion_summary": "바리에이션 갤러리 완료 — 아코디언 4변형·탭 3변형 실동작, 사람 관측 통과"
     }
   }
 }

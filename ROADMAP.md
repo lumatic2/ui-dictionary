@@ -51,15 +51,17 @@ Goal: 스튜디오 이월 갭 3건 마감 — 데이터 주도 주입 자동화�
 
 - Completed at: 2026-07-27
 - Summary: 탐색 수리 — 사이드바 착지·검색 전역화(제안+결과 2경로)·딥링크·뒤로가기·TOC sticky·스크롤 격리. 사람 관측 3회 왕복(결함 10건 적발, 좁은 5건 즉시 수리, 구조 5건 finding 큐), 3회차 통과. UE5(분리) 사용자 확정
-<!-- harness:milestone id="UE2" status="active" priority="P1" evidence="evidence/ui-encyclopedia/ue2-variation-gallery.md" -->
+<!-- harness:milestone id="UE2" status="completed" priority="P1" evidence="evidence/ui-encyclopedia/ue2-variation-gallery.md" -->
 ### UE2 — 용어 상세에 바리에이션 갤러리
 - DoD: 변형·상태 층(TS 레지스트리)이 있고 상세 페이지가 실동작 갤러리로 렌더하며, 파일럿 2건(아코디언·탭)이 실데이터로 채워진다(변형 차별성 포함). 미등록 용어 무변화, Pro 표시 자리, 사람 관측 1회.
 - Evidence: evidence/ui-encyclopedia/ue2-variation-gallery.md
 - Gap: 아코디언 시각 자료가 미니목 1장 — 변형·상태·레퍼런스 0건 (진단 결함 3, O10 변형 차별성 교훈 반영)
 - Scale: steps=3 (데이터 층·갤러리 렌더러·통합+관측); surfaces: term-variations 레지스트리·variation-demos·term-page; capability: 찾은 페이지에 볼 것
 - Plan: plans/2026-07-27-ue2-variation-gallery.md
-- Status: [ ]
+- Status: [x]
 
+- Completed at: 2026-07-27
+- Summary: 변형·상태 레지스트리 + 상세 갤러리 — 아코디언 4변형·탭 3변형 실동작, Pro 배지 표시 층, 미등록 용어 무변화. Playwright 6항·디자인 verify PASS, 사람 관측 통과
 <!-- harness:milestone id="UE3" status="pending" priority="P1" evidence="evidence/ui-encyclopedia/ue3-page-sections.md" -->
 ### UE3 — Page Sections 전체 레퍼런스 → 직접 구현 데모 (배치식)
 - DoD: Page Sections 컬렉션(약 16종)이 Dribbble·Pinterest 등 레퍼런스 헌팅(출처 URL+접근일 장부) → 재해석 직접 구현 데모로 채워진다. 배치 1 = Header Sections·Footers. source-quality + 노출 정책(채워진 것만 나열·실개수) 적용.
