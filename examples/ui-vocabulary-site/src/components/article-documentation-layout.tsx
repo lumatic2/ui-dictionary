@@ -452,7 +452,7 @@ export function DocsArticlePage({ page, relatedTerms, onSelectTerm }: { page: Do
         )}
       </div>
 
-      <aside className="hidden border-l pl-6 text-sm xl:block">
+      <aside className="hidden self-start border-l pl-6 text-sm xl:sticky xl:top-20 xl:block xl:max-h-[calc(100svh-6rem)] xl:overflow-y-auto xl:overscroll-contain">
         <p className="text-xs font-semibold uppercase tracking-[0.22em] text-slate-500">On this page</p>
         <div className="mt-5 flex flex-col gap-3 text-slate-600">
           {page.onThisPage.map((item) => (

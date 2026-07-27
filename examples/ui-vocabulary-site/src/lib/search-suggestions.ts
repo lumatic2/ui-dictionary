@@ -95,19 +95,23 @@ export function getSearchSuggestions(
     suggestions.push(suggestion)
   }
 
-  for (const term of terms) {
-    if (!matchesFilter(term, filter)) {
-      continue
-    }
+  // 현재 필터 안의 매치를 먼저, 그다음 사전 전체 매치를 싣는다 — 필터가 검색을
+  // 가두면 Docs 등 좁은 컬렉션에서 "아코디언"류 전역 용어가 0건이 된다 (UE1 관측 결함).
+  for (const scopedOnly of [true, false]) {
+    for (const term of terms) {
+      if (seen.has(term.id) || matchesFilter(term, filter) !== scopedOnly) {
+        continue
+      }
 
-    const match = getTermSuggestionMatch(term, normalizedQuery)
-    if (!match) {
-      continue
-    }
+      const match = getTermSuggestionMatch(term, normalizedQuery)
+      if (!match) {
+        continue
+      }
 
-    const suggestion = termToSuggestion(term, match)
-    suggestions.push(suggestion)
-    seen.add(term.id)
+      const suggestion = termToSuggestion(term, match)
+      suggestions.push(suggestion)
+      seen.add(term.id)
+    }
   }
 
   for (const starter of starterQueries) {
@@ -121,7 +125,7 @@ export function getSearchSuggestions(
         continue
       }
       const term = terms.find((item) => item.id === termId)
-      if (!term || !matchesFilter(term, filter)) {
+      if (!term) {
         continue
       }
       const suggestion = termToSuggestion(term, starter.query)

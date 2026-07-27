@@ -340,6 +340,7 @@ function App() {
 
     const nextFilter = navFilter(collection.id)
     const nextPage = collection.id.startsWith("docs-") ? "docs" : "plus"
+    pushHistoryEntry()
     setPageMode(nextPage)
     setReturnPageMode(nextPage)
     setSelectedTermId(null)
@@ -381,6 +382,7 @@ function App() {
   }
 
   function updateNavFilter(nextFilter: TermFilter) {
+    pushHistoryEntry()
     setActiveUseCaseId(null)
     setQuery("")
     setFilter(nextFilter)
@@ -395,10 +397,17 @@ function App() {
     }
   }
 
+  // 페이지 단위 이동 전에 현재 URL 을 히스토리에 남긴다 — 뒤로가기가 이전 화면으로
+  // 돌아가게 하는 최소 장치. 새 URL 은 디바운스된 replaceState 가 곧 채운다.
+  function pushHistoryEntry() {
+    window.history.pushState(null, "", window.location.href)
+  }
+
   function changePage(nextPage: PageMode) {
     if (nextPage === "term") {
       return
     }
+    pushHistoryEntry()
     setPageMode(nextPage)
     setReturnPageMode(nextPage)
     setSelectedTermId(null)
@@ -436,6 +445,7 @@ function App() {
       return
     }
 
+    pushHistoryEntry()
     setActiveUseCaseId(null)
     setQuery("")
     setSelectedTermId(null)
@@ -644,7 +654,7 @@ function App() {
       </header>
 
       <div className={cn("grid w-full", noExploreLayout ? "lg:grid-cols-1" : "lg:grid-cols-[280px_minmax(0,1fr)]")}>
-        <aside className={cn("scrollbar-hidden sticky top-14 hidden h-[calc(100svh-3.5rem)] overflow-y-auto border-r bg-background px-4 py-6 lg:block", noExploreLayout && "lg:hidden")} data-print-hidden>
+        <aside className={cn("scrollbar-hidden sticky top-14 hidden h-[calc(100svh-3.5rem)] overflow-y-auto overscroll-contain border-r bg-background px-4 py-6 lg:block", noExploreLayout && "lg:hidden")} data-print-hidden>
           <nav aria-label="탐색" className="flex h-full flex-col gap-5">
             {visiblePageMode === "docs" ? (
               <>
@@ -1680,7 +1690,7 @@ function DocsCatalogLanding({ filterCounts, onFilterChange }: CatalogLandingProp
             Tailwind docs starts with the job a reader is trying to finish, then narrows into tabs, numbered steps, examples, and related anchors. This surface uses the same rhythm for UI terms.
           </p>
         </div>
-        <aside className="hidden border-l pl-6 text-sm xl:block">
+        <aside className="hidden self-start border-l pl-6 text-sm xl:sticky xl:top-20 xl:block xl:max-h-[calc(100svh-6rem)] xl:overflow-y-auto xl:overscroll-contain">
           <p className="text-xs font-semibold uppercase tracking-[0.22em] text-slate-500">On this page</p>
           <div className="mt-5 flex flex-col gap-3 text-slate-600">
             <span>Overview</span>
@@ -1780,7 +1790,7 @@ function DocsSectionPreview({ section, termCount }: { section: DocsSection; term
         </div>
       </div>
 
-      <aside className="hidden border-l pl-6 text-sm xl:block">
+      <aside className="hidden self-start border-l pl-6 text-sm xl:sticky xl:top-20 xl:block xl:max-h-[calc(100svh-6rem)] xl:overflow-y-auto xl:overscroll-contain">
         <p className="text-xs font-semibold uppercase tracking-[0.22em] text-slate-500">On this page</p>
         <div className="mt-5 flex flex-col gap-3 text-slate-600">
           {section.anchors.map((anchor) => (
@@ -2054,7 +2064,7 @@ function MarketingSectionCatalogPage({ page }: MarketingSectionCatalogPageProps)
             </div>
           </div>
         </div>
-        <aside className="hidden border-l pl-6 text-sm xl:block">
+        <aside className="hidden self-start border-l pl-6 text-sm xl:sticky xl:top-20 xl:block xl:max-h-[calc(100svh-6rem)] xl:overflow-y-auto xl:overscroll-contain">
           <p className="text-xs font-semibold uppercase tracking-[0.22em] text-slate-500">On this page</p>
           <div className="mt-5 flex flex-col gap-3 text-slate-600">
             <span>{page.examples.length} examples</span>

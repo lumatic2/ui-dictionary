@@ -35,3 +35,13 @@
 - 회귀 게이트: `npm run build` exit 0 · `npm run lint` exit 0 (경고는 기존 항목).
 - 경로 메모: 검색 추천 결과는 설계상 검색 결과 페이지로 착지 — 상세는 결과 행 2번째 클릭.
 - 사람 관측: evidence 에 대기 상태로 기록 — 관측 완료 후 이 milestone 을 닫는다.
+
+## step-3 보강 — 사람 관측 1회차(미달) 결함 수리 O1~O4
+
+관측 1회차에서 결함 7건 적발(발화 원문은 evidence). 좁은 수리 4건 즉시 반영:
+- O1 뒤로가기: `changePage`·`updateNavFilter`·`navigateFromHome`·`navigateToNavigationPath` 에 `pushHistoryEntry()` — 이동 전 현재 URL 을 히스토리에 push, 새 URL 은 디바운스 replaceState 가 채움.
+- O2 검색 0건: `search-suggestions.ts` 의 용어 제안이 현재 필터 밖을 배제하던 것을 "필터 안 우선 → 전체 사전" 2-pass 로 교정.
+- O3 TOC: "On this page" aside 4곳(App.tsx 3 + article-documentation-layout.tsx 1) sticky 화.
+- O4 스크롤 체이닝: 좌측 내비 aside 에 `overscroll-contain`.
+
+검증: F1·F1b·F2(한/영)·F3 전부 PASS, 콘솔 에러 0, build·lint exit 0. O5~O7 은 구조 결함 — plan finding 큐.
