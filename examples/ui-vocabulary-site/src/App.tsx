@@ -2810,8 +2810,17 @@ const marketingSectionPages = new Map<TermFilter, MarketingSectionPage>([
   ...templateProductPageEntries,
   [navFilter("plus-marketing-hero-sections"), {
     title: "Hero Sections",
-    description: "랜딩 페이지 첫 화면에서 제품 이름, 핵심 문장, 주요 CTA, 대표 이미지나 배경 효과를 조합하는 섹션 예시입니다.",
+    description: "랜딩 페이지 첫 화면에서 제품 이름, 핵심 문장, 주요 CTA, 대표 이미지나 배경 효과를 조합하는 섹션 예시입니다. 정적 스크린샷 계열과 함께, 히어로 자체가 조작 가능한 인터랙티브 투어 축도 있습니다.",
     examples: [
+      {
+        id: "interactive-tour",
+        eyebrow: "Marketing / Hero",
+        title: "Interactive tour",
+        description: "정적 스크린샷 대신 번호 hotspot을 눌러 단계별로 진행하는 가이드 투어가 히어로 본체인 2026 product-led 구성입니다.",
+        tags: ["interactive", "guided tour", "product-led"],
+        termId: "hero",
+        preview: "hero-interactive-tour",
+      },
       {
         id: "centered-hero",
         eyebrow: "Marketing / Hero",
@@ -3065,8 +3074,17 @@ const marketingSectionPages = new Map<TermFilter, MarketingSectionPage>([
   }],
   [navFilter("plus-marketing-pricing-sections"), {
     title: "Pricing Sections",
-    description: "요금제, 추천 플랜, 기능 비교, 구매 CTA를 한 섹션 안에서 비교하게 하는 가격 섹션 예시입니다.",
+    description: "요금제, 추천 플랜, 기능 비교, 구매 CTA를 한 섹션 안에서 비교하게 하는 가격 섹션 예시입니다. 고정 티어 카드 계열과, 사용량 입력에 실시간 반응하는 계산기 축을 함께 다룹니다.",
     examples: [
+      {
+        id: "usage-calculator",
+        eyebrow: "Marketing / Pricing",
+        title: "Usage calculator",
+        description: "고정 티어 카드가 아니라 슬라이더로 예상 사용량을 넣으면 월 비용이 실시간 재계산되는 계산기형 구성입니다.",
+        tags: ["calculator", "usage-based", "interactive"],
+        termId: "pricing-section",
+        preview: "pricing-usage-calculator",
+      },
       {
         id: "two-tiers-emphasized-right-tier",
         eyebrow: "Marketing / Pricing",
@@ -3179,8 +3197,17 @@ const marketingSectionPages = new Map<TermFilter, MarketingSectionPage>([
   }],
   [navFilter("plus-marketing-cta-sections"), {
     title: "CTA Sections",
-    description: "사용자가 다음 행동으로 넘어가도록 한 문장과 버튼을 강하게 배치하는 전환 섹션 예시입니다.",
+    description: "사용자가 다음 행동으로 넘어가도록 한 문장과 버튼을 강하게 배치하는 전환 섹션 예시입니다. 본문 흐름 안(in-flow) 섹션과, 스크롤 내내 화면에 고정되는 스티키 바 축을 함께 다룹니다.",
     examples: [
+      {
+        id: "sticky-bar",
+        eyebrow: "Marketing / CTA",
+        title: "Sticky bar",
+        description: "본문 흐름 안 섹션이 아니라 스크롤 위치와 무관하게 하단에 고정되는 얇은 바로, 단일 행동을 상시 노출하는 구성입니다.",
+        tags: ["sticky", "floating", "persistent"],
+        termId: "cta-section",
+        preview: "cta-sticky-bar",
+      },
       {
         id: "dark-panel-with-app-screenshot",
         eyebrow: "Marketing / CTA",

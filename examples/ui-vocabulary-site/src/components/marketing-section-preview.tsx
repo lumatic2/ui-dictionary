@@ -18,6 +18,7 @@ export type MarketingPreviewVariant =
   | "hero-angled-image"
   | "hero-image-tiles"
   | "hero-offset-image"
+  | "hero-interactive-tour"
   | "features-grid"
   | "features-alternating"
   | "features-icons"
@@ -51,6 +52,7 @@ export type MarketingPreviewVariant =
   | "pricing-four-tiers-toggle"
   | "pricing-comparison-table"
   | "pricing-three-tiers-feature-comparison"
+  | "pricing-usage-calculator"
   | "cta-centered"
   | "cta-split"
   | "cta-band"
@@ -65,6 +67,7 @@ export type MarketingPreviewVariant =
   | "cta-split-image"
   | "cta-two-column-photo"
   | "cta-image-tiles"
+  | "cta-sticky-bar"
   | "bento-asymmetric"
   | "bento-product"
   | "bento-media"
@@ -863,6 +866,68 @@ function HeroSectionPreview({ size = "default", theme = "system", variant }: { s
     </button>
   )
 
+  if (variant === "hero-interactive-tour") {
+    const tourSteps = [
+      { label: "Create a board", hint: "Boards keep every launch task in one place.", hotspot: { left: "12%", top: "22%" } },
+      { label: "Invite the team", hint: "Reviewers see the same live workspace.", hotspot: { left: "64%", top: "18%" } },
+      { label: "Ship the release", hint: "One click promotes the board to production.", hotspot: { left: "78%", top: "68%" } },
+    ]
+    const step = tourSteps[selectedTile] ?? tourSteps[0]
+    return (
+      <div data-hero-section-theme={heroTheme} data-hero-section-variant={variant} className={frameClass}>
+        {nav}
+        <div className="relative z-10 grid min-h-[560px] min-w-[760px] grid-cols-[0.85fr_1.15fr] items-center gap-8 px-6 py-10 md:min-h-[740px] md:min-w-0 md:gap-12 md:px-12 md:py-16">
+          <div className="flex max-w-xl flex-col justify-center">
+            <div>{announcement}</div>
+            <h4 className="mt-7 text-4xl font-semibold leading-[1.02] tracking-normal md:text-6xl">Try the product right here</h4>
+            <p className={cn("mt-6 text-base leading-8", isDark ? "text-slate-300" : "text-slate-600")}>Instead of a static screenshot, the hero is a guided tour — click through the numbered steps to see the workflow.</p>
+            <div className="mt-8 flex items-center gap-4">{primaryButton}{secondaryButton}</div>
+            <div className="mt-8 flex items-center gap-2" role="group" aria-label="Tour progress">
+              {tourSteps.map((s, i) => (
+                <button
+                  key={s.label}
+                  aria-label={`Go to tour step ${i + 1}: ${s.label}`}
+                  aria-pressed={selectedTile === i}
+                  className={cn("h-1.5 rounded-full transition-all", selectedTile === i ? "w-8 bg-indigo-500" : cn("w-4", isDark ? "bg-white/20 hover:bg-white/40" : "bg-slate-200 hover:bg-slate-300"))}
+                  type="button"
+                  onClick={() => setSelectedTile(i)}
+                />
+              ))}
+            </div>
+          </div>
+          <div className={cn("relative overflow-hidden rounded-2xl border shadow-2xl", isDark ? "border-white/10 bg-slate-900 shadow-black/40" : "border-slate-200 bg-white shadow-slate-900/10")}>
+            <div className={cn("flex items-center justify-between border-b px-4 py-2.5 text-[11px] font-medium", isDark ? "border-white/10 text-slate-300" : "border-slate-100 text-slate-500")}>
+              <span>Interactive tour · step {selectedTile + 1} of {tourSteps.length}</span>
+              <button aria-label="Advance tour step" className={cn("rounded-md px-2.5 py-1 font-semibold transition active:scale-[0.98]", isDark ? "bg-white/10 text-indigo-100 hover:bg-white/15" : "bg-indigo-50 text-indigo-700 hover:bg-indigo-100")} type="button" onClick={() => { const next = (selectedTile + 1) % tourSteps.length; setSelectedTile(next); setHeroFeedback(`Step ${next + 1} shown`) }}>Next →</button>
+            </div>
+            <div className="relative h-[320px] md:h-[480px]">
+              <div className={cn("absolute inset-x-6 top-6 h-8 rounded-lg", isDark ? "bg-white/5" : "bg-slate-100")} />
+              <div className={cn("absolute left-6 top-[4.8rem] h-[62%] w-[26%] rounded-lg", isDark ? "bg-white/5" : "bg-slate-100")} />
+              <div className={cn("absolute right-6 top-[4.8rem] h-[62%] w-[66%] rounded-lg", selectedTile === 2 ? "bg-indigo-500/15 ring-1 ring-indigo-500/40" : isDark ? "bg-white/5" : "bg-slate-100")} />
+              {tourSteps.map((s, i) => (
+                <button
+                  key={s.label}
+                  aria-label={`Open tour hotspot ${i + 1}: ${s.label}`}
+                  aria-pressed={selectedTile === i}
+                  className={cn("absolute z-10 grid size-7 -translate-x-1/2 -translate-y-1/2 place-items-center rounded-full text-[11px] font-bold shadow-lg transition active:scale-[0.95]", selectedTile === i ? "bg-indigo-600 text-white ring-4 ring-indigo-500/30" : cn("ring-2", isDark ? "bg-slate-800 text-indigo-200 ring-white/20 hover:ring-indigo-400/50" : "bg-white text-indigo-700 ring-indigo-200 hover:ring-indigo-400"))}
+                  style={{ left: s.hotspot.left, top: s.hotspot.top }}
+                  type="button"
+                  onClick={() => { setSelectedTile(i); setHeroFeedback(`${s.label} shown`) }}
+                >
+                  {i + 1}
+                </button>
+              ))}
+              <div className={cn("absolute bottom-5 left-1/2 w-[78%] -translate-x-1/2 rounded-xl border px-4 py-3 shadow-xl transition-colors", isDark ? "border-white/10 bg-slate-950/90 text-white" : "border-slate-200 bg-white/95 text-slate-900")}>
+                <p className="text-xs font-semibold">{step.label}</p>
+                <p className={cn("mt-1 text-[11px] leading-5", isDark ? "text-slate-300" : "text-slate-600")}>{step.hint}</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    )
+  }
+
   if (variant === "hero-centered") {
     return (
       <div data-hero-section-theme={heroTheme} data-hero-section-variant={variant} className={frameClass}>
@@ -1207,6 +1272,7 @@ export function MarketingSectionPreview({ size = "default", theme = "system", va
   const [selectedPanelObject, setSelectedPanelObject] = useState("Hero image")
   const [openStackedListMenu, setOpenStackedListMenu] = useState<string | null>(null)
   const [selectedTableRows, setSelectedTableRows] = useState<string[]>(["lindsay.walton@example.com"])
+  const [usageMillions, setUsageMillions] = useState(2)
 
   if (variant.startsWith("hero-")) {
     return <HeroSectionPreview size={size} theme={theme} variant={variant as HeroPreviewVariant} />
@@ -1640,6 +1706,69 @@ renderFeatureSection(feature)`}</code>
     )
   }
 
+  if (variant === "pricing-usage-calculator") {
+    const isDarkCalc = theme === "dark"
+    const brackets = [
+      { upTo: 1, label: "First 1M events", rate: 0 },
+      { upTo: 5, label: "1M – 5M", rate: 45 },
+      { upTo: 15, label: "5M – 15M", rate: 30 },
+      { upTo: 40, label: "15M – 40M", rate: 18 },
+    ]
+    let remaining = usageMillions
+    let previousCap = 0
+    let total = 0
+    const activeBrackets: number[] = []
+    brackets.forEach((bracket, i) => {
+      if (remaining <= 0) return
+      const span = Math.min(remaining, bracket.upTo - previousCap)
+      total += span * bracket.rate
+      if (span > 0) activeBrackets.push(i)
+      remaining -= span
+      previousCap = bracket.upTo
+    })
+    return (
+      <section data-pricing-section-theme={isDarkCalc ? "dark" : "light"} data-pricing-section-variant={variant} className={cn("flex min-h-[520px] flex-col justify-center px-6 py-16 transition-colors duration-300 md:min-h-[680px] md:px-10 md:py-24", isDarkCalc ? "bg-slate-950 text-white" : "bg-white text-slate-950")}>
+        <div className="mx-auto w-full max-w-3xl">
+          <p className={cn("text-sm font-semibold", isDarkCalc ? "text-indigo-300" : "text-indigo-600")}>Usage-based pricing</p>
+          <h4 className="mt-3 text-3xl font-semibold tracking-normal md:text-5xl">Pay for what you send</h4>
+          <p className={cn("mt-4 max-w-xl text-base leading-7", isDarkCalc ? "text-slate-300" : "text-slate-600")}>No fixed tiers — drag the slider to your expected monthly events and the estimate recalculates instantly.</p>
+          <div className={cn("mt-10 rounded-2xl border p-6 shadow-sm md:p-8", isDarkCalc ? "border-white/10 bg-slate-900" : "border-slate-200 bg-slate-50")}>
+            <div className="flex flex-wrap items-end justify-between gap-4">
+              <div>
+                <label className={cn("text-xs font-medium", isDarkCalc ? "text-slate-300" : "text-slate-600")} htmlFor="usage-calculator-slider">Monthly events</label>
+                <p className="mt-1 text-2xl font-semibold tabular-nums md:text-3xl">{usageMillions}M</p>
+              </div>
+              <div className="text-right">
+                <p className={cn("text-xs font-medium", isDarkCalc ? "text-slate-300" : "text-slate-600")}>Estimated cost</p>
+                <p aria-live="polite" className={cn("mt-1 text-3xl font-semibold tabular-nums md:text-4xl", isDarkCalc ? "text-indigo-300" : "text-indigo-600")}>{total === 0 ? "Free" : `$${Math.round(total)}`}<span className={cn("text-sm font-medium", isDarkCalc ? "text-slate-400" : "text-slate-500")}>/mo</span></p>
+              </div>
+            </div>
+            <input
+              aria-label="Expected monthly events in millions"
+              className="mt-6 w-full accent-indigo-600"
+              id="usage-calculator-slider"
+              max={40}
+              min={0}
+              step={1}
+              type="range"
+              value={usageMillions}
+              onChange={(event) => setUsageMillions(Number(event.target.value))}
+            />
+            <div className={cn("mt-6 divide-y rounded-xl border text-sm", isDarkCalc ? "divide-white/10 border-white/10" : "divide-slate-200 border-slate-200")}>
+              {brackets.map((bracket, i) => (
+                <div key={bracket.label} className={cn("flex items-center justify-between px-4 py-2.5 transition-colors", activeBrackets.includes(i) && (isDarkCalc ? "bg-indigo-500/15" : "bg-indigo-50"))}>
+                  <span className={cn(activeBrackets.includes(i) ? "font-semibold" : isDarkCalc ? "text-slate-400" : "text-slate-500")}>{bracket.label}</span>
+                  <span className={cn("tabular-nums", activeBrackets.includes(i) ? "font-semibold" : isDarkCalc ? "text-slate-400" : "text-slate-500")}>{bracket.rate === 0 ? "Free" : `$${bracket.rate}/M`}</span>
+                </div>
+              ))}
+            </div>
+            <p className={cn("mt-4 text-xs leading-5", isDarkCalc ? "text-slate-400" : "text-slate-500")}>Volume discounts apply automatically as you cross each bracket. Annual commit brings every rate down a further 20%.</p>
+          </div>
+        </div>
+      </section>
+    )
+  }
+
   if (variant.startsWith("pricing-") && !variant.endsWith("-page")) {
     const isTwoTier = variant === "pricing-two-tier-right" || variant === "pricing-two-tier-left" || variant === "pricing-two-tier-extra"
     const isFourTier = variant === "pricing-four-tiers-toggle"
@@ -1947,6 +2076,37 @@ renderFeatureSection(feature)`}</code>
         <img alt="" className="h-full w-full object-cover" src={src} />
       </div>
     )
+
+    if (variant === "cta-sticky-bar") {
+      return (
+        <section data-cta-section-theme={ctaTheme} data-cta-section-variant={variant} className={cn("relative overflow-hidden transition-colors duration-300", themeDarkCta ? "bg-slate-950" : "bg-white")}>
+          <div className="h-[430px] overflow-y-auto px-6 pb-28 pt-10 md:h-[560px] md:px-10" aria-label="Scroll to see the sticky CTA stay fixed">
+            {["Why teams switch", "How rollout works", "What changes on day one", "Security review notes", "Migration checklist"].map((heading, i) => (
+              <div key={heading} className={cn("mx-auto max-w-3xl", i > 0 && "mt-10")}>
+                <h4 className={cn("text-xl font-semibold tracking-normal md:text-2xl", ctaTextColor)}>{heading}</h4>
+                <div className="mt-4 space-y-2.5">
+                  <div className={cn("h-3 rounded", themeDarkCta ? "bg-white/10" : "bg-slate-100")} />
+                  <div className={cn("h-3 w-11/12 rounded", themeDarkCta ? "bg-white/10" : "bg-slate-100")} />
+                  <div className={cn("h-3 w-4/5 rounded", themeDarkCta ? "bg-white/10" : "bg-slate-100")} />
+                </div>
+              </div>
+            ))}
+          </div>
+          <div className={cn("absolute inset-x-0 bottom-0 border-t backdrop-blur", themeDarkCta ? "border-white/10 bg-slate-950/85" : "border-slate-200 bg-white/90")}>
+            <div className="mx-auto flex max-w-3xl items-center justify-between gap-4 px-6 py-3.5 md:px-0">
+              <div className="min-w-0">
+                <p className={cn("truncate text-sm font-semibold", ctaTextColor)}>Ready when you are</p>
+                <p className={cn("hidden text-xs md:block", ctaMutedColor)}>One action, visible at every scroll position.</p>
+              </div>
+              <div className="flex shrink-0 items-center gap-2">
+                {postedComment && <span className={cn("hidden rounded-full px-3 py-1 text-[11px] font-medium animate-in fade-in md:inline", themeDarkCta ? "bg-white/10 text-indigo-100" : "bg-indigo-50 text-indigo-700")}>{postedComment}</span>}
+                <button aria-label="Schedule a demo from sticky bar" className={cn("rounded-full px-4 py-2 text-sm font-semibold shadow-sm transition hover:-translate-y-0.5 active:scale-[0.98]", themeDarkCta ? "bg-white text-slate-950" : "bg-indigo-600 text-white hover:bg-indigo-500")} type="button" onClick={() => setPostedComment("Demo scheduled")}>Schedule a demo</button>
+              </div>
+            </div>
+          </div>
+        </section>
+      )
+    }
 
     if (variant === "cta-dark-app-screenshot") {
       return (
