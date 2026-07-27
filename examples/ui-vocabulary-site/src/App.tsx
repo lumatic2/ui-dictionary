@@ -1249,11 +1249,11 @@ function getOAuthStartOrigin() {
     return configuredOrigin
   }
 
-  if (window.location.hostname === "localhost" || window.location.hostname === "127.0.0.1") {
-    return "https://askewly.com"
-  }
-
-  return window.location.origin
+  // OAuth "시작"은 항상 authority 로 직접 간다 (프록시 경유 금지 — 2026-07-28 실측):
+  // 프록시로 시작하면 CSRF state 쿠키가 ui.askewly.com 에만 저장되는데, Google 콜백은
+  // askewly.com 으로 돌아와 state 검증이 실패하고 askewly.com/?auth=error 로 떨어진다.
+  // 세션 조회·로그아웃은 계속 same-origin 프록시(세션 쿠키는 Domain=.askewly.com 공유).
+  return "https://askewly.com"
 }
 
 function getDefaultFilterForPage(page: PageMode): TermFilter {
