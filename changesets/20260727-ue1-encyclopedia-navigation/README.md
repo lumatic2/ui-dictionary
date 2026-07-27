@@ -28,3 +28,10 @@
 - ③ 기존 `?page=term&id=accordion` 하위호환 PASS
 - ③b 잘못된 `?id=no-such-term` → 빈 상세 폴백 렌더, 콘솔 에러 0 (failure probe)
 - ④ 목록→상세(pushState)→뒤로가기 → 목록 복귀 PASS (popstate 실동작 확인)
+
+## step-3 — 통합 E2E + 사람 관측
+
+- 통합 시나리오(홈→검색→상세→사이드바→목록→딥링크 새 탭) Playwright 5항 PASS, 콘솔 에러 0.
+- 회귀 게이트: `npm run build` exit 0 · `npm run lint` exit 0 (경고는 기존 항목).
+- 경로 메모: 검색 추천 결과는 설계상 검색 결과 페이지로 착지 — 상세는 결과 행 2번째 클릭.
+- 사람 관측: evidence 에 대기 상태로 기록 — 관측 완료 후 이 milestone 을 닫는다.
