@@ -3293,13 +3293,15 @@ const marketingSectionPages = new Map<TermFilter, MarketingSectionPage>([
   }],
   [navFilter("plus-marketing-header-sections"), {
     title: "Header Sections",
-    description: "브랜드, 내비게이션, 로그인, 주요 CTA를 페이지 상단에서 정리하는 헤더 섹션 예시입니다.",
+    description: "페이지 본문이 시작되는 머리말 섹션(제목·리드·CTA) 예시입니다. hero 와 형태가 겹치지만 역할이 다르고, 사이트 상단의 내비게이션 바는 Elements > Headers 에 있습니다.",
     examples: [
+      { id: "type-first", eyebrow: "Marketing / Header", title: "Type-first", description: "초대형 타이포가 화면을 소유하고 메타 정보는 얇은 행으로 물러나는 2026 타입 우선 구성입니다.", tags: ["type-first", "oversized", "editorial"], termId: "header", preview: "header-type-first" },
+      { id: "split-editorial", eyebrow: "Marketing / Header", title: "Split editorial", description: "좌측 큰 제목 열과 우측으로 내려앉은 리드·목차 열이 비대칭 편집 그리드를 만듭니다.", tags: ["asymmetric", "editorial grid", "index"], termId: "header", preview: "header-split-editorial" },
       { id: "with-stats", eyebrow: "Marketing / Header", title: "With stats", description: "상단 메시지 아래에 핵심 수치를 붙여 신뢰 신호까지 바로 보여주는 header입니다.", tags: ["stats", "proof", "hero intro"], termId: "header", preview: "header-with-stats" },
-      { id: "centered", eyebrow: "Marketing / Header", title: "Centered", description: "제목과 설명, CTA를 가운데 정렬해 첫 메시지에 집중시키는 기본형입니다.", tags: ["centered", "simple", "landing"], termId: "header", preview: "header-centered" },
+      { id: "centered", eyebrow: "Marketing / Header", title: "Centered", description: "모든 요소를 가운데 축에 세우는 대칭 기본형 — 좌측 정렬 Simple 과 짝을 이루는 반대편입니다.", tags: ["centered", "simple", "landing"], termId: "header", preview: "header-centered" },
       { id: "centered-with-eyebrow", eyebrow: "Marketing / Header", title: "Centered with eyebrow", description: "작은 eyebrow label을 추가해 섹션의 맥락이나 출시 소식을 먼저 알려줍니다.", tags: ["eyebrow", "centered", "announcement"], termId: "header", preview: "header-centered-eyebrow" },
       { id: "with-cards", eyebrow: "Marketing / Header", title: "With cards", description: "헤더 하단에 보조 카드들을 붙여 다음 콘텐츠로 자연스럽게 이어지게 합니다.", tags: ["cards", "next section", "overview"], termId: "header", preview: "header-with-cards" },
-      { id: "simple", eyebrow: "Marketing / Header", title: "Simple", description: "제목과 설명, 두 개의 버튼만 남긴 가장 가벼운 header 구성입니다.", tags: ["simple", "copy", "CTA"], termId: "header", preview: "header-simple" },
+      { id: "simple", eyebrow: "Marketing / Header", title: "Simple", description: "좌측 정렬로 제목·설명·버튼만 남긴 최소 구성 — 가운데 축의 Centered 와 대비되는 기본형입니다.", tags: ["simple", "copy", "CTA"], termId: "header", preview: "header-simple" },
       { id: "simple-with-eyebrow", eyebrow: "Marketing / Header", title: "Simple with eyebrow", description: "왼쪽 정렬 header에 eyebrow를 더해 제품 카테고리나 공지를 먼저 보여줍니다.", tags: ["eyebrow", "left aligned", "simple"], termId: "header", preview: "header-simple-eyebrow" },
       { id: "simple-with-background-image", eyebrow: "Marketing / Header", title: "Simple with background image", description: "배경 이미지를 깔고 텍스트를 올려 브랜드 장면을 강하게 드러냅니다.", tags: ["background image", "brand", "visual"], termId: "header", preview: "header-bg-image" },
       { id: "centered-with-background-image", eyebrow: "Marketing / Header", title: "Centered with background image", description: "이미지 배경 위에 중앙 정렬 메시지를 올려 hero처럼 쓰는 header입니다.", tags: ["background image", "centered", "hero"], termId: "header", preview: "header-centered-bg-image" },
@@ -3428,6 +3430,7 @@ const marketingSectionPages = new Map<TermFilter, MarketingSectionPage>([
     title: "Footers",
     description: "페이지 하단에서 보조 링크, 정책, 회사 정보, 구독 행동을 정리하는 푸터 섹션 예시입니다.",
     examples: [
+      { id: "brand-wordmark", eyebrow: "Marketing / Footer", title: "Brand wordmark", description: "얇은 링크 행 아래 초대형 워드마크를 깔아 푸터를 브랜드 표면으로 쓰는 구성입니다.", tags: ["wordmark", "brand", "oversized type"], termId: "footer", preview: "footer-brand-wordmark" },
       { id: "four-column-with-company-mission", eyebrow: "Marketing / Footer", title: "4-column with company mission", description: "회사 설명과 여러 링크 그룹을 함께 배치해 큰 사이트 하단 정보를 정리합니다.", tags: ["mission", "four column", "links"], termId: "footer", preview: "footer-mission" },
       { id: "four-column-with-call-to-action", eyebrow: "Marketing / Footer", title: "4-column with call-to-action", description: "링크 그룹 위에 CTA를 붙여 하단에서도 전환 행동을 남깁니다.", tags: ["CTA", "four column", "footer"], termId: "footer", preview: "footer-cta" },
       { id: "four-column-simple", eyebrow: "Marketing / Footer", title: "4-column simple", description: "제품, 리소스, 회사 링크를 네 열로 나눠 정리하는 기본형입니다.", tags: ["simple", "columns", "links"], termId: "footer", preview: "footer-four-column-simple" },

@@ -42,7 +42,7 @@ Status: approved (2026-07-27 — UE1 승인 연쇄 `--chain UE2,UE3,UE4` 집행 
   - Failure probe: URL 없는 항목이 있으면 전역 인용 규칙 위반 — 장부 무효.
   - Commit: changeset `ue3-batch1-header-footer` (README 절: step-1).
 
-- [ ] **step-2 — Header Sections 정비 (O10 해소 + 갭 변형)**
+- [x] **step-2 — Header Sections 정비 (O10 해소 + 갭 변형)**
   - Artifact: ① 컬렉션 페이지 안내문에 "Header Section = 페이지 머리말 섹션, 내비바는 Elements > Headers" 구분 명시 ② 기존 8예제 중 서로 똑같아 보이는 것들의 시각·카피 차별화 ③ step-1 갭 변형 ≥1 신규 구현(실사 mock 데이터·라이트/다크).
   - Files: write `src/components/marketing-section-preview.tsx`(변형 수정·추가), `src/App.tsx`(`marketingSectionPages` 헤더 항목 데이터·안내문). read `research/2026-07-27-ue3-batch1-references.md`.
   - Risk: 위험 (기존 변형 수정이 다른 컬렉션·홈 쇼케이스에서 재사용 중이면 회귀 — 수정 전 variant 사용처 grep 을 Verify 에 포함)
@@ -51,7 +51,7 @@ Status: approved (2026-07-27 — UE1 승인 연쇄 `--chain UE2,UE3,UE4` 집행 
   - Failure probe: 신규 변형이 기존 것과 같은 레이아웃 골격이면 O10 재발 — 스크린샷 대조에서 적발한다.
   - Commit: changeset `ue3-batch1-header-footer` (README 절: step-2).
 
-- [ ] **step-3 — Footers 점검·갭 보강**
+- [x] **step-3 — Footers 점검·갭 보강**
   - Artifact: 기존 7변형의 레퍼런스 대조 결과(장부 기준 충분/갭)와, 갭이 있으면 변형 ≥1 신규 구현. 컬렉션 안내문 정비.
   - Files: write `src/components/marketing-section-preview.tsx`, `src/App.tsx`(푸터 데이터·안내문). read `research/2026-07-27-ue3-batch1-references.md`.
   - Risk: 위험 (step-2 와 동일 — 수정 variant 재사용 회귀. 동일 절차로 잡는다)

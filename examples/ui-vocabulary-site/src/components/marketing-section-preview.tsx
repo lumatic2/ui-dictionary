@@ -73,6 +73,9 @@ export type MarketingPreviewVariant =
   | "bento-two-row-three-column"
   | "header-simple"
   | "header-centered"
+  | "header-type-first"
+  | "header-split-editorial"
+  | "footer-brand-wordmark"
   | "header-with-cta"
   | "header-with-stats"
   | "header-centered-eyebrow"
@@ -2369,6 +2372,74 @@ renderFeatureSection(feature)`}</code>
         </div>
       </section>
     )
+    if (variant === "header-type-first") {
+      // 갭 G-H1 (레퍼런스 장부 H1·H2 — 타입 우선): 초대형 타이포가 화면을 소유하고
+      // 나머지는 얇은 메타 행으로 물러난다. 참고를 재해석 — 특정 사이트 복제 아님.
+      return (
+        <section data-header-section-theme={headerTheme} data-header-section-variant={variant} className={cn("flex min-h-[520px] items-end px-6 py-16 transition-colors duration-300 md:min-h-[560px] md:px-10 md:py-20", isDarkHeaderSection ? "bg-slate-950 text-white" : "bg-white text-slate-950")}>
+          <div className="mx-auto w-full max-w-6xl">
+            <h4 className="text-6xl font-semibold leading-[0.95] tracking-tight md:text-8xl">
+              Measured,
+              <br />
+              not guessed.
+            </h4>
+            <div className={cn("mt-12 flex flex-wrap items-baseline gap-x-10 gap-y-3 border-t pt-6 text-sm", isDarkHeaderSection ? "border-white/15 text-slate-400" : "border-slate-200 text-slate-600")}>
+              <span className={cn("font-semibold", isDarkHeaderSection ? "text-white" : "text-slate-950")}>2026 Design Systems Report</span>
+              <span>48 pages</span>
+              <span>Published July 2026</span>
+              <button
+                aria-label="Open header read the report"
+                aria-pressed={activeNavItem === "Read the report"}
+                className={cn("ml-auto rounded-md text-sm font-semibold transition duration-200 hover:-translate-y-0.5 focus:outline-none focus:ring-2 focus:ring-indigo-400/50 active:scale-[0.98]", isDarkHeaderSection ? "text-indigo-300 hover:text-indigo-200" : "text-indigo-600 hover:text-indigo-500")}
+                type="button"
+                onClick={() => selectHeaderAction("Read the report")}
+              >
+                Read the report <span aria-hidden="true">→</span>
+              </button>
+            </div>
+            <HeaderFeedback dark={isDarkHeaderSection} />
+          </div>
+        </section>
+      )
+    }
+    if (variant === "header-split-editorial") {
+      // 갭 G-H2 (장부 H1·H3·H4 — 비대칭 분할·편집형): 좌측 큰 제목 열과
+      // 우측으로 내려앉은 리드·목차 열이 비대칭 그리드를 만든다.
+      return (
+        <section data-header-section-theme={headerTheme} data-header-section-variant={variant} className={cn("flex min-h-[520px] px-6 py-16 transition-colors duration-300 md:min-h-[560px] md:px-10 md:py-20", isDarkHeaderSection ? "bg-slate-950 text-white" : "bg-slate-50 text-slate-950")}>
+          <div className="mx-auto grid w-full max-w-6xl gap-10 md:grid-cols-12">
+            <div className="md:col-span-7">
+              <p className={cn("text-sm font-semibold", isDarkHeaderSection ? "text-indigo-300" : "text-indigo-600")}>Changelog · Vol. 14</p>
+              <h4 className="mt-4 text-5xl font-semibold leading-[1.02] tracking-tight md:text-7xl">What shipped this quarter</h4>
+              <div className={cn("mt-10 h-px w-24", isDarkHeaderSection ? "bg-white/25" : "bg-slate-300")} aria-hidden="true" />
+            </div>
+            <div className="md:col-span-4 md:col-start-9 md:pt-24">
+              <p className={cn("text-base leading-7", isDarkHeaderSection ? "text-white/75" : "text-slate-600")}>
+                Twelve releases, three renamed patterns, and one breaking token change — each entry links to the diff that made it.
+              </p>
+              <ol className="mt-8 space-y-3">
+                {["Tokens", "Components", "Recipes"].map((label, index) => (
+                  <li key={label}>
+                    <button
+                      aria-label={`Open header index ${label}`}
+                      aria-pressed={activeNavItem === label}
+                      className={cn("flex w-full items-baseline gap-4 border-b pb-3 text-left transition duration-200 hover:-translate-y-0.5 focus:outline-none focus:ring-2 focus:ring-indigo-400/50 active:scale-[0.99]", isDarkHeaderSection ? "border-white/10" : "border-slate-200")}
+                      type="button"
+                      onClick={() => selectHeaderAction(label)}
+                    >
+                      <span className={cn("font-mono text-xs", isDarkHeaderSection ? "text-slate-500" : "text-slate-400")}>{String(index + 1).padStart(2, "0")}</span>
+                      <span className={cn("text-sm font-semibold", isDarkHeaderSection ? "text-white" : "text-slate-950")}>{label}</span>
+                      <span aria-hidden="true" className={cn("ml-auto text-sm", isDarkHeaderSection ? "text-indigo-300" : "text-indigo-600")}>→</span>
+                    </button>
+                  </li>
+                ))}
+              </ol>
+              <HeaderFeedback dark={isDarkHeaderSection} />
+            </div>
+          </div>
+        </section>
+      )
+    }
     if (hasStatsHeader) {
       return <BackgroundHeader stats />
     }
@@ -3092,6 +3163,36 @@ renderFeatureSection(feature)`}</code>
     )
     const Copyright = ({ dark = isDarkFooter }: { dark?: boolean }) => <p className={cn("text-xs", dark ? "text-slate-500" : "text-slate-500")}>© 2026 UI Vocabulary, Inc. All rights reserved.</p>
 
+    if (variant === "footer-brand-wordmark") {
+      // 갭 G-F1 (장부 F2·F3·F4 — 대형 브랜드 타이포): 얇은 링크 행 아래
+      // 초대형 워드마크가 푸터를 브랜드 표면으로 만든다. 참고 재해석 — 복제 아님.
+      const wordmarkDark = theme === "dark" || theme === "system"
+      const isDark = theme === "dark" ? true : theme === "light" ? false : wordmarkDark
+      return (
+        <div className={cn("transition-colors duration-300", isDark ? "bg-slate-950 text-white" : "bg-white text-slate-900", "min-h-[24rem] px-7 py-14 sm:px-10 lg:px-12")} data-footer-section-theme={isDark ? "dark" : "light"} data-footer-section-variant={variant}>
+          <footer className="mx-auto flex max-w-6xl flex-col">
+            <div className="flex flex-wrap items-center justify-between gap-6">
+              <nav aria-label="Footer" className="flex flex-wrap gap-x-8 gap-y-2">
+                {["Work", "Studio", "Journal", "Contact"].map((link) => (
+                  <button key={link} aria-label={`Open footer link ${link}`} aria-pressed={activeNavItem === link} className={cn("text-sm font-medium transition hover:text-indigo-500 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-indigo-400/50 active:scale-[0.98]", isDark ? "text-slate-400" : "text-slate-600", activeNavItem === link && (isDark ? "text-white" : "text-indigo-700"))} type="button" onClick={() => openFooterAction(link)}>
+                    {link}
+                  </button>
+                ))}
+              </nav>
+              <Social dark={isDark} />
+            </div>
+            <FooterFeedback />
+            <p aria-hidden="true" className={cn("mt-14 select-none text-[clamp(4rem,14vw,9rem)] font-black uppercase leading-[0.85] tracking-tight", isDark ? "text-white" : "text-slate-950")}>
+              Vocab
+            </p>
+            <div className={cn("mt-8 flex flex-wrap items-center justify-between gap-4 border-t pt-6", isDark ? "border-white/10" : "border-slate-200")}>
+              <Copyright dark={isDark} />
+              <p className={cn("text-xs", isDark ? "text-slate-500" : "text-slate-500")}>Seoul · Remote everywhere</p>
+            </div>
+          </footer>
+        </div>
+      )
+    }
     if (variant === "footer-mission") {
       return (
         <div className={footerRootClass("min-h-[26rem] px-7 py-14 sm:px-10 lg:px-12")} data-footer-section-theme={footerTheme} data-footer-section-variant={variant}>
