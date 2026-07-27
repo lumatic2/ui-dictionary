@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "active_work_id": "ue1-encyclopedia-navigation",
+  "active_work_id": "ue5-routing-split",
   "works": {
     "SFB1": {
       "title": "Structure Contract And Clean Production",
@@ -3954,6 +3954,54 @@
       "updated_at": "2026-07-27",
       "notes": "Registered atomically by canonical harness approve_harness_plan.py after plan validation.",
       "completion_summary": "탐색 수리 완료 — 검색·사이드바·딥링크·뒤로가기가 실동작하고 사람 관측 3회차 통과로 확인"
+    },
+    "ue5-routing-split": {
+      "work_id": "ue5-routing-split",
+      "milestone_id": "UE5",
+      "status": "completed",
+      "plan_path": "plans/2026-07-27-ue5-routing-split.md",
+      "changeset_path": "changesets/20260727-ue5-routing-split",
+      "next_step": "step-1",
+      "current_step": "step-1",
+      "steps": [
+        {
+          "id": "step-1",
+          "label": "step-1 — 라우터 골격 + URL 어댑터 + 하위호환 리다이렉트"
+        },
+        {
+          "id": "step-2",
+          "label": "step-2 — 화면 모듈 분리 + lazy 코드 분할"
+        },
+        {
+          "id": "step-3",
+          "label": "step-3 — 통합 회귀 + 사람 관측"
+        }
+      ],
+      "execution_mode": "continuous",
+      "approval": {
+        "approved_by": "user",
+        "approved_at": "2026-07-27",
+        "plan_sha256": "85030a3d3622f87cc129848e70481b50513186d1aca9018f9a1f5f45cc12b80a"
+      },
+      "allowed_stop_reasons": [
+        "completed",
+        "blocked",
+        "decision_required",
+        "risk_gate",
+        "secret_required",
+        "external_authority_required",
+        "user_stopped"
+      ],
+      "stop_reason": null,
+      "stop_detail": {},
+      "session_ids": [
+        "codex:e1f9766b-7ec5-4959-a125-6af2a1f7e798",
+        "claude:e1f9766b-7ec5-4959-a125-6af2a1f7e798"
+      ],
+      "owner_session_uuid": "claude:e1f9766b-7ec5-4959-a125-6af2a1f7e798",
+      "updated_at": "2026-07-27",
+      "notes": "Registered atomically by canonical harness approve_harness_plan.py after plan validation.",
+      "completion_summary": "페이지 분리 완료 — 실제 URL 경로·구 URL 리다이렉트·초기 청크 -47%, 사람 관측 통과"
     }
   }
 }
