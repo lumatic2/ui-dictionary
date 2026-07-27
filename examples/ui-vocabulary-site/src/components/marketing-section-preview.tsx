@@ -97,6 +97,7 @@ export type MarketingPreviewVariant =
   | "newsletter-stacked"
   | "newsletter-centered-card"
   | "newsletter-side-card"
+  | "newsletter-gamified-quiz"
   | "stats-grid"
   | "stats-list"
   | "stats-with-copy"
@@ -129,6 +130,7 @@ export type MarketingPreviewVariant =
   | "faqs-three-columns-centered"
   | "faqs-two-columns"
   | "faqs-two-columns-centered"
+  | "faqs-search-accordion"
   | "footer-columns"
   | "footer-simple"
   | "footer-newsletter"
@@ -147,6 +149,7 @@ export type MarketingPreviewVariant =
   | "blog-single-column"
   | "blog-single-column-images"
   | "blog-photo-list"
+  | "blog-sticky-sidebar"
   | "contact-split"
   | "contact-cards"
   | "contact-form"
@@ -169,6 +172,7 @@ export type MarketingPreviewVariant =
   | "team-full-width-vertical"
   | "team-large-round-grid"
   | "team-medium-images"
+  | "team-scatter-reveal"
   | "content-prose"
   | "content-sidebar"
   | "content-media"
@@ -186,6 +190,7 @@ export type MarketingPreviewVariant =
   | "logo-cloud-cta"
   | "logo-cloud-left"
   | "logo-cloud-split-right"
+  | "logo-cloud-marquee"
   | "element-header-simple"
   | "element-header-float"
   | "element-header-dark"
@@ -1278,6 +1283,10 @@ export function MarketingSectionPreview({ size = "default", theme = "system", va
   const [usageMillions, setUsageMillions] = useState(2)
   const [featureDemoView, setFeatureDemoView] = useState("Boards")
   const [playingVideo, setPlayingVideo] = useState<string | null>(null)
+  const [quizChoice, setQuizChoice] = useState<string | null>(null)
+  const [blogCategory, setBlogCategory] = useState("All posts")
+  const [scatterMember, setScatterMember] = useState("Maya Chen")
+  const [faqQuery, setFaqQuery] = useState("")
 
   if (variant.startsWith("hero-")) {
     return <HeroSectionPreview size={size} theme={theme} variant={variant as HeroPreviewVariant} />
@@ -2716,6 +2725,44 @@ renderFeatureSection(feature)`}</code>
     )
   }
 
+  if (variant === "newsletter-gamified-quiz") {
+    const isDarkQuiz = theme === "dark"
+    const quizOptions = ["Product deep-dives", "Design teardowns", "Weekly digest"]
+    return (
+      <section data-newsletter-section-theme={isDarkQuiz ? "dark" : "light"} data-newsletter-section-variant={variant} className={cn("flex min-h-[430px] flex-col justify-center px-6 py-16 transition-colors duration-300 md:min-h-[560px] md:px-10 md:py-24", isDarkQuiz ? "bg-slate-950 text-white" : "bg-white text-slate-950")}>
+        <div className={cn("mx-auto w-full max-w-2xl rounded-3xl border p-8 shadow-sm md:p-10", isDarkQuiz ? "border-white/10 bg-slate-900" : "border-slate-200 bg-slate-50")}>
+          <p className={cn("text-sm font-semibold", isDarkQuiz ? "text-indigo-300" : "text-indigo-600")}>Step {quizChoice ? "2 of 2" : "1 of 2"}</p>
+          {!quizChoice ? (
+            <>
+              <h4 className="mt-3 text-2xl font-semibold tracking-normal md:text-3xl">What should we send you?</h4>
+              <p className={cn("mt-3 text-sm leading-6", isDarkQuiz ? "text-slate-300" : "text-slate-600")}>Pick one — the email field comes after, so the first click is a preference, not a commitment.</p>
+              <div className="mt-6 grid gap-3 md:grid-cols-3">
+                {quizOptions.map((option) => (
+                  <button key={option} aria-label={`Choose newsletter topic ${option}`} className={cn("rounded-xl border px-4 py-4 text-sm font-medium transition hover:-translate-y-0.5 active:scale-[0.98]", isDarkQuiz ? "border-white/15 bg-white/5 hover:border-indigo-400/60" : "border-slate-200 bg-white hover:border-indigo-400")} type="button" onClick={() => setQuizChoice(option)}>
+                    {option}
+                  </button>
+                ))}
+              </div>
+            </>
+          ) : (
+            <>
+              <h4 className="mt-3 text-2xl font-semibold tracking-normal md:text-3xl">Nice — {quizChoice.toLowerCase()} it is.</h4>
+              <p className={cn("mt-3 text-sm leading-6", isDarkQuiz ? "text-slate-300" : "text-slate-600")}>Where should they land?</p>
+              <form className="mt-6 flex flex-col gap-3 sm:flex-row" onSubmit={(event) => { event.preventDefault(); setPostedComment("Subscribed") }}>
+                <input aria-label="Email address for quiz newsletter" className={cn("min-w-0 flex-1 rounded-lg border px-4 py-2.5 text-sm outline-none transition focus:ring-2 focus:ring-indigo-400/50", isDarkQuiz ? "border-white/15 bg-white/5 text-white placeholder:text-slate-500" : "border-slate-300 bg-white text-slate-900 placeholder:text-slate-400")} placeholder="you@example.com" type="email" />
+                <button aria-label="Subscribe from quiz newsletter" className="rounded-lg bg-indigo-600 px-5 py-2.5 text-sm font-semibold text-white shadow-sm transition hover:bg-indigo-500 active:scale-[0.98]" type="submit">Subscribe</button>
+              </form>
+              <div className="mt-4 flex items-center gap-3">
+                <button aria-label="Change newsletter topic" className={cn("text-xs font-medium underline-offset-2 hover:underline", isDarkQuiz ? "text-slate-400" : "text-slate-500")} type="button" onClick={() => { setQuizChoice(null); setPostedComment("") }}>← Change topic</button>
+                {postedComment && <span className={cn("rounded-full px-3 py-1 text-[11px] font-medium animate-in fade-in", isDarkQuiz ? "bg-white/10 text-indigo-100" : "bg-indigo-50 text-indigo-700")}>{postedComment}</span>}
+              </div>
+            </>
+          )}
+        </div>
+      </section>
+    )
+  }
+
   if (variant.startsWith("newsletter-")) {
     const isNewsletterDetails = variant === "newsletter-side-details"
     const isNewsletterBrand = variant === "newsletter-brand-side"
@@ -3238,6 +3285,48 @@ renderFeatureSection(feature)`}</code>
     )
   }
 
+  if (variant === "faqs-search-accordion") {
+    const isDarkFaqSearch = theme === "dark"
+    const faqEntries = [
+      { q: "How does billing work?", a: "Plans are billed monthly per workspace, and usage overages roll into the next invoice." },
+      { q: "Can I invite external reviewers?", a: "Yes — guests get read and comment access without taking a paid seat." },
+      { q: "How do I export my data?", a: "Every table and board exports to CSV or JSON from the workspace settings page." },
+      { q: "Is there an on-premise option?", a: "Enterprise plans can deploy in your own cloud with the same feature set." },
+      { q: "What happens when a trial ends?", a: "Workspaces become read-only for 30 days so nothing is lost while you decide." },
+      { q: "Do you support SSO?", a: "SAML and OIDC single sign-on ship with the Team plan and above." },
+    ]
+    const visible = faqEntries.filter((entry) => entry.q.toLowerCase().includes(faqQuery.trim().toLowerCase()) || entry.a.toLowerCase().includes(faqQuery.trim().toLowerCase()))
+    return (
+      <section data-faq-section-theme={isDarkFaqSearch ? "dark" : "light"} data-faq-section-variant={variant} className={cn("flex min-h-[520px] flex-col justify-center px-6 py-16 transition-colors duration-300 md:min-h-[640px] md:px-10 md:py-24", isDarkFaqSearch ? "bg-slate-950 text-white" : "bg-white text-slate-950")}>
+        <div className="mx-auto w-full max-w-2xl">
+          <h4 className="text-3xl font-semibold tracking-normal md:text-4xl">Ask before you scroll</h4>
+          <p className={cn("mt-3 text-sm leading-6", isDarkFaqSearch ? "text-slate-300" : "text-slate-600")}>Large FAQ sets pair a live search with the accordion — type to narrow the list instead of scanning it.</p>
+          <div className={cn("mt-6 flex items-center gap-2 rounded-xl border px-4 py-2.5 transition focus-within:ring-2 focus-within:ring-indigo-400/50", isDarkFaqSearch ? "border-white/15 bg-white/5" : "border-slate-300 bg-white")}>
+            <Search aria-hidden="true" className={cn("size-4 shrink-0", isDarkFaqSearch ? "text-slate-400" : "text-slate-500")} />
+            <input aria-label="Search frequently asked questions" className={cn("min-w-0 flex-1 bg-transparent text-sm outline-none", isDarkFaqSearch ? "text-white placeholder:text-slate-500" : "text-slate-900 placeholder:text-slate-400")} placeholder="Search billing, SSO, exports…" type="search" value={faqQuery} onChange={(event) => setFaqQuery(event.target.value)} />
+            <span aria-live="polite" className={cn("shrink-0 rounded-full px-2 py-0.5 text-[11px] font-medium tabular-nums", isDarkFaqSearch ? "bg-white/10 text-slate-300" : "bg-slate-100 text-slate-500")}>{visible.length} of {faqEntries.length}</span>
+          </div>
+          <div className={cn("mt-5 divide-y rounded-2xl border", isDarkFaqSearch ? "divide-white/10 border-white/10" : "divide-slate-200 border-slate-200")}>
+            {visible.length === 0 ? (
+              <p className={cn("px-5 py-6 text-sm", isDarkFaqSearch ? "text-slate-400" : "text-slate-500")}>No answers match "{faqQuery}" — try a broader word.</p>
+            ) : visible.map((entry, i) => {
+              const open = openFaqIndex === i
+              return (
+                <div key={entry.q}>
+                  <button aria-expanded={open} aria-label={`Toggle FAQ ${entry.q}`} className="flex w-full items-center justify-between gap-3 px-5 py-4 text-left text-sm font-medium transition hover:opacity-80" type="button" onClick={() => setOpenFaqIndex(open ? -1 : i)}>
+                    <span>{entry.q}</span>
+                    <ChevronDown aria-hidden="true" className={cn("size-4 shrink-0 transition-transform", open && "rotate-180", isDarkFaqSearch ? "text-slate-400" : "text-slate-500")} />
+                  </button>
+                  {open && <p className={cn("px-5 pb-4 text-sm leading-6", isDarkFaqSearch ? "text-slate-300" : "text-slate-600")}>{entry.a}</p>}
+                </div>
+              )
+            })}
+          </div>
+        </div>
+      </section>
+    )
+  }
+
   if (variant.startsWith("faqs-")) {
     const faqItems = [
       { q: "How do I choose between similar UI patterns?", a: "Start from the user's next action. Compare the examples, then choose the pattern whose states and feedback match that workflow." },
@@ -3628,6 +3717,48 @@ renderFeatureSection(feature)`}</code>
     }
 
     return <div className="min-h-64 bg-white" />
+  }
+
+  if (variant === "blog-sticky-sidebar") {
+    const isDarkBlogSidebar = theme === "dark"
+    const blogCategories = ["All posts", "Product", "Engineering", "Design"]
+    const blogPosts = [
+      { title: "Shipping the new editor", category: "Product", date: "Jul 21" },
+      { title: "How we cut cold starts by 80%", category: "Engineering", date: "Jul 14" },
+      { title: "Tokens before components", category: "Design", date: "Jul 08" },
+      { title: "Pricing the usage way", category: "Product", date: "Jun 30" },
+      { title: "Postmortem: the Tuesday outage", category: "Engineering", date: "Jun 24" },
+      { title: "Dark mode without regret", category: "Design", date: "Jun 17" },
+    ]
+    const visiblePosts = blogCategory === "All posts" ? blogPosts : blogPosts.filter((post) => post.category === blogCategory)
+    return (
+      <section data-blog-section-theme={isDarkBlogSidebar ? "dark" : "light"} data-blog-section-variant={variant} className={cn("flex min-h-[520px] flex-col justify-center px-6 py-16 transition-colors duration-300 md:min-h-[640px] md:px-10 md:py-24", isDarkBlogSidebar ? "bg-slate-950 text-white" : "bg-white text-slate-950")}>
+        <div className="mx-auto grid w-full max-w-4xl gap-8 md:grid-cols-[200px_1fr]">
+          <aside className="md:sticky md:top-8 md:self-start">
+            <p className={cn("text-xs font-semibold uppercase tracking-wide", isDarkBlogSidebar ? "text-slate-400" : "text-slate-500")}>From the blog</p>
+            <nav aria-label="Blog categories" className="mt-4 flex gap-2 overflow-x-auto md:flex-col md:gap-1">
+              {blogCategories.map((category) => (
+                <button key={category} aria-pressed={blogCategory === category} className={cn("shrink-0 rounded-lg px-3 py-2 text-left text-sm font-medium transition active:scale-[0.98] md:w-full", blogCategory === category ? "bg-indigo-600 text-white" : isDarkBlogSidebar ? "text-slate-300 hover:bg-white/5" : "text-slate-600 hover:bg-slate-100")} type="button" onClick={() => setBlogCategory(category)}>
+                  {category}
+                </button>
+              ))}
+            </nav>
+            <p className={cn("mt-4 hidden text-xs leading-5 md:block", isDarkBlogSidebar ? "text-slate-500" : "text-slate-400")}>The sidebar stays put while the list scrolls — navigation never leaves the reader.</p>
+          </aside>
+          <div className={cn("divide-y", isDarkBlogSidebar ? "divide-white/10" : "divide-slate-200")}>
+            {visiblePosts.map((post) => (
+              <article key={post.title} className="group flex items-baseline justify-between gap-4 py-4 first:pt-0 last:pb-0">
+                <div>
+                  <h5 className="text-base font-semibold tracking-normal transition group-hover:text-indigo-500">{post.title}</h5>
+                  <p className={cn("mt-1 text-xs", isDarkBlogSidebar ? "text-slate-400" : "text-slate-500")}>{post.category}</p>
+                </div>
+                <span className={cn("shrink-0 text-xs tabular-nums", isDarkBlogSidebar ? "text-slate-500" : "text-slate-400")}>{post.date}</span>
+              </article>
+            ))}
+          </div>
+        </div>
+      </section>
+    )
   }
 
   if (variant.startsWith("blog-")) {
@@ -4081,6 +4212,50 @@ renderFeatureSection(feature)`}</code>
     return <div className="min-h-64 bg-white" />
   }
 
+  if (variant === "team-scatter-reveal") {
+    const isDarkScatter = theme === "dark"
+    const members = [
+      { name: "Maya Chen", role: "Design lead", initials: "MC", left: "14%", top: "22%", size: "size-16" },
+      { name: "Jonas Weber", role: "Backend", initials: "JW", left: "38%", top: "12%", size: "size-12" },
+      { name: "Priya Nair", role: "Product", initials: "PN", left: "62%", top: "26%", size: "size-20" },
+      { name: "Sam Ortiz", role: "Frontend", initials: "SO", left: "84%", top: "16%", size: "size-12" },
+      { name: "Elin Berg", role: "Operations", initials: "EB", left: "24%", top: "62%", size: "size-12" },
+      { name: "Ravi Patel", role: "Infrastructure", initials: "RP", left: "50%", top: "70%", size: "size-16" },
+      { name: "Ana Duarte", role: "Research", initials: "AD", left: "76%", top: "64%", size: "size-14" },
+    ]
+    const active = members.find((member) => member.name === scatterMember) ?? members[0]
+    return (
+      <section data-team-section-theme={isDarkScatter ? "dark" : "light"} data-team-section-variant={variant} className={cn("flex min-h-[520px] flex-col justify-center px-6 py-16 transition-colors duration-300 md:min-h-[640px] md:px-10 md:py-24", isDarkScatter ? "bg-slate-950 text-white" : "bg-white text-slate-950")}>
+        <div className="mx-auto w-full max-w-4xl">
+          <h4 className="text-3xl font-semibold tracking-normal md:text-4xl">Not a grid — a room</h4>
+          <p className={cn("mt-3 max-w-xl text-sm leading-6", isDarkScatter ? "text-slate-300" : "text-slate-600")}>Faces scatter like people in a space. Click one and the card below reveals who they are.</p>
+          <div className={cn("relative mt-8 h-[280px] rounded-3xl border md:h-[340px]", isDarkScatter ? "border-white/10 bg-white/[.04]" : "border-slate-200 bg-slate-50")}>
+            {members.map((member) => {
+              const selected = scatterMember === member.name
+              return (
+                <button
+                  key={member.name}
+                  aria-label={`Reveal team member ${member.name}`}
+                  aria-pressed={selected}
+                  className={cn("absolute grid -translate-x-1/2 -translate-y-1/2 place-items-center rounded-full font-bold shadow-md transition hover:scale-105 active:scale-95", member.size, selected ? "z-10 bg-indigo-600 text-white ring-4 ring-indigo-500/30" : cn("ring-2", isDarkScatter ? "bg-slate-800 text-indigo-200 ring-white/15 hover:ring-indigo-400/50" : "bg-white text-indigo-700 ring-slate-200 hover:ring-indigo-300"))}
+                  style={{ left: member.left, top: member.top }}
+                  type="button"
+                  onClick={() => setScatterMember(member.name)}
+                >
+                  <span className="text-xs">{member.initials}</span>
+                </button>
+              )
+            })}
+            <div aria-live="polite" className={cn("absolute bottom-4 left-1/2 w-[70%] max-w-sm -translate-x-1/2 rounded-xl border px-4 py-3 text-center shadow-lg backdrop-blur transition-colors", isDarkScatter ? "border-white/10 bg-slate-950/85" : "border-slate-200 bg-white/95")}>
+              <p className="text-sm font-semibold">{active.name}</p>
+              <p className={cn("mt-0.5 text-xs", isDarkScatter ? "text-slate-400" : "text-slate-500")}>{active.role}</p>
+            </div>
+          </div>
+        </div>
+      </section>
+    )
+  }
+
   if (variant.startsWith("team-")) {
     const defaultDarkTeam = variant === "team-large-images" || variant === "team-card-grid" || variant === "team-medium-images"
     const isDarkTeam = theme === "dark" || (theme === "system" && defaultDarkTeam)
@@ -4529,6 +4704,29 @@ renderFeatureSection(feature)`}</code>
         {logos.slice(0, count).map((logo) => <LogoMark key={logo.name} logo={logo} />)}
       </div>
     )
+
+    if (variant === "logo-cloud-marquee") {
+      const marqueeLogos = [...logos, ...logos]
+      return (
+        <div data-logo-cloud-theme={logoTheme} data-logo-cloud-variant={variant} className={logoRootClass("min-h-[15rem] py-14")}>
+          <style>{"@keyframes ui-logo-marquee { from { transform: translateX(0); } to { transform: translateX(-50%); } }"}</style>
+          <p className={cn("px-7 text-center text-sm font-semibold sm:px-10", logoHeadingClass)}>Trusted by teams that never stop shipping</p>
+          <p className={cn("mt-1 px-7 text-center text-xs sm:px-10", logoMutedClass)}>The row loops continuously — a marquee, not a fixed grid.</p>
+          <div aria-label="Continuously scrolling customer logos" className="relative mt-8 overflow-hidden">
+            <div className={cn("pointer-events-none absolute inset-y-0 left-0 z-10 w-16 bg-gradient-to-r to-transparent", isDarkLogo ? "from-slate-950" : "from-white")} />
+            <div className={cn("pointer-events-none absolute inset-y-0 right-0 z-10 w-16 bg-gradient-to-l to-transparent", isDarkLogo ? "from-slate-950" : "from-white")} />
+            <div className="flex w-max items-center gap-10 pr-10 motion-safe:[animation:ui-logo-marquee_22s_linear_infinite] motion-reduce:flex-wrap" data-logo-marquee-track>
+              {marqueeLogos.map((logo, index) => (
+                <span key={`${logo.name}-${index}`} aria-hidden={index >= logos.length} className={cn("flex shrink-0 items-center gap-2", isDarkLogo ? "text-white" : "text-slate-900")}>
+                  <span className={cn("grid size-6 shrink-0 place-items-center rounded-sm text-[10px] font-black", isDarkLogo ? "bg-white/10 text-white ring-1 ring-white/15" : "bg-slate-900 text-white")}>{logo.mark}</span>
+                  <span className="text-sm font-bold tracking-normal">{logo.name}</span>
+                </span>
+              ))}
+            </div>
+          </div>
+        </div>
+      )
+    }
 
     if (variant === "logo-cloud-heading") {
       return (

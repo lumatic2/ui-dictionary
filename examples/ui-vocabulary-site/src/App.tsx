@@ -3346,8 +3346,9 @@ const marketingSectionPages = new Map<TermFilter, MarketingSectionPage>([
   }],
   [navFilter("plus-marketing-newsletter-sections"), {
     title: "Newsletter Sections",
-    description: "방문자가 이메일을 남기도록 제목, 설명, 입력 필드, 구독 CTA를 조합하는 섹션 예시입니다.",
+    description: "방문자가 이메일을 남기도록 제목, 설명, 입력 필드, 구독 CTA를 조합하는 섹션 예시입니다. 즉시 입력 폼 계열과, 취향 질문이 먼저 오는 게임화 축을 함께 다룹니다.",
     examples: [
+      { id: "gamified-quiz", eyebrow: "Marketing / Newsletter", title: "Gamified quiz", description: "이메일 입력 전에 받고 싶은 콘텐츠를 고르는 퀴즈 스텝이 먼저 오는 게임화 구성으로, 첫 클릭의 부담을 낮춥니다.", tags: ["quiz", "gamified", "two-step"], termId: "newsletter-section", preview: "newsletter-gamified-quiz" },
       { id: "side-by-side-with-details", eyebrow: "Marketing / Newsletter", title: "Side-by-side with details", description: "왼쪽에는 구독 가치와 상세 bullet, 오른쪽에는 이메일 입력을 배치합니다.", tags: ["side-by-side", "details", "email"], termId: "newsletter-section", preview: "newsletter-side-details" },
       { id: "simple-side-by-side", eyebrow: "Marketing / Newsletter", title: "Simple side-by-side", description: "짧은 설명과 입력 필드를 좌우로 나눠 가장 효율적으로 구독 행동을 받습니다.", tags: ["side-by-side", "simple", "subscription"], termId: "newsletter-section", preview: "newsletter-simple-side" },
       { id: "simple-side-by-side-on-brand", eyebrow: "Marketing / Newsletter", title: "Simple side-by-side on brand", description: "브랜드 컬러 배경 위에서 좌우 배치 newsletter를 강조합니다.", tags: ["brand", "side-by-side", "color"], termId: "newsletter-section", preview: "newsletter-brand-side" },
@@ -3387,8 +3388,9 @@ const marketingSectionPages = new Map<TermFilter, MarketingSectionPage>([
   }],
   [navFilter("plus-marketing-blog-sections"), {
     title: "Blog Sections",
-    description: "블로그 글, 업데이트, 리소스 콘텐츠를 목록이나 대표 글 중심으로 보여주는 마케팅 섹션 예시입니다.",
+    description: "블로그 글, 업데이트, 리소스 콘텐츠를 목록이나 대표 글 중심으로 보여주는 마케팅 섹션 예시입니다. 균일 그리드 계열과, 고정 사이드바가 목록과 짝을 이루는 축을 함께 다룹니다.",
     examples: [
+      { id: "sticky-sidebar", eyebrow: "Marketing / Blog", title: "Sticky sidebar", description: "카테고리 사이드바가 스크롤에도 고정된 채 남고, 오른쪽 글 목록만 바뀌는 지속 내비게이션 구성입니다.", tags: ["sticky", "sidebar", "categories"], termId: "section", preview: "blog-sticky-sidebar" },
       { id: "three-column", eyebrow: "Marketing / Blog", title: "Three-column", description: "여러 글을 같은 비중으로 3열에 배치해 사용자가 관심 있는 주제를 빠르게 고르게 합니다.", tags: ["articles", "three column", "resources"], termId: "help-center-card", preview: "blog-three-column" },
       { id: "three-column-with-images", eyebrow: "Marketing / Blog", title: "Three-column with images", description: "각 글에 썸네일 이미지를 붙여 콘텐츠 성격을 시각적으로 구분합니다.", tags: ["images", "grid", "editorial"], termId: "image-card", preview: "blog-three-column-images" },
       { id: "three-column-with-background-images", eyebrow: "Marketing / Blog", title: "Three-column with background images", description: "배경 이미지 위에 글 정보를 올려 더 캠페인형인 article grid를 만듭니다.", tags: ["background image", "cards", "editorial"], termId: "image-card", preview: "blog-three-column-bg-images" },
@@ -3413,8 +3415,9 @@ const marketingSectionPages = new Map<TermFilter, MarketingSectionPage>([
   }],
   [navFilter("plus-marketing-team-sections"), {
     title: "Team Sections",
-    description: "창업자, 리더십, 팀원 정보를 아바타와 역할 설명으로 보여줘 신뢰와 조직 맥락을 만드는 섹션 예시입니다.",
+    description: "창업자, 리더십, 팀원 정보를 아바타와 역할 설명으로 보여줘 신뢰와 조직 맥락을 만드는 섹션 예시입니다. 규칙적 그리드 계열과, 아바타가 공간에 흩어지는 산개형 축을 함께 다룹니다.",
     examples: [
+      { id: "scatter-reveal", eyebrow: "Marketing / Team", title: "Scatter reveal", description: "아바타가 그리드가 아니라 공간에 산개 배치되고, 클릭하면 인물 정보가 리빌되는 인터랙티브 구성입니다.", tags: ["scatter", "interactive", "reveal"], termId: "avatar", preview: "team-scatter-reveal" },
       { id: "with-small-images", eyebrow: "Marketing / Team", title: "With small images", description: "작은 인물 이미지를 균일하게 나열해 팀의 얼굴과 역할을 빠르게 보여줍니다.", tags: ["small images", "people", "roles"], termId: "profile-card", preview: "team-small-images" },
       { id: "with-large-images", eyebrow: "Marketing / Team", title: "With large images", description: "큰 인물 이미지를 써서 사람 자체를 더 강한 신뢰 단서로 만듭니다.", tags: ["large images", "people", "trust"], termId: "profile-card", preview: "team-large-images" },
       { id: "grid-with-round-images", eyebrow: "Marketing / Team", title: "Grid with round images", description: "둥근 아바타 그리드로 친근하고 표준적인 team section을 만듭니다.", tags: ["round images", "grid", "avatars"], termId: "avatar", preview: "team-round-grid" },
@@ -3441,8 +3444,9 @@ const marketingSectionPages = new Map<TermFilter, MarketingSectionPage>([
   }],
   [navFilter("plus-marketing-logo-clouds"), {
     title: "Logo Clouds",
-    description: "고객사, 파트너, 도입 조직 로고를 묶어 사회적 증거와 브랜드 신뢰를 만드는 섹션 예시입니다.",
+    description: "고객사, 파트너, 도입 조직 로고를 묶어 사회적 증거와 브랜드 신뢰를 만드는 섹션 예시입니다. 고정 배치 계열과, 로고 행이 끊김 없이 흐르는 마퀴 축을 함께 다룹니다.",
     examples: [
+      { id: "scrolling-marquee", eyebrow: "Marketing / Logo Cloud", title: "Scrolling marquee", description: "고정 격자가 아니라 로고 행이 끊김 없이 좌측으로 흐르는 마퀴 구성으로, 애니메이션 자체가 골격입니다.", tags: ["marquee", "animation", "infinite"], termId: "logo", preview: "logo-cloud-marquee" },
       { id: "simple-with-heading", eyebrow: "Marketing / Logo Cloud", title: "Simple with heading", description: "짧은 heading 아래 로고를 나열해 신뢰 신호의 의미를 먼저 설명합니다.", tags: ["heading", "logos", "trust"], termId: "logo", preview: "logo-cloud-heading" },
       { id: "simple-with-call-to-action", eyebrow: "Marketing / Logo Cloud", title: "Simple with call-to-action", description: "고객 로고와 함께 사례 보기 같은 다음 행동을 붙입니다.", tags: ["CTA", "logos", "customers"], termId: "logo", preview: "logo-cloud-cta" },
       { id: "simple-left-aligned", eyebrow: "Marketing / Logo Cloud", title: "Simple left-aligned", description: "왼쪽 정렬로 본문 흐름 안에 자연스럽게 들어가는 logo cloud입니다.", tags: ["left aligned", "logos", "simple"], termId: "logo", preview: "logo-cloud-left" },
@@ -3453,8 +3457,9 @@ const marketingSectionPages = new Map<TermFilter, MarketingSectionPage>([
   }],
   [navFilter("plus-marketing-faqs"), {
     title: "FAQs",
-    description: "자주 묻는 질문과 짧은 답변을 섹션 안에서 빠르게 확인하게 하는 FAQ 섹션 예시입니다.",
+    description: "자주 묻는 질문과 짧은 답변을 섹션 안에서 빠르게 확인하게 하는 FAQ 섹션 예시입니다. 정적 나열 계열과, 검색으로 목록을 좁히는 축을 함께 다룹니다.",
     examples: [
+      { id: "search-accordion", eyebrow: "Marketing / FAQs", title: "Search accordion", description: "아코디언 위에 실시간 필터 검색창이 붙어, 큰 질문 세트를 훑는 대신 질의로 좁히는 구성입니다.", tags: ["search", "filter", "accordion"], termId: "faq-list", preview: "faqs-search-accordion" },
       { id: "offset-with-supporting-text", eyebrow: "Marketing / FAQs", title: "Offset with supporting text", description: "왼쪽에는 설명을, 오른쪽에는 질문 목록을 둬 FAQ의 맥락을 먼저 알려줍니다.", tags: ["offset", "supporting text", "questions"], termId: "faq-list", preview: "faqs-offset-supporting" },
       { id: "centered-accordion", eyebrow: "Marketing / FAQs", title: "Centered accordion", description: "질문을 중앙 정렬 accordion처럼 쌓아 FAQ를 단일 흐름으로 읽게 합니다.", tags: ["accordion", "centered", "answers"], termId: "accordion", preview: "faqs-centered-accordion" },
       { id: "side-by-side", eyebrow: "Marketing / FAQs", title: "Side-by-side", description: "소개 문구와 FAQ 목록을 좌우로 나눠 데스크톱에서 균형 있게 보여줍니다.", tags: ["side-by-side", "support", "questions"], termId: "faq-list", preview: "faqs-side-by-side" },
