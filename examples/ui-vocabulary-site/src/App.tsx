@@ -2933,8 +2933,17 @@ const marketingSectionPages = new Map<TermFilter, MarketingSectionPage>([
   }],
   [navFilter("plus-marketing-feature-sections"), {
     title: "Feature Sections",
-    description: "제품의 핵심 기능과 차별점을 여러 블록으로 나눠 설명하는 랜딩 페이지 섹션 예시입니다.",
+    description: "제품의 핵심 기능과 차별점을 여러 블록으로 나눠 설명하는 랜딩 페이지 섹션 예시입니다. 정적 스크린샷·아이콘 계열과, 패널 자체를 조작하는 인라인 데모 축을 함께 다룹니다.",
     examples: [
+      {
+        id: "interactive-demo",
+        eyebrow: "Marketing / Features",
+        title: "Interactive demo",
+        description: "정적 스크린샷 패널 대신 뷰 탭을 누르면 패널 내용이 전환되는 인라인 데모가 기능 섹션 본체인 구성입니다. 히어로의 hotspot 투어와 달리 패널 안 뷰 전환이 골격입니다.",
+        tags: ["interactive", "inline demo", "tabs"],
+        termId: "feature-grid-section",
+        preview: "features-interactive-demo",
+      },
       {
         id: "with-product-screenshot",
         eyebrow: "Marketing / Features",
@@ -3311,8 +3320,9 @@ const marketingSectionPages = new Map<TermFilter, MarketingSectionPage>([
   }],
   [navFilter("plus-marketing-bento-grids"), {
     title: "Bento Grids",
-    description: "서로 다른 크기의 카드와 미디어를 섞어 기능, 장점, 제품 맥락을 풍부하게 보여주는 섹션 예시입니다.",
+    description: "서로 다른 크기의 카드와 미디어를 섞어 기능, 장점, 제품 맥락을 풍부하게 보여주는 섹션 예시입니다. 행·열 수로 정의되는 균일 그리드와, 셀 크기 배수가 섞이는 비대칭 모자이크 축을 함께 다룹니다.",
     examples: [
+      { id: "asymmetric-mosaic", eyebrow: "Marketing / Bento", title: "Asymmetric mosaic", description: "행·열 수가 아니라 1x1·2x1·2x2 셀 크기 배수가 섞여, 중요도가 큰 콘텐츠일수록 큰 박스를 차지하는 모자이크 형식입니다.", tags: ["asymmetric", "mosaic", "priority sizing"], termId: "bento-grid", preview: "bento-mosaic" },
       { id: "three-column-bento-grid", eyebrow: "Marketing / Bento", title: "Three column bento grid", description: "세 열을 기준으로 큰 카드와 작은 카드를 섞어 기능 우선순위를 보여주는 형식입니다.", tags: ["three column", "feature cards", "priority"], termId: "bento-grid", preview: "bento-three-column" },
       { id: "two-row-bento-grid", eyebrow: "Marketing / Bento", title: "Two row bento grid", description: "두 줄 구성 안에서 큰 제품 proof와 보조 기능 카드를 조합하는 bento 형식입니다.", tags: ["two row", "product proof", "features"], termId: "bento-grid", preview: "bento-two-row" },
       { id: "two-row-bento-grid-three-column-second-row", eyebrow: "Marketing / Bento", title: "Two row bento grid with three column second row", description: "상단 큰 카드 아래에 세 개의 보조 카드를 둬 메시지와 기능 폭을 동시에 담습니다.", tags: ["two row", "three column", "feature set"], termId: "bento-grid", preview: "bento-two-row-three-column" },
@@ -3362,8 +3372,9 @@ const marketingSectionPages = new Map<TermFilter, MarketingSectionPage>([
   }],
   [navFilter("plus-marketing-testimonials"), {
     title: "Testimonials",
-    description: "고객 인용문, 이름, 역할, 평점을 조합해 제품의 사회적 증거를 보여주는 섹션 예시입니다.",
+    description: "고객 인용문, 이름, 역할, 평점을 조합해 제품의 사회적 증거를 보여주는 섹션 예시입니다. 텍스트 인용 계열과, 영상 클립이 셀을 채우는 video wall 축을 함께 다룹니다.",
     examples: [
+      { id: "video-wall", eyebrow: "Marketing / Testimonials", title: "Video wall", description: "텍스트 인용 대신 짧은 고객 영상 클립이 masonry 벽의 셀을 채우고, 재생 버튼이 상호작용의 중심인 wall of love 형식입니다.", tags: ["video", "masonry", "wall of love"], termId: "testimonial-section", preview: "testimonials-video-wall" },
       { id: "simple-centered", eyebrow: "Marketing / Testimonials", title: "Simple centered", description: "하나의 인용문을 가운데 크게 배치해 대표 신뢰 신호로 사용하는 형식입니다.", tags: ["centered", "quote", "simple"], termId: "testimonial-section", preview: "testimonials-simple-centered" },
       { id: "with-large-avatar", eyebrow: "Marketing / Testimonials", title: "With large avatar", description: "큰 아바타와 인용문을 함께 보여줘 사람의 얼굴을 신뢰 단서로 강조합니다.", tags: ["avatar", "quote", "trust"], termId: "testimonial-section", preview: "testimonials-large-avatar" },
       { id: "with-overlapping-image", eyebrow: "Marketing / Testimonials", title: "With overlapping image", description: "이미지와 testimonial card를 겹쳐 더 editorial한 사회적 증거를 만듭니다.", tags: ["overlap", "image", "social proof"], termId: "testimonial-section", preview: "testimonials-overlap-image" },

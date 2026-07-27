@@ -37,6 +37,7 @@ export type MarketingPreviewVariant =
   | "features-offset-list"
   | "features-simple"
   | "features-3x2-grid"
+  | "features-interactive-demo"
   | "pricing-three-tier"
   | "pricing-highlighted"
   | "pricing-comparison"
@@ -74,6 +75,7 @@ export type MarketingPreviewVariant =
   | "bento-three-column"
   | "bento-two-row"
   | "bento-two-row-three-column"
+  | "bento-mosaic"
   | "header-simple"
   | "header-centered"
   | "header-type-first"
@@ -116,6 +118,7 @@ export type MarketingPreviewVariant =
   | "testimonials-side-by-side"
   | "testimonials-star-rating"
   | "testimonials-subtle-grid"
+  | "testimonials-video-wall"
   | "faqs-stacked"
   | "faqs-two-column"
   | "faqs-with-contact"
@@ -1273,6 +1276,8 @@ export function MarketingSectionPreview({ size = "default", theme = "system", va
   const [openStackedListMenu, setOpenStackedListMenu] = useState<string | null>(null)
   const [selectedTableRows, setSelectedTableRows] = useState<string[]>(["lindsay.walton@example.com"])
   const [usageMillions, setUsageMillions] = useState(2)
+  const [featureDemoView, setFeatureDemoView] = useState("Boards")
+  const [playingVideo, setPlayingVideo] = useState<string | null>(null)
 
   if (variant.startsWith("hero-")) {
     return <HeroSectionPreview size={size} theme={theme} variant={variant as HeroPreviewVariant} />
@@ -1319,6 +1324,53 @@ export function MarketingSectionPreview({ size = "default", theme = "system", va
           {postedComment && <p className="mt-3 rounded-md bg-white/10 px-3 py-2 text-xs font-medium text-indigo-100">{postedComment}</p>}
         </div>
       </div>
+    )
+  }
+
+  if (variant === "features-interactive-demo") {
+    const isDarkDemo = theme === "dark"
+    const demoViews: Record<string, { headline: string; rows: number[] }> = {
+      Boards: { headline: "Drag cards across launch stages", rows: [80, 55, 70] },
+      Timeline: { headline: "See every milestone on one axis", rows: [92, 40, 64] },
+      Reports: { headline: "Weekly rollups without spreadsheets", rows: [48, 84, 58] },
+    }
+    const activeView = demoViews[featureDemoView] ?? demoViews.Boards
+    return (
+      <section data-feature-section-theme={isDarkDemo ? "dark" : "light"} data-feature-section-variant={variant} className={cn("flex min-h-[520px] flex-col justify-center px-6 py-16 transition-colors duration-300 md:min-h-[680px] md:px-10 md:py-24", isDarkDemo ? "bg-slate-950 text-white" : "bg-white text-slate-950")}>
+        <div className="mx-auto w-full max-w-5xl">
+          <p className={cn("text-sm font-semibold", isDarkDemo ? "text-indigo-300" : "text-indigo-600")}>Try it, don't read it</p>
+          <h4 className="mt-3 max-w-2xl text-3xl font-semibold tracking-normal md:text-5xl">The feature section is the demo</h4>
+          <p className={cn("mt-4 max-w-xl text-base leading-7", isDarkDemo ? "text-slate-300" : "text-slate-600")}>Switch the views below — the panel is a live embed, not a screenshot.</p>
+          <div className={cn("mt-10 grid overflow-hidden rounded-2xl border shadow-xl md:grid-cols-[220px_1fr]", isDarkDemo ? "border-white/10 bg-slate-900 shadow-black/30" : "border-slate-200 bg-slate-50 shadow-slate-900/10")}>
+            <div className={cn("flex gap-2 border-b p-3 md:flex-col md:border-b-0 md:border-r md:p-4", isDarkDemo ? "border-white/10" : "border-slate-200")} role="tablist" aria-label="Feature demo views">
+              {Object.keys(demoViews).map((view) => (
+                <button
+                  key={view}
+                  aria-selected={featureDemoView === view}
+                  className={cn("rounded-lg px-3 py-2 text-left text-sm font-medium transition active:scale-[0.98] md:w-full", featureDemoView === view ? "bg-indigo-600 text-white shadow-sm" : isDarkDemo ? "text-slate-300 hover:bg-white/5" : "text-slate-600 hover:bg-white")}
+                  role="tab"
+                  type="button"
+                  onClick={() => setFeatureDemoView(view)}
+                >
+                  {view}
+                </button>
+              ))}
+            </div>
+            <div className="p-6 md:p-8" role="tabpanel" aria-label={`${featureDemoView} demo view`}>
+              <p className="text-sm font-semibold">{activeView.headline}</p>
+              <div className="mt-5 space-y-3">
+                {activeView.rows.map((width, i) => (
+                  <div key={i} className={cn("flex items-center gap-3 rounded-xl border p-3 transition-all duration-300", isDarkDemo ? "border-white/10 bg-white/5" : "border-slate-200 bg-white")}>
+                    <span className={cn("size-2.5 shrink-0 rounded-full", i === 0 ? "bg-indigo-500" : isDarkDemo ? "bg-white/20" : "bg-slate-300")} />
+                    <span className={cn("h-2.5 rounded-full transition-all duration-500", isDarkDemo ? "bg-white/15" : "bg-slate-200")} style={{ width: `${width}%` }} />
+                  </div>
+                ))}
+              </div>
+              <p className={cn("mt-5 text-xs", isDarkDemo ? "text-slate-400" : "text-slate-500")}>Viewing <span className="font-semibold">{featureDemoView}</span> — no signup required.</p>
+            </div>
+          </div>
+        </div>
+      </section>
     )
   }
 
@@ -2179,6 +2231,50 @@ renderFeatureSection(feature)`}</code>
     )
   }
 
+  if (variant === "bento-mosaic") {
+    const isDarkMosaic = theme === "dark"
+    const mosaicPanel = (className?: string) => cn("overflow-hidden rounded-3xl border p-6 transition-colors duration-300", isDarkMosaic ? "border-white/10 bg-white/[.06] text-white" : "border-slate-200 bg-white text-slate-950 shadow-sm", className)
+    const mosaicTiles: Array<{ label: string; body: string; span: string; size: "2x2" | "2x1" | "1x1" }> = [
+      { label: "Live workspace", body: "The largest cell earns its size — the flagship story gets a full product scene.", span: "md:col-span-2 md:row-span-2", size: "2x2" },
+      { label: "Integrations", body: "Wide cell for a horizontal flow.", span: "md:col-span-2", size: "2x1" },
+      { label: "Uptime", body: "99.99% quarterly.", span: "", size: "1x1" },
+      { label: "SSO", body: "SAML and OIDC.", span: "", size: "1x1" },
+    ]
+    return (
+      <section data-bento-grid-theme={isDarkMosaic ? "dark" : "light"} data-bento-grid-variant={variant} className={cn("flex min-h-[520px] flex-col justify-center px-6 py-16 transition-colors duration-300 md:min-h-[680px] md:px-10 md:py-24", isDarkMosaic ? "bg-slate-950 text-white" : "bg-slate-50 text-slate-950")}>
+        <div className="mx-auto w-full max-w-5xl">
+          <p className={cn("text-sm font-semibold", isDarkMosaic ? "text-indigo-300" : "text-indigo-600")}>Asymmetric mosaic</p>
+          <h4 className="mt-3 max-w-2xl text-3xl font-semibold tracking-normal md:text-5xl">Importance decides the cell size</h4>
+          <div className="mt-10 grid auto-rows-[150px] grid-cols-1 gap-4 md:grid-cols-4 md:auto-rows-[170px]">
+            {mosaicTiles.map((tile) => (
+              <div key={tile.label} className={cn(mosaicPanel(tile.span), "flex flex-col")}>
+                <div className="flex items-start justify-between gap-2">
+                  <h5 className={cn("font-semibold tracking-normal", tile.size === "2x2" ? "text-xl" : "text-sm")}>{tile.label}</h5>
+                  <span className={cn("rounded-full px-2 py-0.5 text-[10px] font-semibold tabular-nums", isDarkMosaic ? "bg-white/10 text-indigo-200" : "bg-indigo-50 text-indigo-600")}>{tile.size}</span>
+                </div>
+                <p className={cn("mt-2 leading-5", tile.size === "2x2" ? "max-w-sm text-sm" : "text-xs", isDarkMosaic ? "text-slate-300" : "text-slate-600")}>{tile.body}</p>
+                {tile.size === "2x2" && (
+                  <div className={cn("mt-auto grid grid-cols-3 gap-2 rounded-xl border p-3", isDarkMosaic ? "border-white/10 bg-slate-900/70" : "border-slate-200 bg-slate-50")}>
+                    {[0, 1, 2, 3, 4, 5].map((i) => (
+                      <div key={i} className={cn("h-10 rounded-md", i === 0 ? "bg-indigo-500/70" : isDarkMosaic ? "bg-white/10" : "bg-slate-200")} />
+                    ))}
+                  </div>
+                )}
+                {tile.size === "2x1" && (
+                  <div className="mt-auto flex items-center gap-2">
+                    {[Mail, CloudUpload, Server, ShieldCheck].map((Icon, i) => (
+                      <span key={i} className={cn("grid size-9 place-items-center rounded-lg border", isDarkMosaic ? "border-white/10 bg-slate-900 text-indigo-300" : "border-slate-200 bg-slate-50 text-indigo-600")}><Icon className="size-4" /></span>
+                    ))}
+                  </div>
+                )}
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+    )
+  }
+
   if (variant === "bento-asymmetric" || variant === "bento-product" || variant === "bento-media" || variant === "bento-three-column" || variant === "bento-two-row" || variant === "bento-two-row-three-column") {
     const defaultDarkBento = variant === "bento-two-row" || variant === "bento-product"
     const isDarkBento = theme === "system" ? defaultDarkBento : theme === "dark"
@@ -2920,6 +3016,54 @@ renderFeatureSection(feature)`}</code>
     }
     return (
       <section className="bg-white px-8 py-16"><StatGrid cards /></section>
+    )
+  }
+
+  if (variant === "testimonials-video-wall") {
+    const isDarkWall = theme === "dark"
+    const clips = [
+      { name: "Maya Chen", role: "Design lead, Loop", quote: "Cut our review cycle in half.", duration: "0:42", tall: true },
+      { name: "Jonas Weber", role: "CTO, Fieldnote", quote: "The onboarding video sold my team.", duration: "1:05", tall: false },
+      { name: "Priya Nair", role: "PM, Signalhouse", quote: "We stopped writing specs twice.", duration: "0:38", tall: false },
+      { name: "Sam Ortiz", role: "Founder, Driftless", quote: "Honestly just watch the clip.", duration: "0:51", tall: true },
+      { name: "Elin Berg", role: "Ops, Northbeam", quote: "Setup took one afternoon.", duration: "0:29", tall: false },
+      { name: "Ravi Patel", role: "Eng manager, Corda", quote: "The API demo says it all.", duration: "1:12", tall: false },
+    ]
+    return (
+      <section data-testimonial-section-theme={isDarkWall ? "dark" : "light"} data-testimonial-section-variant={variant} className={cn("flex min-h-[560px] flex-col justify-center px-6 py-16 transition-colors duration-300 md:min-h-[720px] md:px-10 md:py-24", isDarkWall ? "bg-slate-950 text-white" : "bg-white text-slate-950")}>
+        <div className="mx-auto w-full max-w-5xl">
+          <div className="text-center">
+            <p className={cn("text-sm font-semibold", isDarkWall ? "text-indigo-300" : "text-indigo-600")}>Wall of love</p>
+            <h4 className="mt-3 text-3xl font-semibold tracking-normal md:text-5xl">Hear it in their own voice</h4>
+            <p className={cn("mx-auto mt-4 max-w-xl text-base leading-7", isDarkWall ? "text-slate-300" : "text-slate-600")}>Every cell is a short customer clip — press play instead of reading quotes.</p>
+          </div>
+          <div className="mt-10 columns-2 gap-4 md:columns-3 [&>*]:mb-4">
+            {clips.map((clip) => {
+              const playing = playingVideo === clip.name
+              return (
+                <button
+                  key={clip.name}
+                  aria-label={`${playing ? "Pause" : "Play"} testimonial clip from ${clip.name}`}
+                  aria-pressed={playing}
+                  className={cn("group relative block w-full break-inside-avoid overflow-hidden rounded-2xl border text-left shadow-sm transition hover:-translate-y-0.5 active:scale-[0.99]", isDarkWall ? "border-white/10" : "border-slate-200", clip.tall ? "aspect-[3/4]" : "aspect-video")}
+                  type="button"
+                  onClick={() => setPlayingVideo(playing ? null : clip.name)}
+                >
+                  <span aria-hidden="true" className={cn("absolute inset-0 transition-opacity", isDarkWall ? "bg-[radial-gradient(circle_at_30%_25%,rgba(99,102,241,0.5),rgba(15,23,42,0.95)_70%)]" : "bg-[radial-gradient(circle_at_30%_25%,rgba(129,140,248,0.55),rgba(30,41,59,0.92)_72%)]", playing && "opacity-80")} />
+                  <span className="absolute left-3 top-3 rounded-full bg-black/40 px-2 py-0.5 text-[10px] font-semibold tabular-nums text-white backdrop-blur">{playing ? "● Playing" : clip.duration}</span>
+                  <span aria-hidden="true" className={cn("absolute left-1/2 top-1/2 grid size-12 -translate-x-1/2 -translate-y-1/2 place-items-center rounded-full text-slate-950 shadow-lg transition group-hover:scale-105", playing ? "bg-indigo-400" : "bg-white/90")}>
+                    {playing ? <span className="flex gap-1"><span className="h-4 w-1.5 rounded-sm bg-slate-950" /><span className="h-4 w-1.5 rounded-sm bg-slate-950" /></span> : <span className="ml-0.5 border-y-8 border-l-[14px] border-y-transparent border-l-slate-950" />}
+                  </span>
+                  <span className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-black/75 to-transparent px-4 pb-3 pt-8 text-white">
+                    <span className="block text-xs font-semibold">{clip.name} · {clip.role}</span>
+                    <span className="mt-0.5 block text-[11px] text-white/80">"{clip.quote}"</span>
+                  </span>
+                </button>
+              )
+            })}
+          </div>
+        </div>
+      </section>
     )
   }
 
