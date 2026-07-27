@@ -43,7 +43,7 @@ Status: approved (2026-07-28 — UE1 승인 연쇄 `--chain UE2,UE3,UE4` 의 UE3
   - Failure probe: URL 없는 인용 = 전역 인용 규칙 위반 — 장부 무효. 대조 없이 "충분"으로 닫은 카테고리 무효.
   - Commit: changeset `ue3-batch2-remaining-sections` (README 절: step-1).
 
-- [ ] **step-2 — 그룹 A 구현: Hero · CTA · Pricing**
+- [x] **step-2 — 그룹 A 구현: Hero · CTA · Pricing**
   - Artifact: 장부 갭 변형 구현(실사 mock·라이트/다크) + 안내문·기존 설명 차별화. 카테고리당 갭 변형 ≥1 또는 "갭 없음" 근거.
   - Files: write `src/components/marketing-section-preview.tsx`, `src/App.tsx`(데이터·안내문). read 장부.
   - Risk: 위험 (기존 변형 수정이 타 컬렉션·홈 쇼케이스 재사용 중이면 회귀 — 수정 variant 사용처 grep 을 Verify 에 포함)
@@ -52,7 +52,7 @@ Status: approved (2026-07-28 — UE1 승인 연쇄 `--chain UE2,UE3,UE4` 의 UE3
   - Failure probe: 신규 변형이 기존과 같은 골격이면 O10 재발 — 스크린샷 대조로 적발.
   - Commit: changeset `ue3-batch2-remaining-sections` (README 절: step-2).
 
-- [ ] **step-3 — 그룹 B 구현: Feature · Bento · Stats · Testimonials**
+- [x] **step-3 — 그룹 B 구현: Feature · Bento · Stats · Testimonials**
   - Artifact: step-2 와 동일 계약 — 4 카테고리.
   - Files: write `src/components/marketing-section-preview.tsx`, `src/App.tsx`. read 장부.
   - Risk: 위험 (step-2 와 동일 — 수정 variant 재사용 회귀, 동일 절차)
@@ -61,7 +61,7 @@ Status: approved (2026-07-28 — UE1 승인 연쇄 `--chain UE2,UE3,UE4` 의 UE3
   - Failure probe: step-2 와 동일.
   - Commit: changeset `ue3-batch2-remaining-sections` (README 절: step-3).
 
-- [ ] **step-4 — 그룹 C 구현: Newsletter · Blog · Contact · Team · Content · Logo Clouds · FAQs**
+- [x] **step-4 — 그룹 C 구현: Newsletter · Blog · Contact · Team · Content · Logo Clouds · FAQs**
   - Artifact: step-2 와 동일 계약 — 7 카테고리.
   - Files: write `src/components/marketing-section-preview.tsx`, `src/App.tsx`. read 장부.
   - Risk: 위험 (동일)
