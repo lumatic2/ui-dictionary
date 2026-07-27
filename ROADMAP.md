@@ -1,14 +1,14 @@
 # ROADMAP
 
-> Last updated: 2026-07-22
-> Status: **`real-use-lap` active (2026-07-22 승인).** 우리가 만든 걸로 우리가 쓸 것을 만든다 — Askewly Design 소개 덱(PPTX). 새 기계를 만들지 않고 막히는 지점만 결함으로 기록해 milestone으로 삼는다. 직전 **6연속 horizon이 같은 종류의 기준(실사용·사람 관측)에서 미달**로 닫혔다. changeset 267~286 예약.
+> Last updated: 2026-07-27
+> Status: **`real-use-lap` PARK (2026-07-27).** RU1 미달 마감 후 보류 — 웹사이트를 UI 백과사전으로 정비하는 축이 우선(사용자 확정). 부활 조건: 백과사전 축 진행 후 RU2(브리프 게이트, D10)부터 재개 — 재료는 evidence 원본(D1~D10, 2026-07-27 복원)과 `research/2026-07-27-ru2-pilot-defect-measurement.md`. 다음 horizon(UI 백과사전)은 개설 대기.
 > North star: Build Askewly Design as both a public reference website and an agent-usable implementation system.
 > line budget: <=150
 
 ## Current Horizon
 
-<!-- harness:goal id="real-use-lap" status="active" -->
-Goal: 실사용 한 바퀴 — Askewly Design으로 Askewly Design 소개 덱(PPTX)을 실제로 만들고, 막히는 지점만 결함으로 기록해 milestone으로 삼는다. Details: `plans/horizons/2026-07-real-use-lap.md`.
+<!-- harness:goal id="real-use-lap" status="pending" -->
+Goal: 실사용 한 바퀴 — Askewly Design으로 Askewly Design 소개 덱(PPTX)을 실제로 만들고, 막히는 지점만 결함으로 기록해 milestone으로 삼는다. **보류(2026-07-27)** — UI 백과사전 축 우선, 부활 조건은 horizon 문서 헤더. Details: `plans/horizons/2026-07-real-use-lap.md`.
 
 <!-- harness:goal-archive10 id="design-output-gates" status="completed" -->
 Goal: 산출물이 좋은지 기계가 잰다, 매체마다 다른 자로. closed 2026-07-22 — DOG1~DOG6 완료, **DOG7(사람 관측) 보류**: 관측 1회 실시했으나 verify 위반 0건이라 오탐률 미측정·승격 판정 미획득. 게이트는 경고 유지. Details: `plans/horizons/2026-07-design-output-gates.md`.
