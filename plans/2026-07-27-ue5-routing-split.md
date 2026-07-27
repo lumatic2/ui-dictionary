@@ -43,7 +43,7 @@ Status: approved (2026-07-27 — 사용자 "ㄱㄱ")
 
 ## Step 트리
 
-- [ ] **step-1 — 라우터 골격 + URL 어댑터 + 하위호환 리다이렉트**
+- [x] **step-1 — 라우터 골격 + URL 어댑터 + 하위호환 리다이렉트**
   - Artifact: React Router 가 위 경로 스킴으로 마운트되고, 각 라우트가 기존 App 상태 기계(PageMode·filter·query)를 구동하는 어댑터로 연결된다. 기존 쿼리 URL 전 형태는 진입 시 새 경로로 replace 리다이렉트. `?auth=` OAuth 리턴 처리 유지.
   - Files: write `examples/ui-vocabulary-site/package.json`(react-router 추가), `src/main.tsx`, 신설 `src/routes.tsx`, `src/App.tsx`(어댑터 배선 — 상태 기계는 유지). read `src/lib/navigation-model.ts`.
   - Risk: 위험 (URL 해석 층이 이중화되는 단계 — 리다이렉트 누락 시 기존 링크가 깨진다. 하위호환 전용 회귀 케이스로 잡는다)

@@ -43,7 +43,8 @@ v1 대비 변경 (2026-07-10 사용자 확정):
 
 ## Site Map (목표 구조 v2)
 
-현 구현은 React Router 가 아니라 `PageMode` 상태 기반 SPA 다. 아래 트리는 URL 이 아니라 **화면 단위**의 목표 구조이며, 라우팅 방식 전환은 이 horizon 범위 밖이다.
+~~현 구현은 React Router 가 아니라 `PageMode` 상태 기반 SPA 다. 아래 트리는 URL 이 아니라 **화면 단위**의 목표 구조이며, 라우팅 방식 전환은 이 horizon 범위 밖이다.~~
+**개정 (2026-07-27, UE5)**: 사용자 확정("분리는 진행하는 게 좋겠어")으로 라우팅 전환이 공식 범위에 들어왔다. 경로 스킴 정본은 `examples/ui-vocabulary-site/src/lib/url-mapping.ts` — `/terms/:id` · `/patterns/:slug` · `/docs/:slug` · `/search?q=` · `/colors` 등. 구 쿼리 URL(`?page/id/q/filter`)은 라우터 loader 가 새 경로로 리다이렉트한다(하위호환 유지).
 
 ```text
 Home

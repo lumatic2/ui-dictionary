@@ -1,4 +1,5 @@
-import { Fragment, useCallback, useEffect, useMemo, useState, type KeyboardEvent as ReactKeyboardEvent, type ReactNode } from "react"
+import { Fragment, useCallback, useEffect, useMemo, useRef, useState, type KeyboardEvent as ReactKeyboardEvent, type ReactNode } from "react"
+import { useLocation, useNavigate } from "react-router"
 import {
   BellDot,
   BookOpen,
@@ -56,6 +57,7 @@ import { categories, kinds, terms, type TermCategory, type VocabularyTerm } from
 import { categoryGroups, categoryGroupsByCategory, categoryLabels, isTermCategory, isTermKindCategoryFilter, isTermKindFilter, isTermKindGroupFilter, matchesFilter, searchTerms, type SearchResult, type TermFilter, type TermGroupId } from "@/lib/search"
 import { isNavigationFilter, navigationCollections, navFilter, normalizeNavigationFilter } from "@/lib/navigation-model"
 import { isNavigationFilterVisible, isShellVisible } from "@/lib/exposure"
+import { stateFromUrl, urlFromState } from "@/lib/url-mapping"
 import { docsArticlePages, docsNavGroups, type DocsArticlePageData } from "@/lib/documentation-pages"
 import { getStarterQueries } from "@/lib/search-suggestions"
 import { useCases } from "@/lib/term-ux"
@@ -78,6 +80,11 @@ type AuthSessionState = {
 const AUTH_RETURN_OK_STORAGE_KEY = "askewly-auth-return-ok-at"
 
 function App() {
+  const location = useLocation()
+  const navigate = useNavigate()
+  // 이 컴포넌트가 마지막으로 URL 에 동기화한 값 — 자기 navigate 로 인한 location 변화와
+  // 뒤로가기/외부 진입을 구분하는 기준 (자기 것이면 상태 재적용을 건너뛴다).
+  const lastSyncedUrlRef = useRef<string | null>(null)
   const initialSearchState = useMemo(getInitialSearchState, [])
   const [pageMode, setPageMode] = useState<PageMode>(initialSearchState.page)
   const [query, setQuery] = useState(initialSearchState.query)
@@ -174,21 +181,20 @@ function App() {
     []
   )
   useEffect(() => {
-    function syncFromUrl() {
-      const nextState = getInitialSearchState()
-      setPageMode(nextState.page)
-      setQuery(nextState.query)
-      setFilter(nextState.filter)
-      setSelectedTermId(nextState.termId)
-      setReturnPageMode(nextState.returnPage)
+    // 라우터가 URL 을 바꿨을 때(뒤로가기·딥링크) 상태를 URL 에서 재구성한다.
+    // 자기 자신이 방금 동기화한 URL 이면 건너뛴다 (구 popstate 리스너의 대체).
+    const locationUrl = `${location.pathname}${location.search}`
+    if (lastSyncedUrlRef.current === locationUrl) {
+      return
     }
-
-    window.addEventListener("popstate", syncFromUrl)
-
-    return () => {
-      window.removeEventListener("popstate", syncFromUrl)
-    }
-  }, [])
+    const nextState = getInitialSearchState()
+    setPageMode(nextState.page)
+    setQuery(nextState.query)
+    setFilter(nextState.filter)
+    setSelectedTermId(nextState.termId)
+    setReturnPageMode(nextState.returnPage)
+    lastSyncedUrlRef.current = locationUrl
+  }, [location])
 
   const refreshAuthSession = useCallback(async (options: { preserveAuthenticatedOnFailure?: boolean } = {}) => {
     try {
@@ -252,7 +258,10 @@ function App() {
     params.delete("auth")
     params.delete("reason")
     const nextSearch = params.toString()
-    window.history.replaceState(null, "", `${window.location.pathname}${nextSearch ? `?${nextSearch}` : ""}${window.location.hash}`)
+    const cleanedUrl = `${window.location.pathname}${nextSearch ? `?${nextSearch}` : ""}`
+    lastSyncedUrlRef.current = cleanedUrl
+    void navigate(cleanedUrl, { replace: true })
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [refreshAuthSession])
 
   useEffect(() => {
@@ -284,52 +293,38 @@ function App() {
   }, [])
 
   useEffect(() => {
+    // 상태 → URL 동기화 (디바운스, replace) — 검색어 타이핑 등 제자리 갱신용.
+    // 히스토리 엔트리를 만드는 페이지 이동은 각 내비 함수의 navigateToUrl(push)이 담당한다.
     const timer = window.setTimeout(() => {
-      const params = new URLSearchParams(window.location.search)
-
-      if (query.trim()) {
-        params.set("q", query.trim())
+      const extraParams = new URLSearchParams(window.location.search)
+      const nextUrl = urlFromState({ page: pageMode, filter, query, termId: selectedTermId }, extraParams)
+      const currentUrl = `${window.location.pathname}${window.location.search}`
+      if (nextUrl !== currentUrl) {
+        lastSyncedUrlRef.current = nextUrl
+        void navigate(nextUrl, { replace: true })
       } else {
-        params.delete("q")
+        lastSyncedUrlRef.current = nextUrl
       }
-
-      if (pageMode !== "home" && filter !== "all") {
-        params.set("filter", filter)
-      } else {
-        params.delete("filter")
-      }
-      if (pageMode !== "home") {
-        params.set("page", pageMode)
-      } else {
-        params.delete("page")
-      }
-      if (pageMode === "term" && selectedTermId) {
-        params.set("id", selectedTermId)
-        params.delete("filter")
-        params.delete("q")
-      } else {
-        params.delete("id")
-      }
-
-      const nextSearch = params.toString()
-      const nextUrl = `${window.location.pathname}${nextSearch ? `?${nextSearch}` : ""}${window.location.hash}`
-      window.history.replaceState(null, "", nextUrl)
     }, 500)
 
     return () => window.clearTimeout(timer)
-  }, [filter, pageMode, query, selectedTermId])
+  }, [filter, pageMode, query, selectedTermId, navigate])
+
+  // 히스토리 엔트리를 만드는 페이지 단위 이동 — location 동기화 효과가 자기 URL 로
+  // 인식하도록 ref 를 먼저 기록한다.
+  const navigateToUrl = useCallback((targetUrl: string) => {
+    lastSyncedUrlRef.current = targetUrl
+    void navigate(targetUrl)
+  }, [navigate])
 
   const selectTerm = useCallback((term: VocabularyTerm) => {
     setReturnPageMode((current) => (pageMode === "term" ? current : pageMode))
     setSelectedTermId(term.id)
     setPageMode("term")
     setActiveUseCaseId(null)
-    const params = new URLSearchParams()
-    params.set("page", "term")
-    params.set("id", term.id)
-    window.history.pushState(null, "", `${window.location.pathname}?${params.toString()}${window.location.hash}`)
+    navigateToUrl(urlFromState({ page: "term", filter: "all", query: "", termId: term.id }))
     window.scrollTo({ top: 0, behavior: "smooth" })
-  }, [pageMode])
+  }, [pageMode, navigateToUrl])
 
   const navigateToNavigationPath = useCallback((path: string[]) => {
     const collection = navigationCollections.find((item) => pathsEqual(item.path, path))
@@ -340,15 +335,15 @@ function App() {
 
     const nextFilter = navFilter(collection.id)
     const nextPage = collection.id.startsWith("docs-") ? "docs" : "plus"
-    pushHistoryEntry()
     setPageMode(nextPage)
     setReturnPageMode(nextPage)
     setSelectedTermId(null)
     setActiveUseCaseId(null)
     setQuery("")
     setFilter(nextFilter)
+    navigateToUrl(urlFromState({ page: nextPage, filter: nextFilter, query: "", termId: null }))
     window.scrollTo({ top: 0, behavior: "smooth" })
-  }, [])
+  }, [navigateToUrl])
 
   function updateQuery(nextQuery: string) {
     setActiveUseCaseId(null)
@@ -382,7 +377,6 @@ function App() {
   }
 
   function updateNavFilter(nextFilter: TermFilter) {
-    pushHistoryEntry()
     setActiveUseCaseId(null)
     setQuery("")
     setFilter(nextFilter)
@@ -393,36 +387,33 @@ function App() {
       setPageMode(nextPage)
       setReturnPageMode(nextPage)
       setSelectedTermId(null)
+      navigateToUrl(urlFromState({ page: nextPage, filter: nextFilter, query: "", termId: null }))
       window.scrollTo({ top: 0, behavior: "smooth" })
     }
-  }
-
-  // 페이지 단위 이동 전에 현재 URL 을 히스토리에 남긴다 — 뒤로가기가 이전 화면으로
-  // 돌아가게 하는 최소 장치. 새 URL 은 디바운스된 replaceState 가 곧 채운다.
-  function pushHistoryEntry() {
-    window.history.pushState(null, "", window.location.href)
   }
 
   function changePage(nextPage: PageMode) {
     if (nextPage === "term") {
       return
     }
-    pushHistoryEntry()
     setPageMode(nextPage)
     setReturnPageMode(nextPage)
     setSelectedTermId(null)
     setActiveUseCaseId(null)
     setQuery("")
     setSearchExpanded(false)
+    let nextFilter: TermFilter
     if (nextPage === "home") {
-      setFilter(navFilter("plus-all"))
+      nextFilter = navFilter("plus-all")
     } else if (nextPage === "docs") {
-      setFilter(navFilter("docs-getting-started-setup"))
+      nextFilter = navFilter("docs-getting-started-setup")
     } else if (nextPage === "plus") {
-      setFilter(navFilter("plus-all"))
+      nextFilter = navFilter("plus-all")
     } else {
-      setFilter("all")
+      nextFilter = "all"
     }
+    setFilter(nextFilter)
+    navigateToUrl(urlFromState({ page: nextPage, filter: nextFilter, query: "", termId: null }))
     window.scrollTo({ top: 0, behavior: "smooth" })
   }
 
@@ -434,7 +425,7 @@ function App() {
     setActiveUseCaseId(null)
     setSelectedTermId(null)
     setSearchExpanded(false)
-    window.history.replaceState(null, "", window.location.pathname)
+    navigateToUrl("/")
     window.scrollTo({ top: 0, behavior: "smooth" })
   }
 
@@ -445,14 +436,15 @@ function App() {
       return
     }
 
-    pushHistoryEntry()
     setActiveUseCaseId(null)
     setQuery("")
     setSelectedTermId(null)
     setSearchExpanded(false)
     setPageMode(destination.page)
     setReturnPageMode(destination.page)
-    setFilter("filter" in destination ? destination.filter : getDefaultFilterForPage(destination.page))
+    const nextFilter = "filter" in destination ? destination.filter : getDefaultFilterForPage(destination.page)
+    setFilter(nextFilter)
+    navigateToUrl(urlFromState({ page: destination.page, filter: nextFilter, query: "", termId: null }))
     window.scrollTo({ top: 0, behavior: "smooth" })
   }
 
@@ -1172,6 +1164,22 @@ function getInitialSearchState(): SearchState {
   }
 
   const params = new URLSearchParams(window.location.search)
+  const hasLegacyParams =
+    window.location.pathname === "/" &&
+    (params.has("page") || params.has("id") || params.has("q") || params.has("filter"))
+
+  // 경로 스킴(UE5) 우선 — /terms/:id, /patterns/:slug, /docs/:slug, /search 등.
+  if (!hasLegacyParams) {
+    const raw = stateFromUrl(window.location.pathname, params)
+    if (raw) {
+      const filter = raw.rawFilter ? parseFilterParam(raw.rawFilter) : getDefaultFilterForPage(raw.page)
+      const returnPage: Exclude<PageMode, "term"> =
+        raw.page !== "term" ? raw.page : filter.startsWith("nav:docs-") ? "docs" : "plus"
+      return { filter, page: raw.page, query: raw.query, termId: raw.termId, returnPage }
+    }
+  }
+
+  // 구 쿼리 URL 폴백 — 라우터 loader 가 리다이렉트하기 전 초기 렌더에서도 안전하게.
   const query = params.get("q") ?? ""
   const rawFilter = params.get("filter")
   const filter = parseFilterParam(rawFilter)
