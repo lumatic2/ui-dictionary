@@ -19,3 +19,8 @@
 - 신규 변형 `footer-brand-wordmark`: 얇은 링크 행 + 소셜 → 초대형 워드마크("Vocab") → 법적 행. 참고 재해석(Digital Silk 브랜드 강화형·Sitebuilder bold typography 관례).
 
 **Verify**: Playwright 4항 PASS — 헤더 10예제·안내문·신규 2종 렌더("Measured,"·"What shipped this quarter") · 푸터 8예제·워드마크 렌더 · 다크 캡처 · 콘솔 에러 0. tsc 0 에러 · build·lint exit 0. 신규 코드 hex 리터럴 0(기존 파일의 verify 위반은 이월 부채 — UE2 finding 큐 기존 항목).
+
+## step-4 — 통합 검증 + 사람 관측
+
+- 통합 Playwright(사이드바→Header Sections→Footers) PASS 원문은 `evidence/ui-encyclopedia/ue3-batch1.md`.
+- 사람 관측 통과 (2026-07-28): "응 잘 되는거 확인했으니까, 이제 배치단위로 끊지 말고, 더 큰 범위로 진행해줘" — 배치 2+는 확대 범위 지시 반영.

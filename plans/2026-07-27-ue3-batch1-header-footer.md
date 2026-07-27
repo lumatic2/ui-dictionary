@@ -60,7 +60,7 @@ Status: approved (2026-07-27 — UE1 승인 연쇄 `--chain UE2,UE3,UE4` 집행 
   - Failure probe: 장부 대조 없이 "충분하다"로 닫으면 무효 — 대조표가 장부에 실재해야 한다.
   - Commit: changeset `ue3-batch1-header-footer` (README 절: step-3).
 
-- [ ] **step-4 — 통합 검증 + 사람 관측**
+- [x] **step-4 — 통합 검증 + 사람 관측**
   - Artifact: 통합 시나리오(사이드바→Header Sections→Footers 열람) 로그 + **사람 관측 1회**(과업: "헤더 목록 다시 봐주세요 — 이제 hero 와 구분되고 서로 달라 보이나요? 푸터도요") 발화 기록 evidence.
   - Files: write `evidence/ui-encyclopedia/ue3-batch1.md`.
   - Risk: 없음 (관측·기록 중심)
