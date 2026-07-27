@@ -4005,7 +4005,7 @@ renderFeatureSection(feature)`}</code>
     const defaultDarkContact = variant === "contact-split-pattern" || variant === "contact-testimonial"
     const isDarkContact = theme === "dark" || (theme === "system" && defaultDarkContact)
     const contactTheme = isDarkContact ? "dark" : "light"
-    const contactField = cn("h-10 rounded-md border px-3 text-xs shadow-sm transition focus:outline-none focus:ring-2 focus:ring-indigo-400/50", isDarkContact ? "border-white/10 bg-white/5 text-white placeholder:text-slate-500" : "border-slate-300 bg-white text-slate-900 placeholder:text-slate-400")
+    const contactField = cn("h-10 w-full rounded-md border px-3 text-xs shadow-sm transition focus:outline-none focus:ring-2 focus:ring-indigo-400/50", isDarkContact ? "border-white/10 bg-white/5 text-white placeholder:text-slate-500" : "border-slate-300 bg-white text-slate-900 placeholder:text-slate-400")
     const contactTextArea = cn(contactField, "h-28 resize-none py-3")
     const contactRootClass = (base = "") => cn("transition-colors duration-300", isDarkContact ? "bg-slate-950 text-white" : "bg-white text-slate-900", base)
     const contactHeadingClass = isDarkContact ? "text-white" : "text-slate-950"
