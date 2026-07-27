@@ -334,6 +334,7 @@ function App() {
   const navigateToNavigationPath = useCallback((path: string[]) => {
     const collection = navigationCollections.find((item) => pathsEqual(item.path, path))
     if (!collection) {
+      console.warn(`navigation: no collection matches path "${path.join(" / ")}" — check navigationCollections`)
       return
     }
 
@@ -384,6 +385,14 @@ function App() {
     setQuery("")
     setFilter(nextFilter)
     setSearchExpanded(false)
+    if (isNavigationFilter(nextFilter)) {
+      const collectionId = nextFilter.slice("nav:".length)
+      const nextPage = collectionId.startsWith("docs-") ? "docs" : "plus"
+      setPageMode(nextPage)
+      setReturnPageMode(nextPage)
+      setSelectedTermId(null)
+      window.scrollTo({ top: 0, behavior: "smooth" })
+    }
   }
 
   function changePage(nextPage: PageMode) {

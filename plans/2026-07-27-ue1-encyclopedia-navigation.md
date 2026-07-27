@@ -46,7 +46,7 @@ RU1·DOG7 의 반복 교훈(기계 PASS 를 사람이 뒤집는다)에 따라, �
 
 ## Step 트리
 
-- [ ] **step-1 — 사이드바 내비 수리 + 실패 관측 가능화**
+- [x] **step-1 — 사이드바 내비 수리 + 실패 관측 가능화**
   - Artifact: 용어 상세·목록 어디서든 사이드바 카테고리(예: "Header Sections") 클릭이 해당 컬렉션 목록 화면으로 착지한다. `navigateToNavigationPath` 의 조용한 return 을 제거 — 경로 불일치 시 console.warn 으로 사유가 남는다. 근본 원인(경로 불일치인지, 핸들러 미배선인지)을 changeset README 에 기록한다.
   - Files: read `src/lib/navigation-model.ts`, `src/lib/exposure.ts`; write `src/App.tsx`(내비 핸들러·파라미터 배선), 필요 시 `src/lib/navigation-model.ts`(경로 데이터 정정), `src/components/term-page.tsx`(사이드바 전달 props 한정).
   - Risk: 위험 (내비 배선 변경이 지금 동작하는 목록 필터·홈 진입 경로를 깰 수 있다 — Verify 의 기존 경로 회귀 확인으로 잡는다)
