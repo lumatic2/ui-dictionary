@@ -3,6 +3,7 @@ import { useState, type ReactNode } from "react"
 import { Badge } from "@/components/ui/badge"
 import { Button } from "@/components/ui/button"
 import { TermVisual } from "@/components/term-visual"
+import { VariationGallery } from "@/components/variation-gallery"
 import { sourceRegistry, type VocabularyTerm } from "@/data/terms.generated"
 import { downloadNodeAsPng, getTermPngFileName } from "@/lib/export-capture"
 import { isNavigationPathVisible } from "@/lib/exposure"
@@ -113,6 +114,8 @@ export function TermPage({ term, terms, onBack, onNavigatePath, onSelectTerm }: 
               </div>
             </div>
           </Section>
+
+          <VariationGallery termId={term.id} />
 
           <Section title="생김새 단서">
             <BulletList items={term.visual_anatomy} />

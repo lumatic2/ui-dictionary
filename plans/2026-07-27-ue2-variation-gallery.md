@@ -33,7 +33,7 @@ Status: approved (2026-07-27 — UE1 승인 연쇄 `--chain UE2,UE3,UE4` 집행.
 
 ## Step 트리
 
-- [ ] **step-1 — 변형 데이터 층 + 파일럿 데이터**
+- [x] **step-1 — 변형 데이터 층 + 파일럿 데이터**
   - Artifact: `src/data/term-variations.tsx` — 타입(`TermVariation`: id·label·one_liner·tier·states[]·Demo 컴포넌트) + 아코디언 변형 4종(기본/보더 묶음형/분리 카드형/FAQ 형)·탭 변형 3종(기본/필형/세로형) 실동작 데모. 각 변형에 근거 레퍼런스 출처 URL+접근일 주석(전역 인용 규칙).
   - Files: write `src/data/term-variations.tsx`, `src/components/variation-demos/accordion.tsx`, `src/components/variation-demos/tabs.tsx`. read `src/components/term-visual.tsx`(기존 미니목과 중복 회피), `DESIGN.md`(토큰).
   - Risk: 없음 (신규 파일 — 기존 화면 무변경)
@@ -42,7 +42,7 @@ Status: approved (2026-07-27 — UE1 승인 연쇄 `--chain UE2,UE3,UE4` 집행.
   - Failure probe: 레지스트리에서 accordion 키를 제거하면 step-2 갤러리 검증(변형 ≥4 렌더)이 FAIL.
   - Commit: changeset `ue2-variation-gallery` (README 절: step-1).
 
-- [ ] **step-2 — 상세 페이지 갤러리 렌더러**
+- [x] **step-2 — 상세 페이지 갤러리 렌더러**
   - Artifact: `term-page.tsx` 에 "바리에이션" 섹션 — 레지스트리에 데이터가 있는 용어만 렌더(없으면 섹션 자체 미노출 — 노출 정책 정합). 변형 카드(실동작 데모 + 라벨 + 한 줄 정의 + 상태 토글) + 2번째 변형부터 "Pro" 배지. lazy 로딩(초기 청크 영향 0). askewly-design 절차로 룩 확정(스크린샷 증거).
   - Files: write `src/components/term-page.tsx`(섹션 추가), `src/components/variation-gallery.tsx`(신설). read `src/data/term-variations.tsx`.
   - Risk: 위험 (term-page 는 전 용어 공용 — 레지스트리 없는 560개 용어에서 레이아웃 회귀 가능. 미등록 용어 렌더 확인을 Verify 에 포함)
@@ -66,7 +66,7 @@ Status: approved (2026-07-27 — UE1 승인 연쇄 `--chain UE2,UE3,UE4` 집행.
 - **회귀 게이트**: UE5 회귀 스위트 + build·lint·tsc + 디자인 verify.
 
 ## finding 큐
-- (실행 중 발견 항목을 여기 적는다)
+- `src/components` 디자인 verify 위반 77건(기존 데모 파일 이월 부채 — hex 리터럴·타이포 단계 초과). UE2 신규 파일은 0건. 별도 정리 후보.
 
 ## 진행 로그
 - 2026-07-27 작성 (UE1 승인 연쇄 집행).
