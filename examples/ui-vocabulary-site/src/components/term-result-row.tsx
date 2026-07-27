@@ -1,10 +1,12 @@
-import { memo, type MouseEvent } from "react"
+import { lazy, memo, Suspense, type MouseEvent } from "react"
 import { ArrowUpRight } from "lucide-react"
 import { Badge } from "@/components/ui/badge"
-import { TermVisual } from "@/components/term-visual"
 import type { VocabularyTerm } from "@/data/terms.generated"
 import { categoryLabels, kindLabels, searchMatchReasonLabels, type SearchMatchReason } from "@/lib/search"
 import { cn } from "@/lib/utils"
+
+// UE5 step-2: 미니목 렌더러(term-visual, 수천 줄)를 목록 초기 청크에서 분리한다.
+const TermVisual = lazy(() => import("@/components/term-visual").then((m) => ({ default: m.TermVisual })))
 
 type TermResultRowProps = {
   term: VocabularyTerm
@@ -28,7 +30,7 @@ export const TermResultRow = memo(function TermResultRow({
     <a
       data-export-card={term.id}
       data-print-card
-      href={`?page=term&id=${encodeURIComponent(term.id)}`}
+      href={`/terms/${encodeURIComponent(term.id)}`}
       onClick={openTermPage}
       className={cn(
         "group grid min-h-32 grid-cols-[5.5rem_minmax(0,1fr)] gap-4 px-0 py-4 text-foreground no-underline outline-none transition hover:bg-accent/30 focus-visible:ring-2 focus-visible:ring-ring sm:grid-cols-[7rem_minmax(0,1fr)_auto] sm:items-center sm:px-3",
@@ -36,7 +38,9 @@ export const TermResultRow = memo(function TermResultRow({
       )}
     >
       <div className="min-w-0 overflow-hidden rounded-md border bg-background">
-        <TermVisual variant={term.asset.variant} label={term.ko.name} />
+        <Suspense fallback={<div aria-hidden="true" className="aspect-[4/3] w-full animate-pulse bg-muted/50" />}>
+          <TermVisual variant={term.asset.variant} label={term.ko.name} />
+        </Suspense>
       </div>
 
       <div className="min-w-0">

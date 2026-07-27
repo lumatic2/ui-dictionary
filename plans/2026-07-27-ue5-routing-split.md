@@ -52,7 +52,7 @@ Status: approved (2026-07-27 — 사용자 "ㄱㄱ")
   - Failure probe: 리다이렉트 맵에서 `page=term` 분기를 일시 제거하면 ③이 FAIL 로 잡는다. 라우터 마운트를 되돌리면 ①②가 404/홈 폴백으로 FAIL.
   - Commit: changeset `ue5-routing-split` (README 절: step-1).
 
-- [ ] **step-2 — 화면 모듈 분리 + lazy 코드 분할**
+- [x] **step-2 — 화면 모듈 분리 + lazy 코드 분할**
   - Artifact: 홈·Patterns 목록·용어 상세·Docs·Colors·Recipes·Pro 화면이 App.tsx 밖의 라우트 모듈로 분리되고 `lazy()` 로딩된다. App.tsx 는 셸(헤더·사이드바·공유 상태)만 남는다. UE1 에서 넣은 `pushHistoryEntry` 손배선은 라우터 내비게이션으로 대체·제거.
   - Files: write `src/App.tsx`(축소), 신설 `src/pages/*`(화면 모듈 — 기존 컴포넌트 이동 위주, 재작성 아님), `src/routes.tsx`. read `src/components/*`.
   - Risk: 위험 (대규모 이동 diff — 화면 모듈 단위로 커밋을 쪼개 부분 revert 를 보장한다. 상태 공유가 끊기면 검색·필터가 화면 간 초기화되는 회귀)
@@ -77,7 +77,7 @@ Status: approved (2026-07-27 — 사용자 "ㄱㄱ")
 - **spec 반영**: `docs/design-system/site-blueprint.md` 의 "라우팅 방식 전환은 범위 밖" 문구를 공식 개정(사용자 확정 2026-07-27 인용) — step-1 커밋에 포함.
 
 ## finding 큐
-- (실행 중 발견 항목을 여기 적는다)
+- step-2: Pro/Download/카탈로그 골격(약 6천 줄)이 App.tsx 에 잔류 — `src/pages/*` 완전 분리는 후속 정리 후보 (효과 대비 diff 커서 이번 범위에서 제외).
 
 ## 진행 로그
 - 2026-07-27 작성.
