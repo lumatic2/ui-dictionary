@@ -2221,7 +2221,8 @@ type MarketingCodeSnippet = {
 }
 
 type CodeLanguage = "html" | "react" | "vue"
-function SiteThemeToggle({ activeTheme, onThemeChange }: { activeTheme: PreviewTheme; onThemeChange: (theme: PreviewTheme) => void }) {
+// 다크모드 정비 때 재사용 — 현재 미배선 (라이트 고정)
+export function SiteThemeToggle({ activeTheme, onThemeChange }: { activeTheme: PreviewTheme; onThemeChange: (theme: PreviewTheme) => void }) {
   return (
     <div className="inline-flex rounded-full bg-muted p-0.5 text-muted-foreground ring-1 ring-border" role="group" aria-label="Site theme">
       {([
