@@ -45,3 +45,8 @@
 - O4 스크롤 체이닝: 좌측 내비 aside 에 `overscroll-contain`.
 
 검증: F1·F1b·F2(한/영)·F3 전부 PASS, 콘솔 에러 0, build·lint exit 0. O5~O7 은 구조 결함 — plan finding 큐.
+
+## step-3 보강 2 — 관측 2회차: O8 수리, O9·분리 결정 등록
+
+- O8: 검색 *결과 리스트*(`search.ts` `searchTerms`)가 제안(O2)과 별도 경로로 여전히 필터에 갇혀 "0개 결과". "검색어 있으면 전체 사전 검색, 동점이면 필터 안 우선"으로 교정. 검증 4항 PASS(아코디언·헤더·accordion·docs-scope), build·lint exit 0.
+- O9(결과 화면 UI 품질)·라우팅 분리 확정(→ ROADMAP UE5 pending)은 finding 큐·ROADMAP 에 기록.

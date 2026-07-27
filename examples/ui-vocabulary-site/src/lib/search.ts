@@ -92,12 +92,13 @@ export function searchTerms(
 ) {
   const normalizedQuery = normalize(query)
 
+  // 검색어가 없으면 필터 탐색(브라우징) — 필터 안만 나열한다.
+  // 검색어가 있으면 전체 사전에서 찾는다 — 필터가 검색을 가두면 좁은 컬렉션에서
+  // 항상 0건이 된다 (UE1 관측 결함 O8). 같은 점수면 현재 필터 안 매치를 앞세운다.
   return terms.flatMap((term, index) => {
-    if (!matchesFilter(term, filter)) {
-      return []
-    }
+    const inFilter = matchesFilter(term, filter)
     if (!normalizedQuery) {
-      return [{ term, score: 0, reasons: [], matchedText: [], sourceIndex: index }]
+      return inFilter ? [{ term, score: 0, reasons: [], matchedText: [], sourceIndex: index, inFilter }] : []
     }
 
     const result = scoreTerm(term, normalizedQuery)
@@ -105,14 +106,17 @@ export function searchTerms(
       return []
     }
 
-    return [{ ...result, sourceIndex: index }]
+    return [{ ...result, sourceIndex: index, inFilter }]
   }).sort((left, right) => {
     if (right.score !== left.score) {
       return right.score - left.score
     }
+    if (left.inFilter !== right.inFilter) {
+      return left.inFilter ? -1 : 1
+    }
 
     return left.sourceIndex - right.sourceIndex
-  }).map(({ sourceIndex: _sourceIndex, ...result }) => result)
+  }).map(({ sourceIndex: _sourceIndex, inFilter: _inFilter, ...result }) => result)
 }
 
 export function searchableText(term: VocabularyTerm) {
