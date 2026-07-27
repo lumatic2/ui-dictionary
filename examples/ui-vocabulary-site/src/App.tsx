@@ -56,6 +56,7 @@ import { isNavigationFilterVisible, isShellVisible } from "@/lib/exposure"
 import { stateFromUrl, urlFromState } from "@/lib/url-mapping"
 import { useSystemPreviewTheme, type PreviewTheme } from "@/lib/preview-theme"
 import { slugify, toPascalCase } from "@/lib/strings"
+import { isOwnerEmail } from "@/lib/owner"
 import { MarketingSectionPreviewLazy, type MarketingPreviewVariant } from "@/components/marketing-section-preview-lazy"
 import { docsArticlePages, docsNavGroups, type DocsArticlePageData } from "@/lib/documentation-pages"
 import { getStarterQueries } from "@/lib/search-suggestions"
@@ -96,6 +97,7 @@ function App() {
   const [topbarFeedback, setTopbarFeedback] = useState("")
   const [signInOpen, setSignInOpen] = useState(false)
   const [authSession, setAuthSession] = useState<AuthSessionState>({ authenticated: false, checked: false })
+  const [proUnlocked, setProUnlocked] = useState(false)
   const [siteTheme, setSiteTheme] = useState<PreviewTheme>(() => {
     if (typeof window === "undefined") {
       return "system"
@@ -218,6 +220,18 @@ function App() {
       }
     }
   }, [])
+
+  useEffect(() => {
+    let cancelled = false
+    if (!authSession.authenticated || !authSession.email) {
+      setProUnlocked(false)
+      return
+    }
+    void isOwnerEmail(authSession.email).then((owner) => {
+      if (!cancelled) setProUnlocked(owner)
+    })
+    return () => { cancelled = true }
+  }, [authSession.authenticated, authSession.email])
 
   useEffect(() => {
     const params = new URLSearchParams(window.location.search)
@@ -733,6 +747,7 @@ function App() {
                   onBack={() => changePage(returnPageMode)}
                   onNavigatePath={navigateToNavigationPath}
                   onSelectTerm={selectTerm}
+                  proUnlocked={proUnlocked}
                 />
               </Suspense>
             ) : pageMode === "term" ? (
@@ -746,6 +761,7 @@ function App() {
             ) : marketingSectionPage ? (
               <MarketingSectionCatalogPage
                 page={marketingSectionPage}
+                proUnlocked={proUnlocked}
               />
             ) : filteredTerms.length > 0 ? (
               <>
@@ -2046,9 +2062,10 @@ export function LegacyDocsElementPreview({ variant }: { variant: DocsArticlePage
 
 type MarketingSectionCatalogPageProps = {
   page: MarketingSectionPage
+  proUnlocked?: boolean
 }
 
-function MarketingSectionCatalogPage({ page }: MarketingSectionCatalogPageProps) {
+function MarketingSectionCatalogPage({ page, proUnlocked = false }: MarketingSectionCatalogPageProps) {
   const [activeExampleTabs, setActiveExampleTabs] = useState<Record<string, "preview" | "code">>({})
   const [codeLanguages, setCodeLanguages] = useState<Record<string, CodeLanguage>>({})
   const [previewThemes, setPreviewThemes] = useState<Record<string, PreviewTheme>>({})
@@ -2092,7 +2109,7 @@ function MarketingSectionCatalogPage({ page }: MarketingSectionCatalogPageProps)
 
       <div className="flex flex-col gap-12 md:gap-16">
         {page.examples.map((example, exampleIndex) => {
-          const hasPublicCode = exampleIndex === 0
+          const hasPublicCode = exampleIndex === 0 || proUnlocked
           const activeTab = hasPublicCode ? activeExampleTabs[example.id] ?? "preview" : "preview"
           const codeLanguage = codeLanguages[example.id] ?? "react"
           const previewTheme = previewThemes[example.id] ?? "system"
@@ -2106,6 +2123,9 @@ function MarketingSectionCatalogPage({ page }: MarketingSectionCatalogPageProps)
                   <div className="flex min-w-0 flex-wrap items-center gap-x-3 gap-y-1">
                     <h3 className="text-base font-semibold tracking-normal text-slate-950">{example.title}</h3>
                     <span className="rounded-full bg-slate-100 px-2 py-0.5 text-[0.65rem] font-semibold uppercase tracking-[0.12em] text-slate-500">Example {String(exampleIndex + 1).padStart(2, "0")}</span>
+                    {exampleIndex > 0 && (
+                      <span className={cn("rounded-full px-2 py-0.5 text-[0.65rem] font-semibold uppercase tracking-[0.12em]", proUnlocked ? "bg-emerald-50 text-emerald-700" : "bg-askewly-violet/10 text-askewly-violet")}>{proUnlocked ? "Pro · unlocked" : "Pro"}</span>
+                    )}
                   </div>
                   <p className="mt-1 max-w-3xl text-sm leading-6 text-slate-600">{example.description}</p>
                   <div className="mt-2 flex flex-wrap gap-1.5">
@@ -2273,7 +2293,7 @@ function CodeAccessModal({ example, onClose }: { example: MarketingSectionExampl
           </button>
         </div>
         <p className="mt-4 text-sm leading-6 text-slate-600">
-          Tailwind Plus의 잠금 코드 흐름처럼 전체 구현 접근을 분리해 보여줍니다. 공개 예시는 첫 번째 카드의 Code 탭에서 바로 확인하고, 나머지 예시는 preview와 구조 메타데이터로 비교합니다.
+          Tailwind Plus의 잠금 코드 흐름처럼 전체 구현 접근을 분리해 보여줍니다. 공개 예시는 첫 번째 카드의 Code 탭에서 바로 확인하고, 나머지 예시는 preview와 구조 메타데이터로 비교합니다. 소유자 계정으로 로그인하면 모든 예시의 Code 탭이 열립니다.
         </p>
         {example && (
           <div className="mt-4 rounded-xl bg-slate-50 p-4">

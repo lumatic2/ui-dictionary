@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "active_work_id": "ue3-batch2-remaining-sections",
+  "active_work_id": "ue4-pro-lock-owner-unlock",
   "works": {
     "SFB1": {
       "title": "Structure Contract And Clean Production",
@@ -4157,6 +4157,52 @@
       "updated_at": "2026-07-28",
       "notes": "Registered atomically by canonical harness approve_harness_plan.py after plan validation.",
       "completion_summary": "Page Sections 16종 전부 정비 완료 — 신규 실동작 변형 14종(배치1 3+배치2 11), 사람 관측 2회 왕복 통과"
+    },
+    "ue4-pro-lock-owner-unlock": {
+      "work_id": "ue4-pro-lock-owner-unlock",
+      "milestone_id": "UE4",
+      "status": "active",
+      "plan_path": "plans/2026-07-28-ue4-pro-lock-owner-unlock.md",
+      "changeset_path": "changesets/20260728-ue4-pro-lock-owner-unlock",
+      "next_step": "step-1",
+      "current_step": "step-1",
+      "steps": [
+        {
+          "id": "step-1",
+          "label": "step-1 — 오너 판별 + patterns 코드 언락"
+        },
+        {
+          "id": "step-2",
+          "label": "step-2 — 바리에이션 갤러리 pro 잠금 실제화"
+        },
+        {
+          "id": "step-3",
+          "label": "step-3 — 통합 검증 + 배포 + 사람 관측 (UE4 마감)"
+        }
+      ],
+      "execution_mode": "continuous",
+      "approval": {
+        "approved_by": "user",
+        "approved_at": "2026-07-28",
+        "plan_sha256": "841bb79d3ea87a713d495bea54e06060b13ef36fa60d91c1260893d29fcace00"
+      },
+      "allowed_stop_reasons": [
+        "completed",
+        "blocked",
+        "decision_required",
+        "risk_gate",
+        "secret_required",
+        "external_authority_required",
+        "user_stopped"
+      ],
+      "stop_reason": null,
+      "stop_detail": {},
+      "session_ids": [
+        "claude:e1f9766b-7ec5-4959-a125-6af2a1f7e798"
+      ],
+      "owner_session_uuid": "claude:e1f9766b-7ec5-4959-a125-6af2a1f7e798",
+      "updated_at": "2026-07-28",
+      "notes": "Registered atomically by canonical harness approve_harness_plan.py after plan validation."
     }
   }
 }

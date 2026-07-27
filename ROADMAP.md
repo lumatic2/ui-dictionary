@@ -71,10 +71,10 @@ Goal: 스튜디오 이월 갭 3건 마감 — 데이터 주도 주입 자동화�
 - Completed at: 2026-07-28
 - Evidence: evidence/ui-encyclopedia/ue3-batch2.md
 - Summary: Page Sections 16종 레퍼런스→실동작 데모 정비 (배치 1 헤더/푸터 + 배치 2 나머지 14종)
-<!-- harness:milestone id="UE4" status="pending" priority="P2" evidence="evidence/ui-encyclopedia/ue4-pro-owner-unlock.md" -->
+<!-- harness:milestone id="UE4" status="active" priority="P2" evidence="evidence/ui-encyclopedia/ue4-pro-lock.md" -->
 ### UE4 — Pro 잠금 + 오너 언락
 - DoD: Tailwind Plus 모델 잠금(정의·대표 데모 미리보기 무료, 바리에이션 전체·코드 복사 Pro)이 동작하고, Google 로그인 세션 이메일이 소유자와 일치하면 전체 열람된다. 결제 연동은 범위 밖.
-- Plan: (UE3 진행과 병행 검토 — 별도 plan doc)
+- Plan: plans/2026-07-28-ue4-pro-lock-owner-unlock.md
 - Status: [ ]
 
 <!-- harness:milestone id="UE5" status="completed" priority="P1" evidence="evidence/ui-encyclopedia/ue5-routing-split.md" -->

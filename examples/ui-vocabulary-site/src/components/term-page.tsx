@@ -18,9 +18,10 @@ type TermPageProps = {
   onBack: () => void
   onNavigatePath: (path: string[]) => void
   onSelectTerm: (term: VocabularyTerm) => void
+  proUnlocked?: boolean
 }
 
-export function TermPage({ term, terms, onBack, onNavigatePath, onSelectTerm }: TermPageProps) {
+export function TermPage({ term, terms, onBack, onNavigatePath, onSelectTerm, proUnlocked = false }: TermPageProps) {
   const [exporting, setExporting] = useState(false)
   const [copiedPhrase, setCopiedPhrase] = useState<string | null>(null)
   const relatedTerms = getRelatedTerms(term, terms)
@@ -115,7 +116,7 @@ export function TermPage({ term, terms, onBack, onNavigatePath, onSelectTerm }: 
             </div>
           </Section>
 
-          <VariationGallery termId={term.id} />
+          <VariationGallery termId={term.id} proUnlocked={proUnlocked} />
 
           <Section title="생김새 단서">
             <BulletList items={term.visual_anatomy} />
