@@ -31,4 +31,7 @@ CONSOLE ERRORS: 0 · UE4 VERIFY: PASS
   - 스크린샷 판독: PRO 칩 보라(잠금 상태)·Get the code 노출 = proUnlocked=false 시점. 로그인 여부 미확인 — 재관측 시 상단바 이메일 표시 여부로 판별.
   - **결함(사용자 결정 승격): 사이트 전역 다크모드에서 카탈로그 하드코딩 색(text-slate-950 등)이 가독성 붕괴** → 라이트 고정으로 차단(`20abf56`+빌드 회복 `11ae8b3`), 다크 정비는 별도 후속. per-example 프리뷰 테마 토글은 유지. Playwright: OS 다크+저장된 다크 선호에서도 html.dark=false·stored=None PASS.
   - 부수 사고: 첫 커밋이 TS6133 빌드 실패 상태로 push 됨(`npm run build | tail` 파이프가 exit code 를 삼킴) — 즉시 회복. 이후 빌드 확인은 `${PIPESTATUS[0]}` 로.
-- **상태: 대기 (재관측 — 로그인 상태 확인 포함)**
+- 관측 2회차 (2026-07-28): "로그인 하니까 https://askewly.com 으로 이동이 되어버리지 왜? 다시 들어가서 보니까 로그인 해도 코드 못보네" — **결함 2건째: OAuth 복귀 실패.**
+  - 근본 원인 (worker 소스 실독, `Askwely-company/worker/oauth.ts`): 시작을 ui.askewly.com **프록시 경유**로 하면 CSRF `oauth_state` 쿠키가 ui.askewly.com host-only 로 저장되는데, Google 콜백은 등록된 redirect_uri 인 askewly.com 으로 직행 → state 쿠키 부재 → `redirectWith(origin/, "error")` = **askewly.com/?auth=error 낙하** (사용자가 본 그 현상). 로그인이 안 된 것이므로 "코드 못보네"도 같은 원인.
+  - 수리 (`0de675d`): OAuth **시작만 authority 직행**(`getOAuthStartOrigin` → 항상 askewly.com). 세션 쿠키는 `Domain=.askewly.com` 공유(worker/auth.ts:139 실독)라 복귀 후 ui.askewly.com 세션 조회는 기존 프록시 경로 그대로 동작. 세션 payload 에 `email` 포함 확인(worker/index.ts:251) — 언락 대조 가능.
+- **상태: 대기 (재관측 — 수리 배포 후 재로그인)**
