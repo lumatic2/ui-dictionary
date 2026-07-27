@@ -27,4 +27,8 @@ CONSOLE ERRORS: 0 · UE4 VERIFY: PASS
 ## 사람 관측 (UE4 DoD 최종 항목)
 
 - 과업: 배포 사이트(https://ui.askewly.com)에서 본인 Google 계정 로그인 → ① 아무 컬렉션(예: /patterns/marketing-footers)의 2번째 이후 예제에 Code 탭이 열리는지 ② /terms/accordion 의 Pro 변형이 조작되는지.
-- **상태: 대기**
+- 관측 1회차 (2026-07-28, 스크린샷 첨부): "code 탭이 뭘 말하는진 모르겠는데, 코드 복사하는 곳은 안 보여. 사이트 전체적으로 다크모드는 일단 막아두고 라이트 모드만 기본으로. 글자들이 안 보이기도 하고."
+  - 스크린샷 판독: PRO 칩 보라(잠금 상태)·Get the code 노출 = proUnlocked=false 시점. 로그인 여부 미확인 — 재관측 시 상단바 이메일 표시 여부로 판별.
+  - **결함(사용자 결정 승격): 사이트 전역 다크모드에서 카탈로그 하드코딩 색(text-slate-950 등)이 가독성 붕괴** → 라이트 고정으로 차단(`20abf56`+빌드 회복 `11ae8b3`), 다크 정비는 별도 후속. per-example 프리뷰 테마 토글은 유지. Playwright: OS 다크+저장된 다크 선호에서도 html.dark=false·stored=None PASS.
+  - 부수 사고: 첫 커밋이 TS6133 빌드 실패 상태로 push 됨(`npm run build | tail` 파이프가 exit code 를 삼킴) — 즉시 회복. 이후 빌드 확인은 `${PIPESTATUS[0]}` 로.
+- **상태: 대기 (재관측 — 로그인 상태 확인 포함)**
