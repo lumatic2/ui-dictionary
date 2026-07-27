@@ -69,11 +69,13 @@ Goal: 스튜디오 이월 갭 3건 마감 — 데이터 주도 주입 자동화�
 - Plan: (UE3 진행과 병행 검토 — 별도 plan doc)
 - Status: [ ]
 
-<!-- harness:milestone id="UE5" status="pending" priority="P1" evidence="evidence/ui-encyclopedia/ue5-routing-split.md" -->
+<!-- harness:milestone id="UE5" status="active" priority="P1" evidence="evidence/ui-encyclopedia/ue5-routing-split.md" -->
 ### UE5 — 페이지 분리 (라우팅 전환)
-- DoD: 화면들이 실제 URL 경로(라우트 단위)로 분리되고, 기존 쿼리 URL 은 리다이렉트로 하위호환되며, 코드 분할로 초기 청크가 줄어든다. UE1 의 탐색 회귀(내비·검색·딥링크·뒤로가기) 전부 유지.
-- Gap: 23,507줄 App.tsx 상태 기반 SPA — 뒤로가기·SEO·코드분할 전부 불리 (사용자 확정 2026-07-27 "분리는 진행하는 게 좋겠어"). UE3 대량 콘텐츠 투입 전 실행 권고.
-- Plan: (별도 plan doc — blueprint "라우팅 전환 범위 밖" 결정의 공식 개정 포함)
+- DoD: 화면들이 실제 URL 경로(라우트 단위)로 분리되고, 기존 쿼리 URL 은 리다이렉트로 하위호환되며, 코드 분할로 초기 청크가 줄어든다. UE1 의 탐색 회귀(내비·검색·딥링크·뒤로가기) 전부 유지 — 사람 관측 1회 포함.
+- Evidence: evidence/ui-encyclopedia/ue5-routing-split.md
+- Gap: 23,507줄 App.tsx 상태 기반 SPA — 뒤로가기·SEO·코드분할 전부 불리 (사용자 확정 2026-07-27 "분리는 진행하는 게 좋겠어"). UE3 대량 콘텐츠 투입 전 실행.
+- Scale: steps=3 (라우터 골격+리다이렉트 · 모듈 분리+코드 분할 · 통합 회귀+사람 관측); surfaces: main/routes/App 셸·화면 모듈; capability: 읽히는 URL 과 분할 로딩
+- Plan: plans/2026-07-27-ue5-routing-split.md
 - Status: [ ]
 
 ## Active Milestones — real-use-lap
