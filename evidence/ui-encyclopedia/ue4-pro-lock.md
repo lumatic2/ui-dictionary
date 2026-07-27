@@ -34,4 +34,8 @@ CONSOLE ERRORS: 0 · UE4 VERIFY: PASS
 - 관측 2회차 (2026-07-28): "로그인 하니까 https://askewly.com 으로 이동이 되어버리지 왜? 다시 들어가서 보니까 로그인 해도 코드 못보네" — **결함 2건째: OAuth 복귀 실패.**
   - 근본 원인 (worker 소스 실독, `Askwely-company/worker/oauth.ts`): 시작을 ui.askewly.com **프록시 경유**로 하면 CSRF `oauth_state` 쿠키가 ui.askewly.com host-only 로 저장되는데, Google 콜백은 등록된 redirect_uri 인 askewly.com 으로 직행 → state 쿠키 부재 → `redirectWith(origin/, "error")` = **askewly.com/?auth=error 낙하** (사용자가 본 그 현상). 로그인이 안 된 것이므로 "코드 못보네"도 같은 원인.
   - 수리 (`0de675d`): OAuth **시작만 authority 직행**(`getOAuthStartOrigin` → 항상 askewly.com). 세션 쿠키는 `Domain=.askewly.com` 공유(worker/auth.ts:139 실독)라 복귀 후 ui.askewly.com 세션 조회는 기존 프록시 경로 그대로 동작. 세션 payload 에 `email` 포함 확인(worker/index.ts:251) — 언락 대조 가능.
-- **상태: 대기 (재관측 — 수리 배포 후 재로그인)**
+- 관측 3회차 (2026-07-28, 사용자 지시 "너가 브라우저 조종해서 쭉 진행해보고 원인도 파악해보고 고치고 해" — 사용자 실브라우저·실계정으로 에이전트가 대행):
+  - 진단: 사용자 브라우저에 **세션이 아예 없었다**(ui·askewly 양쪽 `authenticated:false` 실측) — 이전 로그인 시도들이 전부 수리 전 state 쿠키 버그로 실패했고, 화면의 "Sign out"은 낡은 탭 상태였음. `/api/auth/session` "아무것도 안 나옴"도 같은 원인(미인증 JSON). 부차 발견: Google 계정 선택기에 계정 3개 — 오너 계정(yusung806)이 3번째라 오선택 여지 있었음.
+  - 실행: 수리 배포본에서 Sign in → Google → **yusung806 계정 선택** → 동의 → **보던 페이지(/patterns/marketing-footers)로 정확히 복귀**(OAuth 수리 실증, askewly.com 낙하 없음).
+  - 결과 (실서비스 DOM 실측): 세션 `authenticated:true·email=yus***@gmail.com` · Code 탭 8/8 · "Pro · unlocked" 칩 7 · Get the code 0 · 3번째 예제 Code 패널 실개방(471자)+복사 버튼 8 · `/terms/accordion` 잠금 오버레이 0·inert 0·unlocked 칩 3. 스크린샷: `evidence/ui-encyclopedia/ue4-terms-unlocked.png` (라이트 모드 확인 겸).
+- **상태: 통과 (3회 왕복 — 결함 3건 발견·수리: 다크 가독성→라이트 고정 · OAuth state 쿠키 호스트 불일치 · 세션 부재 진단)**

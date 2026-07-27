@@ -14,4 +14,4 @@
 ## step-3 — 통합 검증 + 배포 + 사람 관측
 
 - Verify (Playwright, 세션 route mock 3계정): 비로그인 code_tabs=1·Get the code 7·변형 오버레이 3 / 오너 mock code_tabs=8·잠금 0·unlocked 칩 7·3번째 예제 Code 패널 실개방 / **타 인증 계정 mock = 비로그인과 동일 잠금**(이메일 대조 실동작). 콘솔 에러 0 · tsc·build·lint PASS.
-- 사람 관측: 배포 사이트 실로그인 확인 — 아래 evidence 참조.
+- 사람 관측: 3회 왕복 통과 — 왕복 중 결함 3건 발견·수리: ① 다크모드 카탈로그 가독성 붕괴 → 사이트 라이트 고정(사용자 결정) ② OAuth 시작이 프록시 경유라 state 쿠키 호스트 불일치 → 콜백이 askewly.com/?auth=error 낙하 → authority 직행으로 수리 ③ SPA fallback `_redirects` 미적용 실측 → Pages Functions 이전. 최종: 사용자 실브라우저·실계정 대행 관측으로 로그인 복귀·전체 언락 실증 (`evidence/ui-encyclopedia/ue4-pro-lock.md`).

@@ -1,14 +1,14 @@
 # ROADMAP
 
-> Last updated: 2026-07-27
-> Status: **`ui-encyclopedia` active (2026-07-27 승인 — 사용자 "ㄱㄱ").** 사이트가 UI 백과사전 역할을 다한다 — 탐색 수리(UE1) → 바리에이션 갤러리(UE2) → Page Sections 전체 레퍼런스 데모(UE3, 배치식·헤더/푸터 우선) → Pro 잠금+오너 언락(UE4). `real-use-lap` 은 PARK(2026-07-27) — 부활 조건은 horizon 문서 헤더, 재료는 evidence 원본(D1~D10 복원)과 `research/2026-07-27-ru2-pilot-defect-measurement.md`.
+> Last updated: 2026-07-28
+> Status: **`ui-encyclopedia` 완주 (2026-07-28)** — UE1 탐색·UE2 바리에이션·UE5 라우팅 분리·UE3 Page Sections 16종·UE4 Pro 잠금+오너 언락 전부 완료, 실서비스(ui.askewly.com) 반영. active goal 0 — 다음 방향은 사용자 결정 대기(후보: 비주얼 임팩트 정리 · 이월 finding 큐 O5~O9 · real-use-lap 부활 · 다크모드 정비). `real-use-lap` 은 PARK(2026-07-27).
 > North star: Build Askewly Design as both a public reference website and an agent-usable implementation system.
 > line budget: <=150
 
 ## Current Goal
 
-<!-- harness:goal id="ui-encyclopedia" status="active" -->
-Goal: UI 백과사전 — 들어가서 용어의 생김새·쓰임·바리에이션을 보고, 헤더·푸터 등 Page Sections 의 종류와 디자인 레퍼런스(직접 구현 데모)를 본다. 유료 경계 = Tailwind Plus 모델, 오너 로그인 전체 열람(결제는 범위 밖). Details: `plans/2026-07-27-ue1-encyclopedia-navigation.md`(연쇄 정의) + `research/2026-07-27-ue1-encyclopedia-diagnosis.md`.
+<!-- harness:goal-archive11 id="ui-encyclopedia" status="completed" -->
+Goal: UI 백과사전 — 들어가서 용어의 생김새·쓰임·바리에이션을 보고, 헤더·푸터 등 Page Sections 의 종류와 디자인 레퍼런스(직접 구현 데모)를 본다. 유료 경계 = Tailwind Plus 모델, 오너 로그인 전체 열람(결제는 범위 밖). closed 2026-07-28 — UE1~UE5 전부 완료·실서비스 실증(관측 왕복 총 8회, 결함 16건 발견·수리). Details: `plans/2026-07-27-ue1-encyclopedia-navigation.md`(연쇄 정의) + `research/2026-07-27-ue1-encyclopedia-diagnosis.md`.
 
 <!-- harness:goal id="real-use-lap" status="pending" -->
 Goal: 실사용 한 바퀴 — Askewly Design으로 Askewly Design 소개 덱(PPTX)을 실제로 만들고, 막히는 지점만 결함으로 기록해 milestone으로 삼는다. **보류(2026-07-27)** — UI 백과사전 축 우선, 부활 조건은 horizon 문서 헤더. Details: `plans/horizons/2026-07-real-use-lap.md`.
@@ -71,12 +71,15 @@ Goal: 스튜디오 이월 갭 3건 마감 — 데이터 주도 주입 자동화�
 - Completed at: 2026-07-28
 - Evidence: evidence/ui-encyclopedia/ue3-batch2.md
 - Summary: Page Sections 16종 레퍼런스→실동작 데모 정비 (배치 1 헤더/푸터 + 배치 2 나머지 14종)
-<!-- harness:milestone id="UE4" status="active" priority="P2" evidence="evidence/ui-encyclopedia/ue4-pro-lock.md" -->
+<!-- harness:milestone id="UE4" status="completed" priority="P2" evidence="evidence/ui-encyclopedia/ue4-pro-lock.md" -->
 ### UE4 — Pro 잠금 + 오너 언락
 - DoD: Tailwind Plus 모델 잠금(정의·대표 데모 미리보기 무료, 바리에이션 전체·코드 복사 Pro)이 동작하고, Google 로그인 세션 이메일이 소유자와 일치하면 전체 열람된다. 결제 연동은 범위 밖.
 - Plan: plans/2026-07-28-ue4-pro-lock-owner-unlock.md
-- Status: [ ]
+- Status: [x]
 
+- Completed at: 2026-07-28
+- Evidence: evidence/ui-encyclopedia/ue4-pro-lock.md
+- Summary: Tailwind Plus 방식 잠금 + 오너(이메일 해시 대조) 전체 언락 — 실서비스 실증
 <!-- harness:milestone id="UE5" status="completed" priority="P1" evidence="evidence/ui-encyclopedia/ue5-routing-split.md" -->
 ### UE5 — 페이지 분리 (라우팅 전환)
 - DoD: 화면들이 실제 URL 경로(라우트 단위)로 분리되고, 기존 쿼리 URL 은 리다이렉트로 하위호환되며, 코드 분할로 초기 청크가 줄어든다. UE1 의 탐색 회귀(내비·검색·딥링크·뒤로가기) 전부 유지 — 사람 관측 1회 포함.

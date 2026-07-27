@@ -49,7 +49,7 @@ Status: approved (연쇄 승인 집행 — 새 사용자 소유 결정 없음, �
   - Failure probe: 오버레이 아래 데모가 포커스 가능하면 잠금이 장식 — pointer-events·tabindex 차단 확인.
   - Commit: changeset `ue4-pro-lock-owner-unlock` (README 절: step-2).
 
-- [ ] **step-3 — 통합 검증 + 배포 + 사람 관측 (UE4 마감)**
+- [x] **step-3 — 통합 검증 + 배포 + 사람 관측 (UE4 마감)**
   - Artifact: 통합 Playwright 로그 + push(자동 배포) + **사람 관측 1회**: 배포 사이트에서 본인 Google 로그인 → 잠긴 예제 Code 열람·pro 변형 언락 확인. 클라이언트 게이트 한계 evidence 명기.
   - Files: write `evidence/ui-encyclopedia/ue4-pro-lock.md`.
   - Risk: 없음 (관측·기록 중심 — push 는 승인된 완료 절차)
