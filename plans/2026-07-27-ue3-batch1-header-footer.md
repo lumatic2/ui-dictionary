@@ -33,7 +33,7 @@ Status: approved (2026-07-27 — UE1 승인 연쇄 `--chain UE2,UE3,UE4` 집행 
 
 ## Step 트리
 
-- [ ] **step-1 — 레퍼런스 헌팅 장부 (헤더/푸터)**
+- [x] **step-1 — 레퍼런스 헌팅 장부 (헤더/푸터)**
   - Artifact: `research/2026-07-27-ue3-batch1-references.md` — 헤더 계열·푸터 계열 레퍼런스 각 6건 이상(Dribbble·Pinterest 탐색 + 실제 제품 사이트), 항목당 출처 URL·접근일·관찰 노트(구조·차별 요소)·우리 기존 변형과의 대조(있음/갭). 갭 목록이 step-2·3 의 입력.
   - Files: write `research/2026-07-27-ue3-batch1-references.md`. read `src/components/marketing-section-preview.tsx`(기존 변형 목록).
   - Risk: 없음 (문서만)
