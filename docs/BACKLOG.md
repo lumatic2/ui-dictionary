@@ -458,3 +458,81 @@ plan doc: `archive/plans/2026-07-21-eu*.md` · 증거: `evidence/editor-legibili
   - Completed: 2026-07-22
   - Result: 3단계 배선·우회 0·등재 (changesets 237-240)
   - Evidence: changesets/20260721-protocol-vocabulary-lookup, changesets/20260721-protocol-element-decision, changesets/20260721-protocol-asset-branch-and-record, changesets/20260721-protocol-publication
+
+---
+
+## design-output-gates (DOG1~DOG7) — closed 2026-07-22
+
+> DOG1~DOG6 완료, DOG7 보류(사람 관측 판정 미획득). horizon 문서 `plans/horizons/2026-07-design-output-gates.md`.
+
+<!-- harness:milestone id="DOG1" status="completed" priority="P0" evidence="evidence/design-output-gates/dog1-linter-precision.md" -->
+### DOG1 — 검사기가 맞는 것만 잡는다
+- DoD: 색 검사기가 SVG 내부와 주석 안의 색 리터럴을 위반으로 보고하지 않고, 한 줄에 여러 위반이 있으면 전부 보고한다.
+- Evidence: evidence/design-output-gates/dog1-linter-precision.md
+- Gap: 실행 실사에서 오탐 2종(SVG·주석)과 누락 1종(줄 단위 첫 매치만)이 나왔다 — 브리프는 검사기가 없다고 했으나 실은 있고, 정확도가 문제였다
+- Scale: changesets>=3; surfaces: 규칙 엔진·예외 처리·회귀 fixture; capability: 무시당하지 않는 검사기
+- Plan: plans/2026-07-22-dog1-linter-precision.md
+- Status: [x]
+
+- Completed at: 2026-07-22
+- Summary: 오탐 4→0·누락 1→0, 테스트 21→32 (changesets 247/248/249)
+<!-- harness:milestone id="DOG2" status="completed" priority="P0" evidence="evidence/design-output-gates/dog2-publication.md" -->
+### DOG2 — 남의 프로젝트에서 돈다
+- DoD: `npx @askewly/design@<ver> verify <dir>` 가 이 레포 밖 임시 디렉터리에서 동작한다.
+- Evidence: evidence/design-output-gates/dog2-publication.md
+- Gap: `npm view @askewly/design` → E404. 패키지는 bin·files까지 준비됐는데 레지스트리에 없다
+- Scale: changesets>=3; surfaces: 패키지 메타·배포·재배포 절차; capability: 남의 프로젝트에서 불리는 검사기
+- Plan: plans/2026-07-22-dog2-cli-publication.md
+- Status: [x]
+
+- Completed at: 2026-07-22
+- Summary: @askewly/design@0.1.0 공개 배포·레포 밖 npx 실증·배포 절차 정본 (changesets 250/251/252)
+<!-- harness:milestone id="DOG3" status="completed" priority="P1" evidence="evidence/design-output-gates/dog3-typography.md" -->
+### DOG3 — 타이포 단계를 센다
+- DoD: 한 화면에서 쓰인 font-size 고유값 개수를 세고 임계(5) 초과 시 보고한다.
+- Evidence: evidence/design-output-gates/dog3-typography.md
+- Gap: 타이포 검사기가 없다. Kraft의 4를 그대로 쓰면 우리 5단계 스케일이 자기 위반이 된다
+- Scale: changesets>=3; surfaces: 정규화 규칙·CLI 표면·자기 자산 실측; capability: 잴 수 있는 타이포 규율
+- Plan: plans/2026-07-22-dog3-typography-scale.md
+- Status: [x]
+
+- Completed at: 2026-07-22
+- Summary: 타이포 검사기·임계값 5 실측 확정·0.2.0 릴리스 (changesets 254/255/256)
+<!-- harness:milestone id="DOG4" status="completed" priority="P1" -->
+### DOG4 — 인쇄 근거가 에이전트 경로에 실린다
+- DoD: 인쇄 규격이 docs/design-system/ 문서로 존재하고 llms.txt 경로에서 fetch되며, 매체별 게이트 차이가 분류 축으로 명시된다.
+- Evidence: evidence/design-output-gates/dog4-print-publication.md
+- Gap: print-spec.ts는 실재하는데 에이전트 정본 밖에 있다 — VL2와 동형 구조
+- Scale: changesets>=3; surfaces: 문서 생성기·매체 분류·배포 등재; capability: 에이전트가 읽는 인쇄 규격
+- Plan: plans/2026-07-22-dog4-print-evidence-publication.md
+- Status: [x]
+
+- Completed at: 2026-07-22
+<!-- harness:milestone id="DOG5" status="completed" priority="P1" -->
+### DOG5 — 슬라이드 매체 신설
+- DoD: 슬라이드 규격 계약이 존재하고, 기계 검증 가능 항목만 게이트가 되며, 각 항목의 근거 등급이 명시된다.
+- Evidence: evidence/design-output-gates/dog5-slide-medium.md
+- Gap: 슬라이드 자산 0건. 그런데 통용 규칙 대부분이 1차 출처 없는 통설이다
+- Scale: changesets>=3; surfaces: 규격 계약·통설 옵트인 처리·배포 등재; capability: 정직한 슬라이드 게이트
+- Plan: plans/2026-07-22-dog5-slide-medium.md
+- Status: [x]
+
+- Completed at: 2026-07-22
+<!-- harness:milestone id="DOG6" status="completed" priority="P0" -->
+### DOG6 — 마무리 절차가 셋을 다 부른다
+- DoD: 마무리 절차가 매체에 따라 다른 게이트를 지시하고, 검사기를 호출해 위반을 에이전트가 받아 고친 뒤 다시 잰다.
+- Evidence: evidence/design-output-gates/dog6-wiring.md
+- Gap: SKILL.md 마무리 절차에 verify 호출이 없다 — 검사기가 있어도 안 불린다(VL8과 같은 병리)
+- Scale: changesets>=3; surfaces: entry-protocol·스킬 배선·자가 수정 루프; capability: 실제로 불리는 게이트
+- Plan: plans/2026-07-22-dog6-finish-procedure-wiring.md
+- Status: [x]
+
+- Completed at: 2026-07-22
+<!-- harness:milestone id="DOG7" status="blocked" priority="P1" evidence="evidence/design-output-gates/dog7-observation.md" -->
+### DOG7 — 사람 관측 게이트
+- DoD: 사용자가 실제 디자인 작업 1건에서 새 마무리 절차를 겪고, 오탐이 성가신지와 차단 승격 가부를 발화로 답한다.
+- Evidence: evidence/design-output-gates/dog7-observation.md
+- Gap: 직전 2 horizon이 연속으로 사람 관측 게이트에서 미달·부분으로 닫혔다
+- Scale: changesets>=2; surfaces: 관측·발견 결함 마감; capability: 사람이 무시하지 않는 게이트
+- Plan: (미작성 — 관측 1회 실시로 대체, 판정 미획득)
+- Status: [ ] **보류(2026-07-22)** — 관측 1회 실시했으나 verify 위반 0건이라 오탐률을 못 쟀고, 승격 질문이 사용자에게 전달되지 않아 판정 2건 다 미획득. 게이트는 **경고 유지**. 부활 조건: verify가 실제 위반을 뱉는 작업 1~2건 누적 + 승격 질문 재설계. 근거 `evidence/design-output-gates/dog7-observation.md`
