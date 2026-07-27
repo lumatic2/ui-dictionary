@@ -98,23 +98,12 @@ function App() {
   const [signInOpen, setSignInOpen] = useState(false)
   const [authSession, setAuthSession] = useState<AuthSessionState>({ authenticated: false, checked: false })
   const [proUnlocked, setProUnlocked] = useState(false)
-  const [siteTheme, setSiteTheme] = useState<PreviewTheme>(() => {
-    if (typeof window === "undefined") {
-      return "system"
-    }
-    const stored = window.localStorage.getItem("askewly-theme")
-    return stored === "light" || stored === "dark" ? stored : "system"
-  })
-  const systemSiteTheme = useSystemPreviewTheme()
+  // 사이트 전역 테마는 라이트 고정 (2026-07-28 사용자 결정 — 다크는 카탈로그 하드코딩 색과 충돌해 가독성 붕괴,
+  // 별도 정비 전까지 차단). 데모 카드의 per-example 프리뷰 테마 토글은 콘텐츠 기능이라 유지.
   useEffect(() => {
-    const resolved = siteTheme === "system" ? systemSiteTheme : siteTheme
-    document.documentElement.classList.toggle("dark", resolved === "dark")
-    if (siteTheme === "system") {
-      window.localStorage.removeItem("askewly-theme")
-    } else {
-      window.localStorage.setItem("askewly-theme", siteTheme)
-    }
-  }, [siteTheme, systemSiteTheme])
+    document.documentElement.classList.remove("dark")
+    window.localStorage.removeItem("askewly-theme")
+  }, [])
   const activeUseCase = useMemo(() => useCases.find((item) => item.id === activeUseCaseId) ?? null, [activeUseCaseId])
   const selectedTerm = useMemo(() => terms.find((term) => term.id === selectedTermId) ?? null, [selectedTermId])
   const baseSearchResults = useMemo(() => searchTerms(terms, query, filter), [query, filter])
@@ -616,7 +605,6 @@ function App() {
                   onQueryChange={updateQuery}
                   onNavigate={navigateFromHome}
                 />
-                <SiteThemeToggle activeTheme={siteTheme} onThemeChange={setSiteTheme} />
                 <div className="hidden items-center gap-4 text-sm font-medium text-foreground xl:flex">
                   {siteTopNav.map((item) => (
                     <button
