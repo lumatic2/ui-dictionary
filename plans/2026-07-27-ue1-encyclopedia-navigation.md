@@ -55,7 +55,7 @@ RU1·DOG7 의 반복 교훈(기계 PASS 를 사람이 뒤집는다)에 따라, �
   - Failure probe: `navigationCollections` 에서 해당 collection 정의를 일시 제거하고 클릭하면 무반응이 아니라 console.warn 에 경로 문자열이 찍힌다 — 조용한 실패가 제거됐다는 증거.
   - Commit: changeset `ue1-encyclopedia-navigation` (README 절: step-1).
 
-- [ ] **step-2 — URL 딥링크 계약**
+- [x] **step-2 — URL 딥링크 계약**
   - Artifact: 탐색 상태(카테고리 목록·검색어·용어 상세)가 URL 로 왕복한다 — 주소를 복사해 새 탭에 붙이면 같은 화면이 나오고, 브라우저 뒤로가기가 직전 탐색 상태로 돌아간다. 유효하지 않은 파라미터는 홈이 아니라 가장 가까운 유효 상태(예: 잘못된 id → 목록)로 떨어지며 그 사실이 화면에 보인다(EmptyTermPage 류).
   - Files: write `src/App.tsx`(파라미터 파싱·pushState/popstate 배선). read `src/lib/search.ts`.
   - Risk: 위험 (URL 스키마 변경이 기존 공유 링크 `?page=term&id=…` 를 깨면 하위호환 위반 — Verify ③ 이 전용 회귀다)

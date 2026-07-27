@@ -1165,7 +1165,11 @@ function getInitialSearchState(): SearchState {
   const query = params.get("q") ?? ""
   const rawFilter = params.get("filter")
   const filter = parseFilterParam(rawFilter)
-  const page = parsePageParam(params.get("page"), filter)
+  const parsedPage = parsePageParam(params.get("page"), filter)
+  // 검색어 딥링크(?q=)는 홈이 아니라 검색 결과 레이아웃으로 착지해야 한다 — 홈은 결과를 렌더하지 않는다.
+  const page: PageMode = parsedPage === "home" && query.trim().length > 0
+    ? (filter.startsWith("nav:docs-") ? "docs" : "plus")
+    : parsedPage
   const termId = page === "term" ? params.get("id") : null
   const returnPage: Exclude<PageMode, "term"> = page !== "term" ? page : filter.startsWith("nav:docs-") ? "docs" : "plus"
 

@@ -15,3 +15,16 @@
 - Failure probe: `navigation-model.ts` 의 Forms 컬렉션 경로를 일시 오염 후 text-field 상세의 "다른 위치" 클릭 → `navigation: no collection matches path "Plus / UI Blocks / Application UI / Forms" — check navigationCollections` 경고 실측. 오염 원복 확인(diff 0).
 
 **발견**: Header Sections 착지 페이지는 이미 예제 8종(With stats·Centered·…)이 채워진 카탈로그다 — UE3 배치 1의 기반이 맨땅이 아니다.
+
+## step-2 — URL 딥링크 계약
+
+**갭**: URL 초기 파서(`getInitialSearchState`)·popstate 동기화는 이미 있었으나, `?q=` 단독 딥링크가 page="home" 으로 남아 검색 결과 레이아웃이 렌더되지 않았다 (홈은 결과를 안 그림).
+
+**수리** (`App.tsx` `getInitialSearchState`): query 가 있고 page 가 home 으로 풀리면 `nav:docs-*` → docs, 그 외 → plus 로 착지시킨다. 기존 파라미터 4종(`page`·`id`·`q`·`filter`) 스키마는 그대로 — 추가지 교체가 아니다.
+
+**Verify (실행 관측, STEP2 VERIFY: PASS)**:
+- ① `?filter=nav:plus-marketing-header-sections` 직행 → Header Sections 카탈로그 렌더 PASS
+- ② `?q=아코디언` 직행 → 검색 결과에 아코디언 행 PASS (수리 전 홈 폴백이던 케이스)
+- ③ 기존 `?page=term&id=accordion` 하위호환 PASS
+- ③b 잘못된 `?id=no-such-term` → 빈 상세 폴백 렌더, 콘솔 에러 0 (failure probe)
+- ④ 목록→상세(pushState)→뒤로가기 → 목록 복귀 PASS (popstate 실동작 확인)
