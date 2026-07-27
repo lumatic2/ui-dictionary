@@ -14,7 +14,7 @@ Goal: 실사용 한 바퀴 — Askewly Design으로 Askewly Design 소개 덱(PP
 Goal: 산출물이 좋은지 기계가 잰다, 매체마다 다른 자로. closed 2026-07-22 — DOG1~DOG6 완료, **DOG7(사람 관측) 보류**: 관측 1회 실시했으나 verify 위반 0건이라 오탐률 미측정·승격 판정 미획득. 게이트는 경고 유지. Details: `plans/horizons/2026-07-design-output-gates.md`.
 
 <!-- harness:goal-archive9 id="vocabulary-in-use" status="completed" -->
-Goal: askewly-design 호출 경로에 UI 용어 사전 562개를 집어넣고, 요구 한 문장에서 요소를 판정해 구현 자산까지 착지하는 흐름을 완성한다. closed 2026-07-21 — 7항 중 6 PASS · 1 미달(사람 관측: 조회 절차 미준수). Details: `plans/horizons/2026-07-vocabulary-in-use.md`.
+Goal: askewly-design 호출 경로에 UI 용어 사전 562개를 집어넣고, 요구 한 문장에서 요소를 판정해 구현 자산까지 착지하는 흐름을 완성한다. closed 2026-07-21 — 7항 중 6 PASS · 1 미달(사람 관측: 조회 절차 미준수). Details: `archive/horizons/2026-07-vocabulary-in-use.md`.
 
 <!-- harness:goal-archive8 id="editor-color-and-token-editing" status="completed" -->
 Goal: 편집기에서 색이 색으로 보이고, 바꿔진다 — 인스펙터 UI·토큰 조회 API·검증 계층·렌더러 4표면. closed 2026-07-21 — 7항 중 6 PASS, 기준 6(판단 가능성) **부분 충족 명시**. Details: `plans/horizons/2026-07-editor-color-and-token-editing.md`.
@@ -67,7 +67,7 @@ Goal: 스튜디오 이월 갭 3건 마감 — 데이터 주도 주입 자동화�
 - Evidence: changesets/20260721-vl7-treatment-comparison
 - Gap: 축이 그럴듯해 보여도 실제 요구 문장에서 두 후보가 다 걸리면 판정이 안 갈린다
 - Scale: changesets>=3; surfaces: 처치 측정·기준선 대조·축 보정; capability: 향상 폭이 수치로 증명된 판정
-- Plan: plans/2026-07-21-vl7-separation-gate.md
+- Plan: archive/plans/2026-07-21-vl7-separation-gate.md
 - Status: [x]
 
 - Completed at: 2026-07-21
@@ -78,7 +78,7 @@ Goal: 스튜디오 이월 갭 3건 마감 — 데이터 주도 주입 자동화�
 - Evidence: evidence/vocabulary-in-use/vl8-observation.md
 - Gap: 직전 horizon에서 probe 11건과 브라우저 계측이 전부 놓친 결함을 사람이 한 번 만져서 잡았다
 - Scale: changesets>=2; surfaces: 관측 프로토콜·사용자 과업·발견 결함 마감; capability: 사람이 던진 문장이 구현으로 착지
-- Plan: plans/2026-07-21-vl8-human-observation.md
+- Plan: archive/plans/2026-07-21-vl8-human-observation.md
 - Status: [x]
 
 - Completed at: 2026-07-21

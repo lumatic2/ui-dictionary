@@ -26,3 +26,11 @@ CLAUDE.local.md
 # 완료 노트는 폐기물이 아니라 milestone 완료의 정본 증거다 (하네스 배치 규약).
 # archive/ 를 폐기물 창고로 쓰더라도 이 경로는 추적한다.
 !archive/reports/
+
+# 완료된 plan·horizon 도 마찬가지다. 하네스 §0 배치 규약은 완료 경계에서 이 둘을
+# archive/ 로 옮기라고 하는데, 위 `archive/*` 가 그 add 를 막는다. 이미 추적 중인
+# 파일은 gitignore 의 영향을 받지 않으므로 사고가 조용히 일어난다 — 옮기는 순간
+# 하나씩 추적 밖으로 나가고, ROADMAP 의 포인터만 남는다.
+# 2026-07-27 실측: editor-legibility horizon 이 5e2ee26 에서 이렇게 사라졌다(git 히스토리에서 복구).
+!archive/horizons/
+!archive/plans/
