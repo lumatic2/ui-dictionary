@@ -19,6 +19,11 @@ CONSOLE ERRORS: 0 · UE4 VERIFY: PASS
 - tsc·build·lint exit 0. 오너 이메일 원문은 번들·레포 미포함(hex 해시만).
 - **한계 명시**: 클라이언트 표시 층 게이트 — 정적 SPA 라 번들에 스니펫이 있어 우회 가능. 결제 도입 전 단계로 사용자 확정 범위(잠금+오너 언락만). 서버 게이팅은 결제 시 재설계.
 
+## 배포 스모크 (실서비스 — 원문)
+
+- `_redirects` 200 rewrite 가 이 Pages 프로젝트에서 미적용임을 실측(배포 번들 최신인데 전 규칙 404) → SPA fallback 을 Pages Functions 4개(`functions/{patterns,terms,docs}/[[path]].js`·`functions/search.js`, `env.ASSETS` 로 index.html 서빙)로 이전 (`c933fc0`).
+- 배포 후: `patterns: 200 · terms: 200 · search: 200 · docs: 200 · llms.txt intact: 200 · unknown 404 intact: 404` — 앱 경로 딥링크 전부 동작, 에이전트용 404 페이지·정적 자산 보존.
+
 ## 사람 관측 (UE4 DoD 최종 항목)
 
 - 과업: 배포 사이트(https://ui.askewly.com)에서 본인 Google 계정 로그인 → ① 아무 컬렉션(예: /patterns/marketing-footers)의 2번째 이후 예제에 Code 탭이 열리는지 ② /terms/accordion 의 Pro 변형이 조작되는지.
