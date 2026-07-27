@@ -37,6 +37,15 @@ configuration, session signing, user storage, and secrets stay in the shared
 Askewly Worker. This repository must not add OAuth secrets or duplicate identity
 storage.
 
+## SPA Routing Fallback (2026-07-28, UE5)
+
+The app uses path routing (`/terms/:id`, `/patterns/:slug`, `/docs/:slug`,
+`/search`). `public/404.html` disables Cloudflare Pages' automatic SPA fallback,
+so `public/_redirects` rewrites exactly those app path prefixes to
+`/index.html` with status 200. Unknown paths outside the app prefixes still get
+the real `404.html` (agent-facing fetch-failure page). When a new top-level app
+path is added, extend `_redirects`.
+
 ## Why Not Use `examples/ui-vocabulary-site` As The Only Root?
 
 The Vite app lives in `examples/ui-vocabulary-site`, but its data pipeline reads
