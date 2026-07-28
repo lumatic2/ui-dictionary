@@ -48,7 +48,7 @@ Status: approved (사용자 승인 2026-07-28 — "사이트 품질 milestone 4�
   - Failure probe: color-mix 미지원 구형 브라우저 — 사이트 타깃(모던 에버그린) 기준 index.css 에 이미 쓰는 문법인지 확인 후 채택, 아니면 rgb 변수 병행.
   - Commit: changeset `sq1-design-verify-cleanup` (README 절: step-2).
 
-- [ ] **step-3 — 타이포 초과 정리 + 통합 검증 (SQ1 마감)**
+- [x] **step-3 — 타이포 초과 정리 + 통합 검증 (SQ1 마감)**
   - Artifact: typography-scale-exceeded 7건 해소(미니어처 목업은 scale 구조 해법) + 통합 검증 + `evidence/site-quality/sq1-verify-cleanup.md`.
   - Files: write examples/ui-vocabulary-site/src/components/(타이포 위반 파일들), evidence/site-quality/sq1-verify-cleanup.md. 실행: verify 전체·build·lint·Playwright 스모크(홈·/terms/accordion·/recipes)·스크린샷.
   - Risk: 기계적 (좁은 수치 치환 + 검증 실행)
@@ -75,3 +75,4 @@ Status: approved (사용자 승인 2026-07-28 — "사이트 품질 milestone 4�
 ## 진행 로그
 - 2026-07-28 작성 (goal `site-quality` 개설 — 사용자 확정 순서 ③ 선착수).
 - 2026-07-28 step-1·step-2 완료 — 색 위반 72→0(전/후 스크린샷 6표면 무손실 확인), 통합 스모크 4라우트·콘솔 0에러·build·lint PASS. step-3(타이포 7건)은 규칙 구조 충돌로 decision_required 중단(ledger 기록) — finding 큐 참조.
+- 2026-07-28 **사용자 결정: 게이트 보정** — 타이포 5단계/파일 규칙을 실태에 맞게 보정(반응형 쌍 1계수 등)하는 것을 별도 후속으로 넘기고, SQ1 은 "색 위반 0 완결 + 타이포는 게이트 보정 후"로 마감(시각 변화 없음 선택). step-3 통합 검증분은 완료, 타이포 접기는 명시 이월.

@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "active_work_id": "vi8-expressive-recipes",
+  "active_work_id": "sq1-design-verify-cleanup",
   "works": {
     "SFB1": {
       "title": "Structure Contract And Clean Production",
@@ -4355,6 +4355,53 @@
       "updated_at": "2026-07-28",
       "notes": "Registered atomically by canonical harness approve_harness_plan.py after plan validation.",
       "completion_summary": "recipe 2종 실구현(GSAP 핀·스크럽, 토큰 셰이더 그라디언트) + three-scene 상호 링크 — goal 연쇄 완주"
+    },
+    "sq1-design-verify-cleanup": {
+      "work_id": "sq1-design-verify-cleanup",
+      "milestone_id": "SQ1",
+      "status": "completed",
+      "plan_path": "plans/2026-07-28-sq1-design-verify-cleanup.md",
+      "changeset_path": "changesets/20260728-sq1-design-verify-cleanup",
+      "next_step": "step-1",
+      "current_step": "step-1",
+      "steps": [
+        {
+          "id": "step-1",
+          "label": "step-1 — oklch→hex 유틸 추출 + 쇼케이스 셰이더 토큰화 (VI8 finding 해소)"
+        },
+        {
+          "id": "step-2",
+          "label": "step-2 — 색 위반 72건 시맨틱 토큰화"
+        },
+        {
+          "id": "step-3",
+          "label": "step-3 — 타이포 초과 정리 + 통합 검증 (SQ1 마감)"
+        }
+      ],
+      "execution_mode": "continuous",
+      "approval": {
+        "approved_by": "user",
+        "approved_at": "2026-07-28",
+        "plan_sha256": "e0d4785a78f6fa5fa7051a10273fe6c277f1d1b9d9ae3839db6bca335abf8147"
+      },
+      "allowed_stop_reasons": [
+        "completed",
+        "blocked",
+        "decision_required",
+        "risk_gate",
+        "secret_required",
+        "external_authority_required",
+        "user_stopped"
+      ],
+      "stop_reason": null,
+      "stop_detail": {},
+      "session_ids": [
+        "claude:34c2a7b2-5609-47f8-b23f-97fd0200018e"
+      ],
+      "owner_session_uuid": "claude:34c2a7b2-5609-47f8-b23f-97fd0200018e",
+      "updated_at": "2026-07-28",
+      "notes": "Registered atomically by canonical harness approve_harness_plan.py after plan validation.",
+      "completion_summary": "사이트 디자인 verify 색 위반 72건 전량 토큰화(시각 무손실) — 타이포 7건은 게이트 보정 후로 사용자 확정 이월"
     }
   }
 }

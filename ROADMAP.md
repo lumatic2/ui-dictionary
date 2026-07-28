@@ -8,7 +8,7 @@
 ## Current Goal
 
 <!-- harness:goal id="site-quality" status="active" -->
-Goal: 사이트 품질 — UI 백과사전 사이트가 자기 디자인 게이트를 통과하고(verify 위반 79건), UE1 관측이 남긴 구조 결함(O5~O7)·검색 결과 UI(O9)를 수리하며, SSG/prerender 로 초기 로딩·SEO 를 확보한다. 사용자 확정 2026-07-28 (③ 선착수). Details: `plans/2026-07-28-sq1-design-verify-cleanup.md`.
+Goal: 사이트 품질 — UI 백과사전 사이트가 자기 디자인 게이트를 통과하고(verify 위반 79건), UE1 관측이 남긴 구조 결함(O5~O7)·검색 결과 UI(O9)를 수리하며, SSG/prerender 로 초기 로딩·SEO 를 확보한다. 사용자 확정 2026-07-28 (③ 선착수). Details: `archive/plans/2026-07-28-sq1-design-verify-cleanup.md`(SQ1) — SQ2~SQ4 는 각 plan 작성 시.
 
 <!-- harness:goal-archive12 id="visual-impact-consolidation" status="completed" -->
 Goal: 비주얼 임팩트 정리 — 흩어진 비주얼 임팩트 방법(knowledge-graph 노드 19건, toolshelf 카드 15건, presentation-slides three-scene·3d-repolis)을 VI1~VI5 표현 스택 체계로 대조·판정·흡수해 자산화한다. closed 2026-07-28 — VI6(KG 19노드 판정·motion-principles 신설)·VI7(15카드 배치·llms 배선 완결)·VI8(recipe 2종 실구현·상호 링크) 단일 세션 완주. Details: `research/2026-07-28-visual-impact-goal-inventory.md` + `docs/reports/2026-07-28-vi{6,7,8}-*.md`.
@@ -46,14 +46,17 @@ Goal: 스튜디오 이월 갭 3건 마감 — 데이터 주도 주입 자동화�
 
 ## Active Milestones — site-quality
 
-<!-- harness:milestone id="SQ1" status="active" priority="P0" -->
+<!-- harness:milestone id="SQ1" status="completed" priority="P0" evidence="evidence/site-quality/sq1-verify-cleanup.md" -->
 ### SQ1 — 디자인 verify 위반 정리
 - DoD: `src/components` 디자인 verify 위반 79건(hex 26·raw-color-fn 46·타이포 7) → 0(불가피 예외는 검사기 지원 수단+장부 명시), 시각 보존(대표 표면 전/후 스크린샷), VI8 이월 finding 2건(쇼케이스 하드코딩 hex·oklch→hex 유틸) 해소, build·lint·브라우저 스모크 PASS.
 - Gap: 사이트가 자기 디자인 게이트를 통과 못 함 — 다크모드(④)의 전제이기도 함
 - Scale: steps=3 (유틸+쇼케이스·색 72건·타이포+통합); surfaces: src/components 11파일·src/lib; capability: 게이트를 통과하는 자기 사이트
-- Plan: plans/2026-07-28-sq1-design-verify-cleanup.md
-- Status: [ ]
+- Plan: archive/plans/2026-07-28-sq1-design-verify-cleanup.md
+- Status: [x]
 
+- Completed at: 2026-07-28
+- Evidence: evidence/site-quality/sq1-verify-cleanup.md
+- Summary: 색 위반 72→0(시각 무손실 토큰화)·VI8 finding 2건 해소 — 타이포 7건은 게이트 보정 후(사용자 확정)
 <!-- harness:milestone id="SQ2" status="pending" priority="P1" -->
 ### SQ2 — 구조 결함 O5·O6·O7
 - DoD: Get Started 착지(O5 — 노출 정책과의 긴장 해소는 사용자 결정), Docs 랜딩 역할 정의(O6), 좌측 내비 IA 재정리(O7)가 라우트 구조 위에서 수리되고 사람 관측 1회 통과.
@@ -129,6 +132,7 @@ Goal: 스튜디오 이월 갭 3건 마감 — 데이터 주도 주입 자동화�
 
 > 이월 finding 전수 장부는 `docs/findings.md` (2026-07-20 수집 — A~F 6군). 아래는 이 horizon 밖 항목만.
 
+- 디자인 verify 타이포 규칙 보정 (사용자 확정 2026-07-28, SQ1 이월): 파일당 5단계 규칙이 반응형 쌍(2계수)·멀티 데모 파일·미니어처와 구조 충돌 — 보정 후 잔여 타이포 7건 처리. 근거: `evidence/site-quality/sq1-verify-cleanup.md` §1
 - 데스크톱 브리지 모드 human Undo/Redo 활성화 (QA2 dogfooding 결함 #2)
 - 신뢰 프로젝트 소실 시 에러 표면 (QA2 dogfooding 결함 #3 — 현재 조용한 데모 폴백)
 - 프로덕션 셸 정리: 기본 1,000-node fixture·dev 계기판 제거 (QA2 dogfooding 결함 #4)
