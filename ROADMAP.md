@@ -1,14 +1,14 @@
 # ROADMAP
 
 > Last updated: 2026-07-28
-> Status: **goal `site-quality` 진행 중 (2026-07-28 개설)** — SQ1 verify 위반 정리부터. 이후 큐(사용자 확정 2026-07-28): 『인터랙티브 웹 애니메이션』 책 스터디 자산화(사용자 주도 — 사용자가 책을 보며 직접 전달) → ④ 다크모드 정비 → ⑤ real-use-lap 부활(PARK 2026-07-27).
+> Status: **goal `site-quality` 완주 (2026-07-29)** — SQ1~SQ4 전부 완료·실배포 실증(사람 관측 3회 통과). active goal 0 — 다음 큐(사용자 확정 2026-07-28): 『인터랙티브 웹 애니메이션』 책 스터디 자산화(사용자 주도 — 사용자가 책을 보며 직접 전달) → ④ 다크모드 정비 → ⑤ real-use-lap 부활(PARK 2026-07-27).
 > North star: Build Askewly Design as both a public reference website and an agent-usable implementation system.
 > line budget: <=150
 
 ## Current Goal
 
-<!-- harness:goal id="site-quality" status="active" -->
-Goal: 사이트 품질 — UI 백과사전 사이트가 자기 디자인 게이트를 통과하고(verify 위반 79건), UE1 관측이 남긴 구조 결함(O5~O7)·검색 결과 UI(O9)를 수리하며, SSG/prerender 로 초기 로딩·SEO 를 확보한다. 사용자 확정 2026-07-28 (③ 선착수). Details: `archive/plans/2026-07-28-sq1-design-verify-cleanup.md`(SQ1) — SQ2~SQ4 는 각 plan 작성 시.
+<!-- harness:goal-archive13 id="site-quality" status="completed" -->
+Goal: 사이트 품질 — UI 백과사전 사이트가 자기 디자인 게이트를 통과하고(verify 위반 79건), UE1 관측이 남긴 구조 결함(O5~O7)·검색 결과 UI(O9)를 수리하며, SSG/prerender 로 초기 로딩·SEO 를 확보한다. closed 2026-07-29 — SQ1(색 위반 72→0 시각 무손실)·SQ2(Get Started·Docs 허브·Components 내비)·SQ3(검색 2티어 재디자인)·SQ4(754 라우트 프리렌더+asset-first) 전부 실배포 실증, 사람 관측 3회 통과. Details: `archive/plans/2026-07-28-sq{1,2,3,4}-*.md` + `docs/reports/`.
 
 <!-- harness:goal-archive12 id="visual-impact-consolidation" status="completed" -->
 Goal: 비주얼 임팩트 정리 — 흩어진 비주얼 임팩트 방법(knowledge-graph 노드 19건, toolshelf 카드 15건, presentation-slides three-scene·3d-repolis)을 VI1~VI5 표현 스택 체계로 대조·판정·흡수해 자산화한다. closed 2026-07-28 — VI6(KG 19노드 판정·motion-principles 신설)·VI7(15카드 배치·llms 배선 완결)·VI8(recipe 2종 실구현·상호 링크) 단일 세션 완주. Details: `research/2026-07-28-visual-impact-goal-inventory.md` + `docs/reports/2026-07-28-vi{6,7,8}-*.md`.
@@ -57,14 +57,17 @@ Goal: 스튜디오 이월 갭 3건 마감 — 데이터 주도 주입 자동화�
 - Completed at: 2026-07-28
 - Evidence: evidence/site-quality/sq2-structural-defects.md
 - Summary: 구조 결함 3건 수리 — Get Started 시작 가이드·Docs 소개+허브·사이드바 Components 그룹, 사람 관측 통과
-<!-- harness:milestone id="SQ3" status="active" priority="P1" -->
+<!-- harness:milestone id="SQ3" status="completed" priority="P1" evidence="evidence/site-quality/sq3-search-redesign.md" -->
 ### SQ3 — O9 검색 결과 UI 재디자인
 - DoD: 검색 결과 화면이 askewly-design 경유로 재디자인되고(정확 일치 vs 연관 언급 계층화 포함), 디자인 verify PASS + 사람 관측 1회 통과.
 - Gap: UE1 관측 2회차 "너무 구려" — 방향 확정(2026-07-28): 계층 섹션형·사이드바 현상 유지
 - Scale: steps=3 (계층화 정보구조·행 비주얼 재디자인·통합+관측); surfaces: search.ts·App.tsx 검색 렌더·term-result-row; capability: 검색이 정답과 연관을 구분해 보여준다
 - Plan: plans/2026-07-28-sq3-search-redesign.md
-- Status: [ ]
+- Status: [x]
 
+- Completed at: 2026-07-29
+- Evidence: evidence/site-quality/sq3-search-redesign.md
+- Summary: 정답/연관 2티어 계층화 + hero/compact 행 재디자인(askewly-design 경유) — 순위·개수 보존, 사람 관측 통과
 <!-- harness:milestone id="SQ4" status="completed" priority="P2" evidence="evidence/site-quality/sq4-ssg-prerender.md" -->
 ### SQ4 — SSG/prerender
 - DoD: 주요 라우트(홈·용어·패턴·docs)가 prerender 되어 최초 페인트·SEO 메타가 정적 제공되고, SPA 폴백·오너 언락 회귀 없음(실배포 확인 포함).
