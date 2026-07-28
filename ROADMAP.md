@@ -1,14 +1,14 @@
 # ROADMAP
 
 > Last updated: 2026-07-28
-> Status: **goal `visual-impact-consolidation` 개설 (2026-07-28 사용자 승인)** — VI6 지식 층 통합(active)→VI7 도구 층 배치→VI8 실증 확장 연쇄. 직전 `ui-encyclopedia` 완주(2026-07-28, 실서비스 반영). 이후 순서(사용자 확정): ② 『인터랙티브 웹 애니메이션』 책 스터디 ③ 사이트 품질(finding 큐 O5~O9·verify 위반 77건·SSG) ④ 다크모드 정비 ⑤ real-use-lap 부활. `real-use-lap` 은 PARK(2026-07-27).
+> Status: **goal `visual-impact-consolidation` 완주 (2026-07-28)** — VI6 지식 통합·VI7 도구 배치·VI8 실증(recipe 2종 실구현) 연쇄 완료. active goal 0 — 다음 순서(사용자 확정 2026-07-28): ② 『인터랙티브 웹 애니메이션』 책 스터디 자산화 ③ 사이트 품질(finding 큐 O5~O9·verify 위반 77건·SSG) ④ 다크모드 정비 ⑤ real-use-lap 부활(PARK 2026-07-27). 새 goal 은 `/harness-plan` 으로.
 > North star: Build Askewly Design as both a public reference website and an agent-usable implementation system.
 > line budget: <=150
 
 ## Current Goal
 
-<!-- harness:goal id="visual-impact-consolidation" status="active" -->
-Goal: 비주얼 임팩트 정리 — 흩어진 비주얼 임팩트 방법(knowledge-graph 모션·3D 노드 18건, toolshelf 도구 카드 15건, presentation-slides three-scene·3d-repolis 로컬 구현)을 VI1~VI5 표현 스택 체계(`knowledge/expressive-stack.md`·recipe 시스템)로 대조·판정·흡수해 자산화한다. 리서치: `research/2026-07-28-visual-impact-goal-inventory.md`. 승인 연쇄 VI6→VI7→VI8 (2026-07-28).
+<!-- harness:goal-archive12 id="visual-impact-consolidation" status="completed" -->
+Goal: 비주얼 임팩트 정리 — 흩어진 비주얼 임팩트 방법(knowledge-graph 노드 19건, toolshelf 카드 15건, presentation-slides three-scene·3d-repolis)을 VI1~VI5 표현 스택 체계로 대조·판정·흡수해 자산화한다. closed 2026-07-28 — VI6(KG 19노드 판정·motion-principles 신설)·VI7(15카드 배치·llms 배선 완결)·VI8(recipe 2종 실구현·상호 링크) 단일 세션 완주. Details: `research/2026-07-28-visual-impact-goal-inventory.md` + `docs/reports/2026-07-28-vi{6,7,8}-*.md`.
 
 <!-- harness:goal-archive11 id="ui-encyclopedia" status="completed" -->
 Goal: UI 백과사전 — 들어가서 용어의 생김새·쓰임·바리에이션을 보고, 헤더·푸터 등 Page Sections 의 종류와 디자인 레퍼런스(직접 구현 데모)를 본다. 유료 경계 = Tailwind Plus 모델, 오너 로그인 전체 열람(결제는 범위 밖). closed 2026-07-28 — UE1~UE5 전부 완료·실서비스 실증(관측 왕복 총 8회, 결함 16건 발견·수리). Details: `archive/plans/2026-07-27-ue1-encyclopedia-navigation.md`(연쇄 정의) + `research/2026-07-27-ue1-encyclopedia-diagnosis.md`.
@@ -63,12 +63,15 @@ Goal: 스튜디오 이월 갭 3건 마감 — 데이터 주도 주입 자동화�
 - Completed at: 2026-07-28
 - Evidence: evidence/visual-impact-consolidation/vi7-placement.md
 - Summary: 15카드 전수 판정(A완료1·A대기2·B8·C4) — absorption-criteria 9행, llms knowledge 3문서 배선 완결, shelf used 8건
-<!-- harness:milestone id="VI8" status="pending" priority="P1" -->
+<!-- harness:milestone id="VI8" status="completed" priority="P1" evidence="evidence/visual-impact-consolidation/vi8-recipes.md" -->
 ### VI8 — 실증 확장
-- DoD: VI7 채택 상위 2~3 기법이 실동작 recipe(데모+문서)로 구현되고(브라우저 실동작·디자인 verify·빌드·린트 PASS), presentation-slides three-scene 계약이 recipe 층과 상호 링크된다. 범위는 VI7 판정에 종속.
-- Plan: (VI7 완료 후 작성)
-- Status: [ ]
+- DoD: VI7 A 대기 2건(GSAP 핀·스크럽, Paper Shaders 그라디언트)이 실동작 recipe(데모+문서+갤러리+catalog/llms)로 구현되고(브라우저 실동작 콘솔 0에러·validate-recipes·빌드·린트 PASS, reduced-motion·폴백 계약), presentation-slides three-scene 계약이 recipe 층과 상호 링크된다.
+- Plan: plans/2026-07-28-vi8-expressive-recipes.md
+- Status: [x]
 
+- Completed at: 2026-07-28
+- Evidence: evidence/visual-impact-consolidation/vi8-recipes.md
+- Summary: recipe 2종 실구현(Playwright 5/5·콘솔0, oklch→hex 결함 수리) + three-scene 상호 링크 — goal visual-impact-consolidation 완주
 ## Active Milestones — ui-encyclopedia
 
 <!-- harness:milestone id="UE1" status="completed" priority="P0" evidence="evidence/ui-encyclopedia/ue1-navigation.md" -->

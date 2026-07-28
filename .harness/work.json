@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "active_work_id": "vi7-toolshelf-placement",
+  "active_work_id": "vi8-expressive-recipes",
   "works": {
     "SFB1": {
       "title": "Structure Contract And Clean Production",
@@ -4307,6 +4307,54 @@
       "updated_at": "2026-07-28",
       "notes": "Registered atomically by canonical harness approve_harness_plan.py after plan validation.",
       "completion_summary": "toolshelf 15카드 전수 배치·판정(A대기 2=VI8 입력), absorption-criteria 9행, llms 배선 완결"
+    },
+    "vi8-expressive-recipes": {
+      "work_id": "vi8-expressive-recipes",
+      "milestone_id": "VI8",
+      "status": "completed",
+      "plan_path": "plans/2026-07-28-vi8-expressive-recipes.md",
+      "changeset_path": "changesets/20260728-vi8-expressive-recipes",
+      "next_step": "step-1",
+      "current_step": "step-1",
+      "steps": [
+        {
+          "id": "step-1",
+          "label": "step-1 — pinned-scroll-sequence recipe (② GSAP)"
+        },
+        {
+          "id": "step-2",
+          "label": "step-2 — shader-gradient-surface recipe (④ Paper Shaders)"
+        },
+        {
+          "id": "step-3",
+          "label": "step-3 — three-scene 상호 링크 + 통합 검증 (VI8 마감)"
+        }
+      ],
+      "execution_mode": "continuous",
+      "approval": {
+        "approved_by": "user",
+        "approved_at": "2026-07-28",
+        "plan_sha256": "728218e04997a214643dedea11dc5596c26733dbf769c32035d9fc45a238b85c"
+      },
+      "allowed_stop_reasons": [
+        "completed",
+        "blocked",
+        "decision_required",
+        "risk_gate",
+        "secret_required",
+        "external_authority_required",
+        "user_stopped"
+      ],
+      "stop_reason": null,
+      "stop_detail": {},
+      "session_ids": [
+        "codex:34c2a7b2-5609-47f8-b23f-97fd0200018e",
+        "claude:34c2a7b2-5609-47f8-b23f-97fd0200018e"
+      ],
+      "owner_session_uuid": "claude:34c2a7b2-5609-47f8-b23f-97fd0200018e",
+      "updated_at": "2026-07-28",
+      "notes": "Registered atomically by canonical harness approve_harness_plan.py after plan validation.",
+      "completion_summary": "recipe 2종 실구현(GSAP 핀·스크럽, 토큰 셰이더 그라디언트) + three-scene 상호 링크 — goal 연쇄 완주"
     }
   }
 }
