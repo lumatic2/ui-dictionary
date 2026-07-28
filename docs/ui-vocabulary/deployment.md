@@ -45,7 +45,9 @@ The app uses path routing (`/terms/:id`, `/patterns/:slug`, `/docs/:slug`,
 (measured 2026-07-28 — deployed bundle was current but every rule 404'd), so the
 fallback lives in **Pages Functions** instead: `functions/patterns/[[path]].js`,
 `functions/terms/[[path]].js`, `functions/docs/[[path]].js`, `functions/search.js`
-each serve `/index.html` via `env.ASSETS`. Unknown paths outside the app prefixes
+each serve `/index.html` via `env.ASSETS` (+ `functions/recipes/[[path]].js`,
+2026-07-28 VI8 — `/recipes` 가 목록에 빠져 직접 진입 404 였던 것을 실배포 확인에서
+적발·수리). Unknown paths outside the app prefixes
 still get the real `404.html` (agent-facing fetch-failure page). When a new
 top-level app path is added, add a matching function (the `_redirects` file is
 kept as documentation/belt-and-braces but is not load-bearing).

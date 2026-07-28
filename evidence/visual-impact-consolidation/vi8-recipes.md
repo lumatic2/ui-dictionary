@@ -34,3 +34,8 @@ CONSOLE ERRORS: 0
 
 - build ✓ 981ms · lint exit 0 · validate-recipes `recipes ok: 47` (신규 2종의 적발 5건 — 필수 섹션 2·프리미티브 토큰 3 — 전부 교정 후).
 - 실배포 확인은 세션 말 push 후 갤러리 라우트에서.
+
+## 5. 실배포 확인 (push 후, 2026-07-28)
+
+- `https://ui.askewly.com/llms.txt` 200 — motion-principles·motion-references·recipe 2종 링크 4건 전부 존재. `llms/knowledge/motion-principles.md` 200.
+- **적발·수리**: `/recipes` 직접 진입 404 — UE5 SPA fallback 함수 목록에 `/recipes` 누락(기존 결함, 실배포 확인으로 드러남). `functions/recipes/[[path]].js` 추가·배포(커밋 0f61d39), deployment.md §SPA 갱신.
