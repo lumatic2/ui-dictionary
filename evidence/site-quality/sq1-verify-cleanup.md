@@ -25,6 +25,7 @@
 - tsc·build(1.05s)·lint exit 0 · 참조한 팔레트 CSS 변수 전수 dist 방출 확인(누락 0).
 - Playwright 스모크 4라우트(/ · /terms/accordion · /recipes · /patterns/marketing-hero-sections) 렌더 PASS · 콘솔 에러 0.
 - 쇼케이스 셰이더 데모 실렌더(canvas 마운트 = 토큰 판독 성공 경로) PASS.
+- **실배포 확인 (push 후)**: `ui.askewly.com` 신규 번들(index-mLFSEq1y.js) 반영 — 라이브 CSS 에 `color-mix`·`--brand-kakao-container` 존재, `/patterns/marketing-hero-sections` 200.
 
 ## 4. VI8 이월 finding 해소
 
