@@ -1,0 +1,34 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1280" height="720" viewBox="0 0 1280 720">
+  <rect x="0" y="0" width="1280" height="720" fill="#F4F3EE"/>
+  <text x="80" y="110" font-family="Pretendard" font-size="44" font-weight="700" fill="#15130F">구조가 디자인보다 먼저다</text>
+  <text x="80" y="155" font-family="Pretendard" font-size="19" fill="#4A463D">거장들의 공통 순서를 게이트로 강제한다</text>
+
+  <rect x="80" y="300" width="200" height="170" rx="10" fill="#FFFDF7" stroke="#D8D0C1" stroke-width="1.5"/>
+  <text x="100" y="345" font-family="Pretendard" font-size="21" font-weight="700" fill="#C65A3B">1</text>
+  <text x="100" y="385" font-family="Pretendard" font-size="20" font-weight="700" fill="#15130F">자료</text>
+  <text x="100" y="415" font-family="Pretendard" font-size="14" fill="#4A463D">출처 있는 주장만</text>
+  <text x="297" y="395" font-family="Pretendard" font-size="24" fill="#777164">→</text>
+
+  <rect x="330" y="300" width="200" height="170" rx="10" fill="#FFFDF7" stroke="#D8D0C1" stroke-width="1.5"/>
+  <text x="350" y="345" font-family="Pretendard" font-size="21" font-weight="700" fill="#C65A3B">2</text>
+  <text x="350" y="385" font-family="Pretendard" font-size="20" font-weight="700" fill="#15130F">구성안</text>
+  <text x="350" y="415" font-family="Pretendard" font-size="14" fill="#4A463D">장별 메시지 1개</text>
+  <text x="547" y="395" font-family="Pretendard" font-size="24" fill="#777164">→</text>
+
+  <rect x="580" y="300" width="200" height="170" rx="10" fill="#FFFDF7" stroke="#D8D0C1" stroke-width="1.5"/>
+  <text x="600" y="345" font-family="Pretendard" font-size="21" font-weight="700" fill="#C65A3B">3</text>
+  <text x="600" y="385" font-family="Pretendard" font-size="20" font-weight="700" fill="#15130F">문구</text>
+  <text x="600" y="415" font-family="Pretendard" font-size="14" fill="#4A463D">제목은 곧 주장</text>
+  <text x="797" y="395" font-family="Pretendard" font-size="24" fill="#777164">→</text>
+
+  <rect x="830" y="300" width="200" height="170" rx="10" fill="#FFFDF7" stroke="#D8D0C1" stroke-width="1.5"/>
+  <text x="850" y="345" font-family="Pretendard" font-size="21" font-weight="700" fill="#C65A3B">4</text>
+  <text x="850" y="385" font-family="Pretendard" font-size="20" font-weight="700" fill="#15130F">디자인</text>
+  <text x="850" y="415" font-family="Pretendard" font-size="14" fill="#4A463D">그다음이 시각</text>
+  <text x="1047" y="395" font-family="Pretendard" font-size="24" fill="#777164">→</text>
+
+  <rect x="1080" y="300" width="120" height="170" rx="10" fill="#E8F0ED" stroke="#AEC5C0" stroke-width="1.5"/>
+  <text x="1100" y="345" font-family="Pretendard" font-size="21" font-weight="700" fill="#2F4B7C">5</text>
+  <text x="1100" y="385" font-family="Pretendard" font-size="18" font-weight="700" fill="#15130F">내보내기</text>
+  <text x="1100" y="415" font-family="Pretendard" font-size="13" fill="#4A463D">최종 형식 확인</text>
+</svg>

@@ -29,7 +29,7 @@ Status: approved (연쇄 집행 — 단 덱 구성안·문구·디자인 방향�
 
 ## Step 트리
 
-- [ ] **step-1 — 덱 제작 (G1~G6)**
+- [x] **step-1 — 덱 제작 (G1~G6)**
   - Artifact: `decks/askewly-design-intro/` — 표준 템플릿 복사 + `content/slides.json`(6~7장, 승인된 구성안대로) + 빌드된 HTML + 검증 로그. G1 자료 = 이 레포 자체(CLAUDE.md 북극성·ROADMAP·자산 수치 — 외부 조사 불요, 수치는 레포 실측).
   - Files: write decks/askewly-design-intro/** . read ~/.claude/skills/presentation-slides-yusung/references/authoring-contract.md(복사 명령), CLAUDE.md(내용 소스).
   - Risk: 없음 (신규 디렉터리)
@@ -38,7 +38,7 @@ Status: approved (연쇄 집행 — 단 덱 구성안·문구·디자인 방향�
   - Failure probe: 자산 수치(용어 수 등)를 기억으로 쓰면 낡는다 — 레포에서 실측(grep/count)해 sourceNote에 근거 표기.
   - Commit: changeset `sl3-editable-pptx-proof` (README 절: step-1).
 
-- [ ] **step-2 — 경로 A: pptxgenjs 네이티브 변환**
+- [x] **step-2 — 경로 A: pptxgenjs 네이티브 변환**
   - Artifact: `decks/askewly-design-intro/export/html2pptx.mjs`(slides.json→pptxgenjs 텍스트·도형·표 네이티브 개체 매핑, 레이아웃 3~4종 대응) + `askewly-design-intro.pptxgenjs.pptx` + 실개봉 관측 기록.
   - Files: write decks/askewly-design-intro/export/html2pptx.mjs. 실행: node + 실개봉.
   - Risk: 위험 (실험 코드 — 변환 손실 예상: 그라디언트·인터랙티브. 손실을 결함이 아니라 장부 데이터로 기록)
@@ -47,7 +47,7 @@ Status: approved (연쇄 집행 — 단 덱 구성안·문구·디자인 방향�
   - Failure probe: pptxgenjs 구버전이 깔리면 "복구 필요" 손상 이력 — package.json에 4.0.1+ 명시 고정.
   - Commit: changeset `sl3-editable-pptx-proof` (README 절: step-2).
 
-- [ ] **step-3 — 경로 B: ppt-master SVG→DrawingML + 비교 장부 + 마감**
+- [x] **step-3 — 경로 B: ppt-master SVG→DrawingML + 비교 장부 + 마감**
   - Artifact: 대표 3~4장을 SVG로 재작성(ppt-master 캔버스 규격) → `svg_to_pptx.py`로 네이티브 PPTX + 비교 장부(`research/2026-07-28-sl3-pptx-path-comparison.md` — 편집 가능성·충실도·공수·의존성 표) + real-use-lap 부활 판정 + evidence.
   - Files: write decks/askewly-design-intro/export/svg/**, research/2026-07-28-sl3-pptx-path-comparison.md, evidence/slide-methodology/sl3-pptx.md. 실행: ppt-master 클론 스크립트(requirements 설치 필요 시 venv).
   - Risk: 위험 (외부 파이프라인 — 반입 심사 clean 완료·venv 격리·대표 장으로 공수 상한)
@@ -69,4 +69,5 @@ Status: approved (연쇄 집행 — 단 덱 구성안·문구·디자인 방향�
 
 ## 진행 로그
 - 2026-07-28 작성 — SL2 완료 직후 연쇄 집행. G2~G4 사용자 게이트 제시 준비.
+- 2026-07-28 step-1~3 완주 — 덱 7장(lint 0)·PPTX 2경로 네이티브 검증·비교 장부. 실개봉은 뷰어 부재로 partial.
 - 2026-07-28 G2~G4 사용자 승인("ㄱㄱ") — 7장 구성안(주장형 제목·레이아웃 표) · askewly 테마 · hd 16:9 + pptx-widescreen-16-9 선언 확정.

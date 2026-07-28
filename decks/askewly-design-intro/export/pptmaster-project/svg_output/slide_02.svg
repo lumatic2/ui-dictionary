@@ -1,0 +1,23 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1280" height="720" viewBox="0 0 1280 720">
+  <rect x="0" y="0" width="1280" height="720" fill="#F4F3EE"/>
+  <text x="640" y="120" font-family="Pretendard" font-size="44" font-weight="700" fill="#15130F" text-anchor="middle">Askewly Design은 세 얼굴로 나간다</text>
+  <text x="640" y="165" font-family="Pretendard" font-size="19" fill="#4A463D" text-anchor="middle">하나의 정본이 세 방향으로 배포된다</text>
+
+  <rect x="80" y="230" width="340" height="300" rx="14" fill="#FFFDF7" stroke="#D8D0C1" stroke-width="1.5"/>
+  <text x="110" y="285" font-family="Pretendard" font-size="15" font-weight="700" fill="#2F4B7C">01</text>
+  <text x="110" y="330" font-family="Pretendard" font-size="24" font-weight="700" fill="#15130F">공개 웹사이트</text>
+  <text x="110" y="370" font-family="Pretendard" font-size="16" fill="#4A463D">사람이 UI 패턴·용어·데모를</text>
+  <text x="110" y="396" font-family="Pretendard" font-size="16" fill="#4A463D">둘러보는 ui.askewly.com</text>
+
+  <rect x="470" y="230" width="340" height="300" rx="14" fill="#FFFDF7" stroke="#D8D0C1" stroke-width="1.5"/>
+  <text x="500" y="285" font-family="Pretendard" font-size="15" font-weight="700" fill="#2F4B7C">02</text>
+  <text x="500" y="330" font-family="Pretendard" font-size="24" font-weight="700" fill="#15130F">에이전트 시스템</text>
+  <text x="500" y="370" font-family="Pretendard" font-size="16" fill="#4A463D">Codex·Claude Code가 llms.txt로</text>
+  <text x="500" y="396" font-family="Pretendard" font-size="16" fill="#4A463D">읽는 토큰·레시피·가이드</text>
+
+  <rect x="860" y="230" width="340" height="300" rx="14" fill="#FFFDF7" stroke="#D8D0C1" stroke-width="1.5"/>
+  <text x="890" y="285" font-family="Pretendard" font-size="15" font-weight="700" fill="#2F4B7C">03</text>
+  <text x="890" y="330" font-family="Pretendard" font-size="24" font-weight="700" fill="#15130F">제작 왕복</text>
+  <text x="890" y="370" font-family="Pretendard" font-size="16" fill="#4A463D">익숙한 도구에서 그린 것이</text>
+  <text x="890" y="396" font-family="Pretendard" font-size="16" fill="#4A463D">정본을 거쳐 코드로 무손실 왕복</text>
+</svg>
