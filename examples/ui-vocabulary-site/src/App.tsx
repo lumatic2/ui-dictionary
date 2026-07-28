@@ -409,7 +409,7 @@ function App() {
     if (nextPage === "home") {
       nextFilter = navFilter("plus-all")
     } else if (nextPage === "docs") {
-      nextFilter = navFilter("docs-getting-started-setup")
+      nextFilter = navFilter("docs-all")
     } else if (nextPage === "plus") {
       nextFilter = navFilter("plus-all")
     } else {
@@ -489,7 +489,7 @@ function App() {
     if (axis === "documentation") {
       setPageMode("docs")
       setReturnPageMode("docs")
-      setFilter(navFilter("docs-getting-started-setup"))
+      setFilter(navFilter("docs-all"))
     } else {
       setPageMode("plus")
       setReturnPageMode("plus")
@@ -565,7 +565,7 @@ function App() {
   )
 
   const siteTopNav: Array<{ label: string; active: boolean; onClick: () => void }> = [
-    { label: "Docs", active: pageMode === "docs" && filter === navFilter("docs-getting-started-setup"), onClick: () => navigateFromHome({ page: "docs", filter: "nav:docs-getting-started-setup" }) },
+    { label: "Docs", active: pageMode === "docs" && filter === navFilter("docs-all"), onClick: () => navigateFromHome({ page: "docs", filter: "nav:docs-all" }) },
     { label: "Patterns", active: pageMode === "plus" && filter === navFilter("plus-marketing"), onClick: () => navigateFromHome({ page: "plus", filter: "nav:plus-marketing" }) },
     { label: "Colors", active: pageMode === "colors", onClick: () => navigateFromHome({ page: "colors" }) },
     { label: "Recipes", active: pageMode === "recipes", onClick: () => navigateFromHome({ page: "recipes" }) },
@@ -768,7 +768,6 @@ function App() {
                 )}
                 {isDocsLanding && (
                   <DocsCatalogLanding
-                    filterCounts={filterCounts}
                     onFilterChange={updateNavFilter}
                   />
                 )}
@@ -778,6 +777,8 @@ function App() {
                     termCount={getFilterCount(filterCounts, activeDocsSection.filter)}
                   />
                 )}
+                {/* docs 허브 랜딩은 그룹 카드가 곧 내비 — 전체 용어 덤프를 깔지 않는다 (O6) */}
+                {!isDocsLanding && (
                 <section className="flex flex-col gap-4" data-print-grid>
                   {isPlusLanding && (
                     <div>
@@ -797,6 +798,7 @@ function App() {
                     ))}
                   </div>
                 </section>
+                )}
               </>
             ) : (
               <EmptySearchRecovery
@@ -1268,7 +1270,7 @@ function getDefaultFilterForPage(page: PageMode): TermFilter {
     return navFilter("plus-all")
   }
   if (page === "docs") {
-    return navFilter("docs-getting-started-setup")
+    return navFilter("docs-all")
   }
   if (page === "plus") {
     return navFilter("plus-all")
@@ -1705,80 +1707,51 @@ function PlusCatalogLanding({ filterCounts, onFilterChange }: CatalogLandingProp
   )
 }
 
-function DocsCatalogLanding({ filterCounts, onFilterChange }: CatalogLandingProps) {
+const docsHubGroupDescriptions: Record<string, string> = {
+  "Getting started": "What Askewly Design is, its principles, and how to use it from HTML, React, or Vue.",
+  "Elements": "Interactive building blocks — dialogs, selects, palettes — with states and usage rules.",
+  "Foundations": "The decisions under every surface: color, typography, spacing, motion, accessibility, tokens.",
+  "Vocabulary": "The UI term reference — blocks, layout, styling, interaction, and effects as searchable vocabulary.",
+  "Agent Recipes": "Guidance Codex and Claude Code read to build intentionally designed UI from this system.",
+}
+
+function DocsCatalogLanding({ onFilterChange }: { onFilterChange: (filter: TermFilter) => void }) {
+  const visibleGroups = docsNavGroups
+    .map((group) => ({ ...group, items: group.items.filter((item) => isShellVisible(item.shell)) }))
+    .filter((group) => group.items.length > 0)
+
   return (
     <section className="mx-auto flex w-full max-w-[76rem] flex-col gap-10" data-print-hidden>
-      <div className="grid gap-10 xl:grid-cols-[minmax(0,1fr)_16rem]">
-        <div className="max-w-4xl">
-          <p className="text-xs font-semibold uppercase tracking-[0.22em] text-slate-500">Documentation</p>
-          <h2 className="mt-5 text-4xl font-normal tracking-normal text-slate-950 md:text-6xl">Build UI vocabulary like a docs site</h2>
-          <p className="mt-6 max-w-3xl text-lg leading-8 text-slate-600">
-            Tailwind docs starts with the job a reader is trying to finish, then narrows into tabs, numbered steps, examples, and related anchors. This surface uses the same rhythm for UI terms.
-          </p>
-        </div>
-        <aside className="hidden self-start border-l pl-6 text-sm xl:sticky xl:top-20 xl:block xl:max-h-[calc(100svh-6rem)] xl:overflow-y-auto xl:overscroll-contain">
-          <p className="text-xs font-semibold uppercase tracking-[0.22em] text-slate-500">On this page</p>
-          <div className="mt-5 flex flex-col gap-3 text-slate-600">
-            <span>Overview</span>
-            <span>Getting started</span>
-            <span>Docs index</span>
-            <span>Representative terms</span>
-          </div>
-        </aside>
+      <div className="max-w-4xl">
+        <p className="text-xs font-semibold uppercase tracking-[0.22em] text-slate-500">Documentation</p>
+        <h2 className="mt-5 text-4xl font-normal tracking-normal text-slate-950 md:text-6xl">Askewly Design docs</h2>
+        <p className="mt-6 max-w-3xl text-lg leading-8 text-slate-600">
+          Askewly Design is a design system for product interfaces: a visual pattern library, a UI vocabulary, and
+          agent-ready guidance that all ship from the same tokens. These docs explain how the system thinks and how
+          to apply it to your own screens.
+        </p>
       </div>
 
-      <div className="flex min-w-0 flex-col gap-7">
-        <div>
-          <h3 className="text-xl font-semibold tracking-normal text-slate-950">Getting started</h3>
-          <div className="scrollbar-hidden mt-5 flex gap-8 overflow-x-auto border-b text-sm font-medium text-slate-600">
-            {docsLandingTabs.map((tab, index) => (
-              <button
-                key={tab}
-                className={cn("shrink-0 pb-4", index === 0 && "border-b border-slate-950 text-slate-950")}
-                type="button"
-              >
-                {tab}
-              </button>
-            ))}
-          </div>
-        </div>
-
-        <div className="grid gap-6 lg:grid-cols-[minmax(0,1fr)_minmax(20rem,0.85fr)]">
-          <div className="flex flex-col gap-6">
-            {docsGettingStartedSteps.map((step, index) => (
-              <div key={step.title} className="grid gap-4 sm:grid-cols-[2.25rem_minmax(0,1fr)]">
-                <span className="grid size-7 place-items-center border text-[0.65rem] font-mono text-slate-600">0{index + 1}</span>
-                <div>
-                  <h4 className="text-sm font-semibold text-slate-950">{step.title}</h4>
-                  <p className="mt-2 text-sm leading-6 text-slate-600">{step.description}</p>
-                </div>
-              </div>
-            ))}
-          </div>
-          <div className="overflow-hidden rounded-xl bg-slate-950 p-1 text-sm text-slate-100 shadow-sm">
-            <div className="flex items-center justify-between px-4 py-3 text-xs text-slate-400">
-              <span>ui-docs.config.ts</span>
-              <Copy aria-hidden="true" className="size-4" />
+      <div className="grid gap-4 md:grid-cols-2">
+        {visibleGroups.map((group) => (
+          <div key={group.label} className="flex flex-col gap-4 rounded-md border bg-card p-6 shadow-sm">
+            <div>
+              <h3 className="text-lg font-semibold tracking-normal text-slate-950">{group.label}</h3>
+              <p className="mt-1.5 text-sm leading-6 text-muted-foreground">{docsHubGroupDescriptions[group.label] ?? ""}</p>
             </div>
-            <pre className="overflow-x-auto rounded-lg bg-slate-900 p-5 leading-7"><code>{docsLandingCode}</code></pre>
+            <div className="flex flex-wrap gap-x-4 gap-y-2">
+              {group.items.map((item) => (
+                <button
+                  key={item.filter}
+                  className="text-sm font-medium text-foreground underline-offset-4 hover:underline"
+                  type="button"
+                  onClick={() => onFilterChange(item.filter)}
+                >
+                  {item.label}
+                </button>
+              ))}
+            </div>
           </div>
-        </div>
-      </div>
-
-      <div className="grid divide-y border-y lg:grid-cols-2 lg:divide-x lg:divide-y-0">
-        {docsLandingItems.map((item) => (
-          <button
-            key={item.filter}
-            type="button"
-            className="grid min-h-36 w-full gap-4 p-5 text-left transition hover:bg-accent/30 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring"
-            onClick={() => onFilterChange(item.filter)}
-          >
-            <span>
-              <span className="block text-lg font-semibold tracking-normal text-slate-950">{item.label}</span>
-              <span className="mt-2 block text-sm leading-6 text-muted-foreground">{item.description}</span>
-            </span>
-            <span className="self-end text-sm font-medium text-slate-500">{getFilterCount(filterCounts, item.filter)} terms</span>
-          </button>
         ))}
       </div>
     </section>
@@ -5873,16 +5846,6 @@ const plusCatalogSections: Array<{
   },
 ]
 
-const docsLandingItems: Array<{ filter: TermFilter; label: string; description: string }> = [
-  { filter: navFilter("docs-ui-blocks"), label: "UI Blocks", description: "블록을 프로젝트에 붙일 때 필요한 레이아웃, 반응형, 테마 기준" },
-  { filter: navFilter("docs-component-api"), label: "Component API", description: "Button, input, dialog처럼 반복 컴포넌트의 상태와 사용 규칙" },
-  { filter: navFilter("docs-layout"), label: "Layout", description: "공간, 크기, 반응형, 겹침과 스크롤" },
-  { filter: navFilter("docs-styling"), label: "Styling", description: "표면, 색, 타이포그래피, 토큰과 효과" },
-  { filter: navFilter("docs-interaction"), label: "Interaction", description: "상태, 로딩, 알림, 오류와 피드백" },
-  { filter: navFilter("docs-accessibility"), label: "Accessibility", description: "ARIA, 스크린리더, 포커스와 모션 접근성" },
-  { filter: navFilter("docs-motion-effects"), label: "Motion & Effects", description: "전환, 등장, 움직임과 시각 효과" },
-]
-
 type DocsSection = {
   id: string
   label: string
@@ -6030,25 +5993,6 @@ const docsSections: DocsSection[] = [
     anchors: ["Overview", "Transitions", "Feedback", "Reduced motion"],
   },
 ]
-
-const docsLandingTabs = ["Using vocabulary", "Component API", "Layout rules", "Styling tokens", "AI prompts"]
-
-const docsGettingStartedSteps = [
-  {
-    title: "Choose the screen context",
-    description: "Start from the page type or user task, then pick the smallest UI vocabulary section that explains it.",
-  },
-  {
-    title: "Read the anatomy with examples",
-    description: "Pair the Korean explanation with a concrete visual term, state, and responsive rule before writing code.",
-  },
-  {
-    title: "Give AI a precise prompt",
-    description: "Use the term page's prompt guidance to ask for layout, state, accessibility, and token constraints together.",
-  },
-]
-
-const docsLandingCode = "const section = docs.find(\"Layout\")\n\nbuildScreen({\n  terms: section.relatedTerms,\n  constraints: [\n    \"responsive\",\n    \"focus-visible\",\n    \"no-overlap\",\n  ],\n  output: \"usable UI first\",\n})"
 
 const uiBlockSections: UiBlockNavSection[] = [
   {

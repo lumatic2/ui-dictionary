@@ -41,7 +41,7 @@ Status: approved (사용자 승인 2026-07-28 "ㄱㄱ" — 결정 3건 매듭 + 
   - Failure probe: 프로덕션 직접 URL 진입(SPA 폴백) — 함수 누락 시 404. 배포 후 `/get-started` 직접 요청 200 확인으로 검출.
   - Commit: changeset `sq2-structural-defects` (README 절: step-1).
 
-- [ ] **step-2 — O6: Docs 랜딩 소개+허브**
+- [x] **step-2 — O6: Docs 랜딩 소개+허브**
   - Artifact: `/docs`(slug 없음) 착지 = 기존 `DocsCatalogLanding`(docs-all) 재작성 — 구 vocabulary 목업 콘텐츠를 걷어내고 Askewly Design 소개 문단 + 문서 그룹 카드 허브(docsNavGroups 파생)로 교체. `/docs` 기본 필터를 docs-all 로 전환, 상단 내비 "Docs"·히어로 "Open Docs"·시작 가이드의 Docs 링크가 허브로 착지. Getting set up 은 그룹 안 문서로.
   - Files: write examples/ui-vocabulary-site/src/App.tsx(DocsCatalogLanding 재작성·getDefaultFilterForPage·siteTopNav·selectPrimaryAxis documentation 분기), src/components/landing-hero.tsx(Open Docs 배선), src/lib/page-meta.ts. read src/lib/documentation-pages.ts, src/lib/url-mapping.ts(docs-all ↔ bare /docs 매핑 확인 — 이미 지원).
   - Risk: 기계적 (기존 /docs 라우트 내 착지 변경 — 문서 본문 무변경, revert 용이)

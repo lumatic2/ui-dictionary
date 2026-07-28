@@ -21,7 +21,7 @@ export function LandingHero({ onNavigate, onSearch, filter, terms }: HomePagePro
             Get Started
             <ArrowRight aria-hidden="true" className="size-4" />
           </Button>
-          <Button className="h-11 rounded-lg border-border bg-background px-6 text-foreground hover:bg-muted" variant="outline" type="button" onClick={() => onNavigate({ page: "docs", filter: "nav:docs-getting-started-setup" })}>
+          <Button className="h-11 rounded-lg border-border bg-background px-6 text-foreground hover:bg-muted" variant="outline" type="button" onClick={() => onNavigate({ page: "docs", filter: "nav:docs-all" })}>
             Open Docs
           </Button>
         </div>
