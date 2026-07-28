@@ -53,8 +53,12 @@ import { SpringDragSnapCardDemo } from "@/components/spring-drag-snap-card"
 import { StaggeredEntranceGroupDemo } from "@/components/staggered-entrance-group"
 import { CanvasParticleFieldDemo } from "@/components/canvas-particle-field"
 import { LazyThreeObjectSceneDemo } from "@/components/lazy-three-object-scene"
+import { PinnedScrollSequenceDemo } from "@/components/pinned-scroll-sequence"
+import { ShaderGradientSurfaceDemo } from "@/components/shader-gradient-surface"
 
 export const recipeDemoComponents: Record<string, ComponentType> = {
+  "pinned-scroll-sequence": PinnedScrollSequenceDemo,
+  "shader-gradient-surface": ShaderGradientSurfaceDemo,
   "showcase-card": ShowcaseCardDemo,
   "chat-conversation-panel": ChatConversationPanelDemo,
   "mesh-gradient-surface": MeshGradientSurfaceDemo,
