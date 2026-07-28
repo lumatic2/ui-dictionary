@@ -939,7 +939,7 @@ function HeroSectionPreview({ size = "default", theme = "system", variant }: { s
   if (variant === "hero-centered") {
     return (
       <div data-hero-section-theme={heroTheme} data-hero-section-variant={variant} className={frameClass}>
-        <div className={cn("absolute inset-0", isDark ? "bg-[radial-gradient(circle_at_25%_20%,rgba(99,102,241,0.28),transparent_28%),radial-gradient(circle_at_80%_70%,rgba(236,72,153,0.18),transparent_30%)]" : "bg-[radial-gradient(circle_at_25%_20%,rgba(99,102,241,0.18),transparent_28%),radial-gradient(circle_at_80%_70%,rgba(236,72,153,0.18),transparent_30%)]")} />
+        <div className={cn("absolute inset-0", isDark ? "bg-[radial-gradient(circle_at_25%_20%,color-mix(in_srgb,var(--color-indigo-500)_28%,transparent),transparent_28%),radial-gradient(circle_at_80%_70%,color-mix(in_srgb,var(--color-pink-500)_18%,transparent),transparent_30%)]" : "bg-[radial-gradient(circle_at_25%_20%,color-mix(in_srgb,var(--color-indigo-500)_18%,transparent),transparent_28%),radial-gradient(circle_at_80%_70%,color-mix(in_srgb,var(--color-pink-500)_18%,transparent),transparent_30%)]")} />
         {nav}
         <div className="relative z-10 mx-auto flex min-h-[520px] max-w-3xl flex-col items-center justify-center px-6 pb-12 pt-16 text-center md:min-h-[740px] md:pb-20 md:pt-24">
           {announcement}
@@ -954,7 +954,7 @@ function HeroSectionPreview({ size = "default", theme = "system", variant }: { s
   if (variant === "hero-split" || variant === "hero-bordered-screenshot") {
     return (
       <div data-hero-section-theme={heroTheme} data-hero-section-variant={variant} className={frameClass}>
-        <div className={cn("absolute inset-0", isDark ? "bg-[radial-gradient(circle_at_45%_35%,rgba(37,99,235,0.35),transparent_32%)]" : "bg-[linear-gradient(90deg,rgba(248,250,252,1)_0%,rgba(255,255,255,1)_50%,rgba(238,242,255,0.65)_100%)]")} />
+        <div className={cn("absolute inset-0", isDark ? "bg-[radial-gradient(circle_at_45%_35%,color-mix(in_srgb,var(--color-blue-600)_35%,transparent),transparent_32%)]" : "bg-[linear-gradient(90deg,color-mix(in_srgb,var(--color-slate-50)_100%,transparent)_0%,color-mix(in_srgb,white_100%,transparent)_50%,color-mix(in_srgb,var(--color-indigo-50)_65%,transparent)_100%)]")} />
         {nav}
         <div className="relative z-10 grid min-h-[560px] min-w-[760px] grid-cols-[0.82fr_1.18fr] gap-8 px-6 py-10 md:min-h-[740px] md:min-w-0 md:gap-10 md:px-12 md:py-16">
           <div className="flex max-w-2xl flex-col justify-center md:w-[680px] md:-translate-y-10">
@@ -1014,9 +1014,9 @@ function HeroSectionPreview({ size = "default", theme = "system", variant }: { s
     return (
       <div data-hero-section-theme={heroTheme} data-hero-section-variant={variant} className={frameClass}>
         <img alt="" className="absolute inset-0 size-full object-cover object-[50%_52%]" src={imageSrc} />
-        <div className={cn("absolute inset-0", isDark ? "bg-[linear-gradient(rgba(2,6,23,0.80),rgba(2,6,23,0.93)),radial-gradient(circle_at_50%_42%,rgba(79,70,229,0.22),transparent_36%)]" : "bg-[linear-gradient(rgba(255,255,255,0.72),rgba(255,255,255,0.88)),radial-gradient(circle_at_50%_42%,rgba(99,102,241,0.16),transparent_36%)]")} />
+        <div className={cn("absolute inset-0", isDark ? "bg-[linear-gradient(color-mix(in_srgb,var(--color-slate-950)_80%,transparent),color-mix(in_srgb,var(--color-slate-950)_93%,transparent)),radial-gradient(circle_at_50%_42%,color-mix(in_srgb,var(--color-indigo-600)_22%,transparent),transparent_36%)]" : "bg-[linear-gradient(color-mix(in_srgb,white_72%,transparent),color-mix(in_srgb,white_88%,transparent)),radial-gradient(circle_at_50%_42%,color-mix(in_srgb,var(--color-indigo-500)_16%,transparent),transparent_36%)]")} />
         {nav}
-        <div className="relative z-10 mx-auto flex min-h-[540px] max-w-4xl flex-col items-center justify-center px-6 pb-12 pt-20 text-center [text-shadow:0_1px_24px_rgba(0,0,0,0.45)] md:min-h-[740px] md:pb-20 md:pt-28">
+        <div className="relative z-10 mx-auto flex min-h-[540px] max-w-4xl flex-col items-center justify-center px-6 pb-12 pt-20 text-center [text-shadow:0_1px_24px_color-mix(in_srgb,black_45%,transparent)] md:min-h-[740px] md:pb-20 md:pt-28">
           <button aria-label="Open hero funding announcement" className={cn("rounded-full border px-3 py-1 text-xs backdrop-blur transition hover:-translate-y-0.5 active:scale-[0.98]", isDark ? "border-white/10 bg-white/10 text-indigo-100 hover:bg-white/15" : "border-slate-200 bg-white/70 text-indigo-700 hover:bg-white")} type="button" onClick={() => setHeroFeedback("Funding announcement opened")}>Announcing our next round of funding. Read more →</button>
           <h4 className="mt-6 text-4xl font-semibold tracking-normal md:text-7xl">Data to enrich your online business</h4>
           <p className={cn("mt-6 max-w-2xl text-sm leading-6", isDark ? "text-slate-200" : "text-slate-700")}>A media-led hero creates atmosphere while keeping the core conversion path visible.</p>
@@ -1030,7 +1030,7 @@ function HeroSectionPreview({ size = "default", theme = "system", variant }: { s
   if (variant === "hero-bordered-app") {
     return (
       <div data-hero-section-theme={heroTheme} data-hero-section-variant={variant} className={frameClass}>
-        <div className={cn("absolute inset-0", isDark ? "bg-[radial-gradient(circle_at_20%_10%,rgba(99,102,241,0.24),transparent_25%),radial-gradient(circle_at_80%_88%,rgba(236,72,153,0.18),transparent_28%)]" : "bg-[radial-gradient(circle_at_20%_10%,rgba(99,102,241,0.16),transparent_25%),radial-gradient(circle_at_80%_88%,rgba(236,72,153,0.16),transparent_28%)]")} />
+        <div className={cn("absolute inset-0", isDark ? "bg-[radial-gradient(circle_at_20%_10%,color-mix(in_srgb,var(--color-indigo-500)_24%,transparent),transparent_25%),radial-gradient(circle_at_80%_88%,color-mix(in_srgb,var(--color-pink-500)_18%,transparent),transparent_28%)]" : "bg-[radial-gradient(circle_at_20%_10%,color-mix(in_srgb,var(--color-indigo-500)_16%,transparent),transparent_25%),radial-gradient(circle_at_80%_88%,color-mix(in_srgb,var(--color-pink-500)_16%,transparent),transparent_28%)]")} />
         {nav}
         <div className="relative z-10 mx-auto flex min-h-[560px] max-w-5xl flex-col items-center justify-center px-6 py-10 text-center md:min-h-[740px] md:py-14">
           <h4 className="text-4xl font-semibold tracking-normal md:text-6xl">Data to enrich your online business</h4>
@@ -1115,7 +1115,7 @@ function HeroSectionPreview({ size = "default", theme = "system", variant }: { s
             <div className={cn(
               "absolute inset-0",
               variant === "hero-image-split" && "bg-gradient-to-tr from-slate-950/20 via-transparent to-white/10",
-              variant === "hero-angled-image" && "bg-[linear-gradient(90deg,rgba(255,255,255,0.18),transparent_28%),linear-gradient(to_top,rgba(2,6,23,0.16),transparent_34%)]",
+              variant === "hero-angled-image" && "bg-[linear-gradient(90deg,color-mix(in_srgb,white_18%,transparent),transparent_28%),linear-gradient(to_top,color-mix(in_srgb,var(--color-slate-950)_16%,transparent),transparent_34%)]",
               variant === "hero-offset-image" && "inset-x-6 bottom-16 top-12 rounded-[1.75rem] bg-gradient-to-tr from-slate-950/55 via-slate-950/10 to-white/10 md:bottom-20 md:left-0 md:right-12 md:top-24"
             )} />
             {variant === "hero-offset-image" && (
@@ -1193,7 +1193,7 @@ function AppScreenshot({ bordered = false, dark = false, size = "default" }: { b
           className={cn("absolute max-w-none object-cover", cropClass)}
           src={imageSrc}
         />
-        <div className={cn("pointer-events-none absolute inset-0", dark ? "bg-[radial-gradient(circle_at_20%_0,rgba(255,255,255,0.08),transparent_26%),linear-gradient(to_bottom,rgba(2,6,23,0),rgba(2,6,23,0.20))]" : "bg-[radial-gradient(circle_at_18%_0,rgba(99,102,241,0.08),transparent_24%),linear-gradient(to_bottom,rgba(255,255,255,0),rgba(248,250,252,0.18))]")} />
+        <div className={cn("pointer-events-none absolute inset-0", dark ? "bg-[radial-gradient(circle_at_20%_0,color-mix(in_srgb,white_8%,transparent),transparent_26%),linear-gradient(to_bottom,color-mix(in_srgb,var(--color-slate-950)_0%,transparent),color-mix(in_srgb,var(--color-slate-950)_20%,transparent))]" : "bg-[radial-gradient(circle_at_18%_0,color-mix(in_srgb,var(--color-indigo-500)_8%,transparent),transparent_24%),linear-gradient(to_bottom,color-mix(in_srgb,white_0%,transparent),color-mix(in_srgb,var(--color-slate-50)_18%,transparent))]")} />
         <div className={cn("pointer-events-none absolute inset-0 rounded-[inherit] ring-1 ring-inset", dark ? "ring-white/10" : "ring-slate-950/10")} />
       </div>
     </div>
@@ -1213,7 +1213,7 @@ function PhoneMockup() {
           className="size-full object-cover object-[50%_50%]"
           src="/assets/hero-sections/mobile-deployments-screen.png"
         />
-        <span className="pointer-events-none absolute inset-2 rounded-[2.15rem] bg-[linear-gradient(115deg,rgba(255,255,255,0.18),transparent_22%,transparent_74%,rgba(255,255,255,0.08))] md:inset-2.5 md:rounded-[2.45rem]" />
+        <span className="pointer-events-none absolute inset-2 rounded-[2.15rem] bg-[linear-gradient(115deg,color-mix(in_srgb,white_18%,transparent),transparent_22%,transparent_74%,color-mix(in_srgb,white_8%,transparent))] md:inset-2.5 md:rounded-[2.45rem]" />
         <span className="pointer-events-none absolute inset-2 rounded-[2.15rem] ring-1 ring-inset ring-white/10 md:inset-2.5 md:rounded-[2.45rem]" />
       </div>
     </div>
@@ -2114,7 +2114,7 @@ renderFeatureSection(feature)`}</code>
       "flex min-h-[430px] flex-col justify-center overflow-hidden px-6 py-20 md:min-h-[560px] md:px-10 md:py-28",
       isDarkCta && "bg-slate-950",
       isBrandCta && "bg-indigo-600",
-      isGradientCta && "bg-slate-950 bg-[radial-gradient(circle_at_bottom,rgba(109,40,217,.42),transparent_48%)]",
+      isGradientCta && "bg-slate-950 bg-[radial-gradient(circle_at_bottom,color-mix(in_srgb,var(--color-violet-700)_42%,transparent),transparent_48%)]",
       variant === "cta-subtle-brand" && !themeDarkCta && "bg-indigo-50",
       themeDarkCta && !isDarkCta && !isBrandCta && !isGradientCta && "bg-slate-950",
       !themeDarkCta && variant !== "cta-subtle-brand" && "bg-white",
@@ -2404,7 +2404,7 @@ renderFeatureSection(feature)`}</code>
     )
     const NetworkCard = () => (
       <Panel className="min-h-[260px]">
-        <div className={cn("relative h-32 rounded-2xl", isDarkBento ? "bg-[radial-gradient(circle_at_center,rgba(129,140,248,.18),transparent_55%)]" : "bg-[radial-gradient(circle_at_center,rgba(99,102,241,.14),transparent_50%)]")}>
+        <div className={cn("relative h-32 rounded-2xl", isDarkBento ? "bg-[radial-gradient(circle_at_center,color-mix(in_srgb,var(--color-indigo-400)_18%,transparent),transparent_55%)]" : "bg-[radial-gradient(circle_at_center,color-mix(in_srgb,var(--color-indigo-500)_14%,transparent),transparent_50%)]")}>
           {[["18%", "46%"], ["42%", "32%"], ["58%", "60%"], ["72%", "38%"], ["83%", "68%"]].map(([left, top], index) => (
             <button
               key={index}
@@ -2838,7 +2838,7 @@ renderFeatureSection(feature)`}</code>
       <section data-newsletter-section-theme={newsletterTheme} data-newsletter-section-variant={variant} className={cn("relative overflow-hidden rounded-b-sm transition-colors duration-300", isDarkNewsletter ? isNewsletterBrand ? "bg-indigo-600 text-white" : "bg-slate-950 text-white" : "bg-white text-slate-950")}>
         {isNewsletterDetails && (
           <div className={cn("relative min-h-[430px] overflow-hidden px-5 py-14 transition-colors duration-300 sm:px-8 md:px-12 md:py-20", isDarkNewsletter ? "bg-slate-950 text-white" : "bg-slate-50 text-slate-950")}>
-            <div className={cn("absolute inset-0 transition-opacity duration-300", isDarkNewsletter ? "bg-[radial-gradient(circle_at_58%_50%,rgba(99,102,241,0.35),transparent_28%),radial-gradient(circle_at_72%_68%,rgba(168,85,247,0.24),transparent_30%)]" : "bg-[radial-gradient(circle_at_58%_50%,rgba(99,102,241,0.14),transparent_28%),radial-gradient(circle_at_72%_68%,rgba(168,85,247,0.12),transparent_30%)]")} />
+            <div className={cn("absolute inset-0 transition-opacity duration-300", isDarkNewsletter ? "bg-[radial-gradient(circle_at_58%_50%,color-mix(in_srgb,var(--color-indigo-500)_35%,transparent),transparent_28%),radial-gradient(circle_at_72%_68%,color-mix(in_srgb,var(--color-purple-500)_24%,transparent),transparent_30%)]" : "bg-[radial-gradient(circle_at_58%_50%,color-mix(in_srgb,var(--color-indigo-500)_14%,transparent),transparent_28%),radial-gradient(circle_at_72%_68%,color-mix(in_srgb,var(--color-purple-500)_12%,transparent),transparent_30%)]")} />
             <div className="relative mx-auto grid max-w-6xl gap-12 md:grid-cols-[1.05fr_0.85fr_0.85fr] md:items-center">
               <div>
                 <h4 className={cn("max-w-md text-2xl font-semibold leading-8 tracking-normal sm:text-3xl sm:leading-9 md:text-4xl md:leading-10", isDarkNewsletter ? "text-white" : "text-slate-950")}>Subscribe to our newsletter</h4>
@@ -2884,7 +2884,7 @@ renderFeatureSection(feature)`}</code>
         {isNewsletterCenteredCard && (
           <div className={cn("flex min-h-[450px] items-center justify-center px-5 py-14 transition-colors duration-300 sm:px-8 md:px-12", isDarkNewsletter ? "bg-slate-950" : "bg-slate-50")}>
             <div className={cn("relative w-full max-w-5xl overflow-hidden rounded-2xl px-5 py-16 text-center shadow-2xl sm:px-8 md:px-16 md:py-20", isDarkNewsletter ? "bg-slate-950 text-white shadow-slate-950/20 ring-1 ring-white/10" : "bg-white text-slate-950 shadow-slate-950/10 ring-1 ring-slate-200")}>
-              <div className={cn("absolute inset-0", isDarkNewsletter ? "bg-[radial-gradient(circle_at_45%_105%,rgba(168,85,247,0.34),transparent_32%)]" : "bg-[radial-gradient(circle_at_45%_105%,rgba(168,85,247,0.14),transparent_32%)]")} />
+              <div className={cn("absolute inset-0", isDarkNewsletter ? "bg-[radial-gradient(circle_at_45%_105%,color-mix(in_srgb,var(--color-purple-500)_34%,transparent),transparent_32%)]" : "bg-[radial-gradient(circle_at_45%_105%,color-mix(in_srgb,var(--color-purple-500)_14%,transparent),transparent_32%)]")} />
               <div className="relative mx-auto max-w-2xl">
                 <h4 className="text-xl font-semibold leading-7 tracking-normal sm:text-3xl sm:leading-9 md:text-4xl md:leading-10">
                   Get notified when
@@ -2903,7 +2903,7 @@ renderFeatureSection(feature)`}</code>
         {isNewsletterSideCard && (
           <div className={cn("flex min-h-[360px] items-center justify-center px-5 py-14 transition-colors duration-300 sm:px-8 md:px-12", isDarkNewsletter ? "bg-slate-950" : "bg-slate-50")}>
             <div className={cn("relative w-full max-w-5xl overflow-hidden rounded-2xl px-5 py-12 shadow-2xl sm:px-8 md:px-16 md:py-14", isDarkNewsletter ? "bg-slate-950 text-white shadow-slate-950/15 ring-1 ring-white/10" : "bg-white text-slate-950 shadow-slate-950/10 ring-1 ring-slate-200")}>
-              <div className={cn("absolute inset-0", isDarkNewsletter ? "bg-[radial-gradient(circle_at_44%_100%,rgba(168,85,247,0.28),transparent_32%)]" : "bg-[radial-gradient(circle_at_44%_100%,rgba(168,85,247,0.14),transparent_32%)]")} />
+              <div className={cn("absolute inset-0", isDarkNewsletter ? "bg-[radial-gradient(circle_at_44%_100%,color-mix(in_srgb,var(--color-purple-500)_28%,transparent),transparent_32%)]" : "bg-[radial-gradient(circle_at_44%_100%,color-mix(in_srgb,var(--color-purple-500)_14%,transparent),transparent_32%)]")} />
               <div className="relative grid gap-8 md:grid-cols-[1fr_0.9fr] md:items-center">
                 <NewsletterTitle dark={isDarkNewsletter} compact />
                 <NewsletterForm dark={isDarkNewsletter} cta="Notify me" />
@@ -2982,7 +2982,7 @@ renderFeatureSection(feature)`}</code>
         <section className="relative min-h-[520px] overflow-hidden bg-slate-950 px-8 py-20 text-white md:px-12">
           <img src="/assets/stats-sections/background-team-v2.png" alt="" className="absolute inset-0 size-full object-cover opacity-45" />
           <div className="absolute inset-0 bg-slate-950/60" />
-          <div className="absolute inset-0 bg-[radial-gradient(circle_at_54%_46%,rgba(99,102,241,0.35),transparent_32%)]" />
+          <div className="absolute inset-0 bg-[radial-gradient(circle_at_54%_46%,color-mix(in_srgb,var(--color-indigo-500)_35%,transparent),transparent_32%)]" />
           <div className="relative mx-auto flex min-h-[360px] max-w-6xl flex-col justify-between">
             <StatsIntro dark />
             <StatGrid dark />
@@ -3096,7 +3096,7 @@ renderFeatureSection(feature)`}</code>
                   type="button"
                   onClick={() => setPlayingVideo(playing ? null : clip.name)}
                 >
-                  <span aria-hidden="true" className={cn("absolute inset-0 transition-opacity", isDarkWall ? "bg-[radial-gradient(circle_at_30%_25%,rgba(99,102,241,0.5),rgba(15,23,42,0.95)_70%)]" : "bg-[radial-gradient(circle_at_30%_25%,rgba(129,140,248,0.55),rgba(30,41,59,0.92)_72%)]", playing && "opacity-80")} />
+                  <span aria-hidden="true" className={cn("absolute inset-0 transition-opacity", isDarkWall ? "bg-[radial-gradient(circle_at_30%_25%,color-mix(in_srgb,var(--color-indigo-500)_50%,transparent),color-mix(in_srgb,var(--color-slate-900)_95%,transparent)_70%)]" : "bg-[radial-gradient(circle_at_30%_25%,color-mix(in_srgb,var(--color-indigo-400)_55%,transparent),color-mix(in_srgb,var(--color-slate-800)_92%,transparent)_72%)]", playing && "opacity-80")} />
                   <span className="absolute left-3 top-3 rounded-full bg-black/40 px-2 py-0.5 text-[10px] font-semibold tabular-nums text-white backdrop-blur">{playing ? "● Playing" : clip.duration}</span>
                   <span aria-hidden="true" className={cn("absolute left-1/2 top-1/2 grid size-12 -translate-x-1/2 -translate-y-1/2 place-items-center rounded-full text-slate-950 shadow-lg transition group-hover:scale-105", playing ? "bg-indigo-400" : "bg-white/90")}>
                     {playing ? <span className="flex gap-1"><span className="h-4 w-1.5 rounded-sm bg-slate-950" /><span className="h-4 w-1.5 rounded-sm bg-slate-950" /></span> : <span className="ml-0.5 border-y-8 border-l-[14px] border-y-transparent border-l-slate-950" />}
@@ -3212,7 +3212,7 @@ renderFeatureSection(feature)`}</code>
           <div className={cn("relative mx-auto w-full max-w-5xl overflow-hidden rounded-2xl px-8 py-16 shadow-xl", isDarkTestimonial ? "bg-slate-950 text-white" : "bg-white text-slate-950 ring-1 ring-slate-200")}>
             <img src="/assets/testimonials/background-portrait-v2.png" alt="" className={cn("absolute inset-0 size-full object-cover", isDarkTestimonial ? "opacity-45" : "opacity-20")} />
             <div className={cn("absolute inset-0", isDarkTestimonial ? "bg-slate-950/55" : "bg-white/70")} />
-            <div className={cn("absolute inset-0", isDarkTestimonial ? "bg-[radial-gradient(circle_at_30%_105%,rgba(168,85,247,0.42),transparent_38%)]" : "bg-[radial-gradient(circle_at_30%_105%,rgba(168,85,247,0.16),transparent_38%)]")} />
+            <div className={cn("absolute inset-0", isDarkTestimonial ? "bg-[radial-gradient(circle_at_30%_105%,color-mix(in_srgb,var(--color-purple-500)_42%,transparent),transparent_38%)]" : "bg-[radial-gradient(circle_at_30%_105%,color-mix(in_srgb,var(--color-purple-500)_16%,transparent),transparent_38%)]")} />
             <div className="relative max-w-2xl">
               <p className={cn("text-sm font-semibold tracking-normal", isDarkTestimonial ? "text-white" : "text-indigo-600")}>Workcation</p>
               <button aria-label="Open testimonial Background image" aria-pressed={activeNavItem === "Background image"} className="mt-8 rounded-2xl p-3 text-left transition duration-200 hover:-translate-y-1 focus:outline-none focus:ring-2 focus:ring-indigo-400/50 active:scale-[0.99]" type="button" onClick={() => selectTestimonialAction("Background image")}>
@@ -4103,7 +4103,7 @@ renderFeatureSection(feature)`}</code>
       return (
         <div data-contact-section-theme={contactTheme} data-contact-section-variant={variant} className={contactRootClass("grid min-h-[38rem] lg:grid-cols-2")}>
           <div className={cn("relative overflow-hidden px-7 py-16 transition-colors duration-300 sm:px-10 lg:px-12", isDarkContact ? "bg-slate-950 text-white" : "bg-indigo-50 text-slate-950")}>
-            <div className={cn("absolute inset-0 bg-[length:auto,28px_28px]", isDarkContact ? "bg-[radial-gradient(circle_at_30%_40%,rgba(79,70,229,0.35),transparent_34%),linear-gradient(135deg,rgba(15,23,42,0.3)_25%,transparent_25%,transparent_50%,rgba(15,23,42,0.3)_50%,rgba(15,23,42,0.3)_75%,transparent_75%,transparent)]" : "bg-[radial-gradient(circle_at_30%_40%,rgba(99,102,241,0.16),transparent_34%),linear-gradient(135deg,rgba(255,255,255,0.65)_25%,transparent_25%,transparent_50%,rgba(255,255,255,0.65)_50%,rgba(255,255,255,0.65)_75%,transparent_75%,transparent)]")} />
+            <div className={cn("absolute inset-0 bg-[length:auto,28px_28px]", isDarkContact ? "bg-[radial-gradient(circle_at_30%_40%,color-mix(in_srgb,var(--color-indigo-600)_35%,transparent),transparent_34%),linear-gradient(135deg,color-mix(in_srgb,var(--color-slate-900)_30%,transparent)_25%,transparent_25%,transparent_50%,color-mix(in_srgb,var(--color-slate-900)_30%,transparent)_50%,color-mix(in_srgb,var(--color-slate-900)_30%,transparent)_75%,transparent_75%,transparent)]" : "bg-[radial-gradient(circle_at_30%_40%,color-mix(in_srgb,var(--color-indigo-500)_16%,transparent),transparent_34%),linear-gradient(135deg,color-mix(in_srgb,white_65%,transparent)_25%,transparent_25%,transparent_50%,color-mix(in_srgb,white_65%,transparent)_50%,color-mix(in_srgb,white_65%,transparent)_75%,transparent_75%,transparent)]")} />
             <div className="relative max-w-md">
               <h4 className="text-3xl font-bold tracking-normal">Get in touch</h4>
               <p className={cn("mt-4 text-sm leading-6", isDarkContact ? "text-slate-300" : "text-slate-600")}>Send a screen, flow, or pattern question and we will map it to concrete UI vocabulary.</p>
@@ -5495,7 +5495,7 @@ renderFeatureSection(feature)`}</code>
     if (variant === "landing-large-screenshot-testimonial") {
       return (
         <LandingRoot className={cn("min-h-[2100px] overflow-hidden rounded-md", isDarkLanding ? "bg-slate-950 text-white" : "bg-white text-slate-950")}>
-          <div className={cn(isDarkLanding ? "bg-[radial-gradient(circle_at_30%_12%,rgba(129,140,248,0.18),transparent_34%),radial-gradient(circle_at_72%_78%,rgba(14,165,233,0.16),transparent_34%)]" : "bg-[radial-gradient(circle_at_30%_12%,rgba(236,72,153,0.12),transparent_34%),radial-gradient(circle_at_72%_78%,rgba(124,58,237,0.12),transparent_34%)]")}>
+          <div className={cn(isDarkLanding ? "bg-[radial-gradient(circle_at_30%_12%,color-mix(in_srgb,var(--color-indigo-400)_18%,transparent),transparent_34%),radial-gradient(circle_at_72%_78%,color-mix(in_srgb,var(--color-sky-500)_16%,transparent),transparent_34%)]" : "bg-[radial-gradient(circle_at_30%_12%,color-mix(in_srgb,var(--color-pink-500)_12%,transparent),transparent_34%),radial-gradient(circle_at_72%_78%,color-mix(in_srgb,var(--color-violet-600)_12%,transparent),transparent_34%)]")}>
             <Nav dark={isDarkLanding} />
             <section className="mx-auto max-w-4xl px-6 pb-20 pt-28 text-center">
               <h4 className="text-4xl font-semibold leading-tight tracking-normal md:text-6xl">Deploy to the cloud with confidence</h4>
@@ -5553,7 +5553,7 @@ renderFeatureSection(feature)`}</code>
     if (variant === "landing-mobile-testimonials") {
       return (
         <LandingRoot className={cn("min-h-[2100px] overflow-hidden rounded-md", isDarkLanding ? "bg-slate-950 text-white" : "bg-white text-slate-950")}>
-          <div className={cn("bg-[size:180px_180px]", isDarkLanding ? "bg-[linear-gradient(to_right,rgba(255,255,255,0.06)_1px,transparent_1px),linear-gradient(to_bottom,rgba(255,255,255,0.06)_1px,transparent_1px)]" : "bg-[linear-gradient(to_right,rgba(15,23,42,0.06)_1px,transparent_1px),linear-gradient(to_bottom,rgba(15,23,42,0.06)_1px,transparent_1px)]")}>
+          <div className={cn("bg-[size:180px_180px]", isDarkLanding ? "bg-[linear-gradient(to_right,color-mix(in_srgb,white_6%,transparent)_1px,transparent_1px),linear-gradient(to_bottom,color-mix(in_srgb,white_6%,transparent)_1px,transparent_1px)]" : "bg-[linear-gradient(to_right,color-mix(in_srgb,var(--color-slate-900)_6%,transparent)_1px,transparent_1px),linear-gradient(to_bottom,color-mix(in_srgb,var(--color-slate-900)_6%,transparent)_1px,transparent_1px)]")}>
             <Nav dark={isDarkLanding} />
             <section className="mx-auto grid max-w-6xl gap-12 px-6 pb-32 pt-36 md:grid-cols-[1fr_0.8fr] md:items-center">
               <div>
@@ -5593,7 +5593,7 @@ renderFeatureSection(feature)`}</code>
 
     return (
       <LandingRoot className={cn("min-h-[2100px] overflow-hidden rounded-md", isDarkLanding ? "bg-slate-950 text-white" : "bg-white text-slate-950")}>
-        <div className={cn("bg-[size:180px_180px]", isDarkLanding ? "bg-[linear-gradient(to_right,rgba(255,255,255,0.06)_1px,transparent_1px),linear-gradient(to_bottom,rgba(255,255,255,0.06)_1px,transparent_1px)]" : "bg-[linear-gradient(to_right,rgba(15,23,42,0.06)_1px,transparent_1px),linear-gradient(to_bottom,rgba(15,23,42,0.06)_1px,transparent_1px)]")}>
+        <div className={cn("bg-[size:180px_180px]", isDarkLanding ? "bg-[linear-gradient(to_right,color-mix(in_srgb,white_6%,transparent)_1px,transparent_1px),linear-gradient(to_bottom,color-mix(in_srgb,white_6%,transparent)_1px,transparent_1px)]" : "bg-[linear-gradient(to_right,color-mix(in_srgb,var(--color-slate-900)_6%,transparent)_1px,transparent_1px),linear-gradient(to_bottom,color-mix(in_srgb,var(--color-slate-900)_6%,transparent)_1px,transparent_1px)]")}>
           <section className="mx-auto grid min-h-[820px] max-w-6xl gap-12 px-6 py-24 md:grid-cols-[0.95fr_0.75fr] md:items-center">
             <div>
               <LogoMark dark={isDarkLanding} />
@@ -8700,7 +8700,7 @@ renderFeatureSection(feature)`}</code>
     if (variant === "table-list-checkboxes") return <Shell><Header /><UsersTable dark={isDark} checkbox /></Shell>
     if (variant === "table-list-hidden-headings") {
       const activity = [["$7,600.00 USD", "Paid", "Reform", "Website redesign", "View transaction"], ["$10,000.00 USD", "Withdraw", "Tom Cook", "Salary", "View transaction"], ["$2,000.00 USD", "Overdue", "Tuple", "Logo design", "View transaction"], ["$14,000.00 USD", "Paid", "SavvyCal", "Website redesign", "View transaction"]]
-      return <Shell flush min="min-h-[24rem]"><h4 className={cn("px-8 py-6 text-sm font-semibold", isDark ? "text-white" : "text-slate-950")}>Recent activity</h4><div className={cn("px-8 py-3 text-sm font-semibold", isDark ? "bg-slate-800 text-white" : "bg-slate-50 text-slate-900")}>Today</div><table className="min-w-full"><tbody>{activity.map((row, index) => { const selected = activeNavItem === row[2]; return <tr key={`${row[0]}-${index}`} role="button" tabIndex={0} className={cn("cursor-pointer border-t transition duration-200 hover:-translate-y-0.5", selected && (isDark ? "bg-indigo-400/10" : "bg-indigo-50"), isDark ? "border-white/10 hover:bg-white/5" : "hover:bg-slate-50")} onClick={() => { setActiveNavItem(row[2]); setPostedComment(`${row[2]} transaction selected`) }}><td className={cn("px-8 py-5 text-sm font-semibold", isDark ? "text-white" : "text-slate-900")}>{row[0]}<p className={cn("mt-1 font-normal", isDark ? "text-slate-400" : "text-slate-500")}>$500.00 tax</p></td><td><span className={cn("rounded-md px-2 py-1 text-xs", row[1] === "Paid" ? "bg-emerald-50 text-emerald-700 ring-1 ring-emerald-600/20" : row[1] === "Overdue" ? "bg-rose-50 text-rose-700 ring-1 ring-rose-600/20" : isDark ? "bg-white/10 text-slate-200" : "bg-slate-100 text-slate-700")}>{row[1]}</span></td><td className={cn("px-6 py-5 text-sm", isDark ? "text-white" : "text-slate-900")}>{row[2]}<p className={cn(isDark ? "text-slate-400" : "text-slate-500")}>{row[3]}</p></td><td className="px-8 py-5 text-right text-sm font-medium"><button type="button" className="text-indigo-500 transition hover:text-indigo-400 active:scale-[0.98]" onClick={(event) => { event.stopPropagation(); setPostedComment(`${row[2]} transaction opened`) }}>{row[4]}</button><p className={cn("font-normal", isDark ? "text-slate-400" : "text-slate-500")}>Invoice #0001{index}</p></td></tr> })}</tbody></table></Shell>
+      return <Shell flush min="min-h-[24rem]"><h4 className={cn("px-8 py-6 text-sm font-semibold", isDark ? "text-white" : "text-slate-950")}>Recent activity</h4><div className={cn("px-8 py-3 text-sm font-semibold", isDark ? "bg-slate-800 text-white" : "bg-slate-50 text-slate-900")}>Today</div><table className="min-w-full"><tbody>{activity.map((row, index) => { const selected = activeNavItem === row[2]; return <tr key={`${row[0]}-${index}`} role="button" tabIndex={0} className={cn("cursor-pointer border-t transition duration-200 hover:-translate-y-0.5", selected && (isDark ? "bg-indigo-400/10" : "bg-indigo-50"), isDark ? "border-white/10 hover:bg-white/5" : "hover:bg-slate-50")} onClick={() => { setActiveNavItem(row[2]); setPostedComment(`${row[2]} transaction selected`) }}><td className={cn("px-8 py-5 text-sm font-semibold", isDark ? "text-white" : "text-slate-900")}>{row[0]}<p className={cn("mt-1 font-normal", isDark ? "text-slate-400" : "text-slate-500")}>$500.00 tax</p></td><td><span className={cn("rounded-md px-2 py-1 text-xs", row[1] === "Paid" ? "bg-emerald-50 text-emerald-700 ring-1 ring-emerald-600/20" : row[1] === "Overdue" ? "bg-rose-50 text-rose-700 ring-1 ring-rose-600/20" : isDark ? "bg-white/10 text-slate-200" : "bg-slate-100 text-slate-700")}>{row[1]}</span></td><td className={cn("px-6 py-5 text-sm", isDark ? "text-white" : "text-slate-900")}>{row[2]}<p className={cn(isDark ? "text-slate-400" : "text-slate-500")}>{row[3]}</p></td><td className="px-8 py-5 text-right text-sm font-medium"><button type="button" className="text-indigo-500 transition hover:text-indigo-400 active:scale-[0.98]" onClick={(event) => { event.stopPropagation(); setPostedComment(`${row[2]} transaction opened`) }}>{row[4]}</button><p className={cn("font-normal", isDark ? "text-slate-400" : "text-slate-500")}>Invoice 0001{index}</p></td></tr> })}</tbody></table></Shell>
     }
     if (variant === "table-list-full-width-avatars") {
       return <Shell><h4 className={cn("mb-8 text-sm font-semibold", isDark ? "text-white" : "text-slate-950")}>Latest activity</h4><div className="overflow-x-auto"><table className="min-w-full"><thead><tr>{["User", "Commit", "Status", "Duration", "Deployed at"].map((h) => <th key={h} className={cn("border-b px-4 py-3 text-left text-xs font-semibold", isDark ? "border-white/10 text-white" : "border-slate-200 text-slate-900")}>{h}</th>)}</tr></thead><tbody>{users.concat(users.slice(0, 2)).map((user, index) => { const commit = ["2d89f8c8", "249df660", "11464223", "dad28e95"][index % 4]; const selected = activeNavItem === commit; return <tr key={`${user.email}-${index}`} role="button" tabIndex={0} className={cn("cursor-pointer transition duration-200 hover:-translate-y-0.5", selected && (isDark ? "bg-indigo-400/10" : "bg-indigo-50"), isDark ? "hover:bg-white/5" : "hover:bg-slate-50")} onClick={() => { setActiveNavItem(commit); setPostedComment(`${commit} deployment selected`) }}><td className={cn("border-b px-4 py-4", isDark ? "border-white/10" : "border-slate-100")}><div className="flex items-center gap-3"><img src={user.avatar} alt="" className="size-7 rounded-full object-cover" /><span className={cn("text-sm font-semibold", isDark ? "text-white" : "text-slate-900")}>{user.name}</span></div></td><td className={cn("border-b px-4 py-4 text-sm", isDark ? "border-white/10 text-slate-400" : "border-slate-100 text-slate-500")}>{commit} <span className={cn("rounded px-2 py-1 text-xs", isDark ? "bg-slate-700 text-slate-200" : "bg-slate-100 text-slate-700")}>main</span></td><td className={cn("border-b px-4 py-4 text-sm", isDark ? "border-white/10 text-white" : "border-slate-100 text-slate-700")}><span className={cn("mr-2 inline-block size-1.5 rounded-full", index === 2 ? "bg-rose-400" : "bg-emerald-400")} />{index === 2 ? "Error" : "Completed"}</td><td className={cn("border-b px-4 py-4 text-sm", isDark ? "border-white/10 text-slate-400" : "border-slate-100 text-slate-500")}>1m {index + 12}s</td><td className={cn("border-b px-4 py-4 text-sm", isDark ? "border-white/10 text-slate-400" : "border-slate-100 text-slate-500")}>{index + 1} hours ago</td></tr> })}</tbody></table></div></Shell>
@@ -11060,7 +11060,7 @@ renderFeatureSection(feature)`}</code>
               <div className="flex gap-4">
                 <span className="grid size-14 shrink-0 place-items-center rounded-xl bg-indigo-600 text-sm font-bold text-white">UI</span>
                 <div>
-                  <p className="text-sm text-slate-400">Invoice #00011</p>
+                  <p className="text-sm text-slate-400">Invoice 00011</p>
                   <h4 className="text-2xl font-semibold tracking-normal md:text-3xl">Tuple, Inc</h4>
                 </div>
               </div>
@@ -11814,7 +11814,7 @@ renderFeatureSection(feature)`}</code>
       <div className="bg-background p-4 md:p-8">
         <div className={cn(
           "mx-auto flex min-h-[210px] max-w-6xl items-center overflow-hidden rounded-md border",
-          dark ? "border-slate-900 bg-[#2b1036]" : "border-pink-100 bg-pink-100"
+          dark ? "border-slate-900 bg-[color-mix(in_srgb,var(--color-fuchsia-950)_70%,black)]" : "border-pink-100 bg-pink-100"
         )}>
           <div className={cn("mx-auto w-full", innerWidth)}>
             <div className={cn(
@@ -11824,7 +11824,7 @@ renderFeatureSection(feature)`}</code>
             )}>
               <div className={cn(
                 "h-full w-full border border-dashed",
-                dark ? "border-slate-500/40 bg-[repeating-linear-gradient(135deg,rgba(148,163,184,0.16)_0,rgba(148,163,184,0.16)_1px,transparent_1px,transparent_8px)]" : "border-slate-300 bg-[repeating-linear-gradient(135deg,rgba(203,213,225,0.55)_0,rgba(203,213,225,0.55)_1px,transparent_1px,transparent_8px)]"
+                dark ? "border-slate-500/40 bg-[repeating-linear-gradient(135deg,color-mix(in_srgb,var(--color-slate-400)_16%,transparent)_0,color-mix(in_srgb,var(--color-slate-400)_16%,transparent)_1px,transparent_1px,transparent_8px)]" : "border-slate-300 bg-[repeating-linear-gradient(135deg,color-mix(in_srgb,var(--color-slate-300)_55%,transparent)_0,color-mix(in_srgb,var(--color-slate-300)_55%,transparent)_1px,transparent_1px,transparent_8px)]"
               )} />
             </div>
           </div>
@@ -11863,7 +11863,7 @@ renderFeatureSection(feature)`}</code>
               )}
               <div className={cn(
                 "h-28 p-4",
-                dark ? "bg-[repeating-linear-gradient(135deg,rgba(148,163,184,0.11)_0,rgba(148,163,184,0.11)_1px,transparent_1px,transparent_8px)]" : grayBody ? "bg-slate-50" : "bg-white"
+                dark ? "bg-[repeating-linear-gradient(135deg,color-mix(in_srgb,var(--color-slate-400)_11%,transparent)_0,color-mix(in_srgb,var(--color-slate-400)_11%,transparent)_1px,transparent_1px,transparent_8px)]" : grayBody ? "bg-slate-50" : "bg-white"
               )}>
                 <div className={cn("h-full rounded border border-dashed", dark ? "border-slate-700/60" : "border-slate-200")} />
               </div>
@@ -11888,8 +11888,8 @@ renderFeatureSection(feature)`}</code>
     const rows = [0, 1, 2]
     const RowSkeleton = ({ boxed = false }: { boxed?: boolean }) => (
       <div className={cn(
-        "h-12 border bg-[repeating-linear-gradient(135deg,rgba(203,213,225,0.45)_0,rgba(203,213,225,0.45)_1px,transparent_1px,transparent_8px)]",
-        dark ? "border-slate-800 bg-[repeating-linear-gradient(135deg,rgba(148,163,184,0.12)_0,rgba(148,163,184,0.12)_1px,transparent_1px,transparent_8px)]" : "border-slate-200",
+        "h-12 border bg-[repeating-linear-gradient(135deg,color-mix(in_srgb,var(--color-slate-300)_45%,transparent)_0,color-mix(in_srgb,var(--color-slate-300)_45%,transparent)_1px,transparent_1px,transparent_8px)]",
+        dark ? "border-slate-800 bg-[repeating-linear-gradient(135deg,color-mix(in_srgb,var(--color-slate-400)_12%,transparent)_0,color-mix(in_srgb,var(--color-slate-400)_12%,transparent)_1px,transparent_1px,transparent_8px)]" : "border-slate-200",
         boxed ? dark ? "rounded-md bg-slate-900" : "rounded-md bg-white" : "border-x-0 border-t-0 first:border-t"
       )} />
     )
@@ -11908,7 +11908,7 @@ renderFeatureSection(feature)`}</code>
             <div className={cn("w-full max-w-[420px] overflow-hidden rounded-md border shadow-sm", dark ? "border-slate-800 bg-slate-900" : "border-slate-200 bg-white")}>
               {rows.map((row) => (
                 <div key={row} className={cn("p-4", row > 0 && (dark ? "border-t border-slate-800" : "border-t border-slate-200"))}>
-                  <div className={cn("h-10 border bg-[repeating-linear-gradient(135deg,rgba(203,213,225,0.45)_0,rgba(203,213,225,0.45)_1px,transparent_1px,transparent_8px)]", dark ? "border-slate-800 bg-slate-900" : "border-slate-200 bg-white")} />
+                  <div className={cn("h-10 border bg-[repeating-linear-gradient(135deg,color-mix(in_srgb,var(--color-slate-300)_45%,transparent)_0,color-mix(in_srgb,var(--color-slate-300)_45%,transparent)_1px,transparent_1px,transparent_8px)]", dark ? "border-slate-800 bg-slate-900" : "border-slate-200 bg-white")} />
                 </div>
               ))}
             </div>
@@ -12704,7 +12704,7 @@ renderFeatureSection(feature)`}</code>
           </header>
           <div className={cn("px-6 py-8", dark ? "bg-gradient-to-r from-slate-950 via-slate-950 to-fuchsia-950/40" : "bg-gradient-to-r from-white via-white to-fuchsia-50")}>
             <div className="flex items-center justify-between">
-              <div className="flex items-center gap-4"><span className={cn("grid size-12 place-items-center rounded-full", dark ? "bg-indigo-400/10 text-indigo-300" : "bg-indigo-50 text-indigo-600")}><Archive className="size-5" /></span><div><p className="text-xs text-slate-500">Invoice #00011</p><h4 className="font-semibold">Tuple, Inc</h4></div></div>
+              <div className="flex items-center gap-4"><span className={cn("grid size-12 place-items-center rounded-full", dark ? "bg-indigo-400/10 text-indigo-300" : "bg-indigo-50 text-indigo-600")}><Archive className="size-5" /></span><div><p className="text-xs text-slate-500">Invoice 00011</p><h4 className="font-semibold">Tuple, Inc</h4></div></div>
               <div className="flex gap-3 text-sm font-semibold"><button className="hidden transition hover:text-indigo-600 md:inline" type="button" onClick={() => setPostedComment("Invoice URL copied")}>Copy URL</button><button className="hidden transition hover:text-indigo-600 md:inline" type="button" onClick={() => setPostedComment("Invoice edit opened")}>Edit</button><button className="rounded-md bg-indigo-600 px-3 py-2 text-white transition hover:-translate-y-0.5 active:scale-[0.98]" type="button" onClick={() => setPostedComment("Invoice sent")}>Send</button></div>
             </div>
             {postedComment && <p className={cn("mt-4 rounded-md px-3 py-2 text-xs font-medium", dark ? "bg-indigo-400/10 text-indigo-200" : "bg-indigo-50 text-indigo-700")}>{postedComment}</p>}
@@ -15422,7 +15422,7 @@ renderFeatureSection(feature)`}</code>
         <section className={cn("px-5 py-10 md:min-h-[860px] md:px-10 md:py-14", isOrderSummaryDark ? "bg-slate-950 text-slate-100" : "bg-slate-50 text-slate-950")} data-order-summary-theme={orderSummaryTheme}>
           <div className="mx-auto max-w-6xl rounded-lg bg-white p-5 shadow-sm ring-1 ring-slate-200 md:p-8">
             <div className="flex flex-wrap items-start justify-between gap-4">
-              <div><h4 className="text-2xl font-semibold tracking-normal text-slate-950">Order #54879</h4><p className="mt-1 text-sm text-slate-500">Order placed March 22, 2026</p></div>
+              <div><h4 className="text-2xl font-semibold tracking-normal text-slate-950">Order 54879</h4><p className="mt-1 text-sm text-slate-500">Order placed March 22, 2026</p></div>
               <button aria-label="Order invoice" aria-pressed={activeNavItem === "Order invoice"} className="text-sm font-semibold text-indigo-600 transition hover:text-indigo-500" type="button" onClick={() => selectOrderAction("Order invoice", "Order invoice opened")}>View invoice</button>
             </div>
             {postedComment && <p className="mt-5 rounded-md bg-indigo-50 px-3 py-2 text-xs font-medium text-indigo-700">{postedComment}</p>}
@@ -17196,7 +17196,7 @@ renderFeatureSection(feature)`}</code>
           <Nav />
           <main className="px-5 py-10 md:px-10 md:py-14">
             <div className="mx-auto max-w-6xl">
-              <div className="flex flex-wrap items-start justify-between gap-4"><div><h3 className={cn("text-2xl font-semibold tracking-normal", orderDetailHeadingClass)}>Order #54879</h3><p className={cn("mt-2 text-sm", orderDetailMutedClass)}>Order placed March 22, 2027</p></div><button aria-label="Open order detail invoice 54879" aria-pressed={activeNavItem === "order-detail-invoice-54879"} className="text-sm font-medium text-indigo-600 transition hover:text-indigo-500 active:scale-[0.98] aria-pressed:underline" type="button" onClick={() => selectOrderDetailAction("order-detail-invoice-54879", "Invoice 54879 opened")}>View invoice</button></div>
+              <div className="flex flex-wrap items-start justify-between gap-4"><div><h3 className={cn("text-2xl font-semibold tracking-normal", orderDetailHeadingClass)}>Order 54879</h3><p className={cn("mt-2 text-sm", orderDetailMutedClass)}>Order placed March 22, 2027</p></div><button aria-label="Open order detail invoice 54879" aria-pressed={activeNavItem === "order-detail-invoice-54879"} className="text-sm font-medium text-indigo-600 transition hover:text-indigo-500 active:scale-[0.98] aria-pressed:underline" type="button" onClick={() => selectOrderDetailAction("order-detail-invoice-54879", "Invoice 54879 opened")}>View invoice</button></div>
               {postedComment && <p className={cn("mt-4 rounded-md px-3 py-2 text-sm font-medium transition animate-in fade-in slide-in-from-top-1", orderDetailFeedbackClass)}>{postedComment}</p>}
               <div className="mt-8 space-y-8">
                 {items.map((item) => (
@@ -17230,7 +17230,7 @@ renderFeatureSection(feature)`}</code>
           <Nav />
           <main className="px-5 py-10 md:px-10 md:py-14">
             <div className="mx-auto max-w-6xl">
-              <div className="flex flex-wrap items-start justify-between gap-4"><div><h3 className={cn("text-2xl font-semibold tracking-normal", orderDetailHeadingClass)}>Order Details</h3><p className={cn("mt-2 text-sm", orderDetailMutedClass)}>Order #58014 placed March 23, 2027</p></div><button aria-label="Open order detail invoice 58014" aria-pressed={activeNavItem === "order-detail-invoice-58014"} className="text-sm font-medium text-indigo-600 transition hover:text-indigo-500 active:scale-[0.98] aria-pressed:underline" type="button" onClick={() => selectOrderDetailAction("order-detail-invoice-58014", "Invoice 58014 opened")}>View invoice</button></div>
+              <div className="flex flex-wrap items-start justify-between gap-4"><div><h3 className={cn("text-2xl font-semibold tracking-normal", orderDetailHeadingClass)}>Order Details</h3><p className={cn("mt-2 text-sm", orderDetailMutedClass)}>Order 58014 placed March 23, 2027</p></div><button aria-label="Open order detail invoice 58014" aria-pressed={activeNavItem === "order-detail-invoice-58014"} className="text-sm font-medium text-indigo-600 transition hover:text-indigo-500 active:scale-[0.98] aria-pressed:underline" type="button" onClick={() => selectOrderDetailAction("order-detail-invoice-58014", "Invoice 58014 opened")}>View invoice</button></div>
               {postedComment && <p className={cn("mt-4 rounded-md px-3 py-2 text-sm font-medium transition animate-in fade-in slide-in-from-top-1", orderDetailFeedbackClass)}>{postedComment}</p>}
               <div className="mt-8 space-y-10">
                 {shirts.map((item) => (
@@ -17254,7 +17254,7 @@ renderFeatureSection(feature)`}</code>
           <div className="mx-auto max-w-3xl">
             <p className="text-sm text-indigo-600">Thank you!</p>
             <h3 className={cn("mt-2 text-3xl font-semibold tracking-normal", orderDetailHeadingClass)}>It's on the way!</h3>
-            <p className={cn("mt-3 text-sm leading-6", orderDetailMutedClass)}>Your order #14034056 has shipped and will be with you soon.</p>
+            <p className={cn("mt-3 text-sm leading-6", orderDetailMutedClass)}>Your order 14034056 has shipped and will be with you soon.</p>
             <div className={cn("mt-8 rounded-md border p-6 transition-colors", orderDetailPanelClass)}>
             <p className={cn("text-sm font-semibold", orderDetailHeadingClass)}>Tracking number</p>
               <button aria-label="Copy order detail tracking number" aria-pressed={activeNavItem === "order-detail-tracking-copy"} className="mt-2 text-sm font-medium text-indigo-600 transition hover:text-indigo-500 active:scale-[0.98] aria-pressed:underline" type="button" onClick={() => selectOrderDetailAction("order-detail-tracking-copy", "Tracking copied")}>51547878755545848512</button>
@@ -17633,7 +17633,7 @@ renderFeatureSection(feature)`}</code>
 
           {variant === "commerce-order-page" && (
             <div className="rounded-md border bg-muted/15 p-5">
-              <div className="flex flex-wrap items-center justify-between gap-3"><div><p className="text-sm text-muted-foreground">Order #1048</p><h4 className="mt-1 text-2xl font-semibold tracking-normal">{activeNavItem || "Delivered"} on June 28</h4></div><span className="rounded-full bg-emerald-100 px-3 py-1 text-xs text-emerald-900">Delivered</span></div>
+              <div className="flex flex-wrap items-center justify-between gap-3"><div><p className="text-sm text-muted-foreground">Order 1048</p><h4 className="mt-1 text-2xl font-semibold tracking-normal">{activeNavItem || "Delivered"} on June 28</h4></div><span className="rounded-full bg-emerald-100 px-3 py-1 text-xs text-emerald-900">Delivered</span></div>
               <div className="mt-5 grid gap-3 md:grid-cols-4">{["Placed", "Paid", "Shipped", "Delivered"].map((item) => <button key={item} className={cn("rounded-md border p-3 text-left text-sm transition hover:border-primary/40 active:scale-[0.99]", (activeNavItem === item || (!activeNavItem && item === "Delivered")) ? "bg-primary/5 text-primary" : "bg-background")} type="button" onClick={() => { setActiveNavItem(item); setPostedComment(`${item} order step opened`) }}>{item}</button>)}</div>
               <div className="mt-5 rounded-md border bg-background p-4"><p className="font-medium">Items</p><div className="mt-3 space-y-2 text-sm text-muted-foreground"><p>Everyday tote x 1</p><p>Canvas cap x 2</p></div></div>
             </div>

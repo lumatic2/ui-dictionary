@@ -3173,7 +3173,7 @@ function CartSummaryBarVisual() {
           <Line className="w-9" />
         </div>
       </div>
-      <div className="absolute inset-x-1 bottom-1 rounded-b-[1rem] border-t bg-card/95 p-1.5 shadow-[0_-8px_18px_rgba(15,23,42,.14)] backdrop-blur">
+      <div className="absolute inset-x-1 bottom-1 rounded-b-[1rem] border-t bg-card/95 p-1.5 shadow-[0_-8px_18px_color-mix(in_srgb,var(--color-slate-900)_14%,transparent)] backdrop-blur">
         <button type="button" className="mb-1 flex w-full items-center justify-between text-left" onClick={() => setCount((value) => value + 1)}>
           <span className="flex items-center gap-1 font-medium">
             <ShoppingCart aria-hidden="true" className="size-3 text-primary" />
@@ -3970,7 +3970,7 @@ function SocialLoginButtonGroupVisual({ active, onSelect }: { active: boolean; o
     {
       id: "kakao",
       label: "카카오로 계속하기",
-      className: "border-[#FEE500] bg-[#FEE500] text-[#181600]",
+      className: "border-[var(--brand-kakao-container)] bg-[var(--brand-kakao-container)] text-[var(--brand-kakao-label)]",
       icon: <KakaoIcon />,
     },
     {
@@ -3982,7 +3982,7 @@ function SocialLoginButtonGroupVisual({ active, onSelect }: { active: boolean; o
     {
       id: "email",
       label: "이메일로 계속하기",
-      className: "border-[#3F3F3F] bg-[#3F3F3F] text-white",
+      className: "border-[var(--brand-neutral-auth)] bg-[var(--brand-neutral-auth)] text-white",
       icon: <EmailIcon />,
     },
     {
@@ -4414,10 +4414,10 @@ function FrontendUtilityVisual({ kind }: { kind: FrontendUtilityKind }) {
   const [active, setActive] = useState(false)
 
   if (kind === "glassmorphism-surface") {
-    return <div className="relative h-28 w-56 overflow-hidden rounded-md border bg-[linear-gradient(135deg,rgba(49,46,129,.55),rgba(20,184,166,.32),rgba(244,114,182,.28))] p-4"><div className="absolute inset-0 grid grid-cols-5 gap-2 p-3 opacity-70">{Array.from({ length: 10 }).map((_, item) => <span key={item} className="rounded bg-white/25" />)}</div><div className="relative rounded-xl border border-white/45 bg-white/35 p-3 text-xs text-slate-950 shadow-xl backdrop-blur-md"><b>Glass card</b><Line className="mt-2 w-24 bg-slate-900/25" /><span className="mt-2 block h-px w-full bg-white/60" /></div></div>
+    return <div className="relative h-28 w-56 overflow-hidden rounded-md border bg-[linear-gradient(135deg,color-mix(in_srgb,var(--color-indigo-900)_55%,transparent),color-mix(in_srgb,var(--color-teal-500)_32%,transparent),color-mix(in_srgb,var(--color-pink-400)_28%,transparent))] p-4"><div className="absolute inset-0 grid grid-cols-5 gap-2 p-3 opacity-70">{Array.from({ length: 10 }).map((_, item) => <span key={item} className="rounded bg-white/25" />)}</div><div className="relative rounded-xl border border-white/45 bg-white/35 p-3 text-xs text-slate-950 shadow-xl backdrop-blur-md"><b>Glass card</b><Line className="mt-2 w-24 bg-slate-900/25" /><span className="mt-2 block h-px w-full bg-white/60" /></div></div>
   }
   if (kind === "translucent-surface") {
-    return <div className="relative h-28 w-56 overflow-hidden rounded-md border bg-[linear-gradient(135deg,rgba(79,70,229,.25),rgba(16,185,129,.28))] p-4"><div className="absolute inset-0 p-3"><div className="grid h-full grid-cols-4 gap-2">{Array.from({ length: 8 }).map((_, item) => <span key={item} className="rounded bg-primary/20" />)}</div></div><div className="relative rounded-md border bg-background/60 p-3 text-xs shadow-sm"><b>Alpha surface</b><Line className="mt-2 w-28" /></div></div>
+    return <div className="relative h-28 w-56 overflow-hidden rounded-md border bg-[linear-gradient(135deg,color-mix(in_srgb,var(--color-indigo-600)_25%,transparent),color-mix(in_srgb,var(--color-emerald-500)_28%,transparent))] p-4"><div className="absolute inset-0 p-3"><div className="grid h-full grid-cols-4 gap-2">{Array.from({ length: 8 }).map((_, item) => <span key={item} className="rounded bg-primary/20" />)}</div></div><div className="relative rounded-md border bg-background/60 p-3 text-xs shadow-sm"><b>Alpha surface</b><Line className="mt-2 w-28" /></div></div>
   }
   if (kind === "hairline-border") {
     return <div className="flex w-60 items-center justify-center gap-3 rounded-md border bg-muted/25 p-4 text-xs"><span className="flex size-16 items-center justify-center rounded-md border border-border/60 bg-card">1px</span><span className="flex size-16 items-center justify-center rounded-md border-2 bg-card">2px</span><span className="flex size-16 items-center justify-center rounded-md bg-card shadow-md">shadow</span></div>
@@ -4426,7 +4426,7 @@ function FrontendUtilityVisual({ kind }: { kind: FrontendUtilityKind }) {
     return <div className="flex w-60 items-center justify-center gap-3 rounded-md border bg-muted/25 p-4 text-xs"><span className="flex h-14 w-20 items-center justify-center rounded-md border bg-background shadow-inner">inset</span><span className="flex h-14 w-20 items-center justify-center rounded-md border bg-card shadow-md">raised</span></div>
   }
   if (kind === "noise-texture") {
-    return <div className="relative h-28 w-56 overflow-hidden rounded-md border bg-[linear-gradient(135deg,rgba(79,70,229,.45),rgba(244,114,182,.32),rgba(20,184,166,.35))] p-4 text-xs"><div className="absolute inset-0 opacity-35 [background-image:radial-gradient(circle,rgba(255,255,255,.75)_1px,transparent_1px)] [background-size:6px_6px]" /><div className="relative rounded-md border bg-background/75 p-3"><b>Noise texture</b><Line className="mt-2 w-28" /></div></div>
+    return <div className="relative h-28 w-56 overflow-hidden rounded-md border bg-[linear-gradient(135deg,color-mix(in_srgb,var(--color-indigo-600)_45%,transparent),color-mix(in_srgb,var(--color-pink-400)_32%,transparent),color-mix(in_srgb,var(--color-teal-500)_35%,transparent))] p-4 text-xs"><div className="absolute inset-0 opacity-35 [background-image:radial-gradient(circle,color-mix(in_srgb,white_75%,transparent)_1px,transparent_1px)] [background-size:6px_6px]" /><div className="relative rounded-md border bg-background/75 p-3"><b>Noise texture</b><Line className="mt-2 w-28" /></div></div>
   }
   if (kind === "highlight-stroke") {
     return <div className="flex h-28 w-56 items-center justify-center rounded-md border bg-slate-950 p-4 text-xs text-white"><div className="relative w-40 rounded-xl border border-white/10 bg-slate-900 p-3 shadow-xl"><span className="absolute inset-x-3 top-0 h-px bg-white/70" /><span className="absolute left-0 top-3 h-12 w-px bg-white/25" /><b>Edge light</b><div className="mt-3 h-2 w-24 rounded-full bg-white/25" /></div></div>
@@ -4477,7 +4477,7 @@ function FrontendUtilityVisual({ kind }: { kind: FrontendUtilityKind }) {
     return <Chrome className="flex w-56 items-center justify-center gap-3 p-4">{[100, 60, 25].map((level) => <span key={level} className="size-12 rounded-md bg-primary" style={{ opacity: level / 100 }} />)}</Chrome>
   }
   if (kind === "backdrop-blur") {
-    return <div className="relative h-28 w-56 overflow-hidden rounded-md border bg-[linear-gradient(135deg,rgba(98,80,220,.35),rgba(30,180,160,.28))] p-4"><div className="absolute inset-0 grid grid-cols-4 gap-2 p-3 opacity-70">{Array.from({ length: 8 }).map((_, item) => <span key={item} className="rounded bg-background/50" />)}</div><div className="relative rounded-md border bg-background/55 p-3 text-xs shadow-sm backdrop-blur-md"><b>Backdrop</b><Line className="mt-2 w-24" /></div></div>
+    return <div className="relative h-28 w-56 overflow-hidden rounded-md border bg-[linear-gradient(135deg,color-mix(in_srgb,var(--color-indigo-500)_35%,transparent),color-mix(in_srgb,var(--color-teal-500)_28%,transparent))] p-4"><div className="absolute inset-0 grid grid-cols-4 gap-2 p-3 opacity-70">{Array.from({ length: 8 }).map((_, item) => <span key={item} className="rounded bg-background/50" />)}</div><div className="relative rounded-md border bg-background/55 p-3 text-xs shadow-sm backdrop-blur-md"><b>Backdrop</b><Line className="mt-2 w-24" /></div></div>
   }
   if (kind === "shadow-elevation") {
     return <div className="flex w-60 items-end justify-center gap-3 rounded-md border bg-muted/30 p-4">{["shadow-sm", "shadow-md", "shadow-xl"].map((shadow, index) => <span key={shadow} className={cn("flex size-12 items-center justify-center rounded-md border bg-card text-xs", shadow)}>{index + 1}</span>)}</div>
@@ -4486,7 +4486,7 @@ function FrontendUtilityVisual({ kind }: { kind: FrontendUtilityKind }) {
     return <Chrome className="flex w-56 items-center justify-center gap-3 p-4">{["rounded-none", "rounded-md", "rounded-2xl"].map((radius) => <span key={radius} className={cn("size-12 border bg-primary/15", radius)} />)}</Chrome>
   }
   if (kind === "gradient-fill") {
-    return <div className="h-24 w-56 rounded-md border bg-[linear-gradient(120deg,rgba(79,70,229,.85),rgba(20,184,166,.68),rgba(244,114,182,.72))] p-4 text-xs text-white shadow-sm"><b>Gradient fill</b><div className="mt-3 h-2 w-28 rounded-full bg-white/45" /></div>
+    return <div className="h-24 w-56 rounded-md border bg-[linear-gradient(120deg,color-mix(in_srgb,var(--color-indigo-600)_85%,transparent),color-mix(in_srgb,var(--color-teal-500)_68%,transparent),color-mix(in_srgb,var(--color-pink-400)_72%,transparent))] p-4 text-xs text-white shadow-sm"><b>Gradient fill</b><div className="mt-3 h-2 w-28 rounded-full bg-white/45" /></div>
   }
   if (kind === "color-contrast") {
     return <Chrome className="grid w-60 grid-cols-2 gap-2 p-3 text-center text-xs"><div className="rounded bg-foreground px-2 py-4 font-semibold text-background">Pass</div><div className="rounded bg-muted px-2 py-4 text-muted-foreground/45">Fail</div></Chrome>
@@ -4516,7 +4516,7 @@ function FrontendUtilityVisual({ kind }: { kind: FrontendUtilityKind }) {
     return <Chrome className="h-28 w-56 overflow-hidden p-3 text-xs"><b>Container</b><div className="mt-2 flex w-80 gap-2">{Array.from({ length: 6 }).map((_, item) => <span key={item} className="h-10 w-14 shrink-0 rounded bg-primary/15" />)}</div></Chrome>
   }
   if (kind === "clipping-mask") {
-    return <div className="flex h-28 w-56 items-center justify-center rounded-md border bg-[linear-gradient(135deg,rgba(79,70,229,.45),rgba(20,184,166,.45))]"><span className="size-20 rounded-full border-4 border-background bg-[linear-gradient(135deg,var(--primary),var(--destructive))] shadow-sm" /></div>
+    return <div className="flex h-28 w-56 items-center justify-center rounded-md border bg-[linear-gradient(135deg,color-mix(in_srgb,var(--color-indigo-600)_45%,transparent),color-mix(in_srgb,var(--color-teal-500)_45%,transparent))]"><span className="size-20 rounded-full border-4 border-background bg-[linear-gradient(135deg,var(--primary),var(--destructive))] shadow-sm" /></div>
   }
   if (kind === "breakpoint" || kind === "responsive-layout") {
     return <Chrome className="flex w-64 items-end justify-center gap-3 p-3 text-xs"><div className="h-24 w-16 rounded border bg-background p-2"><Line className="w-8" /><Line className="mt-2 w-10" /></div><div className="grid h-24 w-32 grid-cols-2 gap-2 rounded border bg-background p-2"><Line /><Line /><Line /><Line /></div></Chrome>
@@ -4626,7 +4626,7 @@ function ExternalEcosystemVisual({ kind }: { kind: ExternalEcosystemKind }) {
     return <div className="relative h-32 w-64 overflow-hidden rounded border bg-foreground p-4 text-center text-background"><span className="absolute left-1/2 top-0 h-24 w-32 -translate-x-1/2 rounded-full bg-primary/40 blur-xl" /><b className="relative">Askewly AI</b><p className="relative mt-2 text-xs">Design faster</p></div>
   }
 
-  return <Chrome className="relative h-28 w-56 overflow-hidden p-3 text-xs"><div className={cn("absolute inset-0", (kind.includes("grid") || kind.includes("dot")) && "bg-[radial-gradient(circle,rgba(0,0,0,.18)_1px,transparent_1px)] [background-size:12px_12px]", kind.includes("gradient") || kind.includes("aurora") ? "bg-gradient-to-br from-primary/30 via-muted to-destructive/20" : "bg-muted/40")} /><div className="relative rounded border bg-card/80 p-3"><b>{kind.includes("shiny") ? "New feature" : kind.includes("beam") ? "Beam effect" : "Visual effect"}</b><Line className="mt-2 w-24" /></div></Chrome>
+  return <Chrome className="relative h-28 w-56 overflow-hidden p-3 text-xs"><div className={cn("absolute inset-0", (kind.includes("grid") || kind.includes("dot")) && "bg-[radial-gradient(circle,color-mix(in_srgb,black_18%,transparent)_1px,transparent_1px)] [background-size:12px_12px]", kind.includes("gradient") || kind.includes("aurora") ? "bg-gradient-to-br from-primary/30 via-muted to-destructive/20" : "bg-muted/40")} /><div className="relative rounded border bg-card/80 p-3"><b>{kind.includes("shiny") ? "New feature" : kind.includes("beam") ? "Beam effect" : "Visual effect"}</b><Line className="mt-2 w-24" /></div></Chrome>
 }
 
 function SettingsPageLayoutVisual() {
@@ -4955,7 +4955,7 @@ function OrbitingIconsVisual() {
 function AnimatedGradientBackgroundVisual() {
   return (
     <div className="visual-hover-surface relative h-32 w-64 overflow-hidden rounded-md border bg-card p-3 text-xs">
-      <div className="visual-gradient-shift absolute inset-0 bg-[linear-gradient(120deg,rgba(96,80,220,.35),rgba(64,220,190,.24),rgba(255,100,120,.28),rgba(96,80,220,.35))] bg-[length:240%_240%]" />
+      <div className="visual-gradient-shift absolute inset-0 bg-[linear-gradient(120deg,color-mix(in_srgb,var(--color-indigo-500)_35%,transparent),color-mix(in_srgb,var(--color-teal-400)_24%,transparent),color-mix(in_srgb,var(--color-rose-400)_28%,transparent),color-mix(in_srgb,var(--color-indigo-500)_35%,transparent))] bg-[length:240%_240%]" />
       <div className="absolute inset-0 bg-white/15" />
       <div className="relative rounded border bg-card/80 p-3 shadow-sm">
         <b>Animated gradient</b>
@@ -4983,7 +4983,7 @@ function SpotlightCardVisual() {
   return (
     <button type="button" className="visual-hover-surface relative h-28 w-56 overflow-hidden rounded-md border bg-card p-4 text-left text-xs shadow-sm" onClick={() => setActive((value) => !value)}>
       <span className={cn("visual-spotlight absolute size-32 rounded-full bg-primary/25 blur-xl", active ? "left-1/2 top-1/2" : "-right-8 -top-8")} />
-      <span className={cn("absolute inset-0 transition-opacity", active ? "bg-[radial-gradient(circle_at_52%_58%,rgba(255,255,255,.9),transparent_34%)]" : "bg-[radial-gradient(circle_at_75%_20%,rgba(255,255,255,.9),transparent_36%)]")} />
+      <span className={cn("absolute inset-0 transition-opacity", active ? "bg-[radial-gradient(circle_at_52%_58%,color-mix(in_srgb,white_90%,transparent),transparent_34%)]" : "bg-[radial-gradient(circle_at_75%_20%,color-mix(in_srgb,white_90%,transparent),transparent_36%)]")} />
       <div className="relative">
         <b>Spotlight card</b>
         <Line className="mt-3 w-28" />
@@ -5000,8 +5000,8 @@ function PatternBackgroundVisual({ pattern }: { pattern: "grid" | "dot" }) {
         className={cn(
           "absolute inset-0 opacity-60",
           pattern === "grid"
-            ? "bg-[linear-gradient(rgba(80,80,120,.18)_1px,transparent_1px),linear-gradient(90deg,rgba(80,80,120,.18)_1px,transparent_1px)] bg-[size:18px_18px]"
-            : "bg-[radial-gradient(circle,rgba(80,80,120,.28)_1.2px,transparent_1.2px)] bg-[size:14px_14px]"
+            ? "bg-[linear-gradient(color-mix(in_srgb,var(--color-slate-600)_18%,transparent)_1px,transparent_1px),linear-gradient(90deg,color-mix(in_srgb,var(--color-slate-600)_18%,transparent)_1px,transparent_1px)] bg-[size:18px_18px]"
+            : "bg-[radial-gradient(circle,color-mix(in_srgb,var(--color-slate-600)_28%,transparent)_1.2px,transparent_1.2px)] bg-[size:14px_14px]"
         )}
       />
       <div className="relative rounded border bg-card/85 p-3">
@@ -5101,7 +5101,7 @@ function AuroraBackgroundVisual() {
 function CanvasRevealCardVisual({ active, onToggle }: { active: boolean; onToggle: () => void }) {
   return (
     <button type="button" className="visual-hover-surface relative h-32 w-52 overflow-hidden rounded-md border bg-card p-3 text-left text-xs" onClick={onToggle}>
-      <div className="absolute inset-0 bg-[radial-gradient(circle_at_35%_35%,rgba(80,80,220,.35),transparent_28%),radial-gradient(circle_at_70%_55%,rgba(64,220,190,.25),transparent_24%)]" />
+      <div className="absolute inset-0 bg-[radial-gradient(circle_at_35%_35%,color-mix(in_srgb,var(--color-indigo-600)_35%,transparent),transparent_28%),radial-gradient(circle_at_70%_55%,color-mix(in_srgb,var(--color-teal-400)_25%,transparent),transparent_24%)]" />
       <span className="visual-reveal-sweep absolute inset-y-0 w-16 -skew-x-12 bg-white/35" />
       <div className={cn("absolute inset-0 grid grid-cols-5 gap-px bg-card/80 transition-opacity", active && "opacity-35")}>
         {Array.from({ length: 25 }).map((_, index) => <span key={index} className="bg-background/80" />)}

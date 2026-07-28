@@ -22,6 +22,8 @@
 
 import { useEffect, useRef } from "react"
 
+import { hslaToHex } from "@/lib/css-color"
+
 type Stroke = {
   x: number
   y: number
@@ -124,9 +126,9 @@ export function WatercolorPointerField({
         const radius = s.r * (1 + (1 - s.life) * 1.6)
         const gradient = context.createRadialGradient(s.x, s.y, 0, s.x, s.y, radius)
         // 가장자리로 갈수록 급히 옅어져야 종이에 스민 것처럼 보인다 — 선형 감쇠는 스티커처럼 보인다.
-        gradient.addColorStop(0, `hsl(${s.hue} 85% 62% / ${0.26 * s.life})`)
-        gradient.addColorStop(0.45, `hsl(${s.hue} 80% 66% / ${0.12 * s.life})`)
-        gradient.addColorStop(1, `hsl(${s.hue} 75% 70% / 0)`)
+        gradient.addColorStop(0, hslaToHex(s.hue, 85, 62, 0.26 * s.life))
+        gradient.addColorStop(0.45, hslaToHex(s.hue, 80, 66, 0.12 * s.life))
+        gradient.addColorStop(1, hslaToHex(s.hue, 75, 70, 0))
         context.fillStyle = gradient
         context.beginPath()
         context.arc(s.x, s.y, radius, 0, Math.PI * 2)

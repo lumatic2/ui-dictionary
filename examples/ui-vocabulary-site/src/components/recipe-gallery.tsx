@@ -60,7 +60,7 @@ function RecipeGalleryIndex({ onSelect }: { onSelect: (slug: string) => void }) 
 function RecipeCard({ entry, onSelect }: { entry: RecipeGalleryEntry; onSelect: (slug: string) => void }) {
   return (
     <button
-      className="flex h-full flex-col gap-2 rounded-md border bg-card p-4 text-left text-card-foreground shadow-sm transition hover:-translate-y-0.5 hover:border-askewly-lavender hover:shadow-[0_18px_50px_rgba(15,23,42,0.08)]"
+      className="flex h-full flex-col gap-2 rounded-md border bg-card p-4 text-left text-card-foreground shadow-sm transition hover:-translate-y-0.5 hover:border-askewly-lavender hover:shadow-[0_18px_50px_color-mix(in_srgb,var(--color-slate-900)_8%,transparent)]"
       type="button"
       onClick={() => onSelect(entry.slug)}
     >

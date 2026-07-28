@@ -258,7 +258,7 @@ function DashboardShowcase() {
   const maxVolume = Math.max(...dashboardDeployVolume)
 
   return (
-    <div className="min-h-[26rem] rounded-[1.75rem] border border-white/18 bg-white/[0.03] p-6 shadow-[0_24px_120px_rgba(0,0,0,0.35)]">
+    <div className="min-h-[26rem] rounded-[1.75rem] border border-white/18 bg-white/[0.03] p-6 shadow-[0_24px_120px_color-mix(in_srgb,black_35%,transparent)]">
       <div className="flex items-center justify-between">
         <p className="font-mono text-[10px] font-semibold uppercase tracking-[0.2em] text-white/36">Live status</p>
         <p className="font-mono text-[10px] text-white/36">Updated 2m ago</p>
@@ -699,7 +699,7 @@ export function AtlasDemo({ id }: { id: AtlasItemId }) {
 
           <div
             ref={agentCanvasRef}
-            className="relative mt-4 min-h-[16rem] flex-1 overflow-hidden rounded-md border border-slate-200 bg-white bg-[linear-gradient(90deg,rgba(15,23,42,0.03)_1px,transparent_1px),linear-gradient(rgba(15,23,42,0.03)_1px,transparent_1px)] bg-[size:28px_28px] [perspective:700px]"
+            className="relative mt-4 min-h-[16rem] flex-1 overflow-hidden rounded-md border border-slate-200 bg-white bg-[linear-gradient(90deg,color-mix(in_srgb,var(--color-slate-900)_3%,transparent)_1px,transparent_1px),linear-gradient(color-mix(in_srgb,var(--color-slate-900)_3%,transparent)_1px,transparent_1px)] bg-[size:28px_28px] [perspective:700px]"
             onPointerMove={onCanvasPointerMove}
             onPointerDown={(event) => {
               if (!(event.target as HTMLElement).closest("[data-agent-asset='true']")) setAgentSelected(false)
@@ -752,8 +752,8 @@ export function AtlasDemo({ id }: { id: AtlasItemId }) {
                   className={cn(
                     "flex h-full min-h-0 flex-col overflow-hidden rounded-lg text-left transition-all duration-500",
                     agentScenario === "humanize" && agentPhase === "before"
-                      ? "gap-2 border border-fuchsia-400/30 bg-[linear-gradient(160deg,#2e1065,#4a1d96_45%,#831843)] p-3"
-                      : cn("gap-2.5 border border-slate-200 bg-white p-3 shadow-sm", alive && "hover:shadow-[0_16px_40px_rgba(111,45,189,0.18)]"),
+                      ? "gap-2 border border-fuchsia-400/30 bg-[linear-gradient(160deg,var(--color-violet-950),var(--color-violet-900)_45%,var(--color-pink-900))] p-3"
+                      : cn("gap-2.5 border border-slate-200 bg-white p-3 shadow-sm", alive && "hover:shadow-[0_16px_40px_color-mix(in_srgb,var(--askewly-violet)_18%,transparent)]"),
                   )}
                   style={alive ? { transform: `rotateX(${agentTilt.x}deg) rotateY(${agentTilt.y}deg)`, transformStyle: "preserve-3d" } : undefined}
                 >
@@ -762,16 +762,16 @@ export function AtlasDemo({ id }: { id: AtlasItemId }) {
                       <div className="flex items-start gap-1.5">
                         <img src="/assets/navbars/avatar-03.png" alt="" className="h-11 w-8 shrink-0 rounded-none object-cover ring-1 ring-fuchsia-400/70" />
                         <div className="min-w-0">
-                          <p className="truncate font-serif text-[17px] font-black italic leading-none text-cyan-300 [text-shadow:0_0_10px_rgba(34,211,238,0.9)]">Maya Okonkwo ✨</p>
+                          <p className="truncate font-serif text-[17px] font-black italic leading-none text-cyan-300 [text-shadow:0_0_10px_color-mix(in_srgb,var(--color-cyan-400)_90%,transparent)]">Maya Okonkwo ✨</p>
                           <p className="truncate text-[7px] uppercase tracking-[0.2em] text-fuchsia-200">🚀 Design Lead &amp; AI Visionary 🚀</p>
                         </div>
                       </div>
                       <p className="text-[12px] font-black leading-3 text-purple-100">“Our agents <span className="text-[8px] font-normal">finally ship UI</span> that looks INTENTIONAL 🔥🚀 not generated!! 💯✨”</p>
                       <div className="flex items-center gap-1">
-                        <span className="text-[15px] leading-none text-amber-300 [text-shadow:0_0_8px_rgba(252,211,77,0.9)]">★★★★★</span>
+                        <span className="text-[15px] leading-none text-amber-300 [text-shadow:0_0_8px_color-mix(in_srgb,var(--color-amber-300)_90%,transparent)]">★★★★★</span>
                         <span className="text-[7px] font-black uppercase text-fuchsia-300">100% Amazing!!!</span>
                       </div>
-                      <button type="button" className="mt-auto -rotate-2 self-center rounded-none bg-[linear-gradient(90deg,#22d3ee,#a855f7)] px-2 py-1.5 text-[15px] font-black uppercase leading-none tracking-tight text-white shadow-[0_0_16px_rgba(168,85,247,0.75)]">Read More 👉</button>
+                      <button type="button" className="mt-auto -rotate-2 self-center rounded-none bg-[linear-gradient(90deg,var(--color-cyan-400),var(--color-purple-500))] px-2 py-1.5 text-[15px] font-black uppercase leading-none tracking-tight text-white shadow-[0_0_16px_color-mix(in_srgb,var(--color-purple-500)_75%,transparent)]">Read More 👉</button>
                     </>
                   ) : (
                     (() => {
@@ -855,7 +855,7 @@ export function AtlasDemo({ id }: { id: AtlasItemId }) {
                   }
                 }}
               />
-              <button className="grid size-6 shrink-0 place-items-center rounded-md bg-askewly-violet text-white transition hover:bg-[#5f22a8] disabled:opacity-30" type="button" aria-label="Send message" disabled={!agentInput.trim()} onClick={sendAgentMessage}>
+              <button className="grid size-6 shrink-0 place-items-center rounded-md bg-askewly-violet text-white transition hover:bg-[color-mix(in_srgb,var(--askewly-violet)_85%,black)] disabled:opacity-30" type="button" aria-label="Send message" disabled={!agentInput.trim()} onClick={sendAgentMessage}>
                 <ArrowUp aria-hidden="true" className="size-3.5" />
               </button>
             </div>
@@ -895,7 +895,7 @@ export function AtlasDemo({ id }: { id: AtlasItemId }) {
           }))
         }}
       >
-        <div className="absolute inset-0 opacity-45 [background-image:linear-gradient(90deg,rgba(15,23,42,0.042)_1px,transparent_1px),linear-gradient(rgba(15,23,42,0.042)_1px,transparent_1px)] [background-size:34px_34px]" />
+        <div className="absolute inset-0 opacity-45 [background-image:linear-gradient(90deg,color-mix(in_srgb,var(--color-slate-900)_4.2%,transparent)_1px,transparent_1px),linear-gradient(color-mix(in_srgb,var(--color-slate-900)_4.2%,transparent)_1px,transparent_1px)] [background-size:34px_34px]" />
         {cursorField.map((cell) => (
           <span
             key={cell.id}
@@ -967,7 +967,7 @@ type CoverflowKind = "analytics" | "calendar" | "kanban" | "media" | "chat" | "p
 const coverflowCards: CoverflowKind[] = ["analytics", "calendar", "kanban", "media", "chat", "pricing"]
 
 function CoverflowCard({ kind }: { kind: CoverflowKind }) {
-  const frame = "h-[132px] w-40 overflow-hidden rounded-xl border border-slate-200 bg-white shadow-[0_20px_46px_rgba(0,0,0,0.5)]"
+  const frame = "h-[132px] w-40 overflow-hidden rounded-xl border border-slate-200 bg-white shadow-[0_20px_46px_color-mix(in_srgb,black_50%,transparent)]"
   if (kind === "analytics") {
     return (
       <div className={frame}>
@@ -1002,7 +1002,7 @@ function CoverflowCard({ kind }: { kind: CoverflowKind }) {
   if (kind === "kanban") {
     const columns = [
       { color: "var(--askewly-sky)", n: 3 },
-      { color: "#fbbf24", n: 2 },
+      { color: "var(--color-amber-400)", n: 2 },
       { color: "var(--askewly-mint)", n: 2 },
     ]
     return (
@@ -1084,7 +1084,7 @@ function CoverflowDemo() {
   return (
     <div className="min-h-[17.65rem]">
       <div className="relative h-64 overflow-hidden rounded-md border border-slate-200 bg-slate-950" style={{ perspective: "1000px" }}>
-        <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_46%,rgba(111,45,189,0.34),transparent_64%)]" />
+        <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_46%,color-mix(in_srgb,var(--askewly-violet)_34%,transparent),transparent_64%)]" />
         <div className="absolute inset-0" style={{ transformStyle: "preserve-3d" }}>
           {coverflowCards.map((kind, index) => {
             // Shortest signed distance around the loop, so the row wraps seamlessly.
@@ -1153,7 +1153,7 @@ const motionBurstShapes: MotionBurstShape[] = [
 ]
 
 function MotionBurstShapeMark({ shape }: { shape: MotionBurstShape }) {
-  const style = { width: shape.size, height: shape.size, background: "radial-gradient(circle at 34% 28%, #ffffff, #c7cdd9)" }
+  const style = { width: shape.size, height: shape.size, background: "radial-gradient(circle at 34% 28%, white, var(--color-slate-300))" }
   if (shape.kind === "dot") {
     return <span className="block rounded-full" style={style} />
   }
@@ -1177,7 +1177,7 @@ function MotionShowcaseDemo() {
   return (
     <div className="min-h-[17.65rem]">
       <div className="relative h-64 overflow-hidden rounded-md border border-slate-200 bg-slate-950">
-        <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_50%,rgba(111,45,189,0.22),transparent_62%)]" />
+        <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_50%,color-mix(in_srgb,var(--askewly-violet)_22%,transparent),transparent_62%)]" />
 
         <div className="absolute left-1/2 top-1/2">
           {!prefersReducedMotion && (
@@ -1262,7 +1262,7 @@ function MotionShowcaseDemo() {
             style={{ animation: prefersReducedMotion ? undefined : ballAnimation, transform: prefersReducedMotion ? "translate3d(0, 0, 0)" : undefined }}
           >
             <span
-              className="motion-showcase-ball-breathe block size-full rounded-full bg-white shadow-[0_0_28px_10px_rgba(255,255,255,0.5)]"
+              className="motion-showcase-ball-breathe block size-full rounded-full bg-white shadow-[0_0_28px_10px_color-mix(in_srgb,white_50%,transparent)]"
               style={{ animation: prefersReducedMotion ? undefined : "motion-showcase-ball-breathe 2.6s ease-in-out infinite" }}
             />
           </div>
@@ -1420,7 +1420,7 @@ export function getReadableTextColor(hex: string) {
   const green = parseInt(value.slice(2, 4), 16)
   const blue = parseInt(value.slice(4, 6), 16)
   const luminance = (0.299 * red + 0.587 * green + 0.114 * blue) / 255
-  return luminance > 0.62 ? "#111827" : "#F8FAFC"
+  return luminance > 0.62 ? "var(--foreground)" : "var(--background)"
 }
 
 function shiftHex(hex: string, amount: number) {
@@ -1574,7 +1574,7 @@ export function ColorPaletteGeneratorDemo() {
   const [dragPreview, setDragPreview] = useState<DragPreview | null>(null)
   const [removingIndex, setRemovingIndex] = useState<number | null>(null)
   const [copyToast, setCopyToast] = useState<string | null>(null)
-  const [infoColorId, setInfoColorId] = useState("initial-0-#FF99C8")
+  const [infoColorId, setInfoColorId] = useState(() => createGeneratorPalette(0)[0].id)
   const [paletteEntryAnimation, setPaletteEntryAnimation] = useState(false)
   const [shadePanelClosing, setShadePanelClosing] = useState(false)
   const paletteBoardRef = useRef<HTMLDivElement | null>(null)
@@ -1586,7 +1586,7 @@ export function ColorPaletteGeneratorDemo() {
   const pickerColor = pickerOpenIndex === null ? null : palette[pickerOpenIndex]
   const infoColor = palette.find((color) => color.id === infoColorId) ?? palette[0]
   const pickerHsv = pickerColor ? hexToHsv(pickerColor.hex) : null
-  const pickerHueHex = pickerHsv ? hsvToHex(pickerHsv.h, 100, 100) : "#FF0000"
+  const pickerHueHex = pickerHsv ? hsvToHex(pickerHsv.h, 100, 100) : hsvToHex(0, 100, 100)
   const shadeSet = shadeState ? buildShadeSet(shadeState.base) : []
   const paletteQuality = useMemo(() => buildPaletteQuality(palette), [palette])
 
@@ -1902,9 +1902,13 @@ export function ColorPaletteGeneratorDemo() {
   }
 
   const actionClass = "grid size-5 place-items-center rounded-full border border-current/25 bg-white/18 text-current backdrop-blur-sm transition hover:scale-105 hover:bg-white/34 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-current"
-  const hueBackground = "linear-gradient(90deg,#ff1d00,#fff500,#00ff38,#00d1ff,#1b2cff,#bd00ff,#ff0080,#ff1d00)"
+  // Hue-axis spectrum, generated instead of authored — these are the picker's
+  // physical hue stops, not themable design colors.
+  const hueBackground = `linear-gradient(90deg,${[[7, 100], [58, 100], [133, 100], [191, 100], [235, 89], [284, 100], [330, 100], [7, 100]]
+    .map(([h, s]) => hsvToHex(h, s, 100))
+    .join(",")})`
   const pickerGradient = pickerColor
-    ? `linear-gradient(180deg, rgba(255,255,255,0), #000), linear-gradient(90deg, #fff, ${pickerHueHex})`
+    ? `linear-gradient(180deg, color-mix(in srgb, white 0%, transparent), black), linear-gradient(90deg, white, ${pickerHueHex})`
     : undefined
 
   return (
@@ -2294,7 +2298,7 @@ const imageRecipes: ImageRecipe[] = [
   {
     name: "Warm Film",
     filter: "sepia(0.4) contrast(0.92) saturate(1.1) brightness(1.02)",
-    overlay: "linear-gradient(160deg, rgba(255,214,170,0.35), rgba(120,72,30,0.12))",
+    overlay: "linear-gradient(160deg, color-mix(in srgb, var(--color-orange-200) 35%, transparent), color-mix(in srgb, var(--color-amber-900) 12%, transparent))",
     overlayBlend: "soft-light",
     contrast: 0.92,
     saturation: 1.1,
@@ -2653,7 +2657,7 @@ function CommerceFlowDemo() {
           {step !== "confirmed" && (
             <button
               type="button"
-              className="rounded-md bg-askewly-violet px-3 py-1.5 text-xs font-medium text-white transition-colors hover:bg-[#5f22a8]"
+              className="rounded-md bg-askewly-violet px-3 py-1.5 text-xs font-medium text-white transition-colors hover:bg-[color-mix(in_srgb,var(--askewly-violet)_85%,black)]"
               onClick={advanceStep}
             >
               {step === "payment" ? "Place order" : "Continue"}
@@ -2682,7 +2686,7 @@ function MobileAppPatternsDemo() {
 
   return (
     <div className="grid min-h-[22rem] place-items-center">
-      <div className="flex h-[21rem] w-[11.5rem] flex-col overflow-hidden rounded-[1.75rem] border-[6px] border-slate-900 bg-white shadow-[0_16px_36px_rgba(15,23,42,0.18)]">
+      <div className="flex h-[21rem] w-[11.5rem] flex-col overflow-hidden rounded-[1.75rem] border-[6px] border-slate-900 bg-white shadow-[0_16px_36px_color-mix(in_srgb,var(--color-slate-900)_18%,transparent)]">
         <div className="flex items-center justify-center border-b border-slate-100 py-2">
           <span className="h-1.5 w-12 rounded-full bg-slate-200" />
         </div>
@@ -2984,7 +2988,7 @@ function MatterPhysicsDemo() {
         pointerRef.current.active = false
       }}
     >
-      <div className="absolute inset-0 opacity-55 [background-image:linear-gradient(90deg,rgba(15,23,42,0.045)_1px,transparent_1px),linear-gradient(rgba(15,23,42,0.045)_1px,transparent_1px)] [background-size:34px_34px]" />
+      <div className="absolute inset-0 opacity-55 [background-image:linear-gradient(90deg,color-mix(in_srgb,var(--color-slate-900)_4.5%,transparent)_1px,transparent_1px),linear-gradient(color-mix(in_srgb,var(--color-slate-900)_4.5%,transparent)_1px,transparent_1px)] [background-size:34px_34px]" />
       <p className="pointer-events-none absolute left-4 top-3.5 z-10 font-mono text-[10px] uppercase tracking-[0.16em] text-slate-400">push the chips with your cursor</p>
       <div className="absolute inset-x-5 bottom-5 h-px bg-slate-950/18" />
       {tokens.map((token) => (

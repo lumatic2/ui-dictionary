@@ -29,7 +29,7 @@ export default function ThreeObjectSceneImpl() {
   const tokens = useMemo(() => {
     const styles = getComputedStyle(document.documentElement)
     return {
-      object: styles.getPropertyValue("--primary").trim() || "#888888",
+      object: styles.getPropertyValue("--primary").trim() || "gray",
       spin: !window.matchMedia("(prefers-reduced-motion: reduce)").matches,
     }
   }, [])

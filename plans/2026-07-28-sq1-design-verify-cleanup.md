@@ -39,7 +39,7 @@ Status: approved (사용자 승인 2026-07-28 — "사이트 품질 milestone 4�
   - Failure probe: 토큰 미로딩 시점(SSR/초기)엔 getComputedStyle 이 빈 문자열 — 기존 recipe 와 같은 폴백 상수 유지.
   - Commit: changeset `sq1-design-verify-cleanup` (README 절: step-1).
 
-- [ ] **step-2 — 색 위반 72건 시맨틱 토큰화**
+- [x] **step-2 — 색 위반 72건 시맨틱 토큰화**
   - Artifact: hex-literal 26 + raw-color-fn 46 해소 — marketing-section-preview·home-page·term-visual 중심, 장식 그라디언트는 토큰 참조 CSS 변수(color-mix)로 재표현, watercolor 생성 아트는 토큰 유래 기준색으로.
   - Files: write examples/ui-vocabulary-site/src/components/{marketing-section-preview,home-page,term-visual,watercolor-pointer-field,three-object-scene-impl,term-page,recipe-gallery,landing-hero,colors-page,article-documentation-layout}.tsx. read src/index.css(토큰 정의).
   - Risk: 위험 (넓은 시각 표면 — 전/후 스크린샷 비교로 격리, 커밋 revert 가능)

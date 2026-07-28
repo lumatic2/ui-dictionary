@@ -9,6 +9,11 @@
     Geist, "Noto Sans KR", ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI",
     sans-serif;
   color-scheme: light;
+  /* External brand constants — fixed by the brand owner, deliberately outside
+     the themable token scale (social login demos). */
+  --brand-kakao-container: #fee500;
+  --brand-kakao-label: #181600;
+  --brand-neutral-auth: #3f3f3f;
 }
 
 @theme inline {
