@@ -24,7 +24,8 @@
 | 보기용 PPTX | 슬라이드를 PNG 렌더 → 배경 삽입 (Slidev·Marp·구 /ppt 전부 이 방식) | `slidev` (export 아키텍처 참조) | 불가 (이미지 박제) |
 | **편집 가능 PPTX** | ① HTML→shape 변환: pptxgenjs 기반 html2pptx ② SVG→DrawingML: ppt-master 방식 | `PptxGenJS`(4.0.1+ 고정 — 구버전 손상 이력) · `ppt-master` | 가능 (네이티브 개체) |
 
-- 편집 가능 PPTX 두 경로의 실측 비교는 SL3(Askewly Design 소개 덱 실증)에서 장부화한다.
+- 편집 가능 PPTX 두 경로의 실측 비교는 SL3(Askewly Design 소개 덱 실증)에서 장부화했다 — `research/2026-07-28-sl3-pptx-path-comparison.md`.
+- **실측 결론 (2026-07-28, 사용자 확정)**: PPTX 네이티브 변환은 HTML·PDF 대비 품질이 확연히 낮다(폰트 미임베드 폴백·레이아웃 근사·SVG 저작 규약 마찰 — PowerPoint 실개봉 관측). 따라서 **PPTX 심화는 여기서 멈추고, 수신자가 파일을 직접 편집해야 한다는 명시 요구가 있을 때만 위 경로를 쓴다.** 기본 배포는 HTML(발표·링크 공유) + PDF(고정 공유)이며, 투자 우선순위도 HTML 표현력·PDF 품질에 둔다.
 - 문서형 PDF(보고서·브리핑)는 이 문서 범위 밖 — `/pdf` 스킬 소관. 여기는 **슬라이드의 PDF export**만 다룬다.
 
 ## 3. 엔진 선택 — 언제 무엇으로 만드나
@@ -85,4 +86,5 @@ G1 자료(출처 승인) → G2 구성안(아웃라인 승인) → G3 문구 →
 
 ## Changelog
 
+- 2026-07-28: SL3 실측 결론 반영 — PPTX 심화 중단, HTML·PDF 우선 (사용자 확정).
 - 2026-07-28: 초판 (SL1 step-2 — HTML 정본·export 결정표·엔진 선택·게이트 인용·린트 스펙).
