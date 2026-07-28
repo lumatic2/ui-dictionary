@@ -49,7 +49,7 @@ Status: approved (사용자 승인 2026-07-28 "ㄱㄱ" — 방향 2건 매듭 + 
   - Failure probe: ① TermResultRow 브라우징 목록(필터 탐색) — variant 기본값이 기존 렌더와 동일한지 화면 1개로 확인 ② hero 행(미니목 확대)이 390px 에서 무너지지 않는지.
   - Commit: changeset `sq3-search-redesign` (README 절: step-2).
 
-- [ ] **step-3 — 통합 검증 + 실배포 + 사람 관측 (SQ3 마감)**
+- [x] **step-3 — 통합 검증 + 실배포 + 사람 관측 (SQ3 마감)**
   - Artifact: 통합 검증 + `evidence/site-quality/sq3-search-redesign.md` + push·실배포 스팟 체크 + 사람 관측 요청.
   - Files: write evidence/site-quality/sq3-search-redesign.md. 실행: verify 전체·build·lint·Playwright(/search?q=토글 · /search?q=accordion · 브라우징 1화면 · /terms/accordion)·push·실배포 확인.
   - Risk: 기계적 (검증·기록·배포 확인)
@@ -68,6 +68,8 @@ Status: approved (사용자 승인 2026-07-28 "ㄱㄱ" — 방향 2건 매듭 + 
 
 ## finding 큐
 - (실행 중 발견 항목을 여기 적는다)
+- **use-case 칩 = 데드 경로**: `setActiveUseCaseId` 의 비-null 호출이 코드 전체에 0곳 — 칩 UI 진입점이 없어 use-case 검색이 실사용 불가. pin 경로 티어 승격(exact:true)은 구현했으나 실동작 probe 불가(코드 검증만). 진입점 복원/제거 판단은 별도 후보.
+- App.tsx 카카오 로그인 버튼에 hex 리터럴(`#fee500` 등) 잔존 — verify 스코프(src/components) 밖이라 SQ1 미포함. `--brand-kakao-*` 상수(index.css)로 통일 후보.
 
 ## 진행 로그
 - 2026-07-28 작성 — 디자인 방향 2건(계층 섹션형·사이드바 현상 유지) AskUserQuestion 으로 매듭.
