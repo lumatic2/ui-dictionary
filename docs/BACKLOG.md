@@ -557,3 +557,19 @@ plan doc: `archive/plans/2026-07-21-eu*.md` · 증거: `evidence/editor-legibili
 - DoD: Askewly Design 소개 덱 PPTX가 존재하고 사용자가 쓸 수 있다고 판정하며, 발표 게이트(캔버스 프리셋 대조·본문 대비 AA)가 1회 이상 실제 실행되고, 제작 중 막힌 지점이 결함 장부에 전수 기록된다.
 - Evidence: evidence/real-use-lap/ru1-deck-production.md
 - Completed: 2026-07-22 — **미달로 닫음.** 덱 10장 제작·발표 게이트 첫 실행(프리셋 PASS·대비 7/7 PASS)·결함 10건 기록했으나 사용자 판정 "실제로 못 써 · 내가 원하는 제작 흐름도 아니다 · 문답이 훨씬 많았어야 했다 · Askewly Design 자체가 제대로 작동 안 하는 느낌". **기계가 통과시킨 산출물을 사람이 못 쓴다고 판정** — DOG7과 같은 구조의 재현. 최대 결함 D10: 규모 게이트가 "DESIGN.md 있으면 인터뷰 없음"으로 브리프를 건너뛰어 덱의 내용·청중·구성을 전부 에이전트가 추정했다(DESIGN.md는 룩을 소유하지 내용을 소유하지 않는다). RU2로 이월.
+
+### 2026-07
+- VI6 - VI6 — 지식 층 통합
+  - Completed: 2026-07-28
+  - Result: KG 19노드 전수 판정(흡수8/링크7/제외4) — motion-principles 신설, expressive-stack 정본 단일화, llms 재생성 (미배선 2건 finding)
+  - Evidence: evidence/visual-impact-consolidation/vi6-knowledge.md
+
+- VI7 - VI7 — 도구 층 배치
+  - Completed: 2026-07-28
+  - Result: 15카드 전수 판정(A완료1·A대기2·B8·C4) — absorption-criteria 9행, llms knowledge 3문서 배선 완결, shelf used 8건
+  - Evidence: evidence/visual-impact-consolidation/vi7-placement.md
+
+- VI8 - VI8 — 실증 확장
+  - Completed: 2026-07-28
+  - Result: recipe 2종 실구현(Playwright 5/5·콘솔0, oklch→hex 결함 수리) + three-scene 상호 링크 — goal visual-impact-consolidation 완주
+  - Evidence: evidence/visual-impact-consolidation/vi8-recipes.md

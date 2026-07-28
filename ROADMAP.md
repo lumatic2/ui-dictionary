@@ -1,11 +1,14 @@
 # ROADMAP
 
 > Last updated: 2026-07-28
-> Status: **goal `visual-impact-consolidation` 완주 (2026-07-28)** — VI6 지식 통합·VI7 도구 배치·VI8 실증(recipe 2종 실구현) 연쇄 완료. active goal 0 — 다음 순서(사용자 확정 2026-07-28): ② 『인터랙티브 웹 애니메이션』 책 스터디 자산화 ③ 사이트 품질(finding 큐 O5~O9·verify 위반 77건·SSG) ④ 다크모드 정비 ⑤ real-use-lap 부활(PARK 2026-07-27). 새 goal 은 `/harness-plan` 으로.
+> Status: **goal `site-quality` 진행 중 (2026-07-28 개설)** — SQ1 verify 위반 정리부터. 이후 큐(사용자 확정 2026-07-28): 『인터랙티브 웹 애니메이션』 책 스터디 자산화(사용자 주도 — 사용자가 책을 보며 직접 전달) → ④ 다크모드 정비 → ⑤ real-use-lap 부활(PARK 2026-07-27).
 > North star: Build Askewly Design as both a public reference website and an agent-usable implementation system.
 > line budget: <=150
 
 ## Current Goal
+
+<!-- harness:goal id="site-quality" status="active" -->
+Goal: 사이트 품질 — UI 백과사전 사이트가 자기 디자인 게이트를 통과하고(verify 위반 79건), UE1 관측이 남긴 구조 결함(O5~O7)·검색 결과 UI(O9)를 수리하며, SSG/prerender 로 초기 로딩·SEO 를 확보한다. 사용자 확정 2026-07-28 (③ 선착수). Details: `plans/2026-07-28-sq1-design-verify-cleanup.md`.
 
 <!-- harness:goal-archive12 id="visual-impact-consolidation" status="completed" -->
 Goal: 비주얼 임팩트 정리 — 흩어진 비주얼 임팩트 방법(knowledge-graph 노드 19건, toolshelf 카드 15건, presentation-slides three-scene·3d-repolis)을 VI1~VI5 표현 스택 체계로 대조·판정·흡수해 자산화한다. closed 2026-07-28 — VI6(KG 19노드 판정·motion-principles 신설)·VI7(15카드 배치·llms 배선 완결)·VI8(recipe 2종 실구현·상호 링크) 단일 세션 완주. Details: `research/2026-07-28-visual-impact-goal-inventory.md` + `docs/reports/2026-07-28-vi{6,7,8}-*.md`.
@@ -41,37 +44,34 @@ Goal: 사이트 레시피 데모 실구현을 registry 코드 자산으로 배�
 Goal: 스튜디오 이월 갭 3건 마감 — 데이터 주도 주입 자동화·구성 패턴 완편(4유형+예약형)·미리보기 고도화(다크·반응형). Details: `plans/horizons/2026-07-studio-finish.md`.
 
 
-## Active Milestones — visual-impact-consolidation
+## Active Milestones — site-quality
 
-<!-- harness:milestone id="VI6" status="completed" priority="P0" evidence="evidence/visual-impact-consolidation/vi6-knowledge.md" -->
-### VI6 — 지식 층 통합
-- DoD: KG 18노드(핵심 15+인접 3) 전수 대조·판정 장부(흡수/링크/제외+사유+정본 지정) + 흡수/링크 판정 전 항목이 knowledge 문서에 반영 + 빌드·린트 PASS + evidence 기록. 기존 결정표 행 무단 변경 0.
-- Gap: `frontend-motion-accessibility-source-map`(KG)이 `knowledge/expressive-stack.md` 결정표와 중복 진화 중 — 정본 미지정
-- Scale: steps=3 (대조 장부·knowledge 갱신·통합 검증); surfaces: knowledge/·research/·evidence/; capability: 흩어진 지식이 정본 한 곳에서 읽힌다
-- Plan: archive/plans/2026-07-28-vi6-knowledge-consolidation.md
-- Status: [x]
+<!-- harness:milestone id="SQ1" status="active" priority="P0" -->
+### SQ1 — 디자인 verify 위반 정리
+- DoD: `src/components` 디자인 verify 위반 79건(hex 26·raw-color-fn 46·타이포 7) → 0(불가피 예외는 검사기 지원 수단+장부 명시), 시각 보존(대표 표면 전/후 스크린샷), VI8 이월 finding 2건(쇼케이스 하드코딩 hex·oklch→hex 유틸) 해소, build·lint·브라우저 스모크 PASS.
+- Gap: 사이트가 자기 디자인 게이트를 통과 못 함 — 다크모드(④)의 전제이기도 함
+- Scale: steps=3 (유틸+쇼케이스·색 72건·타이포+통합); surfaces: src/components 11파일·src/lib; capability: 게이트를 통과하는 자기 사이트
+- Plan: plans/2026-07-28-sq1-design-verify-cleanup.md
+- Status: [ ]
 
-- Completed at: 2026-07-28
-- Evidence: evidence/visual-impact-consolidation/vi6-knowledge.md
-- Summary: KG 19노드 전수 판정(흡수8/링크7/제외4) — motion-principles 신설, expressive-stack 정본 단일화, llms 재생성 (미배선 2건 finding)
-<!-- harness:milestone id="VI7" status="completed" priority="P1" evidence="evidence/visual-impact-consolidation/vi7-placement.md" -->
-### VI7 — 도구 층 배치
-- DoD: toolshelf 비주얼 임팩트 카드 15건이 표현 스택 4티어에 배치되고 채택/보류/제외 판정(TC1 taste 흡수 계약 준수, 카드별 출처+사유)이 결정표에 반영되며 `shelf used` 기록이 남는다. + llms 배선 finding 해소(knowledge 3문서 전부 등재).
-- Plan: archive/plans/2026-07-28-vi7-toolshelf-placement.md
-- Status: [x]
+<!-- harness:milestone id="SQ2" status="pending" priority="P1" -->
+### SQ2 — 구조 결함 O5·O6·O7
+- DoD: Get Started 착지(O5 — 노출 정책과의 긴장 해소는 사용자 결정), Docs 랜딩 역할 정의(O6), 좌측 내비 IA 재정리(O7)가 라우트 구조 위에서 수리되고 사람 관측 1회 통과.
+- Gap: UE1 관측 이월 구조 결함 — plan 작성 시 O5 노출 정책 사용자 결정 필요
+- Status: [ ]
 
-- Completed at: 2026-07-28
-- Evidence: evidence/visual-impact-consolidation/vi7-placement.md
-- Summary: 15카드 전수 판정(A완료1·A대기2·B8·C4) — absorption-criteria 9행, llms knowledge 3문서 배선 완결, shelf used 8건
-<!-- harness:milestone id="VI8" status="completed" priority="P1" evidence="evidence/visual-impact-consolidation/vi8-recipes.md" -->
-### VI8 — 실증 확장
-- DoD: VI7 A 대기 2건(GSAP 핀·스크럽, Paper Shaders 그라디언트)이 실동작 recipe(데모+문서+갤러리+catalog/llms)로 구현되고(브라우저 실동작 콘솔 0에러·validate-recipes·빌드·린트 PASS, reduced-motion·폴백 계약), presentation-slides three-scene 계약이 recipe 층과 상호 링크된다.
-- Plan: archive/plans/2026-07-28-vi8-expressive-recipes.md
-- Status: [x]
+<!-- harness:milestone id="SQ3" status="pending" priority="P1" -->
+### SQ3 — O9 검색 결과 UI 재디자인
+- DoD: 검색 결과 화면이 askewly-design 경유로 재디자인되고(정확 일치 vs 연관 언급 계층화 포함), 디자인 verify PASS + 사람 관측 1회 통과.
+- Gap: UE1 관측 2회차 "너무 구려" — 취향 판단 포함, plan 단계 사용자 확인
+- Status: [ ]
 
-- Completed at: 2026-07-28
-- Evidence: evidence/visual-impact-consolidation/vi8-recipes.md
-- Summary: recipe 2종 실구현(Playwright 5/5·콘솔0, oklch→hex 결함 수리) + three-scene 상호 링크 — goal visual-impact-consolidation 완주
+<!-- harness:milestone id="SQ4" status="pending" priority="P2" -->
+### SQ4 — SSG/prerender
+- DoD: 주요 라우트(홈·용어·패턴·docs)가 prerender 되어 최초 페인트·SEO 메타가 정적 제공되고, SPA 폴백·오너 언락 회귀 없음(실배포 확인 포함).
+- Gap: 현재 전 라우트 CSR — SEO·초기 로딩 불리 (UE5 이월)
+- Status: [ ]
+
 ## Active Milestones — ui-encyclopedia
 
 <!-- harness:milestone id="UE1" status="completed" priority="P0" evidence="evidence/ui-encyclopedia/ue1-navigation.md" -->
