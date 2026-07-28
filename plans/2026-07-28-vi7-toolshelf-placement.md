@@ -39,7 +39,7 @@ Status: approved (연쇄 승인 집행 — 새 사용자 소유 결정 없음, �
   - Failure probe: 카드 설명만 보고 판정하면 티어 오배치 — 갤러리형(60fps·landing.love)과 코드형을 구분해 갤러리형은 티어 배치 아닌 "레퍼런스 소스" 표기.
   - Commit: changeset `vi7-toolshelf-placement` (README 절: step-1).
 
-- [ ] **step-2 — 정본 반영 + llms 배선**
+- [x] **step-2 — 정본 반영 + llms 배선**
   - Artifact: `absorption-criteria.md` 실측 표 갱신(행 추가/갱신+근거) · 필요 시 `knowledge/expressive-stack.md`·`motion-references.md` 보강(기존 행 무단 변경 금지) · `scripts/generate-llms-txt.mjs` FIXED_ASSETS Knowledge 절에 motion-principles·motion-references 등재.
   - Files: write `docs/design-system/absorption-criteria.md`, `scripts/generate-llms-txt.mjs`, (필요 시) `knowledge/expressive-stack.md`·`knowledge/motion-references.md`. read step-1 장부.
   - Risk: 위험 (생성기 수정 — llms 재생성 실행으로 즉시 검증, 실패 시 revert)

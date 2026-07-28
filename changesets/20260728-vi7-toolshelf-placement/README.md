@@ -16,3 +16,8 @@
 - `knowledge/motion-references.md` — 관찰 갤러리 절(60fps·landing.love·Brainwave, B 판정 명시).
 - `scripts/generate-llms-txt.mjs` — FIXED_ASSETS Knowledge 절에 motion-principles·motion-references 등재 (VI6 finding 해소).
 - 검증: `node scripts/generate-llms-txt.mjs` 성공(160→162 assets) · llms.txt 에 두 링크 grep 확인.
+
+## step-3 — shelf used + 통합 검증 (2026-07-28)
+
+- shelf used --ok 8건 (실참조 카드), build ✓ 1.03s · lint exit 0.
+- evidence: `evidence/visual-impact-consolidation/vi7-placement.md`.
