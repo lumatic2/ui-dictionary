@@ -12,6 +12,8 @@ import {
 import { flushSync } from "react-dom"
 import * as Matter from "matter-js"
 import { MeshGradient } from "@paper-design/shaders-react"
+
+import { cssColorToHex, readCssVarsAsHex } from "@/lib/css-color"
 import {
   Activity,
   ArrowRight,
@@ -2232,23 +2234,38 @@ export function ColorPaletteGeneratorDemo() {
   )
 }
 
-const shaderGradientColors = ["#020617", "#6F2DBD", "#A663CC", "#B9FAF8", "#B8D0EB"]
+// Brand primitives for the shader uniform (normalized to hex at mount);
+// the dark base is read from the container's own background so the
+// composition stays identical without a color literal.
+const shaderGradientTokenVars = ["--askewly-violet", "--askewly-orchid", "--askewly-mint", "--askewly-sky"]
 
 function ShaderGradientDemo() {
   const prefersReducedMotion = usePrefersReducedMotion()
+  const hostRef = useRef<HTMLDivElement>(null)
+  const [shaderColors, setShaderColors] = useState<string[] | null>(null)
+
+  useEffect(() => {
+    const el = hostRef.current
+    if (!el) return
+    const base = cssColorToHex(getComputedStyle(el).backgroundColor)
+    const brand = readCssVarsAsHex(el, shaderGradientTokenVars)
+    if (base && brand.length === shaderGradientTokenVars.length) setShaderColors([base, ...brand])
+  }, [])
 
   return (
     <div className="min-h-[13.25rem]">
-      <div className="relative h-[13.25rem] overflow-hidden rounded-md border border-slate-200 bg-slate-950">
+      <div ref={hostRef} className="relative h-[13.25rem] overflow-hidden rounded-md border border-slate-200 bg-slate-950">
+        {shaderColors && (
         <MeshGradient
           className="absolute inset-0 size-full"
-          colors={shaderGradientColors}
+          colors={shaderColors}
           distortion={0.85}
           swirl={0.55}
           grainMixer={0.25}
           grainOverlay={0.12}
           speed={prefersReducedMotion ? 0 : 0.45}
         />
+        )}
       </div>
     </div>
   )

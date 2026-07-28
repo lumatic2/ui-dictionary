@@ -30,7 +30,7 @@ Status: approved (사용자 승인 2026-07-28 — "사이트 품질 milestone 4�
 
 ## Step 트리
 
-- [ ] **step-1 — oklch→hex 유틸 추출 + 쇼케이스 셰이더 토큰화 (VI8 finding 해소)**
+- [x] **step-1 — oklch→hex 유틸 추출 + 쇼케이스 셰이더 토큰화 (VI8 finding 해소)**
   - Artifact: `examples/ui-vocabulary-site/src/lib/css-color.ts`(cssColorToHex — shader-gradient-surface 에서 추출, 재사용 유틸) + `home-page.tsx` ShaderGradientDemo 하드코딩 hex 5색 → 토큰 판독 전환 + `shader-gradient-surface.tsx` 가 유틸 참조.
   - Files: write examples/ui-vocabulary-site/src/lib/css-color.ts, src/components/home-page.tsx(ShaderGradientDemo 한정), src/components/shader-gradient-surface.tsx. read recipes/marketing/shader-gradient-surface.md.
   - Risk: 기계적 (신규 유틸 + 좁은 치환 — 렌더 확인으로 격리)
