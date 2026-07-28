@@ -67,6 +67,11 @@ Status: approved (사용자 승인 2026-07-28 — "사이트 품질 milestone 4�
 
 ## finding 큐
 - (실행 중 발견 항목을 여기 적는다)
+- 검사기 hex-literal 오탐: 목업 카피의 주문번호("Invoice #00011")를 색으로 오인 — 예외 수단 없음(--help 실측). 카피에서 `#` 제거로 해소했으나 검사기 개선 후보(@askewly/design).
+- `home-page.tsx` 는 MeshGradient 를 eager import — 티어④ lazy 계약 위반(쇼케이스 한정). 데모 분할 시 함께 해소 후보.
+- `watercolor-pointer-field.tsx` 는 소비처 0 (데드 코드) — 삭제하지 않고 토큰화만 함. 처분은 별도 판단.
+- **타이포 5단계/파일 규칙의 구조 충돌 (step-3 중단 사유)**: ① 반응형 쌍(`text-5xl md:text-7xl`)이 2단계로 계수 ② 멀티 데모 파일(home-page 16단계·marketing-section-preview 16단계)은 분할 리팩터 없이 5단계 불가 ③ 미니어처 목업 초소형 텍스트. 게이트 보정 vs 강제 접기 vs 파일 분할 — 사용자 결정 대기.
 
 ## 진행 로그
 - 2026-07-28 작성 (goal `site-quality` 개설 — 사용자 확정 순서 ③ 선착수).
+- 2026-07-28 step-1·step-2 완료 — 색 위반 72→0(전/후 스크린샷 6표면 무손실 확인), 통합 스모크 4라우트·콘솔 0에러·build·lint PASS. step-3(타이포 7건)은 규칙 구조 충돌로 decision_required 중단(ledger 기록) — finding 큐 참조.
