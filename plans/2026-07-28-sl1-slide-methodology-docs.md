@@ -43,7 +43,7 @@ Status: approved (2026-07-28 사용자 승인 — "응 추천대로 ㄱ", llms �
   - Failure probe: KG 노드 본문을 통째로 복사하면 이중 정본 드리프트(VI6에서 잡은 결함 유형) — 원칙 요지+Askewly 적용만 쓰고 근거 상세는 링크로.
   - Commit: changeset `sl1-slide-methodology-docs` (README 절: step-1).
 
-- [ ] **step-2 — methodology/slide-production.md (어떻게 만드는가)**
+- [x] **step-2 — methodology/slide-production.md (어떻게 만드는가)**
   - Artifact: `methodology/slide-production.md` — ① HTML 정본 원칙(왜 HTML이 제작 표면인가) ② 3-format export 결정표(PDF=Playwright/decktape, PPTX=이미지 박제/html2pptx/SVG→DrawingML 3등급 + "편집 가능성 요구" 분기 질문) ③ 엔진 선택표(presentation-slides-yusung vs slides-grab — slide-deck-workflow 카드 기준 인용) ④ 매체 게이트는 `docs/design-system/slide-spec.md`·`medium-taxonomy.md` **인용** + export별 최종 형식 렌더 확인 절차만 추가(게이트 재서술 금지) ⑤ 프로세스: 구조 확정→슬라이드화 순서 강제(수렴 원칙 4·5) ⑥ SL2 입력용 린트 규칙 스펙(제목 완결문장·슬라이드당 메시지 1·텍스트/시각 비율·폰트 하한 — 검사 가능 형태로 명세).
   - Files: write methodology/slide-production.md. read methodology/00-INDEX.md(목차 관례), docs/design-system/slide-spec.md·medium-taxonomy.md·entry-protocol.md(게이트 정본 — 인용 경계), ~/.claude/skills/presentation-slides-yusung/SKILL.md(게이트·validator 현황), ~/projects/toolshelf/cards/slide-deck-workflow.md(엔진 선택표 인용).
   - Risk: 없음 (신규 문서 — step-1 인용 링크 외 기존 무접촉)
