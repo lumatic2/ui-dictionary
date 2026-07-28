@@ -811,6 +811,7 @@ function App() {
                               selected={selectedTerm?.id === result.term.id}
                               term={result.term}
                               onSelect={selectTerm}
+                              variant="hero"
                             />
                           ))}
                         </div>
@@ -829,6 +830,7 @@ function App() {
                               selected={selectedTerm?.id === result.term.id}
                               term={result.term}
                               onSelect={selectTerm}
+                              variant="compact"
                             />
                           ))}
                         </div>

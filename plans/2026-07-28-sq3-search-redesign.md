@@ -40,7 +40,7 @@ Status: approved (사용자 승인 2026-07-28 "ㄱㄱ" — 방향 2건 매듭 + 
   - Failure probe: 검색어 없는 필터 탐색(browsing) 경로 — reasons 빈 배열이라 전부 연관 티어로 새는 회귀. 탐색 모드는 계층 미적용(기존 플랫 목록) 확인.
   - Commit: changeset `sq3-search-redesign` (README 절: step-1).
 
-- [ ] **step-2 — 결과 행 비주얼 재디자인 (askewly-design 경유)**
+- [x] **step-2 — 결과 행 비주얼 재디자인 (askewly-design 경유)**
   - Artifact: askewly-design entry-protocol fetch·준수 후 — `TermResultRow` variant 도입: 정확 일치 = 큰 비주얼 행(미니목 확대·이름 위계 강화), 연관 언급 = 컴팩트 행(비주얼 축소·매치 근거 표기) + 섹션 타이틀·간격 시스템.
   - Files: write examples/ui-vocabulary-site/src/components/term-result-row.tsx, src/App.tsx(섹션 스타일). read docs/design-system/(entry-protocol 이 지시하는 원격 정본).
   - Risk: 위험 (검색 전 표면 시각 변경 — 스크린샷 증거 + verify 로 격리, 커밋 revert 가능)
