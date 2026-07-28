@@ -21,7 +21,7 @@ Agent Integration horizon(2026-07-07)이 발견(llms.txt)·소비(custom-skills)
 
 ### AD1 — Default Routing 배선 (활성)
 
-에이전트 진입 프로토콜 정본화 + Claude·Codex 양쪽 전역 라우팅 배선. 3 changesets: ① 진입 프로토콜 문서 + llms.txt 노출, ② Claude 배선(전역 CLAUDE.md 규칙 + custom-skills 디자인 스킬 갱신·재배포), ③ Codex 배선(전역 Codex 지침 + 배포 미러) + 양 에이전트 통합 E2E. hook 강제는 이번 범위 밖 — E2E에서 미발화가 관측되면 격상 경로(2026-07-17 사용자 확정: 규칙+스킬 먼저). 상세: `docs/plans/2026-07-17-ad1-default-routing.md`.
+에이전트 진입 프로토콜 정본화 + Claude·Codex 양쪽 전역 라우팅 배선. 3 changesets: ① 진입 프로토콜 문서 + llms.txt 노출, ② Claude 배선(전역 CLAUDE.md 규칙 + custom-skills 디자인 스킬 갱신·재배포), ③ Codex 배선(전역 Codex 지침 + 배포 미러) + 양 에이전트 통합 E2E. hook 강제는 이번 범위 밖 — E2E에서 미발화가 관측되면 격상 경로(2026-07-17 사용자 확정: 규칙+스킬 먼저). 상세: `archive/plans/2026-07-17-ad1-default-routing.md`.
 
 ### AD2 — Style Signature (후보, P0)
 

@@ -27,9 +27,9 @@ cascade-studio 통합 실연이 실측으로 남긴 이월 갭 3건을 닫아 �
 
 | ID | 이름 | plan doc | 승인 | 리서치 |
 |---|---|---|---|---|
-| SF1 | 데이터 주도 스튜디오 주입 (자동화) | `plans/2026-07-19-sf1-studio-data-injection.md` | approved·completed 2026-07-19 | 불요 — 내부 툴링 |
-| SF2 | 구성 패턴 완편 (4유형 + 예약형) | `plans/2026-07-19-sf2-composition-patterns.md` | approved·completed 2026-07-19 | `research/2026-07-19-st4-composition-patterns.md` |
-| SF3 | 미리보기 고도화 (다크·반응형) | `plans/2026-07-19-sf3-preview-upgrade.md` | approved·completed 2026-07-19 | 불요 — 내부 툴링 |
+| SF1 | 데이터 주도 스튜디오 주입 (자동화) | `archive/plans/2026-07-19-sf1-studio-data-injection.md` | approved·completed 2026-07-19 | 불요 — 내부 툴링 |
+| SF2 | 구성 패턴 완편 (4유형 + 예약형) | `archive/plans/2026-07-19-sf2-composition-patterns.md` | approved·completed 2026-07-19 | `research/2026-07-19-st4-composition-patterns.md` |
+| SF3 | 미리보기 고도화 (다크·반응형) | `archive/plans/2026-07-19-sf3-preview-upgrade.md` | approved·completed 2026-07-19 | 불요 — 내부 툴링 |
 
 ## Close Criteria (선언 / 실측 / 판정 대조용)
 

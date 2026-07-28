@@ -25,10 +25,10 @@ Preceding horizon: `plans/horizons/2026-07-studio-depth.md` (closed 2026-07-19)
 
 | ID | 이름 | plan doc | 승인 | 리서치 |
 |---|---|---|---|---|
-| ST1 | 스튜디오 정비 (칩·크기·순서·해상도) | `plans/2026-07-19-st1-studio-fixes.md` | approved 2026-07-19 | 불요 — 피드백 직반영 |
-| ST2 | 캐스케이드 + 스티키 라이브 미리보기 | `plans/2026-07-19-st2-cascade-preview.md` | approved 2026-07-19 | 불요 |
-| ST3 | 영상 파이프라인 (Pexels Videos) | `plans/2026-07-19-st3-video-pipeline.md` | approved 2026-07-19 | API 조건은 구현 중 확인 |
-| ST4 | 카피·인터랙션 축 + 통합 실연 | `plans/2026-07-19-st4-copy-axes-e2e.md` | approved 2026-07-19 | 불요 |
+| ST1 | 스튜디오 정비 (칩·크기·순서·해상도) | `archive/plans/2026-07-19-st1-studio-fixes.md` | approved 2026-07-19 | 불요 — 피드백 직반영 |
+| ST2 | 캐스케이드 + 스티키 라이브 미리보기 | `archive/plans/2026-07-19-st2-cascade-preview.md` | approved 2026-07-19 | 불요 |
+| ST3 | 영상 파이프라인 (Pexels Videos) | `archive/plans/2026-07-19-st3-video-pipeline.md` | approved 2026-07-19 | API 조건은 구현 중 확인 |
+| ST4 | 카피·인터랙션 축 + 통합 실연 | `archive/plans/2026-07-19-st4-copy-axes-e2e.md` | approved 2026-07-19 | 불요 |
 
 ## Close Criteria
 

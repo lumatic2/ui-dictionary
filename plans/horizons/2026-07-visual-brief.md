@@ -25,10 +25,10 @@ Preceding horizon: `plans/horizons/2026-07-design-brief.md` (closed 2026-07-19)
 
 | ID | 이름 | plan doc | 승인 | 리서치 |
 |---|---|---|---|---|
-| VB1 | Stitch 양식 리서치·정합 | `plans/2026-07-19-vb1-stitch-alignment.md` | approved 2026-07-19 | `research/2026-07-19-vb1-stitch-design-md.md` (step-1 산출) |
-| VB2 | 브리프 스튜디오 | `plans/2026-07-19-vb2-brief-studio.md` | approved 2026-07-19 | 불요 — VB1 산출 소비 |
-| VB3 | 크롬 상시 표시 게이트 | `plans/2026-07-19-vb3-chrome-gate.md` | approved 2026-07-19 | 불요 |
-| VB4 | 딥 브리프 선택 모드 | `plans/2026-07-19-vb4-deep-brief.md` | approved 2026-07-19 | 불요 |
+| VB1 | Stitch 양식 리서치·정합 | `archive/plans/2026-07-19-vb1-stitch-alignment.md` | approved 2026-07-19 | `research/2026-07-19-vb1-stitch-design-md.md` (step-1 산출) |
+| VB2 | 브리프 스튜디오 | `archive/plans/2026-07-19-vb2-brief-studio.md` | approved 2026-07-19 | 불요 — VB1 산출 소비 |
+| VB3 | 크롬 상시 표시 게이트 | `archive/plans/2026-07-19-vb3-chrome-gate.md` | approved 2026-07-19 | 불요 |
+| VB4 | 딥 브리프 선택 모드 | `archive/plans/2026-07-19-vb4-deep-brief.md` | approved 2026-07-19 | 불요 |
 
 ## Close Criteria
 

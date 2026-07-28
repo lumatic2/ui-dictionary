@@ -29,8 +29,8 @@ milestone 2개 — 사용자 발의 범위가 명확한 단일 capability(브리
 
 | ID | 이름 | plan doc | 승인 | 리서치 |
 |---|---|---|---|---|
-| DB1 | 브리프 계약 정본 + 프로토콜 배선 | `plans/2026-07-18-db1-brief-contract.md` | approved 2026-07-18 | 불요 — 사용자 인터뷰로 결정 완료 |
-| DB2 | skill 개정 + E2E | `plans/2026-07-18-db2-skill-e2e.md` | approved 2026-07-18 | 불요 |
+| DB1 | 브리프 계약 정본 + 프로토콜 배선 | `archive/plans/2026-07-18-db1-brief-contract.md` | approved 2026-07-18 | 불요 — 사용자 인터뷰로 결정 완료 |
+| DB2 | skill 개정 + E2E | `archive/plans/2026-07-18-db2-skill-e2e.md` | approved 2026-07-18 | 불요 |
 
 ## Close Criteria
 

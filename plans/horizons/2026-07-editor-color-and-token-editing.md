@@ -72,10 +72,10 @@ EU5 finding 4건은 **증상**이고, 그 증상들이 각각 다른 층에 뿌�
 
 | milestone | 제목 (왜 milestone 규모인가) | plan doc | 근거 |
 |---|---|---|---|
-| **ECT1** | **토큰이 조회되고, 실재가 검증된다** — 두 어휘 토큰 열거 API 신설 + 편집기 세트에 `kind` 메타데이터 부여(생성기 수정) + 검증을 형태검사에서 실재검사로 승격. 조회·생성기·검증 3표면 | `plans/2026-07-21-ect1-token-lookup-and-validation.md` | 실사 1·3 |
-| **ECT2** | **색이 색으로 보인다** — 자유 텍스트를 스와치+토큰 이름 컨트롤로 교체, 클릭 시 검색 가능한 팝오버(자기 어휘의 color 토큰만, 점표기 그룹), 사용자 언어 라벨 | `plans/2026-07-21-ect2-color-swatch-and-picker.md` | 리서치 1·4·5 |
-| **ECT3** | **묶고 푼다** — 미바인딩 속성에 명시적 어포던스 + Figma식 detach로 원시값 이탈 + 왕복. 문서 모델·오퍼레이션·undo·UI 다표면 | `plans/2026-07-21-ect3-bind-and-detach.md` | 리서치 2·3, 결정 1 |
-| **ECT4** | **이미지 노드가 실제로 칠해진다** — 렌더러 image kind 확장 + 두 경로의 키 계약 일치 | `plans/2026-07-21-ect4-image-node-and-contract.md` | 실사 2·5, 결정 3 |
+| **ECT1** | **토큰이 조회되고, 실재가 검증된다** — 두 어휘 토큰 열거 API 신설 + 편집기 세트에 `kind` 메타데이터 부여(생성기 수정) + 검증을 형태검사에서 실재검사로 승격. 조회·생성기·검증 3표면 | `archive/plans/2026-07-21-ect1-token-lookup-and-validation.md` | 실사 1·3 |
+| **ECT2** | **색이 색으로 보인다** — 자유 텍스트를 스와치+토큰 이름 컨트롤로 교체, 클릭 시 검색 가능한 팝오버(자기 어휘의 color 토큰만, 점표기 그룹), 사용자 언어 라벨 | `archive/plans/2026-07-21-ect2-color-swatch-and-picker.md` | 리서치 1·4·5 |
+| **ECT3** | **묶고 푼다** — 미바인딩 속성에 명시적 어포던스 + Figma식 detach로 원시값 이탈 + 왕복. 문서 모델·오퍼레이션·undo·UI 다표면 | `archive/plans/2026-07-21-ect3-bind-and-detach.md` | 리서치 2·3, 결정 1 |
+| **ECT4** | **이미지 노드가 실제로 칠해진다** — 렌더러 image kind 확장 + 두 경로의 키 계약 일치 | `archive/plans/2026-07-21-ect4-image-node-and-contract.md` | 실사 2·5, 결정 3 |
 | **ECT5** | **판단 가능성 재관측** — EU5와 같은 규약으로 사람이 사전 설명 없이 과업 수행. **사용자 결정 내장 milestone**이라 plan은 그 시점에 펼친다 | (ECT4 완료 시 작성) | 이 horizon의 개설 이유 |
 
 ## 닫는 기준

@@ -30,7 +30,7 @@ market intake beat 면제 — 기확정 방향의 콘텐츠 채우기로 시장 
 
 DoD: 카탈로그 폴백 카테고리 7종(Layout/Styling/Interaction/Accessibility/Motion Effects/UI Blocks/Component API)이 서술형 아티클(한국어 서술·영어 섹션 헤딩, tokens SSOT + 실존 문서 파생, 실예시·복붙 코드)로 작성되어 완성 판정을 통과하고 게이트 해제 + validate/build/lint/브라우저 smoke PASS + 배포 확인(세션 일괄 push).
 
-Evidence: `docs/plans/2026-07-10-da1-docs-category-articles.md` + changeset README + 배포 확인.
+Evidence: `archive/plans/2026-07-10-da1-docs-category-articles.md` + changeset README + 배포 확인.
 
 ### PE1 - Marketing Page Examples 3종 제작
 

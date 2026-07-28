@@ -27,10 +27,10 @@ Preceding horizon: `plans/horizons/2026-07-studio-finish.md` (closed 2026-07-19)
 
 | ID | 이름 | plan doc | 승인 | 리서치 |
 |---|---|---|---|---|
-| RC1 | 코드 자산 registry 파이프라인 | `plans/2026-07-19-rc1-registry-pipeline.md` | completed 2026-07-19 | `research/2026-07-19-recipe-code-reuse-shadcn-registry.md` |
-| RC2 | 코드 출발 계약 + 에이전트 E2E | `plans/2026-07-19-rc2-code-first-contract.md` | completed 2026-07-19 (2세션 병행 실측) | 불요 — RC1 산출이 입력 |
-| RC3 | 스튜디오 구성 ↔ 레시피 매핑 | `plans/2026-07-19-rc3-composition-recipe-map.md` | completed 2026-07-19 (피어 실행·독립 리뷰) | 불요 — 내부 매핑 |
-| RC4 | 통합 실연 (스튜디오→코드 조합→리스타일) | `plans/2026-07-19-rc4-integrated-demo.md` | completed 2026-07-19 (사람 게이트 승인) | 불요 — 실연 |
+| RC1 | 코드 자산 registry 파이프라인 | `archive/plans/2026-07-19-rc1-registry-pipeline.md` | completed 2026-07-19 | `research/2026-07-19-recipe-code-reuse-shadcn-registry.md` |
+| RC2 | 코드 출발 계약 + 에이전트 E2E | `archive/plans/2026-07-19-rc2-code-first-contract.md` | completed 2026-07-19 (2세션 병행 실측) | 불요 — RC1 산출이 입력 |
+| RC3 | 스튜디오 구성 ↔ 레시피 매핑 | `archive/plans/2026-07-19-rc3-composition-recipe-map.md` | completed 2026-07-19 (피어 실행·독립 리뷰) | 불요 — 내부 매핑 |
+| RC4 | 통합 실연 (스튜디오→코드 조합→리스타일) | `archive/plans/2026-07-19-rc4-integrated-demo.md` | completed 2026-07-19 (사람 게이트 승인) | 불요 — 실연 |
 
 ## Close Criteria (선언 / 실측 / 판정 대조용)
 

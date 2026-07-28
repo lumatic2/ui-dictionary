@@ -26,10 +26,10 @@ Preceding horizon: `plans/horizons/2026-07-visual-brief.md` (closed 2026-07-19)
 
 | ID | 이름 | plan doc | 승인 | 리서치 |
 |---|---|---|---|---|
-| SP1 | 브리프 v2 계약 (결정 공간 지도) | `plans/2026-07-19-sp1-brief-v2.md` | approved 2026-07-19 | 위 2건 소비 |
-| SP2 | 스튜디오 v2 (2단 구조 + 축 14종) | `plans/2026-07-19-sp2-studio-v2.md` | approved 2026-07-19 | 위 2건 소비 |
-| SP3 | 이미지 파이프라인 (Pexels + 생성 옵션) | `plans/2026-07-19-sp3-image-pipeline.md` | approved 2026-07-19 | tool-practice §4 |
-| SP4 | 통합 E2E 실연 | `plans/2026-07-19-sp4-integrated-e2e.md` | approved 2026-07-19 | 불요 |
+| SP1 | 브리프 v2 계약 (결정 공간 지도) | `archive/plans/2026-07-19-sp1-brief-v2.md` | approved 2026-07-19 | 위 2건 소비 |
+| SP2 | 스튜디오 v2 (2단 구조 + 축 14종) | `archive/plans/2026-07-19-sp2-studio-v2.md` | approved 2026-07-19 | 위 2건 소비 |
+| SP3 | 이미지 파이프라인 (Pexels + 생성 옵션) | `archive/plans/2026-07-19-sp3-image-pipeline.md` | approved 2026-07-19 | tool-practice §4 |
+| SP4 | 통합 E2E 실연 | `archive/plans/2026-07-19-sp4-integrated-e2e.md` | approved 2026-07-19 | 불요 |
 
 ## Close Criteria
 

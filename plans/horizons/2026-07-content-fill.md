@@ -21,7 +21,7 @@ Structure-First Buildout이 세운 dev 껍데기 중 "콘텐츠만 있으면 열
 
 DoD: Foundations 아티클 7종(color/typography/spacing-layout/motion/accessibility/dark-mode/tokens)이 레포 SSOT 기반 실콘텐츠(완성 판정: 실예시·라이트/다크·복붙 가능 코드)로 작성되고, Agent Recipes 표면이 `recipes/` 5종+llms.txt 실자산과 연결되며, shell 게이트를 열어 프로덕션 공개(Colors 페이지 foundation 링크 부활 포함) + Chrome evidence + 배포 확인.
 
-Evidence: `docs/plans/2026-07-10-cf1-docs-foundations.md` + changeset README들 + Chrome evidence.
+Evidence: `archive/plans/2026-07-10-cf1-docs-foundations.md` + changeset README들 + Chrome evidence.
 
 ### CF2 - Showcase Atlas Source-Quality 카드
 

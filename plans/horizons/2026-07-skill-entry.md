@@ -28,8 +28,8 @@ milestone 2개 — 권고 루브릭(3~5개) 미만이지만 사용자 발의 범
 
 | ID | 이름 | plan doc | 승인 | 리서치 |
 |---|---|---|---|---|
-| SE1 | skill 신설 + 프로토콜 사람 게이트 개정 | `plans/2026-07-18-se1-skill-and-human-gate.md` | approved 2026-07-18 | 불요 — 내부 자산 재배선 |
-| SE2 | 전역 규칙 제거 + E2E 검증 | `plans/2026-07-18-se2-global-removal-e2e.md` | approved 2026-07-18 | 불요 |
+| SE1 | skill 신설 + 프로토콜 사람 게이트 개정 | `archive/plans/2026-07-18-se1-skill-and-human-gate.md` | approved 2026-07-18 | 불요 — 내부 자산 재배선 |
+| SE2 | 전역 규칙 제거 + E2E 검증 | `archive/plans/2026-07-18-se2-global-removal-e2e.md` | approved 2026-07-18 | 불요 |
 
 ## Close Criteria
 

@@ -32,7 +32,7 @@ Evidence:
 
 - `docs/market/2026-07-07-figma-claude-workflows.md` + `docs/market/2026-07-07-figma-claude-community-pulse.md` + `methodology/figma-workflow.md`
 
-Plan: `docs/plans/2026-07-07-figma-workflow-method.md`
+Plan: `archive/plans/2026-07-07-figma-workflow-method.md`
 
 ### FW2 - 파일럿 실증 + 운영화 (completed 2026-07-07)
 

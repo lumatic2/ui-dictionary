@@ -4,37 +4,37 @@
 
 ### 2026-07-17 - Public Product & Monetization (parked)
 
-- PX - Public Experience Pass: 검색 수리(+포털 클릭 결함 추가 적발)·전 표면 인덱싱, Getting set up 프로토콜, Vocabulary 그룹 통합, 섹션별 독립 사이드바, per-page meta/SEO. Completed 2026-07-12 (`docs/plans/2026-07-12-px-public-experience.md`, changesets #94–98).
+- PX - Public Experience Pass: 검색 수리(+포털 클릭 결함 추가 적발)·전 표면 인덱싱, Getting set up 프로토콜, Vocabulary 그룹 통합, 섹션별 독립 사이드바, per-page meta/SEO. Completed 2026-07-12 (`archive/plans/2026-07-12-px-public-experience.md`, changesets #94–98).
 - AM/AC/PG/PP 미착수. Park 사유(2026-07-17 사용자 판정): 수익화 전에 에이전트 워크플로우 채택 흐름이 먼저. 복귀 후보는 `docs/horizons/CANDIDATES.md`, 상세는 `docs/horizons/2026-07-public-product-monetization.md`.
 
 ## Completed Horizons
 
 ### 2026-07-12 - Quality & Dogfooding (H2.5)
 
-- QA2 - AskewlyDesign Install & Dogfooding: 리네임 반영 재패키징+verify:package, 첫 실설치·언인스톨 lifecycle PASS, 설치본 CDP dogfooding에서 major 결함 4건 발견(#1 batch 계약 누락은 Step 6 해소, #2~#4 유지보수 등재), 적체 유지보수 4건 소진(다크모드·focus trap·실체화 undo 파일 삭제·packaged E2E registry/협업 통합) (`docs/plans/2026-07-12-qa2-install-dogfooding.md`, changesets #84–88).
-- QA1 - Recipe Gallery & Visual QA: 전용 갤러리 섹션에서 recipe 35종 live render(19종 첫 실노출), 라이트/다크 70장 sweep + contrast 후보 7건 전수 판독(전부 오탐/AA 통과), 오버레이 격리 결함 G1/G2 수정, live-render 유보 계약 갱신 (`docs/plans/2026-07-12-qa1-recipe-gallery-visual-qa.md`, changesets #89–90).
-- QA3 - Canvas Recipe Materialization: recipe 실체화가 빌드타임 marker 임베드된 실 standalone 소스 방출, 캔버스 Materialize 액션+데스크톱 IPC source-patch 채널 신설, packaged E2E 왕복 관측(identity 계약·재시작 단일 생존) — E2E가 Windows 스테이징 경로 콜론 결함 적발·봉합 (`docs/plans/2026-07-12-qa3-canvas-recipe-materialization.md`, changesets #91–93).
+- QA2 - AskewlyDesign Install & Dogfooding: 리네임 반영 재패키징+verify:package, 첫 실설치·언인스톨 lifecycle PASS, 설치본 CDP dogfooding에서 major 결함 4건 발견(#1 batch 계약 누락은 Step 6 해소, #2~#4 유지보수 등재), 적체 유지보수 4건 소진(다크모드·focus trap·실체화 undo 파일 삭제·packaged E2E registry/협업 통합) (`archive/plans/2026-07-12-qa2-install-dogfooding.md`, changesets #84–88).
+- QA1 - Recipe Gallery & Visual QA: 전용 갤러리 섹션에서 recipe 35종 live render(19종 첫 실노출), 라이트/다크 70장 sweep + contrast 후보 7건 전수 판독(전부 오탐/AA 통과), 오버레이 격리 결함 G1/G2 수정, live-render 유보 계약 갱신 (`archive/plans/2026-07-12-qa1-recipe-gallery-visual-qa.md`, changesets #89–90).
+- QA3 - Canvas Recipe Materialization: recipe 실체화가 빌드타임 marker 임베드된 실 standalone 소스 방출, 캔버스 Materialize 액션+데스크톱 IPC source-patch 채널 신설, packaged E2E 왕복 관측(identity 계약·재시작 단일 생존) — E2E가 Windows 스테이징 경로 콜론 결함 적발·봉합 (`archive/plans/2026-07-12-qa3-canvas-recipe-materialization.md`, changesets #91–93).
 - Close: close criteria 3항목 충족(전 recipe 열람+design-qa, 설치·실사용+유지보수 소진, 실체화 왕복 E2E). 상세: `docs/horizons/2026-07-quality-dogfooding.md`.
 - 크기 회고: milestone 당 changeset 5/2/3 — 인플레 없음.
 - 오케스트레이션 회고: sonnet 워커 7기 + Fable 게이트·E2E. 게이트/E2E 적발: 브리지 batch 계약 누락(dev-only 검증 갭), SheetTitle 컨텍스트 크래시, 데모 폭0, Windows 스테이징 경로 — 전부 "유닛 통과 ≠ 실표면 동작"의 실증으로, packaged/브라우저 실구동 게이트가 매 milestone 실결함을 잡음.
 
 ### 2026-07-12 - Living Design System (H2)
 
-- RL - Reference Loop Pipeline: 5단계 흡수 루프(수집→dedup→적응→검증→흡수) 표준화 — 절차 문서+inbox+ledger+audit 도구, 실증 3배치(commerce/internal-tools/documentation)로 recipe 6·용어 14·dedup 판정 10 (`docs/plans/2026-07-12-rl-reference-loop-pipeline.md`).
-- MS - Mobile Surface Batch: DeviceFrame 표현 인프라 + 모바일 2배치(recipe 4) + 캔버스 모바일 뷰포트 preset(390×844, canonical update-node, 브라우저 E2E) (`docs/plans/2026-07-12-ms-mobile-surface-batch.md`).
-- FW - Feed Wiring: 전 recipe 23종 code_asset 독립화(7종은 의사코드 적발→신규 구현), frontmatter→recipeCatalog build-time 생성기(결손=loud fail), Insert 팔레트 Recipes 섹션 + 모바일 뷰포트 삽입 E2E — 루프 산출이 사이트·llms.txt·CLI·캔버스 4곳 자동 도달 (`docs/plans/2026-07-12-fw-feed-wiring.md`).
-- SD - Surface Depth 2세대 (구 CS+R2 병합): 4표면 심화 배치(recipe 12, 총 35) + agent-facing anti-patterns.md(12 클러스터, 35/35 커버) + gen-2 토큰 갭 4건 토큰화 (`docs/plans/2026-07-12-sd-surface-depth.md`).
+- RL - Reference Loop Pipeline: 5단계 흡수 루프(수집→dedup→적응→검증→흡수) 표준화 — 절차 문서+inbox+ledger+audit 도구, 실증 3배치(commerce/internal-tools/documentation)로 recipe 6·용어 14·dedup 판정 10 (`archive/plans/2026-07-12-rl-reference-loop-pipeline.md`).
+- MS - Mobile Surface Batch: DeviceFrame 표현 인프라 + 모바일 2배치(recipe 4) + 캔버스 모바일 뷰포트 preset(390×844, canonical update-node, 브라우저 E2E) (`archive/plans/2026-07-12-ms-mobile-surface-batch.md`).
+- FW - Feed Wiring: 전 recipe 23종 code_asset 독립화(7종은 의사코드 적발→신규 구현), frontmatter→recipeCatalog build-time 생성기(결손=loud fail), Insert 팔레트 Recipes 섹션 + 모바일 뷰포트 삽입 E2E — 루프 산출이 사이트·llms.txt·CLI·캔버스 4곳 자동 도달 (`archive/plans/2026-07-12-fw-feed-wiring.md`).
+- SD - Surface Depth 2세대 (구 CS+R2 병합): 4표면 심화 배치(recipe 12, 총 35) + agent-facing anti-patterns.md(12 클러스터, 35/35 커버) + gen-2 토큰 갭 4건 토큰화 (`archive/plans/2026-07-12-sd-surface-depth.md`).
 - Close: close criteria 전부 충족 — 루프 9배치 반복 실증(각 배치 프로덕션 검증 체인 완주), 전 표면 카테고리 실콘텐츠(표면당 recipe 3~6), 신규 배치가 재작업 없이 registry/CLI/llms.txt 소비(build:catalog 배선). 상세: `docs/horizons/2026-07-living-design-system.md`.
 - 크기 회고: 4 milestone이 각 4~6 changeset으로 전부 milestone-grade — 인플레 없음. CS+R2를 SD 하나로 병합한 판단이 적정(중복 범위 제거).
 - 오케스트레이션 회고: sonnet 워커 21기(수집 9·배치 적응 9·구현/도구 3) + Fable 게이트로 4 milestone 단일 세션 완주. 게이트 적발: audit 스크립트 결함 2건, 수집 YAML 결함 4류(name 누락·따옴표 스칼라·빈 필드), FW 추출 불가 7종(의사코드) 재설계.
 
 ### 2026-07-12 - Canvas Production Environment (H1)
 
-- UX3 - Agent Collaboration UX: 하이브리드 채널(MCP live context via /events 구독 + agent-canvas CLI, 단일 BridgeClient) + 양 호스트 경로 collaboration feed 계약(/audit 소비) + AgentPanel(actor activity·읽는 feed·canonical Undo·conflict 인라인) + dual-actor conflict-recovery E2E (`docs/plans/2026-07-12-ux3-agent-collaboration-ux.md`).
-- UX4 - Product Polish And Validation: 상태/접근성/밀도 sweep + packaged 재증명 — 기존 evidence가 AUC4 셸 산출임을 적발하고 openDevFixture 벤치마크 진입 API로 재생성 (`docs/plans/2026-07-12-ux4-product-polish.md`).
-- CR - Component Registry: @askewly/component-registry(shadcn 10+layout 6 큐레이션, registry:// source), 팔레트 v2 4섹션, list_components MCP tool+CLI, 실 bridge round-trip 증명 (`docs/plans/2026-07-12-cr-component-registry.md`).
-- RT - Real-project Round-trip: marker-scan ingestion 신설(부재 적발)+데스크톱 배선, 무손실 반영 계약(재파생 일치+바이트 보존+conflict 무변이), registry 실체화(NEW_FILE_HASH 신규 파일 채널, 정체성=marker id), 재열기·병행 편집 연속성 E2E (`docs/plans/2026-07-12-rt-real-project-roundtrip.md`).
-- AI - Askewly Identity: 에디터 크롬·캔버스 렌더가 tokens/askewly.tokens.json SSOT 파생(hex lint 고정), tokenBindings 실렌더+다크 전환 실효, H1 close 게이트(5k p95 median 11.60ms) (`docs/plans/2026-07-12-ai-askewly-identity.md`).
+- UX3 - Agent Collaboration UX: 하이브리드 채널(MCP live context via /events 구독 + agent-canvas CLI, 단일 BridgeClient) + 양 호스트 경로 collaboration feed 계약(/audit 소비) + AgentPanel(actor activity·읽는 feed·canonical Undo·conflict 인라인) + dual-actor conflict-recovery E2E (`archive/plans/2026-07-12-ux3-agent-collaboration-ux.md`).
+- UX4 - Product Polish And Validation: 상태/접근성/밀도 sweep + packaged 재증명 — 기존 evidence가 AUC4 셸 산출임을 적발하고 openDevFixture 벤치마크 진입 API로 재생성 (`archive/plans/2026-07-12-ux4-product-polish.md`).
+- CR - Component Registry: @askewly/component-registry(shadcn 10+layout 6 큐레이션, registry:// source), 팔레트 v2 4섹션, list_components MCP tool+CLI, 실 bridge round-trip 증명 (`archive/plans/2026-07-12-cr-component-registry.md`).
+- RT - Real-project Round-trip: marker-scan ingestion 신설(부재 적발)+데스크톱 배선, 무손실 반영 계약(재파생 일치+바이트 보존+conflict 무변이), registry 실체화(NEW_FILE_HASH 신규 파일 채널, 정체성=marker id), 재열기·병행 편집 연속성 E2E (`archive/plans/2026-07-12-rt-real-project-roundtrip.md`).
+- AI - Askewly Identity: 에디터 크롬·캔버스 렌더가 tokens/askewly.tokens.json SSOT 파생(hex lint 고정), tokenBindings 실렌더+다크 전환 실효, H1 close 게이트(5k p95 median 11.60ms) (`archive/plans/2026-07-12-ai-askewly-identity.md`).
 - Close: close criteria 충족 — packaged E2E(실프로젝트 open·양 에이전트 편집·watcher 반영·crash/restart·5k 예산·a11y·보안) + renderer/bridge E2E(registry 조립·무손실 왕복·연속성). 상세: `docs/horizons/2026-07-canvas-production-environment.md`. 잔여(비차단): packaged E2E에 registry/협업 시나리오 통합.
 - 크기 회고: milestone 5개(승계 2 제외)가 각 3~6 step으로 전부 milestone-grade — 인플레 없음. 측정 프로토콜 교훈: 절대시간 게이트는 High priority+settle+median 통계로 상시 데스크톱 내성 확보(기준 불변).
 - 오케스트레이션 회고: sonnet 워커 13기(구현 11·검증 1·리서치 1) + Fable 게이트 체제로 UX2~AI 6 milestone을 단일 세션에 완주. 게이트에서 워커 누락 실결함 2건·시스템 결함 3건 적발.
@@ -42,7 +42,7 @@
 ### 2026-07-12 - Canvas Product UX (superseded into Canvas Production Environment)
 
 - UX1 - Workspace Foundation: 제품형 workspace shell, project entry/recent, toolbar, adaptive panels + packaged 품질 게이트 (`phases/agent-design-workspace-foundation/step5.md`). Completed 2026-07-11.
-- UX2 - Visual Creation Workflow: 6 steps — canonical creation command layer(atomic batch), Layers tree projection, searchable Insert palette, align/distribute/tidy/group/ungroup + gap/padding, viewport(zoom anchor·space pan·fit)+단축키+help dialog, 대표 컴포지션 E2E. 게이트: core 52/52·renderer 45/45·desktop 42/42·package/packaged-evidence PASS(IME waiver 유지) (`docs/plans/2026-07-11-ux2-visual-creation-workflow.md`). Completed 2026-07-12.
+- UX2 - Visual Creation Workflow: 6 steps — canonical creation command layer(atomic batch), Layers tree projection, searchable Insert palette, align/distribute/tidy/group/ungroup + gap/padding, viewport(zoom anchor·space pan·fit)+단축키+help dialog, 대표 컴포지션 E2E. 게이트: core 52/52·renderer 45/45·desktop 42/42·package/packaged-evidence PASS(IME waiver 유지) (`archive/plans/2026-07-11-ux2-visual-creation-workflow.md`). Completed 2026-07-12.
 - Close: 정상 종결이 아니라 **확장 흡수** — 2026-07-12 horizon 스케일 재조정(사용자 판정: 기존 horizon들이 milestone 크기)으로 UX3·UX4를 `docs/horizons/2026-07-canvas-production-environment.md`(+CR/RT/AI)로 승계.
 - 크기 회고: UX2는 6 step/12 commits로 milestone-grade 적정. horizon 단위 인플레는 시퀀스 레벨에서 교정(3개 대형 horizon 큐 확립).
 
@@ -81,7 +81,7 @@
 ### 2026-07-10 - Structure-First Buildout
 
 - SFB1 - Structure Contract And Clean Production: blueprint v2(목표 IA·완성 판정·노출 규칙) 확정 + 프로덕션 노출 게이트 배포 — 빈 컬렉션 42·placeholder 카드 5·Download 진입 4 비노출, 전 라우트 크롤 스모크 0건 (`changesets/20260710-production-exposure-gate/README.md`).
-- SFB2 - Shell Buildout (dev-only): blueprint v2 신설 껍데기 전부 dev-only 구현 — Docs Foundations 7+Agent Recipes, Colors 축+Palettes skeleton, Pro 하위 3탭+Download 앱 skeleton, prod 비노출 회귀 PASS (`docs/plans/2026-07-10-sfb2-shell-buildout.md`).
+- SFB2 - Shell Buildout (dev-only): blueprint v2 신설 껍데기 전부 dev-only 구현 — Docs Foundations 7+Agent Recipes, Colors 축+Palettes skeleton, Pro 하위 3탭+Download 앱 skeleton, prod 비노출 회귀 PASS (`archive/plans/2026-07-10-sfb2-shell-buildout.md`).
 - SFB3 - Content Fill Batch 1: Colors Palettes: Colors 축 프로덕션 공개 — 큐레이션 팔레트 13종 실데이터·복사/내보내기·라이트/다크, 껍데기 누출 2건 차단 (`changesets/20260710-colors-axis-public/README.md`).
 - Close: 닫는 기준 충족 — 구조 계약 + 껍데기 골조 + 첫 콘텐츠 채움 실증(SFB3가 Content Fill 프로세스 검증). 상세: `docs/horizons/2026-07-structure-first-buildout.md`.
 - 노출 게이트 시스템(`src/lib/exposure.ts`) 확립: shell 플래그/빈 termIds로 dev 작성 → 완성 판정 → 게이트 해제 — 이후 6 milestone에서 검증된 패턴.
@@ -131,7 +131,7 @@
 - RME1~RME5 - Reference model consolidation: Tailwind reference model, Around template-system capture, local design work audit, mobile platform baseline (HIG/Material), and product-system exemplar map (Vercel/Stripe/Linear/Radix/Around).
 - PSS2 - Landing Page Design Quality was paused mid-horizon (showcase Steps 0-3 done, Matter.js physics card committed) and carried over as a pending candidate for a later product-surface horizon.
 - Close rationale: the horizon's close criteria (public homepage/site shell exists in code, next vertical slice can start from the new IA) were met by PSS1.
-- Evidence: `docs/horizons/2026-07-public-site-shell.md`, `phases/public-site-shell/index.json`, `docs/plans/2026-07-05-showcase-atlas-upgrade.md`, `docs/research/tailwind-reference-model.md` and RME evidence docs.
+- Evidence: `docs/horizons/2026-07-public-site-shell.md`, `phases/public-site-shell/index.json`, `archive/plans/2026-07-05-showcase-atlas-upgrade.md`, `docs/research/tailwind-reference-model.md` and RME evidence docs.
 
 ### 2026-07-04 - Design System Foundation
 
@@ -145,13 +145,13 @@
 - AD1 - AD1 — Default Routing 배선
   - Completed: 2026-07-17
   - Result: 진입 프로토콜 llms.txt 노출 + Claude(규칙+hook)·Codex(AGENTS.md) 라우팅 배선 — 양 에이전트 E2E 토큰 파생 PASS(14/14·16/16, 발명 0), silent 404·URL 구성 결함 적발·봉합 — changesets #99–101
-  - Evidence: docs/plans/2026-07-17-ad1-default-routing.md
+  - Evidence: archive/plans/2026-07-17-ad1-default-routing.md
 
 ### 2026-07
 - AD2 - AD2 — Style Signature
   - Completed: 2026-07-17
   - Result: 인터뷰 확정 시그니처(운용 원칙 5 + 비선호 5, 점수제 폐기) — entry-protocol 판정 단계 편입·llms.txt 배포, 실판정 1회 구동(발명 팔레트 FAIL 변별) — changesets #102–103
-  - Evidence: docs/plans/2026-07-17-ad2-style-signature.md
+  - Evidence: archive/plans/2026-07-17-ad2-style-signature.md
 
 - AD3 - AD3 — Real-work Dogfooding
   - Completed: 2026-07-17
@@ -161,7 +161,7 @@
 - AD4 - AD4 — Gap-driven 확장
   - Completed: 2026-07-17
   - Result: 갭 4건 해소 — chat recipe(live gallery)+한글 break-keep 클러스터+판정-중심 프로토콜 재정렬(hook 불사용 확정), 배포 검증 — changesets #110–111
-  - Evidence: docs/plans/2026-07-17-ad4-gap-driven-expansion.md
+  - Evidence: archive/plans/2026-07-17-ad4-gap-driven-expansion.md
 
 ### 2026-07
 - VI1 - VI1 — 표현 스택 지도
@@ -177,38 +177,38 @@
 - VI3 - VI3 — 모션 오케스트레이션 티어 recipes
   - Completed: 2026-07-17
   - Result: Motion 도입(+43KB gzip 실측) + ② 티어 recipe 3종(magnetic=수동 opt-in·spring drag=중단가능성·stagger=실무 기본) 인터랙션 실검증 — changesets #116–117
-  - Evidence: plans/2026-07-17-vi3-motion-recipes.md
+  - Evidence: archive/plans/2026-07-17-vi3-motion-recipes.md
 
 - VI4 - VI4 — Canvas·WebGL·three.js 티어
   - Completed: 2026-07-17
   - Result: three.js/R3F lazy 도입(별도 청크 881KB·메인 +2.4KB gzip) + ③ 파티클·④ 3D 씬 recipe — lazy 실증·WebGL 폴백·reduced-motion 게이팅, 배포 검증 — changesets #118–119
-  - Evidence: plans/2026-07-17-vi4-canvas-webgl-tier.md
+  - Evidence: archive/plans/2026-07-17-vi4-canvas-webgl-tier.md
 
 - VI5 - VI5 — 부품 층 계약 + 레퍼런스 흡수
   - Completed: 2026-07-17
   - Result: shadcn 재스타일 계약(동작 불가침·look=프로젝트 토큰) + 흡수 3분기 기준(실측 9종 분류) llms 배포 + toolshelf used 5건 — changesets #120–121
-  - Evidence: plans/2026-07-17-vi5-component-layer-absorption.md
+  - Evidence: archive/plans/2026-07-17-vi5-component-layer-absorption.md
 
 ### 2026-07
 - TC1 - TC1 — 흡수 계약 개정
   - Completed: 2026-07-17
   - Result: taste 흡수 계약(갱신 없는 관찰=미소화·7필드·성립성 게이트 4문항) + ledger + RL 상호 배선 — changesets #122–123
-  - Evidence: plans/2026-07-17-tc1-taste-loop-contract.md
+  - Evidence: archive/plans/2026-07-17-tc1-taste-loop-contract.md
 
 - TC2 - TC2 — 제품 배치: 사용자 큐레이션 5종
   - Completed: 2026-07-17
   - Result: 큐레이션 5종 관찰 12건(흡수 9·미소화 2·시그니처 제안 1) — anti-patterns 클러스터 14·15 신설+13 보강, recipe 5파일 갱신, 배포 검증 — changesets #124–126
-  - Evidence: plans/2026-07-17-tc2-curation-batch.md
+  - Evidence: archive/plans/2026-07-17-tc2-curation-batch.md
 
 - TC3 - TC3 — 표현 배치: Dribbble 조건부
   - Completed: 2026-07-17
   - Result: Dribbble 게이트 배치 — CRM 콘셉트 FAIL(3/4)→클러스터 16(콘셉트 대시보드 관성), 단일 액센트 차트 PASS→stat-grid 보강, 배포 검증 — changesets #128–129
-  - Evidence: plans/2026-07-17-tc3-dribbble-batch.md
+  - Evidence: archive/plans/2026-07-17-tc3-dribbble-batch.md
 
 - TC4 - TC4 — 성문 판단 diff: HIG·Material·Polaris
   - Completed: 2026-07-17
   - Result: 성문 판단 diff — 채택 3(서체 증식 금지·모션 규모 비례·verb-first)·기각 2(M3 색 역할=스타일 고정 금지 충돌, HIG 재질=중복), 배포 검증 — changesets #130–131
-  - Evidence: plans/2026-07-17-tc4-canonical-diff.md
+  - Evidence: archive/plans/2026-07-17-tc4-canonical-diff.md
 
 ### 2026-07
 - ST1 - ST1 — 스튜디오 정비 (칩·크기·순서·해상도)
@@ -374,7 +374,7 @@ plan doc: `archive/plans/2026-07-20-th*.md` · 증거: `evidence/template-produc
 - TH6 — 실사용 실연 + close audit: 명함 1건 전 루프 통과, 결함 3건 계수 (th6-commission.md)
 
 **미달로 닫힌 항목**: 닫는 기준 7(실사용) 중 편집기 축 — 사람이 화면을 읽지 못해 판단 불가.
-이 미달이 `plans/horizons/2026-07-editor-legibility.md`의 개설 근거다.
+이 미달이 `archive/horizons/2026-07-editor-legibility.md`의 개설 근거다.
 
 ## editor-legibility (closed 2026-07-21 — 닫는 기준 6항 중 5 PASS·1 미달)
 
@@ -471,7 +471,7 @@ plan doc: `archive/plans/2026-07-21-eu*.md` · 증거: `evidence/editor-legibili
 - Evidence: evidence/design-output-gates/dog1-linter-precision.md
 - Gap: 실행 실사에서 오탐 2종(SVG·주석)과 누락 1종(줄 단위 첫 매치만)이 나왔다 — 브리프는 검사기가 없다고 했으나 실은 있고, 정확도가 문제였다
 - Scale: changesets>=3; surfaces: 규칙 엔진·예외 처리·회귀 fixture; capability: 무시당하지 않는 검사기
-- Plan: plans/2026-07-22-dog1-linter-precision.md
+- Plan: archive/plans/2026-07-22-dog1-linter-precision.md
 - Status: [x]
 
 - Completed at: 2026-07-22
@@ -482,7 +482,7 @@ plan doc: `archive/plans/2026-07-21-eu*.md` · 증거: `evidence/editor-legibili
 - Evidence: evidence/design-output-gates/dog2-publication.md
 - Gap: `npm view @askewly/design` → E404. 패키지는 bin·files까지 준비됐는데 레지스트리에 없다
 - Scale: changesets>=3; surfaces: 패키지 메타·배포·재배포 절차; capability: 남의 프로젝트에서 불리는 검사기
-- Plan: plans/2026-07-22-dog2-cli-publication.md
+- Plan: archive/plans/2026-07-22-dog2-cli-publication.md
 - Status: [x]
 
 - Completed at: 2026-07-22
@@ -493,7 +493,7 @@ plan doc: `archive/plans/2026-07-21-eu*.md` · 증거: `evidence/editor-legibili
 - Evidence: evidence/design-output-gates/dog3-typography.md
 - Gap: 타이포 검사기가 없다. Kraft의 4를 그대로 쓰면 우리 5단계 스케일이 자기 위반이 된다
 - Scale: changesets>=3; surfaces: 정규화 규칙·CLI 표면·자기 자산 실측; capability: 잴 수 있는 타이포 규율
-- Plan: plans/2026-07-22-dog3-typography-scale.md
+- Plan: archive/plans/2026-07-22-dog3-typography-scale.md
 - Status: [x]
 
 - Completed at: 2026-07-22
@@ -504,7 +504,7 @@ plan doc: `archive/plans/2026-07-21-eu*.md` · 증거: `evidence/editor-legibili
 - Evidence: evidence/design-output-gates/dog4-print-publication.md
 - Gap: print-spec.ts는 실재하는데 에이전트 정본 밖에 있다 — VL2와 동형 구조
 - Scale: changesets>=3; surfaces: 문서 생성기·매체 분류·배포 등재; capability: 에이전트가 읽는 인쇄 규격
-- Plan: plans/2026-07-22-dog4-print-evidence-publication.md
+- Plan: archive/plans/2026-07-22-dog4-print-evidence-publication.md
 - Status: [x]
 
 - Completed at: 2026-07-22
@@ -514,7 +514,7 @@ plan doc: `archive/plans/2026-07-21-eu*.md` · 증거: `evidence/editor-legibili
 - Evidence: evidence/design-output-gates/dog5-slide-medium.md
 - Gap: 슬라이드 자산 0건. 그런데 통용 규칙 대부분이 1차 출처 없는 통설이다
 - Scale: changesets>=3; surfaces: 규격 계약·통설 옵트인 처리·배포 등재; capability: 정직한 슬라이드 게이트
-- Plan: plans/2026-07-22-dog5-slide-medium.md
+- Plan: archive/plans/2026-07-22-dog5-slide-medium.md
 - Status: [x]
 
 - Completed at: 2026-07-22
@@ -524,7 +524,7 @@ plan doc: `archive/plans/2026-07-21-eu*.md` · 증거: `evidence/editor-legibili
 - Evidence: evidence/design-output-gates/dog6-wiring.md
 - Gap: SKILL.md 마무리 절차에 verify 호출이 없다 — 검사기가 있어도 안 불린다(VL8과 같은 병리)
 - Scale: changesets>=3; surfaces: entry-protocol·스킬 배선·자가 수정 루프; capability: 실제로 불리는 게이트
-- Plan: plans/2026-07-22-dog6-finish-procedure-wiring.md
+- Plan: archive/plans/2026-07-22-dog6-finish-procedure-wiring.md
 - Status: [x]
 
 - Completed at: 2026-07-22

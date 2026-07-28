@@ -28,7 +28,7 @@ Figma/OpenDesign 역설계 결과, Figma의 C++/Wasm/WebGPU scenegraph를 그대
 
 DoD: 동일한 representative UI fixture와 benchmark runner로 ① DOM/React+editor overlay ② DOM+WebGPU overlay ③ SVG+embedded DOM ④ CanvasKit/custom WebGPU 후보를 비교한다. 각 후보는 1k/5k/10k layer pan/zoom·drag/resize pointer latency·Korean IME·responsive frame·nested component/variant·browser screenshot diff·memory/recovery·accessibility·source round-trip 결과를 남긴다. 최종 comparative report가 후보별 fit/non-fit과 native/Wasm hot-path threshold를 제시하고, 사용자 선택으로 renderer/engine topology ADR을 확정한다.
 
-Evidence: `docs/plans/2026-07-10-auc0-canvas-engine-bakeoff.md` + `experiments/canvas-engine-*` + `docs/research/canvas-engine-bakeoff-2026-07.md` + `docs/adr/0006-agent-design-layered-dom-webgpu-engine.md`.
+Evidence: `archive/plans/2026-07-10-auc0-canvas-engine-bakeoff.md` + `experiments/canvas-engine-*` + `docs/research/canvas-engine-bakeoff-2026-07.md` + `docs/adr/0006-agent-design-layered-dom-webgpu-engine.md`.
 
 ### AUC1 - Canonical Canvas Foundation — completed
 
@@ -48,7 +48,7 @@ Result: canonical selection/move/resize/reparent/reorder, responsive constraints
 
 DoD: 사용자가 별도 terminal에서 실행한 Codex CLI와 Claude CLI가 project-scoped local bridge/MCP에 연결된다. trusted tool mutation은 canonical document와 React source에 원자적으로 auto-apply되고 WebSocket canvas에 즉시 보이며, direct source edit도 watcher를 통해 reverse sync된다. exact diff/history/Undo, conflict/reconnect recovery, actual dual-CLI discovery smoke, React code↔canvas structure/pixel drift gate를 통과한다.
 
-Evidence: `docs/plans/2026-07-10-auc3-terminal-agent-live-canvas.md` + `phases/agent-design-canvas-agent/` + fresh-project dual-CLI round-trip artifacts + failure-mode evidence.
+Evidence: `archive/plans/2026-07-10-auc3-terminal-agent-live-canvas.md` + `phases/agent-design-canvas-agent/` + fresh-project dual-CLI round-trip artifacts + failure-mode evidence.
 
 Result: one loopback bridge now serves Codex and Claude through a shared stdio MCP adapter; guarded operations/source patches auto-apply with exact audit and Undo; WebSocket canvas and source watcher converge live. Fresh independent system Chrome measured acknowledgement→visible p95 59.4ms and file edit→visible p95 144.4ms. Installed Codex and Claude both read the fresh project context at revision 4.
 
@@ -56,7 +56,7 @@ Result: one loopback bridge now serves Codex and Claude through a shared stdio M
 
 DoD: Windows installer, trusted folder import, sandboxed project preview, crash/autosave recovery, update/diagnostics boundary, representative end-to-end flow를 검증한다. renderer에 Node/Electron authority가 노출되지 않고 AUC0 성능 budget을 packaged build에서도 유지한다.
 
-Evidence: `docs/plans/2026-07-10-auc4-desktop-productization-quality-gate.md` + `phases/agent-design-desktop-productization/` + packaged-app E2E + installer/recovery/security evidence.
+Evidence: `archive/plans/2026-07-10-auc4-desktop-productization-quality-gate.md` + `phases/agent-design-desktop-productization/` + packaged-app E2E + installer/recovery/security evidence.
 
 Result: secure Electron authority boundaries, supervised recovery, trusted project persistence, sandboxed preview, unsigned-development Squirrel lifecycle, dual terminal round-trip, packaged 5k p95 11.5ms, watcher 130.2ms, and restart pixel drift 0 were verified. The actual Microsoft IME check remains unverified and was explicitly waived by the user rather than reported as passed.
 

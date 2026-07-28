@@ -50,5 +50,5 @@ Objective의 “사람이 직접 만드는 캔버스와 에이전트가 같은 �
 - Objective: `docs/OBJECTIVE.md`
 - Predecessor: `docs/horizons/2026-07-agent-native-ui-canvas.md`
 - Gap review: `docs/roadmap-gap-2026-07-11.md`
-- UX1 plan: `docs/plans/2026-07-11-ux1-workspace-foundation.md`
-- UX2 plan: `docs/plans/2026-07-11-ux2-visual-creation-workflow.md`
+- UX1 plan: `archive/plans/2026-07-11-ux1-workspace-foundation.md`
+- UX2 plan: `archive/plans/2026-07-11-ux2-visual-creation-workflow.md`

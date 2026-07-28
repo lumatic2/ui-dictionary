@@ -19,7 +19,7 @@ Agent Design CLI close 시점 진단(사용자, 2026-07-10): "CLI의 정확한 �
 
 DoD: 레포에 흩어진 디자인 원칙을 Principles 문서로 증류 — ① 사람용: Docs 최상위 아티클(한국어 서술·영어 헤딩, dev 게이트 → 완성 판정 → 공개) ② 에이전트용: `docs/design-system/principles.md`(또는 동급) 자산이 llms.txt 인덱스에 포함 ③ 원칙 각 항목에 근거 소스 표기(발명 금지) ④ **원칙 내용 최종 승인 = 사용자** ⑤ build/lint/smoke + 배포 확인.
 
-Evidence: `docs/plans/2026-07-10-scd1-principles.md` + changesets #48-51 + Cloudflare deployment `e9cba517` (source `74ade1a`).
+Evidence: `archive/plans/2026-07-10-scd1-principles.md` + changesets #48-51 + Cloudflare deployment `e9cba517` (source `74ade1a`).
 
 Size retrospective: 4 independent changesets (canonical principles, llms discovery, gated human article, approval/gate release) plus integrated production verification. The helper's single-evidence-path inflation warning was a false positive; SCD1 is milestone-grade under the observable rubric.
 
@@ -27,7 +27,7 @@ Size retrospective: 4 independent changesets (canonical principles, llms discove
 
 DoD: 미커버 pattern_group 6종(marketing·forms·navigation·overlays·application-ui 커버됨 → docs/data-display/feedback/layout/commerce 등)에 각 ≥1 레시피, 총 5→13종+ — 각 레시피는 recipe-format 계약 준수(validate-recipes PASS), 실구현 code_asset 참조, Principles 정합. 통합 검증: llms.txt 재생성(신규 레시피 포함) + CLI 데이터 재번들 + `askewly-design add <신규 레시피>` 주입 smoke ≥2종 + 배포 확인.
 
-Evidence: `docs/plans/2026-07-10-scd2-recipe-coverage.md` + changesets #52-56 + Cloudflare deployment `15a65241` (source `71d88f2`).
+Evidence: `archive/plans/2026-07-10-scd2-recipe-coverage.md` + changesets #52-56 + Cloudflare deployment `15a65241` (source `71d88f2`).
 
 ## Close Criteria
 
