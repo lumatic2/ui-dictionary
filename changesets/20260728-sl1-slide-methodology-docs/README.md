@@ -12,3 +12,8 @@
 
 - 신규: `methodology/slide-production.md` — HTML 정본 원칙 · export 결정표(편집 가능성 분기 4행) · 엔진 선택표(slide-deck-workflow 카드 인용) · G1~G7 순서 강제 · 매체 게이트는 slide-spec/medium-taxonomy 인용 + export별 최종 형식 확인 절차만 추가 · 린트 규칙 스펙 R1~R4(입력/판정/임계값/예외/근거 등급 표, 전부 warning·옵트인 — slide-spec §3 철학 정합, R4는 기존 checkSlideHeuristics 재사용 지정).
 - Verify: 규칙 표에 입력·판정·임계값·예외 열 전부 존재 · validator 경로(tools/validate-slides.mjs)는 SKILL.md §9 실측 인용.
+
+## step-3 — 목차·상호 링크
+
+- 수정: `methodology/00-INDEX.md` — slide-production.md 등재 + Changelog.
+- Verify: 신규 문서 2건 + 00-INDEX 의 상대 링크 전건 실존 검사 스크립트 PASS (step-1 유예분 slide-production.md 링크 포함).

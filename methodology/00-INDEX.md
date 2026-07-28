@@ -11,7 +11,9 @@
 | [ai-slop-catalog.md](ai-slop-catalog.md) | AI 티 나는 UI 패턴 카탈로그 |
 | [skill-routing.md](skill-routing.md) | 디자인 스킬 라우팅 |
 | [research-findings.md](research-findings.md) | 방법론 리서치 발견 모음 |
+| [slide-production.md](slide-production.md) | 발표 슬라이드 제작 파이프라인 (HTML 정본·3-format export·린트 스펙) |
 
 ## Changelog
 
+- 2026-07-28: slide-production.md 등재 (SL1 step-3).
 - 2026-07-07: 초판 (FW1 — figma-workflow.md 등재와 함께 생성).

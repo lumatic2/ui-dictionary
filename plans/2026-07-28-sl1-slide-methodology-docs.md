@@ -52,7 +52,7 @@ Status: approved (2026-07-28 사용자 승인 — "응 추천대로 ㄱ", llms �
   - Failure probe: 린트 규칙을 "권고" 수준 산문으로 쓰면 SL2에서 구현 불가 — 규칙마다 [입력 필드 / 판정 로직 / 임계값 / 예외]를 표로 고정.
   - Commit: changeset `sl1-slide-methodology-docs` (README 절: step-2).
 
-- [ ] **step-3 — 목차·상호 링크 (문서 층 마감)**
+- [x] **step-3 — 목차·상호 링크 (문서 층 마감)**
   - Artifact: `methodology/00-INDEX.md` 목차 등재 + knowledge↔methodology 상호 wikilink 정합 확인.
   - Files: write methodology/00-INDEX.md. read knowledge/slide-principles.md, methodology/slide-production.md.
   - Risk: 없음 (목차 1건 추가 — 기존 항목 무변경)
