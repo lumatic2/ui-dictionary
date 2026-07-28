@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "active_work_id": "ue4-pro-lock-owner-unlock",
+  "active_work_id": "vi7-toolshelf-placement",
   "works": {
     "SFB1": {
       "title": "Structure Contract And Clean Production",
@@ -4204,6 +4204,108 @@
       "updated_at": "2026-07-28",
       "notes": "Registered atomically by canonical harness approve_harness_plan.py after plan validation.",
       "completion_summary": "Pro 잠금+오너 언락 실서비스 동작 확인 — 로그인 복귀·전체 언락 실증, 배포면 결함 3건 함께 수리"
+    },
+    "vi6-knowledge-consolidation": {
+      "work_id": "vi6-knowledge-consolidation",
+      "milestone_id": "VI6",
+      "status": "completed",
+      "plan_path": "plans/2026-07-28-vi6-knowledge-consolidation.md",
+      "changeset_path": "changesets/20260728-vi6-knowledge-consolidation",
+      "next_step": "step-1",
+      "current_step": "step-1",
+      "steps": [
+        {
+          "id": "step-1",
+          "label": "step-1 — 전수 대조·판정 장부"
+        },
+        {
+          "id": "step-2",
+          "label": "step-2 — knowledge 층 갱신 (흡수 집행)"
+        },
+        {
+          "id": "step-3",
+          "label": "step-3 — 통합 검증 + 파이프라인 반영 (VI6 마감)"
+        }
+      ],
+      "execution_mode": "continuous",
+      "approval": {
+        "approved_by": "user",
+        "approved_at": "2026-07-28",
+        "plan_sha256": "eead0327444ef3d73667a023204bf264870b16b2267b0f0b463e0ab522120627",
+        "chain": [
+          "VI7",
+          "VI8"
+        ]
+      },
+      "allowed_stop_reasons": [
+        "completed",
+        "blocked",
+        "decision_required",
+        "risk_gate",
+        "secret_required",
+        "external_authority_required",
+        "user_stopped"
+      ],
+      "stop_reason": null,
+      "stop_detail": {},
+      "session_ids": [
+        "codex:34c2a7b2-5609-47f8-b23f-97fd0200018e",
+        "claude:34c2a7b2-5609-47f8-b23f-97fd0200018e"
+      ],
+      "owner_session_uuid": "claude:34c2a7b2-5609-47f8-b23f-97fd0200018e",
+      "updated_at": "2026-07-28",
+      "notes": "Registered atomically by canonical harness approve_harness_plan.py after plan validation.",
+      "completion_summary": "KG 19노드 전수 판정(흡수8/링크7/제외4), motion-principles 신설 등 knowledge 3문서 흡수 집행 — 티어 판정 정본 단일화"
+    },
+    "vi7-toolshelf-placement": {
+      "work_id": "vi7-toolshelf-placement",
+      "milestone_id": "VI7",
+      "status": "active",
+      "plan_path": "plans/2026-07-28-vi7-toolshelf-placement.md",
+      "changeset_path": "changesets/20260728-vi7-toolshelf-placement",
+      "next_step": "step-1",
+      "current_step": "step-1",
+      "steps": [
+        {
+          "id": "step-1",
+          "label": "step-1 — 15카드 전수 판정 장부"
+        },
+        {
+          "id": "step-2",
+          "label": "step-2 — 정본 반영 + llms 배선"
+        },
+        {
+          "id": "step-3",
+          "label": "step-3 — shelf used 기록 + 통합 검증 (VI7 마감)"
+        }
+      ],
+      "execution_mode": "continuous",
+      "approval": {
+        "approved_by": "user",
+        "approved_at": "2026-07-28",
+        "plan_sha256": "4b06ea8ca7609ce9fb816b5145149e71ecf95b8cb7ff60f05c2bfb2dc8d948d7",
+        "chain": [
+          "VI8"
+        ]
+      },
+      "allowed_stop_reasons": [
+        "completed",
+        "blocked",
+        "decision_required",
+        "risk_gate",
+        "secret_required",
+        "external_authority_required",
+        "user_stopped"
+      ],
+      "stop_reason": null,
+      "stop_detail": {},
+      "session_ids": [
+        "codex:34c2a7b2-5609-47f8-b23f-97fd0200018e",
+        "claude:34c2a7b2-5609-47f8-b23f-97fd0200018e"
+      ],
+      "owner_session_uuid": "claude:34c2a7b2-5609-47f8-b23f-97fd0200018e",
+      "updated_at": "2026-07-28",
+      "notes": "Registered atomically by canonical harness approve_harness_plan.py after plan validation."
     }
   }
 }

@@ -43,18 +43,21 @@ Goal: 스튜디오 이월 갭 3건 마감 — 데이터 주도 주입 자동화�
 
 ## Active Milestones — visual-impact-consolidation
 
-<!-- harness:milestone id="VI6" status="active" priority="P0" -->
+<!-- harness:milestone id="VI6" status="completed" priority="P0" evidence="evidence/visual-impact-consolidation/vi6-knowledge.md" -->
 ### VI6 — 지식 층 통합
 - DoD: KG 18노드(핵심 15+인접 3) 전수 대조·판정 장부(흡수/링크/제외+사유+정본 지정) + 흡수/링크 판정 전 항목이 knowledge 문서에 반영 + 빌드·린트 PASS + evidence 기록. 기존 결정표 행 무단 변경 0.
 - Gap: `frontend-motion-accessibility-source-map`(KG)이 `knowledge/expressive-stack.md` 결정표와 중복 진화 중 — 정본 미지정
 - Scale: steps=3 (대조 장부·knowledge 갱신·통합 검증); surfaces: knowledge/·research/·evidence/; capability: 흩어진 지식이 정본 한 곳에서 읽힌다
 - Plan: plans/2026-07-28-vi6-knowledge-consolidation.md
-- Status: [ ]
+- Status: [x]
 
-<!-- harness:milestone id="VI7" status="pending" priority="P1" -->
+- Completed at: 2026-07-28
+- Evidence: evidence/visual-impact-consolidation/vi6-knowledge.md
+- Summary: KG 19노드 전수 판정(흡수8/링크7/제외4) — motion-principles 신설, expressive-stack 정본 단일화, llms 재생성 (미배선 2건 finding)
+<!-- harness:milestone id="VI7" status="active" priority="P1" -->
 ### VI7 — 도구 층 배치
-- DoD: toolshelf 비주얼 임팩트 카드 15건이 표현 스택 4티어에 배치되고 채택/보류/제외 판정(TC1 taste 흡수 계약 준수, 카드별 출처+사유)이 결정표에 반영되며 `shelf used` 기록이 남는다.
-- Plan: (VI6 완료 후 작성)
+- DoD: toolshelf 비주얼 임팩트 카드 15건이 표현 스택 4티어에 배치되고 채택/보류/제외 판정(TC1 taste 흡수 계약 준수, 카드별 출처+사유)이 결정표에 반영되며 `shelf used` 기록이 남는다. + llms 배선 finding 해소(knowledge 3문서 전부 등재).
+- Plan: plans/2026-07-28-vi7-toolshelf-placement.md
 - Status: [ ]
 
 <!-- harness:milestone id="VI8" status="pending" priority="P1" -->
