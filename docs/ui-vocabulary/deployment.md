@@ -47,10 +47,21 @@ fallback lives in **Pages Functions** instead: `functions/patterns/[[path]].js`,
 `functions/terms/[[path]].js`, `functions/docs/[[path]].js`, `functions/search.js`
 each serve `/index.html` via `env.ASSETS` (+ `functions/recipes/[[path]].js`,
 2026-07-28 VI8 — `/recipes` 가 목록에 빠져 직접 진입 404 였던 것을 실배포 확인에서
-적발·수리). Unknown paths outside the app prefixes
-still get the real `404.html` (agent-facing fetch-failure page). When a new
-top-level app path is added, add a matching function (the `_redirects` file is
-kept as documentation/belt-and-braces but is not load-bearing).
+적발·수리, + `functions/get-started/[[path]].js` 2026-07-28 SQ2). Unknown paths
+outside the app prefixes still get the real `404.html` (agent-facing
+fetch-failure page). When a new top-level app path is added, add a matching
+function (the `_redirects` file is kept as documentation/belt-and-braces but is
+not load-bearing).
+
+### Prerender + asset-first (2026-07-28, SQ4)
+
+`npm run build` 의 postbuild 훅(`vite-node ../../scripts/prerender-ui-vocabulary.ts`)이
+라우트별 정적 HTML(`dist/<route>/index.html` — 고유 title·meta·og·canonical + 첫 페인트
+정적 콘텐츠)을 생성한다. **함수가 정적 자산보다 우선이므로** 위 SPA 폴백 함수들은
+asset-first 로 동작한다: 트레일링 슬래시(디렉터리 index) 변형 → 원 경로(3xx 는 내부 추적)
+→ SPA 셸 순서. ASSETS 바인딩의 bare-경로 해석이 환경에 따라 308/404/셸-폴백으로 갈리는
+것을 실측해 이 순서로 고정했다. 새 라우트를 추가하면 프리렌더 생성기(routes)와 폴백 함수
+양쪽을 확인한다.
 
 ## Why Not Use `examples/ui-vocabulary-site` As The Only Root?
 

@@ -10,3 +10,12 @@
 - `package.json` — postbuild 훅(`vite-node ../../scripts/prerender-ui-vocabulary.ts`) + devDependency `vite-node`. CF 빌드 커맨드 무변경.
 
 검증: `npm run build` — 754 라우트 생성 311ms(빌드 시간 영향 미미) · spot HTML 4종(title·og:url·canonical 고유값) · "Spacing &amp; layout" 이스케이프 확인 · dist index.html 수 = 754.
+
+## step-2 — SPA 폴백 함수 asset-first 전환
+
+- `functions/{terms,patterns,docs,get-started,recipes}/[[path]].js`·`functions/search.js` 전면 재작성 — 서빙 순서: ① 트레일링 슬래시(디렉터리 index) 변형 ② 원 경로(3xx 는 내부 추적 — 클라이언트 URL 불변) ③ SPA 셸. 앱 밖 미지 경로 404.html 계약 유지.
+- 순서 근거(실측 2026-07-28, wrangler pages dev): ASSETS 바인딩의 bare-경로 해석이 환경·경로에 따라 308(디렉터리)·404·셸-폴백 세 가지로 갈렸다 — bare 우선이면 `/search` 가 프리렌더 대신 셸을 서빙. 슬래시-인덱스 우선으로 세 환경 전부에서 결정적.
+- `/colors`·`/pro`(함수 없는 라우트)는 프리렌더 파일이 생기며 Pages 정적 서빙(308→슬래시)으로 직접 진입이 **처음으로 가능해짐**(종전엔 404 갭).
+- `docs/ui-vocabulary/deployment.md` §SPA 에 Prerender+asset-first 절 추가.
+
+검증: wrangler pages dev 3계층 매트릭스 — 프리렌더 8라우트 고유 title·미지 앱 경로=셸·미지 최상위=404 · 실브라우저(Playwright): 정적 첫 페인트→React 인계(용어 h1·홈 히어로·docs 허브·검색 2티어), 콘솔 0에러.

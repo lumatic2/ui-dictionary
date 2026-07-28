@@ -39,7 +39,7 @@ Status: approved (사용자 승인 2026-07-28 "ㄱㄱ" — 방식 확정 + fresh
   - Dependencies: 없음
   - Commit: changeset `sq4-ssg-prerender` (README 절: step-1).
 
-- [ ] **step-2 — SPA 폴백 함수 asset-first 전환**
+- [x] **step-2 — SPA 폴백 함수 asset-first 전환**
   - Artifact: `functions/{terms,patterns,docs,get-started,recipes}/[[path]].js`·`functions/search.js` — 요청 경로 정적 자산 우선, 미존재 시 index.html 폴백. 앱 밖 경로 404.html 계약 유지.
   - Files: write functions/terms/[[path]].js, functions/patterns/[[path]].js, functions/docs/[[path]].js, functions/get-started/[[path]].js, functions/recipes/[[path]].js, functions/search.js. read docs/ui-vocabulary/deployment.md(§SPA — 갱신 포함).
   - Risk: 위험 (배포면 라우팅 — wrangler pages dev 로컬 실측 + 실배포 스팟 체크로 격리)
