@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "active_work_id": "sq1-design-verify-cleanup",
+  "active_work_id": "sq4-ssg-prerender",
   "works": {
     "SFB1": {
       "title": "Structure Contract And Clean Production",
@@ -4402,6 +4402,147 @@
       "updated_at": "2026-07-28",
       "notes": "Registered atomically by canonical harness approve_harness_plan.py after plan validation.",
       "completion_summary": "사이트 디자인 verify 색 위반 72건 전량 토큰화(시각 무손실) — 타이포 7건은 게이트 보정 후로 사용자 확정 이월"
+    },
+    "sq2-structural-defects": {
+      "work_id": "sq2-structural-defects",
+      "milestone_id": "SQ2",
+      "status": "completed",
+      "plan_path": "plans/2026-07-28-sq2-structural-defects.md",
+      "changeset_path": "changesets/20260728-sq2-structural-defects",
+      "next_step": "step-1",
+      "current_step": "step-1",
+      "steps": [
+        {
+          "id": "step-1",
+          "label": "step-1 — O5: Get Started 시작 가이드 착지"
+        },
+        {
+          "id": "step-2",
+          "label": "step-2 — O6: Docs 랜딩 소개+허브"
+        },
+        {
+          "id": "step-3",
+          "label": "step-3 — O7: Components 그룹 + 통합 검증 (SQ2 마감)"
+        }
+      ],
+      "execution_mode": "continuous",
+      "approval": {
+        "approved_by": "user",
+        "approved_at": "2026-07-28",
+        "plan_sha256": "a18ae5c7c36fb126996a5bb90b115d9dfa5b8a4dd4cbbbe9c30c06a80ffe9b0a"
+      },
+      "allowed_stop_reasons": [
+        "completed",
+        "blocked",
+        "decision_required",
+        "risk_gate",
+        "secret_required",
+        "external_authority_required",
+        "user_stopped"
+      ],
+      "stop_reason": null,
+      "stop_detail": {},
+      "session_ids": [
+        "claude:34c2a7b2-5609-47f8-b23f-97fd0200018e"
+      ],
+      "owner_session_uuid": "claude:34c2a7b2-5609-47f8-b23f-97fd0200018e",
+      "updated_at": "2026-07-28",
+      "notes": "Registered atomically by canonical harness approve_harness_plan.py after plan validation.",
+      "completion_summary": "구조 결함 O5·O6·O7 수리 — Get Started 착지·Docs 허브·Components 그룹, 실배포+사람 관측 통과"
+    },
+    "sq3-search-redesign": {
+      "work_id": "sq3-search-redesign",
+      "milestone_id": "SQ3",
+      "status": "completed",
+      "plan_path": "plans/2026-07-28-sq3-search-redesign.md",
+      "changeset_path": "changesets/20260728-sq3-search-redesign",
+      "next_step": "step-1",
+      "current_step": "step-1",
+      "steps": [
+        {
+          "id": "step-1",
+          "label": "step-1 — 계층화 정보구조 + 요약 헤더"
+        },
+        {
+          "id": "step-2",
+          "label": "step-2 — 결과 행 비주얼 재디자인 (askewly-design 경유)"
+        },
+        {
+          "id": "step-3",
+          "label": "step-3 — 통합 검증 + 실배포 + 사람 관측 (SQ3 마감)"
+        }
+      ],
+      "execution_mode": "continuous",
+      "approval": {
+        "approved_by": "user",
+        "approved_at": "2026-07-28",
+        "plan_sha256": "d9f4e5575a8cc9ae4abc56cbc7bee153636146d29fa22132387ab592f7d72648"
+      },
+      "allowed_stop_reasons": [
+        "completed",
+        "blocked",
+        "decision_required",
+        "risk_gate",
+        "secret_required",
+        "external_authority_required",
+        "user_stopped"
+      ],
+      "stop_reason": null,
+      "stop_detail": {},
+      "session_ids": [
+        "claude:34c2a7b2-5609-47f8-b23f-97fd0200018e"
+      ],
+      "owner_session_uuid": "claude:34c2a7b2-5609-47f8-b23f-97fd0200018e",
+      "updated_at": "2026-07-28",
+      "notes": "Registered atomically by canonical harness approve_harness_plan.py after plan validation.",
+      "completion_summary": "검색 결과 정답/연관 2티어 재디자인 — 실배포+사람 관측 통과, O9 해소"
+    },
+    "sq4-ssg-prerender": {
+      "work_id": "sq4-ssg-prerender",
+      "milestone_id": "SQ4",
+      "status": "completed",
+      "plan_path": "plans/2026-07-28-sq4-ssg-prerender.md",
+      "changeset_path": "changesets/20260728-sq4-ssg-prerender",
+      "next_step": "step-1",
+      "current_step": "step-1",
+      "steps": [
+        {
+          "id": "step-1",
+          "label": "step-1 — 프리렌더 생성기 + 빌드 편입"
+        },
+        {
+          "id": "step-2",
+          "label": "step-2 — SPA 폴백 함수 asset-first 전환"
+        },
+        {
+          "id": "step-3",
+          "label": "step-3 — 통합 검증 + 실배포 확인 (SQ4 마감)"
+        }
+      ],
+      "execution_mode": "continuous",
+      "approval": {
+        "approved_by": "user",
+        "approved_at": "2026-07-28",
+        "plan_sha256": "b26dd956f77f0e3752aa4d78a5cf6136b33e93b7fd9c2e6f6c191a1e7d427599"
+      },
+      "allowed_stop_reasons": [
+        "completed",
+        "blocked",
+        "decision_required",
+        "risk_gate",
+        "secret_required",
+        "external_authority_required",
+        "user_stopped"
+      ],
+      "stop_reason": null,
+      "stop_detail": {},
+      "session_ids": [
+        "claude:34c2a7b2-5609-47f8-b23f-97fd0200018e"
+      ],
+      "owner_session_uuid": "claude:34c2a7b2-5609-47f8-b23f-97fd0200018e",
+      "updated_at": "2026-07-28",
+      "notes": "Registered atomically by canonical harness approve_harness_plan.py after plan validation.",
+      "completion_summary": "754 라우트 프리렌더 + asset-first 폴백 — 실배포에서 정적 메타·첫 페인트 확인"
     }
   }
 }
