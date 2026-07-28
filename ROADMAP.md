@@ -48,7 +48,7 @@ Goal: 스튜디오 이월 갭 3건 마감 — 데이터 주도 주입 자동화�
 - DoD: KG 18노드(핵심 15+인접 3) 전수 대조·판정 장부(흡수/링크/제외+사유+정본 지정) + 흡수/링크 판정 전 항목이 knowledge 문서에 반영 + 빌드·린트 PASS + evidence 기록. 기존 결정표 행 무단 변경 0.
 - Gap: `frontend-motion-accessibility-source-map`(KG)이 `knowledge/expressive-stack.md` 결정표와 중복 진화 중 — 정본 미지정
 - Scale: steps=3 (대조 장부·knowledge 갱신·통합 검증); surfaces: knowledge/·research/·evidence/; capability: 흩어진 지식이 정본 한 곳에서 읽힌다
-- Plan: plans/2026-07-28-vi6-knowledge-consolidation.md
+- Plan: archive/plans/2026-07-28-vi6-knowledge-consolidation.md
 - Status: [x]
 
 - Completed at: 2026-07-28
@@ -57,7 +57,7 @@ Goal: 스튜디오 이월 갭 3건 마감 — 데이터 주도 주입 자동화�
 <!-- harness:milestone id="VI7" status="completed" priority="P1" evidence="evidence/visual-impact-consolidation/vi7-placement.md" -->
 ### VI7 — 도구 층 배치
 - DoD: toolshelf 비주얼 임팩트 카드 15건이 표현 스택 4티어에 배치되고 채택/보류/제외 판정(TC1 taste 흡수 계약 준수, 카드별 출처+사유)이 결정표에 반영되며 `shelf used` 기록이 남는다. + llms 배선 finding 해소(knowledge 3문서 전부 등재).
-- Plan: plans/2026-07-28-vi7-toolshelf-placement.md
+- Plan: archive/plans/2026-07-28-vi7-toolshelf-placement.md
 - Status: [x]
 
 - Completed at: 2026-07-28
@@ -66,7 +66,7 @@ Goal: 스튜디오 이월 갭 3건 마감 — 데이터 주도 주입 자동화�
 <!-- harness:milestone id="VI8" status="completed" priority="P1" evidence="evidence/visual-impact-consolidation/vi8-recipes.md" -->
 ### VI8 — 실증 확장
 - DoD: VI7 A 대기 2건(GSAP 핀·스크럽, Paper Shaders 그라디언트)이 실동작 recipe(데모+문서+갤러리+catalog/llms)로 구현되고(브라우저 실동작 콘솔 0에러·validate-recipes·빌드·린트 PASS, reduced-motion·폴백 계약), presentation-slides three-scene 계약이 recipe 층과 상호 링크된다.
-- Plan: plans/2026-07-28-vi8-expressive-recipes.md
+- Plan: archive/plans/2026-07-28-vi8-expressive-recipes.md
 - Status: [x]
 
 - Completed at: 2026-07-28
