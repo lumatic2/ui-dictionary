@@ -22,6 +22,6 @@
 - `ui.askewly.com` 신규 번들(index-jQLID8f8.js) 반영 (폴링 8회차).
 - 라이브 실브라우저: `/get-started` 렌더(문서 제목 "Get Started — Askewly Design"·본문 확인, 직접 URL 진입 = SPA 폴백 함수 동작) · `/docs` 허브 렌더 · 홈 히어로 "Get Started" CTA 표시 · `/patterns/application-ui` 사이드바 Components 그룹 표시 · 콘솔 에러 0. HTTP: /get-started·/docs·/terms/accordion 전부 200.
 
-## 4. 남은 게이트
+## 4. 사람 관측 (DoD)
 
-- **사람 관측 1회 (DoD)**: 사용자 왕복 대기 — 관측 결과는 이 파일에 추기.
+- 2026-07-28 사용자 관측 1회 **통과** ("통과. 마감하고 다음 계획 쓰자") — O5·O6·O7 라이브 확인 완료. DoD 전 항목 충족.
