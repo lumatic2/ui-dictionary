@@ -22,7 +22,7 @@
         { "label": "소개 덱" },
         { "label": "2026-07" }
       ],
-      "exportFallback": "정적 그라디언트 배경 위 중앙 제목 (모션 정지 상태)",
+      "exportFallback": "테마 배경 위 중앙 제목 (모션 정지 상태)",
       "notes": "Askewly Design 소개. 이 덱 자체가 HTML 정본에서 나왔다는 말로 시작."
     },
     {

@@ -739,17 +739,11 @@ body.fade-out { animation: fadeOut 0.25s ease forwards; }
 .layout-hero-motion .slide-header .subtitle { margin-inline: auto; animation: hmTitleIn 0.8s ease both 0.45s; }
 .layout-hero-motion .slide-header .kicker { animation: hmTitleIn 0.6s ease both; }
 .layout-hero-motion .slide-content { position: relative; z-index: 2; margin-bottom: auto; flex: 0; }
-.hero-motion-bg { position: absolute; inset: 0; z-index: 0; pointer-events: none; }
-.hm-blob { position: absolute; border-radius: 50%; filter: blur(70px); opacity: 0.5; }
-.hm-blob-a { width: 46%; aspect-ratio: 1; left: -8%; top: -18%; background: var(--accent-start); animation: hmDrift 16s ease-in-out infinite alternate; }
-.hm-blob-b { width: 38%; aspect-ratio: 1; right: -6%; bottom: -20%; background: var(--accent-end); animation: hmDrift 19s ease-in-out infinite alternate-reverse; }
-.hm-blob-c { width: 24%; aspect-ratio: 1; right: 22%; top: 8%; background: var(--accent-soft); opacity: 0.8; animation: hmDrift 13s ease-in-out infinite alternate; }
 .hero-motion-chips { display: flex; gap: 12px; justify-content: center; margin-top: 26px; }
 .hero-motion-chip { padding: 8px 18px; border-radius: 999px; border: 1px solid var(--accent-border); background: var(--bg-card); color: var(--text-secondary); font-size: 15px; animation: itemRise 0.5s ease both 0.7s; }
 .hero-motion-chip:nth-child(2) { animation-delay: 0.82s; }
 .hero-motion-chip:nth-child(3) { animation-delay: 0.94s; }
 @keyframes hmTitleIn { from { opacity: 0; transform: translateY(26px) scale(0.985); } to { opacity: 1; transform: translateY(0) scale(1); } }
-@keyframes hmDrift { from { transform: translate3d(0, 0, 0) scale(1); } to { transform: translate3d(4%, 6%, 0) scale(1.12); } }
 /* svg-filter-scene — SVG 필터 장면 (SX1). 필터는 배경 레이어 한정 — 텍스트는 z-index 위 스택(가독 보호) */
 .layout-svg-filter-scene { position: relative; overflow: hidden; }
 .layout-svg-filter-scene .slide-header, .layout-svg-filter-scene .slide-content { position: relative; z-index: 2; }
@@ -758,7 +752,6 @@ body.fade-out { animation: fadeOut 0.25s ease forwards; }
 .svg-filter-caption { position: relative; z-index: 2; color: var(--text-secondary); font-size: 15px; max-width: 60%; }
 @media (prefers-reduced-motion: reduce) {
   body, body.fade-out, .effect-rise *, .effect-scale *, .effect-fade *, .effect-focus *, .layout-hero-motion *, .layout-svg-filter-scene * { animation: none !important; transition: none !important; opacity: 1 !important; transform: none !important; filter: none !important; }
-  .hm-blob { filter: blur(70px) !important; opacity: 0.4 !important; }
 }
 
 @media print { body { padding: 0; display: block; } .slide-nav { display: none; } .container { page-break-after: always; } .export-fallback-note { display: block; } }
@@ -787,10 +780,9 @@ html.capture-mode .container, html.capture-mode .container * { animation: none !
       <p class="subtitle">모든 매체의 디자인을 한 시스템으로</p>
     </header>
     <section class="slide-content">
-      <div class="hero-motion-bg" aria-hidden="true"><span class="hm-blob hm-blob-a"></span><span class="hm-blob hm-blob-b"></span><span class="hm-blob hm-blob-c"></span></div>
-    <div class="hero-motion-chips"><span class="hero-motion-chip">소개 덱</span><span class="hero-motion-chip">2026-07</span></div>
+      <div class="hero-motion-chips"><span class="hero-motion-chip">소개 덱</span><span class="hero-motion-chip">2026-07</span></div>
     </section>
-    <aside class="export-fallback-note" aria-label="Export fallback">정적 그라디언트 배경 위 중앙 제목 (모션 정지 상태)</aside>
+    <aside class="export-fallback-note" aria-label="Export fallback">테마 배경 위 중앙 제목 (모션 정지 상태)</aside>
     
   </main>
 </section>

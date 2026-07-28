@@ -285,8 +285,7 @@ export function createStaticRenderers({ escapeHtml, renderIcon }) {
   // SX1 임팩트 레이아웃 — 규격: ui-dictionary methodology/slide-production.md · expressive-stack 티어 계약(하위 티어 우선, reduced-motion 게이팅)
   function renderHeroMotion(slide) {
     const items = (slide.items || []).slice(0, 3);
-    return `<div class="hero-motion-bg" aria-hidden="true"><span class="hm-blob hm-blob-a"></span><span class="hm-blob hm-blob-b"></span><span class="hm-blob hm-blob-c"></span></div>
-    ${items.length ? `<div class="hero-motion-chips">${items.map((item) => `<span class="hero-motion-chip">${itemTitle(item)}</span>`).join('')}</div>` : ''}`;
+    return items.length ? `<div class="hero-motion-chips">${items.map((item) => `<span class="hero-motion-chip">${itemTitle(item)}</span>`).join('')}</div>` : '';
   }
 
   function renderSvgFilterScene(slide) {
