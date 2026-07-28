@@ -11,3 +11,10 @@
 - 핵심 판정: 티어/도구 선택 정본 = `knowledge/expressive-stack.md`. KG 허브에만 있던 접근성 짝규칙·전 수단 reduced-motion 전제를 흡수 대상으로 지정.
 - 검증: 표 19행 grep=19 · 19노드 이름 전수 매칭(MISSING 0) · 판정 3분류 외 값 없음.
 - KG 쪽 후속 3건(stale 내부 참조 등)은 장부 §KG 쪽 후속 → plan finding 큐.
+
+## step-2 — knowledge 층 갱신 (2026-07-28)
+
+- `knowledge/motion-principles.md` 신설 — KG 5노드 흡수(still appeal 게이트·목적 6분류·등장 안무·모션 타이포 가독성·호명 규칙), 절마다 KG 원본 경로+접근일.
+- `knowledge/expressive-stack.md` — 결정표 disclosure grid-track 행 추가, 판정 절차 7(접근성 짝규칙+전 티어 reduced-motion)·8(원칙 위임) 추가, ④ 티어 인접 게이트 절(3D 에셋 파이프라인·AI 생성 선택 링크+요지) 신설.
+- `knowledge/motion-references.md` — 공간형 랜딩 절(사례군+decorative-skin failure 게이트 흡수), Remotion 4노드 링크 절(매체 경계 명시).
+- 검증: 장부 흡수 8·링크 7 전 항목 착지 대조 완료(제외 4는 사유만) · git diff 삽입 29줄/삭제 0 — 기존 결정표 행 무단 변경 0.

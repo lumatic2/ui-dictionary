@@ -40,6 +40,7 @@ Audience: 코드를 생성하는 에이전트(Codex, Claude Code). "이 시각 �
 | 애니메이팅되는 유기적 셰이더 그라디언트 | ④ | GLSL / Paper Shaders (CSS 그라디언트는 프레임 단위 노이즈 불가) |
 | 유체 시뮬레이션 | ④ | WebGL-Fluid-Simulation (Navier-Stokes는 GPU 병렬 필수) |
 | 화면 전역 글로우·색수차 | ④ | @react-three/postprocessing |
+| 높이가 내재적인 콘텐츠 열림/닫힘(아코디언·필터 패널·"더 보기") | ① | 1-row grid `grid-template-rows` 0fr↔1fr 보간 + 내부 `overflow: hidden`(+가벼운 opacity) — 취약한 height:auto/명시 height 전환 회피. 부적합: 대영역(지연 유발)·가상화 콘텐츠(높이 불안정). (KG `css-disclosure-transition-pattern` · WAI-ARIA APG accordion, 접근일 2026-07-28) |
 
 ## 판정 절차 (에이전트 의무)
 
@@ -50,6 +51,16 @@ Audience: 코드를 생성하는 에이전트(Codex, Claude Code). "이 시각 �
 5. **시그니처 접점**: 실험적 표현(③·④ 티어 대부분, ②의 커서/마그네틱)은 운용 원칙 5 "실험적 터치는 수동" — 사용자가 명시로 요청했을 때만 도입하고, 기본 제품 UI에는 ① 티어와 ②의 실무 패턴(스프링·FLIP·stagger)까지만 기본값으로 쓴다.
 6. **모션은 전환 규모에 비례한다.** 작은 상태 변화(토글·선택)는 짧고 담백하게, 크고 주목할 전환(시트 확장·전면 이동)은 길고 표현적으로 — 작은 것에 과장 모션, 큰 것에 인색한 모션이 둘 다 실패다 (M3 easing/duration 판단 diff 채택, taste ledger T-16).
 
+7. **숨김 모션에는 접근성 상태를 짝짓는다.** disclosure 류(아코디언·접이 패널·필터 서랍·확장 행·"더 보기") 애니메이션은 컨트롤의 `aria-expanded` 와 짝이 의무이고, 접힌 콘텐츠가 애니메이션을 위해 DOM 에 남아 있으면 `aria-hidden`·pointer guard·focus guard 로 상호작용을 함께 끈다 — "모션은 상태 변화를 설명하고 접근성 의미론을 보존할 때 안전하며, 시각적 숨김과 상호작용 상태가 어긋나는 순간 위험해진다." 또한 reduced-motion 은 ③·④ 티어만의 의무가 아니다 — ①·② 티어라도 장식적이거나 큰 움직임이면 `prefers-reduced-motion` 분기를 둔다. (KG `frontend-motion-accessibility-source-map` · MDN prefers-reduced-motion, 접근일 2026-07-28)
+8. **모션의 "무엇을·왜"는 [[motion-principles]] 가 정본이다.** 이 문서는 "무엇으로 만드나"(티어·도구)만 판정한다 — 전환의 목적 선택·still appeal 게이트·타이포 가독성 등 품질 원칙은 `knowledge/motion-principles.md` 를 먼저 통과한다.
+
+## 인접 게이트 — ④ 티어가 외부 3D 에셋을 실을 때
+
+3D **씬 구현**(three.js/R3F)은 이 문서 소관이지만, 씬에 싣는 **에셋**(GLB/glTF·Gaussian splat)은 별도 게이트를 통과해야 한다 — 요지와 정본 위치만 적는다 (VI8 three.js recipe 확장 시 필수 참조):
+
+- **에셋 파이프라인 게이트**: export→최적화→검증→런타임 스모크. 핵심 규칙 — *Khronos validator 0 errors 가 제품 계약 보존을 증명하지 않는다* (실측: Khronos-clean 최적화 GLB 가 mesh name 13개·hitbox 13개를 잃고 앱 계약을 깨뜨림) — named mesh·hitbox·extras 를 앱 전용 contract validator 로 따로 검증. → KG `nodes/개발/web-3d-asset-pipeline-quality-gate.md` (접근일 2026-07-28)
+- **AI 3D 생성 도구 선택**: 생성기는 완결 에셋이 아니라 upstream 후보 소스 — 입력 유형·품질·하드웨어·텍스처·배포 요건으로 레인을 고른 뒤 위 게이트에 반드시 짝지운다. → KG `nodes/AI/ai-3d-asset-generation-model-selection-gate.md` (접근일 2026-07-28)
+
 ## 자체 쇼케이스 역산 (참조 구현)
 
 askewly.com 랜딩 Showcase Atlas 12종의 티어 분포 — 실코드 근거는 research doc 역산 표:
@@ -57,4 +68,5 @@ askewly.com 랜딩 Showcase Atlas 12종의 티어 분포 — 실코드 근거는
 
 ## Changelog
 
+- 2026-07-28: VI6 — KG 흡수: 결정표에 disclosure grid-track 행 추가, 판정 절차 7(접근성 짝규칙·전 티어 reduced-motion)·8(motion-principles 위임) 추가, ④ 티어 인접 게이트(3D 에셋 파이프라인·AI 생성 선택) 링크 절 신설. 근거 `research/2026-07-28-vi6-kg-crosswalk.md`.
 - 2026-07-17: 초판 (VI1 — 리서치 30기법 계보 + 쇼케이스 12종 역산에서 증류).
