@@ -12,19 +12,15 @@ Goal: 발표 슬라이드 방법론 — 발표 슬라이드를 HTML 정본으로
 
 ## Active Milestones — slide-methodology
 
-<!-- harness:milestone id="SL1" status="active" priority="P0" -->
-### SL1 — 방법론 문서화
-- DoD: knowledge/slide-principles.md + methodology/slide-production.md 가 레포 관례(단일 출처·wikilink·출처 URL+접근일)대로 작성되고 — 매체 게이트는 design-system 정본 인용(재서술 0) — 00-INDEX·llms 배선 등재(methodology 첫 등재 확정), SL2 가 그대로 쓸 린트 규칙 스펙(입력·판정·임계값 표) 포함. 빌드 PASS·기존 등재 소실 0.
-- Scale: steps=4 (knowledge 문서·methodology 문서·목차/링크·llms 배선); surfaces: knowledge/·methodology/·scripts/generate-llms-txt.mjs; capability: 에이전트와 사람이 같은 슬라이드 방법론을 읽는다
-- Plan: plans/2026-07-28-sl1-slide-methodology-docs.md
-- Status: [ ]
-
-<!-- harness:milestone id="SL2" status="pending" priority="P1" -->
+<!-- harness:milestone id="SL2" status="completed" priority="P1" evidence="evidence/slide-methodology/sl2-linter.md" -->
 ### SL2 — 슬라이드 린터
 - DoD: SL1 린트 규칙 스펙(제목 완결문장·슬라이드당 메시지 1·텍스트/시각 비율·폰트 하한)이 custom-skills presentation-slides-yusung validator 에 구현되고(cross-repo, VI8 선례), 위반 fixture 로 검출 실증 + setup.sh 배포.
-- Plan: (SL1 완료 후 연쇄 집행)
-- Status: [ ]
+- Plan: plans/2026-07-28-sl2-slide-linter.md
+- Status: [x]
 
+- Completed at: 2026-07-28
+- Evidence: evidence/slide-methodology/sl2-linter.md
+- Summary: R1~R3 옵트인 린트 구현(custom-skills)·위반 fixture 각 1건 검출·오탐 0·배포본 동일 동작 — 기존 fixture에서 R1 실적발 1건 부수 확인
 <!-- harness:milestone id="SL3" status="pending" priority="P1" -->
 ### SL3 — 편집 가능 PPTX 실증
 - DoD: Askewly Design 소개 덱을 방법론대로 실제 제작(HTML 정본)하고 html2pptx(pptxgenjs) vs ppt-master(SVG→DrawingML) 경로로 PPTX 를 뽑아 편집 가능성·충실도를 비교 장부로 기록, PowerPoint/LibreOffice 실개봉 확인. real-use-lap 부활 조건 판정 포함.
@@ -67,17 +63,6 @@ Goal: 스튜디오 이월 갭 3건 마감 — 데이터 주도 주입 자동화�
 
 ## Active Milestones — visual-impact-consolidation
 
-<!-- harness:milestone id="VI6" status="completed" priority="P0" evidence="evidence/visual-impact-consolidation/vi6-knowledge.md" -->
-### VI6 — 지식 층 통합
-- DoD: KG 18노드(핵심 15+인접 3) 전수 대조·판정 장부(흡수/링크/제외+사유+정본 지정) + 흡수/링크 판정 전 항목이 knowledge 문서에 반영 + 빌드·린트 PASS + evidence 기록. 기존 결정표 행 무단 변경 0.
-- Gap: `frontend-motion-accessibility-source-map`(KG)이 `knowledge/expressive-stack.md` 결정표와 중복 진화 중 — 정본 미지정
-- Scale: steps=3 (대조 장부·knowledge 갱신·통합 검증); surfaces: knowledge/·research/·evidence/; capability: 흩어진 지식이 정본 한 곳에서 읽힌다
-- Plan: archive/plans/2026-07-28-vi6-knowledge-consolidation.md
-- Status: [x]
-
-- Completed at: 2026-07-28
-- Evidence: evidence/visual-impact-consolidation/vi6-knowledge.md
-- Summary: KG 19노드 전수 판정(흡수8/링크7/제외4) — motion-principles 신설, expressive-stack 정본 단일화, llms 재생성 (미배선 2건 finding)
 <!-- harness:milestone id="VI7" status="completed" priority="P1" evidence="evidence/visual-impact-consolidation/vi7-placement.md" -->
 ### VI7 — 도구 층 배치
 - DoD: toolshelf 비주얼 임팩트 카드 15건이 표현 스택 4티어에 배치되고 채택/보류/제외 판정(TC1 taste 흡수 계약 준수, 카드별 출처+사유)이 결정표에 반영되며 `shelf used` 기록이 남는다. + llms 배선 finding 해소(knowledge 3문서 전부 등재).

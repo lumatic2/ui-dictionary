@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "active_work_id": "vi8-expressive-recipes",
+  "active_work_id": "sl2-slide-linter",
   "works": {
     "SFB1": {
       "title": "Structure Contract And Clean Production",
@@ -4355,6 +4355,113 @@
       "updated_at": "2026-07-28",
       "notes": "Registered atomically by canonical harness approve_harness_plan.py after plan validation.",
       "completion_summary": "recipe 2종 실구현(GSAP 핀·스크럽, 토큰 셰이더 그라디언트) + three-scene 상호 링크 — goal 연쇄 완주"
+    },
+    "sl1-slide-methodology-docs": {
+      "work_id": "sl1-slide-methodology-docs",
+      "milestone_id": "SL1",
+      "status": "completed",
+      "plan_path": "plans/2026-07-28-sl1-slide-methodology-docs.md",
+      "changeset_path": "changesets/20260728-sl1-slide-methodology-docs",
+      "next_step": "step-1",
+      "current_step": "step-1",
+      "steps": [
+        {
+          "id": "step-1",
+          "label": "step-1 — knowledge/slide-principles.md (무엇이 좋은 슬라이드인가)"
+        },
+        {
+          "id": "step-2",
+          "label": "step-2 — methodology/slide-production.md (어떻게 만드는가)"
+        },
+        {
+          "id": "step-3",
+          "label": "step-3 — 목차·상호 링크 (문서 층 마감)"
+        },
+        {
+          "id": "step-4",
+          "label": "step-4 — llms 배선 + 회귀 검증 (SL1 마감)"
+        }
+      ],
+      "execution_mode": "continuous",
+      "approval": {
+        "approved_by": "user",
+        "approved_at": "2026-07-28",
+        "plan_sha256": "02281ded56e25a720fdae3a9a85e66353fa69214c181935e1c10b0d1251ed542",
+        "chain": [
+          "SL2",
+          "SL3"
+        ]
+      },
+      "allowed_stop_reasons": [
+        "completed",
+        "blocked",
+        "decision_required",
+        "risk_gate",
+        "secret_required",
+        "external_authority_required",
+        "user_stopped"
+      ],
+      "stop_reason": null,
+      "stop_detail": {},
+      "session_ids": [
+        "codex:5f38642d-ecc8-4891-a5c1-50379745db63",
+        "claude:5f38642d-ecc8-4891-a5c1-50379745db63"
+      ],
+      "owner_session_uuid": "claude:5f38642d-ecc8-4891-a5c1-50379745db63",
+      "updated_at": "2026-07-28",
+      "notes": "Registered atomically by canonical harness approve_harness_plan.py after plan validation.",
+      "completion_summary": "발표 슬라이드 방법론 2문서(원칙+제작 파이프라인·린트 스펙) 작성, llms Methodology 섹션 신설 배선"
+    },
+    "sl2-slide-linter": {
+      "work_id": "sl2-slide-linter",
+      "milestone_id": "SL2",
+      "status": "completed",
+      "plan_path": "plans/2026-07-28-sl2-slide-linter.md",
+      "changeset_path": "changesets/20260728-sl2-slide-linter",
+      "next_step": "step-1",
+      "current_step": "step-1",
+      "steps": [
+        {
+          "id": "step-1",
+          "label": "step-1 — lint 모듈 + validator 옵트인 배선"
+        },
+        {
+          "id": "step-2",
+          "label": "step-2 — 위반 fixture + 검출 실증 + 무회귀"
+        },
+        {
+          "id": "step-3",
+          "label": "step-3 — 스킬 문서 반영 + 배포 + 마감"
+        }
+      ],
+      "execution_mode": "continuous",
+      "approval": {
+        "approved_by": "user",
+        "approved_at": "2026-07-28",
+        "plan_sha256": "a0005745ae41350b3516d89996d55456029ee2b047ff9517e870eacd1ec5c70c",
+        "chain": [
+          "SL3"
+        ]
+      },
+      "allowed_stop_reasons": [
+        "completed",
+        "blocked",
+        "decision_required",
+        "risk_gate",
+        "secret_required",
+        "external_authority_required",
+        "user_stopped"
+      ],
+      "stop_reason": null,
+      "stop_detail": {},
+      "session_ids": [
+        "codex:5f38642d-ecc8-4891-a5c1-50379745db63",
+        "claude:5f38642d-ecc8-4891-a5c1-50379745db63"
+      ],
+      "owner_session_uuid": "claude:5f38642d-ecc8-4891-a5c1-50379745db63",
+      "updated_at": "2026-07-28",
+      "notes": "Registered atomically by canonical harness approve_harness_plan.py after plan validation.",
+      "completion_summary": "거장 원칙 린트 R1~R3 옵트인 구현·fixture 실증·배포 완료"
     }
   }
 }
