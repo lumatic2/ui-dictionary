@@ -17,3 +17,9 @@
 
 - 수정: `methodology/00-INDEX.md` — slide-production.md 등재 + Changelog.
 - Verify: 신규 문서 2건 + 00-INDEX 의 상대 링크 전건 실존 검사 스크립트 PASS (step-1 유예분 slide-production.md 링크 포함).
+
+## step-4 — llms 배선 + 회귀
+
+- 수정: `scripts/generate-llms-txt.mjs` — Knowledge 섹션에 slide-principles.md 추가 + Methodology 섹션 신설(slide-production.md, 사용자 확정 첫 등재).
+- 재생성: `public/llms.txt` +5줄/삭제 0 · 신규 자산 2건 복사. EOL-only 재생성 부산물 87건은 원복(diff 0줄).
+- Verify: llms.txt 신규 2건 grep PASS · 기존 소실 0 · vite build PASS.

@@ -61,7 +61,7 @@ Status: approved (2026-07-28 사용자 승인 — "응 추천대로 ㄱ", llms �
   - Failure probe: wikilink 표기(Obsidian [[...]] vs md 링크)가 기존 관례와 다르면 사이트/뷰어에서 깨짐 — 00-INDEX 기존 항목 표기 그대로 따른다.
   - Commit: changeset `sl1-slide-methodology-docs` (README 절: step-3).
 
-- [ ] **step-4 — llms 배선 + 회귀 검증 (SL1 마감)**
+- [x] **step-4 — llms 배선 + 회귀 검증 (SL1 마감)**
   - Artifact: `scripts/generate-llms-txt.mjs` FIXED_ASSETS에 knowledge/slide-principles.md 등재(+ 사용자 결정이 "등재"면 methodology/slide-production.md — methodology 첫 등재) + 재생성 + evidence 기록.
   - Files: write scripts/generate-llms-txt.mjs, evidence/slide-methodology/sl1-docs.md. 실행: llms 재생성 + 사이트 빌드.
   - Risk: 위험 (배선 코드 수정 + 재생성 — 기존 등재 소실 회귀 가능, 산출물 grep으로 확인)
