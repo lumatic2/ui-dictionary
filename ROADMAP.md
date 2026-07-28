@@ -22,12 +22,15 @@ Goal: 슬라이드 표현력 심화 — SL3 실측 결론(PPTX 중단·HTML/PDF 
 - Completed at: 2026-07-28
 - Evidence: evidence/slide-expressive/sx1-layouts.md
 - Summary: hero-motion·svg-filter-scene 4면 완비 — reduced-motion 양쪽 실측·smoke 전체 PASS·배포 완료, 필터 클리핑 결함 수리
-<!-- harness:milestone id="SX2" status="pending" priority="P1" -->
+<!-- harness:milestone id="SX2" status="completed" priority="P1" evidence="evidence/slide-expressive/sx2-vector-pdf.md" -->
 ### SX2 — 벡터 PDF export
 - DoD: 텍스트 선택·검색 가능한 per-slide print PDF 트랙이 기존 라스터 트랙과 병행 옵션으로 추가되고, 소개 덱으로 벡터성(텍스트 추출)·페이지 경계·한글 폰트가 실증된다.
-- Plan: (SX1 완료 후 연쇄 집행)
-- Status: [ ]
+- Plan: plans/2026-07-28-sx2-vector-pdf.md
+- Status: [x]
 
+- Completed at: 2026-07-28
+- Evidence: evidence/slide-expressive/sx2-vector-pdf.md
+- Summary: print.html 직접 인쇄 벡터 트랙 — 페이지 수·텍스트 추출·한글 폰트·3면 실증, raster 병행
 <!-- harness:milestone id="SX3" status="pending" priority="P1" -->
 ### SX3 — 실증 (소개 덱 적용)
 - DoD: 소개 덱에 신규 레이아웃 ≥1장 적용 + 벡터 PDF 산출 + HTML/PDF 게이트 왕복(브라우저 실조작·PDF 실개봉 3면). 표준 직행 예외의 실사용 판정 포함.

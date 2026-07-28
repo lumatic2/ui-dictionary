@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "active_work_id": "sx1-impact-layouts",
+  "active_work_id": "sx2-vector-pdf",
   "works": {
     "SFB1": {
       "title": "Structure Contract And Clean Production",
@@ -4562,6 +4562,57 @@
       "updated_at": "2026-07-28",
       "notes": "Registered atomically by canonical harness approve_harness_plan.py after plan validation.",
       "completion_summary": "임팩트 레이아웃 2종(hero-motion·svg-filter-scene) 구현·배포 — 정적 14종"
+    },
+    "sx2-vector-pdf": {
+      "work_id": "sx2-vector-pdf",
+      "milestone_id": "SX2",
+      "status": "completed",
+      "plan_path": "plans/2026-07-28-sx2-vector-pdf.md",
+      "changeset_path": "changesets/20260728-sx2-vector-pdf",
+      "next_step": "step-1",
+      "current_step": "step-1",
+      "steps": [
+        {
+          "id": "step-1",
+          "label": "step-1 — export-vector-pdf.mjs 구현"
+        },
+        {
+          "id": "step-2",
+          "label": "step-2 — 벡터성 실증"
+        },
+        {
+          "id": "step-3",
+          "label": "step-3 — 문서·배포 (SX2 마감)"
+        }
+      ],
+      "execution_mode": "continuous",
+      "approval": {
+        "approved_by": "user",
+        "approved_at": "2026-07-28",
+        "plan_sha256": "33afb68be65f7162dc342a38631f997865dadd5e64543f08423161d1b57f9687",
+        "chain": [
+          "SX3"
+        ]
+      },
+      "allowed_stop_reasons": [
+        "completed",
+        "blocked",
+        "decision_required",
+        "risk_gate",
+        "secret_required",
+        "external_authority_required",
+        "user_stopped"
+      ],
+      "stop_reason": null,
+      "stop_detail": {},
+      "session_ids": [
+        "codex:5f38642d-ecc8-4891-a5c1-50379745db63",
+        "claude:5f38642d-ecc8-4891-a5c1-50379745db63"
+      ],
+      "owner_session_uuid": "claude:5f38642d-ecc8-4891-a5c1-50379745db63",
+      "updated_at": "2026-07-28",
+      "notes": "Registered atomically by canonical harness approve_harness_plan.py after plan validation.",
+      "completion_summary": "텍스트 선택·검색 가능한 벡터 PDF 트랙 신설 — 의존성 0, 실증·배포 완료"
     }
   }
 }
