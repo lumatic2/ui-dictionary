@@ -48,7 +48,7 @@ Status: approved (사용자 승인 2026-07-28 "ㄱㄱ" — 방식 확정 + fresh
   - Dependencies: step-1
   - Commit: changeset `sq4-ssg-prerender` (README 절: step-2).
 
-- [ ] **step-3 — 통합 검증 + 실배포 확인 (SQ4 마감)**
+- [x] **step-3 — 통합 검증 + 실배포 확인 (SQ4 마감)**
   - Artifact: 통합 검증 + `evidence/site-quality/sq4-ssg-prerender.md` + push·실배포 확인.
   - Files: write evidence/site-quality/sq4-ssg-prerender.md. 실행: build·lint·verify 비악화·Playwright(정적 첫 페인트→React 교체 후 검색·내비 동작, 오너 언락 경로 무회귀, 기존 스모크 4라우트)·push·실배포 curl+실브라우저.
   - Risk: 기계적 (검증·기록·배포 확인)

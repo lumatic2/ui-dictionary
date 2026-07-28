@@ -46,17 +46,6 @@ Goal: 스튜디오 이월 갭 3건 마감 — 데이터 주도 주입 자동화�
 
 ## Active Milestones — site-quality
 
-<!-- harness:milestone id="SQ1" status="completed" priority="P0" evidence="evidence/site-quality/sq1-verify-cleanup.md" -->
-### SQ1 — 디자인 verify 위반 정리
-- DoD: `src/components` 디자인 verify 위반 79건(hex 26·raw-color-fn 46·타이포 7) → 0(불가피 예외는 검사기 지원 수단+장부 명시), 시각 보존(대표 표면 전/후 스크린샷), VI8 이월 finding 2건(쇼케이스 하드코딩 hex·oklch→hex 유틸) 해소, build·lint·브라우저 스모크 PASS.
-- Gap: 사이트가 자기 디자인 게이트를 통과 못 함 — 다크모드(④)의 전제이기도 함
-- Scale: steps=3 (유틸+쇼케이스·색 72건·타이포+통합); surfaces: src/components 11파일·src/lib; capability: 게이트를 통과하는 자기 사이트
-- Plan: archive/plans/2026-07-28-sq1-design-verify-cleanup.md
-- Status: [x]
-
-- Completed at: 2026-07-28
-- Evidence: evidence/site-quality/sq1-verify-cleanup.md
-- Summary: 색 위반 72→0(시각 무손실 토큰화)·VI8 finding 2건 해소 — 타이포 7건은 게이트 보정 후(사용자 확정)
 <!-- harness:milestone id="SQ2" status="completed" priority="P1" evidence="evidence/site-quality/sq2-structural-defects.md" -->
 ### SQ2 — 구조 결함 O5·O6·O7
 - DoD: Get Started 착지(O5 — 노출 정책과의 긴장 해소는 사용자 결정), Docs 랜딩 역할 정의(O6), 좌측 내비 IA 재정리(O7)가 라우트 구조 위에서 수리되고 사람 관측 1회 통과.
@@ -76,14 +65,17 @@ Goal: 스튜디오 이월 갭 3건 마감 — 데이터 주도 주입 자동화�
 - Plan: plans/2026-07-28-sq3-search-redesign.md
 - Status: [ ]
 
-<!-- harness:milestone id="SQ4" status="active" priority="P2" -->
+<!-- harness:milestone id="SQ4" status="completed" priority="P2" evidence="evidence/site-quality/sq4-ssg-prerender.md" -->
 ### SQ4 — SSG/prerender
 - DoD: 주요 라우트(홈·용어·패턴·docs)가 prerender 되어 최초 페인트·SEO 메타가 정적 제공되고, SPA 폴백·오너 언락 회귀 없음(실배포 확인 포함).
 - Gap: 현재 전 라우트 CSR — SEO·초기 로딩 불리 (UE5 이월). 방식 확정(2026-07-28): 정적 셸+메타 생성(vite-node)
 - Scale: steps=3 (생성기·폴백 asset-first·통합+실배포); surfaces: scripts/·functions/ 6개·package.json; capability: 첫 페인트와 SEO 메타가 정적으로 나간다
 - Plan: plans/2026-07-28-sq4-ssg-prerender.md
-- Status: [ ]
+- Status: [x]
 
+- Completed at: 2026-07-28
+- Evidence: evidence/site-quality/sq4-ssg-prerender.md
+- Summary: 754 라우트 정적 셸+메타 프리렌더(vite-node) + 폴백 asset-first — CF CI 실배포 확인, colors/pro 직접 진입 갭 부수 수리
 ## Active Milestones — ui-encyclopedia
 
 <!-- harness:milestone id="UE1" status="completed" priority="P0" evidence="evidence/ui-encyclopedia/ue1-navigation.md" -->

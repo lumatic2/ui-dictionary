@@ -573,3 +573,9 @@ plan doc: `archive/plans/2026-07-21-eu*.md` · 증거: `evidence/editor-legibili
   - Completed: 2026-07-28
   - Result: recipe 2종 실구현(Playwright 5/5·콘솔0, oklch→hex 결함 수리) + three-scene 상호 링크 — goal visual-impact-consolidation 완주
   - Evidence: evidence/visual-impact-consolidation/vi8-recipes.md
+
+### 2026-07
+- SQ1 - SQ1 — 디자인 verify 위반 정리
+  - Completed: 2026-07-28
+  - Result: 색 위반 72→0(시각 무손실 토큰화)·VI8 finding 2건 해소 — 타이포 7건은 게이트 보정 후(사용자 확정)
+  - Evidence: evidence/site-quality/sq1-verify-cleanup.md

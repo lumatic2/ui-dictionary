@@ -19,3 +19,10 @@
 - `docs/ui-vocabulary/deployment.md` §SPA 에 Prerender+asset-first 절 추가.
 
 검증: wrangler pages dev 3계층 매트릭스 — 프리렌더 8라우트 고유 title·미지 앱 경로=셸·미지 최상위=404 · 실브라우저(Playwright): 정적 첫 페인트→React 인계(용어 h1·홈 히어로·docs 허브·검색 2티어), 콘솔 0에러.
+
+## step-3 — 통합 검증 + 실배포 확인
+
+- CF Pages CI 에서 vite-node 프리렌더 첫 실행 성공(폴링 8회차 라이브 확인).
+- 라이브 스팟: 9라우트 고유 title·canonical·og:url 정확, 미지 경로 404 계약 유지, 구배포 엣지 캐시 혼재는 수렴 확인(HTML max-age=0).
+- 라이브 실브라우저: 프리렌더 착지→React 인계·legacy 쿼리 리다이렉트·검색 2티어·Sign in 표시·콘솔 0에러.
+- `evidence/site-quality/sq4-ssg-prerender.md`.
