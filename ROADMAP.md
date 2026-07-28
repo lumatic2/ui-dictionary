@@ -1,11 +1,35 @@
 # ROADMAP
 
 > Last updated: 2026-07-28
-> Status: **goal `visual-impact-consolidation` 완주 (2026-07-28)** — VI6 지식 통합·VI7 도구 배치·VI8 실증(recipe 2종 실구현) 연쇄 완료. active goal 0 — 다음 순서(사용자 확정 2026-07-28): ② 『인터랙티브 웹 애니메이션』 책 스터디 자산화 ③ 사이트 품질(finding 큐 O5~O9·verify 위반 77건·SSG) ④ 다크모드 정비 ⑤ real-use-lap 부활(PARK 2026-07-27). 새 goal 은 `/harness-plan` 으로.
+> Status: **goal `slide-methodology` 진행 중 (워크트리 lumatic2/발표-슬라이드-만드는-법)** — SL1 방법론 문서화 active. 이전 goal `visual-impact-consolidation` 완주(2026-07-28). 대기 순서(사용자 확정 2026-07-28): ② 『인터랙티브 웹 애니메이션』 책 스터디 자산화 ③ 사이트 품질(finding 큐 O5~O9·verify 위반 77건·SSG) ④ 다크모드 정비 ⑤ real-use-lap 부활(PARK 2026-07-27 — SL3가 부활 조건과 연계).
 > North star: Build Askewly Design as both a public reference website and an agent-usable implementation system.
 > line budget: <=150
 
 ## Current Goal
+
+<!-- harness:goal id="slide-methodology" status="active" -->
+Goal: 발표 슬라이드 방법론 — 발표 슬라이드를 HTML 정본으로 만들고 PPT·PDF·HTML 세 형식으로 내는 방법론을 knowledge/methodology 로 자산화하고(SL1), 거장 원칙을 린터로 옮기고(SL2), 편집 가능 PPTX 경로를 Askewly Design 소개 덱으로 실증한다(SL3 — real-use-lap 연계). 리서치: `research/2026-07-28-sl1-slide-methodology-research.md` (상류: KG 노드 2·toolshelf 카드 4).
+
+## Active Milestones — slide-methodology
+
+<!-- harness:milestone id="SL1" status="active" priority="P0" -->
+### SL1 — 방법론 문서화
+- DoD: knowledge/slide-principles.md + methodology/slide-production.md 가 레포 관례(단일 출처·wikilink·출처 URL+접근일)대로 작성되고 — 매체 게이트는 design-system 정본 인용(재서술 0) — 00-INDEX·llms 배선 등재(methodology 첫 등재 확정), SL2 가 그대로 쓸 린트 규칙 스펙(입력·판정·임계값 표) 포함. 빌드 PASS·기존 등재 소실 0.
+- Scale: steps=4 (knowledge 문서·methodology 문서·목차/링크·llms 배선); surfaces: knowledge/·methodology/·scripts/generate-llms-txt.mjs; capability: 에이전트와 사람이 같은 슬라이드 방법론을 읽는다
+- Plan: plans/2026-07-28-sl1-slide-methodology-docs.md
+- Status: [ ]
+
+<!-- harness:milestone id="SL2" status="pending" priority="P1" -->
+### SL2 — 슬라이드 린터
+- DoD: SL1 린트 규칙 스펙(제목 완결문장·슬라이드당 메시지 1·텍스트/시각 비율·폰트 하한)이 custom-skills presentation-slides-yusung validator 에 구현되고(cross-repo, VI8 선례), 위반 fixture 로 검출 실증 + setup.sh 배포.
+- Plan: (SL1 완료 후 연쇄 집행)
+- Status: [ ]
+
+<!-- harness:milestone id="SL3" status="pending" priority="P1" -->
+### SL3 — 편집 가능 PPTX 실증
+- DoD: Askewly Design 소개 덱을 방법론대로 실제 제작(HTML 정본)하고 html2pptx(pptxgenjs) vs ppt-master(SVG→DrawingML) 경로로 PPTX 를 뽑아 편집 가능성·충실도를 비교 장부로 기록, PowerPoint/LibreOffice 실개봉 확인. real-use-lap 부활 조건 판정 포함.
+- Plan: (SL2 완료 후 연쇄 집행)
+- Status: [ ]
 
 <!-- harness:goal-archive12 id="visual-impact-consolidation" status="completed" -->
 Goal: 비주얼 임팩트 정리 — 흩어진 비주얼 임팩트 방법(knowledge-graph 노드 19건, toolshelf 카드 15건, presentation-slides three-scene·3d-repolis)을 VI1~VI5 표현 스택 체계로 대조·판정·흡수해 자산화한다. closed 2026-07-28 — VI6(KG 19노드 판정·motion-principles 신설)·VI7(15카드 배치·llms 배선 완결)·VI8(recipe 2종 실구현·상호 링크) 단일 세션 완주. Details: `research/2026-07-28-visual-impact-goal-inventory.md` + `docs/reports/2026-07-28-vi{6,7,8}-*.md`.
