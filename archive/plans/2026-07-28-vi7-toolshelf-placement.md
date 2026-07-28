@@ -48,7 +48,7 @@ Status: approved (연쇄 승인 집행 — 새 사용자 소유 결정 없음, �
   - Failure probe: FIXED_ASSETS 항목 형식(경로·설명 2요소) 안 맞으면 생성기 조용히 누락 — 재생성 후 grep 으로 실존 확인.
   - Commit: changeset `vi7-toolshelf-placement` (README 절: step-2).
 
-- [ ] **step-3 — shelf used 기록 + 통합 검증 (VI7 마감)**
+- [x] **step-3 — shelf used 기록 + 통합 검증 (VI7 마감)**
   - Artifact: toolshelf `used` 기록(이번에 실제 참조한 카드) + `evidence/visual-impact-consolidation/vi7-placement.md`(판정 집계·배선 확인·회귀 게이트).
   - Files: write `evidence/visual-impact-consolidation/vi7-placement.md`. 실행: `python3 ~/projects/toolshelf/bin/shelf.py used <name> --ok`.
   - Risk: 없음 (기록·검증)
@@ -73,3 +73,4 @@ Status: approved (연쇄 승인 집행 — 새 사용자 소유 결정 없음, �
 
 ## 진행 로그
 - 2026-07-28 작성 (연쇄 집행 — VI6 완료 직후).
+- 2026-07-28 step-1~3 완주 — 15카드 전수(A완료1·A대기2·B8·C4), absorption-criteria 9행, llms 배선 해소(162 assets), shelf used 8건, build·lint PASS. DoD 충족.

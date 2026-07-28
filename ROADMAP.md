@@ -54,12 +54,15 @@ Goal: 스튜디오 이월 갭 3건 마감 — 데이터 주도 주입 자동화�
 - Completed at: 2026-07-28
 - Evidence: evidence/visual-impact-consolidation/vi6-knowledge.md
 - Summary: KG 19노드 전수 판정(흡수8/링크7/제외4) — motion-principles 신설, expressive-stack 정본 단일화, llms 재생성 (미배선 2건 finding)
-<!-- harness:milestone id="VI7" status="active" priority="P1" -->
+<!-- harness:milestone id="VI7" status="completed" priority="P1" evidence="evidence/visual-impact-consolidation/vi7-placement.md" -->
 ### VI7 — 도구 층 배치
 - DoD: toolshelf 비주얼 임팩트 카드 15건이 표현 스택 4티어에 배치되고 채택/보류/제외 판정(TC1 taste 흡수 계약 준수, 카드별 출처+사유)이 결정표에 반영되며 `shelf used` 기록이 남는다. + llms 배선 finding 해소(knowledge 3문서 전부 등재).
 - Plan: plans/2026-07-28-vi7-toolshelf-placement.md
-- Status: [ ]
+- Status: [x]
 
+- Completed at: 2026-07-28
+- Evidence: evidence/visual-impact-consolidation/vi7-placement.md
+- Summary: 15카드 전수 판정(A완료1·A대기2·B8·C4) — absorption-criteria 9행, llms knowledge 3문서 배선 완결, shelf used 8건
 <!-- harness:milestone id="VI8" status="pending" priority="P1" -->
 ### VI8 — 실증 확장
 - DoD: VI7 채택 상위 2~3 기법이 실동작 recipe(데모+문서)로 구현되고(브라우저 실동작·디자인 verify·빌드·린트 PASS), presentation-slides three-scene 계약이 recipe 층과 상호 링크된다. 범위는 VI7 판정에 종속.

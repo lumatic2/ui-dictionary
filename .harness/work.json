@@ -4260,7 +4260,7 @@
     "vi7-toolshelf-placement": {
       "work_id": "vi7-toolshelf-placement",
       "milestone_id": "VI7",
-      "status": "active",
+      "status": "completed",
       "plan_path": "plans/2026-07-28-vi7-toolshelf-placement.md",
       "changeset_path": "changesets/20260728-vi7-toolshelf-placement",
       "next_step": "step-1",
@@ -4305,7 +4305,8 @@
       ],
       "owner_session_uuid": "claude:34c2a7b2-5609-47f8-b23f-97fd0200018e",
       "updated_at": "2026-07-28",
-      "notes": "Registered atomically by canonical harness approve_harness_plan.py after plan validation."
+      "notes": "Registered atomically by canonical harness approve_harness_plan.py after plan validation.",
+      "completion_summary": "toolshelf 15카드 전수 배치·판정(A대기 2=VI8 입력), absorption-criteria 9행, llms 배선 완결"
     }
   }
 }
