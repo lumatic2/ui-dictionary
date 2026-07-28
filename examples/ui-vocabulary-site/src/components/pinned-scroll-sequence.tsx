@@ -1,5 +1,20 @@
 import { useEffect, useRef, useState } from "react"
 
+const STEPS = [
+  ["Pin", "섹션이 뷰포트에 고정됩니다 — 스크롤은 진행률이 됩니다."],
+  ["Scrub", "스크롤 위치가 타임라인을 문지릅니다 — 되감기도 자연스럽습니다."],
+  ["Release", "시퀀스가 끝나면 고정이 풀리고 흐름이 이어집니다."],
+] as const
+
+function StepCard({ title, body, step }: { title: string; body: string; step?: boolean }) {
+  return (
+    <div data-step={step ? "" : undefined} className="rounded-md border bg-muted/40 px-4 py-4">
+      <p className="text-sm font-medium text-foreground">{title}</p>
+      <p className="mt-1 break-keep text-sm text-muted-foreground">{body}</p>
+    </div>
+  )
+}
+
 /**
  * Pinned scroll sequence (tier ② — GSAP ScrollTrigger): a section pins while
  * the user's scroll scrubs a multi-step sequence, then releases. Tier ① CSS
@@ -58,38 +73,26 @@ export function PinnedScrollSequenceDemo() {
     }
   }, [])
 
-  const steps = [
-    ["Pin", "섹션이 뷰포트에 고정됩니다 — 스크롤은 진행률이 됩니다."],
-    ["Scrub", "스크롤 위치가 타임라인을 문지릅니다 — 되감기도 자연스럽습니다."],
-    ["Release", "시퀀스가 끝나면 고정이 풀리고 흐름이 이어집니다."],
-  ] as const
-
-  if (reduced) {
-    return (
-      <div className="w-full max-w-md space-y-3 rounded-lg border bg-background p-4">
-        <p className="break-keep text-sm text-muted-foreground">Reduced motion — 시퀀스가 정적으로 전개됩니다.</p>
-        {steps.map(([title, body]) => (
-          <div key={title} className="rounded-md border bg-muted/40 px-4 py-4">
-            <p className="text-sm font-medium text-foreground">{title}</p>
-            <p className="mt-1 break-keep text-sm text-muted-foreground">{body}</p>
-          </div>
-        ))}
-      </div>
-    )
-  }
-
   return (
-    <div ref={scrollerRef} className="relative h-72 w-full max-w-md overflow-y-auto rounded-lg border bg-background">
-      <p className="px-4 pt-4 text-sm text-muted-foreground">Scroll — 스테이지가 고정된 채 3단계가 스크럽됩니다.</p>
-      <div ref={stageRef} className="flex h-64 flex-col justify-center gap-3 px-4">
-        {steps.map(([title, body]) => (
-          <div key={title} data-step className="rounded-md border bg-muted/40 px-4 py-4">
-            <p className="text-sm font-medium text-foreground">{title}</p>
-            <p className="mt-1 break-keep text-sm text-muted-foreground">{body}</p>
+    <div className="w-full max-w-md">
+      {reduced ? (
+        <div className="space-y-3 rounded-lg border bg-background p-4">
+          <p className="break-keep text-sm text-muted-foreground">Reduced motion — 시퀀스가 정적으로 전개됩니다.</p>
+          {STEPS.map(([title, body]) => (
+            <StepCard key={title} title={title} body={body} />
+          ))}
+        </div>
+      ) : (
+        <div ref={scrollerRef} className="relative h-72 overflow-y-auto rounded-lg border bg-background">
+          <p className="px-4 pt-4 text-sm text-muted-foreground">Scroll — 스테이지가 고정된 채 3단계가 스크럽됩니다.</p>
+          <div ref={stageRef} className="flex h-64 flex-col justify-center gap-3 px-4">
+            {STEPS.map(([title, body]) => (
+              <StepCard key={title} title={title} body={body} step />
+            ))}
           </div>
-        ))}
-      </div>
-      <div className="h-40" aria-hidden="true" />
+          <div className="h-40" aria-hidden="true" />
+        </div>
+      )}
     </div>
   )
 }

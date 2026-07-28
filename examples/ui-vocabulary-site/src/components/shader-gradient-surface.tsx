@@ -28,9 +28,28 @@ class ShaderBoundary extends Component<{ children: ReactNode; fallback: ReactNod
 
 const TOKEN_VARS = ["--primary", "--accent", "--muted"]
 
+/**
+ * Tokens are authored in oklch(), but the shader runtime only parses
+ * hex/rgb — normalize through a 1x1 canvas (fillStyle accepts any CSS
+ * color the browser can resolve, pixels read back as sRGB).
+ */
+function cssColorToHex(color: string): string | null {
+  const canvas = document.createElement("canvas")
+  canvas.width = canvas.height = 1
+  const ctx = canvas.getContext("2d")
+  if (!ctx) return null
+  ctx.fillStyle = color
+  ctx.fillRect(0, 0, 1, 1)
+  const [r, g, b] = ctx.getImageData(0, 0, 1, 1).data
+  return `#${[r, g, b].map((n) => n.toString(16).padStart(2, "0")).join("")}`
+}
+
 function readTokenColors(el: Element): string[] {
   const styles = getComputedStyle(el)
-  const colors = TOKEN_VARS.map((v) => styles.getPropertyValue(v).trim()).filter(Boolean)
+  const colors = TOKEN_VARS.map((v) => styles.getPropertyValue(v).trim())
+    .filter(Boolean)
+    .map((c) => cssColorToHex(c))
+    .filter((c): c is string => Boolean(c))
   return colors.length >= 2 ? colors : ["#6F2DBD", "#A663CC", "#B9FAF8"]
 }
 

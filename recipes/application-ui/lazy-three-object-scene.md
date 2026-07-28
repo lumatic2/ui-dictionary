@@ -75,3 +75,8 @@ const ThreeObjectSceneImpl = lazy(() => import("@/components/three-object-scene-
 - prompt_phrases: "React.lazy three.js scene with Suspense skeleton, WebGL error boundary, token-derived material, reduced-motion rotation gate"
 - fallbacks: keep a DOM/text equivalent of any information the scene carries; the scene itself must always be droppable.
 - canonical guidance: `knowledge/expressive-stack.md` tier ④ rows + 판정 절차 3·4; bundle/lazy sources in `research/2026-07-17-expressive-stack-genealogy.md` (React 통합·번들 전략).
+
+
+## Related media contract
+
+- 슬라이드 매체의 3D 장면은 이 recipe 가 아니라 presentation-slides-yusung 스킬의 `three-scene` 레이아웃 계약을 따른다 (OrbitControls 필수·중앙 정렬·PDF export 정적 폴백). 원본: `~/projects/custom-skills/promoted/presentation-slides-yusung/references/interactive.md` §three-scene. 매체가 다르면 게이트도 다르다 — 웹은 lazy 경계·reduced-motion·WebGL 폴백, 슬라이드는 export 폴백이 하드 계약. (상호 링크 VI8 2026-07-28)

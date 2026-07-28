@@ -86,7 +86,9 @@ Rules for consumers: reference semantic tokens, never hard-code color/dimension 
 - [recipes/marketing/landing-hero.md](https://ui.askewly.com/llms/recipes/marketing/landing-hero.md): Landing Hero — marketing recipe (status: draft)
 - [recipes/marketing/magnetic-hover-button.md](https://ui.askewly.com/llms/recipes/marketing/magnetic-hover-button.md): Magnetic Hover Button — marketing recipe (status: draft)
 - [recipes/marketing/mesh-gradient-surface.md](https://ui.askewly.com/llms/recipes/marketing/mesh-gradient-surface.md): Mesh Gradient Surface — marketing recipe (status: draft) [code: /r/mesh-gradient-surface.json]
+- [recipes/marketing/pinned-scroll-sequence.md](https://ui.askewly.com/llms/recipes/marketing/pinned-scroll-sequence.md): Pinned Scroll Sequence — marketing recipe (status: draft)
 - [recipes/marketing/scroll-driven-reveal.md](https://ui.askewly.com/llms/recipes/marketing/scroll-driven-reveal.md): Scroll-Driven Reveal — marketing recipe (status: draft) [code: /r/scroll-driven-reveal.json]
+- [recipes/marketing/shader-gradient-surface.md](https://ui.askewly.com/llms/recipes/marketing/shader-gradient-surface.md): Shader Gradient Surface — marketing recipe (status: draft)
 - [recipes/navigation/bottom-tab-bar.md](https://ui.askewly.com/llms/recipes/navigation/bottom-tab-bar.md): Bottom Tab Bar — navigation recipe (status: draft)
 - [recipes/navigation/doc-search-cmdk-grouped-results-panel.md](https://ui.askewly.com/llms/recipes/navigation/doc-search-cmdk-grouped-results-panel.md): Doc Search Cmd-K Grouped Results Panel — navigation recipe (status: draft) [code: /r/doc-search-cmdk-grouped-results-panel.json]
 - [recipes/navigation/large-title-collapsing-header.md](https://ui.askewly.com/llms/recipes/navigation/large-title-collapsing-header.md): Large Title Collapsing Header — navigation recipe (status: draft)
