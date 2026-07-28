@@ -1,7 +1,7 @@
 # ROADMAP
 
 > Last updated: 2026-07-28
-> Status: **goal `slide-methodology` 완주 (2026-07-28, 워크트리 lumatic2/발표-슬라이드-만드는-법)** — SL1 문서·SL2 린터·SL3 PPTX 실증 연쇄 완료. active goal 0. 대기 순서(사용자 확정 2026-07-28): ② 『인터랙티브 웹 애니메이션』 책 스터디 자산화 ③ 사이트 품질(finding 큐 O5~O9·verify 위반 77건·SSG) ④ 다크모드 정비 ⑤ real-use-lap 부활(PARK 2026-07-27 — SL3가 부활 조건과 연계).
+> Status: **goal `slide-methodology` 완주 (2026-07-28, 워크트리 lumatic2/발표-슬라이드-만드는-법)** — SL1 문서·SL2 린터·SL3 PPTX 실증 연쇄 완료. active goal 0. 대기 순서(사용자 확정 2026-07-28): ② 『인터랙티브 웹 애니메이션』 책 스터디 자산화 ③ 사이트 품질(finding 큐 O5~O9·verify 위반 77건·SSG) ④ 다크모드 정비.
 > North star: Build Askewly Design as both a public reference website and an agent-usable implementation system.
 > line budget: <=150
 
@@ -33,8 +33,8 @@ Goal: 비주얼 임팩트 정리 — 흩어진 비주얼 임팩트 방법(knowle
 <!-- harness:goal-archive11 id="ui-encyclopedia" status="completed" -->
 Goal: UI 백과사전 — 들어가서 용어의 생김새·쓰임·바리에이션을 보고, 헤더·푸터 등 Page Sections 의 종류와 디자인 레퍼런스(직접 구현 데모)를 본다. 유료 경계 = Tailwind Plus 모델, 오너 로그인 전체 열람(결제는 범위 밖). closed 2026-07-28 — UE1~UE5 전부 완료·실서비스 실증(관측 왕복 총 8회, 결함 16건 발견·수리). Details: `archive/plans/2026-07-27-ue1-encyclopedia-navigation.md`(연쇄 정의) + `research/2026-07-27-ue1-encyclopedia-diagnosis.md`.
 
-<!-- harness:goal id="real-use-lap" status="pending" -->
-Goal: 실사용 한 바퀴 — Askewly Design으로 Askewly Design 소개 덱(PPTX)을 실제로 만들고, 막히는 지점만 결함으로 기록해 milestone으로 삼는다. **보류(2026-07-27)** — UI 백과사전 축 우선, 부활 조건은 horizon 문서 헤더. Details: `plans/horizons/2026-07-real-use-lap.md`.
+<!-- harness:goal-archive14 id="real-use-lap" status="completed" -->
+Goal: 실사용 한 바퀴 — Askewly Design으로 Askewly Design 소개 덱(PPTX)을 실제로 만들고, 막히는 지점만 결함으로 기록해 milestone으로 삼는다. closed 2026-07-28 — goal `slide-methodology` SL3가 실질 수행(소개 덱 PPTX 2종 + PowerPoint 실개봉 PASS + dogfood 결함 5건 기록), 사용자 확인으로 완료 처리. Details: `evidence/slide-methodology/sl3-pptx.md` + `research/2026-07-28-sl3-pptx-path-comparison.md`.
 
 <!-- harness:goal-archive10 id="design-output-gates" status="completed" -->
 Goal: 산출물이 좋은지 기계가 잰다, 매체마다 다른 자로. closed 2026-07-22 — DOG1~DOG6 완료, **DOG7(사람 관측) 보류**: 관측 1회 실시했으나 verify 위반 0건이라 오탐률 미측정·승격 판정 미획득. 게이트는 경고 유지. Details: `plans/horizons/2026-07-design-output-gates.md`.

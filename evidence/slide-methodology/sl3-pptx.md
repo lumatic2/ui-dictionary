@@ -12,7 +12,7 @@
 | 경로 A: pptxgenjs 네이티브 PPTX | PASS — 7장 전부, AUTO_SHAPE 텍스트 프레임 + 네이티브 CHART + 발표자 노트 (python-pptx 검사) |
 | 경로 B: ppt-master SVG→DrawingML | PASS — 대표 3장, TEXT_BOX/AUTO_SHAPE 네이티브, 13.333×7.5in 자동 추론 (`--quick-test`) |
 | 캔버스 프리셋 정합 (`pptx-widescreen-16-9`) | PASS — 두 산출물 모두 13.333×7.5in |
-| 실개봉 (텍스트 선택·개체 이동) | **평가 못 함** — PowerPoint·LibreOffice 미설치. python-pptx 개체 구조 검사로 대체 → **이 항목 한정 partial** |
+| 실개봉 (텍스트 선택·개체 이동) | **PASS (2차 정정)** — 1차 "미설치" 판정은 PATH 검색만 한 오판(사용자 지적). PowerPoint COM으로 두 파일 열기·개체 이동·텍스트 편집·SaveAs 전부 성공, LibreOffice 렌더도 성공. 렌더에서 실결함 2건 발견(A 폰트 폴백·B 텍스트 겹침 — 장부 기록) |
 | 비교 장부 실측 행 완성 | PASS — 8축 비교 + 판정 + 평가 못 함 + dogfood 결함 3건 |
 
 ## real-use-lap 부활 조건 판정
@@ -21,4 +21,4 @@ pending goal `real-use-lap`의 정의("Askewly Design으로 Askewly Design 소�
 
 ## 판정
 
-SL3 DoD 충족 — completed (2026-07-28), 실개봉 1항 partial 명시.
+SL3 DoD 충족 — completed (2026-07-28). 실개봉 포함 전항 확인(2차 정정으로 partial 해소), 렌더 실결함 2건은 장부의 후속 재료로 기록.
