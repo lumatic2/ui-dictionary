@@ -1,0 +1,13 @@
+# changeset — VI6 지식 층 통합
+
+- Milestone: VI6 (goal `visual-impact-consolidation`)
+- Plan: `plans/2026-07-28-vi6-knowledge-consolidation.md`
+- 승인: 2026-07-28 사용자 ("추천대로 ㄱㄱ"), receipt `.harness/work.json` (chain VI7,VI8)
+
+## step-1 — 전수 대조·판정 장부 (2026-07-28)
+
+- 산출: `research/2026-07-28-vi6-kg-crosswalk.md` — KG 19노드(계수 정정: 인벤토리 18 표기는 실제 19) × 판정(흡수 8/링크 7/제외 4) × 사유 × 정본 지정.
+- 방법: sonnet 위임 본문 다이제스트 18건 + 의심 노드 3건(허브·css-disclosure·ui-state-vocabulary) 오케스트레이터 직독 — 겹침은 본문 인용으로 대조.
+- 핵심 판정: 티어/도구 선택 정본 = `knowledge/expressive-stack.md`. KG 허브에만 있던 접근성 짝규칙·전 수단 reduced-motion 전제를 흡수 대상으로 지정.
+- 검증: 표 19행 grep=19 · 19노드 이름 전수 매칭(MISSING 0) · 판정 3분류 외 값 없음.
+- KG 쪽 후속 3건(stale 내부 참조 등)은 장부 §KG 쪽 후속 → plan finding 큐.

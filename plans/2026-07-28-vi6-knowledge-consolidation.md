@@ -30,7 +30,7 @@ Status: approved
 
 ## Step 트리
 
-- [ ] **step-1 — 전수 대조·판정 장부**
+- [x] **step-1 — 전수 대조·판정 장부**
   - Artifact: `research/2026-07-28-vi6-kg-crosswalk.md` — KG 18노드 × 판정(흡수/링크/제외) × 사유 × 정본 지정 × 대응 knowledge 위치. expressive-stack 결정표와 `frontend-motion-accessibility-source-map` 의 겹침·차이 명시 포함.
   - Files: write `research/2026-07-28-vi6-kg-crosswalk.md`. read KG `nodes/` 해당 18파일 · `knowledge/expressive-stack.md` · `knowledge/motion-references.md`.
   - Risk: 없음 (분석 산출물 — 원본 무변경)
@@ -71,6 +71,10 @@ Status: approved
 
 ## finding 큐
 - (실행 중 발견 항목을 여기 적는다 — KG 쪽 갱신 필요 항목 포함)
+- KG hub 노드(`frontend-motion-accessibility-source-map`) sources 내부 참조 stale — `nodes/개발/디자인-구현/…`·`nodes/디자인/모션/…` 은 없는 경로 (실측 2026-07-28, 장부 §KG 쪽 후속)
+- KG hub 도구 선택 절에 expressive-stack 참조 추가 검토 (정본 단일화 KG 측 절반)
+- KG `ui-state-motion-vocabulary`·`css-disclosure-transition-pattern` review.state=unreviewed (외부 URL 네트워크 검증 미완) — KG 검수 큐
+- 계수 정정: 인벤토리 "18노드"는 실제 19노드 (핵심 16+인접 3) — 장부는 19행 전수
 
 ## 진행 로그
 - 2026-07-28 작성·승인 등록.
