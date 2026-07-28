@@ -24,3 +24,13 @@ UE1 관측 O6(Docs 랜딩 역할 불명) 을 사용자 결정(2026-07-28 "소개
 - 기존 `/docs/:slug` 문서 딥링크·구 쿼리 URL(?page=docs&filter=…) 리다이렉트 무회귀.
 
 검증: tsc·lint PASS · Playwright — /docs 허브 렌더·카드→문서 착지·딥링크(getting-started-setup)·topnav Docs→허브·legacy 리다이렉트→해당 문서·콘솔 0에러 · 풀페이지 스크린샷 육안 확인.
+
+## step-3 — O7: 사이드바 Components 그룹 + 통합 검증
+
+UE1 관측 O7(기본 컴포넌트 도달 경로 없음) 을 사용자 결정(2026-07-28 "Application UI 에 Components 그룹")대로 수리.
+
+- `App.tsx` 사이드바에 **term 링크 항목 타입**(`TermNavItem` — 클릭 = `/terms/:id` 직행) 도입: `UiBlockNavSection` group items 가 filter/term 혼합 허용, group `filter` optional(없으면 헤더가 내비 아닌 라벨). `StaticUiBlocksNavTree`/`StaticUiBlockGroup` 에 `onSelectTermId` 배선(App 의 `selectTerm` 경유 — 기존 용어 이동 경로 재사용).
+- Application UI 축 최상단에 "Components" 그룹 신설 — 실제 상세 페이지가 있는 기본 컴포넌트 용어 16종(accordion·tabs·button·badge·avatar·text-field·checkbox·radio-group·select·combobox·switch·dialog·dropdown-menu·popover·tooltip·toast). Marketing·Ecommerce 축 비오염.
+- 통합 검증 + `evidence/site-quality/sq2-structural-defects.md`.
+
+검증: tsc·lint·build PASS · verify 비악화(7건=SQ1 이월 타이포, 색 0 유지) · Playwright — 사이드바→accordion·dropdown-menu 실도달, Marketing 축에 그룹 부재, 스모크 4라우트 콘솔 0에러.

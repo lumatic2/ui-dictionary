@@ -559,6 +559,10 @@ function App() {
           activeFilter={filter}
           activeSectionId={activePrimaryAxis}
           onFilterChange={updateNavFilter}
+          onSelectTermId={(termId) => {
+            const term = terms.find((item) => item.id === termId)
+            if (term) selectTerm(term)
+          }}
         />
       )}
     </div>
@@ -1401,7 +1405,8 @@ function StaticUiBlocksNavTree({
   activeFilter,
   activeSectionId,
   onFilterChange,
-}: StaticPlusNavTreeProps & { activeSectionId: PrimaryAxisId }) {
+  onSelectTermId,
+}: StaticPlusNavTreeProps & { activeSectionId: PrimaryAxisId; onSelectTermId: (termId: string) => void }) {
   const sectionId = activeSectionId === "application" ? "application-ui" : activeSectionId
   const visibleSections = uiBlockSections.filter((section) => section.id === sectionId)
 
@@ -1414,6 +1419,7 @@ function StaticUiBlocksNavTree({
             activeFilter={activeFilter}
             group={group}
             onFilterChange={onFilterChange}
+            onSelectTermId={onSelectTermId}
           />
         ))
       )}
@@ -1425,47 +1431,63 @@ function StaticUiBlockGroup({
   activeFilter,
   group,
   onFilterChange,
+  onSelectTermId,
 }: {
   activeFilter: TermFilter
   group: UiBlockNavSection["groups"][number]
   onFilterChange: (filter: TermFilter) => void
+  onSelectTermId: (termId: string) => void
 }) {
-  const visibleItems = group.items.filter((item) => isNavigationFilterVisible(item.filter))
+  const visibleItems = group.items.filter((item) => "termId" in item || isNavigationFilterVisible(item.filter))
 
   if (visibleItems.length === 0) {
     return null
   }
 
+  const itemClassName = (active: boolean) =>
+    cn(
+      "-ml-px border-l px-4 py-1.5 text-left text-sm leading-6 text-muted-foreground transition hover:border-muted-foreground hover:text-foreground",
+      active ? "border-foreground font-semibold text-foreground" : "border-transparent"
+    )
+
   return (
     <section className="flex flex-col gap-3">
-      <button
-        className={cn(
-          "text-left font-mono text-[0.68rem] uppercase tracking-[0.28em] text-muted-foreground transition hover:text-foreground",
-          activeFilter === group.filter && "text-foreground"
-        )}
-        type="button"
-        onClick={() => onFilterChange(group.filter)}
-      >
-        {group.label}
-      </button>
+      {group.filter ? (
+        <button
+          className={cn(
+            "text-left font-mono text-[0.68rem] uppercase tracking-[0.28em] text-muted-foreground transition hover:text-foreground",
+            activeFilter === group.filter && "text-foreground"
+          )}
+          type="button"
+          onClick={() => group.filter && onFilterChange(group.filter)}
+        >
+          {group.label}
+        </button>
+      ) : (
+        <p className="font-mono text-[0.68rem] uppercase tracking-[0.28em] text-muted-foreground">{group.label}</p>
+      )}
       <div className="flex flex-col border-l border-border">
-        {visibleItems.map((item) => {
-          const active = activeFilter === item.filter
-
-          return (
+        {visibleItems.map((item) =>
+          "termId" in item ? (
+            <button
+              key={`term-${item.termId}`}
+              className={itemClassName(false)}
+              type="button"
+              onClick={() => onSelectTermId(item.termId)}
+            >
+              {item.label}
+            </button>
+          ) : (
             <button
               key={item.filter}
-              className={cn(
-                "-ml-px border-l px-4 py-1.5 text-left text-sm leading-6 text-muted-foreground transition hover:border-muted-foreground hover:text-foreground",
-                active ? "border-foreground font-semibold text-foreground" : "border-transparent"
-              )}
+              className={itemClassName(activeFilter === item.filter)}
               type="button"
               onClick={() => onFilterChange(item.filter)}
             >
               {item.label}
             </button>
           )
-        })}
+        )}
       </div>
     </section>
   )
@@ -5867,15 +5889,22 @@ type FilterNavItem = {
   label: string
 }
 
+/** 사이드바에서 용어 상세(/terms/:id)로 직행하는 항목 — filter 드릴다운이 아니다 (O7). */
+type TermNavItem = {
+  termId: string
+  label: string
+}
+
 type UiBlockNavSection = {
   id: string
   filter: TermFilter
   label: string
   icon?: LucideIcon
   groups: Array<{
-    filter: TermFilter
+    /** 없으면 그룹 헤더는 내비가 아닌 라벨로 렌더된다 (예: Components — 대응 컬렉션 없음) */
+    filter?: TermFilter
     label: string
-    items: FilterNavItem[]
+    items: Array<FilterNavItem | TermNavItem>
   }>
 }
 
@@ -6056,6 +6085,28 @@ const uiBlockSections: UiBlockNavSection[] = [
     label: "Application UI",
     icon: LayoutPanelTop,
     groups: [
+      {
+        // 기본 컴포넌트 용어 사전 직행 (O7 — 사용자 확정 2026-07-28). 항목은 실제 상세 페이지가 있는 용어만.
+        label: "Components",
+        items: [
+          { termId: "accordion", label: "Accordion" },
+          { termId: "tabs", label: "Tabs" },
+          { termId: "button", label: "Button" },
+          { termId: "badge", label: "Badge" },
+          { termId: "avatar", label: "Avatar" },
+          { termId: "text-field", label: "Text Field" },
+          { termId: "checkbox", label: "Checkbox" },
+          { termId: "radio-group", label: "Radio Group" },
+          { termId: "select", label: "Select" },
+          { termId: "combobox", label: "Combobox" },
+          { termId: "switch", label: "Switch" },
+          { termId: "dialog", label: "Dialog" },
+          { termId: "dropdown-menu", label: "Dropdown Menu" },
+          { termId: "popover", label: "Popover" },
+          { termId: "tooltip", label: "Tooltip" },
+          { termId: "toast", label: "Toast" },
+        ],
+      },
       {
         filter: navFilter("plus-application-shells"),
         label: "Application Shells",

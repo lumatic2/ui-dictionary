@@ -50,7 +50,7 @@ Status: approved (사용자 승인 2026-07-28 "ㄱㄱ" — 결정 3건 매듭 + 
   - Failure probe: 구 쿼리 URL(?page=docs&filter=…) 리다이렉트 경로가 허브가 아닌 문서로 정확히 착지하는지 — legacy 리다이렉트 1건 실측.
   - Commit: changeset `sq2-structural-defects` (README 절: step-2).
 
-- [ ] **step-3 — O7: Components 그룹 + 통합 검증 (SQ2 마감)**
+- [x] **step-3 — O7: Components 그룹 + 통합 검증 (SQ2 마감)**
   - Artifact: Application UI 축에 "Components" 그룹 신설 — 사이드바 그룹 렌더러에 **term 링크 항목 타입**(클릭 = `/terms/:id` 이동)을 추가하고, 실제 상세 페이지가 있는 기본 컴포넌트 용어(accordion·tabs 등 UE2 갤러리 보유 우선 + 핵심 컴포넌트 용어)를 나열 + 통합 검증 + `evidence/site-quality/sq2-structural-defects.md` + push·실배포 확인 + 사람 관측 요청.
   - Files: write examples/ui-vocabulary-site/src/App.tsx(uiBlockSections Components 그룹 + StaticUiBlockGroup term 링크 분기), evidence/site-quality/sq2-structural-defects.md. 실행: verify 전체·build·lint·Playwright 스모크(/ · /get-started · /docs · /terms/accordion)·push·실배포 스팟 체크.
   - Risk: 기계적 (내비 항목 추가 — 기존 트리 무변경 유지)
