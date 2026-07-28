@@ -76,10 +76,12 @@ Goal: 스튜디오 이월 갭 3건 마감 — 데이터 주도 주입 자동화�
 - Plan: plans/2026-07-28-sq3-search-redesign.md
 - Status: [ ]
 
-<!-- harness:milestone id="SQ4" status="pending" priority="P2" -->
+<!-- harness:milestone id="SQ4" status="active" priority="P2" -->
 ### SQ4 — SSG/prerender
 - DoD: 주요 라우트(홈·용어·패턴·docs)가 prerender 되어 최초 페인트·SEO 메타가 정적 제공되고, SPA 폴백·오너 언락 회귀 없음(실배포 확인 포함).
-- Gap: 현재 전 라우트 CSR — SEO·초기 로딩 불리 (UE5 이월)
+- Gap: 현재 전 라우트 CSR — SEO·초기 로딩 불리 (UE5 이월). 방식 확정(2026-07-28): 정적 셸+메타 생성(vite-node)
+- Scale: steps=3 (생성기·폴백 asset-first·통합+실배포); surfaces: scripts/·functions/ 6개·package.json; capability: 첫 페인트와 SEO 메타가 정적으로 나간다
+- Plan: plans/2026-07-28-sq4-ssg-prerender.md
 - Status: [ ]
 
 ## Active Milestones — ui-encyclopedia
