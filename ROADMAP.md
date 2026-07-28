@@ -12,13 +12,16 @@ Goal: 슬라이드 표현력 심화 — SL3 실측 결론(PPTX 중단·HTML/PDF 
 
 ## Active Milestones — slide-expressive
 
-<!-- harness:milestone id="SX1" status="active" priority="P0" -->
+<!-- harness:milestone id="SX1" status="completed" priority="P0" evidence="evidence/slide-expressive/sx1-layouts.md" -->
 ### SX1 — 임팩트 레이아웃 2종
 - DoD: hero-motion·svg-filter-scene이 meta·schema·renderer·css 4면+문서+fixture+smoke 카탈로그 완비로 스킬에 추가되고(기존 16종 무회귀), reduced-motion 분기·exportFallback 계약 준수, 배포본 브라우저 실조작(모션·reduced-motion 양쪽) 확인.
 - Scale: steps=3 (hero-motion·svg-filter-scene·문서/배포/검증); surfaces: custom-skills presentation-slides-yusung templates·fixtures·scripts; capability: 정보 전달을 넘는 임팩트 장면 레이아웃
 - Plan: plans/2026-07-28-sx1-impact-layouts.md
-- Status: [ ]
+- Status: [x]
 
+- Completed at: 2026-07-28
+- Evidence: evidence/slide-expressive/sx1-layouts.md
+- Summary: hero-motion·svg-filter-scene 4면 완비 — reduced-motion 양쪽 실측·smoke 전체 PASS·배포 완료, 필터 클리핑 결함 수리
 <!-- harness:milestone id="SX2" status="pending" priority="P1" -->
 ### SX2 — 벡터 PDF export
 - DoD: 텍스트 선택·검색 가능한 per-slide print PDF 트랙이 기존 라스터 트랙과 병행 옵션으로 추가되고, 소개 덱으로 벡터성(텍스트 추출)·페이지 경계·한글 폰트가 실증된다.

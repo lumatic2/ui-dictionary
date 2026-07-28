@@ -4514,7 +4514,7 @@
     "sx1-impact-layouts": {
       "work_id": "sx1-impact-layouts",
       "milestone_id": "SX1",
-      "status": "active",
+      "status": "completed",
       "plan_path": "plans/2026-07-28-sx1-impact-layouts.md",
       "changeset_path": "changesets/20260728-sx1-impact-layouts",
       "next_step": "step-1",
@@ -4560,7 +4560,8 @@
       ],
       "owner_session_uuid": "claude:5f38642d-ecc8-4891-a5c1-50379745db63",
       "updated_at": "2026-07-28",
-      "notes": "Registered atomically by canonical harness approve_harness_plan.py after plan validation."
+      "notes": "Registered atomically by canonical harness approve_harness_plan.py after plan validation.",
+      "completion_summary": "임팩트 레이아웃 2종(hero-motion·svg-filter-scene) 구현·배포 — 정적 14종"
     }
   }
 }
