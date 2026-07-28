@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "active_work_id": "sl3-editable-pptx-proof",
+  "active_work_id": "sx1-impact-layouts",
   "works": {
     "SFB1": {
       "title": "Structure Contract And Clean Production",
@@ -4510,6 +4510,57 @@
       "updated_at": "2026-07-28",
       "notes": "Registered atomically by canonical harness approve_harness_plan.py after plan validation.",
       "completion_summary": "소개 덱 HTML 정본 + 편집 가능 PPTX 2경로 실증(비교 장부) — 실개봉만 partial"
+    },
+    "sx1-impact-layouts": {
+      "work_id": "sx1-impact-layouts",
+      "milestone_id": "SX1",
+      "status": "active",
+      "plan_path": "plans/2026-07-28-sx1-impact-layouts.md",
+      "changeset_path": "changesets/20260728-sx1-impact-layouts",
+      "next_step": "step-1",
+      "current_step": "step-1",
+      "steps": [
+        {
+          "id": "step-1",
+          "label": "step-1 — hero-motion 레이아웃"
+        },
+        {
+          "id": "step-2",
+          "label": "step-2 — svg-filter-scene 레이아웃"
+        },
+        {
+          "id": "step-3",
+          "label": "step-3 — 문서·배포·브라우저 검증 (SX1 마감)"
+        }
+      ],
+      "execution_mode": "continuous",
+      "approval": {
+        "approved_by": "user",
+        "approved_at": "2026-07-28",
+        "plan_sha256": "be22986d78e8b7362d29840bf7dd7b16900ccda65c7e9090075d68b9d8fb644f",
+        "chain": [
+          "SX2",
+          "SX3"
+        ]
+      },
+      "allowed_stop_reasons": [
+        "completed",
+        "blocked",
+        "decision_required",
+        "risk_gate",
+        "secret_required",
+        "external_authority_required",
+        "user_stopped"
+      ],
+      "stop_reason": null,
+      "stop_detail": {},
+      "session_ids": [
+        "codex:5f38642d-ecc8-4891-a5c1-50379745db63",
+        "claude:5f38642d-ecc8-4891-a5c1-50379745db63"
+      ],
+      "owner_session_uuid": "claude:5f38642d-ecc8-4891-a5c1-50379745db63",
+      "updated_at": "2026-07-28",
+      "notes": "Registered atomically by canonical harness approve_harness_plan.py after plan validation."
     }
   }
 }
