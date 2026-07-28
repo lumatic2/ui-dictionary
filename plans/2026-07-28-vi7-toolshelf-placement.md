@@ -30,7 +30,7 @@ Status: approved (연쇄 승인 집행 — 새 사용자 소유 결정 없음, �
 
 ## Step 트리
 
-- [ ] **step-1 — 15카드 전수 판정 장부**
+- [x] **step-1 — 15카드 전수 판정 장부**
   - Artifact: `research/2026-07-28-vi7-toolshelf-placement.md` — 카드 × (4티어 배치 | 3분기 A/B/C | 사유 | 출처 URL+접근일). 기판정 6종은 기존 판정 유지 여부 명시.
   - Files: write `research/2026-07-28-vi7-toolshelf-placement.md`. read toolshelf `cards/*.md`(해당 15), `docs/design-system/absorption-criteria.md`, `knowledge/expressive-stack.md`.
   - Risk: 없음 (분석 산출물)

@@ -31,6 +31,14 @@ Audience: 에이전트 + 시스템 관리자.
 | animated-grid-lines | **C** | 수요 미실증 — 카드 유지 |
 | p5.js | **C** | 크리에이티브 코딩 교육 가치 — 제품 recipe 수요 미실증 |
 | taste-skill·nothing-design-skill | **C** | 스킬 형태 선례 — 자산이 아니라 배포 방식 참고 |
+| shaders (paper-design) | **A 대기** | ④ 티어 결정표 등재 + 쇼케이스 Shader Gradient 실사용 = 수요 실증 — 토큰화 recipe 실구현 대기(VI8 후보). (VI7 2026-07-28) |
+| jquery.ripples | **C** | 물결 수요 미실증 + jQuery 의존 구식 스택 (VI7) |
+| simple-water-waves-shader | **C** | 의존성 0 WebGL 리플 — 수요 미실증, 카드 유지 (VI7) |
+| spark (Gaussian splatting) | **C** | 3D 스캔·대형 씬 수요 미실증 — 에셋 게이트는 KG web-3d 노드 링크로 커버 (VI7) |
+| Brainwave-Interactive-Landing | **B** | 애니메이션 헤비 랜딩 완성 사례 — 갤러리형, 관찰 소스로 링크만 (VI7) |
+| 3d-spatial-landing-reference-pack | **B** | 공간형 랜딩 8사이트 — `knowledge/motion-references.md` §공간형 랜딩에 링크 반영(VI6) (VI7) |
+| 60fps.design · landing.love | **B** | 큐레이션 갤러리 — 기법이 아닌 관찰 소스, motion-references 북마크 (VI7) |
+| remotion | **B** | 사전 렌더 영상 매체 — 화면 티어 비대상, motion-references §영상 매체(KG 노드 링크)로 커버 (VI7) |
 
 ## 운용
 
@@ -40,4 +48,5 @@ Audience: 에이전트 + 시스템 관리자.
 
 ## Changelog
 
+- 2026-07-28: VI7 — toolshelf 비주얼 임팩트 카드 15건 전수 배치 후 신규 판정 9행 추가 (판정 장부: `research/2026-07-28-vi7-toolshelf-placement.md`).
 - 2026-07-17: 초판 — 3분기 규칙 + 실측 후보 9종 분류 (VI5).

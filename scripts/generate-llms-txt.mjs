@@ -82,6 +82,19 @@ const FIXED_ASSETS = [
           "decision table and mandatory judgment procedure (lower tier first, reduced-motion gating, " +
           "lazy-load for GPU)",
       ],
+      [
+        "knowledge/motion-principles.md",
+        "Motion quality judgment rules — read BEFORE picking a tier or tool: still-appeal gate " +
+          "(motion cannot rescue a weak still frame), transition purpose taxonomy " +
+          "(continue/create/replace/compare/focus/confirm), one focal element per entrance, " +
+          "motion typography readability, and naming rules (user-facing behavior first, CSS technique second)",
+      ],
+      [
+        "knowledge/motion-references.md",
+        "External motion/interaction reference bookmarks: GSAP ScrollTrigger demo hubs, spatial " +
+          "3D landing pattern with its decorative-skin failure gate, observation galleries " +
+          "(60fps.design, landing.love), and the media boundary note for pre-rendered video (Remotion)",
+      ],
     ],
   },
 ];
