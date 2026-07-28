@@ -21,10 +21,10 @@ Goal: 발표 슬라이드 방법론 — 발표 슬라이드를 HTML 정본으로
 - Completed at: 2026-07-28
 - Evidence: evidence/slide-methodology/sl2-linter.md
 - Summary: R1~R3 옵트인 린트 구현(custom-skills)·위반 fixture 각 1건 검출·오탐 0·배포본 동일 동작 — 기존 fixture에서 R1 실적발 1건 부수 확인
-<!-- harness:milestone id="SL3" status="pending" priority="P1" -->
+<!-- harness:milestone id="SL3" status="active" priority="P1" -->
 ### SL3 — 편집 가능 PPTX 실증
 - DoD: Askewly Design 소개 덱을 방법론대로 실제 제작(HTML 정본)하고 html2pptx(pptxgenjs) vs ppt-master(SVG→DrawingML) 경로로 PPTX 를 뽑아 편집 가능성·충실도를 비교 장부로 기록, PowerPoint/LibreOffice 실개봉 확인. real-use-lap 부활 조건 판정 포함.
-- Plan: (SL2 완료 후 연쇄 집행)
+- Plan: plans/2026-07-28-sl3-editable-pptx-proof.md
 - Status: [ ]
 
 <!-- harness:goal-archive12 id="visual-impact-consolidation" status="completed" -->
