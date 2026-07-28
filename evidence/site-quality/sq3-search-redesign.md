@@ -26,7 +26,10 @@
 - tsc·lint(에러 0)·build PASS · 디자인 verify **비악화**(7건 = SQ1 이월 타이포 그대로, 색 0 유지 — 수정 파일 위반 0).
 - Playwright 스모크 4라우트(/ · /search?q=accordion · /terms/accordion · /patterns/marketing-hero-sections) 콘솔 0에러 · 정확 일치 행 클릭→상세 무회귀.
 
-## 4. 남은 게이트
+## 4. 실배포 확인 (push 3d70328 후)
 
-- 실배포 스팟 체크: push 후 기록.
+- `ui.askewly.com` 신규 번들(index-DDEPZbX3.js) 반영(폴링 11회차). 라이브 `/search?q=토글` — 2티어 렌더(정확 일치 5·연관 언급 2), 요약 헤더 신형, 콘솔 에러 0.
+
+## 5. 남은 게이트
+
 - **사람 관측 1회 (DoD)**: 사용자 왕복 대기 — 결과는 이 파일에 추기.
