@@ -1,14 +1,14 @@
 # ROADMAP
 
 > Last updated: 2026-07-28
-> Status: **goal `slide-methodology` 진행 중 (워크트리 lumatic2/발표-슬라이드-만드는-법)** — SL1 방법론 문서화 active. 이전 goal `visual-impact-consolidation` 완주(2026-07-28). 대기 순서(사용자 확정 2026-07-28): ② 『인터랙티브 웹 애니메이션』 책 스터디 자산화 ③ 사이트 품질(finding 큐 O5~O9·verify 위반 77건·SSG) ④ 다크모드 정비 ⑤ real-use-lap 부활(PARK 2026-07-27 — SL3가 부활 조건과 연계).
+> Status: **goal `slide-methodology` 완주 (2026-07-28, 워크트리 lumatic2/발표-슬라이드-만드는-법)** — SL1 문서·SL2 린터·SL3 PPTX 실증 연쇄 완료. active goal 0. 대기 순서(사용자 확정 2026-07-28): ② 『인터랙티브 웹 애니메이션』 책 스터디 자산화 ③ 사이트 품질(finding 큐 O5~O9·verify 위반 77건·SSG) ④ 다크모드 정비 ⑤ real-use-lap 부활(PARK 2026-07-27 — SL3가 부활 조건과 연계).
 > North star: Build Askewly Design as both a public reference website and an agent-usable implementation system.
 > line budget: <=150
 
 ## Current Goal
 
-<!-- harness:goal id="slide-methodology" status="active" -->
-Goal: 발표 슬라이드 방법론 — 발표 슬라이드를 HTML 정본으로 만들고 PPT·PDF·HTML 세 형식으로 내는 방법론을 knowledge/methodology 로 자산화하고(SL1), 거장 원칙을 린터로 옮기고(SL2), 편집 가능 PPTX 경로를 Askewly Design 소개 덱으로 실증한다(SL3 — real-use-lap 연계). 리서치: `research/2026-07-28-sl1-slide-methodology-research.md` (상류: KG 노드 2·toolshelf 카드 4).
+<!-- harness:goal-archive13 id="slide-methodology" status="completed" -->
+Goal: 발표 슬라이드 방법론 — HTML 정본 + 3-format export 방법론 자산화(SL1)·거장 원칙 린터(SL2)·편집 가능 PPTX 실증(SL3). closed 2026-07-28 — 단일 세션 완주(SL1 문서+llms Methodology 신설, SL2 --lint R1~R3, SL3 소개 덱+PPTX 2경로·실개봉 partial). real-use-lap 부활 조건 충족 판정(처분은 사용자 확인). Details: `research/2026-07-28-sl1-slide-methodology-research.md` + `docs/reports/2026-07-28-sl{1,2,3}-*.md`.
 
 ## Active Milestones — slide-methodology
 
@@ -21,11 +21,11 @@ Goal: 발표 슬라이드 방법론 — 발표 슬라이드를 HTML 정본으로
 - Completed at: 2026-07-28
 - Evidence: evidence/slide-methodology/sl2-linter.md
 - Summary: R1~R3 옵트인 린트 구현(custom-skills)·위반 fixture 각 1건 검출·오탐 0·배포본 동일 동작 — 기존 fixture에서 R1 실적발 1건 부수 확인
-<!-- harness:milestone id="SL3" status="active" priority="P1" -->
+<!-- harness:milestone id="SL3" status="completed" priority="P1" evidence="evidence/slide-methodology/sl3-pptx.md" -->
 ### SL3 — 편집 가능 PPTX 실증
 - DoD: Askewly Design 소개 덱을 방법론대로 실제 제작(HTML 정본)하고 html2pptx(pptxgenjs) vs ppt-master(SVG→DrawingML) 경로로 PPTX 를 뽑아 편집 가능성·충실도를 비교 장부로 기록, PowerPoint/LibreOffice 실개봉 확인. real-use-lap 부활 조건 판정 포함.
 - Plan: plans/2026-07-28-sl3-editable-pptx-proof.md
-- Status: [ ]
+- Status: [x]
 
 <!-- harness:goal-archive12 id="visual-impact-consolidation" status="completed" -->
 Goal: 비주얼 임팩트 정리 — 흩어진 비주얼 임팩트 방법(knowledge-graph 노드 19건, toolshelf 카드 15건, presentation-slides three-scene·3d-repolis)을 VI1~VI5 표현 스택 체계로 대조·판정·흡수해 자산화한다. closed 2026-07-28 — VI6(KG 19노드 판정·motion-principles 신설)·VI7(15카드 배치·llms 배선 완결)·VI8(recipe 2종 실구현·상호 링크) 단일 세션 완주. Details: `research/2026-07-28-visual-impact-goal-inventory.md` + `docs/reports/2026-07-28-vi{6,7,8}-*.md`.
@@ -61,6 +61,9 @@ Goal: 사이트 레시피 데모 실구현을 registry 코드 자산으로 배�
 Goal: 스튜디오 이월 갭 3건 마감 — 데이터 주도 주입 자동화·구성 패턴 완편(4유형+예약형)·미리보기 고도화(다크·반응형). Details: `plans/horizons/2026-07-studio-finish.md`.
 
 
+- Completed at: 2026-07-28
+- Evidence: evidence/slide-methodology/sl3-pptx.md
+- Summary: 소개 덱 7장(lint 0) + pptxgenjs 네이티브 7장·CHART / ppt-master 3장 실증, 8축 비교 장부 — 실개봉 partial(뷰어 부재), real-use-lap 조건 충족 판정
 ## Active Milestones — visual-impact-consolidation
 
 <!-- harness:milestone id="VI7" status="completed" priority="P1" evidence="evidence/visual-impact-consolidation/vi7-placement.md" -->
