@@ -536,3 +536,24 @@ plan doc: `archive/plans/2026-07-21-eu*.md` · 증거: `evidence/editor-legibili
 - Scale: changesets>=2; surfaces: 관측·발견 결함 마감; capability: 사람이 무시하지 않는 게이트
 - Plan: (미작성 — 관측 1회 실시로 대체, 판정 미획득)
 - Status: [ ] **보류(2026-07-22)** — 관측 1회 실시했으나 verify 위반 0건이라 오탐률을 못 쟀고, 승격 질문이 사용자에게 전달되지 않아 판정 2건 다 미획득. 게이트는 **경고 유지**. 부활 조건: verify가 실제 위반을 뱉는 작업 1~2건 누적 + 승격 질문 재설계. 근거 `evidence/design-output-gates/dog7-observation.md`
+
+## vocabulary-in-use (VL7–VL8) — closed 2026-07-21 (ROADMAP 에서 2026-07-28 이관)
+
+### VL7 — 분리력 검증 (캘리브레이션)
+- DoD: 같은 케이스 세트에서 기준선 대비 향상 폭이 군집별로 기록되고, 향상의 출처가 분해되며, 회귀 케이스가 0이거나 사유가 남는다.
+- Evidence: changesets/20260721-vl7-treatment-comparison
+- Plan: archive/plans/2026-07-21-vl7-separation-gate.md
+- Completed: 2026-07-21 — 84.4%→96.9%, 회귀 0 (changeset 241)
+
+### VL8 — 사람 관측 게이트
+- DoD: 사용자가 사전 설명 없이 요구 한 문장을 던져 판정·근거·구현까지 가는 과업 3건의 성공/실패와 막힌 지점이 발화 인용과 함께 기록된다.
+- Evidence: evidence/vocabulary-in-use/vl8-observation.md
+- Plan: archive/plans/2026-07-21-vl8-human-observation.md
+- Completed: 2026-07-21 — **미달로 닫음.** 과업 3건 중 1건만 수행·그 1건 실패 — 에이전트가 규정된 category 축 조회 대신 자기 키워드 grep 후 "사전 밖 개념"으로 단정했으나 실제로는 `장식·배경 효과` 그룹에 aurora-background 등 3건이 있었다. 사용자가 되물어 드러남. VL7의 96.9%는 후보가 이미 좁혀진 케이스라 이 결함을 구조상 못 잰다. 문서 추가로 닫히지 않아 `vocabulary-lookup-discipline` 후보 적재 (changeset 243, 보고서 docs/reports/2026-07-21-vl8-human-observation.md)
+
+## real-use-lap RU1 — closed 2026-07-22 미달 (goal 은 PARK 2026-07-27, ROADMAP 에서 2026-07-28 이관)
+
+### RU1 — 덱을 끝까지 만든다 (관측 장치)
+- DoD: Askewly Design 소개 덱 PPTX가 존재하고 사용자가 쓸 수 있다고 판정하며, 발표 게이트(캔버스 프리셋 대조·본문 대비 AA)가 1회 이상 실제 실행되고, 제작 중 막힌 지점이 결함 장부에 전수 기록된다.
+- Evidence: evidence/real-use-lap/ru1-deck-production.md
+- Completed: 2026-07-22 — **미달로 닫음.** 덱 10장 제작·발표 게이트 첫 실행(프리셋 PASS·대비 7/7 PASS)·결함 10건 기록했으나 사용자 판정 "실제로 못 써 · 내가 원하는 제작 흐름도 아니다 · 문답이 훨씬 많았어야 했다 · Askewly Design 자체가 제대로 작동 안 하는 느낌". **기계가 통과시킨 산출물을 사람이 못 쓴다고 판정** — DOG7과 같은 구조의 재현. 최대 결함 D10: 규모 게이트가 "DESIGN.md 있으면 인터뷰 없음"으로 브리프를 건너뛰어 덱의 내용·청중·구성을 전부 에이전트가 추정했다(DESIGN.md는 룩을 소유하지 내용을 소유하지 않는다). RU2로 이월.

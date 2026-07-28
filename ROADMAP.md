@@ -1,14 +1,17 @@
 # ROADMAP
 
 > Last updated: 2026-07-28
-> Status: **`ui-encyclopedia` 완주 (2026-07-28)** — UE1 탐색·UE2 바리에이션·UE5 라우팅 분리·UE3 Page Sections 16종·UE4 Pro 잠금+오너 언락 전부 완료, 실서비스(ui.askewly.com) 반영. active goal 0 — 다음 방향은 사용자 결정 대기(후보: 비주얼 임팩트 정리 · 이월 finding 큐 O5~O9 · real-use-lap 부활 · 다크모드 정비). `real-use-lap` 은 PARK(2026-07-27).
+> Status: **goal `visual-impact-consolidation` 개설 (2026-07-28 사용자 승인)** — VI6 지식 층 통합(active)→VI7 도구 층 배치→VI8 실증 확장 연쇄. 직전 `ui-encyclopedia` 완주(2026-07-28, 실서비스 반영). 이후 순서(사용자 확정): ② 『인터랙티브 웹 애니메이션』 책 스터디 ③ 사이트 품질(finding 큐 O5~O9·verify 위반 77건·SSG) ④ 다크모드 정비 ⑤ real-use-lap 부활. `real-use-lap` 은 PARK(2026-07-27).
 > North star: Build Askewly Design as both a public reference website and an agent-usable implementation system.
 > line budget: <=150
 
 ## Current Goal
 
+<!-- harness:goal id="visual-impact-consolidation" status="active" -->
+Goal: 비주얼 임팩트 정리 — 흩어진 비주얼 임팩트 방법(knowledge-graph 모션·3D 노드 18건, toolshelf 도구 카드 15건, presentation-slides three-scene·3d-repolis 로컬 구현)을 VI1~VI5 표현 스택 체계(`knowledge/expressive-stack.md`·recipe 시스템)로 대조·판정·흡수해 자산화한다. 리서치: `research/2026-07-28-visual-impact-goal-inventory.md`. 승인 연쇄 VI6→VI7→VI8 (2026-07-28).
+
 <!-- harness:goal-archive11 id="ui-encyclopedia" status="completed" -->
-Goal: UI 백과사전 — 들어가서 용어의 생김새·쓰임·바리에이션을 보고, 헤더·푸터 등 Page Sections 의 종류와 디자인 레퍼런스(직접 구현 데모)를 본다. 유료 경계 = Tailwind Plus 모델, 오너 로그인 전체 열람(결제는 범위 밖). closed 2026-07-28 — UE1~UE5 전부 완료·실서비스 실증(관측 왕복 총 8회, 결함 16건 발견·수리). Details: `plans/2026-07-27-ue1-encyclopedia-navigation.md`(연쇄 정의) + `research/2026-07-27-ue1-encyclopedia-diagnosis.md`.
+Goal: UI 백과사전 — 들어가서 용어의 생김새·쓰임·바리에이션을 보고, 헤더·푸터 등 Page Sections 의 종류와 디자인 레퍼런스(직접 구현 데모)를 본다. 유료 경계 = Tailwind Plus 모델, 오너 로그인 전체 열람(결제는 범위 밖). closed 2026-07-28 — UE1~UE5 전부 완료·실서비스 실증(관측 왕복 총 8회, 결함 16건 발견·수리). Details: `archive/plans/2026-07-27-ue1-encyclopedia-navigation.md`(연쇄 정의) + `research/2026-07-27-ue1-encyclopedia-diagnosis.md`.
 
 <!-- harness:goal id="real-use-lap" status="pending" -->
 Goal: 실사용 한 바퀴 — Askewly Design으로 Askewly Design 소개 덱(PPTX)을 실제로 만들고, 막히는 지점만 결함으로 기록해 milestone으로 삼는다. **보류(2026-07-27)** — UI 백과사전 축 우선, 부활 조건은 horizon 문서 헤더. Details: `plans/horizons/2026-07-real-use-lap.md`.
@@ -38,6 +41,28 @@ Goal: 사이트 레시피 데모 실구현을 registry 코드 자산으로 배�
 Goal: 스튜디오 이월 갭 3건 마감 — 데이터 주도 주입 자동화·구성 패턴 완편(4유형+예약형)·미리보기 고도화(다크·반응형). Details: `plans/horizons/2026-07-studio-finish.md`.
 
 
+## Active Milestones — visual-impact-consolidation
+
+<!-- harness:milestone id="VI6" status="active" priority="P0" -->
+### VI6 — 지식 층 통합
+- DoD: KG 18노드(핵심 15+인접 3) 전수 대조·판정 장부(흡수/링크/제외+사유+정본 지정) + 흡수/링크 판정 전 항목이 knowledge 문서에 반영 + 빌드·린트 PASS + evidence 기록. 기존 결정표 행 무단 변경 0.
+- Gap: `frontend-motion-accessibility-source-map`(KG)이 `knowledge/expressive-stack.md` 결정표와 중복 진화 중 — 정본 미지정
+- Scale: steps=3 (대조 장부·knowledge 갱신·통합 검증); surfaces: knowledge/·research/·evidence/; capability: 흩어진 지식이 정본 한 곳에서 읽힌다
+- Plan: plans/2026-07-28-vi6-knowledge-consolidation.md
+- Status: [ ]
+
+<!-- harness:milestone id="VI7" status="pending" priority="P1" -->
+### VI7 — 도구 층 배치
+- DoD: toolshelf 비주얼 임팩트 카드 15건이 표현 스택 4티어에 배치되고 채택/보류/제외 판정(TC1 taste 흡수 계약 준수, 카드별 출처+사유)이 결정표에 반영되며 `shelf used` 기록이 남는다.
+- Plan: (VI6 완료 후 작성)
+- Status: [ ]
+
+<!-- harness:milestone id="VI8" status="pending" priority="P1" -->
+### VI8 — 실증 확장
+- DoD: VI7 채택 상위 2~3 기법이 실동작 recipe(데모+문서)로 구현되고(브라우저 실동작·디자인 verify·빌드·린트 PASS), presentation-slides three-scene 계약이 recipe 층과 상호 링크된다. 범위는 VI7 판정에 종속.
+- Plan: (VI7 완료 후 작성)
+- Status: [ ]
+
 ## Active Milestones — ui-encyclopedia
 
 <!-- harness:milestone id="UE1" status="completed" priority="P0" evidence="evidence/ui-encyclopedia/ue1-navigation.md" -->
@@ -46,7 +71,7 @@ Goal: 스튜디오 이월 갭 3건 마감 — 데이터 주도 주입 자동화�
 - Evidence: evidence/ui-encyclopedia/ue1-navigation.md
 - Gap: 사이드바 카테고리 클릭 무반응(조용한 return)·딥링크 홈 폴백 — 실측 `research/2026-07-27-ue1-encyclopedia-diagnosis.md`
 - Scale: steps=3 (내비 수리·URL 계약·통합 E2E+사람 관측); surfaces: App.tsx 내비·URL 배선, navigation-model; capability: 백과사전의 첫 동사 "찾는다"
-- Plan: plans/2026-07-27-ue1-encyclopedia-navigation.md
+- Plan: archive/plans/2026-07-27-ue1-encyclopedia-navigation.md
 - Status: [x]
 
 - Completed at: 2026-07-27
@@ -57,7 +82,7 @@ Goal: 스튜디오 이월 갭 3건 마감 — 데이터 주도 주입 자동화�
 - Evidence: evidence/ui-encyclopedia/ue2-variation-gallery.md
 - Gap: 아코디언 시각 자료가 미니목 1장 — 변형·상태·레퍼런스 0건 (진단 결함 3, O10 변형 차별성 교훈 반영)
 - Scale: steps=3 (데이터 층·갤러리 렌더러·통합+관측); surfaces: term-variations 레지스트리·variation-demos·term-page; capability: 찾은 페이지에 볼 것
-- Plan: plans/2026-07-27-ue2-variation-gallery.md
+- Plan: archive/plans/2026-07-27-ue2-variation-gallery.md
 - Status: [x]
 
 - Completed at: 2026-07-27
@@ -74,7 +99,7 @@ Goal: 스튜디오 이월 갭 3건 마감 — 데이터 주도 주입 자동화�
 <!-- harness:milestone id="UE4" status="completed" priority="P2" evidence="evidence/ui-encyclopedia/ue4-pro-lock.md" -->
 ### UE4 — Pro 잠금 + 오너 언락
 - DoD: Tailwind Plus 모델 잠금(정의·대표 데모 미리보기 무료, 바리에이션 전체·코드 복사 Pro)이 동작하고, Google 로그인 세션 이메일이 소유자와 일치하면 전체 열람된다. 결제 연동은 범위 밖.
-- Plan: plans/2026-07-28-ue4-pro-lock-owner-unlock.md
+- Plan: archive/plans/2026-07-28-ue4-pro-lock-owner-unlock.md
 - Status: [x]
 
 - Completed at: 2026-07-28
@@ -86,25 +111,11 @@ Goal: 스튜디오 이월 갭 3건 마감 — 데이터 주도 주입 자동화�
 - Evidence: evidence/ui-encyclopedia/ue5-routing-split.md
 - Gap: 23,507줄 App.tsx 상태 기반 SPA — 뒤로가기·SEO·코드분할 전부 불리 (사용자 확정 2026-07-27 "분리는 진행하는 게 좋겠어"). UE3 대량 콘텐츠 투입 전 실행.
 - Scale: steps=3 (라우터 골격+리다이렉트 · 모듈 분리+코드 분할 · 통합 회귀+사람 관측); surfaces: main/routes/App 셸·화면 모듈; capability: 읽히는 URL 과 분할 로딩
-- Plan: plans/2026-07-27-ue5-routing-split.md
+- Plan: archive/plans/2026-07-27-ue5-routing-split.md
 - Status: [x]
 
 - Completed at: 2026-07-27
 - Summary: React Router 도입 — /terms·/patterns·/docs·/search 경로, 구 쿼리 URL 전형태 리다이렉트, 초기 청크 3,324→1,758kB(-47%), App.tsx 23.5k→6.3k줄. 회귀 10항+통합 5항 PASS, 사람 관측 1회 통과
-## Active Milestones — real-use-lap
-
-<!-- harness:milestone id="RU1" status="completed" priority="P0" evidence="evidence/real-use-lap/ru1-deck-production.md" -->
-### RU1 — 덱을 끝까지 만든다 (관측 장치)
-- DoD: Askewly Design 소개 덱 PPTX가 존재하고 사용자가 쓸 수 있다고 판정하며, 발표 게이트(캔버스 프리셋 대조·본문 대비 AA)가 1회 이상 실제 실행되고, 제작 중 막힌 지점이 결함 장부에 전수 기록된다.
-- Evidence: evidence/real-use-lap/ru1-deck-production.md
-- Gap: 발표 게이트는 절차에 적혔을 뿐 실행 0회다 — 슬라이드 산출물이 0건이라 먹일 입력이 없었다. `validateSlideDeclaration`도 실사용 0회
-- Scale: changesets>=3; surfaces: 브리프·DESIGN.md 저장·슬라이드 구성·PPTX 산출·발표 게이트; capability: 우리 절차로 실제 쓰는 산출물
-- Plan: (RU1은 관측 장치 — 사전 step 분해 대신 막힌 지점을 기록해 RU2~n을 뽑는다)
-- Status: [x]
-
-- Completed at: 2026-07-22
-- Summary: **미달로 닫음.** 덱 10장 제작·발표 게이트 첫 실행(프리셋 PASS·대비 7/7 PASS)·결함 10건 기록했으나 사용자 판정 "실제로 못 써 · 내가 원하는 제작 흐름도 아니다 · 문답이 훨씬 많았어야 했다 · Askewly Design 자체가 제대로 작동 안 하는 느낌". **기계가 통과시킨 산출물을 사람이 못 쓴다고 판정** — DOG7과 같은 구조의 재현. 최대 결함 D10: 규모 게이트가 "DESIGN.md 있으면 인터뷰 없음"으로 브리프를 건너뛰어 덱의 내용·청중·구성을 전부 에이전트가 추정했다(DESIGN.md는 룩을 소유하지 내용을 소유하지 않는다). RU2로 이월.
-
 ## 유지보수 후보 (milestone 아님)
 
 > 이월 finding 전수 장부는 `docs/findings.md` (2026-07-20 수집 — A~F 6군). 아래는 이 horizon 밖 항목만.
@@ -115,31 +126,6 @@ Goal: 스튜디오 이월 갭 3건 마감 — 데이터 주도 주입 자동화�
 - shortcuts dialog 배경 콘텐츠 inert/aria-hidden (스크린리더 가상 커서 — 키보드 트랩은 완료)
 - Codex Windows workspace-write sandbox HTTPS 차단("Authentication failed") — headless codex exec에서 토큰 fetch 불가 (AD1 E2E 적발, changeset #101)
 
-## Active Milestones — vocabulary-in-use
-
-<!-- harness:milestone id="VL7" status="completed" priority="P0" evidence="changesets/20260721-vl7-treatment-comparison" -->
-### VL7 — 분리력 검증 (캘리브레이션)
-- DoD: 같은 케이스 세트에서 기준선 대비 향상 폭이 군집별로 기록되고, 향상의 출처가 분해되며, 회귀 케이스가 0이거나 사유가 남는다.
-- Evidence: changesets/20260721-vl7-treatment-comparison
-- Gap: 축이 그럴듯해 보여도 실제 요구 문장에서 두 후보가 다 걸리면 판정이 안 갈린다
-- Scale: changesets>=3; surfaces: 처치 측정·기준선 대조·축 보정; capability: 향상 폭이 수치로 증명된 판정
-- Plan: archive/plans/2026-07-21-vl7-separation-gate.md
-- Status: [x]
-
-- Completed at: 2026-07-21
-- Summary: 84.4%→96.9%, 회귀 0 (changeset 241)
-<!-- harness:milestone id="VL8" status="completed" priority="P1" evidence="evidence/vocabulary-in-use/vl8-observation.md, changesets/20260721-vl8-observation-verdict" -->
-### VL8 — 사람 관측 게이트
-- DoD: 사용자가 사전 설명 없이 요구 한 문장을 던져 판정·근거·구현까지 가는 과업 3건의 성공/실패와 막힌 지점이 발화 인용과 함께 기록된다.
-- Evidence: evidence/vocabulary-in-use/vl8-observation.md
-- Gap: 직전 horizon에서 probe 11건과 브라우저 계측이 전부 놓친 결함을 사람이 한 번 만져서 잡았다
-- Scale: changesets>=2; surfaces: 관측 프로토콜·사용자 과업·발견 결함 마감; capability: 사람이 던진 문장이 구현으로 착지
-- Plan: archive/plans/2026-07-21-vl8-human-observation.md
-- Status: [x]
-
-- Completed at: 2026-07-21
-- Summary: **미달로 닫음.** 과업 3건 중 1건만 수행·그 1건 실패 — 에이전트가 규정된 category 축 조회 대신 자기 키워드 grep 후 "사전 밖 개념"으로 단정했으나 실제로는 `장식·배경 효과` 그룹에 aurora-background 등 3건이 있었다. 사용자가 되물어 드러남. VL7의 96.9%는 후보가 이미 좁혀진 케이스라 이 결함을 구조상 못 잰다. 문서 추가로 닫히지 않아 `vocabulary-lookup-discipline` 후보 적재 (changeset 243, 보고서 docs/reports/2026-07-21-vl8-human-observation.md)
-
 ## Archive Pointer
 
-Completed or archived milestone history lives in `docs/BACKLOG.md`; template-production-system (TPS1–TPS5) closed 2026-07-19, recipe-code-reuse (RC1–RC4) closed 2026-07-19, skill-entry (SE1–SE2) closed 2026-07-18, design-brief (DB2) closed 2026-07-19, Quality & Dogfooding (QA2–QA3) closed 2026-07-12, Living Design System (RL–SD) closed 2026-07-12, Canvas Production Environment (UX3–AI) closed 2026-07-12, Agent-Native UI Canvas (AUC0–AUC4) closed 2026-07-11.
+Completed or archived milestone history lives in `docs/BACKLOG.md`; vocabulary-in-use (VL7–VL8) closed 2026-07-21 · real-use-lap RU1 closed 2026-07-22(미달) — 2026-07-28 BACKLOG 이관, template-production-system (TPS1–TPS5) closed 2026-07-19, recipe-code-reuse (RC1–RC4) closed 2026-07-19, skill-entry (SE1–SE2) closed 2026-07-18, design-brief (DB2) closed 2026-07-19, Quality & Dogfooding (QA2–QA3) closed 2026-07-12, Living Design System (RL–SD) closed 2026-07-12, Canvas Production Environment (UX3–AI) closed 2026-07-12, Agent-Native UI Canvas (AUC0–AUC4) closed 2026-07-11.
