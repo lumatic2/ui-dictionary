@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "active_work_id": "sx2-vector-pdf",
+  "active_work_id": "sx3-deck-proof",
   "works": {
     "SFB1": {
       "title": "Structure Contract And Clean Production",
@@ -4613,6 +4613,54 @@
       "updated_at": "2026-07-28",
       "notes": "Registered atomically by canonical harness approve_harness_plan.py after plan validation.",
       "completion_summary": "텍스트 선택·검색 가능한 벡터 PDF 트랙 신설 — 의존성 0, 실증·배포 완료"
+    },
+    "sx3-deck-proof": {
+      "work_id": "sx3-deck-proof",
+      "milestone_id": "SX3",
+      "status": "completed",
+      "plan_path": "plans/2026-07-28-sx3-deck-proof.md",
+      "changeset_path": "changesets/20260728-sx3-deck-proof",
+      "next_step": "step-1",
+      "current_step": "step-1",
+      "steps": [
+        {
+          "id": "step-1",
+          "label": "step-1 — 덱 갱신 + 적용"
+        },
+        {
+          "id": "step-2",
+          "label": "step-2 — 벡터 PDF 게이트 왕복"
+        },
+        {
+          "id": "step-3",
+          "label": "step-3 — 실사용 판정 + goal 마감"
+        }
+      ],
+      "execution_mode": "continuous",
+      "approval": {
+        "approved_by": "user",
+        "approved_at": "2026-07-28",
+        "plan_sha256": "3bd461f65ad58c4e225ff08fdf849ec8d5c0aa32943b9203facce7d7c09a9efb"
+      },
+      "allowed_stop_reasons": [
+        "completed",
+        "blocked",
+        "decision_required",
+        "risk_gate",
+        "secret_required",
+        "external_authority_required",
+        "user_stopped"
+      ],
+      "stop_reason": null,
+      "stop_detail": {},
+      "session_ids": [
+        "codex:5f38642d-ecc8-4891-a5c1-50379745db63",
+        "claude:5f38642d-ecc8-4891-a5c1-50379745db63"
+      ],
+      "owner_session_uuid": "claude:5f38642d-ecc8-4891-a5c1-50379745db63",
+      "updated_at": "2026-07-28",
+      "notes": "Registered atomically by canonical harness approve_harness_plan.py after plan validation.",
+      "completion_summary": "소개 덱 hero-motion 표지 + 벡터 PDF 실증 — goal slide-expressive 완주"
     }
   }
 }

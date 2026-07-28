@@ -6,7 +6,7 @@
 const NOUN_TITLE_BLACKLIST = new Set(['개요', '결과', '소개', '배경', '현황', '목차', '정리']);
 const KOREAN_SENTENCE_ENDING = /(다|까|자|요)\s*[.!?]?$/;
 const ENGLISH_VERB_HINT = /\b(is|are|was|were|has|have|does|do|can|will|should|must|makes|means|shows|drives|beats|wins|fails|works|needs|cuts|grows|saves)\b/i;
-const R1_EXEMPT_LAYOUTS = new Set(['cover', 'closing', 'qr-embed']);
+const R1_EXEMPT_LAYOUTS = new Set(['cover', 'closing', 'qr-embed', 'hero-motion']); // hero-motion: 표지·챕터 전환 대체 (SX3 dogfood 적발)
 const R2_EXEMPT_LAYOUTS = new Set(['comparison-2col', 'summary-grid']);
 const R3_VISUAL_LAYOUTS = new Set(['chart-interactive', 'three-scene', 'before-after', 'qr-embed', 'diagram-box', 'case-map', 'split-screen', 'timeline-cards', 'pipeline-lanes', 'result-transitions']);
 const R3_CHAR_LIMIT = 250;

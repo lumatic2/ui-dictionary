@@ -713,8 +713,33 @@ body.fade-out { animation: fadeOut 0.25s ease forwards; }
 @keyframes itemFade { from { opacity: 0; } to { opacity: 1; } }
 @keyframes focusTitle { from { opacity: 0; filter: blur(3px); transform: translateY(4px); } to { opacity: 1; filter: blur(0); transform: translateY(0); } }
 @keyframes itemFocus { from { opacity: 0; transform: translateY(8px); } to { opacity: 1; transform: translateY(0); } }
+/* hero-motion — 풀블리드 모션 히어로 (SX1). 티어: CSS 애니메이션(하위 티어 우선 — expressive-stack 계약) */
+.layout-hero-motion { position: relative; overflow: hidden; justify-content: center; }
+.layout-hero-motion .slide-header { position: relative; z-index: 2; text-align: center; margin-top: auto; }
+.layout-hero-motion .slide-header .title { font-size: clamp(48px, 6.4vw, 84px); animation: hmTitleIn 0.9s cubic-bezier(0.22, 1, 0.36, 1) both 0.15s; }
+.layout-hero-motion .slide-header .subtitle { margin-inline: auto; animation: hmTitleIn 0.8s ease both 0.45s; }
+.layout-hero-motion .slide-header .kicker { animation: hmTitleIn 0.6s ease both; }
+.layout-hero-motion .slide-content { position: relative; z-index: 2; margin-bottom: auto; flex: 0; }
+.hero-motion-bg { position: absolute; inset: 0; z-index: 0; pointer-events: none; }
+.hm-blob { position: absolute; border-radius: 50%; filter: blur(70px); opacity: 0.5; }
+.hm-blob-a { width: 46%; aspect-ratio: 1; left: -8%; top: -18%; background: var(--accent-start); animation: hmDrift 16s ease-in-out infinite alternate; }
+.hm-blob-b { width: 38%; aspect-ratio: 1; right: -6%; bottom: -20%; background: var(--accent-end); animation: hmDrift 19s ease-in-out infinite alternate-reverse; }
+.hm-blob-c { width: 24%; aspect-ratio: 1; right: 22%; top: 8%; background: var(--accent-soft); opacity: 0.8; animation: hmDrift 13s ease-in-out infinite alternate; }
+.hero-motion-chips { display: flex; gap: 12px; justify-content: center; margin-top: 26px; }
+.hero-motion-chip { padding: 8px 18px; border-radius: 999px; border: 1px solid var(--accent-border); background: var(--bg-card); color: var(--text-secondary); font-size: 15px; animation: itemRise 0.5s ease both 0.7s; }
+.hero-motion-chip:nth-child(2) { animation-delay: 0.82s; }
+.hero-motion-chip:nth-child(3) { animation-delay: 0.94s; }
+@keyframes hmTitleIn { from { opacity: 0; transform: translateY(26px) scale(0.985); } to { opacity: 1; transform: translateY(0) scale(1); } }
+@keyframes hmDrift { from { transform: translate3d(0, 0, 0) scale(1); } to { transform: translate3d(4%, 6%, 0) scale(1.12); } }
+/* svg-filter-scene — SVG 필터 장면 (SX1). 필터는 배경 레이어 한정 — 텍스트는 z-index 위 스택(가독 보호) */
+.layout-svg-filter-scene { position: relative; overflow: hidden; }
+.layout-svg-filter-scene .slide-header, .layout-svg-filter-scene .slide-content { position: relative; z-index: 2; }
+.svg-filter-stage { position: absolute; inset: 0; z-index: 0; pointer-events: none; }
+.svg-filter-stage svg { width: 100%; height: 100%; display: block; }
+.svg-filter-caption { position: relative; z-index: 2; color: var(--text-secondary); font-size: 15px; max-width: 60%; }
 @media (prefers-reduced-motion: reduce) {
-  body, body.fade-out, .effect-rise *, .effect-scale *, .effect-fade *, .effect-focus * { animation: none !important; transition: none !important; opacity: 1 !important; transform: none !important; filter: none !important; }
+  body, body.fade-out, .effect-rise *, .effect-scale *, .effect-fade *, .effect-focus *, .layout-hero-motion *, .layout-svg-filter-scene * { animation: none !important; transition: none !important; opacity: 1 !important; transform: none !important; filter: none !important; }
+  .hm-blob { filter: blur(70px) !important; opacity: 0.4 !important; }
 }
 `;
 }

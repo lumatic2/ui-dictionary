@@ -557,3 +557,35 @@ plan doc: `archive/plans/2026-07-21-eu*.md` · 증거: `evidence/editor-legibili
 - DoD: Askewly Design 소개 덱 PPTX가 존재하고 사용자가 쓸 수 있다고 판정하며, 발표 게이트(캔버스 프리셋 대조·본문 대비 AA)가 1회 이상 실제 실행되고, 제작 중 막힌 지점이 결함 장부에 전수 기록된다.
 - Evidence: evidence/real-use-lap/ru1-deck-production.md
 - Completed: 2026-07-22 — **미달로 닫음.** 덱 10장 제작·발표 게이트 첫 실행(프리셋 PASS·대비 7/7 PASS)·결함 10건 기록했으나 사용자 판정 "실제로 못 써 · 내가 원하는 제작 흐름도 아니다 · 문답이 훨씬 많았어야 했다 · Askewly Design 자체가 제대로 작동 안 하는 느낌". **기계가 통과시킨 산출물을 사람이 못 쓴다고 판정** — DOG7과 같은 구조의 재현. 최대 결함 D10: 규모 게이트가 "DESIGN.md 있으면 인터뷰 없음"으로 브리프를 건너뛰어 덱의 내용·청중·구성을 전부 에이전트가 추정했다(DESIGN.md는 룩을 소유하지 내용을 소유하지 않는다). RU2로 이월.
+
+### 2026-07
+- SL1 - SL1 — 방법론 문서화
+  - Completed: 2026-07-28
+  - Result: 방법론 2문서 신설(원칙·제작 파이프라인+린트 스펙 R1~R4) + llms Methodology 섹션 첫 배선 — fresh 검증자가 이중 정본 사고 예방
+  - Evidence: evidence/slide-methodology/sl1-docs.md
+
+- VI6 - VI6 — 지식 층 통합
+  - Completed: 2026-07-28
+  - Result: KG 19노드 전수 판정(흡수8/링크7/제외4) — motion-principles 신설, expressive-stack 정본 단일화, llms 재생성 (미배선 2건 finding)
+  - Evidence: evidence/visual-impact-consolidation/vi6-knowledge.md
+
+### 2026-07
+- SX1 - SX1 — 임팩트 레이아웃 2종
+  - Completed: 2026-07-28
+  - Result: hero-motion·svg-filter-scene 4면 완비 — reduced-motion 양쪽 실측·smoke 전체 PASS·배포 완료, 필터 클리핑 결함 수리
+  - Evidence: evidence/slide-expressive/sx1-layouts.md
+
+- SX2 - SX2 — 벡터 PDF export
+  - Completed: 2026-07-28
+  - Result: print.html 직접 인쇄 벡터 트랙 — 페이지 수·텍스트 추출·한글 폰트·3면 실증, raster 병행
+  - Evidence: evidence/slide-expressive/sx2-vector-pdf.md
+
+- SX3 - SX3 — 실증 (소개 덱 적용)
+  - Completed: 2026-07-28
+  - Result: 표지 hero-motion 전환(문구 동결)·벡터 PDF 7p 실증·직행 예외 정당 판정 — dogfood 적발 1건 수리
+  - Evidence: evidence/slide-expressive/sx3-deck-proof.md
+
+- SL2 - SL2 — 슬라이드 린터
+  - Completed: 2026-07-28
+  - Result: R1~R3 옵트인 린트 구현(custom-skills)·위반 fixture 각 1건 검출·오탐 0·배포본 동일 동작 — 기존 fixture에서 R1 실적발 1건 부수 확인
+  - Evidence: evidence/slide-methodology/sl2-linter.md

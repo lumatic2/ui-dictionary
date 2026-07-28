@@ -1,56 +1,19 @@
 # ROADMAP
 
 > Last updated: 2026-07-28
-> Status: **goal `slide-expressive` 진행 중 (워크트리 lumatic2/발표-슬라이드-만드는-법)** — SX1 임팩트 레이아웃 active. 직전 goal `slide-methodology`·`real-use-lap` 완주(2026-07-28). 대기 순서(사용자 확정 2026-07-28): ② 『인터랙티브 웹 애니메이션』 책 스터디 자산화 ③ 사이트 품질(finding 큐 O5~O9·verify 위반 77건·SSG) ④ 다크모드 정비.
+> Status: **goal `slide-expressive` 완주 (2026-07-28, 워크트리 lumatic2/발표-슬라이드-만드는-법)** — SX1 레이아웃·SX2 벡터 PDF·SX3 실증 연쇄 완료. 이날 완주 goal 3개(slide-methodology·real-use-lap·slide-expressive). active goal 0. 대기 순서(사용자 확정 2026-07-28): ② 『인터랙티브 웹 애니메이션』 책 스터디 자산화 ③ 사이트 품질(finding 큐 O5~O9·verify 위반 77건·SSG) ④ 다크모드 정비.
 > North star: Build Askewly Design as both a public reference website and an agent-usable implementation system.
 > line budget: <=150
 
 ## Current Goal
 
-<!-- harness:goal id="slide-expressive" status="active" -->
-Goal: 슬라이드 표현력 심화 — SL3 실측 결론(PPTX 중단·HTML/PDF 우선, 사용자 확정 2026-07-28)의 실행. 임팩트 레이아웃 2종(SX1)·벡터 PDF export(SX2)·소개 덱 실증(SX3). 리서치: `research/2026-07-28-sx1-slide-expressive-survey.md`.
+<!-- harness:goal-archive15 id="slide-expressive" status="completed" -->
+Goal: 슬라이드 표현력 심화 — PPTX 중단·HTML/PDF 우선 방향의 실행. closed 2026-07-28 — SX1 임팩트 레이아웃 2종(hero-motion·svg-filter-scene, 정적 14종)·SX2 벡터 PDF 트랙(텍스트 선택·의존성 0)·SX3 소개 덱 실증(직행 예외 정당 판정) 단일 세션 완주. Details: `research/2026-07-28-sx1-slide-expressive-survey.md` + `docs/reports/2026-07-28-sx{1,2,3}-*.md`.
 
 ## Active Milestones — slide-expressive
 
-<!-- harness:milestone id="SX1" status="completed" priority="P0" evidence="evidence/slide-expressive/sx1-layouts.md" -->
-### SX1 — 임팩트 레이아웃 2종
-- DoD: hero-motion·svg-filter-scene이 meta·schema·renderer·css 4면+문서+fixture+smoke 카탈로그 완비로 스킬에 추가되고(기존 16종 무회귀), reduced-motion 분기·exportFallback 계약 준수, 배포본 브라우저 실조작(모션·reduced-motion 양쪽) 확인.
-- Scale: steps=3 (hero-motion·svg-filter-scene·문서/배포/검증); surfaces: custom-skills presentation-slides-yusung templates·fixtures·scripts; capability: 정보 전달을 넘는 임팩트 장면 레이아웃
-- Plan: plans/2026-07-28-sx1-impact-layouts.md
-- Status: [x]
-
-- Completed at: 2026-07-28
-- Evidence: evidence/slide-expressive/sx1-layouts.md
-- Summary: hero-motion·svg-filter-scene 4면 완비 — reduced-motion 양쪽 실측·smoke 전체 PASS·배포 완료, 필터 클리핑 결함 수리
-<!-- harness:milestone id="SX2" status="completed" priority="P1" evidence="evidence/slide-expressive/sx2-vector-pdf.md" -->
-### SX2 — 벡터 PDF export
-- DoD: 텍스트 선택·검색 가능한 per-slide print PDF 트랙이 기존 라스터 트랙과 병행 옵션으로 추가되고, 소개 덱으로 벡터성(텍스트 추출)·페이지 경계·한글 폰트가 실증된다.
-- Plan: plans/2026-07-28-sx2-vector-pdf.md
-- Status: [x]
-
-- Completed at: 2026-07-28
-- Evidence: evidence/slide-expressive/sx2-vector-pdf.md
-- Summary: print.html 직접 인쇄 벡터 트랙 — 페이지 수·텍스트 추출·한글 폰트·3면 실증, raster 병행
-<!-- harness:milestone id="SX3" status="pending" priority="P1" -->
-### SX3 — 실증 (소개 덱 적용)
-- DoD: 소개 덱에 신규 레이아웃 ≥1장 적용 + 벡터 PDF 산출 + HTML/PDF 게이트 왕복(브라우저 실조작·PDF 실개봉 3면). 표준 직행 예외의 실사용 판정 포함.
-- Plan: (SX2 완료 후 연쇄 집행)
-- Status: [ ]
-
-<!-- harness:goal-archive13 id="slide-methodology" status="completed" -->
-Goal: 발표 슬라이드 방법론 — HTML 정본 + 3-format export 방법론 자산화(SL1)·거장 원칙 린터(SL2)·편집 가능 PPTX 실증(SL3). closed 2026-07-28 — 단일 세션 완주(SL1 문서+llms Methodology 신설, SL2 --lint R1~R3, SL3 소개 덱+PPTX 2경로·실개봉 partial). real-use-lap 부활 조건 충족 판정(처분은 사용자 확인). Details: `research/2026-07-28-sl1-slide-methodology-research.md` + `docs/reports/2026-07-28-sl{1,2,3}-*.md`.
-
 ## Active Milestones — slide-methodology
 
-<!-- harness:milestone id="SL2" status="completed" priority="P1" evidence="evidence/slide-methodology/sl2-linter.md" -->
-### SL2 — 슬라이드 린터
-- DoD: SL1 린트 규칙 스펙(제목 완결문장·슬라이드당 메시지 1·텍스트/시각 비율·폰트 하한)이 custom-skills presentation-slides-yusung validator 에 구현되고(cross-repo, VI8 선례), 위반 fixture 로 검출 실증 + setup.sh 배포.
-- Plan: plans/2026-07-28-sl2-slide-linter.md
-- Status: [x]
-
-- Completed at: 2026-07-28
-- Evidence: evidence/slide-methodology/sl2-linter.md
-- Summary: R1~R3 옵트인 린트 구현(custom-skills)·위반 fixture 각 1건 검출·오탐 0·배포본 동일 동작 — 기존 fixture에서 R1 실적발 1건 부수 확인
 <!-- harness:milestone id="SL3" status="completed" priority="P1" evidence="evidence/slide-methodology/sl3-pptx.md" -->
 ### SL3 — 편집 가능 PPTX 실증
 - DoD: Askewly Design 소개 덱을 방법론대로 실제 제작(HTML 정본)하고 html2pptx(pptxgenjs) vs ppt-master(SVG→DrawingML) 경로로 PPTX 를 뽑아 편집 가능성·충실도를 비교 장부로 기록, PowerPoint/LibreOffice 실개봉 확인. real-use-lap 부활 조건 판정 포함.

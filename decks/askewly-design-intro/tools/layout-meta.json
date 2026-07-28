@@ -112,6 +112,22 @@
       "maxItems": 1,
       "density": "action",
       "requiresFallback": true
+    },
+    "hero-motion": {
+      "label": "Hero motion",
+      "kind": "static",
+      "maxItems": 3,
+      "density": "low",
+      "preferredEffect": "none",
+      "requiresFallback": true
+    },
+    "svg-filter-scene": {
+      "label": "SVG filter scene",
+      "kind": "static",
+      "maxItems": 0,
+      "density": "low",
+      "preferredEffect": "none",
+      "requiresFallback": true
     }
   }
 }

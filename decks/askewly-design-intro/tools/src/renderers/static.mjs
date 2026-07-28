@@ -282,6 +282,35 @@ export function createStaticRenderers({ escapeHtml, renderIcon }) {
     </article>`).join('')}</section>`;
   }
 
+  // SX1 임팩트 레이아웃 — 규격: ui-dictionary methodology/slide-production.md · expressive-stack 티어 계약(하위 티어 우선, reduced-motion 게이팅)
+  function renderHeroMotion(slide) {
+    const items = (slide.items || []).slice(0, 3);
+    return `<div class="hero-motion-bg" aria-hidden="true"><span class="hm-blob hm-blob-a"></span><span class="hm-blob hm-blob-b"></span><span class="hm-blob hm-blob-c"></span></div>
+    ${items.length ? `<div class="hero-motion-chips">${items.map((item) => `<span class="hero-motion-chip">${itemTitle(item)}</span>`).join('')}</div>` : ''}`;
+  }
+
+  function renderSvgFilterScene(slide) {
+    const variant = slideVariant(slide) === 'liquid' ? 'liquid' : 'turbulence';
+    const caption = slide.body ? `<p class="svg-filter-caption">${escapeHtml(slide.body)}</p>` : '';
+    // 자작 SVG만 사용(외부 반입 금지 — 클릭재킹 경계). 필터는 배경 도형 한정, 텍스트는 셸 헤더(z-index 위).
+    const scene = variant === 'liquid'
+      ? `<svg viewBox="0 0 1280 720" preserveAspectRatio="xMidYMid slice" aria-hidden="true">
+        <defs><filter id="sfsLiquid" x="-40%" y="-40%" width="180%" height="180%"><feGaussianBlur in="SourceGraphic" stdDeviation="18"/><feColorMatrix values="1 0 0 0 0  0 1 0 0 0  0 0 1 0 0  0 0 0 24 -12"/></filter></defs>
+        <g filter="url(#sfsLiquid)" fill="var(--accent-start)" opacity="0.5">
+          <circle cx="980" cy="180" r="90"><animate attributeName="cx" values="980;880;980" dur="9s" repeatCount="indefinite"/></circle>
+          <circle cx="820" cy="240" r="70"><animate attributeName="cx" values="820;960;820" dur="7s" repeatCount="indefinite"/></circle>
+          <circle cx="1080" cy="320" r="60"><animate attributeName="cy" values="320;220;320" dur="8s" repeatCount="indefinite"/></circle>
+        </g></svg>`
+      : `<svg viewBox="0 0 1280 720" preserveAspectRatio="xMidYMid slice" aria-hidden="true">
+        <defs><filter id="sfsTurb" x="-30%" y="-30%" width="160%" height="160%"><feTurbulence type="fractalNoise" baseFrequency="0.012 0.02" numOctaves="2" seed="7" result="noise"><animate attributeName="baseFrequency" values="0.012 0.02;0.016 0.026;0.012 0.02" dur="14s" repeatCount="indefinite"/></feTurbulence><feDisplacementMap in="SourceGraphic" in2="noise" scale="42"/></filter></defs>
+        <g filter="url(#sfsTurb)" opacity="0.45">
+          <ellipse cx="1000" cy="200" rx="320" ry="180" fill="var(--accent-start)"/>
+          <ellipse cx="240" cy="560" rx="280" ry="150" fill="var(--accent-end)" opacity="0.7"/>
+        </g></svg>`;
+    return `<div class="svg-filter-stage">${scene}</div>${caption}
+    <script>if (window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches) { document.querySelectorAll('.svg-filter-stage svg').forEach((s) => { if (s.pauseAnimations) s.pauseAnimations(); }); }</script>`;
+  }
+
   const renderers = {
     cover: renderCover,
     closing: renderClosing,
@@ -295,6 +324,8 @@ export function createStaticRenderers({ escapeHtml, renderIcon }) {
     'timeline-cards': renderTimelineCards,
     'pipeline-lanes': renderPipelineLanes,
     'result-transitions': renderResultTransitions,
+    'hero-motion': renderHeroMotion,
+    'svg-filter-scene': renderSvgFilterScene,
   };
 
   return { renderGeneric, renderers };
