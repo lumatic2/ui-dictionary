@@ -19,6 +19,7 @@ const APP_PATHS = [
   "/recipes",
   "/pro",
   "/download",
+  "/get-started",
 ]
 
 export const router = createBrowserRouter([

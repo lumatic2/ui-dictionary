@@ -4,7 +4,7 @@ const SITE_NAME = "Askewly Design"
 const DEFAULT_DESCRIPTION = "Askewly Design은 제품 UI 패턴, 문서, 쇼케이스, 리소스, Pro 구현 자산을 탐색하는 디자인 시스템입니다."
 
 type PageMetaInput = {
-  page: "home" | "docs" | "plus" | "term" | "download" | "pro" | "colors" | "recipes"
+  page: "home" | "docs" | "plus" | "term" | "download" | "pro" | "colors" | "recipes" | "get-started"
   sectionTitle?: string | null
   description?: string | null
 }
@@ -25,6 +25,8 @@ function getSectionLabel(page: PageMetaInput["page"]): string | null {
       return "Pro"
     case "download":
       return "Download"
+    case "get-started":
+      return "Get Started"
     case "term":
       return null
     default:

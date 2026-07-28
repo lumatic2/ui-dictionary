@@ -13,7 +13,7 @@ import { recipeGalleryEntries } from "@/lib/recipe-gallery-data"
  */
 export type SearchDestination =
   | { filter: TermFilter; page: "docs" | "plus" }
-  | { page: "download" | "pro" | "colors" | "recipes" | "signin" }
+  | { page: "download" | "pro" | "colors" | "recipes" | "signin" | "get-started" }
 
 export type SearchSuggestion =
   | {

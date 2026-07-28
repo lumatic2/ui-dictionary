@@ -57,10 +57,12 @@ Goal: 스튜디오 이월 갭 3건 마감 — 데이터 주도 주입 자동화�
 - Completed at: 2026-07-28
 - Evidence: evidence/site-quality/sq1-verify-cleanup.md
 - Summary: 색 위반 72→0(시각 무손실 토큰화)·VI8 finding 2건 해소 — 타이포 7건은 게이트 보정 후(사용자 확정)
-<!-- harness:milestone id="SQ2" status="pending" priority="P1" -->
+<!-- harness:milestone id="SQ2" status="active" priority="P1" -->
 ### SQ2 — 구조 결함 O5·O6·O7
 - DoD: Get Started 착지(O5 — 노출 정책과의 긴장 해소는 사용자 결정), Docs 랜딩 역할 정의(O6), 좌측 내비 IA 재정리(O7)가 라우트 구조 위에서 수리되고 사람 관측 1회 통과.
-- Gap: UE1 관측 이월 구조 결함 — plan 작성 시 O5 노출 정책 사용자 결정 필요
+- Gap: UE1 관측 이월 구조 결함 — 결정 3건 매듭(2026-07-28): O5 시작 가이드 재정의·O6 소개+허브 결합·O7 Components 그룹
+- Scale: steps=3 (O5 시작 가이드·O6 Docs 허브·O7 Components 그룹+통합); surfaces: App.tsx 내비·라우트 3면·functions; capability: 들어온 사람이 시작점·문서 입구·기본 컴포넌트를 찾는다
+- Plan: plans/2026-07-28-sq2-structural-defects.md
 - Status: [ ]
 
 <!-- harness:milestone id="SQ3" status="pending" priority="P1" -->

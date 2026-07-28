@@ -14,7 +14,7 @@ import { isNavigationFilter, normalizeNavigationFilter } from "@/lib/navigation-
  * 구 쿼리 URL(?page/id/q/filter)은 라우터 loader 가 legacyRedirectPath 로 새 경로에 리다이렉트한다.
  */
 
-export type UrlPageMode = "home" | "docs" | "plus" | "term" | "download" | "pro" | "colors" | "recipes"
+export type UrlPageMode = "home" | "docs" | "plus" | "term" | "download" | "pro" | "colors" | "recipes" | "get-started"
 
 export type UrlState = {
   page: UrlPageMode
@@ -23,7 +23,7 @@ export type UrlState = {
   termId: string | null
 }
 
-const STATIC_PAGES = new Set(["colors", "recipes", "pro", "download"])
+const STATIC_PAGES = new Set(["colors", "recipes", "pro", "download", "get-started"])
 
 function collectionSlug(filter: string): string | null {
   if (!isNavigationFilter(filter)) {

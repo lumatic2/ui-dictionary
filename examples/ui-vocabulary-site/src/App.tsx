@@ -45,6 +45,7 @@ const HomePage = lazy(() => import("@/components/home-page").then((m) => ({ defa
 const ColorsPage = lazy(() => import("@/components/colors-page").then((m) => ({ default: m.ColorsPage })))
 const RecipeGallery = lazy(() => import("@/components/recipe-gallery").then((m) => ({ default: m.RecipeGallery })))
 const TermPage = lazy(() => import("@/components/term-page").then((m) => ({ default: m.TermPage })))
+const GetStartedPage = lazy(() => import("@/components/get-started-page").then((m) => ({ default: m.GetStartedPage })))
 
 function ScreenFallback() {
   return <div aria-hidden="true" className="min-h-[60svh] w-full animate-pulse rounded-md bg-muted/40" />
@@ -64,7 +65,7 @@ import { useCases } from "@/lib/term-ux"
 import { usePageMeta } from "@/lib/page-meta"
 import { cn } from "@/lib/utils"
 
-type PageMode = "home" | "docs" | "plus" | "term" | "download" | "pro" | "colors" | "recipes"
+type PageMode = "home" | "docs" | "plus" | "term" | "download" | "pro" | "colors" | "recipes" | "get-started"
 type SearchState = {
   filter: TermFilter
   page: PageMode
@@ -351,7 +352,7 @@ function App() {
     setActiveUseCaseId(null)
     setQuery(nextQuery)
 
-    const isNoExploreLayout = pageMode === "home" || pageMode === "download" || pageMode === "pro" || pageMode === "colors" || pageMode === "recipes"
+    const isNoExploreLayout = pageMode === "home" || pageMode === "download" || pageMode === "pro" || pageMode === "colors" || pageMode === "recipes" || pageMode === "get-started"
     if (nextQuery.trim().length > 0 && isNoExploreLayout) {
       const nextPage: PageMode = isNavigationFilter(filter) && filter.slice("nav:".length).startsWith("docs-") ? "docs" : "plus"
       setPageMode(nextPage)
@@ -570,7 +571,7 @@ function App() {
     { label: "Recipes", active: pageMode === "recipes", onClick: () => navigateFromHome({ page: "recipes" }) },
     { label: "Pro Plan", active: pageMode === "pro", onClick: () => navigateFromHome({ page: "pro" }) },
   ]
-  const noExploreLayout = pageMode === "home" || pageMode === "download" || pageMode === "pro" || pageMode === "colors"
+  const noExploreLayout = pageMode === "home" || pageMode === "download" || pageMode === "pro" || pageMode === "colors" || pageMode === "get-started"
 
   return (
     <main className="min-h-svh bg-background">
@@ -684,6 +685,12 @@ function App() {
             <DownloadPage
               onNavigate={navigateFromHome}
             />
+          ) : pageMode === "get-started" ? (
+            <Suspense fallback={<ScreenFallback />}>
+              <GetStartedPage
+                onNavigate={navigateFromHome}
+              />
+            </Suspense>
           ) : pageMode === "colors" ? (
             <Suspense fallback={<ScreenFallback />}>
               <ColorsPage

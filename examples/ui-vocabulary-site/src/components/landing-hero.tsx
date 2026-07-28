@@ -1,7 +1,6 @@
 import { ArrowRight } from "lucide-react"
 import { Button } from "@/components/ui/button"
 import { FloatingField, HeroSearch, ShowcaseAtlas, type HomePageProps } from "@/components/home-page"
-import { SHOW_UNFILLED } from "@/lib/exposure"
 
 export function LandingHero({ onNavigate, onSearch, filter, terms }: HomePageProps) {
   return (
@@ -18,12 +17,10 @@ export function LandingHero({ onNavigate, onSearch, filter, terms }: HomePagePro
         </p>
 
         <div className="mt-7 flex flex-col gap-3 sm:flex-row">
-          {SHOW_UNFILLED && (
-            <Button className="h-11 rounded-lg bg-askewly-violet px-6 has-[>svg]:px-6 text-white hover:bg-[color-mix(in_srgb,var(--askewly-violet)_85%,black)]" type="button" onClick={() => onNavigate({ page: "download" })}>
-              Get Started
-              <ArrowRight aria-hidden="true" className="size-4" />
-            </Button>
-          )}
+          <Button className="h-11 rounded-lg bg-askewly-violet px-6 has-[>svg]:px-6 text-white hover:bg-[color-mix(in_srgb,var(--askewly-violet)_85%,black)]" type="button" onClick={() => onNavigate({ page: "get-started" })}>
+            Get Started
+            <ArrowRight aria-hidden="true" className="size-4" />
+          </Button>
           <Button className="h-11 rounded-lg border-border bg-background px-6 text-foreground hover:bg-muted" variant="outline" type="button" onClick={() => onNavigate({ page: "docs", filter: "nav:docs-getting-started-setup" })}>
             Open Docs
           </Button>

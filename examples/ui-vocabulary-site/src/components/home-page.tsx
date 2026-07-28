@@ -74,7 +74,7 @@ export type HomePageDestination = {
   filter: TermFilter
   page: "docs" | "plus"
 } | {
-  page: "download" | "pro" | "colors" | "recipes" | "signin"
+  page: "download" | "pro" | "colors" | "recipes" | "signin" | "get-started"
 }
 
 export type HomePageProps = {
