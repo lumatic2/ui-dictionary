@@ -39,7 +39,7 @@ Status: approved
   - Failure probe: 제목만 보고 판정하면 겹침을 놓친다 — 겹침 의심 노드(허브·css-disclosure·ui-state-motion-vocabulary)는 본문 대조를 장부에 인용으로 남긴다.
   - Commit: changeset `vi6-knowledge-consolidation` (README 절: step-1).
 
-- [ ] **step-2 — knowledge 층 갱신 (흡수 집행)**
+- [x] **step-2 — knowledge 층 갱신 (흡수 집행)**
   - Artifact: 판정 "흡수/링크" 항목이 반영된 `knowledge/expressive-stack.md`·`knowledge/motion-references.md`(필요 시 신규 knowledge 문서 — 폴더당 ≤10 준수) + 각 문서 Changelog. KG 쪽 갱신 필요 항목은 plan finding 큐에 목록화.
   - Files: write `knowledge/expressive-stack.md`, `knowledge/motion-references.md`, (필요 시) `knowledge/` 신규 1~2파일. read step-1 장부.
   - Risk: 위험 (정본 문서 오염 — 기존 결정표 21행의 판정을 바꾸는 갱신은 사유 없이 금지, 추가·출처 보강만)
@@ -48,7 +48,7 @@ Status: approved
   - Failure probe: 흡수가 "KG 에 있음" 한 줄 링크로 끝나면 미소화(TC1 위반) — 문서 본문 판단 규칙에 실제 문구가 들어가야 인정.
   - Commit: changeset `vi6-knowledge-consolidation` (README 절: step-2).
 
-- [ ] **step-3 — 통합 검증 + 파이프라인 반영 (VI6 마감)**
+- [x] **step-3 — 통합 검증 + 파이프라인 반영 (VI6 마감)**
   - Artifact: `evidence/visual-impact-consolidation/vi6-knowledge.md` — 대조 전수성·흡수 집행·llms 파이프라인 포함 여부 증거. llms 산출에 knowledge 갱신이 반영되는 배선인지 확인(아니면 배선 실측 결과와 갭을 evidence 에 명기).
   - Files: write `evidence/visual-impact-consolidation/vi6-knowledge.md`. read llms 생성 배선(`docs/design-system/`·사이트 빌드 산출).
   - Risk: 없음 (검증·기록 중심)
@@ -75,6 +75,8 @@ Status: approved
 - KG hub 도구 선택 절에 expressive-stack 참조 추가 검토 (정본 단일화 KG 측 절반)
 - KG `ui-state-motion-vocabulary`·`css-disclosure-transition-pattern` review.state=unreviewed (외부 URL 네트워크 검증 미완) — KG 검수 큐
 - 계수 정정: 인벤토리 "18노드"는 실제 19노드 (핵심 16+인접 3) — 장부는 19행 전수
+- llms 미배선 2건: `knowledge/motion-principles.md`(신설)·`knowledge/motion-references.md` 가 `scripts/generate-llms-txt.mjs` FIXED_ASSETS 에 없음 — VI7/VI8 에서 배선 (step-3 write surface 계약상 이번엔 기록만)
 
 ## 진행 로그
 - 2026-07-28 작성·승인 등록.
+- 2026-07-28 step-1~3 완주 — 장부 19행·흡수 8/링크 7/제외 4, knowledge 3문서 갱신(삽입 29/삭제 0), build·lint PASS. DoD 충족(실배포 확인은 세션 말 push 후).

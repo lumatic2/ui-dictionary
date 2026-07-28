@@ -18,3 +18,9 @@
 - `knowledge/expressive-stack.md` — 결정표 disclosure grid-track 행 추가, 판정 절차 7(접근성 짝규칙+전 티어 reduced-motion)·8(원칙 위임) 추가, ④ 티어 인접 게이트 절(3D 에셋 파이프라인·AI 생성 선택 링크+요지) 신설.
 - `knowledge/motion-references.md` — 공간형 랜딩 절(사례군+decorative-skin failure 게이트 흡수), Remotion 4노드 링크 절(매체 경계 명시).
 - 검증: 장부 흡수 8·링크 7 전 항목 착지 대조 완료(제외 4는 사유만) · git diff 삽입 29줄/삭제 0 — 기존 결정표 행 무단 변경 0.
+
+## step-3 — 통합 검증 + 파이프라인 반영 (2026-07-28)
+
+- llms 생성기 실행(160 assets) — expressive-stack 갱신분 배포 사본 반영 확인.
+- 갭 적발: motion-principles.md·motion-references.md 는 FIXED_ASSETS 미등재(llms 미배선) — finding 큐 이월.
+- build ✓(1.13s) · lint exit 0. evidence: `evidence/visual-impact-consolidation/vi6-knowledge.md`.
