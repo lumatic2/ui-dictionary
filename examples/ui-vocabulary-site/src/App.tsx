@@ -149,6 +149,15 @@ function App() {
   }, [isPlusLanding, searchResults])
   const starterSuggestions = useMemo(() => getStarterQueries(), [])
   const hasActiveSearch = query.trim().length > 0 || activeUseCase !== null
+  // SQ3 계층화 — 표현 계층일 뿐 순위 불변: 두 티어를 합치면 visibleSearchResults 순서 그대로다.
+  const exactSearchResults = useMemo(
+    () => (hasActiveSearch ? visibleSearchResults.filter((result) => result.exact) : []),
+    [hasActiveSearch, visibleSearchResults]
+  )
+  const relatedSearchResults = useMemo(
+    () => (hasActiveSearch ? visibleSearchResults.filter((result) => !result.exact) : []),
+    [hasActiveSearch, visibleSearchResults]
+  )
   const categoryCounts = useMemo(
     () =>
       categories.map((item) => ({
@@ -712,16 +721,21 @@ function App() {
           ) : (
           <section className="flex flex-col gap-8 px-5 py-8 md:px-8 md:py-10 lg:px-10 2xl:px-12" data-export-root>
             {hasActiveSearch && (
-              <div className="flex flex-col gap-3" data-print-hidden>
+              <div className="flex flex-col gap-5" data-print-hidden>
                 <div
-                  className="flex flex-col gap-2 text-sm text-muted-foreground md:flex-row md:items-center md:justify-between"
+                  className="flex flex-wrap items-end justify-between gap-x-6 gap-y-3"
                   data-search-summary
                 >
-                  <div className="flex min-w-0 flex-wrap items-center gap-x-2 gap-y-1">
-                    <span className="font-medium text-foreground">검색 중</span>
-                    {query.trim() && <span>검색어: {query.trim()}</span>}
-                    {activeUseCase && <span>상황: {activeUseCase.label}</span>}
-                    <span>{filteredTerms.length}개 결과</span>
+                  <div className="min-w-0">
+                    <p className="font-mono text-xs font-semibold uppercase tracking-[0.22em] text-muted-foreground">Search</p>
+                    <h2 className="mt-2 break-keep text-2xl font-semibold tracking-normal text-foreground">
+                      {query.trim() ? `“${query.trim()}”` : activeUseCase?.label}
+                    </h2>
+                    <p className="mt-1.5 text-sm text-muted-foreground">
+                      {query.trim() && activeUseCase ? `상황: ${activeUseCase.label} · ` : ""}
+                      {filteredTerms.length}개 결과
+                      {filteredTerms.length > 0 && ` — 정확 일치 ${exactSearchResults.length} · 연관 언급 ${relatedSearchResults.length}`}
+                    </p>
                   </div>
                   <div className="flex flex-wrap gap-3">
                     {query.trim() && (
@@ -781,8 +795,48 @@ function App() {
                     termCount={getFilterCount(filterCounts, activeDocsSection.filter)}
                   />
                 )}
-                {/* docs 허브 랜딩은 그룹 카드가 곧 내비 — 전체 용어 덤프를 깔지 않는다 (O6) */}
-                {!isDocsLanding && (
+                {/* 검색 모드 = 정답/연관 2티어 섹션 (SQ3) · 탐색 모드 = 기존 플랫 목록 */}
+                {hasActiveSearch ? (
+                  <>
+                    {exactSearchResults.length > 0 && (
+                      <section className="flex flex-col gap-3" data-print-grid data-search-tier="exact">
+                        <h3 className="text-sm font-semibold tracking-normal text-foreground">
+                          정확 일치 <span className="ml-1 font-normal text-muted-foreground">{exactSearchResults.length}</span>
+                        </h3>
+                        <div className="divide-y border-y">
+                          {exactSearchResults.map((result) => (
+                            <TermResultRow
+                              key={result.term.id}
+                              matchReasons={query ? result.reasons : undefined}
+                              selected={selectedTerm?.id === result.term.id}
+                              term={result.term}
+                              onSelect={selectTerm}
+                            />
+                          ))}
+                        </div>
+                      </section>
+                    )}
+                    {relatedSearchResults.length > 0 && (
+                      <section className="flex flex-col gap-3" data-print-grid data-search-tier="related">
+                        <h3 className="text-sm font-semibold tracking-normal text-foreground">
+                          연관 언급 <span className="ml-1 font-normal text-muted-foreground">{relatedSearchResults.length}</span>
+                        </h3>
+                        <div className="divide-y border-y">
+                          {relatedSearchResults.map((result) => (
+                            <TermResultRow
+                              key={result.term.id}
+                              matchReasons={query ? result.reasons : undefined}
+                              selected={selectedTerm?.id === result.term.id}
+                              term={result.term}
+                              onSelect={selectTerm}
+                            />
+                          ))}
+                        </div>
+                      </section>
+                    )}
+                  </>
+                ) : !isDocsLanding && (
+                /* docs 허브 랜딩은 그룹 카드가 곧 내비 — 전체 용어 덤프를 깔지 않는다 (O6) */
                 <section className="flex flex-col gap-4" data-print-grid>
                   {isPlusLanding && (
                     <div>
@@ -1123,7 +1177,8 @@ function applyUseCaseResults(results: SearchResult[], useCase: typeof useCases[n
   const pinnedResults = useCase.termIds.flatMap((id, index) => {
     const existing = resultsById.get(id)
     if (existing) {
-      return [{ ...existing, score: existing.score + 1000 - index }]
+      // use-case pin = 큐레이션 정답 — 정답 티어로 승격 (SQ3)
+      return [{ ...existing, score: existing.score + 1000 - index, exact: true }]
     }
 
     const term = terms.find((item) => item.id === id)
@@ -1136,6 +1191,7 @@ function applyUseCaseResults(results: SearchResult[], useCase: typeof useCases[n
       score: 1000 - index,
       reasons: ["prompt_phrase"] as SearchResult["reasons"],
       matchedText: [useCase.label],
+      exact: true,
     }]
   })
   const remainingResults = results.filter((result) => !useCaseIds.has(result.term.id))

@@ -68,10 +68,12 @@ Goal: 스튜디오 이월 갭 3건 마감 — 데이터 주도 주입 자동화�
 - Completed at: 2026-07-28
 - Evidence: evidence/site-quality/sq2-structural-defects.md
 - Summary: 구조 결함 3건 수리 — Get Started 시작 가이드·Docs 소개+허브·사이드바 Components 그룹, 사람 관측 통과
-<!-- harness:milestone id="SQ3" status="pending" priority="P1" -->
+<!-- harness:milestone id="SQ3" status="active" priority="P1" -->
 ### SQ3 — O9 검색 결과 UI 재디자인
 - DoD: 검색 결과 화면이 askewly-design 경유로 재디자인되고(정확 일치 vs 연관 언급 계층화 포함), 디자인 verify PASS + 사람 관측 1회 통과.
-- Gap: UE1 관측 2회차 "너무 구려" — 취향 판단 포함, plan 단계 사용자 확인
+- Gap: UE1 관측 2회차 "너무 구려" — 방향 확정(2026-07-28): 계층 섹션형·사이드바 현상 유지
+- Scale: steps=3 (계층화 정보구조·행 비주얼 재디자인·통합+관측); surfaces: search.ts·App.tsx 검색 렌더·term-result-row; capability: 검색이 정답과 연관을 구분해 보여준다
+- Plan: plans/2026-07-28-sq3-search-redesign.md
 - Status: [ ]
 
 <!-- harness:milestone id="SQ4" status="pending" priority="P2" -->

@@ -25,6 +25,12 @@ export type SearchResult = {
   score: number
   reasons: SearchMatchReason[]
   matchedText: string[]
+  /**
+   * 정답 티어(SQ3) — 이름·별칭 일치 또는 큐레이션 정답(discovery boost·use-case pin).
+   * 표현 계층일 뿐 순위(score 정렬)에는 관여하지 않는다. boost 매치는 reasons 의
+   * "prompt_phrase" 와 구별이 안 되므로 이 채널이 유일한 판별 수단이다.
+   */
+  exact: boolean
 }
 
 export const categoryLabels: Record<TermCategory, string> = {
@@ -98,7 +104,7 @@ export function searchTerms(
   return terms.flatMap((term, index) => {
     const inFilter = matchesFilter(term, filter)
     if (!normalizedQuery) {
-      return inFilter ? [{ term, score: 0, reasons: [], matchedText: [], sourceIndex: index, inFilter }] : []
+      return inFilter ? [{ term, score: 0, reasons: [], matchedText: [], exact: false, sourceIndex: index, inFilter }] : []
     }
 
     const result = scoreTerm(term, normalizedQuery)
@@ -262,6 +268,7 @@ function scoreTerm(term: VocabularyTerm, query: string): SearchResult {
   const reasons = new Set<SearchMatchReason>()
   const matchedText = new Set<string>()
   let score = 0
+  let boostMatched = false
 
   for (const field of getSearchFields(term)) {
     const fieldScore = scoreField(field.text, query, field.exactWeight, field.prefixWeight, field.includesWeight)
@@ -283,6 +290,7 @@ function scoreTerm(term: VocabularyTerm, query: string): SearchResult {
     score += match.weight
     reasons.add("prompt_phrase")
     matchedText.add(boost.query)
+    boostMatched = true
   }
 
   return {
@@ -290,6 +298,7 @@ function scoreTerm(term: VocabularyTerm, query: string): SearchResult {
     score,
     reasons: Array.from(reasons),
     matchedText: Array.from(matchedText).slice(0, 3),
+    exact: reasons.has("name") || reasons.has("alias") || boostMatched,
   }
 }
 
