@@ -17,7 +17,11 @@
 - Playwright 스모크 4라우트(/ · /get-started · /docs · /terms/accordion) 렌더 PASS · 콘솔 에러 0.
 - 스크린샷: 세션 scratchpad `sq2_step1_get_started.png`·`sq2_step2_docs_hub.png`·`sq2_step3_appui_sidebar.png`.
 
-## 3. 남은 게이트
+## 3. 실배포 확인 (push 55a7a93 후)
 
-- 실배포 스팟 체크(/get-started 200 — 신규 최상위 경로 SPA 폴백 함수 포함): push 후 기록.
-- **사람 관측 1회 (DoD)**: push 후 사용자 왕복 대기.
+- `ui.askewly.com` 신규 번들(index-jQLID8f8.js) 반영 (폴링 8회차).
+- 라이브 실브라우저: `/get-started` 렌더(문서 제목 "Get Started — Askewly Design"·본문 확인, 직접 URL 진입 = SPA 폴백 함수 동작) · `/docs` 허브 렌더 · 홈 히어로 "Get Started" CTA 표시 · `/patterns/application-ui` 사이드바 Components 그룹 표시 · 콘솔 에러 0. HTTP: /get-started·/docs·/terms/accordion 전부 200.
+
+## 4. 남은 게이트
+
+- **사람 관측 1회 (DoD)**: 사용자 왕복 대기 — 관측 결과는 이 파일에 추기.
