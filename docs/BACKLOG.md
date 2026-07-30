@@ -595,3 +595,9 @@ plan doc: `archive/plans/2026-07-21-eu*.md` · 증거: `evidence/editor-legibili
   - Completed: 2026-07-31
   - Result: 정답/연관 2티어 계층화 + hero/compact 행 재디자인(askewly-design 경유) — 순위·개수 보존, 사람 관측 통과
   - Evidence: evidence/site-quality/sq3-search-redesign.md
+
+### 2026-07
+- DM2 - DM2 — 사이트 셸 토큰 치환 + 하드코딩 색 스캐너
+  - Completed: 2026-07-31
+  - Result: 셸 998건 토큰 치환·마커 정리 + lint:colors --max 0 게이트 — 라이트 무손실 스크린샷 대조, 다크 차단 원인 제거
+  - Evidence: evidence/dark-mode/dm2-shell-tokenization.md

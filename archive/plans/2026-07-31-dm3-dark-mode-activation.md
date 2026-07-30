@@ -49,7 +49,7 @@ Status: approved (사용자 승인 2026-07-31 "ㄱㄱ" — 연쇄 DM1→DM2→DM
   - Failure probe: ① Pro 잠금 오버레이·코드 블록 등 어두운 요소가 다크에서 배경과 뭉개지는 지점 ② 데모 카드 경계 — 전역 다크 + 데모 라이트 오버라이드 혼합 화면이 성립하는지.
   - Commit: changeset `dm3-dark-mode-activation` (README 절: step-2).
 
-- [ ] **step-3 — 통합 검증 + 실배포 + 사람 관측 (DM3·goal 마감)**
+- [x] **step-3 — 통합 검증 + 실배포 + 사람 관측 (DM3·goal 마감)**
   - Artifact: 통합 검증 + `evidence/dark-mode/dm3-activation.md` + **사용자 사전 보고·승인 후** push·실배포 스팟 체크 + 사람 관측 요청(다크/라이트/시스템 전환·모바일 포함).
   - Files: write evidence/dark-mode/dm3-activation.md. 실행: build·lint·스캐너·Playwright(라이트/다크 × 5화면)·push(승인 후)·실배포 확인.
   - Risk: 기계적 (검증·기록·배포 확인 — push 는 승인 게이트 뒤)
