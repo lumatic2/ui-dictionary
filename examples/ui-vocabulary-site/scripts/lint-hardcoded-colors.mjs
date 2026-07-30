@@ -26,6 +26,9 @@ const ALLOWLIST = [
   // 용어 미니목 데모 렌더러 — 미니목 안 색(브랜드 로고·글래스·Light/Dark 병치)이 콘텐츠다.
   // 프레임/라벨은 semantic 토큰 사용 중 (2026-07-31 실측: 셸 프레임 위반 0)
   "components/term-visual.tsx",
+  // 랜딩 쇼케이스/Atlas 데모 캔버스 지배 파일 — 셸(푸터·히어로 카피)은 이미 토큰화 완료.
+  // 줄 단위 마커 208개가 JSX 자식 위치에서 텍스트로 렌더되는 사고(2026-07-31 사람 관측 적발)로 파일 단위 예외로 전환.
+  "components/home-page.tsx",
 ];
 
 const PALETTE =

@@ -183,29 +183,29 @@ export function HomePage({ onNavigate, onSearch, filter, terms }: HomePageProps)
 
 function DarkInversionSection() {
   return (
-    <section className="relative isolate overflow-hidden bg-foreground px-4 pb-44 pt-64 text-background md:px-8 md:pt-72 lg:px-10">
+    <section className="relative isolate overflow-hidden bg-slate-950 px-4 pb-44 pt-64 text-white md:px-8 md:pt-72 lg:px-10">
       <div className="inverted-section-fade" />
       <InvertedField />
       <div className="relative z-30 mx-auto max-w-[1180px]">
         <div className="grid gap-12 lg:grid-cols-[0.68fr_1.32fr] lg:items-center">
           <div className="max-w-xl">
-            <p className="font-mono text-xs font-semibold uppercase tracking-[0.24em] text-background/45">Showcase 01 / SaaS</p>
-            <h2 className="mt-5 text-4xl font-semibold tracking-normal text-background md:text-6xl">
+            <p className="font-mono text-xs font-semibold uppercase tracking-[0.24em] text-white/45">Showcase 01 / SaaS</p>
+            <h2 className="mt-5 text-4xl font-semibold tracking-normal text-white md:text-6xl">
               Product operations dashboard
             </h2>
-            <p className="mt-6 text-base leading-7 text-background/60 md:text-lg">
+            <p className="mt-6 text-base leading-7 text-white/60 md:text-lg">
               A dense SaaS surface built from the current Askewly assets: sidebar navigation, page headings,
               stats, review tables, command actions, and implementation evidence.
             </p>
-            <div className="mt-9 grid gap-px overflow-hidden border border-background/10 bg-background/10 sm:grid-cols-3">
+            <div className="mt-9 grid gap-px overflow-hidden border border-white/10 bg-white/10 sm:grid-cols-3">
               {[
                 ["Assets", "bento, tables, stats"],
                 ["States", "hover, selected, review"],
                 ["Output", "site + agent system"],
               ].map(([label, value]) => (
-                <div key={label} className="bg-foreground/70 p-4">
-                  <p className="font-mono text-[11px] uppercase tracking-[0.18em] text-background/34">{label}</p>
-                  <p className="mt-2 text-sm leading-5 text-background/68">{value}</p>
+                <div key={label} className="bg-slate-950/70 p-4">
+                  <p className="font-mono text-[11px] uppercase tracking-[0.18em] text-white/34">{label}</p>
+                  <p className="mt-2 text-sm leading-5 text-white/68">{value}</p>
                 </div>
               ))}
             </div>
@@ -245,9 +245,7 @@ const dashboardDeploys: Array<{ service: string; version: string; status: Dashbo
 const dashboardDeployVolume = [4, 6, 3, 8, 5, 9, 7]
 
 const dashboardStatusDot: Record<DashboardServiceStatus, string> = {
-  // hardcoded-color-ok
   operational: "bg-emerald-400",
-  // hardcoded-color-ok
   degraded: "bg-amber-400",
 }
 
@@ -260,50 +258,35 @@ function DashboardShowcase() {
   const maxVolume = Math.max(...dashboardDeployVolume)
 
   return (
-    // hardcoded-color-ok
     <div className="min-h-[26rem] rounded-[1.75rem] border border-white/18 bg-white/[0.03] p-6 shadow-[0_24px_120px_color-mix(in_srgb,black_35%,transparent)]">
       <div className="flex items-center justify-between">
-        {/* hardcoded-color-ok */}
         <p className="font-mono text-[10px] font-semibold uppercase tracking-[0.2em] text-white/36">Live status</p>
-        {/* hardcoded-color-ok */}
         <p className="font-mono text-[10px] text-white/36">Updated 2m ago</p>
       </div>
 
-      {/* hardcoded-color-ok */}
       <div className="mt-4 grid grid-cols-2 gap-px overflow-hidden rounded-xl border border-white/10 bg-white/10 sm:grid-cols-4">
         {dashboardStats.map((stat) => (
-          // hardcoded-color-ok
           <div key={stat.label} className="bg-black/70 p-3">
-            {/* hardcoded-color-ok */}
             <p className="font-mono text-[9px] uppercase tracking-[0.14em] text-white/36">{stat.label}</p>
-            {/* hardcoded-color-ok */}
             <p className="mt-1.5 text-xl font-semibold text-white">{stat.value}</p>
-            {/* hardcoded-color-ok */}
             <p className="mt-1 text-[10px] text-white/54">{stat.trend}</p>
           </div>
         ))}
       </div>
 
       <div className="mt-4 grid gap-4 lg:grid-cols-[1.1fr_0.9fr]">
-        {/* hardcoded-color-ok */}
         <div className="rounded-xl border border-white/10 bg-black/70 p-4">
-          {/* hardcoded-color-ok */}
           <p className="font-mono text-[10px] uppercase tracking-[0.14em] text-white/36">Recent deploys</p>
-          {/* hardcoded-color-ok */}
           <div className="mt-3 flex flex-col divide-y divide-white/10">
             {dashboardDeploys.map((deploy) => (
               <div key={`${deploy.service}-${deploy.version}`} className="flex items-center justify-between gap-3 py-2 text-xs">
                 <div className="min-w-0">
-                  {/* hardcoded-color-ok */}
                   <p className="truncate font-medium text-white">{deploy.service}</p>
-                  {/* hardcoded-color-ok */}
                   <p className="truncate text-white/54">{deploy.version}</p>
                 </div>
-                {/* hardcoded-color-ok */}
                 <span className={cn("shrink-0 font-medium", deploy.status === "error" ? "text-rose-400" : "text-emerald-400")}>
                   {deploy.status === "error" ? "Failed" : "Success"}
                 </span>
-                {/* hardcoded-color-ok */}
                 <span className="shrink-0 text-white/36">{deploy.time}</span>
               </div>
             ))}
@@ -311,9 +294,7 @@ function DashboardShowcase() {
         </div>
 
         <div className="flex flex-col gap-4">
-          {/* hardcoded-color-ok */}
           <div className="rounded-xl border border-white/10 bg-black/70 p-4">
-            {/* hardcoded-color-ok */}
             <p className="font-mono text-[10px] uppercase tracking-[0.14em] text-white/36">Deploy volume (7d)</p>
             <div className="mt-4 flex h-16 items-end gap-1.5">
               {dashboardDeployVolume.map((count, index) => (
@@ -326,19 +307,15 @@ function DashboardShowcase() {
             </div>
           </div>
 
-          {/* hardcoded-color-ok */}
           <div className="rounded-xl border border-white/10 bg-black/70 p-4">
-            {/* hardcoded-color-ok */}
             <p className="font-mono text-[10px] uppercase tracking-[0.14em] text-white/36">Service status</p>
             <div className="mt-3 flex flex-col gap-2">
               {dashboardServices.map((service) => (
                 <div key={service.name} className="flex items-center justify-between text-xs">
-                  {/* hardcoded-color-ok */}
                   <span className="flex items-center gap-2 text-white/68">
                     <span className={cn("size-1.5 rounded-full", dashboardStatusDot[service.status])} />
                     {service.name}
                   </span>
-                  {/* hardcoded-color-ok */}
                   <span className="text-white/54">{dashboardStatusLabel[service.status]}</span>
                 </div>
               ))}
@@ -414,17 +391,17 @@ function Footer({ onNavigate }: { onNavigate: HomePageProps["onNavigate"] }) {
     .filter((column) => column.links.length > 0)
 
   return (
-    <footer className="bg-foreground px-4 pb-12 pt-0 text-background md:px-8 lg:px-10">
+    <footer className="bg-slate-950 px-4 pb-12 pt-0 text-white md:px-8 lg:px-10">
       <div className="mx-auto max-w-[1180px] pt-12">
-        <div className="grid gap-px overflow-hidden border border-background/10 bg-background/10 md:grid-cols-4">
+        <div className="grid gap-px overflow-hidden border border-white/10 bg-white/10 md:grid-cols-4">
           {visibleColumns.map((column) => (
-            <div key={column.title} className="bg-foreground p-6 md:p-7">
-              <h2 className="text-sm font-semibold text-background">{column.title}</h2>
+            <div key={column.title} className="bg-slate-950 p-6 md:p-7">
+              <h2 className="text-sm font-semibold text-white">{column.title}</h2>
               <div className="mt-7 flex flex-col items-start gap-4">
                 {column.links.map((link) => (
                   <button
                     key={`${column.title}-${link.label}`}
-                    className="text-left text-sm leading-5 text-background/62 transition hover:text-background focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-background"
+                    className="text-left text-sm leading-5 text-white/62 transition hover:text-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white"
                     type="button"
                     onClick={() => onNavigate(link.destination)}
                   >
@@ -435,7 +412,7 @@ function Footer({ onNavigate }: { onNavigate: HomePageProps["onNavigate"] }) {
             </div>
           ))}
         </div>
-        <div className="flex flex-col gap-4 border-x border-b border-background/10 px-6 py-7 text-sm text-background/56 md:flex-row md:items-center md:justify-between md:px-7">
+        <div className="flex flex-col gap-4 border-x border-b border-white/10 px-6 py-7 text-sm text-white/56 md:flex-row md:items-center md:justify-between md:px-7">
           <p>Copyright © 2026 Askewly Design.</p>
           <p>A visual library and agent-ready system for product interfaces.</p>
         </div>
@@ -709,27 +686,19 @@ export function AtlasDemo({ id }: { id: AtlasItemId }) {
     const alive = agentScenario === "interactive" && agentPhase === "after" && !prefersReducedMotion
 
     return (
-      // hardcoded-color-ok
       <div className="grid min-h-[21.8rem] overflow-hidden rounded-md border border-slate-200 bg-white lg:h-[23rem] lg:grid-cols-[minmax(0,1fr)_17rem]">
-        {/* hardcoded-color-ok */}
         <div className="relative flex min-h-[17rem] flex-col bg-slate-50 p-4">
-          {/* hardcoded-color-ok */}
           <div className="flex items-center justify-between border-b border-slate-200 pb-3">
             <div className="flex gap-1.5">
-              {/* hardcoded-color-ok */}
               <span className="size-2 rounded-full bg-slate-300" />
-              {/* hardcoded-color-ok */}
               <span className="size-2 rounded-full bg-slate-300" />
-              {/* hardcoded-color-ok */}
               <span className="size-2 rounded-full bg-slate-300" />
             </div>
-            {/* hardcoded-color-ok */}
             <p className="font-mono text-[10px] uppercase tracking-[0.16em] text-slate-400">Design canvas</p>
           </div>
 
           <div
             ref={agentCanvasRef}
-            // hardcoded-color-ok
             className="relative mt-4 min-h-[16rem] flex-1 overflow-hidden rounded-md border border-slate-200 bg-white bg-[linear-gradient(90deg,color-mix(in_srgb,var(--color-slate-900)_3%,transparent)_1px,transparent_1px),linear-gradient(color-mix(in_srgb,var(--color-slate-900)_3%,transparent)_1px,transparent_1px)] bg-[size:28px_28px] [perspective:700px]"
             onPointerMove={onCanvasPointerMove}
             onPointerDown={(event) => {
@@ -768,7 +737,6 @@ export function AtlasDemo({ id }: { id: AtlasItemId }) {
                   {(["nw", "ne", "sw", "se"] as const).map((corner) => (
                     <span
                       key={corner}
-                      // hardcoded-color-ok
                       className={cn("absolute z-30 size-2 cursor-nwse-resize touch-none border bg-white", corner === "nw" && "left-[0.75px] top-[0.75px] -translate-x-1/2 -translate-y-1/2", corner === "ne" && "right-[0.75px] top-[0.75px] translate-x-1/2 -translate-y-1/2 cursor-nesw-resize", corner === "sw" && "bottom-[0.75px] left-[0.75px] -translate-x-1/2 translate-y-1/2 cursor-nesw-resize", corner === "se" && "bottom-[0.75px] right-[0.75px] translate-x-1/2 translate-y-1/2")}
                       style={{ borderColor: "var(--askewly-violet)" }}
                       data-resize-edge={corner}
@@ -784,9 +752,7 @@ export function AtlasDemo({ id }: { id: AtlasItemId }) {
                   className={cn(
                     "flex h-full min-h-0 flex-col overflow-hidden rounded-lg text-left transition-all duration-500",
                     agentScenario === "humanize" && agentPhase === "before"
-                      // hardcoded-color-ok
                       ? "gap-2 border border-fuchsia-400/30 bg-[linear-gradient(160deg,var(--color-violet-950),var(--color-violet-900)_45%,var(--color-pink-900))] p-3"
-                      // hardcoded-color-ok
                       : cn("gap-2.5 border border-slate-200 bg-white p-3 shadow-sm", alive && "hover:shadow-[0_16px_40px_color-mix(in_srgb,var(--askewly-violet)_18%,transparent)]"),
                   )}
                   style={alive ? { transform: `rotateX(${agentTilt.x}deg) rotateY(${agentTilt.y}deg)`, transformStyle: "preserve-3d" } : undefined}
@@ -794,24 +760,17 @@ export function AtlasDemo({ id }: { id: AtlasItemId }) {
                   {agentScenario === "humanize" && agentPhase === "before" ? (
                     <>
                       <div className="flex items-start gap-1.5">
-                        {/* hardcoded-color-ok */}
                         <img src="/assets/navbars/avatar-03.png" alt="" className="h-11 w-8 shrink-0 rounded-none object-cover ring-1 ring-fuchsia-400/70" />
                         <div className="min-w-0">
-                          {/* hardcoded-color-ok */}
                           <p className="truncate font-serif text-[17px] font-black italic leading-none text-cyan-300 [text-shadow:0_0_10px_color-mix(in_srgb,var(--color-cyan-400)_90%,transparent)]">Maya Okonkwo ✨</p>
-                          {/* hardcoded-color-ok */}
                           <p className="truncate text-[7px] uppercase tracking-[0.2em] text-fuchsia-200">🚀 Design Lead &amp; AI Visionary 🚀</p>
                         </div>
                       </div>
-                      {/* hardcoded-color-ok */}
                       <p className="text-[12px] font-black leading-3 text-purple-100">“Our agents <span className="text-[8px] font-normal">finally ship UI</span> that looks INTENTIONAL 🔥🚀 not generated!! 💯✨”</p>
                       <div className="flex items-center gap-1">
-                        {/* hardcoded-color-ok */}
                         <span className="text-[15px] leading-none text-amber-300 [text-shadow:0_0_8px_color-mix(in_srgb,var(--color-amber-300)_90%,transparent)]">★★★★★</span>
-                        {/* hardcoded-color-ok */}
                         <span className="text-[7px] font-black uppercase text-fuchsia-300">100% Amazing!!!</span>
                       </div>
-                      {/* hardcoded-color-ok */}
                       <button type="button" className="mt-auto -rotate-2 self-center rounded-none bg-[linear-gradient(90deg,var(--color-cyan-400),var(--color-purple-500))] px-2 py-1.5 text-[15px] font-black uppercase leading-none tracking-tight text-white shadow-[0_0_16px_color-mix(in_srgb,var(--color-purple-500)_75%,transparent)]">Read More 👉</button>
                     </>
                   ) : (
@@ -822,17 +781,13 @@ export function AtlasDemo({ id }: { id: AtlasItemId }) {
                           <div className={cn("flex items-center gap-2 transition-all duration-500", broken && "translate-x-3 rotate-[-4deg]")}>
                             <img src="/assets/navbars/avatar-03.png" alt="" className="size-8 shrink-0 rounded-full object-cover" />
                             <div className={cn("min-w-0 transition-all duration-500", broken && "translate-y-1")}>
-                              {/* hardcoded-color-ok */}
                               <p className={cn("truncate font-semibold text-slate-950 transition-all duration-500", broken ? "text-[13px] italic" : "text-[12px]")}>Maya Okonkwo</p>
-                              {/* hardcoded-color-ok */}
                               <p className="truncate text-[9px] text-slate-500">Design Lead, Northwind</p>
                             </div>
                           </div>
-                          {/* hardcoded-color-ok */}
                           <p className={cn("text-[11px] leading-4 text-slate-700 transition-all duration-500", broken && "translate-x-6 rotate-1 text-[13px] leading-3 text-slate-400")}>
                             “Our agents finally ship UI that looks intentional — not generated.”
                           </p>
-                          {/* hardcoded-color-ok */}
                           <div className={cn("mt-auto flex gap-0.5 text-[11px] leading-none text-amber-400 transition-all duration-500", broken && "-translate-x-2 translate-y-1 rotate-2")} aria-hidden="true">
                             {"★★★★★"}
                           </div>
@@ -846,11 +801,8 @@ export function AtlasDemo({ id }: { id: AtlasItemId }) {
           </div>
         </div>
 
-        {/* hardcoded-color-ok */}
         <div className="flex min-h-0 flex-col border-t border-slate-200 bg-white lg:border-l lg:border-t-0">
-          {/* hardcoded-color-ok */}
           <div className="border-b border-slate-200 px-3 py-2.5">
-            {/* hardcoded-color-ok */}
             <p className="text-[11px] font-semibold text-slate-900">Canvas agent</p>
           </div>
 
@@ -858,38 +810,30 @@ export function AtlasDemo({ id }: { id: AtlasItemId }) {
             {agentChat.map((message, index) => (
               message.role === "you" ? (
                 <div key={index} className="flex justify-end">
-                  {/* hardcoded-color-ok */}
                   <span className="max-w-[85%] rounded-lg rounded-br-sm bg-slate-100 px-2.5 py-1.5 text-[11px] leading-4 text-slate-700">
                     {message.text}
                   </span>
                 </div>
               ) : (
-                // hardcoded-color-ok
                 <p key={index} className="max-w-[92%] text-[11px] leading-4 text-slate-500">
                   {message.text}
                 </p>
               )
             ))}
             {agentTyping && (
-              // hardcoded-color-ok
               <span className="inline-flex w-fit gap-0.5 rounded-full bg-slate-100 px-2 py-1.5" aria-label="Agent is typing">
-                {/* hardcoded-color-ok */}
                 <span className="size-1 animate-bounce rounded-full bg-slate-400 [animation-delay:-0.2s]" />
-                {/* hardcoded-color-ok */}
                 <span className="size-1 animate-bounce rounded-full bg-slate-400 [animation-delay:-0.1s]" />
-                {/* hardcoded-color-ok */}
                 <span className="size-1 animate-bounce rounded-full bg-slate-400" />
               </span>
             )}
           </div>
 
-          {/* hardcoded-color-ok */}
           <div className="border-t border-slate-200 p-2">
             <div className="flex gap-1 pb-2">
               {agentScenarios.map((scenario) => (
                 <button
                   key={scenario.key}
-                  // hardcoded-color-ok
                   className="flex-1 whitespace-nowrap rounded bg-slate-100 px-1 py-1 text-center text-[9px] font-medium text-slate-600 transition hover:bg-askewly-lavender/25 hover:text-askewly-violet"
                   type="button"
                   onClick={() => playScenario(scenario)}
@@ -898,10 +842,8 @@ export function AtlasDemo({ id }: { id: AtlasItemId }) {
                 </button>
               ))}
             </div>
-            {/* hardcoded-color-ok */}
             <div className="flex items-center gap-1.5 rounded-lg border border-slate-200 bg-slate-50 pl-2.5 pr-1 focus-within:border-askewly-orchid">
               <input
-                // hardcoded-color-ok
                 className="min-w-0 flex-1 bg-transparent py-1.5 text-[11px] text-slate-700 outline-none placeholder:text-slate-400"
                 placeholder="Message the agent…"
                 value={agentInput}
@@ -913,7 +855,6 @@ export function AtlasDemo({ id }: { id: AtlasItemId }) {
                   }
                 }}
               />
-              {/* hardcoded-color-ok */}
               <button className="grid size-6 shrink-0 place-items-center rounded-md bg-askewly-violet text-white transition hover:bg-[color-mix(in_srgb,var(--askewly-violet)_85%,black)] disabled:opacity-30" type="button" aria-label="Send message" disabled={!agentInput.trim()} onClick={sendAgentMessage}>
                 <ArrowUp aria-hidden="true" className="size-3.5" />
               </button>
@@ -927,7 +868,6 @@ export function AtlasDemo({ id }: { id: AtlasItemId }) {
   if (id === "pointer") {
     return (
       <div
-        // hardcoded-color-ok
         className="relative h-[22.5rem] overflow-hidden rounded-md border border-slate-200 bg-white text-slate-950"
         onPointerMove={(event) => {
           const rect = event.currentTarget.getBoundingClientRect()
@@ -959,7 +899,6 @@ export function AtlasDemo({ id }: { id: AtlasItemId }) {
         {cursorField.map((cell) => (
           <span
             key={cell.id}
-            // hardcoded-color-ok
             className="absolute font-mono text-[13px] font-medium leading-none text-black"
             style={{
               left: `${cell.x}%`,
@@ -1016,7 +955,6 @@ export function AtlasDemo({ id }: { id: AtlasItemId }) {
   }
 
   return (
-    // hardcoded-color-ok
     <div className="grid min-h-[22.2rem] place-items-center rounded-md border border-slate-200 bg-white p-4 text-xs text-slate-400">
       Preview coming soon.
     </div>
@@ -1029,18 +967,14 @@ type CoverflowKind = "analytics" | "calendar" | "kanban" | "media" | "chat" | "p
 const coverflowCards: CoverflowKind[] = ["analytics", "calendar", "kanban", "media", "chat", "pricing"]
 
 function CoverflowCard({ kind }: { kind: CoverflowKind }) {
-  // hardcoded-color-ok
   const frame = "h-[132px] w-40 overflow-hidden rounded-xl border border-slate-200 bg-white shadow-[0_20px_46px_color-mix(in_srgb,black_50%,transparent)]"
   if (kind === "analytics") {
     return (
       <div className={frame}>
         <div className="flex items-center justify-between px-3 pt-3">
-          {/* hardcoded-color-ok */}
           <p className="text-[10px] font-semibold text-slate-900">Revenue</p>
-          {/* hardcoded-color-ok */}
           <span className="text-[9px] font-medium text-emerald-500">+18%</span>
         </div>
-        {/* hardcoded-color-ok */}
         <p className="px-3 text-lg font-semibold leading-tight text-slate-900">$48.2k</p>
         <div className="mt-1 flex h-[52px] items-end gap-1 px-3 pb-3">
           {[0.35, 0.6, 0.45, 0.82, 0.55, 0.95, 0.7].map((h, i) => (
@@ -1054,14 +988,11 @@ function CoverflowCard({ kind }: { kind: CoverflowKind }) {
     return (
       <div className={cn(frame, "p-3")}>
         <div className="flex items-baseline justify-between">
-          {/* hardcoded-color-ok */}
           <p className="text-[11px] font-semibold text-slate-900">March</p>
-          {/* hardcoded-color-ok */}
           <span className="text-[8px] text-slate-400">2026</span>
         </div>
         <div className="mt-2 grid grid-cols-7 gap-1">
           {Array.from({ length: 28 }).map((_, i) => (
-            // hardcoded-color-ok
             <span key={i} className={cn("aspect-square rounded-[3px]", i === 16 ? "bg-askewly-violet" : "bg-slate-100")} />
           ))}
         </div>
@@ -1076,14 +1007,12 @@ function CoverflowCard({ kind }: { kind: CoverflowKind }) {
     ]
     return (
       <div className={cn(frame, "p-3")}>
-        {/* hardcoded-color-ok */}
         <p className="text-[10px] font-semibold text-slate-900">Sprint 12</p>
         <div className="mt-2 grid grid-cols-3 gap-1.5">
           {columns.map((col, ci) => (
             <div key={ci} className="space-y-1.5">
               <span className="block h-1 w-6 rounded-full" style={{ background: col.color }} />
               {Array.from({ length: col.n }).map((_, i) => (
-                // hardcoded-color-ok
                 <span key={i} className="block h-4 rounded bg-slate-100" />
               ))}
             </div>
@@ -1098,17 +1027,13 @@ function CoverflowCard({ kind }: { kind: CoverflowKind }) {
         <div className="flex items-center gap-2.5">
           <div className="size-11 shrink-0 rounded-md" style={{ background: "linear-gradient(135deg, var(--askewly-violet), var(--askewly-mint))" }} />
           <div className="min-w-0">
-            {/* hardcoded-color-ok */}
             <p className="truncate text-[11px] font-semibold text-slate-900">Nightfall</p>
-            {/* hardcoded-color-ok */}
             <p className="truncate text-[9px] text-slate-500">Askewly Radio</p>
           </div>
         </div>
-        {/* hardcoded-color-ok */}
         <div className="mt-3 h-1 rounded-full bg-slate-200">
           <span className="block h-full w-2/3 rounded-full bg-askewly-violet" />
         </div>
-        {/* hardcoded-color-ok */}
         <div className="mt-2.5 flex items-center justify-center gap-3 text-slate-700">
           <SkipBack className="size-3" aria-hidden="true" />
           <Play className="size-4 fill-current" aria-hidden="true" />
@@ -1120,11 +1045,8 @@ function CoverflowCard({ kind }: { kind: CoverflowKind }) {
   if (kind === "chat") {
     return (
       <div className={cn(frame, "flex flex-col gap-1.5 p-3")}>
-        {/* hardcoded-color-ok */}
         <span className="max-w-[82%] self-start rounded-lg rounded-bl-sm bg-slate-100 px-2 py-1 text-[9px] leading-snug text-slate-700">How’s the redesign going?</span>
-        {/* hardcoded-color-ok */}
         <span className="max-w-[82%] self-end rounded-lg rounded-br-sm bg-askewly-violet px-2 py-1 text-[9px] leading-snug text-white">Shipping it today ✦</span>
-        {/* hardcoded-color-ok */}
         <span className="max-w-[60%] self-start rounded-lg rounded-bl-sm bg-slate-100 px-2 py-1 text-[9px] leading-snug text-slate-700">🔥 amazing</span>
       </div>
     )
@@ -1132,17 +1054,13 @@ function CoverflowCard({ kind }: { kind: CoverflowKind }) {
   return (
     <div className={cn(frame, "p-3")}>
       <p className="text-[9px] font-semibold uppercase tracking-wide text-askewly-violet">Pro</p>
-      {/* hardcoded-color-ok */}
       <p className="text-slate-900">
         <span className="text-xl font-semibold">$24</span>
-        {/* hardcoded-color-ok */}
         <span className="text-[9px] text-slate-400">/mo</span>
       </p>
       <div className="mt-2 space-y-1.5">
         {["Unlimited tokens", "Team library", "Priority sync"].map((feature) => (
-          // hardcoded-color-ok
           <div key={feature} className="flex items-center gap-1.5 text-[9px] text-slate-600">
-            {/* hardcoded-color-ok */}
             <Check className="size-3 shrink-0 text-emerald-500" aria-hidden="true" />
             {feature}
           </div>
@@ -1165,7 +1083,6 @@ function CoverflowDemo() {
 
   return (
     <div className="min-h-[17.65rem]">
-      {/* hardcoded-color-ok */}
       <div className="relative h-64 overflow-hidden rounded-md border border-slate-200 bg-slate-950" style={{ perspective: "1000px" }}>
         <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_46%,color-mix(in_srgb,var(--askewly-violet)_34%,transparent),transparent_64%)]" />
         <div className="absolute inset-0" style={{ transformStyle: "preserve-3d" }}>
@@ -1259,7 +1176,6 @@ function MotionShowcaseDemo() {
 
   return (
     <div className="min-h-[17.65rem]">
-      {/* hardcoded-color-ok */}
       <div className="relative h-64 overflow-hidden rounded-md border border-slate-200 bg-slate-950">
         <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_50%,color-mix(in_srgb,var(--askewly-violet)_22%,transparent),transparent_62%)]" />
 
@@ -1269,7 +1185,6 @@ function MotionShowcaseDemo() {
               {/* phase 2: shapes glow off the ball at the exact canvas center, arrange into a sharp
                   spinning ring (the one hold in the burst), then push out to their final spot and fade */}
               <div
-                // hardcoded-color-ok
                 className="motion-showcase-shockwave absolute -left-8 -top-8 size-16 rounded-full border border-white/70"
                 style={{ animation: "motion-showcase-shockwave 9s ease-out infinite" }}
               />
@@ -1311,11 +1226,8 @@ function MotionShowcaseDemo() {
             className="motion-showcase-rings absolute -left-[92px] -top-[92px] size-[184px]"
             style={prefersReducedMotion ? { opacity: 1, transform: "scale(1)" } : { animation: "motion-showcase-rings 9s ease-in-out infinite" }}
           >
-            {/* hardcoded-color-ok */}
             <span className="absolute inset-0 rounded-full border border-white/25" />
-            {/* hardcoded-color-ok */}
             <span className="absolute inset-[26px] rounded-full border border-dashed border-white/20" />
-            {/* hardcoded-color-ok */}
             <span className="absolute inset-[52px] rounded-full border border-white/30" />
             <div
               className="motion-showcase-orbit-spin absolute inset-0"
@@ -1326,7 +1238,6 @@ function MotionShowcaseDemo() {
                 return (
                   <span
                     key={index}
-                    // hardcoded-color-ok
                     className="absolute left-1/2 top-1/2 size-1.5 rounded-full bg-white/80"
                     style={{ transform: `rotate(${angle}deg) translate(52px) rotate(-${angle}deg)` }}
                   />
@@ -1341,11 +1252,8 @@ function MotionShowcaseDemo() {
               weighted momentum instead of a mechanical back-and-forth. */}
           {!prefersReducedMotion && (
             <>
-              {/* hardcoded-color-ok */}
               <div className="motion-showcase-ball-echo absolute -left-3 -top-3 size-6 rounded-full bg-white/45 blur-[4px]" style={{ animation: ballAnimation, animationDelay: "90ms" }} />
-              {/* hardcoded-color-ok */}
               <div className="motion-showcase-ball-echo absolute -left-3 -top-3 size-6 rounded-full bg-white/28 blur-[7px]" style={{ animation: ballAnimation, animationDelay: "190ms" }} />
-              {/* hardcoded-color-ok */}
               <div className="motion-showcase-ball-echo absolute -left-3 -top-3 size-6 rounded-full bg-white/14 blur-[10px]" style={{ animation: ballAnimation, animationDelay: "310ms" }} />
             </>
           )}
@@ -1354,7 +1262,6 @@ function MotionShowcaseDemo() {
             style={{ animation: prefersReducedMotion ? undefined : ballAnimation, transform: prefersReducedMotion ? "translate3d(0, 0, 0)" : undefined }}
           >
             <span
-              // hardcoded-color-ok
               className="motion-showcase-ball-breathe block size-full rounded-full bg-white shadow-[0_0_28px_10px_color-mix(in_srgb,white_50%,transparent)]"
               style={{ animation: prefersReducedMotion ? undefined : "motion-showcase-ball-breathe 2.6s ease-in-out infinite" }}
             />
@@ -1994,7 +1901,6 @@ export function ColorPaletteGeneratorDemo() {
     setExportOpen(false)
   }
 
-  // hardcoded-color-ok
   const actionClass = "grid size-5 place-items-center rounded-full border border-current/25 bg-white/18 text-current backdrop-blur-sm transition hover:scale-105 hover:bg-white/34 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-current"
   // Hue-axis spectrum, generated instead of authored — these are the picker's
   // physical hue stops, not themable design colors.
@@ -2009,7 +1915,6 @@ export function ColorPaletteGeneratorDemo() {
     <div ref={paletteRootRef} className="relative min-h-[18.6rem]" onKeyDown={handleKeyDown}>
       <div className="absolute right-0 top-[-3.35rem] z-30 flex items-center gap-2" data-palette-header-actions="true">
         <button
-          // hardcoded-color-ok
           className="inline-flex h-8 items-center gap-2 rounded-md border border-slate-200 bg-white px-3 text-xs font-semibold text-slate-700 shadow-sm transition hover:border-slate-300 hover:text-slate-950 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-askewly-violet"
           type="button"
           onClick={generatePalette}
@@ -2019,9 +1924,7 @@ export function ColorPaletteGeneratorDemo() {
         </button>
         <button
           className={cn(
-            // hardcoded-color-ok
             "inline-flex size-8 items-center justify-center rounded-md border text-slate-600 transition focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-askewly-violet",
-            // hardcoded-color-ok
             exportOpen ? "border-slate-950 bg-slate-950 text-white" : "border-slate-200 bg-white hover:border-slate-300 hover:text-slate-950",
           )}
           type="button"
@@ -2037,7 +1940,6 @@ export function ColorPaletteGeneratorDemo() {
       </div>
 
       <div
-        // hardcoded-color-ok
         className="group/palette relative overflow-visible rounded-md border border-slate-200 bg-white shadow-sm focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-askewly-violet"
         tabIndex={0}
         aria-label="Interactive color palette generator"
@@ -2045,7 +1947,6 @@ export function ColorPaletteGeneratorDemo() {
         <div ref={paletteBoardRef} className="relative flex h-[21.5rem] overflow-visible" data-palette-board="true">
           <span className="group/add-start absolute inset-y-0 left-2 z-30 flex w-10 items-center justify-start" data-palette-add-start="true">
             <button
-              // hardcoded-color-ok
               className="grid size-9 place-items-center rounded-full border border-slate-200 bg-white text-slate-950 opacity-0 shadow-md transition hover:scale-105 hover:bg-slate-50 focus-visible:opacity-100 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-askewly-violet group-hover/add-start:opacity-100"
               type="button"
               aria-label="Add color to start"
@@ -2056,7 +1957,6 @@ export function ColorPaletteGeneratorDemo() {
           </span>
           <span className="group/add-end absolute inset-y-0 right-2 z-30 flex w-10 items-center justify-end" data-palette-add-end="true">
             <button
-              // hardcoded-color-ok
               className="grid size-9 place-items-center rounded-full border border-slate-200 bg-white text-slate-950 opacity-0 shadow-md transition hover:scale-105 hover:bg-slate-50 focus-visible:opacity-100 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-askewly-violet group-hover/add-end:opacity-100"
               type="button"
               aria-label="Add color to end"
@@ -2112,7 +2012,6 @@ export function ColorPaletteGeneratorDemo() {
                 </span>
                 <span className={cn("min-w-0", isShadeColumn && "opacity-0")}>
                   <button
-                    // hardcoded-color-ok
                     className="block max-w-full truncate rounded px-0.5 text-left font-mono text-[11px] font-semibold uppercase tracking-normal transition hover:bg-white/22 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-current"
                     type="button"
                     data-palette-trigger="true"
@@ -2135,7 +2034,6 @@ export function ColorPaletteGeneratorDemo() {
                       return (
                       <button
                         key={shade.hex}
-                        // hardcoded-color-ok
                         className="group/shade relative transition hover:brightness-105 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-inset focus-visible:ring-white"
                         type="button"
                         aria-label={`Apply shade ${shade.hex}`}
@@ -2147,7 +2045,6 @@ export function ColorPaletteGeneratorDemo() {
                       >
                         {isSelectedShade && (
                           <span
-                            // hardcoded-color-ok
                             className="absolute left-1/2 top-1/2 size-2.5 -translate-x-1/2 -translate-y-1/2 rounded-full ring-2 ring-white/80 shadow"
                             style={{ backgroundColor: shadeTextColor }}
                             data-palette-shade-dot="true"
@@ -2176,36 +2073,29 @@ export function ColorPaletteGeneratorDemo() {
                   data-palette-actions="true"
                 >
                   <button className={cn(actionClass, "group/action relative")} type="button" aria-label={`Remove ${color.hex}`} onClick={(event) => { event.stopPropagation(); blurPaletteAction(event); setInfoColorId(color.id); removeColor(index) }}>
-                    {/* hardcoded-color-ok */}
                     <span className="pointer-events-none absolute bottom-full left-1/2 mb-2 hidden -translate-x-1/2 whitespace-nowrap rounded bg-slate-950 px-2 py-1 text-xs font-semibold text-white shadow-lg group-hover/action:block">Remove color</span>
                     <X aria-hidden="true" className="size-3" />
                   </button>
                   <button className={cn(actionClass, "group/action relative")} type="button" data-palette-trigger="true" aria-label={`Show shades for ${color.hex}`} onClick={(event) => { event.stopPropagation(); blurPaletteAction(event); setInfoColorId(color.id); if (shadeState?.index === index && !shadePanelClosing) { closeShadePanel() } else { openShadePanel(index, color) } setPickerOpenIndex(null) }}>
-                    {/* hardcoded-color-ok */}
                     <span className="pointer-events-none absolute bottom-full left-1/2 mb-2 hidden -translate-x-1/2 whitespace-nowrap rounded bg-slate-950 px-2 py-1 text-xs font-semibold text-white shadow-lg group-hover/action:block">View shades</span>
                     <List aria-hidden="true" className="size-3" />
                   </button>
                   <span className={cn(actionClass, "group/action relative", color.locked ? "cursor-not-allowed opacity-45" : "cursor-grab touch-none active:cursor-grabbing")} aria-label={`Drag ${color.hex}`} role="img" onPointerDown={(event) => startPaletteDrag(event, index)}>
-                    {/* hardcoded-color-ok */}
                     <span className="pointer-events-none absolute bottom-full left-1/2 mb-2 hidden -translate-x-1/2 whitespace-nowrap rounded bg-slate-950 px-2 py-1 text-xs font-semibold text-white shadow-lg group-hover/action:block">Drag color</span>
                     <MoveHorizontal aria-hidden="true" className="size-3" />
                   </span>
                   <button className={cn(actionClass, "group/action relative")} type="button" aria-label={`Copy ${color.hex}`} onClick={(event) => { event.stopPropagation(); blurPaletteAction(event); setInfoColorId(color.id); void writeClipboard(color.hex) }}>
-                    {/* hardcoded-color-ok */}
                     <span className="pointer-events-none absolute bottom-full left-1/2 mb-2 hidden -translate-x-1/2 whitespace-nowrap rounded bg-slate-950 px-2 py-1 text-xs font-semibold text-white shadow-lg group-hover/action:block">Copy HEX</span>
                     <Copy aria-hidden="true" className="size-3" />
                   </button>
                   <button className={cn(actionClass, "group/action relative")} type="button" aria-label={color.locked ? `Unlock ${color.hex}` : `Lock ${color.hex}`} onClick={(event) => { event.stopPropagation(); blurPaletteAction(event); setInfoColorId(color.id); toggleLock(index) }}>
-                    {/* hardcoded-color-ok */}
                     <span className="pointer-events-none absolute bottom-full left-1/2 mb-2 hidden -translate-x-1/2 whitespace-nowrap rounded bg-slate-950 px-2 py-1 text-xs font-semibold text-white shadow-lg group-hover/action:block">{color.locked ? "Unlock color" : "Lock color"}</span>
                     {color.locked ? <Lock aria-hidden="true" className="size-3" /> : <Unlock aria-hidden="true" className="size-3" />}
                   </button>
                 </span>
                 {pickerOpenIndex === index && pickerColor && (
-                  // hardcoded-color-ok
                   <div className={cn("absolute bottom-14 z-40 w-[16rem] rounded-2xl border border-slate-200 bg-white p-3 text-slate-950 shadow-2xl sm:w-[18rem]", index === 0 ? "left-0" : index >= palette.length - 2 ? "right-0" : "left-1/2 -translate-x-1/2")} data-palette-popover="true" onClick={(event) => event.stopPropagation()}>
                     <div
-                      // hardcoded-color-ok
                       className="relative h-28 cursor-crosshair overflow-hidden rounded-lg border border-slate-200"
                       style={{ background: pickerGradient }}
                       role="button"
@@ -2214,7 +2104,6 @@ export function ColorPaletteGeneratorDemo() {
                       onPointerDown={(event) => startPickerDrag(event, index, "field")}
                     >
                       <span
-                        // hardcoded-color-ok
                         className="pointer-events-none absolute size-5 -translate-x-1/2 -translate-y-1/2 rounded-full border-4 border-white bg-white shadow"
                         style={{ left: `${pickerHsv?.s ?? 0}%`, top: `${100 - (pickerHsv?.v ?? 100)}%` }}
                       />
@@ -2228,18 +2117,15 @@ export function ColorPaletteGeneratorDemo() {
                       onPointerDown={(event) => startPickerDrag(event, index, "hue")}
                     >
                       <span
-                        // hardcoded-color-ok
                         className="pointer-events-none absolute top-1/2 size-5 -translate-x-1/2 -translate-y-1/2 rounded-full border-4 border-white shadow"
                         style={{ backgroundColor: pickerColor.hex, left: `${((pickerHsv?.h ?? 0) / 360) * 100}%` }}
                       />
                     </div>
-                    {/* hardcoded-color-ok */}
                     <div className="mt-4 flex items-center gap-2 rounded-lg border border-blue-500 px-2 py-1.5">
                       <button className="min-w-0 flex-1 text-left font-mono text-base font-semibold" type="button" onClick={() => void writeClipboard(pickerColor.hex)}>
                         {pickerColor.hex}
                       </button>
                       <input
-                        // hardcoded-color-ok
                         className="size-8 shrink-0 rounded border border-slate-200 bg-transparent"
                         type="color"
                         aria-label={`Pick replacement for ${pickerColor.hex}`}
@@ -2247,20 +2133,15 @@ export function ColorPaletteGeneratorDemo() {
                         onChange={(event) => replaceColor(index, event.target.value.toUpperCase())}
                       />
                     </div>
-                    {/* hardcoded-color-ok */}
                     <div className="mt-3 flex items-center justify-between border-t border-slate-100 pt-3">
-                      {/* hardcoded-color-ok */}
                       <span className="text-sm font-semibold text-slate-950">Picker</span>
                       <div className="flex gap-3">
-                        {/* hardcoded-color-ok */}
                         <button className="text-slate-950" type="button" aria-label="Pick color from screen" onClick={() => void pickWithEyeDropper(index)}>
                           <Pipette aria-hidden="true" className="size-5" />
                         </button>
-                        {/* hardcoded-color-ok */}
                         <button className="text-slate-950" type="button" aria-label="Copy picked color" onClick={() => void writeClipboard(pickerColor.hex)}>
                           <Copy aria-hidden="true" className="size-5" />
                         </button>
-                        {/* hardcoded-color-ok */}
                         <button className="text-slate-950" type="button" aria-label="Close picker" onClick={() => setPickerOpenIndex(null)}>
                           <X aria-hidden="true" className="size-5" />
                         </button>
@@ -2298,48 +2179,35 @@ export function ColorPaletteGeneratorDemo() {
         )}
 
         {copyToast && (
-          // hardcoded-color-ok
           <div className="absolute left-1/2 top-3 z-40 -translate-x-1/2 rounded-full bg-slate-950 px-3 py-1.5 text-xs font-semibold text-white shadow-lg">
             {copyToast}
           </div>
         )}
 
-        {/* hardcoded-color-ok */}
         <div className="border-t border-slate-200 bg-white p-3" data-palette-bottom-rail="true" data-palette-popover="true">
           <div className="grid min-h-[4.5rem] gap-3 sm:grid-cols-[minmax(0,1fr)_minmax(13rem,16rem)] sm:items-center">
             <div className="min-w-0">
-              {/* hardcoded-color-ok */}
               <p className="truncate text-sm font-semibold text-slate-950">{infoColor?.name ?? "Palette color"}</p>
-              {/* hardcoded-color-ok */}
               <p className="mt-1 font-mono text-[11px] uppercase tracking-normal text-slate-500">
                 {infoColor ? `${infoColor.hex} / RGB ${formatRgb(infoColor.hex)} / HSL ${hexToHsl(infoColor.hex)}` : "Select a color"}
               </p>
-              {/* hardcoded-color-ok */}
               <p className="mt-2 text-[11px] leading-4 text-slate-500">
                 Generated from {paletteSeed.name}: {paletteSeed.note}
               </p>
             </div>
-            {/* hardcoded-color-ok */}
             <div className="grid grid-cols-3 gap-1.5 text-center text-[10px] font-semibold uppercase tracking-normal text-slate-500">
-              {/* hardcoded-color-ok */}
               <span className="rounded border border-slate-200 bg-slate-50 px-2 py-1.5">{paletteQuality.duplicateCount === 0 ? "Unique" : `${paletteQuality.duplicateCount} dupes`}</span>
-              {/* hardcoded-color-ok */}
               <span className="rounded border border-slate-200 bg-slate-50 px-2 py-1.5">{paletteQuality.lowContrastCount === 0 ? "Readable" : "Check text"}</span>
-              {/* hardcoded-color-ok */}
               <span className="rounded border border-slate-200 bg-slate-50 px-2 py-1.5">{paletteQuality.exportStable ? "Export OK" : "Fix hex"}</span>
             </div>
           </div>
         </div>
 
         {exportOpen && (
-          // hardcoded-color-ok
           <div className="absolute inset-0 z-50 grid place-items-center bg-slate-950/72 p-4" data-palette-popover="true">
-            {/* hardcoded-color-ok */}
             <div className="w-full max-w-md rounded-2xl bg-white text-slate-950 shadow-2xl">
-              {/* hardcoded-color-ok */}
               <div className="flex items-center justify-between border-b border-slate-200 px-5 py-4">
                 <p className="text-lg font-semibold">Export Palette</p>
-                {/* hardcoded-color-ok */}
                 <button className="rounded p-1 text-slate-700 transition hover:bg-slate-100" type="button" aria-label="Close export palette" onClick={() => setExportOpen(false)}>
                   <X aria-hidden="true" className="size-5" />
                 </button>
@@ -2352,7 +2220,6 @@ export function ColorPaletteGeneratorDemo() {
                 ].map(([format, label, Icon]) => (
                   <button
                     key={String(format)}
-                    // hardcoded-color-ok
                     className="grid aspect-square place-items-center rounded-xl bg-slate-100 p-3 text-center transition hover:bg-slate-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-askewly-violet"
                     type="button"
                     aria-label={`Export palette as ${String(label)}`}
@@ -2391,7 +2258,6 @@ function ShaderGradientDemo() {
 
   return (
     <div className="min-h-[13.25rem]">
-      {/* hardcoded-color-ok */}
       <div ref={hostRef} className="relative h-[13.25rem] overflow-hidden rounded-md border border-slate-200 bg-slate-950">
         {shaderColors && (
         <MeshGradient
@@ -2472,8 +2338,7 @@ function ImageTreatmentDemo() {
 
   return (
     <div className="grid min-h-[13.25rem] gap-3">
-      {/* hardcoded-color-ok */}
-      <p className="text-base font-semibold text-slate-950">{recipe.name}</p>
+      <p className="text-base font-semibold text-foreground">{recipe.name}</p>
       <div className="relative">
         <svg width="0" height="0" className="absolute">
           <defs>
@@ -2491,7 +2356,6 @@ function ImageTreatmentDemo() {
         </svg>
         <div className="grid grid-cols-3 gap-2">
           {previewPhotos.map((src) => (
-            // hardcoded-color-ok
             <div key={src} className="relative aspect-square overflow-hidden rounded-md border border-slate-200 bg-white">
               <img src={src} alt="" className="absolute inset-0 size-full object-cover" style={{ filter: recipe.filter }} />
               {recipe.overlay && <div className="absolute inset-0" style={{ background: recipe.overlay, mixBlendMode: recipe.overlayBlend }} />}
@@ -2507,7 +2371,6 @@ function ImageTreatmentDemo() {
             style={{ animation: `filters-wipe-sweep ${IMAGE_TREATMENT_CYCLE_MS}ms linear 1` }}
           >
             {previewPhotos.map((src) => (
-              // hardcoded-color-ok
               <div key={src} className="relative aspect-square overflow-hidden rounded-md border border-slate-200 bg-white">
                 <img src={src} alt="" className="absolute inset-0 size-full object-cover" />
               </div>
@@ -2575,9 +2438,7 @@ function CommandCenterDemo() {
 
   return (
     <div className="grid min-h-[22rem] grid-rows-[auto_1fr_auto] gap-3">
-      {/* hardcoded-color-ok */}
       <div className="flex items-center gap-2 rounded-md border border-slate-200 bg-white px-3 py-2 shadow-sm">
-        {/* hardcoded-color-ok */}
         <Search aria-hidden="true" className="size-4 shrink-0 text-slate-400" />
         <input
           ref={inputRef}
@@ -2589,19 +2450,15 @@ function CommandCenterDemo() {
           aria-label="Search commands"
           aria-autocomplete="list"
           aria-expanded={matches.length > 0}
-          // hardcoded-color-ok
           className="min-w-0 flex-1 bg-transparent text-sm text-slate-900 outline-none placeholder:text-slate-400"
         />
-        {/* hardcoded-color-ok */}
         <span className="hidden shrink-0 items-center gap-1 rounded border border-slate-200 bg-slate-50 px-1.5 py-0.5 font-mono text-[10px] text-slate-400 sm:inline-flex">
           <Command aria-hidden="true" className="size-3" />K
         </span>
       </div>
 
-      {/* hardcoded-color-ok */}
       <div role="listbox" aria-label="Commands" className="overflow-hidden rounded-md border border-slate-200 bg-white">
         {matches.length === 0 ? (
-          // hardcoded-color-ok
           <p className="p-4 text-sm text-slate-400">No matching commands.</p>
         ) : (
           matches.map((item, index) => {
@@ -2616,21 +2473,15 @@ function CommandCenterDemo() {
                 onMouseEnter={() => setActiveIndex(index)}
                 onClick={() => runCommand(item)}
                 className={cn(
-                  // hardcoded-color-ok
                   "flex w-full items-center gap-3 border-b border-slate-100 px-3 py-2.5 text-left transition-colors last:border-b-0",
-                  // hardcoded-color-ok
                   active ? "bg-askewly-lavender/25" : "hover:bg-slate-50",
                 )}
               >
-                {/* hardcoded-color-ok */}
                 <Icon aria-hidden="true" className="size-4 shrink-0 text-slate-500" />
                 <span className="min-w-0 flex-1">
-                  {/* hardcoded-color-ok */}
                   <span className="block truncate text-sm font-medium text-slate-900">{item.label}</span>
-                  {/* hardcoded-color-ok */}
                   <span className="block truncate text-xs text-slate-500">{item.description}</span>
                 </span>
-                {/* hardcoded-color-ok */}
                 <span className="shrink-0 font-mono text-[10px] text-slate-400">{item.shortcut}</span>
               </button>
             )
@@ -2638,8 +2489,7 @@ function CommandCenterDemo() {
         )}
       </div>
 
-      {/* hardcoded-color-ok */}
-      <div className="flex items-center justify-between text-[11px] text-slate-400">
+      <div className="flex items-center justify-between text-[11px] text-muted-foreground/70">
         <span>{ranCommand ? `✓ Ran "${ranCommand}"` : "Type to filter, ↑↓ to navigate"}</span>
         <span className="hidden sm:inline">↵ to run</span>
       </div>
@@ -2699,75 +2549,59 @@ function CommerceFlowDemo() {
               className={cn(
                 "flex size-5 shrink-0 items-center justify-center rounded-full text-[10px] font-semibold",
                 index < stepIndex || step === "confirmed"
-                  // hardcoded-color-ok
                   ? "bg-askewly-violet text-white"
                   : index === stepIndex
                     ? "border border-askewly-violet text-askewly-violet"
-                    // hardcoded-color-ok
-                    : "border border-slate-200 text-slate-400",
+                    : "border border-border text-muted-foreground/70",
               )}
             >
               {index < stepIndex || step === "confirmed" ? <Check aria-hidden="true" className="size-3" /> : index + 1}
             </div>
-            {/* hardcoded-color-ok */}
-            <span className={cn("text-xs font-medium", index <= stepIndex || step === "confirmed" ? "text-slate-900" : "text-slate-400")}>
+            <span className={cn("text-xs font-medium", index <= stepIndex || step === "confirmed" ? "text-foreground" : "text-muted-foreground/70")}>
               {entry.label}
             </span>
-            // hardcoded-color-ok
-            {index < commerceSteps.length - 1 && <span className="h-px flex-1 bg-slate-200" />}
+            {index < commerceSteps.length - 1 && <span className="h-px flex-1 bg-border" />}
           </div>
         ))}
       </div>
 
       {step === "confirmed" ? (
-        // hardcoded-color-ok
         <div className="grid place-items-center rounded-md border border-slate-200 bg-white text-center">
           <div>
             <Check aria-hidden="true" className="mx-auto size-6 text-askewly-violet" />
-            {/* hardcoded-color-ok */}
             <p className="mt-2 text-sm font-semibold text-slate-900">Order confirmed</p>
-            {/* hardcoded-color-ok */}
             <p className="mt-1 text-xs text-slate-500">${total.toFixed(2)} charged to Visa •••• 4242</p>
           </div>
         </div>
       ) : step === "cart" ? (
-        // hardcoded-color-ok
         <div className="flex flex-col overflow-hidden rounded-md border border-slate-200 bg-white">
           {lines.map((line) => (
-            // hardcoded-color-ok
             <div key={line.id} className="flex items-center gap-3 border-b border-slate-100 px-3 py-2.5 last:border-b-0">
-              {/* hardcoded-color-ok */}
               <span className="min-w-0 flex-1 truncate text-sm text-slate-900">{line.name}</span>
-              {/* hardcoded-color-ok */}
               <div className="flex items-center gap-1.5 rounded-full border border-slate-200 px-1.5 py-0.5">
                 <button
                   type="button"
                   aria-label={`Decrease ${line.name} quantity`}
-                  // hardcoded-color-ok
                   className="grid size-5 place-items-center rounded-full text-slate-500 transition-colors hover:bg-slate-100"
                   onClick={() => adjustQty(line.id, -1)}
                 >
                   <Minus aria-hidden="true" className="size-3" />
                 </button>
-                {/* hardcoded-color-ok */}
                 <span className="w-4 text-center text-xs font-medium text-slate-900">{line.qty}</span>
                 <button
                   type="button"
                   aria-label={`Increase ${line.name} quantity`}
-                  // hardcoded-color-ok
                   className="grid size-5 place-items-center rounded-full text-slate-500 transition-colors hover:bg-slate-100"
                   onClick={() => adjustQty(line.id, 1)}
                 >
                   <Plus aria-hidden="true" className="size-3" />
                 </button>
               </div>
-              {/* hardcoded-color-ok */}
               <span className="w-14 shrink-0 text-right text-sm font-medium text-slate-900">${(line.price * line.qty).toFixed(0)}</span>
             </div>
           ))}
         </div>
       ) : step === "shipping" ? (
-        // hardcoded-color-ok
         <div className="flex flex-col gap-2 rounded-md border border-slate-200 bg-white p-3">
           {commerceShippingOptions.map((option) => (
             <button
@@ -2776,16 +2610,12 @@ function CommerceFlowDemo() {
               onClick={() => setShippingMethod(option.id)}
               className={cn(
                 "flex items-center gap-3 rounded-md border px-3 py-2.5 text-left transition-colors",
-                // hardcoded-color-ok
                 shippingMethod === option.id ? "border-askewly-violet bg-askewly-lavender/15" : "border-slate-200 hover:bg-slate-50",
               )}
             >
-              {/* hardcoded-color-ok */}
               <Truck aria-hidden="true" className="size-4 shrink-0 text-slate-500" />
               <span className="min-w-0 flex-1">
-                {/* hardcoded-color-ok */}
                 <span className="block text-sm font-medium text-slate-900">{option.label}</span>
-                {/* hardcoded-color-ok */}
                 <span className="block text-xs text-slate-500">
                   {option.id === "standard" ? (subtotal >= 150 ? `Free, ${option.detail}` : `$12, ${option.detail}`) : option.detail}
                 </span>
@@ -2795,40 +2625,30 @@ function CommerceFlowDemo() {
           ))}
         </div>
       ) : (
-        // hardcoded-color-ok
         <div className="flex flex-col gap-3 rounded-md border border-slate-200 bg-white p-3">
-          {/* hardcoded-color-ok */}
           <div className="flex items-center gap-3 rounded-md border border-slate-200 px-3 py-2.5">
-            {/* hardcoded-color-ok */}
             <CreditCard aria-hidden="true" className="size-4 shrink-0 text-slate-500" />
             <span className="min-w-0 flex-1">
-              {/* hardcoded-color-ok */}
               <span className="block text-sm font-medium text-slate-900">Visa •••• 4242</span>
-              {/* hardcoded-color-ok */}
               <span className="block text-xs text-slate-500">Expires 09/28</span>
             </span>
           </div>
-          {/* hardcoded-color-ok */}
           <p className="text-xs text-slate-500">
             Reviewing {lines.length} items · {shippingMethod === "express" ? "Express" : "Standard"} shipping
           </p>
         </div>
       )}
 
-      {/* hardcoded-color-ok */}
-      <div className="flex items-center justify-between border-t border-slate-200 pt-2.5">
+      <div className="flex items-center justify-between border-t border-border pt-2.5">
         <div className="text-sm">
-          {/* hardcoded-color-ok */}
-          <span className="text-slate-500">Total </span>
-          {/* hardcoded-color-ok */}
-          <span className="font-semibold text-slate-900">${total.toFixed(2)}</span>
+          <span className="text-muted-foreground">Total </span>
+          <span className="font-semibold text-foreground">${total.toFixed(2)}</span>
         </div>
         <div className="flex gap-2">
           {step !== "cart" && step !== "confirmed" && (
             <button
               type="button"
-              // hardcoded-color-ok
-              className="rounded-md border border-slate-200 px-3 py-1.5 text-xs font-medium text-slate-600 transition-colors hover:bg-slate-50"
+              className="rounded-md border border-border px-3 py-1.5 text-xs font-medium text-muted-foreground transition-colors hover:bg-slate-50"
               onClick={() => setStep(step === "payment" ? "shipping" : "cart")}
             >
               Back
@@ -2837,7 +2657,6 @@ function CommerceFlowDemo() {
           {step !== "confirmed" && (
             <button
               type="button"
-              // hardcoded-color-ok
               className="rounded-md bg-askewly-violet px-3 py-1.5 text-xs font-medium text-white transition-colors hover:bg-[color-mix(in_srgb,var(--askewly-violet)_85%,black)]"
               onClick={advanceStep}
             >
@@ -2867,42 +2686,31 @@ function MobileAppPatternsDemo() {
 
   return (
     <div className="grid min-h-[22rem] place-items-center">
-      {/* hardcoded-color-ok */}
       <div className="flex h-[21rem] w-[11.5rem] flex-col overflow-hidden rounded-[1.75rem] border-[6px] border-slate-900 bg-white shadow-[0_16px_36px_color-mix(in_srgb,var(--color-slate-900)_18%,transparent)]">
-        {/* hardcoded-color-ok */}
         <div className="flex items-center justify-center border-b border-slate-100 py-2">
-          {/* hardcoded-color-ok */}
           <span className="h-1.5 w-12 rounded-full bg-slate-200" />
         </div>
 
         <div className="flex-1 overflow-hidden px-3 py-2">
-          {/* hardcoded-color-ok */}
           <p className="text-sm font-semibold text-slate-900">Settings</p>
 
-          {/* hardcoded-color-ok */}
           <div className="mt-2 flex flex-col divide-y divide-slate-100 rounded-md border border-slate-100">
             <div className="flex items-center justify-between px-2.5 py-2">
-              {/* hardcoded-color-ok */}
               <span className="flex items-center gap-2 text-xs text-slate-700">
-                {/* hardcoded-color-ok */}
                 <Bell aria-hidden="true" className="size-3.5 text-slate-400" />
                 Push notifications
               </span>
               <Switch size="sm" checked={pushEnabled} onCheckedChange={setPushEnabled} aria-label="Push notifications" />
             </div>
             <div className="flex items-center justify-between px-2.5 py-2">
-              {/* hardcoded-color-ok */}
               <span className="flex items-center gap-2 text-xs text-slate-700">
-                {/* hardcoded-color-ok */}
                 <Moon aria-hidden="true" className="size-3.5 text-slate-400" />
                 Dark mode
               </span>
               <Switch size="sm" checked={darkModeEnabled} onCheckedChange={setDarkModeEnabled} aria-label="Dark mode" />
             </div>
             <div className="flex items-center justify-between px-2.5 py-2">
-              {/* hardcoded-color-ok */}
               <span className="flex items-center gap-2 text-xs text-slate-700">
-                {/* hardcoded-color-ok */}
                 <Wifi aria-hidden="true" className="size-3.5 text-slate-400" />
                 Wi-Fi calling
               </span>
@@ -2910,20 +2718,16 @@ function MobileAppPatternsDemo() {
             </div>
           </div>
 
-          {/* hardcoded-color-ok */}
           <div className="mt-2 flex flex-col divide-y divide-slate-100 rounded-md border border-slate-100">
             {["Account", "Privacy"].map((row) => (
-              // hardcoded-color-ok
               <button key={row} type="button" className="flex items-center justify-between px-2.5 py-2 text-left text-xs text-slate-700 transition-colors hover:bg-slate-50">
                 {row}
-                {/* hardcoded-color-ok */}
                 <ChevronRight aria-hidden="true" className="size-3.5 text-slate-300" />
               </button>
             ))}
           </div>
         </div>
 
-        {/* hardcoded-color-ok */}
         <div className="flex items-center justify-around border-t border-slate-100 py-2">
           {mobileTabs.map((tab) => {
             const Icon = tab.icon
@@ -2934,7 +2738,6 @@ function MobileAppPatternsDemo() {
                 type="button"
                 aria-current={active ? "page" : undefined}
                 onClick={() => setActiveTab(tab.id)}
-                // hardcoded-color-ok
                 className={cn("flex flex-col items-center gap-0.5 px-1.5 text-[9px]", active ? "text-askewly-violet" : "text-slate-400")}
               >
                 <Icon aria-hidden="true" className="size-3.5" />
@@ -2970,21 +2773,13 @@ type MatterTokenRender = MatterTokenSpec & {
 }
 
 const matterTokenSpecs: MatterTokenSpec[] = [
-  // hardcoded-color-ok
   { id: "card", label: "Card", shape: "rect", width: 94, height: 46, className: "border-slate-950 bg-white text-slate-950" },
-  // hardcoded-color-ok
   { id: "button", label: "CTA", shape: "rect", width: 72, height: 34, className: "border-askewly-violet bg-askewly-violet text-white" },
-  // hardcoded-color-ok
   { id: "token", label: "Token", shape: "circle", width: 54, height: 54, className: "border-askewly-lavender bg-askewly-lavender/45 text-slate-950" },
-  // hardcoded-color-ok
   { id: "menu", label: "Menu", shape: "rect", width: 86, height: 38, className: "border-slate-300 bg-slate-50 text-slate-700" },
-  // hardcoded-color-ok
   { id: "input", label: "Input", shape: "rect", width: 102, height: 36, className: "border-askewly-sky bg-askewly-sky/45 text-slate-950" },
-  // hardcoded-color-ok
   { id: "chip", label: "Chip", shape: "circle", width: 42, height: 42, className: "border-slate-950 bg-slate-950 text-white" },
-  // hardcoded-color-ok
   { id: "surface", label: "Panel", shape: "rect", width: 96, height: 52, className: "border-askewly-mint bg-askewly-mint/55 text-slate-950" },
-  // hardcoded-color-ok
   { id: "dot", label: "UI", shape: "circle", width: 38, height: 38, className: "border-slate-300 bg-white text-slate-500" },
 ]
 
@@ -3186,7 +2981,6 @@ function MatterPhysicsDemo() {
     <div
       ref={rootRef}
       aria-label="Matter.js rigid-body interaction demo"
-      // hardcoded-color-ok
       className="relative h-[22.5rem] overflow-hidden rounded-md border border-slate-200 bg-white text-slate-950"
       onPointerMove={updatePointer}
       onPointerEnter={updatePointer}
@@ -3195,9 +2989,7 @@ function MatterPhysicsDemo() {
       }}
     >
       <div className="absolute inset-0 opacity-55 [background-image:linear-gradient(90deg,color-mix(in_srgb,var(--color-slate-900)_4.5%,transparent)_1px,transparent_1px),linear-gradient(color-mix(in_srgb,var(--color-slate-900)_4.5%,transparent)_1px,transparent_1px)] [background-size:34px_34px]" />
-      {/* hardcoded-color-ok */}
       <p className="pointer-events-none absolute left-4 top-3.5 z-10 font-mono text-[10px] uppercase tracking-[0.16em] text-slate-400">push the chips with your cursor</p>
-      {/* hardcoded-color-ok */}
       <div className="absolute inset-x-5 bottom-5 h-px bg-slate-950/18" />
       {tokens.map((token) => (
         <div
