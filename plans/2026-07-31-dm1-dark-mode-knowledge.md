@@ -40,7 +40,7 @@ Status: approved (사용자 승인 2026-07-31 "ㄱㄱ" — 결정 4건 매듭 + 
   - Failure probe: llms 재생성 스크립트가 존재하지 않는 경로를 등재해도 조용히 통과하는지 — 오타 경로 1회 넣어 실패가 감지되는지 확인 후 원복.
   - Commit: changeset `dm1-dark-mode-knowledge` (README 절: step-1).
 
-- [ ] **step-2 — terms.yml '다크모드' 등재**
+- [x] **step-2 — terms.yml '다크모드' 등재**
   - Artifact: '다크모드' 항목 등재 — one_liner("저조도 환경을 위해 어두운 팔레트로 재설계된 전역 외형 테마" 계열), description 에 "단순 반전이 아니라 대비·표면 구조까지 재설계" 요지, related 로 '테마 토큰' 연결, sources 에 HIG·MDN·M3. 기존 '테마 토큰' 항목에도 역방향 related 검토.
   - Files: write docs/ui-vocabulary/terms.yml, examples/ui-vocabulary-site/src/components/term-visual.tsx(신규 variant 1건). read docs/ui-vocabulary/authoring-workflow.md, terms.yml(테마 토큰 항목 — related 는 `{id, relation, note}` 구조, id `theme-token`).
   - Risk: 기계적 (스키마 준수 append — 중복 prefilter 로 검출)

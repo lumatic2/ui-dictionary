@@ -27,6 +27,7 @@ import {
   MapPin,
   Menu,
   Mic,
+  Moon,
   MoreHorizontal,
   Palette,
   Phone,
@@ -37,6 +38,7 @@ import {
   Share2,
   ShoppingCart,
   Star,
+  Sun,
   Type,
   Trash2,
   User,
@@ -552,6 +554,7 @@ const FRONTEND_UTILITY_VARIANTS = new Set([
   "object-fit",
   "semantic-color",
   "theme-token",
+  "dark-mode",
   "opacity",
   "backdrop-blur",
   "shadow-elevation",
@@ -4472,6 +4475,28 @@ function FrontendUtilityVisual({ kind }: { kind: FrontendUtilityKind }) {
     if (kind === "object-fit") return <Chrome className="grid w-60 grid-cols-2 gap-3 p-3 text-xs"><div className="flex aspect-square items-center justify-center overflow-hidden rounded border bg-primary/20"><span className="h-16 w-28 rounded bg-primary/50" /></div><div className="flex aspect-square items-center justify-center rounded border bg-primary/20"><span className="h-10 w-16 rounded bg-primary/50" /></div></Chrome>
     if (kind === "semantic-color") return <Chrome className="grid w-60 grid-cols-3 gap-2 p-3 text-xs"><span className="rounded bg-primary px-2 py-2 text-primary-foreground">primary</span><span className="rounded bg-destructive px-2 py-2 text-white">danger</span><span className="rounded bg-muted px-2 py-2">muted</span></Chrome>
     return <Chrome className="w-60 p-3 text-xs"><div className="grid grid-cols-[80px_1fr] gap-2"><span>--radius</span><span className="rounded bg-primary/20 px-2">8px</span><span>--primary</span><span className="rounded bg-primary px-2 text-primary-foreground">color</span></div></Chrome>
+  }
+  if (kind === "dark-mode") {
+    // 데모 의도상 리터럴 색 고정: 사이트 테마와 무관하게 라이트/다크 두 팔레트를 나란히 보여줘야 한다.
+    // 다크 쪽은 순검정(#000)이 아닌 slate-900 표면 + 그림자 대신 "더 밝은 표면"으로 elevation 을 표현한다.
+    return (
+      <Chrome className="grid w-64 grid-cols-2 overflow-hidden p-0 text-xs">
+        <div className="bg-white p-3 text-slate-900">
+          <div className="flex items-center gap-1.5"><Sun aria-hidden="true" className="size-3.5" /><b>Light</b></div>
+          <div className="mt-2 rounded-md border border-slate-200 bg-white p-2 shadow-sm">
+            <span className="block h-2 w-16 rounded-full bg-slate-300" />
+            <span className="mt-1.5 block h-2 w-10 rounded-full bg-slate-200" />
+          </div>
+        </div>
+        <div className="bg-slate-900 p-3 text-slate-100">
+          <div className="flex items-center gap-1.5"><Moon aria-hidden="true" className="size-3.5" /><b>Dark</b></div>
+          <div className="mt-2 rounded-md border border-slate-700 bg-slate-800 p-2">
+            <span className="block h-2 w-16 rounded-full bg-slate-600" />
+            <span className="mt-1.5 block h-2 w-10 rounded-full bg-slate-700" />
+          </div>
+        </div>
+      </Chrome>
+    )
   }
   if (kind === "opacity") {
     return <Chrome className="flex w-56 items-center justify-center gap-3 p-4">{[100, 60, 25].map((level) => <span key={level} className="size-12 rounded-md bg-primary" style={{ opacity: level / 100 }} />)}</Chrome>
