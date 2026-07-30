@@ -50,7 +50,7 @@ Status: approved (2026-07-31 사용자 승인 "ㄱㄱ" — 연쇄 SP2·SP3 제�
   - Verify: validate·build·overflow PASS + 교정 루프 전/후 스크린샷 쌍 ≥2 + 최종 1장이 프리셋 규칙(위치 고정·밀도) 충족.
   - Failure probe: 교정을 말로만 기록하면 재현 불가 — 각 왕복마다 "지시문 → 반영 diff → 스크린샷"을 남긴다. 스킬 3테마에 MiniMax 색이 없어 하드코딩 유혹 → 덱 로컬 토큰(css 변수)으로 격리, 스킬 소스 무접촉.
   - Commit: `feat(sp1): step-2 — 1장 캘리브레이션 루프 + 스타일 프리셋 v1`
-- [ ] **step-3 — 본생산 2모드 덱 생성 (영상 ⑤ 전반)**
+- [x] **step-3 — 본생산 2모드 덱 생성 (영상 ⑤ 전반)**
   - Artifact: (a) 주제 입력 모드: 차트 포함 주제로 5~7장 덱 생성(HTML 정본) (b) 리디자인 모드: 기존 저품질 소스 1건(구 덱 PDF 또는 마크다운 자료)을 프리셋 스타일로 재생성. 둘 다 `decks/claude-ppt-lab/` 하위, 스킬 표준 구조.
   - Files: write decks/claude-ppt-lab/content/**, 생성 HTML. read decks/askewly-design-intro/(구조 참고). 실행: node 빌드+Chrome.
   - Risk: 없음 (랩 폴더 한정)

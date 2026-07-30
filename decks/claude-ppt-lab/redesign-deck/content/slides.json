@@ -1,0 +1,107 @@
+{
+  "meta": {
+    "title": "SL1 — 슬라이드 방법론 문서화",
+    "subtitle": "완료 보고서 리디자인 — 리디자인 모드 재현",
+    "template": "minimax",
+    "mode": "arrow",
+    "canvas": "hd",
+    "effects": "none",
+    "speakerNotes": false
+  },
+  "slides": [
+    {
+      "no": 1,
+      "slug": "cover",
+      "section": "intro",
+      "title": "SL1 — 슬라이드 방법론 문서화",
+      "layout": "cover",
+      "subtitle": "완료 보고서를 프리셋 스타일로 재구성했다",
+      "items": [
+        {
+          "label": "리디자인 모드"
+        },
+        {
+          "label": "원문 2026-07-28"
+        }
+      ],
+      "notes": "리디자인 입력 소스: docs/reports/2026-07-28-sl1-slide-methodology-docs.md (실존 마크다운 보고서)."
+    },
+    {
+      "no": 2,
+      "slug": "result",
+      "section": "what",
+      "title": "무엇이 만들어졌나",
+      "kicker": "Result",
+      "layout": "hero-cards",
+      "subtitle": "방법론 2문서 신설 + 에이전트 표면 배선",
+      "items": [
+        {
+          "title": "slide-principles",
+          "body": "거장 8계보 수렴 원칙 5 + 표현 기법 — 근거 등급 분리(assertion-evidence만 실증)"
+        },
+        {
+          "title": "slide-production",
+          "body": "HTML 정본 원칙 · 3-format export 결정표 · G1~G7 순서 강제 · 린트 규칙 R1~R4"
+        },
+        {
+          "title": "llms.txt 배선",
+          "body": "Methodology 섹션 첫 신설 — 에이전트가 같은 방법론을 읽는다"
+        }
+      ],
+      "notes": "보고서 §1 결과 절의 재구성."
+    },
+    {
+      "no": 3,
+      "slug": "issues",
+      "section": "how",
+      "title": "이슈 두 건, 모두 계획 단계에서 잡혔다",
+      "kicker": "Issues",
+      "layout": "comparison-2col",
+      "subtitle": "검증자와 diff 검사가 사고를 예방했다",
+      "items": [
+        {
+          "title": "이중 정본 사고 (HIGH)",
+          "body": "매체 게이트 정본이 이미 있는데 리서치가 '없다'고 단정 — fresh 검증자가 계획 단계에서 적발"
+        },
+        {
+          "title": "해결",
+          "body": "step-2를 '게이트 인용/확장, 재서술 금지'로 재설계 — 정본 중복 생성 차단"
+        },
+        {
+          "title": "EOL 부산물 87건",
+          "body": "llms 재생성이 diff 0줄짜리 파일 87건 생성"
+        },
+        {
+          "title": "해결",
+          "body": "전량 원복, 실변경(+5줄·삭제 0)만 커밋"
+        }
+      ],
+      "notes": "보고서 §2 이슈와 해결."
+    },
+    {
+      "no": 4,
+      "slug": "evidence",
+      "section": "proof",
+      "title": "검증은 전부 기계로 남겼다",
+      "kicker": "Evidence",
+      "layout": "summary-grid",
+      "subtitle": "DoD 8항 PASS — 재현 커맨드 포함",
+      "items": [
+        {
+          "title": "인용 규율",
+          "body": "접근일 grep + 상대 링크 전건 실존 스크립트 PASS"
+        },
+        {
+          "title": "배선 확인",
+          "body": "llms.txt grep — 신규 2건 존재, 기존 소실 0, vite build 통과"
+        },
+        {
+          "title": "크기 회고",
+          "body": "changeset 1개로 닫힘 — 독립 응집 변경 4개라 milestone 라벨 정합 판정"
+        }
+      ],
+      "sourceNote": "Source: SL1 완료 보고서 (docs/reports, 2026-07-28) — 접근일 2026-07-31",
+      "notes": "보고서 §3 증거."
+    }
+  ]
+}
