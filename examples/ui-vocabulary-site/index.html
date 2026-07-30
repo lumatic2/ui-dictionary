@@ -4,7 +4,18 @@
     <meta charset="UTF-8" />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta name="theme-color" content="#312e81" />
+    <meta name="theme-color" content="#312e81" media="(prefers-color-scheme: light)" />
+    <meta name="theme-color" content="#211f2e" media="(prefers-color-scheme: dark)" />
+    <script>
+      // 다크모드 FOUC 방지 — 첫 페인트 전에 동기적으로 테마를 결정한다 (hydration 이후 결정은 번쩍임).
+      try {
+        var askewlyTheme = localStorage.getItem("askewly-theme")
+        document.documentElement.classList.toggle(
+          "dark",
+          askewlyTheme === "dark" || (askewlyTheme !== "light" && matchMedia("(prefers-color-scheme: dark)").matches),
+        )
+      } catch (e) {}
+    </script>
     <meta
       name="description"
       content="Askewly Design은 제품 UI 패턴, 문서, 쇼케이스, 리소스, Pro 구현 자산을 탐색하는 디자인 시스템입니다."

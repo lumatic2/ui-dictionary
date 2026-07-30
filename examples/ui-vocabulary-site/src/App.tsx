@@ -55,7 +55,7 @@ import { categoryGroups, categoryGroupsByCategory, categoryLabels, isTermCategor
 import { isNavigationFilter, navigationCollections, navFilter, normalizeNavigationFilter } from "@/lib/navigation-model"
 import { isNavigationFilterVisible, isShellVisible } from "@/lib/exposure"
 import { stateFromUrl, urlFromState } from "@/lib/url-mapping"
-import { useSystemPreviewTheme, type PreviewTheme } from "@/lib/preview-theme"
+import { useSiteTheme, useSystemPreviewTheme, type PreviewTheme } from "@/lib/preview-theme"
 import { slugify, toPascalCase } from "@/lib/strings"
 import { isOwnerEmail } from "@/lib/owner"
 import { MarketingSectionPreviewLazy, type MarketingPreviewVariant } from "@/components/marketing-section-preview-lazy"
@@ -99,12 +99,8 @@ function App() {
   const [signInOpen, setSignInOpen] = useState(false)
   const [authSession, setAuthSession] = useState<AuthSessionState>({ authenticated: false, checked: false })
   const [proUnlocked, setProUnlocked] = useState(false)
-  // 사이트 전역 테마는 라이트 고정 (2026-07-28 사용자 결정 — 다크는 카탈로그 하드코딩 색과 충돌해 가독성 붕괴,
-  // 별도 정비 전까지 차단). 데모 카드의 per-example 프리뷰 테마 토글은 콘텐츠 기능이라 유지.
-  useEffect(() => {
-    document.documentElement.classList.remove("dark")
-    window.localStorage.removeItem("askewly-theme")
-  }, [])
+  // 사이트 전역 3-상태 테마 (DM3 2026-07-31 — 2026-07-28 차단은 DM2 셸 토큰화로 원인 제거 후 해제)
+  const { theme: siteTheme, setTheme: setSiteTheme } = useSiteTheme()
   const activeUseCase = useMemo(() => useCases.find((item) => item.id === activeUseCaseId) ?? null, [activeUseCaseId])
   const selectedTerm = useMemo(() => terms.find((term) => term.id === selectedTermId) ?? null, [selectedTermId])
   const baseSearchResults = useMemo(() => searchTerms(terms, query, filter), [query, filter])
@@ -635,6 +631,7 @@ function App() {
                       {item.label}
                     </button>
                   ))}
+                  <SiteThemeToggle activeTheme={siteTheme} onThemeChange={setSiteTheme} />
                   <span className="h-5 w-px bg-border" aria-hidden="true" />
                   {/* hardcoded-color-ok — topbar 피드백 칩 indigo 강조 — 토큰 부재 상태색 */}
                   {topbarFeedback && <span className="max-w-40 truncate rounded-full bg-indigo-50 px-3 py-1 text-xs font-semibold text-indigo-700">{topbarFeedback}</span>}
@@ -652,6 +649,9 @@ function App() {
                       <SignInPopoverContent />
                     </Popover>
                   )}
+                </div>
+                <div className={cn("xl:hidden", searchExpanded ? "hidden" : "block")}>
+                  <SiteThemeToggle activeTheme={siteTheme} onThemeChange={setSiteTheme} />
                 </div>
                 <button className={cn("size-8 place-items-center rounded-md transition hover:bg-muted active:scale-[0.98] md:hidden", searchExpanded ? "hidden" : "grid")} aria-label="More options" type="button" onClick={() => setTopbarFeedback("More options opened")}>
                   <MoreVertical aria-hidden="true" className="size-4" />
@@ -2286,7 +2286,6 @@ type MarketingCodeSnippet = {
 }
 
 type CodeLanguage = "html" | "react" | "vue"
-// 다크모드 정비 때 재사용 — 현재 미배선 (라이트 고정)
 export function SiteThemeToggle({ activeTheme, onThemeChange }: { activeTheme: PreviewTheme; onThemeChange: (theme: PreviewTheme) => void }) {
   return (
     <div className="inline-flex rounded-full bg-muted p-0.5 text-muted-foreground ring-1 ring-border" role="group" aria-label="Site theme">
