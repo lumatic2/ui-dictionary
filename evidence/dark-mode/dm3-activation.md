@@ -35,4 +35,6 @@
 | `npm run lint` (oxlint + lint:colors --max 0) | PASS — 0 violations |
 | `npm run build` + prerender | PASS — 755 routes |
 | tsc·lint-tokens | PASS |
-| 실배포 스팟 체크·사람 관측 | **대기** — push 승인 후 실시 (deploy-batching: 사전 보고 후 일괄) |
+| push·실배포 (사용자 승인 "ㄱㄱ" 2026-07-31) | PASS — dbedbe7..3a8bfd6, CF Pages 약 4분 후 라이브 |
+| 실배포 스팟 체크 | PASS — 홈 FOUC 스크립트 존재·토글 다크 전환·`/terms/dark-mode` 직접 진입 다크 유지·llms.txt+knowledge 문서 서빙. 배포 직후 구 청크 캐시 404 1회(하드 리로드 해소 — 배포 스왑 과도기 현상, 신규 세션 무관) |
+| 사람 관측 1회 | **대기** — 사용자 실사이트 관측 요청 중 (DoD 마지막 게이트) |
