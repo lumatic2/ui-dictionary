@@ -58,7 +58,7 @@ Status: approved (2026-07-31 사용자 승인 "ㄱㄱ" — 연쇄 SP2·SP3 제�
   - Verify: 두 덱 validate·build·overflow PASS + Chrome 실렌더 스크린샷(프리셋 규칙 준수).
   - Failure probe: 리디자인 입력 소스가 마땅치 않으면 임의 제작 유혹 — 실존 저품질 소스(레포 내 구 자료 또는 사용자 제공)를 쓰고 출처를 장부에 남긴다. 없으면 마크다운 보고서 1건을 소스로 지정하고 그 사실 명기.
   - Commit: `feat(sp1): step-3 — 본생산 2모드 덱 생성 (주제 입력·리디자인)`
-- [ ] **step-4 — 네이티브 차트 PPTX export + 실개봉 검증 (영상 ⑤ 후반)**
+- [x] **step-4 — 네이티브 차트 PPTX export + 실개봉 검증 (영상 ⑤ 후반)**
   - Artifact: step-3 두 덱을 pptxgenjs로 PPTX 산출(`decks/askewly-design-intro/export/html2pptx.mjs` 재사용 — AUTO_SHAPE 텍스트+네이티브 `addChart`) + python-pptx 구조 검증 + PowerPoint COM 실개봉 스크립트 **신규 작성**(SL3는 즉석 명령이었음 — 이번에 박제).
   - Files: write decks/claude-ppt-lab/pptx/**, decks/claude-ppt-lab/scripts/open-verify-pptx.ps1(신규). read decks/askewly-design-intro/export/html2pptx.mjs. 실행: node·python·PowerShell COM.
   - Risk: 위험 (PowerShell COM — PowerPoint 프로세스 기동·종료 관리)
