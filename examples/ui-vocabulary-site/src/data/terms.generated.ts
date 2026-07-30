@@ -30337,6 +30337,11 @@ export const terms = [
         "id": "semantic-color",
         "relation": "use-with",
         "note": "semantic color는 색상 theme token의 대표 형태다"
+      },
+      {
+        "id": "dark-mode",
+        "relation": "use-with",
+        "note": "테마 토큰이 있어야 dark mode 같은 테마 전환이 :root 스왑만으로 가능해진다"
       }
     ],
     "asset": {
@@ -32098,6 +32103,73 @@ export const terms = [
       }
     ],
     "confidence": "medium"
+  },
+  {
+    "kind": "visual-treatment",
+    "id": "dark-mode",
+    "status": "draft",
+    "category": "style",
+    "group": "style-tokens",
+    "ko": {
+      "name": "다크모드",
+      "aliases": [
+        "다크 모드",
+        "다크 테마",
+        "dark mode"
+      ]
+    },
+    "en": {
+      "name": "Dark mode",
+      "aliases": [
+        "Dark theme",
+        "Dark appearance"
+      ]
+    },
+    "one_liner": "저조도 환경을 위해 어두운 팔레트로 재설계된 시스템/사이트 전역 외형 테마.",
+    "description": "색을 기계적으로 반전하는 것이 아니라 대비 관계, 표면 위계(elevation), 채도까지 다시 설계한 별도 팔레트다. 순수 검정 대신 짙은 회색 표면을 쓰고, 높이는 그림자 대신 표면 밝기로 표현하며, WCAG 대비는 라이트와 별도로 재검증한다. 색온도를 옮기는 night shift, OS가 사후 반전하는 inverted colors, 접근성용 강제 팔레트인 forced colors와는 서로 다른 축이다.",
+    "visual_anatomy": [
+      "dark surface palette",
+      "elevated surface brightness",
+      "desaturated accents",
+      "theme toggle"
+    ],
+    "when_to_use": [
+      "저조도 사용 환경이 흔한 제품일 때",
+      "사용자 OS 테마 선호(prefers-color-scheme)를 존중해야 할 때"
+    ],
+    "anti_use": [
+      "라이트 팔레트를 단순 반전해 다크로 내놓지 않는다",
+      "순수 검정 배경에 순백 텍스트로 극단 대비(halation)를 만들지 않는다"
+    ],
+    "prompt_phrases": [
+      "사이트에 라이트/다크/시스템 3-상태 dark mode 토글을 넣어줘"
+    ],
+    "related": [
+      {
+        "id": "theme-token",
+        "relation": "use-with",
+        "note": "다크모드는 모든 색이 semantic 토큰을 거칠 때만 성립한다 — 컴포넌트에 하드코딩된 색은 다크 전환을 구조적으로 막는다."
+      }
+    ],
+    "asset": {
+      "kind": "diagram",
+      "variant": "dark-mode"
+    },
+    "sources": [
+      {
+        "source_id": "apple-hig-components",
+        "note": "systemwide dark appearance definition and elevated dark surfaces"
+      },
+      {
+        "source_id": "mdn-css-reference",
+        "note": "prefers-color-scheme media feature and color-scheme property"
+      },
+      {
+        "source_id": "material-m3-components",
+        "note": "dark theme surface baseline and elevation overlay system"
+      }
+    ],
+    "confidence": "high"
   }
 ] satisfies VocabularyTerm[]
 
@@ -33147,7 +33219,8 @@ export const groups = [
     "category": "style",
     "label": "토큰·시맨틱",
     "ids": [
-      "theme-token"
+      "theme-token",
+      "dark-mode"
     ]
   },
   {
