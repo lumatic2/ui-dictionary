@@ -22,10 +22,11 @@
 | 발표 그 자체 | HTML 그대로 (브라우저/배포) | `presentation-slides-yusung` · `slides-grab` | 소스 편집 → 재빌드 |
 | 공유·인쇄용 PDF | Playwright print-to-pdf (범용) / `decktape` (reveal.js 등 14 프레임워크 인식) | `decktape` · slides-grab pdf | 불가 (최종본) |
 | 보기용 PPTX | 슬라이드를 PNG 렌더 → 배경 삽입 (Slidev·Marp·구 /ppt 전부 이 방식) | `slidev` (export 아키텍처 참조) | 불가 (이미지 박제) |
-| **편집 가능 PPTX** | ① HTML→shape 변환: pptxgenjs 기반 html2pptx ② SVG→DrawingML: ppt-master 방식 | `PptxGenJS`(4.0.1+ 고정 — 구버전 손상 이력) · `ppt-master` | 가능 (네이티브 개체) |
+| **편집 가능 PPTX** | **pptxgenjs 단일 정본 경로** — 스킬 `templates/export-pptx.mjs` (slides.json→네이티브 개체, 테마 판독, 차트=addChart) | `PptxGenJS`(4.0.1+ 고정 — 구버전 손상 이력) | 가능 (네이티브 개체 — 차트 더블클릭→엑셀 수정) |
 
 - 편집 가능 PPTX 두 경로의 실측 비교는 SL3(Askewly Design 소개 덱 실증)에서 장부화했다 — `research/2026-07-28-sl3-pptx-path-comparison.md`.
 - **실측 결론 (2026-07-28, 사용자 확정)**: PPTX 네이티브 변환은 HTML·PDF 대비 품질이 확연히 낮다(폰트 미임베드 폴백·레이아웃 근사·SVG 저작 규약 마찰 — PowerPoint 실개봉 관측). 따라서 **PPTX 심화는 여기서 멈추고, 수신자가 파일을 직접 편집해야 한다는 명시 요구가 있을 때만 위 경로를 쓴다.** 기본 배포는 HTML(발표·링크 공유) + PDF(고정 공유)이며, 투자 우선순위도 HTML 표현력·PDF 품질에 둔다.
+- **정정 기록 (2026-07-31, 사용자 확정 — SP3)**: 위 "중단"은 철회가 아니라 **좁히기**로 확정됐다. HTML/PDF 우선은 유지하되, PPTX 가 필요할 때의 정본 경로를 **pptxgenjs 단일**(ppt-master 경로 은퇴)로 스킬 export 트랙(`export-pptx.mjs`)에 승격했다. 근거: 영상 재현 랩(SP1)에서 네이티브 차트(더블클릭→엑셀 수정)의 실수요 확인 — `evidence/slide-pipeline/sp1-video-lab.md`. 검증 절차는 스킬 `references/verification.md` PPTX 절.
 - 문서형 PDF(보고서·브리핑)는 이 문서 범위 밖 — `/pdf` 스킬 소관. 여기는 **슬라이드의 PDF export**만 다룬다.
 
 ## 3. 엔진 선택 — 언제 무엇으로 만드나
@@ -36,7 +37,7 @@
 |---|---|
 | 재사용·계속 편집할 진지한 덱, 인터랙티브(Chart.js·Three.js·QR·before/after) | `presentation-slides-yusung` (slides.json 정본, 레이아웃 16종, G1~G7 게이트) |
 | 빠른 프로토타입, 시각적 bbox 편집, 즉시 PDF/PNG | `slides-grab` (npm CLI, 35 스타일) |
-| 편집 가능 PPTX가 최종 요구 | 위 엔진으로 HTML 확정 후 §2 편집 가능 경로 — 또는 `ppt-master` 워크플로우 직행 |
+| 편집 가능 PPTX가 최종 요구 | 위 엔진으로 HTML 확정 후 스킬 `export-pptx.mjs` (pptxgenjs 단일 정본 경로) |
 
 ## 4. 프로세스 — 구조가 디자인보다 먼저 (순서 강제)
 
@@ -87,4 +88,5 @@ G1 자료(출처 승인) → G2 구성안(아웃라인 승인) → G3 문구 →
 ## Changelog
 
 - 2026-07-28: SL3 실측 결론 반영 — PPTX 심화 중단, HTML·PDF 우선 (사용자 확정).
+- 2026-07-31: SP3 정정 — 중단을 좁히기로 확정, pptxgenjs 단일 경로를 스킬 export 트랙으로 승격 (사용자 확정).
 - 2026-07-28: 초판 (SL1 step-2 — HTML 정본·export 결정표·엔진 선택·게이트 인용·린트 스펙).

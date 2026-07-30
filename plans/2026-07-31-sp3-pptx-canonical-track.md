@@ -30,7 +30,7 @@ Status: approved (연쇄 승인 — SP2 승인 시 chain 영수증 sp3 등록, 2
 
 ## Step 트리
 
-- [ ] **step-1 — 스킬 export 트랙 (templates/export-pptx.mjs)**
+- [x] **step-1 — 스킬 export 트랙 (templates/export-pptx.mjs)**
   - Artifact: 신규 `templates/export-pptx.mjs` — 덱 cwd 기준(`content/slides.json`+테마 판독), 레이아웃 매핑(cover·closing·hero-cards/summary-grid 카드 공통·comparison-2col·step-flow·chart-interactive 네이티브 차트) + 미지원 레이아웃 카드 폴백·고지, pptxgenjs 해석은 export-raster-pdf.mjs 의 playwright 패턴 준용, CSS 전용 값 hex 근사. + 산출물 파생 헤더.
   - Files: write custom-skills templates/export-pptx.mjs. read templates/export-raster-pdf.mjs(의존성 패턴)·decks/claude-ppt-lab/scripts/export-pptx.mjs(원형)·templates/src/theme.mjs.
   - Risk: 위험 (신규 파일이지만 theme 판독 계약 결합 — fixture 스모크로 격리)
@@ -38,7 +38,7 @@ Status: approved (연쇄 승인 — SP2 승인 시 chain 영수증 sp3 등록, 2
   - Verify: custom-theme-smoke·theme-askewly-smoke 두 fixture 에서 PPTX 산출 + python-pptx 로 차트/텍스트/이미지0 구조 확인.
   - Failure probe: THEME_ROOTS 는 CSS 문자열이라 파싱 필요 — `--var: value;` 정규식 판독이 color-mix/gradient 를 만나면 hex 근사 규칙 적용(시작색 추출). 근사 불가 값은 기본 무채색이 아니라 에러로 표면화.
   - Commit: changeset `20260731-sp3-pptx-canonical-track` (custom-skills, README 절: step-1).
-- [ ] **step-2 — 문서 정본화 (스킬 + methodology)**
+- [x] **step-2 — 문서 정본화 (스킬 + methodology)**
   - Artifact: SKILL.md description·§7·G7 에 PPTX 트랙 등재(3-format: HTML/PDF 2트랙/PPTX) + verification.md export 절 갱신 + ui-dictionary `methodology/slide-production.md` 3-format export 결정표를 "PPTX = pptxgenjs 단일 정본 경로(스킬 export-pptx.mjs)"로 갱신 — §2 실측 결론(중단)은 record 보존, 정정 기록 추가(2026-07-31 사용자 확정 근거 링크).
   - Files: write custom-skills SKILL.md·references/verification.md + ui-dictionary methodology/slide-production.md.
   - Risk: 없음 (문서만)
