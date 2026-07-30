@@ -69,7 +69,7 @@ function SwipeActionRow({
           type="button"
           onClick={onTrailingAction}
           aria-label="Delete"
-          className="flex w-16 shrink-0 items-center justify-center bg-destructive text-white"
+          className="flex w-16 shrink-0 items-center justify-center bg-destructive text-primary-foreground"
         >
           <TrashIcon className="size-4" aria-hidden="true" />
         </button>

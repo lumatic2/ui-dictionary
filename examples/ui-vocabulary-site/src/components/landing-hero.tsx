@@ -17,7 +17,7 @@ export function LandingHero({ onNavigate, onSearch, filter, terms }: HomePagePro
         </p>
 
         <div className="mt-7 flex flex-col gap-3 sm:flex-row">
-          <Button className="h-11 rounded-lg bg-askewly-violet px-6 has-[>svg]:px-6 text-white hover:bg-[color-mix(in_srgb,var(--askewly-violet)_85%,black)]" type="button" onClick={() => onNavigate({ page: "get-started" })}>
+          <Button className="h-11 rounded-lg bg-askewly-violet px-6 has-[>svg]:px-6 text-primary-foreground hover:bg-[color-mix(in_srgb,var(--askewly-violet)_85%,black)]" type="button" onClick={() => onNavigate({ page: "get-started" })}>
             Get Started
             <ArrowRight aria-hidden="true" className="size-4" />
           </Button>

@@ -19,7 +19,7 @@ export function AtlasCard({ item }: { item: (typeof atlasItems)[number] }) {
           <p className="mt-2 text-sm leading-6 text-muted-foreground">{item.copy}</p>
         </div>
       </div>
-      <div className="flex flex-1 flex-col border-t border-border bg-slate-50 p-5">
+      <div className="flex flex-1 flex-col border-t border-border bg-background p-5">
         <AtlasDemo id={item.id} />
       </div>
     </article>

@@ -64,8 +64,9 @@ function PaletteCard({
                 onCopy(`${color.hex} copied to clipboard`)
               }}
             >
+              {/* hardcoded-color-ok: contrast overlay must stay black regardless of theme — it sits on an arbitrary swatch color, not site chrome */}
               <span
-                className="pointer-events-none rounded bg-black/0 font-mono text-[10px] font-semibold uppercase tracking-normal opacity-0 transition group-hover/swatch:bg-black/25 group-hover/swatch:opacity-100"
+                className={"pointer-events-none rounded bg-black/0 font-mono text-[10px] font-semibold uppercase tracking-normal opacity-0 transition group-hover/swatch:bg-black/25 group-hover/swatch:opacity-100" /* hardcoded-color-ok — 임의 색 견본 위 대비 오버레이, 테마 무관 검정 고정 */}
                 style={{ color: textColor }}
               >
                 {color.hex.replace("#", "")}
@@ -134,7 +135,7 @@ function PaletteExportDialog({ seed, onClose }: { seed: PaletteSeed; onClose: ()
   }
 
   return (
-    <div className="fixed inset-0 z-50 grid place-items-center bg-slate-950/72 p-4" onClick={onClose}>
+    <div className="fixed inset-0 z-50 grid place-items-center bg-foreground/72 p-4" onClick={onClose}>
       <div
         className="w-full max-w-md rounded-2xl border bg-card text-foreground shadow-2xl"
         onClick={(event) => event.stopPropagation()}
@@ -247,7 +248,7 @@ export function ColorsPage({ onNavigate }: { onNavigate: (destination: HomePageD
       </div>
 
       {copyToast && (
-        <div className="fixed left-1/2 top-20 z-50 -translate-x-1/2 rounded-full bg-slate-950 px-3 py-1.5 text-xs font-semibold text-white shadow-lg dark:bg-slate-50 dark:text-slate-950">
+        <div className="fixed left-1/2 top-20 z-50 -translate-x-1/2 rounded-full bg-foreground px-3 py-1.5 text-xs font-semibold text-background shadow-lg">
           <span className="inline-flex items-center gap-1.5">
             <Check aria-hidden="true" className="size-3.5" />
             {copyToast}

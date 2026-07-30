@@ -14,6 +14,7 @@ export function PosterView({ scopeLabel, terms, totalCount }: PosterViewProps) {
 
   return (
     <section
+      // hardcoded-color-ok: print output is fixed white paper by design, independent of site theme
       className="rounded-lg border bg-card p-5 shadow-sm print:rounded-none print:border-0 print:bg-white print:p-0 print:shadow-none"
       data-export-poster
     >

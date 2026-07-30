@@ -41,7 +41,7 @@ export function ActionSheetDestructiveConfirmation({
         type="button"
         aria-label="Dismiss action sheet"
         onClick={onCancel}
-        className="absolute inset-0 bg-black/50"
+        className="absolute inset-0 bg-foreground/50"
       />
       <div
         role="dialog"

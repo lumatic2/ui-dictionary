@@ -8,11 +8,11 @@
     "prebuild": "npm run build:data",
     "dev": "vite",
     "build": "tsc -b && vite build",
-    "lint": "oxlint",
+    "lint": "oxlint && npm run lint:colors",
     "audit:visuals": "node ../../scripts/audit-ui-vocabulary-visuals.mjs",
     "preview": "vite preview",
     "postbuild": "vite-node ../../scripts/prerender-ui-vocabulary.ts",
-    "lint:colors": "node scripts/lint-hardcoded-colors.mjs"
+    "lint:colors": "node scripts/lint-hardcoded-colors.mjs --max 0"
   },
   "dependencies": {
     "@paper-design/shaders-react": "^0.0.77",

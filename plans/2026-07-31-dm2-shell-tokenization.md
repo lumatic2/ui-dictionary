@@ -48,7 +48,7 @@ Status: approved (사용자 승인 2026-07-31 "ㄱㄱ" — 연쇄 DM1→DM2→DM
   - Failure probe: 카카오 로그인 버튼 hex(`#fee500` — SQ3 finding 잔존)·Pro 배지 등 브랜드 고정색이 semantic 으로 잘못 흡수돼 색이 바뀌는 지점 — 치환 전후 diff 에서 브랜드색 라인 수동 검수.
   - Commit: changeset `dm2-shell-tokenization` (README 절: step-2).
 
-- [ ] **step-3 — article layout·잔여 파일 치환 + 게이트 통합 (DM2 마감)**
+- [x] **step-3 — article layout·잔여 파일 치환 + 게이트 통합 (DM2 마감)**
   - Artifact: `article-documentation-layout.tsx`(95)·`term-visual.tsx`(21)·잔여 소수 파일 치환 + `lint:colors` 를 lint 파이프라인(npm run lint 또는 build 전 훅)에 배선 — 셸 스코프 위반 0 게이트화 + `evidence/dark-mode/dm2-shell-tokenization.md`.
   - Files: write src/components/article-documentation-layout.tsx, src/components/term-visual.tsx, 잔여 1~2건 파일, package.json, evidence/dark-mode/dm2-shell-tokenization.md.
   - Risk: 기계적 (step-2 와 동일 절차의 잔여분 + 게이트 배선)

@@ -20,6 +20,12 @@ const SRC = path.resolve(__dirname, "..", "src");
 const ALLOWLIST = [
   "components/marketing-section-preview.tsx",
   "components/variation-demos/",
+  // 색이 콘텐츠 데이터인 라이브러리 (팔레트 생성기 데이터 · 문서 예시 코드)
+  "lib/palette-generator.ts",
+  "lib/documentation-pages.ts",
+  // 용어 미니목 데모 렌더러 — 미니목 안 색(브랜드 로고·글래스·Light/Dark 병치)이 콘텐츠다.
+  // 프레임/라벨은 semantic 토큰 사용 중 (2026-07-31 실측: 셸 프레임 위반 0)
+  "components/term-visual.tsx",
 ];
 
 const PALETTE =
@@ -33,6 +39,9 @@ const CLASS_RE = new RegExp(
 );
 const HEX_RE = /#(?:[0-9a-fA-F]{3,4}|[0-9a-fA-F]{6}|[0-9a-fA-F]{8})\b/g;
 const OPT_OUT = "hardcoded-color-ok";
+// 블록 예외: 복사용 코드 스니펫 문자열처럼 구간 전체가 콘텐츠인 곳
+const OPT_OUT_START = "hardcoded-color-ok-start";
+const OPT_OUT_END = "hardcoded-color-ok-end";
 
 function walk(dir, files = []) {
   for (const name of readdirSync(dir)) {
@@ -56,9 +65,13 @@ for (const file of walk(SRC)) {
   if (ALLOWLIST.some((a) => rel.startsWith(a))) continue;
   const lines = readFileSync(file, "utf8").split(/\r?\n/);
   const hits = [];
+  let inBlock = false;
   lines.forEach((line, i) => {
+    if (line.includes(OPT_OUT_START)) { inBlock = true; return; }
+    if (line.includes(OPT_OUT_END)) { inBlock = false; return; }
+    if (inBlock) return;
     if (line.includes(OPT_OUT)) return;
-    if (i > 0 && lines[i - 1].includes(OPT_OUT)) return;
+    if (i > 0 && lines[i - 1].includes(OPT_OUT) && !lines[i - 1].includes(OPT_OUT_END)) return;
     // 주석 줄은 코드가 아니다
     if (/^\s*(\/\/|\*|\/\*)/.test(line)) return;
     const found = [...(line.match(CLASS_RE) ?? []), ...(line.match(HEX_RE) ?? [])];

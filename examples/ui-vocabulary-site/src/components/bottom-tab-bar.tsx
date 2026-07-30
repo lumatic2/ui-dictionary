@@ -58,6 +58,7 @@ export function BottomTabBar({ activeTab, onTabChange }: BottomTabBarProps) {
               {tab.badgeCount ? (
                 <span
                   aria-hidden="true"
+                  // hardcoded-color-ok: no destructive-foreground token exists; --destructive is identical in light/dark, so text-white is theme-invariant and correct
                   className="absolute -right-1.5 -top-1.5 flex size-3.5 items-center justify-center rounded-full bg-destructive text-[9px] font-semibold text-white"
                 >
                   {tab.badgeCount}

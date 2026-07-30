@@ -9,6 +9,7 @@ export async function nodeToPngDataUrl(node: HTMLElement) {
   await document.fonts.ready
 
   return toPng(node, {
+    // hardcoded-color-ok: exported PNG is a fixed white-background artifact, independent of site theme
     backgroundColor: "#ffffff",
     cacheBust: true,
     filter: (target) => !(target instanceof HTMLElement && target.dataset.exportIgnore === "true"),
