@@ -49,15 +49,18 @@ Goal: 스튜디오 이월 갭 3건 마감 — 데이터 주도 주입 자동화�
 
 ## Active Milestones — dark-mode
 
-<!-- harness:milestone id="DM2" status="active" priority="P1" -->
+<!-- harness:milestone id="DM2" status="completed" priority="P1" evidence="evidence/dark-mode/dm2-shell-tokenization.md" -->
 ### DM2 — 사이트 셸 토큰 치환 + 하드코딩 색 스캐너
 - DoD: 셸 파일 하드코딩 색이 semantic 토큰으로 치환되어 스캐너 셸 스코프 위반 0 이 게이트로 걸리고, 라이트 모드 시각 무손실(스크린샷 대조)이 확인된다.
 - Gap: 셸 하드코딩 리터럴 색 ~455건+α — 2026-07-28 다크 차단의 원인, 게이트 부재로 재발 무방비
 - Scale: steps=3 (스캐너+baseline · App/home 치환 · 잔여+게이트 배선); surfaces: App.tsx·home-page·article-layout·term-visual·scripts; capability: 모든 셸 색이 토큰을 거친다
 - Plan: plans/2026-07-31-dm2-shell-tokenization.md
-- Status: [ ]
+- Status: [x]
 
-<!-- harness:milestone id="DM3" status="pending" priority="P1" -->
+- Completed at: 2026-07-31
+- Evidence: evidence/dark-mode/dm2-shell-tokenization.md
+- Summary: 셸 998건 토큰 치환·마커 정리 + lint:colors --max 0 게이트 — 라이트 무손실 스크린샷 대조, 다크 차단 원인 제거
+<!-- harness:milestone id="DM3" status="active" priority="P1" -->
 ### DM3 — 다크모드 활성화
 - DoD: 실배포 사이트에서 3-상태 다크모드가 FOUC 없이 동작하고(프리렌더 라우트 직접 진입 포함), 다크 대비 lint 와 주요 표면 점검을 통과하며, 사람 관측 1회 통과.
 - Gap: 인프라(.dark 토큰·토글 구현체)는 완성됐으나 2026-07-28 차단 useEffect 로 강제 라이트 고정
