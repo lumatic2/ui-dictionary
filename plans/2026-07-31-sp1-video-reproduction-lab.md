@@ -34,7 +34,7 @@ Status: approved (2026-07-31 사용자 승인 "ㄱㄱ" — 연쇄 SP2·SP3 제�
 
 ## Step 트리
 
-- [ ] **step-1 — 스타일 확보 + 프롬프트 커스터마이즈 (영상 ①②)**
+- [x] **step-1 — 스타일 확보 + 프롬프트 커스터마이즈 (영상 ①②)**
   - Artifact: MiniMax DESIGN.md 원문 저장(`research/sources/minimax-design-md.md`, 출처 URL+접근일) + PPT용 커스터마이즈 프리셋 초안(`decks/claude-ppt-lab/style-preset.md` — Pretendard·로고 자리·16:9·챕터명/제목/부제목 위치 고정·본문 밀도 규칙, 영어 프롬프트 본문).
   - Files: write research/sources/minimax-design-md.md, decks/claude-ppt-lab/style-preset.md. read research/2026-07-31-claude-ppt-video-analysis.md.
   - Risk: 없음 (신규 파일만)
