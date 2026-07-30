@@ -1,11 +1,33 @@
 # ROADMAP
 
-> Last updated: 2026-07-28
-> Status: **goal `slide-expressive` 완주 (2026-07-28, 워크트리 lumatic2/발표-슬라이드-만드는-법)** — SX1 레이아웃·SX2 벡터 PDF·SX3 실증 연쇄 완료. 이날 완주 goal 3개(slide-methodology·real-use-lap·slide-expressive). active goal 0. 대기 순서(사용자 확정 2026-07-28): ② 『인터랙티브 웹 애니메이션』 책 스터디 자산화 ③ 사이트 품질(finding 큐 O5~O9·verify 위반 77건·SSG) ④ 다크모드 정비.
+> Last updated: 2026-07-31
+> Status: **goal `slide-pipeline-upgrade` 개설 (2026-07-31, 워크트리 lumatic2/발표-슬라이드-만드는-법)** — 유튜브 aITV54CLc_U 재현 랩(SP1) → HTML 트랙 스킬 업그레이드(SP2) → PPTX pptxgenjs 정본화(SP3). 워크트리 병합 전 마감 (사용자 방향 2026-07-31). 대기 순서(사용자 확정 2026-07-28): ② 『인터랙티브 웹 애니메이션』 책 스터디 자산화 ③ 사이트 품질(finding 큐 O5~O9·verify 위반 77건·SSG) ④ 다크모드 정비.
 > North star: Build Askewly Design as both a public reference website and an agent-usable implementation system.
 > line budget: <=150
 
 ## Current Goal
+
+Goal: `slide-pipeline-upgrade` — 유튜브 영상(클로드 PPT 5단계) 등가 재현으로 검증하고, 흡수분으로 presentation-slides-yusung HTML 트랙 업그레이드 + PPTX(pptxgenjs) 파이프라인 정본화. 결정 3건 확정(2026-07-31): 등가 재현 · pptxgenjs 단일 경로(SL3 중단의 좁히기) · MiniMax→Askewly.
+
+## Active Milestones — slide-pipeline-upgrade
+
+<!-- harness:milestone id="SP1" status="active" priority="P0" -->
+### SP1 — 영상 재현 랩
+- DoD: 영상 5단계가 Claude Code 등가로 전부 재현되고(편차 명기), 네이티브 차트 PPTX가 PowerPoint 실개봉·차트 데이터 연동 확인까지 통과하며, 흡수 후보 4건(브랜드 DESIGN.md 테마 변환·1장 캘리브레이션·비교쌍 교정·리디자인 입력)의 채택/보류 판정이 장부로 남아 SP2/SP3 scope 를 결정한다.
+- Plan: plans/2026-07-31-sp1-video-reproduction-lab.md
+- Status: [ ]
+
+<!-- harness:milestone id="SP2" status="pending" priority="P1" -->
+### SP2 — HTML 트랙 스킬 업그레이드
+- DoD: SP1 채택분이 custom-skills presentation-slides-yusung 에 구현·배포되고 검증 덱으로 실증된다.
+- Plan: (SP1 완료 경계에서 작성 — 흡수 판정이 scope 입력)
+- Status: [ ]
+
+<!-- harness:milestone id="SP3" status="pending" priority="P1" -->
+### SP3 — PPTX 파이프라인 정본화
+- DoD: pptxgenjs 단일 경로가 스킬 export 트랙으로 승격되고 methodology/slide-production.md 가 갱신되며 Askewly 스타일 실증 덱이 남는다.
+- Plan: (SP2 완료 경계에서 작성)
+- Status: [ ]
 
 <!-- harness:goal-archive15 id="slide-expressive" status="completed" -->
 Goal: 슬라이드 표현력 심화 — PPTX 중단·HTML/PDF 우선 방향의 실행. closed 2026-07-28 — SX1 임팩트 레이아웃 2종(hero-motion·svg-filter-scene, 정적 14종)·SX2 벡터 PDF 트랙(텍스트 선택·의존성 0)·SX3 소개 덱 실증(직행 예외 정당 판정) 단일 세션 완주. Details: `research/2026-07-28-sx1-slide-expressive-survey.md` + `docs/reports/2026-07-28-sx{1,2,3}-*.md`.
