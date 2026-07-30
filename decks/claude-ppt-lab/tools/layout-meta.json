@@ -1,0 +1,133 @@
+{
+  "layouts": {
+    "cover": {
+      "label": "Cover",
+      "kind": "static",
+      "maxItems": 3,
+      "density": "low",
+      "preferredEffect": "focus"
+    },
+    "closing": {
+      "label": "Closing",
+      "kind": "static",
+      "maxItems": 3,
+      "density": "low",
+      "preferredEffect": "fade"
+    },
+    "hero-cards": {
+      "label": "Hero cards",
+      "kind": "static",
+      "maxItems": 3,
+      "density": "low",
+      "preferredEffect": "rise"
+    },
+    "comparison-2col": {
+      "label": "Two-column comparison",
+      "kind": "static",
+      "maxItems": 4,
+      "density": "medium",
+      "preferredEffect": "rise"
+    },
+    "step-flow": {
+      "label": "Step flow",
+      "kind": "static",
+      "maxItems": 5,
+      "density": "medium",
+      "preferredEffect": "rise"
+    },
+    "diagram-box": {
+      "label": "Diagram box",
+      "kind": "static",
+      "maxItems": 7,
+      "density": "medium",
+      "preferredEffect": "rise"
+    },
+    "summary-grid": {
+      "label": "Summary grid",
+      "kind": "static",
+      "maxItems": 6,
+      "density": "medium",
+      "preferredEffect": "rise"
+    },
+    "case-map": {
+      "label": "Contents map",
+      "kind": "static",
+      "maxItems": 5,
+      "density": "portfolio",
+      "preferredEffect": "rise"
+    },
+    "split-screen": {
+      "label": "Split screen",
+      "kind": "static",
+      "maxItems": 4,
+      "density": "portfolio",
+      "preferredEffect": "fade"
+    },
+    "timeline-cards": {
+      "label": "Timeline cards",
+      "kind": "static",
+      "maxItems": 4,
+      "density": "portfolio",
+      "preferredEffect": "rise"
+    },
+    "pipeline-lanes": {
+      "label": "Pipeline lanes",
+      "kind": "static",
+      "maxItems": 9,
+      "density": "portfolio",
+      "preferredEffect": "rise"
+    },
+    "result-transitions": {
+      "label": "Result transitions",
+      "kind": "static",
+      "maxItems": 3,
+      "density": "portfolio",
+      "preferredEffect": "rise"
+    },
+    "chart-interactive": {
+      "label": "Interactive chart",
+      "kind": "interactive",
+      "maxItems": 6,
+      "density": "data",
+      "requiresFallback": true,
+      "cdn": "Chart.js"
+    },
+    "three-scene": {
+      "label": "Three.js scene",
+      "kind": "interactive",
+      "density": "visual",
+      "requiresFallback": true,
+      "cdn": "Three.js"
+    },
+    "before-after": {
+      "label": "Before after",
+      "kind": "interactive",
+      "maxItems": 2,
+      "density": "visual",
+      "requiresFallback": true
+    },
+    "qr-embed": {
+      "label": "QR embed",
+      "kind": "interactive",
+      "maxItems": 1,
+      "density": "action",
+      "requiresFallback": true
+    },
+    "hero-motion": {
+      "label": "Hero motion",
+      "kind": "static",
+      "maxItems": 3,
+      "density": "low",
+      "preferredEffect": "none",
+      "requiresFallback": true
+    },
+    "svg-filter-scene": {
+      "label": "SVG filter scene",
+      "kind": "static",
+      "maxItems": 0,
+      "density": "low",
+      "preferredEffect": "none",
+      "requiresFallback": true
+    }
+  }
+}

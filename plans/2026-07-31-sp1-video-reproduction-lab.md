@@ -42,7 +42,7 @@ Status: approved (2026-07-31 사용자 승인 "ㄱㄱ" — 연쇄 SP2·SP3 제�
   - Verify: DESIGN.md 원문이 Google 스펙 구조(색·타입·간격·컴포넌트+rationale)로 확보되고, 프리셋에 영상 ② 필수 3요소(폰트·로고·비율)+레이아웃 규칙이 전부 반영됨.
   - Failure probe: getdesign.md 페이지가 JS 렌더라 WebFetch로 본문이 안 잡히면 → chrome-ext 브라우저로 실접속 복사. 그래도 실패면 blocked 기록(대체: 공개 DESIGN.md 스펙 예시로 등가 구성 — 편차 장부 기록).
   - Commit: `feat(sp1): step-1 — MiniMax DESIGN.md 확보 + PPT 커스터마이즈 프리셋`
-- [ ] **step-2 — 1장 캘리브레이션 루프 + 프리셋 박제 (영상 ③④)**
+- [x] **step-2 — 1장 캘리브레이션 루프 + 프리셋 박제 (영상 ③④)**
   - Artifact: 테스트 주제 1장 덱(`decks/claude-ppt-lab/` — 스킬 템플릿 복사, slides.json 1장) 생성 → Chrome 스크린샷 → 프리셋 대비 편차 교정 ≥2회 왕복(제목/부제 간격·본문 위치·로고/넘버링 위치 — 영상의 교정 항목 재현) → 확정 프리셋 v1 박제. 교정 전/후 스크린샷 보존.
   - Files: write decks/claude-ppt-lab/**(스킬 표준 구조), decks/claude-ppt-lab/style-preset.md(v1 확정), evidence용 스크린샷. 실행: 빌드+Chrome.
   - Risk: 없음 (랩 폴더 한정)

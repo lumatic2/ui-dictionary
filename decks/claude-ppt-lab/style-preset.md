@@ -31,10 +31,19 @@ You are producing presentation slides. Use the MiniMax design system tokens belo
 - rounded: md 8 · lg 12 · xl 16 · hero 32 · full 9999
 - spacing: xs 8 · sm 12 · md 16 · lg 20 · xl 24 · xxl 32 · section 64
 
-## 캘리브레이션 로그 (step-2에서 기록)
+## 캘리브레이션 로그 (step-2 — 영상 ③ 등가, 1장 왕복 3회)
 
-- (대기)
+테스트 슬라이드: `content/slides.json` 1장 (한일 AI 리터러시 비교, comparison-2col — 영상 [04:03] 예시 주제 재현). 스크린샷: `evidence/slide-pipeline/img/lab-calib-r{1,2,3}.png`.
+
+| 회차 | 관측 편차 | 교정 지시 (반영 diff) |
+|---|---|---|
+| r1 | ① 챕터명 부재 ② 제목 중앙정렬 ③ 제목-부제 간격 과다(18px+) ④ 카드 보더 2색 혼용(보라·코랄) ⑤ 푸터가 규칙 6 불일치(넘버 중앙·로고 부재) | ① kicker 필드 사용 ② `.title/.subtitle/.slide-header` 좌측 정렬(cover·closing 예외) ③ title margin 18→8px, subtitle 34→20px(본문 비례 상향 — 영상 교정 항목 그대로) ④ `.comparison-panel` border-top → `--accent-start` 단일화 ⑤ 푸터 넘버 좌하단·"Askewly" 워드마크 우하단 (shell.mjs) |
+| r2 | 제목 x축(80px)과 카드 x축(120px) 기준선 불일치 | `.slide-header` max-width 1040px + margin auto — 콘텐츠 그리드와 기준선 일치 |
+| r3 | 수렴 — 편차 0 (validate·build·overflow PASS) | v1 확정 |
+
+교정은 전부 덱 로컬 `tools/` 사본에만 반영 (스킬 소스 무접촉). 콘솔 에러는 favicon 404 1건뿐(무해).
 
 ## Changelog
 
+- 2026-07-31 v1 — 캘리브레이션 3회 왕복 수렴, 좌측 앵커·단일 키컬러·푸터 규칙 확정.
 - 2026-07-31 draft — 영상 ② 등가: 폰트/로고/비율 3요소 + 레이아웃 규칙 4~10 반영.

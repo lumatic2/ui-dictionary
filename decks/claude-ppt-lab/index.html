@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+  <html lang="ko">
+  <head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Claude PPT Lab — 비주얼 자료</title>
+  <link href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable.min.css" rel="stylesheet">
+  <style>:root {
+  --bg-primary: #FFFFFF;
+  --bg-card: #FFFFFF;
+  --surface-raised: #F7F8FA;
+  --border-card: #E5E7EB;
+  --text-primary: #0A0A0A;
+  --text-secondary: #45515E;
+  --text-muted: #A8AAB2;
+  --text-sub: #222222;
+  --accent-start: #FF5530;
+  --accent-end: #EA5EC1;
+  --accent-gradient: linear-gradient(135deg, var(--accent-start), var(--accent-end));
+  --accent-soft: #FFF1ED;
+  --accent-border: #FFC7B8;
+  --shadow-accent: rgb(255 85 48 / 0.12);
+  --card-gradient: linear-gradient(145deg, #FFFFFF 0%, #F7F8FA 100%);
+  --nav-bg: rgb(255 255 255 / 0.96);
+  --nav-border: #E5E7EB;
+  --nav-accent: #FF5530;
+  --nav-hover: #1456F0;
+  --nav-disabled: #A8AAB2;
+  --input-bg: #F2F3F5;
+  --option-bg: #FFFFFF;
+  --hint-bg: rgb(10 10 10 / 0.85);
+  --chart-1: #FF5530; --chart-2: #1456F0; --chart-3: #A855F7; --chart-4: #EA5EC1;
+  --font-main: 'Pretendard Variable', Pretendard, -apple-system, system-ui, sans-serif;
+  --font-mono: 'JetBrains Mono', 'Fira Code', monospace;
+}
+:root {
+  --slide-w: 1280px;
+  --slide-h: 720px;
+  --canvas-scale: 1;
+  --base-slide-w: 1280px;
+  --base-slide-h: 720px;
+  --scaled-slide-w: calc(var(--base-slide-w) * var(--canvas-scale));
+  --scaled-slide-h: calc(var(--base-slide-h) * var(--canvas-scale));
+}
+* { margin: 0; padding: 0; box-sizing: border-box; }
+html { scrollbar-width: none; -ms-overflow-style: none; }
+html::-webkit-scrollbar, body::-webkit-scrollbar { width: 0; height: 0; display: none; }
+body { background: var(--bg-primary); font-family: var(--font-main); color: var(--text-primary); min-height: 100vh; display: flex; justify-content: center; padding: 58px 0 80px; overflow-y: auto; scrollbar-width: none; -ms-overflow-style: none; }
+.container { width: var(--slide-w); padding: 0 calc(80px * var(--canvas-scale)); }
+.page-title, .page-subtitle, .deck-card .card-title {
+  word-break: keep-all;
+  overflow-wrap: break-word;
+  line-break: strict;
+  text-wrap: pretty;
+}
+.card-file {
+  overflow-wrap: anywhere;
+  word-break: normal;
+}
+.page-title { font-size: 42px; font-weight: 900; text-align: center; margin-bottom: 10px; letter-spacing: 0; }
+.page-subtitle { text-align: center; font-size: 16px; color: var(--text-secondary); margin-bottom: 46px; }
+.section { margin-bottom: 34px; }
+.section-header { font-size: 18px; font-weight: 800; padding: 12px 0; border-bottom: 1px solid var(--border-card); margin-bottom: 16px; display: flex; align-items: center; gap: 12px; }
+.num-range { display: inline-block; font-size: 12px; font-weight: 800; color: var(--bg-primary); background: var(--accent-start); padding: 3px 10px; border-radius: 999px; }
+.deck-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 14px; }
+.deck-card { min-height: 130px; display: flex; flex-direction: column; gap: 7px; padding: 18px 18px; background: var(--bg-card); border: 1px solid var(--border-card); border-radius: 8px; text-decoration: none; transition: all 0.22s ease; position: relative; color: inherit; }
+.deck-card:hover { transform: translateY(-3px); border-color: var(--accent-start); box-shadow: 0 8px 28px var(--shadow-accent); }
+.card-num { font-size: 28px; font-weight: 900; color: var(--accent-start); }
+.card-title { font-size: 14px; font-weight: 750; color: var(--text-sub); line-height: 1.35; padding-right: 8px; }
+.card-file { margin-top: auto; font-size: 11px; color: var(--text-muted); font-family: var(--font-mono); }
+.badge-interactive { position: absolute; top: 10px; right: 10px; display: inline-flex; align-items: center; gap: 4px; font-size: 9px; font-weight: 850; color: var(--accent-start); }
+.badge-interactive svg { width: 13px; height: 13px; }
+body { opacity: 0; animation: fadeIn 0.35s ease forwards; }
+body.fade-out { animation: fadeOut 0.25s ease forwards; }
+@keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+@keyframes fadeOut { from { opacity: 1; } to { opacity: 0; } }
+</style>
+  </head>
+  <body class="theme-minimax">
+  <main class="container">
+    <h1 class="page-title">Claude PPT Lab — 비주얼 자료</h1>
+    <p class="page-subtitle">전체 1개 슬라이드 · 클릭하여 개별 페이지로 이동</p>
+    <section class="section"><div class="section-header"><span class="num-range">01</span> calibration</div><div class="deck-grid"><a class="deck-card" href="01-kr-jp-ai-literacy.html" onclick="event.preventDefault(); navigateTo(this.href)"><span class="card-num">01</span><span class="card-title">한일 AI 리터러시 비교</span><span class="card-file">01-kr-jp-ai-literacy.html</span></a></div></section>
+  </main>
+  <script>
+  function navigateTo(url) {
+    if (document.startViewTransition) {
+      document.startViewTransition(() => { window.location.href = url; });
+      return;
+    }
+    document.body.classList.add('fade-out');
+    setTimeout(function() { window.location.href = url; }, 250);
+  }
+  </script>
+  </body>
+  </html>
