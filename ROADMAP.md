@@ -49,15 +49,7 @@ Goal: 스튜디오 이월 갭 3건 마감 — 데이터 주도 주입 자동화�
 
 ## Active Milestones — dark-mode
 
-<!-- harness:milestone id="DM1" status="active" priority="P1" -->
-### DM1 — 다크모드 지식·용어 자산화
-- DoD: `knowledge/dark-mode.md`(출처 기반 정의·경계·주의점)가 llms 재생성 산출물에 배선되고, terms.yml '다크모드' 항목이 authoring workflow 전 검증(validate·build·lint·audit:visuals)을 통과하며 상세 페이지가 렌더된다.
-- Gap: 용어 사전에 '다크모드' 부재(테마 토큰 항목의 스침 언급뿐) — 정의 정본 없음
-- Scale: steps=2 (knowledge+llms 배선 · terms 등재+시각 variant); surfaces: knowledge/·generate-llms-txt.mjs·terms.yml·term-visual.tsx; capability: 사람과 에이전트가 같은 다크모드 정의를 공유한다
-- Plan: plans/2026-07-31-dm1-dark-mode-knowledge.md
-- Status: [ ]
-
-<!-- harness:milestone id="DM2" status="pending" priority="P1" -->
+<!-- harness:milestone id="DM2" status="active" priority="P1" -->
 ### DM2 — 사이트 셸 토큰 치환 + 하드코딩 색 스캐너
 - DoD: 셸 파일 하드코딩 색이 semantic 토큰으로 치환되어 스캐너 셸 스코프 위반 0 이 게이트로 걸리고, 라이트 모드 시각 무손실(스크린샷 대조)이 확인된다.
 - Gap: 셸 하드코딩 리터럴 색 ~455건+α — 2026-07-28 다크 차단의 원인, 게이트 부재로 재발 무방비
@@ -75,28 +67,6 @@ Goal: 스튜디오 이월 갭 3건 마감 — 데이터 주도 주입 자동화�
 
 ## Active Milestones — site-quality
 
-<!-- harness:milestone id="SQ2" status="completed" priority="P1" evidence="evidence/site-quality/sq2-structural-defects.md" -->
-### SQ2 — 구조 결함 O5·O6·O7
-- DoD: Get Started 착지(O5 — 노출 정책과의 긴장 해소는 사용자 결정), Docs 랜딩 역할 정의(O6), 좌측 내비 IA 재정리(O7)가 라우트 구조 위에서 수리되고 사람 관측 1회 통과.
-- Gap: UE1 관측 이월 구조 결함 — 결정 3건 매듭(2026-07-28): O5 시작 가이드 재정의·O6 소개+허브 결합·O7 Components 그룹
-- Scale: steps=3 (O5 시작 가이드·O6 Docs 허브·O7 Components 그룹+통합); surfaces: App.tsx 내비·라우트 3면·functions; capability: 들어온 사람이 시작점·문서 입구·기본 컴포넌트를 찾는다
-- Plan: plans/2026-07-28-sq2-structural-defects.md
-- Status: [x]
-
-- Completed at: 2026-07-28
-- Evidence: evidence/site-quality/sq2-structural-defects.md
-- Summary: 구조 결함 3건 수리 — Get Started 시작 가이드·Docs 소개+허브·사이드바 Components 그룹, 사람 관측 통과
-<!-- harness:milestone id="SQ3" status="completed" priority="P1" evidence="evidence/site-quality/sq3-search-redesign.md" -->
-### SQ3 — O9 검색 결과 UI 재디자인
-- DoD: 검색 결과 화면이 askewly-design 경유로 재디자인되고(정확 일치 vs 연관 언급 계층화 포함), 디자인 verify PASS + 사람 관측 1회 통과.
-- Gap: UE1 관측 2회차 "너무 구려" — 방향 확정(2026-07-28): 계층 섹션형·사이드바 현상 유지
-- Scale: steps=3 (계층화 정보구조·행 비주얼 재디자인·통합+관측); surfaces: search.ts·App.tsx 검색 렌더·term-result-row; capability: 검색이 정답과 연관을 구분해 보여준다
-- Plan: plans/2026-07-28-sq3-search-redesign.md
-- Status: [x]
-
-- Completed at: 2026-07-29
-- Evidence: evidence/site-quality/sq3-search-redesign.md
-- Summary: 정답/연관 2티어 계층화 + hero/compact 행 재디자인(askewly-design 경유) — 순위·개수 보존, 사람 관측 통과
 <!-- harness:milestone id="SQ4" status="completed" priority="P2" evidence="evidence/site-quality/sq4-ssg-prerender.md" -->
 ### SQ4 — SSG/prerender
 - DoD: 주요 라우트(홈·용어·패턴·docs)가 prerender 되어 최초 페인트·SEO 메타가 정적 제공되고, SPA 폴백·오너 언락 회귀 없음(실배포 확인 포함).

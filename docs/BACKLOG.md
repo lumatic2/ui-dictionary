@@ -579,3 +579,19 @@ plan doc: `archive/plans/2026-07-21-eu*.md` · 증거: `evidence/editor-legibili
   - Completed: 2026-07-28
   - Result: 색 위반 72→0(시각 무손실 토큰화)·VI8 finding 2건 해소 — 타이포 7건은 게이트 보정 후(사용자 확정)
   - Evidence: evidence/site-quality/sq1-verify-cleanup.md
+
+### 2026-07
+- DM1 - DM1 — 다크모드 지식·용어 자산화
+  - Completed: 2026-07-31
+  - Result: 다크모드 정의 정본 — knowledge/dark-mode.md llms 배선 + terms.yml 등재(전용 variant), 검증 전건 PASS
+  - Evidence: evidence/dark-mode/dm1-knowledge.md
+
+- SQ2 - SQ2 — 구조 결함 O5·O6·O7
+  - Completed: 2026-07-31
+  - Result: 구조 결함 3건 수리 — Get Started 시작 가이드·Docs 소개+허브·사이드바 Components 그룹, 사람 관측 통과
+  - Evidence: evidence/site-quality/sq2-structural-defects.md
+
+- SQ3 - SQ3 — O9 검색 결과 UI 재디자인
+  - Completed: 2026-07-31
+  - Result: 정답/연관 2티어 계층화 + hero/compact 행 재디자인(askewly-design 경유) — 순위·개수 보존, 사람 관측 통과
+  - Evidence: evidence/site-quality/sq3-search-redesign.md
