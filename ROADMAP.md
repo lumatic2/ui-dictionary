@@ -11,16 +11,19 @@ Goal: `slide-pipeline-upgrade` — 유튜브 영상(클로드 PPT 5단계) 등�
 
 ## Active Milestones — slide-pipeline-upgrade
 
-<!-- harness:milestone id="SP2" status="active" priority="P1" -->
+<!-- harness:milestone id="SP2" status="completed" priority="P1" evidence="evidence/slide-pipeline/sp2-skill-upgrade.md" -->
 ### SP2 — HTML 트랙 스킬 업그레이드
 - DoD: SP1 채택분이 custom-skills presentation-slides-yusung 에 구현·배포되고 검증 덱으로 실증된다.
 - Plan: plans/2026-07-31-sp2-html-track-upgrade.md
-- Status: [ ]
+- Status: [x]
 
-<!-- harness:milestone id="SP3" status="pending" priority="P1" -->
+- Completed at: 2026-07-31
+- Evidence: evidence/slide-pipeline/sp2-skill-upgrade.md
+- Summary: custom 테마 트랙+G5 캘리브레이션+리디자인 입력 구현·배포 — smoke 18+3 PASS·배포본 랩 실증
+<!-- harness:milestone id="SP3" status="active" priority="P1" -->
 ### SP3 — PPTX 파이프라인 정본화
 - DoD: pptxgenjs 단일 경로가 스킬 export 트랙으로 승격되고 methodology/slide-production.md 가 갱신되며 Askewly 스타일 실증 덱이 남는다.
-- Plan: (SP2 완료 경계에서 작성)
+- Plan: plans/2026-07-31-sp3-pptx-canonical-track.md
 - Status: [ ]
 
 <!-- harness:goal-archive15 id="slide-expressive" status="completed" -->
