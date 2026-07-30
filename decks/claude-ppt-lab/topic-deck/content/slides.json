@@ -2,7 +2,7 @@
   "meta": {
     "title": "발표 슬라이드 파이프라인",
     "subtitle": "2026-07 현황 — 주제 입력 모드 재현",
-    "template": "minimax",
+    "template": "custom",
     "mode": "arrow",
     "canvas": "hd",
     "effects": "none",

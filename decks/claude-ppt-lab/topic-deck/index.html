@@ -6,30 +6,33 @@
   <title>발표 슬라이드 파이프라인 — 비주얼 자료</title>
   <link href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable.min.css" rel="stylesheet">
   <style>:root {
-  --bg-primary: #FFFFFF;
-  --bg-card: #FFFFFF;
-  --surface-raised: #F7F8FA;
-  --border-card: #E5E7EB;
-  --text-primary: #0A0A0A;
-  --text-secondary: #45515E;
-  --text-muted: #A8AAB2;
+  --bg-primary: #ffffff;
+  --bg-card: #ffffff;
+  --surface-raised: #f7f8fa;
+  --border-card: #e5e7eb;
+  --text-primary: #0a0a0a;
+  --text-secondary: #45515e;
+  --text-muted: #a8aab2;
   --text-sub: #222222;
-  --accent-start: #FF5530;
-  --accent-end: #EA5EC1;
-  --accent-gradient: linear-gradient(135deg, var(--accent-start), var(--accent-end));
-  --accent-soft: #FFF1ED;
-  --accent-border: #FFC7B8;
-  --shadow-accent: rgb(255 85 48 / 0.12);
-  --card-gradient: linear-gradient(145deg, #FFFFFF 0%, #F7F8FA 100%);
-  --nav-bg: rgb(255 255 255 / 0.96);
-  --nav-border: #E5E7EB;
-  --nav-accent: #FF5530;
-  --nav-hover: #1456F0;
-  --nav-disabled: #A8AAB2;
-  --input-bg: #F2F3F5;
-  --option-bg: #FFFFFF;
-  --hint-bg: rgb(10 10 10 / 0.85);
-  --chart-1: #FF5530; --chart-2: #1456F0; --chart-3: #A855F7; --chart-4: #EA5EC1;
+  --accent-start: #ff5530;
+  --accent-end: #ea5ec1;
+  --accent-gradient: linear-gradient(135deg, #ff5530, #ea5ec1);
+  --accent-soft: color-mix(in srgb, #ff5530 9%, #ffffff);
+  --accent-border: color-mix(in srgb, #ff5530 34%, #ffffff);
+  --shadow-accent: color-mix(in srgb, #ff5530 12%, transparent);
+  --card-gradient: linear-gradient(145deg, #ffffff 0%, #f7f8fa 100%);
+  --nav-bg: color-mix(in srgb, #ffffff 96%, transparent);
+  --nav-border: #e5e7eb;
+  --nav-accent: #ff5530;
+  --nav-hover: #1456f0;
+  --nav-disabled: #a8aab2;
+  --input-bg: #f2f3f5;
+  --option-bg: #ffffff;
+  --hint-bg: color-mix(in srgb, #0a0a0a 85%, transparent);
+  --chart-1: #ff5530;
+  --chart-2: #1456f0;
+  --chart-3: #3b82f6;
+  --chart-4: #ea5ec1;
   --font-main: 'Pretendard Variable', Pretendard, -apple-system, system-ui, sans-serif;
   --font-mono: 'JetBrains Mono', 'Fira Code', monospace;
 }
@@ -76,7 +79,7 @@ body.fade-out { animation: fadeOut 0.25s ease forwards; }
 @keyframes fadeOut { from { opacity: 1; } to { opacity: 0; } }
 </style>
   </head>
-  <body class="theme-minimax">
+  <body class="theme-custom">
   <main class="container">
     <h1 class="page-title">발표 슬라이드 파이프라인 — 비주얼 자료</h1>
     <p class="page-subtitle">전체 6개 슬라이드 · 클릭하여 개별 페이지로 이동</p>

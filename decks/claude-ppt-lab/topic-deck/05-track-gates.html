@@ -12,30 +12,33 @@
   if (__slideParams.has('capture')) document.documentElement.classList.add('capture-mode');
   </script>
   <style>:root {
-  --bg-primary: #FFFFFF;
-  --bg-card: #FFFFFF;
-  --surface-raised: #F7F8FA;
-  --border-card: #E5E7EB;
-  --text-primary: #0A0A0A;
-  --text-secondary: #45515E;
-  --text-muted: #A8AAB2;
+  --bg-primary: #ffffff;
+  --bg-card: #ffffff;
+  --surface-raised: #f7f8fa;
+  --border-card: #e5e7eb;
+  --text-primary: #0a0a0a;
+  --text-secondary: #45515e;
+  --text-muted: #a8aab2;
   --text-sub: #222222;
-  --accent-start: #FF5530;
-  --accent-end: #EA5EC1;
-  --accent-gradient: linear-gradient(135deg, var(--accent-start), var(--accent-end));
-  --accent-soft: #FFF1ED;
-  --accent-border: #FFC7B8;
-  --shadow-accent: rgb(255 85 48 / 0.12);
-  --card-gradient: linear-gradient(145deg, #FFFFFF 0%, #F7F8FA 100%);
-  --nav-bg: rgb(255 255 255 / 0.96);
-  --nav-border: #E5E7EB;
-  --nav-accent: #FF5530;
-  --nav-hover: #1456F0;
-  --nav-disabled: #A8AAB2;
-  --input-bg: #F2F3F5;
-  --option-bg: #FFFFFF;
-  --hint-bg: rgb(10 10 10 / 0.85);
-  --chart-1: #FF5530; --chart-2: #1456F0; --chart-3: #A855F7; --chart-4: #EA5EC1;
+  --accent-start: #ff5530;
+  --accent-end: #ea5ec1;
+  --accent-gradient: linear-gradient(135deg, #ff5530, #ea5ec1);
+  --accent-soft: color-mix(in srgb, #ff5530 9%, #ffffff);
+  --accent-border: color-mix(in srgb, #ff5530 34%, #ffffff);
+  --shadow-accent: color-mix(in srgb, #ff5530 12%, transparent);
+  --card-gradient: linear-gradient(145deg, #ffffff 0%, #f7f8fa 100%);
+  --nav-bg: color-mix(in srgb, #ffffff 96%, transparent);
+  --nav-border: #e5e7eb;
+  --nav-accent: #ff5530;
+  --nav-hover: #1456f0;
+  --nav-disabled: #a8aab2;
+  --input-bg: #f2f3f5;
+  --option-bg: #ffffff;
+  --hint-bg: color-mix(in srgb, #0a0a0a 85%, transparent);
+  --chart-1: #ff5530;
+  --chart-2: #1456f0;
+  --chart-3: #3b82f6;
+  --chart-4: #ea5ec1;
   --font-main: 'Pretendard Variable', Pretendard, -apple-system, system-ui, sans-serif;
   --font-mono: 'JetBrains Mono', 'Fira Code', monospace;
 }
@@ -90,14 +93,12 @@ body {
   word-break: normal;
 }
 .container { --slide-pad-top: 84px; --slide-pad-x: 80px; --slide-pad-bottom: 68px; --header-h: 92px; --content-max-h: calc(var(--base-slide-h) - var(--slide-pad-top) - var(--slide-pad-bottom) - var(--header-h)); --content-justify: flex-start; --content-pad-top: 12px; --content-pad-bottom: 0px; width: var(--base-slide-w); height: var(--base-slide-h); padding: var(--slide-pad-top) var(--slide-pad-x) var(--slide-pad-bottom); display: flex; flex-direction: column; align-items: center; justify-content: flex-start; zoom: var(--canvas-scale); overflow: hidden; }
-.slide-header { width: 100%; max-width: 1040px; margin: 0 auto; min-height: var(--header-h); flex: 0 0 auto; display: flex; flex-direction: column; align-items: flex-start; justify-content: flex-start; }
-.layout-cover .slide-header, .layout-closing .slide-header { align-items: center; }
-.layout-cover .title, .layout-closing .title, .layout-cover .subtitle, .layout-closing .subtitle { text-align: center; }
+.slide-header { width: 100%; min-height: var(--header-h); flex: 0 0 auto; display: flex; flex-direction: column; align-items: center; justify-content: flex-start; }
 .slide-header.reserve-kicker::before { content: ''; display: block; height: 27px; flex: 0 0 auto; }
 .slide-content { width: 100%; max-height: var(--content-max-h); min-height: 0; flex: 1 1 auto; padding-top: var(--content-pad-top); padding-bottom: var(--content-pad-bottom); display: flex; flex-direction: column; align-items: center; justify-content: var(--content-justify); }
-.title { font-size: 48px; font-weight: 900; text-align: left; margin-bottom: 8px; line-height: 1.18; color: var(--text-primary); letter-spacing: 0; }
+.title { font-size: 48px; font-weight: 900; text-align: center; margin-bottom: 18px; line-height: 1.18; color: var(--text-primary); letter-spacing: 0; }
 .kicker { color: var(--accent-start); font-size: 13px; font-weight: 900; letter-spacing: 0.12em; text-transform: uppercase; margin-bottom: 14px; }
-.subtitle { font-size: 18px; color: var(--text-secondary); line-height: 1.55; text-align: left; max-width: 860px; margin-bottom: 20px; }
+.subtitle { font-size: 18px; color: var(--text-secondary); line-height: 1.55; text-align: center; max-width: 860px; margin-bottom: 34px; }
 .body-copy { font-size: 18px; color: var(--text-sub); line-height: 1.65; max-width: 900px; text-align: center; }
 .type-compact .title { font-size: 42px; line-height: 1.16; margin-bottom: 14px; }
 .type-compact .container { --header-h: 86px; --content-pad-top: 10px; }
@@ -181,7 +182,7 @@ body {
 .hero-card-index { font-size: 12px; font-weight: 900; color: var(--accent-start); margin-bottom: 16px; letter-spacing: 0.08em; }
 .hero-card .card-title { font-size: 22px; }
 .comparison { width: 100%; max-width: 1040px; display: grid; grid-template-columns: 1fr 1fr; gap: 22px; align-items: stretch; }
-.comparison-panel { padding: 34px 34px; border-radius: 6px; border: 1px solid var(--border-card); border-top: 2px solid var(--accent-start); background: color-mix(in srgb, var(--surface-raised) 58%, var(--accent-soft)); min-height: 286px; display: flex; flex-direction: column; justify-content: center; box-shadow: none; }
+.comparison-panel { padding: 34px 34px; border-radius: 6px; border: 1px solid var(--border-card); border-top: 2px solid color-mix(in srgb, var(--accent-end) 72%, var(--text-primary)); background: color-mix(in srgb, var(--surface-raised) 58%, var(--accent-soft)); min-height: 286px; display: flex; flex-direction: column; justify-content: center; box-shadow: none; }
 .comparison-panel .card-icon { width: 34px; height: 34px; margin-bottom: 16px; }
 .comparison-panel .card-icon svg { width: 25px; height: 25px; }
 .comparison-panel.emphasis { border-color: var(--accent-border); border-top-color: var(--accent-start); background: color-mix(in srgb, var(--accent-soft) 52%, var(--surface-raised)); }
@@ -715,8 +716,6 @@ body.theme-askewly .recipe-conclusion { background: var(--accent-soft); }
 .slide-nav a:hover { color: var(--nav-hover); }
 .nav-disabled { font-size: 14px; font-weight: 750; color: var(--nav-disabled); }
 .nav-center a { color: var(--text-secondary); font-size: 13px; font-weight: 720; }
-.nav-wordmark { font-size: 14px; font-weight: 600; color: var(--text-primary); letter-spacing: -0.2px; }
-.nav-left a { color: var(--text-secondary); font-size: 13px; font-weight: 720; }
 
 
 body { opacity: 0; animation: fadeIn 0.35s ease forwards; }
@@ -778,7 +777,7 @@ html.capture-mode .export-fallback-note { display: none !important; }
 html.capture-mode .source-note { bottom: 24px; }
 html.capture-mode .container, html.capture-mode .container * { animation: none !important; transition: none !important; }</style>
   </head>
-  <body class="theme-minimax effect-none type-standard">
+  <body class="theme-custom effect-none type-standard">
   <main class="container layout-comparison-2col effect-none type-standard">
     
     <header class="slide-header has-kicker">
@@ -796,9 +795,9 @@ html.capture-mode .container, html.capture-mode .container * { animation: none !
     
   </main>
   <nav class="slide-nav"><div class="slide-nav-inner">
-      <div class="nav-left"><a href="index.html">05 / 06</a></div>
-      <div class="nav-center"><a href="04-five-gates.html" onclick="event.preventDefault(); navigateTo(this.href)">← 이전</a> &nbsp;·&nbsp; <a href="06-closing.html" onclick="event.preventDefault(); navigateTo(this.href)">다음 →</a></div>
-      <div class="nav-right"><span class="nav-wordmark">Askewly</span></div>
+      <div class="nav-left"><a href="04-five-gates.html" onclick="event.preventDefault(); navigateTo(this.href)">← 이전</a></div>
+      <div class="nav-center"><a href="index.html">05 / 06 · Index</a></div>
+      <div class="nav-right"><a href="06-closing.html" onclick="event.preventDefault(); navigateTo(this.href)">다음 →</a></div>
     </div></nav>
   <script type="application/json" class="speaker-notes">"영상의 결정타(차트 편집 가능성)를 우리 게이트 언어로 번역."</script>
   <script>

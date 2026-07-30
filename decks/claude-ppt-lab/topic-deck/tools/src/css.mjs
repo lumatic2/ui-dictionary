@@ -1,53 +1,7 @@
-<!DOCTYPE html>
-  <html lang="ko" class="print-mode">
-  <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>발표 슬라이드 파이프라인 — print</title>
-  <link href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable.min.css" rel="stylesheet">
-  <script src="https://cdn.jsdelivr.net/npm/chart.js@4/dist/chart.umd.min.js"></script>
-  <style>@page { size: 1280px 720px; margin: 0; }
-  :root {
-  --bg-primary: #ffffff;
-  --bg-card: #ffffff;
-  --surface-raised: #f7f8fa;
-  --border-card: #e5e7eb;
-  --text-primary: #0a0a0a;
-  --text-secondary: #45515e;
-  --text-muted: #a8aab2;
-  --text-sub: #222222;
-  --accent-start: #ff5530;
-  --accent-end: #ea5ec1;
-  --accent-gradient: linear-gradient(135deg, #ff5530, #ea5ec1);
-  --accent-soft: color-mix(in srgb, #ff5530 9%, #ffffff);
-  --accent-border: color-mix(in srgb, #ff5530 34%, #ffffff);
-  --shadow-accent: color-mix(in srgb, #ff5530 12%, transparent);
-  --card-gradient: linear-gradient(145deg, #ffffff 0%, #f7f8fa 100%);
-  --nav-bg: color-mix(in srgb, #ffffff 96%, transparent);
-  --nav-border: #e5e7eb;
-  --nav-accent: #ff5530;
-  --nav-hover: #1456f0;
-  --nav-disabled: #a8aab2;
-  --input-bg: #f2f3f5;
-  --option-bg: #ffffff;
-  --hint-bg: color-mix(in srgb, #0a0a0a 85%, transparent);
-  --chart-1: #ff5530;
-  --chart-2: #1456f0;
-  --chart-3: #3b82f6;
-  --chart-4: #ea5ec1;
-  --font-main: 'Pretendard Variable', Pretendard, -apple-system, system-ui, sans-serif;
-  --font-mono: 'JetBrains Mono', 'Fira Code', monospace;
-}
-:root {
-  --slide-w: 1280px;
-  --slide-h: 720px;
-  --canvas-scale: 1;
-  --base-slide-w: 1280px;
-  --base-slide-h: 720px;
-  --scaled-slide-w: calc(var(--base-slide-w) * var(--canvas-scale));
-  --scaled-slide-h: calc(var(--base-slide-h) * var(--canvas-scale));
-}
-* { margin: 0; padding: 0; box-sizing: border-box; }
+import { canvasCss, themeCss } from './theme.mjs';
+
+function resetCss() {
+  return `* { margin: 0; padding: 0; box-sizing: border-box; }
 html {
   width: 100%;
   height: 100%;
@@ -74,8 +28,11 @@ body {
   overflow: hidden;
   scrollbar-width: none;
   -ms-overflow-style: none;
+}`;
 }
-.container, .title, .kicker, .subtitle, .body-copy, .cover-chip, .closing-action, .card-title, .card-body, .comparison-label, .stat-label, .qr-hint, .conclusion {
+
+function textCss() {
+  return `.container, .title, .kicker, .subtitle, .body-copy, .cover-chip, .closing-action, .card-title, .card-body, .comparison-label, .stat-label, .qr-hint, .conclusion {
   word-break: keep-all;
   overflow-wrap: break-word;
   line-break: strict;
@@ -87,8 +44,11 @@ body {
 .source-note, .export-fallback-note, .qr-url, .card-file {
   overflow-wrap: anywhere;
   word-break: normal;
+}`;
 }
-.container { --slide-pad-top: 84px; --slide-pad-x: 80px; --slide-pad-bottom: 68px; --header-h: 92px; --content-max-h: calc(var(--base-slide-h) - var(--slide-pad-top) - var(--slide-pad-bottom) - var(--header-h)); --content-justify: flex-start; --content-pad-top: 12px; --content-pad-bottom: 0px; width: var(--base-slide-w); height: var(--base-slide-h); padding: var(--slide-pad-top) var(--slide-pad-x) var(--slide-pad-bottom); display: flex; flex-direction: column; align-items: center; justify-content: flex-start; zoom: var(--canvas-scale); overflow: hidden; }
+
+function baseSlideCss() {
+  return `.container { --slide-pad-top: 84px; --slide-pad-x: 80px; --slide-pad-bottom: 68px; --header-h: 92px; --content-max-h: calc(var(--base-slide-h) - var(--slide-pad-top) - var(--slide-pad-bottom) - var(--header-h)); --content-justify: flex-start; --content-pad-top: 12px; --content-pad-bottom: 0px; width: var(--base-slide-w); height: var(--base-slide-h); padding: var(--slide-pad-top) var(--slide-pad-x) var(--slide-pad-bottom); display: flex; flex-direction: column; align-items: center; justify-content: flex-start; zoom: var(--canvas-scale); overflow: hidden; }
 .slide-header { width: 100%; min-height: var(--header-h); flex: 0 0 auto; display: flex; flex-direction: column; align-items: center; justify-content: flex-start; }
 .slide-header.reserve-kicker::before { content: ''; display: block; height: 27px; flex: 0 0 auto; }
 .slide-content { width: 100%; max-height: var(--content-max-h); min-height: 0; flex: 1 1 auto; padding-top: var(--content-pad-top); padding-bottom: var(--content-pad-bottom); display: flex; flex-direction: column; align-items: center; justify-content: var(--content-justify); }
@@ -145,8 +105,11 @@ body {
 .icon-hero svg { width: 26px; height: 26px; }
 .icon-contained { width: 34px; height: 34px; border-radius: 8px; background: var(--accent-soft); border: 1px solid var(--accent-border); color: var(--accent-start); }
 .icon-contained svg { width: 19px; height: 19px; }
+`;
+}
 
-
+function layoutCss() {
+  return `
 .grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 20px; width: 100%; max-width: 1000px; }
 .card { background: var(--bg-card); border: 1px solid var(--border-card); border-radius: 4px; padding: 26px 24px; min-height: 140px; display: flex; flex-direction: column; align-items: flex-start; box-shadow: none; }
 .card-title { font-size: 20px; font-weight: 850; color: var(--text-primary); margin-bottom: 8px; line-height: 1.35; }
@@ -576,8 +539,11 @@ body.theme-askewly .recipe-conclusion { background: var(--accent-soft); }
 .control-label { font-size: 12px; font-weight: 900; color: var(--text-secondary); letter-spacing: 0.08em; text-transform: uppercase; }
 .control-value { font-size: 34px; font-weight: 950; color: var(--accent-start); font-variant-numeric: tabular-nums; }
 .range-control { width: 100%; accent-color: var(--accent-start); }
+`;
+}
 
-
+function themeProfileCss() {
+  return `
 .theme-dark .container { --slide-pad-top: 88px; }
 .theme-dark .title { font-size: 52px; line-height: 1.12; }
 .theme-dark .layout-cover .title { font-size: 66px; line-height: 1.06; }
@@ -647,14 +613,20 @@ body.theme-askewly .recipe-conclusion { background: var(--accent-soft); }
 .theme-askewly .pipeStep::before { background: var(--accent-start); box-shadow: 0 0 0 5px rgb(47 75 124 / 0.12); }
 .theme-askewly .principle .pnum { color: color-mix(in srgb, var(--accent-start) 76%, var(--accent-end)); }
 .theme-askewly .slide-pattern { opacity: 0.50; background: linear-gradient(135deg, transparent 0 68%, #E8F0ED 68% 100%), repeating-linear-gradient(90deg, rgb(47 75 124 / 0.035) 0 1px, transparent 1px 44px); }
+`;
+}
 
-
+function interactiveCss() {
+  return `
 .three-shell { width: 100%; max-width: 980px; height: 410px; border: 1px solid var(--border-card); border-radius: 8px; background: radial-gradient(circle at 50% 30%, var(--accent-soft), var(--surface-raised)); overflow: hidden; position: relative; }
 .three-canvas { width: 100%; height: 100%; display: block; cursor: grab; touch-action: none; }
 .three-canvas:active { cursor: grabbing; }
 .three-fallback { position: absolute; left: 24px; bottom: 22px; color: var(--text-secondary); font-size: 13px; background: var(--nav-bg); border: 1px solid var(--border-card); border-radius: 999px; padding: 7px 12px; pointer-events: none; }
+`;
+}
 
-
+function assetCss() {
+  return `
 .device-frame { width: 100%; max-width: 1040px; padding: 18px; border: 1px solid var(--border-card); border-radius: 8px; background: var(--surface-raised); box-shadow: 0 14px 36px var(--shadow-accent); }
 .device-bar { height: 28px; display: flex; align-items: center; gap: 7px; padding: 0 4px; color: var(--text-muted); }
 .device-dot { width: 8px; height: 8px; border-radius: 50%; background: currentColor; opacity: 0.65; }
@@ -704,16 +676,22 @@ body.theme-askewly .recipe-conclusion { background: var(--accent-soft); }
 .qr-hint { font-size: 15px; color: var(--text-secondary); }
 .source-note { position: absolute; left: 80px; bottom: 70px; right: 80px; font-size: 11px; line-height: 1.4; color: var(--text-muted); text-align: center; }
 .export-fallback-note { display: none; position: absolute; right: 60px; top: 48px; max-width: 420px; padding: 10px 12px; border: 1px solid var(--accent-border); border-radius: 8px; background: var(--surface-raised); color: var(--text-secondary); font-size: 11px; line-height: 1.35; text-align: left; }
+`;
+}
 
-
+function navCss() {
+  return `
 .slide-nav { position: fixed; bottom: 0; left: 0; right: 0; height: calc(50px * var(--canvas-scale)); background: var(--nav-bg); backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px); border-top: 1px solid var(--nav-border); display: flex; align-items: center; justify-content: center; z-index: 9999; }
 .slide-nav-inner { width: var(--base-slide-w); display: flex; align-items: center; justify-content: space-between; padding: 0 60px; zoom: var(--canvas-scale); }
 .slide-nav a { text-decoration: none; font-size: 14px; font-weight: 750; color: var(--nav-accent); transition: color 0.2s; }
 .slide-nav a:hover { color: var(--nav-hover); }
 .nav-disabled { font-size: 14px; font-weight: 750; color: var(--nav-disabled); }
 .nav-center a { color: var(--text-secondary); font-size: 13px; font-weight: 720; }
+`;
+}
 
-
+function motionCss() {
+  return `
 body { opacity: 0; animation: fadeIn 0.35s ease forwards; }
 body.fade-out { animation: fadeOut 0.25s ease forwards; }
 .effect-none, .effect-none.fade-out { animation: none; opacity: 1; }
@@ -756,8 +734,11 @@ body.fade-out { animation: fadeOut 0.25s ease forwards; }
 @media (prefers-reduced-motion: reduce) {
   body, body.fade-out, .effect-rise *, .effect-scale *, .effect-fade *, .effect-focus *, .layout-hero-motion *, .layout-svg-filter-scene * { animation: none !important; transition: none !important; opacity: 1 !important; transform: none !important; filter: none !important; }
 }
+`;
+}
 
-@media print { body { padding: 0; display: block; } .slide-nav { display: none; } .container { page-break-after: always; } .export-fallback-note { display: block; } }
+function printCss() {
+  return `@media print { body { padding: 0; display: block; } .slide-nav { display: none; } .container { page-break-after: always; } .export-fallback-note { display: block; } }
 html.print-mode, html.print-mode body { width: var(--scaled-slide-w); min-width: var(--scaled-slide-w); height: auto; min-height: 0; overflow: visible; }
 html.print-mode body, html.print-mode body.fade-out { animation: none; opacity: 1; display: block; padding: 0; margin: 0; background: var(--bg-primary); }
 html.print-mode .print-page { width: var(--scaled-slide-w); height: var(--scaled-slide-h); overflow: hidden; page-break-after: always; break-after: page; background: var(--bg-primary); display: grid; place-items: center; }
@@ -771,193 +752,63 @@ html.capture-mode body, html.capture-mode body.fade-out { animation: none !impor
 html.capture-mode .slide-nav { display: none !important; }
 html.capture-mode .export-fallback-note { display: none !important; }
 html.capture-mode .source-note { bottom: 24px; }
-html.capture-mode .container, html.capture-mode .container * { animation: none !important; transition: none !important; }</style>
-  </head>
-  <body class="theme-custom print-document">
-  <section class="print-page" data-slide="01" data-layout="cover" data-export-fallback="false">
-  <main class="container layout-cover effect-none type-standard">
-    
-    <header class="slide-header no-kicker">
-      
-      <h1 class="title">발표 슬라이드 파이프라인</h1>
-      
-    </header>
-    <section class="slide-content">
-      <section class="cover-lockup"><div class="cover-chips"><span class="cover-chip">SP1 재현 랩</span><span class="cover-chip">2026-07-31</span></div></section>
-    </section>
-    
-    
-  </main>
-</section>
+html.capture-mode .container, html.capture-mode .container * { animation: none !important; transition: none !important; }`;
+}
 
-<section class="print-page" data-slide="02" data-layout="hero-cards" data-export-fallback="false">
-  <main class="container layout-hero-cards effect-none type-standard">
-    
-    <header class="slide-header has-kicker">
-      <div class="kicker">Pipeline</div>
-      <h1 class="title">세 가지 산출 형식</h1>
-      <p class="subtitle">같은 slides.json 정본에서 분기한다</p>
-    </header>
-    <section class="slide-content">
-      <div class="hero-card-grid"><article class="hero-card"><div><div class="hero-card-index">01</div><span class="card-icon icon-hero"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3l1.8 5.2L19 10l-5.2 1.8L12 17l-1.8-5.2L5 10l5.2-1.8L12 3zM19 15l.8 2.2L22 18l-2.2.8L19 21l-.8-2.2L16 18l2.2-.8L19 15z" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/></svg></span><div class="card-title">HTML</div></div><div class="card-body">브라우저가 곧 최종 렌더 — 인터랙티브 차트·모션까지 원본 그대로</div></article><article class="hero-card"><div><div class="hero-card-index">02</div><span class="card-icon icon-hero"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m12 3 9 5-9 5-9-5 9-5Zm-7 9 7 4 7-4M5 16l7 4 7-4" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/></svg></span><div class="card-title">PDF</div></div><div class="card-body">벡터 트랙으로 텍스트 선택·검색 가능 — 의존성 0</div></article><article class="hero-card"><div><div class="hero-card-index">03</div><span class="card-icon icon-hero"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m12 3 9 5-9 5-9-5 9-5Zm-7 9 7 4 7-4M5 16l7 4 7-4" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/></svg></span><div class="card-title">편집 가능 PPTX</div></div><div class="card-body">pptxgenjs 네이티브 개체 — 차트가 PowerPoint 안에서 살아 있다</div></article></div>
-    </section>
-    
-    
-  </main>
-</section>
+export function commonCss(template, canvas) {
+  return [
+    themeCss(template),
+    canvasCss(canvas),
+    resetCss(),
+    textCss(),
+    baseSlideCss(),
+    layoutCss(),
+    themeProfileCss(),
+    interactiveCss(),
+    assetCss(),
+    navCss(),
+    motionCss(),
+    printCss(),
+  ].join('\n');
+}
 
-<section class="print-page" data-slide="03" data-layout="chart-interactive" data-export-fallback="true">
-  <main class="container layout-chart-interactive effect-none type-standard">
-    
-    <header class="slide-header has-kicker">
-      <div class="kicker">Evidence</div>
-      <h1 class="title">goal별 커밋 수</h1>
-      
-    </header>
-    <section class="slide-content">
-      <section class="chart-section chart-variant-ranked-bars" data-chart-slide="3" data-chart-variant="ranked-bars">
-      <div class="chart-wrapper"><div class="chart-canvas-panel"><canvas id="chart-03-goal-commits" aria-label="goal별 커밋 수"></canvas></div></div>
-      <script type="application/json" id="chart-03-goal-commits-data">[{"label":"visual-impact (vi)","value":"15","unit":""},{"label":"slide-methodology (sl)","value":"12","unit":""},{"label":"slide-expressive (sx)","value":"4","unit":""},{"label":"ui-encyclopedia (ue)","value":"4","unit":""},{"label":"slide-pipeline (sp)","value":"3","unit":""}]</script>
-    </section>
-    </section>
-    <aside class="export-fallback-note" aria-label="Export fallback">goal별 커밋 수 다섯 항목을 정적 카드로 표시 (15·12·4·4·3)</aside>
-    <p class="source-note">Source: 발표-슬라이드-만드는-법 워크트리 git log 실측, 2026-07-31</p>
-  </main>
-</section>
-<script>
-  (function() {
-    const dataEl = document.getElementById('chart-03-goal-commits-data');
-    const canvas = document.getElementById('chart-03-goal-commits');
-    if (!dataEl || !canvas || !window.Chart) return;
-    const raw = JSON.parse(dataEl.textContent || '[]');
-    const labels = raw.map((item) => item.label || item.title || '');
-    const base = raw.map((item) => Number(String(item.value || 0).replace(/,/g, '')) || 0);
-    const css = getComputedStyle(document.documentElement);
-    const token = (name) => css.getPropertyValue(name).trim();
-    const fontFamily = token('--font-main') || getComputedStyle(document.body).fontFamily || 'sans-serif';
-    const palette = [token('--chart-1'), token('--chart-2'), token('--chart-3'), token('--chart-4'), token('--accent-start'), token('--accent-end')].filter(Boolean);
-    const variantType = {
-      'balance-radar': 'radar',
-      'ranked-bars': 'bar',
-      'trend-line': 'line',
-      'share-doughnut': 'doughnut',
-      'polar-balance': 'polarArea'
-    };
-    const variant = 'ranked-bars';
-    const type = 'bar' || variantType[variant] || 'bar';
-    const isRadar = type === 'radar';
-    const isRadial = isRadar || type === 'doughnut' || type === 'polarArea';
-    const isLine = type === 'line';
-    const isRanked = variant === 'ranked-bars';
-    const hasMetricTable = variant === 'share-doughnut' || variant === 'polar-balance';
-    const radialOptions = isRadar
-      ? { scales: { r: { angleLines: { color: token('--border-card') }, grid: { color: token('--border-card') }, pointLabels: { color: token('--text-primary'), font: { family: fontFamily, weight: 800, size: 13 } }, ticks: { display: false, font: { family: fontFamily } }, suggestedMin: 0, suggestedMax: 100 } } }
-      : type === 'polarArea'
-        ? { radius: '88%', scales: { r: { angleLines: { display: false }, grid: { color: token('--border-card') }, ticks: { display: false, font: { family: fontFamily } }, suggestedMin: 0 } } }
-        : type === 'doughnut'
-          ? { cutout: '58%', radius: '92%' }
-        : { scales: { x: { ticks: { color: token('--text-secondary'), font: { family: fontFamily, weight: 750 } }, grid: { color: token('--border-card') }, suggestedMin: 0 }, y: { ticks: { color: token('--text-secondary'), font: { family: fontFamily, weight: 750 } }, grid: { color: token('--border-card') }, suggestedMin: 0 } } };
-    const chart = new Chart(canvas.getContext('2d'), {
-      type,
-      data: { labels, datasets: [{
-        label: '이 브랜치 커밋 수 (git log 실측)',
-        data: base,
-        backgroundColor: isRadar || isLine ? 'rgba(139, 92, 246, 0.18)' : palette,
-        borderColor: isRadial && !isRadar ? token('--surface-raised') : palette[0],
-        pointBackgroundColor: palette[1] || palette[0],
-        borderWidth: isRadar ? 3 : isRadial ? 2 : 2,
-        tension: isLine ? 0.38 : 0,
-        fill: isLine,
-        borderRadius: isRanked ? 8 : 0
-      }] },
-      options: {
-        responsive: true,
-        maintainAspectRatio: false,
-        animation: false,
-        indexAxis: isRanked ? 'y' : 'x',
-        plugins: {
-          legend: { display: (isRadial || isLine) && !hasMetricTable, position: type === 'doughnut' ? 'right' : 'top', labels: { color: token('--text-secondary'), font: { family: fontFamily, weight: 800 }, boxWidth: 12 } },
-          tooltip: { titleFont: { family: fontFamily }, bodyFont: { family: fontFamily } }
-        },
-        ...radialOptions
-      }
-    });
-    chart.update('none');
-  })();
-  </script>
-<section class="print-page" data-slide="04" data-layout="step-flow" data-export-fallback="false">
-  <main class="container layout-step-flow effect-none type-standard">
-    
-    <header class="slide-header has-kicker">
-      <div class="kicker">Method</div>
-      <h1 class="title">제작은 다섯 게이트를 지난다</h1>
-      <p class="subtitle">구조가 디자인보다 먼저다</p>
-    </header>
-    <section class="slide-content">
-      <div class="steps" style="--step-count:5">
-      <div class="step-track"><div class="step-node"><span class="step-num">01</span></div><div class="step-node"><span class="step-num">02</span></div><div class="step-node"><span class="step-num">03</span></div><div class="step-node"><span class="step-num">04</span></div><div class="step-node"><span class="step-num">05</span></div></div>
-      <div class="step-cards"><article class="step">
-      <div class="step-icon"><span class="card-icon icon-inline"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M14 3H7a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V8l-5-5Zm0 0v5h5M8 13h8M8 17h6" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></span></div>
-      <div class="card-title">자료</div>
-      <div class="card-body">출처 있는 주장만</div>
-    </article><article class="step">
-      <div class="step-icon"><span class="card-icon icon-inline"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20 6 9 17l-5-5" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg></span></div>
-      <div class="card-title">구성안</div>
-      <div class="card-body">장별 메시지 1개</div>
-    </article><article class="step">
-      <div class="step-icon"><span class="card-icon icon-inline"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20 6 9 17l-5-5" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg></span></div>
-      <div class="card-title">문구</div>
-      <div class="card-body">제목은 곧 주장</div>
-    </article><article class="step">
-      <div class="step-icon"><span class="card-icon icon-inline"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20 6 9 17l-5-5" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg></span></div>
-      <div class="card-title">디자인</div>
-      <div class="card-body">그다음이 시각</div>
-    </article><article class="step">
-      <div class="step-icon"><span class="card-icon icon-inline"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20 6 9 17l-5-5" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg></span></div>
-      <div class="card-title">내보내기</div>
-      <div class="card-body">최종 형식 확인</div>
-    </article></div>
-    </div>
-    </section>
-    
-    
-  </main>
-</section>
 
-<section class="print-page" data-slide="05" data-layout="comparison-2col" data-export-fallback="false">
-  <main class="container layout-comparison-2col effect-none type-standard">
-    
-    <header class="slide-header has-kicker">
-      <div class="kicker">Method</div>
-      <h1 class="title">트랙이 다르면 게이트도 다르다</h1>
-      <p class="subtitle">HTML 트랙과 PPTX 트랙의 확인 지점</p>
-    </header>
-    <section class="slide-content">
-      <div class="comparison">
-      <article class="comparison-panel"><span class="card-icon icon-subtle"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m12 3 9 5-9 5-9-5 9-5Zm-7 9 7 4 7-4M5 16l7 4 7-4" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/></svg></span><div class="comparison-label">HTML 트랙</div><div class="card-body">브라우저 실조작 — overflow·모션·reduced-motion 분기까지 확인</div><hr style="border:0;border-top:1px solid var(--border-card);margin:18px 0"><span class="card-icon icon-marker"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20 6 9 17l-5-5" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg></span><div class="card-title">HTML의 함정</div><div class="card-body">미리보기만 믿으면 export에서 깨진다 — print 경계 확인 필수</div></article>
-      <article class="comparison-panel emphasis"><span class="card-icon icon-hero"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="8" fill="none" stroke="currentColor" stroke-width="2"/><circle cx="12" cy="12" r="3" fill="none" stroke="currentColor" stroke-width="2"/><path d="M12 2v3m0 14v3M2 12h3m14 0h3" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg></span><div class="comparison-label">PPTX 트랙</div><div class="card-body">PowerPoint 실개봉 — 네이티브 차트·폰트·텍스트 개체 확인</div><hr style="border:0;border-top:1px solid var(--accent-border);margin:18px 0"><span class="card-icon icon-marker"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20 6 9 17l-5-5" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg></span><div class="card-title">PPTX의 함정</div><div class="card-body">차트가 이미지로 떨어지면 편집 불가 — addChart 경로 강제</div></article>
-    </div>
-    </section>
-    
-    
-  </main>
-</section>
-
-<section class="print-page" data-slide="06" data-layout="closing" data-export-fallback="false">
-  <main class="container layout-closing effect-none type-standard">
-    
-    <header class="slide-header no-kicker">
-      
-      <h1 class="title">다음 액션</h1>
-      
-    </header>
-    <section class="slide-content">
-      <section class="closing-lockup"><div class="closing-actions"><article class="closing-action"><span class="card-icon icon-inline"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20 6 9 17l-5-5" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg></span><div><div class="card-title">실개봉</div><div class="card-body">PPTX를 PowerPoint로 연다</div></div></article><article class="closing-action"><span class="card-icon icon-inline"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20 6 9 17l-5-5" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg></span><div><div class="card-title">차트 확인</div><div class="card-body">더블클릭 → 데이터 시트</div></div></article><article class="closing-action"><span class="card-icon icon-inline"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20 6 9 17l-5-5" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg></span><div><div class="card-title">장부</div><div class="card-body">충실도 편차 기록 확인</div></div></article></div></section>
-    </section>
-    
-    
-  </main>
-</section>
-
-  </body>
-  </html>
+export function indexCss(template, canvas) {
+  return [
+    themeCss(template),
+    canvasCss(canvas),
+    `* { margin: 0; padding: 0; box-sizing: border-box; }
+html { scrollbar-width: none; -ms-overflow-style: none; }
+html::-webkit-scrollbar, body::-webkit-scrollbar { width: 0; height: 0; display: none; }
+body { background: var(--bg-primary); font-family: var(--font-main); color: var(--text-primary); min-height: 100vh; display: flex; justify-content: center; padding: 58px 0 80px; overflow-y: auto; scrollbar-width: none; -ms-overflow-style: none; }
+.container { width: var(--slide-w); padding: 0 calc(80px * var(--canvas-scale)); }
+.page-title, .page-subtitle, .deck-card .card-title {
+  word-break: keep-all;
+  overflow-wrap: break-word;
+  line-break: strict;
+  text-wrap: pretty;
+}
+.card-file {
+  overflow-wrap: anywhere;
+  word-break: normal;
+}
+.page-title { font-size: 42px; font-weight: 900; text-align: center; margin-bottom: 10px; letter-spacing: 0; }
+.page-subtitle { text-align: center; font-size: 16px; color: var(--text-secondary); margin-bottom: 46px; }
+.section { margin-bottom: 34px; }
+.section-header { font-size: 18px; font-weight: 800; padding: 12px 0; border-bottom: 1px solid var(--border-card); margin-bottom: 16px; display: flex; align-items: center; gap: 12px; }
+.num-range { display: inline-block; font-size: 12px; font-weight: 800; color: var(--bg-primary); background: var(--accent-start); padding: 3px 10px; border-radius: 999px; }
+.deck-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 14px; }
+.deck-card { min-height: 130px; display: flex; flex-direction: column; gap: 7px; padding: 18px 18px; background: var(--bg-card); border: 1px solid var(--border-card); border-radius: 8px; text-decoration: none; transition: all 0.22s ease; position: relative; color: inherit; }
+.deck-card:hover { transform: translateY(-3px); border-color: var(--accent-start); box-shadow: 0 8px 28px var(--shadow-accent); }
+.card-num { font-size: 28px; font-weight: 900; color: var(--accent-start); }
+.card-title { font-size: 14px; font-weight: 750; color: var(--text-sub); line-height: 1.35; padding-right: 8px; }
+.card-file { margin-top: auto; font-size: 11px; color: var(--text-muted); font-family: var(--font-mono); }
+.badge-interactive { position: absolute; top: 10px; right: 10px; display: inline-flex; align-items: center; gap: 4px; font-size: 9px; font-weight: 850; color: var(--accent-start); }
+.badge-interactive svg { width: 13px; height: 13px; }
+body { opacity: 0; animation: fadeIn 0.35s ease forwards; }
+body.fade-out { animation: fadeOut 0.25s ease forwards; }
+@keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+@keyframes fadeOut { from { opacity: 1; } to { opacity: 0; } }
+`,
+  ].join('\n');
+}

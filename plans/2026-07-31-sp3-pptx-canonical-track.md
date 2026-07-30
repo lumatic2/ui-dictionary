@@ -46,7 +46,7 @@ Status: approved (연쇄 승인 — SP2 승인 시 chain 영수증 sp3 등록, 2
   - Verify: SKILL.md/reference 중복 없음 + methodology 정정이 이력 보존 형태(기존 문구 삭제 아님).
   - Failure probe: SKILL.md 라우팅 문구("편집 가능한 PPTX가 핵심이면 ppt 스킬")와 충돌 — PPTX 트랙 등재에 맞춰 라우팅 문구를 "슬라이드 덱 PPTX 는 이 스킬 export 트랙, 문서형 PPTX 제작은 ppt 스킬"로 정정.
   - Commit: changeset 동일 (README 절: step-2) + ui-dictionary `docs(sp3)`.
-- [ ] **step-3 — Askewly 스타일 실증 + 배포 (SP3 마감)**
+- [x] **step-3 — Askewly 스타일 실증 + 배포 (SP3 마감)**
   - Artifact: 배포 후 배포본 exporter 로 `decks/askewly-design-intro` 재산출(askewly 테마 판독 검증) + `decks/claude-ppt-lab/topic-deck`(custom 테마) 재산출 → python-pptx 구조 검증 + COM 실개봉(SP1 `open-verify-pptx.ps1` 재사용) + evidence.
   - Files: write decks/askewly-design-intro/export/askewly-design-intro.skill-track.pptx·decks/claude-ppt-lab/pptx/*·evidence/slide-pipeline/sp3-pptx-canonical.md. 실행: 배포+node+python+COM.
   - Risk: 위험 (PowerShell COM — try/finally Quit)
@@ -67,7 +67,9 @@ Status: approved (연쇄 승인 — SP2 승인 시 chain 영수증 sp3 등록, 2
 - step-3 배포 후 배포본 검증 (커밋 가드가 배포를 커밋 시점에 강제 — SP2 관측).
 
 ## finding 큐
-- (비어 있음 — 실행 중 append)
+- exporter 미지 template 값 light 조용한 폴백 — 에러 표면화가 계약 정합 (유지보수 후보).
+- GUI 차트 더블클릭 편집 = 사용자 관측 대기 (SP1 과 공유).
 
 ## 진행 로그
+- 2026-07-31 step-1~3 완주 — fixture 2종+실증 2본 COM PASS, methodology 정정.
 - 2026-07-31 작성 — SP2 완료 경계에서 연쇄 개설 (chain 영수증 sp3).
