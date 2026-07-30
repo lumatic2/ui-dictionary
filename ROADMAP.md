@@ -1,13 +1,14 @@
 # ROADMAP
 
 > Last updated: 2026-07-31
-> Status: **goal `slide-pipeline-upgrade` 개설 (2026-07-31, 워크트리 lumatic2/발표-슬라이드-만드는-법)** — 유튜브 aITV54CLc_U 재현 랩(SP1) → HTML 트랙 스킬 업그레이드(SP2) → PPTX pptxgenjs 정본화(SP3). 워크트리 병합 전 마감 (사용자 방향 2026-07-31). 대기 순서(사용자 확정 2026-07-28): ② 『인터랙티브 웹 애니메이션』 책 스터디 자산화 ③ 사이트 품질(finding 큐 O5~O9·verify 위반 77건·SSG) ④ 다크모드 정비.
+> Status: **goal `slide-pipeline-upgrade` 완주 (2026-07-31, 워크트리 lumatic2/발표-슬라이드-만드는-법)** — SP1 영상 재현 랩·SP2 HTML 트랙 스킬 업그레이드·SP3 PPTX pptxgenjs 정본화 연쇄 완료. active goal 0 — 다음은 워크트리 병합. 대기 순서(사용자 확정 2026-07-28): ② 『인터랙티브 웹 애니메이션』 책 스터디 자산화 ③ 사이트 품질(finding 큐 O5~O9·verify 위반 77건·SSG) ④ 다크모드 정비.
 > North star: Build Askewly Design as both a public reference website and an agent-usable implementation system.
 > line budget: <=150
 
 ## Current Goal
 
-Goal: `slide-pipeline-upgrade` — 유튜브 영상(클로드 PPT 5단계) 등가 재현으로 검증하고, 흡수분으로 presentation-slides-yusung HTML 트랙 업그레이드 + PPTX(pptxgenjs) 파이프라인 정본화. 결정 3건 확정(2026-07-31): 등가 재현 · pptxgenjs 단일 경로(SL3 중단의 좁히기) · MiniMax→Askewly.
+<!-- harness:goal-archive16 id="slide-pipeline-upgrade" status="completed" -->
+Goal: 슬라이드 파이프라인 업그레이드 — 유튜브 aITV54CLc_U(클로드 PPT 5단계) 등가 재현 검증 + 흡수분 스킬 업그레이드 + PPTX 정본화. closed 2026-07-31 — SP1 재현 랩(충실도 장부·흡수 판정 채택3/보류1)·SP2 스킬 업그레이드(custom 테마 트랙·G5 캘리브레이션·리디자인 입력)·SP3 pptxgenjs export 트랙 승격(실덱 2본 COM PASS) 단일 세션 완주. Details: `evidence/slide-pipeline/` + `docs/reports/2026-07-31-sp{1,2,3}-*.md`.
 
 ## Active Milestones — slide-pipeline-upgrade
 
@@ -20,15 +21,18 @@ Goal: `slide-pipeline-upgrade` — 유튜브 영상(클로드 PPT 5단계) 등�
 - Completed at: 2026-07-31
 - Evidence: evidence/slide-pipeline/sp2-skill-upgrade.md
 - Summary: custom 테마 트랙+G5 캘리브레이션+리디자인 입력 구현·배포 — smoke 18+3 PASS·배포본 랩 실증
-<!-- harness:milestone id="SP3" status="active" priority="P1" -->
+<!-- harness:milestone id="SP3" status="completed" priority="P1" evidence="evidence/slide-pipeline/sp3-pptx-canonical.md" -->
 ### SP3 — PPTX 파이프라인 정본화
 - DoD: pptxgenjs 단일 경로가 스킬 export 트랙으로 승격되고 methodology/slide-production.md 가 갱신되며 Askewly 스타일 실증 덱이 남는다.
 - Plan: plans/2026-07-31-sp3-pptx-canonical-track.md
-- Status: [ ]
+- Status: [x]
 
 <!-- harness:goal-archive15 id="slide-expressive" status="completed" -->
 Goal: 슬라이드 표현력 심화 — PPTX 중단·HTML/PDF 우선 방향의 실행. closed 2026-07-28 — SX1 임팩트 레이아웃 2종(hero-motion·svg-filter-scene, 정적 14종)·SX2 벡터 PDF 트랙(텍스트 선택·의존성 0)·SX3 소개 덱 실증(직행 예외 정당 판정) 단일 세션 완주. Details: `research/2026-07-28-sx1-slide-expressive-survey.md` + `docs/reports/2026-07-28-sx{1,2,3}-*.md`.
 
+- Completed at: 2026-07-31
+- Evidence: evidence/slide-pipeline/sp3-pptx-canonical.md
+- Summary: export-pptx.mjs 정식 트랙 + methodology 정정 — 실덱 2본 COM PASS, goal slide-pipeline-upgrade 완주
 ## Active Milestones — slide-expressive
 
 ## Active Milestones — slide-methodology
