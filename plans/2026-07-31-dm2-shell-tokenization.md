@@ -42,7 +42,7 @@ Status: approved (사용자 승인 2026-07-31 "ㄱㄱ" — 연쇄 DM1→DM2→DM
 - [ ] **step-2 — App.tsx·home-page.tsx 토큰 치환**
   - Artifact: 두 파일의 리터럴 색 클래스(183+177건)를 semantic 토큰 클래스로 치환 — 라이트 시각 무손실. 1:1 대응 없는 색은 finding 큐 기록 후 현상 유지.
   - Files: write examples/ui-vocabulary-site/src/App.tsx, src/components/home-page.tsx. read src/tokens.css, src/index.css(@theme 매핑).
-  - Risk: 위험 (사이트 최상위 표면 대량 수정 — 스크린샷 대조 + 파일 단위 커밋으로 격리. 실건수가 추정을 크게 웃돌아 한 pass 로 안 닫히면 파일 단위(App.tsx / home-page.tsx)로 쪼개 진행 — 커밋 경계는 이미 파일 단위라 재승인 불요)
+  - Risk: 위험 (사이트 최상위 표면 대량 수정 — 스크린샷 대조·파일 단위 커밋으로 격리, 실건수가 추정을 크게 웃돌면 App.tsx / home-page.tsx 파일 단위로 쪼개 진행 — 커밋 경계가 이미 파일 단위라 재승인 불요)
   - Dependencies: step-1
   - Verify: 스캐너 두 파일 잔여 0(finding 등재분 제외) + build·lint PASS + dev 스크린샷 대조(홈·검색·topbar/사이드바 1440px·390px) 라이트 무손실 + 콘솔 0에러.
   - Failure probe: 카카오 로그인 버튼 hex(`#fee500` — SQ3 finding 잔존)·Pro 배지 등 브랜드 고정색이 semantic 으로 잘못 흡수돼 색이 바뀌는 지점 — 치환 전후 diff 에서 브랜드색 라인 수동 검수.
