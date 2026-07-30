@@ -66,7 +66,7 @@ Status: approved (2026-07-31 사용자 승인 "ㄱㄱ" — 연쇄 SP2·SP3 제�
   - Verify: **자동 판정 기준 명시** — python-pptx `shape.has_chart` ≥1 + COM에서 `Shape.HasChart` 및 `Chart.ChartData.Workbook` 접근 성공(=엑셀 데이터 연동 존재)이면 PASS. GUI 더블클릭 편집 UX 자체는 자동화 대상이 아님 — 사용자 관측 항목으로 장부에 분리 기록(미관측 시 해당 항목 partial).
   - Failure probe: 차트가 이미지로 떨어지면 영상 결정타 재현 실패 — `addChart` 경로 확인(이미지 폴백 금지). COM은 try/finally Quit으로 프로세스 잔존 방지(일반 위생 — SL3 기록 결함 아님).
   - Commit: `feat(sp1): step-4 — PPTX export + COM 실개봉 검증 스크립트`
-- [ ] **step-5 — 충실도 장부 + 흡수 판정 (SP1 마감)**
+- [x] **step-5 — 충실도 장부 + 흡수 판정 (SP1 마감)**
   - Artifact: `evidence/slide-pipeline/sp1-video-lab.md` — 영상 5단계 × "영상 주장 / 재현 결과 / 편차" 장부 + 흡수 후보 4건(브랜드 DESIGN.md 테마 변환 · 1장 캘리브레이션 · 비교쌍 교정 · 리디자인 입력) 채택/보류 판정(각 근거 1줄) → SP2/SP3 scope 입력으로 백링크.
   - Files: write evidence/slide-pipeline/sp1-video-lab.md, plans/(이 문서 finding 큐·진행 로그).
   - Risk: 없음 (장부 문서만)
@@ -88,7 +88,11 @@ Status: approved (2026-07-31 사용자 승인 "ㄱㄱ" — 연쇄 SP2·SP3 제�
 - 없음 (배포·출고 없음 — 랩 한정).
 
 ## finding 큐
-- (비어 있음 — 실행 중 append)
+- 비교쌍 교정(흡수 후보 ③) 보류 — 사용자 수정 파일 제공 워크플로우 실발생 시 재평가.
+- 리디자인 입력의 PDF/PPTX 파싱 경로 미실증 — SP2 는 md 입력 우선, PDF 파싱은 확장 후보.
+- GUI 차트 더블클릭 편집 확인 = 사용자 관측 대기 (COM Workbook 접근까지는 자동 PASS).
+- http-server 기본 캐시로 재빌드가 브라우저에 반영 안 됨 — 캐시버스터 쿼리로 우회 (스킬 문서화 후보).
 
 ## 진행 로그
+- 2026-07-31 step-1~5 단일 세션 완주 — 캘리브레이션 3왕복, PPTX 2본 COM PASS, 흡수 판정 채택 3(①②④)·보류 1(③).
 - 2026-07-31 작성 — 사용자 방향("병합 전 스킬 업그레이드 + PPT 파이프라인 명확화") + 결정 3건 확정(등가 재현·pptxgenjs 정본화·MiniMax→Askewly) 후 goal 개설.
