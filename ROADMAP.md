@@ -11,16 +11,10 @@ Goal: `slide-pipeline-upgrade` — 유튜브 영상(클로드 PPT 5단계) 등�
 
 ## Active Milestones — slide-pipeline-upgrade
 
-<!-- harness:milestone id="SP1" status="active" priority="P0" -->
-### SP1 — 영상 재현 랩
-- DoD: 영상 5단계가 Claude Code 등가로 전부 재현되고(편차 명기), 네이티브 차트 PPTX가 PowerPoint 실개봉·차트 데이터 연동 확인까지 통과하며, 흡수 후보 4건(브랜드 DESIGN.md 테마 변환·1장 캘리브레이션·비교쌍 교정·리디자인 입력)의 채택/보류 판정이 장부로 남아 SP2/SP3 scope 를 결정한다.
-- Plan: plans/2026-07-31-sp1-video-reproduction-lab.md
-- Status: [ ]
-
-<!-- harness:milestone id="SP2" status="pending" priority="P1" -->
+<!-- harness:milestone id="SP2" status="active" priority="P1" -->
 ### SP2 — HTML 트랙 스킬 업그레이드
 - DoD: SP1 채택분이 custom-skills presentation-slides-yusung 에 구현·배포되고 검증 덱으로 실증된다.
-- Plan: (SP1 완료 경계에서 작성 — 흡수 판정이 scope 입력)
+- Plan: plans/2026-07-31-sp2-html-track-upgrade.md
 - Status: [ ]
 
 <!-- harness:milestone id="SP3" status="pending" priority="P1" -->
@@ -36,49 +30,6 @@ Goal: 슬라이드 표현력 심화 — PPTX 중단·HTML/PDF 우선 방향의 �
 
 ## Active Milestones — slide-methodology
 
-<!-- harness:milestone id="SL3" status="completed" priority="P1" evidence="evidence/slide-methodology/sl3-pptx.md" -->
-### SL3 — 편집 가능 PPTX 실증
-- DoD: Askewly Design 소개 덱을 방법론대로 실제 제작(HTML 정본)하고 html2pptx(pptxgenjs) vs ppt-master(SVG→DrawingML) 경로로 PPTX 를 뽑아 편집 가능성·충실도를 비교 장부로 기록, PowerPoint/LibreOffice 실개봉 확인. real-use-lap 부활 조건 판정 포함.
-- Plan: plans/2026-07-28-sl3-editable-pptx-proof.md
-- Status: [x]
-
-<!-- harness:goal-archive12 id="visual-impact-consolidation" status="completed" -->
-Goal: 비주얼 임팩트 정리 — 흩어진 비주얼 임팩트 방법(knowledge-graph 노드 19건, toolshelf 카드 15건, presentation-slides three-scene·3d-repolis)을 VI1~VI5 표현 스택 체계로 대조·판정·흡수해 자산화한다. closed 2026-07-28 — VI6(KG 19노드 판정·motion-principles 신설)·VI7(15카드 배치·llms 배선 완결)·VI8(recipe 2종 실구현·상호 링크) 단일 세션 완주. Details: `research/2026-07-28-visual-impact-goal-inventory.md` + `docs/reports/2026-07-28-vi{6,7,8}-*.md`.
-
-<!-- harness:goal-archive11 id="ui-encyclopedia" status="completed" -->
-Goal: UI 백과사전 — 들어가서 용어의 생김새·쓰임·바리에이션을 보고, 헤더·푸터 등 Page Sections 의 종류와 디자인 레퍼런스(직접 구현 데모)를 본다. 유료 경계 = Tailwind Plus 모델, 오너 로그인 전체 열람(결제는 범위 밖). closed 2026-07-28 — UE1~UE5 전부 완료·실서비스 실증(관측 왕복 총 8회, 결함 16건 발견·수리). Details: `archive/plans/2026-07-27-ue1-encyclopedia-navigation.md`(연쇄 정의) + `research/2026-07-27-ue1-encyclopedia-diagnosis.md`.
-
-<!-- harness:goal-archive14 id="real-use-lap" status="completed" -->
-Goal: 실사용 한 바퀴 — Askewly Design으로 Askewly Design 소개 덱(PPTX)을 실제로 만들고, 막히는 지점만 결함으로 기록해 milestone으로 삼는다. closed 2026-07-28 — goal `slide-methodology` SL3가 실질 수행(소개 덱 PPTX 2종 + PowerPoint 실개봉 PASS + dogfood 결함 5건 기록), 사용자 확인으로 완료 처리. Details: `evidence/slide-methodology/sl3-pptx.md` + `research/2026-07-28-sl3-pptx-path-comparison.md`.
-
-<!-- harness:goal-archive10 id="design-output-gates" status="completed" -->
-Goal: 산출물이 좋은지 기계가 잰다, 매체마다 다른 자로. closed 2026-07-22 — DOG1~DOG6 완료, **DOG7(사람 관측) 보류**: 관측 1회 실시했으나 verify 위반 0건이라 오탐률 미측정·승격 판정 미획득. 게이트는 경고 유지. Details: `plans/horizons/2026-07-design-output-gates.md`.
-
-<!-- harness:goal-archive9 id="vocabulary-in-use" status="completed" -->
-Goal: askewly-design 호출 경로에 UI 용어 사전 562개를 집어넣고, 요구 한 문장에서 요소를 판정해 구현 자산까지 착지하는 흐름을 완성한다. closed 2026-07-21 — 7항 중 6 PASS · 1 미달(사람 관측: 조회 절차 미준수). Details: `archive/horizons/2026-07-vocabulary-in-use.md`.
-
-<!-- harness:goal-archive8 id="editor-color-and-token-editing" status="completed" -->
-Goal: 편집기에서 색이 색으로 보이고, 바꿔진다 — 인스펙터 UI·토큰 조회 API·검증 계층·렌더러 4표면. closed 2026-07-21 — 7항 중 6 PASS, 기준 6(판단 가능성) **부분 충족 명시**. Details: `plans/horizons/2026-07-editor-color-and-token-editing.md`.
-
-<!-- harness:goal-archive7 id="editor-legibility" status="completed" -->
-Goal: AskewlyDesign 편집기를 사람이 화면만 보고 판단할 수 있는 물건으로 만든다 — 조작감과 판독성 두 축. closed 2026-07-21 — 6항 중 5 PASS, 기준 6(판단 가능성) **미달 명시**. Details: `archive/horizons/2026-07-editor-legibility.md`.
-
-<!-- harness:goal-archive6 id="template-production-hardening" status="completed" -->
-Goal: 템플릿 제작 파이프라인을 선언 수준에서 실제 동작 수준으로 끌어올린다. closed 2026-07-20 — 닫는 기준 9항 중 8 PASS, 기준 7(실사용·편집기 축) **미달 명시**. Details: `archive/horizons/2026-07-template-production-hardening.md`.
-
-<!-- harness:goal-archive5 id="template-production-system" status="completed" -->
-Goal: 브리프·토큰·레시피를 명함·제품 포스터·인포그래픽의 편집 가능한 CanvasDocument와 브라우저 제작 루프로 바꾼다. Details: `plans/horizons/2026-07-template-production-system.md`.
-
-<!-- harness:goal-archive4 id="recipe-code-reuse" status="completed" -->
-Goal: 사이트 레시피 데모 실구현을 registry 코드 자산으로 배포하고, 에이전트 코드 출발 계약과 스튜디오 구성↔레시피 매핑을 배선한다. Details: `plans/horizons/2026-07-recipe-code-reuse.md`.
-
-<!-- harness:goal-archive3 id="studio-finish" status="completed" -->
-Goal: 스튜디오 이월 갭 3건 마감 — 데이터 주도 주입 자동화·구성 패턴 완편(4유형+예약형)·미리보기 고도화(다크·반응형). Details: `plans/horizons/2026-07-studio-finish.md`.
-
-
-- Completed at: 2026-07-28
-- Evidence: evidence/slide-methodology/sl3-pptx.md
-- Summary: 소개 덱 7장(lint 0) + pptxgenjs 네이티브 7장·CHART / ppt-master 3장 실증, 8축 비교 장부 — 실개봉 partial(뷰어 부재), real-use-lap 조건 충족 판정
 ## Active Milestones — visual-impact-consolidation
 
 <!-- harness:milestone id="VI7" status="completed" priority="P1" evidence="evidence/visual-impact-consolidation/vi7-placement.md" -->

@@ -589,3 +589,14 @@ plan doc: `archive/plans/2026-07-21-eu*.md` · 증거: `evidence/editor-legibili
   - Completed: 2026-07-28
   - Result: R1~R3 옵트인 린트 구현(custom-skills)·위반 fixture 각 1건 검출·오탐 0·배포본 동일 동작 — 기존 fixture에서 R1 실적발 1건 부수 확인
   - Evidence: evidence/slide-methodology/sl2-linter.md
+
+### 2026-07
+- SP1 - SP1 — 영상 재현 랩
+  - Completed: 2026-07-31
+  - Result: 영상 5단계 등가 재현 + PPTX COM 실개봉 PASS + 흡수 판정(채택 3·보류 1) — SP2/SP3 scope 확정
+  - Evidence: evidence/slide-pipeline/sp1-video-lab.md
+
+- SL3 - SL3 — 편집 가능 PPTX 실증
+  - Completed: 2026-07-31
+  - Result: 소개 덱 7장(lint 0) + pptxgenjs 네이티브 7장·CHART / ppt-master 3장 실증, 8축 비교 장부 — 실개봉 partial(뷰어 부재), real-use-lap 조건 충족 판정
+  - Evidence: evidence/slide-methodology/sl3-pptx.md
