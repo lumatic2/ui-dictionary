@@ -30,7 +30,7 @@ Status: approved (연쇄 승인 — SP1 계획 승인 시 chain 영수증 sp2 �
 
 ## Step 트리
 
-- [ ] **step-1 — 커스텀 브랜드 테마 트랙 (변환 스크립트 + builder 지원)**
+- [x] **step-1 — 커스텀 브랜드 테마 트랙 (변환 스크립트 + builder 지원)**
   - Artifact: `scripts/design-md-to-theme.mjs`(DESIGN.md YAML → `content/theme.json`: name·vars 26키·fontLinks — 색 토큰 휴리스틱 매핑 + 미해결 키 보고) + builder 지원(`meta.template: "custom"` 시 `content/theme.json` 로드·주입 — theme.mjs·builder-core/shell·schema·validator 동시 갱신) + fixture `custom-theme-smoke`(minimax theme.json 고정본).
   - Files: write ~/projects/custom-skills/promoted/presentation-slides-yusung/{scripts/design-md-to-theme.mjs,templates/src/theme.mjs,templates/src/shell.mjs,templates/slides.schema.json,templates/validate-slides.mjs,fixtures/custom-theme-smoke/**}. read SP1 랩 theme.mjs diff.
   - Risk: 위험 (schema·theme 공유 파일 수정 — 기존 fixture 무회귀로 격리)
@@ -38,7 +38,7 @@ Status: approved (연쇄 승인 — SP1 계획 승인 시 chain 영수증 sp2 �
   - Verify: fixture validate·build PASS + 변수 26키 누락 시 validator FAIL 확인(음성 케이스) + 기존 fixture(polish-smoke 등) 무회귀.
   - Failure probe: DESIGN.md 색 이름이 자유형이라 휴리스틱 매핑이 빈 키를 남긴다 — 빈 키는 조용히 기본값 채우지 말고 stderr 로 나열 + exit 1(에이전트가 수동 보완). schema enum 에 "custom" 추가 시 validator 의 CANONICAL_THEMES 검사와 충돌 주의 — 둘을 한 커밋에서 동시 갱신.
   - Commit: changeset `20260731-sp2-html-track-upgrade` (custom-skills, README 절: step-1).
-- [ ] **step-2 — 절차 2종 문서화 (캘리브레이션 루프 승격 · 리디자인 입력 트랙)**
+- [x] **step-2 — 절차 2종 문서화 (캘리브레이션 루프 승격 · 리디자인 입력 트랙)**
   - Artifact: SKILL.md G5 를 "대표 1장 스타일 캘리브레이션 루프"로 강화(편차 체크리스트: 앵커 위치·제목-부제 간격·키컬러 단일성·푸터 규칙 — 수렴까지 반복, 교정은 코드 diff 로 기록) + §1 입력에 리디자인 소스(md/보고서) 추가 + authoring-contract.md 에 리디자인 절차 절(소스→구성안 매핑, 수치·인용 보존 규칙) + style-system.md 에 커스텀 테마 절(step-1 계약 + 브랜드 복사 경고).
   - Files: write custom-skills SKILL.md·references/{authoring-contract.md,style-system.md}. read SP1 evidence.
   - Risk: 없음 (문서만 — SKILL.md·reference 중복 금지 원칙 준수)
@@ -46,7 +46,7 @@ Status: approved (연쇄 승인 — SP1 계획 승인 시 chain 영수증 sp2 �
   - Verify: SKILL.md 와 reference 간 상세 중복 없음(routing 원칙) + 문서 내 상대 링크 실존.
   - Failure probe: G5 강화가 기존 "대표 1~3장" 문구와 충돌해 이중 절차가 되면 안 된다 — G5 본문을 대체 서술로 갱신(추가 아님).
   - Commit: changeset 동일 (README 절: step-2).
-- [ ] **step-3 — 배포 + 랩 실증 + 무회귀 (SP2 마감)**
+- [x] **step-3 — 배포 + 랩 실증 + 무회귀 (SP2 마감)**
   - Artifact: `setup.sh` 배포 → ui-dictionary 랩에서 배포본으로 실증: `design-md-to-theme.mjs` 를 `research/sources/minimax-design-md.md` 에 실행 → theme.json 생성 → custom 테마 경로로 1장 빌드·브라우저 실렌더 스크린샷(SP1 수동 변환 결과와 대조) + evidence.
   - Files: write evidence/slide-pipeline/sp2-skill-upgrade.md + 랩 산출물(decks/claude-ppt-lab/custom-theme-proof/). 실행: 배포 + node + Chrome.
   - Risk: 위험 (배포 — 단일 스킬 배포 경로로 격리)
@@ -67,7 +67,9 @@ Status: approved (연쇄 승인 — SP1 계획 승인 시 chain 영수증 sp2 �
 - step-3 배포(setup.sh) 후에만 배포본 검증 가능 — 소스 검증과 분리.
 
 ## finding 큐
-- (비어 있음 — 실행 중 append)
+- 변환기 chart-3 휴리스틱이 SP1 수동 선택과 다른 브랜드색 선택 — --set 보완 경로로 수용 (evidence 기록).
+- REQUIRED_THEME_VARS 코드 정본 = 29키 (계획서 26은 추정치 — 결정 로그의 튜닝값 원칙대로 코드 우선).
 
 ## 진행 로그
+- 2026-07-31 step-1~3 완주 — smoke 18+3 PASS·음성 케이스 확인·배포 정합·랩 실증(변환 산출 fixture identical).
 - 2026-07-31 작성 — SP1 완료 경계에서 연쇄 개설 (chain 영수증 sp2).
