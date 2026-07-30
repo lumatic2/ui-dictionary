@@ -31,7 +31,7 @@ Status: approved (사용자 승인 2026-07-31 "ㄱㄱ" — 연쇄 DM1→DM2→DM
 
 ## Step 트리
 
-- [ ] **step-1 — 3-상태 테마 배선 + FOUC 방지**
+- [x] **step-1 — 3-상태 테마 배선 + FOUC 방지**
   - Artifact: 차단 useEffect(App.tsx:102-107) 제거 → 3-상태 테마 상태 훅(명시 선택 localStorage·시스템 추종 matchMedia change 리스너) + `SiteThemeToggle` 재배선·topbar 노출 + `index.html` head FOUC 인라인 스크립트 + `color-scheme: light dark` + theme-color 이중 meta + 데모 프리뷰 전역 추종 교체(`useSystemPreviewTheme` 대체).
   - Files: write examples/ui-vocabulary-site/src/App.tsx, src/lib/preview-theme.ts, index.html. read src/tokens.css, scripts/prerender-ui-vocabulary.ts(셸 치환이 head 스크립트를 보존하는지).
   - Risk: 위험 (전역 상태 + 첫 페인트 경로 — FOUC 는 스크린 레코딩/하드 리로드로 검증, revert 경로 확보)
@@ -40,7 +40,7 @@ Status: approved (사용자 승인 2026-07-31 "ㄱㄱ" — 연쇄 DM1→DM2→DM
   - Failure probe: ① localStorage 에 구 값·쓰레기 값("askewly-theme" 과거 삭제 로직의 잔재)이 있을 때 정상 폴백 ② 프리렌더 meta 치환 정규식이 head 스크립트를 훼손하지 않는지 dist 1라우트 실측.
   - Commit: changeset `dm3-dark-mode-activation` (README 절: step-1).
 
-- [ ] **step-2 — 다크 표면 품질 점검·수리**
+- [x] **step-2 — 다크 표면 품질 점검·수리**
   - Artifact: 다크 상태로 주요 표면 순회(홈·용어 상세·패턴·docs·검색·Get Started·Pro 잠금) — 깨지는 지점(대비 미달·라이트 전제 이미지·미니목·그림자 elevation) 수리. WCAG 대비: 다크 쌍 검사는 **이미 존재**(fresh 검증자 실측 — `scripts/lint-tokens.mjs:140-158` light/dark 양쪽 AA 4.5:1, `scripts/lint/index.js` 테마별 순회) — 통과 확인만, 신규 구현 금지. 수리 불가·스코프 밖 지점은 finding 큐.
   - Files: write 수리 대상 컴포넌트(순회 후 확정), scripts/lint/(다크 대비 검사 추가 시), DESIGN.md·재생성(토큰 값 조정 시). read research 문서 §B.
   - Risk: 위험 (다크 시각 품질 — 화면 실관측 기반, 파일 단위 커밋)
@@ -68,6 +68,8 @@ Status: approved (사용자 승인 2026-07-31 "ㄱㄱ" — 연쇄 DM1→DM2→DM
 
 ## finding 큐
 - (실행 중 발견 항목을 여기 적는다 — 다크 전용 이미지 에셋·forced-colors 대응 등 스코프 밖 후보 포함)
+- 홈 히어로 장식 낙하 블록: 토큰화로 다크에서 밝은 블록으로 인버스 — 의도적 대비 장식으로 성립한다고 판정, 최종은 사람 관측.
+- step-2 수리 0건 — DM2 셸 토큰화가 다크 품질을 이미 확보(8표면 순회·기존 다크 대비 lint 2종 PASS). forced-colors 대응·다크 전용 og-image 는 스코프 밖 후보 유지.
 
 ## 진행 로그
 - 2026-07-31 작성.
