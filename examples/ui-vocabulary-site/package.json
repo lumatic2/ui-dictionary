@@ -11,7 +11,8 @@
     "lint": "oxlint",
     "audit:visuals": "node ../../scripts/audit-ui-vocabulary-visuals.mjs",
     "preview": "vite preview",
-    "postbuild": "vite-node ../../scripts/prerender-ui-vocabulary.ts"
+    "postbuild": "vite-node ../../scripts/prerender-ui-vocabulary.ts",
+    "lint:colors": "node scripts/lint-hardcoded-colors.mjs"
   },
   "dependencies": {
     "@paper-design/shaders-react": "^0.0.77",

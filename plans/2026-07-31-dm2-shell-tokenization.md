@@ -30,7 +30,7 @@ Status: approved (사용자 승인 2026-07-31 "ㄱㄱ" — 연쇄 DM1→DM2→DM
 
 ## Step 트리
 
-- [ ] **step-1 — 하드코딩 색 스캐너 + baseline**
+- [x] **step-1 — 하드코딩 색 스캐너 + baseline**
   - Artifact: `examples/ui-vocabulary-site/scripts/lint-hardcoded-colors.mjs` 신설 — 리터럴 팔레트 클래스·hex 검출, allowlist(marketing-section-preview.tsx·variation-demos 등 데모 콘텐츠) 명시, 파일별 건수 리포트 + `--max` 임계 exit code. package.json script(`lint:colors`) 등록, 현재 baseline 기록.
   - Files: write examples/ui-vocabulary-site/scripts/lint-hardcoded-colors.mjs, examples/ui-vocabulary-site/package.json. read src/(대상 파일 목록 실측).
   - Risk: 기계적 (읽기 전용 스캐너 — 오탐은 baseline 대조로 즉시 드러남)
@@ -67,6 +67,9 @@ Status: approved (사용자 승인 2026-07-31 "ㄱㄱ" — 연쇄 DM1→DM2→DM
 
 ## finding 큐
 - (실행 중 발견 항목을 여기 적는다 — 특히 semantic 대응 없는 색·의도적 고정색)
+- **baseline 998건/21파일** (스캐너 실측 — 추정 455 대비 증가는 정규식 커버리지 차: white/black·전 prefix·hex 포함). 셸 4파일 = App 360·home 321·article 170·term-visual 55.
+- `lib/palette-generator.ts`(68)·`lib/documentation-pages.ts`(3) hex 는 **콘텐츠 데이터**(팔레트 생성기 데이터·문서 예시) — 스타일 하드코딩 아님, step-3 에서 allowlist 또는 opt-out 처리 판단.
+- `term-visual.tsx` 의 dark-mode variant 리터럴(DM1 신설)은 의도적 데모 콘텐츠 — step-3 치환 시 `hardcoded-color-ok` 마커 처리.
 
 ## 진행 로그
 - 2026-07-31 작성.
