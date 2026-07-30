@@ -11,13 +11,13 @@ function readDomTheme(): ResolvedPreviewTheme {
 }
 
 /** 사이트 전역 3-상태 테마 (라이트/다크/시스템 — DM3).
- *  명시 선택은 localStorage 저장, "system" 은 키 제거 + prefers-color-scheme 추종.
+ *  기본값 = 라이트 (2026-07-31 사용자 확정 — OS 설정 무관). "system" 은 명시 선택 시에만 저장·OS 추종.
  *  첫 페인트 전 결정은 index.html head 인라인 스크립트가 담당 — 이 훅은 그 상태를 이어받는다. */
 export function useSiteTheme(): { theme: PreviewTheme; resolvedTheme: ResolvedPreviewTheme; setTheme: (theme: PreviewTheme) => void } {
   const [theme, setThemeState] = useState<PreviewTheme>(() => {
-    if (typeof window === "undefined") return "system"
+    if (typeof window === "undefined") return "light"
     const stored = window.localStorage.getItem(STORAGE_KEY)
-    return stored === "light" || stored === "dark" ? stored : "system"
+    return stored === "system" || stored === "dark" ? stored : "light"
   })
   const [systemTheme, setSystemTheme] = useState<ResolvedPreviewTheme>(() =>
     typeof window !== "undefined" && window.matchMedia?.("(prefers-color-scheme: dark)").matches ? "dark" : "light",
@@ -40,8 +40,8 @@ export function useSiteTheme(): { theme: PreviewTheme; resolvedTheme: ResolvedPr
 
   const setTheme = (next: PreviewTheme) => {
     setThemeState(next)
-    if (next === "system") window.localStorage.removeItem(STORAGE_KEY)
-    else window.localStorage.setItem(STORAGE_KEY, next)
+    // 세 값 모두 명시 저장 — 키 부재 = 기본값 라이트
+    window.localStorage.setItem(STORAGE_KEY, next)
   }
 
   return { theme, resolvedTheme, setTheme }

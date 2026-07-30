@@ -8,11 +8,12 @@
     <meta name="theme-color" content="#211f2e" media="(prefers-color-scheme: dark)" />
     <script>
       // 다크모드 FOUC 방지 — 첫 페인트 전에 동기적으로 테마를 결정한다 (hydration 이후 결정은 번쩍임).
+      // 기본값 = 라이트 (2026-07-31 사용자 확정 — OS 설정 무관). '시스템'은 명시 선택한 경우에만 OS 추종.
       try {
         var askewlyTheme = localStorage.getItem("askewly-theme")
         document.documentElement.classList.toggle(
           "dark",
-          askewlyTheme === "dark" || (askewlyTheme !== "light" && matchMedia("(prefers-color-scheme: dark)").matches),
+          askewlyTheme === "dark" || (askewlyTheme === "system" && matchMedia("(prefers-color-scheme: dark)").matches),
         )
       } catch (e) {}
     </script>
