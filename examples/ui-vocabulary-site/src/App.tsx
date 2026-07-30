@@ -527,14 +527,14 @@ function App() {
     <div className="flex flex-col gap-7">
       {visibleDocsNavGroups.map((group) => (
         <div key={group.label} className="flex flex-col gap-2">
-          <p className="px-3 text-[0.68rem] font-semibold uppercase tracking-[0.22em] text-slate-500">{group.label}</p>
+          <p className="px-3 text-[0.68rem] font-semibold uppercase tracking-[0.22em] text-muted-foreground">{group.label}</p>
           <div className="flex flex-col gap-1 border-l">
             {group.items.map((item) => (
               <button
                 key={item.filter}
                 className={cn(
-                  "flex min-h-8 items-center border-l px-3 text-left text-sm text-slate-600 transition hover:text-slate-950",
-                  filter === item.filter ? "-ml-px border-slate-950 font-semibold text-slate-950" : "-ml-px border-transparent"
+                  "flex min-h-8 items-center border-l px-3 text-left text-sm text-muted-foreground transition hover:text-foreground",
+                  filter === item.filter ? "-ml-px border-foreground font-semibold text-foreground" : "-ml-px border-transparent"
                 )}
                 type="button"
                 onClick={() => updateNavFilter(item.filter)}
@@ -665,7 +665,7 @@ function App() {
           <nav aria-label="탐색" className="flex h-full flex-col gap-5">
             {visiblePageMode === "docs" ? (
               <>
-                <p className="px-3 text-[0.68rem] font-semibold uppercase tracking-[0.22em] text-slate-500">Docs</p>
+                <p className="px-3 text-[0.68rem] font-semibold uppercase tracking-[0.22em] text-muted-foreground">Docs</p>
                 {docsNav}
               </>
             ) : visiblePageMode === "recipes" ? (
@@ -960,7 +960,7 @@ function ProOverviewContent({ onSignIn }: { onSignIn: () => void }) {
         <p className="mt-6 max-w-2xl text-base leading-7 text-muted-foreground md:text-lg">
           Pro is for teams and agents that need the system as working source material, not only a public visual reference.
         </p>
-        <div className="mt-10 overflow-hidden rounded-md border bg-slate-950 shadow-sm">
+        <div className="mt-10 overflow-hidden rounded-md border bg-foreground shadow-sm">
           <img
             alt=""
             className="aspect-[16/9] size-full object-cover object-left-top"
@@ -985,7 +985,7 @@ function ProOverviewContent({ onSignIn }: { onSignIn: () => void }) {
             </p>
           ))}
         </div>
-        <Button className="mt-7 h-11 w-full rounded-lg bg-askewly-violet text-white hover:bg-[#5f22a8]" type="button" onClick={onSignIn}>
+        <Button className="mt-7 h-11 w-full rounded-lg bg-askewly-violet text-primary-foreground hover:bg-[#5f22a8]" type="button" onClick={onSignIn}>
           Continue to sign in
         </Button>
       </aside>
@@ -1119,10 +1119,10 @@ function ProPlanPage({ onSignIn }: { onSignIn: () => void }) {
 function GoogleMark() {
   return (
     <svg width="22" height="22" viewBox="0 0 18 18" aria-hidden="true">
-      <path fill="#4285F4" d="M17.64 9.2c0-.64-.06-1.25-.16-1.84H9v3.48h4.84a4.14 4.14 0 0 1-1.8 2.72v2.26h2.92c1.7-1.57 2.68-3.88 2.68-6.62Z" />
-      <path fill="#34A853" d="M9 18c2.43 0 4.47-.8 5.96-2.18l-2.92-2.26c-.8.54-1.84.86-3.04.86-2.34 0-4.32-1.58-5.03-3.7H.96v2.33A9 9 0 0 0 9 18Z" />
-      <path fill="#FBBC05" d="M3.97 10.72a5.4 5.4 0 0 1 0-3.44V4.95H.96a9 9 0 0 0 0 8.1l3.01-2.33Z" />
-      <path fill="#EA4335" d="M9 3.58c1.32 0 2.5.46 3.44 1.35l2.58-2.58C13.46.9 11.42 0 9 0A9 9 0 0 0 .96 4.95l3.01 2.33C4.68 5.16 6.66 3.58 9 3.58Z" />
+      <path fill="#4285F4" d="M17.64 9.2c0-.64-.06-1.25-.16-1.84H9v3.48h4.84a4.14 4.14 0 0 1-1.8 2.72v2.26h2.92c1.7-1.57 2.68-3.88 2.68-6.62Z" />{/* hardcoded-color-ok */}
+      <path fill="#34A853" d="M9 18c2.43 0 4.47-.8 5.96-2.18l-2.92-2.26c-.8.54-1.84.86-3.04.86-2.34 0-4.32-1.58-5.03-3.7H.96v2.33A9 9 0 0 0 9 18Z" />{/* hardcoded-color-ok */}
+      <path fill="#FBBC05" d="M3.97 10.72a5.4 5.4 0 0 1 0-3.44V4.95H.96a9 9 0 0 0 0 8.1l3.01-2.33Z" />{/* hardcoded-color-ok */}
+      <path fill="#EA4335" d="M9 3.58c1.32 0 2.5.46 3.44 1.35l2.58-2.58C13.46.9 11.42 0 9 0A9 9 0 0 0 .96 4.95l3.01 2.33C4.68 5.16 6.66 3.58 9 3.58Z" />{/* hardcoded-color-ok */}
     </svg>
   )
 }
@@ -1130,10 +1130,7 @@ function GoogleMark() {
 function KakaoMark() {
   return (
     <svg width="22" height="22" viewBox="0 0 18 18" aria-hidden="true">
-      <path
-        fill="#191600"
-        d="M9 1.5C4.86 1.5 1.5 4.1 1.5 7.31c0 2.07 1.4 3.88 3.5 4.92-.15.54-.56 2.02-.64 2.33-.1.39.14.38.3.28.13-.08 2.02-1.37 2.84-1.93.49.07 1 .11 1.5.11 4.14 0 7.5-2.6 7.5-5.81S13.14 1.5 9 1.5Z"
-      />
+      <path fill="#191600" d="M9 1.5C4.86 1.5 1.5 4.1 1.5 7.31c0 2.07 1.4 3.88 3.5 4.92-.15.54-.56 2.02-.64 2.33-.1.39.14.38.3.28.13-.08 2.02-1.37 2.84-1.93.49.07 1 .11 1.5.11 4.14 0 7.5-2.6 7.5-5.81S13.14 1.5 9 1.5Z" />{/* hardcoded-color-ok */}
     </svg>
   )
 }
@@ -1159,7 +1156,7 @@ function SignInPopoverContent() {
             <GoogleMark />
             Google로 계속하기
           </Button>
-          <Button className="h-11 w-full rounded-md border-[#fee500] bg-[#fee500] text-sm font-semibold text-[#191600] shadow-xs hover:border-[#f5dc00] hover:bg-[#f5dc00]" type="button" onClick={() => startOAuth("kakao")}>
+          <Button className="h-11 w-full rounded-md border-[#fee500] bg-[#fee500] text-sm font-semibold text-[#191600] shadow-xs hover:border-[#f5dc00] hover:bg-[#f5dc00]" type="button" onClick={() => startOAuth("kakao")}>{/* hardcoded-color-ok */}
             <KakaoMark />
             카카오로 계속하기
           </Button>
@@ -1436,7 +1433,7 @@ function RecipesNav({
 }) {
   return (
     <div className="flex flex-col gap-1 py-2">
-      <p className="px-3 text-[0.68rem] font-semibold uppercase tracking-[0.22em] text-slate-500">Collections</p>
+      <p className="px-3 text-[0.68rem] font-semibold uppercase tracking-[0.22em] text-muted-foreground">Collections</p>
       {recipeCollectionOrder.map((collection) => (
         <button
           key={collection}
@@ -1803,9 +1800,9 @@ function DocsCatalogLanding({ onFilterChange }: { onFilterChange: (filter: TermF
   return (
     <section className="mx-auto flex w-full max-w-[76rem] flex-col gap-10" data-print-hidden>
       <div className="max-w-4xl">
-        <p className="text-xs font-semibold uppercase tracking-[0.22em] text-slate-500">Documentation</p>
-        <h2 className="mt-5 text-4xl font-normal tracking-normal text-slate-950 md:text-6xl">Askewly Design docs</h2>
-        <p className="mt-6 max-w-3xl text-lg leading-8 text-slate-600">
+        <p className="text-xs font-semibold uppercase tracking-[0.22em] text-muted-foreground">Documentation</p>
+        <h2 className="mt-5 text-4xl font-normal tracking-normal text-foreground md:text-6xl">Askewly Design docs</h2>
+        <p className="mt-6 max-w-3xl text-lg leading-8 text-muted-foreground">
           Askewly Design is a design system for product interfaces: a visual pattern library, a UI vocabulary, and
           agent-ready guidance that all ship from the same tokens. These docs explain how the system thinks and how
           to apply it to your own screens.
@@ -1816,7 +1813,7 @@ function DocsCatalogLanding({ onFilterChange }: { onFilterChange: (filter: TermF
         {visibleGroups.map((group) => (
           <div key={group.label} className="flex flex-col gap-4 rounded-md border bg-card p-6 shadow-sm">
             <div>
-              <h3 className="text-lg font-semibold tracking-normal text-slate-950">{group.label}</h3>
+              <h3 className="text-lg font-semibold tracking-normal text-foreground">{group.label}</h3>
               <p className="mt-1.5 text-sm leading-6 text-muted-foreground">{docsHubGroupDescriptions[group.label] ?? ""}</p>
             </div>
             <div className="flex flex-wrap gap-x-4 gap-y-2">
@@ -1842,36 +1839,36 @@ function DocsSectionPreview({ section, termCount }: { section: DocsSection; term
   return (
     <article className="mx-auto grid w-full max-w-[76rem] gap-8 xl:grid-cols-[minmax(0,1fr)_16rem]">
       <div className="max-w-4xl">
-        <p className="text-xs font-semibold uppercase tracking-[0.22em] text-slate-500">{section.eyebrow}</p>
-        <h2 className="mt-5 text-4xl font-normal tracking-normal text-slate-950 md:text-5xl">{section.title}</h2>
-        <p className="mt-6 max-w-3xl text-lg leading-8 text-slate-600">{section.description}</p>
+        <p className="text-xs font-semibold uppercase tracking-[0.22em] text-muted-foreground">{section.eyebrow}</p>
+        <h2 className="mt-5 text-4xl font-normal tracking-normal text-foreground md:text-5xl">{section.title}</h2>
+        <p className="mt-6 max-w-3xl text-lg leading-8 text-muted-foreground">{section.description}</p>
 
         <div className="mt-10">
-          <h3 className="text-xl font-semibold tracking-normal text-slate-950">Overview</h3>
-          <p className="mt-5 text-base leading-7 text-slate-600">{section.overview}</p>
+          <h3 className="text-xl font-semibold tracking-normal text-foreground">Overview</h3>
+          <p className="mt-5 text-base leading-7 text-muted-foreground">{section.overview}</p>
         </div>
 
-        <div className="mt-8 overflow-hidden rounded-xl border bg-white shadow-sm">
-          <div className="border-b bg-slate-50 p-8">
-            <div className="mx-auto max-w-md rounded-xl border bg-white p-5 shadow-sm">
+        <div className="mt-8 overflow-hidden rounded-xl border bg-card shadow-sm">
+          <div className="border-b bg-background p-8">
+            <div className="mx-auto max-w-md rounded-xl border bg-card p-5 shadow-sm">
               <div className="flex items-center gap-4">
                 <span className="grid size-12 place-items-center rounded-lg bg-sky-100 text-sky-700">
                   <section.icon aria-hidden="true" className="size-6" />
                 </span>
                 <div>
-                  <p className="text-lg font-semibold text-slate-950">{section.exampleTitle}</p>
-                  <p className="mt-1 text-sm text-slate-500">{section.exampleDescription}</p>
+                  <p className="text-lg font-semibold text-foreground">{section.exampleTitle}</p>
+                  <p className="mt-1 text-sm text-muted-foreground">{section.exampleDescription}</p>
                 </div>
               </div>
             </div>
           </div>
-          <pre className="overflow-x-auto bg-slate-950 p-5 text-sm leading-7 text-slate-100"><code>{section.code}</code></pre>
+          <pre className="overflow-x-auto bg-slate-950 p-5 text-sm leading-7 text-slate-100"><code>{section.code}</code></pre>{/* hardcoded-color-ok */}
         </div>
       </div>
 
       <aside className="hidden self-start border-l pl-6 text-sm xl:sticky xl:top-20 xl:block xl:max-h-[calc(100svh-6rem)] xl:overflow-y-auto xl:overscroll-contain">
-        <p className="text-xs font-semibold uppercase tracking-[0.22em] text-slate-500">On this page</p>
-        <div className="mt-5 flex flex-col gap-3 text-slate-600">
+        <p className="text-xs font-semibold uppercase tracking-[0.22em] text-muted-foreground">On this page</p>
+        <div className="mt-5 flex flex-col gap-3 text-muted-foreground">
           {section.anchors.map((anchor) => (
             <span key={anchor}>{anchor}</span>
           ))}
@@ -1899,33 +1896,33 @@ export function LegacyDocsElementPreview({ variant }: { variant: DocsArticlePage
 
   if (variant === "docs-command-palette") {
     return (
-      <div className="relative mx-auto flex aspect-[16/10] max-w-2xl items-center justify-center overflow-hidden rounded-lg bg-slate-200">
+      <div className="relative mx-auto flex aspect-[16/10] max-w-2xl items-center justify-center overflow-hidden rounded-lg bg-muted">
         <img alt="" className="absolute inset-0 size-full object-cover" src="/generated/docs/command-palette-bg-1.png" />
-        <div className="relative grid w-[78%] overflow-hidden rounded-xl bg-white/95 shadow-2xl ring-1 ring-slate-900/10 backdrop-blur md:grid-cols-[1.15fr_0.85fr]">
-          <div className="border-r border-slate-200">
-            <div className="flex items-center gap-2 border-b px-4 py-3 text-sm text-slate-400">
+        <div className="relative grid w-[78%] overflow-hidden rounded-xl bg-card/95 shadow-2xl ring-1 ring-foreground/10 backdrop-blur md:grid-cols-[1.15fr_0.85fr]">
+          <div className="border-r border-border">
+            <div className="flex items-center gap-2 border-b px-4 py-3 text-sm text-muted-foreground/70">
               <Search aria-hidden="true" className="size-4" />
               <span>Search...</span>
             </div>
             <div className="p-3">
-              <p className="px-2 py-2 text-[0.65rem] font-semibold uppercase tracking-[0.16em] text-slate-400">Recent searches</p>
+              <p className="px-2 py-2 text-[0.65rem] font-semibold uppercase tracking-[0.16em] text-muted-foreground/70">Recent searches</p>
               {["Workflow Inc. / Website Redesign", "Add new file...", "Add new folder...", "Add hashtag...", "Add label..."].map((item, index) => (
-                <div key={item} className={cn("flex items-center justify-between rounded-lg px-3 py-2 text-sm", index === 0 ? "bg-slate-100 text-slate-950" : "text-slate-600")}>
-                  <span className="flex items-center gap-2"><Clipboard aria-hidden="true" className="size-4 text-slate-400" />{item}</span>
-                  {index > 0 && <span className="text-[0.65rem] text-slate-400">⌘{index}</span>}
+                <div key={item} className={cn("flex items-center justify-between rounded-lg px-3 py-2 text-sm", index === 0 ? "bg-muted text-foreground" : "text-muted-foreground")}>
+                  <span className="flex items-center gap-2"><Clipboard aria-hidden="true" className="size-4 text-muted-foreground/70" />{item}</span>
+                  {index > 0 && <span className="text-[0.65rem] text-muted-foreground/70">⌘{index}</span>}
                 </div>
               ))}
             </div>
           </div>
           <div className="hidden p-5 text-sm md:block">
             <div className="flex items-center gap-3">
-              <span className="grid size-10 place-items-center rounded-full bg-slate-200 text-slate-600">TC</span>
+              <span className="grid size-10 place-items-center rounded-full bg-muted text-muted-foreground">TC</span>
               <div>
-                <p className="font-semibold text-slate-950">Tom Cook</p>
-                <p className="text-slate-500">Director, Product Design</p>
+                <p className="font-semibold text-foreground">Tom Cook</p>
+                <p className="text-muted-foreground">Director, Product Design</p>
               </div>
             </div>
-            <div className="mt-6 space-y-2 text-slate-500">
+            <div className="mt-6 space-y-2 text-muted-foreground">
               <p>Last active 12m ago</p>
               <p>5 shared projects</p>
               <p>tom@example.com</p>
@@ -1940,18 +1937,18 @@ export function LegacyDocsElementPreview({ variant }: { variant: DocsArticlePage
     const teammates = ["Leslie Alexander", "Michael Foster", "Dries Vincent", "Lindsay Walton", "Courtney Henry"]
 
     return (
-      <div className="mx-auto flex aspect-[16/10] max-w-2xl items-start justify-center rounded-lg bg-slate-100 pt-12">
+      <div className="mx-auto flex aspect-[16/10] max-w-2xl items-start justify-center rounded-lg bg-muted pt-12">
         <div className="w-72">
-          <label className="mb-2 block text-xs font-semibold text-slate-700">Assigned to</label>
-          <button className="flex h-10 w-full items-center justify-between rounded-md border bg-white px-3 text-sm text-slate-500 shadow-sm transition hover:border-indigo-300 active:scale-[0.99]" type="button" onClick={() => setOpen((value) => !value)}>
+          <label className="mb-2 block text-xs font-semibold text-foreground">Assigned to</label>
+          <button className="flex h-10 w-full items-center justify-between rounded-md border bg-card px-3 text-sm text-muted-foreground shadow-sm transition hover:border-indigo-300 active:scale-[0.99]" type="button" onClick={() => setOpen((value) => !value)}>
             <span>{selected || "Search teammates..."}</span>
             <ChevronDown aria-hidden="true" className={cn("size-4 transition", open && "rotate-180")} />
           </button>
-          <div className={cn("mt-1 overflow-hidden rounded-md bg-white shadow-xl ring-1 ring-slate-900/10 transition-all duration-200", open ? "max-h-64 opacity-100" : "max-h-0 opacity-0")}>
+          <div className={cn("mt-1 overflow-hidden rounded-md bg-card shadow-xl ring-1 ring-foreground/10 transition-all duration-200", open ? "max-h-64 opacity-100" : "max-h-0 opacity-0")}>
             {teammates.map((name, index) => (
-              <button key={name} className={cn("flex w-full items-center gap-3 px-3 py-2 text-left text-sm transition hover:bg-slate-50", selected === name && "bg-indigo-50 text-indigo-700")} type="button" onClick={() => { setSelected(name); setFeedback(`${name} assigned`) }}>
+              <button key={name} className={cn("flex w-full items-center gap-3 px-3 py-2 text-left text-sm transition hover:bg-background", selected === name && "bg-indigo-50 text-indigo-700")} type="button" onClick={() => { setSelected(name); setFeedback(`${name} assigned`) }}>
                 <span className={cn("size-6 rounded-full", ["bg-rose-200", "bg-amber-200", "bg-sky-200", "bg-emerald-200", "bg-violet-200"][index])} />
-                <span className="text-slate-700">{name}</span>
+                <span className="text-foreground">{name}</span>
               </button>
             ))}
           </div>
@@ -1973,15 +1970,15 @@ export function LegacyDocsElementPreview({ variant }: { variant: DocsArticlePage
     ] as const
 
     return (
-      <div className="mx-auto flex aspect-[16/10] max-w-2xl items-start justify-center rounded-lg bg-slate-100 pt-12">
+      <div className="mx-auto flex aspect-[16/10] max-w-2xl items-start justify-center rounded-lg bg-muted pt-12">
         <div className="flex flex-col items-end">
-          <button className="mb-3 inline-flex items-center gap-2 rounded-md border bg-white px-4 py-2 text-sm font-semibold text-slate-700 shadow-sm transition hover:border-indigo-300 active:scale-[0.98]" type="button" onClick={() => setOpen((value) => !value)}>
-            Options <ChevronDown aria-hidden="true" className={cn("size-4 text-slate-400 transition", open && "rotate-180")} />
+          <button className="mb-3 inline-flex items-center gap-2 rounded-md border bg-card px-4 py-2 text-sm font-semibold text-foreground shadow-sm transition hover:border-indigo-300 active:scale-[0.98]" type="button" onClick={() => setOpen((value) => !value)}>
+            Options <ChevronDown aria-hidden="true" className={cn("size-4 text-muted-foreground/70 transition", open && "rotate-180")} />
           </button>
-          <div className={cn("w-72 overflow-hidden rounded-lg bg-white text-sm shadow-xl ring-1 ring-slate-900/10 transition-all duration-200", open ? "translate-y-0 opacity-100" : "pointer-events-none -translate-y-1 opacity-0")}>
+          <div className={cn("w-72 overflow-hidden rounded-lg bg-card text-sm shadow-xl ring-1 ring-foreground/10 transition-all duration-200", open ? "translate-y-0 opacity-100" : "pointer-events-none -translate-y-1 opacity-0")}>
             {items.map(([Icon, label], index) => (
-              <button key={label} className={cn("flex w-full items-center gap-3 px-4 py-3 text-left text-slate-600 transition hover:bg-slate-50 hover:text-slate-950", selected === label && "bg-indigo-50 text-indigo-700", [2, 4, 6].includes(index) && "border-t")} type="button" onClick={() => { setSelected(label); setFeedback(`${label} selected`) }}>
-                <Icon aria-hidden="true" className="size-5 text-slate-400" />
+              <button key={label} className={cn("flex w-full items-center gap-3 px-4 py-3 text-left text-muted-foreground transition hover:bg-background hover:text-foreground", selected === label && "bg-indigo-50 text-indigo-700", [2, 4, 6].includes(index) && "border-t")} type="button" onClick={() => { setSelected(label); setFeedback(`${label} selected`) }}>
+                <Icon aria-hidden="true" className="size-5 text-muted-foreground/70" />
                 <span>{label}</span>
               </button>
             ))}
@@ -1994,11 +1991,11 @@ export function LegacyDocsElementPreview({ variant }: { variant: DocsArticlePage
 
   if (variant === "docs-copy-button") {
     return (
-      <div className="mx-auto flex aspect-[16/10] max-w-2xl items-center justify-center rounded-lg bg-slate-100">
-        <div className="w-[min(32rem,90%)] overflow-hidden rounded-xl bg-slate-950 text-slate-100 shadow-xl">
-          <div className="flex items-center justify-between border-b border-white/10 px-4 py-3 text-xs text-slate-400">
+      <div className="mx-auto flex aspect-[16/10] max-w-2xl items-center justify-center rounded-lg bg-muted">
+        <div className="w-[min(32rem,90%)] overflow-hidden rounded-xl bg-slate-950 text-slate-100 shadow-xl">{/* hardcoded-color-ok */}
+          <div className="flex items-center justify-between border-b border-white/10 px-4 py-3 text-xs text-slate-400">{/* hardcoded-color-ok */}
             <span>install.sh</span>
-            <button className={cn("inline-flex items-center gap-2 rounded-md px-3 py-1.5 text-slate-100 transition active:scale-[0.98]", copied ? "bg-emerald-500/20 text-emerald-100" : "bg-white/10 hover:bg-white/15")} type="button" onClick={() => setCopied(true)}><Copy aria-hidden="true" className="size-3.5" /> {copied ? "Copied" : "Copy"}</button>
+            <button className={cn("inline-flex items-center gap-2 rounded-md px-3 py-1.5 text-slate-100 transition active:scale-[0.98]", copied ? "bg-emerald-500/20 text-emerald-100" : "bg-white/10 hover:bg-white/15")} type="button" onClick={() => setCopied(true)}><Copy aria-hidden="true" className="size-3.5" /> {copied ? "Copied" : "Copy"}</button>{/* hardcoded-color-ok */}
           </div>
           <pre className="overflow-x-auto p-5 text-sm leading-7"><code>npm install ui-dictionary{"\n"}npx ui-dictionary add command-palette</code></pre>
         </div>
@@ -2008,20 +2005,20 @@ export function LegacyDocsElementPreview({ variant }: { variant: DocsArticlePage
 
   if (variant === "docs-dialog") {
     return (
-      <div className="relative mx-auto flex aspect-[16/10] max-w-2xl items-center justify-center overflow-hidden rounded-lg bg-slate-100">
-        <div className={cn("absolute inset-0 bg-slate-900/20 transition", dialogOpen ? "opacity-100" : "opacity-0")} />
+      <div className="relative mx-auto flex aspect-[16/10] max-w-2xl items-center justify-center overflow-hidden rounded-lg bg-muted">
+        <div className={cn("absolute inset-0 bg-foreground/20 transition", dialogOpen ? "opacity-100" : "opacity-0")} />
         {dialogOpen ? (
-          <div className="relative w-80 rounded-xl bg-white p-6 text-sm shadow-2xl ring-1 ring-slate-900/10 transition animate-in fade-in zoom-in-95">
+          <div className="relative w-80 rounded-xl bg-card p-6 text-sm shadow-2xl ring-1 ring-foreground/10 transition animate-in fade-in zoom-in-95">
             <div className="grid size-10 place-items-center rounded-full bg-rose-100 text-rose-600"><CircleAlert aria-hidden="true" className="size-5" /></div>
-            <h4 className="mt-4 text-base font-semibold text-slate-950">Delete project</h4>
-            <p className="mt-2 leading-6 text-slate-500">This action cannot be undone. All project files and activity will be removed.</p>
+            <h4 className="mt-4 text-base font-semibold text-foreground">Delete project</h4>
+            <p className="mt-2 leading-6 text-muted-foreground">This action cannot be undone. All project files and activity will be removed.</p>
             <div className="mt-6 flex justify-end gap-2">
-              <button className="rounded-md border px-3 py-2 font-medium text-slate-700 transition hover:bg-slate-50 active:scale-[0.98]" type="button" onClick={() => setDialogOpen(false)}>Cancel</button>
+              <button className="rounded-md border px-3 py-2 font-medium text-foreground transition hover:bg-background active:scale-[0.98]" type="button" onClick={() => setDialogOpen(false)}>Cancel</button>
               <button className="rounded-md bg-rose-600 px-3 py-2 font-semibold text-white transition hover:bg-rose-500 active:scale-[0.98]" type="button" onClick={() => { setDialogOpen(false); setFeedback("Project deleted") }}>Delete</button>
             </div>
           </div>
         ) : (
-          <button className="relative rounded-md bg-white px-4 py-2 text-sm font-semibold text-slate-950 shadow-sm transition hover:bg-slate-50 active:scale-[0.98]" type="button" onClick={() => setDialogOpen(true)}>{feedback || "Open dialog"}</button>
+          <button className="relative rounded-md bg-card px-4 py-2 text-sm font-semibold text-foreground shadow-sm transition hover:bg-background active:scale-[0.98]" type="button" onClick={() => setDialogOpen(true)}>{feedback || "Open dialog"}</button>
         )}
       </div>
     )
@@ -2029,19 +2026,19 @@ export function LegacyDocsElementPreview({ variant }: { variant: DocsArticlePage
 
   if (variant === "docs-disclosure") {
     return (
-      <div className="mx-auto flex aspect-[16/10] max-w-2xl items-center justify-center rounded-lg bg-slate-100">
-        <div className="w-[min(34rem,90%)] divide-y rounded-xl bg-white shadow-xl ring-1 ring-slate-900/10">
+      <div className="mx-auto flex aspect-[16/10] max-w-2xl items-center justify-center rounded-lg bg-muted">
+        <div className="w-[min(34rem,90%)] divide-y rounded-xl bg-card shadow-xl ring-1 ring-foreground/10">
           {[
             ["What is included?", "Every screen includes layout, state, and accessibility notes."],
             ["Can I customize it?", "Yes, replace tokens and labels while preserving interaction contracts."],
             ["Does it work on mobile?", "Each pattern should be checked at 390px before it is marked done."],
           ].map(([title, body], index) => (
-            <button key={title} className="block w-full p-4 text-left transition hover:bg-slate-50" type="button" onClick={() => setDisclosureIndex(index)}>
-              <div className="flex items-center justify-between font-semibold text-slate-950">
+            <button key={title} className="block w-full p-4 text-left transition hover:bg-background" type="button" onClick={() => setDisclosureIndex(index)}>
+              <div className="flex items-center justify-between font-semibold text-foreground">
                 <span>{title}</span>
-                <ChevronDown aria-hidden="true" className={cn("size-4 text-slate-400 transition", disclosureIndex === index && "rotate-180")} />
+                <ChevronDown aria-hidden="true" className={cn("size-4 text-muted-foreground/70 transition", disclosureIndex === index && "rotate-180")} />
               </div>
-              <p className={cn("overflow-hidden text-sm leading-6 text-slate-500 transition-all duration-200", disclosureIndex === index ? "mt-3 max-h-24 opacity-100" : "mt-0 max-h-0 opacity-0")}>{body}</p>
+              <p className={cn("overflow-hidden text-sm leading-6 text-muted-foreground transition-all duration-200", disclosureIndex === index ? "mt-3 max-h-24 opacity-100" : "mt-0 max-h-0 opacity-0")}>{body}</p>
             </button>
           ))}
         </div>
@@ -2051,15 +2048,15 @@ export function LegacyDocsElementPreview({ variant }: { variant: DocsArticlePage
 
   if (variant === "docs-popover") {
     return (
-      <div className="mx-auto flex aspect-[16/10] max-w-2xl items-start justify-center rounded-lg bg-slate-100 pt-16">
+      <div className="mx-auto flex aspect-[16/10] max-w-2xl items-start justify-center rounded-lg bg-muted pt-16">
         <div className="relative">
-          <button className="rounded-md bg-slate-950 px-4 py-2 text-sm font-semibold text-white transition hover:bg-slate-800 active:scale-[0.98]" type="button" onClick={() => setPopoverOpen((value) => !value)}>Quick settings</button>
-          <div className={cn("absolute left-1/2 top-12 w-72 -translate-x-1/2 rounded-xl bg-white p-4 text-sm shadow-xl ring-1 ring-slate-900/10 transition duration-200", popoverOpen ? "translate-y-0 opacity-100" : "pointer-events-none translate-y-1 opacity-0")}>
-            <h4 className="font-semibold text-slate-950">Panel density</h4>
-            <p className="mt-1 text-slate-500">Adjust how much detail appears in previews.</p>
-            <div className="mt-4 flex rounded-lg bg-slate-100 p-1">
+          <button className="rounded-md bg-foreground px-4 py-2 text-sm font-semibold text-background transition hover:bg-foreground/90 active:scale-[0.98]" type="button" onClick={() => setPopoverOpen((value) => !value)}>Quick settings</button>
+          <div className={cn("absolute left-1/2 top-12 w-72 -translate-x-1/2 rounded-xl bg-card p-4 text-sm shadow-xl ring-1 ring-foreground/10 transition duration-200", popoverOpen ? "translate-y-0 opacity-100" : "pointer-events-none translate-y-1 opacity-0")}>
+            <h4 className="font-semibold text-foreground">Panel density</h4>
+            <p className="mt-1 text-muted-foreground">Adjust how much detail appears in previews.</p>
+            <div className="mt-4 flex rounded-lg bg-muted p-1">
               {["Compact", "Comfortable"].map((item) => (
-                <button key={item} className={cn("flex-1 rounded-md px-3 py-2 text-center transition", selected === item ? "bg-white font-medium text-slate-950 shadow-sm" : "text-slate-500 hover:text-slate-950")} type="button" onClick={() => setSelected(item)}>{item}</button>
+                <button key={item} className={cn("flex-1 rounded-md px-3 py-2 text-center transition", selected === item ? "bg-card font-medium text-foreground shadow-sm" : "text-muted-foreground hover:text-foreground")} type="button" onClick={() => setSelected(item)}>{item}</button>
               ))}
             </div>
           </div>
@@ -2070,15 +2067,15 @@ export function LegacyDocsElementPreview({ variant }: { variant: DocsArticlePage
 
   if (variant === "docs-select") {
     return (
-      <div className="mx-auto flex aspect-[16/10] max-w-2xl items-start justify-center rounded-lg bg-slate-100 pt-14">
+      <div className="mx-auto flex aspect-[16/10] max-w-2xl items-start justify-center rounded-lg bg-muted pt-14">
         <div className="w-80">
-          <label className="mb-2 block text-xs font-semibold text-slate-700">Role</label>
-          <button className="flex h-10 w-full items-center justify-between rounded-md border bg-white px-3 text-sm font-medium text-slate-700 shadow-sm transition hover:border-indigo-300 active:scale-[0.99]" type="button" onClick={() => setOpen((value) => !value)}>
-            {role} <ChevronDown aria-hidden="true" className={cn("size-4 text-slate-400 transition", open && "rotate-180")} />
+          <label className="mb-2 block text-xs font-semibold text-foreground">Role</label>
+          <button className="flex h-10 w-full items-center justify-between rounded-md border bg-card px-3 text-sm font-medium text-foreground shadow-sm transition hover:border-indigo-300 active:scale-[0.99]" type="button" onClick={() => setOpen((value) => !value)}>
+            {role} <ChevronDown aria-hidden="true" className={cn("size-4 text-muted-foreground/70 transition", open && "rotate-180")} />
           </button>
-          <div className={cn("mt-1 overflow-hidden rounded-md bg-white shadow-xl ring-1 ring-slate-900/10 transition-all duration-200", open ? "max-h-48 opacity-100" : "max-h-0 opacity-0")}>
+          <div className={cn("mt-1 overflow-hidden rounded-md bg-card shadow-xl ring-1 ring-foreground/10 transition-all duration-200", open ? "max-h-48 opacity-100" : "max-h-0 opacity-0")}>
             {["Admin", "Member", "Viewer", "Billing only"].map((item) => (
-              <button key={item} className={cn("flex w-full items-center justify-between px-3 py-2 text-left text-sm transition hover:bg-slate-50", role === item ? "bg-indigo-50 text-indigo-700" : "text-slate-600")} type="button" onClick={() => { setRole(item); setFeedback(`${item} selected`) }}>
+              <button key={item} className={cn("flex w-full items-center justify-between px-3 py-2 text-left text-sm transition hover:bg-background", role === item ? "bg-indigo-50 text-indigo-700" : "text-muted-foreground")} type="button" onClick={() => { setRole(item); setFeedback(`${item} selected`) }}>
                 <span>{item}</span>
                 {role === item && <CheckCircle2 aria-hidden="true" className="size-4" />}
               </button>
@@ -2091,17 +2088,17 @@ export function LegacyDocsElementPreview({ variant }: { variant: DocsArticlePage
   }
 
   return (
-    <div className="mx-auto flex aspect-[16/10] max-w-2xl items-center justify-center rounded-lg bg-slate-100">
-      <div className="w-[min(34rem,90%)] rounded-xl bg-white p-5 shadow-xl ring-1 ring-slate-900/10">
+    <div className="mx-auto flex aspect-[16/10] max-w-2xl items-center justify-center rounded-lg bg-muted">
+      <div className="w-[min(34rem,90%)] rounded-xl bg-card p-5 shadow-xl ring-1 ring-foreground/10">
         <div className="flex gap-2 border-b">
           {["Overview", "Activity", "Settings"].map((item) => (
-            <button key={item} className={cn("px-3 py-2 text-sm font-medium transition hover:text-slate-950", tab === item ? "border-b-2 border-indigo-600 text-slate-950" : "text-slate-500")} type="button" onClick={() => setTab(item)}>{item}</button>
+            <button key={item} className={cn("px-3 py-2 text-sm font-medium transition hover:text-foreground", tab === item ? "border-b-2 border-indigo-600 text-foreground" : "text-muted-foreground")} type="button" onClick={() => setTab(item)}>{item}</button>
           ))}
         </div>
         <div className="mt-5 grid gap-3">
-          <div className="h-3 w-2/3 rounded bg-slate-200" />
-          <div className="h-3 w-full rounded bg-slate-100" />
-          <div className="h-3 w-5/6 rounded bg-slate-100" />
+          <div className="h-3 w-2/3 rounded bg-muted" />
+          <div className="h-3 w-full rounded bg-muted" />
+          <div className="h-3 w-5/6 rounded bg-muted" />
         </div>
       </div>
     </div>
@@ -2132,12 +2129,12 @@ function MarketingSectionCatalogPage({ page, proUnlocked = false }: MarketingSec
     <section className="mx-auto flex w-full max-w-[88rem] flex-col gap-10 md:gap-14" data-print-grid>
       <header className="grid gap-8 pb-1 pt-0 md:pb-2 md:pt-1 xl:grid-cols-[minmax(0,1fr)_18rem]">
         <div className="max-w-4xl">
-          <p className="text-xs font-semibold uppercase tracking-[0.22em] text-slate-500">{page.breadcrumb ?? "UI Blocks"}</p>
-          <h2 className="mt-5 text-5xl font-normal tracking-normal text-slate-950 md:text-6xl">{page.title}</h2>
-          <p className="mt-6 max-w-3xl text-lg leading-8 text-slate-600">{page.description}</p>
-          <div className="mt-8 rounded-2xl border border-slate-200 bg-slate-50 p-5 text-sm leading-6 text-slate-600">
+          <p className="text-xs font-semibold uppercase tracking-[0.22em] text-muted-foreground">{page.breadcrumb ?? "UI Blocks"}</p>
+          <h2 className="mt-5 text-5xl font-normal tracking-normal text-foreground md:text-6xl">{page.title}</h2>
+          <p className="mt-6 max-w-3xl text-lg leading-8 text-muted-foreground">{page.description}</p>
+          <div className="mt-8 rounded-2xl border border-border bg-background p-5 text-sm leading-6 text-muted-foreground">
             <div className="flex items-start gap-3">
-              <Info aria-hidden="true" className="mt-0.5 size-5 shrink-0 text-slate-400" />
+              <Info aria-hidden="true" className="mt-0.5 size-5 shrink-0 text-muted-foreground/70" />
               <p>
                 Tailwind Plus처럼 각 leaf의 첫 예제는 Preview와 Code를 함께 제공하고, 이후 예제는 Preview와 잠금 code CTA로 구분합니다. 우리 예시는 실제 화면 맥락에 맞춘 설명, tags, interaction feedback을 함께 보여줍니다.
               </p>
@@ -2145,8 +2142,8 @@ function MarketingSectionCatalogPage({ page, proUnlocked = false }: MarketingSec
           </div>
         </div>
         <aside className="hidden self-start border-l pl-6 text-sm xl:sticky xl:top-20 xl:block xl:max-h-[calc(100svh-6rem)] xl:overflow-y-auto xl:overscroll-contain">
-          <p className="text-xs font-semibold uppercase tracking-[0.22em] text-slate-500">On this page</p>
-          <div className="mt-5 flex flex-col gap-3 text-slate-600">
+          <p className="text-xs font-semibold uppercase tracking-[0.22em] text-muted-foreground">On this page</p>
+          <div className="mt-5 flex flex-col gap-3 text-muted-foreground">
             <span>{page.examples.length} examples</span>
             {page.examples.slice(0, 9).map((example) => (
               <span key={example.id} className="truncate">{example.title}</span>
@@ -2169,13 +2166,13 @@ function MarketingSectionCatalogPage({ page, proUnlocked = false }: MarketingSec
               <div className="flex items-center justify-between gap-3">
                 <div className="min-w-0 flex-1">
                   <div className="flex min-w-0 flex-wrap items-center gap-x-3 gap-y-1">
-                    <h3 className="text-base font-semibold tracking-normal text-slate-950">{example.title}</h3>
-                    <span className="rounded-full bg-slate-100 px-2 py-0.5 text-[0.65rem] font-semibold uppercase tracking-[0.12em] text-slate-500">Example {String(exampleIndex + 1).padStart(2, "0")}</span>
+                    <h3 className="text-base font-semibold tracking-normal text-foreground">{example.title}</h3>
+                    <span className="rounded-full bg-muted px-2 py-0.5 text-[0.65rem] font-semibold uppercase tracking-[0.12em] text-muted-foreground">Example {String(exampleIndex + 1).padStart(2, "0")}</span>
                     {exampleIndex > 0 && (
                       <span className={cn("rounded-full px-2 py-0.5 text-[0.65rem] font-semibold uppercase tracking-[0.12em]", proUnlocked ? "bg-emerald-50 text-emerald-700" : "bg-askewly-violet/10 text-askewly-violet")}>{proUnlocked ? "Pro · unlocked" : "Pro"}</span>
                     )}
                   </div>
-                  <p className="mt-1 max-w-3xl text-sm leading-6 text-slate-600">{example.description}</p>
+                  <p className="mt-1 max-w-3xl text-sm leading-6 text-muted-foreground">{example.description}</p>
                   <div className="mt-2 flex flex-wrap gap-1.5">
                     {example.tags.map((tag) => (
                       <span key={tag} className="rounded-full bg-indigo-50 px-2 py-0.5 text-[0.68rem] font-medium text-indigo-700">{tag}</span>
@@ -2183,9 +2180,9 @@ function MarketingSectionCatalogPage({ page, proUnlocked = false }: MarketingSec
                   </div>
                 </div>
                 <div className="flex shrink-0 items-center gap-3">
-                  <div className={cn("rounded-full bg-slate-100 p-0.5 text-sm/7 font-medium text-slate-600 ring-1 ring-slate-950/5", hasPublicCode ? "inline-flex" : "hidden md:inline-flex")}>
+                  <div className={cn("rounded-full bg-muted p-0.5 text-sm/7 font-medium text-muted-foreground ring-1 ring-foreground/5", hasPublicCode ? "inline-flex" : "hidden md:inline-flex")}>
                     <button
-                      className={cn("rounded-full px-4 transition", activeTab === "preview" ? "bg-white text-slate-950 shadow-sm ring-1 ring-slate-950/5" : "text-slate-500 hover:text-slate-700")}
+                      className={cn("rounded-full px-4 transition", activeTab === "preview" ? "bg-card text-foreground shadow-sm ring-1 ring-foreground/5" : "text-muted-foreground hover:text-foreground")}
                       type="button"
                       onClick={() => setActiveExampleTabs((current) => ({ ...current, [example.id]: "preview" }))}
                     >
@@ -2193,7 +2190,7 @@ function MarketingSectionCatalogPage({ page, proUnlocked = false }: MarketingSec
                     </button>
                     {hasPublicCode && (
                       <button
-                        className={cn("rounded-full px-4 transition", activeTab === "code" ? "bg-white text-slate-950 shadow-sm ring-1 ring-slate-950/5" : "text-slate-500 hover:text-slate-700")}
+                        className={cn("rounded-full px-4 transition", activeTab === "code" ? "bg-card text-foreground shadow-sm ring-1 ring-foreground/5" : "text-muted-foreground hover:text-foreground")}
                         type="button"
                         onClick={() => setActiveExampleTabs((current) => ({ ...current, [example.id]: "code" }))}
                       >
@@ -2201,7 +2198,7 @@ function MarketingSectionCatalogPage({ page, proUnlocked = false }: MarketingSec
                       </button>
                     )}
                   </div>
-                  <span className="hidden h-8 w-px bg-slate-200 md:block" />
+                  <span className="hidden h-8 w-px bg-border md:block" />
                   <div className="block">
                     <PreviewThemeToggle
                       activeTheme={previewTheme}
@@ -2210,10 +2207,10 @@ function MarketingSectionCatalogPage({ page, proUnlocked = false }: MarketingSec
                   </div>
                   {hasPublicCode ? (
                     <div className={cn("items-center gap-3", activeTab === "code" ? "flex" : "hidden md:flex")}>
-                      <span className="hidden h-8 w-px bg-slate-200 md:block" />
+                      <span className="hidden h-8 w-px bg-border md:block" />
                       <select
                         aria-label="Code language"
-                        className="h-9 rounded-lg border border-slate-300 bg-white px-3 text-sm font-semibold text-slate-950 shadow-sm outline-none transition focus:border-slate-950 focus:ring-2 focus:ring-slate-950/10"
+                        className="h-9 rounded-lg border border-border bg-card px-3 text-sm font-semibold text-foreground shadow-sm outline-none transition focus:border-foreground focus:ring-2 focus:ring-foreground/10"
                         value={codeLanguage}
                         onChange={(event) => setCodeLanguages((current) => ({ ...current, [example.id]: event.target.value as CodeLanguage }))}
                       >
@@ -2223,7 +2220,7 @@ function MarketingSectionCatalogPage({ page, proUnlocked = false }: MarketingSec
                       </select>
                       <button
                         aria-label={copiedExampleId === example.id ? "Copied" : "Copy code"}
-                        className={cn("grid size-9 place-items-center rounded-lg transition hover:bg-slate-100 hover:text-slate-800", copiedExampleId === example.id ? "bg-slate-100 text-slate-950" : "text-slate-500")}
+                        className={cn("grid size-9 place-items-center rounded-lg transition hover:bg-muted hover:text-foreground", copiedExampleId === example.id ? "bg-muted text-foreground" : "text-muted-foreground")}
                         type="button"
                         onClick={() => copyExampleSnippet(example.id, snippet.code)}
                       >
@@ -2232,7 +2229,7 @@ function MarketingSectionCatalogPage({ page, proUnlocked = false }: MarketingSec
                     </div>
                   ) : (
                     <div className="hidden items-center gap-3 md:flex">
-                      <span className="hidden h-8 w-px bg-slate-200 md:block" />
+                      <span className="hidden h-8 w-px bg-border md:block" />
                       <button className="text-sm font-semibold whitespace-nowrap text-sky-500 transition hover:text-sky-600 active:scale-[0.98]" type="button" onClick={() => { setCodeAccessExample(example); setCodeAccessModalOpen(true) }}>
                         Get the code →
                       </button>
@@ -2241,7 +2238,7 @@ function MarketingSectionCatalogPage({ page, proUnlocked = false }: MarketingSec
                 </div>
               </div>
               {activeTab === "preview" ? (
-                <div className="min-w-0 overflow-hidden rounded-xl border border-slate-950/10 bg-white shadow-sm ring-1 ring-slate-950/5">
+                <div className="min-w-0 overflow-hidden rounded-xl border border-foreground/10 bg-card shadow-sm ring-1 ring-foreground/5">
                   <MarketingSectionPreviewLazy variant={example.preview} size="large" theme={resolvedPreviewTheme} />
                 </div>
               ) : (
@@ -2307,7 +2304,7 @@ export function SiteThemeToggle({ activeTheme, onThemeChange }: { activeTheme: P
 
 function PreviewThemeToggle({ activeTheme, onThemeChange }: { activeTheme: PreviewTheme; onThemeChange: (theme: PreviewTheme) => void }) {
   return (
-    <div className="inline-flex rounded-full bg-slate-100 p-0.5 text-slate-500 ring-1 ring-slate-950/5">
+    <div className="inline-flex rounded-full bg-muted p-0.5 text-muted-foreground ring-1 ring-foreground/5">
       {([
         ["system", Monitor, "System"],
         ["light", Sun, "Light"],
@@ -2317,7 +2314,7 @@ function PreviewThemeToggle({ activeTheme, onThemeChange }: { activeTheme: Previ
           key={theme}
           aria-label={label}
           aria-pressed={activeTheme === theme}
-          className={cn("grid size-8 place-items-center rounded-full transition", activeTheme === theme ? "bg-white text-slate-950 shadow-sm ring-1 ring-slate-950/5" : "hover:text-slate-700")}
+          className={cn("grid size-8 place-items-center rounded-full transition", activeTheme === theme ? "bg-card text-foreground shadow-sm ring-1 ring-foreground/5" : "hover:text-foreground")}
           type="button"
           onClick={() => onThemeChange(theme)}
         >
@@ -2330,32 +2327,32 @@ function PreviewThemeToggle({ activeTheme, onThemeChange }: { activeTheme: Previ
 
 function CodeAccessModal({ example, onClose }: { example: MarketingSectionExample | null; onClose: () => void }) {
   return (
-    <div className="fixed inset-0 z-50 grid place-items-center bg-slate-950/35 px-4 backdrop-blur-sm" role="dialog" aria-modal="true" aria-labelledby="code-access-title">
-      <div className="w-full max-w-md rounded-2xl bg-white p-6 text-slate-950 shadow-2xl ring-1 ring-slate-950/10">
+    <div className="fixed inset-0 z-50 grid place-items-center bg-foreground/35 px-4 backdrop-blur-sm" role="dialog" aria-modal="true" aria-labelledby="code-access-title">
+      <div className="w-full max-w-md rounded-2xl bg-card p-6 text-foreground shadow-2xl ring-1 ring-foreground/10">
         <div className="flex items-start justify-between gap-4">
           <div>
-            <p className="text-xs font-medium uppercase text-slate-500">Plus code access</p>
+            <p className="text-xs font-medium uppercase text-muted-foreground">Plus code access</p>
             <h3 id="code-access-title" className="mt-2 text-xl font-semibold tracking-normal">{example ? example.title : "준비 중입니다"}</h3>
           </div>
-          <button className="rounded-lg px-2 py-1 text-sm text-slate-500 transition hover:bg-slate-100 hover:text-slate-900" type="button" onClick={onClose}>
+          <button className="rounded-lg px-2 py-1 text-sm text-muted-foreground transition hover:bg-muted hover:text-foreground" type="button" onClick={onClose}>
             닫기
           </button>
         </div>
-        <p className="mt-4 text-sm leading-6 text-slate-600">
+        <p className="mt-4 text-sm leading-6 text-muted-foreground">
           Tailwind Plus의 잠금 코드 흐름처럼 전체 구현 접근을 분리해 보여줍니다. 공개 예시는 첫 번째 카드의 Code 탭에서 바로 확인하고, 나머지 예시는 preview와 구조 메타데이터로 비교합니다. 소유자 계정으로 로그인하면 모든 예시의 Code 탭이 열립니다.
         </p>
         {example && (
-          <div className="mt-4 rounded-xl bg-slate-50 p-4">
-            <p className="text-sm font-medium text-slate-950">{example.description}</p>
+          <div className="mt-4 rounded-xl bg-background p-4">
+            <p className="text-sm font-medium text-foreground">{example.description}</p>
             <div className="mt-3 flex flex-wrap gap-1.5">
               {example.tags.map((tag) => (
-                <span key={tag} className="rounded-full bg-white px-2 py-0.5 text-[0.68rem] font-medium text-slate-600 ring-1 ring-slate-200">{tag}</span>
+                <span key={tag} className="rounded-full bg-card px-2 py-0.5 text-[0.68rem] font-medium text-muted-foreground ring-1 ring-border">{tag}</span>
               ))}
             </div>
           </div>
         )}
         <div className="mt-6 flex justify-end">
-          <button className="rounded-lg bg-slate-950 px-4 py-2 text-sm font-semibold text-white transition hover:bg-slate-800" type="button" onClick={onClose}>
+          <button className="rounded-lg bg-foreground px-4 py-2 text-sm font-semibold text-background transition hover:bg-foreground/90" type="button" onClick={onClose}>
             확인
           </button>
         </div>
@@ -2366,30 +2363,30 @@ function CodeAccessModal({ example, onClose }: { example: MarketingSectionExampl
 
 function CodePreviewPanel({ snippet }: { snippet: MarketingCodeSnippet }) {
   return (
-    <div className="overflow-hidden rounded-xl border border-slate-950/10 bg-slate-950 shadow-sm ring-1 ring-slate-950/5">
-      <div className="flex flex-col gap-3 border-b border-white/10 bg-white/[0.03] px-4 py-3 md:flex-row md:items-center md:justify-between">
+    <div className="overflow-hidden rounded-xl border border-slate-950/10 bg-slate-950 shadow-sm ring-1 ring-slate-950/5">{/* hardcoded-color-ok */}
+      <div className="flex flex-col gap-3 border-b border-white/10 bg-white/[0.03] px-4 py-3 md:flex-row md:items-center md:justify-between">{/* hardcoded-color-ok */}
         <div className="flex min-w-0 items-center gap-3">
           <div className="flex gap-1.5">
-            <span className="size-3 rounded-full bg-rose-400" />
-            <span className="size-3 rounded-full bg-amber-400" />
-            <span className="size-3 rounded-full bg-emerald-400" />
+            <span className="size-3 rounded-full bg-rose-400" />{/* hardcoded-color-ok */}
+            <span className="size-3 rounded-full bg-amber-400" />{/* hardcoded-color-ok */}
+            <span className="size-3 rounded-full bg-emerald-400" />{/* hardcoded-color-ok */}
           </div>
-          <span className="truncate font-mono text-xs text-slate-300">{snippet.filename}</span>
+          <span className="truncate font-mono text-xs text-slate-300">{snippet.filename}</span>{/* hardcoded-color-ok */}
         </div>
         <div className="flex items-center gap-2">
-          <span className="rounded-full bg-white/10 px-2.5 py-1 font-mono text-[10px] uppercase text-slate-400">{snippet.language}</span>
+          <span className="rounded-full bg-white/10 px-2.5 py-1 font-mono text-[10px] uppercase text-slate-400">{snippet.language}</span>{/* hardcoded-color-ok */}
         </div>
       </div>
       <div className="grid md:grid-cols-[minmax(0,1fr)_18rem]">
-        <pre className="max-h-[720px] overflow-auto p-5 text-left font-mono text-[12px] leading-6 text-slate-300">
+        <pre className="max-h-[720px] overflow-auto p-5 text-left font-mono text-[12px] leading-6 text-slate-300">{/* hardcoded-color-ok */}
           <code>{snippet.code}</code>
         </pre>
-        <aside className="border-t border-white/10 bg-white/[0.03] p-5 md:border-l md:border-t-0">
-          <p className="text-sm font-semibold text-white">Implementation notes</p>
-          <ul className="mt-4 space-y-3 text-sm leading-6 text-slate-400">
+        <aside className="border-t border-white/10 bg-white/[0.03] p-5 md:border-l md:border-t-0">{/* hardcoded-color-ok */}
+          <p className="text-sm font-semibold text-white">Implementation notes</p>{/* hardcoded-color-ok */}
+          <ul className="mt-4 space-y-3 text-sm leading-6 text-slate-400">{/* hardcoded-color-ok */}
             {snippet.notes.map((note) => (
               <li key={note} className="flex gap-2">
-                <span className="mt-2 size-1.5 shrink-0 rounded-full bg-indigo-400" />
+                <span className="mt-2 size-1.5 shrink-0 rounded-full bg-indigo-400" />{/* hardcoded-color-ok */}
                 <span>{note}</span>
               </li>
             ))}

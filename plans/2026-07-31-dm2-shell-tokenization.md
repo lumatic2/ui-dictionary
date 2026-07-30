@@ -39,7 +39,7 @@ Status: approved (사용자 승인 2026-07-31 "ㄱㄱ" — 연쇄 DM1→DM2→DM
   - Failure probe: `dark:bg-slate-900` 같은 variant 클래스·주석 안 문자열 오탐 여부 — 표본 3건 수동 대조.
   - Commit: changeset `dm2-shell-tokenization` (README 절: step-1).
 
-- [ ] **step-2 — App.tsx·home-page.tsx 토큰 치환**
+- [x] **step-2 — App.tsx·home-page.tsx 토큰 치환**
   - Artifact: 두 파일의 리터럴 색 클래스(183+177건)를 semantic 토큰 클래스로 치환 — 라이트 시각 무손실. 1:1 대응 없는 색은 finding 큐 기록 후 현상 유지.
   - Files: write examples/ui-vocabulary-site/src/App.tsx, src/components/home-page.tsx. read src/tokens.css, src/index.css(@theme 매핑).
   - Risk: 위험 (사이트 최상위 표면 대량 수정 — 스크린샷 대조·파일 단위 커밋으로 격리, 실건수가 추정을 크게 웃돌면 App.tsx / home-page.tsx 파일 단위로 쪼개 진행 — 커밋 경계가 이미 파일 단위라 재승인 불요)
@@ -70,6 +70,9 @@ Status: approved (사용자 승인 2026-07-31 "ㄱㄱ" — 연쇄 DM1→DM2→DM
 - **baseline 998건/21파일** (스캐너 실측 — 추정 455 대비 증가는 정규식 커버리지 차: white/black·전 prefix·hex 포함). 셸 4파일 = App 360·home 321·article 170·term-visual 55.
 - `lib/palette-generator.ts`(68)·`lib/documentation-pages.ts`(3) hex 는 **콘텐츠 데이터**(팔레트 생성기 데이터·문서 예시) — 스타일 하드코딩 아님, step-3 에서 allowlist 또는 opt-out 처리 판단.
 - `term-visual.tsx` 의 dark-mode variant 리터럴(DM1 신설)은 의도적 데모 콘텐츠 — step-3 치환 시 `hardcoded-color-ok` 마커 처리.
+- **App.tsx 복사용 코드 스니펫 문자열**(`getMarketingSnippet` L2400~·docsSections code 필드, ~100건): 사용자가 외부 프로젝트에 붙여넣는 콘텐츠 — 사이트 전용 토큰 클래스를 넣으면 외부에서 깨짐. 치환 제외가 맞다(에이전트 판단 채택). step-3 에서 마커/스코프 처리로 스캐너 잔여 0 정리.
+- App.tsx 잔여 유채색(indigo·rose·amber·emerald 등 상태·연출색, `#5f22a8` hover shade): 정확 대응 토큰 없음 — 다크 품질(DM3 step-2)에서 다크 대비 확인, 토큰 신설 여부는 별도 후보.
+- home-page 데모 캔버스 마커 208줄(라인 단위) — allowlist 파일 등재가 더 깔끔했을 수 있음(사후 정리 후보).
 
 ## 진행 로그
 - 2026-07-31 작성.
