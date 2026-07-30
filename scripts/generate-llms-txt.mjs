@@ -90,6 +90,13 @@ const FIXED_ASSETS = [
           "motion typography readability, and naming rules (user-facing behavior first, CSS technique second)",
       ],
       [
+        "knowledge/dark-mode.md",
+        "Dark mode judgment rules — definition (a redesigned palette, NOT an inversion), boundary " +
+          "vs night shift / forced-colors / inverted colors, design gates (no pure black, " +
+          "elevation-by-brightness, desaturation, semantic-token-only color), and web implementation " +
+          "gates (3-state model, FOUC head inline script, color-scheme, theme-color media split)",
+      ],
+      [
         "knowledge/motion-references.md",
         "External motion/interaction reference bookmarks: GSAP ScrollTrigger demo hubs, spatial " +
           "3D landing pattern with its decorative-skin failure gate, observation galleries " +

@@ -1,11 +1,14 @@
 # ROADMAP
 
-> Last updated: 2026-07-28
-> Status: **goal `site-quality` 완주 (2026-07-29)** — SQ1~SQ4 전부 완료·실배포 실증(사람 관측 3회 통과). active goal 0 — 다음 큐(사용자 확정 2026-07-28): 『인터랙티브 웹 애니메이션』 책 스터디 자산화(사용자 주도 — 사용자가 책을 보며 직접 전달) → ④ 다크모드 정비 → ⑤ real-use-lap 부활(PARK 2026-07-27).
+> Last updated: 2026-07-31
+> Status: **goal `dark-mode` 개설 (2026-07-31)** — DM1(지식·용어 자산화)→DM2(셸 토큰 치환+스캐너)→DM3(다크모드 활성화) 연쇄 승인. 남은 큐(사용자 확정 2026-07-28): 『인터랙티브 웹 애니메이션』 책 스터디 자산화(사용자 주도) → real-use-lap 부활(PARK 2026-07-27).
 > North star: Build Askewly Design as both a public reference website and an agent-usable implementation system.
 > line budget: <=150
 
 ## Current Goal
+
+<!-- harness:goal id="dark-mode" status="active" -->
+Goal: 다크모드 정비 — '다크모드'를 ui-dictionary답게 정의해 지식(`knowledge/dark-mode.md`+llms)·용어(terms.yml) 정본으로 등재하고, 사이트 셸 하드코딩 색(2026-07-28 다크 차단 사유)을 semantic 토큰으로 치환해 재발 방지 스캐너로 게이트한 뒤, 3-상태(라이트/다크/시스템) 다크모드를 FOUC 없이 활성화한다. 승인 2026-07-31 (연쇄 DM1→DM2→DM3). Details: `plans/2026-07-31-dm{1,2,3}-*.md` + `research/2026-07-31-dark-mode-goal-dark-mode.md`.
 
 <!-- harness:goal-archive13 id="site-quality" status="completed" -->
 Goal: 사이트 품질 — UI 백과사전 사이트가 자기 디자인 게이트를 통과하고(verify 위반 79건), UE1 관측이 남긴 구조 결함(O5~O7)·검색 결과 UI(O9)를 수리하며, SSG/prerender 로 초기 로딩·SEO 를 확보한다. closed 2026-07-29 — SQ1(색 위반 72→0 시각 무손실)·SQ2(Get Started·Docs 허브·Components 내비)·SQ3(검색 2티어 재디자인)·SQ4(754 라우트 프리렌더+asset-first) 전부 실배포 실증, 사람 관측 3회 통과. Details: `archive/plans/2026-07-28-sq{1,2,3,4}-*.md` + `docs/reports/`.
@@ -43,6 +46,32 @@ Goal: 사이트 레시피 데모 실구현을 registry 코드 자산으로 배�
 <!-- harness:goal-archive3 id="studio-finish" status="completed" -->
 Goal: 스튜디오 이월 갭 3건 마감 — 데이터 주도 주입 자동화·구성 패턴 완편(4유형+예약형)·미리보기 고도화(다크·반응형). Details: `plans/horizons/2026-07-studio-finish.md`.
 
+
+## Active Milestones — dark-mode
+
+<!-- harness:milestone id="DM1" status="active" priority="P1" -->
+### DM1 — 다크모드 지식·용어 자산화
+- DoD: `knowledge/dark-mode.md`(출처 기반 정의·경계·주의점)가 llms 재생성 산출물에 배선되고, terms.yml '다크모드' 항목이 authoring workflow 전 검증(validate·build·lint·audit:visuals)을 통과하며 상세 페이지가 렌더된다.
+- Gap: 용어 사전에 '다크모드' 부재(테마 토큰 항목의 스침 언급뿐) — 정의 정본 없음
+- Scale: steps=2 (knowledge+llms 배선 · terms 등재+시각 variant); surfaces: knowledge/·generate-llms-txt.mjs·terms.yml·term-visual.tsx; capability: 사람과 에이전트가 같은 다크모드 정의를 공유한다
+- Plan: plans/2026-07-31-dm1-dark-mode-knowledge.md
+- Status: [ ]
+
+<!-- harness:milestone id="DM2" status="pending" priority="P1" -->
+### DM2 — 사이트 셸 토큰 치환 + 하드코딩 색 스캐너
+- DoD: 셸 파일 하드코딩 색이 semantic 토큰으로 치환되어 스캐너 셸 스코프 위반 0 이 게이트로 걸리고, 라이트 모드 시각 무손실(스크린샷 대조)이 확인된다.
+- Gap: 셸 하드코딩 리터럴 색 ~455건+α — 2026-07-28 다크 차단의 원인, 게이트 부재로 재발 무방비
+- Scale: steps=3 (스캐너+baseline · App/home 치환 · 잔여+게이트 배선); surfaces: App.tsx·home-page·article-layout·term-visual·scripts; capability: 모든 셸 색이 토큰을 거친다
+- Plan: plans/2026-07-31-dm2-shell-tokenization.md
+- Status: [ ]
+
+<!-- harness:milestone id="DM3" status="pending" priority="P1" -->
+### DM3 — 다크모드 활성화
+- DoD: 실배포 사이트에서 3-상태 다크모드가 FOUC 없이 동작하고(프리렌더 라우트 직접 진입 포함), 다크 대비 lint 와 주요 표면 점검을 통과하며, 사람 관측 1회 통과.
+- Gap: 인프라(.dark 토큰·토글 구현체)는 완성됐으나 2026-07-28 차단 useEffect 로 강제 라이트 고정
+- Scale: steps=3 (3-상태 배선+FOUC · 다크 품질 점검 · 통합+실배포+관측); surfaces: App.tsx·preview-theme·index.html; capability: 사용자가 다크로 본다
+- Plan: plans/2026-07-31-dm3-dark-mode-activation.md
+- Status: [ ]
 
 ## Active Milestones — site-quality
 
