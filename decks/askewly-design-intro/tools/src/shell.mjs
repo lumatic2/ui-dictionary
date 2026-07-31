@@ -95,6 +95,7 @@ export function createShellRenderers({
   }
   var __fragNext = null, __fragPrev = null;
   document.addEventListener('keydown', function(e) {
+    if (window.self !== window.top) return; // 스피커 미리보기 iframe 안에서는 내비 금지 (자기만 넘어가는 오동작 방지)
     if (['INPUT', 'TEXTAREA', 'SELECT', 'BUTTON'].includes(e.target.tagName)) return;
     if (e.key === 'ArrowRight' || e.key === ' ') {
       if (__fragNext && __fragNext()) { e.preventDefault(); return; }
@@ -197,7 +198,8 @@ export function createShellRenderers({
   .frame.next { flex: 1; }
   .frame .tag { position: absolute; top: 8px; left: 8px; z-index: 2; font-size: 11px; letter-spacing: .08em; background: rgba(0,0,0,.55); padding: 2px 8px; border-radius: 4px; }
   /* iframe 은 논리 캔버스 원치수로 두고 transform scale 로 프레임에 맞춘다 (잘림 방지) */
-  .frame iframe { width: ${canvas.width}px; height: ${canvas.height}px; border: 0; background: #000; transform-origin: 0 0; position: absolute; left: 50%; top: 50%; }
+  /* 미리보기는 표시 전용 — 클릭·포커스가 iframe 안으로 들어가면 화살표 키가 미리보기만 넘긴다 (HU4 관측 2회차) */
+  .frame iframe { width: ${canvas.width}px; height: ${canvas.height}px; border: 0; background: #000; transform-origin: 0 0; position: absolute; left: 50%; top: 50%; pointer-events: none; }
   aside.notes { background: #202027; border-radius: 8px; padding: 16px 18px; display: flex; flex-direction: column; min-height: 0; }
   aside.notes .notes-head-row { display: flex; align-items: center; gap: 10px; margin-bottom: 10px; }
   aside.notes h2 { font-size: 12px; letter-spacing: .1em; opacity: .55; }
@@ -216,8 +218,8 @@ export function createShellRenderers({
   </header>
   <main>
     <div class="previews">
-      <div class="frame current"><span class="tag">CURRENT</span><iframe id="cur" title="current slide"></iframe></div>
-      <div class="frame next"><span class="tag">NEXT</span><iframe id="nxt" title="next slide"></iframe></div>
+      <div class="frame current"><span class="tag">CURRENT</span><iframe id="cur" title="current slide" tabindex="-1"></iframe></div>
+      <div class="frame next"><span class="tag">NEXT</span><iframe id="nxt" title="next slide" tabindex="-1"></iframe></div>
     </div>
     <aside class="notes">
       <div class="notes-head-row"><h2>SPEAKER NOTES</h2><button id="notes-copy" type="button">수정본 전체 복사</button></div>
@@ -341,6 +343,22 @@ export function createShellRenderers({
   const __slideParams = new URLSearchParams(window.location.search);
   if (__slideParams.has('print')) document.documentElement.classList.add('print-mode');
   if (__slideParams.has('capture')) document.documentElement.classList.add('capture-mode');
+  // FOUT 게이트 — 장 넘김마다 새 문서라 웹폰트 적용 전 1~2프레임을 대체 폰트로 그렸다가
+  // 재정렬하는 깜빡임(글자가 좌우로 늘었다 줄어듦)이 보인다(HU4 관측 2회차). 폰트가 준비될
+  // 때까지 콘텐츠만 숨긴다(배경은 유지). 오프라인·CDN 실패 대비 500ms 상한.
+  (function () {
+    var root = document.documentElement;
+    if (root.classList.contains('print-mode') || root.classList.contains('capture-mode')) return;
+    root.classList.add('fonts-pending');
+    var done = function () { root.classList.remove('fonts-pending'); };
+    try {
+      Promise.all([
+        document.fonts.load('900 48px "Pretendard Variable"'),
+        document.fonts.load('400 24px "Pretendard Variable"'),
+      ]).then(done, done);
+    } catch (e) { done(); }
+    setTimeout(done, 500);
+  })();
   </script>
   <style>${commonCss(template, canvas)}</style>
   </head>

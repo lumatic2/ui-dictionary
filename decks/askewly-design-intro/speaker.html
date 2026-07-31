@@ -22,7 +22,8 @@
   .frame.next { flex: 1; }
   .frame .tag { position: absolute; top: 8px; left: 8px; z-index: 2; font-size: 11px; letter-spacing: .08em; background: rgba(0,0,0,.55); padding: 2px 8px; border-radius: 4px; }
   /* iframe 은 논리 캔버스 원치수로 두고 transform scale 로 프레임에 맞춘다 (잘림 방지) */
-  .frame iframe { width: 1280px; height: 720px; border: 0; background: #000; transform-origin: 0 0; position: absolute; left: 50%; top: 50%; }
+  /* 미리보기는 표시 전용 — 클릭·포커스가 iframe 안으로 들어가면 화살표 키가 미리보기만 넘긴다 (HU4 관측 2회차) */
+  .frame iframe { width: 1280px; height: 720px; border: 0; background: #000; transform-origin: 0 0; position: absolute; left: 50%; top: 50%; pointer-events: none; }
   aside.notes { background: #202027; border-radius: 8px; padding: 16px 18px; display: flex; flex-direction: column; min-height: 0; }
   aside.notes .notes-head-row { display: flex; align-items: center; gap: 10px; margin-bottom: 10px; }
   aside.notes h2 { font-size: 12px; letter-spacing: .1em; opacity: .55; }
@@ -41,8 +42,8 @@
   </header>
   <main>
     <div class="previews">
-      <div class="frame current"><span class="tag">CURRENT</span><iframe id="cur" title="current slide"></iframe></div>
-      <div class="frame next"><span class="tag">NEXT</span><iframe id="nxt" title="next slide"></iframe></div>
+      <div class="frame current"><span class="tag">CURRENT</span><iframe id="cur" title="current slide" tabindex="-1"></iframe></div>
+      <div class="frame next"><span class="tag">NEXT</span><iframe id="nxt" title="next slide" tabindex="-1"></iframe></div>
     </div>
     <aside class="notes">
       <div class="notes-head-row"><h2>SPEAKER NOTES</h2><button id="notes-copy" type="button">수정본 전체 복사</button></div>

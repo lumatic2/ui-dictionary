@@ -12,6 +12,22 @@
   const __slideParams = new URLSearchParams(window.location.search);
   if (__slideParams.has('print')) document.documentElement.classList.add('print-mode');
   if (__slideParams.has('capture')) document.documentElement.classList.add('capture-mode');
+  // FOUT 게이트 — 장 넘김마다 새 문서라 웹폰트 적용 전 1~2프레임을 대체 폰트로 그렸다가
+  // 재정렬하는 깜빡임(글자가 좌우로 늘었다 줄어듦)이 보인다(HU4 관측 2회차). 폰트가 준비될
+  // 때까지 콘텐츠만 숨긴다(배경은 유지). 오프라인·CDN 실패 대비 500ms 상한.
+  (function () {
+    var root = document.documentElement;
+    if (root.classList.contains('print-mode') || root.classList.contains('capture-mode')) return;
+    root.classList.add('fonts-pending');
+    var done = function () { root.classList.remove('fonts-pending'); };
+    try {
+      Promise.all([
+        document.fonts.load('900 48px "Pretendard Variable"'),
+        document.fonts.load('400 24px "Pretendard Variable"'),
+      ]).then(done, done);
+    } catch (e) { done(); }
+    setTimeout(done, 500);
+  })();
   </script>
   <style>:root {
   --bg-primary: #F4F3EE;
@@ -796,6 +812,9 @@ body.fade-out { animation: fadeOut 0.25s ease forwards; }
 html.print-mode .fragment-pending, html.capture-mode .fragment-pending { opacity: 1 !important; transform: none !important; }
 
 @media print { body { padding: 0; display: block; } .slide-nav { display: none; } .container { page-break-after: always; } .export-fallback-note { display: block; } }
+/* FOUT 게이트 — 폰트 준비 전엔 콘텐츠만 숨기고(배경 유지) 진입 애니메이션도 잠근다 */
+html.fonts-pending .container, html.fonts-pending .slide-nav { visibility: hidden; }
+html.fonts-pending .container * { animation-play-state: paused !important; }
 html.print-mode, html.print-mode body { width: var(--scaled-slide-w); min-width: var(--scaled-slide-w); height: auto; min-height: 0; overflow: visible; }
 html.print-mode body, html.print-mode body.fade-out { animation: none; opacity: 1; display: block; padding: 0; margin: 0; background: var(--bg-primary); }
 html.print-mode .print-page { width: var(--scaled-slide-w); height: var(--scaled-slide-h); overflow: hidden; page-break-after: always; break-after: page; background: var(--bg-primary); display: grid; place-items: center; }
@@ -842,6 +861,7 @@ html.capture-mode .container, html.capture-mode .container * { animation: none !
   }
   var __fragNext = null, __fragPrev = null;
   document.addEventListener('keydown', function(e) {
+    if (window.self !== window.top) return; // 스피커 미리보기 iframe 안에서는 내비 금지 (자기만 넘어가는 오동작 방지)
     if (['INPUT', 'TEXTAREA', 'SELECT', 'BUTTON'].includes(e.target.tagName)) return;
     if (e.key === 'ArrowRight' || e.key === ' ') {
       if (__fragNext && __fragNext()) { e.preventDefault(); return; }

@@ -739,6 +739,9 @@ body.fade-out { animation: fadeOut 0.25s ease forwards; }
 
 function printCss() {
   return `@media print { body { padding: 0; display: block; } .slide-nav { display: none; } .container { page-break-after: always; } .export-fallback-note { display: block; } }
+/* FOUT 게이트 — 폰트 준비 전엔 콘텐츠만 숨기고(배경 유지) 진입 애니메이션도 잠근다 */
+html.fonts-pending .container, html.fonts-pending .slide-nav { visibility: hidden; }
+html.fonts-pending .container * { animation-play-state: paused !important; }
 html.print-mode, html.print-mode body { width: var(--scaled-slide-w); min-width: var(--scaled-slide-w); height: auto; min-height: 0; overflow: visible; }
 html.print-mode body, html.print-mode body.fade-out { animation: none; opacity: 1; display: block; padding: 0; margin: 0; background: var(--bg-primary); }
 html.print-mode .print-page { width: var(--scaled-slide-w); height: var(--scaled-slide-h); overflow: hidden; page-break-after: always; break-after: page; background: var(--bg-primary); display: grid; place-items: center; }

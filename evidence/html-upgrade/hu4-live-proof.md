@@ -22,4 +22,5 @@
 ## 게이트
 
 - 자동·리허설·회귀: PASS (위 실측).
-- 사용자 관측 1회차 2026-07-31: **부분 FAIL — 3건 반영** ① fragment 는 좋으나 기본값이 아니어야 함(사용자 확정: 기본=전체 표시, 요청 장만) → 계약 반전+정본 덱 제거 ② 스피커→본편 동기 불통(실크롬 file:// = opaque origin — BC·localStorage 무음 사망, Playwright headless 와 환경차) → postMessage 릴레이+하트비트, 합성 재현 `POSTMESSAGE-SYNC PASS` ③ 스피커 노트 수정 불가 → textarea 편집+수정본 복사. 회귀: 리허설 PASS·픽셀 diff 0/7 유지. **재관측 대기.**
+- 사용자 관측 1회차 2026-07-31: **부분 FAIL — 3건 반영** ① fragment 는 좋으나 기본값이 아니어야 함(사용자 확정: 기본=전체 표시, 요청 장만) → 계약 반전+정본 덱 제거 ② 스피커→본편 동기 불통(실크롬 file:// = opaque origin — BC·localStorage 무음 사망, Playwright headless 와 환경차) → postMessage 릴레이+하트비트, 합성 재현 `POSTMESSAGE-SYNC PASS` ③ 스피커 노트 수정 불가 → textarea 편집+수정본 복사. 회귀: 리허설 PASS·픽셀 diff 0/7 유지.
+- 사용자 관측 2회차 2026-07-31: **부분 FAIL — 2건 반영** ① 스피커→본편 여전히 단방향 불통 — 원인은 릴레이가 아니라 **미리보기 iframe 의 포커스 강탈**(iframe 클릭 후 화살표 키가 미리보기 자신만 넘김 — "스피커는 넘어가는데 본편은 안 넘어감" 증상의 실체) → iframe `pointer-events:none`+`tabindex=-1`, navScript top-window 가드. 재현 테스트 `IFRAME-GUARD PASS`(iframe 내 keydown 무효·스피커 문서 keydown → 본편 전진) ② 장 넘김 시 글자가 좌우로 늘었다 재정렬 = FOUT(새 문서마다 대체 폰트 1~2프레임) → head FOUT 게이트(`document.fonts.load` 대기·500ms 상한·print/capture 스킵)+콘텐츠 숨김 CSS. 회귀: `POSTMESSAGE-SYNC`·`REHEARSAL`·`STANDALONE-OFFLINE` PASS, capture diff 4장 비트 동일·3장 파랑 최대 2/255 렌더 노이즈(비지각·콘텐츠 무변). custom-skills 27e4836. **재관측 대기.**
