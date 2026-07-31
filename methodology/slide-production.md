@@ -78,6 +78,17 @@ G1 자료(출처 승인) → G2 구성안(아웃라인 승인) → G3 문구 →
 - title-only read test(원칙 2의 전체 스토리 검사)는 기계 판정 불가 — §4 G3 체크리스트 소속으로 남긴다.
 - 위반 fixture(위반 slides.json 샘플)로 검출을 실증하는 것까지가 SL2 DoD.
 
+## 발표 운영 (라이브 — HU4, 2026-07-31)
+
+HTML 정본은 "파일"이 아니라 "발표 현장"까지가 산출물이다. 스킬 트랙이 제공하는 운영 장치:
+
+- **스피커 뷰** — 발표 창에서 `S` 키 → 별도 창(현재/다음 미리보기·노트·타이머, 양방향 동기). 노트 원본은 `slides.json` `notes`(PPTX 이관과 동일 원본).
+- **fragment 단계 공개** — `items[].fragment: <순번>`(opt-in)으로 →키당 요소 공개. 서사에 맞는 장에만(전 장 강제 금지). export 전 트랙은 전체 표시.
+- **단일 파일 오프라인 배포** — `export-standalone.mjs` 가 덱 전체를 전 자원 인라인 HTML 1개로 병합(발표장 Wi-Fi 무관). 오프라인 리허설로만 판정(온라인 개봉은 위양성).
+- **노트 딸린 인쇄본** — PDF exporter `--notes`(슬라이드 뒤 노트 페이지).
+- **이미지 3원천** — 실사진 스톡(라이선스 장부)·누끼(rmbg)·생성(image_gen — 이미지 안 글자 금지·치수 가드). 계약 정본: 스킬 `references/imagery.md`.
+- **발표 전 체크**(대비 AAA 지향·프로젝터 실측·리모컨=표준 화살표 키 가정) — 스킬 `references/verification.md` 「발표 전 체크」.
+
 ## 관련
 
 - 원칙·표현 기법: [slide-principles](../knowledge/slide-principles.md)
@@ -86,6 +97,8 @@ G1 자료(출처 승인) → G2 구성안(아웃라인 승인) → G3 문구 →
 - KG: `html-first-slide-export-pipeline` (`~/projects/knowledge-graph`)
 
 ## Changelog
+
+- 2026-07-31: HU4 — 발표 운영 절 신설 (스피커 뷰·fragment·standalone·PDF 노트·이미지 3원천·발표 전 체크).
 
 - 2026-07-28: SL3 실측 결론 반영 — PPTX 심화 중단, HTML·PDF 우선 (사용자 확정).
 - 2026-07-31: SP3 정정 — 중단을 좁히기로 확정, pptxgenjs 단일 경로를 스킬 export 트랙으로 승격 (사용자 확정).
