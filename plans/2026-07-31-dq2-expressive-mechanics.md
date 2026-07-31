@@ -31,7 +31,7 @@ Status: approved (사용자 "ㄱㄱ" 2026-07-31 — fresh 검증자 발견 7건 
 
 ## Step 트리
 
-- [ ] **step-1 — 장간 요소 연속 전환 (Auto-Animate 상당)**
+- [x] **step-1 — 장간 요소 연속 전환 (Auto-Animate 상당)**
   - Artifact: `slides.schema.json` `animId` 필드 + shell 전환 배선(View Transitions 실측 판정 포함) + `references/rendering-contract.md`·`references/layouts.md` 계약 절 + fixture 전환 장쌍.
   - Files: write custom-skills `templates/slides.schema.json`·`templates/src/shell.mjs`·`references/rendering-contract.md`·`references/layouts.md`. read `research/2026-07-31-html-upgrade-goal-refs.md` §1.
   - Risk: 위험 (shell 내비·전환 공통 로직 — HU4 동기 수리 5건과 상호작용, 실크롬 file:// 환경차 전례)

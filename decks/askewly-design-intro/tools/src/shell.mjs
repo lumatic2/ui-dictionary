@@ -99,6 +99,10 @@ export function createShellRenderers({
   }`;
   }
 
+  function deckHasAnim(deck) {
+    return (deck.slides || []).some((slide) => (slide.items || []).some((item) => typeof item.animId === 'string'));
+  }
+
   function navScript(deck, slides, index) {
     const prev = slides[index - 1] ? fileName(slides[index - 1]) : '';
     const next = slides[index + 1] ? fileName(slides[index + 1]) : '';
@@ -109,11 +113,19 @@ export function createShellRenderers({
       .map((item, itemIndex) => ({ unit: itemIndex, order: item.fragment }))
       .filter((entry) => Number.isFinite(entry.order))
       .sort((a, b) => a.order - b.order);
+    // animId: 장간 연속 전환(DQ2) — 같은 animId 요소가 인접 장으로 위치·크기 보간.
+    // 덱에 animId 가 하나도 없으면 산출 완전 무변화(opt-in 계약).
+    const anims = (slides[index].items || [])
+      .map((item, itemIndex) => ({ unit: itemIndex, animId: item.animId }))
+      .filter((entry) => typeof entry.animId === 'string');
+    const useVT = deckHasAnim(deck);
     return `<script>
   function navigateTo(url) {
     // 넘기는 순간 목적지를 스피커에 선공지 — 새 문서 로드+하트비트 재연결(최대 1.2s)을
     // 기다리면 스피커가 매 장 늦게 따라온다(HU4 관측 4회차)
-    if (window.__deckNavAnnounce) window.__deckNavAnnounce(url);
+    if (window.__deckNavAnnounce) window.__deckNavAnnounce(url);${useVT ? `
+    // animId 덱: cross-document View Transitions 가 전환을 소유 (file:// 동작 실측 — chromium 151·실크롬 stable 150, 2026-07-31)
+    if (window.__deckVT) { window.location.href = url; return; }` : ''}
     if (document.startViewTransition) {
       document.startViewTransition(() => { window.location.href = url; });
       return;
@@ -142,7 +154,22 @@ export function createShellRenderers({
   if (!document.documentElement.classList.contains('print-mode') && !document.documentElement.classList.contains('capture-mode')) {
     ${syncHelperScript(deck)}
     var __FILES = ${JSON.stringify(files)};
-    var __INDEX = ${index};
+    var __INDEX = ${index};${useVT ? `
+    // 장간 연속 전환 (opt-in) — 라이브 최상위 창에서만. 스피커 미리보기 iframe·export 미적용.
+    if (window.self === window.top) {
+      window.__deckVT = true;
+      var __vtStyle = document.createElement('style');
+      __vtStyle.textContent = '@view-transition { navigation: auto; } @media (prefers-reduced-motion: reduce) { @view-transition { navigation: none; } }';
+      document.head.appendChild(__vtStyle);
+      var __ANIMS = ${JSON.stringify(anims)};
+      if (__ANIMS.length) {
+        var __animUnits = document.querySelectorAll('.slide-content article');
+        __ANIMS.forEach(function (a) {
+          var el = __animUnits[a.unit];
+          if (el) el.style.viewTransitionName = 'anim-' + a.animId;
+        });
+      }
+    }` : ''}
     var __FRAGS = ${JSON.stringify(fragments)};
     var __sync = createDeckSync();
     window.__deckSync = __sync;

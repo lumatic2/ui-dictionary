@@ -39,6 +39,10 @@ const EMOJI_PATTERN = /\p{Extended_Pictographic}/u;
 const SLOP_SHADOW = /0\s+4px\s+12px\s+rgba\(0,\s*0,\s*0,\s*0?\.1\)/;
 const SLOP_FONT_ONLY = /^(inter|geist)$/i;
 const STAGGER_LIMIT = 10;
+// Q2 — 카드형 레이아웃의 병렬 항목 상한 (quality-rubric.md Q2, UCSD rule of four).
+// 구조상 다항이 정상인 레이아웃(step-flow·summary-grid·bento 등)은 대상 밖 — 예외 판단은 G5.
+const Q2_CARD_LAYOUTS = new Set(['hero-cards', 'closing', 'comparison-2col']);
+const Q2_CARD_LIMIT = 4;
 
 function slideTexts(slide) {
   const texts = [slide.title, slide.subtitle, slide.body, slide.kicker];
@@ -85,6 +89,16 @@ export function lintPrinciples(deck, { customTheme } = {}) {
     const orders = fragmented.map((item) => item.fragment);
     if (new Set(orders).size !== orders.length) {
       warnings.push(`${label} lint R4[규율]: fragment 순번 중복 — 공개 순서가 모호하다`);
+    }
+    // animId — 같은 장 안 중복 금지 (view-transition-name 은 문서 내 유일해야 전환이 성립)
+    const animIds = items.map((item) => item.animId).filter((v) => typeof v === 'string');
+    if (new Set(animIds).size !== animIds.length) {
+      warnings.push(`${label} lint R4[규율]: animId 중복 — 같은 장 안에서 view-transition-name 이 겹치면 전환이 무시된다`);
+    }
+
+    // Q2 — 카드 항목 4개 상한 (근거: 통설 — quality-rubric.md Q2, UCSD rule of four)
+    if (Q2_CARD_LAYOUTS.has(slide.layout) && items.length > Q2_CARD_LIMIT) {
+      warnings.push(`${label} lint Q2[통설]: 카드 ${items.length}개 (> ${Q2_CARD_LIMIT}) — rule of four. 장을 나누거나 그룹화 (quality-rubric.md Q2)`);
     }
 
     // R6 — 아이콘 규율 (근거: 규율 — SKILL §6 이모지 금지, lucide/lobe SVG 만)

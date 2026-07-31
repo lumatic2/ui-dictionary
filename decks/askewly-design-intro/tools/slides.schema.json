@@ -353,6 +353,11 @@
           "minimum": 1,
           "description": "단계 공개 순번(라이브 발표 전용, opt-in). 진행 키가 순번 오름차순으로 요소를 공개한다. export 전 트랙(print/PDF/PPTX/standalone)은 전체 표시."
         },
+        "animId": {
+          "type": "string",
+          "pattern": "^[a-z0-9-]+$",
+          "description": "장간 연속 전환 식별자(라이브 전용, opt-in). 인접 장에서 같은 animId 를 가진 요소끼리 위치·크기를 보간한다(cross-document View Transitions). 같은 장 안에서 중복 금지. export·스피커 미리보기 미적용."
+        },
         "span": {
           "enum": [
             "wide",
