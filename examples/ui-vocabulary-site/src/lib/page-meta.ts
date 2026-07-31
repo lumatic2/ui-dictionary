@@ -1,7 +1,8 @@
 import { useEffect } from "react"
 
 const SITE_NAME = "Askewly Design"
-const DEFAULT_DESCRIPTION = "Askewly Design은 제품 UI 패턴, 문서, 쇼케이스, 리소스, Pro 구현 자산을 탐색하는 디자인 시스템입니다."
+const DEFAULT_DESCRIPTION =
+  "Askewly Design is a design system for exploring product UI patterns, docs, showcases, resources, and Pro implementation assets."
 
 type PageMetaInput = {
   page: "home" | "docs" | "plus" | "term" | "download" | "pro" | "colors" | "recipes" | "get-started"

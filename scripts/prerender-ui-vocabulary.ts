@@ -47,7 +47,7 @@ function link(href: string, label: string): string {
 function buildPages(): Page[] {
   const pages: Page[] = []
   const defaultDescription =
-    "Askewly Design은 제품 UI 패턴, 문서, 쇼케이스, 리소스, Pro 구현 자산을 탐색하는 디자인 시스템입니다."
+    "Askewly Design is a design system for exploring product UI patterns, docs, showcases, resources, and Pro implementation assets."
 
   pages.push({
     route: "/",
@@ -60,7 +60,7 @@ function buildPages(): Page[] {
     route: "/get-started",
     title: `Get Started — ${SITE_NAME}`,
     description:
-      "Askewly Design 시작 가이드 — 패턴 탐색, UI 용어 사전, 문서, 에이전트 진입 경로를 안내합니다.",
+      "Start here: browse the pattern library, the UI vocabulary, the docs, and the agent entry path.",
     body: `<h1>Start exploring ${esc(SITE_NAME)}</h1><p>A visual library of product UI, the vocabulary behind it, and an agent-ready system that ships the same design decisions as code.</p><ul><li>${link("/patterns", "Browse patterns")}</li><li>${link("/docs", "Read the docs")}</li><li>${link("/colors", "Study the colors")}</li><li>${link("/recipes", "Try the recipes")}</li><li>${link("/llms.txt", "Agent entry: llms.txt")}</li></ul>`,
   })
 
@@ -82,7 +82,7 @@ function buildPages(): Page[] {
     route: "/docs",
     title: `Docs — ${SITE_NAME}`,
     description:
-      "Askewly Design 문서 — 원칙, 파운데이션, 엘리먼트 가이드, UI 용어 레퍼런스, 에이전트 레시피.",
+      "Askewly Design docs — principles, foundations, element guides, the UI vocabulary reference, and agent recipes.",
     body: `<h1>${esc(SITE_NAME)} docs</h1><p>Askewly Design is a design system for product interfaces: a visual pattern library, a UI vocabulary, and agent-ready guidance that all ship from the same tokens.</p>${docsGroupsHtml}`,
   })
 
@@ -108,7 +108,7 @@ function buildPages(): Page[] {
   pages.push({
     route: "/patterns",
     title: `Patterns — ${SITE_NAME}`,
-    description: "Marketing, application UI, ecommerce 표면의 UI 패턴과 실동작 데모를 탐색합니다.",
+    description: "Browse UI patterns and live demos across marketing, application UI, and ecommerce surfaces.",
     body: `<h1>Patterns</h1><ul>${visibleCollections.map((collection) => `<li>${link(`/patterns/${collection.id.slice("plus-".length)}`, collection.path.join(" / "))}</li>`).join("")}</ul>`,
   })
 
@@ -123,7 +123,7 @@ function buildPages(): Page[] {
     pages.push({
       route: `/patterns/${slug}`,
       title: `${collection.label} — ${SITE_NAME}`,
-      description: `${collection.path.join(" / ")} — ${SITE_NAME} UI 패턴 컬렉션.`,
+      description: `${collection.path.join(" / ")} — a ${SITE_NAME} UI pattern collection.`,
       body: `<p>${esc(collection.path.join(" / "))}</p><h1>${esc(collection.label)}</h1>${termLinks ? `<ul>${termLinks}</ul>` : ""}`,
     })
   }
@@ -143,26 +143,26 @@ function buildPages(): Page[] {
     {
       route: "/colors",
       title: `Colors — ${SITE_NAME}`,
-      description: "Askewly Design 팔레트와 시맨틱 토큰, 컬러 램프 생성기.",
-      body: `<h1>Colors</h1><p>${esc(SITE_NAME)} 팔레트와 시맨틱 토큰, 컬러 램프 생성기.</p>`,
+      description: "Askewly Design palettes, semantic color tokens, and the color ramp generator.",
+      body: `<h1>Colors</h1><p>${esc(SITE_NAME)} palettes, semantic color tokens, and the color ramp generator.</p>`,
     },
     {
       route: "/recipes",
       title: `Recipe Gallery — ${SITE_NAME}`,
-      description: "그라디언트, 모션 코레오그래피, 3D 등 고임팩트 비주얼 기법의 실구현 레시피.",
-      body: `<h1>Recipe Gallery</h1><p>그라디언트, 모션 코레오그래피, 3D 등 고임팩트 비주얼 기법의 실구현 레시피.</p>`,
+      description: "Working implementations of high-impact visual techniques: gradients, motion choreography, 3D, and more.",
+      body: `<h1>Recipe Gallery</h1><p>Working implementations of high-impact visual techniques: gradients, motion choreography, 3D, and more.</p>`,
     },
     {
       route: "/pro",
       title: `Pro — ${SITE_NAME}`,
-      description: "Askewly Design Pro — 구현 팩, 에셋, 상업적 재사용.",
-      body: `<h1>Pro Plan</h1><p>Askewly Design Pro — 구현 팩, 에셋, 상업적 재사용.</p>`,
+      description: "Askewly Design Pro — implementation packs, assets, and commercial reuse.",
+      body: `<h1>Pro Plan</h1><p>Askewly Design Pro — implementation packs, assets, and commercial reuse.</p>`,
     },
     {
       route: "/search",
       title: `Search — ${SITE_NAME}`,
-      description: "UI 용어 사전 562개 항목에서 이름·별칭·설명·사용 상황으로 검색합니다.",
-      body: `<h1>Search</h1><p>UI 용어 사전에서 이름·별칭·설명·사용 상황으로 검색합니다.</p>`,
+      description: "Search 562 UI vocabulary entries by name, alias, description, or when to use them.",
+      body: `<h1>Search</h1><p>Search the UI vocabulary by name, alias, description, or when to use each term.</p>`,
     }
   )
 

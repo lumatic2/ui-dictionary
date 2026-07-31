@@ -28,3 +28,13 @@
 - 결과: `verify PASS — 90 file(s) scanned` · 면제 4건은 매 실행 사유와 함께 출력.
 - Failure probe: `term-visual` 마커의 사유를 지우니 `typography-marker-no-reason` 으로 다시 FAIL — 게이트가 살아 있다.
 - 사이트 lint(색 0)·build(755 라우트 prerender) PASS.
+
+## step-3 — SEO 셸 메타 영어 통일
+
+사이트 카피는 2026-07-31 에 영어 단일로 확정됐는데 검색 메타만 한국어로 남아 있었다 — 검색 결과에는 한국어 스니펫이 뜨고 들어오면 영어 페이지인 상태.
+
+- `index.html`: `lang="ko"` → `"en"`, description·og:description·twitter:description 영어화.
+- `page-meta.ts`: 기본 설명 영어화(라우트별 설명이 없을 때의 폴백).
+- `scripts/prerender-ui-vocabulary.ts`: 셸 정적 라우트(홈·get-started·docs 허브·patterns 허브·컬렉션·colors·recipes·pro·search)의 description 과 첫 페인트 body 영어화.
+- **콘텐츠는 그대로**: 용어 562건의 이름·설명, docs 아티클 본문(`documentation-pages.ts`)은 한국어가 의도된 콘텐츠다. 전환 대상은 셸 메타뿐 — `docs/design-system/copy-language.md` 에 이 경계를 기록.
+- 검증: 전환 전 셸 라우트 8곳의 `<head>` 메타에서 한국어 3건씩 검출(양성 대조) → 전환 후 전부 0. build 755 라우트 PASS, 실브라우저(preview 4322)에서 홈·/get-started 렌더·콘솔 에러 0·`documentElement.lang === "en"` 확인.

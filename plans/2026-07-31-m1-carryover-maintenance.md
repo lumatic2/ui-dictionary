@@ -50,7 +50,7 @@ Status: approved (사용자 승인 2026-07-31 "ㄱㄱ" — 결정 전건 사전 
   - Failure probe: 마커 파일 1개의 사유를 비워 실행 → 위반 재출현 확인 후 복원(게이트가 살아있다는 증거).
   - Commit: changeset `m1-carryover-maintenance` (README 절: step-2).
 
-- [ ] **step-3 — SEO 셸 메타 영어 통일**
+- [x] **step-3 — SEO 셸 메타 영어 통일**
   - Artifact: index.html(`lang="en"` + description/og/twitter 영어) + page-meta.ts DEFAULT_DESCRIPTION 영어 + prerender-ui-vocabulary.ts 정적/셸 라우트(get-started·docs 허브·patterns 허브·컬렉션·colors·recipes·pro·search) title/description/body 영어 + copy-language.md 결정 기록 1줄(SEO 메타 영어 확정 2026-07-31).
   - Files: write examples/ui-vocabulary-site/index.html, examples/ui-vocabulary-site/src/lib/page-meta.ts, scripts/prerender-ui-vocabulary.ts, docs/design-system/copy-language.md. read dist 산출 spot.
   - Risk: 기계적 (문자열 치환 + lang 속성 — 로직 무변경. 용어 데이터 파생 메타는 건드리지 않음)
