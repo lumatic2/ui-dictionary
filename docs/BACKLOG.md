@@ -730,3 +730,9 @@ plan doc: `archive/plans/2026-07-21-eu*.md` · 증거: `evidence/editor-legibili
   - Completed: 2026-08-01
   - Result: 루브릭 Q1~Q12+견본 5계열+G5 대조 배선·Q2 린트 — custom-skills 2커밋 배포
   - Evidence: evidence/deck-quality/dq1-quality-rubric.md
+
+### 2026-08
+- M4 - M4 — og-image 3안 품질 비교·선택 교체
+  - Completed: 2026-08-01
+  - Result: A안(다크 PNG 1200×630) 실배포 — 절대 URL 메타·구 SVG 참조 0·카드 디버거 실증. 보고서 docs/reports/2026-08-01-m4-og-image-dark.md
+  - Evidence: evidence/dark-carryover/m4-og-image-dark.md

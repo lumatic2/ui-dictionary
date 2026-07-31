@@ -17,38 +17,6 @@ Goal: 슬라이드 덱 자체 품질 업그레이드. closed 2026-08-01 — DQ1~
 
 ## Active Milestones — dark-carryover
 
-<!-- harness:milestone id="M4" status="completed" priority="P3" evidence="evidence/dark-carryover/m4-og-image-dark.md" -->
-### M4 — og-image 3안 품질 비교·선택 교체
-- DoD: codex imagegen 다크·라이트 톤 1200×630 후보 2종 + 기존 SVG 3안을 양 테마 목업으로 사용자가 비교 선택, 교체 시 dist 메타 정합·구 SVG 참조 0, goal 마감 일괄 배포(승인 후)로 실카드 확인.
-- Gap: 현행 og:image 가 라이트 SVG 단일 — 다크 채팅 UI 어색 + SVG 크롤러 호환성 불리. og:image 는 테마 분기 불가(셸 단일 상속 — 검증자 실측)
-- Scale: steps=2 (imagegen 2종+3안 비교 관측 / 메타 배선+마감 검증); surfaces: public/og-image·index.html; capability: 공유 첫인상까지 시스템의 얼굴
-- Plan: plans/2026-08-01-m4-og-image-dark.md
-- Status: [x]
-
-- Completed at: 2026-08-01
-- Evidence: evidence/dark-carryover/m4-og-image-dark.md
-- Summary: A안(다크 PNG 1200×630) 실배포 — 절대 URL 메타·구 SVG 참조 0·카드 디버거 실증. 보고서 docs/reports/2026-08-01-m4-og-image-dark.md
-
-<!-- harness:goal-archive16 id="carryover-maintenance" status="completed" -->
-Goal: 이월 유지보수 마감 — 사용자 지목 이월 finding 2건을 닫는다. closed 2026-08-01 — M1 단일 milestone 완주: 타이포 위반 8→0(규칙 쪽을 고쳐서 — 반응형 버킷 계수·사유 필수 마커 4건·임계 5→7 실측 재산정, @askewly/design 0.3.0) + SEO 셸 메타·`lang="en"` 통일(콘텐츠 제외). Details: `archive/plans/2026-07-31-m1-carryover-maintenance.md` + `docs/reports/2026-08-01-m1-carryover-maintenance.md`.
-
-<!-- harness:goal-archive15 id="site-polish" status="completed" -->
-Goal: 사이트 다듬기 — 수동 QA 직관성 결함 수리. closed 2026-07-31 — QA1(한/영 혼용) 관측 회귀 마감: **사이트 카피 = 영어 단일 확정**(`docs/design-system/copy-language.md`). QA2: Get Started 를 Primer 문법(사용자 확정 레퍼런스)+codex imagegen 일러스트 세트로 재설계, hover·cursor 반응, 관측 7왕복 통과. Details: `archive/plans/2026-07-31-qa{1,2}-*.md` + `docs/reports/2026-07-31-qa{1,2}-*.md`.
-
-<!-- harness:goal-archive14 id="dark-mode" status="completed" -->
-Goal: 다크모드 정비 — '다크모드' 정의를 지식·용어 정본으로 등재하고, 셸 하드코딩 색을 토큰화해 게이트한 뒤, 3-상태 다크모드를 활성화한다. closed 2026-07-31 — DM1(knowledge+llms·terms 등재)·DM2(셸 998→0 토큰화+lint:colors 게이트)·DM3(3-상태 활성화·기본 라이트·FOUC 없음) 단일 세션 완주, 실배포 실증·사람 관측 왕복 2회 통과(1회차 결함 3종 수리). Details: `archive/plans/2026-07-31-dm{1,2,3}-*.md` + `docs/reports/2026-07-31-dm{1,2,3}-*.md`.
-
-<!-- harness:goal-archive13 id="site-quality" status="completed" -->
-Goal: 사이트 품질 — UI 백과사전 사이트가 자기 디자인 게이트를 통과하고(verify 위반 79건), UE1 관측이 남긴 구조 결함(O5~O7)·검색 결과 UI(O9)를 수리하며, SSG/prerender 로 초기 로딩·SEO 를 확보한다. closed 2026-07-29 — SQ1(색 위반 72→0 시각 무손실)·SQ2(Get Started·Docs 허브·Components 내비)·SQ3(검색 2티어 재디자인)·SQ4(754 라우트 프리렌더+asset-first) 전부 실배포 실증, 사람 관측 3회 통과. Details: `archive/plans/2026-07-28-sq{1,2,3,4}-*.md` + `docs/reports/`.
-
-<!-- harness:goal-archive12 id="visual-impact-consolidation" status="completed" -->
-Goal: 비주얼 임팩트 정리 — 흩어진 비주얼 임팩트 방법(knowledge-graph 노드 19건, toolshelf 카드 15건, presentation-slides three-scene·3d-repolis)을 VI1~VI5 표현 스택 체계로 대조·판정·흡수해 자산화한다. closed 2026-07-28 — VI6(KG 19노드 판정·motion-principles 신설)·VI7(15카드 배치·llms 배선 완결)·VI8(recipe 2종 실구현·상호 링크) 단일 세션 완주. Details: `research/2026-07-28-visual-impact-goal-inventory.md` + `docs/reports/2026-07-28-vi{6,7,8}-*.md`.
-
-**active goal 0** — 다음 방향은 새 `/harness-plan` 에서 연다.
-
-<!-- harness:goal id="real-use-lap" status="skipped" -->
-Goal: 실사용 한 바퀴 — Askewly Design으로 Askewly Design 소개 덱(PPTX)을 실제로 만들고, 막히는 지점만 결함으로 기록해 milestone으로 삼는다. **제거(2026-07-31, 사용자 판정: 낡음)** — PARK(2026-07-27) 상태에서 부활 없이 폐기. horizon 문서 삭제(git 이력 보존), RU1 결함 장부(`evidence/real-use-lap/ru1-deck-production.md`)·파일럿 실측(`research/2026-07-27-ru2-pilot-defect-measurement.md`)은 기록으로 유지.
-
 ## Completed Milestones — deck-quality
 
 <!-- harness:milestone id="DQ2" status="completed" priority="P1" evidence="evidence/deck-quality/dq2-expressive-mechanics.md" -->
