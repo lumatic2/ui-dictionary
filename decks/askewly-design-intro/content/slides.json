@@ -88,7 +88,7 @@
       "no": 4,
       "slug": "assets-stacked",
       "section": "proof",
-      "title": "정본에 이미 562개 용어가 쌓여 있다",
+      "title": "자산은 이미 쌓여 있다",
       "layout": "chart-interactive",
       "chartLabel": "정본 자산 수 (레포 실측)",
       "chartType": "bar",
@@ -116,7 +116,7 @@
         "repo-count"
       ],
       "exportFallback": "네 항목 수치를 정적 카드로 표시 (562·166·47·13)",
-      "notes": "수치는 오늘 레포에서 직접 센 값. 제목이 결론이므로 차트는 근거로만 읽는다. 사전이 아니라 시스템 규모임을 강조."
+      "notes": "수치는 오늘 레포에서 직접 센 값. 사전이 아니라 시스템 규모임을 강조."
     },
     {
       "no": 5,
