@@ -10,3 +10,11 @@
 - 재생성: `src/tokens.css`(`:root`+`.dark` 17변수), `DESIGN.md` frontmatter, llms 사본(`generate-llms-txt.mjs` — 정본과 diff 0 확인). llms 재생성이 M1 의 `copy-language.md` 미반영분도 함께 정합화(부수 캐치업).
 - `src/index.css` `@theme inline`: `--color-*` 17매핑 추가 (Tailwind 클래스: `bg-emphasis-surface`·`text-info-foreground`·`bg-danger-solid` 등).
 - Verify: 재생성 diff 신설분만(기존 토큰 값 무변경) · build+prerender 755 PASS · tokens.css `:root`/`.dark` 17변수 전수 존재 · llms 사본 identical.
+
+## step-2 — "토큰 부재" 마커 전수 치환·제거
+
+- App.tsx 8건: topbar 피드백 칩 2(emphasis-surface/foreground)·예시 태그 칩·docs 아이콘 타일(info)·Pro unlocked 배지(success)·Get the code 링크(info-link)·브랜드 보라 hover 2(primary-hover, #5f22a8 리터럴 제거).
+- article-documentation-layout.tsx 6건 치환(danger 4·emphasis 3 표면) + 1건 콘텐츠 재판정(장식 아바타 5색 — 사유 정정 잔존).
+- ui/button.tsx·ui/badge.tsx·bottom-tab-bar.tsx: text-white → text-destructive-foreground(마커 3건 제거 — "correct" 판단을 토큰 값으로 승격).
+- 보조 토큰 `emphasis.on-solid`(white/white) 즉석 추가 + 재생성(연쇄: tokens.json→generate-tokens→generate-llms-txt→@theme).
+- Verify: "토큰 부재" 마커 잔여 0(콘텐츠 정정 1건 제외) · lint(스캐너 0 violations)·build+prerender PASS · dist CSS 신설 유틸리티 전수 방출 · 라이트=값 동일 무손실(oklch 리터럴 그대로 승격) · 다크 토글 실렌더 스크린샷·CSS 변수 해석 확인 · 콘솔 0에러.

@@ -104,7 +104,7 @@ function DocsInteractiveElementPreview({ variant }: { variant: DocsArticlePageDa
           >
               {visiblePeople.map((name) => (
                 <button key={name} className={cn("flex w-full items-center gap-3 px-3 py-2 text-left text-sm transition hover:bg-background", selected === name && "bg-muted")} tabIndex={open ? 0 : -1} type="button" onClick={() => { setSelected(name); setQuery(""); setOpen(false) }}>
-                  {/* hardcoded-color-ok — 토큰 부재 상태색: 사람별 구분용 장식 아바타 색 */}
+                  {/* hardcoded-color-ok — 데모 콘텐츠: 사람별 구분용 장식 아바타 5색 — 색 자체가 콘텐츠라 시맨틱 역할 없음 (M2 재판정: 구 '토큰 부재' 사유 정정) */}
                   <span className={cn("size-6 rounded-full", ["bg-rose-200", "bg-amber-200", "bg-sky-200", "bg-emerald-200", "bg-violet-200"][people.indexOf(name)])} />
                   <span className="text-foreground">{name}</span>
                 </button>
@@ -140,8 +140,7 @@ function DocsInteractiveElementPreview({ variant }: { variant: DocsArticlePageDa
             {items.map(([Icon, label], index) => (
               <button
                 key={label}
-                // hardcoded-color-ok — 토큰 부재 상태색: Delete 항목 강조용 rose, 정확 대응 토큰 없음
-                className={cn("flex w-full items-center gap-3 px-4 py-3 text-left text-muted-foreground hover:bg-background", [2, 4, 6].includes(index) && "border-t", label === "Delete" && "text-rose-600")}
+                className={cn("flex w-full items-center gap-3 px-4 py-3 text-left text-muted-foreground hover:bg-background", [2, 4, 6].includes(index) && "border-t", label === "Delete" && "text-danger-foreground")}
                 tabIndex={open ? 0 : -1}
                 type="button"
                 onClick={() => {
@@ -200,14 +199,12 @@ function DocsInteractiveElementPreview({ variant }: { variant: DocsArticlePageDa
           role="dialog"
           className={cn("relative w-80 rounded-xl bg-card p-6 text-sm shadow-2xl ring-1 ring-foreground/10 transition duration-200 ease-out", dialogOpen ? "translate-y-0 scale-100 opacity-100" : "pointer-events-none translate-y-3 scale-95 opacity-0")}
         >
-          {/* hardcoded-color-ok — 토큰 부재 상태색: 경고 아이콘 chip, rose 정확 대응 토큰 없음 */}
-          <div className="grid size-10 place-items-center rounded-full bg-rose-100 text-rose-600"><CircleAlert aria-hidden="true" className="size-5" /></div>
+          <div className="grid size-10 place-items-center rounded-full bg-danger-surface text-danger-foreground"><CircleAlert aria-hidden="true" className="size-5" /></div>
           <h4 className="mt-4 text-base font-semibold text-foreground">Delete project</h4>
           <p className="mt-2 leading-6 text-muted-foreground">This action cannot be undone. All project files and activity will be removed.</p>
           <div className="mt-6 flex justify-end gap-2">
             <button className="rounded-md border px-3 py-2 font-medium text-foreground transition hover:bg-background" tabIndex={dialogOpen ? 0 : -1} type="button" onClick={() => setDialogOpen(false)}>Cancel</button>
-            {/* hardcoded-color-ok — 토큰 부재 상태색: 파괴적 액션 버튼, rose 정확 대응 토큰 없음 */}
-            <button className="rounded-md bg-rose-600 px-3 py-2 font-semibold text-white transition hover:bg-rose-500" tabIndex={dialogOpen ? 0 : -1} type="button" onClick={() => { setSelected("Project deleted"); setDialogOpen(false) }}>Delete</button>
+            <button className="rounded-md bg-danger-solid px-3 py-2 font-semibold text-destructive-foreground transition hover:bg-danger-solid-hover" tabIndex={dialogOpen ? 0 : -1} type="button" onClick={() => { setSelected("Project deleted"); setDialogOpen(false) }}>Delete</button>
           </div>
         </div>
       </div>
@@ -309,8 +306,7 @@ function DocsInteractiveElementPreview({ variant }: { variant: DocsArticlePageDa
           <label className="mb-2 block text-xs font-semibold text-foreground">Role</label>
           <button className="flex h-10 w-full items-center justify-between rounded-md border bg-card px-3 text-sm font-medium text-foreground shadow-sm transition hover:border-border hover:bg-background" type="button" onClick={() => setOpen((value) => !value)}>{selected || "Admin"} <ChevronDown aria-hidden="true" className={cn("size-4 text-muted-foreground/70 transition-transform duration-200", open && "rotate-180")} /></button>
           <div className={cn("mt-1 origin-top overflow-hidden rounded-md bg-card shadow-xl ring-1 ring-foreground/10 transition duration-200 ease-out", open ? "max-h-60 translate-y-0 scale-100 opacity-100" : "pointer-events-none max-h-0 -translate-y-1 scale-95 opacity-0")}>
-            {/* hardcoded-color-ok — 토큰 부재 상태색: 선택된 role 강조 indigo, 정확 대응 토큰 없음 */}
-            {roles.map((item) => <button key={item} className={cn("flex w-full items-center justify-between px-3 py-2 text-left text-sm transition hover:bg-background", (selected || "Admin") === item ? "bg-indigo-50 text-indigo-700" : "text-muted-foreground")} tabIndex={open ? 0 : -1} type="button" onClick={() => { setSelected(item); setOpen(false) }}><span>{item}</span>{(selected || "Admin") === item && <CheckCircle2 aria-hidden="true" className="size-4" />}</button>)}
+            {roles.map((item) => <button key={item} className={cn("flex w-full items-center justify-between px-3 py-2 text-left text-sm transition hover:bg-background", (selected || "Admin") === item ? "bg-emphasis-surface text-emphasis-foreground" : "text-muted-foreground")} tabIndex={open ? 0 : -1} type="button" onClick={() => { setSelected(item); setOpen(false) }}><span>{item}</span>{(selected || "Admin") === item && <CheckCircle2 aria-hidden="true" className="size-4" />}</button>)}
           </div>
         </div>
       </div>
@@ -337,15 +333,13 @@ function DocsInteractiveElementPreview({ variant }: { variant: DocsArticlePageDa
           </div>
         </div>
         <div className="relative">
-          {/* hardcoded-color-ok — 토큰 부재 상태색: 포커스 링 indigo, 정확 대응 토큰 없음 */}
-          <textarea aria-label="Add your comment" className={cn("h-32 w-full resize-none rounded-md border border-border bg-card p-4 text-sm text-foreground outline-none transition duration-200 placeholder:text-muted-foreground/70 focus:border-indigo-500 focus:ring-2 focus:ring-indigo-500/20", activeTab === "Write" ? "opacity-100" : "pointer-events-none opacity-0")} placeholder="Add your comment..." value={selected} onChange={(event) => setSelected(event.target.value)} />
+          <textarea aria-label="Add your comment" className={cn("h-32 w-full resize-none rounded-md border border-border bg-card p-4 text-sm text-foreground outline-none transition duration-200 placeholder:text-muted-foreground/70 focus:border-emphasis-ring focus:ring-2 focus:ring-emphasis-ring/20", activeTab === "Write" ? "opacity-100" : "pointer-events-none opacity-0")} placeholder="Add your comment..." value={selected} onChange={(event) => setSelected(event.target.value)} />
           <div className={cn("absolute inset-0 rounded-md border border-border bg-card p-4 text-sm leading-6 text-muted-foreground transition duration-200", activeTab === "Preview" ? "translate-y-0 opacity-100" : "pointer-events-none translate-y-1 opacity-0")}>
             {selected ? selected : "Nothing to preview yet."}
           </div>
         </div>
         <div className="mt-3 flex justify-end">
-          {/* hardcoded-color-ok — 토큰 부재 상태색: indigo 강조 버튼, 정확 대응 토큰 없음 */}
-          <button className="rounded-md bg-indigo-600 px-4 py-2 text-sm font-semibold text-white shadow-sm transition hover:bg-indigo-500 active:scale-[0.98]" type="button" onClick={() => setSelected((value) => value || "Draft comment posted.")}>Post</button>
+          <button className="rounded-md bg-emphasis-solid px-4 py-2 text-sm font-semibold text-emphasis-on-solid shadow-sm transition hover:bg-emphasis-solid-hover active:scale-[0.98]" type="button" onClick={() => setSelected((value) => value || "Draft comment posted.")}>Post</button>
         </div>
       </div>
     </div>

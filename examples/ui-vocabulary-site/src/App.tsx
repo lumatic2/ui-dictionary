@@ -622,8 +622,7 @@ function App() {
                       className={cn(
                         "transition hover:text-primary",
                         item.active && "text-primary",
-                        // hardcoded-color-ok — 브랜드 보라 hover shade — 토큰 부재
-                        item.label === "Pro Plan" && "rounded-lg bg-askewly-violet/10 px-3 py-1 font-semibold text-askewly-violet hover:bg-askewly-violet/15 hover:text-[#5f22a8]",
+                        item.label === "Pro Plan" && "rounded-lg bg-askewly-violet/10 px-3 py-1 font-semibold text-askewly-violet hover:bg-askewly-violet/15 hover:text-primary-hover",
                       )}
                       type="button"
                       onClick={item.onClick}
@@ -633,8 +632,7 @@ function App() {
                   ))}
                   <SiteThemeToggle activeTheme={siteTheme} onThemeChange={setSiteTheme} />
                   <span className="h-5 w-px bg-border" aria-hidden="true" />
-                  {/* hardcoded-color-ok — topbar 피드백 칩 indigo 강조 — 토큰 부재 상태색 */}
-                  {topbarFeedback && <span className="max-w-40 truncate rounded-full bg-indigo-50 px-3 py-1 text-xs font-semibold text-indigo-700">{topbarFeedback}</span>}
+                  {topbarFeedback && <span className="max-w-40 truncate rounded-full bg-emphasis-surface px-3 py-1 text-xs font-semibold text-emphasis-foreground">{topbarFeedback}</span>}
                   {authSession.authenticated ? (
                     <button className="max-w-44 truncate transition hover:text-primary active:scale-[0.98]" type="button" title={authSession.email ?? "Signed in"} onClick={() => void signOut()}>
                       Sign out
@@ -658,8 +656,7 @@ function App() {
                 </button>
               </div>
             </div>
-            {/* hardcoded-color-ok — topbar 피드백(모바일) indigo 강조 — 토큰 부재 상태색 */}
-            {topbarFeedback && <p className="border-t bg-indigo-50 px-4 py-2 text-xs font-medium text-indigo-700 md:hidden">{topbarFeedback}</p>}
+            {topbarFeedback && <p className="border-t bg-emphasis-surface px-4 py-2 text-xs font-medium text-emphasis-foreground md:hidden">{topbarFeedback}</p>}
 
       </header>
 
@@ -988,8 +985,7 @@ function ProOverviewContent({ onSignIn }: { onSignIn: () => void }) {
             </p>
           ))}
         </div>
-        {/* hardcoded-color-ok — 브랜드 보라 hover shade — 토큰 부재 */}
-        <Button className="mt-7 h-11 w-full rounded-lg bg-askewly-violet text-primary-foreground hover:bg-[#5f22a8]" type="button" onClick={onSignIn}>
+        <Button className="mt-7 h-11 w-full rounded-lg bg-askewly-violet text-primary-foreground hover:bg-primary-hover" type="button" onClick={onSignIn}>
           Continue to sign in
         </Button>
       </aside>
@@ -1856,8 +1852,7 @@ function DocsSectionPreview({ section, termCount }: { section: DocsSection; term
           <div className="border-b bg-background p-8">
             <div className="mx-auto max-w-md rounded-xl border bg-card p-5 shadow-sm">
               <div className="flex items-center gap-4">
-                {/* hardcoded-color-ok — docs 섹션 아이콘 타일 sky 강조 — 토큰 부재 강조색 */}
-                <span className="grid size-12 place-items-center rounded-lg bg-sky-100 text-sky-700">
+                <span className="grid size-12 place-items-center rounded-lg bg-info-surface text-info-foreground">
                   <section.icon aria-hidden="true" className="size-6" />
                 </span>
                 <div>
@@ -2176,13 +2171,13 @@ function MarketingSectionCatalogPage({ page, proUnlocked = false }: MarketingSec
                     <h3 className="text-base font-semibold tracking-normal text-foreground">{example.title}</h3>
                     <span className="rounded-full bg-muted px-2 py-0.5 text-[0.65rem] font-semibold uppercase tracking-[0.12em] text-muted-foreground">Example {String(exampleIndex + 1).padStart(2, "0")}</span>
                     {exampleIndex > 0 && (
-                      <span className={cn("rounded-full px-2 py-0.5 text-[0.65rem] font-semibold uppercase tracking-[0.12em]", /* hardcoded-color-ok — Pro unlocked 배지 emerald, 토큰 부재 상태색 */ proUnlocked ? "bg-emerald-50 text-emerald-700" : "bg-askewly-violet/10 text-askewly-violet")}>{proUnlocked ? "Pro · unlocked" : "Pro"}</span>
+                      <span className={cn("rounded-full px-2 py-0.5 text-[0.65rem] font-semibold uppercase tracking-[0.12em]", proUnlocked ? "bg-success-surface text-success-foreground" : "bg-askewly-violet/10 text-askewly-violet")}>{proUnlocked ? "Pro · unlocked" : "Pro"}</span>
                     )}
                   </div>
                   <p className="mt-1 max-w-3xl text-sm leading-6 text-muted-foreground">{example.description}</p>
                   <div className="mt-2 flex flex-wrap gap-1.5">
                     {example.tags.map((tag) => (
-                      <span key={tag} className={"rounded-full bg-indigo-50 px-2 py-0.5 text-[0.68rem] font-medium text-indigo-700" /* hardcoded-color-ok — 예시 태그 칩 indigo, 토큰 부재 강조색 */}>{tag}</span>
+                      <span key={tag} className="rounded-full bg-emphasis-surface px-2 py-0.5 text-[0.68rem] font-medium text-emphasis-foreground">{tag}</span>
                     ))}
                   </div>
                 </div>
@@ -2237,8 +2232,7 @@ function MarketingSectionCatalogPage({ page, proUnlocked = false }: MarketingSec
                   ) : (
                     <div className="hidden items-center gap-3 md:flex">
                       <span className="hidden h-8 w-px bg-border md:block" />
-                      {/* hardcoded-color-ok — Get the code 링크 sky 강조 — 토큰 부재 강조색 */}
-                      <button className="text-sm font-semibold whitespace-nowrap text-sky-500 transition hover:text-sky-600 active:scale-[0.98]" type="button" onClick={() => { setCodeAccessExample(example); setCodeAccessModalOpen(true) }}>
+                      <button className="text-sm font-semibold whitespace-nowrap text-info-link transition hover:text-info-link-hover active:scale-[0.98]" type="button" onClick={() => { setCodeAccessExample(example); setCodeAccessModalOpen(true) }}>
                         Get the code →
                       </button>
                     </div>

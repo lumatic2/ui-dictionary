@@ -181,6 +181,11 @@
           "$description": "Focus border/ring on emphasis-accented inputs.",
           "$value": "{color.primitive.indigo.500}",
           "$extensions": { "com.askewly.modes": { "dark": "{color.primitive.indigo.400}" } }
+        },
+        "on-solid": {
+          "$description": "Text/icon on emphasis.solid fills. White holds contrast on indigo-600 (light) and indigo-500 (dark).",
+          "$value": "{color.primitive.white}",
+          "$extensions": { "com.askewly.modes": { "dark": "{color.primitive.white}" } }
         }
       },
       "status": {

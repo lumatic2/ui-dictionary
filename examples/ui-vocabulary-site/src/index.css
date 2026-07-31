@@ -49,6 +49,7 @@
   --color-emphasis-solid: var(--emphasis-solid);
   --color-emphasis-solid-hover: var(--emphasis-solid-hover);
   --color-emphasis-ring: var(--emphasis-ring);
+  --color-emphasis-on-solid: var(--emphasis-on-solid);
   --color-info-surface: var(--info-surface);
   --color-info-foreground: var(--info-foreground);
   --color-info-link: var(--info-link);

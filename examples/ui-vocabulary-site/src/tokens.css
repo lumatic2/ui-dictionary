@@ -26,6 +26,7 @@
   --emphasis-solid: oklch(0.511 0.262 276.966);
   --emphasis-solid-hover: oklch(0.585 0.233 277.117);
   --emphasis-ring: oklch(0.585 0.233 277.117);
+  --emphasis-on-solid: oklch(1 0 0);
   --info-surface: oklch(0.951 0.026 236.824);
   --info-foreground: oklch(0.5 0.134 242.749);
   --info-link: oklch(0.685 0.169 237.323);
@@ -88,6 +89,7 @@
   --emphasis-solid: oklch(0.585 0.233 277.117);
   --emphasis-solid-hover: oklch(0.673 0.182 276.935);
   --emphasis-ring: oklch(0.673 0.182 276.935);
+  --emphasis-on-solid: oklch(1 0 0);
   --info-surface: oklch(0.293 0.066 243.157);
   --info-foreground: oklch(0.828 0.111 230.318);
   --info-link: oklch(0.746 0.16 232.661);

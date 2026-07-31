@@ -81,6 +81,7 @@ tokens:
         solid: { value: "{color.primitive.indigo.600}", type: color }
         solid-hover: { value: "{color.primitive.indigo.500}", type: color }
         ring: { value: "{color.primitive.indigo.500}", type: color }
+        on-solid: { value: "{color.primitive.white}", type: color }
       status:
         info-surface: { value: "{color.primitive.skyx.100}", type: color }
         info-foreground: { value: "{color.primitive.skyx.700}", type: color }
@@ -157,6 +158,7 @@ themes:
     color.semantic.emphasis.solid: { value: "{color.primitive.indigo.500}", type: color }
     color.semantic.emphasis.solid-hover: { value: "{color.primitive.indigo.400}", type: color }
     color.semantic.emphasis.ring: { value: "{color.primitive.indigo.400}", type: color }
+    color.semantic.emphasis.on-solid: { value: "{color.primitive.white}", type: color }
     color.semantic.status.info-surface: { value: "{color.primitive.skyx.950}", type: color }
     color.semantic.status.info-foreground: { value: "{color.primitive.skyx.300}", type: color }
     color.semantic.status.info-link: { value: "{color.primitive.skyx.400}", type: color }

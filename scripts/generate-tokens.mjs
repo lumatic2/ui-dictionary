@@ -57,6 +57,7 @@ const COLOR_MAPPINGS = [
   ["--emphasis-solid", "color.semantic.emphasis.solid"],
   ["--emphasis-solid-hover", "color.semantic.emphasis.solid-hover"],
   ["--emphasis-ring", "color.semantic.emphasis.ring"],
+  ["--emphasis-on-solid", "color.semantic.emphasis.on-solid"],
   ["--info-surface", "color.semantic.status.info-surface"],
   ["--info-foreground", "color.semantic.status.info-foreground"],
   ["--info-link", "color.semantic.status.info-link"],

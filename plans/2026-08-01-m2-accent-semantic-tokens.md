@@ -39,7 +39,7 @@ Status: approved (사용자 승인 2026-08-01 "ㄱㄱ" — 연쇄 M2→M3→M4 �
   - Failure probe: generate-tokens.mjs 가 미지의 토큰 그룹(accent 하위 신규 키)을 스킵하거나 이름 변환이 어긋나는지 — 생성물에서 신설 변수 전수 존재 확인.
   - Commit: changeset `m2-accent-semantic-tokens` (README 절: step-1).
 
-- [ ] **step-2 — "토큰 부재" 마커 전수 치환·제거**
+- [x] **step-2 — "토큰 부재" 마커 전수 치환·제거**
   - Artifact: 인벤토리 §A 의 마커 전수를 새 토큰 클래스로 치환하고 마커 주석 제거 — App.tsx(강조 칩·태그·sky 링크·Pro 배지·보라 hover)·article-documentation-layout.tsx(rose·indigo — 셸/콘텐츠 경계 실측 판정)·ui/button.tsx·ui/badge.tsx·bottom-tab-bar.tsx(destructive-foreground).
   - Files: write examples/ui-vocabulary-site/src/App.tsx, src/components/article-documentation-layout.tsx, src/components/bottom-tab-bar.tsx, src/components/ui/button.tsx, src/components/ui/badge.tsx. read src/tokens.css.
   - Risk: 위험 (사이트 최상위 표면 수정 — 라이트 무손실 계약·파일 단위 커밋 격리)
@@ -64,6 +64,9 @@ Status: approved (사용자 승인 2026-08-01 "ㄱㄱ" — 연쇄 M2→M3→M4 �
 
 ## finding 큐
 - (실행 중 발견 항목 — 특히 콘텐츠 판정으로 잔존시킨 마커와 그 근거)
+- **콘텐츠 재판정 1건**: `article-documentation-layout.tsx:107` 사람별 장식 아바타 5색(rose/amber/sky/emerald/violet-200) — 색 자체가 콘텐츠(사람 구분)라 시맨틱 역할 없음. 토큰 승격 대신 마커 사유를 "데모 콘텐츠"로 정정해 잔존. 5색 토큰 신설은 과설계 판단.
+- **보조 토큰 1건 추가**: `emphasis.on-solid`(white/white) — 강조 solid 버튼 위 텍스트. 치환 중 text-white 예외가 새로 생기는 걸 막기 위해 step-2 에서 즉석 추가(step-1 설계 누락, additive 라 재승인 불요 판정).
+- llms 재생성이 M1 `copy-language.md` 소스 변경 미반영분을 정합화(부수 캐치업 — M1 마감 시 generate-llms-txt 미실행이 원인. 재발 방지 후보: 문서 소스→llms 정합 검사).
 
 ## 진행 로그
 - 2026-08-01 작성.
