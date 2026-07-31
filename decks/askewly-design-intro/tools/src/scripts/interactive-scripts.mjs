@@ -29,6 +29,17 @@ export function createSlideScripts({ escapeHtml }) {
     const token = (name) => css.getPropertyValue(name).trim();
     const fontFamily = token('--font-main') || getComputedStyle(document.body).fontFamily || 'sans-serif';
     const palette = [token('--chart-1'), token('--chart-2'), token('--chart-3'), token('--chart-4'), token('--accent-start'), token('--accent-end')].filter(Boolean);
+    // 색은 의미를 인코딩할 때만 쓴다: 조각이 곧 범주인 원형 차트만 팔레트를 순환하고,
+    // 단일 시리즈 막대·선은 한 색으로 그린다(emphasis 항목만 accent).
+    const seriesColor = token('--chart-1') || palette[0];
+    const emphasisColor = token('--accent-end') || seriesColor;
+    const barColors = raw.map((item) => (item && item.emphasis ? emphasisColor : seriesColor));
+    const withAlpha = (hex, alpha) => {
+      const m = /^#?([0-9a-f]{6})$/i.exec(String(hex || '').trim());
+      if (!m) return hex;
+      const n = parseInt(m[1], 16);
+      return 'rgba(' + ((n >> 16) & 255) + ', ' + ((n >> 8) & 255) + ', ' + (n & 255) + ', ' + alpha + ')';
+    };
     const variantType = {
       'balance-radar': 'radar',
       'ranked-bars': 'bar',
@@ -55,9 +66,13 @@ export function createSlideScripts({ escapeHtml }) {
       data: { labels, datasets: [{
         label: '${escapeHtml(slide.chartLabel || slide.title)}',
         data: base,
-        backgroundColor: isRadar || isLine ? 'rgba(139, 92, 246, 0.18)' : palette,
-        borderColor: isRadial && !isRadar ? token('--surface-raised') : palette[0],
-        pointBackgroundColor: palette[1] || palette[0],
+        backgroundColor: isRadar || isLine
+          ? withAlpha(seriesColor, 0.18)
+          : isRadial
+            ? palette
+            : barColors,
+        borderColor: isRadar || isLine ? seriesColor : isRadial ? token('--surface-raised') : barColors,
+        pointBackgroundColor: seriesColor,
         borderWidth: isRadar ? 3 : isRadial ? 2 : 2,
         tension: isLine ? 0.38 : 0,
         fill: isLine,

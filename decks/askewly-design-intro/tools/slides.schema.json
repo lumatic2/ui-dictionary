@@ -353,6 +353,10 @@
           "minimum": 1,
           "description": "단계 공개 순번(라이브 발표 전용, opt-in). 진행 키가 순번 오름차순으로 요소를 공개한다. export 전 트랙(print/PDF/PPTX/standalone)은 전체 표시."
         },
+        "emphasis": {
+          "type": "boolean",
+          "description": "이 항목을 강조한다(opt-in). 단일 시리즈 차트(막대·선)에서 이 항목만 accent 색을 쓰고 나머지는 --chart-1 단색이다. 색이 의미를 인코딩하지 않는 무지개 막대를 막는다."
+        },
         "animId": {
           "type": "string",
           "pattern": "^[a-z0-9-]+$",

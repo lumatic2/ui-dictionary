@@ -46,7 +46,7 @@ Status: approved (사용자 "ㄱㄱ" 2026-07-31 — fresh 검증자 발견 7건 
   - Verify: 견본 전 장 실빌드·실렌더 PNG 산출(죽은 예시 0) + 루브릭 전 항 검사 주체(린트|G5) 표기 + 전 항 출처 백링크.
   - Failure probe: 루브릭이 style-system anti-slop 체크와 중복되는 항 발견 시 한쪽 참조로 정리(사본 금지) — `grep` 교차 확인.
   - Commit: changeset `20260731-dq1-quality-rubric` (README 절: step-2).
-- [ ] **step-3 — 계약 배선 (SKILL.md 라우팅 + 린트 승격 + 배포)**
+- [x] **step-3 — 계약 배선 (SKILL.md 라우팅 + 린트 승격 + 배포)**
   - Artifact: SKILL.md §7 G5 견본 대조 절차 1줄 + §8 라우팅 표 등재 + 루브릭 중 기계 검사 가능 항목의 lint-principles 승격(warning) + setup.sh 배포.
   - Files: write custom-skills `SKILL.md`·`templates/src/lint-principles.mjs`. read step-2 산출.
   - Risk: 위험 (SKILL.md·린트 공유 계약 편집 — 전 덱 표면)

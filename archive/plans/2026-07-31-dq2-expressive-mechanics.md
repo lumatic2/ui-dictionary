@@ -39,7 +39,7 @@ Status: approved (사용자 "ㄱㄱ" 2026-07-31 — fresh 검증자 발견 7건 
   - Verify: chromium 실구동 file:// 전환 장쌍 육안+콘솔 에러 0 + **실크롬 확인**(Claude in Chrome `/chrome` 네이티브 통합으로 file:// 전환 실측 — HU4 전례: Playwright 는 실크롬 환경차를 못 잡는다, 전역 규약 "Playwright 로 실크롬 대체 금지") + HU4 재현 테스트 5종 회귀 PASS + animId 미사용 덱 산출 무변화(diff 0) + export 픽셀 diff 콘텐츠 무변.
   - Failure probe: file:// cross-document View Transitions 미지원 판명 시 폴백 경로로 전환하고 판정 근거(실측 로그)를 changeset 에 기록 — 미지원인데 지원 가정으로 배포하는 것이 실패 모드. 실크롬 확인 불가 시(통합 미가동) 그 사실을 evidence 에 명시하고 사용자 관측(DQ3)으로 이월.
   - Commit: changeset `20260731-dq2-expressive-mechanics` (README 절: step-1).
-- [ ] **step-2 — 이미지 최적화 빌드 + sourceNote 배치 수리**
+- [x] **step-2 — 이미지 최적화 빌드 + sourceNote 배치 수리**
   - Artifact: 검증용 이미지 재확보(imagery.md 3원천 — 대형 실사진+누끼, 라이선스 장부 포함) + 이미지 최적화 스크립트(opt-in `tools/optimize-images.mjs`, sharp — pptxgenjs 선례 패턴) + `references/imagery.md` 처리 규율 절 + split-screen sourceNote 배치 수리(css.mjs).
   - Files: write custom-skills `templates/`(스크립트·css.mjs)·`references/imagery.md` + fixture 덱 assets(재확보 이미지). read `references/imagery.md`(3원천 절차)·`references/verification.md`(의존성 선례).
   - Risk: 위험 (빌드 파이프·공통 css 편집 — 전 덱 표면)

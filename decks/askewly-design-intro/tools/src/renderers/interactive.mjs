@@ -15,7 +15,7 @@ export function createInteractiveRenderers({ escapeHtml, renderGeneric, renderIc
   function renderChartInteractive(slide) {
     const chartId = slideId(slide, 'chart');
     const variant = slide.variant || slide.chartVariant || 'ranked-bars';
-    const metrics = slide.metrics || (slide.items || []).map((item) => ({ label: item.title || item.label, value: item.value || item.body || 0, unit: item.unit || '' })).slice(0, 6);
+    const metrics = slide.metrics || (slide.items || []).map((item) => ({ label: item.title || item.label, value: item.value || item.body || 0, unit: item.unit || '', ...(item.emphasis ? { emphasis: true } : {}) })).slice(0, 6);
     if (metrics.length === 0) return renderGeneric(slide);
     const showTable = ['share-doughnut', 'polar-balance'].includes(variant);
     const total = metrics.reduce((sum, item) => sum + (Number(String(item.value || 0).replace(/,/g, '')) || 0), 0);

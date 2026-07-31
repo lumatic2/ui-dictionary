@@ -140,7 +140,9 @@ for (const s of deck.slides) {
         values: (s.items || []).map((i) => Number(i.value)),
       }], {
         x: 1.2, y: 1.9, w: W - 2.4, h: 4.4,
-        barDir: 'bar', chartColors: C.chart, catAxisLabelFontFace: FONT, valAxisLabelFontFace: FONT,
+        // 단일 시리즈 막대는 한 색 — emphasis 항목만 accent (HTML 차트와 같은 규칙)
+        barDir: 'bar', chartColors: (s.items || []).map((i) => (i.emphasis ? C.accent2 : C.chart1)),
+        catAxisLabelFontFace: FONT, valAxisLabelFontFace: FONT,
         dataLabelFontFace: FONT, showValue: true, dataLabelColor: C.sub, dataLabelFontSize: 11,
         catAxisLabelFontSize: 12, valAxisLabelFontSize: 10,
       });

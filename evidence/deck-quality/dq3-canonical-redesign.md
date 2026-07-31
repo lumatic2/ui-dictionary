@@ -62,9 +62,11 @@
 - **재기준선**: 칩·제목 변경은 의도 변경이므로 `export/baseline-png` 7장 교체 — 이후 픽셀 회귀는 새 기준선 대비.
 - DQ1 견본 PNG 5장 재산출(칩 스타일 반영 — 죽은 예시 금지 계약).
 
-## finding 큐 (이월)
+## finding 큐
 
-- **단일 시리즈 막대의 다색 사용** — `interactive-scripts.mjs` 가 시리즈 1개 차트에도 `--chart-1~4` 팔레트를 순환 적용해, 색이 아무 의미도 인코딩하지 않는다(루브릭 Q7·Q11 위반 성질). 템플릿 소유라 DQ3 범위 밖 — 스킬 changeset 후속으로.
+- ~~**단일 시리즈 막대의 다색 사용**~~ — **수리됨 (2026-08-01, 사용자 지시)**. `interactive-scripts.mjs` 가 시리즈 1개 차트에도 `--chart-1~4` 팔레트를 순환 적용해 색이 아무 의미도 인코딩하지 않던 것을, 조각이 곧 범주인 원형 차트만 팔레트 유지 · 막대·선·레이더는 `--chart-1` 단색 · 강조는 `items[].emphasis` opt-in 으로 정리했다. 선·레이더 채움의 하드코딩 보라도 테마 파생으로 교체. custom-skills `d6f1781` / changeset `20260801-chart-color-encoding`. 새 루브릭 항은 만들지 않았다 — 기존 Q7·Q11 의 집행이다.
+  - 정본 덱 영향: 4장 막대가 4색 → 네이비 단색. **콘텐츠·문구 무변경**(템플릿 규칙 변경의 결과). 기준선 PNG·standalone·vector PDF 재산출, PPTX 데이터 색 `2F4B7C` 단일 확인.
+  - 회귀: validate 0 warning · overflow 0 issue · HU4 5종 + STANDALONE-OFFLINE PASS · 회귀 랩(doughnut·line·radar 실빌드)에서 도넛 팔레트·스와치 정합 유지 확인.
 
 ### 관측 라운드 (사용자, 2026-08-01)
 

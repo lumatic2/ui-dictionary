@@ -37,7 +37,7 @@ Status: approved (사용자 "ㄱㄱ" 2026-07-31 — fresh 검증자 2회 발견 
   - Verify: validate·build·overflow PASS + Chrome 리허설 실조작(fragment 전 장 진행·스피커 뷰 동기·타이머) + dev 서버 종료 후 standalone file:// 개봉 + `--notes` PDF 육안 + 기존 raster 기준 스크린샷 대비 정적 상태 회귀 없음.
   - Failure probe: 덱 로컬 tools 가 구판 템플릿 사본이라 HU1·HU2 신기능 부재 — 착수 시 배포본과 diff 후 동기화(덱 로컬 커스텀 유실 금지: diff 로 커스텀 보존 확인).
   - Commit: 이 레포 커밋(step-1 경계).
-- [ ] **step-2 — 발표 게이트 명문화 + 사용자 관측 + goal 마감 되먹임**
+- [x] **step-2 — 발표 게이트 명문화 + 사용자 관측 + goal 마감 되먹임**
   - Artifact: custom-skills `references/verification.md` 발표 전 체크 절(대비 AAA 지향·프로젝터/외부 모니터 실측 항목·오프라인 리허설·리모컨=표준 화살표 키 가정 고지) + 이 레포 `methodology/slide-production.md` 발표 운영 절 + 사용자 관측 1회(라이브 흐름) 결과 반영 + finding 큐 정리(D1 few-shot·Presenton 벤치·Auto-Animate).
   - Files: write custom-skills `references/verification.md`·이 레포 `methodology/slide-production.md`·`evidence/html-upgrade/hu4-live-proof.md`.
   - Risk: 없음 (문서 + 관측)
