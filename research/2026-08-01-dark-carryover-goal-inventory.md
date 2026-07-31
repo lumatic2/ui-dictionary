@@ -25,11 +25,11 @@
 
 정의·경계는 선행 리서치 §High contrast 참조 (출처: https://developer.mozilla.org/en-US/docs/Web/CSS/@media/forced-colors 접근일 2026-07-31 — 본 레포 research 기확인).
 
-구현 기법 (일반 지식 요약 — **M3 step-1 에서 MDN 본문 재확인 후 적용**, 미확인 URL 은 그 시점에 접근일 갱신):
-- forced-colors 활성 시 UA 가 `color`·`background-color`·`border-color`·`box-shadow` 등을 시스템 팔레트로 강제 — `box-shadow` 기반 포커스 링은 사라진다 → `outline`(투명이라도) 병행이 표준 대응.
-- `forced-color-adjust: none` 으로 특정 요소만 강제 제외 가능(색 견본·브랜드 로고 등 색이 곧 정보인 요소). 출처 후보: https://developer.mozilla.org/en-US/docs/Web/CSS/forced-color-adjust
-- `@media (forced-colors: active)` 블록에서는 CSS 시스템 색 키워드(`CanvasText`, `Highlight`, `ButtonText`, `LinkText` 등)를 쓴다. 출처 후보: https://developer.mozilla.org/en-US/docs/Web/CSS/system-color
-- 검증: Playwright `page.emulateMedia({ forcedColors: 'active' })` 로 에뮬레이션 가능 — Windows 실물(고대비 테마)이 정본이지만 자동화 게이트는 에뮬레이션으로.
+구현 기법 (MDN 본문 확인 2026-08-01 — M3 step-1):
+- 강제 대상: `color`·`background-color`·`border-color`·`outline-color`·`text-decoration-color`·SVG `fill`/`stroke` 등이 시스템 팔레트로 대체. **`box-shadow`·`text-shadow` → `none` 강제**(box-shadow 포커스 링 소실 → border/outline 대응) · **비URL `background-image`(그라디언트 등) → `none` 강제**(URL 이미지는 보존) · `color-scheme` → `light dark` 강제. 출처: https://developer.mozilla.org/en-US/docs/Web/CSS/@media/forced-colors (접근일 2026-08-01)
+- `forced-color-adjust: none|auto|preserve-parent-color` — `none` 은 색이 곧 정보인 요소(색 견본 등)에만, 사용자 선택 무력화 용도 금지. 출처: https://developer.mozilla.org/en-US/docs/Web/CSS/forced-color-adjust (접근일 2026-08-01)
+- 시스템 색 키워드: `Canvas`/`CanvasText`(문서), `ButtonFace`/`ButtonText`/`ButtonBorder`(컨트롤), `Field`/`FieldText`(입력), `Highlight`/`HighlightText`·`SelectedItem`/`SelectedItemText`(선택), `LinkText`·`GrayText` 등 — forced 블록의 커스텀 규칙은 이 팔레트만 쓴다. 출처: https://developer.mozilla.org/en-US/docs/Web/CSS/system-color (접근일 2026-08-01)
+- 원칙: 별도 디자인 금지 — "작은 보정(usability/legibility tweaks)"만. 검증: Playwright `page.emulateMedia({ forcedColors: 'active' })` — Windows 실물이 정본, 자동화 게이트는 에뮬레이션.
 
 ## C. og-image 제약 (M4 입력)
 

@@ -30,7 +30,7 @@ Status: approved (사용자 승인 2026-08-01 "ㄱㄱ" — 연쇄 M2→M3→M4 �
 
 ## Step 트리
 
-- [ ] **step-1 — 감사: 에뮬레이션 순회 + 결함 장부**
+- [x] **step-1 — 감사: 에뮬레이션 순회 + 결함 장부**
   - Artifact: MDN 3문서 본문 확인(접근일 기록, research §B 갱신) + Playwright forced-colors 에뮬레이션으로 셸 표면 순회 스크린샷 + 키보드 포커스 순회 → 결함 목록(요소·증상·수리 수단)을 `evidence/dark-carryover/m3-forced-colors.md` 에 장부화.
   - Files: write evidence/dark-carryover/m3-forced-colors.md, research/2026-08-01-dark-carryover-goal-inventory.md(§B 접근일 갱신). read src/index.css, src/components/*(순회 표면).
   - Risk: 기계적 (읽기 전용 감사)
@@ -59,3 +59,4 @@ Status: approved (사용자 승인 2026-08-01 "ㄱㄱ" — 연쇄 M2→M3→M4 �
 ## 진행 로그
 - 2026-08-01 작성.
 - 2026-08-01 fresh 검증자(sonnet) 반영 — M2: status.* 그룹 신설(accent 충돌 회피)·DESIGN.md 재생성 부작용·llms 별도 커맨드 명시·destructive-foreground 승격 근거, M4: og:image 셸 단일 전제 정정, M3: 실물 고대비 사람 핸드오프 명시.
+- 2026-08-01 step-1 감사 완료 — 결함 D1(스와치 소멸)·D2(장식 노이즈)·D3(로고 포커스 불가시). 스코프 밖 관측 2건 finding 큐.
