@@ -30,7 +30,7 @@ Status: approved (사용자 "ㄱㄱ" 2026-07-31 — fresh 검증자 2회 발견 
 
 ## Step 트리
 
-- [ ] **step-1 — 이미지 소싱·처리 계약 (`references/imagery.md`)**
+- [x] **step-1 — 이미지 소싱·처리 계약 (`references/imagery.md`)**
   - Artifact: 신규 `references/imagery.md` — 실사진 소스 맵(Pexels·Adobe Stock free·Burst + 라이선스 확인 절차·출처 장부 양식), 누끼 `rmbg` 경로, imagegen 위임 계약(PB2 프롬프트 템플릿 이관·팔레트 hex 고정·이미지 안 글자 금지), 처리 규율(대비 스크림·얼굴 회피·assets 배치). SKILL.md 라우팅 1행.
   - Files: write custom-skills `references/imagery.md`·`SKILL.md`. read `decks/claude-ppt-lab/codex-image-deck/imagegen-prompts.md`·toolshelf 카드(adobe-stock-free·burst-shopify·rmbg).
   - Risk: 없음 (신규 문서 + 라우팅 1행)
@@ -38,7 +38,7 @@ Status: approved (사용자 "ㄱㄱ" 2026-07-31 — fresh 검증자 2회 발견 
   - Verify: 문서 존재 + SKILL.md 라우팅 표 갱신 + shelf used 기록(adobe-stock-free·burst-shopify·rmbg — 실사용 시).
   - Failure probe: imagegen-prompts.md 원문이 PPTX 맥락 전제 — HTML 트랙 맥락(해상도·비율 16:9 슬롯별)으로 번안, 원문 복사 금지.
   - Commit: changeset `20260731-hu3-image-track` (custom-skills, README 절: step-1).
-- [ ] **step-2 — 레이아웃 이미지 표현 (풀블리드·슬롯 계약·스크림)**
+- [x] **step-2 — 레이아웃 이미지 표현 (풀블리드·슬롯 계약·스크림)**
   - Artifact: 풀블리드 이미지 히어로(신규 layout 또는 기존 hero 계열 variant — 착수 시 layout-meta 실측으로 판정) + split-screen 등 기존 이미지 슬롯 계약 정리(layouts.md) + 텍스트 대비 스크림 스타일.
   - Files: write custom-skills `templates/`(renderer·layout-meta·schema — 신규 variant 범위)·`references/layouts.md`.
   - Risk: 위험 (layout-meta·schema 공유 계약 파일 — HU2 step-3 과 같은 3자 정합 규율)
@@ -46,7 +46,7 @@ Status: approved (사용자 "ㄱㄱ" 2026-07-31 — fresh 검증자 2회 발견 
   - Verify: fixture(로컬 자리표시 이미지) validate·build·overflow PASS + Chrome 육안(스크림 대비) + 미사용 덱 diff 0.
   - Failure probe: layout-meta·schema·renderer 3자 정합(validate 가 잡는지 확인).
   - Commit: changeset 동일 (README 절: step-2).
-- [ ] **step-3 — 3원천 fixture 실증 + standalone 인라인 + 배포**
+- [x] **step-3 — 3원천 fixture 실증 + standalone 인라인 + 배포**
   - Artifact: fixture 덱에 3원천(스톡 1·누끼 1·생성 1 — 생성은 codex exec 위임) 실투입 + 출처 장부 실기록 + setup.sh 배포.
   - Files: write custom-skills fixture 덱·`references/imagery.md`(실증 결과 반영). read `packages/template-image-provider-codex`(치수 가드 전례).
   - Risk: 없음 (fixture + 문서 + 배포)

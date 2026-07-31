@@ -32,15 +32,17 @@ Goal: HTML 발표 트랙 업그레이드 — 발표 운영력(스피커 뷰·sta
 
 - Completed at: 2026-07-31
 - Summary: fragment(스피커 step 동기·export 전체표시)+R4~R6 린트(스멜테스트 배선)+bento-grid 15종째
-<!-- harness:milestone id="HU3" status="active" priority="P1" -->
+<!-- harness:milestone id="HU3" status="completed" priority="P1" evidence="evidence/html-upgrade/hu3-image-track.md" -->
 ### HU3 — 이미지 표현 트랙
 - DoD: 이미지 소싱 계약(실사진 소스 맵·라이선스 장부·rmbg 누끼·imagegen 위임+치수 가드)이 references/imagery.md 로 배포되고 fixture 에서 3원천 실렌더·standalone 인라인 실동작.
 - Evidence: evidence/html-upgrade/hu3-image-track.md
 - Gap: 이미지 소싱 경로가 계약에 없음(레이아웃 슬롯만 존재) — research §5
 - Plan: plans/2026-07-31-hu3-image-track.md
-- Status: [ ]
+- Status: [x]
 
-<!-- harness:milestone id="HU4" status="pending" priority="P1" -->
+- Completed at: 2026-07-31
+- Summary: imagery.md 3원천 계약+커버 풀블리드 스크림 — Pexels·rmbg·image_gen 실투입, standalone 인라인 PASS
+<!-- harness:milestone id="HU4" status="active" priority="P1" -->
 ### HU4 — 통합 실증
 - DoD: askewly-design-intro 가 HU1~3 전 기능으로 라이브 리허설 통과 + 발표 게이트 명문화(대비·프로젝터 체크) + 사용자 관측 1회.
 - Evidence: evidence/html-upgrade/hu4-live-proof.md
