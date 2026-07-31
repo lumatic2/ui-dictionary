@@ -32,7 +32,7 @@ export function RecipesCollage() {
     <div aria-hidden="true" className="pointer-events-none select-none lg:py-2">
       <img
         alt=""
-        className="h-56 w-full object-contain"
+        className="h-72 w-full object-contain"
         src="/assets/get-started/recipes.webp"
       />
     </div>
