@@ -147,7 +147,10 @@ body {
 .layout-case-map, .layout-split-screen, .layout-timeline-cards, .layout-pipeline-lanes, .layout-result-transitions { --header-h: 118px; --content-max-h: 372px; --content-pad-top: 6px; }
 .layout-case-map .subtitle, .layout-split-screen .subtitle, .layout-timeline-cards .subtitle, .layout-pipeline-lanes .subtitle, .layout-result-transitions .subtitle { margin-bottom: 24px; }
 .layout-case-map { --content-max-h: 394px; }
-.layout-split-screen { --content-max-h: 402px; }
+.layout-split-screen { --content-max-h: 372px; }
+/* split-screen 은 미디어 패널이 하단까지 차서 절대 배치 sourceNote 가 그 위에 얹혔다(HU3 관측 — DQ2 수리).
+   노트를 플로우로 내려 패널 아래에 앉힌다. .container > * 의 relative 와 capture 의 bottom 을 이기려면 특이도가 필요하다. */
+.container.layout-split-screen .source-note { position: relative; bottom: auto; left: auto; right: auto; margin: 12px auto 0; max-width: 1040px; }
 .layout-timeline-cards { --content-max-h: 402px; }
 .layout-pipeline-lanes { --content-max-h: 390px; }
 .layout-result-transitions { --content-max-h: 392px; }
@@ -761,8 +764,11 @@ body.fade-out { animation: fadeOut 0.25s ease forwards; }
 .layout-hero-motion .slide-header .subtitle { margin-inline: auto; animation: hmTitleIn 0.8s ease both 0.45s; }
 .layout-hero-motion .slide-header .kicker { animation: hmTitleIn 0.6s ease both; }
 .layout-hero-motion .slide-content { position: relative; z-index: 2; margin-bottom: auto; flex: 0; }
-.hero-motion-chips { display: flex; gap: 12px; justify-content: center; margin-top: 26px; }
-.hero-motion-chip { padding: 8px 18px; border-radius: 999px; border: 1px solid var(--accent-border); background: var(--bg-card); color: var(--text-secondary); font-size: 15px; animation: itemRise 0.5s ease both 0.7s; }
+/* 알약(pill) 칩은 AI 디폴트 시그니처라 쓰지 않는다 — 정적 cover 와 같은 평문+점 구분자
+   (사용자 확정 2026-08-01: "칩 있는 건 AI 느낌") */
+.hero-motion-chips { display: flex; gap: 0; justify-content: center; margin-top: 26px; color: var(--text-secondary); }
+.hero-motion-chip { padding: 0 14px; font-size: 15px; font-weight: 780; color: var(--text-secondary); position: relative; animation: itemRise 0.5s ease both 0.7s; }
+.hero-motion-chip:not(:last-child)::after { content: ''; position: absolute; right: 0; top: 50%; width: 3px; height: 3px; border-radius: 50%; background: currentColor; opacity: 0.45; transform: translate(50%, -50%); }
 .hero-motion-chip:nth-child(2) { animation-delay: 0.82s; }
 .hero-motion-chip:nth-child(3) { animation-delay: 0.94s; }
 @keyframes hmTitleIn { from { opacity: 0; transform: translateY(26px) scale(0.985); } to { opacity: 1; transform: translateY(0) scale(1); } }
@@ -891,12 +897,12 @@ html.capture-mode .container, html.capture-mode .container * { animation: none !
     
     <header class="slide-header no-kicker reserve-kicker">
       
-      <h1 class="title">자산은 이미 쌓여 있다</h1>
+      <h1 class="title">정본에 이미 562개 용어가 쌓여 있다</h1>
       
     </header>
     <section class="slide-content">
       <section class="chart-section chart-variant-ranked-bars" data-chart-slide="4" data-chart-variant="ranked-bars">
-      <div class="chart-wrapper"><div class="chart-canvas-panel"><canvas id="chart-04-assets-stacked" aria-label="자산은 이미 쌓여 있다"></canvas></div></div>
+      <div class="chart-wrapper"><div class="chart-canvas-panel"><canvas id="chart-04-assets-stacked" aria-label="정본에 이미 562개 용어가 쌓여 있다"></canvas></div></div>
       <script type="application/json" id="chart-04-assets-stacked-data">[{"label":"UI 용어","value":"562","unit":""},{"label":"llms 자산","value":"166","unit":""},{"label":"레시피","value":"47","unit":""},{"label":"지식·방법론 문서","value":"13","unit":""}]</script>
     </section>
     </section>

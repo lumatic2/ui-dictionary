@@ -723,8 +723,11 @@ body.fade-out { animation: fadeOut 0.25s ease forwards; }
 .layout-hero-motion .slide-header .subtitle { margin-inline: auto; animation: hmTitleIn 0.8s ease both 0.45s; }
 .layout-hero-motion .slide-header .kicker { animation: hmTitleIn 0.6s ease both; }
 .layout-hero-motion .slide-content { position: relative; z-index: 2; margin-bottom: auto; flex: 0; }
-.hero-motion-chips { display: flex; gap: 12px; justify-content: center; margin-top: 26px; }
-.hero-motion-chip { padding: 8px 18px; border-radius: 999px; border: 1px solid var(--accent-border); background: var(--bg-card); color: var(--text-secondary); font-size: 15px; animation: itemRise 0.5s ease both 0.7s; }
+/* 알약(pill) 칩은 AI 디폴트 시그니처라 쓰지 않는다 — 정적 cover 와 같은 평문+점 구분자
+   (사용자 확정 2026-08-01: "칩 있는 건 AI 느낌") */
+.hero-motion-chips { display: flex; gap: 0; justify-content: center; margin-top: 26px; color: var(--text-secondary); }
+.hero-motion-chip { padding: 0 14px; font-size: 15px; font-weight: 780; color: var(--text-secondary); position: relative; animation: itemRise 0.5s ease both 0.7s; }
+.hero-motion-chip:not(:last-child)::after { content: ''; position: absolute; right: 0; top: 50%; width: 3px; height: 3px; border-radius: 50%; background: currentColor; opacity: 0.45; transform: translate(50%, -50%); }
 .hero-motion-chip:nth-child(2) { animation-delay: 0.82s; }
 .hero-motion-chip:nth-child(3) { animation-delay: 0.94s; }
 @keyframes hmTitleIn { from { opacity: 0; transform: translateY(26px) scale(0.985); } to { opacity: 1; transform: translateY(0) scale(1); } }

@@ -3,7 +3,7 @@
   <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>자산은 이미 쌓여 있다</title>
+  <title>정본에 이미 562개 용어가 쌓여 있다</title>
   <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
   <link rel="preload" as="style" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable.min.css">
   <link href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable.min.css" rel="stylesheet">
@@ -767,8 +767,11 @@ body.fade-out { animation: fadeOut 0.25s ease forwards; }
 .layout-hero-motion .slide-header .subtitle { margin-inline: auto; animation: hmTitleIn 0.8s ease both 0.45s; }
 .layout-hero-motion .slide-header .kicker { animation: hmTitleIn 0.6s ease both; }
 .layout-hero-motion .slide-content { position: relative; z-index: 2; margin-bottom: auto; flex: 0; }
-.hero-motion-chips { display: flex; gap: 12px; justify-content: center; margin-top: 26px; }
-.hero-motion-chip { padding: 8px 18px; border-radius: 999px; border: 1px solid var(--accent-border); background: var(--bg-card); color: var(--text-secondary); font-size: 15px; animation: itemRise 0.5s ease both 0.7s; }
+/* 알약(pill) 칩은 AI 디폴트 시그니처라 쓰지 않는다 — 정적 cover 와 같은 평문+점 구분자
+   (사용자 확정 2026-08-01: "칩 있는 건 AI 느낌") */
+.hero-motion-chips { display: flex; gap: 0; justify-content: center; margin-top: 26px; color: var(--text-secondary); }
+.hero-motion-chip { padding: 0 14px; font-size: 15px; font-weight: 780; color: var(--text-secondary); position: relative; animation: itemRise 0.5s ease both 0.7s; }
+.hero-motion-chip:not(:last-child)::after { content: ''; position: absolute; right: 0; top: 50%; width: 3px; height: 3px; border-radius: 50%; background: currentColor; opacity: 0.45; transform: translate(50%, -50%); }
 .hero-motion-chip:nth-child(2) { animation-delay: 0.82s; }
 .hero-motion-chip:nth-child(3) { animation-delay: 0.94s; }
 @keyframes hmTitleIn { from { opacity: 0; transform: translateY(26px) scale(0.985); } to { opacity: 1; transform: translateY(0) scale(1); } }
@@ -841,12 +844,12 @@ html.capture-mode .container, html.capture-mode .container * { animation: none !
     
     <header class="slide-header no-kicker reserve-kicker">
       
-      <h1 class="title">자산은 이미 쌓여 있다</h1>
+      <h1 class="title">정본에 이미 562개 용어가 쌓여 있다</h1>
       
     </header>
     <section class="slide-content">
       <section class="chart-section chart-variant-ranked-bars" data-chart-slide="4" data-chart-variant="ranked-bars">
-      <div class="chart-wrapper"><div class="chart-canvas-panel"><canvas id="chart-04-assets-stacked" aria-label="자산은 이미 쌓여 있다"></canvas></div></div>
+      <div class="chart-wrapper"><div class="chart-canvas-panel"><canvas id="chart-04-assets-stacked" aria-label="정본에 이미 562개 용어가 쌓여 있다"></canvas></div></div>
       <script type="application/json" id="chart-04-assets-stacked-data">[{"label":"UI 용어","value":"562","unit":""},{"label":"llms 자산","value":"166","unit":""},{"label":"레시피","value":"47","unit":""},{"label":"지식·방법론 문서","value":"13","unit":""}]</script>
     </section>
     </section>
@@ -858,7 +861,7 @@ html.capture-mode .container, html.capture-mode .container * { animation: none !
       <div class="nav-center"><a href="index.html">04 / 07 · Index</a></div>
       <div class="nav-right"><a href="05-structure-first.html" onclick="event.preventDefault(); navigateTo(this.href)">다음 →</a></div>
     </div></nav>
-  <script type="application/json" class="speaker-notes">"수치는 오늘 레포에서 직접 센 값. 사전이 아니라 시스템 규모임을 강조."</script>
+  <script type="application/json" class="speaker-notes">"수치는 오늘 레포에서 직접 센 값. 제목이 결론이므로 차트는 근거로만 읽는다. 사전이 아니라 시스템 규모임을 강조."</script>
   <script>
   function navigateTo(url) {
     // 넘기는 순간 목적지를 스피커에 선공지 — 새 문서 로드+하트비트 재연결(최대 1.2s)을
