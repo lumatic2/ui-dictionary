@@ -1,14 +1,14 @@
 # ROADMAP
 
-> Last updated: 2026-07-31
-> Status: **goal `carryover-maintenance` 진행 (2026-07-31)** — M1(verify 타이포 게이트 보정 + SEO 메타 영어 통일). 직전 `site-polish` 완주(QA1 영어 단일 확정·QA2 관측 7왕복 통과). 남은 큐: 『인터랙티브 웹 애니메이션』 책 스터디 자산화(사용자 주도) — real-use-lap 은 2026-07-31 폐기.
+> Last updated: 2026-08-01
+> Status: **goal `carryover-maintenance` 완주 (2026-08-01)** — M1: 타이포 위반 8→0(규칙 보정·마커·임계 재산정), SEO 메타 영어 통일. active goal 0. 남은 큐: 『인터랙티브 웹 애니메이션』 책 스터디 자산화(사용자 주도) · 다크모드 이월 3건(사용자 판단 대기) — real-use-lap 은 2026-07-31 폐기.
 > North star: Build Askewly Design as both a public reference website and an agent-usable implementation system.
 > line budget: <=150
 
 ## Current Goal
 
-<!-- harness:goal id="carryover-maintenance" status="active" -->
-Goal: 이월 유지보수 마감 — 사용자 지목 이월 finding 2건(디자인 verify 타이포 게이트 보정 후 위반 0 · SEO 메타 영어 통일)을 닫는다. Details: `plans/2026-07-31-m1-carryover-maintenance.md`.
+<!-- harness:goal-archive16 id="carryover-maintenance" status="completed" -->
+Goal: 이월 유지보수 마감 — 사용자 지목 이월 finding 2건을 닫는다. closed 2026-08-01 — M1 단일 milestone 완주: 타이포 위반 8→0(규칙 쪽을 고쳐서 — 반응형 버킷 계수·사유 필수 마커 4건·임계 5→7 실측 재산정, @askewly/design 0.3.0) + SEO 셸 메타·`lang="en"` 통일(콘텐츠 제외). Details: `archive/plans/2026-07-31-m1-carryover-maintenance.md` + `docs/reports/2026-08-01-m1-carryover-maintenance.md`.
 
 <!-- harness:goal-archive15 id="site-polish" status="completed" -->
 Goal: 사이트 다듬기 — 수동 QA 직관성 결함 수리. closed 2026-07-31 — QA1(한/영 혼용) 관측 회귀 마감: **사이트 카피 = 영어 단일 확정**(`docs/design-system/copy-language.md`). QA2: Get Started 를 Primer 문법(사용자 확정 레퍼런스)+codex imagegen 일러스트 세트로 재설계, hover·cursor 반응, 관측 7왕복 통과. Details: `archive/plans/2026-07-31-qa{1,2}-*.md` + `docs/reports/2026-07-31-qa{1,2}-*.md`.
@@ -55,13 +55,16 @@ Goal: 스튜디오 이월 갭 3건 마감 — 데이터 주도 주입 자동화�
 
 ## Active Milestones — carryover-maintenance
 
-<!-- harness:milestone id="M1" status="active" priority="P2" evidence="evidence/carryover-maintenance/m1-closeout.md" -->
+<!-- harness:milestone id="M1" status="completed" priority="P2" evidence="evidence/carryover-maintenance/m1-closeout.md" -->
 ### M1 — 이월 유지보수 마감 (verify 타이포 게이트 보정 + SEO 메타 영어 통일)
 - DoD: 보정된 verify 가 반응형 쌍을 1계수하고 사유 필수 마커를 지원하며(테스트 고정) 사이트 `src/components` 타이포 위반 0 + 셸 SEO 메타(문서 lang 포함)가 영어이고 prerender 산출물에 반영 + CLI 테스트·사이트 lint·build·브라우저 스모크 PASS. 실패 모드: 사유 없는 마커·무접두 초과 파일은 여전히 잡힌다.
 - Gap: 타이포 5단계/파일 규칙이 반응형 쌍을 2계수하고 멀티 데모 집합 파일에 예외 수단이 없어 위반 8건 방치(SQ1 이월, 사용자 결정 2026-07-28=게이트 보정) · SEO 메타가 사이트 카피(영어 단일)와 어긋난 한국어(QA1 이월, 사용자 결정 2026-07-31=영어 통일)
 - Scale: steps=3 (CLI 규칙+테스트 / 사이트 잔여 처리 / SEO 메타); surfaces: packages/cli·사이트 컴포넌트·index.html·page-meta.ts·prerender 스크립트; capability: 무시당하지 않는 타이포 게이트 + 카피와 정합한 검색 메타
-- Plan: plans/2026-07-31-m1-carryover-maintenance.md
-- Status: [ ]
+- Plan: archive/plans/2026-07-31-m1-carryover-maintenance.md
+- Status: [x]
+
+- Completed at: 2026-08-01
+- Summary: 타이포 위반 8→0(버킷 계수·사유 필수 마커 4건·임계 5→7 실측 재산정, @askewly/design 0.3.0 테스트 60건) + SEO 셸 메타·lang 영어 통일(콘텐츠 제외). 보고서 `docs/reports/2026-08-01-m1-carryover-maintenance.md`
 
 ## Active Milestones — site-polish
 
@@ -143,7 +146,7 @@ Goal: 스튜디오 이월 갭 3건 마감 — 데이터 주도 주입 자동화�
 
 > 이월 finding 전수 장부는 `docs/findings.md` (2026-07-20 수집 — A~F 6군). 아래는 이 horizon 밖 항목만.
 
-- 디자인 verify 타이포 규칙 보정 (사용자 확정 2026-07-28, SQ1 이월): 파일당 5단계 규칙이 반응형 쌍(2계수)·멀티 데모 파일·미니어처와 구조 충돌 — 보정 후 잔여 타이포 7건 처리. 근거: `evidence/site-quality/sq1-verify-cleanup.md` §1
+- ~~디자인 verify 타이포 규칙 보정~~ — **해소 2026-08-01 (M1)**: 버킷 계수·사유 필수 마커·임계 5→7 재산정으로 위반 0. 남은 후속은 토큰 타이포 스케일 확장 여부(헤딩 단계·마이크로 라벨 부재).
 - 데스크톱 브리지 모드 human Undo/Redo 활성화 (QA2 dogfooding 결함 #2)
 - 신뢰 프로젝트 소실 시 에러 표면 (QA2 dogfooding 결함 #3 — 현재 조용한 데모 폴백)
 - 프로덕션 셸 정리: 기본 1,000-node fixture·dev 계기판 제거 (QA2 dogfooding 결함 #4)

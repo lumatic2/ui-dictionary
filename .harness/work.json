@@ -4790,7 +4790,7 @@
     "m1-carryover-maintenance": {
       "work_id": "m1-carryover-maintenance",
       "milestone_id": "M1",
-      "status": "active",
+      "status": "completed",
       "plan_path": "plans/2026-07-31-m1-carryover-maintenance.md",
       "changeset_path": "changesets/20260731-m1-carryover-maintenance",
       "next_step": "step-1",
@@ -4832,7 +4832,8 @@
       ],
       "owner_session_uuid": "claude:889aab3f-f347-42cf-82c4-ae54359f1476",
       "updated_at": "2026-07-31",
-      "notes": "Registered atomically by canonical harness approve_harness_plan.py after plan validation."
+      "notes": "Registered atomically by canonical harness approve_harness_plan.py after plan validation.",
+      "completion_summary": "이월 finding 2건이 닫혔다."
     }
   }
 }
