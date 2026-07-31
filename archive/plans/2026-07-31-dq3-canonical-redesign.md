@@ -32,7 +32,7 @@ Status: approved (사용자 "ㄱㄱ" 2026-07-31 — fresh 검증자 발견 7건 
 
 ## Step 트리
 
-- [ ] **step-1 — 루브릭 감사 + 리디자인 시안 (사용자 선택 게이트)**
+- [x] **step-1 — 루브릭 감사 + 리디자인 시안 (사용자 선택 게이트)**
   - Artifact: 루브릭 감사표(7장×루브릭 항 — 위반·개선 후보) + 대표 장 시안 실렌더 스크린샷(현행 vs A vs B) + 선택 질문 제시.
   - Files: write 이 레포 `evidence/deck-quality/dq3-canonical-redesign.md`(감사표·시안 기록)·`decks/askewly-design-intro/content/`(시안용 임시 변형 — 확정 전 커밋 금지, scratchpad 빌드). read DQ1 루브릭·견본, DQ2 계약.
   - Risk: 없음 (제시까지 — 정본 미변경)
@@ -40,7 +40,7 @@ Status: approved (사용자 "ㄱㄱ" 2026-07-31 — fresh 검증자 발견 7건 
   - Verify: 감사표가 루브릭 전 항을 커버 + 시안 스크린샷이 실빌드·실렌더 산출(목업 금지) + 선택지가 자기완결(각 안의 차이·근거 명시).
   - Failure probe: 시안이 루브릭 항 인용 없이 "느낌" 근거로만 서술되는 것 — 각 변경에 루브릭 항 번호를 달아 차단.
   - Commit: 없음 (게이트 통과 후 step-2 에서).
-- [ ] **step-2 — 전체 재제작 + 검증 + 사용자 관측 (goal 마감)**
+- [x] **step-2 — 전체 재제작 + 검증 + 사용자 관측 (goal 마감)**
   - Artifact: 선택안 기준 7장 재제작(slides.json·assets — DQ2 기계 적용 판단 포함) + 전 검증 + speaker/standalone/notes PDF 재산출 + 재기준선 + 사용자 관측 → PASS 시 goal 마감 절차(/harness-done).
   - Files: write 이 레포 `decks/askewly-design-intro/**`·`evidence/deck-quality/dq3-canonical-redesign.md`·`docs/reports/`(마감 시). read step-1 선택 결과.
   - Risk: 위험 (정본 덱 전면 수정 — 단 git 이력으로 완전 롤백 가능)

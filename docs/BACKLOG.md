@@ -638,3 +638,9 @@ plan doc: `archive/plans/2026-07-21-eu*.md` · 증거: `evidence/editor-legibili
   - Completed: 2026-07-31
   - Result: imagery.md 3원천 계약+커버 풀블리드 스크림 — Pexels·rmbg·image_gen 실투입, standalone 인라인 PASS
   - Evidence: evidence/html-upgrade/hu3-image-track.md
+
+### 2026-08
+- DQ1 - DQ1 — 덱 품질 기준 수립
+  - Completed: 2026-08-01
+  - Result: 루브릭 Q1~Q12+견본 5계열+G5 대조 배선·Q2 린트 — custom-skills 2커밋 배포
+  - Evidence: evidence/deck-quality/dq1-quality-rubric.md

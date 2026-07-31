@@ -1,27 +1,19 @@
 # ROADMAP
 
-> Last updated: 2026-07-31
-> Status: **goal `html-upgrade` 완주 (2026-07-31, 워크트리)** — HU1~HU4 4연쇄 완료(발표 운영력·모션 문법·이미지 트랙·통합 실증 — 사용자 관측 6라운드 PASS). active goal 0 — 다음 후보: 슬라이드 덱 자체 품질 업그레이드(사용자 제안) 또는 이월 finding 큐(D1 few-shot·D2 Presenton 벤치·Auto-Animate·이미지 최적화 빌드·split-screen sourceNote). 워크트리 병합은 메인 세션 몫(사용자 확정). 대기 순서(2026-07-28): ② 『인터랙티브 웹 애니메이션』 자산화 ③ 사이트 품질 ④ 다크모드.
+> Last updated: 2026-08-01
+> Status: **goal `deck-quality` 완주 (2026-08-01, 워크트리)** — DQ1~DQ3 3연쇄 완료(루브릭·견본 → 표현 기계 → 정본 덱 리디자인, 사용자 관측 2라운드 PASS). active goal 0. 워크트리 병합은 메인 세션 몫(사용자 확정 — 후속 작업은 새 워크트리에서). 대기 순서(2026-07-28): ② 『인터랙티브 웹 애니메이션』 자산화 ③ 사이트 품질 ④ 다크모드. 이월 finding: D2 Presenton 정밀 벤치·동영상 에셋 파이프(수요 미확인).
 > North star: Build Askewly Design as both a public reference website and an agent-usable implementation system.
 > line budget: <=150
 
 ## Current Goal
 
-<!-- harness:goal id="deck-quality" status="active" -->
-Goal: 슬라이드 덱 자체 품질 업그레이드 — 품질 루브릭+few-shot 견본(기준) → 표현 기계(연속 전환·이미지 최적화) → 정본 덱 리디자인+사용자 관측 실증. 사용자 승인 "ㄱㄱ" 2026-07-31, chain dq1→dq2→dq3.
+<!-- harness:goal-archive19 id="deck-quality" status="completed" -->
+Goal: 슬라이드 덱 자체 품질 업그레이드. closed 2026-08-01 — DQ1~DQ3 완주(루브릭·견본 → 표현 기계 → 정본 덱 리디자인+관측 2라운드 PASS). 사용자 판정으로 루브릭 확장 금지가 기본값이 됐다. Details: `evidence/deck-quality/` + `docs/reports/2026-0{7-31,8-01}-dq{1,2,3}-*.md`.
 
-## Active Milestones — deck-quality
+**active goal 0** — 다음 방향은 새 `/harness-plan` 에서 연다.
 
-<!-- harness:milestone id="DQ1" status="completed" priority="P1" evidence="evidence/deck-quality/dq1-quality-rubric.md" -->
-### DQ1 — 덱 품질 기준 수립
-- DoD: 품질 루브릭(4필드·검사 주체 이분)과 few-shot 견본 3~5장(전 장 실빌드)이 스킬 계약으로 배포되고 G5 가 견본 대조로 판정 가능 — 기존 fixture diff 0.
-- Evidence: evidence/deck-quality/dq1-quality-rubric.md
-- Gap: "무엇이 좋은 슬라이드인가" 기준이 계약에 없음 — G5 가 육안 인상에만 의존
-- Plan: plans/2026-07-31-dq1-quality-rubric.md
-- Status: [x]
+## Completed Milestones — deck-quality
 
-- Completed at: 2026-07-31
-- Summary: 루브릭 Q1~Q12+견본 5계열+G5 대조 배선·Q2 린트 — custom-skills 2커밋 배포
 <!-- harness:milestone id="DQ2" status="completed" priority="P1" evidence="evidence/deck-quality/dq2-expressive-mechanics.md" -->
 ### DQ2 — 표현 기계 업그레이드
 - DoD: 장간 연속 전환(opt-in, 실크롬 file:// 실측 또는 폴백 확정) + 이미지 최적화 빌드(용량 실측 개선) + sourceNote 겹침 해소 — HU4 회귀 5종 PASS·미사용 덱 무변화.
@@ -32,17 +24,21 @@ Goal: 슬라이드 덱 자체 품질 업그레이드 — 품질 루브릭+few-sh
 
 - Completed at: 2026-08-01
 - Summary: animId 전환·optimize-images(77% 감소)·sourceNote 수리 — 회귀 6종 PASS
-<!-- harness:milestone id="DQ3" status="active" priority="P1" evidence="evidence/deck-quality/dq3-canonical-redesign.md" -->
+<!-- harness:milestone id="DQ3" status="completed" priority="P1" evidence="evidence/deck-quality/dq3-canonical-redesign.md" -->
 ### DQ3 — 정본 덱 리디자인 + 관측
 - DoD: 정본 덱이 루브릭 기준 재제작되어 전/후 감사표 개선 + 전 자동 검증·HU4 회귀·발표 전 체크 PASS + 사용자 관측 PASS.
 - Evidence: evidence/deck-quality/dq3-canonical-redesign.md
 - Gap: 파이프라인 업그레이드가 정본 덱 내용물 품질로 미전이 (시안·관측 게이트 2회)
 - Plan: plans/2026-07-31-dq3-canonical-redesign.md
-- Status: [ ]
+- Status: [x]
 
+- Completed at: 2026-08-01
+- Summary: 규칙 처방 철회·루브릭 확장 금지 명문화, 덱 실변경 2건, 차트 색 finding 수리 — 관측 2라운드 PASS
 <!-- harness:goal-archive18 id="html-upgrade" status="completed" -->
 Goal: HTML 발표 트랙 업그레이드. closed 2026-07-31 — HU1~HU4 완주(발표 운영력·모션 문법·이미지 트랙·통합 실증, 사용자 관측 6라운드 PASS). Details: `evidence/html-upgrade/` + `docs/reports/2026-07-31-hu{1,2,3,4}-*.md`.
 
+- Completed at: 2026-08-01
+- Summary: 정본 덱 리디자인 + 사용자 관측 PASS — 규칙 처방 철회·루브릭 확장 금지, 덱 실변경 2건, 차트 색 수리
 ## Active Milestones — html-upgrade
 
 <!-- harness:milestone id="HU4" status="completed" priority="P1" evidence="evidence/html-upgrade/hu4-live-proof.md" -->
