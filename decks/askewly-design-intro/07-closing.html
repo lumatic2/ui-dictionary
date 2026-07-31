@@ -852,6 +852,9 @@ html.capture-mode .container, html.capture-mode .container * { animation: none !
   <script type="application/json" class="speaker-notes">"질문 받기. 편집 가능 PPTX 산출물을 실제로 열어 보여주며 마무리."</script>
   <script>
   function navigateTo(url) {
+    // 넘기는 순간 목적지를 스피커에 선공지 — 새 문서 로드+하트비트 재연결(최대 1.2s)을
+    // 기다리면 스피커가 매 장 늦게 따라온다(HU4 관측 4회차)
+    if (window.__deckNavAnnounce) window.__deckNavAnnounce(url);
     if (document.startViewTransition) {
       document.startViewTransition(() => { window.location.href = url; });
       return;
@@ -975,9 +978,17 @@ html.capture-mode .container, html.capture-mode .container * { animation: none !
     function __announce() {
       __sync.send({ type: 'slide', index: __INDEX, fragment: __frag.revealed, fragTotal: __frag.list.length });
     }
+    // 목적지 선공지 + 이탈 중 플래그 — 이탈 중 hello 응답이 옛 index 를 보내 스피커를
+    // 잠깐 되돌리는 레이스 방지
+    var __navigating = false;
+    window.__deckNavAnnounce = function (url) {
+      __navigating = true;
+      var t = __FILES.indexOf(url);
+      if (t >= 0) __sync.send({ type: 'slide', index: t, fragment: 0, fragTotal: 0 });
+    };
     __announce();
     __sync.on(function (msg) {
-      if (msg.type === 'hello') { __announce(); return; }
+      if (msg.type === 'hello') { if (!__navigating) __announce(); return; }
       if (msg.type === 'step' && typeof msg.dir === 'number') {
         if (msg.dir > 0) {
           if (__fragNext && __fragNext()) return;
