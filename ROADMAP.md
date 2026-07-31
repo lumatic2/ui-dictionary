@@ -7,6 +7,27 @@
 
 ## Current Goal
 
+<!-- harness:goal id="finding-cleanup" status="active" -->
+Goal: 이월 finding 정리 — /search 런타임 title 수리·llms 정합 게이트 신설(M5) + 타이포 스케일 실사용 9단계 전수 등재·Tailwind 무손실 배선(M6). 로고 포커스 링 finding 은 오탐 판정(기록만). 배포는 goal 마감 일괄. 승인 2026-08-01 "ㄱㄱ" (연쇄 M5→M6).
+
+## Active Milestones — finding-cleanup
+
+<!-- harness:milestone id="M5" status="active" priority="P2" evidence="evidence/finding-cleanup/m5-finding-fixes.md" -->
+### M5 — finding 소수리 (search title + llms 정합 게이트)
+- DoD: /search 런타임 title 정합(실브라우저 + 상태 왕복 무회귀) + llms 정합 게이트 FAIL/PASS 양 경로 실증·검증 체인 배선(.gitattributes LF 고정 포함) + 오탐 1건 기록. 실패 모드: 소스-llms 불일치를 만들면 게이트가 잡는다.
+- Gap: /search 가 Patterns title 상속(page-meta search 유형 부재 — 실측 확정) · llms 재생성 누락 무감지(M1 실사례)
+- Scale: steps=2 (title 수리 / 게이트+기록); surfaces: page-meta·App 호출부·검사 스크립트·.gitattributes; capability: 정합이 감시된다
+- Plan: plans/2026-08-01-m5-finding-fixes.md
+- Status: [ ]
+
+<!-- harness:milestone id="M6" status="pending" priority="P2" evidence="evidence/finding-cleanup/m6-typography-scale.md" -->
+### M6 — 타이포 스케일 전수 등재 + Tailwind 배선
+- DoD: SSOT typography.scale 이 실사용 9단계(10/12/14/16/20/30/40/48/72)를 전수 기술 + Tailwind text-* 값 동일 단계 배선(렌더 무손실 — computed 표본·행간 쌍 대조) + 문서·llms 정합 + verify 위반 0 유지. 실패 모드: line-height 쌍 파손·computed 변화가 대조에서 잡힌다.
+- Gap: SSOT 5단계 vs 실사용 9단계 — 화면이 헤딩·마이크로를 스케일 밖에서 차용(M1 실측, 사용자 결정 2026-08-01=전수 등재+배선)
+- Scale: steps=2 (SSOT 확장·배선 / 문서·통합 검증); surfaces: tokens SSOT·생성기·@theme·Typography 아티클; capability: 타이포도 SSOT 가 실물을 기술
+- Plan: plans/2026-08-01-m6-typography-scale.md
+- Status: [ ]
+
 <!-- harness:goal id="dark-carryover" status="completed" -->
 Goal: 다크모드 이월 3건 마감 — "토큰 부재" 강조·상태색 토큰 전수 승격(M2), forced-colors 감사·수리(M3), og-image 3안 비교·교체(M4). closed 2026-08-01 — M2(emphasis·status 18변수, 색 예외 0)·M3(결함 3건 수리, 에뮬레이션+실물 고대비 실측)·M4(다크 PNG 실배포·카드 디버거 실증) 단일 세션 완주, 기본 테마 라이트 불변 유지. Details: `archive/plans/2026-08-01-m{2,3,4}-*.md` + `docs/reports/2026-08-01-m{2,3,4}-*.md`.
 

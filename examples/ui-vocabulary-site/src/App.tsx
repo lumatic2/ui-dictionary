@@ -122,16 +122,22 @@ function App() {
   const marketingSectionPage = pageMode === "plus" && query.trim().length === 0 && !activeUseCase
     ? marketingSectionPages.get(filter)
     : undefined
+  // /search 는 plus|docs 모드 + query 로 표현된다(url-mapping) — title 이 Patterns 를 상속하지 않도록 search 로 보고 (M5)
+  const isSearchView = (pageMode === "plus" || pageMode === "docs") && query.trim().length > 0
   usePageMeta({
-    page: pageMode,
+    page: isSearchView ? "search" : pageMode,
     sectionTitle:
       pageMode === "term"
         ? selectedTerm?.ko.name ?? null
-        : docsArticlePage?.title ?? marketingSectionPage?.title ?? null,
+        : isSearchView
+          ? null
+          : docsArticlePage?.title ?? marketingSectionPage?.title ?? null,
     description:
       pageMode === "term"
         ? null
-        : docsArticlePage?.lead ?? marketingSectionPage?.description ?? null,
+        : isSearchView
+          ? "Search 562 UI vocabulary entries by name, alias, description, or when to use them."
+          : docsArticlePage?.lead ?? marketingSectionPage?.description ?? null,
   })
   const visibleSearchResults = useMemo(() => {
     if (!isPlusLanding) {

@@ -5,7 +5,7 @@ const DEFAULT_DESCRIPTION =
   "Askewly Design is a design system for exploring product UI patterns, docs, showcases, resources, and Pro implementation assets."
 
 type PageMetaInput = {
-  page: "home" | "docs" | "plus" | "term" | "download" | "pro" | "colors" | "recipes" | "get-started"
+  page: "home" | "docs" | "plus" | "term" | "download" | "pro" | "colors" | "recipes" | "get-started" | "search"
   sectionTitle?: string | null
   description?: string | null
 }
@@ -28,6 +28,8 @@ function getSectionLabel(page: PageMetaInput["page"]): string | null {
       return "Download"
     case "get-started":
       return "Get Started"
+    case "search":
+      return "Search"
     case "term":
       return null
     default:
