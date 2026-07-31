@@ -30,9 +30,20 @@ npm pack --dry-run      # 담기는 파일 확인
 `npm pack --dry-run` 에서 확인할 것:
 - `dist/`·`data/`·`LICENSE`·`README.md` **포함**
 - `src/`·`test/`·`node_modules/`·`scripts/`·`tsconfig.json` **없음**
-- 기준값: 13 files · 약 237 kB (크게 벗어나면 `files` 배열을 의심한다)
+- 기준값: **14 files · 약 245 kB** (0.3.0 실측 2026-08-01). 크게 벗어나면 `files` 배열을 의심한다 — 다만 dist 모듈이 늘면 파일 수도 정상적으로 는다(13→14는 DOG3의 `typography.js`). 판단은 개수가 아니라 **목록에 `src/`·`test/`·`scripts/` 가 있는가**로 한다.
 
-## 배포 (현행 — 토큰 경로)
+## 배포 (현행 — Trusted Publishing)
+
+```bash
+gh workflow run publish-cli.yml --ref main          # dry_run 기본 false
+gh run watch <run-id> --exit-status
+```
+
+워크플로(`.github/workflows/publish-cli.yml`)가 게이트(build·tsc·vitest) → pack 확인 → OIDC publish → **버전 단위** 전파 확인 → 레포 밖 실증까지 수행한다. 아래 「배포 후 검증」의 3단계가 여기 들어 있다. 토큰 발급·폐기 없음. 실적: `0.3.0` 2026-08-01, 1분 28초 전건 통과.
+
+배포 전에 버전을 올려 두고 **push 한 뒤** 실행한다 — 워크플로는 지정 ref 를 checkout 하므로 미푸시 커밋은 배포되지 않는다.
+
+## 배포 (구 경로 — 토큰, 2027-01 폐지)
 
 ⚠ **npm이 직접 배포에 2FA를 요구한다.** 이 계정의 2FA는 보안 키(WebAuthn)만 제공하고, 그건 OS 수준 인증이라 스크립트·에이전트가 완료할 수 없다. 따라서 현행 경로는 granular access token이다.
 
