@@ -29,13 +29,20 @@ export function createBuilderIO(importMetaUrl, { fileName }) {
     return JSON.parse(fs.readFileSync(slidesPath, 'utf8'));
   }
 
-  function writeDeck(deck, { renderSlide, renderIndex, renderPrint }) {
+  function readCustomTheme() {
+    const themePath = path.join(contentDir, 'theme.json');
+    if (!fs.existsSync(themePath)) return null;
+    return JSON.parse(fs.readFileSync(themePath, 'utf8'));
+  }
+
+  function writeDeck(deck, { renderSlide, renderIndex, renderPrint, renderSpeaker }) {
     deck.slides.forEach((slide, index) => {
       fs.writeFileSync(path.join(root, fileName(slide)), renderSlide(deck, slide, index));
     });
     fs.writeFileSync(path.join(root, 'index.html'), renderIndex(deck));
     fs.writeFileSync(path.join(root, 'print.html'), renderPrint(deck));
+    if (renderSpeaker) fs.writeFileSync(path.join(root, 'speaker.html'), renderSpeaker(deck));
   }
 
-  return { readLayoutMeta, runValidator, readDeck, writeDeck };
+  return { readLayoutMeta, runValidator, readDeck, readCustomTheme, writeDeck };
 }

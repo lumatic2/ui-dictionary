@@ -186,6 +186,10 @@ async function launchBrowser(chromium) {
 
 async function inspectPage(page, entry) {
   await page.goto(pathToFileURL(entry.file).href, { waitUntil: 'load' });
+  // 검사는 전체 표시 상태로 — fragment 단계 공개(라이브 전용)의 pending translateY 가
+  // 내부 오버플로 오탐을 만들지 않게 중화한다. capture 모드 전환은 쓰지 않는다(nav 가 숨어
+  // nav-overlap 판정이 깨진다) — 스타일 주입만.
+  await page.addStyleTag({ content: '.fragment-pending { opacity: 1 !important; transform: none !important; }' });
   try {
     await page.waitForLoadState('networkidle', { timeout: 2500 });
   } catch {

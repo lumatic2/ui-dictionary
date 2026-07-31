@@ -84,7 +84,11 @@ export function createStaticRenderers({ escapeHtml, renderIcon }) {
   function renderCover(slide) {
     const items = (slide.items || []).slice(0, 3);
     const chips = items.length > 0 ? `<div class="cover-chips">${items.map((item) => `<span class="cover-chip">${itemTitle(item)}</span>`).join('')}</div>` : '';
-    return `<section class="cover-lockup">${chips}</section>`;
+    // 풀블리드 이미지 히어로 (HU3): assets.image 가 있으면 전면 배경 + 스크림(텍스트 대비 확보 — imagery.md 규율).
+    const media = slide.assets?.image
+      ? `<div class="cover-media" aria-hidden="true"><img src="${escapeHtml(slide.assets.image)}" alt=""><div class="cover-scrim"></div></div>`
+      : '';
+    return `${media}<section class="cover-lockup">${chips}</section>`;
   }
 
   function renderClosing(slide) {
@@ -181,6 +185,16 @@ export function createStaticRenderers({ escapeHtml, renderIcon }) {
     </div></div>`;
   }
   
+  // bento-grid — 2~6 셀 모듈 블록(텍스트/빅넘버 스탯/아이콘 슬롯), item.span 으로 wide/tall/big 지정.
+  function renderBentoGrid(slide) {
+    const items = (slide.items || []).slice(0, 6);
+    return `<div class="bento-grid">${items.map((item, index) => {
+      const span = item.span === 'wide' ? ' span-wide' : item.span === 'tall' ? ' span-tall' : item.span === 'big' ? ' span-big' : '';
+      const stat = item.value ? `<div class="bento-value">${escapeHtml(item.value)}${item.unit ? `<span>${escapeHtml(item.unit)}</span>` : ''}</div>` : '';
+      return `<article class="bento-cell${span}${item.value ? ' is-stat' : ''}" style="--delay:${index * 0.07}s">${renderIcon(item.icon, index === 0 ? 'sparkles' : 'layers', 'marker')}${stat}<div class="bento-title">${itemTitle(item)}</div>${item.body ? `<div class="bento-body">${itemBody(item)}</div>` : ''}</article>`;
+    }).join('')}</div>`;
+  }
+
   function renderSummary(slide) {
     const helper = renderAssetHelper(slide);
     const items = (slide.items || []).slice(0, 6);
@@ -318,6 +332,7 @@ export function createStaticRenderers({ escapeHtml, renderIcon }) {
     'step-flow': renderStepFlow,
     'diagram-box': renderDiagram,
     'summary-grid': renderSummary,
+    'bento-grid': renderBentoGrid,
     'case-map': renderCaseMap,
     'split-screen': renderSplitScreen,
     'timeline-cards': renderTimelineCards,

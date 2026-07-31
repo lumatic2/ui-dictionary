@@ -30,8 +30,9 @@ function parseArgs(argv) {
     else if (arg === '--scale') options.scale = Number(argv[++index]);
     else if (arg === '--wait') options.wait = Number(argv[++index]);
     else if (arg === '--viewport') options.viewport = argv[++index];
+    else if (arg === '--notes') options.notes = true;
     else if (arg === '--help' || arg === '-h') {
-      console.log(`Usage: node tools/export-raster-pdf.mjs [--dir deck-folder] [--output exports/deck.pdf] [--png-dir exports/png] [--scale 2] [--wait 900] [--viewport fullscreen|canvas|1920x1080]
+      console.log(`Usage: node tools/export-raster-pdf.mjs [--dir deck-folder] [--output exports/deck.pdf] [--png-dir exports/png] [--scale 2] [--wait 900] [--viewport fullscreen|canvas|1920x1080] [--notes]
 
 Captures each generated slide HTML at ?capture=1, then embeds those viewport PNGs
 into a 16:9 PDF. This is the preferred sharing export when visual parity with
@@ -196,11 +197,23 @@ async function captureSlide(browser, entry, viewport, options) {
   }
 }
 
-function imagePdfHtml(deck, canvas, captures) {
+function notesPageHtml(slide, index) {
+  // notes 없는 슬라이드는 페이지를 만들지 않는다(빈 페이지 삽입 금지).
+  const notes = Array.isArray(slide?.notes) ? slide.notes.join('\n') : slide?.notes;
+  if (!notes) return '';
+  return `<section class="page notes-page">
+  <div class="notes-head"><span class="notes-no">${String(index + 1).padStart(2, '0')}</span><span class="notes-title">${escapeText(slide.title || '')}</span></div>
+  <div class="notes-body">${escapeText(notes).replace(/\n/g, '<br>')}</div>
+  <div class="notes-foot">SPEAKER NOTES</div>
+</section>`;
+}
+
+function imagePdfHtml(deck, canvas, captures, withNotes) {
   const pages = captures.map((capture, index) => {
     const alt = `${String(index + 1).padStart(2, '0')} ${deck.slides[index]?.title || 'slide'}`;
     const src = `data:image/png;base64,${capture.buffer.toString('base64')}`;
-    return `<section class="page"><img alt="${escapeAttribute(alt)}" src="${src}"></section>`;
+    const notes = withNotes ? notesPageHtml(deck.slides[index], index) : '';
+    return `<section class="page"><img alt="${escapeAttribute(alt)}" src="${src}"></section>${notes ? `\n${notes}` : ''}`;
   }).join('\n');
   return `<!doctype html>
 <html>
@@ -214,6 +227,12 @@ html, body { margin: 0; padding: 0; background: #000; }
 .page { width: ${canvas.width}px; height: ${canvas.height}px; margin: 0; page-break-after: always; break-after: page; overflow: hidden; background: #000; }
 .page:last-child { page-break-after: auto; break-after: auto; }
 img { display: block; width: 100%; height: 100%; object-fit: fill; }
+.notes-page { background: #ffffff; color: #1c1c22; padding: ${Math.round(canvas.height * 0.09)}px ${Math.round(canvas.width * 0.07)}px; display: flex; flex-direction: column; font-family: 'Pretendard Variable', Pretendard, -apple-system, sans-serif; }
+.notes-head { display: flex; align-items: baseline; gap: 18px; border-bottom: 2px solid #1c1c22; padding-bottom: 14px; }
+.notes-no { font-size: ${Math.round(canvas.height * 0.045)}px; font-weight: 800; }
+.notes-title { font-size: ${Math.round(canvas.height * 0.035)}px; font-weight: 600; }
+.notes-body { flex: 1; margin-top: ${Math.round(canvas.height * 0.05)}px; font-size: ${Math.round(canvas.height * 0.03)}px; line-height: 1.7; white-space: normal; }
+.notes-foot { font-size: ${Math.round(canvas.height * 0.018)}px; letter-spacing: .14em; opacity: .45; }
 </style>
 </head>
 <body>
@@ -230,11 +249,11 @@ function escapeAttribute(value) {
   return escapeText(value).replace(/"/g, '&quot;');
 }
 
-async function writePdf(browser, deck, viewport, captures, output) {
+async function writePdf(browser, deck, viewport, captures, output, withNotes) {
   fs.mkdirSync(path.dirname(output), { recursive: true });
   const page = await browser.newPage({ viewport });
   try {
-    await page.setContent(imagePdfHtml(deck, viewport, captures), { waitUntil: 'load' });
+    await page.setContent(imagePdfHtml(deck, viewport, captures, withNotes), { waitUntil: 'load' });
     await page.evaluate(async () => {
       await Promise.all([...document.images].map((img) => img.complete ? Promise.resolve() : new Promise((resolve, reject) => {
         img.onload = resolve;
@@ -274,7 +293,7 @@ async function run(options) {
       }
       console.log(`captured ${entry.name}`);
     }
-    await writePdf(browser, deck, viewport, captures, output);
+    await writePdf(browser, deck, viewport, captures, output, options.notes);
   } finally {
     await browser.close();
   }

@@ -1,5 +1,5 @@
 #!/usr/bin/env node
-import { FONT_LINKS, canvasPreset, resolveTheme } from './theme.mjs';
+import { FONT_LINKS, canvasPreset, registerCustomTheme, resolveTheme } from './theme.mjs';
 import { commonCss, indexCss } from './css.mjs';
 import { iconSvg, renderIcon } from './icons.mjs';
 import { createBuilderIO } from './io.mjs';
@@ -25,7 +25,7 @@ function renderLayout(slide) {
   return (LAYOUT_RENDERERS[slide.layout] || renderGeneric)(slide);
 }
 
-const { renderSlide, renderIndex, renderPrint } = createShellRenderers({
+const { renderSlide, renderIndex, renderPrint, renderSpeaker, renderStandalone } = createShellRenderers({
   escapeHtml,
   fileName,
   LAYOUT_META,
@@ -40,9 +40,21 @@ const { renderSlide, renderIndex, renderPrint } = createShellRenderers({
   slideScripts,
 });
 
+export function loadDeck() {
+  const deck = io.readDeck();
+  if (deck.meta?.template === 'custom') {
+    const customTheme = io.readCustomTheme();
+    if (!customTheme) throw new Error('meta.template "custom" requires content/theme.json');
+    registerCustomTheme(customTheme);
+  }
+  return deck;
+}
+
+export const renderers = { renderSlide, renderIndex, renderPrint, renderSpeaker, renderStandalone };
+
 export function main() {
   io.runValidator();
-  const deck = io.readDeck();
-  io.writeDeck(deck, { renderSlide, renderIndex, renderPrint });
+  const deck = loadDeck();
+  io.writeDeck(deck, renderers);
   console.log(`built ${deck.slides.length} slides`);
 }

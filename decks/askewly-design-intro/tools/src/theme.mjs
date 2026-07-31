@@ -4,7 +4,15 @@ export const CANVAS_PRESETS = {
 
 export const CANONICAL_THEMES = ['dark', 'light', 'askewly'];
 
-const PRETENDARD_LINK = '<link href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable.min.css" rel="stylesheet">';
+// 폰트 로딩 규율 (HU2): CDN stylesheet 패턴이라 as="font" preload 는 성립하지 않는다(실측 —
+// 폰트 파일 URL 은 CSS 내부 소유, font-display:swap 도 CSS 가 이미 선언). preconnect + style preload 로
+// 연결·CSS 파싱을 앞당긴다. 오프라인은 export-standalone.mjs 가 폰트까지 인라인한다.
+const PRETENDARD_CSS_URL = 'https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable.min.css';
+const PRETENDARD_LINK = [
+  '<link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>',
+  `<link rel="preload" as="style" href="${PRETENDARD_CSS_URL}">`,
+  `<link href="${PRETENDARD_CSS_URL}" rel="stylesheet">`,
+].join('\n  ');
 
 export const THEME_ROOTS = {
   dark: `:root {
@@ -122,4 +130,43 @@ export function canvasCss(canvas) {
 
 export function themeCss(template) {
   return THEME_ROOTS[resolveTheme(template)] || THEME_ROOTS.light;
+}
+
+
+// --- 커스텀 브랜드 테마 트랙 (SP2) ---------------------------------------
+// meta.template: "custom" + 덱 로컬 content/theme.json 으로 브랜드 테마를 주입한다.
+// theme.json 계약: { "name": "...", "vars": { <REQUIRED_THEME_VARS 전건> }, "fontLinks": ["<link ...>"] }
+// canonical 3종과 같은 변수 집합을 전건 요구한다 — 누락 키는 조용히 기본값으로 채우지 않는다.
+
+export const REQUIRED_THEME_VARS = [
+  'bg-primary', 'bg-card', 'surface-raised', 'border-card',
+  'text-primary', 'text-secondary', 'text-muted', 'text-sub',
+  'accent-start', 'accent-end', 'accent-gradient', 'accent-soft', 'accent-border',
+  'shadow-accent', 'card-gradient',
+  'nav-bg', 'nav-border', 'nav-accent', 'nav-hover', 'nav-disabled',
+  'input-bg', 'option-bg', 'hint-bg',
+  'chart-1', 'chart-2', 'chart-3', 'chart-4',
+  'font-main', 'font-mono',
+];
+
+export function customThemeErrors(theme) {
+  const errors = [];
+  if (!theme || typeof theme !== 'object') return ['theme.json must be an object'];
+  if (!theme.vars || typeof theme.vars !== 'object') return ['theme.json requires a vars object'];
+  const missing = REQUIRED_THEME_VARS.filter((k) => !theme.vars[k]);
+  if (missing.length) errors.push(`theme.json vars missing required keys: ${missing.join(', ')}`);
+  const unknown = Object.keys(theme.vars).filter((k) => !REQUIRED_THEME_VARS.includes(k));
+  if (unknown.length) errors.push(`theme.json vars has unknown keys: ${unknown.join(', ')}`);
+  return errors;
+}
+
+export function registerCustomTheme(theme) {
+  const errors = customThemeErrors(theme);
+  if (errors.length) throw new Error(errors.join('; '));
+  const lines = REQUIRED_THEME_VARS.map((k) => `  --${k}: ${theme.vars[k]};`).join('\n');
+  THEME_ROOTS.custom = `:root {\n${lines}\n}`;
+  FONT_LINKS.custom = Array.isArray(theme.fontLinks) && theme.fontLinks.length
+    ? theme.fontLinks.join('\n')
+    : PRETENDARD_LINK;
+  return 'custom';
 }

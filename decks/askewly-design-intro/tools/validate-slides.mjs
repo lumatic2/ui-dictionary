@@ -2,7 +2,7 @@
 import fs from 'node:fs';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
-import { CANONICAL_THEMES } from './src/theme.mjs';
+import { CANONICAL_THEMES, customThemeErrors } from './src/theme.mjs';
 import { lintPrinciples } from './src/lint-principles.mjs';
 
 const root = process.cwd();
@@ -159,7 +159,15 @@ if (!Array.isArray(deck.slides) || deck.slides.length === 0) errors.push('slides
 
 if (deck.meta) {
   if (!deck.meta.title) errors.push('meta.title is required');
-  if (!allowedTemplates.has(deck.meta.template)) errors.push(`meta.template must be one of ${[...allowedTemplates].join(', ')}`);
+  if (deck.meta.template === 'custom') {
+    const themePath = path.join(path.dirname(slidesPath), 'theme.json');
+    if (!fs.existsSync(themePath)) {
+      errors.push('meta.template "custom" requires content/theme.json next to slides.json');
+    } else {
+      const customTheme = readJson(themePath);
+      customThemeErrors(customTheme).forEach((e) => errors.push(e));
+    }
+  } else if (!allowedTemplates.has(deck.meta.template)) errors.push(`meta.template must be one of ${[...allowedTemplates].join(', ')}, custom`);
   if (!allowedModes.has(deck.meta.mode)) errors.push(`meta.mode must be one of ${[...allowedModes].join(', ')}`);
   if (deck.meta.canvas && !allowedCanvas.has(deck.meta.canvas)) errors.push(`meta.canvas must be hd. Use export-raster-pdf.mjs --viewport/--scale for higher-resolution PDF or PNG output.`);
   if (deck.meta.effects && !allowedEffects.has(deck.meta.effects)) errors.push(`meta.effects must be one of ${[...allowedEffects].join(', ')}`);
@@ -227,7 +235,14 @@ const sourceIds = new Set((deck.sources || []).map((source) => source.id));
   });
 });
 
-if (lintEnabled) warnings.push(...lintPrinciples(deck));
+if (lintEnabled) {
+  let customTheme = null;
+  if (deck.meta?.template === 'custom') {
+    const themePath = path.join(path.dirname(slidesPath), 'theme.json');
+    if (fs.existsSync(themePath)) customTheme = readJson(themePath);
+  }
+  warnings.push(...lintPrinciples(deck, { customTheme }));
+}
 
 errors.forEach((error) => console.error(`ERROR ${error}`));
 warnings.forEach((warning) => console.warn(`WARN ${warning}`));

@@ -768,8 +768,60 @@ export function commonCss(template, canvas) {
     assetCss(),
     navCss(),
     motionCss(),
+    bentoCss(),
+    coverMediaCss(),
+    fragmentCss(),
     printCss(),
   ].join('\n');
+}
+
+// 풀블리드 이미지 히어로 (HU3) — cover 의 assets.image. 스크림이 텍스트 대비를 소유한다(imagery.md).
+function coverMediaCss() {
+  return `
+.layout-cover { position: relative; overflow: hidden; }
+.cover-media { position: absolute; inset: 0; z-index: 0; }
+.cover-media img { width: 100%; height: 100%; object-fit: cover; display: block; }
+.cover-scrim { position: absolute; inset: 0; background: linear-gradient(90deg, color-mix(in srgb, var(--bg-primary) 88%, transparent) 0%, color-mix(in srgb, var(--bg-primary) 62%, transparent) 46%, color-mix(in srgb, var(--bg-primary) 18%, transparent) 100%); }
+.layout-cover .slide-header, .layout-cover .slide-pattern { position: relative; z-index: 1; }
+/* cover 만 slide-content 를 static 으로 — .cover-media inset:0 이 .layout-cover(전면)에 앵커되게 */
+.layout-cover .slide-content { position: static; z-index: auto; }
+.layout-cover .cover-lockup { position: relative; z-index: 1; }
+.layout-cover .source-note { position: absolute; left: var(--slide-pad-x, 88px); bottom: 88px; z-index: 1; margin: 0; }
+`;
+}
+
+// bento-grid — 모듈 블록 그리드 (research 2026-07-31 §2-8). 셀 span 은 item.span 이 지정.
+function bentoCss() {
+  return `
+.layout-bento-grid .bento-grid { width: 100%; max-width: 1080px; display: grid; grid-template-columns: repeat(4, 1fr); grid-auto-rows: minmax(150px, auto); gap: 16px; align-content: center; }
+.bento-cell { background: var(--surface-raised); border: 1px solid var(--border-card); border-radius: 8px; padding: 22px 22px 20px; display: flex; flex-direction: column; gap: 8px; justify-content: flex-end; }
+.bento-cell:not(.is-stat) { justify-content: flex-start; }
+.bento-cell.span-wide { grid-column: span 2; }
+.bento-cell.span-tall { grid-row: span 2; }
+.bento-cell.span-big { grid-column: span 2; grid-row: span 2; }
+.bento-cell .card-icon { margin-bottom: 2px; }
+.bento-value { font-size: 44px; font-weight: 800; line-height: 1.05; letter-spacing: -0.02em; color: var(--accent-start); font-variant-numeric: tabular-nums; }
+.bento-value span { font-size: 20px; font-weight: 700; margin-left: 4px; }
+.bento-cell.span-big .bento-value { font-size: 64px; }
+.bento-title { font-size: 16px; font-weight: 700; color: var(--text-primary); }
+.bento-cell.is-stat .bento-title { color: var(--text-muted); font-weight: 600; }
+.bento-body { font-size: 13.5px; line-height: 1.55; color: var(--text-muted); }
+`;
+}
+
+// fragment 단계 공개 — 라이브 발표 전용. 태깅은 navScript 가 라이브 모드에서만 하므로
+// print/capture/standalone 산출에는 이 클래스가 아예 붙지 않는다(전체 표시 계약).
+// 공개 모션은 transform/opacity 한정(GPU 합성), reduced-motion 이면 전환 없이 즉시 표시.
+function fragmentCss() {
+  return `
+.fragment-pending, .fragment-revealed { animation: none !important; }
+.fragment-pending { opacity: 0 !important; transform: translateY(12px) !important; }
+.fragment-revealed { opacity: 1 !important; transform: none !important; }
+@media (prefers-reduced-motion: no-preference) {
+  .fragment-revealed { transition: opacity 0.32s ease, transform 0.32s ease; }
+}
+html.print-mode .fragment-pending, html.capture-mode .fragment-pending { opacity: 1 !important; transform: none !important; }
+`;
 }
 
 

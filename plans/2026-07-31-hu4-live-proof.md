@@ -29,7 +29,7 @@ Status: approved (사용자 "ㄱㄱ" 2026-07-31 — fresh 검증자 2회 발견 
 
 ## Step 트리
 
-- [ ] **step-1 — 실증 덱 업그레이드 적용 + 라이브 리허설**
+- [x] **step-1 — 실증 덱 업그레이드 적용 + 라이브 리허설**
   - Artifact: askewly-design-intro 에 fragment(적합 장)·bento·이미지(적합 장, 없으면 기록)·스피커 뷰·standalone·PDF 노트 실적용 산출물 + 라운드 장부(`evidence/html-upgrade/hu4-live-proof.md` 초안).
   - Files: write `decks/askewly-design-intro/content/slides.json`·`decks/askewly-design-intro/tools/`(HU1·HU2 반영판 동기화)·`evidence/html-upgrade/hu4-live-proof.md`. read custom-skills 배포본.
   - Risk: 없음 (덱 로컬 — git revert 용이, 기존 export 산출과 대조 가능)

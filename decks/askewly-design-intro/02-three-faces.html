@@ -4,6 +4,8 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Askewly Design은 세 얼굴로 나간다</title>
+  <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
+  <link rel="preload" as="style" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable.min.css">
   <link href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable.min.css" rel="stylesheet">
   
   <script>
@@ -758,6 +760,41 @@ body.fade-out { animation: fadeOut 0.25s ease forwards; }
   body, body.fade-out, .effect-rise *, .effect-scale *, .effect-fade *, .effect-focus *, .layout-hero-motion *, .layout-svg-filter-scene * { animation: none !important; transition: none !important; opacity: 1 !important; transform: none !important; filter: none !important; }
 }
 
+
+.layout-bento-grid .bento-grid { width: 100%; max-width: 1080px; display: grid; grid-template-columns: repeat(4, 1fr); grid-auto-rows: minmax(150px, auto); gap: 16px; align-content: center; }
+.bento-cell { background: var(--surface-raised); border: 1px solid var(--border-card); border-radius: 8px; padding: 22px 22px 20px; display: flex; flex-direction: column; gap: 8px; justify-content: flex-end; }
+.bento-cell:not(.is-stat) { justify-content: flex-start; }
+.bento-cell.span-wide { grid-column: span 2; }
+.bento-cell.span-tall { grid-row: span 2; }
+.bento-cell.span-big { grid-column: span 2; grid-row: span 2; }
+.bento-cell .card-icon { margin-bottom: 2px; }
+.bento-value { font-size: 44px; font-weight: 800; line-height: 1.05; letter-spacing: -0.02em; color: var(--accent-start); font-variant-numeric: tabular-nums; }
+.bento-value span { font-size: 20px; font-weight: 700; margin-left: 4px; }
+.bento-cell.span-big .bento-value { font-size: 64px; }
+.bento-title { font-size: 16px; font-weight: 700; color: var(--text-primary); }
+.bento-cell.is-stat .bento-title { color: var(--text-muted); font-weight: 600; }
+.bento-body { font-size: 13.5px; line-height: 1.55; color: var(--text-muted); }
+
+
+.layout-cover { position: relative; overflow: hidden; }
+.cover-media { position: absolute; inset: 0; z-index: 0; }
+.cover-media img { width: 100%; height: 100%; object-fit: cover; display: block; }
+.cover-scrim { position: absolute; inset: 0; background: linear-gradient(90deg, color-mix(in srgb, var(--bg-primary) 88%, transparent) 0%, color-mix(in srgb, var(--bg-primary) 62%, transparent) 46%, color-mix(in srgb, var(--bg-primary) 18%, transparent) 100%); }
+.layout-cover .slide-header, .layout-cover .slide-pattern { position: relative; z-index: 1; }
+/* cover 만 slide-content 를 static 으로 — .cover-media inset:0 이 .layout-cover(전면)에 앵커되게 */
+.layout-cover .slide-content { position: static; z-index: auto; }
+.layout-cover .cover-lockup { position: relative; z-index: 1; }
+.layout-cover .source-note { position: absolute; left: var(--slide-pad-x, 88px); bottom: 88px; z-index: 1; margin: 0; }
+
+
+.fragment-pending, .fragment-revealed { animation: none !important; }
+.fragment-pending { opacity: 0 !important; transform: translateY(12px) !important; }
+.fragment-revealed { opacity: 1 !important; transform: none !important; }
+@media (prefers-reduced-motion: no-preference) {
+  .fragment-revealed { transition: opacity 0.32s ease, transform 0.32s ease; }
+}
+html.print-mode .fragment-pending, html.capture-mode .fragment-pending { opacity: 1 !important; transform: none !important; }
+
 @media print { body { padding: 0; display: block; } .slide-nav { display: none; } .container { page-break-after: always; } .export-fallback-note { display: block; } }
 html.print-mode, html.print-mode body { width: var(--scaled-slide-w); min-width: var(--scaled-slide-w); height: auto; min-height: 0; overflow: visible; }
 html.print-mode body, html.print-mode body.fade-out { animation: none; opacity: 1; display: block; padding: 0; margin: 0; background: var(--bg-primary); }
@@ -803,11 +840,97 @@ html.capture-mode .container, html.capture-mode .container * { animation: none !
     document.body.classList.add('fade-out');
     setTimeout(function() { window.location.href = url; }, 250);
   }
+  var __fragNext = null, __fragPrev = null;
   document.addEventListener('keydown', function(e) {
     if (['INPUT', 'TEXTAREA', 'SELECT', 'BUTTON'].includes(e.target.tagName)) return;
-    if (e.key === 'ArrowRight') navigateTo('03-medium-gates.html');
-  if (e.key === 'ArrowLeft') navigateTo('01-cover.html');
+    if (e.key === 'ArrowRight' || e.key === ' ') {
+      if (__fragNext && __fragNext()) { e.preventDefault(); return; }
+      e.preventDefault(); navigateTo('03-medium-gates.html');
+    }
+    if (e.key === 'ArrowLeft') {
+      if (__fragPrev && __fragPrev()) { e.preventDefault(); return; }
+      e.preventDefault(); navigateTo('01-cover.html');
+    }
+    if ((e.key === 's' || e.key === 'S') && !e.ctrlKey && !e.metaKey && !e.altKey) {
+      window.open('speaker.html', 'deck-speaker', 'width=1180,height=740');
+    }
   });
+  // 스피커 뷰 동기 + fragment 단계 공개 (export 캡처 모드에서는 침묵 — 산출물 무오염)
+  if (!document.documentElement.classList.contains('print-mode') && !document.documentElement.classList.contains('capture-mode')) {
+    function createDeckSync() {
+    var KEY = 'deck-sync::askewly-design';
+    var id = Math.random().toString(36).slice(2), seq = 0, seen = {}, handlers = [], bc = null;
+    try { bc = new BroadcastChannel(KEY); } catch (e) {}
+    function dispatch(msg) {
+      if (!msg || msg.from === id) return;
+      var k = msg.from + ':' + msg.seq;
+      if (seen[k]) return; seen[k] = true;
+      handlers.forEach(function (h) { h(msg); });
+    }
+    if (bc) bc.onmessage = function (e) { dispatch(e.data); };
+    window.addEventListener('storage', function (e) {
+      if (e.key !== KEY || !e.newValue) return;
+      try { dispatch(JSON.parse(e.newValue)); } catch (err) {}
+    });
+    return {
+      send: function (msg) {
+        msg.from = id; msg.seq = ++seq; msg.t = Date.now();
+        if (bc) try { bc.postMessage(msg); } catch (e) {}
+        try { localStorage.setItem(KEY, JSON.stringify(msg)); } catch (e) {}
+      },
+      on: function (h) { handlers.push(h); }
+    };
+  }
+    var __FILES = ["01-cover.html","02-three-faces.html","03-medium-gates.html","04-assets-stacked.html","05-structure-first.html","06-this-deck-proves.html","07-closing.html"];
+    var __INDEX = 1;
+    var __FRAGS = [{"unit":0,"order":1},{"unit":1,"order":2},{"unit":2,"order":3}];
+    var __sync = createDeckSync();
+    var __frag = { list: [], revealed: 0 };
+    if (__FRAGS.length) {
+      var __units = document.querySelectorAll('.slide-content article');
+      __FRAGS.forEach(function (f) {
+        var el = __units[f.unit];
+        if (el) { el.classList.add('fragment-pending'); __frag.list.push(el); }
+      });
+      __fragNext = function () {
+        if (__frag.revealed >= __frag.list.length) return false;
+        var el = __frag.list[__frag.revealed++];
+        el.classList.remove('fragment-pending');
+        el.classList.add('fragment-revealed');
+        __announce();
+        return true;
+      };
+      __fragPrev = function () {
+        if (__frag.revealed <= 0) return false;
+        var el = __frag.list[--__frag.revealed];
+        el.classList.remove('fragment-revealed');
+        el.classList.add('fragment-pending');
+        __announce();
+        return true;
+      };
+    }
+    function __announce() {
+      __sync.send({ type: 'slide', index: __INDEX, fragment: __frag.revealed, fragTotal: __frag.list.length });
+    }
+    __announce();
+    __sync.on(function (msg) {
+      if (msg.type === 'hello') { __announce(); return; }
+      if (msg.type === 'step' && typeof msg.dir === 'number') {
+        if (msg.dir > 0) {
+          if (__fragNext && __fragNext()) return;
+          navigateTo('03-medium-gates.html');
+        } else {
+          if (__fragPrev && __fragPrev()) return;
+          navigateTo('01-cover.html');
+        }
+        return;
+      }
+      if (msg.type === 'navigate' && typeof msg.index === 'number') {
+        var f = __FILES[msg.index];
+        if (f && msg.index !== __INDEX) navigateTo(f);
+      }
+    });
+  }
   </script>
   
   </body>

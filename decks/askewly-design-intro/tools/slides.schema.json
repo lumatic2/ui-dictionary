@@ -29,7 +29,8 @@
           "enum": [
             "dark",
             "light",
-            "askewly"
+            "askewly",
+            "custom"
           ]
         },
         "mode": {
@@ -152,6 +153,7 @@
             "step-flow",
             "diagram-box",
             "summary-grid",
+            "bento-grid",
             "case-map",
             "split-screen",
             "timeline-cards",
@@ -345,6 +347,19 @@
         },
         "icon": {
           "$ref": "#/$defs/icon"
+        },
+        "fragment": {
+          "type": "integer",
+          "minimum": 1,
+          "description": "단계 공개 순번(라이브 발표 전용, opt-in). 진행 키가 순번 오름차순으로 요소를 공개한다. export 전 트랙(print/PDF/PPTX/standalone)은 전체 표시."
+        },
+        "span": {
+          "enum": [
+            "wide",
+            "tall",
+            "big"
+          ],
+          "description": "bento-grid 셀 스팬 — wide=가로 2, tall=세로 2, big=2×2."
         }
       }
     },

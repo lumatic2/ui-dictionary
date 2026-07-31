@@ -49,6 +49,13 @@
       "density": "medium",
       "preferredEffect": "rise"
     },
+    "bento-grid": {
+      "label": "Bento grid",
+      "kind": "static",
+      "maxItems": 6,
+      "density": "high",
+      "preferredEffect": "rise"
+    },
     "case-map": {
       "label": "Contents map",
       "kind": "static",

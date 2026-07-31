@@ -33,7 +33,20 @@ function parallelSignals(title) {
   return count;
 }
 
-export function lintPrinciples(deck) {
+const INTERACTIVE_LAYOUTS = new Set(['chart-interactive', 'three-scene', 'before-after', 'qr-embed']);
+const EMOJI_PATTERN = /\p{Extended_Pictographic}/u;
+// AI-slop 디폴트 시그니처 (규칙 정본: ui-dictionary methodology/prompt-patterns.md 스멜 테스트 — KG design-prompt-ai-slop-smell-test-검수)
+const SLOP_SHADOW = /0\s+4px\s+12px\s+rgba\(0,\s*0,\s*0,\s*0?\.1\)/;
+const SLOP_FONT_ONLY = /^(inter|geist)$/i;
+const STAGGER_LIMIT = 10;
+
+function slideTexts(slide) {
+  const texts = [slide.title, slide.subtitle, slide.body, slide.kicker];
+  for (const item of slide.items || []) texts.push(item.title, item.body, item.label, item.value);
+  return texts.filter((t) => typeof t === 'string');
+}
+
+export function lintPrinciples(deck, { customTheme } = {}) {
   const warnings = [];
   let r1Suspects = 0;
 
@@ -59,7 +72,45 @@ export function lintPrinciples(deck) {
     if (!R3_VISUAL_LAYOUTS.has(slide.layout) && !slide.assets && slideTextTotal(slide) > R3_CHAR_LIMIT) {
       warnings.push(`${label} lint R3[통설]: 본문 텍스트 ${slideTextTotal(slide)}자 (> ${R3_CHAR_LIMIT}) — 시각 증거로 대체하거나 발표자 노트로 이동`);
     }
+
+    // R4 — 모션 규율 (근거: 규율 — style-system.md 모션 절)
+    const items = slide.items || [];
+    if (items.length > STAGGER_LIMIT) {
+      warnings.push(`${label} lint R4[규율]: 항목 ${items.length}개 (> ${STAGGER_LIMIT}) — stagger 등장이 늘어져 뒤 항목이 죽는다. 분할하거나 stagger 없는 구성으로`);
+    }
+    const fragmented = items.filter((item) => Number.isFinite(item.fragment));
+    if (fragmented.length && INTERACTIVE_LAYOUTS.has(slide.layout)) {
+      warnings.push(`${label} lint R4[규율]: 인터랙티브 layout(${slide.layout})에 fragment — article 매핑이 보장되지 않는다 (interactive.md 경계)`);
+    }
+    const orders = fragmented.map((item) => item.fragment);
+    if (new Set(orders).size !== orders.length) {
+      warnings.push(`${label} lint R4[규율]: fragment 순번 중복 — 공개 순서가 모호하다`);
+    }
+
+    // R6 — 아이콘 규율 (근거: 규율 — SKILL §6 이모지 금지, lucide/lobe SVG 만)
+    for (const text of slideTexts(slide)) {
+      if (EMOJI_PATTERN.test(text)) {
+        warnings.push(`${label} lint R6[규율]: 텍스트에 이모지 "${[...text].find((ch) => EMOJI_PATTERN.test(ch))}" — 아이콘은 item.icon(lucide/lobe SVG)으로, 이모지·글리프 금지`);
+        break;
+      }
+    }
   });
+
+  // R5 — anti-slop 디폴트 시그니처 (custom theme.json 만 기계 검사 가능 — 내장 테마는 이미 규율 준수)
+  if (customTheme) {
+    const themeText = JSON.stringify(customTheme);
+    if (SLOP_SHADOW.test(themeText)) {
+      warnings.push(`theme.json lint R5[규율]: 그림자 "0 4px 12px rgba(0,0,0,.1)" — AI-slop 디폴트 시그니처. 브랜드 근거 있는 값으로 (스멜 테스트: methodology/prompt-patterns.md)`);
+    }
+    const fonts = [customTheme.fontFamily, customTheme.headingFont, customTheme.bodyFont].filter((f) => typeof f === 'string');
+    if (fonts.length && fonts.every((f) => SLOP_FONT_ONLY.test(f.split(',')[0].trim().replace(/['"]/g, '')))) {
+      warnings.push('theme.json lint R5[규율]: 서체가 Inter/Geist 단독 — AI-slop 디폴트. 브랜드 서체 또는 조합 근거를 명시');
+    }
+    const radii = [...themeText.matchAll(/"(?:radius|borderRadius|cardRadius)[^"]*":\s*"?(\d+)(?:px)?"?/g)].map((m) => Number(m[1]));
+    if (radii.length && radii.every((r) => r === 8 || r === 12)) {
+      warnings.push('theme.json lint R5[규율]: 라운드가 8/12px 뿐 — AI-slop 디폴트 시그니처. 브랜드 스케일에서 파생된 값인지 확인');
+    }
+  }
 
   if (r1Suspects > 0) {
     warnings.push(`lint R1[실증] 의심 ${r1Suspects}건: 종결어미·동사 없는 제목 — 주장(완결 문장)인지 확인 (title-only read test 는 G3 사람 체크)`);

@@ -15,14 +15,15 @@ const CANVAS_PRESETS = {
 };
 
 function parseArgs(argv) {
-  const options = { dir: process.cwd(), output: '', wait: 900 };
+  const options = { dir: process.cwd(), output: '', wait: 900, notes: false };
   for (let index = 0; index < argv.length; index += 1) {
     const arg = argv[index];
     if (arg === '--dir') options.dir = path.resolve(argv[++index]);
     else if (arg === '--output') options.output = path.resolve(argv[++index]);
     else if (arg === '--wait') options.wait = Number(argv[++index]);
+    else if (arg === '--notes') options.notes = true;
     else if (arg === '--help' || arg === '-h') {
-      console.log(`Usage: node tools/export-vector-pdf.mjs [--dir deck-folder] [--output exports/deck.vector.pdf] [--wait 900]
+      console.log(`Usage: node tools/export-vector-pdf.mjs [--dir deck-folder] [--output exports/deck.vector.pdf] [--wait 900] [--notes]
 
 Prints the generated print.html through Chromium's print engine. Text stays
 selectable/searchable (vector). Interactive layouts show their exportFallback
@@ -123,6 +124,45 @@ async function run(options) {
     await page.goto(pathToFileURL(printPath).href, { waitUntil: 'networkidle' });
     // CDN 폰트가 로드되기 전에 인쇄하면 폴백 폰트가 임베드된다 — 폰트 준비를 명시 대기.
     await page.evaluate(() => document.fonts.ready);
+    if (options.notes) {
+      // --notes: 각 슬라이드 페이지 뒤에 노트 페이지 삽입. notes 없는 슬라이드는 생략(빈 페이지 금지).
+      const notesData = deck.slides.map((slide, index) => ({
+        no: String(index + 1).padStart(2, '0'),
+        title: slide.title || '',
+        notes: Array.isArray(slide.notes) ? slide.notes.join('\n') : (slide.notes || ''),
+      }));
+      const inserted = await page.evaluate((data) => {
+        const style = document.createElement('style');
+        style.textContent = `
+          .notes-page { background: #ffffff; color: #1c1c22; padding: 8% 7%; display: flex; flex-direction: column; font-family: 'Pretendard Variable', Pretendard, sans-serif; page-break-after: always; break-after: page; }
+          .notes-page .notes-head { display: flex; align-items: baseline; gap: 16px; border-bottom: 2px solid #1c1c22; padding-bottom: 12px; }
+          .notes-page .notes-no { font-size: 30px; font-weight: 800; }
+          .notes-page .notes-title { font-size: 22px; font-weight: 600; }
+          .notes-page .notes-body { flex: 1; margin-top: 28px; font-size: 19px; line-height: 1.7; }
+          .notes-page .notes-foot { font-size: 11px; letter-spacing: .14em; opacity: .45; }`;
+        document.head.appendChild(style);
+        const pages = document.querySelectorAll('.print-page');
+        let count = 0;
+        pages.forEach((pageEl, index) => {
+          const entry = data[index];
+          if (!entry || !entry.notes) return;
+          const section = document.createElement('section');
+          section.className = 'print-page notes-page';
+          const head = document.createElement('div');
+          head.className = 'notes-head';
+          const no = document.createElement('span'); no.className = 'notes-no'; no.textContent = entry.no;
+          const title = document.createElement('span'); title.className = 'notes-title'; title.textContent = entry.title;
+          head.append(no, title);
+          const body = document.createElement('div'); body.className = 'notes-body'; body.textContent = entry.notes;
+          const foot = document.createElement('div'); foot.className = 'notes-foot'; foot.textContent = 'SPEAKER NOTES';
+          section.append(head, body, foot);
+          pageEl.after(section);
+          count += 1;
+        });
+        return count;
+      }, notesData);
+      console.log(`notes pages inserted: ${inserted}`);
+    }
     await page.waitForTimeout(options.wait);
     await page.pdf({
       path: output,
