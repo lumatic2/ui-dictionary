@@ -28,7 +28,7 @@ export function GetStartedPage({ onNavigate }: { onNavigate: (destination: HomeP
 
         <div className="grid gap-6 lg:grid-cols-[1.55fr_1fr]">
           <button
-            className="group overflow-hidden rounded-2xl border bg-card p-8 pb-0 text-left shadow-sm transition-all duration-200 hover:scale-[1.015] hover:border-foreground/25 hover:shadow-md motion-reduce:transform-none"
+            className="group cursor-pointer overflow-hidden rounded-2xl border bg-card p-8 pb-0 text-left shadow-sm transition-all duration-200 hover:scale-[1.015] hover:border-foreground/25 hover:shadow-md motion-reduce:transform-none"
             type="button"
             onClick={() => onNavigate({ page: "plus", filter: "nav:plus-marketing" })}
           >
@@ -43,7 +43,7 @@ export function GetStartedPage({ onNavigate }: { onNavigate: (destination: HomeP
           </button>
 
           <button
-            className="group flex flex-col rounded-2xl border bg-card p-8 text-left shadow-sm transition-all duration-200 hover:scale-[1.015] hover:border-foreground/25 hover:shadow-md motion-reduce:transform-none"
+            className="group cursor-pointer flex flex-col rounded-2xl border bg-card p-8 text-left shadow-sm transition-all duration-200 hover:scale-[1.015] hover:border-foreground/25 hover:shadow-md motion-reduce:transform-none"
             type="button"
             onClick={() => onNavigate({ page: "colors" })}
           >
@@ -59,7 +59,7 @@ export function GetStartedPage({ onNavigate }: { onNavigate: (destination: HomeP
         </div>
 
         <button
-          className="group grid gap-8 overflow-hidden rounded-2xl border bg-card p-8 text-left shadow-sm transition-all duration-200 hover:scale-[1.01] hover:border-foreground/25 hover:shadow-md motion-reduce:transform-none lg:grid-cols-[1fr_1.1fr]"
+          className="group cursor-pointer grid gap-8 overflow-hidden rounded-2xl border bg-card p-8 text-left shadow-sm transition-all duration-200 hover:scale-[1.01] hover:border-foreground/25 hover:shadow-md motion-reduce:transform-none lg:grid-cols-[1fr_1.1fr]"
           type="button"
           onClick={() => onNavigate({ page: "recipes" })}
         >
@@ -78,7 +78,7 @@ export function GetStartedPage({ onNavigate }: { onNavigate: (destination: HomeP
         <h2 className="mt-10 text-2xl font-semibold text-foreground">More ways in</h2>
         <div className="grid gap-6 md:grid-cols-3">
           <button
-            className="group flex flex-col gap-4 rounded-2xl border bg-card p-7 text-left shadow-sm transition-all duration-200 hover:scale-[1.02] hover:border-foreground/25 hover:shadow-md motion-reduce:transform-none"
+            className="group cursor-pointer flex flex-col gap-4 rounded-2xl border bg-card p-7 text-left shadow-sm transition-all duration-200 hover:scale-[1.02] hover:border-foreground/25 hover:shadow-md motion-reduce:transform-none"
             type="button"
             onClick={() => onNavigate({ page: "docs", filter: "nav:docs-all" })}
           >
