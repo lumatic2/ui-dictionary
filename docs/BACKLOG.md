@@ -639,3 +639,14 @@ plan doc: `archive/plans/2026-07-21-eu*.md` · 증거: `evidence/editor-legibili
   - Completed: 2026-08-01
   - Result: forced-colors 감사→수리 3건, 일반 모드 무영향, 실물 고대비 스팟 통과. 보고서 docs/reports/2026-08-01-m3-forced-colors.md
   - Evidence: evidence/dark-carryover/m3-forced-colors.md
+
+### 2026-08
+- M5 - M5 — finding 소수리 (search title + llms 정합 게이트)
+  - Completed: 2026-08-01
+  - Result: search title 수리·llms 정합 게이트 lint 배선·오탐 1건 기록. 보고서 docs/reports/2026-08-01-m5-finding-fixes.md
+  - Evidence: evidence/finding-cleanup/m5-finding-fixes.md
+
+- M6 - M6 — 타이포 스케일 전수 등재 + Tailwind 배선
+  - Completed: 2026-08-01
+  - Result: scale 5→9단계(rem, Tailwind 기본값 그대로)·@theme 배선·computed 무손실·verify 0 유지. 보고서 docs/reports/2026-08-01-m6-typography-scale.md
+  - Evidence: evidence/finding-cleanup/m6-typography-scale.md
