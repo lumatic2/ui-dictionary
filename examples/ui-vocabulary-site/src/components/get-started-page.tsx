@@ -1,10 +1,11 @@
-import { ArrowRight, BookOpen, Palette, Search, Shapes, Sparkles } from "lucide-react"
-import type { LucideIcon } from "lucide-react"
+import { ArrowRight, Search, Sparkles } from "lucide-react"
+import type { ComponentType } from "react"
 import type { HomePageDestination } from "@/components/home-page"
+import { ColorsPreview, DocsPreview, PatternsPreview, RecipesPreview } from "@/components/get-started-previews"
 
 type ExplorePath = {
   id: string
-  icon: LucideIcon
+  preview: ComponentType
   title: string
   description: string
   cta: string
@@ -14,33 +15,33 @@ type ExplorePath = {
 const explorePaths: ExplorePath[] = [
   {
     id: "patterns",
-    icon: Shapes,
-    title: "Browse patterns",
-    description: "Marketing, application UI, and ecommerce blocks — every section is a working demo you can inspect and reuse.",
+    preview: PatternsPreview,
+    title: "Patterns",
+    description: "Ready-made page sections for marketing, application UI, and ecommerce. Every one is a working demo.",
     cta: "Open Patterns",
     destination: { page: "plus", filter: "nav:plus-marketing" },
   },
   {
     id: "docs",
-    icon: BookOpen,
-    title: "Read the docs",
-    description: "Principles, foundations, and element guides — how the system decides hierarchy, tokens, states, and motion.",
+    preview: DocsPreview,
+    title: "Docs",
+    description: "Principles, foundations, and element guides. How the system decides hierarchy, tokens, states, and motion.",
     cta: "Open Docs",
     destination: { page: "docs", filter: "nav:docs-all" },
   },
   {
     id: "colors",
-    icon: Palette,
-    title: "Study the colors",
-    description: "The palette and semantic tokens behind every surface, with a generator for building your own ramps.",
+    preview: ColorsPreview,
+    title: "Colors",
+    description: "Curated palettes and semantic tokens, plus a generator for building your own ramps.",
     cta: "Open Colors",
     destination: { page: "colors" },
   },
   {
     id: "recipes",
-    icon: Sparkles,
-    title: "Try the recipes",
-    description: "Higher-impact visual techniques — gradients, motion choreography, and 3D — implemented and documented.",
+    preview: RecipesPreview,
+    title: "Recipes",
+    description: "Higher-impact visual techniques like gradients, motion choreography, and 3D, implemented and documented.",
     cta: "Open Recipe Gallery",
     destination: { page: "recipes" },
   },
@@ -67,9 +68,7 @@ export function GetStartedPage({ onNavigate }: { onNavigate: (destination: HomeP
               type="button"
               onClick={() => onNavigate(path.destination)}
             >
-              <span aria-hidden="true" className="grid size-9 place-items-center rounded-md bg-muted text-foreground">
-                <path.icon className="size-4" />
-              </span>
+              <path.preview />
               <div>
                 <p className="text-base font-semibold text-foreground">{path.title}</p>
                 <p className="mt-2 text-sm leading-6 text-muted-foreground">{path.description}</p>

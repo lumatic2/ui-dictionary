@@ -31,7 +31,7 @@ Status: approved (사용자 승인 2026-07-31 "ㄱㄱ" — 결정 2건 매듭. 2
 
 ## Step 트리
 
-- [ ] **step-1 — 미니 프리뷰 컴포넌트 4종**
+- [x] **step-1 — 미니 프리뷰 컴포넌트 4종**
   - Artifact: `src/components/get-started-previews.tsx` 신설 — PatternsPreview·DocsPreview·ColorsPreview·RecipesPreview. 전부 semantic 토큰 기반, aria-hidden·pointer-events-none, 라이트/다크 성립, Recipes 모션은 reduced-motion 존중.
   - Files: write examples/ui-vocabulary-site/src/components/get-started-previews.tsx. read src/index.css(토큰)·colors-page.tsx(램프 참조)·marketing-section-preview.tsx(축소 문법 참조).
   - Risk: 위험 (컬러 램프 스트립이 리터럴 색 유혹 표면 — 토큰·기존 팔레트 데이터 참조로 해결하고 allowlist 추가 금지)
@@ -40,7 +40,7 @@ Status: approved (사용자 승인 2026-07-31 "ㄱㄱ" — 결정 2건 매듭. 2
   - Failure probe: OS reduced-motion 에뮬레이션에서 Recipes 프리뷰 모션 정지 확인.
   - Commit: changeset `qa2-get-started-cards` (README 절: step-1).
 
-- [ ] **step-2 — 카드 개편 적용**
+- [x] **step-2 — 카드 개편 적용**
   - Artifact: get-started-page.tsx 개편 — explorePaths 에 thumbnail 연결·제목 명사화(Patterns/Docs/Colors/Recipes)·설명 영어 재작성(콤팩트), 안내 카드 2개는 구조·카피 유지, CTA 는 현행 영어 유지.
   - Files: write examples/ui-vocabulary-site/src/components/get-started-page.tsx. read docs/design-system/copy-language.md(영어 단일 정책), get-started-previews.tsx.
   - Risk: 기계적 (단일 페이지 컴포넌트, 라우팅 무변경 — 카피 기준은 영어 단일 정책 문서)
