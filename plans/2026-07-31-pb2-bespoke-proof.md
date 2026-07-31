@@ -30,7 +30,7 @@ Status: approved (연쇄 승인 — PB1 승인 시 chain 영수증 pb2 등록, �
 
 ## Step 트리
 
-- [ ] **step-1 — 기준 확보 + bespoke v1 + 대표 1장 미세조정**
+- [x] **step-1 — 기준 확보 + bespoke v1 + 대표 1장 미세조정**
   - Artifact: ① HTML 렌더 7장 스크린샷(Playwright, 기준 세트) ② `decks/askewly-design-intro/tools/export-pptx-bespoke.mjs` v1 — pptx-bespoke.md 계약 준수(테마 판독·표현 레시피·슬라이드별 아트디렉션) ③ 대표 1장(복잡도 최상)을 pptx-to-png → 기준 비교 → 조정 라운드(상한 5)로 수렴 + 라운드 장부.
   - Files: write decks/askewly-design-intro/tools/export-pptx-bespoke.mjs·라운드 장부(plan doc 진행 로그 또는 evidence 초안). read ~/.claude/skills/presentation-slides-yusung/references/pptx-bespoke.md(배포본)·decks/askewly-design-intro/content/*. 실행: node·http-server+Playwright·pwsh COM.
   - Risk: 위험 (COM 반복 실행 — 라운드마다 Quit 확인 / http-server 캐시 — `-c-1` 필수, SP1 finding)
@@ -63,3 +63,5 @@ Status: approved (연쇄 승인 — PB1 승인 시 chain 영수증 pb2 등록, �
 
 ## 진행 로그
 - 2026-07-31 작성 — PB1 연쇄 2/2 로 개설.
+- 2026-07-31 step-1 완료 — 기준 7장(덱 캡처 경로 필수 실측)·bespoke v1·대표 s02 라운드 2 수렴. pptxgenjs shadow 뮤테이션 결함 발견(도형별 새 객체로 해소).
+- 2026-07-31 step-2 진행 — 전장 f1 라운드(s04 축·s05 번호 랩·s07 URL 랩), 구조 검증 PASS(7장·차트1·pictures0·COM Workbook). 사용자 관측 대기.

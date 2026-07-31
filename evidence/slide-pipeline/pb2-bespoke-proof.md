@@ -1,0 +1,48 @@
+# PB2 — bespoke 실증: askewly-design-intro 고품질 산출
+
+> 2026-07-31 · plan: `plans/2026-07-31-pb2-bespoke-proof.md` · 산출: `decks/askewly-design-intro/export/askewly-design-intro.bespoke.pptx` (bespoke 코드: `tools/export-pptx-bespoke.mjs`)
+
+## 절차 (pptx-bespoke.md 계약 준수)
+
+- 선행 게이트: PB1 배포본(`scripts/pptx-to-png.ps1`·`references/pptx-bespoke.md`) 존재 확인 PASS.
+- 기준: HTML 렌더 7장 스크린샷(`export/baseline-png/`, 덱 정식 캡처 경로 export-raster-pdf `--png-dir`, 1920×1080·scale 2x). ⚠ 일반 `playwright screenshot` 직접 캡처는 논리 캔버스 스케일링을 안 타 기준으로 못 쓴다(실측 — 캡처는 반드시 덱 캡처 경로로).
+- bespoke 코드: 슬라이드별 아트디렉션 7종(hero-motion 정지 프레임 재해석·카드 3열·비교 2열 틴트·차트 카드·스텝 플로우·요약 그리드·클로징). 팔레트·폰트 전부 theme.mjs 판독.
+
+## 라운드 장부 (대표 1장 = slide 2 hero-cards, 상한 5)
+
+| 회차 | 대상 | 체크리스트 ①표면색 ②팔레트 ③타이포 ④구도 ⑤디테일 | 관측 편차 | 반영 |
+|---|---|---|---|---|
+| r1 | s02 | ① pass ② pass ③ pass ④ fail ⑤ fail | 본문 3줄 랩이 언더라인과 충돌·본문 박스 부족 | 카드 h 1.62→1.82, 본문 h 0.6·9.5pt, 언더라인 하향 |
+| r2 | s02 | ① pass ② pass ③ pass ④ pass ⑤ pass | 수렴 | — |
+
+전장 추가 라운드 (상한 3, 합산):
+
+| 회차 | 대상 | 관측 편차 | 반영 |
+|---|---|---|---|
+| f1 | s04·s05·s07 | s04 값축이 위로(catAxisOrientation 부작용) · s05 번호 원 "01" 줄바꿈(기본 inset) · s07 URL 랩 | s04 데이터 역순 투입으로 축 아래 유지 · s05 margin:0+박스 확장 · s07 itemW 1.8 |
+
+최종 전장 PNG 세트 재검(7장): 충돌·랩·잘림 0. 비교컷: `img/pb2-baseline-s02.png` vs `img/pb2-bespoke-s02.png`, 차트 `img/pb2-bespoke-s04.png`.
+
+## 편차 장부 (표현 불가 — 침묵 근사 금지)
+
+| HTML 표현 | PPTX 제약 | 대체 표현 | 판정 |
+|---|---|---|---|
+| 그라디언트 언더라인·연결선 | pptxgenjs gradient fill 미지원 | 2·3톤 분할 블록 (색 경계 계단) | 수용 |
+| 카드 배경 미세 그라디언트(card-gradient) | 동상 | 단색 CARD/틴트 근사 | 수용 |
+| hero-motion 모션 | PPTX 정적 | 정지 프레임 아트디렉션 (exportFallback 문구 계약) | 수용 |
+| lucide 아이콘(layers·target·sparkles) | 코드 생성 경로에 SVG 이관 없음 | ✦·✓ 글리프 + 틴트 박스 | 수용 |
+| 차트 막대 라운드 코너 | pptxgenjs bar 코너 옵션 없음 | 직각 막대 | 수용 |
+
+## 구조 검증 (SP3 계약 회귀 없음)
+
+- python-pptx: slides 7 · charts 1(has_chart 네이티브) · **pictures 0** · notes 7(발표자 노트 이관).
+- COM 실개봉: Opened·ChartShapes 1·Workbook 접근 1 — PASS.
+- pptxgenjs 4.0.1 결함 실측 2건 (bespoke 코드 주석 + finding):
+  - **shadow 옵션 객체 뮤테이션** — 같은 객체를 두 도형에 재사용하면 EMU 이중 변환(blurRad 177800→22.6억)으로 **PowerPoint 가 파일을 열지 못한다**(python-pptx/XML lint 는 통과 — 구조 검증만으로 못 잡는 부류). 해법: 도형마다 새 객체.
+  - 텍스트 기본 inset 이 좁은 박스에서 숫자("01")도 줄바꿈 — margin:0 필요.
+
+## 게이트
+
+- 시각(체크리스트 5항): PASS (r2 수렴 + 전장 f1).
+- 구조: PASS.
+- 사용자 관측 1회(최종): **대기** — PowerPoint 실개봉, 범용 매퍼 산출본과 대조 판정. 관측 결과를 새 줄로 추가한다.
