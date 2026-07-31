@@ -42,6 +42,7 @@
     {
       "no": 3,
       "kind": "content",
+      "variant": "columns",
       "kicker": { "no": "02", "label": "원칙" },
       "headline": "매체가 다르면 게이트도 다릅니다.",
       "subline": "실패 방식이 다르니 확인하는 자도 다르다 — 화면은 상태로, 지면·발표는 최종 형식으로 깨진다",

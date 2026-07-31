@@ -69,6 +69,12 @@
 - 결과: **캘리브레이션 0라운드로 그래머 전이** — 박제된 스타일(bespoke 코드 v2 f4)이 새 주제·새 구성에서 추가 조정 없이 동작. 영상 "한 장이 완벽하면 그다음은 극락"의 실측 등가.
 - 구조 검증: slides 5·charts 1·pictures 0·notes 5 + COM Opened·Workbook 접근 — PASS.
 
+## f5 라운드 (사용자 관측 3차 피드백 반영)
+
+- ① "2·4번이 똑같다" — 콘텐츠 구도가 1종(스탯 가로줄+하단 리스트)뿐이던 것이 원인 → **2열 컬럼 변형** 추가(좌 스탯 세로 스택 + 세로 구분선 + 우 리스트 스택, `variant: "columns"`). 배정: recap s4·askewly s3. 구도 레퍼토리 = 가로줄/컬럼/차트+스택/플로우/클로징 5종.
+- ② "아이콘은 뭘 쓰나" — 유니코드 글리프 텍스트(✦⧉)였음 → **lucide SVG 벡터 이미지 삽입**(pptxgenjs addImage, base64 svg — HTML 트랙과 아이콘 어휘 통일). 실무 관례 조사: M365 삽입>아이콘(내장 SVG)/Flaticon·Noun Project/오픈소스 SVG(lucide·tabler) — 우리 경로는 lucide 자체 임베드.
+- **게이트 재정의**: "pictures 0"은 차트·텍스트 비트맵 방지용 — 아이콘 SVG 는 허용으로 좁힘. 검증 = pictures 수 == 아이콘 수 정확 일치(askewly 13·recap 9 실측 일치) + 차트 has_chart 유지.
+
 ## 게이트
 
 - 시각(체크리스트 5항): PASS (r2 수렴 + 전장 f1).

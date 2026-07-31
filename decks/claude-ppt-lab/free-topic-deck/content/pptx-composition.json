@@ -70,6 +70,7 @@
     {
       "no": 4,
       "kind": "content",
+      "variant": "columns",
       "kicker": { "no": "03", "label": "교훈" },
       "headline": "품질은 렌더가 아니라 그래머에서 나옵니다.",
       "subline": "HTML 미러링은 관측 FAIL — 주장형 헤드라인·정보 3계층·단일 키컬러가 답이었다",

@@ -41,7 +41,7 @@ const pptxgen = resolvePptxgen();
 const pptx = new pptxgen();
 pptx.defineLayout({ name: 'WIDE', width: 13.333, height: 7.5 });
 pptx.layout = 'WIDE';
-pptx.title = 'Askewly Design';
+pptx.title = deckMeta.title || 'Askewly Deck';
 const W = 13.333, H = 7.5;
 const MX = 0.75; // 좌우 여백 (프레임 그리드)
 const CW = W - MX * 2;
@@ -106,6 +106,29 @@ function chartCard(slide, x, y, w, h, c) {
   if (c.source) slide.addText(c.source, { x: x + 0.3, y: y + h - 0.36, w: w - 0.6, h: 0.24, fontFace: FONT, fontSize: 8.5, color: MUTED });
 }
 
+// 아이콘: lucide SVG 를 벡터 이미지로 삽입 (유니코드 글리프 대체 — 사용자 관측 f5).
+// "pictures 0" 게이트는 차트·텍스트 비트맵 방지용 — 아이콘 SVG 는 허용(개수 일치로 검증).
+const ICON_PATHS = {
+  sparkle: '<path d="M9.9 15.5a2 2 0 0 0-1.4-1.4L2.4 12.5a.5.5 0 0 1 0-1L8.5 9.9a2 2 0 0 0 1.4-1.4l1.6-6.1a.5.5 0 0 1 1 0l1.6 6.1a2 2 0 0 0 1.4 1.4l6.1 1.6a.5.5 0 0 1 0 1l-6.1 1.6a2 2 0 0 0-1.4 1.4l-1.6 6.1a.5.5 0 0 1-1 0z"/>',
+  layers: '<path d="m12.8 2.2a2 2 0 0 0-1.6 0L2.6 6.1a1 1 0 0 0 0 1.8l8.6 3.9a2 2 0 0 0 1.6 0l8.6-3.9a1 1 0 0 0 0-1.8z"/><path d="m22 12.7-9.2 4.2a2 2 0 0 1-1.6 0L2 12.7"/><path d="m22 17.7-9.2 4.2a2 2 0 0 1-1.6 0L2 17.7"/>',
+  repeat: '<path d="m17 2 4 4-4 4"/><path d="M3 11v-1a4 4 0 0 1 4-4h14"/><path d="m7 22-4-4 4-4"/><path d="M21 13v1a4 4 0 0 1-4 4H3"/>',
+  monitor: '<rect x="2" y="3" width="20" height="14" rx="2"/><path d="M8 21h8"/><path d="M12 17v4"/>',
+  target: '<circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="6"/><circle cx="12" cy="12" r="2"/>',
+  hash: '<path d="M4 9h16"/><path d="M4 15h16"/><path d="M10 3 8 21"/><path d="M16 3l-2 18"/>',
+  file: '<path d="M15 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7z"/><path d="M14 2v4a2 2 0 0 0 2 2h4"/>',
+  check: '<path d="M20 6 9 17l-5-5"/>',
+};
+const GLYPH_ICON = { '✦': 'sparkle', '⧉': 'layers', '⇄': 'repeat', '▣': 'monitor', '◎': 'target', '⌗': 'hash', '⎙': 'file', '✓': 'check' };
+function iconData(name) {
+  const svg = `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="#${NAVY}" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">${ICON_PATHS[name] || ICON_PATHS.sparkle}</svg>`;
+  return `image/svg+xml;base64,${Buffer.from(svg).toString('base64')}`;
+}
+function iconChip(slide, x, y, size, glyph) {
+  slide.addShape('roundRect', { x, y, w: size, h: size, rectRadius: 0.1, fill: { color: SOFT }, line: { color: SOFTBORDER, width: 0.75 } });
+  const pad = size * 0.24;
+  slide.addImage({ data: iconData(GLYPH_ICON[glyph] || 'sparkle'), x: x + pad, y: y + pad, w: size - pad * 2, h: size - pad * 2 });
+}
+
 // 오픈 스탯: 상단 헤어라인 + 빅넘버 + 라벨 + 상세 — 카드 없음 (카드 일색 회피, 사용자 관측 f4)
 function openStat(slide, x, y, w, s) {
   slide.addShape('line', { x, y, w, h: 0, line: { color: BORDER, width: 1 } });
@@ -115,11 +138,10 @@ function openStat(slide, x, y, w, s) {
   slide.addText(s.detail || '', { x, y: y + 1.02, w, h: 0.5, fontFace: FONT, fontSize: 9.5, color: MUTED, valign: 'top' });
 }
 
-// 오픈 리스트: 틴트 칩 + 소라벨 + 제목 + 본문 — 카드 없음
+// 오픈 리스트: 틴트 칩(lucide SVG) + 소라벨 + 제목 + 본문 — 카드 없음
 function openListItem(slide, x, y, w, h, item, idx, tagPrefix) {
   const chip = 0.42;
-  slide.addShape('roundRect', { x, y: y + 0.06, w: chip, h: chip, rectRadius: 0.1, fill: { color: SOFT }, line: { color: SOFTBORDER, width: 0.75 } });
-  slide.addText(item.glyph || '✦', { x, y: y + 0.06, w: chip, h: chip, fontFace: FONT, fontSize: 12.5, bold: true, color: NAVY, align: 'center', valign: 'middle', margin: 0 });
+  iconChip(slide, x, y + 0.06, chip, item.glyph);
   const tx = x + chip + 0.22, tw = w - chip - 0.22;
   let ty = y;
   if (tagPrefix) {
@@ -157,7 +179,8 @@ for (const s of comp.slides) {
 
   if (s.kind === 'cover') {
     frame(slide, { pageNo: s.no });
-    slide.addText(s.title, { x: MX, y: 2.75, w: CW, h: 1.1, fontFace: FONT, fontSize: 56, bold: true, color: INK, align: 'center', charSpacing: -0.5 });
+    const coverSize = s.title.length > 14 ? 40 : 56; // 긴 제목은 축소 (한 줄 유지)
+    slide.addText(s.title, { x: MX, y: 2.75, w: CW, h: 1.1, fontFace: FONT, fontSize: coverSize, bold: true, color: INK, align: 'center', charSpacing: -0.5 });
     slide.addText(s.subtitle || '', { x: MX, y: 3.95, w: CW, h: 0.4, fontFace: FONT, fontSize: 15, color: SUB, align: 'center' });
     const chips = s.chips || [];
     const chipW = 1.0, gap = 0.2, totalW = chips.length * chipW + (chips.length - 1) * gap;
@@ -211,9 +234,22 @@ for (const s of comp.slides) {
     slide.addShape('line', { x: MX, y: ly - 0.28, w: CW, h: 0, line: { color: BORDER, width: 1 } });
     const lw = (CW - 0.6) / 2;
     items.forEach((item, i) => openListItem(slide, MX + i * (lw + 0.6), ly, lw, 1.0, item, i, s.list.tagPrefix));
+  } else if (s.variant === 'columns') {
+    // 2열 컬럼 변형: 좌 스탯 세로 스택 + 세로 구분선 + 우 리스트 세로 스택 (구도 반복 회피 — 사용자 관측 f5)
+    const stats = s.stats || [], items = s.list?.items || [];
+    const colW = (CW - 0.9) / 2;
+    const sh = 1.35, sGap = 0.22;
+    const sBlock = stats.length * sh + (stats.length - 1) * sGap;
+    const sTop = bodyTop + (bodyH - sBlock) / 2;
+    stats.forEach((st, i) => openStat(slide, MX, sTop + i * (sh + sGap), colW, st));
+    slide.addShape('line', { x: MX + colW + 0.45, y: bodyTop + 0.15, w: 0, h: bodyH - 0.3, line: { color: BORDER, width: 1 } });
+    const lx = MX + colW + 0.9;
+    const lh2 = 1.05, lGap = 0.3;
+    const lBlock = items.length * lh2 + (items.length - 1) * lGap;
+    const lTop = bodyTop + (bodyH - lBlock) / 2;
+    items.forEach((item, i) => openListItem(slide, lx, lTop + i * (lh2 + lGap), colW, lh2, item, i, s.list?.tagPrefix));
   } else {
-    // 기본 구도(ref-02 축약): 상단 스탯 카드 줄 + 하단 아이콘 리스트
-    // 오픈 구성: 헤어라인 스탯 줄 + 하단 오픈 리스트 (카드 일색 회피 — 카드는 s4 차트 구도에만)
+    // 기본 구도: 헤어라인 스탯 줄 + 하단 오픈 리스트 (카드 일색 회피 — 카드는 차트 구도에만)
     const stats = s.stats || [];
     const gap = 0.55, cw2 = (CW - gap * (stats.length - 1)) / stats.length;
     const statH = 1.55, lh = 1.35;
