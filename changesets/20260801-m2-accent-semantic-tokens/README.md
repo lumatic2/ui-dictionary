@@ -18,3 +18,9 @@
 - ui/button.tsx·ui/badge.tsx·bottom-tab-bar.tsx: text-white → text-destructive-foreground(마커 3건 제거 — "correct" 판단을 토큰 값으로 승격).
 - 보조 토큰 `emphasis.on-solid`(white/white) 즉석 추가 + 재생성(연쇄: tokens.json→generate-tokens→generate-llms-txt→@theme).
 - Verify: "토큰 부재" 마커 잔여 0(콘텐츠 정정 1건 제외) · lint(스캐너 0 violations)·build+prerender PASS · dist CSS 신설 유틸리티 전수 방출 · 라이트=값 동일 무손실(oklch 리터럴 그대로 승격) · 다크 토글 실렌더 스크린샷·CSS 변수 해석 확인 · 콘솔 0에러.
+
+## step-3 — 토큰 문서 표면 반영 + 통합 검증 (M2 마감)
+
+- docs Foundations Color 아티클(documentation-pages.ts) primitive·semantic 열거에 신설 토큰 반영. colors-page 는 팔레트 라이브러리로 판정(토큰 문서 아님 — 계획의 "자동 파생이면 확인만" 분기).
+- 통합 검증: lint(스캐너 0)·build+prerender 755·verify PASS(90파일, 색 리터럴 0)·llms identical·Playwright 라이트/다크 콘솔 0에러.
+- Evidence: `evidence/dark-carryover/m2-accent-semantic-tokens.md`

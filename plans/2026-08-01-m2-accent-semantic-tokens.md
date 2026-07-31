@@ -48,7 +48,7 @@ Status: approved (사용자 승인 2026-08-01 "ㄱㄱ" — 연쇄 M2→M3→M4 �
   - Failure probe: article-documentation-layout 마커 중 데모 콘텐츠 판정분 — 치환하지 않고 사유를 "콘텐츠"로 정정한 건이 있으면 그 근거를 finding 큐에 기록(조용한 잔존 금지).
   - Commit: changeset `m2-accent-semantic-tokens` (README 절: step-2).
 
-- [ ] **step-3 — 토큰 문서 표면 반영 + 통합 검증 (M2 마감)**
+- [x] **step-3 — 토큰 문서 표면 반영 + 통합 검증 (M2 마감)**
   - Artifact: colors-page 등 토큰 문서 표면에 신설 토큰 노출(자동 파생이면 재생성 확인만) + 통합 검증 일괄 실행 + `evidence/dark-carryover/m2-accent-semantic-tokens.md`.
   - Files: write evidence/dark-carryover/m2-accent-semantic-tokens.md, (필요 시) src/components/colors-page.tsx·문서 데이터. read 전 단계 산출물.
   - Risk: 기계적
