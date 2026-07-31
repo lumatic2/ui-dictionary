@@ -5167,7 +5167,7 @@
     "dq2-expressive-mechanics": {
       "work_id": "dq2-expressive-mechanics",
       "milestone_id": "DQ2",
-      "status": "active",
+      "status": "completed",
       "plan_path": "plans/2026-07-31-dq2-expressive-mechanics.md",
       "changeset_path": "changesets/20260731-dq2-expressive-mechanics",
       "next_step": "step-1",
@@ -5208,7 +5208,8 @@
       ],
       "owner_session_uuid": "claude:f5757e4f-221b-42df-8d0b-5eb4936f9289",
       "updated_at": "2026-07-31",
-      "notes": "Registered atomically by canonical harness approve_harness_plan.py after plan validation."
+      "notes": "Registered atomically by canonical harness approve_harness_plan.py after plan validation.",
+      "completion_summary": "DQ2 완료 — animId 연속 전환(VT 실측)·이미지 최적화 77% 감소·sourceNote 겹침 수리"
     }
   }
 }

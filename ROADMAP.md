@@ -22,14 +22,16 @@ Goal: 슬라이드 덱 자체 품질 업그레이드 — 품질 루브릭+few-sh
 
 - Completed at: 2026-07-31
 - Summary: 루브릭 Q1~Q12+견본 5계열+G5 대조 배선·Q2 린트 — custom-skills 2커밋 배포
-<!-- harness:milestone id="DQ2" status="active" priority="P1" evidence="evidence/deck-quality/dq2-expressive-mechanics.md" -->
+<!-- harness:milestone id="DQ2" status="completed" priority="P1" evidence="evidence/deck-quality/dq2-expressive-mechanics.md" -->
 ### DQ2 — 표현 기계 업그레이드
 - DoD: 장간 연속 전환(opt-in, 실크롬 file:// 실측 또는 폴백 확정) + 이미지 최적화 빌드(용량 실측 개선) + sourceNote 겹침 해소 — HU4 회귀 5종 PASS·미사용 덱 무변화.
 - Evidence: evidence/deck-quality/dq2-expressive-mechanics.md
 - Gap: Auto-Animate·이미지 최적화·sourceNote 배치 3건 이월 finding
 - Plan: plans/2026-07-31-dq2-expressive-mechanics.md
-- Status: [ ]
+- Status: [x]
 
+- Completed at: 2026-08-01
+- Summary: animId 전환·optimize-images(77% 감소)·sourceNote 수리 — 회귀 6종 PASS
 <!-- harness:milestone id="DQ3" status="pending" priority="P1" evidence="evidence/deck-quality/dq3-canonical-redesign.md" -->
 ### DQ3 — 정본 덱 리디자인 + 관측
 - DoD: 정본 덱이 루브릭 기준 재제작되어 전/후 감사표 개선 + 전 자동 검증·HU4 회귀·발표 전 체크 PASS + 사용자 관측 PASS.

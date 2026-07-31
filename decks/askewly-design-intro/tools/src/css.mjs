@@ -88,7 +88,10 @@ function baseSlideCss() {
 .layout-case-map, .layout-split-screen, .layout-timeline-cards, .layout-pipeline-lanes, .layout-result-transitions { --header-h: 118px; --content-max-h: 372px; --content-pad-top: 6px; }
 .layout-case-map .subtitle, .layout-split-screen .subtitle, .layout-timeline-cards .subtitle, .layout-pipeline-lanes .subtitle, .layout-result-transitions .subtitle { margin-bottom: 24px; }
 .layout-case-map { --content-max-h: 394px; }
-.layout-split-screen { --content-max-h: 402px; }
+.layout-split-screen { --content-max-h: 372px; }
+/* split-screen 은 미디어 패널이 하단까지 차서 절대 배치 sourceNote 가 그 위에 얹혔다(HU3 관측 — DQ2 수리).
+   노트를 플로우로 내려 패널 아래에 앉힌다. .container > * 의 relative 와 capture 의 bottom 을 이기려면 특이도가 필요하다. */
+.container.layout-split-screen .source-note { position: relative; bottom: auto; left: auto; right: auto; margin: 12px auto 0; max-width: 1040px; }
 .layout-timeline-cards { --content-max-h: 402px; }
 .layout-pipeline-lanes { --content-max-h: 390px; }
 .layout-result-transitions { --content-max-h: 392px; }
