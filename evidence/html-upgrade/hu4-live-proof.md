@@ -22,4 +22,4 @@
 ## 게이트
 
 - 자동·리허설·회귀: PASS (위 실측).
-- 사용자 관측 1회(라이브 발표 흐름): **대기** — 관측 결과를 새 줄로 추가한다.
+- 사용자 관측 1회차 2026-07-31: **부분 FAIL — 3건 반영** ① fragment 는 좋으나 기본값이 아니어야 함(사용자 확정: 기본=전체 표시, 요청 장만) → 계약 반전+정본 덱 제거 ② 스피커→본편 동기 불통(실크롬 file:// = opaque origin — BC·localStorage 무음 사망, Playwright headless 와 환경차) → postMessage 릴레이+하트비트, 합성 재현 `POSTMESSAGE-SYNC PASS` ③ 스피커 노트 수정 불가 → textarea 편집+수정본 복사. 회귀: 리허설 PASS·픽셀 diff 0/7 유지. **재관측 대기.**

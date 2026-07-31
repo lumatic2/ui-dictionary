@@ -44,18 +44,15 @@
       "items": [
         {
           "title": "공개 웹사이트",
-          "body": "사람이 UI 패턴·용어·데모를 둘러보는 ui.askewly.com",
-          "fragment": 1
+          "body": "사람이 UI 패턴·용어·데모를 둘러보는 ui.askewly.com"
         },
         {
           "title": "에이전트 시스템",
-          "body": "Codex·Claude Code가 llms.txt로 읽는 토큰·레시피·가이드",
-          "fragment": 2
+          "body": "Codex·Claude Code가 llms.txt로 읽는 토큰·레시피·가이드"
         },
         {
           "title": "제작 왕복",
-          "body": "익숙한 도구에서 그린 것이 정본을 거쳐 코드로 무손실 왕복",
-          "fragment": 3
+          "body": "익숙한 도구에서 그린 것이 정본을 거쳐 코드로 무손실 왕복"
         }
       ],
       "notes": "북극성 3축. 셋 다 같은 정본에서 나온다는 점이 핵심."
@@ -130,28 +127,23 @@
       "items": [
         {
           "title": "자료",
-          "body": "출처 있는 주장만",
-          "fragment": 1
+          "body": "출처 있는 주장만"
         },
         {
           "title": "구성안",
-          "body": "장별 메시지 1개",
-          "fragment": 2
+          "body": "장별 메시지 1개"
         },
         {
           "title": "문구",
-          "body": "제목은 곧 주장",
-          "fragment": 3
+          "body": "제목은 곧 주장"
         },
         {
           "title": "디자인",
-          "body": "그다음이 시각",
-          "fragment": 4
+          "body": "그다음이 시각"
         },
         {
           "title": "내보내기",
-          "body": "최종 형식 확인",
-          "fragment": 5
+          "body": "최종 형식 확인"
         }
       ],
       "notes": "Minto·Duarte·맥킨지가 수렴하는 순서. 린터가 제목·밀도를 자동 경고한다."

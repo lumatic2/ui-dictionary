@@ -852,7 +852,8 @@ html.capture-mode .container, html.capture-mode .container * { animation: none !
       
     }
     if ((e.key === 's' || e.key === 'S') && !e.ctrlKey && !e.metaKey && !e.altKey) {
-      window.open('speaker.html', 'deck-speaker', 'width=1180,height=740');
+      var w = window.open('speaker.html', 'deck-speaker', 'width=1180,height=740');
+      if (window.__deckSync && w) window.__deckSync.addPeer(w);
     }
   });
   // 스피커 뷰 동기 + fragment 단계 공개 (export 캡처 모드에서는 침묵 — 산출물 무오염)
@@ -860,9 +861,16 @@ html.capture-mode .container, html.capture-mode .container * { animation: none !
     function createDeckSync() {
     var KEY = 'deck-sync::askewly-design';
     var id = Math.random().toString(36).slice(2), seq = 0, seen = {}, handlers = [], bc = null;
+    var peers = []; // postMessage 상대 (스피커: opener / 본편: 메시지를 보내온 스피커 창)
+    if (window.opener && window.opener !== window) peers.push(window.opener);
+    function addPeer(w) {
+      if (!w || w === window) return;
+      for (var i = 0; i < peers.length; i++) if (peers[i] === w) return;
+      peers.push(w);
+    }
     try { bc = new BroadcastChannel(KEY); } catch (e) {}
     function dispatch(msg) {
-      if (!msg || msg.from === id) return;
+      if (!msg || msg.channel !== KEY || msg.from === id) return;
       var k = msg.from + ':' + msg.seq;
       if (seen[k]) return; seen[k] = true;
       handlers.forEach(function (h) { h(msg); });
@@ -872,19 +880,29 @@ html.capture-mode .container, html.capture-mode .container * { animation: none !
       if (e.key !== KEY || !e.newValue) return;
       try { dispatch(JSON.parse(e.newValue)); } catch (err) {}
     });
+    window.addEventListener('message', function (e) {
+      if (!e.data || e.data.channel !== KEY) return;
+      addPeer(e.source);
+      dispatch(e.data);
+    });
     return {
       send: function (msg) {
-        msg.from = id; msg.seq = ++seq; msg.t = Date.now();
+        msg.from = id; msg.seq = ++seq; msg.t = Date.now(); msg.channel = KEY;
         if (bc) try { bc.postMessage(msg); } catch (e) {}
         try { localStorage.setItem(KEY, JSON.stringify(msg)); } catch (e) {}
+        for (var i = 0; i < peers.length; i++) {
+          try { peers[i].postMessage(msg, '*'); } catch (e) {}
+        }
       },
-      on: function (h) { handlers.push(h); }
+      on: function (h) { handlers.push(h); },
+      addPeer: addPeer
     };
   }
     var __FILES = ["01-cover.html","02-three-faces.html","03-medium-gates.html","04-assets-stacked.html","05-structure-first.html","06-this-deck-proves.html","07-closing.html"];
     var __INDEX = 0;
     var __FRAGS = [];
     var __sync = createDeckSync();
+    window.__deckSync = __sync;
     var __frag = { list: [], revealed: 0 };
     if (__FRAGS.length) {
       var __units = document.querySelectorAll('.slide-content article');
