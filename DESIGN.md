@@ -126,11 +126,16 @@ tokens:
       sans: { value: "Geist, Noto Sans KR, ui-sans-serif, system-ui, sans-serif", type: fontFamily }
       mono: { value: "Geist Mono, ui-monospace, monospace", type: fontFamily }
     scale:
+      2xs: { value: "0.625rem", type: dimension }
+      xs: { value: "0.75rem", type: dimension }
       sm: { value: "14px", type: dimension }
       base: { value: "16px", type: dimension }
       lg: { value: "20px", type: dimension }
       xl: { value: "28px", type: dimension }
       2xl: { value: "40px", type: dimension }
+      3xl: { value: "1.875rem", type: dimension }
+      5xl: { value: "3rem", type: dimension }
+      7xl: { value: "4.5rem", type: dimension }
     weight:
       regular: { value: 400, type: fontWeight }
       medium: { value: 500, type: fontWeight }

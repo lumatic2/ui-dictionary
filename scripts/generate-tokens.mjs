@@ -88,11 +88,16 @@ const SPACE_MAPPINGS = [
 ];
 
 const FONT_SIZE_MAPPINGS = [
+  ["--font-size-2xs", "typography.scale.2xs"],
+  ["--font-size-xs", "typography.scale.xs"],
   ["--font-size-sm", "typography.scale.sm"],
   ["--font-size-base", "typography.scale.base"],
   ["--font-size-lg", "typography.scale.lg"],
   ["--font-size-xl", "typography.scale.xl"],
   ["--font-size-2xl", "typography.scale.2xl"],
+  ["--font-size-3xl", "typography.scale.3xl"],
+  ["--font-size-5xl", "typography.scale.5xl"],
+  ["--font-size-7xl", "typography.scale.7xl"],
 ];
 
 const FONT_WEIGHT_MAPPINGS = [

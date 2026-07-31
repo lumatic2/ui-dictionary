@@ -48,11 +48,16 @@
   --space-8: 32px;
   --space-12: 48px;
   --space-16: 64px;
+  --font-size-2xs: 0.625rem;
+  --font-size-xs: 0.75rem;
   --font-size-sm: 14px;
   --font-size-base: 16px;
   --font-size-lg: 20px;
   --font-size-xl: 28px;
   --font-size-2xl: 40px;
+  --font-size-3xl: 1.875rem;
+  --font-size-5xl: 3rem;
+  --font-size-7xl: 4.5rem;
   --font-weight-regular: 400;
   --font-weight-medium: 500;
   --font-sans: Geist, "Noto Sans KR", ui-sans-serif, system-ui, sans-serif;

@@ -30,7 +30,7 @@ Status: approved (사용자 승인 2026-08-01 "ㄱㄱ" — 연쇄 M5→M6 일괄
 
 ## Step 트리
 
-- [ ] **step-1 — SSOT 확장 + 재생성 + @theme 배선**
+- [x] **step-1 — SSOT 확장 + 재생성 + @theme 배선**
   - Artifact: typography.scale 9단계 확장 → `node scripts/generate-tokens.mjs`(FONT_SIZE_MAPPINGS 확장 포함, DESIGN.md frontmatter 동반 재작성) → `index.css` `@theme` `--text-*` 배선(값 동일 단계) + `text-2xs` 신설 → `node scripts/generate-llms-txt.mjs`.
   - Files: write tokens/askewly.tokens.json, scripts/generate-tokens.mjs, DESIGN.md(생성), examples/ui-vocabulary-site/src/tokens.css(생성), examples/ui-vocabulary-site/src/index.css, examples/ui-vocabulary-site/public/llms*(생성). read M1 closeout 표, node_modules/tailwindcss/theme.css(기본값 대조).
   - Risk: 기계적 (additive + 값 동일 배선 — computed 대조로 즉시 검증)
@@ -62,3 +62,4 @@ Status: approved (사용자 승인 2026-08-01 "ㄱㄱ" — 연쇄 M5→M6 일괄
 ## 진행 로그
 - 2026-08-01 작성.
 - 2026-08-01 fresh 검증자(sonnet) 반영 — M6 tailwind theme.css 경로 정정(사이트 워크스페이스), M5 llms 게이트 EOL 오탐 리스크에 .gitattributes 선제 고정 추가. 사실 검증 전건 정확 판정.
+- 2026-08-01 step-1 실행 노트 — 신규 단계는 rem 등재(px 강제 시 사용자 폰트 확대에서 렌더 변화 — 무손실 계약 엄밀 해석, 기술 결정 보강).

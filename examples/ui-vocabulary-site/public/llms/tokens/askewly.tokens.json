@@ -320,11 +320,23 @@
     },
     "scale": {
       "$type": "dimension",
+      "$description": "M6 2026-08-01: expanded to the 9 steps screens actually render (M1 closeout measurement). New steps (2xs/xs/3xl/5xl/7xl) carry Tailwind v4 default values verbatim in rem — they are wired into @theme --text-* so existing utility classes route through the SSOT with zero render change. Legacy 5 names (sm/base/lg/xl/2xl, px) are kept for backward compat; lg(20) and 2xl(40) differ from Tailwind's same-named defaults and are NOT wired.",
+      "2xs": {
+        "$description": "Micro labels (10px at default root). New utility text-2xs — Tailwind has no built-in 2xs.",
+        "$value": { "value": 0.625, "unit": "rem" }
+      },
+      "xs": { "$value": { "value": 0.75, "unit": "rem" } },
       "sm": { "$value": { "value": 14, "unit": "px" } },
       "base": { "$value": { "value": 16, "unit": "px" } },
       "lg": { "$value": { "value": 20, "unit": "px" } },
-      "xl": { "$value": { "value": 28, "unit": "px" } },
-      "2xl": { "$value": { "value": 40, "unit": "px" } }
+      "xl": {
+        "$description": "Unused by live screens as of M1 measurement (2026-08-01) — kept as record for llms consumers.",
+        "$value": { "value": 28, "unit": "px" }
+      },
+      "2xl": { "$value": { "value": 40, "unit": "px" } },
+      "3xl": { "$value": { "value": 1.875, "unit": "rem" } },
+      "5xl": { "$value": { "value": 3, "unit": "rem" } },
+      "7xl": { "$value": { "value": 4.5, "unit": "rem" } }
     },
     "weight": {
       "$type": "fontWeight",

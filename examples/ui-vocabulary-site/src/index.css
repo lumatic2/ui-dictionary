@@ -24,6 +24,13 @@
 @theme inline {
   --font-sans: Geist, "Noto Sans KR", ui-sans-serif, system-ui, sans-serif;
   --font-mono: "Geist Mono", ui-monospace, monospace;
+  /* 타이포 스케일 SSOT 경유 (M6) — 값이 Tailwind 기본값과 동일한 단계만 배선(렌더 무손실).
+     lg(20)·2xl(40)은 Tailwind 동명 기본값과 달라 배선하지 않는다. 2xs 는 신설 유틸(라인하이트 쌍 없음 — text-[10px] 관례와 동일). */
+  --text-2xs: var(--font-size-2xs);
+  --text-xs: var(--font-size-xs);
+  --text-3xl: var(--font-size-3xl);
+  --text-5xl: var(--font-size-5xl);
+  --text-7xl: var(--font-size-7xl);
   --color-background: var(--background);
   --color-foreground: var(--foreground);
   --color-card: var(--card);
