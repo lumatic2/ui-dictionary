@@ -20,7 +20,7 @@ export function ColorsSwatchGrid() {
     <div aria-hidden="true" className="pointer-events-none select-none">
       <img
         alt=""
-        className="h-48 w-full rounded-xl object-cover"
+        className="h-48 w-full object-contain"
         src="/assets/get-started/colors.webp"
       />
     </div>
@@ -32,7 +32,7 @@ export function RecipesCollage() {
     <div aria-hidden="true" className="pointer-events-none select-none lg:py-2">
       <img
         alt=""
-        className="h-56 w-full rounded-xl object-cover"
+        className="h-56 w-full object-contain"
         src="/assets/get-started/recipes.webp"
       />
     </div>
