@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "active_work_id": "m1-carryover-maintenance",
+  "active_work_id": "dark-carryover",
   "works": {
     "SFB1": {
       "title": "Structure Contract And Clean Production",
@@ -4834,6 +4834,57 @@
       "updated_at": "2026-07-31",
       "notes": "Registered atomically by canonical harness approve_harness_plan.py after plan validation.",
       "completion_summary": "이월 finding 2건이 닫혔다."
+    },
+    "dark-carryover": {
+      "work_id": "dark-carryover",
+      "milestone_id": "M2",
+      "status": "active",
+      "plan_path": "plans/2026-08-01-m2-accent-semantic-tokens.md",
+      "changeset_path": "changesets/20260801-m2-accent-semantic-tokens",
+      "next_step": "step-1",
+      "current_step": "step-1",
+      "steps": [
+        {
+          "id": "step-1",
+          "label": "step-1 — 토큰 신설 + 재생성 배선"
+        },
+        {
+          "id": "step-2",
+          "label": "step-2 — \"토큰 부재\" 마커 전수 치환·제거"
+        },
+        {
+          "id": "step-3",
+          "label": "step-3 — 토큰 문서 표면 반영 + 통합 검증 (M2 마감)"
+        }
+      ],
+      "execution_mode": "continuous",
+      "approval": {
+        "approved_by": "user",
+        "approved_at": "2026-08-01",
+        "plan_sha256": "178a6bfaa9f20e5c7586ccddf3349172fa912d39eb03afc40a0d4a22d67e72f8",
+        "chain": [
+          "M3",
+          "M4"
+        ]
+      },
+      "allowed_stop_reasons": [
+        "completed",
+        "blocked",
+        "decision_required",
+        "risk_gate",
+        "secret_required",
+        "external_authority_required",
+        "user_stopped"
+      ],
+      "stop_reason": null,
+      "stop_detail": {},
+      "session_ids": [
+        "codex:e46f1ede-7ce4-4c8e-bc2a-40d995cdf03b",
+        "claude:e46f1ede-7ce4-4c8e-bc2a-40d995cdf03b"
+      ],
+      "owner_session_uuid": "claude:e46f1ede-7ce4-4c8e-bc2a-40d995cdf03b",
+      "updated_at": "2026-08-01",
+      "notes": "Registered atomically by canonical harness approve_harness_plan.py after plan validation."
     }
   }
 }

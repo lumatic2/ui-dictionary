@@ -26,11 +26,54 @@
         "orchid": { "$value": { "colorSpace": "srgb", "components": [0.65098, 0.388235, 0.8], "hex": "#A663CC" } },
         "lavender": { "$value": { "colorSpace": "srgb", "components": [0.698039, 0.596078, 0.862745], "hex": "#B298DC" } },
         "sky": { "$value": { "colorSpace": "srgb", "components": [0.721569, 0.815686, 0.921569], "hex": "#B8D0EB" } },
-        "mint": { "$value": { "colorSpace": "srgb", "components": [0.72549, 0.980392, 0.972549], "hex": "#B9FAF8" } }
+        "mint": { "$value": { "colorSpace": "srgb", "components": [0.72549, 0.980392, 0.972549], "hex": "#B9FAF8" } },
+        "violet-deep": {
+          "$description": "Hover shade of the canonical brand violet (M2 2026-08-01, promoted from hardcoded #5f22a8).",
+          "$value": { "colorSpace": "srgb", "components": [0.372549, 0.133333, 0.658824], "hex": "#5F22A8" }
+        }
       },
       "red": {
         "$type": "color",
         "9": { "$value": { "colorSpace": "oklch", "components": [0.58, 0.22, 27] } }
+      },
+      "indigo": {
+        "$type": "color",
+        "$description": "Emphasis/selection accent ramp (M2 2026-08-01). Values = Tailwind v4 defaults the site already rendered, promoted verbatim for light-mode visual losslessness.",
+        "50": { "$value": { "colorSpace": "oklch", "components": [0.962, 0.018, 272.314] } },
+        "300": { "$value": { "colorSpace": "oklch", "components": [0.785, 0.115, 274.713] } },
+        "400": { "$value": { "colorSpace": "oklch", "components": [0.673, 0.182, 276.935] } },
+        "500": { "$value": { "colorSpace": "oklch", "components": [0.585, 0.233, 277.117] } },
+        "600": { "$value": { "colorSpace": "oklch", "components": [0.511, 0.262, 276.966] } },
+        "700": { "$value": { "colorSpace": "oklch", "components": [0.457, 0.24, 277.023] } },
+        "950": { "$value": { "colorSpace": "oklch", "components": [0.257, 0.09, 281.288] } }
+      },
+      "skyx": {
+        "$type": "color",
+        "$description": "Informational accent ramp (M2 2026-08-01, Tailwind v4 sky — named skyx to avoid clashing with brand askewly.sky).",
+        "100": { "$value": { "colorSpace": "oklch", "components": [0.951, 0.026, 236.824] } },
+        "300": { "$value": { "colorSpace": "oklch", "components": [0.828, 0.111, 230.318] } },
+        "400": { "$value": { "colorSpace": "oklch", "components": [0.746, 0.16, 232.661] } },
+        "500": { "$value": { "colorSpace": "oklch", "components": [0.685, 0.169, 237.323] } },
+        "600": { "$value": { "colorSpace": "oklch", "components": [0.588, 0.158, 241.966] } },
+        "700": { "$value": { "colorSpace": "oklch", "components": [0.5, 0.134, 242.749] } },
+        "950": { "$value": { "colorSpace": "oklch", "components": [0.293, 0.066, 243.157] } }
+      },
+      "emerald": {
+        "$type": "color",
+        "$description": "Success accent ramp (M2 2026-08-01, Tailwind v4 defaults).",
+        "50": { "$value": { "colorSpace": "oklch", "components": [0.979, 0.021, 166.113] } },
+        "300": { "$value": { "colorSpace": "oklch", "components": [0.845, 0.143, 164.978] } },
+        "700": { "$value": { "colorSpace": "oklch", "components": [0.508, 0.118, 165.612] } },
+        "950": { "$value": { "colorSpace": "oklch", "components": [0.262, 0.051, 172.552] } }
+      },
+      "rose": {
+        "$type": "color",
+        "$description": "Danger accent ramp (M2 2026-08-01, Tailwind v4 defaults). Distinct from red.9 (--destructive): the site's danger demos render rose, and the shades intentionally differ.",
+        "100": { "$value": { "colorSpace": "oklch", "components": [0.941, 0.03, 12.58] } },
+        "400": { "$value": { "colorSpace": "oklch", "components": [0.712, 0.194, 13.428] } },
+        "500": { "$value": { "colorSpace": "oklch", "components": [0.645, 0.246, 16.439] } },
+        "600": { "$value": { "colorSpace": "oklch", "components": [0.586, 0.253, 17.585] } },
+        "950": { "$value": { "colorSpace": "oklch", "components": [0.271, 0.105, 12.094] } }
       }
     },
     "semantic": {
@@ -85,6 +128,11 @@
           "$description": "Text/icon on action.primary solid fills.",
           "$value": "{color.primitive.gray.1}",
           "$extensions": { "com.askewly.modes": { "dark": "{color.primitive.gray.12}" } }
+        },
+        "on-destructive": {
+          "$description": "Text/icon on action.destructive solid fills. Theme-invariant white (M2: promotes the settled 'text-white is correct' marker verdict into a token).",
+          "$value": "{color.primitive.white}",
+          "$extensions": { "com.askewly.modes": { "dark": "{color.primitive.white}" } }
         }
       },
       "action": {
@@ -93,6 +141,11 @@
           "$value": "{color.primitive.askewly.violet}",
           "$extensions": { "com.askewly.modes": { "dark": "{color.primitive.gray.1}" } }
         },
+        "primary-hover": {
+          "$description": "Hover state for brand-violet fills/text (M2). Dark uses the brighter orchid — darkening on hover loses contrast on dark surfaces.",
+          "$value": "{color.primitive.askewly.violet-deep}",
+          "$extensions": { "com.askewly.modes": { "dark": "{color.primitive.askewly.orchid}" } }
+        },
         "secondary": {
           "$value": "{color.primitive.askewly.orchid}",
           "$extensions": { "com.askewly.modes": { "dark": "{color.primitive.askewly.mint}" } }
@@ -100,6 +153,79 @@
         "destructive": {
           "$value": "{color.primitive.red.9}",
           "$extensions": { "com.askewly.modes": { "dark": "{color.primitive.red.9}" } }
+        }
+      },
+      "emphasis": {
+        "$type": "color",
+        "$description": "Selection/emphasis accent (indigo family, M2 2026-08-01). Distinct from 'accent' (shadcn interaction-state wash, mint family) — do not merge (group-semantics collision, fresh-verifier finding).",
+        "surface": {
+          "$description": "Chip/selected-row wash.",
+          "$value": "{color.primitive.indigo.50}",
+          "$extensions": { "com.askewly.modes": { "dark": "{color.primitive.indigo.950}" } }
+        },
+        "foreground": {
+          "$description": "Text on emphasis.surface.",
+          "$value": "{color.primitive.indigo.700}",
+          "$extensions": { "com.askewly.modes": { "dark": "{color.primitive.indigo.300}" } }
+        },
+        "solid": {
+          "$description": "Solid emphasis fill (buttons).",
+          "$value": "{color.primitive.indigo.600}",
+          "$extensions": { "com.askewly.modes": { "dark": "{color.primitive.indigo.500}" } }
+        },
+        "solid-hover": {
+          "$value": "{color.primitive.indigo.500}",
+          "$extensions": { "com.askewly.modes": { "dark": "{color.primitive.indigo.400}" } }
+        },
+        "ring": {
+          "$description": "Focus border/ring on emphasis-accented inputs.",
+          "$value": "{color.primitive.indigo.500}",
+          "$extensions": { "com.askewly.modes": { "dark": "{color.primitive.indigo.400}" } }
+        }
+      },
+      "status": {
+        "$type": "color",
+        "$description": "Status colors (M2 2026-08-01). info=sky, success=emerald, danger=rose. Kept out of 'accent' (interaction-state group).",
+        "info-surface": {
+          "$value": "{color.primitive.skyx.100}",
+          "$extensions": { "com.askewly.modes": { "dark": "{color.primitive.skyx.950}" } }
+        },
+        "info-foreground": {
+          "$value": "{color.primitive.skyx.700}",
+          "$extensions": { "com.askewly.modes": { "dark": "{color.primitive.skyx.300}" } }
+        },
+        "info-link": {
+          "$description": "Standalone info-accented link/action text.",
+          "$value": "{color.primitive.skyx.500}",
+          "$extensions": { "com.askewly.modes": { "dark": "{color.primitive.skyx.400}" } }
+        },
+        "info-link-hover": {
+          "$value": "{color.primitive.skyx.600}",
+          "$extensions": { "com.askewly.modes": { "dark": "{color.primitive.skyx.300}" } }
+        },
+        "success-surface": {
+          "$value": "{color.primitive.emerald.50}",
+          "$extensions": { "com.askewly.modes": { "dark": "{color.primitive.emerald.950}" } }
+        },
+        "success-foreground": {
+          "$value": "{color.primitive.emerald.700}",
+          "$extensions": { "com.askewly.modes": { "dark": "{color.primitive.emerald.300}" } }
+        },
+        "danger-surface": {
+          "$value": "{color.primitive.rose.100}",
+          "$extensions": { "com.askewly.modes": { "dark": "{color.primitive.rose.950}" } }
+        },
+        "danger-foreground": {
+          "$value": "{color.primitive.rose.600}",
+          "$extensions": { "com.askewly.modes": { "dark": "{color.primitive.rose.400}" } }
+        },
+        "danger-solid": {
+          "$value": "{color.primitive.rose.600}",
+          "$extensions": { "com.askewly.modes": { "dark": "{color.primitive.rose.600}" } }
+        },
+        "danger-solid-hover": {
+          "$value": "{color.primitive.rose.500}",
+          "$extensions": { "com.askewly.modes": { "dark": "{color.primitive.rose.500}" } }
         }
       },
       "accent": {

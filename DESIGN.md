@@ -26,8 +26,36 @@ tokens:
         lavender: { value: {"colorSpace":"srgb","components":[0.698039,0.596078,0.862745],"hex":"#B298DC"}, type: color }
         sky: { value: {"colorSpace":"srgb","components":[0.721569,0.815686,0.921569],"hex":"#B8D0EB"}, type: color }
         mint: { value: {"colorSpace":"srgb","components":[0.72549,0.980392,0.972549],"hex":"#B9FAF8"}, type: color }
+        violet-deep: { value: {"colorSpace":"srgb","components":[0.372549,0.133333,0.658824],"hex":"#5F22A8"}, type: color }
       red:
         "9": { value: {"colorSpace":"oklch","components":[0.58,0.22,27]}, type: color }
+      indigo:
+        "50": { value: {"colorSpace":"oklch","components":[0.962,0.018,272.314]}, type: color }
+        "300": { value: {"colorSpace":"oklch","components":[0.785,0.115,274.713]}, type: color }
+        "400": { value: {"colorSpace":"oklch","components":[0.673,0.182,276.935]}, type: color }
+        "500": { value: {"colorSpace":"oklch","components":[0.585,0.233,277.117]}, type: color }
+        "600": { value: {"colorSpace":"oklch","components":[0.511,0.262,276.966]}, type: color }
+        "700": { value: {"colorSpace":"oklch","components":[0.457,0.24,277.023]}, type: color }
+        "950": { value: {"colorSpace":"oklch","components":[0.257,0.09,281.288]}, type: color }
+      skyx:
+        "100": { value: {"colorSpace":"oklch","components":[0.951,0.026,236.824]}, type: color }
+        "300": { value: {"colorSpace":"oklch","components":[0.828,0.111,230.318]}, type: color }
+        "400": { value: {"colorSpace":"oklch","components":[0.746,0.16,232.661]}, type: color }
+        "500": { value: {"colorSpace":"oklch","components":[0.685,0.169,237.323]}, type: color }
+        "600": { value: {"colorSpace":"oklch","components":[0.588,0.158,241.966]}, type: color }
+        "700": { value: {"colorSpace":"oklch","components":[0.5,0.134,242.749]}, type: color }
+        "950": { value: {"colorSpace":"oklch","components":[0.293,0.066,243.157]}, type: color }
+      emerald:
+        "50": { value: {"colorSpace":"oklch","components":[0.979,0.021,166.113]}, type: color }
+        "300": { value: {"colorSpace":"oklch","components":[0.845,0.143,164.978]}, type: color }
+        "700": { value: {"colorSpace":"oklch","components":[0.508,0.118,165.612]}, type: color }
+        "950": { value: {"colorSpace":"oklch","components":[0.262,0.051,172.552]}, type: color }
+      rose:
+        "100": { value: {"colorSpace":"oklch","components":[0.941,0.03,12.58]}, type: color }
+        "400": { value: {"colorSpace":"oklch","components":[0.712,0.194,13.428]}, type: color }
+        "500": { value: {"colorSpace":"oklch","components":[0.645,0.246,16.439]}, type: color }
+        "600": { value: {"colorSpace":"oklch","components":[0.586,0.253,17.585]}, type: color }
+        "950": { value: {"colorSpace":"oklch","components":[0.271,0.105,12.094]}, type: color }
     semantic:
       surface:
         base: { value: "{color.primitive.gray.1}", type: color }
@@ -41,10 +69,29 @@ tokens:
         muted: { value: "{color.primitive.gray.9}", type: color }
         secondary: { value: "{color.primitive.gray.11}", type: color }
         on-accent: { value: "{color.primitive.gray.1}", type: color }
+        on-destructive: { value: "{color.primitive.white}", type: color }
       action:
         primary: { value: "{color.primitive.askewly.violet}", type: color }
+        primary-hover: { value: "{color.primitive.askewly.violet-deep}", type: color }
         secondary: { value: "{color.primitive.askewly.orchid}", type: color }
         destructive: { value: "{color.primitive.red.9}", type: color }
+      emphasis:
+        surface: { value: "{color.primitive.indigo.50}", type: color }
+        foreground: { value: "{color.primitive.indigo.700}", type: color }
+        solid: { value: "{color.primitive.indigo.600}", type: color }
+        solid-hover: { value: "{color.primitive.indigo.500}", type: color }
+        ring: { value: "{color.primitive.indigo.500}", type: color }
+      status:
+        info-surface: { value: "{color.primitive.skyx.100}", type: color }
+        info-foreground: { value: "{color.primitive.skyx.700}", type: color }
+        info-link: { value: "{color.primitive.skyx.500}", type: color }
+        info-link-hover: { value: "{color.primitive.skyx.600}", type: color }
+        success-surface: { value: "{color.primitive.emerald.50}", type: color }
+        success-foreground: { value: "{color.primitive.emerald.700}", type: color }
+        danger-surface: { value: "{color.primitive.rose.100}", type: color }
+        danger-foreground: { value: "{color.primitive.rose.600}", type: color }
+        danger-solid: { value: "{color.primitive.rose.600}", type: color }
+        danger-solid-hover: { value: "{color.primitive.rose.500}", type: color }
       accent:
         base: { value: "{color.primitive.askewly.mint}", type: color }
         foreground: { value: "{color.primitive.gray.12}", type: color }
@@ -100,9 +147,26 @@ themes:
     color.semantic.text.muted: { value: "{color.primitive.gray.7}", type: color }
     color.semantic.text.secondary: { value: "{color.primitive.gray.3}", type: color }
     color.semantic.text.on-accent: { value: "{color.primitive.gray.12}", type: color }
+    color.semantic.text.on-destructive: { value: "{color.primitive.white}", type: color }
     color.semantic.action.primary: { value: "{color.primitive.gray.1}", type: color }
+    color.semantic.action.primary-hover: { value: "{color.primitive.askewly.orchid}", type: color }
     color.semantic.action.secondary: { value: "{color.primitive.askewly.mint}", type: color }
     color.semantic.action.destructive: { value: "{color.primitive.red.9}", type: color }
+    color.semantic.emphasis.surface: { value: "{color.primitive.indigo.950}", type: color }
+    color.semantic.emphasis.foreground: { value: "{color.primitive.indigo.300}", type: color }
+    color.semantic.emphasis.solid: { value: "{color.primitive.indigo.500}", type: color }
+    color.semantic.emphasis.solid-hover: { value: "{color.primitive.indigo.400}", type: color }
+    color.semantic.emphasis.ring: { value: "{color.primitive.indigo.400}", type: color }
+    color.semantic.status.info-surface: { value: "{color.primitive.skyx.950}", type: color }
+    color.semantic.status.info-foreground: { value: "{color.primitive.skyx.300}", type: color }
+    color.semantic.status.info-link: { value: "{color.primitive.skyx.400}", type: color }
+    color.semantic.status.info-link-hover: { value: "{color.primitive.skyx.300}", type: color }
+    color.semantic.status.success-surface: { value: "{color.primitive.emerald.950}", type: color }
+    color.semantic.status.success-foreground: { value: "{color.primitive.emerald.300}", type: color }
+    color.semantic.status.danger-surface: { value: "{color.primitive.rose.950}", type: color }
+    color.semantic.status.danger-foreground: { value: "{color.primitive.rose.400}", type: color }
+    color.semantic.status.danger-solid: { value: "{color.primitive.rose.600}", type: color }
+    color.semantic.status.danger-solid-hover: { value: "{color.primitive.rose.500}", type: color }
     color.semantic.accent.base: { value: "{color.primitive.gray.10}", type: color }
     color.semantic.accent.foreground: { value: "{color.primitive.gray.1}", type: color }
     color.semantic.border.default: { value: "{color.primitive.gray.10}", type: color }
