@@ -30,7 +30,7 @@ Status: approved (사용자 "ㄱㄱ" 2026-07-31 — fresh 검증자 발견 7건 
 
 ## Step 트리
 
-- [ ] **step-1 — 시각 품질 리서치 보강**
+- [x] **step-1 — 시각 품질 리서치 보강**
   - Artifact: `research/2026-07-31-dq1-deck-quality-refs.md` — 발표 슬라이드 시각 구성 원칙(밀도·위계·그리드·서사 아크)과 고품질 실덱 사례(컨퍼런스 키노트·디자인 시스템 발표 등) 수집·분석, 루브릭 후보 도출. 전 인용 출처 URL+접근일.
   - Files: write 이 레포 `research/2026-07-31-dq1-deck-quality-refs.md`. read `research/2026-07-31-html-upgrade-goal-refs.md`·`methodology/prompt-patterns.md`·`knowledge/`.
   - Risk: 없음 (리서치 문서만)
