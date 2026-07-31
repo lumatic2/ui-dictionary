@@ -4,6 +4,7 @@ import path from "node:path"
 import { fileURLToPath } from "node:url"
 import { afterEach, describe, expect, it } from "vitest"
 import { initProject } from "../src/inject.js"
+import { DEFAULT_TYPOGRAPHY_THRESHOLD } from "../src/typography.js"
 import { maskIgnoredRegions, verifyDir } from "../src/verify.js"
 
 const FIXTURES = path.join(path.dirname(fileURLToPath(import.meta.url)), "fixtures", "verify-regression")
@@ -138,13 +139,41 @@ describe("verifyDir — ignored regions (DOG1 step-2)", () => {
   })
 
   it("flags a file over the limit, pointing at the breaking line", () => {
-    const violations = scanFixture("six-steps.tsx")
+    const dir = tempDir()
+    const name = "six-steps.tsx"
+    writeFileSync(path.join(dir, name), readFileSync(path.join(FIXTURES_TYPO, name), "utf8"))
+    const violations = verifyDir(dir, ["tsx"], { typographyThreshold: 5 }).violations
     expect(violations).toHaveLength(1)
     expect(violations[0]).toMatchObject({ line: 10, rule: "typography-scale-exceeded" })
     expect(violations[0].excerpt).toBe("font-size steps: 12, 14, 16, 20, 28, 40 (6 > limit 5)")
   })
 
-  it("honours a raised threshold", () => {
+  // M1 raised the default to 7. Six steps is now an ordinary screen, so the
+  // default-threshold case needs a file that is actually excessive.
+  it("flags a file over the default limit", () => {
+    const dir = tempDir()
+    writeFileSync(
+      path.join(dir, "many.tsx"),
+      `<p className="text-xs text-sm text-base text-lg text-xl text-2xl text-3xl text-5xl" />\n`,
+    )
+    const violations = verifyDir(dir, ["tsx"]).violations
+    expect(violations).toHaveLength(1)
+    expect(violations[0].excerpt).toContain(`(8 > limit ${DEFAULT_TYPOGRAPHY_THRESHOLD})`)
+  })
+
+  it("passes an ordinary screen that mixes body sizes with headings", () => {
+    // The shape M1 measured on real pages: one micro label, three body sizes,
+    // two headings. Nothing here is a type-hierarchy failure.
+    const dir = tempDir()
+    writeFileSync(
+      path.join(dir, "screen.tsx"),
+      `<p className="text-[10px]" /><p className="text-xs" /><p className="text-sm" />\n` +
+        `<p className="text-base" /><h2 className="text-lg" /><h1 className="text-3xl md:text-5xl" />\n`,
+    )
+    expect(verifyDir(dir, ["tsx"]).violations).toHaveLength(0)
+  })
+
+  it("honours an explicit threshold in both directions", () => {
     const dir = tempDir()
     const name = "six-steps.tsx"
     writeFileSync(path.join(dir, name), readFileSync(path.join(FIXTURES_TYPO, name), "utf8"))

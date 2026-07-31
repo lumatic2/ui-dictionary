@@ -179,13 +179,20 @@ export function resolveTypographyBuckets(source: string, scale = typographyScale
 /**
  * Default step limit.
  *
- * Kraft (당근) uses 4. We use 5 because our own token scale defines five sizes
- * (sm 14 / base 16 / lg 20 / xl 28 / 2xl 40) — at 4, a screen that uses the
- * design system's full scale and nothing else would be a violation. Borrowing
- * someone else's number without checking it against our tokens would have made
- * the rule contradict the system it is supposed to defend.
+ * Kraft (당근) uses 4. Borrowing that number unchecked would have made the rule
+ * contradict the system it defends, so DOG3 set it to 5 — the size of our token
+ * scale (sm 14 / base 16 / lg 20 / xl 28 / 2xl 40).
+ *
+ * M1 re-measured it against real screens and found 5 too tight, because the
+ * scale is not the whole story: pages draw headings (30/48/72) and micro labels
+ * (10/12) from outside it. Three ordinary screens — the colors page, get
+ * started, the recipe gallery — landed at 6-7 with textbook hierarchy (one
+ * micro label, two or three body sizes, two headings) and nothing to collapse.
+ *
+ * 7 passes those and still catches the real thing: the files that motivated
+ * this rule sit at 14-15 sizes, twice over the limit either way.
  */
-export const DEFAULT_TYPOGRAPHY_THRESHOLD = 5
+export const DEFAULT_TYPOGRAPHY_THRESHOLD = 7
 
 export type TypographyViolation = {
   line: number

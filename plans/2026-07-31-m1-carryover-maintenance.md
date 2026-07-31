@@ -41,7 +41,7 @@ Status: approved (사용자 승인 2026-07-31 "ㄱㄱ" — 결정 전건 사전 
   - Failure probe: ① 사유 없는 마커 파일 → 위반 보고(exit≠0) ② 무접두 6단계 파일 → 여전히 위반(완화가 남용을 덮지 않음) ③ DOG6 fixture 회귀 무변.
   - Commit: changeset `m1-carryover-maintenance` (README 절: step-1).
 
-- [ ] **step-2 — 사이트 잔여 타이포 처리 → 위반 0**
+- [x] **step-2 — 사이트 잔여 타이포 처리 → 위반 0**
   - Artifact: 보정된 로컬 CLI 로 재실측 → 반응형 보정으로 해소 안 된 잔여 파일 처리: 멀티 데모·미니어처 집합 파일(현 후보: home-page·marketing-section-preview·term-visual·article-documentation-layout)은 사유 마커, 단일 화면 파일(현 후보: colors-page·get-started-page·term-page·recipe-gallery — 보정 후 재실측으로 확정)은 마커 금지 — 스케일 접기(시각 무손실 우선, 손실 발생 시 decision_required 중단).
   - Files: write examples/ui-vocabulary-site/src/components/(잔여 위반 파일들 — 마커 1줄 또는 크기 유틸 치환). read 재실측 출력.
   - Risk: 위험 (스케일 접기가 시각 변화를 만들 수 있음 — 전/후 스크린샷 대조, 취향 판단 발생 시 중단점)
@@ -70,7 +70,10 @@ Status: approved (사용자 승인 2026-07-31 "ㄱㄱ" — 결정 전건 사전 
 - 임계값 5 근거 = DOG3 보고서(`docs/reports/2026-07-22-dog3-typography-scale.md`).
 
 ## finding 큐
-- (실행 중 발견 항목을 여기 적는다)
+- **토큰 타이포 스케일이 실사용과 어긋난다** (step-2 발견): SSOT 5단계(sm14/base16/lg20/xl28/2xl40)에 헤딩 단계와 마이크로 라벨이 없어, 화면들이 Tailwind 기본값(xs12·3xl30·5xl48·7xl72)과 임의값(10px)을 상시 빌려 쓴다. 특히 `xl`(28)은 실화면에서 거의 안 쓰인다. 스케일 확장 여부는 별도 판단(사용자 선택지 ②로 제시했으나 이번엔 ①임계 상향 채택).
+- `get-started-page.tsx` 는 QA2 관측 7왕복으로 승인된 화면이라 크기 접기 대상에서 제외했다 — 취향 표면의 사후 변경은 재관측을 부른다.
 
 ## 진행 로그
 - 2026-07-31 작성 — 사용자 결정 2건(게이트 보정 2026-07-28 · SEO 영어 통일 2026-07-31) 기반, 새 결정 없음.
+- 2026-08-01 step-1 완료 — 버킷 계수+사유 필수 마커, 테스트 60건 PASS, 0.3.0. 부수 적발: 임의 브레이크포인트 변형(`min-[900px]:`)이 붙은 유틸리티가 정규식에 아예 안 잡히던 갭 수정.
+- 2026-08-01 step-2 **decision_required 중단 → 사용자 결정으로 재개**: 마커 4건 적용 후 남은 3건이 전부 정상 위계의 단일 화면이라 무손실 접기 불가. 임계 5 의 근거(토큰 스케일 5단계)가 실사용과 어긋남을 실측으로 확인 → 사용자 선택 **①임계 7 상향**(계획서 "임계 변경 제외" 조항 갱신). 위반 0 달성, failure probe 통과.

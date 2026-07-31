@@ -1,3 +1,4 @@
+// askewly-typography-ok: 마케팅 섹션 데모 수십 종의 variant 스위치 — 각 데모가 자기 화면이라 파일 단위 크기 계수가 성립하지 않는다
 import { Fragment, useState, type KeyboardEvent as ReactKeyboardEvent, type ReactNode } from "react"
 import { Archive, BellDot, Clipboard, Move, BookOpen, CheckCircle2, ChevronDown, CircleAlert, CircleHelp, CloudUpload, Copy, Cpu, Edit3, Home, LayoutPanelTop, LockKeyhole, Mail, Menu, Monitor, MoreVertical, Palette, Search, Server, Shapes, ShieldCheck, ShoppingCart, SlidersHorizontal, Sparkles, Star, Trash2, UserRound, X, type LucideIcon } from "lucide-react"
 import { cn } from "@/lib/utils"

@@ -1,3 +1,4 @@
+// askewly-typography-ok: 용어 562개의 미니어처 렌더러 — 축소 목업이라 본문 스케일과 다른 크기가 정상이고, 한 화면도 아니다
 import { useState, type ReactNode } from "react"
 import {
   AlertTriangle,

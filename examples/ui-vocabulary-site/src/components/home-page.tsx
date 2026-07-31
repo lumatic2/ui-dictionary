@@ -1,3 +1,4 @@
+// askewly-typography-ok: 랜딩 + Showcase Atlas 12칸 데모(각 칸이 다른 제품 UI 를 재현) — 한 화면이 아니라 데모 집합이다
 import {
   type CSSProperties,
   type KeyboardEvent as ReactKeyboardEvent,
