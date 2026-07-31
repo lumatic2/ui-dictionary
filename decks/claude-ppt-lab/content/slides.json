@@ -1,0 +1,41 @@
+{
+  "meta": {
+    "title": "Claude PPT Lab",
+    "subtitle": "영상 재현 캘리브레이션",
+    "template": "minimax",
+    "mode": "arrow",
+    "canvas": "hd",
+    "effects": "none",
+    "speakerNotes": false
+  },
+  "slides": [
+    {
+      "no": 1,
+      "slug": "kr-jp-ai-literacy",
+      "section": "calibration",
+      "title": "한일 AI 리터러시 비교",
+      "kicker": "AI Literacy",
+      "layout": "comparison-2col",
+      "subtitle": "생성형 AI 이용 경험과 교육 보급의 온도차",
+      "items": [
+        {
+          "title": "한국",
+          "body": "생성형 AI 이용 경험이 빠르게 대중화 — 업무·학습 양쪽에서 일상 도구로 진입"
+        },
+        {
+          "title": "일본",
+          "body": "인지도 대비 실제 이용률이 낮음 — 신중한 도입 문화와 기업 정책 보수성"
+        },
+        {
+          "title": "한국의 과제",
+          "body": "이용률 대비 비판적 활용 교육 부족 — 결과 검증 습관이 따라오지 못함"
+        },
+        {
+          "title": "일본의 과제",
+          "body": "도입 장벽 해소 — 가이드라인 정비 속도가 현장 수요를 못 따라감"
+        }
+      ],
+      "notes": "캘리브레이션 테스트 슬라이드 — 내용은 영상 [04:03] 예시 주제 재현용 더미이며 수치 인용 없음."
+    }
+  ]
+}

@@ -103,6 +103,25 @@ const FIXED_ASSETS = [
           "3D landing pattern with its decorative-skin failure gate, observation galleries " +
           "(60fps.design, landing.love), and the media boundary note for pre-rendered video (Remotion)",
       ],
+      [
+        "knowledge/slide-principles.md",
+        "What makes a good presentation slide: 5 convergent principles from 8 master lineages " +
+          "(one message per slide, title-as-assertion with Penn State evidence, visual evidence over " +
+          "bullets, audience-first editing, structure before design) with evidence grades, plus " +
+          "HTML-native expressive techniques (SVG filters, chart/3D embeds) and their caveats",
+      ],
+    ],
+  },
+  {
+    section: "Methodology",
+    items: [
+      [
+        "methodology/slide-production.md",
+        "How to produce a slide deck: HTML as the single source of truth with PPT/PDF as export " +
+          "paths (editability decision table — raster-embed vs pptxgenjs html2pptx vs SVG-to-DrawingML), " +
+          "engine selection, outline-before-design gate order, per-format final-artifact checks, and " +
+          "the lint rule spec (R1 title-assertion, R2 one-message, R3 text-density — all opt-in warnings)",
+      ],
     ],
   },
 ];

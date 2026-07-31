@@ -34,3 +34,4 @@ CLAUDE.local.md
 # 2026-07-27 실측: editor-legibility horizon 이 5e2ee26 에서 이렇게 사라졌다(git 히스토리에서 복구).
 !archive/horizons/
 !archive/plans/
+~$*.pptx

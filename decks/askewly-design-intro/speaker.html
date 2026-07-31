@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+  <html lang="ko">
+  <head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Askewly Design — Speaker</title>
+  <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
+  <link rel="preload" as="style" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable.min.css">
+  <link href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable.min.css" rel="stylesheet">
+  <style>
+  :root { color-scheme: dark; }
+  * { box-sizing: border-box; margin: 0; }
+  body { background: #16161a; color: #f2f2f5; font-family: 'Pretendard Variable', Pretendard, sans-serif; height: 100vh; display: flex; flex-direction: column; overflow: hidden; }
+  header.bar { display: flex; align-items: center; gap: 16px; padding: 10px 16px; background: #202027; font-size: 14px; }
+  header.bar .pos { font-variant-numeric: tabular-nums; font-weight: 700; }
+  header.bar .timer { margin-left: auto; font-variant-numeric: tabular-nums; font-size: 20px; font-weight: 700; }
+  header.bar button { background: #33333d; color: inherit; border: 0; border-radius: 6px; padding: 4px 10px; cursor: pointer; font-size: 12px; }
+  main { flex: 1; display: grid; grid-template-columns: minmax(0, 1.6fr) minmax(0, 1fr); gap: 12px; padding: 12px 16px 16px; min-height: 0; }
+  .previews { display: flex; flex-direction: column; gap: 12px; min-height: 0; }
+  .frame { position: relative; background: #000; border-radius: 8px; overflow: hidden; }
+  .frame.current { flex: 2.2; }
+  .frame.next { flex: 1; }
+  .frame .tag { position: absolute; top: 8px; left: 8px; z-index: 2; font-size: 11px; letter-spacing: .08em; background: rgba(0,0,0,.55); padding: 2px 8px; border-radius: 4px; }
+  /* iframe 은 논리 캔버스 원치수로 두고 transform scale 로 프레임에 맞춘다 (잘림 방지) */
+  /* 미리보기는 표시 전용 — 클릭·포커스가 iframe 안으로 들어가면 화살표 키가 미리보기만 넘긴다 (HU4 관측 2회차) */
+  .frame iframe { width: 1280px; height: 720px; border: 0; background: #000; transform-origin: 0 0; position: absolute; left: 50%; top: 50%; pointer-events: none; }
+  aside.notes { background: #202027; border-radius: 8px; padding: 16px 18px; display: flex; flex-direction: column; min-height: 0; }
+  aside.notes .notes-head-row { display: flex; align-items: center; gap: 10px; margin-bottom: 10px; }
+  aside.notes h2 { font-size: 12px; letter-spacing: .1em; opacity: .55; }
+  aside.notes button { margin-left: auto; background: #33333d; color: inherit; border: 0; border-radius: 6px; padding: 4px 10px; cursor: pointer; font-size: 12px; }
+  aside.notes textarea { flex: 1; width: 100%; background: transparent; color: inherit; border: 0; outline: none; resize: none; font: inherit; font-size: 17px; line-height: 1.65; }
+  aside.notes .notes-hint { font-size: 11px; opacity: .45; margin-top: 8px; }
+  .waiting { opacity: .6; font-size: 14px; }
+  </style>
+  </head>
+  <body>
+  <header class="bar">
+    <span class="pos" id="pos">— / 07</span>
+    <span id="slide-title" class="waiting">발표 창(슬라이드)에서 S 키를 눌러 연결하거나, 슬라이드를 이동하면 동기화됩니다</span>
+    <span class="timer" id="timer">00:00</span>
+    <button id="timer-reset" type="button">타이머 리셋</button>
+  </header>
+  <main>
+    <div class="previews">
+      <div class="frame current"><span class="tag">CURRENT</span><iframe id="cur" title="current slide" tabindex="-1"></iframe></div>
+      <div class="frame next"><span class="tag">NEXT</span><iframe id="nxt" title="next slide" tabindex="-1"></iframe></div>
+    </div>
+    <aside class="notes">
+      <div class="notes-head-row"><h2>SPEAKER NOTES</h2><button id="notes-copy" type="button">수정본 전체 복사</button></div>
+      <textarea id="notes" placeholder="—" spellcheck="false"></textarea>
+      <div class="notes-hint">이 창에서 고친 노트는 발표 세션 동안만 유지된다 — 정본 반영은 「수정본 전체 복사」 후 slides.json 의 notes 에 붙여넣기.</div>
+    </aside>
+  </main>
+  <script>
+  function createDeckSync(opts) {
+    opts = opts || {};
+    var KEY = 'deck-sync::askewly-design';
+    var id = Math.random().toString(36).slice(2), seq = 0, seen = {}, handlers = [], bc = null;
+    var peers = []; // postMessage 상대 (스피커: opener / 본편: 메시지를 보내온 스피커 창)
+    // single 모드(스피커): 본편 창 딱 하나(master)만 따라간다. 덱 창이 2개 열려 있으면
+    // (이전 세션 창 잔존 등) 서로 다른 slide 번호를 번갈아 announce 해 미리보기·노트가
+    // 1.2s 마다 깜빡이며 갈아끼워진다(HU4 관측 3회차). master WindowProxy 는 본편 full
+    // navigation 을 살아남고, 닫히면 다음 announce 주인을 새 master 로 입양한다.
+    var master = null;
+    if (window.opener && window.opener !== window) {
+      peers.push(window.opener);
+      if (opts.single) master = window.opener;
+    }
+    function addPeer(w) {
+      if (!w || w === window) return;
+      for (var i = 0; i < peers.length; i++) if (peers[i] === w) return;
+      peers.push(w);
+    }
+    try { bc = new BroadcastChannel(KEY); } catch (e) {}
+    function dispatch(msg) {
+      if (!msg || msg.channel !== KEY || msg.from === id) return;
+      var k = msg.from + ':' + msg.seq;
+      if (seen[k]) return; seen[k] = true;
+      handlers.forEach(function (h) { h(msg); });
+    }
+    if (bc) bc.onmessage = function (e) { if (opts.single && master) return; dispatch(e.data); };
+    window.addEventListener('storage', function (e) {
+      if (e.key !== KEY || !e.newValue) return;
+      if (opts.single && master) return;
+      try { dispatch(JSON.parse(e.newValue)); } catch (err) {}
+    });
+    window.addEventListener('message', function (e) {
+      if (!e.data || e.data.channel !== KEY) return;
+      if (opts.single) {
+        try { if (master && master.closed) master = null; } catch (err) { master = null; }
+        if (!master && e.data.type === 'slide') master = e.source;
+        if (master && e.source !== master) return;
+        dispatch(e.data);
+        return;
+      }
+      addPeer(e.source);
+      dispatch(e.data);
+    });
+    return {
+      send: function (msg) {
+        msg.from = id; msg.seq = ++seq; msg.t = Date.now(); msg.channel = KEY;
+        if (opts.single) {
+          try { if (master && master.closed) master = null; } catch (e) { master = null; }
+        }
+        if (opts.single && master) {
+          // master 직송만 — 브로드캐스트하면 다른 덱 창까지 'step' 에 반응해 같이 넘어간다
+          try { master.postMessage(msg, '*'); } catch (e) {}
+          return;
+        }
+        if (bc) try { bc.postMessage(msg); } catch (e) {}
+        try { localStorage.setItem(KEY, JSON.stringify(msg)); } catch (e) {}
+        for (var i = 0; i < peers.length; i++) {
+          try { peers[i].postMessage(msg, '*'); } catch (e) {}
+        }
+      },
+      on: function (h) { handlers.push(h); },
+      addPeer: addPeer
+    };
+  }
+  var DATA = [{"no":1,"title":"Askewly Design","file":"01-cover.html","notes":"Askewly Design 소개. 이 덱 자체가 HTML 정본에서 나왔다는 말로 시작."},{"no":2,"title":"Askewly Design은 세 얼굴로 나간다","file":"02-three-faces.html","notes":"북극성 3축. 셋 다 같은 정본에서 나온다는 점이 핵심."},{"no":3,"title":"매체가 다르면 게이트도 다르다","file":"03-medium-gates.html","notes":"medium-taxonomy 요지. 어록 PDF 사고 사례를 말로 소개."},{"no":4,"title":"자산은 이미 쌓여 있다","file":"04-assets-stacked.html","notes":"수치는 오늘 레포에서 직접 센 값. 사전이 아니라 시스템 규모임을 강조."},{"no":5,"title":"구조가 디자인보다 먼저다","file":"05-structure-first.html","notes":"Minto·Duarte·맥킨지가 수렴하는 순서. 린터가 제목·밀도를 자동 경고한다."},{"no":6,"title":"이 덱 자체가 실증이다","file":"06-this-deck-proves.html","notes":"이 덱이 SL3 실험 본체. PPTX 두 경로의 비교 장부가 별도로 남는다."},{"no":7,"title":"다음 액션","file":"07-closing.html","notes":"질문 받기. 편집 가능 PPTX 산출물을 실제로 열어 보여주며 마무리."}];
+  var cur = -1;
+  var sync = createDeckSync({ single: true }); // 본편 창 하나만 추종 (다중 덱 창 announce 경합 차단)
+  // 노트 편집 — 창 세션 메모리 + (가능하면) localStorage. file:// opaque origin 에선 메모리만.
+  var edits = {};
+  var NOTES_KEY = 'deck-notes::askewly-design';
+  try { edits = JSON.parse(localStorage.getItem(NOTES_KEY) || '{}'); } catch (e) {}
+  var notesEl = document.getElementById('notes');
+  notesEl.addEventListener('input', function () {
+    if (cur < 0) return;
+    edits[cur] = notesEl.value;
+    try { localStorage.setItem(NOTES_KEY, JSON.stringify(edits)); } catch (e) {}
+  });
+  document.getElementById('notes-copy').addEventListener('click', function () {
+    var out = DATA.map(function (d, i) {
+      return String(d.no).padStart(2, '0') + ' ' + d.title + '\n' + (edits[i] !== undefined ? edits[i] : (d.notes || ''));
+    }).join('\n\n');
+    (navigator.clipboard ? navigator.clipboard.writeText(out) : Promise.reject()).then(function () {
+      document.getElementById('notes-copy').textContent = '복사됨';
+      setTimeout(function () { document.getElementById('notes-copy').textContent = '수정본 전체 복사'; }, 1500);
+    }).catch(function () { window.prompt('복사 (Ctrl+C):', out); });
+  });
+  function show(i, fragment, fragTotal) {
+    if (i < 0 || i >= DATA.length) return;
+    var pos = String(DATA[i].no).padStart(2, '0') + ' / ' + String(DATA.length).padStart(2, '0');
+    if (fragTotal > 0) pos += ' · +' + fragment + '/' + fragTotal;
+    // 하트비트 응답이 1.2s 마다 오므로 모든 DOM 쓰기는 멱등이어야 한다 — 같은 값 재기록 금지
+    var posEl = document.getElementById('pos');
+    if (posEl.textContent !== pos) posEl.textContent = pos;
+    if (i === cur) return;
+    cur = i;
+    var d = DATA[i], n = DATA[i + 1];
+    var titleEl = document.getElementById('slide-title');
+    titleEl.textContent = d.title; titleEl.classList.remove('waiting');
+    var curEl = document.getElementById('cur'), nxtEl = document.getElementById('nxt');
+    var curSrc = d.file + '?capture', nxtSrc = n ? n.file + '?capture' : 'about:blank';
+    if (curEl.getAttribute('src') !== curSrc) curEl.src = curSrc;
+    if (nxtEl.getAttribute('src') !== nxtSrc) nxtEl.src = nxtSrc;
+    notesEl.value = edits[i] !== undefined ? edits[i] : (d.notes || '');
+  }
+  sync.on(function (msg) { if (msg.type === 'slide' && typeof msg.index === 'number') show(msg.index, msg.fragment || 0, msg.fragTotal || 0); });
+  sync.send({ type: 'hello' });
+  // 하트비트 — 본편이 full navigation 으로 재로드되면 새 문서는 스피커를 모른다.
+  // opener WindowProxy 는 내비게이션을 살아남으므로 주기적 hello 로 재연결한다(dedupe 로 무해).
+  setInterval(function () { sync.send({ type: 'hello' }); }, 1200);
+  var CANVAS = { w: 1280, h: 720 };
+  function fitPreviews() {
+    ['cur', 'nxt'].forEach(function (fid) {
+      var el = document.getElementById(fid), frame = el.parentElement;
+      var s = Math.min(frame.clientWidth / CANVAS.w, frame.clientHeight / CANVAS.h);
+      el.style.transform = 'scale(' + s + ')';
+      el.style.left = ((frame.clientWidth - CANVAS.w * s) / 2) + 'px';
+      el.style.top = ((frame.clientHeight - CANVAS.h * s) / 2) + 'px';
+    });
+  }
+  window.addEventListener('resize', fitPreviews);
+  fitPreviews();
+  document.addEventListener('keydown', function (e) {
+    if (['INPUT', 'TEXTAREA', 'BUTTON'].includes(e.target.tagName)) return;
+    if (e.key === 'ArrowRight') sync.send({ type: 'step', dir: 1 });
+    if (e.key === 'ArrowLeft') sync.send({ type: 'step', dir: -1 });
+  });
+  var t0 = Date.now();
+  document.getElementById('timer-reset').addEventListener('click', function () { t0 = Date.now(); });
+  setInterval(function () {
+    var s = Math.floor((Date.now() - t0) / 1000);
+    document.getElementById('timer').textContent = String(Math.floor(s / 60)).padStart(2, '0') + ':' + String(s % 60).padStart(2, '0');
+  }, 500);
+  </script>
+  </body>
+  </html>

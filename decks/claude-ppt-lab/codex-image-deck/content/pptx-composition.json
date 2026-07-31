@@ -1,0 +1,93 @@
+{
+  "meta": {
+    "purpose": "Askewly Design 팀 회고 덱. 사용자 제공 수치만 사용한다.",
+    "wordmark": "Askewly"
+  },
+  "slides": [
+    {
+      "no": 1,
+      "kind": "cover",
+      "title": "영상 하나로\nPPT 파이프라인을 다시 세웠습니다",
+      "subtitle": "Askewly Design 팀 회고 · 2026-07-31 하루 기록",
+      "chips": ["하루 기록", "Askewly Design"],
+      "heroImage": "hero-pipeline.png",
+      "notes": "영상 워크플로우를 재현하고, 스킬과 PPTX 정본으로 다시 세운 하루의 기록."
+    },
+    {
+      "no": 2,
+      "kind": "content",
+      "kicker": {"no": "01", "label": "재현에서 흡수까지"},
+      "headline": "먼저 등가 재현했고, 그다음 스킬에 흡수했습니다.",
+      "subline": "유튜브 ‘클로드 PPT 5단계’ 워크플로우를 그대로 따라가며, 남길 것만 골랐습니다.",
+      "stats": [
+        {"value": "5단계", "quant": false, "label": "워크플로우 등가 재현", "detail": "영상의 순서를 작업 가능한 제작 루프로 바꿨습니다."},
+        {"value": "3", "quant": true, "label": "흡수 채택", "detail": "스킬의 기본 제작 규칙으로 반영했습니다."},
+        {"value": "1", "quant": true, "label": "흡수 보류", "detail": "효과보다 판단이 먼저 필요한 항목입니다."}
+      ],
+      "list": {"tagPrefix": "흐름", "items": [
+        {"glyph": "✦", "title": "재현", "body": "영상의 제작 순서와 판단 지점을 등가로 복원"},
+        {"glyph": "⧉", "title": "판정", "body": "스킬 계약에 남길 요소와 보류할 요소를 분리"},
+        {"glyph": "⌗", "title": "정착", "body": "HTML과 PPTX의 제작 경로로 함께 고정"}
+      ]},
+      "source": "Source: 2026-07-31 작업 기록"
+    },
+    {
+      "no": 3,
+      "kind": "content",
+      "kicker": {"no": "02", "label": "하루의 밀도"},
+      "headline": "커밋 34개와 goal 3개가 하나의 흐름으로 닫혔습니다.",
+      "subline": "재현 랩에서 시작한 작업이 HTML 트랙, PPTX 정본화, bespoke 제작으로 이어졌습니다.",
+      "chart": {"title": "단계별 커밋 — ui-dictionary", "sub": "단위: 커밋 · 2026-07-31", "items": [
+        {"label": "SP1 재현 랩", "value": 7},
+        {"label": "SP2 HTML 트랙", "value": 2},
+        {"label": "SP3 PPTX 정본화", "value": 4},
+        {"label": "PB bespoke", "value": 5}
+      ], "source": "Source: 오늘의 커밋 기록"},
+      "stats": [
+        {"value": "34", "quant": true, "label": "오늘 커밋", "detail": "ui-dictionary 18 + custom-skills 16"},
+        {"value": "3", "quant": true, "label": "완주 goal", "detail": "재현과 정본화가 끊기지 않고 연결"},
+        {"value": "5", "quant": true, "label": "산출 PPTX", "detail": "검증 가능한 결과물로 남겼습니다."}
+      ],
+      "statsColumn": true,
+      "source": "Source: 2026-07-31 작업 기록"
+    },
+    {
+      "no": 4,
+      "kind": "content",
+      "variant": "columns",
+      "kicker": {"no": "03", "label": "캘리브레이션"},
+      "headline": "좋은 PPT는 한 번의 생성으로 끝나지 않습니다.",
+      "subline": "HTML과 bespoke를 왕복하며 만든 캘리브레이션 루프가 결과물의 밀도를 바꿨습니다.",
+      "stats": [
+        {"value": "10", "quant": true, "label": "캘리브레이션 라운드", "detail": "HTML 3 + bespoke v1 3 + v2 4"},
+        {"value": "5", "quant": true, "label": "PPTX 산출", "detail": "각 결과를 열고, 보고, 다시 조정"},
+        {"value": "대표 장", "quant": false, "label": "먼저 수렴", "detail": "먼저 맞춘 뒤 전체 구성에 전개"}
+      ],
+      "list": {"tagPrefix": "루프", "items": [
+        {"glyph": "◎", "title": "이미지로 검사", "body": "PPTX를 PNG로 바꿔 실제 시각 결과를 확인"},
+        {"glyph": "⇄", "title": "한 항목씩 교정", "body": "구도, 간격, 위계, 색의 편차를 코드에 반영"},
+        {"glyph": "✦", "title": "전체로 확장", "body": "수렴한 편집 문법을 덱 전장에 적용"}
+      ]},
+      "source": "Source: 2026-07-31 작업 기록"
+    },
+    {
+      "no": 5,
+      "kind": "content",
+      "variant": "columns",
+      "kicker": {"no": "04", "label": "오늘의 교훈"},
+      "headline": "HTML 미러링은 실패했습니다. 품질은 편집 그래머에서 나옵니다.",
+      "subline": "주장형 헤드라인, 정보 3계층, 단일 키컬러. 이 세 가지가 화면을 발표물로 바꿨습니다.",
+      "stats": [
+        {"value": "실패", "quant": false, "label": "HTML 미러링", "detail": "여백을 그대로 옮겨도 PPT의 밀도는 생기지 않았습니다."},
+        {"value": "3계층", "quant": false, "label": "정보 구조", "detail": "주장 → 빅넘버 → 상세의 읽는 순서"},
+        {"value": "네이비", "quant": true, "label": "단일 키컬러", "detail": "정량을 묶고 시선을 한 곳으로 모읍니다."}
+      ],
+      "list": {"tagPrefix": "그래머", "items": [
+        {"glyph": "▣", "title": "주장형 헤드라인", "body": "슬라이드의 결론을 먼저 말합니다."},
+        {"glyph": "⌗", "title": "빅넘버와 근거", "body": "숫자는 크고, 상세는 짧고 또렷하게."},
+        {"glyph": "✦", "title": "색의 규율", "body": "네이비 한 색으로 정량의 위계를 만듭니다."}
+      ]},
+      "source": "Source: 2026-07-31 작업 기록"
+    }
+  ]
+}

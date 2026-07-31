@@ -1,0 +1,171 @@
+{
+  "meta": {
+    "title": "발표 슬라이드 파이프라인",
+    "subtitle": "2026-07 현황 — 주제 입력 모드 재현",
+    "template": "custom",
+    "mode": "arrow",
+    "canvas": "hd",
+    "effects": "none",
+    "speakerNotes": false
+  },
+  "slides": [
+    {
+      "no": 1,
+      "slug": "cover",
+      "section": "intro",
+      "title": "발표 슬라이드 파이프라인",
+      "layout": "cover",
+      "subtitle": "HTML 정본 하나에서 세 형식이 나온다 — 2026-07 현황",
+      "items": [
+        {
+          "label": "SP1 재현 랩"
+        },
+        {
+          "label": "2026-07-31"
+        }
+      ],
+      "notes": "주제 입력 모드 재현 덱 — 영상 ⑤ (a) 등가."
+    },
+    {
+      "no": 2,
+      "slug": "three-formats",
+      "section": "what",
+      "title": "세 가지 산출 형식",
+      "kicker": "Pipeline",
+      "layout": "hero-cards",
+      "subtitle": "같은 slides.json 정본에서 분기한다",
+      "items": [
+        {
+          "title": "HTML",
+          "body": "브라우저가 곧 최종 렌더 — 인터랙티브 차트·모션까지 원본 그대로"
+        },
+        {
+          "title": "PDF",
+          "body": "벡터 트랙으로 텍스트 선택·검색 가능 — 의존성 0"
+        },
+        {
+          "title": "편집 가능 PPTX",
+          "body": "pptxgenjs 네이티브 개체 — 차트가 PowerPoint 안에서 살아 있다"
+        }
+      ],
+      "notes": "형식별 게이트가 다르다."
+    },
+    {
+      "no": 3,
+      "slug": "goal-commits",
+      "section": "proof",
+      "title": "goal별 커밋 수",
+      "kicker": "Evidence",
+      "layout": "chart-interactive",
+      "chartLabel": "이 브랜치 커밋 수 (git log 실측)",
+      "chartType": "bar",
+      "items": [
+        {
+          "label": "visual-impact (vi)",
+          "value": "15"
+        },
+        {
+          "label": "slide-methodology (sl)",
+          "value": "12"
+        },
+        {
+          "label": "slide-expressive (sx)",
+          "value": "4"
+        },
+        {
+          "label": "ui-encyclopedia (ue)",
+          "value": "4"
+        },
+        {
+          "label": "slide-pipeline (sp)",
+          "value": "3"
+        }
+      ],
+      "sourceNote": "Source: 발표-슬라이드-만드는-법 워크트리 git log 실측, 2026-07-31",
+      "exportFallback": "goal별 커밋 수 다섯 항목을 정적 카드로 표시 (15·12·4·4·3)",
+      "notes": "PPTX 네이티브 차트 검증용 실데이터 — 더미 아님."
+    },
+    {
+      "no": 4,
+      "slug": "five-gates",
+      "section": "how",
+      "title": "제작은 다섯 게이트를 지난다",
+      "kicker": "Method",
+      "layout": "step-flow",
+      "subtitle": "구조가 디자인보다 먼저다",
+      "items": [
+        {
+          "title": "자료",
+          "body": "출처 있는 주장만"
+        },
+        {
+          "title": "구성안",
+          "body": "장별 메시지 1개"
+        },
+        {
+          "title": "문구",
+          "body": "제목은 곧 주장"
+        },
+        {
+          "title": "디자인",
+          "body": "그다음이 시각"
+        },
+        {
+          "title": "내보내기",
+          "body": "최종 형식 확인"
+        }
+      ],
+      "notes": "methodology/slide-production.md G1~G7 요약."
+    },
+    {
+      "no": 5,
+      "slug": "track-gates",
+      "section": "how",
+      "title": "트랙이 다르면 게이트도 다르다",
+      "kicker": "Method",
+      "layout": "comparison-2col",
+      "subtitle": "HTML 트랙과 PPTX 트랙의 확인 지점",
+      "items": [
+        {
+          "title": "HTML 트랙",
+          "body": "브라우저 실조작 — overflow·모션·reduced-motion 분기까지 확인"
+        },
+        {
+          "title": "PPTX 트랙",
+          "body": "PowerPoint 실개봉 — 네이티브 차트·폰트·텍스트 개체 확인"
+        },
+        {
+          "title": "HTML의 함정",
+          "body": "미리보기만 믿으면 export에서 깨진다 — print 경계 확인 필수"
+        },
+        {
+          "title": "PPTX의 함정",
+          "body": "차트가 이미지로 떨어지면 편집 불가 — addChart 경로 강제"
+        }
+      ],
+      "notes": "영상의 결정타(차트 편집 가능성)를 우리 게이트 언어로 번역."
+    },
+    {
+      "no": 6,
+      "slug": "closing",
+      "section": "outro",
+      "title": "다음 액션",
+      "layout": "closing",
+      "items": [
+        {
+          "title": "실개봉",
+          "body": "PPTX를 PowerPoint로 연다"
+        },
+        {
+          "title": "차트 확인",
+          "body": "더블클릭 → 데이터 시트"
+        },
+        {
+          "title": "장부",
+          "body": "충실도 편차 기록 확인"
+        }
+      ],
+      "notes": "step-4로 이어진다."
+    }
+  ]
+}

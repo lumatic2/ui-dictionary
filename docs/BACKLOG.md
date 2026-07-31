@@ -559,6 +559,11 @@ plan doc: `archive/plans/2026-07-21-eu*.md` · 증거: `evidence/editor-legibili
 - Completed: 2026-07-22 — **미달로 닫음.** 덱 10장 제작·발표 게이트 첫 실행(프리셋 PASS·대비 7/7 PASS)·결함 10건 기록했으나 사용자 판정 "실제로 못 써 · 내가 원하는 제작 흐름도 아니다 · 문답이 훨씬 많았어야 했다 · Askewly Design 자체가 제대로 작동 안 하는 느낌". **기계가 통과시킨 산출물을 사람이 못 쓴다고 판정** — DOG7과 같은 구조의 재현. 최대 결함 D10: 규모 게이트가 "DESIGN.md 있으면 인터뷰 없음"으로 브리프를 건너뛰어 덱의 내용·청중·구성을 전부 에이전트가 추정했다(DESIGN.md는 룩을 소유하지 내용을 소유하지 않는다). RU2로 이월.
 
 ### 2026-07
+- SL1 - SL1 — 방법론 문서화
+  - Completed: 2026-07-28
+  - Result: 방법론 2문서 신설(원칙·제작 파이프라인+린트 스펙 R1~R4) + llms Methodology 섹션 첫 배선 — fresh 검증자가 이중 정본 사고 예방
+  - Evidence: evidence/slide-methodology/sl1-docs.md
+
 - VI6 - VI6 — 지식 층 통합
   - Completed: 2026-07-28
   - Result: KG 19노드 전수 판정(흡수8/링크7/제외4) — motion-principles 신설, expressive-stack 정본 단일화, llms 재생성 (미배선 2건 finding)
@@ -650,3 +655,78 @@ plan doc: `archive/plans/2026-07-21-eu*.md` · 증거: `evidence/editor-legibili
   - Completed: 2026-08-01
   - Result: scale 5→9단계(rem, Tailwind 기본값 그대로)·@theme 배선·computed 무손실·verify 0 유지. 보고서 docs/reports/2026-08-01-m6-typography-scale.md
   - Evidence: evidence/finding-cleanup/m6-typography-scale.md
+### 2026-07
+- SX1 - SX1 — 임팩트 레이아웃 2종
+  - Completed: 2026-07-28
+  - Result: hero-motion·svg-filter-scene 4면 완비 — reduced-motion 양쪽 실측·smoke 전체 PASS·배포 완료, 필터 클리핑 결함 수리
+  - Evidence: evidence/slide-expressive/sx1-layouts.md
+
+- SX2 - SX2 — 벡터 PDF export
+  - Completed: 2026-07-28
+  - Result: print.html 직접 인쇄 벡터 트랙 — 페이지 수·텍스트 추출·한글 폰트·3면 실증, raster 병행
+  - Evidence: evidence/slide-expressive/sx2-vector-pdf.md
+
+- SX3 - SX3 — 실증 (소개 덱 적용)
+  - Completed: 2026-07-28
+  - Result: 표지 hero-motion 전환(문구 동결)·벡터 PDF 7p 실증·직행 예외 정당 판정 — dogfood 적발 1건 수리
+  - Evidence: evidence/slide-expressive/sx3-deck-proof.md
+
+- SL2 - SL2 — 슬라이드 린터
+  - Completed: 2026-07-28
+  - Result: R1~R3 옵트인 린트 구현(custom-skills)·위반 fixture 각 1건 검출·오탐 0·배포본 동일 동작 — 기존 fixture에서 R1 실적발 1건 부수 확인
+  - Evidence: evidence/slide-methodology/sl2-linter.md
+
+### 2026-07
+- SP1 - SP1 — 영상 재현 랩
+  - Completed: 2026-07-31
+  - Result: 영상 5단계 등가 재현 + PPTX COM 실개봉 PASS + 흡수 판정(채택 3·보류 1) — SP2/SP3 scope 확정
+  - Evidence: evidence/slide-pipeline/sp1-video-lab.md
+
+- SL3 - SL3 — 편집 가능 PPTX 실증
+  - Completed: 2026-07-31
+  - Result: 소개 덱 7장(lint 0) + pptxgenjs 네이티브 7장·CHART / ppt-master 3장 실증, 8축 비교 장부 — 실개봉 partial(뷰어 부재), real-use-lap 조건 충족 판정
+  - Evidence: evidence/slide-methodology/sl3-pptx.md
+
+### 2026-07
+- PB1 - PB1 — bespoke 트랙 정식화 (스킬 측)
+  - Completed: 2026-07-31
+  - Result: pptx-to-png 시각 자기검사 + pptx-bespoke.md 계약 + 2단 트랙 라우팅 — 배포·PNG 실동작 검증
+  - Evidence: evidence/slide-pipeline/pb1-bespoke-track.md
+
+- PB2 - PB2 — bespoke 실증 (askewly-design-intro)
+  - Completed: 2026-07-31
+  - Result: 관측 왕복 4회 끝 그래머 확정 — 실증 덱 4본·이미지 3트랙·스킬 §5~8 흡수, goal pptx-bespoke 완주
+  - Evidence: evidence/slide-pipeline/pb2-bespoke-proof.md
+
+- SP2 - SP2 — HTML 트랙 스킬 업그레이드
+  - Completed: 2026-07-31
+  - Result: custom 테마 트랙+G5 캘리브레이션+리디자인 입력 구현·배포 — smoke 18+3 PASS·배포본 랩 실증
+  - Evidence: evidence/slide-pipeline/sp2-skill-upgrade.md
+
+- SP3 - SP3 — PPTX 파이프라인 정본화
+  - Completed: 2026-07-31
+  - Result: export-pptx.mjs 정식 트랙 + methodology 정정 — 실덱 2본 COM PASS, goal slide-pipeline-upgrade 완주
+  - Evidence: evidence/slide-pipeline/sp3-pptx-canonical.md
+
+### 2026-07
+- HU1 - HU1 — 발표 운영력
+  - Completed: 2026-07-31
+  - Result: S키 스피커 뷰(양방향 동기)·오프라인 standalone(2.70MB 전자원 인라인)·PDF --notes — 배포본 통합 실동작
+  - Evidence: evidence/html-upgrade/hu1-presenter-ops.md
+
+### 2026-07
+- HU2 - HU2 — 모션 문법 + 표현 규율
+  - Completed: 2026-07-31
+  - Result: fragment(스피커 step 동기·export 전체표시)+R4~R6 린트(스멜테스트 배선)+bento-grid 15종째
+  - Evidence: evidence/html-upgrade/hu2-motion-grammar.md
+
+- HU3 - HU3 — 이미지 표현 트랙
+  - Completed: 2026-07-31
+  - Result: imagery.md 3원천 계약+커버 풀블리드 스크림 — Pexels·rmbg·image_gen 실투입, standalone 인라인 PASS
+  - Evidence: evidence/html-upgrade/hu3-image-track.md
+
+### 2026-08
+- DQ1 - DQ1 — 덱 품질 기준 수립
+  - Completed: 2026-08-01
+  - Result: 루브릭 Q1~Q12+견본 5계열+G5 대조 배선·Q2 린트 — custom-skills 2커밋 배포
+  - Evidence: evidence/deck-quality/dq1-quality-rubric.md

@@ -1,7 +1,7 @@
 # ROADMAP
 
 > Last updated: 2026-08-01
-> Status: **goal `finding-cleanup` 완주 (2026-08-01)** — M5 search title·llms 게이트 · M6 타이포 스케일 9단계 배선. 같은 날 `dark-carryover`(M2~M4)도 완주. active goal 0. 남은 큐: 『인터랙티브 웹 애니메이션』 책 스터디 자산화(사용자 주도).
+> Status: **2026-08-01 3개 goal 완주** — `finding-cleanup`(M5 search title·llms 게이트 · M6 타이포 9단계 배선) · `dark-carryover`(M2~M4) · `deck-quality`(DQ1~DQ3, 워크트리 병합됨). active goal 0. 남은 큐: 『인터랙티브 웹 애니메이션』 책 스터디 자산화(사용자 주도) · 이월 finding: D2 Presenton 정밀 벤치·동영상 에셋 파이프(수요 미확인).
 > North star: Build Askewly Design as both a public reference website and an agent-usable implementation system.
 > line budget: <=150
 
@@ -9,6 +9,9 @@
 
 <!-- harness:goal id="finding-cleanup" status="completed" -->
 Goal: 이월 finding 정리 — /search title 수리·llms 정합 게이트(M5) + 타이포 스케일 9단계 전수 등재·무손실 배선(M6). closed 2026-08-01 — M5(title 정합·게이트 FAIL/PASS 실증·오탐 1건 기록)·M6(scale 5→9단계·@theme 배선·computed 무손실) 단일 세션 완주. Details: `archive/plans/2026-08-01-m{5,6}-*.md` + `docs/reports/2026-08-01-m{5,6}-*.md`.
+
+<!-- harness:goal-archive19 id="deck-quality" status="completed" -->
+Goal: 슬라이드 덱 자체 품질 업그레이드. closed 2026-08-01 — DQ1~DQ3 완주(루브릭·견본 → 표현 기계 → 정본 덱 리디자인+관측 2라운드 PASS). 사용자 판정으로 루브릭 확장 금지가 기본값이 됐다. Details: `evidence/deck-quality/` + `docs/reports/2026-0{7-31,8-01}-dq{1,2,3}-*.md`.
 
 ## Active Milestones — finding-cleanup
 
@@ -41,36 +44,60 @@ Goal: 사이트 품질 — UI 백과사전 사이트가 자기 디자인 게이�
 <!-- harness:goal-archive12 id="visual-impact-consolidation" status="completed" -->
 Goal: 비주얼 임팩트 정리 — 흩어진 비주얼 임팩트 방법(knowledge-graph 노드 19건, toolshelf 카드 15건, presentation-slides three-scene·3d-repolis)을 VI1~VI5 표현 스택 체계로 대조·판정·흡수해 자산화한다. closed 2026-07-28 — VI6(KG 19노드 판정·motion-principles 신설)·VI7(15카드 배치·llms 배선 완결)·VI8(recipe 2종 실구현·상호 링크) 단일 세션 완주. Details: `research/2026-07-28-visual-impact-goal-inventory.md` + `docs/reports/2026-07-28-vi{6,7,8}-*.md`.
 
-<!-- harness:goal-archive11 id="ui-encyclopedia" status="completed" -->
-Goal: UI 백과사전 — 들어가서 용어의 생김새·쓰임·바리에이션을 보고, 헤더·푸터 등 Page Sections 의 종류와 디자인 레퍼런스(직접 구현 데모)를 본다. 유료 경계 = Tailwind Plus 모델, 오너 로그인 전체 열람(결제는 범위 밖). closed 2026-07-28 — UE1~UE5 전부 완료·실서비스 실증(관측 왕복 총 8회, 결함 16건 발견·수리). Details: `archive/plans/2026-07-27-ue1-encyclopedia-navigation.md`(연쇄 정의) + `research/2026-07-27-ue1-encyclopedia-diagnosis.md`.
+**active goal 0** — 다음 방향은 새 `/harness-plan` 에서 연다.
 
 <!-- harness:goal id="real-use-lap" status="skipped" -->
 Goal: 실사용 한 바퀴 — Askewly Design으로 Askewly Design 소개 덱(PPTX)을 실제로 만들고, 막히는 지점만 결함으로 기록해 milestone으로 삼는다. **제거(2026-07-31, 사용자 판정: 낡음)** — PARK(2026-07-27) 상태에서 부활 없이 폐기. horizon 문서 삭제(git 이력 보존), RU1 결함 장부(`evidence/real-use-lap/ru1-deck-production.md`)·파일럿 실측(`research/2026-07-27-ru2-pilot-defect-measurement.md`)은 기록으로 유지.
 
-<!-- harness:goal-archive10 id="design-output-gates" status="completed" -->
-Goal: 산출물이 좋은지 기계가 잰다, 매체마다 다른 자로. closed 2026-07-22 — DOG1~DOG6 완료, **DOG7(사람 관측) 보류**: 관측 1회 실시했으나 verify 위반 0건이라 오탐률 미측정·승격 판정 미획득. 게이트는 경고 유지. Details: `plans/horizons/2026-07-design-output-gates.md`.
+## Completed Milestones — deck-quality
 
-<!-- harness:goal-archive9 id="vocabulary-in-use" status="completed" -->
-Goal: askewly-design 호출 경로에 UI 용어 사전 562개를 집어넣고, 요구 한 문장에서 요소를 판정해 구현 자산까지 착지하는 흐름을 완성한다. closed 2026-07-21 — 7항 중 6 PASS · 1 미달(사람 관측: 조회 절차 미준수). Details: `archive/horizons/2026-07-vocabulary-in-use.md`.
+<!-- harness:milestone id="DQ2" status="completed" priority="P1" evidence="evidence/deck-quality/dq2-expressive-mechanics.md" -->
+### DQ2 — 표현 기계 업그레이드
+- DoD: 장간 연속 전환(opt-in, 실크롬 file:// 실측 또는 폴백 확정) + 이미지 최적화 빌드(용량 실측 개선) + sourceNote 겹침 해소 — HU4 회귀 5종 PASS·미사용 덱 무변화.
+- Evidence: evidence/deck-quality/dq2-expressive-mechanics.md
+- Gap: Auto-Animate·이미지 최적화·sourceNote 배치 3건 이월 finding
+- Plan: plans/2026-07-31-dq2-expressive-mechanics.md
+- Status: [x]
 
-<!-- harness:goal-archive8 id="editor-color-and-token-editing" status="completed" -->
-Goal: 편집기에서 색이 색으로 보이고, 바꿔진다 — 인스펙터 UI·토큰 조회 API·검증 계층·렌더러 4표면. closed 2026-07-21 — 7항 중 6 PASS, 기준 6(판단 가능성) **부분 충족 명시**. Details: `plans/horizons/2026-07-editor-color-and-token-editing.md`.
+- Completed at: 2026-08-01
+- Summary: animId 전환·optimize-images(77% 감소)·sourceNote 수리 — 회귀 6종 PASS
+<!-- harness:milestone id="DQ3" status="completed" priority="P1" evidence="evidence/deck-quality/dq3-canonical-redesign.md" -->
+### DQ3 — 정본 덱 리디자인 + 관측
+- DoD: 정본 덱이 루브릭 기준 재제작되어 전/후 감사표 개선 + 전 자동 검증·HU4 회귀·발표 전 체크 PASS + 사용자 관측 PASS.
+- Evidence: evidence/deck-quality/dq3-canonical-redesign.md
+- Gap: 파이프라인 업그레이드가 정본 덱 내용물 품질로 미전이 (시안·관측 게이트 2회)
+- Plan: plans/2026-07-31-dq3-canonical-redesign.md
+- Status: [x]
 
-<!-- harness:goal-archive7 id="editor-legibility" status="completed" -->
-Goal: AskewlyDesign 편집기를 사람이 화면만 보고 판단할 수 있는 물건으로 만든다 — 조작감과 판독성 두 축. closed 2026-07-21 — 6항 중 5 PASS, 기준 6(판단 가능성) **미달 명시**. Details: `archive/horizons/2026-07-editor-legibility.md`.
+- Completed at: 2026-08-01
+- Summary: 규칙 처방 철회·루브릭 확장 금지 명문화, 덱 실변경 2건, 차트 색 finding 수리 — 관측 2라운드 PASS
+<!-- harness:goal-archive18 id="html-upgrade" status="completed" -->
+Goal: HTML 발표 트랙 업그레이드. closed 2026-07-31 — HU1~HU4 완주(발표 운영력·모션 문법·이미지 트랙·통합 실증, 사용자 관측 6라운드 PASS). Details: `evidence/html-upgrade/` + `docs/reports/2026-07-31-hu{1,2,3,4}-*.md`.
 
-<!-- harness:goal-archive6 id="template-production-hardening" status="completed" -->
-Goal: 템플릿 제작 파이프라인을 선언 수준에서 실제 동작 수준으로 끌어올린다. closed 2026-07-20 — 닫는 기준 9항 중 8 PASS, 기준 7(실사용·편집기 축) **미달 명시**. Details: `archive/horizons/2026-07-template-production-hardening.md`.
+- Completed at: 2026-08-01
+- Summary: 정본 덱 리디자인 + 사용자 관측 PASS — 규칙 처방 철회·루브릭 확장 금지, 덱 실변경 2건, 차트 색 수리
+## Active Milestones — html-upgrade
 
-<!-- harness:goal-archive5 id="template-production-system" status="completed" -->
-Goal: 브리프·토큰·레시피를 명함·제품 포스터·인포그래픽의 편집 가능한 CanvasDocument와 브라우저 제작 루프로 바꾼다. Details: `plans/horizons/2026-07-template-production-system.md`.
+<!-- harness:milestone id="HU4" status="completed" priority="P1" evidence="evidence/html-upgrade/hu4-live-proof.md" -->
+### HU4 — 통합 실증
+- DoD: askewly-design-intro 가 HU1~3 전 기능으로 라이브 리허설 통과 + 발표 게이트 명문화(대비·프로젝터 체크) + 사용자 관측 1회.
+- Evidence: evidence/html-upgrade/hu4-live-proof.md
+- Gap: 스킬 기능만으로는 실사용 품질 미보장(PB2 교훈 — 실덱 관측 필수)
+- Plan: plans/2026-07-31-hu4-live-proof.md
+- Status: [x]
 
-<!-- harness:goal-archive4 id="recipe-code-reuse" status="completed" -->
-Goal: 사이트 레시피 데모 실구현을 registry 코드 자산으로 배포하고, 에이전트 코드 출발 계약과 스튜디오 구성↔레시피 매핑을 배선한다. Details: `plans/horizons/2026-07-recipe-code-reuse.md`.
+<!-- harness:goal-archive17 id="pptx-bespoke" status="completed" -->
+Goal: PPTX 고품질 bespoke 트랙 — 덱 전용 코드 생성+PNG 자기검사 미세조정. closed 2026-07-31 — PB1 정식화(pptx-to-png·계약 문서) + PB2 실증(관측 왕복 4회: HTML 미러링 FAIL→brandlogy 편집 그래머 재정의·구도 5종·lucide 아이콘·이미지 3트랙 사용자 확정, 실증 덱 4본, 스킬 §5~8 흡수 배포). Details: `evidence/slide-pipeline/pb{1,2}-*.md` + `docs/reports/2026-07-31-pb{1,2}-*.md`.
 
-<!-- harness:goal-archive3 id="studio-finish" status="completed" -->
-Goal: 스튜디오 이월 갭 3건 마감 — 데이터 주도 주입 자동화·구성 패턴 완편(4유형+예약형)·미리보기 고도화(다크·반응형). Details: `plans/horizons/2026-07-studio-finish.md`.
+- Completed at: 2026-07-31
+- Summary: 정본 덱 통합 실증 — 사용자 관측 6라운드 PASS, 발표 게이트 명문화
+## Active Milestones — pptx-bespoke
 
+## Active Milestones — slide-pipeline-upgrade
+
+## Active Milestones — slide-expressive
+
+## Active Milestones — slide-methodology
 
 ## Active Milestones — carryover-maintenance
 
@@ -81,6 +108,12 @@ Goal: 스튜디오 이월 갭 3건 마감 — 데이터 주도 주입 자동화�
 - DoD: (원안) 셸 자기-목소리 한국어 전환. **회귀 마감(2026-07-31)** — 랜딩 전환본을 사용자가 관측 후 기각, 영어 단일 확정. 산출물로 `docs/design-system/copy-language.md`(영어 단일 정책 기록)+llms 배선은 남김.
 - Plan: plans/2026-07-31-qa1-copy-language-policy.md
 - Status: [x] **회귀(2026-07-31)** — 사유: 취향 관측 기각. 교훈: 언어·톤 결정은 실물 시안 관측 먼저.
+
+<!-- harness:milestone id="VI7" status="completed" priority="P1" evidence="evidence/visual-impact-consolidation/vi7-placement.md" -->
+### VI7 — 도구 층 배치
+- DoD: toolshelf 비주얼 임팩트 카드 15건이 표현 스택 4티어에 배치되고 채택/보류/제외 판정(TC1 taste 흡수 계약 준수, 카드별 출처+사유)이 결정표에 반영되며 `shelf used` 기록이 남는다. + llms 배선 finding 해소(knowledge 3문서 전부 등재).
+- Plan: archive/plans/2026-07-28-vi7-toolshelf-placement.md
+- Status: [x]
 
 ## Active Milestones — dark-mode
 

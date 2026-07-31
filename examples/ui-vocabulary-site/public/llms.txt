@@ -50,6 +50,11 @@ Rules for consumers: reference semantic tokens, never hard-code color/dimension 
 - [knowledge/motion-principles.md](https://ui.askewly.com/llms/knowledge/motion-principles.md): Motion quality judgment rules — read BEFORE picking a tier or tool: still-appeal gate (motion cannot rescue a weak still frame), transition purpose taxonomy (continue/create/replace/compare/focus/confirm), one focal element per entrance, motion typography readability, and naming rules (user-facing behavior first, CSS technique second)
 - [knowledge/dark-mode.md](https://ui.askewly.com/llms/knowledge/dark-mode.md): Dark mode judgment rules — definition (a redesigned palette, NOT an inversion), boundary vs night shift / forced-colors / inverted colors, design gates (no pure black, elevation-by-brightness, desaturation, semantic-token-only color), and web implementation gates (3-state model, FOUC head inline script, color-scheme, theme-color media split)
 - [knowledge/motion-references.md](https://ui.askewly.com/llms/knowledge/motion-references.md): External motion/interaction reference bookmarks: GSAP ScrollTrigger demo hubs, spatial 3D landing pattern with its decorative-skin failure gate, observation galleries (60fps.design, landing.love), and the media boundary note for pre-rendered video (Remotion)
+- [knowledge/slide-principles.md](https://ui.askewly.com/llms/knowledge/slide-principles.md): What makes a good presentation slide: 5 convergent principles from 8 master lineages (one message per slide, title-as-assertion with Penn State evidence, visual evidence over bullets, audience-first editing, structure before design) with evidence grades, plus HTML-native expressive techniques (SVG filters, chart/3D embeds) and their caveats
+
+## Methodology
+
+- [methodology/slide-production.md](https://ui.askewly.com/llms/methodology/slide-production.md): How to produce a slide deck: HTML as the single source of truth with PPT/PDF as export paths (editability decision table — raster-embed vs pptxgenjs html2pptx vs SVG-to-DrawingML), engine selection, outline-before-design gate order, per-format final-artifact checks, and the lint rule spec (R1 title-assertion, R2 one-message, R3 text-density — all opt-in warnings)
 
 ## Recipes
 
