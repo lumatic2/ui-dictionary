@@ -14,3 +14,14 @@
 | 사용자 선택 | (관측 게이트 대기) |
 
 ## step-2 — 메타 배선 (선택 후 기입)
+
+## step-2 — 메타 배선 + 마감 검증
+
+| 항목 | 결과 |
+|---|---|
+| 사용자 선택 | **A — imagegen 다크** (2026-08-01, 3안 목업 비교 관측) |
+| 에셋 | `public/og-image.png` 1200×630 (823KB — FB 8MB 상한 내) · 구 `og-image.svg` 삭제(git 이력 보존) |
+| 메타 | `index.html` og:image/twitter:image → **절대 URL** `https://ui.askewly.com/og-image.png` + `image/png` (구 상대경로 `/og-image.svg` 는 크롤러 호환 불리 — 절대 URL 로 함께 교정) |
+| dist 검증 | 755 라우트 재프리렌더 — html 내 `og-image.svg` 참조 **0**, `og-image.png` 셸 상속 확인, `dist/og-image.png` 존재 |
+| 게이트 | `npm run lint`(스캐너 포함) PASS · build PASS |
+| 배포 후 확인 | (일괄 배포 승인 후: 실배포 이미지 200 + 카드 디버거 1회 — 기입 대기) |

@@ -37,3 +37,8 @@
 | 게이트 | `npm run lint`(스캐너 포함)·`npm run build`+prerender 755 PASS · 콘솔 0에러 |
 | 일반 모드 무영향 | 수리 전부 `@media (forced-colors: active)` 내부 + 클래스 1개 추가(무스타일) — 일반 라이트/다크 픽셀 무변경 by construction, 장식 렌더 정상 실측 |
 | 사람 핸드오프 | **Windows 실물 고대비 스팟 1회 대기** — goal 마감 보고 시 안내(설정 > 접근성 > 대비 테마) |
+
+### 실물 고대비 스팟 (2026-08-01, 사용자 위임으로 에이전트 실행)
+
+- Windows 고대비를 `SystemParametersInfo(SPI_SETHIGHCONTRAST)` 로 실제 활성화(사용자 "너가 처리할 수 있으면 해") → 실브라우저(에뮬레이션 해제)에서 `matchMedia('(forced-colors: active)').matches === true` 확인 → 홈·Colors 순회: 검정 HC 테마에서 텍스트·버튼 경계 판독 가능, 장식 블록 숨김 동작, 생성기 스와치 bg `rgb(255,153,200)` 보존 실측(스크린샷 `tmp/hc-real-home.png`·`tmp/hc-real-colors.png`) → 고대비 원복(원상태 off 복귀 확인).
+- 에뮬레이션(라이트 HC 팔레트)과 실물(검정 테마)의 팔레트는 달랐으나 수리 3건의 동작은 동일 — 감사 신뢰도 교차 확인.

@@ -31,7 +31,7 @@ Status: approved (사용자 승인 2026-08-01 "ㄱㄱ" — 연쇄 M2→M3→M4 �
 
 ## Step 트리
 
-- [ ] **step-1 — codex imagegen 다크·라이트 2종 생성 + 3안 비교 관측**
+- [x] **step-1 — codex imagegen 다크·라이트 2종 생성 + 3안 비교 관측**
   - Artifact: codex exec imagegen 으로 다크 톤·라이트 톤 1200×630 시안 각 1종(브랜드 보라·사이트 아이덴티티 프롬프트 — 프롬프트·커맨드 evidence 기록) + 기존 og-image.svg 렌더 포함 **3안 비교 시트**(라이트/다크 채팅 배경 목업 대조) → 사용자 관측 1회로 최종 선택. SVG og:image 플랫폼 지원 근거 URL 확보(research §C 갱신).
   - Files: write examples/ui-vocabulary-site/public/og-image.png(선택안), tmp/ 시안 후보 2종, research/2026-08-01-dark-carryover-goal-inventory.md(§C 근거 URL), evidence/dark-carryover/m4-og-image-dark.md(프롬프트·비교 시트). read 현행 public/og-image.svg, DESIGN.md(브랜드 토큰).
   - Risk: 기계적 (신규 에셋 — 기존 표면 무영향, 취향은 관측 게이트가 잡음. imagegen 산출 치수가 1200×630 이 아니면 재생성/크롭으로 보정)
@@ -40,7 +40,7 @@ Status: approved (사용자 승인 2026-08-01 "ㄱㄱ" — 연쇄 M2→M3→M4 �
   - Failure probe: imagegen 산출물의 텍스트 렌더 품질(로고·워드마크 왜곡) — 텍스트는 이미지 생성에 맡기지 않고 후처리 합성(오버레이)로 넣는 대안을 비교 시트에 병기.
   - Commit: changeset `m4-og-image-dark` (README 절: step-1).
 
-- [ ] **step-2 — 메타 배선 + goal 마감 검증 (M4 마감·배포 게이트)**
+- [x] **step-2 — 메타 배선 + goal 마감 검증 (M4 마감·배포 게이트)**
   - Artifact: index.html 셸 메타의 og:image/twitter:image 를 PNG 경로·타입으로 갱신(width/height 정합) + 로컬 통합 검증 + `evidence/dark-carryover/m4-og-image-dark.md` + goal 일괄 배포 요약 보고(배포는 사용자 승인 후).
   - Files: write examples/ui-vocabulary-site/index.html, evidence/dark-carryover/m4-og-image-dark.md. read scripts/prerender-ui-vocabulary.ts(og:image 무개입 확인).
   - Risk: 기계적 (메타 문자열 교체 — dist 표본 검사로 즉시 검증)
@@ -68,3 +68,5 @@ Status: approved (사용자 승인 2026-08-01 "ㄱㄱ" — 연쇄 M2→M3→M4 �
 - 2026-08-01 fresh 검증자(sonnet) 반영 — M2: status.* 그룹 신설(accent 충돌 회피)·DESIGN.md 재생성 부작용·llms 별도 커맨드 명시·destructive-foreground 승격 근거, M4: og:image 셸 단일 전제 정정, M3: 실물 고대비 사람 핸드오프 명시.
 - 2026-08-01 사용자 수정 반영 — M4 제작 방식 = codex exec imagegen(다크+라이트 2종 생성, 기존 SVG 포함 3안 품질 비교 선택), 기본 테마 라이트 불변 명문화(M2 제외·M4 결정 로그).
 - 2026-08-01 step-1 시안 생성 완료(다크·라이트 텍스트 왜곡 0) + 3안 비교 시트 — 사용자 관측 게이트 대기. M3 실물 고대비 스팟과 묶어 제시.
+- 2026-08-01 사용자 선택: **A(imagegen 다크)** — step-2 배선 진행. 고대비 실물 스팟은 사용자 위임으로 에이전트가 OS 토글·실측·원복(M3 마감).
+- 2026-08-01 step-2 배선 완료(A안 설치·절대 URL 교정·dist 정합) — goal 일괄 배포 승인 대기.

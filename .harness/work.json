@@ -4837,30 +4837,27 @@
     },
     "dark-carryover": {
       "work_id": "dark-carryover",
-      "milestone_id": "M3",
+      "milestone_id": "M4",
       "status": "active",
-      "plan_path": "plans/2026-08-01-m3-forced-colors.md",
-      "changeset_path": "changesets/20260801-m3-forced-colors",
+      "plan_path": "plans/2026-08-01-m4-og-image-dark.md",
+      "changeset_path": "changesets/20260801-m4-og-image-dark",
       "next_step": "step-1",
       "current_step": "step-1",
       "steps": [
         {
           "id": "step-1",
-          "label": "step-1 — 감사: 에뮬레이션 순회 + 결함 장부"
+          "label": "step-1 — codex imagegen 다크·라이트 2종 생성 + 3안 비교 관측"
         },
         {
           "id": "step-2",
-          "label": "step-2 — 수리 + 게이트 (M3 마감)"
+          "label": "step-2 — 메타 배선 + goal 마감 검증 (M4 마감·배포 게이트)"
         }
       ],
       "execution_mode": "continuous",
       "approval": {
         "approved_by": "user",
         "approved_at": "2026-08-01",
-        "plan_sha256": "fe8d390deda86818670feabbf65c6342fe73773f3117fc1f8bb29a63b1c42540",
-        "chain": [
-          "M4"
-        ]
+        "plan_sha256": "4a513359738970b1785ea7c975cbcb7ff916da07f32a77b487ee5074bce26f6c"
       },
       "allowed_stop_reasons": [
         "completed",
