@@ -32,7 +32,7 @@ Status: approved (사용자 "ㄱㄱ" 2026-07-31 — fresh 검증자 2회 발견 
 
 ## Step 트리
 
-- [ ] **step-1 — fragment 단계 공개 시스템**
+- [x] **step-1 — fragment 단계 공개 시스템**
   - Artifact: `slides.schema.json` fragment 필드 + shell 키 진행 로직(fragment 소진→장 이동, 역방향) + renderer 들의 fragment 클래스 부여 + print/export 경로 전체 표시 강제. `references/layouts.md`·`references/interactive.md` 에 fragment 절.
   - Files: write custom-skills `templates/`(schema·builder src shell·renderer — 착수 시 실경로 확정)·`references/layouts.md`·`references/interactive.md`. read `references/builder-architecture.md`.
   - Risk: 위험 (키 내비 공통 로직 변경 — HU1 스피커 뷰 동기와 상호작용: fragment 인덱스도 동기 대상)
@@ -40,7 +40,7 @@ Status: approved (사용자 "ㄱㄱ" 2026-07-31 — fresh 검증자 2회 발견 
   - Verify: fixture 덱 fragment 장 → Chrome 실조작(진행/역행/장 경계) + 스피커 뷰 동기 유지(HU1 회귀) + print.html·raster PDF 에서 전체 표시 + fragment 미사용 덱 산출 무변화.
   - Failure probe: overflow-checker 가 fragment 숨김 상태에서 오탐하지 않는지(검사는 전체 표시 상태로) 확인. reduced-motion 에뮬레이션으로 즉시 표시 확인.
   - Commit: changeset `20260731-hu2-motion-grammar` (custom-skills, README 절: step-1).
-- [ ] **step-2 — 모션·폰트·anti-slop 규율 명문화 + builder 반영 + 린트**
+- [x] **step-2 — 모션·폰트·anti-slop 규율 명문화 + builder 반영 + 린트**
   - Artifact: `references/style-system.md` 규율 절 — ⓐ 모션(GPU 속성 한정·stagger≤10·reduced-motion) ⓑ 폰트(preconnect/preload — 실측 계약) ⓒ **anti-slop 체크리스트(슬라이드판)**: KG 8항(디폴트 그림자·보라/파랑 그라데이션·라운드 8/12 고정·단일 서체 의존·상투 구도·white-on-gray 카드 일색 등)을 슬라이드 맥락으로 번안 — 테마 토큰 근거 없는 값 금지 형태로 + ⓓ 아이콘 = lucide/lobe SVG 만(이모지·유니코드 글리프 금지 — 기존 §6 계약을 린트로 승격). builder head 생성부(웹폰트 덱이면 preload 태그) + `validate-slides.mjs --lint` warning 항목(모션·anti-slop·아이콘).
   - Files: write custom-skills `references/style-system.md`·`templates/build-slides.mjs`·`templates/validate-slides.mjs`. read 이 레포 `methodology/prompt-patterns.md`(스멜 테스트 원문).
   - Risk: 위험 (builder head 생성부 변경 — 전 덱 산출 표면)
@@ -48,7 +48,7 @@ Status: approved (사용자 "ㄱㄱ" 2026-07-31 — fresh 검증자 2회 발견 
   - Verify: 웹폰트 fixture 빌드 산출 head 에 preload 존재 + 시스템 폰트 덱은 무변화 + 린트 위반 fixture(디폴트 그림자·이모지 아이콘 심은 것)에서 warning 실출력·정상 fixture 0건.
   - Failure probe: 현행 테마 3종+custom 이 실제로 웹폰트를 쓰는지 착수 시 실측(안 쓰면 preload 분기는 custom 테마 전용으로 좁혀 기록 — 발명 금지). anti-slop 린트는 정적 검사 한계(구도·상투성은 기계 판정 불가) — 기계 검사 가능 항목만 린트로, 나머지는 G5 캘리브레이션 체크리스트 항목으로 배선(경계를 계약에 명기).
   - Commit: changeset 동일 (README 절: step-2).
-- [ ] **step-3 — bento-grid 레이아웃 + 등재·배포**
+- [x] **step-3 — bento-grid 레이아웃 + 등재·배포**
   - Artifact: 신규 정적 레이아웃 `bento-grid`(renderer·schema·layout-meta·layouts.md 계약) + SKILL.md 레이아웃 수 갱신 + setup.sh 배포.
   - Files: write custom-skills `templates/layout-meta.json`·`templates/slides.schema.json`·renderer 파일·`references/layouts.md`·`SKILL.md`.
   - Risk: 위험 (schema·layout-meta 공유 계약 파일 편집 — 3자 정합 필수)

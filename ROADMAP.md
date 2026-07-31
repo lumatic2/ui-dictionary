@@ -22,15 +22,17 @@ Goal: HTML 발표 트랙 업그레이드 — 발표 운영력(스피커 뷰·sta
 
 - Completed at: 2026-07-31
 - Summary: S키 스피커 뷰(양방향 동기)·오프라인 standalone(2.70MB 전자원 인라인)·PDF --notes — 배포본 통합 실동작
-<!-- harness:milestone id="HU2" status="active" priority="P1" -->
+<!-- harness:milestone id="HU2" status="completed" priority="P1" evidence="evidence/html-upgrade/hu2-motion-grammar.md" -->
 ### HU2 — 모션 문법 + 표현 규율
 - DoD: fragment 단계 공개(라이브 전용, export 는 전체 표시) + 모션·폰트·anti-slop 규율(계약+린트) + bento-grid 레이아웃이 배포되고 fixture 통합 검증 PASS, 미사용 덱 무변화.
 - Evidence: evidence/html-upgrade/hu2-motion-grammar.md
 - Gap: 단계 공개 부재·AI-slop 규율 미명문화(KG 스멜 테스트 8항 미배선) — research §2·§5
 - Plan: plans/2026-07-31-hu2-motion-grammar.md
-- Status: [ ]
+- Status: [x]
 
-<!-- harness:milestone id="HU3" status="pending" priority="P1" -->
+- Completed at: 2026-07-31
+- Summary: fragment(스피커 step 동기·export 전체표시)+R4~R6 린트(스멜테스트 배선)+bento-grid 15종째
+<!-- harness:milestone id="HU3" status="active" priority="P1" -->
 ### HU3 — 이미지 표현 트랙
 - DoD: 이미지 소싱 계약(실사진 소스 맵·라이선스 장부·rmbg 누끼·imagegen 위임+치수 가드)이 references/imagery.md 로 배포되고 fixture 에서 3원천 실렌더·standalone 인라인 실동작.
 - Evidence: evidence/html-upgrade/hu3-image-track.md

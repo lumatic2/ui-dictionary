@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "active_work_id": "hu2-motion-grammar",
+  "active_work_id": "hu3-image-track",
   "works": {
     "SFB1": {
       "title": "Structure Contract And Clean Production",
@@ -4971,7 +4971,7 @@
     "hu2-motion-grammar": {
       "work_id": "hu2-motion-grammar",
       "milestone_id": "HU2",
-      "status": "active",
+      "status": "completed",
       "plan_path": "plans/2026-07-31-hu2-motion-grammar.md",
       "changeset_path": "changesets/20260731-hu2-motion-grammar",
       "next_step": "step-1",
@@ -4997,6 +4997,56 @@
         "plan_sha256": "50c0ba5955998b98889f5dfbd57ce3f0aebcb7098dfee0d751689976cf80ae44",
         "chain": [
           "hu3",
+          "hu4"
+        ]
+      },
+      "allowed_stop_reasons": [
+        "completed",
+        "blocked",
+        "decision_required",
+        "risk_gate",
+        "secret_required",
+        "external_authority_required",
+        "user_stopped"
+      ],
+      "stop_reason": null,
+      "stop_detail": {},
+      "session_ids": [
+        "claude:f5757e4f-221b-42df-8d0b-5eb4936f9289"
+      ],
+      "owner_session_uuid": "claude:f5757e4f-221b-42df-8d0b-5eb4936f9289",
+      "updated_at": "2026-07-31",
+      "notes": "Registered atomically by canonical harness approve_harness_plan.py after plan validation.",
+      "completion_summary": "fragment 단계 공개·모션/폰트/anti-slop 규율 린트·bento-grid — 발표 문법 배포"
+    },
+    "hu3-image-track": {
+      "work_id": "hu3-image-track",
+      "milestone_id": "HU3",
+      "status": "active",
+      "plan_path": "plans/2026-07-31-hu3-image-track.md",
+      "changeset_path": "changesets/20260731-hu3-image-track",
+      "next_step": "step-1",
+      "current_step": "step-1",
+      "steps": [
+        {
+          "id": "step-1",
+          "label": "step-1 — 이미지 소싱·처리 계약 (`references/imagery.md`)"
+        },
+        {
+          "id": "step-2",
+          "label": "step-2 — 레이아웃 이미지 표현 (풀블리드·슬롯 계약·스크림)"
+        },
+        {
+          "id": "step-3",
+          "label": "step-3 — 3원천 fixture 실증 + standalone 인라인 + 배포"
+        }
+      ],
+      "execution_mode": "continuous",
+      "approval": {
+        "approved_by": "user",
+        "approved_at": "2026-07-31",
+        "plan_sha256": "2008404efd5313e4150a3f45ff3e8452185898d6cb6289f3e0a219ad3d8f96e2",
+        "chain": [
           "hu4"
         ]
       },
