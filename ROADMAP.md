@@ -32,7 +32,7 @@ Goal: 슬라이드 덱 자체 품질 업그레이드 — 품질 루브릭+few-sh
 
 - Completed at: 2026-08-01
 - Summary: animId 전환·optimize-images(77% 감소)·sourceNote 수리 — 회귀 6종 PASS
-<!-- harness:milestone id="DQ3" status="pending" priority="P1" evidence="evidence/deck-quality/dq3-canonical-redesign.md" -->
+<!-- harness:milestone id="DQ3" status="active" priority="P1" evidence="evidence/deck-quality/dq3-canonical-redesign.md" -->
 ### DQ3 — 정본 덱 리디자인 + 관측
 - DoD: 정본 덱이 루브릭 기준 재제작되어 전/후 감사표 개선 + 전 자동 검증·HU4 회귀·발표 전 체크 PASS + 사용자 관측 PASS.
 - Evidence: evidence/deck-quality/dq3-canonical-redesign.md
