@@ -1,0 +1,4 @@
+examples/ui-vocabulary-site/public/llms/** text eol=lf
+examples/ui-vocabulary-site/public/llms.txt text eol=lf
+examples/ui-vocabulary-site/src/tokens.css text eol=lf
+DESIGN.md text eol=lf

@@ -38,7 +38,7 @@ Status: approved (사용자 승인 2026-08-01 "ㄱㄱ" — 연쇄 M5→M6 일괄
   - Failure probe: 검색어를 지워 plus 랜딩으로 돌아갔을 때 title 이 Search 로 잔존하는지 — 상태 전환 왕복 확인.
   - Commit: changeset `m5-finding-fixes` (README 절: step-1).
 
-- [ ] **step-2 — llms 정합 게이트 + 오탐 기록 (M5 마감)**
+- [x] **step-2 — llms 정합 게이트 + 오탐 기록 (M5 마감)**
   - Artifact: llms 정합 검사 스크립트(재생성 2종 실행 → 커밋본 diff 0 확인, exit code) 신설 + npm script 배선 + 로고 포커스 링 오탐 판정 evidence 기록 + `evidence/finding-cleanup/m5-finding-fixes.md`.
   - Files: write scripts/check-llms-sync.mjs(또는 package.json script 조합), package.json(루트 또는 사이트), evidence/finding-cleanup/m5-finding-fixes.md. read scripts/generate-llms-txt.mjs, scripts/generate-tokens.mjs.
   - Risk: 기계적 (읽기·비교 게이트 — 소스 무변경)
