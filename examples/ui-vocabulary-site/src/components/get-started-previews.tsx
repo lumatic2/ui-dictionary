@@ -44,9 +44,10 @@ export function PatternsCollage() {
           <p className="mt-1.5 font-mono text-xs text-askewly-violet">height: max 320px</p>
         </div>
       </div>
-      <div className="absolute left-56 top-[8.5rem] flex items-center gap-2 rounded-lg border bg-card px-3.5 py-2.5 shadow-md">
-        <MousePointer2 className="size-3.5 text-askewly-violet" />
-        <span className="text-sm text-foreground">Hover, focus, and pressed states included</span>
+      <div className="absolute left-56 top-[8.5rem] flex items-center gap-2.5 rounded-xl border bg-card p-3 shadow-md">
+        <span className="rounded-lg bg-askewly-violet px-4 py-2 text-sm font-medium text-primary-foreground shadow-sm">Get started</span>
+        <span className="rounded-lg border bg-background px-4 py-2 text-sm font-medium text-foreground">Live preview</span>
+        <MousePointer2 className="-ml-4 -mb-5 size-4 text-foreground drop-shadow-sm" />
       </div>
     </div>
   )
@@ -76,17 +77,14 @@ export function ColorsSwatchGrid() {
 export function RecipesCollage() {
   return (
     <div aria-hidden="true" className="pointer-events-none relative h-full min-h-52 select-none">
-      <MeshGradientSurface className="absolute -right-10 top-0 h-56 w-[34rem] max-w-none rounded-xl border">
-        <div className="flex h-full items-center justify-center px-8 text-center">
-          <div>
-            <p className="text-lg font-semibold text-foreground">Token-derived mesh surface</p>
-            <p className="mt-1 text-sm text-muted-foreground">Four radial-gradient layers, zero dependencies.</p>
-          </div>
-        </div>
-      </MeshGradientSurface>
-      <div className="absolute bottom-2 left-0 flex items-center gap-2.5 rounded-lg border bg-card px-3.5 py-2.5 shadow-md">
+      <MeshGradientSurface className="absolute -right-10 top-0 h-56 w-[34rem] max-w-none rounded-xl border" />
+      <div className="absolute bottom-6 left-0 flex items-center gap-2.5 rounded-lg border bg-card px-3.5 py-2.5 shadow-md">
         <span className="size-2.5 rounded-full bg-askewly-violet motion-safe:animate-pulse motion-reduce:animate-none" />
         <span className="font-mono text-xs uppercase tracking-[0.14em] text-muted-foreground">motion choreography</span>
+      </div>
+      <div className="absolute right-4 top-40 flex items-center gap-2.5 rounded-lg border bg-card px-3.5 py-2.5 shadow-md">
+        <span className="inline-block size-2.5 rounded-[2px] bg-gradient-to-br from-askewly-violet to-askewly-orchid" />
+        <span className="font-mono text-xs uppercase tracking-[0.14em] text-muted-foreground">mesh gradient</span>
       </div>
     </div>
   )
