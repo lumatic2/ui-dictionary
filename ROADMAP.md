@@ -1,11 +1,14 @@
 # ROADMAP
 
 > Last updated: 2026-07-31
-> Status: **goal `site-polish` 완주 (2026-07-31)** — QA1(한/영 혼용) 관측 회귀 마감·영어 단일 확정, QA2(Get Started Primer 문법 재설계+생성 일러스트) 관측 7왕복 통과. active goal 0 — 남은 큐(사용자 확정 2026-07-28): 『인터랙티브 웹 애니메이션』 책 스터디 자산화(사용자 주도) → real-use-lap 부활(PARK 2026-07-27).
+> Status: **goal `carryover-maintenance` 진행 (2026-07-31)** — M1(verify 타이포 게이트 보정 + SEO 메타 영어 통일). 직전 `site-polish` 완주(QA1 영어 단일 확정·QA2 관측 7왕복 통과). 남은 큐: 『인터랙티브 웹 애니메이션』 책 스터디 자산화(사용자 주도) — real-use-lap 은 2026-07-31 폐기.
 > North star: Build Askewly Design as both a public reference website and an agent-usable implementation system.
 > line budget: <=150
 
 ## Current Goal
+
+<!-- harness:goal id="carryover-maintenance" status="active" -->
+Goal: 이월 유지보수 마감 — 사용자 지목 이월 finding 2건(디자인 verify 타이포 게이트 보정 후 위반 0 · SEO 메타 영어 통일)을 닫는다. Details: `plans/2026-07-31-m1-carryover-maintenance.md`.
 
 <!-- harness:goal-archive15 id="site-polish" status="completed" -->
 Goal: 사이트 다듬기 — 수동 QA 직관성 결함 수리. closed 2026-07-31 — QA1(한/영 혼용) 관측 회귀 마감: **사이트 카피 = 영어 단일 확정**(`docs/design-system/copy-language.md`). QA2: Get Started 를 Primer 문법(사용자 확정 레퍼런스)+codex imagegen 일러스트 세트로 재설계, hover·cursor 반응, 관측 7왕복 통과. Details: `archive/plans/2026-07-31-qa{1,2}-*.md` + `docs/reports/2026-07-31-qa{1,2}-*.md`.
@@ -22,8 +25,8 @@ Goal: 비주얼 임팩트 정리 — 흩어진 비주얼 임팩트 방법(knowle
 <!-- harness:goal-archive11 id="ui-encyclopedia" status="completed" -->
 Goal: UI 백과사전 — 들어가서 용어의 생김새·쓰임·바리에이션을 보고, 헤더·푸터 등 Page Sections 의 종류와 디자인 레퍼런스(직접 구현 데모)를 본다. 유료 경계 = Tailwind Plus 모델, 오너 로그인 전체 열람(결제는 범위 밖). closed 2026-07-28 — UE1~UE5 전부 완료·실서비스 실증(관측 왕복 총 8회, 결함 16건 발견·수리). Details: `archive/plans/2026-07-27-ue1-encyclopedia-navigation.md`(연쇄 정의) + `research/2026-07-27-ue1-encyclopedia-diagnosis.md`.
 
-<!-- harness:goal id="real-use-lap" status="pending" -->
-Goal: 실사용 한 바퀴 — Askewly Design으로 Askewly Design 소개 덱(PPTX)을 실제로 만들고, 막히는 지점만 결함으로 기록해 milestone으로 삼는다. **보류(2026-07-27)** — UI 백과사전 축 우선, 부활 조건은 horizon 문서 헤더. Details: `plans/horizons/2026-07-real-use-lap.md`.
+<!-- harness:goal id="real-use-lap" status="skipped" -->
+Goal: 실사용 한 바퀴 — Askewly Design으로 Askewly Design 소개 덱(PPTX)을 실제로 만들고, 막히는 지점만 결함으로 기록해 milestone으로 삼는다. **제거(2026-07-31, 사용자 판정: 낡음)** — PARK(2026-07-27) 상태에서 부활 없이 폐기. horizon 문서 삭제(git 이력 보존), RU1 결함 장부(`evidence/real-use-lap/ru1-deck-production.md`)·파일럿 실측(`research/2026-07-27-ru2-pilot-defect-measurement.md`)은 기록으로 유지.
 
 <!-- harness:goal-archive10 id="design-output-gates" status="completed" -->
 Goal: 산출물이 좋은지 기계가 잰다, 매체마다 다른 자로. closed 2026-07-22 — DOG1~DOG6 완료, **DOG7(사람 관측) 보류**: 관측 1회 실시했으나 verify 위반 0건이라 오탐률 미측정·승격 판정 미획득. 게이트는 경고 유지. Details: `plans/horizons/2026-07-design-output-gates.md`.
@@ -49,6 +52,16 @@ Goal: 사이트 레시피 데모 실구현을 registry 코드 자산으로 배�
 <!-- harness:goal-archive3 id="studio-finish" status="completed" -->
 Goal: 스튜디오 이월 갭 3건 마감 — 데이터 주도 주입 자동화·구성 패턴 완편(4유형+예약형)·미리보기 고도화(다크·반응형). Details: `plans/horizons/2026-07-studio-finish.md`.
 
+
+## Active Milestones — carryover-maintenance
+
+<!-- harness:milestone id="M1" status="active" priority="P2" evidence="evidence/carryover-maintenance/m1-closeout.md" -->
+### M1 — 이월 유지보수 마감 (verify 타이포 게이트 보정 + SEO 메타 영어 통일)
+- DoD: 보정된 verify 가 반응형 쌍을 1계수하고 사유 필수 마커를 지원하며(테스트 고정) 사이트 `src/components` 타이포 위반 0 + 셸 SEO 메타(문서 lang 포함)가 영어이고 prerender 산출물에 반영 + CLI 테스트·사이트 lint·build·브라우저 스모크 PASS. 실패 모드: 사유 없는 마커·무접두 초과 파일은 여전히 잡힌다.
+- Gap: 타이포 5단계/파일 규칙이 반응형 쌍을 2계수하고 멀티 데모 집합 파일에 예외 수단이 없어 위반 8건 방치(SQ1 이월, 사용자 결정 2026-07-28=게이트 보정) · SEO 메타가 사이트 카피(영어 단일)와 어긋난 한국어(QA1 이월, 사용자 결정 2026-07-31=영어 통일)
+- Scale: steps=3 (CLI 규칙+테스트 / 사이트 잔여 처리 / SEO 메타); surfaces: packages/cli·사이트 컴포넌트·index.html·page-meta.ts·prerender 스크립트; capability: 무시당하지 않는 타이포 게이트 + 카피와 정합한 검색 메타
+- Plan: plans/2026-07-31-m1-carryover-maintenance.md
+- Status: [ ]
 
 ## Active Milestones — site-polish
 

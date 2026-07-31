@@ -21,6 +21,7 @@
 
 ## 이력
 
+- 2026-07-31: **real-use-lap 폐기** (사용자 판정 — "너무 낡았음"). PARK(2026-07-27)에서 부활 없이 제거 — horizon 문서 삭제(git 이력 보존), ROADMAP marker `skipped`. RU1 결함 장부·파일럿 실측 문서는 기록으로 유지. 예약 changeset 구간 267~286 해제(267은 이미 사용됨).
 - 2026-07-22: **real-use-lap horizon 개설** (사용자 발의 — "실사용 한 바퀴 ㄱㄱ"). 근거: 직전 **6연속 horizon이 같은 종류의 기준에서 미달**로 닫혔다(template-production-hardening 실사용 / editor-legibility 판단가능성 / editor-color 판단가능성 부분 / vocabulary-in-use 사람관측 / design-output-gates DOG7 판정 미획득). 기계를 먼저 만들고 쓰임을 나중에 묻는 순서가 원인이라는 판정 — 이 horizon은 순서를 뒤집어 **milestone을 사전 확정하지 않는다**(RU1이 관측 장치, 거기서 나온 결함이 RU2~n). 확정 결정 3건: 산출물=Askewly Design 소개 덱 · 형식=**PPTX** · 앱 경유 없음. changeset 267~286 예약.
 - 2026-07-22: **AskewlyDesign 앱을 제작 표면에서 내렸다** (사용자 확정 — "앱 자체가 쓸 수가 있는 상태가 아니야. UI, UX, 기능 모두 매우 부적합. 차라리 피그마를 앱 역할로"). `OBJECTIVE.md` 성공모습 4·움직이는 축 4·긴 arc 6·북극성 3문단 개정, 레포 `CLAUDE.md` 목적 절 정합. **이력 주의**: figma-bridge(ADR 0003)가 2026-07-07에 원격 MCP 쓰기 채널·토큰→variables 동기화를 이미 검증했고, 그 사흘 뒤 ADR 0005/0006으로 자체 캔버스를 채택해 4 horizon을 투입했다. 기존 캔버스 자산(`apps/`·`packages/canvas-core`)은 동결 보존, ADR 0005/0006은 그 시점 결정 기록으로 유지(철회 아님).
 - 2026-07-22: **design-output-gates closed** — DOG1~DOG6 완료, DOG7 **보류**. 관측 1회 실시했으나 산출물에 verify 위반이 0건이라 오탐률을 구조상 못 쟀고(VL7→VL8과 동형), 승격 질문("경고→차단")이 사용자 언어가 아니어서 판정 2건 다 미획득. 게이트는 **경고 유지**. 새 결함 적재: **기계 게이트가 시그니처 하드 페일을 통과시킨다** — 검사기는 "잘못 쓴 값"을 잡지만 "안 쓴 선언"(브라우저 기본 스타일 노출)은 못 잡는다. 근거 `evidence/design-output-gates/dog7-observation.md`.

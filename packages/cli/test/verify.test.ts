@@ -161,6 +161,39 @@ describe("verifyDir — ignored regions (DOG1 step-2)", () => {
     expect(verifyDir(dir, ["tsx"]).violations).toHaveLength(0)
   })
 
+  // M1 — file-level opt-out for files that are not one screen.
+  it("skips the typography rule for a file with a reasoned marker", () => {
+    const dir = tempDir()
+    const name = "six-steps.tsx"
+    const source = readFileSync(path.join(FIXTURES_TYPO, name), "utf8")
+    writeFileSync(path.join(dir, name), `// askewly-typography-ok: demo gallery, not one screen\n${source}`)
+    const result = verifyDir(dir, ["tsx"])
+    expect(result.violations).toHaveLength(0)
+    expect(result.typographySkips).toHaveLength(1)
+    expect(result.typographySkips[0].reason).toBe("demo gallery, not one screen")
+  })
+
+  it("rejects a marker with no reason", () => {
+    const dir = tempDir()
+    const name = "six-steps.tsx"
+    const source = readFileSync(path.join(FIXTURES_TYPO, name), "utf8")
+    for (const marker of ["// askewly-typography-ok", "// askewly-typography-ok:   "]) {
+      writeFileSync(path.join(dir, name), `${marker}\n${source}`)
+      const result = verifyDir(dir, ["tsx"])
+      expect(result.violations).toHaveLength(1)
+      expect(result.violations[0]).toMatchObject({ line: 1, rule: "typography-marker-no-reason" })
+      expect(result.typographySkips).toHaveLength(0)
+    }
+  })
+
+  it("does not let the marker excuse color violations", () => {
+    const dir = tempDir()
+    writeFileSync(path.join(dir, "a.tsx"), `// askewly-typography-ok: demo gallery\nconst c = "#abc"\n`)
+    const result = verifyDir(dir, ["tsx"])
+    expect(result.violations).toHaveLength(1)
+    expect(result.violations[0].rule).toBe("hex-literal")
+  })
+
   it("masks without shifting line numbers", () => {
     const source = `/* rgb(1,2,3)\n   #ffffff */\nconst c = "#abc"\n`
     const masked = maskIgnoredRegions(source, "tsx")

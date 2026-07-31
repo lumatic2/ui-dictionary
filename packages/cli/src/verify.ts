@@ -5,9 +5,27 @@ import { DEFAULT_TYPOGRAPHY_THRESHOLD, typographyViolation } from "./typography.
 export type Violation = {
   file: string
   line: number
-  rule: "hex-literal" | "raw-color-fn" | "typography-scale-exceeded"
+  rule: "hex-literal" | "raw-color-fn" | "typography-scale-exceeded" | "typography-marker-no-reason"
   excerpt: string
 }
+
+/** A file that opted out of the typography rule, and the reason it gave. */
+export type TypographySkip = {
+  file: string
+  line: number
+  reason: string
+}
+
+/**
+ * File-level opt-out for the typography rule. Some files are not one screen —
+ * a gallery holding a dozen demos, a miniature mockup drawn at fractional
+ * sizes — and for those the count answers a question nobody asked.
+ *
+ * The reason is mandatory: an exemption nobody had to justify is how a gate
+ * stops being a gate. Files claiming the marker are also reported by name, so
+ * the exemptions stay countable instead of disappearing into a PASS.
+ */
+const TYPOGRAPHY_MARKER = /askewly-typography-ok(?::([^\n]*))?/
 
 const DEFAULT_EXTENSIONS = ["tsx", "ts", "jsx", "js", "css", "html"]
 const SKIP_DIRS = new Set(["node_modules", "dist", "build", ".git", ".next"])
@@ -139,10 +157,11 @@ export function verifyDir(
   dir: string,
   extensions: string[] = DEFAULT_EXTENSIONS,
   options: { typographyThreshold?: number } = {},
-): { files: number; violations: Violation[] } {
+): { files: number; violations: Violation[]; typographySkips: TypographySkip[] } {
   const threshold = options.typographyThreshold ?? DEFAULT_TYPOGRAPHY_THRESHOLD
   const files = collectFiles(dir, extensions)
   const violations: Violation[] = []
+  const typographySkips: TypographySkip[] = []
   for (const file of files) {
     const source = readFileSync(file, "utf8")
     const masked = maskIgnoredRegions(source, path.extname(file).slice(1))
@@ -157,18 +176,37 @@ export function verifyDir(
       }
     })
 
+    // The marker is read from the original source: it lives in a comment, and
+    // the masked copy has blanked those out.
+    const markerLine = original.findIndex((text) => TYPOGRAPHY_MARKER.test(text))
+    if (markerLine !== -1) {
+      const reason = (TYPOGRAPHY_MARKER.exec(original[markerLine])?.[1] ?? "").trim()
+      if (reason.length === 0) {
+        violations.push({
+          file,
+          line: markerLine + 1,
+          rule: "typography-marker-no-reason",
+          excerpt: "askewly-typography-ok needs a reason: askewly-typography-ok: <why this file is not one screen>",
+        })
+      } else {
+        typographySkips.push({ file, line: markerLine + 1, reason })
+      }
+      continue
+    }
+
     // Typography counts per file, not per line: the question is how many sizes
     // one screen uses. Comments and SVG are masked out here too — a size
     // mentioned in a comment is not rendered.
     const typography = typographyViolation(masked, threshold)
     if (typography) {
+      const where = typography.bucket === "" ? "" : ` at ${typography.bucket}`
       violations.push({
         file,
         line: typography.line,
         rule: "typography-scale-exceeded",
-        excerpt: `font-size steps: ${typography.steps.join(", ")} (${typography.steps.length} > limit ${typography.threshold})`,
+        excerpt: `font-size steps${where}: ${typography.steps.join(", ")} (${typography.steps.length} > limit ${typography.threshold})`,
       })
     }
   }
-  return { files: files.length, violations }
+  return { files: files.length, violations, typographySkips }
 }

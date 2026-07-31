@@ -168,19 +168,30 @@ program
       console.error(`--typography-threshold must be a positive integer (got "${options.typographyThreshold}")`)
       process.exit(2)
     }
-    const { files, violations } = verifyDir(
+    const { files, violations, typographySkips } = verifyDir(
       target,
       options.ext.split(",").map((e) => e.trim()),
       { typographyThreshold },
     )
+    // Exemptions are printed on every run, pass or fail. A file that opted out
+    // silently would read as a file that passed.
+    const printSkips = (write: (line: string) => void) => {
+      if (typographySkips.length === 0) return
+      write(`\n${typographySkips.length} file(s) exempt from the typography rule:`)
+      for (const skip of typographySkips) {
+        write(`  ${path.relative(target, skip.file)}:${skip.line} — ${skip.reason}`)
+      }
+    }
     if (violations.length === 0) {
       console.log(`verify PASS — ${files} file(s) scanned, no color literals and no file over ${typographyThreshold} type sizes`)
+      printSkips((line) => console.log(line))
       return
     }
     console.error(`verify FAIL — ${violations.length} violation(s) in ${files} file(s):`)
     for (const violation of violations) {
       console.error(`  ${path.relative(target, violation.file)}:${violation.line} [${violation.rule}] ${violation.excerpt}`)
     }
+    printSkips((line) => console.error(line))
     console.error("\nFix: replace color literals with semantic token utilities (bg-primary, text-foreground, ...);")
     console.error("     collapse extra type sizes onto the token scale, or raise --typography-threshold.")
     process.exit(1)

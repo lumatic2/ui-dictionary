@@ -69,6 +69,28 @@ function stripVariants(utility: string): string {
   return parts[parts.length - 1]
 }
 
+/**
+ * Named breakpoints plus the `min-*`/`max-*` families. Matching the families by
+ * shape rather than listing them keeps arbitrary variants (`max-[900px]`,
+ * `min-[40rem]`) in the same space as the named ones.
+ */
+const NAMED_BREAKPOINTS = new Set(["sm", "md", "lg", "xl", "2xl"])
+
+function isBreakpointVariant(variant: string): boolean {
+  if (NAMED_BREAKPOINTS.has(variant)) return true
+  return /^(?:min|max)-/.test(variant)
+}
+
+/**
+ * The breakpoint a utility renders at, as a stable key. Non-breakpoint variants
+ * (`hover`, `dark`, `group-*`) do not create a bucket: they are states of the
+ * same screen, and their sizes are visible alongside the rest.
+ */
+function breakpointBucket(utility: string): string {
+  const variants = utility.split(":").slice(0, -1).filter(isBreakpointVariant)
+  return [...new Set(variants)].sort().join("+")
+}
+
 function lengthToPx(raw: string): number | null {
   const text = raw.trim()
   let match = /^(-?\d*\.?\d+)px$/.exec(text)
@@ -82,8 +104,10 @@ function lengthToPx(raw: string): number | null {
   return null
 }
 
-// `text-lg`, `md:text-lg`, `text-[13px]`, `md:text-[0.9rem]`
-const UTILITY_RULE = /(?:^|["'`\s{])((?:[a-z0-9-]+:)*text-(?:\[[^\]\s]+\]|[a-z0-9]+))(?=["'`\s}]|$)/g
+// `text-lg`, `md:text-lg`, `text-[13px]`, `md:text-[0.9rem]`, `min-[900px]:text-lg`
+// The bracket in the variant half is load-bearing: without it an arbitrary
+// breakpoint made the whole utility invisible to the scan, not just its prefix.
+const UTILITY_RULE = /(?:^|["'`\s{])((?:[a-z0-9-]+(?:\[[^\]\s]+\])?:)*text-(?:\[[^\]\s]+\]|[a-z0-9]+))(?=["'`\s}]|$)/g
 // `fontSize: "14px"` / `fontSize: '1rem'` / `font-size: 14px`
 const INLINE_RULE = /fontSize\s*:\s*["'`]([^"'`]+)["'`]/g
 const CSS_RULE = /font-size\s*:\s*([^;}\n]+)/g
@@ -95,31 +119,61 @@ const CSS_RULE = /font-size\s*:\s*([^;}\n]+)/g
  */
 export function resolveTypographySteps(source: string, scale = typographyScale()): Set<number> {
   const steps = new Set<number>()
+  for (const sizes of resolveTypographyBuckets(source, scale).values()) {
+    for (const size of sizes) steps.add(size)
+  }
+  return steps
+}
+
+/** The base bucket: sizes that render with no breakpoint variant attached. */
+export const BASE_BUCKET = ""
+
+/**
+ * Same resolution as `resolveTypographySteps`, but keyed by the breakpoint the
+ * size renders at.
+ *
+ * Counting every size in one set punished the ordinary responsive pair:
+ * `text-5xl md:text-7xl` is one element at one size on any given screen, yet it
+ * read as two steps. Buckets are judged independently because only one
+ * breakpoint is live at a time.
+ *
+ * Known limit: inline styles and CSS declarations land in the base bucket even
+ * inside `@media` — attributing those needs block parsing, and the files that
+ * drove this change express sizes as utilities.
+ */
+export function resolveTypographyBuckets(source: string, scale = typographyScale()): Map<string, Set<number>> {
+  const buckets = new Map<string, Set<number>>()
+  const add = (bucket: string, px: number) => {
+    const existing = buckets.get(bucket)
+    if (existing) existing.add(px)
+    else buckets.set(bucket, new Set([px]))
+  }
 
   for (const match of source.matchAll(UTILITY_RULE)) {
+    const bucket = breakpointBucket(match[1])
     const utility = stripVariants(match[1])
     const suffix = utility.slice("text-".length)
     if (suffix.startsWith("[")) {
       const px = lengthToPx(suffix.slice(1, -1))
-      if (px !== null) steps.add(px)
+      if (px !== null) add(bucket, px)
       continue
     }
     // `text-center`, `text-primary` and friends share the prefix but are not
     // sizes — only names present in the scale count.
-    if (suffix in scale) steps.add(Math.round(scale[suffix]))
+    if (suffix in scale) add(bucket, Math.round(scale[suffix]))
   }
 
   for (const match of source.matchAll(INLINE_RULE)) {
     const px = lengthToPx(match[1])
-    if (px !== null) steps.add(px)
+    if (px !== null) add(BASE_BUCKET, px)
   }
 
   for (const match of source.matchAll(CSS_RULE)) {
     const px = lengthToPx(match[1])
-    if (px !== null) steps.add(px)
+    if (px !== null) add(BASE_BUCKET, px)
   }
 
-  return steps
+  return buckets
 }
 
 /**
@@ -137,28 +191,43 @@ export type TypographyViolation = {
   line: number
   steps: number[]
   threshold: number
+  /** Which breakpoint broke the limit; `BASE_BUCKET` for the unprefixed screen. */
+  bucket: string
 }
 
 /**
- * Returns the violation for one file, or null when it stays within the limit.
- * The reported line is where the step that broke the limit first appears —
- * pointing at the first line of the file would say nothing about what to fix.
+ * Returns the violation for one file, or null when every breakpoint stays
+ * within the limit. The reported line is where the step that broke the limit
+ * first appears — pointing at the first line of the file would say nothing
+ * about what to fix.
+ *
+ * Buckets are judged separately, which under-counts on purpose: at `md` the
+ * screen also shows whatever base sizes `md` did not override, and a text
+ * scanner cannot tell which those are. The alternative — adding base into every
+ * breakpoint — reinstates the false positive this rule exists to avoid, so the
+ * rule stays quiet where it cannot be sure.
  */
 export function typographyViolation(
   source: string,
   threshold = DEFAULT_TYPOGRAPHY_THRESHOLD,
   scale = typographyScale(),
 ): TypographyViolation | null {
-  const seen = new Set<number>()
-  let breakingLine: number | null = null
+  const seen = new Map<string, Set<number>>()
+  let breaking: { line: number; bucket: string } | null = null
 
   source.split("\n").forEach((text, index) => {
-    for (const step of resolveTypographySteps(text, scale)) {
-      seen.add(step)
-      if (breakingLine === null && seen.size > threshold) breakingLine = index + 1
+    for (const [bucket, sizes] of resolveTypographyBuckets(text, scale)) {
+      const known = seen.get(bucket) ?? new Set<number>()
+      seen.set(bucket, known)
+      for (const step of sizes) {
+        known.add(step)
+        if (breaking === null && known.size > threshold) breaking = { line: index + 1, bucket }
+      }
     }
   })
 
-  if (breakingLine === null) return null
-  return { line: breakingLine, steps: [...seen].sort((a, b) => a - b), threshold }
+  if (breaking === null) return null
+  const { line, bucket } = breaking
+  const steps = [...(seen.get(bucket) ?? new Set<number>())].sort((a, b) => a - b)
+  return { line, steps, threshold, bucket }
 }

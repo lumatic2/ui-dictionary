@@ -2,7 +2,7 @@ import { readFileSync } from "node:fs"
 import path from "node:path"
 import { fileURLToPath } from "node:url"
 import { describe, expect, it } from "vitest"
-import { resolveTypographySteps, typographyScale } from "../src/typography.js"
+import { resolveTypographyBuckets, resolveTypographySteps, typographyScale, typographyViolation } from "../src/typography.js"
 
 const FIXTURES = path.join(path.dirname(fileURLToPath(import.meta.url)), "fixtures", "typography-regression")
 
@@ -74,5 +74,67 @@ describe("resolveTypographySteps", () => {
     expect([...resolveTypographySteps(`font-size: 1rem`, scale)]).toEqual([16])
     expect([...resolveTypographySteps(`font-size: 12pt`, scale)]).toEqual([16])
     expect([...resolveTypographySteps(`.a{font-size:18px}`, scale)]).toEqual([18])
+  })
+})
+
+// M1 — the rule counted `text-5xl md:text-7xl` as two steps, so ordinary
+// responsive headings ate the budget of files that had no type problem.
+describe("resolveTypographyBuckets", () => {
+  const scale = { sm: 14, base: 16, lg: 20, "5xl": 48, "7xl": 72 }
+
+  it("separates a responsive pair into its own breakpoints", () => {
+    const buckets = resolveTypographyBuckets(`<h1 className="text-5xl md:text-7xl" />`, scale)
+    expect([...buckets.get("")!]).toEqual([48])
+    expect([...buckets.get("md")!]).toEqual([72])
+  })
+
+  it("keeps non-breakpoint variants in the base bucket", () => {
+    // hover and dark are states of the same screen, visible next to everything
+    // else on it — they are not a separate layout.
+    const buckets = resolveTypographyBuckets(`<a className="text-sm hover:text-lg dark:text-base" />`, scale)
+    expect([...buckets.keys()]).toEqual([""])
+    expect([...buckets.get("")!].sort((a, b) => a - b)).toEqual([14, 16, 20])
+  })
+
+  it("buckets arbitrary min-/max- variants too", () => {
+    const buckets = resolveTypographyBuckets(`<p className="max-md:text-sm min-[900px]:text-lg" />`, scale)
+    expect([...buckets.get("max-md")!]).toEqual([14])
+    expect([...buckets.get("min-[900px]")!]).toEqual([20])
+  })
+
+  it("normalises a variant chain to one bucket regardless of order", () => {
+    const a = resolveTypographyBuckets(`<p className="md:hover:text-lg" />`, scale)
+    const b = resolveTypographyBuckets(`<p className="hover:md:text-lg" />`, scale)
+    expect([...a.keys()]).toEqual([...b.keys()])
+    expect([...a.keys()]).toEqual(["md"])
+  })
+})
+
+describe("typographyViolation", () => {
+  const scale = { xs: 12, sm: 14, base: 16, lg: 20, xl: 28, "2xl": 40, "5xl": 48, "7xl": 72 }
+
+  it("does not flag a scale-full file that also carries responsive pairs", () => {
+    const source = [
+      `<h1 className="text-5xl md:text-7xl" />`,
+      `<p className="text-xs" /><p className="text-sm" /><p className="text-base" />`,
+      `<p className="text-lg" /><p className="text-xl" />`,
+    ].join("\n")
+    // base = 12,14,16,20,28,48 → six, over the limit; the pair is not the cause.
+    expect(typographyViolation(source, 6, scale)).toBeNull()
+  })
+
+  it("still flags a file that exceeds the limit at one breakpoint", () => {
+    const source = `<p className="text-xs text-sm text-base text-lg text-xl text-2xl" />`
+    const violation = typographyViolation(source, 5, scale)
+    expect(violation).not.toBeNull()
+    expect(violation!.bucket).toBe("")
+    expect(violation!.steps).toEqual([12, 14, 16, 20, 28, 40])
+  })
+
+  it("flags a breakpoint bucket that blows the limit on its own", () => {
+    const source = `<p className="md:text-xs md:text-sm md:text-base md:text-lg md:text-xl md:text-2xl" />`
+    const violation = typographyViolation(source, 5, scale)
+    expect(violation).not.toBeNull()
+    expect(violation!.bucket).toBe("md")
   })
 })
