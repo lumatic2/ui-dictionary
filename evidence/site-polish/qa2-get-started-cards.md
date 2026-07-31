@@ -32,4 +32,16 @@
 | 라우팅 4방향 | PASS — /patterns/marketing·/docs·/colors·/recipes |
 | 라이트/다크 | PASS — 풀페이지 스크린샷 2회차(scratchpad qa2b-light2/dark2) |
 | 콘솔 | 0 에러 |
-| 관측 | 2회차 대기 |
+| 관측 | 2회차 **기각** — 축소 렌더 = "캡처, 글자 안 보임, AI slop" |
+
+## 재작업 2 (관측 2회차 기각 → Primer 문법, 사용자 확정 레퍼런스)
+
+| 항목 | 결과 |
+|---|---|
+| 레퍼런스 | primer.style 전체 캡처(`research/assets/2026-07-31-primer-home.png`)·구조 해독(`research/2026-07-31-qa2-primer-structure.md`) |
+| 재구현 | 센터 헤딩+서브 1줄 · 비대칭 2카드(Patterns 콜라주·Colors 스와치) · 풀폭 Recipes(mesh 실물) · More ways in 3소카드 — 일러스트 전부 실물 크기 조각(글자 원래 크기) |
+| tsc·lint(colors 0)·build(755) | PASS |
+| 라우팅 4방향 | PASS — /patterns/marketing·/colors·/recipes·/docs |
+| 라이트/다크 | PASS — 풀페이지 스크린샷(qa2c-light/dark) |
+| 콘솔 | 0 에러 |
+| 관측 | 3회차 대기 |

@@ -1,63 +1,93 @@
-import { lazy, Suspense, type ReactNode } from "react"
-import { MarketingSectionPreviewLazy } from "@/components/marketing-section-preview-lazy"
-import { cn } from "@/lib/utils"
+import { AtSign, Bookmark, Check, Heart, MousePointer2, Pencil, Search, X } from "lucide-react"
+import { MeshGradientSurface } from "@/components/mesh-gradient-surface"
+import { paletteSeedLibrary } from "@/lib/palette-generator"
 
-/** Get Started thumbnails (QA2, structure B): scaled-down renders of the site's REAL
- *  demo components — not skeletons, not screenshots (reference: Tailwind Plus thumbnail
- *  grid, research/2026-07-31-qa2-get-started-references.md). Decorative: aria-hidden,
- *  pointer-events-none. Each heavy demo is lazy-loaded so the get-started chunk stays light. */
+/** Get Started illustrations (QA2, round 3 — Primer-style collage).
+ *  Reference: research/2026-07-31-qa2-primer-structure.md — real-size UI fragments,
+ *  overlapped and cropped by the card edge. NOT scaled-down captures: every label
+ *  stays at its natural, readable size. Token-only chrome; decorative (aria-hidden). */
 
-const ArticleDocsDemo = lazy(() =>
-  import("@/components/recipe-gallery-demos").then((m) => ({ default: m.ArticleDocumentationLayoutDemo })),
-)
-const PaletteGeneratorDemo = lazy(() =>
-  import("@/components/home-page").then((m) => ({ default: m.ColorPaletteGeneratorDemo })),
-)
-const MeshGradientDemo = lazy(() =>
-  import("@/components/mesh-gradient-surface").then((m) => ({ default: m.MeshGradientSurfaceDemo })),
-)
-
-function ScaledFrame({ children, scale, className }: { children: ReactNode; scale: number; className?: string }) {
+/** Patterns hero card: connector line art + toast + tag + icon toolbar + spec box,
+ *  bleeding past the card's bottom edge (Primer Product UI card). */
+export function PatternsCollage() {
   return (
-    <div
-      aria-hidden="true"
-      className={cn("pointer-events-none relative h-52 select-none overflow-hidden rounded-md border bg-background", className)}
-    >
-      <div className="absolute left-0 top-0 origin-top-left" style={{ width: `${Math.round(100 / scale)}%`, transform: `scale(${scale})` }}>
-        <Suspense fallback={<div className="h-[32rem] w-full animate-pulse bg-muted" />}>{children}</Suspense>
+    <div aria-hidden="true" className="pointer-events-none relative mt-10 h-56 select-none overflow-hidden">
+      <svg className="absolute -left-2 top-0 h-52 w-44 text-border" fill="none" stroke="currentColor" strokeWidth="1.5">
+        <circle cx="28" cy="24" r="9" />
+        <circle cx="84" cy="58" r="9" />
+        <circle cx="24" cy="128" r="9" />
+        <path d="M35 30 C 56 38, 62 46, 76 52" />
+        <path d="M78 65 C 56 84, 38 100, 28 120" />
+      </svg>
+      <div className="absolute left-24 top-6 flex items-center gap-2.5 rounded-lg border bg-card px-3.5 py-2.5 shadow-md">
+        <span className="grid size-5 place-items-center rounded-full bg-askewly-violet/15 text-askewly-violet">
+          <Check className="size-3" />
+        </span>
+        <span className="text-sm font-medium text-foreground">Saved to library</span>
+        <X className="ml-2 size-3.5 text-muted-foreground" />
+      </div>
+      <span className="absolute left-40 top-[4.6rem] rounded-md bg-askewly-violet px-2 py-0.5 font-mono text-[11px] font-semibold text-primary-foreground shadow-sm">
+        section
+      </span>
+      <div className="absolute left-16 top-24 flex items-center gap-3 rounded-xl border bg-card px-4 py-2.5 shadow-sm">
+        <Search className="size-4 text-muted-foreground" />
+        <Pencil className="size-4 text-muted-foreground" />
+        <span className="grid size-6 place-items-center rounded-md border border-dashed border-askewly-violet text-askewly-violet">
+          <Heart className="size-3.5" />
+        </span>
+        <Bookmark className="size-4 text-muted-foreground" />
+        <AtSign className="size-4 text-muted-foreground" />
+      </div>
+      <div className="absolute left-[19rem] top-12 hidden w-64 rounded-lg border border-askewly-lavender bg-askewly-lavender/15 p-4 sm:block">
+        <div className="border-l border-t border-askewly-violet/50 pl-3 pt-2">
+          <p className="font-mono text-xs text-askewly-violet">width: 480px</p>
+          <p className="mt-1.5 font-mono text-xs text-askewly-violet">height: max 320px</p>
+        </div>
+      </div>
+      <div className="absolute left-56 top-[8.5rem] flex items-center gap-2 rounded-lg border bg-card px-3.5 py-2.5 shadow-md">
+        <MousePointer2 className="size-3.5 text-askewly-violet" />
+        <span className="text-sm text-foreground">Hover, focus, and pressed states included</span>
       </div>
     </div>
   )
 }
 
-export function PatternsPreview() {
+/** Colors narrow card: six real palette swatches with their hex labels at natural size
+ *  (Primer's mona tile grid position). */
+export function ColorsSwatchGrid() {
+  const swatches = paletteSeedLibrary
+    .flatMap((seed) => seed.colors.map((color) => ({ seedId: seed.id, ...color })))
+    .filter((_, index) => index % 4 === 0)
+    .slice(0, 6)
   return (
-    <ScaledFrame scale={0.35}>
-      <MarketingSectionPreviewLazy theme="system" variant="hero-centered" />
-    </ScaledFrame>
+    <div aria-hidden="true" className="pointer-events-none grid select-none grid-cols-3 gap-3">
+      {swatches.map((swatch) => (
+        <div key={`${swatch.seedId}-${swatch.hex}`} className="flex flex-col gap-1.5">
+          <span className="h-16 w-full rounded-xl border border-foreground/5" style={{ backgroundColor: swatch.hex }} />
+          <span className="font-mono text-[11px] uppercase text-muted-foreground">{swatch.hex}</span>
+        </div>
+      ))}
+    </div>
   )
 }
 
-export function DocsPreview() {
+/** Recipes full-width band: real MeshGradientSurface at natural size, cropped by the
+ *  card's right edge, with a motion chip on top (Primer Brand UI collage position). */
+export function RecipesCollage() {
   return (
-    <ScaledFrame scale={0.4}>
-      <ArticleDocsDemo />
-    </ScaledFrame>
-  )
-}
-
-export function ColorsPreview() {
-  return (
-    <ScaledFrame scale={0.4}>
-      <PaletteGeneratorDemo />
-    </ScaledFrame>
-  )
-}
-
-export function RecipesPreview() {
-  return (
-    <ScaledFrame scale={0.8}>
-      <MeshGradientDemo />
-    </ScaledFrame>
+    <div aria-hidden="true" className="pointer-events-none relative h-full min-h-52 select-none">
+      <MeshGradientSurface className="absolute -right-10 top-0 h-56 w-[34rem] max-w-none rounded-xl border">
+        <div className="flex h-full items-center justify-center px-8 text-center">
+          <div>
+            <p className="text-lg font-semibold text-foreground">Token-derived mesh surface</p>
+            <p className="mt-1 text-sm text-muted-foreground">Four radial-gradient layers, zero dependencies.</p>
+          </div>
+        </div>
+      </MeshGradientSurface>
+      <div className="absolute bottom-2 left-0 flex items-center gap-2.5 rounded-lg border bg-card px-3.5 py-2.5 shadow-md">
+        <span className="size-2.5 rounded-full bg-askewly-violet motion-safe:animate-pulse motion-reduce:animate-none" />
+        <span className="font-mono text-xs uppercase tracking-[0.14em] text-muted-foreground">motion choreography</span>
+      </div>
+    </div>
   )
 }

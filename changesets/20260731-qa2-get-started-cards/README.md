@@ -18,3 +18,9 @@
 - 기각 사유: 스켈레톤 썸네일 품질·인트로 3문장·카드 나열 구조 의문. 레퍼런스 10곳 실측(`research/2026-07-31-qa2-get-started-references.md`) 후 사용자 B안 확정(Tailwind Plus 방식 — 레포 1차 IA 레퍼런스와 정합).
 - `get-started-previews.tsx` 재작성: ScaledFrame(축소 렌더 클리핑) + 실데모 4종 lazy 로드 — MarketingSectionPreviewLazy(hero-centered)·ArticleDocumentationLayoutDemo·ColorPaletteGeneratorDemo·MeshGradientSurfaceDemo.
 - `get-started-page.tsx`: 인트로 문단 삭제(헤딩만), 카드 = 실물 썸네일 + 제목 + 실데이터 메타(31 articles·13 curated palettes·47 live-rendered recipes), 안내 2블록 소형화(1행 컴팩트).
+
+## 재작업 2 — 관측 2회차 기각 → Primer 문법 (사용자 확정)
+
+- 기각 사유: 축소 렌더 = "그냥 캡처, 글자 안 보임, AI slop". 사용자가 크롬에서 레퍼런스 7곳 순회 후 primer.style 확정.
+- 구조: 센터 헤딩+서브 → 비대칭 2카드 히어로(좌 Patterns: 커넥터 선화+토스트+태그+툴바+스펙 박스 실물 크기 콜라주 / 우 Colors: paletteSeedLibrary 실데이터 스와치 6타일+hex 라벨) → 풀폭 Recipes(MeshGradientSurface 실물 우측 블리드+모션 칩) → "More ways in" 3소카드(Docs 31·UI Vocabulary 562/Ctrl F·Agents llms.txt).
+- 원칙: 일러스트는 실물 크기 UI 조각의 겹침·잘라내기 — 축소 없음, 모든 글자 원래 크기. 토큰 전용(colors lint 0), 이전 라운드 파일(축소 ScaledFrame·lazy 데모 import) 전량 대체.
