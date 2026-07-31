@@ -39,7 +39,7 @@ Status: approved (사용자 승인 2026-08-01 "ㄱㄱ" — 연쇄 M5→M6 일괄
   - Failure probe: `@theme` 의 `--text-*` 재정의가 line-height 짝(`--text-5xl--line-height` 류)을 깨뜨리는지 — Tailwind v4 는 크기·행간 쌍 변수 구조라 크기만 덮으면 행간이 무너질 수 있음. 대표 헤딩의 computed line-height 전후 대조 필수.
   - Commit: changeset `m6-typography-scale` (README 절: step-1).
 
-- [ ] **step-2 — 문서 표면 반영 + 통합 검증 (M6 마감)**
+- [x] **step-2 — 문서 표면 반영 + 통합 검증 (M6 마감)**
   - Artifact: Foundations Typography 아티클(documentation-pages.ts)의 스케일 서술을 9단계로 갱신 + 실사용 `text-[10px]` 지점의 `text-2xs` 치환(셸 소수) + 통합 검증 + `evidence/finding-cleanup/m6-typography-scale.md`.
   - Files: write examples/ui-vocabulary-site/src/lib/documentation-pages.ts, (실사용 지점) src/components/*.tsx 소수, evidence/finding-cleanup/m6-typography-scale.md. read 전 단계 산출물.
   - Risk: 기계적

@@ -66,7 +66,7 @@ function PaletteCard({
             >
               {/* hardcoded-color-ok: contrast overlay must stay black regardless of theme — it sits on an arbitrary swatch color, not site chrome */}
               <span
-                className={"pointer-events-none rounded bg-black/0 font-mono text-[10px] font-semibold uppercase tracking-normal opacity-0 transition group-hover/swatch:bg-black/25 group-hover/swatch:opacity-100" /* hardcoded-color-ok — 임의 색 견본 위 대비 오버레이, 테마 무관 검정 고정 */}
+                className={"pointer-events-none rounded bg-black/0 font-mono text-2xs font-semibold uppercase tracking-normal opacity-0 transition group-hover/swatch:bg-black/25 group-hover/swatch:opacity-100" /* hardcoded-color-ok — 임의 색 견본 위 대비 오버레이, 테마 무관 검정 고정 */}
                 style={{ color: textColor }}
               >
                 {color.hex.replace("#", "")}
@@ -106,7 +106,7 @@ function PaletteCard({
           </div>
         </div>
         <p className="text-xs leading-5 text-muted-foreground">{seed.note}</p>
-        <p className="font-mono text-[10px] uppercase tracking-[0.14em] text-muted-foreground/70">
+        <p className="font-mono text-2xs uppercase tracking-[0.14em] text-muted-foreground/70">
           Curated seed — Askewly Design in-repo library
         </p>
       </div>

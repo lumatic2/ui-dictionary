@@ -8,3 +8,8 @@
 - typography.scale 5→10항목: 신규 2xs(.625rem)/xs(.75rem)/3xl(1.875rem)/5xl(3rem)/7xl(4.5rem) — **rem 단위로 Tailwind v4 기본값 그대로**(px 강제 시 사용자 폰트 확대 설정에서 렌더가 달라져 rem 채택 — 무손실 계약의 엄밀 해석). xl(28) "실화면 미사용" 기록.
 - FONT_SIZE_MAPPINGS 10변수 확장 → tokens.css·DESIGN.md 재생성 → `@theme inline` --text-{2xs,xs,3xl,5xl,7xl} 배선(lg 20·2xl 40 은 Tailwind 동명 기본값과 달라 미배선).
 - Verify: SSOT↔Tailwind 값 표 대조 전건 일치 · 번들 `.text-5xl{font-size:var(--font-size-5xl); line-height:…--text-5xl--line-height}` — SSOT 경유 + 행간 쌍 무손 · computed 표본(colors h1 72/72·get-started h1 48/48·recipes h1 36/40 무변화·10px 요소 존재) · build+prerender 755 PASS.
+
+## step-2 — 문서 표면 반영 + 통합 검증
+
+- Typography 아티클 9단계 갱신(lead·본문·코드 표) + 셸 6파일 text-[10px]→text-2xs(computed 10px 실측).
+- 통합: verify PASS(위반 0·면제 4)·lint 체인(colors+llms)·build 755·computed 표본 무손실.

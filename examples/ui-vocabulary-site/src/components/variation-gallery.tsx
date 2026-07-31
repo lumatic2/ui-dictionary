@@ -31,7 +31,7 @@ export function VariationGallery({ termId, proUnlocked = false }: { termId: stri
                   <div className="flex flex-wrap items-center gap-2">
                     <h3 className="text-sm font-semibold text-foreground">{variation.label}</h3>
                     {variation.tier === "pro" && (
-                      <Badge className="rounded-md bg-askewly-violet/10 text-[10px] font-semibold text-askewly-violet hover:bg-askewly-violet/10" variant="secondary">
+                      <Badge className="rounded-md bg-askewly-violet/10 text-2xs font-semibold text-askewly-violet hover:bg-askewly-violet/10" variant="secondary">
                         {proUnlocked ? "Pro · unlocked" : "Pro"}
                       </Badge>
                     )}
@@ -40,7 +40,7 @@ export function VariationGallery({ termId, proUnlocked = false }: { termId: stri
                 </div>
                 <div className="flex shrink-0 flex-wrap justify-end gap-1">
                   {variation.states.map((state) => (
-                    <Badge key={state} className="rounded-md text-[10px] font-normal" variant="outline">
+                    <Badge key={state} className="rounded-md text-2xs font-normal" variant="outline">
                       {state}
                     </Badge>
                   ))}

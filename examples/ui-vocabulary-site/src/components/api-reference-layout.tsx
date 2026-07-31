@@ -35,7 +35,7 @@ function ParamRow({ param, depth = 0 }: { param: ApiReferenceParam; depth?: numb
       <div className="flex flex-wrap items-center gap-2">
         <code className="text-sm font-medium">{param.name}</code>
         <span className="text-xs text-muted-foreground">{param.type}</span>
-        <Badge variant={param.required ? "default" : "outline"} className="text-[10px]">
+        <Badge variant={param.required ? "default" : "outline"} className="text-2xs">
           {param.required ? "required" : "optional"}
         </Badge>
       </div>

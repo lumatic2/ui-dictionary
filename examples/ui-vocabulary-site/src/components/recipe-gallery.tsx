@@ -66,7 +66,7 @@ function RecipeCard({ entry, onSelect }: { entry: RecipeGalleryEntry; onSelect: 
     >
       <div className="flex items-center justify-between gap-2">
         <h3 className="text-sm font-medium">{entry.title}</h3>
-        <Badge variant="outline" className="shrink-0 text-[10px]">{entry.collection}</Badge>
+        <Badge variant="outline" className="shrink-0 text-2xs">{entry.collection}</Badge>
       </div>
       <p className="line-clamp-3 text-sm text-muted-foreground">{entry.description}</p>
     </button>

@@ -55,7 +55,7 @@ export function PosterView({ scopeLabel, terms, totalCount }: PosterViewProps) {
                 </div>
                 <span className="shrink-0 text-xs font-semibold text-muted-foreground">{index + 1}</span>
               </div>
-              <Badge variant="outline" className="mt-2 rounded-md px-1.5 py-0 text-[10px]">
+              <Badge variant="outline" className="mt-2 rounded-md px-1.5 py-0 text-2xs">
                 {categoryLabels[term.category]}
               </Badge>
               <p className="mt-2 line-clamp-2 text-xs leading-5 text-muted-foreground">{term.one_liner}</p>

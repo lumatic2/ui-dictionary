@@ -1069,16 +1069,16 @@ export const docsArticlePages = new Map<TermFilter, DocsArticlePageData>([
     kind: "foundation",
     breadcrumb: "UI Blocks / Docs",
     title: "Typography",
-    lead: "Askewly Design의 Typography는 작고 닫힌 세트입니다: 두 개의 font family, 5단계 type scale, 두 개의 font weight. 이렇게 작게 유지하는 이유는, 디자이너가 모든 heading 크기를 눈으로 일일이 확인하지 않아도 이 세트로 만든 화면이 시각적으로 일관되게 유지되기 때문입니다.",
+    lead: "Askewly Design의 Typography는 작고 닫힌 세트입니다: 두 개의 font family, 9단계 type scale, 두 개의 font weight. 이렇게 작게 유지하는 이유는, 디자이너가 모든 heading 크기를 눈으로 일일이 확인하지 않아도 이 세트로 만든 화면이 시각적으로 일관되게 유지되기 때문입니다.",
     sections: [
       {
         title: "Tokens",
         body: [
           "`typography.font.sans`는 기본 UI 폰트 스택입니다: `Geist, \"Noto Sans KR\", ui-sans-serif, system-ui, sans-serif` — Noto Sans KR이 스택에 들어있는 이유는 같은 UI 안의 한국어 카피가 어긋난 시스템 폰트로 fallback되지 않게 하기 위해서입니다. `typography.font.mono`는 `\"Geist Mono\", ui-monospace, monospace`로, 코드 블록과 token/id 형태의 텍스트에 씁니다.",
-          "`typography.scale`은 다섯 크기를 정의합니다: `sm`(14px), `base`(16px), `lg`(20px), `xl`(28px), `2xl`(40px). `typography.weight`는 정확히 두 weight만 정의합니다: `regular`(400), `medium`(500).",
+          "`typography.scale`은 실화면이 렌더하는 아홉 크기를 정의합니다: 마이크로 라벨 `2xs`(10px)·`xs`(12px), 본문 `sm`(14px)·`base`(16px)·`lg`(20px), 헤딩 `3xl`(30px)·`2xl`(40px)·`5xl`(48px)·`7xl`(72px). 이 중 Tailwind 기본값과 값이 같은 단계(`2xs`/`xs`/`3xl`/`5xl`/`7xl`)는 `@theme`으로 배선되어 `text-5xl` 같은 유틸리티가 SSOT 값을 참조합니다(렌더 무손실). `xl`(28px)은 기록용으로만 남아 있고 실화면은 쓰지 않습니다. `typography.weight`는 정확히 두 weight만 정의합니다: `regular`(400), `medium`(500).",
           "소스에는 아직 line-height, letter-spacing, 추가 weight 토큰이 없습니다 — 현재 SSOT에 포함되지 않은 항목이므로, 더 굵은 weight(예: bold/700)나 커스텀 line-height는 암묵적 기본값이 아니라 명시되지 않은 gap으로 취급해야 합니다.",
         ],
-        code: "typography.font.sans   -> [\"Geist\", \"Noto Sans KR\", \"ui-sans-serif\", \"system-ui\", \"sans-serif\"]\ntypography.font.mono   -> [\"Geist Mono\", \"ui-monospace\", \"monospace\"]\ntypography.scale.sm    -> 14px   typography.scale.lg  -> 20px\ntypography.scale.base  -> 16px   typography.scale.xl  -> 28px\n                                  typography.scale.2xl -> 40px\ntypography.weight.regular -> 400   typography.weight.medium -> 500",
+        code: "typography.font.sans   -> [\"Geist\", \"Noto Sans KR\", \"ui-sans-serif\", \"system-ui\", \"sans-serif\"]\ntypography.font.mono   -> [\"Geist Mono\", \"ui-monospace\", \"monospace\"]\ntypography.scale.2xs   -> 10px   typography.scale.lg  -> 20px\ntypography.scale.xs    -> 12px   typography.scale.3xl -> 30px\ntypography.scale.sm    -> 14px   typography.scale.2xl -> 40px\ntypography.scale.base  -> 16px   typography.scale.5xl -> 48px\n(xl 28px: unused, record)         typography.scale.7xl -> 72px\ntypography.weight.regular -> 400   typography.weight.medium -> 500",
       },
       {
         title: "Usage examples",

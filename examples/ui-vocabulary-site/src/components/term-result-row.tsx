@@ -99,7 +99,7 @@ export const TermResultRow = memo(function TermResultRow({
 
         <div className="hidden shrink-0 flex-wrap items-center justify-end gap-1.5 sm:flex">
           {matchReasons.slice(0, 2).map((reason) => (
-            <Badge key={reason} variant="secondary" className="rounded-md text-[10px]">
+            <Badge key={reason} variant="secondary" className="rounded-md text-2xs">
               {searchMatchReasonLabels[reason]}
             </Badge>
           ))}
@@ -137,7 +137,7 @@ export const TermResultRow = memo(function TermResultRow({
             </Badge>
           )}
           {matchReasons.slice(0, 2).map((reason) => (
-            <Badge key={reason} variant="secondary" className="rounded-md text-[10px]">
+            <Badge key={reason} variant="secondary" className="rounded-md text-2xs">
               {searchMatchReasonLabels[reason]}
             </Badge>
           ))}
