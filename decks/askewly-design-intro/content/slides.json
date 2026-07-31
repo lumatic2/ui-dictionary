@@ -92,6 +92,7 @@
       "layout": "chart-interactive",
       "chartLabel": "정본 자산 수 (레포 실측)",
       "chartType": "bar",
+      "subtitle": "사전이 아니라 시스템 규모다",
       "items": [
         {
           "label": "UI 용어",
