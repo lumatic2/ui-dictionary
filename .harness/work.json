@@ -4890,7 +4890,7 @@
       "approval": {
         "approved_by": "user",
         "approved_at": "2026-07-31",
-        "plan_sha256": "f64cf9a0e27c36845163c58b4e8876d7a9b6024a532eae62558c968a716221b3"
+        "plan_sha256": "833c1c5c3fde9950d2da2a87f72e3f1e5d77d914dff0e7e9264bc1a73aaaf387"
       },
       "allowed_stop_reasons": [
         "completed",
