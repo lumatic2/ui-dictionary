@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "active_work_id": "sx3-deck-proof",
+  "active_work_id": "pb2-bespoke-proof",
   "works": {
     "SFB1": {
       "title": "Structure Contract And Clean Production",
@@ -4661,6 +4661,255 @@
       "updated_at": "2026-07-28",
       "notes": "Registered atomically by canonical harness approve_harness_plan.py after plan validation.",
       "completion_summary": "소개 덱 hero-motion 표지 + 벡터 PDF 실증 — goal slide-expressive 완주"
+    },
+    "sp1-video-reproduction-lab": {
+      "work_id": "sp1-video-reproduction-lab",
+      "milestone_id": "SP1",
+      "status": "completed",
+      "plan_path": "plans/2026-07-31-sp1-video-reproduction-lab.md",
+      "changeset_path": "changesets/20260731-sp1-video-lab",
+      "next_step": "step-1",
+      "current_step": "step-1",
+      "steps": [
+        {
+          "id": "step-1",
+          "label": "step-1 — 스타일 확보 + 프롬프트 커스터마이즈 (영상 ①②)"
+        },
+        {
+          "id": "step-2",
+          "label": "step-2 — 1장 캘리브레이션 루프 + 프리셋 박제 (영상 ③④)"
+        },
+        {
+          "id": "step-3",
+          "label": "step-3 — 본생산 2모드 덱 생성 (영상 ⑤ 전반)"
+        },
+        {
+          "id": "step-4",
+          "label": "step-4 — 네이티브 차트 PPTX export + 실개봉 검증 (영상 ⑤ 후반)"
+        },
+        {
+          "id": "step-5",
+          "label": "step-5 — 충실도 장부 + 흡수 판정 (SP1 마감)"
+        }
+      ],
+      "execution_mode": "continuous",
+      "approval": {
+        "approved_by": "user",
+        "approved_at": "2026-07-31",
+        "plan_sha256": "8a00b3d884731989cce6cdf47c83645bd062effff8648eee9380e4c49a43c7c3",
+        "chain": [
+          "sp2",
+          "sp3"
+        ]
+      },
+      "allowed_stop_reasons": [
+        "completed",
+        "blocked",
+        "decision_required",
+        "risk_gate",
+        "secret_required",
+        "external_authority_required",
+        "user_stopped"
+      ],
+      "stop_reason": null,
+      "stop_detail": {},
+      "session_ids": [
+        "codex:f5757e4f-221b-42df-8d0b-5eb4936f9289",
+        "claude:f5757e4f-221b-42df-8d0b-5eb4936f9289"
+      ],
+      "owner_session_uuid": "claude:f5757e4f-221b-42df-8d0b-5eb4936f9289",
+      "updated_at": "2026-07-31",
+      "notes": "Registered atomically by canonical harness approve_harness_plan.py after plan validation.",
+      "completion_summary": "영상 5단계 등가 재현 완료 — 네이티브 차트 PPTX 실개봉 PASS, 흡수 판정 채택 3·보류 1"
+    },
+    "sp2-html-track-upgrade": {
+      "work_id": "sp2-html-track-upgrade",
+      "milestone_id": "SP2",
+      "status": "completed",
+      "plan_path": "plans/2026-07-31-sp2-html-track-upgrade.md",
+      "changeset_path": "changesets/20260731-sp2-html-track-upgrade",
+      "next_step": "step-1",
+      "current_step": "step-1",
+      "steps": [
+        {
+          "id": "step-1",
+          "label": "step-1 — 커스텀 브랜드 테마 트랙 (변환 스크립트 + builder 지원)"
+        },
+        {
+          "id": "step-2",
+          "label": "step-2 — 절차 2종 문서화 (캘리브레이션 루프 승격 · 리디자인 입력 트랙)"
+        },
+        {
+          "id": "step-3",
+          "label": "step-3 — 배포 + 랩 실증 + 무회귀 (SP2 마감)"
+        }
+      ],
+      "execution_mode": "continuous",
+      "approval": {
+        "approved_by": "user",
+        "approved_at": "2026-07-31",
+        "plan_sha256": "f3d1869338f0159d759fc376bc986e8a947544d7cf74fcc373365620f344eeb3",
+        "chain": [
+          "sp3"
+        ]
+      },
+      "allowed_stop_reasons": [
+        "completed",
+        "blocked",
+        "decision_required",
+        "risk_gate",
+        "secret_required",
+        "external_authority_required",
+        "user_stopped"
+      ],
+      "stop_reason": null,
+      "stop_detail": {},
+      "session_ids": [
+        "codex:f5757e4f-221b-42df-8d0b-5eb4936f9289",
+        "claude:f5757e4f-221b-42df-8d0b-5eb4936f9289"
+      ],
+      "owner_session_uuid": "claude:f5757e4f-221b-42df-8d0b-5eb4936f9289",
+      "updated_at": "2026-07-31",
+      "notes": "Registered atomically by canonical harness approve_harness_plan.py after plan validation.",
+      "completion_summary": "스킬 업그레이드 3건 구현·배포 — custom 테마 트랙·G5 캘리브레이션·리디자인 입력, smoke 18+3 PASS"
+    },
+    "sp3-pptx-canonical-track": {
+      "work_id": "sp3-pptx-canonical-track",
+      "milestone_id": "SP3",
+      "status": "completed",
+      "plan_path": "plans/2026-07-31-sp3-pptx-canonical-track.md",
+      "changeset_path": "changesets/20260731-sp3-pptx-canonical-track",
+      "next_step": "step-1",
+      "current_step": "step-1",
+      "steps": [
+        {
+          "id": "step-1",
+          "label": "step-1 — 스킬 export 트랙 (templates/export-pptx.mjs)"
+        },
+        {
+          "id": "step-2",
+          "label": "step-2 — 문서 정본화 (스킬 + methodology)"
+        },
+        {
+          "id": "step-3",
+          "label": "step-3 — Askewly 스타일 실증 + 배포 (SP3 마감)"
+        }
+      ],
+      "execution_mode": "continuous",
+      "approval": {
+        "approved_by": "user",
+        "approved_at": "2026-07-31",
+        "plan_sha256": "05a9d083cfb20a5b66420ce7cabc0e961093ffa1f70792adbd2fdb739c2b007a"
+      },
+      "allowed_stop_reasons": [
+        "completed",
+        "blocked",
+        "decision_required",
+        "risk_gate",
+        "secret_required",
+        "external_authority_required",
+        "user_stopped"
+      ],
+      "stop_reason": null,
+      "stop_detail": {},
+      "session_ids": [
+        "codex:f5757e4f-221b-42df-8d0b-5eb4936f9289",
+        "claude:f5757e4f-221b-42df-8d0b-5eb4936f9289"
+      ],
+      "owner_session_uuid": "claude:f5757e4f-221b-42df-8d0b-5eb4936f9289",
+      "updated_at": "2026-07-31",
+      "notes": "Registered atomically by canonical harness approve_harness_plan.py after plan validation.",
+      "completion_summary": "PPTX pptxgenjs 단일 경로 스킬 export 트랙 승격 — 실덱 2본 COM PASS, goal 완주"
+    },
+    "pb1-bespoke-track-skill": {
+      "work_id": "pb1-bespoke-track-skill",
+      "milestone_id": "PB1",
+      "status": "completed",
+      "plan_path": "plans/2026-07-31-pb1-bespoke-track-skill.md",
+      "changeset_path": "changesets/20260731-pb1-bespoke-track-skill",
+      "next_step": "step-1",
+      "current_step": "step-1",
+      "steps": [
+        {
+          "id": "step-1",
+          "label": "step-1 — 시각 자기검사 기계장치 (pptx-to-png)"
+        },
+        {
+          "id": "step-2",
+          "label": "step-2 — bespoke 트랙 계약 문서화 + 라우팅 + 배포"
+        }
+      ],
+      "execution_mode": "continuous",
+      "approval": {
+        "approved_by": "user",
+        "approved_at": "2026-07-31",
+        "plan_sha256": "68482293a27bdd549780e7e8f36710407f845dccfda07ed1435a0782970870d7",
+        "chain": [
+          "pb2"
+        ]
+      },
+      "allowed_stop_reasons": [
+        "completed",
+        "blocked",
+        "decision_required",
+        "risk_gate",
+        "secret_required",
+        "external_authority_required",
+        "user_stopped"
+      ],
+      "stop_reason": null,
+      "stop_detail": {},
+      "session_ids": [
+        "codex:f5757e4f-221b-42df-8d0b-5eb4936f9289",
+        "claude:f5757e4f-221b-42df-8d0b-5eb4936f9289"
+      ],
+      "owner_session_uuid": "claude:f5757e4f-221b-42df-8d0b-5eb4936f9289",
+      "updated_at": "2026-07-31",
+      "notes": "Registered atomically by canonical harness approve_harness_plan.py after plan validation.",
+      "completion_summary": "PPTX bespoke 트랙 정식화 — PNG 자기검사 기계장치+계약 문서 배포"
+    },
+    "pb2-bespoke-proof": {
+      "work_id": "pb2-bespoke-proof",
+      "milestone_id": "PB2",
+      "status": "active",
+      "plan_path": "plans/2026-07-31-pb2-bespoke-proof.md",
+      "changeset_path": "decks/askewly-design-intro",
+      "next_step": "step-1",
+      "current_step": "step-1",
+      "steps": [
+        {
+          "id": "step-1",
+          "label": "step-1 — 기준 확보 + bespoke v1 + 대표 1장 미세조정"
+        },
+        {
+          "id": "step-2",
+          "label": "step-2 — 전장 적용 + 구조 검증 + 사용자 관측 (PB2 마감)"
+        }
+      ],
+      "execution_mode": "continuous",
+      "approval": {
+        "approved_by": "user",
+        "approved_at": "2026-07-31",
+        "plan_sha256": "f64cf9a0e27c36845163c58b4e8876d7a9b6024a532eae62558c968a716221b3"
+      },
+      "allowed_stop_reasons": [
+        "completed",
+        "blocked",
+        "decision_required",
+        "risk_gate",
+        "secret_required",
+        "external_authority_required",
+        "user_stopped"
+      ],
+      "stop_reason": null,
+      "stop_detail": {},
+      "session_ids": [
+        "codex:f5757e4f-221b-42df-8d0b-5eb4936f9289",
+        "claude:f5757e4f-221b-42df-8d0b-5eb4936f9289"
+      ],
+      "owner_session_uuid": "claude:f5757e4f-221b-42df-8d0b-5eb4936f9289",
+      "updated_at": "2026-07-31",
+      "notes": "Registered atomically by canonical harness approve_harness_plan.py after plan validation."
     }
   }
 }
