@@ -42,7 +42,7 @@ Status: approved (연쇄 승인 — PB1 승인 시 chain 영수증 pb2 등록, �
   - Verify: 대표 1장 최종 라운드 PNG vs HTML 스크린샷 비교 — **고정 체크리스트 5항**(① 배경·카드 표면 색 ② 팔레트 정확도: theme hex 와 일치 ③ 타이포 위계: 크기 순서·굵기 대응 ④ 구도: 요소 배치·정렬 대응 ⑤ 표현 디테일: 그림자·액센트 존재) 각각 pass/fail 을 라운드 장부에 기록. "근접" = 편차 장부 등재 항목을 제외한 전 항 pass. 상한 도달 시 blocked 보고.
   - Failure probe: pptxgenjs 표현 한계(gradient fill 미지원 등)로 HTML 룩 재현 불가 항목 발생 — 편차 장부에 기록하고 대체 표현으로 진행(침묵 근사 금지). 폰트는 Pretendard 설치 확인됨(2026-07-31).
   - Commit: 본 레포 `feat(pb2)` — bespoke v1 + 기준 세트 + 라운드 장부.
-- [ ] **step-2 — 전장 적용 + 구조 검증 + 사용자 관측 (PB2 마감)**
+- [x] **step-2 — 전장 적용 + 구조 검증 + 사용자 관측 (PB2 마감)**
   - Artifact: 7장 전장 bespoke 산출 `export/askewly-design-intro.bespoke.pptx` → 전장 PNG 세트 + python-pptx(has_chart·pictures 0) + COM open-verify(Opened·ChartShapes·Workbook 접근) → **사용자 관측 1회**(PowerPoint 실개봉, 고품질 판정 — 범용 매퍼 산출본과 대조) → `evidence/slide-pipeline/pb2-bespoke-proof.md`(라운드 장부·편차 장부 포함).
   - Files: write export/askewly-design-intro.bespoke.pptx·evidence/slide-pipeline/pb2-bespoke-proof.md·img/ 대표 비교컷. 실행: node·python·pwsh COM.
   - Risk: 위험 (COM)

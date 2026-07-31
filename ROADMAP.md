@@ -1,14 +1,14 @@
 # ROADMAP
 
 > Last updated: 2026-07-31
-> Status: **goal `slide-pipeline-upgrade` 완주 (2026-07-31, 워크트리 lumatic2/발표-슬라이드-만드는-법)** — SP1 영상 재현 랩·SP2 HTML 트랙 스킬 업그레이드·SP3 PPTX pptxgenjs 정본화 연쇄 완료. active goal 0 — 다음은 워크트리 병합. 대기 순서(사용자 확정 2026-07-28): ② 『인터랙티브 웹 애니메이션』 책 스터디 자산화 ③ 사이트 품질(finding 큐 O5~O9·verify 위반 77건·SSG) ④ 다크모드 정비.
+> Status: **goal `pptx-bespoke` 완주 (2026-07-31, 워크트리 lumatic2/발표-슬라이드-만드는-법)** — PB1 트랙 정식화·PB2 실증(관측 왕복 4회, 편집 그래머 확정·이미지 3트랙·스킬 흡수). 같은 날 goal `slide-pipeline-upgrade`(SP1~3)도 완주. active goal 0 — 다음은 워크트리 병합. 대기 순서(사용자 확정 2026-07-28): ② 『인터랙티브 웹 애니메이션』 책 스터디 자산화 ③ 사이트 품질(finding 큐 O5~O9·verify 위반 77건·SSG) ④ 다크모드 정비.
 > North star: Build Askewly Design as both a public reference website and an agent-usable implementation system.
 > line budget: <=150
 
 ## Current Goal
 
-<!-- harness:goal id="pptx-bespoke" status="active" -->
-Goal: PPTX 고품질 bespoke 트랙 — 범용 매퍼(SP3)는 빠른 파생용 뼈대로 유지하고, 영상(aITV54CLc_U) 방식대로 덱 전용 pptxgenjs 코드 생성+PNG 자기검사 미세조정 루프를 스킬 고품질 트랙으로 정식화(PB1)하고 askewly-design-intro 로 실증(PB2)한다. 배경: 범용 매퍼 산출 품질 미달(사용자 관측 2026-07-31) — B안 사용자 확정.
+<!-- harness:goal-archive17 id="pptx-bespoke" status="completed" -->
+Goal: PPTX 고품질 bespoke 트랙 — 덱 전용 코드 생성+PNG 자기검사 미세조정. closed 2026-07-31 — PB1 정식화(pptx-to-png·계약 문서) + PB2 실증(관측 왕복 4회: HTML 미러링 FAIL→brandlogy 편집 그래머 재정의·구도 5종·lucide 아이콘·이미지 3트랙 사용자 확정, 실증 덱 4본, 스킬 §5~8 흡수 배포). Details: `evidence/slide-pipeline/pb{1,2}-*.md` + `docs/reports/2026-07-31-pb{1,2}-*.md`.
 
 ## Active Milestones — pptx-bespoke
 
@@ -21,15 +21,18 @@ Goal: PPTX 고품질 bespoke 트랙 — 범용 매퍼(SP3)는 빠른 파생용 �
 - Completed at: 2026-07-31
 - Evidence: evidence/slide-pipeline/pb1-bespoke-track.md
 - Summary: pptx-to-png 시각 자기검사 + pptx-bespoke.md 계약 + 2단 트랙 라우팅 — 배포·PNG 실동작 검증
-<!-- harness:milestone id="PB2" status="active" priority="P1" -->
+<!-- harness:milestone id="PB2" status="completed" priority="P1" evidence="evidence/slide-pipeline/pb2-bespoke-proof.md" -->
 ### PB2 — bespoke 실증 (askewly-design-intro)
 - DoD: 실증 덱이 bespoke 트랙으로 산출되어 HTML 렌더 근접 판정(체크리스트 5항 장부)+구조 검증(네이티브 차트·비트맵 0·COM PASS)을 통과하고 사용자 관측 1회에서 범용 매퍼 대비 품질 향상 확인.
 - Plan: plans/2026-07-31-pb2-bespoke-proof.md
-- Status: [ ]
+- Status: [x]
 
 <!-- harness:goal-archive16 id="slide-pipeline-upgrade" status="completed" -->
 Goal: 슬라이드 파이프라인 업그레이드 — 유튜브 aITV54CLc_U(클로드 PPT 5단계) 등가 재현 검증 + 흡수분 스킬 업그레이드 + PPTX 정본화. closed 2026-07-31 — SP1 재현 랩(충실도 장부·흡수 판정 채택3/보류1)·SP2 스킬 업그레이드(custom 테마 트랙·G5 캘리브레이션·리디자인 입력)·SP3 pptxgenjs export 트랙 승격(실덱 2본 COM PASS) 단일 세션 완주. Details: `evidence/slide-pipeline/` + `docs/reports/2026-07-31-sp{1,2,3}-*.md`.
 
+- Completed at: 2026-07-31
+- Evidence: evidence/slide-pipeline/pb2-bespoke-proof.md
+- Summary: 관측 왕복 4회 끝 그래머 확정 — 실증 덱 4본·이미지 3트랙·스킬 §5~8 흡수, goal pptx-bespoke 완주
 ## Active Milestones — slide-pipeline-upgrade
 
 <!-- harness:milestone id="SP2" status="completed" priority="P1" evidence="evidence/slide-pipeline/sp2-skill-upgrade.md" -->

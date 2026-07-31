@@ -4871,7 +4871,7 @@
     "pb2-bespoke-proof": {
       "work_id": "pb2-bespoke-proof",
       "milestone_id": "PB2",
-      "status": "active",
+      "status": "completed",
       "plan_path": "plans/2026-07-31-pb2-bespoke-proof.md",
       "changeset_path": "decks/askewly-design-intro",
       "next_step": "step-1",
@@ -4909,7 +4909,8 @@
       ],
       "owner_session_uuid": "claude:f5757e4f-221b-42df-8d0b-5eb4936f9289",
       "updated_at": "2026-07-31",
-      "notes": "Registered atomically by canonical harness approve_harness_plan.py after plan validation."
+      "notes": "Registered atomically by canonical harness approve_harness_plan.py after plan validation.",
+      "completion_summary": "bespoke 실증 완주 — 편집 그래머 확정·이미지 3트랙·스킬 흡수 배포"
     }
   }
 }
