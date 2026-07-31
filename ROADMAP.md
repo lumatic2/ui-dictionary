@@ -12,15 +12,18 @@ Goal: 이월 finding 정리 — /search 런타임 title 수리·llms 정합 게�
 
 ## Active Milestones — finding-cleanup
 
-<!-- harness:milestone id="M5" status="active" priority="P2" evidence="evidence/finding-cleanup/m5-finding-fixes.md" -->
+<!-- harness:milestone id="M5" status="completed" priority="P2" evidence="evidence/finding-cleanup/m5-finding-fixes.md" -->
 ### M5 — finding 소수리 (search title + llms 정합 게이트)
 - DoD: /search 런타임 title 정합(실브라우저 + 상태 왕복 무회귀) + llms 정합 게이트 FAIL/PASS 양 경로 실증·검증 체인 배선(.gitattributes LF 고정 포함) + 오탐 1건 기록. 실패 모드: 소스-llms 불일치를 만들면 게이트가 잡는다.
 - Gap: /search 가 Patterns title 상속(page-meta search 유형 부재 — 실측 확정) · llms 재생성 누락 무감지(M1 실사례)
 - Scale: steps=2 (title 수리 / 게이트+기록); surfaces: page-meta·App 호출부·검사 스크립트·.gitattributes; capability: 정합이 감시된다
 - Plan: plans/2026-08-01-m5-finding-fixes.md
-- Status: [ ]
+- Status: [x]
 
-<!-- harness:milestone id="M6" status="pending" priority="P2" evidence="evidence/finding-cleanup/m6-typography-scale.md" -->
+- Completed at: 2026-08-01
+- Evidence: evidence/finding-cleanup/m5-finding-fixes.md
+- Summary: search title 수리·llms 정합 게이트 lint 배선·오탐 1건 기록. 보고서 docs/reports/2026-08-01-m5-finding-fixes.md
+<!-- harness:milestone id="M6" status="active" priority="P2" evidence="evidence/finding-cleanup/m6-typography-scale.md" -->
 ### M6 — 타이포 스케일 전수 등재 + Tailwind 배선
 - DoD: SSOT typography.scale 이 실사용 9단계(10/12/14/16/20/30/40/48/72)를 전수 기술 + Tailwind text-* 값 동일 단계 배선(렌더 무손실 — computed 표본·행간 쌍 대조) + 문서·llms 정합 + verify 위반 0 유지. 실패 모드: line-height 쌍 파손·computed 변화가 대조에서 잡힌다.
 - Gap: SSOT 5단계 vs 실사용 9단계 — 화면이 헤딩·마이크로를 스케일 밖에서 차용(M1 실측, 사용자 결정 2026-08-01=전수 등재+배선)

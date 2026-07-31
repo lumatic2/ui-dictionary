@@ -4880,30 +4880,27 @@
     },
     "finding-cleanup": {
       "work_id": "finding-cleanup",
-      "milestone_id": "M5",
+      "milestone_id": "M6",
       "status": "active",
-      "plan_path": "plans/2026-08-01-m5-finding-fixes.md",
-      "changeset_path": "changesets/20260801-m5-finding-fixes",
+      "plan_path": "plans/2026-08-01-m6-typography-scale.md",
+      "changeset_path": "changesets/20260801-m6-typography-scale",
       "next_step": "step-1",
       "current_step": "step-1",
       "steps": [
         {
           "id": "step-1",
-          "label": "step-1 — /search 런타임 title 정합"
+          "label": "step-1 — SSOT 확장 + 재생성 + @theme 배선"
         },
         {
           "id": "step-2",
-          "label": "step-2 — llms 정합 게이트 + 오탐 기록 (M5 마감)"
+          "label": "step-2 — 문서 표면 반영 + 통합 검증 (M6 마감)"
         }
       ],
       "execution_mode": "continuous",
       "approval": {
         "approved_by": "user",
         "approved_at": "2026-08-01",
-        "plan_sha256": "5c6886a8d85af6a242f8912962aebcb86fd0aa3637204698dbdf28fa52244c6e",
-        "chain": [
-          "M6"
-        ]
+        "plan_sha256": "43efcb008f82645481ecc2269964b46e46db1b394bf6f0d0c5b2a062a74b9cd5"
       },
       "allowed_stop_reasons": [
         "completed",
