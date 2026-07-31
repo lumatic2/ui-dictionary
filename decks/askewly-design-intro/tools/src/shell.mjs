@@ -388,7 +388,10 @@ export function createShellRenderers({
   // 때까지 콘텐츠만 숨긴다(배경은 유지). 오프라인·CDN 실패 대비 500ms 상한.
   (function () {
     var root = document.documentElement;
-    if (root.classList.contains('print-mode') || root.classList.contains('capture-mode')) return;
+    // 익스포터(최상위 print/capture)만 스킵 — 스피커 미리보기 iframe 은 ?capture 로 열리지만
+    // 사람이 보는 표면이라 게이트가 필요하다(HU4 관측 5회차: 미리보기 FOUT)
+    var exporterMode = root.classList.contains('print-mode') || root.classList.contains('capture-mode');
+    if (exporterMode && window.self === window.top) return;
     root.classList.add('fonts-pending');
     var done = function () { root.classList.remove('fonts-pending'); };
     try {
