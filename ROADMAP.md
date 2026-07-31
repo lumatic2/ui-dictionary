@@ -1,35 +1,28 @@
 # ROADMAP
 
 > Last updated: 2026-08-01
-> Status: **goal `dark-carryover` active (2026-08-01 승인)** — 다크모드 이월 3건 마감: M2 토큰 전수 승격 → M3 forced-colors → M4 og-image 3안 비교. 남은 큐: 『인터랙티브 웹 애니메이션』 책 스터디 자산화(사용자 주도) — real-use-lap 은 2026-07-31 폐기.
+> Status: **goal `dark-carryover` 완주 (2026-08-01)** — M2 토큰 전수 승격 · M3 forced-colors · M4 og-image 다크 PNG 실배포. active goal 0. 남은 큐: 『인터랙티브 웹 애니메이션』 책 스터디 자산화(사용자 주도) — real-use-lap 은 2026-07-31 폐기.
 > North star: Build Askewly Design as both a public reference website and an agent-usable implementation system.
 > line budget: <=150
 
 ## Current Goal
 
-<!-- harness:goal id="dark-carryover" status="active" -->
-Goal: 다크모드 이월 3건 마감 — "토큰 부재" 강조·상태색을 3-tier 토큰으로 전수 승격하고(M2), forced-colors 접근성 모드를 감사·수리하며(M3), codex imagegen 다크·라이트 og-image 후보를 기존과 3안 품질 비교해 선택 교체한다(M4). 사이트 기본 테마=라이트 불변. 배포는 goal 마감 일괄(사용자 승인 게이트). 승인 2026-08-01 "ㄱㄱ" (연쇄 M2→M3→M4).
+<!-- harness:goal id="dark-carryover" status="completed" -->
+Goal: 다크모드 이월 3건 마감 — "토큰 부재" 강조·상태색 토큰 전수 승격(M2), forced-colors 감사·수리(M3), og-image 3안 비교·교체(M4). closed 2026-08-01 — M2(emphasis·status 18변수, 색 예외 0)·M3(결함 3건 수리, 에뮬레이션+실물 고대비 실측)·M4(다크 PNG 실배포·카드 디버거 실증) 단일 세션 완주, 기본 테마 라이트 불변 유지. Details: `archive/plans/2026-08-01-m{2,3,4}-*.md` + `docs/reports/2026-08-01-m{2,3,4}-*.md`.
 
 ## Active Milestones — dark-carryover
 
-<!-- harness:milestone id="M3" status="completed" priority="P2" evidence="evidence/dark-carryover/m3-forced-colors.md" -->
-### M3 — forced-colors(고대비 모드) 대응
-- DoD: forced-colors 에뮬레이션에서 셸 주요 표면 판독·조작 가능(포커스 가시·경계 유지·선택 상태 구분·색-정보 요소 보존) + 일반 라이트/다크 무손실 + 다크+forced 동시 활성 조합 확인 + Windows 실물 스팟 1회(사람 핸드오프).
-- Gap: DM1 정본("다크모드≠forced-colors — 별도 처리")의 실구현 부재 — 고대비 사용자에게 포커스 링·경계 소실 가능
-- Scale: steps=2 (감사 장부 / 수리+게이트); surfaces: index.css forced-colors 블록·해당 컴포넌트; capability: 접근성 렌더링 모드 통과
-- Plan: plans/2026-08-01-m3-forced-colors.md
-- Status: [x]
-
-- Completed at: 2026-08-01
-- Evidence: evidence/dark-carryover/m3-forced-colors.md
-- Summary: forced-colors 감사→수리 3건, 일반 모드 무영향, 실물 고대비 스팟 통과. 보고서 docs/reports/2026-08-01-m3-forced-colors.md
-<!-- harness:milestone id="M4" status="active" priority="P3" evidence="evidence/dark-carryover/m4-og-image-dark.md" -->
+<!-- harness:milestone id="M4" status="completed" priority="P3" evidence="evidence/dark-carryover/m4-og-image-dark.md" -->
 ### M4 — og-image 3안 품질 비교·선택 교체
 - DoD: codex imagegen 다크·라이트 톤 1200×630 후보 2종 + 기존 SVG 3안을 양 테마 목업으로 사용자가 비교 선택, 교체 시 dist 메타 정합·구 SVG 참조 0, goal 마감 일괄 배포(승인 후)로 실카드 확인.
 - Gap: 현행 og:image 가 라이트 SVG 단일 — 다크 채팅 UI 어색 + SVG 크롤러 호환성 불리. og:image 는 테마 분기 불가(셸 단일 상속 — 검증자 실측)
 - Scale: steps=2 (imagegen 2종+3안 비교 관측 / 메타 배선+마감 검증); surfaces: public/og-image·index.html; capability: 공유 첫인상까지 시스템의 얼굴
 - Plan: plans/2026-08-01-m4-og-image-dark.md
-- Status: [ ]
+- Status: [x]
+
+- Completed at: 2026-08-01
+- Evidence: evidence/dark-carryover/m4-og-image-dark.md
+- Summary: A안(다크 PNG 1200×630) 실배포 — 절대 URL 메타·구 SVG 참조 0·카드 디버거 실증. 보고서 docs/reports/2026-08-01-m4-og-image-dark.md
 
 <!-- harness:goal-archive16 id="carryover-maintenance" status="completed" -->
 Goal: 이월 유지보수 마감 — 사용자 지목 이월 finding 2건을 닫는다. closed 2026-08-01 — M1 단일 milestone 완주: 타이포 위반 8→0(규칙 쪽을 고쳐서 — 반응형 버킷 계수·사유 필수 마커 4건·임계 5→7 실측 재산정, @askewly/design 0.3.0) + SEO 셸 메타·`lang="en"` 통일(콘텐츠 제외). Details: `archive/plans/2026-07-31-m1-carryover-maintenance.md` + `docs/reports/2026-08-01-m1-carryover-maintenance.md`.

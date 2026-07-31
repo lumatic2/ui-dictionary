@@ -633,3 +633,9 @@ plan doc: `archive/plans/2026-07-21-eu*.md` · 증거: `evidence/editor-legibili
   - Completed: 2026-08-01
   - Result: 탐색 수리 — 사이드바 착지·검색 전역화(제안+결과 2경로)·딥링크·뒤로가기·TOC sticky·스크롤 격리. 사람 관측 3회 왕복(결함 10건 적발, 좁은 5건 즉시 수리, 구조 5건 finding 큐), 3회차 통과. UE5(분리) 사용자 확정
   - Evidence: evidence/ui-encyclopedia/ue1-navigation.md
+
+### 2026-08
+- M3 - M3 — forced-colors(고대비 모드) 대응
+  - Completed: 2026-08-01
+  - Result: forced-colors 감사→수리 3건, 일반 모드 무영향, 실물 고대비 스팟 통과. 보고서 docs/reports/2026-08-01-m3-forced-colors.md
+  - Evidence: evidence/dark-carryover/m3-forced-colors.md

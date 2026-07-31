@@ -4838,7 +4838,7 @@
     "dark-carryover": {
       "work_id": "dark-carryover",
       "milestone_id": "M4",
-      "status": "active",
+      "status": "completed",
       "plan_path": "plans/2026-08-01-m4-og-image-dark.md",
       "changeset_path": "changesets/20260801-m4-og-image-dark",
       "next_step": "step-1",
@@ -4875,7 +4875,8 @@
       ],
       "owner_session_uuid": "claude:e46f1ede-7ce4-4c8e-bc2a-40d995cdf03b",
       "updated_at": "2026-08-01",
-      "notes": "Registered atomically by canonical harness approve_harness_plan.py after plan validation."
+      "notes": "Registered atomically by canonical harness approve_harness_plan.py after plan validation.",
+      "completion_summary": "링크 카드를 imagegen 다크 PNG(사용자 3안 비교 선택)로 교체 — 실배포 200·카드 디버거 렌더 확인"
     }
   }
 }

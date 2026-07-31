@@ -24,4 +24,4 @@
 | 메타 | `index.html` og:image/twitter:image → **절대 URL** `https://ui.askewly.com/og-image.png` + `image/png` (구 상대경로 `/og-image.svg` 는 크롤러 호환 불리 — 절대 URL 로 함께 교정) |
 | dist 검증 | 755 라우트 재프리렌더 — html 내 `og-image.svg` 참조 **0**, `og-image.png` 셸 상속 확인, `dist/og-image.png` 존재 |
 | 게이트 | `npm run lint`(스캐너 포함) PASS · build PASS |
-| 배포 후 확인 | (일괄 배포 승인 후: 실배포 이미지 200 + 카드 디버거 1회 — 기입 대기) |
+| 배포 후 확인 | push 8ffa52d → CF Pages 전파(~5분) — `https://ui.askewly.com/og-image.png` **200 + Content-Type image/png + 823530B** · 라이브 meta 절대 URL 확인 · 카드 디버거(opengraph.xyz) 가 신규 PNG 를 해석·FB 미리보기 렌더(스크린샷 `tmp/og-card-debugger.png`) |
