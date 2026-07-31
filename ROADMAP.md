@@ -12,14 +12,16 @@ Goal: 슬라이드 덱 자체 품질 업그레이드 — 품질 루브릭+few-sh
 
 ## Active Milestones — deck-quality
 
-<!-- harness:milestone id="DQ1" status="active" priority="P1" evidence="evidence/deck-quality/dq1-quality-rubric.md" -->
+<!-- harness:milestone id="DQ1" status="completed" priority="P1" evidence="evidence/deck-quality/dq1-quality-rubric.md" -->
 ### DQ1 — 덱 품질 기준 수립
 - DoD: 품질 루브릭(4필드·검사 주체 이분)과 few-shot 견본 3~5장(전 장 실빌드)이 스킬 계약으로 배포되고 G5 가 견본 대조로 판정 가능 — 기존 fixture diff 0.
 - Evidence: evidence/deck-quality/dq1-quality-rubric.md
 - Gap: "무엇이 좋은 슬라이드인가" 기준이 계약에 없음 — G5 가 육안 인상에만 의존
 - Plan: plans/2026-07-31-dq1-quality-rubric.md
-- Status: [ ]
+- Status: [x]
 
+- Completed at: 2026-07-31
+- Summary: 루브릭 Q1~Q12+견본 5계열+G5 대조 배선·Q2 린트 — custom-skills 2커밋 배포
 <!-- harness:milestone id="DQ2" status="pending" priority="P1" evidence="evidence/deck-quality/dq2-expressive-mechanics.md" -->
 ### DQ2 — 표현 기계 업그레이드
 - DoD: 장간 연속 전환(opt-in, 실크롬 file:// 실측 또는 폴백 확정) + 이미지 최적화 빌드(용량 실측 개선) + sourceNote 겹침 해소 — HU4 회귀 5종 PASS·미사용 덱 무변화.
