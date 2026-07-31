@@ -12,15 +12,7 @@ Goal: 다크모드 이월 3건 마감 — "토큰 부재" 강조·상태색을 3
 
 ## Active Milestones — dark-carryover
 
-<!-- harness:milestone id="M2" status="active" priority="P2" evidence="evidence/dark-carryover/m2-accent-semantic-tokens.md" -->
-### M2 — 강조·상태색 시맨틱 토큰 신설 + "토큰 부재" 마커 전수 해소
-- DoD: "토큰 부재" 사유 마커 0 — 해당 색 전부가 3-tier 토큰(라이트+다크 값, 신설 `status.*`/`emphasis.*` 그룹)으로 승격되어 SSOT·생성물·llms 배포물 정합, 라이트 시각 무손실 + 다크 대비 확인 + 게이트(lint:colors·verify·build) PASS.
-- Gap: DM2 가 "토큰 부재" 사유 마커로 예외 처리한 강조·상태색(indigo·sky·emerald·rose·보라 hover)이 SSOT 에 없음 — 예외 영구화 위험 (사용자 결정 2026-08-01=전수 승격)
-- Scale: steps=3 (토큰 신설·재생성 / 마커 전수 치환 / 문서 표면+통합 검증); surfaces: tokens/askewly.tokens.json·생성물 3종·셸 5파일; capability: 예외 0 의 3-tier 토큰 규약
-- Plan: plans/2026-08-01-m2-accent-semantic-tokens.md
-- Status: [ ]
-
-<!-- harness:milestone id="M3" status="pending" priority="P2" evidence="evidence/dark-carryover/m3-forced-colors.md" -->
+<!-- harness:milestone id="M3" status="active" priority="P2" evidence="evidence/dark-carryover/m3-forced-colors.md" -->
 ### M3 — forced-colors(고대비 모드) 대응
 - DoD: forced-colors 에뮬레이션에서 셸 주요 표면 판독·조작 가능(포커스 가시·경계 유지·선택 상태 구분·색-정보 요소 보존) + 일반 라이트/다크 무손실 + 다크+forced 동시 활성 조합 확인 + Windows 실물 스팟 1회(사람 핸드오프).
 - Gap: DM1 정본("다크모드≠forced-colors — 별도 처리")의 실구현 부재 — 고대비 사용자에게 포커스 링·경계 소실 가능
@@ -84,17 +76,6 @@ Goal: 스튜디오 이월 갭 3건 마감 — 데이터 주도 주입 자동화�
 
 ## Active Milestones — carryover-maintenance
 
-<!-- harness:milestone id="M1" status="completed" priority="P2" evidence="evidence/carryover-maintenance/m1-closeout.md" -->
-### M1 — 이월 유지보수 마감 (verify 타이포 게이트 보정 + SEO 메타 영어 통일)
-- DoD: 보정된 verify 가 반응형 쌍을 1계수하고 사유 필수 마커를 지원하며(테스트 고정) 사이트 `src/components` 타이포 위반 0 + 셸 SEO 메타(문서 lang 포함)가 영어이고 prerender 산출물에 반영 + CLI 테스트·사이트 lint·build·브라우저 스모크 PASS. 실패 모드: 사유 없는 마커·무접두 초과 파일은 여전히 잡힌다.
-- Gap: 타이포 5단계/파일 규칙이 반응형 쌍을 2계수하고 멀티 데모 집합 파일에 예외 수단이 없어 위반 8건 방치(SQ1 이월, 사용자 결정 2026-07-28=게이트 보정) · SEO 메타가 사이트 카피(영어 단일)와 어긋난 한국어(QA1 이월, 사용자 결정 2026-07-31=영어 통일)
-- Scale: steps=3 (CLI 규칙+테스트 / 사이트 잔여 처리 / SEO 메타); surfaces: packages/cli·사이트 컴포넌트·index.html·page-meta.ts·prerender 스크립트; capability: 무시당하지 않는 타이포 게이트 + 카피와 정합한 검색 메타
-- Plan: archive/plans/2026-07-31-m1-carryover-maintenance.md
-- Status: [x]
-
-- Completed at: 2026-08-01
-- Summary: 타이포 위반 8→0(버킷 계수·사유 필수 마커 4건·임계 5→7 실측 재산정, @askewly/design 0.3.0 테스트 60건) + SEO 셸 메타·lang 영어 통일(콘텐츠 제외). 보고서 `docs/reports/2026-08-01-m1-carryover-maintenance.md`
-
 ## Active Milestones — site-polish
 
 <!-- harness:milestone id="QA1" status="skipped" priority="P1" evidence="evidence/site-polish/qa1-copy-language.md" -->
@@ -107,30 +88,8 @@ Goal: 스튜디오 이월 갭 3건 마감 — 데이터 주도 주입 자동화�
 
 ## Active Milestones — site-quality
 
-<!-- harness:milestone id="SQ4" status="completed" priority="P2" evidence="evidence/site-quality/sq4-ssg-prerender.md" -->
-### SQ4 — SSG/prerender
-- DoD: 주요 라우트(홈·용어·패턴·docs)가 prerender 되어 최초 페인트·SEO 메타가 정적 제공되고, SPA 폴백·오너 언락 회귀 없음(실배포 확인 포함).
-- Gap: 현재 전 라우트 CSR — SEO·초기 로딩 불리 (UE5 이월). 방식 확정(2026-07-28): 정적 셸+메타 생성(vite-node)
-- Scale: steps=3 (생성기·폴백 asset-first·통합+실배포); surfaces: scripts/·functions/ 6개·package.json; capability: 첫 페인트와 SEO 메타가 정적으로 나간다
-- Plan: plans/2026-07-28-sq4-ssg-prerender.md
-- Status: [x]
-
-- Completed at: 2026-07-28
-- Evidence: evidence/site-quality/sq4-ssg-prerender.md
-- Summary: 754 라우트 정적 셸+메타 프리렌더(vite-node) + 폴백 asset-first — CF CI 실배포 확인, colors/pro 직접 진입 갭 부수 수리
 ## Active Milestones — ui-encyclopedia
 
-<!-- harness:milestone id="UE1" status="completed" priority="P0" evidence="evidence/ui-encyclopedia/ue1-navigation.md" -->
-### UE1 — 탐색이 작동한다
-- DoD: 사용자가 ① 검색으로 '아코디언' 상세에 도달하고 ② 사이드바로 'Header Sections' 목록에 도달하고 ③ 그 주소를 새 탭에서 재현할 수 있으며, 사람 관측 1회로 확인된다. 기존 URL 형태 전부 하위호환.
-- Evidence: evidence/ui-encyclopedia/ue1-navigation.md
-- Gap: 사이드바 카테고리 클릭 무반응(조용한 return)·딥링크 홈 폴백 — 실측 `research/2026-07-27-ue1-encyclopedia-diagnosis.md`
-- Scale: steps=3 (내비 수리·URL 계약·통합 E2E+사람 관측); surfaces: App.tsx 내비·URL 배선, navigation-model; capability: 백과사전의 첫 동사 "찾는다"
-- Plan: archive/plans/2026-07-27-ue1-encyclopedia-navigation.md
-- Status: [x]
-
-- Completed at: 2026-07-27
-- Summary: 탐색 수리 — 사이드바 착지·검색 전역화(제안+결과 2경로)·딥링크·뒤로가기·TOC sticky·스크롤 격리. 사람 관측 3회 왕복(결함 10건 적발, 좁은 5건 즉시 수리, 구조 5건 finding 큐), 3회차 통과. UE5(분리) 사용자 확정
 <!-- harness:milestone id="UE2" status="completed" priority="P1" evidence="evidence/ui-encyclopedia/ue2-variation-gallery.md" -->
 ### UE2 — 용어 상세에 바리에이션 갤러리
 - DoD: 변형·상태 층(TS 레지스트리)이 있고 상세 페이지가 실동작 갤러리로 렌더하며, 파일럿 2건(아코디언·탭)이 실데이터로 채워진다(변형 차별성 포함). 미등록 용어 무변화, Pro 표시 자리, 사람 관측 1회.

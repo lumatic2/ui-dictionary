@@ -612,3 +612,24 @@ plan doc: `archive/plans/2026-07-21-eu*.md` · 증거: `evidence/editor-legibili
   - Completed: 2026-07-31
   - Result: 3-상태 다크모드 활성화 — 기본 라이트(OS 무관)·FOUC 인라인·데모 전역 추종, 관측 1회차 결함 3종 수리 후 2회차 통과
   - Evidence: evidence/dark-mode/dm3-activation.md
+
+### 2026-08
+- M2 - M2 — 강조·상태색 시맨틱 토큰 신설 + "토큰 부재" 마커 전수 해소
+  - Completed: 2026-08-01
+  - Result: emphasis·status 토큰 18변수 신설(값 무손실 승격), 셸 마커 17건 치환, #5f22a8 소멸 — 색 예외 0. 보고서 docs/reports/2026-08-01-m2-accent-semantic-tokens.md
+  - Evidence: evidence/dark-carryover/m2-accent-semantic-tokens.md
+
+- M1 - M1 — 이월 유지보수 마감 (verify 타이포 게이트 보정 + SEO 메타 영어 통일)
+  - Completed: 2026-08-01
+  - Result: 타이포 위반 8→0(버킷 계수·사유 필수 마커 4건·임계 5→7 실측 재산정, @askewly/design 0.3.0 테스트 60건) + SEO 셸 메타·lang 영어 통일(콘텐츠 제외). 보고서 `docs/reports/2026-08-01-m1-carryover-maintenance.md`
+  - Evidence: evidence/carryover-maintenance/m1-closeout.md
+
+- SQ4 - SQ4 — SSG/prerender
+  - Completed: 2026-08-01
+  - Result: 754 라우트 정적 셸+메타 프리렌더(vite-node) + 폴백 asset-first — CF CI 실배포 확인, colors/pro 직접 진입 갭 부수 수리
+  - Evidence: evidence/site-quality/sq4-ssg-prerender.md
+
+- UE1 - UE1 — 탐색이 작동한다
+  - Completed: 2026-08-01
+  - Result: 탐색 수리 — 사이드바 착지·검색 전역화(제안+결과 2경로)·딥링크·뒤로가기·TOC sticky·스크롤 격리. 사람 관측 3회 왕복(결함 10건 적발, 좁은 5건 즉시 수리, 구조 5건 finding 큐), 3회차 통과. UE5(분리) 사용자 확정
+  - Evidence: evidence/ui-encyclopedia/ue1-navigation.md
