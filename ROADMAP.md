@@ -1,14 +1,14 @@
 # ROADMAP
 
 > Last updated: 2026-07-31
-> Status: **goal `dark-mode` 완주 (2026-07-31)** — DM1~DM3 단일 세션 완주·실배포 실증(사람 관측 왕복 2회 통과). active goal 0 — 남은 큐(사용자 확정 2026-07-28): 『인터랙티브 웹 애니메이션』 책 스터디 자산화(사용자 주도) → real-use-lap 부활(PARK 2026-07-27).
+> Status: **goal `site-polish` 완주 (2026-07-31)** — QA1(한/영 혼용) 관측 회귀 마감·영어 단일 확정, QA2(Get Started Primer 문법 재설계+생성 일러스트) 관측 7왕복 통과. active goal 0 — 남은 큐(사용자 확정 2026-07-28): 『인터랙티브 웹 애니메이션』 책 스터디 자산화(사용자 주도) → real-use-lap 부활(PARK 2026-07-27).
 > North star: Build Askewly Design as both a public reference website and an agent-usable implementation system.
 > line budget: <=150
 
 ## Current Goal
 
-<!-- harness:goal id="site-polish" status="active" -->
-Goal: 사이트 다듬기 — 수동 QA 로 드러난 직관성 결함을 수리한다. QA1(한/영 혼용 시도)은 사용자 관측 회귀로 마감 — **사이트 카피 = 영어 단일 확정**(2026-07-31, `docs/design-system/copy-language.md`). 남은 축 = QA2(Get Started 카드 명사형 제목 + 라이브 미니 프리뷰, 영어 카피). Details: `plans/2026-07-31-qa{1,2}-*.md`.
+<!-- harness:goal-archive15 id="site-polish" status="completed" -->
+Goal: 사이트 다듬기 — 수동 QA 직관성 결함 수리. closed 2026-07-31 — QA1(한/영 혼용) 관측 회귀 마감: **사이트 카피 = 영어 단일 확정**(`docs/design-system/copy-language.md`). QA2: Get Started 를 Primer 문법(사용자 확정 레퍼런스)+codex imagegen 일러스트 세트로 재설계, hover·cursor 반응, 관측 7왕복 통과. Details: `archive/plans/2026-07-31-qa{1,2}-*.md` + `docs/reports/2026-07-31-qa{1,2}-*.md`.
 
 <!-- harness:goal-archive14 id="dark-mode" status="completed" -->
 Goal: 다크모드 정비 — '다크모드' 정의를 지식·용어 정본으로 등재하고, 셸 하드코딩 색을 토큰화해 게이트한 뒤, 3-상태 다크모드를 활성화한다. closed 2026-07-31 — DM1(knowledge+llms·terms 등재)·DM2(셸 998→0 토큰화+lint:colors 게이트)·DM3(3-상태 활성화·기본 라이트·FOUC 없음) 단일 세션 완주, 실배포 실증·사람 관측 왕복 2회 통과(1회차 결함 3종 수리). Details: `archive/plans/2026-07-31-dm{1,2,3}-*.md` + `docs/reports/2026-07-31-dm{1,2,3}-*.md`.
@@ -58,26 +58,8 @@ Goal: 스튜디오 이월 갭 3건 마감 — 데이터 주도 주입 자동화�
 - Plan: plans/2026-07-31-qa1-copy-language-policy.md
 - Status: [x] **회귀(2026-07-31)** — 사유: 취향 관측 기각. 교훈: 언어·톤 결정은 실물 시안 관측 먼저.
 
-<!-- harness:milestone id="QA2" status="active" priority="P1" evidence="evidence/site-polish/qa2-get-started-cards.md" -->
-### QA2 — Get Started 카드 직관화
-- DoD: /get-started 카드 6개가 명사형 제목+간결한 영어 설명이고, 탐색 4카드 라이브 미니 프리뷰가 라이트/다크 성립, 라우팅·포커스·reduced-motion 무회귀, goal 마감 전 사람 관측 1회 통과.
-- Scale: steps=2 (미니 프리뷰 4종 · 카드 개편 적용); capability: 정문 카드가 목적지를 눈으로 보여준다
-- Plan: plans/2026-07-31-qa2-get-started-cards.md
-- Status: [ ]
-
 ## Active Milestones — dark-mode
 
-<!-- harness:milestone id="DM3" status="completed" priority="P1" evidence="evidence/dark-mode/dm3-activation.md" -->
-### DM3 — 다크모드 활성화
-- DoD: 실배포 사이트에서 3-상태 다크모드가 FOUC 없이 동작하고(프리렌더 라우트 직접 진입 포함), 다크 대비 lint 와 주요 표면 점검을 통과하며, 사람 관측 1회 통과.
-- Gap: 인프라(.dark 토큰·토글 구현체)는 완성됐으나 2026-07-28 차단 useEffect 로 강제 라이트 고정
-- Scale: steps=3 (3-상태 배선+FOUC · 다크 품질 점검 · 통합+실배포+관측); surfaces: App.tsx·preview-theme·index.html; capability: 사용자가 다크로 본다
-- Plan: plans/2026-07-31-dm3-dark-mode-activation.md
-- Status: [x]
-
-- Completed at: 2026-07-31
-- Evidence: evidence/dark-mode/dm3-activation.md
-- Summary: 3-상태 다크모드 활성화 — 기본 라이트(OS 무관)·FOUC 인라인·데모 전역 추종, 관측 1회차 결함 3종 수리 후 2회차 통과
 ## Active Milestones — site-quality
 
 <!-- harness:milestone id="SQ4" status="completed" priority="P2" evidence="evidence/site-quality/sq4-ssg-prerender.md" -->

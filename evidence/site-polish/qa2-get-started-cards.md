@@ -44,4 +44,17 @@
 | 라우팅 4방향 | PASS — /patterns/marketing·/colors·/recipes·/docs |
 | 라이트/다크 | PASS — 풀페이지 스크린샷(qa2c-light/dark) |
 | 콘솔 | 0 에러 |
-| 관측 | 3회차 대기 |
+| 관측 | 3회차 부분 통과(구조 OK) → 일러스트 왕복 지속 |
+
+## 재작업 3~7 — 일러스트 관측 왕복 (codex imagegen)
+
+| 라운드 | 내용 | 관측 |
+|---|---|---|
+| 3 | imagegen 3장 초판(1536×1024→webp) | 괜찮음, 아웃라인 어색 → 제거 |
+| 4 | Colors·Recipes 경계 절단 재생성 + object-contain | Colors 딱딱·Recipes 단순 |
+| 5 | 상의(미니 부채·가로 파노라마) → 재생성 + hover scale | 비비드 무지개 톤 이탈·타일 덱 임팩트 없음 |
+| 6 | 상의(파스텔 스와치·UI에 오로라) + patterns 기준 시리즈화 + cursor-pointer | 세계관 OK, 밀도 부족 |
+| 7 | 밀도 상향(피사체 75~85%) 재생성 | **통과("응 괜찮음")** |
+
+- 최종 게이트: lint colors 0·tsc PASS·build 755 PASS·라우팅 4방향·hover scale 1.015 실측·cursor pointer 실측·webp 18~44KB.
+- 사람 관측 최종 통과 2026-07-31 ("응 괜찮음. 다음").

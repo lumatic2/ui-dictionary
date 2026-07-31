@@ -601,3 +601,14 @@ plan doc: `archive/plans/2026-07-21-eu*.md` · 증거: `evidence/editor-legibili
   - Completed: 2026-07-31
   - Result: 셸 998건 토큰 치환·마커 정리 + lint:colors --max 0 게이트 — 라이트 무손실 스크린샷 대조, 다크 차단 원인 제거
   - Evidence: evidence/dark-mode/dm2-shell-tokenization.md
+
+### 2026-07
+- QA2 - QA2 — Get Started 카드 직관화
+  - Completed: 2026-07-31
+  - Result: Primer 문법 재설계+일러스트 세트, 관측 7왕복 통과
+  - Evidence: evidence/site-polish/qa2-get-started-cards.md
+
+- DM3 - DM3 — 다크모드 활성화
+  - Completed: 2026-07-31
+  - Result: 3-상태 다크모드 활성화 — 기본 라이트(OS 무관)·FOUC 인라인·데모 전역 추종, 관측 1회차 결함 3종 수리 후 2회차 통과
+  - Evidence: evidence/dark-mode/dm3-activation.md
