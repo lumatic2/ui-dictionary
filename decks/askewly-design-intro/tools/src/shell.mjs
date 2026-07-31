@@ -32,11 +32,20 @@ export function createShellRenderers({
   // postMessage 는 '*' 타깃으로 origin 무관하게 닿고, opener 브라우징 컨텍스트는 본편이
   // full navigation 으로 재로드돼도 유지된다. 중복 수신은 from+seq 로 dedupe.
   function syncHelperScript(deck) {
-    return `function createDeckSync() {
+    return `function createDeckSync(opts) {
+    opts = opts || {};
     var KEY = 'deck-sync::${deckSyncId(deck)}';
     var id = Math.random().toString(36).slice(2), seq = 0, seen = {}, handlers = [], bc = null;
     var peers = []; // postMessage 상대 (스피커: opener / 본편: 메시지를 보내온 스피커 창)
-    if (window.opener && window.opener !== window) peers.push(window.opener);
+    // single 모드(스피커): 본편 창 딱 하나(master)만 따라간다. 덱 창이 2개 열려 있으면
+    // (이전 세션 창 잔존 등) 서로 다른 slide 번호를 번갈아 announce 해 미리보기·노트가
+    // 1.2s 마다 깜빡이며 갈아끼워진다(HU4 관측 3회차). master WindowProxy 는 본편 full
+    // navigation 을 살아남고, 닫히면 다음 announce 주인을 새 master 로 입양한다.
+    var master = null;
+    if (window.opener && window.opener !== window) {
+      peers.push(window.opener);
+      if (opts.single) master = window.opener;
+    }
     function addPeer(w) {
       if (!w || w === window) return;
       for (var i = 0; i < peers.length; i++) if (peers[i] === w) return;
@@ -49,19 +58,35 @@ export function createShellRenderers({
       if (seen[k]) return; seen[k] = true;
       handlers.forEach(function (h) { h(msg); });
     }
-    if (bc) bc.onmessage = function (e) { dispatch(e.data); };
+    if (bc) bc.onmessage = function (e) { if (opts.single && master) return; dispatch(e.data); };
     window.addEventListener('storage', function (e) {
       if (e.key !== KEY || !e.newValue) return;
+      if (opts.single && master) return;
       try { dispatch(JSON.parse(e.newValue)); } catch (err) {}
     });
     window.addEventListener('message', function (e) {
       if (!e.data || e.data.channel !== KEY) return;
+      if (opts.single) {
+        try { if (master && master.closed) master = null; } catch (err) { master = null; }
+        if (!master && e.data.type === 'slide') master = e.source;
+        if (master && e.source !== master) return;
+        dispatch(e.data);
+        return;
+      }
       addPeer(e.source);
       dispatch(e.data);
     });
     return {
       send: function (msg) {
         msg.from = id; msg.seq = ++seq; msg.t = Date.now(); msg.channel = KEY;
+        if (opts.single) {
+          try { if (master && master.closed) master = null; } catch (e) { master = null; }
+        }
+        if (opts.single && master) {
+          // master 직송만 — 브로드캐스트하면 다른 덱 창까지 'step' 에 반응해 같이 넘어간다
+          try { master.postMessage(msg, '*'); } catch (e) {}
+          return;
+        }
         if (bc) try { bc.postMessage(msg); } catch (e) {}
         try { localStorage.setItem(KEY, JSON.stringify(msg)); } catch (e) {}
         for (var i = 0; i < peers.length; i++) {
@@ -231,7 +256,7 @@ export function createShellRenderers({
   ${syncHelperScript(deck)}
   var DATA = ${JSON.stringify(data)};
   var cur = -1;
-  var sync = createDeckSync();
+  var sync = createDeckSync({ single: true }); // 본편 창 하나만 추종 (다중 덱 창 announce 경합 차단)
   // 노트 편집 — 창 세션 메모리 + (가능하면) localStorage. file:// opaque origin 에선 메모리만.
   var edits = {};
   var NOTES_KEY = 'deck-notes::${deckSyncId(deck)}';
@@ -255,14 +280,18 @@ export function createShellRenderers({
     if (i < 0 || i >= DATA.length) return;
     var pos = String(DATA[i].no).padStart(2, '0') + ' / ' + String(DATA.length).padStart(2, '0');
     if (fragTotal > 0) pos += ' · +' + fragment + '/' + fragTotal;
-    document.getElementById('pos').textContent = pos;
+    // 하트비트 응답이 1.2s 마다 오므로 모든 DOM 쓰기는 멱등이어야 한다 — 같은 값 재기록 금지
+    var posEl = document.getElementById('pos');
+    if (posEl.textContent !== pos) posEl.textContent = pos;
     if (i === cur) return;
     cur = i;
     var d = DATA[i], n = DATA[i + 1];
     var titleEl = document.getElementById('slide-title');
     titleEl.textContent = d.title; titleEl.classList.remove('waiting');
-    document.getElementById('cur').src = d.file + '?capture';
-    document.getElementById('nxt').src = n ? n.file + '?capture' : 'about:blank';
+    var curEl = document.getElementById('cur'), nxtEl = document.getElementById('nxt');
+    var curSrc = d.file + '?capture', nxtSrc = n ? n.file + '?capture' : 'about:blank';
+    if (curEl.getAttribute('src') !== curSrc) curEl.src = curSrc;
+    if (nxtEl.getAttribute('src') !== nxtSrc) nxtEl.src = nxtSrc;
     notesEl.value = edits[i] !== undefined ? edits[i] : (d.notes || '');
   }
   sync.on(function (msg) { if (msg.type === 'slide' && typeof msg.index === 'number') show(msg.index, msg.fragment || 0, msg.fragTotal || 0); });
