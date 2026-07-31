@@ -34,5 +34,5 @@
 ## C. og-image 제약 (M4 입력)
 
 - `og:image` 는 크롤러(카카오톡·트위터·슬랙 등)가 **이미지 1장을 정적으로 캐시** — 뷰어 다크/라이트 테마별 분기 수단이 프로토콜에 없다. 따라서 "다크 전용 og-image 추가"는 성립하지 않고, **양 테마 채팅 UI 에서 다 자연스러운 단일 이미지** 전략이 정답 공간이다. (사용자 확정 2026-08-01: 다크 톤 단일 이미지로 교체)
-- 현행: `examples/ui-vocabulary-site/index.html:32` `og:image = /og-image.svg` — **SVG**. 주요 플랫폼 크롤러는 SVG og:image 를 널리 지원하지 않는다(래스터 PNG/JPG 가 안전 기본값 — M4 step-1 에서 플랫폼별 지원 근거 URL 확보 후 확정). 교체 시 1200×630 PNG 로 포맷 문제도 함께 해소하는 것이 합리적.
+- 현행: `examples/ui-vocabulary-site/index.html:32` `og:image = /og-image.svg` — **SVG**. 플랫폼 규격 근거(M4 step-1 확인): Facebook 공유 이미지 문서는 1200×630 권장·8MB 상한 등 래스터 전제 규격만 규정하고 SVG 를 언급하지 않으며(출처: https://developers.facebook.com/docs/sharing/webmasters/images/ 접근일 2026-08-01), LinkedIn 광고/공유 이미지 문서는 "JPG, PNG, or GIF"만 명시(출처: https://www.linkedin.com/help/linkedin/answer/a521928 접근일 2026-08-01). X 카드 문서는 유료장벽(402)으로 본문 미확인. **어느 규격도 SVG 를 지원 포맷으로 명시하지 않음** → 래스터 PNG 1200×630 이 안전 기본값. 최종 실증은 배포 후 카드 디버거 실확인(DoD 기재)이 게이트.
 - ~~라우트별 메타는 prerender 파이프라인이 og:image 도 찍는다~~ → **정정(2026-08-01 fresh 검증자 실측)**: prerender(`scripts/prerender-ui-vocabulary.ts:184-210`)는 og:title/url/description·twitter:title/description 만 라우트별 재작성 — **og:image 는 셸(index.html) 단일 선언을 전 라우트가 상속**한다. `src/lib/page-meta.ts` 는 클라이언트 useEffect(title·description만)라 크롤러와 무관. 교체 작업 = index.html 한 곳.
