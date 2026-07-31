@@ -50,11 +50,8 @@ const shadow = () => ({ type: 'outer', color: '8A8272', blur: 12, offset: 2, ang
 
 // 캔버스: 회백 + 하단으로 미세하게 어두워지는 수직 그라디언트 근사 (ink 저투명 밴드 2장)
 function canvas(slide) {
+  // 단색 캔버스 — 그라디언트 근사(투명 밴드 계단)는 "정체불명 그림자 계층"으로 읽혀 제거 (사용자 관측 f4)
   slide.background = { color: BG };
-  // 1% 투명도 계단 5장 — 경계선이 보이지 않는 수직 그라디언트 근사 (r1 실측: 2장 큰 계단은 경계가 드러남)
-  for (let i = 0; i < 5; i++) {
-    slide.addShape('rect', { x: 0, y: H * (0.64 + i * 0.072), w: W, h: H * (0.36 - i * 0.072) + 0.01, fill: { color: INK, transparency: 99 - i }, line: { type: 'none' } });
-  }
 }
 
 // 프레임 고정 앵커: kicker(좌상) · 워드마크(우상) · 페이지(좌하) · 출처(우하)
@@ -109,6 +106,30 @@ function chartCard(slide, x, y, w, h, c) {
   if (c.source) slide.addText(c.source, { x: x + 0.3, y: y + h - 0.36, w: w - 0.6, h: 0.24, fontFace: FONT, fontSize: 8.5, color: MUTED });
 }
 
+// 오픈 스탯: 상단 헤어라인 + 빅넘버 + 라벨 + 상세 — 카드 없음 (카드 일색 회피, 사용자 관측 f4)
+function openStat(slide, x, y, w, s) {
+  slide.addShape('line', { x, y, w, h: 0, line: { color: BORDER, width: 1 } });
+  const big = s.value.length > 4 ? 24 : 30;
+  slide.addText(s.value, { x, y: y + 0.14, w, h: 0.56, fontFace: FONT, fontSize: big, bold: true, color: s.quant ? NAVY : INK });
+  slide.addText(s.label, { x, y: y + 0.74, w, h: 0.28, fontFace: FONT, fontSize: 12.5, bold: true, color: INK });
+  slide.addText(s.detail || '', { x, y: y + 1.02, w, h: 0.5, fontFace: FONT, fontSize: 9.5, color: MUTED, valign: 'top' });
+}
+
+// 오픈 리스트: 틴트 칩 + 소라벨 + 제목 + 본문 — 카드 없음
+function openListItem(slide, x, y, w, h, item, idx, tagPrefix) {
+  const chip = 0.42;
+  slide.addShape('roundRect', { x, y: y + 0.06, w: chip, h: chip, rectRadius: 0.1, fill: { color: SOFT }, line: { color: SOFTBORDER, width: 0.75 } });
+  slide.addText(item.glyph || '✦', { x, y: y + 0.06, w: chip, h: chip, fontFace: FONT, fontSize: 12.5, bold: true, color: NAVY, align: 'center', valign: 'middle', margin: 0 });
+  const tx = x + chip + 0.22, tw = w - chip - 0.22;
+  let ty = y;
+  if (tagPrefix) {
+    slide.addText(`${tagPrefix} ${CIRCLED[idx] || ''}`, { x: tx, y: ty, w: tw, h: 0.22, fontFace: FONT, fontSize: 9, bold: true, color: NAVY, charSpacing: 1 });
+    ty += 0.22;
+  }
+  slide.addText(item.title, { x: tx, y: ty, w: tw, h: 0.28, fontFace: FONT, fontSize: 13.5, bold: true, color: INK });
+  slide.addText(item.body || '', { x: tx, y: ty + 0.3, w: tw, h: h - (ty - y) - 0.3, fontFace: FONT, fontSize: 9.5, color: SUB, valign: 'top' });
+}
+
 // 아이콘 리스트 카드: 틴트 아이콘 칩 + 키컬러 소라벨(시리즈 ①) + 굵은 제목 + 뮤티드 본문 (가로형)
 const CIRCLED = ['①', '②', '③', '④', '⑤'];
 function iconListCard(slide, x, y, w, h, item, idx, tagPrefix) {
@@ -152,10 +173,10 @@ for (const s of comp.slides) {
     frame(slide, { pageNo: s.no });
     slide.addText(s.headline, { x: MX, y: 2.5, w: CW, h: 0.8, fontFace: FONT, fontSize: 38, bold: true, color: INK, align: 'center' });
     const items = s.list?.items || [];
-    const cw2 = 2.9, gap = 0.3, totalW = items.length * cw2 + (items.length - 1) * gap;
+    const cw2 = 2.7, gap = 0.5, totalW = items.length * cw2 + (items.length - 1) * gap;
     items.forEach((item, i) => {
       const cx = (W - totalW) / 2 + i * (cw2 + gap);
-      iconListCard(slide, cx, 3.7, cw2, 1.0, item, i, null);
+      openListItem(slide, cx, 3.75, cw2, 0.95, item, i, null);
     });
     continue;
   }
@@ -174,30 +195,35 @@ for (const s of comp.slides) {
     s.stats.forEach((st, i) => statCard(slide, sx, bodyTop + i * (sh + gap), sw, sh, st));
   } else if (s.steps) {
     // 스텝 카드 줄(키컬러 번호 라벨) + 하단 게이트 리스트 2열
-    const n = s.steps.length, gap = 0.2, cw2 = (CW - gap * (n - 1)) / n, rowH = 1.6, lh = 1.45;
-    const top = bodyTop + (bodyH - (rowH + 0.3 + lh)) / 2; // 두 행 블록을 본문 영역에 수직 센터 (중간 빈 띠 방지)
+    // 오픈 스텝 플로우: 번호 원 + 연결선 + 텍스트 (카드 없음) / 하단 게이트도 오픈 리스트
+    const n = s.steps.length, gap = 0.2, cw2 = (CW - gap * (n - 1)) / n;
+    const rowY = bodyTop + 0.55, D = 0.5;
+    slide.addShape('line', { x: MX + cw2 / 2, y: rowY + D / 2, w: CW - cw2, h: 0, line: { color: BORDER, width: 1.25 } });
     s.steps.forEach((st, i) => {
       const cx = MX + i * (cw2 + gap);
-      cardShape(slide, cx, top, cw2, rowH);
-      slide.addText(`단계 ${CIRCLED[i] || i + 1}`, { x: cx + 0.22, y: top + 0.16, w: cw2 - 0.44, h: 0.24, fontFace: FONT, fontSize: 9.5, bold: true, color: NAVY, charSpacing: 1 });
-      slide.addText(st.title, { x: cx + 0.22, y: top + 0.44, w: cw2 - 0.44, h: 0.3, fontFace: FONT, fontSize: 15, bold: true, color: INK });
-      slide.addText(st.body || '', { x: cx + 0.22, y: top + 0.76, w: cw2 - 0.44, h: rowH - 0.9, fontFace: FONT, fontSize: 9.5, color: SUB, valign: 'top' });
+      slide.addShape('ellipse', { x: cx + cw2 / 2 - D / 2, y: rowY, w: D, h: D, fill: { color: RAISED }, line: { color: NAVY, width: 1.5 } });
+      slide.addText(String(i + 1).padStart(2, '0'), { x: cx + cw2 / 2 - 0.4, y: rowY, w: 0.8, h: D, fontFace: FONT, fontSize: 12, bold: true, color: NAVY, align: 'center', valign: 'middle', margin: 0 });
+      slide.addText(st.title, { x: cx, y: rowY + D + 0.22, w: cw2, h: 0.32, fontFace: FONT, fontSize: 15.5, bold: true, color: INK, align: 'center' });
+      slide.addText(st.body || '', { x: cx, y: rowY + D + 0.56, w: cw2, h: 0.3, fontFace: FONT, fontSize: 10, color: SUB, align: 'center' });
     });
     const items = s.list?.items || [];
-    const ly = top + rowH + 0.3;
-    const lw = (CW - 0.3) / 2;
-    items.forEach((item, i) => iconListCard(slide, MX + i * (lw + 0.3), ly, lw, lh, item, i, s.list.tagPrefix));
+    const ly = bodyBottom - 1.1;
+    slide.addShape('line', { x: MX, y: ly - 0.28, w: CW, h: 0, line: { color: BORDER, width: 1 } });
+    const lw = (CW - 0.6) / 2;
+    items.forEach((item, i) => openListItem(slide, MX + i * (lw + 0.6), ly, lw, 1.0, item, i, s.list.tagPrefix));
   } else {
     // 기본 구도(ref-02 축약): 상단 스탯 카드 줄 + 하단 아이콘 리스트
+    // 오픈 구성: 헤어라인 스탯 줄 + 하단 오픈 리스트 (카드 일색 회피 — 카드는 s4 차트 구도에만)
     const stats = s.stats || [];
-    const gap = 0.24, cw2 = (CW - gap * (stats.length - 1)) / stats.length;
-    const statH = 1.6, lh = 1.6; // ref-02 실측 비율대 — 카드 내부 공백 금지
-    const top = bodyTop + (bodyH - (statH + 0.3 + lh)) / 2; // 블록 수직 센터 (중간 빈 띠 방지)
-    stats.forEach((st, i) => statCard(slide, MX + i * (cw2 + gap), top, cw2, statH, st));
+    const gap = 0.55, cw2 = (CW - gap * (stats.length - 1)) / stats.length;
+    const statH = 1.55, lh = 1.35;
+    const top = bodyTop + (bodyH - (statH + 0.75 + lh)) / 2;
+    stats.forEach((st, i) => openStat(slide, MX + i * (cw2 + gap), top, cw2, st));
     const items = s.list?.items || [];
-    const ly = top + statH + 0.3;
-    const lw = (CW - 0.3 * (items.length - 1)) / items.length;
-    items.forEach((item, i) => iconListCard(slide, MX + i * (lw + 0.3), ly, lw, lh, item, i, s.list.tagPrefix));
+    const ly = top + statH + 0.75;
+    slide.addShape('line', { x: MX, y: ly - 0.3, w: CW, h: 0, line: { color: BORDER, width: 1 } });
+    const lw = (CW - 0.55 * (items.length - 1)) / items.length;
+    items.forEach((item, i) => openListItem(slide, MX + i * (lw + 0.55), ly, lw, lh, item, i, s.list.tagPrefix));
   }
 }
 
