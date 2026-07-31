@@ -24,3 +24,9 @@
 - 기각 사유: 축소 렌더 = "그냥 캡처, 글자 안 보임, AI slop". 사용자가 크롬에서 레퍼런스 7곳 순회 후 primer.style 확정.
 - 구조: 센터 헤딩+서브 → 비대칭 2카드 히어로(좌 Patterns: 커넥터 선화+토스트+태그+툴바+스펙 박스 실물 크기 콜라주 / 우 Colors: paletteSeedLibrary 실데이터 스와치 6타일+hex 라벨) → 풀폭 Recipes(MeshGradientSurface 실물 우측 블리드+모션 칩) → "More ways in" 3소카드(Docs 31·UI Vocabulary 562/Ctrl F·Agents llms.txt).
 - 원칙: 일러스트는 실물 크기 UI 조각의 겹침·잘라내기 — 축소 없음, 모든 글자 원래 크기. 토큰 전용(colors lint 0), 이전 라운드 파일(축소 ScaledFrame·lazy 데모 import) 전량 대체.
+
+## 재작업 3 — 생성 일러스트 세트 (사용자 지시: codex exec + imagegen)
+
+- 관측 지적: Recipes 카드의 mesh gradient 가 "뭔지 모르겠다" + 코드 콜라주 일부 slop 감.
+- `codex exec --full-auto`(codex-cli 0.145.0, 내장 imagegen)로 카드 3장 일러스트 생성(1536×1024 PNG, 무텍스트·화이트 그라운드·보라 계열 한 세트) → sharp-cli 로 1200w webp 변환(28~52KB) → `public/assets/get-started/{patterns,colors,recipes}.webp`.
+- `get-started-previews.tsx` 를 이미지 기반으로 교체(aria-hidden·empty alt·rounded 액자 프레임). 다크에선 흰 아트 타일이 액자로 성립.

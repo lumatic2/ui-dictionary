@@ -63,5 +63,6 @@ Status: approved (사용자 승인 2026-07-31 "ㄱㄱ" — 결정 2건 매듭. 2
 ## 진행 로그
 - 2026-07-31 작성 — 결정 2건(라이브 미니 프리뷰·제목 명사화) 매듭.
 - 2026-07-31 QA1 회귀 반영 — 카드 설명·CTA 언어를 한국어→영어 단일로 수정(사용자 확정), 안내 카드 2개는 현행 카피 유지로 축소.
+- 2026-07-31 관측 3회차 부분 지적(slop 조각 2건 수리 후) — "Recipes 우측이 뭔지 모르겠다" → 사용자 지시로 codex exec imagegen 일러스트 3장 생성·적용(재작업 3, webp 28~52KB). 관측 4회차 대기.
 - 2026-07-31 관측 2회차 기각("그냥 캡처한거야? 글자도 안 보이고 AI slop") → 사용자가 크롬으로 레퍼런스 직접 순회 후 **primer.style 확정**("쭉 다 캡처해서 따라 만들자") → 전체 캡처·구조 해독(`research/2026-07-31-qa2-primer-structure.md`) → 3차 재구현: 센터 헤딩+비대칭 2카드 히어로(Patterns 실물 크기 조각 콜라주·Colors 스와치 6타일)+풀폭 Recipes(mesh 실물+모션 칩)+More ways in 3소카드(Docs·Vocabulary·Agents). 교훈: 썸네일은 축소가 아니라 실물 크기 조각의 콜라주 — 모든 글자가 원래 크기로 읽혀야 한다.
 - 2026-07-31 관측 1회차 기각 → 레퍼런스 조사(`research/2026-07-31-qa2-get-started-references.md`, 10곳 실측) → 구조 B(실물 썸네일 그리드, Tailwind Plus) 사용자 확정 → 재구현: 스켈레톤 폐기, 실데모 축소 렌더(MarketingSectionPreview hero-centered·ArticleDocumentationLayoutDemo·ColorPaletteGeneratorDemo·MeshGradientSurfaceDemo, 전부 lazy), 인트로 문단 삭제(헤딩만), 카드 = 썸네일+제목+실데이터 개수(31 articles·13 palettes·47 recipes), 안내 2블록 소형화.
