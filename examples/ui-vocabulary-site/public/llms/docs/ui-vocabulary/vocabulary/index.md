@@ -1,6 +1,6 @@
 # UI Vocabulary — 용어 인덱스
 
-> 용어 562개 / 그룹 58개. **이름만 있고 정의는 없다** — 정의는 그룹 샤드에 있다.
+> 용어 563개 / 그룹 58개. **이름만 있고 정의는 없다** — 정의는 그룹 샤드에 있다.
 > 조회: 여기서 용어를 찾아 그 그룹 샤드 하나만 가져가라. 원본 전체(680KB)를 받을 일은 없다.
 > 파생물 — 정본은 `docs/ui-vocabulary/terms.yml`.
 
@@ -246,9 +246,9 @@ hover-card-stack(호버 카드 스택)
 
 backdrop-blur(백드롭 블러), glassmorphism(글래스모피즘), inner-shadow(내부 그림자), noise-texture(노이즈 텍스처), shadow-elevation(그림자 깊이), translucent-surface(반투명 표면)
 
-### 토큰·시맨틱 — `style-tokens.yml` (1)
+### 토큰·시맨틱 — `style-tokens.yml` (2)
 
-theme-token(테마 토큰)
+dark-mode(다크모드), theme-token(테마 토큰)
 
 ### 타이포그래피 처리 — `style-typography.yml` (6)
 
