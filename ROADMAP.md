@@ -1,61 +1,58 @@
 # ROADMAP
 
 > Last updated: 2026-07-31
-> Status: **goal `pptx-bespoke` 완주 (2026-07-31, 워크트리 lumatic2/발표-슬라이드-만드는-법)** — PB1 트랙 정식화·PB2 실증(관측 왕복 4회, 편집 그래머 확정·이미지 3트랙·스킬 흡수). 같은 날 goal `slide-pipeline-upgrade`(SP1~3)도 완주. active goal 0 — 다음은 워크트리 병합. 대기 순서(사용자 확정 2026-07-28): ② 『인터랙티브 웹 애니메이션』 책 스터디 자산화 ③ 사이트 품질(finding 큐 O5~O9·verify 위반 77건·SSG) ④ 다크모드 정비.
+> Status: **goal `html-upgrade` 개설 (2026-07-31, 워크트리)** — HTML 발표 트랙 업그레이드 4연쇄(HU1 발표 운영력→HU2 모션·표현 규율→HU3 이미지 트랙→HU4 통합 실증), 사용자 승인 "ㄱㄱ". 재료: research/2026-07-31-html-upgrade-goal-refs.md. 직전 goal pptx-bespoke·slide-pipeline-upgrade 같은 날 완주. 워크트리 병합은 메인 세션 몫(사용자 확정). 대기 순서(2026-07-28): ② 『인터랙티브 웹 애니메이션』 자산화 ③ 사이트 품질 ④ 다크모드.
 > North star: Build Askewly Design as both a public reference website and an agent-usable implementation system.
 > line budget: <=150
 
 ## Current Goal
+
+<!-- harness:goal id="html-upgrade" status="active" -->
+Goal: HTML 발표 트랙 업그레이드 — 발표 운영력(스피커 뷰·standalone·PDF 노트) + 모션 문법·anti-slop 규율 + 이미지 표현 트랙 + 통합 실증. 배경: 해커톤·강의 현장 HTML 덱 실사용(사용자 2026-07-31). 재료: research/2026-07-31-html-upgrade-goal-refs.md.
+
+## Active Milestones — html-upgrade
+
+<!-- harness:milestone id="HU1" status="completed" priority="P1" evidence="evidence/html-upgrade/hu1-presenter-ops.md" -->
+### HU1 — 발표 운영력
+- DoD: 스피커 뷰(별도 창 노트+동기)·단일 파일 standalone(다중 문서→단일 문서 병합)·PDF 노트 옵션이 스킬에 배포되고 fixture 실동작(Chrome 실조작·file:// 개봉·PDF 육안), 미사용 덱 산출 무변화.
+- Evidence: evidence/html-upgrade/hu1-presenter-ops.md
+- Gap: 발표 현장 장치(노트 보기·오프라인 배포·노트 인쇄본) 전무 — research §4-A
+- Plan: plans/2026-07-31-hu1-presenter-ops.md
+- Status: [x]
+
+- Completed at: 2026-07-31
+- Summary: S키 스피커 뷰(양방향 동기)·오프라인 standalone(2.70MB 전자원 인라인)·PDF --notes — 배포본 통합 실동작
+<!-- harness:milestone id="HU2" status="active" priority="P1" -->
+### HU2 — 모션 문법 + 표현 규율
+- DoD: fragment 단계 공개(라이브 전용, export 는 전체 표시) + 모션·폰트·anti-slop 규율(계약+린트) + bento-grid 레이아웃이 배포되고 fixture 통합 검증 PASS, 미사용 덱 무변화.
+- Evidence: evidence/html-upgrade/hu2-motion-grammar.md
+- Gap: 단계 공개 부재·AI-slop 규율 미명문화(KG 스멜 테스트 8항 미배선) — research §2·§5
+- Plan: plans/2026-07-31-hu2-motion-grammar.md
+- Status: [ ]
+
+<!-- harness:milestone id="HU3" status="pending" priority="P1" -->
+### HU3 — 이미지 표현 트랙
+- DoD: 이미지 소싱 계약(실사진 소스 맵·라이선스 장부·rmbg 누끼·imagegen 위임+치수 가드)이 references/imagery.md 로 배포되고 fixture 에서 3원천 실렌더·standalone 인라인 실동작.
+- Evidence: evidence/html-upgrade/hu3-image-track.md
+- Gap: 이미지 소싱 경로가 계약에 없음(레이아웃 슬롯만 존재) — research §5
+- Plan: plans/2026-07-31-hu3-image-track.md
+- Status: [ ]
+
+<!-- harness:milestone id="HU4" status="pending" priority="P1" -->
+### HU4 — 통합 실증
+- DoD: askewly-design-intro 가 HU1~3 전 기능으로 라이브 리허설 통과 + 발표 게이트 명문화(대비·프로젝터 체크) + 사용자 관측 1회.
+- Evidence: evidence/html-upgrade/hu4-live-proof.md
+- Gap: 스킬 기능만으로는 실사용 품질 미보장(PB2 교훈 — 실덱 관측 필수)
+- Plan: plans/2026-07-31-hu4-live-proof.md
+- Status: [ ]
 
 <!-- harness:goal-archive17 id="pptx-bespoke" status="completed" -->
 Goal: PPTX 고품질 bespoke 트랙 — 덱 전용 코드 생성+PNG 자기검사 미세조정. closed 2026-07-31 — PB1 정식화(pptx-to-png·계약 문서) + PB2 실증(관측 왕복 4회: HTML 미러링 FAIL→brandlogy 편집 그래머 재정의·구도 5종·lucide 아이콘·이미지 3트랙 사용자 확정, 실증 덱 4본, 스킬 §5~8 흡수 배포). Details: `evidence/slide-pipeline/pb{1,2}-*.md` + `docs/reports/2026-07-31-pb{1,2}-*.md`.
 
 ## Active Milestones — pptx-bespoke
 
-<!-- harness:milestone id="PB1" status="completed" priority="P1" evidence="evidence/slide-pipeline/pb1-bespoke-track.md" -->
-### PB1 — bespoke 트랙 정식화 (스킬 측)
-- DoD: PPTX 시각 자기검사 스크립트(pptx-to-png)와 bespoke 트랙 계약 문서가 custom-skills 에 배포되고 기존 실증 PPTX 에서 PNG 산출 실동작, SKILL.md 2단 트랙 라우팅.
-- Plan: plans/2026-07-31-pb1-bespoke-track-skill.md
-- Status: [x]
-
-- Completed at: 2026-07-31
-- Evidence: evidence/slide-pipeline/pb1-bespoke-track.md
-- Summary: pptx-to-png 시각 자기검사 + pptx-bespoke.md 계약 + 2단 트랙 라우팅 — 배포·PNG 실동작 검증
-<!-- harness:milestone id="PB2" status="completed" priority="P1" evidence="evidence/slide-pipeline/pb2-bespoke-proof.md" -->
-### PB2 — bespoke 실증 (askewly-design-intro)
-- DoD: 실증 덱이 bespoke 트랙으로 산출되어 HTML 렌더 근접 판정(체크리스트 5항 장부)+구조 검증(네이티브 차트·비트맵 0·COM PASS)을 통과하고 사용자 관측 1회에서 범용 매퍼 대비 품질 향상 확인.
-- Plan: plans/2026-07-31-pb2-bespoke-proof.md
-- Status: [x]
-
-<!-- harness:goal-archive16 id="slide-pipeline-upgrade" status="completed" -->
-Goal: 슬라이드 파이프라인 업그레이드 — 유튜브 aITV54CLc_U(클로드 PPT 5단계) 등가 재현 검증 + 흡수분 스킬 업그레이드 + PPTX 정본화. closed 2026-07-31 — SP1 재현 랩(충실도 장부·흡수 판정 채택3/보류1)·SP2 스킬 업그레이드(custom 테마 트랙·G5 캘리브레이션·리디자인 입력)·SP3 pptxgenjs export 트랙 승격(실덱 2본 COM PASS) 단일 세션 완주. Details: `evidence/slide-pipeline/` + `docs/reports/2026-07-31-sp{1,2,3}-*.md`.
-
-- Completed at: 2026-07-31
-- Evidence: evidence/slide-pipeline/pb2-bespoke-proof.md
-- Summary: 관측 왕복 4회 끝 그래머 확정 — 실증 덱 4본·이미지 3트랙·스킬 §5~8 흡수, goal pptx-bespoke 완주
 ## Active Milestones — slide-pipeline-upgrade
 
-<!-- harness:milestone id="SP2" status="completed" priority="P1" evidence="evidence/slide-pipeline/sp2-skill-upgrade.md" -->
-### SP2 — HTML 트랙 스킬 업그레이드
-- DoD: SP1 채택분이 custom-skills presentation-slides-yusung 에 구현·배포되고 검증 덱으로 실증된다.
-- Plan: plans/2026-07-31-sp2-html-track-upgrade.md
-- Status: [x]
-
-- Completed at: 2026-07-31
-- Evidence: evidence/slide-pipeline/sp2-skill-upgrade.md
-- Summary: custom 테마 트랙+G5 캘리브레이션+리디자인 입력 구현·배포 — smoke 18+3 PASS·배포본 랩 실증
-<!-- harness:milestone id="SP3" status="completed" priority="P1" evidence="evidence/slide-pipeline/sp3-pptx-canonical.md" -->
-### SP3 — PPTX 파이프라인 정본화
-- DoD: pptxgenjs 단일 경로가 스킬 export 트랙으로 승격되고 methodology/slide-production.md 가 갱신되며 Askewly 스타일 실증 덱이 남는다.
-- Plan: plans/2026-07-31-sp3-pptx-canonical-track.md
-- Status: [x]
-
-<!-- harness:goal-archive15 id="slide-expressive" status="completed" -->
-Goal: 슬라이드 표현력 심화 — PPTX 중단·HTML/PDF 우선 방향의 실행. closed 2026-07-28 — SX1 임팩트 레이아웃 2종(hero-motion·svg-filter-scene, 정적 14종)·SX2 벡터 PDF 트랙(텍스트 선택·의존성 0)·SX3 소개 덱 실증(직행 예외 정당 판정) 단일 세션 완주. Details: `research/2026-07-28-sx1-slide-expressive-survey.md` + `docs/reports/2026-07-28-sx{1,2,3}-*.md`.
-
-- Completed at: 2026-07-31
-- Evidence: evidence/slide-pipeline/sp3-pptx-canonical.md
-- Summary: export-pptx.mjs 정식 트랙 + methodology 정정 — 실덱 2본 COM PASS, goal slide-pipeline-upgrade 완주
 ## Active Milestones — slide-expressive
 
 ## Active Milestones — slide-methodology

@@ -600,3 +600,24 @@ plan doc: `archive/plans/2026-07-21-eu*.md` · 증거: `evidence/editor-legibili
   - Completed: 2026-07-31
   - Result: 소개 덱 7장(lint 0) + pptxgenjs 네이티브 7장·CHART / ppt-master 3장 실증, 8축 비교 장부 — 실개봉 partial(뷰어 부재), real-use-lap 조건 충족 판정
   - Evidence: evidence/slide-methodology/sl3-pptx.md
+
+### 2026-07
+- PB1 - PB1 — bespoke 트랙 정식화 (스킬 측)
+  - Completed: 2026-07-31
+  - Result: pptx-to-png 시각 자기검사 + pptx-bespoke.md 계약 + 2단 트랙 라우팅 — 배포·PNG 실동작 검증
+  - Evidence: evidence/slide-pipeline/pb1-bespoke-track.md
+
+- PB2 - PB2 — bespoke 실증 (askewly-design-intro)
+  - Completed: 2026-07-31
+  - Result: 관측 왕복 4회 끝 그래머 확정 — 실증 덱 4본·이미지 3트랙·스킬 §5~8 흡수, goal pptx-bespoke 완주
+  - Evidence: evidence/slide-pipeline/pb2-bespoke-proof.md
+
+- SP2 - SP2 — HTML 트랙 스킬 업그레이드
+  - Completed: 2026-07-31
+  - Result: custom 테마 트랙+G5 캘리브레이션+리디자인 입력 구현·배포 — smoke 18+3 PASS·배포본 랩 실증
+  - Evidence: evidence/slide-pipeline/sp2-skill-upgrade.md
+
+- SP3 - SP3 — PPTX 파이프라인 정본화
+  - Completed: 2026-07-31
+  - Result: export-pptx.mjs 정식 트랙 + methodology 정정 — 실덱 2본 COM PASS, goal slide-pipeline-upgrade 완주
+  - Evidence: evidence/slide-pipeline/sp3-pptx-canonical.md
