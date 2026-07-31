@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "active_work_id": "dq1-quality-rubric",
+  "active_work_id": "dq2-expressive-mechanics",
   "works": {
     "SFB1": {
       "title": "Structure Contract And Clean Production",
@@ -5163,6 +5163,52 @@
       "updated_at": "2026-07-31",
       "notes": "Registered atomically by canonical harness approve_harness_plan.py after plan validation.",
       "completion_summary": "DQ1 완료 — 품질 루브릭 Q1~Q12 + few-shot 견본 5계열 + G5 배선·Q2 린트 배포"
+    },
+    "dq2-expressive-mechanics": {
+      "work_id": "dq2-expressive-mechanics",
+      "milestone_id": "DQ2",
+      "status": "active",
+      "plan_path": "plans/2026-07-31-dq2-expressive-mechanics.md",
+      "changeset_path": "changesets/20260731-dq2-expressive-mechanics",
+      "next_step": "step-1",
+      "current_step": "step-1",
+      "steps": [
+        {
+          "id": "step-1",
+          "label": "step-1 — 장간 요소 연속 전환 (Auto-Animate 상당)"
+        },
+        {
+          "id": "step-2",
+          "label": "step-2 — 이미지 최적화 빌드 + sourceNote 배치 수리"
+        }
+      ],
+      "execution_mode": "continuous",
+      "approval": {
+        "approved_by": "user",
+        "approved_at": "2026-07-31",
+        "plan_sha256": "3cbaada92a3704abfb65d45dff0193eb7fbdd91b189436fc528a79294660bd4f",
+        "chain": [
+          "dq3"
+        ]
+      },
+      "allowed_stop_reasons": [
+        "completed",
+        "blocked",
+        "decision_required",
+        "risk_gate",
+        "secret_required",
+        "external_authority_required",
+        "user_stopped"
+      ],
+      "stop_reason": null,
+      "stop_detail": {},
+      "session_ids": [
+        "codex:f5757e4f-221b-42df-8d0b-5eb4936f9289",
+        "claude:f5757e4f-221b-42df-8d0b-5eb4936f9289"
+      ],
+      "owner_session_uuid": "claude:f5757e4f-221b-42df-8d0b-5eb4936f9289",
+      "updated_at": "2026-07-31",
+      "notes": "Registered atomically by canonical harness approve_harness_plan.py after plan validation."
     }
   }
 }

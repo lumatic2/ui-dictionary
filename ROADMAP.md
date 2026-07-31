@@ -22,7 +22,7 @@ Goal: 슬라이드 덱 자체 품질 업그레이드 — 품질 루브릭+few-sh
 
 - Completed at: 2026-07-31
 - Summary: 루브릭 Q1~Q12+견본 5계열+G5 대조 배선·Q2 린트 — custom-skills 2커밋 배포
-<!-- harness:milestone id="DQ2" status="pending" priority="P1" evidence="evidence/deck-quality/dq2-expressive-mechanics.md" -->
+<!-- harness:milestone id="DQ2" status="active" priority="P1" evidence="evidence/deck-quality/dq2-expressive-mechanics.md" -->
 ### DQ2 — 표현 기계 업그레이드
 - DoD: 장간 연속 전환(opt-in, 실크롬 file:// 실측 또는 폴백 확정) + 이미지 최적화 빌드(용량 실측 개선) + sourceNote 겹침 해소 — HU4 회귀 5종 PASS·미사용 덱 무변화.
 - Evidence: evidence/deck-quality/dq2-expressive-mechanics.md
