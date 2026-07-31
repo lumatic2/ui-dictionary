@@ -58,8 +58,9 @@ Status: approved (사용자 승인 2026-07-31 "ㄱㄱ" — 결정 2건 매듭. 2
 - 현행 카드 구성(탐색 4+안내 2)·파일 구조 = get-started-page.tsx 전문 실측 2026-07-31.
 
 ## finding 큐
-- (실행 중 발견 항목을 여기 적는다)
+- 2026-07-31 사람 관측 1회차 **기각** — ① 미니 프리뷰(스켈레톤 조립) 품질 미달 ② 인트로 설명문("A visual library of product UI...")의 필요성 의문 ③ 단순 카드 나열 구조 자체 재검토. 사용자 지시: 레퍼런스 조사 먼저 → 페이지 설계 재제시.
 
 ## 진행 로그
 - 2026-07-31 작성 — 결정 2건(라이브 미니 프리뷰·제목 명사화) 매듭.
 - 2026-07-31 QA1 회귀 반영 — 카드 설명·CTA 언어를 한국어→영어 단일로 수정(사용자 확정), 안내 카드 2개는 현행 카피 유지로 축소.
+- 2026-07-31 관측 1회차 기각 → 레퍼런스 조사(`research/2026-07-31-qa2-get-started-references.md`, 10곳 실측) → 구조 B(실물 썸네일 그리드, Tailwind Plus) 사용자 확정 → 재구현: 스켈레톤 폐기, 실데모 축소 렌더(MarketingSectionPreview hero-centered·ArticleDocumentationLayoutDemo·ColorPaletteGeneratorDemo·MeshGradientSurfaceDemo, 전부 lazy), 인트로 문단 삭제(헤딩만), 카드 = 썸네일+제목+실데이터 개수(31 articles·13 palettes·47 recipes), 안내 2블록 소형화.

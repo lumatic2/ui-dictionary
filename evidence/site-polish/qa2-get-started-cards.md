@@ -21,3 +21,15 @@
 | 제목 | 명사화 — Patterns / Docs / Colors / Recipes, 설명 영어 콤팩트 재작성, 안내 카드 2개 현행 유지 |
 
 - 잔여 게이트: 사람 관측 1회 (goal 마감 전).
+
+## 재작업 (관측 1회차 기각 → 구조 B)
+
+| 항목 | 결과 |
+|---|---|
+| 레퍼런스 조사 | 10곳 실측(sonnet WebFetch) → `research/2026-07-31-qa2-get-started-references.md` — 공통 패턴: 인트로 0~2문장·실물이 설명 대신 |
+| 재구현 | 스켈레톤 폐기 → 실데모 축소 렌더 4종(hero-centered·docs 아티클·팔레트 생성기·mesh gradient, lazy) + 인트로 삭제 + 실데이터 개수 표기 |
+| tsc·lint(colors 0)·build(755) | PASS |
+| 라우팅 4방향 | PASS — /patterns/marketing·/docs·/colors·/recipes |
+| 라이트/다크 | PASS — 풀페이지 스크린샷 2회차(scratchpad qa2b-light2/dark2) |
+| 콘솔 | 0 에러 |
+| 관측 | 2회차 대기 |
