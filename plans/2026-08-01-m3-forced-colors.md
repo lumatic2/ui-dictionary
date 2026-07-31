@@ -39,7 +39,7 @@ Status: approved (사용자 승인 2026-08-01 "ㄱㄱ" — 연쇄 M2→M3→M4 �
   - Failure probe: 에뮬레이션이 실제 강제 팔레트와 다르게 렌더하는 표본 1건을 Windows 실물 고대비로 교차 확인 — 어긋나면 감사 신뢰도에 기록.
   - Commit: changeset `m3-forced-colors` (README 절: step-1).
 
-- [ ] **step-2 — 수리 + 게이트 (M3 마감)**
+- [x] **step-2 — 수리 + 게이트 (M3 마감)**
   - Artifact: 결함 전건 수리 — `@media (forced-colors: active)` 블록(시스템 색 키워드)·투명 outline 포커스 링·`forced-color-adjust: none` 판정 적용 + 에뮬레이션 재순회로 잔여 0 + evidence 마감.
   - Files: write examples/ui-vocabulary-site/src/index.css, (필요 시) 해당 컴포넌트 파일, evidence/dark-carryover/m3-forced-colors.md. read step-1 장부.
   - Risk: 위험 (전역 CSS 수정 — 일반 모드 무영향 계약, 라이트/다크 스크린샷 대조로 격리)
@@ -60,3 +60,4 @@ Status: approved (사용자 승인 2026-08-01 "ㄱㄱ" — 연쇄 M2→M3→M4 �
 - 2026-08-01 작성.
 - 2026-08-01 fresh 검증자(sonnet) 반영 — M2: status.* 그룹 신설(accent 충돌 회피)·DESIGN.md 재생성 부작용·llms 별도 커맨드 명시·destructive-foreground 승격 근거, M4: og:image 셸 단일 전제 정정, M3: 실물 고대비 사람 핸드오프 명시.
 - 2026-08-01 step-1 감사 완료 — 결함 D1(스와치 소멸)·D2(장식 노이즈)·D3(로고 포커스 불가시). 스코프 밖 관측 2건 finding 큐.
+- 2026-08-01 step-2 수리 완료 — D1/D2/D3 재순회 해소 실측, 게이트 PASS. 실물 고대비 스팟은 사용자 관측 대기(마감 보고에 묶음).

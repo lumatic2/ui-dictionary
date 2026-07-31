@@ -49,7 +49,7 @@ function PaletteCard({
 }) {
   return (
     <div className="flex flex-col overflow-hidden rounded-md border bg-card shadow-sm">
-      <div className="grid h-24" style={{ gridTemplateColumns: `repeat(${seed.colors.length}, minmax(0, 1fr))` }}>
+      <div className="swatch-preserve grid h-24" style={{ gridTemplateColumns: `repeat(${seed.colors.length}, minmax(0, 1fr))` }}>
         {seed.colors.map((color) => {
           const textColor = getReadableTextColor(color.hex)
           return (

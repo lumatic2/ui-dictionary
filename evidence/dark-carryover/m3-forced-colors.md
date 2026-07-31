@@ -28,3 +28,12 @@
 - 로고 버튼은 **일반 모드에서도** 포커스 불가시(outline none + 링 없음) — D3 수리는 forced 한정이므로 일반 모드 포커스 링은 별도 후보.
 
 ## step-2 — 수리 (아래 실행 후 기입)
+
+| 검증 (재순회, 빌드 산출물 preview) | 결과 |
+|---|---|
+| D1 | 생성기 컬럼·팔레트 카드 스와치 bg `rgb(255,153,200)`(#FF99C8) 보존 — `forced-color-adjust: none` 상속(컨테이너 2곳: `data-palette-board`·PaletteCard 색 스트립). 스크린샷 `fc2_colors.png` |
+| D2 | 장식 요소 29개 전부 display:none (forced 에서만) — 일반 모드 재확인 시 정상 렌더(visible 7/20, 나머지는 뷰포트 밖/애니메이션 상태) |
+| D3 | 로고 포커스 outline `solid 2px`(시스템 색) — forced 블록 전역 `:focus-visible` |
+| 게이트 | `npm run lint`(스캐너 포함)·`npm run build`+prerender 755 PASS · 콘솔 0에러 |
+| 일반 모드 무영향 | 수리 전부 `@media (forced-colors: active)` 내부 + 클래스 1개 추가(무스타일) — 일반 라이트/다크 픽셀 무변경 by construction, 장식 렌더 정상 실측 |
+| 사람 핸드오프 | **Windows 실물 고대비 스팟 1회 대기** — goal 마감 보고 시 안내(설정 > 접근성 > 대비 테마) |

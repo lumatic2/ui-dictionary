@@ -1945,7 +1945,7 @@ export function ColorPaletteGeneratorDemo() {
         tabIndex={0}
         aria-label="Interactive color palette generator"
       >
-        <div ref={paletteBoardRef} className="relative flex h-[21.5rem] overflow-visible" data-palette-board="true">
+        <div ref={paletteBoardRef} className="swatch-preserve relative flex h-[21.5rem] overflow-visible" data-palette-board="true">
           <span className="group/add-start absolute inset-y-0 left-2 z-30 flex w-10 items-center justify-start" data-palette-add-start="true">
             <button
               className="grid size-9 place-items-center rounded-full border border-slate-200 bg-white text-slate-950 opacity-0 shadow-md transition hover:scale-105 hover:bg-slate-50 focus-visible:opacity-100 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-askewly-violet group-hover/add-start:opacity-100"

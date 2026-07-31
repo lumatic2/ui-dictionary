@@ -1657,3 +1657,29 @@ select {
   0%, 100% { transform: translateY(0); }
   50% { transform: translateY(-6px); }
 }
+
+/* forced-colors(고대비 모드) 대응 — M3 2026-08-01. 별도 디자인이 아니라 판독성 보정만(MDN 원칙).
+   일반 라이트/다크 렌더에는 무영향 — 이 블록은 forced-colors 활성 시에만 발현한다. */
+@media (forced-colors: active) {
+  /* D2 — 장식 플로팅 필드: 그라디언트·배경이 강제 소거되면 빈 외곽선 상자만 떠다닌다(노이즈). 콘텐츠가 아니므로 숨긴다. */
+  .floating-grid-field,
+  .floating-field-fade,
+  [class*="floating-block"],
+  .inverted-grid-field,
+  .inverted-field-layer,
+  .inverted-section-fade,
+  [class*="inverted-block"] {
+    display: none;
+  }
+
+  /* D3 — box-shadow 포커스 링이 forced 에서 소멸 → 시스템 색 outline 으로 전 표면 포커스 가시성 보장. */
+  :focus-visible {
+    outline: 2px solid ButtonText;
+    outline-offset: 2px;
+  }
+
+  /* D1 — 색 자체가 정보인 스와치(팔레트 카드·생성기 컬럼)만 강제 팔레트에서 제외. 사용자 선택 무력화 용도가 아니라 정보 보존(MDN 권고 사용처). */
+  .swatch-preserve {
+    forced-color-adjust: none;
+  }
+}
