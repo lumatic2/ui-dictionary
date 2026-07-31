@@ -1,27 +1,17 @@
 # ROADMAP
 
 > Last updated: 2026-07-31
-> Status: **goal `html-upgrade` 개설 (2026-07-31, 워크트리)** — HTML 발표 트랙 업그레이드 4연쇄(HU1 발표 운영력→HU2 모션·표현 규율→HU3 이미지 트랙→HU4 통합 실증), 사용자 승인 "ㄱㄱ". 재료: research/2026-07-31-html-upgrade-goal-refs.md. 직전 goal pptx-bespoke·slide-pipeline-upgrade 같은 날 완주. 워크트리 병합은 메인 세션 몫(사용자 확정). 대기 순서(2026-07-28): ② 『인터랙티브 웹 애니메이션』 자산화 ③ 사이트 품질 ④ 다크모드.
+> Status: **goal `html-upgrade` 완주 (2026-07-31, 워크트리)** — HU1~HU4 4연쇄 완료(발표 운영력·모션 문법·이미지 트랙·통합 실증 — 사용자 관측 6라운드 PASS). active goal 0 — 다음 후보: 슬라이드 덱 자체 품질 업그레이드(사용자 제안) 또는 이월 finding 큐(D1 few-shot·D2 Presenton 벤치·Auto-Animate·이미지 최적화 빌드·split-screen sourceNote). 워크트리 병합은 메인 세션 몫(사용자 확정). 대기 순서(2026-07-28): ② 『인터랙티브 웹 애니메이션』 자산화 ③ 사이트 품질 ④ 다크모드.
 > North star: Build Askewly Design as both a public reference website and an agent-usable implementation system.
 > line budget: <=150
 
 ## Current Goal
 
-<!-- harness:goal id="html-upgrade" status="active" -->
+<!-- harness:goal id="html-upgrade" status="completed" -->
 Goal: HTML 발표 트랙 업그레이드 — 발표 운영력(스피커 뷰·standalone·PDF 노트) + 모션 문법·anti-slop 규율 + 이미지 표현 트랙 + 통합 실증. 배경: 해커톤·강의 현장 HTML 덱 실사용(사용자 2026-07-31). 재료: research/2026-07-31-html-upgrade-goal-refs.md.
 
 ## Active Milestones — html-upgrade
 
-<!-- harness:milestone id="HU1" status="completed" priority="P1" evidence="evidence/html-upgrade/hu1-presenter-ops.md" -->
-### HU1 — 발표 운영력
-- DoD: 스피커 뷰(별도 창 노트+동기)·단일 파일 standalone(다중 문서→단일 문서 병합)·PDF 노트 옵션이 스킬에 배포되고 fixture 실동작(Chrome 실조작·file:// 개봉·PDF 육안), 미사용 덱 산출 무변화.
-- Evidence: evidence/html-upgrade/hu1-presenter-ops.md
-- Gap: 발표 현장 장치(노트 보기·오프라인 배포·노트 인쇄본) 전무 — research §4-A
-- Plan: plans/2026-07-31-hu1-presenter-ops.md
-- Status: [x]
-
-- Completed at: 2026-07-31
-- Summary: S키 스피커 뷰(양방향 동기)·오프라인 standalone(2.70MB 전자원 인라인)·PDF --notes — 배포본 통합 실동작
 <!-- harness:milestone id="HU2" status="completed" priority="P1" evidence="evidence/html-upgrade/hu2-motion-grammar.md" -->
 ### HU2 — 모션 문법 + 표현 규율
 - DoD: fragment 단계 공개(라이브 전용, export 는 전체 표시) + 모션·폰트·anti-slop 규율(계약+린트) + bento-grid 레이아웃이 배포되고 fixture 통합 검증 PASS, 미사용 덱 무변화.
@@ -42,17 +32,19 @@ Goal: HTML 발표 트랙 업그레이드 — 발표 운영력(스피커 뷰·sta
 
 - Completed at: 2026-07-31
 - Summary: imagery.md 3원천 계약+커버 풀블리드 스크림 — Pexels·rmbg·image_gen 실투입, standalone 인라인 PASS
-<!-- harness:milestone id="HU4" status="active" priority="P1" -->
+<!-- harness:milestone id="HU4" status="completed" priority="P1" evidence="evidence/html-upgrade/hu4-live-proof.md" -->
 ### HU4 — 통합 실증
 - DoD: askewly-design-intro 가 HU1~3 전 기능으로 라이브 리허설 통과 + 발표 게이트 명문화(대비·프로젝터 체크) + 사용자 관측 1회.
 - Evidence: evidence/html-upgrade/hu4-live-proof.md
 - Gap: 스킬 기능만으로는 실사용 품질 미보장(PB2 교훈 — 실덱 관측 필수)
 - Plan: plans/2026-07-31-hu4-live-proof.md
-- Status: [ ]
+- Status: [x]
 
 <!-- harness:goal-archive17 id="pptx-bespoke" status="completed" -->
 Goal: PPTX 고품질 bespoke 트랙 — 덱 전용 코드 생성+PNG 자기검사 미세조정. closed 2026-07-31 — PB1 정식화(pptx-to-png·계약 문서) + PB2 실증(관측 왕복 4회: HTML 미러링 FAIL→brandlogy 편집 그래머 재정의·구도 5종·lucide 아이콘·이미지 3트랙 사용자 확정, 실증 덱 4본, 스킬 §5~8 흡수 배포). Details: `evidence/slide-pipeline/pb{1,2}-*.md` + `docs/reports/2026-07-31-pb{1,2}-*.md`.
 
+- Completed at: 2026-07-31
+- Summary: 정본 덱 통합 실증 — 사용자 관측 6라운드 PASS, 발표 게이트 명문화
 ## Active Milestones — pptx-bespoke
 
 ## Active Milestones — slide-pipeline-upgrade

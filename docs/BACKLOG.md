@@ -621,3 +621,9 @@ plan doc: `archive/plans/2026-07-21-eu*.md` · 증거: `evidence/editor-legibili
   - Completed: 2026-07-31
   - Result: export-pptx.mjs 정식 트랙 + methodology 정정 — 실덱 2본 COM PASS, goal slide-pipeline-upgrade 완주
   - Evidence: evidence/slide-pipeline/sp3-pptx-canonical.md
+
+### 2026-07
+- HU1 - HU1 — 발표 운영력
+  - Completed: 2026-07-31
+  - Result: S키 스피커 뷰(양방향 동기)·오프라인 standalone(2.70MB 전자원 인라인)·PDF --notes — 배포본 통합 실동작
+  - Evidence: evidence/html-upgrade/hu1-presenter-ops.md
