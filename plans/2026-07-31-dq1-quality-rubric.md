@@ -38,7 +38,7 @@ Status: approved (사용자 "ㄱㄱ" 2026-07-31 — fresh 검증자 발견 7건 
   - Verify: 문서에 원칙≥8·실사례≥3·루브릭 후보 표가 있고 각 항에 출처 백링크 존재 — `grep -c "http" research/2026-07-31-dq1-deck-quality-refs.md` ≥ 6.
   - Failure probe: 웹 출처 접근 불가 항목은 "확인 불가" 명기(추정 작성 금지 — 전역 인용 규칙).
   - Commit: 이 레포 `docs(dq1): step-1` (research).
-- [ ] **step-2 — 품질 루브릭 문서 + few-shot 견본 제작**
+- [x] **step-2 — 품질 루브릭 문서 + few-shot 견본 제작**
   - Artifact: custom-skills `references/quality-rubric.md`(루브릭 — 4필드 형태) + `references/exemplars/`(견본 3~5장: slides.json 조각+PNG+주석 — 전 장 실빌드·실렌더).
   - Files: write custom-skills `references/quality-rubric.md`·`references/exemplars/*`. read step-1 research·`references/style-system.md`.
   - Risk: 기계적 (신규 문서·견본 추가 — 기존 계약 파일 미편집)
