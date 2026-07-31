@@ -69,3 +69,4 @@ Status: approved (연쇄 승인 — PB1 승인 시 chain 영수증 pb2 등록, �
 - 2026-07-31 step-1 완료 — 기준 7장(덱 캡처 경로 필수 실측)·bespoke v1·대표 s02 라운드 2 수렴. pptxgenjs shadow 뮤테이션 결함 발견(도형별 새 객체로 해소).
 - 2026-07-31 step-2 진행 — 전장 f1 라운드(s04 축·s05 번호 랩·s07 URL 랩), 구조 검증 PASS(7장·차트1·pictures0·COM Workbook). 사용자 관측 대기.
 - 2026-07-31 사용자 관측 **FAIL** → decision_required 정지·ledger 기록. 기준 v2(brandlogy 그래머)로 재정의, 재승인. step-2 를 v2 로 재수행: pptx-composition.json 작성 → bespoke 코드 v2(프레임·스탯 카드·차트 카드·아이콘 리스트) → 대표 s04 라운드 → 전장 → 구조 검증 → 사용자 관측.
+- 2026-07-31 관측 2차 피드백 → f4(그라디언트 밴드 제거·카드 일색 해소). 영상 ⑤ 재검토(사용자 질문)로 자유 구성 실증 추가 합의("ㅇㅇ") → free-topic-deck 5장, 캘리브레이션 0라운드 전이, 구조 PASS. 사용자 관측 대기(두 덱).

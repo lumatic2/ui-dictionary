@@ -1,0 +1,106 @@
+{
+  "meta": {
+    "purpose": "PB2 ⑤ 등가 실증 — 주제 한 줄('오늘 슬라이드 파이프라인에 무슨 일이 있었나')에서 구성안을 자유 생성한 덱. 기존 덱 구성 재사용 없음.",
+    "grammar": "research/2026-07-31-pb2-brandlogy-grammar.md",
+    "wordmark": "Askewly",
+    "numbersSource": {
+      "commits": "git log --since 2026-07-31 실측 — ui-dictionary 18(SP1 7·SP2 2·SP3 4·PB 5)·custom-skills 16, 합 34",
+      "rounds": "캘리브레이션 라운드 — SP1 HTML 3(style-preset.md) + PB2 v1 3 + v2 4(pb2-bespoke-proof.md) = 10",
+      "absorption": "SP1 흡수 판정 채택 3·보류 1 (sp1-video-lab evidence)",
+      "pptx": "오늘 산출 PPTX 5본 — skill-track 2·SP1 랩 2·bespoke 1"
+    }
+  },
+  "slides": [
+    {
+      "no": 1,
+      "kind": "cover",
+      "title": "영상 하나로 파이프라인을 다시 세웠습니다",
+      "subtitle": "클로드 PPT 5단계의 재현·흡수·정본화 — 2026-07-31 하루 기록",
+      "chips": ["회고 덱", "2026-07-31"],
+      "notes": "이 덱 자체가 오늘 만든 bespoke 트랙의 ⑤ 등가 실증 산출물이다."
+    },
+    {
+      "no": 2,
+      "kind": "content",
+      "kicker": { "no": "01", "label": "방법" },
+      "headline": "재현이 먼저, 흡수는 그다음입니다.",
+      "subline": "유튜브 5단계를 등가 재현해 충실도 장부로 검증한 뒤에만 스킬에 흡수했다",
+      "stats": [
+        { "value": "5단계", "quant": false, "label": "영상 워크플로우 재현", "detail": "스타일 선정→커스터마이즈→1장 조정→박제→제작" },
+        { "value": "3", "quant": true, "label": "흡수 채택", "detail": "custom 테마·1장 캘리브레이션·리디자인 입력 (보류 1)" },
+        { "value": "2", "quant": true, "label": "기준 이미지", "detail": "brandlogy 캡처 — 편집 그래머의 정본 근거" }
+      ],
+      "list": {
+        "tagPrefix": "goal",
+        "items": [
+          { "glyph": "✦", "title": "재현 랩", "body": "MiniMax 프리셋·1장 왕복 3회·네이티브 차트 검증" },
+          { "glyph": "⧉", "title": "스킬 업그레이드", "body": "custom 테마 트랙·G5 캘리브레이션·리디자인 입력" },
+          { "glyph": "⌗", "title": "PPTX 정본화", "body": "pptxgenjs 단일 경로 + bespoke 고품질 트랙" }
+        ]
+      },
+      "source": "Source: evidence/slide-pipeline/ 장부, 2026-07-31",
+      "notes": "충실도 장부 방식 — 편차는 전부 기록하고 등가 치환만 허용했다."
+    },
+    {
+      "no": 3,
+      "kind": "content",
+      "kicker": { "no": "02", "label": "실측" },
+      "headline": "하루에 커밋 34개, goal 세 개가 닫혔습니다.",
+      "subline": "ui-dictionary 18 · custom-skills 16 — 전부 재현 랩에서 출발한 연쇄다",
+      "chart": {
+        "title": "오늘 커밋 수 — 단계별 (ui-dictionary)",
+        "sub": "단위: 커밋 · git log 실측, 2026-07-31",
+        "items": [
+          { "label": "SP1 재현 랩", "value": 7 },
+          { "label": "SP2 HTML 트랙", "value": 2 },
+          { "label": "SP3 PPTX 정본화", "value": 4 },
+          { "label": "PB bespoke", "value": 5 }
+        ],
+        "source": "Source: git log --since 2026-07-31 실측"
+      },
+      "stats": [
+        { "value": "34", "quant": true, "label": "총 커밋 (두 레포)", "detail": "ui-dictionary 18 + custom-skills 16" },
+        { "value": "5", "quant": true, "label": "산출 PPTX", "detail": "랩 2 · 범용 트랙 2 · bespoke 1" },
+        { "value": "10", "quant": true, "label": "캘리브레이션 라운드", "detail": "HTML 3 + bespoke v1 3 + v2 4" }
+      ],
+      "statsColumn": true,
+      "source": "Source: git log·evidence 장부 실측, 2026-07-31",
+      "notes": "숫자는 전부 오늘 git과 evidence 장부에서 직접 센 값."
+    },
+    {
+      "no": 4,
+      "kind": "content",
+      "kicker": { "no": "03", "label": "교훈" },
+      "headline": "품질은 렌더가 아니라 그래머에서 나옵니다.",
+      "subline": "HTML 미러링은 관측 FAIL — 주장형 헤드라인·정보 3계층·단일 키컬러가 답이었다",
+      "stats": [
+        { "value": "FAIL", "quant": false, "label": "1차 관측 — HTML 미러링", "detail": "여백 위주 덱을 충실 재현할수록 성긴 PPT" },
+        { "value": "4", "quant": true, "label": "프레임 고정 앵커", "detail": "kicker·워드마크·페이지·출처 — 매 장 동일 위치" },
+        { "value": "3계층", "quant": false, "label": "본문 정보 구조", "detail": "주장 → 빅넘버 → 근거 상세. 하단 1/3을 비우지 않는다" }
+      ],
+      "list": {
+        "tagPrefix": "교정",
+        "items": [
+          { "glyph": "▣", "title": "기준 교체", "body": "HTML 렌더 근접 → brandlogy 편집 그래머 (사용자 확정)" },
+          { "glyph": "◎", "title": "1장 미세조정", "body": "PNG 자기검사 루프 — 대표 1장 수렴 후 전장 전개" },
+          { "glyph": "⇄", "title": "구성 분화", "body": "카드는 데이터 증거에만 — 나머지는 오픈 타이포" }
+        ]
+      },
+      "source": "Source: evidence/slide-pipeline/pb2-bespoke-proof.md",
+      "notes": "관측 FAIL 왕복 자체가 파이프라인의 게이트가 일하고 있다는 증거."
+    },
+    {
+      "no": 5,
+      "kind": "closing",
+      "headline": "다음 액션.",
+      "list": {
+        "items": [
+          { "glyph": "✦", "title": "구성안 게이트", "body": "주제→구성안→생성 순서를 스킬 계약에" },
+          { "glyph": "⧉", "title": "워크트리 병합", "body": "goal 마감 후 main 통합" },
+          { "glyph": "⌗", "title": "리디자인 트랙", "body": "저품질 PPT/PDF → 내 스타일 재산출" }
+        ]
+      },
+      "notes": "이 덱이 곧 ⑤ 등가 실증 — 주제 한 줄에서 구성안 자유 생성으로 만들어졌다."
+    }
+  ]
+}
