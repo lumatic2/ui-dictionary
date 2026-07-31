@@ -8,7 +8,7 @@ export function PatternsCollage() {
     <div aria-hidden="true" className="pointer-events-none relative mt-8 h-64 select-none overflow-hidden">
       <img
         alt=""
-        className="w-full rounded-t-xl border border-b-0 object-cover object-top shadow-sm"
+        className="w-full rounded-t-xl object-cover object-top"
         src="/assets/get-started/patterns.webp"
       />
     </div>
@@ -20,7 +20,7 @@ export function ColorsSwatchGrid() {
     <div aria-hidden="true" className="pointer-events-none select-none">
       <img
         alt=""
-        className="h-48 w-full rounded-xl border object-cover shadow-sm"
+        className="h-48 w-full rounded-xl object-cover"
         src="/assets/get-started/colors.webp"
       />
     </div>
@@ -32,7 +32,7 @@ export function RecipesCollage() {
     <div aria-hidden="true" className="pointer-events-none select-none lg:py-2">
       <img
         alt=""
-        className="h-56 w-full rounded-xl border object-cover shadow-sm"
+        className="h-56 w-full rounded-xl object-cover"
         src="/assets/get-started/recipes.webp"
       />
     </div>
