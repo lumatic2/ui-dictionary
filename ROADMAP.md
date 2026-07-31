@@ -7,31 +7,40 @@
 
 ## Current Goal
 
-<!-- harness:goal id="html-upgrade" status="completed" -->
-Goal: HTML 발표 트랙 업그레이드 — 발표 운영력(스피커 뷰·standalone·PDF 노트) + 모션 문법·anti-slop 규율 + 이미지 표현 트랙 + 통합 실증. 배경: 해커톤·강의 현장 HTML 덱 실사용(사용자 2026-07-31). 재료: research/2026-07-31-html-upgrade-goal-refs.md.
+<!-- harness:goal id="deck-quality" status="active" -->
+Goal: 슬라이드 덱 자체 품질 업그레이드 — 품질 루브릭+few-shot 견본(기준) → 표현 기계(연속 전환·이미지 최적화) → 정본 덱 리디자인+사용자 관측 실증. 사용자 승인 "ㄱㄱ" 2026-07-31, chain dq1→dq2→dq3.
+
+## Active Milestones — deck-quality
+
+<!-- harness:milestone id="DQ1" status="active" priority="P1" evidence="evidence/deck-quality/dq1-quality-rubric.md" -->
+### DQ1 — 덱 품질 기준 수립
+- DoD: 품질 루브릭(4필드·검사 주체 이분)과 few-shot 견본 3~5장(전 장 실빌드)이 스킬 계약으로 배포되고 G5 가 견본 대조로 판정 가능 — 기존 fixture diff 0.
+- Evidence: evidence/deck-quality/dq1-quality-rubric.md
+- Gap: "무엇이 좋은 슬라이드인가" 기준이 계약에 없음 — G5 가 육안 인상에만 의존
+- Plan: plans/2026-07-31-dq1-quality-rubric.md
+- Status: [ ]
+
+<!-- harness:milestone id="DQ2" status="pending" priority="P1" evidence="evidence/deck-quality/dq2-expressive-mechanics.md" -->
+### DQ2 — 표현 기계 업그레이드
+- DoD: 장간 연속 전환(opt-in, 실크롬 file:// 실측 또는 폴백 확정) + 이미지 최적화 빌드(용량 실측 개선) + sourceNote 겹침 해소 — HU4 회귀 5종 PASS·미사용 덱 무변화.
+- Evidence: evidence/deck-quality/dq2-expressive-mechanics.md
+- Gap: Auto-Animate·이미지 최적화·sourceNote 배치 3건 이월 finding
+- Plan: plans/2026-07-31-dq2-expressive-mechanics.md
+- Status: [ ]
+
+<!-- harness:milestone id="DQ3" status="pending" priority="P1" evidence="evidence/deck-quality/dq3-canonical-redesign.md" -->
+### DQ3 — 정본 덱 리디자인 + 관측
+- DoD: 정본 덱이 루브릭 기준 재제작되어 전/후 감사표 개선 + 전 자동 검증·HU4 회귀·발표 전 체크 PASS + 사용자 관측 PASS.
+- Evidence: evidence/deck-quality/dq3-canonical-redesign.md
+- Gap: 파이프라인 업그레이드가 정본 덱 내용물 품질로 미전이 (시안·관측 게이트 2회)
+- Plan: plans/2026-07-31-dq3-canonical-redesign.md
+- Status: [ ]
+
+<!-- harness:goal-archive18 id="html-upgrade" status="completed" -->
+Goal: HTML 발표 트랙 업그레이드. closed 2026-07-31 — HU1~HU4 완주(발표 운영력·모션 문법·이미지 트랙·통합 실증, 사용자 관측 6라운드 PASS). Details: `evidence/html-upgrade/` + `docs/reports/2026-07-31-hu{1,2,3,4}-*.md`.
 
 ## Active Milestones — html-upgrade
 
-<!-- harness:milestone id="HU2" status="completed" priority="P1" evidence="evidence/html-upgrade/hu2-motion-grammar.md" -->
-### HU2 — 모션 문법 + 표현 규율
-- DoD: fragment 단계 공개(라이브 전용, export 는 전체 표시) + 모션·폰트·anti-slop 규율(계약+린트) + bento-grid 레이아웃이 배포되고 fixture 통합 검증 PASS, 미사용 덱 무변화.
-- Evidence: evidence/html-upgrade/hu2-motion-grammar.md
-- Gap: 단계 공개 부재·AI-slop 규율 미명문화(KG 스멜 테스트 8항 미배선) — research §2·§5
-- Plan: plans/2026-07-31-hu2-motion-grammar.md
-- Status: [x]
-
-- Completed at: 2026-07-31
-- Summary: fragment(스피커 step 동기·export 전체표시)+R4~R6 린트(스멜테스트 배선)+bento-grid 15종째
-<!-- harness:milestone id="HU3" status="completed" priority="P1" evidence="evidence/html-upgrade/hu3-image-track.md" -->
-### HU3 — 이미지 표현 트랙
-- DoD: 이미지 소싱 계약(실사진 소스 맵·라이선스 장부·rmbg 누끼·imagegen 위임+치수 가드)이 references/imagery.md 로 배포되고 fixture 에서 3원천 실렌더·standalone 인라인 실동작.
-- Evidence: evidence/html-upgrade/hu3-image-track.md
-- Gap: 이미지 소싱 경로가 계약에 없음(레이아웃 슬롯만 존재) — research §5
-- Plan: plans/2026-07-31-hu3-image-track.md
-- Status: [x]
-
-- Completed at: 2026-07-31
-- Summary: imagery.md 3원천 계약+커버 풀블리드 스크림 — Pexels·rmbg·image_gen 실투입, standalone 인라인 PASS
 <!-- harness:milestone id="HU4" status="completed" priority="P1" evidence="evidence/html-upgrade/hu4-live-proof.md" -->
 ### HU4 — 통합 실증
 - DoD: askewly-design-intro 가 HU1~3 전 기능으로 라이브 리허설 통과 + 발표 게이트 명문화(대비·프로젝터 체크) + 사용자 관측 1회.

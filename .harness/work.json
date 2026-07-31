@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "active_work_id": "hu4-live-proof",
+  "active_work_id": "dq1-quality-rubric",
   "works": {
     "SFB1": {
       "title": "Structure Contract And Clean Production",
@@ -5111,6 +5111,57 @@
       "updated_at": "2026-07-31",
       "notes": "Registered atomically by canonical harness approve_harness_plan.py after plan validation.",
       "completion_summary": "HU4 통합 실증 완료 — 사용자 관측 6라운드로 발표 표면 결함 6건 수리·실증, goal html-upgrade 완주"
+    },
+    "dq1-quality-rubric": {
+      "work_id": "dq1-quality-rubric",
+      "milestone_id": "DQ1",
+      "status": "active",
+      "plan_path": "plans/2026-07-31-dq1-quality-rubric.md",
+      "changeset_path": "changesets/20260731-dq1-quality-rubric",
+      "next_step": "step-1",
+      "current_step": "step-1",
+      "steps": [
+        {
+          "id": "step-1",
+          "label": "step-1 — 시각 품질 리서치 보강"
+        },
+        {
+          "id": "step-2",
+          "label": "step-2 — 품질 루브릭 문서 + few-shot 견본 제작"
+        },
+        {
+          "id": "step-3",
+          "label": "step-3 — 계약 배선 (SKILL.md 라우팅 + 린트 승격 + 배포)"
+        }
+      ],
+      "execution_mode": "continuous",
+      "approval": {
+        "approved_by": "user",
+        "approved_at": "2026-07-31",
+        "plan_sha256": "c730a08e14c73b4a7f709823b9aa8edcaa2aafc18597e70fbd970b5cfadd3b4b",
+        "chain": [
+          "dq2",
+          "dq3"
+        ]
+      },
+      "allowed_stop_reasons": [
+        "completed",
+        "blocked",
+        "decision_required",
+        "risk_gate",
+        "secret_required",
+        "external_authority_required",
+        "user_stopped"
+      ],
+      "stop_reason": null,
+      "stop_detail": {},
+      "session_ids": [
+        "codex:f5757e4f-221b-42df-8d0b-5eb4936f9289",
+        "claude:f5757e4f-221b-42df-8d0b-5eb4936f9289"
+      ],
+      "owner_session_uuid": "claude:f5757e4f-221b-42df-8d0b-5eb4936f9289",
+      "updated_at": "2026-07-31",
+      "notes": "Registered atomically by canonical harness approve_harness_plan.py after plan validation."
     }
   }
 }

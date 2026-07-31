@@ -627,3 +627,14 @@ plan doc: `archive/plans/2026-07-21-eu*.md` · 증거: `evidence/editor-legibili
   - Completed: 2026-07-31
   - Result: S키 스피커 뷰(양방향 동기)·오프라인 standalone(2.70MB 전자원 인라인)·PDF --notes — 배포본 통합 실동작
   - Evidence: evidence/html-upgrade/hu1-presenter-ops.md
+
+### 2026-07
+- HU2 - HU2 — 모션 문법 + 표현 규율
+  - Completed: 2026-07-31
+  - Result: fragment(스피커 step 동기·export 전체표시)+R4~R6 린트(스멜테스트 배선)+bento-grid 15종째
+  - Evidence: evidence/html-upgrade/hu2-motion-grammar.md
+
+- HU3 - HU3 — 이미지 표현 트랙
+  - Completed: 2026-07-31
+  - Result: imagery.md 3원천 계약+커버 풀블리드 스크림 — Pexels·rmbg·image_gen 실투입, standalone 인라인 PASS
+  - Evidence: evidence/html-upgrade/hu3-image-track.md
