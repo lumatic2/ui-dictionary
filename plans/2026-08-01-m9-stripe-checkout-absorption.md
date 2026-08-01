@@ -30,7 +30,7 @@ Status: approved (사용자 승인 2026-08-01 "ㄱㄱ" — 연쇄 M9→M10→M11
 
 ## Step 트리
 
-- [ ] **step-1 — Stripe 배치 수집 + dedup**
+- [x] **step-1 — Stripe 배치 수집 + dedup**
   - Artifact: Stripe Elements(제품+docs)·Checkout 실브라우저 캡처 → `research/2026-08-01-m9-stripe-checkout-capture.md` 동결 → inbox 후보 ~10건(8필드+source t2) → dedup audit.
   - Files: write docs/research/loop/inbox.yml, research/2026-08-01-m9-stripe-checkout-capture.md. read research/product-system-exemplars.md, docs/ui-vocabulary/terms.yml.
   - Risk: 기계적 (데이터 스테이징 — 접근 벽 시 공개 표면 폴백·한계 기록)
