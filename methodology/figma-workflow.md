@@ -34,18 +34,22 @@ Milestone: FW1 (horizon: `docs/horizons/2026-07-figma-workflow.md`)
 - 브라우저 실구동으로 1차 검증(`/browse` — verify-loop.md 절차).
 
 ### ③ Figma 승격 (Code to Canvas)
-- 채널: claude.ai 원격 Figma MCP — `generate_figma_design`(신규 캔버스 생성) 또는 `use_figma`(기존 파일 내 정밀 조작). **호출 전 `skill://figma/figma-use/SKILL.md` 로드 필수.**
+- 채널: 원격 Figma MCP — `generate_figma_design`(신규 캔버스 생성) 또는 `use_figma`(기존 파일 내 정밀 조작). **호출 전 `skill://figma/figma-use/SKILL.md` 로드 필수.**
 - **`whoami`로 계정 먼저 확인** — 원격 MCP OAuth = SKKU 계정. 대상 파일은 SKKU 계정이 닿는 팀(권장: 어스큐리)에 있어야 한다(브리지 계약 §1 계정 경계).
+- MCP 미연결 기기면 재등록: `claude mcp add --transport http --scope user figma https://mcp.figma.com/mcp` → 인증은 세션 내 `/mcp`(CLI `auth` 커맨드 없음 — human gate). 도구는 인증 직후 세션 재시작 없이 노출된다(2026-08-01 실측).
 - 승격 단위는 화면/컴포넌트 1개씩 — 파일 전체 덤프 금지. 레이어·프레임 이름은 코드 컴포넌트명과 대응되게.
+- **승격 직후 push 스냅숏 장부 필수**: `node scripts/figma-push-snapshot.mjs <rootNodeId>` 로 읽기 페이로드 생성 → `use_figma` 실행 → 반환 JSON 을 `evidence/` 장부로 저장. 이 장부가 ⑤ 기계 회수의 기준점이다(장부 없으면 diff 불가 — 파일럿 교훈).
+- ⚠ use_figma 반환은 ~20kb 에서 절단된다 — 대형 서브트리(수십 노드↑)는 top-level children slice 로 청크 분할 회수하거나, 노드별 지문(FNV-1a 32bit)만 받아 로컬 장부와 대조한다. **JS 에서 FNV 곱셈은 `Math.imul` 필수** — `h * prime` 은 2^53 정밀도를 넘어 전량 오검출을 낸다(2026-08-02 실측).
 
 ### ④ 사람 디테일링 (Figma)
 - 다듬는 것: 간격·정렬 미세 조정, 시각 디테일, 카피 톤, 배리에이션 탐색(Figma가 이기는 자유 캔버스 영역 — 브리지 계약 §4).
 - **선택형 결정은 에이전트가 배리에이션을 선제작해 제시한다.** "어떻게 다듬을지 모르겠다"는 진입 장벽이 흔하다(파일럿 실측). radius·간격·색 같은 유한 선택지는 조작을 사용자에게 맡기지 말고, 에이전트가 Figma에 A/B/C 배리에이션 보드를 만들어 두면 사용자는 고르기만 하면 된다. 픽이 나오면 코드·DESIGN.md·Figma를 그 값으로 삼자 정합.
 - **다듬지 않는 것: `askewly/*` variables 값** — 토큰 변경 욕구가 생기면 Figma에서 고치지 말고 SSOT 수정으로 제안(다음 push가 덮어쓰므로 Figma 쪽 수정은 유실된다).
 
-### ⑤ 코드로 회수
-- `get_design_context`(구조화 데이터) → `get_screenshot`(시각 참조) 순서로 다듬은 프레임을 읽는다(리서치 §2.3 권장 순서).
-- diff 관점으로 반영: 사람이 바꾼 것만 코드에 적용, 토큰 이름 문자열 대조로 값 변경/토큰 변경을 구분.
+### ⑤ 코드로 회수 (기계화 — 2026-08-02 M14 정본)
+- **기본 경로 = 스냅숏 대조**: ③ 의 push 장부와 같은 인코딩으로 현재 상태를 재캡처 → `node scripts/figma-return-diff.mjs <push.json> <current.json>` — 노드별 변경/추가/삭제와 **은닉 줄바꿈(charCode 10/13/8232/8233)** 을 기계 검출한다(`--self-test` 로 검출기 자기검사). 구조 변경이 없으면 이 방식이 `get_design_context` 전체 생성보다 정밀하고 저렴하다.
+- `get_design_context`(구조화 데이터) → `get_screenshot`(시각 참조)은 구조가 크게 바뀐 프레임의 보조 경로.
+- diff 관점으로 반영: 사람이 바꾼 것만 코드에 적용, 토큰 이름 문자열 대조로 값 변경/토큰 변경을 구분. diff 0 이면 "무변경 왕복"으로 기록하고 코드 무변경(오검출 0 자체가 검출기 검증 — M14 실측 102노드 0/0/0).
 - 토큰 자체를 바꾸는 결정이면 SSOT 수정 → `scripts/generate-figma-variables-sync.mjs` 재동기화로 Figma에 반영(역수입 금지 — 브리지 계약 §3).
 - 회수 후 브라우저 재검증으로 왕복을 닫는다.
 
@@ -55,7 +59,7 @@ Milestone: FW1 (horizon: `docs/horizons/2026-07-figma-workflow.md`)
 |---|---|---|
 | ③ 승격 | `generate_figma_design` / `use_figma` | figma-use 스킬 로드 필수, `whoami` 선행 |
 | ④ 디테일링 | 사람 + Figma UI | 필요시 chrome-ext(로그인 Chrome) 보조 |
-| ⑤ 회수 | `get_design_context` → `get_screenshot` | `get_variable_defs`로 토큰 대조 |
+| ⑤ 회수 | `figma-push-snapshot.mjs` 장부 + `figma-return-diff.mjs` (기본) / `get_design_context` → `get_screenshot` (보조) | `get_variable_defs`로 토큰 대조 |
 | 토큰 동기화 | `scripts/generate-figma-variables-sync.mjs` → `use_figma` | idempotent(브리지 계약 §2.4) |
 
 ## 4. 안티패턴
@@ -74,5 +78,6 @@ Milestone: FW1 (horizon: `docs/horizons/2026-07-figma-workflow.md`)
 
 ## Changelog
 
+- 2026-08-02: 왕복 2회차(ShowcaseAtlas, M14) 반영 — ⑤ 회수를 스냅숏 장부+기계 diff 로 기계화(정본 승격); ③ 에 push 장부 필수·MCP 재등록 절차·20kb 절단/청크·FNV Math.imul 함정; ④ 배리에이션 보드 선제작 패턴 재확증(radius·데모배경 각 3안 → 사용자는 픽만). `get_metadata`(nodeId 생략) 페이지 목록이 불완전할 수 있음 — 페이지 전수는 use_figma 읽기가 정본. 상세: `evidence/figma-return-path/m14-roundtrip-2.md`.
 - 2026-07-07: 파일럿 1회(랜딩 hero) 반영 — ⑤ 회수는 구조 변경 없으면 속성 스냅숏 대조가 `get_design_context`보다 정밀(승격 시 노드 ID+값 보존 필수); ④ 핸드오프에 조작 안내(배리에이션=프레임 복제) 포함할 것; variables 있는 파일에 페이지 추가 승격이 별도 파일보다 간단. 상세: `docs/research/figma-roundtrip-pilot-2026-07.md`.
 - 2026-07-07: 초판 (FW1). 리서치 2건 + 브리지 계약 기반, 하이브리드 왕복 채택.
