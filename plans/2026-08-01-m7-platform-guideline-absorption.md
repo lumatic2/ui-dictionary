@@ -39,7 +39,7 @@ Status: approved (사용자 승인 2026-08-01 "ㄱㄱ" — 연쇄 M7→M8 일괄
   - Failure probe: absorption-criteria.md 가 llms `FIXED_ASSETS` 등재 문서인지 확인 — 맞으면 재생성 없이 check-llms-sync 가 FAIL 해야 정상(게이트 실증 겸), 재생성 후 PASS 확인.
   - Commit: changeset `m7-platform-guideline-absorption` (README 절: step-1).
 
-- [ ] **step-2 — 모바일 내비게이션·시트 배치 수집 + dedup**
+- [x] **step-2 — 모바일 내비게이션·시트 배치 수집 + dedup**
   - Artifact: HIG(navigation-and-search·sheets·tab-bars)·Material 3(navigation-bar·navigation-drawer·bottom-sheets·dialogs) 공식 문서 실브라우저 재확인(출처 URL+접근일) → `docs/research/loop/inbox.yml` 에 후보 10~20건 스테이징(8필드 + source) → dedup audit 로 기존 terms.yml·recipes 대비 중복 판정. 근거 원본은 `research/2026-08-01-m7-mobile-nav-sheets-capture.md` 에 동결.
   - Files: write docs/research/loop/inbox.yml, research/2026-08-01-m7-mobile-nav-sheets-capture.md. read research/mobile-platform-design-baseline.md, docs/ui-vocabulary/terms.yml(중복 후보 대조).
   - Risk: 기계적 (데이터 스테이징 — 외부 문서 접근 실패 시 baseline 리서치 + 공식 요약 폴백, 접근일 명시)

@@ -11,3 +11,11 @@
 - llms 재생성 산출물 3건 커밋: absorption-criteria(이번 변경) + `knowledge/slide-principles.md`·`methodology/slide-production.md`(**기존 드리프트 발견** — 이전 세션 슬라이드 워크트리 병합 때 소스만 커밋되고 재생성 누락된 것으로 추정. 게이트 FAIL 실측으로 적발, 이번 재생성에 접어 해소).
 
 검증: check-llms-sync FAIL(재생성 전) → 재생성 → 커밋 후 PASS(exit 0, 아래 step 기록 시 확인) · ledger `grep -c '^| 20260712'` = 9(무손실).
+
+## step-2 — 모바일 내비게이션·시트 배치 수집 + dedup (2026-08-01)
+
+- WebFetch 로 HIG·M3 시도 → 양쪽 다 JS 셸(EMPTY-JS-SHELL) 확인 → 실브라우저(Claude in Chrome)로 전환, 7개 문서 전문 확보(HIG tab-bars·sheets·modality + M3 navigation-bar·bottom-sheets·dialogs·navigation-drawer, 접근일 2026-08-01).
+- 근거 동결: `research/2026-08-01-m7-mobile-nav-sheets-capture.md` — 소스 표(URL+접근일+문서측 갱신일) + 관찰 + 플랫폼 대조 요점 + 비이식 목록.
+- **신규 규범 사실**: M3 Expressive 가 navigation drawer 를 비권장으로 내리고 expanded navigation rail 대체 권고 — 2026-07-04 baseline 리서치엔 없던 변화. HIG tab-bars 는 2026-06-08 Liquid Glass 반영판.
+- `docs/research/loop/inbox.yml` 에 batch `20260801-mobile-nav-sheets` 후보 14건 스테이징(전부 `source: tier 1` 필드 포함). 예상대로 신규 term 후보는 사실상 없음 — proposed_artifact 는 alias 7·related 4·term 2(지식 규칙 입력)·계열로, 주 경로 = 기존 항목 보강 + knowledge 결정표.
+- dedup: `node scripts/audit-recipe-candidates.mjs` exit 0, 14 candidates, 19 warnings(전건 dedup_hints 이웃 매치 — 비치명). `audit-ui-vocabulary-candidates.mjs` exit 0.
