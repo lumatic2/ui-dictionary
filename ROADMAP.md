@@ -7,8 +7,8 @@
 
 ## Current Goal
 
-<!-- harness:goal id="reference-diversification-2" status="active" -->
-Goal: 레퍼런스 다변화 2라운드 — M8 finding 큐 3건(Stripe·Radix·Around)을 RL 루프로 마저 흡수. 연쇄: M9 → M10 → M11 (승인 2026-08-01).
+<!-- harness:goal id="reference-diversification-2" status="completed" -->
+Goal: 레퍼런스 다변화 2라운드. closed 2026-08-01 — M9(Stripe → knowledge/checkout-flow + terms 보강 4) · M10(Radix → knowledge/focus-keyboard + terms 보강 3) · M11(Around → 판정 C 보류·재판정 조건 기록) 연쇄 완주. ledger 소스 축 = tailwind·t1(hig+material)·t2(linear+geist·stripe·radix·around) 6행. Details: `evidence/reference-diversification-2/` + `docs/reports/2026-08-01-m{9,10,11}-*.md`.
 
 ## Active Milestones — reference-diversification-2
 
@@ -22,17 +22,19 @@ Goal: 레퍼런스 다변화 2라운드 — M8 finding 큐 3건(Stripe·Radix·A
 
 - Completed at: 2026-08-01
 - Summary: knowledge/focus-keyboard 신설·terms 보강 3·radix t2 ledger
-<!-- harness:milestone id="M11" status="active" priority="P2" evidence="evidence/reference-diversification-2/m11-around-catalog-absorption.md" -->
+<!-- harness:milestone id="M11" status="completed" priority="P2" evidence="evidence/reference-diversification-2/m11-around-catalog-absorption.md" -->
 ### M11 — Around 흡수 판정 (템플릿 카탈로그 구조)
 - DoD: 근거 있는 A/B/C 판정 마감 — absorption-criteria 실측 표 행 + ledger 1행(around t2) + evidence. 보류(C)도 정당한 완료(수요 미확인 등재 건). goal 마감 시 일괄 push(사용자 승인 후).
 - Evidence: evidence/reference-diversification-2/m11-around-catalog-absorption.md
 - Gap: 기존 캡처(2026-07-04)가 판정 없이 방치 — 흡수/보류 어느 쪽도 기록 안 됨.
 - Plan: plans/2026-08-01-m11-around-catalog-absorption.md
-- Status: [ ]
+- Status: [x]
 
 <!-- harness:goal-archive21 id="reference-diversification" status="completed" -->
 Goal: 레퍼런스 다변화 — Tailwind 편중 해소 1라운드. closed 2026-08-01 — M7(HIG·Material → knowledge/mobile-navigation + terms 보강 7 + ledger source 축) · M8(Linear·Geist → knowledge/dashboard-density + terms 보강 3 + t2 행) 연쇄 완주. 후속 배치 후보(Stripe·Radix·Around)는 archive/plans/2026-08-01-m8-*.md finding 큐. Details: `evidence/reference-diversification/` + `docs/reports/2026-08-01-m{7,8}-*.md`.
 
+- Completed at: 2026-08-01
+- Summary: 판정 C(보류) — absorption-criteria 행·around t2 ledger·재판정 조건. goal 마감(push 승인 대기)
 ## Active Milestones — reference-diversification
 
 ## Active Milestones — finding-cleanup
