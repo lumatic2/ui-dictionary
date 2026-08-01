@@ -160,7 +160,7 @@ function DocsInteractiveElementPreview({ variant }: { variant: DocsArticlePageDa
   }
 
   if (variant === "docs-copy-button") {
-    const command = "npm install ui-dictionary\nnpx ui-dictionary add command-palette"
+    const command = "npm install -D @askewly/design\nnpx askewly-design add topbar-command-search"
 
     return (
       <div className="mx-auto flex aspect-[16/10] max-w-2xl items-center justify-center rounded-lg bg-muted">

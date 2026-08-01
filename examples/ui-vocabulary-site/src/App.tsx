@@ -2004,7 +2004,7 @@ export function LegacyDocsElementPreview({ variant }: { variant: DocsArticlePage
             <span>install.sh</span>
             <button className={cn("inline-flex items-center gap-2 rounded-md px-3 py-1.5 text-slate-100 transition active:scale-[0.98]", copied ? "bg-emerald-500/20 text-emerald-100" : "bg-white/10 hover:bg-white/15")} type="button" onClick={() => setCopied(true)}><Copy aria-hidden="true" className="size-3.5" /> {copied ? "Copied" : "Copy"}</button>{/* hardcoded-color-ok */}
           </div>
-          <pre className="overflow-x-auto p-5 text-sm leading-7"><code>npm install ui-dictionary{"\n"}npx ui-dictionary add command-palette</code></pre>
+          <pre className="overflow-x-auto p-5 text-sm leading-7"><code>npm install -D @askewly/design{"\n"}npx askewly-design add topbar-command-search</code></pre>
         </div>
       </div>
     )

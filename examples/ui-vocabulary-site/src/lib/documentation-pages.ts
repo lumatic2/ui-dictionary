@@ -217,7 +217,7 @@ export const docsArticlePages = new Map<TermFilter, DocsArticlePageData>([
           "사람은 Recipe Gallery에서 코드를 그대로 복사하거나, CLI로 프로젝트에 바로 주입합니다. 둘 다 결과물은 같은 레시피 코드이며, CLI는 그 복사 과정을 자동화한 것일 뿐입니다.",
           "에이전트는 레시피 코드 자체가 아니라 레시피, 토큰, 관련 용어 정의를 프롬프트나 세션 컨텍스트로 함께 전달받아야 합니다. 목적, 상태, 레이아웃, 금지 조건, 검증 방법 없이 용어 이름만 넘기면 결과가 화면마다 달라집니다.",
         ],
-        code: "# human\nnpm install ui-dictionary\nnpx ui-dictionary add command-palette\n\n# agent (prompt/session context)\nBuild a settings page with:\n- recipe: sidebar-navigation, form-layout\n- tokens: surface.muted, focus.ring, text.destructive\n- terms: Dialog(focus trap/close path), Toast(feedback)\n\nVerify:\n- no mobile overflow\n- keyboard focus is visible\n- empty/error states are represented",
+        code: "# human\nnpm install -D @askewly/design\nnpx askewly-design add topbar-command-search\n\n# agent (prompt/session context)\nBuild a settings page with:\n- recipe: sidebar-application-shell, mobile-signup-field-stack\n- tokens: surface.muted, focus.ring, text.destructive\n- terms: Dialog(focus trap/close path), Toast(feedback)\n\nVerify:\n- no mobile overflow\n- keyboard focus is visible\n- empty/error states are represented",
       },
       {
         title: "4. Verify — 출시 전에 체크리스트를 통과시킵니다",
