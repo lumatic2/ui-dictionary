@@ -22,7 +22,7 @@ Goal: 사용법 문서화 + 흡수 지식 사이트 반영 — 사람이 실패 
 
 - Completed at: 2026-08-01
 - Summary: 설치 경로 정합(3파일+생성물)·Quickstart·E2E 검증
-<!-- harness:milestone id="M13" status="pending" priority="P1" evidence="evidence/usage-and-site-surfacing/m13-knowledge-site-surfacing.md" -->
+<!-- harness:milestone id="M13" status="active" priority="P1" evidence="evidence/usage-and-site-surfacing/m13-knowledge-site-surfacing.md" -->
 ### M13 — 흡수 지식 사이트 반영 (레시피 소배치 + knowledge 노출)
 - DoD: 신규 실동작 레시피 ≥1(mobile-navigation, 전 체인+build:catalog PASS) + knowledge 4본이 사이트 docs 에서 탐색 가능(실브라우저 확인).
 - Evidence: evidence/usage-and-site-surfacing/m13-knowledge-site-surfacing.md

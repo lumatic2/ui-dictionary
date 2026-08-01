@@ -30,7 +30,7 @@ Status: approved (사용자 승인 2026-08-01 "ㄱㄱ" — 연쇄 M12→M13 일�
 
 ## Step 트리
 
-- [ ] **step-1 — mobile-navigation 레시피 승격 소배치**
+- [x] **step-1 — mobile-navigation 레시피 승격 소배치**
   - Artifact: `recipes/navigation/adaptive-navigation-container.md`(+조건부 2건째) + code_asset tsx(실동작 데모 — knowledge/mobile-navigation.md 결정표 준수, 토큰 semantic-only) + 갤러리 3파일 등록(recipe-gallery-data·recipe-gallery-demos·demo-registry) + ledger 신규 batch 행(`20260801-mobile-nav-recipes`, promoted 에 recipe id·code_asset 경로) + build:data·build:catalog 재생성.
   - Files: write recipes/navigation/adaptive-navigation-container.md, examples/ui-vocabulary-site/src/components/(신규 데모 tsx), examples/ui-vocabulary-site/src/lib/recipe-gallery-data.ts, examples/ui-vocabulary-site/src/components/recipe-gallery-demos.tsx, examples/ui-vocabulary-site/src/lib/recipe-gallery-demo-registry.ts, docs/research/loop/ledger.md, packages/cli/data/(재생성), packages/component-registry/(재생성). read knowledge/mobile-navigation.md, docs/design-system/recipe-format.md, recipes/navigation/, recipes/overlays/bottom-sheet-detents.md.
   - Risk: 위험 (정본 recipes + 생성물 재생성 — 검증 체인으로 차단)

@@ -40,6 +40,7 @@ import { MobileSignupFieldStackDemo } from "@/components/mobile-signup-field-sta
 import { ResponsiveContentGridDemo } from "@/components/responsive-content-grid"
 import { SidebarApplicationShellDemo } from "@/components/sidebar-application-shell"
 import { BottomTabBarDemo } from "@/components/bottom-tab-bar"
+import { AdaptiveNavigationContainerDemo } from "@/components/adaptive-navigation-container"
 import { LargeTitleCollapsingHeaderDemo } from "@/components/large-title-collapsing-header"
 import { ActionSheetDestructiveConfirmationDemo } from "@/components/action-sheet-destructive-confirmation"
 import { BottomSheetDetentsDemo } from "@/components/bottom-sheet-detents"
@@ -96,6 +97,7 @@ export const recipeDemoComponents: Record<string, ComponentType> = {
   "responsive-content-grid": ResponsiveContentGridDemo,
   "sidebar-application-shell": SidebarApplicationShellDemo,
   "landing-hero": LandingHeroDemo,
+  "adaptive-navigation-container": AdaptiveNavigationContainerDemo,
   "bottom-tab-bar": BottomTabBarDemo,
   "doc-search-cmdk-grouped-results-panel": DocSearchCmdkGroupedResultsPanelDemo,
   "large-title-collapsing-header": LargeTitleCollapsingHeaderDemo,

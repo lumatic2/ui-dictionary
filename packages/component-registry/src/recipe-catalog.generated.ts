@@ -461,6 +461,18 @@ export const recipeCatalog: RegistryEntry[] = [
     keywords: [],
   },
   {
+    id: "recipe/adaptive-navigation-container",
+    slug: "adaptive-navigation-container",
+    name: "Adaptive Navigation Container",
+    collection: 'recipe',
+    category: "Navigation",
+    description: "One destination set, three possible primary-navigation containers — resolved by rule, not taste.",
+    defaultSize: { width: 390, height: 80 },
+    defaultProps: {},
+    variants: {},
+    keywords: ["tab-bar","navigation-rail","tabs"],
+  },
+  {
     id: "recipe/bottom-tab-bar",
     slug: "bottom-tab-bar",
     name: "Bottom Tab Bar",
