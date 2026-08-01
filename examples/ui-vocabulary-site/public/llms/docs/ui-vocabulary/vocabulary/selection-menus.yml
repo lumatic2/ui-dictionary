@@ -61,7 +61,8 @@
       - Menu
       - Popup menu
   one_liner: 버튼을 누르면 아래로 펼쳐지는 명령 또는 선택 목록.
-  description: 숨겨진 동작이나 옵션을 한 곳에 모아 표시한다.
+  description: 숨겨진 동작이나 옵션을 한 곳에 모아 표시한다. 열리면 첫 항목에 포커스가 가고 방향키로 순회하며 타이핑으로 항목을
+    점프(typeahead)하고 Esc 는 닫으면서 포커스를 트리거로 되돌린다 — 이 키보드 계약이 메뉴의 정의에 포함된다.
   visual_anatomy:
     - trigger button
     - chevron or more icon

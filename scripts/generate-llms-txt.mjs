@@ -113,6 +113,14 @@ const FIXED_ASSETS = [
           "upsell restraint (one inline add-on, no forked pages)",
       ],
       [
+        "knowledge/focus-keyboard.md",
+        "Focus & keyboard discipline for custom widgets and overlays (Radix/WAI-ARIA APG): APG is " +
+          "canon — never invent keyboard behavior; modal contract (trap + focus return to trigger " +
+          "+ first-logical-item initial focus + title/description announcement); composite widgets " +
+          "are one Tab stop with roving tabindex, arrows, Home/End, and typeahead; explicit dismiss " +
+          "layer contract (Esc closes top layer only); no unnamed controls",
+      ],
+      [
         "knowledge/dashboard-density.md",
         "Dashboard density & low-noise hierarchy rules (Linear 2026 refresh x Geist): density is " +
           "not noise — keep information, cut borders/icon excess/brightness competition; attention " +

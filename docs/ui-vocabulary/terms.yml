@@ -212,7 +212,7 @@
   ko: { name: 탭, aliases: [탭 메뉴, tab] }
   en: { name: Tabs, aliases: [Tab list] }
   one_liner: 같은 영역 안에서 관련 화면이나 패널을 전환하는 요소.
-  description: 탭 목록과 선택된 탭 패널로 구성되며 현재 위치를 강조한다.
+  description: 탭 목록과 선택된 탭 패널로 구성되며 현재 위치를 강조한다. 키보드 계약은 roving tabindex — Tab 키는 활성 탭에 들어왔다 패널로 빠져나가고 목록 내 이동은 방향키(+Home/End)가 맡으며 이동 즉시 해당 패널이 활성화된다.
   visual_anatomy: [tab list, active tab, inactive tabs, tab panel]
   when_to_use: [같은 맥락의 콘텐츠를 몇 개 섹션으로 나눌 때, 화면 이동 없이 내용을 전환할 때]
   anti_use: [서로 관련 없는 페이지 이동에는 navigation을 쓴다, 탭이 너무 많으면 overflow나 다른 구조를 검토한다]
@@ -251,7 +251,7 @@
   ko: { name: 드롭다운 메뉴, aliases: [더보기 메뉴, 펼침 메뉴, dropdown] }
   en: { name: Dropdown menu, aliases: [Menu, Popup menu] }
   one_liner: 버튼을 누르면 아래로 펼쳐지는 명령 또는 선택 목록.
-  description: 숨겨진 동작이나 옵션을 한 곳에 모아 표시한다.
+  description: 숨겨진 동작이나 옵션을 한 곳에 모아 표시한다. 열리면 첫 항목에 포커스가 가고 방향키로 순회하며 타이핑으로 항목을 점프(typeahead)하고 Esc 는 닫으면서 포커스를 트리거로 되돌린다 — 이 키보드 계약이 메뉴의 정의에 포함된다.
   visual_anatomy: [trigger button, chevron or more icon, floating menu, menu items]
   when_to_use: [자주 쓰지 않는 명령을 숨길 때, 공간을 아끼며 옵션을 제공할 때]
   anti_use: [중요한 주요 행동은 숨기지 않는다, 값 선택이 목적이면 select나 combobox를 검토한다]
@@ -10797,7 +10797,7 @@
   ko: { name: 포커스 트랩, aliases: [focus trap, 포커스 가두기, modal focus loop] }
   en: { name: Focus trap, aliases: [Modal focus trap, Focus loop] }
   one_liner: 모달이나 dialog가 열렸을 때 키보드 포커스가 그 안에서만 순환하도록 하는 접근성 패턴.
-  description: 배경 화면으로 포커스가 빠져 사용자가 현재 작업 맥락을 잃지 않도록 막고, 닫힌 뒤 원래 위치로 돌려야 한다.
+  description: 배경 화면으로 포커스가 빠져 사용자가 현재 작업 맥락을 잃지 않도록 막고, 닫힌 뒤 원래 위치로 돌려야 한다. 반환 대상은 연 트리거 요소이고 Esc 해제 경로에서도 동일하게 동작해야 한다 — 반환 없는 트랩은 키보드 사용자를 표류시키는 미완성 구현이다.
   visual_anatomy: [modal surface, focusable controls, loop arrow, blocked background]
   when_to_use: [modal dialog처럼 배경 조작을 막는 레이어를 열 때]
   anti_use: [non-modal popover처럼 배경 조작이 가능한 UI에는 포커스를 강제로 가두지 않는다]

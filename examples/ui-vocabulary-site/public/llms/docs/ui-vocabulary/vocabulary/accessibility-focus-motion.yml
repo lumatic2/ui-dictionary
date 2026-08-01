@@ -94,7 +94,9 @@
       - Modal focus trap
       - Focus loop
   one_liner: 모달이나 dialog가 열렸을 때 키보드 포커스가 그 안에서만 순환하도록 하는 접근성 패턴.
-  description: 배경 화면으로 포커스가 빠져 사용자가 현재 작업 맥락을 잃지 않도록 막고, 닫힌 뒤 원래 위치로 돌려야 한다.
+  description: 배경 화면으로 포커스가 빠져 사용자가 현재 작업 맥락을 잃지 않도록 막고, 닫힌 뒤 원래 위치로 돌려야 한다. 반환
+    대상은 연 트리거 요소이고 Esc 해제 경로에서도 동일하게 동작해야 한다 — 반환 없는 트랩은 키보드 사용자를 표류시키는 미완성
+    구현이다.
   visual_anatomy:
     - modal surface
     - focusable controls

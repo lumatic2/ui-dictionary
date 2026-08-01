@@ -805,7 +805,7 @@ export const terms = [
       ]
     },
     "one_liner": "같은 영역 안에서 관련 화면이나 패널을 전환하는 요소.",
-    "description": "탭 목록과 선택된 탭 패널로 구성되며 현재 위치를 강조한다.",
+    "description": "탭 목록과 선택된 탭 패널로 구성되며 현재 위치를 강조한다. 키보드 계약은 roving tabindex — Tab 키는 활성 탭에 들어왔다 패널로 빠져나가고 목록 내 이동은 방향키(+Home/End)가 맡으며 이동 즉시 해당 패널이 활성화된다.",
     "visual_anatomy": [
       "tab list",
       "active tab",
@@ -945,7 +945,7 @@ export const terms = [
       ]
     },
     "one_liner": "버튼을 누르면 아래로 펼쳐지는 명령 또는 선택 목록.",
-    "description": "숨겨진 동작이나 옵션을 한 곳에 모아 표시한다.",
+    "description": "숨겨진 동작이나 옵션을 한 곳에 모아 표시한다. 열리면 첫 항목에 포커스가 가고 방향키로 순회하며 타이핑으로 항목을 점프(typeahead)하고 Esc 는 닫으면서 포커스를 트리거로 되돌린다 — 이 키보드 계약이 메뉴의 정의에 포함된다.",
     "visual_anatomy": [
       "trigger button",
       "chevron or more icon",
@@ -29517,7 +29517,7 @@ export const terms = [
       ]
     },
     "one_liner": "모달이나 dialog가 열렸을 때 키보드 포커스가 그 안에서만 순환하도록 하는 접근성 패턴.",
-    "description": "배경 화면으로 포커스가 빠져 사용자가 현재 작업 맥락을 잃지 않도록 막고, 닫힌 뒤 원래 위치로 돌려야 한다.",
+    "description": "배경 화면으로 포커스가 빠져 사용자가 현재 작업 맥락을 잃지 않도록 막고, 닫힌 뒤 원래 위치로 돌려야 한다. 반환 대상은 연 트리거 요소이고 Esc 해제 경로에서도 동일하게 동작해야 한다 — 반환 없는 트랩은 키보드 사용자를 표류시키는 미완성 구현이다.",
     "visual_anatomy": [
       "modal surface",
       "focusable controls",

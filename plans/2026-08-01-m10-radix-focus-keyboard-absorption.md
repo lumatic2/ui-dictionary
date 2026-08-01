@@ -38,7 +38,7 @@ Status: approved (사용자 승인 2026-08-01 "ㄱㄱ" — 연쇄 M9→M10→M11
   - Failure probe: focus-trap·keyboard-navigation 류 기존 terms 존재 확률 높음 — 보강 전환 판정 기록.
   - Commit: changeset `m10-radix-focus-keyboard-absorption` (README 절: step-1).
 
-- [ ] **step-2 — 승격 + 검증 체인 + ledger (M10 마감)**
+- [x] **step-2 — 승격 + 검증 체인 + ledger (M10 마감)**
   - Artifact: `knowledge/focus-keyboard.md` 신설(포커스 이동·트랩·반환·roving tabindex·Esc/외부클릭 dismiss 계층·타이핑 어헤드 등 판정 결정표) + **llms 배선(필수)**: FIXED_ASSETS 등재 + 재생성 커밋 + terms 보강분 + inbox 비움 + ledger 1행(source=radix (t2)) + `evidence/reference-diversification-2/m10-radix-focus-keyboard-absorption.md`.
   - Files: write knowledge/focus-keyboard.md, scripts/generate-llms-txt.mjs(FIXED_ASSETS), examples/ui-vocabulary-site/public/llms.txt·public/llms/(재생성), docs/ui-vocabulary/terms.yml, docs/research/loop/ledger.md, docs/research/loop/inbox.yml(비움), evidence/reference-diversification-2/m10-radix-focus-keyboard-absorption.md.
   - Risk: 위험 (terms.yml 정본 데이터 — 검증 체인으로 차단)

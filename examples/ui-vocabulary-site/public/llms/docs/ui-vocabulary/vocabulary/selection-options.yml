@@ -687,7 +687,8 @@
     aliases:
       - Tab list
   one_liner: 같은 영역 안에서 관련 화면이나 패널을 전환하는 요소.
-  description: 탭 목록과 선택된 탭 패널로 구성되며 현재 위치를 강조한다.
+  description: 탭 목록과 선택된 탭 패널로 구성되며 현재 위치를 강조한다. 키보드 계약은 roving tabindex — Tab 키는
+    활성 탭에 들어왔다 패널로 빠져나가고 목록 내 이동은 방향키(+Home/End)가 맡으며 이동 즉시 해당 패널이 활성화된다.
   visual_anatomy:
     - tab list
     - active tab
