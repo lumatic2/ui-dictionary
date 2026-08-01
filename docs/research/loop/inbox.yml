@@ -1,14 +1,83 @@
-batch: ""            # <YYYYMMDD>-<surface>
-surface: ""          # pattern-taxonomy.md §2의 표면 id 중 하나
-candidates: []
-# candidate 스키마:
-# - id: kebab-slug
-#   name: Title Case Name
-#   pattern_group: pattern-taxonomy.md의 10 group 중 하나
-#   proposed_artifact: recipe | term | alias | related
-#   source: { tier: 0|1|2|3, url: "https://...", accessed: "YYYY-MM-DD" }
-#   summary: "1-2문장 — 무엇이고 언제 쓰나"
-#   anatomy: ["관찰된 구조 요소"]
-#   transferable: "흡수할 것"
-#   non_transferable: "복사하지 않을 것 (브랜드 아이덴티티 등)"
-#   dedup_hints: ["근접한 기존 recipe/term id"]
+batch: "20260801-focus-keyboard"
+surface: "components-primitives"
+candidates:
+  - id: focus-trap-with-return
+    name: Focus Trap With Return
+    pattern_group: overlays
+    proposed_artifact: alias
+    source: { tier: 2, url: "https://www.radix-ui.com/primitives/docs/components/dialog", accessed: "2026-08-01" }
+    summary: "Modal surfaces trap focus inside and, on Esc or close, return focus to the trigger element - a trap without return strands keyboard users."
+    anatomy: ["trapped tab cycle", "Esc close", "focus return to trigger"]
+    transferable: "Trap-plus-return contract for modal overlays"
+    non_transferable: "Radix API names"
+    dedup_hints: ["focus-trap", "dialog"]
+  - id: roving-tabindex-composite
+    name: Roving Tabindex for Composite Widgets
+    pattern_group: navigation
+    proposed_artifact: term
+    source: { tier: 2, url: "https://www.radix-ui.com/primitives/docs/components/tabs", accessed: "2026-08-01" }
+    summary: "Composite widgets (tabs, menus, toolbars) are one Tab stop: Tab enters the active item and exits to content, while Arrow keys move within plus Home/End - never a Tab press per item."
+    anatomy: ["single tab stop", "arrow traversal by orientation", "Home End jumps", "active item holds tabindex"]
+    transferable: "Tab-enters-arrows-traverse rule"
+    non_transferable: "none"
+    dedup_hints: ["tab-bar", "tabs", "keyboard-shortcut-key"]
+  - id: focus-first-logical-item
+    name: Focus First Logical Item on Open
+    pattern_group: overlays
+    proposed_artifact: alias
+    source: { tier: 2, url: "https://www.radix-ui.com/primitives/docs/overview/accessibility", accessed: "2026-08-01" }
+    summary: "When an overlay opens, focus moves to the first logical element - menus focus the first item, alert dialogs focus the safe (Cancel) button anticipating a response."
+    anatomy: ["programmatic focus on open", "safe-default target for destructive prompts"]
+    transferable: "Initial-focus placement rule per overlay type"
+    non_transferable: "none"
+    dedup_hints: ["dialog", "confirmation-dialog"]
+  - id: typeahead-item-lists
+    name: Typeahead in Item Lists
+    pattern_group: navigation
+    proposed_artifact: alias
+    source: { tier: 2, url: "https://www.radix-ui.com/primitives/docs/components/dropdown-menu", accessed: "2026-08-01" }
+    summary: "Menus and selects support typeahead - typing characters jumps focus to matching items, expected behavior per WAI-ARIA for item lists."
+    anatomy: ["type-to-jump", "match highlight"]
+    transferable: "Typeahead expectation for keyboard item navigation"
+    non_transferable: "none"
+    dedup_hints: ["dropdown-menu", "select"]
+  - id: aria-behavior-not-just-semantics
+    name: ARIA Is Behavior Not Just Semantics
+    pattern_group: forms
+    proposed_artifact: term
+    source: { tier: 2, url: "https://www.radix-ui.com/primitives/docs/overview/accessibility", accessed: "2026-08-01" }
+    summary: "Replacing a native element with a div requires reimplementing both semantics (role, aria) and behaviors (keyboard, focus) per WAI-ARIA authoring practices - the pattern's answer exists, do not invent one."
+    anatomy: ["role and aria attributes", "keyboard behavior contract", "APG as canonical answer"]
+    transferable: "APG-as-canon rule for custom widgets"
+    non_transferable: "none"
+    dedup_hints: ["accessibility"]
+  - id: accessible-name-required
+    name: Accessible Name Required on Custom Controls
+    pattern_group: forms
+    proposed_artifact: alias
+    source: { tier: 2, url: "https://www.radix-ui.com/primitives/docs/overview/accessibility", accessed: "2026-08-01" }
+    summary: "Every custom control needs an accessible name and description - primitives can abstract wiring but the label content is always the product's responsibility."
+    anatomy: ["visible label or aria-label", "description wiring"]
+    transferable: "No-unnamed-controls rule"
+    non_transferable: "none"
+    dedup_hints: ["label", "screen-reader-text"]
+  - id: focus-move-announces-context
+    name: Focus Move Announces Context
+    pattern_group: feedback
+    proposed_artifact: related
+    source: { tier: 2, url: "https://www.radix-ui.com/primitives/docs/overview/accessibility", accessed: "2026-08-01" }
+    summary: "Moving focus after a state change is how screen reader users learn the new context - focus placement is an announcement channel, paired with proper labels."
+    anatomy: ["post-interaction focus target", "announced label"]
+    transferable: "Focus-as-announcement principle"
+    non_transferable: "none"
+    dedup_hints: ["live-region", "focus-ring"]
+  - id: dismiss-layer-contract
+    name: Dismiss Layer Contract
+    pattern_group: overlays
+    proposed_artifact: alias
+    source: { tier: 2, url: "https://www.radix-ui.com/primitives/docs/components/dropdown-menu", accessed: "2026-08-01" }
+    summary: "Overlay dismissal is a defined contract - Esc, outside click, and trigger re-activation each close the layer predictably, and layering behavior between stacked overlays is explicit."
+    anatomy: ["Esc dismiss", "outside click dismiss", "layer stack order"]
+    transferable: "Dismiss-path contract for overlay layers"
+    non_transferable: "Radix layering API"
+    dedup_hints: ["popover", "dropdown-menu", "dialog"]

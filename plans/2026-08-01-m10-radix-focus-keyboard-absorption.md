@@ -29,7 +29,7 @@ Status: approved (사용자 승인 2026-08-01 "ㄱㄱ" — 연쇄 M9→M10→M11
 
 ## Step 트리
 
-- [ ] **step-1 — Radix 배치 수집 + dedup**
+- [x] **step-1 — Radix 배치 수집 + dedup**
   - Artifact: Radix Primitives overview + Dialog·DropdownMenu·Tabs 문서 실브라우저 캡처 → `research/2026-08-01-m10-radix-focus-keyboard-capture.md` 동결 → inbox ~10건(source t2) → dedup audit.
   - Files: write docs/research/loop/inbox.yml, research/2026-08-01-m10-radix-focus-keyboard-capture.md. read research/product-system-exemplars.md, docs/ui-vocabulary/terms.yml.
   - Risk: 기계적 (데이터 스테이징)
