@@ -27,3 +27,9 @@ Plan: `plans/2026-08-01-m14-figma-return-path-relaunch.md`
 - parity 한계(사람 단계 보정 대상 아님, 기록): 라이브 데모 12종은 placeholder 프레임("live demo (id)"), lucide 아이콘은 스트로크 rect 대체, hover 상태 미이관.
 - push 스냅숏 장부: `evidence/figma-return-path/m14-push-snapshot.json` (102노드 — use_figma 결과 20kb 절단 때문에 3청크 회수 후 병합, finding).
 - 배리에이션 보드(40:2): Row A 카드 radius 4/6/8 · Row B 데모 배경 base/muted/raised — 사용자는 픽만 하면 됨.
+
+## step-4 — 왕복 2회차 마감 (무변경 왕복)
+
+- 사용자 판정 "딱히 손댈 부분이 없어"(2026-08-02) → plan failure probe 예정 경로(무변경 왕복 PASS + partial).
+- 기계 회수: 노드별 지문(FNV-1a 32bit) 전수 대조 — changed 0/added 0/removed 0/unchanged 102. 1차 대조는 JS FNV 정밀도 유실(Math.imul 미사용)로 102/102 오검출 → 교정 후 정합(함정 기록).
+- 코드 무변경 — 브라우저 재검증 생략(사유: diff 0). Evidence: `evidence/figma-return-path/m14-roundtrip-2.md`.

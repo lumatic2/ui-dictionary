@@ -57,7 +57,7 @@ Status: approved (사용자 승인 2026-08-01 "ㄱㄱ" — 연쇄 M14→M15 일�
   - Failure probe: use_figma 반환 크기 제한으로 전수 스냅숏 불가 — 노드 배치 분할 조회로 우회, 한계 기록.
   - Commit: changeset `m14-figma-return-path-relaunch` (README 절: step-3).
 
-- [ ] **step-4 — 왕복 2회차 실증 (통합 검증, human gate)**
+- [x] **step-4 — 왕복 2회차 실증 (통합 검증, human gate)**
   - Artifact: 확정 표면 1개를 승격(variables 바인딩·스냅숏 장부 생성) → 유한 선택지 배리에이션 보드 선제작 → **사용자 디테일링(human gate)** → `figma-return-diff` 기계 회수 → 코드 반영 → Vite+Playwright 재검증 → `evidence/figma-return-path/m14-roundtrip-2.md`(before/after 스크린샷 + diff 표 + 교훈).
   - Files: write examples/ui-vocabulary-site/src/**(확정 표면 코드), evidence/figma-return-path/m14-roundtrip-2.md. read 스냅숏 장부.
   - Risk: 위험 (사이트 실표면 변경은 브라우저 재검증·lint 게이트로 차단, human gate=디테일링 대기 — 사용자 부재 시 승격+보드까지 마치고 blocked 정지)
@@ -86,3 +86,4 @@ Status: approved (사용자 승인 2026-08-01 "ㄱㄱ" — 연쇄 M14→M15 일�
 - 2026-08-01 step-2 완료 — 생성기 보수(rem×16 + scope 3경로) 후 재동기화: 1차 35/18 created → 2차 idempotent 0/0 PASS, rem 표본 8종 대조 PASS(2xs=10…7xl=72). 예고된 failure probe(스키마 확장 미지원)를 실제로 부딪혀 해소 — DoD 실패 모드 요건 충족.
 - 2026-08-01 step-3 완료 — `figma-push-snapshot.mjs`(페이로드 생성기, U+2028 리터럴 자기검사) + `figma-return-diff.mjs`(charCode 대조 diff, --self-test 4항 PASS) + 파일럿 프레임 6:3 라이브 E2E(26노드, boundVar·breakCodes 캡처 확인).
 - 2026-08-01 step-4a 체크포인트 — ShowcaseAtlas 승격(35:3, 12카드 variables 바인딩) + push 장부 102노드 + 배리에이션 보드(40:2, radius·데모배경 각 3안). human gate 진입: 사용자 디테일링 대기.
+- 2026-08-02 step-4 완료 — 사용자 "손댈 부분 없음" → 무변경 왕복: 회수 지문 전수 대조 0/0/0 (102 unchanged), 코드 무변경·재검증 생략(사유 기록). partial 명시(변경 반영 구간은 FW2-1 선례가 실증). 함정 2건 추가 발견(20kb 절단·JS FNV Math.imul). Evidence: `evidence/figma-return-path/m14-roundtrip-2.md`.

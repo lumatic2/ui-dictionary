@@ -1,0 +1,10 @@
+{
+ "comparedAt": "2026-08-02",
+ "method": "per-node FNV-1a(32bit, Math.imul/exact) fingerprint over identical snap encoding",
+ "local": 102,
+ "remote": 102,
+ "changed": [],
+ "added": [],
+ "removed": [],
+ "note": "lesson: JS FNV without Math.imul exceeds 2^53 precision \u2014 first pass mis-reported 102/102 changed"
+}
