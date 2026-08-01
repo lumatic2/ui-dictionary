@@ -4924,7 +4924,7 @@
     "reference-diversification": {
       "work_id": "reference-diversification",
       "milestone_id": "m8",
-      "status": "active",
+      "status": "completed",
       "plan_path": "plans/2026-08-01-m8-saas-exemplar-absorption.md",
       "changeset_path": "changesets/20260801-m8-saas-exemplar-absorption",
       "next_step": "step-1",
@@ -4966,7 +4966,8 @@
       ],
       "owner_session_uuid": "claude:04303d38-d38e-4b75-8d68-635d19f94d4a",
       "updated_at": "2026-08-01",
-      "notes": "Registered atomically by canonical harness approve_harness_plan.py after plan validation."
+      "notes": "Registered atomically by canonical harness approve_harness_plan.py after plan validation.",
+      "completion_summary": "Linear·Geist 가 RL 완주 — dashboard-density 판정 정본 신설 + terms 보강 3건, goal reference-diversification 마감"
     }
   }
 }

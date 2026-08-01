@@ -7,18 +7,18 @@
 
 ## Current Goal
 
-<!-- harness:goal id="reference-diversification" status="active" -->
-Goal: 레퍼런스 다변화 — Tailwind 편중 해소. 비-Tailwind 소스(Tier 1 HIG·Material → Tier 2 SaaS exemplar)를 RL 루프에 처음 태워 knowledge 판정 규칙·term 보강으로 승격하고, ledger 에 소스 축을 세운다. 연쇄: M7 → M8 (승인 2026-08-01).
+<!-- harness:goal id="reference-diversification" status="completed" -->
+Goal: 레퍼런스 다변화 — Tailwind 편중 해소 1라운드. closed 2026-08-01 — M7(HIG·Material → knowledge/mobile-navigation + terms 보강 7 + ledger source 축) · M8(Linear·Geist → knowledge/dashboard-density + terms 보강 3 + t2 행) 연쇄 완주. 후속 배치 후보(Stripe·Radix·Around)는 archive/plans/2026-08-01-m8-*.md finding 큐. Details: `evidence/reference-diversification/` + `docs/reports/2026-08-01-m{7,8}-*.md`.
 
 ## Active Milestones — reference-diversification
 
-<!-- harness:milestone id="M8" status="active" priority="P1" evidence="evidence/reference-diversification/m8-saas-exemplar-absorption.md" -->
+<!-- harness:milestone id="M8" status="completed" priority="P1" evidence="evidence/reference-diversification/m8-saas-exemplar-absorption.md" -->
 ### M8 — SaaS exemplar 흡수 (Linear·Vercel/Geist → 대시보드 밀도·저소음 위계)
 - DoD: Tier 2 소스 RL 완주 — `knowledge/dashboard-density.md` + llms 노출 + source 축 ledger 1행 + 전 검증 체인 PASS + 후속 배치 후보(Stripe·Radix·Around) 큐 등재. goal 마감 시 일괄 push(사용자 승인 후).
 - Evidence: evidence/reference-diversification/m8-saas-exemplar-absorption.md
 - Gap: 제품 표면 품질 기준(밀도·저소음 위계)이 근거 기반에 없음 — 리서치 원본만 있고 미흡수.
 - Plan: plans/2026-08-01-m8-saas-exemplar-absorption.md
-- Status: [ ]
+- Status: [x]
 
 <!-- harness:goal-archive20 id="finding-cleanup" status="completed" -->
 Goal: 이월 finding 정리 — /search title 수리·llms 정합 게이트(M5) + 타이포 스케일 9단계 전수 등재·무손실 배선(M6). closed 2026-08-01 — M5(title 정합·게이트 FAIL/PASS 실증·오탐 1건 기록)·M6(scale 5→9단계·@theme 배선·computed 무손실) 단일 세션 완주. Details: `archive/plans/2026-08-01-m{5,6}-*.md` + `docs/reports/2026-08-01-m{5,6}-*.md`.
@@ -26,6 +26,8 @@ Goal: 이월 finding 정리 — /search title 수리·llms 정합 게이트(M5) 
 <!-- harness:goal-archive19 id="deck-quality" status="completed" -->
 Goal: 슬라이드 덱 자체 품질 업그레이드. closed 2026-08-01 — DQ1~DQ3 완주(루브릭·견본 → 표현 기계 → 정본 덱 리디자인+관측 2라운드 PASS). 사용자 판정으로 루브릭 확장 금지가 기본값이 됐다. Details: `evidence/deck-quality/` + `docs/reports/2026-0{7-31,8-01}-dq{1,2,3}-*.md`.
 
+- Completed at: 2026-08-01
+- Summary: knowledge/dashboard-density 신설·terms 보강 3·t2 ledger — goal 마감(push 승인 대기)
 ## Active Milestones — finding-cleanup
 
 ## Active Milestones — dark-carryover
