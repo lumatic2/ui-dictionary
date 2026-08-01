@@ -12,15 +12,17 @@ Goal: 레퍼런스 다변화 2라운드 — M8 finding 큐 3건(Stripe·Radix·A
 
 ## Active Milestones — reference-diversification-2
 
-<!-- harness:milestone id="M10" status="active" priority="P1" evidence="evidence/reference-diversification-2/m10-radix-focus-keyboard-absorption.md" -->
+<!-- harness:milestone id="M10" status="completed" priority="P1" evidence="evidence/reference-diversification-2/m10-radix-focus-keyboard-absorption.md" -->
 ### M10 — Radix 흡수 (포커스·키보드 규율)
 - DoD: Radix RL 완주 — `knowledge/focus-keyboard.md` + llms 노출 + ledger 1행(radix t2) + 전 검증 체인 PASS.
 - Evidence: evidence/reference-diversification-2/m10-radix-focus-keyboard-absorption.md
 - Gap: 포커스·키보드·ARIA 규율이 knowledge 층에 없음(terms 는 focus-trap 등 3개뿐).
 - Plan: plans/2026-08-01-m10-radix-focus-keyboard-absorption.md
-- Status: [ ]
+- Status: [x]
 
-<!-- harness:milestone id="M11" status="pending" priority="P2" evidence="evidence/reference-diversification-2/m11-around-catalog-absorption.md" -->
+- Completed at: 2026-08-01
+- Summary: knowledge/focus-keyboard 신설·terms 보강 3·radix t2 ledger
+<!-- harness:milestone id="M11" status="active" priority="P2" evidence="evidence/reference-diversification-2/m11-around-catalog-absorption.md" -->
 ### M11 — Around 흡수 판정 (템플릿 카탈로그 구조)
 - DoD: 근거 있는 A/B/C 판정 마감 — absorption-criteria 실측 표 행 + ledger 1행(around t2) + evidence. 보류(C)도 정당한 완료(수요 미확인 등재 건). goal 마감 시 일괄 push(사용자 승인 후).
 - Evidence: evidence/reference-diversification-2/m11-around-catalog-absorption.md
