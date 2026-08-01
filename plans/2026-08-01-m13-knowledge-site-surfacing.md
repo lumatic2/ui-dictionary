@@ -39,7 +39,7 @@ Status: approved (사용자 승인 2026-08-01 "ㄱㄱ" — 연쇄 M12→M13 일�
   - Failure probe: 기존 bottom-tab-bar·bottom-sheet-detents 와 중복 판정 위험 — audit-recipe-candidates 성격의 자기 대조를 레시피 Intent 에 명시(기존 = 단일 컨테이너, 신규 = 컨테이너 간 적응·선택 규칙의 실연). 차별성 못 세우면 승격 축소.
   - Commit: changeset `m13-knowledge-site-surfacing` (README 절: step-1).
 
-- [ ] **step-2 — knowledge 4본 사람용 문서 노출 + 통합 스모크 (M13 마감)**
+- [x] **step-2 — knowledge 4본 사람용 문서 노출 + 통합 스모크 (M13 마감)**
   - Artifact: 사이트 docs 표면에 판정 가이드 페이지 4건(mobile-navigation·dashboard-density·checkout-flow·focus-keyboard — 결정표 요약 + 관련 recipes·terms 딥링크 + llms 원문 링크) + 내비 등록 + `evidence/usage-and-site-surfacing/m13-knowledge-site-surfacing.md`.
   - Files: write examples/ui-vocabulary-site/src/lib/documentation-pages.ts(페이지 정의 + `docsNavGroups` 내비 등록 — 같은 파일), evidence/usage-and-site-surfacing/m13-knowledge-site-surfacing.md. read knowledge/*.md(대상 4본), examples/ui-vocabulary-site/src/lib/documentation-pages.ts.
   - Risk: 기계적 (사이트 콘텐츠 추가 — 빌드·스모크로 차단)

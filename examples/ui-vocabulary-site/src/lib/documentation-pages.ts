@@ -94,6 +94,15 @@ export const docsNavGroups: DocsNavGroup[] = [
     ],
   },
   {
+    label: "Judgment guides",
+    items: [
+      { filter: navFilter("docs-judgment-mobile-navigation"), label: "Mobile navigation" },
+      { filter: navFilter("docs-judgment-dashboard-density"), label: "Dashboard density" },
+      { filter: navFilter("docs-judgment-checkout-flow"), label: "Checkout flow" },
+      { filter: navFilter("docs-judgment-focus-keyboard"), label: "Focus & keyboard" },
+    ],
+  },
+  {
     label: "Agent Recipes",
     items: [
       { filter: navFilter("docs-agent-recipes"), label: "Overview" },
@@ -112,6 +121,132 @@ const FOUNDATION_SECTION_TITLES = [
 
 
 export const docsArticlePages = new Map<TermFilter, DocsArticlePageData>([
+  [navFilter("docs-judgment-mobile-navigation"), {
+    filter: navFilter("docs-judgment-mobile-navigation"),
+    kind: "setup",
+    breadcrumb: "UI Blocks / Docs / Judgment guides",
+    title: "Mobile navigation",
+    lead: "모바일 화면에서 내비게이션 컨테이너와 모달 표면을 고르는 판정 가이드입니다. Apple HIG와 Material 3를 대조해 뽑은 규칙의 요약이며, 정본은 knowledge/mobile-navigation.md(에이전트용 원문: https://ui.askewly.com/llms/knowledge/mobile-navigation.md)입니다 — 이 페이지는 요약과 딥링크만 담고 규칙 전문을 복제하지 않습니다.",
+    sections: [
+      {
+        title: "컨테이너는 규칙의 출력입니다",
+        body: [
+          "화면당 주 내비게이션 컴포넌트는 1개입니다. 목적지 수와 브레이크포인트가 컨테이너를 결정합니다 — 최상위 목적지 3~5개의 콤팩트 화면은 bottom tab bar, 3개 미만은 페이지 내 tabs(주 내비 아님), 5개 초과이거나 확장 폭이면 navigation rail로 승격합니다.",
+          "navigation drawer의 신규 채택은 비권장입니다(M3 Expressive가 확장형 rail로 대체, 2026-08-01 확인). '모바일이니까 햄버거 메뉴'는 결정표에 없는 수입니다.",
+          "이 결정표를 실동작으로 확인하려면 Recipe Gallery의 Adaptive Navigation Container 데모에서 목적지 수와 폭을 바꿔보세요. 단일 컨테이너의 계약은 Bottom Tab Bar 레시피가 다룹니다.",
+        ],
+      },
+      {
+        title: "모달 표면은 태스크 무게로 고릅니다",
+        body: [
+          "저중요 알림은 toast(비차단·자동 소멸), 고중요 결정은 dialog(액션 2개 이하, 구체 질문 제목), 맥락 밀착 선택은 modal bottom sheet(초기 높이 50% 이하), 키보드 폼·다단 작성은 full-screen dialog(콤팩트 전용)입니다.",
+          "모달 깊이는 1입니다 — 시트 위에 시트를 쌓지 않고, 첫 시트를 닫고 다음을 엽니다. 해제 경로는 항상 2개 이상(버튼 + 스와이프/scrim)을 둡니다.",
+        ],
+      },
+      {
+        title: "행동 계약",
+        body: [
+          "탭 전환은 탭/클릭만(스와이프 금지), 활성 목적지 재선택은 최상단 스크롤, 라벨은 1~2단어 필수, 배지는 critical 정보에만 씁니다. 섹션을 자주 오가는 앱은 탭 상태를 preserve로 계약합니다.",
+        ],
+      },
+    ],
+    apiRows: [],
+    onThisPage: ["컨테이너는 규칙의 출력입니다", "모달 표면은 태스크 무게로 고릅니다", "행동 계약"],
+  }],
+  [navFilter("docs-judgment-dashboard-density"), {
+    filter: navFilter("docs-judgment-dashboard-density"),
+    kind: "setup",
+    breadcrumb: "UI Blocks / Docs / Judgment guides",
+    title: "Dashboard density",
+    lead: "대시보드·운영 도구처럼 정보 밀도가 높은 화면의 밀도·위계·소음 판정 가이드입니다. Linear 리프레시 원문과 Vercel Geist를 근거로 뽑았으며, 정본은 knowledge/dashboard-density.md(에이전트용 원문: https://ui.askewly.com/llms/knowledge/dashboard-density.md)입니다.",
+    sections: [
+      {
+        title: "밀도는 소음이 아닙니다",
+        body: [
+          "조밀해서 어수선하다는 진단에 정보 삭제로 답하는 것은 오답입니다. 줄이는 것은 소음(보더·아이콘 과잉·밝기 경쟁)이고 지키는 것은 정보 밀도입니다.",
+          "주의 예산: 본문 작업 영역이 항상 최우선이고, 사이드바·내비는 도착 후 후퇴(저대비)하며, 앱 셸 크롬은 콤팩트하게 — 크롬이 콘텐츠와 밝기 경쟁하면 실패입니다.",
+        ],
+      },
+      {
+        title: "구조는 느껴지되 보이지 않게",
+        body: [
+          "구분의 기본값은 여백입니다. 여백 → 배경 미차 → 라운딩 순으로 먼저 시도하고 선은 최후 수단으로, 저대비 + 그룹 경계에만 씁니다. 페이지 배경은 2단이 상한입니다.",
+          "hover/active는 새 색이 아니라 같은 중립 스케일의 인접 단계입니다. 텍스트 위계는 primary/secondary 2단 — 세 번째 회색이 필요해 보이면 위계 설계를 다시 봅니다.",
+        ],
+      },
+      {
+        title: "관련 vocabulary",
+        body: [
+          "아래 Related terms의 sidebar-nav(earned attention), divider(선의 절제), table-density-control(밀도 프리셋)에 이 규칙이 반영돼 있습니다. 실동작 참고는 Recipe Gallery의 Sidebar Application Shell·Interactive Data Table입니다.",
+        ],
+      },
+    ],
+    apiRows: [],
+    onThisPage: ["밀도는 소음이 아닙니다", "구조는 느껴지되 보이지 않게", "관련 vocabulary"],
+  }],
+  [navFilter("docs-judgment-checkout-flow"), {
+    filter: navFilter("docs-judgment-checkout-flow"),
+    kind: "setup",
+    breadcrumb: "UI Blocks / Docs / Judgment guides",
+    title: "Checkout flow",
+    lead: "결제·체크아웃처럼 전환이 걸린 플로우의 판정 가이드입니다. Stripe Elements·Checkout을 근거로 뽑았으며, 정본은 knowledge/checkout-flow.md(에이전트용 원문: https://ui.askewly.com/llms/knowledge/checkout-flow.md)입니다.",
+    sections: [
+      {
+        title: "마찰의 본체는 재입력입니다",
+        body: [
+          "단계 수를 줄이는 것보다 입력을 없애는 것이 우선입니다. 건너뛰기 경로(월렛·저장 결제)를 수동 폼 위에 병렬 배치하고, 반환 사용자는 자동채움 + 블록별 변경 진입점을 줍니다. 브라우저·서드파티 자동채움을 막지 않는 것은 설계 요건입니다.",
+          "주소는 자동완성 + 확정 블록으로 — 타이핑 절감이자 오배송·세금 오적용 방지 검증입니다.",
+        ],
+      },
+      {
+        title: "검증·에러 계약",
+        body: [
+          "타이핑 중 인라인 검증이 기본이고 제출 시 일괄 에러는 금지입니다. 에러는 발생 필드 옆에 서술형으로, 예측 가능한 실수(이메일 도메인 오타·카드 브랜드 불일치)는 선제 하이라이트합니다.",
+          "입력 보조는 신뢰 신호입니다 — 카드 첫 자리로 브랜드 아이콘, 브랜드별 CVC 힌트, 마스킹.",
+        ],
+      },
+      {
+        title: "신뢰 프레이밍과 절제",
+        body: [
+          "반품 정책·지원 연락처·명세서 표기명 안내를 플로우 표면 안에 심습니다(별도 페이지로 쫓아내지 않기). 결제수단·통화는 위치·선호로 동적으로 고릅니다.",
+          "업셀은 제안 1개 인라인까지 — 업셀이 체크아웃을 별도 페이지로 분기시키면 실패입니다. 확인 모달 규칙은 Mobile navigation 가이드의 모달 표를 그대로 따릅니다.",
+        ],
+      },
+    ],
+    apiRows: [],
+    onThisPage: ["마찰의 본체는 재입력입니다", "검증·에러 계약", "신뢰 프레이밍과 절제"],
+  }],
+  [navFilter("docs-judgment-focus-keyboard"), {
+    filter: navFilter("docs-judgment-focus-keyboard"),
+    kind: "setup",
+    breadcrumb: "UI Blocks / Docs / Judgment guides",
+    title: "Focus & keyboard",
+    lead: "커스텀 위젯·오버레이의 포커스·키보드 행동 판정 가이드입니다. Radix Primitives를 근거로 뽑았으며, 정본은 knowledge/focus-keyboard.md(에이전트용 원문: https://ui.askewly.com/llms/knowledge/focus-keyboard.md)입니다. 어떤 오버레이 컨테이너를 고를지는 Mobile navigation 가이드 소관 — 이 페이지는 고른 뒤의 행동 계약입니다.",
+    sections: [
+      {
+        title: "정답은 WAI-ARIA APG입니다",
+        body: [
+          "네이티브 요소를 div로 대체하는 순간 시맨틱과 키보드·포커스 행동 재구현이 전부 우리 책임이 됩니다. 키보드 동작을 창작하지 말고 APG 패턴의 키보드 표를 스펙으로 씁니다.",
+        ],
+      },
+      {
+        title: "모달 계약: 트랩 + 반환",
+        body: [
+          "modal이면 포커스 트랩, 닫힐 때는 어느 해제 경로든 연 트리거로 포커스 반환, 열림 직후 첫 논리 항목(파괴적 확인은 안전한 버튼)에 포커스, Title/Description 배선으로 열림을 공지 — 네 가지 중 하나라도 빠지면 미완성입니다.",
+          "겹친 레이어의 Esc는 최상위 하나만 닫습니다. 해제 경로(Esc·외부 클릭·트리거 재활성)는 계약으로 명시합니다.",
+        ],
+      },
+      {
+        title: "복합 위젯: Tab stop 1개",
+        body: [
+          "탭 목록·메뉴·툴바 같은 복합 위젯은 Tab stop이 1개입니다 — 내부 이동은 방향키 + Home/End, 항목 목록엔 typeahead. 항목마다 Tab을 먹으면 실패입니다.",
+          "포커스 가시성 검증은 실키 Tab으로 합니다 — 프로그램적 focus()는 :focus-visible을 안 태워 오탐을 만듭니다.",
+        ],
+      },
+    ],
+    apiRows: [],
+    onThisPage: ["정답은 WAI-ARIA APG입니다", "모달 계약: 트랩 + 반환", "복합 위젯: Tab stop 1개"],
+  }],
   [navFilter("docs-getting-started-principles"), {
     filter: navFilter("docs-getting-started-principles"),
     kind: "setup",

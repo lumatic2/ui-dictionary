@@ -33,6 +33,10 @@ export type NavigationCollectionId =
   | "docs-foundations-dark-mode"
   | "docs-foundations-tokens"
   | "docs-agent-recipes"
+  | "docs-judgment-mobile-navigation"
+  | "docs-judgment-dashboard-density"
+  | "docs-judgment-checkout-flow"
+  | "docs-judgment-focus-keyboard"
   | "plus-all"
   | "plus-marketing"
   | "plus-marketing-page-sections"
@@ -420,6 +424,34 @@ export const navigationCollections: NavigationCollection[] = [
     path: ["Docs", "Getting started", "Assets"],
     groupIds: ["style-decorative-effects", "data-basic-content-elements"],
     termIds: ["avatar", "icon", "logo", "empty-state-illustration"],
+  },
+  {
+    id: "docs-judgment-mobile-navigation",
+    label: "Mobile navigation",
+    path: ["Docs", "Judgment guides", "Mobile navigation"],
+    groupIds: ["selection-navigation", "feedback-confirmation-help"],
+    termIds: ["tab-bar", "navigation-rail", "modal-bottom-sheet", "full-screen-dialog", "dialog"],
+  },
+  {
+    id: "docs-judgment-dashboard-density",
+    label: "Dashboard density",
+    path: ["Docs", "Judgment guides", "Dashboard density"],
+    groupIds: ["layout-spacing-sizing", "style-tokens", "data-tables-lists"],
+    termIds: ["sidebar-nav", "divider", "table-density-control"],
+  },
+  {
+    id: "docs-judgment-checkout-flow",
+    label: "Checkout flow",
+    path: ["Docs", "Judgment guides", "Checkout flow"],
+    groupIds: ["input-text", "feedback-empty-error"],
+    termIds: ["checkout-step", "validation-message", "address-autocomplete", "payment-method-card"],
+  },
+  {
+    id: "docs-judgment-focus-keyboard",
+    label: "Focus & keyboard",
+    path: ["Docs", "Judgment guides", "Focus & keyboard"],
+    groupIds: ["accessibility-focus-motion", "selection-menus"],
+    termIds: ["focus-trap", "tabs", "dropdown-menu", "focus-ring", "keyboard-navigation"],
   },
   {
     id: "docs-elements-introduction",
