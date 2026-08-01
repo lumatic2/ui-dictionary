@@ -48,7 +48,7 @@ Status: approved (사용자 승인 2026-08-01 "ㄱㄱ" — 연쇄 M14→M15 일�
   - Failure probe: **확인된 결함(fresh 검증자)** — 스크립트 dimension 분기(`'unit' in val`→FLOAT)가 px/rem 미구분: M6 신규 단계(2xs·xs·3xl·5xl·7xl 등)는 rem 값(0.625 등)이라 px 값과 섞여 조용히 잘못 밀린다. 스크립트에 단위 인지 변환(rem→px 환산 또는 단위별 분리) 보수 후 재실행, 보수분 커밋.
   - Commit: changeset `m14-figma-return-path-relaunch` (README 절: step-2).
 
-- [ ] **step-3 — 승격 스냅숏 장부 기계화 (귀환의 전제 도구)**
+- [x] **step-3 — 승격 스냅숏 장부 기계화 (귀환의 전제 도구)**
   - Artifact: 승격 시 노드ID+push 값(fontSize/fills/padding/radius/strokes/characters)을 JSON 장부로 보존하고, 회수 시 현재 값과 전수 대조(charCode 10/13/8232/8233 스캔 포함)해 diff 를 출력하는 스크립트 쌍 — `scripts/figma-push-snapshot.mjs`(장부 생성용 use_figma 페이로드 생성) + `scripts/figma-return-diff.mjs`(장부 vs 회수 스냅숏 대조).
   - Files: write scripts/figma-push-snapshot.mjs, scripts/figma-return-diff.mjs. read research/figma-roundtrip-pilot-2026-07.md(교훈 목록).
   - Risk: 기계적 (신규 스크립트 — 기존 표면 불변)
@@ -83,3 +83,4 @@ Status: approved (사용자 승인 2026-08-01 "ㄱㄱ" — 연쇄 M14→M15 일�
 - 2026-08-01 fresh 검증자(sonnet) 반영 — step-2 rem/px 미구분 결함(확인됨) probe 승격·Verify 에 rem 표본 필수화, step-4 중간 커밋 체크포인트, 변수 수치 17→16 정정.
 - 2026-08-01 step-1 완료 — MCP 재등록+OAuth(SKKU)+실측 3항 verify 전부 PASS. 산출물 `research/2026-08-01-m14-figma-channel-recheck.md`. 발견: 도구 노출에 세션 재시작 불필요(FB1 대비), get_metadata 페이지 목록 불완전 함정.
 - 2026-08-01 step-2 완료 — 생성기 보수(rem×16 + scope 3경로) 후 재동기화: 1차 35/18 created → 2차 idempotent 0/0 PASS, rem 표본 8종 대조 PASS(2xs=10…7xl=72). 예고된 failure probe(스키마 확장 미지원)를 실제로 부딪혀 해소 — DoD 실패 모드 요건 충족.
+- 2026-08-01 step-3 완료 — `figma-push-snapshot.mjs`(페이로드 생성기, U+2028 리터럴 자기검사) + `figma-return-diff.mjs`(charCode 대조 diff, --self-test 4항 PASS) + 파일럿 프레임 6:3 라이브 E2E(26노드, boundVar·breakCodes 캡처 확인).
