@@ -4971,27 +4971,27 @@
     },
     "reference-diversification-2": {
       "work_id": "reference-diversification-2",
-      "milestone_id": "m9",
+      "milestone_id": "m10",
       "status": "active",
-      "plan_path": "plans/2026-08-01-m9-stripe-checkout-absorption.md",
-      "changeset_path": "changesets/20260801-m9-stripe-checkout-absorption",
+      "plan_path": "plans/2026-08-01-m10-radix-focus-keyboard-absorption.md",
+      "changeset_path": "changesets/20260801-m10-radix-focus-keyboard-absorption",
       "next_step": "step-1",
       "current_step": "step-1",
       "steps": [
         {
           "id": "step-1",
-          "label": "step-1 — Stripe 배치 수집 + dedup"
+          "label": "step-1 — Radix 배치 수집 + dedup"
         },
         {
           "id": "step-2",
-          "label": "step-2 — 승격 + 검증 체인 + ledger (M9 마감)"
+          "label": "step-2 — 승격 + 검증 체인 + ledger (M10 마감)"
         }
       ],
       "execution_mode": "continuous",
       "approval": {
         "approved_by": "user",
         "approved_at": "2026-08-01",
-        "plan_sha256": "c9ee4e2da85e6a476dd66e6a6a0079e0f959877e8de932da8f4b3d3227808ba1",
+        "plan_sha256": "279d6a4a31d717cbcf3b1741f1fade8983d2ae984c8f31f2dbc8c8a78fe57f1b",
         "chain": [
           "m9",
           "m10",

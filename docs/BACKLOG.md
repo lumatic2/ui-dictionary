@@ -747,3 +747,19 @@ plan doc: `archive/plans/2026-07-21-eu*.md` · 증거: `evidence/editor-legibili
   - Completed: 2026-08-01
   - Result: animId 전환·optimize-images(77% 감소)·sourceNote 수리 — 회귀 6종 PASS
   - Evidence: evidence/deck-quality/dq2-expressive-mechanics.md
+
+### 2026-08
+- M9 - M9 — Stripe 흡수 (결제·체크아웃 플로우)
+  - Completed: 2026-08-01
+  - Result: knowledge/checkout-flow 신설·terms 보강 4·stripe t2 ledger
+  - Evidence: evidence/reference-diversification-2/m9-stripe-checkout-absorption.md
+
+- M8 - M8 — SaaS exemplar 흡수 (Linear·Vercel/Geist → 대시보드 밀도·저소음 위계)
+  - Completed: 2026-08-01
+  - Result: knowledge/dashboard-density 신설·terms 보강 3·t2 ledger — goal 마감(push 승인 대기)
+  - Evidence: evidence/reference-diversification/m8-saas-exemplar-absorption.md
+
+- DQ3 - DQ3 — 정본 덱 리디자인 + 관측
+  - Completed: 2026-08-01
+  - Result: 규칙 처방 철회·루브릭 확장 금지 명문화, 덱 실변경 2건, 차트 색 finding 수리 — 관측 2라운드 PASS
+  - Evidence: evidence/deck-quality/dq3-canonical-redesign.md

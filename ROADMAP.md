@@ -12,15 +12,7 @@ Goal: 레퍼런스 다변화 2라운드 — M8 finding 큐 3건(Stripe·Radix·A
 
 ## Active Milestones — reference-diversification-2
 
-<!-- harness:milestone id="M9" status="active" priority="P1" evidence="evidence/reference-diversification-2/m9-stripe-checkout-absorption.md" -->
-### M9 — Stripe 흡수 (결제·체크아웃 플로우)
-- DoD: Stripe RL 완주 — `knowledge/checkout-flow.md` + llms 노출 + source 축 ledger 1행(stripe t2) + 전 검증 체인 PASS.
-- Evidence: evidence/reference-diversification-2/m9-stripe-checkout-absorption.md
-- Gap: 결제·신뢰 플로우 규율이 근거 기반에 없음 — exemplar 리서치만 있고 미흡수.
-- Plan: plans/2026-08-01-m9-stripe-checkout-absorption.md
-- Status: [ ]
-
-<!-- harness:milestone id="M10" status="pending" priority="P1" evidence="evidence/reference-diversification-2/m10-radix-focus-keyboard-absorption.md" -->
+<!-- harness:milestone id="M10" status="active" priority="P1" evidence="evidence/reference-diversification-2/m10-radix-focus-keyboard-absorption.md" -->
 ### M10 — Radix 흡수 (포커스·키보드 규율)
 - DoD: Radix RL 완주 — `knowledge/focus-keyboard.md` + llms 노출 + ledger 1행(radix t2) + 전 검증 체인 PASS.
 - Evidence: evidence/reference-diversification-2/m10-radix-focus-keyboard-absorption.md
@@ -41,43 +33,12 @@ Goal: 레퍼런스 다변화 — Tailwind 편중 해소 1라운드. closed 2026-
 
 ## Active Milestones — reference-diversification
 
-<!-- harness:milestone id="M8" status="completed" priority="P1" evidence="evidence/reference-diversification/m8-saas-exemplar-absorption.md" -->
-### M8 — SaaS exemplar 흡수 (Linear·Vercel/Geist → 대시보드 밀도·저소음 위계)
-- DoD: Tier 2 소스 RL 완주 — `knowledge/dashboard-density.md` + llms 노출 + source 축 ledger 1행 + 전 검증 체인 PASS + 후속 배치 후보(Stripe·Radix·Around) 큐 등재. goal 마감 시 일괄 push(사용자 승인 후).
-- Evidence: evidence/reference-diversification/m8-saas-exemplar-absorption.md
-- Gap: 제품 표면 품질 기준(밀도·저소음 위계)이 근거 기반에 없음 — 리서치 원본만 있고 미흡수.
-- Plan: plans/2026-08-01-m8-saas-exemplar-absorption.md
-- Status: [x]
-
-<!-- harness:goal-archive20 id="finding-cleanup" status="completed" -->
-Goal: 이월 finding 정리 — /search title 수리·llms 정합 게이트(M5) + 타이포 스케일 9단계 전수 등재·무손실 배선(M6). closed 2026-08-01 — M5(title 정합·게이트 FAIL/PASS 실증·오탐 1건 기록)·M6(scale 5→9단계·@theme 배선·computed 무손실) 단일 세션 완주. Details: `archive/plans/2026-08-01-m{5,6}-*.md` + `docs/reports/2026-08-01-m{5,6}-*.md`.
-
-<!-- harness:goal-archive19 id="deck-quality" status="completed" -->
-Goal: 슬라이드 덱 자체 품질 업그레이드. closed 2026-08-01 — DQ1~DQ3 완주(루브릭·견본 → 표현 기계 → 정본 덱 리디자인+관측 2라운드 PASS). 사용자 판정으로 루브릭 확장 금지가 기본값이 됐다. Details: `evidence/deck-quality/` + `docs/reports/2026-0{7-31,8-01}-dq{1,2,3}-*.md`.
-
-- Completed at: 2026-08-01
-- Summary: knowledge/dashboard-density 신설·terms 보강 3·t2 ledger — goal 마감(push 승인 대기)
 ## Active Milestones — finding-cleanup
 
 ## Active Milestones — dark-carryover
 
 ## Completed Milestones — deck-quality
 
-<!-- harness:milestone id="DQ3" status="completed" priority="P1" evidence="evidence/deck-quality/dq3-canonical-redesign.md" -->
-### DQ3 — 정본 덱 리디자인 + 관측
-- DoD: 정본 덱이 루브릭 기준 재제작되어 전/후 감사표 개선 + 전 자동 검증·HU4 회귀·발표 전 체크 PASS + 사용자 관측 PASS.
-- Evidence: evidence/deck-quality/dq3-canonical-redesign.md
-- Gap: 파이프라인 업그레이드가 정본 덱 내용물 품질로 미전이 (시안·관측 게이트 2회)
-- Plan: plans/2026-07-31-dq3-canonical-redesign.md
-- Status: [x]
-
-- Completed at: 2026-08-01
-- Summary: 규칙 처방 철회·루브릭 확장 금지 명문화, 덱 실변경 2건, 차트 색 finding 수리 — 관측 2라운드 PASS
-<!-- harness:goal-archive18 id="html-upgrade" status="completed" -->
-Goal: HTML 발표 트랙 업그레이드. closed 2026-07-31 — HU1~HU4 완주(발표 운영력·모션 문법·이미지 트랙·통합 실증, 사용자 관측 6라운드 PASS). Details: `evidence/html-upgrade/` + `docs/reports/2026-07-31-hu{1,2,3,4}-*.md`.
-
-- Completed at: 2026-08-01
-- Summary: 정본 덱 리디자인 + 사용자 관측 PASS — 규칙 처방 철회·루브릭 확장 금지, 덱 실변경 2건, 차트 색 수리
 ## Active Milestones — html-upgrade
 
 <!-- harness:milestone id="HU4" status="completed" priority="P1" evidence="evidence/html-upgrade/hu4-live-proof.md" -->
