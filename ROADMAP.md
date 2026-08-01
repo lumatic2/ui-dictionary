@@ -12,14 +12,16 @@ Goal: 사용법 문서화 + 흡수 지식 사이트 반영 — 사람이 실패 
 
 ## Active Milestones — usage-and-site-surfacing
 
-<!-- harness:milestone id="M12" status="active" priority="P1" evidence="evidence/usage-and-site-surfacing/m12-usage-docs-alignment.md" -->
+<!-- harness:milestone id="M12" status="completed" priority="P1" evidence="evidence/usage-and-site-surfacing/m12-usage-docs-alignment.md" -->
 ### M12 — 사람용 사용법 문서화 (설치 경로 정합 + Quickstart)
 - DoD: 사람이 README/사이트에서 출발해 실패 없이 설치·주입까지 도달하는 문서 경로 존재 + 문서의 모든 명령이 published `@askewly/design` 실구동으로 검증. 실패 모드: 존재하지 않는 패키지명 잔존 = grep 게이트 차단.
 - Evidence: evidence/usage-and-site-surfacing/m12-usage-docs-alignment.md
 - Gap: 사이트 설치 명령이 존재하지 않는 패키지 `ui-dictionary` 를 지시(3파일) — 문서대로 하면 설치 실패. README 에 사용 절차 부재, templates/ 인덱스 부재.
 - Plan: plans/2026-08-01-m12-usage-docs-alignment.md
-- Status: [ ]
+- Status: [x]
 
+- Completed at: 2026-08-01
+- Summary: 설치 경로 정합(3파일+생성물)·Quickstart·E2E 검증
 <!-- harness:milestone id="M13" status="pending" priority="P1" evidence="evidence/usage-and-site-surfacing/m13-knowledge-site-surfacing.md" -->
 ### M13 — 흡수 지식 사이트 반영 (레시피 소배치 + knowledge 노출)
 - DoD: 신규 실동작 레시피 ≥1(mobile-navigation, 전 체인+build:catalog PASS) + knowledge 4본이 사이트 docs 에서 탐색 가능(실브라우저 확인).
