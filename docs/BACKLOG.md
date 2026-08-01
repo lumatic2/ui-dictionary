@@ -763,3 +763,14 @@ plan doc: `archive/plans/2026-07-21-eu*.md` · 증거: `evidence/editor-legibili
   - Completed: 2026-08-01
   - Result: 규칙 처방 철회·루브릭 확장 금지 명문화, 덱 실변경 2건, 차트 색 finding 수리 — 관측 2라운드 PASS
   - Evidence: evidence/deck-quality/dq3-canonical-redesign.md
+
+### 2026-08
+- M12 - M12 — 사람용 사용법 문서화 (설치 경로 정합 + Quickstart)
+  - Completed: 2026-08-01
+  - Result: 설치 경로 정합(3파일+생성물)·Quickstart·E2E 검증
+  - Evidence: evidence/usage-and-site-surfacing/m12-usage-docs-alignment.md
+
+- M13 - M13 — 흡수 지식 사이트 반영 (레시피 소배치 + knowledge 노출)
+  - Completed: 2026-08-01
+  - Result: adaptive-navigation-container 승격 + Judgment guides 4페이지 + 759 routes
+  - Evidence: evidence/usage-and-site-surfacing/m13-knowledge-site-surfacing.md

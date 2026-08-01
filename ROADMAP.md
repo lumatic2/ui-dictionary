@@ -1,37 +1,16 @@
 # ROADMAP
 
 > Last updated: 2026-08-01
-> Status: **2026-08-01 3개 goal 완주** — `finding-cleanup`(M5 search title·llms 게이트 · M6 타이포 9단계 배선) · `dark-carryover`(M2~M4) · `deck-quality`(DQ1~DQ3, 워크트리 병합됨). active goal 0. 남은 큐: 『인터랙티브 웹 애니메이션』 책 스터디 자산화(사용자 주도) · 이월 finding: D2 Presenton 정밀 벤치·동영상 에셋 파이프(수요 미확인).
+> Status: **2026-08-01 goal 6개 완주 세션** — 최신: `usage-and-site-surfacing`(M12 설치 경로 정합+Quickstart · M13 adaptive-navigation-container 승격+Judgment guides 4페이지). active goal 0. 남은 큐: 『인터랙티브 웹 애니메이션』 책 스터디(사용자 주도) · D2 Presenton 벤치(수요 미확인) · Around 재판정(이식 milestone 개방 시).
 > North star: Build Askewly Design as both a public reference website and an agent-usable implementation system.
 > line budget: <=150
 
 ## Current Goal
 
-<!-- harness:goal id="usage-and-site-surfacing" status="active" -->
-Goal: 사용법 문서화 + 흡수 지식 사이트 반영 — 사람이 실패 없이 설치·주입까지 도달하는 문서 경로(M12) 와 다변화 라운드 산출의 사람 표면 회수(M13). 사용자 확정 2026-08-01 "2,3번 순서로 ㄱㄱ".
+<!-- harness:goal id="usage-and-site-surfacing" status="completed" -->
+Goal: 사용법 문서화 + 흡수 지식 사이트 반영. closed 2026-08-01 — M12(설치 명령 오기 정정·README Quickstart·templates 인덱스·published CLI E2E) · M13(adaptive-navigation-container 승격 + Judgment guides 4페이지, 759 routes) 연쇄 완주. Details: `evidence/usage-and-site-surfacing/` + `docs/reports/2026-08-01-m{12,13}-*.md`.
 
 ## Active Milestones — usage-and-site-surfacing
-
-<!-- harness:milestone id="M12" status="completed" priority="P1" evidence="evidence/usage-and-site-surfacing/m12-usage-docs-alignment.md" -->
-### M12 — 사람용 사용법 문서화 (설치 경로 정합 + Quickstart)
-- DoD: 사람이 README/사이트에서 출발해 실패 없이 설치·주입까지 도달하는 문서 경로 존재 + 문서의 모든 명령이 published `@askewly/design` 실구동으로 검증. 실패 모드: 존재하지 않는 패키지명 잔존 = grep 게이트 차단.
-- Evidence: evidence/usage-and-site-surfacing/m12-usage-docs-alignment.md
-- Gap: 사이트 설치 명령이 존재하지 않는 패키지 `ui-dictionary` 를 지시(3파일) — 문서대로 하면 설치 실패. README 에 사용 절차 부재, templates/ 인덱스 부재.
-- Plan: plans/2026-08-01-m12-usage-docs-alignment.md
-- Status: [x]
-
-- Completed at: 2026-08-01
-- Summary: 설치 경로 정합(3파일+생성물)·Quickstart·E2E 검증
-<!-- harness:milestone id="M13" status="active" priority="P1" evidence="evidence/usage-and-site-surfacing/m13-knowledge-site-surfacing.md" -->
-### M13 — 흡수 지식 사이트 반영 (레시피 소배치 + knowledge 노출)
-- DoD: 신규 실동작 레시피 ≥1(mobile-navigation, 전 체인+build:catalog PASS) + knowledge 4본이 사이트 docs 에서 탐색 가능(실브라우저 확인).
-- Evidence: evidence/usage-and-site-surfacing/m13-knowledge-site-surfacing.md
-- Gap: knowledge 층만 다변화되고 사람이 보는 카탈로그·docs 는 그 변화를 못 보여줌.
-- Plan: plans/2026-08-01-m13-knowledge-site-surfacing.md
-- Status: [ ]
-
-<!-- harness:goal-archive22 id="reference-diversification-2" status="completed" -->
-Goal: 레퍼런스 다변화 2라운드. closed 2026-08-01 — M9(Stripe → knowledge/checkout-flow + terms 보강 4) · M10(Radix → knowledge/focus-keyboard + terms 보강 3) · M11(Around → 판정 C 보류·재판정 조건 기록) 연쇄 완주. ledger 소스 축 = tailwind·t1(hig+material)·t2(linear+geist·stripe·radix·around) 6행. Details: `evidence/reference-diversification-2/` + `docs/reports/2026-08-01-m{9,10,11}-*.md`.
 
 ## Active Milestones — reference-diversification-2
 
