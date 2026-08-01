@@ -47,7 +47,7 @@ Status: approved (사용자 승인 2026-08-01 "ㄱㄱ" — 연쇄 M12→M13 일�
   - Failure probe: templates/ 파일 중 용도 불명확한 것(예: fetch-stock.py)이 있으면 추측으로 쓰지 않고 소스 코드를 읽어 용도 확인 후 기술.
   - Commit: changeset `m12-usage-docs-alignment` (README 절: step-2).
 
-- [ ] **step-3 — 문서 그대로 실구동 대조 (E2E)**
+- [x] **step-3 — 문서 그대로 실구동 대조 (E2E)**
   - Artifact: scratchpad 임시 프로젝트에서 published `@askewly/design@0.3.0` 실설치 → 문서화한 커맨드(`terms`·`tokens`·`recipes`·`init`·`add`) 실제 실행 → 출력이 문서 서술과 정합하는지 대조, 불일치 발견 시 문서 쪽 정정 + `evidence/usage-and-site-surfacing/m12-usage-docs-alignment.md`(DoD 대조 + 실행 로그 요지).
   - Files: write evidence/usage-and-site-surfacing/m12-usage-docs-alignment.md, (불일치 시) README.md·documentation-pages.ts 정정. read packages/cli/.
   - Risk: 기계적 (레포 밖 임시 디렉터리 실행 — 레포 무변경 기본)
