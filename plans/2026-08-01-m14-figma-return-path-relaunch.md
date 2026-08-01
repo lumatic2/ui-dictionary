@@ -76,7 +76,8 @@ Status: approved (사용자 승인 2026-08-01 "ㄱㄱ" — 연쇄 M14→M15 일�
 - SSOT 드리프트 근거(emphasis·status 16변수 — emphasis 6+status 10 실계수, 타이포 9단계): `git log --oneline -- tokens/askewly.tokens.json` (커밋 e9e4a30·18392ee, 2026-08-01 실행).
 
 ## finding 큐
-- (실행 중 발견 항목)
+- use_figma 대형 반환은 20kb에서 절단 — 서브트리 스냅숏은 청크 분할 회수 필요. `figma-push-snapshot.mjs`에 청크 옵션 추가 후보 (M15 방법론 반영 대상).
+- 브리지 계약 §2.2 "변수 description에 SSOT $description 복사" 규약이 생성기에 미구현 — 7월부터 잔존. 후속 후보.
 
 ## 진행 로그
 - 2026-08-01 작성.
@@ -84,3 +85,4 @@ Status: approved (사용자 승인 2026-08-01 "ㄱㄱ" — 연쇄 M14→M15 일�
 - 2026-08-01 step-1 완료 — MCP 재등록+OAuth(SKKU)+실측 3항 verify 전부 PASS. 산출물 `research/2026-08-01-m14-figma-channel-recheck.md`. 발견: 도구 노출에 세션 재시작 불필요(FB1 대비), get_metadata 페이지 목록 불완전 함정.
 - 2026-08-01 step-2 완료 — 생성기 보수(rem×16 + scope 3경로) 후 재동기화: 1차 35/18 created → 2차 idempotent 0/0 PASS, rem 표본 8종 대조 PASS(2xs=10…7xl=72). 예고된 failure probe(스키마 확장 미지원)를 실제로 부딪혀 해소 — DoD 실패 모드 요건 충족.
 - 2026-08-01 step-3 완료 — `figma-push-snapshot.mjs`(페이로드 생성기, U+2028 리터럴 자기검사) + `figma-return-diff.mjs`(charCode 대조 diff, --self-test 4항 PASS) + 파일럿 프레임 6:3 라이브 E2E(26노드, boundVar·breakCodes 캡처 확인).
+- 2026-08-01 step-4a 체크포인트 — ShowcaseAtlas 승격(35:3, 12카드 variables 바인딩) + push 장부 102노드 + 배리에이션 보드(40:2, radius·데모배경 각 3안). human gate 진입: 사용자 디테일링 대기.
