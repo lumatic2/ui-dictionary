@@ -774,3 +774,14 @@ plan doc: `archive/plans/2026-07-21-eu*.md` · 증거: `evidence/editor-legibili
   - Completed: 2026-08-01
   - Result: adaptive-navigation-container 승격 + Judgment guides 4페이지 + 759 routes
   - Evidence: evidence/usage-and-site-surfacing/m13-knowledge-site-surfacing.md
+
+### 2026-08
+- M14 - M14 — Figma 귀환 경로 재가동 + 왕복 2회차 실증
+  - Completed: 2026-08-02
+  - Result: 채널 복구·재동기화(rem 보수)·회수 기계화·왕복 2회차 무변경 0/0/0 PASS (partial: 변경 반영 구간은 FW2-1 선례)
+  - Evidence: evidence/figma-return-path/m14-roundtrip-2.md
+
+- M10 - M10 — Radix 흡수 (포커스·키보드 규율)
+  - Completed: 2026-08-02
+  - Result: knowledge/focus-keyboard 신설·terms 보강 3·radix t2 ledger
+  - Evidence: evidence/reference-diversification-2/m10-radix-focus-keyboard-absorption.md

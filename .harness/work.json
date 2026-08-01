@@ -5068,35 +5068,31 @@
     },
     "figma-return-path": {
       "work_id": "figma-return-path",
-      "milestone_id": "m14",
+      "milestone_id": "m15",
       "status": "active",
-      "plan_path": "plans/2026-08-01-m14-figma-return-path-relaunch.md",
-      "changeset_path": "changesets/20260801-m14-figma-return-path-relaunch",
+      "plan_path": "plans/2026-08-01-m15-figma-return-path-canonicalize.md",
+      "changeset_path": "changesets/20260802-m15-figma-return-path-canonicalize",
       "next_step": "step-1",
       "current_step": "step-1",
       "steps": [
         {
           "id": "step-1",
-          "label": "step-1 — 채널 복구 + 현행 실측 (research)"
+          "label": "step-1 — 방법론·계약 갱신"
         },
         {
           "id": "step-2",
-          "label": "step-2 — SSOT 드리프트 재동기화 (나가는 방향 재가동)"
+          "label": "step-2 — agent-facing 노출 (llms 배선)"
         },
         {
           "id": "step-3",
-          "label": "step-3 — 승격 스냅숏 장부 기계화 (귀환의 전제 도구)"
-        },
-        {
-          "id": "step-4",
-          "label": "step-4 — 왕복 2회차 실증 (통합 검증, human gate)"
+          "label": "step-3 — figma-codex-workflow 스킬 갱신 3건 + 배포 (cross-repo)"
         }
       ],
       "execution_mode": "continuous",
       "approval": {
         "approved_by": "user",
-        "approved_at": "2026-08-01",
-        "plan_sha256": "6e7de827bd1eb2fa0dd0d5a7f14f3c99d7a0d2c2e9b9d5382525ba5242da93ec",
+        "approved_at": "2026-08-02",
+        "plan_sha256": "50f3accd4978267056192e2c2ffa15d8c533aa2bae5f4d28a5efb61dfe8eb088",
         "chain": [
           "m14",
           "m15"
@@ -5114,11 +5110,10 @@
       "stop_reason": null,
       "stop_detail": {},
       "session_ids": [
-        "codex:04d56913-3940-4d5b-a8c1-b298a7ee7aec",
         "claude:04d56913-3940-4d5b-a8c1-b298a7ee7aec"
       ],
       "owner_session_uuid": "claude:04d56913-3940-4d5b-a8c1-b298a7ee7aec",
-      "updated_at": "2026-08-01",
+      "updated_at": "2026-08-02",
       "notes": "Registered atomically by canonical harness approve_harness_plan.py after plan validation."
     }
   }

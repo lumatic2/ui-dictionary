@@ -12,15 +12,7 @@ Goal: Figma 귀환 경로 — 왕복(코드→Figma→사람 디테일링→코�
 
 ## Active Milestones — figma-return-path
 
-<!-- harness:milestone id="M14" status="active" priority="P1" evidence="evidence/figma-return-path/m14-roundtrip-2.md" -->
-### M14 — Figma 귀환 경로 재가동 + 왕복 2회차 실증
-- DoD: 왕복 2회차가 기계화된 회수로 닫힘 — 채널 현행 research doc + 재동기화 idempotency 표(rem 표본 포함) + 스냅숏 장부·diff 스크립트 + 왕복 evidence(사용자 변경 검출→코드 반영→재검증).
-- Evidence: evidence/figma-return-path/m14-roundtrip-2.md
-- Gap: Figma MCP 이 기기 미연결 · SSOT 드리프트(emphasis·status 16변수+타이포 9단계 미동기화) · 회수 절차 미기계화(파일럿 교훈이 규약으로만 잔존).
-- Plan: plans/2026-08-01-m14-figma-return-path-relaunch.md
-- Status: [ ]
-
-<!-- harness:milestone id="M15" status="pending" priority="P2" evidence="evidence/figma-return-path/m15-canonicalize.md" -->
+<!-- harness:milestone id="M15" status="active" priority="P2" evidence="evidence/figma-return-path/m15-canonicalize.md" -->
 ### M15 — 귀환 절차 정본화·배선
 - DoD: 귀환 절차가 정본·스킬·llms 세 표면에 배선 — 계약·방법론 갱신(실측 대조) + llms 노출(check-llms-sync) + figma-codex-workflow 3건 promoted 승격·배포(diff 0).
 - Evidence: evidence/figma-return-path/m15-canonicalize.md
@@ -35,16 +27,6 @@ Goal: 사용법 문서화 + 흡수 지식 사이트 반영. closed 2026-08-01 �
 
 ## Active Milestones — reference-diversification-2
 
-<!-- harness:milestone id="M10" status="completed" priority="P1" evidence="evidence/reference-diversification-2/m10-radix-focus-keyboard-absorption.md" -->
-### M10 — Radix 흡수 (포커스·키보드 규율)
-- DoD: Radix RL 완주 — `knowledge/focus-keyboard.md` + llms 노출 + ledger 1행(radix t2) + 전 검증 체인 PASS.
-- Evidence: evidence/reference-diversification-2/m10-radix-focus-keyboard-absorption.md
-- Gap: 포커스·키보드·ARIA 규율이 knowledge 층에 없음(terms 는 focus-trap 등 3개뿐).
-- Plan: archive/plans/2026-08-01-m10-radix-focus-keyboard-absorption.md
-- Status: [x]
-
-- Completed at: 2026-08-01
-- Summary: knowledge/focus-keyboard 신설·terms 보강 3·radix t2 ledger
 <!-- harness:milestone id="M11" status="completed" priority="P2" evidence="evidence/reference-diversification-2/m11-around-catalog-absorption.md" -->
 ### M11 — Around 흡수 판정 (템플릿 카탈로그 구조)
 - DoD: 근거 있는 A/B/C 판정 마감 — absorption-criteria 실측 표 행 + ledger 1행(around t2) + evidence. 보류(C)도 정당한 완료(수요 미확인 등재 건). goal 마감 시 일괄 push(사용자 승인 후).
