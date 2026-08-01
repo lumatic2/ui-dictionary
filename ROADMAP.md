@@ -1,27 +1,16 @@
 # ROADMAP
 
-> Last updated: 2026-08-01
-> Status: **2026-08-01 `figma-return-path` 개시** — Figma 귀환 경로 재가동+정본화 (M14→M15 연쇄, 사용자 승인 "ㄱㄱ"). 직전 완주: `usage-and-site-surfacing`(M12·M13). 남은 큐: 『인터랙티브 웹 애니메이션』 책 스터디(사용자 주도) · D2 Presenton 벤치(수요 미확인) · Around 재판정(이식 milestone 개방 시).
+> Last updated: 2026-08-02
+> Status: **2026-08-02 `figma-return-path` 완주** — M14(채널 복구·재동기화·회수 기계화·왕복 2회차 무변경 0/0/0)+M15(방법론·계약 두 lane 정본화·llms 등재·스킬 promoted 배포) 연쇄 마감. active goal 0. 남은 큐: 『인터랙티브 웹 애니메이션』 책 스터디(사용자 주도) · D2 Presenton 벤치(수요 미확인) · Around 재판정(이식 milestone 개방 시).
 > North star: Build Askewly Design as both a public reference website and an agent-usable implementation system.
 > line budget: <=150
 
 ## Current Goal
 
-<!-- harness:goal id="figma-return-path" status="active" -->
-Goal: Figma 귀환 경로 — 왕복(코드→Figma→사람 디테일링→코드 회수)을 반복 가능한 능력으로. 7월 파일럿(FW2-1) 1회 수동 완주 이후 갭 3개(채널 단절·SSOT 드리프트·회수 미기계화)를 M14(재가동+왕복 2회차)·M15(정본화·배선) 연쇄로 닫는다. 승인 2026-08-01 "ㄱㄱ".
+<!-- harness:goal id="figma-return-path" status="completed" -->
+Goal: Figma 귀환 경로 — 왕복(코드→Figma→사람 디테일링→코드 회수)을 반복 가능한 능력으로. closed 2026-08-02 — M14(채널 복구·재동기화 rem 보수·스냅숏 장부/diff 기계화·왕복 2회차 무변경 0/0/0) + M15(계약 §3 두 lane 정본화·llms 등재·figma-codex-workflow promoted 배포) 연쇄 완주. Details: `evidence/figma-return-path/` + `docs/reports/2026-08-02-m{14,15}-*.md`.
 
 ## Active Milestones — figma-return-path
-
-<!-- harness:milestone id="M15" status="active" priority="P2" evidence="evidence/figma-return-path/m15-canonicalize.md" -->
-### M15 — 귀환 절차 정본화·배선
-- DoD: 귀환 절차가 정본·스킬·llms 세 표면에 배선 — 계약·방법론 갱신(실측 대조) + llms 노출(check-llms-sync) + figma-codex-workflow 3건 promoted 승격·배포(diff 0).
-- Evidence: evidence/figma-return-path/m15-canonicalize.md
-- Gap: 계약 §5 "FB3 이후 반영" 3건 미반영 · 계약 문서 llms 미등재 · 스킬 in-progress 버킷.
-- Plan: plans/2026-08-01-m15-figma-return-path-canonicalize.md
-- Status: [ ]
-
-<!-- harness:goal-archive22 id="usage-and-site-surfacing" status="completed" -->
-Goal: 사용법 문서화 + 흡수 지식 사이트 반영. closed 2026-08-01 — M12(설치 명령 오기 정정·README Quickstart·templates 인덱스·published CLI E2E) · M13(adaptive-navigation-container 승격 + Judgment guides 4페이지, 759 routes) 연쇄 완주. Details: `evidence/usage-and-site-surfacing/` + `docs/reports/2026-08-01-m{12,13}-*.md`.
 
 ## Active Milestones — usage-and-site-surfacing
 

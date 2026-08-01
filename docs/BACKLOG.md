@@ -785,3 +785,9 @@ plan doc: `archive/plans/2026-07-21-eu*.md` · 증거: `evidence/editor-legibili
   - Completed: 2026-08-02
   - Result: knowledge/focus-keyboard 신설·terms 보강 3·radix t2 ledger
   - Evidence: evidence/reference-diversification-2/m10-radix-focus-keyboard-absorption.md
+
+### 2026-08
+- M15 - M15 — 귀환 절차 정본화·배선
+  - Completed: 2026-08-02
+  - Result: 방법론·계약 두 lane 정본화 + llms 등재 + figma-codex-workflow promoted 승격·배포 (출고 정합 85건 PASS)
+  - Evidence: evidence/figma-return-path/m15-canonicalize.md

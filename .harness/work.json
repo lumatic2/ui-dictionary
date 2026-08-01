@@ -5069,7 +5069,7 @@
     "figma-return-path": {
       "work_id": "figma-return-path",
       "milestone_id": "m15",
-      "status": "active",
+      "status": "completed",
       "plan_path": "plans/2026-08-01-m15-figma-return-path-canonicalize.md",
       "changeset_path": "changesets/20260802-m15-figma-return-path-canonicalize",
       "next_step": "step-1",
@@ -5114,7 +5114,8 @@
       ],
       "owner_session_uuid": "claude:04d56913-3940-4d5b-a8c1-b298a7ee7aec",
       "updated_at": "2026-08-02",
-      "notes": "Registered atomically by canonical harness approve_harness_plan.py after plan validation."
+      "notes": "Registered atomically by canonical harness approve_harness_plan.py after plan validation.",
+      "completion_summary": "귀환 절차 3표면 정본화 — 방법론·계약 갱신, llms 등재, 스킬 promoted 승격·배포"
     }
   }
 }
