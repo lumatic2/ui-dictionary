@@ -736,3 +736,14 @@ plan doc: `archive/plans/2026-07-21-eu*.md` · 증거: `evidence/editor-legibili
   - Completed: 2026-08-01
   - Result: A안(다크 PNG 1200×630) 실배포 — 절대 URL 메타·구 SVG 참조 0·카드 디버거 실증. 보고서 docs/reports/2026-08-01-m4-og-image-dark.md
   - Evidence: evidence/dark-carryover/m4-og-image-dark.md
+
+### 2026-08
+- M7 - M7 — 플랫폼 가이드라인 흡수 (HIG·Material → 모바일 내비게이션·시트)
+  - Completed: 2026-08-01
+  - Result: knowledge/mobile-navigation 신설·terms 보강 7·ledger source 축 — 비Tailwind 첫 RL 완주
+  - Evidence: evidence/reference-diversification/m7-platform-guideline-absorption.md
+
+- DQ2 - DQ2 — 표현 기계 업그레이드
+  - Completed: 2026-08-01
+  - Result: animId 전환·optimize-images(77% 감소)·sourceNote 수리 — 회귀 6종 PASS
+  - Evidence: evidence/deck-quality/dq2-expressive-mechanics.md

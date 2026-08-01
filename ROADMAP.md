@@ -12,14 +12,6 @@ Goal: 레퍼런스 다변화 — Tailwind 편중 해소. 비-Tailwind 소스(Tie
 
 ## Active Milestones — reference-diversification
 
-<!-- harness:milestone id="M7" status="active" priority="P1" evidence="evidence/reference-diversification/m7-platform-guideline-absorption.md" -->
-### M7 — 플랫폼 가이드라인 흡수 (HIG·Material → 모바일 내비게이션·시트)
-- DoD: 비-Tailwind 소스가 RL 전 단계(수집→dedup→승격→검증→ledger) 첫 완주 — knowledge 판정 규칙 ≥1(`knowledge/mobile-navigation.md`) + llms FIXED_ASSETS 노출 + source 축 ledger 1행 + 전 검증 체인 PASS.
-- Evidence: evidence/reference-diversification/m7-platform-guideline-absorption.md
-- Gap: 티어링 정본이 Tier 1 로 지정한 HIG·Material 이 흡수 배관을 한 번도 안 탐 — 리서치 원본(2026-07-04)만 있고 승격 산출물 0건.
-- Plan: plans/2026-08-01-m7-platform-guideline-absorption.md
-- Status: [ ]
-
 <!-- harness:milestone id="M8" status="pending" priority="P1" evidence="evidence/reference-diversification/m8-saas-exemplar-absorption.md" -->
 ### M8 — SaaS exemplar 흡수 (Linear·Vercel/Geist → 대시보드 밀도·저소음 위계)
 - DoD: Tier 2 소스 RL 완주 — `knowledge/dashboard-density.md` + llms 노출 + source 축 ledger 1행 + 전 검증 체인 PASS + 후속 배치 후보(Stripe·Radix·Around) 큐 등재. goal 마감 시 일괄 push(사용자 승인 후).
@@ -40,16 +32,6 @@ Goal: 슬라이드 덱 자체 품질 업그레이드. closed 2026-08-01 — DQ1~
 
 ## Completed Milestones — deck-quality
 
-<!-- harness:milestone id="DQ2" status="completed" priority="P1" evidence="evidence/deck-quality/dq2-expressive-mechanics.md" -->
-### DQ2 — 표현 기계 업그레이드
-- DoD: 장간 연속 전환(opt-in, 실크롬 file:// 실측 또는 폴백 확정) + 이미지 최적화 빌드(용량 실측 개선) + sourceNote 겹침 해소 — HU4 회귀 5종 PASS·미사용 덱 무변화.
-- Evidence: evidence/deck-quality/dq2-expressive-mechanics.md
-- Gap: Auto-Animate·이미지 최적화·sourceNote 배치 3건 이월 finding
-- Plan: plans/2026-07-31-dq2-expressive-mechanics.md
-- Status: [x]
-
-- Completed at: 2026-08-01
-- Summary: animId 전환·optimize-images(77% 감소)·sourceNote 수리 — 회귀 6종 PASS
 <!-- harness:milestone id="DQ3" status="completed" priority="P1" evidence="evidence/deck-quality/dq3-canonical-redesign.md" -->
 ### DQ3 — 정본 덱 리디자인 + 관측
 - DoD: 정본 덱이 루브릭 기준 재제작되어 전/후 감사표 개선 + 전 자동 검증·HU4 회귀·발표 전 체크 PASS + 사용자 관측 PASS.

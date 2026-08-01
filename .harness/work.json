@@ -4924,7 +4924,7 @@
     "reference-diversification": {
       "work_id": "reference-diversification",
       "milestone_id": "m7",
-      "status": "active",
+      "status": "completed",
       "plan_path": "plans/2026-08-01-m7-platform-guideline-absorption.md",
       "changeset_path": "changesets/20260801-m7-platform-guideline-absorption",
       "next_step": "step-1",
@@ -4970,7 +4970,8 @@
       ],
       "owner_session_uuid": "claude:04303d38-d38e-4b75-8d68-635d19f94d4a",
       "updated_at": "2026-08-01",
-      "notes": "Registered atomically by canonical harness approve_harness_plan.py after plan validation."
+      "notes": "Registered atomically by canonical harness approve_harness_plan.py after plan validation.",
+      "completion_summary": "HIG·Material 이 RL 루프를 처음 완주 — mobile-navigation 판정 정본 신설 + terms 보강 7건 + 소스 축 장부화"
     }
   }
 }
