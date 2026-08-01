@@ -288,7 +288,8 @@
       - App drawer
       - Mobile navigation drawer
   one_liner: 화면 한쪽에서 열려 앱의 주요 목적지 목록을 보여주는 내비게이션 패널.
-  description: 모바일이나 앱형 화면에서 메뉴 버튼을 눌러 전체 섹션 이동 목록을 펼친다.
+  description: 모바일이나 앱형 화면에서 메뉴 버튼을 눌러 전체 섹션 이동 목록을 펼친다. M3 Expressive 업데이트부터 신규
+    채택은 비권장이며 확장형 navigation rail이 같은 역할을 대체한다.
   visual_anatomy:
     - drawer surface
     - menu trigger
@@ -298,6 +299,7 @@
     - 주요 이동 경로가 많고 항상 노출하기엔 공간이 부족할 때
   anti_use:
     - 핵심 목적지를 너무 깊게 숨기지 않는다
+    - 한 화면에서 bottom navigation 같은 다른 주 내비게이션과 함께 쓰지 않는다
   prompt_phrases:
     - 메뉴 버튼을 누르면 왼쪽 navigation drawer가 열리게 해줘
   asset:
@@ -308,6 +310,10 @@
   sources:
     - source_id: material-m3-components
       note: navigation drawer component
+  related:
+    - id: navigation-rail
+      relation: compare
+      note: M3 Expressive 기준 신규 제품은 확장형 rail이 drawer의 역할을 대체한다 — 브레이크포인트 적응이 더 낫다.
   confidence: high
 - id: pagination-jump
   status: draft

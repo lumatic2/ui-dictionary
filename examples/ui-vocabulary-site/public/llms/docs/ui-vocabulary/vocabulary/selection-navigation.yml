@@ -100,7 +100,9 @@
       - Bottom nav
       - Navigation bar
   one_liner: 모바일 화면 하단에 주요 목적지를 아이콘과 라벨로 배치한 내비게이션.
-  description: 앱의 최상위 섹션을 엄지로 쉽게 전환하게 한다.
+  description: 앱의 최상위 섹션을 엄지로 쉽게 전환하게 한다. 목적지가 3개 미만이면 tabs가 낫고 5개를 넘으면 navigation
+    rail이나 메뉴로 옮긴다. 목적지 전환 시 섹션별 상태(스크롤·탭·검색)를 보존할지 초기화할지 제품이 정하고 활성 목적지 재선택은
+    최상단 스크롤로 동작한다.
   visual_anatomy:
     - bottom bar
     - destination icons
@@ -113,6 +115,9 @@
   anti_use:
     - 일회성 행동이나 설정을 목적지로 넣지 않는다
     - 항목이 너무 많으면 숨김 메뉴를 검토한다
+    - 좌우 스와이프로 목적지를 전환하지 않는다
+    - 라벨을 지우거나 줄여 넣지 않는다
+    - 스크린리더 사용 중에는 스크롤 시 숨김을 끈다
   prompt_phrases:
     - 모바일 화면 아래에 bottom navigation을 넣어줘
     - 홈 검색 프로필 3개 탭을 하단에 배치해줘
@@ -762,7 +767,9 @@
       - iOS tab bar
       - Mobile tab bar
   one_liner: 앱의 여러 섹션을 전환하는 하단 또는 상단 탭형 내비게이션.
-  description: 각 탭은 앱의 동등한 주요 영역으로 이동하며 아이콘과 라벨을 함께 쓰는 경우가 많다.
+  description: 각 탭은 앱의 동등한 주요 영역으로 이동하며 아이콘과 라벨을 함께 쓰는 경우가 많다. 탭은 내비게이션 전용이고 현재 뷰에
+    작용하는 액션은 toolbar 몫이다. iPadOS에서는 상단 배치에 사이드바 전환형(adaptable)을 지원하고 배지는
+    critical 정보에만 아껴 쓴다.
   visual_anatomy:
     - bar container
     - tab icons
@@ -774,7 +781,8 @@
     - 현재 선택된 섹션을 계속 보여줘야 할 때
   anti_use:
     - 서로 관련 없는 행동 버튼을 탭으로 넣지 않는다
-    - 섹션이 너무 많으면 sidebar나 more 탭을 검토한다
+    - More 탭 overflow가 생길 만큼 탭을 늘리지 말고 sidebar 전환을 검토한다
+    - 내용이 비어도 탭을 숨기거나 비활성화하지 않는다(빈 섹션에 이유를 보여준다)
   prompt_phrases:
     - 하단에 tab bar를 넣고 홈 검색 설정 탭을 보여줘
     - 선택된 탭은 아이콘과 라벨을 강조해줘

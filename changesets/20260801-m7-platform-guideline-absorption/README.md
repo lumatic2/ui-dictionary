@@ -19,3 +19,11 @@
 - **신규 규범 사실**: M3 Expressive 가 navigation drawer 를 비권장으로 내리고 expanded navigation rail 대체 권고 — 2026-07-04 baseline 리서치엔 없던 변화. HIG tab-bars 는 2026-06-08 Liquid Glass 반영판.
 - `docs/research/loop/inbox.yml` 에 batch `20260801-mobile-nav-sheets` 후보 14건 스테이징(전부 `source: tier 1` 필드 포함). 예상대로 신규 term 후보는 사실상 없음 — proposed_artifact 는 alias 7·related 4·term 2(지식 규칙 입력)·계열로, 주 경로 = 기존 항목 보강 + knowledge 결정표.
 - dedup: `node scripts/audit-recipe-candidates.mjs` exit 0, 14 candidates, 19 warnings(전건 dedup_hints 이웃 매치 — 비치명). `audit-ui-vocabulary-candidates.mjs` exit 0.
+
+## step-3 — 승격 + 검증 체인 + ledger (2026-08-01, M7 마감)
+
+- `knowledge/mobile-navigation.md` 신설 — 원칙류 소스의 첫 knowledge 착지(§1 컨테이너 선택 결정표 · §2 행동 계약 7조 · §3 모달 표면 선택표 · §4 모달 깊이 규칙 + 에이전트 판정 절차).
+- llms 배선: `generate-llms-txt.mjs` FIXED_ASSETS Knowledge 섹션 등재 → 재생성(자산 168→169) → llms.txt 노출 문자열 확인.
+- terms.yml 보강 7건(신규 0 — 예상 적중): tab-bar·bottom-navigation·navigation-drawer(+related→navigation-rail)·modal-bottom-sheet·full-screen-dialog·sheet-drag-handle·dialog. YAML 함정(콤마·따옴표 flow scalar) 회피 준수.
+- inbox 비움 + ledger 1행(source=`apple-hig+material (t1)`) — 후보 14건 전건 판정 기록.
+- 검증: validate 2종·build(755 routes)·oxlint(기존 경고만)·lint:colors 0·build:data(terms=563)·audit:visuals(신규 fallback 0) 전 PASS. build:catalog 생략(recipe 0 — 개정 규약 근거 명시). 실브라우저 스모크 `/terms/navigation-drawer` 렌더 확인. check-llms-sync 는 커밋 후 PASS.

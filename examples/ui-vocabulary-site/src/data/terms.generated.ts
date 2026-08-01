@@ -2062,7 +2062,7 @@ export const terms = [
       ]
     },
     "one_liner": "현재 화면 위에 떠서 사용자의 집중 행동을 요구하는 창.",
-    "description": "배경을 덮고 제목, 내용, 행동 버튼을 보여주며 닫기 전까지 주의를 모은다.",
+    "description": "배경을 덮고 제목, 내용, 행동 버튼을 보여주며 닫기 전까지 주의를 모은다. 제목은 모호한 질문이나 경고 문구를 피하고 무엇을 결정하는지 구체적으로 묻는다.",
     "visual_anatomy": [
       "backdrop",
       "dialog surface",
@@ -2078,7 +2078,9 @@ export const terms = [
     ],
     "anti_use": [
       "단순 안내는 toast나 banner가 낫다",
-      "긴 복잡한 작업은 별도 페이지나 drawer가 적합할 수 있다"
+      "긴 복잡한 작업은 별도 페이지나 drawer가 적합할 수 있다",
+      "행동 버튼은 확인과 해제 2개까지만 두고 Learn more 같은 제3의 이동 버튼을 넣지 않는다",
+      "모달 위에 다른 모달을 쌓지 않는다"
     ],
     "prompt_phrases": [
       "삭제 확인 modal을 띄워줘",
@@ -4983,7 +4985,7 @@ export const terms = [
       ]
     },
     "one_liner": "모바일 화면 하단에 주요 목적지를 아이콘과 라벨로 배치한 내비게이션.",
-    "description": "앱의 최상위 섹션을 엄지로 쉽게 전환하게 한다.",
+    "description": "앱의 최상위 섹션을 엄지로 쉽게 전환하게 한다. 목적지가 3개 미만이면 tabs가 낫고 5개를 넘으면 navigation rail이나 메뉴로 옮긴다. 목적지 전환 시 섹션별 상태(스크롤·탭·검색)를 보존할지 초기화할지 제품이 정하고 활성 목적지 재선택은 최상단 스크롤로 동작한다.",
     "visual_anatomy": [
       "bottom bar",
       "destination icons",
@@ -4997,7 +4999,10 @@ export const terms = [
     ],
     "anti_use": [
       "일회성 행동이나 설정을 목적지로 넣지 않는다",
-      "항목이 너무 많으면 숨김 메뉴를 검토한다"
+      "항목이 너무 많으면 숨김 메뉴를 검토한다",
+      "좌우 스와이프로 목적지를 전환하지 않는다",
+      "라벨을 지우거나 줄여 넣지 않는다",
+      "스크린리더 사용 중에는 스크롤 시 숨김을 끈다"
     ],
     "prompt_phrases": [
       "모바일 화면 아래에 bottom navigation을 넣어줘",
@@ -5040,7 +5045,7 @@ export const terms = [
       ]
     },
     "one_liner": "앱의 여러 섹션을 전환하는 하단 또는 상단 탭형 내비게이션.",
-    "description": "각 탭은 앱의 동등한 주요 영역으로 이동하며 아이콘과 라벨을 함께 쓰는 경우가 많다.",
+    "description": "각 탭은 앱의 동등한 주요 영역으로 이동하며 아이콘과 라벨을 함께 쓰는 경우가 많다. 탭은 내비게이션 전용이고 현재 뷰에 작용하는 액션은 toolbar 몫이다. iPadOS에서는 상단 배치에 사이드바 전환형(adaptable)을 지원하고 배지는 critical 정보에만 아껴 쓴다.",
     "visual_anatomy": [
       "bar container",
       "tab icons",
@@ -5054,7 +5059,8 @@ export const terms = [
     ],
     "anti_use": [
       "서로 관련 없는 행동 버튼을 탭으로 넣지 않는다",
-      "섹션이 너무 많으면 sidebar나 more 탭을 검토한다"
+      "More 탭 overflow가 생길 만큼 탭을 늘리지 말고 sidebar 전환을 검토한다",
+      "내용이 비어도 탭을 숨기거나 비활성화하지 않는다(빈 섹션에 이유를 보여준다)"
     ],
     "prompt_phrases": [
       "하단에 tab bar를 넣고 홈 검색 설정 탭을 보여줘",
@@ -7046,7 +7052,7 @@ export const terms = [
       ]
     },
     "one_liner": "화면 한쪽에서 열려 앱의 주요 목적지 목록을 보여주는 내비게이션 패널.",
-    "description": "모바일이나 앱형 화면에서 메뉴 버튼을 눌러 전체 섹션 이동 목록을 펼친다.",
+    "description": "모바일이나 앱형 화면에서 메뉴 버튼을 눌러 전체 섹션 이동 목록을 펼친다. M3 Expressive 업데이트부터 신규 채택은 비권장이며 확장형 navigation rail이 같은 역할을 대체한다.",
     "visual_anatomy": [
       "drawer surface",
       "menu trigger",
@@ -7057,7 +7063,8 @@ export const terms = [
       "주요 이동 경로가 많고 항상 노출하기엔 공간이 부족할 때"
     ],
     "anti_use": [
-      "핵심 목적지를 너무 깊게 숨기지 않는다"
+      "핵심 목적지를 너무 깊게 숨기지 않는다",
+      "한 화면에서 bottom navigation 같은 다른 주 내비게이션과 함께 쓰지 않는다"
     ],
     "prompt_phrases": [
       "메뉴 버튼을 누르면 왼쪽 navigation drawer가 열리게 해줘"
@@ -7073,6 +7080,13 @@ export const terms = [
       {
         "source_id": "material-m3-components",
         "note": "navigation drawer component"
+      }
+    ],
+    "related": [
+      {
+        "id": "navigation-rail",
+        "relation": "compare",
+        "note": "M3 Expressive 기준 신규 제품은 확장형 rail이 drawer의 역할을 대체한다 — 브레이크포인트 적응이 더 낫다."
       }
     ],
     "confidence": "high"
@@ -12207,7 +12221,7 @@ export const terms = [
       ]
     },
     "one_liner": "배경을 어둡게 막고 하단에서 올라와 사용자의 선택을 요구하는 모바일 시트.",
-    "description": "중요한 선택, 확인, 짧은 폼처럼 완료 전까지 현재 화면 조작을 막아야 할 때 쓴다.",
+    "description": "중요한 선택, 확인, 짧은 폼처럼 완료 전까지 현재 화면 조작을 막아야 할 때 쓴다. 초기 높이는 화면의 절반을 넘기지 않고 더 긴 내용은 전체 화면으로 확장한 뒤 내부 스크롤로 처리한다(전체 화면 확장 시 닫기 버튼 필수).",
     "visual_anatomy": [
       "scrim",
       "bottom sheet",
@@ -12390,7 +12404,7 @@ export const terms = [
       ]
     },
     "one_liner": "모바일에서 복잡한 작업을 별도 화면처럼 전체 화면으로 여는 모달.",
-    "description": "작은 dialog나 bottom sheet에 담기 어려운 편집, 작성, 설정 흐름을 현재 맥락 위의 전체 화면 작업으로 만든다.",
+    "description": "작은 dialog나 bottom sheet에 담기 어려운 편집, 작성, 설정 흐름을 현재 맥락 위의 전체 화면 작업으로 만든다. 키보드 입력 폼이나 즉시 저장되지 않는 변경이 선택 기준이고 compact 화면 전용이다(큰 화면에서는 basic dialog로 전환). 확인 버튼은 Send나 Create 같은 구체 동사를 쓰고 비활성화하지 않으며 미저장 닫기에는 확인 다이얼로그를 띄운다.",
     "visual_anatomy": [
       "full-screen surface",
       "close button",
@@ -12793,7 +12807,7 @@ export const terms = [
       ]
     },
     "one_liner": "바텀 시트를 끌어올리거나 내릴 수 있음을 알려주는 작은 손잡이 표시.",
-    "description": "하단 시트 상단에 짧은 막대 형태로 놓여 사용자가 드래그 가능한 레이어임을 인식하게 한다.",
+    "description": "하단 시트 상단에 짧은 막대 형태로 놓여 사용자가 드래그 가능한 레이어임을 인식하게 한다. 핸들 탭으로 detent(정지 높이)를 순환할 수 있어야 하고 스크린리더 사용자의 리사이즈 경로도 이 핸들이 담당한다.",
     "visual_anatomy": [
       "rounded handle bar",
       "sheet top edge",

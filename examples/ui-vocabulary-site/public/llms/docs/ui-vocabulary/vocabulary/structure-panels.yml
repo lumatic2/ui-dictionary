@@ -107,7 +107,8 @@
       - Modal
       - Modal dialog
   one_liner: 현재 화면 위에 떠서 사용자의 집중 행동을 요구하는 창.
-  description: 배경을 덮고 제목, 내용, 행동 버튼을 보여주며 닫기 전까지 주의를 모은다.
+  description: 배경을 덮고 제목, 내용, 행동 버튼을 보여주며 닫기 전까지 주의를 모은다. 제목은 모호한 질문이나 경고 문구를 피하고
+    무엇을 결정하는지 구체적으로 묻는다.
   visual_anatomy:
     - backdrop
     - dialog surface
@@ -122,6 +123,8 @@
   anti_use:
     - 단순 안내는 toast나 banner가 낫다
     - 긴 복잡한 작업은 별도 페이지나 drawer가 적합할 수 있다
+    - 행동 버튼은 확인과 해제 2개까지만 두고 Learn more 같은 제3의 이동 버튼을 넣지 않는다
+    - 모달 위에 다른 모달을 쌓지 않는다
   prompt_phrases:
     - 삭제 확인 modal을 띄워줘
     - 화면 중앙에 dialog를 열고 취소와 삭제 버튼을 넣어줘

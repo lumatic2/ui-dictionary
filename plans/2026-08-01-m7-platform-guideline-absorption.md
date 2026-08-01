@@ -48,7 +48,7 @@ Status: approved (사용자 승인 2026-08-01 "ㄱㄱ" — 연쇄 M7→M8 일괄
   - Failure probe: 기존 563 용어에 tab bar·sheet 류가 이미 있을 가능성 높음 — "전부 중복이라 승격분 0" 이면 신규 항목이 아니라 기존 항목의 플랫폼 규범 필드 보강으로 전환(그 판정을 capture 문서에 기록).
   - Commit: changeset `m7-platform-guideline-absorption` (README 절: step-2).
 
-- [ ] **step-3 — 승격 + 검증 체인 + ledger (M7 마감)**
+- [x] **step-3 — 승격 + 검증 체인 + ledger (M7 마감)**
   - Artifact: `knowledge/mobile-navigation.md` 신설(내비게이션·모달리티 선택 판정 규칙 — 탭바/스택/시트/다이얼로그/드로어를 태스크 깊이·플랫폼으로 가르는 결정표, knowledge 양식: 지위+결정표+판정 절차+Changelog) + **llms 노출 배선(필수 — generate-llms-txt.mjs 는 knowledge/ 를 glob 하지 않고 `FIXED_ASSETS` 수동 배열, fresh 검증자 실측)**: FIXED_ASSETS Knowledge 섹션에 항목 추가 + 재생성 산출물 커밋 + terms.yml 승격분(신규 또는 기존 항목 보강) + (해당 시) recipe. inbox 비우기 + `docs/research/loop/ledger.md` 1행(source=apple-hig+material) + `evidence/reference-diversification/m7-platform-guideline-absorption.md`.
   - Files: write knowledge/mobile-navigation.md, scripts/generate-llms-txt.mjs(FIXED_ASSETS Knowledge 섹션), examples/ui-vocabulary-site/public/llms.txt·public/llms/(재생성 산출물), docs/ui-vocabulary/terms.yml, docs/research/loop/ledger.md, docs/research/loop/inbox.yml(비움), evidence/reference-diversification/m7-platform-guideline-absorption.md. read docs/design-system/entry-protocol.md(knowledge 신규 파일의 에이전트 진입 배선 필요 여부).
   - Risk: 위험 (terms.yml 은 사이트·llms 정본 데이터 — 검증 체인 전체로 회귀 차단)

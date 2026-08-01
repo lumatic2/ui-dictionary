@@ -104,6 +104,14 @@ const FIXED_ASSETS = [
           "(60fps.design, landing.love), and the media boundary note for pre-rendered video (Remotion)",
       ],
       [
+        "knowledge/mobile-navigation.md",
+        "Mobile navigation & modality container selection rules (Apple HIG x Material 3): one " +
+          "primary nav per screen with a destination-count/breakpoint decision table (nav drawer " +
+          "deprecated by M3 Expressive — prefer expanded rail), nav behavior contract (no swipe " +
+          "switching, preserve-vs-reset state, no hidden tabs), modal surface choice by task weight " +
+          "(snackbar/dialog/modal sheet/full-screen dialog/detents), and the modal-depth-of-one rule",
+      ],
+      [
         "knowledge/slide-principles.md",
         "What makes a good presentation slide: 5 convergent principles from 8 master lineages " +
           "(one message per slide, title-as-assertion with Penn State evidence, visual evidence over " +

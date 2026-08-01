@@ -56,7 +56,9 @@
       - Fullscreen dialog
       - Full-screen modal
   one_liner: 모바일에서 복잡한 작업을 별도 화면처럼 전체 화면으로 여는 모달.
-  description: 작은 dialog나 bottom sheet에 담기 어려운 편집, 작성, 설정 흐름을 현재 맥락 위의 전체 화면 작업으로 만든다.
+  description: 작은 dialog나 bottom sheet에 담기 어려운 편집, 작성, 설정 흐름을 현재 맥락 위의 전체 화면 작업으로
+    만든다. 키보드 입력 폼이나 즉시 저장되지 않는 변경이 선택 기준이고 compact 화면 전용이다(큰 화면에서는 basic dialog로
+    전환). 확인 버튼은 Send나 Create 같은 구체 동사를 쓰고 비활성화하지 않으며 미저장 닫기에는 확인 다이얼로그를 띄운다.
   visual_anatomy:
     - full-screen surface
     - close button
@@ -379,7 +381,8 @@
       - Blocking bottom sheet
       - Modal sheet
   one_liner: 배경을 어둡게 막고 하단에서 올라와 사용자의 선택을 요구하는 모바일 시트.
-  description: 중요한 선택, 확인, 짧은 폼처럼 완료 전까지 현재 화면 조작을 막아야 할 때 쓴다.
+  description: 중요한 선택, 확인, 짧은 폼처럼 완료 전까지 현재 화면 조작을 막아야 할 때 쓴다. 초기 높이는 화면의 절반을 넘기지
+    않고 더 긴 내용은 전체 화면으로 확장한 뒤 내부 스크롤로 처리한다(전체 화면 확장 시 닫기 버튼 필수).
   visual_anatomy:
     - scrim
     - bottom sheet
@@ -566,7 +569,8 @@
       - Grabber
       - Bottom sheet handle
   one_liner: 바텀 시트를 끌어올리거나 내릴 수 있음을 알려주는 작은 손잡이 표시.
-  description: 하단 시트 상단에 짧은 막대 형태로 놓여 사용자가 드래그 가능한 레이어임을 인식하게 한다.
+  description: 하단 시트 상단에 짧은 막대 형태로 놓여 사용자가 드래그 가능한 레이어임을 인식하게 한다. 핸들 탭으로 detent(정지
+    높이)를 순환할 수 있어야 하고 스크린리더 사용자의 리사이즈 경로도 이 핸들이 담당한다.
   visual_anatomy:
     - rounded handle bar
     - sheet top edge
