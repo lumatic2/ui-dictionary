@@ -38,7 +38,7 @@ Status: approved (사용자 승인 2026-08-01 "ㄱㄱ" — 연쇄 M12→M13 일�
   - Failure probe: 오기가 사이트 한 곳이 아닐 수 있음(빌드 산출물·다른 docs 페이지·README) — 전수 grep 이 정본, 발견분 전부 정정.
   - Commit: changeset `m12-usage-docs-alignment` (README 절: step-1).
 
-- [ ] **step-2 — 사람용 Quickstart 정본 신설**
+- [x] **step-2 — 사람용 Quickstart 정본 신설**
   - Artifact: README "How to use in a new project" 절(install → init → add → verify 4단계 + 사이트 Getting set up·llms.txt 링크) + `templates/README.md` **신규 작성**(각 템플릿 용도·적용 순서·전제 — 현재 부재 확인됨) + `methodology/design-md-guide.md` 외부 스크립트 의존 경고 1줄.
   - Files: write README.md, templates/README.md, methodology/design-md-guide.md. read templates/(전 파일 목록), docs/design-system/cli-registry-contract.md.
   - Risk: 기계적 (문서 신설 — 코드 무변경)

@@ -27,6 +27,17 @@ Different media get different gates. Screens are checked for states and dark mod
 - The agent-facing system under `docs/design-system/` — entry protocol, style signature, tokens, recipes, anti-patterns.
 - Authoring, search, mobile, export, and deployment workflows documented under `docs/ui-vocabulary/`.
 
+## How to use in a new project
+
+The canonical human walkthrough is the site's [Getting set up](https://ui.askewly.com/docs/getting-started-setup) page — Explore → Acquire → Inject → Verify. The short version:
+
+1. **Explore** — browse [ui.askewly.com](https://ui.askewly.com/) to pick the screen context (Marketing / Application UI / Ecommerce), then narrow down to the terms and recipes you need.
+2. **Install** — `npm install -D @askewly/design` (published CLI; offline data bundle, no remote fetch).
+3. **Inject** — `npx askewly-design init` scaffolds `DESIGN.md` + `tokens.css`; `npx askewly-design add <recipe-id>` injects a recipe's code excerpt with its checks and anti-patterns. Look things up with `npx askewly-design terms search <query>` / `recipes list` / `tokens`.
+4. **Verify** — dark mode, interaction states, responsive boundaries, and accessibility, per the checklist in Getting set up §4.
+
+Bootstrap templates (DESIGN.md starter, CLAUDE.md design section, VRT scaffolds, Brief Studio) live in [templates/](templates/README.md). Working with a coding agent instead? Point it at `https://ui.askewly.com/llms.txt`.
+
 ## Map
 
 - North star: `CLAUDE.md` 「북극성」 절

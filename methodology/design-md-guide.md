@@ -4,6 +4,8 @@
 
 > **⚠ 공식 스펙 정합 (2026-07-19, VB1)** — 정본 스펙은 Google Labs `google-labs-code/design.md`(version: alpha)로 확인됨: frontmatter는 `name/colors/typography/rounded/spacing/components`의 **flat 스키마**이고, 본문은 고정 순서 8섹션(Overview → Colors → Typography → Layout → Elevation & Depth → Shapes → Components → Do's and Don'ts, 생략 가능·순서 고정), 토큰 참조는 `{path.to.token}`. **아래 본문의 "3-tier(primitive→semantic)" 서술은 공식 규칙이 아니라 본 레포의 확장 관례다** — 공식 스키마는 primitive 계층이 없고 unknown-key를 허용하므로, 시맨틱 네이밍(`surface`/`on-surface`/`muted`)을 flat map 안에서 쓰는 것으로 같은 규율을 달성한다. 신규 파일은 `templates/DESIGN.md.tmpl`(공식 스키마 정합판)에서 출발할 것. 근거·원문: `research/2026-07-19-vb1-stitch-design-md.md`.
 
+> **⚠ 외부 스크립트 의존 (2026-08-01, M12)** — 본문 §7·시나리오가 참조하는 lint/빌드 스크립트(`~/projects/design-manual/scripts/...`, `init-design.sh`, `propagate.sh`)는 **저자 로컬 도구**로 이 레포에 포함돼 있지 않다. 이 레포만 clone 한 제3자는 `templates/DESIGN.md.tmpl` 에서 출발하고, 토큰·레시피 주입은 published CLI(`npm install -D @askewly/design` → `npx askewly-design init|add`)를 쓴다 — `templates/README.md` 참조.
+
 ## 0. 첫 30 분 — 어디부터 손대는가
 
 순서대로 채우면 막히지 않는다.

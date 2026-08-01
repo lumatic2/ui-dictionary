@@ -9,3 +9,10 @@ Date: 2026-08-01 · Goal: `usage-and-site-surfacing` (연쇄 1/2) · Plan: `plan
 - **생성물 재생성**: `build:catalog`(recipe-sources.generated.ts 에 물질화된 사본 1건 해소 — 잔존 grep 0), llms 재생성(entry-protocol 변경분).
 - **상호 링크**: entry-protocol.md 의 사람용 루프 언급에 실제 URL(`/docs/getting-started-setup`) + README §How to use 참조 추가.
 - 검증: grep 잔존 0 · site build(prerender 755) PASS.
+
+## step-2 — 사람용 Quickstart 정본 신설
+
+- **README §How to use in a new project**: Explore→Install→Inject→Verify 4단계 + 사이트 Getting set up·templates·llms.txt 링크. 사이트 페이지가 사람용 루프의 정본, README 는 요약+링크(이중 정본 방지).
+- **`templates/README.md` 신규**: 12개 템플릿 파일의 용도·적용 순서 인덱스 + `$DESIGN_HARNESS_ROOT`(저자 로컬 design-manual) 의존 조각 명시 — 제3자는 CLI 경로로 우회.
+- **`methodology/design-md-guide.md`**: 외부 스크립트 의존 경고 블록 1개 추가(제3자 대체 경로 = DESIGN.md.tmpl + published CLI).
+- 검증: 상대 링크 실존 확인 · 명령 표기 step-1 정본과 정합(grep) · 구표기 잔존 0.
