@@ -1,13 +1,34 @@
 # ROADMAP
 
 > Last updated: 2026-08-01
-> Status: **2026-08-01 goal 6개 완주 세션** — 최신: `usage-and-site-surfacing`(M12 설치 경로 정합+Quickstart · M13 adaptive-navigation-container 승격+Judgment guides 4페이지). active goal 0. 남은 큐: 『인터랙티브 웹 애니메이션』 책 스터디(사용자 주도) · D2 Presenton 벤치(수요 미확인) · Around 재판정(이식 milestone 개방 시).
+> Status: **2026-08-01 `figma-return-path` 개시** — Figma 귀환 경로 재가동+정본화 (M14→M15 연쇄, 사용자 승인 "ㄱㄱ"). 직전 완주: `usage-and-site-surfacing`(M12·M13). 남은 큐: 『인터랙티브 웹 애니메이션』 책 스터디(사용자 주도) · D2 Presenton 벤치(수요 미확인) · Around 재판정(이식 milestone 개방 시).
 > North star: Build Askewly Design as both a public reference website and an agent-usable implementation system.
 > line budget: <=150
 
 ## Current Goal
 
-<!-- harness:goal id="usage-and-site-surfacing" status="completed" -->
+<!-- harness:goal id="figma-return-path" status="active" -->
+Goal: Figma 귀환 경로 — 왕복(코드→Figma→사람 디테일링→코드 회수)을 반복 가능한 능력으로. 7월 파일럿(FW2-1) 1회 수동 완주 이후 갭 3개(채널 단절·SSOT 드리프트·회수 미기계화)를 M14(재가동+왕복 2회차)·M15(정본화·배선) 연쇄로 닫는다. 승인 2026-08-01 "ㄱㄱ".
+
+## Active Milestones — figma-return-path
+
+<!-- harness:milestone id="M14" status="active" priority="P1" evidence="evidence/figma-return-path/m14-roundtrip-2.md" -->
+### M14 — Figma 귀환 경로 재가동 + 왕복 2회차 실증
+- DoD: 왕복 2회차가 기계화된 회수로 닫힘 — 채널 현행 research doc + 재동기화 idempotency 표(rem 표본 포함) + 스냅숏 장부·diff 스크립트 + 왕복 evidence(사용자 변경 검출→코드 반영→재검증).
+- Evidence: evidence/figma-return-path/m14-roundtrip-2.md
+- Gap: Figma MCP 이 기기 미연결 · SSOT 드리프트(emphasis·status 16변수+타이포 9단계 미동기화) · 회수 절차 미기계화(파일럿 교훈이 규약으로만 잔존).
+- Plan: plans/2026-08-01-m14-figma-return-path-relaunch.md
+- Status: [ ]
+
+<!-- harness:milestone id="M15" status="pending" priority="P2" evidence="evidence/figma-return-path/m15-canonicalize.md" -->
+### M15 — 귀환 절차 정본화·배선
+- DoD: 귀환 절차가 정본·스킬·llms 세 표면에 배선 — 계약·방법론 갱신(실측 대조) + llms 노출(check-llms-sync) + figma-codex-workflow 3건 promoted 승격·배포(diff 0).
+- Evidence: evidence/figma-return-path/m15-canonicalize.md
+- Gap: 계약 §5 "FB3 이후 반영" 3건 미반영 · 계약 문서 llms 미등재 · 스킬 in-progress 버킷.
+- Plan: plans/2026-08-01-m15-figma-return-path-canonicalize.md
+- Status: [ ]
+
+<!-- harness:goal-archive22 id="usage-and-site-surfacing" status="completed" -->
 Goal: 사용법 문서화 + 흡수 지식 사이트 반영. closed 2026-08-01 — M12(설치 명령 오기 정정·README Quickstart·templates 인덱스·published CLI E2E) · M13(adaptive-navigation-container 승격 + Judgment guides 4페이지, 759 routes) 연쇄 완주. Details: `evidence/usage-and-site-surfacing/` + `docs/reports/2026-08-01-m{12,13}-*.md`.
 
 ## Active Milestones — usage-and-site-surfacing
@@ -19,7 +40,7 @@ Goal: 사용법 문서화 + 흡수 지식 사이트 반영. closed 2026-08-01 �
 - DoD: Radix RL 완주 — `knowledge/focus-keyboard.md` + llms 노출 + ledger 1행(radix t2) + 전 검증 체인 PASS.
 - Evidence: evidence/reference-diversification-2/m10-radix-focus-keyboard-absorption.md
 - Gap: 포커스·키보드·ARIA 규율이 knowledge 층에 없음(terms 는 focus-trap 등 3개뿐).
-- Plan: plans/2026-08-01-m10-radix-focus-keyboard-absorption.md
+- Plan: archive/plans/2026-08-01-m10-radix-focus-keyboard-absorption.md
 - Status: [x]
 
 - Completed at: 2026-08-01
@@ -29,7 +50,7 @@ Goal: 사용법 문서화 + 흡수 지식 사이트 반영. closed 2026-08-01 �
 - DoD: 근거 있는 A/B/C 판정 마감 — absorption-criteria 실측 표 행 + ledger 1행(around t2) + evidence. 보류(C)도 정당한 완료(수요 미확인 등재 건). goal 마감 시 일괄 push(사용자 승인 후).
 - Evidence: evidence/reference-diversification-2/m11-around-catalog-absorption.md
 - Gap: 기존 캡처(2026-07-04)가 판정 없이 방치 — 흡수/보류 어느 쪽도 기록 안 됨.
-- Plan: plans/2026-08-01-m11-around-catalog-absorption.md
+- Plan: archive/plans/2026-08-01-m11-around-catalog-absorption.md
 - Status: [x]
 
 <!-- harness:goal-archive21 id="reference-diversification" status="completed" -->
@@ -52,7 +73,7 @@ Goal: 레퍼런스 다변화 — Tailwind 편중 해소 1라운드. closed 2026-
 - DoD: askewly-design-intro 가 HU1~3 전 기능으로 라이브 리허설 통과 + 발표 게이트 명문화(대비·프로젝터 체크) + 사용자 관측 1회.
 - Evidence: evidence/html-upgrade/hu4-live-proof.md
 - Gap: 스킬 기능만으로는 실사용 품질 미보장(PB2 교훈 — 실덱 관측 필수)
-- Plan: plans/2026-07-31-hu4-live-proof.md
+- Plan: archive/plans/2026-07-31-hu4-live-proof.md
 - Status: [x]
 
 <!-- harness:goal-archive17 id="pptx-bespoke" status="completed" -->
@@ -75,7 +96,7 @@ Goal: PPTX 고품질 bespoke 트랙 — 덱 전용 코드 생성+PNG 자기검�
 <!-- harness:milestone id="QA1" status="skipped" priority="P1" evidence="evidence/site-polish/qa1-copy-language.md" -->
 ### QA1 — 한/영 혼용 카피 정책 정본화 + 셸 적용
 - DoD: (원안) 셸 자기-목소리 한국어 전환. **회귀 마감(2026-07-31)** — 랜딩 전환본을 사용자가 관측 후 기각, 영어 단일 확정. 산출물로 `docs/design-system/copy-language.md`(영어 단일 정책 기록)+llms 배선은 남김.
-- Plan: plans/2026-07-31-qa1-copy-language-policy.md
+- Plan: archive/plans/2026-07-31-qa1-copy-language-policy.md
 - Status: [x] **회귀(2026-07-31)** — 사유: 취향 관측 기각. 교훈: 언어·톤 결정은 실물 시안 관측 먼저.
 
 <!-- harness:milestone id="VI7" status="completed" priority="P1" evidence="evidence/visual-impact-consolidation/vi7-placement.md" -->

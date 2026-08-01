@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "active_work_id": "usage-and-site-surfacing",
+  "active_work_id": "figma-return-path",
   "works": {
     "SFB1": {
       "title": "Structure Contract And Clean Production",
@@ -5065,6 +5065,61 @@
       "updated_at": "2026-08-01",
       "notes": "Registered atomically by canonical harness approve_harness_plan.py after plan validation.",
       "completion_summary": "knowledge 결정표가 실동작 레시피와 사이트 Judgment guides 4페이지로 사람 표면에 반영됨"
+    },
+    "figma-return-path": {
+      "work_id": "figma-return-path",
+      "milestone_id": "m14",
+      "status": "active",
+      "plan_path": "plans/2026-08-01-m14-figma-return-path-relaunch.md",
+      "changeset_path": "changesets/20260801-m14-figma-return-path-relaunch",
+      "next_step": "step-1",
+      "current_step": "step-1",
+      "steps": [
+        {
+          "id": "step-1",
+          "label": "step-1 — 채널 복구 + 현행 실측 (research)"
+        },
+        {
+          "id": "step-2",
+          "label": "step-2 — SSOT 드리프트 재동기화 (나가는 방향 재가동)"
+        },
+        {
+          "id": "step-3",
+          "label": "step-3 — 승격 스냅숏 장부 기계화 (귀환의 전제 도구)"
+        },
+        {
+          "id": "step-4",
+          "label": "step-4 — 왕복 2회차 실증 (통합 검증, human gate)"
+        }
+      ],
+      "execution_mode": "continuous",
+      "approval": {
+        "approved_by": "user",
+        "approved_at": "2026-08-01",
+        "plan_sha256": "6e7de827bd1eb2fa0dd0d5a7f14f3c99d7a0d2c2e9b9d5382525ba5242da93ec",
+        "chain": [
+          "m14",
+          "m15"
+        ]
+      },
+      "allowed_stop_reasons": [
+        "completed",
+        "blocked",
+        "decision_required",
+        "risk_gate",
+        "secret_required",
+        "external_authority_required",
+        "user_stopped"
+      ],
+      "stop_reason": null,
+      "stop_detail": {},
+      "session_ids": [
+        "codex:04d56913-3940-4d5b-a8c1-b298a7ee7aec",
+        "claude:04d56913-3940-4d5b-a8c1-b298a7ee7aec"
+      ],
+      "owner_session_uuid": "claude:04d56913-3940-4d5b-a8c1-b298a7ee7aec",
+      "updated_at": "2026-08-01",
+      "notes": "Registered atomically by canonical harness approve_harness_plan.py after plan validation."
     }
   }
 }
