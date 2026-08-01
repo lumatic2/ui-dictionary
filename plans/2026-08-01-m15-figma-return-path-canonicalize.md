@@ -30,7 +30,7 @@ Status: approved (사용자 승인 2026-08-01 "ㄱㄱ" — 연쇄 M14→M15 일�
 
 ## Step 트리
 
-- [ ] **step-1 — 방법론·계약 갱신**
+- [x] **step-1 — 방법론·계약 갱신**
   - Artifact: `methodology/figma-workflow.md` §2⑤·§3 도구 좌표를 기계화 회수(스냅숏 장부·diff 스크립트)로 갱신 + Changelog(2회차 교훈) · `docs/design-system/figma-bridge-contract.md` §3 에 "사람 디테일링 회수 lane" 명문화(흡수 lane 과 구분) + §1 채널 표 현행화(M14 research 반영) + Changelog.
   - Files: write methodology/figma-workflow.md, docs/design-system/figma-bridge-contract.md. read evidence/figma-return-path/m14-roundtrip-2.md, research/2026-08-01-m14-figma-channel-recheck.md.
   - Risk: 기계적 (문서 — 단 계약은 정본이라 M14 실측과 문장 단위 대조)
@@ -39,7 +39,7 @@ Status: approved (사용자 승인 2026-08-01 "ㄱㄱ" — 연쇄 M14→M15 일�
   - Failure probe: M14 가 partial(디테일링 무변경)로 닫힌 경우 — 검증 안 된 문장은 정본에 넣지 않고 "미실증" 표기로 구분.
   - Commit: changeset `m15-figma-return-path-canonicalize` (README 절: step-1).
 
-- [ ] **step-2 — agent-facing 노출 (llms 배선)**
+- [x] **step-2 — agent-facing 노출 (llms 배선)**
   - Artifact: `scripts/generate-llms-txt.mjs` FIXED_ASSETS 에 figma-bridge-contract 등재(미등재 시) + 재생성 산출물 + 사이트 검증 체인.
   - Files: write scripts/generate-llms-txt.mjs, examples/ui-vocabulary-site/public/llms.txt·public/llms/(재생성).
   - Risk: 기계적 (생성기 — check-llms-sync 게이트)
@@ -48,7 +48,7 @@ Status: approved (사용자 승인 2026-08-01 "ㄱㄱ" — 연쇄 M14→M15 일�
   - Failure probe: FIXED_ASSETS 수동 등재 누락(생성기가 docs/design-system glob 안 할 수 있음 — knowledge 선례와 동일 함정)을 등재 후 문자열 확인으로 차단.
   - Commit: changeset `m15-figma-return-path-canonicalize` (README 절: step-2).
 
-- [ ] **step-3 — figma-codex-workflow 스킬 갱신 3건 + 배포 (cross-repo)**
+- [x] **step-3 — figma-codex-workflow 스킬 갱신 3건 + 배포 (cross-repo)**
   - Artifact: `~/projects/custom-skills/` 원본에서 계약 §5 의 3건 반영 — ① Tool Rules 에 Claude Code 주력 채널(원격 Figma MCP·figma-use 리소스 로드) 명시 ② 계정 이원화 주의(`whoami` 선행) ③ Askewly 레포 한정 소비 좌표로 계약 문서 링크 — 후 `setup.sh` 배포.
   - Files: write ~/projects/custom-skills/**/figma-codex-workflow/SKILL.md(원본 — 정확 경로는 실행 시 확인). read docs/design-system/figma-bridge-contract.md §5.
   - Risk: 기계적 (스킬 텍스트 — 배포 멱등)
@@ -63,8 +63,11 @@ Status: approved (사용자 승인 2026-08-01 "ㄱㄱ" — 연쇄 M14→M15 일�
 - **회귀 게이트**: 사이트 build·lint + llms 기존 등재 자산 무손실(check-llms-sync).
 
 ## finding 큐
-- (실행 중 발견 항목)
+- 스킬 원본 실사: 계약 §5 의 3건(주력 채널·whoami 선행·계약 링크)은 in-progress 원본에 **이미 반영돼 있었음** — 미반영은 버킷(배포 여부)이었지 내용이 아니었다. 실작업 = M14 신규 교훈 반영(§Code To Figma 7·9) + promoted 승격 + ask-yusung 라우터 등재(출고 게이트 적발) + 배포.
+- 배포본 diff 검증 함정: setup.sh 가 frontmatter description 을 슬리밍 변환("Skill available…")하고 줄끝이 CRLF 로 바뀜 — 원본↔배포본 대조는 본문(frontmatter 제외)+`--strip-trailing-cr` 기준.
 
 ## 진행 로그
 - 2026-08-01 작성.
 - 2026-08-01 fresh 검증자(sonnet) 반영 — figma-codex-workflow 가 `in-progress/` 버킷 실측(배포 전제 깨짐) → 승격 여부를 사용자 결정으로 승격, step-1 Verify 를 grep 재현 가능형으로 교체. FIXED_ASSETS 미등재·M14/M15 ID 무충돌 확인됨.
+- 2026-08-02 step-1·2 완료 — 방법론·계약 갱신(grep 대조 PASS) + llms 배선(lint:llms·build 759 routes PASS). 커밋 30cb26f.
+- 2026-08-02 step-3 완료 — 스킬 promoted 승격+교훈 반영+라우터 등재+배포(본문 diff 0·출고 정합 85건 PASS), custom-skills push. finding 2건 기록.
