@@ -49,6 +49,9 @@ const SCOPES = [
   [/^typography\/scale\//, ['FONT_SIZE']],
   [/^typography\/weight\//, ['FONT_WEIGHT']],
   [/^typography\/font\//, ['FONT_FAMILY']],
+  [/^dimension\/size\//, ['WIDTH_HEIGHT']],
+  [/^dimension\/z-index\//, []], // Figma에 대응 scope 없음 — picker 비노출
+  [/^motion\/duration\//, []], // Figma에 대응 scope 없음 — picker 비노출
 ];
 const scopesFor = (name) => SCOPES.find(([re]) => re.test(name))[1];
 
@@ -69,7 +72,8 @@ function walk(node, path) {
     } else if (typeof val === 'object' && 'colorSpace' in val) {
       primitives.push({ name, type: 'COLOR', value: colorValue(val) });
     } else if (typeof val === 'object' && 'unit' in val) {
-      primitives.push({ name, type: 'FLOAT', value: val.value });
+      // Figma FLOAT 변수는 px 기준 — rem 토큰은 ×16 환산 (px·ms는 수치 그대로)
+      primitives.push({ name, type: 'FLOAT', value: val.unit === 'rem' ? val.value * 16 : val.value });
     } else if (Array.isArray(val)) {
       primitives.push({ name, type: 'STRING', value: val[0] });
     } else if (typeof val === 'number') {

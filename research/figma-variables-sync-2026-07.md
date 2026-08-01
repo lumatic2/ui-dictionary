@@ -33,6 +33,20 @@ Milestone: FB3 (horizon: `docs/horizons/2026-07-figma-bridge.md`)
 
 데모 프레임 "askewly token demo" (node `2:2`): light/dark 카드 2장 — `setExplicitVariableModeForCollection`으로 모드 분기, `surface/base` fill·`border/default` stroke·`text/default`/`text/muted`·`button/bg`/`button/text` 바인딩. 스크린샷으로 모드별 alias 해석 확인(light=흰 surface+violet 버튼, dark=gray/12 surface+gray/1 버튼 — SSOT dark 값 그대로).
 
+## Changelog — 2026-08-01 재동기화 (M14 step-2)
+
+SSOT 드리프트(M2 emphasis·status + M6 타이포 스케일 등) 반영 재실행. 스크립트 보수 2건 선행: ① rem→px ×16 환산(`'unit' in val` 분기가 px/rem 미구분이던 결함 — fresh 검증자 적발) ② 신규 경로 scope 등재(`dimension/size`→WIDTH_HEIGHT, `dimension/z-index`·`motion/duration`→`[]` 비노출).
+
+| 실행 | 컬렉션 | created | updated | removed | unresolved |
+|---|---|---|---|---|---|
+| 1차 | `askewly/primitive` | **35** | 38 | 0 | — |
+| 1차 | `askewly/semantic` | **18** | 21 | 0 | 0 |
+| 2차 (idempotency) | `askewly/primitive` | **0** | 73 | 0 | — |
+| 2차 (idempotency) | `askewly/semantic` | **0** | 39 | 0 | 0 |
+
+- 총 73 primitive + 39 semantic/component alias (7월: 38+21).
+- rem 표본 대조 PASS: `typography/scale/2xs`=10 · `xs`=12 · `3xl`=30 · `5xl`=48 · `7xl`=72 (rem×16), `base`=16 · `touch-target-min`=44 · `motion/duration/overlay`=200 (원값 유지).
+
 ## 남긴 것 / 후속
 
 - 재동기화 절차: SSOT 변경 → 1~2번 재실행 (upsert라 안전, `askewly/*` 컬렉션 밖은 절대 안 건드림)

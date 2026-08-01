@@ -39,7 +39,7 @@ Status: approved (사용자 승인 2026-08-01 "ㄱㄱ" — 연쇄 M14→M15 일�
   - Failure probe: 유료화·플랜 게이트로 `use_figma` 쓰기 차단 시 — 실측 근거를 research doc에 남기고 decision_required 정지(대안 채널 재판정은 사용자 결정).
   - Commit: changeset `m14-figma-return-path-relaunch` (README 절: step-1).
 
-- [ ] **step-2 — SSOT 드리프트 재동기화 (나가는 방향 재가동)**
+- [x] **step-2 — SSOT 드리프트 재동기화 (나가는 방향 재가동)**
   - Artifact: `node scripts/generate-figma-variables-sync.mjs` 재실행 → 신규 토큰(emphasis·status 17변수 + 타이포 스케일 9단계 등) upsert + 2차 실행 idempotency 재검증 → 결과 표를 `research/figma-variables-sync-2026-07.md` Changelog 절 append(동결 본문 불변) 또는 신규 기록.
   - Files: read tokens/askewly.tokens.json, scripts/generate-figma-variables-sync.mjs. write tmp/figma-sync-*.js(gitignored), research 기록.
   - Risk: 기계적 (upsert·소유 경계 내 — 계약 §2.4)
@@ -82,3 +82,4 @@ Status: approved (사용자 승인 2026-08-01 "ㄱㄱ" — 연쇄 M14→M15 일�
 - 2026-08-01 작성.
 - 2026-08-01 fresh 검증자(sonnet) 반영 — step-2 rem/px 미구분 결함(확인됨) probe 승격·Verify 에 rem 표본 필수화, step-4 중간 커밋 체크포인트, 변수 수치 17→16 정정.
 - 2026-08-01 step-1 완료 — MCP 재등록+OAuth(SKKU)+실측 3항 verify 전부 PASS. 산출물 `research/2026-08-01-m14-figma-channel-recheck.md`. 발견: 도구 노출에 세션 재시작 불필요(FB1 대비), get_metadata 페이지 목록 불완전 함정.
+- 2026-08-01 step-2 완료 — 생성기 보수(rem×16 + scope 3경로) 후 재동기화: 1차 35/18 created → 2차 idempotent 0/0 PASS, rem 표본 8종 대조 PASS(2xs=10…7xl=72). 예고된 failure probe(스키마 확장 미지원)를 실제로 부딪혀 해소 — DoD 실패 모드 요건 충족.
