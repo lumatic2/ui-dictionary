@@ -143,7 +143,9 @@
       - Checkout stepper
       - Purchase step
   one_liner: 배송, 결제, 확인처럼 구매 흐름의 현재 단계를 보여주는 구조.
-  description: 사용자가 결제 흐름에서 어디에 있고 다음에 무엇을 해야 하는지 알게 한다.
+  description: 사용자가 결제 흐름에서 어디에 있고 다음에 무엇을 해야 하는지 알게 한다. 마찰의 본체는 단계 수가 아니라 재입력 양이다
+    — 단일/다단 레이아웃은 기기와 태스크로 정하고, 원클릭 지불 버튼(월렛류)을 폼 위에 병렬 경로로 먼저 보여줘 폼 입력 자체를 건너뛸
+    수 있게 한다.
   visual_anatomy:
     - step indicator
     - current step

@@ -1,103 +1,14 @@
-batch: "20260801-checkout-flow"
-surface: "commerce"
-candidates:
-  - id: inline-realtime-payment-validation
-    name: Inline Real-Time Payment Validation
-    pattern_group: forms
-    proposed_artifact: alias
-    source: { tier: 2, url: "https://stripe.com/payments/elements", accessed: "2026-08-01" }
-    summary: "Card inputs validate while typing with input masking, card-brand identification from the first digits, and card-specific CVC hints so errors are caught before submit."
-    anatomy: ["masked card field", "brand icon from first digits", "CVC hint per brand", "realtime error state"]
-    transferable: "Validate-while-typing rule for payment forms"
-    non_transferable: "Stripe visual styling"
-    dedup_hints: ["credit-card-form", "input-mask", "inline-validation"]
-  - id: descriptive-localized-error-messages
-    name: Descriptive Localized Error Messages
-    pattern_group: forms
-    proposed_artifact: alias
-    source: { tier: 2, url: "https://stripe.com/payments/checkout", accessed: "2026-08-01" }
-    summary: "Checkout errors are descriptive and localized - they say what to fix, appear at the field, and even highlight likely email domain typos before capture."
-    anatomy: ["field-level error text", "localized copy", "email typo highlight"]
-    transferable: "Error copy contract for conversion-critical forms"
-    non_transferable: "none"
-    dedup_hints: ["error-message", "form-validation-summary", "inline-validation"]
-  - id: checkout-address-autocomplete
-    name: Checkout Address Autocomplete
-    pattern_group: forms
-    proposed_artifact: alias
-    source: { tier: 2, url: "https://stripe.com/payments/checkout", accessed: "2026-08-01" }
-    summary: "Address entry uses suggestions plus validation to cut keystrokes and prevent wrong-destination shipping and misapplied tax."
-    anatomy: ["autocomplete suggestions", "validated address block", "edit affordance"]
-    transferable: "Autocomplete-first address entry rule"
-    non_transferable: "provider branding"
-    dedup_hints: ["address-autocomplete", "address-form"]
-  - id: express-checkout-parallel-path
-    name: Express Checkout Parallel Path
-    pattern_group: commerce
-    proposed_artifact: term
-    source: { tier: 2, url: "https://stripe.com/payments/elements", accessed: "2026-08-01" }
-    summary: "One-click wallet buttons (Apple Pay, Google Pay, Link) sit above the manual form as a parallel path that skips form entry entirely, with 'or pay another way' fallback."
-    anatomy: ["wallet button row above form", "or-divider", "manual form fallback"]
-    transferable: "Skip-the-form-first layout rule for checkout"
-    non_transferable: "wallet brand assets"
-    dedup_hints: ["wallet-button", "checkout-step", "payment-method-card"]
-  - id: dynamic-payment-method-surfacing
-    name: Dynamic Payment Method Surfacing
-    pattern_group: commerce
-    proposed_artifact: alias
-    source: { tier: 2, url: "https://stripe.com/payments/checkout", accessed: "2026-08-01" }
-    summary: "Payment methods, currency, and language are chosen dynamically by customer location and preference instead of a fixed global list - local methods measurably lift conversion."
-    anatomy: ["location-aware method list", "local currency display", "localized labels"]
-    transferable: "Context-driven method and currency selection rule"
-    non_transferable: "conversion percentage claims"
-    dedup_hints: ["payment-method-card", "currency-switcher"]
-  - id: saved-payment-one-click-reuse
-    name: Saved Payment One-Click Reuse
-    pattern_group: commerce
-    proposed_artifact: alias
-    source: { tier: 2, url: "https://stripe.com/payments/elements", accessed: "2026-08-01" }
-    summary: "Returning customers get autofilled payment and shipping from saved details with one-time-code verification on new devices - re-entry elimination is the strongest friction cut."
-    anatomy: ["saved detail autofill", "change affordance per block", "OTC verification on new device"]
-    transferable: "Re-entry elimination principle for repeat checkout"
-    non_transferable: "Link branding"
-    dedup_hints: ["saved-payment-methods", "one-click-checkout"]
-  - id: checkout-trust-framing
-    name: Checkout Trust Framing
-    pattern_group: commerce
-    proposed_artifact: term
-    source: { tier: 2, url: "https://stripe.com/payments/checkout", accessed: "2026-08-01" }
-    summary: "Return policy, support contact, terms links, and statement-descriptor notice ('appears on your statement as X') are shown inside the checkout surface to raise buyer confidence."
-    anatomy: ["policy links", "support contact", "statement descriptor notice"]
-    transferable: "Trust-signal placement rule inside payment surfaces"
-    non_transferable: "compliance claims wording"
-    dedup_hints: ["incentive-trust-strip", "trust-badges"]
-  - id: hosted-embedded-composable-spectrum
-    name: Hosted-Embedded-Composable Checkout Spectrum
-    pattern_group: commerce
-    proposed_artifact: related
-    source: { tier: 2, url: "https://stripe.com/payments/checkout", accessed: "2026-08-01" }
-    summary: "Checkout ships as an explicit control-vs-cost spectrum: hosted full page, embedded single-iframe form with single or multistep layouts, composable elements, and no-code links."
-    anatomy: ["hosted page", "embedded form", "composable elements", "payment link"]
-    transferable: "Integration-depth decision axis for flow surfaces"
-    non_transferable: "Stripe product names as taxonomy"
-    dedup_hints: ["checkout-step", "wizard"]
-  - id: third-party-autofill-respect
-    name: Third-Party Autofill Respect
-    pattern_group: forms
-    proposed_artifact: alias
-    source: { tier: 2, url: "https://stripe.com/payments/elements", accessed: "2026-08-01" }
-    summary: "Forms accept browser and third-party autofill plus authentication-service fill instead of blocking them, with dynamic numeric keypad and card scanning on mobile."
-    anatomy: ["autofill-compatible fields", "numeric keypad trigger", "card scan entry"]
-    transferable: "Never-block-autofill rule and mobile input affordances"
-    non_transferable: "none"
-    dedup_hints: ["credit-card-form", "mobile-form-field-stack"]
-  - id: checkout-upsell-restraint
-    name: Checkout Upsell Restraint
-    pattern_group: commerce
-    proposed_artifact: alias
-    source: { tier: 2, url: "https://stripe.com/payments/checkout", accessed: "2026-08-01" }
-    summary: "Cross-sell appears as a single suggested add-on and quantities adjust inline - upsells never fork the checkout into extra pages."
-    anatomy: ["single add-on suggestion", "inline quantity stepper"]
-    transferable: "Upsell restraint rule inside conversion flows"
-    non_transferable: "none"
-    dedup_hints: ["cross-sell-related-strip", "quantity-stepper"]
+batch: ""            # <YYYYMMDD>-<surface>
+surface: ""          # pattern-taxonomy.md §2의 표면 id 중 하나
+candidates: []
+# candidate 스키마:
+# - id: kebab-slug
+#   name: Title Case Name
+#   pattern_group: pattern-taxonomy.md의 10 group 중 하나
+#   proposed_artifact: recipe | term | alias | related
+#   source: { tier: 0|1|2|3, url: "https://...", accessed: "YYYY-MM-DD" }
+#   summary: "1-2문장 — 무엇이고 언제 쓰나"
+#   anatomy: ["관찰된 구조 요소"]
+#   transferable: "흡수할 것"
+#   non_transferable: "복사하지 않을 것 (브랜드 아이덴티티 등)"
+#   dedup_hints: ["근접한 기존 recipe/term id"]

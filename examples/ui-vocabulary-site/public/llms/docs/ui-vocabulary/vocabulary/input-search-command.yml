@@ -19,7 +19,8 @@
       - Address search autocomplete
       - Location autocomplete
   one_liner: 사용자가 주소 일부를 입력하면 후보 위치나 주소를 제안하는 모바일 입력.
-  description: 배달, 지도, 프로필 주소 입력에서 긴 주소를 끝까지 치지 않고 선택하게 한다.
+  description: 배달, 지도, 프로필 주소 입력에서 긴 주소를 끝까지 치지 않고 선택하게 한다. 체크아웃에서는 오배송과 세금 오적용을
+    막는 검증 장치를 겸하므로 제안 선택 후 확정된 주소 블록과 수정 진입점을 함께 보여준다.
   visual_anatomy:
     - address input
     - location icon

@@ -488,7 +488,8 @@
       - Error message
       - Helper text
   one_liner: 입력값의 오류나 도움말을 필드 근처에서 알려주는 문구.
-  description: 어떤 값이 왜 잘못됐고 어떻게 고쳐야 하는지 입력 요소 바로 아래에 표시한다.
+  description: 어떤 값이 왜 잘못됐고 어떻게 고쳐야 하는지 입력 요소 바로 아래에 표시한다. 전환이 걸린 폼(결제 등)에서는 타이핑 중
+    실시간으로 검증하고 문구는 로컬라이즈하며 이메일 도메인 오타처럼 예측 가능한 실수는 제출 전에 하이라이트한다.
   visual_anatomy:
     - field
     - error color

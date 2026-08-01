@@ -104,6 +104,15 @@ const FIXED_ASSETS = [
           "(60fps.design, landing.love), and the media boundary note for pre-rendered video (Remotion)",
       ],
       [
+        "knowledge/checkout-flow.md",
+        "Checkout & conversion-flow rules (Stripe): friction is re-entry not step count — " +
+          "wallet one-click path above the form, never block autofill, address autocomplete as " +
+          "validation; inline validate-while-typing with descriptive localized errors and " +
+          "preemptive typo highlights; trust framing inside the surface (policy links, statement " +
+          "descriptor notice); payment methods/currency/language chosen dynamically by context; " +
+          "upsell restraint (one inline add-on, no forked pages)",
+      ],
+      [
         "knowledge/dashboard-density.md",
         "Dashboard density & low-noise hierarchy rules (Linear 2026 refresh x Geist): density is " +
           "not noise — keep information, cut borders/icon excess/brightness competition; attention " +

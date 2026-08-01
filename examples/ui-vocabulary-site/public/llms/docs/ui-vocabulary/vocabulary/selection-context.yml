@@ -55,7 +55,8 @@
       - Payment card selector
       - Billing method card
   one_liner: 신용카드나 계좌 같은 결제수단을 선택하고 관리하는 카드.
-  description: 브랜드, 마지막 번호, 만료일, 기본 결제수단 여부, 선택 상태를 보여준다.
+  description: 브랜드, 마지막 번호, 만료일, 기본 결제수단 여부, 선택 상태를 보여준다. 노출할 결제수단 목록은 고정이 아니라 사용자
+    위치·선호 기반으로 동적으로 고르고 통화·언어도 함께 로컬라이즈하는 것이 전환 정석이다.
   visual_anatomy:
     - payment brand
     - masked number

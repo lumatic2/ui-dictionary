@@ -39,7 +39,7 @@ Status: approved (사용자 승인 2026-08-01 "ㄱㄱ" — 연쇄 M9→M10→M11
   - Failure probe: checkout 계열 기존 terms(checkout-*, payment-*) 다수 예상 — 전부 중복이면 보강 전환 판정 기록.
   - Commit: changeset `m9-stripe-checkout-absorption` (README 절: step-1).
 
-- [ ] **step-2 — 승격 + 검증 체인 + ledger (M9 마감)**
+- [x] **step-2 — 승격 + 검증 체인 + ledger (M9 마감)**
   - Artifact: `knowledge/checkout-flow.md` 신설(결제 플로우 판정 규칙 — 인라인 검증·에러 복구·신뢰 프레이밍·단계 축소·로컬라이제이션, knowledge 양식) + **llms 배선(필수)**: FIXED_ASSETS 등재 + 재생성 산출물 커밋 + terms 보강분 + inbox 비움 + ledger 1행(source=stripe (t2)) + `evidence/reference-diversification-2/m9-stripe-checkout-absorption.md`.
   - Files: write knowledge/checkout-flow.md, scripts/generate-llms-txt.mjs(FIXED_ASSETS), examples/ui-vocabulary-site/public/llms.txt·public/llms/(재생성), docs/ui-vocabulary/terms.yml, docs/research/loop/ledger.md, docs/research/loop/inbox.yml(비움), evidence/reference-diversification-2/m9-stripe-checkout-absorption.md.
   - Risk: 위험 (terms.yml 정본 데이터 — 검증 체인으로 차단)
