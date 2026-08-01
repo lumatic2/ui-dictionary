@@ -30,7 +30,7 @@ Status: approved (사용자 승인 2026-08-01 "ㄱㄱ" — 연쇄 M7→M8 일괄
 
 ## Step 트리
 
-- [ ] **step-1 — RL 배관 보수: ledger 소스 열 + 원칙류 착지 규칙**
+- [x] **step-1 — RL 배관 보수: ledger 소스 열 + 원칙류 착지 규칙**
   - Artifact: `docs/research/loop/ledger.md` 표에 `source` 열 추가(기존 행은 `tailwind` 소급 기입 — inbox.yml 은 candidate 스키마에 `source:{tier,url,accessed}` 가 **이미 존재**하므로 변경 불요, fresh 검증자 실측 2026-08-01) + `docs/design-system/absorption-criteria.md` 에 원칙류(플랫폼 가이드라인) 착지 분기(A 를 "recipe 또는 knowledge 규칙"으로 확장) 1절 보강 + `research/reference-loop.md` 절차문 개정: ledger source 열 반영 · 검증 체인에 `lint:llms`(M5 신설) 추가 · CLI `build:data`·캔버스 `build:catalog` 는 recipe 승격이 있는 배치만 필수임을 명문화.
   - Files: write docs/research/loop/ledger.md, docs/design-system/absorption-criteria.md, research/reference-loop.md. read docs/research/loop/inbox.yml, scripts/audit-recipe-candidates.mjs(source 필드 기존 검증 로직 확인).
   - Risk: 기계적 (문서·표 열 추가 — 코드 무변경)

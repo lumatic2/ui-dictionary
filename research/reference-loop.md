@@ -50,11 +50,14 @@ Milestone: RL (`docs/plans/2026-07-12-rl-reference-loop-pipeline.md`)
 ```bash
 python scripts/validate-recipes.py
 python scripts/validate-ui-vocabulary.py
-node scripts/generate-llms-txt.mjs
+node scripts/generate-tokens.mjs && node scripts/generate-llms-txt.mjs
+node scripts/check-llms-sync.mjs        # llms 정합 게이트 (M5 신설) — 재생성 결과와 커밋본 diff 0
 cd examples/ui-vocabulary-site && npm run build && npm run lint
-npm run build:data      # CLI 쪽 (repo root 또는 CLI 패키지 — 기존 CLI 스크립트 계약 그대로)
-cd packages/component-registry && npm run build:catalog   # 캔버스 recipe 카탈로그 재생성 (FW 배선)
+npm run build:data      # CLI 쪽 — recipe 승격이 있는 배치만 필수 (아래 주석)
+cd packages/component-registry && npm run build:catalog   # 캔버스 recipe 카탈로그 재생성 — recipe 승격이 있는 배치만 필수
 ```
+
+- **`build:data`·`build:catalog` 는 recipe 승격이 있는 배치만 필수다** (M7 명문화, 2026-08-01): 두 명령의 입력은 recipes/terms 데이터이고, knowledge 규칙·term 보강만 있는 배치는 catalog 산출물이 변하지 않는다. 단 term 신규/보강이 있으면 `build:data` 는 실행한다(terms.json 재번들). 생략 시 ledger `verification` 에 생략 사유를 명시한다.
 
 - `validate-recipes.py`는 recipe-format.md §검증 계약 8개 항목을 검사한다 (frontmatter 필수값, id/파일명 일치, pattern_group/kind/surface_refs 대조, tokens_used 실존·리터럴 금지, 8개 섹션 존재, code_asset/component_refs/term_refs 실존).
 - `validate-ui-vocabulary.py`는 신규/갱신 term의 category/kind/group 정합을 검사한다.
@@ -107,6 +110,7 @@ cd packages/component-registry && npm run build:catalog   # 캔버스 recipe 카
 | `batch` | inbox의 `batch` 값과 동일 (조인 키) |
 | `date` | 흡수 완료일 |
 | `surface` | 배치 표면 |
+| `source` | 배치의 주 소스 id(+tier) — 예: `apple-hig+material (t1)`, `linear+vercel-geist (t2)`. 소스 편중을 장부에서 측정하는 축 (M7 신설, 2026-08-01. 그 이전 행은 "tailwind 주도(소급)") |
 | `collected` | 수집 후보 수 (recipe 후보 + 용어 후보) |
 | `duplicates_filtered` | dedup 단계에서 제외/강등된 수 |
 | `promoted (artifacts)` | 실제 승격된 recipe id/term id 목록 |
@@ -118,7 +122,7 @@ cd packages/component-registry && npm run build:catalog   # 캔버스 recipe 카
 (2026-07-12 정정 — 20260712-commerce 배치에서 실측) `scripts/generate-llms-txt.mjs`의 recipe 섹션은 `collectRecipes()`가 `recipes/**/*.md`를 glob으로 **자동 발견**한다. `FIXED_ASSETS`는 원칙/토큰/taxonomy/계약 문서 전용 고정 목록이다. RL 범위에서는:
 
 - 신규 recipe 승격 시 llms.txt 등록 작업이 **필요 없다** — `node scripts/generate-llms-txt.mjs` 재실행으로 자동 반영된다.
-- 신규 *비-recipe* SSOT 문서(원칙·taxonomy 급)를 llms.txt에 노출하려면 그때만 `FIXED_ASSETS`에 수동 추가한다.
+- 신규 *비-recipe* SSOT 문서(원칙·taxonomy 급, **`knowledge/<topic>.md` 판정 규칙 포함**)를 llms.txt에 노출하려면 그때만 `FIXED_ASSETS`에 수동 추가한다. 원칙류 소스(플랫폼 가이드라인) 배치의 knowledge 착지는 `docs/design-system/absorption-criteria.md` §원칙류 소스가 정본이다 (M7).
 - 캔버스 component-registry 배선 등 그 밖의 자동 공급은 이 milestone 범위 밖이며 FW milestone으로 유보한다 (계획서 Scope 참조).
 
 ## 배포 게이트
@@ -128,6 +132,7 @@ cd packages/component-registry && npm run build:catalog   # 캔버스 recipe 카
 
 ## Changelog
 
+- 2026-08-01: M7 — ledger `source` 열 신설(소스 편중 측정 축) · 검증 체인에 generate-tokens + check-llms-sync(M5 게이트) 추가 · `build:data`/`build:catalog` 는 recipe 승격 배치만 필수로 명문화 · 원칙류 소스의 knowledge 착지를 absorption-criteria §원칙류 소스로 배선.
 - 2026-07-17: taste 경로 증설 — 판단(취향) 흡수는 `research/taste-loop.md` 계약을 따른다 (RL=커버리지 흡수, taste=기존 판단 자산 갱신. 관찰 중 신규 recipe 후보가 나오면 이 문서의 inbox로 넘어온다).
 - 2026-07-12: 초판. vocabulary 흡수 루프를 pattern/recipe 흡수로 이식하는 5단계 절차, inbox 스키마, ledger 규약, llms.txt 수동 등록 절차를 확정.
 - 2026-07-12: 3배치 실증 회고 fold — ① llms.txt recipe 등록은 glob 자동 발견으로 정정(FIXED_ASSETS는 비-recipe 문서 전용) ② dedup은 적응 전 1회 실행·출력 캡처, 승격 후 자기 매치는 정상 ③ 자동 audit이 놓치는 이형 표현 중복은 이웃 terms.yml 수동 대조로 잡는다 ④ terms.yml unquoted flow-sequence 내 따옴표 금지.
