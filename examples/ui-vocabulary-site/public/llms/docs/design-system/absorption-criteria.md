@@ -48,6 +48,7 @@ Audience: 에이전트 + 시스템 관리자.
 | 3d-spatial-landing-reference-pack | **B** | 공간형 랜딩 8사이트 — `knowledge/motion-references.md` §공간형 랜딩에 링크 반영(VI6) (VI7) |
 | 60fps.design · landing.love | **B** | 큐레이션 갤러리 — 기법이 아닌 관찰 소스, motion-references 북마크 (VI7) |
 | remotion | **B** | 사전 렌더 영상 매체 — 화면 티어 비대상, motion-references §영상 매체(KG 노드 링크)로 커버 (VI7) |
+| Around/Createx (템플릿 카탈로그·패키징) | **C** | 이식물 = 패키징·customizer 원리인데 소비처("이식 가능한 제품" 축)가 milestone 미개방 — 사용자 판정 "이르다"(2026-08-01). 원리는 `research/around-template-system-capture.md` 에 동결(재서술 = 열화 복제). 이식/패키징 milestone active 시 A 재검 (M11) |
 
 ## 운용
 

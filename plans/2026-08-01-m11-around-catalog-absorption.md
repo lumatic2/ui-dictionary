@@ -29,7 +29,7 @@ Status: approved (사용자 승인 2026-08-01 "ㄱㄱ" — 연쇄 M9→M10→M11
 
 ## Step 트리
 
-- [ ] **step-1 — 기존 캡처 정독 + 재확인 + A/B/C 판정**
+- [x] **step-1 — 기존 캡처 정독 + 재확인 + A/B/C 판정**
   - Artifact: `research/around-template-system-capture.md` 정독 + Around 사이트 실브라우저 최소 재확인(카탈로그 구조 변동 여부, 접근일 갱신) → 판정 메모 `research/2026-08-01-m11-around-verdict.md`(A/B/C + 근거 + 산출물 계획).
   - Files: write research/2026-08-01-m11-around-verdict.md. read research/around-template-system-capture.md, docs/design-system/absorption-criteria.md.
   - Risk: 기계적 (읽기+판정 문서)
@@ -38,7 +38,7 @@ Status: approved (사용자 승인 2026-08-01 "ㄱㄱ" — 연쇄 M9→M10→M11
   - Failure probe: 사이트가 개편·소멸됐을 수 있음 — 접근 불가면 기존 캡처만으로 판정하고 그 한계를 명시.
   - Commit: changeset `m11-around-catalog-absorption` (README 절: step-1).
 
-- [ ] **step-2 — 판정 집행 + ledger (M11·goal 마감)**
+- [x] **step-2 — 판정 집행 + ledger (M11·goal 마감)**
   - Artifact: step-1 판정대로 집행 — A: 소폭 승격(기존 문서 보강 또는 knowledge 신설+llms 등재) / B: absorption-criteria 실측 표에 행 추가(링크 참조) / C: 보류 근거를 absorption-criteria 표 + ledger 에 기록. 공통: inbox 사용 시 비움 + ledger 1행 + `evidence/reference-diversification-2/m11-around-catalog-absorption.md` + goal 마감 요약(일괄 push 승인 요청으로 정지).
   - Files: write docs/design-system/absorption-criteria.md(실측 표 행), docs/research/loop/ledger.md, evidence/reference-diversification-2/m11-around-catalog-absorption.md. (A 판정 시) knowledge/ 또는 해당 문서 + scripts/generate-llms-txt.mjs + 재생성 산출물.
   - Risk: 기계적 (판정 집행 — terms 대량 변경 없음 예상. A 판정으로 정본 데이터를 만지면 검증 체인 전체로 승격)
