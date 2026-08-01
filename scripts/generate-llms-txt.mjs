@@ -104,6 +104,14 @@ const FIXED_ASSETS = [
           "(60fps.design, landing.love), and the media boundary note for pre-rendered video (Remotion)",
       ],
       [
+        "knowledge/dashboard-density.md",
+        "Dashboard density & low-noise hierarchy rules (Linear 2026 refresh x Geist): density is " +
+          "not noise — keep information, cut borders/icon excess/brightness competition; attention " +
+          "budget (nav recedes after arrival, compact chrome), whitespace-before-borders order, " +
+          "two-tier page background cap, hover/active from adjacent scale steps (never new hues), " +
+          "and the two-step text hierarchy rule",
+      ],
+      [
         "knowledge/mobile-navigation.md",
         "Mobile navigation & modality container selection rules (Apple HIG x Material 3): one " +
           "primary nav per screen with a destination-count/breakpoint decision table (nav drawer " +

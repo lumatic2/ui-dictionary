@@ -523,7 +523,8 @@
       - Density control
       - Row density selector
   one_liner: 테이블 행 간격을 compact, default, spacious처럼 바꾸는 컨트롤.
-  description: 데이터 밀도와 읽기 편안함 사이를 사용자가 선택하게 한다.
+  description: 데이터 밀도와 읽기 편안함 사이를 사용자가 선택하게 한다. 밀도와 소음은 다른 축이다 — 조밀한 보기에서도 정보량은
+    유지하고 보더·아이콘·밝기 같은 소음만 줄이는 방향이 정석이다.
   visual_anatomy:
     - density buttons
     - table rows

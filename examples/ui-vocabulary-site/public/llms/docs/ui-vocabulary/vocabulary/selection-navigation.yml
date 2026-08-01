@@ -687,7 +687,8 @@
       - Side navigation
       - Sidebar menu
   one_liner: 화면 옆에 메뉴 목록을 세로로 배치한 내비게이션.
-  description: 섹션, 하위 메뉴, active 상태를 함께 보여주며 관리 도구에 자주 쓰인다.
+  description: 섹션, 하위 메뉴, active 상태를 함께 보여주며 관리 도구에 자주 쓰인다. 사용자가 목적지에 도착한 뒤에는
+    시각적으로 후퇴해야 한다 — 본문 작업 영역보다 어둡거나 낮은 대비로 두어 주의 경쟁을 피한다.
   visual_anatomy:
     - side panel
     - nav items

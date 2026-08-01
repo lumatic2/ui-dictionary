@@ -40,7 +40,7 @@ Status: approved (사용자 승인 2026-08-01 "ㄱㄱ" — 연쇄 M7→M8 일괄
   - Failure probe: 대시보드 용어(data table·kpi card 등)는 기존 흡수분과 중복 확률 높음 — 승격분 0 이면 기존 항목의 밀도·위계 규범 보강으로 전환하고 판정 기록.
   - Commit: changeset `m8-saas-exemplar-absorption` (README 절: step-1).
 
-- [ ] **step-2 — 승격 + 검증 체인 + ledger (M8·goal 마감)**
+- [x] **step-2 — 승격 + 검증 체인 + ledger (M8·goal 마감)**
   - Artifact: `knowledge/dashboard-density.md` 신설(밀도 티어·행높이·보더/구분선 소음·위계 판정 결정표, knowledge 양식) + **llms 노출 배선(필수)**: `scripts/generate-llms-txt.mjs` FIXED_ASSETS Knowledge 섹션 등재 + 재생성 산출물 커밋 + terms.yml 승격/보강분 + (해당 시) recipe. inbox 비우기 + ledger 1행(source 축) + `evidence/reference-diversification/m8-saas-exemplar-absorption.md` + Stripe·Radix·Around 후속 배치 후보 finding 큐 등재.
   - Files: write knowledge/dashboard-density.md, scripts/generate-llms-txt.mjs(FIXED_ASSETS), examples/ui-vocabulary-site/public/llms.txt·public/llms/(재생성 산출물), docs/ui-vocabulary/terms.yml, docs/research/loop/ledger.md, docs/research/loop/inbox.yml(비움), evidence/reference-diversification/m8-saas-exemplar-absorption.md.
   - Risk: 위험 (terms.yml 정본 데이터 변경 — 검증 체인으로 차단)
@@ -55,7 +55,9 @@ Status: approved (사용자 승인 2026-08-01 "ㄱㄱ" — 연쇄 M7→M8 일괄
 - **회귀 게이트**: 사이트 build·lint + audit:visuals + ledger 기존 행 무손실.
 
 ## finding 큐
-- (실행 중 발견 항목)
+- 후속 배치 후보(수요 발생 시 새 milestone 로): ① Stripe — 결제·체크아웃 플로우 표면(t2) ② Radix — 접근성 프리미티브·포커스 규율 표면(t2) ③ Around — 템플릿 카탈로그 구조(t2, 우선순위 최하).
+- 프로세스 교훈(표면 밖 보류): Linear 의 피처 플래그 + 전후 토글 리프레시 롤아웃 — UI 규칙이 아니라 롤아웃 방법론이라 이번 흡수에서 제외, 필요 시 methodology/ 후보.
+- proposed_artifact 어휘에 enrichment 개념 부재(M7 ledger amendments 재확인) — 차기 RL 절차 갱신 후보.
 
 ## 진행 로그
 - 2026-08-01 작성.

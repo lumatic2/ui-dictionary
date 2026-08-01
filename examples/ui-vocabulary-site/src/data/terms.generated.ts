@@ -1328,7 +1328,7 @@ export const terms = [
       ]
     },
     "one_liner": "화면 옆에 메뉴 목록을 세로로 배치한 내비게이션.",
-    "description": "섹션, 하위 메뉴, active 상태를 함께 보여주며 관리 도구에 자주 쓰인다.",
+    "description": "섹션, 하위 메뉴, active 상태를 함께 보여주며 관리 도구에 자주 쓰인다. 사용자가 목적지에 도착한 뒤에는 시각적으로 후퇴해야 한다 — 본문 작업 영역보다 어둡거나 낮은 대비로 두어 주의 경쟁을 피한다.",
     "visual_anatomy": [
       "side panel",
       "nav items",
@@ -3953,7 +3953,7 @@ export const terms = [
       ]
     },
     "one_liner": "관련 영역이나 항목 사이를 얇은 선으로 구분하는 요소.",
-    "description": "목록, 메뉴, 카드 내부에서 정보 덩어리의 경계를 시각적으로 만든다.",
+    "description": "목록, 메뉴, 카드 내부에서 정보 덩어리의 경계를 시각적으로 만든다. 기본값은 선이 아니라 여백이다 — 구분선은 이유 없이 증식하는 경향이 있어 여백과 배경 차로 먼저 구분하고 선은 최후 수단으로 쓴다.",
     "visual_anatomy": [
       "thin horizontal or vertical line",
       "spacing around line",
@@ -3965,7 +3965,8 @@ export const terms = [
     ],
     "anti_use": [
       "간격만으로 충분하면 선을 남발하지 않는다",
-      "너무 강한 색상으로 시선을 빼앗지 않는다"
+      "너무 강한 색상으로 시선을 빼앗지 않는다",
+      "개별 항목마다 선을 긋지 않는다(그룹 경계에만)"
     ],
     "prompt_phrases": [
       "설정 항목 사이에 divider를 넣어줘",
@@ -9652,7 +9653,7 @@ export const terms = [
       ]
     },
     "one_liner": "테이블 행 간격을 compact, default, spacious처럼 바꾸는 컨트롤.",
-    "description": "데이터 밀도와 읽기 편안함 사이를 사용자가 선택하게 한다.",
+    "description": "데이터 밀도와 읽기 편안함 사이를 사용자가 선택하게 한다. 밀도와 소음은 다른 축이다 — 조밀한 보기에서도 정보량은 유지하고 보더·아이콘·밝기 같은 소음만 줄이는 방향이 정석이다.",
     "visual_anatomy": [
       "density buttons",
       "table rows",
