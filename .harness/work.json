@@ -4923,31 +4923,27 @@
     },
     "reference-diversification": {
       "work_id": "reference-diversification",
-      "milestone_id": "m7",
-      "status": "completed",
-      "plan_path": "plans/2026-08-01-m7-platform-guideline-absorption.md",
-      "changeset_path": "changesets/20260801-m7-platform-guideline-absorption",
+      "milestone_id": "m8",
+      "status": "active",
+      "plan_path": "plans/2026-08-01-m8-saas-exemplar-absorption.md",
+      "changeset_path": "changesets/20260801-m8-saas-exemplar-absorption",
       "next_step": "step-1",
       "current_step": "step-1",
       "steps": [
         {
           "id": "step-1",
-          "label": "step-1 — RL 배관 보수: ledger 소스 열 + 원칙류 착지 규칙"
+          "label": "step-1 — 대시보드 밀도 배치 수집 + dedup"
         },
         {
           "id": "step-2",
-          "label": "step-2 — 모바일 내비게이션·시트 배치 수집 + dedup"
-        },
-        {
-          "id": "step-3",
-          "label": "step-3 — 승격 + 검증 체인 + ledger (M7 마감)"
+          "label": "step-2 — 승격 + 검증 체인 + ledger (M8·goal 마감)"
         }
       ],
       "execution_mode": "continuous",
       "approval": {
         "approved_by": "user",
         "approved_at": "2026-08-01",
-        "plan_sha256": "3d9e4db567dd5f931eea355ba9c4c0f50b7dd47d127c2c0445cb52873b6dfd03",
+        "plan_sha256": "a0276345b5bf7e878a839b88c8f9b1edabe22f30d9829ce05da042acb0f93315",
         "chain": [
           "m7",
           "m8"
@@ -4970,8 +4966,7 @@
       ],
       "owner_session_uuid": "claude:04303d38-d38e-4b75-8d68-635d19f94d4a",
       "updated_at": "2026-08-01",
-      "notes": "Registered atomically by canonical harness approve_harness_plan.py after plan validation.",
-      "completion_summary": "HIG·Material 이 RL 루프를 처음 완주 — mobile-navigation 판정 정본 신설 + terms 보강 7건 + 소스 축 장부화"
+      "notes": "Registered atomically by canonical harness approve_harness_plan.py after plan validation."
     }
   }
 }

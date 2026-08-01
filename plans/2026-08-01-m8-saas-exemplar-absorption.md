@@ -31,7 +31,7 @@ Status: approved (사용자 승인 2026-08-01 "ㄱㄱ" — 연쇄 M7→M8 일괄
 
 ## Step 트리
 
-- [ ] **step-1 — 대시보드 밀도 배치 수집 + dedup**
+- [x] **step-1 — 대시보드 밀도 배치 수집 + dedup**
   - Artifact: Linear(디자인 리프레시 문서·실제품)·Vercel Geist(공식 문서) 실브라우저 재확인 → `docs/research/loop/inbox.yml` 후보 10~20건(8필드 + source=linear/vercel-geist) → dedup audit. 근거 원본 `research/2026-08-01-m8-dashboard-density-capture.md` 동결.
   - Files: write docs/research/loop/inbox.yml, research/2026-08-01-m8-dashboard-density-capture.md. read research/product-system-exemplars.md, docs/ui-vocabulary/terms.yml.
   - Risk: 기계적 (데이터 스테이징 — Linear 실제품 로그인 벽이면 공개 문서·마케팅 표면 폴백, 접근 한계 기록)

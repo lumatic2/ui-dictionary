@@ -1,14 +1,93 @@
-batch: ""            # <YYYYMMDD>-<surface>
-surface: ""          # pattern-taxonomy.md §2의 표면 id 중 하나
-candidates: []
-# candidate 스키마:
-# - id: kebab-slug
-#   name: Title Case Name
-#   pattern_group: pattern-taxonomy.md의 10 group 중 하나
-#   proposed_artifact: recipe | term | alias | related
-#   source: { tier: 0|1|2|3, url: "https://...", accessed: "YYYY-MM-DD" }
-#   summary: "1-2문장 — 무엇이고 언제 쓰나"
-#   anatomy: ["관찰된 구조 요소"]
-#   transferable: "흡수할 것"
-#   non_transferable: "복사하지 않을 것 (브랜드 아이덴티티 등)"
-#   dedup_hints: ["근접한 기존 recipe/term id"]
+batch: "20260801-dashboard-density"
+surface: "internal-tools"
+candidates:
+  - id: density-not-noise
+    name: Density Preserved Noise Reduced
+    pattern_group: data-display
+    proposed_artifact: term
+    source: { tier: 2, url: "https://linear.app/now/behind-the-latest-design-refresh", accessed: "2026-08-01" }
+    summary: "Dense operational UI keeps its information richness and removes noise instead - borders, icon excess, and brightness are cut while data density stays."
+    anatomy: ["dense data area kept in focus", "receded chrome", "reduced separators"]
+    transferable: "Core rule that density and noise are different axes"
+    non_transferable: "Linear dark mood and exact gray values"
+    dedup_hints: ["table-density-control", "dashboard-grid"]
+  - id: earned-attention-dimming
+    name: Earned Attention Dimming
+    pattern_group: navigation
+    proposed_artifact: alias
+    source: { tier: 2, url: "https://linear.app/now/behind-the-latest-design-refresh", accessed: "2026-08-01" }
+    summary: "Navigation and orientation surfaces recede visually once the user arrives - the sidebar dims a few notches so the work area takes precedence."
+    anatomy: ["dimmed sidebar", "focused content area", "compact rounded tabs"]
+    transferable: "Attention-budget rule for chrome vs content"
+    non_transferable: "exact dimming values"
+    dedup_hints: ["sidebar-nav", "sidebar-dashboard-layout"]
+  - id: structure-felt-not-seen
+    name: Structure Felt Not Seen
+    pattern_group: data-display
+    proposed_artifact: alias
+    source: { tier: 2, url: "https://linear.app/now/behind-the-latest-design-refresh", accessed: "2026-08-01" }
+    summary: "Borders and separators proliferate without reason; prefer whitespace, rounding, and softened contrast so structure is felt rather than drawn."
+    anatomy: ["fewer separators", "rounded soft borders", "whitespace grouping"]
+    transferable: "Divider-as-last-resort rule"
+    non_transferable: "none"
+    dedup_hints: ["divider", "data-table-toolbar"]
+  - id: icon-restraint-rule
+    name: Icon Restraint Rule
+    pattern_group: data-display
+    proposed_artifact: alias
+    source: { tier: 2, url: "https://linear.app/now/behind-the-latest-design-refresh", accessed: "2026-08-01" }
+    summary: "Icons aid recognition of entities but overuse dilutes scanning - reduce count and size and remove decorative colored backgrounds."
+    anatomy: ["entity icons kept", "decorative icon backgrounds removed", "smaller icon sizing"]
+    transferable: "Icon usage budget in dense views"
+    non_transferable: "Linear icon set"
+    dedup_hints: ["icon-button", "avatar"]
+  - id: interaction-state-scale-steps
+    name: Interaction State via Scale Steps
+    pattern_group: application-ui
+    proposed_artifact: alias
+    source: { tier: 2, url: "https://vercel.com/geist/colors", accessed: "2026-08-01" }
+    summary: "Hover and active states use adjacent steps of the same neutral scale instead of new hues - Geist bands steps 1-3 for component backgrounds and 4-6 for borders."
+    anatomy: ["10-step scale", "role bands", "default hover active progression"]
+    transferable: "State-color-from-scale rule matching our 3-tier token model"
+    non_transferable: "Geist exact color values and P3 variants"
+    dedup_hints: ["hover-state", "active-state"]
+  - id: two-tier-page-background
+    name: Two-Tier Page Background Cap
+    pattern_group: application-ui
+    proposed_artifact: alias
+    source: { tier: 2, url: "https://vercel.com/geist/colors", accessed: "2026-08-01" }
+    summary: "Pages get at most two background colors and the second is used sparingly for subtle differentiation - more layers of surface color read as noise."
+    anatomy: ["background 1 default", "background 2 sparing"]
+    transferable: "Background layer cap for dashboards"
+    non_transferable: "exact values"
+    dedup_hints: ["surface", "card"]
+  - id: two-step-text-hierarchy
+    name: Two-Step Text Hierarchy
+    pattern_group: application-ui
+    proposed_artifact: alias
+    source: { tier: 2, url: "https://vercel.com/geist/colors", accessed: "2026-08-01" }
+    summary: "Text and icons get exactly two accessible contrast steps - primary and secondary; needing a third gray is a hierarchy failure signal."
+    anatomy: ["primary text color", "secondary text color"]
+    transferable: "Text contrast step cap for dense UI"
+    non_transferable: "exact values"
+    dedup_hints: ["typography-scale", "text-hierarchy"]
+  - id: compact-app-tab-density
+    name: Compact App Tab Density
+    pattern_group: navigation
+    proposed_artifact: alias
+    source: { tier: 2, url: "https://linear.app/now/behind-the-latest-design-refresh", accessed: "2026-08-01" }
+    summary: "Desktop app tabs shrink from full-width to compact rounded tabs with smaller icons and text - chrome density drops while content density stays."
+    anatomy: ["compact tab strip", "icon-only tabs", "rounded corners"]
+    transferable: "Chrome compaction rule for app-shell tabs"
+    non_transferable: "Linear tab visuals"
+    dedup_hints: ["tabs", "tab-bar"]
+  - id: feature-flag-design-rollout
+    name: Feature-Flagged Design Refresh Rollout
+    pattern_group: navigation
+    proposed_artifact: related
+    source: { tier: 2, url: "https://linear.app/now/behind-the-latest-design-refresh", accessed: "2026-08-01" }
+    summary: "Ship a visual refresh behind a feature flag with an in-app toggle for before-after comparison and integrate incrementally instead of big-bang."
+    anatomy: ["dev toolbar flag toggle", "incremental integration"]
+    transferable: "Process lesson - likely out of this surface scope"
+    non_transferable: "internal tooling"
+    dedup_hints: ["feature-flag"]

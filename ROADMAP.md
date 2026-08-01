@@ -12,7 +12,7 @@ Goal: 레퍼런스 다변화 — Tailwind 편중 해소. 비-Tailwind 소스(Tie
 
 ## Active Milestones — reference-diversification
 
-<!-- harness:milestone id="M8" status="pending" priority="P1" evidence="evidence/reference-diversification/m8-saas-exemplar-absorption.md" -->
+<!-- harness:milestone id="M8" status="active" priority="P1" evidence="evidence/reference-diversification/m8-saas-exemplar-absorption.md" -->
 ### M8 — SaaS exemplar 흡수 (Linear·Vercel/Geist → 대시보드 밀도·저소음 위계)
 - DoD: Tier 2 소스 RL 완주 — `knowledge/dashboard-density.md` + llms 노출 + source 축 ledger 1행 + 전 검증 체인 PASS + 후속 배치 후보(Stripe·Radix·Around) 큐 등재. goal 마감 시 일괄 push(사용자 승인 후).
 - Evidence: evidence/reference-diversification/m8-saas-exemplar-absorption.md
