@@ -35,7 +35,7 @@ Status: approved (사용자 승인 2026-08-04 "ㄱㄱ" — M18 과 연쇄 승인
 
 ## Step 트리
 
-- [ ] **step-1 — 정본 문서 배선 (kickstart 절차·축약 브리프 모드)**
+- [x] **step-1 — 정본 문서 배선 (kickstart 절차·축약 브리프 모드)**
   - Artifact: block-contract.md 에 「kickstart 소비」 절(원커맨드 계약: 입력·생성물·검증·실패 모드) + design-brief.md 규모 게이트에 축약 모드 행(트리거 = 블록 출발 신규 프로젝트, 문항 = 결정 1, 나머지 = 추천 기본값을 보고서에 가정으로 명시 — 기존 계약 문구 승계) + entry-protocol A분기에 "블록 출발 신규 프로젝트 → kickstart 경로" 한 단계.
   - Files: edit docs/design-system/block-contract.md, docs/design-system/design-brief.md, docs/design-system/entry-protocol.md.
   - Risk: 기계적 (문서)
@@ -44,7 +44,7 @@ Status: approved (사용자 승인 2026-08-04 "ㄱㄱ" — M18 과 연쇄 승인
   - Failure probe: 축약 모드가 기존 규모 게이트("신규 화면 = 전체 인터뷰")와 충돌 판독 — 축약 모드 행에 우선순위 명시(블록 출발일 때만 축약이 이긴다)로 해소, 모호하면 문서에 결정표 추가.
   - Commit: changeset `20260804-m19-kickstart-command` (README 절: step-1).
 
-- [ ] **step-2 — CLI 브리프→DESIGN.md→토큰 파생 구현**
+- [x] **step-2 — CLI 브리프→DESIGN.md→토큰 파생 구현**
   - Artifact: packages/cli 신규 모듈 `kickstart.ts` 1부 — ① 축약 브리프(readline 3문항 · `--yes`/`--tone/--color/--type` 플래그 주입) ② DESIGN.md 생성(tmpl 치환 신규 구현 — flat colors 양식, 생략 축은 가정으로 명시) ③ DESIGN.md → CSS 변수 정의부(토큰 파일) 파생. `init --block <name>` 옵션 등록(이 step 에서는 브리프~토큰 구간만 동작). 각 단계 실패 = exit 1 + 원인.
   - Files: edit packages/cli/src/index.ts. write packages/cli/src/kickstart.ts. read templates/DESIGN.md.tmpl.
   - Risk: 위험 (기존 `init` 토큰 주입 동작 회귀 가능 — 무옵션 init 기존 경로 무변경 회귀 게이트로 방어)
@@ -53,7 +53,7 @@ Status: approved (사용자 승인 2026-08-04 "ㄱㄱ" — M18 과 연쇄 승인
   - Failure probe: tmpl 치환 결과가 M17 변환기(design-md-to-theme.mjs)가 못 읽는 변형 양식 — 생성 DESIGN.md 를 변환기에 1회 통과시켜 호환 확인(exit 0), 실패 시 tmpl 아닌 생성기를 보수(양식 정본 무변경 원칙).
   - Commit: changeset (README 절: step-2).
 
-- [ ] **step-3 — CLI 블록 이식→restyle 대조→verify 연결**
+- [x] **step-3 — CLI 블록 이식→restyle 대조→verify 연결**
   - Artifact: `kickstart.ts` 2부 — ④ `/r/<name>.json` fetch·files 기록·dependencies 안내(자동 설치는 `--install` 옵트인) ⑤ 블록 요구 CSS 변수 목록 전건이 step-2 파생 토큰 정의부에 정의됐는지 기계 대조(미정의 = exit 1 + 목록) ⑥ `verify` 자동 실행·잔존 보고로 마감. 미존재 블록명·fetch 실패 = exit 1.
   - Files: edit packages/cli/src/kickstart.ts, packages/cli/src/index.ts.
   - Risk: 기계적 (신규 경로 — 기존 명령 무변경)

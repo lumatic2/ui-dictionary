@@ -30,7 +30,7 @@ const TYPOGRAPHY_MARKER = /askewly-typography-ok(?::([^\n]*))?/
 const DEFAULT_EXTENSIONS = ["tsx", "ts", "jsx", "js", "css", "html"]
 const SKIP_DIRS = new Set(["node_modules", "dist", "build", ".git", ".next"])
 // Generated token files legitimately contain raw color values.
-const SKIP_FILES = new Set(["tokens.css", "askewly.css"])
+const SKIP_FILES = new Set(["tokens.css", "askewly.css", "askewly-brand.css"])
 
 const HEX_RULE = /#[0-9a-fA-F]{3,8}\b/
 const COLOR_FN_RULE = /\b(?:rgb|rgba|hsl|hsla|oklch)\(/

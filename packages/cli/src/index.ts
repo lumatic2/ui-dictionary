@@ -3,6 +3,7 @@ import { readFileSync } from "node:fs"
 import path from "node:path"
 import { Command } from "commander"
 import { addRecipe, initProject, InjectError } from "./inject.js"
+import { runKickstart, KickstartError } from "./kickstart.js"
 import { DEFAULT_TYPOGRAPHY_THRESHOLD } from "./typography.js"
 import { verifyDir } from "./verify.js"
 import {
@@ -111,8 +112,23 @@ program
   .command("init")
   .argument("[dir]", "target directory", ".")
   .option("--force", "overwrite existing files")
-  .description("write DESIGN.md and tokens.css into a project")
-  .action((dir: string, options: { force?: boolean }) => {
+  .option("--block <name>", "kickstart: brief → DESIGN.md → tokens → transplant this block → verify (block-contract §8)")
+  .option("--yes", "kickstart: accept recommended defaults for unanswered brief questions")
+  .option("--tone <tone>", "kickstart brief answer (agent path)")
+  .option("--color <color>", "kickstart brief answer (agent path)")
+  .option("--type <type>", "kickstart brief answer (agent path)")
+  .option("--registry <baseUrl>", "kickstart: registry base URL", "https://ui.askewly.com")
+  .description("write DESIGN.md and tokens.css into a project; with --block, run the one-command kickstart")
+  .action(async (dir: string, options: { force?: boolean; block?: string; yes?: boolean; tone?: string; color?: string; type?: string; registry?: string }) => {
+    if (options.block) {
+      try {
+        await runKickstart(dir, { block: options.block, yes: options.yes, tone: options.tone, color: options.color, type: options.type, registry: options.registry, force: options.force })
+      } catch (error) {
+        if (error instanceof KickstartError) fail(error.message)
+        throw error
+      }
+      return
+    }
     try {
       const written = initProject(path.resolve(dir), Boolean(options.force))
       for (const file of written) console.log(`wrote ${file}`)

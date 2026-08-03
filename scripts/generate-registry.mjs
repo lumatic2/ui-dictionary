@@ -125,7 +125,9 @@ function buildBlock(item) {
     title: item.title,
     description: item.description,
     ...(item.docs && { docs: item.docs }),
-    meta: { tier: "block" },
+    // requiredCssVars: 소비 프로젝트 토큰층이 정의해야 하는 변수 목록(계약 §6) —
+    // kickstart 의 기계 대조가 이 목록을 읽는다. 정본 선언은 registry.json 항목.
+    meta: { tier: "block", ...(item.requiredCssVars && { requiredCssVars: item.requiredCssVars }) },
     registryDependencies,
     dependencies: [...usedDeps].sort(),
     files,
