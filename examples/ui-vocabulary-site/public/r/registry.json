@@ -457,6 +457,86 @@
           "type": "registry:component"
         }
       ]
+    },
+    {
+      "name": "saas-app-shell",
+      "type": "registry:block",
+      "title": "SaaS App Shell",
+      "description": "A SaaS application skeleton: inset sidebar shell with grouped navigation, a dashboard page (stat summary cards, interactive visitors chart, searchable members table with recoverable empty state and undoable archive toast), and a sectioned settings page. Routing is left to the consumer; views switch via local state.",
+      "meta": {
+        "tier": "block"
+      },
+      "registryDependencies": [
+        "avatar",
+        "badge",
+        "button",
+        "card",
+        "chart",
+        "dropdown-menu",
+        "input",
+        "label",
+        "select",
+        "separator",
+        "sidebar",
+        "switch",
+        "https://ui.askewly.com/r/actionable-toast.json",
+        "https://ui.askewly.com/r/interactive-data-table.json",
+        "https://ui.askewly.com/r/recoverable-empty-state.json"
+      ],
+      "dependencies": [
+        "lucide-react",
+        "recharts"
+      ],
+      "files": [
+        {
+          "path": "registry/askewly/saas-app-shell/app-sidebar.tsx",
+          "type": "registry:component"
+        },
+        {
+          "path": "registry/askewly/saas-app-shell/chart-area-interactive.tsx",
+          "type": "registry:component"
+        },
+        {
+          "path": "registry/askewly/saas-app-shell/data.json",
+          "type": "registry:file"
+        },
+        {
+          "path": "registry/askewly/saas-app-shell/members-table.tsx",
+          "type": "registry:component"
+        },
+        {
+          "path": "registry/askewly/saas-app-shell/nav-main.tsx",
+          "type": "registry:component"
+        },
+        {
+          "path": "registry/askewly/saas-app-shell/nav-secondary.tsx",
+          "type": "registry:component"
+        },
+        {
+          "path": "registry/askewly/saas-app-shell/nav-user.tsx",
+          "type": "registry:component"
+        },
+        {
+          "path": "registry/askewly/saas-app-shell/page.tsx",
+          "type": "registry:page"
+        },
+        {
+          "path": "registry/askewly/saas-app-shell/section-cards.tsx",
+          "type": "registry:component"
+        },
+        {
+          "path": "registry/askewly/saas-app-shell/settings-page.tsx",
+          "type": "registry:component"
+        },
+        {
+          "path": "registry/askewly/saas-app-shell/site-header.tsx",
+          "type": "registry:component"
+        },
+        {
+          "path": "registry/askewly/saas-app-shell/use-is-mobile.ts",
+          "type": "registry:component"
+        }
+      ]
     }
   ]
 }

@@ -43,7 +43,7 @@ Blocks may absorb external open-source composition (decision path: [absorption-c
 
 | block | composition | base / attribution | required CSS variables |
 |---|---|---|---|
-| *(saas-app-shell — registered by M18 step-4)* | | | |
+| `saas-app-shell` | Inset sidebar shell + dashboard page (stat cards, interactive visitors chart, members table with search/empty-state/undo-toast) + sectioned settings page. Composes assets: `interactive-data-table`, `recoverable-empty-state`, `actionable-toast`. | Shell/dashboard absorbed from shadcn/ui block `dashboard-01` (© 2023 shadcn, MIT — headers in each absorbed file). Members region and settings page are Askewly originals. npm dep: `recharts`. | Standard shadcn set (`--background --foreground --card --card-foreground --popover --popover-foreground --primary --primary-foreground --muted --muted-foreground --accent --accent-foreground --border --input --ring`) plus the sidebar family (`--sidebar --sidebar-foreground --sidebar-primary --sidebar-primary-foreground --sidebar-accent --sidebar-accent-foreground --sidebar-border --sidebar-ring`), defined by the consuming project's token layer. |
 
 ## 7. Consumption path (agents and humans)
 

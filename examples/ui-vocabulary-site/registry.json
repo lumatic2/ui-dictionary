@@ -135,6 +135,15 @@
       "name": "versioned-docs-switcher-navbar-sidebar-swap",
       "title": "Versioned Docs Switcher Navbar Sidebar Swap",
       "description": "The `versioned-docs-switcher` term already names the dropdown-plus-stale-banner concept; this recipe is the actual three-part state contract behind it — picking a version in the navbar dropdown does not just relabel the page, it swaps the sidebar tree's entire data source to that version's structure, and shows a stale-version banner whenever the selected version is not the latest. The dropdown, banner, and sidebar all read from one `activeVersionId` value instead of three independently-set flags."
+    },
+    {
+      "name": "saas-app-shell",
+      "title": "SaaS App Shell",
+      "description": "A SaaS application skeleton: inset sidebar shell with grouped navigation, a dashboard page (stat summary cards, interactive visitors chart, searchable members table with recoverable empty state and undoable archive toast), and a sectioned settings page. Routing is left to the consumer; views switch via local state.",
+      "tier": "block",
+      "dependencies": [
+        "recharts"
+      ]
     }
   ]
 }

@@ -39,6 +39,7 @@ import { RecoverableEmptyStateDemo } from "@/components/recoverable-empty-state"
 import { MobileSignupFieldStackDemo } from "@/components/mobile-signup-field-stack"
 import { ResponsiveContentGridDemo } from "@/components/responsive-content-grid"
 import { SidebarApplicationShellDemo } from "@/components/sidebar-application-shell"
+import { SaasAppShellDemo } from "@/components/blocks/saas-app-shell/page"
 import { BottomTabBarDemo } from "@/components/bottom-tab-bar"
 import { AdaptiveNavigationContainerDemo } from "@/components/adaptive-navigation-container"
 import { LargeTitleCollapsingHeaderDemo } from "@/components/large-title-collapsing-header"
@@ -96,6 +97,7 @@ export const recipeDemoComponents: Record<string, ComponentType> = {
   "mobile-signup-field-stack": MobileSignupFieldStackDemo,
   "responsive-content-grid": ResponsiveContentGridDemo,
   "sidebar-application-shell": SidebarApplicationShellDemo,
+  "saas-app-shell": SaasAppShellDemo,
   "landing-hero": LandingHeroDemo,
   "adaptive-navigation-container": AdaptiveNavigationContainerDemo,
   "bottom-tab-bar": BottomTabBarDemo,
