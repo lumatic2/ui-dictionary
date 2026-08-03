@@ -200,7 +200,7 @@ Cloudflare Pages Git integration.
 Approved deploy:
 
 ```bash
-git push ui-dictionary main
+git push origin main
 ```
 
 Cloudflare builds the site from `examples/ui-vocabulary-site`.

@@ -140,7 +140,7 @@ topic -> collect around 20 candidates -> duplicate prefilter
 - 기존 용어와 헷갈리지만 행동이나 맥락이 다르면 `related` 비교를 추가한다.
 - 단순 상태나 변형이면 새 항목으로 만들지 않는다.
 - 승격 후에는 `python scripts/validate-ui-vocabulary.py`, `npm run build`, `npm run lint`, 브라우저 smoke를 통과한다.
-- 배포는 최종 승인 지점이다. 로컬 검증 결과를 보고한 뒤 사용자 승인 없이 `git push ui-dictionary main`을 실행하지 않는다.
+- 배포는 최종 승인 지점이다. 로컬 검증 결과를 보고한 뒤 사용자 승인 없이 `git push origin main`을 실행하지 않는다.
 
 ## Showcase Atlas 카드 카피 (`home-page.tsx` `atlasItems`)
 
