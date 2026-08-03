@@ -45,7 +45,7 @@ Status: approved (사용자 승인 2026-08-04 "ㄱㄱ" — 결정 1 이름=블�
   - Failure probe: 후보 라이선스가 코드는 MIT 인데 블록 소스만 별도 약관(예: 유료 블록 상품)인 경우 — 레포 LICENSE 파일이 아니라 해당 소스 파일·상품 페이지 단위로 확인, 불명확하면 그 후보 기각(추정 채택 금지).
   - Commit: changeset `20260804-m18-composition-block-tier` (README 절: step-1).
 
-- [ ] **step-2 — 블록 계약 문서 + entry-protocol 접합 + 구성 재료 실측**
+- [x] **step-2 — 블록 계약 문서 + entry-protocol 접합 + 구성 재료 실측**
   - Artifact: `docs/design-system/block-contract.md` 신설 — 정의(블록 = 페이지/앱 골격급 조합 자산), registry 표현(`registry:block`·files[]·registryDependencies 규칙), 레이아웃 계약 형식(구성 asset·배치·상태 배선), restyle 지점 선언(cssVars·토큰 슬롯), 소비 경로(fetch → 이식 → 의무 restyle — component-restyle.md 인용), agent-asset-model `copy_scope: page|pack` 백링크. + entry-protocol A분기(새 화면/페이지)에 "블록 우선 확인" 단계 삽입(A-1.5 — 표면이 블록과 일치하면 블록 출발이 기본). + 27 자산 인벤토리에서 saas-app-shell 구성 가능성 실측표(재료 asset 5종의 import 표면·cssVars 대조)를 계약 문서 부록 또는 evidence 초안에 기록.
   - Files: write docs/design-system/block-contract.md. edit docs/design-system/entry-protocol.md. read examples/ui-vocabulary-site/registry.json, src/components/{sidebar-application-shell,stat-summary-grid,interactive-data-table,recoverable-empty-state,actionable-toast}.tsx.
   - Risk: 기계적 (문서 — 코드 무변경)
@@ -54,7 +54,7 @@ Status: approved (사용자 승인 2026-08-04 "ㄱㄱ" — 결정 1 이름=블�
   - Failure probe: 재료 asset 실측에서 사이트 결합(terms.generated 등) 발견 — 그 asset 은 구성에서 제외하고 대체 재료 또는 블록 내 자체 구현으로 전환, 실측표에 기록(조용한 우회 금지).
   - Commit: changeset (README 절: step-2).
 
-- [ ] **step-3 — generate-registry 블록 지원 확장 (다중 파일·purity gate·meta.tier)**
+- [x] **step-3 — generate-registry 블록 지원 확장 (다중 파일·purity gate·meta.tier)**
   - Artifact: `scripts/generate-registry.mjs` 확장 — ① 블록 디렉터리(`src/components/blocks/<name>/`) 다중 파일 수집 ② purity gate 기술 결정 ② 규칙(블록 내부 상대 import + 등재 asset import 허용) ③ registryDependencies 에 구성 asset URL 파생 ④ 항목 `meta.tier: "block"` 파생. 검증용 최소 픽스처 블록(임시 2파일)으로 생성 경로 실측 후 제거.
   - Files: edit scripts/generate-registry.mjs. scratchpad(게이트 자기시험 픽스처).
   - Risk: 위험 (registry 생성기 수정이 기존 27 자산 출력에 영향 가능 — 확장 전 `public/r/` 스냅숏 대비 기존 27건 diff 0 회귀 게이트로 방어)
