@@ -7,7 +7,20 @@
 
 ## Current Goal
 
-<!-- harness:goal id="figma-return-path" status="completed" -->
+<!-- harness:goal id="interactive-web-book" status="active" -->
+Goal: 『프론트엔드 개발자를 위한 인터랙티브 웹 애니메이션』(김영민, 영진닷컴) 12장을 사용자 독서와 동행하며 흡수 — 구술→정리→소스 대조→4갈래 라우팅(recipes·knowledge·kg·ts·sb·없음). 소스 정본 `github.com/Youngjin-com/interactive_web`. 흡수 안 하기로 한 판정과 근거를 남기는 것도 산출물(스크랩북 방지).
+
+## Active Milestones — interactive-web-book
+
+<!-- harness:milestone id="M16" status="active" priority="P1" -->
+### M16 — 장별 동행 흡수 루프 가동 (1장부터)
+- DoD: 루프가 실제로 한 바퀴 돌고 재실행 가능한 절차로 고정 — ① 1장 흡수 노트에 갈래별 판정("없음" 포함)이 근거와 함께 전건 ② ts·sb 착지물 실재 확인 ③ 계약 3곳(tier 표 Tier 4·absorption-criteria·reference-loop)에 교재류 자리 + 12장 예비 판정표 ④ check-llms-sync PASS + 기존 ledger 무손실. 비-DoD: recipes/knowledge 승격 실증(4장 도달 시).
+- Evidence: evidence/interactive-web-book/m16-loop-boot.md
+- Gap: 교재·튜토리얼이라는 소스 종류가 기존 tier 표(T0~T3)에 들어갈 칸이 없다.
+- Plan: plans/2026-08-03-m16-interactive-web-book-loop.md
+- Status: [ ]
+
+<!-- harness:goal-archive22 id="figma-return-path" status="completed" -->
 Goal: Figma 귀환 경로 — 왕복(코드→Figma→사람 디테일링→코드 회수)을 반복 가능한 능력으로. closed 2026-08-02 — M14(채널 복구·재동기화 rem 보수·스냅숏 장부/diff 기계화·왕복 2회차 무변경 0/0/0) + M15(계약 §3 두 lane 정본화·llms 등재·figma-codex-workflow promoted 배포) 연쇄 완주. Details: `evidence/figma-return-path/` + `docs/reports/2026-08-02-m{14,15}-*.md`.
 
 ## Active Milestones — figma-return-path
