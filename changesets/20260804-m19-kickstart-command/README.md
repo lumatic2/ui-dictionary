@@ -12,3 +12,7 @@
 - registry 보강: `generate-registry.mjs` 가 항목 선언 `requiredCssVars` 를 `meta` 로 파생, saas-app-shell 에 28변수 선언. verify SKIP_FILES 에 askewly-brand.css 추가(생성 토큰 파일 규약).
 - **failure probe 실현 2건**: ① M17 슬라이드 변환기 파서 A 가 hex 전용 — hsl 팔레트가 안 읽힘 → 팔레트 hex 전환(양식 정본 무변경, 생성기가 맞춘다), 변환 PASS(29변수·대비 AA) ② 미존재 블록명이 DESIGN.md 를 먼저 쓰고 실패(반쪽 산출물) → fetch 선행으로 clean fail.
 - 검증: CLI 빌드 PASS · 무옵션 init 회귀 PASS(3파일) · `--yes` 전 구간(34파일 이식·28/28 변수·verify PASS) · 플래그 주입 반영(warm-editorial/amber/geist-sans → DESIGN.md) · 실패 모드 3종 exit 1(옵션 밖 tone·미존재 블록 clean fail·DESIGN.md 충돌) · 요구 변수 고의 결손 단위시험 PASS · M17 변환기 호환 PASS.
+
+## step-4 — 빈 프로젝트 E2E + 사용자 관측 (2026-08-04)
+
+- 에이전트 경로 실발화(3문항→플래그) → 원커맨드 전 구간 수동 개입 0 → dev 서버 실브라우저 → **사용자 관측 통과**("나쁘진 않은데 더 다듬으면 좋겠다" — 폴리싱은 finding 큐). evidence §step-4 + 스크린샷.

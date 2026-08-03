@@ -62,7 +62,7 @@ Status: approved (사용자 승인 2026-08-04 "ㄱㄱ" — M18 과 연쇄 승인
   - Failure probe: 요구 변수 대조는 통과했는데 실렌더가 깨지는 경우(변수 정의는 있으나 값 부적합) — step-4 실브라우저가 잡는 표면. 대조기는 존재만 보증함을 커맨드 출력 문구에 명시(과잉 보증 금지).
   - Commit: changeset (README 절: step-3).
 
-- [ ] **step-4 — 빈 프로젝트 E2E + 사용자 관측 (human gate) + 기록**
+- [x] **step-4 — 빈 프로젝트 E2E + 사용자 관측 (human gate) + 기록**
   - Artifact: scratchpad 빈 디렉터리에서 원커맨드 1회(대화형 — 실제 3문항 응답) → 생성 프로젝트 dev 서버 → **사용자 기본 브라우저로 열어 관측**(라이트/다크 스크린샷 + 대시보드·설정·빈 상태) → 관측 판정 기록 → `evidence/reusable-composition/m19-kickstart.md`(커맨드 로그·생성물 목록·verify 결과·스크린샷·판정) → ROADMAP·llms 정리.
   - Files: write evidence/reusable-composition/m19-kickstart.md. scratchpad(E2E 프로젝트).
   - Risk: 기계적 (human gate — 사용자 부재 시 스크린샷 준비 후 blocked 정지)
