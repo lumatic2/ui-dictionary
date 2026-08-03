@@ -30,3 +30,4 @@
 - 관측 지적: Recipes 카드의 mesh gradient 가 "뭔지 모르겠다" + 코드 콜라주 일부 slop 감.
 - `codex exec --full-auto`(codex-cli 0.145.0, 내장 imagegen)로 카드 3장 일러스트 생성(1536×1024 PNG, 무텍스트·화이트 그라운드·보라 계열 한 세트) → sharp-cli 로 1200w webp 변환(28~52KB) → `public/assets/get-started/{patterns,colors,recipes}.webp`.
 - `get-started-previews.tsx` 를 이미지 기반으로 교체(aria-hidden·empty alt·rounded 액자 프레임). 다크에선 흰 아트 타일이 액자로 성립.
+- 원본 PNG 보존: `patterns-source-1536.png` (1536×1024 imagegen 원본 — 배포본은 `public/assets/get-started/patterns.webp`. colors·recipes 원본은 미보존.)
