@@ -52,7 +52,20 @@ Blocks may absorb external open-source composition (decision path: [absorption-c
 3. Restyle: mandatory, per §4.
 4. Verify: `npx @askewly/design verify` → 0 violations, then the screen-medium gate (states, dark mode, contrast).
 
-A one-command bootstrap wrapping this path (`init --block`) is planned as M19; until it lands, the steps above are the canonical manual path.
+## 8. Kickstart consumption — the one-command path
+
+`npx @askewly/design init --block <name>` wraps §7 plus project brief and token generation into one command, for hackathon/new-product kickoff:
+
+1. **Abbreviated brief** — three text questions (tone, color direction, type direction), each with options and a recommended default. All other brief domains take recommended defaults, recorded as assumptions in the generated DESIGN.md. Non-interactive mode: `--yes` accepts every default; `--tone/--color/--type` inject answers (this is the agent path — the calling agent asks the user first, then passes flags).
+2. **DESIGN.md generation** — answers are written as the project's own `DESIGN.md` (flat-colors template form), which becomes the project's look ownership.
+3. **Token derivation** — a CSS variable definition layer is derived from that DESIGN.md, covering the block's required-CSS-variable list (§6).
+4. **Transplant** — the block is fetched and written per §7; dependencies are reported (installed with `--install`).
+5. **Restyle check** — the required-variable list is machine-compared against the derived token layer; any undefined variable exits 1 with the list. The comparison guarantees *presence only* — whether the values look right is settled by the human gate.
+6. **Verify** — `verify` runs automatically and reports residual violations.
+
+Failures never fall back silently: a missing block name, unreachable registry, or missing required answer exits 1 with the cause.
+
+Inputs and outputs above are the contract; the implementation lives in `@askewly/design` (`init --block`). Until the CLI version carrying it is published, the §7 manual path remains available.
 
 ## Changelog
 
