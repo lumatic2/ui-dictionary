@@ -1,7 +1,7 @@
 # ROADMAP
 
-> Last updated: 2026-08-02
-> Status: **2026-08-03 M16 매체 통합 검증 active** — 슬라이드 파이프라인의 토큰 SSOT 소비 실측 + 사용자 판정(승인 2026-08-03). 남은 큐: 『인터랙티브 웹 애니메이션』 책 스터디(사용자 주도) · **토큰→슬라이드 테마 생성기**(M16 판정 A 후속 — SSOT 16역할 확장+SP2 theme.json 생성기+관측 게이트) · D2 Presenton 벤치(수요 미확인) · Around 재판정(이식 milestone 개방 시).
+> Last updated: 2026-08-04
+> Status: **2026-08-04 M16 매체 통합 검증 완주** — SSOT 소비 0건 실측 → 판정 A(슬라이드 테마 SSOT 파생 의무) 정본화, slide-spec §5·medium-taxonomy 게이트 등재. active goal 0. 남은 큐: 『인터랙티브 웹 애니메이션』 책 스터디(사용자 주도) · **토큰→슬라이드 테마 생성기**(M16 판정 A 후속 — SSOT 16역할 확장+SP2 theme.json 생성기+관측 게이트) · D2 Presenton 벤치(수요 미확인) · Around 재판정(이식 milestone 개방 시).
 > North star: Build Askewly Design as both a public reference website and an agent-usable implementation system.
 > line budget: <=150
 
@@ -12,13 +12,16 @@ Goal: Figma 귀환 경로 — 왕복(코드→Figma→사람 디테일링→코�
 
 ## Active Milestones — media-unification
 
-<!-- harness:milestone id="M16" status="active" priority="P1" -->
+<!-- harness:milestone id="M16" status="completed" priority="P1" evidence="evidence/media-unification/m16-token-audit.md" -->
 ### M16 — 매체 통합 검증 (슬라이드 파이프라인의 토큰 SSOT 소비 실측 + 판정)
 - DoD: 북극성 "같은 토큰 SSOT 출발" 주장이 발표 매체에 대해 실측 장부(테마 변수 전수 대조표) + 사용자 판정(A/B) + 게이트 문서 기록(slide-spec 「토큰 출발점」 절 + medium-taxonomy 발표 행)으로 닫힘. 검증 = 대조표 전수성 + check-llms-sync PASS.
 - Gap: 슬라이드 스킬 askewly 테마 = 수기 hex 팔레트(SSOT 배선 0건 — 2026-08-03 사전 실측), slide-spec·medium-taxonomy 에 토큰 출발점 서술 부재.
 - Plan: plans/2026-08-03-m16-media-token-audit.md
-- Status: [ ]
+- Status: [x]
 
+- Completed at: 2026-08-04
+- Evidence: evidence/media-unification/m16-token-audit.md
+- Summary: SSOT 소비 0건 실측 → 판정 A(파생 의무) 정본화 — slide-spec §5·medium-taxonomy 게이트, 생성기 후속 goal 등재
 ## Active Milestones — figma-return-path
 
 ## Active Milestones — usage-and-site-surfacing
