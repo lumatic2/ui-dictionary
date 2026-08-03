@@ -67,7 +67,8 @@ function collectBlockFiles(dir, base) {
 }
 
 function fileType(rel) {
-  if (/(^|\/)page\.tsx$/.test(rel)) return "registry:page";
+  // page.tsx 도 registry:component — registry:page 는 Next app 라우터 전제라
+  // 비-Next 소비 프로젝트에서 조용히 스킵된다(M18 step-5 실측).
   if (rel.endsWith(".json") || rel.endsWith(".css")) return "registry:file";
   return "registry:component";
 }
@@ -102,7 +103,14 @@ function buildBlock(item) {
         fail(`block '${item.name}' ${rel}: 순수성 위반 — 허용 외 import '${i}' (npm 패키지면 registry.json dependencies 에 선언)`);
       }
     }
-    files.push({ path: `registry/askewly/${item.name}/${rel}`, type: fileType(rel), content: src });
+    // target: 블록 파일 전건을 한 디렉터리에 고정 — 흩어지면 블록 내부 상대 import 가 깨진다.
+    // (shadcn CLI 는 registry:page/file 에 target 필수 — 소비 프로젝트에 src/ 가 있으면 접두 처리)
+    files.push({
+      path: `registry/askewly/${item.name}/${rel}`,
+      type: fileType(rel),
+      target: `components/blocks/${item.name}/${rel}`,
+      content: src,
+    });
   }
   const undeclared = [...declaredDeps].filter((d) => !usedDeps.has(d));
   if (undeclared.length) fail(`block '${item.name}': 선언됐지만 소스에 없는 dependencies: ${undeclared.join(", ")}`);

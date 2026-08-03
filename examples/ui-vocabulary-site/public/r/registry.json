@@ -518,7 +518,7 @@
         },
         {
           "path": "registry/askewly/saas-app-shell/page.tsx",
-          "type": "registry:page"
+          "type": "registry:component"
         },
         {
           "path": "registry/askewly/saas-app-shell/section-cards.tsx",

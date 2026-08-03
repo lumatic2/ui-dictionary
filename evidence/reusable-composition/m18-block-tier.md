@@ -32,3 +32,13 @@
 - 사이트 primitives 4종 설치(sidebar·chart·breadcrumb·label + use-mobile hook) + `--sidebar-*` 변수를 semantic 토큰 별칭으로 공급(index.css).
 - 검증: generate-registry PASS(28 assets) · 사이트 빌드 PASS(759 routes) · `npx @askewly/design verify` 블록 디렉터리 0건 · lint:colors 0(chart primitive 의 recharts 기본색 덮어쓰기 선택자 hex 는 opt-out 주석) · **브라우저 스모크: 라이트/다크 렌더 + 콘솔 에러 0** (`screenshots/m18-step4-site-demo-{light,dark}.png`).
 - Failure probe 실현 1건: shadcn Sidebar 의 `position: fixed` 가 갤러리 카드를 탈출해 호스트 페이지를 덮음 → 데모 래퍼에 `[transform:translateZ(0)]` containing block 으로 격리(블록 본체 무변경 — 데모 표면만 보정).
+
+## step-5 — 외부 신선 프로젝트 이식 통합 검증 (2026-08-04)
+
+- 환경: scratchpad `fresh-block-test` — `npm create vite`(react-ts) + Tailwind v4 + `components.json` 수기(신형 shadcn CLI 의 init 이 비대화 셸에서 테마 프롬프트로 정지 — init 우회, add 는 실기).
+- 이식: `npx shadcn@latest add ./saas-app-shell.json -y` — **재귀 해결 전건 성공**: 블록 12본 → `src/components/blocks/saas-app-shell/`(target 의 src/ 접두 자동 처리 확인), 우리 asset 3종(라이브 `ui.askewly.com/r/` URL 해결), shadcn primitives 17본 + use-mobile hook, npm deps(recharts·radix-ui·cva·lucide) 자동 설치, sidebar cssVars 주입.
+- **계약 결함 2건 적발·보수** (failure probe 예고 경로 — 실패를 문서·생성기 입력으로 회수):
+  1. `registry:page`/`registry:file` 은 `target` 필수 → 생성기가 블록 전 파일에 `components/blocks/<name>/<rel>` target 부여(흩어지면 상대 import 붕괴).
+  2. `registry:page` 는 Next app 라우터 전제 — vite 프로젝트에서 **조용히 스킵**됨(page.tsx 미기록) → 블록 파일 타입을 전건 `registry:component` 로 정정.
+- restyle: 비-askewly 테스트 브랜드(teal/warm paper — DESIGN.md 파생 토큰층 대역) 를 :root/.dark/@theme 에 정의 — 계약 §4 "요구 변수는 소비 프로젝트가 정의" 실증. init 스킵 잔여로 `lib/utils`(cn)+clsx/tailwind-merge 수기 1회(→ M19 kickstart 가 메울 마찰로 등재).
+- 검증: `npm run build`(tsc+vite) PASS · `npx @askewly/design verify` 블록 0건 · 실브라우저 4장면 PASS(라이트 대시보드 / 다크 / 설정 페이지 / 검색 빈 상태) · 콘솔 에러 0 · askewly 팔레트 잔존 0(전면 teal 렌더). `screenshots/m18-step5-fresh-*.png` 4장.

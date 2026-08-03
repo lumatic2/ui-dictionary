@@ -72,7 +72,7 @@ Status: approved (사용자 승인 2026-08-04 "ㄱㄱ" — 결정 1 이름=블�
   - Failure probe: 구성 asset 의 상태 배선(토스트·빈 상태)이 조합 시 props 계약 불일치 — 블록 내 어댑터로 흡수하되 원 asset 은 수정하지 않는다(스캐폴딩 결정의 결합 한정 규칙), 불일치 내역을 계약 문서 레이아웃 계약 예시로 기록. 외부 베이스의 import 표면이 purity gate 허용 밖(recharts·@/hooks 등)이면 step-3 게이트 규칙에 선언적 허용을 추가하는 게 아니라 **블록 dependencies 로 선언**해 통과시키고, 안 되는 결합은 절단.
   - Commit: changeset (README 절: step-4).
 
-- [ ] **step-5 — 외부 이식 통합 검증 + 기록**
+- [x] **step-5 — 외부 이식 통합 검증 + 기록**
   - Artifact: scratchpad 에 신선 vite+react+tailwind 프로젝트 생성 → `/r/saas-app-shell.json` fetch 이식(entry-protocol A-2.5 경로 그대로: files[].content 기록 + dependencies 설치 + registryDependencies 해결) → 임의 비-askewly 토큰(테스트용 DESIGN.md 1본)으로 restyle → `npx @askewly/design verify` 0건 → dev 서버 + 실브라우저 스모크(대시보드·설정·빈 상태 렌더 + 콘솔 에러 0) + 스크린샷 → `evidence/reusable-composition/m18-block-tier.md`(실측표·이식 로그·스크린샷 경로·판정).
   - Files: write evidence/reusable-composition/m18-block-tier.md. scratchpad(신선 프로젝트 — 레포 밖).
   - Risk: 기계적 (검증 — 레포 변경은 evidence 만)
