@@ -1,7 +1,7 @@
 # ROADMAP
 
 > Last updated: 2026-08-02
-> Status: **2026-08-02 `figma-return-path` 완주** — M14(채널 복구·재동기화·회수 기계화·왕복 2회차 무변경 0/0/0)+M15(방법론·계약 두 lane 정본화·llms 등재·스킬 promoted 배포) 연쇄 마감. active goal 0. 남은 큐: 『인터랙티브 웹 애니메이션』 책 스터디(사용자 주도) · D2 Presenton 벤치(수요 미확인) · Around 재판정(이식 milestone 개방 시).
+> Status: **2026-08-03 M16 매체 통합 검증 active** — 슬라이드 파이프라인의 토큰 SSOT 소비 실측 + 사용자 판정(승인 2026-08-03). 남은 큐: 『인터랙티브 웹 애니메이션』 책 스터디(사용자 주도) · D2 Presenton 벤치(수요 미확인) · Around 재판정(이식 milestone 개방 시).
 > North star: Build Askewly Design as both a public reference website and an agent-usable implementation system.
 > line budget: <=150
 
@@ -9,6 +9,15 @@
 
 <!-- harness:goal id="figma-return-path" status="completed" -->
 Goal: Figma 귀환 경로 — 왕복(코드→Figma→사람 디테일링→코드 회수)을 반복 가능한 능력으로. closed 2026-08-02 — M14(채널 복구·재동기화 rem 보수·스냅숏 장부/diff 기계화·왕복 2회차 무변경 0/0/0) + M15(계약 §3 두 lane 정본화·llms 등재·figma-codex-workflow promoted 배포) 연쇄 완주. Details: `evidence/figma-return-path/` + `docs/reports/2026-08-02-m{14,15}-*.md`.
+
+## Active Milestones — media-unification
+
+<!-- harness:milestone id="M16" status="active" priority="P1" -->
+### M16 — 매체 통합 검증 (슬라이드 파이프라인의 토큰 SSOT 소비 실측 + 판정)
+- DoD: 북극성 "같은 토큰 SSOT 출발" 주장이 발표 매체에 대해 실측 장부(테마 변수 전수 대조표) + 사용자 판정(A/B) + 게이트 문서 기록(slide-spec 「토큰 출발점」 절 + medium-taxonomy 발표 행)으로 닫힘. 검증 = 대조표 전수성 + check-llms-sync PASS.
+- Gap: 슬라이드 스킬 askewly 테마 = 수기 hex 팔레트(SSOT 배선 0건 — 2026-08-03 사전 실측), slide-spec·medium-taxonomy 에 토큰 출발점 서술 부재.
+- Plan: plans/2026-08-03-m16-media-token-audit.md
+- Status: [ ]
 
 ## Active Milestones — figma-return-path
 
