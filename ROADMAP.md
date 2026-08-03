@@ -1,7 +1,7 @@
 # ROADMAP
 
 > Last updated: 2026-08-04
-> Status: **2026-08-04 goal `reusable-composition` 승인** — M18(조합 블록 계층: 외부 흡수 실사+saas-app-shell) active, M19(킥스타트 원커맨드) chain pending. 남은 큐: 『인터랙티브 웹 애니메이션』 책 스터디(사용자 주도) · harvest 회수 계약(자기 산출물→자산 승격) · dark/light 테마 SSOT 파생(SSOT dark 모드 정비 선행) · D2 Presenton 벤치(수요 미확인) · Around 재판정(이식 milestone 개방 시).
+> Status: **2026-08-04 M18 완주** — 블록 등급 정본화 + saas-app-shell(dashboard-01 흡수) + 신선 프로젝트 이식 실증. M19(킥스타트 원커맨드) chain 승격 active. 남은 큐: 『인터랙티브 웹 애니메이션』 책 스터디(사용자 주도) · harvest 회수 계약(자기 산출물→자산 승격) · dark/light 테마 SSOT 파생(SSOT dark 모드 정비 선행) · D2 Presenton 벤치(수요 미확인) · Around 재판정(이식 milestone 개방 시).
 > North star: Build Askewly Design as both a public reference website and an agent-usable implementation system.
 > line budget: <=150
 
@@ -12,54 +12,24 @@ Goal: 재사용 조합 — 앱 골격급 조합 자산 등급(블록)을 신설�
 
 ## Active Milestones — reusable-composition
 
-<!-- harness:milestone id="M18" status="active" priority="P1" evidence="evidence/reusable-composition/m18-block-tier.md" -->
-### M18 — 조합 블록 계층 (외부 흡수 실사 + 앱 골격급 자산 정본화 + saas-app-shell 1종)
-- DoD: 외부 공개 블록 실사·베이스 판정(absorption-criteria 행) + 블록 등급 정본화(block-contract·registry meta.tier·entry-protocol 접합) + saas-app-shell 이 외부 신선 프로젝트 이식·비-askewly restyle·verify 0건·실브라우저 스모크 통과. 회귀 = 기존 27 자산 diff 0 + check-llms-sync PASS.
-- Gap: code asset 27종 전부 컴포넌트/패턴급 — 앱 골격급 조합 단위 0종, entry-protocol 에 조합 소비 경로 부재.
-- Plan: plans/2026-08-04-m18-composition-block-tier.md
-- Status: [ ]
-
-<!-- harness:milestone id="M19" status="pending" priority="P1" evidence="evidence/reusable-composition/m19-kickstart.md" -->
+<!-- harness:milestone id="M19" status="active" priority="P1" evidence="evidence/reusable-composition/m19-kickstart.md" -->
 ### M19 — 킥스타트 원커맨드 (브리프→DESIGN.md→블록 이식→검증 일괄)
 - DoD: `npx @askewly/design init --block saas-app-shell` 1회로 축약 브리프→DESIGN.md→토큰→이식→restyle 대조→verify 전 구간이 수동 개입 없이 닫히고 사용자 관측 통과. 회귀 = 기존 CLI 명령 무변경.
 - Gap: 부트스트랩이 다단 fetch 낱개 절차 — 착수 마찰로 실전 우회 위험.
 - Plan: plans/2026-08-04-m19-kickstart-command.md
-- Status: [ ] (chain — M18 완료 시 승격)
+- Status: [ ] active (chain 승격 2026-08-04 — M18 완료)
 
 <!-- harness:goal id="figma-return-path" status="completed" -->
 Goal: Figma 귀환 경로 — 왕복(코드→Figma→사람 디테일링→코드 회수)을 반복 가능한 능력으로. closed 2026-08-02 — M14(채널 복구·재동기화 rem 보수·스냅숏 장부/diff 기계화·왕복 2회차 무변경 0/0/0) + M15(계약 §3 두 lane 정본화·llms 등재·figma-codex-workflow promoted 배포) 연쇄 완주. Details: `evidence/figma-return-path/` + `docs/reports/2026-08-02-m{14,15}-*.md`.
 
 ## Active Milestones — media-unification
 
-<!-- harness:milestone id="M16" status="completed" priority="P1" evidence="evidence/media-unification/m16-token-audit.md" -->
-### M16 — 매체 통합 검증 (슬라이드 파이프라인의 토큰 SSOT 소비 실측 + 판정)
-- DoD: 북극성 "같은 토큰 SSOT 출발" 주장이 발표 매체에 대해 실측 장부(테마 변수 전수 대조표) + 사용자 판정(A/B) + 게이트 문서 기록(slide-spec 「토큰 출발점」 절 + medium-taxonomy 발표 행)으로 닫힘. 검증 = 대조표 전수성 + check-llms-sync PASS.
-- Gap: 슬라이드 스킬 askewly 테마 = 수기 hex 팔레트(SSOT 배선 0건 — 2026-08-03 사전 실측), slide-spec·medium-taxonomy 에 토큰 출발점 서술 부재.
-- Plan: plans/2026-08-03-m16-media-token-audit.md
-- Status: [x]
-
-- Completed at: 2026-08-04
-- Evidence: evidence/media-unification/m16-token-audit.md
-- Summary: SSOT 소비 0건 실측 → 판정 A(파생 의무) 정본화 — slide-spec §5·medium-taxonomy 게이트, 생성기 후속 goal 등재
 ## Active Milestones — figma-return-path
 
 ## Active Milestones — usage-and-site-surfacing
 
 ## Active Milestones — reference-diversification-2
 
-<!-- harness:milestone id="M11" status="completed" priority="P2" evidence="evidence/reference-diversification-2/m11-around-catalog-absorption.md" -->
-### M11 — Around 흡수 판정 (템플릿 카탈로그 구조)
-- DoD: 근거 있는 A/B/C 판정 마감 — absorption-criteria 실측 표 행 + ledger 1행(around t2) + evidence. 보류(C)도 정당한 완료(수요 미확인 등재 건). goal 마감 시 일괄 push(사용자 승인 후).
-- Evidence: evidence/reference-diversification-2/m11-around-catalog-absorption.md
-- Gap: 기존 캡처(2026-07-04)가 판정 없이 방치 — 흡수/보류 어느 쪽도 기록 안 됨.
-- Plan: archive/plans/2026-08-01-m11-around-catalog-absorption.md
-- Status: [x]
-
-<!-- harness:goal-archive21 id="reference-diversification" status="completed" -->
-Goal: 레퍼런스 다변화 — Tailwind 편중 해소 1라운드. closed 2026-08-01 — M7(HIG·Material → knowledge/mobile-navigation + terms 보강 7 + ledger source 축) · M8(Linear·Geist → knowledge/dashboard-density + terms 보강 3 + t2 행) 연쇄 완주. 후속 배치 후보(Stripe·Radix·Around)는 archive/plans/2026-08-01-m8-*.md finding 큐. Details: `evidence/reference-diversification/` + `docs/reports/2026-08-01-m{7,8}-*.md`.
-
-- Completed at: 2026-08-01
-- Summary: 판정 C(보류) — absorption-criteria 행·around t2 ledger·재판정 조건. goal 마감(push 승인 대기)
 ## Active Milestones — reference-diversification
 
 ## Active Milestones — finding-cleanup

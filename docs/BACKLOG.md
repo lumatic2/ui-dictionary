@@ -797,3 +797,19 @@ plan doc: `archive/plans/2026-07-21-eu*.md` · 증거: `evidence/editor-legibili
   - Completed: 2026-08-04
   - Result: DESIGN.md→테마 범용 배선 — 변환기 2양식+탐지 워크플로우+관측 2케이스 PASS (판정 A 실현)
   - Evidence: evidence/media-unification/m17-brand-deck-wiring.md
+
+### 2026-08
+- M18 - M18 — 조합 블록 계층 (외부 흡수 실사 + 앱 골격급 자산 정본화 + saas-app-shell 1종)
+  - Completed: 2026-08-04
+  - Result: 블록 등급 정본화(계약·registry meta.tier·entry-protocol A-0) + saas-app-shell 흡수 구현 + 신선 프로젝트 이식 실증(생성기 결함 2건 회수)
+  - Evidence: evidence/reusable-composition/m18-block-tier.md
+
+- M16 - M16 — 매체 통합 검증 (슬라이드 파이프라인의 토큰 SSOT 소비 실측 + 판정)
+  - Completed: 2026-08-04
+  - Result: SSOT 소비 0건 실측 → 판정 A(파생 의무) 정본화 — slide-spec §5·medium-taxonomy 게이트, 생성기 후속 goal 등재
+  - Evidence: evidence/media-unification/m16-token-audit.md
+
+- M11 - M11 — Around 흡수 판정 (템플릿 카탈로그 구조)
+  - Completed: 2026-08-04
+  - Result: 판정 C(보류) — absorption-criteria 행·around t2 ledger·재판정 조건. goal 마감(push 승인 대기)
+  - Evidence: evidence/reference-diversification-2/m11-around-catalog-absorption.md
