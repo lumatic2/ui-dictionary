@@ -63,7 +63,7 @@ Status: approved (사용자 승인 2026-08-04 "ㄱㄱ" — 결정 1 이름=블�
   - Failure probe: purity gate 확장이 느슨해져 사이트 결합 import 가 배포로 새는 경우 — 자기시험 FAIL 미발생 시 규칙을 좁히고 재시험(느슨한 채 통과 금지).
   - Commit: changeset (README 절: step-3).
 
-- [ ] **step-4 — saas-app-shell 블록 소스 + registry 등재 + 사이트 데모**
+- [x] **step-4 — saas-app-shell 블록 소스 + registry 등재 + 사이트 데모**
   - Artifact: ① `examples/ui-vocabulary-site/src/components/blocks/saas-app-shell/` — **step-1 판정 베이스에서 출발**(외부 흡수 시: 소스 이식 + 라이선스 표기(파일 헤더+계약 문서 규칙) + 시멘틱 토큰 restyle + 우리 recipe checks 대조 보강 / 자체 조합 폴백 시: 결정 2 구성 세트 조합) — shell 레이아웃 + dashboard 페이지 + settings 페이지 + 빈 상태·토스트 배선, 시멘틱 토큰만·라우팅 미결합 ② registry.json 항목 등재 ③ 사이트에서 블록 데모 렌더(기존 데모 등재 관례 경로 1개) ④ 요구 CSS 변수 목록을 블록 문서 절로 선언(기술 결정 ⑤).
   - Files: write examples/ui-vocabulary-site/src/components/blocks/saas-app-shell/*.tsx. edit examples/ui-vocabulary-site/registry.json + 사이트 데모 등재 파일(기존 관례 따름). edit docs/design-system/block-contract.md(saas-app-shell 등재 절).
   - Risk: 기계적 (신규 파일 위주 — 생성기·기존 asset 무변경)

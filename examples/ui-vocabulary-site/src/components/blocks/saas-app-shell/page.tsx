@@ -73,8 +73,11 @@ export function SaasAppShell({ defaultView = "dashboard" }: { defaultView?: stri
 }
 
 export function SaasAppShellDemo() {
+  // [transform:translateZ(0)] makes this wrapper the containing block for the
+  // sidebar's `position: fixed`, so the shell stays inside the gallery card
+  // instead of overlaying the host page.
   return (
-    <div className="h-[640px] w-full overflow-hidden rounded-lg border">
+    <div className="h-[640px] w-full overflow-hidden rounded-lg border [transform:translateZ(0)]">
       <div className="h-full overflow-auto">
         <SaasAppShell />
       </div>
