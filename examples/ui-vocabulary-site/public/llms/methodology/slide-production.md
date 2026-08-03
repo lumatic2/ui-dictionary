@@ -9,7 +9,7 @@
 
 - 표현 자유도가 가장 높다 — 애니메이션·Chart.js·Three.js·실시간 데이터. 이 레포의 [expressive-stack](../knowledge/expressive-stack.md) 티어·recipe 층이 그대로 재료가 된다.
 - 브라우저 렌더가 곧 최종 화면이라 WYSIWYG 검증이 되고, git으로 버전 관리된다.
-- 편집 가능한 소스(JSON/HTML)에서 결정론적으로 재빌드된다 — `presentation-slides-yusung`의 `content/slides.json` 계약.
+- 편집 가능한 소스(JSON/HTML)에서 결정론적으로 재빌드된다 — `pt`(구명 presentation-slides-yusung, 2026-08-04 개명)의 `content/slides.json` 계약.
 
 주의(HTML→export 함정): **export 경로를 이어 붙이지 않는다.** HTML→PDF→PPTX처럼 이으면 첫 변환에서 이미지로 굳는다. PPTX가 필요하면 HTML(또는 SVG)에서 직접 간다.
 
@@ -19,7 +19,7 @@
 
 | 목적 | 경로 | 도구 (toolshelf 카드) | 편집 |
 |---|---|---|---|
-| 발표 그 자체 | HTML 그대로 (브라우저/배포) | `presentation-slides-yusung` · `slides-grab` | 소스 편집 → 재빌드 |
+| 발표 그 자체 | HTML 그대로 (브라우저/배포) | `pt` · `slides-grab` | 소스 편집 → 재빌드 |
 | 공유·인쇄용 PDF | Playwright print-to-pdf (범용) / `decktape` (reveal.js 등 14 프레임워크 인식) | `decktape` · slides-grab pdf | 불가 (최종본) |
 | 보기용 PPTX | 슬라이드를 PNG 렌더 → 배경 삽입 (Slidev·Marp·구 /ppt 전부 이 방식) | `slidev` (export 아키텍처 참조) | 불가 (이미지 박제) |
 | **편집 가능 PPTX** | **pptxgenjs 단일 정본 경로** — 스킬 `templates/export-pptx.mjs` (slides.json→네이티브 개체, 테마 판독, 차트=addChart) | `PptxGenJS`(4.0.1+ 고정 — 구버전 손상 이력) | 가능 (네이티브 개체 — 차트 더블클릭→엑셀 수정) |
@@ -35,13 +35,13 @@
 
 | 상황 | 엔진 |
 |---|---|
-| 재사용·계속 편집할 진지한 덱, 인터랙티브(Chart.js·Three.js·QR·before/after) | `presentation-slides-yusung` (slides.json 정본, 레이아웃 16종, G1~G7 게이트) |
+| 재사용·계속 편집할 진지한 덱, 인터랙티브(Chart.js·Three.js·QR·before/after) | `pt` (slides.json 정본, 레이아웃 16종, G1~G7 게이트) |
 | 빠른 프로토타입, 시각적 bbox 편집, 즉시 PDF/PNG | `slides-grab` (npm CLI, 35 스타일) |
 | 편집 가능 PPTX가 최종 요구 | 위 엔진으로 HTML 확정 후 스킬 `export-pptx.mjs` (pptxgenjs 단일 정본 경로) |
 
 ## 4. 프로세스 — 구조가 디자인보다 먼저 (순서 강제)
 
-[slide-principles](../knowledge/slide-principles.md) 원칙 4·5의 실행형. `presentation-slides-yusung`의 G1~G7 게이트가 이미 이 순서를 강제한다 — 새 발명 없이 그대로 쓴다:
+[slide-principles](../knowledge/slide-principles.md) 원칙 4·5의 실행형. `pt`의 G1~G7 게이트가 이미 이 순서를 강제한다 — 새 발명 없이 그대로 쓴다:
 
 ```text
 G1 자료(출처 승인) → G2 구성안(아웃라인 승인) → G3 문구 → G4 디자인 방향
@@ -65,7 +65,7 @@ G1 자료(출처 승인) → G2 구성안(아웃라인 승인) → G3 문구 →
 
 ## 6. 슬라이드 린트 규칙 스펙 (SL2 구현 입력)
 
-구현 위치: `presentation-slides-yusung`의 validator(`tools/validate-slides.mjs`) 확장 — 입력은 `content/slides.json`. **전 규칙 severity=warning, 차단 없음** — slide-spec §3의 철학(근거 없는 임계값을 차단으로 승격하면 근거 있는 검사까지 무시당한다)을 따르고, 각 위반은 근거 등급을 값으로 들고 나온다.
+구현 위치: `pt`의 validator(`tools/validate-slides.mjs`) 확장 — 입력은 `content/slides.json`. **전 규칙 severity=warning, 차단 없음** — slide-spec §3의 철학(근거 없는 임계값을 차단으로 승격하면 근거 있는 검사까지 무시당한다)을 따르고, 각 위반은 근거 등급을 값으로 들고 나온다.
 
 | id | 규칙 | 입력 | 판정 | 임계값 | 예외 | 근거 등급 |
 |---|---|---|---|---|---|---|

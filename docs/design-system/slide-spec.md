@@ -110,14 +110,16 @@ checkSlideHeuristics(regions, { canvas, enable: true })
 `research/2026-08-03-m16-media-token-audit.md` (M16).
 
 - **판정: A — 슬라이드 테마는 `tokens/askewly.tokens.json`(SSOT) 파생이어야 한다.**
-  실측 시점 현행(스킬 `presentation-slides-yusung` canonical 테마 3종, 29변수 수기
+  실측 시점 현행(스킬 `pt`(구명 presentation-slides-yusung) canonical 테마 3종, 29변수 수기
   hex, SSOT 소비 0건)은 **미배선 결함(과도기 상태)** 으로 등재한다.
 - **파생 ≠ 복사.** 「하지 않는 것」의 "화면용 토큰을 지면 산출물에 그대로 옮기지
   않는다"는 유효하다 — 요구되는 것은 화면 값의 이식이 아니라, SSOT 에서 발표 매체
   전용 파생 규칙을 거쳐 테마가 **생성**되는 것이다(대비 보정·프로젝터 게이트는 그대로).
 - **구현 경로(후속 goal, 이 계약 밖)**: SSOT 확장(현행 테마 29변수 중 대응 토큰
-  부재 16역할 — 차트·내비 등) → `tokens → theme.json` 생성기(스킬의 SP2 custom
-  트랙이 기존 인입점 — 스킬 소스 무변경) → 관측 게이트 재통과(팔레트 변경은 실물
+  부재 16역할 — 차트·내비 등) → `tokens → theme.json` 생성기 — 신규 개발이 아니라
+  스킬 기존 변환기 `scripts/design-md-to-theme.mjs`(SP2 — 단 Stitch flat colors 맵
+  전용·타 브랜드 시안 한정 선언)를 SSOT 3-tier 구조로 확장(2026-08-04 실측) →
+  custom 트랙 주입(스킬 소스 무변경) → 관측 게이트 재통과(팔레트 변경은 실물
   관측 먼저, QA1 교훈).
 - 생성기 배선 전까지 canonical 테마 사용은 허용된다 — 단 "SSOT 출발"을 충족한
   상태가 아니라는 사실을 이 절이 기록한다.
