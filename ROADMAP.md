@@ -1,7 +1,7 @@
 # ROADMAP
 
 > Last updated: 2026-08-04
-> Status: **2026-08-04 M16 매체 통합 검증 완주** — SSOT 소비 0건 실측 → 판정 A(슬라이드 테마 SSOT 파생 의무) 정본화, slide-spec §5·medium-taxonomy 게이트 등재. active goal 0. 남은 큐: 『인터랙티브 웹 애니메이션』 책 스터디(사용자 주도) · **토큰→슬라이드 테마 생성기**(M16 판정 A 후속 — SSOT 16역할 확장 + 스킬 기존 `design-md-to-theme.mjs`를 SSOT 3-tier로 확장 + 관측 게이트) · D2 Presenton 벤치(수요 미확인) · Around 재판정(이식 milestone 개방 시).
+> Status: **2026-08-04 M16+M17 매체 통합 완주** — M16(SSOT 소비 0건 실측→판정 A 정본화) + M17(DESIGN.md→슬라이드 테마 범용 배선: 변환기 2양식·/pt 브랜드 탐지·관측 2케이스 PASS — 판정 A 실현). active goal 0. 남은 큐: 『인터랙티브 웹 애니메이션』 책 스터디(사용자 주도) · dark/light 테마 SSOT 파생(SSOT dark 모드 정비 선행) · D2 Presenton 벤치(수요 미확인) · Around 재판정(이식 milestone 개방 시).
 > North star: Build Askewly Design as both a public reference website and an agent-usable implementation system.
 > line budget: <=150
 
@@ -11,13 +11,6 @@
 Goal: Figma 귀환 경로 — 왕복(코드→Figma→사람 디테일링→코드 회수)을 반복 가능한 능력으로. closed 2026-08-02 — M14(채널 복구·재동기화 rem 보수·스냅숏 장부/diff 기계화·왕복 2회차 무변경 0/0/0) + M15(계약 §3 두 lane 정본화·llms 등재·figma-codex-workflow promoted 배포) 연쇄 완주. Details: `evidence/figma-return-path/` + `docs/reports/2026-08-02-m{14,15}-*.md`.
 
 ## Active Milestones — media-unification
-
-<!-- harness:milestone id="M17" status="active" priority="P1" -->
-### M17 — DESIGN.md→슬라이드 테마 자동 배선 (프로젝트별 브랜드 덱)
-- DoD: /pt 가 대상 프로젝트 DESIGN.md 를 탐지해 브랜드 테마를 자동 생성·제안 — 변환기 flat·3-tier 두 양식 판독(29변수 전건·대비 AA 자기검사·조용한 기본값 금지), 스킬 워크플로우 배선, 실프로젝트 2케이스(ui-dictionary 3-tier + askew-app flat) 사용자 관측 PASS. slide-spec §5 기록 + check-llms-sync PASS.
-- Gap: 수동 경로만 존재(탐지·제안 배선 0) · 3-tier 미지원 · 경계 문구가 자기 브랜드 차단 · 실프로젝트 관측 실증 0회 (M16 장부 + 2026-08-04 실측).
-- Plan: plans/2026-08-04-m17-slide-theme-generator.md
-- Status: [ ]
 
 <!-- harness:milestone id="M16" status="completed" priority="P1" evidence="evidence/media-unification/m16-token-audit.md" -->
 ### M16 — 매체 통합 검증 (슬라이드 파이프라인의 토큰 SSOT 소비 실측 + 판정)

@@ -791,3 +791,9 @@ plan doc: `archive/plans/2026-07-21-eu*.md` · 증거: `evidence/editor-legibili
   - Completed: 2026-08-02
   - Result: 방법론·계약 두 lane 정본화 + llms 등재 + figma-codex-workflow promoted 승격·배포 (출고 정합 85건 PASS)
   - Evidence: evidence/figma-return-path/m15-canonicalize.md
+
+### 2026-08
+- M17 - M17 — DESIGN.md→슬라이드 테마 자동 배선 (프로젝트별 브랜드 덱)
+  - Completed: 2026-08-04
+  - Result: DESIGN.md→테마 범용 배선 — 변환기 2양식+탐지 워크플로우+관측 2케이스 PASS (판정 A 실현)
+  - Evidence: evidence/media-unification/m17-brand-deck-wiring.md

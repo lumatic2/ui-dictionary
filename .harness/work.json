@@ -5164,7 +5164,7 @@
     "m17-slide-theme-generator": {
       "work_id": "m17-slide-theme-generator",
       "milestone_id": "M17",
-      "status": "active",
+      "status": "completed",
       "plan_path": "plans/2026-08-04-m17-slide-theme-generator.md",
       "changeset_path": "changesets/20260804-m17-slide-theme-generator",
       "next_step": "step-1",
@@ -5205,7 +5205,8 @@
       ],
       "owner_session_uuid": "claude:9fe2ae21-4ddb-44fa-a543-045331e68bf7",
       "updated_at": "2026-08-04",
-      "notes": "Registered atomically by canonical harness approve_harness_plan.py after plan validation."
+      "notes": "Registered atomically by canonical harness approve_harness_plan.py after plan validation.",
+      "completion_summary": "C:/Program Files/Git/pt가 프로젝트 DESIGN.md를 찾아 브랜드 슬라이드 테마를 자동 생성·제안 — 2양식 변환기+워크플로우 배선+관측 2케이스 PASS"
     }
   }
 }
