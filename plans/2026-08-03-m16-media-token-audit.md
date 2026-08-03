@@ -43,7 +43,7 @@ Status: approved (사용자 승인 2026-08-03 "ㄱㄱ" — 그릇=실측+판정+
   - Failure probe: custom-skills 소스와 `~/.claude/skills` 배포본 drift — `diff` 로 확인해 어긋나면 소스 기준으로 기록하고 drift 사실을 장부에 남긴다(배포 회귀 단정 전 check_checkout_freshness 먼저).
   - Commit: changeset `20260803-m16-media-token-audit` (README 절: step-1).
 
-- [ ] **step-2 — 사용자 판정 + 매체 게이트 문서 기록 (decision gate 후)**
+- [x] **step-2 — 사용자 판정 + 매체 게이트 문서 기록 (decision gate 후)**
   - Artifact: step-1 장부의 A/B 를 [선택지+추천+근거]로 제시 → 사용자 확정 → 확정 내용을 `docs/design-system/slide-spec.md` 신규 절(「토큰 출발점」) + `medium-taxonomy.md` 발표 행에 기록 → `node scripts/generate-llms-txt.mjs` 재생성 → 판정 A 면 후속 goal 후보(테마 생성기)를 ROADMAP 큐·finding 큐에 등재.
   - Files: write docs/design-system/slide-spec.md, docs/design-system/medium-taxonomy.md, ROADMAP.md(큐 한 줄), examples/ui-vocabulary-site/public/llms/**(재생성물). read research/2026-08-03-m16-media-token-audit.md.
   - Risk: 기계적 (문서 — 단 decision gate: 사용자 판정 전 기록 금지)
@@ -65,10 +65,12 @@ Status: approved (사용자 승인 2026-08-03 "ㄱㄱ" — 그릇=실측+판정+
 
 ## finding 큐
 
-- (예약) 판정 A 확정 시: 토큰→슬라이드 테마 생성기 goal 후보.
+- **판정 A 확정(2026-08-03) → 후속 goal 후보 등재됨(ROADMAP 큐)**: 토큰→슬라이드 테마 생성기 — SSOT 16역할 확장(차트·내비 등) + SP2 custom 트랙 theme.json 생성기 + 관측 게이트 재통과. 실측 근거: `research/2026-08-03-m16-media-token-audit.md` §5-A.
 
 ## 진행 로그
 
 - 2026-08-03 작성.
 - 2026-08-03 fresh 검증자(sonnet) 반영 — 인용 전수 실재 확인(hex·SSOT·스크립트·문서·export-pptx.mjs), 배포본-소스 drift 현재 없음, step-2 llms 미등재 probe 는 죽은 분기로 판명(FIXED_ASSETS 기등재) → probe 문구 교체.
 - 2026-08-03 step-1 완료 — 실측 장부 `research/2026-08-03-m16-media-token-audit.md`: SSOT 소비 0건(29변수 일치 0·파생 0·평행 13·부재 16), 스킬 내부 단일출처 규율 건강, SP2 custom 트랙 = A 인입점 발견, drift probe 미발생(정상 확인 기록). Verify 3항 PASS. decision gate 진입: 사용자 판정 A/B 대기.
+- 2026-08-03 **사용자 판정 A 확정** (추천 B 를 기각하고 A 선택) — "슬라이드 테마는 SSOT 파생이어야 한다", 현행 = 미배선 결함 등재.
+- 2026-08-04 step-2 완료 — slide-spec §5 「토큰 출발점」 신설(판정 A·파생≠복사·구현 경로·과도기 허용) + §6 미구현 항목 추가, medium-taxonomy 발표 행에 SSOT 파생 게이트 추가, llms 재생성(174 assets — 문서 2건 diff 검출 = 잔여 probe PASS), ROADMAP 큐에 후속 goal(테마 생성기) 등재.

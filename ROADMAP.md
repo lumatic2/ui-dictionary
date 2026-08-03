@@ -1,7 +1,7 @@
 # ROADMAP
 
 > Last updated: 2026-08-02
-> Status: **2026-08-03 M16 매체 통합 검증 active** — 슬라이드 파이프라인의 토큰 SSOT 소비 실측 + 사용자 판정(승인 2026-08-03). 남은 큐: 『인터랙티브 웹 애니메이션』 책 스터디(사용자 주도) · D2 Presenton 벤치(수요 미확인) · Around 재판정(이식 milestone 개방 시).
+> Status: **2026-08-03 M16 매체 통합 검증 active** — 슬라이드 파이프라인의 토큰 SSOT 소비 실측 + 사용자 판정(승인 2026-08-03). 남은 큐: 『인터랙티브 웹 애니메이션』 책 스터디(사용자 주도) · **토큰→슬라이드 테마 생성기**(M16 판정 A 후속 — SSOT 16역할 확장+SP2 theme.json 생성기+관측 게이트) · D2 Presenton 벤치(수요 미확인) · Around 재판정(이식 milestone 개방 시).
 > North star: Build Askewly Design as both a public reference website and an agent-usable implementation system.
 > line budget: <=150
 
