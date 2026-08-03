@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "active_work_id": "m16-media-token-audit",
+  "active_work_id": "m17-slide-theme-generator",
   "works": {
     "SFB1": {
       "title": "Structure Contract And Clean Production",
@@ -5160,6 +5160,52 @@
       "updated_at": "2026-08-03",
       "notes": "Registered atomically by canonical harness approve_harness_plan.py after plan validation.",
       "completion_summary": "매체 통합 검증 — 슬라이드 파이프라인 SSOT 소비 0건 실측, 판정 A(SSOT 파생 의무) 정본화, 테마 생성기 후속 goal 등재"
+    },
+    "m17-slide-theme-generator": {
+      "work_id": "m17-slide-theme-generator",
+      "milestone_id": "M17",
+      "status": "active",
+      "plan_path": "plans/2026-08-04-m17-slide-theme-generator.md",
+      "changeset_path": "changesets/20260804-m17-slide-theme-generator",
+      "next_step": "step-1",
+      "current_step": "step-1",
+      "steps": [
+        {
+          "id": "step-1",
+          "label": "step-1 — 변환기 확장 (3-tier 지원 + fallback 파생 + 대비 자기검사)"
+        },
+        {
+          "id": "step-2",
+          "label": "step-2 — /pt 워크플로우 배선 (탐지→제안) + 경계 정정 + 재배포"
+        },
+        {
+          "id": "step-3",
+          "label": "step-3 — 실프로젝트 2케이스 E2E + 관측 (human gate) + 기록"
+        }
+      ],
+      "execution_mode": "continuous",
+      "approval": {
+        "approved_by": "user",
+        "approved_at": "2026-08-04",
+        "plan_sha256": "76b9da4c102c7f7c23acd15c6b0dcbe462f855f232915d49330380d411e1cc94"
+      },
+      "allowed_stop_reasons": [
+        "completed",
+        "blocked",
+        "decision_required",
+        "risk_gate",
+        "secret_required",
+        "external_authority_required",
+        "user_stopped"
+      ],
+      "stop_reason": null,
+      "stop_detail": {},
+      "session_ids": [
+        "claude:9fe2ae21-4ddb-44fa-a543-045331e68bf7"
+      ],
+      "owner_session_uuid": "claude:9fe2ae21-4ddb-44fa-a543-045331e68bf7",
+      "updated_at": "2026-08-04",
+      "notes": "Registered atomically by canonical harness approve_harness_plan.py after plan validation."
     }
   }
 }

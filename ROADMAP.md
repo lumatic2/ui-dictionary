@@ -12,6 +12,13 @@ Goal: Figma 귀환 경로 — 왕복(코드→Figma→사람 디테일링→코�
 
 ## Active Milestones — media-unification
 
+<!-- harness:milestone id="M17" status="active" priority="P1" -->
+### M17 — DESIGN.md→슬라이드 테마 자동 배선 (프로젝트별 브랜드 덱)
+- DoD: /pt 가 대상 프로젝트 DESIGN.md 를 탐지해 브랜드 테마를 자동 생성·제안 — 변환기 flat·3-tier 두 양식 판독(29변수 전건·대비 AA 자기검사·조용한 기본값 금지), 스킬 워크플로우 배선, 실프로젝트 2케이스(ui-dictionary 3-tier + askew-app flat) 사용자 관측 PASS. slide-spec §5 기록 + check-llms-sync PASS.
+- Gap: 수동 경로만 존재(탐지·제안 배선 0) · 3-tier 미지원 · 경계 문구가 자기 브랜드 차단 · 실프로젝트 관측 실증 0회 (M16 장부 + 2026-08-04 실측).
+- Plan: plans/2026-08-04-m17-slide-theme-generator.md
+- Status: [ ]
+
 <!-- harness:milestone id="M16" status="completed" priority="P1" evidence="evidence/media-unification/m16-token-audit.md" -->
 ### M16 — 매체 통합 검증 (슬라이드 파이프라인의 토큰 SSOT 소비 실측 + 판정)
 - DoD: 북극성 "같은 토큰 SSOT 출발" 주장이 발표 매체에 대해 실측 장부(테마 변수 전수 대조표) + 사용자 판정(A/B) + 게이트 문서 기록(slide-spec 「토큰 출발점」 절 + medium-taxonomy 발표 행)으로 닫힘. 검증 = 대조표 전수성 + check-llms-sync PASS.
