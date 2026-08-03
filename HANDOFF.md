@@ -1,20 +1,21 @@
 # HANDOFF
 
 ## 이어서 할 일
-> 2026-08-02 세션 종료 시 기록 (goal `figma-return-path` 완주: M14 재가동+왕복 2회차 · M15 정본화·배선)
+> 2026-08-04 세션 종료 시 기록 (M16 매체 통합 검증 + M17 DESIGN.md→테마 배선 연쇄 완주)
 
-- **active goal 0 — 다음은 `/harness-plan`.** 남은 큐(우선순위 사용자 소유): 『인터랙티브 웹 애니메이션』 책 스터디(사용자 주도) · D2 Presenton 벤치(수요 미확인) · Around 재판정(이식 milestone 개방 시) · 구 보류 후보 B 이식 축/C 매체 통합 검증(2026-08-01 핸드오프 참조).
-- **라이브 llms 확인**: push(`345ec42..114ed91`) 완료 — `curl -s https://ui.askewly.com/llms.txt | grep figma-bridge-contract` 1건 이상이면 닫힘. 세션 종료 시 배포 전파 대기 중(0건이면 Vercel 배포만 재확인).
-- 후속 후보(M14 finding 큐 이월, `archive/plans/2026-08-01-m14-figma-return-path-relaunch.md`): ① `figma-push-snapshot.mjs` 청크 옵션화(use_figma 반환 20kb 절단 우회 내장) ② 계약 §2.2 "변수 description에 SSOT $description 복사" 생성기 미구현(7월부터 잔존).
-- Figma 파일 상태: "Askewly Design Tokens"(`xY42P22E7CtnvuxX8ZzZec`)에 "Atlas Pilot 2026-08-01" 페이지(승격 섹션 35:3 + 배리에이션 보드 40:2) 잔존 — 왕복 기록물로 보존, 정리 여부는 사용자 결정.
+- **active goal 0 — 다음은 `/harness-plan`.** 남은 큐(우선순위 사용자 소유): 『인터랙티브 웹 애니메이션』 책 스터디(사용자 주도 — 워크트리에서 직접) · dark/light 테마 SSOT 파생(SSOT dark 모드 토큰 정비 선행 — M17 finding) · D2 Presenton 벤치(수요 미확인) · Around 재판정(이식 milestone 개방 시).
+- Figma 후속 2건은 다음 Figma 세션에 묶음: ① `figma-push-snapshot.mjs` 청크 옵션화 ② 계약 §2.2 변수 description 생성기 ③ 신규 토큰 생기면 `generate-figma-variables-sync.mjs` 재실행.
+- `/pt` 신기능 실사용 대기: 덱 요청 시 대상 프로젝트 DESIGN.md 자동 탐지→custom 브랜드 테마 제안(M17). 첫 실전 사용에서 어색하면 SKILL.md §6 문구 조정.
+- DESIGN.md 이탈 양식 3레포(askew-app 등 frontmatter 없는 표 기반)는 변환기가 거부함 — 그 레포 덱을 만들 일이 생기면 DESIGN.md를 표준 양식으로 정비하는 게 선행.
 
 ### 계획 위치 (cascade)
-- 북극성: Askewly Design — 제작 표면 왕복 축의 "귀환 경로" 실증 완료 (`CLAUDE.md` 「북극성」)
-- Milestone(active): 없음 — 2026-08-02 완주: M14(채널 복구·재동기화 rem 보수·회수 기계화·무변경 왕복 0/0/0) + M15(계약 §3 두 lane·llms 등재·figma-codex-workflow promoted 배포)
+- 북극성: Askewly Design — "같은 토큰 SSOT에서 출발" 앞절이 발표 매체에서 실현됨 (`CLAUDE.md` 「북극성」)
+- Milestone(active): 없음 — 2026-08-04 완주: M16(SSOT 소비 0건 실측→판정 A) + M17(변환기 2양식·/pt 브랜드 탐지 배선·관측 2케이스 PASS)
 - 다음 차례: `/harness-plan` — 큐에서 goal 선택 또는 새 방향
 
 ### 현재 상태 / 주의점
-- main 클린·push 완료(`114ed91`). custom-skills도 push 완료(`8de9b6a` — 스킬 promoted 승격+ask-yusung 라우터).
-- 귀환 절차 정본 = `methodology/figma-workflow.md` §2③⑤ + `docs/design-system/figma-bridge-contract.md` §3a. 도구: `scripts/figma-push-snapshot.mjs`·`figma-return-diff.mjs`(`--self-test`).
-- Figma MCP 이 기기 user scope 등록·SKKU OAuth 완료 — 재인증 필요 시 세션 내 `/mcp`(CLI `auth` 커맨드 없음).
-- untracked `tmp-patterns-reference.png` 사용자 소유 방치 유지.
+- main 클린·push 완료(`7b9290a`). custom-skills push 완료(`55890eb`). 라이브 llms에 slide-spec 「토큰 출발점」 반영 확인됨(LIVE-OK 2026-08-04).
+- 스킬 개명: presentation-slides-yusung → **`/pt`** (구명 트리거 병기). pr-review 세션 훅 노이즈 제거(cadence_nudge.py 체크 2 삭제).
+- push 리모트명은 `origin` (구 표기 `ui-dictionary`는 문서 정정 완료 — phases/ 기록 문서에만 옛 표기 잔존).
+- Figma: "Atlas Pilot 2026-08-01" 페이지 제거 완료(사용자 지시). MCP SKKU OAuth 유지.
+- 시각 결과 제시는 Artifact로 띄워서(경로 출력 금지 — 메모리 show-results-visually).
