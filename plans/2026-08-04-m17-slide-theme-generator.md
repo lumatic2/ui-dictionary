@@ -45,7 +45,7 @@ Status: approved (사용자 승인 2026-08-04 "ㄱㄱ" — 결정 1 flat 케이�
   - Failure probe: 3-tier semantic 값이 참조 문자열(`{color.primitive...}`)이라 flat 파서가 hex 를 못 얻음 — 참조 해석기(DESIGN.md 내 primitive 역참조)를 변환기에 내장, 미해석 참조는 exit 1 로 표면화.
   - Commit: changeset `20260804-m17-slide-theme-generator` (README 절: step-1) + custom-skills 커밋.
 
-- [ ] **step-2 — /pt 워크플로우 배선 (탐지→제안) + 경계 정정 + 재배포**
+- [x] **step-2 — /pt 워크플로우 배선 (탐지→제안) + 경계 정정 + 재배포**
   - Artifact: 스킬 SKILL.md 덱 생성 절차에 "대상 프로젝트 루트 DESIGN.md 탐지 → 있으면 custom 브랜드 테마를 기본 제안(변환 실행·G5 캘리브레이션 포함), 없으면 canonical 3종 제안" 단계 신설 + references/style-system.md Custom Brand Theme 절 갱신(3-tier 지원·자기 브랜드 정본 사용 경계 정정 — 결정 2) + `setup.sh` 재배포.
   - Files: edit ~/projects/custom-skills/promoted/pt/SKILL.md, ~/projects/custom-skills/promoted/pt/references/style-system.md.
   - Risk: 기계적 (문서 배선 — 빌더 코드 무변경)
