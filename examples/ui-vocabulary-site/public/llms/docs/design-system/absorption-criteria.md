@@ -49,6 +49,8 @@ Audience: 에이전트 + 시스템 관리자.
 | 60fps.design · landing.love | **B** | 큐레이션 갤러리 — 기법이 아닌 관찰 소스, motion-references 북마크 (VI7) |
 | remotion | **B** | 사전 렌더 영상 매체 — 화면 티어 비대상, motion-references §영상 매체(KG 노드 링크)로 커버 (VI7) |
 | Around/Createx (템플릿 카탈로그·패키징) | **C** | 이식물 = 패키징·customizer 원리인데 소비처("이식 가능한 제품" 축)가 milestone 미개방 — 사용자 판정 "이르다"(2026-08-01). 원리는 `research/around-template-system-capture.md` 에 동결(재서술 = 열화 복제). 이식/패키징 milestone active 시 A 재검 (M11) |
+| shadcn 공식 blocks `dashboard-01` | **A** | MIT 소스 흡수 — saas-app-shell 블록 베이스로 이식(+우리 asset 보강·restyle 의무·파일 헤더 attribution). 이미 registry:block 동형 배포라 이식 비용 최소. 근거: `research/2026-08-04-m18-block-absorption-survey.md` (M18) |
+| satnaing/shadcn-admin · Tremor · Next 계열 스타터 | **B** | 라우터/프레임워크/자체 컴포넌트 체계 결합으로 registry 단위 이식 불가 — 구조 참고 링크만 (M18 실사) |
 
 ## 운용
 

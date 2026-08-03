@@ -36,7 +36,7 @@ Status: approved (사용자 승인 2026-08-04 "ㄱㄱ" — 결정 1 이름=블�
 
 ## Step 트리
 
-- [ ] **step-1 — 외부 공개 블록 실사 + 베이스 판정 (흡수 우선)**
+- [x] **step-1 — 외부 공개 블록 실사 + 베이스 판정 (흡수 우선)**
   - Artifact: `research/2026-08-04-m18-block-absorption-survey.md` — 후보 3~5개(shadcn 공식 blocks 대시보드/사이드바 세트·satnaing/shadcn-admin·Tremor 대시보드 템플릿 등 + 검색으로 추가 후보) 각각 라이선스(재배포·표기 의무)·구성(결정 2 세트 대조)·import 표면·품질(우리 recipe checks·anti-patterns·시그니처 하드페일 대조)을 실측 표로 → 결정 로그의 베이스 채택 규칙 적용 → saas-app-shell 베이스 확정(외부 흡수 or 자체 조합 폴백) + absorption-criteria 표 행 기록. 모든 출처 URL+접근일.
   - Files: write research/2026-08-04-m18-block-absorption-survey.md. edit docs/design-system/absorption-criteria.md(판정 행 추가).
   - Risk: 기계적 (조사·판정 문서 — 코드 무변경)
