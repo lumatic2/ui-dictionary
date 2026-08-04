@@ -37,7 +37,7 @@ Status: approved (사용자 승인 2026-08-04 "ㄱㄱ" — 집행 10건+부속 1
 
 ## Step 트리
 
-- [ ] **step-1 — plain-asset 게이트 확장 (선언 의존성 + 등재 자산 참조)**
+- [x] **step-1 — plain-asset 게이트 확장 (선언 의존성 + 등재 자산 참조)**
   - Artifact: `generate-registry.mjs` plain-asset 경로가 블록 계약 §2 준용으로 두 가지를 읽는다 — ① `item.dependencies` 선언 npm allowlist(선언+실사용 대조, 선언·미사용도 FAIL) ② `@/components/<등재자산>` 참조 허용 → registryDependencies URL 파생(블록 buildBlock 과 동일 — 미등재 컴포넌트 참조는 여전히 FAIL). 기존 38건 산출 불변. (fresh 검증자 발견 1 반영: 6종 중 3종이 `@/components/device-frame` import — ② 없이는 재생성 전체가 크래시.)
   - Risk: 위험 (배포 게이트 변경 — diff 0 + 자기시험으로 방어)
   - Files: edit scripts/generate-registry.mjs. run scripts/generate-registry.mjs.

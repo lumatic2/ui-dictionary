@@ -154,14 +154,40 @@ for (const item of registry.items) {
   const src = readFileSync(srcPath, "utf8");
 
   const imports = [...src.matchAll(/from\s+"([^"]+)"/g)].map((m) => m[1]);
-  const banned = imports.filter((i) => !ALLOWED.test(i));
-  if (banned.length) fail(`item '${item.name}' 순수성 위반 — 허용 외 import: ${banned.join(", ")} (사이트 결합 데모는 배포 금지)`);
+  // Plain assets share the block contract (§2) for anything beyond the base surface:
+  // npm packages must be declared in the item's `dependencies` allowlist, and
+  // @/components/<name> refs must point at registered code assets (-> registryDependencies URL).
+  const declaredDeps = new Set(item.dependencies ?? []);
+  const usedDeclared = new Set();
+  const assetRefs = new Set();
+  const banned = [];
+  for (const i of imports) {
+    if (ALLOWED.test(i)) continue;
+    if (i.startsWith("@/components/")) {
+      const ref = i.replace("@/components/", "");
+      if (assetNames.has(ref)) { assetRefs.add(ref); continue; }
+      fail(`item '${item.name}': 미등재 컴포넌트 import '${i}' — 등재된 code asset 만 허용`);
+    }
+    if (!i.startsWith("@/") && !i.startsWith(".")) {
+      const pkg = i.startsWith("@") ? i.split("/").slice(0, 2).join("/") : i.split("/")[0];
+      if (declaredDeps.has(pkg)) { usedDeclared.add(pkg); continue; }
+    }
+    banned.push(i);
+  }
+  if (banned.length) fail(`item '${item.name}' 순수성 위반 — 허용 외 import: ${banned.join(", ")} (npm 패키지면 registry.json dependencies 에 선언 — 사이트 결합 데모는 배포 금지)`);
+  const undeclared = [...declaredDeps].filter((d) => !usedDeclared.has(d));
+  if (undeclared.length) fail(`item '${item.name}': 선언됐지만 소스에 없는 dependencies: ${undeclared.join(", ")}`);
 
-  const registryDependencies = [...new Set(
-    imports.filter((i) => i.startsWith("@/components/ui/")).map((i) => i.replace("@/components/ui/", ""))
-  )].sort();
+  const registryDependencies = [
+    ...[...new Set(
+      imports.filter((i) => i.startsWith("@/components/ui/")).map((i) => i.replace("@/components/ui/", ""))
+    )].sort(),
+    ...[...assetRefs].sort().map((n) => `${BASE_URL}/r/${n}.json`),
+  ];
   const dependencies = [...new Set(
-    imports.filter((i) => !i.startsWith("@/") && !/^react(\/.+)?$/.test(i))
+    imports
+      .filter((i) => !i.startsWith("@/") && !i.startsWith(".") && !/^react(\/.+)?$/.test(i))
+      .map((i) => (i.startsWith("@") ? i.split("/").slice(0, 2).join("/") : i.split("/")[0]))
   )].sort();
 
   const recipeDoc = findRecipeDoc(item.name);
