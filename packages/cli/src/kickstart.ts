@@ -27,7 +27,7 @@ const BRIEF_QUESTIONS: Array<{ key: keyof BriefAnswers; label: string; options: 
   {
     key: "color",
     label: "Color direction — the single accent family",
-    options: ["blue", "teal", "violet", "amber"],
+    options: ["blue", "teal", "violet", "amber", "cosmos"],
     recommended: "blue",
   },
   {
@@ -52,6 +52,9 @@ const ACCENTS: Record<string, { light: string; onLight: string; dark: string; on
   teal: { light: "#1C877E", onLight: "#F6FBFA", dark: "#37BEAD", onDark: "#0A1F1D", ring: "#1C877E", darkRing: "#37BEAD" },
   violet: { light: "#6231C4", onLight: "#FAF8FD", dark: "#A683EE", onDark: "#160E26", ring: "#6231C4", darkRing: "#A683EE" },
   amber: { light: "#BC6E0F", onLight: "#FDFBF6", dark: "#F3A324", onDark: "#211405", ring: "#BC6E0F", darkRing: "#F3A324" },
+  // cosmos: harvested from second-brain/poc-graph (brain.askewly.com) knowledge-graph
+  // palette — muted navy primary over a near-black ground family (harvest-contract §4, 2026-08-04).
+  cosmos: { light: "#3E5F94", onLight: "#F7F9FC", dark: "#6E8FC4", onDark: "#0E1420", ring: "#3E5F94", darkRing: "#6E8FC4" },
 }
 
 // Neutral canvases by tone (hex — same parser constraint as above).

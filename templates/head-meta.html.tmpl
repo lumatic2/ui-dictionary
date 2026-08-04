@@ -1,0 +1,21 @@
+<!-- head-meta 스니펫 (정본: docs/design-system/head-meta.md — 최소 계약 3항) -->
+<!-- 값 치환: {{SITE_NAME}} {{DESCRIPTION}} {{CANONICAL_URL}} {{OG_IMAGE_URL: 1200x630}} -->
+<title>{{SITE_NAME}}</title>
+<meta name="description" content="{{DESCRIPTION}}" />
+<link rel="canonical" href="{{CANONICAL_URL}}" />
+
+<!-- 정적 OG 폴백 — SPA 라우트별 갱신과 무관하게 크롤러가 보는 값 -->
+<meta property="og:type" content="website" />
+<meta property="og:title" content="{{SITE_NAME}}" />
+<meta property="og:description" content="{{DESCRIPTION}}" />
+<meta property="og:url" content="{{CANONICAL_URL}}" />
+<meta property="og:image" content="{{OG_IMAGE_URL}}" />
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:title" content="{{SITE_NAME}}" />
+<meta name="twitter:description" content="{{DESCRIPTION}}" />
+<meta name="twitter:image" content="{{OG_IMAGE_URL}}" />
+
+<!-- 파비콘 이중화 — ico(레거시) + svg(현대·다크 대응) -->
+<link rel="icon" href="/favicon.ico" sizes="32x32" />
+<link rel="icon" href="/icon.svg" type="image/svg+xml" />
+<link rel="apple-touch-icon" href="/apple-touch-icon.png" />
