@@ -35,6 +35,9 @@ const ALLOWLIST = [
   "components/image-treatment.tsx",
   // M25: 같은 계열 — 고정 라이트 글리프 필드가 콘텐츠.
   "components/cursor-reactive-field.tsx",
+  // M25: 발광 씬 — 다크 스테이지·글로우 팔레트가 씬 콘텐츠(prop 으로 리맵), 테마 토큰 대상 아님.
+  "components/glow-points-scene-impl.tsx",
+  "components/glow-points-scene.tsx",
 ];
 
 const PALETTE =

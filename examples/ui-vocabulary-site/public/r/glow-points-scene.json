@@ -1,0 +1,25 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "glow-points-scene",
+  "type": "registry:block",
+  "title": "Glow Points Scene",
+  "description": "A glow points scene renders a luminous point-cloud stage for knowledge graphs, constellations, and ambient data backdrops. The wrapper keeps three.js behind a dynamic import, checks WebGL support up front, and falls back to a static notice when the context is unavailable — the scene is an enhancement, never a gate. Rendering only; hover/raycast interaction is the consumer's concern.",
+  "meta": {
+    "harvest": {
+      "origin": "second-brain/poc-graph luminous node field",
+      "liveUrl": "https://brain.askewly.com/",
+      "harvestedAt": "2026-08-04"
+    }
+  },
+  "registryDependencies": [
+    "https://ui.askewly.com/r/glow-points-scene-impl.json"
+  ],
+  "dependencies": [],
+  "files": [
+    {
+      "path": "registry/askewly/glow-points-scene/glow-points-scene.tsx",
+      "type": "registry:component",
+      "content": "import { Component, lazy, Suspense, useMemo, type ReactNode } from \"react\"\nimport type { GlowPoint, GlowPointsSceneImplProps } from \"@/components/glow-points-scene-impl\"\n\nconst GlowPointsSceneImpl = lazy(() => import(\"@/components/glow-points-scene-impl\"))\n\n/**\n * Glow points scene: a luminous point-cloud stage (single Points draw call +\n * custom core/halo shader + UnrealBloom) for knowledge graphs, constellations,\n * and ambient data backdrops. This wrapper keeps three.js (~150KB+ gzip)\n * behind a dynamic import, verifies WebGL support up front, and falls back to\n * a static notice node when the context is unavailable — the scene is an\n * enhancement, never a gate. Rendering only: hover/raycast interaction is\n * intentionally left to the consumer.\n */\n\nfunction supportsWebGL(): boolean {\n  try {\n    const canvas = document.createElement(\"canvas\")\n    return Boolean(canvas.getContext(\"webgl2\") ?? canvas.getContext(\"webgl\"))\n  } catch {\n    return false\n  }\n}\n\nclass SceneErrorBoundary extends Component<{ fallback: ReactNode; children: ReactNode }, { failed: boolean }> {\n  state = { failed: false }\n\n  static getDerivedStateFromError() {\n    return { failed: true }\n  }\n\n  render() {\n    return this.state.failed ? this.props.fallback : this.props.children\n  }\n}\n\nfunction FallbackNotice({ className }: { className?: string }) {\n  return (\n    <div className={className} data-slot=\"glow-points-fallback\">\n      <div className=\"grid h-full place-items-center rounded-md border bg-muted/30 p-6 text-center\">\n        <p className=\"max-w-[16rem] text-sm text-muted-foreground\">\n          이 장면은 WebGL 이 있어야 렌더됩니다. 콘텐츠는 아래에서 그대로 볼 수 있어요.\n        </p>\n      </div>\n    </div>\n  )\n}\n\nexport function GlowPointsScene(props: GlowPointsSceneImplProps) {\n  const webgl = useMemo(supportsWebGL, [])\n\n  if (!webgl) {\n    return <FallbackNotice className={props.className} />\n  }\n\n  return (\n    <SceneErrorBoundary fallback={<FallbackNotice className={props.className} />}>\n      <Suspense fallback={<div className={props.className} data-slot=\"glow-points-loading\" />}>\n        <GlowPointsSceneImpl {...props} />\n      </Suspense>\n    </SceneErrorBoundary>\n  )\n}\n\n/** Deterministic pseudo-random (LCG) so the demo constellation is stable across runs. */\nfunction makeRandom(seed: number) {\n  let state = seed\n  return () => {\n    state = (state * 48271) % 2147483647\n    return state / 2147483647\n  }\n}\n\n/** Colocated demo: a three-cluster constellation with neighbor edges. */\nexport function GlowPointsSceneDemo() {\n  const { points, edges } = useMemo(() => {\n    const random = makeRandom(7)\n    const clusters = [\n      { center: [-60, 10, 0], color: \"#6e8fc4\" },\n      { center: [55, -20, 20], color: \"#7fcdb5\" },\n      { center: [10, 55, -30], color: \"#c4a9d9\" },\n    ]\n    const points: GlowPoint[] = []\n    const edges: Array<[number, number]> = []\n    clusters.forEach((cluster) => {\n      const base = points.length\n      for (let i = 0; i < 46; i += 1) {\n        points.push({\n          x: cluster.center[0] + (random() - 0.5) * 85,\n          y: cluster.center[1] + (random() - 0.5) * 85,\n          z: cluster.center[2] + (random() - 0.5) * 85,\n          color: cluster.color,\n          size: 3.5 + random() * 5,\n        })\n        if (i > 0 && random() < 0.5) {\n          edges.push([base + i, base + Math.floor(random() * i)])\n        }\n      }\n    })\n    return { points, edges }\n  }, [])\n\n  return <GlowPointsScene points={points} edges={edges} className=\"h-80 w-full max-w-2xl overflow-hidden rounded-lg border\" />\n}\n"
+    }
+  ]
+}

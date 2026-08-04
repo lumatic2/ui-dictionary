@@ -371,6 +371,31 @@
       }
     },
     {
+      "name": "glow-points-scene-impl",
+      "title": "Glow Points Scene Impl",
+      "description": "Implementation module for the glow points scene: one THREE.Points draw call with a custom core/halo point-sprite shader (AdditiveBlending, per-point breathing, depth fade), one LineSegments edge field with a pulse shader, UnrealBloom postprocessing, resize handling, and full dispose on unmount. Consumed through glow-points-scene — import that wrapper, not this module, so three.js stays behind a dynamic import.",
+      "dependencies": ["three"],
+      "meta": {
+        "harvest": {
+          "origin": "second-brain/poc-graph luminous node field",
+          "liveUrl": "https://brain.askewly.com/",
+          "harvestedAt": "2026-08-04"
+        }
+      }
+    },
+    {
+      "name": "glow-points-scene",
+      "title": "Glow Points Scene",
+      "description": "A glow points scene renders a luminous point-cloud stage for knowledge graphs, constellations, and ambient data backdrops. The wrapper keeps three.js behind a dynamic import, checks WebGL support up front, and falls back to a static notice when the context is unavailable — the scene is an enhancement, never a gate. Rendering only; hover/raycast interaction is the consumer's concern.",
+      "meta": {
+        "harvest": {
+          "origin": "second-brain/poc-graph luminous node field",
+          "liveUrl": "https://brain.askewly.com/",
+          "harvestedAt": "2026-08-04"
+        }
+      }
+    },
+    {
       "name": "auth-gate-modal",
       "title": "Auth Gate Modal",
       "description": "An auth gate modal signs a visitor in only where one capability is gated while exploring stays open. Three paths in fixed order — email/password, Google, and request-access so the gate never dead-ends someone without an account — plus three dismiss routes (close button, backdrop, Escape) and focus landing on the first field. The copy names what the gate protects, not a generic login.",

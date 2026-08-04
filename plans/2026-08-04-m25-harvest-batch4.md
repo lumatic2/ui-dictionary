@@ -52,7 +52,7 @@ Status: approved (사용자 승인 2026-08-04 "ㄱㄱ" — M25+M26 연쇄)
   - Verify: purity PASS + diff 0(순수 추가 2) + build/lint + 단독 렌더 스크린샷(모달 열림/닫힘·guest↔authed 전환).
   - Failure probe: 모달 aria(role dialog·aria-modal·닫기 경로 2개 이상) 자기점검 — 미충족 시 수리.
   - Commit: changeset (README 절: step-2).
-- [ ] **step-3 — C1: 발광 포인트 클라우드 three.js 씬 2자산**
+- [x] **step-3 — C1: 발광 포인트 클라우드 three.js 씬 2자산**
   - Artifact: brain 의 단일 Points+커스텀 vertex/fragment 셰이더(+LineSegments 엣지)+UnrealBloom 조합을 `glow-points-scene-impl.tsx`(three 정적 import, dependencies ["three"] — 씬 구성·셰이더·리사이즈·dispose) + `glow-points-scene.tsx`(lazy wrapper·WebGL 체크·정적 폴백) 로 독립화. threeState 전역 결합 제거 — 데이터는 props, 자체 rAF 루프.
   - Risk: 위험 (신규 npm 의존 자산 1호 — 게이트 2경로 실전 첫 소비)
   - Files: write examples/ui-vocabulary-site/src/components/{glow-points-scene,glow-points-scene-impl}.tsx. edit registry.json. run scripts/generate-registry.mjs.
