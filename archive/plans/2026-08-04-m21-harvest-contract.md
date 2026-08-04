@@ -52,7 +52,7 @@ Status: approved (사용자 승인 2026-08-04 "ㄱㄱ" — M20+M21 연쇄, 승�
   - Verify: 신규 `/r/<name>.json` 존재 + 기존 자산 재생성 diff 0 + purity gate PASS + `npm run build`·`npm run lint`(examples/ui-vocabulary-site) PASS.
   - Failure probe: 승격물에 하드코딩 색/토큰 이탈을 1개 심은 상태에서 purity/verify 게이트가 실제로 FAIL 하는지 확인 후 제거(게이트 자기시험).
   - Commit: changeset (README 절: step-2).
-- [ ] **step-3 — 통합 검증 + 사용자 관측**
+- [x] **step-3 — 통합 검증 + 사용자 관측**
   - Artifact: 신선 프로젝트에 승격물 이식 E2E(fetch→이식→restyle→verify 0건→실브라우저 스모크) + 사용자 관측 1회 + 회수 루프 재현 절차(다음 산출물이 따라올 커맨드 시퀀스)를 계약 문서 부록으로.
   - Risk: 기계적 (검증·문서 — 신선 프로젝트는 scratchpad)
   - Files: edit docs/design-system/harvest-contract.md(부록). scratchpad(신선 프로젝트).
@@ -80,3 +80,4 @@ Status: approved (사용자 승인 2026-08-04 "ㄱㄱ" — M20+M21 연쇄, 승�
 - 2026-08-04 · step-1 완료 — harvest-contract.md 정본화 + entry-protocol 유입 lane + FIXED_ASSETS 등재(미등재=llms 0건 probe 후 등재), check-llms-sync PASS.
 - 2026-08-04 · step-2 완료 — 승격 2건: zigzag-story-section(← askewly.com building-section)·terminal-demo-panel(← guide TerminalDemo). registry meta.harvest 출처 표기(생성기 passthrough 신설). 게이트: 기존 28건 diff 0·purity probe(date-fns) FAIL 확인·build 759 routes·lint/sync PASS.
 - 2026-08-04 · step-3 E2E — 킥스타트 신선 프로젝트(로컬 registry 서빙)에 2건 이식, 격리 verify 0건, hex probe 적발 확인(requiredCssVars probe 는 플레인 자산이라 hex probe 로 대체), 실브라우저 시간차 3장. **E2E 가 실결함 적발**: scenes inline identity 가 deps 에 있어 타이핑 무한 리셋 → 수정·재이식·재검증 PASS. 부록(재현 절차 8단) 기록. 사용자 관측 대기.
+- 2026-08-04 · step-3 완료 — 사용자 관측 통과("응 ㄱㅊ", 승격 실증 보드). M21 DoD 충족 → /harness-done.

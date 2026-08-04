@@ -1,14 +1,14 @@
 # ROADMAP
 
 > Last updated: 2026-08-04
-> Status: **2026-08-04 goal `harvest` 진행** — M20 완료(teardown 29·사용자 풀 확정 7 표면) → M21 active(회수 계약 정본화·첫 승격 실증). 남은 큐: 킥스타트 기본값 폴리싱(M19 finding) · CLI npm publish(사용자 승인 후) · 두 번째 블록 marketing-landing · 『인터랙티브 웹 애니메이션』 책 스터디(사용자 주도) · dark/light 테마 SSOT 파생 · D2 Presenton 벤치 · Around 재판정.
+> Status: **2026-08-04 goal `harvest` 완주** — M20(teardown 29·풀 확정 7 표면) + M21(회수 계약 정본화·첫 승격 2건·E2E 실결함 적발 수정) 연쇄. active goal 0. 다음 후보: 잔여 풀 5 표면 harvest 배치(brain·dev·bootcamp·sixsense·본체 데모). 남은 큐: 킥스타트 기본값 폴리싱(M19 finding) · CLI npm publish(사용자 승인 후) · 두 번째 블록 marketing-landing · 『인터랙티브 웹 애니메이션』 책 스터디(사용자 주도) · dark/light 테마 SSOT 파생 · D2 Presenton 벤치 · Around 재판정.
 > North star: Build Askewly Design as both a public reference website and an agent-usable implementation system.
 > line budget: <=150
 
 ## Current Goal
 
-<!-- harness:goal id="harvest" status="active" -->
-Goal: 회수 루프(하베스트) — 배포 산출물 전수 teardown + 회수 계약 정본화·첫 승격 실증으로, 산출물→저장고의 입력 루프를 연다 (reusable-composition 의 출력 루프와 짝).
+<!-- harness:goal id="harvest" status="completed" -->
+Goal: 회수 루프(하베스트) — 산출물→저장고 입력 루프. closed 2026-08-04 — M20(전수 teardown 29·사용자 풀 확정) + M21(회수 계약 정본화·첫 승격 zigzag-story-section·terminal-demo-panel) 연쇄 완주. Details: `evidence/harvest/` + `docs/reports/2026-08-04-m2{0,1}-*.md`.
 
 ## Active Milestones — harvest
 
@@ -21,12 +21,14 @@ Goal: 회수 루프(하베스트) — 배포 산출물 전수 teardown + 회수 
 - Completed at: 2026-08-04
 - Summary: census 29→teardown 카드 29(워커 6기·표본 재검 일치)→사용자 풀 확정 7 표면(askewly.com·brain·guide·dev·bootcamp·sixsense·본체). 보고: docs/reports/2026-08-04-m20-harvest-teardown.md
 
-<!-- harness:milestone id="M21" status="active" priority="P1" evidence="evidence/harvest/m21-contract.md" -->
+<!-- harness:milestone id="M21" status="completed" priority="P1" evidence="evidence/harvest/m21-contract.md" -->
 ### M21 — 회수 계약(하베스트) 정본화 + 첫 승격 실증
 - DoD: harvest-contract.md llms 실등재 + M20 확정 후보 ≥1건 승격이 [기존 자산 diff 0·purity·build/lint·신선 프로젝트 E2E] 전 구간 통과 + 사용자 관측 1회.
 - Gap: 산출물→자산 승격의 반복 가능한 경로 부재 — 매번 일회성 수작업.
-- Plan: plans/2026-08-04-m21-harvest-contract.md
-- Status: [ ]
+- Plan: archive/plans/2026-08-04-m21-harvest-contract.md
+- Status: [x]
+- Completed at: 2026-08-04
+- Summary: harvest-contract.md llms 등재 + 승격 2건(meta.harvest 출처) + 신선 E2E(실결함 1 적발·수정) + 사용자 관측 통과. 보고: docs/reports/2026-08-04-m21-harvest-contract.md
 
 <!-- harness:goal id="reusable-composition" status="completed" -->
 Goal: 재사용 조합 — 블록 자산 등급 + 원커맨드 킥스타트로 착수 기본값을 "잘 만들어진 수준"으로. closed 2026-08-04 — M18(블록 정본화·saas-app-shell 흡수 구현·신선 이식 실증) + M19(init --block 원커맨드·E2E 사용자 관측 통과) 연쇄 완주. Details: `evidence/reusable-composition/` + `docs/reports/2026-08-04-m{18,19}-*.md`.
