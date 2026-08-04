@@ -37,7 +37,7 @@ Status: approved (사용자 승인 2026-08-04 "ㄱㄱ" — M20+M21 연쇄, fresh
 
 ## Step 트리
 
-- [ ] **step-1 — 소스 레포 매칭 장부**
+- [x] **step-1 — 소스 레포 매칭 장부**
   - Artifact: teardown ledger 골격 — census 29 표면 전건에 로컬 소스 레포(`~/projects/*`) 매칭 행(레포 경로·배포 경로·최종 커밋일). 미발견은 "소스 미상/원격" 명시.
   - Risk: 없음 (조사 기록만)
   - Files: read research/2026-08-04-harvest-asset-census.md, ~/projects/INDEX.md, 각 후보 레포의 배포 설정(wrangler.toml·vercel.json·package.json). write research/2026-08-04-m20-harvest-teardown-ledger.md.
@@ -45,7 +45,7 @@ Status: approved (사용자 승인 2026-08-04 "ㄱㄱ" — M20+M21 연쇄, fresh
   - Verify: ledger 행 29개 전건 존재 + 각 행 소스 칸 비어있지 않음(경로 또는 "미상" 명시).
   - Failure probe: census 에 없는 표면이 ledger 에 있거나 그 역 — 29:29 대조 스크립트/수기 카운트로 즉시 FAIL 확인.
   - Commit: changeset `20260804-m20-harvest-teardown` (README 절: step-1).
-- [ ] **step-2 — 표면별 teardown 실사 (병렬 위임)**
+- [x] **step-2 — 표면별 teardown 실사 (병렬 위임)**
   - Artifact: 표면당 카드 — 실브라우저 스크린샷 관측(라이브 상태·화면 구성), 디자인 재료 판정(결정 2 축: 재료 등급·품질·중복), harvest 후보 여부 + 근거 1줄. 죽은 2 표면·무도메인 워커 2건(workers.dev 실측)도 각각 실측 카드.
   - Risk: 기계적 (조사 — 레포 코드 무변경. 위임 산출은 오케스트레이터 전건 검수)
   - Files: edit research/2026-08-04-m20-harvest-teardown-ledger.md. 스크린샷 원본 scratchpad.
@@ -77,3 +77,6 @@ Status: approved (사용자 승인 2026-08-04 "ㄱㄱ" — M20+M21 연쇄, fresh
 ## 진행 로그 (append-only)
 
 - 2026-08-04 · census 선행 완료 — `research/2026-08-04-harvest-asset-census.md` (29 표면·도메인 스윕 25/27 200).
+- 2026-08-04 · step-1 완료 — 소스 매칭 29/29 (확정24·원격2·추정2·미상1).
+- 2026-08-04 · step-2 완료 — sonnet 워커 6기 병렬, 카드 29/29 + 스크린샷 58장(scratchpad), 오케스트레이터 표본 재검 3건 일치. 판별 정정 4: overrism=over-series-site 확정 · precon=gcp-solana-agentic · skku=skku-startup-hub · prawn 생존(콜드스타트). 사망 카드 1(physical-ai-arm 404).
+- 2026-08-04 · step-3 순위표 작성 — 1군 추천 kifrs-viz 데이터비주얼 3종 + skku 에디토리얼. 사용자 확정 대기(human gate).
