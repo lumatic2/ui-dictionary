@@ -12,19 +12,22 @@ Goal: harvest 배치 4(이월 재고 완주) + CLI 0.4.0 출고(킥스타트 라
 
 ## Active Milestones — harvest-batch4-release
 
-<!-- harness:milestone id="M25" status="active" priority="P1" evidence="evidence/harvest/m25-batch4.md" -->
+<!-- harness:milestone id="M25" status="completed" priority="P1" evidence="evidence/harvest/m25-batch4.md" -->
 ### M25 — harvest 배치 4 — 이월 재고 완주 (three.js 씬·Palette Generator·Cursor Field·brain 모달/HUD)
 - DoD: 실물 7 전건 등재(registry 48→55) + 착지별 게이트 전 구간 + 신선 E2E 1회(three 렌더·상호작용 실발화·시간차) + 사용자 관측 1회.
 - Gap: M22 이월 C1·C2·C5 — 난도 중상이라 배치 1~3에서 제외됐던 마지막 재고.
-- Plan: plans/2026-08-04-m25-harvest-batch4.md
-- Status: [ ]
+- Plan: archive/plans/2026-08-04-m25-harvest-batch4.md
+- Status: [x]
+- Completed at: 2026-08-04
+- Summary: 실물 7 등재(registry 55 — three 씬 2·팔레트 2·커서 필드·brain 모달/HUD)·게이트 2경로 첫 소비+react-dom 기본 표면·신선 E2E 실발화·사용자 관측 통과. 보고: docs/reports/2026-08-04-m25-harvest-batch4.md
 
-<!-- harness:milestone id="M26" status="pending" priority="P1" evidence="evidence/harvest/m26-cli-040.md" -->
+<!-- harness:milestone id="M26" status="active" priority="P1" evidence="evidence/harvest/m26-cli-040.md" -->
 ### M26 — CLI 0.4.0 출고 — 킥스타트 라이브 소비 마개
 - DoD: npm 0.4.0 라이브 + 레포 밖 실증 2종(verify exit 계약·킥스타트 라이브 소비) + 절차 정본 실적 추기.
 - Gap: npm 0.3.0 에는 init --block·cosmos 부재 — 킥스타트가 로컬 한정.
 - Plan: plans/2026-08-04-m26-cli-release-040.md
-- Blocked by: M25 (마감·push 후 착수)
+- Blocked by: (해소 — M25 완료 2026-08-04)
+
 - Status: [ ]
 
 <!-- harness:goal id="harvest-batch3" status="completed" -->
