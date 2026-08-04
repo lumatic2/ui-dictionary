@@ -1,30 +1,34 @@
 # ROADMAP
 
 > Last updated: 2026-08-04
-> Status: **2026-08-04 goal `harvest` 완주** — M20(teardown 29·풀 확정 7 표면) + M21(회수 계약 정본화·첫 승격 2건·E2E 실결함 적발 수정) 연쇄. active goal 0. 다음 후보: 잔여 풀 5 표면 harvest 배치(brain·dev·bootcamp·sixsense·본체 데모). 남은 큐: 킥스타트 기본값 폴리싱(M19 finding) · CLI npm publish(사용자 승인 후) · 두 번째 블록 marketing-landing · 『인터랙티브 웹 애니메이션』 책 스터디(사용자 주도) · dark/light 테마 SSOT 파생 · D2 Presenton 벤치 · Around 재판정.
+> Status: **2026-08-04 goal `harvest-deep` 완주** — M22(소스 채굴 14/14+증보 ~40·착지 판정) + M23(확정 12건 집행: asset 8·cosmos 팔레트·knowledge 2·head-meta 계약) 연쇄. 당일 3-goal(reusable-composition→harvest→harvest-deep). active goal 0. 다음 후보: harvest 배치 3(본체 미등재 마이크로 인터랙션 6종·three.js 씬·Palette Generator). 남은 큐: 킥스타트 기본값 폴리싱(M19 finding) · CLI npm publish(사용자 승인 후) · 두 번째 블록 marketing-landing · 『인터랙티브 웹 애니메이션』 책 스터디(사용자 주도) · dark/light 테마 SSOT 파생 · D2 Presenton 벤치 · Around 재판정.
 > North star: Build Askewly Design as both a public reference website and an agent-usable implementation system.
 > line budget: <=150
 
 ## Current Goal
 
-<!-- harness:goal id="harvest-deep" status="active" -->
-Goal: 소스 레벨 재채굴(harvest-deep) — 확정 풀 5 표면의 소스 코드에서 사용자 지목 재료 14건+α(컬러감·모션·구조·three.js 코드)를 채굴해 착지 확정 후 배치 승격. M20 겉면 teardown 의 심화("훨씬 가져올 수 있는 게 많다" — 사용자 2026-08-04).
+<!-- harness:goal id="harvest-deep" status="completed" -->
+Goal: 소스 레벨 재채굴(harvest-deep). closed 2026-08-04 — M22(채굴 14/14+증보 ~40·착지 판정·2차 라운드) + M23(확정 12건 집행: asset 8종·cosmos 팔레트 프리셋·knowledge 2편·head-meta 계약, 신선 E2E 시간차 검증·사용자 관측 통과) 연쇄 완주. Details: `evidence/harvest/` + `docs/reports/2026-08-04-m2{2,3}-*.md`.
 
 ## Active Milestones — harvest-deep
 
-<!-- harness:milestone id="M22" status="active" priority="P1" evidence="evidence/harvest/m22-mining.md" -->
+<!-- harness:milestone id="M22" status="completed" priority="P1" evidence="evidence/harvest/m22-mining.md" -->
 ### M22 — 소스 레벨 재료 채굴 — 5 표면 코드 채굴 장부 + 착지 판정
 - DoD: 지목 재료 14건 전건 채굴 카드(실코드 파일:라인 인용) + 착지 판정표 + 사용자 확정 1회. 실패 모드 = 소스-라이브 불일치 명시 기록.
 - Gap: M20 은 라이브 겉면 관측 — 코드 속 재료(토큰·모션·기법)가 판정 밖에 남았다.
-- Plan: plans/2026-08-04-m22-harvest-mining.md
-- Status: [ ]
+- Plan: archive/plans/2026-08-04-m22-harvest-mining.md
+- Status: [x]
+- Completed at: 2026-08-04
+- Summary: 1차 채굴 14/14+증보 11 + 2차 증보 ~30(미등재 6종·head 메타 6표면) → 사용자 확정 집행 12건(A7+B1~B3+B5). 보고: docs/reports/2026-08-04-m22-harvest-mining.md
 
-<!-- harness:milestone id="M23" status="pending" priority="P1" evidence="evidence/harvest/m23-batch2.md" -->
+<!-- harness:milestone id="M23" status="completed" priority="P1" evidence="evidence/harvest/m23-batch2.md" -->
 ### M23 — harvest 배치 2 — M22 확정 목록 승격 집행
 - DoD: 확정 배치 전건 승격(착지별 게이트: diff 0·purity·build/lint·llms-sync·신선 E2E) + 통합 E2E 1회 + 사용자 관측 1회 + 잔여 이월 명시.
 - Gap: 계약은 있는데 배치 반복 실적이 1회(2건)뿐.
-- Plan: plans/2026-08-04-m23-harvest-batch2.md
-- Status: [ ]
+- Plan: archive/plans/2026-08-04-m23-harvest-batch2.md
+- Status: [x]
+- Completed at: 2026-08-04
+- Summary: 확정 12건 전건 승격(asset 8·cosmos·knowledge 2·head-meta) + 신선 E2E 시간차 검증 + 사용자 관측 통과. 보고: docs/reports/2026-08-04-m23-harvest-batch2.md
 
 <!-- harness:goal id="harvest" status="completed" -->
 Goal: 회수 루프(하베스트) — 산출물→저장고 입력 루프. closed 2026-08-04 — M20(전수 teardown 29·사용자 풀 확정) + M21(회수 계약 정본화·첫 승격 zigzag-story-section·terminal-demo-panel) 연쇄 완주. Details: `evidence/harvest/` + `docs/reports/2026-08-04-m2{0,1}-*.md`.

@@ -77,3 +77,4 @@ Status: approved (사용자 승인 2026-08-04 "ㄱㄱ" — M22+M23 연쇄, 집�
 - 2026-08-04 · step-1 완료 — asset 8종 승격(logo-marquee·rotating-label·cursor-proximity-glow·floating-bars-hero·typing-headline·contrast-duo-card·graph-legend-panel·ask-input-bar), meta.harvest 전건. 게이트: 기존 30건 diff 0(순수 추가 8)·purity probe(date-fns→FAIL) 확인·build 759 routes·lint/llms-sync PASS.
 - 2026-08-04 · step-2 완료 — B1 cosmos 팔레트(킥스타트 --color cosmos 실구동: DESIGN.md primary #3E5F94·이식 34파일·verify PASS) · B2 knowledge/dictionary-site-ia.md · B3 knowledge/landing-section-rhythm.md · B5 docs/design-system/head-meta.md + templates/head-meta.html.tmpl. llms 등재 probe(미등재 0건→등재 3건)·check-llms-sync PASS.
 - 2026-08-04 · step-3 E2E 완료 — 신선 프로젝트 8종 이식·격리 verify 0건·시간차 2장 전이 실측(타이핑·로테이션·마키). 이월 명시: B4·C1~C5 + 2차 채굴 배치 3 후보(본체 미등재 6종 등). 사용자 관측 대기.
+- 2026-08-04 · step-3 완료 — 사용자 관측 통과(조건부 질문: 갤러리=조합 테스트 페이지·자산 독립성 확인 후 "통과처리하면 되고"). M23 DoD 충족 → /harness-done.
