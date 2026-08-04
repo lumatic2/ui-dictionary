@@ -1,14 +1,14 @@
 # ROADMAP
 
 > Last updated: 2026-08-04
-> Status: **2026-08-04 goal `harvest-batch3` 완주** — M24 단독(미등재 재고 10건 회수 → registry 48 + motion 의존 게이트 확장). 당일 4-goal(reusable-composition→harvest→harvest-deep→harvest-batch3). active goal 0. 다음 후보: harvest 배치 4(brain three.js 씬 C1·Color Palette Generator C2·Cursor-Reactive Field/brain 모달·HUD C5). 남은 큐: 킥스타트 기본값 폴리싱(M19 finding) · CLI npm publish(사용자 승인 후 — registry 48·cosmos 라이브 소비 전제) · 두 번째 블록 marketing-landing · 『인터랙티브 웹 애니메이션』 책 스터디(사용자 주도) · dark/light 테마 SSOT 파생 · D2 Presenton 벤치 · Around 재판정.
+> Status: **2026-08-04 goal `harvest-batch4-release` 완주** — M25(이월 재고 완주 → registry 55: three 씬·팔레트 생성기·커서 필드·brain 모달/HUD) + M26(CLI 0.4.0 npm 출고 — 킥스타트 라이브 소비 실증) 연쇄. 당일 6-goal. harvest 이월 큐 소진 — active goal 0. 남은 큐: 킥스타트 기본값 폴리싱(M19 finding) · 두 번째 블록 marketing-landing · CLI verify chart.tsx 오탐 patch(0.4.x) · 『인터랙티브 웹 애니메이션』 책 스터디(사용자 주도) · dark/light 테마 SSOT 파생 · D2 Presenton 벤치 · Around 재판정.
 > North star: Build Askewly Design as both a public reference website and an agent-usable implementation system.
 > line budget: <=150
 
 ## Current Goal
 
-<!-- harness:goal id="harvest-batch4-release" status="active" -->
-Goal: harvest 배치 4(이월 재고 완주) + CLI 0.4.0 출고(킥스타트 라이브 소비 마개) — M25→M26 연쇄.
+<!-- harness:goal id="harvest-batch4-release" status="completed" -->
+Goal: harvest 배치 4 + CLI 0.4.0 출고. closed 2026-08-04 — M25(실물 7 등재 → registry 55) + M26(npm 0.4.0 Trusted Publishing·레포 밖 킥스타트 라이브 실증) 연쇄 완주. Details: `evidence/harvest/m2{5,6}-*.md` + `docs/reports/2026-08-04-m2{5,6}-*.md`.
 
 ## Active Milestones — harvest-batch4-release
 
@@ -25,10 +25,10 @@ Goal: harvest 배치 4(이월 재고 완주) + CLI 0.4.0 출고(킥스타트 라
 ### M26 — CLI 0.4.0 출고 — 킥스타트 라이브 소비 마개
 - DoD: npm 0.4.0 라이브 + 레포 밖 실증 2종(verify exit 계약·킥스타트 라이브 소비) + 절차 정본 실적 추기.
 - Gap: npm 0.3.0 에는 init --block·cosmos 부재 — 킥스타트가 로컬 한정.
-- Plan: plans/2026-08-04-m26-cli-release-040.md
-- Blocked by: (해소 — M25 완료 2026-08-04)
-
-- Status: [ ]
+- Plan: archive/plans/2026-08-04-m26-cli-release-040.md
+- Status: [x]
+- Completed at: 2026-08-04
+- Summary: npm 0.4.0 출고(워크플로 1회 통과)·레포 밖 실증 2종(verify exit 계약·킥스타트 라이브 34파일 이식 verify PASS — cosmos #3E5F94 왕복). 보고: docs/reports/2026-08-04-m26-cli-release-040.md
 
 <!-- harness:goal id="harvest-batch3" status="completed" -->
 Goal: harvest 배치 3 — 본체 미등재 재고 회수 + motion 의존 게이트 확장. closed 2026-08-04 — M24 단독(자산 10 등재 → registry 48 + knowledge 1 + 게이트 2경로 확장, 신선 E2E 상호작용 실발화 6종·사용자 관측 통과). Details: `evidence/harvest/m24-batch3.md` + `docs/reports/2026-08-04-m24-harvest-batch3.md`.
