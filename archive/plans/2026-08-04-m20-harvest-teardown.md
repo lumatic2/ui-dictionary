@@ -53,7 +53,7 @@ Status: approved (사용자 승인 2026-08-04 "ㄱㄱ" — M20+M21 연쇄, fresh
   - Verify: 카드 29건 전건 + 각 카드에 관측(스크린샷 실측 여부)·판정 축 3항·후보 여부 명시. 오케스트레이터 표본 재검(무작위 3건 실브라우저 재관측 일치).
   - Failure probe: 죽은 표면(physical-ai-arm 404·prawn 무응답)이 "정상 관측"으로 기록되면 FAIL — 사망 카드에 실측 코드(404/timeout) 필수.
   - Commit: changeset (README 절: step-2).
-- [ ] **step-3 — harvest 후보 순위 + 사용자 확정 게이트**
+- [x] **step-3 — harvest 후보 순위 + 사용자 확정 게이트**
   - Artifact: ledger 말미 판정 절 — 후보 순위표(재료 등급·중복 대조·승격 예상 형태) + M21 첫 승격 추천 1~2건. 사용자 관측·확정 기록.
   - Risk: 없음 (판정 문서 + human gate)
   - Files: edit research/2026-08-04-m20-harvest-teardown-ledger.md.
@@ -80,3 +80,4 @@ Status: approved (사용자 승인 2026-08-04 "ㄱㄱ" — M20+M21 연쇄, fresh
 - 2026-08-04 · step-1 완료 — 소스 매칭 29/29 (확정24·원격2·추정2·미상1).
 - 2026-08-04 · step-2 완료 — sonnet 워커 6기 병렬, 카드 29/29 + 스크린샷 58장(scratchpad), 오케스트레이터 표본 재검 3건 일치. 판별 정정 4: overrism=over-series-site 확정 · precon=gcp-solana-agentic · skku=skku-startup-hub · prawn 생존(콜드스타트). 사망 카드 1(physical-ai-arm 404).
 - 2026-08-04 · step-3 순위표 작성 — 1군 추천 kifrs-viz 데이터비주얼 3종 + skku 에디토리얼. 사용자 확정 대기(human gate).
+- 2026-08-04 · step-3 완료 — 사용자가 추천 기각·풀 직접 확정: askewly.com·brain·guide·dev·bootcamp·sixsense·ui-dictionary 7 표면("나머진 AI slop 느낌"). M20 DoD 충족 → /harness-done.

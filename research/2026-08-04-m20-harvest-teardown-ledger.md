@@ -288,4 +288,4 @@ step-1 검증: 행 29/29 (census 29 표면 1:1), 소스 칸 공란 0 (미상 1�
 
 #2 dev(기존 docs 자산 커버) · #3 음식노쇼(타사 UI 패러디) · #7 golf(#6 중복) · #8 fridge(재료 없음) · #11 account(기존 grid 중복) · #13 atlas(#12 계열 하위) · #14 dashboard(전형 템플릿) · #15 bizsim(온보딩 1스텝뿐) · #16 bootcamp(재료 얇음) · #17 futsal(미완성) · #25 sixsense(마감도 부족) · #27 ux(docs 중복) · #20 physical-ai-arm(404 사망) · #29 prawn(라이브지만 기존 saas-app-shell 계열 중복).
 
-**사용자 확정**: (대기)
+**사용자 확정 (2026-08-04)**: 에이전트 추천(kifrs-viz·skku)을 **기각**하고 harvest 풀을 직접 확정 — **askewly.com(어스큐리) · brain · guide · dev · bootcamp · sixsense · ui-dictionary(본체)** 7 표면. 기각 사유(사용자 원문): "나머진 AI slop 느낌이 강함." 취향 판정은 사용자 소유 — 순위표의 신규성·품질 축과 다른 축(브랜드 개성)이 결정 기준이었음을 기록한다. ui-dictionary 본체는 승격 대상이 아니라 저장고이므로, 본체 표면의 미등재 쇼케이스 데모를 자산화 후보로 읽는다. M21 첫 승격 실증은 이 풀에서 집행.

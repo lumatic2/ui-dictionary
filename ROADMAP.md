@@ -1,7 +1,7 @@
 # ROADMAP
 
 > Last updated: 2026-08-04
-> Status: **2026-08-04 goal `harvest` 착수** — M20(배포 표면 29종 전수 teardown) + M21(회수 계약 정본화·첫 승격 실증) 연쇄 승인. 남은 큐: 킥스타트 기본값 폴리싱(M19 finding) · CLI npm publish(사용자 승인 후) · 두 번째 블록 marketing-landing · 『인터랙티브 웹 애니메이션』 책 스터디(사용자 주도) · dark/light 테마 SSOT 파생 · D2 Presenton 벤치 · Around 재판정.
+> Status: **2026-08-04 goal `harvest` 진행** — M20 완료(teardown 29·사용자 풀 확정 7 표면) → M21 active(회수 계약 정본화·첫 승격 실증). 남은 큐: 킥스타트 기본값 폴리싱(M19 finding) · CLI npm publish(사용자 승인 후) · 두 번째 블록 marketing-landing · 『인터랙티브 웹 애니메이션』 책 스터디(사용자 주도) · dark/light 테마 SSOT 파생 · D2 Presenton 벤치 · Around 재판정.
 > North star: Build Askewly Design as both a public reference website and an agent-usable implementation system.
 > line budget: <=150
 
@@ -12,14 +12,16 @@ Goal: 회수 루프(하베스트) — 배포 산출물 전수 teardown + 회수 
 
 ## Active Milestones — harvest
 
-<!-- harness:milestone id="M20" status="active" priority="P1" evidence="evidence/harvest/m20-teardown.md" -->
+<!-- harness:milestone id="M20" status="completed" priority="P1" evidence="evidence/harvest/m20-teardown.md" -->
 ### M20 — 산출물 전수 teardown — 배포 표면 29종 실사 + harvest 후보 장부
 - DoD: census 29 표면 ↔ teardown 카드 1:1 전건(누락 0) + 판정 축 3항 전건 + 후보 순위표 + 사용자 확정 1회. 실패 모드 검증 = 죽은 표면 2건이 실측 코드와 함께 사망 카드로 기록.
 - Gap: 회수할 재료의 실태 미조사 — 계약 설계가 실물 없이 공중에 뜬다.
-- Plan: plans/2026-08-04-m20-harvest-teardown.md
-- Status: [ ]
+- Plan: archive/plans/2026-08-04-m20-harvest-teardown.md
+- Status: [x]
+- Completed at: 2026-08-04
+- Summary: census 29→teardown 카드 29(워커 6기·표본 재검 일치)→사용자 풀 확정 7 표면(askewly.com·brain·guide·dev·bootcamp·sixsense·본체). 보고: docs/reports/2026-08-04-m20-harvest-teardown.md
 
-<!-- harness:milestone id="M21" status="pending" priority="P1" evidence="evidence/harvest/m21-contract.md" -->
+<!-- harness:milestone id="M21" status="active" priority="P1" evidence="evidence/harvest/m21-contract.md" -->
 ### M21 — 회수 계약(하베스트) 정본화 + 첫 승격 실증
 - DoD: harvest-contract.md llms 실등재 + M20 확정 후보 ≥1건 승격이 [기존 자산 diff 0·purity·build/lint·신선 프로젝트 E2E] 전 구간 통과 + 사용자 관측 1회.
 - Gap: 산출물→자산 승격의 반복 가능한 경로 부재 — 매번 일회성 수작업.
