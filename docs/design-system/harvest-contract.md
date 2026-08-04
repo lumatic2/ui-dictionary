@@ -45,6 +45,24 @@ Audience: 에이전트 + 시스템 관리자.
 - `block-contract.md` §7/§8 — 블록급 승격물의 소비 경로. `component-restyle.md` — restyle 의무. `agent-asset-model.md` `copy_scope` — 승격물 범위 선언.
 - entry-protocol — 신규 자산 유입 경로로서의 backlink.
 
+## 부록 — 재현 절차 (첫 실증 M21 실측 시퀀스)
+
+다음 산출물을 회수할 때 그대로 반복한다 (M21 2026-08-04 실측 — zigzag-story-section·terminal-demo-panel):
+
+```
+1. 소스 격리:   원 레포에서 대상 섹션/컴포넌트 파일 확인 (예: Askwely-company web/src/app/page.tsx building-section)
+2. 재작성:      examples/ui-vocabulary-site/src/components/<name>.tsx — shadcn 시맨틱 클래스만, 헤더에 출처 주석 1줄
+3. 등재 선언:   examples/ui-vocabulary-site/registry.json 에 item 추가 (meta.harvest: origin·liveUrl·harvestedAt)
+4. 재생성:      node scripts/generate-registry.mjs   ← 기존 자산 diff 0 + purity gate가 회귀를 막는다
+5. llms 반영:   node scripts/generate-llms-txt.mjs && node scripts/check-llms-sync.mjs (PASS 확인)
+6. 사이트 게이트: cd examples/ui-vocabulary-site && npm run build && npm run lint
+7. 신선 E2E:    킥스타트(init --block … --registry <로컬 서빙>)로 신선 프로젝트 → /r/<name>.json fetch 이식
+               → CLI verify 0건 → dev 서버 실브라우저 스크린샷 관측 (정적 캡처가 아니라 시간차 2장 이상 — 모션 결함은 한 장에 안 잡힌다)
+8. 사용자 관측: 실물 1회 → 마감
+```
+
+실측 교훈 (M21): ⑦ 의 실브라우저 관측이 정적 게이트 전부(빌드·lint·verify·purity)를 통과한 모션 결함(effect deps 의 inline-prop identity 리셋 루프)을 잡았다 — 시간차 스크린샷을 생략하지 않는다.
+
 ## Changelog
 
 - 2026-08-04: 초판 — M21. 판정 축(M20 승계)+취향 게이트, 표준 6단 절차, 출처 표기, 중복 규칙.

@@ -36,7 +36,7 @@ Status: approved (사용자 승인 2026-08-04 "ㄱㄱ" — M20+M21 연쇄, 승�
 
 ## Step 트리
 
-- [ ] **step-1 — 회수 계약 문서 정본화 + 배선**
+- [x] **step-1 — 회수 계약 문서 정본화 + 배선**
   - Artifact: `docs/design-system/harvest-contract.md` 신설(판정 축·승격 절차·출처 표기·중복 규칙·검증 체인) + entry-protocol 백링크(신규 자산 유입 경로로 1줄) + llms 등재.
   - Risk: 기계적 (문서 + llms 재생성 — 코드 무변경)
   - Files: write docs/design-system/harvest-contract.md. edit docs/design-system/entry-protocol.md(1줄 배선) + scripts/generate-llms-txt.mjs(FIXED_ASSETS 배열에 harvest-contract 등재 — absorption-criteria.md L28 규약, fresh 검증자 적발 반영). run llms 재생성 + scripts/check-llms-sync.mjs.
@@ -44,7 +44,7 @@ Status: approved (사용자 승인 2026-08-04 "ㄱㄱ" — M20+M21 연쇄, 승�
   - Verify: 계약 문서 존재 + 4 요소(판정 축·절차·출처 표기·중복 규칙) grep 확인 + 재생성된 llms.txt 에 harvest-contract 항목 grep 1건 + `node scripts/check-llms-sync.mjs` PASS.
   - Failure probe: FIXED_ASSETS 등재 없이 문서만 추가한 상태에서 llms.txt 에 harvest-contract 가 나타나지 않음을 먼저 확인(미등재=미배포 실측) 후 등재.
   - Commit: changeset `20260804-m21-harvest-contract` (README 절: step-1).
-- [ ] **step-2 — 첫 승격 실증 (M20 확정 후보 1~2건)**
+- [x] **step-2 — 첫 승격 실증 (M20 확정 후보 1~2건)**
   - Artifact: 후보 재료를 계약 절차 그대로 승격 — 재료 추출→restyle 정규화(토큰 하드코딩 제거)→registry 등재(meta·requiredCssVars)→`/r/<name>.json` 생성. 절차 이탈 지점은 계약 문서에 즉시 반영(계약이 실물로 검증되는 것이 목적).
   - Risk: 위험 (registry 재생성이 기존 자산 출력에 영향 가능 — diff 0 회귀 게이트로 방어)
   - Files: write examples/ui-vocabulary-site/src/components/…(승격물 — 대상은 M20 확정 후). edit registry 관련(generate-registry 경로는 기존 계약 내 사용, 수정 최소). run scripts/generate-registry.mjs.
@@ -72,7 +72,11 @@ Status: approved (사용자 승인 2026-08-04 "ㄱㄱ" — M20+M21 연쇄, 승�
 ## finding 큐 (작업 중 발견 — 다음 step/changeset 으로 흘림)
 
 - (예약) M20 조사가 marketing-landing 블록 재료를 지목하면 두 번째 블록 큐에 연결.
+- CLI verify 오탐: shadcn `ui/chart.tsx` 의 `[stroke='#ccc']` 속성 셀렉터가 hex-literal 로 걸림 — 킥스타트 내장 verify 는 블록 파일만 스캔해 통과하고, 소비 프로젝트 전체 `verify` 는 FAIL 하는 비대칭. verify 에 속성 셀렉터 예외 또는 SKIP 목록 필요.
+- 사용자 확정 풀 잔여 5 표면(brain 그래프·dev 일러스트·bootcamp·sixsense·본체 쇼케이스 미등재 데모) — 후속 harvest 배치.
 
 ## 진행 로그 (append-only)
 
-- (없음)
+- 2026-08-04 · step-1 완료 — harvest-contract.md 정본화 + entry-protocol 유입 lane + FIXED_ASSETS 등재(미등재=llms 0건 probe 후 등재), check-llms-sync PASS.
+- 2026-08-04 · step-2 완료 — 승격 2건: zigzag-story-section(← askewly.com building-section)·terminal-demo-panel(← guide TerminalDemo). registry meta.harvest 출처 표기(생성기 passthrough 신설). 게이트: 기존 28건 diff 0·purity probe(date-fns) FAIL 확인·build 759 routes·lint/sync PASS.
+- 2026-08-04 · step-3 E2E — 킥스타트 신선 프로젝트(로컬 registry 서빙)에 2건 이식, 격리 verify 0건, hex probe 적발 확인(requiredCssVars probe 는 플레인 자산이라 hex probe 로 대체), 실브라우저 시간차 3장. **E2E 가 실결함 적발**: scenes inline identity 가 deps 에 있어 타이핑 무한 리셋 → 수정·재이식·재검증 PASS. 부록(재현 절차 8단) 기록. 사용자 관측 대기.
