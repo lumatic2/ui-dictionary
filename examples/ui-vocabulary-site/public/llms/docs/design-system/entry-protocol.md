@@ -103,3 +103,4 @@ When the element was specified by the user, the block is `요소 결정: 해당 
 - Semantic tokens only; never primitive-tier references or raw literals in component code. In standalone files, paste the fetched tokens.css block once and reference `var(--…)` everywhere else.
 - If no recipe covers the task, take the no-asset-fallback path (N-3), apply tokens + principles + anti-patterns, and note the gap (it feeds demand-driven recipe expansion). "No recipe" is a documented branch, not a dead end.
 - If a fetch fails (404, missing asset), stop and report it — do not silently fall back to invented styling.
+- New assets enter the registry through two lanes only: external absorption (`absorption-criteria.md`) and self-produced harvest (`harvest-contract.md` — deployed surfaces promoted back into the registry via the standard 6-step promotion).
