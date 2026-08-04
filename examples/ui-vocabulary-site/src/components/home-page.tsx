@@ -1,6 +1,5 @@
 // askewly-typography-ok: 랜딩 + Showcase Atlas 12칸 데모(각 칸이 다른 제품 UI 를 재현) — 한 화면이 아니라 데모 집합이다
 import {
-  type CSSProperties,
   type KeyboardEvent as ReactKeyboardEvent,
   type MouseEvent as ReactMouseEvent,
   type PointerEvent as ReactPointerEvent,
@@ -15,6 +14,9 @@ import * as Matter from "matter-js"
 import { MeshGradient } from "@paper-design/shaders-react"
 
 import { cssColorToHex, readCssVarsAsHex } from "@/lib/css-color"
+import { HeroCompositionDemo } from "@/components/hero-composition"
+import { ImageTreatmentDemo } from "@/components/image-treatment"
+import { ProductCoverflowDemo } from "@/components/product-coverflow"
 import {
   Activity,
   ArrowRight,
@@ -33,13 +35,10 @@ import {
   Minus,
   Moon,
   MoveHorizontal,
-  Play,
   Plus,
   RefreshCw,
   Rocket,
   Shuffle,
-  SkipBack,
-  SkipForward,
   Download,
   PanelsTopLeft,
   Search,
@@ -51,7 +50,6 @@ import {
   X,
   type LucideIcon,
 } from "lucide-react"
-import { Button } from "@/components/ui/button"
 import { Switch } from "@/components/ui/switch"
 import { AtlasCard } from "@/components/showcase-card"
 import { LandingHero } from "@/components/landing-hero"
@@ -920,7 +918,7 @@ export function AtlasDemo({ id }: { id: AtlasItemId }) {
   }
 
   if (id === "scroll") {
-    return <CoverflowDemo />
+    return <ProductCoverflowDemo />
   }
 
   if (id === "filters") {
@@ -958,166 +956,6 @@ export function AtlasDemo({ id }: { id: AtlasItemId }) {
   return (
     <div className="grid min-h-[22.2rem] place-items-center rounded-md border border-slate-200 bg-white p-4 text-xs text-slate-400">
       Preview coming soon.
-    </div>
-  )
-}
-
-type CoverflowKind = "analytics" | "calendar" | "kanban" | "media" | "chat" | "pricing"
-
-// Six visually distinct product surfaces (hardcoded light palette so they stay bright in both themes).
-const coverflowCards: CoverflowKind[] = ["analytics", "calendar", "kanban", "media", "chat", "pricing"]
-
-function CoverflowCard({ kind }: { kind: CoverflowKind }) {
-  const frame = "h-[132px] w-40 overflow-hidden rounded-xl border border-slate-200 bg-white shadow-[0_20px_46px_color-mix(in_srgb,black_50%,transparent)]"
-  if (kind === "analytics") {
-    return (
-      <div className={frame}>
-        <div className="flex items-center justify-between px-3 pt-3">
-          <p className="text-[10px] font-semibold text-slate-900">Revenue</p>
-          <span className="text-[9px] font-medium text-emerald-500">+18%</span>
-        </div>
-        <p className="px-3 text-lg font-semibold leading-tight text-slate-900">$48.2k</p>
-        <div className="mt-1 flex h-[52px] items-end gap-1 px-3 pb-3">
-          {[0.35, 0.6, 0.45, 0.82, 0.55, 0.95, 0.7].map((h, i) => (
-            <span key={i} className="flex-1 rounded-t" style={{ height: `${h * 100}%`, background: i === 5 ? "var(--askewly-violet)" : "var(--askewly-lavender)" }} />
-          ))}
-        </div>
-      </div>
-    )
-  }
-  if (kind === "calendar") {
-    return (
-      <div className={cn(frame, "p-3")}>
-        <div className="flex items-baseline justify-between">
-          <p className="text-[11px] font-semibold text-slate-900">March</p>
-          <span className="text-[8px] text-slate-400">2026</span>
-        </div>
-        <div className="mt-2 grid grid-cols-7 gap-1">
-          {Array.from({ length: 28 }).map((_, i) => (
-            <span key={i} className={cn("aspect-square rounded-[3px]", i === 16 ? "bg-askewly-violet" : "bg-slate-100")} />
-          ))}
-        </div>
-      </div>
-    )
-  }
-  if (kind === "kanban") {
-    const columns = [
-      { color: "var(--askewly-sky)", n: 3 },
-      { color: "var(--color-amber-400)", n: 2 },
-      { color: "var(--askewly-mint)", n: 2 },
-    ]
-    return (
-      <div className={cn(frame, "p-3")}>
-        <p className="text-[10px] font-semibold text-slate-900">Sprint 12</p>
-        <div className="mt-2 grid grid-cols-3 gap-1.5">
-          {columns.map((col, ci) => (
-            <div key={ci} className="space-y-1.5">
-              <span className="block h-1 w-6 rounded-full" style={{ background: col.color }} />
-              {Array.from({ length: col.n }).map((_, i) => (
-                <span key={i} className="block h-4 rounded bg-slate-100" />
-              ))}
-            </div>
-          ))}
-        </div>
-      </div>
-    )
-  }
-  if (kind === "media") {
-    return (
-      <div className={cn(frame, "p-3")}>
-        <div className="flex items-center gap-2.5">
-          <div className="size-11 shrink-0 rounded-md" style={{ background: "linear-gradient(135deg, var(--askewly-violet), var(--askewly-mint))" }} />
-          <div className="min-w-0">
-            <p className="truncate text-[11px] font-semibold text-slate-900">Nightfall</p>
-            <p className="truncate text-[9px] text-slate-500">Askewly Radio</p>
-          </div>
-        </div>
-        <div className="mt-3 h-1 rounded-full bg-slate-200">
-          <span className="block h-full w-2/3 rounded-full bg-askewly-violet" />
-        </div>
-        <div className="mt-2.5 flex items-center justify-center gap-3 text-slate-700">
-          <SkipBack className="size-3" aria-hidden="true" />
-          <Play className="size-4 fill-current" aria-hidden="true" />
-          <SkipForward className="size-3" aria-hidden="true" />
-        </div>
-      </div>
-    )
-  }
-  if (kind === "chat") {
-    return (
-      <div className={cn(frame, "flex flex-col gap-1.5 p-3")}>
-        <span className="max-w-[82%] self-start rounded-lg rounded-bl-sm bg-slate-100 px-2 py-1 text-[9px] leading-snug text-slate-700">How’s the redesign going?</span>
-        <span className="max-w-[82%] self-end rounded-lg rounded-br-sm bg-askewly-violet px-2 py-1 text-[9px] leading-snug text-white">Shipping it today ✦</span>
-        <span className="max-w-[60%] self-start rounded-lg rounded-bl-sm bg-slate-100 px-2 py-1 text-[9px] leading-snug text-slate-700">🔥 amazing</span>
-      </div>
-    )
-  }
-  return (
-    <div className={cn(frame, "p-3")}>
-      <p className="text-[9px] font-semibold uppercase tracking-wide text-askewly-violet">Pro</p>
-      <p className="text-slate-900">
-        <span className="text-xl font-semibold">$24</span>
-        <span className="text-[9px] text-slate-400">/mo</span>
-      </p>
-      <div className="mt-2 space-y-1.5">
-        {["Unlimited tokens", "Team library", "Priority sync"].map((feature) => (
-          <div key={feature} className="flex items-center gap-1.5 text-[9px] text-slate-600">
-            <Check className="size-3 shrink-0 text-emerald-500" aria-hidden="true" />
-            {feature}
-          </div>
-        ))}
-      </div>
-    </div>
-  )
-}
-
-function CoverflowDemo() {
-  const prefersReducedMotion = usePrefersReducedMotion()
-  const [active, setActive] = useState(0)
-  const total = coverflowCards.length
-
-  useEffect(() => {
-    if (prefersReducedMotion) return
-    const interval = window.setInterval(() => setActive((value) => (value + 1) % total), 2600)
-    return () => window.clearInterval(interval)
-  }, [prefersReducedMotion, total])
-
-  return (
-    <div className="min-h-[17.65rem]">
-      <div className="relative h-64 overflow-hidden rounded-md border border-slate-200 bg-slate-950" style={{ perspective: "1000px" }}>
-        <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_46%,color-mix(in_srgb,var(--askewly-violet)_34%,transparent),transparent_64%)]" />
-        <div className="absolute inset-0" style={{ transformStyle: "preserve-3d" }}>
-          {coverflowCards.map((kind, index) => {
-            // Shortest signed distance around the loop, so the row wraps seamlessly.
-            let pos = index - active
-            if (pos > total / 2) pos -= total
-            if (pos < -total / 2) pos += total
-            const abs = Math.abs(pos)
-            const side = Math.max(-1, Math.min(1, pos))
-            const x = pos * 66
-            const rotateY = -side * 44
-            const z = -abs * 70
-            const scale = Math.max(0.6, 1 - abs * 0.14)
-            const opacity = abs > 2.6 ? 0 : Math.max(0, 1 - abs * 0.24)
-            return (
-              <div
-                key={index}
-                className="absolute left-1/2 top-1/2"
-                style={{
-                  transform: `translate(-50%, -50%) translateX(${x.toFixed(1)}px) translateZ(${z.toFixed(1)}px) rotateY(${rotateY.toFixed(1)}deg) scale(${scale.toFixed(3)})`,
-                  zIndex: 100 - Math.round(abs * 10),
-                  opacity,
-                  transition: prefersReducedMotion ? undefined : "transform 0.7s cubic-bezier(0.4, 0, 0.2, 1), opacity 0.6s ease",
-                  transformStyle: "preserve-3d",
-                  willChange: "transform",
-                }}
-              >
-                <CoverflowCard kind={kind} />
-              </div>
-            )
-          })}
-        </div>
-      </div>
     </div>
   )
 }
@@ -1267,139 +1105,6 @@ function MotionShowcaseDemo() {
               style={{ animation: prefersReducedMotion ? undefined : "motion-showcase-ball-breathe 2.6s ease-in-out infinite" }}
             />
           </div>
-        </div>
-      </div>
-    </div>
-  )
-}
-
-const HERO_COMPOSITION_CYCLE_MS = 5200
-
-type HeroCompositionProof = "search" | "workspace" | "none"
-
-const heroCompositions: Array<{
-  id: string
-  label: string
-  eyebrow: string
-  headline: string
-  subcopy: string
-  primaryCta: string
-  secondaryCta: string
-  proof: HeroCompositionProof
-}> = [
-  {
-    id: "centered",
-    label: "Centered",
-    eyebrow: "Homepage hero",
-    headline: "Askewly Design",
-    subcopy: "A visual library and agent-ready system for designing better product interfaces.",
-    primaryCta: "Get Started",
-    secondaryCta: "Open Docs",
-    proof: "search",
-  },
-  {
-    id: "proof",
-    label: "Proof surface",
-    eyebrow: "Workspace preview",
-    headline: "Askewly Design",
-    subcopy: "Browse the tokens, patterns, and components an agent can ship straight from.",
-    primaryCta: "Explore Patterns",
-    secondaryCta: "Read the Docs",
-    proof: "workspace",
-  },
-  {
-    id: "compact",
-    label: "Compact",
-    eyebrow: "Nested section hero",
-    headline: "Start from a token, not a blank canvas.",
-    subcopy: "Every component here maps back to a semantic token pair.",
-    primaryCta: "Browse Tokens",
-    secondaryCta: "View Components",
-    proof: "none",
-  },
-]
-
-function HeroCompositionDemo() {
-  const prefersReducedMotion = usePrefersReducedMotion()
-  const [activeIndex, setActiveIndex] = useState(0)
-
-  useEffect(() => {
-    if (prefersReducedMotion) return
-    const timer = window.setInterval(() => {
-      setActiveIndex((value) => (value + 1) % heroCompositions.length)
-    }, HERO_COMPOSITION_CYCLE_MS)
-    return () => window.clearInterval(timer)
-  }, [prefersReducedMotion])
-
-  const composition = heroCompositions[activeIndex]
-
-  return (
-    <div className="grid min-h-[22.2rem] gap-3">
-      <div role="tablist" aria-label="Hero composition variant" className="inline-flex w-fit gap-0.5 rounded-full bg-muted p-0.5 text-muted-foreground ring-1 ring-border">
-        {heroCompositions.map((item, index) => (
-          <button
-            key={item.id}
-            type="button"
-            role="tab"
-            aria-selected={index === activeIndex}
-            onClick={() => setActiveIndex(index)}
-            className={cn(
-              "rounded-full px-2.5 py-1 text-[11px] font-medium transition",
-              index === activeIndex ? "bg-background text-foreground shadow-sm ring-1 ring-border" : "hover:text-foreground",
-            )}
-          >
-            {item.label}
-          </button>
-        ))}
-      </div>
-
-      <div className="relative flex-1 overflow-hidden rounded-lg border border-border bg-background">
-        <div
-          key={prefersReducedMotion ? "static" : composition.id}
-          className="flex h-full min-h-[16rem] flex-col items-center justify-center gap-3 px-5 py-6 text-center"
-          style={{ animation: prefersReducedMotion ? undefined : "hero-composition-fade 340ms cubic-bezier(0.33, 1, 0.68, 1) both" }}
-        >
-          <p className="font-mono text-[10px] font-semibold uppercase tracking-[0.18em] text-muted-foreground">{composition.eyebrow}</p>
-          <h4 className={cn("font-semibold tracking-tight text-foreground", composition.id === "compact" ? "max-w-[15rem] text-lg" : "text-2xl")}>
-            {composition.headline}
-          </h4>
-          <p className="max-w-[19rem] text-xs leading-5 text-muted-foreground">{composition.subcopy}</p>
-          <div className="flex flex-wrap items-center justify-center gap-2">
-            <Button size="sm" type="button">
-              {composition.primaryCta}
-              <ArrowRight aria-hidden="true" className="size-3.5" />
-            </Button>
-            <Button size="sm" variant="outline" type="button">
-              {composition.secondaryCta}
-            </Button>
-          </div>
-
-          {composition.proof === "search" && (
-            <div className="mt-1 flex w-full max-w-[15rem] items-center gap-2 rounded-full border border-border bg-muted px-3 py-1.5 text-left">
-              <Search aria-hidden="true" className="size-3.5 shrink-0 text-muted-foreground" />
-              <span className="truncate text-[11px] text-muted-foreground">Search components, tokens, patterns…</span>
-            </div>
-          )}
-
-          {composition.proof === "workspace" && (
-            <div className="mt-1 grid w-full max-w-[17rem] grid-cols-[3.2rem_minmax(0,1fr)_3.6rem] gap-1.5 rounded-md border border-border bg-muted p-1.5">
-              <div className="space-y-1 rounded bg-background p-1.5 text-left">
-                {["Docs", "Patterns", "Colors"].map((label) => (
-                  <p key={label} className="truncate text-[8px] font-medium text-muted-foreground">
-                    {label}
-                  </p>
-                ))}
-              </div>
-              <div className="rounded bg-background p-1.5 text-left">
-                <p className="text-[8px] font-semibold text-foreground">Button</p>
-                <div className="mt-1.5 h-6 w-10 rounded bg-primary" />
-              </div>
-              <div className="space-y-1 rounded bg-background p-1.5 text-left">
-                <p className="font-mono text-[7px] text-muted-foreground">action.primary</p>
-                <p className="font-mono text-[7px] text-muted-foreground">radius.md</p>
-              </div>
-            </div>
-          )}
         </div>
       </div>
     </div>
@@ -2270,113 +1975,6 @@ function ShaderGradientDemo() {
           grainOverlay={0.12}
           speed={prefersReducedMotion ? 0 : 0.45}
         />
-        )}
-      </div>
-    </div>
-  )
-}
-
-type ImageRecipe = {
-  name: string
-  filter: string
-  overlay?: string
-  overlayBlend?: CSSProperties["mixBlendMode"]
-  contrast: number
-  saturation: number
-  grain: number
-}
-
-const imageRecipes: ImageRecipe[] = [
-  {
-    name: "Duotone + Grain",
-    filter: "grayscale(1) contrast(1.08) saturate(0.9)",
-    overlay: "linear-gradient(135deg, var(--askewly-violet), var(--askewly-mint))",
-    overlayBlend: "color",
-    contrast: 1.08,
-    saturation: 0.9,
-    grain: 0.45,
-  },
-  {
-    name: "Warm Film",
-    filter: "sepia(0.4) contrast(0.92) saturate(1.1) brightness(1.02)",
-    overlay: "linear-gradient(160deg, color-mix(in srgb, var(--color-orange-200) 35%, transparent), color-mix(in srgb, var(--color-amber-900) 12%, transparent))",
-    overlayBlend: "soft-light",
-    contrast: 0.92,
-    saturation: 1.1,
-    grain: 0.25,
-  },
-  {
-    name: "High-Contrast Mono",
-    filter: "grayscale(1) contrast(1.45) brightness(0.95)",
-    contrast: 1.45,
-    saturation: 0,
-    grain: 0.6,
-  },
-]
-
-const imageTreatmentPhotos = [
-  "/assets/ecommerce-reviews/avatar-navy-overshirt.png",
-  "/assets/ecommerce-reviews/avatar-curly-hair.png",
-  "/assets/ecommerce-reviews/avatar-silver-hair.png",
-]
-
-const IMAGE_TREATMENT_CYCLE_MS = 4500
-
-function ImageTreatmentDemo() {
-  const prefersReducedMotion = usePrefersReducedMotion()
-  const [recipeIndex, setRecipeIndex] = useState(0)
-
-  useEffect(() => {
-    if (prefersReducedMotion) return
-    const timer = window.setInterval(() => {
-      setRecipeIndex((value) => (value + 1) % imageRecipes.length)
-    }, IMAGE_TREATMENT_CYCLE_MS)
-    return () => window.clearInterval(timer)
-  }, [prefersReducedMotion])
-
-  const recipe = imageRecipes[recipeIndex]
-  const previewPhotos = imageTreatmentPhotos
-
-  return (
-    <div className="grid min-h-[13.25rem] gap-3">
-      <p className="text-base font-semibold text-foreground">{recipe.name}</p>
-      <div className="relative">
-        <svg width="0" height="0" className="absolute">
-          <defs>
-            <filter id="filters-grain-noise">
-              <feTurbulence type="fractalNoise" baseFrequency="0.85" numOctaves="2" stitchTiles="stitch" result="noise" />
-              {/* Convert luminance to alpha and punch up the contrast so this reads as
-                  distinct black speckles instead of a smooth gray haze - a flat
-                  overlay/soft-light blend of raw turbulence barely shows on a pale photo. */}
-              <feColorMatrix in="noise" type="matrix" values="0 0 0 0 0  0 0 0 0 0  0 0 0 0 0  1 0 0 0 0" result="alphaNoise" />
-              <feComponentTransfer in="alphaNoise">
-                <feFuncA type="linear" slope="4.2" intercept="-1.7" />
-              </feComponentTransfer>
-            </filter>
-          </defs>
-        </svg>
-        <div className="grid grid-cols-3 gap-2">
-          {previewPhotos.map((src) => (
-            <div key={src} className="relative aspect-square overflow-hidden rounded-md border border-slate-200 bg-white">
-              <img src={src} alt="" className="absolute inset-0 size-full object-cover" style={{ filter: recipe.filter }} />
-              {recipe.overlay && <div className="absolute inset-0" style={{ background: recipe.overlay, mixBlendMode: recipe.overlayBlend }} />}
-              <div className="absolute inset-0" style={{ opacity: recipe.grain, mixBlendMode: "multiply", filter: "url(#filters-grain-noise)" }} />
-            </div>
-          ))}
-        </div>
-        {/* Single shared before/after line sweeping the whole grid, not one per tile. */}
-        {!prefersReducedMotion && (
-          <div
-            key={recipeIndex}
-            className="absolute inset-0 grid grid-cols-3 gap-2"
-            style={{ animation: `filters-wipe-sweep ${IMAGE_TREATMENT_CYCLE_MS}ms linear 1` }}
-          >
-            {previewPhotos.map((src) => (
-              <div key={src} className="relative aspect-square overflow-hidden rounded-md border border-slate-200 bg-white">
-                <img src={src} alt="" className="absolute inset-0 size-full object-cover" />
-              </div>
-            ))}
-          </div>
         )}
       </div>
     </div>

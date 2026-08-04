@@ -925,6 +925,75 @@
       ]
     },
     {
+      "name": "product-coverflow",
+      "type": "registry:block",
+      "title": "Product Coverflow",
+      "description": "A product coverflow loops product-surface mockups through a 3D carousel: each card's transform derives from its shortest signed distance to the active index so the row wraps seamlessly — translateX for spread, rotateY for the flanks, translateZ/scale/opacity for depth falloff. Card faces are fixed-light showcase content on a dark stage; the accent palette is self-contained CSS variables to remap per brand. Reduced motion stops the auto-advance.",
+      "meta": {
+        "harvest": {
+          "origin": "ui-vocabulary-site atlas showcase (home-page extraction)",
+          "liveUrl": "https://ui.askewly.com/",
+          "harvestedAt": "2026-08-04"
+        }
+      },
+      "registryDependencies": [],
+      "dependencies": [
+        "lucide-react"
+      ],
+      "files": [
+        {
+          "path": "registry/askewly/product-coverflow/product-coverflow.tsx",
+          "type": "registry:component"
+        }
+      ]
+    },
+    {
+      "name": "hero-composition",
+      "type": "registry:block",
+      "title": "Hero Composition Rotator",
+      "description": "A hero composition rotator cycles one hero surface through three named compositions — centered, proof-surface, compact — so layout variants read as an A/B lineup instead of separate mockups. A tab strip doubles as manual override, each variant swaps its proof element (search bar, workspace preview, none), and the auto-cycle stops entirely under reduced motion. Semantic tokens throughout.",
+      "meta": {
+        "harvest": {
+          "origin": "ui-vocabulary-site atlas showcase (home-page extraction)",
+          "liveUrl": "https://ui.askewly.com/",
+          "harvestedAt": "2026-08-04"
+        }
+      },
+      "registryDependencies": [
+        "button"
+      ],
+      "dependencies": [
+        "lucide-react"
+      ],
+      "files": [
+        {
+          "path": "registry/askewly/hero-composition/hero-composition.tsx",
+          "type": "registry:component"
+        }
+      ]
+    },
+    {
+      "name": "image-treatment",
+      "type": "registry:block",
+      "title": "Image Treatment Rotator",
+      "description": "An image treatment rotator cycles a photo grid through named recipes — duotone+grain, warm film, high-contrast mono — each a CSS filter chain plus optional blend-mode overlay, with SVG feTurbulence grain rendered as real speckle. A single before/after wipe sweeps the whole grid, and the raw layer resets its clip while transparent so the loop reads as the treatment dissolving, never a snap. Pass your own photos; reduced motion pins the treated state.",
+      "meta": {
+        "harvest": {
+          "origin": "ui-vocabulary-site atlas showcase (home-page extraction)",
+          "liveUrl": "https://ui.askewly.com/",
+          "harvestedAt": "2026-08-04"
+        }
+      },
+      "registryDependencies": [],
+      "dependencies": [],
+      "files": [
+        {
+          "path": "registry/askewly/image-treatment/image-treatment.tsx",
+          "type": "registry:component"
+        }
+      ]
+    },
+    {
       "name": "bottom-sheet-detents",
       "type": "registry:block",
       "title": "Bottom Sheet Detents",

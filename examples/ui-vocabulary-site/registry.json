@@ -371,6 +371,42 @@
       }
     },
     {
+      "name": "product-coverflow",
+      "title": "Product Coverflow",
+      "description": "A product coverflow loops product-surface mockups through a 3D carousel: each card's transform derives from its shortest signed distance to the active index so the row wraps seamlessly — translateX for spread, rotateY for the flanks, translateZ/scale/opacity for depth falloff. Card faces are fixed-light showcase content on a dark stage; the accent palette is self-contained CSS variables to remap per brand. Reduced motion stops the auto-advance.",
+      "meta": {
+        "harvest": {
+          "origin": "ui-vocabulary-site atlas showcase (home-page extraction)",
+          "liveUrl": "https://ui.askewly.com/",
+          "harvestedAt": "2026-08-04"
+        }
+      }
+    },
+    {
+      "name": "hero-composition",
+      "title": "Hero Composition Rotator",
+      "description": "A hero composition rotator cycles one hero surface through three named compositions — centered, proof-surface, compact — so layout variants read as an A/B lineup instead of separate mockups. A tab strip doubles as manual override, each variant swaps its proof element (search bar, workspace preview, none), and the auto-cycle stops entirely under reduced motion. Semantic tokens throughout.",
+      "meta": {
+        "harvest": {
+          "origin": "ui-vocabulary-site atlas showcase (home-page extraction)",
+          "liveUrl": "https://ui.askewly.com/",
+          "harvestedAt": "2026-08-04"
+        }
+      }
+    },
+    {
+      "name": "image-treatment",
+      "title": "Image Treatment Rotator",
+      "description": "An image treatment rotator cycles a photo grid through named recipes — duotone+grain, warm film, high-contrast mono — each a CSS filter chain plus optional blend-mode overlay, with SVG feTurbulence grain rendered as real speckle. A single before/after wipe sweeps the whole grid, and the raw layer resets its clip while transparent so the loop reads as the treatment dissolving, never a snap. Pass your own photos; reduced motion pins the treated state.",
+      "meta": {
+        "harvest": {
+          "origin": "ui-vocabulary-site atlas showcase (home-page extraction)",
+          "liveUrl": "https://ui.askewly.com/",
+          "harvestedAt": "2026-08-04"
+        }
+      }
+    },
+    {
       "name": "bottom-sheet-detents",
       "title": "Bottom Sheet Detents",
       "description": "A bottom sheet with a collapsed/expanded detent pair cycled through the drag handle. The standard variant coexists with the underlying screen (no scrim, background stays interactive); the modal variant adds a scrim that blocks interaction until dismissed. Both offer a non-drag way to change detent — tapping the handle — because not every input is a drag gesture.",

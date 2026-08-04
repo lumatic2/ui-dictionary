@@ -53,7 +53,7 @@ Status: approved (사용자 승인 2026-08-04 "ㄱㄱ" — 집행 10건+부속 1
   - Verify: 기존 38건 diff 0(순수 추가 7) + purity PASS + 신규 `/r/*.json` 7건 존재(3종의 registryDependencies 에 device-frame URL 포함) + build/lint PASS.
   - Failure probe: 승격물 1건에 hex 리터럴 주입 → verify 적발 확인 후 제거(게이트 자기시험 — M21 선례).
   - Commit: changeset (README 절: step-2).
-- [ ] **step-3 — 미등재 데모 3종 독립 추출 + 등재**
+- [x] **step-3 — 미등재 데모 3종 독립 추출 + 등재**
   - Artifact: home-page.tsx 내장 Coverflow·Hero Composition·Image Treatment 를 독립 컴포넌트 파일로 추출(purity 정규화 포함), home-page 는 신규 파일 import 로 전환(시각 무변경), registry 등재(meta.harvest). 얽힘 2건 처리(fresh 검증자 발견 3): ① 공유 훅 `usePrefersReducedMotion`(home-page.tsx:2787 지역 정의) → 추출 파일마다 인라인(자산 독립성 우선 — 계약 §3 정규화) ② `filters-wipe-sweep` keyframe(`src/index.css:1098` 전역 CSS — purity JS 검사 사각) → 추출 컴포넌트에 내장(인라인 style 태그 또는 tailwind arbitrary keyframe, run 최종화).
   - Risk: 위험 (홈 화면 코드 이동 — 시각 회귀 스크린샷으로 방어)
   - Files: write examples/ui-vocabulary-site/src/components/{product-coverflow,hero-composition,image-treatment}.tsx(명명 run 최종화). edit src/components/home-page.tsx, registry.json. run scripts/generate-registry.mjs.

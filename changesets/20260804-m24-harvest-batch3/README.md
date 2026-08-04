@@ -15,3 +15,12 @@
 - registry.json +7 (device-frame 부속 + magnetic-hover-button·spring-drag-snap-card·swipe-action-row-pattern·pull-to-refresh-list-pattern·staggered-entrance-group·bottom-sheet-detents) — meta.harvest 전건(본체 출처), motion 의존 3종 dependencies 선언.
 - 소스 재작성 0 — 7종 전건 기존 파일이 계약 §3 준수(시맨틱 토큰·reduced-motion·aria·비드래그 대체 경로) 상태.
 - 검증: 재생성 45건(38+7 순수 추가 — 기존 per-item diff 0, index만 M) + device-frame 참조 3종의 registryDependencies 에 `/r/device-frame.json` URL 파생 확인 + motion 선언 3종 dependencies `["motion"]` + hex probe(bg-[#ff0000] 주입→lint:colors FAIL 적발→원복 0건) + lint·build 759 routes PASS + llms 재생성(197 assets).
+
+## step-3 — 미등재 데모 3종 독립 추출 + 등재
+
+- home-page.tsx 내장 3종을 독립 컴포넌트로 추출: `product-coverflow.tsx`·`hero-composition.tsx`·`image-treatment.tsx`. home-page 는 신규 파일 import 로 전환, 구 정의 3블록 삭제(잔존 참조 grep 0 — 중복 정의 probe PASS), 추출로 미사용이 된 import 5줄 제거.
+- 얽힘 처리: 공유 훅 `usePrefersReducedMotion` 파일별 인라인 · keyframe 컴포넌트 내장+이름 스코프(`hero-composition-rotator-fade`·`image-treatment-wipe-sweep` — index.css 원본과 충돌 회피, 구 규칙은 dead rule 로 잔존/미삭제) · `--askewly-*` 브랜드 변수 → 컴포넌트 로컬 콘텐츠 팔레트(`--pc-*`/`--it-*`, hex 자급 — 소비 프로젝트 무의존) · 사진은 `photos` prop(기본값 사이트 에셋).
+- lint ALLOWLIST +2 (product-coverflow·image-treatment — 고정 라이트 목업 팔레트가 콘텐츠, term-visual 선례). hero-composition 은 전량 시맨틱이라 예외 불요.
+- registry.json +3 (meta.harvest — home-page extraction 출처). 재생성 48건(45+3 순수 추가 — 기존 per-item diff 0, index만 M).
+- 검증: tsc 무오류 + oxlint·lint:colors PASS + build 759 routes + 시각 회귀: 로컬 빌드 vs 라이브 프로드(추출 전 코드) 풀페이지 스크린샷 대조 — Coverflow 배치·Warm Film·Proof surface 프레임까지 동일.
+- finding: hex probe 의 `git checkout` 이 소스 파일을 CRLF 로 되살려 임베드 content 오염 — LF 재정규화로 해소. 교훈: probe 원복은 checkout 대신 역편집 또는 즉시 EOL 검사.

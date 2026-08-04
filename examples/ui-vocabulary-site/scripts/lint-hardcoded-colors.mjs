@@ -29,6 +29,10 @@ const ALLOWLIST = [
   // 랜딩 쇼케이스/Atlas 데모 캔버스 지배 파일 — 셸(푸터·히어로 카피)은 이미 토큰화 완료.
   // 줄 단위 마커 208개가 JSX 자식 위치에서 텍스트로 렌더되는 사고(2026-07-31 사람 관측 적발)로 파일 단위 예외로 전환.
   "components/home-page.tsx",
+  // home-page 에서 추출한 Atlas 쇼케이스 데모 (M24) — 카드/타일 목업의 고정 라이트 팔레트가 콘텐츠다.
+  // 브랜드 액센트는 컴포넌트 로컬 CSS 변수(--pc-*/--it-*)로 자급 — 셸 토큰 규칙의 대상이 아니다.
+  "components/product-coverflow.tsx",
+  "components/image-treatment.tsx",
 ];
 
 const PALETTE =
