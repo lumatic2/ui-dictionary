@@ -925,6 +925,55 @@
       ]
     },
     {
+      "name": "auth-gate-modal",
+      "type": "registry:block",
+      "title": "Auth Gate Modal",
+      "description": "An auth gate modal signs a visitor in only where one capability is gated while exploring stays open. Three paths in fixed order — email/password, Google, and request-access so the gate never dead-ends someone without an account — plus three dismiss routes (close button, backdrop, Escape) and focus landing on the first field. The copy names what the gate protects, not a generic login.",
+      "meta": {
+        "harvest": {
+          "origin": "second-brain/poc-graph auth modal (React rewrite)",
+          "liveUrl": "https://brain.askewly.com/",
+          "harvestedAt": "2026-08-04"
+        }
+      },
+      "registryDependencies": [
+        "button",
+        "input"
+      ],
+      "dependencies": [
+        "lucide-react"
+      ],
+      "files": [
+        {
+          "path": "registry/askewly/auth-gate-modal/auth-gate-modal.tsx",
+          "type": "registry:component"
+        }
+      ]
+    },
+    {
+      "name": "focus-hud-overlay",
+      "type": "registry:block",
+      "title": "Focus HUD Overlay",
+      "description": "A focus HUD overlay is a pointer-events-none corner display for exploratory canvases: kicker line, large focus title, next-action hint, and an activation-count badge that pairs with elements highlighted on the canvas. It announces focus changes politely via aria-live and never steals interaction from the surface beneath.",
+      "meta": {
+        "harvest": {
+          "origin": "second-brain/poc-graph focus HUD (React rewrite)",
+          "liveUrl": "https://brain.askewly.com/",
+          "harvestedAt": "2026-08-04"
+        }
+      },
+      "registryDependencies": [
+        "button"
+      ],
+      "dependencies": [],
+      "files": [
+        {
+          "path": "registry/askewly/focus-hud-overlay/focus-hud-overlay.tsx",
+          "type": "registry:component"
+        }
+      ]
+    },
+    {
       "name": "cursor-reactive-field",
       "type": "registry:block",
       "title": "Cursor Reactive Field",

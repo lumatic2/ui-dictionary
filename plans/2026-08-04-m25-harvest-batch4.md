@@ -44,7 +44,7 @@ Status: approved (사용자 승인 2026-08-04 "ㄱㄱ" — M25+M26 연쇄)
   - Verify: build/lint PASS + 기존 48건 diff 0(순수 추가 1) + 홈 시각 회귀 + 중복 정의 grep 0.
   - Failure probe: 추출 파일 단독 렌더에서 포인터 이동 실발화(글리프 불투명도 변화 측정).
   - Commit: changeset `20260804-m25-harvest-batch4` (README 절: step-1).
-- [ ] **step-2 — C5-b: brain 인증 모달·HUD React 재작성·등재**
+- [x] **step-2 — C5-b: brain 인증 모달·HUD React 재작성·등재**
   - Artifact: viewer.html 의 인증 모달(이메일/Google/가입 요청 3버튼 + guest/authed 상태 스위칭)과 HUD(킥커+포커스 타이틀+활성 배지 오버레이)를 React+시맨틱 토큰으로 재작성 — `auth-gate-modal.tsx`·`focus-hud-overlay.tsx` 등재.
   - Risk: 기계적 (신규 파일 — 사이트 기존 화면 무변경)
   - Files: write examples/ui-vocabulary-site/src/components/{auth-gate-modal,focus-hud-overlay}.tsx. edit registry.json. run scripts/generate-registry.mjs.

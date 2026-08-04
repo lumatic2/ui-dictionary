@@ -371,6 +371,30 @@
       }
     },
     {
+      "name": "auth-gate-modal",
+      "title": "Auth Gate Modal",
+      "description": "An auth gate modal signs a visitor in only where one capability is gated while exploring stays open. Three paths in fixed order — email/password, Google, and request-access so the gate never dead-ends someone without an account — plus three dismiss routes (close button, backdrop, Escape) and focus landing on the first field. The copy names what the gate protects, not a generic login.",
+      "meta": {
+        "harvest": {
+          "origin": "second-brain/poc-graph auth modal (React rewrite)",
+          "liveUrl": "https://brain.askewly.com/",
+          "harvestedAt": "2026-08-04"
+        }
+      }
+    },
+    {
+      "name": "focus-hud-overlay",
+      "title": "Focus HUD Overlay",
+      "description": "A focus HUD overlay is a pointer-events-none corner display for exploratory canvases: kicker line, large focus title, next-action hint, and an activation-count badge that pairs with elements highlighted on the canvas. It announces focus changes politely via aria-live and never steals interaction from the surface beneath.",
+      "meta": {
+        "harvest": {
+          "origin": "second-brain/poc-graph focus HUD (React rewrite)",
+          "liveUrl": "https://brain.askewly.com/",
+          "harvestedAt": "2026-08-04"
+        }
+      }
+    },
+    {
       "name": "cursor-reactive-field",
       "title": "Cursor Reactive Field",
       "description": "A cursor-reactive glyph field lights a fixed grid of monospace glyphs around the pointer and lets them decay on a timer: influence falls off with distance, the glyph changes by influence band so the trail reads as texture, and a ~85ms life countdown produces the fade tail. Plain spans and one interval — no canvas, no rAF.",

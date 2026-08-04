@@ -1,0 +1,25 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "focus-hud-overlay",
+  "type": "registry:block",
+  "title": "Focus HUD Overlay",
+  "description": "A focus HUD overlay is a pointer-events-none corner display for exploratory canvases: kicker line, large focus title, next-action hint, and an activation-count badge that pairs with elements highlighted on the canvas. It announces focus changes politely via aria-live and never steals interaction from the surface beneath.",
+  "meta": {
+    "harvest": {
+      "origin": "second-brain/poc-graph focus HUD (React rewrite)",
+      "liveUrl": "https://brain.askewly.com/",
+      "harvestedAt": "2026-08-04"
+    }
+  },
+  "registryDependencies": [
+    "button"
+  ],
+  "dependencies": [],
+  "files": [
+    {
+      "path": "registry/askewly/focus-hud-overlay/focus-hud-overlay.tsx",
+      "type": "registry:component",
+      "content": "import { useState } from \"react\"\nimport { Button } from \"@/components/ui/button\"\n\n/**\n * Focus HUD overlay: a corner heads-up display for exploratory canvases\n * (graph, map, 3D scene) that names what is currently focused — kicker line,\n * large focus title, a hint for the next action, and an \"N activated\" badge\n * that pairs with highlighted elements on the canvas. The whole overlay is\n * pointer-events-none so it never steals interaction from the surface under\n * it. Semantic tokens; the badge uses primary as its one accent.\n */\n\ntype FocusHudOverlayProps = {\n  /** Small uppercase context line (e.g. product or mode name). */\n  kicker: string\n  /** The focused entity's name. Empty hides the HUD body. */\n  title: string\n  /** One-line hint for what the focus enables next. */\n  hint?: string\n  /** Count shown in the activation badge; badge hides at undefined. */\n  activatedCount?: number\n  activatedLabel?: string\n}\n\nexport function FocusHudOverlay({ kicker, title, hint, activatedCount, activatedLabel = \"activated\" }: FocusHudOverlayProps) {\n  if (!title) {\n    return null\n  }\n\n  return (\n    <div\n      aria-live=\"polite\"\n      className=\"pointer-events-none absolute right-4 top-4 z-10 flex max-w-[16rem] flex-col items-end gap-1.5 text-right\"\n      data-slot=\"focus-hud\"\n    >\n      <p className=\"text-[10px] font-semibold uppercase tracking-[0.2em] text-muted-foreground\">{kicker}</p>\n      <p className=\"text-xl font-semibold leading-tight tracking-tight text-foreground\">{title}</p>\n      {hint ? <p className=\"text-xs leading-5 text-muted-foreground\">{hint}</p> : null}\n      {activatedCount !== undefined ? (\n        <span className=\"mt-1 rounded-full bg-primary px-2.5 py-0.5 text-[11px] font-medium text-primary-foreground\">\n          {activatedCount} {activatedLabel}\n        </span>\n      ) : null}\n    </div>\n  )\n}\n\n/** Colocated demo: a mock canvas where focusing a node drives the HUD. */\nexport function FocusHudOverlayDemo() {\n  const nodes = [\n    { id: \"spring\", title: \"Spring physics\", hint: \"관련 근거 노드가 함께 빛납니다.\", activated: 7 },\n    { id: \"stagger\", title: \"Stagger choreography\", hint: \"탭해서 연결된 기억을 살펴보세요.\", activated: 4 },\n  ]\n  const [focused, setFocused] = useState<(typeof nodes)[number] | null>(nodes[0])\n\n  return (\n    <div className=\"relative h-72 w-full max-w-md overflow-hidden rounded-lg border bg-muted/30 p-4\">\n      <div className=\"flex gap-2\">\n        {nodes.map((node) => (\n          <Button\n            key={node.id}\n            size=\"sm\"\n            type=\"button\"\n            variant={focused?.id === node.id ? \"default\" : \"outline\"}\n            onClick={() => setFocused(node)}\n          >\n            {node.title}\n          </Button>\n        ))}\n        <Button size=\"sm\" type=\"button\" variant=\"ghost\" onClick={() => setFocused(null)}>\n          Clear\n        </Button>\n      </div>\n\n      <FocusHudOverlay\n        kicker=\"Knowledge Universe\"\n        title={focused?.title ?? \"\"}\n        hint={focused?.hint}\n        activatedCount={focused?.activated}\n        activatedLabel=\"memories activated\"\n      />\n    </div>\n  )\n}\n"
+    }
+  ]
+}
