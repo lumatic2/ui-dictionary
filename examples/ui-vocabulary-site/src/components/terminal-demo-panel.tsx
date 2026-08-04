@@ -86,7 +86,10 @@ export function TerminalDemoPanel({ scenes, typeInterval, lineInterval, resultHo
       timeouts.current.forEach(clearTimeout)
       timeouts.current = []
     }
-  }, [playing, sceneIndex, reducedMotion, scenes]) // eslint-disable-line react-hooks/exhaustive-deps
+    // `scenes` stays out of the deps on purpose: callers pass inline literals, and a
+    // fresh identity every render would cancel the pending timers and reset the loop.
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [playing, sceneIndex, reducedMotion])
 
   if (scenes.length === 0) return null
   const scene = scenes[sceneIndex % scenes.length]
