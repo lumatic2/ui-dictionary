@@ -176,6 +176,34 @@
       ]
     },
     {
+      "name": "marketing-landing",
+      "title": "Marketing Landing",
+      "description": "A standard-funnel marketing landing skeleton: floating-bars hero with dual CTA, logo marquee trust strip, zigzag how-it-works story, terminal demo proof pane with a staggered capability list, before/after contrast pair, three-tier pricing, buyer-ordered FAQ accordion, rotating-word final CTA on a mesh gradient, and a link-column footer. Every section is an independent file so the funnel order can be recomposed; copy, logos, and pricing live in one data.json. Routing is left to the consumer.",
+      "tier": "block",
+      "requiredCssVars": [
+        "--background",
+        "--foreground",
+        "--card",
+        "--card-foreground",
+        "--popover",
+        "--popover-foreground",
+        "--primary",
+        "--primary-foreground",
+        "--secondary",
+        "--secondary-foreground",
+        "--muted",
+        "--muted-foreground",
+        "--accent",
+        "--accent-foreground",
+        "--destructive",
+        "--destructive-foreground",
+        "--border",
+        "--input",
+        "--ring",
+        "--radius"
+      ]
+    },
+    {
       "name": "zigzag-story-section",
       "title": "Zigzag Story Section",
       "description": "A zigzag story section tells a sequential narrative as alternating copy/media rows — copy left on even rows, right on odd — so a long \"how we work\" story reads as a walk instead of a wall of features. Each row is one step and order carries meaning; media is a consumer slot with a numbered placeholder fallback. Not for unordered feature grids or single-visual heroes.",

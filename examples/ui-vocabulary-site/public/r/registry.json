@@ -569,6 +569,100 @@
       ]
     },
     {
+      "name": "marketing-landing",
+      "type": "registry:block",
+      "title": "Marketing Landing",
+      "description": "A standard-funnel marketing landing skeleton: floating-bars hero with dual CTA, logo marquee trust strip, zigzag how-it-works story, terminal demo proof pane with a staggered capability list, before/after contrast pair, three-tier pricing, buyer-ordered FAQ accordion, rotating-word final CTA on a mesh gradient, and a link-column footer. Every section is an independent file so the funnel order can be recomposed; copy, logos, and pricing live in one data.json. Routing is left to the consumer.",
+      "meta": {
+        "tier": "block",
+        "requiredCssVars": [
+          "--background",
+          "--foreground",
+          "--card",
+          "--card-foreground",
+          "--popover",
+          "--popover-foreground",
+          "--primary",
+          "--primary-foreground",
+          "--secondary",
+          "--secondary-foreground",
+          "--muted",
+          "--muted-foreground",
+          "--accent",
+          "--accent-foreground",
+          "--destructive",
+          "--destructive-foreground",
+          "--border",
+          "--input",
+          "--ring",
+          "--radius"
+        ]
+      },
+      "registryDependencies": [
+        "accordion",
+        "badge",
+        "button",
+        "https://ui.askewly.com/r/contrast-duo-card.json",
+        "https://ui.askewly.com/r/floating-bars-hero.json",
+        "https://ui.askewly.com/r/logo-marquee.json",
+        "https://ui.askewly.com/r/mesh-gradient-surface.json",
+        "https://ui.askewly.com/r/rotating-label.json",
+        "https://ui.askewly.com/r/scroll-driven-reveal.json",
+        "https://ui.askewly.com/r/staggered-entrance-group.json",
+        "https://ui.askewly.com/r/terminal-demo-panel.json",
+        "https://ui.askewly.com/r/zigzag-story-section.json"
+      ],
+      "dependencies": [
+        "lucide-react"
+      ],
+      "files": [
+        {
+          "path": "registry/askewly/marketing-landing/comparison-section.tsx",
+          "type": "registry:component"
+        },
+        {
+          "path": "registry/askewly/marketing-landing/cta-section.tsx",
+          "type": "registry:component"
+        },
+        {
+          "path": "registry/askewly/marketing-landing/data.json",
+          "type": "registry:file"
+        },
+        {
+          "path": "registry/askewly/marketing-landing/demo-section.tsx",
+          "type": "registry:component"
+        },
+        {
+          "path": "registry/askewly/marketing-landing/faq-section.tsx",
+          "type": "registry:component"
+        },
+        {
+          "path": "registry/askewly/marketing-landing/footer-section.tsx",
+          "type": "registry:component"
+        },
+        {
+          "path": "registry/askewly/marketing-landing/hero-section.tsx",
+          "type": "registry:component"
+        },
+        {
+          "path": "registry/askewly/marketing-landing/logo-strip-section.tsx",
+          "type": "registry:component"
+        },
+        {
+          "path": "registry/askewly/marketing-landing/page.tsx",
+          "type": "registry:component"
+        },
+        {
+          "path": "registry/askewly/marketing-landing/pricing-section.tsx",
+          "type": "registry:component"
+        },
+        {
+          "path": "registry/askewly/marketing-landing/story-section.tsx",
+          "type": "registry:component"
+        }
+      ]
+    },
+    {
       "name": "zigzag-story-section",
       "type": "registry:block",
       "title": "Zigzag Story Section",

@@ -49,7 +49,7 @@ Status: approved (사용자 승인 2026-08-04 "ㄱㄱ" — 결정 A 표준 퍼�
   - Failure probe: 코드 레포는 MIT 인데 마케팅 블록만 유료 상품(pro 티어)인 후보 — 파일·상품 페이지 단위로 라이선스 확인, 불명확하면 기각(추정 채택 금지).
   - Commit: changeset `20260804-m27-marketing-landing-block` (README 절: step-1).
 
-- [ ] **step-2 — marketing-landing 블록 소스 + registry 등재 + 사이트 데모**
+- [x] **step-2 — marketing-landing 블록 소스 + registry 등재 + 사이트 데모**
   - Artifact: ① `examples/ui-vocabulary-site/src/components/blocks/marketing-landing/` — step-1 베이스에서 출발(외부 흡수 시 파일 헤더 표기 + 시멘틱 토큰 restyle / 폴백 시 결정 B 세트 자체 조합): 섹션 파일 분리(hero·logo-strip·features·demo·comparison·pricing·faq·cta·footer) + 페이지 조립 파일 + mock 데이터 파일, 시멘틱 토큰만·라우팅 미결합 ② `registry.json` 항목 등재(`tier:"block"`·requiredCssVars) ③ block-contract §6 에 marketing-landing 행(구성·표기·요구 변수 + st4 재배열 가이드 절 백링크) ④ 사이트 블록 데모 렌더(기존 관례 경로) ⑤ llms 재생성.
   - Files: write examples/ui-vocabulary-site/src/components/blocks/marketing-landing/*.tsx. edit examples/ui-vocabulary-site/registry.json + 사이트 데모 등재 파일(기존 관례) + docs/design-system/block-contract.md.
   - Risk: 기계적 (신규 파일 위주 — 생성기·기존 asset 무변경. registry 재생성은 diff 0 게이트로 방어)
