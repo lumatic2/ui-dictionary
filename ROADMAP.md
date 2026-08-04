@@ -1,125 +1,27 @@
 # ROADMAP
 
 > Last updated: 2026-08-04
-> Status: **2026-08-04 goal `second-block-marketing` 착수 (M27 active)** — 두 번째 블록 marketing-landing(승인 완료). 직전: harvest 3연쇄+CLI 0.4.0 당일 6-goal 완주(registry 55·npm 라이브). 남은 큐: 킥스타트 기본값 폴리싱(M19 finding) · CLI verify chart.tsx 오탐 patch(0.4.x) · 『인터랙티브 웹 애니메이션』 책 스터디(사용자 주도) · dark/light 테마 SSOT 파생 · D2 Presenton 벤치 · Around 재판정.
+> Status: **2026-08-04 goal `second-block-marketing` 완주 (M27)** — 블록 2호 marketing-landing: harvest asset 9종 자체 재조합(registry 56)·킥스타트 이식 E2E·사용자 관측 통과. 첫 "산출물→저장고→재조합" 전 구간 완주. active goal 0. 남은 큐: CLI 0.4.x 폴리싱(킥스타트 기본값 M19 + verify chart.tsx 오탐 + M27 finding 2건: 안내문 하드코딩·cva dep 누락) · 『인터랙티브 웹 애니메이션』 책 스터디(사용자 주도) · dark/light 테마 SSOT 파생 · D2 Presenton 벤치 · Around 재판정 · docs-site 블록(3호).
 > North star: Build Askewly Design as both a public reference website and an agent-usable implementation system.
 > line budget: <=150
 
 ## Current Goal
 
-<!-- harness:goal id="second-block-marketing" status="active" -->
-Goal: 두 번째 블록 marketing-landing — 블록 체계 복수화. 킥스타트 두 번째 선택지까지 이식 실증. 재료: st4 조합 패턴 12종 + registry 마케팅 asset 13종+.
+<!-- harness:goal id="second-block-marketing" status="completed" -->
+Goal: 두 번째 블록 marketing-landing — 블록 체계 복수화. closed 2026-08-04 — M27 단독(harvest asset 9종 자체 재조합 → registry 56, 킥스타트 이식 E2E·사용자 관측 통과, CLI finding 2건 0.4.x 큐 적재). Details: `evidence/second-block-marketing/m27-marketing-landing.md` + `docs/reports/2026-08-04-m27-marketing-landing-block.md`.
 
 ## Active Milestones — second-block-marketing
 
-<!-- harness:milestone id="M27" status="active" priority="P1" evidence="evidence/second-block-marketing/m27-marketing-landing.md" -->
-### M27 — marketing-landing 블록 — 실사·구현·킥스타트 이식 실증
-- DoD: 외부 실사·베이스 판정 기록 + 블록 registry·block-contract §6·사이트 데모 등재 + 신선 프로젝트 킥스타트 1커맨드 이식(restyle·verify 0건·브라우저 스모크) + 사용자 관측 1회. 실패 모드 = 기존 자산 재생성 diff 0.
-- Gap: 블록 등급이 saas-app-shell 1종 — 사례일 뿐 체계가 아니다. 마케팅 재료(st4·asset)는 있는데 조합 실물이 없다.
-- Plan: plans/2026-08-04-m27-marketing-landing-block.md
-- Status: [ ]
-
-<!-- harness:goal id="harvest-batch4-release" status="completed" -->
-Goal: harvest 배치 4 + CLI 0.4.0 출고. closed 2026-08-04 — M25(실물 7 등재 → registry 55) + M26(npm 0.4.0 Trusted Publishing·레포 밖 킥스타트 라이브 실증) 연쇄 완주. Details: `evidence/harvest/m2{5,6}-*.md` + `docs/reports/2026-08-04-m2{5,6}-*.md`.
-
 ## Active Milestones — harvest-batch4-release
-
-<!-- harness:milestone id="M25" status="completed" priority="P1" evidence="evidence/harvest/m25-batch4.md" -->
-### M25 — harvest 배치 4 — 이월 재고 완주 (three.js 씬·Palette Generator·Cursor Field·brain 모달/HUD)
-- DoD: 실물 7 전건 등재(registry 48→55) + 착지별 게이트 전 구간 + 신선 E2E 1회(three 렌더·상호작용 실발화·시간차) + 사용자 관측 1회.
-- Gap: M22 이월 C1·C2·C5 — 난도 중상이라 배치 1~3에서 제외됐던 마지막 재고.
-- Plan: archive/plans/2026-08-04-m25-harvest-batch4.md
-- Status: [x]
-- Completed at: 2026-08-04
-- Summary: 실물 7 등재(registry 55 — three 씬 2·팔레트 2·커서 필드·brain 모달/HUD)·게이트 2경로 첫 소비+react-dom 기본 표면·신선 E2E 실발화·사용자 관측 통과. 보고: docs/reports/2026-08-04-m25-harvest-batch4.md
-
-<!-- harness:milestone id="M26" status="completed" priority="P1" evidence="evidence/harvest/m26-cli-040.md" -->
-### M26 — CLI 0.4.0 출고 — 킥스타트 라이브 소비 마개
-- DoD: npm 0.4.0 라이브 + 레포 밖 실증 2종(verify exit 계약·킥스타트 라이브 소비) + 절차 정본 실적 추기.
-- Gap: npm 0.3.0 에는 init --block·cosmos 부재 — 킥스타트가 로컬 한정.
-- Plan: archive/plans/2026-08-04-m26-cli-release-040.md
-- Status: [x]
-- Completed at: 2026-08-04
-- Summary: npm 0.4.0 출고(워크플로 1회 통과)·레포 밖 실증 2종(verify exit 계약·킥스타트 라이브 34파일 이식 verify PASS — cosmos #3E5F94 왕복). 보고: docs/reports/2026-08-04-m26-cli-release-040.md
-
-<!-- harness:goal id="harvest-batch3" status="completed" -->
-Goal: harvest 배치 3 — 본체 미등재 재고 회수 + motion 의존 게이트 확장. closed 2026-08-04 — M24 단독(자산 10 등재 → registry 48 + knowledge 1 + 게이트 2경로 확장, 신선 E2E 상호작용 실발화 6종·사용자 관측 통과). Details: `evidence/harvest/m24-batch3.md` + `docs/reports/2026-08-04-m24-harvest-batch3.md`.
 
 ## Active Milestones — harvest-batch3
 
-<!-- harness:milestone id="M24" status="completed" priority="P1" evidence="evidence/harvest/m24-batch3.md" -->
-### M24 — harvest 배치 3 — 본체 미등재 재고 회수 + motion 의존 게이트 확장
-- DoD: 집행 10건 전건 착지(자산 10 등재 — 부속 device-frame 포함 + knowledge 1) + 게이트 확장 자기시험 3건 + 통합 E2E 1회(시간차 실측) + 사용자 관측 1회 + 잔여 이월 명시.
-- Gap: 본체 소스에 실존하는 미등재 재고 9건 + 모션 계열 자산의 registry 진입로 부재(purity gate 가 motion/react·등재 자산 참조를 차단).
-- Plan: archive/plans/2026-08-04-m24-harvest-batch3.md
-- Status: [x]
-- Completed at: 2026-08-04
-- Summary: 마이크로 인터랙션 6종+device-frame+추출 데모 3종 등재(registry 48)·graph-content-schema knowledge·plain-asset 게이트 2경로 확장(자기시험 3 FAIL 적발)·신선 E2E 상호작용 실발화 6종·사용자 관측 통과. 보고: docs/reports/2026-08-04-m24-harvest-batch3.md
-
-<!-- harness:goal id="harvest-deep" status="completed" -->
-Goal: 소스 레벨 재채굴(harvest-deep). closed 2026-08-04 — M22(채굴 14/14+증보 ~40·착지 판정·2차 라운드) + M23(확정 12건 집행: asset 8종·cosmos 팔레트 프리셋·knowledge 2편·head-meta 계약, 신선 E2E 시간차 검증·사용자 관측 통과) 연쇄 완주. Details: `evidence/harvest/` + `docs/reports/2026-08-04-m2{2,3}-*.md`.
-
 ## Active Milestones — harvest-deep
-
-<!-- harness:milestone id="M22" status="completed" priority="P1" evidence="evidence/harvest/m22-mining.md" -->
-### M22 — 소스 레벨 재료 채굴 — 5 표면 코드 채굴 장부 + 착지 판정
-- DoD: 지목 재료 14건 전건 채굴 카드(실코드 파일:라인 인용) + 착지 판정표 + 사용자 확정 1회. 실패 모드 = 소스-라이브 불일치 명시 기록.
-- Gap: M20 은 라이브 겉면 관측 — 코드 속 재료(토큰·모션·기법)가 판정 밖에 남았다.
-- Plan: archive/plans/2026-08-04-m22-harvest-mining.md
-- Status: [x]
-- Completed at: 2026-08-04
-- Summary: 1차 채굴 14/14+증보 11 + 2차 증보 ~30(미등재 6종·head 메타 6표면) → 사용자 확정 집행 12건(A7+B1~B3+B5). 보고: docs/reports/2026-08-04-m22-harvest-mining.md
-
-<!-- harness:milestone id="M23" status="completed" priority="P1" evidence="evidence/harvest/m23-batch2.md" -->
-### M23 — harvest 배치 2 — M22 확정 목록 승격 집행
-- DoD: 확정 배치 전건 승격(착지별 게이트: diff 0·purity·build/lint·llms-sync·신선 E2E) + 통합 E2E 1회 + 사용자 관측 1회 + 잔여 이월 명시.
-- Gap: 계약은 있는데 배치 반복 실적이 1회(2건)뿐.
-- Plan: archive/plans/2026-08-04-m23-harvest-batch2.md
-- Status: [x]
-- Completed at: 2026-08-04
-- Summary: 확정 12건 전건 승격(asset 8·cosmos·knowledge 2·head-meta) + 신선 E2E 시간차 검증 + 사용자 관측 통과. 보고: docs/reports/2026-08-04-m23-harvest-batch2.md
-
-<!-- harness:goal id="harvest" status="completed" -->
-Goal: 회수 루프(하베스트) — 산출물→저장고 입력 루프. closed 2026-08-04 — M20(전수 teardown 29·사용자 풀 확정) + M21(회수 계약 정본화·첫 승격 zigzag-story-section·terminal-demo-panel) 연쇄 완주. Details: `evidence/harvest/` + `docs/reports/2026-08-04-m2{0,1}-*.md`.
 
 ## Active Milestones — harvest
 
-<!-- harness:milestone id="M20" status="completed" priority="P1" evidence="evidence/harvest/m20-teardown.md" -->
-### M20 — 산출물 전수 teardown — 배포 표면 29종 실사 + harvest 후보 장부
-- DoD: census 29 표면 ↔ teardown 카드 1:1 전건(누락 0) + 판정 축 3항 전건 + 후보 순위표 + 사용자 확정 1회. 실패 모드 검증 = 죽은 표면 2건이 실측 코드와 함께 사망 카드로 기록.
-- Gap: 회수할 재료의 실태 미조사 — 계약 설계가 실물 없이 공중에 뜬다.
-- Plan: archive/plans/2026-08-04-m20-harvest-teardown.md
-- Status: [x]
-- Completed at: 2026-08-04
-- Summary: census 29→teardown 카드 29(워커 6기·표본 재검 일치)→사용자 풀 확정 7 표면(askewly.com·brain·guide·dev·bootcamp·sixsense·본체). 보고: docs/reports/2026-08-04-m20-harvest-teardown.md
-
-<!-- harness:milestone id="M21" status="completed" priority="P1" evidence="evidence/harvest/m21-contract.md" -->
-### M21 — 회수 계약(하베스트) 정본화 + 첫 승격 실증
-- DoD: harvest-contract.md llms 실등재 + M20 확정 후보 ≥1건 승격이 [기존 자산 diff 0·purity·build/lint·신선 프로젝트 E2E] 전 구간 통과 + 사용자 관측 1회.
-- Gap: 산출물→자산 승격의 반복 가능한 경로 부재 — 매번 일회성 수작업.
-- Plan: archive/plans/2026-08-04-m21-harvest-contract.md
-- Status: [x]
-- Completed at: 2026-08-04
-- Summary: harvest-contract.md llms 등재 + 승격 2건(meta.harvest 출처) + 신선 E2E(실결함 1 적발·수정) + 사용자 관측 통과. 보고: docs/reports/2026-08-04-m21-harvest-contract.md
-
-<!-- harness:goal id="reusable-composition" status="completed" -->
-Goal: 재사용 조합 — 블록 자산 등급 + 원커맨드 킥스타트로 착수 기본값을 "잘 만들어진 수준"으로. closed 2026-08-04 — M18(블록 정본화·saas-app-shell 흡수 구현·신선 이식 실증) + M19(init --block 원커맨드·E2E 사용자 관측 통과) 연쇄 완주. Details: `evidence/reusable-composition/` + `docs/reports/2026-08-04-m{18,19}-*.md`.
-
 ## Active Milestones — reusable-composition
 
-<!-- harness:milestone id="M19" status="completed" priority="P1" evidence="evidence/reusable-composition/m19-kickstart.md" -->
-### M19 — 킥스타트 원커맨드 (브리프→DESIGN.md→블록 이식→검증 일괄)
-- DoD: `npx @askewly/design init --block saas-app-shell` 1회로 축약 브리프→DESIGN.md→토큰→이식→restyle 대조→verify 전 구간이 수동 개입 없이 닫히고 사용자 관측 통과. 회귀 = 기존 CLI 명령 무변경.
-- Gap: 부트스트랩이 다단 fetch 낱개 절차 — 착수 마찰로 실전 우회 위험.
-- Plan: plans/2026-08-04-m19-kickstart-command.md
-- Status: [x]
-
-<!-- harness:goal id="figma-return-path" status="completed" -->
-Goal: Figma 귀환 경로 — 왕복(코드→Figma→사람 디테일링→코드 회수)을 반복 가능한 능력으로. closed 2026-08-02 — M14(채널 복구·재동기화 rem 보수·스냅숏 장부/diff 기계화·왕복 2회차 무변경 0/0/0) + M15(계약 §3 두 lane 정본화·llms 등재·figma-codex-workflow promoted 배포) 연쇄 완주. Details: `evidence/figma-return-path/` + `docs/reports/2026-08-02-m{14,15}-*.md`.
-
-- Completed at: 2026-08-04
-- Evidence: evidence/reusable-composition/m19-kickstart.md
-- Summary: init --block 원커맨드(브리프→DESIGN.md→토큰층→재귀 이식→요구변수 대조→verify) + E2E 사용자 관측 통과
 ## Active Milestones — media-unification
 
 ## Active Milestones — figma-return-path

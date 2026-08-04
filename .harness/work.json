@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "active_work_id": "m25-harvest-batch4",
+  "active_work_id": "m27-marketing-landing-block",
   "works": {
     "SFB1": {
       "title": "Structure Contract And Clean Production",
@@ -5630,6 +5630,54 @@
       "updated_at": "2026-08-04",
       "notes": "Registered atomically by canonical harness approve_harness_plan.py after plan validation.",
       "completion_summary": "- **registry 48 → 55 (+7)**: glow-points-scene+impl(brain three.js — Points 단일 드로우콜 셰이더·발광 엣지·UnrealBloom, lazy 분리·WebGL 폴백) · palette-generator-core+color-palette-generator(코어 lib 정본 이전+도구 추출) · curs"
+    },
+    "m27-marketing-landing-block": {
+      "work_id": "m27-marketing-landing-block",
+      "milestone_id": "M27",
+      "status": "completed",
+      "plan_path": "plans/2026-08-04-m27-marketing-landing-block.md",
+      "changeset_path": "changesets/20260804-m27-marketing-landing-block",
+      "next_step": "step-1",
+      "current_step": "step-1",
+      "steps": [
+        {
+          "id": "step-1",
+          "label": "step-1 — 외부 공개 마케팅 랜딩 블록 실사 + 베이스·구성 확정 (흡수 우선)"
+        },
+        {
+          "id": "step-2",
+          "label": "step-2 — marketing-landing 블록 소스 + registry 등재 + 사이트 데모"
+        },
+        {
+          "id": "step-3",
+          "label": "step-3 — 킥스타트 통합 E2E + evidence + 사용자 관측"
+        }
+      ],
+      "execution_mode": "continuous",
+      "approval": {
+        "approved_by": "user",
+        "approved_at": "2026-08-04",
+        "plan_sha256": "70ee85e3ea97fa55e075a494f38fc80ddef16a782b647ebf169a1f8f9c81b15f"
+      },
+      "allowed_stop_reasons": [
+        "completed",
+        "blocked",
+        "decision_required",
+        "risk_gate",
+        "secret_required",
+        "external_authority_required",
+        "user_stopped"
+      ],
+      "stop_reason": null,
+      "stop_detail": {},
+      "session_ids": [
+        "codex:3590ac26-d480-4b13-a740-4dbc89fa2958",
+        "claude:3590ac26-d480-4b13-a740-4dbc89fa2958"
+      ],
+      "owner_session_uuid": "claude:3590ac26-d480-4b13-a740-4dbc89fa2958",
+      "updated_at": "2026-08-04",
+      "notes": "Registered atomically by canonical harness approve_harness_plan.py after plan validation.",
+      "completion_summary": "블록 2호 marketing-landing — harvest asset 9종 자체 재조합, registry 56, 킥스타트 이식·사용자 관측 통과"
     }
   }
 }

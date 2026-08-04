@@ -813,3 +813,49 @@ plan doc: `archive/plans/2026-07-21-eu*.md` · 증거: `evidence/editor-legibili
   - Completed: 2026-08-04
   - Result: 판정 C(보류) — absorption-criteria 행·around t2 ledger·재판정 조건. goal 마감(push 승인 대기)
   - Evidence: evidence/reference-diversification-2/m11-around-catalog-absorption.md
+
+### 2026-08
+- M27 - M27 — marketing-landing 블록 — 실사·구현·킥스타트 이식 실증
+  - Completed: 2026-08-04
+  - Result: 블록 2호 marketing-landing — harvest asset 9종 자체 재조합(registry 56)·킥스타트 이식 E2E·사용자 관측 통과. 보고: docs/reports/2026-08-04-m27-marketing-landing-block.md
+  - Evidence: evidence/second-block-marketing/m27-marketing-landing.md
+
+- M25 - M25 — harvest 배치 4 — 이월 재고 완주 (three.js 씬·Palette Generator·Cursor Field·brain 모달/HUD)
+  - Completed: 2026-08-04
+  - Result: 실물 7 등재(registry 55 — three 씬 2·팔레트 2·커서 필드·brain 모달/HUD)·게이트 2경로 첫 소비+react-dom 기본 표면·신선 E2E 실발화·사용자 관측 통과. 보고: docs/reports/2026-08-04-m25-harvest-batch4.md
+  - Evidence: evidence/harvest/m25-batch4.md
+
+- M26 - M26 — CLI 0.4.0 출고 — 킥스타트 라이브 소비 마개
+  - Completed: 2026-08-04
+  - Result: npm 0.4.0 출고(워크플로 1회 통과)·레포 밖 실증 2종(verify exit 계약·킥스타트 라이브 34파일 이식 verify PASS — cosmos #3E5F94 왕복). 보고: docs/reports/2026-08-04-m26-cli-release-040.md
+  - Evidence: evidence/harvest/m26-cli-040.md
+
+- M24 - M24 — harvest 배치 3 — 본체 미등재 재고 회수 + motion 의존 게이트 확장
+  - Completed: 2026-08-04
+  - Result: 마이크로 인터랙션 6종+device-frame+추출 데모 3종 등재(registry 48)·graph-content-schema knowledge·plain-asset 게이트 2경로 확장(자기시험 3 FAIL 적발)·신선 E2E 상호작용 실발화 6종·사용자 관측 통과. 보고: docs/reports/2026-08-04-m24-harvest-batch3.md
+  - Evidence: evidence/harvest/m24-batch3.md
+
+- M22 - M22 — 소스 레벨 재료 채굴 — 5 표면 코드 채굴 장부 + 착지 판정
+  - Completed: 2026-08-04
+  - Result: 1차 채굴 14/14+증보 11 + 2차 증보 ~30(미등재 6종·head 메타 6표면) → 사용자 확정 집행 12건(A7+B1~B3+B5). 보고: docs/reports/2026-08-04-m22-harvest-mining.md
+  - Evidence: evidence/harvest/m22-mining.md
+
+- M23 - M23 — harvest 배치 2 — M22 확정 목록 승격 집행
+  - Completed: 2026-08-04
+  - Result: 확정 12건 전건 승격(asset 8·cosmos·knowledge 2·head-meta) + 신선 E2E 시간차 검증 + 사용자 관측 통과. 보고: docs/reports/2026-08-04-m23-harvest-batch2.md
+  - Evidence: evidence/harvest/m23-batch2.md
+
+- M20 - M20 — 산출물 전수 teardown — 배포 표면 29종 실사 + harvest 후보 장부
+  - Completed: 2026-08-04
+  - Result: census 29→teardown 카드 29(워커 6기·표본 재검 일치)→사용자 풀 확정 7 표면(askewly.com·brain·guide·dev·bootcamp·sixsense·본체). 보고: docs/reports/2026-08-04-m20-harvest-teardown.md
+  - Evidence: evidence/harvest/m20-teardown.md
+
+- M21 - M21 — 회수 계약(하베스트) 정본화 + 첫 승격 실증
+  - Completed: 2026-08-04
+  - Result: harvest-contract.md llms 등재 + 승격 2건(meta.harvest 출처) + 신선 E2E(실결함 1 적발·수정) + 사용자 관측 통과. 보고: docs/reports/2026-08-04-m21-harvest-contract.md
+  - Evidence: evidence/harvest/m21-contract.md
+
+- M19 - M19 — 킥스타트 원커맨드 (브리프→DESIGN.md→블록 이식→검증 일괄)
+  - Completed: 2026-08-04
+  - Result: init --block 원커맨드(브리프→DESIGN.md→토큰층→재귀 이식→요구변수 대조→verify) + E2E 사용자 관측 통과
+  - Evidence: evidence/reusable-composition/m19-kickstart.md

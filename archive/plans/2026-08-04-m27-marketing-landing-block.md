@@ -58,7 +58,7 @@ Status: approved (사용자 승인 2026-08-04 "ㄱㄱ" — 결정 A 표준 퍼�
   - Failure probe: 구성 asset 의 props 계약이 랜딩 맥락과 불일치(예: hero 계열의 고정 카피 슬롯) — 원 asset 무수정, 블록 내 어댑터로 흡수하고 §6 레이아웃 계약에 기록. 외부 베이스 import 표면이 purity gate 밖이면 dependencies 선언으로 통과시키고 안 되는 결합은 절단(게이트 완화 금지).
   - Commit: changeset (README 절: step-2).
 
-- [ ] **step-3 — 킥스타트 통합 E2E + evidence + 사용자 관측**
+- [x] **step-3 — 킥스타트 통합 E2E + evidence + 사용자 관측**
   - Artifact: scratchpad 신선 디렉터리에서 로컬 서빙(기술 결정 ④ 커맨드) 기동 후 `npx @askewly/design init <dir> --block marketing-landing --registry http://127.0.0.1:8899 --yes`(+비-cosmos 팔레트 1종) 1커맨드 → 이식·requiredCssVars 대조·verify 0건 → dev 서버 실브라우저 스모크(전 섹션 렌더·모션 실발화·콘솔 에러 0·라이트/다크 스크린샷) → `evidence/second-block-marketing/m27-marketing-landing.md`(이식 로그·스크린샷 경로·판정) → **사용자 관측 1회**(사이트 데모 또는 E2E 산출물 실화면).
   - Files: write evidence/second-block-marketing/m27-marketing-landing.md. scratchpad(신선 프로젝트 — 레포 밖).
   - Risk: 기계적 (검증 — 레포 변경은 evidence 만)
