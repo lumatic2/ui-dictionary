@@ -23,3 +23,9 @@
 - `@/lib/palette-generator`(354줄) → `palette-generator-core.tsx` 정본 이전(구 경로 re-export shim, 중복 사본 0) + home-page 의 생성기 데모·헬퍼 836줄 → `color-palette-generator.tsx` 추출(코어 참조·훅 인라인·keyframe 원본값 그대로 cpg-* 스코프 내장). home-page·colors-page import 전환, registry +2 (55) — 도구 regDeps `[/r/palette-generator-core.json]`.
 - 게이트 부수 확장: `react-dom` 을 기본 표면(ALLOWED)에 추가 — react 와 동봉 보장(flushSync). dependencies 산출에서도 제외.
 - 검증: tsc 무오류 · 순수 추가 2 · lint 0 violations · build 759 routes · Colors 페이지 로컬 vs 라이브 풀페이지 시각 동일 · 상호작용 실발화: Generate FF99C8→12130F 교체 / 잠금 후 재생성 생존 / 셰이드 패널 열림(Apply shade 10단) / 복사 토스트 "Color copied to clipboard".
+
+## step-5 — 통합 E2E + 사용자 관측
+
+- fresh 프로젝트에 신규 7종 정식 fetch(로컬 registry :8931 — regDeps 체인: wrapper→impl·도구→코어·모달→button/input 전건 해석) + three 설치. tsc 무오류·콘솔 에러 0.
+- 시간차 풀페이지 2장(t=2.5s/7.5s — 씬 궤도·배치 1~3 자산 공존) + 팔레트 Generate 실발화(FF99C8→12130F)·커서 필드 점등 41·씬 canvas 마운트.
+- 관측 보드 갱신(artifact 5ae085df — M25 섹션·발광 씬 실렌더·통합 갤러리). 이월 잔여 명시: brain 2D 폴백·3D 라벨 오버랩 회피·씬 raycast(소비자 몫).

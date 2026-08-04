@@ -100,3 +100,5 @@ Status: approved (사용자 승인 2026-08-04 "ㄱㄱ" — M25+M26 연쇄)
 
 - 2026-08-04 · 계획 작성 — 실측: lazy-three-object-scene 선례(dynamic import 분리) 확인, colors-page 가 generator Demo+헬퍼 소비 확인, palette-generator lib 354줄, CLI 0.3.0(소스)=출고 대상 아님(M26 소관).
 - 2026-08-04 · fresh 검증자 반영 3건 — 의존 간선 정정(2·3·4 상호 무의존), 재생성 장벽=최종 확인 1회 명시, WebGL 폴백 probe 를 getContext 스텁으로 결정화.
+- 2026-08-04 · step-1~4 완료 — 563ed27·cca700f·dd5b321·8b9a490. registry 48→55, react-dom 기본 표면 편입(발견: flushSync — react 동봉 보장이라 선언 불요 판정).
+- 2026-08-04 · step-5 E2E 완료 — 7종 fetch(의존 체인 전건 해석)·tsc 0·콘솔 0·시간차 2장·실발화(팔레트/커서/씬). 사용자 관측 대기(보드 갱신).
