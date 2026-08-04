@@ -198,6 +198,102 @@
           "harvestedAt": "2026-08-04"
         }
       }
+    },
+    {
+      "name": "logo-marquee",
+      "title": "Logo Marquee",
+      "description": "A logo marquee loops brand names in a seamless horizontal strip: the list is doubled and translated to -50% so the loop has no visible seam, duration scales with item count so adding brands never changes perceived speed, edges fade with a mask, hover pauses, and prefers-reduced-motion stops it. Pure CSS animation — not a carousel and not for interactive content.",
+      "meta": {
+        "harvest": {
+          "origin": "ai-bootcamp-2026 brand-marquee",
+          "liveUrl": "https://bootcamp.askewly.com/",
+          "harvestedAt": "2026-08-04"
+        }
+      }
+    },
+    {
+      "name": "rotating-label",
+      "title": "Rotating Label",
+      "description": "A rotating label cycles one word slot inside a headline through a list of values using a React key-remount plus a single CSS keyframe — no JS tween. A fixed ch width keeps the sentence still while label lengths change, and a visually hidden live region mirrors values for screen readers. For one emphasized slot, not full-sentence carousels.",
+      "meta": {
+        "harvest": {
+          "origin": "ai-bootcamp-2026 rotating-label",
+          "liveUrl": "https://bootcamp.askewly.com/",
+          "harvestedAt": "2026-08-04"
+        }
+      }
+    },
+    {
+      "name": "cursor-proximity-glow",
+      "title": "Cursor Proximity Glow",
+      "description": "Cursor proximity glow lights up marked elements as the pointer nears them: one document-level pointermove writes per-element --cursor-x/y custom properties and toggles a data attribute, and a pure CSS radial-gradient overlay renders the glow — zero React re-renders on the hot path. Decoration only: touch and keyboard users see resting states with no meaning lost.",
+      "meta": {
+        "harvest": {
+          "origin": "ui.askewly.com FloatingField reveal",
+          "liveUrl": "https://ui.askewly.com/",
+          "harvestedAt": "2026-08-04"
+        }
+      }
+    },
+    {
+      "name": "floating-bars-hero",
+      "title": "Floating Bars Hero",
+      "description": "A floating bars hero centers a balanced title, supporting line, and action slot over a field of scattered vertical bars and a faint plus-grid. Bars are positioned data (pass your own coordinates), tones derive from foreground/primary mixes so both themes work, and the field fades toward content. For landing openings that want texture without imagery.",
+      "meta": {
+        "harvest": {
+          "origin": "ui.askewly.com landing hero + FloatingField",
+          "liveUrl": "https://ui.askewly.com/",
+          "harvestedAt": "2026-08-04"
+        }
+      }
+    },
+    {
+      "name": "typing-headline",
+      "title": "Typing Headline",
+      "description": "A typing headline types one slot of a sentence character-by-character with a caret, holds, then cycles to the next value. The slot is fixed-width (sized to the longest value) and right-aligned so the surrounding words never shift. Screen readers get the complete sentence via a live mirror; reduced-motion swaps without typing.",
+      "meta": {
+        "harvest": {
+          "origin": "upstage-sixsense hero typing counter",
+          "liveUrl": "https://sixsense.askewly.com/",
+          "harvestedAt": "2026-08-04"
+        }
+      }
+    },
+    {
+      "name": "contrast-duo-card",
+      "title": "Contrast Duo Card",
+      "description": "A contrast duo card tells a before/after or problem/answer comparison as exactly two cards with identical internal hierarchy — muted label, bold headline, supporting line, optional visual band — where one side may invert onto the foreground ground to sharpen the contrast. The repeated rhythm is what makes the comparison legible; not a feature grid.",
+      "meta": {
+        "harvest": {
+          "origin": "upstage-sixsense .duo cards",
+          "liveUrl": "https://sixsense.askewly.com/",
+          "harvestedAt": "2026-08-04"
+        }
+      }
+    },
+    {
+      "name": "graph-legend-panel",
+      "title": "Graph Legend Panel",
+      "description": "A graph legend panel is the sidebar of a data-graph view where every row is both a color key and a filter toggle: dot, label, and count badge. Toggled-off categories dim but keep their counts so totals stay auditable. Category colors arrive as data from the consumer's palette — the panel owns layout and interaction only.",
+      "meta": {
+        "harvest": {
+          "origin": "second-brain/poc-graph legend sidebar",
+          "liveUrl": "https://brain.askewly.com/",
+          "harvestedAt": "2026-08-04"
+        }
+      }
+    },
+    {
+      "name": "ask-input-bar",
+      "title": "Ask Input Bar",
+      "description": "An ask input bar is a single centered question field floating over an exploratory surface (graph, map, document). Its defining state is locked: exploration stays open to everyone while asking requires sign-in, and the bar communicates that policy itself — lock icon, read-only field, and a hint that routes to sign-in instead of a dead control.",
+      "meta": {
+        "harvest": {
+          "origin": "second-brain/poc-graph ask bar",
+          "liveUrl": "https://brain.askewly.com/",
+          "harvestedAt": "2026-08-04"
+        }
+      }
     }
   ]
 }

@@ -1,0 +1,23 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "graph-legend-panel",
+  "type": "registry:block",
+  "title": "Graph Legend Panel",
+  "description": "A graph legend panel is the sidebar of a data-graph view where every row is both a color key and a filter toggle: dot, label, and count badge. Toggled-off categories dim but keep their counts so totals stay auditable. Category colors arrive as data from the consumer's palette — the panel owns layout and interaction only.",
+  "meta": {
+    "harvest": {
+      "origin": "second-brain/poc-graph legend sidebar",
+      "liveUrl": "https://brain.askewly.com/",
+      "harvestedAt": "2026-08-04"
+    }
+  },
+  "registryDependencies": [],
+  "dependencies": [],
+  "files": [
+    {
+      "path": "registry/askewly/graph-legend-panel/graph-legend-panel.tsx",
+      "type": "registry:component",
+      "content": "// Harvested from second-brain/poc-graph legend & filter sidebar\n// (brain.askewly.com), 2026-08-04 (docs/design-system/harvest-contract.md §4).\n// Category colors are data (consumer-owned palette), not styling literals.\n\nexport type LegendEntry = {\n  id: string\n  label: string\n  /** Any CSS color the consumer's palette defines for this category. */\n  color: string\n  count: number\n  active: boolean\n}\n\ntype GraphLegendPanelProps = {\n  title: string\n  /** e.g. \"161 notes · 534 connections\". */\n  meta?: string\n  entries: LegendEntry[]\n  onToggle: (id: string) => void\n}\n\n/**\n * Graph legend panel: the sidebar of a data-graph view — a titled legend\n * where every row is simultaneously a color key and a filter toggle (dot,\n * label, count badge). Toggled-off categories dim but keep their count so\n * the totals stay auditable. Category colors arrive as data from the\n * consumer's palette; the panel owns layout and interaction only.\n */\nexport function GraphLegendPanel({ title, meta, entries, onToggle }: GraphLegendPanelProps) {\n  return (\n    <aside className=\"w-64 rounded-lg border bg-card p-4 text-card-foreground\">\n      <h2 className=\"text-sm font-semibold\">{title}</h2>\n      {meta ? <p className=\"mt-0.5 font-mono text-xs text-muted-foreground\">{meta}</p> : null}\n      <ul className=\"mt-3 space-y-1\">\n        {entries.map((entry) => (\n          <li key={entry.id}>\n            <button\n              type=\"button\"\n              onClick={() => onToggle(entry.id)}\n              aria-pressed={entry.active}\n              className={\n                entry.active\n                  ? \"flex w-full items-center gap-2 rounded-md px-2 py-1.5 text-left text-sm text-foreground hover:bg-muted focus-visible:outline-2 focus-visible:outline-ring\"\n                  : \"flex w-full items-center gap-2 rounded-md px-2 py-1.5 text-left text-sm text-muted-foreground opacity-50 hover:bg-muted focus-visible:outline-2 focus-visible:outline-ring\"\n              }\n            >\n              <span aria-hidden=\"true\" className=\"size-2.5 shrink-0 rounded-full\" style={{ backgroundColor: entry.color }} />\n              <span className=\"flex-1 truncate\">{entry.label}</span>\n              <span className=\"rounded bg-muted px-1.5 font-mono text-xs tabular-nums text-muted-foreground\">{entry.count}</span>\n            </button>\n          </li>\n        ))}\n      </ul>\n    </aside>\n  )\n}\n"
+    }
+  ]
+}

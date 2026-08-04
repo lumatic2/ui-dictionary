@@ -1,0 +1,23 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "rotating-label",
+  "type": "registry:block",
+  "title": "Rotating Label",
+  "description": "A rotating label cycles one word slot inside a headline through a list of values using a React key-remount plus a single CSS keyframe — no JS tween. A fixed ch width keeps the sentence still while label lengths change, and a visually hidden live region mirrors values for screen readers. For one emphasized slot, not full-sentence carousels.",
+  "meta": {
+    "harvest": {
+      "origin": "ai-bootcamp-2026 rotating-label",
+      "liveUrl": "https://bootcamp.askewly.com/",
+      "harvestedAt": "2026-08-04"
+    }
+  },
+  "registryDependencies": [],
+  "dependencies": [],
+  "files": [
+    {
+      "path": "registry/askewly/rotating-label/rotating-label.tsx",
+      "type": "registry:component",
+      "content": "import { useEffect, useState } from \"react\"\n\n// Harvested from ai-bootcamp-2026 rotating-label (bootcamp.askewly.com), 2026-08-04\n// (docs/design-system/harvest-contract.md §4). aria-live mirror added on promotion.\n\ntype RotatingLabelProps = {\n  labels: string[]\n  /** ms per label. Also the CSS animation duration, so swap and hold stay in sync. */\n  intervalMs?: number\n  /** Fixed slot width in ch — keeps layout still while label lengths change. */\n  widthCh?: number\n}\n\n/**\n * Rotating label: one word slot inside a headline cycles through values\n * (\"M\" → \"95\" → \"XL\"). The swap trick is a React `key` remount — each index\n * change mounts a fresh span whose CSS keyframe plays rise-in/rise-out once,\n * so there is no JS tween. A fixed `ch` width prevents layout shift between\n * short and long labels, and a visually-hidden live region mirrors the value\n * for screen readers. Under `prefers-reduced-motion` labels switch with no\n * animation.\n */\nexport function RotatingLabel({ labels, intervalMs = 1800, widthCh = 3.4 }: RotatingLabelProps) {\n  const [index, setIndex] = useState(0)\n\n  useEffect(() => {\n    if (labels.length < 2) return\n    const id = setInterval(() => setIndex((i) => (i + 1) % labels.length), intervalMs)\n    return () => clearInterval(id)\n  }, [labels.length, intervalMs])\n\n  if (labels.length === 0) return null\n  return (\n    <span className=\"inline-grid place-items-center overflow-hidden align-baseline\" style={{ width: `${widthCh}ch` }}>\n      <span\n        key={index}\n        className=\"inline-block animate-[label-swap_ease-in-out_both] motion-reduce:animate-none\"\n        style={{ animationDuration: `${intervalMs}ms` }}\n        aria-hidden=\"true\"\n      >\n        {labels[index]}\n      </span>\n      <span className=\"sr-only\" aria-live=\"polite\">\n        {labels[index]}\n      </span>\n      <style>{`@keyframes label-swap { 0% { opacity: 0; transform: translateY(0.5em); } 18%, 82% { opacity: 1; transform: translateY(0); } 100% { opacity: 0; transform: translateY(-0.5em); } }`}</style>\n    </span>\n  )\n}\n"
+    }
+  ]
+}

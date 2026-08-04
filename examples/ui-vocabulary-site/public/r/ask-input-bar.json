@@ -1,0 +1,25 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "ask-input-bar",
+  "type": "registry:block",
+  "title": "Ask Input Bar",
+  "description": "An ask input bar is a single centered question field floating over an exploratory surface (graph, map, document). Its defining state is locked: exploration stays open to everyone while asking requires sign-in, and the bar communicates that policy itself — lock icon, read-only field, and a hint that routes to sign-in instead of a dead control.",
+  "meta": {
+    "harvest": {
+      "origin": "second-brain/poc-graph ask bar",
+      "liveUrl": "https://brain.askewly.com/",
+      "harvestedAt": "2026-08-04"
+    }
+  },
+  "registryDependencies": [],
+  "dependencies": [
+    "lucide-react"
+  ],
+  "files": [
+    {
+      "path": "registry/askewly/ask-input-bar/ask-input-bar.tsx",
+      "type": "registry:component",
+      "content": "import { useState } from \"react\"\nimport { LockIcon, SendIcon } from \"lucide-react\"\n\n// Harvested from second-brain/poc-graph ask bar (brain.askewly.com),\n// 2026-08-04 (docs/design-system/harvest-contract.md §4). \"Explore for\n// everyone, ask after sign-in\" policy expressed as a locked state.\n\ntype AskInputBarProps = {\n  placeholder?: string\n  /** Locked bars render read-only with a lock affordance (e.g. guests). */\n  locked?: boolean\n  lockedHint?: string\n  onSubmit: (question: string) => void\n  /** Fired when a locked bar is activated — open your sign-in flow here. */\n  onLockedActivate?: () => void\n}\n\n/**\n * Ask input bar: a single centered question bar that floats over an\n * exploratory surface (a graph, a map, a document). Its distinguishing state\n * is `locked` — exploration stays open to everyone while asking requires\n * sign-in, and the bar itself communicates that policy: lock icon,\n * read-only field, and a hint instead of a dead control.\n */\nexport function AskInputBar({ placeholder, locked = false, lockedHint, onSubmit, onLockedActivate }: AskInputBarProps) {\n  const [draft, setDraft] = useState(\"\")\n  const canSend = !locked && draft.trim().length > 0\n\n  const submit = () => {\n    if (!canSend) return\n    onSubmit(draft.trim())\n    setDraft(\"\")\n  }\n\n  return (\n    <div className=\"w-full max-w-xl\">\n      <div\n        className={\n          locked\n            ? \"flex items-center gap-2 rounded-full border bg-muted px-4 py-2\"\n            : \"flex items-center gap-2 rounded-full border bg-background px-4 py-2 shadow-sm focus-within:ring-2 focus-within:ring-ring\"\n        }\n        onClick={locked ? onLockedActivate : undefined}\n      >\n        {locked ? <LockIcon aria-hidden=\"true\" className=\"size-4 shrink-0 text-muted-foreground\" /> : null}\n        <input\n          type=\"text\"\n          value={draft}\n          readOnly={locked}\n          onChange={(event) => setDraft(event.target.value)}\n          onKeyDown={(event) => {\n            if (event.key === \"Enter\") locked ? onLockedActivate?.() : submit()\n          }}\n          placeholder={locked ? (lockedHint ?? \"Sign in to ask\") : (placeholder ?? \"Ask anything about this graph\")}\n          aria-label=\"Ask a question\"\n          className=\"flex-1 bg-transparent text-sm text-foreground outline-none placeholder:text-muted-foreground\"\n        />\n        <button\n          type=\"button\"\n          onClick={locked ? onLockedActivate : submit}\n          disabled={!locked && !canSend}\n          aria-label={locked ? \"Sign in to ask\" : \"Send question\"}\n          className=\"rounded-full p-1.5 text-muted-foreground enabled:hover:bg-muted enabled:hover:text-foreground disabled:opacity-40 focus-visible:outline-2 focus-visible:outline-ring\"\n        >\n          <SendIcon className=\"size-4\" />\n        </button>\n      </div>\n    </div>\n  )\n}\n"
+    }
+  ]
+}

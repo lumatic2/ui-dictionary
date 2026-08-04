@@ -1,0 +1,23 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "typing-headline",
+  "type": "registry:block",
+  "title": "Typing Headline",
+  "description": "A typing headline types one slot of a sentence character-by-character with a caret, holds, then cycles to the next value. The slot is fixed-width (sized to the longest value) and right-aligned so the surrounding words never shift. Screen readers get the complete sentence via a live mirror; reduced-motion swaps without typing.",
+  "meta": {
+    "harvest": {
+      "origin": "upstage-sixsense hero typing counter",
+      "liveUrl": "https://sixsense.askewly.com/",
+      "harvestedAt": "2026-08-04"
+    }
+  },
+  "registryDependencies": [],
+  "dependencies": [],
+  "files": [
+    {
+      "path": "registry/askewly/typing-headline/typing-headline.tsx",
+      "type": "registry:component",
+      "content": "import { useEffect, useState } from \"react\"\n\n// Harvested from upstage-sixsense hero typing counter (sixsense.askewly.com),\n// 2026-08-04 (docs/design-system/harvest-contract.md §4).\n\ntype TypingHeadlineProps = {\n  /** Text before the typed slot. */\n  prefix?: string\n  /** Values typed into the slot, cycling. */\n  values: string[]\n  /** Text after the typed slot. */\n  suffix?: string\n  typeMs?: number\n  holdMs?: number\n  /** Slot width in ch — sized to the longest value to prevent layout shift. */\n  widthCh?: number\n}\n\n/**\n * Typing headline: one slot inside a headline types its value character by\n * character with a caret, holds, then retypes the next value. The slot has a\n * fixed `ch` width and right alignment so short values never shift the words\n * around them — the sentence stays still while only the number changes.\n * Screen readers get the full sentence via a live mirror; reduced-motion\n * shows values with no typing.\n */\nexport function TypingHeadline({ prefix, values, suffix, typeMs = 90, holdMs = 1600, widthCh }: TypingHeadlineProps) {\n  const [valueIndex, setValueIndex] = useState(0)\n  const [typedCount, setTypedCount] = useState(0)\n  const [reduced, setReduced] = useState(false)\n  const value = values[valueIndex % values.length] ?? \"\"\n  const slotWidth = widthCh ?? Math.max(...values.map((v) => v.length), 1) + 0.5\n\n  useEffect(() => {\n    const query = window.matchMedia(\"(prefers-reduced-motion: reduce)\")\n    const apply = () => setReduced(query.matches)\n    apply()\n    query.addEventListener(\"change\", apply)\n    return () => query.removeEventListener(\"change\", apply)\n  }, [])\n\n  useEffect(() => {\n    if (values.length === 0) return\n    const timers: ReturnType<typeof setTimeout>[] = []\n    if (reduced) {\n      setTypedCount(value.length)\n      timers.push(setTimeout(() => setValueIndex((i) => (i + 1) % values.length), holdMs + 1200))\n    } else {\n      setTypedCount(0)\n      for (let i = 1; i <= value.length; i++) timers.push(setTimeout(() => setTypedCount(i), typeMs * i))\n      timers.push(setTimeout(() => setValueIndex((i) => (i + 1) % values.length), typeMs * value.length + holdMs))\n    }\n    return () => timers.forEach(clearTimeout)\n  }, [valueIndex, reduced, values.length]) // eslint-disable-line react-hooks/exhaustive-deps\n\n  if (values.length === 0) return null\n  return (\n    <h1 className=\"break-keep text-3xl font-semibold tracking-tight text-foreground md:text-4xl\">\n      <span aria-hidden=\"true\">\n        {prefix}\n        <span className=\"inline-block text-right tabular-nums text-primary\" style={{ width: `${slotWidth}ch` }}>\n          {value.slice(0, typedCount)}\n          <span className=\"animate-pulse font-normal motion-reduce:hidden\">|</span>\n        </span>\n        {suffix}\n      </span>\n      <span className=\"sr-only\" aria-live=\"polite\">\n        {prefix}\n        {value}\n        {suffix}\n      </span>\n    </h1>\n  )\n}\n"
+    }
+  ]
+}

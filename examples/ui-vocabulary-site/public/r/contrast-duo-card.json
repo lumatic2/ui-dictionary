@@ -1,0 +1,23 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "contrast-duo-card",
+  "type": "registry:block",
+  "title": "Contrast Duo Card",
+  "description": "A contrast duo card tells a before/after or problem/answer comparison as exactly two cards with identical internal hierarchy — muted label, bold headline, supporting line, optional visual band — where one side may invert onto the foreground ground to sharpen the contrast. The repeated rhythm is what makes the comparison legible; not a feature grid.",
+  "meta": {
+    "harvest": {
+      "origin": "upstage-sixsense .duo cards",
+      "liveUrl": "https://sixsense.askewly.com/",
+      "harvestedAt": "2026-08-04"
+    }
+  },
+  "registryDependencies": [],
+  "dependencies": [],
+  "files": [
+    {
+      "path": "registry/askewly/contrast-duo-card/contrast-duo-card.tsx",
+      "type": "registry:component",
+      "content": "import type { ReactNode } from \"react\"\n\n// Harvested from upstage-sixsense .duo contrast cards (sixsense.askewly.com),\n// 2026-08-04 (docs/design-system/harvest-contract.md §4).\n\nexport type ContrastCard = {\n  /** Small muted eyebrow, e.g. \"지금은\" / \"한입지도라면\". */\n  label: string\n  headline: string\n  body?: string\n  /** Optional visual band under the copy (image, mini demo, illustration). */\n  visual?: ReactNode\n  /** Inverted card gets the ink treatment for contrast. */\n  inverted?: boolean\n}\n\n/**\n * Contrast duo card: a before/after (or problem/answer) pair told as two\n * cards with identical internal hierarchy — muted label, bold headline,\n * supporting line, optional visual band. The rhythm repeating across both\n * cards is what makes the contrast legible; one card may invert onto the\n * foreground ground to sharpen the \"after\". Not a feature grid — exactly two\n * sides of one comparison.\n */\nexport function ContrastDuoCard({ cards }: { cards: [ContrastCard, ContrastCard] }) {\n  return (\n    <div className=\"grid w-full max-w-3xl gap-4 md:grid-cols-2\">\n      {cards.map((card) => (\n        <article\n          key={card.label + card.headline}\n          className={\n            card.inverted\n              ? \"flex flex-col overflow-hidden rounded-lg bg-foreground p-6 text-background\"\n              : \"flex flex-col overflow-hidden rounded-lg border bg-card p-6 text-card-foreground\"\n          }\n        >\n          <p\n            className={\n              card.inverted\n                ? \"text-xs font-medium uppercase tracking-widest text-background/60\"\n                : \"text-xs font-medium uppercase tracking-widest text-muted-foreground\"\n            }\n          >\n            {card.label}\n          </p>\n          <h3 className=\"mt-2 break-keep text-lg font-semibold leading-snug\">{card.headline}</h3>\n          {card.body ? (\n            <p className={card.inverted ? \"mt-2 break-keep text-sm leading-relaxed text-background/75\" : \"mt-2 break-keep text-sm leading-relaxed text-muted-foreground\"}>\n              {card.body}\n            </p>\n          ) : null}\n          {card.visual ? <div className=\"mt-4 flex-1\">{card.visual}</div> : null}\n        </article>\n      ))}\n    </div>\n  )\n}\n"
+    }
+  ]
+}

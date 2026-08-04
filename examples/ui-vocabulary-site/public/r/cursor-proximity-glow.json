@@ -1,0 +1,23 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "cursor-proximity-glow",
+  "type": "registry:block",
+  "title": "Cursor Proximity Glow",
+  "description": "Cursor proximity glow lights up marked elements as the pointer nears them: one document-level pointermove writes per-element --cursor-x/y custom properties and toggles a data attribute, and a pure CSS radial-gradient overlay renders the glow — zero React re-renders on the hot path. Decoration only: touch and keyboard users see resting states with no meaning lost.",
+  "meta": {
+    "harvest": {
+      "origin": "ui.askewly.com FloatingField reveal",
+      "liveUrl": "https://ui.askewly.com/",
+      "harvestedAt": "2026-08-04"
+    }
+  },
+  "registryDependencies": [],
+  "dependencies": [],
+  "files": [
+    {
+      "path": "registry/askewly/cursor-proximity-glow/cursor-proximity-glow.tsx",
+      "type": "registry:component",
+      "content": "import { useEffect, useRef } from \"react\"\nimport type { ReactNode } from \"react\"\n\n// Harvested from ui.askewly.com FloatingField reveal mechanic, 2026-08-04\n// (docs/design-system/harvest-contract.md §4).\n\ntype CursorProximityGlowProps = {\n  children: ReactNode\n  /** px from an element's edge at which its glow reveals. */\n  radius?: number\n}\n\n/**\n * Cursor proximity glow: children marked with `data-glow` light up when the\n * pointer comes near. One document-level pointermove writes `--cursor-x/y`\n * custom properties per element and toggles `data-revealed`; the visual is a\n * pure CSS radial-gradient overlay that follows those variables, so the hot\n * path does no React re-renders. Touch and keyboard users simply see the\n * elements in their resting state — the glow is decoration, never meaning.\n */\nexport function CursorProximityGlow({ children, radius = 48 }: CursorProximityGlowProps) {\n  const rootRef = useRef<HTMLDivElement>(null)\n\n  useEffect(() => {\n    const root = rootRef.current\n    if (!root) return\n\n    function update(event: PointerEvent) {\n      root!.querySelectorAll<HTMLElement>(\"[data-glow]\").forEach((el) => {\n        const rect = el.getBoundingClientRect()\n        const nearestX = Math.max(rect.left, Math.min(event.clientX, rect.right))\n        const nearestY = Math.max(rect.top, Math.min(event.clientY, rect.bottom))\n        const distance = Math.hypot(event.clientX - nearestX, event.clientY - nearestY)\n        el.style.setProperty(\"--cursor-x\", `${event.clientX - rect.left}px`)\n        el.style.setProperty(\"--cursor-y\", `${event.clientY - rect.top}px`)\n        if (distance <= radius) el.dataset.revealed = \"true\"\n        else delete el.dataset.revealed\n      })\n    }\n    function clear() {\n      root!.querySelectorAll<HTMLElement>(\"[data-glow]\").forEach((el) => delete el.dataset.revealed)\n    }\n\n    document.addEventListener(\"pointermove\", update)\n    document.addEventListener(\"pointerleave\", clear)\n    return () => {\n      document.removeEventListener(\"pointermove\", update)\n      document.removeEventListener(\"pointerleave\", clear)\n    }\n  }, [radius])\n\n  return (\n    <div ref={rootRef} className=\"relative\">\n      {children}\n      <style>{`\n        [data-glow] { position: relative; }\n        [data-glow]::after {\n          content: \"\";\n          position: absolute;\n          inset: 0;\n          pointer-events: none;\n          opacity: 0;\n          background: radial-gradient(\n            circle 48px at var(--cursor-x, 50%) var(--cursor-y, 50%),\n            color-mix(in srgb, var(--primary) 85%, transparent) 0 58%,\n            transparent 60%\n          );\n          transition: opacity 90ms linear;\n        }\n        [data-glow][data-revealed]::after { opacity: 1; }\n        @media (prefers-reduced-motion: reduce) { [data-glow]::after { transition: none; } }\n      `}</style>\n    </div>\n  )\n}\n"
+    }
+  ]
+}
