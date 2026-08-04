@@ -270,3 +270,4 @@
 | 268 | 20260804-m20-harvest-teardown | 2026-08-04 | M20: 배포 표면 29종 전수 teardown — step-1 소스 매칭(확정 24·원격 2·추정 2·미상 1, census 29:29 대조) | step별 | active |
 | 269 | 20260804-m21-harvest-contract | 2026-08-04 | M21: 회수 계약 정본화(6단 절차·취향 게이트·출처 표기) + 첫 승격 2건(zigzag-story-section·terminal-demo-panel) + E2E 실적발 결함 1 수정 | step별 | active |
 | 270 | 20260804-m22-harvest-mining | 2026-08-04 | M22: 소스 채굴 14/14+증보 11(worker 5 병렬·실코드 인용 전건·불일치 1 적발) + 착지 판정표(asset 7·비-asset 4·이월 5) | step별 | active |
+| 271 | 20260804-m23-harvest-batch2 | 2026-08-04 | M23: 확정 12건 집행 — asset 8종+cosmos 팔레트+knowledge 2+head-meta 계약·템플릿, 신선 E2E 시간차 검증 | step별 | active |

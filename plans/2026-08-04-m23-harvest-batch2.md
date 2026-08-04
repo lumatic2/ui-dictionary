@@ -35,7 +35,7 @@ Status: approved (사용자 승인 2026-08-04 "ㄱㄱ" — M22+M23 연쇄, 집�
 
 ## Step 트리
 
-- [ ] **step-1 — 컴포넌트/모션 승격 (asset 착지분)**
+- [x] **step-1 — 컴포넌트/모션 승격 (asset 착지분)**
   - Artifact: 확정 목록 중 asset 착지분을 계약 §3 6단(추출→restyle 정규화→선언→등재→재생성)으로 승격 — meta.harvest 출처 전건.
   - Risk: 위험 (registry 재생성 — diff 0 게이트로 방어)
   - Files: write examples/ui-vocabulary-site/src/components/…(M22 확정 목록이 지정 — 착수 전 이 plan 진행 로그에 실파일 목록 기록). edit examples/ui-vocabulary-site/registry.json. run scripts/generate-registry.mjs.
@@ -43,7 +43,7 @@ Status: approved (사용자 승인 2026-08-04 "ㄱㄱ" — M22+M23 연쇄, 집�
   - Verify: 기존 자산 재생성 diff 0(순수 추가) + purity PASS + 신규 `/r/*.json` 전건 존재 + build/lint PASS.
   - Failure probe: 승격물 1건에 hex 리터럴 주입 → verify 적발 확인 후 제거(게이트 자기시험 — M21 선례).
   - Commit: changeset `20260804-m23-harvest-batch2` (README 절: step-1).
-- [ ] **step-2 — 비-asset 착지 집행 (문서·팔레트·구조분)**
+- [x] **step-2 — 비-asset 착지 집행 (문서·팔레트·구조분)**
   - Artifact: 확정 목록 중 knowledge/recipe/팔레트/블록 착지분 집행 + llms 재생성(FIXED_ASSETS 규칙) — 팔레트 착지면 킥스타트 브리프 옵션 실구동 1회.
   - Risk: 기계적 (문서·설정 — 코드 게이트는 해당 시 step-1 규칙 준용)
   - Files: knowledge/·recipes/·scripts/generate-llms-txt.mjs·packages/cli(팔레트 옵션 확정 시) — M22 확정 목록이 지정, 착수 전 진행 로그에 실파일 목록 기록.
@@ -51,7 +51,7 @@ Status: approved (사용자 승인 2026-08-04 "ㄱㄱ" — M22+M23 연쇄, 집�
   - Verify: 착지물 전건 존재 + check-llms-sync PASS (+팔레트면 CLI 실구동 출력).
   - Failure probe: llms 미등재 상태에서 llms.txt 부재 확인 후 등재(M21 선례).
   - Commit: changeset (README 절: step-2).
-- [ ] **step-3 — 통합 E2E + 사용자 관측**
+- [x] **step-3 — 통합 E2E + 사용자 관측**
   - Artifact: 신선 프로젝트 이식 E2E(부록 8단 — 시간차 스크린샷 의무) + 관측 보드 갱신 + 사용자 관측 1회 + 잔여 이월 목록 기록.
   - Risk: 기계적 (검증·문서)
   - Files: scratchpad(신선 프로젝트) · research ledger(이월 기록).
@@ -74,4 +74,6 @@ Status: approved (사용자 승인 2026-08-04 "ㄱㄱ" — M22+M23 연쇄, 집�
 
 ## 진행 로그 (append-only)
 
-- (없음)
+- 2026-08-04 · step-1 완료 — asset 8종 승격(logo-marquee·rotating-label·cursor-proximity-glow·floating-bars-hero·typing-headline·contrast-duo-card·graph-legend-panel·ask-input-bar), meta.harvest 전건. 게이트: 기존 30건 diff 0(순수 추가 8)·purity probe(date-fns→FAIL) 확인·build 759 routes·lint/llms-sync PASS.
+- 2026-08-04 · step-2 완료 — B1 cosmos 팔레트(킥스타트 --color cosmos 실구동: DESIGN.md primary #3E5F94·이식 34파일·verify PASS) · B2 knowledge/dictionary-site-ia.md · B3 knowledge/landing-section-rhythm.md · B5 docs/design-system/head-meta.md + templates/head-meta.html.tmpl. llms 등재 probe(미등재 0건→등재 3건)·check-llms-sync PASS.
+- 2026-08-04 · step-3 E2E 완료 — 신선 프로젝트 8종 이식·격리 verify 0건·시간차 2장 전이 실측(타이핑·로테이션·마키). 이월 명시: B4·C1~C5 + 2차 채굴 배치 3 후보(본체 미등재 6종 등). 사용자 관측 대기.
