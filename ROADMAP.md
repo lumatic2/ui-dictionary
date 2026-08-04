@@ -1,23 +1,25 @@
 # ROADMAP
 
 > Last updated: 2026-08-04
-> Status: **2026-08-04 goal `harvest-deep` 완주** — M22(소스 채굴 14/14+증보 ~40·착지 판정) + M23(확정 12건 집행: asset 8·cosmos 팔레트·knowledge 2·head-meta 계약) 연쇄. 당일 3-goal(reusable-composition→harvest→harvest-deep). active goal 0. 다음 후보: harvest 배치 3(본체 미등재 마이크로 인터랙션 6종·three.js 씬·Palette Generator). 남은 큐: 킥스타트 기본값 폴리싱(M19 finding) · CLI npm publish(사용자 승인 후) · 두 번째 블록 marketing-landing · 『인터랙티브 웹 애니메이션』 책 스터디(사용자 주도) · dark/light 테마 SSOT 파생 · D2 Presenton 벤치 · Around 재판정.
+> Status: **2026-08-04 goal `harvest-batch3` 완주** — M24 단독(미등재 재고 10건 회수 → registry 48 + motion 의존 게이트 확장). 당일 4-goal(reusable-composition→harvest→harvest-deep→harvest-batch3). active goal 0. 다음 후보: harvest 배치 4(brain three.js 씬 C1·Color Palette Generator C2·Cursor-Reactive Field/brain 모달·HUD C5). 남은 큐: 킥스타트 기본값 폴리싱(M19 finding) · CLI npm publish(사용자 승인 후 — registry 48·cosmos 라이브 소비 전제) · 두 번째 블록 marketing-landing · 『인터랙티브 웹 애니메이션』 책 스터디(사용자 주도) · dark/light 테마 SSOT 파생 · D2 Presenton 벤치 · Around 재판정.
 > North star: Build Askewly Design as both a public reference website and an agent-usable implementation system.
 > line budget: <=150
 
 ## Current Goal
 
-<!-- harness:goal id="harvest-batch3" status="active" -->
-Goal: harvest 배치 3 — 본체 미등재 재고 회수(마이크로 인터랙션 6종+데모 3종+B4 knowledge) + motion 의존 게이트 확장.
+<!-- harness:goal id="harvest-batch3" status="completed" -->
+Goal: harvest 배치 3 — 본체 미등재 재고 회수 + motion 의존 게이트 확장. closed 2026-08-04 — M24 단독(자산 10 등재 → registry 48 + knowledge 1 + 게이트 2경로 확장, 신선 E2E 상호작용 실발화 6종·사용자 관측 통과). Details: `evidence/harvest/m24-batch3.md` + `docs/reports/2026-08-04-m24-harvest-batch3.md`.
 
 ## Active Milestones — harvest-batch3
 
-<!-- harness:milestone id="M24" status="active" priority="P1" evidence="evidence/harvest/m24-batch3.md" -->
+<!-- harness:milestone id="M24" status="completed" priority="P1" evidence="evidence/harvest/m24-batch3.md" -->
 ### M24 — harvest 배치 3 — 본체 미등재 재고 회수 + motion 의존 게이트 확장
 - DoD: 집행 10건 전건 착지(자산 10 등재 — 부속 device-frame 포함 + knowledge 1) + 게이트 확장 자기시험 3건 + 통합 E2E 1회(시간차 실측) + 사용자 관측 1회 + 잔여 이월 명시.
 - Gap: 본체 소스에 실존하는 미등재 재고 9건 + 모션 계열 자산의 registry 진입로 부재(purity gate 가 motion/react·등재 자산 참조를 차단).
-- Plan: plans/2026-08-04-m24-harvest-batch3.md
-- Status: [ ]
+- Plan: archive/plans/2026-08-04-m24-harvest-batch3.md
+- Status: [x]
+- Completed at: 2026-08-04
+- Summary: 마이크로 인터랙션 6종+device-frame+추출 데모 3종 등재(registry 48)·graph-content-schema knowledge·plain-asset 게이트 2경로 확장(자기시험 3 FAIL 적발)·신선 E2E 상호작용 실발화 6종·사용자 관측 통과. 보고: docs/reports/2026-08-04-m24-harvest-batch3.md
 
 <!-- harness:goal id="harvest-deep" status="completed" -->
 Goal: 소스 레벨 재채굴(harvest-deep). closed 2026-08-04 — M22(채굴 14/14+증보 ~40·착지 판정·2차 라운드) + M23(확정 12건 집행: asset 8종·cosmos 팔레트 프리셋·knowledge 2편·head-meta 계약, 신선 E2E 시간차 검증·사용자 관측 통과) 연쇄 완주. Details: `evidence/harvest/` + `docs/reports/2026-08-04-m2{2,3}-*.md`.
