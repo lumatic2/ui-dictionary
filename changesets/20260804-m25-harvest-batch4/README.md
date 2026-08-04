@@ -17,3 +17,9 @@
 
 - `glow-points-scene-impl.tsx`(three 정적 import — Points 단일 드로우콜 코어/헤일로 셰이더·LineSegments 펄스 엣지·UnrealBloom·리사이즈·dispose, threeState 전역 결합 제거→props) + `glow-points-scene.tsx`(lazy wrapper·WebGL 사전 체크·정적 폴백·에러 바운더리·결정적 LCG 데모). registry +2 (53) — **M24 게이트 2경로 첫 실전 소비**: impl deps `["three"]`, wrapper regDeps `[/r/glow-points-scene-impl.json]`.
 - 검증: tsc 무오류 · 순수 추가 2 · lint 0 violations · build 759 routes · fresh 실렌더(three 설치 후): canvas 마운트·시간차 element 스크린샷 2장 상이(궤도/breath — m25-glow-t1/t2.png, 3클러스터 발광+엣지 육안 확인) · WebGL 폴백 probe: `addInitScript` getContext 스텁 → 폴백 노드 표시·canvas 0 (plan 명시 방법 그대로).
+
+## step-4 — C2: Palette Generator 코어 승격 + 도구 추출·등재
+
+- `@/lib/palette-generator`(354줄) → `palette-generator-core.tsx` 정본 이전(구 경로 re-export shim, 중복 사본 0) + home-page 의 생성기 데모·헬퍼 836줄 → `color-palette-generator.tsx` 추출(코어 참조·훅 인라인·keyframe 원본값 그대로 cpg-* 스코프 내장). home-page·colors-page import 전환, registry +2 (55) — 도구 regDeps `[/r/palette-generator-core.json]`.
+- 게이트 부수 확장: `react-dom` 을 기본 표면(ALLOWED)에 추가 — react 와 동봉 보장(flushSync). dependencies 산출에서도 제외.
+- 검증: tsc 무오류 · 순수 추가 2 · lint 0 violations · build 759 routes · Colors 페이지 로컬 vs 라이브 풀페이지 시각 동일 · 상호작용 실발화: Generate FF99C8→12130F 교체 / 잠금 후 재생성 생존 / 셰이드 패널 열림(Apply shade 10단) / 복사 토스트 "Color copied to clipboard".

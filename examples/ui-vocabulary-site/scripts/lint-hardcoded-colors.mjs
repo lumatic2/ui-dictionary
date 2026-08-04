@@ -22,6 +22,9 @@ const ALLOWLIST = [
   "components/variation-demos/",
   // 색이 콘텐츠 데이터인 라이브러리 (팔레트 생성기 데이터 · 문서 예시 코드)
   "lib/palette-generator.ts",
+  // M25: 코어가 등재 컴포넌트로 이동 — 시드 팔레트 hex 는 콘텐츠 데이터. 도구 파일은 스와치 상호작용 소유.
+  "components/palette-generator-core.tsx",
+  "components/color-palette-generator.tsx",
   "lib/documentation-pages.ts",
   // 용어 미니목 데모 렌더러 — 미니목 안 색(브랜드 로고·글래스·Light/Dark 병치)이 콘텐츠다.
   // 프레임/라벨은 semantic 토큰 사용 중 (2026-07-31 실측: 셸 프레임 위반 0)

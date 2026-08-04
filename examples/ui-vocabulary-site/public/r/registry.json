@@ -925,6 +925,52 @@
       ]
     },
     {
+      "name": "palette-generator-core",
+      "type": "registry:block",
+      "title": "Palette Generator Core",
+      "description": "Pure palette math for the color palette generator: a curated seed library, palette generation from seeds with lock-aware regeneration, quality scoring, and candidate rotation. No JSX — registered as a code asset so tools can reference it through the registry. Seed hex values are palette content by definition.",
+      "meta": {
+        "harvest": {
+          "origin": "ui-vocabulary-site palette generator lib",
+          "liveUrl": "https://ui.askewly.com/colors",
+          "harvestedAt": "2026-08-04"
+        }
+      },
+      "registryDependencies": [],
+      "dependencies": [],
+      "files": [
+        {
+          "path": "registry/askewly/palette-generator-core/palette-generator-core.tsx",
+          "type": "registry:component"
+        }
+      ]
+    },
+    {
+      "name": "color-palette-generator",
+      "type": "registry:block",
+      "title": "Color Palette Generator",
+      "description": "A color palette generator is a five-swatch production tool: generate/lock cycles that respect locked colors, drag reorder with a floating preview, a per-color tint/shade panel, an HSV picker, copy-to-clipboard with toast, and PNG/SVG palette export. Palette math lives in palette-generator-core; this component owns the interaction surface, with chrome on semantic tokens and swatch colors as user content.",
+      "meta": {
+        "harvest": {
+          "origin": "ui-vocabulary-site color palette generator (home-page extraction)",
+          "liveUrl": "https://ui.askewly.com/colors",
+          "harvestedAt": "2026-08-04"
+        }
+      },
+      "registryDependencies": [
+        "https://ui.askewly.com/r/palette-generator-core.json"
+      ],
+      "dependencies": [
+        "lucide-react"
+      ],
+      "files": [
+        {
+          "path": "registry/askewly/color-palette-generator/color-palette-generator.tsx",
+          "type": "registry:component"
+        }
+      ]
+    },
+    {
       "name": "glow-points-scene-impl",
       "type": "registry:block",
       "title": "Glow Points Scene Impl",

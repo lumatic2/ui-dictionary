@@ -60,7 +60,7 @@ Status: approved (사용자 승인 2026-08-04 "ㄱㄱ" — M25+M26 연쇄)
   - Verify: purity(impl 은 선언 의존·wrapper 는 등재 참조로 통과) + diff 0(순수 추가 2) + build/lint + 사이트 내 실렌더 스크린샷(발광 포인트+블룸 확인 — 데모 페이지 또는 단독 마운트) + 시간차 2장(자동 회전/breath 애니메이션 전이).
   - Failure probe: WebGL 강제 비활성 — Playwright `page.addInitScript` 로 `HTMLCanvasElement.prototype.getContext` 를 webgl/webgl2 요청 시 null 반환하도록 스텁한 뒤 렌더 → 폴백 노드 표시 확인(결정적 — 브라우저 소프트웨어 래스터라이저 우회 없음, fresh 검증자 반영).
   - Commit: changeset (README 절: step-3).
-- [ ] **step-4 — C2: Palette Generator 코어 승격 + 도구 추출·등재**
+- [x] **step-4 — C2: Palette Generator 코어 승격 + 도구 추출·등재**
   - Artifact: `@/lib/palette-generator`(354줄) 내용을 `palette-generator-core.tsx` 로 이전(구 경로 re-export shim), home-page 의 ColorPaletteGeneratorDemo+헬퍼(getReadableTextColor·downloadPalettePng·buildPaletteSvg·shade/hex 유틸)를 `color-palette-generator.tsx` 로 추출(코어 참조·keyframe 내장), home-page·colors-page import 전환, 2자산 등재.
   - Risk: 위험 (Colors 페이지 공유 소비 — 양면 시각 회귀로 방어)
   - Files: write src/components/{palette-generator-core,color-palette-generator}.tsx. edit src/lib/palette-generator.ts(shim), src/components/home-page.tsx, src/components/colors-page.tsx, registry.json. run scripts/generate-registry.mjs.

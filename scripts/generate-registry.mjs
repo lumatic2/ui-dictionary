@@ -24,7 +24,9 @@ const RECIPES_DIR = path.join(REPO_ROOT, "recipes");
 const OUT_DIR = path.join(SITE, "public", "r");
 const BASE_URL = "https://ui.askewly.com";
 
-const ALLOWED = /^(react(\/.+)?$|lucide-react$|@\/components\/ui\/|@\/lib\/utils$)/;
+// react-dom is part of the base surface: it ships with every React project the
+// same way react does (flushSync 등), so it needs no per-item declaration.
+const ALLOWED = /^(react(\/.+)?$|react-dom(\/.+)?$|lucide-react$|@\/components\/ui\/|@\/lib\/utils$)/;
 
 function fail(msg) {
   console.error(`generate-registry: FAIL — ${msg}`);
@@ -186,7 +188,7 @@ for (const item of registry.items) {
   ];
   const dependencies = [...new Set(
     imports
-      .filter((i) => !i.startsWith("@/") && !i.startsWith(".") && !/^react(\/.+)?$/.test(i))
+      .filter((i) => !i.startsWith("@/") && !i.startsWith(".") && !/^react(-dom)?(\/.+)?$/.test(i))
       .map((i) => (i.startsWith("@") ? i.split("/").slice(0, 2).join("/") : i.split("/")[0]))
   )].sort();
 

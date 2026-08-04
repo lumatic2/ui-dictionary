@@ -6,8 +6,8 @@ import {
   buildPaletteSvg,
   downloadPalettePng,
   getReadableTextColor,
-  type HomePageDestination,
-} from "@/components/home-page"
+} from "@/components/color-palette-generator"
+import { type HomePageDestination } from "@/components/home-page"
 import { paletteSeedLibrary, type PaletteSeed } from "@/lib/palette-generator"
 import { cn } from "@/lib/utils"
 
