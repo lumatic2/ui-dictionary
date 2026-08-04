@@ -61,7 +61,7 @@ Status: approved (사용자 승인 2026-08-04 "ㄱㄱ" — 집행 10건+부속 1
   - Verify: build/lint PASS + 홈 데모 3종 추출 전후 스크린샷 시각 동일 + 기존 자산 diff 0(순수 추가 3) + purity PASS + image-treatment 는 신선 렌더에서 wipe 애니메이션 시간차 실측(전역 CSS 부재 환경 — step-5 에서 확정).
   - Failure probe: 추출 후 home-page 에 구 구현 잔존 여부 grep(중복 정의 0) — 잔존 시 제거.
   - Commit: changeset (README 절: step-3).
-- [ ] **step-4 — B4 그래프 스키마 knowledge 착지**
+- [x] **step-4 — B4 그래프 스키마 knowledge 착지**
   - Artifact: brain 그래프 연결 방식(노드 7타입+3계층 hierarchy+13관계) 결정표를 `knowledge/graph-content-schema.md` 로 착지 + llms FIXED_ASSETS 등재.
   - Risk: 기계적 (문서)
   - Files: write knowledge/graph-content-schema.md. edit scripts/generate-llms-txt.mjs. run scripts/generate-llms-txt.mjs, scripts/check-llms-sync.mjs.
@@ -100,3 +100,5 @@ Status: approved (사용자 승인 2026-08-04 "ㄱㄱ" — 집행 10건+부속 1
 
 - 2026-08-04 · 계획 작성 — 재료 실측: 6종 소스 실존·registry 38건 전건 미포함 확인, motion ^12.42.2 사이트 의존 실존, plain-asset ALLOWED 에 선언 allowlist 부재 확인(블록 분기만 보유), 데모 3종 home-page.tsx 내장(정의 :1074/:1322/:2325) 확인.
 - 2026-08-04 · fresh 검증자 반영 3건 — ① 3종의 `@/components/device-frame` import 로 게이트 확장에 등재-자산 참조 경로 필수(step-1 ②·device-frame 부속 승격) ② 수치 출처 file:line 정정 ③ 데모 추출 얽힘 2건(공유 훅 인라인·전역 keyframe 내장) step-3 명시.
+- 2026-08-04 · step-1~4 완료 — 게이트 확장(자기시험 3건 FAIL 적발)·7종 등재(45)·데모 3종 추출 등재(48, 라이브 대조 시각 동일)·B4 knowledge llms 등재. 커밋 460b81b·(step-2)·dbb2f2c·(step-4).
+- 2026-08-04 · step-5 E2E 완료 — 신선 이식 10종·tsc 0·콘솔 0·시간차 2장 전이 실측·상호작용 실발화 6종 전건 PASS. 이월: C1·C2·C5. 사용자 관측 대기(보드 artifact 갱신).

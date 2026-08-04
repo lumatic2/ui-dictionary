@@ -24,3 +24,15 @@
 - registry.json +3 (meta.harvest — home-page extraction 출처). 재생성 48건(45+3 순수 추가 — 기존 per-item diff 0, index만 M).
 - 검증: tsc 무오류 + oxlint·lint:colors PASS + build 759 routes + 시각 회귀: 로컬 빌드 vs 라이브 프로드(추출 전 코드) 풀페이지 스크린샷 대조 — Coverflow 배치·Warm Film·Proof surface 프레임까지 동일.
 - finding: hex probe 의 `git checkout` 이 소스 파일을 CRLF 로 되살려 임베드 content 오염 — LF 재정규화로 해소. 교훈: probe 원복은 checkout 대신 역편집 또는 즉시 EOL 검사.
+
+## step-4 — B4 그래프 콘텐츠 스키마 knowledge 착지
+
+- `knowledge/graph-content-schema.md` 신설 — 타입 축(7종+시각 어휘)·계층 축(3단+virtual 플래그) 분리, 방향/무방향 관계 분리(11+3), provenance.reviewed 추적, 노출 데이터 선언. llms FIXED_ASSETS 등재.
+- 검증: 등재 전 llms.txt 부재 probe(grep 0) → 등재 후 노출(grep 1) + check-llms-sync PASS.
+
+## step-5 — 통합 E2E + 사용자 관측
+
+- 신선 프로젝트(fresh-harvest 재사용) — 로컬 registry(`python -m http.server`) 에서 신규 10종 fetch 이식(regDeps 로 device-frame URL 참조 실동작), `npm i motion`, tsc 무오류, 콘솔 에러 0.
+- 시간차 2장(t=2.5s/7.2s): Coverflow analytics→kanban · Hero Centered→Proof surface · Image Duotone→Warm Film + 와이프 중간 프레임 실측.
+- 상호작용 실발화 6종(Playwright): 마그네틱 pull (7.9,6.9)→leave 원점 / 드래그 스프링 중간 보간→정지 원점 / 스와이프 행 3→2 삭제 / 풀투리프레시 스피너·Updated 라벨 / 바텀시트 detent 핸들 탭 전환·scrim 닫힘 / 스태거 중간 불투명도 [1,1,1,0.72].
+- 관측 보드 갱신(artifact 5ae085df — M24 섹션 + 시간차 2장 임베드). 이월 명시: C1(three.js)·C2(Palette Generator)·C5(Cursor-Reactive Field·brain 모달/HUD).
