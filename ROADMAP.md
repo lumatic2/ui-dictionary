@@ -7,6 +7,25 @@
 
 ## Current Goal
 
+<!-- harness:goal id="harvest-deep" status="active" -->
+Goal: 소스 레벨 재채굴(harvest-deep) — 확정 풀 5 표면의 소스 코드에서 사용자 지목 재료 14건+α(컬러감·모션·구조·three.js 코드)를 채굴해 착지 확정 후 배치 승격. M20 겉면 teardown 의 심화("훨씬 가져올 수 있는 게 많다" — 사용자 2026-08-04).
+
+## Active Milestones — harvest-deep
+
+<!-- harness:milestone id="M22" status="active" priority="P1" evidence="evidence/harvest/m22-mining.md" -->
+### M22 — 소스 레벨 재료 채굴 — 5 표면 코드 채굴 장부 + 착지 판정
+- DoD: 지목 재료 14건 전건 채굴 카드(실코드 파일:라인 인용) + 착지 판정표 + 사용자 확정 1회. 실패 모드 = 소스-라이브 불일치 명시 기록.
+- Gap: M20 은 라이브 겉면 관측 — 코드 속 재료(토큰·모션·기법)가 판정 밖에 남았다.
+- Plan: plans/2026-08-04-m22-harvest-mining.md
+- Status: [ ]
+
+<!-- harness:milestone id="M23" status="pending" priority="P1" evidence="evidence/harvest/m23-batch2.md" -->
+### M23 — harvest 배치 2 — M22 확정 목록 승격 집행
+- DoD: 확정 배치 전건 승격(착지별 게이트: diff 0·purity·build/lint·llms-sync·신선 E2E) + 통합 E2E 1회 + 사용자 관측 1회 + 잔여 이월 명시.
+- Gap: 계약은 있는데 배치 반복 실적이 1회(2건)뿐.
+- Plan: plans/2026-08-04-m23-harvest-batch2.md
+- Status: [ ]
+
 <!-- harness:goal id="harvest" status="completed" -->
 Goal: 회수 루프(하베스트) — 산출물→저장고 입력 루프. closed 2026-08-04 — M20(전수 teardown 29·사용자 풀 확정) + M21(회수 계약 정본화·첫 승격 zigzag-story-section·terminal-demo-panel) 연쇄 완주. Details: `evidence/harvest/` + `docs/reports/2026-08-04-m2{0,1}-*.md`.
 
