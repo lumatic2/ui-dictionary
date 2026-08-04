@@ -15,7 +15,7 @@ M20 겉면 teardown 이 놓친 코드 속 재료가 전부 장부화됐다. 1차
 ## 3. 증거
 
 - changeset: `changesets/20260804-m22-harvest-mining`
-- 검증: 지목 14/14 카드 1:1 + 실코드 인용 전건 + ⑮ 부재 확인 + 착지표 전건(중복 대조 열 포함) + 사용자 확정 기록
+- 검증: 조립 스크립트 계수 출력 "지목 커버: 14/14 · ⑮ 존재: False" (python — ledger 내 ①~⑭ grep 계수, 2026-08-04 실행) + `grep -c "사용자 확정"` ledger 1건 + 착지표 A/B/C 절 grep 존재. 카드 인용 경로는 표본 재확인(mining-brain·mining2-rest 의 파일:라인 3건 실파일 대조) — 전건 기계 대조는 미실행: `구현됨·미검증: 카드 인용 경로 전건 자동 대조 스크립트 없음(표본 3건만)`.
 - 크기 회고: changeset 1개(step 3절) — 병렬 fan-out 2라운드 + human gate 구조로 milestone 판정 유지.
 - 실표면: none — 조사 milestone(읽기 전용, 타 레포 무수정). 확정 게이트는 대화 표면.
 - 재현: ledger 각 카드의 파일:라인 → 해당 레포에서 직접 확인.
