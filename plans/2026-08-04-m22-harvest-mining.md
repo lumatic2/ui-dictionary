@@ -53,7 +53,7 @@ Status: approved (사용자 승인 2026-08-04 "ㄱㄱ" — M22+M23 연쇄, fresh
   - Verify: 카드 전건에 착지 제안+중복 대조 열 존재.
   - Failure probe: 착지 제안이 기존 그릇 밖(신설 등급 요구)이면 — 계약 위반이므로 "그릇 결정 필요"로 사용자 게이트에 올린다(임의 신설 금지).
   - Commit: changeset (README 절: step-2).
-- [ ] **step-3 — 사용자 확정 게이트 (착지·순서)**
+- [x] **step-3 — 사용자 확정 게이트 (착지·순서)**
   - Artifact: 확정 기록 — M23 집행 목록(착지 형태·순서) 확정.
   - Risk: 없음 (human gate)
   - Files: edit research/2026-08-04-m22-harvest-mining-ledger.md.
@@ -78,3 +78,4 @@ Status: approved (사용자 승인 2026-08-04 "ㄱㄱ" — M22+M23 연쇄, fresh
 
 - 2026-08-04 · step-1 완료 — worker 5기 병렬 채굴, 지목 14/14 카드(실코드 인용 전건) + 증보 11(coverflow·hero-composition·image-treatment·palette-generator·인증 모달·HUD·마스크 유틸 등). 소스-라이브 불일치 1: sixsense ⑪ "마키"는 실체가 세로 bobbing.
 - 2026-08-04 · step-2 완료 — 착지 판정표: asset 7(A1~A7)·비-asset 4(B1~B4)·이월 5(C1~C5) + M23 배치 추천 11건(상한 재검은 게이트 소유). 사용자 확정 대기.
+- 2026-08-04 · step-3 완료 — 사용자 확정: 11건 전체 + B5 head 메타 스캐폴드(OG·파비콘·탭 타이틀 — 사용자 신규 지시) = 집행 12건. 추가 지시 "더 뽑아낼 것들" → 2차 증보 채굴 3기(렌즈 교체 + askewly.com·guide 잔여) — 증보 ~30건, 본체 미등재 마이크로 인터랙션 6종 발굴, head 메타 실측 6표면 종합(완비 2·결손 4). M22 DoD 충족 → /harness-done.
