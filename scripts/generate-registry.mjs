@@ -174,6 +174,8 @@ for (const item of registry.items) {
     ...(recipeDoc && {
       docs: `Recipe contract (intent/anatomy/tokens/checks/anti-patterns): ${recipeDoc} — after transplant, remap look to the project's own tokens per ${BASE_URL}/llms/docs/design-system/component-restyle.md`,
     }),
+    // harvest attribution passthrough (harvest-contract.md §4) — declared per item, absent on legacy items.
+    ...(item.meta && { meta: item.meta }),
     registryDependencies,
     dependencies,
     files: [
@@ -187,6 +189,7 @@ for (const item of registry.items) {
   writeFileSync(path.join(OUT_DIR, `${item.name}.json`), JSON.stringify(built, null, 2) + "\n");
   builtItems.push({
     name: item.name, type: "registry:block", title: item.title, description: item.description,
+    ...(item.meta && { meta: item.meta }),
     registryDependencies, dependencies,
     files: [{ path: built.files[0].path, type: "registry:component" }],
   });

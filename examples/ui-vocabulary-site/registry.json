@@ -174,6 +174,30 @@
         "--sidebar-border",
         "--sidebar-ring"
       ]
+    },
+    {
+      "name": "zigzag-story-section",
+      "title": "Zigzag Story Section",
+      "description": "A zigzag story section tells a sequential narrative as alternating copy/media rows — copy left on even rows, right on odd — so a long \"how we work\" story reads as a walk instead of a wall of features. Each row is one step and order carries meaning; media is a consumer slot with a numbered placeholder fallback. Not for unordered feature grids or single-visual heroes.",
+      "meta": {
+        "harvest": {
+          "origin": "Askwely-company building-section",
+          "liveUrl": "https://askewly.com/",
+          "harvestedAt": "2026-08-04"
+        }
+      }
+    },
+    {
+      "name": "terminal-demo-panel",
+      "title": "Terminal Demo Panel",
+      "description": "A terminal demo panel is a self-playing two-pane pitch: a terminal types a command, streams its response lines, then a browser-style result pane slides open beside it — compressing \"you ask, it ships\" into a loop the visitor watches instead of reads. Playback is pausable and prefers-reduced-motion renders finished states without typing animation. Not an interactive shell or a code block.",
+      "meta": {
+        "harvest": {
+          "origin": "ai-guide TerminalDemo",
+          "liveUrl": "https://guide.askewly.com/",
+          "harvestedAt": "2026-08-04"
+        }
+      }
     }
   ]
 }
