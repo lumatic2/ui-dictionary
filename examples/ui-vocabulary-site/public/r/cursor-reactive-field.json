@@ -1,0 +1,23 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "cursor-reactive-field",
+  "type": "registry:block",
+  "title": "Cursor Reactive Field",
+  "description": "A cursor-reactive glyph field lights a fixed grid of monospace glyphs around the pointer and lets them decay on a timer: influence falls off with distance, the glyph changes by influence band so the trail reads as texture, and a ~85ms life countdown produces the fade tail. Plain spans and one interval — no canvas, no rAF.",
+  "meta": {
+    "harvest": {
+      "origin": "ui-vocabulary-site atlas showcase (home-page extraction)",
+      "liveUrl": "https://ui.askewly.com/",
+      "harvestedAt": "2026-08-04"
+    }
+  },
+  "registryDependencies": [],
+  "dependencies": [],
+  "files": [
+    {
+      "path": "registry/askewly/cursor-reactive-field/cursor-reactive-field.tsx",
+      "type": "registry:component",
+      "content": "import { useEffect, useState } from \"react\"\n\n/**\n * Cursor-reactive glyph field: a fixed grid of monospace glyph cells that\n * light up around the pointer and decay on a timer. Pointer position is\n * normalized to percent coordinates, each cell's influence falls off with\n * distance, and the glyph itself changes by influence band (o / > / _) so the\n * trail reads as texture, not a uniform stamp. A ~85ms interval decrements\n * per-cell life for the fade tail — no rAF, no canvas, plain spans.\n *\n * The field face is fixed-light showcase content (white ground, dark glyphs)\n * on any theme, matching its role as a demo surface.\n */\n\ntype CursorFieldCell = {\n  id: number\n  x: number\n  y: number\n  glyph: string\n  opacity: number\n  life: number\n}\n\nfunction buildCells(): CursorFieldCell[] {\n  const cells: CursorFieldCell[] = []\n  const columns = 24\n  const rows = 18\n\n  for (let row = 0; row < rows; row += 1) {\n    for (let column = 0; column < columns; column += 1) {\n      cells.push({\n        id: row * columns + column,\n        x: 4.5 + column * 4,\n        y: 7 + row * 4.9,\n        glyph: \"-\",\n        opacity: 0,\n        life: 0,\n      })\n    }\n  }\n\n  return cells\n}\n\nexport function CursorReactiveField() {\n  const [cells, setCells] = useState<CursorFieldCell[]>(buildCells)\n\n  useEffect(() => {\n    const timer = window.setInterval(() => {\n      setCells((current) => current.map((cell) => {\n        const life = Math.max(0, cell.life - 1)\n\n        return {\n          ...cell,\n          life,\n          opacity: life > 0 ? 1 : 0,\n        }\n      }))\n    }, 85)\n\n    return () => window.clearInterval(timer)\n  }, [])\n\n  return (\n    <div\n      className=\"relative h-[22.5rem] overflow-hidden rounded-md border border-slate-200 bg-white text-slate-950\"\n      onPointerMove={(event) => {\n        const rect = event.currentTarget.getBoundingClientRect()\n        const x = ((event.clientX - rect.left) / rect.width) * 100\n        const y = ((event.clientY - rect.top) / rect.height) * 100\n\n        setCells((current) => current.map((cell) => {\n          const distance = Math.hypot(cell.x - x, cell.y - y)\n          const influence = Math.max(0, 1 - distance / 7)\n\n          if (influence <= 0) {\n            return cell\n          }\n\n          const cluster = Math.floor(cell.x / 18) + Math.floor(cell.y / 15) + Math.floor(x / 22) + Math.floor(y / 20)\n          const glyph = influence > 0.76 ? \"o\" : cluster % 5 === 0 ? \"_\" : \">\"\n          const life = Math.max(cell.life, Math.round(2 + influence * 13))\n\n          return {\n            ...cell,\n            glyph,\n            life,\n            opacity: 1,\n          }\n        }))\n      }}\n    >\n      <div className=\"absolute inset-0 opacity-45 [background-image:linear-gradient(90deg,color-mix(in_srgb,var(--color-slate-900)_4.2%,transparent)_1px,transparent_1px),linear-gradient(color-mix(in_srgb,var(--color-slate-900)_4.2%,transparent)_1px,transparent_1px)] [background-size:34px_34px]\" />\n      {cells.map((cell) => (\n        <span\n          key={cell.id}\n          className=\"absolute font-mono text-[13px] font-medium leading-none text-black\"\n          style={{\n            left: `${cell.x}%`,\n            top: `${cell.y}%`,\n            opacity: cell.opacity,\n            transform: \"translate(-50%, -50%)\",\n          }}\n        >\n          {cell.glyph}\n        </span>\n      ))}\n    </div>\n  )\n}\n"
+    }
+  ]
+}

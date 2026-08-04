@@ -925,6 +925,27 @@
       ]
     },
     {
+      "name": "cursor-reactive-field",
+      "type": "registry:block",
+      "title": "Cursor Reactive Field",
+      "description": "A cursor-reactive glyph field lights a fixed grid of monospace glyphs around the pointer and lets them decay on a timer: influence falls off with distance, the glyph changes by influence band so the trail reads as texture, and a ~85ms life countdown produces the fade tail. Plain spans and one interval — no canvas, no rAF.",
+      "meta": {
+        "harvest": {
+          "origin": "ui-vocabulary-site atlas showcase (home-page extraction)",
+          "liveUrl": "https://ui.askewly.com/",
+          "harvestedAt": "2026-08-04"
+        }
+      },
+      "registryDependencies": [],
+      "dependencies": [],
+      "files": [
+        {
+          "path": "registry/askewly/cursor-reactive-field/cursor-reactive-field.tsx",
+          "type": "registry:component"
+        }
+      ]
+    },
+    {
       "name": "product-coverflow",
       "type": "registry:block",
       "title": "Product Coverflow",

@@ -371,6 +371,18 @@
       }
     },
     {
+      "name": "cursor-reactive-field",
+      "title": "Cursor Reactive Field",
+      "description": "A cursor-reactive glyph field lights a fixed grid of monospace glyphs around the pointer and lets them decay on a timer: influence falls off with distance, the glyph changes by influence band so the trail reads as texture, and a ~85ms life countdown produces the fade tail. Plain spans and one interval — no canvas, no rAF.",
+      "meta": {
+        "harvest": {
+          "origin": "ui-vocabulary-site atlas showcase (home-page extraction)",
+          "liveUrl": "https://ui.askewly.com/",
+          "harvestedAt": "2026-08-04"
+        }
+      }
+    },
+    {
       "name": "product-coverflow",
       "title": "Product Coverflow",
       "description": "A product coverflow loops product-surface mockups through a 3D carousel: each card's transform derives from its shortest signed distance to the active index so the row wraps seamlessly — translateX for spread, rotateY for the flanks, translateZ/scale/opacity for depth falloff. Card faces are fixed-light showcase content on a dark stage; the accent palette is self-contained CSS variables to remap per brand. Reduced motion stops the auto-advance.",

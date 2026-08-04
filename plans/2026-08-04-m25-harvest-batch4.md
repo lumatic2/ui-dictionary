@@ -36,7 +36,7 @@ Status: approved (사용자 승인 2026-08-04 "ㄱㄱ" — M25+M26 연쇄)
 
 ## Step 트리
 
-- [ ] **step-1 — C5-a: cursor-reactive-field 추출·등재**
+- [x] **step-1 — C5-a: cursor-reactive-field 추출·등재**
   - Artifact: home-page 내장 Cursor-Reactive Field(포인터 추적 글리프 필드)를 독립 컴포넌트로 추출(M24 step-3 절차 준용 — 훅 인라인·시각 무변경), registry 등재(meta.harvest).
   - Risk: 위험 (홈 코드 이동 — 시각 회귀로 방어)
   - Files: write examples/ui-vocabulary-site/src/components/cursor-reactive-field.tsx. edit src/components/home-page.tsx, registry.json. run scripts/generate-registry.mjs.

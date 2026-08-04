@@ -33,6 +33,8 @@ const ALLOWLIST = [
   // 브랜드 액센트는 컴포넌트 로컬 CSS 변수(--pc-*/--it-*)로 자급 — 셸 토큰 규칙의 대상이 아니다.
   "components/product-coverflow.tsx",
   "components/image-treatment.tsx",
+  // M25: 같은 계열 — 고정 라이트 글리프 필드가 콘텐츠.
+  "components/cursor-reactive-field.tsx",
 ];
 
 const PALETTE =
