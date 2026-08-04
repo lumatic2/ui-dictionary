@@ -37,7 +37,7 @@ Status: approved (사용자 승인 2026-08-04 "ㄱㄱ" — M22+M23 연쇄, fresh
 
 ## Step 트리
 
-- [ ] **step-1 — 소스 채굴 (병렬 위임, 레포당 1 worker)**
+- [x] **step-1 — 소스 채굴 (병렬 위임, 레포당 1 worker)**
   - Artifact: mining ledger — 재료당 카드(소스 파일:라인 인용·의존성·유형·구현 요지 3줄·추출 난도 상/중/하). 지목 14건 전건 + 발견 증보.
   - Risk: 없음 (읽기 전용 조사)
   - Files: write research/2026-08-04-m22-harvest-mining-ledger.md. read 타 레포 4 + examples/ui-vocabulary-site (수정 없음).
@@ -45,7 +45,7 @@ Status: approved (사용자 승인 2026-08-04 "ㄱㄱ" — M22+M23 연쇄, fresh
   - Verify: 지목 재료 14건 ↔ 카드 1:1 + 카드 전건에 실파일 경로:라인 존재(추측 서술 0).
   - Failure probe: 소스에 실존하지 않는 재료(라이브에만 있고 로컬 소스가 낡은 경우) — "소스-라이브 불일치"로 명시 기록, 조용한 추측 금지.
   - Commit: changeset `20260804-m22-harvest-mining` (README 절: step-1).
-- [ ] **step-2 — 착지 판정표 + 승격 순위안**
+- [x] **step-2 — 착지 판정표 + 승격 순위안**
   - Artifact: ledger 말미 — 재료별 착지 제안(결정 2 그릇 적용)·기존 자산 중복 대조·M23 배치 순위 추천안.
   - Risk: 없음 (판정 문서)
   - Files: edit research/2026-08-04-m22-harvest-mining-ledger.md.
@@ -76,4 +76,5 @@ Status: approved (사용자 승인 2026-08-04 "ㄱㄱ" — M22+M23 연쇄, fresh
 
 ## 진행 로그 (append-only)
 
-- (없음)
+- 2026-08-04 · step-1 완료 — worker 5기 병렬 채굴, 지목 14/14 카드(실코드 인용 전건) + 증보 11(coverflow·hero-composition·image-treatment·palette-generator·인증 모달·HUD·마스크 유틸 등). 소스-라이브 불일치 1: sixsense ⑪ "마키"는 실체가 세로 bobbing.
+- 2026-08-04 · step-2 완료 — 착지 판정표: asset 7(A1~A7)·비-asset 4(B1~B4)·이월 5(C1~C5) + M23 배치 추천 11건(상한 재검은 게이트 소유). 사용자 확정 대기.
