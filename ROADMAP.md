@@ -7,6 +7,18 @@
 
 ## Current Goal
 
+<!-- harness:goal id="harvest-batch3" status="active" -->
+Goal: harvest 배치 3 — 본체 미등재 재고 회수(마이크로 인터랙션 6종+데모 3종+B4 knowledge) + motion 의존 게이트 확장.
+
+## Active Milestones — harvest-batch3
+
+<!-- harness:milestone id="M24" status="active" priority="P1" evidence="evidence/harvest/m24-batch3.md" -->
+### M24 — harvest 배치 3 — 본체 미등재 재고 회수 + motion 의존 게이트 확장
+- DoD: 집행 10건 전건 착지(자산 10 등재 — 부속 device-frame 포함 + knowledge 1) + 게이트 확장 자기시험 3건 + 통합 E2E 1회(시간차 실측) + 사용자 관측 1회 + 잔여 이월 명시.
+- Gap: 본체 소스에 실존하는 미등재 재고 9건 + 모션 계열 자산의 registry 진입로 부재(purity gate 가 motion/react·등재 자산 참조를 차단).
+- Plan: plans/2026-08-04-m24-harvest-batch3.md
+- Status: [ ]
+
 <!-- harness:goal id="harvest-deep" status="completed" -->
 Goal: 소스 레벨 재채굴(harvest-deep). closed 2026-08-04 — M22(채굴 14/14+증보 ~40·착지 판정·2차 라운드) + M23(확정 12건 집행: asset 8종·cosmos 팔레트 프리셋·knowledge 2편·head-meta 계약, 신선 E2E 시간차 검증·사용자 관측 통과) 연쇄 완주. Details: `evidence/harvest/` + `docs/reports/2026-08-04-m2{2,3}-*.md`.
 
