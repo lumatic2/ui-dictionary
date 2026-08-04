@@ -40,7 +40,7 @@ Status: approved (사용자 승인 2026-08-04 "ㄱㄱ" — 결정 A 표준 퍼�
 
 ## Step 트리
 
-- [ ] **step-1 — 외부 공개 마케팅 랜딩 블록 실사 + 베이스·구성 확정 (흡수 우선)**
+- [x] **step-1 — 외부 공개 마케팅 랜딩 블록 실사 + 베이스·구성 확정 (흡수 우선)**
   - Artifact: `research/2026-08-04-m27-marketing-block-absorption-survey.md` — 후보 3~5개(shadcn 생태의 공개 마케팅 블록/템플릿: tailark, launch-ui, HyperUI, Magic UI 계열 등 + 검색 추가 후보)를 라이선스(재배포·표기)·구성(결정 A 시퀀스 대조)·import 표면·품질(recipe checks·anti-patterns·시그니처 대조) 실측 표로 → M18 채택 규칙 3항 적용 → 베이스 확정(외부 흡수 or 자체 조합 폴백) + `docs/design-system/absorption-criteria.md` 판정 행 추가. 모든 출처 URL+접근일.
   - Files: write research/2026-08-04-m27-marketing-block-absorption-survey.md. edit docs/design-system/absorption-criteria.md.
   - Risk: 기계적 (조사·판정 문서 — 코드 무변경)
@@ -88,4 +88,5 @@ Status: approved (사용자 승인 2026-08-04 "ㄱㄱ" — 결정 A 표준 퍼�
 ## 진행 로그
 
 - 2026-08-04 작성.
+- 2026-08-04 step-1 완료 — 외부 후보 전건 기각(tailark next 결합 195/109 실측·Launch UI 유료 벽·HyperUI 모델 불일치·공식 blocks 카테고리 부재) → **자체 조합 폴백 확정**(결정 B 세트 = 구현 목록). 산출: research survey + absorption-criteria 3행.
 - 2026-08-04 fresh 검증자 반영 — ① 계획 인용 실측 4지점(생성기 블록 범용·CLI 비하드코딩·--registry 실존·구성 asset 10종 등재) 전건 확인 ② E2E 로컬 서빙 커맨드 미명시 적발 → 기술 결정 ④ 로 고정 ③ 외부 흡수 분기 사전 소진(⑤)·흡수 시 헤더 표기 Verify 추가.

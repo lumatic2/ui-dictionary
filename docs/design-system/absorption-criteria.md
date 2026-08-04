@@ -51,6 +51,8 @@ Audience: 에이전트 + 시스템 관리자.
 | Around/Createx (템플릿 카탈로그·패키징) | **C** | 이식물 = 패키징·customizer 원리인데 소비처("이식 가능한 제품" 축)가 milestone 미개방 — 사용자 판정 "이르다"(2026-08-01). 원리는 `research/around-template-system-capture.md` 에 동결(재서술 = 열화 복제). 이식/패키징 milestone active 시 A 재검 (M11) |
 | shadcn 공식 blocks `dashboard-01` | **A** | MIT 소스 흡수 — saas-app-shell 블록 베이스로 이식(+우리 asset 보강·restyle 의무·파일 헤더 attribution). 이미 registry:block 동형 배포라 이식 비용 최소. 근거: `research/2026-08-04-m18-block-absorption-survey.md` (M18) |
 | satnaing/shadcn-admin · Tremor · Next 계열 스타터 | **B** | 라우터/프레임워크/자체 컴포넌트 체계 결합으로 registry 단위 이식 불가 — 구조 참고 링크만 (M18 실사) |
+| tailark/blocks · Launch UI | **B** | MIT 이나 Next.js 결합(tailark: next/link 195·next/image 109 실측)으로 Vite 소비 경로와 충돌 + 자체 마케팅 asset(라이브 harvest 산)이 품질 우위 — marketing-landing 블록은 자체 조합, pricing/FAQ/footer 구조 참고 링크만. 근거: `research/2026-08-04-m27-marketing-block-absorption-survey.md` (M27) |
+| HyperUI | **C** | 플레인 Tailwind HTML — React/shadcn registry 모델 불일치, 수요 시 개별 패턴 참고만 (M27) |
 
 ## 운용
 
@@ -60,6 +62,7 @@ Audience: 에이전트 + 시스템 관리자.
 
 ## Changelog
 
+- 2026-08-04: M27 — 마케팅 블록 후보 3행 추가(tailark/Launch UI = B, HyperUI = C) — marketing-landing 블록 자체 조합 폴백 판정.
 - 2026-08-01: M7 — A 판정 산출물을 "recipe 또는 knowledge 규칙"으로 확장 + §원칙류 소스 착지 규칙 신설(플랫폼 가이드라인 대응).
 - 2026-07-28: VI7 — toolshelf 비주얼 임팩트 카드 15건 전수 배치 후 신규 판정 9행 추가 (판정 장부: `research/2026-07-28-vi7-toolshelf-placement.md`).
 - 2026-07-17: 초판 — 3분기 규칙 + 실측 후보 9종 분류 (VI5).
