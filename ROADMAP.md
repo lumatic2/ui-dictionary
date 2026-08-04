@@ -1,11 +1,23 @@
 # ROADMAP
 
 > Last updated: 2026-08-04
-> Status: **2026-08-04 goal `harvest-batch4-release` 완주** — M25(이월 재고 완주 → registry 55: three 씬·팔레트 생성기·커서 필드·brain 모달/HUD) + M26(CLI 0.4.0 npm 출고 — 킥스타트 라이브 소비 실증) 연쇄. 당일 6-goal. harvest 이월 큐 소진 — active goal 0. 남은 큐: 킥스타트 기본값 폴리싱(M19 finding) · 두 번째 블록 marketing-landing · CLI verify chart.tsx 오탐 patch(0.4.x) · 『인터랙티브 웹 애니메이션』 책 스터디(사용자 주도) · dark/light 테마 SSOT 파생 · D2 Presenton 벤치 · Around 재판정.
+> Status: **2026-08-04 goal `second-block-marketing` 착수 (M27 active)** — 두 번째 블록 marketing-landing(승인 완료). 직전: harvest 3연쇄+CLI 0.4.0 당일 6-goal 완주(registry 55·npm 라이브). 남은 큐: 킥스타트 기본값 폴리싱(M19 finding) · CLI verify chart.tsx 오탐 patch(0.4.x) · 『인터랙티브 웹 애니메이션』 책 스터디(사용자 주도) · dark/light 테마 SSOT 파생 · D2 Presenton 벤치 · Around 재판정.
 > North star: Build Askewly Design as both a public reference website and an agent-usable implementation system.
 > line budget: <=150
 
 ## Current Goal
+
+<!-- harness:goal id="second-block-marketing" status="active" -->
+Goal: 두 번째 블록 marketing-landing — 블록 체계 복수화. 킥스타트 두 번째 선택지까지 이식 실증. 재료: st4 조합 패턴 12종 + registry 마케팅 asset 13종+.
+
+## Active Milestones — second-block-marketing
+
+<!-- harness:milestone id="M27" status="active" priority="P1" evidence="evidence/second-block-marketing/m27-marketing-landing.md" -->
+### M27 — marketing-landing 블록 — 실사·구현·킥스타트 이식 실증
+- DoD: 외부 실사·베이스 판정 기록 + 블록 registry·block-contract §6·사이트 데모 등재 + 신선 프로젝트 킥스타트 1커맨드 이식(restyle·verify 0건·브라우저 스모크) + 사용자 관측 1회. 실패 모드 = 기존 자산 재생성 diff 0.
+- Gap: 블록 등급이 saas-app-shell 1종 — 사례일 뿐 체계가 아니다. 마케팅 재료(st4·asset)는 있는데 조합 실물이 없다.
+- Plan: plans/2026-08-04-m27-marketing-landing-block.md
+- Status: [ ]
 
 <!-- harness:goal id="harvest-batch4-release" status="completed" -->
 Goal: harvest 배치 4 + CLI 0.4.0 출고. closed 2026-08-04 — M25(실물 7 등재 → registry 55) + M26(npm 0.4.0 Trusted Publishing·레포 밖 킥스타트 라이브 실증) 연쇄 완주. Details: `evidence/harvest/m2{5,6}-*.md` + `docs/reports/2026-08-04-m2{5,6}-*.md`.
@@ -21,7 +33,7 @@ Goal: harvest 배치 4 + CLI 0.4.0 출고. closed 2026-08-04 — M25(실물 7 �
 - Completed at: 2026-08-04
 - Summary: 실물 7 등재(registry 55 — three 씬 2·팔레트 2·커서 필드·brain 모달/HUD)·게이트 2경로 첫 소비+react-dom 기본 표면·신선 E2E 실발화·사용자 관측 통과. 보고: docs/reports/2026-08-04-m25-harvest-batch4.md
 
-<!-- harness:milestone id="M26" status="active" priority="P1" evidence="evidence/harvest/m26-cli-040.md" -->
+<!-- harness:milestone id="M26" status="completed" priority="P1" evidence="evidence/harvest/m26-cli-040.md" -->
 ### M26 — CLI 0.4.0 출고 — 킥스타트 라이브 소비 마개
 - DoD: npm 0.4.0 라이브 + 레포 밖 실증 2종(verify exit 계약·킥스타트 라이브 소비) + 절차 정본 실적 추기.
 - Gap: npm 0.3.0 에는 init --block·cosmos 부재 — 킥스타트가 로컬 한정.
