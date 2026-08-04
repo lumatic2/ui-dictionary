@@ -82,6 +82,7 @@ const FIXED_ASSETS = [
     items: [
       ["knowledge/dictionary-site-ia.md", "Dictionary-site IA: dual YAML source-of-truth (content vs navigation), build-time cross-validation gate, reduced core schema, in-memory weighted search — harvested from a production dictionary site"],
       ["knowledge/landing-section-rhythm.md", "Landing section rhythm: alternating background bands (base/warm/ink) as scroll pacing, single ink band on the process section, identical explanation hierarchy across sections — harvested from a production landing"],
+      ["knowledge/graph-content-schema.md", "Graph content schema: independent type axis (7 node types with fixed visual vocabulary) and 3-level hierarchy axis, directed/undirected relation split, provenance.reviewed tracking for machine-generated edges, data-declared overview visibility — harvested from a production knowledge graph"],
       [
         "knowledge/expressive-stack.md",
         "Expressive stack tier map: which rendering tier (CSS/SVG, JS motion orchestration, " +
