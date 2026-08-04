@@ -18,6 +18,8 @@ source_refs: []
 last_verified: 2026-07-17
 ---
 
+> **STOP — do not re-implement this recipe from prose.** A verified code asset exists: fetch https://ui.askewly.com/r/staggered-entrance-group.json, write `files[].content` into the project, install the declared dependencies, THEN restyle the look to the project's own tokens (mandatory — component-restyle.md). Prose below is the contract you verify against, not the thing you rebuild.
+
 ## Intent
 
 A staggered entrance offsets the start times of sibling items so a list, card grid, or dashboard reads as one coherent arrival instead of a simultaneous pop. Choreography principle from `knowledge/expressive-stack.md`: tier-agnostic — static lists can do it with CSS `animation-delay`; use tier ② (Motion `staggerChildren`) when item count is dynamic or entrances can be interrupted. Unlike magnetic hover, restrained stagger is a production default, not an experimental touch.

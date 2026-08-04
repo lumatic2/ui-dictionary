@@ -781,6 +781,172 @@
           "type": "registry:component"
         }
       ]
+    },
+    {
+      "name": "device-frame",
+      "type": "registry:block",
+      "title": "Device Frame",
+      "description": "A device frame is a reusable mobile/tablet bezel for presenting screen-sized UI examples: it wraps arbitrary children in a rounded frame with a status-bar hint and gives the viewport its own scroll context, so a mobile screen can be embedded in a page without the page itself scrolling. Semantic tokens only.",
+      "meta": {
+        "harvest": {
+          "origin": "ui-vocabulary-site device bezel",
+          "liveUrl": "https://ui.askewly.com/",
+          "harvestedAt": "2026-08-04"
+        }
+      },
+      "registryDependencies": [],
+      "dependencies": [],
+      "files": [
+        {
+          "path": "registry/askewly/device-frame/device-frame.tsx",
+          "type": "registry:component"
+        }
+      ]
+    },
+    {
+      "name": "magnetic-hover-button",
+      "type": "registry:block",
+      "title": "Magnetic Hover Button",
+      "description": "A magnetic hover button leans toward the cursor while hovered and springs back to rest on leave: pointer position is normalized to -1..1, damped through a spring, and rendered as a CSS transform. An experimental showcase/marketing touch — never a product-wide button default. Keyboard users get the identical button minus the lean; reduced motion disables the pull entirely.",
+      "meta": {
+        "harvest": {
+          "origin": "ui-vocabulary-site micro-interaction demos",
+          "liveUrl": "https://ui.askewly.com/",
+          "harvestedAt": "2026-08-04"
+        }
+      },
+      "registryDependencies": [],
+      "dependencies": [
+        "motion"
+      ],
+      "files": [
+        {
+          "path": "registry/askewly/magnetic-hover-button/magnetic-hover-button.tsx",
+          "type": "registry:component"
+        }
+      ]
+    },
+    {
+      "name": "spring-drag-snap-card",
+      "type": "registry:block",
+      "title": "Spring Drag Snap Card",
+      "description": "A spring drag snap-back card can be dragged anywhere inside its field and springs back to origin on release. The defining property is interruptibility: grab it mid-flight and the spring re-targets without a snap, which duration/easing tweens cannot do — a production-grade default for drag, reorder, and dismiss interactions. Reduced motion swaps the spring for an instant return.",
+      "meta": {
+        "harvest": {
+          "origin": "ui-vocabulary-site micro-interaction demos",
+          "liveUrl": "https://ui.askewly.com/",
+          "harvestedAt": "2026-08-04"
+        }
+      },
+      "registryDependencies": [],
+      "dependencies": [
+        "motion"
+      ],
+      "files": [
+        {
+          "path": "registry/askewly/spring-drag-snap-card/spring-drag-snap-card.tsx",
+          "type": "registry:component"
+        }
+      ]
+    },
+    {
+      "name": "swipe-action-row-pattern",
+      "type": "registry:block",
+      "title": "Swipe Action Row",
+      "description": "A swipe action row reveals a leading (mark done) or trailing (destructive) action depending on swipe direction, with the closed row keeping visible tap-only buttons for both commands — swipe is never the only path to an action. Tapping the row content resets it to closed; the destructive action sits on the trailing side with destructive tokens.",
+      "meta": {
+        "harvest": {
+          "origin": "ui-vocabulary-site micro-interaction demos",
+          "liveUrl": "https://ui.askewly.com/",
+          "harvestedAt": "2026-08-04"
+        }
+      },
+      "registryDependencies": [
+        "https://ui.askewly.com/r/device-frame.json"
+      ],
+      "dependencies": [
+        "lucide-react"
+      ],
+      "files": [
+        {
+          "path": "registry/askewly/swipe-action-row-pattern/swipe-action-row-pattern.tsx",
+          "type": "registry:component"
+        }
+      ]
+    },
+    {
+      "name": "pull-to-refresh-list-pattern",
+      "type": "registry:block",
+      "title": "Pull To Refresh List",
+      "description": "A pull-to-refresh list runs a four-phase state machine — idle, pulling, threshold-crossed, refreshing — where a drag that never crosses the threshold snaps back without refreshing, and the loading indicator holds a fixed height so it never scrolls off-screen while refreshing (per Material 3 guidance). The live region announces the refresh politely.",
+      "meta": {
+        "harvest": {
+          "origin": "ui-vocabulary-site micro-interaction demos",
+          "liveUrl": "https://ui.askewly.com/",
+          "harvestedAt": "2026-08-04"
+        }
+      },
+      "registryDependencies": [
+        "https://ui.askewly.com/r/device-frame.json"
+      ],
+      "dependencies": [
+        "lucide-react"
+      ],
+      "files": [
+        {
+          "path": "registry/askewly/pull-to-refresh-list-pattern/pull-to-refresh-list-pattern.tsx",
+          "type": "registry:component"
+        }
+      ]
+    },
+    {
+      "name": "staggered-entrance-group",
+      "type": "registry:block",
+      "title": "Staggered Entrance Group",
+      "description": "A staggered entrance group animates children in with tightly offset start times (≤60ms) so the eye reads one coherent arrival instead of a simultaneous pop, each item settling on a spring. Reduced motion renders everything immediately visible with no movement — choreography is presentation, never gating.",
+      "meta": {
+        "harvest": {
+          "origin": "ui-vocabulary-site micro-interaction demos",
+          "liveUrl": "https://ui.askewly.com/",
+          "harvestedAt": "2026-08-04"
+        }
+      },
+      "registryDependencies": [
+        "button"
+      ],
+      "dependencies": [
+        "motion"
+      ],
+      "files": [
+        {
+          "path": "registry/askewly/staggered-entrance-group/staggered-entrance-group.tsx",
+          "type": "registry:component"
+        }
+      ]
+    },
+    {
+      "name": "bottom-sheet-detents",
+      "type": "registry:block",
+      "title": "Bottom Sheet Detents",
+      "description": "A bottom sheet with a collapsed/expanded detent pair cycled through the drag handle. The standard variant coexists with the underlying screen (no scrim, background stays interactive); the modal variant adds a scrim that blocks interaction until dismissed. Both offer a non-drag way to change detent — tapping the handle — because not every input is a drag gesture.",
+      "meta": {
+        "harvest": {
+          "origin": "ui-vocabulary-site micro-interaction demos",
+          "liveUrl": "https://ui.askewly.com/",
+          "harvestedAt": "2026-08-04"
+        }
+      },
+      "registryDependencies": [
+        "button",
+        "https://ui.askewly.com/r/device-frame.json"
+      ],
+      "dependencies": [],
+      "files": [
+        {
+          "path": "registry/askewly/bottom-sheet-detents/bottom-sheet-detents.tsx",
+          "type": "registry:component"
+        }
+      ]
     }
   ]
 }

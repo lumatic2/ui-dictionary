@@ -1,0 +1,23 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "device-frame",
+  "type": "registry:block",
+  "title": "Device Frame",
+  "description": "A device frame is a reusable mobile/tablet bezel for presenting screen-sized UI examples: it wraps arbitrary children in a rounded frame with a status-bar hint and gives the viewport its own scroll context, so a mobile screen can be embedded in a page without the page itself scrolling. Semantic tokens only.",
+  "meta": {
+    "harvest": {
+      "origin": "ui-vocabulary-site device bezel",
+      "liveUrl": "https://ui.askewly.com/",
+      "harvestedAt": "2026-08-04"
+    }
+  },
+  "registryDependencies": [],
+  "dependencies": [],
+  "files": [
+    {
+      "path": "registry/askewly/device-frame/device-frame.tsx",
+      "type": "registry:component",
+      "content": "import type { ReactNode } from \"react\"\nimport { cn } from \"@/lib/utils\"\n\nexport type DeviceFrameVariant = \"mobile\" | \"tablet\"\n\nconst viewportSizeByVariant: Record<DeviceFrameVariant, { width: number; height: number }> = {\n  mobile: { width: 390, height: 844 },\n  tablet: { width: 768, height: 1024 },\n}\n\ntype DeviceFrameProps = {\n  /** Content rendered inside the device viewport. Gets its own scroll context. */\n  children: ReactNode\n  /** `mobile` (390×844) or `tablet` (768×1024). Defaults to `mobile`. */\n  variant?: DeviceFrameVariant\n  /** Label shown in the status-bar hint (e.g. a time or screen name). */\n  statusBarLabel?: string\n  className?: string\n}\n\n/**\n * Reusable device bezel for publishing mobile/tablet UI examples on the\n * reference site. Wraps arbitrary children in a rounded frame with a\n * status-bar hint and gives the viewport its own scroll context, so a\n * recipe's mobile screen can be dropped in without the page itself scrolling.\n * Semantic tokens only — no hex literals, no primitive token refs.\n */\nexport function DeviceFrame({ children, variant = \"mobile\", statusBarLabel, className }: DeviceFrameProps) {\n  const { width, height } = viewportSizeByVariant[variant]\n\n  return (\n    <div\n      className={cn(\n        \"inline-flex flex-col overflow-hidden rounded-3xl border bg-muted p-2 shadow-xl\",\n        className\n      )}\n      data-slot=\"device-frame\"\n      data-variant={variant}\n    >\n      <div\n        className=\"flex flex-col overflow-hidden rounded-2xl border bg-background\"\n        style={{ width, height }}\n      >\n        <div\n          aria-hidden=\"true\"\n          className=\"flex shrink-0 items-center justify-center border-b bg-background py-1.5\"\n        >\n          {statusBarLabel ? (\n            <span className=\"text-xs font-medium text-muted-foreground\">{statusBarLabel}</span>\n          ) : (\n            <span className=\"h-1.5 w-12 rounded-full bg-muted\" />\n          )}\n        </div>\n        <div className=\"flex-1 overflow-y-auto overscroll-contain\">{children}</div>\n      </div>\n    </div>\n  )\n}\n\n/**\n * Minimal placeholder mobile screen demo. Integration point for mobile\n * recipe batches (steps 2-3): swap `PlaceholderMobileScreen` for a real\n * recipe component rendered inside `<DeviceFrame>`.\n */\nexport function DeviceFramePlaceholderDemo() {\n  return (\n    <DeviceFrame statusBarLabel=\"9:41\">\n      <PlaceholderMobileScreen />\n    </DeviceFrame>\n  )\n}\n\nfunction PlaceholderMobileScreen() {\n  return (\n    <div className=\"flex flex-col gap-3 p-4\">\n      <p className=\"text-sm font-semibold text-foreground\">Screen title</p>\n      <div className=\"flex flex-col divide-y rounded-md border\">\n        {[\"Row one\", \"Row two\", \"Row three\"].map((row) => (\n          <div key={row} className=\"px-3 py-2.5 text-sm text-muted-foreground\">\n            {row}\n          </div>\n        ))}\n      </div>\n    </div>\n  )\n}\n"
+    }
+  ]
+}

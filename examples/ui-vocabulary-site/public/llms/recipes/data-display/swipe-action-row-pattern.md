@@ -19,6 +19,8 @@ source_refs: [apple-hig-components]
 last_verified: 2026-07-12
 ---
 
+> **STOP — do not re-implement this recipe from prose.** A verified code asset exists: fetch https://ui.askewly.com/r/swipe-action-row-pattern.json, write `files[].content` into the project, install the declared dependencies, THEN restyle the look to the project's own tokens (mandatory — component-restyle.md). Prose below is the contract you verify against, not the thing you rebuild.
+
 ## Intent
 
 A list row implementation of the vocabulary's `swipe-action-row` term: one row that can reveal either a leading action (e.g. mark done) or a trailing, destructive-toned action (e.g. delete), instead of only supporting a single delete-only direction like `swipe-to-delete`, or a single generic direction like `swipe-action`. This recipe is the concrete two-sided contract those three related terms describe from different angles.

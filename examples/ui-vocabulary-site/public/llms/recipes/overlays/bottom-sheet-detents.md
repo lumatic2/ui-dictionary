@@ -18,6 +18,8 @@ source_refs: [material-m3-components]
 last_verified: 2026-07-12
 ---
 
+> **STOP — do not re-implement this recipe from prose.** A verified code asset exists: fetch https://ui.askewly.com/r/bottom-sheet-detents.json, write `files[].content` into the project, install the declared dependencies, THEN restyle the look to the project's own tokens (mandatory — component-restyle.md). Prose below is the contract you verify against, not the thing you rebuild.
+
 ## Intent
 
 A bottom sheet that carries two collapsed/expanded height presets ("detents") toggled from a drag handle, and can run in either of two structural modes: `standard-bottom-sheet` (no scrim — the screen behind stays visible and interactive) or `modal-bottom-sheet` (a scrim blocks the background until the sheet is dismissed). Both existing vocabulary terms describe one of these modes each; this recipe is the single component contract that implements both, selected via a `variant` prop, so a product doesn't need two separate implementations for what is the same detent-cycling shell.

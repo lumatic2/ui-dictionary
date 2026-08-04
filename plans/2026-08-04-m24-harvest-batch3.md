@@ -45,7 +45,7 @@ Status: approved (사용자 승인 2026-08-04 "ㄱㄱ" — 집행 10건+부속 1
   - Verify: 재생성 후 기존 38건 `public/r/*.json` diff 0 + 자기시험 3건(미선언 motion import → FAIL / 선언·미사용 → FAIL / 미등재 컴포넌트 참조 → FAIL) 확인 후 원복.
   - Failure probe: 자기시험이 곧 실패 경로 검증 — FAIL 이 안 나면 게이트가 죽은 것이므로 중단·수리.
   - Commit: changeset `20260804-m24-harvest-batch3` (README 절: step-1).
-- [ ] **step-2 — device-frame 부속 승격 + 미등재 마이크로 인터랙션 6종 등재**
+- [x] **step-2 — device-frame 부속 승격 + 미등재 마이크로 인터랙션 6종 등재**
   - Artifact: `device-frame` 을 부속 자산으로 선등재(3종의 참조 대상 — meta.harvest 본체 출처) 후 6종 registry.json 등재(meta.harvest 전건, motion 의존 3종은 dependencies 선언, device-frame 참조 3종은 step-1 ② 경로) — 소스는 기존 파일, 계약 §3 시그니처·reduced-motion·aria 준수 점검만(사이트 동작 무변경).
   - Risk: 위험 (registry 재생성 — diff 0 게이트로 방어)
   - Files: edit examples/ui-vocabulary-site/registry.json. read src/components/{device-frame,magnetic-hover-button,spring-drag-snap-card,swipe-action-row-pattern,pull-to-refresh-list-pattern,staggered-entrance-group,bottom-sheet-detents}.tsx. run scripts/generate-registry.mjs.

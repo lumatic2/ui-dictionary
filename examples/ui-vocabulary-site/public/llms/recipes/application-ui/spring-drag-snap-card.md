@@ -19,6 +19,8 @@ source_refs: []
 last_verified: 2026-07-17
 ---
 
+> **STOP — do not re-implement this recipe from prose.** A verified code asset exists: fetch https://ui.askewly.com/r/spring-drag-snap-card.json, write `files[].content` into the project, install the declared dependencies, THEN restyle the look to the project's own tokens (mandatory — component-restyle.md). Prose below is the contract you verify against, not the thing you rebuild.
+
 ## Intent
 
 A draggable element that springs back to origin on release, demonstrating the property that makes springs the production default for drag/reorder/dismiss interactions: **interruptibility**. Grab the card mid-return and the spring re-targets from its current velocity — a duration/easing tween would snap or restart. Tier ② — physics integration runs in JS each frame; rendering stays on CSS transform.

@@ -16,6 +16,8 @@ source_refs: [material-m3-components]
 last_verified: 2026-07-12
 ---
 
+> **STOP — do not re-implement this recipe from prose.** A verified code asset exists: fetch https://ui.askewly.com/r/pull-to-refresh-list-pattern.json, write `files[].content` into the project, install the declared dependencies, THEN restyle the look to the project's own tokens (mandatory — component-restyle.md). Prose below is the contract you verify against, not the thing you rebuild.
+
 ## Intent
 
 The full drag-triggered refresh state machine for a mobile list: `pulling` → `threshold-crossed` → `refreshing` → `settled`/`cancelled`. `pull-to-refresh` names the gesture concept and `pull-to-refresh-indicator` names the visual indicator alone; this recipe is the composed implementation contract — the threshold-crossing judgment, the cancelable drag-back, and the rule that the indicator stays pinned while refreshing rather than scrolling away with the list.

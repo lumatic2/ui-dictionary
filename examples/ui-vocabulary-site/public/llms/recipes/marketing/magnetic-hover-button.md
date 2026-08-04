@@ -18,6 +18,8 @@ source_refs: []
 last_verified: 2026-07-17
 ---
 
+> **STOP — do not re-implement this recipe from prose.** A verified code asset exists: fetch https://ui.askewly.com/r/magnetic-hover-button.json, write `files[].content` into the project, install the declared dependencies, THEN restyle the look to the project's own tokens (mandatory — component-restyle.md). Prose below is the contract you verify against, not the thing you rebuild.
+
 ## Intent
 
 A magnetic hover button leans toward the cursor while hovered and springs back on leave. Tier ② in `knowledge/expressive-stack.md`: CSS `:hover` cannot know where the cursor is, so JS reads pointer coordinates and a spring drives a CSS transform. **This is an experimental touch (signature principle 5): showcase and marketing CTAs on explicit request only — never a product-wide button default.**

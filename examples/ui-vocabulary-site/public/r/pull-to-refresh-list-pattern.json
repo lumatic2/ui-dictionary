@@ -1,0 +1,28 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "pull-to-refresh-list-pattern",
+  "type": "registry:block",
+  "title": "Pull To Refresh List",
+  "description": "A pull-to-refresh list runs a four-phase state machine — idle, pulling, threshold-crossed, refreshing — where a drag that never crosses the threshold snaps back without refreshing, and the loading indicator holds a fixed height so it never scrolls off-screen while refreshing (per Material 3 guidance). The live region announces the refresh politely.",
+  "docs": "Recipe contract (intent/anatomy/tokens/checks/anti-patterns): https://ui.askewly.com/llms/recipes/data-display/pull-to-refresh-list-pattern.md — after transplant, remap look to the project's own tokens per https://ui.askewly.com/llms/docs/design-system/component-restyle.md",
+  "meta": {
+    "harvest": {
+      "origin": "ui-vocabulary-site micro-interaction demos",
+      "liveUrl": "https://ui.askewly.com/",
+      "harvestedAt": "2026-08-04"
+    }
+  },
+  "registryDependencies": [
+    "https://ui.askewly.com/r/device-frame.json"
+  ],
+  "dependencies": [
+    "lucide-react"
+  ],
+  "files": [
+    {
+      "path": "registry/askewly/pull-to-refresh-list-pattern/pull-to-refresh-list-pattern.tsx",
+      "type": "registry:component",
+      "content": "import { useRef, useState } from \"react\"\nimport { RefreshCwIcon } from \"lucide-react\"\nimport { DeviceFrame } from \"@/components/device-frame\"\nimport { cn } from \"@/lib/utils\"\n\ntype RefreshPhase = \"idle\" | \"pulling\" | \"threshold-crossed\" | \"refreshing\"\n\nconst THRESHOLD_PX = 64\nconst MAX_PULL_PX = 96\n\nconst items = [\"Design review notes\", \"Sprint planning agenda\", \"Client feedback thread\", \"Roadmap sync\"]\n\n/**\n * Full pull-to-refresh state machine: pulling -> threshold-crossed ->\n * refreshing -> settled/cancelled. The indicator never scrolls off-screen\n * while refreshing (M3: \"Don't scroll the loading indicator off-screen\") and\n * a drag that never crosses the threshold snaps back without refreshing.\n */\nfunction usePullToRefresh(onRefresh: () => Promise<void>) {\n  const [phase, setPhase] = useState<RefreshPhase>(\"idle\")\n  const [pullOffset, setPullOffset] = useState(0)\n  const startY = useRef<number | null>(null)\n  const atScrollTop = useRef(true)\n\n  function onPointerDown(event: React.PointerEvent<HTMLDivElement>) {\n    if (!atScrollTop.current || phase === \"refreshing\") return\n    startY.current = event.clientY\n  }\n\n  function onPointerMove(event: React.PointerEvent<HTMLDivElement>) {\n    if (startY.current === null || phase === \"refreshing\") return\n    const delta = Math.max(0, event.clientY - startY.current)\n    const clamped = Math.min(delta, MAX_PULL_PX)\n    setPullOffset(clamped)\n    setPhase(clamped >= THRESHOLD_PX ? \"threshold-crossed\" : clamped > 0 ? \"pulling\" : \"idle\")\n  }\n\n  async function onPointerUp() {\n    if (startY.current === null) return\n    startY.current = null\n\n    if (phase === \"threshold-crossed\") {\n      setPhase(\"refreshing\")\n      setPullOffset(THRESHOLD_PX)\n      await onRefresh()\n      setPhase(\"idle\")\n      setPullOffset(0)\n      return\n    }\n\n    // Cancelled drag: released before crossing the threshold snaps back.\n    setPhase(\"idle\")\n    setPullOffset(0)\n  }\n\n  return { phase, pullOffset, atScrollTop, onPointerDown, onPointerMove, onPointerUp }\n}\n\nexport function PullToRefreshListPatternDemo() {\n  const [refreshedAt, setRefreshedAt] = useState<string | null>(null)\n  const { phase, pullOffset, atScrollTop, onPointerDown, onPointerMove, onPointerUp } = usePullToRefresh(\n    async () => {\n      await new Promise((resolve) => setTimeout(resolve, 900))\n      setRefreshedAt(new Date().toLocaleTimeString())\n    }\n  )\n\n  return (\n    <DeviceFrame statusBarLabel=\"9:41\">\n      <div className=\"flex h-full flex-col\">\n        <p className=\"p-4 pb-2 text-sm font-semibold text-foreground\">Feed</p>\n        <div\n          className=\"relative flex-1 overflow-y-auto\"\n          onScroll={(event) => {\n            atScrollTop.current = event.currentTarget.scrollTop <= 0\n          }}\n          onPointerDown={onPointerDown}\n          onPointerMove={onPointerMove}\n          onPointerUp={onPointerUp}\n          onPointerLeave={onPointerUp}\n        >\n          <div\n            aria-live=\"polite\"\n            className=\"pointer-events-none absolute inset-x-0 top-0 flex items-center justify-center overflow-hidden transition-[height] duration-150\"\n            style={{ height: phase === \"refreshing\" ? THRESHOLD_PX : pullOffset }}\n          >\n            <RefreshCwIcon\n              aria-hidden=\"true\"\n              className={cn(\n                \"size-5 text-muted-foreground transition-transform\",\n                phase === \"refreshing\" && \"animate-spin\",\n                phase === \"threshold-crossed\" && \"text-foreground\"\n              )}\n              style={{ transform: phase === \"refreshing\" ? undefined : `rotate(${pullOffset * 3}deg)` }}\n            />\n          </div>\n\n          <div\n            className=\"flex flex-col divide-y transition-transform duration-150\"\n            style={{ transform: `translateY(${phase === \"refreshing\" ? THRESHOLD_PX : pullOffset}px)` }}\n          >\n            {refreshedAt ? (\n              <p className=\"px-4 py-2 text-xs text-muted-foreground\">Updated {refreshedAt}</p>\n            ) : null}\n            {items.map((item) => (\n              <div key={item} className=\"px-4 py-3 text-sm text-foreground\">\n                {item}\n              </div>\n            ))}\n          </div>\n        </div>\n      </div>\n    </DeviceFrame>\n  )\n}\n"
+    }
+  ]
+}

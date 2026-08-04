@@ -1,0 +1,26 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "magnetic-hover-button",
+  "type": "registry:block",
+  "title": "Magnetic Hover Button",
+  "description": "A magnetic hover button leans toward the cursor while hovered and springs back to rest on leave: pointer position is normalized to -1..1, damped through a spring, and rendered as a CSS transform. An experimental showcase/marketing touch — never a product-wide button default. Keyboard users get the identical button minus the lean; reduced motion disables the pull entirely.",
+  "docs": "Recipe contract (intent/anatomy/tokens/checks/anti-patterns): https://ui.askewly.com/llms/recipes/marketing/magnetic-hover-button.md — after transplant, remap look to the project's own tokens per https://ui.askewly.com/llms/docs/design-system/component-restyle.md",
+  "meta": {
+    "harvest": {
+      "origin": "ui-vocabulary-site micro-interaction demos",
+      "liveUrl": "https://ui.askewly.com/",
+      "harvestedAt": "2026-08-04"
+    }
+  },
+  "registryDependencies": [],
+  "dependencies": [
+    "motion"
+  ],
+  "files": [
+    {
+      "path": "registry/askewly/magnetic-hover-button/magnetic-hover-button.tsx",
+      "type": "registry:component",
+      "content": "import { useRef } from \"react\"\nimport { motion, useMotionValue, useReducedMotion, useSpring } from \"motion/react\"\n\ntype MagneticHoverButtonProps = {\n  children: string\n  onClick?: () => void\n  /** Max pull toward the cursor, in px. Keep small — attraction, not chase. */\n  pull?: number\n}\n\n/**\n * Magnetic hover button: the button leans toward the cursor while hovered and\n * springs back to rest on leave (tier ② — JS reads pointer position, CSS\n * transform renders). An experimental touch per signature principle 5: use on\n * showcase/marketing CTAs on explicit request, never as a product-wide button\n * default. Keyboard users get the identical button minus the lean — focus and\n * activation are untouched.\n */\nexport function MagneticHoverButton({ children, onClick, pull = 10 }: MagneticHoverButtonProps) {\n  const ref = useRef<HTMLButtonElement>(null)\n  const reduceMotion = useReducedMotion()\n  const x = useMotionValue(0)\n  const y = useMotionValue(0)\n  const springX = useSpring(x, { stiffness: 320, damping: 22 })\n  const springY = useSpring(y, { stiffness: 320, damping: 22 })\n\n  const handleMove = (event: React.PointerEvent) => {\n    if (reduceMotion || !ref.current) return\n    const rect = ref.current.getBoundingClientRect()\n    x.set(((event.clientX - rect.left) / rect.width - 0.5) * 2 * pull)\n    y.set(((event.clientY - rect.top) / rect.height - 0.5) * 2 * pull)\n  }\n\n  const reset = () => {\n    x.set(0)\n    y.set(0)\n  }\n\n  return (\n    <motion.button\n      ref={ref}\n      className=\"rounded-md bg-primary px-5 py-2.5 text-sm font-medium text-primary-foreground outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2\"\n      style={{ x: springX, y: springY }}\n      type=\"button\"\n      onClick={onClick}\n      onPointerLeave={reset}\n      onPointerMove={handleMove}\n    >\n      {children}\n    </motion.button>\n  )\n}\n\n/** Colocated demo: one magnetic CTA with room to observe the pull and spring-back. */\nexport function MagneticHoverButtonDemo() {\n  return (\n    <div className=\"flex h-48 w-full max-w-md items-center justify-center rounded-lg border bg-muted/30\">\n      <MagneticHoverButton>Hover me</MagneticHoverButton>\n    </div>\n  )\n}\n"
+    }
+  ]
+}
