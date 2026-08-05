@@ -18,3 +18,13 @@
   - `saas-app-shell`: **`class-variance-authority` `react` 추가** · export `SaasAppShell` 유지(회귀 없음).
   - `react` 는 걸러내지 않는다 — 킥스타트는 빈 디렉터리를 받으므로 실제로 필요하고, 제외 목록을 만드는 순간 cva 때 기각한 하드코딩 패턴으로 돌아간다.
 - 게이트: vitest 71/71(신규 8) · `tsc --noEmit` exit 0 · 블록 2종 킥스타트 exit 0 · verify PASS · 인쇄된 export 심볼을 이식 파일 grep 으로 실존 확인.
+
+## step-3 — 킥스타트 기본값 폴리싱 (오너 관측 지목분)
+
+- 지목 3건 전부 **블록·asset 표현** — 팔레트·캔버스(CLI 소유 `ACCENTS`/`CANVASES`)는 지목 없어 무변경.
+- ① 그라디언트 제거: `MeshGradientSurface` 사용 2곳(story 첫 스텝 카드·CTA 밴드 지면) 걷어냄. asset 은 registry 에 그대로 남고 다른 데모(glass-panel·grain-texture-overlay)도 무변경 — 이 블록에서만 안 쓴다.
+- ② 미디어 슬롯 테두리 제거: story 스텝은 asset 자체 플레이스홀더(`bg-muted`, 보더 없음)로 통일, CTA 밴드도 보더 없이 `bg-muted`. 근거는 오너 지적 그대로 — 슬롯에 컴포넌트를 넣으면 테두리가 이중이 된다.
+- ③ 마키: 컨테이너 `mx-auto` 추가, 일시정지를 `group`/`group-hover` 로 교체. **원인** = `hover:[&>div]:[...]` 의 쌓인 variant 가 오른쪽→왼쪽으로 적용돼 `.strip > div:hover` 로 해석된 것.
+- 측정 전/후: 마키 중심 713==부모 713 · `animation-play-state` hover 시 running→**paused** · DOM `radial-gradient` **0** · 섹션 9개 유지(구조 무변경).
+- 게이트: registry 재생성 diff = 건드린 3자산+인덱스만(다른 52종 무변경) · llms-sync PASS · 사이트 build+prerender 759 PASS · 블록 verify 0건 · 라이트/다크 관측.
+- 주의(승계): 블록 JSON 의 asset regDeps 는 라이브 절대 URL 이라 `--registry` 로컬로는 asset 변경분이 안 온다 — 이번 관측은 asset 2파일 직접 복사로 확인했고 라이브 재확인은 step-4.

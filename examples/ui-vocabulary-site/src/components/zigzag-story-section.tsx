@@ -43,10 +43,13 @@ export function ZigzagStorySection({ eyebrow, heading, steps }: ZigzagStorySecti
                 <p className="mt-2 break-keep text-sm leading-relaxed text-muted-foreground">{step.body}</p>
               </div>
               <div className={mediaFirst ? "md:order-1" : undefined}>
+                {/* No border on the placeholder: it is a slot waiting for the
+                    consumer's media, and a framed empty box reads as finished
+                    content (M28 step-3, owner observation). */}
                 {step.media ?? (
                   <div
                     aria-hidden="true"
-                    className="flex aspect-[3/2] w-full items-center justify-center rounded-lg border bg-muted"
+                    className="flex aspect-[3/2] w-full items-center justify-center rounded-lg bg-muted"
                   >
                     <span className="text-3xl font-semibold tabular-nums text-muted-foreground/60">
                       {String(index + 1).padStart(2, "0")}

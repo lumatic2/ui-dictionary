@@ -1,5 +1,4 @@
 import { Button } from "@/components/ui/button"
-import { MeshGradientSurface } from "@/components/mesh-gradient-surface"
 import { RotatingLabel } from "@/components/rotating-label"
 
 type CtaSectionProps = {
@@ -10,13 +9,18 @@ type CtaSectionProps = {
   button: string
 }
 
-/** Final ask: mesh-gradient ground, one rotating word slot in the headline, a single action. */
+/**
+ * Final ask: a muted band, one rotating word slot in the headline, a single
+ * action. The band used to sit on a mesh-gradient ground with a border; both
+ * went on owner observation (M28 step-3) — the section already earns its
+ * separation from the tone change alone.
+ */
 export function CtaSection({ headingPrefix, rotating, headingSuffix, body, button }: CtaSectionProps) {
   const widthCh = Math.max(...rotating.map((label) => label.length)) + 0.6
 
   return (
     <section className="mx-auto w-full max-w-5xl px-6 py-20">
-      <MeshGradientSurface className="rounded-2xl border px-6 py-16 text-center">
+      <div className="rounded-2xl bg-muted px-6 py-16 text-center">
         <h2 className="break-keep text-3xl font-semibold tracking-tight text-foreground">
           {headingPrefix} <RotatingLabel labels={rotating} widthCh={widthCh} /> {headingSuffix}
         </h2>
@@ -24,7 +28,7 @@ export function CtaSection({ headingPrefix, rotating, headingSuffix, body, butto
         <Button className="mt-8" size="lg">
           {button}
         </Button>
-      </MeshGradientSurface>
+      </div>
     </section>
   )
 }
