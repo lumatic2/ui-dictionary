@@ -28,3 +28,9 @@
 - 측정 전/후: 마키 중심 713==부모 713 · `animation-play-state` hover 시 running→**paused** · DOM `radial-gradient` **0** · 섹션 9개 유지(구조 무변경).
 - 게이트: registry 재생성 diff = 건드린 3자산+인덱스만(다른 52종 무변경) · llms-sync PASS · 사이트 build+prerender 759 PASS · 블록 verify 0건 · 라이트/다크 관측.
 - 주의(승계): 블록 JSON 의 asset regDeps 는 라이브 절대 URL 이라 `--registry` 로컬로는 asset 변경분이 안 온다 — 이번 관측은 asset 2파일 직접 복사로 확인했고 라이브 재확인은 step-4.
+
+## step-4 — `0.4.1` 출고
+
+- 버전 `0.4.0` → `0.4.1` (patch — 오탐 수정·누락 수정, CLI 인터페이스 무변경). `cli-release-procedure.md` 배포 이력 행 추가.
+- 배포 전 게이트: build(data 번들 terms=563 recipes=48) · vitest **71/71** · `tsc --noEmit` exit 0 · `npm pack --dry-run` **15 files · 259.6 kB**(0.4.0 대비 +1 파일 = kickstart 테스트 아님, dist 모듈 증가 없음 — `src/`·`test/`·`scripts/` 포함 **0건** 확인).
+- 경로: Trusted Publishing 워크플로(`gh workflow run publish-cli.yml --ref main`). 워크플로가 지정 ref 를 checkout 하므로 **push 선행 필수**.

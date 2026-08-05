@@ -39,7 +39,7 @@ gh workflow run publish-cli.yml --ref main          # dry_run 기본 false
 gh run watch <run-id> --exit-status
 ```
 
-워크플로(`.github/workflows/publish-cli.yml`)가 게이트(build·tsc·vitest) → pack 확인 → OIDC publish → **버전 단위** 전파 확인 → 레포 밖 실증까지 수행한다. 아래 「배포 후 검증」의 3단계가 여기 들어 있다. 토큰 발급·폐기 없음. 실적: `0.3.0` 2026-08-01, 1분 28초 전건 통과 · `0.4.0` 2026-08-04(minor — init --block 킥스타트·cosmos·데이터 갱신, 레포 밖 실증에 킥스타트 라이브 소비 1회 추가).
+워크플로(`.github/workflows/publish-cli.yml`)가 게이트(build·tsc·vitest) → pack 확인 → OIDC publish → **버전 단위** 전파 확인 → 레포 밖 실증까지 수행한다. 아래 「배포 후 검증」의 3단계가 여기 들어 있다. 토큰 발급·폐기 없음. 실적: `0.3.0` 2026-08-01, 1분 28초 전건 통과 · `0.4.0` 2026-08-04(minor — init --block 킥스타트·cosmos·데이터 갱신, 레포 밖 실증에 킥스타트 라이브 소비 1회 추가) · `0.4.1` 2026-08-05(patch — verify 속성 셀렉터 오탐, 킥스타트 handoff 2건: export 이름 파생·이식 파일 import 실측 dep 집계).
 
 배포 전에 버전을 올려 두고 **push 한 뒤** 실행한다 — 워크플로는 지정 ref 를 checkout 하므로 미푸시 커밋은 배포되지 않는다.
 
