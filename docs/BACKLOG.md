@@ -865,3 +865,14 @@ plan doc: `archive/plans/2026-07-21-eu*.md` · 증거: `evidence/editor-legibili
   - Completed: 2026-08-05
   - Result: 0.4.1 출고 — 인쇄된 안내 그대로 빌드 성공(cva 무재현), verify 오탐 제거, 오너 지목 3건(그라디언트·슬롯 테두리·마키) 반영
   - Evidence: evidence/cli-polish-041/m28-release-041.md
+
+### 2026-08
+- M29 - M29 — 이식 경로 완결: `@/` alias 안내 + docs-site 블록(3호) + 0.4.2 출고
+  - Completed: 2026-08-06
+  - Result: 킥스타트가 인쇄한 안내만으로 docs-site 블록이 빌드된다(수기 보완 0) — @/ alias 감지+안내·다크 스위치 통합·color-scheme 3건, 0.4.2 출고, 블록 3호 라이브
+  - Evidence: evidence/docs-block-and-theme-derive/m29-release-042.md
+
+- HU4 - HU4 — 통합 실증
+  - Completed: 2026-08-06
+  - Result: 정본 덱 통합 실증 — 사용자 관측 6라운드 PASS, 발표 게이트 명문화
+  - Evidence: evidence/html-upgrade/hu4-live-proof.md

@@ -1,7 +1,7 @@
 # ROADMAP
 
-> Last updated: 2026-08-05
-> Status: **2026-08-05 goal `docs-block-and-theme-derive` 승인 (M29 active · M30 pending)** — ① `@/` alias 감지+안내 ② docs-site 블록(3호, 셸+3페이지) + 0.4.2 출고 ③ `/pt` `custom` 테마의 다크 판본. 직전 `cli-polish-041` 완주(M28, 0.4.1 출고). **큐 정정**: 구 큐 항목 "dark/light 테마 SSOT 파생"은 사용자 의도와 다른 물건이었고(의도 = 4번째 선택지가 레포 토큰을 따라가게 → M17 에서 이미 충족), M30 으로 재정의됐다. 남은 큐: 『인터랙티브 웹 애니메이션』 책 스터디(사용자 주도) · D2 Presenton 벤치 · Around 재판정.
+> Last updated: 2026-08-06
+> Status: **2026-08-06 M29 완주 — 이식 경로 완결.** 빈 vite 에서 킥스타트 한 줄 + **인쇄된 안내만으로** docs-site 블록이 빌드된다(수기 보완 0, `tsc -b` 6건 무재현). `0.4.2` npm 출고 · 블록 3호 라이브 · 다크 결함 3건(코드 패널 반전 · 갈라진 다크 스위치 · `color-scheme` 미선언) 수정. 다음 = **M30(pending, 승인 연쇄)** `/pt` `custom` 테마의 다크 판본. **큐 정정**: 구 항목 "dark/light 테마 SSOT 파생"은 사용자 의도와 다른 물건이었고(의도 = 4번째 선택지가 레포 토큰을 따라가게 → M17 에서 이미 충족), M30 으로 재정의됐다. 남은 큐: 반전 사용 9개 파일 일괄 판정 · 책 스터디(사용자 주도) · D2 · Around.
 > North star: Build Askewly Design as both a public reference website and an agent-usable implementation system.
 > line budget: <=150
 
@@ -11,14 +11,6 @@
 Goal: 이식 경로가 세 번째 블록(docs-site)까지 **인쇄된 안내만으로** 돌아가고, `/pt` 의 4번째 테마 선택지(`custom`)가 레포 토큰의 다크 얼굴까지 따라간다. 킥스타트는 이 시스템이 남에게 이식되는 유일한 원커맨드 표면이고, `custom` 테마는 임의의 레포가 자기 브랜드로 덱을 만드는 유일한 경로다 — 둘 다 "이식 가능한 제품" 축의 실발현 지점이다. 승인 2026-08-05.
 
 ## Active Milestones — docs-block-and-theme-derive
-
-<!-- harness:milestone id="M29" status="active" priority="P1" evidence="evidence/docs-block-and-theme-derive/m29-release-042.md" -->
-### M29 — 이식 경로 완결: `@/` alias 안내 + docs-site 블록(3호) + 0.4.2 출고
-- DoD: 빈 vite 프로젝트 → 킥스타트 1커맨드 → **인쇄된 안내만으로(수기 보완 0)** → `tsc -b` exit 0 → 빌드 성공 → docs-site 3페이지 실브라우저 렌더. M28 E2E 에서 2회 수기로 메웠던 alias 구멍 무재현 + 블록 3호가 block-contract §6 등재·llms 배포. 사용자 관측 1회 포함.
-- Gap: 인쇄된 render 안내가 `@/...` 를 쓰라면서 alias 설정을 안내하지 않음(신선 vite `tsc -b` 6건 실패) · docs 계열 asset 7종이 낱개로만 존재하고 한 벌로 묶인 적 없음
-- Scale: steps=5 (alias · 흡수 실사 · 블록 소스+등재 · 데모+관측 · 배포+출고+E2E); surfaces: packages/cli · blocks/docs-site · registry · npm; capability: 세 번째 블록까지 원커맨드 이식
-- Plan: plans/2026-08-05-m29-docs-block-and-alias.md
-- Status: [ ]
 
 <!-- harness:milestone id="M30" status="pending" priority="P2" evidence="evidence/docs-block-and-theme-derive/m30-custom-dark-face.md" -->
 ### M30 — `custom` 테마의 다크 판본
@@ -61,19 +53,6 @@ Goal: CLI 0.4.1 폴리싱 — 킥스타트 handoff 가 실제 프로젝트와 �
 
 ## Active Milestones — html-upgrade
 
-<!-- harness:milestone id="HU4" status="completed" priority="P1" evidence="evidence/html-upgrade/hu4-live-proof.md" -->
-### HU4 — 통합 실증
-- DoD: askewly-design-intro 가 HU1~3 전 기능으로 라이브 리허설 통과 + 발표 게이트 명문화(대비·프로젝터 체크) + 사용자 관측 1회.
-- Evidence: evidence/html-upgrade/hu4-live-proof.md
-- Gap: 스킬 기능만으로는 실사용 품질 미보장(PB2 교훈 — 실덱 관측 필수)
-- Plan: archive/plans/2026-07-31-hu4-live-proof.md
-- Status: [x]
-
-<!-- harness:goal-archive17 id="pptx-bespoke" status="completed" -->
-Goal: PPTX 고품질 bespoke 트랙 — 덱 전용 코드 생성+PNG 자기검사 미세조정. closed 2026-07-31 — PB1 정식화(pptx-to-png·계약 문서) + PB2 실증(관측 왕복 4회: HTML 미러링 FAIL→brandlogy 편집 그래머 재정의·구도 5종·lucide 아이콘·이미지 3트랙 사용자 확정, 실증 덱 4본, 스킬 §5~8 흡수 배포). Details: `evidence/slide-pipeline/pb{1,2}-*.md` + `docs/reports/2026-07-31-pb{1,2}-*.md`.
-
-- Completed at: 2026-07-31
-- Summary: 정본 덱 통합 실증 — 사용자 관측 6라운드 PASS, 발표 게이트 명문화
 ## Active Milestones — pptx-bespoke
 
 ## Active Milestones — slide-pipeline-upgrade
