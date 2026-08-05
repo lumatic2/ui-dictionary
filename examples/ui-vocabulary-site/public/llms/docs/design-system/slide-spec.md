@@ -134,5 +134,19 @@ checkSlideHeuristics(regions, { canvas, enable: true })
 - **아무도 이 검사를 자동으로 부르지 않는다.** 마무리 절차가 매체에 따라 이 게이트를
   지시하는 것은 별도 작업이다.
 - ~~토큰 출발점(§5)의 생성기가 미구현이다~~ — **해소(M17, 2026-08-04)**: DESIGN.md
-  →테마 변환·탐지 배선 완료. 남은 것은 dark/light canonical 테마의 SSOT 파생
-  (SSOT dark 모드 토큰 정비 선행 — finding 큐).
+  →테마 변환·탐지 배선 완료.
+- ~~남은 것은 dark/light canonical 테마의 SSOT 파생~~ — **철회(M30, 2026-08-06)**:
+  이 줄이 가리키던 작업은 **사용자 의도와 다른 물건이었다.** 의도는 기존 canonical
+  3종을 파생물로 바꾸는 것이 아니라 **4번째 선택지(`custom`)가 대상 레포의 토큰을
+  따라가는 것**이었고, 그건 M17 이 이미 만들어 둔 것이다(2026-08-06 실행 확인:
+  ui-dictionary DESIGN.md → 29변수·AA 통과). canonical 3종은 **존치**한다(§5 마지막
+  항목과 같은 이유 — 사용자 정정 2026-08-04 "이미 잘 만들어진 테마").
+  - 실제로 비어 있던 것은 하나였고 M30 이 채웠다: `custom` 이 **라이트 얼굴만**
+    냈다는 것. `DESIGN.md` 의 `themes.dark` 오버라이드(ui-dictionary 기준 37행,
+    SSOT semantic 색 토큰 37/37 과 일치)를 변환기가 읽지 않았다. 이제
+    `--mode light|dark` 로 두 얼굴을 낸다 — 다크 정보가 없는 프로젝트는 조용한
+    폴백 없이 exit≠0 으로 거부하고 canonical `dark` 를 제안한다.
+    증거: `evidence/docs-block-and-theme-derive/m30-custom-dark-face.md`.
+  - 교훈: **큐 문구는 그것을 적은 시점의 관심사를 담는다.** 문구를 실행 대상으로
+    삼기 전에 사용자 의도와 대조한다(같은 성격의 오독이 M17 에서 두 번, M30 에서
+    한 번 — 계획을 세 번 재작성하게 만들었다).

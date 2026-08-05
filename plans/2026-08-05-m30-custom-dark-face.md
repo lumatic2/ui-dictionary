@@ -56,7 +56,7 @@ Status: approved (사용자 승인 2026-08-05 "ㄱㄱ" — M29 와 함께 1회 �
 
 ## Step 트리
 
-- [ ] **step-1 — 변환기 다크 판독 + `--mode` 출력**
+- [x] **step-1 — 변환기 다크 판독 + `--mode` 출력**
   - Artifact: `custom-skills/promoted/pt/scripts/design-md-to-theme.mjs` — ⓐ `themes.dark` flat 키 오버라이드를 base 토큰 트리에 병합 판독(기술 결정 ②) ⓑ `--mode light|dark` 옵션(미지정 = 현행 동작, 기술 결정 ③) ⓒ 다크 정보 부재 시 명시 실패(기술 결정 ④) ⓓ 두 모드 각각 WCAG AA 자기검사 ⓔ `--self-test` 케이스 추가(다크 병합·모드별 산출 상이·29종 충족·다크 부재 실패·AA).
   - Files: edit ~/projects/custom-skills/promoted/pt/scripts/design-md-to-theme.mjs.
   - Risk: 기계적 (기존 파서 위의 국소 확장. 회귀 위험은 "미지정 호출의 동작 변화" 하나이고 self-test 가 그것을 잡는다)
@@ -65,7 +65,7 @@ Status: approved (사용자 승인 2026-08-05 "ㄱㄱ" — M29 와 함께 1회 �
   - Failure probe: ⓐ flat 키(`color.semantic.surface.base` 형태)를 중첩 경로로 해석 못 해 조용히 base 가 남는 경우 — 다크·라이트 산출물이 같아지면 FAIL(위 Verify 의 "서로 다름"이 이것을 잡는다). ⓑ 중괄호 토큰 참조가 다크 오버라이드 안에서 미해석돼 문자열이 그대로 나가는 경우 — 출력에 `{` 가 남으면 FAIL. ⓒ 다크에서 액센트가 무채색으로 떨어지는 경우 — `isNeutral` 배제가 실제로 작동하는지 산출물의 `accent-start` 채도로 확인(입력 실측 ③ 의 예측 검증).
   - Commit: changeset `20260805-m30-custom-dark-face` (README 절: step-1).
 
-- [ ] **step-2 — 스킬 배선·문서 + 실덱 다크 렌더 관측 + 배포**
+- [x] **step-2 — 스킬 배선·문서 + 실덱 다크 렌더 관측 + 배포**
   - Artifact: `SKILL.md` §6 `custom` 항목과 브랜드 탐지 문단에 **라이트/다크 선택**을 명시(덱 대상이 프로젝트면 두 얼굴을 제안, 다크 정보 없으면 그 사실 고지 후 canonical 제안) + `references/style-system.md` 커스텀 테마 절 갱신 → **ui-dictionary `DESIGN.md` 로 다크 덱을 실제로 만들어 실브라우저 렌더**, 라이트 판본과 나란히 **사용자 관측**(액센트 순서 지목받음) → 지목 반영 → `setup.sh` 배포 → `ui-dictionary/docs/design-system/slide-spec.md` §6 잔여 줄 정리(무엇이 충족됐고 무엇이 애초에 다른 물건이었는지 1~2줄) + llms 재생성 → `evidence/docs-block-and-theme-derive/m30-custom-dark-face.md`.
   - Files: edit ~/projects/custom-skills/promoted/pt/SKILL.md. edit ~/projects/custom-skills/promoted/pt/references/style-system.md. edit docs/design-system/slide-spec.md. write evidence/docs-block-and-theme-derive/m30-custom-dark-face.md. (지목 시) edit ~/projects/custom-skills/promoted/pt/scripts/design-md-to-theme.mjs.
   - Risk: 위험 (사람 취향 관측이 유일한 판정자 — 확인 전 완료 선언 금지. M17 에서 같은 성격의 판단이 두 번 뒤집혔다)
