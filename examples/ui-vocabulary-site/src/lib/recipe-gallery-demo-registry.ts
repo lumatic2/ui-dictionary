@@ -41,6 +41,7 @@ import { ResponsiveContentGridDemo } from "@/components/responsive-content-grid"
 import { SidebarApplicationShellDemo } from "@/components/sidebar-application-shell"
 import { SaasAppShellDemo } from "@/components/blocks/saas-app-shell/page"
 import { MarketingLandingDemo } from "@/components/blocks/marketing-landing/page"
+import { DocsSiteDemo } from "@/components/blocks/docs-site/page"
 import { BottomTabBarDemo } from "@/components/bottom-tab-bar"
 import { AdaptiveNavigationContainerDemo } from "@/components/adaptive-navigation-container"
 import { LargeTitleCollapsingHeaderDemo } from "@/components/large-title-collapsing-header"
@@ -100,6 +101,7 @@ export const recipeDemoComponents: Record<string, ComponentType> = {
   "sidebar-application-shell": SidebarApplicationShellDemo,
   "saas-app-shell": SaasAppShellDemo,
   "marketing-landing": MarketingLandingDemo,
+  "docs-site": DocsSiteDemo,
   "landing-hero": LandingHeroDemo,
   "adaptive-navigation-container": AdaptiveNavigationContainerDemo,
   "bottom-tab-bar": BottomTabBarDemo,

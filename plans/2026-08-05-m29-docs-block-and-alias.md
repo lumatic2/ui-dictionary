@@ -77,7 +77,7 @@ Status: approved (사용자 승인 2026-08-05 "ㄱㄱ" — 결정 A=(a) 감지 �
   - Failure probe: ⓐ 순수성 위반 — 미등재 컴포넌트 import 시 생성기가 fail 로 막는다(설계된 게이트). ⓑ **`requiredCssVars` 가 실사용보다 좁은 경우** — 블록 소스에서 참조되는 `var(--…)` 를 전수 grep 해 선언과 대조한다. 좁으면 킥스타트 §8-5 검사가 통과해 버려 이식처에서 색이 빠진다(계약이 조용히 거짓이 되는 유일한 경로).
   - Commit: changeset (README 절: step-3).
 
-- [ ] **step-4 — 사이트 데모 배선 + 실브라우저 관측 (사람 게이트)**
+- [x] **step-4 — 사이트 데모 배선 + 실브라우저 관측 (사람 게이트)**
   - Artifact: 사이트 데모 배선(`recipe-gallery-demo-registry.ts`·`navigation-model.ts` — `marketing-landing` 선례 경로) + 로컬 서빙 registry 로 킥스타트해 3페이지를 실브라우저로 띄우고 **라이트/다크 관측** → 지목분 반영 → `evidence/docs-block-and-theme-derive/m29-docs-site-block.md`(전/후 스크린샷·지목 항목·판정).
   - Files: edit examples/ui-vocabulary-site/src/lib/recipe-gallery-demo-registry.ts. edit examples/ui-vocabulary-site/src/lib/navigation-model.ts. write evidence/docs-block-and-theme-derive/m29-docs-site-block.md. (지목 시) edit examples/ui-vocabulary-site/src/components/blocks/docs-site/*. **경고(M28 교훈)**: 지목이 조합된 **asset 소스**(`docs-code-block` 등)에 걸릴 수 있다 — 걸리면 그 파일도 이 step 의 Files 로 간주하고 진행 로그에 명시한다(M28 에서 실제로 계획서보다 넓어진 지점).
   - Risk: 위험 (사람 취향 관측이 유일한 판정자 — 확인 전 완료 선언 금지)

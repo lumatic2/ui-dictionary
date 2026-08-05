@@ -30,3 +30,17 @@
 - 등재: `registry.json` 에 `tier:"block"` + `requiredCssVars` 20종. 생성기가 regDeps 를 **자동 해석** — 조합 asset 7종 URL + shadcn `badge`·`button`, npm dep `lucide-react`, files 6.
 - **`requiredCssVars` 실사용 대조** (계획 기술결정 ⑤ — 선언이 좁으면 킥스타트 검사가 통과해 버리고 이식처에서 색이 빠진다): 블록은 `var(--…)` 를 직접 쓰지 않고 Tailwind 유틸리티로 참조하므로 **조합 asset + 그 shadcn primitive 까지 전이적으로** 스캔했다. 실사용 semantic 19종 + `--radius`(rounded-lg/md) = **선언 20종과 정확히 일치**. `--sidebar*`·`--chart-*` 사용 **0**(좌측 레일이 `sidebar` primitive 가 아니라 조합 마크업이라 불필요) — 그래서 `saas-app-shell` 의 28종이 아니라 `marketing-landing` 의 20종 집합이 맞다.
 - 게이트: `generate-registry` 순수성 게이트 PASS · **기존 56 자산 diff 0**(신규 `docs-site.json` + 인덱스만) · `verify` 블록 5파일 **0건** · 사이트 `npm run build`(= `tsc -b` + vite) **exit 0** + prerender **759** · `tsc --noEmit -p tsconfig.app.json` exit 0(블록이 아직 미참조라 명시 실행) · oxlint 0건 · llms 재생성(210 assets).
+
+## step-4 — 사이트 데모 배선 + 실브라우저 관측 (사람 게이트)
+
+- 배선: `recipe-gallery-demo-registry.ts`(+`DocsSiteDemo`)·`recipe-gallery-data.ts`(Docs 컬렉션). 카드 클릭 시 데모 마운트·콘솔 0.
+- 관측은 **갤러리 카드가 아니라 소비자 전체 화면**에서 했다 — 빈 vite 에 이식해 `vite preview` 로 띄움. 판단이 정직해진다.
+- **사용자 지목 A — 다크에서 코드 패널이 흰색으로 뒤집힘 → 어둡게 수정.** `bg-foreground`/`text-background` 의미 반전이 원인. `dark:bg-muted dark:text-foreground` 를 덧붙였다(터미널은 7곳). **새 토큰을 만들지 않았다** — requiredCssVars 가 늘면 배포된 소비자 계약이 바뀐다.
+- **계획 대비 드리프트(확장) 2건 — 정직한 기록**:
+  - ① Files 범위: step-4 계획은 배선 2파일 + evidence 였는데 **asset 3종**(`docs-code-block`·`api-reference-layout`·`terminal-demo-panel`)을 고쳤다. 계획서가 "지목이 asset 에 걸릴 수 있다"고 미리 경고한 범위 안이지만 파일은 더 넓다. `terminal-demo-panel` 은 `marketing-landing` 도 쓰므로 그 블록의 다크 터미널도 같이 어두워진다 — 같은 종류의 개선이라 의도적으로 포함.
+  - ② **CLI 를 다시 건드렸다**(step-1 소관 파일). 아래 B·C 는 관측 중 발견한 이식 경로 결함이고, 0.4.2 출고가 step-5 라 같은 릴리스에 실린다.
+- **지점 B (계획 밖 발견, 지목보다 큼) — 다크 스위치가 둘로 갈라져 있었다.** 생성된 `askewly-brand.css` 가 `.dark{}` 로 토큰 값만 정의하고 **`dark:` 유틸리티를 그 클래스에 묶는 선언이 없었다** — Tailwind v4 기본은 `prefers-color-scheme`. 이식된 shadcn primitive **9종 18곳**이 `dark:` 를 쓰므로 하중을 받는다. 발견 경위가 결정적: **관측하려고 내가 `@custom-variant` 를 손으로 넣고서야 다크가 보였다** = `@/` alias 와 같은 종류의 누락. → `renderBrandCss` 가 `@custom-variant dark (&:where(.dark, .dark *));` 를 토큰보다 앞에 내고, `Next steps` 에 "`dark` 를 `<html>` 에 붙이면 토큰·유틸리티가 같은 스위치" 단계 추가.
+- **지점 C — `color-scheme` 미선언.** 토큰은 우리가 그리는 것만 칠한다. 스크롤바·네이티브 컨트롤·오버스크롤 지면은 브라우저 소유라 다크에서 흰색으로 남았다. `:root`/`.dark` 에 각각 선언.
+- **지점 D — OS 다크 기본값은 의도적 미조치.** `prefers-color-scheme` 자동 적용은 앱의 명시적 토글과 충돌한다(사용자가 라이트를 골라도 OS 가 이김). 스위치를 하나로 두고 인쇄된 안내가 켜는 법을 말하게 했다.
+- 게이트: **인쇄된 안내만으로 재현**(수기 보완 0) → build exit 0 · 실측 computed style 다크 `color-scheme: dark`·`--background #0f1219`·`pre` 배경 `rgb(30,36,46)`, 라이트로 떼면 `color-scheme: light` 로 따라옴 · 라이트 회귀 없음 · 콘솔 0 · registry 재생성 diff = 수정 asset 3종만(다른 54종 무변경) · verify 0건 · 사이트 build+prerender 759 · vitest **80/80**(신규 3) · tsc exit 0 · oxlint 0건.
+- 남긴 finding: 같은 반전을 쓰는 나머지 **9개 파일**(marketing hero·colors-page·contrast-duo-card 등) — 범위 밖.

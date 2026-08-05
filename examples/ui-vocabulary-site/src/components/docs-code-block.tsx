@@ -58,7 +58,7 @@ export function DocsCodeBlock({ variants, className }: DocsCodeBlockProps) {
           >
             {copied ? <CheckIcon className="size-4" /> : <CopyIcon className="size-4" />}
           </Button>
-          <pre className="overflow-x-auto rounded-md bg-foreground p-4 pr-10 text-background">
+          <pre className="overflow-x-auto rounded-md bg-foreground p-4 pr-10 text-background dark:bg-muted dark:text-foreground">
             <code className="text-xs">{variant.code}</code>
           </pre>
         </TabsContent>

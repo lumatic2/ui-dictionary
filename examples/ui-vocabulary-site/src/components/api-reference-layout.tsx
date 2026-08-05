@@ -82,7 +82,7 @@ export function ApiReferenceLayout({ method, path, params, samples, response }: 
           </TabsList>
           {samples.map((sample) => (
             <TabsContent key={sample.language} value={sample.language}>
-              <pre className={cn("overflow-x-auto rounded-md bg-foreground p-4 text-background")}>
+              <pre className={cn("overflow-x-auto rounded-md bg-foreground p-4 text-background dark:bg-muted dark:text-foreground")}>
                 <code className="text-xs">{sample.code}</code>
               </pre>
             </TabsContent>

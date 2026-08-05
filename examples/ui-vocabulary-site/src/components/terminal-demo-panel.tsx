@@ -97,30 +97,30 @@ export function TerminalDemoPanel({ scenes, typeInterval, lineInterval, resultHo
   return (
     <div className="w-full max-w-3xl">
       <div className="grid gap-3 md:grid-cols-2">
-        <div className="flex h-72 flex-col overflow-hidden rounded-lg border bg-foreground text-background">
+        <div className="flex h-72 flex-col overflow-hidden rounded-lg border bg-foreground text-background dark:bg-muted dark:text-foreground">
           <div className="flex items-center gap-2 border-b border-background/15 px-3 py-2">
-            <span aria-hidden="true" className="size-2.5 rounded-full bg-background/25" />
-            <span aria-hidden="true" className="size-2.5 rounded-full bg-background/25" />
-            <span aria-hidden="true" className="size-2.5 rounded-full bg-background/25" />
+            <span aria-hidden="true" className="size-2.5 rounded-full bg-background/25 dark:bg-foreground/25" />
+            <span aria-hidden="true" className="size-2.5 rounded-full bg-background/25 dark:bg-foreground/25" />
+            <span aria-hidden="true" className="size-2.5 rounded-full bg-background/25 dark:bg-foreground/25" />
             <span className="ml-1 font-mono text-xs text-background/60">terminal</span>
             <button
               type="button"
               onClick={() => setPlaying((value) => !value)}
               aria-label={playing ? "Pause demo" : "Play demo"}
-              className="ml-auto rounded p-1 text-background/60 hover:text-background focus-visible:outline-2 focus-visible:outline-ring"
+              className="ml-auto rounded p-1 text-background/60 hover:text-background dark:text-foreground/60 dark:hover:text-foreground focus-visible:outline-2 focus-visible:outline-ring"
             >
               {playing ? <PauseIcon className="size-3.5" /> : <PlayIcon className="size-3.5" />}
             </button>
           </div>
           <div aria-live="polite" className="flex-1 overflow-y-auto p-3 font-mono text-xs leading-relaxed">
             <p>
-              <span className="text-background/50">$ </span>
+              <span className="text-background/50 dark:text-foreground/50">$ </span>
               {scene.prompt.slice(0, typedCount)}
               {typedCount < scene.prompt.length ? <span className="animate-pulse">▍</span> : null}
             </p>
             <div className="mt-2 space-y-1">
               {scene.lines.slice(0, lineCount).map((line) => (
-                <p key={line} className={line.startsWith("✓") ? "text-background" : "text-background/70"}>
+                <p key={line} className={line.startsWith("✓") ? "text-background dark:text-foreground" : "text-background/70 dark:text-foreground/70"}>
                   {line}
                 </p>
               ))}

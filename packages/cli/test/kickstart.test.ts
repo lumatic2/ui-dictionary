@@ -2,7 +2,7 @@ import { mkdtempSync, mkdirSync, writeFileSync } from "node:fs"
 import { tmpdir } from "node:os"
 import path from "node:path"
 import { describe, expect, it } from "vitest"
-import { aliasStep, blockExportName, detectPathAlias, importedPackages } from "../src/kickstart.js"
+import { aliasStep, blockExportName, detectPathAlias, importedPackages, renderBrandCss } from "../src/kickstart.js"
 
 // M28 step-2. The registry's declared `dependencies` is a lower bound —
 // shadcn's button.json declares only `radix-ui` while button.tsx imports
@@ -56,6 +56,33 @@ import path from "path"
 import { z } from "zod"
 `
     expect(importedPackages(source)).toEqual(["zod"])
+  })
+})
+
+// M29 step-4. The token layer defines `.dark { … }`, but Tailwind v4 keys
+// `dark:` utilities off prefers-color-scheme unless told otherwise — and the
+// transplanted shadcn primitives (button, badge, tabs, select, input, switch,
+// checkbox, dropdown-menu) all carry `dark:` utilities. Without the variant
+// line the two halves of dark mode run off different switches.
+describe("renderBrandCss dark switch", () => {
+  const css = renderBrandCss({ tone: "minimal-clean", color: "teal", type: "system-sans" })
+
+  it("registers the class-based dark variant", () => {
+    expect(css).toContain("@custom-variant dark (&:where(.dark, .dark *))")
+  })
+
+  it("declares the variant before the token blocks that depend on it", () => {
+    expect(css.indexOf("@custom-variant")).toBeLessThan(css.indexOf(":root {"))
+    expect(css.indexOf("@custom-variant")).toBeLessThan(css.indexOf(".dark {"))
+  })
+
+  // Tokens only repaint what we draw. Scrollbars, native selects and the
+  // overscroll gutter are the browser's, and they stay light without this.
+  it("tells the browser which scheme each block is", () => {
+    const root = css.slice(css.indexOf(":root {"), css.indexOf(".dark {"))
+    const dark = css.slice(css.indexOf(".dark {"))
+    expect(root).toContain("color-scheme: light;")
+    expect(dark).toContain("color-scheme: dark;")
   })
 })
 
