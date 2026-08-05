@@ -59,7 +59,7 @@ Status: approved (사용자 승인 2026-08-05 "ㄱㄱ" — 결정 A=(a) 감지 �
   - Failure probe: ⓐ **오판(있다고 봄)** — 주석 처리된 `// "@/*": ["./src/*"]` 를 설정으로 읽어 안내를 생략하는 경우. 테스트에 주석 fixture 를 넣어 "안내 인쇄"로 남는지 확인(기술 결정 ② 방향). ⓑ **오판(없다고 봄)** — `tsconfig.app.json` 에 설정이 있는데 루트만 보고 중복 안내하는 경우. 솔루션 파일 fixture 로 확인. ⓒ 안내가 지목한 파일이 실제로 `compilerOptions` 를 소유하지 않아 `tsc -b` 가 무시하는 경우 — 위 Verify 의 `tsc -b` exit 0 이 이것을 잡는다.
   - Commit: changeset `20260805-m29-docs-block-and-alias` (README 절: step-1).
 
-- [ ] **step-2 — docs-site 셸 흡수 실사 + 구성 확정 (흡수 우선)**
+- [x] **step-2 — docs-site 셸 흡수 실사 + 구성 확정 (흡수 우선)**
   - Artifact: `research/2026-08-05-m29-docs-site-absorption-survey.md` — ⓐ 외부 공개 docs 사이트 조합 후보 **≥5건**(Fumadocs·Nextra·Starlight·Docusaurus·shadcn docs 셸 등) 각각 출처 URL + 접근일 + 라이선스 + 결합도(프레임워크·MDX 파이프라인 종속) + **채택/기각 사유 1줄** ⓑ 채택안 확정(흡수 or 자체 조합) ⓒ **구성표** — 셸/3페이지에 우리 asset 7종이 각각 어디 앉는지, 미사용이면 그 사유 ⓓ 블록의 `requiredCssVars` 초안.
   - Files: write research/2026-08-05-m29-docs-site-absorption-survey.md.
   - Risk: 위험 (라이선스 판정이 틀리면 하류 전체가 오염된다 — 그래서 URL 재확인을 parent 가 한다)

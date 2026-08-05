@@ -12,3 +12,12 @@
 - **신규 npm 의존 없음** (계획 기술결정 ⑥): `vite-tsconfig-paths` 를 권하지 않는다 — 인쇄되는 `npm i` 목록은 "이식된 파일이 실제로 import 하는 것"이라는 M28 계약이라, 빌드 도구 플러그인을 섞으면 그 계약이 흐려진다. 대신 `resolve.alias` + `fileURLToPath`(vite 가 이미 쓰는 Node 내장).
 - 스니펫은 **이식이 실제로 일어난 위치**를 가리킨다 — `src/` 가 없는 프로젝트면 `["./*"]`·`new URL(".", …)`.
 - 게이트: vitest **77/77**(신규 6) · `tsc --noEmit` exit 0 · **실표면 재현**(스니펫 수정 후 처음부터 다시): 빈 vite react-ts → `init . --block marketing-landing --color teal --yes` → **인쇄된 스니펫 그대로 적용** → **인쇄된 `npm i` 그대로** → `npx tsc -b` **exit 0**(M28 의 6건 무재현) → `npm run build` **exit 0** → 같은 디렉터리에서 재실행 시 alias 단계 **미인쇄**(4단계로 복귀).
+
+## step-2 — docs-site 셸 흡수 실사 + 구성 확정
+
+- 산출: `research/2026-08-05-m29-docs-site-absorption-survey.md` (후보 8건 · 접근일 2026-08-06).
+- **판정: 흡수 0건 → 자체 조합**(`block-contract` §3). 정통 docs 프레임워크 5종(Fumadocs·Nextra·Starlight·Docusaurus·VitePress)은 예외 없이 **자체 라우팅 + 자체 빌드 파이프라인을 소유한 SSG** 라 "React+Tailwind 파일 몇 개를 registry 로 복사"라는 배포 형태와 태생이 다르다 — Vue(VitePress)·Astro 컴포넌트(Starlight)는 언어가 다르고, Next.js 2종은 MDX 로더가 빌드에 박혀 있고, Docusaurus 는 Tailwind 가 아닌 Infima.
+- 라이선스가 통과한 둘은 **셸을 담고 있지 않다**: shadcn/ui `apps/www` 는 셸이 Next.js 앱과 얽혀 있고(프리미티브 `@/components/ui/*` 는 애초에 우리가 얹혀 있는 바닥이라 흡수 대상이 아니다), `@mintlify/components` 는 Accordion·Callout·CodeBlock 등 **콘텐츠 위젯만** 있고 navbar·버전 스위처·사이드바·⌘K 가 없다. Tailwind Plus 는 상업 라이선스로 공개 registry 재배포와 충돌 → 기각.
+- **parent 라이선스 재확인 2건**(계획 위임 결정대로 child 결과를 완료로 믿지 않음): child 가 "확인 못 함"으로 남긴 shadcn/ui·Mintlify 를 `raw.githubusercontent.com` LICENSE 원문으로 직접 대조 — 각각 **MIT © 2023 shadcn**, **MIT © 2022 Mintlify, Inc.** 확정. 둘 다 흡수하지 않으므로 판정은 불변, 기록으로만 남긴다. Nextra 는 원문 미대조이나 기각 사유가 라이선스가 아니라 결합도라 승격 무관.
+- **구성표 확정** — docs 계열 asset **7종 전부 배치, 미사용 0**: 좌측 레일=`versioned-docs-switcher-navbar-sidebar-swap` · 검색=`doc-search-cmdk-grouped-results-panel` · 아티클=`docs-code-block`+`terminal-demo-panel`+`responsive-content-grid` · API=`api-reference-layout` · 체인지로그=`docs-changelog-category-filter-page`. 블록 원본 = 상단 navbar · 본문 prose·on-page 목차 · 3페이지 전환 상태 · `data.json`.
+- 기준선 확보(step-3 의 "기존 자산 무변경" 증명용): `generate-registry` 재실행이 **멱등**(56 assets + index = 57 파일, git diff 0) · `check-llms-sync` PASS.
