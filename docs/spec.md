@@ -1,5 +1,15 @@
 # DESIGN.md Spec — v0.1 (design-manual canonical)
 
+> **⚠ 이것은 정본이 아니다 (2026-08-06 확인).** DESIGN.md 의 정본 스펙은 Google Labs
+> `google-labs-code/design.md`(Apache-2.0, version `alpha`)다 — frontmatter 는 flat
+> `name/colors/typography/rounded/spacing/components`, 본문은 고정 순서 8섹션
+> (Overview → Colors → Typography → Layout → Elevation & Depth → Shapes → Components → Do's and Don'ts).
+> **아래 서술한 중첩 `tokens:`·`themes:` 블록과 번호 붙은 9섹션은 본 레포의 확장 관례이며,
+> 공식 린터(`npx @google/design.md lint`)에서 토큰이 하나도 파싱되지 않는다.**
+> 에이전트에 먹일 신규 파일은 반드시 `templates/DESIGN.md.tmpl`(공식 스키마 정합판)에서 출발할 것.
+> 같은 경고가 [methodology/design-md-guide.md](../methodology/design-md-guide.md) 에도 있다(2026-07-19 VB1).
+> 이 문서는 본 레포 내부 토큰 파이프라인(`tokens/*.tokens.json` → 루트 DESIGN.md 생성)의 기록으로만 유효하다.
+
 > 본 레포가 채택·검증·전파하는 DESIGN.md 의 정식 형태. DTCG v2025.10 호환을 목표.
 
 ## 파일 위치·이름
