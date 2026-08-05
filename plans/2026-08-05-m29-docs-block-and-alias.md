@@ -68,7 +68,7 @@ Status: approved (사용자 승인 2026-08-05 "ㄱㄱ" — 결정 A=(a) 감지 �
   - Failure probe: 라이선스가 불명확한 후보를 "MIT 추정"으로 채택하는 경우 — **불명확은 기각**이 계약(§5 "Unclear or commercial per-block terms → reject, never assume"). 실사 결과 채택 후보가 0건이면 그것은 실패가 아니라 **자체 조합 확정**이며, 그 사실을 ⓑ 에 적는다.
   - Commit: changeset (README 절: step-2).
 
-- [ ] **step-3 — `docs-site` 블록 소스 + registry 등재 + 계약 §6 (기계 검증까지)**
+- [x] **step-3 — `docs-site` 블록 소스 + registry 등재 + 계약 §6 (기계 검증까지)**
   - Artifact: `examples/ui-vocabulary-site/src/components/blocks/docs-site/`(셸 + 3 페이지 + `data.json` — step-2 구성표대로, 흡수분이 있으면 파일 헤더에 출처·라이선스·저작권 줄) + `registry.json` 에 `tier:"block"` 항목(+`requiredCssVars`, 기술 결정 ⑤ 로 실측) + `block-contract.md` §6 표 행 + Changelog 줄 + registry·llms 재생성.
   - Files: write examples/ui-vocabulary-site/src/components/blocks/docs-site/*(셸·3페이지·data.json). edit examples/ui-vocabulary-site/registry.json. edit docs/design-system/block-contract.md. (재생성 산출물: examples/ui-vocabulary-site/public/r/*, llms 산출물.)
   - Risk: 위험 (신규 자산 등재 — 순수성 게이트·llms 동기화·기존 57 자산 무변경이 동시에 걸린다)

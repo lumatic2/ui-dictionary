@@ -21,3 +21,12 @@
 - **parent 라이선스 재확인 2건**(계획 위임 결정대로 child 결과를 완료로 믿지 않음): child 가 "확인 못 함"으로 남긴 shadcn/ui·Mintlify 를 `raw.githubusercontent.com` LICENSE 원문으로 직접 대조 — 각각 **MIT © 2023 shadcn**, **MIT © 2022 Mintlify, Inc.** 확정. 둘 다 흡수하지 않으므로 판정은 불변, 기록으로만 남긴다. Nextra 는 원문 미대조이나 기각 사유가 라이선스가 아니라 결합도라 승격 무관.
 - **구성표 확정** — docs 계열 asset **7종 전부 배치, 미사용 0**: 좌측 레일=`versioned-docs-switcher-navbar-sidebar-swap` · 검색=`doc-search-cmdk-grouped-results-panel` · 아티클=`docs-code-block`+`terminal-demo-panel`+`responsive-content-grid` · API=`api-reference-layout` · 체인지로그=`docs-changelog-category-filter-page`. 블록 원본 = 상단 navbar · 본문 prose·on-page 목차 · 3페이지 전환 상태 · `data.json`.
 - 기준선 확보(step-3 의 "기존 자산 무변경" 증명용): `generate-registry` 재실행이 **멱등**(56 assets + index = 57 파일, git diff 0) · `check-llms-sync` PASS.
+
+## step-3 — `docs-site` 블록 소스 + registry 등재 + 계약 §6
+
+- 소스 6파일 — `page.tsx`(셸 + 3페이지 전환 + ⌘K 키 바인딩) · `docs-navbar.tsx` · `article-page.tsx` · `api-page.tsx` · `changelog-page.tsx` · `data.json`. 흡수분 0 이므로 §5 2중 표기 대상 없음(헤더에 자체 조합임과 그 사유를 남김).
+- **상태 분리 계약**: 필터·페이지네이션·버전 상태는 **블록**이 쥐고, asset 은 **이미 좁혀진 데이터**를 받는다. `docs-changelog-category-filter-page` 는 스스로 필터링하지 않고 빈 그룹만 숨긴다 — "카테고리에 매치된다"의 정의가 소비자 태깅 스킴에 달렸기 때문이고, asset 이 그걸 추측하면 안 된다.
+- **계약 실측으로 data 를 고친 1건**: `TerminalScene` 이 `{prompt, lines, result:{address,label}}` 인데 초안 `data.json` 은 `{command, result:[]}` 로 썼다 — asset 소스를 읽고 계약대로 교정. (추정으로 데이터를 쓰면 렌더 시점에 터진다.)
+- 등재: `registry.json` 에 `tier:"block"` + `requiredCssVars` 20종. 생성기가 regDeps 를 **자동 해석** — 조합 asset 7종 URL + shadcn `badge`·`button`, npm dep `lucide-react`, files 6.
+- **`requiredCssVars` 실사용 대조** (계획 기술결정 ⑤ — 선언이 좁으면 킥스타트 검사가 통과해 버리고 이식처에서 색이 빠진다): 블록은 `var(--…)` 를 직접 쓰지 않고 Tailwind 유틸리티로 참조하므로 **조합 asset + 그 shadcn primitive 까지 전이적으로** 스캔했다. 실사용 semantic 19종 + `--radius`(rounded-lg/md) = **선언 20종과 정확히 일치**. `--sidebar*`·`--chart-*` 사용 **0**(좌측 레일이 `sidebar` primitive 가 아니라 조합 마크업이라 불필요) — 그래서 `saas-app-shell` 의 28종이 아니라 `marketing-landing` 의 20종 집합이 맞다.
+- 게이트: `generate-registry` 순수성 게이트 PASS · **기존 56 자산 diff 0**(신규 `docs-site.json` + 인덱스만) · `verify` 블록 5파일 **0건** · 사이트 `npm run build`(= `tsc -b` + vite) **exit 0** + prerender **759** · `tsc --noEmit -p tsconfig.app.json` exit 0(블록이 아직 미참조라 명시 실행) · oxlint 0건 · llms 재생성(210 assets).

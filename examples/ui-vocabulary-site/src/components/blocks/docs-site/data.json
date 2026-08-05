@@ -1,0 +1,308 @@
+{
+  "product": "Meridian",
+  "versions": [
+    { "id": "v3", "label": "v3.2", "isLatest": true },
+    { "id": "v2", "label": "v2.8", "isLatest": false },
+    { "id": "v1", "label": "v1.14", "isLatest": false }
+  ],
+  "sidebarByVersion": {
+    "v3": [
+      {
+        "id": "start",
+        "label": "Getting started",
+        "pages": [
+          { "id": "install", "label": "Installation" },
+          { "id": "quickstart", "label": "Quickstart" },
+          { "id": "config", "label": "Configuration" }
+        ]
+      },
+      {
+        "id": "guides",
+        "label": "Guides",
+        "pages": [
+          { "id": "ingest", "label": "Ingesting events" },
+          { "id": "retention", "label": "Retention windows" },
+          { "id": "webhooks", "label": "Webhooks" }
+        ]
+      },
+      {
+        "id": "reference",
+        "label": "Reference",
+        "pages": [
+          { "id": "api", "label": "HTTP API" },
+          { "id": "cli", "label": "CLI" },
+          { "id": "errors", "label": "Error codes" }
+        ]
+      }
+    ],
+    "v2": [
+      {
+        "id": "start",
+        "label": "Getting started",
+        "pages": [
+          { "id": "install", "label": "Installation" },
+          { "id": "quickstart", "label": "Quickstart" }
+        ]
+      },
+      {
+        "id": "guides",
+        "label": "Guides",
+        "pages": [
+          { "id": "ingest", "label": "Ingesting events" },
+          { "id": "webhooks", "label": "Webhooks" }
+        ]
+      },
+      {
+        "id": "reference",
+        "label": "Reference",
+        "pages": [
+          { "id": "api", "label": "HTTP API" },
+          { "id": "errors", "label": "Error codes" }
+        ]
+      }
+    ],
+    "v1": [
+      {
+        "id": "start",
+        "label": "Getting started",
+        "pages": [
+          { "id": "install", "label": "Installation" },
+          { "id": "quickstart", "label": "Quickstart" }
+        ]
+      },
+      {
+        "id": "reference",
+        "label": "Reference",
+        "pages": [{ "id": "api", "label": "HTTP API" }]
+      }
+    ]
+  },
+  "article": {
+    "breadcrumb": ["Guides", "Ingesting events"],
+    "title": "Ingesting events",
+    "lede": "Events are the unit Meridian stores, indexes, and bills on. This page covers the two ways to get them in — the SDK for application code, and the HTTP endpoint for everything else.",
+    "sections": [
+      {
+        "id": "install",
+        "heading": "Install the SDK",
+        "body": "The SDK batches events in memory and flushes on an interval, so a burst of calls costs one round trip. It is safe to call from request handlers.",
+        "code": {
+          "variants": [
+            { "id": "npm", "label": "npm", "code": "npm install @meridian/sdk" },
+            { "id": "pnpm", "label": "pnpm", "code": "pnpm add @meridian/sdk" },
+            { "id": "yarn", "label": "yarn", "code": "yarn add @meridian/sdk" }
+          ]
+        }
+      },
+      {
+        "id": "send",
+        "heading": "Send your first event",
+        "body": "An event needs a name and a subject. Everything else is optional metadata that becomes queryable the moment it lands.",
+        "code": {
+          "variants": [
+            {
+              "id": "ts",
+              "label": "TypeScript",
+              "code": "import { Meridian } from \"@meridian/sdk\"\n\nconst meridian = new Meridian({ apiKey: process.env.MERIDIAN_KEY })\n\nawait meridian.track({\n  name: \"invoice.paid\",\n  subject: \"acct_18fj2\",\n  properties: { amount: 4900, currency: \"usd\" },\n})"
+            },
+            {
+              "id": "py",
+              "label": "Python",
+              "code": "from meridian import Meridian\n\nmeridian = Meridian(api_key=os.environ[\"MERIDIAN_KEY\"])\n\nmeridian.track(\n    name=\"invoice.paid\",\n    subject=\"acct_18fj2\",\n    properties={\"amount\": 4900, \"currency\": \"usd\"},\n)"
+            }
+          ]
+        }
+      },
+      {
+        "id": "verify",
+        "heading": "Verify it landed",
+        "body": "The CLI tails the same stream the dashboard reads from, so you can confirm delivery without leaving the terminal."
+      }
+    ],
+    "terminalScenes": [
+      {
+        "prompt": "meridian events tail --subject acct_18fj2",
+        "lines": [
+          "waiting for events…",
+          "12:04:21  invoice.paid   acct_18fj2   amount=4900 currency=usd",
+          "12:04:38  invoice.paid   acct_18fj2   amount=1200 currency=usd",
+          "✓ 2 events in 17s"
+        ],
+        "result": { "address": "app.meridian.dev/events?subject=acct_18fj2", "label": "Live event stream" }
+      },
+      {
+        "prompt": "meridian events replay --since 1h --dry-run",
+        "lines": [
+          "scanning retention window…",
+          "148 events matched, 0 would be dropped",
+          "✓ dry run — nothing was re-emitted"
+        ],
+        "result": { "address": "app.meridian.dev/replays/dry-run", "label": "Replay preview" }
+      }
+    ],
+    "related": [
+      {
+        "id": "retention",
+        "title": "Retention windows",
+        "description": "How long events stay queryable, and what happens at the boundary.",
+        "status": "Guide"
+      },
+      {
+        "id": "webhooks",
+        "title": "Webhooks",
+        "description": "Push events back out to your own endpoints with signed delivery and replay.",
+        "status": "Guide"
+      },
+      {
+        "id": "errors",
+        "title": "Error codes",
+        "description": "Every code the ingest endpoint can return, and whether it is worth retrying.",
+        "status": "Reference"
+      }
+    ]
+  },
+  "apiReference": {
+    "method": "POST",
+    "path": "/v3/events",
+    "params": [
+      {
+        "name": "name",
+        "type": "string",
+        "required": true,
+        "description": "Dot-separated event name. Used for grouping and billing."
+      },
+      {
+        "name": "subject",
+        "type": "string",
+        "required": true,
+        "description": "The entity the event is about — usually an account or user id."
+      },
+      {
+        "name": "properties",
+        "type": "object",
+        "description": "Arbitrary metadata. Keys become queryable within a minute of ingest.",
+        "nested": [
+          {
+            "name": "amount",
+            "type": "integer",
+            "description": "Minor units. Combined with currency for revenue rollups."
+          },
+          {
+            "name": "currency",
+            "type": "string",
+            "description": "ISO 4217 code, lowercase."
+          }
+        ]
+      },
+      {
+        "name": "occurred_at",
+        "type": "string (RFC 3339)",
+        "description": "When the event happened. Defaults to receipt time; must fall inside the retention window."
+      },
+      {
+        "name": "idempotency_key",
+        "type": "string",
+        "description": "Repeat deliveries with the same key collapse to one stored event for 24 hours."
+      }
+    ],
+    "samples": [
+      {
+        "language": "bash",
+        "label": "cURL",
+        "code": "curl https://api.meridian.dev/v3/events \\\n  -H \"Authorization: Bearer $MERIDIAN_KEY\" \\\n  -H \"Content-Type: application/json\" \\\n  -d '{\n    \"name\": \"invoice.paid\",\n    \"subject\": \"acct_18fj2\",\n    \"properties\": { \"amount\": 4900, \"currency\": \"usd\" }\n  }'"
+      },
+      {
+        "language": "typescript",
+        "label": "TypeScript",
+        "code": "await meridian.track({\n  name: \"invoice.paid\",\n  subject: \"acct_18fj2\",\n  properties: { amount: 4900, currency: \"usd\" },\n  idempotencyKey: invoice.id,\n})"
+      }
+    ],
+    "response": "{\n  \"id\": \"evt_2Kf9xQ\",\n  \"name\": \"invoice.paid\",\n  \"subject\": \"acct_18fj2\",\n  \"received_at\": \"2026-08-06T03:04:21Z\",\n  \"deduplicated\": false\n}"
+  },
+  "changelog": {
+    "categories": [
+      { "id": "all", "label": "All" },
+      { "id": "api", "label": "API" },
+      { "id": "sdk", "label": "SDK" },
+      { "id": "cli", "label": "CLI" },
+      { "id": "breaking", "label": "Breaking" }
+    ],
+    "groups": [
+      {
+        "date": "2026-07-30",
+        "releases": [
+          {
+            "id": "r-3-2-0",
+            "version": "3.2.0",
+            "summary": "Idempotency keys now hold for 24 hours instead of 1, and collapsed deliveries report `deduplicated: true` rather than failing silently.",
+            "tags": ["api"]
+          },
+          {
+            "id": "r-sdk-2-9",
+            "version": "sdk 2.9.0",
+            "summary": "Batches flush on process exit, so short-lived scripts no longer drop their last window.",
+            "tags": ["sdk"]
+          }
+        ]
+      },
+      {
+        "date": "2026-07-16",
+        "releases": [
+          {
+            "id": "r-3-1-2",
+            "version": "3.1.2",
+            "summary": "`occurred_at` outside the retention window returns 422 with the window bounds instead of a generic validation error.",
+            "tags": ["api"]
+          },
+          {
+            "id": "r-cli-1-6",
+            "version": "cli 1.6.0",
+            "summary": "`events replay` gained `--dry-run`, which reports what would be re-emitted without emitting it.",
+            "tags": ["cli"]
+          }
+        ]
+      },
+      {
+        "date": "2026-06-28",
+        "releases": [
+          {
+            "id": "r-3-0-0",
+            "version": "3.0.0",
+            "summary": "The ingest endpoint moved from `/v2/track` to `/v3/events` and takes `subject` where v2 took `distinct_id`. v2 keeps accepting writes through 2027-01-01.",
+            "tags": ["api", "breaking"]
+          }
+        ]
+      }
+    ]
+  },
+  "search": {
+    "recentQueries": ["retention window", "idempotency", "replay --dry-run"],
+    "suggestedDocs": [
+      { "id": "quickstart", "label": "Quickstart" },
+      { "id": "errors", "label": "Error codes" }
+    ],
+    "groups": [
+      {
+        "id": "guides",
+        "label": "Guides",
+        "items": [
+          { "id": "ingest", "label": "Ingesting events", "description": "SDK and HTTP paths into the event store" },
+          { "id": "retention", "label": "Retention windows", "description": "How long events stay queryable" }
+        ]
+      },
+      {
+        "id": "reference",
+        "label": "Reference",
+        "items": [
+          { "id": "api", "label": "POST /v3/events", "description": "Ingest a single event" },
+          { "id": "errors", "label": "Error codes", "description": "422, 429, and when to retry" }
+        ]
+      },
+      {
+        "id": "changelog",
+        "label": "Changelog",
+        "items": [{ "id": "r-3-0-0", "label": "3.0.0 — /v3/events", "description": "Breaking · 2026-06-28" }]
+      }
+    ]
+  }
+}

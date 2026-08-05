@@ -1271,6 +1271,77 @@
           "type": "registry:component"
         }
       ]
+    },
+    {
+      "name": "docs-site",
+      "type": "registry:block",
+      "title": "Docs Site",
+      "description": "A documentation site skeleton: a thin top navbar with section tabs and a ⌘K command palette, a left rail whose version dropdown swaps the sidebar tree (with a stale-version banner), and three pages — a guide article with package-manager code tabs, a self-playing terminal proof and a related-reading grid; an HTTP API reference with nested parameter rows and per-language samples; and a changelog with category filtering and pagination. Filter, pagination and version state live in the block; content lives in one data.json. Routing is left to the consumer.",
+      "meta": {
+        "tier": "block",
+        "requiredCssVars": [
+          "--background",
+          "--foreground",
+          "--card",
+          "--card-foreground",
+          "--popover",
+          "--popover-foreground",
+          "--primary",
+          "--primary-foreground",
+          "--secondary",
+          "--secondary-foreground",
+          "--muted",
+          "--muted-foreground",
+          "--accent",
+          "--accent-foreground",
+          "--destructive",
+          "--destructive-foreground",
+          "--border",
+          "--input",
+          "--ring",
+          "--radius"
+        ]
+      },
+      "registryDependencies": [
+        "badge",
+        "button",
+        "https://ui.askewly.com/r/api-reference-layout.json",
+        "https://ui.askewly.com/r/doc-search-cmdk-grouped-results-panel.json",
+        "https://ui.askewly.com/r/docs-changelog-category-filter-page.json",
+        "https://ui.askewly.com/r/docs-code-block.json",
+        "https://ui.askewly.com/r/responsive-content-grid.json",
+        "https://ui.askewly.com/r/terminal-demo-panel.json",
+        "https://ui.askewly.com/r/versioned-docs-switcher-navbar-sidebar-swap.json"
+      ],
+      "dependencies": [
+        "lucide-react"
+      ],
+      "files": [
+        {
+          "path": "registry/askewly/docs-site/api-page.tsx",
+          "type": "registry:component"
+        },
+        {
+          "path": "registry/askewly/docs-site/article-page.tsx",
+          "type": "registry:component"
+        },
+        {
+          "path": "registry/askewly/docs-site/changelog-page.tsx",
+          "type": "registry:component"
+        },
+        {
+          "path": "registry/askewly/docs-site/data.json",
+          "type": "registry:file"
+        },
+        {
+          "path": "registry/askewly/docs-site/docs-navbar.tsx",
+          "type": "registry:component"
+        },
+        {
+          "path": "registry/askewly/docs-site/page.tsx",
+          "type": "registry:component"
+        }
+      ]
     }
   ]
 }
