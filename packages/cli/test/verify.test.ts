@@ -87,6 +87,35 @@ describe("verifyDir — ignored regions (DOG1 step-2)", () => {
     expect(scanFixture("clean.tsx")).toHaveLength(0)
   })
 
+  // M28 step-1. The hex inside `[stroke='#ccc']` is what the rule *overrides*,
+  // so flagging it reports the line doing the token work.
+  it("does not flag hex inside an attribute selector", () => {
+    expect(scanFixture("attr-selector.tsx")).toHaveLength(0)
+  })
+
+  it("still flags arbitrary values and declarations on the same file", () => {
+    const violations = scanFixture("attr-selector-outside.tsx")
+    expect(violations).toHaveLength(2)
+    // line 5 holds both an exempt selector and `bg-[#ccc]` — the exemption
+    // must not swallow its neighbour.
+    expect(violations[0]).toMatchObject({ line: 5, rule: "hex-literal" })
+    expect(violations[0].excerpt).toContain("bg-[#ccc]")
+    expect(violations[1]).toMatchObject({ line: 6, rule: "hex-literal" })
+  })
+
+  it("exempts the selector form only, in both quote styles", () => {
+    const masked = maskIgnoredRegions(
+      `a[stroke='#ccc'] b[stroke="#fff"] c[data-x^='#abc'] d bg-[#ccc] e:#ccc\n`,
+      "tsx",
+    )
+    expect(masked).not.toContain("'#ccc'")
+    expect(masked).not.toContain('"#fff"')
+    expect(masked).not.toContain("'#abc'")
+    expect(masked).toContain("bg-[#ccc]")
+    expect(masked).toContain("e:#ccc")
+    expect(masked).toHaveLength(`a[stroke='#ccc'] b[stroke="#fff"] c[data-x^='#abc'] d bg-[#ccc] e:#ccc\n`.length)
+  })
+
   it("reports the original source line, not the masked one", () => {
     const violations = scanFixture("comment-outside.tsx")
     expect(violations[0].excerpt).toContain("#654321")

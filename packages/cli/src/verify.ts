@@ -52,6 +52,22 @@ const SVG_PAIRED = /<svg\b[\s\S]*?<\/svg\s*>/gi
 const SVG_SELF_CLOSING = /<svg\b[^>]*\/>/gi
 
 /**
+ * CSS attribute selectors whose value is a hex color, e.g. the Tailwind
+ * arbitrary variant `[&_.recharts-cartesian-grid_line[stroke='#ccc']]:stroke-border`.
+ *
+ * The hex there is a *match target*, not a color the file paints with: it names
+ * a value some third-party library already emitted so the rule can override it
+ * with a token. Flagging it inverts the gate — the line doing the token work is
+ * the line getting reported.
+ *
+ * Deliberately narrow: an attribute name, an `=` (optionally prefixed by a CSS
+ * match operator), and a *quoted* hex. Tailwind arbitrary values like
+ * `bg-[#ccc]` have no `=` and no quotes, so they stay violations. The optional
+ * backslashes cover selectors written inside a same-quoted JS string.
+ */
+const ATTR_SELECTOR_HEX = /\[[A-Za-z_-][\w:.-]*\s*[~^|*$]?=\s*\\?(['"])#[0-9a-fA-F]{3,8}\\?\1\s*[iIsS]?\s*\]/g
+
+/**
  * Blanks regions whose color literals are not rendered output — comments and
  * SVG markup — while preserving every character position and newline, so
  * reported line numbers still point at the original source.
@@ -126,7 +142,7 @@ export function maskIgnoredRegions(source: string, ext: string): string {
   // Pass 2 — SVG markup, matched against the comment-masked text so a commented
   // out `</svg>` cannot terminate a block early.
   let masked = chars.join("")
-  for (const pattern of [SVG_PAIRED, SVG_SELF_CLOSING]) {
+  for (const pattern of [SVG_PAIRED, SVG_SELF_CLOSING, ATTR_SELECTOR_HEX]) {
     masked = masked.replace(pattern, (match) => match.replace(/[^\n]/g, " "))
   }
   return masked
