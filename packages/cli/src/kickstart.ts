@@ -517,7 +517,7 @@ export function aliasStep(status: AliasStatus, srcRel: string): string | null {
     `configure the \`@/\` alias — the transplanted files import through it, and \`tsc\` fails without it:`,
   ]
   if (status.tsconfig) {
-    // No `baseUrl`: paths resolve relative to the tsconfig since TS 4.4, and on
+    // No `baseUrl`: paths resolve relative to the tsconfig since TS 4.1, and on
     // TS 6 the option is deprecated hard enough to fail the build (TS5101,
     // measured on a stock vite react-ts project — the first snippet shipped it
     // and traded six missing-module errors for one deprecation error).

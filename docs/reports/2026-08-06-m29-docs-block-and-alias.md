@@ -27,3 +27,15 @@
 - 실표면: 빈 `create-vite react-ts` → `npx --yes @askewly/design@0.4.2 init . --block docs-site --color violet --yes` → 인쇄된 6단계를 **그대로**(수기 보완 0) → `npx tsc -b` **exit 0** → `npm run build` **exit 0** → `verify` 26파일 0건 → 실브라우저에서 다크 `color-scheme: dark`·`--background #0f1219`·코드 패널 `rgb(30,36,46)`, 클래스 제거 시 라이트로 따라옴, 3페이지 전환·⌘K 정상, **콘솔 에러 0**.
 - 배선: 신설 장치 = `detectPathAlias`/`aliasStep`(킥스타트 handoff 조립 경로) — 호출자는 `runKickstart` step 7. **실발화 1회 증거** = 위 실표면 E2E 가 alias 단계를 실제로 인쇄했고(스톡 vite 에서 `tsconfig.app.json` 지목), 이미 설정된 프로젝트 재실행에서는 인쇄되지 않았다. `renderBrandCss` 의 `@custom-variant`·`color-scheme` 은 기존 함수 확장이며 라이브 생성물에서 실측 확인.
 - 재현: `npx --yes @askewly/design@0.4.2 init <빈 vite react-ts dir> --block docs-site --color violet --yes` → 인쇄된 6단계 → `npx tsc -b` → `npm run build`
+
+---
+
+## 정정 (2026-08-06, 완료 후 추가 — record 는 수정하지 않고 덧붙인다)
+
+§2 의 "`paths` 는 TS 4.4+ 부터 baseUrl 없이 해석된다"는 **버전이 틀렸다. 정확히는 TypeScript 4.1 이다.**
+kg 승격 후보를 인입하며 공식 문서를 대조해 발견했다 — 출처: TypeScript Docs, tsconfig reference `paths`
+(`https://www.typescriptlang.org/tsconfig/#paths`, 접근 2026-08-06): *"As of TypeScript 4.1, baseUrl is no
+longer required to be set when using paths."*
+
+결론(=`baseUrl` 을 빼는 것)과 실측(TS 6.0.3 에서 `TS5101` 로 빌드 실패)은 그대로 유효하다. 코드 주석과
+changeset 은 정정했고, 규칙 자체는 knowledge-graph 노드 `tsconfig-paths-without-baseurl` 로 승격했다.
