@@ -50,7 +50,7 @@ Status: approved (사용자 승인 2026-08-05 "ㄱㄱ" — 결정 A=(a) 감지 �
 
 ## Step 트리
 
-- [ ] **step-1 — `@/` alias 감지 + 안내 (결정 A)**
+- [x] **step-1 — `@/` alias 감지 + 안내 (결정 A)**
   - Artifact: `packages/cli/src/kickstart.ts` 에 순수 함수 `detectPathAlias(targetDir): { tsconfig: string | null; vite: boolean }` 추가 — `tsconfig*.json` **전부**를 원문 스캔해 `"@/*"` paths 를 가진 파일을 찾고(없으면 `compilerOptions` 를 실제로 소유한 파일 = `tsconfig.app.json` 우선, 없으면 `tsconfig.json` 을 안내 대상으로 지목), `vite.config.{ts,js,mts,mjs}` 에서 `resolve` alias 또는 `vite-tsconfig-paths` 를 스캔. + `Next steps` 최상단에 조건부 단계 삽입(둘 다 있으면 생략, 없는 쪽만 해당 **파일 이름을 지목한** 복붙 스니펫으로 인쇄). + 단위 테스트.
   - Files: edit packages/cli/src/kickstart.ts. edit packages/cli/test/kickstart.test.ts.
   - Risk: 기계적 (순수 함수 1개 + 출력 문자열. 이식·토큰 로직 불변)

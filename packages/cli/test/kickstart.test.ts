@@ -1,5 +1,8 @@
+import { mkdtempSync, mkdirSync, writeFileSync } from "node:fs"
+import { tmpdir } from "node:os"
+import path from "node:path"
 import { describe, expect, it } from "vitest"
-import { blockExportName, importedPackages } from "../src/kickstart.js"
+import { aliasStep, blockExportName, detectPathAlias, importedPackages } from "../src/kickstart.js"
 
 // M28 step-2. The registry's declared `dependencies` is a lower bound —
 // shadcn's button.json declares only `radix-ui` while button.tsx imports
@@ -74,5 +77,83 @@ export function SaasAppShell({ defaultView = "dashboard" }) { return null }
   it("returns null rather than inventing a symbol", () => {
     expect(blockExportName(`export default function () { return null }\n`)).toBeNull()
     expect(blockExportName(`export const Page = () => null\n`)).toBeNull()
+  })
+})
+
+// M29 step-1. The printed handoff told readers to import through `@/…` without
+// ever saying how that alias comes to exist — six `tsc -b` errors on a stock
+// vite react-ts project, hand-patched in both M28 E2E runs.
+describe("detectPathAlias", () => {
+  const project = (files: Record<string, string>): string => {
+    const dir = mkdtempSync(path.join(tmpdir(), "askewly-alias-"))
+    for (const [name, content] of Object.entries(files)) {
+      mkdirSync(path.dirname(path.join(dir, name)), { recursive: true })
+      writeFileSync(path.join(dir, name), content)
+    }
+    return dir
+  }
+
+  it("reports both halves missing on a stock vite react-ts project", () => {
+    const dir = project({
+      "tsconfig.json": `{ "files": [], "references": [{ "path": "./tsconfig.app.json" }] }`,
+      "tsconfig.app.json": `{ "compilerOptions": { "target": "ES2022", "jsx": "react-jsx" } }`,
+      "vite.config.ts": `import { defineConfig } from "vite"\nexport default defineConfig({ plugins: [] })\n`,
+    })
+    // Names the file that owns compilerOptions — paths in the solution file is ignored by `tsc -b`.
+    expect(detectPathAlias(dir)).toEqual({ tsconfig: "tsconfig.app.json", vite: false })
+  })
+
+  it("stays quiet once both halves are configured", () => {
+    const dir = project({
+      "tsconfig.json": `{ "files": [], "references": [{ "path": "./tsconfig.app.json" }] }`,
+      "tsconfig.app.json": `{ "compilerOptions": { "baseUrl": ".", "paths": { "@/*": ["./src/*"] } } }`,
+      "vite.config.ts": `export default { resolve: { alias: { "@": "/src" } } }\n`,
+    })
+    expect(detectPathAlias(dir)).toEqual({ tsconfig: null, vite: true })
+    expect(aliasStep(detectPathAlias(dir), "./src")).toBeNull()
+  })
+
+  it("does not read a commented-out alias as configured", () => {
+    const dir = project({
+      "tsconfig.json": `{
+  "compilerOptions": {
+    // "paths": { "@/*": ["./src/*"] }
+    "target": "ES2022"
+  }
+}`,
+      "vite.config.ts": `export default {\n  /* resolve: { alias: { "@": "/src" } } */\n  plugins: [],\n}\n`,
+    })
+    expect(detectPathAlias(dir)).toEqual({ tsconfig: "tsconfig.json", vite: false })
+  })
+
+  it("accepts the vite-tsconfig-paths plugin as the vite half", () => {
+    const dir = project({
+      "tsconfig.app.json": `{ "compilerOptions": { "paths": { "@/*": ["./src/*"] } } }`,
+      "vite.config.ts": `import tsconfigPaths from "vite-tsconfig-paths"\nexport default { plugins: [tsconfigPaths()] }\n`,
+    })
+    expect(detectPathAlias(dir)).toEqual({ tsconfig: null, vite: true })
+  })
+
+  it("asks for tsconfig only when vite alone already resolves @", () => {
+    const dir = project({
+      "tsconfig.app.json": `{ "compilerOptions": { "target": "ES2022" } }`,
+      "vite.config.ts": `export default { resolve: { alias: { "@": "/src" } } }\n`,
+    })
+    const status = detectPathAlias(dir)
+    expect(status).toEqual({ tsconfig: "tsconfig.app.json", vite: true })
+    const step = aliasStep(status, "./src")
+    expect(step).toContain("tsconfig.app.json")
+    expect(step).not.toContain("vite.config.ts")
+  })
+
+  it("points the snippet at where the block was actually written", () => {
+    const step = aliasStep({ tsconfig: "tsconfig.json", vite: false }, ".")
+    expect(step).toContain(`"@/*": ["./*"]`)
+    expect(step).toContain(`new URL(".", import.meta.url)`)
+    // TS 6 fails the build on `baseUrl` (TS5101) — measured, not assumed.
+    expect(step).not.toContain("baseUrl")
+    // No new npm dependency is recommended — the printed `npm i` list stays
+    // "what the transplanted files import" (M28 contract).
+    expect(step).not.toContain("vite-tsconfig-paths")
   })
 })

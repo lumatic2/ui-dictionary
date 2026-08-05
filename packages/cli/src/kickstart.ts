@@ -1,4 +1,4 @@
-import { existsSync, mkdirSync, readFileSync, writeFileSync } from "node:fs"
+import { existsSync, mkdirSync, readdirSync, readFileSync, writeFileSync } from "node:fs"
 import { builtinModules } from "node:module"
 import path from "node:path"
 import { createInterface } from "node:readline/promises"
@@ -391,6 +391,135 @@ export function blockExportName(pageSource: string): string | null {
   return null
 }
 
+// ---------------------------------------------------------------------------
+// The `@/` alias the transplanted code needs.
+//
+// Every registry source imports through `@/…`, so a project without the alias
+// configured fails to typecheck the moment the block lands — six `tsc -b`
+// errors on a stock vite react-ts app, patched by hand in both M28 E2E runs.
+// The printed handoff said nothing about it.
+//
+// Two traps this has to survive:
+//   1. tsconfig files are JSONC. Parsing them would mean shipping a parser, so
+//      the check is a raw scan with comments removed — a commented-out `"@/*"`
+//      must not read as configured.
+//   2. vite's react-ts template makes the root tsconfig.json a *solution* file:
+//      references only, no compilerOptions. `paths` written there is ignored by
+//      `tsc -b`. The step has to name the file that actually owns the options.
+// ---------------------------------------------------------------------------
+
+/** Blank out comments without touching string contents (JSONC + TS configs). */
+function stripComments(source: string): string {
+  let out = ""
+  let quote: string | null = null
+  for (let i = 0; i < source.length; i++) {
+    const ch = source[i]
+    if (quote) {
+      out += ch
+      if (ch === "\\") {
+        out += source[++i] ?? ""
+      } else if (ch === quote) {
+        quote = null
+      }
+      continue
+    }
+    if (ch === '"' || ch === "'" || ch === "`") {
+      quote = ch
+      out += ch
+      continue
+    }
+    if (ch === "/" && source[i + 1] === "/") {
+      while (i < source.length && source[i] !== "\n") i++
+      out += "\n"
+      continue
+    }
+    if (ch === "/" && source[i + 1] === "*") {
+      i += 2
+      while (i < source.length && !(source[i] === "*" && source[i + 1] === "/")) i++
+      i++
+      continue
+    }
+    out += ch
+  }
+  return out
+}
+
+const TSCONFIG_ALIAS = /"@\/\*"\s*:/
+const VITE_ALIAS = /vite-tsconfig-paths|resolve\s*:[\s\S]{0,400}?alias/
+
+export type AliasStatus = {
+  /** File that needs the `paths` entry, or null when the alias is already declared. */
+  tsconfig: string | null
+  /** True when vite already resolves `@` (explicit alias or the tsconfig-paths plugin). */
+  vite: boolean
+}
+
+/**
+ * Which half of the `@/` alias is missing.
+ *
+ * Uncertainty resolves toward printing: an extra step in an already-configured
+ * project costs a glance, a missing one costs the build.
+ */
+export function detectPathAlias(targetDir: string): AliasStatus {
+  const names = existsSync(targetDir)
+    ? readdirSync(targetDir).filter((n) => /^tsconfig.*\.json$/.test(n))
+    : []
+  const read = (name: string): string => {
+    try {
+      return stripComments(readFileSync(path.join(targetDir, name), "utf8"))
+    } catch {
+      return ""
+    }
+  }
+  const sources = new Map(names.map((n) => [n, read(n)]))
+  const declared = names.some((n) => TSCONFIG_ALIAS.test(sources.get(n) ?? ""))
+
+  // Name the file that owns compilerOptions — writing paths anywhere else is a
+  // step the reader can follow and still fail.
+  const owner =
+    names.find((n) => n !== "tsconfig.json" && /"compilerOptions"\s*:/.test(sources.get(n) ?? "")) ??
+    names.find((n) => /"compilerOptions"\s*:/.test(sources.get(n) ?? "")) ??
+    names[0] ??
+    "tsconfig.json"
+
+  const viteConfig = existsSync(targetDir)
+    ? readdirSync(targetDir).find((n) => /^vite\.config\.[cm]?[jt]s$/.test(n))
+    : undefined
+  const vite = viteConfig ? VITE_ALIAS.test(stripComments(readFileSync(path.join(targetDir, viteConfig), "utf8"))) : false
+
+  return { tsconfig: declared ? null : owner, vite }
+}
+
+/**
+ * The copy-paste step, or null when both halves are already in place.
+ *
+ * Deliberately free of new npm dependencies: the printed `npm i` list is
+ * contracted to be what the transplanted files import (M28), and recommending
+ * a build-tool plugin there would blur that. `srcRel` keeps the snippet true to
+ * where the block was actually written.
+ */
+export function aliasStep(status: AliasStatus, srcRel: string): string | null {
+  if (!status.tsconfig && status.vite) return null
+  const parts: string[] = [
+    `configure the \`@/\` alias — the transplanted files import through it, and \`tsc\` fails without it:`,
+  ]
+  if (status.tsconfig) {
+    // No `baseUrl`: paths resolve relative to the tsconfig since TS 4.4, and on
+    // TS 6 the option is deprecated hard enough to fail the build (TS5101,
+    // measured on a stock vite react-ts project — the first snippet shipped it
+    // and traded six missing-module errors for one deprecation error).
+    parts.push(`     in ${status.tsconfig}, inside "compilerOptions":`)
+    parts.push(`       "paths": { "@/*": ["${srcRel}/*"] }`)
+  }
+  if (!status.vite) {
+    parts.push(`     in vite.config.ts:`)
+    parts.push(`       import { fileURLToPath } from "node:url"`)
+    parts.push(`       // inside defineConfig({ … })`)
+    parts.push(`       resolve: { alias: { "@": fileURLToPath(new URL("${srcRel}", import.meta.url)) } }`)
+  }
+  return parts.join("\n")
+}
+
 export async function fetchBlock(blockName: string, registryBase: string): Promise<RegistryItem> {
   const block = await fetchJson(`${registryBase}/r/${blockName}.json`)
   if (block.meta?.tier !== "block") {
@@ -502,13 +631,18 @@ export async function runKickstart(
   //    disk. A printed step the reader cannot follow is worse than no step.
   const pagePath = path.join(blockDir, "page.tsx")
   const exportName = existsSync(pagePath) ? blockExportName(readFileSync(pagePath, "utf8")) : null
-  console.log(`\nNext steps:`)
-  console.log(`  1. npm i ${[...result.npmDeps].sort().join(" ")}`)
-  console.log(`  2. import "./askewly-brand.css" after \`@import "tailwindcss";\` in your global stylesheet`)
-  console.log(
+  const srcRel = srcRoot === targetDir ? "." : "./src"
+  const steps: string[] = []
+  const alias = aliasStep(detectPathAlias(targetDir), srcRel)
+  if (alias) steps.push(alias)
+  steps.push(`npm i ${[...result.npmDeps].sort().join(" ")}`)
+  steps.push(`import "./askewly-brand.css" after \`@import "tailwindcss";\` in your global stylesheet`)
+  steps.push(
     exportName
-      ? `  3. render the block: import { ${exportName} } from "@/components/blocks/${opts.block}/page"`
-      : `  3. render the block from "@/components/blocks/${opts.block}/page" — open it to see which component it exports`,
+      ? `render the block: import { ${exportName} } from "@/components/blocks/${opts.block}/page"`
+      : `render the block from "@/components/blocks/${opts.block}/page" — open it to see which component it exports`,
   )
-  console.log(`  4. wire routing yourself — the block deliberately ships none (block-contract §3)`)
+  steps.push(`wire routing yourself — the block deliberately ships none (block-contract §3)`)
+  console.log(`\nNext steps:`)
+  for (const [index, step] of steps.entries()) console.log(`  ${index + 1}. ${step}`)
 }
