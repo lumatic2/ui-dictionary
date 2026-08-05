@@ -34,3 +34,6 @@
 - 버전 `0.4.0` → `0.4.1` (patch — 오탐 수정·누락 수정, CLI 인터페이스 무변경). `cli-release-procedure.md` 배포 이력 행 추가.
 - 배포 전 게이트: build(data 번들 terms=563 recipes=48) · vitest **71/71** · `tsc --noEmit` exit 0 · `npm pack --dry-run` **15 files · 259.6 kB**(0.4.0 대비 +1 파일 = kickstart 테스트 아님, dist 모듈 증가 없음 — `src/`·`test/`·`scripts/` 포함 **0건** 확인).
 - 경로: Trusted Publishing 워크플로(`gh workflow run publish-cli.yml --ref main`). 워크플로가 지정 ref 를 checkout 하므로 **push 선행 필수**.
+- 출고 완료: [run 30988075333](https://github.com/lumatic2/ui-dictionary/actions/runs/30988075333) 전 단계 ✓ · `npm view` → `0.4.1`.
+- 라이브 재현(M27 실패 경로 그대로): 빈 vite 프로젝트 → `npx @askewly/design@0.4.1 init . --block marketing-landing --color teal --yes` → **인쇄된 설치 목록 그대로** → **인쇄된 export 로 진입점** → `npm run build` PASS(**cva 누락 무재현**) → `verify` 25파일 0건 → `vite preview` 섹션 9 렌더·콘솔 에러 0.
+- step-3 변경분 라이브 반영 확인: `mx-auto` 있음(중심 정렬 측정 PASS) · 플레이스홀더 `border` 없음 · 블록 내 mesh 사용 0건·DOM `radial-gradient` 없음.
