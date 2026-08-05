@@ -86,7 +86,7 @@ Status: approved (사용자 승인 2026-08-05 "ㄱㄱ" — 결정 A=(a) 감지 �
   - Failure probe: 다크 모드에서 코드 블록·사이드바 대비가 무너지는 경우 — 라이트/다크 양쪽 관측을 게이트로 둔다. 취향 수정이 WCAG AA(4.5:1)를 깨면 되돌린다(취향이 접근성을 이기지 않는다).
   - Commit: changeset (README 절: step-4).
 
-- [ ] **step-5 — CF Pages 배포 + `0.4.2` 출고 + 통합 E2E**
+- [x] **step-5 — CF Pages 배포 + `0.4.2` 출고 + 통합 E2E**
   - Artifact: registry 배포(CF Pages — `docs-site` 라이브) → `packages/cli/package.json` `0.4.2` + `cli-release-procedure.md` 배포 이력 행 + 사전 게이트 전건 실행 로그 → **사용자 승인 후** `npm publish` → 라이브 통합 E2E → `evidence/docs-block-and-theme-derive/m29-release-042.md`.
   - Files: edit packages/cli/package.json. edit docs/design-system/cli-release-procedure.md. write evidence/docs-block-and-theme-derive/m29-release-042.md.
   - Risk: 위험 (`npm publish` 불가역 — `name@version` 영구 점유. 사전 게이트 전건 PASS + 사용자 명시 승인 없이 실행 금지)

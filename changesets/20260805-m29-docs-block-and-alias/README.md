@@ -44,3 +44,11 @@
 - **지점 D — OS 다크 기본값은 의도적 미조치.** `prefers-color-scheme` 자동 적용은 앱의 명시적 토글과 충돌한다(사용자가 라이트를 골라도 OS 가 이김). 스위치를 하나로 두고 인쇄된 안내가 켜는 법을 말하게 했다.
 - 게이트: **인쇄된 안내만으로 재현**(수기 보완 0) → build exit 0 · 실측 computed style 다크 `color-scheme: dark`·`--background #0f1219`·`pre` 배경 `rgb(30,36,46)`, 라이트로 떼면 `color-scheme: light` 로 따라옴 · 라이트 회귀 없음 · 콘솔 0 · registry 재생성 diff = 수정 asset 3종만(다른 54종 무변경) · verify 0건 · 사이트 build+prerender 759 · vitest **80/80**(신규 3) · tsc exit 0 · oxlint 0건.
 - 남긴 finding: 같은 반전을 쓰는 나머지 **9개 파일**(marketing hero·colors-page·contrast-duo-card 등) — 범위 밖.
+
+## step-5 — CF Pages 배포 + `0.4.2` 출고 + 라이브 통합 E2E
+
+- 순서는 기술결정 ④ 대로 **registry 먼저**: push 5커밋 → CF Pages Git 통합 자동 빌드 → `/r/docs-site.json` 404→**200**(약 80초). 이번엔 asset 3종을 고쳤으므로 "라이브 블록이 수정본을 물고 오는가"가 실질 검사였고, 이식된 파일에서 `dark:` 짝이 실제로 확인됐다(1·1·4). **M28 승계 제약(로컬 서빙으로는 asset 변경분이 안 온다)이 여기서 해소된다.**
+- npm: `publish-cli.yml` [run 31031905737](https://github.com/lumatic2/ui-dictionary/actions/runs/31031905737) 전 단계 ✓ → `npm view` **0.4.2**.
+- **통합 E2E — 인쇄된 안내만으로, 수기 보완 0**: 빈 vite → `npx --yes @askewly/design@0.4.2 init . --block docs-site --color violet --yes` → 인쇄된 6단계 그대로(`@custom-variant` 도 `color-scheme` 도 손으로 넣지 않았다 — 이번 릴리스의 요점이 그것) → `npx tsc -b` **exit 0**(M28 의 6건 무재현) → `npm run build` **exit 0** → `verify` **26파일 0건**.
+- 실브라우저: 다크 `color-scheme: dark`·`--background #0f1219`·`pre` 배경 `rgb(30,36,46)` · 클래스 제거 시 라이트로 따라오고 코드 패널은 라이트 반전 유지(회귀 없음) · 3페이지 전환 + ⌘K 정상 · **콘솔 에러 0**.
+- Evidence: `evidence/docs-block-and-theme-derive/m29-release-042.md`.
