@@ -1,8 +1,11 @@
 import { existsSync, mkdirSync, readFileSync, writeFileSync } from "node:fs"
+import { builtinModules } from "node:module"
 import path from "node:path"
 import { createInterface } from "node:readline/promises"
 import { stdin, stdout } from "node:process"
 import { verifyDir } from "./verify.js"
+
+const BUILTIN_MODULES = new Set(builtinModules)
 
 export class KickstartError extends Error {}
 
@@ -345,6 +348,49 @@ export type TransplantResult = {
   requiredCssVars: string[]
 }
 
+// ---------------------------------------------------------------------------
+// What the transplanted code actually needs installed.
+//
+// A registry item's declared `dependencies` is a lower bound, not the answer:
+// shadcn's own button.json declares only `radix-ui` while button.tsx imports
+// `class-variance-authority`. Following the printed `npm i` therefore left cva
+// missing and the first fresh build failed (M27). The authority is the source
+// we just wrote to disk, so read the imports out of it.
+// ---------------------------------------------------------------------------
+
+const SPECIFIER = /(?:\bfrom\s*|\brequire\s*\(\s*|\bimport\s*\(\s*|^\s*import\s+)(['"])([^'"]+)\1/gm
+
+/** Bare npm package names imported by a source file, folded to their install name. */
+export function importedPackages(content: string): string[] {
+  const found = new Set<string>()
+  for (const match of content.matchAll(SPECIFIER)) {
+    const spec = match[2]
+    // Relative paths and the project's own `@/` alias are not packages.
+    if (spec.startsWith(".") || spec.startsWith("/") || spec.startsWith("@/")) continue
+    if (spec.startsWith("node:")) continue
+    if (BUILTIN_MODULES.has(spec.split("/")[0])) continue
+    const parts = spec.split("/")
+    // `radix-ui/react-slot` installs as `radix-ui`; `@scope/pkg/sub` as `@scope/pkg`.
+    found.add(spec.startsWith("@") ? parts.slice(0, 2).join("/") : parts[0])
+  }
+  return [...found]
+}
+
+/**
+ * The symbol a consumer imports to render the block.
+ *
+ * Derived from the transplanted page rather than declared in the registry:
+ * a meta field would mean regenerating and redeploying all 56 assets for a
+ * defect the CLI can close on its own. `…Demo` exports are the block's own
+ * showcase wrapper, never the entry point.
+ */
+export function blockExportName(pageSource: string): string | null {
+  for (const match of pageSource.matchAll(/^\s*export\s+function\s+([A-Za-z_$][\w$]*)/gm)) {
+    if (!match[1].endsWith("Demo")) return match[1]
+  }
+  return null
+}
+
 export async function fetchBlock(blockName: string, registryBase: string): Promise<RegistryItem> {
   const block = await fetchJson(`${registryBase}/r/${blockName}.json`)
   if (block.meta?.tier !== "block") {
@@ -359,6 +405,16 @@ export async function transplantBlock(block: RegistryItem, targetDir: string): P
   const npmDeps = new Set<string>(["clsx", "tailwind-merge"])
   const visited = new Set<string>()
 
+  function write(file: RegistryFile): void {
+    const dest = destFor(file, srcRoot)
+    const content = rewriteImports(file.content)
+    mkdirSync(path.dirname(dest), { recursive: true })
+    writeFileSync(dest, content)
+    written.push(dest)
+    // The file we just wrote is the authority on what must be installed.
+    for (const pkg of importedPackages(content)) npmDeps.add(pkg)
+  }
+
   async function resolve(item: RegistryItem): Promise<void> {
     for (const dep of item.dependencies ?? []) npmDeps.add(dep.split("@").slice(0, dep.startsWith("@") ? 2 : 1).join("@"))
     for (const ref of item.registryDependencies ?? []) {
@@ -368,22 +424,12 @@ export async function transplantBlock(block: RegistryItem, targetDir: string): P
       visited.add(key)
       const child = await fetchJson(url)
       await resolve(child)
-      for (const file of child.files ?? []) {
-        const dest = destFor(file, srcRoot)
-        mkdirSync(path.dirname(dest), { recursive: true })
-        writeFileSync(dest, rewriteImports(file.content))
-        written.push(dest)
-      }
+      for (const file of child.files ?? []) write(file)
     }
   }
 
   await resolve(block)
-  for (const file of block.files ?? []) {
-    const dest = destFor(file, srcRoot)
-    mkdirSync(path.dirname(dest), { recursive: true })
-    writeFileSync(dest, rewriteImports(file.content))
-    written.push(dest)
-  }
+  for (const file of block.files ?? []) write(file)
 
   // cn() — shadcn init would have created it; transplant guarantees it (M18 step-5 friction).
   const utils = path.join(srcRoot, "lib", "utils.ts")
@@ -452,10 +498,17 @@ export async function runKickstart(
   }
   console.log(`verify PASS — ${files} block file(s), no color literals`)
 
-  // 7. handoff
+  // 7. handoff — every line here must be true of the project that now exists on
+  //    disk. A printed step the reader cannot follow is worse than no step.
+  const pagePath = path.join(blockDir, "page.tsx")
+  const exportName = existsSync(pagePath) ? blockExportName(readFileSync(pagePath, "utf8")) : null
   console.log(`\nNext steps:`)
   console.log(`  1. npm i ${[...result.npmDeps].sort().join(" ")}`)
   console.log(`  2. import "./askewly-brand.css" after \`@import "tailwindcss";\` in your global stylesheet`)
-  console.log(`  3. render the block: import { SaasAppShell } from "@/components/blocks/${opts.block}/page"`)
+  console.log(
+    exportName
+      ? `  3. render the block: import { ${exportName} } from "@/components/blocks/${opts.block}/page"`
+      : `  3. render the block from "@/components/blocks/${opts.block}/page" — open it to see which component it exports`,
+  )
   console.log(`  4. wire routing yourself — the block deliberately ships none (block-contract §3)`)
 }
