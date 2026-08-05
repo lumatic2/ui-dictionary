@@ -1,11 +1,22 @@
 # ROADMAP
 
-> Last updated: 2026-08-04
-> Status: **2026-08-04 goal `second-block-marketing` 완주 (M27)** — 블록 2호 marketing-landing: harvest asset 9종 자체 재조합(registry 56)·킥스타트 이식 E2E·사용자 관측 통과. 첫 "산출물→저장고→재조합" 전 구간 완주. active goal 0. 남은 큐: CLI 0.4.x 폴리싱(킥스타트 기본값 M19 + verify chart.tsx 오탐 + M27 finding 2건: 안내문 하드코딩·cva dep 누락) · 『인터랙티브 웹 애니메이션』 책 스터디(사용자 주도) · dark/light 테마 SSOT 파생 · D2 Presenton 벤치 · Around 재판정 · docs-site 블록(3호).
+> Last updated: 2026-08-05
+> Status: **2026-08-05 goal `cli-polish-041` 착수 (M28)** — 0.4.0 실사용 결함 4건(verify 속성 셀렉터 오탐 · 킥스타트 export 하드코딩 · cva dep 누락 · 기본값 폴리싱)을 0.4.1 patch 한 번으로 닫는다. 직전: 2026-08-04 goal `second-block-marketing` 완주(M27 — registry 56, 첫 "산출물→저장고→재조합" 전 구간). 남은 큐: 『인터랙티브 웹 애니메이션』 책 스터디(사용자 주도) · dark/light 테마 SSOT 파생 · D2 Presenton 벤치 · Around 재판정 · docs-site 블록(3호).
 > North star: Build Askewly Design as both a public reference website and an agent-usable implementation system.
 > line budget: <=150
 
 ## Current Goal
+
+<!-- harness:goal id="cli-polish-041" status="active" -->
+Goal: CLI 0.4.1 폴리싱 — 킥스타트 handoff 가 실제 프로젝트와 일치하고, verify 가 토큰 준수 코드를 위반으로 부르지 않게 한다. 킥스타트는 이 시스템이 남에게 이식되는 유일한 원커맨드 표면이라, 그 표면이 인쇄하는 안내가 틀리면 첫 3분에서 신뢰를 잃는다.
+## Active Milestones — cli-polish-041
+<!-- harness:milestone id="M28" status="active" priority="P1" evidence="evidence/cli-polish-041/m28-release-041.md" -->
+### M28 — CLI 0.4.1 폴리싱 (킥스타트 handoff + verify 오탐)
+- DoD: `0.4.1` 이 npm 에 올라가 있고, 빈 디렉터리 → 킥스타트 1커맨드 → **인쇄된 `npm i` 그대로** → 빌드 성공 → **인쇄된 export 로 렌더** 가 개입 없이 통과한다(M27 에서 깨졌던 경로). verify 는 속성 셀렉터 hex 를 위반으로 부르지 않으면서 진짜 색 선언은 계속 잡는다.
+- Evidence: evidence/cli-polish-041/m28-release-041.md · evidence/cli-polish-041/m28-kickstart-defaults.md
+- Gap: 0.4.0 배포본 결함 4건 — chart.tsx `[stroke='#ccc']` 오탐 · `kickstart.ts:459` `SaasAppShell` 하드코딩 · shadcn 상류 dep 선언 누락(cva) 으로 신선 빌드 1회 실패 · M19 기본값 폴리싱 코멘트.
+- Scale: steps=4 (verify 마스킹 · 킥스타트 handoff · 기본값 폴리싱+관측 · 0.4.1 출고); surfaces: packages/cli(verify·kickstart)·(폴리싱 시) 블록 소스; capability: 인쇄된 안내를 그대로 따라 빌드가 되는 킥스타트
+- Plan: plans/2026-08-05-m28-cli-polish-041.md · Status: [ ]
 
 <!-- harness:goal id="second-block-marketing" status="completed" -->
 Goal: 두 번째 블록 marketing-landing — 블록 체계 복수화. closed 2026-08-04 — M27 단독(harvest asset 9종 자체 재조합 → registry 56, 킥스타트 이식 E2E·사용자 관측 통과, CLI finding 2건 0.4.x 큐 적재). Details: `evidence/second-block-marketing/m27-marketing-landing.md` + `docs/reports/2026-08-04-m27-marketing-landing-block.md`.
