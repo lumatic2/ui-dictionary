@@ -859,3 +859,9 @@ plan doc: `archive/plans/2026-07-21-eu*.md` · 증거: `evidence/editor-legibili
   - Completed: 2026-08-04
   - Result: init --block 원커맨드(브리프→DESIGN.md→토큰층→재귀 이식→요구변수 대조→verify) + E2E 사용자 관측 통과
   - Evidence: evidence/reusable-composition/m19-kickstart.md
+
+### 2026-08
+- M28 - M28 — CLI 0.4.1 폴리싱 (킥스타트 handoff + verify 오탐)
+  - Completed: 2026-08-05
+  - Result: 0.4.1 출고 — 인쇄된 안내 그대로 빌드 성공(cva 무재현), verify 오탐 제거, 오너 지목 3건(그라디언트·슬롯 테두리·마키) 반영
+  - Evidence: evidence/cli-polish-041/m28-release-041.md
