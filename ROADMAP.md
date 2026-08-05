@@ -1,27 +1,30 @@
 # ROADMAP
 
 > Last updated: 2026-08-06
-> Status: **2026-08-06 M29 완주 — 이식 경로 완결.** 빈 vite 에서 킥스타트 한 줄 + **인쇄된 안내만으로** docs-site 블록이 빌드된다(수기 보완 0, `tsc -b` 6건 무재현). `0.4.2` npm 출고 · 블록 3호 라이브 · 다크 결함 3건(코드 패널 반전 · 갈라진 다크 스위치 · `color-scheme` 미선언) 수정. 다음 = **M30(pending, 승인 연쇄)** `/pt` `custom` 테마의 다크 판본. **큐 정정**: 구 항목 "dark/light 테마 SSOT 파생"은 사용자 의도와 다른 물건이었고(의도 = 4번째 선택지가 레포 토큰을 따라가게 → M17 에서 이미 충족), M30 으로 재정의됐다. 남은 큐: 반전 사용 9개 파일 일괄 판정 · 책 스터디(사용자 주도) · D2 · Around.
+> Status: **2026-08-06 goal `docs-block-and-theme-derive` 완주 (M29·M30).** ① 빈 vite 에서 킥스타트 한 줄 + **인쇄된 안내만으로** docs-site 블록이 빌드된다(수기 보완 0, `tsc -b` 6건 무재현) — `0.4.2` npm 출고 · 블록 3호 라이브 · 다크 결함 3건(코드 패널 반전 · 갈라진 다크 스위치 · `color-scheme` 미선언) 수정. ② `/pt` `custom` 테마가 레포 `DESIGN.md` 로 **라이트·다크 두 얼굴**을 낸다(canonical 3종 무변경). **active goal 0 — 다음은 `/harness-plan`.** 남은 큐: `bg-foreground` 반전 사용 9개 파일 일괄 판정 · 『인터랙티브 웹 애니메이션』 책 스터디(사용자 주도) · D2 Presenton 벤치 · Around 재판정 · Figma 후속 3건.
 > North star: Build Askewly Design as both a public reference website and an agent-usable implementation system.
 > line budget: <=150
 
 ## Current Goal
 
-<!-- harness:goal id="docs-block-and-theme-derive" status="active" -->
-Goal: 이식 경로가 세 번째 블록(docs-site)까지 **인쇄된 안내만으로** 돌아가고, `/pt` 의 4번째 테마 선택지(`custom`)가 레포 토큰의 다크 얼굴까지 따라간다. 킥스타트는 이 시스템이 남에게 이식되는 유일한 원커맨드 표면이고, `custom` 테마는 임의의 레포가 자기 브랜드로 덱을 만드는 유일한 경로다 — 둘 다 "이식 가능한 제품" 축의 실발현 지점이다. 승인 2026-08-05.
+<!-- harness:goal id="docs-block-and-theme-derive" status="completed" -->
+Goal: 이식 경로가 세 번째 블록(docs-site)까지 **인쇄된 안내만으로** 돌아가고, `/pt` 의 4번째 테마 선택지(`custom`)가 레포 토큰의 다크 얼굴까지 따라간다. 킥스타트는 이 시스템이 남에게 이식되는 유일한 원커맨드 표면이고, `custom` 테마는 임의의 레포가 자기 브랜드로 덱을 만드는 유일한 경로다 — 둘 다 "이식 가능한 제품" 축의 실발현 지점이다. 승인 2026-08-05 · closed 2026-08-06 — M29(이식 경로 완결·0.4.2 출고·블록 3호)·M30(custom 다크 판본) 완주. Details: `docs/reports/2026-08-06-m29-docs-block-and-alias.md`·`…-m30-custom-dark-face.md`.
 
 ## Active Milestones — docs-block-and-theme-derive
 
-<!-- harness:milestone id="M30" status="pending" priority="P2" evidence="evidence/docs-block-and-theme-derive/m30-custom-dark-face.md" -->
+<!-- harness:milestone id="M30" status="completed" priority="P2" evidence="evidence/docs-block-and-theme-derive/m30-custom-dark-face.md" -->
 ### M30 — `custom` 테마의 다크 판본
 - DoD: `/pt` 의 4번째 선택지 `custom` 이 대상 레포 `DESIGN.md` 로부터 라이트·다크 두 얼굴을 만들고, 실덱 다크 렌더가 사용자 관측을 통과한다. **canonical 3종 무변경**, 모드 미지정 호출(M17 경로) 산출 동일, 다크 정보 없는 프로젝트에는 조용한 폴백 없이 명시 실패.
 - Gap: `DESIGN.md` 의 다크 오버라이드 37행이 실려 있는데 변환기가 `themes` 를 읽지 않음(grep 0건) — 브랜드 덱이 항상 라이트로만 나온다
 - Scale: steps=2 (변환기 다크 판독+`--mode` · 스킬 배선+관측+배포); surfaces: custom-skills promoted/pt; capability: 내 브랜드의 다크 덱
 - Plan: plans/2026-08-05-m30-custom-dark-face.md
-- Status: [ ]
+- Status: [x]
 
 <!-- harness:goal-archive18 id="cli-polish-041" status="completed" -->
 Goal: CLI 0.4.1 폴리싱 — 킥스타트 handoff 가 실제 프로젝트와 일치하고, verify 가 토큰 준수 코드를 위반으로 부르지 않게 한다. closed 2026-08-05 — M28 단독(0.4.1 출고·라이브 재현 통과, 오너 지목 3건 반영). Details: `docs/reports/2026-08-05-m28-cli-polish-041.md`. 킥스타트는 이 시스템이 남에게 이식되는 유일한 원커맨드 표면이라, 그 표면이 인쇄하는 안내가 틀리면 첫 3분에서 신뢰를 잃는다.
+- Completed at: 2026-08-06
+- Evidence: evidence/docs-block-and-theme-derive/m30-custom-dark-face.md
+- Summary: custom 테마의 다크 판본 — --mode light|dark 로 레포 브랜드의 두 얼굴, canonical 3종 무변경, self-test 13/13, 사용자 관측 통과(민트 확정)
 ## Active Milestones — cli-polish-041
 ## Active Milestones — second-block-marketing
 
