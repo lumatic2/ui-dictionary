@@ -83,7 +83,7 @@ M32 는 이식 파일 내용 변경이 범위 밖이라 CLI 테스트로 gap 만
 
 ## Step 트리
 
-- [ ] **step-1 — chrome restyle + 사이트 렌더 관측 (human gate)**
+- [x] **step-1 — chrome restyle + 사이트 렌더 관측 (human gate)**
   - Artifact: 이식 파일의 chrome 이 semantic 토큰만 쓰고(오버레이 예외는 사유 주석), 사이트에서 라이트·다크
     양 모드 렌더가 관측을 통과한다
   - Files: `examples/ui-vocabulary-site/src/components/color-palette-generator.tsx`
@@ -98,7 +98,7 @@ M32 는 이식 파일 내용 변경이 범위 밖이라 CLI 테스트로 gap 만
   - Risk: 위험 (관측 기각 시 치환 짝을 바꿔 재생성·재관측 — 파일 국소라 되돌림이 싸다)
   - Commit: `fix(site): color-palette-generator chrome 을 semantic 토큰으로 restyle`
 
-- [ ] **step-2 — 실측 선언 재생성 + gap 테스트 반전 + 라이브 실증**
+- [x] **step-2 — 실측 선언 재생성 + gap 테스트 반전 + 라이브 실증**
   - Artifact: 선언이 새 실측을 반영하고(`--askewly-violet` 요구 소멸), gap 테스트가 "요구 전건 정의됨"을
     지키는 방향으로 반전되며, 라이브 소비처 실증이 증거로 남는다
   - Files: `examples/ui-vocabulary-site/registry.json`(`--print-measured` 실측 전사 — 위 스캐폴딩 결정) · `public/r/*.json`(재생성) ·
@@ -145,9 +145,34 @@ M32 는 이식 파일 내용 변경이 범위 밖이라 CLI 테스트로 gap 만
 
 ## finding 큐
 
-(실행 중 발견분을 여기 append)
+- 다크에서 파스텔 스와치 위 hex 라벨이 흐리다 — `getReadableTextColor` 가 스와치(항상 밝은 파스텔) 위 텍스트에
+  테마 변수 `var(--foreground)` 를 반환해 다크에서 백색이 된다. 스와치는 사용자 콘텐츠라 테마 무관 고정 판정이
+  맞다(오버레이 예외와 같은 원리). palette-generator-core 와 이 파일 양쪽에 걸친 수리 — 별도 finding.
+- `check-llms-sync` drift 1건이 HEAD 에 이미 존재 — M35 가 `figma-bridge-contract.md` 를 갱신하고 llms 를
+  재생성하지 않았다. step-2 에서 함께 재생성해 해소(M32 실패 모드 4 "llms 재생성 누락"의 실측 재발).
 
 ## 진행 로그
+
+- **step-1 완료 (2026-08-06)** — 치환: `ring-askewly-violet`→`ring-ring` 6 · `slate-*`→semantic 50 ·
+  `bg-white`→`bg-card|popover` · 툴팁/토스트 `bg-slate-950 text-white`→`bg-foreground text-background`(사이트 idiom,
+  colors-page 토스트와 동일) · export 백드롭 `bg-slate-950/72`→`bg-scrim/72` · `border-blue-500`→`border-ring`.
+  오버레이 예외 6곳(액션 필·hex 라벨 hover·shade 포커스 링·shade 도트 링·픽커 핸들 2) 고정색 유지 + 주석.
+  Verify: oxlint·lint:colors 0·build·prerender 759 PASS, 콘솔 에러 0, 색 유틸 grep 0
+  (slate 잔여 grep 12는 전부 `-translate-x-1/2` 부분 문자열 오탐). 라이트/다크/픽커/모달/포커스 스크린샷 6장,
+  전/후 다크 비교(바텀레일 흰 판때기 해소) 포함 Artifact 관측 — **사용자 통과**("ㄱㄱ", Generate 링·다크 추종 확인 문답 후).
+  커밋 `3746aad`.
+  ⚠ finding: 다크에서 파스텔 스와치 위 hex 라벨 흐림 — `getReadableTextColor` 가 var(--foreground) 반환(다크=백색).
+  **기존 동작**(restyle 무관, palette-core 로직) — finding 큐 등록.
+  ⚠ finding: `check-llms-sync` FAIL 1건은 HEAD 에 이미 존재(M35 가 figma-bridge-contract.md 갱신 후 llms 미재생성) —
+  step-2 재생성 장벽에서 함께 해소.
+- **step-2 완료 (2026-08-06)** — 선언 전사 5→**14종**(실측 집합 일치, `--askewly-violet` 소멸). 전사 전 게이트가
+  신규 10종 누락으로 실패(게이트 실효 확인). gap 테스트는 registry 를 안 읽는 하드코딩이라 **no-op 판정**(계획
+  probe 의 예상 분기) → 실 registry 판독 2건으로 반전, 주입 왕복 probe 로 무는 것 확인. vitest 90/90.
+  llms 재생성(M35 drift 동반 해소)·sync PASS. 커밋 `1a5e14c` push → CF Pages 폴링 10회 ≈ 5분 반영.
+  소비처 시뮬레이션(빈 vite + 킥스타트 + 라이브 JSON 이식): 브랜드 CSS 요구 14종 전건 정의·`--askewly-violet`
+  미정의, 키보드 Tab `:focus-visible` ring `rgb(98,49,196) 2px` **실측** — 결함 해소 직접 증거.
+  ⚠ 중간 사고 1건: `--print-measured` 파괴성으로 `public/r/registry.json` 삭제 → llms 배너 32건 조용한 소실 —
+  원인 규명 후 전량 복구, finding 큐 등재(위).
 
 - 2026-08-06 작성 — goal `findings-sweep` 연쇄 1/2.
 - 2026-08-06 계획 검증자 반영 — 치명 1건: 생성기는 선언을 쓰지 않고 초과 선언을 통과시킨다 →

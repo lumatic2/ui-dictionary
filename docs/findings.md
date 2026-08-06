@@ -63,16 +63,25 @@
 
 ## G. 이식 표면 (M32 2026-08-06)
 
-- [ ] **`color-palette-generator` 가 사이트 전용 브랜드 토큰을 요구한다** — `ring-askewly-violet` 6곳.
+- [x] **`color-palette-generator` 가 사이트 전용 브랜드 토큰을 요구한다** — `ring-askewly-violet` 6곳.
   소비처 프로젝트엔 `--askewly-violet` 이 없어 포커스 링이 투명해진다. 같은 파일이 `slate-*`·`bg-white` 등
   토큰 밖 색도 쓰고 있어(기존 verify 위반군) 수리는 restyle 단위 작업이다. M32 는 이식 파일 **내용** 변경이
   범위 밖이라 실측 선언에 그대로 남기고 `packages/cli` 테스트로 gap 만 고정했다.
+  → **닫힘 (M36 2026-08-06)**: chrome 전면 semantic 토큰 restyle(오버레이 예외 주석), 선언 실측 전사 14종,
+  gap 테스트를 실 registry 판독으로 반전, 라이브 소비처에서 포커스 링 실측. `evidence/findings-sweep/m36-palette-generator-restyle.md`.
 - [ ] **반전 오용 lint 룰은 보류 유지** (M31 판단 승계, 2026-08-06 사용자 재확정). `bg-foreground` 계열이
   결함인지 의도된 최고강조 문법인지는 **용법 의존**이라 정적 규칙이 오탐을 대량 생산한다 — 정본 코드에
   거짓 위반이 뜨면 게이트 전체의 신뢰가 깎인다. 되살릴 조건: 용법 분류(스크림·전체면·작은 컨트롤·데코 틴트)를
   기계가 구분할 신호가 생겼을 때.
 - [ ] **정적 추출의 상한** — `generate-registry.mjs` 의 실측은 런타임 조립 클래스를 못 잡고, 문자열 안의
   유틸은 센다(주석은 제거). 한계는 `--self-test` 와 `block-contract.md` §4.1 에 고정.
+- [ ] **`generate-registry.mjs --print-measured` 가 파괴적이다** (M36 2026-08-06 실측 사고) — 모든 모드가 시작 시
+  `public/r/` 를 지우는데(`:207`) print 모드는 index(`:392`)를 쓰기 전에 끝나 `public/r/registry.json` 이 삭제된
+  채 남는다. 이어 도는 `generate-llms-txt.mjs` 의 `assetFor` 는 index 부재를 **조용히** 빈 목록으로 받아 레시피
+  STOP 배너 32건을 오류 없이 소실시킨다. 수리 방향: print 모드는 출력만(삭제 금지) + llms 쪽 index 부재 하드 실패.
+- [ ] **다크에서 파스텔 스와치 위 hex 라벨이 흐리다** (M36 2026-08-06) — `getReadableTextColor` 가 스와치 위
+  텍스트에 테마 변수(`var(--foreground)` = 다크에서 백색)를 반환. 스와치는 사용자 콘텐츠라 테마 무관 고정
+  대비가 맞다(오버레이 예외와 같은 원리). `palette-generator-core` 와 데모 양쪽에 걸친 수리 — restyle 무관 기존 동작.
 
 ## H. 덱 트랙 (M33 2026-08-06)
 
