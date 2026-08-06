@@ -176,7 +176,7 @@ asset 2종이 들어 있다.** 지금 그 asset 을 받는 사람은 다크에�
   - Risk: 위험 (판독 확장이 기존 블록 경로 동작을 바꿀 수 있다 — 블록 3종 킥스타트 산출 동일성으로 확인)
   - Commit: `feat(cli): 이식 경로에 scrim 배선 + component tier requiredCssVars 판독`
 
-- [ ] **step-5 — 통합 E2E + 사용자 관측 (human gate)**
+- [x] **step-5 — 통합 E2E + 사용자 관측 (human gate)**
   - Artifact: 사람이 라이트/다크 양쪽을 보고 통과시킨다
   - Files: `evidence/dark-inversion-cleanup/m31-scrim-token.md`
   - Dependencies: step-1, step-2, step-3, step-4
@@ -255,3 +255,13 @@ C2 작은 컨트롤 · C3 · 불가침 2건 · 블록 3종은 무변경.
   vitest **83/83**(신규 3) · tsc 0 · registry diff 4파일, 나머지 53종 무변경 · build:data 통과.
   ⚠ **전이 판독의 실발화 증거는 step-6 으로 이월** — asset regDeps 가 라이브 절대 URL 이라
   선언이 배포되기 전에는 로컬에서 그 경로가 돌지 않는다(승계 계약). 커밋 `feat(cli): 이식 경로에 scrim 배선`.
+- **step-5 완료 (2026-08-06, 사람 관측 통과 "좋다")** — **관측이 결함 1건을 잡았다.**
+  step-1 의 `scrim = gray.12` 가 다크 `--background` 와 **완전히 같은 값**이라, 다크에서 스크림이
+  불투명도와 무관하게 **아무것도 어둡게 하지 않았다**(합성 결과 0). 반전 버그는 사라졌지만 그 자리를
+  무동작이 대신하고 있었고, **빌드·테스트·린트·verify 는 그 상태로 전부 통과**했다 — 사진으로만 잡혔다.
+  → `scrim = {color.primitive.black}`(primitive `black` 신설)로 정정. CLI 도 `c.dark.bg` → `oklch(0 0 0)`.
+  교훈: 스크림 계열의 제약은 *다른 토큰과 같은 값인가*가 아니라 *덮는 표면보다 어두운가*다.
+  evidence `evidence/dark-inversion-cleanup/m31-scrim-token.md`.
+  ⚠ 관측 도중 드러난 운영 결함 2건(보고에는 남김): ① dev 서버가 IPv6 에만 바인딩돼 `127.0.0.1` 접속이
+  거부됐다(사용자 화면 공백의 원인) ② `auth-gate-modal` 은 사이트에 렌더되지 않는 registry 전용 asset 인데
+  관측 대상으로 안내했다 — step-6 라이브 재현으로 이동.
