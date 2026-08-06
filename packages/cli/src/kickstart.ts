@@ -267,9 +267,12 @@ ${vars(c.light, a.light, a.onLight, a.ring, "light")}
    * once, outside the light/dark pair, on purpose: a scrim means "press the
    * background down", so it must read dark in BOTH modes. Keying it off
    * \`--foreground\` (the obvious-looking choice) inverts it in dark mode and the
-   * backdrop gets *brighter* than the page behind it. Consumers own the
-   * opacity: bg-scrim/50, bg-scrim/72. */
-  --scrim: ${c.dark.bg};
+   * backdrop gets *brighter* than the page behind it. Pure black rather than the
+   * dark canvas colour, because a scrim identical to the surface it covers dims
+   * nothing — measured on the dark bottom-sheet demo, where the two matched
+   * exactly and the sheet stopped separating from the screen behind it.
+   * Consumers own the opacity: bg-scrim/50, bg-scrim/72. */
+  --scrim: oklch(0 0 0);
 }
 
 .dark {

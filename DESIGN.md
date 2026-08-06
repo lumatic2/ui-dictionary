@@ -7,6 +7,7 @@ tokens:
   color:
     primitive:
       white: { value: {"colorSpace":"oklch","components":[1,0,0]}, type: color }
+      black: { value: {"colorSpace":"oklch","components":[0,0,0]}, type: color }
       gray:
         "1": { value: {"colorSpace":"oklch","components":[0.985,0,0]}, type: color }
         "2": { value: {"colorSpace":"oklch","components":[0.97,0.005,270]}, type: color }
@@ -61,7 +62,7 @@ tokens:
         base: { value: "{color.primitive.gray.1}", type: color }
         raised: { value: "{color.primitive.white}", type: color }
         overlay: { value: "{color.primitive.white}", type: color }
-        scrim: { value: "{color.primitive.gray.12}", type: color }
+        scrim: { value: "{color.primitive.black}", type: color }
         muted: { value: "{color.primitive.gray.3}", type: color }
         secondary: { value: "{color.primitive.gray.4}", type: color }
         tint: { value: "{color.primitive.askewly.mint}", type: color }
