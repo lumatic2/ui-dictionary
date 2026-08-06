@@ -96,7 +96,7 @@ Status: approved (사용자 승인 2026-08-06 "ㄱㄱ" — goal `queue-drain` �
 
 ## Step 트리
 
-- [ ] **step-1 — 실측 추출 + 대조 게이트 (두 경로)**
+- [x] **step-1 — 실측 추출 + 대조 게이트 (두 경로)**
   - Artifact: 이식 파일이 실제로 쓰는 CSS 변수를 뽑아내고, 선언이 그보다 좁으면 생성이 실패한다
   - Files: `scripts/generate-registry.mjs`(추출 함수 + 대조 + `--self-test` 플래그 — 블록 경로 `:132` 와 비블록 경로 `:206`/`:220` 양쪽)
   - Dependencies: 없음
@@ -162,4 +162,16 @@ Status: approved (사용자 승인 2026-08-06 "ㄱㄱ" — goal `queue-drain` �
 ## 진행 로그
 
 - 2026-08-06 작성 — goal `queue-drain` 연쇄 1/4.
+- **step-1 완료 (2026-08-06)** — `extractCssVars` + `stripComments` + `assertDeclarationCoversUsage` 를
+  `scripts/generate-registry.mjs` 에 넣고 블록(`buildBlock`)·비블록 양 경로에 배선. `--self-test` **8/8**,
+  생성기 2회 실행 `public/r/` **diff 0**(멱등 + 선언 채우기 전 산출 무변경).
+  **Failure probe 양 경로 성립** — `auth-gate-modal` 에서 `--scrim`(비블록), `marketing-landing` 에서
+  `--primary`(블록) 를 빼자 각각 exit 1 로 잡혔다.
+  ⚠ **계획 Verify 문구 1건 정정** — "음성: 주석·**문자열 리터럴** 무검출"에서 문자열 쪽은 성립하지 않는다.
+  className 자체가 문자열이라 배제하면 실검출이 죽는다. 주석만 제거하고(`stripComments` — URL 의 `//` 를
+  자르지 않게 따옴표 상태 추적), 문자열은 센다는 것을 self-test 에 **한계로 고정**했다.
+  ⚠ **추출기가 첫 실행에서 오검출 3건을 냈다**(`saas-app-shell`: `--color-desktop`·`--color-mobile`·`--spacing`).
+  원인은 ① 파일이 스스로 정의하는 변수 ② Tailwind 내장(`--spacing`) ③ shadcn chart 가 런타임 주입하는
+  `--color-<series>`. 셋 다 소비처가 정의할 대상이 아니라 제외 규칙을 넣었다 — `--color-*` 는 테마에 실재하면
+  가리키는 변수로 치환(`--color-scrim`→`--scrim`), 아니면 버린다. 커밋 `feat(registry): requiredCssVars 실측 추출`.
 - 2026-08-06 계획 검증자 반영 — 치명 4건(선언 수 5종 정정 · ⓑ 증명 방식 전환 · 비블록 경로 게이트 · llms 재생성 장벽) + 경미 5건(§4 위치·self-test 관례·evidence 파일·출력 해석·vitest 신호).

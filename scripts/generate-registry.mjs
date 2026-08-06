@@ -22,6 +22,7 @@ const REGISTRY_JSON = path.join(SITE, "registry.json");
 const COMPONENTS = path.join(SITE, "src", "components");
 const RECIPES_DIR = path.join(REPO_ROOT, "recipes");
 const OUT_DIR = path.join(SITE, "public", "r");
+const INDEX_CSS = path.join(SITE, "src", "index.css");
 const BASE_URL = "https://ui.askewly.com";
 
 // react-dom is part of the base surface: it ships with every React project the
@@ -33,7 +34,155 @@ function fail(msg) {
   process.exit(1);
 }
 
+// ---------------------------------------------------------------------------
+// requiredCssVars 실측 (M32)
+//
+// 선언은 사람이 적는 값이라 빠뜨리면 이식처에서 색이 조용히 사라진다(M31 실증).
+// 그래서 이식되는 파일 내용에서 실제로 쓰이는 CSS 변수를 뽑아 선언과 대조한다.
+// 문법은 두 종류만 센다 — 임의 문자열 스캔은 주석·문서 문자열에서 오탐이 난다:
+//   ① var(--x)
+//   ② Tailwind 유틸의 토큰 이름. 단 @theme inline 에 실재하는 토큰만 인정한다.
+// 누락은 실패, 초과(넓게 적은 선언)는 통과 — 넓은 선언은 무해하고, 좁히면
+// 소비처가 조용히 깨진다.
+// ---------------------------------------------------------------------------
+
+// @theme inline 의 `--color-x: var(--y)` / `--radius-x: ... var(--y)` 를 읽어
+// "유틸 접미사 -> 소비처가 정의해야 하는 변수" 표를 만든다.
+function readThemeTokenMap(cssText) {
+  const map = new Map(); // utility suffix ("primary", "sidebar-border") -> "--primary"
+  for (const block of cssText.matchAll(/@theme\s+inline\s*\{([\s\S]*?)\n\}/g)) {
+    for (const line of block[1].split("\n")) {
+      const m = line.match(/^\s*--color-([a-z0-9-]+)\s*:\s*(.+);\s*$/);
+      if (!m) continue;
+      const ref = m[2].match(/var\(\s*(--[a-z0-9-]+)\s*\)/);
+      if (ref) map.set(m[1], ref[1]);
+    }
+  }
+  return map;
+}
+
+// 색 유틸 접두사. `border` 는 접두사이자 단독 유틸이라 따로 다룬다.
+const COLOR_UTILS = "bg|text|border|ring|from|via|to|fill|stroke|outline|decoration|shadow|accent|caret|divide|placeholder";
+
+// 주석은 지운 뒤 센다 — 설명 산문의 클래스 이름이 요구 변수로 올라오면 소비처가
+// 쓰지도 않는 변수를 정의하게 된다. URL 의 `//` 를 자르지 않도록 따옴표 상태를 본다.
+export function stripComments(source) {
+  let out = "";
+  let quote = null; // ' " ` 중 하나
+  for (let i = 0; i < source.length; i++) {
+    const c = source[i];
+    const next = source[i + 1];
+    if (quote) {
+      out += c;
+      if (c === "\\") { out += next ?? ""; i++; continue; }
+      if (c === quote) quote = null;
+      continue;
+    }
+    if (c === "'" || c === '"' || c === "`") { quote = c; out += c; continue; }
+    if (c === "/" && next === "/") { while (i < source.length && source[i] !== "\n") i++; out += "\n"; continue; }
+    if (c === "/" && next === "*") { i += 2; while (i < source.length && !(source[i] === "*" && source[i + 1] === "/")) i++; i++; out += " "; continue; }
+    out += c;
+  }
+  return out;
+}
+
+// Tailwind v4 가 스스로 정의하는 변수 — 소비처가 정의할 대상이 아니다.
+const TAILWIND_BUILTIN = /^--(spacing|container|breakpoint|text|font|tracking|leading|default)(-|$)/;
+
+export function extractCssVars(rawSource, themeMap) {
+  const source = stripComments(rawSource);
+  const found = new Set();
+
+  // 이 파일이 스스로 정의하는 변수는 요구 대상이 아니다
+  // (예: page.tsx 의 `"--sidebar-width": "calc(var(--spacing) * 72)"`).
+  const selfDefined = new Set(
+    [...source.matchAll(/["']?(--[a-z0-9-]+)["']?\s*:/g)].map((m) => m[1])
+  );
+
+  // ① var(--x)
+  for (const m of source.matchAll(/var\(\s*(--[a-z0-9-]+)/g)) found.add(m[1]);
+
+  // ② Tailwind 유틸 — 클래스 토큰 경계에서만 본다(주석 산문은 걸리지 않는다).
+  const utilRe = new RegExp(`(?:^|[\\s"'\`{(\\[])(?:[a-z-]+:)*(${COLOR_UTILS})-([a-z0-9-]+?)(?:\\/[0-9.]+)?(?=$|[\\s"'\`})\\]])`, "g");
+  for (const m of source.matchAll(utilRe)) {
+    const token = m[2];
+    if (themeMap.has(token)) found.add(themeMap.get(token));
+  }
+
+  // radius — rounded-* 는 --radius 파생 유틸이고, 소비처가 정의할 변수는 --radius 하나다.
+  if (/(?:^|[\s"'`{(\[])(?:[a-z-]+:)*rounded(?:-(?:sm|md|lg|xl))?(?=$|[\s"'`})\]])/.test(source)) found.add("--radius");
+
+  // 테두리 색은 전역 리셋(`* { border-color: var(--border) }`)이 준다 —
+  // 색 토큰 없이 `border`·`border-t`·`border-2` 만 써도 --border 가 필요하다.
+  if (new RegExp(`(?:^|[\\s"'\`{(\\[])(?:[a-z-]+:)*border(?:-[xytrbles]|-[0-9]+|-[xytrbles]-[0-9]+)?(?=$|[\\s"'\`})\\]])`).test(source)) {
+    found.add("--border");
+  }
+
+  // `--color-*` 는 Tailwind 테마 네임스페이스지 소비처가 정의하는 토큰 이름이 아니다.
+  // 테마에 실재하면 그것이 가리키는 소비처 변수로 바꾸고(`--color-scrim` → `--scrim`),
+  // 아니면 런타임 주입값이라 버린다(shadcn chart 의 `--color-<series>` 가 그 경우다).
+  const resolved = new Set();
+  for (const v of found) {
+    if (v.startsWith("--color-")) {
+      const mapped = themeMap.get(v.slice("--color-".length));
+      if (mapped) resolved.add(mapped);
+      continue;
+    }
+    resolved.add(v);
+  }
+
+  return [...resolved]
+    .filter((v) => !selfDefined.has(v) && !TAILWIND_BUILTIN.test(v))
+    .sort();
+}
+
+// 선언과 대조 — 실측이 선언보다 넓으면(=선언 누락) 실패한다.
+function assertDeclarationCoversUsage(label, declared, measured) {
+  if (!declared) return; // 미선언 항목은 step-2 에서 채운다 (게이트는 선언이 있을 때만 판정)
+  const missing = measured.filter((v) => !declared.includes(v));
+  if (missing.length) {
+    fail(
+      `'${label}' requiredCssVars 선언 누락: ${missing.join(", ")} — 이식 파일이 실제로 쓰는데 선언에 없다. ` +
+        `선언에 추가하거나(정본: examples/ui-vocabulary-site/registry.json) 소스에서 그 변수 사용을 없애라.`
+    );
+  }
+}
+
+// --self-test: 추출기의 양성·음성 픽스처. 레포 선례 = scripts/figma-return-diff.mjs --self-test
+if (process.argv.includes("--self-test")) {
+  const themeMap = readThemeTokenMap(readFileSync(INDEX_CSS, "utf8"));
+  const cases = [
+    // [이름, 소스, 반드시 잡혀야 하는 것, 절대 잡히면 안 되는 것]
+    ["var() 직접", `style={{ color: "var(--scrim)" }}`, ["--scrim"], []],
+    ["유틸 + 불투명도", `<div className="bg-scrim/50 text-muted-foreground" />`, ["--scrim", "--muted-foreground"], []],
+    ["variant 접두사", `<div className="dark:bg-muted hover:text-primary" />`, ["--muted", "--primary"], []],
+    ["rounded 파생", `<div className="rounded-lg" />`, ["--radius"], []],
+    ["색 없는 border", `<div className="border border-t-2" />`, ["--border"], []],
+    ["테마 밖 토큰은 무시", `<div className="bg-white text-sm bg-red-500" />`, [], ["--white", "--sm", "--red-500"]],
+    ["주석 산문 오탐 방지", `// 이 데모는 bg-scrim 를 쓰지 않는다는 설명이 아니라 정말 안 쓴다\nconst a = 1`, [], ["--scrim"]],
+    // 한계 고정: 문자열·JSX 안의 유틸은 구분하지 못한다(정적 추출의 상한 — 계약 문서에 명시).
+    ["문자열 안 유틸도 센다(한계)", `const doc = "text-foreground 규칙 설명 문장"`, ["--foreground"], []],
+  ];
+  let pass = 0;
+  for (const [name, src, must, mustNot] of cases) {
+    const got = extractCssVars(src, themeMap);
+    const missing = must.filter((v) => !got.includes(v));
+    const leaked = mustNot.filter((v) => got.includes(v));
+    if (missing.length || leaked.length) {
+      console.error(`  FAIL ${name}: got [${got.join(", ")}]${missing.length ? ` / 누락 ${missing.join(", ")}` : ""}${leaked.length ? ` / 오탐 ${leaked.join(", ")}` : ""}`);
+    } else {
+      pass++;
+      console.log(`  ok   ${name}`);
+    }
+  }
+  console.log(`generate-registry --self-test: ${pass}/${cases.length}`);
+  process.exit(pass === cases.length ? 0 : 1);
+}
+
 if (!existsSync(REGISTRY_JSON)) fail(`registry.json 없음: ${REGISTRY_JSON}`);
+if (!existsSync(INDEX_CSS)) fail(`index.css 없음: ${INDEX_CSS}`);
+const THEME_TOKENS = readThemeTokenMap(readFileSync(INDEX_CSS, "utf8"));
+if (THEME_TOKENS.size === 0) fail(`@theme inline 에서 색 토큰을 하나도 읽지 못했다: ${INDEX_CSS}`);
 const registry = JSON.parse(readFileSync(REGISTRY_JSON, "utf8"));
 if (!Array.isArray(registry.items) || registry.items.length === 0) fail("registry.items 가 비어 있음");
 
@@ -116,6 +265,9 @@ function buildBlock(item) {
   }
   const undeclared = [...declaredDeps].filter((d) => !usedDeps.has(d));
   if (undeclared.length) fail(`block '${item.name}': 선언됐지만 소스에 없는 dependencies: ${undeclared.join(", ")}`);
+  // 블록의 선언 자리는 항목 top-level `requiredCssVars` 다 (비블록은 meta.requiredCssVars — 경로가 다르다).
+  const measuredVars = extractCssVars(files.map((f) => f.content).join("\n"), THEME_TOKENS);
+  assertDeclarationCoversUsage(item.name, item.requiredCssVars, measuredVars);
   const registryDependencies = [
     ...[...primitives].sort(),
     ...[...assetRefs].sort().map((n) => `${BASE_URL}/r/${n}.json`),
@@ -179,6 +331,7 @@ for (const item of registry.items) {
   if (banned.length) fail(`item '${item.name}' 순수성 위반 — 허용 외 import: ${banned.join(", ")} (npm 패키지면 registry.json dependencies 에 선언 — 사이트 결합 데모는 배포 금지)`);
   const undeclared = [...declaredDeps].filter((d) => !usedDeclared.has(d));
   if (undeclared.length) fail(`item '${item.name}': 선언됐지만 소스에 없는 dependencies: ${undeclared.join(", ")}`);
+  assertDeclarationCoversUsage(item.name, item.meta?.requiredCssVars, extractCssVars(src, THEME_TOKENS));
 
   const registryDependencies = [
     ...[...new Set(
