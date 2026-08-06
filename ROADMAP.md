@@ -1,13 +1,26 @@
 # ROADMAP
 
 > Last updated: 2026-08-06
-> Status: **2026-08-06 goal `queue-drain` 완주 (M32~M35).** 이월 큐 4건을 비운다 — 이식 계약 실측화(M32) · Presenton 벤치(M33) · Around 재판정(M34) · Figma 후속 3건(M35). 직전: goal `dark-inversion-cleanup` 완주 (M31). 큐 잔여는 『인터랙티브 웹 애니메이션』 책 스터디(사용자 주도 — 별도 워크트리).
+> Status: **2026-08-06 goal `findings-sweep` 개설 (M36 active).** 직전: goal `queue-drain` 완주 (M32~M35). 큐 잔여는 『인터랙티브 웹 애니메이션』 책 스터디(사용자 주도 — 별도 워크트리)와 `/pt` 슬롯 계약 on-hold.
 > North star: Build Askewly Design as both a public reference website and an agent-usable implementation system.
 > line budget: <=150
 
 ## Current Goal
 
-<!-- harness:goal id="queue-drain" status="completed" -->
+<!-- harness:goal id="findings-sweep" status="active" -->
+Goal: 직전 goal 이 남긴 실작업 finding 을 청산한다. 이번 회차는 M32 발견 결함 1건 단독 — 이식 asset `color-palette-generator` 가 소비처에 없는 브랜드 토큰을 요구해 포커스 링이 투명해지는 실결함의 restyle(M36). 구 연쇄 후보였던 `/pt` 슬롯 계약은 사용자 보류(2026-08-06 — 맥락 공유 후 별도 재상정, `plans/2026-08-06-m37-pt-slot-contract.md` on-hold).
+
+## Active Milestones — findings-sweep
+
+<!-- harness:milestone id="M36" status="active" priority="P1" -->
+### M36 — `color-palette-generator` 이식 표면 restyle
+- DoD: 이식 파일 chrome 이 semantic 토큰만 쓰고(콘텐츠 오버레이 예외는 사유 주석), `meta.requiredCssVars` 에서 브랜드 전용 변수가 사라지며, 요구 전건이 소비처 브랜드 CSS 에 정의됨이 테스트로 고정된다. 라이브 registry 반영 + 소비처 포커스 링 실증. 사이트 라이트·다크 사용자 관측 통과.
+- Gap: `ring-askewly-violet` 6곳 — 소비처에 변수가 없어 포커스 링 투명(M32 발견, `docs/findings.md` §G). 같은 파일 `slate-*` 50·`bg-white` 12 등 토큰 밖 색 동반.
+- Scale: steps=2 (restyle+관측 / 선언 전사+테스트 반전+라이브 실증); surfaces: 사이트 컴포넌트·registry·packages/cli 테스트; capability: 이식돼도 접근성이 깨지지 않는 asset
+- Plan: plans/2026-08-06-m36-palette-generator-restyle.md
+- Status: [ ]
+
+<!-- harness:goal-archive20 id="queue-drain" status="completed" -->
 Goal: 이월 큐 4건을 비운다. 서로 표면이 겹치지 않는 부채라 한 goal 아래 milestone 4개로 묶었다 — ① 이식 계약 `requiredCssVars` 를 손 선언에서 **실측**으로(M32) ② Presenton 정밀 벤치(M33) ③ Around 재판정(M34) ④ Figma 브리지 후속 3건(M35). 공통 성질은 "닫지 않으면 조용히 낡는 것들"이다 — 검사 구멍·미구현 계약·유예된 판정·낡은 동기화. closed 2026-08-06 — M32~M35 전건 완주. Details: `docs/reports/2026-08-06-m32-required-css-vars-measured.md` · `-m33-presenton-bench.md` · `-m34-around-reverdict.md` · `-m35-figma-followups.md`.
 
 ## Active Milestones — queue-drain
