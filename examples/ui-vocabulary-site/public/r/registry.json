@@ -1409,11 +1409,20 @@
           "harvestedAt": "2026-08-04"
         },
         "requiredCssVars": [
-          "--askewly-violet",
+          "--accent",
           "--background",
           "--border",
+          "--card",
+          "--card-foreground",
           "--foreground",
-          "--radius"
+          "--input",
+          "--muted",
+          "--muted-foreground",
+          "--popover",
+          "--popover-foreground",
+          "--radius",
+          "--ring",
+          "--scrim"
         ]
       },
       "registryDependencies": [

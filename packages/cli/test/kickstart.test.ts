@@ -1,4 +1,4 @@
-import { mkdtempSync, mkdirSync, writeFileSync } from "node:fs"
+import { mkdtempSync, mkdirSync, readFileSync, writeFileSync } from "node:fs"
 import { tmpdir } from "node:os"
 import path from "node:path"
 import { describe, expect, it } from "vitest"
@@ -268,15 +268,29 @@ describe("brand CSS covers what the registry requires", () => {
     expect(missingRequiredVars(css, MEASURED_UNION)).toEqual([])
   })
 
-  // --askewly-violet is deliberately absent from the list above: it is this
-  // site's own brand token, and color-palette-generator asks for it via
-  // `ring-askewly-violet`. A consumer project has no such variable, so that
-  // asset's focus ring falls back to transparent. Left as a finding — M32
-  // does not change transplanted file contents.
-  it("does not define the site-only brand token (documented gap)", () => {
-    expect(missingRequiredVars(css, ["--askewly-violet"])).toEqual(["--askewly-violet"])
+  // M36. color-palette-generator used to ask for the site-only
+  // `--askewly-violet` (focus ring fell back to transparent in consumers —
+  // the documented M32 gap). The restyle moved its chrome to semantic tokens;
+  // these read the live registry declaration so the assertion cannot go stale.
+  it("palette generator no longer requires any site-only brand token", () => {
+    const declared = paletteGeneratorRequiredVars()
+    expect(declared).not.toContain("--askewly-violet")
+    expect(declared.length).toBeGreaterThan(0)
+  })
+
+  it("brand CSS defines everything the palette generator requires", () => {
+    expect(missingRequiredVars(css, paletteGeneratorRequiredVars())).toEqual([])
   })
 })
+
+function paletteGeneratorRequiredVars(): string[] {
+  const registryPath = path.join(__dirname, "..", "..", "..", "examples", "ui-vocabulary-site", "registry.json")
+  const registry = JSON.parse(readFileSync(registryPath, "utf8")) as {
+    items: Array<{ name: string; meta?: { requiredCssVars?: string[] } }>
+  }
+  const item = registry.items.find((entry) => entry.name === "color-palette-generator")
+  return item?.meta?.requiredCssVars ?? []
+}
 
 // M32. Upstream shadcn primitives cannot carry our `requiredCssVars` field —
 // they are fetched from ui.shadcn.com and we do not own that JSON, so the 21
