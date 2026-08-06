@@ -23,15 +23,18 @@ Goal: 이월 큐 4건을 비운다. 서로 표면이 겹치지 않는 부채라 
 - Completed at: 2026-08-06
 - Evidence: evidence/queue-drain/m32-required-css-vars.md
 - Summary: requiredCssVars 실측화 — 양 경로 빌드 게이트, 49종 신규 선언, 상류 shadcn 경계 확정, 라이브 재현 통과
-<!-- harness:milestone id="M33" status="active" priority="P2" -->
+<!-- harness:milestone id="M33" status="completed" priority="P2" evidence="research/2026-08-06-m33-presenton-bench.md" -->
 ### M33 — Presenton 정밀 벤치마크
 - DoD: 레포 실사(SHA·라이선스·파이프라인) + 실물 산출물 1편 + `/pt` 항목별 대조표(양쪽 출처 필수) + A/B/C 판정 + 후속 finding 등록. 유료 크리덴셜 미사용, 실구동 불가 시 partial 명시.
 - Gap: `research/2026-07-31-html-upgrade-goal-refs.md` §4-D2 로 등록된 뒤 미착수 — 우리와 목적이 가장 가까운 최근 진입자를 추정으로만 알고 있다
 - Scale: steps=2 (실사·산출물 / 대조표·판정); surfaces: research 문서·docs/findings.md; capability: 덱 트랙의 위치를 실물로 안다
-- Plan: plans/2026-08-06-m33-presenton-bench.md
-- Status: [ ]
+- Plan: archive/plans/2026-08-06-m33-presenton-bench.md
+- Status: [x]
 
-<!-- harness:milestone id="M34" status="pending" priority="P2" -->
+- Completed at: 2026-08-06
+- Evidence: research/2026-08-06-m33-presenton-bench.md
+- Summary: Presenton 벤치 — 실구동 5장 덱, 10축 대조, 판정 A 1건·B 4건·C 1건
+<!-- harness:milestone id="M34" status="active" priority="P2" -->
 ### M34 — Around 재판정 (+ A 면 흡수)
 - DoD: 판정이 `absorption-criteria` 에 날짜·근거와 함께 갱신되고 ledger 1행. A 면 지정 2건(customizer 원리 → knowledge, 패키지 클레임 → `docs/PRD.md`)이 우리 규칙으로 존재하고 llms 에 실린다. B·C 면 흡수 0건.
 - Gap: M11 이 "이식 축 미개방"을 이유로 C 보류했는데, M26~M31 로 그 축이 열렸다 — 재판정 조건이 충족된 채 방치돼 있다
