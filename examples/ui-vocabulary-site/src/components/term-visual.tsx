@@ -3107,7 +3107,7 @@ function MediaLightboxMobileVisual() {
 
   return (
     <PhoneFrame>
-      <button type="button" className="relative flex h-full w-full items-center justify-center bg-foreground text-background" onClick={() => setChrome((value) => !value)}>
+      <button type="button" className="relative flex h-full w-full items-center justify-center bg-foreground dark:bg-muted text-background dark:text-foreground" onClick={() => setChrome((value) => !value)}>
         <ImageIcon aria-hidden="true" />
         {chrome && <div className="absolute inset-x-2 top-3 flex items-center justify-between"><X aria-hidden="true" /><span>1/4</span></div>}
       </button>
@@ -4649,7 +4649,7 @@ function ExternalEcosystemVisual({ kind }: { kind: ExternalEcosystemKind }) {
   if (kind === "background-beams") return <BackgroundBeamsVisual />
   if (kind === "aurora-background") return <AuroraBackgroundVisual />
   if (kind === "spotlight-hero") {
-    return <div className="relative h-32 w-64 overflow-hidden rounded border bg-foreground p-4 text-center text-background"><span className="absolute left-1/2 top-0 h-24 w-32 -translate-x-1/2 rounded-full bg-primary/40 blur-xl" /><b className="relative">Askewly AI</b><p className="relative mt-2 text-xs">Design faster</p></div>
+    return <div className="relative h-32 w-64 overflow-hidden rounded border bg-foreground dark:bg-muted p-4 text-center text-background dark:text-foreground"><span className="absolute left-1/2 top-0 h-24 w-32 -translate-x-1/2 rounded-full bg-primary/40 blur-xl" /><b className="relative">Askewly AI</b><p className="relative mt-2 text-xs">Design faster</p></div>
   }
 
   return <Chrome className="relative h-28 w-56 overflow-hidden p-3 text-xs"><div className={cn("absolute inset-0", (kind.includes("grid") || kind.includes("dot")) && "bg-[radial-gradient(circle,color-mix(in_srgb,black_18%,transparent)_1px,transparent_1px)] [background-size:12px_12px]", kind.includes("gradient") || kind.includes("aurora") ? "bg-gradient-to-br from-primary/30 via-muted to-destructive/20" : "bg-muted/40")} /><div className="relative rounded border bg-card/80 p-3"><b>{kind.includes("shiny") ? "New feature" : kind.includes("beam") ? "Beam effect" : "Visual effect"}</b><Line className="mt-2 w-24" /></div></Chrome>
@@ -5097,7 +5097,7 @@ function HoverCardStackVisual({ active, onToggle }: { active: boolean; onToggle:
 
 function BackgroundBeamsVisual() {
   return (
-    <div className="visual-hover-surface relative h-32 w-64 overflow-hidden rounded-md border bg-foreground p-4 text-xs text-background">
+    <div className="visual-hover-surface relative h-32 w-64 overflow-hidden rounded-md border bg-foreground dark:bg-muted p-4 text-xs text-background dark:text-foreground">
       <svg aria-hidden="true" className="absolute inset-0 h-full w-full opacity-70" viewBox="0 0 260 130">
         <path d="M-20 105 C40 20, 92 120, 158 34 S236 80, 284 16" fill="none" stroke="currentColor" strokeWidth="2" className="visual-beam-path text-primary" />
         <path d="M-8 36 C54 82, 96 8, 160 72 S226 42, 276 102" fill="none" stroke="currentColor" strokeWidth="1.5" className="visual-beam-path visual-beam-path-slow text-accent" />
@@ -5112,7 +5112,7 @@ function BackgroundBeamsVisual() {
 
 function AuroraBackgroundVisual() {
   return (
-    <div className="visual-hover-surface relative h-32 w-64 overflow-hidden rounded-md border bg-foreground p-4 text-xs text-background">
+    <div className="visual-hover-surface relative h-32 w-64 overflow-hidden rounded-md border bg-foreground dark:bg-muted p-4 text-xs text-background dark:text-foreground">
       <span className="visual-aurora-one absolute -left-10 top-2 h-24 w-36 rotate-12 rounded-full bg-primary/40 blur-2xl" />
       <span className="visual-aurora-two absolute left-20 -top-6 h-24 w-40 -rotate-12 rounded-full bg-accent/50 blur-2xl" />
       <span className="visual-aurora-three absolute right-0 bottom-0 h-20 w-32 rounded-full bg-destructive/30 blur-2xl" />
