@@ -7,7 +7,20 @@
 
 ## Current Goal
 
-<!-- harness:goal id="docs-block-and-theme-derive" status="completed" -->
+<!-- harness:goal id="dark-inversion-cleanup" status="active" -->
+Goal: 다크에서 **밝아지는 모달 백드롭**과 **흰 판때기**를 없앤다 — 파일별 `dark:` 산포가 아니라 semantic 토큰 `scrim` 1개를 SSOT 에 신설하고, 그 토큰이 CLI·registry 를 타고 이식 경로까지 함께 가게 한다. M29 이월분에 **남의 레포로 이식되는 asset 2종**이 들어 있어서 이건 화면 수리가 아니라 이식 표면의 결함이다. 승인 2026-08-06. Plan: `plans/2026-08-06-m31-dark-inversion-cleanup.md`.
+
+## Active Milestones — dark-inversion-cleanup
+
+<!-- harness:milestone id="M31" status="active" priority="P1" evidence="evidence/dark-inversion-cleanup/m31-scrim-token.md" -->
+### M31 — 스크림 토큰 신설 + 전체면 반전 4곳
+- DoD: 다크에서 백드롭이 어두워지고 전체면 반전 4곳이 흰 판때기가 아니며 **라이트 렌더는 픽셀 무변화**. 스크림은 `tokens/askewly.tokens.json` 단일 SSOT 에서 나오고 이식된 프로젝트·라이브 registry asset 에도 실린다. 선언이 빠지면 **검사가 잡는다**(component tier 판독 구멍 폐쇄). C2 작은 컨트롤·C3 데코 틴트·불가침 2건(`contrast-duo-card`·`ui/tooltip`)·블록 3종은 무변경.
+- Gap: 스크림 8곳/7파일이 `bg-foreground/NN` 이라 다크에서 백드롭이 밝아진다(같은 계열을 DM3 에서 이미 한 번 밟음) + `auth-gate-modal`·`bottom-sheet-detents` 는 registry 이식 asset 이라 남의 레포에도 결함이 가 있다
+- Scale: steps=6 (토큰 SSOT · 스크림 배선 · 전체면 4곳 · 이식 경로 · E2E+관측 · 출고·배포); surfaces: tokens SSOT·사이트 7파일·CLI kickstart·registry; capability: 다크에서 깊이가 제 방향으로 읽히는 모달
+- Plan: plans/2026-08-06-m31-dark-inversion-cleanup.md
+- Status: [ ]
+
+<!-- harness:goal-archive19 id="docs-block-and-theme-derive" status="completed" -->
 Goal: 이식 경로가 세 번째 블록(docs-site)까지 **인쇄된 안내만으로** 돌아가고, `/pt` 의 4번째 테마 선택지(`custom`)가 레포 토큰의 다크 얼굴까지 따라간다. 킥스타트는 이 시스템이 남에게 이식되는 유일한 원커맨드 표면이고, `custom` 테마는 임의의 레포가 자기 브랜드로 덱을 만드는 유일한 경로다 — 둘 다 "이식 가능한 제품" 축의 실발현 지점이다. 승인 2026-08-05 · closed 2026-08-06 — M29(이식 경로 완결·0.4.2 출고·블록 3호)·M30(custom 다크 판본) 완주. Details: `docs/reports/2026-08-06-m29-docs-block-and-alias.md`·`…-m30-custom-dark-face.md`.
 
 ## Active Milestones — docs-block-and-theme-derive
