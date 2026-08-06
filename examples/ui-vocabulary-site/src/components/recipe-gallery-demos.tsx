@@ -55,7 +55,7 @@ export function CartDrawerDemo() {
 
   return (
     <div className="relative isolate h-[26rem] w-full max-w-3xl overflow-hidden rounded-lg border bg-muted/30">
-      <div aria-hidden="true" className="absolute inset-0 bg-foreground/50" />
+      <div aria-hidden="true" className="absolute inset-0 bg-scrim/50" />
       <div className="absolute inset-y-0 right-0 flex w-full max-w-sm flex-col gap-4 border-l bg-background shadow-lg">
         <CartDrawerBody
           items={items}

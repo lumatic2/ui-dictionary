@@ -135,7 +135,7 @@ function PaletteExportDialog({ seed, onClose }: { seed: PaletteSeed; onClose: ()
   }
 
   return (
-    <div className="fixed inset-0 z-50 grid place-items-center bg-foreground/72 p-4" onClick={onClose}>
+    <div className="fixed inset-0 z-50 grid place-items-center bg-scrim/72 p-4" onClick={onClose}>
       <div
         className="w-full max-w-md rounded-2xl border bg-card text-foreground shadow-2xl"
         onClick={(event) => event.stopPropagation()}

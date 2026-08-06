@@ -188,7 +188,7 @@ function DocsInteractiveElementPreview({ variant }: { variant: DocsArticlePageDa
         </div>
         <button
           aria-label="Close dialog backdrop"
-          className={cn("absolute inset-0 bg-foreground/20 transition duration-200", dialogOpen ? "opacity-100" : "pointer-events-none opacity-0")}
+          className={cn("absolute inset-0 bg-scrim/20 transition duration-200", dialogOpen ? "opacity-100" : "pointer-events-none opacity-0")}
           tabIndex={dialogOpen ? 0 : -1}
           type="button"
           onClick={() => setDialogOpen(false)}

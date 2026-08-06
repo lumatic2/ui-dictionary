@@ -2013,7 +2013,7 @@ export function LegacyDocsElementPreview({ variant }: { variant: DocsArticlePage
   if (variant === "docs-dialog") {
     return (
       <div className="relative mx-auto flex aspect-[16/10] max-w-2xl items-center justify-center overflow-hidden rounded-lg bg-muted">
-        <div className={cn("absolute inset-0 bg-foreground/20 transition", dialogOpen ? "opacity-100" : "opacity-0")} />
+        <div className={cn("absolute inset-0 bg-scrim/20 transition", dialogOpen ? "opacity-100" : "opacity-0")} />
         {dialogOpen ? (
           <div className="relative w-80 rounded-xl bg-card p-6 text-sm shadow-2xl ring-1 ring-foreground/10 transition animate-in fade-in zoom-in-95">
             <div className="grid size-10 place-items-center rounded-full bg-rose-100 text-rose-600"><CircleAlert aria-hidden="true" className="size-5" /></div>
@@ -2334,7 +2334,7 @@ function PreviewThemeToggle({ activeTheme, onThemeChange }: { activeTheme: Previ
 
 function CodeAccessModal({ example, onClose }: { example: MarketingSectionExample | null; onClose: () => void }) {
   return (
-    <div className="fixed inset-0 z-50 grid place-items-center bg-foreground/35 px-4 backdrop-blur-sm" role="dialog" aria-modal="true" aria-labelledby="code-access-title">
+    <div className="fixed inset-0 z-50 grid place-items-center bg-scrim/35 px-4 backdrop-blur-sm" role="dialog" aria-modal="true" aria-labelledby="code-access-title">
       <div className="w-full max-w-md rounded-2xl bg-card p-6 text-foreground shadow-2xl ring-1 ring-foreground/10">
         <div className="flex items-start justify-between gap-4">
           <div>

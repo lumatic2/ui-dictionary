@@ -47,7 +47,7 @@ export function AuthGateModal({ open, capability, onClose, onEmailSubmit, onGoog
         type="button"
         aria-label="Dismiss sign-in"
         onClick={onClose}
-        className="absolute inset-0 bg-foreground/50 backdrop-blur-sm"
+        className="absolute inset-0 bg-scrim/50 backdrop-blur-sm"
         data-slot="auth-gate-backdrop"
       />
       <div
