@@ -126,7 +126,7 @@ asset 2종이 들어 있다.** 지금 그 asset 을 받는 사람은 다크에�
 
 ## Step 트리
 
-- [ ] **step-1 — 토큰 SSOT 에 `scrim` 신설 + 생성물 재생성**
+- [x] **step-1 — 토큰 SSOT 에 `scrim` 신설 + 생성물 재생성**
   - Artifact: `--scrim` 이 라이트/다크 동일 값으로 존재하고 `bg-scrim/NN` 유틸이 해석된다
   - Files: `tokens/askewly.tokens.json`(`color.semantic.surface.scrim`) · `scripts/generate-tokens.mjs`(`COLOR_MAPPINGS` 1행) ·
     `examples/ui-vocabulary-site/src/index.css`(`@theme inline` 에 `--color-scrim`) ·
@@ -140,7 +140,7 @@ asset 2종이 들어 있다.** 지금 그 asset 을 받는 사람은 다크에�
   - Risk: 기계적 (Tailwind 는 모르는 클래스를 조용히 버려 빌드가 통과한다 — Verify 에서 계산값으로 확인)
   - Commit: `feat(tokens): scrim semantic 토큰 신설 — 모달 백드롭용 양모드 고정`
 
-- [ ] **step-2 — 스크림 8곳 배선 (7파일)**
+- [x] **step-2 — 스크림 8곳 배선 (7파일)**
   - Artifact: 백드롭이 다크에서 밝아지지 않는다
   - Files: `auth-gate-modal.tsx:50` · `action-sheet-destructive-confirmation.tsx:44` · `bottom-sheet-detents.tsx:50` ·
     `recipe-gallery-demos.tsx:58` · `colors-page.tsx:138` · `article-documentation-layout.tsx:191` · `App.tsx:2016,2337`
@@ -151,7 +151,7 @@ asset 2종이 들어 있다.** 지금 그 asset 을 받는 사람은 다크에�
   - Risk: 위험 (다크에서 어두운 스크림 + 어두운 배경이라 분리감이 약할 수 있다 — step-5 관측에서 시트 `--card` 0.25 와의 분리를 보고 부족하면 불투명도만 곳별 조정, 토큰 재설계 아님)
   - Commit: `fix(dark): 모달 백드롭 8곳 scrim 토큰 전환`
 
-- [ ] **step-3 — 전체면 반전 4곳**
+- [x] **step-3 — 전체면 반전 4곳**
   - Artifact: 다크에서 흰 판때기가 사라진다
   - Files: `term-visual.tsx:3110, 4652, 5100, 5115`
   - Dependencies: step-1
@@ -161,7 +161,7 @@ asset 2종이 들어 있다.** 지금 그 asset 을 받는 사람은 다크에�
   - Risk: 기계적 (25곳이 한 파일에 몰려 있어 일괄 치환 유혹이 크다 — diff 줄 대조로 4곳만 확인)
   - Commit: `fix(dark): 전체면 반전 목업 4곳 다크 판본`
 
-- [ ] **step-4 — 이식 경로 배선**
+- [x] **step-4 — 이식 경로 배선**
   - Artifact: 킥스타트로 이식된 프로젝트도 `--scrim` 을 갖고, 빠지면 검사가 잡는다
   - Files: `packages/cli/src/kickstart.ts` — ⓐ `renderBrandCss` 변수부에 `--scrim`(라이트/다크 동일값)
     ⓑ **같은 함수의 `@theme inline` 목록에 `--color-scrim`**(검증자 치명 ②) ⓒ component tier
@@ -234,4 +234,24 @@ C2 작은 컨트롤 · C3 · 불가침 2건 · 블록 3종은 무변경.
 
 ## 진행 로그
 
-(step 완료마다 append)
+- **step-1 완료 (2026-08-06)** — `color.semantic.surface.scrim` = `{color.primitive.gray.12}`, 다크 오버라이드 없음.
+  `--scrim: oklch(0.16 0.015 270)` 이 `:root` 에만 실리고 `.dark{}` 에는 **0건**(의도대로 `hasDarkOverride` 가 제외).
+  값이 라이트 `--foreground`(`tokens.css:5`)와 **완전 일치** — 픽셀 무변화 기준선 확보.
+  생성기 2회 실행 diff 무변화(멱등) · 토큰 lint parse/schema/alias/contrast 전건 PASS · llms-sync PASS.
+  **Failure probe 는 step-2 로 이월** — Tailwind 는 JIT 라 사용처가 0이면 `@theme inline` 유무와 무관하게
+  `.bg-scrim` 이 안 생긴다. 유틸 누락 실증은 사용처가 생긴 뒤에야 의미가 있어 step-2 에서 수행한다.
+  커밋 `feat(tokens): scrim semantic 토큰 신설`.
+- **step-2 완료** — 8곳 전부 1:1 치환, 불투명도 `/20 /35 /50 /72` 원값 보존, 부수 변경 0.
+  **Failure probe 성립** — `@theme inline` 의 `--color-scrim` 을 빼고 빌드하면 exit 0 · prerender 759 로
+  통과하는데 `.bg-scrim` 유틸이 **0개**로 사라진다(백드롭 투명화, 경고 없음). 실패 모드 ① 실증.
+  verify 는 내 변경발 위반 **0건**(scrim 매칭 0). ⚠ 계획의 "verify 0건"은 이 레포 `src` 전체 기준으로는
+  성립하지 않는다 — 기존 위반 153건(glow-points hex·kakao 브랜드 상수 등)이 이미 있다. 판정 기준을
+  "내 변경이 새 위반을 넣지 않았는가"로 읽었다. 커밋 `fix(dark): 모달 백드롭 8곳`.
+- **step-3 완료** — 4줄(4+/4-), `bg-foreground` 총 출현수 25 불변(나머지 21곳 무변경).
+  `tsc --noEmit` 0 · build 0 · prerender 759. 커밋 `fix(dark): 전체면 반전 목업 4곳`.
+- **step-4 완료** — `renderBrandCss` 가 `--scrim` 을 `:root` 에 1회 + `@theme inline` 에 `--color-scrim`.
+  값은 `c.dark.bg`(그 프로젝트 캔버스의 다크 배경) — 레포 자신의 규칙(scrim = gray.12 = 다크 배경)과 동형.
+  `requiredCssVars` 를 `resolve()` 재귀 전체에서 수집하도록 확장해 component tier 구멍을 닫았다.
+  vitest **83/83**(신규 3) · tsc 0 · registry diff 4파일, 나머지 53종 무변경 · build:data 통과.
+  ⚠ **전이 판독의 실발화 증거는 step-6 으로 이월** — asset regDeps 가 라이브 절대 URL 이라
+  선언이 배포되기 전에는 로컬에서 그 경로가 돌지 않는다(승계 계약). 커밋 `feat(cli): 이식 경로에 scrim 배선`.
