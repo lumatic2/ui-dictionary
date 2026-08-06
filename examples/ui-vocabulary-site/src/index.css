@@ -50,6 +50,7 @@
   --color-border: var(--border);
   --color-input: var(--input);
   --color-ring: var(--ring);
+  --color-scrim: var(--scrim);
   --color-primary-hover: var(--primary-hover);
   --color-emphasis-surface: var(--emphasis-surface);
   --color-emphasis-foreground: var(--emphasis-foreground);

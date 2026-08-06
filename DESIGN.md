@@ -61,6 +61,7 @@ tokens:
         base: { value: "{color.primitive.gray.1}", type: color }
         raised: { value: "{color.primitive.white}", type: color }
         overlay: { value: "{color.primitive.white}", type: color }
+        scrim: { value: "{color.primitive.gray.12}", type: color }
         muted: { value: "{color.primitive.gray.3}", type: color }
         secondary: { value: "{color.primitive.gray.4}", type: color }
         tint: { value: "{color.primitive.askewly.mint}", type: color }

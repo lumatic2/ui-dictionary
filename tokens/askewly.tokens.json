@@ -94,6 +94,10 @@
           "$value": "{color.primitive.white}",
           "$extensions": { "com.askewly.modes": { "dark": "{color.primitive.gray.11}" } }
         },
+        "scrim": {
+          "$description": "Dimming layer behind modals, sheets and lightboxes. Deliberately has NO dark override — a scrim means 'press the background down', so it must read dark in both modes. Consumers own the opacity (bg-scrim/50, /72).",
+          "$value": "{color.primitive.gray.12}"
+        },
         "muted": {
           "$value": "{color.primitive.gray.3}",
           "$extensions": { "com.askewly.modes": { "dark": "{color.primitive.gray.10}" } }

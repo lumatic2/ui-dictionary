@@ -38,6 +38,9 @@ const COLOR_MAPPINGS = [
   ["--card-foreground", "color.semantic.text.default"],
   ["--popover", "color.semantic.surface.overlay"],
   ["--popover-foreground", "color.semantic.text.default"],
+  // No dark override by design — the scrim stays dark in both modes (see token $description).
+  // hasDarkOverride() therefore keeps it out of the emitted `.dark {}` block.
+  ["--scrim", "color.semantic.surface.scrim"],
   ["--primary", "color.semantic.action.primary"],
   ["--primary-foreground", "color.semantic.text.on-accent"],
   ["--secondary", "color.semantic.surface.secondary"],
