@@ -23,7 +23,7 @@ Goal: 이월 큐 4건을 비운다. 서로 표면이 겹치지 않는 부채라 
 - Completed at: 2026-08-06
 - Evidence: evidence/queue-drain/m32-required-css-vars.md
 - Summary: requiredCssVars 실측화 — 양 경로 빌드 게이트, 49종 신규 선언, 상류 shadcn 경계 확정, 라이브 재현 통과
-<!-- harness:milestone id="M33" status="pending" priority="P2" -->
+<!-- harness:milestone id="M33" status="active" priority="P2" -->
 ### M33 — Presenton 정밀 벤치마크
 - DoD: 레포 실사(SHA·라이선스·파이프라인) + 실물 산출물 1편 + `/pt` 항목별 대조표(양쪽 출처 필수) + A/B/C 판정 + 후속 finding 등록. 유료 크리덴셜 미사용, 실구동 불가 시 partial 명시.
 - Gap: `research/2026-07-31-html-upgrade-goal-refs.md` §4-D2 로 등록된 뒤 미착수 — 우리와 목적이 가장 가까운 최근 진입자를 추정으로만 알고 있다
