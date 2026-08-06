@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "active_work_id": "dark-inversion-cleanup",
+  "active_work_id": "queue-drain",
   "works": {
     "SFB1": {
       "title": "Structure Contract And Clean Production",
@@ -5834,6 +5834,59 @@
       "updated_at": "2026-08-06",
       "notes": "Registered atomically by canonical harness approve_harness_plan.py after plan validation.",
       "completion_summary": "다크 모달 백드롭 8곳 + 전체면 반전 4곳 — scrim semantic 토큰 신설, 이식 경로·registry 까지 배선, 0.4.3 출고. 관측이 '다크에서 스크림 무동작'을 잡아 순수 검정으로 정정"
+    },
+    "queue-drain": {
+      "work_id": "queue-drain",
+      "milestone_id": "M32",
+      "status": "completed",
+      "plan_path": "plans/2026-08-06-m32-required-css-vars-measured.md",
+      "changeset_path": "changesets/20260806-m32-required-css-vars-measured",
+      "next_step": "step-1",
+      "current_step": "step-1",
+      "steps": [
+        {
+          "id": "step-1",
+          "label": "step-1 — 실측 추출 + 대조 게이트 (두 경로)"
+        },
+        {
+          "id": "step-2",
+          "label": "step-2 — 57종 선언 채우기 + 상류 경계 판정 + 전이 발화 테스트"
+        },
+        {
+          "id": "step-3",
+          "label": "step-3 — 배포 + 라이브 실측 (human gate)"
+        }
+      ],
+      "execution_mode": "continuous",
+      "approval": {
+        "approved_by": "user",
+        "approved_at": "2026-08-06",
+        "plan_sha256": "5d5f373f46b1ea16d08590c25bf72d277e43c9112f5b3e715977ed293464ced6",
+        "chain": [
+          "M33",
+          "M34",
+          "M35"
+        ]
+      },
+      "allowed_stop_reasons": [
+        "completed",
+        "blocked",
+        "decision_required",
+        "risk_gate",
+        "secret_required",
+        "external_authority_required",
+        "user_stopped"
+      ],
+      "stop_reason": null,
+      "stop_detail": {},
+      "session_ids": [
+        "codex:304c1135-1476-4990-b8b7-bd0ee037e40a",
+        "claude:304c1135-1476-4990-b8b7-bd0ee037e40a"
+      ],
+      "owner_session_uuid": "claude:304c1135-1476-4990-b8b7-bd0ee037e40a",
+      "updated_at": "2026-08-06",
+      "notes": "Registered atomically by canonical harness approve_harness_plan.py after plan validation.",
+      "completion_summary": "requiredCssVars 를 손 선언에서 실측으로 — 양 경로 빌드 게이트, 57종 중 49종 신규 선언, 상류 shadcn 은 경계로 확정, 라이브 재현 통과"
     }
   }
 }

@@ -12,14 +12,17 @@ Goal: 이월 큐 4건을 비운다. 서로 표면이 겹치지 않는 부채라 
 
 ## Active Milestones — queue-drain
 
-<!-- harness:milestone id="M32" status="active" priority="P1" -->
+<!-- harness:milestone id="M32" status="completed" priority="P1" evidence="evidence/queue-drain/m32-required-css-vars.md" -->
 ### M32 — `requiredCssVars` 를 손 선언에서 실측으로
 - DoD: 선언이 이식 파일 실측보다 좁으면 **빌드가 실패**한다(블록·비블록 양 경로). 57종이 실측 선언을 갖고, 전이 수집이 테스트로 발화하며, 라이브 킥스타트의 요구 변수가 전건 정의된다. 상류 shadcn 은 검사에 편입되거나 경계로 명문화된다. 이식 파일 내용 무변경.
 - Gap: `requiredCssVars` 가 전부 수작업이라 57종 중 **5종**만 선언 보유 — 승계 계약 ④("전이적으로 실측해 선언과 대조")의 실측 항이 없다
 - Scale: steps=3 (추출·게이트 / 57종 채우기·상류 판정·발화 테스트 / 배포·라이브 실측); surfaces: generate-registry·registry.json·kickstart; capability: 이식처가 색을 잃지 않는다는 기계 보증
-- Plan: plans/2026-08-06-m32-required-css-vars-measured.md
-- Status: [ ]
+- Plan: archive/plans/2026-08-06-m32-required-css-vars-measured.md
+- Status: [x]
 
+- Completed at: 2026-08-06
+- Evidence: evidence/queue-drain/m32-required-css-vars.md
+- Summary: requiredCssVars 실측화 — 양 경로 빌드 게이트, 49종 신규 선언, 상류 shadcn 경계 확정, 라이브 재현 통과
 <!-- harness:milestone id="M33" status="pending" priority="P2" -->
 ### M33 — Presenton 정밀 벤치마크
 - DoD: 레포 실사(SHA·라이선스·파이프라인) + 실물 산출물 1편 + `/pt` 항목별 대조표(양쪽 출처 필수) + A/B/C 판정 + 후속 finding 등록. 유료 크리덴셜 미사용, 실구동 불가 시 partial 명시.
