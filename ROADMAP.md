@@ -1,14 +1,14 @@
 # ROADMAP
 
 > Last updated: 2026-08-06
-> Status: **2026-08-06 goal `queue-drain` 착수 (M32~M35 일괄 승인).** 이월 큐 4건을 비운다 — 이식 계약 실측화(M32) · Presenton 벤치(M33) · Around 재판정(M34) · Figma 후속 3건(M35). 직전: goal `dark-inversion-cleanup` 완주 (M31). 큐 잔여는 『인터랙티브 웹 애니메이션』 책 스터디(사용자 주도 — 별도 워크트리).
+> Status: **2026-08-06 goal `queue-drain` 완주 (M32~M35).** 이월 큐 4건을 비운다 — 이식 계약 실측화(M32) · Presenton 벤치(M33) · Around 재판정(M34) · Figma 후속 3건(M35). 직전: goal `dark-inversion-cleanup` 완주 (M31). 큐 잔여는 『인터랙티브 웹 애니메이션』 책 스터디(사용자 주도 — 별도 워크트리).
 > North star: Build Askewly Design as both a public reference website and an agent-usable implementation system.
 > line budget: <=150
 
 ## Current Goal
 
-<!-- harness:goal id="queue-drain" status="active" -->
-Goal: 이월 큐 4건을 비운다. 서로 표면이 겹치지 않는 부채라 한 goal 아래 milestone 4개로 묶었다 — ① 이식 계약 `requiredCssVars` 를 손 선언에서 **실측**으로(M32) ② Presenton 정밀 벤치(M33) ③ Around 재판정(M34) ④ Figma 브리지 후속 3건(M35). 공통 성질은 "닫지 않으면 조용히 낡는 것들"이다 — 검사 구멍·미구현 계약·유예된 판정·낡은 동기화.
+<!-- harness:goal id="queue-drain" status="completed" -->
+Goal: 이월 큐 4건을 비운다. 서로 표면이 겹치지 않는 부채라 한 goal 아래 milestone 4개로 묶었다 — ① 이식 계약 `requiredCssVars` 를 손 선언에서 **실측**으로(M32) ② Presenton 정밀 벤치(M33) ③ Around 재판정(M34) ④ Figma 브리지 후속 3건(M35). 공통 성질은 "닫지 않으면 조용히 낡는 것들"이다 — 검사 구멍·미구현 계약·유예된 판정·낡은 동기화. closed 2026-08-06 — M32~M35 전건 완주. Details: `docs/reports/2026-08-06-m32-required-css-vars-measured.md` · `-m33-presenton-bench.md` · `-m34-around-reverdict.md` · `-m35-figma-followups.md`.
 
 ## Active Milestones — queue-drain
 
@@ -45,17 +45,20 @@ Goal: 이월 큐 4건을 비운다. 서로 표면이 겹치지 않는 부채라 
 - Completed at: 2026-08-06
 - Evidence: research/2026-08-06-m34-around-reverdict.md
 - Summary: Around 재판정 C→A — customizer 원리·패키지 클레임 규칙 흡수, 코드 변경 0
-<!-- harness:milestone id="M35" status="active" priority="P1" -->
+<!-- harness:milestone id="M35" status="completed" priority="P1" evidence="evidence/queue-drain/m35-figma-followups.md" -->
 ### M35 — Figma 브리지 후속 3건
 - DoD: 스냅숏 구간 분할(기본 호출 무변경) + **라이브 절단 해소 실증**, 계약 §2.2 `description` 복사 + 읽기(dry-run) 모드 + `--no-remove`, 드리프트 실측→승인→반영 후 2차 실행이 `0/0/0` 또는 updated-only, 사람이 실파일 표본 3종 확인.
 - Gap: M14 가 손 3분할로 우회한 20kb 절단이 그대로고, §2.2 description 은 7월부터 미구현이며, M31 신설 토큰이 Figma 에 안 갔다
 - Scale: steps=3 (청크 / description·dry-run·no-remove / 라이브 동기화·회수); surfaces: figma-push-snapshot·generate-figma-variables-sync·bridge-contract; capability: 왕복이 다시 최신
-- Plan: plans/2026-08-06-m35-figma-followups.md
-- Status: [ ]
+- Plan: archive/plans/2026-08-06-m35-figma-followups.md
+- Status: [x]
 
 <!-- harness:goal-archive19 id="dark-inversion-cleanup" status="completed" -->
 Goal: 다크에서 **밝아지는 모달 백드롭**과 **흰 판때기**를 없앤다 — 파일별 `dark:` 산포가 아니라 semantic 토큰 `scrim` 1개를 SSOT 에 신설하고, 그 토큰이 CLI·registry 를 타고 이식 경로까지 함께 가게 한다. M29 이월분에 **남의 레포로 이식되는 asset 2종**이 들어 있어서 이건 화면 수리가 아니라 이식 표면의 결함이다. closed 2026-08-06 — M31 단독(스크림 토큰 신설·0.4.3 출고·라이브 실증, 사용자 관측 통과). Details: `docs/reports/2026-08-06-m31-dark-inversion-cleanup.md`.
 
+- Completed at: 2026-08-06
+- Evidence: evidence/queue-drain/m35-figma-followups.md
+- Summary: Figma 브리지 후속 3건 — 청크 분할·description 복사·읽기/no-remove 스위치, 라이브 재동기화 완료
 ## Active Milestones — docs-block-and-theme-derive
 
 <!-- harness:milestone id="M30" status="completed" priority="P2" evidence="evidence/docs-block-and-theme-derive/m30-custom-dark-face.md" -->

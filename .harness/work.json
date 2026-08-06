@@ -5838,7 +5838,7 @@
     "queue-drain": {
       "work_id": "queue-drain",
       "milestone_id": "M35",
-      "status": "active",
+      "status": "completed",
       "plan_path": "plans/2026-08-06-m35-figma-followups.md",
       "changeset_path": "changesets/20260806-m35-figma-followups",
       "next_step": "step-1",
@@ -5880,7 +5880,8 @@
       ],
       "owner_session_uuid": "claude:304c1135-1476-4990-b8b7-bd0ee037e40a",
       "updated_at": "2026-08-06",
-      "notes": "Registered atomically by canonical harness approve_harness_plan.py after plan validation."
+      "notes": "Registered atomically by canonical harness approve_harness_plan.py after plan validation.",
+      "completion_summary": "Figma 후속 3건 — 청크 옵션화·description 복사·읽기 모드·no-remove, 라이브 재동기화(신규 2·삭제 0·2차 updated-only)"
     }
   }
 }
