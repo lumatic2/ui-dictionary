@@ -882,3 +882,9 @@ plan doc: `archive/plans/2026-07-21-eu*.md` · 증거: `evidence/editor-legibili
   - Completed: 2026-08-06
   - Result: 스크림 semantic 토큰 신설 — 백드롭 8곳·전체면 반전 4곳·이식 경로(CLI 0.4.3·registry) 배선, 사용자 관측 통과
   - Evidence: evidence/dark-inversion-cleanup/m31-scrim-token.md
+
+### 2026-08
+- M36 - M36 — `color-palette-generator` 이식 표면 restyle
+  - Completed: 2026-08-06
+  - Result: 이식 표면 restyle — semantic 토큰 치환·실측 선언 14종·gap 테스트 반전·라이브 소비처 포커스 링 실측
+  - Evidence: evidence/findings-sweep/m36-palette-generator-restyle.md
