@@ -73,3 +73,15 @@
   기계가 구분할 신호가 생겼을 때.
 - [ ] **정적 추출의 상한** — `generate-registry.mjs` 의 실측은 런타임 조립 클래스를 못 잡고, 문자열 안의
   유틸은 센다(주석은 제거). 한계는 `--self-test` 와 `block-contract.md` §4.1 에 고정.
+
+## H. 덱 트랙 (M33 2026-08-06)
+
+- [ ] **`/pt` G2→G3 에 레이아웃별 슬롯 계약을 생성 시점 강제로 넣을지 검토** — Presenton 은 레이아웃을 먼저
+  고르고 그 레이아웃의 JSON 스키마를 LLM 출력 계약으로 준다(`templates/v2/schema.py::get_template_schema`).
+  우리 `slides.json` 은 스키마가 있지만 슬롯 계약이 생성 시점 강제로 쓰이지 않는다. 근거·판정:
+  `research/2026-08-06-m33-presenton-bench.md` §4-① (판정 A). 별도 milestone 후보.
+- [ ] 자동 레이아웃 배분을 "후보 3안 제시" 수준으로 도입할지 (같은 문서 §4-②, 판정 B — 낮은 우선순위).
+  전면 자동화는 구성안 사람 승인 게이트를 무의미하게 만들어 기각.
+- [ ] **`/pt` 요약 문서의 stale 2건을 정정할 것** — `research/2026-07-31-html-upgrade-goal-refs.md` §0 이
+  "레이아웃 18종"이라 적었으나 소스 실측 **19종**이고, §1 이 "단일 HTML 파일 배포 미보유"로 적었으나
+  `templates/export-standalone.mjs` 로 **보유**다. record 는 동결이라 원문을 고치지 않고 여기에 정정을 남긴다.
