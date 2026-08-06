@@ -9,7 +9,13 @@
       "origin": "second-brain/poc-graph luminous node field",
       "liveUrl": "https://brain.askewly.com/",
       "harvestedAt": "2026-08-04"
-    }
+    },
+    "requiredCssVars": [
+      "--border",
+      "--muted",
+      "--muted-foreground",
+      "--radius"
+    ]
   },
   "registryDependencies": [
     "https://ui.askewly.com/r/glow-points-scene-impl.json"

@@ -9,7 +9,11 @@
       "origin": "upstage-sixsense hero typing counter",
       "liveUrl": "https://sixsense.askewly.com/",
       "harvestedAt": "2026-08-04"
-    }
+    },
+    "requiredCssVars": [
+      "--foreground",
+      "--primary"
+    ]
   },
   "registryDependencies": [],
   "dependencies": [],

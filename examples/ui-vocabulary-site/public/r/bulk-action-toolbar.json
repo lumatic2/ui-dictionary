@@ -4,6 +4,14 @@
   "type": "registry:block",
   "title": "Bulk Action Toolbar",
   "description": "A bulk action toolbar turns a table's per-row selection into a single place to act on many rows at once. It appears only once a selection exists, always states the selected count out loud, and offers an explicit way to go beyond the current page — selecting every row that matches the active filter, not just the ones currently rendered. It builds directly on `interactive-data-table`'s selection state rather than defining a second, competing selection model.",
+  "meta": {
+    "requiredCssVars": [
+      "--border",
+      "--card",
+      "--card-foreground",
+      "--radius"
+    ]
+  },
   "registryDependencies": [
     "badge",
     "button"

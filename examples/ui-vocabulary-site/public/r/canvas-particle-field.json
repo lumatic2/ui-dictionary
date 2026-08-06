@@ -5,6 +5,15 @@
   "title": "Canvas Particle Field",
   "description": "A canvas particle field draws dozens-to-hundreds of drifting dots into a 2D pixel buffer as ambient backdrop texture. Tier ③ in `knowledge/expressive-stack.md`: at this element count, DOM nodes pay layout/paint cost per node while the canvas pays none. An experimental/showcase touch (signature principle 5) — hero and event surfaces on request, never behind forms or data UI.",
   "docs": "Recipe contract (intent/anatomy/tokens/checks/anti-patterns): https://ui.askewly.com/llms/recipes/application-ui/canvas-particle-field.md — after transplant, remap look to the project's own tokens per https://ui.askewly.com/llms/docs/design-system/component-restyle.md",
+  "meta": {
+    "requiredCssVars": [
+      "--background",
+      "--border",
+      "--foreground",
+      "--muted-foreground",
+      "--radius"
+    ]
+  },
   "registryDependencies": [],
   "dependencies": [],
   "files": [

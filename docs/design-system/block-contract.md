@@ -31,6 +31,20 @@ Each block's source owns its composition: which assets sit where, how states are
 
 A block declares its **required CSS variable list** in its §6 entry. Values are owned by the consuming project's token definitions (its DESIGN.md-derived tokens), never by the block files — the same rule as [component-restyle.md](component-restyle.md). Shipping a block with its default face is a style-signature failure; after transplant you must remap to the project's own tokens and run `npx @askewly/design verify` until the block directory reports zero violations.
 
+### 4.1 The declaration is measured, not trusted (M32)
+
+The list is **checked against the transplanted files at build time** — `scripts/generate-registry.mjs` extracts the CSS variables each item's shipped source actually uses and fails the build when a declaration is narrower than the usage. A hand-written list is exactly the thing that goes stale: the declaration passed while the transplanted asset lost its color (M31).
+
+- **Declaration sites differ by tier.** Blocks declare at the item's top level (`requiredCssVars`); component-tier assets declare under `meta.requiredCssVars`. Both paths are gated.
+- **Narrower fails, wider passes.** A declaration may list more than the measurement finds — a broad list is harmless, and narrowing one silently breaks consumers that relied on it.
+- **What the extractor counts:** `var(--x)`, and Tailwind utilities whose token exists in the site's `@theme inline` (`bg-scrim/50` → `--scrim`). `rounded-*` implies `--radius`; a colorless `border` implies `--border` (the global border-color reset).
+- **What it excludes:** variables the file defines itself (object literals and `style.setProperty`), Tailwind built-ins (`--spacing`, `--text-*`, …), and `--color-<name>` names with no theme entry — those are runtime-injected, like shadcn chart's `--color-<series>`.
+- **Known limit:** extraction is static, so a class name assembled at runtime is invisible to it, and a utility written inside any string — including prose in a string literal — is counted. Pinned in `node scripts/generate-registry.mjs --self-test`.
+
+### 4.2 Upstream shadcn primitives are outside the check — and why that is safe
+
+`registryDependencies` entries without a URL resolve against `ui.shadcn.com`, so those items are **not ours to annotate**: our `requiredCssVars` field cannot exist in their JSON. The boundary is safe only because the token layer kickstart writes already covers them. Measured 2026-08-06 over the 21 upstream primitives this registry pulls: **27 variables, all defined by `renderBrandCss`** except the two Radix writes on the element at runtime (`--radix-select-trigger-height/width`). Pinned by test, not by memory. If that ever stops holding, the fix is a baseline set in the CLI — not a declaration upstream.
+
 ## 5. Absorption and attribution
 
 Blocks may absorb external open-source composition (decision path: [absorption-criteria.md](absorption-criteria.md)). Rules:

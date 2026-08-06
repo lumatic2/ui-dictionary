@@ -9,7 +9,14 @@
       "origin": "ui.askewly.com landing hero + FloatingField",
       "liveUrl": "https://ui.askewly.com/",
       "harvestedAt": "2026-08-04"
-    }
+    },
+    "requiredCssVars": [
+      "--background",
+      "--foreground",
+      "--muted-foreground",
+      "--primary",
+      "--radius"
+    ]
   },
   "registryDependencies": [],
   "dependencies": [],

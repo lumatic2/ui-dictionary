@@ -9,7 +9,15 @@
       "origin": "ui-vocabulary-site device bezel",
       "liveUrl": "https://ui.askewly.com/",
       "harvestedAt": "2026-08-04"
-    }
+    },
+    "requiredCssVars": [
+      "--background",
+      "--border",
+      "--foreground",
+      "--muted",
+      "--muted-foreground",
+      "--radius"
+    ]
   },
   "registryDependencies": [],
   "dependencies": [],

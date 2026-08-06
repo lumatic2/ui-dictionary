@@ -9,7 +9,16 @@
       "origin": "ai-guide TerminalDemo",
       "liveUrl": "https://guide.askewly.com/",
       "harvestedAt": "2026-08-04"
-    }
+    },
+    "requiredCssVars": [
+      "--background",
+      "--border",
+      "--foreground",
+      "--muted",
+      "--muted-foreground",
+      "--radius",
+      "--ring"
+    ]
   },
   "registryDependencies": [],
   "dependencies": [

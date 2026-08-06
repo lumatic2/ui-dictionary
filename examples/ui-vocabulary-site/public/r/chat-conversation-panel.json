@@ -5,6 +5,21 @@
   "title": "Chat Conversation Panel",
   "description": "A chat conversation panel turns a request-response exchange with a person or an AI assistant into one continuously readable thread: a bounded, self-scrolling message log above a single always-visible input bar. It exists for turn-taking conversation — not for comment threads (no reply nesting), notification feeds (no input), or one-shot form submission.",
   "docs": "Recipe contract (intent/anatomy/tokens/checks/anti-patterns): https://ui.askewly.com/llms/recipes/application-ui/chat-conversation-panel.md — after transplant, remap look to the project's own tokens per https://ui.askewly.com/llms/docs/design-system/component-restyle.md",
+  "meta": {
+    "requiredCssVars": [
+      "--background",
+      "--border",
+      "--destructive",
+      "--foreground",
+      "--input",
+      "--muted",
+      "--muted-foreground",
+      "--primary",
+      "--primary-foreground",
+      "--radius",
+      "--ring"
+    ]
+  },
   "registryDependencies": [
     "button"
   ],

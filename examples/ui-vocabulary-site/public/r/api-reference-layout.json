@@ -4,6 +4,16 @@
   "type": "registry:block",
   "title": "Api Reference Layout",
   "description": "Api Reference Layout — verified recipe demo implementation from the Askewly Design site.",
+  "meta": {
+    "requiredCssVars": [
+      "--background",
+      "--border",
+      "--foreground",
+      "--muted",
+      "--muted-foreground",
+      "--radius"
+    ]
+  },
   "registryDependencies": [
     "badge",
     "tabs"

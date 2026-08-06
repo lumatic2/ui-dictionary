@@ -95,9 +95,11 @@ export function extractCssVars(rawSource, themeMap) {
 
   // 이 파일이 스스로 정의하는 변수는 요구 대상이 아니다
   // (예: page.tsx 의 `"--sidebar-width": "calc(var(--spacing) * 72)"`).
-  const selfDefined = new Set(
-    [...source.matchAll(/["']?(--[a-z0-9-]+)["']?\s*:/g)].map((m) => m[1])
-  );
+  // 객체 리터럴·CSS 선언(`"--x":`)뿐 아니라 런타임 주입(`style.setProperty("--x", …)`)도 자기정의다.
+  const selfDefined = new Set([
+    ...[...source.matchAll(/["']?(--[a-z0-9-]+)["']?\s*:/g)].map((m) => m[1]),
+    ...[...source.matchAll(/setProperty\(\s*["'`](--[a-z0-9-]+)/g)].map((m) => m[1]),
+  ]);
 
   // ① var(--x)
   for (const m of source.matchAll(/var\(\s*(--[a-z0-9-]+)/g)) found.add(m[1]);
@@ -137,8 +139,11 @@ export function extractCssVars(rawSource, themeMap) {
 }
 
 // 선언과 대조 — 실측이 선언보다 넓으면(=선언 누락) 실패한다.
+const MEASURED = new Map(); // name -> measured vars (--print-measured 용)
+
 function assertDeclarationCoversUsage(label, declared, measured) {
-  if (!declared) return; // 미선언 항목은 step-2 에서 채운다 (게이트는 선언이 있을 때만 판정)
+  MEASURED.set(label, measured);
+  if (!declared) return; // 미선언 항목은 게이트 판정 대상이 아니다 (선언이 있을 때만 대조)
   const missing = measured.filter((v) => !declared.includes(v));
   if (missing.length) {
     fail(
@@ -178,6 +183,9 @@ if (process.argv.includes("--self-test")) {
   console.log(`generate-registry --self-test: ${pass}/${cases.length}`);
   process.exit(pass === cases.length ? 0 : 1);
 }
+
+// --print-measured: 항목별 실측 결과를 JSON 으로 찍는다 (선언 채우기·감사용, 생성은 하지 않는다)
+const PRINT_MEASURED = process.argv.includes("--print-measured");
 
 if (!existsSync(REGISTRY_JSON)) fail(`registry.json 없음: ${REGISTRY_JSON}`);
 if (!existsSync(INDEX_CSS)) fail(`index.css 없음: ${INDEX_CSS}`);
@@ -374,6 +382,11 @@ for (const item of registry.items) {
     registryDependencies, dependencies,
     files: [{ path: built.files[0].path, type: "registry:component" }],
   });
+}
+
+if (PRINT_MEASURED) {
+  console.log(JSON.stringify(Object.fromEntries([...MEASURED].sort()), null, 2));
+  process.exit(0);
 }
 
 writeFileSync(path.join(OUT_DIR, "registry.json"), JSON.stringify({

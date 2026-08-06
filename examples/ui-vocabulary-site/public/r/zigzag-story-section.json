@@ -9,7 +9,13 @@
       "origin": "Askwely-company building-section",
       "liveUrl": "https://askewly.com/",
       "harvestedAt": "2026-08-04"
-    }
+    },
+    "requiredCssVars": [
+      "--foreground",
+      "--muted",
+      "--muted-foreground",
+      "--radius"
+    ]
   },
   "registryDependencies": [],
   "dependencies": [],

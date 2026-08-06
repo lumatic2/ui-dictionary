@@ -5,6 +5,15 @@
   "title": "Stat Summary Grid",
   "description": "A stat summary grid gives a small set of operational measures a consistent hierarchy: label, current value, and a contextual trend or status. It supports quick orientation at the top of a real dashboard; it is not a license to fabricate metrics for decorative proof.",
   "docs": "Recipe contract (intent/anatomy/tokens/checks/anti-patterns): https://ui.askewly.com/llms/recipes/data-display/stat-summary-grid.md — after transplant, remap look to the project's own tokens per https://ui.askewly.com/llms/docs/design-system/component-restyle.md",
+  "meta": {
+    "requiredCssVars": [
+      "--border",
+      "--foreground",
+      "--muted-foreground",
+      "--primary",
+      "--radius"
+    ]
+  },
   "registryDependencies": [],
   "dependencies": [],
   "files": [

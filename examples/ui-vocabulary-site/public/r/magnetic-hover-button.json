@@ -10,7 +10,15 @@
       "origin": "ui-vocabulary-site micro-interaction demos",
       "liveUrl": "https://ui.askewly.com/",
       "harvestedAt": "2026-08-04"
-    }
+    },
+    "requiredCssVars": [
+      "--border",
+      "--muted",
+      "--primary",
+      "--primary-foreground",
+      "--radius",
+      "--ring"
+    ]
   },
   "registryDependencies": [],
   "dependencies": [

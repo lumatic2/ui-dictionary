@@ -9,7 +9,14 @@
       "origin": "ui-vocabulary-site color palette generator (home-page extraction)",
       "liveUrl": "https://ui.askewly.com/colors",
       "harvestedAt": "2026-08-04"
-    }
+    },
+    "requiredCssVars": [
+      "--askewly-violet",
+      "--background",
+      "--border",
+      "--foreground",
+      "--radius"
+    ]
   },
   "registryDependencies": [
     "https://ui.askewly.com/r/palette-generator-core.json"

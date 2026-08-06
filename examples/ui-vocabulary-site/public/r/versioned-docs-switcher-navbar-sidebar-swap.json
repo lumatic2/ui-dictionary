@@ -5,6 +5,14 @@
   "title": "Versioned Docs Switcher Navbar Sidebar Swap",
   "description": "The `versioned-docs-switcher` term already names the dropdown-plus-stale-banner concept; this recipe is the actual three-part state contract behind it — picking a version in the navbar dropdown does not just relabel the page, it swaps the sidebar tree's entire data source to that version's structure, and shows a stale-version banner whenever the selected version is not the latest. The dropdown, banner, and sidebar all read from one `activeVersionId` value instead of three independently-set flags.",
   "docs": "Recipe contract (intent/anatomy/tokens/checks/anti-patterns): https://ui.askewly.com/llms/recipes/navigation/versioned-docs-switcher-navbar-sidebar-swap.md — after transplant, remap look to the project's own tokens per https://ui.askewly.com/llms/docs/design-system/component-restyle.md",
+  "meta": {
+    "requiredCssVars": [
+      "--border",
+      "--muted",
+      "--muted-foreground",
+      "--radius"
+    ]
+  },
   "registryDependencies": [
     "select"
   ],

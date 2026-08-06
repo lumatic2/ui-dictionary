@@ -9,7 +9,16 @@
       "origin": "ui-vocabulary-site atlas showcase (home-page extraction)",
       "liveUrl": "https://ui.askewly.com/",
       "harvestedAt": "2026-08-04"
-    }
+    },
+    "requiredCssVars": [
+      "--background",
+      "--border",
+      "--foreground",
+      "--muted",
+      "--muted-foreground",
+      "--primary",
+      "--radius"
+    ]
   },
   "registryDependencies": [
     "button"

@@ -5,6 +5,14 @@
   "title": "Category Product Grid",
   "description": "A category product grid assembles many `product-card` cells into the higher-order list structure a category or search-results page actually needs: a filter/sort bar above the grid, a loading skeleton that matches the final column count, and an empty state that offers a way out instead of a dead end. The card itself stays a separate term — this recipe is the layout and state machine around it.",
   "docs": "Recipe contract (intent/anatomy/tokens/checks/anti-patterns): https://ui.askewly.com/llms/recipes/commerce/category-product-grid.md — after transplant, remap look to the project's own tokens per https://ui.askewly.com/llms/docs/design-system/component-restyle.md",
+  "meta": {
+    "requiredCssVars": [
+      "--border",
+      "--muted",
+      "--muted-foreground",
+      "--radius"
+    ]
+  },
   "registryDependencies": [
     "button",
     "select",

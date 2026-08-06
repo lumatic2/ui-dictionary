@@ -10,7 +10,11 @@
       "origin": "ui-vocabulary-site micro-interaction demos",
       "liveUrl": "https://ui.askewly.com/",
       "harvestedAt": "2026-08-04"
-    }
+    },
+    "requiredCssVars": [
+      "--foreground",
+      "--muted-foreground"
+    ]
   },
   "registryDependencies": [
     "https://ui.askewly.com/r/device-frame.json"

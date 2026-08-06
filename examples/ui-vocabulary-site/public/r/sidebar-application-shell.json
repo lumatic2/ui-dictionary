@@ -5,6 +5,19 @@
   "title": "Sidebar Application Shell",
   "description": "A sidebar application shell gives repeated product navigation a stable rail while keeping the task surface flexible. It is appropriate for dashboards, internal tools, and documentation products where users move among peer work areas many times per session.",
   "docs": "Recipe contract (intent/anatomy/tokens/checks/anti-patterns): https://ui.askewly.com/llms/recipes/layout/sidebar-application-shell.md — after transplant, remap look to the project's own tokens per https://ui.askewly.com/llms/docs/design-system/component-restyle.md",
+  "meta": {
+    "requiredCssVars": [
+      "--accent",
+      "--accent-foreground",
+      "--background",
+      "--border",
+      "--card",
+      "--foreground",
+      "--muted",
+      "--muted-foreground",
+      "--radius"
+    ]
+  },
   "registryDependencies": [],
   "dependencies": [
     "lucide-react"

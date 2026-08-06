@@ -9,7 +9,16 @@
       "origin": "second-brain/poc-graph focus HUD (React rewrite)",
       "liveUrl": "https://brain.askewly.com/",
       "harvestedAt": "2026-08-04"
-    }
+    },
+    "requiredCssVars": [
+      "--border",
+      "--foreground",
+      "--muted",
+      "--muted-foreground",
+      "--primary",
+      "--primary-foreground",
+      "--radius"
+    ]
   },
   "registryDependencies": [
     "button"

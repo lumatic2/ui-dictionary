@@ -4,6 +4,14 @@
   "type": "registry:block",
   "title": "Docs Code Block",
   "description": "Documentation readers often need the same instruction in more than one equivalent form (npm/yarn/pnpm, or curl/node/python) and want to copy it without hand-selecting text. Tabs switch between equivalent code variants in place, and a fixed copy button turns the block into a one-click action instead of a select-and-copy chore.",
+  "meta": {
+    "requiredCssVars": [
+      "--background",
+      "--foreground",
+      "--muted",
+      "--radius"
+    ]
+  },
   "registryDependencies": [
     "button",
     "tabs"

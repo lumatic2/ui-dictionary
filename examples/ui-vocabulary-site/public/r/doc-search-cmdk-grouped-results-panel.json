@@ -5,6 +5,11 @@
   "title": "Doc Search Cmdk Grouped Results Panel",
   "description": "A documentation site's Cmd/Ctrl+K search reuses the `command-palette` overlay shell (`topbar-command-search` implements the same input+popover idea inline in a topbar), but a docs search result set spans several kinds of content — pages, guides, API entries — and a flat list makes the reader scan section by section anyway. Grouping results under section headers (Docs/Guides/API) inside the same overlay does that scanning for them, without inventing a second overlay pattern.",
   "docs": "Recipe contract (intent/anatomy/tokens/checks/anti-patterns): https://ui.askewly.com/llms/recipes/navigation/doc-search-cmdk-grouped-results-panel.md — after transplant, remap look to the project's own tokens per https://ui.askewly.com/llms/docs/design-system/component-restyle.md",
+  "meta": {
+    "requiredCssVars": [
+      "--muted-foreground"
+    ]
+  },
   "registryDependencies": [
     "command"
   ],

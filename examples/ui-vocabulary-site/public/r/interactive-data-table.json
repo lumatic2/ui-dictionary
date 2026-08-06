@@ -5,6 +5,15 @@
   "title": "Interactive Data Table",
   "description": "An interactive data table supports scanning and acting on structured records while preserving column meaning. Selection, sorting, filtering, density, and row actions are added only when the user task needs them; the table remains readable without those controls.",
   "docs": "Recipe contract (intent/anatomy/tokens/checks/anti-patterns): https://ui.askewly.com/llms/recipes/data-display/interactive-data-table.md — after transplant, remap look to the project's own tokens per https://ui.askewly.com/llms/docs/design-system/component-restyle.md",
+  "meta": {
+    "requiredCssVars": [
+      "--border",
+      "--card",
+      "--card-foreground",
+      "--muted-foreground",
+      "--radius"
+    ]
+  },
   "registryDependencies": [
     "button",
     "checkbox",

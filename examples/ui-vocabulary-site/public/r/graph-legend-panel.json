@@ -9,7 +9,17 @@
       "origin": "second-brain/poc-graph legend sidebar",
       "liveUrl": "https://brain.askewly.com/",
       "harvestedAt": "2026-08-04"
-    }
+    },
+    "requiredCssVars": [
+      "--border",
+      "--card",
+      "--card-foreground",
+      "--foreground",
+      "--muted",
+      "--muted-foreground",
+      "--radius",
+      "--ring"
+    ]
   },
   "registryDependencies": [],
   "dependencies": [],

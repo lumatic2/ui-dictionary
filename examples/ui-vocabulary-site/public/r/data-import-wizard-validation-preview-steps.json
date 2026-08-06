@@ -5,6 +5,17 @@
   "title": "Data Import Wizard Validation Preview Steps",
   "description": "A data import wizard validation preview steps recipe implements the `data-import-wizard-validation-preview` term's upload-to-summary contract as five discrete steps: upload, map, validate, preview, confirm. Each step is its own screen rather than a single scrolling form, per-row validation errors surface inline in the preview table instead of only as an aggregate count, and a failing row can be fixed or explicitly skipped without aborting the whole import. This is the structure Retool/Linear/Stripe-style admin CSV import flows repeat.",
   "docs": "Recipe contract (intent/anatomy/tokens/checks/anti-patterns): https://ui.askewly.com/llms/recipes/forms/data-import-wizard-validation-preview-steps.md — after transplant, remap look to the project's own tokens per https://ui.askewly.com/llms/docs/design-system/component-restyle.md",
+  "meta": {
+    "requiredCssVars": [
+      "--border",
+      "--card",
+      "--card-foreground",
+      "--destructive",
+      "--foreground",
+      "--muted-foreground",
+      "--radius"
+    ]
+  },
   "registryDependencies": [
     "badge",
     "button",

@@ -5,6 +5,15 @@
   "title": "Responsive Content Grid",
   "description": "A responsive content grid arranges peer items into as many columns as the content can support, then collapses without changing their reading order. It is a layout contract for cards, examples, products, or records, not a decorative checkerboard.",
   "docs": "Recipe contract (intent/anatomy/tokens/checks/anti-patterns): https://ui.askewly.com/llms/recipes/layout/responsive-content-grid.md — after transplant, remap look to the project's own tokens per https://ui.askewly.com/llms/docs/design-system/component-restyle.md",
+  "meta": {
+    "requiredCssVars": [
+      "--border",
+      "--card",
+      "--card-foreground",
+      "--muted-foreground",
+      "--radius"
+    ]
+  },
   "registryDependencies": [
     "badge",
     "button"

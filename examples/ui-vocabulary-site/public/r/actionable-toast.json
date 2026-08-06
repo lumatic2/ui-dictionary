@@ -5,6 +5,16 @@
   "title": "Actionable Toast",
   "description": "An actionable toast confirms a recent low-risk operation and may offer one short recovery action such as Undo or Retry. It does not request a decision, carry long instructions, or hide a persistent error that belongs next to the affected content.",
   "docs": "Recipe contract (intent/anatomy/tokens/checks/anti-patterns): https://ui.askewly.com/llms/recipes/feedback/actionable-toast.md — after transplant, remap look to the project's own tokens per https://ui.askewly.com/llms/docs/design-system/component-restyle.md",
+  "meta": {
+    "requiredCssVars": [
+      "--border",
+      "--foreground",
+      "--muted-foreground",
+      "--popover",
+      "--popover-foreground",
+      "--radius"
+    ]
+  },
   "registryDependencies": [
     "button"
   ],

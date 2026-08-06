@@ -5,6 +5,15 @@
   "title": "Shipping Method Selector",
   "description": "A shipping method selector lets a checkout user compare delivery/pickup options by cost and timing in one glance, and binds the choice directly to the order total. Baymard's checkout-flow research treats a total that changes unexpectedly after this step as a trust problem — so selecting a method must recalculate the visible total immediately, not just at final confirmation.",
   "docs": "Recipe contract (intent/anatomy/tokens/checks/anti-patterns): https://ui.askewly.com/llms/recipes/commerce/shipping-method-selector.md — after transplant, remap look to the project's own tokens per https://ui.askewly.com/llms/docs/design-system/component-restyle.md",
+  "meta": {
+    "requiredCssVars": [
+      "--accent",
+      "--border",
+      "--muted-foreground",
+      "--radius",
+      "--ring"
+    ]
+  },
   "registryDependencies": [
     "radio-group"
   ],

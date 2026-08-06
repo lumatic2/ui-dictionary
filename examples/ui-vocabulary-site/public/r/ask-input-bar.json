@@ -9,7 +9,15 @@
       "origin": "second-brain/poc-graph ask bar",
       "liveUrl": "https://brain.askewly.com/",
       "harvestedAt": "2026-08-04"
-    }
+    },
+    "requiredCssVars": [
+      "--background",
+      "--border",
+      "--foreground",
+      "--muted",
+      "--muted-foreground",
+      "--ring"
+    ]
   },
   "registryDependencies": [],
   "dependencies": [

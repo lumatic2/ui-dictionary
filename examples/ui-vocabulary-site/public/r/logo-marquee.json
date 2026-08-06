@@ -9,7 +9,10 @@
       "origin": "ai-bootcamp-2026 brand-marquee",
       "liveUrl": "https://bootcamp.askewly.com/",
       "harvestedAt": "2026-08-04"
-    }
+    },
+    "requiredCssVars": [
+      "--muted-foreground"
+    ]
   },
   "registryDependencies": [],
   "dependencies": [],

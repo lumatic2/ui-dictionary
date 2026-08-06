@@ -9,7 +9,16 @@
       "origin": "upstage-sixsense .duo cards",
       "liveUrl": "https://sixsense.askewly.com/",
       "harvestedAt": "2026-08-04"
-    }
+    },
+    "requiredCssVars": [
+      "--background",
+      "--border",
+      "--card",
+      "--card-foreground",
+      "--foreground",
+      "--muted-foreground",
+      "--radius"
+    ]
   },
   "registryDependencies": [],
   "dependencies": [],

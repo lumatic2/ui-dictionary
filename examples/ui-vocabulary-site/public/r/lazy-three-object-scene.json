@@ -5,6 +5,14 @@
   "title": "Lazy Three Object Scene",
   "description": "A real 3D object (lighting, depth, materials) rendered with three.js via React Three Fiber, loaded strictly behind a dynamic import. Tier ④ in `knowledge/expressive-stack.md` — CSS `perspective` can fake a rotated plane but cannot do lit, shaded geometry. The recipe's load-bearing part is the delivery contract: three.js is a ~155KB gzip fixed cost, so **the lazy boundary is not an optimization, it is the pattern** (judgment rule 4: tier ④ requires lazy-load).",
   "docs": "Recipe contract (intent/anatomy/tokens/checks/anti-patterns): https://ui.askewly.com/llms/recipes/application-ui/lazy-three-object-scene.md — after transplant, remap look to the project's own tokens per https://ui.askewly.com/llms/docs/design-system/component-restyle.md",
+  "meta": {
+    "requiredCssVars": [
+      "--border",
+      "--muted",
+      "--muted-foreground",
+      "--radius"
+    ]
+  },
   "registryDependencies": [],
   "dependencies": [],
   "files": [

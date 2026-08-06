@@ -5,6 +5,15 @@
   "title": "Docs Changelog Category Filter Page",
   "description": "`docs-changelog-page` already names a date-grouped `release-note-card` list as a page; this recipe is the concrete implementation with the two controls that make a long changelog navigable — a category filter chip row (All/GA/Preview-style categories) that narrows which cards show, and pagination so the page doesn't grow unbounded. Filtering and pagination share one state contract: changing the category resets which date groups are visible, and a date group with zero remaining cards after filtering disappears rather than rendering with an empty heading.",
   "docs": "Recipe contract (intent/anatomy/tokens/checks/anti-patterns): https://ui.askewly.com/llms/recipes/docs/docs-changelog-category-filter-page.md — after transplant, remap look to the project's own tokens per https://ui.askewly.com/llms/docs/design-system/component-restyle.md",
+  "meta": {
+    "requiredCssVars": [
+      "--border",
+      "--card",
+      "--card-foreground",
+      "--muted-foreground",
+      "--radius"
+    ]
+  },
   "registryDependencies": [
     "badge",
     "pagination"

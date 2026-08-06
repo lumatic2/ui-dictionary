@@ -5,6 +5,15 @@
   "title": "Cart Drawer",
   "description": "A cart drawer keeps the browsing context intact while confirming what a user has added. It opens as a slide-over panel, shows each item with enough detail to double-check the choice, and moves the user toward checkout without a full page navigation. It intentionally shows only a subtotal — a full cost breakdown belongs to `checkout-order-summary`.",
   "docs": "Recipe contract (intent/anatomy/tokens/checks/anti-patterns): https://ui.askewly.com/llms/recipes/commerce/cart-drawer.md — after transplant, remap look to the project's own tokens per https://ui.askewly.com/llms/docs/design-system/component-restyle.md",
+  "meta": {
+    "requiredCssVars": [
+      "--border",
+      "--foreground",
+      "--muted",
+      "--muted-foreground",
+      "--radius"
+    ]
+  },
   "registryDependencies": [
     "button",
     "sheet"

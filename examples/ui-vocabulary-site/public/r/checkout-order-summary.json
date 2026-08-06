@@ -5,6 +5,16 @@
   "title": "Checkout Order Summary",
   "description": "A checkout order summary keeps the exact purchase commitment visible while the user provides delivery and payment details. Products, quantities, discounts, shipping, tax, total, fulfillment method, and final action stay consistent across steps and remain editable before confirmation.",
   "docs": "Recipe contract (intent/anatomy/tokens/checks/anti-patterns): https://ui.askewly.com/llms/recipes/commerce/checkout-order-summary.md — after transplant, remap look to the project's own tokens per https://ui.askewly.com/llms/docs/design-system/component-restyle.md",
+  "meta": {
+    "requiredCssVars": [
+      "--border",
+      "--card",
+      "--card-foreground",
+      "--destructive",
+      "--muted-foreground",
+      "--radius"
+    ]
+  },
   "registryDependencies": [
     "button"
   ],

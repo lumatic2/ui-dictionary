@@ -207,3 +207,102 @@ describe("scrim in the transplanted token layer", () => {
     expect(missingRequiredVars(css.replace(/\s*--scrim:[^;]+;/, ""), ["--scrim"])).toEqual(["--scrim"])
   })
 })
+
+// M32. The transitive collection in transplantBlock (kickstart.ts:578) was
+// wired in M31 but never observed firing: the live block's child assets carry
+// no declaration of their own, so the union equals the block's own list and a
+// count proves nothing. This fixture makes a child declare a variable the
+// parent does not, which is the only shape that distinguishes "collected
+// transitively" from "read off the top level".
+describe("transitive requiredCssVars collection", () => {
+  const child = {
+    name: "child-asset",
+    meta: { requiredCssVars: ["--child-only"] },
+    files: [{ path: "registry/askewly/child-asset/child-asset.tsx", type: "registry:component", content: "export const Child = () => null\n" }],
+  }
+  const parent = {
+    name: "parent-block",
+    meta: { tier: "block", requiredCssVars: ["--parent-only"] },
+    registryDependencies: ["https://ui.askewly.com/r/child-asset.json"],
+    files: [{ path: "registry/askewly/parent-block/page.tsx", type: "registry:component", content: "export default function Page() { return null }\n" }],
+  }
+
+  async function collect(childItem: unknown): Promise<string[]> {
+    const original = globalThis.fetch
+    globalThis.fetch = (async () =>
+      new Response(JSON.stringify(childItem), { status: 200, headers: { "content-type": "application/json" } })) as typeof fetch
+    try {
+      const dir = mkdtempSync(path.join(tmpdir(), "askewly-transitive-"))
+      const { transplantBlock } = await import("../src/kickstart.js")
+      const result = await transplantBlock(parent as never, dir)
+      return result.requiredCssVars.sort()
+    } finally {
+      globalThis.fetch = original
+    }
+  }
+
+  it("collects a variable only the child declares", async () => {
+    expect(await collect(child)).toEqual(["--child-only", "--parent-only"])
+  })
+
+  it("loses that variable when the child stops declaring it", async () => {
+    // The negative half: if this still returned --child-only, the collection
+    // would be reading something other than the child's meta.
+    expect(await collect({ ...child, meta: {} })).toEqual(["--parent-only"])
+  })
+})
+
+// M32. Every variable the registry now *measures* as required must be
+// definable by the layer kickstart writes. A required variable the brand CSS
+// never emits is a transplant that loses its color — the exact M31 failure.
+describe("brand CSS covers what the registry requires", () => {
+  const css = renderBrandCss({ tone: "minimal-clean", color: "violet", type: "system-sans" })
+  // Measured union across all 57 registry items (scripts/generate-registry.mjs --print-measured, 2026-08-06).
+  const MEASURED_UNION = [
+    "--accent", "--accent-foreground", "--background", "--border", "--card", "--card-foreground",
+    "--destructive", "--foreground", "--input", "--muted", "--muted-foreground", "--popover",
+    "--popover-foreground", "--primary", "--primary-foreground", "--radius", "--ring", "--scrim",
+  ]
+
+  it("defines every measured variable", () => {
+    expect(missingRequiredVars(css, MEASURED_UNION)).toEqual([])
+  })
+
+  // --askewly-violet is deliberately absent from the list above: it is this
+  // site's own brand token, and color-palette-generator asks for it via
+  // `ring-askewly-violet`. A consumer project has no such variable, so that
+  // asset's focus ring falls back to transparent. Left as a finding — M32
+  // does not change transplanted file contents.
+  it("does not define the site-only brand token (documented gap)", () => {
+    expect(missingRequiredVars(css, ["--askewly-violet"])).toEqual(["--askewly-violet"])
+  })
+})
+
+// M32. Upstream shadcn primitives cannot carry our `requiredCssVars` field —
+// they are fetched from ui.shadcn.com and we do not own that JSON, so the 21
+// primitives our registry pulls are structurally outside the declaration
+// check. That is only safe if the brand CSS defines what they need. Measured
+// 2026-08-06 by running the registry extractor over all 21 upstream items:
+// 27 variables, of which 2 are injected by Radix at runtime.
+describe("upstream shadcn primitives stay inside the token layer", () => {
+  const css = renderBrandCss({ tone: "minimal-clean", color: "violet", type: "system-sans" })
+  const UPSTREAM_MEASURED = [
+    "--accent", "--accent-foreground", "--background", "--border", "--card", "--card-foreground",
+    "--destructive", "--foreground", "--input", "--muted", "--muted-foreground", "--popover",
+    "--popover-foreground", "--primary", "--primary-foreground", "--radius", "--ring",
+    "--secondary", "--secondary-foreground", "--sidebar", "--sidebar-accent",
+    "--sidebar-accent-foreground", "--sidebar-border", "--sidebar-foreground", "--sidebar-ring",
+  ]
+
+  it("defines every variable the 21 upstream primitives use", () => {
+    // Zero missing is what makes the uncheckable dependency safe. If this ever
+    // fails, the fix is a baseline set in the CLI, not a declaration upstream.
+    expect(missingRequiredVars(css, UPSTREAM_MEASURED)).toEqual([])
+  })
+
+  it("leaves Radix's own runtime variables alone", () => {
+    // --radix-select-trigger-{height,width} are written by Radix on the element;
+    // defining them in the token layer would fight the library.
+    expect(missingRequiredVars(css, ["--radix-select-trigger-height"])).toEqual(["--radix-select-trigger-height"])
+  })
+})
