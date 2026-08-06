@@ -92,7 +92,7 @@ Status: approved (사용자 승인 2026-08-06 "ㄱㄱ" — goal `queue-drain` �
 
 ## Step 트리
 
-- [ ] **step-1 — 스냅숏 청크 옵션화**
+- [x] **step-1 — 스냅숏 청크 옵션화**
   - Artifact: 큰 서브트리를 인자만으로 나눠 받고, 합쳐서 원본과 같은 집합이 된다
   - Files: `scripts/figma-push-snapshot.mjs`(`--from`/`--to` + `--roots <id,id>` 두 벌 + 조립 검사) ·
     self-test 확장(`figma-return-diff.mjs --self-test` 관례에 맞춰 배치)
@@ -107,7 +107,7 @@ Status: approved (사용자 승인 2026-08-06 "ㄱㄱ" — goal `queue-drain` �
   - Risk: 기계적 (페이로드 포맷을 건드리면 회수 diff 가 깨진다 — 포맷 무변경을 Verify 로 고정)
   - Commit: `feat(figma): 스냅숏 페이로드 구간 분할 옵션 (M35 step-1)`
 
-- [ ] **step-2 — `description` 복사 구현 + 읽기(dry-run) 모드 + `--no-remove`**
+- [x] **step-2 — `description` 복사 구현 + 읽기(dry-run) 모드 + `--no-remove`**
   - Artifact: 페이로드가 `description` 을 싣고, **쓰기 전에 현재 상태를 읽을 수단**과 삭제를 끌 스위치가 생긴다
   - Files: `scripts/generate-figma-variables-sync.mjs`(① description ② 변수 읽기 페이로드 생성 모드
     ③ `--no-remove`) · `docs/design-system/figma-bridge-contract.md`(§2.2 구현 상태·빈 값 처리 + §2.4 에
@@ -122,7 +122,7 @@ Status: approved (사용자 승인 2026-08-06 "ㄱㄱ" — goal `queue-drain` �
   - Risk: 위험 (빈 description 으로 사람이 적어 둔 설명을 덮어쓰면 조용한 데이터 손실 — 생략 규칙이 그 방어)
   - Commit: `feat(figma): 변수 description 복사 — 계약 §2.2 구현 (M35 step-2)`
 
-- [ ] **step-3 — 드리프트 실측 + sync 재실행 + 청크 회수 라이브 실증 (human gate)**
+- [x] **step-3 — 드리프트 실측 + sync 재실행 + 청크 회수 라이브 실증 (human gate)**
   - Artifact: Figma 변수가 SSOT 와 다시 같아지고 description 이 실리며, **큰 서브트리를 절단 없이 회수**한다
   - Files: `evidence/queue-drain/m35-figma-followups.md` · `research/figma-variables-sync-2026-07.md` Changelog ·
     `changesets/20260806-m35-figma-followups/README.md`
@@ -176,6 +176,20 @@ Status: approved (사용자 승인 2026-08-06 "ㄱㄱ" — goal `queue-drain` �
 ## 진행 로그
 
 - 2026-08-06 작성 — goal `queue-drain` 연쇄 4/4.
+- **step-1 완료 (2026-08-06)** — `--from/--to` + `--roots` + `--assemble` + `--self-test`(7/7).
+  기준 페이로드를 편집 전에 확보해 **바이트 동일** 확인(cmp), `figma-return-diff --self-test` 4항 PASS.
+  실측 버그 1건 자체 적발: `--assemble` 이 후속 플래그에서 안 끊겨 `--expect 4` 의 값을 파일로 읽었다.
+- **step-2 완료 (2026-08-06)** — description 복사 + `--read`(쓰기 호출 0건 grep 확인) + `--no-remove`(`v.remove()` 0건).
+  **Failure probe 성립** — `$description` 에 따옴표·LF·U+2028·U+2029·백슬래시를 넣으니 수정 전엔 **날것 U+2028 이 페이로드에 실렸고**,
+  직렬화 이스케이프 후 날것 0건 + 값 무손실 복원. 74종 중 5종만 description 보유(69종 생략), 빈 문자열 0건.
+- **step-3 완료 (2026-08-06, 사용자 승인 "ㄱㄱㄱ")** — 드리프트 수치를 먼저 제시하고 승인 후 실행.
+  primitive `1/73/0`, semantic `1/39/0 · unresolved 0` — **예고와 정확히 일치**. 2차 실행 `0/74/0`·`0/40/0` = **updated-only**
+  (계약 §2.4 기준 — `0/0/0` 만 걸면 정상 실행이 실패로 판정된다). 실파일 표본 4종 확인: scrim·primary-hover 는 description 실림,
+  `black`·`surface/base` 는 **(없음)** 으로 남아 생략 규칙 실증(probe ①). 총 114종 중 description 23종 — 예측치 일치.
+  ⚠ **계획의 실증 대상이 사라졌다** — M14 가 절단당한 `35:3`(102노드)이 파일에 **없다**(`node not found`).
+  전 페이지를 훑어도 최대 서브트리가 26노드(`6:3`)라 20kb 절단이 재현되지 않는다. 그래서 청크 실증은
+  `6:3` 으로 대체했다: 단일 26 → `0..0`=13 + `1..1`=13 → 조립 **26 unique·중복 0**, 범위 초과는 라이브에서 거부,
+  청크 하나 빼면 조립 FAIL(probe ②). **"절단을 넘겼다"는 증명되지 않았고 evidence·changeset 에 그대로 적었다.**
 - 2026-08-06 계획 검증자 반영 — 치명 3건(변수 읽기 수단 부재 → step-2 로 신설 · 삭제 D④ 가 코드/계약과 정반대 →
   `--no-remove` + 목록 승인으로 정정 · 절단 해소 실증 부재 → step-3 라이브 청크 회수 추가) + 경미 2건
   (`no-op` 기준 정정 · 기준 바이트 사전 확보).
