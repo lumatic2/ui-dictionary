@@ -117,7 +117,7 @@ Status: approved (사용자 승인 2026-08-06 "ㄱㄱ" — goal `queue-drain` �
   - Risk: 위험 (과다 검출 시 소비처가 불필요한 변수를 요구받는다 — 증가분을 이름 단위로 확인, 미정의 1개라도 나오면 정지)
   - Commit: `feat(registry): 57종 requiredCssVars 실측 반영 + 상류 검사 경계 명문화`
 
-- [ ] **step-3 — 배포 + 라이브 실측 (human gate)**
+- [x] **step-3 — 배포 + 라이브 실측 (human gate)**
   - Artifact: 라이브 이식 경로가 실측 선언 위에서 정상 동작하고, 그 수치가 증거로 남는다
   - Files: `evidence/queue-drain/m32-required-css-vars.md` · `changesets/20260806-m32-required-css-vars-measured/README.md` ·
     (CLI 변경이 있었을 때만) `packages/cli/package.json` 0.4.4
@@ -174,6 +174,19 @@ Status: approved (사용자 승인 2026-08-06 "ㄱㄱ" — goal `queue-drain` �
   원인은 ① 파일이 스스로 정의하는 변수 ② Tailwind 내장(`--spacing`) ③ shadcn chart 가 런타임 주입하는
   `--color-<series>`. 셋 다 소비처가 정의할 대상이 아니라 제외 규칙을 넣었다 — `--color-*` 는 테마에 실재하면
   가리키는 변수로 치환(`--color-scrim`→`--scrim`), 아니면 버린다. 커밋 `feat(registry): requiredCssVars 실측 추출`.
+- **step-3 완료 (2026-08-06)** — **human gate 미발동**: 계획의 게이트는 "CLI 출고가 필요해진 경우 npm publish
+  직전"이었고 step-2 상류 실측에서 baseline 이 불필요로 판정돼 출고 자체가 없었다. registry 배포는 push 로,
+  승인 규약상 별도 질문 없이 진행.
+  **전후 대조 (계획 probe 그대로)** — 배포 **전** 빈 vite 킥스타트: 23파일·`20/20 defined`·verify PASS,
+  라이브 자식 asset 선언 합집합 **0개**. push → CF Pages 폴링 **9회(약 4분)** 후 반영(M31 의 2분보다 길었다).
+  배포 **후** 재현: 23파일·`20/20`·verify PASS, 자식 선언 합집합 **10개**
+  (`--background --border --card --card-foreground --foreground --muted --muted-foreground --primary --radius --ring`),
+  전부 블록 선언 20의 **부분집합**.
+  → 개수는 안 변했지만 **전이 경로가 빈 데이터에서 실데이터로 바뀐 것**이 확인됐다. "개수 증가"를 원하는 답으로
+  만들지 않고 그대로 기록한다(계획 probe 의 요구).
+  브랜드 CSS 실물 대조: 정의 **61종**, 블록 요구 20종 **미정의 0**(출력이 아니라 파일에서 확인 —
+  출력은 항상 N/N 이라 미정의를 못 보여준다).
+  evidence `evidence/queue-drain/m32-required-css-vars.md` · changeset `changesets/20260806-m32-required-css-vars-measured/`.
 - **step-2 완료 (2026-08-06)** — 선언 채움 **49종 신규 · 5종 무변경 · 3종 생략**(요구 0).
   기존 5종이 무변경이라는 것은 **블록 3종의 손 선언이 이미 자식 요구의 상위집합**이었다는 뜻이다.
   `registry.json` 의 requiredCssVars 를 제외한 전 필드가 HEAD 와 **완전 동일**(스크립트 대조), 이식 파일
