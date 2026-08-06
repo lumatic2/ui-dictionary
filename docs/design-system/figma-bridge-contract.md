@@ -39,6 +39,8 @@ component tier(`color/component/*`)는 semantic으로의 alias로 `askewly/seman
 
 - **변수 이름 = DTCG 경로 그대로, 점(.)만 슬래시(/)로**: `color.semantic.surface.base` → `color/semantic/surface/base`. 접두 생략·축약 금지 — 에이전트가 코드 토큰명과 Figma 변수명을 문자열 일치로 대조할 수 있어야 한다 (figma-codex-workflow "exact code token names" 규칙).
 - 변수 `description`에 SSOT의 `$description` 요지를 복사한다 (MCP search 신호).
+  - **구현됨 (M35 2026-08-06 — 7월부터 미구현이던 항목).** `$description`이 **없거나 빈 값이면 필드를 생략한다** — 빈 문자열로 덮어쓰면 사람이 Figma에서 적어 둔 설명이 지워진다.
+  - 직렬화 지점에서 U+2028/U+2029를 이스케이프한다. `JSON.stringify`는 이 둘을 날것으로 내보내고, JS 소스로는 합법이지만 `use_figma` 파서가 줄바꿈으로 읽어 SyntaxError를 낸다(M14 실측 함정, M35 픽스처로 재현·폐구).
 
 ### 2.3 타입·값 변환
 
@@ -55,7 +57,9 @@ component tier(`color/component/*`)는 semantic으로의 alias로 `askewly/seman
 
 - **upsert by name**: (collection 이름, 변수 이름) 키로 기존 변수를 찾아 값만 갱신, 없으면 생성. 실행마다 새로 만들지 않는다.
 - **삭제는 관리 대상만**: SSOT에서 사라진 토큰의 변수는 `askewly/*` 컬렉션 안에서만 제거. 다른 컬렉션·사용자가 만든 변수는 절대 건드리지 않는다.
-- 동기화 스크립트는 실행 결과(created/updated/removed 수)를 반환하고, 두 번째 실행이 no-op(0/0/0 또는 updated-only)임을 검증한다 — FB3 DoD.
+- 동기화 스크립트는 실행 결과(created/updated/removed 수)를 반환하고, 두 번째 실행이 no-op(0/0/0 또는 updated-only)임을 검증한다 — FB3 DoD. **기존 변수는 매 실행 `updated`로 계수되므로 `0/0/0`만을 게이트로 걸면 정상 실행이 실패로 판정된다.**
+- **`--no-remove` (M35 2026-08-06)**: 위 삭제를 끄는 스위치. **기본값은 이 절의 규정대로 삭제**이고, 스위치를 준 페이로드는 `v.remove()`를 하나도 포함하지 않으며 남은 orphan을 목록으로만 보고한다. 삭제 여부를 사람이 고르는 자리를 만들되, "삭제 안 함"으로 합의하고 코드는 삭제하는 어긋남을 구조적으로 막는다.
+- **읽기 전용 모드 `--read` (M35 2026-08-06)**: `askewly/*` 컬렉션의 현재 변수(이름·타입·description·scopes·모드별 값)를 뜨는 페이로드를 만든다. 쓰기 호출을 하나도 포함하지 않으며, upsert가 값만 갱신해 되돌리기 어려운 만큼 **쓰기 전 스냅숏의 근거**로 쓴다.
 
 ## 3. Figma → Askewly (돌아오는 방향 — 두 lane)
 

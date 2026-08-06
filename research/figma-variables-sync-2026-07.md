@@ -52,3 +52,8 @@ SSOT 드리프트(M2 emphasis·status + M6 타이포 스케일 등) 반영 재�
 - 재동기화 절차: SSOT 변경 → 1~2번 재실행 (upsert라 안전, `askewly/*` 컬렉션 밖은 절대 안 건드림)
 - typography/dimension은 primitive 컬렉션에 FLOAT/STRING으로 들어감 — Figma 쪽 number/string 변수로 spacing·radius·font-size 바인딩 가능
 - 후속 후보(horizon 밖): figma-codex-workflow 스킬 갱신 3건(계약 §5), Figma→코드 역방향 실증
+
+## Changelog
+
+- **2026-08-06 (M35)**: 생성기 3건 추가. ① 계약 §2.2 변수 `description` 복사 구현(7월부터 미구현) — SSOT `$description` 이 없거나 빈 값이면 **필드를 생략**해 사람이 Figma 에 적어 둔 설명을 덮지 않는다. 실측: primitive 74종 중 5종만 description 보유(69종 생략), 빈 문자열 0건. ② `--read` — `askewly/*` 의 현재 변수를 뜨는 **쓰기 0** 페이로드(`setValueForMode`·`remove`·`createVariable`·`renameMode`·`addMode` 전부 0건 확인). upsert 가 되돌리기 어려운 만큼 쓰기 전 스냅숏 근거로 쓴다. ③ `--no-remove` — 계약 §2.4 의 orphan 삭제를 끄는 스위치(기본값은 계약대로 삭제). 켜면 페이로드에 `v.remove()` 0건, orphan 은 목록 보고만.
+  - **직렬화 함정 폐구**: `JSON.stringify` 가 U+2028/U+2029 를 날것으로 내보낸다 — JS 소스로는 합법이나 `use_figma` 파서가 줄바꿈으로 읽어 SyntaxError(M14 실측). 직렬화 지점에서 이스케이프하도록 고쳤고, `$description` 에 따옴표·LF·U+2028·U+2029·백슬래시를 넣은 픽스처로 **재현 → 폐구 → 값 무손실 복원**까지 확인했다.
