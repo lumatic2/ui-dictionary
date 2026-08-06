@@ -876,3 +876,9 @@ plan doc: `archive/plans/2026-07-21-eu*.md` · 증거: `evidence/editor-legibili
   - Completed: 2026-08-06
   - Result: 정본 덱 통합 실증 — 사용자 관측 6라운드 PASS, 발표 게이트 명문화
   - Evidence: evidence/html-upgrade/hu4-live-proof.md
+
+### 2026-08
+- M31 - M31 — 스크림 토큰 신설 + 전체면 반전 4곳
+  - Completed: 2026-08-06
+  - Result: 스크림 semantic 토큰 신설 — 백드롭 8곳·전체면 반전 4곳·이식 경로(CLI 0.4.3·registry) 배선, 사용자 관측 통과
+  - Evidence: evidence/dark-inversion-cleanup/m31-scrim-token.md

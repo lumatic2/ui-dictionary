@@ -54,7 +54,7 @@ Status: approved (사용자 승인 2026-08-04 "ㄱㄱ" — 결정 1 flat 케이�
   - Failure probe: 워크플로우 단계가 문서로만 있고 실발화 안 되는 위험(만들었다≠호출된다) — step-3 E2E 가 이 단계를 그대로 밟아 실발화를 증명(관측 기록에 단계 준수 여부 명시).
   - Commit: changeset (README 절: step-2) + custom-skills 커밋.
 
-- [ ] **step-3 — 실프로젝트 2케이스 E2E + 관측 (human gate) + 기록**
+- [x] **step-3 — 실프로젝트 2케이스 E2E + 관측 (human gate) + 기록**
   - Artifact: 결정 1 의 2케이스로 step-2 배선 절차를 그대로 밟아 프리뷰 덱 생성(scratchpad — theme-preview 픽스처 사본에 각 theme.json 주입) → 실브라우저 렌더 + 스크린샷(케이스별 1장 이상) → **사용자 관측**(기각 시 step-1 파생 규칙 조정 왕복) → `evidence/media-unification/m17-brand-deck-wiring.md`(케이스·스크린샷·판정) + slide-spec §5 구현 형태 정정 기록(범용 배선 신설·기존 테마 존치 — 사용자 정정 인용) + llms 재생성.
   - Files: write scratchpad(프리뷰 2본), evidence/media-unification/m17-brand-deck-wiring.md. edit docs/design-system/slide-spec.md. regen llms.
   - Risk: 기계적 (관측 산출물 scratchpad — human gate: 사용자 부재 시 스크린샷 준비 후 blocked 정지)
@@ -85,5 +85,7 @@ Status: approved (사용자 승인 2026-08-04 "ㄱㄱ" — 결정 1 flat 케이�
 
 - 2026-08-04 작성 (1차: askewly 정본 교체 → 사용자 정정으로 기각).
 - 2026-08-04 1차 재작성 (4번째 canonical 테마 신설안) → 사용자 정정 2 ("프로젝트마다 각자의 DESIGN.md 를 찾아 그걸 토대로") 로 기각.
+- 2026-08-04 step-2 완료 — SKILL.md §6 브랜드 탐지 단계 + style-system 경계 정정 + 재배포(diff 0). custom-skills `55890eb`.
+- 2026-08-04 step-3 완료 — 관측 덱 3본 빌드(생성 2 + 비교 1), Artifact 비교 페이지 제시, **사용자 관측 PASS 2케이스**("좋아"). evidence + slide-spec §5·§6 정정 + llms 재생성(check-llms-sync PASS). 커밋 `5cb8025`.
 - 2026-08-04 step-1 완료 — 변환기 확장(3-tier·fallback·대비 자기검사·self-test 6/6), 실물 2케이스 변환 PASS. failure probe 실현: askew-app 은 frontmatter 없는 표 기반 → **flat 관측 케이스 3d-repolis-portfolio 로 교체**(probe 예정 대응). custom-skills `487bfea`.
 - 2026-08-04 2차 재작성 — 범용 DESIGN.md→테마 배선으로 전면 개편. 실측 보강: 프로젝트 DESIGN.md 20개+ 전부 flat 양식·수동 경로 기존재·갭 4(탐지 배선·3-tier·경계 문구·실증 0). fresh 검증자 1차 결과 중 유효 항목 승계(pathToFileURL·customThemeErrors 실재·픽스처 template 교체 필요).
