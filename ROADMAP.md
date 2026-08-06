@@ -1,16 +1,51 @@
 # ROADMAP
 
 > Last updated: 2026-08-06
-> Status: **2026-08-06 goal `dark-inversion-cleanup` 완주 (M31).** 다크에서 밝아지던 모달 백드롭 8곳(7파일)과 흰 판때기 4곳을 semantic 토큰 `surface.scrim` 신설로 정리했다 — 토큰이 CLI·registry 까지 타고 `0.4.3` 출고. 관측이 결함 1건을 잡았다(스크림이 다크 배경과 같은 값이라 **무동작**, 기계 게이트는 전건 통과) → 순수 검정으로 정정. `requiredCssVars` 를 component tier 까지 읽도록 확장해 검사 구멍도 닫았다. **active goal 0 — 다음은 `/harness-plan`.** 남은 큐: 『인터랙티브 웹 애니메이션』 책 스터디(사용자 주도) · D2 Presenton 벤치 · Around 재판정 · Figma 후속 3건.
+> Status: **2026-08-06 goal `queue-drain` 착수 (M32~M35 일괄 승인).** 이월 큐 4건을 비운다 — 이식 계약 실측화(M32) · Presenton 벤치(M33) · Around 재판정(M34) · Figma 후속 3건(M35). 직전: goal `dark-inversion-cleanup` 완주 (M31). 큐 잔여는 『인터랙티브 웹 애니메이션』 책 스터디(사용자 주도 — 별도 워크트리).
 > North star: Build Askewly Design as both a public reference website and an agent-usable implementation system.
 > line budget: <=150
 
 ## Current Goal
 
-<!-- harness:goal id="dark-inversion-cleanup" status="completed" -->
-Goal: 다크에서 **밝아지는 모달 백드롭**과 **흰 판때기**를 없앤다 — 파일별 `dark:` 산포가 아니라 semantic 토큰 `scrim` 1개를 SSOT 에 신설하고, 그 토큰이 CLI·registry 를 타고 이식 경로까지 함께 가게 한다. M29 이월분에 **남의 레포로 이식되는 asset 2종**이 들어 있어서 이건 화면 수리가 아니라 이식 표면의 결함이다. closed 2026-08-06 — M31 단독(스크림 토큰 신설·0.4.3 출고·라이브 실증, 사용자 관측 통과). Details: `docs/reports/2026-08-06-m31-dark-inversion-cleanup.md`.
+<!-- harness:goal id="queue-drain" status="active" -->
+Goal: 이월 큐 4건을 비운다. 서로 표면이 겹치지 않는 부채라 한 goal 아래 milestone 4개로 묶었다 — ① 이식 계약 `requiredCssVars` 를 손 선언에서 **실측**으로(M32) ② Presenton 정밀 벤치(M33) ③ Around 재판정(M34) ④ Figma 브리지 후속 3건(M35). 공통 성질은 "닫지 않으면 조용히 낡는 것들"이다 — 검사 구멍·미구현 계약·유예된 판정·낡은 동기화.
 
-## Active Milestones — dark-inversion-cleanup
+## Active Milestones — queue-drain
+
+<!-- harness:milestone id="M32" status="active" priority="P1" -->
+### M32 — `requiredCssVars` 를 손 선언에서 실측으로
+- DoD: 선언이 이식 파일 실측보다 좁으면 **빌드가 실패**한다(블록·비블록 양 경로). 57종이 실측 선언을 갖고, 전이 수집이 테스트로 발화하며, 라이브 킥스타트의 요구 변수가 전건 정의된다. 상류 shadcn 은 검사에 편입되거나 경계로 명문화된다. 이식 파일 내용 무변경.
+- Gap: `requiredCssVars` 가 전부 수작업이라 57종 중 **5종**만 선언 보유 — 승계 계약 ④("전이적으로 실측해 선언과 대조")의 실측 항이 없다
+- Scale: steps=3 (추출·게이트 / 57종 채우기·상류 판정·발화 테스트 / 배포·라이브 실측); surfaces: generate-registry·registry.json·kickstart; capability: 이식처가 색을 잃지 않는다는 기계 보증
+- Plan: plans/2026-08-06-m32-required-css-vars-measured.md
+- Status: [ ]
+
+<!-- harness:milestone id="M33" status="pending" priority="P2" -->
+### M33 — Presenton 정밀 벤치마크
+- DoD: 레포 실사(SHA·라이선스·파이프라인) + 실물 산출물 1편 + `/pt` 항목별 대조표(양쪽 출처 필수) + A/B/C 판정 + 후속 finding 등록. 유료 크리덴셜 미사용, 실구동 불가 시 partial 명시.
+- Gap: `research/2026-07-31-html-upgrade-goal-refs.md` §4-D2 로 등록된 뒤 미착수 — 우리와 목적이 가장 가까운 최근 진입자를 추정으로만 알고 있다
+- Scale: steps=2 (실사·산출물 / 대조표·판정); surfaces: research 문서·docs/findings.md; capability: 덱 트랙의 위치를 실물로 안다
+- Plan: plans/2026-08-06-m33-presenton-bench.md
+- Status: [ ]
+
+<!-- harness:milestone id="M34" status="pending" priority="P2" -->
+### M34 — Around 재판정 (+ A 면 흡수)
+- DoD: 판정이 `absorption-criteria` 에 날짜·근거와 함께 갱신되고 ledger 1행. A 면 지정 2건(customizer 원리 → knowledge, 패키지 클레임 → `docs/PRD.md`)이 우리 규칙으로 존재하고 llms 에 실린다. B·C 면 흡수 0건.
+- Gap: M11 이 "이식 축 미개방"을 이유로 C 보류했는데, M26~M31 로 그 축이 열렸다 — 재판정 조건이 충족된 채 방치돼 있다
+- Scale: steps=2 (재판정 / 반영·흡수); surfaces: absorption-criteria·ledger·knowledge·PRD; capability: 패키징 원리의 정본화
+- Plan: plans/2026-08-06-m34-around-reverdict.md
+- Status: [ ]
+
+<!-- harness:milestone id="M35" status="pending" priority="P1" -->
+### M35 — Figma 브리지 후속 3건
+- DoD: 스냅숏 구간 분할(기본 호출 무변경) + **라이브 절단 해소 실증**, 계약 §2.2 `description` 복사 + 읽기(dry-run) 모드 + `--no-remove`, 드리프트 실측→승인→반영 후 2차 실행이 `0/0/0` 또는 updated-only, 사람이 실파일 표본 3종 확인.
+- Gap: M14 가 손 3분할로 우회한 20kb 절단이 그대로고, §2.2 description 은 7월부터 미구현이며, M31 신설 토큰이 Figma 에 안 갔다
+- Scale: steps=3 (청크 / description·dry-run·no-remove / 라이브 동기화·회수); surfaces: figma-push-snapshot·generate-figma-variables-sync·bridge-contract; capability: 왕복이 다시 최신
+- Plan: plans/2026-08-06-m35-figma-followups.md
+- Status: [ ]
+
+<!-- harness:goal-archive19 id="dark-inversion-cleanup" status="completed" -->
+Goal: 다크에서 **밝아지는 모달 백드롭**과 **흰 판때기**를 없앤다 — 파일별 `dark:` 산포가 아니라 semantic 토큰 `scrim` 1개를 SSOT 에 신설하고, 그 토큰이 CLI·registry 를 타고 이식 경로까지 함께 가게 한다. M29 이월분에 **남의 레포로 이식되는 asset 2종**이 들어 있어서 이건 화면 수리가 아니라 이식 표면의 결함이다. closed 2026-08-06 — M31 단독(스크림 토큰 신설·0.4.3 출고·라이브 실증, 사용자 관측 통과). Details: `docs/reports/2026-08-06-m31-dark-inversion-cleanup.md`.
 
 ## Active Milestones — docs-block-and-theme-derive
 
@@ -19,7 +54,7 @@ Goal: 다크에서 **밝아지는 모달 백드롭**과 **흰 판때기**를 없
 - DoD: `/pt` 의 4번째 선택지 `custom` 이 대상 레포 `DESIGN.md` 로부터 라이트·다크 두 얼굴을 만들고, 실덱 다크 렌더가 사용자 관측을 통과한다. **canonical 3종 무변경**, 모드 미지정 호출(M17 경로) 산출 동일, 다크 정보 없는 프로젝트에는 조용한 폴백 없이 명시 실패.
 - Gap: `DESIGN.md` 의 다크 오버라이드 37행이 실려 있는데 변환기가 `themes` 를 읽지 않음(grep 0건) — 브랜드 덱이 항상 라이트로만 나온다
 - Scale: steps=2 (변환기 다크 판독+`--mode` · 스킬 배선+관측+배포); surfaces: custom-skills promoted/pt; capability: 내 브랜드의 다크 덱
-- Plan: plans/2026-08-05-m30-custom-dark-face.md
+- Plan: archive/plans/2026-08-05-m30-custom-dark-face.md
 - Status: [x]
 
 <!-- harness:goal-archive18 id="cli-polish-041" status="completed" -->
@@ -27,47 +62,6 @@ Goal: CLI 0.4.1 폴리싱 — 킥스타트 handoff 가 실제 프로젝트와 �
 - Completed at: 2026-08-06
 - Evidence: evidence/docs-block-and-theme-derive/m30-custom-dark-face.md
 - Summary: custom 테마의 다크 판본 — --mode light|dark 로 레포 브랜드의 두 얼굴, canonical 3종 무변경, self-test 13/13, 사용자 관측 통과(민트 확정)
-## Active Milestones — cli-polish-041
-## Active Milestones — second-block-marketing
-
-## Active Milestones — harvest-batch4-release
-
-## Active Milestones — harvest-batch3
-
-## Active Milestones — harvest-deep
-
-## Active Milestones — harvest
-
-## Active Milestones — reusable-composition
-
-## Active Milestones — media-unification
-
-## Active Milestones — figma-return-path
-
-## Active Milestones — usage-and-site-surfacing
-
-## Active Milestones — reference-diversification-2
-
-## Active Milestones — reference-diversification
-
-## Active Milestones — finding-cleanup
-
-## Active Milestones — dark-carryover
-
-## Completed Milestones — deck-quality
-
-## Active Milestones — html-upgrade
-
-## Active Milestones — pptx-bespoke
-
-## Active Milestones — slide-pipeline-upgrade
-
-## Active Milestones — slide-expressive
-
-## Active Milestones — slide-methodology
-
-## Active Milestones — carryover-maintenance
-
 ## Active Milestones — site-polish
 
 <!-- harness:milestone id="QA1" status="skipped" priority="P1" evidence="evidence/site-polish/qa1-copy-language.md" -->
@@ -81,10 +75,6 @@ Goal: CLI 0.4.1 폴리싱 — 킥스타트 handoff 가 실제 프로젝트와 �
 - DoD: toolshelf 비주얼 임팩트 카드 15건이 표현 스택 4티어에 배치되고 채택/보류/제외 판정(TC1 taste 흡수 계약 준수, 카드별 출처+사유)이 결정표에 반영되며 `shelf used` 기록이 남는다. + llms 배선 finding 해소(knowledge 3문서 전부 등재).
 - Plan: archive/plans/2026-07-28-vi7-toolshelf-placement.md
 - Status: [x]
-
-## Active Milestones — dark-mode
-
-## Active Milestones — site-quality
 
 ## Active Milestones — ui-encyclopedia
 
