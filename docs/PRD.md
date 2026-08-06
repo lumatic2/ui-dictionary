@@ -91,6 +91,24 @@ The public website structure is defined in `docs/design-system/site-blueprint.md
 - Future paid features have a clear path: copyable code, downloadable assets, and reusable implementation packs.
 - A representative AskewlyDesign project can compose, directly edit, agent-revise, diff, apply, and verify a responsive React UI without canvas/browser drift.
 
+## 제품 약속 (2026-08-06 M34 — 받는 사람에게 무엇이 따라오는가)
+
+절차 안내가 아니라 **약속**이다. 킥스타트가 인쇄하는 next steps 는 "어떻게 하는가"이고, 아래는 "무엇이 보장되는가"다.
+규칙의 근거는 `knowledge/customizer-and-packaging.md` §5.
+
+- **스택** — Vite/React/TypeScript + Tailwind v4 위에서 돈다. 라우터·상태관리·폼 라이브러리는 강요하지 않는다
+  (블록은 라우팅을 일부러 싣지 않는다 — `block-contract.md` §3).
+- **자산** — 원커맨드로 들어오는 것: 브랜드 토큰 층 1파일(라이트·다크 양면 + Tailwind 유틸 매핑), 선택한 블록의
+  이식 파일 전건, 그 블록이 의존하는 asset·shadcn primitive, `cn()` 유틸, 그리고 프로젝트용 `DESIGN.md`.
+- **검증** — 두 가지가 기계로 보장된다: ① 이식 코드가 색 리터럴 없이 의미 토큰만 쓴다(`askewly-design verify`)
+  ② 이식물이 실제로 쓰는 CSS 변수가 토큰 층에 전부 정의돼 있다(`requiredCssVars` 실측 대조 — `block-contract.md` §4).
+  보장하지 않는 것: 최종 화면의 미적 완성도. 이식 직후의 얼굴은 **우리 기본값**이고, 프로젝트 토큰으로
+  다시 입히는 것은 받는 쪽 일이다(restyle 의무).
+- **왕복** — 토큰은 Figma variables 와 이름을 보존한 채 오간다(`docs/design-system/figma-bridge-contract.md`).
+  코드가 정본이고 Figma 는 소비처다.
+
+여기 넣지 않는 것: 아직 실증되지 않은 능력, 결제·계정·라이선스 강제(「하지 않는 것」 규약).
+
 ## 포지셔닝 (2026-07-12 사용자 제안 · 2026-07-22 OBJECTIVE.md 에서 이관, 문구 원문 그대로)
 
 Claude와 Codex는 이미 "시니어 개발자"다. Askewly Design은 그 시니어 개발자들이 **시니어 디자이너처럼 일하게** 만든다 — 토큰 SSOT, recipe, 프로토콜, 안티패턴 가이드는 전부 코딩 능력이 아니라 디자인 판단력을 주입하는 장치다. 사람용 레퍼런스 사이트(보는 눈)와 에이전트 시스템(판단 주입)은 이 한 문장의 양날개다. 대외 카피는 채용 대체 뉘앙스를 피해 "에이전트가 디자인 감각을 갖게 된다" 계열로 다듬는다 (예: "Your coding agent already writes senior-level code. Askewly Design makes it design like one, too.").

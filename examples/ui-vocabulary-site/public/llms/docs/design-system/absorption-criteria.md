@@ -48,7 +48,7 @@ Audience: 에이전트 + 시스템 관리자.
 | 3d-spatial-landing-reference-pack | **B** | 공간형 랜딩 8사이트 — `knowledge/motion-references.md` §공간형 랜딩에 링크 반영(VI6) (VI7) |
 | 60fps.design · landing.love | **B** | 큐레이션 갤러리 — 기법이 아닌 관찰 소스, motion-references 북마크 (VI7) |
 | remotion | **B** | 사전 렌더 영상 매체 — 화면 티어 비대상, motion-references §영상 매체(KG 노드 링크)로 커버 (VI7) |
-| Around/Createx (템플릿 카탈로그·패키징) | **C** | 이식물 = 패키징·customizer 원리인데 소비처("이식 가능한 제품" 축)가 milestone 미개방 — 사용자 판정 "이르다"(2026-08-01). 원리는 `research/around-template-system-capture.md` 에 동결(재서술 = 열화 복제). 이식/패키징 milestone active 시 A 재검 (M11) |
+| Around/Createx (템플릿 카탈로그·패키징) | **A** (2026-08-06 재판정, 구 C) | 이식물 = 패키징·customizer 원리. C 사유(소비처 미개방)가 M26~M32 로 해소돼 재판정 — 킥스타트가 톤·강조색·타이포 3질문으로 브랜드 CSS 61종을 생성하고 톤 프리셋이 radius 까지 묶는다(코드 실측). 흡수 = 새 기능이 아니라 **규칙 명문화**: `knowledge/customizer-and-packaging.md` + `docs/PRD.md` 「제품 약속」. 원 캡처 `research/around-template-system-capture.md` 는 동결·링크 참조. 판정서 `research/2026-08-06-m34-around-reverdict.md` (M34) |
 | shadcn 공식 blocks `dashboard-01` | **A** | MIT 소스 흡수 — saas-app-shell 블록 베이스로 이식(+우리 asset 보강·restyle 의무·파일 헤더 attribution). 이미 registry:block 동형 배포라 이식 비용 최소. 근거: `research/2026-08-04-m18-block-absorption-survey.md` (M18) |
 | satnaing/shadcn-admin · Tremor · Next 계열 스타터 | **B** | 라우터/프레임워크/자체 컴포넌트 체계 결합으로 registry 단위 이식 불가 — 구조 참고 링크만 (M18 실사) |
 | tailark/blocks · Launch UI | **B** | MIT 이나 Next.js 결합(tailark: next/link 195·next/image 109 실측)으로 Vite 소비 경로와 충돌 + 자체 마케팅 asset(라이브 harvest 산)이 품질 우위 — marketing-landing 블록은 자체 조합, pricing/FAQ/footer 구조 참고 링크만. 근거: `research/2026-08-04-m27-marketing-block-absorption-survey.md` (M27) |
