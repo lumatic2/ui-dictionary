@@ -187,7 +187,7 @@ asset 2종이 들어 있다.** 지금 그 asset 을 받는 사람은 다크에�
   - Risk: 위험 (기계 게이트 통과가 완료가 아니다 — M29 에서 전 게이트 통과 상태를 실표면 구동만이 잡았다)
   - Commit: `docs(m31): 통합 E2E + 관측 evidence`
 
-- [ ] **step-6 — 출고·배포 + 라이브 재현 (human gate)**
+- [x] **step-6 — 출고·배포 + 라이브 재현 (human gate)**
   - Artifact: 라이브에서 이식처가 나빠지지 않은 채 고쳐진다
   - Files: `packages/cli/package.json`(0.4.3) · `changesets/20260806-m31-dark-inversion-cleanup/README.md`
   - Dependencies: step-5
@@ -265,3 +265,14 @@ C2 작은 컨트롤 · C3 · 불가침 2건 · 블록 3종은 무변경.
   ⚠ 관측 도중 드러난 운영 결함 2건(보고에는 남김): ① dev 서버가 IPv6 에만 바인딩돼 `127.0.0.1` 접속이
   거부됐다(사용자 화면 공백의 원인) ② `auth-gate-modal` 은 사이트에 렌더되지 않는 registry 전용 asset 인데
   관측 대상으로 안내했다 — step-6 라이브 재현으로 이동.
+- **step-6 완료 (2026-08-06, 사용자 배포 승인 "ㄱㄱ")** — 순서 고정대로 CLI 먼저, registry 나중.
+  `0.4.3` 출고 [run 31073069134] 전 단계 ✓(게이트·pack·OIDC·전파·레포 밖 실증) · push 9커밋 → CF Pages.
+  라이브 반영은 즉시가 아니어서 폴링 4회(약 2분) 후 확인됐다.
+  **실측**: 빈 vite 킥스타트 산출 `askewly-brand.css` 에 `--scrim: oklch(0 0 0)`(:root)·`--color-scrim`(@theme) 실림 ·
+  라이브 asset 2종이 `bg-scrim` 사용·구 스크림 잔존 0 · **요구 변수 7개/6개 전부 브랜드 CSS 에 정의됨(미정의 0)**.
+  ⚠ **계획의 E2E 절차가 틀렸다** — `auth-gate-modal` 을 `--block` 으로 이식하려 했으나 CLI 가
+  `"not a block-tier asset (meta.tier missing)"` 로 **정상 거부**한다(component tier 는 shadcn CLI 경로).
+  그래서 "빈 vite → auth-gate-modal 받아 다크 확인"은 성립하지 않고, 위의 라이브 대조로 대체했다.
+  ⚠ **전이 판독은 구조적으로 닫혔으나 오늘은 발화하지 않는다** — `marketing-landing` 이 askewly asset
+  **8종**을 실제로 끌어오므로 경로 자체는 라이브에서 돌지만, 그 8종 중 `requiredCssVars` 를 선언한 것이
+  아직 없어 합집합이 블록 자신의 20개와 같다. 두 asset 의 선언은 shadcn CLI 직접 소비와 향후 블록 조합에서 값을 낸다.
