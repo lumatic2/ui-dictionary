@@ -105,7 +105,7 @@ Status: approved (사용자 승인 2026-08-06 "ㄱㄱ" — goal `queue-drain` �
   - Risk: 기계적 (정적 추출은 동적 클래스 조합을 못 잡는다 — 한계를 self-test 와 계약 문서에 고정)
   - Commit: `feat(registry): requiredCssVars 실측 추출 + 선언 대조 게이트`
 
-- [ ] **step-2 — 57종 선언 채우기 + 상류 경계 판정 + 전이 발화 테스트**
+- [x] **step-2 — 57종 선언 채우기 + 상류 경계 판정 + 전이 발화 테스트**
   - Artifact: 선언이 실측과 일치하고, 전이 수집이 코드로 발화함이 테스트로 증명된다
   - Files: `examples/ui-vocabulary-site/registry.json` · `public/r/*.json`(재생성) ·
     `docs/design-system/block-contract.md` **§4 "Restyle obligation — required CSS variables"**(실측 규약·정적 추출 한계·**상류 shadcn 검사 경계**) ·
@@ -174,4 +174,24 @@ Status: approved (사용자 승인 2026-08-06 "ㄱㄱ" — goal `queue-drain` �
   원인은 ① 파일이 스스로 정의하는 변수 ② Tailwind 내장(`--spacing`) ③ shadcn chart 가 런타임 주입하는
   `--color-<series>`. 셋 다 소비처가 정의할 대상이 아니라 제외 규칙을 넣었다 — `--color-*` 는 테마에 실재하면
   가리키는 변수로 치환(`--color-scrim`→`--scrim`), 아니면 버린다. 커밋 `feat(registry): requiredCssVars 실측 추출`.
+- **step-2 완료 (2026-08-06)** — 선언 채움 **49종 신규 · 5종 무변경 · 3종 생략**(요구 0).
+  기존 5종이 무변경이라는 것은 **블록 3종의 손 선언이 이미 자식 요구의 상위집합**이었다는 뜻이다.
+  `registry.json` 의 requiredCssVars 를 제외한 전 필드가 HEAD 와 **완전 동일**(스크립트 대조), 이식 파일
+  content 무변경 — diff 는 meta 에만.
+  **전이 발화 증명**: vitest 픽스처(자식만 `--child-only` 선언)로 합집합에 들어오는 것과, 자식 선언을 비우면
+  사라지는 것을 양쪽 다 고정. **89/89**(83 → 신규 6).
+  **라이브 실측 기록**: `marketing-landing` 합집합 = **20 유지**(검증자 예측대로 자식 요구가 블록 선언의
+  부분집합 — asset 8종이 쓰는 변수는 `--background --card --foreground --muted --primary` 5개).
+  **상류 경계 판정 (D3 분기 미발동)**: 우리가 끌어오는 upstream primitive **21종**을 같은 추출기로 재니
+  **27종** 요구, 그중 **25종을 `renderBrandCss` 가 전부 정의**하고 나머지 2종은 Radix 가 런타임에 쓰는
+  `--radix-select-trigger-height/width` 다 → **구멍 아님, 경계**로 §4.2 에 명문화 + 테스트 고정.
+  baseline 추가·`0.4.4` 출고 **불필요**.
+  ⚠ **결함 1건 발견(범위 밖이라 finding)** — `color-palette-generator` 가 `ring-askewly-violet` 으로
+  **사이트 전용 브랜드 토큰**을 요구한다. 소비처엔 그 변수가 없어 포커스 링이 투명해진다. 이식 파일 내용
+  변경은 M32 제외 범위라 고치지 않고, 테스트로 gap 을 고정 + finding 등록.
+  ⚠ **추출기 2차 오검출 정정** — `style.setProperty("--cursor-x", …)` 로 주입하는 변수를 자기정의로 못 봐
+  `cursor-proximity-glow` 가 `--cursor-x/y` 를 요구했다. setProperty 패턴 추가 후 3개 → 1개.
+  ⚠ 레포 루트 `npx vitest run` 은 175건 실패하는데 **전부 동결 표면**(`apps/agent-design`·`canvas-core/dist`·
+  `template-core/dist`·`glass-landing`)의 기존 실패로, 이번 변경과 무관하다. 판정 기준은 `packages/cli` 스위트.
+  커밋 `feat(registry): 57종 requiredCssVars 실측 반영`.
 - 2026-08-06 계획 검증자 반영 — 치명 4건(선언 수 5종 정정 · ⓑ 증명 방식 전환 · 비블록 경로 게이트 · llms 재생성 장벽) + 경미 5건(§4 위치·self-test 관례·evidence 파일·출력 해석·vitest 신호).
