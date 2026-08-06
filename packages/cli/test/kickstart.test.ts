@@ -2,7 +2,7 @@ import { mkdtempSync, mkdirSync, writeFileSync } from "node:fs"
 import { tmpdir } from "node:os"
 import path from "node:path"
 import { describe, expect, it } from "vitest"
-import { aliasStep, blockExportName, detectPathAlias, importedPackages, renderBrandCss } from "../src/kickstart.js"
+import { aliasStep, blockExportName, detectPathAlias, importedPackages, missingRequiredVars, renderBrandCss } from "../src/kickstart.js"
 
 // M28 step-2. The registry's declared `dependencies` is a lower bound —
 // shadcn's button.json declares only `radix-ui` while button.tsx imports
@@ -182,5 +182,28 @@ describe("detectPathAlias", () => {
     // No new npm dependency is recommended — the printed `npm i` list stays
     // "what the transplanted files import" (M28 contract).
     expect(step).not.toContain("vite-tsconfig-paths")
+  })
+})
+
+describe("scrim in the transplanted token layer", () => {
+  const css = renderBrandCss({ tone: "minimal-clean", color: "teal", type: "system-sans" })
+
+  it("defines --scrim once, outside the light/dark pair", () => {
+    // A scrim means "press the background down". Keyed off --foreground it
+    // inverts in dark mode and the backdrop gets brighter than the page.
+    expect(css.match(/--scrim:/g)).toHaveLength(1)
+    const root = css.slice(css.indexOf(":root {"), css.indexOf(".dark {"))
+    expect(root).toContain("--scrim:")
+  })
+
+  it("maps --scrim into @theme inline so bg-scrim is actually generated", () => {
+    // Measured, not assumed: without this line Tailwind silently drops the
+    // utility and the build still exits 0 — the backdrop just goes transparent.
+    expect(css).toContain("--color-scrim: var(--scrim);")
+  })
+
+  it("is caught by the required-var check when the token layer omits it", () => {
+    expect(missingRequiredVars(css, ["--scrim"])).toEqual([])
+    expect(missingRequiredVars(css.replace(/\s*--scrim:[^;]+;/, ""), ["--scrim"])).toEqual(["--scrim"])
   })
 })

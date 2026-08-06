@@ -263,6 +263,13 @@ export function renderBrandCss(answers: BriefAnswers): string {
 :root {
   font-family: ${font};
 ${vars(c.light, a.light, a.onLight, a.ring, "light")}
+  /* Scrim — the dimming layer behind modals, sheets and lightboxes. Declared
+   * once, outside the light/dark pair, on purpose: a scrim means "press the
+   * background down", so it must read dark in BOTH modes. Keying it off
+   * \`--foreground\` (the obvious-looking choice) inverts it in dark mode and the
+   * backdrop gets *brighter* than the page behind it. Consumers own the
+   * opacity: bg-scrim/50, bg-scrim/72. */
+  --scrim: ${c.dark.bg};
 }
 
 .dark {
@@ -289,6 +296,7 @@ ${vars(c.dark, a.dark, a.onDark, a.darkRing, "dark")}
   --color-border: var(--border);
   --color-input: var(--input);
   --color-ring: var(--ring);
+  --color-scrim: var(--scrim);
   --color-sidebar: var(--sidebar);
   --color-sidebar-foreground: var(--sidebar-foreground);
   --color-sidebar-primary: var(--sidebar-primary);
@@ -546,6 +554,7 @@ export async function transplantBlock(block: RegistryItem, targetDir: string): P
   const written: string[] = []
   const npmDeps = new Set<string>(["clsx", "tailwind-merge"])
   const visited = new Set<string>()
+  const requiredVars = new Set<string>()
 
   function write(file: RegistryFile): void {
     const dest = destFor(file, srcRoot)
@@ -558,6 +567,12 @@ export async function transplantBlock(block: RegistryItem, targetDir: string): P
   }
 
   async function resolve(item: RegistryItem): Promise<void> {
+    // Required CSS vars are collected transitively, not just off the top-level
+    // block. A component-tier asset pulled in as a registryDependency defines
+    // its own token needs, and reading only the block's meta let those slip
+    // through unchecked — the check passed while the transplanted asset lost
+    // its color (block-contract §8-5, carried contract ④).
+    for (const name of item.meta?.requiredCssVars ?? []) requiredVars.add(name)
     for (const dep of item.dependencies ?? []) npmDeps.add(dep.split("@").slice(0, dep.startsWith("@") ? 2 : 1).join("@"))
     for (const ref of item.registryDependencies ?? []) {
       const url = ref.startsWith("http") ? ref : `${SHADCN_BASE}/${ref}.json`
@@ -581,7 +596,7 @@ export async function transplantBlock(block: RegistryItem, targetDir: string): P
     written.push(utils)
   }
 
-  return { written, npmDeps, requiredCssVars: block.meta?.requiredCssVars ?? [] }
+  return { written, npmDeps, requiredCssVars: [...requiredVars] }
 }
 
 // ---------------------------------------------------------------------------
