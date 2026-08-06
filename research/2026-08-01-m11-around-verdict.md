@@ -21,3 +21,8 @@ Milestone: M11 · Around 흡수 판정 (plan: `plans/2026-08-01-m11-around-catal
 
 - `docs/design-system/absorption-criteria.md` 실측 표에 Around 행 추가: 판정 C, 근거 = 수요 미실증(이식 축 미개방·사용자 판정 2026-08-01), 재판정 조건 명시 → llms 재생성.
 - ledger 1행: source=`around (t2)`, promoted 없음(판정 기록), 검증은 check-llms-sync + 문서 lint 범위(정본 데이터 무변경 — 생략 사유 명시).
+
+---
+
+> **2026-08-06 재판정: A** — 이식 축이 M26~M32 로 열려 조건이 충족됐다.
+> record 는 동결이므로 이 문서 본문은 고치지 않는다. 새 판정서: `research/2026-08-06-m34-around-reverdict.md` (M34).
