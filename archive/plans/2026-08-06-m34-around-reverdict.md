@@ -86,7 +86,7 @@ Around 의 이식물은 컴포넌트가 아니라 **"많은 표면을 하나의 
 
 ## Step 트리
 
-- [ ] **step-1 — 재판정**
+- [x] **step-1 — 재판정**
   - Artifact: A/B/C 판정과 근거가 문서로 확정된다
   - Files: `research/2026-08-06-m34-around-reverdict.md`
   - Dependencies: 없음
@@ -98,7 +98,7 @@ Around 의 이식물은 컴포넌트가 아니라 **"많은 표면을 하나의 
   - Risk: 위험 (이번 승인이 "흡수까지"라 A 로 기울 편향이 있다 — C 조기 종료 경로를 명시해 둔다)
   - Commit: `docs(research): Around 재판정 (M34 step-1)`
 
-- [ ] **step-2 — 판정 반영 (A 면 흡수)**
+- [x] **step-2 — 판정 반영 (A 면 흡수)**
   - Artifact: 판정이 정본 표·장부에 반영되고, A 면 원리 2건이 우리 규칙으로 존재한다
   - Files: `docs/design-system/absorption-criteria.md`(Around 행 갱신 — 기존 `:51` 을 재판정 결과로) ·
     `docs/research/loop/ledger.md`(1행) · **A 인 경우만** `knowledge/<신규>.md` +
@@ -142,4 +142,18 @@ Around 의 이식물은 컴포넌트가 아니라 **"많은 표면을 하나의 
 
 - 2026-08-06 작성 — goal `queue-drain` 연쇄 3/4.
 
+- **step-1 완료 (2026-08-06)** — 판정 **A**. Failure probe 대로 조건 충족을 로드맵 문구가 아니라 **코드로** 확인했다:
+  킥스타트 질문 3종(`kickstart.ts:26`·`:38`), `CANVASES` 3종이 light/dark 쌍 + **radius**(`0.5`/`0.625`/`0.375rem`),
+  `ACCENTS` 5종·`FONT_STACKS` 3종, 산출 브랜드 CSS 변수 61종. Around customizer 원리가 지목한 세 요소가
+  **이미 구현돼 있었다.** 사이트 실브라우저 재확인(2026-08-06) — 생존, 2026-08-01 캡처 대비 무변동
+  (카탈로그 IA·customizer·타이포 스케일 셀렉트·패키지 링크 전부). 원 판정서에 백링크 추가(본문 무수정 — record 동결).
+  ⚠ **판정의 성격이 M11 시점과 다르다** — 흡수가 "새 기능 도입"이 아니라 "이미 만든 것에 규칙 붙이기"였다.
+  그래서 A 이면서도 코드 변경은 0이다. 커밋 `docs(research): Around 재판정 — A`.
+- **step-2 완료 (2026-08-06)** — 지정 2건만 흡수. `knowledge/customizer-and-packaging.md` 신설(컨트롤/고정 경계 ·
+  프리셋이 radius 를 묶는 이유 · 복사 가능성 3조건 · **의도적 미보유 2건**(실시간 프리뷰·타이포 배수)을 상한으로 명시) ·
+  `docs/PRD.md` 「제품 약속」 신설(스택·자산·검증·왕복 — m7 지적대로 block-contract 가 아니라 PRD 층).
+  absorption-criteria Around 행 C→A, ledger 1행, `generate-llms-txt.mjs` 등재 + 재생성.
+  **Verify**: `check-llms-sync` PASS · 신규 knowledge 문서가 **llms 배포본에 실재**(`public/llms/knowledge/customizer-and-packaging.md`) ·
+  토큰·registry **diff 0** · 재서술 검사 — 흡수 문서는 우리 규칙 문장으로 쓰고 원 캡처는 링크 1회만.
+  커밋 `docs(knowledge): Around 재판정 A 반영`.
 - 2026-08-06 계획 검증자 반영.

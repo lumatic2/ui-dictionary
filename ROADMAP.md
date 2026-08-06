@@ -34,15 +34,18 @@ Goal: 이월 큐 4건을 비운다. 서로 표면이 겹치지 않는 부채라 
 - Completed at: 2026-08-06
 - Evidence: research/2026-08-06-m33-presenton-bench.md
 - Summary: Presenton 벤치 — 실구동 5장 덱, 10축 대조, 판정 A 1건·B 4건·C 1건
-<!-- harness:milestone id="M34" status="active" priority="P2" -->
+<!-- harness:milestone id="M34" status="completed" priority="P2" evidence="research/2026-08-06-m34-around-reverdict.md" -->
 ### M34 — Around 재판정 (+ A 면 흡수)
 - DoD: 판정이 `absorption-criteria` 에 날짜·근거와 함께 갱신되고 ledger 1행. A 면 지정 2건(customizer 원리 → knowledge, 패키지 클레임 → `docs/PRD.md`)이 우리 규칙으로 존재하고 llms 에 실린다. B·C 면 흡수 0건.
 - Gap: M11 이 "이식 축 미개방"을 이유로 C 보류했는데, M26~M31 로 그 축이 열렸다 — 재판정 조건이 충족된 채 방치돼 있다
 - Scale: steps=2 (재판정 / 반영·흡수); surfaces: absorption-criteria·ledger·knowledge·PRD; capability: 패키징 원리의 정본화
-- Plan: plans/2026-08-06-m34-around-reverdict.md
-- Status: [ ]
+- Plan: archive/plans/2026-08-06-m34-around-reverdict.md
+- Status: [x]
 
-<!-- harness:milestone id="M35" status="pending" priority="P1" -->
+- Completed at: 2026-08-06
+- Evidence: research/2026-08-06-m34-around-reverdict.md
+- Summary: Around 재판정 C→A — customizer 원리·패키지 클레임 규칙 흡수, 코드 변경 0
+<!-- harness:milestone id="M35" status="active" priority="P1" -->
 ### M35 — Figma 브리지 후속 3건
 - DoD: 스냅숏 구간 분할(기본 호출 무변경) + **라이브 절단 해소 실증**, 계약 §2.2 `description` 복사 + 읽기(dry-run) 모드 + `--no-remove`, 드리프트 실측→승인→반영 후 2차 실행이 `0/0/0` 또는 updated-only, 사람이 실파일 표본 3종 확인.
 - Gap: M14 가 손 3분할로 우회한 20kb 절단이 그대로고, §2.2 description 은 7월부터 미구현이며, M31 신설 토큰이 Figma 에 안 갔다
