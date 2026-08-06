@@ -28,7 +28,10 @@ import {
  * math (seed library, quality scoring, candidate rotation) lives in
  * palette-generator-core; this file owns the interaction surface. Swatch
  * colors are user content by definition — the chrome around them stays on
- * semantic tokens. Entry/exit keyframes are scoped to this component.
+ * semantic tokens, while overlays sitting on top of user-picked colors
+ * (swatch action pills, shade rings, picker handles) intentionally use
+ * fixed white/current so they stay readable on arbitrary hues.
+ * Entry/exit keyframes are scoped to this component.
  */
 
 const cpgKeyframes = `
@@ -565,6 +568,7 @@ export function ColorPaletteGeneratorDemo() {
     setExportOpen(false)
   }
 
+  // Overlay on the user-picked swatch color — fixed white/current on purpose.
   const actionClass = "grid size-5 place-items-center rounded-full border border-current/25 bg-white/18 text-current backdrop-blur-sm transition hover:scale-105 hover:bg-white/34 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-current"
   // Hue-axis spectrum, generated instead of authored — these are the picker's
   // physical hue stops, not themable design colors.
@@ -580,7 +584,7 @@ export function ColorPaletteGeneratorDemo() {
       <style>{cpgKeyframes}</style>
       <div className="absolute right-0 top-[-3.35rem] z-30 flex items-center gap-2" data-palette-header-actions="true">
         <button
-          className="inline-flex h-8 items-center gap-2 rounded-md border border-slate-200 bg-white px-3 text-xs font-semibold text-slate-700 shadow-sm transition hover:border-slate-300 hover:text-slate-950 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-askewly-violet"
+          className="inline-flex h-8 items-center gap-2 rounded-md border border-border bg-card px-3 text-xs font-semibold text-muted-foreground shadow-sm transition hover:border-muted-foreground/40 hover:text-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring"
           type="button"
           onClick={generatePalette}
         >
@@ -589,8 +593,8 @@ export function ColorPaletteGeneratorDemo() {
         </button>
         <button
           className={cn(
-            "inline-flex size-8 items-center justify-center rounded-md border text-slate-600 transition focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-askewly-violet",
-            exportOpen ? "border-slate-950 bg-slate-950 text-white" : "border-slate-200 bg-white hover:border-slate-300 hover:text-slate-950",
+            "inline-flex size-8 items-center justify-center rounded-md border text-muted-foreground transition focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring",
+            exportOpen ? "border-foreground bg-foreground text-background" : "border-border bg-card hover:border-muted-foreground/40 hover:text-foreground",
           )}
           type="button"
           aria-label="Export palette"
@@ -605,14 +609,14 @@ export function ColorPaletteGeneratorDemo() {
       </div>
 
       <div
-        className="group/palette relative overflow-visible rounded-md border border-slate-200 bg-white shadow-sm focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-askewly-violet"
+        className="group/palette relative overflow-visible rounded-md border border-border bg-card shadow-sm focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring"
         tabIndex={0}
         aria-label="Interactive color palette generator"
       >
         <div ref={paletteBoardRef} className="swatch-preserve relative flex h-[21.5rem] overflow-visible" data-palette-board="true">
           <span className="group/add-start absolute inset-y-0 left-2 z-30 flex w-10 items-center justify-start" data-palette-add-start="true">
             <button
-              className="grid size-9 place-items-center rounded-full border border-slate-200 bg-white text-slate-950 opacity-0 shadow-md transition hover:scale-105 hover:bg-slate-50 focus-visible:opacity-100 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-askewly-violet group-hover/add-start:opacity-100"
+              className="grid size-9 place-items-center rounded-full border border-border bg-card text-card-foreground opacity-0 shadow-md transition hover:scale-105 hover:bg-muted focus-visible:opacity-100 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring group-hover/add-start:opacity-100"
               type="button"
               aria-label="Add color to start"
               onClick={() => addColor("start")}
@@ -622,7 +626,7 @@ export function ColorPaletteGeneratorDemo() {
           </span>
           <span className="group/add-end absolute inset-y-0 right-2 z-30 flex w-10 items-center justify-end" data-palette-add-end="true">
             <button
-              className="grid size-9 place-items-center rounded-full border border-slate-200 bg-white text-slate-950 opacity-0 shadow-md transition hover:scale-105 hover:bg-slate-50 focus-visible:opacity-100 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-askewly-violet group-hover/add-end:opacity-100"
+              className="grid size-9 place-items-center rounded-full border border-border bg-card text-card-foreground opacity-0 shadow-md transition hover:scale-105 hover:bg-muted focus-visible:opacity-100 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring group-hover/add-end:opacity-100"
               type="button"
               aria-label="Add color to end"
               onClick={() => addColor("end")}
@@ -738,30 +742,30 @@ export function ColorPaletteGeneratorDemo() {
                   data-palette-actions="true"
                 >
                   <button className={cn(actionClass, "group/action relative")} type="button" aria-label={`Remove ${color.hex}`} onClick={(event) => { event.stopPropagation(); blurPaletteAction(event); setInfoColorId(color.id); removeColor(index) }}>
-                    <span className="pointer-events-none absolute bottom-full left-1/2 mb-2 hidden -translate-x-1/2 whitespace-nowrap rounded bg-slate-950 px-2 py-1 text-xs font-semibold text-white shadow-lg group-hover/action:block">Remove color</span>
+                    <span className="pointer-events-none absolute bottom-full left-1/2 mb-2 hidden -translate-x-1/2 whitespace-nowrap rounded bg-foreground px-2 py-1 text-xs font-semibold text-background shadow-lg group-hover/action:block">Remove color</span>
                     <X aria-hidden="true" className="size-3" />
                   </button>
                   <button className={cn(actionClass, "group/action relative")} type="button" data-palette-trigger="true" aria-label={`Show shades for ${color.hex}`} onClick={(event) => { event.stopPropagation(); blurPaletteAction(event); setInfoColorId(color.id); if (shadeState?.index === index && !shadePanelClosing) { closeShadePanel() } else { openShadePanel(index, color) } setPickerOpenIndex(null) }}>
-                    <span className="pointer-events-none absolute bottom-full left-1/2 mb-2 hidden -translate-x-1/2 whitespace-nowrap rounded bg-slate-950 px-2 py-1 text-xs font-semibold text-white shadow-lg group-hover/action:block">View shades</span>
+                    <span className="pointer-events-none absolute bottom-full left-1/2 mb-2 hidden -translate-x-1/2 whitespace-nowrap rounded bg-foreground px-2 py-1 text-xs font-semibold text-background shadow-lg group-hover/action:block">View shades</span>
                     <List aria-hidden="true" className="size-3" />
                   </button>
                   <span className={cn(actionClass, "group/action relative", color.locked ? "cursor-not-allowed opacity-45" : "cursor-grab touch-none active:cursor-grabbing")} aria-label={`Drag ${color.hex}`} role="img" onPointerDown={(event) => startPaletteDrag(event, index)}>
-                    <span className="pointer-events-none absolute bottom-full left-1/2 mb-2 hidden -translate-x-1/2 whitespace-nowrap rounded bg-slate-950 px-2 py-1 text-xs font-semibold text-white shadow-lg group-hover/action:block">Drag color</span>
+                    <span className="pointer-events-none absolute bottom-full left-1/2 mb-2 hidden -translate-x-1/2 whitespace-nowrap rounded bg-foreground px-2 py-1 text-xs font-semibold text-background shadow-lg group-hover/action:block">Drag color</span>
                     <MoveHorizontal aria-hidden="true" className="size-3" />
                   </span>
                   <button className={cn(actionClass, "group/action relative")} type="button" aria-label={`Copy ${color.hex}`} onClick={(event) => { event.stopPropagation(); blurPaletteAction(event); setInfoColorId(color.id); void writeClipboard(color.hex) }}>
-                    <span className="pointer-events-none absolute bottom-full left-1/2 mb-2 hidden -translate-x-1/2 whitespace-nowrap rounded bg-slate-950 px-2 py-1 text-xs font-semibold text-white shadow-lg group-hover/action:block">Copy HEX</span>
+                    <span className="pointer-events-none absolute bottom-full left-1/2 mb-2 hidden -translate-x-1/2 whitespace-nowrap rounded bg-foreground px-2 py-1 text-xs font-semibold text-background shadow-lg group-hover/action:block">Copy HEX</span>
                     <Copy aria-hidden="true" className="size-3" />
                   </button>
                   <button className={cn(actionClass, "group/action relative")} type="button" aria-label={color.locked ? `Unlock ${color.hex}` : `Lock ${color.hex}`} onClick={(event) => { event.stopPropagation(); blurPaletteAction(event); setInfoColorId(color.id); toggleLock(index) }}>
-                    <span className="pointer-events-none absolute bottom-full left-1/2 mb-2 hidden -translate-x-1/2 whitespace-nowrap rounded bg-slate-950 px-2 py-1 text-xs font-semibold text-white shadow-lg group-hover/action:block">{color.locked ? "Unlock color" : "Lock color"}</span>
+                    <span className="pointer-events-none absolute bottom-full left-1/2 mb-2 hidden -translate-x-1/2 whitespace-nowrap rounded bg-foreground px-2 py-1 text-xs font-semibold text-background shadow-lg group-hover/action:block">{color.locked ? "Unlock color" : "Lock color"}</span>
                     {color.locked ? <Lock aria-hidden="true" className="size-3" /> : <Unlock aria-hidden="true" className="size-3" />}
                   </button>
                 </span>
                 {pickerOpenIndex === index && pickerColor && (
-                  <div className={cn("absolute bottom-14 z-40 w-[16rem] rounded-2xl border border-slate-200 bg-white p-3 text-slate-950 shadow-2xl sm:w-[18rem]", index === 0 ? "left-0" : index >= palette.length - 2 ? "right-0" : "left-1/2 -translate-x-1/2")} data-palette-popover="true" onClick={(event) => event.stopPropagation()}>
+                  <div className={cn("absolute bottom-14 z-40 w-[16rem] rounded-2xl border border-border bg-popover p-3 text-popover-foreground shadow-2xl sm:w-[18rem]", index === 0 ? "left-0" : index >= palette.length - 2 ? "right-0" : "left-1/2 -translate-x-1/2")} data-palette-popover="true" onClick={(event) => event.stopPropagation()}>
                     <div
-                      className="relative h-28 cursor-crosshair overflow-hidden rounded-lg border border-slate-200"
+                      className="relative h-28 cursor-crosshair overflow-hidden rounded-lg border border-border"
                       style={{ background: pickerGradient }}
                       role="button"
                       tabIndex={0}
@@ -786,28 +790,28 @@ export function ColorPaletteGeneratorDemo() {
                         style={{ backgroundColor: pickerColor.hex, left: `${((pickerHsv?.h ?? 0) / 360) * 100}%` }}
                       />
                     </div>
-                    <div className="mt-4 flex items-center gap-2 rounded-lg border border-blue-500 px-2 py-1.5">
+                    <div className="mt-4 flex items-center gap-2 rounded-lg border border-ring px-2 py-1.5">
                       <button className="min-w-0 flex-1 text-left font-mono text-base font-semibold" type="button" onClick={() => void writeClipboard(pickerColor.hex)}>
                         {pickerColor.hex}
                       </button>
                       <input
-                        className="size-8 shrink-0 rounded border border-slate-200 bg-transparent"
+                        className="size-8 shrink-0 rounded border border-input bg-transparent"
                         type="color"
                         aria-label={`Pick replacement for ${pickerColor.hex}`}
                         value={pickerColor.hex}
                         onChange={(event) => replaceColor(index, event.target.value.toUpperCase())}
                       />
                     </div>
-                    <div className="mt-3 flex items-center justify-between border-t border-slate-100 pt-3">
-                      <span className="text-sm font-semibold text-slate-950">Picker</span>
+                    <div className="mt-3 flex items-center justify-between border-t border-border pt-3">
+                      <span className="text-sm font-semibold text-popover-foreground">Picker</span>
                       <div className="flex gap-3">
-                        <button className="text-slate-950" type="button" aria-label="Pick color from screen" onClick={() => void pickWithEyeDropper(index)}>
+                        <button className="text-popover-foreground" type="button" aria-label="Pick color from screen" onClick={() => void pickWithEyeDropper(index)}>
                           <Pipette aria-hidden="true" className="size-5" />
                         </button>
-                        <button className="text-slate-950" type="button" aria-label="Copy picked color" onClick={() => void writeClipboard(pickerColor.hex)}>
+                        <button className="text-popover-foreground" type="button" aria-label="Copy picked color" onClick={() => void writeClipboard(pickerColor.hex)}>
                           <Copy aria-hidden="true" className="size-5" />
                         </button>
-                        <button className="text-slate-950" type="button" aria-label="Close picker" onClick={() => setPickerOpenIndex(null)}>
+                        <button className="text-popover-foreground" type="button" aria-label="Close picker" onClick={() => setPickerOpenIndex(null)}>
                           <X aria-hidden="true" className="size-5" />
                         </button>
                       </div>
@@ -844,36 +848,36 @@ export function ColorPaletteGeneratorDemo() {
         )}
 
         {copyToast && (
-          <div className="absolute left-1/2 top-3 z-40 -translate-x-1/2 rounded-full bg-slate-950 px-3 py-1.5 text-xs font-semibold text-white shadow-lg">
+          <div className="absolute left-1/2 top-3 z-40 -translate-x-1/2 rounded-full bg-foreground px-3 py-1.5 text-xs font-semibold text-background shadow-lg">
             {copyToast}
           </div>
         )}
 
-        <div className="border-t border-slate-200 bg-white p-3" data-palette-bottom-rail="true" data-palette-popover="true">
+        <div className="border-t border-border bg-card p-3" data-palette-bottom-rail="true" data-palette-popover="true">
           <div className="grid min-h-[4.5rem] gap-3 sm:grid-cols-[minmax(0,1fr)_minmax(13rem,16rem)] sm:items-center">
             <div className="min-w-0">
-              <p className="truncate text-sm font-semibold text-slate-950">{infoColor?.name ?? "Palette color"}</p>
-              <p className="mt-1 font-mono text-[11px] uppercase tracking-normal text-slate-500">
+              <p className="truncate text-sm font-semibold text-card-foreground">{infoColor?.name ?? "Palette color"}</p>
+              <p className="mt-1 font-mono text-[11px] uppercase tracking-normal text-muted-foreground">
                 {infoColor ? `${infoColor.hex} / RGB ${formatRgb(infoColor.hex)} / HSL ${hexToHsl(infoColor.hex)}` : "Select a color"}
               </p>
-              <p className="mt-2 text-[11px] leading-4 text-slate-500">
+              <p className="mt-2 text-[11px] leading-4 text-muted-foreground">
                 Generated from {paletteSeed.name}: {paletteSeed.note}
               </p>
             </div>
-            <div className="grid grid-cols-3 gap-1.5 text-center text-[10px] font-semibold uppercase tracking-normal text-slate-500">
-              <span className="rounded border border-slate-200 bg-slate-50 px-2 py-1.5">{paletteQuality.duplicateCount === 0 ? "Unique" : `${paletteQuality.duplicateCount} dupes`}</span>
-              <span className="rounded border border-slate-200 bg-slate-50 px-2 py-1.5">{paletteQuality.lowContrastCount === 0 ? "Readable" : "Check text"}</span>
-              <span className="rounded border border-slate-200 bg-slate-50 px-2 py-1.5">{paletteQuality.exportStable ? "Export OK" : "Fix hex"}</span>
+            <div className="grid grid-cols-3 gap-1.5 text-center text-[10px] font-semibold uppercase tracking-normal text-muted-foreground">
+              <span className="rounded border border-border bg-muted px-2 py-1.5">{paletteQuality.duplicateCount === 0 ? "Unique" : `${paletteQuality.duplicateCount} dupes`}</span>
+              <span className="rounded border border-border bg-muted px-2 py-1.5">{paletteQuality.lowContrastCount === 0 ? "Readable" : "Check text"}</span>
+              <span className="rounded border border-border bg-muted px-2 py-1.5">{paletteQuality.exportStable ? "Export OK" : "Fix hex"}</span>
             </div>
           </div>
         </div>
 
         {exportOpen && (
-          <div className="absolute inset-0 z-50 grid place-items-center bg-slate-950/72 p-4" data-palette-popover="true">
-            <div className="w-full max-w-md rounded-2xl bg-white text-slate-950 shadow-2xl">
-              <div className="flex items-center justify-between border-b border-slate-200 px-5 py-4">
+          <div className="absolute inset-0 z-50 grid place-items-center bg-scrim/72 p-4" data-palette-popover="true">
+            <div className="w-full max-w-md rounded-2xl bg-card text-card-foreground shadow-2xl">
+              <div className="flex items-center justify-between border-b border-border px-5 py-4">
                 <p className="text-lg font-semibold">Export Palette</p>
-                <button className="rounded p-1 text-slate-700 transition hover:bg-slate-100" type="button" aria-label="Close export palette" onClick={() => setExportOpen(false)}>
+                <button className="rounded p-1 text-muted-foreground transition hover:bg-muted hover:text-foreground" type="button" aria-label="Close export palette" onClick={() => setExportOpen(false)}>
                   <X aria-hidden="true" className="size-5" />
                 </button>
               </div>
@@ -885,7 +889,7 @@ export function ColorPaletteGeneratorDemo() {
                 ].map(([format, label, Icon]) => (
                   <button
                     key={String(format)}
-                    className="grid aspect-square place-items-center rounded-xl bg-slate-100 p-3 text-center transition hover:bg-slate-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-askewly-violet"
+                    className="grid aspect-square place-items-center rounded-xl bg-muted p-3 text-center transition hover:bg-accent/50 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring"
                     type="button"
                     aria-label={`Export palette as ${String(label)}`}
                     onClick={() => exportPalette(format as "image" | "code" | "svg")}
